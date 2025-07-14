@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADED9C83F1B
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE53CC83F21
 	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Jul 2025 17:10:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=J5lYrh8W1Zii9Ce5ASsVFQisW54QyB9tB9tNtmASyAw=; b=Ir8Y7OjUWBgmu7hTLEKnnq9HWM
-	ooHR5JNVSAAfOxxcmPtKWRDuJMWR2BXwWBvU+KMd5R6uq0IyVF5y25AZDppn10Dk7q6901U6ogDqU
-	ZQmpxwGlrUeWOStCRcGynjZCRa4VEuZlAru8uZUaU5b24QT9i2w/LgnMBTBYTAC9u5OxRgEmJQfx8
-	E3o4R6hyHV4FAboLTcOXwRN1EX4CreTlLSZizM3D1GqPS9nIIZtwCmOvWt68/v0bxvm5Lzup9CSKe
-	ViVigOB7P25poVGkNmDlIVGR2SNNewpkyGw7rzDu1AzAJGA67Uq2Bs9+td57EltXkYamtHaDWItLx
-	XDfjTPwQ==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cF/J+timBPsFz3WOSwVH0Kf+iaEpB5BnygE/l/4+E7s=; b=G/rsjKFveIvmqIJ9d/NYEkgIMW
+	6ak10H5WCXSQWba9507HSoNfTG696opX9+RbPDyR+/V1NSwDjaS+ScVqL224hOhoVVfq7UAJXKvcQ
+	lOToGwlvS+dVw70z/7g96lYuBjgqNd/Ed/tvSgkyJlHPCoBzTrqe8LJ1qO8teNI6Y2dMTeP+TEuh7
+	qgmzI2hsIzK5B4lUYSzg+CsE12iw7kl20pe1aVk3QeHPRxJ5NIFuBTu6MhCWJB9kFoncFVAFmnMia
+	dbNwqNXP65+X2JTEd+6pqtDdjRyNVi23uFSn3RMRxhjUSBfFx6IK0U3pv9kYQc1AoWMf3yxdqh3iR
+	YR60GACA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubMgq-00000002vCQ-37iw;
-	Mon, 14 Jul 2025 17:10:08 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1ubMgr-00000002vDR-3dF5;
+	Mon, 14 Jul 2025 17:10:09 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubKvJ-00000002cw7-1ZH2
+	id 1ubKvS-00000002d0D-0ovE
 	for linux-mediatek@lists.infradead.org;
-	Mon, 14 Jul 2025 15:16:58 +0000
+	Mon, 14 Jul 2025 15:17:06 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id B3772A5720B;
-	Mon, 14 Jul 2025 15:16:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D60ADC4CEED;
-	Mon, 14 Jul 2025 15:16:55 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 3E3EC61461;
+	Mon, 14 Jul 2025 15:17:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8F644C4CEED;
+	Mon, 14 Jul 2025 15:17:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752506216;
-	bh=cNl2G+4nID9VEq/SkN/gUiR1UE/E6bO8XMUjvivYSMU=;
-	h=From:To:Cc:Subject:Date:From;
-	b=Yv2k2zTkXByHZEoKL4c7km2DuInQFDAfQMJOk0h6uEpmR1gEIjWAnuF0lY9qwZAn3
-	 3jxmnM/APPXVeiaRNQY7C2sXG9pJpCU8UePyDShfSC3HTJJRjlg5pfVWfIdvkgZ2bz
-	 W4NjrhrlxdvldLLulBwnlYqBqGRRqYUDpNVTWyz61Hc6uS4n5HK3VvN6D9sgTPo/y1
-	 aqWC8noOHSQvySVV0OiCWLGdxFzq0+2wxk9iPszT9igjSvkJKOXoxTZJNhlI/rPZMa
-	 /G1a1JZ4s4Dr30d74QjNwcSsRALwj12qGMTXW6uOjNkP9KVkvrsfpNYc9Pd1tYiDcJ
-	 s4t656AgRHFCw==
+	s=k20201202; t=1752506224;
+	bh=o08pa3vDyrpwbugjE13yo3/KG36AKlJZY19VJJE4tsA=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=BIQKhjonBfSsPBoj4iT26flowdZyjLaeEkA09soBhhpptJcMVhBqvWB09gdHF+4U+
+	 fInNyF67QD0xqwPeZsKMcVPLYwxPPMZfbPkgLbetfnINbA/iAPNI9YVKK3N29bhLmT
+	 g+837VfayFSxRAYFDA7hYL5pJT2Rta5h6yiMYOxbrY4iim8RwjxX0neYqHefOQqm0Z
+	 3YHeayv0V4qjU4Pdc50Ha7c54b3Ie+51euV7RK7pFHR8GxM5ED32CJbAgYZv9quemt
+	 KdEJODFy90CeBCfkd6xdf8Mu9D8riOdVVYPMzcnWbn40++Z4wgBm4NlGIdzZQhpAdH
+	 K27Iz6mS3dwZA==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: nbd@nbd.name,
 	ryder.lee@mediatek.com,
@@ -54,16 +54,14 @@ Cc: matthias.bgg@gmail.com,
 	krzk@kernel.org,
 	lorenzo@kernel.org,
 	horms@kernel.org
-Subject: [RFC mt76 0/4] Add NPU offload support to MT7996 driver
-Date: Mon, 14 Jul 2025 17:16:18 +0200
-Message-ID: <cover.1752505597.git.lorenzo@kernel.org>
+Subject: [RFC mt76 3/4] wifi: mt76: Introduce the NPU generic layer
+Date: Mon, 14 Jul 2025 17:16:21 +0200
+Message-ID: <48727ab4cee9a595feb417c68b1a0ffeae8b2187.1752505597.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.50.1
+In-Reply-To: <cover.1752505597.git.lorenzo@kernel.org>
+References: <cover.1752505597.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250714_081657_474914_1C2D1021 
-X-CRM114-Status: UNSURE (   8.96  )
-X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,37 +76,710 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce Airoha NPU support to MT7996 driver. NPU is used to enable
+Add the NPU generic layer in mt76 module. NPU will be used to enable
 traffic forward offloading between the MT76 NIC and Airoha ethernet one
 available on the Airoha EN7581 SoC using Netfilter Flowtable APIs.
-This series is based on the following net-next series for airoha_npu driver:
-https://patchwork.kernel.org/project/netdevbpf/cover/20250705-airoha-en7581-wlan-offlaod-v2-0-3cf32785e381@kernel.org/
 
-Lorenzo Bianconi (4):
-  wifi: mt76: Move Q_READ/Q_WRITE definitions in dma.h
-  wifi: mt76: Add mt76_dev pointer in mt76_queue struct.
-  wifi: mt76: Introduce the NPU generic layer
-  wifi: mt76: mt7996: Add NPU offload support to MT7996 driver
-
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
  drivers/net/wireless/mediatek/mt76/Makefile   |   2 +-
- drivers/net/wireless/mediatek/mt76/dma.c      |  71 ++--
- drivers/net/wireless/mediatek/mt76/dma.h      |  67 ++++
+ drivers/net/wireless/mediatek/mt76/dma.c      |  39 +-
+ drivers/net/wireless/mediatek/mt76/dma.h      |  36 ++
  drivers/net/wireless/mediatek/mt76/mac80211.c |   6 +-
- drivers/net/wireless/mediatek/mt76/mt76.h     |  49 +++
- .../wireless/mediatek/mt76/mt7996/Makefile    |   2 +-
- .../net/wireless/mediatek/mt76/mt7996/dma.c   |  17 +-
- .../net/wireless/mediatek/mt76/mt7996/init.c  |   4 +
- .../net/wireless/mediatek/mt76/mt7996/mac.c   |   3 +
- .../net/wireless/mediatek/mt76/mt7996/main.c  |  15 +-
- .../net/wireless/mediatek/mt76/mt7996/mmio.c  |  13 +-
- .../wireless/mediatek/mt76/mt7996/mt7996.h    |   3 +
- .../net/wireless/mediatek/mt76/mt7996/npu.c   | 268 +++++++++++++
- .../net/wireless/mediatek/mt76/mt7996/pci.c   |   6 +-
+ drivers/net/wireless/mediatek/mt76/mt76.h     |  48 +++
  drivers/net/wireless/mediatek/mt76/npu.c      | 378 ++++++++++++++++++
- 15 files changed, 855 insertions(+), 49 deletions(-)
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt7996/npu.c
+ 6 files changed, 502 insertions(+), 7 deletions(-)
  create mode 100644 drivers/net/wireless/mediatek/mt76/npu.c
 
+diff --git a/drivers/net/wireless/mediatek/mt76/Makefile b/drivers/net/wireless/mediatek/mt76/Makefile
+index 87512d101a91..93c05e69da18 100644
+--- a/drivers/net/wireless/mediatek/mt76/Makefile
++++ b/drivers/net/wireless/mediatek/mt76/Makefile
+@@ -10,7 +10,7 @@ obj-$(CONFIG_MT792x_USB) += mt792x-usb.o
+ 
+ mt76-y := \
+ 	mmio.o util.o trace.o dma.o mac80211.o debugfs.o eeprom.o \
+-	tx.o agg-rx.o mcu.o wed.o scan.o channel.o
++	tx.o agg-rx.o mcu.o wed.o scan.o channel.o npu.o
+ 
+ mt76-$(CONFIG_PCI) += pci.o
+ mt76-$(CONFIG_NL80211_TESTMODE) += testmode.o
+diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireless/mediatek/mt76/dma.c
+index 48e5c4e98937..6aee930496bd 100644
+--- a/drivers/net/wireless/mediatek/mt76/dma.c
++++ b/drivers/net/wireless/mediatek/mt76/dma.c
+@@ -162,6 +162,11 @@ mt76_dma_sync_idx(struct mt76_dev *dev, struct mt76_queue *q)
+ 		Q_WRITE(q, ring_size, MT_DMA_RRO_EN | q->ndesc);
+ 	else
+ 		Q_WRITE(q, ring_size, q->ndesc);
++
++	if (mt76_queue_is_npu_tx(q)) {
++		writel(q->desc_dma, &q->regs->desc_base);
++		writel(q->ndesc, &q->regs->ring_size);
++	}
+ 	q->head = Q_READ(q, dma_idx);
+ 	q->tail = q->head;
+ }
+@@ -172,7 +177,7 @@ void __mt76_dma_queue_reset(struct mt76_dev *dev, struct mt76_queue *q,
+ 	if (!q || !q->ndesc)
+ 		return;
+ 
+-	if (!mt76_queue_is_wed_rro_ind(q)) {
++	if (!mt76_queue_is_wed_rro_ind(q) && !mt76_queue_is_npu(q)) {
+ 		int i;
+ 
+ 		/* clear descriptors */
+@@ -364,6 +369,7 @@ mt76_dma_tx_cleanup(struct mt76_dev *dev, struct mt76_queue *q, bool flush)
+ 
+ 	while (q->queued > 0 && q->tail != last) {
+ 		mt76_dma_tx_cleanup_idx(dev, q, q->tail, &entry);
++		mt76_npu_txdesc_cleanup(q, q->tail);
+ 		mt76_queue_tx_complete(dev, q, &entry);
+ 
+ 		if (entry.txwi) {
+@@ -522,6 +528,10 @@ mt76_dma_tx_queue_skb(struct mt76_phy *phy, struct mt76_queue *q,
+ 	if (test_bit(MT76_RESET, &phy->state))
+ 		goto free_skb;
+ 
++	/* FIXME: Take into account unlinear skbs */
++	if (mt76_npu_device_active(dev) && skb_linearize(skb))
++		goto free_skb;
++
+ 	t = mt76_get_txwi(dev);
+ 	if (!t)
+ 		goto free_skb;
+@@ -569,6 +579,9 @@ mt76_dma_tx_queue_skb(struct mt76_phy *phy, struct mt76_queue *q,
+ 	if (ret < 0)
+ 		goto unmap;
+ 
++	if (mt76_npu_device_active(dev))
++		return mt76_npu_dma_add_buf(phy, q, skb, &tx_info.buf[1], txwi);
++
+ 	return mt76_dma_add_buf(dev, q, tx_info.buf, tx_info.nbuf,
+ 				tx_info.info, tx_info.skb, t);
+ 
+@@ -671,8 +684,15 @@ mt76_dma_alloc_queue(struct mt76_dev *dev, struct mt76_queue *q,
+ 	q->hw_idx = idx;
+ 	q->dev = dev;
+ 
+-	size = mt76_queue_is_wed_rro_ind(q) ? sizeof(struct mt76_wed_rro_desc)
+-					    : sizeof(struct mt76_desc);
++	if (mt76_queue_is_wed_rro_ind(q))
++		size = sizeof(struct mt76_wed_rro_desc);
++	else if (mt76_queue_is_npu_tx(q))
++		size = sizeof(struct airoha_npu_tx_dma_desc);
++	else if (mt76_queue_is_npu_rx(q))
++		size = sizeof(struct airoha_npu_rx_dma_desc);
++	else
++		size = sizeof(struct mt76_desc);
++
+ 	q->desc = dmam_alloc_coherent(dev->dma_dev, q->ndesc * size,
+ 				      &q->desc_dma, GFP_KERNEL);
+ 	if (!q->desc)
+@@ -700,6 +720,7 @@ mt76_dma_alloc_queue(struct mt76_dev *dev, struct mt76_queue *q,
+ 	if (ret)
+ 		return ret;
+ 
++	mt76_npu_queue_setup(dev, q);
+ 	ret = mt76_wed_dma_setup(dev, q, false);
+ 	if (ret)
+ 		return ret;
+@@ -724,6 +745,11 @@ mt76_dma_rx_cleanup(struct mt76_dev *dev, struct mt76_queue *q)
+ 	if (!q->ndesc)
+ 		return;
+ 
++	if (mt76_queue_is_npu(q)) {
++		mt76_npu_queue_cleanup(dev, q);
++		return;
++	}
++
+ 	do {
+ 		spin_lock_bh(&q->lock);
+ 		buf = mt76_dma_dequeue(dev, q, true, NULL, NULL, &more, NULL);
+@@ -753,7 +779,7 @@ mt76_dma_rx_reset(struct mt76_dev *dev, enum mt76_rxq_id qid)
+ 	if (!q->ndesc)
+ 		return;
+ 
+-	if (!mt76_queue_is_wed_rro_ind(q)) {
++	if (!mt76_queue_is_wed_rro_ind(q) && !mt76_queue_is_npu(q)) {
+ 		int i;
+ 
+ 		for (i = 0; i < q->ndesc; i++)
+@@ -773,7 +799,10 @@ mt76_dma_rx_reset(struct mt76_dev *dev, enum mt76_rxq_id qid)
+ 		return;
+ 
+ 	mt76_dma_sync_idx(dev, q);
+-	mt76_dma_rx_fill_buf(dev, q, false);
++	if (mt76_queue_is_npu(q))
++		mt76_npu_fill_rx_queue(dev, q);
++	else
++		mt76_dma_rx_fill(dev, q, false);
+ }
+ 
+ static void
+diff --git a/drivers/net/wireless/mediatek/mt76/dma.h b/drivers/net/wireless/mediatek/mt76/dma.h
+index 982722b2e5a5..62c581b427ac 100644
+--- a/drivers/net/wireless/mediatek/mt76/dma.h
++++ b/drivers/net/wireless/mediatek/mt76/dma.h
+@@ -65,6 +65,42 @@
+ 		writel(_val, &(_q)->regs->_field);			\
+ } while (0)
+ 
++#elif (IS_BUILTIN(CONFIG_NET_AIROHA_NPU) || IS_MODULE(CONFIG_NET_AIROHA_NPU))
++
++#define Q_READ(_q, _field) ({						\
++	u32 _offset = offsetof(struct mt76_queue_regs, _field);		\
++	u32 _val;							\
++	if ((_q)->flags & MT_QFLAG_NPU) {				\
++		struct airoha_npu *npu;					\
++									\
++		rcu_read_lock();					\
++		npu = rcu_dereference(q->dev->mmio.npu);		\
++		if (npu)						\
++			regmap_read(npu->regmap,			\
++				    ((_q)->wed_regs + _offset), &_val);	\
++		rcu_read_unlock();					\
++	} else {							\
++		_val = readl(&(_q)->regs->_field);			\
++	}								\
++	_val;								\
++})
++
++#define Q_WRITE(_q, _field, _val)	do {				\
++	u32 _offset = offsetof(struct mt76_queue_regs, _field);		\
++	if ((_q)->flags & MT_QFLAG_NPU) {				\
++		struct airoha_npu *npu;					\
++									\
++		rcu_read_lock();					\
++		npu = rcu_dereference(q->dev->mmio.npu);		\
++		if (npu)						\
++			regmap_write(npu->regmap,			\
++				     ((_q)->wed_regs + _offset), _val);	\
++		rcu_read_unlock();					\
++	} else {							\
++		writel(_val, &(_q)->regs->_field);			\
++	}								\
++} while (0)
++
+ #else
+ 
+ #define Q_READ(_q, _field)		readl(&(_q)->regs->_field)
+diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
+index 3afe4c4cd7bb..7aa62476e051 100644
+--- a/drivers/net/wireless/mediatek/mt76/mac80211.c
++++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
+@@ -630,6 +630,8 @@ int mt76_create_page_pool(struct mt76_dev *dev, struct mt76_queue *q)
+ 	case MT_RXQ_MAIN:
+ 	case MT_RXQ_BAND1:
+ 	case MT_RXQ_BAND2:
++	case MT_RXQ_NPU0:
++	case MT_RXQ_NPU1:
+ 		pp_params.pool_size = 256;
+ 		break;
+ 	default:
+@@ -814,6 +816,7 @@ void mt76_free_device(struct mt76_dev *dev)
+ 		destroy_workqueue(dev->wq);
+ 		dev->wq = NULL;
+ 	}
++	mt76_npu_deinit(dev);
+ 	ieee80211_free_hw(dev->hw);
+ }
+ EXPORT_SYMBOL_GPL(mt76_free_device);
+@@ -1509,7 +1512,8 @@ void mt76_rx_poll_complete(struct mt76_dev *dev, enum mt76_rxq_id q,
+ 
+ 	while ((skb = __skb_dequeue(&dev->rx_skb[q])) != NULL) {
+ 		mt76_check_sta(dev, skb);
+-		if (mtk_wed_device_active(&dev->mmio.wed))
++		if (mtk_wed_device_active(&dev->mmio.wed) ||
++		    mt76_npu_device_active(dev))
+ 			__skb_queue_tail(&frames, skb);
+ 		else
+ 			mt76_rx_aggr_reorder(skb, &frames);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index db37de583709..3a30c779a0b3 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -14,6 +14,7 @@
+ #include <linux/usb.h>
+ #include <linux/average.h>
+ #include <linux/soc/mediatek/mtk_wed.h>
++#include <linux/soc/airoha/airoha_offload.h>
+ #include <net/mac80211.h>
+ #include <net/page_pool/helpers.h>
+ #include "util.h"
+@@ -33,6 +34,7 @@
+ #define MT_QFLAG_WED		BIT(5)
+ #define MT_QFLAG_WED_RRO	BIT(6)
+ #define MT_QFLAG_WED_RRO_EN	BIT(7)
++#define MT_QFLAG_NPU		BIT(8)
+ 
+ #define __MT_WED_Q(_type, _n)	(MT_QFLAG_WED | \
+ 				 FIELD_PREP(MT_QFLAG_WED_TYPE, _type) | \
+@@ -46,6 +48,12 @@
+ #define MT_WED_RRO_Q_MSDU_PG(_n)	__MT_WED_RRO_Q(MT76_WED_RRO_Q_MSDU_PG, _n)
+ #define MT_WED_RRO_Q_IND	__MT_WED_RRO_Q(MT76_WED_RRO_Q_IND, 0)
+ 
++#define __MT_NPU_Q(_type, _n)	(MT_QFLAG_NPU | \
++				 FIELD_PREP(MT_QFLAG_WED_TYPE, _type) | \
++				 FIELD_PREP(MT_QFLAG_WED_RING, _n))
++#define MT_NPU_Q_TX(_n)		__MT_NPU_Q(MT76_WED_Q_TX, _n)
++#define MT_NPU_Q_RX(_n)		__MT_NPU_Q(MT76_WED_Q_RX, _n)
++
+ struct mt76_dev;
+ struct mt76_phy;
+ struct mt76_wcid;
+@@ -129,6 +137,8 @@ enum mt76_rxq_id {
+ 	MT_RXQ_TXFREE_BAND1,
+ 	MT_RXQ_TXFREE_BAND2,
+ 	MT_RXQ_RRO_IND,
++	MT_RXQ_NPU0,
++	MT_RXQ_NPU1,
+ 	__MT_RXQ_MAX
+ };
+ 
+@@ -683,6 +693,10 @@ struct mt76_mmio {
+ 	struct mtk_wed_device wed_hif2;
+ 	struct completion wed_reset;
+ 	struct completion wed_reset_complete;
++
++	struct airoha_npu __rcu *npu;
++	phys_addr_t phy_addr;
++	int npu_type;
+ };
+ 
+ struct mt76_rx_status {
+@@ -1572,6 +1586,23 @@ int mt76_testmode_dump(struct ieee80211_hw *hw, struct sk_buff *skb,
+ int mt76_testmode_set_state(struct mt76_phy *phy, enum mt76_testmode_state state);
+ int mt76_testmode_alloc_skb(struct mt76_phy *phy, u32 len);
+ 
++int mt76_npu_rx_queue_init(struct mt76_dev *dev, struct mt76_queue *q);
++int mt76_npu_dma_add_buf(struct mt76_phy *phy, struct mt76_queue *q,
++			 struct sk_buff *skb, struct mt76_queue_buf *buf,
++			 void *txwi_ptr);
++int mt76_npu_init(struct mt76_dev *dev, phys_addr_t phy_addr, int type);
++void mt76_npu_deinit(struct mt76_dev *dev);
++void mt76_npu_disable_irqs(struct mt76_dev *dev);
++void mt76_npu_queue_cleanup(struct mt76_dev *dev, struct mt76_queue *q);
++int mt76_npu_fill_rx_queue(struct mt76_dev *dev, struct mt76_queue *q);
++void mt76_npu_queue_setup(struct mt76_dev *dev, struct mt76_queue *q);
++void mt76_npu_txdesc_cleanup(struct mt76_queue *q, int index);
++
++static inline bool mt76_npu_device_active(struct mt76_dev *dev)
++{
++	return !!rcu_access_pointer(dev->mmio.npu);
++}
++
+ static inline void mt76_testmode_reset(struct mt76_phy *phy, bool disable)
+ {
+ #ifdef CONFIG_NL80211_TESTMODE
+@@ -1799,6 +1830,23 @@ static inline bool mt76_queue_is_wed_rx(struct mt76_queue *q)
+ 
+ }
+ 
++static inline bool mt76_queue_is_npu(struct mt76_queue *q)
++{
++	return q->flags & MT_QFLAG_NPU;
++}
++
++static inline bool mt76_queue_is_npu_tx(struct mt76_queue *q)
++{
++	return mt76_queue_is_npu(q) &&
++	       FIELD_GET(MT_QFLAG_WED_TYPE, q->flags) == MT76_WED_Q_TX;
++}
++
++static inline bool mt76_queue_is_npu_rx(struct mt76_queue *q)
++{
++	return mt76_queue_is_npu(q) &&
++	       FIELD_GET(MT_QFLAG_WED_TYPE, q->flags) == MT76_WED_Q_RX;
++}
++
+ struct mt76_txwi_cache *
+ mt76_token_release(struct mt76_dev *dev, int token, bool *wake);
+ int mt76_token_consume(struct mt76_dev *dev, struct mt76_txwi_cache **ptxwi);
+diff --git a/drivers/net/wireless/mediatek/mt76/npu.c b/drivers/net/wireless/mediatek/mt76/npu.c
+new file mode 100644
+index 000000000000..a9d8ee674c72
+--- /dev/null
++++ b/drivers/net/wireless/mediatek/mt76/npu.c
+@@ -0,0 +1,378 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * Copyright (c) 2025 AIROHA Inc
++ * Author: Lorenzo Bianconi <lorenzo@kernel.org>
++ */
++#include <linux/kernel.h>
++#include <net/flow_offload.h>
++#include <net/pkt_cls.h>
++
++#include "mt76.h"
++#include "dma.h"
++#include "mt76_connac.h"
++
++#define MT76_NPU_RX_BUF_SIZE	(1800 + \
++				 SKB_DATA_ALIGN(sizeof(struct skb_shared_info)))
++
++static bool npu_enable = true;
++module_param(npu_enable, bool, 0644);
++
++int mt76_npu_fill_rx_queue(struct mt76_dev *dev, struct mt76_queue *q)
++{
++	int nframes = 0;
++
++	while (q->queued < q->ndesc - 1) {
++		struct airoha_npu_rx_dma_desc *desc = (void *)q->desc;
++		struct mt76_queue_entry *e = &q->entry[q->head];
++		struct page *page;
++		int offset;
++
++		e->buf = mt76_get_page_pool_buf(q, &offset, q->buf_size);
++		if (!e->buf)
++			break;
++
++		e->dma_len[0] = SKB_WITH_OVERHEAD(q->buf_size);
++		page = virt_to_head_page(e->buf);
++		e->dma_addr[0] = page_pool_get_dma_addr(page) + offset;
++
++		memset(&desc[q->head], 0, sizeof(*desc));
++		desc[q->head].addr = e->dma_addr[0];
++
++		q->head = (q->head + 1) % q->ndesc;
++		q->queued++;
++		nframes++;
++	}
++
++	return nframes;
++}
++
++void mt76_npu_queue_cleanup(struct mt76_dev *dev, struct mt76_queue *q)
++{
++	spin_lock_bh(&q->lock);
++	while (q->queued > 0) {
++		struct mt76_queue_entry *e = &q->entry[q->tail];
++
++		dma_sync_single_for_cpu(dev->dma_dev, e->dma_addr[0],
++					e->dma_len[0],
++					page_pool_get_dma_dir(q->page_pool));
++		mt76_put_page_pool_buf(e->buf, false);
++		q->tail = (q->tail + 1) % q->ndesc;
++		q->queued--;
++	}
++	spin_unlock_bh(&q->lock);
++}
++
++static struct sk_buff *mt76_npu_dequeue(struct mt76_dev *dev,
++					struct mt76_queue *q,
++					u32 *info)
++{
++	struct airoha_npu_rx_dma_desc *desc = (void *)q->desc;
++	int i, nframes, index = q->tail;
++	struct sk_buff *skb = NULL;
++
++	nframes = FIELD_GET(NPU_RX_DMA_PKT_COUNT_MASK, desc[index].info);
++	nframes = max_t(int, nframes, 1);
++
++	for (i = 0; i < nframes; i++) {
++		struct mt76_queue_entry *e = &q->entry[index];
++		int len = FIELD_GET(NPU_RX_DMA_DESC_CUR_LEN_MASK,
++				    desc[index].ctrl);
++
++		if (!FIELD_GET(NPU_RX_DMA_DESC_DONE_MASK, desc[index].ctrl)) {
++			dev_kfree_skb(skb);
++			return NULL;
++		}
++
++		dma_sync_single_for_cpu(dev->dma_dev, e->dma_addr[0],
++					e->dma_len[0],
++					page_pool_get_dma_dir(q->page_pool));
++
++		if (!skb) {
++			skb = napi_build_skb(e->buf, q->buf_size);
++			if (!skb)
++				return NULL;
++
++			__skb_put(skb, len);
++			skb_reset_mac_header(skb);
++		} else {
++			struct skb_shared_info *shinfo = skb_shinfo(skb);
++			struct page *page = virt_to_head_page(e->buf);
++			int nr_frags = shinfo->nr_frags;
++
++			if (nr_frags < ARRAY_SIZE(shinfo->frags))
++				skb_add_rx_frag(skb, nr_frags, page,
++						e->buf - page_address(page),
++						len, q->buf_size);
++		}
++
++		*info = desc[index].info;
++		index = (index + 1) % q->ndesc;
++	}
++	q->tail = index;
++	q->queued -= i;
++	Q_WRITE(q, dma_idx, q->tail);
++
++	return skb;
++}
++
++static int mt76_npu_rx_poll(struct napi_struct *napi, int budget)
++{
++	struct mt76_dev *dev = mt76_priv(napi->dev);
++	enum mt76_rxq_id qid = napi - dev->napi;
++	struct airoha_npu *npu;
++	int done = 0;
++
++	rcu_read_lock();
++
++	npu = rcu_dereference(dev->mmio.npu);
++	if (!npu)
++		goto out;
++
++	while (done < budget) {
++		struct sk_buff *skb;
++		u32 info = 0;
++
++		skb = mt76_npu_dequeue(dev, &dev->q_rx[qid], &info);
++		if (!skb)
++			break;
++
++		dev->drv->rx_skb(dev, qid, skb, &info);
++		mt76_rx_poll_complete(dev, qid, napi);
++		done++;
++	}
++
++	mt76_npu_fill_rx_queue(dev, &dev->q_rx[qid]);
++out:
++	if (done < budget && napi_complete(napi))
++		dev->drv->rx_poll_complete(dev, qid);
++
++	rcu_read_unlock();
++
++	return done;
++}
++
++static irqreturn_t mt76_npu_irq_handler(int irq, void *q_instance)
++{
++	struct mt76_queue *q = q_instance;
++	struct mt76_dev *dev = q->dev;
++	int qid = q - &dev->q_rx[0];
++	int index = qid - MT_RXQ_NPU0;
++	struct airoha_npu *npu;
++	u32 status;
++
++	rcu_read_lock();
++
++	npu = rcu_dereference(dev->mmio.npu);
++	if (!npu)
++		goto out;
++
++	status = airoha_npu_wlan_get_irq_status(npu, index);
++	airoha_npu_wlan_set_irq_status(npu, status);
++
++	airoha_npu_wlan_disable_irq(npu, index);
++	napi_schedule(&dev->napi[qid]);
++out:
++	rcu_read_unlock();
++
++	return IRQ_HANDLED;
++}
++
++int mt76_npu_dma_add_buf(struct mt76_phy *phy, struct mt76_queue *q,
++			 struct sk_buff *skb, struct mt76_queue_buf *buf,
++			 void *txwi_ptr)
++{
++	u16 txwi_len = min_t(u16, phy->dev->drv->txwi_size, NPU_TXWI_LEN);
++	struct airoha_npu_tx_dma_desc *desc = (void *)q->desc;
++	int ret;
++
++	/* FIXME: Take into account unlinear skbs */
++	memcpy(desc[q->head].txwi, txwi_ptr, txwi_len);
++	desc[q->head].addr = buf->addr;
++	desc[q->head].ctrl = FIELD_PREP(NPU_TX_DMA_DESC_VEND_LEN_MASK, txwi_len) |
++			     FIELD_PREP(NPU_TX_DMA_DESC_LEN_MASK, skb->len) |
++			     NPU_TX_DMA_DESC_DONE_MASK;
++
++	ret = q->head;
++	q->entry[q->head].skip_buf0 = true;
++	q->entry[q->head].skip_buf1 = true;
++	q->entry[q->head].txwi = NULL;
++	q->entry[q->head].skb = NULL;
++	q->entry[q->head].wcid = 0xffff;
++
++	q->head = (q->head + 1) % q->ndesc;
++	q->queued++;
++
++	return ret;
++}
++
++void mt76_npu_txdesc_cleanup(struct mt76_queue *q, int index)
++{
++	struct airoha_npu_tx_dma_desc *desc = (void *)q->desc;
++
++	if (!mt76_queue_is_npu_tx(q))
++		return;
++
++	desc[index].ctrl &= ~NPU_TX_DMA_DESC_DONE_MASK;
++}
++
++void mt76_npu_queue_setup(struct mt76_dev *dev, struct mt76_queue *q)
++{
++	int qid = FIELD_GET(MT_QFLAG_WED_RING, q->flags);
++	bool xmit = mt76_queue_is_npu_tx(q);
++	struct airoha_npu *npu;
++
++	if (!mt76_queue_is_npu(q))
++		return;
++
++	mutex_lock(&dev->mutex);
++
++	npu = rcu_dereference_protected(dev->mmio.npu, &dev->mutex);
++	if (npu)
++		q->wed_regs = airoha_npu_wlan_get_queue_addr(npu, qid, xmit);
++
++	mutex_unlock(&dev->mutex);
++}
++
++int mt76_npu_rx_queue_init(struct mt76_dev *dev, struct mt76_queue *q)
++{
++	int err, irq, qid = q - &dev->q_rx[0];
++	int size, index = qid - MT_RXQ_NPU0;
++	struct airoha_npu *npu;
++	const char *name;
++
++	mutex_lock(&dev->mutex);
++
++	npu = rcu_dereference_protected(dev->mmio.npu, &dev->mutex);
++	irq = npu && index < ARRAY_SIZE(npu->irqs) ? npu->irqs[index]
++						   : -EINVAL;
++	if (irq < 0) {
++		err = irq;
++		goto error_unlock;
++	}
++
++	err = mt76_create_page_pool(dev, q);
++	if (err)
++		goto error_unlock;
++
++	q->flags = MT_NPU_Q_RX(index);
++	size = qid == MT_RXQ_NPU1 ? NPU_RX1_DESC_NUM : NPU_RX0_DESC_NUM;
++	err = dev->queue_ops->alloc(dev, q, 0, size,
++				    MT76_NPU_RX_BUF_SIZE, 0);
++	if (err)
++		goto erro_destroy_page_pool;
++
++	name = devm_kasprintf(dev->dev, GFP_KERNEL, "mt76-npu" ".%d", index);
++	if (!name) {
++		err = -ENOMEM;
++		goto erro_destroy_page_pool;
++	}
++
++	err = devm_request_irq(dev->dev, irq, mt76_npu_irq_handler,
++			       IRQF_SHARED, name, q);
++	if (err)
++		goto erro_destroy_page_pool;
++
++	netif_napi_add(dev->napi_dev, &dev->napi[qid], mt76_npu_rx_poll);
++	mt76_npu_fill_rx_queue(dev, q);
++	napi_enable(&dev->napi[qid]);
++
++	mutex_unlock(&dev->mutex);
++
++	return 0;
++
++erro_destroy_page_pool:
++	page_pool_destroy(q->page_pool);
++error_unlock:
++	mutex_unlock(&dev->mutex);
++
++	return err;
++}
++EXPORT_SYMBOL_GPL(mt76_npu_rx_queue_init);
++
++void mt76_npu_disable_irqs(struct mt76_dev *dev)
++{
++	struct airoha_npu *npu;
++	u32 status;
++	int i;
++
++	rcu_read_lock();
++
++	npu = rcu_dereference(dev->mmio.npu);
++	if (!npu)
++		goto unlock;
++
++	for (i = MT_RXQ_NPU0; i <= MT_RXQ_NPU1; i++) {
++		status = airoha_npu_wlan_get_irq_status(npu, i);
++		airoha_npu_wlan_set_irq_status(npu, status);
++		airoha_npu_wlan_disable_irq(npu, i);
++	}
++unlock:
++	rcu_read_unlock();
++}
++EXPORT_SYMBOL_GPL(mt76_npu_disable_irqs);
++
++int mt76_npu_init(struct mt76_dev *dev, phys_addr_t phy_addr, int type)
++{
++	struct airoha_npu *npu;
++	int err = 0;
++
++	/* NPU offloading is only supported by MT7992 */
++	if (!is_mt7992(dev))
++		return 0;
++
++	if (!npu_enable)
++		return 0;
++
++	mutex_lock(&dev->mutex);
++
++	npu = airoha_npu_get(dev->dev, NULL);
++	if (IS_ERR(npu)) {
++		request_module("airoha-npu");
++		npu = airoha_npu_get(dev->dev, NULL);
++	}
++
++	if (IS_ERR(npu)) {
++		err = PTR_ERR(npu);
++		goto error_unlock;
++	}
++
++	err = airoha_npu_wlan_init_reserved_memory(npu);
++	if (err)
++		goto error_npu_put;
++
++	dev->dma_dev = npu->dev;
++	dev->mmio.phy_addr = phy_addr;
++	dev->mmio.npu_type = type;
++
++	rcu_assign_pointer(dev->mmio.npu, npu);
++	synchronize_rcu();
++
++	mutex_unlock(&dev->mutex);
++
++	return err;
++
++error_npu_put:
++	airoha_npu_put(npu);
++error_unlock:
++	mutex_unlock(&dev->mutex);
++
++	return err;
++}
++EXPORT_SYMBOL_GPL(mt76_npu_init);
++
++void mt76_npu_deinit(struct mt76_dev *dev)
++{
++	struct airoha_npu *npu;
++
++	mutex_lock(&dev->mutex);
++
++	npu = rcu_replace_pointer(dev->mmio.npu, NULL,
++				  lockdep_is_held(&dev->mutex));
++	if (npu)
++		airoha_npu_put(npu);
++
++	mutex_unlock(&dev->mutex);
++
++	mt76_npu_queue_cleanup(dev, &dev->q_rx[MT_RXQ_NPU0]);
++	mt76_npu_queue_cleanup(dev, &dev->q_rx[MT_RXQ_NPU1]);
++}
 -- 
 2.50.1
 
