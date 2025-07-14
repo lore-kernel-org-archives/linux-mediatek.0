@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BE52C83F1A
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BADDFC83F27
 	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Jul 2025 17:10:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,36 +12,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J1IQRumnzzeSy1ndkQbyF1/FpHcxP9Wbq4fKLXhPX4U=; b=NGOMVAL06nT1VkbRiyhcSvKd/c
-	fr2sv5G38svxBWm/sOJNsDI53R0YeVy+nB8EceMUz88FgYja51tQHTJptb9IhLelKTdqHMhBEwftX
-	NBiNlfXvcP9iYUak2BNuPgUJGX6xwgqdcPv8WyN+15Jh8a5kRmLHzF6BGJaUmEKGr5u8DFl+m3yNt
-	TfnJvVf7Qk9hkwHSoc9hL7sgSKuMJnFioUsPWumvvbosOnrMQlqZ0OohodHMaHfVCuNRZIezsy41i
-	ZujfS+uhYWCZGF+IuO2BYOCadd2CFLbbmgp9RfU/Wm5fsRK3n0OsJmTCpZAXSNfx/PZuzgMzjD6Py
-	LIBoSYhw==;
+	bh=ZR2/kO4p5aFOj3EzM7lqDaUKtgWjJiJb7mkKWS+4/PE=; b=GwnDok6YmMWGEONFRe/1GhvCfI
+	xv6OYiyxFPQAKYfORTuIk98Md18lGdDAYrfJiKAMjJv1dRNHsCq3q36EsoxEuExlg/xHacHR0Vu35
+	fQOyJQiqwGqBBvU4THZfD4L43vVjth12raaaJ5PQbX5vLcef1BcDAwiIxZqsLZ7h7FqDypqRC5G43
+	/pzwjd499/vLGGmWHsqk68Ky00U6BFpmRLdjVs9VEMNmKs9SMjuPP/9Sq21zLMlM2JkX1VxceLEAU
+	DyERI0k4bl/yc2zwhIHD9U3RsFRmLD8IyJz0LCELE6QOKEOQttzzyppeXBeQXg15eW6/F/DW20dcV
+	QApuScpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubMgr-00000002vCX-0yxr;
+	id 1ubMgr-00000002vCn-2IXd;
 	Mon, 14 Jul 2025 17:10:09 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubKvM-00000002cxX-0hdB
+	id 1ubKvP-00000002cyu-183Q
 	for linux-mediatek@lists.infradead.org;
-	Mon, 14 Jul 2025 15:17:01 +0000
+	Mon, 14 Jul 2025 15:17:04 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id AA4BB5C5CF8;
-	Mon, 14 Jul 2025 15:16:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D4579C4CEED;
-	Mon, 14 Jul 2025 15:16:58 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id ABAE85C62EC;
+	Mon, 14 Jul 2025 15:17:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D7927C4CEF6;
+	Mon, 14 Jul 2025 15:17:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752506219;
-	bh=H3mnst5PJ8yNkfvT4AUb7ofM/mh624lIAEQ/llNlbfY=;
+	s=k20201202; t=1752506222;
+	bh=ehhPScnBu/pFnDquLo0e3popXPH+ZYkTYjeUsGCcKDE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=YZHKVqaCHe0d7nIOYk/dFqDtpZnNMC+YFG1oTSdbItmc6LOR4F3BAc81YenfeNFmz
-	 GvP/BjZia5IVxXcXUTjNYLqFHpAoPJ/mqi8dFf4azH0iqt0aFU539/XpCwIIRhhti8
-	 1BbCMjzAEkLmeiOxajnUIOyvcRoIlzih5lP2yZY5QFGmjPAQmWpGFP6+ngYEoR06eO
-	 LoB/imSCbNFVWiLWfgLdyJTMooHbABJwi+WDqQpGht/Pci4MdZeQtgSCMS2792Sm9p
-	 lG/L1ZCl+wFuZhc3Q9/Eg/+nVwchJWs8sqadjcm3w8RH1z7EWoccg7ghe6foUhzeYu
-	 HDghe8dmOxhWw==
+	b=jLBWD7eM8rXUMq/WbFTynjwhv2j5xubJF4BCj3r639RoDUFNeAefpKx88r7Q72Z2b
+	 xvEfFUS56TPCQzDzNf/qz7a7lWNWkafYyEh6qg6DapIVS9PVwyhtxBkC1F/h84Bgze
+	 imXxFZKfCIh0GtrneXVGE7tq5Dfdal8BDu6PTM7xpcGZf7A59U1Lz/yz0T3M9maqf4
+	 JHMvjkFoPrD7wvzfgf0UQYo0h4JN8PvA+liRPaLC4WyHPBQkrNAmZN12FTPlufZH7r
+	 /pY59Fcmr7aF/NT27HC5+29ZjoGuYWP/D+gLbhzcwcJpCv3UICebyM8dk6raegNKF4
+	 InQ0m3hnNwHxQ==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: nbd@nbd.name,
 	ryder.lee@mediatek.com,
@@ -54,17 +54,17 @@ Cc: matthias.bgg@gmail.com,
 	krzk@kernel.org,
 	lorenzo@kernel.org,
 	horms@kernel.org
-Subject: [RFC mt76 1/4] wifi: mt76: Move Q_READ/Q_WRITE definitions in dma.h
-Date: Mon, 14 Jul 2025 17:16:19 +0200
-Message-ID: <e7f8cda2eafe3bb1c04779f05fc58d52c2838fd9.1752505597.git.lorenzo@kernel.org>
+Subject: [RFC mt76 2/4] wifi: mt76: Add mt76_dev pointer in mt76_queue struct.
+Date: Mon, 14 Jul 2025 17:16:20 +0200
+Message-ID: <3136109fae513b224587bf84de841735c09bce03.1752505597.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <cover.1752505597.git.lorenzo@kernel.org>
 References: <cover.1752505597.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250714_081700_284672_CE50F3DB 
-X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-CacheID: sfid-20250714_081703_351131_939E2649 
+X-CRM114-Status: UNSURE (   8.35  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,100 +80,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is a preliminary patch to enable traffic forward offloading between
-the MT76 NIC and Airoha ethernet one via the Airoha NPU module available
-on the Airoha EN7581 SoC.
+This is a preliminary patch to enable traffic forward offloading via the
+Airoha NPU module available on the Airoha EN7581 SoC.
 
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/dma.c | 31 ------------------------
- drivers/net/wireless/mediatek/mt76/dma.h | 31 ++++++++++++++++++++++++
- 2 files changed, 31 insertions(+), 31 deletions(-)
+ drivers/net/wireless/mediatek/mt76/dma.c  | 1 +
+ drivers/net/wireless/mediatek/mt76/mt76.h | 1 +
+ 2 files changed, 2 insertions(+)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireless/mediatek/mt76/dma.c
-index 87f531297f85..a66cda167374 100644
+index a66cda167374..48e5c4e98937 100644
 --- a/drivers/net/wireless/mediatek/mt76/dma.c
 +++ b/drivers/net/wireless/mediatek/mt76/dma.c
-@@ -7,37 +7,6 @@
- #include "mt76.h"
- #include "dma.h"
+@@ -669,6 +669,7 @@ mt76_dma_alloc_queue(struct mt76_dev *dev, struct mt76_queue *q,
+ 	q->ndesc = n_desc;
+ 	q->buf_size = bufsize;
+ 	q->hw_idx = idx;
++	q->dev = dev;
  
--#if IS_ENABLED(CONFIG_NET_MEDIATEK_SOC_WED)
--
--#define Q_READ(_q, _field) ({						\
--	u32 _offset = offsetof(struct mt76_queue_regs, _field);		\
--	u32 _val;							\
--	if ((_q)->flags & MT_QFLAG_WED)					\
--		_val = mtk_wed_device_reg_read((_q)->wed,		\
--					       ((_q)->wed_regs +	\
--					        _offset));		\
--	else								\
--		_val = readl(&(_q)->regs->_field);			\
--	_val;								\
--})
--
--#define Q_WRITE(_q, _field, _val)	do {				\
--	u32 _offset = offsetof(struct mt76_queue_regs, _field);		\
--	if ((_q)->flags & MT_QFLAG_WED)					\
--		mtk_wed_device_reg_write((_q)->wed,			\
--					 ((_q)->wed_regs + _offset),	\
--					 _val);				\
--	else								\
--		writel(_val, &(_q)->regs->_field);			\
--} while (0)
--
--#else
--
--#define Q_READ(_q, _field)		readl(&(_q)->regs->_field)
--#define Q_WRITE(_q, _field, _val)	writel(_val, &(_q)->regs->_field)
--
--#endif
--
- static struct mt76_txwi_cache *
- mt76_alloc_txwi(struct mt76_dev *dev)
- {
-diff --git a/drivers/net/wireless/mediatek/mt76/dma.h b/drivers/net/wireless/mediatek/mt76/dma.h
-index e3ddc7a83757..982722b2e5a5 100644
---- a/drivers/net/wireless/mediatek/mt76/dma.h
-+++ b/drivers/net/wireless/mediatek/mt76/dma.h
-@@ -41,6 +41,37 @@
- #define MT_FCE_INFO_LEN			4
- #define MT_RX_RXWI_LEN			32
+ 	size = mt76_queue_is_wed_rro_ind(q) ? sizeof(struct mt76_wed_rro_desc)
+ 					    : sizeof(struct mt76_desc);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 2912568612bc..db37de583709 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -234,6 +234,7 @@ struct mt76_queue {
+ 	u16 flags;
  
-+#if IS_ENABLED(CONFIG_NET_MEDIATEK_SOC_WED)
-+
-+#define Q_READ(_q, _field) ({						\
-+	u32 _offset = offsetof(struct mt76_queue_regs, _field);		\
-+	u32 _val;							\
-+	if ((_q)->flags & MT_QFLAG_WED)					\
-+		_val = mtk_wed_device_reg_read((_q)->wed,		\
-+					       ((_q)->wed_regs +	\
-+					        _offset));		\
-+	else								\
-+		_val = readl(&(_q)->regs->_field);			\
-+	_val;								\
-+})
-+
-+#define Q_WRITE(_q, _field, _val)	do {				\
-+	u32 _offset = offsetof(struct mt76_queue_regs, _field);		\
-+	if ((_q)->flags & MT_QFLAG_WED)					\
-+		mtk_wed_device_reg_write((_q)->wed,			\
-+					 ((_q)->wed_regs + _offset),	\
-+					 _val);				\
-+	else								\
-+		writel(_val, &(_q)->regs->_field);			\
-+} while (0)
-+
-+#else
-+
-+#define Q_READ(_q, _field)		readl(&(_q)->regs->_field)
-+#define Q_WRITE(_q, _field, _val)	writel(_val, &(_q)->regs->_field)
-+
-+#endif
-+
- struct mt76_desc {
- 	__le32 buf0;
- 	__le32 ctrl;
+ 	struct mtk_wed_device *wed;
++	struct mt76_dev *dev;
+ 	u32 wed_regs;
+ 
+ 	dma_addr_t desc_dma;
 -- 
 2.50.1
 
