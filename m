@@ -4,72 +4,137 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A526BC83F1A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Jul 2025 12:27:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AA29C83F1B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Jul 2025 12:27:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=l+1LS81FGm60dIyP9CaATX2ddHWIPZWWedbPOybtiZA=; b=jVmNW/Ad/2EQD/nKJRVq746ms7
-	vQJgY0AbwTZuA+T4QnXsmitzWJSxR8rQ3AwZkuPXmQGxQU5Tp3L9RiPioW6y6z9mr4mal3lWN7Ypq
-	P+GvgWg/zwpYJ/g6pwqI7o3kUzJo/Hc5uI2wgSxg4+nfnfT57LXRJ+6B3tbs8wYTXZ5rmysI0iJGG
-	VH3//co+PfFsUB3KCSR4NF2lzilN+tF0aftGH9LaCVLZ5gzhgdT3DAxb/U4sPYcgnwOxh0phIe+Df
-	mdRE7AfjbGen5ru7byUQN13e4+rLFRhO1Uw7jMQz+XTNWxQ2KUtNN//Bmq1uEoNaFDbN8Nq+bpMI5
-	SOO4JSaA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Tax/cwAcE4sXYUJ2pA/CAJ6hEfajJPpYTpoSv0qZmsA=; b=DuKXHjGfeFAzPZZx6+Bwgg71vy
+	5fxeB9cROR4HdZ/pV8fF6ANwX5JYfaN81s0oZGsSNlGjyO3BW+mdVnI3He/kb3XKjU+wyn1mMJY3l
+	ZYrirOFP6R1hFTwBmbc6ZtUnXUjZLhiqIdZd9zxu6el5/aSE9+OEfKhqbka6o4xFm4QGSVLFL9JMV
+	IVWO1tklttOqzSpsR/zRfK6bLPxG493dGI95ORgWNhM97RAOOE9+yEMH3x5pxyJMPc/FLFRv9O51O
+	bnhnwc6GvH1eBcNL4cs9Bt+yIY4PUHAvYCsUtuYWca7UwTR794hL6Dlo6m3aszJZORQPM582cpJ5V
+	dGVLnhMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubIHc-00000002AC1-48TI;
-	Mon, 14 Jul 2025 12:27:48 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubHpr-000000025RC-16mb;
-	Mon, 14 Jul 2025 11:59:08 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1752494332; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=iGxMupPycqjxa9mYweKkM1w0s56YuVBdz40VSohqHJ3DXNzUCYRc0iDuCpWhd1e1iQCtv+NNjNDg9xPLYXdOL006E1zaX0LDHjqO8w9yGeXqJe7lKw+DDb3YBdN41kehkm8w1fxfZc1a+NC+/qy+9J8PITBiq2rV+10PPyJxUTA=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1752494332; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=l+1LS81FGm60dIyP9CaATX2ddHWIPZWWedbPOybtiZA=; 
-	b=FOFJails5Ae40soxsPBXDAMaGs6GdcMZ9fthL+58TXmaBHN1pRpOTIby7gN85neyM8wi9quxpIlfq5ly00RUP3SL6TwLmEToc7CTcioKIhaK8V6fvNd7OgDuWphAyIFq+HMJbzE3GZNb+dEmdu8whdIK8oPFuHLyoQA9EWuAGwk=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1752494332;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=l+1LS81FGm60dIyP9CaATX2ddHWIPZWWedbPOybtiZA=;
-	b=aj0QdiFV/CZDv8u7a2xKrN6idNVJH5GSz9novrbYVUgsWiDx/znyr52+XSR2b85x
-	hmj6oKZLj+9eTDZAY0wlEAp10Lx86SU71uQzRdkFW+al/wNl2BJ4qfNCPVrUsb0Vfgz
-	Cjsqj8X6ekiU7rdpt5mtI9G7NA5CT9t53O457SRI=
-Received: by mx.zohomail.com with SMTPS id 1752494328917431.64095668770517;
-	Mon, 14 Jul 2025 04:58:48 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- Viresh Kumar <viresh.kumar@linaro.org>,
- Hector Yuan <hector.yuan@mediatek.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
-Subject: Re: [PATCH 1/5] dt-bindings: mfd: syscon: Add mt8196 fdvfs syscons
-Date: Mon, 14 Jul 2025 13:58:44 +0200
-Message-ID: <2866261.BEx9A2HvPv@workhorse>
-In-Reply-To: <4537173f-7f79-4629-a2ef-cbf1edd2ed81@collabora.com>
-References: <20250711-mt8196-cpufreq-v1-0-e1b0a3b4ac61@collabora.com>
- <20250711-mt8196-cpufreq-v1-1-e1b0a3b4ac61@collabora.com>
- <4537173f-7f79-4629-a2ef-cbf1edd2ed81@collabora.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="utf-8"
+	id 1ubIHe-00000002ACj-01FR;
+	Mon, 14 Jul 2025 12:27:50 +0000
+Received: from exvmail4.skhynix.com ([166.125.252.92] helo=invmail4.hynix.com)
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1ubHrq-000000025oG-1mVJ;
+	Mon, 14 Jul 2025 12:01:11 +0000
+X-AuditID: a67dfc5b-681ff7000002311f-e8-6874f17962cc
+From: Byungchul Park <byungchul@sk.com>
+To: willy@infradead.org,
+	netdev@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org,
+	linux-mm@kvack.org,
+	kernel_team@skhynix.com,
+	almasrymina@google.com,
+	ilias.apalodimas@linaro.org,
+	harry.yoo@oracle.com,
+	akpm@linux-foundation.org,
+	andrew+netdev@lunn.ch,
+	asml.silence@gmail.com,
+	toke@redhat.com,
+	david@redhat.com,
+	Liam.Howlett@oracle.com,
+	vbabka@suse.cz,
+	rppt@kernel.org,
+	surenb@google.com,
+	mhocko@suse.com,
+	linux-rdma@vger.kernel.org,
+	bpf@vger.kernel.org,
+	vishal.moola@gmail.com,
+	hannes@cmpxchg.org,
+	ziy@nvidia.com,
+	jackmanb@google.com,
+	wei.fang@nxp.com,
+	shenwei.wang@nxp.com,
+	xiaoning.wang@nxp.com,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	anthony.l.nguyen@intel.com,
+	przemyslaw.kitszel@intel.com,
+	sgoutham@marvell.com,
+	gakula@marvell.com,
+	sbhatta@marvell.com,
+	hkelam@marvell.com,
+	bbhushan2@marvell.com,
+	tariqt@nvidia.com,
+	ast@kernel.org,
+	daniel@iogearbox.net,
+	hawk@kernel.org,
+	john.fastabend@gmail.com,
+	sdf@fomichev.me,
+	saeedm@nvidia.com,
+	leon@kernel.org,
+	mbloch@nvidia.com,
+	danishanwar@ti.com,
+	rogerq@kernel.org,
+	nbd@nbd.name,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
+	shayne.chen@mediatek.com,
+	sean.wang@mediatek.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	aleksander.lobakin@intel.com,
+	horms@kernel.org,
+	m-malladi@ti.com,
+	krzysztof.kozlowski@linaro.org,
+	matthias.schiffer@ew.tq-group.com,
+	robh@kernel.org,
+	imx@lists.linux.dev,
+	intel-wired-lan@lists.osuosl.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net-next v10 00/12] Split netmem from struct page
+Date: Mon, 14 Jul 2025 21:00:35 +0900
+Message-Id: <20250714120047.35901-1-byungchul@sk.com>
+X-Mailer: git-send-email 2.17.1
+X-Brightmail-Tracker: H4sIAAAAAAAAAzWSa2yLcRTG/f/vdbUmb2rhRRBNBMPckyNBxqeXREJEJEam0TfarBvartuE
+	mCli2YYh6baiZWYX0WmxotvohjGXmV06unXmkpmaWW3WDdVNfHtyfuc5zznJYQmZm5rCqpP0
+	ojZJoZHTElLyNfLSgrTvetWi7qdzwWy7RsOrgJWCsqFUuNrppKCxhId7DUMYzKW3EfwIvmXA
+	fsJLQKD2MQ2XrYMEBMuzSTC/NJIwYBsm4OOjLgbq3L9JKLNvAF/RJxJcxysIqBmYBV0n62jI
+	No4QkNdxlIbQmxEKKoO9DGQ4izFUfrnFQMPtHArODl8hoCK9M5z1voWC13fNNLw+8gpBx7UQ
+	BZ/c4UB/sZeBnLJ8BO7qEhoyjEvBf+sHA33nagnw5cTCH5MBHlkmwmC9H8HbK80YQi4nAy86
+	rlNQa6vA0PQuSMBg1nkaMr+eRNCcdxfDs/PlFBTWN+HwHpuhJfQLw5lGCw3vjT4EjTVdJBQc
+	zkFgq/JQ8N0VPnlkyEzHrhVq/N8IwdleiISbJW1Y6D71BwueqqdYuJPfzggWe7LgKI4WLrs+
+	YyHT00gI9tITtGDvz2UEb4uLFupMI6TgKDwkdDvy0MZp2yQrlaJGbRC1C1fvlKgKAr14r3dp
+	qs8TwOkoMCcTRbA8t4w/XRIg/uussw5mVNPcbN7jCY7Vo7jFfKDrMZmJJCzBPY/kKx0mPAom
+	cGt4a6h5rInkZvFNx/xjZim3nM86XYD/DZ3Bl5XfJ0bNPFcQwXsufqT+gcn8g2IPeQqNt6Bx
+	pUimTjIkKtSaZTGqtCR1asyuPYl2FP6sooO/4pyov2GzG3EskkdKoUevklEKgy4t0Y14lpBH
+	SXvatSqZVKlI2y9q98RrkzWizo2msqR8knTJYIpSxu1W6MUEUdwrav9TzEZMSUerUmJ5Ur9i
+	/DyHBW+tVmqe/Owz6SZcVLKFQz38+txom3RS/E4UF79vvr31SXXcQEuCN/tIT+V23wHjGeva
+	bbkZ4uFeo5k8t39L55y2/NUmyFP/TvBPd6ybWbShL+O49RKz6cKH5NaOHTfEhwObdqUMa4Mx
+	BqY+MqZ/R+xG7mGKnNSpFIujCa1O8ReSf+AMVQMAAA==
+X-Brightmail-Tracker: H4sIAAAAAAAAAzWSe0yTZxTGfb/3u7Wj8ROJfkE3TY2BmIgaLzmJRlk02TsXjcn+mMFErfrF
+	Nlw0LVbYdIJ2W6wIqMxwaSfMKpeiYKtQoaIpTJmKSrnYzXJZvQS0gq7Y0KLWovG/5+R5nvM7
+	fxwex55h4nlNRqakzVClKVk5Ld+48sjC7NeZ6sV/VSvAVFfLQmegggHreBZUDjoYcFeL0Pxg
+	nAJTTQOCsdAjDmxHvRgCbbdYOFsRxBCqP06D6b6Bhjd1YQxPb/o4aHe9o8Fq2wAD55/R4Pyt
+	EUPrm/ngK2hn4bhhAkNJ/y8sRP6dYOBaaISDw44qClrNf0fHF1c4eNCQz0BR+ByGxpzBKPBx
+	LwNdTSYWuo50IuivjTDwzBWl+qu8HORbSxG4rlezcNiwFPxXxjh49XsbhoH8ZHhfrIeb5TMg
+	eMeP4NG5HgoiTgcH9/ovMtBW10hB938hDME8MwvGlwUIekqaKLhrrmfAcqebit7xPfRG3lJw
+	yl3OwmPDAAJ3q4+Gstx8BHUtHgZeOw108lrS6h/FxNFnQeRy9T8UGSp8TxFPy22KXC3t40i5
+	bR+xVy0gZ53DFDF63JjYao6yxPb/SY54e50saS+eoIndcogM2UvQpq9S5Kt2SWkavaRdtHq7
+	XF0WGKH2epdmDXgCVA4KJBqRjBeFZWJekZ2b1KyQIHo8ITyp44QlYsB3izYiOY+Fjhjxmr2Y
+	mjSmC1+LFZGejyFamC92/+r/WFYIy8W8E2XUp6VzRGv9DVyI+HI0pQbFaTL06SpN2vIkXao6
+	O0OTlbRzT7oNRd/m/MG3JxxorOsbFxJ4pIxRwPNMdSyj0uuy011I5LEyTvG8T6uOVexSZf8o
+	afds0+5Lk3QuNIunlTMV63+QtscKu1WZUqok7ZW0n12Kl8XnoMIm4xdcf8dmevhbb0qLY658
+	IkXvK9LlDppOW2b3NBwrZf5Ikl1IsLlTH343ellWqmk60GGfqi4Ir9i6ctqBeZah3K5Fnbjl
+	y9TK5Kc79v90qWFkzY5E62hi8Od1W2KCzePck7zuOfJNq+XkVPzBYU6WsJmEzbnmu2c6/pxh
+	bg4TJa1Tq5YswFqd6gPgoPYEMgMAAA==
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250714_045907_375247_2A47BAE0 
-X-CRM114-Status: GOOD (  36.43  )
+X-CRM114-CacheID: sfid-20250714_050110_589641_F494EC4C 
+X-CRM114-Status: GOOD (  17.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,121 +149,158 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Monday, 14 July 2025 10:47:32 Central European Summer Time AngeloGioacchino Del Regno wrote:
-> Il 11/07/25 16:57, Nicolas Frattaroli ha scritto:
-> > The MT8196 SoC uses two syscon ranges for CPU DVFS that are separate
-> > from each other. One, mt8196-fdvfs-config, is used to check for a magic
-> > number at that memory address to verify that fdvfs should be used. The
-> > other, mt8196-fdvfs, is used to configure the desired frequency for the
-> > DVFS controller for each CPU core.
-> > 
-> 
-> What is the reason why you're using syscons here?
-> 
-> Can't we simply assign the FDVFS MMIO to the cpufreq-hw node?
+Hi all,
 
-That would require refactoring the driver way more since it currently
-gets the number of performance domains from the number of regs. If
-you want me to do that, I'll need to know how we should disambiguate
-performance domains from misc things like fdvfs. Stuff like string
-comparisons on reg-names seems very ugly for the driver to do, but
-adding a property to explicitly specify the number of performance
-domains would then put into question what the existing binding did
-by just assuming this information is something that implementations
-can get without any ambiguity.
+The MM subsystem is trying to reduce struct page to a single pointer.
+See the following link for your information:
 
-Even if we forget that Linux is the only kernel that cares about this
-device tree, I'm not totally on board with having the smattering of
-dozens of different tiny register ranges in every DT node on mediatek
-like the vendor kernel does it. And not to forget, it'd change the
-binding even more, to the point where I'd probably have to create a
-new binding for mt8196.
+   https://kernelnewbies.org/MatthewWilcox/Memdescs/Path
 
-> Or is there any reason why we can't declare it as mmio-sram? ...because I'm not
-> entirely sure but the FDVFS space should effectively be a [c]SRAM memory range...
+The first step towards that is splitting struct page by its individual
+users, as has already been done with folio and slab.  This patchset does
+that for page pool.
 
-mmio-sram is fairly useless for the purposes of having something as
-a fixed set of registers, hence why nobody else does it. From my
-research, it appears to mainly be used if you want to actually treat
-it like a pool of memory from which to then dynamically allocate
-things.
+Matthew Wilcox tried and stopped the same work, you can see in:
 
-To use it like a syscon, which is what we're doing, you'll have to
-specify your mmio-sram node, then add a child node as a reserved range
-for the "syscon-like" area, and then specify in ranges that you want
-that child node's address translated into the global address space as
-expected. Then in the driver, you can't just do a single function call
-to get some regmap to write into, you have to follow a phandle in your
-vendor property pointing to said sram range, then get its address,
-translate said address to the global SoC address space, and then iomap
-it. And the cleanup for error paths/driver remove isn't fun either.
+   https://lore.kernel.org/linux-mm/20230111042214.907030-1-willy@infradead.org/
 
-Besides, we don't actually know whether this is an sram range, or how
-large it is. The only confirmed sram range was the csram_sys thing at
-like 0x11bc00 which is not used because it turned out to be useless,
-and dealing with the kernel's sram interface to use it as a reserved
-range just to read 4 bytes from it was a wasted afternoon. And that's
-not even the real starting address of that sram area, that's just a
-part we know is used because downstream uses 5 KiB there for a codepath
-that's dead when fdvfs is present (except the one thing where it installs
-a panic handler to shove something into a register to make it stop dvfs
-logging if the kernel is in the process of crashing).
+I focused on removing the page pool members in struct page this time,
+not moving the allocation code of page pool from net to mm.  It can be
+done later if needed.
 
-I can be convinced to go through the pain of making this mmio-sram if
-I have documentation of the whole memory map of the SoC that shows me
-where and how large each area of sram is, so that I don't need to come
-up with my own starting addresses and offsets based on whatever random
-stuff I can infer from downstream DT.
+The final patch that removes the page pool fields will be posted once
+all the conversions are completed.
 
-Really, every writable syscon is probably implemented as "sram" in
-hardware. But an sram cell that is not general use memory but is
-treated by the hardware as having some meaning is not mmio-sram. We
-can't ever use it in any way other than as a syscon, and telling
-implementations that they can except then slapping a huge reserved
-range into it just makes them have to implement syscons twice, once
-as syscons and once as syscons-except-it's-a-reserved-sram-mmio-range.
+	Byungchul
+---
+Changes from v9:
+	1. Remove the patch 'page_pool: access ->pp_magic through
+	   netmem_desc in page_pool_page_is_pp()' and decide to wait for
+	   Pavel's work of PageNetpp() to identify page type for page
+	   pool, that doesn't need to access ->pp_magic.
+	2. Rename page_to_nmdesc() to pp_page_to_nmdesc() and add
+	   DEBUG_NET_WARN_ON_ONCE(!page_pool_page_is_pp(page)) in it,
+	   just in case. (feedbacked by Pavel)
+	3. Apply just simple casting from page to netmem_desc for
+	   accessing ->pp and ->pp_ref_count, instead of full converting
+	   page to netmem_ref for network drivers e.g. mlx4, netdevsim,
+	   and mt76.
+	4. Expand the support for drivers to access ->pp and
+	   ->pp_ref_count to fec, octeontx2-pf, iavf, idpf, mlx5, ti,
+	   and xdp.
+	5. Squash each helper with its first user. (feedbacked by Mina)
 
-> 
-> Cheers,
-> Angelo
-> 
+Changes from v8:
+	1. Rebase on net-next/main as of Jul 10.
+	2. Exclude non-controversial patches that have already been
+	   merged to net-next.
+	3. Re-add the patches that focus on removing accessing the page
+	   pool fields in struct page.
+	4. Add utility APIs e.g. casting, to use struct netmem_desc as
+	   descriptor, to support __netmem_get_pp() that has started to
+	   be used again e.g. by libeth.
 
-Kind regards,
-Nicolas Frattaroli
+Changes from v7 (no actual updates):
+	1. Exclude "netmem: introduce struct netmem_desc mirroring
+	   struct page" that might be controversial.
+	2. Exclude "netmem: introduce a netmem API,
+	   virt_to_head_netmem()" since there are no users.
 
-> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > ---
-> >   Documentation/devicetree/bindings/mfd/syscon.yaml | 4 ++++
-> >   1 file changed, 4 insertions(+)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Documentation/devicetree/bindings/mfd/syscon.yaml
-> > index 27672adeb1fedb7c81b8ae86c35f4f3b26d5516f..5ee49d2ba0cdb72dd697a0fd71c8416ad4fd2c1e 100644
-> > --- a/Documentation/devicetree/bindings/mfd/syscon.yaml
-> > +++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
-> > @@ -88,6 +88,8 @@ select:
-> >             - mediatek,mt8135-pctl-a-syscfg
-> >             - mediatek,mt8135-pctl-b-syscfg
-> >             - mediatek,mt8173-pctl-a-syscfg
-> > +          - mediatek,mt8196-fdvfs
-> > +          - mediatek,mt8196-fdvfs-config
-> >             - mediatek,mt8365-syscfg
-> >             - microchip,lan966x-cpu-syscon
-> >             - microchip,mpfs-sysreg-scb
-> > @@ -194,6 +196,8 @@ properties:
-> >             - mediatek,mt8135-pctl-a-syscfg
-> >             - mediatek,mt8135-pctl-b-syscfg
-> >             - mediatek,mt8173-pctl-a-syscfg
-> > +          - mediatek,mt8196-fdvfs
-> > +          - mediatek,mt8196-fdvfs-config
-> >             - mediatek,mt8365-infracfg-nao
-> >             - mediatek,mt8365-syscfg
-> >             - microchip,lan966x-cpu-syscon
-> > 
-> 
-> 
-> 
+Changes from v6 (no actual updates):
+	1. Rebase on net-next/main as of Jun 25.
+	2. Supplement a comment describing struct net_iov.
+	3. Exclude a controversial patch, "page_pool: access ->pp_magic
+	   through struct netmem_desc in page_pool_page_is_pp()".
+	4. Exclude "netmem: remove __netmem_get_pp()" since the API
+	   started to be used again by libeth.
+
+Changes from v5 (no actual updates):
+	1. Rebase on net-next/main as of Jun 20.
+	2. Add given 'Reviewed-by's and 'Acked-by's, thanks to all.
+	3. Add missing cc's.
+
+Changes from v4:
+	1. Add given 'Reviewed-by's, thanks to all.
+	2. Exclude potentially controversial patches.
+
+Changes from v3:
+	1. Relocates ->owner and ->type of net_iov out of netmem_desc
+	   and make them be net_iov specific.
+	2. Remove __force when casting struct page to struct netmem_desc.
+
+Changes from v2:
+	1. Introduce a netmem API, virt_to_head_netmem(), and use it
+	   when it's needed.
+	2. Introduce struct netmem_desc as a new struct and union'ed
+	   with the existing fields in struct net_iov.
+	3. Make page_pool_page_is_pp() access ->pp_magic through struct
+	   netmem_desc instead of struct page.
+	4. Move netmem alloc APIs from include/net/netmem.h to
+	   net/core/netmem_priv.h.
+	5. Apply trivial feedbacks, thanks to Mina, Pavel, and Toke.
+	6. Add given 'Reviewed-by's, thanks to Mina.
+
+Changes from v1:
+	1. Rebase on net-next's main as of May 26.
+	2. Check checkpatch.pl, feedbacked by SJ Park.
+	3. Add converting of page to netmem in mt76.
+	4. Revert 'mlx5: use netmem descriptor and APIs for page pool'
+	   since it's on-going by Tariq Toukan.  I will wait for his
+	   work to be done.
+	5. Revert 'page_pool: use netmem APIs to access page->pp_magic
+	   in page_pool_page_is_pp()' since we need more discussion.
+	6. Revert 'mm, netmem: remove the page pool members in struct
+	   page' since there are some prerequisite works to remove the
+	   page pool fields from struct page.  I can submit this patch
+	   separatedly later.
+	7. Cancel relocating a page pool member in struct page.
+	8. Modify static assert for offests and size of struct
+	   netmem_desc.
+
+Changes from rfc:
+	1. Rebase on net-next's main branch.
+	   https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/
+	2. Fix a build error reported by kernel test robot.
+	   https://lore.kernel.org/all/202505100932.uzAMBW1y-lkp@intel.com/
+	3. Add given 'Reviewed-by's, thanks to Mina and Ilias.
+	4. Do static_assert() on the size of struct netmem_desc instead
+	   of placing place-holder in struct page, feedbacked by
+	   Matthew.
+	5. Do struct_group_tagged(netmem_desc) on struct net_iov instead
+	   of wholly renaming it to strcut netmem_desc, feedbacked by
+	   Mina and Pavel.
+
+Byungchul Park (12):
+  netmem: introduce struct netmem_desc mirroring struct page
+  netmem: use netmem_desc instead of page to access ->pp in
+    __netmem_get_pp()
+  mlx4: access ->pp_ref_count through netmem_desc instead of page
+  netdevsim: access ->pp through netmem_desc instead of page
+  mt76: access ->pp through netmem_desc instead of page
+  net: fec: access ->pp through netmem_desc instead of page
+  octeontx2-pf: access ->pp through netmem_desc instead of page
+  iavf: access ->pp through netmem_desc instead of page
+  idpf: access ->pp through netmem_desc instead of page
+  mlx5: access ->pp through netmem_desc instead of page
+  net: ti: icssg-prueth: access ->pp through netmem_desc instead of page
+  libeth: xdp: access ->pp through netmem_desc instead of page
+
+ drivers/net/ethernet/freescale/fec_main.c     |  10 +-
+ drivers/net/ethernet/intel/iavf/iavf_txrx.c   |   2 +-
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c   |   8 +-
+ .../marvell/octeontx2/nic/otx2_txrx.c         |   2 +-
+ drivers/net/ethernet/mellanox/mlx4/en_rx.c    |   4 +-
+ .../net/ethernet/mellanox/mlx5/core/en/xdp.c  |   3 +-
+ .../net/ethernet/ti/icssg/icssg_prueth_sr1.c  |   4 +-
+ drivers/net/netdevsim/netdev.c                |   6 +-
+ drivers/net/wireless/mediatek/mt76/mt76.h     |   3 +-
+ include/net/libeth/xdp.h                      |   2 +-
+ include/net/netmem.h                          | 129 +++++++++++++++---
+ 11 files changed, 135 insertions(+), 38 deletions(-)
 
 
-
+base-commit: c65d34296b2252897e37835d6007bbd01b255742
+-- 
+2.17.1
 
 
