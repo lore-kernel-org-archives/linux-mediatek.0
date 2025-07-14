@@ -4,56 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF144C83F1A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Jul 2025 17:11:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D825C83F1A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Jul 2025 17:11:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=CwBY/hv6JUgerl/VzpODclTJIB9MTuyqkUYxVcyFo8Y=; b=AQlmNTDwvlXiY+
-	bsToc/0Fm36AdVdaKIX1jXn0GbIvUcJFL23vzd/JoiAbEsbj4q7oq7gFDVb1dRvHtT2Pm/LLQai7E
-	2kSmL005LdtSHUQpLLrLw3Evvr5p/6r4mrl0cvSNfmroNqceJJO+3Zlj8a0oQSaOjjYl/Bv90PNKP
-	xqGfrQ6XLpvz/gNSAZMCsIyRm3NutHWrv6SsFr4LGksR/MNop+Jezrd5IAFT863AygszVAhsZUtnJ
-	S4Wt6zh0EXNpodGpHL6ulwnaW8Et20UBcKkIvr1uA0tKNWs1EZn5Yc373GIouXg0jaiXuPwc8hxHR
-	ShXKNhgfYJA0z8wrDRcw==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=06gRnKo/c6ydduHA9pTS58eYyfRMNeFrFJV1/p3rJMQ=; b=vcsgnqBQxdjGDvthUxhs4my8fM
+	IdFfRnvuTJrPjSqkdo0wsXbG5QiZrYi+BKsPxy897R/7E2dIuvGakROfiRj5p+F2LzyUYXhGa2LEw
+	He/X2JcSPJBXwjMXfXTRaCdLW5bWBx9F/RB7HwWLdzc2wMj36VrgHbXg3KKZsPBsWWSjlg9A0Jtt2
+	O4ZHow624PjhjFIHBDQYHhCHYiv3Phl4SoZgSEnebIf+/jUm+yLWK9f9vDV1H/pvVWJtqDgWHmiDC
+	OYLTLqkOxqRMHTKkwrEJ+VgRcvR92wiS8bprX/znNktT8Z7bbhZzrKkEbw7Hr3i9prR18KRMktiSE
+	Dme49xxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubMhq-00000002vYw-3QWl;
-	Mon, 14 Jul 2025 17:11:10 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1ubMi2-00000002vbr-0YNb;
+	Mon, 14 Jul 2025 17:11:22 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubL3g-00000002f20-3e3x;
-	Mon, 14 Jul 2025 15:25:36 +0000
+	id 1ubL3j-00000002f2e-2qCm;
+	Mon, 14 Jul 2025 15:25:41 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 4FD3461462;
-	Mon, 14 Jul 2025 15:25:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 84F0DC4CEED;
-	Mon, 14 Jul 2025 15:25:35 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 2736C5C5DD8;
+	Mon, 14 Jul 2025 15:25:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 53B46C4CEED;
+	Mon, 14 Jul 2025 15:25:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752506736;
-	bh=YCh066qOSOnzw5puiQyznGUyX8fu8FqZ4e6PkpV2Kvk=;
-	h=From:Subject:Date:To:Cc:From;
-	b=M/Vs8vV3c8NeRZ67XB+uG0nSpxRlEHQfX4YR95ljNzpd98VVc1hdcwTEFkzibBiZH
-	 d59N03CoCbfZ2tHF16BdbTnXuTxEepVfKIhAuZhI51j/vUVVKDTkVouTvdWSP5sTMT
-	 H48OdW/Dei/VEdXCWqAzQUTYD6cRCFP5ztMCEXecsyTmWeAtpybNmCywNd7jtODCfM
-	 6TSraMYrdEF8swJXNglhpinsZeOl+04haOubgEXcG49rvN4wR+te0druzpJemzIFUP
-	 kYLXMzrhDHSXEdXq6WWBJ0FZbeSTJFXvvEvDETpfbfgF6D3a50Kbe01uCUkKpoUhrN
-	 /w6anQs06MGuw==
+	s=k20201202; t=1752506738;
+	bh=FJfSTWxYNnEPRDqRcZkpEI3unDagKBTuJqc3Wso/8ks=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=iXIftH27ExJeY4QL7wuTHjhPABU5BwbEVuuw8HFO4iiaaG1uxgnZv1jDdo53yhP3r
+	 DozY/qapjvqv7M0m4arTnwesqi0dnm6YfGuvl0zsPdXhremfHIWTZ+rSpsR1bkIWxz
+	 DVaFCqqh5K6OD5TYJ+hkQozgjthFn0BiXXIT33bI+FcHqLEzN8AhI2Bfnu5SjIT2Ar
+	 bcJnoUga93JsuPKymBpwmiAv+UIL9rRv5zlg+cxbSr8/8oozIjqhgetQD+MCERptEW
+	 ij2JvJHzZNhJep9nSi3Of61ngGXNA7HK29fAJ5y6s5YgZ/H0xI26AtocFae1tKTlY8
+	 oxbmxd/c5YNHA==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Subject: [PATCH net-next v3 0/7] net: airoha: Introduce NPU callbacks for
- wlan offloading
-Date: Mon, 14 Jul 2025 17:25:13 +0200
-Message-Id: <20250714-airoha-en7581-wlan-offlaod-v3-0-80abf6aae9e4@kernel.org>
+Date: Mon, 14 Jul 2025 17:25:14 +0200
+Subject: [PATCH net-next v3 1/7] dt-bindings: net: airoha: npu: Add memory
+ regions used for wlan offload
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAFkhdWgC/33NQQ7CIBCF4asY1o4ZQIS68h7GBbZDS2zAgKmap
- neXNjHRTZf/W3xvZJmSp8yOm5ElGnz2MZSQ2w2rOxtaAt+UZgKFQo0crE+xs0BBK8Ph2dsA0bn
- exgYOuq4a65zZa8kKcE/k/GvBz5fSnc+PmN7L18Dn9cuKNXbggGBQIlYa8SrN6UYpUL+LqWWzO
- 4hfS61aoliydlJoo0ga/mdN0/QB1iVdPxEBAAA=
-X-Change-ID: 20250701-airoha-en7581-wlan-offlaod-67c9daff8473
+Message-Id: <20250714-airoha-en7581-wlan-offlaod-v3-1-80abf6aae9e4@kernel.org>
+References: <20250714-airoha-en7581-wlan-offlaod-v3-0-80abf6aae9e4@kernel.org>
+In-Reply-To: <20250714-airoha-en7581-wlan-offlaod-v3-0-80abf6aae9e4@kernel.org>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
  "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
@@ -63,6 +60,10 @@ Cc: Simon Horman <horms@kernel.org>, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
  devicetree@vger.kernel.org
 X-Mailer: b4 0.14.2
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250714_082539_790732_23CBE52A 
+X-CRM114-Status: UNSURE (   8.07  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,50 +78,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Similar to wired traffic, EN7581 SoC allows to offload traffic to/from
-the MT76 wireless NIC configuring the NPU module via the Netfilter
-flowtable. This series introduces the necessary NPU callback used by
-the MT7996 driver in order to enable the offloading.
-MT76 support has been posted as RFC in [0] in order to show how the
-APIs are consumed.
+Document memory regions used by Airoha EN7581 NPU for wlan traffic
+offloading.
 
-[0] https://lore.kernel.org/linux-wireless/cover.1752505597.git.lorenzo@kernel.org/T/#t
-
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
-Changes in v3:
-- Rename 'binary' memory region in 'firmware'
-- Do not make memory-region-names property required
-- Link to v2: https://lore.kernel.org/r/20250705-airoha-en7581-wlan-offlaod-v2-0-3cf32785e381@kernel.org
+ .../devicetree/bindings/net/airoha,en7581-npu.yaml    | 19 +++++++++++++++----
+ 1 file changed, 15 insertions(+), 4 deletions(-)
 
-Changes in v2:
-- Introduce binding for memory regions used for wlan offload
-- Rely on of_reserved_mem_region_to_resource_byname
-- Export just wlan_{send,get}_msg NPU callback for MT76
-- Improve commit messages
-- Link to v1: https://lore.kernel.org/r/20250702-airoha-en7581-wlan-offlaod-v1-0-803009700b38@kernel.org
+diff --git a/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml b/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
+index 76dd97c3fb4004674dc30a54c039c1cc19afedb3..f99d60f75bb03931a1c4f35066c72c709e337fd2 100644
+--- a/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
++++ b/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
+@@ -41,9 +41,18 @@ properties:
+       - description: wlan irq line5
+ 
+   memory-region:
+-    maxItems: 1
+-    description:
+-      Memory used to store NPU firmware binary.
++    items:
++      - description: NPU firmware binary region
++      - description: NPU wlan offload RX buffers region
++      - description: NPU wlan offload TX buffers region
++      - description: NPU wlan offload TX packet identifiers region
++
++  memory-region-names:
++    items:
++      - const: firmware
++      - const: pkt
++      - const: tx-pkt
++      - const: tx-bufid
+ 
+ required:
+   - compatible
+@@ -79,6 +88,8 @@ examples:
+                      <GIC_SPI 121 IRQ_TYPE_LEVEL_HIGH>,
+                      <GIC_SPI 122 IRQ_TYPE_LEVEL_HIGH>,
+                      <GIC_SPI 123 IRQ_TYPE_LEVEL_HIGH>;
+-        memory-region = <&npu_binary>;
++        memory-region = <&npu_firmware>, <&npu_pkt>, <&npu_txpkt>,
++                        <&npu_txbufid>;
++        memory-region-names = "firmware", "pkt", "tx-pkt", "tx-bufid";
+       };
+     };
 
----
-Lorenzo Bianconi (7):
-      dt-bindings: net: airoha: npu: Add memory regions used for wlan offload
-      net: airoha: npu: Add NPU wlan memory initialization commands
-      net: airoha: npu: Add wlan_{send,get}_msg NPU callbacks
-      net: airoha: npu: Add wlan irq management callbacks
-      net: airoha: npu: Read NPU wlan interrupt lines from the DTS
-      net: airoha: npu: Enable core 3 for WiFi offloading
-      net: airoha: Add airoha_offload.h header
-
- .../devicetree/bindings/net/airoha,en7581-npu.yaml |  19 +-
- drivers/net/ethernet/airoha/airoha_npu.c           | 180 +++++++++++++-
- drivers/net/ethernet/airoha/airoha_npu.h           |  36 ---
- drivers/net/ethernet/airoha/airoha_ppe.c           |   2 +-
- include/linux/soc/airoha/airoha_offload.h          | 259 +++++++++++++++++++++
- 5 files changed, 452 insertions(+), 44 deletions(-)
----
-base-commit: b06c4311711c57c5e558bd29824b08f0a6e2a155
-change-id: 20250701-airoha-en7581-wlan-offlaod-67c9daff8473
-
-Best regards,
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.50.1
 
 
