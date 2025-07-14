@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D614C83F2D
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A08E9C83F2E
 	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Jul 2025 12:27:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,35 +12,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:MIME-Version:Content-Type:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ednytb03Q5q416JP0JY/M7sGlnOexHCJGJ7CeMJwt38=; b=GS2x9+n894JlXDHRnMzdyCa0eQ
-	IAfG4xOooaDY8oGK+6ImAkRfrfDe+oM8jk7i2VEK4Juy8qa4KY4BAlRn3CQAVf1uFOHnZeZdZA30f
-	JHJnZz8zU6cFQWIlVVMtEhjRl1sAleXOrsUi1SS821zW8j3p7BBCgyfpLlsgnzDnTMUlD/6t4V9hn
-	r8xo8xEOofgBGRJsz60OXfMXD81VTyKJdbnA5iJZFL2bKh4DDimEcwdpgfO2OySJQVUJzzPfZXfBq
-	VVGy89Vg/z6+7d9SfKiKrTNrhlk2b7aeF6f6P1B3er+FI2a8fCYOdyNE/9v67tie4pjW8x6oOgEUX
-	ziQNLAdg==;
+	bh=L6DW8EZeO0HDjHfPxrXIJ1gWG+DSlXfNXBsaPr6KmPg=; b=Y6Wc+hf/RTEuGb1pTVIIaLnSqF
+	MSUez3VhWbB1a5AyNOpHoFcUKIVydeQkYvwrfbdX7WUFHZyBK2fTwTpdWqYUBtfh+i87L4KlcVmhk
+	EcOME5T30V/d5F+Sw1IDsvlPiOEnFfe2sLgNPP2gTTKSuf5HcePhj4xrtkib2l6oaU/TOl6BPyPOa
+	XB7NkPnDgiANf1AD87kl3xZfYrX1LlqFwfDJ+5Jn0DzXlJJ7a8HqCD0frdS6ZBv3q8AL8LqE+R1WD
+	XeP868kt/d9tgCoeHExP8nJOpk0S2EhSvHryWRUgffGT9oI1X49p8A2mdTkfEkZx1gvxZEMLi5ZBa
+	nsZC/DlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubIHh-00000002AJC-44VP;
-	Mon, 14 Jul 2025 12:27:53 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubHs9-0000000264N-2bbf;
-	Mon, 14 Jul 2025 12:01:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=References:In-Reply-To:Message-Id:Date
-	:Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=ednytb03Q5q416JP0JY/M7sGlnOexHCJGJ7CeMJwt38=; b=cVuCifgIctM9dUAgFhcfQQfEGP
-	ugiShnJSsaMfu0Gat8qz3/JF/ODvaWjmXWzMVeysZT5TNH6N7ouyLAeK1mVj7F/GnYaqIgeen41Ke
-	4tNSWdlRps7QwTxuvsXUG/ZUHZ/JTkvz1w54iflcbwfzc2/FUrf1oLhXl21vK/eMOOYdaH2j7qqNU
-	nABvpeCuQbm+m30BdgkTHeqA7V1GvFD64X4iCW7D+weChwmj3oHYzrf31328ZfHBtPaH0h82m9UJ8
-	bNP9TK2kXFlPmxHHxVr+wgxGQHewfe1UZBwDzKzOJ7S/k+N0PstExVNr91nMIAbE/XMAU3WlLm+CQ
-	aQVsYSmQ==;
-Received: from exvmail4.skhynix.com ([166.125.252.92] helo=invmail4.hynix.com)
-	by desiato.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubHs2-00000009lEn-0Qsp;
-	Mon, 14 Jul 2025 12:01:28 +0000
-X-AuditID: a67dfc5b-681ff7000002311f-7d-6874f17adf47
+	id 1ubIHi-00000002AJo-1Tei;
+	Mon, 14 Jul 2025 12:27:54 +0000
+Received: from exvmail4.hynix.com ([166.125.252.92] helo=invmail4.hynix.com)
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1ubHs9-0000000264e-38vP;
+	Mon, 14 Jul 2025 12:01:30 +0000
+X-AuditID: a67dfc5b-681ff7000002311f-59-6874f17afa44
 From: Byungchul Park <byungchul@sk.com>
 To: willy@infradead.org,
 	netdev@vger.kernel.org
@@ -109,49 +95,49 @@ Cc: linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next v10 08/12] iavf: access ->pp through netmem_desc instead of page
-Date: Mon, 14 Jul 2025 21:00:43 +0900
-Message-Id: <20250714120047.35901-9-byungchul@sk.com>
+Subject: [PATCH net-next v10 06/12] net: fec: access ->pp through netmem_desc instead of page
+Date: Mon, 14 Jul 2025 21:00:41 +0900
+Message-Id: <20250714120047.35901-7-byungchul@sk.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20250714120047.35901-1-byungchul@sk.com>
 References: <20250714120047.35901-1-byungchul@sk.com>
-X-Brightmail-Tracker: H4sIAAAAAAAAAzWSfUxTZxTGee97v9rQ5Kaa7Q6zGWuMCYs6HFtOiFvIovGayNQQTWRBbeTG
-	NgKSggyIi0wqSsVidMsAi2JFbamxWBSqFtSWKBMdWIUU5MMWRYcgaG1DAa0txv+e5HnO7zkn
-	OSyWe6g4Vp2dJ2qylZkKWkpKx2ONy4re5Km+Kzm5CAzWizQ89J+hwDJVABee2ilwm3m40TVF
-	gKG+CcG70BMGbGX9GPxtd2k4eyaIIdRwlARDp5aEgHUaw/M7Pgbane9JsNhSYOj8CAmOQ80Y
-	XIEl4Ktop+GodgZD1eBBGsJ9MxS0hF4zcMBuIqDl1VUGupr0FPw1fQ5Dc/HTSNdwDwWPrhto
-	eFTyEMHgxTAFI85I4ZipnwG9pRqB86aZhgPa72Hs6jsGJv9uwzCkT4YPlflwp/YLCHaMIXhy
-	rpuAsMPOwH+DlyhoszYT8NgbwhAsr6FBN16BoLvqOgH3axooqOt4TET2SIWe8CwBJ9y1NAxr
-	hxC4XT4STv6pR2Bt9VDwxhE5eWbKQCf/IrjGJrBgH6hDwhVzLyG8PPaBEDyt9wjhWvUAI9Ta
-	9gqNpnjhrON/QtB53Fiw1ZfRgu3tcUbo73HQQnvlDCk01u0XXjZWoY1fp0lXZYiZ6nxRs+Ln
-	HVJV3+VSnGNkCq6cCBDFqILWIZbluUR+4qZchyRz8pKpholqmlvKezwhHNXzuQTe77tL6pCU
-	xdyDWL6lsZKIGvO4rfzrYReKapJbwuuNWhRlyrgf+LLg6k/Mhbyl4dYcR8L9yJ+u8c7F5ZFI
-	q64OR5k8Z5Hw5henqE8DX/G3TR7yGJLVoph6JFdn52cp1ZmJy1WF2eqC5Tv3ZNlQ5N/O/zH7
-	mx297Up1Io5FilgZjOap5JQyP7cwy4l4Fivmy0YHNCq5LENZWCRq9mzX7M0Uc51oAUsqvpSt
-	DP6eIed2KfPE3aKYI2o+uwQriStGh2eP8KnEWn1RknH8nwXpKw/e0ltDiVv2LwqsW1Of8syf
-	8N47YnKXLeYk/25NP1Wyzfsq9V6S77661BvQnZ5Oqk6LMzbFlGwGeq30WbVtdJPFEk+uT15d
-	2mn+NqbvcspkeOIn2e1eV1GOa+RB+Tcp+8oL03/t7pBM3ugt9acVbOhUkLkqZUI81uQqPwK9
-	dXv1awMAAA==
-X-Brightmail-Tracker: H4sIAAAAAAAAAzWSfUxTZxjFfe97v2hoclOR3bBEkmZKYjLROMyzbDNOZ3xjhCyRxLhk0UZv
-	bEMppIUGSJYBdi40s6CgA2knH5WVDwULQsWCpiWIQ5wWJB1QPiNxDplIQSpoLS777/fknJzz
-	/HF4rGhn4niNLkvS61RaJSujZSlfnPk0byFLvaNsSgbW5iYWHi9WM9C4kgO/T7oY8NWLcPvR
-	CgXWhnYEwdAoB86iMQyLPfdYqK1exhBqOUeD9U8TDUvNbzA87Z3moM/zloZGZzJM1M3S4P65
-	A4N3aQtMF/excM60iqFi/CcWwiOrDHSF5jkodDko8NruR85/bnLwqN3CQNmbqxg68icjhTPD
-	DAx2WlkYPPMYwXhTmIFZT6R1zjHGgaXxMgLPnXoWCk27YO5mkIOXF3swTFj2wrtyI/RWxcJy
-	/xyC0atPKAi7XRw8HL/OQE9zBwVDUyEMy7/YWDC/KEbwpKKTgge2Fgbs/UNU5I8jMBxeo6DU
-	V8XCjGkCgc87TUNlgQVBc7efgQW3id67n3jn/sXEFbAj0lb/F0WelbyjiL/7D4rcuhzgSJUz
-	m7Q6tpFa998UMft9mDgbiljifHWBI2PDbpb0la/SpNX+I3nWWoG+3fyd7MtTklZjlPSJe07I
-	1CM3zuLMGi6nrXSJykfFrBlF8aLwmXjdYePWmRUSRL8/hNc5RtgpLk7fo81IxmNhIFrsai2n
-	1oWNwjFxfsaL1pkWtoiWGlOEeV4uJIlFy9/8lxkvNrbc/ZATJewWr9imPtgVEUu32Y5LkKwK
-	bWhAMRqdMV2l0SZtN6Spc3WanO0nM9KdKLKmuh/WzrtQcPCgBwk8UkbL4XmWWsGojIbcdA8S
-	eayMkT8P6NUK+SlVbp6kzziuz9ZKBg/6mKeVH8kPHZVOKITTqiwpTZIyJf3/KsVHxeWjQ4P+
-	2MOv01IOxH+1VlrdMuJ9mMlqfcPOIV63azGc++Jl6kJJfLvWXXB/a9nT7/cnMpVB/a8d0lR6
-	hiOQP2aPms2uC1g/SV05Qu7OJgX3GTehBCivlM131e5JvqW8NhBMWaqJd1w6mHw+NTpY1vB5
-	U5/6a5Kgdhw++9uGOuNMp5I2qFU7t2G9QfUewTvwW0kDAAA=
+X-Brightmail-Tracker: H4sIAAAAAAAAAzWSeUxTaRTF/d73Npo+fal2fEKMpm6Jk1EQZnKjxqgx5iVqNPKHUWO0Iy/T
+	jmWZgmwZFRWdWGSJW0BLQEFZipYUkQ4UZixEC24IiM+RUqkRUXEDIbQwYqvxv19yzz3nnuSy
+	WPWECmX1cUmSMU5r0NAKUvFWeemn9I9JunCTrAaztYqGh8MXKbCMpULZMzsFHRUCNLSPEWCu
+	vIHgk+8pA7YTPRiGW27TUHJxFIOvOpsE84NMEkasfgwvbnkZcDn/J8Fi2wSeK/0kOP6qw9A8
+	sgC8uS4asjPHMRT0HqNh8r9xChp97xg4Yi8noPFNLQPtN3IoOOO/jKEu41kg63k3BZ31Zho6
+	jz5E0Fs1SUG/MxA4WN7DQI7lPALnPxU0HMmMhMHaTwx8ONuCwZOzGj7nJ8Ot4h9g9M4ggqeX
+	HxEw6bAzcL/3GgUt1joCuvp8GEZPFtJgepuL4FFBPQF3C6spKL3TRQTuiIbuyQkCTncU0/A8
+	04Ogo9lLwoXDOQisTTIFHx2ByuNjZnr1WrF58D0W7e5SJF6veEKIA3mfCVFuaiPEv8+7GbHY
+	tl+sKV8sljheEaJJ7sCirfIELdqGTjFiT7eDFl3546RYU3pIHKgpQFtm71CsjJEM+mTJuHTV
+	HoVu+PFNlFDEpVpM93EGalOYUAgr8FHCVX89+s7uvFNUkGl+kSDLPhzkGXyEMOy9TZqQgsX8
+	PaXQWJNPmBDLTud3CbV5YUENyS8Q5P4GIsgc/7NQJZ/B3zznCJbqf79yCP+LUFTY9zVLFdA0
+	mUpx0FPgrSHCg7v51LeFWcLNcpnMQ1wxmlKJVPq45Fit3hC1RJcWp09dsjc+1oYCD3flwMRO
+	Oxpqj3YinkUaJQevk3QqSpucmBbrRAKLNTO4126jTsXFaNPSJWP8buN+g5ToRGEsqZnJLRtN
+	iVHxv2mTpH2SlCAZv08JNiQ0A019fGza6UjLvNbpNl/UTPUf8eHRhuOhG8LDurM2HFWu9Oz9
+	VV3dNr/vXKEV1oSrvYcb3q07uLCzbKNr+azs/ixtQsma1qFL/hVbo+tsU1wftr8ZmYgse7nc
+	EhWx+c/1Yy1z1XBtwj/391x3WasyZRvJdQ3oDnStT5c8nI/I+vFFSrqGTNRpIxZjY6L2C6Gn
+	Y8hsAwAA
+X-Brightmail-Tracker: H4sIAAAAAAAAAzWSe0xTZxjG953v3GisOemYnmDiki5kCcm8RN3eqFkMS+TERGMk0YzFjE5P
+	1kYo7LQSiuiY7WJsFPGWAOMaCkJLBmkFKtaiLRG0XoAiO05KBTbmpFMRJBQQbF387/fkffI8
+	7x8Pi1XtVBKr0xtFSa/JUtMKUrFnm/kL05RRu6H63laoaGmmoX+6lgLHXD5ceeqmYKCJh+t9
+	cwRU2NsRzESfMOA8PYxhuruHhrraWQzR1rMkVDy0kPCmZR7D37fHGOj1vSXB4dwN4YYJEjyn
+	OjD43yTD2LleGs5aFjCUjfxKw/KfCxTciL5g4KS7kQB/5Z2YnGxjoK+9mIJL8/UYOoqexgrH
+	hygIdlbQEDT3IxhpXqZgwhdrjTQOM1DsKEfg62qi4aRlE0TaZhh4dbkbQ7h4ByyV5sHtmlUw
+	G4ggeFL/iIBlj5uBByO/U9Dd0kHA4GgUw+yZShqs/51D8Kisk4B7la0U2AKDROyPdBhaXiTg
+	4kANDeOWMIIB/xgJv/1SjKDFK1Mw5bGQO74R/JGXWHCHbEi42vSYEJ6VLBGC7L1LCNfKQ4xQ
+	4zwquBpThDrPv4RglQew4LSfpgXn6wuMMDzkoYXe0gVScNl+Fp65ytDetRmK7YfFLF2eKK3/
+	OlOhnf7jFsqtVuY7rA9wEbqrsKIEluc286GSC1Scae5zXpajOM6J3EZ+eqyHtCIFi7n7K/gb
+	rlLCilj2Y+4g31ayJu4huWRenrhOxFnJbeGb5Uv4/8xPeUfrzfecwH3JV1eOojirYh6v1YZL
+	kKIGfWRHiTp9XrZGl7VlneGI1qTX5a87lJPtRLE1NRxfPO9GM8E0H+JYpF6hhOdGrYrS5BlM
+	2T7Es1idqHwekrQq5WGNqUCUcr6XjmaJBh9aw5Lq1cpdB8RMFfejxigeEcVcUfpwJdiEpCK0
+	6dtQaDjQOR4pfNhXNSWF560Nk+b5nJ3yyh/6Tr2a/cfmUiwuzf2U4U854SpN9ZYnn3DRgXBa
+	l91+/6+kqvSRBqM57ZNg76oq07Ha9GZp/+DjHq959KvU7zL2ve6/li+t5j3i1n6q8LPJrgQp
+	lQ8WRTMLe3Llg3W6RH2goL5ATRq0mo0pWDJo3gF9g0E7SQMAAA==
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250714_130122_584373_E0EDCE68 
-X-CRM114-Status: GOOD (  10.23  )
+X-CRM114-CacheID: sfid-20250714_050129_922271_BF33EB96 
+X-CRM114-Status: GOOD (  10.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -169,26 +155,48 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 To eliminate the use of struct page in page pool, the page pool users
 should use netmem descriptor and APIs instead.
 
-Make iavf access ->pp through netmem_desc instead of page.
+Make fec access ->pp through netmem_desc instead of page.
 
 Signed-off-by: Byungchul Park <byungchul@sk.com>
 ---
- drivers/net/ethernet/intel/iavf/iavf_txrx.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/ethernet/freescale/fec_main.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.c b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-index aaf70c625655..363c42bf3dcf 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-@@ -1216,7 +1216,7 @@ static struct sk_buff *iavf_build_skb(const struct libeth_fqe *rx_buffer,
- 				      unsigned int size)
- {
- 	struct page *buf_page = __netmem_to_page(rx_buffer->netmem);
--	u32 hr = buf_page->pp->p.offset;
-+	u32 hr = pp_page_to_nmdesc(buf_page)->pp->p.offset;
- 	struct sk_buff *skb;
- 	void *va;
+diff --git a/drivers/net/ethernet/freescale/fec_main.c b/drivers/net/ethernet/freescale/fec_main.c
+index d4eed252ad40..1d0bd6f75368 100644
+--- a/drivers/net/ethernet/freescale/fec_main.c
++++ b/drivers/net/ethernet/freescale/fec_main.c
+@@ -1043,7 +1043,9 @@ static void fec_enet_bd_init(struct net_device *dev)
+ 				struct page *page = txq->tx_buf[i].buf_p;
  
+ 				if (page)
+-					page_pool_put_page(page->pp, page, 0, false);
++					page_pool_put_page(pp_page_to_nmdesc(page)->pp,
++							   page, 0,
++							   false);
+ 			}
+ 
+ 			txq->tx_buf[i].buf_p = NULL;
+@@ -1581,7 +1583,8 @@ fec_enet_tx_queue(struct net_device *ndev, u16 queue_id, int budget)
+ 			xdp_return_frame_rx_napi(xdpf);
+ 		} else { /* recycle pages of XDP_TX frames */
+ 			/* The dma_sync_size = 0 as XDP_TX has already synced DMA for_device */
+-			page_pool_put_page(page->pp, page, 0, true);
++			page_pool_put_page(pp_page_to_nmdesc(page)->pp, page,
++					   0, true);
+ 		}
+ 
+ 		txq->tx_buf[index].buf_p = NULL;
+@@ -3343,7 +3346,8 @@ static void fec_enet_free_buffers(struct net_device *ndev)
+ 			} else {
+ 				struct page *page = txq->tx_buf[i].buf_p;
+ 
+-				page_pool_put_page(page->pp, page, 0, false);
++				page_pool_put_page(pp_page_to_nmdesc(page)->pp,
++						   page, 0, false);
+ 			}
+ 
+ 			txq->tx_buf[i].buf_p = NULL;
 -- 
 2.17.1
 
