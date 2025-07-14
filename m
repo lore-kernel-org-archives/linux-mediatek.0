@@ -4,64 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B3F0C83F1A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Jul 2025 21:12:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92BD9C83F1A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Jul 2025 22:15:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GyRsymGAEkFhPUjVnXNypyjiFBvwwHlDiplFf0J3JhY=; b=NdeDD3NNoncXvyr48LsERjOD6J
-	LIopvTD1F0wOeQv1dBLJ0ooCmPBQtgSyA98B0Hze6xA8NeT53tuz8rOXO8cTBlhRjgo3bI6E381DE
-	bQAnt/tvvXJ4wy/RI1o4Q8ADDcc+BU0hXmMRAobNcgm6E1lzZM4LJ+tZzLPKqd68yUvJ3xigGB/9i
-	whZy6hMBu1u5XSdgdoK8yLD+6o8aN7RKG6ijinW83ewf2eOa4UBvpcN/kF5PiQUfLM+BfyEMe6Ny2
-	Q0QxXSkWhhoh4MoMaom/0uWR4g/sufXXNE2EsWi5StE8KsyH0IeSary1+0PobFzPS/p+88QSn/GoO
-	KzRGu59A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Subject:Cc:To:From:
+	Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nphtlxbV07hE4WLARDJro+olLECnCNZ5RjD20vLy8+Y=; b=Wf0tdO1+beJ1OlOKYekTvA002M
+	JSyXzsCzyPNuI0XiaUPbtVY2OGYJ7oStd5o5Ea7ffGL1c1QmrV/AH+gDRSAuKZ08VjCufmsNWh4k5
+	aZsYazbNDyd9jkq+ChFFhmsz2ANXGUcBUetBJnSQsErEcoS2r84fAgfEoGMeAQxGLtQCWkud6uAug
+	KEI7XmS0QWQobYQDkbIIY8ymIKJdcKseo7BF7zhc+v5C0GVbrCXhx/Tw5WmGTumcFScGMVi93ls+x
+	pYjZ3olvpg7VMrPrmnqMfd0ynzMZRfb3ogGSbdxPSUnI2EmAbXbY29ylZnlaWIwWfetISsYCRRGIj
+	OVslQpAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubQTA-00000003HYC-2EHq;
-	Mon, 14 Jul 2025 21:12:16 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1ubRSA-00000003Mq4-2Ono;
+	Mon, 14 Jul 2025 22:15:18 +0000
+Received: from mgamail.intel.com ([198.175.65.9])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubQQk-00000003HFJ-1cPU;
-	Mon, 14 Jul 2025 21:09:46 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6C87261479;
-	Mon, 14 Jul 2025 21:09:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1FD7CC4CEED;
-	Mon, 14 Jul 2025 21:09:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752527385;
-	bh=nVBCslxlPncX/VDKuIE89eGSx6wKViW/DDBK2FBzxVI=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=joELX53Rga5hFZYciwlJWqtUWUutrfWonkxX1p1xjg9cXUVhc/k4/9eSZgvTOCK8U
-	 vtwpq3EoWstMaF4gr+o6wNtd39T+vcEBO+DjTuMoiBiZIf7ewMziZI3biGpf1I/0TE
-	 c7vGFoEvy5tZvxOcxHX9VhZRaD8a8zxXe7tn8n9e5fvb6gv4eDt+SRUBbtfHsDUymC
-	 7wDw8D3xa8/5r/KJSwxKiaEVPCeOsyDHf9ejzQvWi6ro4vkE4ILolT8HP8Wv9odLpZ
-	 QLnwLZJmJDk05rf8VIt7LGIqT/PYZPHUEUfeVgtzDoxmNKjZehIWSrWB5cNkat8wQK
-	 Io/xh3ckaxuWg==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 345DF383B276;
-	Mon, 14 Jul 2025 21:10:07 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH 1/3] Bluetooth: hci_core: fix typos in macros
-From: patchwork-bot+bluetooth@kernel.org
-Message-Id: <175252740601.3988382.10149417016230822674.git-patchwork-notify@kernel.org>
-Date: Mon, 14 Jul 2025 21:10:06 +0000
-References: <20250714202744.11578-2-ceggers@arri.de>
-In-Reply-To: <20250714202744.11578-2-ceggers@arri.de>
-To: Christian Eggers <ceggers@arri.de>
-Cc: marcel@holtmann.org, luiz.dentz@gmail.com, pav@iki.fi,
- johan.hedberg@gmail.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, sean.wang@mediatek.com,
- amitkumar.karwar@nxp.com, neeraj.sanjaykale@nxp.com, yang.li@amlogic.com,
- sven@svenpeter.dev, j@jannau.net, alyssa@rosenzweig.io, neal@gompa.dev,
- linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, asahi@lists.linux.dev, netdev@vger.kernel.org
+	id 1ubRS8-00000003Mpb-0UMx
+	for linux-mediatek@lists.infradead.org;
+	Mon, 14 Jul 2025 22:15:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1752531316; x=1784067316;
+  h=date:message-id:from:to:cc:subject:in-reply-to:
+   references:mime-version:content-transfer-encoding;
+  bh=3hSxTtkziUSGFdZ/QE79AJcoYavoz4VRQvR6zKD654o=;
+  b=fecDBq57ufPTvuG47uG/OlF7c4Uu2JXSN3yKWHdrR1T9OnItUGvabPlL
+   5Y1ISkuNYnGZMhleIl6WKpAStpkHqS1pzlMZtp3QXbh/Yz9/qVXnv/CJN
+   52sJ9k6szcWrla2rscV+ZI18W8GqB0faQuzw+kP3cWv+zRhLzqW9BXgWH
+   drUcALdm7Umu+QtYpLl6qqqjI3BrrIXN5CwCMObDf7J+Lj5ii47ygvQSw
+   pwOSBCPSaQPrJViJtYJbSwxw5N1nDrGtISTkjziPgpAv1CiHkk2L8OdOB
+   0ebFzGPtZZTrdBNwLcL8JHnht/MJE4rZwd0SzkeFz0t268Hh5e887OAX3
+   w==;
+X-CSE-ConnectionGUID: p4r58bXQQ/yX+J2ER8vrxQ==
+X-CSE-MsgGUID: kZ+wpKYTQIGKqHcHGREgdA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11491"; a="77274279"
+X-IronPort-AV: E=Sophos;i="6.16,312,1744095600"; 
+   d="scan'208";a="77274279"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Jul 2025 15:15:15 -0700
+X-CSE-ConnectionGUID: oACIzgexQJG57d5u3/RD8A==
+X-CSE-MsgGUID: gO4PIoEuSB2JtqOHNp9bdw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,312,1744095600"; 
+   d="scan'208";a="162593975"
+Received: from orsosgc001.jf.intel.com (HELO orsosgc001.intel.com) ([10.165.21.142])
+  by fmviesa004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Jul 2025 15:15:13 -0700
+Date: Mon, 14 Jul 2025 15:15:13 -0700
+Message-ID: <85ple2ju6m.wl-ashutosh.dixit@intel.com>
+From: "Dixit, Ashutosh" <ashutosh.dixit@intel.com>
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Cc: Andy Yan <andyshrk@163.com>,
+	mripard@kernel.org,
+	neil.armstrong@linaro.org,
+	dri-devel@lists.freedesktop.org,
+	dianders@chromium.org,
+	jani.nikula@intel.com,
+	lyude@redhat.com,
+	jonathanh@nvidia.com,
+	p.zabel@pengutronix.de,
+	simona@ffwll.ch,
+	victor.liu@nxp.com,
+	rfoss@kernel.org,
+	chunkuang.hu@kernel.org,
+	cristian.ciocaltea@collabora.com,
+	Laurent.pinchart@ideasonboard.com,
+	linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	freedreno@lists.freedesktop.org,
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: Re: [PATCH v3 2/2] drm/bridge: Pass down connector to drm bridge detect hook
+In-Reply-To: <chznjpcx6p2vn3i5jt52peikhipzjiwzlr74gx6mzp3wjstr6p@6zhhknnl3zek>
+References: <20250703125027.311109-1-andyshrk@163.com>
+	<20250703125027.311109-3-andyshrk@163.com>
+	<chznjpcx6p2vn3i5jt52peikhipzjiwzlr74gx6mzp3wjstr6p@6zhhknnl3zek>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?ISO-8859-4?Q?Goj=F2?=) APEL-LB/10.8 EasyPG/1.0.0
+ Emacs/29.4 (x86_64-redhat-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+Content-Type: text/plain; charset=ISO-8859-7
+Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250714_151516_194479_D4579B59 
+X-CRM114-Status: GOOD (  19.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,33 +106,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+On Thu, 03 Jul 2025 14:27:43 -0700, Dmitry Baryshkov wrote:
+>
+> On Thu, Jul 03, 2025 at 08:49:53PM +0800, Andy Yan wrote:
 
-This series was applied to bluetooth/bluetooth-next.git (master)
-by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
+Hi Andy,
 
-On Mon, 14 Jul 2025 22:27:43 +0200 you wrote:
-> The provided macro parameter is named 'dev' (rather than 'hdev', which
-> may be a variable on the stack where the macro is used).
-> 
-> Fixes: a9a830a676a9 ("Bluetooth: hci_event: Fix sending HCI_OP_READ_ENC_KEY_SIZE")
-> Fixes: 6126ffabba6b ("Bluetooth: Introduce HCI_CONN_FLAG_DEVICE_PRIVACY device flag")
-> Signed-off-by: Christian Eggers <ceggers@arri.de>
-> 
-> [...]
+> > From: Andy Yan <andy.yan@rock-chips.com>
+> >
+> > In some application scenarios, we hope to get the corresponding
+> > connector when the bridge's detect hook is invoked.
+> >
+> > In most cases, we can get the connector by drm_atomic_get_connector_for=
+_encoder
+> > if the encoder attached to the bridge is enabled, however there will
+> > still be some scenarios where the detect hook of the bridge is called
+> > but the corresponding encoder has not been enabled yet. For instance,
+> > this occurs when the device is hot plug in for the first time.
+> >
+> > Since the call to bridge's detect is initiated by the connector, passing
+> > down the corresponding connector directly will make things simpler.
+> >
+> > Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> > ---
+> >
+>
+> Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 
-Here is the summary with links:
-  - [1/3] Bluetooth: hci_core: fix typos in macros
-    https://git.kernel.org/bluetooth/bluetooth-next/c/359bc1aaa840
-  - [2/3] Bluetooth: hci_core: add missing braces when using macro parameters
-    https://git.kernel.org/bluetooth/bluetooth-next/c/de92c6716970
-  - [3/3] Bluetooth: hci_dev: replace 'quirks' integer by 'quirk_flags' bitmap
-    https://git.kernel.org/bluetooth/bluetooth-next/c/be736f5f89d5
+This seems to be breaking 'make allmodconfig'. This is what is being seen:
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+../drivers/gpu/drm/bridge/megachips-stdpxxxx-ge-b850v3-fw.c: In function =
+=A1ge_b850v3_lvds_detect=A2:
+../drivers/gpu/drm/bridge/megachips-stdpxxxx-ge-b850v3-fw.c:145:16: error: =
+too few arguments to function =A1ge_b850v3_lvds_bridge_detect=A2
+  145 |         return ge_b850v3_lvds_bridge_detect(&ge_b850v3_lvds_ptr->br=
+idge);
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../drivers/gpu/drm/bridge/megachips-stdpxxxx-ge-b850v3-fw.c:124:1: note: de=
+clared here
+  124 | ge_b850v3_lvds_bridge_detect(struct drm_bridge *bridge, struct drm_=
+connector *connector)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../drivers/gpu/drm/bridge/megachips-stdpxxxx-ge-b850v3-fw.c:146:1: error: c=
+ontrol reaches end of non-void function [-Werror=3Dreturn-type]
+  146 | }
+      | ^
 
+Could you please post a fix for this. Maybe do 'make allmodconfig' to check
+if you haven't missed anything else.
 
+Thanks.
+--
+Ashutosh
 
