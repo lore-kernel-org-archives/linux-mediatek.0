@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 592CCC83F1A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Jul 2025 10:25:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EFC9C83F1A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Jul 2025 11:29:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:
-	Content-Type:Content-Transfer-Encoding:References:In-Reply-To:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=amY8miq5DNd1uSY1Gi91dKGONenB0SIwk7g/xXYgy5c=; b=E8M35MlAWvMZLhWsuvZ+h2TZJt
-	5X5td8U1auS0UJyzN57ew4sLT1e0BgGHcFoDmwtd5aSSoBb0BgM8FTSqwqatJ+apnCRzl4HOq8S53
-	zIUAfJRU/uYMACsd/o9318m3YF1qVqELkZBmrrTH6JBySAQFAzWisEsc58sLaSGslj3iuYvUz3PQ7
-	2iY/U9Y/Ok4aQMdt6BNM/ZmSsvfrLZ/KcjsSOeeyfJczUh8D0XpHPgbUsm6duYv7GrTHt1nuM37iw
-	P92ar43HF0BFr2aQmOnUyTE3lujH/19SNa9Fy/zNJ9e/ZqQlTh6fxMccq3QEBWWyszYFHpZp07Vc4
-	tiVJLpfw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Yt0pEgiOw5D20asS7w9+koIyg+3FrGpHgzGJycRNdqs=; b=d8Mj3XtaDuJ/O1II2psrr590qX
+	xKsBKVPeXrkCk45b3Lfd4WKizwQ6OJCN61ZRh0K3/Yaqa66W3tkznXkJxMdqISJxJEN0R4nfhqPGc
+	zQezZDXw3mgXW9pJK7virf/zpQMA1uNDNSK7HRFK0h1KndhcFotXeuB4Tvdd4/L7OpSl1X6/GbRfD
+	REvPMZxcKX+gxO8eS9T7EZnXn0NTftnQvwxSRHptqapd5MvxeiJX7cAdmkcW+LMa2BHnOCrTzqdvN
+	uov17gHRfNzh3Xb5EMsCPYJlj34mcFPzJ4cDNjm4hlajikVZoQPRcEAHK9PcCmMPgkAPDtgB4Y7YU
+	p813ZJVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubGNT-00000001uId-0Q77;
-	Mon, 14 Jul 2025 10:25:43 +0000
-Received: from m16.mail.163.com ([220.197.31.4])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubGNP-00000001uHd-1yuR
-	for linux-mediatek@lists.infradead.org;
-	Mon, 14 Jul 2025 10:25:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:To:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=4YcX0keIQboTbYZKSV0XR3R1i0pUe0jDL2SvRDl6UIc=; b=N
-	DiSIoYyGImlvVz+TChwvVevlrgVD1OcI1NnETXrgwlQf86dCoAAxnPSFrLz4efgT
-	Yw61QCDaxbhII56RbOGKxFD8v7PMtkDnUPbi17H21nZYJJph1NqV3KRYgAIPKwv8
-	NnFWv86ZQnm3y1IcTsiZkAYIyDtl1bD0mlSq2bb7KM=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-111 (Coremail) ; Mon, 14 Jul 2025 18:24:24 +0800
- (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Mon, 14 Jul 2025 18:24:24 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: dmitry.baryshkov@oss.qualcomm.com
-Cc: mripard@kernel.org, neil.armstrong@linaro.org,
-	dri-devel@lists.freedesktop.org, dianders@chromium.org,
-	jani.nikula@intel.com, lyude@redhat.com, jonathanh@nvidia.com,
-	p.zabel@pengutronix.de, simona@ffwll.ch, victor.liu@nxp.com,
-	rfoss@kernel.org, chunkuang.hu@kernel.org,
-	cristian.ciocaltea@collabora.com, Laurent.pinchart@ideasonboard.com,
-	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org, freedreno@lists.freedesktop.org
-Subject: Re:[PATCH v3 0/2] Pass down connector to drm bridge detect hook
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20250519(9504565a)
- Copyright (c) 2002-2025 www.mailtech.cn 163com
-In-Reply-To: <20250703125027.311109-1-andyshrk@163.com>
-References: <20250703125027.311109-1-andyshrk@163.com>
-X-NTES-SC: AL_Qu2eAPiTt04t4imebOkfmkcVgOw9UcO5v/Qk3oZXOJF8jDjp6wQvYXZ6IknVysOCCzuquyGucDp88MdZTa9iWIYzFZx1L0CHdIADiHTYzr4f3w==
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset=UTF-8
+	id 1ubHMs-000000022Ag-2HtC;
+	Mon, 14 Jul 2025 11:29:10 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1ubHMp-0000000229Y-3GAb;
+	Mon, 14 Jul 2025 11:29:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=Yt0pEgiOw5D20asS7w9+koIyg+3FrGpHgzGJycRNdqs=; b=gFzHwEOunPxcWiAMs5c57JGmBA
+	1i9gdYcrvYX29m70SzdEFbb949zBkFdvThNwJKQhzyJ3vz63/HJ1jVg/SqRuGP6n4gWIfjUiccouh
+	P6KnCGtkMsx1a1QQNrL8jQIZ49P75WLOx+rlYn0bQB+2wVwhdnl721IvhTuDmNYdNVe5pAbt9ry3r
+	/RoZjj89dZL+hcZYQojrwClpv3YSiPvK4/2ywr4rKpCY38bVQj98vjQR3JbcWmt8iXRlTCD0vcUbS
+	UQwyw9zH6H36xlLQYifZECz0isuti6nChKskuuzSIiEqCqAEDnDQFMnIb/oDf1WYaJgVwW4dg+ZXE
+	kcLZNHaA==;
+Received: from i53875a13.versanet.de ([83.135.90.19] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1ubHMj-0007NV-40; Mon, 14 Jul 2025 13:29:01 +0200
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: Linus Walleij <linus.walleij@linaro.org>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konradybcio@kernel.org>,
+ Alexey Klimov <alexey.klimov@linaro.org>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Paul Cercueil <paul@crapouillou.net>, Bartosz Golaszewski <brgl@bgdev.pl>
+Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
+ Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+Subject: Re: [PATCH v2 09/12] pinctrl: allow to mark pin functions as requestable
+ GPIOs
+Date: Mon, 14 Jul 2025 13:29:01 +0200
+Message-ID: <5911205.31r3eYUQgx@diego>
+In-Reply-To: <20250709-pinctrl-gpio-pinfuncs-v2-9-b6135149c0d9@linaro.org>
+References: <20250709-pinctrl-gpio-pinfuncs-v2-0-b6135149c0d9@linaro.org>
+ <20250709-pinctrl-gpio-pinfuncs-v2-9-b6135149c0d9@linaro.org>
 MIME-Version: 1.0
-Message-ID: <39f4cd0d.8f17.1980876df93.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: bygvCgD3twzZ2nRoFHgDAA--.27342W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0hOKXmh019Q1ogADse
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250714_032539_935429_6FEA21A5 
-X-CRM114-Status: GOOD (  14.45  )
+X-CRM114-CacheID: sfid-20250714_042907_813696_97A18DE6 
+X-CRM114-Status: GOOD (  19.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,78 +80,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-CkhlbGxvIERtaXRyee+8jAoKCkF0IDIwMjUtMDctMDMgMjA6NDk6NTEsICJBbmR5IFlhbiIgPGFu
-ZHlzaHJrQDE2My5jb20+IHdyb3RlOgo+Cj5JbiBzb21lIGFwcGxpY2F0aW9uIHNjZW5hcmlvcywg
-d2UgaG9wZSB0byBnZXQgdGhlIGNvcnJlc3BvbmRpbmcKPmNvbm5lY3RvciB3aGVuIHRoZSBicmlk
-Z2UncyBkZXRlY3QgaG9vayBpcyBpbnZva2VkLgo+Cj5Gb3IgZXhhbXBsZSwgd2UgbWF5IHdhbnQg
-dG8gY2FsbCBkcm1fZHBfcmVhZF9zaW5rX2NvdW50X2NhcCh3aGljaCBuZWVkcwo+YSBkcm1fY29u
-bmVjdG9yKSBhdCB0aGUgZHAgZGV0ZWNrIGhvb2ssIGludGVsX2RwIGFuZCBub3V2ZWF1X2RwIGRv
-IHRoaXMKPmF0IGl0J3MgY29ubmVjdG9yJ3MgZGV0ZXRjX2N0eC9kZXRlY3QgaG9vay4KPgo+QnV0
-IGZvciBhIGJyaWRnZSBkcml2ZXIsIGl0J3MgZGV0ZWN0IGhvb2sgaXMgaW5pdGlhdGVkIGJ5IHRo
-ZSBjb25uZWN0b3IsCj50aGVyZSBpcyBubyBjb25uZWN0b3IgcGFzc2VkIGRvd24uCj4KPkluIG1v
-c3QgY2FzZXMsIHdlIGNhbiBnZXQgdGhlIGNvbm5lY3RvciBieQo+ZHJtX2F0b21pY19nZXRfY29u
-bmVjdG9yX2Zvcl9lbmNvZGVyCj5pZiB0aGUgZW5jb2RlciBhdHRhY2hlZCB0byB0aGUgYnJpZGdl
-IGlzIGVuYWJsZWQsIGhvd2V2ZXIgdGhlcmUgd2lsbAo+c3RpbGwgYmUgc29tZSBzY2VuYXJpb3Mg
-d2hlcmUgdGhlIGRldGVjdCBob29rIG9mIHRoZSBicmlkZ2UgaXMgY2FsbGVkCj5idXQgdGhlIGNv
-cnJlc3BvbmRpbmcgZW5jb2RlciBoYXMgbm90IGJlZW4gZW5hYmxlZCB5ZXQuIEZvciBpbnN0YW5j
-ZSwKPnRoaXMgb2NjdXJzIHdoZW4gdGhlIGRldmljZSBpcyBob3QgcGx1ZyBpbiBmb3IgdGhlIGZp
-cnN0IHRpbWUuCj4KPlNpbmNlIHRoZSBjYWxsIHRvIGJyaWRnZSdzIGRldGVjdCBpcyBpbml0aWF0
-ZWQgYnkgdGhlIGNvbm5lY3RvciwgcGFzc2luZwo+ZG93biB0aGUgY29ycmVzcG9uZGluZyBjb25u
-ZWN0b3IgZGlyZWN0bHkgd2lsbCBtYWtlIHRoaW5ncyBzaW1wbGVyLgo+Cj5CZWZvcmUgcHJlcGFy
-aW5nIHRoaXMgcGF0Y2gsIHdlIGhhdmUgaGFkIHNvbWUgZGlzY3Vzc2lvbnMgb24gdGhlIGRldGFp
-bHMKPmhlcmVbMF0uCj4KPlBBVENIMSBhZGp1c3QgdGhlIGRwL2hkbWlfYXVkaW9fKiBjYWxsYmFj
-ayBwYXJhbWV0ZXJzIG9yZGVyLCBtYWtlIGl0Cj5tYWludGFpbiB0aGUgc2FtZSBwYXJhbWV0ZXIg
-b3JkZXIgYXMgZ2V0X21vZGVzIGFuZCBlZGlkX3JlYWQuCj5QQVRDSDIgYWRkIGNvbm5lY3RvciB0
-byBkZXRlY3QgaG9vay4KPgo+WzBdaHR0cHM6Ly9wYXRjaHdvcmsuZnJlZWRlc2t0b3Aub3JnL3Bh
-dGNoLzY0MDcxMi8/c2VyaWVzPTE0MzU3MyZyZXY9NQoKCkNvdWxkIHlvdSBwbGVhc2UgdGFrZSB0
-aGlzIHNlcmllcyBvZiBwYXRjaGVzPwpJIGhvcGUgYWZ0ZXIgdGhlIHBhdGNoZXMgYXJlIG1lcmdl
-ZCwgSSB3aWxsIGJlIGFibGUgdG8gdXBkYXRlIGEgbmV3IHZlcnNpb24gb2YgdGhlIERQIGRyaXZl
-ciBiYXNlZCBvbiB0aGlzLgpNb3Jlb3ZlciwgSSdtIHdvcnJpZWQgdGhhdCBpZiB0aGlzIHdhaXQg
-dG9vIGxvbmcsIHRoZXJlIG1pZ2h0IGJlIGNvbmZsaWN0cyB3aXRoIG90aGVyIG5ldyBicmlkZ2Ug
-ZHJpdmVycy4KCj4KPkNoYW5nZXMgaW4gdjM6Cj4tIFJlbW92ZSByZWR1bmRhbnQgU29CCj4KPkNo
-YW5nZXMgaW4gdjI6Cj4tIE1ha2UgZHAvaGRtaV9hdWRpb18qIGNhbGxiYWNrIGtlZXAgdGhlIHNh
-bWUgcGFyIGdldF9tb2Rlcwo+Cj5BbmR5IFlhbiAoMik6Cj4gIGRybS9icmlkZ2U6IE1ha2UgZHAv
-aGRtaV9hdWRpb18qIGNhbGxiYWNrIGtlZXAgdGhlIHNhbWUgcGFyYW10ZXIgb3JkZXIKPiAgICB3
-aXRoIGdldF9tb2Rlcwo+ICBkcm0vYnJpZGdlOiBQYXNzIGRvd24gY29ubmVjdG9yIHRvIGRybSBi
-cmlkZ2UgZGV0ZWN0IGhvb2sKPgo+IGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYWR2NzUxMS9hZHY3
-NTExLmggICAgICB8IDE2ICsrKy0tLS0KPiAuLi4vZ3B1L2RybS9icmlkZ2UvYWR2NzUxMS9hZHY3
-NTExX2F1ZGlvLmMgICAgfCAxMiArKystLS0KPiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2Fkdjc1
-MTEvYWR2NzUxMV9jZWMuYyAgfCAgNCArLQo+IGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYWR2NzUx
-MS9hZHY3NTExX2Rydi5jICB8ICAzICstCj4gZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dp
-eC9hbng3NjI1LmMgICAgIHwgIDIgKy0KPiAuLi4vZHJtL2JyaWRnZS9jYWRlbmNlL2NkbnMtbWhk
-cDg1NDYtY29yZS5jICAgfCAgMyArLQo+IGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvY2hyb250ZWwt
-Y2g3MDMzLmMgICAgICB8ICAyICstCj4gZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9kaXNwbGF5LWNv
-bm5lY3Rvci5jICAgIHwgMTEgKysrLS0KPiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2l0ZS1pdDYy
-NjMuYyAgICAgICAgICAgfCAgMyArLQo+IGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvaXRlLWl0NjUw
-NS5jICAgICAgICAgICB8ICAyICstCj4gZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9pdGUtaXQ2NjEy
-MS5jICAgICAgICAgIHwgIDMgKy0KPiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2xvbnRpdW0tbHQ4
-OTEyYi5jICAgICAgfCAgNiArLS0KPiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2xvbnRpdW0tbHQ5
-NjExLmMgICAgICAgfCAxNSArKystLS0tCj4gZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9sb250aXVt
-LWx0OTYxMXV4Yy5jICAgIHwgIDMgKy0KPiAuLi4vYnJpZGdlL21lZ2FjaGlwcy1zdGRweHh4eC1n
-ZS1iODUwdjMtZncuYyAgfCAgMyArLQo+IGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc2lpOTAyeC5j
-ICAgICAgICAgICAgICB8ICAzICstCj4gZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zaW1wbGUtYnJp
-ZGdlLmMgICAgICAgIHwgIDIgKy0KPiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3
-LWhkbWktcXAuYyAgfCAxNCArKystLS0tCj4gZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5
-cy9kdy1oZG1pLmMgICAgIHwgIDMgKy0KPiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3RjMzU4NzY3
-LmMgICAgICAgICAgICAgfCAgNSArKy0KPiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3RpLXNuNjVk
-c2k4Ni5jICAgICAgICAgfCAgMyArLQo+IGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvdGktdGZwNDEw
-LmMgICAgICAgICAgICB8ICAyICstCj4gZHJpdmVycy9ncHUvZHJtL2JyaWRnZS90aS10cGQxMnMw
-MTUuYyAgICAgICAgIHwgIDggKysrLQo+IC4uLi9ncHUvZHJtL2Rpc3BsYXkvZHJtX2JyaWRnZV9j
-b25uZWN0b3IuYyAgICB8IDIwICsrKystLS0tLQo+IGRyaXZlcnMvZ3B1L2RybS9kcm1fYnJpZGdl
-LmMgICAgICAgICAgICAgICAgICB8ICA1ICsrLQo+IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfZHAuYyAgICAgICAgICAgICB8ICAzICstCj4gZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
-a19oZG1pLmMgICAgICAgICAgIHwgIDMgKy0KPiBkcml2ZXJzL2dwdS9kcm0vbXNtL2RwL2RwX2F1
-ZGlvLmMgICAgICAgICAgICAgfCAgOCArKy0tCj4gZHJpdmVycy9ncHUvZHJtL21zbS9kcC9kcF9h
-dWRpby5oICAgICAgICAgICAgIHwgIDggKystLQo+IGRyaXZlcnMvZ3B1L2RybS9tc20vZHAvZHBf
-ZHJtLmMgICAgICAgICAgICAgICB8ICAzICstCj4gZHJpdmVycy9ncHUvZHJtL21zbS9oZG1pL2hk
-bWkuaCAgICAgICAgICAgICAgIHwgMTAgKystLS0KPiBkcml2ZXJzL2dwdS9kcm0vbXNtL2hkbWkv
-aGRtaV9hdWRpby5jICAgICAgICAgfCAgOCArKy0tCj4gZHJpdmVycy9ncHUvZHJtL21zbS9oZG1p
-L2hkbWlfYnJpZGdlLmMgICAgICAgIHwgIDIgKy0KPiBkcml2ZXJzL2dwdS9kcm0vbXNtL2hkbWkv
-aGRtaV9ocGQuYyAgICAgICAgICAgfCAgNCArLQo+IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
-azMwNjZfaGRtaS5jICAgICAgICB8ICAyICstCj4gZHJpdmVycy9ncHUvZHJtL3hsbngvenlucW1w
-X2RwLmMgICAgICAgICAgICAgIHwgIDMgKy0KPiBpbmNsdWRlL2RybS9kcm1fYnJpZGdlLmggICAg
-ICAgICAgICAgICAgICAgICAgfCA0MiArKysrKysrKysrLS0tLS0tLS0tCj4gMzcgZmlsZXMgY2hh
-bmdlZCwgMTM5IGluc2VydGlvbnMoKyksIDExMCBkZWxldGlvbnMoLSkKPgo+LS0gCj4yLjQzLjAK
-Pgo+YmFzZS1jb21taXQ6IDU2ZTUzNzViMjNmMzQyZGZhMzE3OTM5NWFhY2MxYjQ3Mzk1ZmRkZjcK
-PmJyYW5jaDogZHJtLW1pc2MtbmV4dAo=
+Am Mittwoch, 9. Juli 2025, 16:39:05 Mitteleurop=C3=A4ische Sommerzeit schri=
+eb Bartosz Golaszewski:
+> From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+>=20
+> The name of the pin function has no real meaning to pinctrl core and is
+> there only for human readability of device properties. Some pins are
+> muxed as GPIOs but for "strict" pinmuxers it's impossible to request
+> them as GPIOs if they're bound to a devide - even if their function name
+> explicitly says "gpio". Add a new field to struct pinfunction that
+> allows to pass additional flags to pinctrl core. While we could go with
+> a boolean "is_gpio" field, a flags field is more future-proof.
+>=20
+> If the PINFUNCTION_FLAG_GPIO is set for a given function, the pin muxed
+> to it can be requested as GPIO even on strict pin controllers. Add a new
+> callback to struct pinmux_ops - function_is_gpio() - that allows pinmux
+> core to inspect a function and see if it's a GPIO one. Provide a generic
+> implementation of this callback.
+>=20
+> Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+> ---
+
+[...]
+
+> diff --git a/include/linux/pinctrl/pinmux.h b/include/linux/pinctrl/pinmu=
+x.h
+> index d6f7b58d6ad0cce421aad80463529c9ccc65d68e..6db6c3e1ccc2249d4b4204e6f=
+c19bf7b4397cc81 100644
+> --- a/include/linux/pinctrl/pinmux.h
+> +++ b/include/linux/pinctrl/pinmux.h
+> @@ -66,6 +66,8 @@ struct pinmux_ops {
+>  				    unsigned int selector,
+>  				    const char * const **groups,
+>  				    unsigned int *num_groups);
+> +	bool (*function_is_gpio) (struct pinctrl_dev *pctldev,
+> +				  unsigned int selector);
+
+hmm, I think using the set_mux function arguments here might make this
+usable by more drivers? Aka func_selector + group_selector ?
+
+While the generic pinmux might not need that, when pinmuxings are
+arranged in functions + pingroups in them, this would be helpful.
+
+
+Heiko
+
+
+
 
