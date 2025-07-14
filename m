@@ -4,104 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BD6DC83F1A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Jul 2025 19:38:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86C37C83F1A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Jul 2025 19:47:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yry2upj+ByeYrrNjZKRJ8sVD88C6f2FVJf/Y5Atdgbc=; b=C6YoaFO8u4sTPrBUm3D9aGc4oB
-	6g51/oTg1ECelvRVWjKlpZ5k3cQmsMU9dwRED9kG1E8Z9I90SuTFbvK17/GzopUmpN2YeH87PtTkX
-	mR2NysxLdzU/31auHCRK/RFuWu9x4Aj44N+GTodDyLW8KMFnTM0iBfThIQlPj+y1UuO8/5pRyA/8x
-	zJ4CJh7Yiq2U0DGgrRD7jlqJqE5dp/CjqpxuFLwsQDtBneDmqZu9zC+upr9bNJqLHp9+eg4elzsr9
-	V9FoOt3sI2FFIQkz0CEevQHJdKBod0rRjNPvTmnguMryjkQOr7XVEcDkymVeIYtOOTcQLZcbcRRgp
-	HzD/TKDw==;
+	bh=titEX2y3+9/xscj56vYw1l9vJIIgnO8oj3qH72QFLTw=; b=GPoQ0lmNH7myZCTxSOIa5mgOIO
+	Qs8Z4cegFi49gM/xkU1EArk8wylI0QzACjx7xdGUR/7cLtupGLjpT3CWWPJGxsTI5ZX2QnT0U+URw
+	nS3LltCJahSdt9GditRFMYIE9FmpS2Poz7vjebWTxJdWTZfT1UnzmVIiK/TJXPDbB3/vXfu7W73yG
+	3FJL5fBY02M1FRggcD02WFgzWsMwhI2eWvO4Gvd2nw6wKEHzfU+qa3fO4qGHc4+ohOy70DcostyBY
+	YjqfmFk/24bnFyJZJyK/nVAdT90IHvtSyq8FtrgANjV0zzkX21TPZfVAIg08fDwOBIR5m7tV7x9Gg
+	eK3DLl0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubP02-000000039Nb-00Ii;
-	Mon, 14 Jul 2025 19:38:06 +0000
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+	id 1ubP8y-00000003A65-1JYm;
+	Mon, 14 Jul 2025 19:47:20 +0000
+Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubOzy-000000039Lm-2AKA
-	for linux-mediatek@lists.infradead.org;
-	Mon, 14 Jul 2025 19:38:04 +0000
-Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-235e389599fso45285ad.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 14 Jul 2025 12:38:02 -0700 (PDT)
+	id 1ubP6V-000000039wo-3Ejg;
+	Mon, 14 Jul 2025 19:44:49 +0000
+Received: by mail-yw1-x112e.google.com with SMTP id 00721157ae682-710fd2d0372so41117247b3.0;
+        Mon, 14 Jul 2025 12:44:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1752521882; x=1753126682; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1752522286; x=1753127086; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=yry2upj+ByeYrrNjZKRJ8sVD88C6f2FVJf/Y5Atdgbc=;
-        b=FSeqgznoUBeGWHUs51C/1lUwY4l52TscfUirWXst78S2uu/fHtV86Jo6wIKxlZkKw9
-         KqAXp6xc2v9of61Sc47QjPC0Khc502Tyvx0yS64urkrmlJ/oHTWm9mn1QGT1K+R/5u+E
-         G7kra5BdxX6WdNlBVxCntcrvIt+DT+3KT3XlpfIRFKvAmq7jLz1qoyUNo5k4g+uj8Aqc
-         ZZWL2BrxyYJejoVhGVyWM+nVjPt52pd1g5v6JwLJYpqbHd8+KI5ykyz7AXLT3xDDpcmb
-         zVMrS7LiorbzXYsbXSpNMwQ+5jjtaqXuNWZrCW+Ie3j2jRHToUyVC59VA++eQGemlodS
-         6XJg==
+        bh=titEX2y3+9/xscj56vYw1l9vJIIgnO8oj3qH72QFLTw=;
+        b=Ev27tB3Qo7k6mp79uU1DvMp6JJM9FacTdnHAqjsu7K0+v4Ow/zMc9dfbdephYaLHHf
+         ezLSbeimXy4+X+DrimGOoxBlNcnzh+jrtGMYLNLyglxHEx+uH0/28dx2zj1oDai+dQ6F
+         DOXWF5wyLcfrE9D2bAHRZ+Rld1hcVvGE03qoiityTgjUiZdFGR7I83Q3tqC6/i3i5XyR
+         5+uIVHP6+NSGJiBNp5JD4vyCR10pJURvZ37gLukkHk2RETa1AzoTYz4/+5aBFrsG8TiD
+         BN18N2m2wwvuWWqn5z0JWnBf176cEGq1mc+gJGEajjG2eX4j3p0kh17DJqJuCwDO0VLe
+         zKWQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1752521882; x=1753126682;
+        d=1e100.net; s=20230601; t=1752522286; x=1753127086;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=yry2upj+ByeYrrNjZKRJ8sVD88C6f2FVJf/Y5Atdgbc=;
-        b=kWUtzCsdcmMo9zfkndR2I0VMfsUVUQ2Xbk43P5Jpw76H3N/HihU2jNWsf+62PweNhv
-         3E+i1PjPZjJUWaJ6vRfQfrOGsEjiK/9gb2YWn2zqjAj2kViXYnj/8kjRyQtX3hzCh/OF
-         +WlSrx3/SjWtrfoTsxvyXwUlNUMN02oLVRlMZk3LzUfT2qx2DF/CQdqxkh67bjKtiqxL
-         /IL47ExoLBgNvpoRTnGnLR+FYU+HhVcXJD6j/H5U3qFDNIoHnDFfdtlz2tephxIEC4Ki
-         a76PN3Y7YQZ1owl4xYtXmwCx2m149rxsjFjqEKgtZ2ctJUg3q/y85bUTp610JLCseTk6
-         w38Q==
-X-Forwarded-Encrypted: i=1; AJvYcCUQrZfvZ5yrJp7nAY6DI9ogvSwKq+78Iw3fDWK7IAInaE2IzjKPZNLy/mtx18SrYGb38tDCYHiI3NGN3yfm5Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxetGDW5LaJ/2aynTG0Xwukmvp2cPk1U2WDhd1eRgH+031UTaHy
-	RIYwvJnWpvPZzgId2Kiz8yk905deeHuvwt6NIf5mGdFR1epMmVWGCVnQ30nfKEyp6d41kWFvg6Q
-	ucXrxQO8wBqtz4XTjaSOSUWMKmIQIlhSQ25LJSGOD
-X-Gm-Gg: ASbGncvcuf8/ynBZtlR3F1DtkNAj4h/b0MDr494ZEvzPo+heZUywBFVbd5xBtd2XhMY
-	qPy/dzWNHqHwe5KHYBZNLg62L3f9axFETlNCCtCrValfvzIZdvbU4+ypjeYcKyQY31+qaUNUWFg
-	LJYCuRMv9OeUZWyPLNNtNjByDpEnNNPn3Nv7Zp3xjnhnJwM0HMuKwyJUCf39Hh4pH7C3pAx3ymd
-	ot2HyIS8hZrQh4xQcY5+9RjI6Ootq6iPVFnhg==
-X-Google-Smtp-Source: AGHT+IHZoWQ8pLUOjiCQlGlcYIPNmYT9TX3giO0kqF0O3T+xtLnHFh+M02Pq+s3+TLFDvQ9elFBdwtzpJc9HYJVxyEM=
-X-Received: by 2002:a17:903:2484:b0:234:b2bf:e67e with SMTP id
- d9443c01a7336-23e1ac4613fmr298445ad.13.1752521881303; Mon, 14 Jul 2025
- 12:38:01 -0700 (PDT)
+        bh=titEX2y3+9/xscj56vYw1l9vJIIgnO8oj3qH72QFLTw=;
+        b=s9vCWVIKp4WQmb2Mr130y5kUmI2y21gUU2iSmBeru9DsPbaJKiMFtoZzHsRU0MEftY
+         8KTAYwS/JO8mc+YPX1N0gA0ge6Mh7RcXeDTNZuwqD/8KOE3XSGeObps/qI76rIJFrumU
+         Csir8m8rzVWPL2mYdhh1Yvq1vgmAlBELDIu+/o4smBYTw3cg1S4N13eezDWvpPGCDeF1
+         mOZxi4beHtfP6qUClHHHAvbVExfOON0h6NRHXCXUZHlFc9DQu+CaZ0DiNuIaxYsEKFPd
+         xxanps+wn6JlWvWhJ0nwiPHWI5Qx9+zJPGN3iooOOYEdX1Db62E/PbpV8h3pOyxnwOO3
+         q3LA==
+X-Forwarded-Encrypted: i=1; AJvYcCUKiieGQ/eHIAbpB0CwfVWRZGkrKuwhJxcTuJA5mDrD0HTYmZiillvnweYGkHJeij4mJM2XPBSznfQOEqM+RWg=@lists.infradead.org, AJvYcCWtwDwzMkTfXNFGraTee5HWFb2GG2/F1tHwvt+8ASSDnrJ9Agt/Z8MDsMc5jcOI9Eqe5EARhxSn60MR01ue3jae@lists.infradead.org
+X-Gm-Message-State: AOJu0YzHeC60wbFZS+Rz/sG6HpROvXo2UCrjbeBwDc7y75VbR0b4PgRL
+	GUK1TvJyJ4mRiaTKMGQk3k3734rWdbkGCTA9hPWzv7L7YSNMdKR3OqJ4Qus4g5uoHdvKqyw3n0Y
+	+EksDN0OoEljfHh1102RAQezJVlgovjk=
+X-Gm-Gg: ASbGncu1Nc0pAP5aX4HNsNyWHIuBgqDiOqSBafvWR62vdK6UP7NgPDcQNRaCuhHMtNP
+	eK53oHv6EAEmAkFpsMheH50AwlcDyQXKKpsehuuNTspO2uNdF/MWCOdHCL4BQa0modWWf+d8t+4
+	uXFjOBuiWD2YbBa+fRUtX4g6fgn/EpbXZA20G9untABOd6CU16NlRHJySRKxBhLCtKaTMRt26Ck
+	GI9veIK8tA2QUUpuKWt
+X-Google-Smtp-Source: AGHT+IHDaQy35GA+Qses/SKs7Ih1reu0z/6Xmv8VCPpNc9I9mI3lGzILxxovXV+PULcNjOZ/ySpa/++hRe2/LR3lxNI=
+X-Received: by 2002:a05:690c:60c4:b0:70e:404f:6714 with SMTP id
+ 00721157ae682-71822cea95bmr12446627b3.19.1752522286247; Mon, 14 Jul 2025
+ 12:44:46 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250714120047.35901-1-byungchul@sk.com> <20250714120047.35901-3-byungchul@sk.com>
-In-Reply-To: <20250714120047.35901-3-byungchul@sk.com>
-From: Mina Almasry <almasrymina@google.com>
-Date: Mon, 14 Jul 2025 12:37:48 -0700
-X-Gm-Features: Ac12FXwrdXtLbiJlmPY9vk8GjB7CqgoZsH_hsU8OuZVjZ5CbRybhtkUh-Kkp2jg
-Message-ID: <CAHS8izO393X_BDJxnX2d-auhTwrUZK5wYdoAh_tJc0GBf0AqcQ@mail.gmail.com>
-Subject: Re: [PATCH net-next v10 02/12] netmem: use netmem_desc instead of
- page to access ->pp in __netmem_get_pp()
-To: Byungchul Park <byungchul@sk.com>
-Cc: willy@infradead.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-mm@kvack.org, kernel_team@skhynix.com, ilias.apalodimas@linaro.org, 
-	harry.yoo@oracle.com, akpm@linux-foundation.org, andrew+netdev@lunn.ch, 
-	asml.silence@gmail.com, toke@redhat.com, david@redhat.com, 
-	Liam.Howlett@oracle.com, vbabka@suse.cz, rppt@kernel.org, surenb@google.com, 
-	mhocko@suse.com, linux-rdma@vger.kernel.org, bpf@vger.kernel.org, 
-	vishal.moola@gmail.com, hannes@cmpxchg.org, ziy@nvidia.com, 
-	jackmanb@google.com, wei.fang@nxp.com, shenwei.wang@nxp.com, 
-	xiaoning.wang@nxp.com, davem@davemloft.net, edumazet@google.com, 
-	kuba@kernel.org, pabeni@redhat.com, anthony.l.nguyen@intel.com, 
-	przemyslaw.kitszel@intel.com, sgoutham@marvell.com, gakula@marvell.com, 
-	sbhatta@marvell.com, hkelam@marvell.com, bbhushan2@marvell.com, 
-	tariqt@nvidia.com, ast@kernel.org, daniel@iogearbox.net, hawk@kernel.org, 
-	john.fastabend@gmail.com, sdf@fomichev.me, saeedm@nvidia.com, leon@kernel.org, 
-	mbloch@nvidia.com, danishanwar@ti.com, rogerq@kernel.org, nbd@nbd.name, 
-	lorenzo@kernel.org, ryder.lee@mediatek.com, shayne.chen@mediatek.com, 
-	sean.wang@mediatek.com, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com, aleksander.lobakin@intel.com, 
-	horms@kernel.org, m-malladi@ti.com, krzysztof.kozlowski@linaro.org, 
-	matthias.schiffer@ew.tq-group.com, robh@kernel.org, imx@lists.linux.dev, 
-	intel-wired-lan@lists.osuosl.org, linux-arm-kernel@lists.infradead.org, 
-	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20250712210448.429318-1-rosenp@gmail.com> <20250712210448.429318-8-rosenp@gmail.com>
+ <20250714-subtle-origami-gopher-c9099f@krzk-bin>
+In-Reply-To: <20250714-subtle-origami-gopher-c9099f@krzk-bin>
+From: Rosen Penev <rosenp@gmail.com>
+Date: Mon, 14 Jul 2025 12:44:35 -0700
+X-Gm-Features: Ac12FXxoR7CKJ2q8b56sbgmGdKBzHJHT0GepGHfBUGsgSAe8RihtGnci6IAEay4
+Message-ID: <CAKxU2N8au-uncWoP+vGH4cHhHMOtq+VRFGNDs6rRLuHn-i1G-Q@mail.gmail.com>
+Subject: Re: [PATCHv4 wireless-next 7/7] dt-bindings: net: wireless: rt2800: add
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: linux-wireless@vger.kernel.org, Johannes Berg <johannes@sipsolutions.net>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Stanislaw Gruszka <stf_xl@wp.pl>, 
+	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, 
+	"open list:MIPS" <linux-mips@vger.kernel.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250714_123802_550871_97C25C26 
-X-CRM114-Status: GOOD (  27.47  )
+X-CRM114-CacheID: sfid-20250714_124447_811957_BEF2BC84 
+X-CRM114-Status: GOOD (  18.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,80 +101,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 14, 2025 at 5:01=E2=80=AFAM Byungchul Park <byungchul@sk.com> w=
-rote:
+On Mon, Jul 14, 2025 at 12:27=E2=80=AFAM Krzysztof Kozlowski <krzk@kernel.o=
+rg> wrote:
 >
-> To eliminate the use of the page pool fields in struct page, the page
-> pool code should use netmem descriptor and APIs instead.
+> On Sat, Jul 12, 2025 at 02:04:48PM -0700, Rosen Penev wrote:
+> > Add device-tree bindings for the RT2800 SOC wifi device found in older
+> > Ralink/Mediatek devices.
 >
-> However, __netmem_get_pp() still accesses ->pp via struct page.  So
-> change it to use struct netmem_desc instead, since ->pp no longer will
-> be available in struct page.
+> Your subject was cut. Probably you wanted something like add "Realtek foo=
+ adapter" etc.
+Not sure I follow.
 >
-> While at it, add a helper, pp_page_to_nmdesc(), that can be used to
-> extract netmem_desc from page only if it's pp page.  For now that
-> netmem_desc overlays on page, it can be achieved by just casting.
 >
-> Signed-off-by: Byungchul Park <byungchul@sk.com>
-> ---
->  include/net/netmem.h | 13 ++++++++++++-
->  1 file changed, 12 insertions(+), 1 deletion(-)
+> >
+> > Signed-off-by: Rosen Penev <rosenp@gmail.com>
+> > ---
+> >  .../bindings/net/wireless/ralink,rt2880.yaml  | 47 +++++++++++++++++++
+> >  1 file changed, 47 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/net/wireless/rali=
+nk,rt2880.yaml
+> >
+> > diff --git a/Documentation/devicetree/bindings/net/wireless/ralink,rt28=
+80.yaml b/Documentation/devicetree/bindings/net/wireless/ralink,rt2880.yaml
+> > new file mode 100644
+> > index 000000000000..a92aedf6ba01
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/net/wireless/ralink,rt2880.yaml
+> > @@ -0,0 +1,47 @@
+> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/net/wireless/ralink,rt2880.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: Ralink RT2880 wireless device
+> > +
+> > +maintainers:
+> > +  - Stanislaw Gruszka <stf_xl@wp.pl>
+> > +
+> > +description: |
+> > +  This node provides properties for configuring RT2880 SOC wifi device=
+s.
+> > +  The node is expected to be specified as a root node of the device.
+> > +
+> > +allOf:
+> > +  - $ref: ieee80211.yaml#
+> > +
+> > +properties:
+> > +  compatible:
+> > +    enum:
+> > +      - ralink,rt2880-wifi
+> > +
+> > +  reg:
+> > +    maxItems: 1
+> > +
+> > +  clocks:
+> > +    maxItems: 1
+> > +
+> > +  interrupts:
+> > +    maxItems: 1
+> > +
+> > +required:
+> > +  - compatible
+> > +  - reg
 >
-> diff --git a/include/net/netmem.h b/include/net/netmem.h
-> index 535cf17b9134..2b8a7b51ac99 100644
-> --- a/include/net/netmem.h
-> +++ b/include/net/netmem.h
-> @@ -267,6 +267,17 @@ static inline struct net_iov *__netmem_clear_lsb(net=
-mem_ref netmem)
->         return (struct net_iov *)((__force unsigned long)netmem & ~NET_IO=
-V);
->  }
+> Why clocks are optional? SoC devices rarely work without a clock.
+Before this patchset the code was doing
+
+ 25         rt2x00dev->clk =3D clk_get(&pdev->dev, NULL);
+ 24         if (IS_ERR(rt2x00dev->clk))
+ 23                 rt2x00dev->clk =3D NULL;
+
+I changed it to use devm_clk_get_optional since that's what it looks
+like here. It's not returning under failure so I assume that means
+it's optional.
+
+OTOH all downstream OpenWrt users of this code (as well as
+mt7620a.dtsi here) do specify a clock. _optional might be a mistake.
+
+Maybe Stanislaw knows more.
 >
-> +static inline struct netmem_desc *pp_page_to_nmdesc(struct page *page)
-> +{
-> +       DEBUG_NET_WARN_ON_ONCE(!page_pool_page_is_pp(page));
-> +
-> +       /* XXX: How to extract netmem_desc from page must be changed,
-> +        * once netmem_desc no longer overlays on page and will be
-> +        * allocated through slab.
-> +        */
-> +       return (struct netmem_desc *)page;
-> +}
-> +
-
-Same thing. Do not create a generic looking pp_page_to_nmdesc helper
-which does not check that the page is the correct type. The
-DEBUG_NET... is not good enough.
-
-You don't need to add a generic helper here. There is only one call
-site. Open code this in the callsite. The one callsite is marked as
-unsafe, only called by code that knows that the netmem is specifically
-a pp page. Open code this in the unsafe callsite, instead of creating
-a generic looking unsafe helper and not even documenting it's unsafe.
-
->  /**
->   * __netmem_get_pp - unsafely get pointer to the &page_pool backing @net=
-mem
->   * @netmem: netmem reference to get the pointer from
-> @@ -280,7 +291,7 @@ static inline struct net_iov *__netmem_clear_lsb(netm=
-em_ref netmem)
->   */
->  static inline struct page_pool *__netmem_get_pp(netmem_ref netmem)
->  {
-> -       return __netmem_to_page(netmem)->pp;
-> +       return pp_page_to_nmdesc(__netmem_to_page(netmem))->pp;
->  }
-
-This makes me very sad. Casting from netmem -> page -> nmdesc...
-
-Instead, we should be able to go from netmem directly to nmdesc. I
-would suggest rename __netmem_clear_lsb to netmem_to_nmdesc and have
-it return netmem_desc instead of net_iov. Then use it here.
-
-We could have an unsafe version of netmem_to_nmdesc which converts the
-netmem to netmem_desc without clearing the lsb and mark it unsafe.
-
---=20
-Thanks,
-Mina
+>
+> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+>
+> Best regards,
+> Krzysztof
+>
 
