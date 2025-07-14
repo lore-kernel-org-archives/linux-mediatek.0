@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02D2BC83F1A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Jul 2025 17:12:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F253AC83F17
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Jul 2025 17:19:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=abYy7jOEM75pX3pLc+SQpTmyAmQ+oGbg2Ja8k5D8qeQ=; b=Zq2NtYz7zXi+Xd+OunDQBrSGpl
-	7WcfG3iCD3dt4uhWHjkdnVZuy+oFRxX+45ArHFRQwylz8Xj/K1Tpa9dfwO/BPARSHKKN3M4el1HQF
-	WussMDoWtNbH4EZchgOFgMnJ+nbwKFk3219ASM77te6F/lWjZnBrGy8PgsNYhJKcOI6j48rwA0IeP
-	DFzjnNpRNakLcv2vrXSFUdq9/nLD9353pWzPpu0slC0vl1NJqxygrIQ9nMgNGQAyc6ctTp6Kk7qi3
-	K8a/w7BZdXlk4BJDxNqLr/L3z9ltm1yvT4JRsfVpvQVt37K9V35c6K1339vmLDxsnoKpz0rDGbF88
-	FKrkg0+w==;
+	bh=10eEJt4VrkRyjA5xHwdfsVDrBgIl/YTas7olJiuwauQ=; b=ZqGZfiL8BGG4nsbNxzefCPqMm7
+	NLbfMc9KdJF5zB3gu7WTnpWy5pxc9Tcc1lTXKK1eD5RyjjbM6DSK2NfY4IiieRpAd6oIxXMHAR50h
+	xFwpYhpb41FFc4sug/I5VUWTrTxez4teg8mQ2EfV96Wo0GJdrcIJr+k+NTxAUQMNiGjyAYmiacHrp
+	eTLoa/kB+YZVO53OT3OEmQ2GZS1+IF2oAIUrfHh3DI+i611u2cxqv9+LildJKM2YYy92qkVCILrpS
+	f2MQrpKdFn34ZxCRBi+WVdK6PlWAJdfRaXn74s0EQxyfM2Q/+ca4gEZoP8t9KxvfBicTdDX6dN3wl
+	Vq69oHsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubMiw-00000002vlc-01MR;
-	Mon, 14 Jul 2025 17:12:18 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1ubMqI-00000002wT2-2sUo;
+	Mon, 14 Jul 2025 17:19:54 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubL3v-00000002f7J-1jjy;
-	Mon, 14 Jul 2025 15:25:52 +0000
+	id 1ubL3y-00000002f8c-0FwQ;
+	Mon, 14 Jul 2025 15:25:55 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E06A35C4275;
-	Mon, 14 Jul 2025 15:25:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3B87DC4CEF6;
-	Mon, 14 Jul 2025 15:25:50 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 8B8D45C53B8;
+	Mon, 14 Jul 2025 15:25:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E4513C4CEF0;
+	Mon, 14 Jul 2025 15:25:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752506750;
-	bh=L+SQUyTu0j0pHRhGxGvvCTjZpOMdAJ6X2onquk5e6NI=;
+	s=k20201202; t=1752506753;
+	bh=bbMe/p4KUpOOmlbJ3xxcrOUiZhOzHwySeN2cBLuyzhA=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Aang5UyMdgWq8EJlSaUbCoWfrG3AMedWc4F/IVEHC0+kM8FwRjhk4UInrZ1wMa2V8
-	 9LRykTft0zHhd2wIdhHZh9FjF0ZCvHisYOFwI7enKfa51M+HA/GjxXkiKVrpFctwtX
-	 tu2LWm3fz6mMXdF3PbrPYaS4JQ6y6wHOoJKUpSKm36+R1Dkawn2N4smLran4tGnK75
-	 qJfG4+uSNffGGTHx7OyTNMK8jVjJ9bng6ussdGrNWzHdQp4dYpDZcTJzGrC4bZtmyc
-	 WPCjTQapigw9rruNEx8R0nJTigD/Bp2zM7DzD2pDPA85DXKhZzYHJ+2IPEyhKxsisq
-	 7m5eVcZ4xuk/Q==
+	b=g01BXMwrgQd6mwhI73riHLWSc+SE96+kW2siwLWnsVQPymldCYCyWecINtcyQbI4L
+	 Vl+k+cMMDb6tO1AOO0BhTh0XoNeULmgo2mcGnUVn/GMjykkw+HT7N5XWHdQBBoKtTY
+	 T49m3w9MwixbdIr0dQ63QjRWr8VK2UyrxytSSjyodYTUm/27rkdYkpEcjBrW3sreg2
+	 HeCrBZo1YWfh9d0X7Ri4fbEm8WANxSpyYm/YFc1HFdrRh4Ah5ueeHFTMmX+a+XPQEM
+	 cZWDoN0TzyxxBJniZYkFf30bQzbmvoeRRLa+jHKRMZ/NRBQI6mzq+BVQeOeBCKAa5x
+	 2qpowKKEGi3Rw==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Mon, 14 Jul 2025 17:25:18 +0200
-Subject: [PATCH net-next v3 5/7] net: airoha: npu: Read NPU wlan interrupt
- lines from the DTS
+Date: Mon, 14 Jul 2025 17:25:19 +0200
+Subject: [PATCH net-next v3 6/7] net: airoha: npu: Enable core 3 for WiFi
+ offloading
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250714-airoha-en7581-wlan-offlaod-v3-5-80abf6aae9e4@kernel.org>
+Message-Id: <20250714-airoha-en7581-wlan-offlaod-v3-6-80abf6aae9e4@kernel.org>
 References: <20250714-airoha-en7581-wlan-offlaod-v3-0-80abf6aae9e4@kernel.org>
 In-Reply-To: <20250714-airoha-en7581-wlan-offlaod-v3-0-80abf6aae9e4@kernel.org>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
@@ -61,8 +61,8 @@ Cc: Simon Horman <horms@kernel.org>, linux-arm-kernel@lists.infradead.org,
  devicetree@vger.kernel.org
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250714_082551_554525_FBCC31E3 
-X-CRM114-Status: GOOD (  14.27  )
+X-CRM114-CacheID: sfid-20250714_082554_144777_2DA1A6A0 
+X-CRM114-Status: GOOD (  10.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,60 +77,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Read all NPU wlan IRQ lines from the NPU device-tree node.
-NPU module fires wlan irq lines when the traffic to/from the WiFi NIC is
-not hw accelerated (these interrupts will be consumed by the MT76 driver
-in subsequent patches).
-This is a preliminary patch to enable wlan flowtable offload for EN7581
-SoC.
+NPU core 3 is responsible for WiFi offloading so enable it during NPU
+probe.
 
+Reviewed-by: Simon Horman <horms@kernel.org>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/ethernet/airoha/airoha_npu.c | 9 +++++++++
- drivers/net/ethernet/airoha/airoha_npu.h | 3 +++
- 2 files changed, 12 insertions(+)
+ drivers/net/ethernet/airoha/airoha_npu.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ethernet/airoha/airoha_npu.c
-index d25c9e799c8b0725e82f44f067112caa101ec12e..68ddc940f675b42599bd2c0245dc715bb56edb32 100644
+index 68ddc940f675b42599bd2c0245dc715bb56edb32..90000496b6a234897d4f208ab78d54af14be4aac 100644
 --- a/drivers/net/ethernet/airoha/airoha_npu.c
 +++ b/drivers/net/ethernet/airoha/airoha_npu.c
-@@ -694,6 +694,15 @@ static int airoha_npu_probe(struct platform_device *pdev)
- 		INIT_WORK(&core->wdt_work, airoha_npu_wdt_work);
- 	}
+@@ -724,8 +724,7 @@ static int airoha_npu_probe(struct platform_device *pdev)
+ 	usleep_range(1000, 2000);
  
-+	/* wlan IRQ lines */
-+	for (i = 0; i < ARRAY_SIZE(npu->irqs); i++) {
-+		irq = platform_get_irq(pdev, i + ARRAY_SIZE(npu->cores) + 1);
-+		if (irq < 0)
-+			return irq;
-+
-+		npu->irqs[i] = irq;
-+	}
-+
- 	err = dma_set_coherent_mask(dev, DMA_BIT_MASK(32));
- 	if (err)
- 		return err;
-diff --git a/drivers/net/ethernet/airoha/airoha_npu.h b/drivers/net/ethernet/airoha/airoha_npu.h
-index 8e830d12bd8a518038f2df7605a5d9f455725e40..981b283806fa8347256f6dce756729daa4736e47 100644
---- a/drivers/net/ethernet/airoha/airoha_npu.h
-+++ b/drivers/net/ethernet/airoha/airoha_npu.h
-@@ -5,6 +5,7 @@
-  */
+ 	/* enable NPU cores */
+-	/* do not start core3 since it is used for WiFi offloading */
+-	regmap_write(npu->regmap, REG_CR_BOOT_CONFIG, 0xf7);
++	regmap_write(npu->regmap, REG_CR_BOOT_CONFIG, 0xff);
+ 	regmap_write(npu->regmap, REG_CR_BOOT_TRIGGER, 0x1);
+ 	msleep(100);
  
- #define NPU_NUM_CORES		8
-+#define NPU_NUM_IRQ		6
- 
- enum airoha_npu_wlan_set_cmd {
- 	WLAN_FUNC_SET_WAIT_PCIE_ADDR,
-@@ -67,6 +68,8 @@ struct airoha_npu {
- 		struct work_struct wdt_work;
- 	} cores[NPU_NUM_CORES];
- 
-+	int irqs[NPU_NUM_IRQ];
-+
- 	struct airoha_foe_stats __iomem *stats;
- 
- 	struct {
 
 -- 
 2.50.1
