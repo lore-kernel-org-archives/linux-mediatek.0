@@ -4,67 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E986C83F1D
-	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Jul 2025 21:42:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35D9DC83F17
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Jul 2025 07:48:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QwQeVLxj3XfkfWgGw3amjmtds/bFedPxXMSoyVp4I0M=; b=Dk/F1PW/bTyK2aYfwBGlDrVKJu
-	5DNssU2g+a7Z46NEpD9Fru/xlAkFcKIoUVU98y7zhoDcxbcPDnzLBMaRcsW7axvLFg0jhvgWBQM3s
-	noCLn1O1f2gUe8d7t2Kr8/XPPDxoGGp9JIFv/Lpilf4e9COtW7imlG8TIfXCSx4vVAaBuqwLspFiY
-	vQVURPkFw6zuWx6mbz28ieQSG+LW7nYM87RhiGAnGUIr8qBOU/3UV/qETGZ5AIV6xJ6M+p0jc8E3m
-	C7RwsyPPeHGLZpPT8BjTMyEiSn6J2Fsa9ym/SnUv8bikRtD/OAdsh3a8oe57i6uXPrzE2h3I/ivrl
-	9ezxya/w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BmaAPCnpKM12OhXSftoPM8o7d5B12MuO1V48bt8+YE8=; b=iIM69OCTfCn8yXsU8Sk3lzyhAZ
+	WDCnWSLDhvcE8gzfRtoL3ZtDSXzZDNilPXzs2ZyGhQoUgkvoZETk/ZxTtk2rA+S4KJp0fhyRvRcvO
+	CLQkC2Hd1pmepSF6ZTZNxSjx7of6Y2UPjuP9/npfF/h+wW8TL4SELNtIaCLs9wm9BdiWOS7x3JTgU
+	xX4pFXYzxwnqSU3U0Fly5lnt8iVrzezKTg3jTdTZ/AbHkAW67DDpdRjupDmIK5e3I9UUazieaonDy
+	yNoGfhQfISLbDzdnkce2N0AAjFp0LuOFbjiP74R7MWbNc3c3IhKAqa93sib18uV5kh2v/TfHUjPYe
+	lAwnaNzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ub4Se-00000000fNY-1svh;
-	Sun, 13 Jul 2025 21:42:16 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1ubDvd-00000001W7H-2NhK;
+	Mon, 14 Jul 2025 07:48:49 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ub4QE-00000000fB0-2FvS;
-	Sun, 13 Jul 2025 21:39:47 +0000
+	id 1ubDbQ-00000001TFN-1rr6;
+	Mon, 14 Jul 2025 07:27:56 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 21AAAA50AF5;
-	Sun, 13 Jul 2025 21:39:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BC5E5C4CEE3;
-	Sun, 13 Jul 2025 21:39:44 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id C755360EDF;
+	Mon, 14 Jul 2025 07:27:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E09F4C4CEED;
+	Mon, 14 Jul 2025 07:27:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752442784;
-	bh=l2albCRDOERfrgRCczAdSrxmVZTv8VNwn1plCuVvM3Y=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=ShuzarwHk3Fd/ohRYVCkhatKqA4VRuupYJGUvUUsECMi/QCozlyF4PS6/WqbIOMlt
-	 FfIj8NCLJii01L/GeR/B1dZqlLyJluLcXSVe7My/ZGKT25nj7uTXY/1aduEOS43K7g
-	 AIwXcFjIzj7Xo3qal371jjI8rP76tzNjyMgQSj+JdpNIRKzXTWd2RCBCzch6XKW/bw
-	 f5QtrdkGYCP005/ffIAkKRAdZI7xlXU6Gw4YE63+GO3pck+N0yxxZ+v6QiAUbcCmf1
-	 Zgte4oZwgIwK9rDUa8oKiAzxmdLih+XWE3nzTja6iYuKNK8TB8k/mbVx7f5MngFyUw
-	 PK3qOVkg09qvA==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 33ECA383B276;
-	Sun, 13 Jul 2025 21:40:07 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	s=k20201202; t=1752478075;
+	bh=l9FcnN3Nw017Y5jMw/hRFAK60tqYcHmO+80ILEr7bjM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ngJOi6bps7q2MoH8KD+x/OCUoGWmHrKwsJt0uiO0jeK+fTy4I+fZwawX4oEfxak2r
+	 3zgZ2BT5ed2pg4NjE7pCCM5ZLAG30XmA0Q+9FrBR8DOOSNyXokxXNL8+yOo99yINCb
+	 nPgWFplMQAHiLP/PZ3PaSMdrozNaloMWSbN/vHxBX0ZM/WvyViTkW2waWtfMU3Rs2S
+	 aIRCSY6P+xiVnff8WPiJx89Fk3tKbTVvisetP+2dN6De+ba8vTou1irMP+qQB7Eq9M
+	 /NkosTtfAoYlwTtIs9h6jfAMJdJLsWknWS6O/pNaCEM4NnhwV+RP009Nf9Q5xC52RM
+	 CglfckzaVy5cg==
+Date: Mon, 14 Jul 2025 09:27:52 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Rosen Penev <rosenp@gmail.com>
+Cc: linux-wireless@vger.kernel.org, 
+	Johannes Berg <johannes@sipsolutions.net>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Stanislaw Gruszka <stf_xl@wp.pl>, 
+	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, 
+	"open list:MIPS" <linux-mips@vger.kernel.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCHv4 wireless-next 7/7] dt-bindings: net: wireless: rt2800:
+ add
+Message-ID: <20250714-subtle-origami-gopher-c9099f@krzk-bin>
+References: <20250712210448.429318-1-rosenp@gmail.com>
+ <20250712210448.429318-8-rosenp@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next] net: dsa: mt7530: Constify struct regmap_config
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <175244280602.2861491.4513725766921457476.git-patchwork-notify@kernel.org>
-Date: Sun, 13 Jul 2025 21:40:06 +0000
-References: <1b20b2e717e9ff15aa0d1e73442dde613174cfef.1752419299.git.christophe.jaillet@wanadoo.fr>
-In-Reply-To: <1b20b2e717e9ff15aa0d1e73442dde613174cfef.1752419299.git.christophe.jaillet@wanadoo.fr>
-To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Cc: chester.a.unal@arinc9.com, daniel@makrotopia.org, dqfext@gmail.com,
- sean.wang@mediatek.com, andrew@lunn.ch, olteanv@gmail.com,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org,
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250713_143946_644247_2FA39488 
-X-CRM114-Status: UNSURE (   9.82  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20250712210448.429318-8-rosenp@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,31 +76,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+On Sat, Jul 12, 2025 at 02:04:48PM -0700, Rosen Penev wrote:
+> Add device-tree bindings for the RT2800 SOC wifi device found in older
+> Ralink/Mediatek devices.
 
-This patch was applied to netdev/net-next.git (main)
-by David S. Miller <davem@davemloft.net>:
+Your subject was cut. Probably you wanted something like add "Realtek foo adapter" etc.
 
-On Sun, 13 Jul 2025 17:09:24 +0200 you wrote:
-> 'struct regmap_config' are not modified in these drivers. They be
-> statically defined instead of allocated and populated at run-time.
+
 > 
-> The main benefits are:
->   - it saves some memory at runtime
->   - the structures can be declared as 'const', which is always better for
->     structures that hold some function pointers
->   - the code is less verbose
+> Signed-off-by: Rosen Penev <rosenp@gmail.com>
+> ---
+>  .../bindings/net/wireless/ralink,rt2880.yaml  | 47 +++++++++++++++++++
+>  1 file changed, 47 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/net/wireless/ralink,rt2880.yaml
 > 
-> [...]
+> diff --git a/Documentation/devicetree/bindings/net/wireless/ralink,rt2880.yaml b/Documentation/devicetree/bindings/net/wireless/ralink,rt2880.yaml
+> new file mode 100644
+> index 000000000000..a92aedf6ba01
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/net/wireless/ralink,rt2880.yaml
+> @@ -0,0 +1,47 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/net/wireless/ralink,rt2880.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Ralink RT2880 wireless device
+> +
+> +maintainers:
+> +  - Stanislaw Gruszka <stf_xl@wp.pl>
+> +
+> +description: |
+> +  This node provides properties for configuring RT2880 SOC wifi devices.
+> +  The node is expected to be specified as a root node of the device.
+> +
+> +allOf:
+> +  - $ref: ieee80211.yaml#
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - ralink,rt2880-wifi
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +required:
+> +  - compatible
+> +  - reg
 
-Here is the summary with links:
-  - [net-next] net: dsa: mt7530: Constify struct regmap_config
-    https://git.kernel.org/netdev/net-next/c/9eb73f92a0b0
+Why clocks are optional? SoC devices rarely work without a clock.
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
 
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+Best regards,
+Krzysztof
 
 
