@@ -4,111 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB831C83F1A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jul 2025 01:36:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C697C83F17
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jul 2025 02:17:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O0I2h7kwG1ot4lSFYJ1j2OOXBhzbpB1bqoYYYUE5GhI=; b=UOnSun6Ys7xcMKFZbKjWPaV9xx
-	1VmJEDwiti2ayt3o/QBhc+9SPOKwju7AlaYBx3pvu2IJ0kqfXuvCTzDZYBmsx5irBqftAKOGeBgdl
-	4Psjaxu5RtFsR5D2r7cBxeuOyjx037KycBL5ombkJ8U+wiKLi8TgyqIYPNDV2TRuHHWyyUxhEnk8h
-	oZZsVwGEaDNwEoYmqTdOkogxGIWSSj7D+87T8qgctfChWUOY7N9j/W/1ncZX923NMnrO6B778Scee
-	PpyKfV0yqtksjJ+rbzy65lxb9CFVOZ64zqso1EIcZWh6m7KcbCqa9ZJWSchgrrK4DuChG8I/VUq3h
-	A6m30+7A==;
+	bh=tDeo0yq4IgKjH0KpWx8B87yEcLpD4MkC2r0r05DtPkw=; b=A/V4He5yCUahHX0EPojcpRJ7tU
+	1Ndo8Z2VGwCNvoflFOGpI6op8UcQbITZUkZnACoMu2+QBwCZ2YA+FEjq9X7nE9+JyrVIK5d35RF1W
+	fgNaHnzbIjYZdAj9Wu0RpvaVtIfAwFCw830/CFOGn8qrfFVke5FrQZafdufBDyiNrpNImYmMkS5cf
+	tYIzzYu2k7ZAXV/jOKHuv6hXQ7/k+0+YWvhHNBxEG6+cKCx1bHdXN12f2qfq8MSdLQ9q6IwJdkBYQ
+	egFfItM0JaUAXf6UmkfvJ1RhEOXYM8zGHLeNqlaQefbVS8Z8CgTTx5SLYYQ6iM9xk1OE2WEp+ZTli
+	PJrhwFKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubUbC-00000003jpl-3wZU;
-	Tue, 15 Jul 2025 01:36:50 +0000
-Received: from exvmail4.skhynix.com ([166.125.252.92] helo=invmail4.hynix.com)
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubUb8-00000003joT-0ptt;
-	Tue, 15 Jul 2025 01:36:49 +0000
-X-AuditID: a67dfc5b-669ff7000002311f-cc-6875b0a2a86a
-Date: Tue, 15 Jul 2025 10:36:26 +0900
-From: Byungchul Park <byungchul@sk.com>
-To: Mina Almasry <almasrymina@google.com>
-Cc: willy@infradead.org, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-mm@kvack.org,
-	kernel_team@skhynix.com, ilias.apalodimas@linaro.org,
-	harry.yoo@oracle.com, akpm@linux-foundation.org,
-	andrew+netdev@lunn.ch, asml.silence@gmail.com, toke@redhat.com,
-	david@redhat.com, Liam.Howlett@oracle.com, vbabka@suse.cz,
-	rppt@kernel.org, surenb@google.com, mhocko@suse.com,
-	linux-rdma@vger.kernel.org, bpf@vger.kernel.org,
-	vishal.moola@gmail.com, hannes@cmpxchg.org, ziy@nvidia.com,
-	jackmanb@google.com, wei.fang@nxp.com, shenwei.wang@nxp.com,
-	xiaoning.wang@nxp.com, davem@davemloft.net, edumazet@google.com,
-	kuba@kernel.org, pabeni@redhat.com, anthony.l.nguyen@intel.com,
-	przemyslaw.kitszel@intel.com, sgoutham@marvell.com,
-	gakula@marvell.com, sbhatta@marvell.com, hkelam@marvell.com,
-	bbhushan2@marvell.com, tariqt@nvidia.com, ast@kernel.org,
-	daniel@iogearbox.net, hawk@kernel.org, john.fastabend@gmail.com,
-	sdf@fomichev.me, saeedm@nvidia.com, leon@kernel.org,
-	mbloch@nvidia.com, danishanwar@ti.com, rogerq@kernel.org,
-	nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com, sean.wang@mediatek.com,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	aleksander.lobakin@intel.com, horms@kernel.org, m-malladi@ti.com,
-	krzysztof.kozlowski@linaro.org, matthias.schiffer@ew.tq-group.com,
-	robh@kernel.org, imx@lists.linux.dev,
-	intel-wired-lan@lists.osuosl.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next v10 02/12] netmem: use netmem_desc instead of
- page to access ->pp in __netmem_get_pp()
-Message-ID: <20250715013626.GA49874@system.software.com>
-References: <20250714120047.35901-1-byungchul@sk.com>
- <20250714120047.35901-3-byungchul@sk.com>
- <CAHS8izO393X_BDJxnX2d-auhTwrUZK5wYdoAh_tJc0GBf0AqcQ@mail.gmail.com>
- <CAHS8izNh7aCJOb1WKTx7CXNDPv_UBqFyq2XEHHhqHH=5JPmJCQ@mail.gmail.com>
+	id 1ubVEZ-00000003maH-0QFP;
+	Tue, 15 Jul 2025 02:17:31 +0000
+Received: from mgamail.intel.com ([198.175.65.12])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1ubVE1-00000003mW3-42OK;
+	Tue, 15 Jul 2025 02:16:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1752545819; x=1784081819;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=jmxCqU7vT9wDGVqn13z5bf8xdfrCR0BgKtLcYkpE5QY=;
+  b=Kv8CNlw7GI46QnSGiuRs8YNMmYwUjfyifId4Ox2hmW9GzIPujfHLk4M3
+   zgPBgAdTEz5n9jydjLD2t56AOMQMrxk2AotZz9Phx5D1frIMq8gwYY0Ox
+   MDgkVNO/YadohwRk7ufXuRlS2gKRFS9VfOM1PYbgQunE7H21dje+7yI0Y
+   s+dfcbEwMduEC1fCBjxDgHW2pEilZkN7PBvz0luApL0GmID6120OhO6Li
+   r5VHtyYUYAYAbH1KtQHNFPATa7HzoiiHug87u+tDNmTAbFeJWksf1nE7h
+   PiKrsP0GqnTjO/6b9A6vp9/hwY7rMQiMJHtcOqW66gY5mEjsmnV9USSQq
+   g==;
+X-CSE-ConnectionGUID: JgT7zTRlRMW6Du3xz3XIzg==
+X-CSE-MsgGUID: 1dK9WN6ZTR62jZXypDGRVQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11491"; a="66202045"
+X-IronPort-AV: E=Sophos;i="6.16,312,1744095600"; 
+   d="scan'208";a="66202045"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+  by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Jul 2025 19:16:56 -0700
+X-CSE-ConnectionGUID: YPJe4lDXQxS/h0wBLeMU/w==
+X-CSE-MsgGUID: M9YyJfrZSWqedUuQIlDCJw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,312,1744095600"; 
+   d="scan'208";a="157813800"
+Received: from lkp-server01.sh.intel.com (HELO 9ee84586c615) ([10.239.97.150])
+  by fmviesa010.fm.intel.com with ESMTP; 14 Jul 2025 19:16:52 -0700
+Received: from kbuild by 9ee84586c615 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1ubVDt-0009Y3-3C;
+	Tue, 15 Jul 2025 02:16:49 +0000
+Date: Tue, 15 Jul 2025 10:16:17 +0800
+From: kernel test robot <lkp@intel.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-mediatek@lists.infradead.org
+Cc: oe-kbuild-all@lists.linux.dev, lee@kernel.org, robh@kernel.org,
+	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, lgirdwood@gmail.com,
+	broonie@kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com
+Subject: Re: [PATCH v2 4/8] regulator: Add support for MediaTek MT6363 SPMI
+ PMIC Regulators
+Message-ID: <202507150934.VLFQsCyK-lkp@intel.com>
+References: <20250707134451.154346-5-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAHS8izNh7aCJOb1WKTx7CXNDPv_UBqFyq2XEHHhqHH=5JPmJCQ@mail.gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Brightmail-Tracker: H4sIAAAAAAAAA02Sf1DTdRjH7/P98dmXxbwvC/OjZN1NzaJLKb3ruYuM669v3XXleVdXeuYu
-	vrbRQBuMH51dE8YVmEiBnpuzRgwEZo6GwKKBNEhROoGBOAUGghkgaKEsBou1wXnx3+t5nvc9
-	r89z9+Fo+W94HadOyxC1aUqNAksZ6XR02QvltTpVwvGRBDDbz2LoeVDGgm0uG86MOFnwVBP4
-	pXuOAnNNA4KHgQEJOAoGaXjQfglDeZmfhkDtUQbMXQYGZu3zNPxxcVQCHe5/GbA53oLhyjsM
-	uL5spKFtdhOMHuvAcNSwQIPRl48hdHOBhebAPQnkOqsoaL5bL4HuhiIWSucraGjUj4RdY/0s
-	9DaZMfTm9SDwnQ2xcMcdFk5VDUqgyGZC4L5QjSHXsA2m6h9K4K/j7TQMFyXB4slMuGh5Avyd
-	UwgGKq5REHI5JXDVd46FdnsjBX23AjT4vz6NoXD6GIJrxiYKfj9dy4K1s48Kv2MX9IeCFJR4
-	LBjGDMMIPG2jDJw6XITA3uJl4W9X+OSFOTNOel1om7pPC84hKxLOV9+ghPHiRUrwtlyhhJ9N
-	QxLB4tAJdVXxQrlrghIKvR5acNQUYMEx861EGOx3YaHj5AIj1Fm/EMbrjOid9R9IE5NFjTpT
-	1G7dsU+q+jN4FR/0bcz+yvCqHtU+WYiiOMJvJ7crmthHrD9xno4ww28i4+2zVIQxv5l4vYGl
-	fiz/HLG2fBPOSzmat3JkotmJIsUqfoYmnbOdTCT1OK8jP9zyLrGMBzKWX8BEQnL+PiJHnAF2
-	eRBDLhtvL4XosCL4nSes4MIcR84scsvtp0le/aklcxS/k/zovYcjvJrfQFobLlGRnYTPlRJb
-	3jRePmEt+bXKyxQjuWmFwrRCYfpfYVqhsCCmBsnVaZmpSrVm+xZVTpo6e8tHB1IdKPy5Kz8P
-	7naime5dbsRzSBEtg8kMlZxVZqbnpLoR4WhFrGxySKuSy5KVOZ+J2gMfanUaMd2N4jhGsUb2
-	kj8rWc5/rMwQPxHFg6L20ZTiotbp0aHLJRbfnqD/+hrjZl3vu3e3lea8kaKwlV/vmohPeWW+
-	RlOyz/5p6tZF2d7px64EVYkbSrNi9O+/9tNEUtL8qt3Jlmcqb9IlfW0XYvb2eJ468WZr/mG8
-	Py5rrW3jy9Gt+vdCRwaKd6y+MXLuH/uhgcnnE7pSfNr9alz8dvf36xPde2L7nlUw6Srli/G0
-	Nl35H/YfORbYAwAA
-X-Brightmail-Tracker: H4sIAAAAAAAAA02Se0xTZxiH853v3GhWd9ahfsFdkk5cRjJ02UzeZNO56LKTZTNzI/G2RJtx
-	sjZcZC0lYHZBKYHWiTLcBrUwwMrVja4IdK6iaQmXdXNShBy5CohDAd2EEitI12KW8d/zvu8v
-	v+f74+OxqpKN4XWp6ZI+VZOsZhW0YufrOS9XOozaTVVyPNgazrHQPVvBQP2DTKi+4WLAX0vg
-	16sPKLDVNSOYCw5w4DQPYpht62DhTMU8hqDjOA22P000BBoeYphoH+Og0/OIhnrn+zBSdYsG
-	d14LBm8gFsZOdLJw3LSAoWQ4l4VQ/wIDF4N3OTjqqqHAW9oVHqeaOLjaXMDAqYdnMbRk3wgL
-	x/sY6LlgY6EnpxvB8LkQA7c8Yet0zSAHBfVWBJ5LtSwcNb0K001zHPz9bRuGkYJtsFScAe3l
-	a2DeN41g4GwvBSG3i4Mrwz8x0NbQQsG10SCG+a9LWbDMnEDQW3KBgt9LHQzYfdeo8Ds+gr7Q
-	IgVF/nIWxk0jCPzeMRpOHylA0NAqM/CP20Rv2y56p+9h0TVkR+L52uuUOHlyiRLl1t8o8Rfr
-	ECeWO41iY02ceMZ9mxItsh+LzjozKzrvf8OJg31uVuwsXqDFRvtX4mRjCfrguX2KNxKlZF2G
-	pN+49aBC+9fiFTZteH1mvmlLNnI8Y0FRPBFeI9nfnccRpoVYMtkWoCLMCi8SWQ4u76OFl4i9
-	tZCxIAWPBTtPbl90ociwSriPiS/goyOppwUjqRyVl1kpABnPNdORkEq4h8gxV5B5fHiKdJXc
-	XA7hsGKxzB9W8GFeR6qX+Mfr50lO0+llc5Swi/wo32UjvFp4gVxu7qBOoietK5qsK5qs/zdZ
-	VzSVI7oORetSM1I0uuTN8YYkbVaqLjP+k0MpThT+uVVfLBa60FzPOx4k8Ej9hBLupGtVjCbD
-	kJXiQYTH6mjlnSG9VqVM1GQdlvSHDuiNyZLBg9bxtHqt8t3d0kGV8KkmXUqSpDRJ/9+V4qNi
-	spH3SP6X0TuqO8z1e+17PlP3LiRtLWqxzuYdqFjz+UTCsQ3EkLg2dkdQnrB9vOqH/W+mp+Q9
-	2/4IJWw0HvZ9GI97ft5smyrcUJRws2N0on8+7o/tpe1dA6auJEug+K2ZtPd2vu3tL5sJmddf
-	cg/szbr8/VT3/i1ljnzn7pxN9OqY3LHrp9S0Qat5JQ7rDZp/AaLKAyC1AwAA
-X-CFilter-Loop: Reflected
+In-Reply-To: <20250707134451.154346-5-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250714_183646_406830_909E63D4 
-X-CRM114-Status: GOOD (  47.13  )
+X-CRM114-CacheID: sfid-20250714_191658_044867_8C36C5FF 
+X-CRM114-Status: GOOD (  14.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,114 +92,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 14, 2025 at 12:58:15PM -0700, Mina Almasry wrote:
-> On Mon, Jul 14, 2025 at 12:37 PM Mina Almasry <almasrymina@google.com> wrote:
-> >
-> > On Mon, Jul 14, 2025 at 5:01 AM Byungchul Park <byungchul@sk.com> wrote:
-> > >
-> > > To eliminate the use of the page pool fields in struct page, the page
-> > > pool code should use netmem descriptor and APIs instead.
-> > >
-> > > However, __netmem_get_pp() still accesses ->pp via struct page.  So
-> > > change it to use struct netmem_desc instead, since ->pp no longer will
-> > > be available in struct page.
-> > >
-> > > While at it, add a helper, pp_page_to_nmdesc(), that can be used to
-> > > extract netmem_desc from page only if it's pp page.  For now that
-> > > netmem_desc overlays on page, it can be achieved by just casting.
-> > >
-> > > Signed-off-by: Byungchul Park <byungchul@sk.com>
-> > > ---
-> > >  include/net/netmem.h | 13 ++++++++++++-
-> > >  1 file changed, 12 insertions(+), 1 deletion(-)
-> > >
-> > > diff --git a/include/net/netmem.h b/include/net/netmem.h
-> > > index 535cf17b9134..2b8a7b51ac99 100644
-> > > --- a/include/net/netmem.h
-> > > +++ b/include/net/netmem.h
-> > > @@ -267,6 +267,17 @@ static inline struct net_iov *__netmem_clear_lsb(netmem_ref netmem)
-> > >         return (struct net_iov *)((__force unsigned long)netmem & ~NET_IOV);
-> > >  }
-> > >
-> > > +static inline struct netmem_desc *pp_page_to_nmdesc(struct page *page)
-> > > +{
-> > > +       DEBUG_NET_WARN_ON_ONCE(!page_pool_page_is_pp(page));
-> > > +
-> > > +       /* XXX: How to extract netmem_desc from page must be changed,
-> > > +        * once netmem_desc no longer overlays on page and will be
-> > > +        * allocated through slab.
-> > > +        */
-> > > +       return (struct netmem_desc *)page;
-> > > +}
-> > > +
-> >
-> > Same thing. Do not create a generic looking pp_page_to_nmdesc helper
-> > which does not check that the page is the correct type. The
-> > DEBUG_NET... is not good enough.
-> >
-> > You don't need to add a generic helper here. There is only one call
-> > site. Open code this in the callsite. The one callsite is marked as
-> > unsafe, only called by code that knows that the netmem is specifically
-> > a pp page. Open code this in the unsafe callsite, instead of creating
-> > a generic looking unsafe helper and not even documenting it's unsafe.
-> >
-> 
-> On second read through the series, I actually now think this is a
-> great idea :-) Adding this helper has simplified the series greatly. I
-> did not realize you were converting entire drivers to netmem just to
-> get rid of page->pp accesses. Adding a pp_page_to_nmdesc helper makes
-> the entire series simpler.
-> 
-> You're also calling it only from code paths like drivers that already
-> assumed that the page is a pp page and did page->pp deference without
-> a check, so this should be safe.
-> 
-> Only thing I would change is add a comment explaining that the calling
-> code needs to check the page is pp page or know it's a pp page (like a
-> driver that supports pp).
-> 
-> 
-> > >  /**
-> > >   * __netmem_get_pp - unsafely get pointer to the &page_pool backing @netmem
-> > >   * @netmem: netmem reference to get the pointer from
-> > > @@ -280,7 +291,7 @@ static inline struct net_iov *__netmem_clear_lsb(netmem_ref netmem)
-> > >   */
-> > >  static inline struct page_pool *__netmem_get_pp(netmem_ref netmem)
-> > >  {
-> > > -       return __netmem_to_page(netmem)->pp;
-> > > +       return pp_page_to_nmdesc(__netmem_to_page(netmem))->pp;
-> > >  }
-> >
-> > This makes me very sad. Casting from netmem -> page -> nmdesc...
-> >
-> > Instead, we should be able to go from netmem directly to nmdesc. I
-> > would suggest rename __netmem_clear_lsb to netmem_to_nmdesc and have
-> > it return netmem_desc instead of net_iov. Then use it here.
-> >
-> > We could have an unsafe version of netmem_to_nmdesc which converts the
-> > netmem to netmem_desc without clearing the lsb and mark it unsafe.
-> >
-> 
-> This, I think, we should address to keep some sanity in the code and
-> reduce the casts and make it a bit more maintainable.
+Hi AngeloGioacchino,
 
-I will reflect your suggestions.  To summarize:
+kernel test robot noticed the following build errors:
 
-   1) The current implementation of pp_page_to_nmdesc() is good enough
-      to keep, but add a comment on it like "Check if the page is a pp
-      page before calling this function or know it's a pp page.".
+[auto build test ERROR on broonie-regulator/for-next]
+[also build test ERROR on lee-mfd/for-mfd-next lee-mfd/for-mfd-fixes lee-leds/for-leds-next linus/master v6.16-rc6 next-20250714]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-   2) Introduce the unsafe version, __netmem_to_nmdesc(), and use it in
-      __netmem_get_pp().
+url:    https://github.com/intel-lab-lkp/linux/commits/AngeloGioacchino-Del-Regno/dt-bindings-regulator-Document-MediaTek-MT6316-PMIC-Regulators/20250707-214911
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
+patch link:    https://lore.kernel.org/r/20250707134451.154346-5-angelogioacchino.delregno%40collabora.com
+patch subject: [PATCH v2 4/8] regulator: Add support for MediaTek MT6363 SPMI PMIC Regulators
+config: openrisc-allyesconfig (https://download.01.org/0day-ci/archive/20250715/202507150934.VLFQsCyK-lkp@intel.com/config)
+compiler: or1k-linux-gcc (GCC) 15.1.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250715/202507150934.VLFQsCyK-lkp@intel.com/reproduce)
 
-   3) Rename __netmem_clear_lsb() to netmem_to_nmdesc(), and return
-      netmem_desc, and use it in all users of __netmem_clear_lsb().
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202507150934.VLFQsCyK-lkp@intel.com/
 
-Anything else?
+All errors (new ones prefixed by >>):
 
-	Byungchul
-> 
-> --
-> Thanks,
-> Mina
+   drivers/regulator/mt6363-regulator.c: In function 'mt6363_vemc_set_voltage_sel':
+>> drivers/regulator/mt6363-regulator.c:457:23: error: implicit declaration of function 'FIELD_PREP' [-Wimplicit-function-declaration]
+     457 |                 sel = FIELD_PREP(MT6363_RG_VEMC_VOSEL_1_MASK, sel);
+         |                       ^~~~~~~~~~
+   drivers/regulator/mt6363-regulator.c: In function 'mt6363_vemc_get_voltage_sel':
+>> drivers/regulator/mt6363-regulator.c:489:23: error: implicit declaration of function 'FIELD_GET' [-Wimplicit-function-declaration]
+     489 |                 ret = FIELD_GET(MT6363_RG_VEMC_VOSEL_1_MASK, sel);
+         |                       ^~~~~~~~~
+
+
+vim +/FIELD_PREP +457 drivers/regulator/mt6363-regulator.c
+
+   432	
+   433	static int mt6363_vemc_set_voltage_sel(struct regulator_dev *rdev, unsigned int sel)
+   434	{
+   435		const u16 tma_unlock_key = MT6363_TMA_UNLOCK_VALUE;
+   436		struct regmap *regmap = rdev->regmap;
+   437		unsigned int val;
+   438		u16 mask;
+   439		int ret;
+   440	
+   441		ret = regmap_read(rdev->regmap, MT6363_TOP_TRAP, &val);
+   442		if (ret)
+   443			return ret;
+   444	
+   445		if (val > 1)
+   446			return -EINVAL;
+   447	
+   448		/* Unlock TMA for writing */
+   449		ret = regmap_bulk_write(rdev->regmap, MT6363_TOP_TMA_KEY_L,
+   450					&tma_unlock_key, sizeof(tma_unlock_key));
+   451		if (ret)
+   452			return ret;
+   453	
+   454		/* If HW trapping value is 1, use VEMC_VOSEL_1 instead of VEMC_VOSEL_0 */
+   455		if (val == 1) {
+   456			mask = MT6363_RG_VEMC_VOSEL_1_MASK;
+ > 457			sel = FIELD_PREP(MT6363_RG_VEMC_VOSEL_1_MASK, sel);
+   458		} else {
+   459			mask = rdev->desc->vsel_mask;
+   460		}
+   461	
+   462		/* Function must return the result of this write operation */
+   463		ret = regmap_update_bits(regmap, rdev->desc->vsel_reg, mask, sel);
+   464	
+   465		/* Unconditionally re-lock TMA */
+   466		val = 0;
+   467		regmap_bulk_write(rdev->regmap, MT6363_TOP_TMA_KEY_L, &val, 2);
+   468	
+   469		return ret;
+   470	}
+   471	
+   472	static int mt6363_vemc_get_voltage_sel(struct regulator_dev *rdev)
+   473	{
+   474		unsigned int sel, trap;
+   475		int ret;
+   476	
+   477		ret = regmap_read(rdev->regmap, rdev->desc->vsel_reg, &sel);
+   478		if (ret)
+   479			return ret;
+   480	
+   481		ret = regmap_read(rdev->regmap, MT6363_TOP_TRAP, &trap);
+   482		if (ret)
+   483			return ret;
+   484	
+   485		/* If HW trapping value is 1, use VEMC_VOSEL_1 instead of VEMC_VOSEL_0 */
+   486		if (trap > 1)
+   487			return -EINVAL;
+   488		else if (trap == 1)
+ > 489			ret = FIELD_GET(MT6363_RG_VEMC_VOSEL_1_MASK, sel);
+   490		else
+   491			ret = sel & rdev->desc->vsel_mask;
+   492	
+   493		return ret;
+   494	}
+   495	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
