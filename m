@@ -4,62 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92A25C83F17
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jul 2025 19:15:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF6BAC83F35
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jul 2025 19:19:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6pA/xwgYVaaXhQcyZX+Fx5dwKhr33A2Y88J1MPjmPgg=; b=JbY0jLUvWWMC6LgnsHwRgMpVm8
-	rRj6w0OvuDCKWA9mE6FK4qYGrSh/WYGK2+3+GYKFWrtePpjVOSU1m4Pgh4t3y5dMW+Z/6dZN112uM
-	c0ecopAiUzVBbxnkERPdF4wpPJHTANNZvEBKVia8jVIe2rvIabnzofEh/gyBN8si6+NpxuGQNuGdC
-	Zuo8DJpNuEwnEoESt2tENMY3UA869naIpBOLMsmueXJsg6EavO+2Gd3lyHL1/V40j4uBwntxWr1T1
-	mE07hwnbO6ZZE5smFfun49OvkKu3fjyp6uClz+jG2HknV9N9sFOMWqWoSNt51ZGXUsRYateoMWqZM
-	4plt8GyQ==;
+	bh=6N5ixXzYqAsxEa59PwExtdaf3MvivnU2rrVqhDnhb4w=; b=R7wyel8K37gl60B1j7BO04XgEr
+	0UlS7huFxNGPFhVW971j9yBQYSzewVzZVLt85Xt6QBL2s3L347L5KBSDF3D/WJqz50XT04WqVInjU
+	B81FCS7ym0HNhMJxX5oOqHsMUwnh9WT0nPTMIOVSNhwar1YaNfV9t1Sfi26IDrXwmhljL7w6HGjWP
+	T2931q7zY+X+vVlCtRuYFC3t7/2TX68nvqYUoXT8L0vn846j9EDTHMkA22LVE+zviBEx8RFuW7w7j
+	rxCZAuvq7X+SzLlzECtHtH4TpJKh0hpByJL5jMyFO1KTavn6ykGpmZjPDzEf9O168DydhUCtk3r9B
+	QT8pMKDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubl7G-00000005yTv-0QFo;
-	Tue, 15 Jul 2025 19:15:02 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1ublBS-000000061Pj-3XUm;
+	Tue, 15 Jul 2025 19:19:22 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubhmd-00000005d3c-2KWR;
-	Tue, 15 Jul 2025 15:41:31 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E591761468;
-	Tue, 15 Jul 2025 15:41:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 99037C4CEE3;
-	Tue, 15 Jul 2025 15:41:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752594090;
-	bh=9R74i+8xUMSEjjizVKVHIpxeVkW6Fk9LHFlO/Fzc1DY=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=h7rdeNla7v//kuHuFZuZhCmbfC/JlVwD+QRkzlHdBkTDWMj2yVx997+Iqtc+vH4V4
-	 Vp55eUcGakznG/gRTl+odHHGcaK9hczJ+L0dqovQ+oD+R3MfbetTzKJZhsFmsULETg
-	 uRhCzF1AO4YJfHdmL3dBGPflX2H+Q3CtMwguq3QPTGccZx1lgDB1YMQPZcXQIb/O/L
-	 vju4rf+deiWvMNnFj8u6E33srhh7IVjZAKnRLJz3Jxc+ncleX1BSrh1V1I1mNHjaPV
-	 obJ/ycRijwV1+JDhktcu49H3B/4IQLP2dlEfo4aVkJMq9whUOrfe4+Ts/v/W+s2Y6q
-	 QysaB9nVdbUGw==
-Date: Tue, 15 Jul 2025 10:41:29 -0500
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1ubiRA-00000005jkq-2kx5;
+	Tue, 15 Jul 2025 16:23:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=6N5ixXzYqAsxEa59PwExtdaf3MvivnU2rrVqhDnhb4w=; b=OXgz+WsUaq4+gRqOqnKuH/Wbz6
+	Bo6LBXtPMDToszQi/KI8NR7ZMQ4OTfo3Vm1SCrfjsWvYq4NBR2VFHyAtTqQh7bPqEROAU078VBAd7
+	fi88CgzqGT4k3QZLNXgDabf6+liSQKfoXytvH8++pUiX8gj+FDaWzsMMcp5yGbap+OEo=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1ubiQx-001bi0-BD; Tue, 15 Jul 2025 18:23:11 +0200
+Date: Tue, 15 Jul 2025 18:23:11 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Alok Tiwari <alok.a.tiwari@oracle.com>
+Cc: sayantan.nandy@airoha.com, lorenzo@kernel.org, andrew+netdev@lunn.ch,
+	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+	pabeni@redhat.com, horms@kernel.org, netdev@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH net v2] net: airoha: fix potential use-after-free in
+ airoha_npu_get()
+Message-ID: <230d2600-bd9b-4144-81c5-b79dcbb42b46@lunn.ch>
+References: <20250715143102.3458286-1-alok.a.tiwari@oracle.com>
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
- matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, lee@kernel.org, 
- kernel@collabora.com, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
- wenst@chromium.org, lgirdwood@gmail.com, broonie@kernel.org, 
- linux-arm-kernel@lists.infradead.org, krzk+dt@kernel.org, 
- conor+dt@kernel.org
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20250715140224.206329-8-angelogioacchino.delregno@collabora.com>
-References: <20250715140224.206329-1-angelogioacchino.delregno@collabora.com>
- <20250715140224.206329-8-angelogioacchino.delregno@collabora.com>
-Message-Id: <175259408775.1380012.11849397051967783374.robh@kernel.org>
-Subject: Re: [PATCH v5 7/8] dt-bindings: mfd: Add binding for MediaTek
- MT6363 series SPMI PMIC
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250715143102.3458286-1-alok.a.tiwari@oracle.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250715_092324_692069_B55F13F6 
+X-CRM114-Status: GOOD (  10.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,45 +70,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Tue, 15 Jul 2025 16:02:23 +0200, AngeloGioacchino Del Regno wrote:
-> Add a binding for the MediaTek MT6363/6373 (and similar) multi
-> function PMICs connected over SPMI.
+On Tue, Jul 15, 2025 at 07:30:58AM -0700, Alok Tiwari wrote:
+> np->name was being used after calling of_node_put(np), which
+> releases the node and can lead to a use-after-free bug.
+> Previously, of_node_put(np) was called unconditionally after
+> of_find_device_by_node(np), which could result in a use-after-free if
+> pdev is NULL.
 > 
-> These PMICs are found on board designs using newer MediaTek SoCs,
-> such as the Dimensity 9400 Smartphone chip, or the Chromebook
-> MT8196 chip.
+> This patch moves of_node_put(np) after the error check to ensure
+> the node is only released after both the error and success cases
+> are handled appropriately, preventing potential resource issues.
 > 
-> Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  .../bindings/mfd/mediatek,mt6363.yaml         | 110 ++++++++++++++++++
->  1 file changed, 110 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,mt6363.yaml
-> 
+> Fixes: 23290c7bc190 ("net: airoha: Introduce Airoha NPU support")
+> Signed-off-by: Alok Tiwari <alok.a.tiwari@oracle.com>
 
-My bot found errors running 'make dt_binding_check' on your patch:
+Reviewed-by: Andrew Lunn <andrew@lunn.ch>
 
-yamllint warnings/errors:
-
-dtschema/dtc warnings/errors:
-
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250715140224.206329-8-angelogioacchino.delregno@collabora.com
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
-
+    Andrew
 
