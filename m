@@ -4,119 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AE43C83F1D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jul 2025 06:33:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB205C83F17
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jul 2025 07:22:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iMKADIqkjBEITMyrlA1RAIfq38yuxskqDQm0XQdEOxM=; b=depDMvnWBd4vFX8DBkczpBhkb2
-	TuCWOH0pd42jXHLuSuvOFwYGbPzvk/Zp0g7eAzcQIAwggjxlUxPwjH1ll/IJB/5JmVx7E8oUuR7uJ
-	Os63xxDKM6gG3gF1gnSac3v6oQ93t62acPNoZJ+LmJJnTWfHRnJeZK794TAbVpkOa/rewC2BPYAEe
-	996oDSFS2hWPs7QMzcbdDGIkniHqzpyKK8rFh8q7quILdZLLnFYA74wBRdpP1OA+lJHza5Wu+GkE7
-	wdgdsba01Ul6jirrtNeXfw7xA6lyrlrOBUS6pAGyReJ6BaXgiQJJXjv/MSJd75bQnZgyMH8ONqbdt
-	sKutyYWg==;
+	bh=gHfDGRcP1cq35AV4xxGb5/5ByyZ9iww3RrN/h4hA+tU=; b=RMsfVKytECXYIDDYDAT4irXwFG
+	RjF9pMaadY1EUEzOPWs37/3l43HDA4ARrts/16ZRC2EiJN2CC/h0wPM3LoOg/w9nmCVc/eWwvAWyH
+	3uqR0iid6iYE5MlS+i3ntXww7Qgj8G2hJArc4mRI96tKmK/B2IqXDGqz41y7mWG7L5eMgRY4OQDwF
+	tNnLDMkKY7tPeGvtD1kxZWMUwKo2Cp8JHGl61zMEawCTbXtDC0G7ea//7Ns0PMw18MQ5Q1Ez3aTwP
+	NTpmBarjoWCDmrTPhPphDPpwxyyD4AQp/vSJY6Wykh1wYMoKL/ioKY4ApSDpzKYOcEPBMaQR+C+xs
+	gXFTyYWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubZEC-00000004DXp-2i7G;
-	Tue, 15 Jul 2025 06:33:24 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1ubZza-00000004Jzj-1b9p;
+	Tue, 15 Jul 2025 07:22:22 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubZ9Z-00000004CwK-0RXh;
-	Tue, 15 Jul 2025 06:28:39 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 32D2A45030;
-	Tue, 15 Jul 2025 06:28:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BD34FC4CEE3;
-	Tue, 15 Jul 2025 06:28:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752560915;
-	bh=BJsnU8xVlShjcg5+ZFwrkWOQBaBFls93PGR1Hwz0nLI=;
+	id 1ubZx6-00000004JQu-2EN7;
+	Tue, 15 Jul 2025 07:19:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1752563986;
+	bh=m61E355kAgNwnf61mkfbfDOJYnKhUsup2CvOlC/E3P4=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=QlelfTFr8Rhi4m0sFq/NarCbyHtIvfy52UDegp08jMNiITRMTdz2sPUaEEHhLXulm
-	 nWHqC0buwbfLtL/02X+vgjAJu6QvaRl0sVoRJltoknIrQ0vfkoDCtKyD9VN8fjZykn
-	 vE3s0XbjPiPRe1MY8hnDIn5dsPEEyBz6XnHtb7X4j12RXlTXj5LIbM/rQ/tJjgjOdS
-	 6NZASM3CKmYzoInRBWf8DmWC0YkPYRUVmib7iIBPNLm8Z6X3lTaqBJHv83ZKKbk1Gp
-	 T5tv2E6M3Xta9eEZ/kB2sv+0s29W5k5VmdwZN8053KWt98CtebNti2xgfG5M/A9g8p
-	 BCDKQ/Sjll3kQ==
-Message-ID: <8b2ee5da-4696-432a-bb0e-bed723192353@kernel.org>
-Date: Tue, 15 Jul 2025 08:28:30 +0200
+	b=iJpeS8YxtXjMm7UrtrdbB9W/P8pPaAyqV7+kPnj0Cnh5pB3XsIh9W6Vg4qQ8ZgPHF
+	 hUgc7TKCeD66evevdVQ46UFKE9CWxD99Yt12mvL5ogjmTomte+VlwH4Jc3rMsw/eEq
+	 NX71b4Pn6JyFePTtCCEijKg2mzRT5LC6EWTbRdLzDkT14vACxKlvm/74ljzr17FHB6
+	 RwWi2ptikPr+qAvdfMY82y0DlKmbJ8FX9Os1cG9iRfnAiFjcnbcP/e/CPsVNyDM4Ng
+	 M7LcDbGc11gsS2pSWp1X0sTLC2lZQ8FgsRigkqkGC1GVOYQ3jye12S1FaCflUklNnd
+	 JUEsJglGKw6QQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 37D1B17E0676;
+	Tue, 15 Jul 2025 09:19:45 +0200 (CEST)
+Message-ID: <242bf682-cf8f-4469-8a0b-9ec982095f04@collabora.com>
+Date: Tue, 15 Jul 2025 09:19:44 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCHv4 wireless-next 7/7] dt-bindings: net: wireless: rt2800:
- add
-To: Rosen Penev <rosenp@gmail.com>
-Cc: linux-wireless@vger.kernel.org, Johannes Berg
- <johannes@sipsolutions.net>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Stanislaw Gruszka <stf_xl@wp.pl>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>,
- "open list:MIPS" <linux-mips@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>
-References: <20250712210448.429318-1-rosenp@gmail.com>
- <20250712210448.429318-8-rosenp@gmail.com>
- <20250714-subtle-origami-gopher-c9099f@krzk-bin>
- <CAKxU2N8au-uncWoP+vGH4cHhHMOtq+VRFGNDs6rRLuHn-i1G-Q@mail.gmail.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [RFC PATCH 2/3] dt-bindings: firmware: Document the MediaTek
+ Hardware Voter (HWV)
+To: Chen-Yu Tsai <wenst@chromium.org>, Laura Nao <laura.nao@collabora.com>
+Cc: arnd@arndb.de, conor+dt@kernel.org, devicetree@vger.kernel.org,
+ drew@pdp7.com, gregkh@linuxfoundation.org, kabel@kernel.org,
+ kernel@collabora.com, khilman@baylibre.com, krzk@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, m.wilczynski@samsung.com,
+ matthias.bgg@gmail.com, nm@ti.com, pjp@fedoraproject.org,
+ quic_hyiwei@quicinc.com, robh@kernel.org, tudor.ambarus@linaro.org,
+ u.kleine-koenig@baylibre.com, ulf.hansson@linaro.org
+References: <9560d4d2-5346-4d0a-a96f-c96ebe335f3c@collabora.com>
+ <20250710141941.75843-1-laura.nao@collabora.com>
+ <CAGXv+5Gzk2hDYFWTsN6V6LOfNyfrYg1ZqhsUHfTJMpOWh6f9ew@mail.gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <CAKxU2N8au-uncWoP+vGH4cHhHMOtq+VRFGNDs6rRLuHn-i1G-Q@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <CAGXv+5Gzk2hDYFWTsN6V6LOfNyfrYg1ZqhsUHfTJMpOWh6f9ew@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250714_232837_183733_C274339A 
-X-CRM114-Status: GOOD (  13.87  )
+X-CRM114-CacheID: sfid-20250715_001948_951285_3A70FA36 
+X-CRM114-Status: GOOD (  37.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,82 +83,280 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 14/07/2025 21:44, Rosen Penev wrote:
-> On Mon, Jul 14, 2025 at 12:27 AM Krzysztof Kozlowski <krzk@kernel.org> wrote:
+Il 15/07/25 06:33, Chen-Yu Tsai ha scritto:
+> On Fri, Jul 11, 2025 at 12:28 AM Laura Nao <laura.nao@collabora.com> wrote:
 >>
->> On Sat, Jul 12, 2025 at 02:04:48PM -0700, Rosen Penev wrote:
->>> Add device-tree bindings for the RT2800 SOC wifi device found in older
->>> Ralink/Mediatek devices.
->>
->> Your subject was cut. Probably you wanted something like add "Realtek foo adapter" etc.
-> Not sure I follow.
-
-Your subject is oddly incomplete.
-
->>
->>
+>> On 7/7/25 12:40, AngeloGioacchino Del Regno wrote:
+>>> Il 03/07/25 10:56, AngeloGioacchino Del Regno ha scritto:
+>>>> Il 02/07/25 08:50, Krzysztof Kozlowski ha scritto:
+>>>>> On Tue, Jul 01, 2025 at 05:11:48PM +0200, AngeloGioacchino Del Regno wrote:
+>>>>>> Add documentation for the new MediaTek Hardware Voter, found in
+>>>>>> MediaTek SoCs like the MT8196 Kompanio Ultra for Chromebooks and
+>>>>>> the MT6991 Dimensity 9400 for Smartphones.
+>>>>>>
+>>>>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>>>>> ---
+>>>>>>    .../mediatek,mt6991-hardware-voter.yaml       | 70 +++++++++++++++++++
+>>>>>>    1 file changed, 70 insertions(+)
+>>>>>>    create mode 100644 Documentation/devicetree/bindings/firmware/mediatek,mt6991- hardware-voter.yaml
+>>>>>>
+>>>>>> diff --git a/Documentation/devicetree/bindings/firmware/mediatek,mt6991- hardware-voter.yaml b/Documentation/devicetree/bindings/firmware/ mediatek,mt6991-hardware-voter.yaml
+>>>>>> new file mode 100644
+>>>>>> index 000000000000..173b74c23a91
+>>>>>> --- /dev/null
+>>>>>> +++ b/Documentation/devicetree/bindings/firmware/mediatek,mt6991-hardware- voter.yaml
+>>>>>> @@ -0,0 +1,70 @@
+>>>>>> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+>>>>>> +# Copyright 2025 Collabora Ltd
+>>>>>> +%YAML 1.2
+>>>>>> +---
+>>>>>> +$id: http://devicetree.org/schemas/firmware/mediatek,mt6991-hardware-voter.yaml#
+>>>>>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>>>>>> +
+>>>>>> +title: MediaTek Hardware Voter (HWV)
+>>>>>> +
+>>>>>> +maintainers:
+>>>>>> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>>>>> +
+>>>>>> +description:
+>>>>>> +  The MediaTek Hardware Voter (HWV) is a SoC-internal fixed-function MCU
+>>>>>> +  used to collect votes from both the Application Processor and from the
+>>>>>> +  various other remote processors present in the SoC, and transparently
+>>>>>> +  turn on or off various hardware resources (for example, power domains
+>>>>>> +  or system clocks) based on aggregation of votes done in the HWV MCU's
+>>>>>> +  internal state machine, therefore guaranteeing synchronization of the
+>>>>>> +  hardware resource requests between all components of the SoC and hence
+>>>>>> +  avoiding, for example, unclocked or unpowered access to the hardware.
+>>>>>> +
+>>>>>> +properties:
+>>>>>> +  $nodename:
+>>>>>> +    pattern: "^system-controller@[0-9a-f]+$"
+>>>>>> +
+>>>>>> +  compatible:
+>>>>>> +    const: mediatek,mt6991-hardware-voter
+>>>>>> +
+>>>>>> +  reg:
+>>>>>> +    items:
+>>>>>> +      - description: Address and size of the Hardware Voter MMIO
+>>>>>> +
+>>>>>
+>>>>> No resources here, so this should go to power controller
+>>>>>
+>>>>>> +  power-controller:
+>>>>>> +    $ref: /schemas/power/mediatek,power-controller.yaml
+>>>>>> +
+>>>>>> +required:
+>>>>>> +  - compatible
+>>>>>> +  - reg
+>>>>>> +
+>>>>>> +additionalProperties: true
+>>>>>> +
+>>>>>> +examples:
+>>>>>> + - |
+>>>>>> +   scp_hwv: system-controller@14500000 {
+>>>>>> +     compatible = "mediatek,mt6991-hardware-voter";
+>>>>>> +     reg = <0 0x14500000 0 0x3000>;
+>>>>>> +
+>>>>>> +     power-controller {
+>>>>>> +       compatible = "mediatek,mt8196-hwv-scp-power-controller";
+>>>>>
+>>>>> mt8196 in mt6991 is very confusing.
+>>>>>
+>>>>
+>>>> Yeah that wasn't intentional; fyi, it's almost the same soc, that's why I mixed
+>>>> them up... :-)
+>>>>
+>>>>> Anyway, this does not address my comment at all. You again create some
+>>>>> sort of syscon for voting, so no. You are supposed to use generic API
+>>>>> for voting: clocks, power domains, interconnects - whatever is there
+>>>>> applicable or necessary.
+>>>>>
+>>>>
+>>>> Making that loud and clear: Interconnect is not applicable.
+>>>>
+>>>> The only way to do what you're proposing would be to add a bunch of `reg`
+>>>> to each devicetree node for each clock controller and each power controller;
+>>>> I can do that, but looks a bit dirty - and still yet another syscon-like
+>>>> alternative, but without having a real syscon declared in there.
+>>>>
+>>>> Mind you - both clock and power controllers are writing both to their own
+>>>> register space (and enabling external regulators, etc, for power domains)
+>>>> and to the hardware voter MMIO (which means that the HWV, in hardware, is
+>>>> fundamentally broken).
+>>>>
+>>>> After this reply, the only option that is left to me is the following:
+>>>>
+>>>>           topckgen: clock-controller@10000000 {
+>>>>               compatible = "mediatek,mt8196-topckgen", "syscon";
+>>>>               reg = <0 0x10000000 0 0x800>, <0 0x14500010 0 0x48>,
+>>>>                     <0 0x14502c08 0 0x24>;
+>>>>               reg-names = "base", "hwvoter-base", "hwvoter-status";
+>>>>               #clock-cells = <1>;
+>>>>           };
+>>>>
+>>>>           imp_iic_wrap_north: clock-controller@13c30000 {
+>>>>               compatible = "mediatek,mt8196-imp-iic-wrap-n", "syscon";
+>>>>               reg = <0 0x13c30000 0 0x1000>, <0 0x14500000 0 0xc>,
+>>>>                     <0 0x14502c00 0 0xc>;
+>>>>               reg-names = "base", "hwvoter-base", "hwvoter-status";
+>>>>               #clock-cells = <1>;
+>>>>           };
+>>>>
+>>>>           /* Power Manager with Hardware Voter */
+>>>>           spm_hwv: power-controller@14500218 {
+>>>>               compatible = "mediatek,mt8196-hwv-scp-power-controller";
+>>>>               reg = <0 0x14500218 0 0x20>, <0 0x14501410 0 0x20>,
+>>>>                     <0 0x14505514 0 0xc>;
+>>>>               reg-names = "hwvoter-base", "hwvoter-status", "hwvoter-ack";
+>>>>               #address-cells = <1>;
+>>>>               #size-cells = <0>;
+>>>>               #power-domain-cells = <1>;
+>>>>
+>>>>               /* SCPSYS hardware voter power domains */
+>>>>               mm_proc_dormant: power-domain@MT8196_POWER_DOMAIN_MM_PROC_DORMANT {
+>>>>                   ..... etc, all power domains
+>>>>
+>>>> At this point, I'm really not sure that this would be better than just passing
+>>>> the mediatek,hardware-voter syscon to the clock controllers - as what I've done
+>>>> previously was effectively representing the hardware in the devicetree as it is,
+>>>> matching the real HW layout 1:1 (because again, each of the whole HWV MCU(s) are
+>>>> embedded into each of the two power controllers, one for System power, and one
+>>>> for Multimedia power).
+>>>>
+>>>> (btw, hardware speaking, the power controller is child of a system controller:
+>>>> there are two system controllers - "scpsystem" is for "compute part", and the
+>>>> "hfrpsystem" is for the "multimedia part" of the soc).
+>>>>
+>>>>    _______________________________________
+>>>> |                                       |
+>>>> | SYSTEM CONTROLLER (SCPSYS or HFRPSYS) |
+>>>> |   _____________________               |
+>>>> |  |                     |              | <===> Clock Controllers (more than one)
+>>>> |  | Power Controller    |     SOME     |       (provide subsystem clocks for iso
+>>>> |  |                     |    OTHER     |        during power domain enablement
+>>>> |  |     ______________  |   BLOCKS     |        even if a PD is voted)
+>>>> |  |    |              | |              |       non-subsystem clocks are voted,
+>>>> |  |    | HW Voter MCU | |              |       but subsystem ones are not voted
+>>>> |  |    |______________| |              |
+>>>> |  |_____________________|              | ===> Rest of the SoC
+>>>> |_______________________________________|
+>>>>
+>>>>
+>>>> Hence I'm asking you - does your idea still stand?
+>>>>
+>>>> Because after this, sorry for that - this doesn't want to be an attack - but
+>>>> I'm starting to have doubts about an approach that doesn't involve syscons.
+>>>>
+>>>> Cheers,
+>>>> Angelo
 >>>
->>> Signed-off-by: Rosen Penev <rosenp@gmail.com>
->>> ---
->>>  .../bindings/net/wireless/ralink,rt2880.yaml  | 47 +++++++++++++++++++
->>>  1 file changed, 47 insertions(+)
->>>  create mode 100644 Documentation/devicetree/bindings/net/wireless/ralink,rt2880.yaml
+>>> Sorry for the double reply, wanted to add some more words :-)
 >>>
->>> diff --git a/Documentation/devicetree/bindings/net/wireless/ralink,rt2880.yaml b/Documentation/devicetree/bindings/net/wireless/ralink,rt2880.yaml
->>> new file mode 100644
->>> index 000000000000..a92aedf6ba01
->>> --- /dev/null
->>> +++ b/Documentation/devicetree/bindings/net/wireless/ralink,rt2880.yaml
->>> @@ -0,0 +1,47 @@
->>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
->>> +%YAML 1.2
->>> +---
->>> +$id: http://devicetree.org/schemas/net/wireless/ralink,rt2880.yaml#
->>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->>> +
->>> +title: Ralink RT2880 wireless device
->>> +
->>> +maintainers:
->>> +  - Stanislaw Gruszka <stf_xl@wp.pl>
->>> +
->>> +description: |
->>> +  This node provides properties for configuring RT2880 SOC wifi devices.
->>> +  The node is expected to be specified as a root node of the device.
->>> +
->>> +allOf:
->>> +  - $ref: ieee80211.yaml#
->>> +
->>> +properties:
->>> +  compatible:
->>> +    enum:
->>> +      - ralink,rt2880-wifi
->>> +
->>> +  reg:
->>> +    maxItems: 1
->>> +
->>> +  clocks:
->>> +    maxItems: 1
->>> +
->>> +  interrupts:
->>> +    maxItems: 1
->>> +
->>> +required:
->>> +  - compatible
->>> +  - reg
+>>> As a note, I also thought about doing the following:
+>>>
+>>>      /* Secondary SCPSYS block with HWV capabilities */
+>>>      scp1_hwv: system-controller@14500000 {
+>>>          compatible = "mediatek,mt8196-scpsys", "syscon", "simple-mfd";
+>>>          reg = <0 0x14500000 0 0x3000>;
+>>>
+>>>          /* SCP Power Manager with Hardware Voter */
+>>>          spm_hwv: power-controller {
+>>>              compatible = "mediatek,mt8196-hwv-scp-power-controller";
+>>>              #address-cells = <1>;
+>>>              #size-cells = <0>;
+>>>              #power-domain-cells = <1>;
+>>>
+>>>              /* SCPSYS hardware voter power domains */
+>>>              mm_proc_dormant: power-domain@MT8196_POWER_DOMAIN_MM_PROC_DORMANT {
+>>>              ..... etc etc
+>>>              };
+>>>          };
+>>>
+>>>          imp_iic_wrap_north: clock-controller@13c30000 {
+>>>              compatible = "mediatek,mt8196-imp-iic-wrap-n", "syscon";
+>>>              reg = <0 0x13c30000 0 0x1000>;
+>>>              #clock-cells = <1>;
+>>>          };
+>>>      };
+>>>
+>>> ...but that's also not applicable, because the clock controllers are physically
+>>> *not* inside of the scpsys1 block, so that would *also* misrepresent the hardware
+>>> in the devicetree (besides still using a syscon in a way or another).
+>>>
+>>> So... I really don't see any way out of that, which really leaves me with the two
+>>> options that I described in the previous reply.
+>>>
+>>> Summarizing, either:
+>>>   - Adding hwv MMIOs (a bunch of, and each very small) to each clock controller (but
+>>>     still all of them are poking at the same HWV controller, and I foresee that this
+>>>     will backfire in some future iteration of the HWV hardware)
+>>>   - Reverting back to using the "mediatek,hardware-voter" syscon, like done in
+>>>     https://lore.kernel.org/20250624143220.244549-10-laura.nao@collabora.com
+>>>
+>>> I tried really hard and thought about this for weeks (actually, started even before
+>>> your feedback on Laura's series), but now I'm out of practical options that are
+>>> both correctly representing the hardware and not making the implementation fragile
+>>> (or actually more fragile than the actually broken HW implementation's fragility,
+>>> anyway).
+>>>
+>>> And besides - re-reading what I wrote after a bunch of days, the first option of
+>>> adding a bunch of hwv mmios to all of the clock controllers is, in my opinion, a
+>>> (dirty) hack - because those mmios don't belong to the clock controllers, and would
+>>> again misrepresent the hardware in DT - especially keeping in mind the fact that
+>>> the clock controllers can be controlled with *and* (not or) without the HWV (and in
+>>> some instances, even if using HWV, we must still write to the clock controllers'
+>>> mmio for extra programming, as explained before).
+>>>
+>>> Every second I think about this I get more and more convinced that my way of
+>>> passing the SCPSYS-HWV system controller handle as a syscon is right.
+>>>
+>>> Angelo
+>>>
 >>
->> Why clocks are optional? SoC devices rarely work without a clock.
-> Before this patchset the code was doing
+>> I’ve given this some more thought over the past few days.
+>>
+>> I can't see of any other viable alternative either, other than splitting
+>> up the HWV MMIOs into multiple tiny reg entries across each consumer
+>> node as mentioned..which feels fragile and wouldn't really be an accurate
+>> representation of the HW, given they all ultimately target the same HWV MCU.
+>>
+>> All considered, modeling the HWV as a shared syscon passed to both clock
+>> and power controllers still seems to me like the more accurate
+>> representation of this specific hw layout, given both types of
+>> controllers interact with the same voter logic and MMIO region.
+>>
+>> Krzysztof, does the approach with scattered small reg entries per clock
+>> controller seem as awkward to you as it does to us? are there any other
+>> directions you think we should explore here?
 > 
->  25         rt2x00dev->clk = clk_get(&pdev->dev, NULL);
->  24         if (IS_ERR(rt2x00dev->clk))
->  23                 rt2x00dev->clk = NULL;
+> Just to add to the argument, the hardware voter is really just an
+> alternative interface to the same clock or power controller; it is
+> not a separate controller. Trying to model it as such means you end
+> up with two devices fighting over control over the same hardware.
+> 
+> It really should be *one* clock controller with an alternative address
+> space. How we choose to model the hardware voter address space is up
+> for debate as Laura mentioned, but modeling it as another clock
+> controller is misrepresenting the hardware at best, and causing more
+> confusion for the implementation at worst.
+> 
+> ChenYu
 
+Alright.
+Let's go back to the previously proposed "mediatek,hardware-voter" way then.
 
-That's driver. I am asking about hardware. Hardware rarely works without
-clock. Just because some driver works is not a really a good proof,
-because clock could be enabled by bootloader which would still prove my
-point: hardware cannot work without clock.
+Regarding that to be a single clock controller, I'm afraid that won't really be
+possible because not all clocks in a single domain are voted - especially the
+mux-gate clocks can't really be put in one single clock controller because to
+manage those we have to write to the HWV *and* to the clock controller MMIO in the
+same operation in order to actually manage the clock.
 
-Best regards,
-Krzysztof
+If that wasn't the case, I would've been happier to have all of the HWV clocks in
+one clock controller (even though those belong to different SoC subsystems)...
+...but let's see if we can (and if it makes sense to) aggregate at least some!
+
+Thanks everyone!
+
+Cheers,
+Angelo
 
