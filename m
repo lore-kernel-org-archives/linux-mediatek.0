@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3553C83F27
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1923C83F21
 	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jul 2025 12:22:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CMMvhTNk4jGmCl+ZaqPFRtSEtga8/NnKt3U0j3xw7e4=; b=cjmVA2gIwlT+PNSGesmh7N/zxH
-	aOsAgQya3Tx6cumWTEKwH0pD9ppIQN6gEUtn+T8hzI9DL8QU1cWnbFbaTPwQVOy9omaJPDDSE4FES
-	I2zSO6C/ZQl925EuAAEmKBhpDbZWeFLbdpEwbnGRyNwCwentugHHflb6WwV2mboZXx3CDBPOP+4m0
-	DDFiZjj6Am9YylKEl+UBey8AAde/gw2/WCbJbXplEOAZArJC5LF/V5wVUXa/Fpp4Or4QcTQURv/5I
-	YW7zZQMLnFMkAZS9IsHhJvvbamd7js7UGpa4QfMVKvDOK2FKfe2WId7E+1B57mxOqX79/Fg2qjmwc
-	xrAlwRCw==;
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=IfSLvue4rGPftc5OACpOfpQEanyj5i8NhBGhdadMPuM=; b=e7cC/FjiRsA4CAIJafq8u7mlIo
+	vCK2G/Ed9fu0RN5n8VU/zJMq7mbMlIi4QNYEfatMLPC9EHbMPh2jpLaNydT/tYxTGZUYaQw7S/0H7
+	jsbVVwvgf4hoUJ8w1rxpqjN0OkTjPAhebvNLw363DjknUfzh0PiKEvdP6QH+T46g1hrOKG0pPpTl1
+	DZdQkF1/JvlVw9sKAhnKzI8FxLMcFZbzR+6aUzErY6l6Ykh13pc2+aVqExjBZX+yAniX1gf5HZRRI
+	W+nYMqKHsCe3+duIT7aYT3EWj6E+Dy13CjamnChLT5YAlVjoZqhIyGDwXAU5fP7qluLTSfY5QHeG7
+	cy/21wsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubegK-000000053dx-2ODX;
+	id 1ubegK-000000053dt-19a1;
 	Tue, 15 Jul 2025 12:22:48 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubeHm-0000000509t-03C1;
+	id 1ubeHm-0000000509X-01JY;
 	Tue, 15 Jul 2025 11:57:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1752580644;
-	bh=13GmZ2kfOxCjEspun2Nm9Yh6F/8K9FrvlUH5mmqA3rk=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=cp8s2EpSmNtDupvfkd2EkrJ2HelEQDo0ABv4U+WFkRv4xBcv2KlE+GXhr2vGESmF3
-	 zvvSOTIpgdwa5FtR2Jfr5ROU93nHUs1s5lncCdYNeOS5UmaENDqX26zOZlCA4jRSSG
-	 muph5Cdqe8fR0nj91/MtwXh3QRLrq2Jsh5QQTGHm5MzOtwH9I1Wd+hEYzlwU9Fb67U
-	 J03mxsWlOqEGV9toYCgQ9a0kI5AU3u3x6tMDHvsEw5Pqpu+7hhNbEtfCnS6O8rLD8O
-	 tkvRdQEEobkJVIsb6HM/xLZ+MAIJb0IBFp3TILORUwL7tDrnfZRt04ZzwAQ26p16aY
-	 ZUtzd1aq2IXdw==
+	s=mail; t=1752580643;
+	bh=mFWlfo1BjcH51pDIiHMq9CIRCkynKe1JWNGP00hZw0g=;
+	h=From:To:Cc:Subject:Date:From;
+	b=ny5ViECKiUR7Q17DDNFDBXpuPph7WreUFm4CZbYVevKbeQI/f8xlxL2GEioYFpXkD
+	 dS3AIfIw7mOhkYIqsBTeaGtJkCD7Z3WMZqK8u6f/vhWy7VZonPgqZxuHDmRyeDR7JX
+	 jxp4wI1YVSlBkLroPB9kyOhOt8ZGikba5wmDJgz2Gsrbvp7qYIP4pJqoCeaxtP76RG
+	 op3qB6J3zTWVRabp0AU7BV3IhbA7ztzX3fLpgamePgQUM5tvWCPlYUK7acJOd559bQ
+	 g16BwQ6RjgsoHN4oUFnotpV4DlfQMs5qbzZ7vwve06GLtCBXvVxEv3ktRp1yXaLOaD
+	 EOt1uqvSaKm7A==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 54B7D17E0EBD;
-	Tue, 15 Jul 2025 13:57:23 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5079617E097E;
+	Tue, 15 Jul 2025 13:57:22 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: linux-mediatek@lists.infradead.org
 Cc: lee@kernel.org,
@@ -58,17 +58,16 @@ Cc: lee@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com,
 	wenst@chromium.org
-Subject: [PATCH v4 1/8] dt-bindings: regulator: Document MediaTek MT6316 PMIC Regulators
-Date: Tue, 15 Jul 2025 13:57:11 +0200
-Message-ID: <20250715115718.176495-2-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v4 0/8] Add support MT6316/6363/MT6373 PMICs regulators and MFD
+Date: Tue, 15 Jul 2025 13:57:10 +0200
+Message-ID: <20250715115718.176495-1-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20250715115718.176495-1-angelogioacchino.delregno@collabora.com>
-References: <20250715115718.176495-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250715_045726_202946_B3B82B9E 
-X-CRM114-Status: GOOD (  12.19  )
+X-CRM114-CacheID: sfid-20250715_045726_224468_F83E7574 
+X-CRM114-Status: GOOD (  18.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,176 +82,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add bindings for the regulators found in the MediaTek MT6316 PMIC,
-usually found in board designs using the MT6991 Dimensity 9400 and
-on MT8196 Kompanio SoC for Chromebooks.
+Changes in v4:
+ - Rewritten all register definitions for both MT6363 and MT6373
+   regulators to be register offsets instead
+ - Added the appropriate supply_name to all vregs in 6363 and 6373
+ - Simplified the macro parameters for all vregs in 6363 and 6373
+   - Added common definitions pattern in macros to avoid plain writing
+     register definitions in every macro call
+ - Added registration of SPMI sub-device in MT6363/73 and setup of
+   regmap reg_base based on `reg` parsed from devicetree
+ - Removed interrupts parsing from devicetree
+   - Moved (pmic-internal) IRQs to macros
+ - mtk-spmi-pmic: Added parsing if irqspec with param_count=2 for
+   easier irqs registration from regulator drivers
 
-This chip is fully controlled by SPMI and has multiple variants
-providing different phase configurations.
+Changes in v3:
+ - Added buck and ldo supplies to mt6363 and mt6373 drivers and bindings;
+ - Removed interrupts from mt6363 and mt6373 bindings;
+ - Added registering interrupts in mt6363/73 drivers instead:
+   this avoids big arrays in the mfd driver, which will grow
+   uncontrollably (as it already happened in multiple MediaTek
+   drivers) and with each new(future) supported PMIC;
+ - Removed "ldo-" and "buck-" prefixes from mt6363 regulators
+   - Renamed "vbX" to "vbuckX", reflecting datasheet name
+ - Changed all LDOs in MT6363 and MT6373 to add VOCAL usage, both
+   increasing the number of voltage steps (2.5 or 10mV increments
+   depending on the LDO) and the accuracy of the reported voltages
+ - Tested again on MT8196 board
 
-Link: https://lore.kernel.org/r/20250624073548.29732-2-angelogioacchino.delregno@collabora.com
-Link: https://lore.kernel.org/r/20250707134451.154346-2-angelogioacchino.delregno@collabora.com
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../regulator/mediatek,mt6316b-regulator.yaml | 46 +++++++++++++++++++
- .../regulator/mediatek,mt6316c-regulator.yaml | 46 +++++++++++++++++++
- .../regulator/mediatek,mt6316d-regulator.yaml | 41 +++++++++++++++++
- 3 files changed, 133 insertions(+)
+Changes in v2:
+ - Merged MFD and regulator in one series
+ - Split mediatek,mt6316-regulator.yaml in three files as
+   suggested by krzk
+ - Added interrupt-names list in MT6363/MT6373 bindings as
+   suggested by krzk
+ - Documented regulator modes in MT6363/73 as suggested by krzk
+ - Fixed interrupt and interrupt-names maxItems in both 6363/73
+   because, well... I miscounted them in v1 :-)
+ - Removed keys from mt6363 binding: the compatible was not yet
+   added to the keys binding and doing that will take quite a
+   while, as I have to find a way to test the code before that
+   as unfortunately my HW does not provide any way to test the
+   PMIC keys (thought it did, but then turns out it doesn't...)
+ - Completed the mt6363 MFD example with ADC as suggested by Rob
+ - Avoided applying regulator schemas multiple times as pointed
+   out by Rob (in mfd binding)
+ - Fixed MT6363/73 issues pointed out by lkp (eh, sorry, that
+   happened during a last minute cleanup... ugh!).
+ - Brewed some more coffee :-)
+
+
+This series adds support for three new MediaTek PMICs: MT6316, MT6363
+and MT6373 and their variants - used in board designs featuring the
+MediaTek MT8196 Chromebook SoC, or the MT6991 Dimensity 9400 Smartphone
+SoC.
+
+In particular, MT6316 is a regulator, but the MT6363 and MT6373 PMICs
+are multi-function devices, as they have and expose multiple sub-devices;
+moreover, some of those also contain an interrupt controller, managing
+internal IPs interrupts: for those, a chained interrupt handler is
+registered, which parent is the SPMI controller itself.
+
+This series adds support for all of the MT6316 regulator variants and
+for MT6363, MT6373 SPMI PMICs and their interrupt controller.
+AngeloGioacchino Del Regno (8):
+  dt-bindings: regulator: Document MediaTek MT6316 PMIC Regulators
+  regulator: Add support for MediaTek MT6316 SPMI PMIC Regulators
+  dt-bindings: regulator: Document MediaTek MT6363 PMIC Regulators
+  regulator: Add support for MediaTek MT6363 SPMI PMIC Regulators
+  dt-bindings: regulator: Document MediaTek MT6373 PMIC Regulators
+  regulator: Add support for MediaTek MT6373 SPMI PMIC Regulators
+  dt-bindings: mfd: Add binding for MediaTek MT6363 series SPMI PMIC
+  drivers: mfd: Add support for MediaTek SPMI PMICs and MT6363/73
+
+ .../bindings/mfd/mediatek,mt6363.yaml         | 110 +++
+ .../regulator/mediatek,mt6316b-regulator.yaml |  46 +
+ .../regulator/mediatek,mt6316c-regulator.yaml |  46 +
+ .../regulator/mediatek,mt6316d-regulator.yaml |  41 +
+ .../regulator/mediatek,mt6363-regulator.yaml  | 175 ++++
+ .../regulator/mediatek,mt6373-regulator.yaml  | 175 ++++
+ drivers/mfd/Kconfig                           |  17 +
+ drivers/mfd/Makefile                          |   1 +
+ drivers/mfd/mtk-spmi-pmic.c                   | 410 ++++++++
+ drivers/regulator/Kconfig                     |  27 +
+ drivers/regulator/Makefile                    |   3 +
+ drivers/regulator/mt6316-regulator.c          | 345 +++++++
+ drivers/regulator/mt6363-regulator.c          | 934 ++++++++++++++++++
+ drivers/regulator/mt6373-regulator.c          | 762 ++++++++++++++
+ include/linux/mfd/mt6363.h                    |  26 +
+ include/linux/mfd/mt6373.h                    |  21 +
+ include/linux/regulator/mt6363-regulator.h    | 331 +++++++
+ include/linux/regulator/mt6373-regulator.h    | 162 +++
+ 18 files changed, 3632 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,mt6363.yaml
  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml
  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6316c-regulator.yaml
  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6316d-regulator.yaml
+ create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6363-regulator.yaml
+ create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6373-regulator.yaml
+ create mode 100644 drivers/mfd/mtk-spmi-pmic.c
+ create mode 100644 drivers/regulator/mt6316-regulator.c
+ create mode 100644 drivers/regulator/mt6363-regulator.c
+ create mode 100644 drivers/regulator/mt6373-regulator.c
+ create mode 100644 include/linux/mfd/mt6363.h
+ create mode 100644 include/linux/mfd/mt6373.h
+ create mode 100644 include/linux/regulator/mt6363-regulator.h
+ create mode 100644 include/linux/regulator/mt6373-regulator.h
 
-diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml
-new file mode 100644
-index 000000000000..e7a6b70cdab2
---- /dev/null
-+++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml
-@@ -0,0 +1,46 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/regulator/mediatek,mt6316b-regulator.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek MT6316 BP/VP SPMI PMIC Regulators
-+
-+maintainers:
-+  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+
-+description:
-+  The MediaTek MT6316BP/VP PMICs are fully controlled by SPMI interface, both
-+  feature four step-down DC/DC (buck) converters, and provides 2+2 Phases,
-+  joining Buck 1+2 for the first phase, and Buck 3+4 for the second phase.
-+
-+properties:
-+  compatible:
-+    const: mediatek,mt6316b-regulator
-+
-+  vbuck12:
-+    type: object
-+    $ref: regulator.yaml#
-+    unevaluatedProperties: false
-+
-+  vbuck34:
-+    type: object
-+    $ref: regulator.yaml#
-+    unevaluatedProperties: false
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    pmic {
-+      regulators {
-+        compatible = "mediatek,mt6316b-regulator";
-+
-+        vbuck12 {
-+          regulator-min-microvolt = <450000>;
-+          regulator-max-microvolt = <965000>;
-+          regulator-always-on;
-+        };
-+      };
-+    };
-+...
-diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6316c-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6316c-regulator.yaml
-new file mode 100644
-index 000000000000..0b9239a595ed
---- /dev/null
-+++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6316c-regulator.yaml
-@@ -0,0 +1,46 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/regulator/mediatek,mt6316c-regulator.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek MT6316 CP/HP/KP SPMI PMIC Regulators
-+
-+maintainers:
-+  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+
-+description:
-+  The MediaTek MT6316CP/HP/KP PMICs are fully controlled by SPMI interface,
-+  features four step-down DC/DC (buck) converters, and provides 3+1 Phases,
-+  joining Buck 1+2+4 for the first phase, and uses Buck 3 for the second.
-+
-+properties:
-+  compatible:
-+    const: mediatek,mt6316c-regulator
-+
-+  vbuck124:
-+    type: object
-+    $ref: regulator.yaml#
-+    unevaluatedProperties: false
-+
-+  vbuck3:
-+    type: object
-+    $ref: regulator.yaml#
-+    unevaluatedProperties: false
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    pmic {
-+      regulators {
-+        compatible = "mediatek,mt6316c-regulator";
-+
-+        vbuck124 {
-+          regulator-min-microvolt = <450000>;
-+          regulator-max-microvolt = <1277500>;
-+          regulator-always-on;
-+        };
-+      };
-+    };
-+...
-diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6316d-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6316d-regulator.yaml
-new file mode 100644
-index 000000000000..460c02bf69de
---- /dev/null
-+++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6316d-regulator.yaml
-@@ -0,0 +1,41 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/regulator/mediatek,mt6316d-regulator.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek MT6316 DP/TP SPMI PMIC Regulators
-+
-+maintainers:
-+  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+
-+description:
-+  The MediaTek MT6316DP/TP PMICs are fully controlled by SPMI interface, both
-+  feature four step-down DC/DC (buck) converters, and provides a single Phase,
-+  joining Buck 1+2+3+4.
-+
-+properties:
-+  compatible:
-+    const: mediatek,mt6316d-regulator
-+
-+  vbuck1234:
-+    type: object
-+    $ref: regulator.yaml#
-+    unevaluatedProperties: false
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    pmic {
-+      regulators {
-+        compatible = "mediatek,mt6316d-regulator";
-+
-+        vbuck1234 {
-+          regulator-min-microvolt = <400000>;
-+          regulator-max-microvolt = <1277500>;
-+          regulator-always-on;
-+        };
-+      };
-+    };
-+...
 -- 
 2.50.1
 
