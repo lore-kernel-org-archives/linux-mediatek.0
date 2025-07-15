@@ -4,64 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30C62C83F27
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jul 2025 23:25:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3085C83F17
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jul 2025 23:31:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=lAgqzrLQFgULC/NyYg790w7pnHGpDDP+rKXydLeBdro=; b=zKHb091ZWCVrhf2ED+CrXfdlwx
-	fcplI4dXazkOtBsMHJw2Cg+5kj5qGjF+rAH7DjHjvTpXa80FaiD9zKNK6NBQiEwELYzf99mDAibUH
-	pXWNpPQhZA3B2PJr1JX1zOtdx8lSwCknhKAfF3TF1Dbbv9JAgp1ontgkNmDcfPMeBmHh9+LeRgFc0
-	dGhZpw5bmsFEErw7wtxopLuXdoRg5q1YS6gkYBRY/UbrJSUJYhA+7xNw9+ik0E0utZBHx7TA2+EaM
-	HkWzcZ9YiuZ8Qnx703ItIxmW6ud/4XAm6xVIFa2H/5SYucIYsG4XWIhm9coDxvZVJ52yRZpISd1lj
-	8UZZx+vw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fkd2ldu8Q+I83pCYGrDPmhHubIpf74AgImw0zrqtu7Y=; b=34MIpxPlEA6ItAeYJiMJ6Wu3WL
+	YVI3F9Fcvfw0pryjvRPCIcrsfYZxJRfTBfoQWu8zTSUApdQAYSlXTSaMa8mfvkfw63nqjjXVvCjNX
+	SLq3EFL4lxvIolXo9vxVYwF5Kn2sL8Kl1dnftGLvyEsRKYIG6BthAFCuhoiBHmDp7JpBrzLQCY0uw
+	DzlHSp1MLTHbdkyyWu5HZaRKqXPeORICbJKMNT01CJFt5Or4yOfPYxSO5q6z3m4JbmzDMMYDXdQUW
+	9DTYh+8wiqNasolVFsGSnuTF52Q6O3nnDcWHog8hLXZb/UtKb3GUOPS/pn1OmteFPFkIl0ElS+Xbs
+	X4AW+TIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubp1D-00000006OzO-2sBK;
-	Tue, 15 Jul 2025 23:25:03 +0000
-Received: from mail.adomerle.pw ([185.125.100.172])
+	id 1ubp7B-00000006PTh-33iw;
+	Tue, 15 Jul 2025 23:31:13 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubowg-00000006OM8-3V8k;
-	Tue, 15 Jul 2025 23:20:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; s=202506r; d=adomerle.pw; c=relaxed/relaxed;
-	h=Message-ID:Date:Subject:To:From; t=1752621609; bh=lAgqzrLQFgULC/NyYg790w7
-	pnHGpDDP+rKXydLeBdro=; b=PKQLyvfoHzhI/2nBfmwhUQkKSq5uRNhnHw0uA3sAdxMHJCOqBE
-	MKeaDpccaY0X1fCL5mKTVmgBNicSX5aNXHTv2vLUhdQwoU9UAGgrX+0nWAMe3hT/Nl7Z/G54Zju
-	NvqwGAYSbGdwTV1rb7AYLGY2SOmva3Jub2aUv5F6Q6Eb7+kFfq36et+R15Bk6jkZt1Ws1YG4Ea3
-	SPaJcXKAj8IJL57YUhPtEEGUHH9yjEeXWnjKDa9ee791fXcm+LHGWiXS82nq9P7nVa7fLu1ntXS
-	sLK7DFEnIT1IU0cqFzEi6PGeu4DLThSxdt9SUPVkOGnG8w02K2OpvYFzvY3Wd9NBS2Q==;
-DKIM-Signature: v=1; a=ed25519-sha256; s=202506e; d=adomerle.pw; c=relaxed/relaxed;
-	h=Message-ID:Date:Subject:To:From; t=1752621609; bh=lAgqzrLQFgULC/NyYg790w7
-	pnHGpDDP+rKXydLeBdro=; b=+w1ImdG0wGwWNIhr3PfI/9CU7GW5NQT75nkl4OSm2eJcLap64D
-	9eG/29pnL0Y2pi1kZ8hloCXIh5K5JSJGofAg==;
-From: Arseniy Velikanov <me@adomerle.pw>
-To: Mark Brown <broonie@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Leilk Liu <leilk.liu@mediatek.com>
-Cc: linux-spi@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	~postmarketos/upstreaming@lists.sr.ht,
-	Arseniy Velikanov <me@adomerle.pw>
-Subject: [PATCH v1] dt-bindings: spi: mt65xx: Add compatible for MT6789
-Date: Wed, 16 Jul 2025 03:19:21 +0400
-Message-ID: <20250715231921.4527-1-me@adomerle.pw>
-X-Mailer: git-send-email 2.50.0
-MIME-Version: 1.0
+	id 1ubp4j-00000006PJR-1vTx;
+	Tue, 15 Jul 2025 23:28:42 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 92748A57294;
+	Tue, 15 Jul 2025 23:28:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0BFDCC4CEE3;
+	Tue, 15 Jul 2025 23:28:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1752622120;
+	bh=KyPnLxCQanvEcVHmi+5itxw/D0+fsHEbld35/w59fLQ=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=XAIkGsPyjcQ6Pvc5PUhmeJ21NBrlX7JTvq1l+YEI5nV0/V+8Y6bBzobpBZlmp/LN0
+	 WH/xQsRKt8+JcEO3pSK3kCrtRfqf0HAe9cKKm3HFw29I2QeqpyFbSUeY4fVkRgALA+
+	 v8GxKL9hZku9yzon7676VRTQ8Evq5BWSxmn7dxBS1o4pa5CcW+gpAu43XCLa9AbHw4
+	 P6X9SCvL7xIIQixJL6wbxJVjBSmeCPBkTb0i2GRYcYctOV187F2hi5foR4xSjB9Vy3
+	 AMw95fsEfpwKrT+DgtAlz1BnzsPUIDUPwbCIz8iwZoLOPvJQYaHGKHY5rak9ce3dv1
+	 oAxsG8WCPKBtQ==
+Date: Tue, 15 Jul 2025 18:28:39 -0500
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
+MIME-Version: 1.0
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: linux-clk@vger.kernel.org, ~postmarketos/upstreaming@lists.sr.ht, 
+ linux-mediatek@lists.infradead.org, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Stephen Boyd <sboyd@kernel.org>, linux-kernel@vger.kernel.org, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Michael Turquette <mturquette@baylibre.com>, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Conor Dooley <conor+dt@kernel.org>
+To: Arseniy Velikanov <me@adomerle.pw>
+In-Reply-To: <20250715222221.29406-1-me@adomerle.pw>
+References: <20250715222221.29406-1-me@adomerle.pw>
+Message-Id: <175262211911.2439655.2970589940654906363.robh@kernel.org>
+Subject: Re: [PATCH v1 1/2] dt-bindings: clock: mediatek: Describe MT6789
+ clock controllers
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250715_162023_212523_7F8DDAF0 
-X-CRM114-Status: UNSURE (   7.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250715_162841_564176_83126A6F 
+X-CRM114-Status: GOOD (  11.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,26 +79,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a SPI controller binding for the MT6789 SoC. As a note,
-MT6893 SPI is fully compatible with this SoC.
 
-Signed-off-by: Arseniy Velikanov <me@adomerle.pw>
----
- Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml | 1 +
- 1 file changed, 1 insertion(+)
+On Wed, 16 Jul 2025 02:22:20 +0400, Arseniy Velikanov wrote:
+> Add new bindings for system clocks and functional clocks on
+> MediaTek MT6789.
+> 
+> Signed-off-by: Arseniy Velikanov <me@adomerle.pw>
+> ---
+>  .../bindings/clock/mediatek,mt6789-clock.yaml | 142 +++++++
+>  .../clock/mediatek,mt6789-sys-clock.yaml      |  68 +++
+>  .../dt-bindings/clock/mediatek,mt6789-clk.h   | 390 ++++++++++++++++++
+>  .../reset/mediatek,mt6789-resets.h            |  15 +
+>  4 files changed, 615 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt6789-clock.yaml
+>  create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt6789-sys-clock.yaml
+>  create mode 100644 include/dt-bindings/clock/mediatek,mt6789-clk.h
+>  create mode 100644 include/dt-bindings/reset/mediatek,mt6789-resets.h
+> 
 
-diff --git a/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml b/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
-index 3bf3eb1f8728..0635aec29aae 100644
---- a/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
-+++ b/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
-@@ -49,6 +49,7 @@ properties:
-               - mediatek,mt2712-spi
-               - mediatek,mt6589-spi
-               - mediatek,mt6765-spi
-+              - mediatek,mt6789-spi
-               - mediatek,mt6893-spi
-               - mediatek,mt6991-spi
-               - mediatek,mt7622-spi
--- 
-2.50.0
+My bot found errors running 'make dt_binding_check' on your patch:
+
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+Documentation/devicetree/bindings/clock/mediatek,mt6789-sys-clock.example.dtb: /example-2/syscon@10001000: failed to match any schema with compatible: ['mt6789-infracfg-ao', 'syscon']
+Documentation/devicetree/bindings/clock/mediatek,mt6789-clock.example.dtb: /example-4/clock-controller@11f01000: failed to match any schema with compatible: ['mediatek,mt6789-imp-iic-wrap-n']
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250715222221.29406-1-me@adomerle.pw
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
+
 
