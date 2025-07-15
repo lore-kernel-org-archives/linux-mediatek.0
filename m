@@ -4,74 +4,119 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56C4DC83F1D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jul 2025 05:56:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AE43C83F1D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jul 2025 06:33:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:
-	Content-Type:Content-Transfer-Encoding:References:In-Reply-To:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pKkYf0pf9SiiYQLjJSXZhHpp5J+CagnmvAcX4Q1WL1E=; b=tYQ6GJYTYMI54YWcb69RsFS/wb
-	DU2wPfTAukWM6V1WVLg6klZd/EgtV+FiQMQqpqYunifKnLTGWOhtn+yLEAzCzr7dWEVdm8pVCOCaw
-	oTwwZKh43NF0gdgF6p2EsfzxjGN3Xwbf68AHe1r2KO34wXPnTCwADbs+/HGrV2dVKbw2sRMMLJNTz
-	EVP9u8xEKAAzYwx6o9YuNPPesGLk61UFAZx4kKzj3ycfILFGuyjuAf0gCoMeZ3D0TJUZUGOKjAs6t
-	T8YgPtAvhjiaRWtgJen/pLBSmvsPdVHkZvKn/czIjO+20Mbl5V2vazTx+ApD3j5NIkxUgSUYBT/6O
-	R6r2Jm2w==;
+	bh=iMKADIqkjBEITMyrlA1RAIfq38yuxskqDQm0XQdEOxM=; b=depDMvnWBd4vFX8DBkczpBhkb2
+	TuCWOH0pd42jXHLuSuvOFwYGbPzvk/Zp0g7eAzcQIAwggjxlUxPwjH1ll/IJB/5JmVx7E8oUuR7uJ
+	Os63xxDKM6gG3gF1gnSac3v6oQ93t62acPNoZJ+LmJJnTWfHRnJeZK794TAbVpkOa/rewC2BPYAEe
+	996oDSFS2hWPs7QMzcbdDGIkniHqzpyKK8rFh8q7quILdZLLnFYA74wBRdpP1OA+lJHza5Wu+GkE7
+	wdgdsba01Ul6jirrtNeXfw7xA6lyrlrOBUS6pAGyReJ6BaXgiQJJXjv/MSJd75bQnZgyMH8ONqbdt
+	sKutyYWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubYeJ-000000049K2-3uMX;
-	Tue, 15 Jul 2025 05:56:19 +0000
-Received: from m16.mail.163.com ([117.135.210.2])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubYeG-000000049I1-0WhA
-	for linux-mediatek@lists.infradead.org;
-	Tue, 15 Jul 2025 05:56:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:To:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=2AAMJf9maUaSbdg1Sv1it05urNJplT7iXxy+4HxO3a4=; b=V
-	X+QduDYHn7WI5C8WTm1hyejbxQyFZJk0I9jYC9AHKiHCgkkLtItpylL5oEU/aO4B
-	JIfz+agsJfJg4r7VWDAXKdNlf7cFSoKUvJ5xxz8ET4HInT/k7g6mZ93DEPOnmO9A
-	H1Sejfa5f0jIdX51i1lAoLnWoP4s9CtD98mCHptK2g=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-109 (Coremail) ; Tue, 15 Jul 2025 13:54:29 +0800
- (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Tue, 15 Jul 2025 13:54:29 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Dixit, Ashutosh" <ashutosh.dixit@intel.com>
-Cc: "Dmitry Baryshkov" <dmitry.baryshkov@oss.qualcomm.com>,
-	mripard@kernel.org, neil.armstrong@linaro.org,
-	dri-devel@lists.freedesktop.org, dianders@chromium.org,
-	jani.nikula@intel.com, lyude@redhat.com, jonathanh@nvidia.com,
-	p.zabel@pengutronix.de, simona@ffwll.ch, victor.liu@nxp.com,
-	rfoss@kernel.org, chunkuang.hu@kernel.org,
-	cristian.ciocaltea@collabora.com, Laurent.pinchart@ideasonboard.com,
-	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org, freedreno@lists.freedesktop.org,
-	"Andy Yan" <andy.yan@rock-chips.com>
-Subject: Re:Re: [PATCH v3 2/2] drm/bridge: Pass down connector to drm bridge
- detect hook
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20250519(9504565a)
- Copyright (c) 2002-2025 www.mailtech.cn 163com
-In-Reply-To: <85ple2ju6m.wl-ashutosh.dixit@intel.com>
-References: <20250703125027.311109-1-andyshrk@163.com>
- <20250703125027.311109-3-andyshrk@163.com>
- <chznjpcx6p2vn3i5jt52peikhipzjiwzlr74gx6mzp3wjstr6p@6zhhknnl3zek>
- <85ple2ju6m.wl-ashutosh.dixit@intel.com>
-X-NTES-SC: AL_Qu2eAPmet0At7yWRYOkfmkcVgOw9UcO5v/Qk3oZXOJF8jCPp9C0vUnNTMUnG6MWDDiCwnQiHWzVR6spgbahGYoQgR2kpPlq5MmA38IZpXJoXxw==
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset=UTF-8
+	id 1ubZEC-00000004DXp-2i7G;
+	Tue, 15 Jul 2025 06:33:24 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1ubZ9Z-00000004CwK-0RXh;
+	Tue, 15 Jul 2025 06:28:39 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 32D2A45030;
+	Tue, 15 Jul 2025 06:28:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BD34FC4CEE3;
+	Tue, 15 Jul 2025 06:28:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1752560915;
+	bh=BJsnU8xVlShjcg5+ZFwrkWOQBaBFls93PGR1Hwz0nLI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=QlelfTFr8Rhi4m0sFq/NarCbyHtIvfy52UDegp08jMNiITRMTdz2sPUaEEHhLXulm
+	 nWHqC0buwbfLtL/02X+vgjAJu6QvaRl0sVoRJltoknIrQ0vfkoDCtKyD9VN8fjZykn
+	 vE3s0XbjPiPRe1MY8hnDIn5dsPEEyBz6XnHtb7X4j12RXlTXj5LIbM/rQ/tJjgjOdS
+	 6NZASM3CKmYzoInRBWf8DmWC0YkPYRUVmib7iIBPNLm8Z6X3lTaqBJHv83ZKKbk1Gp
+	 T5tv2E6M3Xta9eEZ/kB2sv+0s29W5k5VmdwZN8053KWt98CtebNti2xgfG5M/A9g8p
+	 BCDKQ/Sjll3kQ==
+Message-ID: <8b2ee5da-4696-432a-bb0e-bed723192353@kernel.org>
+Date: Tue, 15 Jul 2025 08:28:30 +0200
 MIME-Version: 1.0
-Message-ID: <23a4efde.4f62.1980ca61c5e.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: bSgvCgD3n84V7XVo2yEEAA--.19921W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBEgGLXmh15WLOpAADs1
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCHv4 wireless-next 7/7] dt-bindings: net: wireless: rt2800:
+ add
+To: Rosen Penev <rosenp@gmail.com>
+Cc: linux-wireless@vger.kernel.org, Johannes Berg
+ <johannes@sipsolutions.net>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Stanislaw Gruszka <stf_xl@wp.pl>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>,
+ "open list:MIPS" <linux-mips@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>
+References: <20250712210448.429318-1-rosenp@gmail.com>
+ <20250712210448.429318-8-rosenp@gmail.com>
+ <20250714-subtle-origami-gopher-c9099f@krzk-bin>
+ <CAKxU2N8au-uncWoP+vGH4cHhHMOtq+VRFGNDs6rRLuHn-i1G-Q@mail.gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <CAKxU2N8au-uncWoP+vGH4cHhHMOtq+VRFGNDs6rRLuHn-i1G-Q@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250714_225616_533078_4CEA7821 
-X-CRM114-Status: GOOD (  15.71  )
+X-CRM114-CacheID: sfid-20250714_232837_183733_C274339A 
+X-CRM114-Status: GOOD (  13.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,46 +131,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-CgpIaSBEaXhpdCzCoApBdCAyMDI1LTA3LTE1IDA2OjE1OjEzLCAiRGl4aXQsIEFzaHV0b3NoIiA8
-YXNodXRvc2guZGl4aXRAaW50ZWwuY29tPiB3cm90ZToKPk9uIFRodSwgMDMgSnVsIDIwMjUgMTQ6
-Mjc6NDMgLTA3MDAsIERtaXRyeSBCYXJ5c2hrb3Ygd3JvdGU6Cj4+Cj4+IE9uIFRodSwgSnVsIDAz
-LCAyMDI1IGF0IDA4OjQ5OjUzUE0gKzA4MDAsIEFuZHkgWWFuIHdyb3RlOgo+Cj5IaSBBbmR5LAo+
-Cj4+ID4gRnJvbTogQW5keSBZYW4gPGFuZHkueWFuQHJvY2stY2hpcHMuY29tPgo+PiA+Cj4+ID4g
-SW4gc29tZSBhcHBsaWNhdGlvbiBzY2VuYXJpb3MsIHdlIGhvcGUgdG8gZ2V0IHRoZSBjb3JyZXNw
-b25kaW5nCj4+ID4gY29ubmVjdG9yIHdoZW4gdGhlIGJyaWRnZSdzIGRldGVjdCBob29rIGlzIGlu
-dm9rZWQuCj4+ID4KPj4gPiBJbiBtb3N0IGNhc2VzLCB3ZSBjYW4gZ2V0IHRoZSBjb25uZWN0b3Ig
-YnkgZHJtX2F0b21pY19nZXRfY29ubmVjdG9yX2Zvcl9lbmNvZGVyCj4+ID4gaWYgdGhlIGVuY29k
-ZXIgYXR0YWNoZWQgdG8gdGhlIGJyaWRnZSBpcyBlbmFibGVkLCBob3dldmVyIHRoZXJlIHdpbGwK
-Pj4gPiBzdGlsbCBiZSBzb21lIHNjZW5hcmlvcyB3aGVyZSB0aGUgZGV0ZWN0IGhvb2sgb2YgdGhl
-IGJyaWRnZSBpcyBjYWxsZWQKPj4gPiBidXQgdGhlIGNvcnJlc3BvbmRpbmcgZW5jb2RlciBoYXMg
-bm90IGJlZW4gZW5hYmxlZCB5ZXQuIEZvciBpbnN0YW5jZSwKPj4gPiB0aGlzIG9jY3VycyB3aGVu
-IHRoZSBkZXZpY2UgaXMgaG90IHBsdWcgaW4gZm9yIHRoZSBmaXJzdCB0aW1lLgo+PiA+Cj4+ID4g
-U2luY2UgdGhlIGNhbGwgdG8gYnJpZGdlJ3MgZGV0ZWN0IGlzIGluaXRpYXRlZCBieSB0aGUgY29u
-bmVjdG9yLCBwYXNzaW5nCj4+ID4gZG93biB0aGUgY29ycmVzcG9uZGluZyBjb25uZWN0b3IgZGly
-ZWN0bHkgd2lsbCBtYWtlIHRoaW5ncyBzaW1wbGVyLgo+PiA+Cj4+ID4gU2lnbmVkLW9mZi1ieTog
-QW5keSBZYW4gPGFuZHkueWFuQHJvY2stY2hpcHMuY29tPgo+PiA+IC0tLQo+PiA+Cj4+Cj4+IFJl
-dmlld2VkLWJ5OiBEbWl0cnkgQmFyeXNoa292IDxkbWl0cnkuYmFyeXNoa292QG9zcy5xdWFsY29t
-bS5jb20+Cj4KPlRoaXMgc2VlbXMgdG8gYmUgYnJlYWtpbmcgJ21ha2UgYWxsbW9kY29uZmlnJy4g
-VGhpcyBpcyB3aGF0IGlzIGJlaW5nIHNlZW46Cj4KPi4uL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uv
-bWVnYWNoaXBzLXN0ZHB4eHh4LWdlLWI4NTB2My1mdy5jOiBJbiBmdW5jdGlvbiDigJhnZV9iODUw
-djNfbHZkc19kZXRlY3TigJk6Cj4uLi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL21lZ2FjaGlwcy1z
-dGRweHh4eC1nZS1iODUwdjMtZncuYzoxNDU6MTY6IGVycm9yOiB0b28gZmV3IGFyZ3VtZW50cyB0
-byBmdW5jdGlvbiDigJhnZV9iODUwdjNfbHZkc19icmlkZ2VfZGV0ZWN04oCZCj4gIDE0NSB8ICAg
-ICAgICAgcmV0dXJuIGdlX2I4NTB2M19sdmRzX2JyaWRnZV9kZXRlY3QoJmdlX2I4NTB2M19sdmRz
-X3B0ci0+YnJpZGdlKTsKPiAgICAgIHwgICAgICAgICAgICAgICAgXn5+fn5+fn5+fn5+fn5+fn5+
-fn5+fn5+fn5+fgo+Li4vZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9tZWdhY2hpcHMtc3RkcHh4eHgt
-Z2UtYjg1MHYzLWZ3LmM6MTI0OjE6IG5vdGU6IGRlY2xhcmVkIGhlcmUKPiAgMTI0IHwgZ2VfYjg1
-MHYzX2x2ZHNfYnJpZGdlX2RldGVjdChzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlLCBzdHJ1Y3Qg
-ZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yKQo+ICAgICAgfCBefn5+fn5+fn5+fn5+fn5+fn5+fn5+
-fn5+fn5+Cj4uLi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL21lZ2FjaGlwcy1zdGRweHh4eC1nZS1i
-ODUwdjMtZncuYzoxNDY6MTogZXJyb3I6IGNvbnRyb2wgcmVhY2hlcyBlbmQgb2Ygbm9uLXZvaWQg
-ZnVuY3Rpb24gWy1XZXJyb3I9cmV0dXJuLXR5cGVdCj4gIDE0NiB8IH0KPiAgICAgIHwgXgo+Cj5D
-b3VsZCB5b3UgcGxlYXNlIHBvc3QgYSBmaXggZm9yIHRoaXMuIE1heWJlIGRvICdtYWtlIGFsbG1v
-ZGNvbmZpZycgdG8gY2hlY2sKCj5pZiB5b3UgaGF2ZW4ndCBtaXNzZWQgYW55dGhpbmcgZWxzZS4K
-CgpUaGFua3MgZm9yIGNhdGNoaW5nIHRoaXMuIEkgaGF2ZSBzZW50IGEgZml4IGZvciB0aGlzOgpo
-dHRwczovL2xvcmUua2VybmVsLm9yZy9kcmktZGV2ZWwvMjAyNTA3MTUwNTQ3NTQuODAwNzY1LTEt
-YW5keXNocmtAMTYzLmNvbS9ULyN1CgpBbmQgYmVmb3JlIHJlbGVhc2luZyB0aGUgZml4IHBhdGNo
-IHRoaXMgdGltZSwgSSBoYWQgYWxyZWFkeSBlbnN1cmVkIHRoYXQgdGhlICJtYWtlIGFsbG1vZGNv
-bmZpZyIgY29tcGlsYXRpb24gd2FzIHN1Y2Nlc3NmdWwuCgoKTWFueSB0aGFua3MuCiA+Cj5UaGFu
-a3MuCj4tLQo+QXNodXRvc2gK
+On 14/07/2025 21:44, Rosen Penev wrote:
+> On Mon, Jul 14, 2025 at 12:27 AM Krzysztof Kozlowski <krzk@kernel.org> wrote:
+>>
+>> On Sat, Jul 12, 2025 at 02:04:48PM -0700, Rosen Penev wrote:
+>>> Add device-tree bindings for the RT2800 SOC wifi device found in older
+>>> Ralink/Mediatek devices.
+>>
+>> Your subject was cut. Probably you wanted something like add "Realtek foo adapter" etc.
+> Not sure I follow.
+
+Your subject is oddly incomplete.
+
+>>
+>>
+>>>
+>>> Signed-off-by: Rosen Penev <rosenp@gmail.com>
+>>> ---
+>>>  .../bindings/net/wireless/ralink,rt2880.yaml  | 47 +++++++++++++++++++
+>>>  1 file changed, 47 insertions(+)
+>>>  create mode 100644 Documentation/devicetree/bindings/net/wireless/ralink,rt2880.yaml
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/net/wireless/ralink,rt2880.yaml b/Documentation/devicetree/bindings/net/wireless/ralink,rt2880.yaml
+>>> new file mode 100644
+>>> index 000000000000..a92aedf6ba01
+>>> --- /dev/null
+>>> +++ b/Documentation/devicetree/bindings/net/wireless/ralink,rt2880.yaml
+>>> @@ -0,0 +1,47 @@
+>>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+>>> +%YAML 1.2
+>>> +---
+>>> +$id: http://devicetree.org/schemas/net/wireless/ralink,rt2880.yaml#
+>>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>>> +
+>>> +title: Ralink RT2880 wireless device
+>>> +
+>>> +maintainers:
+>>> +  - Stanislaw Gruszka <stf_xl@wp.pl>
+>>> +
+>>> +description: |
+>>> +  This node provides properties for configuring RT2880 SOC wifi devices.
+>>> +  The node is expected to be specified as a root node of the device.
+>>> +
+>>> +allOf:
+>>> +  - $ref: ieee80211.yaml#
+>>> +
+>>> +properties:
+>>> +  compatible:
+>>> +    enum:
+>>> +      - ralink,rt2880-wifi
+>>> +
+>>> +  reg:
+>>> +    maxItems: 1
+>>> +
+>>> +  clocks:
+>>> +    maxItems: 1
+>>> +
+>>> +  interrupts:
+>>> +    maxItems: 1
+>>> +
+>>> +required:
+>>> +  - compatible
+>>> +  - reg
+>>
+>> Why clocks are optional? SoC devices rarely work without a clock.
+> Before this patchset the code was doing
+> 
+>  25         rt2x00dev->clk = clk_get(&pdev->dev, NULL);
+>  24         if (IS_ERR(rt2x00dev->clk))
+>  23                 rt2x00dev->clk = NULL;
+
+
+That's driver. I am asking about hardware. Hardware rarely works without
+clock. Just because some driver works is not a really a good proof,
+because clock could be enabled by bootloader which would still prove my
+point: hardware cannot work without clock.
+
+Best regards,
+Krzysztof
 
