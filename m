@@ -4,71 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1E4BC83F17
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jul 2025 00:15:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB831C83F1A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jul 2025 01:36:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DKGCSjMRD04nB+8oJEIciNGPfrN7u+HaRQSaEKIjDIM=; b=zGOj781k7dOh5+yT8XEugzPY05
-	dtIB9r0XKAZXGXpFdUnXADwy2t+7AWNd0dZi0SNw8grmCLpCpuSgLKxUJVCsuMJAkoyF4NBylADjL
-	CTSDa+0eoQ8mbXz6XYbPojx1+giBsFlesRV8QiiSnUaghAPobr9AxqRompUBHIi2lLm7DSHjSCp6M
-	ES/O0Oig9F0nT4barjgJgYQDxG9JZgO6RZpTZPvYaGo/Slr4/kt9lryY7LsXor/dAbJnpcPrOIlR7
-	azHBoJxtBpQIdMf61oeuOj+hFKyrGruFo6KUBb5Txrl2QRcND/x17pC3JuCzIHpWlttgIzHbXPIuM
-	MYCaDeKg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=O0I2h7kwG1ot4lSFYJ1j2OOXBhzbpB1bqoYYYUE5GhI=; b=UOnSun6Ys7xcMKFZbKjWPaV9xx
+	1VmJEDwiti2ayt3o/QBhc+9SPOKwju7AlaYBx3pvu2IJ0kqfXuvCTzDZYBmsx5irBqftAKOGeBgdl
+	4Psjaxu5RtFsR5D2r7cBxeuOyjx037KycBL5ombkJ8U+wiKLi8TgyqIYPNDV2TRuHHWyyUxhEnk8h
+	oZZsVwGEaDNwEoYmqTdOkogxGIWSSj7D+87T8qgctfChWUOY7N9j/W/1ncZX923NMnrO6B778Scee
+	PpyKfV0yqtksjJ+rbzy65lxb9CFVOZ64zqso1EIcZWh6m7KcbCqa9ZJWSchgrrK4DuChG8I/VUq3h
+	A6m30+7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubTK0-00000003c8p-2sl1;
-	Tue, 15 Jul 2025 00:15:00 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubSH8-00000003Up7-33xy;
-	Mon, 14 Jul 2025 23:08:00 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6D8394477D;
-	Mon, 14 Jul 2025 23:07:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CE80EC4CEFE;
-	Mon, 14 Jul 2025 23:07:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752534478;
-	bh=llCKPdymkwOCEQqOyhPXP7KMp3M4AAo5dbahH5BPm3w=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=BOnH0Zw7fUoFkyUlx1Z+RKr/v4P5y1ooVXQOku/OvIm3CDH6OwzuetkppdB1X/8E1
-	 G94Lbsh/LW3qNQs3kCXFa94zaugNo67N9ERDXeoYe6oYf3Wfsk3P319CmHOV3oYq9t
-	 X+q/JyHPUMRj2GQ4GT/5Ns4igaSUhyh4Ly8UQNsfPXBdFOnvuAjyjpAxTAFI9g6bNl
-	 yBxLIRAwzBq5lLJzOwkDwUIx3UGB3j7EUiuI4SN7SAwNsNJA2hvDl9JQzdQyfi8OAT
-	 U8yYPmMqHyGxUWPEvLklAx8vKKhxm+KrPFKXhrDRy/NcQDYeHktaRpTGZjYiq4AaEP
-	 aVRJ+RNUzXGcQ==
-From: Sasha Levin <sashal@kernel.org>
-To: patches@lists.linux.dev,
-	stable@vger.kernel.org
-Cc: Felix Fietkau <nbd@nbd.name>,
-	Chad Monroe <chad.monroe@adtran.com>,
-	Sasha Levin <sashal@kernel.org>,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	id 1ubUbC-00000003jpl-3wZU;
+	Tue, 15 Jul 2025 01:36:50 +0000
+Received: from exvmail4.skhynix.com ([166.125.252.92] helo=invmail4.hynix.com)
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1ubUb8-00000003joT-0ptt;
+	Tue, 15 Jul 2025 01:36:49 +0000
+X-AuditID: a67dfc5b-669ff7000002311f-cc-6875b0a2a86a
+Date: Tue, 15 Jul 2025 10:36:26 +0900
+From: Byungchul Park <byungchul@sk.com>
+To: Mina Almasry <almasrymina@google.com>
+Cc: willy@infradead.org, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-mm@kvack.org,
+	kernel_team@skhynix.com, ilias.apalodimas@linaro.org,
+	harry.yoo@oracle.com, akpm@linux-foundation.org,
+	andrew+netdev@lunn.ch, asml.silence@gmail.com, toke@redhat.com,
+	david@redhat.com, Liam.Howlett@oracle.com, vbabka@suse.cz,
+	rppt@kernel.org, surenb@google.com, mhocko@suse.com,
+	linux-rdma@vger.kernel.org, bpf@vger.kernel.org,
+	vishal.moola@gmail.com, hannes@cmpxchg.org, ziy@nvidia.com,
+	jackmanb@google.com, wei.fang@nxp.com, shenwei.wang@nxp.com,
+	xiaoning.wang@nxp.com, davem@davemloft.net, edumazet@google.com,
+	kuba@kernel.org, pabeni@redhat.com, anthony.l.nguyen@intel.com,
+	przemyslaw.kitszel@intel.com, sgoutham@marvell.com,
+	gakula@marvell.com, sbhatta@marvell.com, hkelam@marvell.com,
+	bbhushan2@marvell.com, tariqt@nvidia.com, ast@kernel.org,
+	daniel@iogearbox.net, hawk@kernel.org, john.fastabend@gmail.com,
+	sdf@fomichev.me, saeedm@nvidia.com, leon@kernel.org,
+	mbloch@nvidia.com, danishanwar@ti.com, rogerq@kernel.org,
+	nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com,
+	shayne.chen@mediatek.com, sean.wang@mediatek.com,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	aleksander.lobakin@intel.com, horms@kernel.org, m-malladi@ti.com,
+	krzysztof.kozlowski@linaro.org, matthias.schiffer@ew.tq-group.com,
+	robh@kernel.org, imx@lists.linux.dev,
+	intel-wired-lan@lists.osuosl.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.6 6/6] wifi: mt76: fix queue assignment for deauth packets
-Date: Mon, 14 Jul 2025 19:07:43 -0400
-Message-Id: <20250714230744.3710270-6-sashal@kernel.org>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250714230744.3710270-1-sashal@kernel.org>
-References: <20250714230744.3710270-1-sashal@kernel.org>
+	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next v10 02/12] netmem: use netmem_desc instead of
+ page to access ->pp in __netmem_get_pp()
+Message-ID: <20250715013626.GA49874@system.software.com>
+References: <20250714120047.35901-1-byungchul@sk.com>
+ <20250714120047.35901-3-byungchul@sk.com>
+ <CAHS8izO393X_BDJxnX2d-auhTwrUZK5wYdoAh_tJc0GBf0AqcQ@mail.gmail.com>
+ <CAHS8izNh7aCJOb1WKTx7CXNDPv_UBqFyq2XEHHhqHH=5JPmJCQ@mail.gmail.com>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.6.98
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAHS8izNh7aCJOb1WKTx7CXNDPv_UBqFyq2XEHHhqHH=5JPmJCQ@mail.gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Brightmail-Tracker: H4sIAAAAAAAAA02Sf1DTdRjH7/P98dmXxbwvC/OjZN1NzaJLKb3ruYuM669v3XXleVdXeuYu
+	vrbRQBuMH51dE8YVmEiBnpuzRgwEZo6GwKKBNEhROoGBOAUGghkgaKEsBou1wXnx3+t5nvc9
+	r89z9+Fo+W94HadOyxC1aUqNAksZ6XR02QvltTpVwvGRBDDbz2LoeVDGgm0uG86MOFnwVBP4
+	pXuOAnNNA4KHgQEJOAoGaXjQfglDeZmfhkDtUQbMXQYGZu3zNPxxcVQCHe5/GbA53oLhyjsM
+	uL5spKFtdhOMHuvAcNSwQIPRl48hdHOBhebAPQnkOqsoaL5bL4HuhiIWSucraGjUj4RdY/0s
+	9DaZMfTm9SDwnQ2xcMcdFk5VDUqgyGZC4L5QjSHXsA2m6h9K4K/j7TQMFyXB4slMuGh5Avyd
+	UwgGKq5REHI5JXDVd46FdnsjBX23AjT4vz6NoXD6GIJrxiYKfj9dy4K1s48Kv2MX9IeCFJR4
+	LBjGDMMIPG2jDJw6XITA3uJl4W9X+OSFOTNOel1om7pPC84hKxLOV9+ghPHiRUrwtlyhhJ9N
+	QxLB4tAJdVXxQrlrghIKvR5acNQUYMEx861EGOx3YaHj5AIj1Fm/EMbrjOid9R9IE5NFjTpT
+	1G7dsU+q+jN4FR/0bcz+yvCqHtU+WYiiOMJvJ7crmthHrD9xno4ww28i4+2zVIQxv5l4vYGl
+	fiz/HLG2fBPOSzmat3JkotmJIsUqfoYmnbOdTCT1OK8jP9zyLrGMBzKWX8BEQnL+PiJHnAF2
+	eRBDLhtvL4XosCL4nSes4MIcR84scsvtp0le/aklcxS/k/zovYcjvJrfQFobLlGRnYTPlRJb
+	3jRePmEt+bXKyxQjuWmFwrRCYfpfYVqhsCCmBsnVaZmpSrVm+xZVTpo6e8tHB1IdKPy5Kz8P
+	7naime5dbsRzSBEtg8kMlZxVZqbnpLoR4WhFrGxySKuSy5KVOZ+J2gMfanUaMd2N4jhGsUb2
+	kj8rWc5/rMwQPxHFg6L20ZTiotbp0aHLJRbfnqD/+hrjZl3vu3e3lea8kaKwlV/vmohPeWW+
+	RlOyz/5p6tZF2d7px64EVYkbSrNi9O+/9tNEUtL8qt3Jlmcqb9IlfW0XYvb2eJ468WZr/mG8
+	Py5rrW3jy9Gt+vdCRwaKd6y+MXLuH/uhgcnnE7pSfNr9alz8dvf36xPde2L7nlUw6Srli/G0
+	Nl35H/YfORbYAwAA
+X-Brightmail-Tracker: H4sIAAAAAAAAA02Se0xTZxiH853v3GhWd9ahfsFdkk5cRjJ02UzeZNO56LKTZTNzI/G2RJtx
+	sjZcZC0lYHZBKYHWiTLcBrUwwMrVja4IdK6iaQmXdXNShBy5CohDAd2EEitI12KW8d/zvu8v
+	v+f74+OxqpKN4XWp6ZI+VZOsZhW0YufrOS9XOozaTVVyPNgazrHQPVvBQP2DTKi+4WLAX0vg
+	16sPKLDVNSOYCw5w4DQPYpht62DhTMU8hqDjOA22P000BBoeYphoH+Og0/OIhnrn+zBSdYsG
+	d14LBm8gFsZOdLJw3LSAoWQ4l4VQ/wIDF4N3OTjqqqHAW9oVHqeaOLjaXMDAqYdnMbRk3wgL
+	x/sY6LlgY6EnpxvB8LkQA7c8Yet0zSAHBfVWBJ5LtSwcNb0K001zHPz9bRuGkYJtsFScAe3l
+	a2DeN41g4GwvBSG3i4Mrwz8x0NbQQsG10SCG+a9LWbDMnEDQW3KBgt9LHQzYfdeo8Ds+gr7Q
+	IgVF/nIWxk0jCPzeMRpOHylA0NAqM/CP20Rv2y56p+9h0TVkR+L52uuUOHlyiRLl1t8o8Rfr
+	ECeWO41iY02ceMZ9mxItsh+LzjozKzrvf8OJg31uVuwsXqDFRvtX4mRjCfrguX2KNxKlZF2G
+	pN+49aBC+9fiFTZteH1mvmlLNnI8Y0FRPBFeI9nfnccRpoVYMtkWoCLMCi8SWQ4u76OFl4i9
+	tZCxIAWPBTtPbl90ociwSriPiS/goyOppwUjqRyVl1kpABnPNdORkEq4h8gxV5B5fHiKdJXc
+	XA7hsGKxzB9W8GFeR6qX+Mfr50lO0+llc5Swi/wo32UjvFp4gVxu7qBOoietK5qsK5qs/zdZ
+	VzSVI7oORetSM1I0uuTN8YYkbVaqLjP+k0MpThT+uVVfLBa60FzPOx4k8Ej9hBLupGtVjCbD
+	kJXiQYTH6mjlnSG9VqVM1GQdlvSHDuiNyZLBg9bxtHqt8t3d0kGV8KkmXUqSpDRJ/9+V4qNi
+	spH3SP6X0TuqO8z1e+17PlP3LiRtLWqxzuYdqFjz+UTCsQ3EkLg2dkdQnrB9vOqH/W+mp+Q9
+	2/4IJWw0HvZ9GI97ft5smyrcUJRws2N0on8+7o/tpe1dA6auJEug+K2ZtPd2vu3tL5sJmddf
+	cg/szbr8/VT3/i1ljnzn7pxN9OqY3LHrp9S0Qat5JQ7rDZp/AaLKAyC1AwAA
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250714_160758_810052_50967822 
-X-CRM114-Status: GOOD (  16.21  )
+X-CRM114-CacheID: sfid-20250714_183646_406830_909E63D4 
+X-CRM114-Status: GOOD (  47.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,96 +123,114 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Felix Fietkau <nbd@nbd.name>
+On Mon, Jul 14, 2025 at 12:58:15PM -0700, Mina Almasry wrote:
+> On Mon, Jul 14, 2025 at 12:37 PM Mina Almasry <almasrymina@google.com> wrote:
+> >
+> > On Mon, Jul 14, 2025 at 5:01 AM Byungchul Park <byungchul@sk.com> wrote:
+> > >
+> > > To eliminate the use of the page pool fields in struct page, the page
+> > > pool code should use netmem descriptor and APIs instead.
+> > >
+> > > However, __netmem_get_pp() still accesses ->pp via struct page.  So
+> > > change it to use struct netmem_desc instead, since ->pp no longer will
+> > > be available in struct page.
+> > >
+> > > While at it, add a helper, pp_page_to_nmdesc(), that can be used to
+> > > extract netmem_desc from page only if it's pp page.  For now that
+> > > netmem_desc overlays on page, it can be achieved by just casting.
+> > >
+> > > Signed-off-by: Byungchul Park <byungchul@sk.com>
+> > > ---
+> > >  include/net/netmem.h | 13 ++++++++++++-
+> > >  1 file changed, 12 insertions(+), 1 deletion(-)
+> > >
+> > > diff --git a/include/net/netmem.h b/include/net/netmem.h
+> > > index 535cf17b9134..2b8a7b51ac99 100644
+> > > --- a/include/net/netmem.h
+> > > +++ b/include/net/netmem.h
+> > > @@ -267,6 +267,17 @@ static inline struct net_iov *__netmem_clear_lsb(netmem_ref netmem)
+> > >         return (struct net_iov *)((__force unsigned long)netmem & ~NET_IOV);
+> > >  }
+> > >
+> > > +static inline struct netmem_desc *pp_page_to_nmdesc(struct page *page)
+> > > +{
+> > > +       DEBUG_NET_WARN_ON_ONCE(!page_pool_page_is_pp(page));
+> > > +
+> > > +       /* XXX: How to extract netmem_desc from page must be changed,
+> > > +        * once netmem_desc no longer overlays on page and will be
+> > > +        * allocated through slab.
+> > > +        */
+> > > +       return (struct netmem_desc *)page;
+> > > +}
+> > > +
+> >
+> > Same thing. Do not create a generic looking pp_page_to_nmdesc helper
+> > which does not check that the page is the correct type. The
+> > DEBUG_NET... is not good enough.
+> >
+> > You don't need to add a generic helper here. There is only one call
+> > site. Open code this in the callsite. The one callsite is marked as
+> > unsafe, only called by code that knows that the netmem is specifically
+> > a pp page. Open code this in the unsafe callsite, instead of creating
+> > a generic looking unsafe helper and not even documenting it's unsafe.
+> >
+> 
+> On second read through the series, I actually now think this is a
+> great idea :-) Adding this helper has simplified the series greatly. I
+> did not realize you were converting entire drivers to netmem just to
+> get rid of page->pp accesses. Adding a pp_page_to_nmdesc helper makes
+> the entire series simpler.
+> 
+> You're also calling it only from code paths like drivers that already
+> assumed that the page is a pp page and did page->pp deference without
+> a check, so this should be safe.
+> 
+> Only thing I would change is add a comment explaining that the calling
+> code needs to check the page is pp page or know it's a pp page (like a
+> driver that supports pp).
+> 
+> 
+> > >  /**
+> > >   * __netmem_get_pp - unsafely get pointer to the &page_pool backing @netmem
+> > >   * @netmem: netmem reference to get the pointer from
+> > > @@ -280,7 +291,7 @@ static inline struct net_iov *__netmem_clear_lsb(netmem_ref netmem)
+> > >   */
+> > >  static inline struct page_pool *__netmem_get_pp(netmem_ref netmem)
+> > >  {
+> > > -       return __netmem_to_page(netmem)->pp;
+> > > +       return pp_page_to_nmdesc(__netmem_to_page(netmem))->pp;
+> > >  }
+> >
+> > This makes me very sad. Casting from netmem -> page -> nmdesc...
+> >
+> > Instead, we should be able to go from netmem directly to nmdesc. I
+> > would suggest rename __netmem_clear_lsb to netmem_to_nmdesc and have
+> > it return netmem_desc instead of net_iov. Then use it here.
+> >
+> > We could have an unsafe version of netmem_to_nmdesc which converts the
+> > netmem to netmem_desc without clearing the lsb and mark it unsafe.
+> >
+> 
+> This, I think, we should address to keep some sanity in the code and
+> reduce the casts and make it a bit more maintainable.
 
-[ Upstream commit dedf2ec30fe417d181490896adf89cd6b9885b23 ]
+I will reflect your suggestions.  To summarize:
 
-When running in AP mode and deauthenticating a client that's in powersave
-mode, the disassoc/deauth packet can get stuck in a tx queue along with
-other buffered frames. This can fill up hardware queues with frames
-that are only released after the WTBL slot is reused for another client.
+   1) The current implementation of pp_page_to_nmdesc() is good enough
+      to keep, but add a comment on it like "Check if the page is a pp
+      page before calling this function or know it's a pp page.".
 
-Fix this by moving deauth packets to the ALTX queue.
+   2) Introduce the unsafe version, __netmem_to_nmdesc(), and use it in
+      __netmem_get_pp().
 
-Reported-by: Chad Monroe <chad.monroe@adtran.com>
-Link: https://patch.msgid.link/20250707154702.1726-2-nbd@nbd.name
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
+   3) Rename __netmem_clear_lsb() to netmem_to_nmdesc(), and return
+      netmem_desc, and use it in all users of __netmem_clear_lsb().
 
-LLM Generated explanations, may be completely bogus:
+Anything else?
 
-Now I understand the issue and the fix better. Let me analyze this
-commit:
-
-**YES**
-
-This commit should be backported to stable kernel trees for the
-following reasons:
-
-1. **It fixes a real bug affecting users**: The commit addresses a
-   specific issue where deauthentication packets sent to clients in
-   powersave mode can get stuck in hardware TX queues. This causes queue
-   exhaustion and prevents the WTBL (Wireless Table) slot from being
-   properly reused for new clients. This is a significant functional bug
-   that impacts AP mode operation.
-
-2. **The fix is small and contained**: The change is minimal - it only
-   adds a single condition (`||
-   ieee80211_is_deauth(hdr->frame_control)`) to the existing queue
-   assignment logic. This is a low-risk change that doesn't introduce
-   new functionality or architectural changes.
-
-3. **Clear problem and solution**: The commit message clearly describes
-   the issue (deauth packets getting stuck with other buffered frames)
-   and the solution (moving deauth packets to the ALTX/PSD queue). The
-   fix is logical because:
-   - According to `ieee80211_is_bufferable_mmpdu()` (line 4517), deauth
-     frames ARE considered bufferable MMPDUs
-   - However, when a client is being deauthenticated, we don't want
-     these frames to be buffered with regular data - they need immediate
-     transmission
-   - The PSD (Power Save Delivery) queue is more appropriate for
-     management frames that need immediate handling
-
-4. **Similar to previous backported fixes**: Looking at the similar
-   commits, commit #1 (fca9615f1a43) which fixed queue handling for
-   loopback packets was backported. This current fix addresses a similar
-   class of queue assignment issues.
-
-5. **No architectural changes**: The fix uses existing infrastructure
-   (MT_TXQ_PSD queue) and existing helper functions
-   (ieee80211_is_deauth). It doesn't introduce new features or change
-   any APIs.
-
-6. **Prevents resource exhaustion**: The bug can lead to hardware queue
-   exhaustion which is a serious issue in production AP deployments.
-   This makes it an important fix for stable kernels.
-
-The code change shows that previously, only non-bufferable MMPDUs were
-assigned to the PSD queue, but deauth frames (which are technically
-bufferable) were getting stuck in regular data queues when sent to
-powersave clients. This fix ensures deauth frames bypass the normal
-buffering mechanism and get transmitted promptly via the PSD queue.
-
- drivers/net/wireless/mediatek/mt76/tx.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/tx.c b/drivers/net/wireless/mediatek/mt76/tx.c
-index 47cdccdbed6aa..dfca2369e97d5 100644
---- a/drivers/net/wireless/mediatek/mt76/tx.c
-+++ b/drivers/net/wireless/mediatek/mt76/tx.c
-@@ -604,7 +604,8 @@ mt76_txq_schedule_pending_wcid(struct mt76_phy *phy, struct mt76_wcid *wcid)
- 		if ((dev->drv->drv_flags & MT_DRV_HW_MGMT_TXQ) &&
- 		    !(info->flags & IEEE80211_TX_CTL_HW_80211_ENCAP) &&
- 		    !ieee80211_is_data(hdr->frame_control) &&
--		    !ieee80211_is_bufferable_mmpdu(skb))
-+		    (!ieee80211_is_bufferable_mmpdu(skb) ||
-+		     ieee80211_is_deauth(hdr->frame_control)))
- 			qid = MT_TXQ_PSD;
- 
- 		q = phy->q_tx[qid];
--- 
-2.39.5
-
+	Byungchul
+> 
+> --
+> Thanks,
+> Mina
 
