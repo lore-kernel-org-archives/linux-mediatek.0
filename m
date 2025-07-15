@@ -4,76 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEDFAC83F17
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jul 2025 08:42:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87642C83F17
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jul 2025 08:50:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Ex6rZ9aRnEjIjKkUay6G77jbmFwgan0iuINyfGJdTk4=; b=cBbmFy/H2Y5/phW81a/QQb3uqA
-	3c5HEJjctph4pfjiumgVVNdm1bLdi84iRvfbfJVP6jFXUr1UJQ8Qb7QGqnUBg5fXpU3+BAHpG+cT/
-	yBo2T/kxsBw2wU7mLG3Pd8ppUwWgULwe8DmOKZcwGGVQM364gcvPMsP6+rFhdc0xI3kp9gAA10nq3
-	CpWScVRW3RPWwlOgjnzaBfD6C+/p3Hi4iTFcE1GCb4T+jyRDJcDXJvlZVS7uTnWMogtAB9dGvnsyo
-	g33vYHInwC7V07REuf+1LdY/3BHTRZuzgVmiK5uU4igcn5yz7+NMwSDnOSbetnCFie2U4YWsWmkg2
-	L/euHg8Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qd3Q7e8yxSyHuD7DdiU5ycutPk9NojNxmVh9qMkLmQ8=; b=CrMgvhox1V/zz2QnptVdTf4DRZ
+	GPuFcsML0gnV1+A/z+Q/+pW39wRGRCRU0pOqPoBIcEHatqbOtxtqozDx/El2hjUcbjhYZFEAbrQSH
+	Sg+DPPPrZOvd9ENdNaDoeq1FXwK88OT0SNpEN4j0gC9hjtkryizybDNvr4gjx5vaQfZkh173TDL+e
+	8UegppOk7GkDVhLPoGI5gisOcRVni/snCBH3p8T79CoK39+yQTre3JP/5f6YSrM4vHFzzie75WLeO
+	oarsZoz8QjcBNkqssivBU8MoQ5aKkTd9dIuSv/5HMNW76ZOJaRoqHu0I94tSaafQzKqHj7QlRWWl+
+	p2PChTjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubbFN-00000004Yi7-3NZW;
-	Tue, 15 Jul 2025 08:42:46 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ubbMb-00000004ZsI-2O43;
+	Tue, 15 Jul 2025 08:50:13 +0000
+Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubapT-00000004UCV-0gSH;
-	Tue, 15 Jul 2025 08:16:00 +0000
-X-UUID: ecc2e988615311f09f706fa2197c6ceb-20250715
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Ex6rZ9aRnEjIjKkUay6G77jbmFwgan0iuINyfGJdTk4=;
-	b=qIYYY14gvVuTzdQHXcS4XgNFURJALqK5Tfs7LBvsp5eVZzP7MFLisryZ6L8X1o/08nKw86irrBT6GL0kNDQ6KNRI/8IdILSQSMbrg4RIkqwYpQKt2xu/IO1XK+ktWZqvit/5+tDAHv7LgMAvgYmHD1e2h2TudIqsO60SNzbyzRA=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.2,REQID:6e50fec6-86f5-4dbf-9277-fa772b081f34,IP:0,UR
-	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-25
-X-CID-META: VersionHash:9eb4ff7,CLOUDID:c082e149-3902-4ad6-a511-6378a8132fbf,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: ecc2e988615311f09f706fa2197c6ceb-20250715
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
-	(envelope-from <irui.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1312211515; Tue, 15 Jul 2025 01:15:53 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Tue, 15 Jul 2025 16:15:48 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Tue, 15 Jul 2025 16:15:48 +0800
-From: Irui Wang <irui.wang@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <nicolas.dufresne@collabora.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<linux-media@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Yunfei Dong <yunfei.dong@mediatek.com>, Longfei Wang
-	<longfei.wang@mediatek.com>, Irui Wang <irui.wang@mediatek.com>
-Subject: [PATCH] media: mediatek: encoder: memset encoder structure data
-Date: Tue, 15 Jul 2025 16:15:47 +0800
-Message-ID: <20250715081547.18076-1-irui.wang@mediatek.com>
-X-Mailer: git-send-email 2.46.0
+	id 1ubat9-00000004Usr-3Wip;
+	Tue, 15 Jul 2025 08:19:48 +0000
+Received: by mail-pg1-x529.google.com with SMTP id 41be03b00d2f7-b31d578e774so5188979a12.1;
+        Tue, 15 Jul 2025 01:19:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1752567587; x=1753172387; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=qd3Q7e8yxSyHuD7DdiU5ycutPk9NojNxmVh9qMkLmQ8=;
+        b=GIJMaFCWq2kESpJ/BbY2PtFPPDN9Rd08QQd1US5Koz9qS/+Z9wf6pRYys5/qa8rlrT
+         K82/w4D3PAmTKDHIYV29cOnKf05zdcGQsz4zZw4FG40+6sBvoFnd6Pf5h4H0KV9iPRs2
+         y7nwO0il4y+ziHruxBx9fF4+hXqQW7r7tlHBQZ1li+58+N/UhmGRn6lTKfEzCf8Mq5Mk
+         dbl/TgXfm5Ifum3kOdIF06WM3nYaQYl+YR9lVIr4kbADloMBvhy+tbDhD1cOGViCyBe9
+         MZrVmBsdbZj5AaGd7TY0h/82wyXlNAoa/gKLwjmjCq64SZxhruGJfzwn0nESqSdblvnd
+         Dh/Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1752567587; x=1753172387;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=qd3Q7e8yxSyHuD7DdiU5ycutPk9NojNxmVh9qMkLmQ8=;
+        b=ezzzFTdLRJKphZvpOMDrqDtKWSbWuYY2YSZFwhE/ukslyNrxOONY58kBlsyBCcHwmq
+         3+/VzD/4dgaYFrIGZJTWf9Mj4NuQpsKGUTFW6lbaxLLE96tC7DY+o5Oy8O4oMo0mouOY
+         kTtgOtTU6SD4Hs2BbdpYnIqzj+uHdnzvtg2IqFDzKzh3wYVr28KQEi09zgxfqDsUsddT
+         9DPoJ79VY4vhrrqPTrq3TBMMOo+n4lVb7EP4wJwF/4TCV+wN0UQ1qPocdGyRdbYWMnSM
+         /4TsTJ6E+eHZ6kDF2T3yOJuaOX82p/2k5v7TbPvcM/np9Z9AcUPwajkdXKhzJ8KJhJU8
+         ypog==
+X-Forwarded-Encrypted: i=1; AJvYcCUiGbOm0RvSXvCTjoM0dLKCzbI/Kq3WNTCmEKRc9aWESRWqkt+bh2ilo0p6PDCJwIIauDT62lkWXEhcggvbxXU=@lists.infradead.org, AJvYcCW9N33koVvO0aUnj6LwfUG8OzEg1KCtCMnLY4vg8tb90o6PB4PpcEbayFNlfO40EojTElp2xAu/uoSoFEbTewdA@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzjh1Jgi7c8VCmLoKM3LByhsPqcfg8DQzXIUklR57A0vTCqViLp
+	6iQK8cZrNQRUvANEjGxptZ/EK/320kqfUqZVN2ocAblagFfbVa4nYKzBIor+Ch8r4S0GjohZaHz
+	NwmypXQibA9bT3ovNdTv2o6GzAzGM+VA=
+X-Gm-Gg: ASbGncs+KvbFzub+YLpFainrb42+6Ms5WxDAOSKm7ojy/7/gP1dXFyo0OyatJ8CLwH/
+	AICrQwgdveM1vE2b/YCYEnSeTaN5BzBWROgKuq0lXtSTApewD21p/ZfWybDPyUbikc/hwD5YeG4
+	qXnG8UWVI33kDS9NHsMPYbLElMpx1uCiAWBnUSpbnQeCcvNDFKq+kWzRJL3wxk6ftnotjRTuIY6
+	ttU
+X-Google-Smtp-Source: AGHT+IGWXqaNFBkxVhxjoAh37jIlv8IOlz+RFpSYTmKmB9oiEiFNbWlyvsTEKG4zuAWGwP4uJ+VRZLGBGphF2VcEpBY=
+X-Received: by 2002:a17:90b:17ca:b0:30a:3e8e:ea30 with SMTP id
+ 98e67ed59e1d1-31c8f9ba0f7mr4097681a91.11.1752567586749; Tue, 15 Jul 2025
+ 01:19:46 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+References: <20250712210448.429318-1-rosenp@gmail.com> <20250712210448.429318-2-rosenp@gmail.com>
+In-Reply-To: <20250712210448.429318-2-rosenp@gmail.com>
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Date: Tue, 15 Jul 2025 10:19:34 +0200
+X-Gm-Features: Ac12FXxwU_5cXPbe6k9-QU1wlgWyLzCeGzXcdBi-Vlkd5rOu3WF_rrVJJ5NIIf4
+Message-ID: <CAMhs-H9NuX6m0zOM+6ZcX5r0aq_oxbYkbpCTAB4sT6sea4=Osg@mail.gmail.com>
+Subject: Re: [PATCHv4 wireless-next 1/7] wifi: rt2x00: add COMPILE_TEST
+To: Rosen Penev <rosenp@gmail.com>
+Cc: linux-wireless@vger.kernel.org, Johannes Berg <johannes@sipsolutions.net>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Stanislaw Gruszka <stf_xl@wp.pl>, 
+	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, 
+	"open list:MIPS" <linux-mips@vger.kernel.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250715_011559_205262_4DCE94F1 
-X-CRM114-Status: GOOD (  10.94  )
+X-CRM114-CacheID: sfid-20250715_011947_881650_E2726AB3 
+X-CRM114-Status: GOOD (  11.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,58 +100,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Utilized memset to set all bytes of encoder structure to zero,
-this prevents any undefined behavior due to uninitialized use.
+On Sat, Jul 12, 2025 at 11:05=E2=80=AFPM Rosen Penev <rosenp@gmail.com> wro=
+te:
+>
+> While this driver is for a specific arch, there is nothing preventing it
+> from being compiled on other platforms.
+>
+> Allows the various bots to test compilation and complain if a patch is
+> bad.
+>
+> Signed-off-by: Rosen Penev <rosenp@gmail.com>
+> Acked-by: Stanislaw Gruszka <stf_xl@wp.pl>
+> ---
+>  drivers/net/wireless/ralink/rt2x00/Kconfig | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+Reviewed-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 
-Signed-off-by: Irui Wang <irui.wang@mediatek.com>
----
- .../media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c  | 5 +++++
- 1 file changed, 5 insertions(+)
-
-diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
-index a01dc25a7699..ecac1aec7215 100644
---- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
-+++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
-@@ -886,6 +886,7 @@ static int vb2ops_venc_start_streaming(struct vb2_queue *q, unsigned int count)
- 			return 0;
- 	}
- 
-+	memset(&param, 0, sizeof(param));
- 	mtk_venc_set_param(ctx, &param);
- 	ret = venc_if_set_param(ctx, VENC_SET_PARAM_ENC, &param);
- 	if (ret) {
-@@ -1021,12 +1022,14 @@ static int mtk_venc_encode_header(void *priv)
- 	struct mtk_vcodec_mem bs_buf;
- 	struct venc_done_result enc_result;
- 
-+	memset(&enc_result, 0, sizeof(enc_result));
- 	dst_buf = v4l2_m2m_dst_buf_remove(ctx->m2m_ctx);
- 	if (!dst_buf) {
- 		mtk_v4l2_venc_dbg(1, ctx, "No dst buffer");
- 		return -EINVAL;
- 	}
- 
-+	memset(&bs_buf, 0, sizeof(bs_buf));
- 	bs_buf.va = vb2_plane_vaddr(&dst_buf->vb2_buf, 0);
- 	bs_buf.dma_addr = vb2_dma_contig_plane_dma_addr(&dst_buf->vb2_buf, 0);
- 	bs_buf.size = (size_t)dst_buf->vb2_buf.planes[0].length;
-@@ -1143,6 +1146,7 @@ static void mtk_venc_worker(struct work_struct *work)
- 	struct venc_done_result enc_result;
- 	int ret, i;
- 
-+	memset(&enc_result, 0, sizeof(enc_result));
- 	/* check dst_buf, dst_buf may be removed in device_run
- 	 * to stored encdoe header so we need check dst_buf and
- 	 * call job_finish here to prevent recursion
-@@ -1175,6 +1179,7 @@ static void mtk_venc_worker(struct work_struct *work)
- 		frm_buf.fb_addr[i].size =
- 				(size_t)src_buf->vb2_buf.planes[i].length;
- 	}
-+	memset(&bs_buf, 0, sizeof(bs_buf));
- 	bs_buf.va = vb2_plane_vaddr(&dst_buf->vb2_buf, 0);
- 	bs_buf.dma_addr = vb2_dma_contig_plane_dma_addr(&dst_buf->vb2_buf, 0);
- 	bs_buf.size = (size_t)dst_buf->vb2_buf.planes[0].length;
--- 
-2.46.0
-
+Thanks,
+    Sergio Paracuellos
 
