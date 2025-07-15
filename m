@@ -4,85 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7757CC83F17
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jul 2025 16:07:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71BBCC83F17
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jul 2025 19:14:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ldbJHSGD6BN1tNm6JoquLLyny5cpnWSKdxNIJd0j03I=; b=yyhuSYsRfAlrogv93tQVPkarnr
-	fvp53PorCaaK4TnUgw7XBLizwmu1b0MQhxPsRv1buhLncZ4RnTcEoWW725wZtPvCVvdMW0aLPHUs9
-	e5rV/T5PqzGwtFPCJS/TGbB4JemBKRZQeSKuV+94mC0QlriPHo6ZH0XdqpnS7N186rt1EjfJQa0CU
-	oQI94eey9tkwFQgpplNXNpkmt1/j3sRJxkd7Q+6Xv7N9ZcS/MRGn4iBU7tgTNjXlJjT7ZQzRY03Ck
-	zYsaBvI/YRGleXofuNeej2VIkpT8e9qiOKElVzF1Cd+G/7pFrXfID6tOPtT9WwQNxqNawEmDLew+f
-	jrfa6jvQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=D4Wu2Z2BqyeLXsNb9dBKbcMbvmQXFXIOZvdUQX7W/Co=; b=UuD+MYLu3+q+1ZnENdWVDNCF2/
+	UtDMTcrJzPnX09kBp/27FJxASSgLaJFmDI0zbAhlhavUbCdIEr6KB/0gH6Uh2ioazMoZQzUbfpDOL
+	IBtW9ekYNXGM05o4Djo0Fzr+lIS1epIg9dZr9OyxBUPaDcp+r9ZQ1/fGq6DjnvvWPsb1YOgsC+eEa
+	EtsHNhhhfwGMlV0e4YfMYnR+g8y/gJ8nabAMsh/p5MU4wmRtpU8QJuzKNIaUEoc8FM++vsj5NCdNF
+	WdGCYP9oFD2rc3Op32Z7Glxsse+5o8WmnDL1FAdObvpRLwg7hyJt+Qv9YqE0otzRZiXHbkWJ7t4GS
+	wPXGm6jQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubiBe-00000005hPI-3WAE;
-	Tue, 15 Jul 2025 16:07:22 +0000
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	id 1ubl79-00000005yH3-0CuS;
+	Tue, 15 Jul 2025 19:14:55 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubgh6-00000005Nkc-0gv2;
-	Tue, 15 Jul 2025 14:31:45 +0000
-Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 56FDZCCb003484;
-	Tue, 15 Jul 2025 14:31:34 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
-	:content-transfer-encoding:date:from:message-id:mime-version
-	:subject:to; s=corp-2025-04-25; bh=ldbJHSGD6BN1tNm6JoquLLyny5cpn
-	WSKdxNIJd0j03I=; b=REd6qW+sb+kmKnx6614RWXCTVg0BPjgC6zke0szCjLoSg
-	/UmTm7fKZ07+GKrj6qBW45uVxwxOb8AvS7Xub78zLu2Ux/GfSiDDfzT/bP/Qky2S
-	Ate2pCo43c+GshO/pNbUdX28RKooljTAe8pEjant68ZdnsZMrDxeraKPZ1JvmzMk
-	ijaMBCtEiEgXLoxhmnP8GuDyz5tXRkmAMZnu1/oLuXL6B6tc1rsdK5hVIAhMYL2g
-	27WdCnts69IAE4eQzhs4S5K0cv5p57+cnsqpQ2aJPmxlsC6rKQWPlNIuE3hzfSTe
-	KbHUYHFY6lQ+w6KQH77qD8Gsfu/w4daP8/gsM3v1A==
-Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta02.appoci.oracle.com [147.154.18.20])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 47uhx7y0sf-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 15 Jul 2025 14:31:34 +0000 (GMT)
-Received: from pps.filterd (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 56FDkV2B039729;
-	Tue, 15 Jul 2025 14:31:34 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
-	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 47ue5a2mmg-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 15 Jul 2025 14:31:33 +0000
-Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 56FEVXSX003538;
-	Tue, 15 Jul 2025 14:31:33 GMT
-Received: from ca-dev110.us.oracle.com (ca-dev110.us.oracle.com [10.129.136.45])
-	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id 47ue5a2mjp-1;
-	Tue, 15 Jul 2025 14:31:33 +0000
-From: Alok Tiwari <alok.a.tiwari@oracle.com>
-To: sayantan.nandy@airoha.com, lorenzo@kernel.org, andrew+netdev@lunn.ch,
-        davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
-        pabeni@redhat.com, horms@kernel.org, netdev@vger.kernel.org,
-        linux-mediatek@lists.infradead.org
-Cc: alok.a.tiwari@oracle.com, linux-arm-kernel@lists.infradead.org
-Subject: [PATCH net v2] net: airoha: fix potential use-after-free in airoha_npu_get()
-Date: Tue, 15 Jul 2025 07:30:58 -0700
-Message-ID: <20250715143102.3458286-1-alok.a.tiwari@oracle.com>
-X-Mailer: git-send-email 2.46.0
-MIME-Version: 1.0
+	id 1ubhmb-00000005d23-3nbm;
+	Tue, 15 Jul 2025 15:41:29 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 1672861456;
+	Tue, 15 Jul 2025 15:41:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A394FC4CEE3;
+	Tue, 15 Jul 2025 15:41:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1752594088;
+	bh=roilGmIfKYzXuFiRYwvO0+MCsCf6IWm8MYDEAQnmBAI=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=pQOsRPUg5Jz/V95mUCNaqMAGPHagKaUjLxLNXUM5i9JUT9YIRYP6qcjgRGo5pIsN1
+	 UEoXjE0vMvamFXxvLqt7WOQ+KrSxj7B+TnxC9tZW3pmU2lxF5sraKFcgUhZg0d7Giq
+	 tmOLwnn6G+cp6N34u9NXuiQWD9zzEZzXg9CjWROK4dC0Nvyquoxii02s40xSEQNGAQ
+	 TsniATFy0bW+GdVcNAnHeHQfF0SjtWZr7+VblN7mLy0v9ZM0qD++W3xVJfDfqesI+P
+	 wo9D+Nk1gb+xsaxDENYDspnGPmVXtpmK38zB5h1AtUXluAYclUGap7pdOHFr4yr1jB
+	 Nppi7p1R+T7lg==
+Date: Tue, 15 Jul 2025 10:41:27 -0500
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-07-15_03,2025-07-15_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0 mlxscore=0 adultscore=0
- spamscore=0 suspectscore=0 phishscore=0 mlxlogscore=999 malwarescore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2505160000
- definitions=main-2507150133
-X-Authority-Analysis: v=2.4 cv=auKyCTZV c=1 sm=1 tr=0 ts=68766646 b=1 cx=c_pps a=e1sVV491RgrpLwSTMOnk8w==:117 a=e1sVV491RgrpLwSTMOnk8w==:17 a=Wb1JkmetP80A:10 a=VwQbUJbxAAAA:8 a=yPCof4ZbAAAA:8 a=OuZqvr71sMSAxPmhYTsA:9 cc=ntf awl=host:13600
-X-Proofpoint-ORIG-GUID: yq85vw0bhCZ9pqyw5f9UCXT-YXd9hfet
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzE1MDEzMyBTYWx0ZWRfX3lXcLIo5kx/O Q/PXuvI1OaA1ufqy8ECfGaZ6oarJI4vX77QsAgAx0s21XJVbIdN3wcN15n9xvDRILIG+RrcKJa+ J2Y14NXBdmOfmNJgbIR2YvGr3gvDKP4aDIRRj04iYpgNjj9+csBc7+ygOUEqdNyb9e8E+p141dR
- bWYu/LgItRg8HBYDHKmAxJsub4ypZ+YLXcbF815NZfuCeAunMmxBLOkVqYYbxO0jgQFbkYRWsKB Lp7L9Y3erWXH6+cUbawrIQg8syZSe1N8Oh9sZwloolD0pHO3NvIgPCdL0GbDLXbGUQocSBEbQsd 4E6u5QPvXdXU4ASSZSzB1yysIq3oW86xCbQAOn1idjRagGxeNChpjWPkcbHxcIwQWFMa2nsEZoK
- trdKqZLUC+DlSIKOzpv263BprOWBn2/fDjopK39l/J6GVB3mQNenJZlORcYJmScmP2LI0ryy
-X-Proofpoint-GUID: yq85vw0bhCZ9pqyw5f9UCXT-YXd9hfet
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250715_073144_316648_EAEDF4C7 
-X-CRM114-Status: GOOD (  13.38  )
+MIME-Version: 1.0
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: broonie@kernel.org, krzk+dt@kernel.org, devicetree@vger.kernel.org, 
+ conor+dt@kernel.org, linux-mediatek@lists.infradead.org, 
+ lgirdwood@gmail.com, kernel@collabora.com, wenst@chromium.org, 
+ linux-arm-kernel@lists.infradead.org, lee@kernel.org, 
+ matthias.bgg@gmail.com, linux-kernel@vger.kernel.org
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250715140224.206329-4-angelogioacchino.delregno@collabora.com>
+References: <20250715140224.206329-1-angelogioacchino.delregno@collabora.com>
+ <20250715140224.206329-4-angelogioacchino.delregno@collabora.com>
+Message-Id: <175259408592.1379929.8736544816494320074.robh@kernel.org>
+Subject: Re: [PATCH v5 3/8] dt-bindings: regulator: Document MediaTek
+ MT6363 PMIC Regulators
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,46 +72,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-np->name was being used after calling of_node_put(np), which
-releases the node and can lead to a use-after-free bug.
-Previously, of_node_put(np) was called unconditionally after
-of_find_device_by_node(np), which could result in a use-after-free if
-pdev is NULL.
 
-This patch moves of_node_put(np) after the error check to ensure
-the node is only released after both the error and success cases
-are handled appropriately, preventing potential resource issues.
+On Tue, 15 Jul 2025 16:02:19 +0200, AngeloGioacchino Del Regno wrote:
+> Add bindings for the regulators found in the MediaTek MT6363 PMIC,
+> usually found in board designs using the MT6991 Dimensity 9400 and
+> on MT8196 Kompanio SoC for Chromebooks, along with the MT6316 and
+> MT6373 PMICs.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  .../regulator/mediatek,mt6363-regulator.yaml  | 193 ++++++++++++++++++
+>  1 file changed, 193 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6363-regulator.yaml
+> 
 
-Fixes: 23290c7bc190 ("net: airoha: Introduce Airoha NPU support")
-Signed-off-by: Alok Tiwari <alok.a.tiwari@oracle.com>
----
-v1->v2
-call of_node_put(np) after printing np->name, as per Andrew's comment.
-https://lore.kernel.org/all/555d7fb6-091e-4c10-bfea-85898e644481@lunn.ch
----
- drivers/net/ethernet/airoha/airoha_npu.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+My bot found errors running 'make dt_binding_check' on your patch:
 
-diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ethernet/airoha/airoha_npu.c
-index 0e5b8c21b9aa8..1e58a4aeb9a0c 100644
---- a/drivers/net/ethernet/airoha/airoha_npu.c
-+++ b/drivers/net/ethernet/airoha/airoha_npu.c
-@@ -401,12 +401,13 @@ struct airoha_npu *airoha_npu_get(struct device *dev, dma_addr_t *stats_addr)
- 		return ERR_PTR(-ENODEV);
- 
- 	pdev = of_find_device_by_node(np);
--	of_node_put(np);
- 
- 	if (!pdev) {
- 		dev_err(dev, "cannot find device node %s\n", np->name);
-+		of_node_put(np);
- 		return ERR_PTR(-ENODEV);
- 	}
-+	of_node_put(np);
- 
- 	if (!try_module_get(THIS_MODULE)) {
- 		dev_err(dev, "failed to get the device driver module\n");
--- 
-2.46.0
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+Error: Documentation/devicetree/bindings/regulator/mediatek,mt6363-regulator.example.dts:27.21-22 syntax error
+FATAL ERROR: Unable to parse input tree
+make[2]: *** [scripts/Makefile.dtbs:131: Documentation/devicetree/bindings/regulator/mediatek,mt6363-regulator.example.dtb] Error 1
+make[2]: *** Waiting for unfinished jobs....
+make[1]: *** [/builds/robherring/dt-review-ci/linux/Makefile:1525: dt_binding_check] Error 2
+make: *** [Makefile:248: __sub-make] Error 2
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250715140224.206329-4-angelogioacchino.delregno@collabora.com
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
 
 
