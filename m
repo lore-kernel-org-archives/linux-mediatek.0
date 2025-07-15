@@ -4,80 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C697C83F17
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jul 2025 02:17:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41C39C83F1A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jul 2025 03:11:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tDeo0yq4IgKjH0KpWx8B87yEcLpD4MkC2r0r05DtPkw=; b=A/V4He5yCUahHX0EPojcpRJ7tU
-	1Ndo8Z2VGwCNvoflFOGpI6op8UcQbITZUkZnACoMu2+QBwCZ2YA+FEjq9X7nE9+JyrVIK5d35RF1W
-	fgNaHnzbIjYZdAj9Wu0RpvaVtIfAwFCw830/CFOGn8qrfFVke5FrQZafdufBDyiNrpNImYmMkS5cf
-	tYIzzYu2k7ZAXV/jOKHuv6hXQ7/k+0+YWvhHNBxEG6+cKCx1bHdXN12f2qfq8MSdLQ9q6IwJdkBYQ
-	egFfItM0JaUAXf6UmkfvJ1RhEOXYM8zGHLeNqlaQefbVS8Z8CgTTx5SLYYQ6iM9xk1OE2WEp+ZTli
-	PJrhwFKw==;
+	bh=BvlKpwDw0JnWdLrBgD0SyEbx1SEdPw/yjXNO5pH9DJo=; b=3BA5/CCXE8mNRFqFRq25v/hOVC
+	oYA65m7aABSzG5gTE8CGwM8q+7UfEHe+wa7oqMkTqITTPFkA+TR6yKXVZakVs+tbRR4OqhUA64G5Y
+	Z9no8Ncgy8vFqn0ceDiwyFdkAM+teqy77SNRA1l1oE8V7+OIEwiMAX1PuaQKSitJMDmwlIsh8Q9KI
+	zH2sQij21bNDHEfDeh2dZpiEAOw0lfDMggFGc6Fc3Q/ko5wLfPwpfbHmULFQW9z/1NIrLlFmXWMsE
+	b8zXYTwXqyTR5Gn3uoWPOZcaV2JTqST2tei7q/5OpwAhfV8YIVvsPhgZBay1gtMdaj0loLeFYmVwa
+	G74Heaxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubVEZ-00000003maH-0QFP;
-	Tue, 15 Jul 2025 02:17:31 +0000
-Received: from mgamail.intel.com ([198.175.65.12])
+	id 1ubW4G-00000003qj0-0a8T;
+	Tue, 15 Jul 2025 03:10:56 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubVE1-00000003mW3-42OK;
-	Tue, 15 Jul 2025 02:16:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1752545819; x=1784081819;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=jmxCqU7vT9wDGVqn13z5bf8xdfrCR0BgKtLcYkpE5QY=;
-  b=Kv8CNlw7GI46QnSGiuRs8YNMmYwUjfyifId4Ox2hmW9GzIPujfHLk4M3
-   zgPBgAdTEz5n9jydjLD2t56AOMQMrxk2AotZz9Phx5D1frIMq8gwYY0Ox
-   MDgkVNO/YadohwRk7ufXuRlS2gKRFS9VfOM1PYbgQunE7H21dje+7yI0Y
-   s+dfcbEwMduEC1fCBjxDgHW2pEilZkN7PBvz0luApL0GmID6120OhO6Li
-   r5VHtyYUYAYAbH1KtQHNFPATa7HzoiiHug87u+tDNmTAbFeJWksf1nE7h
-   PiKrsP0GqnTjO/6b9A6vp9/hwY7rMQiMJHtcOqW66gY5mEjsmnV9USSQq
-   g==;
-X-CSE-ConnectionGUID: JgT7zTRlRMW6Du3xz3XIzg==
-X-CSE-MsgGUID: 1dK9WN6ZTR62jZXypDGRVQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11491"; a="66202045"
-X-IronPort-AV: E=Sophos;i="6.16,312,1744095600"; 
-   d="scan'208";a="66202045"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
-  by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Jul 2025 19:16:56 -0700
-X-CSE-ConnectionGUID: YPJe4lDXQxS/h0wBLeMU/w==
-X-CSE-MsgGUID: M9YyJfrZSWqedUuQIlDCJw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,312,1744095600"; 
-   d="scan'208";a="157813800"
-Received: from lkp-server01.sh.intel.com (HELO 9ee84586c615) ([10.239.97.150])
-  by fmviesa010.fm.intel.com with ESMTP; 14 Jul 2025 19:16:52 -0700
-Received: from kbuild by 9ee84586c615 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1ubVDt-0009Y3-3C;
-	Tue, 15 Jul 2025 02:16:49 +0000
-Date: Tue, 15 Jul 2025 10:16:17 +0800
-From: kernel test robot <lkp@intel.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org
-Cc: oe-kbuild-all@lists.linux.dev, lee@kernel.org, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, lgirdwood@gmail.com,
-	broonie@kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	kernel@collabora.com
-Subject: Re: [PATCH v2 4/8] regulator: Add support for MediaTek MT6363 SPMI
- PMIC Regulators
-Message-ID: <202507150934.VLFQsCyK-lkp@intel.com>
-References: <20250707134451.154346-5-angelogioacchino.delregno@collabora.com>
+	id 1ubW1m-00000003qRr-2XY1;
+	Tue, 15 Jul 2025 03:08:22 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 5A36F61485;
+	Tue, 15 Jul 2025 03:08:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DB945C4CEED;
+	Tue, 15 Jul 2025 03:08:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1752548900;
+	bh=Een49Bjr0iYL6xkrFd8mI1xoBasVFRuwmM1PSNhGWAA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=bNbxOySX9+WgAkBnliDFYcCRgmpP/TPSU3wrJUCaacCjsapiFXEP/1NN2K1O1BjJJ
+	 cqmw46GL3CawwfaWpuJRNvvXoctATh9bUjuUG9NHFkEwr56ejQtD3kqoceHoEdKVgU
+	 dOCa1hsrlq66v5dhjujUxuKTtiVIWnIeAijMwbC5dT63ScRBiv3EPEoLFIMQaRe7d+
+	 Ewn7i8lwqsnQ+rmm6YeG1Yosrmrsp1T+Ct8+1Q+TTFs6cZVRORVnRm0K5NsBfoV1Iz
+	 w2BDw7fpS03XXEWpzCuSTMg3fBJ8NSsmedAVd11e9Eekov3PbZCVrpSeUtmeZTIdcQ
+	 dpcX5Xi9lCVbw==
+Date: Mon, 14 Jul 2025 22:08:19 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Cathy Xu <ot_cathy.xu@mediatek.com>
+Cc: linux-mediatek@lists.infradead.org, Yong Mao <yong.mao@mediatek.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Wenbin Mei <Wenbin.Mei@mediatek.com>,
+	linux-arm-kernel@lists.infradead.org,
+	Lei Xue <lei.xue@mediatek.com>, linux-gpio@vger.kernel.org,
+	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Sean Wang <sean.wang@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Axe Yang <Axe.Yang@mediatek.com>, linux-kernel@vger.kernel.org,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>
+Subject: Re: [PATCH v2 1/3] dt-bindings: pinctrl: mediatek: Add support for
+ mt8189
+Message-ID: <175254889827.4140322.15910226048522473514.robh@kernel.org>
+References: <20250711094513.17073-1-ot_cathy.xu@mediatek.com>
+ <20250711094513.17073-2-ot_cathy.xu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250707134451.154346-5-angelogioacchino.delregno@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250714_191658_044867_8C36C5FF 
-X-CRM114-Status: GOOD (  14.04  )
+In-Reply-To: <20250711094513.17073-2-ot_cathy.xu@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,109 +78,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi AngeloGioacchino,
 
-kernel test robot noticed the following build errors:
+On Fri, 11 Jul 2025 17:44:57 +0800, Cathy Xu wrote:
+> Add the new binding document for pinctrl on MediaTek mt8189.
+> 
+> Signed-off-by: Cathy Xu <ot_cathy.xu@mediatek.com>
+> ---
+>  .../pinctrl/mediatek,mt8189-pinctrl.yaml      | 213 ++++++++++++++++++
+>  1 file changed, 213 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt8189-pinctrl.yaml
+> 
 
-[auto build test ERROR on broonie-regulator/for-next]
-[also build test ERROR on lee-mfd/for-mfd-next lee-mfd/for-mfd-fixes lee-leds/for-leds-next linus/master v6.16-rc6 next-20250714]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
-url:    https://github.com/intel-lab-lkp/linux/commits/AngeloGioacchino-Del-Regno/dt-bindings-regulator-Document-MediaTek-MT6316-PMIC-Regulators/20250707-214911
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
-patch link:    https://lore.kernel.org/r/20250707134451.154346-5-angelogioacchino.delregno%40collabora.com
-patch subject: [PATCH v2 4/8] regulator: Add support for MediaTek MT6363 SPMI PMIC Regulators
-config: openrisc-allyesconfig (https://download.01.org/0day-ci/archive/20250715/202507150934.VLFQsCyK-lkp@intel.com/config)
-compiler: or1k-linux-gcc (GCC) 15.1.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250715/202507150934.VLFQsCyK-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202507150934.VLFQsCyK-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
-   drivers/regulator/mt6363-regulator.c: In function 'mt6363_vemc_set_voltage_sel':
->> drivers/regulator/mt6363-regulator.c:457:23: error: implicit declaration of function 'FIELD_PREP' [-Wimplicit-function-declaration]
-     457 |                 sel = FIELD_PREP(MT6363_RG_VEMC_VOSEL_1_MASK, sel);
-         |                       ^~~~~~~~~~
-   drivers/regulator/mt6363-regulator.c: In function 'mt6363_vemc_get_voltage_sel':
->> drivers/regulator/mt6363-regulator.c:489:23: error: implicit declaration of function 'FIELD_GET' [-Wimplicit-function-declaration]
-     489 |                 ret = FIELD_GET(MT6363_RG_VEMC_VOSEL_1_MASK, sel);
-         |                       ^~~~~~~~~
-
-
-vim +/FIELD_PREP +457 drivers/regulator/mt6363-regulator.c
-
-   432	
-   433	static int mt6363_vemc_set_voltage_sel(struct regulator_dev *rdev, unsigned int sel)
-   434	{
-   435		const u16 tma_unlock_key = MT6363_TMA_UNLOCK_VALUE;
-   436		struct regmap *regmap = rdev->regmap;
-   437		unsigned int val;
-   438		u16 mask;
-   439		int ret;
-   440	
-   441		ret = regmap_read(rdev->regmap, MT6363_TOP_TRAP, &val);
-   442		if (ret)
-   443			return ret;
-   444	
-   445		if (val > 1)
-   446			return -EINVAL;
-   447	
-   448		/* Unlock TMA for writing */
-   449		ret = regmap_bulk_write(rdev->regmap, MT6363_TOP_TMA_KEY_L,
-   450					&tma_unlock_key, sizeof(tma_unlock_key));
-   451		if (ret)
-   452			return ret;
-   453	
-   454		/* If HW trapping value is 1, use VEMC_VOSEL_1 instead of VEMC_VOSEL_0 */
-   455		if (val == 1) {
-   456			mask = MT6363_RG_VEMC_VOSEL_1_MASK;
- > 457			sel = FIELD_PREP(MT6363_RG_VEMC_VOSEL_1_MASK, sel);
-   458		} else {
-   459			mask = rdev->desc->vsel_mask;
-   460		}
-   461	
-   462		/* Function must return the result of this write operation */
-   463		ret = regmap_update_bits(regmap, rdev->desc->vsel_reg, mask, sel);
-   464	
-   465		/* Unconditionally re-lock TMA */
-   466		val = 0;
-   467		regmap_bulk_write(rdev->regmap, MT6363_TOP_TMA_KEY_L, &val, 2);
-   468	
-   469		return ret;
-   470	}
-   471	
-   472	static int mt6363_vemc_get_voltage_sel(struct regulator_dev *rdev)
-   473	{
-   474		unsigned int sel, trap;
-   475		int ret;
-   476	
-   477		ret = regmap_read(rdev->regmap, rdev->desc->vsel_reg, &sel);
-   478		if (ret)
-   479			return ret;
-   480	
-   481		ret = regmap_read(rdev->regmap, MT6363_TOP_TRAP, &trap);
-   482		if (ret)
-   483			return ret;
-   484	
-   485		/* If HW trapping value is 1, use VEMC_VOSEL_1 instead of VEMC_VOSEL_0 */
-   486		if (trap > 1)
-   487			return -EINVAL;
-   488		else if (trap == 1)
- > 489			ret = FIELD_GET(MT6363_RG_VEMC_VOSEL_1_MASK, sel);
-   490		else
-   491			ret = sel & rdev->desc->vsel_mask;
-   492	
-   493		return ret;
-   494	}
-   495	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
 
