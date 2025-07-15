@@ -4,103 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B03A4C83F22
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jul 2025 14:51:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8FB3C83F22
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jul 2025 15:01:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VvPKW23vcGHWbJZ7ulKit+LygcP46v08cpOClJit2gQ=; b=BQ6QJiDAhyxgb2s7A8i4AN+pHF
-	WHRW2RxXngFfrdLJt/PbKEPK7qnSQzzHTNeyu3Fd+5whp/TrF0Dq3Dk8kn6Oux7EbITQ8oC2plMfL
-	AhSfcwmk5dKnyGbrqe3TFjDjtxNNmnRv9nsdv9Qkv6IUIqbK7DUrU5uTay/srNiTKd7pAGjOXRM84
-	Ek6GvXLTlAqwEhSS4gH/EsumlQV446dW+ireio71AQi5p8bVRv1Ou+6hhIxsVmjdSMF71jcQ8Chi3
-	AvBVBNBi68i8GAGxU63lPkpmDNbcH5C86Lb7R6OxrO4lx5TWMpZNWEkfrRWdNzy8IdbQ2N+Ba5UoU
-	ecctELFg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mknczMVn4WXftHGSUEmj3LcVZpLgNwJJ6ecQLoslB7o=; b=YeqrB0VTDVTFELEWNcsE7C4+Qk
+	Zbn7qWK6XT/HgrLcIBAMhmrvLohT6lhHdBdfEZfIk9bxLXtLDquuH8jwOBilU8mEacxYNE0cql5TQ
+	R7xKA2/ArEv4xf4Guwm5SlqUdQ8IvZxmIxTBYScj5whNTBh3TqCrotuN16EEiiGU/IAIncwVf3H6o
+	vfxlojAbO2BWn7R3ljA99ObfmMCzfvouYCXLFHoL77BBtTActrEcgvjRrklNU5lS5+QmmTh+Qe4QB
+	RPYFIbTXIzJqWNmpVQP6EYzEVPTZ0OIICQbWWu9fP8aqxo1ucso2ZE50eqWWwKoY+cIj+dFzZTPKW
+	dBoiwmag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubh0Z-00000005S3g-17zX;
-	Tue, 15 Jul 2025 14:51:51 +0000
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	id 1ubhAL-00000005VNt-2K6s;
+	Tue, 15 Jul 2025 15:01:57 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubffz-00000005CaM-2fjc
-	for linux-mediatek@lists.infradead.org;
-	Tue, 15 Jul 2025 13:26:32 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-3b49ffbb31bso3120355f8f.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 15 Jul 2025 06:26:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1752585990; x=1753190790; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=VvPKW23vcGHWbJZ7ulKit+LygcP46v08cpOClJit2gQ=;
-        b=x1HeYETGAtwXCgwEC8Xm0bUiNtHP77PWUyKqOuRVBruWNm84VsBk1wuodRUc+p91nX
-         02mArV9hqnWwU+eVEFnMQwHs5gmIqBSCwmxANMx1D7ZK6wyi5A0mldh+X2arECOOjcK4
-         y1qXb4t337wdha6wGc0KUZ05y7JL2RRF81gy8lyDdmoRv11yktNdg655MhKDh7MJX9DZ
-         4nDwPnzjRmJ7zYwRGPCBLzGh8+/uyO/1OK0cQ+u+qnzQe9m7TSNILZoTGQGejNher+NX
-         jHEqwGV8byKqZHLbI+t7/JbsWV4SS7zbw23YIPI2HuDMs/UJtvJnUgixP/HLlSdPgFVs
-         t/uQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1752585990; x=1753190790;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=VvPKW23vcGHWbJZ7ulKit+LygcP46v08cpOClJit2gQ=;
-        b=AYDdxqIdZPEJXbowft/9V3eVGqFDQMv8WraPfJ7grzzOOogOD97/TYwFQxKAWQ/wwN
-         idLXlgPAQfQAgFa6B2ZNLOYNE/WCXgqfP4tcM9elO9+TMAgeRphlOvJqLE+EI6y2D34+
-         uRipSjD9CPk80xYLxjlOwGQr1STfvr9ColgiTrHWb4gvxlR3kWETrxFsPNfUALKWEEas
-         cr+M4fOI9DOfo+Zrisz3F/ouN2lP6ulPMIBPXKCc1woTEm9DP5mXdnQI1+Pa19+C4z7b
-         VPj2ZsaCnOE1YNf4oKOHtYAuImalOrwlIyv411KhsluSEWo87RPpUdi5CZu6P2MUGuA4
-         p9nw==
-X-Forwarded-Encrypted: i=1; AJvYcCXJe6aWVR2dfsxUwsMo3p2xVvwqNmKmKoluu9si0hthemuQZtFPKm9S94Qv6FYEpu3HMXcb3XOlAwbXn9eeAQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YynJkjpcVCNiLaFXc9qlz20HvGVenc/LHfnfnAnNxQ+kNuNiMZa
-	5oA6sjdwEuMXtyZvGz/66In6yRu9rmw4phOtzXWTs2DUC7oL2IQAaaHilqv1coy2LWw=
-X-Gm-Gg: ASbGncu21aQ1Lj59sTXWoX7weS6ZNRxFCcir1eOwLVm4Sp5DCZY7Anzg078rhU5Q2HR
-	hq0nj92wdiFhenv68sVjIkm4k+Prewp9ww78OvgRPrQgjvzetour+u74NIxDrvA6iu3MPxbu00b
-	3WjZjWXe6GfjhQt09xXj0AQxHL4V7zJpVpXEOK/sEy993paf7nH1PJQRg25xvbIyFGJj31ubyT0
-	/4sG/FoAMCXMlm8Tz/vcPLMXn60P1vvyyU7hdnDwZD54MkWPnjXfJZ9vy1FCIq4DCmSRocm4N85
-	cP3io0bx17VKciv0FxEI8C7Ne3+KKXW9qUTGll4w1qzD9wkdkxVFUbel2TnIwsyqnHZktNJ+YEM
-	toPOb3l+ouBKaYZZw9GkVrkxezb/tCHrTvUKfjgSXf/yGN6ynAljQ4ml8fbnF
-X-Google-Smtp-Source: AGHT+IE407KS8uKPTJWroRm8IILV/e+TMXBeoa0EGQKc6WbP+vL8QbjAW05nEN1glpgEAbE4/IV9fQ==
-X-Received: by 2002:a5d:6f01:0:b0:3b6:463:d85d with SMTP id ffacd0b85a97d-3b60463d8eemr6451671f8f.11.1752585989943;
-        Tue, 15 Jul 2025 06:26:29 -0700 (PDT)
-Received: from mai.linaro.org (146725694.box.freepro.com. [130.180.211.218])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3b5e8e0d872sm15337925f8f.60.2025.07.15.06.26.28
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 15 Jul 2025 06:26:29 -0700 (PDT)
-Date: Tue, 15 Jul 2025 15:26:27 +0200
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Cc: Miquel Raynal <miquel.raynal@bootlin.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
-	Support Opensource <support.opensource@diasemi.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Niklas =?iso-8859-1?Q?S=F6derlund?= <niklas.soderlund@ragnatech.se>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org,
-	linux-pm@vger.kernel.org, imx@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] thermal: Constify struct thermal_zone_device_ops
-Message-ID: <aHZXAw08359qCBz2@mai.linaro.org>
-References: <5bba3bf0139e2418b306a0f9a2f1f81ef49e88a6.1748165978.git.christophe.jaillet@wanadoo.fr>
+	id 1ubfiK-00000005D8r-2k7a;
+	Tue, 15 Jul 2025 13:28:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1752586134;
+	bh=NZtHYSOuQbNspfyKqTqQMOVejME6k8PRvnKr3a2/2D4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=kRcBlPPvRe+bzW3i/349S6j/Q0Rd1pBOiZHegxlcV54u6jnCdI+WmwWxjRsBnqbKK
+	 Au2xhiZsjApGtuJuHrWtOYpaqh21zUnqY8YdL8P4zsa+8PXLxYA6j9HwHHJB/inQfL
+	 43PVMiO+tuTGwHkJD61oUmSWKNQUtjJEx3YjViwqRGQCLZCfN1hazHIy7IHjdNVqYn
+	 SORvTVefSQNSiWbYSmLfFOVhyiSbdoCDMlFMPG0t9GsYZYJVLiROZQsyKwrpNHUMxS
+	 dR3BGWoXJlJJqf3CS0cM7yfcAx/6LndJV1j9GbRe6RCRyKQavMar0okFkpeAv4kiLM
+	 cViUNU5zai9SA==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id F30D517E05F0;
+	Tue, 15 Jul 2025 15:28:53 +0200 (CEST)
+Message-ID: <bf5638c9-e49a-4482-9796-ddd3a010d162@collabora.com>
+Date: Tue, 15 Jul 2025 15:28:53 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <5bba3bf0139e2418b306a0f9a2f1f81ef49e88a6.1748165978.git.christophe.jaillet@wanadoo.fr>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 1/8] dt-bindings: regulator: Document MediaTek MT6316
+ PMIC Regulators
+To: linux-mediatek@lists.infradead.org
+Cc: lee@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, lgirdwood@gmail.com, broonie@kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
+ wenst@chromium.org
+References: <20250715115718.176495-1-angelogioacchino.delregno@collabora.com>
+ <20250715115718.176495-2-angelogioacchino.delregno@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250715115718.176495-2-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250715_062631_674052_3CD89F9D 
-X-CRM114-Status: GOOD (  10.83  )
+X-CRM114-CacheID: sfid-20250715_062856_882015_C93E510E 
+X-CRM114-Status: GOOD (  16.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,36 +79,186 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, May 25, 2025 at 11:40:04AM +0200, Christophe JAILLET wrote:
-> 'struct thermal_zone_device_ops' are not modified in these drivers.
+Il 15/07/25 13:57, AngeloGioacchino Del Regno ha scritto:
+> Add bindings for the regulators found in the MediaTek MT6316 PMIC,
+> usually found in board designs using the MT6991 Dimensity 9400 and
+> on MT8196 Kompanio SoC for Chromebooks.
 > 
-> Constifying these structures moves some data to a read-only section, so
-> increases overall security, especially when the structure holds some
-> function pointers.
+> This chip is fully controlled by SPMI and has multiple variants
+> providing different phase configurations.
 > 
-> On a x86_64, with allmodconfig, as an example:
-> Before:
-> ======
->    text	   data	    bss	    dec	    hex	filename
->   28116	   5168	    128	  33412	   8284	drivers/thermal/armada_thermal.o
-> 
-> After:
-> =====
->    text	   data	    bss	    dec	    hex	filename
->   28244	   5040	    128	  33412	   8284	drivers/thermal/armada_thermal.o
-> 
-> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+> Link: https://lore.kernel.org/r/20250624073548.29732-2-angelogioacchino.delregno@collabora.com
+> Link: https://lore.kernel.org/r/20250707134451.154346-2-angelogioacchino.delregno@collabora.com
+
+Btw, sorry about those Link: tags, those were completely unwanted... they
+slipped through while using b4 and I forgot to remove them.
+
+I'll wait for any feedback or tags and will resend the series with those
+tags removed.
+
+Thanks,
+Angelo
+
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
-> Compile tested only
-> ---
+>   .../regulator/mediatek,mt6316b-regulator.yaml | 46 +++++++++++++++++++
+>   .../regulator/mediatek,mt6316c-regulator.yaml | 46 +++++++++++++++++++
+>   .../regulator/mediatek,mt6316d-regulator.yaml | 41 +++++++++++++++++
+>   3 files changed, 133 insertions(+)
+>   create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml
+>   create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6316c-regulator.yaml
+>   create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6316d-regulator.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml
+> new file mode 100644
+> index 000000000000..e7a6b70cdab2
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml
+> @@ -0,0 +1,46 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/regulator/mediatek,mt6316b-regulator.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek MT6316 BP/VP SPMI PMIC Regulators
+> +
+> +maintainers:
+> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> +
+> +description:
+> +  The MediaTek MT6316BP/VP PMICs are fully controlled by SPMI interface, both
+> +  feature four step-down DC/DC (buck) converters, and provides 2+2 Phases,
+> +  joining Buck 1+2 for the first phase, and Buck 3+4 for the second phase.
+> +
+> +properties:
+> +  compatible:
+> +    const: mediatek,mt6316b-regulator
+> +
+> +  vbuck12:
+> +    type: object
+> +    $ref: regulator.yaml#
+> +    unevaluatedProperties: false
+> +
+> +  vbuck34:
+> +    type: object
+> +    $ref: regulator.yaml#
+> +    unevaluatedProperties: false
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    pmic {
+> +      regulators {
+> +        compatible = "mediatek,mt6316b-regulator";
+> +
+> +        vbuck12 {
+> +          regulator-min-microvolt = <450000>;
+> +          regulator-max-microvolt = <965000>;
+> +          regulator-always-on;
+> +        };
+> +      };
+> +    };
+> +...
+> diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6316c-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6316c-regulator.yaml
+> new file mode 100644
+> index 000000000000..0b9239a595ed
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6316c-regulator.yaml
+> @@ -0,0 +1,46 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/regulator/mediatek,mt6316c-regulator.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek MT6316 CP/HP/KP SPMI PMIC Regulators
+> +
+> +maintainers:
+> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> +
+> +description:
+> +  The MediaTek MT6316CP/HP/KP PMICs are fully controlled by SPMI interface,
+> +  features four step-down DC/DC (buck) converters, and provides 3+1 Phases,
+> +  joining Buck 1+2+4 for the first phase, and uses Buck 3 for the second.
+> +
+> +properties:
+> +  compatible:
+> +    const: mediatek,mt6316c-regulator
+> +
+> +  vbuck124:
+> +    type: object
+> +    $ref: regulator.yaml#
+> +    unevaluatedProperties: false
+> +
+> +  vbuck3:
+> +    type: object
+> +    $ref: regulator.yaml#
+> +    unevaluatedProperties: false
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    pmic {
+> +      regulators {
+> +        compatible = "mediatek,mt6316c-regulator";
+> +
+> +        vbuck124 {
+> +          regulator-min-microvolt = <450000>;
+> +          regulator-max-microvolt = <1277500>;
+> +          regulator-always-on;
+> +        };
+> +      };
+> +    };
+> +...
+> diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6316d-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6316d-regulator.yaml
+> new file mode 100644
+> index 000000000000..460c02bf69de
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6316d-regulator.yaml
+> @@ -0,0 +1,41 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/regulator/mediatek,mt6316d-regulator.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek MT6316 DP/TP SPMI PMIC Regulators
+> +
+> +maintainers:
+> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> +
+> +description:
+> +  The MediaTek MT6316DP/TP PMICs are fully controlled by SPMI interface, both
+> +  feature four step-down DC/DC (buck) converters, and provides a single Phase,
+> +  joining Buck 1+2+3+4.
+> +
+> +properties:
+> +  compatible:
+> +    const: mediatek,mt6316d-regulator
+> +
+> +  vbuck1234:
+> +    type: object
+> +    $ref: regulator.yaml#
+> +    unevaluatedProperties: false
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    pmic {
+> +      regulators {
+> +        compatible = "mediatek,mt6316d-regulator";
+> +
+> +        vbuck1234 {
+> +          regulator-min-microvolt = <400000>;
+> +          regulator-max-microvolt = <1277500>;
+> +          regulator-always-on;
+> +        };
+> +      };
+> +    };
+> +...
 
-Applied, thanks
-
--- 
-
- <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
 
