@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C74F2C83F21
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jul 2025 09:12:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D502C83F21
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jul 2025 09:15:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RWritYCN5g5pbGNVdS7uOitde6lUvDNW8r61mTT/h1I=; b=bkORnh0fXlfHoOwQGShKoN2Buz
-	m8q7D25NKzs3QbDi8zFvno5qhU0q8buojVvh7nVb/9Ur39gRRUg4OvvMEWevBCq8tSZSKwJoxjenr
-	YoqdLCeEc6yBoF/XigbYXrqkjlEGXaSGSwgc/DfODzWFtQrTeVW8CCMTxUEUqajJGMzA16/i5PKPL
-	Gl5i7vQYancphKTAeVc1/aYRmVp3gYKa+/QFQaRYrB+oXUb8+lXrB7qdzhLpndU7vEfhyiU7LMKAn
-	LMciRCNQerworjOGE+OZW9pVRCa1wozJ/KxDcW073+OYu0N8oZTimdcrNgO1l5xaQUoYxz2ftfVhH
-	4TbpUWkA==;
+	bh=AR57cyXHpNdEBRao+1ozE9zC0Ys9s/kP9hmKhK9UHUA=; b=Qi5lchc9762CK6SZPtaX9YmqiC
+	FUdz0LQjokQHbk8eGvkkygINuFxYaLnBk/O++VTvoJEl/Sbd2dKPswH+lk3e8lkjRFeSwAmcebQzF
+	KHOv2U7ZvUcyAtQDmP79ztjuvV9Yl3HYkz+y34GpDwFGRbEbxElipMdHRJtijGnYLDnt6kL59Js4I
+	7Q6rJlpreglsaVI3zbNsupZzjjboCf83AH0usGS6xl08zPoZcGycaMiyE2JOLrV4Yla5gZttCBT47
+	REL7fEphchzuuIIvEw7nX3LSYlXFabWy3DJhBk6lw2uJaQP+bKk2UTjxAPQn+oKTH6Afn1IZosxbB
+	t2+YYNZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubbiF-00000004dVP-3JqP;
-	Tue, 15 Jul 2025 09:12:35 +0000
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
+	id 1ubbke-00000004dqF-0jaj;
+	Tue, 15 Jul 2025 09:15:04 +0000
+Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubavz-00000004Vac-2RwU;
-	Tue, 15 Jul 2025 08:22:44 +0000
-Received: by mail-pj1-x1033.google.com with SMTP id 98e67ed59e1d1-31329098ae8so3875695a91.1;
-        Tue, 15 Jul 2025 01:22:43 -0700 (PDT)
+	id 1ubax4-00000004Vnu-2Gqh;
+	Tue, 15 Jul 2025 08:23:51 +0000
+Received: by mail-pj1-x1029.google.com with SMTP id 98e67ed59e1d1-31332cff2d5so5047826a91.1;
+        Tue, 15 Jul 2025 01:23:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1752567763; x=1753172563; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1752567830; x=1753172630; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=RWritYCN5g5pbGNVdS7uOitde6lUvDNW8r61mTT/h1I=;
-        b=KUDJwOqDE0prEwzgsSQP+cCdhvI6aciiQ0bCrexyPJAjoHgfYxIl4koWDP4aWRJd4j
-         N/nLRhKeSxC0aTI6Whu4+s5771rAdMFmLojOsKwtS13DIXat83wXln/xLQMf3fUIJrts
-         JjFk1mjd9HCxYHf95DJjmrs1XFIb3vL9CTb6ZBNH/fAYxOxj+Jz/Rha/gc+nrv3T02zd
-         VqrKQHXHmdcVqrsj+ANc3DcVo+YrBO6S6Clcxc46Tcq3ucE/GlfCTeFysjVKLWUtt6Zd
-         kh0KsaTDLTv7OO2l9yQywZrZazWUbYI615bqqPX+tK97eSfMO9Rd6Kglaj9mV4Nn4HLO
-         xsXQ==
+        bh=AR57cyXHpNdEBRao+1ozE9zC0Ys9s/kP9hmKhK9UHUA=;
+        b=GJtRVRU7NtGPrO4deCV+vwuY007r12ADsFdTx24vlMSJeP7rEzUzxlMKe76Bh1nxTa
+         9PPh6zeFroNFEifJ7oZMFGHIB2p0sXfPeZNhvdjnqUwyb4g8GPxM9XjCdA9r9vyP4ew8
+         aU6mTptQye35iv8K4ivR10nFUEsl4gtKiouqZ6M19o4UYk0kHheWvGuMf+kPPSO1o+1j
+         kjkt0gH7Iu7mhOjU0V7kj6Uy+oSPWY3xJ8KFyyLpB0lRsKt/Wz/+b9wYr6HuQrhTim0N
+         FkiybeXjp/CvbKSxAoVI/smP4KxgJSUhfNrMX2V4sb3QUJO+sMdc2SYU3LCNpOUGxweA
+         n2QA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1752567763; x=1753172563;
+        d=1e100.net; s=20230601; t=1752567830; x=1753172630;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=RWritYCN5g5pbGNVdS7uOitde6lUvDNW8r61mTT/h1I=;
-        b=DFLdW1HOUagkZMZ4k71QrnbkfiSxAYjlZqXF/53XSsBwDNWUyDTqH8urbFAdJ8r4Pb
-         uE6njuHoO5apyzJ6CSeZ6lOBa6KmRCITlCbRPmpFR6a/ZUTEGE2YecIBncGArblnbpkV
-         Ov2oilRJ9jx7oYBBU0GH+ZrICubxuBc9EJTDqM9v8rWWJf2G0JbEgeA4Ri/8E4tEXQ2E
-         pFNxFgVIfhmh9EALuTAzjbTWh7vdZpN28yV2Gdn4y5Ry/dpDATgM6KTWiKi8nlFkN6D8
-         MgOVu06oac61ET7wS2RiioM44Z/BhkZ48usZ+gBp5Foiq2cA5cyH12Tu1MoBgLZnV0UK
-         bkuQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUZQ02iKA3SIdc+NoH6zblOuArq/nM/ft91/ENNpmIV+tShxqQcf4XtQU3rGEpILHItXBSbi3ZDRQ6Iru1O58R4@lists.infradead.org, AJvYcCWcEQ6r84SqKmplQ9IzsS7Gfr0MWJjrpgYtXb3M4K2EJiwqTQMj1P6hA7/gGgTSOS96ymJhas1GxGaKTQxx4E0=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzmnGI9UC44oah7JDIA7jCaZ8iX6RUeFMcpNdE8qdhxVFygqlW3
-	JI+h9w692icg34qk3glX3mHN57z4YFtDJmVPNcwqMenrz2NBE/PE9oZxD7fUJpkaGaqzxbDaDBR
-	jlAt5RNX0hmoP2fTpvvBT9BZ3JkJ3/JX49fGPeXf2Z/Q/
-X-Gm-Gg: ASbGncthT+7dlPhBlgcJpx/8fg678ke3peovh92evz/gePAiUx5lyjtQswAvvzVtlVu
-	sl3SUDGjxbbYeU1aQ4YzJ7NnBIMm26eZ0ZWXQ2mjttBES2/J8JZw/BVy4EHAPPiqP07q2CCXl3O
-	SMu6YI0zrtz47VKd9H56I2a1l8vITX8DuXxvN5Te3o0lJhYMsAJnIgHetnWFR4Mw8bZKR6ht3yu
-	aR2
-X-Google-Smtp-Source: AGHT+IFMxGCTEEHrdB/kCBZaEP2hviqLVU3pJ2QVRJLd/x1wtIgr5OBebZnjJManRyxnm1Ft0Bmiw8ilHs47bZtO0xI=
-X-Received: by 2002:a17:90b:17ca:b0:30a:3e8e:ea30 with SMTP id
- 98e67ed59e1d1-31c8f9ba0f7mr4109857a91.11.1752567762558; Tue, 15 Jul 2025
- 01:22:42 -0700 (PDT)
+        bh=AR57cyXHpNdEBRao+1ozE9zC0Ys9s/kP9hmKhK9UHUA=;
+        b=aK/Oy7E1+p/QN1156SHaBfsIaK834qJzel1CnE2y1dcU1kIX3SjrXZHjD4MYHyf9LN
+         vZ/4eF67Xcx4iysT5DKMykn+SrDT/OVRoitn/oVTHSFvYWCxyZ1C2JDQiN5Gn+z+OAw5
+         qxgx3Y/UGBqeMvhSnD2/LmB4dPdbyGWJcYPS10jNdVrb2n5a4xMsJtUEVDLYkMqjxQTa
+         Q8yKVUdDTDgDgdicE9M1Ja2xR30cbnUUcduTxoUk6HiEWv37319chzOR8XHjp2E0CYf+
+         +lJHcrbyd2scUhoTUUdOcu0FYhI37Ig1IuDJ3HUwqpRerh6jW4mPko22i3GYRuGjr6xi
+         85Gg==
+X-Forwarded-Encrypted: i=1; AJvYcCV9t6scIw2jnTvJ4nCV4xQGAjifwH0ZShYfpI60Ler4e9hqAhwtOg+W6t/emiOJmI5XsEbRYkdMrH/R3dG3y8XW@lists.infradead.org, AJvYcCVceByIzExerVn7A3SId9KhHJ4qpKFFkLrufwKRJTgvhYJWlHZs/BLyKUBcyq3Znc/8sOUcjf2kmAyMbnHOXfA=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwBaPtwQ1TDTWIbO7/zdAptlheK+q4Ah+8R5u8tm/XkKeuKKCDY
+	T2VXAJd+a+hpZcWA7aomSdgBefMv+e1rYwxFqSXA4rqbMAzT2LzdjbENOhTEJUeHrplnxsYJGka
+	n/fLnfnPgTeUG3tKPNAPg1IhUNcPiVmw=
+X-Gm-Gg: ASbGnct0ltgnqTY4mTkTBZY9gtPCmQVOwASfws6meGUIi4O0a2j514BTSqx5OiQHENK
+	SPQSEjHIIgI/ovCgX7mgNKPXyjwq77P9mpes2LoJ7zoa9rUCYmfOMNceImVmRJUzSSwmpbXgE5F
+	QYlLQ3nBJ7K0kWdzIxAj1URnyEJK/9wGgmAMmvYtuYNo7H7+x7mSJDhGY9qzhm1kvRD2qa/3qYR
+	DLO
+X-Google-Smtp-Source: AGHT+IGQim4tVu7RMI5fjr1GyhLLVevwXHUGV3YhMyRCmfDdHKplROEF+/5RsJJ3UPhiAa6LDTi+DGZv63jRAIn0aBU=
+X-Received: by 2002:a17:90b:5885:b0:319:bf4:c3e8 with SMTP id
+ 98e67ed59e1d1-31c91f25558mr3528982a91.18.1752567829634; Tue, 15 Jul 2025
+ 01:23:49 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250712210448.429318-1-rosenp@gmail.com> <20250712210448.429318-7-rosenp@gmail.com>
-In-Reply-To: <20250712210448.429318-7-rosenp@gmail.com>
+References: <20250712210448.429318-1-rosenp@gmail.com> <20250712210448.429318-6-rosenp@gmail.com>
+In-Reply-To: <20250712210448.429318-6-rosenp@gmail.com>
 From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Date: Tue, 15 Jul 2025 10:22:31 +0200
-X-Gm-Features: Ac12FXwMmQCfsqg5mbExKPqdb145bDccah5wrkdnBfsA3tKTWDoudoBn9JT36WU
-Message-ID: <CAMhs-H_w9f334A-T5OfbngCZ4bgM+uJ27WAff2Q+k9dJhHr96w@mail.gmail.com>
-Subject: Re: [PATCHv4 wireless-next 6/7] MIPS: dts: ralink: mt7620a: add wifi
+Date: Tue, 15 Jul 2025 10:23:38 +0200
+X-Gm-Features: Ac12FXyjagyqzzwK9h4VxCo7FvGtmHUddwyUc5g6qUy0YRPcOqUgDiJgtz5UTuw
+Message-ID: <CAMhs-H_xaV6o7ah=7m8KVBqRgudjKS5o5JA0LTLxf+S2gsuDAQ@mail.gmail.com>
+Subject: Re: [PATCHv4 wireless-next 5/7] wifi: rt2x00: soc: modernize probe
 To: Rosen Penev <rosenp@gmail.com>
 Cc: linux-wireless@vger.kernel.org, Johannes Berg <johannes@sipsolutions.net>, 
 	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
@@ -84,8 +84,8 @@ Cc: linux-wireless@vger.kernel.org, Johannes Berg <johannes@sipsolutions.net>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250715_012243_621305_0BB1207D 
-X-CRM114-Status: UNSURE (   8.26  )
+X-CRM114-CacheID: sfid-20250715_012350_585999_1D24A3AA 
+X-CRM114-Status: UNSURE (   8.98  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -104,13 +104,16 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Sat, Jul 12, 2025 at 11:06=E2=80=AFPM Rosen Penev <rosenp@gmail.com> wro=
 te:
 >
-> MT7620A devices all contain a wifi device as part of the SOC. Add it
-> here to get it working.
+> Remove a bunch of static memory management functions and simplify with
+> devm.
+>
+> Also move allocation before ieee80211_alloc_hw to get rid of goto
+> statements and clarify the error handling a bit more.
 >
 > Signed-off-by: Rosen Penev <rosenp@gmail.com>
 > ---
->  arch/mips/boot/dts/ralink/mt7620a.dtsi | 10 ++++++++++
->  1 file changed, 10 insertions(+)
+>  .../net/wireless/ralink/rt2x00/rt2800soc.c    | 185 ++++++++----------
+>  1 file changed, 79 insertions(+), 106 deletions(-)
 
 Reviewed-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 
