@@ -4,65 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DABD3C83F27
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jul 2025 07:24:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D189C83F1B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jul 2025 07:29:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ldRSCvbB6zoC2q/GXSRfHSY9Rj644F55MY3AhNieC6c=; b=pgJ3DcWsYv9e55FQRrRoildp0j
-	4eqURltqqRjKaTGy7eDC2Gkgg7Q7n/XvlBcfxjc5ATPlCdO8l39DoztU3QFTv5OUR4mRYNkFNVLKA
-	sv9ApWnw/dWytBQW3kzWliMlPhO3gmADhLZ0rZmE6nKrVqNNARhSKgU07B0L9eh8EfROrSr7IXiV5
-	SsTR0G7eQm3c1pEjzxpwQsTOPBZGTQeJvamFFlTTKUkaGLJUge8PYsS4hTxxiususFiDQvGAfn7rT
-	5Gotg6Hmr6El2NpWpf/a7D/GViDQITjAON3QzBIGQmD1saJV1ub56DVUoxUcxxYPXXzy0pjeALayv
-	HitbG+Fw==;
+	bh=7ls0UnB1gBW3xwUNlzrpPwKAtoeyKMQuudatLOHNO6w=; b=ER6vzyRD7RGH9eUrRUMntWN7I2
+	OcEZOkfeE2w4aHTGJXXs9YMih+8Bgxvc2Y+5NikbY8ZQIDboDdu/tedLUTW88SSfsiZaotAjZ5Fix
+	RgggpLmrJVugakszqbhbS1iRq6VQwruoVjR/671hhqqSWql+pdKhR5gHXB5+dWpuJrSnO4nunb0Dr
+	7RmtmceOY176qR+HieVId8Ojpg7uWid7ewMA41KXuImlN86Eanw8nxiagMDTeHrRL1nKHEBLrECux
+	2+N7tQa4IStoQQhzX4hFVzDL+yDBAdRPG6uUGco+20Tf+SAk/tW83z75gSq3lnpq3Z3hXu6WSsc+6
+	nRxYH0sA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubwV0-000000070Tk-0t2c;
-	Wed, 16 Jul 2025 07:24:18 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1ubwZn-000000070pw-0J2C;
+	Wed, 16 Jul 2025 07:29:15 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubwOD-00000006zYh-3HGX;
-	Wed, 16 Jul 2025 07:17:19 +0000
+	id 1ubwS6-000000070Az-0gzm;
+	Wed, 16 Jul 2025 07:21:19 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 13C344691D;
-	Wed, 16 Jul 2025 07:17:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D59DC4CEF0;
-	Wed, 16 Jul 2025 07:17:16 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 7A1B1460A0;
+	Wed, 16 Jul 2025 07:21:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 073B0C4CEF5;
+	Wed, 16 Jul 2025 07:21:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752650236;
-	bh=cd5eTFGt2ZH0e4S6bPNCBDG2UvP/pounWuUyklto8IM=;
+	s=k20201202; t=1752650477;
+	bh=wbYVLhPOCi1vaoM7sTYVmfW1ciprMAQ8sQlxUBmwWnc=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=mNTOOGp1fisiEOjXIcRrpXEGRABig1maftTzhlm6DsuFz2zAL0jvsZQ4s/PSppxiR
-	 vhpiqIZhoSS4CV1uJhzSev6asAFYFkZ8yvaF0cbqSeZIvVnoyvise+WObys4lLHI7h
-	 t6OSZ0X8PWQlmweR7qtcjyEXzfy13gXwfxQcYjYiQ9ZsxPLmy5EtfNJ0RSwUWbMNEW
-	 h1i4SngYPocQHPZMv0nQvm6cUYv9KHqYSnuT04DgM+odJXPVhbEim9+k5CEIkxmZEU
-	 gCL7Imzf25DMANhDaBM/Pw4RPRLj/patX0dViwLjZVonEfImUg44BH9FbXXsW0z6Qz
-	 43cOnJYF+99kw==
-Date: Wed, 16 Jul 2025 09:17:14 +0200
+	b=E+zQxyjGCDYcaP1LOQ4yvAGzfm9/yK0TZ8kv1G2i1KtEbA3F3mai3qoOO7djM14SK
+	 Y255zByLUqIafo43lTVWuEhoj1StgVueK8xQacfHVVdQkJhwZugnMbxTMlubf87dgj
+	 nJlN7EbS+iA7UMXdgLB/SQNnRdkiMNKo8UjIkGDs1l3T6II8Dx4sUtQ6sm4mivu9uc
+	 NFHoSV0aHED5FMkDePsKBa9qA0XnzxYITizl1Ls+sX3dovkAG1eQmHKhgXmizK3RmM
+	 PuUyONl+6kLCMsv4eDzWX2JeKaTT3dM2f/WEfIVX/prQZgLtIAa5XqVnaonLFVLn3t
+	 AXD6cgqjgZaAA==
+Date: Wed, 16 Jul 2025 09:21:14 +0200
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: Dan Carpenter <dan.carpenter@linaro.org>
-Cc: Rob Herring <robh@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
+Cc: Rob Herring <robh@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org
-Subject: Re: [PATCH net-next] net: airoha: Fix a NULL vs IS_ERR() bug in
- airoha_npu_run_firmware()
-Message-ID: <aHdR-j2aZ-7wMg2A@lore-desk>
-References: <fc6d194e-6bf5-49ca-bc77-3fdfda62c434@sabinyo.mountain>
+	linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
+Subject: Re: [PATCH net-next] net: ethernet: mtk_wed: Fix NULL vs IS_ERR()
+ bug in mtk_wed_get_memory_region()
+Message-ID: <aHdS6o8RNMWplCuT@lore-desk>
+References: <87c10dbd-df86-4971-b4f5-40ba02c076fb@sabinyo.mountain>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="hNQ6m2oLBFgFtFKp"
+	protocol="application/pgp-signature"; boundary="6T5EAh89/vZOaNaz"
 Content-Disposition: inline
-In-Reply-To: <fc6d194e-6bf5-49ca-bc77-3fdfda62c434@sabinyo.mountain>
+In-Reply-To: <87c10dbd-df86-4971-b4f5-40ba02c076fb@sabinyo.mountain>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250716_001717_838607_2D5CF6A0 
-X-CRM114-Status: GOOD (  16.19  )
+X-CRM114-CacheID: sfid-20250716_002118_222491_D2CC253A 
+X-CRM114-Status: GOOD (  17.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,55 +82,58 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---hNQ6m2oLBFgFtFKp
+--6T5EAh89/vZOaNaz
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-> The devm_ioremap_resource() function returns error pointers.  It never
-> returns NULL.  Update the check to match.
-
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
-
+> We recently changed this from using devm_ioremap() to using
+> devm_ioremap_resource() and unfortunately the former returns NULL while
+> the latter returns error pointers.  The check for errors needs to be
+> updated as well.
 >=20
 > Fixes: e27dba1951ce ("net: Use of_reserved_mem_region_to_resource{_byname=
 }() for "memory-region"")
 > Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
+
+Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
+
 > ---
->  drivers/net/ethernet/airoha/airoha_npu.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  drivers/net/ethernet/mediatek/mtk_wed_mcu.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
 >=20
-> diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ether=
-net/airoha/airoha_npu.c
-> index 4e8deb87f751..5b0f66e9cdae 100644
-> --- a/drivers/net/ethernet/airoha/airoha_npu.c
-> +++ b/drivers/net/ethernet/airoha/airoha_npu.c
-> @@ -179,8 +179,8 @@ static int airoha_npu_run_firmware(struct device *dev=
-, void __iomem *base,
->  	}
+> diff --git a/drivers/net/ethernet/mediatek/mtk_wed_mcu.c b/drivers/net/et=
+hernet/mediatek/mtk_wed_mcu.c
+> index 8498b35ec7a6..fa6b21603416 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
+> @@ -247,8 +247,10 @@ mtk_wed_get_memory_region(struct mtk_wed_hw *hw, con=
+st char *name,
+>  	region->phy_addr =3D res.start;
+>  	region->size =3D resource_size(&res);
+>  	region->addr =3D devm_ioremap_resource(hw->dev, &res);
+> +	if (IS_ERR(region->addr))
+> +		return PTR_ERR(region->addr);
 > =20
->  	addr =3D devm_ioremap_resource(dev, res);
-> -	if (!addr) {
-> -		ret =3D -ENOMEM;
-> +	if (IS_ERR(addr)) {
-> +		ret =3D PTR_ERR(addr);
->  		goto out;
->  	}
+> -	return !region->addr ? -EINVAL : 0;
+> +	return 0;
+>  }
 > =20
+>  static int
 > --=20
 > 2.47.2
 >=20
 
---hNQ6m2oLBFgFtFKp
+--6T5EAh89/vZOaNaz
 Content-Type: application/pgp-signature; name=signature.asc
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaHdR+QAKCRA6cBh0uS2t
-rGscAQDafezCTx6Tg7NHRZzwrIG+WrX3UsI4bzfWa7dBHTaBEQEA4NLY1nMESskq
-JR4WxA/oO+Ge5Va28kqhvA6sUqCvzg0=
-=PR8p
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaHdS6gAKCRA6cBh0uS2t
+rJY+AP9l/ZwTg4VNy3YmVDYG7Q6N4lpACY/dpdBptMwTbwVXRQD/VnVlpZVCHfGU
+giDlSZY55au/4/6aau9dTKjSxPxYzAE=
+=DYVE
 -----END PGP SIGNATURE-----
 
---hNQ6m2oLBFgFtFKp--
+--6T5EAh89/vZOaNaz--
 
