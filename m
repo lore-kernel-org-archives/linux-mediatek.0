@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34C85C83F22
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73266C83F1B
 	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jul 2025 15:29:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,51 +12,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=C4GE33CgQ2bpHUiDwA1SuAmtuBpcGtsm8Gn0Quu2O7I=; b=mtq/UUZqRMp+HM/dPanRx5aycG
-	p8Tb/9qoOKKIihoiP0nH7my9JxzReZ8z3cixD2XurBy7FwzqjKDwxrMdqr9KbOfQGdhgGIH/4xhrh
-	3IBbG1qLGaXNAjSVF4zdhxgf2uX/xlPLAlQW2ho1dhc+RGW98xsETzMExf3ekFweB02E2KV8J5hRt
-	gzwhMbrkDI0gwmsGDwUlIFA5rbbGVWHgKlszS9hsd/BurwwhcK6wmOM8kT7ipJlpQGZGuA2tIv0BE
-	hN+uVlZU50QmboLhCtnOvA/8i0CTx+ug72xw1eN7Iyu2441WR89o3awnuqgsE0q6SoX6oDeNTGz6K
-	GD8q/RPA==;
+	bh=3iQt/zB03J2a7Go2W2ieiuX/6pPinyjnvVUDponP+uI=; b=Au1vljV5ehhn/f6SFYoO+7GEqQ
+	C6GUvfuuf0CAsP/Dere+8fj6NARniJt7UCVeTVL7nRh4hZhqpbJ2Gxj9AKPIODD1Cv7k+70BWJmik
+	6/aPQ7bbhcg1l1xKMIVZLZu+xmr9vNtNdtEjcn1XrZujf67Oi/BzAafaw6jgXnb4B31nTh+s0H+ZD
+	RTLsGU3lGaT6q3I0Utnk3xJ5f93aKWiP5P8xLtkY9tNtaML63mQcdjN7qizV3s/iWTV0VPuybRKO+
+	XjyxU3HP2WvJpaC2pT70vU6U2ANK+wGP+UhBCeIsnRpkCLb3sM5JPElrCN0UNJ8uBnuqDohS8Iq9H
+	da9JS49g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uc446-000000083yu-035S;
+	id 1uc446-000000083z4-1UeT;
 	Wed, 16 Jul 2025 15:29:02 +0000
 Received: from 004.mia.mailroute.net ([199.89.3.7])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uc3yA-000000082fO-1dre
+	id 1uc429-000000083bn-15Wx
 	for linux-mediatek@lists.infradead.org;
-	Wed, 16 Jul 2025 15:22:56 +0000
+	Wed, 16 Jul 2025 15:27:02 +0000
 Received: from localhost (localhost [127.0.0.1])
-	by 004.mia.mailroute.net (Postfix) with ESMTP id 4bj0DY3kjLzm0jw2;
-	Wed, 16 Jul 2025 15:22:53 +0000 (UTC)
+	by 004.mia.mailroute.net (Postfix) with ESMTP id 4bj0KJ4DKGzm174B;
+	Wed, 16 Jul 2025 15:27:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
 	content-transfer-encoding:content-type:content-type:in-reply-to
 	:from:from:content-language:references:subject:subject
 	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1752679370; x=1755271371; bh=C4GE33CgQ2bpHUiDwA1SuAmt
-	uBpcGtsm8Gn0Quu2O7I=; b=gu0eO/SMvTj/F9ny2RwtZDCEJFqikqhe1HM3WNl5
-	uVmfxt3sK0842mHnxqpXuCZ0F4ndOyiSBtpqS4MG0s4ifi8LWAlgDuZhmvcw33xS
-	cocDQ+d/kpKiY7lK4O2PP7Z6dANpD2FaAPQFZERwl5BtUjnASRntzG5Giu3Mf0C+
-	sjPwUPjIURBwqpBtXsJL4+NuCkcJEBB2P4XlhBhPO9WpnpyOenz2MS54x93LwJKX
-	Z/I3KsPjpeVTO2zTAKYrEroVa2aoRc2HANGaJYcjvuYiwZCKpE4J5uHpSEQmWD/A
-	IQkfCB8RxtKxtZXv7W/d/VqJzePt670b6m2ow0PntQpIFw==
+	 s=mr01; t=1752679617; x=1755271618; bh=3iQt/zB03J2a7Go2W2ieiuX/
+	6pPinyjnvVUDponP+uI=; b=TcTmTiR7FoDphKmR+qsR/BK/eXyX85qLnFVp2W/o
+	NJsYZR+mS1iqYKaFS6PX8+L+XyKbePcn9ZXYKSIDHJR7VoTVTLkRFyAvRmPYV5K5
+	n1N/TKamsven7M7nI33WR1rPkiXLYY0jT5gnIPz8iIHAZjy7+cfQ9HqHr6ZFnD/P
+	K18NiDlUEkVe7nzEAY4CrfmxI7yMMgpWoZChCVqT+OxePdNqor+2pO3dtJlBZ59u
+	MIkAu9bwv4m76oH/7+T5L5kqKUX4YxzI4pl4jYLetG23E0b6TtiM024nh6gLYg7n
+	nYVp4z97aBygRyMo7LvinciG7wlLayiyAljlaWdziDwVng==
 X-Virus-Scanned: by MailRoute
 Received: from 004.mia.mailroute.net ([127.0.0.1])
  by localhost (004.mia [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id 4EmoW36kRg-e; Wed, 16 Jul 2025 15:22:50 +0000 (UTC)
+ id N-ctaWuHE1r5; Wed, 16 Jul 2025 15:26:57 +0000 (UTC)
 Received: from [100.66.154.22] (unknown [104.135.204.82])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: bvanassche@acm.org)
-	by 004.mia.mailroute.net (Postfix) with ESMTPSA id 4bj0DD30bCzm174m;
-	Wed, 16 Jul 2025 15:22:35 +0000 (UTC)
-Message-ID: <9aafec2c-199a-4373-bdb1-6031f574af6d@acm.org>
-Date: Wed, 16 Jul 2025 08:22:34 -0700
+	by 004.mia.mailroute.net (Postfix) with ESMTPSA id 4bj0K040WFzm174g;
+	Wed, 16 Jul 2025 15:26:43 +0000 (UTC)
+Message-ID: <da89b12d-84e2-445e-9f60-936b41418713@acm.org>
+Date: Wed, 16 Jul 2025 08:26:42 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 02/10] ufs: host: mediatek: Add DDR_EN setting
+Subject: Re: [PATCH v1 03/10] ufs: host: mediatek: Add memory barrier for
+ ref-clk control
 To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
  martin.petersen@oracle.com
 Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
@@ -66,15 +67,16 @@ Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
  tun-yu.yu@mediatek.com, eddie.huang@mediatek.com, naomi.chu@mediatek.com,
  ed.tsai@mediatek.com
 References: <20250716062830.3712487-1-peter.wang@mediatek.com>
- <20250716062830.3712487-3-peter.wang@mediatek.com>
+ <20250716062830.3712487-4-peter.wang@mediatek.com>
 Content-Language: en-US
 From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20250716062830.3712487-3-peter.wang@mediatek.com>
+In-Reply-To: <20250716062830.3712487-4-peter.wang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250716_082254_510101_48292C23 
-X-CRM114-Status: GOOD (  10.45  )
+X-CRM114-CacheID: sfid-20250716_082701_383041_E8991B5F 
+X-CRM114-Status: UNSURE (   6.74  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,31 +92,17 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 7/15/25 11:25 PM, peter.wang@mediatek.com wrote:
-> On MT6989 and later platforms, control of DDR_EN has been switched from
-> SPM to EMI. To prevent abnormal access to DRAM, it is necessary to wait
-> for 'ddren_ack' or assert 'ddren_urgent' after sending 'ddren_req'.
-> 
-> This patch introduces the DDR_EN configuration in the UFS initialization
-> flow, utilizing the assertion of 'ddren_urgent' to maintain performance.
+> +	/*
+> +	 * Make sure that ref-clk on/off control register
+> +	 * is writed done before read it.
+> +	 */
+> +	mb();
 
-What is SPM? What is EMI? What is DDR_EN? Please expand these acronyms.
-
-> +/* UFS MTK ip version value */
-> +enum {
-> +	/* UFS 3.1 */
-> +	IP_VER_MT6878    = 0x10420200,
-> +
-> +	/* UFS 4.0 */
-> +	IP_VER_MT6897    = 0x10440000,
-> +	IP_VER_MT6989    = 0x10450000,
-> +
-> +	IP_VER_NONE      = 0xFFFFFFFF
-> +};
-
-How can MediaTek IP versions be related to the UFS standard? Should
-"UFS" perhaps be changed into "UFSHCI" in the above comments?
-
-Thanks,
+A memory barrier doesn't guarantee that an MMIO write has been
+completed. A memory barrier enforces ordering of MMIO writes but does
+not guarantee completion of MMIO writes. What you need is an MMIO read.
+See e.g. commit 4bf3855497b6 ("scsi: ufs: core: Perform read back after 
+disabling UIC_COMMAND_COMPL").
 
 Bart.
 
