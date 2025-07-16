@@ -4,95 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 898C9C83F1B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jul 2025 18:10:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91258C83F22
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jul 2025 20:54:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LE+tx3ZqeibMa0vUmtyOwYblv5QEQndW0aammQCjLbo=; b=wACl9GfWpsX3eJQl3jGfh20VRG
-	NWoolnj2aGESq1tBBchduONjYGkhVsonJ6Vawif5xGQ1QJFwRe3xSRxqCYl01J3XUZRl051Ouz2gZ
-	/37rqKPqxDfEW16CpKY35+GKAHiiquxWhxmU/tUTNxB1kXLEiVRwqcJCOSi+01cjg82OjO6BuejpU
-	nVVXf0rjXiLOpAOMKkaLtX658yQ9tP9Mc8iS9hE1w4Pbb25OjIRFXbUDtQI9kKR89+Iq5YESN5J8t
-	R6qHKjhi3br8Vri3hWhnkuhFn7Tck4ivl8EpnU/Ztp6z2e8Z+jZi740guVX/6DfdcgXtFWCRCBok6
-	WhWsTaDw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=4xBu3m27NNNiyYtPNYLiQI7tnJpGA2VIKgO7tKMJhM0=; b=E50I8ZItAGCXsx
+	D4ARS5rfiXMAnSvFLZa1+jwUZZvIrA6ztDpkjtgn/BlWEayoZ56OG5mXKNZjNZE+6QoNB6xQWo8g0
+	pWxDVdNGTNc7EqsnEjXH/XL9PwZqfihqtTUFCTgISLaxCkt/IIxutJ037F1pOLhxYQASwLNsna0V3
+	73HAkQyjakhznpEZivt+xJgaMFygxDDsEANpGgqxetUm7NpGnaViiqFsSh7HaSpkqf7QgySOT0NVp
+	jXo5XOl3xFlYYgHmP1XpGX8+J/CFxFXH8p68t1XF7VkVtdLjP6ZbgfdM0G2Q6UAyKSqllREYT9+4U
+	nZDgQFzTEjkj1sLy51aw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uc6aA-00000008Mb9-1IJp;
-	Wed, 16 Jul 2025 18:10:18 +0000
-Received: from mgamail.intel.com ([198.175.65.10])
+	id 1uc98d-00000008e2r-3oPh;
+	Wed, 16 Jul 2025 20:54:03 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uc6a6-00000008Mab-3QWU;
-	Wed, 16 Jul 2025 18:10:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1752689414; x=1784225414;
-  h=date:from:to:cc:subject:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=Ncj6+lrCocmTg10SkbqNYjPO9SQZWn8ZW4Ypaptrcjs=;
-  b=Ns/uav6yP/gDYBa9MU5C88xbdOBmO4T3zJUWc9bvkqGPpck0eOmwrvdO
-   drNYppO6UHWNCIkuN1OpY/a16OwPUbynACivl56S6HopigSj94kvLcRJd
-   RIeMdXlZUvSDI39JOLEiu8qa2gfPGaqCk01qaFKxzP5ExSRWIGNbx36pL
-   s+ponS7Z5NX3JeUaujsviM3YCSWCM7AR0ahQpY7DR/L+B5vceb9sa5BHH
-   o4XTJKJokLZ+rw7KuOsUbmAc4crfh2bgKdZUkO0GXva7ba8UzlVZxXDbp
-   P+lIGkvFqFtP1aQhbq97e4mCJYTw7hzqyQWQa9xsYaT6s6g9AEBMbFbte
-   w==;
-X-CSE-ConnectionGUID: gmRi/6iCQiKY440cll8naw==
-X-CSE-MsgGUID: 4HxaJcrHSnOEyeRpJZKZ/A==
-X-IronPort-AV: E=McAfee;i="6800,10657,11493"; a="72401357"
-X-IronPort-AV: E=Sophos;i="6.16,316,1744095600"; 
-   d="scan'208";a="72401357"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
-  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Jul 2025 11:10:13 -0700
-X-CSE-ConnectionGUID: lMHOxPCqTEGfF+eh6al9XQ==
-X-CSE-MsgGUID: d0wGUeqURg2n+drWX2U07w==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,316,1744095600"; 
-   d="scan'208";a="163204134"
-Received: from patelni-desk.amr.corp.intel.com (HELO localhost) ([10.2.132.131])
-  by orviesa005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Jul 2025 11:10:10 -0700
-Date: Wed, 16 Jul 2025 11:10:09 -0700
-From: Nirmal Patel <nirmal.patel@linux.intel.com>
-To: Nam Cao <namcao@linutronix.de>
-Cc: Marc Zyngier <maz@kernel.org>, Thomas Gleixner <tglx@linutronix.de>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?UTF-8?Q?Wilczy?=
- =?UTF-8?Q?=C5=84ski?= <kwilczynski@kernel.org>, Manivannan Sadhasivam
- <mani@kernel.org>, Rob Herring <robh@kernel.org>, Bjorn Helgaas
- <bhelgaas@google.com>, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, Karthikeyan Mitran
- <m.karthikeyan@mobiveil.co.in>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Thomas
- Petazzoni <thomas.petazzoni@bootlin.com>, Pali =?UTF-8?Q?Roh=C3=A1r?=
- <pali@kernel.org>, "K . Y . Srinivasan" <kys@microsoft.com>, Haiyang Zhang
- <haiyangz@microsoft.com>, Wei Liu <wei.liu@kernel.org>, Dexuan Cui
- <decui@microsoft.com>, Joyce Ooi <joyce.ooi@intel.com>, Jim Quinlan
- <jim2101024@gmail.com>, Nicolas Saenz Julienne <nsaenz@kernel.org>, Florian
- Fainelli <florian.fainelli@broadcom.com>, Broadcom internal kernel review
- list <bcm-kernel-feedback-list@broadcom.com>, Ray Jui <rjui@broadcom.com>,
- Scott Branden <sbranden@broadcom.com>, Ryder Lee <ryder.lee@mediatek.com>,
- Jianjun Wang <jianjun.wang@mediatek.com>, Marek Vasut
- <marek.vasut+renesas@gmail.com>, Yoshihiro Shimoda
- <yoshihiro.shimoda.uh@renesas.com>, Michal Simek <michal.simek@amd.com>,
- Daire McNamara <daire.mcnamara@microchip.com>, Jonathan Derrick
- <jonathan.derrick@linux.dev>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-arm-kernel@lists.infradead.org, linux-hyperv@vger.kernel.org,
- linux-rpi-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-renesas-soc@vger.kernel.org
-Subject: Re: [PATCH 16/16] PCI: vmd: Switch to
- msi_create_parent_irq_domain()
-Message-ID: <20250716111009.000022ff@linux.intel.com>
-In-Reply-To: <de3f1d737831b251e9cd2cbf9e4c732a5bbba13a.1750858083.git.namcao@linutronix.de>
-References: <cover.1750858083.git.namcao@linutronix.de>
-	<de3f1d737831b251e9cd2cbf9e4c732a5bbba13a.1750858083.git.namcao@linutronix.de>
-X-Mailer: Claws Mail 4.2.0 (GTK 3.24.41; x86_64-w64-mingw32)
+	id 1uc806-00000008WoB-3W4X;
+	Wed, 16 Jul 2025 19:41:10 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 3A89A601BB;
+	Wed, 16 Jul 2025 19:41:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B2291C4CEF1;
+	Wed, 16 Jul 2025 19:41:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1752694869;
+	bh=GeJXBYx5qreogy5Ib1b/M+uzTrVK0WNP7q/uKYx+wC0=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=mvKHdPMOuiYnkaLaqsb3FXWodVA3TMXDKgD3HpGfpcNITyHhK+1ZV2+s/s1yjR5bZ
+	 wApnXjCZX4+zQ3PIT4L35IPisNDX68Q2WmdUrEN2cMFVmSmp+OJnrLQdZwh6gUT0Uk
+	 JKF7nKO2y/dXZX2lpbAs3ppOqgB8AA9fOt60N8srWS475NkyMwFqG8BbMnYHOLP8ox
+	 lWhgOVV5pDi/IpvkEehROFwQdf3Gv0ewt/vba5cxM2rJJ6WL/H2kGFGViMFx2Vhcgq
+	 v+Y+7BkWHMSYa5GymoXLrMwbNtnvynIaM07xSSYdQhPaHUBygv5m7ayKNTwJsaaVpr
+	 WgSOK6tOERjtA==
+Date: Wed, 16 Jul 2025 14:41:08 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Nirmal Patel <nirmal.patel@linux.intel.com>
+Cc: Nam Cao <namcao@linutronix.de>, Marc Zyngier <maz@kernel.org>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+	Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>,
+	Hou Zhiqiang <Zhiqiang.Hou@nxp.com>,
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+	Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>,
+	"K . Y . Srinivasan" <kys@microsoft.com>,
+	Haiyang Zhang <haiyangz@microsoft.com>,
+	Wei Liu <wei.liu@kernel.org>, Dexuan Cui <decui@microsoft.com>,
+	Joyce Ooi <joyce.ooi@intel.com>, Jim Quinlan <jim2101024@gmail.com>,
+	Nicolas Saenz Julienne <nsaenz@kernel.org>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Marek Vasut <marek.vasut+renesas@gmail.com>,
+	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+	Michal Simek <michal.simek@amd.com>,
+	Daire McNamara <daire.mcnamara@microchip.com>,
+	Jonathan Derrick <jonathan.derrick@linux.dev>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org, linux-hyperv@vger.kernel.org,
+	linux-rpi-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org
+Subject: Re: [PATCH 16/16] PCI: vmd: Switch to msi_create_parent_irq_domain()
+Message-ID: <20250716194108.GA2552070@bhelgaas>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250716_111014_936709_1557EC54 
-X-CRM114-Status: GOOD (  28.98  )
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250716111009.000022ff@linux.intel.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,310 +96,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 26 Jun 2025 16:48:06 +0200
-Nam Cao <namcao@linutronix.de> wrote:
-
-> Move away from the legacy MSI domain setup, switch to use
-> msi_create_parent_irq_domain().
+On Wed, Jul 16, 2025 at 11:10:09AM -0700, Nirmal Patel wrote:
+> On Thu, 26 Jun 2025 16:48:06 +0200
+> Nam Cao <namcao@linutronix.de> wrote:
 > 
-> Signed-off-by: Nam Cao <namcao@linutronix.de>
-> ---
-> Cc: Nirmal Patel <nirmal.patel@linux.intel.com>
-> Cc: Jonathan Derrick <jonathan.derrick@linux.dev>
-> ---
->  drivers/pci/controller/Kconfig |   1 +
->  drivers/pci/controller/vmd.c   | 160
-> +++++++++++++++++---------------- 2 files changed, 82 insertions(+),
-> 79 deletions(-)
+> > Move away from the legacy MSI domain setup, switch to use
+> > msi_create_parent_irq_domain().
+
+> > -			unsigned int virq, irq_hw_number_t hwirq,
+> > -			msi_alloc_info_t *arg)
+> > +static void vmd_msi_free(struct irq_domain *domain, unsigned int
+> > virq, unsigned int nr_irqs); +
+> > +static int vmd_msi_alloc(struct irq_domain *domain, unsigned int
+> > virq, unsigned int nr_irqs,
+> > +			 void *arg)
 > 
-> diff --git a/drivers/pci/controller/Kconfig
-> b/drivers/pci/controller/Kconfig index 8f56ffd029ba2..41748d083b933
-> 100644 --- a/drivers/pci/controller/Kconfig
-> +++ b/drivers/pci/controller/Kconfig
-> @@ -156,6 +156,7 @@ config PCI_IXP4XX
->  config VMD
->  	depends on PCI_MSI && X86_64 && !UML
->  	tristate "Intel Volume Management Device Driver"
-> +	select IRQ_MSI_LIB
->  	help
->  	  Adds support for the Intel Volume Management Device (VMD).
-> VMD is a secondary PCI host bridge that allows PCI Express root ports,
-> diff --git a/drivers/pci/controller/vmd.c
-> b/drivers/pci/controller/vmd.c index d9b893bf4e456..38693a9487d9b
-> 100644 --- a/drivers/pci/controller/vmd.c
-> +++ b/drivers/pci/controller/vmd.c
-> @@ -7,6 +7,7 @@
->  #include <linux/device.h>
->  #include <linux/interrupt.h>
->  #include <linux/irq.h>
-> +#include <linux/irqchip/irq-msi-lib.h>
->  #include <linux/kernel.h>
->  #include <linux/module.h>
->  #include <linux/msi.h>
-> @@ -174,9 +175,6 @@ static void vmd_compose_msi_msg(struct irq_data
-> *data, struct msi_msg *msg) msg->arch_addr_lo.destid_0_7 =
-> index_from_irqs(vmd, irq); }
->  
-> -/*
-> - * We rely on MSI_FLAG_USE_DEF_CHIP_OPS to set the IRQ mask/unmask
-> ops.
-> - */
->  static void vmd_irq_enable(struct irq_data *data)
->  {
->  	struct vmd_irq *vmdirq = data->chip_data;
-> @@ -186,7 +184,11 @@ static void vmd_irq_enable(struct irq_data *data)
->  		list_add_tail_rcu(&vmdirq->node,
-> &vmdirq->irq->irq_list); vmdirq->enabled = true;
->  	}
-> +}
->  
-> +static void vmd_pci_msi_enable(struct irq_data *data)
-> +{
-> +	vmd_irq_enable(data->parent_data);
->  	data->chip->irq_unmask(data);
->  }
->  
-> @@ -194,8 +196,6 @@ static void vmd_irq_disable(struct irq_data *data)
->  {
->  	struct vmd_irq *vmdirq = data->chip_data;
->  
-> -	data->chip->irq_mask(data);
-> -
->  	scoped_guard(raw_spinlock_irqsave, &list_lock) {
->  		if (vmdirq->enabled) {
->  			list_del_rcu(&vmdirq->node);
-> @@ -204,19 +204,17 @@ static void vmd_irq_disable(struct irq_data
-> *data) }
->  }
->  
-> +static void vmd_pci_msi_disable(struct irq_data *data)
-> +{
-> +	data->chip->irq_mask(data);
-> +	vmd_irq_disable(data->parent_data);
-> +}
-> +
->  static struct irq_chip vmd_msi_controller = {
->  	.name			= "VMD-MSI",
-> -	.irq_enable		= vmd_irq_enable,
-> -	.irq_disable		= vmd_irq_disable,
->  	.irq_compose_msi_msg	= vmd_compose_msi_msg,
->  };
->  
-> -static irq_hw_number_t vmd_get_hwirq(struct msi_domain_info *info,
-> -				     msi_alloc_info_t *arg)
-> -{
-> -	return 0;
-> -}
-> -
->  /*
->   * XXX: We can be even smarter selecting the best IRQ once we solve
-> the
->   * affinity problem.
-> @@ -250,100 +248,110 @@ static struct vmd_irq_list
-> *vmd_next_irq(struct vmd_dev *vmd, struct msi_desc *d return
-> &vmd->irqs[best]; }
->  
-> -static int vmd_msi_init(struct irq_domain *domain, struct
-> msi_domain_info *info,
-> -			unsigned int virq, irq_hw_number_t hwirq,
-> -			msi_alloc_info_t *arg)
-> +static void vmd_msi_free(struct irq_domain *domain, unsigned int
-> virq, unsigned int nr_irqs); +
-> +static int vmd_msi_alloc(struct irq_domain *domain, unsigned int
-> virq, unsigned int nr_irqs,
-> +			 void *arg)
+> Is this wrapped in 80 columns? I can see few lines are more than 80.
+> Disregard this if it is wrapped and it can be my claws mail client
+> issue.
 
-Is this wrapped in 80 columns? I can see few lines are more than 80.
-Disregard this if it is wrapped and it can be my claws mail client
-issue.
+Wrapped locally, thanks Nirmal.
 
->  {
-> -	struct msi_desc *desc = arg->desc;
-> -	struct vmd_dev *vmd =
-> vmd_from_bus(msi_desc_to_pci_dev(desc)->bus);
-> -	struct vmd_irq *vmdirq = kzalloc(sizeof(*vmdirq),
-> GFP_KERNEL);
-> +	struct msi_desc *desc = ((msi_alloc_info_t *)arg)->desc;
-> +	struct vmd_dev *vmd = domain->host_data;
-> +	struct vmd_irq *vmdirq;
->  
-> -	if (!vmdirq)
-> -		return -ENOMEM;
-> +	for (int i = 0; i < nr_irqs; ++i) {
-> +		vmdirq = kzalloc(sizeof(*vmdirq), GFP_KERNEL);
-> +		if (!vmdirq) {
-> +			vmd_msi_free(domain, virq, i);
-> +			return -ENOMEM;
-> +		}
->  
-> -	INIT_LIST_HEAD(&vmdirq->node);
-> -	vmdirq->irq = vmd_next_irq(vmd, desc);
-> -	vmdirq->virq = virq;
-> +		INIT_LIST_HEAD(&vmdirq->node);
-> +		vmdirq->irq = vmd_next_irq(vmd, desc);
-> +		vmdirq->virq = virq + i;
-> +
-> +		irq_domain_set_info(domain, virq + i,
-> vmdirq->irq->virq, &vmd_msi_controller,
-> +				    vmdirq, handle_untracked_irq,
-> vmd, NULL);
-> +	}
->  
-> -	irq_domain_set_info(domain, virq, vmdirq->irq->virq,
-> info->chip, vmdirq,
-> -			    handle_untracked_irq, vmd, NULL);
->  	return 0;
->  }
->  
-> -static void vmd_msi_free(struct irq_domain *domain,
-> -			struct msi_domain_info *info, unsigned int
-> virq) +static void vmd_msi_free(struct irq_domain *domain, unsigned
-> int virq, unsigned int nr_irqs) {
->  	struct vmd_irq *vmdirq = irq_get_chip_data(virq);
->  
-> -	synchronize_srcu(&vmdirq->irq->srcu);
-> +	for (int i = 0; i < nr_irqs; ++i) {
-> +		synchronize_srcu(&vmdirq->irq->srcu);
->  
-> -	/* XXX: Potential optimization to rebalance */
-> -	scoped_guard(raw_spinlock_irq, &list_lock)
-> -		vmdirq->irq->count--;
-> +		/* XXX: Potential optimization to rebalance */
-> +		scoped_guard(raw_spinlock_irq, &list_lock)
-> +			vmdirq->irq->count--;
->  
-> -	kfree(vmdirq);
-> +		kfree(vmdirq);
-> +	}
->  }
->  
-> -static int vmd_msi_prepare(struct irq_domain *domain, struct device
-> *dev,
-> -			   int nvec, msi_alloc_info_t *arg)
-> +static const struct irq_domain_ops vmd_msi_domain_ops = {
-> +	.alloc		= vmd_msi_alloc,
-> +	.free		= vmd_msi_free,
-> +};
-> +
-> +static bool vmd_init_dev_msi_info(struct device *dev, struct
-> irq_domain *domain,
-> +				  struct irq_domain *real_parent,
-> struct msi_domain_info *info) {
-> -	struct pci_dev *pdev = to_pci_dev(dev);
-> -	struct vmd_dev *vmd = vmd_from_bus(pdev->bus);
-> +	if (WARN_ON_ONCE(info->bus_token !=
-> DOMAIN_BUS_PCI_DEVICE_MSIX))
-> +		return false;
->  
-> -	if (nvec > vmd->msix_count)
-> -		return vmd->msix_count;
-> +	if (!msi_lib_init_dev_msi_info(dev, domain, real_parent,
-> info))
-> +		return false;
->  
-> -	memset(arg, 0, sizeof(*arg));
-> -	return 0;
-> +	info->chip->irq_enable		= vmd_pci_msi_enable;
-> +	info->chip->irq_disable		= vmd_pci_msi_disable;
-> +	return true;
->  }
->  
-> -static void vmd_set_desc(msi_alloc_info_t *arg, struct msi_desc
-> *desc) -{
-> -	arg->desc = desc;
-> -}
-> +#define VMD_MSI_FLAGS_SUPPORTED
-> (MSI_GENERIC_FLAGS_MASK | MSI_FLAG_PCI_MSIX) +#define
-> VMD_MSI_FLAGS_REQUIRED		(MSI_FLAG_USE_DEF_DOM_OPS |
-> MSI_FLAG_NO_AFFINITY) -static struct msi_domain_ops
-> vmd_msi_domain_ops = {
-> -	.get_hwirq	= vmd_get_hwirq,
-> -	.msi_init	= vmd_msi_init,
-> -	.msi_free	= vmd_msi_free,
-> -	.msi_prepare	= vmd_msi_prepare,
-> -	.set_desc	= vmd_set_desc,
-> +static const struct msi_parent_ops vmd_msi_parent_ops = {
-> +	.supported_flags	= VMD_MSI_FLAGS_SUPPORTED,
-> +	.required_flags		= VMD_MSI_FLAGS_REQUIRED,
-> +	.bus_select_token	= DOMAIN_BUS_VMD_MSI,
-> +	.bus_select_mask	= MATCH_PCI_MSI,
-> +	.prefix			= "VMD-",
-> +	.init_dev_msi_info	= vmd_init_dev_msi_info,
->  };
->  
-> -static struct msi_domain_info vmd_msi_domain_info = {
-> -	.flags		= MSI_FLAG_USE_DEF_DOM_OPS |
-> MSI_FLAG_USE_DEF_CHIP_OPS |
-> -			  MSI_FLAG_NO_AFFINITY | MSI_FLAG_PCI_MSIX,
-> -	.ops		= &vmd_msi_domain_ops,
-> -	.chip		= &vmd_msi_controller,
-> -};
-> -
-> -static void vmd_set_msi_remapping(struct vmd_dev *vmd, bool enable)
-> -{
-> -	u16 reg;
-> -
-> -	pci_read_config_word(vmd->dev, PCI_REG_VMCONFIG, &reg);
-> -	reg = enable ? (reg & ~VMCONFIG_MSI_REMAP) :
-> -		       (reg | VMCONFIG_MSI_REMAP);
-> -	pci_write_config_word(vmd->dev, PCI_REG_VMCONFIG, reg);
-> -}
-> -
->  static int vmd_create_irq_domain(struct vmd_dev *vmd)
->  {
-> -	struct fwnode_handle *fn;
-> +	struct irq_domain_info info = {
-> +		.size		= vmd->msix_count,
-> +		.ops		= &vmd_msi_domain_ops,
-> +		.host_data	= vmd,
-> +	};
->  
-> -	fn = irq_domain_alloc_named_id_fwnode("VMD-MSI",
-> vmd->sysdata.domain);
-> -	if (!fn)
-> +	info.fwnode = irq_domain_alloc_named_id_fwnode("VMD-MSI",
-> vmd->sysdata.domain);
-> +	if (!info.fwnode)
->  		return -ENODEV;
->  
-> -	vmd->irq_domain = pci_msi_create_irq_domain(fn,
-> &vmd_msi_domain_info, NULL);
-> +	vmd->irq_domain = msi_create_parent_irq_domain(&info,
-> &vmd_msi_parent_ops); if (!vmd->irq_domain) {
-> -		irq_domain_free_fwnode(fn);
-> +		irq_domain_free_fwnode(info.fwnode);
->  		return -ENODEV;
->  	}
->  
->  	return 0;
->  }
->  
-> +static void vmd_set_msi_remapping(struct vmd_dev *vmd, bool enable)
-> +{
-> +	u16 reg;
-> +
-> +	pci_read_config_word(vmd->dev, PCI_REG_VMCONFIG, &reg);
-> +	reg = enable ? (reg & ~VMCONFIG_MSI_REMAP) :
-> +		       (reg | VMCONFIG_MSI_REMAP);
-> +	pci_write_config_word(vmd->dev, PCI_REG_VMCONFIG, reg);
-> +}
-> +
->  static void vmd_remove_irq_domain(struct vmd_dev *vmd)
->  {
->  	/*
-> @@ -874,12 +882,6 @@ static int vmd_enable_domain(struct vmd_dev
-> *vmd, unsigned long features) ret = vmd_create_irq_domain(vmd);
->  		if (ret)
->  			return ret;
-> -
-> -		/*
-> -		 * Override the IRQ domain bus token so the domain
-> can be
-> -		 * distinguished from a regular PCI/MSI domain.
-> -		 */
-> -		irq_domain_update_bus_token(vmd->irq_domain,
-> DOMAIN_BUS_VMD_MSI); } else {
->  		vmd_set_msi_remapping(vmd, false);
->  	}
-
+Bjorn
 
