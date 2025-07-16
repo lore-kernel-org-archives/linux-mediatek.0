@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0CF2C83F38
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00E3DC83F3A
 	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jul 2025 06:47:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,30 +12,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1Bc2UysZyxINJEnBDTmIH/YvB71I0yPjLrquLQ8wAGQ=; b=HZcVi7bVKvzOd8D2YDRWZ1fva+
-	XOOsDJstNTBuBAIvSt2c07ZInNeP7TMsOVRWG4AqwJJpAPLfGw2b8SM+pBfqSffn7pvP2yX6Tq7ot
-	4/2BCpPRg/kn62hQYyeGTSuzpqJXmUEZ3kgjmzB74iX3QH39BtwPPnrjwgHnXccRZPgbYPaQqonuO
-	iQTOKElagX9zGG5m1x6BT1LnUohQ1ujiFwMWpxXUbrSAd6Pv/vE8UKswLCAE3uwqNUhjZ/szP56Ff
-	SMc3KPi1TywTkUctfJ1of1zFDYS/puD1IjJoTZbL4dX9s9sGSHUEC4bum3tJIhcB8JJ3ZOUoB9F4y
-	Bw7uv4Mg==;
+	bh=RqLKBnJZmUhBwJMQUWdvJe0FL4bpScNZyr4UVtvLAXo=; b=hFCDRr0iNZBoPlnqnU/8mI6+Ps
+	xZSYGtwdCCVHU+MZKaxWr4HZA7dvV6gKiPhyYDMdW/B2xzWLEwWuRTEpqtVGl5rRYXQKskJ1RZr+n
+	idZSXhVHOCfqVmind+lmMQcXpzY+OgxDwL2XwTJuJD0Kj3Z3WU7XGP4BfofeWg2bhDZCHsfHMcvMI
+	gFyXMZ1W8zNvDppXprBe4NTWEWX2R/4TwZQxKtpjW7fhGlBSNuF0nbiB1VcCyyY7D8kRMMQFAerup
+	L6W2Mor5NwqfsHjYnJ3HVNap3fcjoKssxu990k7CiA/wOPOu0hEgKp5fYW6pS5MXC153kf1nydCIg
+	Ii5jdxng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubvvc-00000006vCt-2Kpc;
+	id 1ubvvc-00000006vE2-3vag;
 	Wed, 16 Jul 2025 06:47:44 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubvdE-00000006tHd-3w5M
+	id 1ubvdF-00000006tHA-0sCT
 	for linux-mediatek@lists.infradead.org;
 	Wed, 16 Jul 2025 06:28:46 +0000
-X-UUID: 1c1d2ca6620e11f09eb0dd999d3936bf-20250715
+X-UUID: 1c77e48e620e11f09eb0dd999d3936bf-20250715
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=1Bc2UysZyxINJEnBDTmIH/YvB71I0yPjLrquLQ8wAGQ=;
-	b=nWJC7W3JAhYHFaKFxoxyg3nmmmPJb3+c/TWUvW7dA0qPWEeEEEHA55VJflFHEg67V8zXkmIATW7DLoqgyBWjnFOpL7Gh6StRnJE89JtQMFdKAjo5uovsp6522HdB68kVcyMEmu7RppATH68RbWInQ1oFygqaIRf1/MrYU9g+ZxY=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=RqLKBnJZmUhBwJMQUWdvJe0FL4bpScNZyr4UVtvLAXo=;
+	b=NU1f681KInfds58kS/9KG0x61syLnxN7vvljqd/amrWKO/MzliQfxztgbcH5jJYlTcKFX8nbZz5TTlmfjg7yw0zBJ4kmYFbG0UIzLdDLVsAZxkiTOutcLiG1igzQAp+sSB8KsyEsdhP6qtjZ10lV62t6r5aijTDsp8OtZaQvvks=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.2,REQID:828c3a08-6416-4e54-8f86-9962a194ff67,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:9eb4ff7,CLOUDID:b040fabc-a91d-4696-b3f4-d8815e4c200b,B
+X-CID-O-INFO: VERSION:1.3.2,REQID:a4828ba7-6e22-490b-9647-10f6499d15b0,IP:0,UR
+	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:-5
+X-CID-META: VersionHash:9eb4ff7,CLOUDID:98dcea49-3902-4ad6-a511-6378a8132fbf,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
 	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
 	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -43,11 +43,11 @@ X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 1c1d2ca6620e11f09eb0dd999d3936bf-20250715
+X-UUID: 1c77e48e620e11f09eb0dd999d3936bf-20250715
 Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
 	(envelope-from <peter.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1675051574; Tue, 15 Jul 2025 23:28:38 -0700
+	with ESMTP id 567412286; Tue, 15 Jul 2025 23:28:39 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
  MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
@@ -64,9 +64,9 @@ CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
 	<yi-fan.peng@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
 	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
 	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>
-Subject: [PATCH v1 07/10] ufs: host: mediatek: Add more UFSCHI hardware versions
-Date: Wed, 16 Jul 2025 14:25:32 +0800
-Message-ID: <20250716062830.3712487-8-peter.wang@mediatek.com>
+Subject: [PATCH v1 08/10] ufs: host: mediatek: Add clock scaling query function
+Date: Wed, 16 Jul 2025 14:25:33 +0800
+Message-ID: <20250716062830.3712487-9-peter.wang@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20250716062830.3712487-1-peter.wang@mediatek.com>
 References: <20250716062830.3712487-1-peter.wang@mediatek.com>
@@ -75,8 +75,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250715_232845_002674_976DFFE2 
-X-CRM114-Status: GOOD (  18.44  )
+X-CRM114-CacheID: sfid-20250715_232845_260108_599439EF 
+X-CRM114-Status: GOOD (  12.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,123 +91,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Alice Chao <alice.chao@mediatek.com>
+From: Peter Wang <peter.wang@mediatek.com>
 
-This patch introduces a function for version control to distinguish
-between new and old platforms. It updates the handling of hardware
-IP versions, ensuring correct version comparisons by adjusting the
-version format for specific projects.
+This patch introduces a clock scaling readiness query function to
+streamline the process of checking clock scaling parameters.
+This function simplifies the code by encapsulating the logic
+for determining if clock scaling is ready.
 
 Signed-off-by: Peter Wang <peter.wang@mediatek.com>
-Signed-off-by: Alice Chao <alice.chao@mediatek.com>
-Reviewed-by: Peter Wang <peter.wang@mediatek.com>
 ---
- drivers/ufs/host/ufs-mediatek.c | 47 ++++++++++++++++++++++++++++++++-
- drivers/ufs/host/ufs-mediatek.h | 12 +++++++++
- 2 files changed, 58 insertions(+), 1 deletion(-)
+ drivers/ufs/host/ufs-mediatek.c | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index fb3b93f8fed0..f9f397c2a61c 100644
+index f9f397c2a61c..f74ab5286c6e 100644
 --- a/drivers/ufs/host/ufs-mediatek.c
 +++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -844,6 +844,51 @@ static void ufs_mtk_mcq_set_irq_affinity(struct ufs_hba *hba, unsigned int cpu)
- 	dev_info(hba->dev, "set irq %d affinity to CPU: %d\n", irq, _cpu);
+@@ -141,6 +141,16 @@ static bool ufs_mtk_is_allow_vccqx_lpm(struct ufs_hba *hba)
+ 	return !!(host->caps & UFS_MTK_CAP_ALLOW_VCCQX_LPM);
  }
  
-+static bool ufs_mtk_is_legacy_chipset(struct ufs_hba *hba, u32 hw_ip_ver)
-+{
-+	bool is_legacy = false;
-+
-+	switch (hw_ip_ver) {
-+	case IP_LEGACY_VER_MT6893:
-+	case IP_LEGACY_VER_MT6781:
-+		/* can add other legacy chipset ID here accordingly */
-+		is_legacy = true;
-+		break;
-+	default:
-+		break;
-+	}
-+	dev_info(hba->dev, "legacy IP version - 0x%x, is legacy : %d", hw_ip_ver, is_legacy);
-+
-+	return is_legacy;
-+}
-+
-+/*
-+ * HW version format has been changed from 01MMmmmm to 1MMMmmmm, since
-+ * project MT6878. In order to perform correct version comparison,
-+ * version number is changed by SW for the following projects.
-+ * IP_VER_MT6983	0x00360000 to 0x10360000
-+ * IP_VER_MT6897	0x01440000 to 0x10440000
-+ * IP_VER_MT6989	0x01450000 to 0x10450000
-+ * IP_VER_MT6991	0x01460000 to 0x10460000
-+ */
-+static void ufs_mtk_get_hw_ip_version(struct ufs_hba *hba)
++static bool ufs_mtk_is_clk_scale_ready(struct ufs_hba *hba)
 +{
 +	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
-+	u32 hw_ip_ver;
++	struct ufs_mtk_clk *mclk = &host->mclk;
 +
-+	hw_ip_ver = ufshcd_readl(hba, REG_UFS_MTK_IP_VER);
-+
-+	if (((hw_ip_ver & (0xFF << 24)) == (0x1 << 24)) ||
-+	    ((hw_ip_ver & (0xFF << 24)) == 0)) {
-+		hw_ip_ver &= ~(0xFF << 24);
-+		hw_ip_ver |= (0x1 << 28);
-+	}
-+
-+	host->ip_ver = hw_ip_ver;
-+
-+	host->legacy_ip_ver = ufs_mtk_is_legacy_chipset(hba, hw_ip_ver);
++	return mclk->ufs_sel_clki &&
++		mclk->ufs_sel_max_clki &&
++		mclk->ufs_sel_min_clki;
 +}
 +
- static void ufs_mtk_get_controller_version(struct ufs_hba *hba)
+ static void ufs_mtk_cfg_unipro_cg(struct ufs_hba *hba, bool enable)
  {
- 	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
-@@ -1118,7 +1163,7 @@ static int ufs_mtk_init(struct ufs_hba *hba)
+ 	u32 tmp;
+@@ -950,8 +960,7 @@ static void ufs_mtk_init_clocks(struct ufs_hba *hba)
+ 		}
+ 	}
  
- 	ufs_mtk_setup_clocks(hba, true, POST_CHANGE);
- 
--	host->ip_ver = ufshcd_readl(hba, REG_UFS_MTK_IP_VER);
-+	ufs_mtk_get_hw_ip_version(hba);
- 
- 	goto out;
- 
-diff --git a/drivers/ufs/host/ufs-mediatek.h b/drivers/ufs/host/ufs-mediatek.h
-index 16126a11195e..8c488640d0fe 100644
---- a/drivers/ufs/host/ufs-mediatek.h
-+++ b/drivers/ufs/host/ufs-mediatek.h
-@@ -181,6 +181,7 @@ struct ufs_mtk_host {
- 	u16 ref_clk_ungating_wait_us;
- 	u16 ref_clk_gating_wait_us;
- 	u32 ip_ver;
-+	bool legacy_ip_ver;
- 
- 	bool mcq_set_intr;
- 	bool is_mcq_intr_enabled;
-@@ -197,13 +198,24 @@ struct ufs_mtk_host {
- /* UFS MTK ip version value */
- enum {
- 	/* UFS 3.1 */
-+	IP_VER_MT6983    = 0x10360000,
- 	IP_VER_MT6878    = 0x10420200,
- 
- 	/* UFS 4.0 */
- 	IP_VER_MT6897    = 0x10440000,
- 	IP_VER_MT6989    = 0x10450000,
-+	IP_VER_MT6899    = 0x10450100,
-+	IP_VER_MT6991_A0 = 0x10460000,
-+	IP_VER_MT6991_B0 = 0x10470000,
-+	IP_VER_MT6993    = 0x10480000,
- 
- 	IP_VER_NONE      = 0xFFFFFFFF
- };
- 
-+enum ip_ver_legacy {
-+	IP_LEGACY_VER_MT6781 = 0x10380000,
-+	IP_LEGACY_VER_MT6879 = 0x10360000,
-+	IP_LEGACY_VER_MT6893 = 0x20160706
-+};
-+
- #endif /* !_UFS_MEDIATEK_H */
+-	if (!mclk->ufs_sel_clki || !mclk->ufs_sel_max_clki ||
+-	    !mclk->ufs_sel_min_clki) {
++	if (!ufs_mtk_is_clk_scale_ready(hba)) {
+ 		hba->caps &= ~UFSHCD_CAP_CLK_SCALING;
+ 		dev_info(hba->dev,
+ 			 "%s: Clk-scaling not ready. Feature disabled.",
 -- 
 2.45.2
 
