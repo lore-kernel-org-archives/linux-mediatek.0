@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7379C83F1B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jul 2025 17:54:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EEACC83F22
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jul 2025 17:56:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3+1vi8bZzQ07I9vWMHC48+ZnxZElk7NeHkY4J8vrkhM=; b=0SBjFv2g4VEYHtwxPEbmiKhrvg
-	bokG3TWEfHhkY/9wGfeJmprLF54hIDSH8tFZpZfTDznHa8rWsABAK58QyHT6WscKVvw9niNMYdez2
-	dxRg4jM6aKIIJniuaf/EFz7n6ShaqXFWAWY0ZKcbe0ikEAmxRJWl94DylyW6i+Kkq/Plu2w1Z09t4
-	25DkJtTCHlzDtmFfT43F4p7jYJYJ52G3aooudmVqVI9gyih9nasZ+q87QWGanJ3OhvZJLXRgxurdY
-	abrMUzBvF9LsEjSuwbUu88ZLfHQ5n2g38ompCDOwkVvuGPiMusdeagjBKispYqU4lVd4xCarSyCjG
-	49GEk91A==;
+	bh=CFeYngD4ucIt7AO/MWX4ZQHUevaFxkhqhnDYFChGYVQ=; b=aiuRKhWGVHdvFcTjBXKQIdVf4Q
+	oPyU/qShIb9iFTojEZYXC7XQJIeqgIEoUqFq/iJEO+VOjcwz/D4tCtow9g3U0gmfkq5YMsWdo0pXe
+	nNtrxjuETJeWbs9o9eYUY9gL9pwccPog5WFFsAC7SWvLPSlT6X6Cjhm3YJ0zyXUb8aFQ9OcglAed5
+	B10BA9EbkWUeDJErX5e7j1+4C2IF7mtS04czYs1XVDnzOiHRVLE8+RNEj3tCrwK3XFi21faxkyPk2
+	BTXUntmXJ1GDvXY7HPih0nOrqJfqxVwIXaMoU2R82Su5fsR+XFA2mYRKFZHEB2f/4O/7geJ3tStc1
+	81g1M3GQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uc6Kc-00000008Kwg-2oPz;
-	Wed, 16 Jul 2025 17:54:14 +0000
+	id 1uc6N4-00000008LFq-05MK;
+	Wed, 16 Jul 2025 17:56:46 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uc6IA-00000008Kdi-3c5p;
-	Wed, 16 Jul 2025 17:51:44 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1752688291; cv=none; 
+	id 1uc6IF-00000008Kev-0xr9;
+	Wed, 16 Jul 2025 17:51:48 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1752688295; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=bPRBQxPfnwzs1gjZA3GgAFdfwbegJ17WohAHpaWx7n5firjUOwZjudlgjU/kganPPPpTd3Oojxsk5Us5XvEaWs0pScWv2mzGJHvuq2ilKkSrH0FwWjGwvchbWUFKQ3yivyrSbX7hU/hlSaRHCXvYtUmFK0tDdaIE1UQPHk1EKNA=
+	b=MeXqvEeEGB8Xf2pj+MTOTQQcWskKvwobxhUK6KHJwVg72M3EtBc9fsLbxpthwr0B+L+3Ker2zkGRx8sH5r24PNd9vrgZH0uho/WHFlszFemsstGI8Fmx5VEU8Q4iPob9x3SHUrQq57smfaTZHTvyOWNEGgWheCWPUkADwZZwWPY=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1752688291; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=3+1vi8bZzQ07I9vWMHC48+ZnxZElk7NeHkY4J8vrkhM=; 
-	b=Yr3GeeYhK+9QsDs+MitvcYMFj4OBBiW27xK9Tjc9wxMJM4Uf5pDh8EkTr46UHuHyCM2Rf300y5SKY9CVFGxupbzSVYVsZyX1Jo0RQw5FSfO/8uNTMRilWoGalqoHbBLuPZVN7wKOO+sGra/c/f+v5+nfCl5sNZBLAD3AIlfmuVM=
+	t=1752688295; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=CFeYngD4ucIt7AO/MWX4ZQHUevaFxkhqhnDYFChGYVQ=; 
+	b=mRMFHo7UxlZfPPBKFgsYWW59IzoMgOKLC4jaHqVlL7OyGq7jeMcUrrXY+CcXluIbfGSh5VxyiSezKoW63rqIyCNJKoS9O8uo68zjYqN4B1QRFWnJmm4aoxnEZJyVkfQ8sk/OeAPhQuSlcwbvp8YlZbsRYmFvbF0GhDokL8vkAAQ=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1752688291;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1752688295;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=3+1vi8bZzQ07I9vWMHC48+ZnxZElk7NeHkY4J8vrkhM=;
-	b=Rjqul+t8exoR/AN8FvRtQnmIckb7djHzQdpCNdZfetUdtV92ecDRruyBxC1pYJ89
-	PDthIhpOz1bTDcH7sSwUls7roS4NK9CPZPSoFT3X10s6jmuK4phUVGwm7ofnPRrSawZ
-	ryw+EqAwn8Pv/IHYHYhUMVJE4sOiL1nblSma5EBY=
-Received: by mx.zohomail.com with SMTPS id 1752688289851648.2288655206119;
-	Wed, 16 Jul 2025 10:51:29 -0700 (PDT)
+	bh=CFeYngD4ucIt7AO/MWX4ZQHUevaFxkhqhnDYFChGYVQ=;
+	b=IMgcm7ZOsOXScxrQ6/9XkrD74GRW1FQUOTR7mRTC1YlsEQnYeOaGyJ2CC7k3d8Sh
+	25K7l4+8jjxcluEq736lz++Jhvhxfkzsoko9j0pAAXb3Mlc14kg5WZhLZ738v7x+Y24
+	7hV0TlyK5KMwnARLmgE6BXrNQqxrl3S4plA/ApPw=
+Received: by mx.zohomail.com with SMTPS id 1752688292890516.4771910859703;
+	Wed, 16 Jul 2025 10:51:32 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Wed, 16 Jul 2025 19:51:22 +0200
-Subject: [PATCH v3 1/4] dt-bindings: cpufreq: Add
- mediatek,mt8196-cpufreq-hw binding
+Date: Wed, 16 Jul 2025 19:51:23 +0200
+Subject: [PATCH v3 2/4] cpufreq: mediatek-hw: Refactor match data into
+ struct
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250716-mt8196-cpufreq-v3-1-d440fb810d7e@collabora.com>
+Message-Id: <20250716-mt8196-cpufreq-v3-2-d440fb810d7e@collabora.com>
 References: <20250716-mt8196-cpufreq-v3-0-d440fb810d7e@collabora.com>
 In-Reply-To: <20250716-mt8196-cpufreq-v3-0-d440fb810d7e@collabora.com>
 To: "Rafael J. Wysocki" <rafael@kernel.org>, 
@@ -68,8 +68,8 @@ Cc: kernel@collabora.com, linux-pm@vger.kernel.org,
  Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250716_105142_954970_D2623927 
-X-CRM114-Status: GOOD (  13.98  )
+X-CRM114-CacheID: sfid-20250716_105147_326338_993DFF60 
+X-CRM114-Status: GOOD (  16.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,111 +84,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MediaTek MT8196 SoC has new cpufreq hardware, with added memory
-register ranges to control Dynamic-Voltage-Frequency-Scaling.
+While the driver could get away with having the per-compatible match
+data just be an array of the reg offsets, the only thing it used it for
+right now, this doesn't really allow it to be extended in any meaningful
+way if some other per-variant information needs to be communicated.
 
-The DVFS hardware is controlled through a set of registers referred to
-as "FDVFS". They set the target frequency the DVFS hardware should aim
-for for each performance domain.
+In preparation of adding support for hybrid "FDVFS" for MT8196, refactor
+the code to make the DT match data a struct, which currently only
+contains a single member: the reg offsets. This will allow this struct
+to be extended with other members for other hardware variants.
 
-Instead of working around the old binding and its already established
-meanings for the reg items, add a new binding. The FDVFS register memory
-region is at the beginning, which allows us to easily expand this
-binding for future SoCs which may have more than 3 performance domains.
-
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- .../cpufreq/mediatek,mt8196-cpufreq-hw.yaml        | 82 ++++++++++++++++++++++
- 1 file changed, 82 insertions(+)
+ drivers/cpufreq/mediatek-cpufreq-hw.c | 28 ++++++++++++++++++----------
+ 1 file changed, 18 insertions(+), 10 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/cpufreq/mediatek,mt8196-cpufreq-hw.yaml b/Documentation/devicetree/bindings/cpufreq/mediatek,mt8196-cpufreq-hw.yaml
-new file mode 100644
-index 0000000000000000000000000000000000000000..5f3c7db3f3aa0abf90061b2d735f975135cb35eb
---- /dev/null
-+++ b/Documentation/devicetree/bindings/cpufreq/mediatek,mt8196-cpufreq-hw.yaml
-@@ -0,0 +1,82 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/cpufreq/mediatek,mt8196-cpufreq-hw.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/drivers/cpufreq/mediatek-cpufreq-hw.c b/drivers/cpufreq/mediatek-cpufreq-hw.c
+index 74f1b4c796e4cc9ebccf50dd4e165a1eba03136a..b2aba1842226c7d24a8b9599ea62408cac9f803c 100644
+--- a/drivers/cpufreq/mediatek-cpufreq-hw.c
++++ b/drivers/cpufreq/mediatek-cpufreq-hw.c
+@@ -41,15 +41,22 @@ struct mtk_cpufreq_data {
+ 	struct resource *res;
+ 	void __iomem *base;
+ 	int nr_opp;
++	const struct mtk_cpufreq_variant *variant;
+ };
+ 
+-static const u16 cpufreq_mtk_offsets[REG_ARRAY_SIZE] = {
+-	[REG_FREQ_LUT_TABLE]	= 0x0,
+-	[REG_FREQ_ENABLE]	= 0x84,
+-	[REG_FREQ_PERF_STATE]	= 0x88,
+-	[REG_FREQ_HW_STATE]	= 0x8c,
+-	[REG_EM_POWER_TBL]	= 0x90,
+-	[REG_FREQ_LATENCY]	= 0x110,
++struct mtk_cpufreq_variant {
++	const u16 reg_offsets[REG_ARRAY_SIZE];
++};
 +
-+title: MediaTek Hybrid CPUFreq for MT8196/MT6991 series SoCs
-+
-+maintainers:
-+  - Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-+
-+description:
-+  MT8196 uses CPUFreq management hardware that supports dynamic voltage
-+  frequency scaling (dvfs), and can support several performance domains.
-+
-+properties:
-+  compatible:
-+    const: mediatek,mt8196-cpufreq-hw
-+
-+  reg:
-+    items:
-+      - description: FDVFS control register region
-+      - description: OPP tables and control for performance domain 0
-+      - description: OPP tables and control for performance domain 1
-+      - description: OPP tables and control for performance domain 2
-+
-+  "#performance-domain-cells":
-+    const: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - "#performance-domain-cells"
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    cpus {
-+            #address-cells = <1>;
-+            #size-cells = <0>;
-+
-+            cpu0: cpu@0 {
-+                device_type = "cpu";
-+                compatible = "arm,cortex-a720";
-+                enable-method = "psci";
-+                performance-domains = <&performance 0>;
-+                reg = <0x000>;
-+            };
-+
-+            /* ... */
-+
-+            cpu6: cpu@600 {
-+                device_type = "cpu";
-+                compatible = "arm,cortex-x4";
-+                enable-method = "psci";
-+                performance-domains = <&performance 1>;
-+                reg = <0x600>;
-+            };
-+
-+            cpu7: cpu@700 {
-+                device_type = "cpu";
-+                compatible = "arm,cortex-x925";
-+                enable-method = "psci";
-+                performance-domains = <&performance 2>;
-+                reg = <0x700>;
-+            };
-+    };
-+
-+    /* ... */
-+
-+    soc {
-+        #address-cells = <2>;
-+        #size-cells = <2>;
-+
-+        performance: performance-controller@c2c2034 {
-+            compatible = "mediatek,mt8196-cpufreq-hw";
-+            reg = <0 0xc220400 0 0x20>, <0 0xc2c0f20 0 0x120>,
-+                  <0 0xc2c1040 0 0x120>, <0 0xc2c1160 0 0x120>;
-+            #performance-domain-cells = <1>;
-+        };
-+    };
++static const struct mtk_cpufreq_variant cpufreq_mtk_base_variant = {
++	.reg_offsets = {
++		[REG_FREQ_LUT_TABLE]	= 0x0,
++		[REG_FREQ_ENABLE]	= 0x84,
++		[REG_FREQ_PERF_STATE]	= 0x88,
++		[REG_FREQ_HW_STATE]	= 0x8c,
++		[REG_EM_POWER_TBL]	= 0x90,
++		[REG_FREQ_LATENCY]	= 0x110,
++	},
+ };
+ 
+ static int __maybe_unused
+@@ -157,7 +164,7 @@ static int mtk_cpu_create_freq_table(struct platform_device *pdev,
+ 
+ static int mtk_cpu_resources_init(struct platform_device *pdev,
+ 				  struct cpufreq_policy *policy,
+-				  const u16 *offsets)
++				  const struct mtk_cpufreq_variant *variant)
+ {
+ 	struct mtk_cpufreq_data *data;
+ 	struct device *dev = &pdev->dev;
+@@ -200,9 +207,10 @@ static int mtk_cpu_resources_init(struct platform_device *pdev,
+ 
+ 	data->base = base;
+ 	data->res = res;
++	data->variant = variant;
+ 
+ 	for (i = REG_FREQ_LUT_TABLE; i < REG_ARRAY_SIZE; i++)
+-		data->reg_bases[i] = base + offsets[i];
++		data->reg_bases[i] = base + variant->reg_offsets[i];
+ 
+ 	ret = mtk_cpu_create_freq_table(pdev, data);
+ 	if (ret) {
+@@ -336,7 +344,7 @@ static void mtk_cpufreq_hw_driver_remove(struct platform_device *pdev)
+ }
+ 
+ static const struct of_device_id mtk_cpufreq_hw_match[] = {
+-	{ .compatible = "mediatek,cpufreq-hw", .data = &cpufreq_mtk_offsets },
++	{ .compatible = "mediatek,cpufreq-hw", .data = &cpufreq_mtk_base_variant },
+ 	{}
+ };
+ MODULE_DEVICE_TABLE(of, mtk_cpufreq_hw_match);
 
 -- 
 2.50.1
