@@ -4,29 +4,29 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8183DC83F3A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Jul 2025 07:22:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 402ADC83F1B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Jul 2025 07:22:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:MIME-Version:Content-Type:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CeDMN0y2LxxzXxmac8Sov5r+FiCgBlJtQe7PAfm7O1w=; b=VQg3jO/ArJDu1Q35op3+ljCf/F
-	JgyaNv6PLxZln83t8iyYsBb53Zx0NWdQ946W5fHShmmSsQcKMOHg5Uogb9oxzbeDRLcPmVRJol8Wv
-	jKDf1gPVOmFYuEUbKuh/pjxHSxabAT6CZA654AsnVQAZiQoJthYpao8WAP9zRDakjZRbuo2NMMmRZ
-	AE5fp3R4G+DMApTMXYPO+2RCM3PIPJxImHrgGZPRw+Y8u9w4raCQG8vhMVEmfWaeiCMIVbELqo3eu
-	TCnMfTGXqcNxfkcoixhsOXHZcyoSH+3U4xygfMAThg9tcngfm9JIiFvp0TvpipcXqhJq72OGH/y7q
-	HQDAXWHg==;
+	bh=Qld9P5uMxoJlY3RdRhcPJx1llFYd6ALjjuMqphGGMew=; b=Fd67tg2Q17OnmFYcIEf4UMsdwq
+	qduh9onHFJ1cSxM8EEfdxvVvL3Ld1LLf98QIBEZew2arr5fVqGIZ5muIugqUYxzJscctI+3eUllDm
+	zc/vytCoNHhyCAVz4WG0D6WeqXkW26hHRv0VHF0aSC+KLbt3D7UVB8M1xz58iqkh1Rmk4x4ZeVWQa
+	zApQWA8fl5sPqujthOFpzaIM1EgwAxifGq5Bt69L2kbp0+GBsnfmwXzyA/fMfTOGghcMOYIp1GEPB
+	AtbyAb5j3fwclu/5eF+m+WaI+Q/EcopvQxGCAQefQ/wQg+5jimNTX6Vt8SuRRjqImveYeKkeVX4qV
+	X2L2bbxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucIwS-00000009Q5I-1Fjy;
+	id 1ucIwS-00000009Q6B-3S9J;
 	Thu, 17 Jul 2025 07:22:08 +0000
 Received: from exvmail4.skhynix.com ([166.125.252.92] helo=invmail4.hynix.com)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucIcG-00000009MJW-3RYZ;
-	Thu, 17 Jul 2025 07:01:18 +0000
-X-AuditID: a67dfc5b-669ff7000002311f-72-68789fb4929b
+	id 1ucIcI-00000009MJV-1IHQ;
+	Thu, 17 Jul 2025 07:01:19 +0000
+X-AuditID: a67dfc5b-669ff7000002311f-97-68789fb4ad29
 From: Byungchul Park <byungchul@sk.com>
 To: willy@infradead.org,
 	netdev@vger.kernel.org
@@ -95,49 +95,48 @@ Cc: linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next v11 10/12] mlx5: access ->pp through netmem_desc instead of page
-Date: Thu, 17 Jul 2025 16:00:50 +0900
-Message-Id: <20250717070052.6358-11-byungchul@sk.com>
+Subject: [PATCH net-next v11 12/12] libeth: xdp: access ->pp through netmem_desc instead of page
+Date: Thu, 17 Jul 2025 16:00:52 +0900
+Message-Id: <20250717070052.6358-13-byungchul@sk.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20250717070052.6358-1-byungchul@sk.com>
 References: <20250717070052.6358-1-byungchul@sk.com>
-X-Brightmail-Tracker: H4sIAAAAAAAAAzWSbUxTdxTG/d93GprddMruSsyWZmQGMxXF5HxAQpbF3MSMmJiYoVlmIzdr
-	Q6naYi1zy5jUCN2oiGxCrQGxuvKisBZtwRa1JUKKL1BeUgHB1azBAG6ANC11Yovx2y/nyfM8
-	5ySHwSVPSCmjVJcIGrVcJaNEhGg+temLzga9YlvcLAVLexsFQ0uXSWiN6uHPZy4SAs0c3B6M
-	YmBpuYXgVWyCBnvlJA5LvX0UXLkcwSHWUUWA5bGBgOX2FRz+uR+iod/7PwGt9q9h+lqYAPcZ
-	Jw6+5QwIne2noMoQx6F+6jQFq+NxEjyxlzScctkw8MzepGHwlomE2pWrODjLniW6no+RMNxt
-	oWC4fAjBVNsqCWFvonDONkmDqdWMwHunmYJThh0wd/MVDf/93ovDtCkP3tTp4H5jGkQG5hBM
-	XB3FYNXtouHR1A0SetudGIz8HcMh8tslCozzZxGM1ndj8OBSBwnWgREsscc+GFt9jcH5QCMF
-	zw3TCAK+EAEXfzEhaO8JkrDgTpwcj1qovC9539y/OO96akV8Z/MTjJ+pfoPxwR4/xneZn9J8
-	o/0477Bl8lfcLzDeGAzgvL2lkuLtizU0Pznmpvj+ujjBO6w/8zOOerR34wFRTqGgUuoEzdbc
-	QyLFH/4+8ugIrXdFK+gy1EwZEcNwbDa3YMo1opQ1dLqMRJIp9nMuGIzhSV7PZnFLob7EXMTg
-	7MNUzuOow5LCh2wB569oWjMQbAZ3MXyBTLKY3cmFqhfxd6GfcK0dd9c4JTGP19ZQSZYkykaa
-	yuhkKMc2pHANF7rQO8PH3D1bkKhG4ka0rgVJlGpdsVypyt6iKFUr9VsOHym2o8TDXfvp9UEX
-	Whzc50Usg2Sp4kMdJxQSUq7TlhZ7EcfgsvXi8wGdQiIulJf+IGiOfKc5rhK0XpTOELKPxNsj
-	Jwol7PfyEqFIEI4KmvcqxqRIy9BXKqd6rGi4ej6cM+r5bHmm/K/TVr9xdmLp3P6TC2aPu2iI
-	+fTbSHqJZqh+3L/r2H6PK+uuOxbO+NFRLj+wuZvN3FSYf/3wsYKcvV3fnLm9a/Oj4ZxJm/aF
-	Z14a3DBeYLCWU8a8hZfR6zXZd3bn95jTPuj02fS5s9ukvqpf97RxQRmhVcizMnGNVv4W5kW2
-	9WwDAAA=
-X-Brightmail-Tracker: H4sIAAAAAAAAAzWSe2xLcRTH/e7vPrpmlasWrnk3EUK8YpLjvZBwIwiZRDwSq7m00XXSTm0E
-	RcU2bDPDnnQP7CE23WjRIW1jD2O01RR7ULF4zHPTrIrqJv77nPPNOZ/zxxFhqZmKFinVyYJG
-	LVfJaDEpXrPg6PT6iymKWUYDhqKaqzQ87S2hoLo/Ba68slDgrOTgzpN+AoqqbiLoC7xkwJTe
-	jqHX0UhDWYkfQ6D2FAlFbQYSftT8xPD2gY+BJttvEqpNq6HrcjcJ1uNmDPYfk8CX1UTDKUMQ
-	Q37nMRpCL4IUNAQ+M3DEUkGAvbg5XH68wcCTm5kU5P68hMGsfxUWvvFQ4LpdRIPr6FMEnVdD
-	FHTbwtaeinYGMqsLENjuVdJwxDAHem70MfD1rANDV2Ys/MnTwQPjCPA/7EHw8tIzAkJWCwOP
-	O69R4KgxE+B+HcDgP1lMQ8anLATP8m8T0FpcS0H5QzcRviMOPKFfBJxxGml4Y+hC4LT7SCg8
-	nImg5q6Xgm9WAxm7jLf3fMG8paMc8fWVzwn+XfYfgvfebSH4WwUdDG807eHrKqbyZdb3BJ/h
-	dWLeVJVO86bvOQzf7rHSfFNekOTryg/x7+ry0dpxm8QLtwsqpU7QzFwcL1aca2mkdruZFEt/
-	GqNHlXQGihBxbAxntmSQA0yzkzmvN4AHOIqdzfX6GsN9sQizjyK5hro8YiAYzm7kWtJKBwdI
-	dhJX2H2eGmAJO5fzZX/H/5aO56pr7w9yRLgfzM0ZlEnDMnepnslGYiMaUoWilGpdolypmjtD
-	u0uRqlamzEhISjSh8DtdPvDrtAX1uVbYECtCskhJfO1ehZSS67SpiTbEibAsSnLGqVNIJdvl
-	qfsETdJWzR6VoLWh0SJSNlKycoMQL2V3ypOFXYKwW9D8TwlRRLQeyUplY9T3Yl4wE1raLqgm
-	R6yJ0yTdOeZbHyN29fpH7zjY1pyjLUj+vGiJJXfs2QUljvND01cbVrmXLs/1uCrIUdFTVnx1
-	nhiWkOOPTVs0L+FWx9Zps2TXjzckz7Nva42bv3/bx/uOVYfpssjgxPqFMw96vOrCD5tLyta1
-	Cs36rGVb4kMyUquQz56KNVr5X2kwSOZKAwAA
+X-Brightmail-Tracker: H4sIAAAAAAAAAz1SfUiTexjt935vOHpZcnsrolpXCuN6+9B6oA8iiF6IoK5w/7AoR77cDeeM
+	aUuFylIJh63QIvWum1911XXvbH5Nm16bXpVqpVPXVqY5yxZpH5rmXLU2o/47nPOcc54HHgaX
+	usmljFKdKmjUcpWMEhPiibDSX+qupSnW6/MjwGC6SUHvVCkJxtk0+PuZhQRHFQe3e2YxMFQ3
+	IPjge0KDOXcQh6mOLgrKS2dw8NWcJ8DwMJuAadMcDi86PTR02z4TYDTvg+EbYwRYzzXi0D4d
+	AZ4L3RScz/bjUDSUQ0HgsZ+EFt8bGs5aKjFoeV1PQ0+DnoRLc9dxaMx8FuwadZLQ12ygoC+r
+	F8HQzQAJY7Zg4XjlIA16YzEC239VFJzN3gTj9R9oeHe5A4dh/U74UqiFzpKfYObeOIIn1wcw
+	CFgtNDwY+peEDlMjBv0jPhxm8q5SoJu4gGCgqBmD+1drSKi4148F94gFZ+ATBgWOEgpGs4cR
+	ONo9BPx5Ro/A1Ooi4b01eLJ/1kDt3MW3j7/FecvTCsTXVbkx3nvxC8a7Wu9ifFPxU5ovMR/n
+	aysj+XLrK4zXuRw4b67OpXjzZD7NDzqtFN9d6Cf42orTvLe2CO1fHifeliColFpB8+uOeLGi
+	zcMes1NpTfZ8MhN1kjokYjg2mnOb/vmBP3rniBCm2DWcy+XDQzic3cBNebqCvJjBWXsY11Jb
+	iIWERWw81/B/0byBYCO4rAd/USEsYWO4ybFH9LfQFZyxpm0+SBTk/Zfy52ekwbL+skw6FMqx
+	10TcgMOCvhmWcHcqXcRFJClBC6qRVKnWJsmVqugoRbpamRZ1NDnJjIIPd+Pkp4MWNNkTa0Ms
+	g2RhkviaEwopKdempCfZEMfgsnBJgUOrkEoS5OkZgib5iOa4SkixoWUMIVss2ThzIkHK/iFP
+	FRIF4Zig+a5ijGhpJtpiFI08rFr8cUTXXvezvezQaffKhS/LRGv25OyOvCU7peiKzeCuPBLF
+	5BVjBzKmrcXe6NW/nQpsdy+Ijme0OctKY7z1XatWrR5ti2zdas9aF7XtNqZszFNPbH4T+D0u
+	PO7l3oJE4/O1Emee6vGdhYoc577cJYePlKfu0bFDPlI7TcuIFIV8QySuSZF/BVvOg6FsAwAA
+X-Brightmail-Tracker: H4sIAAAAAAAAAzVSa0iTYRjt/e5bjj6W1Fd2gYVEg0zpwkN3KOorKsJ+FP0oh360oa7acs0g
+	slxEYtPMQGumluUVt6bpsqk1zbSybJotXVqLxGpd1dVctabRv/Oc8zznnB8Pg0vryNmMSn1E
+	0KgVSTJKTIh3rEpfXFuoV0ZXW6eByVxFwbORYhIqf+qh9LWNBGc5B3e6fmJgqqhDMOrvp8F6
+	1o3DSOsDCq4V+3DwW84RYHpqIGDMPI7DuzYPDe2O3wRUWrfD4I0hAuxn6nFoGYsET1Y7BecM
+	ARzyB05TEOwLkNDo/0zDKVsZBi0FHaHx4y0auuqMJOSOX8ehPu11KPBtLwndDSYKutOfIRio
+	CpIw5AilesvcNBgrLyFwNJdTcMqwFLy3Rmn4erEVh0HjeviTp4O2ohnge+RF0H/9OQZBu42G
+	JwPVJLSa6zHoeePHwZdZQEHGpywEz/MbMHhcYCGh5FEPFuqxC3qDvzC44Cyi4K1hEIGzxUPA
+	5ZNGBOYmFwnf7AZi/Qa+xfsF522vShBfW/4S44ez/2C8q+khxt++9Irmi6wpfE2ZnL9mf4/x
+	GS4nzlsrzlK89XsOzbt77RTfnhcg+JqSE/xwTT7aOW+veHWCkKTSCZola+PEyrse9lAnpb/d
+	mUOmoTYyA4kYjl3G/RgeJyYwxS7kXC4/PoHD2RhuxPMgxIsZnO0M4xpr8rAJYTobx9Xdz588
+	INhILv3JFWoCS9jl3PehF/Q/0/lcpeXupJEoxAdycyZ3pKGwnqtpdDYSF6EpFShcpdYlK1RJ
+	y6O0icpUtUofFX8w2YpC33Tj+K/zNjTavdmBWAbJwiRxlqNKKanQaVOTHYhjcFm45IJTp5RK
+	EhSpxwTNwf2alCRB60ARDCGbKdm6W4iTsgcUR4REQTgkaP6rGCOanYbcs5o2yTvEmVJfbiyT
+	ualp7J6y+sfU6sPTs7McSwqNG02nLX2u6MDR2oh1ySm1jO/mHrn7TmFXKpEQEx+rPly4+N2K
+	Zk6uzHC4hqM6ctasCcxdOWPL/fiqD6WexI5tDVNY0dM5xaKwBRHm2KgP7ubB496BDYuyZt47
+	vy9a32gfD8oIrVIRI8c1WsVfeP6v00kDAAA=
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250717_000116_991760_F42E40C8 
-X-CRM114-Status: UNSURE (   8.92  )
+X-CRM114-CacheID: sfid-20250717_000118_469718_6BD295BC 
+X-CRM114-Status: UNSURE (   9.13  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -156,27 +155,26 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 To eliminate the use of struct page in page pool, the page pool users
 should use netmem descriptor and APIs instead.
 
-Make mlx5 access ->pp through netmem_desc instead of page.
+Make xdp access ->pp through netmem_desc instead of page.
 
 Signed-off-by: Byungchul Park <byungchul@sk.com>
 ---
- drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ include/net/libeth/xdp.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c b/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
-index 5ce1b463b7a8..5d51600935a6 100644
---- a/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
-+++ b/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
-@@ -710,7 +710,8 @@ static void mlx5e_free_xdpsq_desc(struct mlx5e_xdpsq *sq,
- 				/* No need to check page_pool_page_is_pp() as we
- 				 * know this is a page_pool page.
- 				 */
--				page_pool_recycle_direct(page->pp, page);
-+				page_pool_recycle_direct(pp_page_to_nmdesc(page)->pp,
-+							 page);
- 			} while (++n < num);
+diff --git a/include/net/libeth/xdp.h b/include/net/libeth/xdp.h
+index 6ce6aec6884c..f4880b50e804 100644
+--- a/include/net/libeth/xdp.h
++++ b/include/net/libeth/xdp.h
+@@ -1292,7 +1292,7 @@ static inline void libeth_xdp_prepare_buff(struct libeth_xdp_buff *xdp,
+ 	xdp_init_buff(&xdp->base, fqe->truesize, xdp->base.rxq);
+ #endif
+ 	xdp_prepare_buff(&xdp->base, page_address(page) + fqe->offset,
+-			 page->pp->p.offset, len, true);
++			 pp_page_to_nmdesc(page)->pp->p.offset, len, true);
+ }
  
- 			break;
+ /**
 -- 
 2.17.1
 
