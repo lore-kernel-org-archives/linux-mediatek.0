@@ -4,69 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C208C83F1A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Jul 2025 12:24:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F259C83F1A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Jul 2025 14:24:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SLKDCSBar7TEHGf/3yjKm5ts8mUeyQn6MQragX0irtY=; b=E9a826kx2F+k4tLHfaPYZ8+bO0
-	8rP8qT4uC6Hourb/CQXDAjTyA0yAGJqvjp463sr/QvbXsZkuUQF4erKdfoqm4ika2Zp4T63jHCQ0X
-	a/h+LfCGxH75NaE3JVN/dpLTu/tmQgy2bHmn8vCjp1boS2/bh6G4A0gmQIgOLwYsJXR4J9zAxQrv6
-	NzD75rDpI0riEOIxPpVLqc+qf42LlEKxDCmuUpCODP3+otoO0gS+MITrJiMcmtHYs9nMXF3QHuKsP
-	BIKvXtnzetL5PrLGtpHlixhgPDhOeqe7jAkKDBLhqrYlh+rWDm3tX/b2KIJMnmGU9Jh90hu4qRQfw
-	feHVRjtQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=U+rA0WL2vtAgdbnb0RO7hJmpVlrm4hMeQOrhAQBOlvs=; b=dmGH/CJMQIqffoOOPGk6VAVhDx
+	KTqzVyeovnYDHtd8p3EDAIA/si0M10v5yxMNthfuayAgAgvN91vU0pG/ufDADFn5wsXeEGFLu3Uqo
+	mmPdfkc7Vp16bfti4G0mWa9q0NY7Znx85OXYME0OLXm8WK6Pk1sqUUWjICYfDQBMOpKT8GDpMMYB3
+	ELUXGxLWtILg0C+xUUNG0E2obb5Svs9+UdTLSvbgy4tA41YIQNJKDzSakflstDl40ZvGDljF4H5l8
+	6xBZz7TSUJcT41SPqMNf8dDtHAcwGfmACQ59OJarsD6QmokW2eqAAW13QNdoxkkpv/RRzm7Eqbaj6
+	rwRSHvhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucNfN-0000000A6hy-2wNX;
-	Thu, 17 Jul 2025 12:24:49 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1ucPXH-0000000AMLG-3gOM;
+	Thu, 17 Jul 2025 14:24:36 +0000
+Received: from e3i105.smtp2go.com ([158.120.84.105])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucMB8-00000009u2o-2hQq;
-	Thu, 17 Jul 2025 10:49:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1752749368;
-	bh=lSP0/9GbrNfw0NFb6DWBwXGSVoqPXgSk/vHOEKnsPg0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=afqILlfAdc29dXdjkvF4I3YSbufR0yN5zVs7ZWdCQnSNZrXwIiIA4WW9e1PQ/k43p
-	 Df1AEB2qgK1CcIC2XuMPGOq9i8MF1PgD9lXMQFMyfHMy2qs2lYKYLkDmM6v0Us/shN
-	 DeZgcw8OSfYG3OVsnu4GAfPh22EEkfQwIerr8K2enqKMerzEu+rty9auXYe9uCeihA
-	 xDeE/B9ljTejzYjPTj+lWQyrWh+2TTo1hlFb/5Ahd9q6yRn0Z8nVafoUvgo1a4iuez
-	 mm2tuRwf/QUSDWqydPf4JT/ZMW8F76gshZk4c96BmE7M0kUvnAbtKZ8fWuWGawmgNh
-	 khghTJQCBNxeg==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EE95F17E0C37;
-	Thu, 17 Jul 2025 12:49:27 +0200 (CEST)
-Message-ID: <327287aa-98c8-4745-adb9-2c36e8d5d825@collabora.com>
-Date: Thu, 17 Jul 2025 12:49:27 +0200
+	id 1ucOiw-0000000AGX6-3AcH
+	for linux-mediatek@lists.infradead.org;
+	Thu, 17 Jul 2025 13:32:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=smtpservice.net;
+ i=@smtpservice.net; q=dns/txt; s=a1-4; t=1752759097; h=feedback-id :
+ x-smtpcorp-track : date : message-id : to : subject : from : reply-to
+ : sender : list-unsubscribe : list-unsubscribe-post;
+ bh=U+rA0WL2vtAgdbnb0RO7hJmpVlrm4hMeQOrhAQBOlvs=;
+ b=2+0tE3uR1bwPar0+FYoth0GXAznmru7gV0ZweJcfwo4eDfDPO6IZnjbwIrtINKg1nc+kd
+ 8zb6N+lszT3jD09UBel7FseuGsWI3KIZJADrezsR3OPKkd4ygpBeXRMOyOYdjYskOOy1dsV
+ Yd56DO57oIgrptu9ZTBteMtvnIKNlIgk2lTgM9T3F/1sk7sA20p8k3BK3Sd5i59gGM87WMS
+ CSyCKtt4K1dNcsbmYU2bytVWyVo2BMhvU0Ml9i5im7Zkzt8fBOjVoq3+qMMWAwEMJRPbp3e
+ lQU/X7JEOX3jx23JWSksstEr34CZ+vKlHQU/1l5/gJEErhMrQjDJLpgyNMBw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=triplefau.lt;
+ i=@triplefau.lt; q=dns/txt; s=s510616; t=1752759097; h=from : subject
+ : to : message-id : date;
+ bh=U+rA0WL2vtAgdbnb0RO7hJmpVlrm4hMeQOrhAQBOlvs=;
+ b=Bx8kPu92SaOwIdIZfCSX9b1hMfQB7/SHzjpRa7rlMQmdMCvHwbJ1tpo4ng9IKv0zy7zb9
+ m0MKviWVAksqsSzgVuKkuIQjLm1XYgn9/nrykftIAjbqTXrxTGREsdQuQNjdXmvPHxVPWkp
+ cgXQkTNGzyQQQEnnqyqi0LpNoQSCejoPtlW346w2zqcOrk5192r2knGwcc2gfZbPA0RTWsa
+ Fssv0Szv8UpChY6MCFv+gC8ZQvGKNH7zRRuQj6X89J0dGMk1kH1GqcEql9SGwk6Ktbs2KSr
+ g/ddK91xHzMgVJ5ktl+C16c3Y4JtClt/CUwmFPkYm4GGU8ylugRXOzMZbzZg==
+Received: from [10.12.239.196] (helo=localhost)
+	by smtpcorp.com with esmtpsa (TLS1.3:ECDHE_SECP256R1__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+	(Exim 4.98.1-S2G)
+	(envelope-from <repk@triplefau.lt>)
+	id 1ucOhx-4o5NDgrvtl6-ppbp;
+	Thu, 17 Jul 2025 13:31:33 +0000
+Date: Thu, 17 Jul 2025 15:21:17 +0200
+From: Remi Pommarel <repk@triplefau.lt>
+To: Bert Karwatzki <spasswolf@web.de>
+Cc: linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+	johannes@sipsolutions.net, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH wireless v2 1/2] wifi: mac80211: Update skb's control
+ block key in ieee80211_tx_dequeue()
+Message-ID: <aHj4zS_3uhDRhzDn@pilgrim>
+References: <06aa507b853ca385ceded81c18b0a6dd0f081bc8.1742833382.git.repk@triplefau.lt>
+ <20250410215527.3001-1-spasswolf@web.de>
+ <Z_jpq26P99qzPP1c@pilgrim>
+ <1df3a3df19b77e3b8d1f71a3a93c61221ff46a6b.camel@web.de>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 2/2] clk: mediatek: Add MT6789 clock controllers
-To: Arseniy Velikanov <me@adomerle.pw>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>
-Cc: linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, ~postmarketos/upstreaming@lists.sr.ht
-References: <20250715222221.29406-1-me@adomerle.pw>
- <20250715222221.29406-2-me@adomerle.pw>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250715222221.29406-2-me@adomerle.pw>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1df3a3df19b77e3b8d1f71a3a93c61221ff46a6b.camel@web.de>
+X-Report-Abuse: Please forward a copy of this message, including all headers, to <abuse-report@smtp2go.com>
+Feedback-ID: 510616m:510616apGKSTK:510616sBGiWowcYh
+X-smtpcorp-track: sAeunXHnvd5a.E-ROFHZrQ_L3.lfWsVAV8NWv
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250717_034930_877952_FB4A7E75 
-X-CRM114-Status: GOOD (  20.04  )
+X-CRM114-CacheID: sfid-20250717_063235_272213_B65FC460 
+X-CRM114-Status: GOOD (  44.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,230 +88,209 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 16/07/25 00:22, Arseniy Velikanov ha scritto:
-> Add support for MT6789 clock controllers, which includes apmixed, afe,
-> camsys, imgsys, infracfg, mcusys, mdpsys, mfgcfg, mmsys, topckgen,
-> vdec, venc.
+Hello Bert, Johannes
+
+On Fri, Apr 11, 2025 at 01:10:02PM +0200, Bert Karwatzki wrote:
+> Am Freitag, dem 11.04.2025 um 12:06 +0200 schrieb Remi Pommarel:
+> > Hi Bert,
+> >
+> > On Thu, Apr 10, 2025 at 11:55:26PM +0200, Bert Karwatzki wrote:
+> > > This commit breaks the mediatek mt7921 wireless driver. In linux-next-20250410
+> > > my mt7921e Wi-Fi controller is no longer able to connect to a network.
+> > > I bisected this to commit a104042e2bf6 ("wifi: mac80211: Update skb's control
+> > > block key in ieee80211_tx_dequeue()").
+> > >
+> > > Hardware:
+> > > 04:00.0 Network controller: MEDIATEK Corp. MT7921K (RZ608) Wi-Fi 6E 80MHz
+> > >
+> > > This debugging patch reveals that the change causes key to be NULL in
+> > > mt7921_tx_prepare_skb().
+> > >
+> > > diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
+> > > index 881812ba03ff..3b8552a1055c 100644
+> > > --- a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
+> > > +++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
+> > > @@ -13,6 +13,7 @@ int mt7921e_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
+> > >         struct mt792x_dev *dev = container_of(mdev, struct mt792x_dev, mt76);
+> > >         struct ieee80211_tx_info *info = IEEE80211_SKB_CB(tx_info->skb);
+> > >         struct ieee80211_key_conf *key = info->control.hw_key;
+> > > +       dev_info(mdev->dev, "%s: key = %px\n", __func__, key);
+> > >         struct mt76_connac_hw_txp *txp;
+> > >         struct mt76_txwi_cache *t;
+> > >         int id, pid;
+> > >
+> > >
+> > > So why is info->control.hw_key not updated by ieee80211_tx_h_select_key()?
+> > >
+> > > diff --git a/net/mac80211/tx.c b/net/mac80211/tx.c
+> > > index 34f229a6eab0..2510e3533d13 100644
+> > > --- a/net/mac80211/tx.c
+> > > +++ b/net/mac80211/tx.c
+> > > @@ -631,8 +631,10 @@ ieee80211_tx_h_select_key(struct ieee80211_tx_data *tx)
+> > >  		case WLAN_CIPHER_SUITE_WEP40:
+> > >  		case WLAN_CIPHER_SUITE_WEP104:
+> > >  		case WLAN_CIPHER_SUITE_TKIP:
+> > > -			if (!ieee80211_is_data_present(hdr->frame_control))
+> > > +			if (!ieee80211_is_data_present(hdr->frame_control)) {
+> > > +				printk(KERN_INFO "%s %d: setting tx->key = NULL\n", __func__, __LINE__);
+> > >  				tx->key = NULL;
+> > > +			}
+> > >  			break;
+> > >  		case WLAN_CIPHER_SUITE_CCMP:
+> > >  		case WLAN_CIPHER_SUITE_CCMP_256:
+> > > @@ -641,19 +643,23 @@ ieee80211_tx_h_select_key(struct ieee80211_tx_data *tx)
+> > >  			if (!ieee80211_is_data_present(hdr->frame_control) &&
+> > >  			    !ieee80211_use_mfp(hdr->frame_control, tx->sta,
+> > >  					       tx->skb) &&
+> > > -			    !ieee80211_is_group_privacy_action(tx->skb))
+> > > +			    !ieee80211_is_group_privacy_action(tx->skb)) {
+> > > +				printk(KERN_INFO "%s %d: setting tx->key = NULL\n", __func__, __LINE__);
+> > >  				tx->key = NULL;
+> > > -			else
+> > > +			} else {
+> > >  				skip_hw = (tx->key->conf.flags &
+> > >  					   IEEE80211_KEY_FLAG_SW_MGMT_TX) &&
+> > >  					ieee80211_is_mgmt(hdr->frame_control);
+> > > +			}
+> > >  			break;
+> > >  		case WLAN_CIPHER_SUITE_AES_CMAC:
+> > >  		case WLAN_CIPHER_SUITE_BIP_CMAC_256:
+> > >  		case WLAN_CIPHER_SUITE_BIP_GMAC_128:
+> > >  		case WLAN_CIPHER_SUITE_BIP_GMAC_256:
+> > > -			if (!ieee80211_is_mgmt(hdr->frame_control))
+> > > +			if (!ieee80211_is_mgmt(hdr->frame_control)) {
+> > > +				printk(KERN_INFO "%s %d: setting tx->key = NULL\n", __func__, __LINE__);
+> > >  				tx->key = NULL;
+> > > +			}
+> > >  			break;
+> > >  		}
+> > >
+> > > @@ -662,9 +668,13 @@ ieee80211_tx_h_select_key(struct ieee80211_tx_data *tx)
+> > >  			     tx->skb->protocol != tx->sdata->control_port_protocol)
+> > >  			return TX_DROP;
+> > >
+> > > +		printk(KERN_INFO "%s: skip_hw=%d tx->key=%px\n",
+> > > +				__func__, skip_hw, tx->key);
+> > >  		if (!skip_hw && tx->key &&
+> > > -		    tx->key->flags & KEY_FLAG_UPLOADED_TO_HARDWARE)
+> > > +		    tx->key->flags & KEY_FLAG_UPLOADED_TO_HARDWARE) {
+> > >  			info->control.hw_key = &tx->key->conf;
+> > > +			printk(KERN_INFO "%s: info->control.hw_key = %px\n", __func__, info->control.hw_key);
+> > > +		}
+> > >  	} else if (ieee80211_is_data_present(hdr->frame_control) && tx->sta &&
+> > >  		   test_sta_flag(tx->sta, WLAN_STA_USES_ENCRYPTION)) {
+> > >  		return TX_DROP;
+> > > @@ -3894,6 +3904,8 @@ struct sk_buff *ieee80211_tx_dequeue(struct ieee80211_hw *hw,
+> > >  	 * The key can be removed while the packet was queued, so need to call
+> > >  	 * this here to get the current key.
+> > >  	 */
+> > > +	printk(KERN_INFO "%s: info->control.hw_key = %px, setting to NULL\n",
+> > > +			__func__, info->control.hw_key);
+> > >  	info->control.hw_key = NULL;
+> > >  	r = ieee80211_tx_h_select_key(&tx);
+> > >  	if (r != TX_CONTINUE) {
+> > >
+> > > This patch reveals that tx->key is set to NULL (in the @@ -641,19 +643,23 @@ chunk)
+> > > and so the updating of info->contro.hw_key is skipped:
+> > >
+> > > [   17.411298] [   T1232] ieee80211_tx_h_select_key 647: setting tx->key = NULL
+> >
+> > That means that we are trying to send non management frames using
+> > AES_CMAC, or BIP_* cipher, aren't those ciphers used only for group
+> > management frames ?
+> >
+> > > [   17.411300] [   T1232] ieee80211_tx_h_select_key: skip_hw=0 tx->key=0000000000000000
+> > > [   17.411307] [   T1232] mt7921e 0000:04:00.0: mt7921e_tx_prepare_skb: key = 0000000000000000
+> > >
+> > > If I revert commit a104042e2bf6 while keeping the debug patches it shows that
+> > > the for mt7921e the key is never updated in ieee80211_tx_h_select_key(), mt7921e
+> > > relies on the key your patch is setting to NULL.
+> > >
+> > > Is this a problem with your patch or with the mt7921e driver that just got
+> > > revealed by your patch?
+> >
+> > Not sure yet, do you happen to know which kind of frame mt7921e is
+> > trying to be sent using this NULL key ?
+> >
+> > Thanks,
 > 
-> Signed-off-by: Arseniy Velikanov <me@adomerle.pw>
-
-Hi Arseniy,
-Thanks for all this work!
-
-The submission looks generally fine, and I'm happy that you've ported those drivers
-to the common probe, however, there are a few (relatively small) things to fixup.
-
-Please check below.
-
-> ---
->   drivers/clk/mediatek/Kconfig                  |  68 ++
->   drivers/clk/mediatek/Makefile                 |  11 +
->   drivers/clk/mediatek/clk-mt6789-apmixed.c     | 147 +++
->   drivers/clk/mediatek/clk-mt6789-audiosys.c    | 100 +++
->   drivers/clk/mediatek/clk-mt6789-cam.c         | 131 +++
->   drivers/clk/mediatek/clk-mt6789-img.c         | 100 +++
->   .../clk/mediatek/clk-mt6789-imp_iic_wrap.c    |  90 ++
->   drivers/clk/mediatek/clk-mt6789-infra_ao.c    | 228 +++++
->   drivers/clk/mediatek/clk-mt6789-mcu.c         |  68 ++
->   drivers/clk/mediatek/clk-mt6789-mdp.c         |  81 ++
->   drivers/clk/mediatek/clk-mt6789-mfgcfg.c      |  61 ++
->   drivers/clk/mediatek/clk-mt6789-mm.c          |  85 ++
->   drivers/clk/mediatek/clk-mt6789-topckgen.c    | 846 ++++++++++++++++++
->   drivers/clk/mediatek/clk-mt6789-vdec.c        | 119 +++
->   drivers/clk/mediatek/clk-mt6789-venc.c        |  65 ++
->   15 files changed, 2200 insertions(+)
->   create mode 100644 drivers/clk/mediatek/clk-mt6789-apmixed.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6789-audiosys.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6789-cam.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6789-img.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6789-imp_iic_wrap.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6789-infra_ao.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6789-mcu.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6789-mdp.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6789-mfgcfg.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6789-mm.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6789-topckgen.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6789-vdec.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6789-venc.c
+> I modified my debugging patch to print mgmt->frame_control, if needed I could
+> also insert a nore complicated function printing out frame types using the
+> ieee80211_is_*() functions:
 > 
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
+> b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
+> index 881812ba03ff..cfbe7e1e4713 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
+> @@ -13,6 +13,9 @@ int mt7921e_tx_prepare_skb(struct mt76_dev *mdev, void
+> *txwi_ptr,
+>         struct mt792x_dev *dev = container_of(mdev, struct mt792x_dev, mt76);
+>         struct ieee80211_tx_info *info = IEEE80211_SKB_CB(tx_info->skb);
+>         struct ieee80211_key_conf *key = info->control.hw_key;
+> +       struct ieee80211_mgmt *mgmt = (void *)tx_info->skb->data;
+> +       __le16 fc = mgmt->frame_control;
+> +       dev_info(mdev->dev, "%s: key = %px fc = 0x%hx\n", __func__, key, fc);
+>         struct mt76_connac_hw_txp *txp;
+>         struct mt76_txwi_cache *t;
+>         int id, pid;
+> 
+> and get this, while unsuccesfully trying to connect (also note that one time
+> getting a key worked):
+> 
+> $ dmesg | grep prepare_skb
+> [   11.775642] [   T1227] mt7921e 0000:04:00.0: mt7921e_tx_prepare_skb: key =
+> 0000000000000000 fc = 0xb0
+> [   11.800047] [   T1227] mt7921e 0000:04:00.0: mt7921e_tx_prepare_skb: key =
+> 0000000000000000 fc = 0x0
+> [   13.365330] [   T1227] mt7921e 0000:04:00.0: mt7921e_tx_prepare_skb: key =
+> 0000000000000000 fc = 0xb0
+> [   13.370257] [   T1227] mt7921e 0000:04:00.0: mt7921e_tx_prepare_skb: key =
+> 0000000000000000 fc = 0x0
+> [   16.468481] [   T1227] mt7921e 0000:04:00.0: mt7921e_tx_prepare_skb: key =
+> 0000000000000000 fc = 0xb0
+> [   16.472407] [   T1227] mt7921e 0000:04:00.0: mt7921e_tx_prepare_skb: key =
+> 0000000000000000 fc = 0x0
+> [   16.542017] [   T1227] mt7921e 0000:04:00.0: mt7921e_tx_prepare_skb: key =
+> 0000000000000000 fc = 0x188
+> [   16.549581] [   T1227] mt7921e 0000:04:00.0: mt7921e_tx_prepare_skb: key =
+> 0000000000000000 fc = 0x188
+> [   16.597120] [   T1227] mt7921e 0000:04:00.0: mt7921e_tx_prepare_skb: key =
+> 0000000000000000 fc = 0xffff
+> [   16.612263] [   T1227] mt7921e 0000:04:00.0: mt7921e_tx_prepare_skb: key =
+> 0000000000000000 fc = 0xd0
+> 
+> Here we actually go a key:
+> [   16.614478] [   T1227] mt7921e 0000:04:00.0: mt7921e_tx_prepare_skb: key =
+> ffff89c275297230 fc = 0x4188
+> 
+> [   16.654273] [   T1227] mt7921e 0000:04:00.0: mt7921e_tx_prepare_skb: key =
+> 0000000000000000 fc = 0x3333
+> [   16.698286] [   T1227] mt7921e 0000:04:00.0: mt7921e_tx_prepare_skb: key =
+> 0000000000000000 fc = 0x3333
+> [   17.735855] [   T1227] mt7921e 0000:04:00.0: mt7921e_tx_prepare_skb: key =
+> 0000000000000000 fc = 0x3333
+> [   17.837355] [   T1227] mt7921e 0000:04:00.0: mt7921e_tx_prepare_skb: key =
 
-..snip..
+[....]
 
-> diff --git a/drivers/clk/mediatek/clk-mt6789-topckgen.c b/drivers/clk/mediatek/clk-mt6789-topckgen.c
-> new file mode 100644
-> index 000000000000..bd986e861eb4
-> --- /dev/null
-> +++ b/drivers/clk/mediatek/clk-mt6789-topckgen.c
-> @@ -0,0 +1,846 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (c) 2022 MediaTek Inc.
-> + * Copyright (c) 2025 Arseniy Velikanov <me@adomerle.pw>
-> + */
+I have ordered a mt7921 card so I could reproduce this and finally took
+time to debug that. The issue comes to the fact that mt7921 uses 802.11
+encapsulation offloading and as such we are calling
+ieee80211_tx_h_select_key() on a 802.3 frame.
 
-..snip..
+This function casts the skb data as a 802.11 header regardless the skb
+is 802.11 or not in order to decide if the info->control.hw_key needs to
+be set. So the hw_key is likely to remain NULL in ieee80211_tx_dequeue()
+and because mt7921 driver needs this key to be valid data frames are
+dropped.
 
+Will send a patch so that ieee80211_tx_h_select_key() does not try to
+get info from a ieee80211_hdr mapped on 802.3 packet data (i.e. when
+IEEE80211_TX_CTL_HW_80211_ENCAP is set).
 
- > +static const struct mtk_fixed_factor top_divs[] = {
- > +	FACTOR(CLK_TOP_MFGPLL, "mfgpll_ck", "mfgpll", 1, 1),
+Thanks
 
-..snip..
-
- > +	FACTOR(CLK_TOP_F26M, "f26m_ck", "clk26m", 1, 1),
- > +	FACTOR(CLK_TOP_AXI, "axi_ck", "axi_sel", 1, 1),
- > +	FACTOR(CLK_TOP_DISP, "disp_ck", "disp_sel", 1, 1),
-
-Please, remove all instances of FACTOR(.... 1, 1) and use the right parent directly
-for the other clocks.
-
-The factor(1,1) means clock_rate * 1 / 1 == clock_rate.
-
-I'm not sure why MediaTek likes to declare these - they are doing that in newer
-SoCs as well, but that's not for upstream: it does not make any sense to have those
-clocks in the driver, as those are effectively just name wrappers and nothing else.
-
-The only thing those do is increasing the footprint for, well, no good reason...!
-
-There's a pattern that you want to check: all of the "_ck" clocks are suspect! :-)
-
- > +	FACTOR(CLK_TOP_MDP, "mdp_ck", "mdp_sel", 1, 1),
- > +	FACTOR(CLK_TOP_IMG1, "img1_ck", "img1_sel", 1, 1),
- > +	FACTOR(CLK_TOP_IPE, "ipe_ck", "ipe_sel", 1, 1),
- > +	FACTOR(CLK_TOP_CAM, "cam_ck", "cam_sel", 1, 1),
- > +	FACTOR(CLK_TOP_MFG_REF, "mfg_ref_ck", "mfg_ref_sel", 1, 1),
- > +	FACTOR(CLK_TOP_MFG_PLL, "mfg_pll_ck", "mfg_pll_sel", 1, 1),
-
-..snip..
-
-> +
-> +static const char * const dvfsrc_parents[] = {
-> +	"tck_26m_mx9_ck",
-> +	"osc_d10"
-> +};
-> +
-> +static const char * const aes_msdcfde_parents[] = {
-> +	"tck_26m_mx9_ck",
-> +	"mainpll_d4_d2",
-> +	"mainpll_d6",
-> +	"mainpll_d4_d4",
-> +	"univpll_d4_d2",
-> +	"univpll_d6"
-> +};
-> +
-> +static const char * const mcupm_parents[] = {
-> +	"tck_26m_mx9_ck",
-> +	"mainpll_d6_d4",
-> +	"mainpll_d6_d2"
-> +};
-> +
-> +static const char * const dsi_occ_parents[] = {
-> +	"tck_26m_mx9_ck",
-> +	"mainpll_d6_d2",
-> +	"univpll_d5_d2",
-> +	"univpll_d4_d2"
-> +};
-> +
-
-Look at those parents, you're redefining the very same identical array 10 times
-in a row!
-
-Please, avoid this kind of duplication: delete all the duplicated arrays and
-just have one called, for example, "apll_i2s_mck_parents", then assign that
-to all of the relevant clocks.
-
-Same goes for camtg and others :-)
-
-> +static const char * const apll_i2s0_mck_parents[] = {
-> +	"aud_1_sel",
-> +	"aud_2_sel"
-> +};
-> +
-> +static const char * const apll_i2s1_mck_parents[] = {
-> +	"aud_1_sel",
-> +	"aud_2_sel"
-> +};
-> +
-> +static const char * const apll_i2s2_mck_parents[] = {
-> +	"aud_1_sel",
-> +	"aud_2_sel"
-> +};
-> +
-> +static const char * const apll_i2s3_mck_parents[] = {
-> +	"aud_1_sel",
-> +	"aud_2_sel"
-> +};
-> +
-> +static const char * const apll_i2s4_mck_parents[] = {
-> +	"aud_1_sel",
-> +	"aud_2_sel"
-> +};
-> +
-> +static const char * const apll_i2s5_mck_parents[] = {
-> +	"aud_1_sel",
-> +	"aud_2_sel"
-> +};
-> +
-> +static const char * const apll_i2s6_mck_parents[] = {
-> +	"aud_1_sel",
-> +	"aud_2_sel"
-> +};
-> +
-> +static const char * const apll_i2s7_mck_parents[] = {
-> +	"aud_1_sel",
-> +	"aud_2_sel"
-> +};
-> +
-> +static const char * const apll_i2s8_mck_parents[] = {
-> +	"aud_1_sel",
-> +	"aud_2_sel"
-> +};
-> +
-> +static const char * const apll_i2s9_mck_parents[] = {
-> +	"aud_1_sel",
-> +	"aud_2_sel"
-> +};
-
-..snip..
-
-> +module_platform_driver(clk_mt6789_topckgen_drv);
-> +
-> +MODULE_DESCRIPTION("MediaTek MT6789 top clock generators driver");
-> +MODULE_LICENSE("GPL");
-> diff --git a/drivers/clk/mediatek/clk-mt6789-vdec.c b/drivers/clk/mediatek/clk-mt6789-vdec.c
-> new file mode 100644
-> index 000000000000..81d6e720b6cd
-> --- /dev/null
-> +++ b/drivers/clk/mediatek/clk-mt6789-vdec.c
-> @@ -0,0 +1,119 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (c) 2022 MediaTek Inc.
-> + * Copyright (c) 2025 Arseniy Velikanov <me@adomerle.pw>
-> + */
-> +
-
-..snip..
-
-> +
-> +static const struct mtk_clk_desc vde2_desc = {
-> +	.clks = vde2_clks,
-> +	.num_clks = ARRAY_SIZE(vde2_clks),
-> +};
-> +
-> +static const struct of_device_id of_match_clk_mt6789_vdec[] = {
-
-Can you please compress all of those?
-
-static const struct of_device_id of_match_clk_mt6789_vdec[] ={
-	{ .compatible = "mediatek,mt6789-vdecsys", .data = &vde2_desc },
-	{ /* sentinel */ }
-};
-
-
-Note that the same comments do apply to other clock drivers that you're introducing
-but I'm only writing once - please apply the comments in the others and wherever
-they fit.
-
-Cheers!
-Angelo
+-- 
+Remi
 
