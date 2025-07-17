@@ -4,114 +4,211 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E822C83F1B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Jul 2025 06:32:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D38DC83F1A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Jul 2025 06:41:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Pg2azoYqDdE4dNBLBiUQo4d2AuUDCB+rchkE67GZzC4=; b=z2bD041hXtcYO76WoacliegV2v
-	cevt3Jsms2j/JDwbooZvKO4mDPZsBBsL4DIQF9pxKuVRt9jaUlIgsDJCtuVmgkHAmMq3BcmAnbywT
-	axPCD3U3CF7VBxqeoHeC6WbbzjrKjfzUuF8s7YqgPVWeW1VOjSLC+KaDepJEuYhUNPfAFtzTnK0yA
-	eI3R5QsPCyeL55/+JSHuKDyGB1nOVKqJOkc6tOdMKWh59cnc2CgpEgvdWbxwiZfPaXmevpPm+0ixR
-	Cce8V0+VlxCT+i/OIGwOT70vI8CXd9fsLAYUHuB5qrBnqOCsqmWt3ZSW6aXPlGi3piBDIkV5lQ4Dk
-	X6BcU4TA==;
+	bh=k3TjwPfZdngjL1D2ix8GSpcWSizNIDAUluPNusS9om4=; b=mCuqyMiTlw4tc8h1E07YwxYthx
+	JIeeZQQ26GWjvFRWAS6dBTAbyMbw0nJSp3unpU4wPyrhaN5A4rVF2IjfHQJxQUBWmTGoFdgkCUZZg
+	XxwnA4ksexlRik0z7csZgQWAhVdtxxk6VSBMd6hnNA2Vzi+1h+btZt3ugUMwK3DuGEVGg6kCFzP9N
+	MN3OQhC3HysHHIlxyL8g/QfCMSkCl6iWt2UpC7HtIs6yESma0lcgcvzveyjOS8X6GvD6Zx9wJNcAG
+	Ocp69NHDa6VyD5JPReYi4s67cabrz2NxDEQ4bZyaEQKLPeQXK3Om5LUxqdyu0t4d658iutblZPHqL
+	F30hy1XQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucIAb-00000009IWQ-3ASP;
-	Thu, 17 Jul 2025 06:32:41 +0000
-Received: from exvmail4.hynix.com ([166.125.252.92] helo=invmail4.hynix.com)
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucIAV-00000009IUy-38bt;
-	Thu, 17 Jul 2025 06:32:39 +0000
-X-AuditID: a67dfc5b-681ff7000002311f-f3-687898feb6e6
-Date: Thu, 17 Jul 2025 15:32:25 +0900
-From: Byungchul Park <byungchul@sk.com>
-To: Mina Almasry <almasrymina@google.com>
-Cc: "Lobakin, Aleksander" <aleksander.lobakin@intel.com>,
-	willy@infradead.org, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-mm@kvack.org,
-	kernel_team@skhynix.com, ilias.apalodimas@linaro.org,
-	harry.yoo@oracle.com, akpm@linux-foundation.org,
-	andrew+netdev@lunn.ch, asml.silence@gmail.com, toke@redhat.com,
-	david@redhat.com, Liam.Howlett@oracle.com, vbabka@suse.cz,
-	rppt@kernel.org, surenb@google.com, mhocko@suse.com,
-	linux-rdma@vger.kernel.org, bpf@vger.kernel.org,
-	vishal.moola@gmail.com, hannes@cmpxchg.org, ziy@nvidia.com,
-	jackmanb@google.com, wei.fang@nxp.com, shenwei.wang@nxp.com,
-	xiaoning.wang@nxp.com, davem@davemloft.net, edumazet@google.com,
-	kuba@kernel.org, pabeni@redhat.com, anthony.l.nguyen@intel.com,
-	przemyslaw.kitszel@intel.com, sgoutham@marvell.com,
-	gakula@marvell.com, sbhatta@marvell.com, hkelam@marvell.com,
-	bbhushan2@marvell.com, tariqt@nvidia.com, ast@kernel.org,
-	daniel@iogearbox.net, hawk@kernel.org, john.fastabend@gmail.com,
-	sdf@fomichev.me, saeedm@nvidia.com, leon@kernel.org,
-	mbloch@nvidia.com, danishanwar@ti.com, rogerq@kernel.org,
-	nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com, sean.wang@mediatek.com,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	horms@kernel.org, m-malladi@ti.com, krzysztof.kozlowski@linaro.org,
-	matthias.schiffer@ew.tq-group.com, robh@kernel.org,
-	imx@lists.linux.dev, intel-wired-lan@lists.osuosl.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next v10 02/12] netmem: use netmem_desc instead of
- page to access ->pp in __netmem_get_pp()
-Message-ID: <20250717063225.GA28772@system.software.com>
-References: <20250714120047.35901-1-byungchul@sk.com>
- <20250714120047.35901-3-byungchul@sk.com>
- <CAHS8izO393X_BDJxnX2d-auhTwrUZK5wYdoAh_tJc0GBf0AqcQ@mail.gmail.com>
- <CAHS8izNh7aCJOb1WKTx7CXNDPv_UBqFyq2XEHHhqHH=5JPmJCQ@mail.gmail.com>
- <20250715013626.GA49874@system.software.com>
- <CAHS8izNgfrN-MimH1uv349AqNudvQJoeOsyHpoBT_QokF3Zv=w@mail.gmail.com>
- <20250716045124.GB12760@system.software.com>
- <CAHS8izMK2JA4rGNMRMqQbZtJVEP8b_QPLXzoKNeVgQFzAmdv3g@mail.gmail.com>
+	id 1ucIIg-00000009JU0-11an;
+	Thu, 17 Jul 2025 06:41:02 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1ucIFr-00000009J5f-2FRJ
+	for linux-mediatek@lists.infradead.org;
+	Thu, 17 Jul 2025 06:38:08 +0000
+X-UUID: 967cb2e462d811f09eb0dd999d3936bf-20250716
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=k3TjwPfZdngjL1D2ix8GSpcWSizNIDAUluPNusS9om4=;
+	b=LivDcD/Wtq6F9mOr2BYwfqVSJD0z7yE6ud9/3TJvtwGViciYVMzAx8A+xFxlAawJyjW7KtajmoAXOY636w0twiKlKOpgygo1FTo06sJx+oT2p8ajH/B+PVIo3VQ8gBCALAAOHoH6iNf0IGy4mpsZCOYRDSRVP56s76c3XhIXyVk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.2,REQID:ac51c895-2a77-4d3a-ad38-97b099d5f5c2,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:9eb4ff7,CLOUDID:5389e00e-6968-429c-a74d-a1cce2b698bd,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111,TC:nil,Conte
+	nt:0|50,EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,
+	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 967cb2e462d811f09eb0dd999d3936bf-20250716
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1851845045; Wed, 16 Jul 2025 23:38:02 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Thu, 17 Jul 2025 14:38:00 +0800
+Received: from SEYPR02CU001.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Thu, 17 Jul 2025 14:37:59 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=wCXtcnuYucmrGOXgDaLl0ZAQidXQhHjb53tXrJZOn5pupfRGAYYAkxpwqjjSrNGvHy5wjX4f/RecdQZoHesDfbjnHQ4uXDYdrW2POqjEifeP3bbCE6kBkNJQZLubhd1Y8s2C/2qYpGsU3b7+Rw5cO5YXDRvFwWbncvvD2lGugFwufCqkRw/V/R3mLQr7zqtHJzzUURmLGHmSIxJwbTd1xWDu7FAJJ4M8R8du5/GhoQS/eXSoDRk98MwGSGhnMp6eVPGxhLVwWJzy/nW0K0KpyUnVrT7FubrAnMRhK+oPWNPq1M+iQCe4ex8WgiNB3GCnyz/WfMoG2LCf95q8+jgvbQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=k3TjwPfZdngjL1D2ix8GSpcWSizNIDAUluPNusS9om4=;
+ b=OlK19VPIED5VcGOt4/eIL8zGYvTnlf9vF9G/fok11kZOKD985NGBu1/wNapw/pE8+oVslLN5T3iCjxc6EkMSgJKv1AcX39tuf6ZsjVjy7zO/uRhT1QCtsSkko7h8yWg76RI3WEw+WfUCSYFXrC21xqafYlqamJD5zdmM4J7B2ygMH7t7DcyQ8DblYWbozGjuiac4dOJCKeOxFDX4M7uvyPdBoL8L208AhwKy+YwfpFKxoQsiU2A0A2rutKcjhQNAkV4apcEALfoTEkSEVtfo6X9fja2kN7DJ7OkqPBIHTyrmngfkszhFcT3xMHAGxEbavZD6pOrm7rEQAI/NqctBhw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=k3TjwPfZdngjL1D2ix8GSpcWSizNIDAUluPNusS9om4=;
+ b=CPmehV0wW8KpfYqboi9/U+qzE/37ZBmuC1jXF1p3Rw3niG+sb9L9SjCqLS+D1namhN53CKDfUwgBYymUrwaYsmQU/ApBdT4iFknmh9viy/1qiJ612XASyC9Aw1DQvZ1J9mLad8pJCk+MOmwp0T6552UoSN99m6luFo5NZbCz2tU=
+Received: from PSAPR03MB5605.apcprd03.prod.outlook.com (2603:1096:301:66::6)
+ by JH0PR03MB8336.apcprd03.prod.outlook.com (2603:1096:990:48::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8901.28; Thu, 17 Jul
+ 2025 06:37:57 +0000
+Received: from PSAPR03MB5605.apcprd03.prod.outlook.com
+ ([fe80::3945:7dbc:62bd:c31c]) by PSAPR03MB5605.apcprd03.prod.outlook.com
+ ([fe80::3945:7dbc:62bd:c31c%7]) with mapi id 15.20.8922.037; Thu, 17 Jul 2025
+ 06:37:57 +0000
+From: =?utf-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>
+To: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+	"bvanassche@acm.org" <bvanassche@acm.org>, "martin.petersen@oracle.com"
+	<martin.petersen@oracle.com>
+CC: =?utf-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
+	=?utf-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
+	=?utf-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
+	=?utf-8?B?RWQgVHNhaSAo6JSh5a6X6LuSKQ==?= <Ed.Tsai@mediatek.com>, wsd_upstream
+	<wsd_upstream@mediatek.com>, =?utf-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
+	<Chaotian.Jing@mediatek.com>, =?utf-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?=
+	<Chun-hung.Wu@mediatek.com>, =?utf-8?B?WWktZmFuIFBlbmcgKOW9ree+v+WHoSk=?=
+	<Yi-fan.Peng@mediatek.com>, =?utf-8?B?UWlsaW4gVGFuICjosK3pupLpup8p?=
+	<Qilin.Tan@mediatek.com>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>,
+	=?utf-8?B?SmlhamllIEhhbyAo6YOd5Yqg6IqCKQ==?= <jiajie.hao@mediatek.com>,
+	=?utf-8?B?TGluIEd1aSAo5qGC5p6XKQ==?= <Lin.Gui@mediatek.com>,
+	=?utf-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?= <Naomi.Chu@mediatek.com>,
+	=?utf-8?B?VHVuLXl1IFl1ICjmuLjmlabogb8p?= <Tun-yu.Yu@mediatek.com>
+Subject: Re: [PATCH v1 01/10] ufs: host: mediatek: Change return type to bool
+Thread-Topic: [PATCH v1 01/10] ufs: host: mediatek: Change return type to bool
+Thread-Index: AQHb9hr4EuXwCuNiPEyOu8dVzcFIM7Q03fEAgAEAgQA=
+Date: Thu, 17 Jul 2025 06:37:57 +0000
+Message-ID: <c82877e4d1c1f8f7bb39d0ad7dccd4cbec0c91bd.camel@mediatek.com>
+References: <20250716062830.3712487-1-peter.wang@mediatek.com>
+	 <20250716062830.3712487-2-peter.wang@mediatek.com>
+	 <f3679ca4-9c77-43cb-a0eb-a4915f0f2c3d@acm.org>
+In-Reply-To: <f3679ca4-9c77-43cb-a0eb-a4915f0f2c3d@acm.org>
+Accept-Language: zh-TW, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: PSAPR03MB5605:EE_|JH0PR03MB8336:EE_
+x-ms-office365-filtering-correlation-id: 1b85d216-3bcb-4825-bf82-08ddc4fc7793
+x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|376014|366016|1800799024|38070700018;
+x-microsoft-antispam-message-info: =?utf-8?B?ZGROUkRNTTJpaG40STZVTk52RGRvNEFVSFlteEVjODBOUkR6S0hwRStDSHU5?=
+ =?utf-8?B?dFQvcVgrYVFlVWRVK01HbWQvWFJ0Mk9YZ1pzUDRZYmZkY1lMQ1JqRDF4bHhl?=
+ =?utf-8?B?aEI3WFU2WGNQV3QrZ2FsN2ZlQXFuSmxZc2dnNGJ1TjF4bEtNcVNNZWxuYytC?=
+ =?utf-8?B?R3dNNEhJaXdSZ2xtc0gyVkplN0ZhbjNJWWVVaFFpY2RQY3pPNzg1NmNRWDBv?=
+ =?utf-8?B?ZHR2TktueE1BTHJUSEludldIaHMwWUZWcEsyTlZzaUVUQjhDRVhnKzYyN09B?=
+ =?utf-8?B?RzNzbVdQTlJkL2NtUVRuamJNTjc4ZS9qTUJ4ZDlIMmFZVVd1UldLR0ZDNFJv?=
+ =?utf-8?B?SEVDYU5YT3d3OWNtQ1NyMFJCLzZoZC9vMFdGNUg2SFJvek0yb2c0b1V0bjRm?=
+ =?utf-8?B?WmJoYUJoMWdVckdLRlM4dGVDdEFaUlJQeFRQTk8zZXJxRzJ6U3ZyUFMxRnlG?=
+ =?utf-8?B?bitVNHZlU2V0RGREUkU2NzJyNlNtTTNUT3pSTlVjaVppT2RkRm9ZdGQrVG5a?=
+ =?utf-8?B?QStGYnFYckJqZDJ0Wll1aFBmeGd6ZlZNWUpCWFI4Y2piV0VCZ3l5Znd4aGE2?=
+ =?utf-8?B?ODZCU0hwQS85NGp0RnlUUkVaS3p6YkpxYXdHbEN5OEU2aTUycXhxNkRnTUVl?=
+ =?utf-8?B?K0dFS0lzQ2EzQW5IT3pHNm1Tanc2bVJiMXE4aWpuVGM3OUVJN3dOMnIxbDZL?=
+ =?utf-8?B?eDk0YXMyMmxqbEZBUDVMNTNSNmdqdDBzdlliYktuZ3NDU2NNWHpBNjhNb0Z1?=
+ =?utf-8?B?WjQ4N0IrcENSR0hCUyt5b3p3b3NPbWxJV2x5VVRwUWtYRjhJNXo5OWI1Z200?=
+ =?utf-8?B?MFd2NXRVOVQwM0Z6c1Q4Nzdid2RKa3o5U1UwMmxaSTg5NGRXajBzU1dpbWxX?=
+ =?utf-8?B?dlhrSFM1Ulp0K1RIRDRvMDZESERoNlFrYXAyck84cDNYUUpHdHg3YXBMYkZH?=
+ =?utf-8?B?THRJa21mZkhHNnJQdWNQdUFmZTdvV2x4MUlnQ3VidjBKTE53eG5STy9UcGpm?=
+ =?utf-8?B?RkVsUlVuM0FxNkpjVzNsTUUyVy9xejlyT3pBTEJYWUV1aktmZ3MwcjVNOHdk?=
+ =?utf-8?B?WkVzR2FSdXpWdWh3LzNqUWR4aWhaTXpibmdwZ1JxQytKUTBybnN6QzV3MWdn?=
+ =?utf-8?B?SFNUeWZzSFpSUXJhOWlJMVdoZng3Tk1LLzBpUVpUSms2UUJkYlI5NjY2MmEz?=
+ =?utf-8?B?SDM3VTlKY21DY2ZHSUV3QTNXYVcwSittemRoQlNWL1JOL0x0WFZwY2hubm5j?=
+ =?utf-8?B?ZUY0S3VUcG5RaVlDd0xrMHNKc2wwdjc1Zy85RXBBazRTTW9wYjNvT0dSanRa?=
+ =?utf-8?B?TFltdXp0QWxyNWg0dmtsUS9VS1cwSE95S1dhN25iSGpjKzhxUkdzZERmOHJr?=
+ =?utf-8?B?SlFxOGpGTEJqZTBpZmkrUk5KaHk5WXAvZlRtVjh5L3JaQVI2U0tVbUlWRzFk?=
+ =?utf-8?B?Ym1KdUdLcUF1aDJhRkhxYmhwTmVJdzdJR1dNejNuVDNxRU1hUEQ0RmFvY3pS?=
+ =?utf-8?B?Z1VxTHpTWWNCUU1jb2RVZ2lKMWFmVFd3bFFiOVF0MTl4QTZhQkRWYlZDRzY2?=
+ =?utf-8?B?OHlXUWhLRjB0KzVmZ3QzditoNmJJWVJtWStCMXZDblhyRmlwc2w0VmZUTkpD?=
+ =?utf-8?B?ejQxVWRmbEFJZER3OHZxVHlSdEpEWjhLZHFUR0NYVXFSb3FneGhPRWN5c2N4?=
+ =?utf-8?B?Y1poWFM5bHlxcWNxd2NjZDBPME43VWdTcHRsZ1RlSmsxMkNkUFJjWFBnRFRj?=
+ =?utf-8?B?QU9LU3hiNTBzdEFKOFN2dUI2ZDN6VFdzeW4wZUJJdDRqVmtrNGUvNkpoc3dv?=
+ =?utf-8?B?MWRWNWZwT3lqckJLZHZabncvb0kxQU5HaGxNcGMrbjBvbVVGTU9KSi95dDY4?=
+ =?utf-8?B?Zjd4ZytXd005N21xZm1JeVEvcEs2b1FCd3RXdE1TOVZqVnQ3b3hiWGpOZXB3?=
+ =?utf-8?B?OVllM0NPRWhxZUlEVjc2TGU3RGQyZHZzVitQUHMyeG8wWVVjRUI4K2xLZGNK?=
+ =?utf-8?B?RUl2MFRvd1ZBPT0=?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PSAPR03MB5605.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(366016)(1800799024)(38070700018);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?VUFBcGVMenUwb1Y1ZTA0MENZWlVuTE8vY29uM2tURTQyMmpSSlVCUkhNZm00?=
+ =?utf-8?B?eWhuOG95dk04NzBiVkdmVGJaQ1MxUzNXZFc4UmhsbDliVkp1a0ZOdVBIQlJz?=
+ =?utf-8?B?clNSbjFPNThQVTBCZ295L3BueW4wTTM4VWtRVWdJeTdxRkJDUVNpN2EreGxq?=
+ =?utf-8?B?WjJaaGh4TU9FdWt0UUsyZUpHdGJZT3BzV1VnM0M3RjRRbjdkWHhQVjROL0tF?=
+ =?utf-8?B?N0FHT1F3dWhHcm9IbmJidmFhQlE5RjdLV1VSZisvaGUwUEV0bFBZNC9UVGZu?=
+ =?utf-8?B?ZHRvOVUraVQxejk0YkR5bkhNcjJzY1Jsc1FYSVRvUmZZdWpTaTY3Q1JZdmdH?=
+ =?utf-8?B?MWpWRTRXS0FIcG1RdXhCekltTmZueTBUYW5Ub0lkVllIMTE1THl5SnU5U2pP?=
+ =?utf-8?B?dnZHTW1CUFRDNlE3aGcvOUp4S1h4R2FTdVlPVVNraXZraE9TZXgrK3gwYUNn?=
+ =?utf-8?B?VWh1TzNnZGtTVlpyVTErakVqS1VIOUd3aHgyL2t0UXdaMjZVQjhUOHhCU0o0?=
+ =?utf-8?B?YU92Tnh1bHR6MGZIYkc4a2NJTG42Z1hCZjFVTWwrR0dXcnBnZ2tuNUlkbnV4?=
+ =?utf-8?B?MUtzc1VBcVA3TmVCQlJzUTNuU25BcVlhNGdPei9mcXlrblE2TzdqS2xzNngy?=
+ =?utf-8?B?ZnU1QzVqdzdlMmhUdVZYc014bWVpaE5tMkVNVEdkbXBwKzlkWUJYMzNlZVQ3?=
+ =?utf-8?B?VlBMYkRyZ1k4WUJhSE1taEZET3dKS2J4R1NEY1dIUytCTzdVb1VycXNGOUVQ?=
+ =?utf-8?B?K0UvZUVUL0VHaER6TVhYbnV4allIQUl2UWpITHNPcmtlMVlRTGF4ZWJRZmk3?=
+ =?utf-8?B?UGZWSEg4ZXpRWkJwYW10R2I5b1RhWngzcnZ4TVdtbEQyT2RRNlM4TnFnbjUz?=
+ =?utf-8?B?amNDRmRkK1hsVzhWblJRdW5takNxc2tCTHVsbERKY1JXdnZNL1UwSGdzcFhS?=
+ =?utf-8?B?VlNXS1hwajh3TmtYd3paMmhLc1Z4VG5ER05QeEI2cFNXODhWbXZ0VnNwOFVO?=
+ =?utf-8?B?N0YyTEVWSy9SU3NxcjBjdXpKTjRJQUxSczBuTlJYTVRmV0I4NWsxTHlnQTVI?=
+ =?utf-8?B?MWlvcFd4Y242NUdwZUxCcGVpTDNyQUJkcGVqM3NmYjR4a0tlSm5uc29oOVVt?=
+ =?utf-8?B?cXVhcWxhcHVIVGxHU3FoWW03MlJpV1g2K2xjamtTWUpxTU8zeUtEWUJIMnJw?=
+ =?utf-8?B?UEF1Nk9GRGV6MUpxVjVkNTFtT0VwSTJEaFRwM2FPaWhqL242aTJSQWNDWGRM?=
+ =?utf-8?B?L0dYT1F3K25yQ3FyN2YwaFppdXhVaU0vekFyUXRha3RXRkxZTHZPM3BBdW52?=
+ =?utf-8?B?NnB4Mng5ODJ6am1rOUY0TG9YRjFsOEs5RHA1N1ltcWdKbDBweW9OeExpM2FD?=
+ =?utf-8?B?QkRySnZjdk0rNmRMRm96WHg5bk5Nd1NEV3dwdkQvMlJHS3laU0VqZCtIUkIx?=
+ =?utf-8?B?OGVLZTE3MWhwNEd6WFB3byt6Mk56cTBIUDVORkhFeFc0NEhDaWp2RTR4clZF?=
+ =?utf-8?B?b1h6V2lIamg3cFFuT25TZUg0N3VVK2hhSG1ZU1FKbmlKWTBBd25rUmJCZFNo?=
+ =?utf-8?B?Mi9lcXh6ZDVzdlczZTJiajVNc1h1OGIvWGVvMGlFRDA1dDBvcHBDayt3TVNF?=
+ =?utf-8?B?TGhQdVpjaStLTW5VcDJFakdWWVRQNFgzaEFDODlyU0lHTUJMdXJGRFFqVzh5?=
+ =?utf-8?B?S0ozaUxCcWZwK0tkNEhsRmpzaUE1YmJvamhRdGFGS0F0MVF0VzdSSjdzRGNk?=
+ =?utf-8?B?VnpURktycDhDdW00ZWJONG5yUEJ4UGRSeVhUSTBVNmdBd2JkNzNWTzN4VytN?=
+ =?utf-8?B?MUVqUi9lR2svZ0d2R2tzdmlJME50R0dERk5WMVpLTnBDK0RUaHFKTFUxWnR4?=
+ =?utf-8?B?eTRtSkJ0dTRpZUJQQ1F0aHdtdXBiekk0RzY3ak1IKzY0Y0UzbzNrU3ZWMWZC?=
+ =?utf-8?B?cGpYTFFhMnUrWkpVZlRBWS9LUlBOQXhUdzBFLzdVZ04weStJV3ZUU2NJcmRG?=
+ =?utf-8?B?aFBzVFcyamphTm9ldW5uSXhVdlRTYlYyUkxjdnlLd3ZBWmVFWURGQmlHZnVs?=
+ =?utf-8?B?Wk9UTmMvNGdkcGRXM1dOZ0d2UHBaV0l4WlkrQWJpdXZGdGlwN0JVK0I1WEUw?=
+ =?utf-8?B?aGp6eUoySWZQME4reUtNZ1Vqc3EzR1pCSVR5MEVKWFB1S2c4SFFqSlFsbUlw?=
+ =?utf-8?B?ZGc9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <1C56594926BEC54B8642EEE2D62C75C4@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAHS8izMK2JA4rGNMRMqQbZtJVEP8b_QPLXzoKNeVgQFzAmdv3g@mail.gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Brightmail-Tracker: H4sIAAAAAAAAA02Sa0yTdxTG83/vNNS8VLf9p1tcuonRRNyULSfZJUa/vF9cNC5ZolFo5J1t
-	BkhaqUCyjWmXzWZUho7QUhSlaLmMYhGoWjptkbK5bLRSrHIrOI2biMxLR7mUvS0x49uT5zl5
-	fuckhyMVLmYlp8k/JGrzVblKRkbJHqWe3RCvKlK/fbXxfbA6mhkIPD1DQ9N0EZyPuGgINmC4
-	0jdNgLWxA8Gz2CALzmNDJDzt9jNQdyZKQqy1jALrHwYKnjtmSLjXM85Cr3eegibndhg9d58C
-	97edJPier4Hx470MlBlmSTCPfMPAwp1ZGrpikywccdkJ6HrYzkJfh4mGkzP1JHSWRiTW3QEa
-	bl62MnDzaADBSPMCDfe9EnDCPsSCqcmCwPtzAwNHDJthov0ZC1M/dpMwatoC8So99NS+DNEb
-	EwgG60MELLhdLPw+0kJDt6OTgP6xGAnR72sYMD46jiBkvkzAbzWtNNhu9BPSHrtgYGGOgBPB
-	WgbuGkYRBH3jFFR/bULg8IRp+MctnTw7bWW2bBV8E49JwTVsQ8LFhtuE8KA8Tghhz6+EcMky
-	zAq1zkKhzb5eqHP/RQjGcJAUnI3HGMH5pIIVhgbcjNBbNUsJbbavhAdtZrTj9d2yD3LEXI1e
-	1G78KFum7g+U0QXhbUUXfOmlKL7JiFI4zGdiv7WKeqHtxttkQlP8Gnyh20MnNMOvxeFwLOmv
-	4Ndhm+cHyZdxJN+Sisce3kGJYDlfiM+OhZNFch7wTw1xlBhS8IMkrpwzMotBGv7F/GdyiJRa
-	504FpVZO0qvw+Ti3aK/GR9urk7AUfice6W9P6pf4N/HVDj+R6MR8NAVfujaGFrd+FV+zh6ly
-	lGZZgrAsQVj+R1iWIGoR1YgUmnx9nkqTm5mhLs7XFGXsP5jnRNI/n/tibo8LPenb5UU8h5Sp
-	8uzWw2oFrdLrivO8CHOkcoX8RFCvVshzVMUlovZglrYwV9R50SqOUr4i3xQ9nKPgD6gOiZ+L
-	YoGofZESXMrKUiQ3zWTU1L+2J572HrE9csWnK0/v+24Hf2pS8FdsSO9xTm+OOPZmRajTusrh
-	f7NQKNtQ0fKpedI29aW/efBeRhOxr+Bk17vBkg/fmnrj+q2ZbeLfmfV7W8wHQuO3qudV2ouV
-	8/C4zvFZ4PTHZKXnk5rJoZK1y1zxUF0osGzf6p3rtiopnVr1znpSq1P9B9AI6bPLAwAA
-X-Brightmail-Tracker: H4sIAAAAAAAAA02SbUxTdxTG87//+0ZHl7uObTeaOVPiyDBzsjlzli0LiVl2x+Je4hYzPkwK
-	3KydUKS1HSwaO6hZbGytAgtU0DJQS0HAdkDVjm0tEZx7kYKk8lIEHXMBpw5EK6XsFrOMb895
-	npPfcz4cFiuq6FWsRrtb1GlVBUpaRsree738xXh1iXqj3aSE2rYWGvpn6yloflACp675KAg1
-	8XD+8gMCat2dCOaiIwx4DoximO3ppaGhfh5DtN1KQu3vZhLutT3E8MeFSQb6AoskNHu2wvjJ
-	KRL8X3dhCN5bB5OH+miwmhcw1ET207A0vEDB99G/GSjzuQgI1l2UxukOBi532iiofHgCQ5fp
-	mlR4fYiCgXO1NAyU9yOItCxRMBWQWmdcowzYmh0IAj800VBmfgVmOuYYuFPVg2HclgnxaiNc
-	cD4N85dmEIycuELAkt/HwG+RVgp62roIGJyIYpg/WEeD5dYhBFdqzhHwS107BY2XBgnpjm0w
-	tBQjoCLkpOG6eRxBKDhJwtGvbAjausMU3PWbycwtQnDmNhZ8Y41I+K7pKiHctMcJIdz9MyGc
-	dYwxgtNjELyudKHB/xchWMIhLHjcB2jB888RRhgd8tNCX/UCKXgb9wk3vTXogzXZsjfyxQKN
-	UdS99GaOTD3Yb6V2hbeUnAk+b0Lxly0oieW5TbzLchUnNMmt48/0dFMJTXNpfDgcXfZTuBf4
-	xu7Dki9jMdeazE9MD6NE8CRn4L+dCJMJLeeAP90UR4klBTeC+W9iFvpR8AR/sebG8hKWqLFj
-	IYnKSno1fyrOPrKf48s7ji6XJXEf8pHBjmX9FJfK/9jZS9jR444VJMcKkuN/kmMFyYlIN0rR
-	aI2FKk3Bqxv0O9WlWk3JhryiQg+SnvXk3thhH5obeDuAOBYpk+U57V+oFZTKqC8tDCCexcoU
-	eUXIqFbI81WlX4q6oh06Q4GoD6DVLKl8Rp61XcxRcJ+pdos7RXGXqPsvJdikVSaUGtnYWlyf
-	nzwQW6/NWHz2RmY8Y7OtYr3BuiYNu/233M25VWPFn6Qzn37cmfvO5m2f75jatG/y/vkG5s5Q
-	XtnZd+++76z80zCWFrFPn05d6+4q/mjeNew9+Gt21tbsrP25ssrje3RrZ4/DT9Yj44/d33N7
-	wWR5y753e16L7bVe72JdUVRJ6tWqjHSs06v+BSardbOoAwAA
-X-CFilter-Loop: Reflected
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: PSAPR03MB5605.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1b85d216-3bcb-4825-bf82-08ddc4fc7793
+X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Jul 2025 06:37:57.3181
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: MEegnAcy/DwwStIHbWAsQ8N6/oIdaNPVaVrc9mD9DGNBvXHckSXcwJgRIEguN998DAzvr8QWL5fEQmyCNf2zpQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: JH0PR03MB8336
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250716_233235_925325_539F606E 
-X-CRM114-Status: GOOD (  68.94  )
+X-CRM114-CacheID: sfid-20250716_233807_593436_A1F8C038 
+X-CRM114-Status: GOOD (  13.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,193 +223,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 16, 2025 at 12:41:04PM -0700, Mina Almasry wrote:
-> On Tue, Jul 15, 2025 at 9:51 PM Byungchul Park <byungchul@sk.com> wrote:
-> >
-> > On Tue, Jul 15, 2025 at 12:09:34PM -0700, Mina Almasry wrote:
-> > > On Mon, Jul 14, 2025 at 6:36 PM Byungchul Park <byungchul@sk.com> wrote:
-> > > >
-> > > > On Mon, Jul 14, 2025 at 12:58:15PM -0700, Mina Almasry wrote:
-> > > > > On Mon, Jul 14, 2025 at 12:37 PM Mina Almasry <almasrymina@google.com> wrote:
-> > > > > >
-> > > > > > On Mon, Jul 14, 2025 at 5:01 AM Byungchul Park <byungchul@sk.com> wrote:
-> > > > > > >
-> > > > > > > To eliminate the use of the page pool fields in struct page, the page
-> > > > > > > pool code should use netmem descriptor and APIs instead.
-> > > > > > >
-> > > > > > > However, __netmem_get_pp() still accesses ->pp via struct page.  So
-> > > > > > > change it to use struct netmem_desc instead, since ->pp no longer will
-> > > > > > > be available in struct page.
-> > > > > > >
-> > > > > > > While at it, add a helper, pp_page_to_nmdesc(), that can be used to
-> > > > > > > extract netmem_desc from page only if it's pp page.  For now that
-> > > > > > > netmem_desc overlays on page, it can be achieved by just casting.
-> > > > > > >
-> > > > > > > Signed-off-by: Byungchul Park <byungchul@sk.com>
-> > > > > > > ---
-> > > > > > >  include/net/netmem.h | 13 ++++++++++++-
-> > > > > > >  1 file changed, 12 insertions(+), 1 deletion(-)
-> > > > > > >
-> > > > > > > diff --git a/include/net/netmem.h b/include/net/netmem.h
-> > > > > > > index 535cf17b9134..2b8a7b51ac99 100644
-> > > > > > > --- a/include/net/netmem.h
-> > > > > > > +++ b/include/net/netmem.h
-> > > > > > > @@ -267,6 +267,17 @@ static inline struct net_iov *__netmem_clear_lsb(netmem_ref netmem)
-> > > > > > >         return (struct net_iov *)((__force unsigned long)netmem & ~NET_IOV);
-> > > > > > >  }
-> > > > > > >
-> > > > > > > +static inline struct netmem_desc *pp_page_to_nmdesc(struct page *page)
-> > > > > > > +{
-> > > > > > > +       DEBUG_NET_WARN_ON_ONCE(!page_pool_page_is_pp(page));
-> > > > > > > +
-> > > > > > > +       /* XXX: How to extract netmem_desc from page must be changed,
-> > > > > > > +        * once netmem_desc no longer overlays on page and will be
-> > > > > > > +        * allocated through slab.
-> > > > > > > +        */
-> > > > > > > +       return (struct netmem_desc *)page;
-> > > > > > > +}
-> > > > > > > +
-> > > > > >
-> > > > > > Same thing. Do not create a generic looking pp_page_to_nmdesc helper
-> > > > > > which does not check that the page is the correct type. The
-> > > > > > DEBUG_NET... is not good enough.
-> > > > > >
-> > > > > > You don't need to add a generic helper here. There is only one call
-> > > > > > site. Open code this in the callsite. The one callsite is marked as
-> > > > > > unsafe, only called by code that knows that the netmem is specifically
-> > > > > > a pp page. Open code this in the unsafe callsite, instead of creating
-> > > > > > a generic looking unsafe helper and not even documenting it's unsafe.
-> > > > > >
-> > > > >
-> > > > > On second read through the series, I actually now think this is a
-> > > > > great idea :-) Adding this helper has simplified the series greatly. I
-> > > > > did not realize you were converting entire drivers to netmem just to
-> > > > > get rid of page->pp accesses. Adding a pp_page_to_nmdesc helper makes
-> > > > > the entire series simpler.
-> > > > >
-> > > > > You're also calling it only from code paths like drivers that already
-> > > > > assumed that the page is a pp page and did page->pp deference without
-> > > > > a check, so this should be safe.
-> > > > >
-> > > > > Only thing I would change is add a comment explaining that the calling
-> > > > > code needs to check the page is pp page or know it's a pp page (like a
-> > > > > driver that supports pp).
-> > > > >
-> > > > >
-> > > > > > >  /**
-> > > > > > >   * __netmem_get_pp - unsafely get pointer to the &page_pool backing @netmem
-> > > > > > >   * @netmem: netmem reference to get the pointer from
-> > > > > > > @@ -280,7 +291,7 @@ static inline struct net_iov *__netmem_clear_lsb(netmem_ref netmem)
-> > > > > > >   */
-> > > > > > >  static inline struct page_pool *__netmem_get_pp(netmem_ref netmem)
-> > > > > > >  {
-> > > > > > > -       return __netmem_to_page(netmem)->pp;
-> > > > > > > +       return pp_page_to_nmdesc(__netmem_to_page(netmem))->pp;
-> > > > > > >  }
-> > > > > >
-> > > > > > This makes me very sad. Casting from netmem -> page -> nmdesc...
-> > > > > >
-> > > > > > Instead, we should be able to go from netmem directly to nmdesc. I
-> > > > > > would suggest rename __netmem_clear_lsb to netmem_to_nmdesc and have
-> > > > > > it return netmem_desc instead of net_iov. Then use it here.
-> > > > > >
-> > > > > > We could have an unsafe version of netmem_to_nmdesc which converts the
-> > > > > > netmem to netmem_desc without clearing the lsb and mark it unsafe.
-> > > > > >
-> > > > >
-> > > > > This, I think, we should address to keep some sanity in the code and
-> > > > > reduce the casts and make it a bit more maintainable.
-> > > >
-> > > > I will reflect your suggestions.  To summarize:
-> > > >
-> > > >    1) The current implementation of pp_page_to_nmdesc() is good enough
-> > > >       to keep, but add a comment on it like "Check if the page is a pp
-> > > >       page before calling this function or know it's a pp page.".
-> > > >
-> > >
-> > > Yes please.
-> > >
-> > > >    2) Introduce the unsafe version, __netmem_to_nmdesc(), and use it in
-> > > >       __netmem_get_pp().
-> > > >
-> > >
-> > > No need following Pavel's feedback. We can just delete
-> > > __netmem_get_pp. If we do find a need in the future to extract the
-> > > netmem_desc from a netmem_ref, I would rather we do a straight cast
-> > > from netmem_ref to netmem_desc rather than netmem_ref -> pages/net_iov
-> > > -> netmem_desc.
-> > >
-> > > But that seems unnecessary for this series.
-> >
-> > No.  The series should remove accessing ->pp through page.
-> >
-> > I will kill __netmem_get_pp() as you and I prefer.  However,
-> > __netmem_get_pp() users e.i. libeth_xdp_return_va() and
-> > libeth_xdp_tx_fill_buf() should be altered.  I will modify the code like:
-> >
-> > as is: __netmem_get_pp(netmem)
-> > to be: __netmem_nmdesc(netmem)->pp
-> >
-> > Is it okay with you?
-> >
-> 
-> When Pavel and I were saying 'remove __netmem_get_pp', I think we
-> meant to remove the entire concept of unsafe netmem -> page
-> conversions. I think we both don't like them. From this perspective,
-> __netmem_nmdesc(netmem)->pp is just as bad as __netmem_get_pp(netmem).
-> 
-> I think since the unsafe netmem-to-page casts are already in mainline,
-> lets assume they should stay there until someone feels strongly enough
-> to remove them. The logic in Olek's patch is sound:
-> 
-> https://lore.kernel.org/all/20241203173733.3181246-8-aleksander.lobakin@intel.com/
-> 
-> Header buffer page pools do always use pages and will likely remain so
-> for a long time, so I guess lets continue to support them rather than
-> try to remove them in this series. A followup series could try to
-> remove them.
-> 
-> > > >    3) Rename __netmem_clear_lsb() to netmem_to_nmdesc(), and return
-> > > >       netmem_desc, and use it in all users of __netmem_clear_lsb().
-> > > >
-> > >
-> > > Following Pavel's comment, this I think also is not necessary for this
-> > > series. Cleaning up the return value of __netmem_clear_lsb is good
-> > > work I think, but we're already on v10 of this and I think it would
-> > > unnecessary to ask for added cleanups. We can do the cleanup on top.
-> >
-> > However, I still need to include 'introduce __netmem_nmdesc() helper'
-> 
-> Yes.
-> 
-> > in this series since it should be used to remove __netmem_get_pp() as I
-> 
-> lets keep __netmem_get_pp, which does a `return
-> __netmem_nmdesc(netmem)->pp;` In general we avoid allowing the driver
-> to do any netmem casts in the driver code, and we do any casting in
-> core.
-> 
-> > described above.  I think I'd better add netmem_nmdesc() too while at it.
-> >
-> 
-> Yes. netmem_nmdesc should replace __netmem_clear_lsb.
-
-Even though the unsafe version is required in this series, on second
-though, the safe version, netmem_nmdesc() doesn't have to be a part of
-this series.  Let's do adding the safe version on top after.
-
-	Byungchul
-
-> > I assume __netmem_nmdesc() is an unsafe version not clearing lsb.  The
-> 
-> Yes.
-> 
-> > safe version, netmem_nmdesc() needs an additional operation clearing lsb.
-> 
-> Yes.
-> 
-> 
-> --
-> Thanks,
-> Mina
+T24gV2VkLCAyMDI1LTA3LTE2IGF0IDA4OjE5IC0wNzAwLCBCYXJ0IFZhbiBBc3NjaGUgd3JvdGU6
+DQo+IA0KPiBFeHRlcm5hbCBlbWFpbCA6IFBsZWFzZSBkbyBub3QgY2xpY2sgbGlua3Mgb3Igb3Bl
+biBhdHRhY2htZW50cyB1bnRpbA0KPiB5b3UgaGF2ZSB2ZXJpZmllZCB0aGUgc2VuZGVyIG9yIHRo
+ZSBjb250ZW50Lg0KPiANCj4gDQo+IE9uIDcvMTUvMjUgMTE6MjUgUE0sIHBldGVyLndhbmdAbWVk
+aWF0ZWsuY29twqB3cm90ZToNCj4gPiBUaGlzIHBhdGNoIHVwZGF0ZXMgdGhlIHJldHVybiB0eXBl
+IHRvIGJvb2wgZm9yIGNvbnNpc3RlbmN5DQo+ID4gd2l0aCB0aGUgcHJldmlvdXMgc3R5bGUuDQo+
+IA0KPiBXaGF0IHByZXZpb3VzIHN0eWxlPw0KPiANCj4gUGxlYXNlIGZvbGxvdyB0aGUgc3R5bGUg
+dGhhdCBpcyB1c2VkIGVsc2V3aGVyZSBpbiB0aGUgTGludXgga2VybmVsDQo+IGFuZA0KPiBkbyAq
+bm90KiBpbnRyb2R1Y2UgYW55IHVubmVjZXNzYXJ5IGV4cGxpY2l0IGNvbnZlcnNpb25zIHRvIGJv
+b2wuDQo+IA0KPiBCYXJ0Lg0KDQoNCkhpIEJhcnQsDQoNClRoaXMgaXMgdG8gYmUgY29uc2lzdGVu
+dCB3aXRoIHRoZSB1c2FnZSBlYXJsaWVyIGluIG1lZGlhdGVrLmMsIHN1Y2ggYXMNCg0Kc3RhdGlj
+IGJvb2wgdWZzX210a19pc19wbWNfdmlhX2Zhc3RhdXRvKHN0cnVjdCB1ZnNfaGJhICpoYmEpDQp7
+DQoJc3RydWN0IHVmc19tdGtfaG9zdCAqaG9zdCA9IHVmc2hjZF9nZXRfdmFyaWFudChoYmEpOw0K
+DQoJcmV0dXJuICEhKGhvc3QtPmNhcHMgJiBVRlNfTVRLX0NBUF9QTUNfVklBX0ZBU1RBVVRPKTsN
+Cn0NCg0KT3IgZG8geW91IHN1Z2dlc3QgcmVtb3ZpbmcgYWxsIHRoZSBwcmV2aW91cyB1c2FnZXMg
+aW5zdGVhZD8NCg0KVGhhbmtzLg0KUGV0ZXINCg0K
 
