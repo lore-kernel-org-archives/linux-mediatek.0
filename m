@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FEA3C83F1A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Jul 2025 10:33:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74087C83F1A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Jul 2025 10:55:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mEcU0OCD0ivIfd7kCJhaGZPEyu7QVeNuMoMZGolKkXQ=; b=ZAT3emzX+Xw45bACZ9nNdKCsDi
-	rqnK0bV1B6tyVbAczzLlhlKWiHcAjGSGZOH0edZSxewAeioBkFH1FLJhLi6bBKTf6V80B+sKbVOqP
-	jq5CETUk5b7TAT8TE7cOmnWboyx/0/qEu8Zp2BpAt0sG0FJXqNmHg/XCWyYXgpDFrWqNls2IYx1CX
-	zNP/ZcF1xnLSFn/T1AFSMojdzthF04Vwv7pndV7X6QJkPJi/0xt1AMq3z5doZdAbL8YLHJ9OUtr3u
-	iqihR9qqPQoxaDQ9cTWJ+Fk77wF2Yj7rMANWp+fzFI+MPRtIRV0iwrEXR1GXJILj3DHo+hYzj2hwK
-	P+dKZMog==;
+	bh=C0uBCwRaBE2x5ESICSaRvmcxNJ0uFcNEBOpanN+P4sY=; b=QsD7oT+AmtORhc0aDj+iz/1PGq
+	kFsCeVL5hiPmYrc5zLGnCWZQDVtKjzvYjCd2j1ddffH2trR0b9Uqth8QlyFEc18fq1B8U4PzjVRu7
+	2ynAdeLPcpYt9E35lnL/kWfHAUcKOZPhenvezRIwZSBECvuBO7F8R+lsfopVHIAIQYGULRo8VEadL
+	+o1K4xS4Jzgb/6Xl/0twzY+3qMFoHRN+BTP84CEQf3lpB9yLweJFv/webIJcFUquDYEhiniYfjXNk
+	mxxEMFXT6Ae+BPHIhVxofhWdiDg883bV75EPMKNIatwNa5yqviTvggdX/iyzrCHSMDdfpUq7yF76S
+	cIoHTzDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucLvC-00000009qYJ-2SKo;
-	Thu, 17 Jul 2025 10:33:02 +0000
+	id 1ucMH1-00000009vCO-40GC;
+	Thu, 17 Jul 2025 10:55:35 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucLqq-00000009pxL-3zY2;
-	Thu, 17 Jul 2025 10:28:34 +0000
+	id 1ucLyZ-00000009rb1-3IR3;
+	Thu, 17 Jul 2025 10:36:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1752748111;
-	bh=njeWmQfR2ai9XZ2ITqvd5C2J/w/hnFAgXQdfFFO0UcQ=;
+	s=mail; t=1752748590;
+	bh=xqQlXd0lb1r+JYcGwIbgeT/oRINSjbiPGiuQzE3If+M=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=goFADbouZPEm62xcrdBEBQ4wStXnDAZkiZ7cYFTr1o2KiRQ6fx6zhrE2H13mjeFxI
-	 r7zJnDxtTdeHIgQm9b+FmAmhljUVi/LDgVEWn6Xj8mspK6ygd0Xb36Odd+VUSpbkxC
-	 e4MBC6zKRmP0N+f5nZQxPUdVeYsX23V281J/O4sYg84MW52LHH5qzUbAq3lP2U8GAi
-	 b3bTDMrR6GLzR0A4P7rIafgDEFzoQSdVF9B7mHG7YtGK4nbQ2ATBz/8MwzkSN4OExr
-	 x0R84IgFpBEHe5F9vp+SqPZjxphLOIng5SRFdl+UPhc82nDRXAuzG2pqADnJlvYTNs
-	 rrYQtIzKNZE8Q==
+	b=ntDdZyBHOgKnPOdEGQw/I5EL8KR2PXe6U3DisRLzypC795hgqWv+OLRQf+cWqSflJ
+	 2YeI3EMt87mUa5Cg0s575h9jR8fm13kTDSxreIvCvw/lVco+wq4FdPBTk7yC0DHQqm
+	 gV2pFTBonGcj0SPoICTLc4SrvRHRhgikxbb/HVonr+dl7pj+GKyMBnoUjd90nQcvkA
+	 y6W+3henmYDkJKk4A6F/HhMNTa13xyIjYIN1RFNzhAMBiKoEKwnkrAW2xdC5FHB9I2
+	 EpKeLcPsKbpTntbNSjiXw/dM72FLmBCfJJf96r9gbbpDTISuXkU8npuvY43xaSAOUa
+	 /G34kMeufYjng==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 83CFC17E0D15;
-	Thu, 17 Jul 2025 12:28:30 +0200 (CEST)
-Message-ID: <384e41cd-8bc0-4f98-9fcb-362608d93859@collabora.com>
-Date: Thu, 17 Jul 2025 12:28:30 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4FAD317E0B72;
+	Thu, 17 Jul 2025 12:36:29 +0200 (CEST)
+Message-ID: <0089a5e5-4e16-4d30-8b56-3811a6d7af88@collabora.com>
+Date: Thu, 17 Jul 2025 12:36:28 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/4] dt-bindings: cpufreq: Add
- mediatek,mt8196-cpufreq-hw binding
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- Viresh Kumar <viresh.kumar@linaro.org>, Rob Herring <robh@kernel.org>,
+Subject: Re: [PATCH v1 1/2] dt-bindings: clock: mediatek: Describe MT6789
+ clock controllers
+To: Krzysztof Kozlowski <krzk@kernel.org>, Arseniy Velikanov <me@adomerle.pw>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: kernel@collabora.com, linux-pm@vger.kernel.org,
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, linux-clk@vger.kernel.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20250716-mt8196-cpufreq-v3-0-d440fb810d7e@collabora.com>
- <20250716-mt8196-cpufreq-v3-1-d440fb810d7e@collabora.com>
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ ~postmarketos/upstreaming@lists.sr.ht
+References: <20250715222221.29406-1-me@adomerle.pw>
+ <20250716-manipulative-dormouse-of-current-9af4e6@krzk-bin>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250716-mt8196-cpufreq-v3-1-d440fb810d7e@collabora.com>
+In-Reply-To: <20250716-manipulative-dormouse-of-current-9af4e6@krzk-bin>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250717_032833_139376_DB43D441 
-X-CRM114-Status: UNSURE (   9.05  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250717_033631_987763_97A4A8BC 
+X-CRM114-Status: GOOD (  15.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,21 +82,123 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 16/07/25 19:51, Nicolas Frattaroli ha scritto:
-> The MediaTek MT8196 SoC has new cpufreq hardware, with added memory
-> register ranges to control Dynamic-Voltage-Frequency-Scaling.
+Il 16/07/25 09:04, Krzysztof Kozlowski ha scritto:
+> On Wed, Jul 16, 2025 at 02:22:20AM +0400, Arseniy Velikanov wrote:
+>> +properties:
+>> +  compatible:
+>> +    items:
+>> +      - enum:
+>> +          - mediatek,mt6789-afe
+>> +          - mediatek,mt6789-camsys
+>> +          - mediatek,mt6789-camsys-rawa
+>> +          - mediatek,mt6789-camsys-rawb
+>> +          - mediatek,mt6789-imgsys
+>> +          - mediatek,mt6789-imp-iic-wrap-c
+>> +          - mediatek,mt6789-imp-iic-wrap-en
+>> +          - mediatek,mt6789-imp-iic-wrap-w
+>> +          - mediatek,mt6789-ipesys
+>> +          - mediatek,mt6789-mdpsys
+>> +          - mediatek,mt6789-mfgcfg
+>> +          - mediatek,mt6789-vdecsys
+>> +          - mediatek,mt6789-vencsys
+>> +
+>> +  reg:
+>> +    maxItems: 1
+>> +
+>> +  '#clock-cells':
+>> +    const: 1
+>> +
+>> +required:
+>> +  - compatible
+>> +  - reg
+>> +
+>> +additionalProperties: false
+>> +
+>> +examples:
+>> +  - |
+>> +    afe: clock-controller@11210000 {
+>> +        compatible = "mediatek,mt6789-afe";
+>> +        reg = <0x11210000 0x1000>;
+>> +        #clock-cells = <1>;
+>> +    };
+>> +
 > 
-> The DVFS hardware is controlled through a set of registers referred to
-> as "FDVFS". They set the target frequency the DVFS hardware should aim
-> for for each performance domain.
+> Drop the rest of nodes. One example is enough. They are ALL THE SAME.
 > 
-> Instead of working around the old binding and its already established
-> meanings for the reg items, add a new binding. The FDVFS register memory
-> region is at the beginning, which allows us to easily expand this
-> binding for future SoCs which may have more than 3 performance domains.
+> ...
 > 
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+>> diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt6789-sys-clock.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt6789-sys-clock.yaml
+>> new file mode 100644
+>> index 000000000000..d6f70ee918ad
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/clock/mediatek,mt6789-sys-clock.yaml
+>> @@ -0,0 +1,68 @@
+>> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+>> +%YAML 1.2
+>> +---
+>> +$id: http://devicetree.org/schemas/clock/mediatek,mt6789-sys-clock.yaml#
+>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>> +
+>> +title: MediaTek System Clock Controller for MT6789
+>> +
+>> +maintainers:
+>> +  - Arseniy Velikanov <me@adomerle.pw>
+>> +
+>> +description:
+>> +  The Mediatek system clock controller provides various clocks and system configuration
+>> +  like reset and bus protection on MT6789.
+>> +
+>> +properties:
+>> +  compatible:
+>> +    items:
+>> +      - enum:
+>> +          - mediatek,mt6789-apmixedsys
+> 
+> Why this does not fit existing binding file? Or Mediatek maintainers
+> preference was to switch to one-binding-per-SoC?
+> 
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+We have been using one binding per soc for sys-clock and multimedia clocks because
+the sys-clock has multiple clock controllers in one macro-block, while all of the
+multimedia (and peripheral, depending on the soc) are in different macro-blocks.
+There are also some historical reasons which aren't really relevant anymore.
+
+So, we do have mt{soc}-sys-clock.yaml, mt{soc}-clock.yaml - that's right.
+
+> 
+>> +          - mediatek,mt6789-topckgen
+>> +          - mediatek,mt6789-infracfg-ao
+>> +          - mediatek,mt6789-mcusys
+>> +      - const: syscon
+>> +
+>> +  reg:
+>> +    maxItems: 1
+>> +
+>> +  '#clock-cells':
+>> +    const: 1
+>> +
+>> +  '#reset-cells':
+>> +    const: 1
+>> +
+>> +required:
+>> +  - compatible
+>> +  - reg
+>> +
+>> +additionalProperties: false
+>> +
+>> +examples:
+>> +  - |
+>> +    mcusys: syscon@c530000 {
+> 
+> Drop unused labels, everywhere.
+> 
+> Also, node name is supposed to be clock or reset controller, not syscon.
+> 
+
+MCUSYS is all three - but please use clock-controller.
+
+Cheers,
+Angelo
+
 
 
