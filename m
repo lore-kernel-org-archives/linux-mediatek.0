@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74087C83F1A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Jul 2025 10:55:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C208C83F1A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Jul 2025 12:24:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=C0uBCwRaBE2x5ESICSaRvmcxNJ0uFcNEBOpanN+P4sY=; b=QsD7oT+AmtORhc0aDj+iz/1PGq
-	kFsCeVL5hiPmYrc5zLGnCWZQDVtKjzvYjCd2j1ddffH2trR0b9Uqth8QlyFEc18fq1B8U4PzjVRu7
-	2ynAdeLPcpYt9E35lnL/kWfHAUcKOZPhenvezRIwZSBECvuBO7F8R+lsfopVHIAIQYGULRo8VEadL
-	+o1K4xS4Jzgb/6Xl/0twzY+3qMFoHRN+BTP84CEQf3lpB9yLweJFv/webIJcFUquDYEhiniYfjXNk
-	mxxEMFXT6Ae+BPHIhVxofhWdiDg883bV75EPMKNIatwNa5yqviTvggdX/iyzrCHSMDdfpUq7yF76S
-	cIoHTzDw==;
+	bh=SLKDCSBar7TEHGf/3yjKm5ts8mUeyQn6MQragX0irtY=; b=E9a826kx2F+k4tLHfaPYZ8+bO0
+	8rP8qT4uC6Hourb/CQXDAjTyA0yAGJqvjp463sr/QvbXsZkuUQF4erKdfoqm4ika2Zp4T63jHCQ0X
+	a/h+LfCGxH75NaE3JVN/dpLTu/tmQgy2bHmn8vCjp1boS2/bh6G4A0gmQIgOLwYsJXR4J9zAxQrv6
+	NzD75rDpI0riEOIxPpVLqc+qf42LlEKxDCmuUpCODP3+otoO0gS+MITrJiMcmtHYs9nMXF3QHuKsP
+	BIKvXtnzetL5PrLGtpHlixhgPDhOeqe7jAkKDBLhqrYlh+rWDm3tX/b2KIJMnmGU9Jh90hu4qRQfw
+	feHVRjtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucMH1-00000009vCO-40GC;
-	Thu, 17 Jul 2025 10:55:35 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1ucNfN-0000000A6hy-2wNX;
+	Thu, 17 Jul 2025 12:24:49 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucLyZ-00000009rb1-3IR3;
-	Thu, 17 Jul 2025 10:36:33 +0000
+	id 1ucMB8-00000009u2o-2hQq;
+	Thu, 17 Jul 2025 10:49:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1752748590;
-	bh=xqQlXd0lb1r+JYcGwIbgeT/oRINSjbiPGiuQzE3If+M=;
+	s=mail; t=1752749368;
+	bh=lSP0/9GbrNfw0NFb6DWBwXGSVoqPXgSk/vHOEKnsPg0=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ntDdZyBHOgKnPOdEGQw/I5EL8KR2PXe6U3DisRLzypC795hgqWv+OLRQf+cWqSflJ
-	 2YeI3EMt87mUa5Cg0s575h9jR8fm13kTDSxreIvCvw/lVco+wq4FdPBTk7yC0DHQqm
-	 gV2pFTBonGcj0SPoICTLc4SrvRHRhgikxbb/HVonr+dl7pj+GKyMBnoUjd90nQcvkA
-	 y6W+3henmYDkJKk4A6F/HhMNTa13xyIjYIN1RFNzhAMBiKoEKwnkrAW2xdC5FHB9I2
-	 EpKeLcPsKbpTntbNSjiXw/dM72FLmBCfJJf96r9gbbpDTISuXkU8npuvY43xaSAOUa
-	 /G34kMeufYjng==
+	b=afqILlfAdc29dXdjkvF4I3YSbufR0yN5zVs7ZWdCQnSNZrXwIiIA4WW9e1PQ/k43p
+	 Df1AEB2qgK1CcIC2XuMPGOq9i8MF1PgD9lXMQFMyfHMy2qs2lYKYLkDmM6v0Us/shN
+	 DeZgcw8OSfYG3OVsnu4GAfPh22EEkfQwIerr8K2enqKMerzEu+rty9auXYe9uCeihA
+	 xDeE/B9ljTejzYjPTj+lWQyrWh+2TTo1hlFb/5Ahd9q6yRn0Z8nVafoUvgo1a4iuez
+	 mm2tuRwf/QUSDWqydPf4JT/ZMW8F76gshZk4c96BmE7M0kUvnAbtKZ8fWuWGawmgNh
+	 khghTJQCBNxeg==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4FAD317E0B72;
-	Thu, 17 Jul 2025 12:36:29 +0200 (CEST)
-Message-ID: <0089a5e5-4e16-4d30-8b56-3811a6d7af88@collabora.com>
-Date: Thu, 17 Jul 2025 12:36:28 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id EE95F17E0C37;
+	Thu, 17 Jul 2025 12:49:27 +0200 (CEST)
+Message-ID: <327287aa-98c8-4745-adb9-2c36e8d5d825@collabora.com>
+Date: Thu, 17 Jul 2025 12:49:27 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 1/2] dt-bindings: clock: mediatek: Describe MT6789
- clock controllers
-To: Krzysztof Kozlowski <krzk@kernel.org>, Arseniy Velikanov <me@adomerle.pw>
-Cc: Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+Subject: Re: [PATCH v1 2/2] clk: mediatek: Add MT6789 clock controllers
+To: Arseniy Velikanov <me@adomerle.pw>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, linux-clk@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- ~postmarketos/upstreaming@lists.sr.ht
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, ~postmarketos/upstreaming@lists.sr.ht
 References: <20250715222221.29406-1-me@adomerle.pw>
- <20250716-manipulative-dormouse-of-current-9af4e6@krzk-bin>
+ <20250715222221.29406-2-me@adomerle.pw>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250716-manipulative-dormouse-of-current-9af4e6@krzk-bin>
+In-Reply-To: <20250715222221.29406-2-me@adomerle.pw>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250717_033631_987763_97A4A8BC 
-X-CRM114-Status: GOOD (  15.01  )
+X-CRM114-CacheID: sfid-20250717_034930_877952_FB4A7E75 
+X-CRM114-Status: GOOD (  20.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,123 +81,230 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 16/07/25 09:04, Krzysztof Kozlowski ha scritto:
-> On Wed, Jul 16, 2025 at 02:22:20AM +0400, Arseniy Velikanov wrote:
->> +properties:
->> +  compatible:
->> +    items:
->> +      - enum:
->> +          - mediatek,mt6789-afe
->> +          - mediatek,mt6789-camsys
->> +          - mediatek,mt6789-camsys-rawa
->> +          - mediatek,mt6789-camsys-rawb
->> +          - mediatek,mt6789-imgsys
->> +          - mediatek,mt6789-imp-iic-wrap-c
->> +          - mediatek,mt6789-imp-iic-wrap-en
->> +          - mediatek,mt6789-imp-iic-wrap-w
->> +          - mediatek,mt6789-ipesys
->> +          - mediatek,mt6789-mdpsys
->> +          - mediatek,mt6789-mfgcfg
->> +          - mediatek,mt6789-vdecsys
->> +          - mediatek,mt6789-vencsys
->> +
->> +  reg:
->> +    maxItems: 1
->> +
->> +  '#clock-cells':
->> +    const: 1
->> +
->> +required:
->> +  - compatible
->> +  - reg
->> +
->> +additionalProperties: false
->> +
->> +examples:
->> +  - |
->> +    afe: clock-controller@11210000 {
->> +        compatible = "mediatek,mt6789-afe";
->> +        reg = <0x11210000 0x1000>;
->> +        #clock-cells = <1>;
->> +    };
->> +
+Il 16/07/25 00:22, Arseniy Velikanov ha scritto:
+> Add support for MT6789 clock controllers, which includes apmixed, afe,
+> camsys, imgsys, infracfg, mcusys, mdpsys, mfgcfg, mmsys, topckgen,
+> vdec, venc.
 > 
-> Drop the rest of nodes. One example is enough. They are ALL THE SAME.
-> 
-> ...
-> 
->> diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt6789-sys-clock.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt6789-sys-clock.yaml
->> new file mode 100644
->> index 000000000000..d6f70ee918ad
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/clock/mediatek,mt6789-sys-clock.yaml
->> @@ -0,0 +1,68 @@
->> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
->> +%YAML 1.2
->> +---
->> +$id: http://devicetree.org/schemas/clock/mediatek,mt6789-sys-clock.yaml#
->> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->> +
->> +title: MediaTek System Clock Controller for MT6789
->> +
->> +maintainers:
->> +  - Arseniy Velikanov <me@adomerle.pw>
->> +
->> +description:
->> +  The Mediatek system clock controller provides various clocks and system configuration
->> +  like reset and bus protection on MT6789.
->> +
->> +properties:
->> +  compatible:
->> +    items:
->> +      - enum:
->> +          - mediatek,mt6789-apmixedsys
-> 
-> Why this does not fit existing binding file? Or Mediatek maintainers
-> preference was to switch to one-binding-per-SoC?
+> Signed-off-by: Arseniy Velikanov <me@adomerle.pw>
+
+Hi Arseniy,
+Thanks for all this work!
+
+The submission looks generally fine, and I'm happy that you've ported those drivers
+to the common probe, however, there are a few (relatively small) things to fixup.
+
+Please check below.
+
+> ---
+>   drivers/clk/mediatek/Kconfig                  |  68 ++
+>   drivers/clk/mediatek/Makefile                 |  11 +
+>   drivers/clk/mediatek/clk-mt6789-apmixed.c     | 147 +++
+>   drivers/clk/mediatek/clk-mt6789-audiosys.c    | 100 +++
+>   drivers/clk/mediatek/clk-mt6789-cam.c         | 131 +++
+>   drivers/clk/mediatek/clk-mt6789-img.c         | 100 +++
+>   .../clk/mediatek/clk-mt6789-imp_iic_wrap.c    |  90 ++
+>   drivers/clk/mediatek/clk-mt6789-infra_ao.c    | 228 +++++
+>   drivers/clk/mediatek/clk-mt6789-mcu.c         |  68 ++
+>   drivers/clk/mediatek/clk-mt6789-mdp.c         |  81 ++
+>   drivers/clk/mediatek/clk-mt6789-mfgcfg.c      |  61 ++
+>   drivers/clk/mediatek/clk-mt6789-mm.c          |  85 ++
+>   drivers/clk/mediatek/clk-mt6789-topckgen.c    | 846 ++++++++++++++++++
+>   drivers/clk/mediatek/clk-mt6789-vdec.c        | 119 +++
+>   drivers/clk/mediatek/clk-mt6789-venc.c        |  65 ++
+>   15 files changed, 2200 insertions(+)
+>   create mode 100644 drivers/clk/mediatek/clk-mt6789-apmixed.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt6789-audiosys.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt6789-cam.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt6789-img.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt6789-imp_iic_wrap.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt6789-infra_ao.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt6789-mcu.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt6789-mdp.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt6789-mfgcfg.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt6789-mm.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt6789-topckgen.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt6789-vdec.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt6789-venc.c
 > 
 
-We have been using one binding per soc for sys-clock and multimedia clocks because
-the sys-clock has multiple clock controllers in one macro-block, while all of the
-multimedia (and peripheral, depending on the soc) are in different macro-blocks.
-There are also some historical reasons which aren't really relevant anymore.
+..snip..
 
-So, we do have mt{soc}-sys-clock.yaml, mt{soc}-clock.yaml - that's right.
+> diff --git a/drivers/clk/mediatek/clk-mt6789-topckgen.c b/drivers/clk/mediatek/clk-mt6789-topckgen.c
+> new file mode 100644
+> index 000000000000..bd986e861eb4
+> --- /dev/null
+> +++ b/drivers/clk/mediatek/clk-mt6789-topckgen.c
+> @@ -0,0 +1,846 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (c) 2022 MediaTek Inc.
+> + * Copyright (c) 2025 Arseniy Velikanov <me@adomerle.pw>
+> + */
 
-> 
->> +          - mediatek,mt6789-topckgen
->> +          - mediatek,mt6789-infracfg-ao
->> +          - mediatek,mt6789-mcusys
->> +      - const: syscon
->> +
->> +  reg:
->> +    maxItems: 1
->> +
->> +  '#clock-cells':
->> +    const: 1
->> +
->> +  '#reset-cells':
->> +    const: 1
->> +
->> +required:
->> +  - compatible
->> +  - reg
->> +
->> +additionalProperties: false
->> +
->> +examples:
->> +  - |
->> +    mcusys: syscon@c530000 {
-> 
-> Drop unused labels, everywhere.
-> 
-> Also, node name is supposed to be clock or reset controller, not syscon.
-> 
+..snip..
 
-MCUSYS is all three - but please use clock-controller.
 
-Cheers,
+ > +static const struct mtk_fixed_factor top_divs[] = {
+ > +	FACTOR(CLK_TOP_MFGPLL, "mfgpll_ck", "mfgpll", 1, 1),
+
+..snip..
+
+ > +	FACTOR(CLK_TOP_F26M, "f26m_ck", "clk26m", 1, 1),
+ > +	FACTOR(CLK_TOP_AXI, "axi_ck", "axi_sel", 1, 1),
+ > +	FACTOR(CLK_TOP_DISP, "disp_ck", "disp_sel", 1, 1),
+
+Please, remove all instances of FACTOR(.... 1, 1) and use the right parent directly
+for the other clocks.
+
+The factor(1,1) means clock_rate * 1 / 1 == clock_rate.
+
+I'm not sure why MediaTek likes to declare these - they are doing that in newer
+SoCs as well, but that's not for upstream: it does not make any sense to have those
+clocks in the driver, as those are effectively just name wrappers and nothing else.
+
+The only thing those do is increasing the footprint for, well, no good reason...!
+
+There's a pattern that you want to check: all of the "_ck" clocks are suspect! :-)
+
+ > +	FACTOR(CLK_TOP_MDP, "mdp_ck", "mdp_sel", 1, 1),
+ > +	FACTOR(CLK_TOP_IMG1, "img1_ck", "img1_sel", 1, 1),
+ > +	FACTOR(CLK_TOP_IPE, "ipe_ck", "ipe_sel", 1, 1),
+ > +	FACTOR(CLK_TOP_CAM, "cam_ck", "cam_sel", 1, 1),
+ > +	FACTOR(CLK_TOP_MFG_REF, "mfg_ref_ck", "mfg_ref_sel", 1, 1),
+ > +	FACTOR(CLK_TOP_MFG_PLL, "mfg_pll_ck", "mfg_pll_sel", 1, 1),
+
+..snip..
+
+> +
+> +static const char * const dvfsrc_parents[] = {
+> +	"tck_26m_mx9_ck",
+> +	"osc_d10"
+> +};
+> +
+> +static const char * const aes_msdcfde_parents[] = {
+> +	"tck_26m_mx9_ck",
+> +	"mainpll_d4_d2",
+> +	"mainpll_d6",
+> +	"mainpll_d4_d4",
+> +	"univpll_d4_d2",
+> +	"univpll_d6"
+> +};
+> +
+> +static const char * const mcupm_parents[] = {
+> +	"tck_26m_mx9_ck",
+> +	"mainpll_d6_d4",
+> +	"mainpll_d6_d2"
+> +};
+> +
+> +static const char * const dsi_occ_parents[] = {
+> +	"tck_26m_mx9_ck",
+> +	"mainpll_d6_d2",
+> +	"univpll_d5_d2",
+> +	"univpll_d4_d2"
+> +};
+> +
+
+Look at those parents, you're redefining the very same identical array 10 times
+in a row!
+
+Please, avoid this kind of duplication: delete all the duplicated arrays and
+just have one called, for example, "apll_i2s_mck_parents", then assign that
+to all of the relevant clocks.
+
+Same goes for camtg and others :-)
+
+> +static const char * const apll_i2s0_mck_parents[] = {
+> +	"aud_1_sel",
+> +	"aud_2_sel"
+> +};
+> +
+> +static const char * const apll_i2s1_mck_parents[] = {
+> +	"aud_1_sel",
+> +	"aud_2_sel"
+> +};
+> +
+> +static const char * const apll_i2s2_mck_parents[] = {
+> +	"aud_1_sel",
+> +	"aud_2_sel"
+> +};
+> +
+> +static const char * const apll_i2s3_mck_parents[] = {
+> +	"aud_1_sel",
+> +	"aud_2_sel"
+> +};
+> +
+> +static const char * const apll_i2s4_mck_parents[] = {
+> +	"aud_1_sel",
+> +	"aud_2_sel"
+> +};
+> +
+> +static const char * const apll_i2s5_mck_parents[] = {
+> +	"aud_1_sel",
+> +	"aud_2_sel"
+> +};
+> +
+> +static const char * const apll_i2s6_mck_parents[] = {
+> +	"aud_1_sel",
+> +	"aud_2_sel"
+> +};
+> +
+> +static const char * const apll_i2s7_mck_parents[] = {
+> +	"aud_1_sel",
+> +	"aud_2_sel"
+> +};
+> +
+> +static const char * const apll_i2s8_mck_parents[] = {
+> +	"aud_1_sel",
+> +	"aud_2_sel"
+> +};
+> +
+> +static const char * const apll_i2s9_mck_parents[] = {
+> +	"aud_1_sel",
+> +	"aud_2_sel"
+> +};
+
+..snip..
+
+> +module_platform_driver(clk_mt6789_topckgen_drv);
+> +
+> +MODULE_DESCRIPTION("MediaTek MT6789 top clock generators driver");
+> +MODULE_LICENSE("GPL");
+> diff --git a/drivers/clk/mediatek/clk-mt6789-vdec.c b/drivers/clk/mediatek/clk-mt6789-vdec.c
+> new file mode 100644
+> index 000000000000..81d6e720b6cd
+> --- /dev/null
+> +++ b/drivers/clk/mediatek/clk-mt6789-vdec.c
+> @@ -0,0 +1,119 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (c) 2022 MediaTek Inc.
+> + * Copyright (c) 2025 Arseniy Velikanov <me@adomerle.pw>
+> + */
+> +
+
+..snip..
+
+> +
+> +static const struct mtk_clk_desc vde2_desc = {
+> +	.clks = vde2_clks,
+> +	.num_clks = ARRAY_SIZE(vde2_clks),
+> +};
+> +
+> +static const struct of_device_id of_match_clk_mt6789_vdec[] = {
+
+Can you please compress all of those?
+
+static const struct of_device_id of_match_clk_mt6789_vdec[] ={
+	{ .compatible = "mediatek,mt6789-vdecsys", .data = &vde2_desc },
+	{ /* sentinel */ }
+};
+
+
+Note that the same comments do apply to other clock drivers that you're introducing
+but I'm only writing once - please apply the comments in the others and wherever
+they fit.
+
+Cheers!
 Angelo
-
-
 
