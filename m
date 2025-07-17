@@ -4,82 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 343DFC83F1B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Jul 2025 05:55:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E822C83F1B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Jul 2025 06:32:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=PWGJHWebyTPRG8s498ziY+Rf4TwzqDFkjnjk6ovCQdM=; b=QqX6Cymmq5DiYmz5/2vSSZJk20
-	QWYyjRUbDoBLa+R6L4D2VbNgUfMgRJk9NCQsgWLfjYSq4fwu5nVjjbavoPSCB4tP0652w8H6Sq1J2
-	aTOb3nuL1gM43n8i60iBiArC4+LQr7cYZr09B0rp55pRioRojGlJq9i3mFm29nmBWZg+xpnHlPbKl
-	deemxVyrqebpFP6cQAf4pHSum24+HbY162KBQYJ/Wu5HtQ1zh1UfbTL1LKtXHESOoujKqef18/BDs
-	wkSuHQ51qiOZE7K4/R9z9g2woBF6GVeWvCSBSDA7ILhZ5Y0Haz+rw7BBR9Q0ijRIz+aqjcVC42045
-	Zog1Y6EQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Pg2azoYqDdE4dNBLBiUQo4d2AuUDCB+rchkE67GZzC4=; b=z2bD041hXtcYO76WoacliegV2v
+	cevt3Jsms2j/JDwbooZvKO4mDPZsBBsL4DIQF9pxKuVRt9jaUlIgsDJCtuVmgkHAmMq3BcmAnbywT
+	axPCD3U3CF7VBxqeoHeC6WbbzjrKjfzUuF8s7YqgPVWeW1VOjSLC+KaDepJEuYhUNPfAFtzTnK0yA
+	eI3R5QsPCyeL55/+JSHuKDyGB1nOVKqJOkc6tOdMKWh59cnc2CgpEgvdWbxwiZfPaXmevpPm+0ixR
+	Cce8V0+VlxCT+i/OIGwOT70vI8CXd9fsLAYUHuB5qrBnqOCsqmWt3ZSW6aXPlGi3piBDIkV5lQ4Dk
+	X6BcU4TA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucHal-00000009Et3-1QZn;
-	Thu, 17 Jul 2025 05:55:39 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucHai-00000009ErP-1wlX;
-	Thu, 17 Jul 2025 05:55:37 +0000
-X-UUID: a4a6b2bc62d211f09f706fa2197c6ceb-20250716
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=PWGJHWebyTPRG8s498ziY+Rf4TwzqDFkjnjk6ovCQdM=;
-	b=FAHqfX3fatyEsyyI4hbPGsuDL8slBL94GBE60G/40eYO6PBU6Rwf/6bP2FD22i7gX9EvWD4kbHv6O9dlPoMJ5srGBtvfklVk4f4YrcdW4o6fkMvh2udAOEul2Bb4N8uDdvtOczU+nGaWLHoDZbzzLy3avRkkT2TpHFRIeZ5ag7A=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.2,REQID:c5f07d8b-525a-4fa0-a52b-df5ec50cd91e,IP:0,UR
-	L:0,TC:0,Content:0,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-30
-X-CID-META: VersionHash:9eb4ff7,CLOUDID:3414e00e-6968-429c-a74d-a1cce2b698bd,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:2,IP:nil
-	,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:
-	1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: a4a6b2bc62d211f09f706fa2197c6ceb-20250716
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
-	(envelope-from <tze-nan.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 326897318; Wed, 16 Jul 2025 22:55:29 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Thu, 17 Jul 2025 13:55:25 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Thu, 17 Jul 2025 13:55:25 +0800
-From: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
-To: <rcu@vger.kernel.org>
-CC: <bobule.chang@mediatek.com>, <wsd_upstream@mediatek.com>, Tze-nan Wu
-	<Tze-nan.Wu@mediatek.com>, Cheng-jui Wang <cheng-jui.wang@mediatek.com>,
-	<Lorry.Luo@mediatek.com>, <weiyangyang@vivo.com>, "Paul E. McKenney"
-	<paulmck@kernel.org>, Frederic Weisbecker <frederic@kernel.org>, Neeraj
- Upadhyay <neeraj.upadhyay@kernel.org>, Joel Fernandes
-	<joelagnelf@nvidia.com>, Josh Triplett <josh@joshtriplett.org>, Boqun Feng
-	<boqun.feng@gmail.com>, Uladzislau Rezki <urezki@gmail.com>, Steven Rostedt
-	<rostedt@goodmis.org>, Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
-	Lai Jiangshan <jiangshanlai@gmail.com>, Zqiang <qiang.zhang@linux.dev>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, "Joel Fernandes (Google)"
-	<joel@joelfernandes.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH] rcu: Fix delayed execution of hurry callbacks
-Date: Thu, 17 Jul 2025 13:53:38 +0800
-Message-ID: <20250717055341.246468-1-Tze-nan.Wu@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1ucIAb-00000009IWQ-3ASP;
+	Thu, 17 Jul 2025 06:32:41 +0000
+Received: from exvmail4.hynix.com ([166.125.252.92] helo=invmail4.hynix.com)
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1ucIAV-00000009IUy-38bt;
+	Thu, 17 Jul 2025 06:32:39 +0000
+X-AuditID: a67dfc5b-681ff7000002311f-f3-687898feb6e6
+Date: Thu, 17 Jul 2025 15:32:25 +0900
+From: Byungchul Park <byungchul@sk.com>
+To: Mina Almasry <almasrymina@google.com>
+Cc: "Lobakin, Aleksander" <aleksander.lobakin@intel.com>,
+	willy@infradead.org, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-mm@kvack.org,
+	kernel_team@skhynix.com, ilias.apalodimas@linaro.org,
+	harry.yoo@oracle.com, akpm@linux-foundation.org,
+	andrew+netdev@lunn.ch, asml.silence@gmail.com, toke@redhat.com,
+	david@redhat.com, Liam.Howlett@oracle.com, vbabka@suse.cz,
+	rppt@kernel.org, surenb@google.com, mhocko@suse.com,
+	linux-rdma@vger.kernel.org, bpf@vger.kernel.org,
+	vishal.moola@gmail.com, hannes@cmpxchg.org, ziy@nvidia.com,
+	jackmanb@google.com, wei.fang@nxp.com, shenwei.wang@nxp.com,
+	xiaoning.wang@nxp.com, davem@davemloft.net, edumazet@google.com,
+	kuba@kernel.org, pabeni@redhat.com, anthony.l.nguyen@intel.com,
+	przemyslaw.kitszel@intel.com, sgoutham@marvell.com,
+	gakula@marvell.com, sbhatta@marvell.com, hkelam@marvell.com,
+	bbhushan2@marvell.com, tariqt@nvidia.com, ast@kernel.org,
+	daniel@iogearbox.net, hawk@kernel.org, john.fastabend@gmail.com,
+	sdf@fomichev.me, saeedm@nvidia.com, leon@kernel.org,
+	mbloch@nvidia.com, danishanwar@ti.com, rogerq@kernel.org,
+	nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com,
+	shayne.chen@mediatek.com, sean.wang@mediatek.com,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	horms@kernel.org, m-malladi@ti.com, krzysztof.kozlowski@linaro.org,
+	matthias.schiffer@ew.tq-group.com, robh@kernel.org,
+	imx@lists.linux.dev, intel-wired-lan@lists.osuosl.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next v10 02/12] netmem: use netmem_desc instead of
+ page to access ->pp in __netmem_get_pp()
+Message-ID: <20250717063225.GA28772@system.software.com>
+References: <20250714120047.35901-1-byungchul@sk.com>
+ <20250714120047.35901-3-byungchul@sk.com>
+ <CAHS8izO393X_BDJxnX2d-auhTwrUZK5wYdoAh_tJc0GBf0AqcQ@mail.gmail.com>
+ <CAHS8izNh7aCJOb1WKTx7CXNDPv_UBqFyq2XEHHhqHH=5JPmJCQ@mail.gmail.com>
+ <20250715013626.GA49874@system.software.com>
+ <CAHS8izNgfrN-MimH1uv349AqNudvQJoeOsyHpoBT_QokF3Zv=w@mail.gmail.com>
+ <20250716045124.GB12760@system.software.com>
+ <CAHS8izMK2JA4rGNMRMqQbZtJVEP8b_QPLXzoKNeVgQFzAmdv3g@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-MTK: N
+In-Reply-To: <CAHS8izMK2JA4rGNMRMqQbZtJVEP8b_QPLXzoKNeVgQFzAmdv3g@mail.gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Brightmail-Tracker: H4sIAAAAAAAAA02Sa0yTdxTG83/vNNS8VLf9p1tcuonRRNyULSfZJUa/vF9cNC5ZolFo5J1t
+	BkhaqUCyjWmXzWZUho7QUhSlaLmMYhGoWjptkbK5bLRSrHIrOI2biMxLR7mUvS0x49uT5zl5
+	fuckhyMVLmYlp8k/JGrzVblKRkbJHqWe3RCvKlK/fbXxfbA6mhkIPD1DQ9N0EZyPuGgINmC4
+	0jdNgLWxA8Gz2CALzmNDJDzt9jNQdyZKQqy1jALrHwYKnjtmSLjXM85Cr3eegibndhg9d58C
+	97edJPier4Hx470MlBlmSTCPfMPAwp1ZGrpikywccdkJ6HrYzkJfh4mGkzP1JHSWRiTW3QEa
+	bl62MnDzaADBSPMCDfe9EnDCPsSCqcmCwPtzAwNHDJthov0ZC1M/dpMwatoC8So99NS+DNEb
+	EwgG60MELLhdLPw+0kJDt6OTgP6xGAnR72sYMD46jiBkvkzAbzWtNNhu9BPSHrtgYGGOgBPB
+	WgbuGkYRBH3jFFR/bULg8IRp+MctnTw7bWW2bBV8E49JwTVsQ8LFhtuE8KA8Tghhz6+EcMky
+	zAq1zkKhzb5eqHP/RQjGcJAUnI3HGMH5pIIVhgbcjNBbNUsJbbavhAdtZrTj9d2yD3LEXI1e
+	1G78KFum7g+U0QXhbUUXfOmlKL7JiFI4zGdiv7WKeqHtxttkQlP8Gnyh20MnNMOvxeFwLOmv
+	4Ndhm+cHyZdxJN+Sisce3kGJYDlfiM+OhZNFch7wTw1xlBhS8IMkrpwzMotBGv7F/GdyiJRa
+	504FpVZO0qvw+Ti3aK/GR9urk7AUfice6W9P6pf4N/HVDj+R6MR8NAVfujaGFrd+FV+zh6ly
+	lGZZgrAsQVj+R1iWIGoR1YgUmnx9nkqTm5mhLs7XFGXsP5jnRNI/n/tibo8LPenb5UU8h5Sp
+	8uzWw2oFrdLrivO8CHOkcoX8RFCvVshzVMUlovZglrYwV9R50SqOUr4i3xQ9nKPgD6gOiZ+L
+	YoGofZESXMrKUiQ3zWTU1L+2J572HrE9csWnK0/v+24Hf2pS8FdsSO9xTm+OOPZmRajTusrh
+	f7NQKNtQ0fKpedI29aW/efBeRhOxr+Bk17vBkg/fmnrj+q2ZbeLfmfV7W8wHQuO3qudV2ouV
+	8/C4zvFZ4PTHZKXnk5rJoZK1y1zxUF0osGzf6p3rtiopnVr1znpSq1P9B9AI6bPLAwAA
+X-Brightmail-Tracker: H4sIAAAAAAAAA02SbUxTdxTG87//+0ZHl7uObTeaOVPiyDBzsjlzli0LiVl2x+Je4hYzPkwK
+	3KydUKS1HSwaO6hZbGytAgtU0DJQS0HAdkDVjm0tEZx7kYKk8lIEHXMBpw5EK6XsFrOMb895
+	npPfcz4cFiuq6FWsRrtb1GlVBUpaRsree738xXh1iXqj3aSE2rYWGvpn6yloflACp675KAg1
+	8XD+8gMCat2dCOaiIwx4DoximO3ppaGhfh5DtN1KQu3vZhLutT3E8MeFSQb6AoskNHu2wvjJ
+	KRL8X3dhCN5bB5OH+miwmhcw1ET207A0vEDB99G/GSjzuQgI1l2UxukOBi532iiofHgCQ5fp
+	mlR4fYiCgXO1NAyU9yOItCxRMBWQWmdcowzYmh0IAj800VBmfgVmOuYYuFPVg2HclgnxaiNc
+	cD4N85dmEIycuELAkt/HwG+RVgp62roIGJyIYpg/WEeD5dYhBFdqzhHwS107BY2XBgnpjm0w
+	tBQjoCLkpOG6eRxBKDhJwtGvbAjausMU3PWbycwtQnDmNhZ8Y41I+K7pKiHctMcJIdz9MyGc
+	dYwxgtNjELyudKHB/xchWMIhLHjcB2jB888RRhgd8tNCX/UCKXgb9wk3vTXogzXZsjfyxQKN
+	UdS99GaOTD3Yb6V2hbeUnAk+b0Lxly0oieW5TbzLchUnNMmt48/0dFMJTXNpfDgcXfZTuBf4
+	xu7Dki9jMdeazE9MD6NE8CRn4L+dCJMJLeeAP90UR4klBTeC+W9iFvpR8AR/sebG8hKWqLFj
+	IYnKSno1fyrOPrKf48s7ji6XJXEf8pHBjmX9FJfK/9jZS9jR444VJMcKkuN/kmMFyYlIN0rR
+	aI2FKk3Bqxv0O9WlWk3JhryiQg+SnvXk3thhH5obeDuAOBYpk+U57V+oFZTKqC8tDCCexcoU
+	eUXIqFbI81WlX4q6oh06Q4GoD6DVLKl8Rp61XcxRcJ+pdos7RXGXqPsvJdikVSaUGtnYWlyf
+	nzwQW6/NWHz2RmY8Y7OtYr3BuiYNu/233M25VWPFn6Qzn37cmfvO5m2f75jatG/y/vkG5s5Q
+	XtnZd+++76z80zCWFrFPn05d6+4q/mjeNew9+Gt21tbsrP25ssrje3RrZ4/DT9Yj44/d33N7
+	wWR5y753e16L7bVe72JdUVRJ6tWqjHSs06v+BSardbOoAwAA
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250716_225536_510138_8D7CD392 
-X-CRM114-Status: GOOD (  22.34  )
+X-CRM114-CacheID: sfid-20250716_233235_925325_539F606E 
+X-CRM114-Status: GOOD (  68.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,137 +126,193 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-We observed a regression in our customer’s environment after enabling
-CONFIG_LAZY_RCU. In the Android Update Engine scenario, where ioctl() is
-used heavily, we found that callbacks queued via call_rcu_hurry (such as
-percpu_ref_switch_to_atomic_rcu) can sometimes be delayed by up to 5
-seconds before execution. This occurs because the new grace period does
-not start immediately after the previous one completes.
+On Wed, Jul 16, 2025 at 12:41:04PM -0700, Mina Almasry wrote:
+> On Tue, Jul 15, 2025 at 9:51 PM Byungchul Park <byungchul@sk.com> wrote:
+> >
+> > On Tue, Jul 15, 2025 at 12:09:34PM -0700, Mina Almasry wrote:
+> > > On Mon, Jul 14, 2025 at 6:36 PM Byungchul Park <byungchul@sk.com> wrote:
+> > > >
+> > > > On Mon, Jul 14, 2025 at 12:58:15PM -0700, Mina Almasry wrote:
+> > > > > On Mon, Jul 14, 2025 at 12:37 PM Mina Almasry <almasrymina@google.com> wrote:
+> > > > > >
+> > > > > > On Mon, Jul 14, 2025 at 5:01 AM Byungchul Park <byungchul@sk.com> wrote:
+> > > > > > >
+> > > > > > > To eliminate the use of the page pool fields in struct page, the page
+> > > > > > > pool code should use netmem descriptor and APIs instead.
+> > > > > > >
+> > > > > > > However, __netmem_get_pp() still accesses ->pp via struct page.  So
+> > > > > > > change it to use struct netmem_desc instead, since ->pp no longer will
+> > > > > > > be available in struct page.
+> > > > > > >
+> > > > > > > While at it, add a helper, pp_page_to_nmdesc(), that can be used to
+> > > > > > > extract netmem_desc from page only if it's pp page.  For now that
+> > > > > > > netmem_desc overlays on page, it can be achieved by just casting.
+> > > > > > >
+> > > > > > > Signed-off-by: Byungchul Park <byungchul@sk.com>
+> > > > > > > ---
+> > > > > > >  include/net/netmem.h | 13 ++++++++++++-
+> > > > > > >  1 file changed, 12 insertions(+), 1 deletion(-)
+> > > > > > >
+> > > > > > > diff --git a/include/net/netmem.h b/include/net/netmem.h
+> > > > > > > index 535cf17b9134..2b8a7b51ac99 100644
+> > > > > > > --- a/include/net/netmem.h
+> > > > > > > +++ b/include/net/netmem.h
+> > > > > > > @@ -267,6 +267,17 @@ static inline struct net_iov *__netmem_clear_lsb(netmem_ref netmem)
+> > > > > > >         return (struct net_iov *)((__force unsigned long)netmem & ~NET_IOV);
+> > > > > > >  }
+> > > > > > >
+> > > > > > > +static inline struct netmem_desc *pp_page_to_nmdesc(struct page *page)
+> > > > > > > +{
+> > > > > > > +       DEBUG_NET_WARN_ON_ONCE(!page_pool_page_is_pp(page));
+> > > > > > > +
+> > > > > > > +       /* XXX: How to extract netmem_desc from page must be changed,
+> > > > > > > +        * once netmem_desc no longer overlays on page and will be
+> > > > > > > +        * allocated through slab.
+> > > > > > > +        */
+> > > > > > > +       return (struct netmem_desc *)page;
+> > > > > > > +}
+> > > > > > > +
+> > > > > >
+> > > > > > Same thing. Do not create a generic looking pp_page_to_nmdesc helper
+> > > > > > which does not check that the page is the correct type. The
+> > > > > > DEBUG_NET... is not good enough.
+> > > > > >
+> > > > > > You don't need to add a generic helper here. There is only one call
+> > > > > > site. Open code this in the callsite. The one callsite is marked as
+> > > > > > unsafe, only called by code that knows that the netmem is specifically
+> > > > > > a pp page. Open code this in the unsafe callsite, instead of creating
+> > > > > > a generic looking unsafe helper and not even documenting it's unsafe.
+> > > > > >
+> > > > >
+> > > > > On second read through the series, I actually now think this is a
+> > > > > great idea :-) Adding this helper has simplified the series greatly. I
+> > > > > did not realize you were converting entire drivers to netmem just to
+> > > > > get rid of page->pp accesses. Adding a pp_page_to_nmdesc helper makes
+> > > > > the entire series simpler.
+> > > > >
+> > > > > You're also calling it only from code paths like drivers that already
+> > > > > assumed that the page is a pp page and did page->pp deference without
+> > > > > a check, so this should be safe.
+> > > > >
+> > > > > Only thing I would change is add a comment explaining that the calling
+> > > > > code needs to check the page is pp page or know it's a pp page (like a
+> > > > > driver that supports pp).
+> > > > >
+> > > > >
+> > > > > > >  /**
+> > > > > > >   * __netmem_get_pp - unsafely get pointer to the &page_pool backing @netmem
+> > > > > > >   * @netmem: netmem reference to get the pointer from
+> > > > > > > @@ -280,7 +291,7 @@ static inline struct net_iov *__netmem_clear_lsb(netmem_ref netmem)
+> > > > > > >   */
+> > > > > > >  static inline struct page_pool *__netmem_get_pp(netmem_ref netmem)
+> > > > > > >  {
+> > > > > > > -       return __netmem_to_page(netmem)->pp;
+> > > > > > > +       return pp_page_to_nmdesc(__netmem_to_page(netmem))->pp;
+> > > > > > >  }
+> > > > > >
+> > > > > > This makes me very sad. Casting from netmem -> page -> nmdesc...
+> > > > > >
+> > > > > > Instead, we should be able to go from netmem directly to nmdesc. I
+> > > > > > would suggest rename __netmem_clear_lsb to netmem_to_nmdesc and have
+> > > > > > it return netmem_desc instead of net_iov. Then use it here.
+> > > > > >
+> > > > > > We could have an unsafe version of netmem_to_nmdesc which converts the
+> > > > > > netmem to netmem_desc without clearing the lsb and mark it unsafe.
+> > > > > >
+> > > > >
+> > > > > This, I think, we should address to keep some sanity in the code and
+> > > > > reduce the casts and make it a bit more maintainable.
+> > > >
+> > > > I will reflect your suggestions.  To summarize:
+> > > >
+> > > >    1) The current implementation of pp_page_to_nmdesc() is good enough
+> > > >       to keep, but add a comment on it like "Check if the page is a pp
+> > > >       page before calling this function or know it's a pp page.".
+> > > >
+> > >
+> > > Yes please.
+> > >
+> > > >    2) Introduce the unsafe version, __netmem_to_nmdesc(), and use it in
+> > > >       __netmem_get_pp().
+> > > >
+> > >
+> > > No need following Pavel's feedback. We can just delete
+> > > __netmem_get_pp. If we do find a need in the future to extract the
+> > > netmem_desc from a netmem_ref, I would rather we do a straight cast
+> > > from netmem_ref to netmem_desc rather than netmem_ref -> pages/net_iov
+> > > -> netmem_desc.
+> > >
+> > > But that seems unnecessary for this series.
+> >
+> > No.  The series should remove accessing ->pp through page.
+> >
+> > I will kill __netmem_get_pp() as you and I prefer.  However,
+> > __netmem_get_pp() users e.i. libeth_xdp_return_va() and
+> > libeth_xdp_tx_fill_buf() should be altered.  I will modify the code like:
+> >
+> > as is: __netmem_get_pp(netmem)
+> > to be: __netmem_nmdesc(netmem)->pp
+> >
+> > Is it okay with you?
+> >
+> 
+> When Pavel and I were saying 'remove __netmem_get_pp', I think we
+> meant to remove the entire concept of unsafe netmem -> page
+> conversions. I think we both don't like them. From this perspective,
+> __netmem_nmdesc(netmem)->pp is just as bad as __netmem_get_pp(netmem).
+> 
+> I think since the unsafe netmem-to-page casts are already in mainline,
+> lets assume they should stay there until someone feels strongly enough
+> to remove them. The logic in Olek's patch is sound:
+> 
+> https://lore.kernel.org/all/20241203173733.3181246-8-aleksander.lobakin@intel.com/
+> 
+> Header buffer page pools do always use pages and will likely remain so
+> for a long time, so I guess lets continue to support them rather than
+> try to remove them in this series. A followup series could try to
+> remove them.
+> 
+> > > >    3) Rename __netmem_clear_lsb() to netmem_to_nmdesc(), and return
+> > > >       netmem_desc, and use it in all users of __netmem_clear_lsb().
+> > > >
+> > >
+> > > Following Pavel's comment, this I think also is not necessary for this
+> > > series. Cleaning up the return value of __netmem_clear_lsb is good
+> > > work I think, but we're already on v10 of this and I think it would
+> > > unnecessary to ask for added cleanups. We can do the cleanup on top.
+> >
+> > However, I still need to include 'introduce __netmem_nmdesc() helper'
+> 
+> Yes.
+> 
+> > in this series since it should be used to remove __netmem_get_pp() as I
+> 
+> lets keep __netmem_get_pp, which does a `return
+> __netmem_nmdesc(netmem)->pp;` In general we avoid allowing the driver
+> to do any netmem casts in the driver code, and we do any casting in
+> core.
+> 
+> > described above.  I think I'd better add netmem_nmdesc() too while at it.
+> >
+> 
+> Yes. netmem_nmdesc should replace __netmem_clear_lsb.
 
-The root cause is that the wake_nocb_gp_defer() function now checks
-"rdp->nocb_defer_wakeup" instead of "rdp_gp->nocb_defer_wakeup". On CPUs
-that are not rcuog, "rdp->nocb_defer_wakeup" may always be
-RCU_NOCB_WAKE_NOT. This can cause "rdp_gp->nocb_defer_wakeup" to be
-downgraded and the "rdp_gp->nocb_timer" to be postponed by up to 10
-seconds, delaying the execution of hurry RCU callbacks.
+Even though the unsafe version is required in this series, on second
+though, the safe version, netmem_nmdesc() doesn't have to be a part of
+this series.  Let's do adding the safe version on top after.
 
-The trace log of one scenario we encountered is as follow:
-  // previous GP ends at this point
-  rcu_preempt   [000] d..1.   137.240210: rcu_grace_period: rcu_preempt 8369 end
-  rcu_preempt   [000] .....   137.240212: rcu_grace_period: rcu_preempt 8372 reqwait
-  // call_rcu_hurry enqueues "percpu_ref_switch_to_atomic_rcu", the callback waited on by UpdateEngine
-  update_engine [002] d..1.   137.301593: __call_rcu_common: wyy: unlikely p_ref = 00000000********. lazy = 0
-  // FirstQ on cpu 2 rdp_gp->nocb_timer is set to fire after 1 jiffy (4ms)
-  // and the rdp_gp->nocb_defer_wakeup is set to RCU_NOCB_WAKE
-  update_engine [002] d..2.   137.301595: rcu_nocb_wake: rcu_preempt 2 FirstQ on cpu2 with rdp_gp (cpu0).
-  // FirstBQ event on cpu2 during the 1 jiffy, make the timer postpond 10 seconds later.
-  // also, the rdp_gp->nocb_defer_wakeup is overwrite to RCU_NOCB_WAKE_LAZY
-  update_engine [002] d..1.   137.301601: rcu_nocb_wake: rcu_preempt 2 WakeEmptyIsDeferred
-  ...
-  ...
-  ...
-  // before the 10 seconds timeout, cpu0 received another call_rcu_hurry
-  // reset the timer to jiffies+1 and set the waketype = RCU_NOCB_WAKE.
-  kworker/u32:0 [000] d..2.   142.557564: rcu_nocb_wake: rcu_preempt 0 FirstQ
-  kworker/u32:0 [000] d..1.   142.557576: rcu_nocb_wake: rcu_preempt 0 WakeEmptyIsDeferred
-  kworker/u32:0 [000] d..1.   142.558296: rcu_nocb_wake: rcu_preempt 0 WakeNot
-  kworker/u32:0 [000] d..1.   142.558562: rcu_nocb_wake: rcu_preempt 0 WakeNot
-  // idle(do_nocb_deferred_wakeup) wake rcuog due to waketype == RCU_NOCB_WAKE
-  <idle>        [000] d..1.   142.558786: rcu_nocb_wake: rcu_preempt 0 DoWake
-  <idle>        [000] dN.1.   142.558839: rcu_nocb_wake: rcu_preempt 0 DeferredWake
-  rcuog/0       [000] .....   142.558871: rcu_nocb_wake: rcu_preempt 0 EndSleep
-  rcuog/0       [000] .....   142.558877: rcu_nocb_wake: rcu_preempt 0 Check
-  // finally rcuog request a new GP at this point (5 seconds after the FirstQ event)
-  rcuog/0       [000] d..2.   142.558886: rcu_grace_period: rcu_preempt 8372 newreq
-  rcu_preempt   [001] d..1.   142.559458: rcu_grace_period: rcu_preempt 8373 start
-  ...
-  rcu_preempt   [000] d..1.   142.564258: rcu_grace_period: rcu_preempt 8373 end
-  rcuop/2       [000] D..1.   142.566337: rcu_batch_start: rcu_preempt CBs=219 bl=10
-  // the hurry CB is invoked at this point
-  rcuop/2       [000] b....   142.566352: blk_queue_usage_counter_release: wyy: wakeup. p_ref = 00000000********.
+	Byungchul
 
-This patch changes the condition to check "rdp_gp->nocb_defer_wakeup" in
-the lazy path. This prevents an already scheduled "rdp_gp->nocb_timer"
-from being postponed and avoids overwriting "rdp_gp->nocb_defer_wakeup"
-when it is not RCU_NOCB_WAKE_NOT.
-
-Fixes: 3cb278e73be5 ("rcu: Make call_rcu() lazy to save power")
-Co-developed-by: Cheng-jui Wang <cheng-jui.wang@mediatek.com>
-Signed-off-by: Cheng-jui Wang <cheng-jui.wang@mediatek.com>
-Co-developed-by: Lorry.Luo@mediatek.com
-Signed-off-by: Lorry.Luo@mediatek.com
-Tested-by: weiyangyang@vivo.com
-Signed-off-by: weiyangyang@vivo.com
-Signed-off-by: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
----
-The regression is first observed by wyy in the Update Engine scenario
-with  CONFIG_LAZY_RCU enabled. there is an additional delay of 4–5
-seconds during the heavy ioctl API call, waiting for
-percpu_ref_switch_to_atomic_rcu (RCU hurry CB) to complete.
-
-Initially, we suspected that the percpu_ref_switch_to_atomic_rcu
-function itself was taking too long. However, after enabling some
-custome and the following trace events: rcu_do_batch, rcu_nocb_wake, and
-rcu_grace_period. we found that the root cause was that rcuog was not
-being woken up in time to request a new GP. This led to the delay in
-invoking the hurry RCU callback (percpu_ref_switch_to_atomic_rcu).
-
-Environment:
-  Android-16, Kernel: 6.12, 8 CPUs (ARM)
-
-Configuration:
-  CONFIG_TREE_RCU=y
-  CONFIG_PREEMPT_RCU=y
-  CONFIG_LAZY_RCU=y
-  CONFIG_RCU_NOCB_CPU=y
-  CONFIG_RCU_NOCB_CPU_DEFAULT_ALL=y
-  rcu_nocb_gp_stride = -1 (default is 4 for 8 cores)
-  jiffies_lazy_flush = 10 * HZ
-
-Contributions:
-Tze-Nan Wu:
-Collaborated with Cheng-Jui to discuss which tracepoints needed to be
-added, jointly analyzed the trace logs, identified the root cause, and
-proposed this upstream change.
-
-Cheng-Jui Wang:
-Provided many valuable suggestions during the debugging process,
-repeatedly found breakthroughs when we were stuck, and helped identify
-the root cause.
-
-Lorry Luo:
-Assisted in verifying whether rcu-hurry-callback was executed too long
-or deferred, supported with testing, and helped with communication.
-
-Weiyangyang:
-Main tester who discovered the regression scenario, confirmed that
-enabling CONFIG_LAZY_RCU caused the regression, and verified that this
-patch resolves the issue.
-
-Note:
-With my limited understanding of lazy RCU, I am not fully confident that
-this is a real issue. In my opinion, hurry callbacks should not be
-delayed by other events such as firstBQ trace event.
-If my understanding is incorrect, I would greatly appreciate any
-guidance or clarification from the maintainers.
----
- kernel/rcu/tree_nocb.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/kernel/rcu/tree_nocb.h b/kernel/rcu/tree_nocb.h
-index 08eb9b0e2fab..e6cd56603cad 100644
---- a/kernel/rcu/tree_nocb.h
-+++ b/kernel/rcu/tree_nocb.h
-@@ -276,7 +276,7 @@ static void wake_nocb_gp_defer(struct rcu_data *rdp, int waketype,
- 	 * callback storms, no need to wake up too early.
- 	 */
- 	if (waketype == RCU_NOCB_WAKE_LAZY &&
--	    rdp->nocb_defer_wakeup == RCU_NOCB_WAKE_NOT) {
-+	    rdp_gp->nocb_defer_wakeup == RCU_NOCB_WAKE_NOT) {
- 		mod_timer(&rdp_gp->nocb_timer, jiffies + rcu_get_jiffies_lazy_flush());
- 		WRITE_ONCE(rdp_gp->nocb_defer_wakeup, waketype);
- 	} else if (waketype == RCU_NOCB_WAKE_BYPASS) {
--- 
-2.45.2
-
+> > I assume __netmem_nmdesc() is an unsafe version not clearing lsb.  The
+> 
+> Yes.
+> 
+> > safe version, netmem_nmdesc() needs an additional operation clearing lsb.
+> 
+> Yes.
+> 
+> 
+> --
+> Thanks,
+> Mina
 
