@@ -4,93 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EFADC83F1B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Jul 2025 02:19:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3388BC83F1B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Jul 2025 04:19:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vxHiP6wE+44HTiVLcySgvTPCMzauYzsKV7k/Cx73M/Y=; b=GCHk7654i4yLg8x3P9NsakA8cU
-	vPTBR2f2or1BQ3OdkH6SCjC61LCb95LN+T/cnd8HykOYQMQjPYGka1njnzWcX8hCwLXRjcIx/ATMi
-	M9zld+6gMlKQUAN4b83ScNlnnrldzl/eKTFsFhjeNJitkbwMm8nHVTZ0g4RIcXZzhzsv2QRT0tq84
-	Nv4gYJtOSX0RHskwDF2PC8CtTP6wBVPtERPG6Ap9RKje/tYkIBoiXtLqtTkvsZQBfjs1HO2X8BHSC
-	BE9YHq3+e2XgLLCMdEo7pf6erL0qKB3jRXvWqUZD3tbBD9Y9C7LAZsV0PdI/UU1P1jVcAJ91KDKGs
-	4SMcFGKA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yfVOr55isbNfPjyVqGPpmaSUDU/B6XhKN+b19bqU6Pw=; b=GErGPVdQ4LeN1dOojNLGX03oSy
+	8BP1V0MaM6RNbqWlDxAtVMgXE3aoMC7obPbCa7uMX7yQe0tthMRaCdeqIGft1uM0k52we7WzrztCd
+	FMZwWR87VRRS/RaAcGx5MnrwTPy/HfsFB+9vSoxteOmOBy7GUcRv17NS+l34zTtmiiqGWzKB2cRiQ
+	ivpdLgaZZAyZghgo5S+8UaMT/8s//TJP8lPg9OC/EDh4MXfWFGe+29pjNCzl2adO6yQ62igVS5wlO
+	RscMBHiI+5k+vXC3D1yX3OL+7NOcSONVMuEEGj11djZ/M5xMRn6O7KGhKnWz7e8rIVNFtkwXe4OFg
+	GSvEtMQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucEDa-000000093BS-0LmQ;
-	Thu, 17 Jul 2025 02:19:30 +0000
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucEB9-0000000932k-1wUC
-	for linux-mediatek@lists.infradead.org;
-	Thu, 17 Jul 2025 02:17:01 +0000
-Received: by mail-lf1-x132.google.com with SMTP id 2adb3069b0e04-5561ab55c4dso450958e87.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 16 Jul 2025 19:16:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1752718616; x=1753323416; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=vxHiP6wE+44HTiVLcySgvTPCMzauYzsKV7k/Cx73M/Y=;
-        b=Ie9F11usKpQTdQ7AOC8tMcdpimdiVFyCkRgaL4E3v6Ht6IlZsnl1gPykhWw4zE2qPV
-         zppUTPE44/Gz60SrNhBx7Oi4tKlc5/VbBjJCU95HtFxRaSHgXW8DLpKv4DxPRIFj2Vyd
-         vERMRoXH2TzBKVnv09TYvdycUk5XNTzX454aw=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1752718616; x=1753323416;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=vxHiP6wE+44HTiVLcySgvTPCMzauYzsKV7k/Cx73M/Y=;
-        b=VS3m6ihTKcARca/LIk0Wut2GoTl+vd/Y/VH8onfMe91xQNgx17L2pSm22glD4p0Qvd
-         tPgdCrOfozRyqCoW959PMdFmeaLoi4Xdy9gEjDon2W1HxqRwdJjIW1xXXN+BhZBBLxDs
-         r1C/KnevDDikvcAaB59bC3bsct2HF0XLP+JrTs3SujO0eKoT++xqbdFB35Mnlb8b887y
-         ZPj1up0AANu4D9L81MqtPD55eK3IlWEiRcVEcm5H1wdrcLOIE4pIpiELIN4dK64iw9C7
-         6aOUnYe2XzZEV749mwiTAXRHdxiDJBAoElEfubxoV3i8Cuq5pP4Y8Cs76qFdEwugFE1W
-         HA6g==
-X-Forwarded-Encrypted: i=1; AJvYcCUWfoVeDCXhPpSO55YE9Y6RcgzYjmLsGt6NrsB9sBwhS2pbq4zA0bSY0WgzFPb7iTNBfC8Tw41nRrJTnxkTqQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxmFYk/WcledJMAcSPrLtHS6QaYthHYqAfnBIN1bmhu2GFKEYlk
-	tmY+nhH5lWL8iNK5g22r7SiBxEiCBuZ5jZQQON8OdZc/V7zgS+cHg2NZ0cc6TgjQVspCv9XrwBD
-	TPpyDk7A+1ZVZW79XkSzDitGiziaRHnIugn8TMvQG
-X-Gm-Gg: ASbGnct4An9TT4SmMDqbNi91npXbTWBLWcRVOl5iX8HjjP1WdtMadde1yB2kZcMfnho
-	cuU2lHmxCM30SE3Y34iZnJV1wrl2QMzeRxdulj7verP52dshqy0mxFz6S4CAx1Iov6ivHN5Ji6/
-	+WXuPqg34FxzyjE4byGX+Gw6Exxh47D1cnkb9BNQxMPxclWGNCzmkLGxkzD4fFb8af/QDcT3a7p
-	3Fimr5PWIf1PN+4zLuTDf/kj+n+rYIqmDqtlQ==
-X-Google-Smtp-Source: AGHT+IHX6+PqYe7ISNqeiqU5iv6yi86yo/gru6nPWgWG5xiS6bt/CCj0f39af9hJfhwpJxYP0qrdsmQwdRgw6Yt/kWQ=
-X-Received: by 2002:a05:6512:3da1:b0:55a:2735:fe6a with SMTP id
- 2adb3069b0e04-55a27360094mr841505e87.0.1752718616192; Wed, 16 Jul 2025
- 19:16:56 -0700 (PDT)
+	id 1ucG5K-00000009A45-0Ld6;
+	Thu, 17 Jul 2025 04:19:06 +0000
+Received: from exvmail4.hynix.com ([166.125.252.92] helo=invmail4.hynix.com)
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1ucG5D-00000009A2O-2ykA;
+	Thu, 17 Jul 2025 04:19:03 +0000
+X-AuditID: a67dfc5b-681ff7000002311f-f3-687879af9283
+Date: Thu, 17 Jul 2025 13:18:50 +0900
+From: Byungchul Park <byungchul@sk.com>
+To: Mina Almasry <almasrymina@google.com>
+Cc: "Lobakin, Aleksander" <aleksander.lobakin@intel.com>,
+	willy@infradead.org, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-mm@kvack.org,
+	kernel_team@skhynix.com, ilias.apalodimas@linaro.org,
+	harry.yoo@oracle.com, akpm@linux-foundation.org,
+	andrew+netdev@lunn.ch, asml.silence@gmail.com, toke@redhat.com,
+	david@redhat.com, Liam.Howlett@oracle.com, vbabka@suse.cz,
+	rppt@kernel.org, surenb@google.com, mhocko@suse.com,
+	linux-rdma@vger.kernel.org, bpf@vger.kernel.org,
+	vishal.moola@gmail.com, hannes@cmpxchg.org, ziy@nvidia.com,
+	jackmanb@google.com, wei.fang@nxp.com, shenwei.wang@nxp.com,
+	xiaoning.wang@nxp.com, davem@davemloft.net, edumazet@google.com,
+	kuba@kernel.org, pabeni@redhat.com, anthony.l.nguyen@intel.com,
+	przemyslaw.kitszel@intel.com, sgoutham@marvell.com,
+	gakula@marvell.com, sbhatta@marvell.com, hkelam@marvell.com,
+	bbhushan2@marvell.com, tariqt@nvidia.com, ast@kernel.org,
+	daniel@iogearbox.net, hawk@kernel.org, john.fastabend@gmail.com,
+	sdf@fomichev.me, saeedm@nvidia.com, leon@kernel.org,
+	mbloch@nvidia.com, danishanwar@ti.com, rogerq@kernel.org,
+	nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com,
+	shayne.chen@mediatek.com, sean.wang@mediatek.com,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	horms@kernel.org, m-malladi@ti.com, krzysztof.kozlowski@linaro.org,
+	matthias.schiffer@ew.tq-group.com, robh@kernel.org,
+	imx@lists.linux.dev, intel-wired-lan@lists.osuosl.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next v10 02/12] netmem: use netmem_desc instead of
+ page to access ->pp in __netmem_get_pp()
+Message-ID: <20250717041850.GA70234@system.software.com>
+References: <20250714120047.35901-1-byungchul@sk.com>
+ <20250714120047.35901-3-byungchul@sk.com>
+ <CAHS8izO393X_BDJxnX2d-auhTwrUZK5wYdoAh_tJc0GBf0AqcQ@mail.gmail.com>
+ <CAHS8izNh7aCJOb1WKTx7CXNDPv_UBqFyq2XEHHhqHH=5JPmJCQ@mail.gmail.com>
+ <20250715013626.GA49874@system.software.com>
+ <CAHS8izNgfrN-MimH1uv349AqNudvQJoeOsyHpoBT_QokF3Zv=w@mail.gmail.com>
+ <20250716045124.GB12760@system.software.com>
+ <CAHS8izMK2JA4rGNMRMqQbZtJVEP8b_QPLXzoKNeVgQFzAmdv3g@mail.gmail.com>
 MIME-Version: 1.0
-References: <20250708111806.3992-1-darren.ye@mediatek.com> <20250708111806.3992-9-darren.ye@mediatek.com>
- <CAGXv+5EufDuxLMnwMaCqtWFZpVMNMxi-5OwCyO4a+KD2T+2NYA@mail.gmail.com> <e4e4cf154e9ea1a4f96a50f374e9f88fc27ca670.camel@mediatek.com>
-In-Reply-To: <e4e4cf154e9ea1a4f96a50f374e9f88fc27ca670.camel@mediatek.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 17 Jul 2025 11:16:45 +0900
-X-Gm-Features: Ac12FXxJARBruEPXsOMEpzqrHcSUpNdXL9sZPsqgXaiJYCISBkZ3KcHBr2s5MUo
-Message-ID: <CAGXv+5HDupifLWN-okQmzbgTV53X9Wwu6r9usFgiJEWc20AK1A@mail.gmail.com>
-Subject: Re: [PATCH v6 08/10] ASoC: dt-bindings: mediatek,mt8196-afe: add
- audio AFE
-To: =?UTF-8?B?RGFycmVuIFllICjlj7bpo54p?= <Darren.Ye@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
-	"linus.walleij@linaro.org" <linus.walleij@linaro.org>, 
-	"linux-sound@vger.kernel.org" <linux-sound@vger.kernel.org>, 
-	"linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, 
-	"krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>, "broonie@kernel.org" <broonie@kernel.org>, 
-	"brgl@bgdev.pl" <brgl@bgdev.pl>, "conor+dt@kernel.org" <conor+dt@kernel.org>, "tiwai@suse.com" <tiwai@suse.com>, 
-	"robh@kernel.org" <robh@kernel.org>, "lgirdwood@gmail.com" <lgirdwood@gmail.com>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>, 
-	"perex@perex.cz" <perex@perex.cz>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAHS8izMK2JA4rGNMRMqQbZtJVEP8b_QPLXzoKNeVgQFzAmdv3g@mail.gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Brightmail-Tracker: H4sIAAAAAAAAA02SbUybVRiGd97vVmreVdSzzWVJceqWgKhonsRlIVOT18QZzf7o9sNV+8ZW
+	+VgK7crU2DEU1zg2xjS0KwY2thU6KSkCpXa4FRzVfUEHWAe0g7lljLIPBg2lldqWLPLvyrmf
+	c1/PSQ5Hyl3Mak5TVCpqi5QFCkZKSaczjmW3lhnUueXhx8HqOM3AwMMGGuzzBjh13UWDvwnD
+	r/3zBFibOxDMRkdYcO4fJeFhbx8DxxsiJERbD1BgvVJBwZxjgYSb5ydY8Hn/pcDu3Aqhk7co
+	8FR2ktAztx4mDvoYOFARI8Ec/IaBxLUYDWeid1kod9kIODPVzkJ/RxUNRxZOkNBpvJ503Rim
+	4arbysDVfQMIgqcTNNzyJoVh2ygLVXYLAu9vTQyUV7wC4fZZFu7/0EtCqCofFmv1cL7+KYhc
+	CCMYOTFEQMLjYuFysIWGXkcnAYPjURIi39cxYJo+iGDI7CbgYl0rDY0XBonkHttgOBEnoMZf
+	z8CNihACf88EBUf3ViFwdAdoeOBJPjk2b2Xytwg94Xuk4BprRMIvTX8Twu1Di4QQ6P6TELos
+	Y6xQ79QJbbaNwnHPJCGYAn5ScDbvZwTnzGFWGB32MIKvNkYJbY1fC7fbzOi9tdulm1RigUYv
+	al/cvFOqDk6qd02/ZZirOYuM6GaeCUk4zOfhvTEz+4i/vXefSjHFr8d3r1jJFDP88zgQiKY5
+	k9+AG7uraROSciTfkoHHp66hVPAEr8PHxgPpyzIesD14CaWG5PwIiX+Mm5ilYCX+w/xPeohM
+	tsZ/8idbuSSvwacWuaXjdXhf+9G0TMK/j4OD7Wl+ks/CZzv6iFQn5iMSHLfMEUtbr8LnbAHq
+	EFppWaawLFNY/ldYlinqEdWM5JoifaFSU5CXoy4r0hhyPikudKLkfz75VXyHC830b/MinkOK
+	DNnO1t1qOa3Ul5QVehHmSEWmrMavV8tlKmXZHlFb/JFWVyCWeNEajlI8LXs5slsl5z9Vloqf
+	i+IuUfsoJTjJaiNS1m7fkm3dY7yTsUmX+Kwroh89/OxY1+89b1+MziRKFereygdf+mo+9PVl
+	tby6Oftj3+tbK2fXybOKE5eOTH7wwip3abX7NdWAPpb/XMvPqFr5zLvyFQZdZk5oqCFoXGux
+	77AFc1Wmuu8WFCty/trwzpuOcwsTmW88dsf9heRybt/4VEhBlaiVL20ktSXK/wCz2PrZywMA
+	AA==
+X-Brightmail-Tracker: H4sIAAAAAAAAA02SfUxbVRiHPffcLxpq7iq661hYUjONNeIWMb7qtiyZH0eSGc1mFheNVLna
+	BijYjg5MjDjqlIYBG2JGVwy4jq+OlbQDuq1jpEVWRAcrDOuAMsAtI+sGbkDWgdTSxch/zzm/
+	9zy/94/DY0UVu47X6vZJep06W8nKaNk7rxU/7ygs0Gyyj24Gq+MkC5fv1TFgv18ADdfcDASa
+	RDg3cJ8Ca3M7grnICAfOklEM97ovsnC8bgFDpPUQDdZ+Ew3zjgcYrvdMcuD3/kOD3bkTxutv
+	0OD5rgODb34jTJb7WThkWsRQHfqWhejVRQbOR+5wcMDdSIGvpjd2vNXGwUB7GQM/PDiBoaPo
+	WqxwapiBwbNWFgaLLyMInYwycMMbaw03jnJQZrcg8F5oYuGA6UUIt81xMFvVjWG8bDssHzVC
+	T+0TsNAXRjBy4goFUY+bg0uhUwx0OzooGJqIYFgorWHBfLscwZXqsxT8VtPKgK1viIrtsQuG
+	o0sUVAZqWZgyjSMI+CZpOPZNGQJHZ5CBvz0mevsO4gvPYOIesyFyuulPitysWKZIsPNXipyx
+	jHGk1plPXI0qctwzTRFzMICJs7mEJc67RzgyOuxhif/oIk1ctq/JTVc1ejdlr2xLppStNUr6
+	F7ZlyDShaU3e7TcK5iu7UBG6nmZGCbwopIkHZ2bpFaaFjeKdfiteYVZ4RgwGI3FOEp4VbZ2H
+	GTOS8Vg4lShO3LqKVoLHhHzx54lg/LFcANEe+h2tDCmEESz+uGRmHwZrxN7qv+JDOGZd+ikQ
+	s/IxThYblvmH1xvE4rZj8bIE4T0xNNQW58eFp8Su9otUBXrUsspkWWWy/G+yrDLVIroZJWl1
+	xhy1NvulVEOWplCnLUj9NDfHiWKftf6rpcNuNDf4lhcJPFImyjNa92sUjNpoKMzxIpHHyiR5
+	ZcCoUcgz1YVfSvrcj/X52ZLBi5J5WrlWnr5HylAIn6v3SVmSlCfp/0spPmFdETpPzTds2TOr
+	Gh5gNyX58/DIm96+c/YzL7soopp5xfT0jqro9GKdN1L63KCtIqWnqqV9/yNpH6b3n349+f26
+	4vXOveNHvtj2SYe7NPHSqx/t2vDBk7tbVL/84W+pv7AzTbe193tqq843fbB8ytiVyn6Wtdb1
+	dtHdzJJ0bef6XHPKGJbCStqgUW9WYb1B/S+S5G2AqAMAAA==
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250716_191659_546153_4DA06D89 
-X-CRM114-Status: GOOD (  43.56  )
+X-CRM114-CacheID: sfid-20250716_211859_876993_C74B343E 
+X-CRM114-Status: GOOD (  69.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,350 +127,201 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 16, 2025 at 9:41=E2=80=AFPM Darren Ye (=E5=8F=B6=E9=A3=9E) <Dar=
-ren.Ye@mediatek.com> wrote:
->
-> On Tue, 2025-07-15 at 13:09 +0800, Chen-Yu Tsai wrote:
-> > External email : Please do not click links or open attachments until
-> > you have verified the sender or the content.
+On Wed, Jul 16, 2025 at 12:41:04PM -0700, Mina Almasry wrote:
+> On Tue, Jul 15, 2025 at 9:51 PM Byungchul Park <byungchul@sk.com> wrote:
 > >
-> >
-> > Hi,
-> >
-> > On Tue, Jul 8, 2025 at 7:35=E2=80=AFPM Darren.Ye <darren.ye@mediatek.co=
-m>
-> > wrote:
+> > On Tue, Jul 15, 2025 at 12:09:34PM -0700, Mina Almasry wrote:
+> > > On Mon, Jul 14, 2025 at 6:36 PM Byungchul Park <byungchul@sk.com> wrote:
+> > > >
+> > > > On Mon, Jul 14, 2025 at 12:58:15PM -0700, Mina Almasry wrote:
+> > > > > On Mon, Jul 14, 2025 at 12:37 PM Mina Almasry <almasrymina@google.com> wrote:
+> > > > > >
+> > > > > > On Mon, Jul 14, 2025 at 5:01 AM Byungchul Park <byungchul@sk.com> wrote:
+> > > > > > >
+> > > > > > > To eliminate the use of the page pool fields in struct page, the page
+> > > > > > > pool code should use netmem descriptor and APIs instead.
+> > > > > > >
+> > > > > > > However, __netmem_get_pp() still accesses ->pp via struct page.  So
+> > > > > > > change it to use struct netmem_desc instead, since ->pp no longer will
+> > > > > > > be available in struct page.
+> > > > > > >
+> > > > > > > While at it, add a helper, pp_page_to_nmdesc(), that can be used to
+> > > > > > > extract netmem_desc from page only if it's pp page.  For now that
+> > > > > > > netmem_desc overlays on page, it can be achieved by just casting.
+> > > > > > >
+> > > > > > > Signed-off-by: Byungchul Park <byungchul@sk.com>
+> > > > > > > ---
+> > > > > > >  include/net/netmem.h | 13 ++++++++++++-
+> > > > > > >  1 file changed, 12 insertions(+), 1 deletion(-)
+> > > > > > >
+> > > > > > > diff --git a/include/net/netmem.h b/include/net/netmem.h
+> > > > > > > index 535cf17b9134..2b8a7b51ac99 100644
+> > > > > > > --- a/include/net/netmem.h
+> > > > > > > +++ b/include/net/netmem.h
+> > > > > > > @@ -267,6 +267,17 @@ static inline struct net_iov *__netmem_clear_lsb(netmem_ref netmem)
+> > > > > > >         return (struct net_iov *)((__force unsigned long)netmem & ~NET_IOV);
+> > > > > > >  }
+> > > > > > >
+> > > > > > > +static inline struct netmem_desc *pp_page_to_nmdesc(struct page *page)
+> > > > > > > +{
+> > > > > > > +       DEBUG_NET_WARN_ON_ONCE(!page_pool_page_is_pp(page));
+> > > > > > > +
+> > > > > > > +       /* XXX: How to extract netmem_desc from page must be changed,
+> > > > > > > +        * once netmem_desc no longer overlays on page and will be
+> > > > > > > +        * allocated through slab.
+> > > > > > > +        */
+> > > > > > > +       return (struct netmem_desc *)page;
+> > > > > > > +}
+> > > > > > > +
+> > > > > >
+> > > > > > Same thing. Do not create a generic looking pp_page_to_nmdesc helper
+> > > > > > which does not check that the page is the correct type. The
+> > > > > > DEBUG_NET... is not good enough.
+> > > > > >
+> > > > > > You don't need to add a generic helper here. There is only one call
+> > > > > > site. Open code this in the callsite. The one callsite is marked as
+> > > > > > unsafe, only called by code that knows that the netmem is specifically
+> > > > > > a pp page. Open code this in the unsafe callsite, instead of creating
+> > > > > > a generic looking unsafe helper and not even documenting it's unsafe.
+> > > > > >
+> > > > >
+> > > > > On second read through the series, I actually now think this is a
+> > > > > great idea :-) Adding this helper has simplified the series greatly. I
+> > > > > did not realize you were converting entire drivers to netmem just to
+> > > > > get rid of page->pp accesses. Adding a pp_page_to_nmdesc helper makes
+> > > > > the entire series simpler.
+> > > > >
+> > > > > You're also calling it only from code paths like drivers that already
+> > > > > assumed that the page is a pp page and did page->pp deference without
+> > > > > a check, so this should be safe.
+> > > > >
+> > > > > Only thing I would change is add a comment explaining that the calling
+> > > > > code needs to check the page is pp page or know it's a pp page (like a
+> > > > > driver that supports pp).
+> > > > >
+> > > > >
+> > > > > > >  /**
+> > > > > > >   * __netmem_get_pp - unsafely get pointer to the &page_pool backing @netmem
+> > > > > > >   * @netmem: netmem reference to get the pointer from
+> > > > > > > @@ -280,7 +291,7 @@ static inline struct net_iov *__netmem_clear_lsb(netmem_ref netmem)
+> > > > > > >   */
+> > > > > > >  static inline struct page_pool *__netmem_get_pp(netmem_ref netmem)
+> > > > > > >  {
+> > > > > > > -       return __netmem_to_page(netmem)->pp;
+> > > > > > > +       return pp_page_to_nmdesc(__netmem_to_page(netmem))->pp;
+> > > > > > >  }
+> > > > > >
+> > > > > > This makes me very sad. Casting from netmem -> page -> nmdesc...
+> > > > > >
+> > > > > > Instead, we should be able to go from netmem directly to nmdesc. I
+> > > > > > would suggest rename __netmem_clear_lsb to netmem_to_nmdesc and have
+> > > > > > it return netmem_desc instead of net_iov. Then use it here.
+> > > > > >
+> > > > > > We could have an unsafe version of netmem_to_nmdesc which converts the
+> > > > > > netmem to netmem_desc without clearing the lsb and mark it unsafe.
+> > > > > >
+> > > > >
+> > > > > This, I think, we should address to keep some sanity in the code and
+> > > > > reduce the casts and make it a bit more maintainable.
+> > > >
+> > > > I will reflect your suggestions.  To summarize:
+> > > >
+> > > >    1) The current implementation of pp_page_to_nmdesc() is good enough
+> > > >       to keep, but add a comment on it like "Check if the page is a pp
+> > > >       page before calling this function or know it's a pp page.".
+> > > >
 > > >
-> > > From: Darren Ye <darren.ye@mediatek.com>
+> > > Yes please.
 > > >
-> > > Add mt8196 audio AFE.
+> > > >    2) Introduce the unsafe version, __netmem_to_nmdesc(), and use it in
+> > > >       __netmem_get_pp().
+> > > >
 > > >
-> > > Signed-off-by: Darren Ye <darren.ye@mediatek.com>
-> > > Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> > > ---
-> > >  .../bindings/sound/mediatek,mt8196-afe.yaml   | 157
-> > > ++++++++++++++++++
-> > >  1 file changed, 157 insertions(+)
-> > >  create mode 100644
-> > > Documentation/devicetree/bindings/sound/mediatek,mt8196-afe.yaml
+> > > No need following Pavel's feedback. We can just delete
+> > > __netmem_get_pp. If we do find a need in the future to extract the
+> > > netmem_desc from a netmem_ref, I would rather we do a straight cast
+> > > from netmem_ref to netmem_desc rather than netmem_ref -> pages/net_iov
+> > > -> netmem_desc.
 > > >
-> > > diff --git
-> > > a/Documentation/devicetree/bindings/sound/mediatek,mt8196-afe.yaml
-> > > b/Documentation/devicetree/bindings/sound/mediatek,mt8196-afe.yaml
-> > > new file mode 100644
-> > > index 000000000000..fe147eddf5e7
-> > > --- /dev/null
-> > > +++ b/Documentation/devicetree/bindings/sound/mediatek,mt8196-
-> > > afe.yaml
-> > > @@ -0,0 +1,157 @@
-> > > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > > +%YAML 1.2
-> > > +---
-> > > +$id:
-> > > https://urldefense.com/v3/__http://devicetree.org/schemas/sound/media=
-tek,mt8196-afe.yaml*__;Iw!!CTRNKA9wMg0ARbw!iSiBwCYEjWdWSv25XRbl3ky3Niiw3nDp=
-VY-fW1dxyp3eU5YDs0bbZXEgPUQ1_NInbxUIgyz3HJvf-xTH$
-> > > +$schema:
-> > > https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.y=
-aml*__;Iw!!CTRNKA9wMg0ARbw!iSiBwCYEjWdWSv25XRbl3ky3Niiw3nDpVY-fW1dxyp3eU5YD=
-s0bbZXEgPUQ1_NInbxUIgyz3HHUjHsuW$
-> > > +
-> > > +title: MediaTek Audio Front End PCM controller for MT8196
-> > > +
-> > > +maintainers:
-> > > +  - Darren Ye <darren.ye@mediatek.com>
-> > > +
-> > > +properties:
-> > > +  compatible:
-> > > +    const: mediatek,mt8196-afe
-> > > +
-> > > +  reg:
-> > > +    maxItems: 1
-> > > +
-> > > +  interrupts:
-> > > +    maxItems: 1
-> > > +
-> > > +  memory-region:
-> > > +    maxItems: 1
-> > > +
-> > > +  mediatek,vlpcksys:
-> > > +    $ref: /schemas/types.yaml#/definitions/phandle
-> > > +    description: To set up the apll12 tuner
+> > > But that seems unnecessary for this series.
 > >
-> > Looking at the implementation, the configuration is just a fixed
-> > value.
-> > Can this be moved to the VLP clock driver instead?
+> > No.  The series should remove accessing ->pp through page.
 > >
-> I thinks it's not good to put it in the VLP clock kernel driver,
-> because this value needs to be adjusted. Usually, it is set in
-> coreboot, but it is hard to change later. Audio needs to adjust
-> this value, so it's better to put it in the audio driver. What do
-> you think?
-
-It looks like just one fixed value, instead of needing to tweak the value
-during operation? If that's the case I think it could be moved to the
-clock driver.
-
-> > > +
-> > > +  power-domains:
-> > > +    maxItems: 1
-> > > +
-> > > +  clocks:
-> > > +    items:
-> > > +      - description: mux for audio intbus
-> > > +      - description: mux for audio engen1
-> > > +      - description: mux for audio engen2
-> > > +      - description: mux for audio h
-> > > +      - description: vlp 26m clock
-> > > +      - description: audio apll1 clock
-> > > +      - description: audio apll2 clock
-> > > +      - description: audio apll1 divide4
-> > > +      - description: audio apll2 divide4
-> > > +      - description: audio apll12 divide for i2sin0
-> > > +      - description: audio apll12 divide for i2sin1
-> > > +      - description: audio apll12 divide for fmi2s
-> > > +      - description: audio apll12 divide for tdmout mck
-> > > +      - description: audio apll12 divide for tdmout bck
-> > > +      - description: mux for audio apll1
-> > > +      - description: mux for audio apll2
-> > > +      - description: mux for i2sin0 mck
-> > > +      - description: mux for i2sin1 mck
-> > > +      - description: mux for fmi2s mck
-> > > +      - description: mux for tdmout mck
-> > > +      - description: mux for adsp clock
-> > > +      - description: 26m clock
-> > > +
-> > > +  clock-names:
-> > > +    items:
-> > > +      - const: top_aud_intbus
-> > > +      - const: top_aud_eng1
-> > > +      - const: top_aud_eng2
-> > > +      - const: top_aud_h
-> > > +      - const: vlp_clk26m
-> > > +      - const: apll1
-> > > +      - const: apll2
-> > > +      - const: apll1_d4
-> > > +      - const: apll2_d4
+> > I will kill __netmem_get_pp() as you and I prefer.  However,
+> > __netmem_get_pp() users e.i. libeth_xdp_return_va() and
+> > libeth_xdp_tx_fill_buf() should be altered.  I will modify the code like:
 > >
-> > These are parents of the top_apll[12]. They do not feed into the
-> > hardware directly, so you should not be including them here.
+> > as is: __netmem_get_pp(netmem)
+> > to be: __netmem_nmdesc(netmem)->pp
 > >
-> > > +      - const: apll12_div_i2sin0
-> > > +      - const: apll12_div_i2sin1
-> > > +      - const: apll12_div_fmi2s
-> > > +      - const: apll12_div_tdmout_m
-> > > +      - const: apll12_div_tdmout_b
+> > Is it okay with you?
 > >
-> > In the clock bindings sent by Collabora, these dividers are no longer
-> > separately modeled; they have been combined with their respective
-> > top_* clocks.
-> >
-> > > +      - const: top_apll1
-> > > +      - const: top_apll2
-> >
-> > These two are parents to apll12_div_*, do not feed into the hardware
-> > directly, so you should not be including them here.
-> >
-> > The clock tree for each audio interface clock looks like the
-> > following:
-> >
-> >     apll1 -> apll1_d4 -> top_apll1 --
-> >                      /               \
-> >               clk26m                  --> top_fmi2s ->
-> > apll12_div_fmi2s
-> >                      \               /
-> >     apll2 -> apll2_d4 -> top_apll2 --
-> >
-> > Only the final "apll12_div_fmi2s" should be referenced.
-> >
-> > On the implementation side, it should simply be a matter of setting
-> > the
-> > required rate (24.576 MHz or 22.5792 MHz, or some multiple) on this
-> > leaf
-> > clock, and let the clock framework figure out the PLL and dividers to
-> > use. Same thing for enabling the clock.
->
-> I think we have some misunderstandings. I will first draw mtk audio
-> clock topology diagram, and then we can disscuss which parts can be
-> optimized together.
->
-> top_aud_intbus: as read/write reg clock source;
-> top_aud_eng1/top_aud_eng2: as i2s bck clock source;
-> apll12_div_xxx: as mclk clock source;
-> top_audio_h: as afe other ip clock source;
-
-And what about top_i2sin0, top_i2sin1, top_fmi2s, top_tdmout?
-
->
-> vlp_clk26m
->         \
-> apll1   --> top_audio_h
-> /
-> apll2
-
-This shows that vlp_clk26m, apll1, apll2 are parents to top_audio_h.
-
->                 vlp_clk26m
->                      \
-> apll1  --> apll1_d4  --> top_aud_eng1
->        \
-> clk26m --> top_apll1
-> \
->  --> top_fmi2s --> apll12_div_fmi2s
-> /
-> clk26m  --> top_apll2
->        /
-> apll2  --> apll2_d4  --> top_aud_eng2
->                      /
->        vlp_clk26m
-
-This shows the parents of top_aud_eng1, top_aud_eng2, top_apll1, top_apll2,
-and apll12_div_fmi2s.
-
-My point is that all these parents should not be referenced unless they
-also directly feed some input to the AFE block.
-
-> vlp_clk26m -> top_aud_intbus
->
->
-> >
-> > > +      - const: top_i2sin0
-> > > +      - const: top_i2sin1
-> > > +      - const: top_fmi2s
-> > > +      - const: top_tdmout
-> > > +      - const: top_adsp
-> > > +      - const: clk26m
-> >
-> > Is this one directly needed? It is similar to vlp_clk26m, and I
-> > suspect
-> > only that one is needed.
-> >
-> vlp_clk26m belongs to the VLP clock domain, and clk26 belongs to the
-> system clock domain;
->
-> top_apll1/top_apll2 can only select system apll1/apll2 or clk26m, they
-> cannot use vlp_clk26m;
-
-Yes. What I mean is that clk26m does not directly feed the AFE block.
-If it does not directly feed the AFE block, it shouldn't be listed.
-
-So please think about the modules in the AFE, and the clock gates in
-the AFE block; think about what "external" clocks feed into them. Those
-are the ones you should list.
-
-
-ChenYu
-
-> BR
-> Darren Ye
->
-> >
-> > ChenYu
-> >
-> > > +
-> > > +required:
-> > > +  - compatible
-> > > +  - reg
-> > > +  - interrupts
-> > > +  - memory-region
-> > > +  - mediatek,vlpcksys
-> > > +  - power-domains
-> > > +  - clocks
-> > > +  - clock-names
-> > > +
-> > > +additionalProperties: false
-> > > +
-> > > +examples:
-> > > +  - |
-> > > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> > > +    #include <dt-bindings/interrupt-controller/irq.h>
-> > > +
-> > > +    soc {
-> > > +        #address-cells =3D <2>;
-> > > +        #size-cells =3D <2>;
-> > > +
-> > > +        afe@1a110000 {
-> > > +            compatible =3D "mediatek,mt8196-afe";
-> > > +            reg =3D <0 0x1a110000 0 0x9000>;
-> > > +            interrupts =3D <GIC_SPI 351 IRQ_TYPE_LEVEL_HIGH 0>;
-> > > +            memory-region =3D <&afe_dma_mem_reserved>;
-> > > +            mediatek,vlpcksys =3D <&vlp_cksys_clk>;
-> > > +            power-domains =3D <&scpsys 14>;
-> > > //MT8196_POWER_DOMAIN_AUDIO
-> > > +            clocks =3D <&vlp_cksys_clk 40>,
-> > > //CLK_VLP_CK_AUD_INTBUS_SEL
-> > > +                     <&vlp_cksys_clk 38>,
-> > > //CLK_VLP_CK_AUD_ENGEN1_SEL
-> > > +                     <&vlp_cksys_clk 39>,
-> > > //CLK_VLP_CK_AUD_ENGEN2_SEL
-> > > +                     <&vlp_cksys_clk 37>, //CLK_VLP_CK_AUDIO_H_SEL
-> > > +                     <&vlp_cksys_clk 45>, //CLK_VLP_CK_CLKSQ
-> > > +                     <&cksys_clk 129>, //CLK_CK_APLL1
-> > > +                     <&cksys_clk 132>, //CLK_CK_APLL2
-> > > +                     <&cksys_clk 130>, //CLK_CK_APLL1_D4
-> > > +                     <&cksys_clk 133>, //CLK_CK_APLL2_D4
-> > > +                     <&cksys_clk 80>,
-> > > //CLK_CK_APLL12_CK_DIV_I2SIN0
-> > > +                     <&cksys_clk 81>,
-> > > //CLK_CK_APLL12_CK_DIV_I2SIN1
-> > > +                     <&cksys_clk 92>, //CLK_CK_APLL12_CK_DIV_FMI2S
-> > > +                     <&cksys_clk 93>,
-> > > //CLK_CK_APLL12_CK_DIV_TDMOUT_M
-> > > +                     <&cksys_clk 94>,
-> > > //CLK_CK_APLL12_CK_DIV_TDMOUT_B
-> > > +                     <&cksys_clk 43>, //CLK_CK_AUD_1_SEL
-> > > +                     <&cksys_clk 44>, //CLK_CK_AUD_2_SEL
-> > > +                     <&cksys_clk 66>, //CLK_CK_APLL_I2SIN0_MCK_SEL
-> > > +                     <&cksys_clk 67>, //CLK_CK_APLL_I2SIN1_MCK_SEL
-> > > +                     <&cksys_clk 78>, //CLK_CK_APLL_FMI2S_MCK_SEL
-> > > +                     <&cksys_clk 79>, //CLK_CK_APLL_TDMOUT_MCK_SEL
-> > > +                     <&cksys_clk 45>, //CLK_CK_ADSP_SEL
-> > > +                     <&cksys_clk 140>; //CLK_CK_TCK_26M_MX9
-> > > +            clock-names =3D "top_aud_intbus",
-> > > +                          "top_aud_eng1",
-> > > +                          "top_aud_eng2",
-> > > +                          "top_aud_h",
-> > > +                          "vlp_clk26m",
-> > > +                          "apll1",
-> > > +                          "apll2",
-> > > +                          "apll1_d4",
-> > > +                          "apll2_d4",
-> > > +                          "apll12_div_i2sin0",
-> > > +                          "apll12_div_i2sin1",
-> > > +                          "apll12_div_fmi2s",
-> > > +                          "apll12_div_tdmout_m",
-> > > +                          "apll12_div_tdmout_b",
-> > > +                          "top_apll1",
-> > > +                          "top_apll2",
-> > > +                          "top_i2sin0",
-> > > +                          "top_i2sin1",
-> > > +                          "top_fmi2s",
-> > > +                          "top_tdmout",
-> > > +                          "top_adsp",
-> > > +                          "clk26m";
-> > > +        };
-> > > +    };
-> > > +
-> > > +...
-> > > --
-> > > 2.45.2
+> 
+> When Pavel and I were saying 'remove __netmem_get_pp', I think we
+> meant to remove the entire concept of unsafe netmem -> page
+> conversions. I think we both don't like them. From this perspective,
+> __netmem_nmdesc(netmem)->pp is just as bad as __netmem_get_pp(netmem).
+> 
+> I think since the unsafe netmem-to-page casts are already in mainline,
+> lets assume they should stay there until someone feels strongly enough
+> to remove them. The logic in Olek's patch is sound:
+> 
+> https://lore.kernel.org/all/20241203173733.3181246-8-aleksander.lobakin@intel.com/
+> 
+> Header buffer page pools do always use pages and will likely remain so
+> for a long time, so I guess lets continue to support them rather than
+> try to remove them in this series. A followup series could try to
+> remove them.
+> 
+> > > >    3) Rename __netmem_clear_lsb() to netmem_to_nmdesc(), and return
+> > > >       netmem_desc, and use it in all users of __netmem_clear_lsb().
+> > > >
 > > >
-> > >
->
-> ************* MEDIATEK Confidentiality Notice
->  ********************
-> The information contained in this e-mail message (including any
-> attachments) may be confidential, proprietary, privileged, or otherwise
-> exempt from disclosure under applicable laws. It is intended to be
-> conveyed only to the designated recipient(s). Any use, dissemination,
-> distribution, printing, retaining or copying of this e-mail (including it=
-s
-> attachments) by unintended recipient(s) is strictly prohibited and may
-> be unlawful. If you are not an intended recipient of this e-mail, or beli=
-eve
->
-> that you have received this e-mail in error, please notify the sender
-> immediately (by replying to this e-mail), delete any and all copies of
-> this e-mail (including any attachments) from your system, and do not
-> disclose the content of this e-mail to any other person. Thank you!
+> > > Following Pavel's comment, this I think also is not necessary for this
+> > > series. Cleaning up the return value of __netmem_clear_lsb is good
+> > > work I think, but we're already on v10 of this and I think it would
+> > > unnecessary to ask for added cleanups. We can do the cleanup on top.
+> >
+> > However, I still need to include 'introduce __netmem_nmdesc() helper'
+> 
+> Yes.
+> 
+> > in this series since it should be used to remove __netmem_get_pp() as I
+> 
+> lets keep __netmem_get_pp, which does a `return
+> __netmem_nmdesc(netmem)->pp;` In general we avoid allowing the driver
+> to do any netmem casts in the driver code, and we do any casting in
+> core.
+> 
+> > described above.  I think I'd better add netmem_nmdesc() too while at it.
+> >
+> 
+> Yes. netmem_nmdesc should replace __netmem_clear_lsb.
+
+Trivial concern.  I don't think the contraint that the nmdesc must be
+the first field in struct net_iov is __unnecessary__.  Thus, I think
+netmem_nmdesc() should be something like:
+
+	if (netmem_is_net_iov(netmem))
+		return &(struct net_iov *)((__force unsigned long)netmem &
+			~NET_IOV)->desc;
+	return __netmem_to_nmdesc(netmem);
+
+Do you want to keep the current contraint so that the just casting to
+struct netmem_desc after the clearing, can work in netmem_nmdesc()?
+
+	Byungchul
+
+> > I assume __netmem_nmdesc() is an unsafe version not clearing lsb.  The
+> 
+> Yes.
+> 
+> > safe version, netmem_nmdesc() needs an additional operation clearing lsb.
+> 
+> Yes.
+> 
+> 
+> --
+> Thanks,
+> Mina
 
