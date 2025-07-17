@@ -4,50 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE1D4C83F1A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Jul 2025 10:30:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FEA3C83F1A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Jul 2025 10:33:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+jTRaPeLFxICmQzAMOqnQ7nrzx5ix2JLpEMYkLJQFNk=; b=UZIKVsA+yHlsf1/TFq31dTXa5Q
-	9Uq8XykvY35BWT4qC+GrGo40aio8+Gj4a9OvPgmI6DfdHe8rd1McOIDLYPn+siGLYXBEf8kvrcAV6
-	7Z8IChUyBw++3CndHNPbHaJee6mc8y0ZshCs527vkUd3Kv2YPKtbuwdj2cSS0rqXnyfIIJgyomifg
-	wincWQUDa59K9e1FIZzdEZxm2PZZouOXBGFnfwFowjACZ4mMK2I7gQPeIMawMmdI5qTcBRjdlGKt5
-	Tm6USlWBW6l31yTJX0ttCOvvQYvAoI4EpPnmUWfStJrkcUYQUjxQWmCFSjKHXYSvipyOA3zt5rz2h
-	ep0Vsbgw==;
+	bh=mEcU0OCD0ivIfd7kCJhaGZPEyu7QVeNuMoMZGolKkXQ=; b=ZAT3emzX+Xw45bACZ9nNdKCsDi
+	rqnK0bV1B6tyVbAczzLlhlKWiHcAjGSGZOH0edZSxewAeioBkFH1FLJhLi6bBKTf6V80B+sKbVOqP
+	jq5CETUk5b7TAT8TE7cOmnWboyx/0/qEu8Zp2BpAt0sG0FJXqNmHg/XCWyYXgpDFrWqNls2IYx1CX
+	zNP/ZcF1xnLSFn/T1AFSMojdzthF04Vwv7pndV7X6QJkPJi/0xt1AMq3z5doZdAbL8YLHJ9OUtr3u
+	iqihR9qqPQoxaDQ9cTWJ+Fk77wF2Yj7rMANWp+fzFI+MPRtIRV0iwrEXR1GXJILj3DHo+hYzj2hwK
+	P+dKZMog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucLsn-00000009qCK-0wm1;
-	Thu, 17 Jul 2025 10:30:33 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1ucLvC-00000009qYJ-2SKo;
+	Thu, 17 Jul 2025 10:33:02 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucLqK-00000009puO-3P2K;
-	Thu, 17 Jul 2025 10:28:02 +0000
+	id 1ucLqq-00000009pxL-3zY2;
+	Thu, 17 Jul 2025 10:28:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1752748078;
-	bh=kZAo/gWKz5R05BbdTMkuNvyoBn5ADeZBmyt+dfokfUM=;
+	s=mail; t=1752748111;
+	bh=njeWmQfR2ai9XZ2ITqvd5C2J/w/hnFAgXQdfFFO0UcQ=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=i2tfqxfPA271AfqEbRdi8hCJHi3qedj+kHeVNbbEE894k4HJEHVV/jNvgb9Toh/Bq
-	 DpruPNCztV+FcO7a80k80d+WIU700AWXzuqrJ3fSLjaOAHNKFcOwjd8NAC8uZsGkl9
-	 GjlBRkNolFxFaiCWo5wQyeOnEtyCIOCGisyBPmJ0T2k93xEVJFZGmqjFGIfM7WwuoH
-	 Mt8ZPaUFaJpM03vPkAZyF8PaXVzeMbunxkw56TjOTKSZ+Ac59T6aJPocdHkqBfAicx
-	 I92wDcy49czV8pDkQzoWZICWSFN+HTYcAmngcCjlkEnONoEOjqGqvF+Qg+aAM58/6Q
-	 E2y5YF0Prdoog==
+	b=goFADbouZPEm62xcrdBEBQ4wStXnDAZkiZ7cYFTr1o2KiRQ6fx6zhrE2H13mjeFxI
+	 r7zJnDxtTdeHIgQm9b+FmAmhljUVi/LDgVEWn6Xj8mspK6ygd0Xb36Odd+VUSpbkxC
+	 e4MBC6zKRmP0N+f5nZQxPUdVeYsX23V281J/O4sYg84MW52LHH5qzUbAq3lP2U8GAi
+	 b3bTDMrR6GLzR0A4P7rIafgDEFzoQSdVF9B7mHG7YtGK4nbQ2ATBz/8MwzkSN4OExr
+	 x0R84IgFpBEHe5F9vp+SqPZjxphLOIng5SRFdl+UPhc82nDRXAuzG2pqADnJlvYTNs
+	 rrYQtIzKNZE8Q==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6C1DB17E0D15;
-	Thu, 17 Jul 2025 12:27:57 +0200 (CEST)
-Message-ID: <c97f9e7c-4985-4e2f-aaaf-981960974212@collabora.com>
-Date: Thu, 17 Jul 2025 12:27:56 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 83CFC17E0D15;
+	Thu, 17 Jul 2025 12:28:30 +0200 (CEST)
+Message-ID: <384e41cd-8bc0-4f98-9fcb-362608d93859@collabora.com>
+Date: Thu, 17 Jul 2025 12:28:30 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 4/4] cpufreq: mediatek-hw: Add support for MT8196
+Subject: Re: [PATCH v3 1/4] dt-bindings: cpufreq: Add
+ mediatek,mt8196-cpufreq-hw binding
 To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
  "Rafael J. Wysocki" <rafael@kernel.org>,
  Viresh Kumar <viresh.kumar@linaro.org>, Rob Herring <robh@kernel.org>,
@@ -57,15 +58,15 @@ Cc: kernel@collabora.com, linux-pm@vger.kernel.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 References: <20250716-mt8196-cpufreq-v3-0-d440fb810d7e@collabora.com>
- <20250716-mt8196-cpufreq-v3-4-d440fb810d7e@collabora.com>
+ <20250716-mt8196-cpufreq-v3-1-d440fb810d7e@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250716-mt8196-cpufreq-v3-4-d440fb810d7e@collabora.com>
+In-Reply-To: <20250716-mt8196-cpufreq-v3-1-d440fb810d7e@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250717_032801_007790_D94DF968 
-X-CRM114-Status: UNSURE (   8.32  )
+X-CRM114-CacheID: sfid-20250717_032833_139376_DB43D441 
+X-CRM114-Status: UNSURE (   9.05  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,20 +83,20 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 16/07/25 19:51, Nicolas Frattaroli ha scritto:
-> The MT8196 SoC uses DVFS to set a desired target frequency for each CPU
-> core. It also uses slightly different register offsets.
+> The MediaTek MT8196 SoC has new cpufreq hardware, with added memory
+> register ranges to control Dynamic-Voltage-Frequency-Scaling.
 > 
-> Add support for it, which necessitates reworking how the mmio regs are
-> acquired, as mt8196 has the fdvfs register before the performance domain
-> registers.
+> The DVFS hardware is controlled through a set of registers referred to
+> as "FDVFS". They set the target frequency the DVFS hardware should aim
+> for for each performance domain.
 > 
-> I've verified with both `sysbench cpu run` and `head -c 10G \
-> /dev/urandom | pigz -p 8 -c - | pv -ba > /dev/null` that we don't just
-> get a higher reported clock frequency, but that the observed performance
-> also increases, by a factor of 2.64 in an 8 thread sysbench test.
+> Instead of working around the old binding and its already established
+> meanings for the reg items, add a new binding. The FDVFS register memory
+> region is at the beginning, which allows us to easily expand this
+> binding for future SoCs which may have more than 3 performance domains.
 > 
 > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogiaocchino.delregno@collabora.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
