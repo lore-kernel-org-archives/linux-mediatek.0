@@ -4,63 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C813C83F1A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Jul 2025 12:53:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17BBCC83F17
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Jul 2025 12:54:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Og5iHsAUGwBYbOa5EeBcRoJZBoJouGYLbv+qaUXL58Y=; b=ohzccLIkrJ6MGTJneQnJJxmhqt
-	jFqqANFG6MEA27guBfS6F08Qb3tOHEGo2q/kJc5HiQ1wii37Js/+mR8q/4ZJyZ8P6qwsjNBKYYr1b
-	/Urm/TUxhwH4xQzSqvLgmusuyxen8MqjNHyDEUiNXEB1PJQ+W5lIghN87SppCINc/TBXUBm01rgW3
-	u5/OeZm5S/7GGbBqVqEXtPHpZ8xRN1b3y9ehYDOCp30R/kHbyRuWqqtGs6ZTpLjLWBRkiC5x5qi4k
-	/yW4wVWv7JeIkBcYZ0SMNF/TGlzShwBzvEZ4S+rVShXfI4k/LbmnlaSrV6GGWiGnNjcoS/gvydl0Z
-	jNe3wTEQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NYv5+TMFsC7Y+uQecq8Wp1+t656E5JgsgS2DLSSChBk=; b=AEals2wcZZynGAgAVfK9eH8C2L
+	QPZu8sr98IWfPbepcWwFuLUqDAGaTIzeZCRsv7ahMTUmm9+qQcKmiwwHOjPi9pLi5oFyhOu2lRR1c
+	VFwn2BYCY4iGwuNa5x5iKEUa8nev5W9nbL2waTR4QJUyu1BgVgko9ZOGBR8XXVhSmKfzCQH8uo7CM
+	bWtcLEzIlkhyAl1TZdGWyMTjKZUJ4oXAQOkNpH8do438Zen+J5pPfnXQnhqvVcsEREzYHy4ItGBPi
+	ZeDwsj3Vsx8xBWPSnyc/UUlo2r/YE9WjxRxvfrka1QyGiVGJzwX/V7syvJArbdkUP3F0Pocdkog2K
+	iDdH6xDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uckaq-0000000Ccqo-0Xon;
-	Fri, 18 Jul 2025 12:53:40 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uckbk-0000000Ccx8-3kOe;
+	Fri, 18 Jul 2025 12:54:36 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uckan-0000000CcqR-1E55
+	id 1uckbi-0000000Ccvo-2KLu
 	for linux-mediatek@lists.infradead.org;
-	Fri, 18 Jul 2025 12:53:38 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 09F9F5C5DA9;
-	Fri, 18 Jul 2025 12:53:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D3E22C4CEEB;
-	Fri, 18 Jul 2025 12:53:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752843215;
-	bh=DFqIGntCYSDgRSd++hhAmxslnI3X3C9xnvYkELthmFM=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=ZKGwlot3sTrqgSAuO8a//BzR/b211Jr14aksFtG1WBlaizl9ZmAGs2/mpGKDkClbF
-	 eqNVBFbAV77SUwwx6D8IGae2NBjNDgr4b2otgXIlKJ4A0J4k5NJKnXq2XPzbZJyV/v
-	 PycPOFD2keijufbU48D8Jo4LytnN0dOizHjUEHgepadpQCVK9aHJ6BhGMnbKbCCf/c
-	 HNQypMSO2sPMvzGNYcWJgz2uZw1qKwcRESvKxNZNZaxSOnZEIjwsUSpBWjE2p2UlYh
-	 0/q9AZ+39TZ8r4MIpS+fZ2t5hhfnSdfK3p2P87JoG8mWQk/u1h5Uzr7jEYmH0qYvij
-	 fLCsHcyFpFiEQ==
-From: Mark Brown <broonie@kernel.org>
-To: lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com, 
- angelogioacchino.delregno@collabora.com, amergnat@baylibre.com, 
- Guoqing Jiang <guoqing.jiang@canonical.com>
-Cc: zoran.zhan@mediatek.com, linux-sound@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-In-Reply-To: <20250710011806.134507-1-guoqing.jiang@canonical.com>
-References: <20250710011806.134507-1-guoqing.jiang@canonical.com>
-Subject: Re: [PATCH V2] ASoC: mediatek: mt8365-dai-i2s: pass correct size
- to mt8365_dai_set_priv
-Message-Id: <175284321358.34755.13837470566210593486.b4-ty@kernel.org>
-Date: Fri, 18 Jul 2025 13:53:33 +0100
+	Fri, 18 Jul 2025 12:54:35 +0000
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 56I8pK2s020753
+	for <linux-mediatek@lists.infradead.org>; Fri, 18 Jul 2025 12:54:33 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to; s=qcppdkim1; bh=NYv5+TMFsC7Y+uQecq8Wp1+t
+	656E5JgsgS2DLSSChBk=; b=laAO2FfARndPJS57x45jBDT9UmQWhvee7N262jrY
+	gde/QniBZLBK4+Duuoda3y8uN6QRPnkBY5LGLvNC3HEkFLI9btGkWAzvQ8yXFSer
+	qCvHPht1JcuZDccnBfWNINrKMmXnPRJqu4kmj2lG8WIq8WQuYReEvZSiMP9jvnJF
+	XqIDXsa18ez2XByo2DWWVbM+nfNcnudzwCMFbcyjvsBUBNHOLQWUsDJwXstQMKe0
+	TkAngvl0wTBkG/pWTJznTb7Q1QEKnO3WG6M6q/ApXFtOFYQbyyZ3d4sVgC8F6F+3
+	M1kS6akmyCp0HmeFR/EA3/5qP2Lcl0WU5qpqs86DdRLv+w==
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com [209.85.222.199])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 47w5dppm7j-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Fri, 18 Jul 2025 12:54:33 +0000 (GMT)
+Received: by mail-qk1-f199.google.com with SMTP id af79cd13be357-7dabc82916cso339762385a.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 18 Jul 2025 05:54:33 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1752843272; x=1753448072;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=NYv5+TMFsC7Y+uQecq8Wp1+t656E5JgsgS2DLSSChBk=;
+        b=Hr0c4bSSS+LbXvOSUx9Y/2w98tLWPoLAij5BDIk6jaSXoDm6z0UFp1QstLdpVjqwoh
+         QxY4NZDnEn3vFSfQMCCldCaFWjMAmtwAb8RcqO4ypoW+3dwArEdzBILom1xfu353UPCn
+         Xj2r6aESCrnTOaDuS6tbQkTUpm3ZI/4rjg3AtoKjF4d3+SFK7zOm9n96b4Hiwzok8g/d
+         pMOtFPXlVSY0r7aEf4RZ1kmVeP8tDPhpV4gogK9l833oobSLQgP5Al7aFTjzAg71LqVB
+         ooY20eVfIv/S4m0AzhU0zBy9WvnZSSSj/8U8rLchp28luJ9CFw7gzcc8lkJa/8tJfdsR
+         UMrQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXPIMKBLrLmgJIN/HqORysfEgRMgb1VJm9dDemc0uKWOYHt+A1Hbn4d5VCaiHPnx6gV4t2M5NVG0zVKZ4XPhA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwsjIPRBrrBe0V0wZnCntkIl3mdps6KvGx6w/9T+YnNn1YDFaoJ
+	buXGw3ob9v11aJKdCZ/hkypAuPK9M1J7knY+//ZPImYwOIW1uDQ8sHTz+oPMqmy82908c6mi7N4
+	BrKtKrIAC58Qe/DAqU8Lm+EFiwkX3vjS4Qq/a1qeDG1xIMMrhlZnTMB/O2lvr7wQS1ao6YhY1kL
+	A=
+X-Gm-Gg: ASbGncsesV8xsJ30qk7aTxFU6fSPhq4IPdR4ZQZiokv6e+C6N1cJannDgwgDpfyibGK
+	hXYZQxrwhJUl+RMBWmW/g28bboII7F59U3nHCUL1W4A+8O+AbfITCAj0IsdJTmyzYGHe5mju2sK
+	5aW9yl/67JXs27ThVUshXWz2slY/0ZiXp85hYvIc+YvQmafRx/mybSXNDgmqjwpI3HWPSrS1VNe
+	cbhoaZaFa71aQ7ZenZ2B3fnHNkdi4pRQt48FOrS+DIiEA/ds1HA6tImgnEvXY1nWO4LM84Xwx+u
+	cS+BjU8dnEIBZluahTFU9BMNyslaQoJ+Glf4ZefM2i5nX1VcJ/ecodUxtv/5lUFownHaWiVdKTw
+	QuWhMCkr3rNEA7y9AABU94qSQwp8P7OKxtgS9+yvtWaXVf+PoV+iQ
+X-Received: by 2002:a05:620a:8d83:b0:7e3:4415:8dfe with SMTP id af79cd13be357-7e344159862mr1014486685a.59.1752843271754;
+        Fri, 18 Jul 2025 05:54:31 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFlL7G+rWZtjez8FqYMyBmgx/fNiSJjpphmk7YNUHy7EXBZiFWEofOBfgRiW2FIEIVGsw0WNw==
+X-Received: by 2002:a05:620a:8d83:b0:7e3:4415:8dfe with SMTP id af79cd13be357-7e344159862mr1014482685a.59.1752843271069;
+        Fri, 18 Jul 2025 05:54:31 -0700 (PDT)
+Received: from umbar.lan (2001-14ba-a0c3-3a00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a0c3:3a00:264b:feff:fe8b:be8a])
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-330a91c14acsm1926161fa.64.2025.07.18.05.54.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 18 Jul 2025 05:54:30 -0700 (PDT)
+Date: Fri, 18 Jul 2025 15:54:28 +0300
+From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+To: Vignesh Raman <vignesh.raman@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com,
+        helen.fornazier@gmail.com, airlied@gmail.com, simona.vetter@ffwll.ch,
+        robdclark@gmail.com, guilherme.gallo@collabora.com,
+        sergi.blanch.torne@collabora.com, valentine.burley@collabora.com,
+        lumag@kernel.org, linux-mediatek@lists.infradead.org,
+        linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org,
+        amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
+        intel-gfx@lists.freedesktop.org, virtualization@lists.linux.dev,
+        linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v1 5/7] drm/ci: uprev IGT
+Message-ID: <7c6suvc6quwwxni2nsos65btzim2lbv7f2u6mz5qbupzpmpzgb@g46wg63ubr6l>
+References: <20250718105407.32878-1-vignesh.raman@collabora.com>
+ <20250718105407.32878-6-vignesh.raman@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.15-dev-cff91
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250718105407.32878-6-vignesh.raman@collabora.com>
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzE4MDA5OSBTYWx0ZWRfX0xDPIEaQ5rSU
+ isMEw3YWw/2h+JHowEifod9Yy06xQycGbPxBR1kKBnLKogG5/EiZxVtXQgYV8ziz0mic12m6M71
+ eSAdNmW53YlFdLqblBXb+eEiyUH4cjYQm9sXKeV92aCmYzlGzXCxsqeezqnCblTpHhmpvjkH+Jq
+ MhQveQUHiPBl6N3/LrgmNy4PmobF5FD395D1V1YUj2CZLFoz6/8upoeYvEGzbdOJcUOU39dYYVu
+ n6yhVZnbU6hoFD7UEVsRbibXuoLWoZjCpsQzVejyOGAYA+VwyYRBpOC+KppxRCR0wshEKRiwqOB
+ FFvJ8A3zrKziklpOtihi4J1M5k9E8aYVa00QGcQsvamy1A1oYgxa7MEIqnP4FtyQPiVkIiWDUC0
+ t1H/Znirqfm5kwnFStWlvzdPnrJ5WybhlUGhTHqw4B058FMy16cDp8xIHeOSkOQ8deJoGsS0
+X-Proofpoint-GUID: cHo0qCfNmXcD1zBqc-h8F-ShWwSnsEyH
+X-Proofpoint-ORIG-GUID: cHo0qCfNmXcD1zBqc-h8F-ShWwSnsEyH
+X-Authority-Analysis: v=2.4 cv=Y+r4sgeN c=1 sm=1 tr=0 ts=687a4409 cx=c_pps
+ a=HLyN3IcIa5EE8TELMZ618Q==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
+ a=Wb1JkmetP80A:10 a=QX4gbG5DAAAA:8 a=W7FfGsJSNGCcAvtv9TIA:9 a=CjuIK1q_8ugA:10
+ a=bTQJ7kPSJx9SKPbeHEYW:22 a=AbAUZ8qAyYyZVLSsDulk:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-07-18_02,2025-07-17_02,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1015 mlxlogscore=999 phishscore=0 malwarescore=0 priorityscore=1501
+ adultscore=0 impostorscore=0 mlxscore=0 suspectscore=0 lowpriorityscore=0
+ bulkscore=0 spamscore=0 classifier=spam authscore=0 authtc=n/a authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2505280000
+ definitions=main-2507180099
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250718_055337_416075_8D4510BA 
-X-CRM114-Status: GOOD (  10.90  )
+X-CRM114-CacheID: sfid-20250718_055434_596402_18884AA2 
+X-CRM114-Status: GOOD (  20.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,66 +136,161 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 10 Jul 2025 09:18:06 +0800, Guoqing Jiang wrote:
-> Given mt8365_dai_set_priv allocate priv_size space to copy priv_data which
-> means we should pass mt8365_i2s_priv[i] or "struct mtk_afe_i2s_priv"
-> instead of afe_priv which has the size of "struct mt8365_afe_private".
+On Fri, Jul 18, 2025 at 04:23:57PM +0530, Vignesh Raman wrote:
+> Uprev IGT to the latest version and update expectation files.
 > 
-> Otherwise the KASAN complains about.
+> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+> ---
+>  drivers/gpu/drm/ci/gitlab-ci.yml              |   2 +-
+>  .../gpu/drm/ci/xfails/amdgpu-stoney-fails.txt |   2 +
+>  .../drm/ci/xfails/amdgpu-stoney-flakes.txt    |   7 ++
+>  drivers/gpu/drm/ci/xfails/i915-amly-fails.txt |  11 +-
+>  drivers/gpu/drm/ci/xfails/i915-apl-fails.txt  |   2 +
+>  drivers/gpu/drm/ci/xfails/i915-cml-fails.txt  |  29 +----
+>  drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt |   7 ++
+>  drivers/gpu/drm/ci/xfails/i915-glk-fails.txt  |   8 +-
+>  drivers/gpu/drm/ci/xfails/i915-glk-skips.txt  |  83 ++++++++++++
+>  drivers/gpu/drm/ci/xfails/i915-jsl-fails.txt  |  10 +-
+>  drivers/gpu/drm/ci/xfails/i915-kbl-fails.txt  |   3 +
+>  drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt  |   5 +-
+>  drivers/gpu/drm/ci/xfails/i915-tgl-flakes.txt |   6 +
+>  drivers/gpu/drm/ci/xfails/i915-whl-fails.txt  |   7 +-
+>  .../drm/ci/xfails/mediatek-mt8173-fails.txt   |   5 +-
+>  .../drm/ci/xfails/mediatek-mt8173-flakes.txt  | 119 ++++++++++++++++++
+>  .../drm/ci/xfails/mediatek-mt8183-fails.txt   |   7 +-
+>  .../msm-sc7180-trogdor-kingoftown-fails.txt   |   1 +
+>  ...sm-sc7180-trogdor-lazor-limozeen-fails.txt |   1 +
+>  .../drm/ci/xfails/msm-sm8350-hdk-fails.txt    |   1 +
+>  .../drm/ci/xfails/msm-sm8350-hdk-skips.txt    |  73 +++++++++++
+>  .../drm/ci/xfails/panfrost-mt8183-fails.txt   |   1 +
+>  .../drm/ci/xfails/panfrost-rk3288-fails.txt   |   1 +
+>  .../drm/ci/xfails/panfrost-rk3399-fails.txt   |   1 +
+>  .../drm/ci/xfails/rockchip-rk3288-fails.txt   |  12 +-
+>  .../drm/ci/xfails/rockchip-rk3288-flakes.txt  |  21 ++++
+>  .../drm/ci/xfails/rockchip-rk3399-fails.txt   |   9 +-
+>  .../drm/ci/xfails/rockchip-rk3399-flakes.txt  |  35 ++++++
+>  .../drm/ci/xfails/virtio_gpu-none-fails.txt   |   4 +
+>  drivers/gpu/drm/ci/xfails/vkms-none-fails.txt |   3 +
+>  drivers/gpu/drm/ci/xfails/vkms-none-skips.txt |   3 +
+>  31 files changed, 416 insertions(+), 63 deletions(-)
+>  create mode 100644 drivers/gpu/drm/ci/xfails/i915-tgl-flakes.txt
 > 
-> [   59.389765] BUG: KASAN: global-out-of-bounds in mt8365_dai_set_priv+0xc8/0x168 [snd_soc_mt8365_pcm]
-> ...
-> [   59.394789] Call trace:
-> [   59.395167]  dump_backtrace+0xa0/0x128
-> [   59.395733]  show_stack+0x20/0x38
-> [   59.396238]  dump_stack_lvl+0xe8/0x148
-> [   59.396806]  print_report+0x37c/0x5e0
-> [   59.397358]  kasan_report+0xac/0xf8
-> [   59.397885]  kasan_check_range+0xe8/0x190
-> [   59.398485]  asan_memcpy+0x3c/0x98
-> [   59.399022]  mt8365_dai_set_priv+0xc8/0x168 [snd_soc_mt8365_pcm]
-> [   59.399928]  mt8365_dai_i2s_register+0x1e8/0x2b0 [snd_soc_mt8365_pcm]
-> [   59.400893]  mt8365_afe_pcm_dev_probe+0x4d0/0xdf0 [snd_soc_mt8365_pcm]
-> [   59.401873]  platform_probe+0xcc/0x228
-> [   59.402442]  really_probe+0x340/0x9e8
-> [   59.402992]  driver_probe_device+0x16c/0x3f8
-> [   59.403638]  driver_probe_device+0x64/0x1d8
-> [   59.404256]  driver_attach+0x1dc/0x4c8
-> [   59.404840]  bus_for_each_dev+0x100/0x190
-> [   59.405442]  driver_attach+0x44/0x68
-> [   59.405980]  bus_add_driver+0x23c/0x500
-> [   59.406550]  driver_register+0xf8/0x3d0
-> [   59.407122]  platform_driver_register+0x68/0x98
-> [   59.407810]  mt8365_afe_pcm_driver_init+0x2c/0xff8 [snd_soc_mt8365_pcm]
-> 
-> [...]
+> diff --git a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt
+> index e4a8f8352cd6..9bf38c077f8e 100644
+> --- a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt
+> +++ b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt
+> @@ -15,3 +15,4 @@ kms_pipe_crc_basic@compare-crc-sanitycheck-nv12,Fail
+>  kms_plane_alpha_blend@alpha-7efc,Fail
+>  kms_plane_alpha_blend@coverage-7efc,Fail
+>  kms_plane_alpha_blend@coverage-vs-premult-vs-constant,Fail
+> +core_setmaster@master-drop-set-user,Fail
 
-Applied to
+Could you please point out the issue / failure log?
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+> diff --git a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-fails.txt b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-fails.txt
+> index e4a8f8352cd6..7441b363efae 100644
+> --- a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-fails.txt
+> +++ b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-fails.txt
+> @@ -1,3 +1,4 @@
+> +core_setmaster@master-drop-set-user,Fail
+>  kms_color@ctm-0-25,Fail
+>  kms_color@ctm-0-50,Fail
+>  kms_color@ctm-0-75,Fail
+> diff --git a/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-fails.txt b/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-fails.txt
+> index 8d26b23133aa..f387c73193c6 100644
+> --- a/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-fails.txt
+> +++ b/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-fails.txt
+> @@ -1,3 +1,4 @@
+> +core_setmaster@master-drop-set-user,Fail
+>  kms_3d,Fail
+>  kms_cursor_legacy@forked-bo,Fail
+>  kms_cursor_legacy@forked-move,Fail
+> diff --git a/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-skips.txt b/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-skips.txt
+> index 9450f2a002fd..84ffbe0981ea 100644
+> --- a/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-skips.txt
+> +++ b/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-skips.txt
+> @@ -210,3 +210,76 @@ msm/msm_mapping@ring
+>  # [  229.752499] CPU features: 0x18,00000017,00200928,4200720b
+>  # [  229.758095] Memory Limit: none
+>  # [  229.761291] ---[ end Kernel panic - not syncing: softlockup: hung tasks ]---
+> +
+> +msm/msm_recovery@gpu-fault
 
-Thanks!
+Hmm. I thought this should have been fixed...
 
-[1/1] ASoC: mediatek: mt8365-dai-i2s: pass correct size to mt8365_dai_set_priv
-      commit: 6bea85979d05470e6416a2bb504a9bcd9178304c
+> +# DEBUG - Begin test msm/msm_recovery@gpu-fault
+> +# [  153.288652] [IGT] msm_recovery: executing
+> +# [  153.295317] [IGT] msm_recovery: starting subtest gpu-fault
+> +# [  153.317588] adreno 3d00000.gpu: CP | opcode error | possible opcode=0xDEADDEAD
+> +# [  153.367412] adreno 3d00000.gpu: [drm:a6xx_irq] *ERROR* gpu fault ring 0 fence 814 status 00800005 rb 016b/0215 ib1 000000010000B000/0000 ib2 0000000000000000/0000
+> +# [  153.383449] msm_dpu ae01000.display-controller: [drm:recover_worker] *ERROR* 6.6.0.1: hangcheck recover!
+> +# [  153.393296] msm_dpu ae01000.display-controller: [drm:recover_worker] *ERROR* 6.6.0.1: offending task: msm_recovery (/igt/libexec/igt-gpu-tools/msm/msm_recovery --run-subtest gpu-fault)
+> +# [  153.436085] revision: 660 (6.6.0.1)
+> +# [  153.439702] rb 0: fence:    2063/2068
+> +# [  153.443659] rptr:     360
+> +# [  153.446389] rb wptr:  533
+> +# [  153.449103] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG0: 0
+> +# [  153.455746] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG1: 0
+> +# [  153.462387] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG2: 2062
+> +# [  153.469293] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG3: 0
+> +# [  153.475680] adreno 3d00000.gpu: [drm:a6xx_irq] *ERROR* gpu fault ring 0 fence 814 status 00800005 rb 016b/0215 ib1 000000010000B000/0000 ib2 0000000000000000/0000
+> +# [  153.475919] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG4: 0
+> +# [  153.475925] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG5: 0
+> +# [  153.475928] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG6: 0
+> +# [  153.475930] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG7: 1
+> +# [  153.529587] platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
+> +# [  153.539837] msm_dpu ae01000.display-controller: [drm:recover_worker] *ERROR* 6.6.0.1: hangcheck recover!
+> +# [  153.549597] msm_dpu ae01000.display-controller: [drm:recover_worker] *ERROR* 6.6.0.1: offending task: msm_recovery (/igt/libexec/igt-gpu-tools/msm/msm_recovery --run-subtest gpu-fault)
+> +# [  153.566489] revision: 660 (6.6.0.1)
+> +# [  153.570099] rb 0: fence:    2064/2068
+> +# [  153.573878] rptr:     0
+> +# [  153.576411] rb wptr:  688
+> +# [  153.579134] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG0: 0
+> +# [  153.585775] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG1: 0
+> +# [  153.592410] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG2: 0
+> +# [  153.597308] [IGT] msm_recovery: finished subtest gpu-fault, FAIL
+> +# [  153.599039] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG3: 0
+> +# [  153.611856] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG4: 0
+> +# [  153.618498] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG5: 0
+> +# [  153.625132] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG6: 0
+> +# [  153.631766] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG7: 0
+> +# [  153.639162] *** gpu fault: ttbr0=00000001042fc000 iova=0000000000000000 dir=READ type=TRANSLATION source=CP (0,0,0,0)
+> +# [  153.648502] platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
+> +# [  153.650144] *** gpu fault: ttbr0=00000001042fc000 iova=0000000000000020 dir=READ type=TRANSLATION source=CP (0,0,0,0)
+> +# [  153.650241] adreno 3d00000.gpu: CP illegal instruction error
+> +# [  153.671006] platform 3d6a000.gmu: [drm:a6xx_rpmh_start] *ERROR* Unable to power on the GPU RSC
+> +# [  153.687278] platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
+> +# [  363.495437] INFO: task msm_recovery:876 blocked for more than 120 seconds.
+> +# [  363.503070]       Not tainted 6.16.0-rc2-g0594d0b01a7c #1
+> +# [  363.508838] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+> +# [  363.517142] task:msm_recovery    state:D stack:0     pid:876   tgid:876   ppid:274    task_flags:0x400100 flags:0x00000009
+> +# [  363.528876] Call trace:
+> +# [  363.531554]  __switch_to+0xf8/0x1a8 (T)
+> +# [  363.535703]  __schedule+0x418/0xee0
+> +# [  363.539486]  schedule+0x4c/0x164
+> +# [  363.542986]  schedule_timeout+0x11c/0x128
+> +# [  363.547281]  dma_fence_default_wait+0x13c/0x234
+> +# [  363.552123]  dma_fence_wait_timeout+0x160/0x45c
+> +# [  363.556947]  dma_resv_wait_timeout+0x70/0x11c
+> +# [  363.561582]  msm_gem_close+0xac/0xe4
+> +# [  363.565405]  drm_gem_handle_delete+0x74/0xe8
+> +# [  363.569951]  drm_gem_close_ioctl+0x38/0x44
+> +# [  363.574297]  drm_ioctl_kernel+0xc4/0x134
+> +# [  363.578442]  drm_ioctl+0x224/0x4f0
+> +# [  363.582050]  __arm64_sys_ioctl+0xac/0x104
+> +# [  363.586292]  invoke_syscall+0x48/0x110
+> +# [  363.590254]  el0_svc_common.constprop.0+0x40/0xe0
+> +# [  363.595197]  do_el0_svc+0x1c/0x28
+> +# [  363.598705]  el0_svc+0x4c/0x158
+> +# [  363.602035]  el0t_64_sync_handler+0x10c/0x138
+> +# [  363.606601]  el0t_64_sync+0x198/0x19c
+> +# [  363.610465] Showing all locks held in the system:
+> +# [  363.620406]  #0: ffff0000840200a0 (&tty->ldisc_sem){++++}-{0:0}, at: ldsem_down_read+0x18/0x24
+> +# [  363.629412]  #1: ffff800080d7c2f0 (&ldata->atomic_read_lock){+.+.}-{4:4}, at: n_tty_read+0x15c/0x57c
+> +# [  363.643169]  #0: ffffbd9c0475d920 (rcu_read_lock){....}-{1:3}, at: debug_show_all_locks+0x18/0x1c0
+> +# [  363.654158] =============================================
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+-- 
+With best wishes
+Dmitry
 
