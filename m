@@ -4,85 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 183D9C83F1A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Jul 2025 11:28:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C813C83F1A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Jul 2025 12:53:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZAzXiiY/YIuQ/9uY0l8462fgPlzoh4f7KxWN0ebvqKE=; b=yv04whdWEusP32YQAiShnp517H
-	4/OBpKWnju/S1D8WtQWO5eROAz+P7WOdPX7lVqLusxlmKN2ms9XOnQ48myhNR6w+PAWDJTcoPBp2b
-	xJHpVMk64eJUh49C1wAdcnvRKRWn27gt8Dhqnr0xWPBgajSMUm0p8PuVhtSap6qCdbtVLVCcwoXJo
-	33JqTg8XbH92jA64sOxolDixgYx28aKNrcF3NZO5Ipbow2EtlCxk/Z17vDJEgoA7RvgEfBkeoC5ki
-	9JpjLn6ZadK0r7c94jUnvjkwtFdhzcsOZXHlQFnEljGh9syGu+v9VcqsIKEs+mhewGxQisNm2opzV
-	DzhnlsTQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Og5iHsAUGwBYbOa5EeBcRoJZBoJouGYLbv+qaUXL58Y=; b=ohzccLIkrJ6MGTJneQnJJxmhqt
+	jFqqANFG6MEA27guBfS6F08Qb3tOHEGo2q/kJc5HiQ1wii37Js/+mR8q/4ZJyZ8P6qwsjNBKYYr1b
+	/Urm/TUxhwH4xQzSqvLgmusuyxen8MqjNHyDEUiNXEB1PJQ+W5lIghN87SppCINc/TBXUBm01rgW3
+	u5/OeZm5S/7GGbBqVqEXtPHpZ8xRN1b3y9ehYDOCp30R/kHbyRuWqqtGs6ZTpLjLWBRkiC5x5qi4k
+	/yW4wVWv7JeIkBcYZ0SMNF/TGlzShwBzvEZ4S+rVShXfI4k/LbmnlaSrV6GGWiGnNjcoS/gvydl0Z
+	jNe3wTEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucjFz-0000000CRNR-486i;
-	Fri, 18 Jul 2025 11:28:03 +0000
-Received: from abb.hmeau.com ([180.181.231.80])
+	id 1uckaq-0000000Ccqo-0Xon;
+	Fri, 18 Jul 2025 12:53:40 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucioj-0000000CNcl-2QmG;
-	Fri, 18 Jul 2025 10:59:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=hmeau.com;
-	s=formenos; h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
-	List-Post:List-Owner:List-Archive;
-	bh=ZAzXiiY/YIuQ/9uY0l8462fgPlzoh4f7KxWN0ebvqKE=; b=gl6/Zd5HCQjexfoJQ5QZ7wWbAN
-	hbTSGnGqU1GFUKmrbFD5jj5vmYPGtEhp2sd/JvCtZM6Ey182276LgB1rE6/Y4aUV+YP9bKd8D1GaR
-	zFO93R0YQ/tC9nTkcRMnuZTdZ9Df6EvDXbhwS0lu+KiAp/tqI1sLtvSsK9OUIfEHv9h1Zgc9fUTSy
-	FhsdvvJ9w0SYBxvit/U5QBdoDkz+FyLZGvo+Wpy+Ut0aSr8T8A7G2SLLgJJQxnRDa/M20K8u0rMGO
-	zTuIwFdckQDDn1z7Fu0M5YEidFHCWP3HUT1OuutOK5JjiGBlgmO95iGw2o9kaSi+0Jbt6qJZK+hZB
-	84nBPNsA==;
-Received: from loth.rohan.me.apana.org.au ([192.168.167.2])
-	by formenos.hmeau.com with smtp (Exim 4.96 #2 (Debian))
-	id 1uciYM-007yZr-27;
-	Fri, 18 Jul 2025 18:58:56 +0800
-Received: by loth.rohan.me.apana.org.au (sSMTP sendmail emulation); Fri, 18 Jul 2025 20:58:55 +1000
-Date: Fri, 18 Jul 2025 20:58:55 +1000
-From: Herbert Xu <herbert@gondor.apana.org.au>
-To: Sakari Ailus <sakari.ailus@linux.intel.com>
-Cc: Olivia Mackall <olivia@selenic.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Hadar Gat <hadar.gat@arm.com>, Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Avi Fishman <avifishman70@gmail.com>,
-	Tomer Maimon <tmaimon77@gmail.com>,
-	Tali Perry <tali.perry1@gmail.com>,
-	Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>,
-	Benjamin Fair <benjaminfair@google.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@baylibre.com>,
-	Marek Vasut <marex@denx.de>,
-	Gatien Chevallier <gatien.chevallier@foss.st.com>,
-	linux-crypto@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	openbmc@lists.ozlabs.org, linux-rockchip@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH 05/80] hwrng: Remove redundant
- pm_runtime_mark_last_busy() calls
-Message-ID: <aHoo71TbepQD2Nsd@gondor.apana.org.au>
-References: <20250704075225.3212486-1-sakari.ailus@linux.intel.com>
- <20250704075359.3217036-1-sakari.ailus@linux.intel.com>
+	id 1uckan-0000000CcqR-1E55
+	for linux-mediatek@lists.infradead.org;
+	Fri, 18 Jul 2025 12:53:38 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 09F9F5C5DA9;
+	Fri, 18 Jul 2025 12:53:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D3E22C4CEEB;
+	Fri, 18 Jul 2025 12:53:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1752843215;
+	bh=DFqIGntCYSDgRSd++hhAmxslnI3X3C9xnvYkELthmFM=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=ZKGwlot3sTrqgSAuO8a//BzR/b211Jr14aksFtG1WBlaizl9ZmAGs2/mpGKDkClbF
+	 eqNVBFbAV77SUwwx6D8IGae2NBjNDgr4b2otgXIlKJ4A0J4k5NJKnXq2XPzbZJyV/v
+	 PycPOFD2keijufbU48D8Jo4LytnN0dOizHjUEHgepadpQCVK9aHJ6BhGMnbKbCCf/c
+	 HNQypMSO2sPMvzGNYcWJgz2uZw1qKwcRESvKxNZNZaxSOnZEIjwsUSpBWjE2p2UlYh
+	 0/q9AZ+39TZ8r4MIpS+fZ2t5hhfnSdfK3p2P87JoG8mWQk/u1h5Uzr7jEYmH0qYvij
+	 fLCsHcyFpFiEQ==
+From: Mark Brown <broonie@kernel.org>
+To: lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com, 
+ angelogioacchino.delregno@collabora.com, amergnat@baylibre.com, 
+ Guoqing Jiang <guoqing.jiang@canonical.com>
+Cc: zoran.zhan@mediatek.com, linux-sound@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+In-Reply-To: <20250710011806.134507-1-guoqing.jiang@canonical.com>
+References: <20250710011806.134507-1-guoqing.jiang@canonical.com>
+Subject: Re: [PATCH V2] ASoC: mediatek: mt8365-dai-i2s: pass correct size
+ to mt8365_dai_set_priv
+Message-Id: <175284321358.34755.13837470566210593486.b4-ty@kernel.org>
+Date: Fri, 18 Jul 2025 13:53:33 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250704075359.3217036-1-sakari.ailus@linux.intel.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.15-dev-cff91
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250718_035953_623828_3DAB2CF9 
-X-CRM114-Status: GOOD (  12.96  )
+X-CRM114-CacheID: sfid-20250718_055337_416075_8D4510BA 
+X-CRM114-Status: GOOD (  10.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,36 +75,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 04, 2025 at 10:53:59AM +0300, Sakari Ailus wrote:
-> pm_runtime_put_autosuspend(), pm_runtime_put_sync_autosuspend(),
-> pm_runtime_autosuspend() and pm_request_autosuspend() now include a call
-> to pm_runtime_mark_last_busy(). Remove the now-reduntant explicit call to
-> pm_runtime_mark_last_busy().
+On Thu, 10 Jul 2025 09:18:06 +0800, Guoqing Jiang wrote:
+> Given mt8365_dai_set_priv allocate priv_size space to copy priv_data which
+> means we should pass mt8365_i2s_priv[i] or "struct mtk_afe_i2s_priv"
+> instead of afe_priv which has the size of "struct mt8365_afe_private".
 > 
-> Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
-> ---
-> The cover letter of the set can be found here
-> <URL:https://lore.kernel.org/linux-pm/20250704075225.3212486-1-sakari.ailus@linux.intel.com>.
+> Otherwise the KASAN complains about.
 > 
-> In brief, this patch depends on PM runtime patches adding marking the last
-> busy timestamp in autosuspend related functions. The patches are here, on
-> rc2:
+> [   59.389765] BUG: KASAN: global-out-of-bounds in mt8365_dai_set_priv+0xc8/0x168 [snd_soc_mt8365_pcm]
+> ...
+> [   59.394789] Call trace:
+> [   59.395167]  dump_backtrace+0xa0/0x128
+> [   59.395733]  show_stack+0x20/0x38
+> [   59.396238]  dump_stack_lvl+0xe8/0x148
+> [   59.396806]  print_report+0x37c/0x5e0
+> [   59.397358]  kasan_report+0xac/0xf8
+> [   59.397885]  kasan_check_range+0xe8/0x190
+> [   59.398485]  asan_memcpy+0x3c/0x98
+> [   59.399022]  mt8365_dai_set_priv+0xc8/0x168 [snd_soc_mt8365_pcm]
+> [   59.399928]  mt8365_dai_i2s_register+0x1e8/0x2b0 [snd_soc_mt8365_pcm]
+> [   59.400893]  mt8365_afe_pcm_dev_probe+0x4d0/0xdf0 [snd_soc_mt8365_pcm]
+> [   59.401873]  platform_probe+0xcc/0x228
+> [   59.402442]  really_probe+0x340/0x9e8
+> [   59.402992]  driver_probe_device+0x16c/0x3f8
+> [   59.403638]  driver_probe_device+0x64/0x1d8
+> [   59.404256]  driver_attach+0x1dc/0x4c8
+> [   59.404840]  bus_for_each_dev+0x100/0x190
+> [   59.405442]  driver_attach+0x44/0x68
+> [   59.405980]  bus_add_driver+0x23c/0x500
+> [   59.406550]  driver_register+0xf8/0x3d0
+> [   59.407122]  platform_driver_register+0x68/0x98
+> [   59.407810]  mt8365_afe_pcm_driver_init+0x2c/0xff8 [snd_soc_mt8365_pcm]
 > 
->         git://git.kernel.org/pub/scm/linux/kernel/git/rafael/linux-pm.git \
->                 pm-runtime-6.17-rc1
-> 
->  drivers/char/hw_random/atmel-rng.c     | 1 -
->  drivers/char/hw_random/cctrng.c        | 1 -
->  drivers/char/hw_random/mtk-rng.c       | 1 -
->  drivers/char/hw_random/npcm-rng.c      | 1 -
->  drivers/char/hw_random/omap3-rom-rng.c | 1 -
->  drivers/char/hw_random/rockchip-rng.c  | 3 ---
->  drivers/char/hw_random/stm32-rng.c     | 1 -
->  7 files changed, 9 deletions(-)
+> [...]
 
-Patch applied.  Thanks.
--- 
-Email: Herbert Xu <herbert@gondor.apana.org.au>
-Home Page: http://gondor.apana.org.au/~herbert/
-PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
+Applied to
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+
+Thanks!
+
+[1/1] ASoC: mediatek: mt8365-dai-i2s: pass correct size to mt8365_dai_set_priv
+      commit: 6bea85979d05470e6416a2bb504a9bcd9178304c
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
