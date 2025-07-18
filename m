@@ -4,65 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4782BC83F1A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Jul 2025 02:15:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9015C83F1A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Jul 2025 03:32:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BYRufKjNFNWb4Gi95jC3kNsQIwacKvb60hA6ES6Plag=; b=jQ/Ou8CWToE9nyXg5NXLYoMoZ7
-	gJTO3GB9ryqb/ZHEuRGCfXj4lyTRp6sM+rnpiXuYRNQOpepD5jxqu5RGYK3ozjnYMDLVwjhgoIkaI
-	octbi1Q+PZ5jMGpLL8k/PNF5CIwEK779Mt1nOxG8FKZsCw6Oux2VNhXSBA8FVS0J9OWCe+Iis1Apl
-	l72n1uhbf5QMLgCHHpLNSjr9ReSoTWb4G4ljc/vJmRDLh637ASW+snIABDrRo9fqNH1KOLgWzGwWx
-	QJ//CDdARaBDxD/I/FNNj+eDWxs2tFGsYp2bFynDhJ/Ihu/j0ESS0CfunIBGEwI6puexv9H5d5C36
-	aUmXjGrg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=/XnizcyaYO5SMDnkkplcqDM82FAqRpOZhyUd/CT/vsY=; b=hvuCf4PFA+LyYDAvrztGC/nN9n
+	h4GGlzSBhwPKV45b3Gaf4aifOhiBDMoNCNfiXeTtEKpC/UQjUOFL7/ZcTTnIAuWHxnuys54AfnimW
+	u65xO7d+5xJGWrPrtpPgA14Sl2A556miBHWiRrJG8hCWfsTcwpCPt1j/072UTzhyYv/3OUsg3pyyo
+	x/6Ty0+f60Djss3Uw/2HGwCuecrPegeUR1uorDs/gge0jzD78Xo1ClEDkgfMt318k5t/utNU3wjRb
+	o+4OsRHs2YRQFIPnmVeI9CYyxoqmxbspxqu5OjKHrySxLiK2fa+09S9Q61e5SNk8WP2ITAMCqo+cV
+	43z1Z+Yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucadX-0000000BWr1-1LVP;
-	Fri, 18 Jul 2025 02:15:47 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1ucbq7-0000000BbTf-45OC;
+	Fri, 18 Jul 2025 03:32:51 +0000
+Received: from smtp21.cstnet.cn ([159.226.251.21] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucaOK-0000000BUv3-1oP0;
-	Fri, 18 Jul 2025 02:00:05 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id A6BA2A57AC7;
-	Fri, 18 Jul 2025 02:00:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5518CC4CEF4;
-	Fri, 18 Jul 2025 02:00:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752804003;
-	bh=+7wiZuzj0yMoHnu/9si51sXowCgUOaXc6z20kcCoavo=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=othhL9zlqDZKNANGMD5wqYAxXWHOnO+EJXicl0LkPogteFiw3lnKHL1nM0dtw2Ag/
-	 lzlvhFccU29AmSF7UpKMkW0x5BT1VofXb6kluoKea7xsZgBiVQc1oHyIDtNt3X+Kfd
-	 P5eiIMaGjRg53w2x38Z3B5SuIgQSV4ZEJYTKlryPnkIj3UnDn/4Sio0PMnLfcyNKFL
-	 joMRXq283+Ry97zN3CXiYK+7glguO2LVZ4GMf+mM0a694PGBGe/FGadtE2XYQmtQIz
-	 f3mDyoWidkWAi4oEgr/qB+BDxOYpmVW8eJfoeUEvFpxgPUn4tgfDFAyLAgI+jwbHt/
-	 t9Vo2GXXSZsnw==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 70BA2383BA3C;
-	Fri, 18 Jul 2025 02:00:24 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1ucbq4-0000000BbT8-0CME;
+	Fri, 18 Jul 2025 03:32:50 +0000
+Received: from icess-ProLiant-DL380-Gen10.. (unknown [211.71.28.34])
+	by APP-01 (Coremail) with SMTP id qwCowACnl6tLwHloCD0OBQ--.25172S2;
+	Fri, 18 Jul 2025 11:32:36 +0800 (CST)
+From: Ma Ke <make24@iscas.ac.cn>
+To: chunkuang.hu@kernel.org,
+	p.zabel@pengutronix.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	nancy.lin@mediatek.com
+Cc: akpm@linux-foundation.org,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	Ma Ke <make24@iscas.ac.cn>,
+	stable@vger.kernel.org
+Subject: [PATCH] drm/mediatek: Fix device/node reference count leaks in mtk_drm_get_all_drm_priv
+Date: Fri, 18 Jul 2025 11:32:26 +0800
+Message-Id: <20250718033226.3390054-1-make24@iscas.ac.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next] net: airoha: Fix a NULL vs IS_ERR() bug in
- airoha_npu_run_firmware()
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <175280402326.2141855.15347450324403463630.git-patchwork-notify@kernel.org>
-Date: Fri, 18 Jul 2025 02:00:23 +0000
-References: <fc6d194e-6bf5-49ca-bc77-3fdfda62c434@sabinyo.mountain>
-In-Reply-To: <fc6d194e-6bf5-49ca-bc77-3fdfda62c434@sabinyo.mountain>
-To: Dan Carpenter <dan.carpenter@linaro.org>
-Cc: robh@kernel.org, lorenzo@kernel.org, andrew+netdev@lunn.ch,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- kernel-janitors@vger.kernel.org
+X-CM-TRANSID: qwCowACnl6tLwHloCD0OBQ--.25172S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7uF1rZFykAFyruw4fGFyDZFb_yoW5JFW7pF
+	4UGFWFvrW8KF4UKwn5tFW8AF15CF1Iya1fWFyIq343Cw1rZryYk34rt34avrykArWkAF1f
+	JwnxtFy8ur4jkFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUUP014x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
+	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
+	1l84ACjcxK6xIIjxv20xvE14v26ryj6F1UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4j
+	6F4UM28EF7xvwVC2z280aVAFwI0_Cr1j6rxdM28EF7xvwVC2z280aVCY1x0267AKxVWxJr
+	0_GcWlnxkEFVAIw20F6cxK64vIFxWle2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xv
+	F2IEw4CE5I8CrVC2j2WlYx0E2Ix0cI8IcVAFwI0_Jr0_Jr4lYx0Ex4A2jsIE14v26r1j6r
+	4UMcvjeVCFs4IE7xkEbVWUJVW8JwACjcxG0xvY0x0EwIxGrwACjI8F5VA0II8E6IAqYI8I
+	648v4I1lFIxGxcIEc7CjxVA2Y2ka0xkIwI1lc7CjxVAaw2AFwI0_Jw0_GFylc2xSY4AK67
+	AK6r48MxAIw28IcxkI7VAKI48JMxC20s026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrVAF
+	wI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CEb7AF67AKxVWUtVW8ZwCIc4
+	0Y0x0EwIxGrwCI42IY6xIIjxv20xvE14v26r1j6r1xMIIF0xvE2Ix0cI8IcVCY1x0267AK
+	xVW8JVWxJwCI42IY6xAIw20EY4v20xvaj40_Jr0_JF4lIxAIcVC2z280aVAFwI0_Jr0_Gr
+	1lIxAIcVC2z280aVCY1x0267AKxVW8JVW8JrUvcSsGvfC2KfnxnUUI43ZEXa7VUjg4S5UU
+	UUU==
+X-Originating-IP: [211.71.28.34]
+X-CM-SenderInfo: ppdnvj2u6l2u1dvotugofq/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250717_190004_536119_B9EB6500 
-X-CRM114-Status: GOOD (  10.56  )
+X-CRM114-CacheID: sfid-20250717_203248_447661_56D08224 
+X-CRM114-Status: UNSURE (   9.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,29 +88,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Using device_find_child() and of_find_device_by_node() to locate
+devices could cause an imbalance in the device's reference count.
+device_find_child() and of_find_device_by_node() both call
+get_device() to increment the reference count of the found device
+before returning the pointer. In mtk_drm_get_all_drm_priv(), these
+references are never released through put_device(), resulting in
+permanent reference count increments. Additionally, the
+for_each_child_of_node() iterator fails to release node references in
+all code paths. This leaks device node references when loop
+termination occurs before reaching MAX_CRTC. These reference count
+leaks may prevent device/node resources from being properly released
+during driver unbind operations.
 
-This patch was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+As comment of device_find_child() says, 'NOTE: you will need to drop
+the reference with put_device() after use'.
 
-On Tue, 15 Jul 2025 18:01:10 -0500 you wrote:
-> The devm_ioremap_resource() function returns error pointers.  It never
-> returns NULL.  Update the check to match.
-> 
-> Fixes: e27dba1951ce ("net: Use of_reserved_mem_region_to_resource{_byname}() for "memory-region"")
-> Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
-> ---
->  drivers/net/ethernet/airoha/airoha_npu.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+Found by code review.
 
-Here is the summary with links:
-  - [net-next] net: airoha: Fix a NULL vs IS_ERR() bug in airoha_npu_run_firmware()
-    https://git.kernel.org/netdev/net-next/c/1e5e40f2558c
+Cc: stable@vger.kernel.org
+Fixes: 1ef7ed48356c ("drm/mediatek: Modify mediatek-drm for mt8195 multi mmsys support")
+Signed-off-by: Ma Ke <make24@iscas.ac.cn>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 27 +++++++++++++++++---------
+ 1 file changed, 18 insertions(+), 9 deletions(-)
 
-You are awesome, thank you!
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 7c0c12dde488..c78186debd3e 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -388,19 +388,24 @@ static bool mtk_drm_get_all_drm_priv(struct device *dev)
+ 
+ 		of_id = of_match_node(mtk_drm_of_ids, node);
+ 		if (!of_id)
+-			continue;
++			goto next;
+ 
+ 		pdev = of_find_device_by_node(node);
+ 		if (!pdev)
+-			continue;
++			goto next;
+ 
+ 		drm_dev = device_find_child(&pdev->dev, NULL, mtk_drm_match);
+-		if (!drm_dev)
+-			continue;
++		if (!drm_dev) {
++			put_device(&pdev->dev);
++			goto next;
++		}
+ 
+ 		temp_drm_priv = dev_get_drvdata(drm_dev);
+-		if (!temp_drm_priv)
+-			continue;
++		if (!temp_drm_priv) {
++			put_device(drm_dev);
++			put_device(&pdev->dev);
++			goto next;
++		}
+ 
+ 		if (temp_drm_priv->data->main_len)
+ 			all_drm_priv[CRTC_MAIN] = temp_drm_priv;
+@@ -412,10 +417,14 @@ static bool mtk_drm_get_all_drm_priv(struct device *dev)
+ 		if (temp_drm_priv->mtk_drm_bound)
+ 			cnt++;
+ 
+-		if (cnt == MAX_CRTC) {
+-			of_node_put(node);
++		put_device(drm_dev);
++		put_device(&pdev->dev);
++
++next:
++		of_node_put(node);
++
++		if (cnt == MAX_CRTC)
+ 			break;
+-		}
+ 	}
+ 
+ 	if (drm_priv->data->mmsys_dev_num == cnt) {
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.25.1
 
 
