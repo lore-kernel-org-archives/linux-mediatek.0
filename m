@@ -4,70 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C34CAC83F17
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Jul 2025 09:58:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51C30C83F17
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Jul 2025 10:34:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WdqP2JfgkIeSj/XihIppRjpKsQ7taFQ+rJpciVMKAdA=; b=4r11+2iRTil427qaVvo7pC3G8C
-	t+D7hFEVvZnmnBrlbja6FTO0eRJ89YpfqwRDGF3U+aY+NJW0CFjnhTgZvIMYFAc23tdn2pEQmcEcI
-	7NrCOmzSyfijgl2UkuX8MLSGGjrnCsBF0vOC6SIlczXIvcbMzAdue04omSlbfGYOSVOZQOR6DhiU+
-	J7DJ/NO36kCKFGQvRoaao3nkQVM8KFQLC1A3IJCAbWKY89yNP4iYKSdX6WP4PFv1xbvaJm8qpLCom
-	qNwatR73+Pn8bAtik/oHXol37MCUraOHQYOMktgeSzfTs7nfpleCc/5nxbnOLPBmemqLfQAQBhtFA
-	wOYhBXPA==;
+	bh=jG9Ppd2qnuWgSBa/UiFctNI3f0OAqsHLFTkvkud8wLg=; b=YmpkJd51kN3jmEKeRAKdg+MqIk
+	KvBRaX2iKmE+wlRidrDGOld53bCqMPtJ/KhKB5GOFbCGuW4xDY+ZhU2aekBhvuUnVWmIOkt7j35wI
+	Gz/cswCDGoCos/X+qZ7qqMZ7VZgk6OW4sXlFyMQ7Cu8ErNtdYioXRzFIz0ix9flgvdA8+NiHcUuos
+	k/pNBULa/LdzSXDQg7D34sDCicTGcIObpj3/r7WhXA2TxS1bmHyqXzdjqX5sq1I7cyKIaHtLbUZZM
+	Xtfup82jbx2ZRs1Bv7ILICJhAxZHKmxMOfQRqJO8EVTqCJP3iJ+fr8Crf58dvbEkQQwwRB6nYJNQK
+	gf4eC/Yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uchrl-0000000CFct-2O0V;
-	Fri, 18 Jul 2025 09:58:57 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uciQG-0000000CJL1-1Scx;
+	Fri, 18 Jul 2025 10:34:36 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uchZH-0000000CDHh-1Eih;
-	Fri, 18 Jul 2025 09:39:52 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 6463C5C61C2;
-	Fri, 18 Jul 2025 09:39:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8EB72C4CEEB;
-	Fri, 18 Jul 2025 09:39:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752831590;
-	bh=ATisPNWNr/NpB62B2F5Uq+5svo7dwS+kjzLt4tvM/K8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=WRFPe2zzvXaR+wqRNqtPQ0xneaYD4yub6M6czL2yeoub91++wGWiWDAFotvunoArf
-	 ytw7tz8snJE802azQGmTAU3UPgOJ7Vg1gsmoB+xnrvHTPUH3LeV/rzUsgZTkFHpl5e
-	 BfcRST/FFoiyCpkeDlHD2QL5XKC7Ug0U1Sf+byuvZgXA+1JFdZ97Cilv3vNBvQVEMq
-	 36DxwgcbDmr8beQG76QpT7U1grOV8jGxfwhYWsB2zlP1f0zNL5FHUTMGJ4IJqQDzMR
-	 g11qaPv6rNFYD2Vy+tgqUA56d4EoMAloVrjVW8V/74KBIjXCjwlJYtXPQCQvKqFIVF
-	 fAuM7vp+MMz8Q==
-Date: Fri, 18 Jul 2025 11:39:47 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Simon Horman <horms@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH net-next v4 1/7] dt-bindings: net: airoha: npu: Add
- memory regions used for wlan offload
-Message-ID: <aHoWY6iGN-lJnu60@lore-desk>
-References: <20250717-airoha-en7581-wlan-offlaod-v4-0-6db178391ed2@kernel.org>
- <20250717-airoha-en7581-wlan-offlaod-v4-1-6db178391ed2@kernel.org>
- <20250718-sceptical-blue-bird-7e96e3@kuoka>
+	id 1uchoX-0000000CFAK-0sd9
+	for linux-mediatek@lists.infradead.org;
+	Fri, 18 Jul 2025 09:55:38 +0000
+X-UUID: 571d817e63bd11f09f706fa2197c6ceb-20250718
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=jG9Ppd2qnuWgSBa/UiFctNI3f0OAqsHLFTkvkud8wLg=;
+	b=a9hX8vBJe7BiAV7kXSGDB/ACxtpKxljxm9JXw7DuZpYt/o6sEu0ZRLs3ko65p5E22d72vGbqudfq/7Fg4niVmXyS2NwtOMb9uDdFrVy/pZpme75UqF8XcUcmaDD4A/fPe3ZGJ5wqBNWokqZEwb+my77ctYc4CnkoBDUna4UoSOo=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.2,REQID:dcbfbe5a-ccf6-4745-a7e7-c3705d91627b,IP:0,UR
+	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:-5
+X-CID-META: VersionHash:9eb4ff7,CLOUDID:f95f059a-32fc-44a3-90ac-aa371853f23f,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
+	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
+	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 571d817e63bd11f09f706fa2197c6ceb-20250718
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1844894585; Fri, 18 Jul 2025 02:55:30 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Fri, 18 Jul 2025 17:55:26 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Fri, 18 Jul 2025 17:55:26 +0800
+From: <peter.wang@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>
+CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
+	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
+	<yi-fan.peng@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
+	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
+	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>, <bvanassche@acm.org>
+Subject: [PATCH v2 3/9] ufs: host: mediatek: Change ref-clk timeout policy
+Date: Fri, 18 Jul 2025 17:51:46 +0800
+Message-ID: <20250718095524.682599-4-peter.wang@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20250718095524.682599-1-peter.wang@mediatek.com>
+References: <20250718095524.682599-1-peter.wang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="3JqbMrQnCkpywZ9L"
-Content-Disposition: inline
-In-Reply-To: <20250718-sceptical-blue-bird-7e96e3@kuoka>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250718_023951_409428_8E500879 
-X-CRM114-Status: GOOD (  20.83  )
+X-CRM114-CacheID: sfid-20250718_025537_271420_FD138629 
+X-CRM114-Status: GOOD (  11.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,74 +91,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Peter Wang <peter.wang@mediatek.com>
 
---3JqbMrQnCkpywZ9L
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This patch updates the timeout policy for ref-clk control.
 
-> On Thu, Jul 17, 2025 at 08:57:42AM +0200, Lorenzo Bianconi wrote:
-> > Document memory regions used by Airoha EN7581 NPU for wlan traffic
-> > offloading. The brand new added memory regions do not introduce any
-> > backward compatibility issues since they will be used just to offload
-> > traffic to/from the MT76 wireless NIC and the MT76 probing will not fail
-> > if these memory regions are not provide, it will just disable offloading
-> > via the NPU module.
->=20
-> That's not what I see entirely. I see the same problem I told you already.
-> of_reserved_mem_region_to_resource_byname returns error ->
-> airoha_npu_wlan_init_memory returns error -> your other patchset prints
-> big fat warning in mt7996_pci_probe().
+- If a clock-on operation times out, it is assumed that the clock is
+  off. The system will notify TFA to perform clock-off settings.
+- If a clock-off operation times out, it is assumed that the clock
+  will eventually turn off. The 'ref_clk_enabled' flag is set directly.
 
-Is it ok to use dev_info() instead dev_warn() or do you prefer to completely
-remove the log?
+Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+---
+ drivers/ufs/host/ufs-mediatek.c | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
 
->=20
-> So all correct DTS now gets a warning. Warning is a state of failure,
-> even if probe proceeds.
->=20
-> I don't understand why you can't make it fully optional, so also fully
-> backwards compatible.
+diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
+index 53702e74947a..ffc4a27aae7b 100644
+--- a/drivers/ufs/host/ufs-mediatek.c
++++ b/drivers/ufs/host/ufs-mediatek.c
+@@ -351,7 +351,16 @@ static int ufs_mtk_setup_ref_clk(struct ufs_hba *hba, bool on)
+ 
+ 	dev_err(hba->dev, "missing ack of refclk req, reg: 0x%x\n", value);
+ 
+-	ufs_mtk_ref_clk_notify(host->ref_clk_enabled, POST_CHANGE, res);
++	/*
++	 * If clock on timeout, assume clock is off, notify tfa do clock
++	 * off setting.(keep DIFN disable, release resource)
++	 * If clock off timeout, assume clock will off finally,
++	 * set ref_clk_enabled directly.(keep DIFN disable, keep resource)
++	 */
++	if (on)
++		ufs_mtk_ref_clk_notify(false, POST_CHANGE, res);
++	else
++		host->ref_clk_enabled = false;
+ 
+ 	return -ETIMEDOUT;
+ 
+-- 
+2.45.2
 
-I am completely fine to make it fully optional, but can you please explain
-what you mean here with 'optional'?
-
-At the moment in mt76_npu_init() we first look for the "airoha,npu" property
-in mt76 node to load the NPU pointer running airoha_npu_get():
-
-wifi@0,0 {
-	compatible =3D "mediatek,mt76";
-	...
-	airoha,npu =3D <&npu>;
-	...
-};
-
-If this property is defined in the wifi node I guess it is fine to assume
-even the NPU memory regions are properly defined int the DTS.
-
-Is it ok to use dev_info() instead of dev_warn() in mt7996_pci_probe() if
-the mt76_npu_init() returns an error (e.g. if the "airoha,npu" is not defin=
-ed)
-or do you prefer to do something else to make this process optional?
-
-Regards,
-Lorenzo
-
->=20
-> Best regards,
-> Krzysztof
->=20
-
---3JqbMrQnCkpywZ9L
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaHoWYwAKCRA6cBh0uS2t
-rMH+AP9mKzNrRKajI0dIizZfVTYflu21cQpHgECLJi/0fBDXygEA5dRSNsUQcyo4
-ll6BHt9geLz7bnYYSRTsginFvI+8iA4=
-=QkuP
------END PGP SIGNATURE-----
-
---3JqbMrQnCkpywZ9L--
 
