@@ -4,65 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 042F2C83F34
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Jul 2025 07:16:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C7C9C83F17
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Jul 2025 08:01:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6wnS2xtxbpcAFUB1BnrJaz1aAjdAqzNZyXAbUulIYnU=; b=SvKg4SvjfYE/t8dKQWh/s6otoO
-	OWzRFNhUF+Qv8Xsi9a2a3C1w1HBP80qT8WFO0VmAlT3qrtgjrbiT1oKOltX5/8XxcpPtpNRKWuywp
-	ZNuIG0CJbstnldJdDEibws1FL5ZYKqVR6bTXfxlVjMTvnF2X2g9s1l+6b5z2zBbnEEDPtFFaIB6FH
-	g16KRzxEIzEdDKqbtuAukLFhD4GlZ6Mfp2BAymlH6M5204XH5Z13hdKl5+B1MkjOJdOvIoKGnCd81
-	11dg9/mgVK0NzsTmSUPxzeQM4QY3lr845g3nnaaTC4jejjLQ6XyDfA+JtZNIuWRc3/5ZxAz4w2ar1
-	GrOa0XFA==;
+	bh=oZtlXx9YmGtcHhy9EjFkXTPsShcp3UsIVjQ0NqQyPIo=; b=2t2zdWAcywikeIx+8vEWzQHH/p
+	VRKVamE88JT9EAUKB9j4CC1JCC1SElVo9Uds6w0yGDf5coRsDfF9vQOk32ijPgbse2s3F09tmMnkJ
+	d+RbHwQD9o0n/I2kTZWPtcUTpS/Zr9v3ovA6FshTT6FZsmE8lWGdag+Jhpjwzp/ZCJ7693L2MOEa1
+	eMZ2K1/5LCdLe57sIEQv6f4fBOtEM2sf5UkKh/p92GaxBLppvjkyhmeSNz4dV+rqknbLiXtja5pRY
+	Jdq/Yqe/iIpMiyGsO65goENO22W9E3uiBpQHUc2m++ReEx9BOGBFppDeQtDJXiKxHFONFC83qxEbO
+	nlHkrmdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucfKe-0000000BraZ-2HGe;
-	Fri, 18 Jul 2025 07:16:36 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1ucg1y-0000000BxkB-1mVa;
+	Fri, 18 Jul 2025 08:01:22 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucfIB-0000000BrLH-39zg;
-	Fri, 18 Jul 2025 07:14:04 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 293645C5776;
-	Fri, 18 Jul 2025 07:14:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 48874C4CEED;
-	Fri, 18 Jul 2025 07:14:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752822842;
-	bh=6wnS2xtxbpcAFUB1BnrJaz1aAjdAqzNZyXAbUulIYnU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=oVP99uSgcEX3099jFyPoXovhI+iXC/4894QOq8GLAMo+8ebJE8XBwBedRXTWsAVxv
-	 Am+ULddeOWzprPWACkqZhMt8wTHF7woLG05KwrO3HplkKO+5Ecjvl73cm/8WR5qGyh
-	 AjCP5KKDgn6SXcFjY95xtpDaObC5JjKzRGewdpdb+11XE1bV/JSh93YYgPOxa64DY5
-	 1I6d88v7lpNz1dUgM3VqJUBMticCE+k5fUtnBslcCm4gf7wY3uhVe/I+jBniKkbbOd
-	 9MwThN779mxxK6FZsZMx+EEiZGTMy/Jt6Hvku7db46Sohp1ZQnZN37vkA02kZ4pWr/
-	 /MquzMECERMag==
-Date: Fri, 18 Jul 2025 09:14:00 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, 
-	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Simon Horman <horms@kernel.org>, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH net-next v4 1/7] dt-bindings: net: airoha: npu: Add
- memory regions used for wlan offload
-Message-ID: <20250718-sceptical-blue-bird-7e96e3@kuoka>
-References: <20250717-airoha-en7581-wlan-offlaod-v4-0-6db178391ed2@kernel.org>
- <20250717-airoha-en7581-wlan-offlaod-v4-1-6db178391ed2@kernel.org>
+	id 1ucfxR-0000000Bwao-2quo;
+	Fri, 18 Jul 2025 07:56:42 +0000
+X-UUID: ba0a7d4863ac11f09f706fa2197c6ceb-20250718
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=oZtlXx9YmGtcHhy9EjFkXTPsShcp3UsIVjQ0NqQyPIo=;
+	b=al4+qcSt4Ahu+nJCMo6NrymJTIyOvOvKcNcBwn2yoMDpOgkBny7QbWf4aUsowUxIRGMiozWt3qvzJV7OqdnE3BI5Zvle5/4Uoxypf8PiUkL8SyS5n+JQJpi3mXtPkVd5LhHuHQgJg5o9cTqRtI5PWB4IWz2qvKXZUWu3RR0NEqw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.2,REQID:240b48b3-7d5a-4b2b-8029-3437cfbd077b,IP:0,UR
+	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:-5
+X-CID-META: VersionHash:9eb4ff7,CLOUDID:dc93eb0e-6968-429c-a74d-a1cce2b698bd,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
+	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
+	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: ba0a7d4863ac11f09f706fa2197c6ceb-20250718
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <sirius.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 969178783; Fri, 18 Jul 2025 00:56:35 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Fri, 18 Jul 2025 15:56:32 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Fri, 18 Jul 2025 15:56:32 +0800
+From: Sirius Wang <sirius.wang@mediatek.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Greg Kroah-Hartman
+	<gregkh@linuxfoundation.org>, Jiri Slaby <jirislaby@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Sean Wang <sean.wang@mediatek.com>
+CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-serial@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <wenst@chromium.org>,
+	<xavier.chang@mediatek.com>, Sirius Wang <sirius.wang@mediatek.com>
+Subject: [PATCH v5 1/3] dt-bindings: arm: Add compatible for MediaTek MT8189
+Date: Fri, 18 Jul 2025 15:56:24 +0800
+Message-ID: <20250718075630.644870-2-sirius.wang@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20250718075630.644870-1-sirius.wang@mediatek.com>
+References: <20250718075630.644870-1-sirius.wang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20250717-airoha-en7581-wlan-offlaod-v4-1-6db178391ed2@kernel.org>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250718_001403_828091_B057AF58 
-X-CRM114-Status: UNSURE (   9.45  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250718_005641_725223_2A8DA0A1 
+X-CRM114-Status: GOOD (  10.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,26 +90,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 17, 2025 at 08:57:42AM +0200, Lorenzo Bianconi wrote:
-> Document memory regions used by Airoha EN7581 NPU for wlan traffic
-> offloading. The brand new added memory regions do not introduce any
-> backward compatibility issues since they will be used just to offload
-> traffic to/from the MT76 wireless NIC and the MT76 probing will not fail
-> if these memory regions are not provide, it will just disable offloading
-> via the NPU module.
+This commit adds dt-binding documentation for the MediaTek MT8189
+reference board.
 
-That's not what I see entirely. I see the same problem I told you already.
-of_reserved_mem_region_to_resource_byname returns error ->
-airoha_npu_wlan_init_memory returns error -> your other patchset prints
-big fat warning in mt7996_pci_probe().
+Signed-off-by: Sirius Wang <sirius.wang@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ Documentation/devicetree/bindings/arm/mediatek.yaml | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-So all correct DTS now gets a warning. Warning is a state of failure,
-even if probe proceeds.
-
-I don't understand why you can't make it fully optional, so also fully
-backwards compatible.
-
-Best regards,
-Krzysztof
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+index 19ed9448c9c2..5052b6b2dcce 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+@@ -382,6 +382,10 @@ properties:
+           - enum:
+               - mediatek,mt8188-evb
+           - const: mediatek,mt8188
++      - items:
++          - enum:
++              - mediatek,mt8189-evb
++          - const: mediatek,mt8189
+       - description: Google Hayato
+         items:
+           - const: google,hayato-rev1
+-- 
+2.45.2
 
 
