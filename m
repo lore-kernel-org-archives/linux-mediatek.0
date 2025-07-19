@@ -4,96 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2004C83F27
-	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Jul 2025 13:14:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BBBAC83F34
+	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Jul 2025 16:05:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Flp2kuB43upoDmZKHtPKy1TYQrSu+LhhKaLm1sYr4pw=; b=ljg8g7dSl5F0+Chs10UzKPBwDx
-	+HihgXxZZ7HYyR6C+YY9a693zM2cItHM/sQdXPtmQ1VbKMF9oQQCU6euR40XXvIqQNuJ9L6l2QEJR
-	Sz49s/ciTGQNYAOMSZ7AYrNO+bvnxGuF7/aGb27VuBF1mC+UW0KzkurJuCIdqOp3Jn358O35rrOE1
-	xSW1e9GFNhTfy3Y4dwmighTtGQKv3B7U+l5L4askuAhW52g+P3MY5qoMveC1HTXkXg8wd6AaLd9+b
-	UMS8VykOn8YPTcU2DfD9BH+Tc2JVvqLGY8VpYwnVMCJZt3ZJXRh8Hvc7s873s/s9MnzHa4xX73dTi
-	Fy49309A==;
+	bh=WJxRZr7iN1QAKs2m80VW48YbRh0uObEphOGlhuo4nf8=; b=Ttg7vvlkFNWTfeYmYWUUYL41mp
+	9Qg5mowWPPRW399kJ2qxP2JHOka5EyY2HN/ibo4gqhADfmH+DtxF1ehFVx9gOgfd8KdMGw2Dr3uDk
+	Q3KqyKLP7S8C7xfkEhpf9BipQVO+zwkPsoMeqLM1Jg2IwB30IJHPr//tlO2xCyc23QowYGkypNlIl
+	vInt+5XDM8E+z5DlynmvxeWAoR5pju73qVAydOKiLb8/vm+uEyITeym70IP8rj/hCP6cH75VfQQ7m
+	AUCcei7xDpH3PCut44+MfEVgULYiiso+WZ9hA7osCPnH2klHB0sh3ta301Ujcx32ztW9I9u1dKoBx
+	tB2FsM7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ud7OO-0000000EI67-2txZ;
-	Sat, 19 Jul 2025 13:14:20 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1udA3a-0000000EPup-2KzX;
+	Sat, 19 Jul 2025 16:05:02 +0000
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ud77H-0000000EGWG-3qhM;
-	Sat, 19 Jul 2025 12:56:40 +0000
-Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-3a575a988f9so1723889f8f.0;
-        Sat, 19 Jul 2025 05:56:39 -0700 (PDT)
+	id 1udA16-0000000EPmk-2rmz
+	for linux-mediatek@lists.infradead.org;
+	Sat, 19 Jul 2025 16:02:30 +0000
+Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-553be4d2fbfso3143549e87.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 19 Jul 2025 09:02:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1752929798; x=1753534598; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+        d=linaro.org; s=google; t=1752940947; x=1753545747; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Flp2kuB43upoDmZKHtPKy1TYQrSu+LhhKaLm1sYr4pw=;
-        b=SgT3ELf954zDOrWi7Bf+Wi1fQ6aCKlkxjF4v3P9H2CQYVJBA+HfMNUrOn8HGHwBJkK
-         j+MoMA57cQSKCsAJE2TdKcdUn1NMVlZEFOpS6FFyalIzK4GMv4GTmpA7QPx3aRbiuEqk
-         4WPFm7tDl628aYQe1B68rFzDrIWgJSz357+7MVNvzRnWzU/Cat11aUoCz2DlUC3AEmdp
-         cmwSPi7gcWw4stog+D9UrYIz9t9M10f/UQ/6henCvhQ5oZgvPA+u6t12iiCt2rO3kigX
-         DqNsJHpzRMOTw62olJ9wxAGSmM+EWj2w7ylm7ooF8e3S0+SB40mkXICpVkDDAi0arBqv
-         br3g==
+        bh=WJxRZr7iN1QAKs2m80VW48YbRh0uObEphOGlhuo4nf8=;
+        b=vH1Mxiz+XXpBKkcespbtnXykg19cfuR+Lf1BX4YhFxwkmJozTDnXfo8N2YpNf1Yd7D
+         bLH7H+2H/8oGihuQ71pUnA6o7KXkSKRMAGSU1oM2jjZPya97wZ9cwY9EsXW26e2swsrj
+         DSlMMI3s3GHwEsB7Xto8OB8A5fGjbG9XnozKZUAwrMPJ/banp0QnbWdwzrOiuDoKm1Bp
+         t5d412gGZojTz2oY6Z2oY66/Ks0qRjYTNJVpdC9i9glP51ZEfGkdO7bcU2xKpIdWeNB3
+         EoM4lLUCbqECSR3bQ0vRsnjwsMB0Xi06XsP3USnyMmxFUc3zYcXBy3sKL3MgM+BvI/Bs
+         uxuw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1752929798; x=1753534598;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20230601; t=1752940947; x=1753545747;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Flp2kuB43upoDmZKHtPKy1TYQrSu+LhhKaLm1sYr4pw=;
-        b=WU9lFcZ+SHudE6eFVSM9bidHDO2mwK4w6AQAzOqZsvYC06d3WHRouWsxxsK9J9CHUB
-         50eD4x4zx54/NaFNaqGx9cTNZ1cX64/Po+UtpqpXxxLKfOsDgnzft6xvtD8VmDzzcq18
-         4H4MgYxFM2XroLkZY0/LYcpOnUGudEkAlp8IBXeqO2ECNE3JXISBTVb6HeWptOTJ1/jp
-         2YpXC9ORWPyv+4QByygCj+5NVjFVUnRnrrnUGJFfY8PnjsSgaE/ySvur39fovOoodaEm
-         eH2Z/OzmwsKcdi9e68CDv+1w9bM3zJLb9linrMh7bUXTMZR8KUdliVhZ+mDnC2dHKRqh
-         mmwg==
-X-Forwarded-Encrypted: i=1; AJvYcCUsDdJg3qxpGVyzBG8TP4KnQ2RF3L7rkFjFMaaB9yrvZbQh7n6uVdUJd+ZPTi5JLH5mqSU2KJ+Iizx3y/XT2iDP@lists.infradead.org, AJvYcCXMPgxxnhr8FL75icVzr3s+4FFkvR05fiEW3n7CUkRPpR1CIzeN/fpr/3KmcQDl6U4NMwSDVlw407DX47CJf+0=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwAI9W61SsQuhPKsmLGzjAfUx9TNQvw/789fR7CCPxOSx/7YlAr
-	GmXksY4Zh3HOGrYgu6n0quYwap7yt+OrYx/j5pVQ5W6YLPK6fRmBI1kCwI4Vrw==
-X-Gm-Gg: ASbGncsfMVKcnRx5DhnJ8mtTpnrVq/YBVha/8StkRBuMmrADvNNR4y1joVdNXKjaQJk
-	uc05z/JyRukWbn9dcO9PaT8MiJiD71m3nbxt5mt3+A9T25Vu0e2B2QPuGyqlI0dE/8LEbepbim1
-	3E7l8f8h9ekS1/9Iu8DSYDp6U8NTGe+73TzJetGrz+3i06+f8W6+N6vSJnugVTRR4BjFmsalIbF
-	uyO8jYlYkgQeoiX2qoE+d3cVi9gI/wjrM5sKLuzmDFoM689fTviyXz+qwTwtFdgLQqp2GwUi/QJ
-	yf+EIhYU8ctWkXwueXx8TyxiNv4iN6sW5RUWgH/nz/W2Rz/3cRDIWbM3nNoXqUcDOLQnTjuBnf9
-	6MdFAcZQQU5Nez4p6rd7uz6/s6fRCgANsPn/5NtCNoA8rG/EMVOySQZ0ToL0pt7KzThhpgoIIr4
-	U+
-X-Google-Smtp-Source: AGHT+IE4JOLUnKqTG+RRT3va8EmyFFWbs2GSaAaRZYzN4jRFgloh4aLC71f8N6Pli1m8JiHLL5dIBg==
-X-Received: by 2002:a5d:64cd:0:b0:3a4:f7e6:284b with SMTP id ffacd0b85a97d-3b61b0ec05bmr5500785f8f.10.1752929798033;
-        Sat, 19 Jul 2025 05:56:38 -0700 (PDT)
-Received: from Ansuel-XPS24 (host-212-171-170-230.retail.telecomitalia.it. [212.171.170.230])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-4562e81ccb4sm106688005e9.17.2025.07.19.05.56.36
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 19 Jul 2025 05:56:37 -0700 (PDT)
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Stefan Roese <sr@denx.de>,
-	Andi Shyti <andi.shyti@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-i2c@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Christian Marangi <ansuelsmth@gmail.com>
-Subject: [PATCH 5/5] i2c: mt7621: make device reset optional
-Date: Sat, 19 Jul 2025 14:56:15 +0200
-Message-ID: <20250719125617.8886-6-ansuelsmth@gmail.com>
-X-Mailer: git-send-email 2.50.0
-In-Reply-To: <20250719125617.8886-1-ansuelsmth@gmail.com>
-References: <20250719125617.8886-1-ansuelsmth@gmail.com>
+        bh=WJxRZr7iN1QAKs2m80VW48YbRh0uObEphOGlhuo4nf8=;
+        b=k1l+78LbcZpP9sOBDR7gjA1U/pem5H+UT6hre78903WHPgEjNXoLZJHgiC7xSciCSF
+         P+IjeKgMQakkVfhISF+mjk+AtUoSCWb5/EJB8yKTJzsIQwnSwY9bToDBlOXsGCEcPeYY
+         5iIl04AS0mgeSkLB2ZroVy37mmaKfXcCoWD+H7wpHPMqM21b6jd45bLhD9GYBZ56qbu1
+         1ATvtLPAREN7WaiciNE7U7zv7h2iPA+7XqHRVD9r3vo0lmq/np1HsWq/2WvrVpdeJn1z
+         Fxueu7JNEkne7GlduyJ50khlVOC442b3F5gwXPvJeQFHyjQDMXHML+lRZouKtbOoGKCj
+         kAUQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXe2EKatI5jYkogaaHkPylAFqHVquAq4fgwB6qiqgtge6FpJzlRaxSRXQe2XG587A80d5vBaiLUw21RtfjBkg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyQLTdaZrdAcw1ThGWK1JINXGJmSGgRQi5cDNwFcL7DUZKjusyN
+	84lpA/V6gw71LQrVNe4aeXR1zpw0RizCrSMFDGh5dxpIHy3P1/Ip6oP6uY3V/WCzwT3p3iw9jb0
+	CLOBDsJPJrDyJ9mL6I2fX4vjdzihIRXZmcpiYLOnWgw==
+X-Gm-Gg: ASbGncuivwzabGFuKEHbm1H5KSrem/OW3QIFvV3DdzoTpis2NwDNE/lkceldXHqMDnr
+	cLsUMGFG8AeXvrfld9Xv+SnoMbctieslbRRb8Jz1h0tkE1f0ktVTxcB/eQNph4xoo5kaclzH8PO
+	nxGsH0wLHTbdbKSTZwmrmHUeDGzfbLSC8pR/yPDalVCab9lKZK+WXsS1CHt3q142yYLViW75gYH
+	46YoBY=
+X-Google-Smtp-Source: AGHT+IEoUxfZHhjopPDobqn7dOjOmBm5Yh2lx21AMKQLkwO7yH4BlU0K80uOKrtvDizTOqyz64KGrJ56htRl33CUOe0=
+X-Received: by 2002:a05:6512:3406:b0:553:241d:4e7d with SMTP id
+ 2adb3069b0e04-55a23f6dd82mr3887668e87.42.1752940946812; Sat, 19 Jul 2025
+ 09:02:26 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20250709-pinctrl-gpio-pinfuncs-v2-0-b6135149c0d9@linaro.org>
+In-Reply-To: <20250709-pinctrl-gpio-pinfuncs-v2-0-b6135149c0d9@linaro.org>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Sat, 19 Jul 2025 18:02:15 +0200
+X-Gm-Features: Ac12FXztrlt_TII82ZBIkZmMLTzLg24otRAxfGOCzM7K4BljVaj3bGcukozw-cQ
+Message-ID: <CACRpkdZN3qAJdvDkzvr0_=7grNHWFQ6M+_b=BvREq+PyosBmiA@mail.gmail.com>
+Subject: Re: [PATCH v2 00/12] pinctrl: introduce the concept of a GPIO pin
+ function category
+To: Bartosz Golaszewski <brgl@bgdev.pl>
+Cc: Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>, 
+	Alexey Klimov <alexey.klimov@linaro.org>, Lorenzo Bianconi <lorenzo@kernel.org>, 
+	Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Paul Cercueil <paul@crapouillou.net>, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mips@vger.kernel.org, 
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250719_055639_954132_39066C3D 
-X-CRM114-Status: GOOD (  11.93  )
+X-CRM114-CacheID: sfid-20250719_090228_729758_307997D6 
+X-CRM114-Status: UNSURE (   6.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,28 +104,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Airoha SoC that makes use of the same Mediatek I2C driver/logic doesn't
-have reset line for I2C so use optional device_reset variant.
+On Wed, Jul 9, 2025 at 4:39=E2=80=AFPM Bartosz Golaszewski <brgl@bgdev.pl> =
+wrote:
 
-Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
----
- drivers/i2c/busses/i2c-mt7621.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> Bartosz Golaszewski (12):
+>       pinctrl: pinmux: open-code PINCTRL_FUNCTION_DESC()
+>       pinctrl: provide pinmux_generic_add_pinfunction()
+>       pinctrl: equilibrium: use pinmux_generic_add_pinfunction()
+>       pinctrl: airoha: use pinmux_generic_add_pinfunction()
+>       pinctrl: mediatek: moore: use pinmux_generic_add_pinfunction()
+>       pinctrl: keembay: use pinmux_generic_add_pinfunction()
+>       pinctrl: ingenic: use pinmux_generic_add_pinfunction()
 
-diff --git a/drivers/i2c/busses/i2c-mt7621.c b/drivers/i2c/busses/i2c-mt7621.c
-index b4dc1fb269a6..6e3848f163f0 100644
---- a/drivers/i2c/busses/i2c-mt7621.c
-+++ b/drivers/i2c/busses/i2c-mt7621.c
-@@ -91,7 +91,7 @@ static void mtk_i2c_reset(struct mtk_i2c *i2c)
- 	u32 reg;
- 	int ret;
- 
--	ret = device_reset(i2c->adap.dev.parent);
-+	ret = device_reset_optional(i2c->adap.dev.parent);
- 	if (ret)
- 		dev_err(i2c->dev, "I2C reset failed!\n");
- 
--- 
-2.50.0
+Patches 1-7 applied!
 
+Expect qcom to follow early in the next development cycle.
+
+Yours,
+Linus Walleij
 
