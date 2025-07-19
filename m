@@ -4,90 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 118D7C83F34
-	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Jul 2025 08:28:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDA2AC83F34
+	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Jul 2025 13:01:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9nOVatDFiRlh5sqXFbOnFLUTQiQD1tlN3s2KcV26RJI=; b=1i/HErI+dvQV0mobjN8UdAPXy5
-	lD3crqE7Wq8TsDIarkgXqIloWW7O6V3lLnZchcsUU3RyJFE7k0ELQ/u00R7p4/cROT5c7lECLMPsP
-	xsJx9uS7aTTUf9S9xsmg8ij2UEoiLRgZwASEvB+SRi0e57gCIAV54xxC85sFrMaEdRyiEZwLHGb/1
-	Za+yer9w3QwZlbMfRUtvZa63ltMn5kZrcVUBbU1XxxdZFdNsL+uq+EI87Vqs9l63M8Y5nUf2Hash+
-	fbeJ4035t/zIkS/6bvNbPpH6bB54HYYSwF4vHXovj92qZ95RSP5ppfcK5kyF5dSL0YdLBLz+nJq8l
-	2Rb5em9A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=6tRD2NjwF/ZY6OMgZJ+7iJIY+EsBKkYIsMF0P2zsbU4=; b=Fst5A6qArp5SbP7PK3vhsE5u6m
+	u1w/LhYDUQ+d7OXkDb6OMV0q23ec4zeOiX/87NNPnL6r9SF8AxRmTMJdsLcYvM5uzlju4P0szavLs
+	Y8UhAm7O9Nxu0eBST4du2Y9xGdeV8jkZ5UUX+RIDZJe4bCGHsgtOdazmgAFOkXy0tiBMtOagDxgCE
+	d3KbXxh7MpCgqUCgNSjwkLf383INiXDtml8v2DlHeZ4RF/asgKsNkT5d7ROQuuggTErzcDgPLo+Bd
+	n0BpVsAcIfHrXokEzmHCdMu9gBVcQAtEXxDqXxp+oPkI54qiu/L5JNYzvJpJesTg0mUmmXLBki6hF
+	1baDhhpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ud2vp-0000000E2Nx-1S0Y;
-	Sat, 19 Jul 2025 08:28:33 +0000
-Received: from mgamail.intel.com ([192.198.163.12])
+	id 1ud7C8-0000000EHDl-3KUh;
+	Sat, 19 Jul 2025 13:01:40 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ud2tL-0000000E20p-09o2;
-	Sat, 19 Jul 2025 08:26:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1752913559; x=1784449559;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=4eRGrkNw5Cb+IWU2kFLOeD/+YDj6S0Mo45vQlVKl17o=;
-  b=MOxZIkFLujG3WMO1D1+WNuS2BjEgCFyNkkSbqcNfPP+Jge6fvy12KeBD
-   HPJ8CD60uOTykDAbV3KJgwxo1yr1mlRC0gxwWZbcF0JqpjfkFFi1cWl8q
-   5ajaeBR/lziTwsyczuK1ObLxSoscQ8EGbxmj1tcdL3de+d07vNts+mdiG
-   AbRONOwWvfqR8J/AqJWlZaVTG6vtecdUU4665C4NsDEXX+JkpaglLlJBJ
-   LXp5Nljin2Nj1FEhtNzNZ7XknCN00jcRctRZh1UWXopdGUi+uhjUKmgpi
-   yP4hyuzH07UOmN6NsuBRYBLek1gtKiLq/tHe5qfo+gLesopaoLmJaYhaA
-   w==;
-X-CSE-ConnectionGUID: ynOCx6+kRr6IK9TMS1XCBQ==
-X-CSE-MsgGUID: Y48d5tBWSYmLyHY0EBICyA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11496"; a="59011637"
-X-IronPort-AV: E=Sophos;i="6.16,323,1744095600"; 
-   d="scan'208";a="59011637"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
-  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Jul 2025 01:25:54 -0700
-X-CSE-ConnectionGUID: +7S6gRYbTFKNwAB/ImkwEw==
-X-CSE-MsgGUID: K0XQRP2vRl6ZkaKXZaYvSw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,323,1744095600"; 
-   d="scan'208";a="164052562"
-Received: from lkp-server01.sh.intel.com (HELO 9ee84586c615) ([10.239.97.150])
-  by orviesa005.jf.intel.com with ESMTP; 19 Jul 2025 01:25:49 -0700
-Received: from kbuild by 9ee84586c615 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1ud2t9-000FLL-05;
-	Sat, 19 Jul 2025 08:25:47 +0000
-Date: Sat, 19 Jul 2025 16:24:47 +0800
-From: kernel test robot <lkp@intel.com>
-To: Macpaul Lin <macpaul.lin@mediatek.com>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
+	id 1ud778-0000000EGSY-32kB;
+	Sat, 19 Jul 2025 12:56:31 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-45555e3317aso17775375e9.3;
+        Sat, 19 Jul 2025 05:56:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1752929789; x=1753534589; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=6tRD2NjwF/ZY6OMgZJ+7iJIY+EsBKkYIsMF0P2zsbU4=;
+        b=GNrZZPG3/vC2O7ZLXaxJg/FqEbJly7dUBcgH2wlAfxi5kX5jrv1ChsZorh3P3JqQ0t
+         t1QyLPWKlhpSMZ6NBmHOMrY7gB3N/4SVY63pb8llnO2nwAAZ+9eRvQ1yY1DTnTY9lF5o
+         +gbVtPAJ5edA9wyYDdXVvYiq9YlrZxj+8buaQq8GLuMb2pAyQAZWh3QRyi+gcQyjMDQM
+         7dMqbqNumVAgP0EVxbhTR2rfy1aJZKTH/JI9f8geI7DHmfyO3z/9s5ZehwupnMvd9Wos
+         Pq7UfmwRqkex8+f5NN5Ckz+sTz+cKjNB5FHAiMIwYgsDdA6DkYjLLmYraJ1eSnjvtrCI
+         b9sw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1752929789; x=1753534589;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=6tRD2NjwF/ZY6OMgZJ+7iJIY+EsBKkYIsMF0P2zsbU4=;
+        b=wX/kj1JUPLGLmPxTGINR2fFoAvln0u6WfIsu47XByfUx8cHy+oNjSRWERPrvD62miT
+         CbufwTaLikEvrQvZaBV+TLDxO6xk68Z8/BV9pAcKPEBquuFaCU9BIu1ztIVTQFkmXsVA
+         GVkFWQot/o2nszb7++TmoTljQhZmowFWXGQ6MUN/mEWXHW73YabIyrvyPSmrESt/+rpv
+         L0LGMdDerKD4R/5ZHstEc9CP290A7WX9dcYAiqEqKRh93Xxy0UkQ/9r3KxYQepu2KD/A
+         +BozBylq06bAn7kbULgc5lhWvgMgCjxm19yI+wvT8AH/f4TBoo1gqPyKoHcqWlqNB08F
+         rEpg==
+X-Forwarded-Encrypted: i=1; AJvYcCUNr76G1kI0nbaS1ZPHZaogBgqJEf0JSy2G7bFyyoHagcXALmkBUzcVxC8PZzetF0Hr+VQDH9wELgCwUG+WjbhE@lists.infradead.org, AJvYcCXurTjfnRiCsWcYvbZNiLIotkUlhpwd+ijUCN0q+e8+pbZ9XzH4Y1qQXUZTBknQ5alL28+49jUdtp/fyPBp/dc=@lists.infradead.org
+X-Gm-Message-State: AOJu0YxPRqCG1cZk9Hr5iqEvZgNzB5P4AujuXcWRwrbXFe5uvCdFsNrh
+	r8EbcgZmaiL8guiCtE8UQEzri1ekiz5ICze/VKTWsOGIfACiu0vLVxA0
+X-Gm-Gg: ASbGncvoa8q1lbTBwfQM+4HY4m/hX5hlPRXwErrBPxlhDd8ISpWbwb/jjAJf3vRpXEe
+	qk56Zq7SuasJa5861rTJhiXHMfyFn7ZUm8m+PGqIKEqHdZ257dfuoaryuKGA7pH6QXjLqEY+eDV
+	WIBRXIaUT+Es97smSuzBkiK3UhRLpaFws4aSbmH46AAI+KrT+P/OlvtzfQX+pr1BfpIzepO87Sd
+	JDtBp1XkymDCt6RZJMfJQCpY2hhlrVWAJiMxBmV6j/6h9o9s9+b2B1M6i71IlJmhq9qiqa16vq5
+	RRay0WcuXioiEqgqvAhpY79ucWk6ugMhkTLrUpJCs9Ybjp0glJz8FYoM9HSkr6Ab5eQiFKtGjhz
+	Uxr+xjiWcXqkun51DmA+sM2PwKzvJPXkPi2+f83jytPSU9dC5C36OfB1THMSmT5DKTG13w3JUbe
+	jE
+X-Google-Smtp-Source: AGHT+IHVyPkrAti3KBxeHDF8a+lPaonZM2AISJ3Gso95EOaofsGKgLel2/059sZfO6yPadPZS8bCNQ==
+X-Received: by 2002:a05:600c:3b88:b0:456:25aa:e9c0 with SMTP id 5b1f17b1804b1-4562e355c9bmr144021685e9.14.1752929788390;
+        Sat, 19 Jul 2025 05:56:28 -0700 (PDT)
+Received: from Ansuel-XPS24 (host-212-171-170-230.retail.telecomitalia.it. [212.171.170.230])
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-4562e81ccb4sm106688005e9.17.2025.07.19.05.56.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 19 Jul 2025 05:56:27 -0700 (PDT)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Stefan Roese <sr@denx.de>,
+	Andi Shyti <andi.shyti@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>, Sean Wang <sean.wang@mediatek.com>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-i2c@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	openembedded-core@lists.openembedded.org, patches@lists.linux.dev,
-	stable@vger.kernel.org
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	Bear Wang <bear.wang@mediatek.com>,
-	Pablo Sun <pablo.sun@mediatek.com>,
-	Ramax Lo <ramax.lo@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>,
-	MediaTek Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: Re: [PATCH 3/4] arm64: dts: mediatek: add device-tree for Genio 1200
- EVK UFS board
-Message-ID: <202507191640.Ghk47rXu-lkp@intel.com>
-References: <20250718083202.654568-3-macpaul.lin@mediatek.com>
+	linux-mediatek@lists.infradead.org
+Cc: Christian Marangi <ansuelsmth@gmail.com>
+Subject: [PATCH 0/5] i2c: mt7621: improve support for Airoha
+Date: Sat, 19 Jul 2025 14:56:10 +0200
+Message-ID: <20250719125617.8886-1-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.50.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250718083202.654568-3-macpaul.lin@mediatek.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250719_012559_120814_6CF07F84 
-X-CRM114-Status: GOOD (  11.81  )
+X-CRM114-CacheID: sfid-20250719_055630_765561_2EA487F1 
+X-CRM114-Status: UNSURE (   8.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,36 +106,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Macpaul,
+This small series improve support for Airoha SoC that use the
+same MT7621 implementation. Some additional tweak are required
+to better support it.
 
-kernel test robot noticed the following build errors:
+Also we add support for atomic variant of .xfer required for
+some attached pheriperals on the Airoha SoC.
 
-[auto build test ERROR on robh/for-next]
-[also build test ERROR on arm64/for-next/core krzk/for-next linus/master v6.16-rc6]
-[cannot apply to next-20250718]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Christian Marangi (5):
+  i2c: mt7621: rework cmd/wait OPs to support atomic afer variant
+  i2c: mt7621: clear pending interrupt on i2c reset
+  dt-bindings: i2c: mt7621: Document an7581 compatible
+  i2c: mt7621: limit SCL_STRETCH only to Mediatek SoC
+  i2c: mt7621: make device reset optional
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Macpaul-Lin/arm64-dts-mediatek-mt8395-genio-1200-evk-Move-common-parts-to-dtsi/20250718-163459
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
-patch link:    https://lore.kernel.org/r/20250718083202.654568-3-macpaul.lin%40mediatek.com
-patch subject: [PATCH 3/4] arm64: dts: mediatek: add device-tree for Genio 1200 EVK UFS board
-config: arm64-randconfig-001-20250719 (https://download.01.org/0day-ci/archive/20250719/202507191640.Ghk47rXu-lkp@intel.com/config)
-compiler: clang version 20.1.8 (https://github.com/llvm/llvm-project 87f0227cb60147a26a1eeb4fb06e3b505e9c7261)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250719/202507191640.Ghk47rXu-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202507191640.Ghk47rXu-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
->> Error: arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk-ufs.dts:10.1-8 Label or path ufshci not found
-   FATAL ERROR: Syntax error parsing input tree
+ .../bindings/i2c/mediatek,mt7621-i2c.yaml     | 14 +++-
+ drivers/i2c/busses/i2c-mt7621.c               | 73 +++++++++++++------
+ 2 files changed, 64 insertions(+), 23 deletions(-)
 
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.50.0
+
 
