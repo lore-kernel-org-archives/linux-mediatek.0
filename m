@@ -4,63 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3A00C83F25
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Jul 2025 10:22:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C20B1C83F26
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Jul 2025 11:39:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XbN2ZZ/zVeHptoWdOvqOsyTTtjz4IhjZz3gw8d+2COs=; b=gDUXJs9Hpf95S8rnRin/UV4xay
-	ob3YJ1XRN5uv+3MMKSAC1SvHA4fgWnC+4IXjvSE4BayNG2KyZVAhAV+NAToiypXEvS5u0cV1nZsmM
-	QRIOSMZY9JIGF4snH8upmd8WYkh5Q4+JW2mdltqdSb5EQ5dLChBUjE1AULQ4IT+iWx8oY66xg4i9N
-	NMSppMZGNfyDU2YkqzFN79KCxlTdxoLeq91mfIBaCM5rY9zORAXKqPontvP1s4bepWlpY3CVutyoI
-	8oOhBQDhgjaQxXrYd4m7kYeQDPlTC7X27OwX6z11BwLMojZi6WAcLqBd9nyn6YWlRA3oCoXj9mq6u
-	YgNx1X9g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=z0gKiB5QfkcIAH9TYUc4eTVrsgmC0ACXqwOh1MHM+Hc=; b=DFu/bd5efasmr4jwtg95sT3zxq
+	UBwKMn0hZVczBVjTdcmTvVUDoE4uHkGLqLUGvfam+6BxFUFNeDSO0JM3DA7u9rL0WJhk0ZrcN2b3r
+	woKyZgb72UD3Ivni6SvXGm0g+lKwwRcECSt5OlbMN3zaoozo+BOiG+7daXG0c46JlDAt5SoHKNADf
+	zMx3BQLNF6/NzjPyHNfjuC0ck+oIlqH/YTL6OMy4xHO4C2HYs0FonkMyRmL/unVifqm9E0TDxMAvv
+	ucOvEjw7Bn0oEIFWamPKXoBa9egNRJZzmc8Eqq2ohrzy9+dK7XZ1l/HPLLZdpfXe/qkhi0J+EWQud
+	eRv+on1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1udnep-0000000Gx6N-2jRr;
-	Mon, 21 Jul 2025 10:22:07 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1udorL-0000000H7CK-3v0e;
+	Mon, 21 Jul 2025 11:39:07 +0000
+Received: from smtp-relay-canonical-0.canonical.com ([185.125.188.120])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1udmwO-0000000GpVR-155k;
-	Mon, 21 Jul 2025 09:36:13 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 96DD1A5283B;
-	Mon, 21 Jul 2025 09:36:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DA3F0C4CEED;
-	Mon, 21 Jul 2025 09:36:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1753090571;
-	bh=amn7S0NK0vIN78Usz2dx0uMxGfBGU5rx/5LvBfYs5/I=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=IgGamjwtmndD+gnnGza+t+EPyeECFRH27kjjM+ujLlTLy1QsDQfEXjn5HP4wShXwF
-	 RwDiLWL9Fpa3Rwnlnb/d8HX7dVZQg+MFJIgOLDCrhYTrp8vdnunLAynHcTe96tvUM+
-	 FtsS3jqnN2ecBF/3SBuKMJRqHer7r9HwMGU2TLuP8ked97MWkY8WzbHGnnYQ3BOt7f
-	 iSMfyX0cVBq6mLJj8EYjtFuaZdQpusHgKk7HqKkkPK0aZM0pkJ8qHJMYndyCrKXZ0F
-	 ndQAKDdxsGBBq2xFCCS/XLDigkB8KP90WkR+458zI4kVIRelwf2hcmCt80wNHVHZyo
-	 e6RReoc5oGFQw==
-Date: Mon, 21 Jul 2025 11:36:08 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Aleksander Jan Bajkowski <olek2@wp.pl>
-Cc: herbert@gondor.apana.org.au, davem@davemloft.net, robh@kernel.org, 
-	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com, atenart@kernel.org, linux-crypto@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 2/2] arm64: dts: mediatek: add crypto offload support on
- MT7981
-Message-ID: <20250721-camouflaged-dramatic-rattlesnake-e7f87f@kuoka>
-References: <20250720174903.1321533-1-olek2@wp.pl>
- <20250720174903.1321533-2-olek2@wp.pl>
+	id 1udnJc-0000000Gu3L-2Hg5;
+	Mon, 21 Jul 2025 10:00:16 +0000
+Received: from laptop.tail0c4ee0.ts.net (unknown [125.33.218.231])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-relay-canonical-0.canonical.com (Postfix) with ESMTPSA id DDDF23FABE;
+	Mon, 21 Jul 2025 10:00:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+	s=20210705; t=1753092009;
+	bh=z0gKiB5QfkcIAH9TYUc4eTVrsgmC0ACXqwOh1MHM+Hc=;
+	h=From:To:Cc:Subject:Date:Message-Id:MIME-Version;
+	b=leLCp1BBH1QQXDygsFCkQca/P9qhHXHU+oSiTCTHd2vAOzcNnpcEdm5V58GRV2KEZ
+	 26ReFlqGFnpIoF11BaBBBdaGlpJJcr4bAKGuMkrdM5icSYZ7bG8rxj255PGl8cUtLl
+	 y6s+FZuvEE1VgcK+Dh9ZK+61JJ+fi/ydnzSj0GDjmCQAngCQDUHmFlj1WPFiXAzjnl
+	 HJsbHaYfc7/58mwhxfOziYPhD1hYuQDNhrwEAm7uUXY/tLRB2hbqjLF4n9Zt9bpBTP
+	 aKTz7CXNuTMy5T80NLXQxfTW1GCiWkDfj6t7ZhYAXfJHuhpodOpDt2x/PPj5F0cZ99
+	 yIAkNhz5t1/4A==
+From: Guoqing Jiang <guoqing.jiang@canonical.com>
+To: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	jianjun.wang@mediatek.com,
+	tinghan.shen@mediatek.com
+Cc: macpaul.lin@mediatek.com,
+	guoqing.jiang@canonical.com,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] arm64: dts: mediatek: mt8195: Remove suspend-breaking reset from pcie0
+Date: Mon, 21 Jul 2025 17:59:59 +0800
+Message-Id: <20250721095959.57703-1-guoqing.jiang@canonical.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20250720174903.1321533-2-olek2@wp.pl>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250721_023612_364725_A09465A4 
-X-CRM114-Status: GOOD (  14.58  )
+X-CRM114-CacheID: sfid-20250721_030012_964980_C1A81180 
+X-CRM114-Status: UNSURE (   8.54  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,31 +79,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jul 20, 2025 at 07:49:03PM +0200, Aleksander Jan Bajkowski wrote:
-> The MT7981 as well as the MT7986 have a built-in EIP-97 crypto accelerator.
-> This commit adds the missing entry in the dts.
-> 
-> Signed-off-by: Aleksander Jan Bajkowski <olek2@wp.pl>
-> ---
->  arch/arm64/boot/dts/mediatek/mt7981b.dtsi | 14 ++++++++++++++
->  1 file changed, 14 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-> index 5cbea9cd411f..ebab8dde1e70 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-> @@ -94,6 +94,20 @@ pwm@10048000 {
->  			#pwm-cells = <2>;
->  		};
->  
-> +		crypto@10320000 {
-> +			compatible = "inside-secure,safexcel-eip97";
+When test suspend resume with 6.8 based kernel, system can't resume
+and I got below error which can be also reproduced with 6.16 rc6+
+kernel.
 
-Missing SoC compatible. You should not use IP block compatibles alone
-and your previous patch explains why: some wires can be connected
-differently.
+mtk-pcie-gen3 112f0000.pcie: PCIe link down, current LTSSM state: detect.quiet (0x0)
+mtk-pcie-gen3 112f0000.pcie: PM: dpm_run_callback(): genpd_resume_noirq returns -110
+mtk-pcie-gen3 112f0000.pcie: PM: failed to resume noirq: error -110
 
-Best regards,
-Krzysztof
+After investigation, looks pcie0 has the same problem as pcie1 as
+decribed in commit 3d7fdd8e38aa ("arm64: dts: mediatek: mt8195:
+Remove suspend-breaking reset from pcie1").
+
+Fixes: ecc0af6a3fe6 ("arm64: dts: mt8195: Add pcie and pcie phy nodes")
+Signed-off-by: Guoqing Jiang <guoqing.jiang@canonical.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index dd065b1bf94a..50cf01452208 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -1563,9 +1563,6 @@ pcie0: pcie@112f0000 {
+ 
+ 			power-domains = <&spm MT8195_POWER_DOMAIN_PCIE_MAC_P0>;
+ 
+-			resets = <&infracfg_ao MT8195_INFRA_RST2_PCIE_P0_SWRST>;
+-			reset-names = "mac";
+-
+ 			#interrupt-cells = <1>;
+ 			interrupt-map-mask = <0 0 0 7>;
+ 			interrupt-map = <0 0 0 1 &pcie_intc0 0>,
+-- 
+2.34.1
 
 
