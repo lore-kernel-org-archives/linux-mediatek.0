@@ -4,62 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB90DCA101F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 07:05:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65B11CAC595
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 07:05:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6KIDdrTanUmKEwxmKjGlY7d/jG09aY8AhXQLqxXMqzQ=; b=nhfTt79XV1M/73sVBiQQR7ZWL2
-	wurm9sOjgcykvp2ZlgZ9HRwiU67SNwp0ugKFQYw6xzzsOZtCU+jz2UAtZ41toY4QUNsZq55gmQJII
-	yCJdb2vYvOVUmAQJDeL4MUgOhlCTAZSB6YCR+VNGs2i3AuRXm4mhKqzVEdx3nMItQEv7DdKi/j8Bo
-	jsZ8H8MIZwl0JUzJYucYSPOXY3Hrr5ZBygfBppFqJZbF+qMERaeu1zsA66JadJ3MQq04gVAMIF7SZ
-	Fe8PDUhHyhxwE5/xjCXOe83+SUYVSlz6/HilJlb1SmiU38H2Aqge8/lOBHEizOAYaII+efzgprLp/
-	wQzVdegg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:MIME-Version:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=naZ08eZHvCTGd2t3B5pVc16gcjutotIgoHB2ezgmeNA=; b=DJ6G3raPs/YU5jki+AVRl+KEGe
+	eVr27IpVxBWf5p2jbeskoHxhJQEMV6iGs1/tkAoGpL8iHOHTdH9yOdDIk/6utPHT87d/neCb7AzYU
+	XrMlP8saUxQics22l8+n6+HP1kH4Sxx9b9CgadhutlLnz1nxHu5TZp24cgYIK3Ik34PfDx7oSlcGQ
+	n5zO+iCytK6VhV/gwavwFpPa4XyLozPWYjJaXJFByXfenzV52ZOwcGJTzl16hU9WK+Tt8Lf45bF4z
+	ALEh+OJMx9JgdyG9DlB9n7iU/Ug5XGXVpKuwlV5xsWVvDrw7xODveLnixOVeOXS6Zwdt6A5ROsEyz
+	eZyMf0Pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwxq9-00000007XlS-3vHG;
-	Fri, 12 Sep 2025 07:05:01 +0000
-Received: from galois.linutronix.de ([2a0a:51c0:0:12e:550::1])
+	id 1uwxqA-00000007Xm7-1uaG;
+	Fri, 12 Sep 2025 07:05:02 +0000
+Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCIYb-0000000CAw0-0K2e;
-	Tue, 06 May 2025 13:42:02 +0000
-From: Thomas Gleixner <tglx@linutronix.de>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020; t=1746538917;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=6KIDdrTanUmKEwxmKjGlY7d/jG09aY8AhXQLqxXMqzQ=;
-	b=Q2sp1Y2+Xq68ZzKhzYZogyTqNgLrdCaqNxaBagnWo870Q1OnSlOsgKyJiav900B6qyHdm1
-	L6CeSo6gv9d56bZGRLT6noxxbqxOZK3rDK5wNppbXvLTWKw8LMJtjCUcmlue78s7S3WeCj
-	cGaZhrh/vHnUIKTf7/VPznBk4rnSb/V1DiHLfKM6i+fPMllG+tdC9OSYa+o/gKOOOFIAd4
-	wKZgHD7rrMblwdpyngCi6FxefrHrxQAy1i0o64ef+KBg1TFRbwBYipPTxKQQWDHug5YkxA
-	jUghLPlkOdAMplVZEriWKt0NWtKPEESJceuOBHnYGkEwGNoBz8Bx7dGduCJddw==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020e; t=1746538917;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=6KIDdrTanUmKEwxmKjGlY7d/jG09aY8AhXQLqxXMqzQ=;
-	b=TpwMlv1G6t0w5OOsJhlXfdhYR45rTjxnfzhQF2m3v1mOUEPfqGgpW9ah4wNI+4YXMTf9UM
-	JFzC30iieDB1dnAA==
-To: "Jiri Slaby (SUSE)" <jirislaby@kernel.org>
-Cc: maz@kernel.org, linux-kernel@vger.kernel.org, "Jiri Slaby (SUSE)" <jirislaby@kernel.org>, Aaro Koskinen <aaro.koskinen@iki.fi>, Abhinav Kumar <quic_abhinavk@quicinc.com>, Albert Ou <aou@eecs.berkeley.edu>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Alexandre Ghiti <alex@ghiti.fr>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Alex Deucher <alexander.deucher@amd.com>, Alex Shi <alexs@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>, Alyssa Rosenzweig <alyssa@rosenzweig.io>, amd-gfx@lists.freedesktop.org, Amit Kucheria <amitk@kernel.org>, Anatolij Gustschin <agust@denx.de>, Andi Shyti <andi.shyti@kernel.org>, Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>, Andreas Kemnade <andreas@kemnade.info>, Andrew Jeffery <andrew@codeconstruct.com.au>, Andrew Lunn <andrew@lunn.ch>, Andy Shevchenko <andy@kernel.org>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Antoine Tenart <atenart@kernel.org>, Anton Ivanov <anton.ivanov@cambridgegreys.com>, Anup Patel <anup@brainfault.org>, Arnd Bergmann <arnd@arndb.de>, asahi@lists.linux.dev, Bartosz Golaszewski <brgl@bgdev.pl>, Baruch Siach <baruch@tkos.co.il>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, Bharat Kumar Gogada <bharat.kumar.gogada@amd.com>, Bjorn Andersson <andersson@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Borislav Petkov <bp@alien8.de>, Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, Corentin Chary <corentin.chary@gmail.com>, Daire McNamara <daire.mcnamara@microchip.com>, Daniel Golle <daniel@makrotopia.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, Daniel Mack <daniel@zonque.org>, Daniel Palmer <daniel@thingy.jp>, Dave Hansen <dave.hansen@linux.intel.com>, David Airlie <airlied@gmail.com>, "David S. Miller" <davem@davemloft.net>, DENG Qingfang <dqfext@gmail.com>, Dinh Nguyen <dinguyen@kernel.org>, Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, Dongliang Mu <dzm91@hust.edu.cn>, Doug Berger <opendmb@gmail.com>, dri-devel@lists.freedesktop.org, Eddie James <eajames@linux.ibm.com>, Eric Dumazet <edumazet@google.com>, Fabio Estevam <festevam@gmail.com>, Florian Fainelli <florian.fainelli@broadcom.com>, Geoff Levand <geoff@infradead.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Gregory Clement <gregory.clement@bootlin.com>, Guo Ren <guoren@kernel.org>, Hans de Goede <hdegoede@redhat.com>, Haojian Zhuang <haojian.zhuang@gmail.com>, Haojian Zhuang <haojian.zhuang@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Herve Codina <herve.codina@bootlin.com>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, "H. Peter Anvin" <hpa@zytor.com>, Huacai Chen <chenhuacai@kernel.org>, Changhuang Liang <changhuang.liang@starfivetech.com>, Chen-Yu Tsai <wens@csie.org>, "Chester A. Unal" <chester.a.unal@arinc9.com>, Christian =?utf-8?Q?K?= =?utf-8?Q?=C3=B6nig?= <christian.koenig@amd.com>, Christophe Leroy <christophe.leroy@csgroup.eu>, Chris Zankel <chris@zankel.net>, Ilpo =?utf-8?Q?J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>, Imre Kaloz <kaloz@openwrt.org>, Ingo Molnar <mingo@redhat.com>, Jakub Kicinski <kuba@kernel.org>, James Morse <james.morse@arm.com>, Janne Grunau <j@jannau.net>, Janusz Krzysztofik <jmkrzyszt@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Jassi Brar <jassisinghbrar@gmail.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, Jerome Brunet <jbrunet@baylibre.com>, Jianjun Wang <jianjun.wang@mediatek.com>, Jiawen Wu <jiawenwu@trustnetic.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>, Jim Quinlan <jim2101024@gmail.com>, Jingoo Han <jingoohan1@gmail.com>, Joel Stanley <joel@jms.id.au>, Johannes Berg <johannes@sipsolutions.net>, John Crispin <john@phrozen.org>, John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>, Jonas Bonn <jonas@southpole.se>, Jonathan Cameron <jic23@kernel.org>, Jonathan Corbet <corbet@lwn.net>, Jonathan Hunter <jonathanh@nvidia.com>, Jonathan =?utf-8?Q?Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>, Joyce Ooi <joyce.ooi@intel.com>, Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, Keerthy
- <j-keerthy@ti.com>, Kevin Hilman <khilman@baylibre.com>, Konrad Dybcio <konradybcio@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>, Lars-Peter Clausen <lars@metafoo.de>, Lee Jones <lee@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Linus Walleij <linus.walleij@linaro.org>, Linus Walleij <linusw@kernel.org>, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-doc@vger.kernel.org, linux-edac@vger.kernel.org, linux-gpio@vger.kernel.org, linux-iio@vger.kernel.org, linux-i2c@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org, linux-omap@vger.kernel.org, linux-pci@vger.kernel.org, linuxppc-dev@lists.ozlabs.org, linux-remoteproc@vger.kernel.org, linux-riscv@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, linux-sh@vger.kernel.org, linux-snps-arc@lists.infradead.org, linux-sound@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-um@lists.infradead.org, linux-wireless@vger.kernel.org, loongarch@lists.linux.dev, Lorenzo Pieralisi <lpieralisi@kernel.org>, Ludovic Desroches <ludovic.desroches@microchip.com>, Lukasz Luba <lukasz.luba@arm.com>, "Luke D. Jones" <luke@ljones.dev>, Madhavan Srinivasan <maddy@linux.ibm.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Marek =?utf-8?Q?Beh=C3=BAn?= <kabel@kernel.org>, Marijn Suijten <marijn.suijten@somainline.org>, Mark Brown <broonie@kernel.org>, Mark-PK Tsai <mark-pk.tsai@mediatek.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Masami Hiramatsu <mhiramat@kernel.org>, Mathieu Poirier <mathieu.poirier@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Max Filippov <jcmvbkbc@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Mengyuan Lou <mengyuanlou@net-swift.com>, Michael Buesch <m@bues.ch>, Michael Ellerman <mpe@ellerman.id.au>, Michal Simek <michal.simek@amd.com>, Miodrag Dinic <miodrag.dinic@mips.com>, Naveen N Rao <naveen@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>, netdev@vger.kernel.org, Nicolas Ferre <nicolas.ferre@microchip.com>, Nicolas Saenz Julienne <nsaenz@kernel.org>, Nicholas Piggin <npiggin@gmail.com>, Nikhil Agarwal <nikhil.agarwal@amd.com>, Nipun Gupta <nipun.gupta@amd.com>, Nishanth Menon <nm@ti.com>, Pali =?utf-8?Q?Roh=C3=A1r?= <pali@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>, Paolo Abeni <pabeni@redhat.com>, Paul Cercueil <paul@crapouillou.net>, Paul Walmsley <paul.walmsley@sifive.com>, Pengutronix Kernel Team <kernel@pengutronix.de>, Peter Rosin <peda@axentia.se>, Philipp Zabel <p.zabel@pengutronix.de>, Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>, platform-driver-x86@vger.kernel.org, Prasad Kumpatla <quic_pkumpatl@quicinc.com>, Qiang Zhao <qiang.zhao@nxp.com>, Qin Jian <qinjian@cqplus1.com>, "Rafael J. Wysocki" <rafael@kernel.org>, Randy Dunlap <rdunlap@infradead.org>, Ray Jui <rjui@broadcom.com>, Rengarajan Sundararajan <Rengarajan.S@microchip.com>, Richard Cochran <richardcochran@gmail.com>, Richard Weinberger <richard@nod.at>, Rich Felker <dalias@libc.org>, Rob Clark <robdclark@gmail.com>, Robert Jarzmik <robert.jarzmik@free.fr>, Robert Richter <rric@kernel.org>, Rob Herring <robh@kernel.org>, Roger Quadros <rogerq@kernel.org>, Russell King <linux@armlinux.org.uk>, Ryan Chen <ryan_chen@aspeedtech.com>, Ryder Lee <ryder.lee@mediatek.com>, Samuel Holland <samuel@sholland.org>, Santosh Shilimkar <ssantosh@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Scott Branden <sbranden@broadcom.com>, Scott Wood <oss@buserror.net>, Sean Paul <sean@poorly.run>, Sean Wang <sean.wang@kernel.org>, Sean Wang <sean.wang@mediatek.com>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Sergio Paracuellos <sergio.paracuellos@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, Siddharth Vadapalli <s-vadapalli@ti.com>,
- Simona Vetter <simona@ffwll.ch>, Stafford Horne <shorne@gmail.com>, Stefan Kristiansson <stefan.kristiansson@saunalahti.fi>, Stephen Boyd <sboyd@kernel.org>, Sven Peter <sven@svenpeter.dev>, Takashi Iwai <tiwai@suse.com>, Talel Shenhar <talel@amazon.com>, Tero Kristo <kristo@kernel.org>, Thangaraj Samynathan <Thangaraj.S@microchip.com>, Thara Gopinath <thara.gopinath@gmail.com>, Thierry Reding <thierry.reding@gmail.com>, Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Toan Le <toan@os.amperecomputing.com>, Tony Lindgren <tony@atomide.com>, Tony Luck <tony.luck@intel.com>, UNGLinuxDriver@microchip.com, Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@kernel.org>, Vignesh Raghavendra <vigneshr@ti.com>, Vineet Gupta <vgupta@kernel.org>, Vladimir Oltean <olteanv@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, WANG Xuerui <kernel@xen0n.name>, Woojung Huh <woojung.huh@microchip.com>, x86@kernel.org, Yanteng Si <si.yanteng@linux.dev>, Yoshinori Sato <ysato@users.sourceforge.jp>, Zhang Rui <rui.zhang@intel.com>
-Subject: Re: [PATCH v2 00/57] irqdomain: Cleanups and Documentation
-In-Reply-To: <20250319092951.37667-1-jirislaby@kernel.org>
-References: <20250319092951.37667-1-jirislaby@kernel.org>
-Date: Tue, 06 May 2025 15:41:57 +0200
-Message-ID: <874ixxonyy.ffs@tglx>
+	id 1udmvu-0000000GpP6-32La
+	for linux-mediatek@lists.infradead.org;
+	Mon, 21 Jul 2025 09:35:44 +0000
+Received: by mail-pg1-x52c.google.com with SMTP id 41be03b00d2f7-b170c99aa49so2862354a12.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 21 Jul 2025 02:35:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=fireburn-co-uk.20230601.gappssmtp.com; s=20230601; t=1753090541; x=1753695341; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=naZ08eZHvCTGd2t3B5pVc16gcjutotIgoHB2ezgmeNA=;
+        b=kViu4ZAqkNlki70RALuxmyKnbiYosGprPZfHr98ezyHFwvNrqGvWCkpvpuTOoCNGAX
+         Qe5lraITi2xo4w7wB9c61h76GRxuWkFYECwsLqR6+CwgVLxc2o3mdCkw6R5BT0j9Wrrf
+         u4zhkm9XIO9mf1zy/P/C108pwO/T3a1QXpHuW8BROp1Md+ahLNyEcsapHw3ricJ8ZA06
+         w/zbBfZUQ9gLviAZvG5HAFZsdCUEtZDfsZ7Pl/v+nbtuMN28LnGXtAZQ6GFEpyV9UNtj
+         tbpFrH3QxF6VXZxKgQMq3bVdsib5JxhKlAckCf4AXjOV2qkoJZqDEdH5aVoBno45eWMV
+         YYYw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1753090541; x=1753695341;
+        h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=naZ08eZHvCTGd2t3B5pVc16gcjutotIgoHB2ezgmeNA=;
+        b=nk2xPZJwkevk8aNHg3USUtl1iBzk+OEeP/PqwQANSmD95NW+ec+JA+y9bBBmsarTls
+         oYoTL239hoi/OwShRO0pckq2DSMionb9CjgAbnpaNWVmfeCdRTavm36MUVQiFStZHtwM
+         s21sG7zfPo9nERZinFe7cijR7HFmXddDS1qk8A+F5mfZRzIzKKwSzSIvk/A1VqyUFGej
+         vN1iuqgly5VWB4LNS7jSp1briL5WZP6w24o52adGH4peGxO6fLDtvzqrK8ibxMRDfGp5
+         K6/1PsqtwBbsjQqm28mRWj6NP52+zHZoYOMvTHVxoKNGjMGSHV4q9NPaEyaGpih1aviz
+         l1uw==
+X-Forwarded-Encrypted: i=1; AJvYcCWZzVAjhRilE+dPQQJODFYyljDG98hMKHRGO2X6TgH+jXrE8RVVq+gZsVTf8liK3HvmTpeMdw0yqQ8ySghXBg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwE71cSZOampfHkfABF8gqRE44LvU1U4tOMpAwRHwTass0voQcC
+	JUMi9WqCq2iGx+EynCCssDFy6hbBMZhBdHjkkGcQPbn9G36RKzlP2P+76Sf/SahV5yrCqd+wCX8
+	9ZCwi0r7DnasbCho+f4/SWIUS5OtoMD/HoZ00riAl
+X-Gm-Gg: ASbGncuGXNiSSlz4oljpJApyBs4Mr0ph3EN+Tc02nZUCUX2x7HJXxb2Jbju7ukJzJv0
+	XLcFGMq0Z1tJaZSY5OTzjktbv8nG3sXIC9Kr5MgUR9GyJH5VCjqdv4+ChirL3hCe///3XoPo60J
+	JE2pj/ekfWl+sEXhhHEVQaZqtUURdcdhoTXuA2kPoAFKN8hSU9hOuBF62gIg8EBBKJ1eb/wwlpT
+	UNZbohDuAxDVqgNd2nGp8x6gijhUVoz670RMf2ouA==
+X-Google-Smtp-Source: AGHT+IEmGl8oHtP/ZY80q8/nt0kMfo7G1cG1EHfeOtSqBLGRr1JBiLzQDQKV0rqaHt080HFfakgzt+pVfNLopOCBnX0=
+X-Received: by 2002:a17:90b:28cc:b0:311:b0d3:865 with SMTP id
+ 98e67ed59e1d1-31c9e7931a3mr23557065a91.32.1753090541568; Mon, 21 Jul 2025
+ 02:35:41 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
+From: Mike Lothian <mike@fireburn.co.uk>
+Date: Mon, 21 Jul 2025 10:35:30 +0100
+X-Gm-Features: Ac12FXw7QcT0NXYbODghRoxTCBGSd_SUNDYC9GHU9pvPg9XuP0F2KafmxpIpWpg
+Message-ID: <CAHbf0-Gae=dYa=Zkx3ZJkL1SQOgHQWAMMvm68T9PPu8_=5oT+Q@mail.gmail.com>
+Subject: Re: [PATCH 3/3] wifi: mt76: mt7925: ensure all MCU commands wait for response
+To: mingyen.hsieh@mediatek.com
+Cc: Eric-SY.Chang@mediatek.com, Leon.Yen@mediatek.com, Michael.Lo@mediatek.com, 
+	Quan.Zhou@mediatek.com, Ryder.Lee@mediatek.com, Sean.Wang@mediatek.com, 
+	Shayne.Chen@mediatek.com, allan.wang@mediatek.com, deren.wu@mediatek.com, 
+	km.lin@mediatek.com, linux-mediatek@lists.infradead.org, 
+	linux-wireless@vger.kernel.org, lorenzo@kernel.org, nbd@nbd.name
+Content-Type: text/plain; charset="UTF-8"
+X-Bad-Reply: 'Re:' in Subject but no References or In-Reply-To headers
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250506_064201_399416_AE70C3CC 
-X-CRM114-Status: GOOD (  19.07  )
+X-CRM114-CacheID: sfid-20250721_023542_869482_BC340A9A 
+X-CRM114-Status: UNSURE (   6.21  )
+X-CRM114-Notice: Please train this message.
 X-Mailman-Approved-At: Fri, 12 Sep 2025 00:05:01 -0700
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,40 +96,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 19 2025 at 10:28, Jiri Slaby wrote:
+Hi
 
-> Hi,
->
-> tl;dr if patches are agreed upon, I ask subsys maintainers to take the
-> respective ones via their trees (as they are split per subsys), so that
-> the IRQ tree can take only the rest. That would minimize churn/conflicts
-> during merges.
+I've just raised https://bugzilla.kernel.org/show_bug.cgi?id=220353
+and I was wondering if it might be related to this commit, is there
+extra debugging I can do to help pinpoint the issue?
 
-So. It's rc5 by now and I picked up everything which did not show up in
-next yet. As there are some patches in next, I delayed the removal of
-functions for the merge window so that we don't end up with merge
-dependencies.
+Thanks
 
-To reducde conflicts, I grabbed the irq branch from the PCI tree under
-the assumption that this branch is stable.
-
-The series sits now in
-
-   git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip.git irq/cleanups
-
-and will be in next soon. If there are duplicates showing up in next,
-I'm going to remove them from my branch, so the branch is not for basing
-development on.
-
-@Jiri, I fixed up all your subject prefixes as
-
-  'irqdomain: subsys: Switch to foo()'
-
-does not make any sense at all. These subsystems have their regular
-prefixes and these changes do not justify made up irqdomain special
-prefixes at all.
-
-Thanks,
-
-        tglx
+Mike
 
