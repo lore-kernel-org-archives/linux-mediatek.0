@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79B99C83F25
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Jul 2025 18:57:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04AA8C83F26
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Jul 2025 18:57:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ic0V3M7sRH2Zp1RRAt0YlGJ6GUFWs58JzWsEOf9cIOU=; b=YfNErxwf9wBmaX4EraNU+6twGl
-	NxsoWWhdobZ0XdXWVHgSwqY5XutOffMx9gkjKSGTSz4vEs6pmIFX2zvt9CXaeh3yxYUkftMwBDZUI
-	l89JaKCf15GHWDhBa+ZsQYpaF4/3BL47V1dVubV+OjpWZUyRVFZ874hKFLdBRCi1AhzRa1kBfB06s
-	R0dEadcB5Fm22kNY6u64UkjxYS16GmMBXx63VqEH8clGxMNKNfVGtx76Fnm1DKy3NcgRID7vH6Id0
-	ZCNiPcEalPkFMKLw9lYlk5O89Cj6Ixmd/zEND/N6Ed1WnvygMkMGmv5Gr4yl5ffBiY4A3OWJ10O2g
-	Chqeu7pA==;
+	bh=mKfLEG6+ipDQ095wwf+Yj6O/rN6WeuJI3tKiO7F5vfc=; b=j5OzovahUH+9G4juhdzSSsW7AG
+	xTG1Migcw0jvo8TE1dhhbmu/qasGbn+6PBlWd0fVn+Zpfxh3ib8s4ijgcmct+w3m1ZshRGyhxe3FZ
+	ufsutl/td/yOmi3V1yvnK52s10e2DOXfXq/YS9elVJ4ZQhHg04nXDnd405y2fprooj41wM8+jQ7pP
+	yYhWJkWkOHt3v7rZ0IwW4gFSmKtrEn8G3uaTI8Tkxa8kYr1c1YV9k7c8XfgKvDpOSctdGfl63jOd0
+	ubXWypkIcE8BomKK8Y7djwUe5lyfUlyg8EeJ5WMovfwYpBmZV7ksh3NWT1sZ77d43Fj5jmqiJn+w+
+	T+THxxkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1udvhz-00000000Rv6-14RJ;
-	Mon, 21 Jul 2025 18:57:55 +0000
+	id 1udvi0-00000000Ry4-3Efm;
+	Mon, 21 Jul 2025 18:57:56 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uduvI-00000000ON9-0N4A;
-	Mon, 21 Jul 2025 18:07:36 +0000
+	id 1uduvJ-00000000ONM-45UT;
+	Mon, 21 Jul 2025 18:07:38 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=Ic0V3M7sRH2Zp1RRAt0YlGJ6GUFWs58JzWsEOf9cIOU=; b=qAfXe0Um9lkjYVUX9zOWp8Pw7n
-	nxdXB8kqZ6zIoRF+sZ/AJEqqmiCO8tkh16CH6QJblg+NghFszW3LVFm/c34WTLDcIpMLpho8/rEPT
-	ExhU0+HsL2+SK1XB8rzElN467+pR5HO3LhqjjIJt0gK1eAUqeHY2TlWuGsgZnknmx3XNJo0VMZhJW
-	0Uu3OAL78JtSGBtUMPtvFr4dGtGNeMaawF4Zp0QdaLp7TjABhevlxXKSHzcsDp1zYBq5HNfQ5opuG
-	GOxviCFHaKy/Pt3k7aqfMBaMgeo7sQCS7jST/2rQYegepW1lNrE/RheLjHCl3IKuoP/CsZ2I/xlP7
-	GK9KR7pw==;
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	bh=mKfLEG6+ipDQ095wwf+Yj6O/rN6WeuJI3tKiO7F5vfc=; b=UxPbyl2FVT7Itp8SiB/ORQgJGs
+	4cRiy128FvkXMlmgD2Z5CnoRaEzir7rmDZhGvMUiHPPT/crLJ+cTIKZI1x+V7krFZONuGZMMDZee1
+	MDV5JFSvv7BTTESrcFzS7IlaZ4dwlMaG/MVY5rG01T75FSCBYPDW9UmitOsGn1doAJV6Ak7IyX49b
+	0FlJuRgivehP6mW2/tLGtZkVFuUPAbMe4dL8qNfnsXAsJ6yVM6+yb8kE14Kn9YY+UMHuT5wBy9rPz
+	/BwXHggNkZD5yQ2G1YWmyNnuHtcOTsBxUi6xwaxeElLsgc6h3cY9nEMwmd9v3gGKYHY+YddsfUUF9
+	JRZvKWaQ==;
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uduvF-0000000B6sf-0wsy;
-	Mon, 21 Jul 2025 18:07:34 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-451d41e1ad1so32690995e9.1;
-        Mon, 21 Jul 2025 11:07:32 -0700 (PDT)
+	id 1uduvG-0000000B6sy-3yv8;
+	Mon, 21 Jul 2025 18:07:36 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-3a54700a46eso2587272f8f.1;
+        Mon, 21 Jul 2025 11:07:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1753121251; x=1753726051; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1753121253; x=1753726053; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Ic0V3M7sRH2Zp1RRAt0YlGJ6GUFWs58JzWsEOf9cIOU=;
-        b=TEic/xECl1et+Imo7DFwJMx2hDs2ZZjAFMSBEqiywbe3/QQqiGWRdpU9uy2z8ehYte
-         sNwjrJBULkdq8fT1I3R+7U/ox0GlZT5AiWpIklVcPB+8V6D2t0lJZPCNKzJT1qLqDaxh
-         2zYgke/bOds6dFS3zoYFeevIDHejh6JDLVGkD0RM+x4dRPQHTZHvDJKWqtkgzxl4Rfz8
-         0odPZiD+Oe099U/wNMo6gegTm0a1veEMSnPSozCV/GLe9wPVnShQ7V8irp3yNMj0/r76
-         hDlaz7tPfybvimWEpQ3MU3D5zEFoNcw0b86jVupYfqJ+6y+4R/goXzX1O+6imXqKy7dX
-         bllg==
+        bh=mKfLEG6+ipDQ095wwf+Yj6O/rN6WeuJI3tKiO7F5vfc=;
+        b=euNeVSHFz+M8ByAg6bONOBREvXS+ctZ1PEmXoA6GTY8vfR/W9coSAGAYyGkSrqNmDv
+         g52E5x63im9EAOWWzp84VkofrpbGqW1Z5NMT3P8e753mnyFmAe7SqMBhA3cIPFkRH6EC
+         mq2jbyxto6T3Uqx6tfuPKY8d1RjBAdjOLqVlHQE/zIxbAaFPGSp5y1HNYqSN6adNcLSk
+         Hz6XdGg5BlT9wGXS1IhayvtZkK7PTq83Rh7uE2p2OFalUwOi5OS47n2+HgdlFMR+K2mN
+         LNuEy7BgjXA+Vv6BPsQznMfdohKRcanoljTa4p7vnwYWT1UrVJ32oUEbQpw8bJTWUvB/
+         H6jQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1753121251; x=1753726051;
+        d=1e100.net; s=20230601; t=1753121253; x=1753726053;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Ic0V3M7sRH2Zp1RRAt0YlGJ6GUFWs58JzWsEOf9cIOU=;
-        b=QH+nY9ZA9/YIRXI3WNRxU7GEXNTMO610dDqUW4P9qV2p2NF4k1zhGqRoJgxxPvzdZn
-         ixH/govJrhcJWEDwGAV14gZOtIjKDaHNPH/gYH3LyPxvcbgro3QQaDFrmdXFVhCIgqBH
-         DJSzD3hpWpBy4e2UsbQuu7GYNP8HDlGzUBva7H4bqseqZTxJlCk2X7Bi7SZsYFlymWjd
-         qn+mno0ZCl3gkwQ94YiqXKdFBCxvOdpwlfeTOn4y7MIMDt1bi1caQmYtJcbA2z+606BV
-         go6BkGUByuB0v9negyd+B8UO7kPtCtZBJuRXRlUgTcNjZ9AsU9g6oQ6NvkqBfGDPYE2a
-         VYkw==
-X-Forwarded-Encrypted: i=1; AJvYcCUaFgSh1VEua1YQ5V3uak9hFiGwIxUdzjOitOuXY8psfNiu7TgKD3D9rHLId7O/G+jg9p6kYlODK2hdoQPQ7ds=@lists.infradead.org, AJvYcCWCcsbKC48NGHUyIifkuKenaE7EigrxtThSScYcckiDArmL1U7DwqjFdF9qFeTqTQ1+Z46rFu6Aj1nx1ENdoHZZ@lists.infradead.org
-X-Gm-Message-State: AOJu0YwNtVb4bp5XGqIT07Br/GMAVWasMGR8sMRjzC+mYzGy94RKOUUT
-	bOUE42INtPQ1kUU9ZMGjm4DvffuCwC2/WEeTXmugINrw9SJzlfMCUGk5
-X-Gm-Gg: ASbGnctoPU06ABcLdkPMZKeXlQ3U7UuHD7GRAgtiNvdJJamNDlhwmPyESkjHMYSNZG8
-	GyO9KBRNcYBBXebPKNc7Y3aLePPKuMwqGGd6CpT6S9JX0pALWtXWxZ6mDcu0tz/8xhBal4YLbD7
-	QhCINXfTplcOtwSVpTMEX9ioDxA40DMnmPrrTcZJFItFqHIxWciWkpLjI7iY7nHb1WJuaY8KUak
-	C9oT1q8UANjbi+oPZEbnmPVoZwSaA7tvBvMeyWmBbloYDY0T33PIXFrurbuxEG4oXrVSsDJ78p7
-	hWojXS/8DlhVdiMkjnM0QIkUxfu9JMIVZMMYuwmvmncATsQ4epqjT5HvuMe+PsMrlpRnbKJDDbe
-	7Ucw5U/2U6ARKCf5H/Oyyvx8=
-X-Google-Smtp-Source: AGHT+IEztSiq1VvfDAe7vlwj5FXCH2q3wnt65o36wdrhDBUN+Og6tmvcBZ2eJisaFxgmoXC6DUiqQg==
-X-Received: by 2002:a05:6000:2310:b0:3b5:e7f4:74ee with SMTP id ffacd0b85a97d-3b60dd6a8f8mr18711660f8f.16.1753121251425;
-        Mon, 21 Jul 2025 11:07:31 -0700 (PDT)
+        bh=mKfLEG6+ipDQ095wwf+Yj6O/rN6WeuJI3tKiO7F5vfc=;
+        b=C/kaLwyw18pNpnQk2kISs2NfPklV4vZL67s2LjMQ1xFeKYw1tDf2ZUwSAfQqGltjau
+         gCCrpW3PHzv+FOW0SOAF9w0atijHpqf+id2Mqq3htcXxIhird/meu9RHFlPu5fDvNGO7
+         EeLGce4IgIvmNZaro8TtDv51Sbrb1OoNvI+6WBLqTfkukkL66kyj8y+HbjvYac4NWE9m
+         sngczBcP3rvrLrpOgKtsHrT6PNbw7aTOwhytiXepGkFNCwg+Lkz4MLSljq8N7XFHRhCG
+         QyzLsNC59QLOl8t+2lkt3rQHrtCJfJDCozRoZlJpd9UG9909yPH1xZtUc0nGomEuk1zU
+         DtTw==
+X-Forwarded-Encrypted: i=1; AJvYcCVZDpQea8pgO8ALX1b/W8pFnuzsMl4SfvVVAG8yFuBBEGLD1k9OzFIIQfmEkzQc0WYKZwu/WLgn35ns0m4HQyc=@lists.infradead.org, AJvYcCW8fNgB4sqnAixxr9D5JL0Jkb5n1eraoWGa6pJvrrgK0eCLwUnkhwVxAPvwO5A26UYUkcJGLvPaG/O8ALsxMCC+@lists.infradead.org
+X-Gm-Message-State: AOJu0YyJ/opiuJ6s6CbJtz3IlcRc9wwMmbgUQ2h7BSgQMzPmQWf0zHff
+	Ee0TLW02HSARuYhuWytQAnJK+9mtJcp3BrhENkkfK3HMLPg2S3CqlW64H7F82A==
+X-Gm-Gg: ASbGncsTYtynSvmDhLcomlng3k6cfazQZf/m7NM/J1dEDUoRoqLQ6Ax4fMsXjNk+Rsq
+	31j6HHWirHT8CrXcJpjiKA3z9QwXNFxcZ4+71c1wk4WMqKN1xEQkW73ieFTR0VQEkiwjoCF6ZdY
+	VpmmVXH7JhF7k8fPEe1qt09ONUUp37cbF/z9e+JcYx1J6bX7/6mYIcevlAFGHF2i76zFWY8oPBC
+	M7TIagJGBMqtKZiezV9i/+yPwsswijLJJwSht+9EtvpI+flyJ/d2jZrWfrbahZB7vt3hU3jQo8j
+	NbvPmw/xb7b3wIq0B1JGUsHRjegD8VGRcUOWEnVTEmW73pwEPcI5koG3UtGsmMOx6Ex7mD8RV9a
+	34ZMDWrKH42j5xSRics8gkSA=
+X-Google-Smtp-Source: AGHT+IHmyUfextSJYKW/B0dJOold2dMrY42j43HF9l7jc9Jyi1JVLeAGi+6sfKg2IAK8W5YemEeGfQ==
+X-Received: by 2002:a05:6000:2a0a:b0:3b6:18be:3fbc with SMTP id ffacd0b85a97d-3b618be3fe5mr7634132f8f.2.1753121253150;
+        Mon, 21 Jul 2025 11:07:33 -0700 (PDT)
 Received: from Ansuel-XPS24 ([109.52.136.49])
-        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-3b61ca25443sm11183370f8f.9.2025.07.21.11.07.29
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-3b61ca25443sm11183370f8f.9.2025.07.21.11.07.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 21 Jul 2025 11:07:31 -0700 (PDT)
+        Mon, 21 Jul 2025 11:07:32 -0700 (PDT)
 From: Christian Marangi <ansuelsmth@gmail.com>
 To: Stefan Roese <sr@denx.de>,
 	Andi Shyti <andi.shyti@kernel.org>,
@@ -96,17 +96,17 @@ To: Stefan Roese <sr@denx.de>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
 Cc: Christian Marangi <ansuelsmth@gmail.com>
-Subject: [PATCH v2 3/5] dt-bindings: i2c: mt7621: Document an7581 compatible
-Date: Mon, 21 Jul 2025 20:05:54 +0200
-Message-ID: <20250721180710.2116-4-ansuelsmth@gmail.com>
+Subject: [PATCH v2 4/5] i2c: mt7621: limit SCL_STRETCH only to Mediatek SoC
+Date: Mon, 21 Jul 2025 20:05:55 +0200
+Message-ID: <20250721180710.2116-5-ansuelsmth@gmail.com>
 X-Mailer: git-send-email 2.50.0
 In-Reply-To: <20250721180710.2116-1-ansuelsmth@gmail.com>
 References: <20250721180710.2116-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250721_190733_409248_C3AAD08F 
-X-CRM114-Status: GOOD (  10.01  )
+X-CRM114-CacheID: sfid-20250721_190735_158810_93A348B3 
+X-CRM114-Status: GOOD (  15.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,49 +121,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Airoha SoC implement the same Mediatek logic for I2C bus with the only
-difference of not having a dedicated reset line to reset it.
+The same I2C driver is also used for Airoha SoC with the only difference
+that the i2c_reset should not enable SCL_STRETCH for Airoha SoC.
 
-Add a dedicated compatible for the Airoha AN7581 SoC and reject the
-unsupported property.
+Introduce a new compatible for Airoha and limit the SCL_STRETCH only to
+mediatek SoC.
 
 Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 ---
- .../bindings/i2c/mediatek,mt7621-i2c.yaml          | 14 +++++++++++++-
- 1 file changed, 13 insertions(+), 1 deletion(-)
+ drivers/i2c/busses/i2c-mt7621.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/i2c/mediatek,mt7621-i2c.yaml b/Documentation/devicetree/bindings/i2c/mediatek,mt7621-i2c.yaml
-index 118ec00fc190..8223fbc74f14 100644
---- a/Documentation/devicetree/bindings/i2c/mediatek,mt7621-i2c.yaml
-+++ b/Documentation/devicetree/bindings/i2c/mediatek,mt7621-i2c.yaml
-@@ -14,7 +14,9 @@ allOf:
+diff --git a/drivers/i2c/busses/i2c-mt7621.c b/drivers/i2c/busses/i2c-mt7621.c
+index 58c3da92cea3..b4dc1fb269a6 100644
+--- a/drivers/i2c/busses/i2c-mt7621.c
++++ b/drivers/i2c/busses/i2c-mt7621.c
+@@ -88,6 +88,7 @@ static int mtk_i2c_wait_idle(struct mtk_i2c *i2c, bool atomic)
  
- properties:
-   compatible:
--    const: mediatek,mt7621-i2c
-+    enum:
-+      - airoha,an7581-i2c
-+      - mediatek,mt7621-i2c
+ static void mtk_i2c_reset(struct mtk_i2c *i2c)
+ {
++	u32 reg;
+ 	int ret;
  
-   reg:
-     maxItems: 1
-@@ -38,6 +40,16 @@ required:
-   - "#address-cells"
-   - "#size-cells"
- 
-+if:
-+  properties:
-+    compatible:
-+      contains:
-+        const: airoha,an7581-i2c
-+then:
-+  properties:
-+    resets: false
-+    reset-names: false
+ 	ret = device_reset(i2c->adap.dev.parent);
+@@ -98,8 +99,12 @@ static void mtk_i2c_reset(struct mtk_i2c *i2c)
+ 	 * Don't set SM0CTL0_ODRAIN as its bit meaning is inverted. To
+ 	 * configure open-drain mode, this bit needs to be cleared.
+ 	 */
+-	iowrite32(((i2c->clk_div << 16) & SM0CTL0_CLK_DIV_MASK) | SM0CTL0_EN |
+-		  SM0CTL0_SCL_STRETCH, i2c->base + REG_SM0CTL0_REG);
++	reg = ((i2c->clk_div << 16) & SM0CTL0_CLK_DIV_MASK) | SM0CTL0_EN;
++	/* Set SCL_STRETCH only for Mediatek SoC */
++	if (device_is_compatible(i2c->dev, "mediatek,mt7621-i2c"))
++		reg |= SM0CTL0_SCL_STRETCH;
 +
- unevaluatedProperties: false
++	iowrite32(reg, i2c->base + REG_SM0CTL0_REG);
+ 	iowrite32(0, i2c->base + REG_SM0CFG2_REG);
+ 	/* Clear any pending interrupt */
+ 	iowrite32(1, i2c->base + REG_PINTEN_REG);
+@@ -276,6 +281,7 @@ static const struct i2c_algorithm mtk_i2c_algo = {
  
- examples:
+ static const struct of_device_id i2c_mtk_dt_ids[] = {
+ 	{ .compatible = "mediatek,mt7621-i2c" },
++	{ .compatible = "airoha,an7581-i2c" },
+ 	{ /* sentinel */ }
+ };
+ 
 -- 
 2.50.0
 
