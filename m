@@ -4,67 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FE0CC83F1A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Jul 2025 08:41:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAD22C87FC5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Jul 2025 08:43:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A5RTku7TFErU+Ht/NIT3PAL/cIoZFCkvx0+siU4EvMU=; b=ATbNE+yaIAkvjP
-	E2VK9thQIdPN/sxlzekST/Cn/4Ezb2ihM6q1zJcC+KCrvtiPhDC6NH0eU7M5WhJfrly/N3NwD/LV6
-	0dGy1tHOioSnTE9tJWG98/USWtaPZzh0ch3e3VqeYq6SDNTgSlWAfDjwaUV4AeZ9Hjz/geNdPRZqH
-	53zmPyapvPEBQ9qa8G7/7Yx+RuyUeCC5L/gQn01U8GtbkE94E/8J/kLtoewCepeHImbl9apgyv5UT
-	CedBqU13Hav0VvMC6SAKwcJU0k/aGWukRLMoXeGkVKW/flZGyuBok5oXEKhekdpDWYYFBXm3vYvSr
-	WX/69lNvggPiPJAefc7w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=0Yjr6NsrKkaYb/LNYm1mPKHuxqkR0iWhkNkzH9QSzrg=; b=DZXwYClbLLB8tqHbCTOwEmkVz8
+	ClOeSdqZJdkAlDKCDas6EtT9T0U1mR+jqQIut/Lh+8YDS9LV4OSRFcT3N3v1zT9wAm9Lhnuf+NaV5
+	a3EMUbac3ZnuLcQnh7G8LX5qGddDLSjlx4XTwgJm+mn7AyANNZjWF1b4u6CW3RZyGOOOlNTQYcR6q
+	z09+n03zN8CV+JmhTpLzi50nufKPXjAvu6MUvENKNt/x/KhpBe8pZwnFdUwQ8xdYMk/jabobYHgYM
+	Mxxs4TdpZxFdITpT2ifYsdqUhCB7GVRE5XG2p+kQNy2SbmEpedgPnvOm6FAHE53DKYck//rW8kjbQ
+	wVC/ck7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1udm50-0000000Ggyi-23KK;
-	Mon, 21 Jul 2025 08:41:02 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1udm7N-0000000GhAa-2IFA;
+	Mon, 21 Jul 2025 08:43:29 +0000
+Received: from mail.fintara.pl ([51.68.214.200])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1udlhG-0000000Gc16-1CdK;
-	Mon, 21 Jul 2025 08:16:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1753085789;
-	bh=w6sh/7u7ae2yAWUxtx6cgY5xdFm6qlPDPDfS1bNNr9M=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Ql7Vz9tszCFPv6ICq2j2HeW8YhQ/rWQg6eDqXi6u7jqFFvlqtK/7npwqHaIRVlnuj
-	 prYaHEZJLTboETdYQi8j7Eytttphl6P7XOejOqmeTIt6aw25Gx3VS0bquszf+t9WW3
-	 zlkrtwibyy5o6UWzpqv8U6nMbUX+AyefKPaDKW43jy4V1NPNGGkfnMyOu2Zf0w3lEa
-	 /F8stPxdhySbNajuAuyBZeSd7OFZDSw+j15gjB5LFVVWH9pcrP28yxh2FHflPcU0qz
-	 HAia5o6fHpw97g5vihxJ2T7+VShqH0WPKUXCQid2yuFDJmRBBHz04Wm9lc36ltaHtx
-	 gZzDnVV4or+iA==
-Received: from laura.lan (unknown [IPv6:2001:b07:646b:e2:4487:69c6:40a:81be])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: laura.nao)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id AA0B917E0F66;
-	Mon, 21 Jul 2025 10:16:27 +0200 (CEST)
-From: Laura Nao <laura.nao@collabora.com>
-To: srini@kernel.org,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	rafael@kernel.org,
-	daniel.lezcano@linaro.org,
-	rui.zhang@intel.com,
-	lukasz.luba@arm.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com
-Subject: [PATCH 9/9] dt-bindings: nvmem: mediatek: efuse: Add support for MT8196
-Date: Mon, 21 Jul 2025 10:14:59 +0200
-Message-Id: <20250721081459.16278-10-laura.nao@collabora.com>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250721081459.16278-1-laura.nao@collabora.com>
-References: <20250721081459.16278-1-laura.nao@collabora.com>
+	id 1udljf-0000000Gcal-0Rha
+	for linux-mediatek@lists.infradead.org;
+	Mon, 21 Jul 2025 08:19:01 +0000
+Received: by mail.fintara.pl (Postfix, from userid 1002)
+	id E39044A962; Mon, 21 Jul 2025 10:16:18 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=fintara.pl; s=mail;
+	t=1753085810; bh=0Yjr6NsrKkaYb/LNYm1mPKHuxqkR0iWhkNkzH9QSzrg=;
+	h=Date:From:To:Subject:From;
+	b=BTPwGB9tqGDI6Ain5oARsyZC/nCgt88rbNrK8/MdTGazUB6R4AR7hnhRV+v+dy57J
+	 zVazNwHDnPVBWh93E8EtBlpBs/nId7IJrP3dL/TFsDV9q3rO26V2a5EsAmib1+jloA
+	 c6LF4Uq6egO+IuW+q3moJE2Pfa4/SeLUEMK+zqHSATTG4AwafhgYm7vrw/l0ybp7TP
+	 Mxn3EOlKVpZBqhPM8ho72AvmO1c5VFw5+0m+T3hUFjmsAPCO64Cmgf90b5SLARLZCC
+	 Gke/ywgATI8jju24ZBKBd/Hhw53YjlgPInRq5//MLQ+w92TnQWlvnfAUXK5WnThjON
+	 fBYYJG9YPiPgg==
+Received: by mail.fintara.pl for <linux-mediatek@lists.infradead.org>; Mon, 21 Jul 2025 08:16:07 GMT
+Message-ID: <20250721084500-0.1.as.2w0qb.0.5eg6m9f85h@fintara.pl>
+Date: Mon, 21 Jul 2025 08:16:07 GMT
+From: "Dominik Lotka" <dominik.lotka@fintara.pl>
+To: <linux-mediatek@lists.infradead.org>
+Subject: =?UTF-8?Q?Prosz=C4=99_o_kontakt?=
+X-Mailer: mail.fintara.pl
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250721_011630_470074_82D36F9F 
-X-CRM114-Status: UNSURE (   7.82  )
+X-CRM114-CacheID: sfid-20250721_011859_822172_10D7D3C4 
+X-CRM114-Status: UNSURE (   0.54  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,30 +63,22 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: andrew-ct.chen@mediatek.com, lala.lin@mediatek.com, arnd@arndb.de, linux-pm@vger.kernel.org, Laura Nao <laura.nao@collabora.com>, linux-kernel@vger.kernel.org, nfraprado@collabora.com, devicetree@vger.kernel.org, u.kleine-koenig@baylibre.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, kernel@collabora.com, colin.i.king@gmail.com, bchihi@baylibre.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add compatible for MT8196 SoC.
+Dzie=C5=84 dobry,
 
-Signed-off-by: Laura Nao <laura.nao@collabora.com>
----
- Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml | 1 +
- 1 file changed, 1 insertion(+)
+Czy jest mo=C5=BCliwo=C5=9B=C4=87 nawi=C4=85zania wsp=C3=B3=C5=82pracy z =
+Pa=C5=84stwem?
 
-diff --git a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
-index 32b8c1eb4e80..e209a1132a26 100644
---- a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
-+++ b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
-@@ -37,6 +37,7 @@ properties:
-               - mediatek,mt8188-efuse
-               - mediatek,mt8192-efuse
-               - mediatek,mt8195-efuse
-+              - mediatek,mt8196-efuse
-               - mediatek,mt8516-efuse
-           - const: mediatek,efuse
-       - const: mediatek,mt8173-efuse
--- 
-2.39.5
+Z ch=C4=99ci=C4=85 porozmawiam z osob=C4=85 zajmuj=C4=85c=C4=85 si=C4=99 =
+dzia=C5=82aniami zwi=C4=85zanymi ze sprzeda=C5=BC=C4=85.
 
+Pomagamy skutecznie pozyskiwa=C4=87 nowych klient=C3=B3w.
+
+Zapraszam do kontaktu.
+
+
+Pozdrawiam
+Dominik Lotka
 
