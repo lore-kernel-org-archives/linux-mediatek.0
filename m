@@ -4,66 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBB1DC83F1A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Jul 2025 20:40:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 180CDC83F25
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Jul 2025 21:42:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7CssOOH4TmPcEDCFNuO0ds7142thjSiE0reYlRnWtUE=; b=WQy8VMJK8ulWVU+sugWMK+urRZ
-	t3tR9ULhLDUyvIBvYnHmQ1vSQyvkS1FlHscub/ynJ+y5bvy7AjbAb2RO9uBWQPJ1nVc6jMDvgTT0+
-	uiG1ZM8wyfNNbn+w4hzcEJtCyBimB8X1r5MMHKmCt8Dl053fD6kXW7suLX73yR65QmIehv9WTuQcj
-	lcsoGzPWNob2RQo0iUaZ+NQ63+8ljDg7org6QHuoFb43BuvUYfFyTBVdB2hNLbQoLWjqLpN5aV7bq
-	pbfnez9lkx1Pq+HbclLGf20VCq0bTkNSr7ARJT7vh7HcJGD/WcF5m0iqvfCZnUkcVufFL3160BpRr
-	P/AxnRqA==;
+	bh=K6Zuc9nBtsAF5rvw642Tnqzo0PSeKI7DzfHaK9Cvsxc=; b=zuxF1+EC/ARoLYJ2psMVuIhyoL
+	zi7y/Nc7bqCjgnjlFQxCl8rM2FXy50gDKOPV1hFKWVvuvjkp4lm3iNNmYW2N5o+SIlDW7ZWKbbbPY
+	pNkm7lBDSXC2z6LQyDkcgf+nMuI6CzIftfSDAX4MaSaMornONtmkBq2q165RCzLStkm5LfGtn/J2l
+	ua/LwWWC+U9W2g5GPy57SEADoBiN15FjNQ4EBOdJNZ6qdQJptF58TAz0BjnRdokheqjU/yEJmW/1B
+	qo3+gDYv5aFkfkjnnJ9r3evqt63iXY3Tw8HzLKASZEBUIeTFVHSCFZHNdnV0D6EFATzlOCRmXDzq9
+	sI+kiBzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1udxJS-00000000enS-2G85;
-	Mon, 21 Jul 2025 20:40:42 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1udyGu-00000000kyr-0xgH;
+	Mon, 21 Jul 2025 21:42:08 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1udwwj-00000000bMB-2jln;
-	Mon, 21 Jul 2025 20:17:14 +0000
+	id 1udyCo-00000000kP5-1yYo;
+	Mon, 21 Jul 2025 21:37:55 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 6BF335C5950;
-	Mon, 21 Jul 2025 20:17:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E36CDC4CEED;
-	Mon, 21 Jul 2025 20:17:10 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 55F52A55DD7;
+	Mon, 21 Jul 2025 21:37:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 845E0C4CEED;
+	Mon, 21 Jul 2025 21:37:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1753129032;
-	bh=zsoAwwBko42CkVECzPsq8auhWL/xsEzIc97plmn6jec=;
+	s=k20201202; t=1753133873;
+	bh=vux3ljHQL8fINu3c42OPgphrlmfOj/Zy4tR5XX6EUKY=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KNkNYQMbWATXsZca7uECJh52TBQOODxYQsDYpWchJQxNuXKrA3n6QxfTQqlyf2DXp
-	 8O9P3kApfSVThW5ioV5bC6VMj885JSOXK4utaVtFbCq2jmJdYe5W2BnwxgfbzmRvOy
-	 u2rE5/BPq2MCA2MKeRo6YZ5tz8KLk4/15NNF5ViPy/FAPnxNp5N3SXMjlgFXm7zKJ6
-	 sNpJQWhV9BpOxtx6vVmlXvKvHQBqJtZVSc3chFMUwXgQxqtuIP2rNwHJwnOVQchS3p
-	 coEqzM7h36xXVukQtHdWd1TJIkz4F0cvtz5Ym4kGZ9M/5jEaM2Oa27ue8o03jek+55
-	 NXaY/8AZThvKA==
-Date: Mon, 21 Jul 2025 15:17:10 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: linux-i2c@vger.kernel.org, devicetree@vger.kernel.org,
-	Andi Shyti <andi.shyti@kernel.org>, Stefan Roese <sr@denx.de>,
-	linux-mediatek@lists.infradead.org,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	b=ikMcdFsOXsniDPlwnCm9s0WBgVm7AhZSiIVBtQ2F2Wq/5Wx9q66k6m5aFWIcCS5Or
+	 aVPwKoEGEbw8Ti2J2QNRUVdyh98CUdrBp6U4eMkRA7daYn90+b0ceqNQnHPGYacTAu
+	 PokDc6V6oTuz3DGNfh040y59WIoQR7o0nAOPBRcACuLDGkkTg1y7RzMrkoE0jrfapZ
+	 6V3oCj/fLFprr6w+etUoIzWIe2GyXcjcClF4OJuCvDpkvugGeWtbSkDwdxQJEs0Mn8
+	 qSWcLjzdverDlDPda5J5hXKhnoqUbtxEPhJJeJrZngkgGMZi/eOlR0GbrFu8EZaNFF
+	 yw/pi3FG4Or9w==
+Date: Mon, 21 Jul 2025 23:37:50 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Conor Dooley <conor+dt@kernel.org>
-Subject: Re: [PATCH v2 3/5] dt-bindings: i2c: mt7621: Document an7581
- compatible
-Message-ID: <175312902965.1260431.17671364110549858903.robh@kernel.org>
-References: <20250721180710.2116-1-ansuelsmth@gmail.com>
- <20250721180710.2116-4-ansuelsmth@gmail.com>
+	Conor Dooley <conor+dt@kernel.org>, Simon Horman <horms@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, Felix Fietkau <nbd@nbd.name>
+Subject: Re: [PATCH net-next v4 1/7] dt-bindings: net: airoha: npu: Add
+ memory regions used for wlan offload
+Message-ID: <aH6zLo17TOSZID37@lore-desk>
+References: <20250717-airoha-en7581-wlan-offlaod-v4-0-6db178391ed2@kernel.org>
+ <20250717-airoha-en7581-wlan-offlaod-v4-1-6db178391ed2@kernel.org>
+ <20250718-sceptical-blue-bird-7e96e3@kuoka>
+ <aHoWY6iGN-lJnu60@lore-desk>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="hDFEHIRXI0z6CbSS"
 Content-Disposition: inline
-In-Reply-To: <20250721180710.2116-4-ansuelsmth@gmail.com>
+In-Reply-To: <aHoWY6iGN-lJnu60@lore-desk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250721_131713_730324_C4BFA82B 
-X-CRM114-Status: GOOD (  10.40  )
+X-CRM114-CacheID: sfid-20250721_143754_636195_DFED9AD1 
+X-CRM114-Status: GOOD (  27.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,19 +84,100 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Mon, 21 Jul 2025 20:05:54 +0200, Christian Marangi wrote:
-> Airoha SoC implement the same Mediatek logic for I2C bus with the only
-> difference of not having a dedicated reset line to reset it.
-> 
-> Add a dedicated compatible for the Airoha AN7581 SoC and reject the
-> unsupported property.
-> 
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> ---
->  .../bindings/i2c/mediatek,mt7621-i2c.yaml          | 14 +++++++++++++-
->  1 file changed, 13 insertions(+), 1 deletion(-)
-> 
+--hDFEHIRXI0z6CbSS
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+> > On Thu, Jul 17, 2025 at 08:57:42AM +0200, Lorenzo Bianconi wrote:
+> > > Document memory regions used by Airoha EN7581 NPU for wlan traffic
+> > > offloading. The brand new added memory regions do not introduce any
+> > > backward compatibility issues since they will be used just to offload
+> > > traffic to/from the MT76 wireless NIC and the MT76 probing will not f=
+ail
+> > > if these memory regions are not provide, it will just disable offload=
+ing
+> > > via the NPU module.
+> >=20
+> > That's not what I see entirely. I see the same problem I told you alrea=
+dy.
+> > of_reserved_mem_region_to_resource_byname returns error ->
+> > airoha_npu_wlan_init_memory returns error -> your other patchset prints
+> > big fat warning in mt7996_pci_probe().
+>=20
+> Is it ok to use dev_info() instead dev_warn() or do you prefer to complet=
+ely
+> remove the log?
+>=20
+> >=20
+> > So all correct DTS now gets a warning. Warning is a state of failure,
+> > even if probe proceeds.
+> >=20
+> > I don't understand why you can't make it fully optional, so also fully
+> > backwards compatible.
+>=20
+> I am completely fine to make it fully optional, but can you please explain
+> what you mean here with 'optional'?
+>=20
+> At the moment in mt76_npu_init() we first look for the "airoha,npu" prope=
+rty
+> in mt76 node to load the NPU pointer running airoha_npu_get():
+>=20
+> wifi@0,0 {
+> 	compatible =3D "mediatek,mt76";
+> 	...
+> 	airoha,npu =3D <&npu>;
+> 	...
+> };
 
+According to my understanding it is enough to get rid of the dev_warn() in =
+the
+MT76 series in order to avoid any backward compatibility issues. Am I wrong?
+Moreover, we have the NPU phandle in the MT76 DTS node in order to check if=
+ the
+reserved-memory properties are mandatory or not (if the MT76 node is config=
+ured
+with the NPU phandle it is expected to have the reserved-memory properties =
+properly
+configured).
+If my understanding is correct the NPU series does not require any change (=
+the
+only required change is in MT76 series). Since the current series is marked=
+ as
+"Changes Requested' in patchwork, do I need to repost?
+
+Regards,
+Lorenzo
+
+>=20
+> If this property is defined in the wifi node I guess it is fine to assume
+> even the NPU memory regions are properly defined int the DTS.
+>=20
+> Is it ok to use dev_info() instead of dev_warn() in mt7996_pci_probe() if
+> the mt76_npu_init() returns an error (e.g. if the "airoha,npu" is not def=
+ined)
+> or do you prefer to do something else to make this process optional?
+>=20
+> Regards,
+> Lorenzo
+>=20
+> >=20
+> > Best regards,
+> > Krzysztof
+> >=20
+
+
+
+--hDFEHIRXI0z6CbSS
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaH6zLgAKCRA6cBh0uS2t
+rG2RAQCuL5YPTsDFkr426LnD5RkvUOkMsaYTElmnbIYT4uE1UAEA0n0KABJw+pOs
+JmKHhsz291dIAM3tsXOOyatOEJIqFwc=
+=83D7
+-----END PGP SIGNATURE-----
+
+--hDFEHIRXI0z6CbSS--
 
