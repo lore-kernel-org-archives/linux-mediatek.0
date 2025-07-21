@@ -4,78 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AAD3C87FC5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Jul 2025 16:55:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E969C83F25
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Jul 2025 18:57:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cV0TLLVrWh45H8GiwU0Tx4lO+8zwZFzO8jqWulbiDMY=; b=bfdKx656upDry/2/vAVoNSweG/
-	BPP2zCK88KobuvZprgNPN2/wk8/ZSekvTbnAX2t0A4e2QtB2UR9xHTI9ADzX+Fc++Sj5HyWnlFCBE
-	qDt4neALieBttKcNpJThzSFxd+QkRd0JPo7gsKzEvSQQxvGPl7UTg6IUSkcG6SD+KtpJKdtgmqDnV
-	/mrJlmwdQAzWp4ised69AhGt8MSwL90Rg4Kks3LbGd9Ue/S6Un8NtioXjUPIE3+DgEmdJUqm+MFNO
-	/ALUJ6YCk3z4ZFXZQSV9vGpAEJwFLQt2CjAQT9R6b0yVAvNgNh5XAWn++gG/0SwR75VMsfcAtTeQc
-	Jmwhv1kg==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=bpXq6+eg5tvg1F9qpCoZtJ7h2TZAfgNg6/RIL3iNiQQ=; b=pGIdg87QuRQSRH8143kvhnDu6y
+	n9X33xTEZDHxixM/htTHFtYLmPkeFM+hmIvCiOke1HQ+7Z+eRgJ50XxMtIPYirCXqee34y+ngAmtR
+	+lXaCnbjsJZ0N+gYZOE8fTV0oPEzFrJLBZEZxsbZecQXiVkjrChd08YZ1T1m6dvg/aEtLXtGG7pe5
+	7DRTIfjIMpSpze8wwJNHc7I3nbg0RbiBSLmjqSQDA8eZnwa+BGcpC8DAzYRakGNn6Te4qIiXFjpXT
+	H9kVcctelqUpNb8tGANgXXUyCf1b6Z2FFI/0+vhUjVYtnY8hjurUNaJSxCj6mmf680rnVWLk3BhB/
+	wU/rGB/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1udtnP-00000000F9r-2l3L;
-	Mon, 21 Jul 2025 16:55:23 +0000
-Received: from 004.mia.mailroute.net ([199.89.3.7])
+	id 1udvhu-00000000RnW-0tXr;
+	Mon, 21 Jul 2025 18:57:50 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1udshK-000000006be-39GV
-	for linux-mediatek@lists.infradead.org;
-	Mon, 21 Jul 2025 15:45:04 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 004.mia.mailroute.net (Postfix) with ESMTP id 4bm4Tl4Y8rzm174y;
-	Mon, 21 Jul 2025 15:44:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1753112696; x=1755704697; bh=cV0TLLVrWh45H8GiwU0Tx4lO
-	+8zwZFzO8jqWulbiDMY=; b=h72Wp3dMd8e7wXvYPGUvnwKgwmgEZjvFnWkJ/SYW
-	n6WVtCCc68+6wSifCQgbUVfYd6DNBtLSTL99m9lFT+H2HJpPkmExzgHutgsm1cL3
-	06H1ekyq1DGitoOWulaEkXQYjmVWUMgDZPygTfRFhl4Uq5jflmK1NGE0RVH1Vux1
-	Qm1Owq+sZxHLxsGkVXR2DJQyaLgHUnwy8/O6GPMwwhCGT1X6cwa+9uTSgNrMHIpn
-	zRG0SDnEWOuPY8rvR3gcuICcVp8VLuUAEC/Rn0UcN/xzP7J7kRsl4L0L/e46Hkcd
-	rNm+2uOIp9nCK8FwtJXimOTL29yYCjCEx1jRlDe0Az25bQ==
-X-Virus-Scanned: by MailRoute
-Received: from 004.mia.mailroute.net ([127.0.0.1])
- by localhost (004.mia [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id l6NqqqM_3-5p; Mon, 21 Jul 2025 15:44:56 +0000 (UTC)
-Received: from [100.66.154.22] (unknown [104.135.204.82])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 004.mia.mailroute.net (Postfix) with ESMTPSA id 4bm4TQ3Nqlzm0ySj;
-	Mon, 21 Jul 2025 15:44:41 +0000 (UTC)
-Message-ID: <37ef75af-70a4-4030-9bf7-0bae0f53f7d9@acm.org>
-Date: Mon, 21 Jul 2025 08:44:40 -0700
+	id 1uduvA-00000000OLq-0UW7;
+	Mon, 21 Jul 2025 18:07:29 +0000
+Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-3a528243636so2828369f8f.3;
+        Mon, 21 Jul 2025 11:07:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1753121246; x=1753726046; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=bpXq6+eg5tvg1F9qpCoZtJ7h2TZAfgNg6/RIL3iNiQQ=;
+        b=EgfYEZ8bdYaOMS5HMLXnBx4gSRdvLwXnUhz+ypXw0XlWgzZtObMumFcEqN/OuWCA3n
+         3H5pUf1gHtOolbX4oNWRqc6BxlwB8Gcpmlbxx5ryzaiZ4u5de3oSH5Er+eYp/1wJZg8Z
+         U0SYsBoY2prfPAfWLN0tdMmtwnaDOO/nGsRHJFO89q75WtCGKTaLl7jPdX6z2aq0MREq
+         jaTSyvAGPWMHQW9WK0MYRbK56/Gsk4GowzjmP3sjtGAdgL2rRQ22N11w7gNsrK6DWRgs
+         Pfgv2/0gbcQXwCILTVjELThSChE+D2TfRZYjXVIWlxryO1v1zfjNtsHByvOGMT9HT1o5
+         KFkA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1753121246; x=1753726046;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=bpXq6+eg5tvg1F9qpCoZtJ7h2TZAfgNg6/RIL3iNiQQ=;
+        b=UWZLQYkiVS/V6PTsckRIfMu82R2Aicu9MtNVGQaIA5aYd5ffKp4VM1GblF9EkGeO8n
+         RcOxyWSFlhmzuI548jpM/JX6asBDnluzuX8Vn+ZcUGyGLRGxUV1cK8YBHViZd9GKvQmG
+         sZuZUeFOvcHPxwqDc9tOIWXpyTgkdqDxW0PZhBfa1zuOvbmCmL6W2oBMTPcYcTXnCXKb
+         nddFqcjnpt1VmSJY0Froa5G/x1zH2+IsZmBuuvmmOntwjHnr8e+XYYnZi1ZIXqwua86m
+         +G0bkP783i7WGYgCv9oG3b0wBwzc96rlbkLiiqcQGSeH/zgPNZeq+r2qPdZrD7ZkdbPY
+         DB6Q==
+X-Forwarded-Encrypted: i=1; AJvYcCVTPr9SBxIz4go8vwBxuOOAdwDNJGYVTTLSYLXY/fHKFcxyGRNQmxXwfXltVK5Y2bGMCDQwX1qo8rQvpYOBRP+s@lists.infradead.org, AJvYcCXW5UsJNFQ7ZdYC6AOu/D/R9BYkBkfGC4D1sSghwdGQU9orfDDFg5aCSo6BbZKgbbPeuWrKh7fL6FPcgd8+HFc=@lists.infradead.org
+X-Gm-Message-State: AOJu0YyOFgwsbmW5LXRFzdqaOXakroq1CcNWZ04EPmZ6jZ0OMUV7XEiQ
+	LSrykvpx4eoUFVbLMsLxXeblBUu+E2c+oOth/bMRqhfcDkO3dcLYDoWhCeWsuw==
+X-Gm-Gg: ASbGncvUa1vYAJmnErWwzoc0fSN63vMiTNaU8CVrkRAkD4wclkhJuiXMPIqAJuFJExI
+	tVuuTutLL0Jxn/1BKbmLLdlEFbZJWX60sMmdqn2Ngj4cSfAihP+eE/5obNRoqsdaMV3fKfCgHbF
+	2hsk7leBe7umuVriIXum8UF8Il6V0bm9mH4fLIsoGiys5C7SiBK8iDAhETJlHGYRpaqUtX+4i1U
+	bixSzM/OKLGlMT6NCoTLEh5y10abYw9yh0P57wurSdd6VW0tpy0jA0JA5KU88SBpfFbrdhgD+R2
+	5VNhslZxagid6SjLO+OxRfS3gWqzltzBCVUCEb6TiBMWJEcCeFmCAcewy6Zbpmf3NLioVFWipMk
+	j18ZSlk6P3wnzcMlUnxavVOE=
+X-Google-Smtp-Source: AGHT+IHLX+hGhgJq3pglvcmk9f8UypfiB0r68+BjcFY7GFFAJdEE4toG3w3gRJtCT/wiIl8UNiWi0Q==
+X-Received: by 2002:a05:6000:2011:b0:3b7:5cae:52b3 with SMTP id ffacd0b85a97d-3b75cae530emr3707606f8f.57.1753121245802;
+        Mon, 21 Jul 2025 11:07:25 -0700 (PDT)
+Received: from Ansuel-XPS24 ([109.52.136.49])
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-3b61ca25443sm11183370f8f.9.2025.07.21.11.07.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 21 Jul 2025 11:07:25 -0700 (PDT)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Stefan Roese <sr@denx.de>,
+	Andi Shyti <andi.shyti@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-i2c@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Christian Marangi <ansuelsmth@gmail.com>
+Subject: [PATCH v2 0/5] i2c: mt7621: improve support for Airoha
+Date: Mon, 21 Jul 2025 20:05:51 +0200
+Message-ID: <20250721180710.2116-1-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.50.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/9] ufs: host: mediatek: Remove unnecessary boolean
- conversion and parentheses
-To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com,
- yi-fan.peng@mediatek.com, qilin.tan@mediatek.com, lin.gui@mediatek.com,
- tun-yu.yu@mediatek.com, eddie.huang@mediatek.com, naomi.chu@mediatek.com,
- ed.tsai@mediatek.com
-References: <20250721083626.1801668-1-peter.wang@mediatek.com>
- <20250721083626.1801668-2-peter.wang@mediatek.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20250721083626.1801668-2-peter.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250721_084502_871447_CB6B2912 
-X-CRM114-Status: UNSURE (   8.07  )
+X-CRM114-CacheID: sfid-20250721_110728_156767_14BA7C57 
+X-CRM114-Status: UNSURE (   9.18  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -91,17 +105,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/21/25 1:35 AM, peter.wang@mediatek.com wrote:
-> The changes
-> simplify the code by directly returning the result of bitwise operations
-> without converting them to boolean values or using extra parentheses.
+This small series improve support for Airoha SoC that use the
+same MT7621 implementation. Some additional tweak are required
+to better support it.
 
-The code changes look good to me but the description of this patch does
-not. The conversion from unsigned int to boolean still happens with
-this patch applied. This patch converts an explicit conversion into an
-implicit conversion.
+Also we add support for atomic variant of .xfer required for
+some attached pheriperals on the Airoha SoC.
 
-Thanks,
+Changes v2:
+- Fix compatible order for schema patch
 
-Bart.
+Christian Marangi (5):
+  i2c: mt7621: rework cmd/wait OPs to support atomic afer variant
+  i2c: mt7621: clear pending interrupt on i2c reset
+  dt-bindings: i2c: mt7621: Document an7581 compatible
+  i2c: mt7621: limit SCL_STRETCH only to Mediatek SoC
+  i2c: mt7621: make device reset optional
+
+ .../bindings/i2c/mediatek,mt7621-i2c.yaml     | 14 +++-
+ drivers/i2c/busses/i2c-mt7621.c               | 73 +++++++++++++------
+ 2 files changed, 64 insertions(+), 23 deletions(-)
+
+-- 
+2.50.0
+
 
