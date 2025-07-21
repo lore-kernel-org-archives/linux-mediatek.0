@@ -4,77 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7180EC83F1A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Jul 2025 02:29:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C94AAC83F27
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Jul 2025 05:47:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/SPGnKt7ZomSM6P7QHvQ2bE89lggp4fQ/ZKyTPGX6IA=; b=lTVkWUEEDQeS6U17VrhX5O0Eic
-	PiMvwZqQnbBiautIJ4STe5qEKLdlggMuZnkCxXUNNdQq+IOqE+wjyz0GY7Pmdx9CmCU1WROxkvSgr
-	b1PketoxwZ0IXo3yGEMr2hQxeZ0vyllGkBxaiNjAncoEHvVJ2D0r3l4SJuFrNNE+bO14PftxVizoV
-	h+Bm2UWYvjT5zkziy3w9w4JNop0gx8KaZjB+krF0B6RHJH1d/ygrT0zkW97AhoLUpEg8SQMkQbho0
-	yb1rMRQJJLDjBv7musxAYoJX+dgNFr4X8M58JuiLNC/7oVlbUrknGNqLr++6/M5Yj0u3tlRBVK425
-	e53bsR6Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OzkkmRwI4xkGm3XBuhpFK6SXZFVf+5iuNz7EW4Y727k=; b=OKwoYPVZMjcc+7VqSHVbUjHvNw
+	SIzJFfrT7A+RJgbZBgT5VKlE1M7qihkv6bQ2fBxsn3IIvjIoDLcQihaviTrq+6rtHI+68/0W7Qz9y
+	e8v+1cHGc/HHrLudljVpZ0x9bJ9Nd9LGW6lT/t9inbQSVtRTUlrn81hDZOOQx3PhPS5zOVKLYQPpO
+	VnpuYuj5ZuKTIjy2o5eIfLUvDo2uhtA/aOVaqfcRR4RZFQtYEsGkgU+vJqk8SpKUPvtJw4DzZSaof
+	FPsw1eu6UgylOjGYQ0Wm2k1UQjrLoEKvNXhYLRv4IoesKlC1ftmzabqwZsaoCWREAmzVecopgKmdv
+	spR62GUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1udgHE-0000000G0DJ-3pJk;
-	Mon, 21 Jul 2025 02:29:16 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1udjN3-0000000GI5n-3fLO;
+	Mon, 21 Jul 2025 05:47:29 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1udgE4-0000000Fza7-3M4S;
-	Mon, 21 Jul 2025 02:26:02 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 00468A527D3;
-	Mon, 21 Jul 2025 02:26:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2F9BCC4CEE7;
-	Mon, 21 Jul 2025 02:25:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1753064759;
-	bh=UdaRAhokbN4SPSUkNrG/50YNHIzHEKKeFyrZJ7S/C08=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=OPmFrSoHyf9rL/rcC6VNtWWyGuoSvlAzKSz3yG25hB8G/+zj3/rWEG6TOZY3l+9d8
-	 bh+0Y/iBPuiTGVTqPGth6QP4qBcDEDxwsHSYkQOX2J1kNvwGghqNMqM/qS9lTQSCPX
-	 45fyCF4VAUpzfe3tzqtVWazweJDP8my5uDg7vS8vaKV1izjoyjlq73qtBktrSJrFVU
-	 MsOMQ2Pm/iRmBZQp8KIjl4aboyp2bzns+Hwvg18tXbfqTNSChEjVnUgspDObof3TiS
-	 stQszLv0nGUDs6wHluP7XlB5UYwipzAv4OfzktUmtK96ZUmCJRjsrseWSV9ZUF+R2r
-	 T+J9wZkmLlCGw==
-Date: Mon, 21 Jul 2025 10:25:53 +0800
-From: "Peter Chen (CIX)" <peter.chen@kernel.org>
-To: Sakari Ailus <sakari.ailus@linux.intel.com>
-Cc: Pawel Laszczak <pawell@cadence.com>, Roger Quadros <rogerq@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Thinh Nguyen <Thinh.Nguyen@synopsys.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Michal Simek <michal.simek@amd.com>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Mathias Nyman <mathias.nyman@intel.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Bastien Nocera <hadess@hadess.net>, Bin Liu <b-liu@ti.com>,
-	linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
-	imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org,
-	linux-omap@vger.kernel.org
-Subject: Re: [PATCH 67/80] usb: Remove redundant pm_runtime_mark_last_busy()
- calls
-Message-ID: <20250721022553.GB299578@nchen-desktop>
-References: <20250704075225.3212486-1-sakari.ailus@linux.intel.com>
- <20250704075453.3222311-1-sakari.ailus@linux.intel.com>
+	id 1udjN0-0000000GI4v-0DZZ;
+	Mon, 21 Jul 2025 05:47:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1753076842;
+	bh=Y6O1LeXawfH6jqCiha75wKFY04tLvXmKtw8IkQsRZzE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=R6sgbtT1j4PydMnb9LKCtJbvY/h+dBwoJCRjJfAknzIQNRrlcOiG3Rk7yOIjryhEo
+	 oT7IdyLx4C46fpqYi16JO1SXk+maA3prPGcpfO41dZKiPy/jt/7nmEClDczTMthbjO
+	 f5rn1uQfLT9p/KaXVj+L7P7QFkUwyCRq8fB7KJnD12SvtbzJDgF6K2DqpC6eNNMXSc
+	 R4tdiCX2+c7lD3XeADrFBiihDgbCH+kYyNMl57OF7K1/z6GCmvW19PSFZ3/ayya0Kj
+	 Sl9U4R7JPUywoq3uTD9VyR8AzQ3zrX9cT/8qIK4KOr7oEry2iagdrQ+7cmqWFkzuq2
+	 qyC1Q3wjkaoUw==
+Received: from [192.168.50.250] (unknown [171.76.80.183])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B508E17E0F66;
+	Mon, 21 Jul 2025 07:47:19 +0200 (CEST)
+Message-ID: <bcff3bed-0695-45fa-8f62-453878b6075f@collabora.com>
+Date: Mon, 21 Jul 2025 11:17:02 +0530
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250704075453.3222311-1-sakari.ailus@linux.intel.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 5/7] drm/ci: uprev IGT
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com,
+ helen.fornazier@gmail.com, airlied@gmail.com, simona.vetter@ffwll.ch,
+ robdclark@gmail.com, guilherme.gallo@collabora.com,
+ sergi.blanch.torne@collabora.com, valentine.burley@collabora.com,
+ lumag@kernel.org, linux-mediatek@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, virtualization@lists.linux.dev,
+ linux-kernel@vger.kernel.org
+References: <20250718105407.32878-1-vignesh.raman@collabora.com>
+ <20250718105407.32878-6-vignesh.raman@collabora.com>
+ <7c6suvc6quwwxni2nsos65btzim2lbv7f2u6mz5qbupzpmpzgb@g46wg63ubr6l>
+Content-Language: en-US
+From: Vignesh Raman <vignesh.raman@collabora.com>
+In-Reply-To: <7c6suvc6quwwxni2nsos65btzim2lbv7f2u6mz5qbupzpmpzgb@g46wg63ubr6l>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250720_192600_973106_D8609977 
-X-CRM114-Status: GOOD (  23.34  )
+X-CRM114-CacheID: sfid-20250720_224726_288847_04238993 
+X-CRM114-Status: GOOD (  15.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,381 +83,172 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 25-07-04 10:54:53, Sakari Ailus wrote:
-> pm_runtime_put_autosuspend(), pm_runtime_put_sync_autosuspend(),
-> pm_runtime_autosuspend() and pm_request_autosuspend() now include a call
-> to pm_runtime_mark_last_busy(). Remove the now-reduntant explicit call to
-> pm_runtime_mark_last_busy().
-> 
-> Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+Hi,
 
-For chipidea and cdns3 parts:
+On 18/07/25 18:24, Dmitry Baryshkov wrote:
+> On Fri, Jul 18, 2025 at 04:23:57PM +0530, Vignesh Raman wrote:
+>> Uprev IGT to the latest version and update expectation files.
+>>
+>> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+>> ---
+>>   drivers/gpu/drm/ci/gitlab-ci.yml              |   2 +-
+>>   .../gpu/drm/ci/xfails/amdgpu-stoney-fails.txt |   2 +
+>>   .../drm/ci/xfails/amdgpu-stoney-flakes.txt    |   7 ++
+>>   drivers/gpu/drm/ci/xfails/i915-amly-fails.txt |  11 +-
+>>   drivers/gpu/drm/ci/xfails/i915-apl-fails.txt  |   2 +
+>>   drivers/gpu/drm/ci/xfails/i915-cml-fails.txt  |  29 +----
+>>   drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt |   7 ++
+>>   drivers/gpu/drm/ci/xfails/i915-glk-fails.txt  |   8 +-
+>>   drivers/gpu/drm/ci/xfails/i915-glk-skips.txt  |  83 ++++++++++++
+>>   drivers/gpu/drm/ci/xfails/i915-jsl-fails.txt  |  10 +-
+>>   drivers/gpu/drm/ci/xfails/i915-kbl-fails.txt  |   3 +
+>>   drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt  |   5 +-
+>>   drivers/gpu/drm/ci/xfails/i915-tgl-flakes.txt |   6 +
+>>   drivers/gpu/drm/ci/xfails/i915-whl-fails.txt  |   7 +-
+>>   .../drm/ci/xfails/mediatek-mt8173-fails.txt   |   5 +-
+>>   .../drm/ci/xfails/mediatek-mt8173-flakes.txt  | 119 ++++++++++++++++++
+>>   .../drm/ci/xfails/mediatek-mt8183-fails.txt   |   7 +-
+>>   .../msm-sc7180-trogdor-kingoftown-fails.txt   |   1 +
+>>   ...sm-sc7180-trogdor-lazor-limozeen-fails.txt |   1 +
+>>   .../drm/ci/xfails/msm-sm8350-hdk-fails.txt    |   1 +
+>>   .../drm/ci/xfails/msm-sm8350-hdk-skips.txt    |  73 +++++++++++
+>>   .../drm/ci/xfails/panfrost-mt8183-fails.txt   |   1 +
+>>   .../drm/ci/xfails/panfrost-rk3288-fails.txt   |   1 +
+>>   .../drm/ci/xfails/panfrost-rk3399-fails.txt   |   1 +
+>>   .../drm/ci/xfails/rockchip-rk3288-fails.txt   |  12 +-
+>>   .../drm/ci/xfails/rockchip-rk3288-flakes.txt  |  21 ++++
+>>   .../drm/ci/xfails/rockchip-rk3399-fails.txt   |   9 +-
+>>   .../drm/ci/xfails/rockchip-rk3399-flakes.txt  |  35 ++++++
+>>   .../drm/ci/xfails/virtio_gpu-none-fails.txt   |   4 +
+>>   drivers/gpu/drm/ci/xfails/vkms-none-fails.txt |   3 +
+>>   drivers/gpu/drm/ci/xfails/vkms-none-skips.txt |   3 +
+>>   31 files changed, 416 insertions(+), 63 deletions(-)
+>>   create mode 100644 drivers/gpu/drm/ci/xfails/i915-tgl-flakes.txt
+>>
+>> diff --git a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt
+>> index e4a8f8352cd6..9bf38c077f8e 100644
+>> --- a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt
+>> +++ b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt
+>> @@ -15,3 +15,4 @@ kms_pipe_crc_basic@compare-crc-sanitycheck-nv12,Fail
+>>   kms_plane_alpha_blend@alpha-7efc,Fail
+>>   kms_plane_alpha_blend@coverage-7efc,Fail
+>>   kms_plane_alpha_blend@coverage-vs-premult-vs-constant,Fail
+>> +core_setmaster@master-drop-set-user,Fail
+> 
+> Could you please point out the issue / failure log?
 
-Acked-by: Peter Chen <peter.chen@kernel.org>
+Please see the pipeline logs,
+https://gitlab.freedesktop.org/vigneshraman/msm/-/jobs/79793740
+https://gitlab.freedesktop.org/vigneshraman/msm/-/jobs/79793742
 
-Peter
-> ---
-> The cover letter of the set can be found here
-> <URL:https://lore.kernel.org/linux-pm/20250704075225.3212486-1-sakari.ailus@linux.intel.com>.
+Let me know if you want me to raise an issue.
+
+Regards,
+Vignesh
+
 > 
-> In brief, this patch depends on PM runtime patches adding marking the last
-> busy timestamp in autosuspend related functions. The patches are here, on
-> rc2:
+>> diff --git a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-fails.txt b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-fails.txt
+>> index e4a8f8352cd6..7441b363efae 100644
+>> --- a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-fails.txt
+>> +++ b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-fails.txt
+>> @@ -1,3 +1,4 @@
+>> +core_setmaster@master-drop-set-user,Fail
+>>   kms_color@ctm-0-25,Fail
+>>   kms_color@ctm-0-50,Fail
+>>   kms_color@ctm-0-75,Fail
+>> diff --git a/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-fails.txt b/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-fails.txt
+>> index 8d26b23133aa..f387c73193c6 100644
+>> --- a/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-fails.txt
+>> +++ b/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-fails.txt
+>> @@ -1,3 +1,4 @@
+>> +core_setmaster@master-drop-set-user,Fail
+>>   kms_3d,Fail
+>>   kms_cursor_legacy@forked-bo,Fail
+>>   kms_cursor_legacy@forked-move,Fail
+>> diff --git a/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-skips.txt b/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-skips.txt
+>> index 9450f2a002fd..84ffbe0981ea 100644
+>> --- a/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-skips.txt
+>> +++ b/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-skips.txt
+>> @@ -210,3 +210,76 @@ msm/msm_mapping@ring
+>>   # [  229.752499] CPU features: 0x18,00000017,00200928,4200720b
+>>   # [  229.758095] Memory Limit: none
+>>   # [  229.761291] ---[ end Kernel panic - not syncing: softlockup: hung tasks ]---
+>> +
+>> +msm/msm_recovery@gpu-fault
 > 
->         git://git.kernel.org/pub/scm/linux/kernel/git/rafael/linux-pm.git \
->                 pm-runtime-6.17-rc1
+> Hmm. I thought this should have been fixed...
 > 
->  drivers/usb/cdns3/cdns3-gadget.c            | 1 -
->  drivers/usb/cdns3/cdnsp-gadget.c            | 1 -
->  drivers/usb/chipidea/core.c                 | 1 -
->  drivers/usb/chipidea/otg_fsm.c              | 1 -
->  drivers/usb/dwc3/core.c                     | 2 --
->  drivers/usb/dwc3/dwc3-am62.c                | 1 -
->  drivers/usb/dwc3/dwc3-imx8mp.c              | 1 -
->  drivers/usb/dwc3/dwc3-pci.c                 | 1 -
->  drivers/usb/dwc3/dwc3-xilinx.c              | 1 -
->  drivers/usb/gadget/udc/cdns2/cdns2-gadget.c | 1 -
->  drivers/usb/host/xhci-mtk.c                 | 1 -
->  drivers/usb/host/xhci-tegra.c               | 1 -
->  drivers/usb/misc/apple-mfi-fastcharge.c     | 1 -
->  drivers/usb/mtu3/mtu3_plat.c                | 1 -
->  drivers/usb/musb/musb_core.c                | 5 -----
->  drivers/usb/musb/musb_debugfs.c             | 5 -----
->  drivers/usb/musb/musb_dsps.c                | 1 -
->  drivers/usb/musb/musb_gadget.c              | 4 ----
->  drivers/usb/musb/omap2430.c                 | 1 -
->  19 files changed, 31 deletions(-)
-> 
-> diff --git a/drivers/usb/cdns3/cdns3-gadget.c b/drivers/usb/cdns3/cdns3-gadget.c
-> index d9d8dc05b235..168707213ed9 100644
-> --- a/drivers/usb/cdns3/cdns3-gadget.c
-> +++ b/drivers/usb/cdns3/cdns3-gadget.c
-> @@ -3251,7 +3251,6 @@ static void cdns3_gadget_exit(struct cdns *cdns)
->  	priv_dev = cdns->gadget_dev;
->  
->  
-> -	pm_runtime_mark_last_busy(cdns->dev);
->  	pm_runtime_put_autosuspend(cdns->dev);
->  
->  	usb_del_gadget(&priv_dev->gadget);
-> diff --git a/drivers/usb/cdns3/cdnsp-gadget.c b/drivers/usb/cdns3/cdnsp-gadget.c
-> index 55f95f41b3b4..2ffe24a6e477 100644
-> --- a/drivers/usb/cdns3/cdnsp-gadget.c
-> +++ b/drivers/usb/cdns3/cdnsp-gadget.c
-> @@ -1996,7 +1996,6 @@ static void cdnsp_gadget_exit(struct cdns *cdns)
->  	struct cdnsp_device *pdev = cdns->gadget_dev;
->  
->  	devm_free_irq(pdev->dev, cdns->dev_irq, pdev);
-> -	pm_runtime_mark_last_busy(cdns->dev);
->  	pm_runtime_put_autosuspend(cdns->dev);
->  	usb_del_gadget_udc(&pdev->gadget);
->  	cdnsp_gadget_free_endpoints(pdev);
-> diff --git a/drivers/usb/chipidea/core.c b/drivers/usb/chipidea/core.c
-> index 694b4a8e4e1d..a6ce73dcc871 100644
-> --- a/drivers/usb/chipidea/core.c
-> +++ b/drivers/usb/chipidea/core.c
-> @@ -1372,7 +1372,6 @@ static int ci_controller_resume(struct device *dev)
->  	ci->in_lpm = false;
->  	if (ci->wakeup_int) {
->  		ci->wakeup_int = false;
-> -		pm_runtime_mark_last_busy(ci->dev);
->  		pm_runtime_put_autosuspend(ci->dev);
->  		enable_irq(ci->irq);
->  		if (ci_otg_is_fsm_mode(ci))
-> diff --git a/drivers/usb/chipidea/otg_fsm.c b/drivers/usb/chipidea/otg_fsm.c
-> index a093544482d5..929536dc96ec 100644
-> --- a/drivers/usb/chipidea/otg_fsm.c
-> +++ b/drivers/usb/chipidea/otg_fsm.c
-> @@ -629,7 +629,6 @@ int ci_otg_fsm_work(struct ci_hdrc *ci)
->  				ci_otg_queue_work(ci);
->  			}
->  		} else if (ci->fsm.otg->state == OTG_STATE_A_HOST) {
-> -			pm_runtime_mark_last_busy(ci->dev);
->  			pm_runtime_put_autosuspend(ci->dev);
->  			return 0;
->  		}
-> diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
-> index 8002c23a5a02..77b309ebd704 100644
-> --- a/drivers/usb/dwc3/core.c
-> +++ b/drivers/usb/dwc3/core.c
-> @@ -279,7 +279,6 @@ static void __dwc3_set_mode(struct work_struct *work)
->  	}
->  
->  out:
-> -	pm_runtime_mark_last_busy(dwc->dev);
->  	pm_runtime_put_autosuspend(dwc->dev);
->  	mutex_unlock(&dwc->mutex);
->  }
-> @@ -2642,7 +2641,6 @@ int dwc3_runtime_idle(struct dwc3 *dwc)
->  		break;
->  	}
->  
-> -	pm_runtime_mark_last_busy(dev);
->  	pm_runtime_autosuspend(dev);
->  
->  	return 0;
-> diff --git a/drivers/usb/dwc3/dwc3-am62.c b/drivers/usb/dwc3/dwc3-am62.c
-> index 9db8f3ca493d..e11d7643f966 100644
-> --- a/drivers/usb/dwc3/dwc3-am62.c
-> +++ b/drivers/usb/dwc3/dwc3-am62.c
-> @@ -292,7 +292,6 @@ static int dwc3_ti_probe(struct platform_device *pdev)
->  	/* Setting up autosuspend */
->  	pm_runtime_set_autosuspend_delay(dev, DWC3_AM62_AUTOSUSPEND_DELAY);
->  	pm_runtime_use_autosuspend(dev);
-> -	pm_runtime_mark_last_busy(dev);
->  	pm_runtime_put_autosuspend(dev);
->  	return 0;
->  
-> diff --git a/drivers/usb/dwc3/dwc3-imx8mp.c b/drivers/usb/dwc3/dwc3-imx8mp.c
-> index 3edc5aca76f9..37700d95bc09 100644
-> --- a/drivers/usb/dwc3/dwc3-imx8mp.c
-> +++ b/drivers/usb/dwc3/dwc3-imx8mp.c
-> @@ -307,7 +307,6 @@ static int dwc3_imx8mp_resume(struct dwc3_imx8mp *dwc3_imx, pm_message_t msg)
->  	if (dwc3_imx->wakeup_pending) {
->  		dwc3_imx->wakeup_pending = false;
->  		if (dwc->current_dr_role == DWC3_GCTL_PRTCAP_DEVICE) {
-> -			pm_runtime_mark_last_busy(dwc->dev);
->  			pm_runtime_put_autosuspend(dwc->dev);
->  		} else {
->  			/*
-> diff --git a/drivers/usb/dwc3/dwc3-pci.c b/drivers/usb/dwc3/dwc3-pci.c
-> index 54a4ee2b90b7..07dfa0b5d184 100644
-> --- a/drivers/usb/dwc3/dwc3-pci.c
-> +++ b/drivers/usb/dwc3/dwc3-pci.c
-> @@ -321,7 +321,6 @@ static void dwc3_pci_resume_work(struct work_struct *work)
->  		return;
->  	}
->  
-> -	pm_runtime_mark_last_busy(&dwc3->dev);
->  	pm_runtime_put_sync_autosuspend(&dwc3->dev);
->  }
->  #endif
-> diff --git a/drivers/usb/dwc3/dwc3-xilinx.c b/drivers/usb/dwc3/dwc3-xilinx.c
-> index 1e28d6f50ed0..0a8c47876ff9 100644
-> --- a/drivers/usb/dwc3/dwc3-xilinx.c
-> +++ b/drivers/usb/dwc3/dwc3-xilinx.c
-> @@ -383,7 +383,6 @@ static int __maybe_unused dwc3_xlnx_runtime_resume(struct device *dev)
->  
->  static int __maybe_unused dwc3_xlnx_runtime_idle(struct device *dev)
->  {
-> -	pm_runtime_mark_last_busy(dev);
->  	pm_runtime_autosuspend(dev);
->  
->  	return 0;
-> diff --git a/drivers/usb/gadget/udc/cdns2/cdns2-gadget.c b/drivers/usb/gadget/udc/cdns2/cdns2-gadget.c
-> index 7e69944ef18a..9b53daf76583 100644
-> --- a/drivers/usb/gadget/udc/cdns2/cdns2-gadget.c
-> +++ b/drivers/usb/gadget/udc/cdns2/cdns2-gadget.c
-> @@ -2415,7 +2415,6 @@ int cdns2_gadget_resume(struct cdns2_device *pdev, bool hibernated)
->  
->  void cdns2_gadget_remove(struct cdns2_device *pdev)
->  {
-> -	pm_runtime_mark_last_busy(pdev->dev);
->  	pm_runtime_put_autosuspend(pdev->dev);
->  
->  	usb_del_gadget(&pdev->gadget);
-> diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-> index 208558cf822d..06043c7c3100 100644
-> --- a/drivers/usb/host/xhci-mtk.c
-> +++ b/drivers/usb/host/xhci-mtk.c
-> @@ -670,7 +670,6 @@ static int xhci_mtk_probe(struct platform_device *pdev)
->  	}
->  
->  	device_enable_async_suspend(dev);
-> -	pm_runtime_mark_last_busy(dev);
->  	pm_runtime_put_autosuspend(dev);
->  	pm_runtime_forbid(dev);
->  
-> diff --git a/drivers/usb/host/xhci-tegra.c b/drivers/usb/host/xhci-tegra.c
-> index 0c7af44d4dae..554b03e3ae92 100644
-> --- a/drivers/usb/host/xhci-tegra.c
-> +++ b/drivers/usb/host/xhci-tegra.c
-> @@ -1394,7 +1394,6 @@ static void tegra_xhci_id_work(struct work_struct *work)
->  		}
->  
->  		tegra_xhci_set_port_power(tegra, true, true);
-> -		pm_runtime_mark_last_busy(tegra->dev);
->  
->  	} else {
->  		if (tegra->otg_usb3_port >= 0)
-> diff --git a/drivers/usb/misc/apple-mfi-fastcharge.c b/drivers/usb/misc/apple-mfi-fastcharge.c
-> index 8e852f4b8262..47b38dcc2992 100644
-> --- a/drivers/usb/misc/apple-mfi-fastcharge.c
-> +++ b/drivers/usb/misc/apple-mfi-fastcharge.c
-> @@ -134,7 +134,6 @@ static int apple_mfi_fc_set_property(struct power_supply *psy,
->  		ret = -EINVAL;
->  	}
->  
-> -	pm_runtime_mark_last_busy(&mfi->udev->dev);
->  	pm_runtime_put_autosuspend(&mfi->udev->dev);
->  
->  	return ret;
-> diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
-> index 7b5a431acb56..cc8a864dbd63 100644
-> --- a/drivers/usb/mtu3/mtu3_plat.c
-> +++ b/drivers/usb/mtu3/mtu3_plat.c
-> @@ -431,7 +431,6 @@ static int mtu3_probe(struct platform_device *pdev)
->  	}
->  
->  	device_enable_async_suspend(dev);
-> -	pm_runtime_mark_last_busy(dev);
->  	pm_runtime_put_autosuspend(dev);
->  	pm_runtime_forbid(dev);
->  
-> diff --git a/drivers/usb/musb/musb_core.c b/drivers/usb/musb/musb_core.c
-> index c7234b236971..0acc62569ae5 100644
-> --- a/drivers/usb/musb/musb_core.c
-> +++ b/drivers/usb/musb/musb_core.c
-> @@ -2031,7 +2031,6 @@ static void musb_pm_runtime_check_session(struct musb *musb)
->  		if (!musb->session)
->  			break;
->  		trace_musb_state(musb, devctl, "Allow PM on possible host mode disconnect");
-> -		pm_runtime_mark_last_busy(musb->controller);
->  		pm_runtime_put_autosuspend(musb->controller);
->  		musb->session = false;
->  		return;
-> @@ -2063,7 +2062,6 @@ static void musb_pm_runtime_check_session(struct musb *musb)
->  					      msecs_to_jiffies(3000));
->  	} else {
->  		trace_musb_state(musb, devctl, "Allow PM with no session");
-> -		pm_runtime_mark_last_busy(musb->controller);
->  		pm_runtime_put_autosuspend(musb->controller);
->  	}
->  
-> @@ -2090,7 +2088,6 @@ static void musb_irq_work(struct work_struct *data)
->  		sysfs_notify(&musb->controller->kobj, NULL, "mode");
->  	}
->  
-> -	pm_runtime_mark_last_busy(musb->controller);
->  	pm_runtime_put_autosuspend(musb->controller);
->  }
->  
-> @@ -2564,7 +2561,6 @@ musb_init_controller(struct device *dev, int nIrq, void __iomem *ctrl)
->  	musb_init_debugfs(musb);
->  
->  	musb->is_initialized = 1;
-> -	pm_runtime_mark_last_busy(musb->controller);
->  	pm_runtime_put_autosuspend(musb->controller);
->  
->  	return 0;
-> @@ -2887,7 +2883,6 @@ static int musb_resume(struct device *dev)
->  			error);
->  	spin_unlock_irqrestore(&musb->lock, flags);
->  
-> -	pm_runtime_mark_last_busy(dev);
->  	pm_runtime_put_autosuspend(dev);
->  
->  	return 0;
-> diff --git a/drivers/usb/musb/musb_debugfs.c b/drivers/usb/musb/musb_debugfs.c
-> index 2d623284edf6..5092d62c2062 100644
-> --- a/drivers/usb/musb/musb_debugfs.c
-> +++ b/drivers/usb/musb/musb_debugfs.c
-> @@ -106,7 +106,6 @@ static int musb_regdump_show(struct seq_file *s, void *unused)
->  		}
->  	}
->  
-> -	pm_runtime_mark_last_busy(musb->controller);
->  	pm_runtime_put_autosuspend(musb->controller);
->  	return 0;
->  }
-> @@ -119,7 +118,6 @@ static int musb_test_mode_show(struct seq_file *s, void *unused)
->  
->  	pm_runtime_get_sync(musb->controller);
->  	test = musb_readb(musb->mregs, MUSB_TESTMODE);
-> -	pm_runtime_mark_last_busy(musb->controller);
->  	pm_runtime_put_autosuspend(musb->controller);
->  
->  	if (test == (MUSB_TEST_FORCE_HOST | MUSB_TEST_FORCE_FS))
-> @@ -216,7 +214,6 @@ static ssize_t musb_test_mode_write(struct file *file,
->  	musb_writeb(musb->mregs, MUSB_TESTMODE, test);
->  
->  ret:
-> -	pm_runtime_mark_last_busy(musb->controller);
->  	pm_runtime_put_autosuspend(musb->controller);
->  	return count;
->  }
-> @@ -243,7 +240,6 @@ static int musb_softconnect_show(struct seq_file *s, void *unused)
->  		reg = musb_readb(musb->mregs, MUSB_DEVCTL);
->  		connect = reg & MUSB_DEVCTL_SESSION ? 1 : 0;
->  
-> -		pm_runtime_mark_last_busy(musb->controller);
->  		pm_runtime_put_autosuspend(musb->controller);
->  		break;
->  	default:
-> @@ -304,7 +300,6 @@ static ssize_t musb_softconnect_write(struct file *file,
->  		}
->  	}
->  
-> -	pm_runtime_mark_last_busy(musb->controller);
->  	pm_runtime_put_autosuspend(musb->controller);
->  	return count;
->  }
-> diff --git a/drivers/usb/musb/musb_dsps.c b/drivers/usb/musb/musb_dsps.c
-> index 12f587ab8511..9f93ed59a7e6 100644
-> --- a/drivers/usb/musb/musb_dsps.c
-> +++ b/drivers/usb/musb/musb_dsps.c
-> @@ -296,7 +296,6 @@ static void otg_timer(struct timer_list *t)
->  	if (err < 0)
->  		dev_err(dev, "%s resume work: %i\n", __func__, err);
->  	spin_unlock_irqrestore(&musb->lock, flags);
-> -	pm_runtime_mark_last_busy(dev);
->  	pm_runtime_put_autosuspend(dev);
->  }
->  
-> diff --git a/drivers/usb/musb/musb_gadget.c b/drivers/usb/musb/musb_gadget.c
-> index 6869c58367f2..f6ea91df80e4 100644
-> --- a/drivers/usb/musb/musb_gadget.c
-> +++ b/drivers/usb/musb/musb_gadget.c
-> @@ -1258,7 +1258,6 @@ static int musb_gadget_queue(struct usb_ep *ep, struct usb_request *req,
->  
->  unlock:
->  	spin_unlock_irqrestore(&musb->lock, lockflags);
-> -	pm_runtime_mark_last_busy(musb->controller);
->  	pm_runtime_put_autosuspend(musb->controller);
->  
->  	return status;
-> @@ -1642,7 +1641,6 @@ static void musb_gadget_work(struct work_struct *work)
->  	spin_lock_irqsave(&musb->lock, flags);
->  	musb_pullup(musb, musb->softconnect);
->  	spin_unlock_irqrestore(&musb->lock, flags);
-> -	pm_runtime_mark_last_busy(musb->controller);
->  	pm_runtime_put_autosuspend(musb->controller);
->  }
->  
-> @@ -1862,7 +1860,6 @@ static int musb_gadget_start(struct usb_gadget *g,
->  	if (musb->xceiv && musb->xceiv->last_event == USB_EVENT_ID)
->  		musb_platform_set_vbus(musb, 1);
->  
-> -	pm_runtime_mark_last_busy(musb->controller);
->  	pm_runtime_put_autosuspend(musb->controller);
->  
->  	return 0;
-> @@ -1915,7 +1912,6 @@ static int musb_gadget_stop(struct usb_gadget *g)
->  	 */
->  
->  	/* Force check of devctl register for PM runtime */
-> -	pm_runtime_mark_last_busy(musb->controller);
->  	pm_runtime_put_autosuspend(musb->controller);
->  
->  	return 0;
-> diff --git a/drivers/usb/musb/omap2430.c b/drivers/usb/musb/omap2430.c
-> index 2970967a4fd2..191901317d7f 100644
-> --- a/drivers/usb/musb/omap2430.c
-> +++ b/drivers/usb/musb/omap2430.c
-> @@ -151,7 +151,6 @@ static void omap_musb_set_mailbox(struct omap2430_glue *glue)
->  	default:
->  		dev_dbg(musb->controller, "ID float\n");
->  	}
-> -	pm_runtime_mark_last_busy(musb->controller);
->  	pm_runtime_put_autosuspend(musb->controller);
->  	atomic_notifier_call_chain(&musb->xceiv->notifier,
->  			musb->xceiv->last_event, NULL);
-> -- 
-> 2.39.5
+>> +# DEBUG - Begin test msm/msm_recovery@gpu-fault
+>> +# [  153.288652] [IGT] msm_recovery: executing
+>> +# [  153.295317] [IGT] msm_recovery: starting subtest gpu-fault
+>> +# [  153.317588] adreno 3d00000.gpu: CP | opcode error | possible opcode=0xDEADDEAD
+>> +# [  153.367412] adreno 3d00000.gpu: [drm:a6xx_irq] *ERROR* gpu fault ring 0 fence 814 status 00800005 rb 016b/0215 ib1 000000010000B000/0000 ib2 0000000000000000/0000
+>> +# [  153.383449] msm_dpu ae01000.display-controller: [drm:recover_worker] *ERROR* 6.6.0.1: hangcheck recover!
+>> +# [  153.393296] msm_dpu ae01000.display-controller: [drm:recover_worker] *ERROR* 6.6.0.1: offending task: msm_recovery (/igt/libexec/igt-gpu-tools/msm/msm_recovery --run-subtest gpu-fault)
+>> +# [  153.436085] revision: 660 (6.6.0.1)
+>> +# [  153.439702] rb 0: fence:    2063/2068
+>> +# [  153.443659] rptr:     360
+>> +# [  153.446389] rb wptr:  533
+>> +# [  153.449103] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG0: 0
+>> +# [  153.455746] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG1: 0
+>> +# [  153.462387] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG2: 2062
+>> +# [  153.469293] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG3: 0
+>> +# [  153.475680] adreno 3d00000.gpu: [drm:a6xx_irq] *ERROR* gpu fault ring 0 fence 814 status 00800005 rb 016b/0215 ib1 000000010000B000/0000 ib2 0000000000000000/0000
+>> +# [  153.475919] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG4: 0
+>> +# [  153.475925] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG5: 0
+>> +# [  153.475928] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG6: 0
+>> +# [  153.475930] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG7: 1
+>> +# [  153.529587] platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
+>> +# [  153.539837] msm_dpu ae01000.display-controller: [drm:recover_worker] *ERROR* 6.6.0.1: hangcheck recover!
+>> +# [  153.549597] msm_dpu ae01000.display-controller: [drm:recover_worker] *ERROR* 6.6.0.1: offending task: msm_recovery (/igt/libexec/igt-gpu-tools/msm/msm_recovery --run-subtest gpu-fault)
+>> +# [  153.566489] revision: 660 (6.6.0.1)
+>> +# [  153.570099] rb 0: fence:    2064/2068
+>> +# [  153.573878] rptr:     0
+>> +# [  153.576411] rb wptr:  688
+>> +# [  153.579134] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG0: 0
+>> +# [  153.585775] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG1: 0
+>> +# [  153.592410] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG2: 0
+>> +# [  153.597308] [IGT] msm_recovery: finished subtest gpu-fault, FAIL
+>> +# [  153.599039] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG3: 0
+>> +# [  153.611856] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG4: 0
+>> +# [  153.618498] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG5: 0
+>> +# [  153.625132] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG6: 0
+>> +# [  153.631766] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG7: 0
+>> +# [  153.639162] *** gpu fault: ttbr0=00000001042fc000 iova=0000000000000000 dir=READ type=TRANSLATION source=CP (0,0,0,0)
+>> +# [  153.648502] platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
+>> +# [  153.650144] *** gpu fault: ttbr0=00000001042fc000 iova=0000000000000020 dir=READ type=TRANSLATION source=CP (0,0,0,0)
+>> +# [  153.650241] adreno 3d00000.gpu: CP illegal instruction error
+>> +# [  153.671006] platform 3d6a000.gmu: [drm:a6xx_rpmh_start] *ERROR* Unable to power on the GPU RSC
+>> +# [  153.687278] platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
+>> +# [  363.495437] INFO: task msm_recovery:876 blocked for more than 120 seconds.
+>> +# [  363.503070]       Not tainted 6.16.0-rc2-g0594d0b01a7c #1
+>> +# [  363.508838] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+>> +# [  363.517142] task:msm_recovery    state:D stack:0     pid:876   tgid:876   ppid:274    task_flags:0x400100 flags:0x00000009
+>> +# [  363.528876] Call trace:
+>> +# [  363.531554]  __switch_to+0xf8/0x1a8 (T)
+>> +# [  363.535703]  __schedule+0x418/0xee0
+>> +# [  363.539486]  schedule+0x4c/0x164
+>> +# [  363.542986]  schedule_timeout+0x11c/0x128
+>> +# [  363.547281]  dma_fence_default_wait+0x13c/0x234
+>> +# [  363.552123]  dma_fence_wait_timeout+0x160/0x45c
+>> +# [  363.556947]  dma_resv_wait_timeout+0x70/0x11c
+>> +# [  363.561582]  msm_gem_close+0xac/0xe4
+>> +# [  363.565405]  drm_gem_handle_delete+0x74/0xe8
+>> +# [  363.569951]  drm_gem_close_ioctl+0x38/0x44
+>> +# [  363.574297]  drm_ioctl_kernel+0xc4/0x134
+>> +# [  363.578442]  drm_ioctl+0x224/0x4f0
+>> +# [  363.582050]  __arm64_sys_ioctl+0xac/0x104
+>> +# [  363.586292]  invoke_syscall+0x48/0x110
+>> +# [  363.590254]  el0_svc_common.constprop.0+0x40/0xe0
+>> +# [  363.595197]  do_el0_svc+0x1c/0x28
+>> +# [  363.598705]  el0_svc+0x4c/0x158
+>> +# [  363.602035]  el0t_64_sync_handler+0x10c/0x138
+>> +# [  363.606601]  el0t_64_sync+0x198/0x19c
+>> +# [  363.610465] Showing all locks held in the system:
+>> +# [  363.620406]  #0: ffff0000840200a0 (&tty->ldisc_sem){++++}-{0:0}, at: ldsem_down_read+0x18/0x24
+>> +# [  363.629412]  #1: ffff800080d7c2f0 (&ldata->atomic_read_lock){+.+.}-{4:4}, at: n_tty_read+0x15c/0x57c
+>> +# [  363.643169]  #0: ffffbd9c0475d920 (rcu_read_lock){....}-{1:3}, at: debug_show_all_locks+0x18/0x1c0
+>> +# [  363.654158] =============================================
 > 
 
--- 
-
-Best regards,
-Peter
 
