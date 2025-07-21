@@ -4,117 +4,122 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2FAAC83F25
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Jul 2025 16:50:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10AFEC83F25
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Jul 2025 16:55:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:References:In-Reply-To:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/9FzCqmcyJh+8Ydz6tHP0relc2+nn3FdzXGKT9u9tC0=; b=XOkGRmarK0T4cnRzKrxonvEp8n
-	R+XiJfeK+MwDleMMRhtu48+MlGuZPwA013/AbnGKKIwTJfhhUAdC/YkMgWvQDmEPiQkmIo8PyfTVD
-	sDi50B6xbCQwrS3mtVYqvtsPeaXYM8zieHdhsG/btlSfOt9FOeRMfZTx9GjRW6cvsSIzFON2MeUdo
-	bbQ4LpfGwlunsKN2VIPvv6Vw3kbWS5zlSrzguenifAo4CPGmoVuceYuMMGdMaVwnQO6Eyqe0DL4Po
-	qDUNIhIW4NJoZSwfE4jRYYk14NZyjpvHIRIG9s1jLJNBHsvI0nA4va8kuEFk69tDOWvKvsZZKYHOK
-	h04J/A/A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=MnOD77sB2Ik3kJ7rDMTC033zhiY3x1p8B9vcyupzsb8=; b=xXPRdYy46IcQo4
+	N3Q8ysTRH45D7ouO1D/y89QQKlsHS8im6Ue0wRd0TXHxj0xPfXKjin/bGN40GvrqZ+C9FypfO5h0t
+	IqEn3TXdrVCwnHIRwr6n+mMpj1l8zqdFuzbdw+x/49bAsYu5kVPqV+dFwfeCggcRNvKGkGS++lI8x
+	cKpe0QMa33HtiFdL9Xp9EcktBHKyVihqH81kwUiz0w12B1MPswBE/Woi55GKRvC2oYPvzpfYUySqY
+	AFx3eyP1Z39sJ8u8Bza7W+EVM+947VkXM45SxLbRhxzILypP2YxQ9mGX+wBPXdtt1EdN7Cx+Te77n
+	NLhVD7ouN4t4dP/Ai+hQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1udtiM-00000000EYq-3Rja;
-	Mon, 21 Jul 2025 16:50:10 +0000
-Received: from galois.linutronix.de ([193.142.43.55])
+	id 1udtnF-00000000F3D-2HQt;
+	Mon, 21 Jul 2025 16:55:13 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1udsJo-000000003mB-49gQ;
-	Mon, 21 Jul 2025 15:20:46 +0000
-From: Thomas Gleixner <tglx@linutronix.de>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020; t=1753111241;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=/9FzCqmcyJh+8Ydz6tHP0relc2+nn3FdzXGKT9u9tC0=;
-	b=dSUpea09yTKvaap84BHTchrX/mvRMJUc48+kcHHkQxoYAlMq1o9H91n0rEyouWUQZds+Ls
-	rJWeBKpdVh+r6TVg9PcQPcuj0sZz+kTaDMsLK4KCjaOjlWQYgv4f4R/F/uiKtEsxW6IPu8
-	BZs7DYrF+ZLrdRacfIavNLPjVeum/qGXpUL0kBgehfj92Ae5GBzPEau0pmYMGKZYiMUTmA
-	WBzzEbBwXCWSUfsni3ElVs+D8g26iSUsJ/++lpGRihfVxdZY1aFI35kcEgLVtGeA+2qJTV
-	JIM9YCZ9KB6Tup50FIIXZa38Dsi7uKFBiXUKjNhkEMalmJWrVmGFGCj4lmFI7A==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020e; t=1753111241;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=/9FzCqmcyJh+8Ydz6tHP0relc2+nn3FdzXGKT9u9tC0=;
-	b=Q0GGv108K0Wx0ZlG5G8V8V0Na3jr3eUG3hFHWm0zuYoWeHBjtZZPu1Oy3mIu6+M+ntdxcb
-	YsPYlYqxSgIstBDQ==
-To: panchuang <panchuang@vivo.com>, Miquel Raynal <miquel.raynal@bootlin.com>
-Cc: =?utf-8?B?5p2O5oms6Z+s?= <frank.li@vivo.com>, Uwe =?utf-8?Q?Kleine-K?=
- =?utf-8?Q?=C3=B6nig?=
- <u.kleine-koenig@pengutronix.de>, "Rafael J. Wysocki" <rafael@kernel.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui
- <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>, Markus Mayer
- <mmayer@broadcom.com>, Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>, Florian Fainelli
- <florian.fainelli@broadcom.com>, Shawn Guo <shawnguo@kernel.org>, Sascha
- Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team
- <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, zhanghongchen
- <zhanghongchen@loongson.cn>, Yinbo Zhu <zhuyinbo@loongson.cn>, Amit
- Kucheria <amitk@kernel.org>, Thara Gopinath <thara.gopinath@gmail.com>,
- Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>, Geert
- Uytterhoeven <geert+renesas@glider.be>, Magnus Damm
- <magnus.damm@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Bartlomiej
- Zolnierkiewicz <bzolnier@gmail.com>, Krzysztof Kozlowski <krzk@kernel.org>,
- Alim Akhtar <alim.akhtar@samsung.com>, Maxime Coquelin
- <mcoquelin.stm32@gmail.com>, Alexandre Torgue
- <alexandre.torgue@foss.st.com>, Vasily Khoruzhick <anarsoul@gmail.com>,
- Yangtao Li <tiny.windzz@gmail.com>, Chen-Yu Tsai <wens@csie.org>, Jernej
- Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>,
- Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter
- <jonathanh@nvidia.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Masami Hiramatsu <mhiramat@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Srinivas Pandruvada
- <srinivas.pandruvada@linux.intel.com>, Greg KH
- <gregkh@linuxfoundation.org>, Peter Zijlstra <peterz@infradead.org>,
- =?utf-8?Q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>,
- Conor Dooley
- <conor.dooley@microchip.com>, Julien Panis <jpanis@baylibre.com>, Arnd
- Bergmann <arnd@arndb.de>, Uwe =?utf-8?Q?Kleine-K=C3=B6nig?=
- <u.kleine-koenig@baylibre.com>,
- Colin Ian King <colin.i.king@gmail.com>, Raphael Gallais-Pou
- <rgallaispou@gmail.com>, Patrice Chotard <patrice.chotard@foss.st.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>, "Jiri Slaby (SUSE)"
- <jirislaby@kernel.org>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
- Andrew Morton <akpm@linux-foundation.org>, Costa Shulyupin
- <costa.shul@redhat.com>, Yury
- Norov <yury.norov@gmail.com>, Cheng-Yang Chou <yphbchou0911@gmail.com>,
- Caleb Sander Mateos <csander@purestorage.com>, "linux-pm@vger.kernel.org"
- <linux-pm@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>, "imx@lists.linux.dev"
- <imx@lists.linux.dev>, "linux-arm-msm@vger.kernel.org"
- <linux-arm-msm@vger.kernel.org>, "linux-renesas-soc@vger.kernel.org"
- <linux-renesas-soc@vger.kernel.org>, "linux-rockchip@lists.infradead.org"
- <linux-rockchip@lists.infradead.org>, "linux-samsung-soc@vger.kernel.org"
- <linux-samsung-soc@vger.kernel.org>,
- "linux-stm32@st-md-mailman.stormreply.com"
- <linux-stm32@st-md-mailman.stormreply.com>, "linux-sunxi@lists.linux.dev"
- <linux-sunxi@lists.linux.dev>, "linux-tegra@vger.kernel.org"
- <linux-tegra@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
- <linux-mediatek@lists.infradead.org>
-Subject: Re: =?utf-8?B?5Zue5aSNOg==?= [PATCH v6 01/24] genirq/devres: Add
- devm_request_threaded_irq_probe() and devm_request_irq_probe()
-In-Reply-To: <draft-87ikjnvqfx.ffs@tglx>
-References: <draft-87ikjnvqfx.ffs@tglx>
-Date: Mon, 21 Jul 2025 17:20:39 +0200
-Message-ID: <87qzy9tvso.ffs@tglx>
+	id 1udsPP-000000004dB-3KRx
+	for linux-mediatek@lists.infradead.org;
+	Mon, 21 Jul 2025 15:26:33 +0000
+Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 56L9mDWY016262
+	for <linux-mediatek@lists.infradead.org>; Mon, 21 Jul 2025 15:26:30 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:reply-to:subject:to; s=
+	qcppdkim1; bh=MnOD77sB2Ik3kJ7rDMTC033zhiY3x1p8B9vcyupzsb8=; b=BG
+	kz1TGcI4MFfbOe5H/VgBz4u5HbpHgshH6Xl1II8hXJUKWkg8HPL9JYwqbx2neLEG
+	ljnqf/ncKlo91sx1F74m4BqX/xfV1tDeVhB9CpttO0w1skrxPCoTRlkYij3WEpvn
+	bnJ0ZuKiiHt6QSfoxIfml17kM8nKkQhyiagixzuZ1lf93nLPb7haKctryk4kfbyK
+	15DboDxgowALoAWR3aPMDt2JL8rQj1+iDdDwdGKntmJdHp1H0jI/kUwq669Ldcfz
+	/Ewm0bToxyO6SYurW+BdrDKtW1QOQthRkp9PWeJwGEvs4/CB1gS44/VtTpKhFiR+
+	TJS7KfYYfiPU9zu1sUrg==
+Received: from mail-oi1-f198.google.com (mail-oi1-f198.google.com [209.85.167.198])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 48048rwxfj-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Mon, 21 Jul 2025 15:26:29 +0000 (GMT)
+Received: by mail-oi1-f198.google.com with SMTP id 5614622812f47-4033c872b60so3320574b6e.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 21 Jul 2025 08:26:29 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1753111589; x=1753716389;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :reply-to:in-reply-to:references:mime-version:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=MnOD77sB2Ik3kJ7rDMTC033zhiY3x1p8B9vcyupzsb8=;
+        b=pdr1+655peHxPj3V/iQPJ+15gviEl+Uuqe690QDud58b2xwRntOKpAwrh+UOibvf03
+         OpBkf7kkU+GVvTO1ECipZIBOoQH9aA870piqQDt82FQ//b/qcGwdNYMBj3rIUCXDb27j
+         tcsfBHx9B8WI1EzhbAyylC0X6CRpDm3NZQCMKHHR+6aHUjsNnjKZyH2AxgN/NtCsehii
+         AJGkTrmssHMVBIDlM9fcS3ORRy8c8BVs2upm6gNU87g+f3D8RVSSSNX9yg5y54e5GgHb
+         NtK4cOsOeGLTaPkgNaba+3OtOlApBlYmqVWMJHxztFGIzUeYKD5KCLsXfwQJ8TnCuCDR
+         EhMw==
+X-Forwarded-Encrypted: i=1; AJvYcCW+6X+LF7tfQIMftW6vmy6rTxKmnuHdJPHccqId93EQjEh7uYErV+2blP6N2dd/8COitQgfKSL9q46AymOfJA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxmbo834q0tJELRDwnWYFrD1IOI3NMng9D5DLGUlsCGVAyoLWkF
+	kYRe129CimIuCPP/2x3SDBSxlh8cMIjP7GRDW5Px6qe032AM8DTaHH+EfGIFebhsghm9k+atxil
+	WM8aaNCAvC5b/auenO9Ly2fcHuvO6GFwnIuCuTfyzZdav/GRXVUNY4ksFPLiRrH26PuYggTwPSM
+	NkHVMUhDCuHFLrrn88tCtD8QMbkbfqtwhb5jLTWZ7lZV+y/35YNA==
+X-Gm-Gg: ASbGncs/0Ma1H9BXinyV1IfgClOHtnbX9JjJYIiSlkNomiHS6faiR2VXZdGdfEulciE
+	1L9wRD4czQk9LDIGaFkbB9m23DpQLWp6qz9YvMAaxq4OtF0Ti4LeGy2rqgyLESSMIVHHh+P7DhG
+	HxO1ZZfFvj+n/29A0JcRXVdy00mUjE+OuRL3rTal5N0PAV2CenaU8C
+X-Received: by 2002:a05:6808:3a15:b0:40a:533c:c9cb with SMTP id 5614622812f47-41d05654bcdmr14287434b6e.38.1753111588600;
+        Mon, 21 Jul 2025 08:26:28 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGXFzYPkALClywTu5mOqRfeWp2m4fp272DjkezOJQOXBIAzqRGxPfJR9UxsN521B6259dXufoQBJ1qY0x7OZog=
+X-Received: by 2002:a05:6808:3a15:b0:40a:533c:c9cb with SMTP id
+ 5614622812f47-41d05654bcdmr14287392b6e.38.1753111588114; Mon, 21 Jul 2025
+ 08:26:28 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+References: <20250718105407.32878-1-vignesh.raman@collabora.com>
+ <20250718105407.32878-6-vignesh.raman@collabora.com> <7c6suvc6quwwxni2nsos65btzim2lbv7f2u6mz5qbupzpmpzgb@g46wg63ubr6l>
+In-Reply-To: <7c6suvc6quwwxni2nsos65btzim2lbv7f2u6mz5qbupzpmpzgb@g46wg63ubr6l>
+From: Rob Clark <rob.clark@oss.qualcomm.com>
+Date: Mon, 21 Jul 2025 08:26:17 -0700
+X-Gm-Features: Ac12FXw4vMk5Whh0pLXxQUQeTvmf5_E4on_jddtIDBax9_-2BPFjBHHhqwcfDPI
+Message-ID: <CACSVV03x0DZLmoc_0GjiL+qhYH2ei8nKzuPRCTa+h6+j1pbhbQ@mail.gmail.com>
+Subject: Re: [PATCH v1 5/7] drm/ci: uprev IGT
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Cc: Vignesh Raman <vignesh.raman@collabora.com>,
+        dri-devel@lists.freedesktop.org, daniels@collabora.com,
+        helen.fornazier@gmail.com, airlied@gmail.com, simona.vetter@ffwll.ch,
+        robdclark@gmail.com, guilherme.gallo@collabora.com,
+        sergi.blanch.torne@collabora.com, valentine.burley@collabora.com,
+        lumag@kernel.org, linux-mediatek@lists.infradead.org,
+        linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org,
+        amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
+        intel-gfx@lists.freedesktop.org, virtualization@lists.linux.dev,
+        linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzIxMDEzNyBTYWx0ZWRfX3e4LlrnPlJo6
+ jmx+eVw5ZrwGyiFW55CLN2tMG+56SLf4167fOENAKSQKN6/EH+T5dtk0Gt8GB0wYJpTe0W64myX
+ S6M4ey1e+maQpomybUPC5XxTsCno/UFraZY7THijtRX5zeQlzkoVQZkk/+c84Gp7Z7fQKxWtWrg
+ tT2gQ14rEGnYHn5a4YZfIkFHdRHRfxSZkDybLsjZzcVyide0ea+Lr/VwOHXvkbExjqYTJN12zKV
+ gpu9s4rz8bvua4GnK8ocmL6b5IS1nXsWt+b6/oAjwifpeilKvKEfdAq8Mf5WyYX1X/tw0ebT4/E
+ UUlZTvIOpDWQdjguFv/WBdxQRBqI+ZbYvk4reOoX0DhBbZ+o7bP2xAuM3t98/uJcWSiBp5vmTvx
+ FS08e1zfLTFTWfLDMcxMmXBVqbxEGi/FQdRCAfkWO43SsG/mk/CmQeNY27LgbqOzq4oVDhIS
+X-Proofpoint-ORIG-GUID: yIqeBoWTubMAlcG0tpJ_tuxoPgufQzj0
+X-Proofpoint-GUID: yIqeBoWTubMAlcG0tpJ_tuxoPgufQzj0
+X-Authority-Analysis: v=2.4 cv=OPUn3TaB c=1 sm=1 tr=0 ts=687e5c25 cx=c_pps
+ a=4ztaESFFfuz8Af0l9swBwA==:117 a=IkcTkHD0fZMA:10 a=Wb1JkmetP80A:10
+ a=VwQbUJbxAAAA:8 a=pGLkceISAAAA:8 a=EUspDBNiAAAA:8 a=QX4gbG5DAAAA:8
+ a=kxiJzIYbFHhRTRM7nIQA:9 a=QEXdDO2ut3YA:10 a=TPnrazJqx2CeVZ-ItzZ-:22
+ a=AbAUZ8qAyYyZVLSsDulk:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-07-21_04,2025-07-21_02,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ adultscore=0 clxscore=1011 mlxlogscore=999 lowpriorityscore=0 suspectscore=0
+ spamscore=0 mlxscore=0 bulkscore=0 priorityscore=1501 phishscore=0
+ malwarescore=0 impostorscore=0 classifier=spam authscore=0 authtc=n/a authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2505280000
+ definitions=main-2507210137
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250721_082045_169405_EB13E51A 
-X-CRM114-Status: GOOD (  14.08  )
+X-CRM114-CacheID: sfid-20250721_082631_962291_590902C3 
+X-CRM114-Status: GOOD (  21.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,42 +131,227 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: rob.clark@oss.qualcomm.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jul 19 2025 at 23:08, Thomas Gleixner wrote:
-> On Wed, Jul 09 2025 at 17:13, panchuang@vivo.com wrote:
->> Hi tglx and Miqu=C3=A8l, Just a gentle ping on this patchset. I understa=
-nd=20
->> you're likely busy with many other tasks, but any feedback or guidance=20
->> on how to proceed would be greatly appreciated. As discussed in the=20
->> previous thread, there was some uncertainty about whether we should=20
->> directly integrate dev_err_probe() into devm_request_threaded_irq(), or=
-=20
->> if it's better to create a wrapper function. Thanks for your time!=20
->> Thanks, Panchuang
+On Fri, Jul 18, 2025 at 5:54=E2=80=AFAM Dmitry Baryshkov
+<dmitry.baryshkov@oss.qualcomm.com> wrote:
+>
+> On Fri, Jul 18, 2025 at 04:23:57PM +0530, Vignesh Raman wrote:
+> > Uprev IGT to the latest version and update expectation files.
+> >
+> > Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+> > ---
+> >  drivers/gpu/drm/ci/gitlab-ci.yml              |   2 +-
+> >  .../gpu/drm/ci/xfails/amdgpu-stoney-fails.txt |   2 +
+> >  .../drm/ci/xfails/amdgpu-stoney-flakes.txt    |   7 ++
+> >  drivers/gpu/drm/ci/xfails/i915-amly-fails.txt |  11 +-
+> >  drivers/gpu/drm/ci/xfails/i915-apl-fails.txt  |   2 +
+> >  drivers/gpu/drm/ci/xfails/i915-cml-fails.txt  |  29 +----
+> >  drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt |   7 ++
+> >  drivers/gpu/drm/ci/xfails/i915-glk-fails.txt  |   8 +-
+> >  drivers/gpu/drm/ci/xfails/i915-glk-skips.txt  |  83 ++++++++++++
+> >  drivers/gpu/drm/ci/xfails/i915-jsl-fails.txt  |  10 +-
+> >  drivers/gpu/drm/ci/xfails/i915-kbl-fails.txt  |   3 +
+> >  drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt  |   5 +-
+> >  drivers/gpu/drm/ci/xfails/i915-tgl-flakes.txt |   6 +
+> >  drivers/gpu/drm/ci/xfails/i915-whl-fails.txt  |   7 +-
+> >  .../drm/ci/xfails/mediatek-mt8173-fails.txt   |   5 +-
+> >  .../drm/ci/xfails/mediatek-mt8173-flakes.txt  | 119 ++++++++++++++++++
+> >  .../drm/ci/xfails/mediatek-mt8183-fails.txt   |   7 +-
+> >  .../msm-sc7180-trogdor-kingoftown-fails.txt   |   1 +
+> >  ...sm-sc7180-trogdor-lazor-limozeen-fails.txt |   1 +
+> >  .../drm/ci/xfails/msm-sm8350-hdk-fails.txt    |   1 +
+> >  .../drm/ci/xfails/msm-sm8350-hdk-skips.txt    |  73 +++++++++++
+> >  .../drm/ci/xfails/panfrost-mt8183-fails.txt   |   1 +
+> >  .../drm/ci/xfails/panfrost-rk3288-fails.txt   |   1 +
+> >  .../drm/ci/xfails/panfrost-rk3399-fails.txt   |   1 +
+> >  .../drm/ci/xfails/rockchip-rk3288-fails.txt   |  12 +-
+> >  .../drm/ci/xfails/rockchip-rk3288-flakes.txt  |  21 ++++
+> >  .../drm/ci/xfails/rockchip-rk3399-fails.txt   |   9 +-
+> >  .../drm/ci/xfails/rockchip-rk3399-flakes.txt  |  35 ++++++
+> >  .../drm/ci/xfails/virtio_gpu-none-fails.txt   |   4 +
+> >  drivers/gpu/drm/ci/xfails/vkms-none-fails.txt |   3 +
+> >  drivers/gpu/drm/ci/xfails/vkms-none-skips.txt |   3 +
+> >  31 files changed, 416 insertions(+), 63 deletions(-)
+> >  create mode 100644 drivers/gpu/drm/ci/xfails/i915-tgl-flakes.txt
+> >
+> > diff --git a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fa=
+ils.txt b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt
+> > index e4a8f8352cd6..9bf38c077f8e 100644
+> > --- a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt
+> > +++ b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt
+> > @@ -15,3 +15,4 @@ kms_pipe_crc_basic@compare-crc-sanitycheck-nv12,Fail
+> >  kms_plane_alpha_blend@alpha-7efc,Fail
+> >  kms_plane_alpha_blend@coverage-7efc,Fail
+> >  kms_plane_alpha_blend@coverage-vs-premult-vs-constant,Fail
+> > +core_setmaster@master-drop-set-user,Fail
+>
+> Could you please point out the issue / failure log?
+>
+> > diff --git a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozee=
+n-fails.txt b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-f=
+ails.txt
+> > index e4a8f8352cd6..7441b363efae 100644
+> > --- a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-fails=
+.txt
+> > +++ b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-fails=
+.txt
+> > @@ -1,3 +1,4 @@
+> > +core_setmaster@master-drop-set-user,Fail
+> >  kms_color@ctm-0-25,Fail
+> >  kms_color@ctm-0-50,Fail
+> >  kms_color@ctm-0-75,Fail
+> > diff --git a/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-fails.txt b/drive=
+rs/gpu/drm/ci/xfails/msm-sm8350-hdk-fails.txt
+> > index 8d26b23133aa..f387c73193c6 100644
+> > --- a/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-fails.txt
+> > +++ b/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-fails.txt
+> > @@ -1,3 +1,4 @@
+> > +core_setmaster@master-drop-set-user,Fail
+> >  kms_3d,Fail
+> >  kms_cursor_legacy@forked-bo,Fail
+> >  kms_cursor_legacy@forked-move,Fail
+> > diff --git a/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-skips.txt b/drive=
+rs/gpu/drm/ci/xfails/msm-sm8350-hdk-skips.txt
+> > index 9450f2a002fd..84ffbe0981ea 100644
+> > --- a/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-skips.txt
+> > +++ b/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-skips.txt
+> > @@ -210,3 +210,76 @@ msm/msm_mapping@ring
+> >  # [  229.752499] CPU features: 0x18,00000017,00200928,4200720b
+> >  # [  229.758095] Memory Limit: none
+> >  # [  229.761291] ---[ end Kernel panic - not syncing: softlockup: hung=
+ tasks ]---
+> > +
+> > +msm/msm_recovery@gpu-fault
+>
+> Hmm. I thought this should have been fixed...
 
-For simplicity sake just rename the existing functions
-devm_request_threaded_irq() and devm_request_any_context_irq() to
-__devm_request_threaded_irq() and __devm_request_any_context_irq().
+There is another fix which came out of stress testing the kernel uprev
+in mesa-ci:
 
-Then create new functions for the API, which
+https://lore.kernel.org/all/20250718-msm-gmu-fault-wait-v1-1-4dcadd3b0eb6@g=
+mail.com/
 
-   - invoke the underscore variants
-   - and on error invoke dev_err_probe() similar to what I suggested in
-     my reply in this thread.
+BR,
+-R
 
-In the rare case of failure, this will print error messages for the
-affected drivers both in the core and at the callsite, but that's not
-the end of the world.
-
-Then go and remove the random printks from the drivers, once the core
-change has hit upstream.
-
-Thanks,
-
-        tglx
-
-
-
+>
+> > +# DEBUG - Begin test msm/msm_recovery@gpu-fault
+> > +# [  153.288652] [IGT] msm_recovery: executing
+> > +# [  153.295317] [IGT] msm_recovery: starting subtest gpu-fault
+> > +# [  153.317588] adreno 3d00000.gpu: CP | opcode error | possible opco=
+de=3D0xDEADDEAD
+> > +# [  153.367412] adreno 3d00000.gpu: [drm:a6xx_irq] *ERROR* gpu fault =
+ring 0 fence 814 status 00800005 rb 016b/0215 ib1 000000010000B000/0000 ib2=
+ 0000000000000000/0000
+> > +# [  153.383449] msm_dpu ae01000.display-controller: [drm:recover_work=
+er] *ERROR* 6.6.0.1: hangcheck recover!
+> > +# [  153.393296] msm_dpu ae01000.display-controller: [drm:recover_work=
+er] *ERROR* 6.6.0.1: offending task: msm_recovery (/igt/libexec/igt-gpu-too=
+ls/msm/msm_recovery --run-subtest gpu-fault)
+> > +# [  153.436085] revision: 660 (6.6.0.1)
+> > +# [  153.439702] rb 0: fence:    2063/2068
+> > +# [  153.443659] rptr:     360
+> > +# [  153.446389] rb wptr:  533
+> > +# [  153.449103] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG=
+0: 0
+> > +# [  153.455746] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG=
+1: 0
+> > +# [  153.462387] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG=
+2: 2062
+> > +# [  153.469293] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG=
+3: 0
+> > +# [  153.475680] adreno 3d00000.gpu: [drm:a6xx_irq] *ERROR* gpu fault =
+ring 0 fence 814 status 00800005 rb 016b/0215 ib1 000000010000B000/0000 ib2=
+ 0000000000000000/0000
+> > +# [  153.475919] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG=
+4: 0
+> > +# [  153.475925] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG=
+5: 0
+> > +# [  153.475928] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG=
+6: 0
+> > +# [  153.475930] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG=
+7: 1
+> > +# [  153.529587] platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* =
+Timeout waiting for GMU OOB set GPU_SET: 0x0
+> > +# [  153.539837] msm_dpu ae01000.display-controller: [drm:recover_work=
+er] *ERROR* 6.6.0.1: hangcheck recover!
+> > +# [  153.549597] msm_dpu ae01000.display-controller: [drm:recover_work=
+er] *ERROR* 6.6.0.1: offending task: msm_recovery (/igt/libexec/igt-gpu-too=
+ls/msm/msm_recovery --run-subtest gpu-fault)
+> > +# [  153.566489] revision: 660 (6.6.0.1)
+> > +# [  153.570099] rb 0: fence:    2064/2068
+> > +# [  153.573878] rptr:     0
+> > +# [  153.576411] rb wptr:  688
+> > +# [  153.579134] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG=
+0: 0
+> > +# [  153.585775] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG=
+1: 0
+> > +# [  153.592410] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG=
+2: 0
+> > +# [  153.597308] [IGT] msm_recovery: finished subtest gpu-fault, FAIL
+> > +# [  153.599039] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG=
+3: 0
+> > +# [  153.611856] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG=
+4: 0
+> > +# [  153.618498] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG=
+5: 0
+> > +# [  153.625132] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG=
+6: 0
+> > +# [  153.631766] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG=
+7: 0
+> > +# [  153.639162] *** gpu fault: ttbr0=3D00000001042fc000 iova=3D000000=
+0000000000 dir=3DREAD type=3DTRANSLATION source=3DCP (0,0,0,0)
+> > +# [  153.648502] platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* =
+Timeout waiting for GMU OOB set GPU_SET: 0x0
+> > +# [  153.650144] *** gpu fault: ttbr0=3D00000001042fc000 iova=3D000000=
+0000000020 dir=3DREAD type=3DTRANSLATION source=3DCP (0,0,0,0)
+> > +# [  153.650241] adreno 3d00000.gpu: CP illegal instruction error
+> > +# [  153.671006] platform 3d6a000.gmu: [drm:a6xx_rpmh_start] *ERROR* U=
+nable to power on the GPU RSC
+> > +# [  153.687278] platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* =
+Timeout waiting for GMU OOB set GPU_SET: 0x0
+> > +# [  363.495437] INFO: task msm_recovery:876 blocked for more than 120=
+ seconds.
+> > +# [  363.503070]       Not tainted 6.16.0-rc2-g0594d0b01a7c #1
+> > +# [  363.508838] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" di=
+sables this message.
+> > +# [  363.517142] task:msm_recovery    state:D stack:0     pid:876   tg=
+id:876   ppid:274    task_flags:0x400100 flags:0x00000009
+> > +# [  363.528876] Call trace:
+> > +# [  363.531554]  __switch_to+0xf8/0x1a8 (T)
+> > +# [  363.535703]  __schedule+0x418/0xee0
+> > +# [  363.539486]  schedule+0x4c/0x164
+> > +# [  363.542986]  schedule_timeout+0x11c/0x128
+> > +# [  363.547281]  dma_fence_default_wait+0x13c/0x234
+> > +# [  363.552123]  dma_fence_wait_timeout+0x160/0x45c
+> > +# [  363.556947]  dma_resv_wait_timeout+0x70/0x11c
+> > +# [  363.561582]  msm_gem_close+0xac/0xe4
+> > +# [  363.565405]  drm_gem_handle_delete+0x74/0xe8
+> > +# [  363.569951]  drm_gem_close_ioctl+0x38/0x44
+> > +# [  363.574297]  drm_ioctl_kernel+0xc4/0x134
+> > +# [  363.578442]  drm_ioctl+0x224/0x4f0
+> > +# [  363.582050]  __arm64_sys_ioctl+0xac/0x104
+> > +# [  363.586292]  invoke_syscall+0x48/0x110
+> > +# [  363.590254]  el0_svc_common.constprop.0+0x40/0xe0
+> > +# [  363.595197]  do_el0_svc+0x1c/0x28
+> > +# [  363.598705]  el0_svc+0x4c/0x158
+> > +# [  363.602035]  el0t_64_sync_handler+0x10c/0x138
+> > +# [  363.606601]  el0t_64_sync+0x198/0x19c
+> > +# [  363.610465] Showing all locks held in the system:
+> > +# [  363.620406]  #0: ffff0000840200a0 (&tty->ldisc_sem){++++}-{0:0}, =
+at: ldsem_down_read+0x18/0x24
+> > +# [  363.629412]  #1: ffff800080d7c2f0 (&ldata->atomic_read_lock){+.+.=
+}-{4:4}, at: n_tty_read+0x15c/0x57c
+> > +# [  363.643169]  #0: ffffbd9c0475d920 (rcu_read_lock){....}-{1:3}, at=
+: debug_show_all_locks+0x18/0x1c0
+> > +# [  363.654158] =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D
+>
+> --
+> With best wishes
+> Dmitry
 
