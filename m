@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 161C6C83F25
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72BBAC83F1A
 	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jul 2025 03:09:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ysmpjW5BTVqezou9kbe5JRwYmcOd4yJa3z19eEs+BgU=; b=Zgs2IIfXAwBYXY6QjiOlqPZTJz
-	lGTS7kgRPuihDLUCkcdHs5vhL81jEFd5yrB0zQJmI5irjJ4+NEzF3LjoiUH/XV1emA9W1ZcmkWh+u
-	rEIpDj62i3TztYEVF0bVk04sO1aFhkqzzew7QIizIeE/9GxW4eI3D8ZrXaLH0nbC/FIVeTt98VL8b
-	P2mCcXCEfL0mCLvwVf5rrMFfNWTOk7C62cHr7861hgxE54fQFXCYZrdCTVoxlbEBpq40C2xcyppL9
-	a+aRS99zKvsc0cv05WBO1Cup3j0AeeUEOhl4RQgDT8+/gnQ4ZJA4sH2U3mbKIM2HPyygdYORSJEQK
-	mCuuBuOg==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=jpp0D6ahLCY9ZcROn41fc2M+etc1qjW0yfnCgAab/W4=; b=zuG1rvvTL4DL2KF8sOZCWhfeDq
+	Mt7eNNFSFYITXhszIjqZQ1OC3s7RAFBOb7lH9tnntfJ0cZ9TB6fuyxjqG9ljQiEUUB5vDahYQHvDp
+	F5z+cN7TP3zbdJ/6QTRq+atpSu0jKaKYDNGqDvKFUDJEfL4NnjwfUATlmRjFwFEAp+yNGtrjUHMPc
+	4NBxwc2Ux4TJW4/ikC9jvJvePcItgvy7axKuZv/zMv1REzDhi502e/4Yxpz9A4OcXeH8VdctiAPeq
+	6kl+VT12DlE9/4s+wGs310youUy9B1h4Dyoj4q23wF4RQ1DWqUlPN3BS9suG5TAT1KnolN4mdAxZd
+	43RBQtvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ue3ND-000000018YU-2doi;
-	Tue, 22 Jul 2025 03:08:59 +0000
+	id 1ue3NE-000000018Yz-1LDs;
+	Tue, 22 Jul 2025 03:09:00 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ue3N5-000000018Sh-1mIX
+	id 1ue3N5-000000018TV-39F7
 	for linux-mediatek@lists.infradead.org;
-	Tue, 22 Jul 2025 03:08:52 +0000
-X-UUID: 2f1854d066a911f09f706fa2197c6ceb-20250721
+	Tue, 22 Jul 2025 03:08:53 +0000
+X-UUID: 2df17b4a66a911f09f706fa2197c6ceb-20250721
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ysmpjW5BTVqezou9kbe5JRwYmcOd4yJa3z19eEs+BgU=;
-	b=R1NKucY6gmeg9My0MYOpMuiK8+Q7Vi9e9eTh6bYcJgPbWuTmI1xRqLds8ZGi7kafB+/STxOyqgEF90ENfqHBAUEB+2DD9c04bvf0F/60hCA6knX1KYZYYwdLTyoYd25bxONoSoWi7dHQD+xB2vYDuwhO/+UwTBKbuHxfSYWW5IM=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=jpp0D6ahLCY9ZcROn41fc2M+etc1qjW0yfnCgAab/W4=;
+	b=RQ8eYkhuIqQgl8BLIWWZT3zLU0J2rZmuynyqlh8d8vvQ2wWDlG3ziNfOnFHvSEPnbmqFmy0qFmDRgUbwTqg70AvU/XujLImflz77H9JLxf1WT8vldnGp0aLwOylC5UZT8ew9JnWspLoQ3NL/7ZAZVqez4Yn3q3d6YoInpH4pKJ4=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.2,REQID:3fd44a8b-1de6-4f5b-bec0-11eff2599d87,IP:0,UR
-	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-25
-X-CID-META: VersionHash:9eb4ff7,CLOUDID:6e7d080f-6968-429c-a74d-a1cce2b698bd,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
-	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
-	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.3.2,REQID:9ef6b82a-a3c0-477a-99dd-3d6ae3af03e0,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:9eb4ff7,CLOUDID:5dce1b50-93b9-417a-b51d-915a29f1620f,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 2f1854d066a911f09f706fa2197c6ceb-20250721
-Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
+X-UUID: 2df17b4a66a911f09f706fa2197c6ceb-20250721
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
 	(envelope-from <peter.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 819224894; Mon, 21 Jul 2025 20:08:47 -0700
+	with ESMTP id 147833797; Mon, 21 Jul 2025 20:08:45 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1258.39; Tue, 22 Jul 2025 11:08:42 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
@@ -64,19 +64,18 @@ CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
 	<yi-fan.peng@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
 	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
 	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>, <bvanassche@acm.org>
-Subject: [PATCH v4 4/9] ufs: host: mediatek: Handle broken RTC based on DTS setting
-Date: Tue, 22 Jul 2025 11:07:19 +0800
-Message-ID: <20250722030841.1998783-5-peter.wang@mediatek.com>
+Subject: [PATCH v4 0/9] ufs: host: mediatek: Provide features and fixes in MediaTek platforms
+Date: Tue, 22 Jul 2025 11:07:15 +0800
+Message-ID: <20250722030841.1998783-1-peter.wang@mediatek.com>
 X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20250722030841.1998783-1-peter.wang@mediatek.com>
-References: <20250722030841.1998783-1-peter.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250721_200851_457672_DAAD377D 
-X-CRM114-Status: GOOD (  11.15  )
+X-CRM114-CacheID: sfid-20250721_200851_940979_417A5154 
+X-CRM114-Status: UNSURE (   5.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,57 +92,31 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Peter Wang <peter.wang@mediatek.com>
 
-This patch introduces a mechanism to handle broken RTC by checking
-the DTS setting. The configuration is specifically required for
-legacy platform.
+This series fixes some defects and provide features in MediaTek UFS drivers.
 
-Signed-off-by: Peter Wang <peter.wang@mediatek.com>
-Reviewed-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
----
- drivers/ufs/host/ufs-mediatek.c | 8 +++++++-
- drivers/ufs/host/ufs-mediatek.h | 2 ++
- 2 files changed, 9 insertions(+), 1 deletion(-)
+Changes since v3:
+1. Fix comment message in patch:
+  ufs: host: mediatek: Simplify boolean conversion
 
-diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index b30203d83ef1..112056e5d8e0 100644
---- a/drivers/ufs/host/ufs-mediatek.c
-+++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -679,6 +679,9 @@ static void ufs_mtk_init_host_caps(struct ufs_hba *hba)
- 	if (of_property_read_bool(np, "mediatek,ufs-rtff-mtcmos"))
- 		host->caps |= UFS_MTK_CAP_RTFF_MTCMOS;
- 
-+	if (of_property_read_bool(np, "mediatek,ufs-broken-rtc"))
-+		host->caps |= UFS_MTK_CAP_MCQ_BROKEN_RTC;
-+
- 	dev_info(hba->dev, "caps: 0x%x", host->caps);
- }
- 
-@@ -1035,8 +1038,11 @@ static int ufs_mtk_init(struct ufs_hba *hba)
- 	shost->rpm_autosuspend_delay = MTK_RPM_AUTOSUSPEND_DELAY_MS;
- 
- 	hba->quirks |= UFSHCI_QUIRK_SKIP_MANUAL_WB_FLUSH_CTRL;
-+
- 	hba->quirks |= UFSHCD_QUIRK_MCQ_BROKEN_INTR;
--	hba->quirks |= UFSHCD_QUIRK_MCQ_BROKEN_RTC;
-+	if (host->caps & UFS_MTK_CAP_MCQ_BROKEN_RTC)
-+		hba->quirks |= UFSHCD_QUIRK_MCQ_BROKEN_RTC;
-+
- 	hba->vps->wb_flush_threshold = UFS_WB_BUF_REMAIN_PERCENT(80);
- 
- 	if (host->caps & UFS_MTK_CAP_DISABLE_AH8)
-diff --git a/drivers/ufs/host/ufs-mediatek.h b/drivers/ufs/host/ufs-mediatek.h
-index 1082f761bb44..abb4a4fd4402 100644
---- a/drivers/ufs/host/ufs-mediatek.h
-+++ b/drivers/ufs/host/ufs-mediatek.h
-@@ -133,6 +133,8 @@ enum ufs_mtk_host_caps {
- 	UFS_MTK_CAP_DISABLE_MCQ                = 1 << 8,
- 	/* Control MTCMOS with RTFF */
- 	UFS_MTK_CAP_RTFF_MTCMOS                = 1 << 9,
-+
-+	UFS_MTK_CAP_MCQ_BROKEN_RTC             = 1 << 10,
- };
- 
- struct ufs_mtk_crypt_cfg {
+Peter Wang (7):
+  ufs: host: mediatek: Simplify boolean conversion
+  ufs: host: mediatek: Change ref-clk timeout policy
+  ufs: host: mediatek: Handle broken RTC based on DTS setting
+  ufs: host: mediatek: Set IRQ affinity policy for MCQ mode
+  ufs: host: mediatek: Add clock scaling query function
+  ufs: host: mediatek: Support clock scaling with Vcore binding
+  ufs: host: mediatek: Support FDE (AES) clock scaling
+
+Naomi Chu (1):
+  ufs: host: mediatek: Add DDR_EN setting
+
+Alice Chao (1):
+  ufs: host: mediatek: Add more UFSCHI hardware versions
+
+ drivers/ufs/host/ufs-mediatek.c | 329 ++++++++++++++++++++++++++++----
+ drivers/ufs/host/ufs-mediatek.h |  32 ++++
+ 2 files changed, 328 insertions(+), 33 deletions(-)
+
 -- 
 2.45.2
 
