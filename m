@@ -4,69 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A46EBC83F1A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jul 2025 16:42:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9387DC83F27
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jul 2025 17:19:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oKZuVo1x3WVcFRPnJ5ggYzR7g+jUxHa+8DnHO2wrFg8=; b=StkFy+wWW8LAa96BhIRB1Rr5Ar
-	+9wPKofsuW0mNPFWDSf74BTNa74DZR8XWYwCjiO+3bLAXUisek7YnfJj151cGMvtnk2q9nRlxk/Rx
-	cr0amkrWVF7q8jI4J9N58Sbx6dsrunVr8NjDtuyR6mGTqflh0z1lwLmReaCJ0LHhnO12zYvFDcPI8
-	+d1RB+rOKabT/Q7LXLI7i9LivtiJrK2ptbLynzYaCq4l12+9N+owuKxyt8oKFFwyN8yJLTeL5df/c
-	nf2aMeh+2prFOZ9EM5yZN+cmo7bkKYunc05W/7UuV3uokJ3X+JuMK4BPEzpWGQaIpQIkqr0btRJuY
-	n5ld8Ajg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ibyjI5E3qW6kSn6XqkbCf4AS/khULVCPNIJfzv5g85s=; b=vqByBhbm1Xvx1DmS/hylBE1qK2
+	53V0Xgts6WcKAg4sQoHS9wESNqPZrpUEjgRVzgXdBzwj/WIv9T7OmwUpoTrhbLJ06JkYeJCtJcRe6
+	QMeVTW8RZkBuODxlxeDtbHgELV2p1yw18ul5g1r9L/jG3dFepD8oZNfNfbeNafE0uh9Gqr40vbVo0
+	Cm/6IYagMi+qZqsxw8mMpTrvWaeV9kEVe5b2mvScMZ5tfAAYT/X55RVs0BBC4TTJ1c8ryIE1bn4pY
+	KdGll0oPx74pR9mSukdIqXp2vAO1yDrjq3KR2Ll4FFElg631KbNTrzeZu8XcWsmmvCsej/VaHvLom
+	LummxuSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueG4G-000000033HP-1vzX;
-	Tue, 22 Jul 2025 16:42:16 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1ueGeQ-000000037VU-3AzJ;
+	Tue, 22 Jul 2025 17:19:38 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueFgp-00000002znR-3v09;
-	Tue, 22 Jul 2025 16:18:05 +0000
+	id 1ueGbv-000000037GB-0SFM;
+	Tue, 22 Jul 2025 17:17:03 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 794DB5C5B25;
-	Tue, 22 Jul 2025 16:18:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F20BEC4CEF6;
-	Tue, 22 Jul 2025 16:18:02 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 6819E61444;
+	Tue, 22 Jul 2025 17:17:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 01743C4CEEB;
+	Tue, 22 Jul 2025 17:17:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1753201083;
-	bh=J7LJKNLbK+TTtGd8sXeIJEYAW4as9aUTUYlUL2/0OC0=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=QlLjGUb1YgvAIYoDUCiYMGLxQbpz6UDUXOWYw3CPUxyORWw8DmtKQK6+Z3KCUBmsG
-	 f5RHHFDZ09akPXY09QopF/YQQN0Wt4Yh1ZwCQtB6bnxxWC94SiSJFzAhUpX3hM5F5/
-	 rJnH6gSqvEExmsR1Ufb6PAZU4KpRf/PnlT9p9LDlSEx4WXNinnSKw3itneLpJk+DEI
-	 1izwOYnuJtVSxf5lZyP1n2J92x/br2XO94EU/jppUqIHf5TJ0WecPLbauqUw/NlDG0
-	 hYX+/Wdtgwhbm60JNr5Itfdla9qF84Uc/+ARrRBEfzd07uQL3NG66bFD35m3raJn8x
-	 rXJOjsR2i8Erg==
-Date: Tue, 22 Jul 2025 11:18:02 -0500
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-MIME-Version: 1.0
+	s=k20201202; t=1753204622;
+	bh=w1K4bvODgaupuZ6rTZXJyHZe+HGhv/jTyPnbCIz8yz0=;
+	h=From:To:Cc:Subject:Date:From;
+	b=CFA8FgKUfxPDnZ3oYkOZ86kNnByY29sDQi+lr7AXgJlmDghA5oCtLETsYqBplCXGm
+	 2WmCp4OG7tGny1nCj94jOPRaEeJHXqNZRJaCZ+Kv0v2olRyLTCQGd6+9jrNjkk3XAO
+	 dGHLQuDsbQbNoNsbvwobiov9EVpkqHJRmylodK4BiIFECMrg32GIbtx8DXhLULx2YW
+	 JTBW7kEWqZ6Ue9VsZmgzh4mMlDT74ZbPErX8rAw6cUSWyhL9B4dIr+wWRIQUVcFatE
+	 bL3MjD15bGo15RDXnRubQMG1WfsxDxJB+0rd7CS3s1ogVMkUjZVyRPJSHU+6A0dPKb
+	 LliRIGvFiU4+Q==
 From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: linux-mediatek@lists.infradead.org, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- linux-arm-kernel@lists.infradead.org, Conor Dooley <conor+dt@kernel.org>, 
- Bear Wang <bear.wang@mediatek.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Macpaul Lin <macpaul@gmail.com>, Will Deacon <will@kernel.org>, 
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
- Catalin Marinas <catalin.marinas@arm.com>, 
- Pablo Sun <pablo.sun@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Sean Wang <sean.wang@mediatek.com>, Ramax Lo <ramax.lo@mediatek.com>, 
- MediaTek Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>
-To: Macpaul Lin <macpaul.lin@mediatek.com>
-In-Reply-To: <20250722085811.2062790-1-macpaul.lin@mediatek.com>
-References: <20250722085811.2062790-1-macpaul.lin@mediatek.com>
-Message-Id: <175320094841.3955034.3637479900814229901.robh@kernel.org>
-Subject: Re: [PATCH v2 1/4] dt-bindings: arm64: mediatek: add
- mt8395-evk-ufs board
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250722_091804_063034_0BBA3B9F 
-X-CRM114-Status: GOOD (  15.30  )
+To: Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Enric Balletbo i Serra <eballetbo@kernel.org>,
+	Ben Ho <Ben.Ho@mediatek.com>,
+	Fabien Parent <fparent@baylibre.com>
+Cc: devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] arm64: dts: mediatek: mt8183: Fix out of range pull values
+Date: Tue, 22 Jul 2025 12:11:52 -0500
+Message-ID: <20250722171152.58923-2-robh@kernel.org>
+X-Mailer: git-send-email 2.47.2
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,157 +73,148 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+A value of 10 is not valid for "mediatek,pull-down-adv" and
+"mediatek,pull-up-adv" properties which have defined values of 0-3. It
+appears the "10" was written as a binary value. The driver only looks at
+the lowest 2 bits, so the value "10" decimal works out the same as if
+"2" was used.
 
-On Tue, 22 Jul 2025 16:58:08 +0800, Macpaul Lin wrote:
-> Add a compatible string for the MediaTek mt8395-evk-ufs board.
-> This board is the origin Genio 1200 EVK already mounted two main storages,
-> one is eMMC, and the other is UFS. The system automatically prioritizes
-> between eMMC and UFS via BROM detection, so user could not use both storage
-> types simultaneously. As a result, mt8395-evk-ufs must be treated as a
-> separate board.
-> 
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/arm/mediatek.yaml | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> Changes for v2:
->  - No change.
-> 
+Fixes: cd894e274b74 ("arm64: dts: mt8183: Add krane-sku176 board")
+Fixes: 19b6403f1e2a ("arm64: dts: mt8183: add mt8183 pumpkin board")
+Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+---
+This is just a few of the warnings related to mt8183-pinctrl... Mediatek 
+is #1 for DT warnings on arm64. And by #1, I mean worst. :( It would be 
+nice to see some progress on fixing them. Otherwise, seeing new Mediatek 
+bindings rather than fixing the existing stuff makes me grumpy.
 
+ arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi  | 14 +++++++-------
+ arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts | 14 +++++++-------
+ 2 files changed, 14 insertions(+), 14 deletions(-)
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
-
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
-
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
-
-  pip3 install dtschema --upgrade
-
-
-This patch series was applied (using b4) to base:
- Base: attempting to guess base-commit...
- Base: tags/next-20250722 (best guess, 3/4 blobs matched)
-
-If this is not the correct base, please add 'base-commit' tag
-(or use b4 which does this automatically)
-
-New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/mediatek/' for 20250722085811.2062790-1-macpaul.lin@mediatek.com:
-
-Error: arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk-ufs.dts:17.1-8 Label or path ufshci not found
-FATAL ERROR: Syntax error parsing input tree
-make[3]: *** [scripts/Makefile.dtbs:131: arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk-ufs.dtb] Error 1
-make[2]: *** [scripts/Makefile.build:556: arch/arm64/boot/dts/mediatek] Error 2
-make[2]: Target 'arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk-ufs.dtb' not remade because of errors.
-make[1]: *** [/home/rob/proj/linux-dt-testing/Makefile:1478: mediatek/mt8395-genio-1200-evk-ufs.dtb] Error 2
-make: *** [Makefile:248: __sub-make] Error 2
-make: Target 'mediatek/mt8183-pumpkin.dtb' not remade because of errors.
-make: Target 'mediatek/mt6797-evb.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-kodama-sku16.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-fennel14.dtb' not remade because of errors.
-make: Target 'mediatek/mt8395-genio-1200-evk.dtb' not remade because of errors.
-make: Target 'mediatek/mt7986a-bananapi-bpi-r3.dtb' not remade because of errors.
-make: Target 'mediatek/mt8173-evb.dtb' not remade because of errors.
-make: Target 'mediatek/mt7986b-rfb.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-willow-sku0.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-tentacruel-sku262144.dtb' not remade because of errors.
-make: Target 'mediatek/mt8195-cherry-tomato-r2.dtb' not remade because of errors.
-make: Target 'mediatek/mt7981b-openwrt-one.dtb' not remade because of errors.
-make: Target 'mediatek/mt8173-elm.dtb' not remade because of errors.
-make: Target 'mediatek/mt7622-rfb1.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-damu.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-willow-sku1.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-tentacool-sku327681.dtb' not remade because of errors.
-make: Target 'mediatek/mt6779-evb.dtb' not remade because of errors.
-make: Target 'mediatek/mt8188-geralt-ciri-sku4.dtb' not remade because of errors.
-make: Target 'mediatek/mt8173-elm-hana-rev7.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-starmie-sku1.dtb' not remade because of errors.
-make: Target 'mediatek/mt8370-genio-510-evk.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-voltorb.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-kenzo.dtb' not remade because of errors.
-make: Target 'mediatek/mt2712-evb.dtb' not remade because of errors.
-make: Target 'mediatek/mt8395-genio-1200-evk-ufs.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-tentacool-sku327683.dtb' not remade because of errors.
-make: Target 'mediatek/mt7981b-cudy-wr3000-v1.dtb' not remade because of errors.
-make: Target 'mediatek/mt8192-asurada-hayato-r1.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-ponyta-sku0.dtb' not remade because of errors.
-make: Target 'mediatek/mt8390-genio-700-evk.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-fennel-sku7.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-makomo-sku1.dtb' not remade because of errors.
-make: Target 'mediatek/mt8395-kontron-3-5-sbc-i1200.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-pico6.dtb' not remade because of errors.
-make: Target 'mediatek/mt8188-geralt-ciri-sku1.dtb' not remade because of errors.
-make: Target 'mediatek/mt8195-demo.dtb' not remade because of errors.
-make: Target 'mediatek/mt8173-elm-hana.dtb' not remade because of errors.
-make: Target 'mediatek/mt6755-evb.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-chinchou-sku16.dtb' not remade because of errors.
-make: Target 'mediatek/mt8192-asurada-spherion-r0.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-chinchou-sku0.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-kodama-sku32.dtb' not remade because of errors.
-make: Target 'mediatek/mt7622-bananapi-bpi-r64.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-chinchou-sku1.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-magneton-sku393218.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-evb.dtb' not remade because of errors.
-make: Target 'mediatek/mt8188-geralt-ciri-sku7.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-fennel-sku6.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-evb.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-magneton-sku393216.dtb' not remade because of errors.
-make: Target 'mediatek/mt8188-geralt-ciri-sku3.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-fennel14-sku2.dtb' not remade because of errors.
-make: Target 'mediatek/mt6797-x20-dev.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-cozmo.dtb' not remade because of errors.
-make: Target 'mediatek/mt8188-evb.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-krane-sku0.dtb' not remade because of errors.
-make: Target 'mediatek/mt8365-evk.dtb' not remade because of errors.
-make: Target 'mediatek/mt8195-evb.dtb' not remade because of errors.
-make: Target 'mediatek/mt8395-radxa-nio-12l.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-makomo-sku0.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-steelix-sku131073.dtb' not remade because of errors.
-make: Target 'mediatek/mt7988a-bananapi-bpi-r4.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-starmie-sku0.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-burnet.dtb' not remade because of errors.
-make: Target 'mediatek/mt8188-geralt-ciri-sku6.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-ponyta-sku1.dtb' not remade because of errors.
-make: Target 'mediatek/mt7986a-acelink-ew-7886cax.dtb' not remade because of errors.
-make: Target 'mediatek/mt8516-pumpkin.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-kakadu-sku22.dtb' not remade because of errors.
-make: Target 'mediatek/mt7986a-rfb.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-kodama-sku288.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-krane-sku176.dtb' not remade because of errors.
-make: Target 'mediatek/mt8188-geralt-ciri-sku0.dtb' not remade because of errors.
-make: Target 'mediatek/mt6795-evb.dtb' not remade because of errors.
-make: Target 'mediatek/mt7988a-bananapi-bpi-r4-2g5.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-tentacruel-sku262148.dtb' not remade because of errors.
-make: Target 'mediatek/mt8167-pumpkin.dtb' not remade because of errors.
-make: Target 'mediatek/mt7981b-xiaomi-ax3000t.dtb' not remade because of errors.
-make: Target 'mediatek/mt8188-geralt-ciri-sku2.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-steelix-sku131072.dtb' not remade because of errors.
-make: Target 'mediatek/mt8195-cherry-dojo-r1.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-kappa.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-kakadu.dtb' not remade because of errors.
-make: Target 'mediatek/mt7986a-bananapi-bpi-r3-mini.dtb' not remade because of errors.
-make: Target 'mediatek/mt6795-sony-xperia-m5.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-magneton-sku393217.dtb' not remade because of errors.
-make: Target 'mediatek/mt8192-evb.dtb' not remade because of errors.
-make: Target 'mediatek/mt8195-cherry-tomato-r3.dtb' not remade because of errors.
-make: Target 'mediatek/mt8195-cherry-tomato-r1.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-katsu-sku32.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-katsu-sku38.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-squirtle.dtb' not remade because of errors.
-make: Target 'mediatek/mt8188-geralt-ciri-sku5.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-rusty-sku196608.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-pico.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-kodama-sku272.dtb' not remade because of errors.
-
-
-
-
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+index 400c61d11035..fff93e26eb76 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+@@ -580,7 +580,7 @@ pins-cmd-dat {
+ 		pins-clk {
+ 			pinmux = <PINMUX_GPIO124__FUNC_MSDC0_CLK>;
+ 			drive-strength = <MTK_DRIVE_14mA>;
+-			mediatek,pull-down-adv = <10>;
++			mediatek,pull-down-adv = <2>;
+ 		};
+ 
+ 		pins-rst {
+@@ -609,13 +609,13 @@ pins-cmd-dat {
+ 		pins-clk {
+ 			pinmux = <PINMUX_GPIO124__FUNC_MSDC0_CLK>;
+ 			drive-strength = <MTK_DRIVE_14mA>;
+-			mediatek,pull-down-adv = <10>;
++			mediatek,pull-down-adv = <2>;
+ 		};
+ 
+ 		pins-ds {
+ 			pinmux = <PINMUX_GPIO131__FUNC_MSDC0_DSL>;
+ 			drive-strength = <MTK_DRIVE_14mA>;
+-			mediatek,pull-down-adv = <10>;
++			mediatek,pull-down-adv = <2>;
+ 		};
+ 
+ 		pins-rst {
+@@ -633,13 +633,13 @@ pins-cmd-dat {
+ 				 <PINMUX_GPIO33__FUNC_MSDC1_DAT2>,
+ 				 <PINMUX_GPIO30__FUNC_MSDC1_DAT3>;
+ 			input-enable;
+-			mediatek,pull-up-adv = <10>;
++			mediatek,pull-up-adv = <2>;
+ 		};
+ 
+ 		pins-clk {
+ 			pinmux = <PINMUX_GPIO29__FUNC_MSDC1_CLK>;
+ 			input-enable;
+-			mediatek,pull-down-adv = <10>;
++			mediatek,pull-down-adv = <2>;
+ 		};
+ 	};
+ 
+@@ -652,13 +652,13 @@ pins-cmd-dat {
+ 				 <PINMUX_GPIO30__FUNC_MSDC1_DAT3>;
+ 			drive-strength = <6>;
+ 			input-enable;
+-			mediatek,pull-up-adv = <10>;
++			mediatek,pull-up-adv = <2>;
+ 		};
+ 
+ 		pins-clk {
+ 			pinmux = <PINMUX_GPIO29__FUNC_MSDC1_CLK>;
+ 			drive-strength = <8>;
+-			mediatek,pull-down-adv = <10>;
++			mediatek,pull-down-adv = <2>;
+ 			input-enable;
+ 		};
+ 	};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts b/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
+index dbdee604edab..7c3010889ae7 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
+@@ -324,7 +324,7 @@ pins_cmd_dat {
+ 		pins_clk {
+ 			pinmux = <PINMUX_GPIO124__FUNC_MSDC0_CLK>;
+ 			drive-strength = <MTK_DRIVE_14mA>;
+-			mediatek,pull-down-adv = <10>;
++			mediatek,pull-down-adv = <2>;
+ 		};
+ 
+ 		pins_rst {
+@@ -353,13 +353,13 @@ pins_cmd_dat {
+ 		pins_clk {
+ 			pinmux = <PINMUX_GPIO124__FUNC_MSDC0_CLK>;
+ 			drive-strength = <MTK_DRIVE_14mA>;
+-			mediatek,pull-down-adv = <10>;
++			mediatek,pull-down-adv = <2>;
+ 		};
+ 
+ 		pins_ds {
+ 			pinmux = <PINMUX_GPIO131__FUNC_MSDC0_DSL>;
+ 			drive-strength = <MTK_DRIVE_14mA>;
+-			mediatek,pull-down-adv = <10>;
++			mediatek,pull-down-adv = <2>;
+ 		};
+ 
+ 		pins_rst {
+@@ -377,13 +377,13 @@ pins_cmd_dat {
+ 				 <PINMUX_GPIO33__FUNC_MSDC1_DAT2>,
+ 				 <PINMUX_GPIO30__FUNC_MSDC1_DAT3>;
+ 			input-enable;
+-			mediatek,pull-up-adv = <10>;
++			mediatek,pull-up-adv = <2>;
+ 		};
+ 
+ 		pins_clk {
+ 			pinmux = <PINMUX_GPIO29__FUNC_MSDC1_CLK>;
+ 			input-enable;
+-			mediatek,pull-down-adv = <10>;
++			mediatek,pull-down-adv = <2>;
+ 		};
+ 
+ 		pins_pmu {
+@@ -401,13 +401,13 @@ pins_cmd_dat {
+ 				 <PINMUX_GPIO30__FUNC_MSDC1_DAT3>;
+ 			drive-strength = <6>;
+ 			input-enable;
+-			mediatek,pull-up-adv = <10>;
++			mediatek,pull-up-adv = <2>;
+ 		};
+ 
+ 		pins_clk {
+ 			pinmux = <PINMUX_GPIO29__FUNC_MSDC1_CLK>;
+ 			drive-strength = <8>;
+-			mediatek,pull-down-adv = <10>;
++			mediatek,pull-down-adv = <2>;
+ 			input-enable;
+ 		};
+ 	};
+-- 
+2.47.2
 
 
