@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B45EAC83F25
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jul 2025 07:29:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 208CDC83F25
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jul 2025 07:31:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Z9xJCIyBbmbt70/7krlXdDXHbbW5MUVXqLDthWupuHw=; b=WFm23O+kRf0RwlMeu2RLQ/YrZI
-	bNsC0hYRVAqGHmwqkds+mYMTt5uVtJfmuDoywDlIx2pwSMYw/sBctpYL822no/QEeyPc0ZGvFRa+Y
-	BtcfesgjsHP5LP8KvueRDVQfA87gCdsr+90HvA8pvsBeTWMoY8Oe7wcOIN9yXkI8Vm/9LZVwK13ez
-	Ok6nf8wzc9G4OnC7dK5ZiMHt2eXTNO+XdrlTe5MEH80nK6sG/nBX9kuW7qRuXDgelCUHhbLhKEoLR
-	28sgM0xGXWwzG6g5/4zhrsTZCormjJZeDbpYsJ4gXGng132T58pwHgyASh3vBnSEPGq3S510fmApw
-	Gq0bq27g==;
+	bh=kX4jVjMeEtvNf+e/+zPa2nRUpF6fl0hMQ8tg2YCObjU=; b=kLootxOd8fVGR7UAj/diRDxgZF
+	OT+WdIpPM2DAubMsQYeaQfcTBCc8EVc55SDxvMgN+B0krSTacsqwfw60A5J1c9n1fgiTBvtEF2dzt
+	kxVqzenuxkgjU6rLt5T5eRHVv5ddOIm0AADL0di6gXLyJ+gM2SqrXTf9IpXN7qxhX3gJ8FXt+m2+y
+	0noxjCt+bS0Hh9bvWJQyURWC+TbBCt2UFxt3lXXl5o+rG9taH3maCJmwFJ6tmpZX8QWfq/r2IFhTs
+	h7E9bQrNOEZHliaAEsaALV7blxk9tjdUnfSRG8RTkr1FwNtMSWFxebT4MboUQyVBE44WdQwVJo/Wo
+	Y3KRB9Tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ue7Qr-00000001eIC-2GZM;
-	Tue, 22 Jul 2025 07:29:01 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1ue7TK-00000001f2w-0nCk;
+	Tue, 22 Jul 2025 07:31:34 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ue7Ni-00000001dTQ-3bbv;
-	Tue, 22 Jul 2025 07:25:48 +0000
+	id 1ue7Ov-00000001dsq-3r6M;
+	Tue, 22 Jul 2025 07:27:03 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id F0AF8A55C50;
-	Tue, 22 Jul 2025 07:25:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 10989C4CEEB;
-	Tue, 22 Jul 2025 07:25:45 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 50AA2437FC;
+	Tue, 22 Jul 2025 07:27:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 94E14C4CEEB;
+	Tue, 22 Jul 2025 07:27:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1753169145;
-	bh=Z9xJCIyBbmbt70/7krlXdDXHbbW5MUVXqLDthWupuHw=;
+	s=k20201202; t=1753169221;
+	bh=kX4jVjMeEtvNf+e/+zPa2nRUpF6fl0hMQ8tg2YCObjU=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=cMPjpfp2OWAqia2a5IeLgdD3yLlUpfmkdNF6/xmTW2HALSfpJuvYIXoYGrniaGuF/
-	 zLkmC50vG36UFMRinuxw4nOWVqimT+EXZH3B2pNDK2mKi1qqdevRH6PD4AgA3evM75
-	 ruYawulIvwrijJBjqXUu12yl8S2+IYPxPHaeRxJpITw5zda+LGVYlUpHq7Gx9K5MH5
-	 x/i15MFJyn0Q8LQEFkzMC4sPjxjJHJrxEzDgMDlNb5zEeGxXpqOTzvXwFEh9HPSpLN
-	 tGR4tnEeSPTYQ06zXm6ImwYCtU0m0+zzy/rhtTco3mjRsQG6BaEuGrfXE7UPN5YOJg
-	 4JgtAxlVwCiFQ==
-Date: Tue, 22 Jul 2025 09:25:43 +0200
+	b=QI/8PSMm+0FvCxJWAU94AXrriQPRXIONz78aRf9CawzIcjgyiKOJBxX2lJwJaPSib
+	 CuiLLiGT0RWY2Eh+JWwMGNKs0pIIKvyYHdWTZIv/AvQg5WegOuCxGxICOgGB0oxv7a
+	 n63l3abcJAS73Fg0dEhAQ1MLU2KIIxscUs/7d6xutUQ8OmxUpUrTzkiSsNQvBuSDSp
+	 K1WBLbIau9/kx39CbzVIXSC40CvSJrJmYcvRVOyqZ0akXezBYPlscWZCZM92DZda5W
+	 AVphlhK2eu4lr7c/7AYVTaxmSKbLFAMYO3Oja3ZA792tNdaz2iXO7yWQ8+Qw5ALERu
+	 I0XUqVBaULGtw==
+Date: Tue, 22 Jul 2025 09:26:58 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Kyrie Wu <kyrie.wu@mediatek.com>
 Cc: Tiffany Lin <tiffany.lin@mediatek.com>, 
@@ -57,18 +57,18 @@ Cc: Tiffany Lin <tiffany.lin@mediatek.com>,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	linux-mediatek@lists.infradead.org, Neil Armstrong <neil.armstrong@linaro.org>, 
 	Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>
-Subject: Re: [PATCH v1 1/8] dt-bindings: media: mediatek: decoder: Add MT8189
- mediatek,vcodec-decoder
-Message-ID: <20250722-sly-sparkling-kangaroo-6ab9ed@kuoka>
+Subject: Re: [PATCH v1 7/8] dt-bindings: media: Add MT8189
+ mediatek,vcodec-encoder
+Message-ID: <20250722-lovely-mustard-scorpion-e07e92@kuoka>
 References: <20250721105520.5625-1-kyrie.wu@mediatek.com>
- <20250721105520.5625-2-kyrie.wu@mediatek.com>
+ <20250721105520.5625-8-kyrie.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20250721105520.5625-2-kyrie.wu@mediatek.com>
+In-Reply-To: <20250721105520.5625-8-kyrie.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250722_002546_959302_4E258CAF 
-X-CRM114-Status: UNSURE (   8.08  )
+X-CRM114-CacheID: sfid-20250722_002701_976728_441F5B3B 
+X-CRM114-Status: UNSURE (   7.40  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,13 +84,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 21, 2025 at 06:55:13PM +0800, Kyrie Wu wrote:
-> Add compatible for video decoder on MT8189 platform, which is a
-> pure single core architecture.
+On Mon, Jul 21, 2025 at 06:55:19PM +0800, Kyrie Wu wrote:
+> Add MT8189 encoder compatible string, which will reference SCP device.
 
-Looks compatible with existing ones and nothing in commit msg explains
-why it was not made compatible. Describe the hardware, say something
-useful to avoid such questions.
+And the device is not compatible or is different because of what?
+
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Best regards,
 Krzysztof
