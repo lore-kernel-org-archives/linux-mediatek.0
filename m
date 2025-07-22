@@ -4,58 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0BA2C83F27
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jul 2025 07:26:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B45EAC83F25
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jul 2025 07:29:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Lm5AP4aUvSzP6+iS++3IWKYJD1R8/KFmHM7lILbgnv8=; b=QDp1FtSFDnWmKHmby/OMmSgqyK
-	awG8axTcKL+OZODpHOmhn5Pvz2j34YeCcGtnCgTP3HMQAX1muYUbxrQhJw3d9QnquCbLEXp6D+1pe
-	3Juhi8NcE07IWz3THCr0GpdPyWu7ISqeRboh4gnN+HmlqXi05yoIpRAQts1tyyDJ2jtUES1MP9V7o
-	YVlqHDcpM6b7HieNf3Z8iF/ybRBaCyO4gPLarVu8Cz0LSkRu1+waNfjYNfgsLFccnubUKvhJrthT6
-	c0iTwKJwS7APcr99Iu9HQW3VgB6AL2jZr37E1xcB1pNoDxmmX7L9UpJqGwLHSR9n4+X0Mx36hW6Yn
-	V0/iEp4Q==;
+	bh=Z9xJCIyBbmbt70/7krlXdDXHbbW5MUVXqLDthWupuHw=; b=WFm23O+kRf0RwlMeu2RLQ/YrZI
+	bNsC0hYRVAqGHmwqkds+mYMTt5uVtJfmuDoywDlIx2pwSMYw/sBctpYL822no/QEeyPc0ZGvFRa+Y
+	BtcfesgjsHP5LP8KvueRDVQfA87gCdsr+90HvA8pvsBeTWMoY8Oe7wcOIN9yXkI8Vm/9LZVwK13ez
+	Ok6nf8wzc9G4OnC7dK5ZiMHt2eXTNO+XdrlTe5MEH80nK6sG/nBX9kuW7qRuXDgelCUHhbLhKEoLR
+	28sgM0xGXWwzG6g5/4zhrsTZCormjJZeDbpYsJ4gXGng132T58pwHgyASh3vBnSEPGq3S510fmApw
+	Gq0bq27g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ue7OP-00000001dgG-3lX5;
-	Tue, 22 Jul 2025 07:26:29 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1ue7Qr-00000001eIC-2GZM;
+	Tue, 22 Jul 2025 07:29:01 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ue7Lt-00000001csb-3Wd8;
-	Tue, 22 Jul 2025 07:23:56 +0000
+	id 1ue7Ni-00000001dTQ-3bbv;
+	Tue, 22 Jul 2025 07:25:48 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8D5D4459F2;
-	Tue, 22 Jul 2025 07:23:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D6B02C4CEEB;
-	Tue, 22 Jul 2025 07:23:52 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id F0AF8A55C50;
+	Tue, 22 Jul 2025 07:25:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 10989C4CEEB;
+	Tue, 22 Jul 2025 07:25:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1753169033;
-	bh=Lm5AP4aUvSzP6+iS++3IWKYJD1R8/KFmHM7lILbgnv8=;
+	s=k20201202; t=1753169145;
+	bh=Z9xJCIyBbmbt70/7krlXdDXHbbW5MUVXqLDthWupuHw=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=LRgUNWfnwkSyeqXM1R0sXOHk11H/3/G35igUiJl91PUSWRX5PIM+qX11kf9ftOi1X
-	 IIuou7OsliyeLWzOWYy2MjtLrD9rIw0M9wN9zGRpt9sKjQv9cqwxdKlPfTJmqYnfwt
-	 5Gck9GgO/uJFmscSLNo4iStQNxg8YQLUUCMVZ5A37p03EoJwkj18/pwi00w97OHkaE
-	 zC3CaL8xmtBheJOrIS+Y2FbWfehAm+fMDZu4zWX8fIlenl+fmaxUoKfLGfKkiaHjLZ
-	 4KOtQ/TP5lJrq0niQ8jd9+tgOU/ekff1ca/+XjXSKnp+uN1ohjEwXRIZQ29RP7Wfsw
-	 T8NOFiyGuy6UA==
-Date: Tue, 22 Jul 2025 09:23:50 +0200
+	b=cMPjpfp2OWAqia2a5IeLgdD3yLlUpfmkdNF6/xmTW2HALSfpJuvYIXoYGrniaGuF/
+	 zLkmC50vG36UFMRinuxw4nOWVqimT+EXZH3B2pNDK2mKi1qqdevRH6PD4AgA3evM75
+	 ruYawulIvwrijJBjqXUu12yl8S2+IYPxPHaeRxJpITw5zda+LGVYlUpHq7Gx9K5MH5
+	 x/i15MFJyn0Q8LQEFkzMC4sPjxjJHJrxEzDgMDlNb5zEeGxXpqOTzvXwFEh9HPSpLN
+	 tGR4tnEeSPTYQ06zXm6ImwYCtU0m0+zzy/rhtTco3mjRsQG6BaEuGrfXE7UPN5YOJg
+	 4JgtAxlVwCiFQ==
+Date: Tue, 22 Jul 2025 09:25:43 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Laura Nao <laura.nao@collabora.com>
-Subject: Re: [PATCH 9/9] dt-bindings: nvmem: mediatek: efuse: Add support for
- MT8196
-Message-ID: <20250722-laughing-hopping-hare-03edb0@kuoka>
-References: <20250721081459.16278-1-laura.nao@collabora.com>
- <20250721081459.16278-10-laura.nao@collabora.com>
+To: Kyrie Wu <kyrie.wu@mediatek.com>
+Cc: Tiffany Lin <tiffany.lin@mediatek.com>, 
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Hans Verkuil <hverkuil@xs4all.nl>, 
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>, Christophe JAILLET <christophe.jaillet@wanadoo.fr>, 
+	Sebastian Fricke <sebastian.fricke@collabora.com>, Nathan Hebert <nhebert@chromium.org>, 
+	Arnd Bergmann <arnd@arndb.de>, Irui Wang <irui.wang@mediatek.com>, 
+	George Sun <george.sun@mediatek.com>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>
+Subject: Re: [PATCH v1 1/8] dt-bindings: media: mediatek: decoder: Add MT8189
+ mediatek,vcodec-decoder
+Message-ID: <20250722-sly-sparkling-kangaroo-6ab9ed@kuoka>
+References: <20250721105520.5625-1-kyrie.wu@mediatek.com>
+ <20250721105520.5625-2-kyrie.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20250721081459.16278-10-laura.nao@collabora.com>
+In-Reply-To: <20250721105520.5625-2-kyrie.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250722_002353_911015_D23CDA6B 
-X-CRM114-Status: UNSURE (   7.94  )
+X-CRM114-CacheID: sfid-20250722_002546_959302_4E258CAF 
+X-CRM114-Status: UNSURE (   8.08  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -68,19 +81,16 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: andrew-ct.chen@mediatek.com, lala.lin@mediatek.com, rafael@kernel.org, kernel@collabora.com, bchihi@baylibre.com, robh@kernel.org, nfraprado@collabora.com, daniel.lezcano@linaro.org, rui.zhang@intel.com, colin.i.king@gmail.com, devicetree@vger.kernel.org, conor+dt@kernel.org, arnd@arndb.de, linux-pm@vger.kernel.org, u.kleine-koenig@baylibre.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com, linux-kernel@vger.kernel.org, srini@kernel.org, linux-mediatek@lists.infradead.org, krzk+dt@kernel.org, lukasz.luba@arm.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 21, 2025 at 10:14:59AM +0200, Laura Nao wrote:
-> Add compatible for MT8196 SoC.
+On Mon, Jul 21, 2025 at 06:55:13PM +0800, Kyrie Wu wrote:
+> Add compatible for video decoder on MT8189 platform, which is a
+> pure single core architecture.
 
-This we see from diff. Describe the hardware. Is it compatible with
-anything existing? No changes in the driver, so maybe this should use
-8195 as fallback?
-
-There are some differences in existing Mediatek efuses, so seeing here
-empty commit only raises questions.
+Looks compatible with existing ones and nothing in commit msg explains
+why it was not made compatible. Describe the hardware, say something
+useful to avoid such questions.
 
 Best regards,
 Krzysztof
