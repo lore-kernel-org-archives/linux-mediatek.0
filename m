@@ -4,87 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD3F9C83F27
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jul 2025 08:49:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F747C83F25
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jul 2025 09:01:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=41B/ekEx4m/gKNRr2HYhyza2JcZwd1YnIux2XMK+KqY=; b=3yGrPt1N5ej44KcEXA3t1o12cX
-	DnKwMFmTVZcd95xSXTckBJkcvUGmmZ+NRKrZhe6TxWc/48/G+kXesq0efO5zm9AShnc18Xrd4+fm5
-	r1p8dhD8rq1BcRD/jPL2YYg59Y5eYxHeElsPiZwf80CQMqagCEKmwCQZ579KaStB0eB2VXdSxgsD0
-	rBRmqgbhadIdkRar+2Hx+lPPgpB9WbcdfLXxPKGVkgvXTJaveOhIvU/2n2c6M23RjNuJaxghMJGUm
-	CAHoRqeQLhz3cM8ERy98rkljp3oKPzzlWWj5XpPcso48QDB4AnQUZ0QvSsKGMGDeqHMRRfLefyFaz
-	3875HROw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oKOODA8AhDMVK+3zgK4+VmsoIhuWOIaeZX3PHT4WMgo=; b=OHIg/Kp5fpQ1qcSR0FH8pKyZld
+	peW/Q95a32GOnx8xiGmQ8P1RiEIS8KBCibCFMujh0fpLDvAFGJmPS7c2m+bzKhhrkJbjES3PSx8Aw
+	wTQfOY0dWzcYsywTwRJ3wneVue0F/2dR1g1Hy+ZCF6Na6EP9KrM8ioh02tBU++xhQoFTF7Q2XX2cQ
+	nHilm6JqKOud023MldXu9H9a+1qebANHMCKuFST2GD6oVv7TjFzUmSYCYPRBEHOeBLlCq4h5D1iQq
+	6yZXNptHLKT6ZuXcCHvvWUHhb0P3/oCptQjpkgEqCo+meLDP/oJKoyPjFWNJNOEpM4QKrzjlLaoH4
+	OVFnnt9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ue8gd-00000001t2A-1VDN;
-	Tue, 22 Jul 2025 08:49:23 +0000
-Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
+	id 1ue8sb-00000001vzF-1YtH;
+	Tue, 22 Jul 2025 09:01:45 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ue7c1-00000001hkp-3C11
-	for linux-mediatek@lists.infradead.org;
-	Tue, 22 Jul 2025 07:40:34 +0000
-Received: by mail-lj1-x236.google.com with SMTP id 38308e7fff4ca-32b43846e8cso38299441fa.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 22 Jul 2025 00:40:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1753170032; x=1753774832; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=41B/ekEx4m/gKNRr2HYhyza2JcZwd1YnIux2XMK+KqY=;
-        b=M+8YFF1q6Xbv0h7CaTemFK1vMOubxWGY+2QFNGfwfA97XGsqSA98iA6XZNm4WuTaQA
-         8weI7pZEn1lK3VEbmjgoPwBvV2cjH0vVHLFvI1inWUr7I+0LXB4e3U/Jyujh6O/DNSqi
-         sx87M5zvwoB9zHjWqj7jf1RAldZh74SGBNS7E=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1753170032; x=1753774832;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=41B/ekEx4m/gKNRr2HYhyza2JcZwd1YnIux2XMK+KqY=;
-        b=ntaNEyj4lfsrQXskXwWvRutSGhWfcomB5ii+dUYmxdGKaJus+5jydtzBeMbaDIwgdH
-         V7eQXL+4PzWnd4EOlmYp1Ye94jZBkK6xCB2dqP/DeTDZHjpe/b2zhNyn3d1PCXC2cGBQ
-         O9Q1HHR2IPKrH1Tlep7oMZrlniIA7S7YbRBiiTWTRn/+2hmZRKXsQi0ExAIbO5AlUqhM
-         m12GkQfkKPH2W4apXbCHamG3D2P4mAXfddL6IlndapspQZNk3Olk7proMprXhSW2zOee
-         1dDHU2/C6nHoJV2ArFWulE8JpT6OJ/y95AtP8wVrk3KsfHMZ+Z2oXsx5N9m1FOfh+PIF
-         9Hyw==
-X-Forwarded-Encrypted: i=1; AJvYcCXzyD969W3HKqxq9qpUjSjAQNtew1NQFj9aIL9roO+UYuwJFGMh3fLNF9rvlW/GITb6QqNdd1C3FhUgbd/zDQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy/5xdL440U3FcIPn/nn3pY7X9zoJ8urjGpfEus/kN6Srimz2cz
-	OEkavhVE2QksDg1JiOmrz0mjlpKNgPE78Ftpk6Dv4AqNfS8uPMTmJ4cvbXXciSY1WHGPkqIKrLC
-	LLfoEJk14bw9ao3iO0G66dcjwhJN32i1tKlJqq47E
-X-Gm-Gg: ASbGncsHlLQWJC0wDQEFc8pL5Om8MjT8EtIIKFHxCyQGyaBGioYK18e4uX5Iv6mRngh
-	6atq2iBEUXdMugK3NMXEK3L/SyG+aQcdGRVozlZvE+0W73S5DRUqVpU3dQsZv/qglMN7uNgOJ9z
-	eXIafObwsQM1xTyc6eY1TPRBbj+SKkySGYlnflIWhlx2ozC0NyDjrtLH3B5kK4ZAakWn/PGJvDy
-	cReoNp68XGV9YMw5V8VnkA3PLT/cK9tA68=
-X-Google-Smtp-Source: AGHT+IEQ22SyB/ySXRKt1KC3gl7QbzYcQMLoMwBK32ZhmBBhXQtJp8OUPSRF0MOxntL5QFsaUhmhC/a9dY2DEPGCwaM=
-X-Received: by 2002:a2e:a58f:0:b0:32b:34c5:225d with SMTP id
- 38308e7fff4ca-330a7ae1057mr36760231fa.1.1753170031911; Tue, 22 Jul 2025
- 00:40:31 -0700 (PDT)
+	id 1ue8ol-00000001v4h-30gC;
+	Tue, 22 Jul 2025 08:57:48 +0000
+X-UUID: ec1b941866d911f09eb0dd999d3936bf-20250722
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=oKOODA8AhDMVK+3zgK4+VmsoIhuWOIaeZX3PHT4WMgo=;
+	b=iogyFG8GP6r6CrRcKehdXCLuO6JV4CAbBsmF2LulpIBsuQi2XnEDEUcT+D0sBq1x6HVVasBVt+H7ORbHncKPQgPpwHPZNbrps7hk6PoXiW/dekG4jw2lG3xqC7z1wil+yIeMg02DLkmi/IlhX1vDpocACRyrVi9+Y5h8b/TXJhU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.2,REQID:d42ec1e0-8eab-4fb9-8c4c-0f7cc11765ab,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:9eb4ff7,CLOUDID:12641f50-93b9-417a-b51d-915a29f1620f,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
+	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
+	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: ec1b941866d911f09eb0dd999d3936bf-20250722
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 191178884; Tue, 22 Jul 2025 01:57:40 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Tue, 22 Jul 2025 16:57:37 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Tue, 22 Jul 2025 16:57:36 +0800
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
+	Bart Van Assche <bvanassche@acm.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Peter Wang
+	<peter.wang@mediatek.com>, Stanley Jhu <chu.stanley@gmail.com>, "James E . J
+ . Bottomley" <James.Bottomley@HansenPartnership.com>, "Martin K . Petersen"
+	<martin.petersen@oracle.com>, <linux-scsi@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+	Ramax Lo <ramax.lo@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
+	Macpaul Lin <macpaul@gmail.com>, MediaTek Chromebook Upstream
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Rice Lee
+	<ot_riceyj.lee@mediatek.com>, Eric Lin <ht.lin@mediatek.com>
+Subject: [PATCH v2 4/4] arm64: dts: mediatek: mt8195: add UFSHCI node
+Date: Tue, 22 Jul 2025 16:57:20 +0800
+Message-ID: <20250722085721.2062657-4-macpaul.lin@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20250722085721.2062657-1-macpaul.lin@mediatek.com>
+References: <20250722085721.2062657-1-macpaul.lin@mediatek.com>
 MIME-Version: 1.0
-References: <20250721081459.16278-1-laura.nao@collabora.com>
-In-Reply-To: <20250721081459.16278-1-laura.nao@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 22 Jul 2025 15:40:21 +0800
-X-Gm-Features: Ac12FXwHVu2xheACj_ug47v0VGmRzFUiGV73WGs8r_Guigs_NEMfWXqCZqRQckQ
-Message-ID: <CAGXv+5EmigF=m1zDZ71AMv02XwyYWQxpiRpiwc7YMg=8vc2FZA@mail.gmail.com>
-Subject: Re: [PATCH 0/9] Add thermal sensor driver support for Mediatek MT8196
-To: Laura Nao <laura.nao@collabora.com>
-Cc: srini@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
-	rafael@kernel.org, daniel.lezcano@linaro.org, rui.zhang@intel.com, 
-	lukasz.luba@arm.com, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com, andrew-ct.chen@mediatek.com, 
-	lala.lin@mediatek.com, arnd@arndb.de, linux-pm@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, nfraprado@collabora.com, 
-	devicetree@vger.kernel.org, u.kleine-koenig@baylibre.com, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	kernel@collabora.com, colin.i.king@gmail.com, bchihi@baylibre.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250722_004033_800300_74B43820 
-X-CRM114-Status: GOOD (  16.92  )
+X-CRM114-CacheID: sfid-20250722_015747_766228_A3F6AF45 
+X-CRM114-Status: UNSURE (   9.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,57 +98,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+From: Rice Lee <ot_riceyj.lee@mediatek.com>
 
-On Mon, Jul 21, 2025 at 4:18=E2=80=AFPM Laura Nao <laura.nao@collabora.com>=
- wrote:
->
-> This patch series extends the MediaTek LVTS thermal driver to support the
-> MT8196 SoC.
->
-> MT8196 uses a positive temp_factor for temperature conversion, requiring
-> slight adjustments in the conversion logic.
->
-> To support this, the series introduces:
->
-> - A new struct lvts_platform_ops to allow platform-specific
->   conversion logic between raw sensor values and temperature
-> - A variant of the lvts_temp_to_raw() implementation for SoCs with positi=
-ve
->   temp_factor values
-> - Platform data and controller definitions for MT8196
+Add a UFS host controller interface (UFSHCI) node to mt8195.dtsi.
+Introduce the 'mediatek,ufs-disable-mcq' property to allow disabling
+Multiple Circular Queue (MCQ) support.
 
-I see the GPU and APU thermal sensors were left out. Was there a reason
-for this?
+Signed-off-by: Rice Lee <ot_riceyj.lee@mediatek.com>
+Signed-off-by: Eric Lin <ht.lin@mediatek.com>
+Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 25 ++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
 
-Thanks
-ChenYu
+Changes for v2:
+ - No change.
 
-> Laura Nao (9):
->   dt-bindings: thermal: mediatek: Add LVTS thermal controller support
->     for MT8196
->   thermal/drivers/mediatek/lvts: Make number of calibration offsets
->     configurable
->   thermal/drivers/mediatek/lvts: Guard against zero temp_factor in
->     lvts_raw_to_temp
->   thermal: mediatek: lvts: Add platform ops to support alternative
->     conversion logic
->   thermal/drivers/mediatek/lvts: Add lvts_temp_to_raw variant for
->     positive temp_factor
->   thermal/drivers/mediatek/lvts: Add support for ATP mode
->   thermal/drivers/mediatek/lvts: Support MSR offset for 16-bit
->     calibration data
->   thermal/drivers/mediatek/lvts_thermal: Add MT8196 support
->   dt-bindings: nvmem: mediatek: efuse: Add support for MT8196
->
->  .../bindings/nvmem/mediatek,efuse.yaml        |   1 +
->  .../thermal/mediatek,lvts-thermal.yaml        |   2 +
->  drivers/thermal/mediatek/lvts_thermal.c       | 315 ++++++++++++++++--
->  .../thermal/mediatek,lvts-thermal.h           |  26 ++
->  4 files changed, 325 insertions(+), 19 deletions(-)
->
-> --
-> 2.39.5
->
->
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index dd065b1bf94a..8877953ce292 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -1430,6 +1430,31 @@ mmc2: mmc@11250000 {
+ 			status = "disabled";
+ 		};
+ 
++		ufshci: ufshci@11270000 {
++			compatible = "mediatek,mt8195-ufshci";
++			reg = <0 0x11270000 0 0x2300>;
++			interrupts = <GIC_SPI 137 IRQ_TYPE_LEVEL_HIGH 0>;
++			phys = <&ufsphy>;
++			clocks = <&infracfg_ao CLK_INFRA_AO_AES_UFSFDE>,
++				 <&infracfg_ao CLK_INFRA_AO_AES>,
++				 <&infracfg_ao CLK_INFRA_AO_UFS_TICK>,
++				 <&infracfg_ao CLK_INFRA_AO_UNIPRO_SYS>,
++				 <&infracfg_ao CLK_INFRA_AO_UNIPRO_TICK>,
++				 <&infracfg_ao CLK_INFRA_AO_UFS_MP_SAP_B>,
++				 <&infracfg_ao CLK_INFRA_AO_UFS_TX_SYMBOL>,
++				 <&infracfg_ao CLK_INFRA_AO_PERI_UFS_MEM_SUB>;
++			clock-names = "ufs", "ufs_aes", "ufs_tick",
++					"unipro_sysclk", "unipro_tick",
++					"unipro_mp_bclk", "ufs_tx_symbol",
++					"ufs_mem_sub";
++			freq-table-hz = <0 0>, <0 0>, <0 0>,
++					<0 0>, <0 0>, <0 0>,
++					<0 0>, <0 0>;
++
++			mediatek,ufs-disable-mcq;
++			status = "disabled";
++		};
++
+ 		lvts_mcu: thermal-sensor@11278000 {
+ 			compatible = "mediatek,mt8195-lvts-mcu";
+ 			reg = <0 0x11278000 0 0x1000>;
+-- 
+2.45.2
+
 
