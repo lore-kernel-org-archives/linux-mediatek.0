@@ -4,92 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2B7EC83F27
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jul 2025 04:14:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19897C83F27
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jul 2025 05:05:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nlBEY6HRx3gs6GmX9n8FOaCyjO7em88PtYwWGu+mg9c=; b=X1vTLBOi6pD/ac804Mr1EGZn1Y
-	Oi375WaIC5drJlV5uu4EWiNyUcLDqdviaaOOICFC8JrfYK0z+wwkcBZwirmQ9FYrjpYjgqeB3Mo0x
-	TBaxYPs2iBs2dFjkTAuwJSC8bqCZJAWXkWBTG53xhUzKx/chRKefsV5XmLxyXWw75QQtSutDSB8ou
-	nbb68m8GqAo+HKXP3HfgcvSJnBU4q2F7l4fUvWuj/F0RF+k3B+sBykvFqFUjq+mm9gvO8wJhTxNuu
-	g6DYdI6kMbA7J7O9lXiSuQN+W8xr/KaEE63TDHZMvBeKVVu2FVmpsPqXxEk+VqOmqQbJFRz9zZk6c
-	6Aj8akGg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zUf4AlEkQu4akq53baJqj49MOp0hPw1pbtMFQqaD0kY=; b=sxDl8lB6N8CLAHdgYCqaVHpUuA
+	1Leqz9Y67uVgWA6olttztqM8T8WgZkj83M8b3O+lDPYnRERwfPW8N01C5mDQQ3972lONNzxLQQutN
+	4JTjyMUnapwOJlCgvMsLaXuF0mP1gB3z7xALO55W4hBEtzRTi8bVoDedbVgTy+y0svdCz+b+zXSp5
+	tm//PdISQpvvAB/wMs3RF3YvfVwjJ5U0CvTZE0EZRCF5Zt0LFqDi5w4RcGI6RvAs6+8zWHi0kgrYB
+	3aYLztx3W/dElHRxqHVvod+/oCe8X+QsSKYae8YGOCp6j62DGyx8hHq7RpBdkymavkvBU3pewZYvf
+	peX9kIuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ue4OJ-00000001F49-3TmN;
-	Tue, 22 Jul 2025 04:14:11 +0000
-Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
+	id 1ue5BY-00000001JDC-2YS5;
+	Tue, 22 Jul 2025 05:05:04 +0000
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ue4L4-00000001Ejp-11P1
+	id 1ue55I-00000001IQr-2Chy
 	for linux-mediatek@lists.infradead.org;
-	Tue, 22 Jul 2025 04:10:52 +0000
-Received: by mail-pg1-x532.google.com with SMTP id 41be03b00d2f7-b2c4e46a89fso3837686a12.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 21 Jul 2025 21:10:50 -0700 (PDT)
+	Tue, 22 Jul 2025 04:58:38 +0000
+Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-558f7472d64so5322902e87.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 21 Jul 2025 21:58:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1753157449; x=1753762249; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=nlBEY6HRx3gs6GmX9n8FOaCyjO7em88PtYwWGu+mg9c=;
-        b=Ph/KSLzDUyCCUMSFZlyRSwTff+rrrytcrg+Ngq/BIGtBBZS8jTo6BCsK0we7GaWlhO
-         hdh16xoKozJlL3M/hyJ7YjYHByJtHFQmohuVPY0BmP8p4GyQpjAv3hk/Mh8szsZYRJEM
-         FK3UUlyjuA6bDfW1vpbPdupHULOyDnq0nzHfXycewdIfALdpj04ijlaAi4TnLboov4LO
-         1t4Eq4ocM66R38QncaiF//aU/6UUdjf+AWydbHCbX8cGCc2bHw5ql+/el7ogNXVPoEUA
-         Mo5S8KN2XOPZm4S7637fSWbxpg6eFjRWT32m1NSpdmVvMvbvQ9W+5cVR+9qkLUdkidU3
-         4+NQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1753157449; x=1753762249;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+        d=chromium.org; s=google; t=1753160314; x=1753765114; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=nlBEY6HRx3gs6GmX9n8FOaCyjO7em88PtYwWGu+mg9c=;
-        b=O4DOhwFSUxecCDv/kAOMN4eKcAVBYmFGQq8XA81vRH4l9yu6Y9dWG9Zda7QbjU1IZI
-         ozNMt1/Bbx00YDLERsGB2YnQQL0dolFD0vobtFFXdusmfwa+fuRLZyl3LTar8FU9rvc1
-         GaYBb7770UtZuiGO5+cQJyhjUz3vUEDuI4DHWA7Ny8WMZahAncogHHC3h2b/SZ2wYeQH
-         HQkLr7n4jLNxwuF7smEHvPMXumtitsz42wGH9JuK1XYugzk8EAt6IPdROZeUY4IYJnCI
-         UY1b4P6mqba1U1qux/MFu2akmEjYzWXzqUREytKblBI4gbcJmpJe7XY59Oz/nMf+MOwI
-         OMGg==
-X-Forwarded-Encrypted: i=1; AJvYcCXpubARByPNOzoImWSm2LzbZ8ykuHd+TQk4mRxdRIb38YVuxxpQHRcV39w37HK3vzHR1H4CEgAxpiQIjFkqUg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyqEac/VlWIWu9u+MQOBorKwdE/19n/mAh2xuFCmyTmeMhCvM/f
-	LauTWq15HG9uPie9EGas4U+thSGRk/gxLuxx3P0YnOW7g2+Y+SYkRqX+nVEcAFlS0lc=
-X-Gm-Gg: ASbGncsmDTTAeixgW5Ew5OLQwvhQuHUuFSoTnp6Weo1Mb274FLebci+gf6OPmX3lWNY
-	Kjgt+vBUorP0Lp3fTKVqVWhgUn4fomi46Dn636xFozttGv924zR3WTvtIWZZ4XWZviiAeJ/fZ8a
-	5AsNTYSrodbb8umQhf2QVOMi9wXXv24Ie2d9v0BX9JbGZJHUc6yDULesqanwkP/cZocbMHjj16d
-	80u6T6VKtSK+O6ZylcD9qMLixfYbM3K3OWufHQcR0BfplbVHCwxdLFIgCbJTgaUGu+O/ac9fuOb
-	RseY/zoSTST7YnOA7q18gnb/M0Zf8DpgpvO+aqYUYLUiGooIJ8uvXLC8rCElyg7RNan1tvUtVGu
-	hZOoy0xsefo8bBrMsZTCq/GoggVfqG/nn4w==
-X-Google-Smtp-Source: AGHT+IHOKWMEzyu46KKsaJPjgo0xgycpcDzWx6CxVzgF6SZy+41yLFML71qXIxEHlqlltMpTlo5GzA==
-X-Received: by 2002:a05:6a21:648a:b0:231:4bbc:ff09 with SMTP id adf61e73a8af0-2381313ca9bmr31553876637.36.1753157449486;
-        Mon, 21 Jul 2025 21:10:49 -0700 (PDT)
-Received: from localhost ([122.172.81.72])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-759c84e2c91sm6537501b3a.5.2025.07.21.21.10.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 21 Jul 2025 21:10:48 -0700 (PDT)
-Date: Tue, 22 Jul 2025 09:40:46 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	kernel@collabora.com, linux-pm@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v3 0/4] MT8196 CPUFreq Support
-Message-ID: <20250722041046.lf4b267bmolm4exq@vireshk-i7>
-References: <20250716-mt8196-cpufreq-v3-0-d440fb810d7e@collabora.com>
+        bh=zUf4AlEkQu4akq53baJqj49MOp0hPw1pbtMFQqaD0kY=;
+        b=GXBXFaHKm6yWVxjEpPRcRIa7uKxr2B0apwmYF/5hgOpjuaXaln+77aiZWVPU+GXV39
+         D4B8pxEgVgjbkC9BR6g4Al74MVGYmZ67c5sbeDI1ZkV2sUBHxCpRB2c1d/Wa1TdXB2KX
+         ojjX6y7CQ0hkyby/Ck0rIGED9uQmFD2tDbVu8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1753160314; x=1753765114;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=zUf4AlEkQu4akq53baJqj49MOp0hPw1pbtMFQqaD0kY=;
+        b=pK5xIZqgc1IIQgOSDfnefXYxKiSWROIsw6YHP7nxoPRrIUc7b+BwnZ7abczB25Nvnp
+         htj5+24HIpT1j1YHEftE1oqbbPeaLnX/tZlJa+FOjxLPoZK41Kj5UhRqOyqBDNW/lWOx
+         A6BghxEhAQU/P3c4li0oAQjh/R2SEgiXCOdvDnjauWzWEtZv8dfokW3YulFWiindLRZ4
+         2P7soIFlcT12btq5/+g/tPWRSMKgJusZtwb2fuUarECMuunnV1RHP8DxpSQJl/EAegbD
+         eiNlp1VtcyERSbfQWiAsQEhtJXLPnu9R4gVmDMDoopn4943BTt85ES3iIgAHMEvcGn3x
+         +NOA==
+X-Gm-Message-State: AOJu0Yz4nCNQ0AE+M16NdXehSxHaraglYO8x5hOAnU3CB7RKjJhlLWwg
+	6YA3a7TWHQGhIQ6LV+Sx6HradYDQDV1KrcTvwQB+ZqGuOcIT1CfAgSd5y4BQPwZBw7DfyCeK0N2
+	kyVY4rYtLhrkih8tAAwXM/Ud9Lu87kmiBqd3YBq72
+X-Gm-Gg: ASbGncu6njefRwVIggWDySSfnujEAgBUmJ7xYtliP5SxBjwXKmH75MPwvDhB9dqNhqg
+	tx+3pHZZkBIrkKKLj1OLtU9CY5VTR1ezvdwozzlPUlyeuvXGvAulOjObOymBwOREbcuWInw0E5r
+	Jqdkq34W66TarNWUEjognsJTL6ZStlJeVZbLMNmizlLuPZkaE1FbLIyUN2O021T1ebYBqbqFpHq
+	U4A0IwMj9NepbhiWpSLnaCMZ1a33TPDjBM=
+X-Google-Smtp-Source: AGHT+IEyU+tFAsFMORjYCQnykMeU/pbwHrSE3Y7T/aLBjOwuzBCNRlXwUTyFrlR8NysXmCw/f9p80hu9ipZkTsFJIJQ=
+X-Received: by 2002:a05:651c:40cc:b0:32b:4521:73d1 with SMTP id
+ 38308e7fff4ca-330d260dbc5mr3824561fa.20.1753160313915; Mon, 21 Jul 2025
+ 21:58:33 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250716-mt8196-cpufreq-v3-0-d440fb810d7e@collabora.com>
+References: <20250715140224.206329-1-angelogioacchino.delregno@collabora.com> <20250715140224.206329-2-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250715140224.206329-2-angelogioacchino.delregno@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 22 Jul 2025 12:58:22 +0800
+X-Gm-Features: Ac12FXwqm1vj4VltrzTTMYOVI1lGXo2qDa8kdMFLAUiRJFcrn2uXXat6X0eoKOM
+Message-ID: <CAGXv+5FXr-mGDG4mfqFx0o_dhi=Q3s=Yjpj79UVfEQKf2Wit2w@mail.gmail.com>
+Subject: Re: [PATCH v5 1/8] dt-bindings: regulator: Document MediaTek MT6316
+ PMIC Regulators
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-mediatek@lists.infradead.org, lee@kernel.org, robh@kernel.org, 
+	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, 
+	lgirdwood@gmail.com, broonie@kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	kernel@collabora.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250721_211050_841638_0C6D79BD 
-X-CRM114-Status: GOOD (  15.07  )
+X-CRM114-CacheID: sfid-20250721_215836_587937_2458AAE1 
+X-CRM114-Status: UNSURE (   7.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,32 +96,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 16-07-25, 19:51, Nicolas Frattaroli wrote:
-> This series adds the necessary bindings and driver changes to integrate
-> MT8196 CPUFreq into the existing mediatek-cpufreq-hw driver. This
-> necessitated two preparatory cleanup patches to the driver.
-> 
-> The CPU frequency was verified to actually be changing by comparing
-> sysbench cpu numbers between fdvfs being enabled and it not being
-> enabled.
-> 
-> Enablement in the DT will be done once the MT8196 DT lands, so don't be
-> surprised that no node uses these new compatibles so far.
-> 
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> ---
-> Changes in v3:
-> - bindings: changed title as per angelo's suggestions
-> - bindings: dropped the fdvfs magic register range
-> - bindings: dropped redundant description for #performance-domain-cells
-> - driver: made fdvfs frequency divisor a `#define` instead of part of
->   the variant struct
-> - driver: dropped fdvfs magic check
-> - driver: reworked performance domain resource offset
-> - Link to v2: https://lore.kernel.org/r/20250714-mt8196-cpufreq-v2-0-cc85e78855c7@collabora.com
+On Tue, Jul 15, 2025 at 10:03=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Add bindings for the regulators found in the MediaTek MT6316 PMIC,
+> usually found in board designs using the MT6991 Dimensity 9400 and
+> on MT8196 Kompanio SoC for Chromebooks.
+>
+> This chip is fully controlled by SPMI and has multiple variants
+> providing different phase configurations.
+>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
 
-Applied. Thanks.
+The descriptions match the datasheet and design notice I have.
 
--- 
-viresh
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
