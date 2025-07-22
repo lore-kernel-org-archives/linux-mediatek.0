@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A5D5C87FC8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jul 2025 10:07:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58E99C83F25
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jul 2025 10:40:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8pt/dDbl5x5sOY+/vW0nNNsMEFBe3jUslMri8s6phho=; b=fq0CpD2M0TQwAyrx+cDYVpQzG2
-	Q9tRGqbpFuJ4jtlYdDPW1u38LHXoBVZmkpBSKF2d+djhHF5oijBZXjJTg25S6Twxazx9kvXY/p29b
-	orsruum18OgEzzBxTBOVhCfdrMW2tAdT4xohJ7pMX3ewFB0Iy9e6krQ+uW4QW1tKL7HJtdCTuCNMQ
-	im59Jp3jDUvd7u3Jydbra0MmLxp8xdD35hmt4b5da77DDDNynB4NYq/dmcxXISUPlBrWXExB0UPdz
-	K3BGEJq67/7EAn3H6A7ZeIN067i1oOHjrmc78a27z8iCl0WMFWEdEmPpfRGagrNnF3PZZjdJLudIF
-	2sEDfVcg==;
+	bh=1+7j+pmA/KhL8MRyhxdXyVz9K0L8G5MGilv/L7f1I2k=; b=pEZu2SIeReswNm/LC42R74pgsH
+	b+blvCPbju9seofamtzOHDbvN290k+0DNn3uqAZ0C3BhSA/Iq30z95isMH9IoIRctdd5HP+bDEKgB
+	qA+TbTvRAVE6gp5XrvkHtohno5bRF2LdbZjWz/q6KkPnUwq9rvBLvpSlfHgtR2ZFx+Z2STPhyKuq7
+	zbGs493h+5PeU0icLBRftv0gfiFVkFvqvZ3xMnYBifd93VBErTpwHeTJ1otZhIH4WheSGkVXlkZrq
+	KtENpl44e2gwOmf1XdPaK3i892rwHkMQ/CStStc8M8Qq4UpZikjR6isNRjDxKDOcS7VwTjpHDS+eS
+	bEZaXmIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ue9tk-000000026gA-22qK;
-	Tue, 22 Jul 2025 10:07:00 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1ueAPy-00000002BEz-2IJ7;
+	Tue, 22 Jul 2025 10:40:18 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ue9le-000000024jK-3oMJ;
-	Tue, 22 Jul 2025 09:58:40 +0000
+	id 1ueADl-000000029jy-2DGR;
+	Tue, 22 Jul 2025 10:27:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1753178317;
-	bh=2YDS8ULpwtubaxcIFjQWUJJwv1dOYUJ8pgeIv2TxAEE=;
+	s=mail; t=1753180059;
+	bh=9lvqZk5oEPRo1rY1fpzcNNUqnPMnD9A+snxT1q84jkE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=bOqivjtbSPvFJU/luuT3nC2wdJoPQbFutJLxUorFDE0xn/p/JubZ4ViWojQlqL/MZ
-	 7ITo4F4fHJC5XYll5zEjTUOWA1Vd+7AovoPNXpBp09d2z+LicgilB8z1rd4FJOK0dA
-	 hrj+akHr8FzXjPnP9AYU1OUeBiVujbJBPGOezZmarQ7b1AsSb1W9J+hMMaJhMx4pOk
-	 bQ/ddwSNgA+pE8mQ79+WrSeDT7/tzUGKUwiXECcrv93gVyyxzJSro8NlD+4EVU9WLB
-	 tTCyHqYxyxX/+C1ulM6IUgk73dhhEx0Vqea+CC8MaXy/3AzA/3czJrzKShCeJPYtwV
-	 QeAi0TKhgHWLw==
+	b=VbF9q9TM9iU5hikHWxzeBS6I11iDTIJOgU24E63elkGQegue9c0JhTAJ64AMaQX91
+	 LfvBCXWbCmcQ6rTHckq5/Ld2LjTmbe5O1xUuFFYuRKNPcJNHE3ZCTQr4R4oe13qFk2
+	 m/jl1fSN6S4AMSwjUZCIHefXhHByPwoss4CSd/zKWxdHZalC4vravkj+OgSE+8ivrU
+	 o0sCRzh90Wsg0wrJ/W5PPBuOYIB/awoXdlHIHXhZIrmFgM+ep1IlCf1+zCKe+b/9ZK
+	 dAH/Nvdfdth3BURdamdHwCG+Ze+mkU/0p2zEnS3gMd7bC9K3tV/4EgufCeWCLOaot8
+	 SbYbUbwvRHngQ==
 Received: from laura.lan (unknown [IPv6:2001:b07:646b:e2:bd9c:eae9:88b0:783c])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laura.nao)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id DC33D17E07FB;
-	Tue, 22 Jul 2025 11:58:35 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 804F217E0B72;
+	Tue, 22 Jul 2025 12:27:38 +0200 (CEST)
 From: Laura Nao <laura.nao@collabora.com>
 To: wenst@chromium.org
 Cc: andrew-ct.chen@mediatek.com,
@@ -69,18 +69,18 @@ Cc: andrew-ct.chen@mediatek.com,
 	rui.zhang@intel.com,
 	srini@kernel.org,
 	u.kleine-koenig@baylibre.com
-Subject: Re: [PATCH 3/9] thermal/drivers/mediatek/lvts: Guard against zero temp_factor in lvts_raw_to_temp
-Date: Tue, 22 Jul 2025 11:57:52 +0200
-Message-Id: <20250722095752.28245-1-laura.nao@collabora.com>
+Subject: Re: [PATCH 5/9] thermal/drivers/mediatek/lvts: Add lvts_temp_to_raw variant for positive temp_factor
+Date: Tue, 22 Jul 2025 12:26:53 +0200
+Message-Id: <20250722102653.30851-1-laura.nao@collabora.com>
 X-Mailer: git-send-email 2.39.5
-In-Reply-To: <CAGXv+5F51DiCHi_QPeDKOGCwvgM6HpmRjEjSgS8-mh=Fg1Fr5g@mail.gmail.com>
-References: <CAGXv+5F51DiCHi_QPeDKOGCwvgM6HpmRjEjSgS8-mh=Fg1Fr5g@mail.gmail.com>
+In-Reply-To: <CAGXv+5F9NwJ7uGFPWZM-Dywbbk4f6aiYS5M4m6_VFETVGEwr9A@mail.gmail.com>
+References: <CAGXv+5F9NwJ7uGFPWZM-Dywbbk4f6aiYS5M4m6_VFETVGEwr9A@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250722_025839_097625_0C783F26 
-X-CRM114-Status: GOOD (  16.30  )
+X-CRM114-CacheID: sfid-20250722_032741_720850_63D1A77C 
+X-CRM114-Status: GOOD (  27.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,60 +95,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/21/25 12:08, Chen-Yu Tsai wrote:
-> On Mon, Jul 21, 2025 at 4:26 PM Laura Nao <laura.nao@collabora.com> wrote:
+On 7/21/25 13:12, Chen-Yu Tsai wrote:
+> On Mon, Jul 21, 2025 at 4:31 PM Laura Nao <laura.nao@collabora.com> wrote:
 >>
->> Add a guard against zero temp_factor in lvts_raw_to_temp() to prevent
->> division by zero and ensure safe conversion.
+>> The current lvts_temp_to_raw() implementation assumes a negative
+>> temperature-to-raw slope (temp_factor), which holds for the SoCs
+>> currently supported by the driver. However, this assumption breaks on
+>> MT8196/MT6991, where the slope is positive.
+>
+> I don't think that's really a problem. The formula is:
+>
+>     temp = (raw * factor) >> 14 + golden
+>
+> If we move the terms around we get
+>
+>     ((temp - golden) << 14) / factor = raw
+>
+> Or
+>
+>     raw = ((golden - temp) << 14) / -factor
+>
+>
+> The calculations should work regardless of whether the factor is positive
+> or negative, as long as the intermediate and final values are within
+> the range of s64.
+>
+>> Add a variant of the function that inverts the calculation logic
+>> accordingly. This ensures accurate raw value generation for temperature
+>> thresholds,avoiding spurious thermal interrupts or unintended hardware
+>> resets on MT8196/MT6991.
 >>
->> Fixes: 6725a29321e4 ("thermal/drivers/mediatek/lvts_thermal: Make coeff configurable")
 >> Signed-off-by: Laura Nao <laura.nao@collabora.com>
+>> ---
+>>  drivers/thermal/mediatek/lvts_thermal.c | 12 ++++++++++++
+>>  1 file changed, 12 insertions(+)
+>>
+>> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+>> index db83137c7537..3c34956e37c1 100644
+>> --- a/drivers/thermal/mediatek/lvts_thermal.c
+>> +++ b/drivers/thermal/mediatek/lvts_thermal.c
+>> @@ -296,6 +296,18 @@ static u32 lvts_temp_to_raw(int temperature, int temp_factor)
+>>         return div_s64(raw_temp, -temp_factor);
+>>  }
+>>
+>> +static u32 lvts_temp_to_raw_v2(int temperature, int temp_factor)
+>> +{
+>> +       u32 raw_temp;
+>> +
+>> +       if (temp_factor == 0)
+>> +               return temperature;
+>> +
+>> +       raw_temp = temperature - golden_temp_offset;
+>> +
+>> +       return div_s64((s64)temp_factor << 14, raw_temp);
+>> +}
 >
-> Code wise,
+> Here you have
 >
-> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+>     raw = (factor << 14) / (temp - golden)
 >
-> However I assume this would only happen with bad platform data? The
-> factor should _never_ be zero. Maybe also issue a warning in the probe
-> function?
+> which, barring integer arithmetic limitations, is actually the
+> multiplicative inverse of the original version.
+>
+> So I think the commit message is misleading. It's not negative or
+> positive that matters, but that the hardware expects the
+> multiplicative inverse in this version.
+>
+> (or the downstream code is just botched.)
 >
 
-Yes, this should only occur with incorrect platform data. Adding a
-warning in the probe function sounds like a good idea to catch 
-any misconfiguration early. I’ll include that in the next revision.
+Right - the positive temp_factor on MT8196 is one distinction from older 
+SoCs, and I initially assumed that was the reason a different conversion 
+formula was needed. That assumption was partly based on the original 
+lvts_temp_to_raw() implementation, which assigns 
+((s64)(golden_temp_offset - temperature) << 14) to a u32, losing the 
+sign when golden_temp_offset is negative. However, even correcting that 
+to preserve the sign doesn't make the function work on MT8196 as it 
+still requires using the multiplicative inverse form of the formula. 
 
-Thanks,
+I'll reword the commit message to clarify this.
+
+Thanks!
 
 Laura
 
 > ChenYu
 >
->> ---
->>  drivers/thermal/mediatek/lvts_thermal.c | 9 ++++++---
->>  1 file changed, 6 insertions(+), 3 deletions(-)
->>
->> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
->> index 8d5259b9d03b..b80c2929ae74 100644
->> --- a/drivers/thermal/mediatek/lvts_thermal.c
->> +++ b/drivers/thermal/mediatek/lvts_thermal.c
->> @@ -280,11 +280,14 @@ static int lvts_raw_to_temp(u32 raw_temp, int temp_factor)
->>
->>  static u32 lvts_temp_to_raw(int temperature, int temp_factor)
->>  {
->> -       u32 raw_temp = ((s64)(golden_temp_offset - temperature)) << 14;
->> +       u32 raw_temp;
->>
->> -       raw_temp = div_s64(raw_temp, -temp_factor);
->> +       if (temp_factor == 0)
->> +               return temperature;
->>
->> -       return raw_temp;
->> +       raw_temp = ((s64)(golden_temp_offset - temperature)) << 14;
 >> +
->> +       return div_s64(raw_temp, -temp_factor);
->>  }
->>
 >>  static int lvts_get_temp(struct thermal_zone_device *tz, int *temp)
+>>  {
+>>         struct lvts_sensor *lvts_sensor = thermal_zone_device_priv(tz);
 >> --
 >> 2.39.5
 >>
