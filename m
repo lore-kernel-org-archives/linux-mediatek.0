@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0949BC83F25
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jul 2025 09:39:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9145C83F27
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jul 2025 09:40:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=taKJ6RK1sli84vm87fKu0sml3spVNqP5P8ljTY0b4ZE=; b=264S/1iJQiFsCckoFyMGFN/ShE
-	KD4cScPB/E6C5p76jCV+v19FGAhjiFuXLXJbC9iCk8FVDk+RDoS5zl3Z2x+yMSbVowQtCd9bmuxXZ
-	0eXZZuEWaRYZTlbibISzoxggOxjjOy8OSjo/ITtX5rXKYZioUhPWCuCseG030HGWJ6G5BvAFOe3GR
-	AYSOK4uM1jnCth+kbgyJYeM8465ckR53dInpbSsQhD9bMsFhj6uDltH7sTn2SkbzmGGXimcalTHJ0
-	K5Ie9WCXdRkpU20MUJnDuKBv9v3nM5KDlkvP+v0ZFM/moL7QNE6mXPn4VGhZ8Kk7MU09ey30mKXr7
-	st1lM17Q==;
+	bh=H3aL3J5QKU6HBuDByY/UW+lE2nn5BioSsTT5BMQW2Gw=; b=YKVANLbMI9/FooTjEQl6zlUgr5
+	jbWbFDXE6TIs96vF/jBCjcOEbXWLLBlOgO7IqRhuSXFj4McVV60WRfXqBVsHe/M3qtuG58Uy3u1K1
+	cKh3pV1y9LfQiBsawxkIpMTbhPxb2nXe0sNfWyeV/ESDYfqVnjDxK62QS6nnwNjWUKcMQvjS2bJIB
+	Psd3jEUetdX6jg5cjMPJ66/dS0H4EoxNg6G/EJTbXzA/0xb9puMadEQn7yQYkG1qH99LKJoquC8hM
+	cs9WROovECM51sPtOw4jMYLlQF74R5ZlTiOR1pmoRUMeetDUyzPCfu7dkUXJVO+pLDFUKkrqwz3I2
+	F94rRvgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ue9TV-000000022FZ-1dWe;
-	Tue, 22 Jul 2025 09:39:53 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1ue9Tf-000000022KA-2yhC;
+	Tue, 22 Jul 2025 09:40:03 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ue9GT-000000020ow-3JqA;
-	Tue, 22 Jul 2025 09:26:26 +0000
+	id 1ue9Hq-000000020yZ-0fZF;
+	Tue, 22 Jul 2025 09:27:51 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id CFFD45C64F4;
-	Tue, 22 Jul 2025 09:26:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7A777C4CEEB;
-	Tue, 22 Jul 2025 09:26:24 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 867AD44712;
+	Tue, 22 Jul 2025 09:27:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 65517C4CEEB;
+	Tue, 22 Jul 2025 09:27:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1753176384;
-	bh=5vnNECADTxAOgPhQ4LLy+ss4yNtSv0kIIcuhLrkYt0A=;
+	s=k20201202; t=1753176469;
+	bh=VTOBb6nBpFUj+KE94TVU4rw/yZM3+SNTYOwcbQSppQk=;
 	h=From:To:Cc:Subject:Date:From;
-	b=NDYDRt077GzA3pfTzc+6kAbMU8jVwXRQrZJp9Ubcq1qnpVvfXUTsJPaRAJBuku+rv
-	 YtchbNEhk7ci/wtEK+umbmfvpcOA3hGeq9FAfMmPyJh5/53RLfNyMt0LwBVmuve7te
-	 DbvVdXDVtQ16cLoAVDyhxxZ59GgjaEpKxL3Sht/Ie5YiY9rCChsBTUqvHdaoVAKBRG
-	 8MMUlBq4qqFWnjThstx3pLV24uwLq0L4UQqIkZp7ZQBQIGOjamqJyTCKm8mDpCA1s5
-	 Ah6S7ZVYQEJygY1ozv9d6iYQekThT4gcEpp1+D1Zh4Bl65nOeKVCNmn4BDDbk8s0KS
-	 YYnPo+0vhe4KQ==
+	b=fZfm9RJRju+Gpg+NyeURunZ6YiGhcnGfuCO8h42Yt4aULE8qFDRd8xlxe2mIo+EWs
+	 4to72BKo0RmUSeM53nqddAMDXTqIZTJQ9c9yEF5Wm/hHhrBqz+L743AbsT00c+Nut9
+	 bwIsZCVwM2krBfhDKFP2QrbPqTp5DMMeaQLxXTsdltvtrcP9i83X45RRDl+09qc9f0
+	 LceOfe6B+gfLLR7qyY4ZB7870VzlI/9TIMcp/6m7a64XEFscAOKCAVKQAoVkFIYAjA
+	 /H9RxmjBREAZxIysVW5rv89rZXoSfsyg2ggakyCJTQgYbcGJvsWrekNoSl6+7yBkr9
+	 XSBHkJtyBfnMQ==
 Received: from johan by xi.lan with local (Exim 4.98.2)
 	(envelope-from <johan@kernel.org>)
-	id 1ue9GH-0000000005N-2nDo;
-	Tue, 22 Jul 2025 11:26:13 +0200
+	id 1ue9He-0000000007G-3858;
+	Tue, 22 Jul 2025 11:27:38 +0200
 From: Johan Hovold <johan@kernel.org>
-To: Mark Brown <broonie@kernel.org>
-Cc: Liam Girdwood <lgirdwood@gmail.com>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>
+Cc: David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-sound@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	dri-devel@lists.freedesktop.org,
 	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Johan Hovold <johan@kernel.org>,
 	stable@vger.kernel.org,
-	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
-Subject: [PATCH] ASoC: mediatek: common: fix device and OF node leak
-Date: Tue, 22 Jul 2025 11:25:42 +0200
-Message-ID: <20250722092542.32754-1-johan@kernel.org>
+	"Nancy.Lin" <nancy.lin@mediatek.com>
+Subject: [PATCH] drm/mediatek: fix device leaks at bind
+Date: Tue, 22 Jul 2025 11:27:22 +0200
+Message-ID: <20250722092722.425-1-johan@kernel.org>
 X-Mailer: git-send-email 2.49.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250722_022625_869363_FA8C5363 
-X-CRM114-Status: UNSURE (   9.59  )
+X-CRM114-CacheID: sfid-20250722_022750_215293_A0F50551 
+X-CRM114-Status: UNSURE (   9.04  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,36 +83,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Make sure to drop the references to the accdet OF node and platform
-device taken by of_parse_phandle() and of_find_device_by_node() after
-looking up the sound component during probe.
+Make sure to drop the references to the sibling platform devices and
+their child drm devices taken by of_find_device_by_node() and
+device_find_child() when initialising the driver data during bind().
 
-Fixes: cf536e2622e2 ("ASoC: mediatek: common: Handle mediatek,accdet property")
-Cc: stable@vger.kernel.org	# 6.15
-Cc: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Fixes: 1ef7ed48356c ("drm/mediatek: Modify mediatek-drm for mt8195 multi mmsys support")
+Cc: stable@vger.kernel.org	# 6.4
+Cc: Nancy.Lin <nancy.lin@mediatek.com>
 Signed-off-by: Johan Hovold <johan@kernel.org>
 ---
- sound/soc/mediatek/common/mtk-soundcard-driver.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/sound/soc/mediatek/common/mtk-soundcard-driver.c b/sound/soc/mediatek/common/mtk-soundcard-driver.c
-index 713a368f79cf..95a083939f3e 100644
---- a/sound/soc/mediatek/common/mtk-soundcard-driver.c
-+++ b/sound/soc/mediatek/common/mtk-soundcard-driver.c
-@@ -262,9 +262,13 @@ int mtk_soundcard_common_probe(struct platform_device *pdev)
- 				soc_card_data->accdet = accdet_comp;
- 			else
- 				dev_err(&pdev->dev, "No sound component found from mediatek,accdet property\n");
-+
-+			put_device(&accdet_pdev->dev);
- 		} else {
- 			dev_err(&pdev->dev, "No device found from mediatek,accdet property\n");
- 		}
-+
-+		of_node_put(accdet_node);
- 	}
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 7c0c12dde488..33b83576af7e 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -395,10 +395,12 @@ static bool mtk_drm_get_all_drm_priv(struct device *dev)
+ 			continue;
  
- 	platform_node = of_parse_phandle(pdev->dev.of_node, "mediatek,platform", 0);
+ 		drm_dev = device_find_child(&pdev->dev, NULL, mtk_drm_match);
++		put_device(&pdev->dev);
+ 		if (!drm_dev)
+ 			continue;
+ 
+ 		temp_drm_priv = dev_get_drvdata(drm_dev);
++		put_device(drm_dev);
+ 		if (!temp_drm_priv)
+ 			continue;
+ 
 -- 
 2.49.1
 
