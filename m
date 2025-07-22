@@ -4,77 +4,130 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F02D4C83F25
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jul 2025 11:03:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA99EC83F25
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jul 2025 11:14:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WuVoFejhxM95nM1HRdpviYFNS/8m6g5/ZQZd1+0nLDc=; b=U/tK/ZzoGcuQCs97KKODfK41BB
-	hdCpoiEYFTtZckPyCi473RE7XpAeId0gbQMnGKJ3+P+fZb+17fbUsgm6+LHxyypTQ9PtyBo1y8jth
-	amaQiQUZM3d+YJ8YfxpZec1gmMGnzxLmuv6KohvD29nOGZFQCioC84t8yKxwthvIlvsUJDdzshr+u
-	Pf6D/E8xF1W93NrkxE1aHMI4Jkd90M3SbeBkrQF/EdeIDw41bYD3XvXbxN2e7Yn+eqPpTXNuil78B
-	F43dbLJ7MAHj31Y5IddoGHwAeCNDIrPoNffvMVB+FEnwldtVO4h0FcR/FYxt6A3xhWyzQGqYvOAyJ
-	UN6D8m8A==;
+	bh=NBIkzRMUwk5Z3pMkyBCH1AE3E32h+tl5IABY6Hyzwi0=; b=z47RqgtIAEQXT1r9DH4okmCV1E
+	5sesgZu08nEp9iOE9OwxBwQzupouU34trNRz22oZpkSm0qu5cRYKAcVSFNIo62WTuGTI/+7iOFlY6
+	CFRORQ1HzA6E/NlxU5UtBPVx6VgE4X1fUzPDzX+XRtZLFlf7aReLc27y4W4NusIVA1SACspa9wDdh
+	AG4opQoGHGewrYMiNdhL3FZMWVF/HvtioypN67PQ0NseShpRUPtgYcnSuqSs5RgDkdSd87KcnjBV9
+	84ONwLPml+WH7RD0RXlCSCG4vY5m+4M9h9l0B3Z2UDkuW0ACnYopYg7XzP3FvkYyVKta8ArYAF4fv
+	fBHtQDcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueAmE-00000002DyZ-3okD;
-	Tue, 22 Jul 2025 11:03:18 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1ueAxC-00000002FrG-0tB8;
+	Tue, 22 Jul 2025 11:14:38 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueAc6-00000002CRS-2ixd;
-	Tue, 22 Jul 2025 10:52:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1753181568;
-	bh=dGCgiF63wh9ujAd3rXkaVlG91f8mb9WyF1hcxbsejLY=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=OfW2ttUl+lir7OfWoJSI1AKVyrcbkofseiyAupBPX6BLa9Kgb2EjIERn7FcRu8ylc
-	 w7Mie5adgmV5Xb9WMRElfoP2cN9zvqc9K1OUiHI/GbhN6zf/4LqlNklCkXyAov+gqq
-	 5rcgqo1detU+150S+X4gq5mCTuLPEfvnhDyEGZE5L8+YvLOfHC23v+ZcAckpGy9HvJ
-	 S9eePqrTHegUaLOa6XhI6hHmciCTAA6UmGDHo0j8PMmLyv9SYSLeFczJEnUyriPMyM
-	 uyu//SzbUwIjulxRVFOCevgq0x3qrVUlOGaCD4bXOsS+tmDx+uwFIsUb2pgzR2P2wN
-	 S8opaZ2AXsI2Q==
-Received: from laura.lan (unknown [IPv6:2001:b07:646b:e2:bd9c:eae9:88b0:783c])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: laura.nao)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C1DFB17E0D15;
-	Tue, 22 Jul 2025 12:52:47 +0200 (CEST)
-From: Laura Nao <laura.nao@collabora.com>
-To: wenst@chromium.org
-Cc: angelogioacchino.delregno@collabora.com,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	guangjie.song@mediatek.com,
-	kernel@collabora.com,
-	krzk+dt@kernel.org,
-	laura.nao@collabora.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-clk@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	matthias.bgg@gmail.com,
-	mturquette@baylibre.com,
-	netdev@vger.kernel.org,
-	p.zabel@pengutronix.de,
-	richardcochran@gmail.com,
-	robh@kernel.org,
-	sboyd@kernel.org
-Subject: Re: [PATCH v2 14/29] clk: mediatek: Add MT8196 vlpckgen clock support 
-Date: Tue, 22 Jul 2025 12:52:03 +0200
-Message-Id: <20250722105203.33151-1-laura.nao@collabora.com>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <CAGXv+5ErtDLNf3u5OdHrEBdrA-2bPA5wy32S+Bqd1c_1Z9u1pA@mail.gmail.com>
-References: <CAGXv+5ErtDLNf3u5OdHrEBdrA-2bPA5wy32S+Bqd1c_1Z9u1pA@mail.gmail.com>
+	id 1ueAs2-00000002Eyd-33JD;
+	Tue, 22 Jul 2025 11:09:19 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 2B1CC43A0C;
+	Tue, 22 Jul 2025 11:09:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 29DEFC4CEEB;
+	Tue, 22 Jul 2025 11:09:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1753182558;
+	bh=beXaQ6bn7VZ4kwXIr7bZnROMX0CLkZfQr4F/O0JFJTk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ssYsamx7ZfqFjggJyRK7l+C1u3LcnNCAuoLrcPp6hQWVaqh5lkmnVccDMhaLi0eC8
+	 /k9xi7NS3UC0ElAnmomm+hSWroEXYNVeHOd6kPCvIG7Ut1QQD+HGmln3ilcLgWlZm7
+	 oig8yV30RHJeHg/JUbjOHcRR/27+0M7tV77dJqCgWypNxCuMRR2OTSpGhIxmVX9L59
+	 BZjpoMg85PmwXTsIdURUVZO+Ff5hgaSG8UqtnL4QlG9nANfcxej579H39t/kuYzMrA
+	 N72OULbtS/j0hl6gwOv7vLXFTVbTuxpb8S3gqE5CLjvg03dBlXo83U+TolmCKTNnhn
+	 23MHIc7ks6FdA==
+Message-ID: <31e72f14-bb61-411a-86c8-19c7212d2d31@kernel.org>
+Date: Tue, 22 Jul 2025 13:09:09 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 7/8] dt-bindings: media: Add MT8189
+ mediatek,vcodec-encoder
+To: =?UTF-8?B?S3lyaWUgV3UgKOWQtOaZlyk=?= <Kyrie.Wu@mediatek.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ =?UTF-8?B?R2VvcmdlIFN1biAo5a2Z5p6XKQ==?= <George.Sun@mediatek.com>,
+ =?UTF-8?B?VGlmZmFueSBMaW4gKOael+aFp+ePiik=?= <tiffany.lin@mediatek.com>,
+ "andrzejtp2010@gmail.com" <andrzejtp2010@gmail.com>,
+ "nhebert@chromium.org" <nhebert@chromium.org>,
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "mchehab@kernel.org" <mchehab@kernel.org>,
+ "hverkuil@xs4all.nl" <hverkuil@xs4all.nl>,
+ "nicolas.dufresne@collabora.com" <nicolas.dufresne@collabora.com>,
+ =?UTF-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ =?UTF-8?B?SXJ1aSBXYW5nICjnjovnkZ4p?= <Irui.Wang@mediatek.com>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "sebastian.fricke@collabora.com" <sebastian.fricke@collabora.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "christophe.jaillet@wanadoo.fr" <christophe.jaillet@wanadoo.fr>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>, "arnd@arndb.de" <arnd@arndb.de>,
+ =?UTF-8?B?QW5kcmV3LUNUIENoZW4gKOmZs+aZuui/qik=?=
+ <Andrew-CT.Chen@mediatek.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "neil.armstrong@linaro.org" <neil.armstrong@linaro.org>
+References: <20250721105520.5625-1-kyrie.wu@mediatek.com>
+ <20250721105520.5625-8-kyrie.wu@mediatek.com>
+ <20250722-lovely-mustard-scorpion-e07e92@kuoka>
+ <1d51ab1398ea0eec7bcaeaa31f52e4c39d11bd7b.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <1d51ab1398ea0eec7bcaeaa31f52e4c39d11bd7b.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250722_035250_841006_FDD6C4CC 
-X-CRM114-Status: GOOD (  26.42  )
+X-CRM114-CacheID: sfid-20250722_040918_811783_252D6D10 
+X-CRM114-Status: GOOD (  11.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,274 +142,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/18/25 10:31, Chen-Yu Tsai wrote:
-> On Tue, Jul 15, 2025 at 3:28 PM Chen-Yu Tsai <wenst@chromium.org> wrote:
+On 22/07/2025 10:16, Kyrie Wu (吴晗) wrote:
+> On Tue, 2025-07-22 at 09:26 +0200, Krzysztof Kozlowski wrote:
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
 >>
->> Hi,
 >>
+>> On Mon, Jul 21, 2025 at 06:55:19PM +0800, Kyrie Wu wrote:
+>>> Add MT8189 encoder compatible string, which will reference SCP
+>>> device.
 >>
->> On Tue, Jun 24, 2025 at 10:33 PM Laura Nao <laura.nao@collabora.com> wrote:
->>>
->>> Add support for the MT8196 vlpckgen clock controller, which provides
->>> muxes and dividers for clock selection in other IP blocks.
->>>
->>> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>> Signed-off-by: Laura Nao <laura.nao@collabora.com>
->>> ---
->>>  drivers/clk/mediatek/Makefile              |   2 +-
->>>  drivers/clk/mediatek/clk-mt8196-vlpckgen.c | 769 +++++++++++++++++++++
->>>  2 files changed, 770 insertions(+), 1 deletion(-)
->>>  create mode 100644 drivers/clk/mediatek/clk-mt8196-vlpckgen.c
->>>
->>> diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
->>> index 0688d7bf4979..24683dd51783 100644
->>> --- a/drivers/clk/mediatek/Makefile
->>> +++ b/drivers/clk/mediatek/Makefile
->>> @@ -161,7 +161,7 @@ obj-$(CONFIG_COMMON_CLK_MT8195_VENCSYS) += clk-mt8195-venc.o
->>>  obj-$(CONFIG_COMMON_CLK_MT8195_VPPSYS) += clk-mt8195-vpp0.o clk-mt8195-vpp1.o
->>>  obj-$(CONFIG_COMMON_CLK_MT8195_WPESYS) += clk-mt8195-wpe.o
->>>  obj-$(CONFIG_COMMON_CLK_MT8196) += clk-mt8196-apmixedsys.o clk-mt8196-topckgen.o \
->>> -                                  clk-mt8196-topckgen2.o
->>> +                                  clk-mt8196-topckgen2.o clk-mt8196-vlpckgen.o
->>>  obj-$(CONFIG_COMMON_CLK_MT8365) += clk-mt8365-apmixedsys.o clk-mt8365.o
->>>  obj-$(CONFIG_COMMON_CLK_MT8365_APU) += clk-mt8365-apu.o
->>>  obj-$(CONFIG_COMMON_CLK_MT8365_CAM) += clk-mt8365-cam.o
->>> diff --git a/drivers/clk/mediatek/clk-mt8196-vlpckgen.c b/drivers/clk/mediatek/clk-mt8196-vlpckgen.c
->>> new file mode 100644
->>> index 000000000000..23a673dd4c5c
->>> --- /dev/null
->>> +++ b/drivers/clk/mediatek/clk-mt8196-vlpckgen.c
->>> @@ -0,0 +1,769 @@
+>> And the device is not compatible or is different because of what?
 >>
->> [...]
+>> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 >>
->>> +static const char * const vlp_camtg0_parents[] = {
->>> +       "clk26m",
->>> +       "univpll_192m_d32",
->>> +       "univpll_192m_d16",
->>> +       "clk13m",
->>> +       "osc_d40",
->>> +       "osc_d32",
->>> +       "univpll_192m_d10",
->>> +       "univpll_192m_d8",
->>> +       "univpll_d6_d16",
->>> +       "ulposc3",
->>> +       "osc_d20",
->>> +       "ck2_tvdpll1_d16",
->>> +       "univpll_d6_d8"
->>> +};
+>> Best regards,
+>> Krzysztof
 >>
->> It seems all the vlp_camtg* parents are the same. Please merge them
->> and just have one list.
->>
->>> +static const char * const vlp_sspm_26m_parents[] = {
->>> +       "clk26m",
->>> +       "osc_d20"
->>> +};
->>> +
->>> +static const char * const vlp_ulposc_sspm_parents[] = {
->>> +       "clk26m",
->>> +       "osc_d2",
->>> +       "mainpll_d4_d2"
->>> +};
->>> +
->>> +static const char * const vlp_vlp_pbus_26m_parents[] = {
->>> +       "clk26m",
->>> +       "osc_d20"
->>> +};
->>> +
->>> +static const char * const vlp_debug_err_flag_parents[] = {
->>> +       "clk26m",
->>> +       "osc_d20"
->>> +};
->>> +
->>> +static const char * const vlp_dpmsrdma_parents[] = {
->>> +       "clk26m",
->>> +       "mainpll_d7_d2"
->>> +};
->>> +
->>> +static const char * const vlp_vlp_pbus_156m_parents[] = {
->>> +       "clk26m",
->>> +       "osc_d2",
->>> +       "mainpll_d7_d2",
->>> +       "mainpll_d7"
->>> +};
->>> +
->>> +static const char * const vlp_spm_parents[] = {
->>> +       "clk26m",
->>> +       "mainpll_d7_d4"
->>> +};
->>> +
->>> +static const char * const vlp_mminfra_parents[] = {
->>> +       "clk26m",
->>> +       "osc_d4",
->>> +       "mainpll_d3"
->>> +};
->>> +
->>> +static const char * const vlp_usb_parents[] = {
->>> +       "clk26m",
->>> +       "mainpll_d9"
->>> +};
->>
->> The previous and the next one are the same.
->>
->>> +static const char * const vlp_usb_xhci_parents[] = {
->>> +       "clk26m",
->>> +       "mainpll_d9"
->>> +};
->>> +
->>> +static const char * const vlp_noc_vlp_parents[] = {
->>> +       "clk26m",
->>> +       "osc_d20",
->>> +       "mainpll_d9"
->>> +};
->>> +
->>> +static const char * const vlp_audio_h_parents[] = {
->>> +       "clk26m",
->>> +       "vlp_apll1",
->>> +       "vlp_apll2"
->>> +};
->>> +
->>> +static const char * const vlp_aud_engen1_parents[] = {
->>> +       "clk26m",
->>> +       "apll1_d8",
->>> +       "apll1_d4"
->>> +};
->>
->> The previous and the next one are the same.
->>
->>> +static const char * const vlp_aud_engen2_parents[] = {
->>> +       "clk26m",
->>> +       "apll2_d8",
->>> +       "apll2_d4"
->>> +};
->>> +
->>> +static const char * const vlp_aud_intbus_parents[] = {
->>> +       "clk26m",
->>> +       "mainpll_d7_d4",
->>> +       "mainpll_d4_d4"
->>> +};
->
-> Also, all these audio related clocks (audio_h, aud_engen1, aud_engen2
-> aud_intbus) have a "vlp_clk26m" clock as their parent. It should be:
->
->   - clk26m (clk26m from the top ckgen domain)
->   - vlp_clk26m (clk26m from the VLP domain)
->   - (from PLLs)
->   - (from PLLs)
->
-> Moreover, an offline discussion with the audio owner suggests that
-> of the two 26 MHz clock parents, we really just want the one from
-> the VLP domain, as that one is usable even under suspend. This
-> could be done by providing an index table.
->
+> Dear Krzysztof,
+> 
+> The reason, adding a new compatible strings for the MT8189 encoder, is
+> same as for decoder, to use different of_device_id data and to
+> distinguish the chip name.
 
-Hi ChenYu,
+You speak about drivers, this is not relevant. Explain the hardware -
+WHY it is not compatible, what is the difference
 
-Thanks for the feedback - I’ll make these changes along with the 
-previous suggestions and submit a v3.
-
-Best,
-
-Laura
-
-> ChenYu
->
->>> +
->>> +static const char * const vlp_spvlp_26m
->>
->> [...]
->>
->>> +static int clk_mt8196_vlp_probe(struct platform_device *pdev)
->>> +{
->>> +       struct clk_hw_onecell_data *clk_data;
->>> +       int r;
->>> +       struct device_node *node = pdev->dev.of_node;
->>> +
->>> +       clk_data = mtk_alloc_clk_data(ARRAY_SIZE(vlp_muxes) +
->>> +                                     ARRAY_SIZE(vlp_plls));
->>> +       if (!clk_data)
->>> +               return -ENOMEM;
->>> +
->>> +       r = mtk_clk_register_muxes(&pdev->dev, vlp_muxes, ARRAY_SIZE(vlp_muxes),
->>> +                                  node, &mt8196_clk_vlp_lock, clk_data);
->>> +       if (r)
->>> +               goto free_clk_data;
->>> +
->>> +       r = mtk_clk_register_plls(node, vlp_plls, ARRAY_SIZE(vlp_plls),
->>> +                                 clk_data);
->>> +       if (r)
->>> +               goto unregister_muxes;
->>> +
->>> +       r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
->>> +       if (r)
->>> +               goto unregister_plls;
->>> +
->>> +       platform_set_drvdata(pdev, clk_data);
->>> +
->>> +       return r;
->>> +
->>> +unregister_plls:
->>> +       mtk_clk_unregister_plls(vlp_plls, ARRAY_SIZE(vlp_plls), clk_data);
->>> +unregister_muxes:
->>> +       mtk_clk_unregister_muxes(vlp_muxes, ARRAY_SIZE(vlp_muxes), clk_data);
->>> +free_clk_data:
->>> +       mtk_free_clk_data(clk_data);
->>
->> The AFE driver sets some tuner parameters in the VLPCKGEN block at probe
->> time. Maybe we could do that here instead?
->>
->> /* vlp_cksys_clk: 0x1c016000 */
->> #define VLP_APLL1_TUNER_CON0 0x02a4
->> #define VLP_APLL2_TUNER_CON0 0x02a8
->>
->> /* vlp apll1 tuner default value*/
->> #define VLP_APLL1_TUNER_CON0_VALUE 0x6f28bd4d
->> /* vlp apll2 tuner default value + 1*/
->> #define VLP_APLL2_TUNER_CON0_VALUE 0x78fd5265
->>
->>        regmap_write(afe_priv->vlp_ck, VLP_APLL1_TUNER_CON0,
->> VLP_APLL1_TUNER_CON0_VALUE);
->>        regmap_write(afe_priv->vlp_ck, VLP_APLL2_TUNER_CON0,
->> VLP_APLL2_TUNER_CON0_VALUE);
->>
->> ChenYu
->>
->>> +
->>> +       return r;
->>> +}
->>> +
->>> +static void clk_mt8196_vlp_remove(struct platform_device *pdev)
->>> +{
->>> +       struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
->>> +       struct device_node *node = pdev->dev.of_node;
->>> +
->>> +       of_clk_del_provider(node);
->>> +       mtk_clk_unregister_plls(vlp_plls, ARRAY_SIZE(vlp_plls), clk_data);
->>> +       mtk_clk_unregister_muxes(vlp_muxes, ARRAY_SIZE(vlp_muxes), clk_data);
->>> +       mtk_free_clk_data(clk_data);
->>> +}
->>> +
->>> +static const struct of_device_id of_match_clk_mt8196_vlp_ck[] = {
->>> +       { .compatible = "mediatek,mt8196-vlpckgen" },
->>> +       { /* sentinel */ }
->>> +};
->>> +MODULE_DEVICE_TABLE(of, of_match_clk_mt8196_vlp_ck);
->>> +
->>> +static struct platform_driver clk_mt8196_vlp_drv = {
->>> +       .probe = clk_mt8196_vlp_probe,
->>> +       .remove = clk_mt8196_vlp_remove,
->>> +       .driver = {
->>> +               .name = "clk-mt8196-vlpck",
->>> +               .of_match_table = of_match_clk_mt8196_vlp_ck,
->>> +       },
->>> +};
->>> +
->>> +MODULE_DESCRIPTION("MediaTek MT8196 VLP clock generator driver");
->>> +module_platform_driver(clk_mt8196_vlp_drv);
->>> +MODULE_LICENSE("GPL");
->>> --
->>> 2.39.5
->>>
-
+Best regards,
+Krzysztof
 
