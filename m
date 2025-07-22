@@ -4,74 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55916C83F27
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jul 2025 05:18:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61424C83F1A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jul 2025 05:27:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fbjWKy8Lcwc8GEbZTAM6i4MM4xiUxqjSvPPv7uBUtNY=; b=oPf1EG0Xdo8a24oqOjrdVBxwsp
-	08t72ySwjl2hXSpFdzP0ufwz6MeQcC1C1zue+GVWr2ZhwANO7FJ/y7fETGEW8HEAMn59FWXSCO5z+
-	nhax14IlrC4XF33UnS9TUS4drkezwSyGmJeTZnhwi6ol+/4906HXsvyngtdwOO6Bk0U7HS/JsGjGY
-	9m4lhZGLZHONn/0ozmGaXV0EMcTk7q0TNOBTUmZCFBDYX6YcavnDvHREs2bZesy56pIrudWjBibS6
-	bAKQYmrviwCmYmv0aJV514dYOkvppgesCpk4gzQDlIyEiSSmwXY41+w4zA8ncoO0ZAzNHlRLfqbKq
-	o/w7fzRw==;
+	bh=dqDwtUCqJNRnpiOi+aWGhs1F5rEMAyBkONqi7ZgeqbQ=; b=2gSZbPxSLyE2yRb4KR5KJU1uKd
+	+i1cX5YONGNLEXg+3him4Sr4aV5EZ6Rs7LHLrmW+ameS0MW16KwBjJshgDnaIM/a5MsAdoyz3uz9O
+	citboKx96QXThpQB2AGi9z67ZS5MC2l9NxFI2zPAfxgiQncKud7U9EVhnRgzmb+747wCrRtbt1Rsm
+	FlgY3vO4Efb+LXuxaI0/YFOFISYUx3cTajGN9vCbVp4emuJGOZgZt3ih1OoWntQym89YyGqcGsQdv
+	rbkrY00guO21DemQ2eOA2yPoN0MGYm1TzST7B6mkleSqgXT2g0mnaoTzdq71tbIIA8GMMCAmk9X/4
+	+JUi/S6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ue5Oy-00000001Jx0-2Oxv;
-	Tue, 22 Jul 2025 05:18:56 +0000
-Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
+	id 1ue5Wz-00000001KhP-12ph;
+	Tue, 22 Jul 2025 05:27:13 +0000
+Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ue5Ov-00000001JwL-1hx1
+	id 1ue5UO-00000001KPW-0GZN
 	for linux-mediatek@lists.infradead.org;
-	Tue, 22 Jul 2025 05:18:54 +0000
-Received: by mail-lj1-x233.google.com with SMTP id 38308e7fff4ca-32b8134ef6aso50934331fa.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 21 Jul 2025 22:18:53 -0700 (PDT)
+	Tue, 22 Jul 2025 05:24:34 +0000
+Received: by mail-lj1-x232.google.com with SMTP id 38308e7fff4ca-32b31afa781so40038421fa.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 21 Jul 2025 22:24:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1753161531; x=1753766331; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1753161870; x=1753766670; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=fbjWKy8Lcwc8GEbZTAM6i4MM4xiUxqjSvPPv7uBUtNY=;
-        b=GOKsWYC7pe7sE0Ia5/+O2YxDDbCCM6AQkdCXr/6+AmZdRReRdh/Zh+jAV4DcF92zA/
-         eR1RqlWTSDE/AaAj2NsuOYCQSt9EMaqBkmBr4FxuUHDl6YgYB/mlwmDHBrKjNv5sPTbW
-         FiJFCdeTWxvDLzH6mdjt+wy/u+KraFZ93vXHk=
+        bh=dqDwtUCqJNRnpiOi+aWGhs1F5rEMAyBkONqi7ZgeqbQ=;
+        b=UCNFyafO3jO3bpzpL/qHxkD9mam7SWAwbV8TIkzB+YCAhjyxjAz1DrWs9FryseSV3y
+         NGSM7G3dVMFl1zL5ia2mgU+/suMDlyWIaQy0DBY5LbAj6HM8q5+oZIecZpfVwMdbz23J
+         PePl9LjV5ARh7hmNDvIEVsP1TXKSeoFshPajU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1753161531; x=1753766331;
+        d=1e100.net; s=20230601; t=1753161870; x=1753766670;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=fbjWKy8Lcwc8GEbZTAM6i4MM4xiUxqjSvPPv7uBUtNY=;
-        b=c+y8sQWlbW7EPuiA2X8su6f1TTmjiC+FXO7AkKqpX5lralpSthBDCIckEt6/1xGgcr
-         5aG1/5aIEx526XSpWBNiCYh/bWQxUij64NdsuuBh/q/DFs+Vd0QytPLOp2ikkKGhdctr
-         USrKbN9YyLzwtF9jzdE/Z/Lx2pU10DyNfPJT+pASyTNI1VjkEYqfiy/88ezFtL24Rxvr
-         VtouoQ2OD9GZvmXAQV4v/5rRjkxgYBY+KehOgLPm3rnYVeOkimAnhcTv18EXaLARYcDr
-         Vdm7z6bjyTTbTJ5g8bUDRYAm8oZJUypLR2UmyMF5zzyZeCSg9GLr4lZiBVvTqhkzQ0ek
-         ipCQ==
-X-Gm-Message-State: AOJu0Yy583wVbe8LTMinF67/4CiByPoxqaI/Fpi+o97C4n14srBpcSHP
-	1A2LgpmHjRx2zaj619CV+u5A0b5wZFhUQ2Focz8fEUCdm/ho9++hDfOsilgDnnjrM9IeVO8iaHi
-	9Qw9Dn9NpD8Ilnz3tlxKRqSHQu4Y7zUvQxgB3RgKL
-X-Gm-Gg: ASbGncuyoTbIvkrMH/vm+FBMVml3wZ1hc9VfCyORqlboOY18K+lQ4k/Vk8FsvMoNzQL
-	QxSQQ/ZcD92MWOeqqS8bp9SdisyVrfuBt+7sHf1g3XMmxfQMysGbHjmSIAKPbexo4X2a/Hvzl9L
-	cHEfAgtqQqV/7bPl+Bh/IfRgL6M/GmTAYnQSzxdiN/CXHqgD3lJUSoI5OG4iGoMnce7IE8ibd/1
-	CV+lfugFHQ3ZwwTdPADteDBSxhNy0AbneY=
-X-Google-Smtp-Source: AGHT+IHXtp8/VRaNj5ad5vofsP+NxzY4Q7oTBNoQECt/CXJUr6VzTFYU6ZxOTJqcdAuOysJwJg5n/tSQs5v+X4qLoE4=
-X-Received: by 2002:a2e:a984:0:b0:32b:7ddd:278d with SMTP id
- 38308e7fff4ca-3309a466439mr46938661fa.3.1753161531420; Mon, 21 Jul 2025
- 22:18:51 -0700 (PDT)
+        bh=dqDwtUCqJNRnpiOi+aWGhs1F5rEMAyBkONqi7ZgeqbQ=;
+        b=MhFEpD7DHcuWJ98GZcmbAu1v2LXzGljmino9V0iUuenRcJtp7ZJLSn57Hsf+i7zqP1
+         0blTN1csPLeF8hWEXWwEBm7DUzjaW5FPmejRQ8T3VtZXgcdDnv1h0tipEppkM8Hi7K2G
+         euVZo/7DehSy47KNuNqWN7TMxMb6EscRjt3NbBeOge6pmMZPpE7VpzeE/vDVgxvvmYmi
+         ydrRKc1uS3x7nCfhmCAsWCxG0n6uUnZgY4YsEBRvsCtouvvDNJr8TK0XmW/Vj6vMCLJf
+         ZaHTLOmCdL0n/9desLYo4y2LbrUtxFDaEW+m3EPoylGOJO13f/n02bTIHM5SjGsIVJU0
+         A/VQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWH6yGR0ZPK/dcmbCDObdAVDLdK/F4X44MOZ+0l1oWDrKYUhqzFJ4udTMqbYeW7wqADkhNa0RSnsGM2CFV5Vg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxZwiPwkBv6P51L0EypfqNKuFBnbYEZTbgu72qTdqdKHtgvOZ4H
+	2wF09B+5wio9ujLQSBYO7NzZp9LjXCDhk1leBXwTFZTNjUOKfH1wh3wUqXs2srwyzJ0MTnS9fQp
+	BrK1rVofJwBlXhS9DRtP9OCM9IhDBNfpP3HbU/zzu
+X-Gm-Gg: ASbGnctgwtMu9/aLEQlZskA6/us9kU5cHmWdtlnm3HuSsAmGP0ox7iB1OPwxuFo1rns
+	/LVrMrbBI88ZIMztbOc37cDnQ1qtfrnV7tFiFAPV/NGKfqJGY/u/0nrWc69szzII1WbD76rvJVt
+	Ss4p8tuZCeBCxnDcPEFZE4ZlaG6QEjccpzgmj8gsSo7s3p+kOP3y4FRBR5p7E6mjJQ4WwcM+uVf
+	Ds3m+ORVa9WsefInURv9wF8M7jnj6/zW78v3iHWPfpuMA==
+X-Google-Smtp-Source: AGHT+IEdOx5zCqoNPg2UT45LQbL+jHOpKPo6tn9yxf52DBYuUr7UN/c4OmqYmGkjvaYN6I6H6AP02HgZdnn60DMD5bo=
+X-Received: by 2002:a05:651c:419b:b0:32f:425b:3278 with SMTP id
+ 38308e7fff4ca-3308f5df835mr61834191fa.25.1753161870330; Mon, 21 Jul 2025
+ 22:24:30 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250715140224.206329-1-angelogioacchino.delregno@collabora.com> <20250715140224.206329-3-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20250715140224.206329-3-angelogioacchino.delregno@collabora.com>
+References: <20250715140224.206329-1-angelogioacchino.delregno@collabora.com>
+ <20250715140224.206329-4-angelogioacchino.delregno@collabora.com> <20250717152947.GA3411864-robh@kernel.org>
+In-Reply-To: <20250717152947.GA3411864-robh@kernel.org>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 22 Jul 2025 13:18:40 +0800
-X-Gm-Features: Ac12FXxOEwd1JP0Dvkx8jUbcy4EUYQzj1kXlmFlLaoGVbfWV7CBCgyEc3biTeW0
-Message-ID: <CAGXv+5GiKOTqmaJai-494XWDqk+onvrpqFyvwANr+_4_y-1WuA@mail.gmail.com>
-Subject: Re: [PATCH v5 2/8] regulator: Add support for MediaTek MT6316 SPMI
+Date: Tue, 22 Jul 2025 13:24:19 +0800
+X-Gm-Features: Ac12FXzJ2_kEeBPPtFnHpLPdeiuzsl4YpgJm_YvA17xvKg2-LMZYsB2VDzsxF1w
+Message-ID: <CAGXv+5Eajtt17rp2qGDDi6-Xvj6cxmhJBHjhp_XLDaX90WiNFg@mail.gmail.com>
+Subject: Re: [PATCH v5 3/8] dt-bindings: regulator: Document MediaTek MT6363
  PMIC Regulators
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-mediatek@lists.infradead.org, lee@kernel.org, robh@kernel.org, 
+Cc: Rob Herring <robh@kernel.org>, linux-mediatek@lists.infradead.org, lee@kernel.org, 
 	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, 
 	lgirdwood@gmail.com, broonie@kernel.org, devicetree@vger.kernel.org, 
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
@@ -79,8 +81,8 @@ Cc: linux-mediatek@lists.infradead.org, lee@kernel.org, robh@kernel.org,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250721_221853_761200_ECABBE3D 
-X-CRM114-Status: GOOD (  25.73  )
+X-CRM114-CacheID: sfid-20250721_222432_136914_515D4C90 
+X-CRM114-Status: GOOD (  18.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,189 +97,117 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 15, 2025 at 10:03=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
+On Thu, Jul 17, 2025 at 11:29=E2=80=AFPM Rob Herring <robh@kernel.org> wrot=
+e:
 >
-> Add a driver for the regulators found on all types of the MediaTek
-> MT6316 SPMI PMIC, fully controlled by SPMI interface and featuring
-> four step down DCDC (buck) converters.
+> On Tue, Jul 15, 2025 at 04:02:19PM +0200, AngeloGioacchino Del Regno wrot=
+e:
+> > Add bindings for the regulators found in the MediaTek MT6363 PMIC,
+> > usually found in board designs using the MT6991 Dimensity 9400 and
+> > on MT8196 Kompanio SoC for Chromebooks, along with the MT6316 and
+> > MT6373 PMICs.
+> >
+> > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@co=
+llabora.com>
+> > ---
+> >  .../regulator/mediatek,mt6363-regulator.yaml  | 193 ++++++++++++++++++
+> >  1 file changed, 193 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/regulator/mediate=
+k,mt6363-regulator.yaml
+> >
+> > diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt636=
+3-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6=
+363-regulator.yaml
+> > new file mode 100644
+> > index 000000000000..ea1f6c92cffc
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6363-regul=
+ator.yaml
+> > @@ -0,0 +1,193 @@
+> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/regulator/mediatek,mt6363-regulator=
+.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: MediaTek MT6363 PMIC Regulators
+> > +
+> > +maintainers:
+> > +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.co=
+m>
+> > +
+> > +description:
+> > +  The MT6363 SPMI PMIC provides 10 BUCK and 25 LDO (Low DropOut) regul=
+ators
+> > +  and can optionally provide overcurrent warnings with one ocp interru=
+pt
+> > +  for each voltage regulator.
+> > +
+> > +properties:
+> > +  compatible:
+> > +    const: mediatek,mt6363-regulator
+> > +
+> > +  reg:
+> > +    maxItems: 1
+> > +
+> > +  vsys-vbuck1-supply:
+> > +    description: Input supply for vbuck1
 >
-> In particular, this includes support for:
->  - MT6316(BP/VP):    2+2 Phase (Phase 1: buck1+2, Phase 2: buck3+4)
->  - MT6316(CP/HP/KP): 3+1 Phase (Phase 1: buck1+2+4, Phase 2: buck3)
->  - MT6316(DP/TP):    4+0 Phase (Single phase, buck1+2+3+4)
-
-You should probably mention here or in the driver with comments that
-some parts are not described in the datasheet, or even contradict what
-the datasheet says. Examples include:
-
-  - set / clear registers for the enable bits
-  - voltage selector being in weird format
-
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
-> ---
->  drivers/regulator/Kconfig            |   9 +
->  drivers/regulator/Makefile           |   1 +
->  drivers/regulator/mt6316-regulator.c | 345 +++++++++++++++++++++++++++
->  3 files changed, 355 insertions(+)
->  create mode 100644 drivers/regulator/mt6316-regulator.c
+> blank line
 >
-> diff --git a/drivers/regulator/Kconfig b/drivers/regulator/Kconfig
-> index 7423954153b0..81f2acd0f960 100644
-> --- a/drivers/regulator/Kconfig
-> +++ b/drivers/regulator/Kconfig
-> @@ -864,6 +864,15 @@ config REGULATOR_MT6315
->           This driver supports the control of different power rails of de=
-vice
->           through regulator interface.
+> > +  vsys-vbuck2-supply:
+> > +    description: Input supply for vbuck2
 >
-> +config REGULATOR_MT6316
-> +       tristate "MT6316 SPMI PMIC regulator driver"
-> +       depends on SPMI || COMPILE_TEST
-> +       help
-> +          Say Y here to enable support for 2+2, 3+1 and 4 phase regulato=
-rs
-> +          found in the MediaTek MT6316 BP, CP, DP, HP, VP and TP SPMI PM=
-ICs.
-> +         This driver supports the control of different power rails of de=
-vice
-> +         through regulator interface.
-> +
->  config REGULATOR_MT6323
->         tristate "MediaTek MT6323 PMIC"
->         depends on MFD_MT6397
-> diff --git a/drivers/regulator/Makefile b/drivers/regulator/Makefile
-> index be98b29d6675..46c0e75f6107 100644
-> --- a/drivers/regulator/Makefile
-> +++ b/drivers/regulator/Makefile
-> @@ -103,6 +103,7 @@ obj-$(CONFIG_REGULATOR_MP886X) +=3D mp886x.o
->  obj-$(CONFIG_REGULATOR_MPQ7920) +=3D mpq7920.o
->  obj-$(CONFIG_REGULATOR_MT6311) +=3D mt6311-regulator.o
->  obj-$(CONFIG_REGULATOR_MT6315) +=3D mt6315-regulator.o
-> +obj-$(CONFIG_REGULATOR_MT6315)  +=3D mt6316-regulator.o
->  obj-$(CONFIG_REGULATOR_MT6323) +=3D mt6323-regulator.o
->  obj-$(CONFIG_REGULATOR_MT6331) +=3D mt6331-regulator.o
->  obj-$(CONFIG_REGULATOR_MT6332) +=3D mt6332-regulator.o
-> diff --git a/drivers/regulator/mt6316-regulator.c b/drivers/regulator/mt6=
-316-regulator.c
-> new file mode 100644
-> index 000000000000..952852bbe923
-> --- /dev/null
-> +++ b/drivers/regulator/mt6316-regulator.c
-> @@ -0,0 +1,345 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +//
-> +// Copyright (c) 2024 MediaTek Inc.
-> +// Copyright (c) 2025 Collabora Ltd
-> +//                    AngeloGioacchino Del Regno <angelogioacchino.delre=
-gno@collabora.com>
-> +
-> +#include <linux/module.h>
-> +#include <linux/of.h>
-> +#include <linux/regmap.h>
-> +#include <linux/spmi.h>
-> +
-> +#include <linux/regulator/driver.h>
-> +#include <linux/regulator/machine.h>
-> +#include <linux/regulator/of_regulator.h>
-> +
-> +#define MT6316_BUCK_MODE_AUTO                  0
-> +#define MT6316_BUCK_MODE_FORCE_PWM             1
-> +#define MT6316_BUCK_MODE_LP                    2
-> +
-> +#define MT6316_CHIP_ID                         0x20b
-> +#define MT6316_BUCK_TOP_CON0                   0x1440
-> +#define EN_SET_OFFSET                          0x1
-> +#define EN_CLR_OFFSET                          0x2
-> +
-> +#define MT6316_BUCK_TOP_CON1                   0x1443
-> +
-> +#define MT6316_BUCK_TOP_ELR0                   0x1448
-> +#define MT6316_BUCK_TOP_ELR2                   0x144a
-> +#define MT6316_BUCK_TOP_ELR4                   0x144c
-> +#define MT6316_BUCK_TOP_ELR6                   0x144e
-> +#define MT6316_VSEL_MASK                       GENMASK(8, 0)
-> +
-> +#define MT6316_VBUCK1_DBG                      0x14a8
-> +#define MT6316_VBUCK2_DBG                      0x1528
-> +#define MT6316_VBUCK3_DBG                      0x15a8
-> +#define MT6316_VBUCK4_DBG                      0x1628
-> +#define MT6316_BUCK_QI                         BIT(0)
-> +
-> +#define MT6316_BUCK_TOP_4PHASE_TOP_ANA_CON0    0x1688
-> +#define MT6316_BUCK_TOP_4PHASE_TOP_ELR_0       0x1690
-> +
-> +enum mt6316_type {
-> +       MT6316_TYPE_2PHASE,
-> +       MT6316_TYPE_3PHASE,
-> +       MT6316_TYPE_4PHASE
-> +};
-> +
-> +/**
-> + * struct mt6316_regulator_info - MT6316 regulators information
-> + * @desc: Regulator description structure
-> + * @debug_reg: Debug register for regulator status
-> + * @lp_mode_reg: Low Power mode register (normal/idle)
-> + * @lp_mode_mask: Low Power mode regulator mask
-> + * @modeset_reg: AUTO/PWM mode register
-> + * @modeset_mask: AUTO/PWM regulator mask
-> + */
-> +struct mt6316_regulator_info {
-> +       struct regulator_desc desc;
-> +       u16 debug_reg;
-> +       u16 lp_mode_reg;
-> +       u16 lp_mode_mask;
-> +       u16 modeset_reg;
-> +       u16 modeset_mask;
-> +};
-> +
-> +#define MT6316_BUCK(match, vreg_id, min, max, step, vs_reg)            \
-> +{                                                                      \
-> +       .desc =3D {                                                      =
- \
-> +               .name =3D match,                                         =
- \
+> blank line, and so on...
+>
+> > +  vsys-vbuck3-supply:
+> > +    description: Input supply for vbuck3
+> > +  vsys-vbuck4-supply:
+> > +    description: Input supply for vbuck4
+> > +  vsys-vbuck5-supply:
+> > +    description: Input supply for vbuck5
+> > +  vsys-vbuck6-supply:
+> > +    description: Input supply for vbuck6
+> > +  vsys-vbuck7-supply:
+> > +    description: Input supply for vbuck7
+> > +  vsys-vs1-supply:
+> > +    description: Input supply for vs1
+> > +  vsys-vs2-supply:
+> > +    description: Input supply for vs2
+> > +  vsys-vs3-supply:
+> > +    description: Input supply for vs3
 
-.supply_name should probably be added for completeness.
+You could also merge the ones above with a regex and move it to
+patternProperties. Since these are one to one mappings that should
+work still.
 
-> +               .of_match =3D of_match_ptr(match),                       =
- \
-> +               .ops =3D &mt6316_vreg_setclr_ops,                        =
- \
-> +               .type =3D REGULATOR_VOLTAGE,                             =
- \
-> +               .owner =3D THIS_MODULE,                                  =
- \
-> +               .n_voltages =3D (max - min) / step + 1,                  =
- \
-> +               .min_uV =3D min,                                         =
- \
-> +               .uV_step =3D step,                                       =
- \
+> > +  vs1-ldo1-supply:
+> > +    description: Input supply for va15, vio0p75, vm18, vrf18, vrf-io18
+> > +  vs1-ldo2-supply:
+> > +    description: Input supply for vcn15, vio18, vufs18
+> > +  vs2-ldo1-supply:
+> > +    description: Input supply for vsram-cpub, vsram-cpum, vrf12, vrf13=
+, vufs12
+> > +  vs2-ldo2-supply:
+> > +    description: Input supply for va12-1, va12-2, vcn13, vsram-cpul
+> > +  vs3-ldo1-supply:
+> > +    description: Input supply for vsram-apu, vsram-digrf, vsram-mdfe
+> > +  vs3-ldo2-supply:
+> > +    description: Input supply for vsram-modem, vrf0p9
+> > +  vsys-ldo1-supply:
+> > +    description: Input supply for vaux18, vemc, vtref18
 
-Given that the selector _always_ starts from 0 volts, I think this
-should have:
+For these, I wonder if the description is really needed.
 
-                  .linear_min_sel =3D min / step,
+From a device tree writing point of view, the author is likely looking
+at the diagram and tracing each of these pins to a supply. They won't
+care which LDO it's actually feeding.
 
-So that different minimum values work. Or the minimum value should just
-be dropped altogether to prevent miscalculation.
-
-See below for more.
-
-[...]
-
-> +/* MT6316BP/VP - 2+2 phase buck */
-> +static struct mt6316_regulator_info mt6316bv_regulators[] =3D {
-> +       MT6316_BUCK("vbuck12", 1, 0, 1277500, 2500, MT6316_BUCK_TOP_ELR0)=
-,
-
-I just noticed that the overview section of the datasheet mentions that
-the lowest voltage is 0.4V for all the regulators.
-
+From an implementer POV, the author is likely looking at the datasheet
+for other details not spelled out here, such as voltage steps and
+register offsets. The datasheet also says which supply pin feeds into
+which LDOs.
 
 ChenYu
-
-[...]
 
