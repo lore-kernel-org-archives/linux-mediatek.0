@@ -4,76 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84D2AC83F27
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jul 2025 10:49:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E43FC83F27
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jul 2025 11:00:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MHJcYxxC0c04J0Sdkp2z2pvfkFABVVxORPKIRuEgp8M=; b=MWDMVrAnWrYIzO8tMmb87+sr5j
-	5hfgXY62/bB44ZypSaGz7ZVT7QqRa0Q2T/Ix4mcwTIBGJfhvpizRXdjLMjttCr9NVLcs6RdWZFSpb
-	E9WhPwKo9s6vRiDTJ3R8CL63J07Yj8T4Qd95aIICWx4OoWIaPU/EwuR9CmV1wC2VxmoKgaR3/k2Hv
-	N/c/WdiY/JM0UnRq4Q1m1zdCzJR8NwAHVXJNUgobhwgd+IltivSPFy0teOys8O9g/UFCqQ/nzbjzI
-	61jECO0e+L0aIbWSjeFD6+mjSlqVBsmMVshrWed0EKsZ1n6slCUBVsC+6C/BUjx0MEP+vq1ToMlIy
-	vSfr3qBA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Uls65zjLvZyRFmNl+e//+9lL/rdLsnl/vKqyeLnk+9Y=; b=0zFFwEyDuRwF8Z
+	wdmhcKfKrOW101b3mqzCgE01nbXnSJqB+ZZWMoj66ekwgP/ycG2LBFWyMFySDoHmun3T3Z8NOO2qN
+	PRdHGr80CBTWwtvMQ3DpmwbAZwBSpPO0uCzOEc5j3NuY+lH+gQ0PiS+MCLKu6MIRZ0n9PWBOf+OsV
+	JWfyp3Wx1JIVISk2N/C5p1g8WPEmWH3cirkIvXnovUJsA8wwRKsaMhGRvxkkBZEa59XL5MeKD4roU
+	SPgx/PHxM7TWLHEi7Cq6byiXvSmovQWBz9KRAOLFZK/+rqW7IMtrXQlw/lR3ELYVGWRxPO2L/CkfZ
+	syEG1iWixzlcjS+K34oQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueAYg-00000002C3P-0G8N;
-	Tue, 22 Jul 2025 10:49:18 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1ueAjk-00000002DK3-0IeL;
+	Tue, 22 Jul 2025 11:00:44 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ue9Ta-000000022HX-0GZo;
-	Tue, 22 Jul 2025 09:39:59 +0000
+	id 1ueAO4-00000002B49-1XBC;
+	Tue, 22 Jul 2025 10:38:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1753177196;
-	bh=NgsL3gTGGimcOYXeYVqRXt5bTxZm1wqbVcpMtjeMMAM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=TB7pqKFXo6MjzoRR1DOvuL2zOUx0iePTnUdN2KdM07FS19smE3tgyvm8Zodd4OvYQ
-	 zSLcPbGpAuAkk/m6GWvvjvAdSOrhmSGmK80s/w3ra+zjygL8iHDe+DhxTJnOKQXNHy
-	 ejbWgRodz04Om3d3xijshDRR0wv294QjJeEHCFRhmGJBBBUacjHVaWIopnGbCYSc7f
-	 4F7SCSK8pYgixwnP47HJ7Aw1BnTgWXnSpMdbnq8eptaXmSAHgzkx279DJ6aBdE1tA9
-	 UVBQ2zc8bxpQP9HTNiffqAH6hUmy4/zACTXpKImSjGsuYmw2mqYbk3ndeOOdkt6YDo
-	 SzVoMX2qMIgaA==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	s=mail; t=1753180698;
+	bh=bkY2GEXAbZCEgimSdKFm2IARS0ffaAm1hymKFyKVnv0=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=eXdbux7QGObp+HZOOdFAxjOZIbimZVtKUGpGttgN9rUum33zjv7HhTR3SrOKrEJdi
+	 2DtVVJqbiPby5tbabC6G6tSXm49COXRayntenGTka9I05bOYpYLKwyowdvpVqeC/T4
+	 a5QWU2DOjmMPRGcdWi6e4eEyMhcjVLwKrwGYpMXs0W/rBHeNhImne8tCTdALWPExtX
+	 0/VrL/Cg24AdWQ8LOZotmViIrpd+bTCF/U705jqr4NM5p9r6ZYaAmnqjFWTiPi21fX
+	 nseJPXOlNyRwyo79RS6rdTSxGO138uwH58XH/W/m0AfQmAl2YptMjpXf0174UX+iGy
+	 wPtOhZacXN/Wg==
+Received: from laura.lan (unknown [IPv6:2001:b07:646b:e2:bd9c:eae9:88b0:783c])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 302E017E07FB;
-	Tue, 22 Jul 2025 11:39:55 +0200 (CEST)
-Message-ID: <b90956e8-adf9-4411-b6f9-9212fcd14b59@collabora.com>
-Date: Tue, 22 Jul 2025 11:39:54 +0200
+	(Authenticated sender: laura.nao)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 22DF017E0B72;
+	Tue, 22 Jul 2025 12:38:17 +0200 (CEST)
+From: Laura Nao <laura.nao@collabora.com>
+To: angelogioacchino.delregno@collabora.com
+Subject: Re: [PATCH 9/9] dt-bindings: nvmem: mediatek: efuse: Add support for MT8196
+Date: Tue, 22 Jul 2025 12:37:18 +0200
+Message-Id: <20250722103718.31804-1-laura.nao@collabora.com>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <24c65ecf-ab89-4970-b2ae-00185259d359@collabora.com>
+References: <24c65ecf-ab89-4970-b2ae-00185259d359@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/4] dt-bindings: ufs: mediatek,ufs: add MT8195
- compatible and update clock nodes
-To: Macpaul Lin <macpaul.lin@mediatek.com>,
- Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
- Bart Van Assche <bvanassche@acm.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Peter Wang <peter.wang@mediatek.com>, Stanley Jhu <chu.stanley@gmail.com>,
- "James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
- "Martin K . Petersen" <martin.petersen@oracle.com>,
- linux-scsi@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
- Ramax Lo <ramax.lo@mediatek.com>, Macpaul Lin <macpaul@gmail.com>,
- MediaTek Chromebook Upstream
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-References: <20250722085721.2062657-1-macpaul.lin@mediatek.com>
- <20250722085721.2062657-3-macpaul.lin@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250722085721.2062657-3-macpaul.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250722_023958_284869_B23D42D6 
-X-CRM114-Status: GOOD (  18.48  )
+X-CRM114-CacheID: sfid-20250722_033820_584110_CF9982AC 
+X-CRM114-Status: GOOD (  15.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,118 +67,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: andrew-ct.chen@mediatek.com, lala.lin@mediatek.com, rafael@kernel.org, laura.nao@collabora.com, kernel@collabora.com, bchihi@baylibre.com, robh@kernel.org, nfraprado@collabora.com, daniel.lezcano@linaro.org, rui.zhang@intel.com, colin.i.king@gmail.com, devicetree@vger.kernel.org, conor+dt@kernel.org, arnd@arndb.de, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, srini@kernel.org, u.kleine-koenig@baylibre.com, krzk+dt@kernel.org, lukasz.luba@arm.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 22/07/25 10:57, Macpaul Lin ha scritto:
-> Add MT8195 UFSHCI compatible string.
-> Relax the schema to allow between one to eight clocks/clock-names
-> entries for all MediaTek UFS nodes. Legacy platforms may only need
-> a few clocks, whereas newer devices such as the MT8195 require
-> additional clock-gating domains. For MT8195 specifically, enforce
-> exactly eight clocks and clock-names entries to satisfy its hardware
-> requirements.
-> 
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> ---
->   .../devicetree/bindings/ufs/mediatek,ufs.yaml | 42 ++++++++++++++++---
->   1 file changed, 36 insertions(+), 6 deletions(-)
-> 
-> Changes for v2:
->   - Remove duplicate minItems and maxItems as suggested in the review.
->   - Add a description of how the MT8195 hardware differs from earlier
->     platforms.
-> 
-> diff --git a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
-> index 20f341d25ebc..1dec54fb00f3 100644
-> --- a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
-> +++ b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
-> @@ -9,21 +9,20 @@ title: Mediatek Universal Flash Storage (UFS) Controller
->   maintainers:
->     - Stanley Chu <stanley.chu@mediatek.com>
->   
-> -allOf:
-> -  - $ref: ufs-common.yaml
-> -
->   properties:
->     compatible:
->       enum:
->         - mediatek,mt8183-ufshci
->         - mediatek,mt8192-ufshci
-> +      - mediatek,mt8195-ufshci
->   
->     clocks:
-> -    maxItems: 1
-> +    minItems: 1
-> +    maxItems: 8
->   
->     clock-names:
-> -    items:
-> -      - const: ufs
-> +    minItems: 1
-> +    maxItems: 8
->   
->     phys:
->       maxItems: 1
-> @@ -47,6 +46,37 @@ required:
->   
->   unevaluatedProperties: false
->   
-> +allOf:
-> +  - $ref: ufs-common.yaml
-> +
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            enum:
-> +              - mediatek,mt8195-ufshci
-> +    then:
-> +      properties:
-> +        clocks:
-> +          minItems: 8
-> +        clock-names:
-> +          items:
-> +            - const: ufs
-> +            - const: ufs_aes
-> +            - const: ufs_tick
-> +            - const: unipro_sysclk
-> +            - const: unipro_tick
-> +            - const: unipro_mp_bclk
+On 7/22/25 11:04, AngeloGioacchino Del Regno wrote:
+> Il 21/07/25 10:14, Laura Nao ha scritto:
+>> Add compatible for MT8196 SoC.
+>>
+>
+> This is compatible with MT8186's layout - not with the others - and
+> besides: "mediatek,efuse" is deprecated.
+>
+> Adding something to deprecated bindings is not even really permitted (unless
+> there's a *very* good reason to, which you definitely don't have in this case).
+>
+> Also, this commit has no description - repeating the same as the title adds
+> no information and doesn't help at all.
+>
+> NACK.
+>
 
-The unipro mp_bclk really is the ufs-sap clock; besides, the standard has clocks
-for both TX and RX symbols - and also MT8195 (and also MT6991, MT8196, and others)
-UFS controller do have both TX and RX symbol clocks.
+Got it, thanks both for the feedback - I'll fix this in the next 
+revision.
 
-Besides, you're also missing the crypto clocks for UFS, which brings the count to
-12 total clocks for MT8195.
+Best,
 
-Please, look at my old submission, which actually fixes the compatibles other than
-adding the right clocks for all UFS controllers in MediaTek platforms.
+Laura
 
-https://lore.kernel.org/all/20240612074309.50278-1-angelogioacchino.delregno@collabora.com/
-
-I want to take the occasion to remind everyone that my fixes were discarded because
-the MediaTek UFS driver maintainer wants to keep the low quality of the driver in
-favor of easier downstream porting - which is *not* in any way adhering to quality
-standards that the Linux community deserves.
-
-Cheers,
-Angelo
-
-> +            - const: ufs_tx_symbol
-> +            - const: ufs_mem_sub
-> +    else:
-> +      properties:
-> +        clocks:
-> +          maxItems: 1
-> +        clock-names:
-> +          items:
-> +            - const: ufs
-> +
->   examples:
->     - |
->       #include <dt-bindings/clock/mt8183-clk.h>
-
+> Regards,
+> Angelo
+>
+>> Signed-off-by: Laura Nao <laura.nao@collabora.com>
+>> ---
+>>   Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml | 1 +
+>>   1 file changed, 1 insertion(+)
+>>
+>> diff --git a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+>> index 32b8c1eb4e80..e209a1132a26 100644
+>> --- a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+>> +++ b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+>> @@ -37,6 +37,7 @@ properties:
+>>                 - mediatek,mt8188-efuse
+>>                 - mediatek,mt8192-efuse
+>>                 - mediatek,mt8195-efuse
+>> +              - mediatek,mt8196-efuse
+>>                 - mediatek,mt8516-efuse
+>>             - const: mediatek,efuse
+>>         - const: mediatek,mt8173-efuse 
+>
+>
+>
 
 
