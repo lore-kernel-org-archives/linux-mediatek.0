@@ -4,61 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9387DC83F27
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jul 2025 17:19:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE99BC83F27
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jul 2025 21:31:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ibyjI5E3qW6kSn6XqkbCf4AS/khULVCPNIJfzv5g85s=; b=vqByBhbm1Xvx1DmS/hylBE1qK2
-	53V0Xgts6WcKAg4sQoHS9wESNqPZrpUEjgRVzgXdBzwj/WIv9T7OmwUpoTrhbLJ06JkYeJCtJcRe6
-	QMeVTW8RZkBuODxlxeDtbHgELV2p1yw18ul5g1r9L/jG3dFepD8oZNfNfbeNafE0uh9Gqr40vbVo0
-	Cm/6IYagMi+qZqsxw8mMpTrvWaeV9kEVe5b2mvScMZ5tfAAYT/X55RVs0BBC4TTJ1c8ryIE1bn4pY
-	KdGll0oPx74pR9mSukdIqXp2vAO1yDrjq3KR2Ll4FFElg631KbNTrzeZu8XcWsmmvCsej/VaHvLom
-	LummxuSQ==;
+	bh=48867Pal/1jOpEz3/91Ogv4kveVZARbA4EPs2QFDNFE=; b=yLcgZMFEjzQt9qg4ddNf9dDE2I
+	Cc/8vphp5sp0yRqEX6eu5K2WByRFnIgXH49T0UNxSa4soWuNJTUM6StMRRSnFSUp7Aa2TnDA78vVF
+	kWmPuI4D4Gv1Kr/PMXV4NIfwlmwaMM9iuVpwDsTmdIGYK0oaP2PNJfyHEpI8re/E3l8RXNpGo7dVj
+	zgyA7hbN5ueiGzkv8JENnxm5+O/td3iz+rFs4La+2gtVnUNM0HcVk2uzQ2NFfuT9yfV/WXqeeLdXH
+	Llb5neAyBornIhSH7u82adKGqwdmhlY0IqnGULsIiX15o9Z3D/LFbWMwAygJFmL1/fDUDHIrKZPg3
+	sfN4OLpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueGeQ-000000037VU-3AzJ;
-	Tue, 22 Jul 2025 17:19:38 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1ueKaG-00000003WC1-2j62;
+	Tue, 22 Jul 2025 21:31:36 +0000
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueGbv-000000037GB-0SFM;
-	Tue, 22 Jul 2025 17:17:03 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6819E61444;
-	Tue, 22 Jul 2025 17:17:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 01743C4CEEB;
-	Tue, 22 Jul 2025 17:17:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1753204622;
-	bh=w1K4bvODgaupuZ6rTZXJyHZe+HGhv/jTyPnbCIz8yz0=;
-	h=From:To:Cc:Subject:Date:From;
-	b=CFA8FgKUfxPDnZ3oYkOZ86kNnByY29sDQi+lr7AXgJlmDghA5oCtLETsYqBplCXGm
-	 2WmCp4OG7tGny1nCj94jOPRaEeJHXqNZRJaCZ+Kv0v2olRyLTCQGd6+9jrNjkk3XAO
-	 dGHLQuDsbQbNoNsbvwobiov9EVpkqHJRmylodK4BiIFECMrg32GIbtx8DXhLULx2YW
-	 JTBW7kEWqZ6Ue9VsZmgzh4mMlDT74ZbPErX8rAw6cUSWyhL9B4dIr+wWRIQUVcFatE
-	 bL3MjD15bGo15RDXnRubQMG1WfsxDxJB+0rd7CS3s1ogVMkUjZVyRPJSHU+6A0dPKb
-	 LliRIGvFiU4+Q==
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	id 1ueKXj-00000003Vnl-1Mhj;
+	Tue, 22 Jul 2025 21:29:00 +0000
+Received: by mail-pj1-x1035.google.com with SMTP id 98e67ed59e1d1-3138b2f0249so4680857a91.2;
+        Tue, 22 Jul 2025 14:28:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1753219738; x=1753824538; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=48867Pal/1jOpEz3/91Ogv4kveVZARbA4EPs2QFDNFE=;
+        b=bud0vRxvxyAGfipRjcp0Qk3yMu0h4gzf4NnWnyUaMLqr/B1cD0vYHLJCVsJvzlEIQV
+         KnhrSJYZjlw1Mymx8752hLQ94lC/nTTduDtX8bVR2KEVj7xgvs6YayZjogUntnhDzV1F
+         MH/J07g0X7fCbVVtzvAkWubkPawYjOvUppXFg1yUI9OUiwTIeKjQbHjf0wGqWSSkriLE
+         z52LgE7SRcrF6r90POMhGmtS3rKMRDSyub2qwqIwHxfRGesF9ZcHK6ymNjQsfmzNLyIV
+         n6Quh7defPUkMuxNuL2/pOjCMFdBuaw0ibDo2wqCKKqEKYkwBK9vXS1w1IpIWmZQNf2Y
+         v5lA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1753219738; x=1753824538;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=48867Pal/1jOpEz3/91Ogv4kveVZARbA4EPs2QFDNFE=;
+        b=ufNRPW6oLBneX33Al6vx3RCSFKmNMIII6SjEr7W1uu9GxPR+YTUE6XRfTcvc7oeJ/O
+         laMUdMzwRY0Wh7yGJjVwNRIqC2INj7O340gvVIcqSoFwlFgBkWjadgriTdveLfXuaJqC
+         08SKqQvfQgXJmf6e8zqCZmNs9NawTm9mFvibj5miYbBfOsU5iyvgLwhV5JZaMXDlJjnV
+         yfCIF3+YiPr9dafawpGN0rCC9T0znQS/EFN80WkwDcTx6w35PWvtOOagSbzT/ymo31bV
+         hoW0xJXylv9qjNOsO+oIkgEeproyNEqDNc2UmDy2AFDnFqvgXS7636zu0WUm7BIW7wVU
+         kWig==
+X-Forwarded-Encrypted: i=1; AJvYcCUp6C/PDno3wzpqe/iqv9Nf0Db/2v6NCUrwWlcW0XcLiLqcWDqp/5NSOLi0s4bROqXJKLJE3fC7aERiUBVgjQ42@lists.infradead.org, AJvYcCVljltqO9KHLYxug6nZXWqSKN47Gyn46+QdAsw6/EZvWptCzLZNLZGVQBeWngyxqniTzCBvPKq9dJMgdQyw35M=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyx7Mmyix5Bu/XOHOjA35K5uCkZAnSwcTdG8h/1z4BauZfYOO31
+	BrRmYLMpRJ0gV2x0kankGunSV/PUFu6fns1NyWqX9MtI8btYoe0jg1+N
+X-Gm-Gg: ASbGncsEe7wvhEyuhXE6TtazMmcCmS/aemLo82htIemTrWCNbZZ/6HGUoVsTlE2gWDg
+	aBAo4JRY6mjJHbGnL3F31bRUxW5E2TqMWoK0Axch3Lq/EbI0UufSNOLZeds1DXGrNCUhzoL7JnJ
+	r49RsD1Zf78umBR3Nh4vmtWmXdu66J2pZF9uITBKrg+9QPzcp5PdZpJFPEsOET/8qpqCG3WSp/x
+	vBvtvrBK2VB9aml2Vt+E6Ia9ovc/LsqmleUdrLOE5FZPNf3w0WKqj1miQVfgW3M5M+QFlNzdSX6
+	WnYYJO8SvnTqekmM0/NHCaq9Ic7zLDmzKhm3IfLIyIGgYHSjoyh/a5zf2qGQwV40xsQ9taxO7Rc
+	fPxI=
+X-Google-Smtp-Source: AGHT+IGdeHskm5Ee4Q3qMconqScb7wNu5KePjyblDVvV/Acs8WP6sY23sealp7liXFINeKE+T0WJQQ==
+X-Received: by 2002:a17:90b:4b0f:b0:311:d258:3473 with SMTP id 98e67ed59e1d1-31e5076a94emr948092a91.13.1753219737973;
+        Tue, 22 Jul 2025 14:28:57 -0700 (PDT)
+Received: from archlinux.lan ([2601:644:8200:dab8::1f6])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-31e519ce384sm94942a91.2.2025.07.22.14.28.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 22 Jul 2025 14:28:57 -0700 (PDT)
+From: Rosen Penev <rosenp@gmail.com>
+To: linux-wireless@vger.kernel.org
+Cc: Johannes Berg <johannes@sipsolutions.net>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
+	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Enric Balletbo i Serra <eballetbo@kernel.org>,
-	Ben Ho <Ben.Ho@mediatek.com>,
-	Fabien Parent <fparent@baylibre.com>
-Cc: devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] arm64: dts: mediatek: mt8183: Fix out of range pull values
-Date: Tue, 22 Jul 2025 12:11:52 -0500
-Message-ID: <20250722171152.58923-2-robh@kernel.org>
-X-Mailer: git-send-email 2.47.2
+	Stanislaw Gruszka <stf_xl@wp.pl>,
+	devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS),
+	linux-kernel@vger.kernel.org (open list),
+	linux-mips@vger.kernel.org (open list:MIPS),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCHv5 wireless-next 0/7] wifi: rt2x00: add OF bindings + cleanup
+Date: Tue, 22 Jul 2025 14:28:49 -0700
+Message-ID: <20250722212856.11343-1-rosenp@gmail.com>
+X-Mailer: git-send-email 2.50.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250722_142859_363117_E7401787 
+X-CRM114-Status: UNSURE (   8.80  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,148 +106,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-A value of 10 is not valid for "mediatek,pull-down-adv" and
-"mediatek,pull-up-adv" properties which have defined values of 0-3. It
-appears the "10" was written as a binary value. The driver only looks at
-the lowest 2 bits, so the value "10" decimal works out the same as if
-"2" was used.
+It doesn't even compile. Added OF bindings, documentation, and other
+stuff to hopefully this doesn't happen again.
 
-Fixes: cd894e274b74 ("arm64: dts: mt8183: Add krane-sku176 board")
-Fixes: 19b6403f1e2a ("arm64: dts: mt8183: add mt8183 pumpkin board")
-Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
----
-This is just a few of the warnings related to mt8183-pinctrl... Mediatek 
-is #1 for DT warnings on arm64. And by #1, I mean worst. :( It would be 
-nice to see some progress on fixing them. Otherwise, seeing new Mediatek 
-bindings rather than fixing the existing stuff makes me grumpy.
+v2: move all of 2x00soc to 2800soc. I didn't realize only two functions
+remained for no good reason.
+Fixed typos.
+Slightly changed probe for clarity.
 
- arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi  | 14 +++++++-------
- arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts | 14 +++++++-------
- 2 files changed, 14 insertions(+), 14 deletions(-)
+v3: fix wrong compatible in Documentation.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-index 400c61d11035..fff93e26eb76 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-@@ -580,7 +580,7 @@ pins-cmd-dat {
- 		pins-clk {
- 			pinmux = <PINMUX_GPIO124__FUNC_MSDC0_CLK>;
- 			drive-strength = <MTK_DRIVE_14mA>;
--			mediatek,pull-down-adv = <10>;
-+			mediatek,pull-down-adv = <2>;
- 		};
- 
- 		pins-rst {
-@@ -609,13 +609,13 @@ pins-cmd-dat {
- 		pins-clk {
- 			pinmux = <PINMUX_GPIO124__FUNC_MSDC0_CLK>;
- 			drive-strength = <MTK_DRIVE_14mA>;
--			mediatek,pull-down-adv = <10>;
-+			mediatek,pull-down-adv = <2>;
- 		};
- 
- 		pins-ds {
- 			pinmux = <PINMUX_GPIO131__FUNC_MSDC0_DSL>;
- 			drive-strength = <MTK_DRIVE_14mA>;
--			mediatek,pull-down-adv = <10>;
-+			mediatek,pull-down-adv = <2>;
- 		};
- 
- 		pins-rst {
-@@ -633,13 +633,13 @@ pins-cmd-dat {
- 				 <PINMUX_GPIO33__FUNC_MSDC1_DAT2>,
- 				 <PINMUX_GPIO30__FUNC_MSDC1_DAT3>;
- 			input-enable;
--			mediatek,pull-up-adv = <10>;
-+			mediatek,pull-up-adv = <2>;
- 		};
- 
- 		pins-clk {
- 			pinmux = <PINMUX_GPIO29__FUNC_MSDC1_CLK>;
- 			input-enable;
--			mediatek,pull-down-adv = <10>;
-+			mediatek,pull-down-adv = <2>;
- 		};
- 	};
- 
-@@ -652,13 +652,13 @@ pins-cmd-dat {
- 				 <PINMUX_GPIO30__FUNC_MSDC1_DAT3>;
- 			drive-strength = <6>;
- 			input-enable;
--			mediatek,pull-up-adv = <10>;
-+			mediatek,pull-up-adv = <2>;
- 		};
- 
- 		pins-clk {
- 			pinmux = <PINMUX_GPIO29__FUNC_MSDC1_CLK>;
- 			drive-strength = <8>;
--			mediatek,pull-down-adv = <10>;
-+			mediatek,pull-down-adv = <2>;
- 			input-enable;
- 		};
- 	};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts b/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-index dbdee604edab..7c3010889ae7 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-@@ -324,7 +324,7 @@ pins_cmd_dat {
- 		pins_clk {
- 			pinmux = <PINMUX_GPIO124__FUNC_MSDC0_CLK>;
- 			drive-strength = <MTK_DRIVE_14mA>;
--			mediatek,pull-down-adv = <10>;
-+			mediatek,pull-down-adv = <2>;
- 		};
- 
- 		pins_rst {
-@@ -353,13 +353,13 @@ pins_cmd_dat {
- 		pins_clk {
- 			pinmux = <PINMUX_GPIO124__FUNC_MSDC0_CLK>;
- 			drive-strength = <MTK_DRIVE_14mA>;
--			mediatek,pull-down-adv = <10>;
-+			mediatek,pull-down-adv = <2>;
- 		};
- 
- 		pins_ds {
- 			pinmux = <PINMUX_GPIO131__FUNC_MSDC0_DSL>;
- 			drive-strength = <MTK_DRIVE_14mA>;
--			mediatek,pull-down-adv = <10>;
-+			mediatek,pull-down-adv = <2>;
- 		};
- 
- 		pins_rst {
-@@ -377,13 +377,13 @@ pins_cmd_dat {
- 				 <PINMUX_GPIO33__FUNC_MSDC1_DAT2>,
- 				 <PINMUX_GPIO30__FUNC_MSDC1_DAT3>;
- 			input-enable;
--			mediatek,pull-up-adv = <10>;
-+			mediatek,pull-up-adv = <2>;
- 		};
- 
- 		pins_clk {
- 			pinmux = <PINMUX_GPIO29__FUNC_MSDC1_CLK>;
- 			input-enable;
--			mediatek,pull-down-adv = <10>;
-+			mediatek,pull-down-adv = <2>;
- 		};
- 
- 		pins_pmu {
-@@ -401,13 +401,13 @@ pins_cmd_dat {
- 				 <PINMUX_GPIO30__FUNC_MSDC1_DAT3>;
- 			drive-strength = <6>;
- 			input-enable;
--			mediatek,pull-up-adv = <10>;
-+			mediatek,pull-up-adv = <2>;
- 		};
- 
- 		pins_clk {
- 			pinmux = <PINMUX_GPIO29__FUNC_MSDC1_CLK>;
- 			drive-strength = <8>;
--			mediatek,pull-down-adv = <10>;
-+			mediatek,pull-down-adv = <2>;
- 			input-enable;
- 		};
- 	};
+v4: renamed documentation file as there's only a single compatible.
+
+v5: made clocks and interrupts required in the documentation.
+
+Rosen Penev (7):
+  wifi: rt2x00: add COMPILE_TEST
+  wifi: rt2x00: remove mod_name from platform_driver
+  wifi: rt2800soc: allow loading from OF
+  wifi: rt2800: move 2x00soc to 2800soc
+  wifi: rt2x00: soc: modernize probe
+  MIPS: dts: ralink: mt7620a: add wifi
+  dt-bindings: net: wireless: rt2800: add
+
+ .../bindings/net/wireless/ralink,rt2800.yaml  |  47 ++++++
+ arch/mips/boot/dts/ralink/mt7620a.dtsi        |  10 ++
+ drivers/net/wireless/ralink/rt2x00/Kconfig    |   7 +-
+ drivers/net/wireless/ralink/rt2x00/Makefile   |   1 -
+ .../net/wireless/ralink/rt2x00/rt2800soc.c    | 102 +++++++++++-
+ .../net/wireless/ralink/rt2x00/rt2x00soc.c    | 151 ------------------
+ .../net/wireless/ralink/rt2x00/rt2x00soc.h    |  29 ----
+ 7 files changed, 156 insertions(+), 191 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/net/wireless/ralink,rt2800.yaml
+ delete mode 100644 drivers/net/wireless/ralink/rt2x00/rt2x00soc.c
+ delete mode 100644 drivers/net/wireless/ralink/rt2x00/rt2x00soc.h
+
 -- 
-2.47.2
+2.50.0
 
 
