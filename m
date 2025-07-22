@@ -4,83 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58E99C83F25
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jul 2025 10:40:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84D2AC83F27
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jul 2025 10:49:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1+7j+pmA/KhL8MRyhxdXyVz9K0L8G5MGilv/L7f1I2k=; b=pEZu2SIeReswNm/LC42R74pgsH
-	b+blvCPbju9seofamtzOHDbvN290k+0DNn3uqAZ0C3BhSA/Iq30z95isMH9IoIRctdd5HP+bDEKgB
-	qA+TbTvRAVE6gp5XrvkHtohno5bRF2LdbZjWz/q6KkPnUwq9rvBLvpSlfHgtR2ZFx+Z2STPhyKuq7
-	zbGs493h+5PeU0icLBRftv0gfiFVkFvqvZ3xMnYBifd93VBErTpwHeTJ1otZhIH4WheSGkVXlkZrq
-	KtENpl44e2gwOmf1XdPaK3i892rwHkMQ/CStStc8M8Qq4UpZikjR6isNRjDxKDOcS7VwTjpHDS+eS
-	bEZaXmIw==;
+	bh=MHJcYxxC0c04J0Sdkp2z2pvfkFABVVxORPKIRuEgp8M=; b=MWDMVrAnWrYIzO8tMmb87+sr5j
+	5hfgXY62/bB44ZypSaGz7ZVT7QqRa0Q2T/Ix4mcwTIBGJfhvpizRXdjLMjttCr9NVLcs6RdWZFSpb
+	E9WhPwKo9s6vRiDTJ3R8CL63J07Yj8T4Qd95aIICWx4OoWIaPU/EwuR9CmV1wC2VxmoKgaR3/k2Hv
+	N/c/WdiY/JM0UnRq4Q1m1zdCzJR8NwAHVXJNUgobhwgd+IltivSPFy0teOys8O9g/UFCqQ/nzbjzI
+	61jECO0e+L0aIbWSjeFD6+mjSlqVBsmMVshrWed0EKsZ1n6slCUBVsC+6C/BUjx0MEP+vq1ToMlIy
+	vSfr3qBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueAPy-00000002BEz-2IJ7;
-	Tue, 22 Jul 2025 10:40:18 +0000
+	id 1ueAYg-00000002C3P-0G8N;
+	Tue, 22 Jul 2025 10:49:18 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueADl-000000029jy-2DGR;
-	Tue, 22 Jul 2025 10:27:43 +0000
+	id 1ue9Ta-000000022HX-0GZo;
+	Tue, 22 Jul 2025 09:39:59 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1753180059;
-	bh=9lvqZk5oEPRo1rY1fpzcNNUqnPMnD9A+snxT1q84jkE=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=VbF9q9TM9iU5hikHWxzeBS6I11iDTIJOgU24E63elkGQegue9c0JhTAJ64AMaQX91
-	 LfvBCXWbCmcQ6rTHckq5/Ld2LjTmbe5O1xUuFFYuRKNPcJNHE3ZCTQr4R4oe13qFk2
-	 m/jl1fSN6S4AMSwjUZCIHefXhHByPwoss4CSd/zKWxdHZalC4vravkj+OgSE+8ivrU
-	 o0sCRzh90Wsg0wrJ/W5PPBuOYIB/awoXdlHIHXhZIrmFgM+ep1IlCf1+zCKe+b/9ZK
-	 dAH/Nvdfdth3BURdamdHwCG+Ze+mkU/0p2zEnS3gMd7bC9K3tV/4EgufCeWCLOaot8
-	 SbYbUbwvRHngQ==
-Received: from laura.lan (unknown [IPv6:2001:b07:646b:e2:bd9c:eae9:88b0:783c])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	s=mail; t=1753177196;
+	bh=NgsL3gTGGimcOYXeYVqRXt5bTxZm1wqbVcpMtjeMMAM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=TB7pqKFXo6MjzoRR1DOvuL2zOUx0iePTnUdN2KdM07FS19smE3tgyvm8Zodd4OvYQ
+	 zSLcPbGpAuAkk/m6GWvvjvAdSOrhmSGmK80s/w3ra+zjygL8iHDe+DhxTJnOKQXNHy
+	 ejbWgRodz04Om3d3xijshDRR0wv294QjJeEHCFRhmGJBBBUacjHVaWIopnGbCYSc7f
+	 4F7SCSK8pYgixwnP47HJ7Aw1BnTgWXnSpMdbnq8eptaXmSAHgzkx279DJ6aBdE1tA9
+	 UVBQ2zc8bxpQP9HTNiffqAH6hUmy4/zACTXpKImSjGsuYmw2mqYbk3ndeOOdkt6YDo
+	 SzVoMX2qMIgaA==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: laura.nao)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 804F217E0B72;
-	Tue, 22 Jul 2025 12:27:38 +0200 (CEST)
-From: Laura Nao <laura.nao@collabora.com>
-To: wenst@chromium.org
-Cc: andrew-ct.chen@mediatek.com,
-	angelogioacchino.delregno@collabora.com,
-	arnd@arndb.de,
-	bchihi@baylibre.com,
-	colin.i.king@gmail.com,
-	conor+dt@kernel.org,
-	daniel.lezcano@linaro.org,
-	devicetree@vger.kernel.org,
-	kernel@collabora.com,
-	krzk+dt@kernel.org,
-	lala.lin@mediatek.com,
-	laura.nao@collabora.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-pm@vger.kernel.org,
-	lukasz.luba@arm.com,
-	matthias.bgg@gmail.com,
-	nfraprado@collabora.com,
-	rafael@kernel.org,
-	robh@kernel.org,
-	rui.zhang@intel.com,
-	srini@kernel.org,
-	u.kleine-koenig@baylibre.com
-Subject: Re: [PATCH 5/9] thermal/drivers/mediatek/lvts: Add lvts_temp_to_raw variant for positive temp_factor
-Date: Tue, 22 Jul 2025 12:26:53 +0200
-Message-Id: <20250722102653.30851-1-laura.nao@collabora.com>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <CAGXv+5F9NwJ7uGFPWZM-Dywbbk4f6aiYS5M4m6_VFETVGEwr9A@mail.gmail.com>
-References: <CAGXv+5F9NwJ7uGFPWZM-Dywbbk4f6aiYS5M4m6_VFETVGEwr9A@mail.gmail.com>
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 302E017E07FB;
+	Tue, 22 Jul 2025 11:39:55 +0200 (CEST)
+Message-ID: <b90956e8-adf9-4411-b6f9-9212fcd14b59@collabora.com>
+Date: Tue, 22 Jul 2025 11:39:54 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 3/4] dt-bindings: ufs: mediatek,ufs: add MT8195
+ compatible and update clock nodes
+To: Macpaul Lin <macpaul.lin@mediatek.com>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
+ Bart Van Assche <bvanassche@acm.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Peter Wang <peter.wang@mediatek.com>, Stanley Jhu <chu.stanley@gmail.com>,
+ "James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
+ "Martin K . Petersen" <martin.petersen@oracle.com>,
+ linux-scsi@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+ Ramax Lo <ramax.lo@mediatek.com>, Macpaul Lin <macpaul@gmail.com>,
+ MediaTek Chromebook Upstream
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+References: <20250722085721.2062657-1-macpaul.lin@mediatek.com>
+ <20250722085721.2062657-3-macpaul.lin@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250722085721.2062657-3-macpaul.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250722_032741_720850_63D1A77C 
-X-CRM114-Status: GOOD (  27.10  )
+X-CRM114-CacheID: sfid-20250722_023958_284869_B23D42D6 
+X-CRM114-Status: GOOD (  18.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,99 +88,115 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/21/25 13:12, Chen-Yu Tsai wrote:
-> On Mon, Jul 21, 2025 at 4:31 PM Laura Nao <laura.nao@collabora.com> wrote:
->>
->> The current lvts_temp_to_raw() implementation assumes a negative
->> temperature-to-raw slope (temp_factor), which holds for the SoCs
->> currently supported by the driver. However, this assumption breaks on
->> MT8196/MT6991, where the slope is positive.
->
-> I don't think that's really a problem. The formula is:
->
->     temp = (raw * factor) >> 14 + golden
->
-> If we move the terms around we get
->
->     ((temp - golden) << 14) / factor = raw
->
-> Or
->
->     raw = ((golden - temp) << 14) / -factor
->
->
-> The calculations should work regardless of whether the factor is positive
-> or negative, as long as the intermediate and final values are within
-> the range of s64.
->
->> Add a variant of the function that inverts the calculation logic
->> accordingly. This ensures accurate raw value generation for temperature
->> thresholds,avoiding spurious thermal interrupts or unintended hardware
->> resets on MT8196/MT6991.
->>
->> Signed-off-by: Laura Nao <laura.nao@collabora.com>
->> ---
->>  drivers/thermal/mediatek/lvts_thermal.c | 12 ++++++++++++
->>  1 file changed, 12 insertions(+)
->>
->> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
->> index db83137c7537..3c34956e37c1 100644
->> --- a/drivers/thermal/mediatek/lvts_thermal.c
->> +++ b/drivers/thermal/mediatek/lvts_thermal.c
->> @@ -296,6 +296,18 @@ static u32 lvts_temp_to_raw(int temperature, int temp_factor)
->>         return div_s64(raw_temp, -temp_factor);
->>  }
->>
->> +static u32 lvts_temp_to_raw_v2(int temperature, int temp_factor)
->> +{
->> +       u32 raw_temp;
->> +
->> +       if (temp_factor == 0)
->> +               return temperature;
->> +
->> +       raw_temp = temperature - golden_temp_offset;
->> +
->> +       return div_s64((s64)temp_factor << 14, raw_temp);
->> +}
->
-> Here you have
->
->     raw = (factor << 14) / (temp - golden)
->
-> which, barring integer arithmetic limitations, is actually the
-> multiplicative inverse of the original version.
->
-> So I think the commit message is misleading. It's not negative or
-> positive that matters, but that the hardware expects the
-> multiplicative inverse in this version.
->
-> (or the downstream code is just botched.)
->
+Il 22/07/25 10:57, Macpaul Lin ha scritto:
+> Add MT8195 UFSHCI compatible string.
+> Relax the schema to allow between one to eight clocks/clock-names
+> entries for all MediaTek UFS nodes. Legacy platforms may only need
+> a few clocks, whereas newer devices such as the MT8195 require
+> additional clock-gating domains. For MT8195 specifically, enforce
+> exactly eight clocks and clock-names entries to satisfy its hardware
+> requirements.
+> 
+> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+> ---
+>   .../devicetree/bindings/ufs/mediatek,ufs.yaml | 42 ++++++++++++++++---
+>   1 file changed, 36 insertions(+), 6 deletions(-)
+> 
+> Changes for v2:
+>   - Remove duplicate minItems and maxItems as suggested in the review.
+>   - Add a description of how the MT8195 hardware differs from earlier
+>     platforms.
+> 
+> diff --git a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
+> index 20f341d25ebc..1dec54fb00f3 100644
+> --- a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
+> +++ b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
+> @@ -9,21 +9,20 @@ title: Mediatek Universal Flash Storage (UFS) Controller
+>   maintainers:
+>     - Stanley Chu <stanley.chu@mediatek.com>
+>   
+> -allOf:
+> -  - $ref: ufs-common.yaml
+> -
+>   properties:
+>     compatible:
+>       enum:
+>         - mediatek,mt8183-ufshci
+>         - mediatek,mt8192-ufshci
+> +      - mediatek,mt8195-ufshci
+>   
+>     clocks:
+> -    maxItems: 1
+> +    minItems: 1
+> +    maxItems: 8
+>   
+>     clock-names:
+> -    items:
+> -      - const: ufs
+> +    minItems: 1
+> +    maxItems: 8
+>   
+>     phys:
+>       maxItems: 1
+> @@ -47,6 +46,37 @@ required:
+>   
+>   unevaluatedProperties: false
+>   
+> +allOf:
+> +  - $ref: ufs-common.yaml
+> +
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            enum:
+> +              - mediatek,mt8195-ufshci
+> +    then:
+> +      properties:
+> +        clocks:
+> +          minItems: 8
+> +        clock-names:
+> +          items:
+> +            - const: ufs
+> +            - const: ufs_aes
+> +            - const: ufs_tick
+> +            - const: unipro_sysclk
+> +            - const: unipro_tick
+> +            - const: unipro_mp_bclk
 
-Right - the positive temp_factor on MT8196 is one distinction from older 
-SoCs, and I initially assumed that was the reason a different conversion 
-formula was needed. That assumption was partly based on the original 
-lvts_temp_to_raw() implementation, which assigns 
-((s64)(golden_temp_offset - temperature) << 14) to a u32, losing the 
-sign when golden_temp_offset is negative. However, even correcting that 
-to preserve the sign doesn't make the function work on MT8196 as it 
-still requires using the multiplicative inverse form of the formula. 
+The unipro mp_bclk really is the ufs-sap clock; besides, the standard has clocks
+for both TX and RX symbols - and also MT8195 (and also MT6991, MT8196, and others)
+UFS controller do have both TX and RX symbol clocks.
 
-I'll reword the commit message to clarify this.
+Besides, you're also missing the crypto clocks for UFS, which brings the count to
+12 total clocks for MT8195.
 
-Thanks!
+Please, look at my old submission, which actually fixes the compatibles other than
+adding the right clocks for all UFS controllers in MediaTek platforms.
 
-Laura
+https://lore.kernel.org/all/20240612074309.50278-1-angelogioacchino.delregno@collabora.com/
 
-> ChenYu
->
->> +
->>  static int lvts_get_temp(struct thermal_zone_device *tz, int *temp)
->>  {
->>         struct lvts_sensor *lvts_sensor = thermal_zone_device_priv(tz);
->> --
->> 2.39.5
->>
->>
+I want to take the occasion to remind everyone that my fixes were discarded because
+the MediaTek UFS driver maintainer wants to keep the low quality of the driver in
+favor of easier downstream porting - which is *not* in any way adhering to quality
+standards that the Linux community deserves.
+
+Cheers,
+Angelo
+
+> +            - const: ufs_tx_symbol
+> +            - const: ufs_mem_sub
+> +    else:
+> +      properties:
+> +        clocks:
+> +          maxItems: 1
+> +        clock-names:
+> +          items:
+> +            - const: ufs
+> +
+>   examples:
+>     - |
+>       #include <dt-bindings/clock/mt8183-clk.h>
+
 
 
