@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 059FAC83F25
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jul 2025 09:54:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A5D5C87FC8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jul 2025 10:07:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DAgUznr1X1JtX85tfa2WUk7WuDWSP7ZuzPrbz/RzCxg=; b=b8FV86TyG2ejPFHK7Uoumo20hx
-	2nFn4M8gcpGJri28ee7nxd9dxJeLcheEMExXcVKE7AuXL2H9x7CPBrTIaamGDNE9SQXZCatn8phVk
-	WN4bWMYlL1aVmDWFFGUNAcmoA8KXoV12d6k3Uwnqjn1HGmkrHeEEyAdFLmdRPRnRYJf/YTpheLCxi
-	lT1x4Gc6f98YrpkgNxRFYLkdRLK10F0GozlyXMq9T+W+j1XMLO1f5jQbJj48vyvxziWYmCbiSIwcc
-	P9SskfYlrVb18RyVB5Io77iZKMbvyhO7Zm/tyw7vactPFO/NIyZvgtZaGt/EhzathZoXoU42ne+8G
-	/h4AtTtA==;
+	bh=8pt/dDbl5x5sOY+/vW0nNNsMEFBe3jUslMri8s6phho=; b=fq0CpD2M0TQwAyrx+cDYVpQzG2
+	Q9tRGqbpFuJ4jtlYdDPW1u38LHXoBVZmkpBSKF2d+djhHF5oijBZXjJTg25S6Twxazx9kvXY/p29b
+	orsruum18OgEzzBxTBOVhCfdrMW2tAdT4xohJ7pMX3ewFB0Iy9e6krQ+uW4QW1tKL7HJtdCTuCNMQ
+	im59Jp3jDUvd7u3Jydbra0MmLxp8xdD35hmt4b5da77DDDNynB4NYq/dmcxXISUPlBrWXExB0UPdz
+	K3BGEJq67/7EAn3H6A7ZeIN067i1oOHjrmc78a27z8iCl0WMFWEdEmPpfRGagrNnF3PZZjdJLudIF
+	2sEDfVcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ue9hM-000000024IG-1Zkc;
-	Tue, 22 Jul 2025 09:54:12 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1ue9tk-000000026gA-22qK;
+	Tue, 22 Jul 2025 10:07:00 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ue9eo-000000023so-1LlE;
-	Tue, 22 Jul 2025 09:51:36 +0000
+	id 1ue9le-000000024jK-3oMJ;
+	Tue, 22 Jul 2025 09:58:40 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1753177892;
-	bh=lVxHa2zhNH+2LvdHq/VYL69cUHX2Etw2hbHzGQ0URVo=;
+	s=mail; t=1753178317;
+	bh=2YDS8ULpwtubaxcIFjQWUJJwv1dOYUJ8pgeIv2TxAEE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=HaIsBVE8eb/H8dV25NCgrOEWFYTe4t/eYFuI/rz3+JDB+8bOoCx4I/92/IvQb5kcc
-	 cqq1Gn+T91lmo3V7bp9P1lUM2TZN755yPWu4pszqk5oxSaQJj3woP59HmLtiMY2Ljd
-	 G7WYyATvPVKQCWH/6UENC+7bTtSF4+pVO1IV9txxnpH31sQRIHoNfzXtXPooYZolGF
-	 pvKdFcs7RX7wJFTbxBJEWM2am1eizZU2h+vFnCpiqo1ytdiU9N3NugbEKZIP3oa+wW
-	 ZtXKGlxCT3YJPA5SbOL/0IfIAV4OYkNgNKfqxZ/aNYWqp8DV/YZDfJk+atR9mHB893
-	 IT0sZ5j8piJ0g==
+	b=bOqivjtbSPvFJU/luuT3nC2wdJoPQbFutJLxUorFDE0xn/p/JubZ4ViWojQlqL/MZ
+	 7ITo4F4fHJC5XYll5zEjTUOWA1Vd+7AovoPNXpBp09d2z+LicgilB8z1rd4FJOK0dA
+	 hrj+akHr8FzXjPnP9AYU1OUeBiVujbJBPGOezZmarQ7b1AsSb1W9J+hMMaJhMx4pOk
+	 bQ/ddwSNgA+pE8mQ79+WrSeDT7/tzUGKUwiXECcrv93gVyyxzJSro8NlD+4EVU9WLB
+	 tTCyHqYxyxX/+C1ulM6IUgk73dhhEx0Vqea+CC8MaXy/3AzA/3czJrzKShCeJPYtwV
+	 QeAi0TKhgHWLw==
 Received: from laura.lan (unknown [IPv6:2001:b07:646b:e2:bd9c:eae9:88b0:783c])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laura.nao)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id AAF6817E10D6;
-	Tue, 22 Jul 2025 11:51:30 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DC33D17E07FB;
+	Tue, 22 Jul 2025 11:58:35 +0200 (CEST)
 From: Laura Nao <laura.nao@collabora.com>
 To: wenst@chromium.org
 Cc: andrew-ct.chen@mediatek.com,
@@ -69,18 +69,18 @@ Cc: andrew-ct.chen@mediatek.com,
 	rui.zhang@intel.com,
 	srini@kernel.org,
 	u.kleine-koenig@baylibre.com
-Subject: Re: [PATCH 0/9] Add thermal sensor driver support for Mediatek MT8196
-Date: Tue, 22 Jul 2025 11:50:46 +0200
-Message-Id: <20250722095046.27549-1-laura.nao@collabora.com>
+Subject: Re: [PATCH 3/9] thermal/drivers/mediatek/lvts: Guard against zero temp_factor in lvts_raw_to_temp
+Date: Tue, 22 Jul 2025 11:57:52 +0200
+Message-Id: <20250722095752.28245-1-laura.nao@collabora.com>
 X-Mailer: git-send-email 2.39.5
-In-Reply-To: <CAGXv+5EmigF=m1zDZ71AMv02XwyYWQxpiRpiwc7YMg=8vc2FZA@mail.gmail.com>
-References: <CAGXv+5EmigF=m1zDZ71AMv02XwyYWQxpiRpiwc7YMg=8vc2FZA@mail.gmail.com>
+In-Reply-To: <CAGXv+5F51DiCHi_QPeDKOGCwvgM6HpmRjEjSgS8-mh=Fg1Fr5g@mail.gmail.com>
+References: <CAGXv+5F51DiCHi_QPeDKOGCwvgM6HpmRjEjSgS8-mh=Fg1Fr5g@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250722_025134_508890_0875D1F1 
-X-CRM114-Status: GOOD (  18.54  )
+X-CRM114-CacheID: sfid-20250722_025839_097625_0C783F26 
+X-CRM114-Status: GOOD (  16.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,67 +95,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi ChenYu,
-
-On 7/22/25 09:40, Chen-Yu Tsai wrote:
-> Hi,
+On 7/21/25 12:08, Chen-Yu Tsai wrote:
+> On Mon, Jul 21, 2025 at 4:26 PM Laura Nao <laura.nao@collabora.com> wrote:
+>>
+>> Add a guard against zero temp_factor in lvts_raw_to_temp() to prevent
+>> division by zero and ensure safe conversion.
+>>
+>> Fixes: 6725a29321e4 ("thermal/drivers/mediatek/lvts_thermal: Make coeff configurable")
+>> Signed-off-by: Laura Nao <laura.nao@collabora.com>
 >
-> On Mon, Jul 21, 2025 at 4:18 PM Laura Nao <laura.nao@collabora.com> wrote:
->>
->> This patch series extends the MediaTek LVTS thermal driver to support the
->> MT8196 SoC.
->>
->> MT8196 uses a positive temp_factor for temperature conversion, requiring
->> slight adjustments in the conversion logic.
->>
->> To support this, the series introduces:
->>
->> - A new struct lvts_platform_ops to allow platform-specific
->>   conversion logic between raw sensor values and temperature
->> - A variant of the lvts_temp_to_raw() implementation for SoCs with positive
->>   temp_factor values
->> - Platform data and controller definitions for MT8196
+> Code wise,
 >
-> I see the GPU and APU thermal sensors were left out. Was there a reason
-> for this?
+> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+>
+> However I assume this would only happen with bad platform data? The
+> factor should _never_ be zero. Maybe also issue a warning in the probe
+> function?
 >
 
-Based on my testing, the GPU and APU sensors are not functional at this 
-stage - the APU controller returns an invalid ID, and the GPU sensors 
-report invalid values. I suspect that both the GPU and APU need to be 
-fully initialized for the sensors to operate correctly, so I'm planning 
-to upstream support for those at a later stage.
+Yes, this should only occur with incorrect platform data. Adding a
+warning in the probe function sounds like a good idea to catch 
+any misconfiguration early. I’ll include that in the next revision.
 
-Best,
+Thanks,
 
 Laura
 
-> Thanks
 > ChenYu
 >
->> Laura Nao (9):
->>   dt-bindings: thermal: mediatek: Add LVTS thermal controller support
->>     for MT8196
->>   thermal/drivers/mediatek/lvts: Make number of calibration offsets
->>     configurable
->>   thermal/drivers/mediatek/lvts: Guard against zero temp_factor in
->>     lvts_raw_to_temp
->>   thermal: mediatek: lvts: Add platform ops to support alternative
->>     conversion logic
->>   thermal/drivers/mediatek/lvts: Add lvts_temp_to_raw variant for
->>     positive temp_factor
->>   thermal/drivers/mediatek/lvts: Add support for ATP mode
->>   thermal/drivers/mediatek/lvts: Support MSR offset for 16-bit
->>     calibration data
->>   thermal/drivers/mediatek/lvts_thermal: Add MT8196 support
->>   dt-bindings: nvmem: mediatek: efuse: Add support for MT8196
+>> ---
+>>  drivers/thermal/mediatek/lvts_thermal.c | 9 ++++++---
+>>  1 file changed, 6 insertions(+), 3 deletions(-)
 >>
->>  .../bindings/nvmem/mediatek,efuse.yaml        |   1 +
->>  .../thermal/mediatek,lvts-thermal.yaml        |   2 +
->>  drivers/thermal/mediatek/lvts_thermal.c       | 315 ++++++++++++++++--
->>  .../thermal/mediatek,lvts-thermal.h           |  26 ++
->>  4 files changed, 325 insertions(+), 19 deletions(-)
+>> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+>> index 8d5259b9d03b..b80c2929ae74 100644
+>> --- a/drivers/thermal/mediatek/lvts_thermal.c
+>> +++ b/drivers/thermal/mediatek/lvts_thermal.c
+>> @@ -280,11 +280,14 @@ static int lvts_raw_to_temp(u32 raw_temp, int temp_factor)
 >>
+>>  static u32 lvts_temp_to_raw(int temperature, int temp_factor)
+>>  {
+>> -       u32 raw_temp = ((s64)(golden_temp_offset - temperature)) << 14;
+>> +       u32 raw_temp;
+>>
+>> -       raw_temp = div_s64(raw_temp, -temp_factor);
+>> +       if (temp_factor == 0)
+>> +               return temperature;
+>>
+>> -       return raw_temp;
+>> +       raw_temp = ((s64)(golden_temp_offset - temperature)) << 14;
+>> +
+>> +       return div_s64(raw_temp, -temp_factor);
+>>  }
+>>
+>>  static int lvts_get_temp(struct thermal_zone_device *tz, int *temp)
 >> --
 >> 2.39.5
 >>
