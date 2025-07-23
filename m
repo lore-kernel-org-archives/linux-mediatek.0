@@ -4,74 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22872C83F25
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jul 2025 04:52:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18688C83F25
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jul 2025 06:01:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nfIBzr1UKSVHnVMmkUtLD/+X3Es9KGDjRhcvfr2lldY=; b=O5Uxas2l7Y9Kd3SxL9AchMvdYW
-	OWiLGf+0c+ZbfPo7jrHRx2cOWwcoYGEdJEkKcddJ7kT3jbPcpvo4axzH7NVjgkmmNYwUI7Q8u00Zv
-	SNbNesueEu9R70S2+msSeL5ZABDgWtCqa30fATPw635aczukCw1YeEM+J8os4mnkFwmRuL2MZ2u6a
-	7lOtiuIMdk4uCOrLNN9M0IDMWV+RQEL0pLvuhgnX9XyJwa8GypHMKbZwNBwl4V9hpVm4ort48JJvU
-	J0c0iKmesCK6bV3qCpn38jH+o0m7EFOwbSr+Sc+tbN6Mc7jj0oxqEbXsQA106/b864IUdZrslA+r/
-	PFVrH4Kg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lSiuC68y6vtJuKNcZmfjMMQdZhPKMTZuS/55Zu4nDvU=; b=zbjbk7tjJNleFkfE2u+ngKS1KN
+	jA1SMT1qaNR/VodYsJ2IhNscvHePEnLIeGLznrYaqFjBlIDuhW/8/rE2fBjw1LopkS8KlKvNoFM/6
+	+M6OdlkAH8z9VJm2vx2SMznfxeVB+Z3lViE+m5SqFZIIcNaZtMOQ2BqeIqEpxhBPQmNr5oALc3OzM
+	2PEk+YHsDzAfZ13w6Q5IHwA4iLEcirNqvmtJr2FHICCXHCuvcILwIG1CTXII0IcKudjnz+tYH+TMO
+	/aHFb8eD2fEJ1JbeYJmMMlKxh1eSjnIBuBD4wDMC0KvYWssOw62wJ90Z2Hm4T+wSOP4G3z81YUD6J
+	wYaoCqZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueRT9-000000040zK-3fGU;
-	Wed, 23 Jul 2025 04:52:43 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1ueSXs-000000045lG-1F2g;
+	Wed, 23 Jul 2025 06:01:40 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueRQh-000000040qZ-3hEs;
-	Wed, 23 Jul 2025 04:50:11 +0000
+	id 1ueSUu-000000045Rs-2qA7;
+	Wed, 23 Jul 2025 05:58:38 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 0049C668EE;
-	Wed, 23 Jul 2025 04:50:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7E5CEC4CEE7;
-	Wed, 23 Jul 2025 04:50:10 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id D7513A5344C;
+	Wed, 23 Jul 2025 05:58:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0797BC4CEE7;
+	Wed, 23 Jul 2025 05:58:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1753246210;
-	bh=FRrcCCQQ4F/hJI3vXYnGQ/KyERQSqfeqQbk3YFvCDTg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=X3cMUCxTLqzOQsWUObwmsbY2S/+091JqNYSeqdU0N/cOAtyVxdEmILr/RzkJdUnSl
-	 jb6gz+T51o/8zfFtk8GYNes4Ts0EHdyPETGXI0bFgyPbFZCuwSBMMZZ7/ibVIbLCun
-	 dcmBsj4jFXfbtdgBUhWu4B3pbbfFgS41JQZP8jRbGdXpuOqDsB8ON0qUmPiln5sVMw
-	 nfxEePuVh48sExCgQLvZ72J3jJBFLpXd4QkiJDvzFA4EBWDJGN3bzfQn//zlF7HVof
-	 MVpo5AsJn9fWRlbKJuIVhCTwuBscdHITGU90uxyDVzQe0o9gVoZDYvRqkrHL6s8Mnp
-	 GXAI0WxPGCzSw==
-Date: Tue, 22 Jul 2025 23:50:09 -0500
-From: Rob Herring <robh@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Macpaul Lin <macpaul.lin@mediatek.com>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Avri Altman <avri.altman@wdc.com>,
-	Bart Van Assche <bvanassche@acm.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Peter Wang <peter.wang@mediatek.com>,
-	Stanley Jhu <chu.stanley@gmail.com>,
-	"James E . J . Bottomley" <James.Bottomley@hansenpartnership.com>,
-	"Martin K . Petersen" <martin.petersen@oracle.com>,
-	linux-scsi@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Bear Wang <bear.wang@mediatek.com>,
-	Pablo Sun <pablo.sun@mediatek.com>,
-	Ramax Lo <ramax.lo@mediatek.com>, Macpaul Lin <macpaul@gmail.com>,
-	MediaTek Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: Re: [PATCH v2 3/4] dt-bindings: ufs: mediatek,ufs: add MT8195
- compatible and update clock nodes
-Message-ID: <20250723045009.GA1218051-robh@kernel.org>
-References: <20250722085721.2062657-1-macpaul.lin@mediatek.com>
- <20250722085721.2062657-3-macpaul.lin@mediatek.com>
- <b90956e8-adf9-4411-b6f9-9212fcd14b59@collabora.com>
+	s=k20201202; t=1753250315;
+	bh=mtV6PtNaUOkVWENMgyWOyGp2r589sffVzijjl/VKBVs=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=NkX4MEOcrd8F/ufhbz5yVg7ZqwkIWhm2IdBoB7eJLTs7yjtVm+EmSCCnGH3XS14Lj
+	 3/9WjCMMgrrKrSg8+MtIOHljZnoQkHSgLEzuvEj2F7hBXmIhOOjBJLgrsaeLF5sQNB
+	 yDunzZkKjcRTgF3/Sh1taA11PW/6kGDhN0beVhcFkVTL7uwSegXqbFcr19QGlm+oXj
+	 LgYe4qD5x/hghTRXalnoqrChtbWJ4WWPFbXhXsqF29Dp2zA+e8DszKLxGbUcHvRwj8
+	 Ftr45gPb7jmL+m9CapBFVEOzn8hFL1+/XUgjq8hQgbnon4zv2K4hpuoOTyhmNeE/cx
+	 P14fm0njw7pyg==
+Message-ID: <25f80663-c896-4bbd-b1a5-0b5a93e047e1@kernel.org>
+Date: Wed, 23 Jul 2025 07:58:30 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <b90956e8-adf9-4411-b6f9-9212fcd14b59@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCHv5 wireless-next 7/7] dt-bindings: net: wireless: rt2800:
+ add SOC Wifi
+To: Rosen Penev <rosenp@gmail.com>, linux-wireless@vger.kernel.org
+Cc: Johannes Berg <johannes@sipsolutions.net>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Stanislaw Gruszka <stf_xl@wp.pl>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>,
+ "open list:MIPS" <linux-mips@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>
+References: <20250722212856.11343-1-rosenp@gmail.com>
+ <20250722212856.11343-8-rosenp@gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <20250722212856.11343-8-rosenp@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250722_225836_847272_364090AE 
+X-CRM114-Status: GOOD (  10.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,96 +128,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 22, 2025 at 11:39:54AM +0200, AngeloGioacchino Del Regno wrote:
-> Il 22/07/25 10:57, Macpaul Lin ha scritto:
-> > Add MT8195 UFSHCI compatible string.
-> > Relax the schema to allow between one to eight clocks/clock-names
-> > entries for all MediaTek UFS nodes. Legacy platforms may only need
-> > a few clocks, whereas newer devices such as the MT8195 require
-> > additional clock-gating domains. For MT8195 specifically, enforce
-> > exactly eight clocks and clock-names entries to satisfy its hardware
-> > requirements.
-> > 
-> > Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> > ---
-> >   .../devicetree/bindings/ufs/mediatek,ufs.yaml | 42 ++++++++++++++++---
-> >   1 file changed, 36 insertions(+), 6 deletions(-)
-> > 
-> > Changes for v2:
-> >   - Remove duplicate minItems and maxItems as suggested in the review.
-> >   - Add a description of how the MT8195 hardware differs from earlier
-> >     platforms.
-> > 
-> > diff --git a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
-> > index 20f341d25ebc..1dec54fb00f3 100644
-> > --- a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
-> > +++ b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
-> > @@ -9,21 +9,20 @@ title: Mediatek Universal Flash Storage (UFS) Controller
-> >   maintainers:
-> >     - Stanley Chu <stanley.chu@mediatek.com>
-> > -allOf:
-> > -  - $ref: ufs-common.yaml
-> > -
-> >   properties:
-> >     compatible:
-> >       enum:
-> >         - mediatek,mt8183-ufshci
-> >         - mediatek,mt8192-ufshci
-> > +      - mediatek,mt8195-ufshci
-> >     clocks:
-> > -    maxItems: 1
-> > +    minItems: 1
-> > +    maxItems: 8
-> >     clock-names:
-> > -    items:
-> > -      - const: ufs
-> > +    minItems: 1
-> > +    maxItems: 8
-> >     phys:
-> >       maxItems: 1
-> > @@ -47,6 +46,37 @@ required:
-> >   unevaluatedProperties: false
-> > +allOf:
-> > +  - $ref: ufs-common.yaml
-> > +
-> > +  - if:
-> > +      properties:
-> > +        compatible:
-> > +          contains:
-> > +            enum:
-> > +              - mediatek,mt8195-ufshci
-> > +    then:
-> > +      properties:
-> > +        clocks:
-> > +          minItems: 8
-> > +        clock-names:
-> > +          items:
-> > +            - const: ufs
-> > +            - const: ufs_aes
-> > +            - const: ufs_tick
-> > +            - const: unipro_sysclk
-> > +            - const: unipro_tick
-> > +            - const: unipro_mp_bclk
+On 22/07/2025 23:28, Rosen Penev wrote:
+> Add device-tree bindings for the RT2800 SOC wifi device found in older
+> Ralink/Mediatek devices.
 > 
-> The unipro mp_bclk really is the ufs-sap clock; besides, the standard has clocks
-> for both TX and RX symbols - and also MT8195 (and also MT6991, MT8196, and others)
-> UFS controller do have both TX and RX symbol clocks.
-> 
-> Besides, you're also missing the crypto clocks for UFS, which brings the count to
-> 12 total clocks for MT8195.
-> 
-> Please, look at my old submission, which actually fixes the compatibles other than
-> adding the right clocks for all UFS controllers in MediaTek platforms.
-> 
-> https://lore.kernel.org/all/20240612074309.50278-1-angelogioacchino.delregno@collabora.com/
-> 
-> I want to take the occasion to remind everyone that my fixes were discarded because
-> the MediaTek UFS driver maintainer wants to keep the low quality of the driver in
-> favor of easier downstream porting - which is *not* in any way adhering to quality
-> standards that the Linux community deserves.
+> Signed-off-by: Rosen Penev <rosenp@gmail.com>
 
-Sounds like we need a new maintainer then. They clearly don't understand 
-that downstream doesn't exist.
+<form letter>
+This is a friendly reminder during the review process.
 
-Rob
+It looks like you received a tag and forgot to add it.
+
+If you do not know the process, here is a short explanation:
+Please add Acked-by/Reviewed-by/Tested-by tags when posting new versions
+of patchset, under or above your Signed-off-by tag, unless patch changed
+significantly (e.g. new properties added to the DT bindings). Tag is
+"received", when provided in a message replied to you on the mailing
+list. Tools like b4 can help here. However, there's no need to repost
+patches *only* to add the tags. The upstream maintainer will do that for
+tags received on the version they apply.
+
+Please read:
+https://elixir.bootlin.com/linux/v6.12-rc3/source/Documentation/process/submitting-patches.rst#L577
+
+If a tag was not added on purpose, please state why and what changed.
+</form letter>
+
+Best regards,
+Krzysztof
 
