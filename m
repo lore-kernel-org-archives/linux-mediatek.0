@@ -4,96 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 080AAC83F27
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jul 2025 21:49:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4996C83F17
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jul 2025 04:48:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=67QEz9S+95ZQDu3rHCjWe+DFBCPwq22amqFwl+XgLLI=; b=Ihi92Qbl0f73LY3RemhHKp4G+I
-	C163uhv7SP8GrTZasRazi+jcYCUqiu0Wpil2RjJnK/iziXaj5ojZHzex9UmV8hog61HCvGQxF4RIv
-	IRRRrEMzjp40GfDxU8yWxmuZU7l2haNiTwehMmUzbdmxIiIVMaJQG2QAvXHpz+YvvQipG8NuZ6n0T
-	Yr90zJtEaMamghWsLyHl9HDER+Wbn/QZe1gRLGpQY/3PD3KYJbD4lqEzIO9ITH5NNa3meQrxAuUms
-	GH2mpdecC6+rJaw28ErCopgNckpgRRO5qLF/QCbJWkQy0BQEVltMg2ctDS+jHTfF4JWHT2InNU+ZJ
-	7z/GRd/A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XEZ4b1yk+7//NJD/5Ey6DCb9lbE3xQCEBPrP3KzowyI=; b=2P39ZTTv5BvdPwec+RvwSd0ndq
+	vw67CJa1tlNh9QA9vkrLlZTVeK+2u9Ip9bjn3wp2xMsu6BHcBeKlExUqe3DtG+BD+nkGx5D137aJy
+	w+4vhaWzRpkPeKT4qwAlZWxVooQnXBbduXW6HjLbnfc/8+17inA54xyD2LlLth0vPg2kL5ZPYeijr
+	NElS5dqngijXys2UObnJbioQ4gxNgi2p56ljIws1J1wLhiB7bj89oMls3emZWcp630i3Y8xsG8XqG
+	D0+tHtH/gbh5hUeE+gTmjEnibh0sy/bTvOKemEj4pWj621Z9do2TmTmgoH4juHKZI5G/SZnAkOqj0
+	dYt0ONvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueKrZ-00000003XfM-45cS;
-	Tue, 22 Jul 2025 21:49:29 +0000
-Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
+	id 1ueROk-000000040XM-1TvU;
+	Wed, 23 Jul 2025 04:48:10 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueKXt-00000003Vql-1JUw;
-	Tue, 22 Jul 2025 21:29:10 +0000
-Received: by mail-pg1-x533.google.com with SMTP id 41be03b00d2f7-b1fd59851baso4144500a12.0;
-        Tue, 22 Jul 2025 14:29:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1753219748; x=1753824548; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=67QEz9S+95ZQDu3rHCjWe+DFBCPwq22amqFwl+XgLLI=;
-        b=JKL1gXqRz1otcr79RMGkry0fgRIHDt5491gApHIske+acVawQ1aHxroJOx2DjIH3CX
-         VjLvGb0dpGe3FkSm4wH57xOSUb1xAcetNGGlwlvq0Tc2FkXYYhFv/tNlFVoTeAhybeUa
-         Upoe5ORlpt7ez4b3218LKgpuok7WlOAHfXTQp2WTH8vpv04knnZS088Lx/Me0+tcYqTP
-         O9WU4+pHRKn06GRw3sqaeo6WNqdBqmyUGkLLKh1dqUsJ1ZIXXZ2VIYf4K9H+f/h3ZEAs
-         dkUpMNDKdwZ0wzL5wIIXEetCukh6jXOQpnE+EcUTaGM9WWamh5XNpHnmEIZOMXRlrMha
-         wbvQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1753219748; x=1753824548;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=67QEz9S+95ZQDu3rHCjWe+DFBCPwq22amqFwl+XgLLI=;
-        b=dmk/R+IhONK8duGo17iWLQXq6/GfezAW+Cl/bJqrB0vo9t0f/iKXu9WjqpKtWxwIVZ
-         qeGnpCnLgZUoqLnyH6CiFS/Q247q5jOX2YNGYJ7NfiftVMSH5btvLluVCXXoqly6dX9T
-         MAki90SyF4kaATCLiRwAOGOlM3IZmScOiJvoMxPrjDqzAQYdKU1a073EBO2+swbj6hlN
-         phogZ3lkzJlsPiGqWxZ9yalNzIr1m0ErfOK7ErRPetljeVtW+BqiEJLmEQmfIJzDwYvY
-         MjhxKg6JwOz2MoiO6KpoLGsgNj09jk3jz+49Em6/y5X4yooFZKwZT7V/QfKziQBQhGdt
-         szDA==
-X-Forwarded-Encrypted: i=1; AJvYcCUF0z9ENHEyYxKgGpmlmWZS3dQhwjqeBEDmC56QcejLvbTYSM4NiY6eUgEpdFd0YsyY6SvuMSdDmVVgLrUMTGdW@lists.infradead.org, AJvYcCWnAMnF2edpZJE3AyGRwY1/7uY5vtiFLVp20VN5IxGvsbENBbKmpfs3fKPtytSTQ1mTYSogPxeO4JhAYqY4994=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw+Xo3nnkYQiGCEvdeGG6yhqlozwblA/fCrUFYDv3RG0fIe1sV2
-	wWiiNnBlIMNs8fVZOLObNYN0T3WonkMTDWgM14WEJBZxk3IzlIpj571q
-X-Gm-Gg: ASbGncu5/HfPgz8q4M1H4gFIqp9CB1BWe8iTFkNpetlAs3bJ8CwqFpqLZ7D0mBUSQHy
-	fAW8omInk0Gzd3d/w6eN63nyCkso1DK2q3iAhmqjaMmjccWjR1kRD6il7Cq3qos8aR4h2ZVr3F5
-	RaV8b7mPHMr4PT3nivNV4d5QeI9Xu8s0hkmKiCOv+fkxMoJwbWqmQAy+LhXwip3D9WRe5Lcr/cW
-	Z+cKapjXLIzAXTaazvGPeVK5E5iNXNyDAD2psJRnTpXrWuMc/LQB5JsD9VDFGaXRnfCUIQW3bvA
-	sDt/a9hOvgirvUnWu/4TOV8km4WankW3jg3dHZlFKp8wplYPtuIylhMNH4PpA8lqM7cDqyzlK6u
-	v89E=
-X-Google-Smtp-Source: AGHT+IHAVxGiZOrlaAUSxgUbUh6FKWopOqgmAMQnmnuTA3s27a7MO8YmCyqzn+U2fdYiR74X38P2ww==
-X-Received: by 2002:a17:90b:5844:b0:31c:3651:2d18 with SMTP id 98e67ed59e1d1-31e507b41d4mr1284874a91.16.1753219748471;
-        Tue, 22 Jul 2025 14:29:08 -0700 (PDT)
-Received: from archlinux.lan ([2601:644:8200:dab8::1f6])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-31e519ce384sm94942a91.2.2025.07.22.14.29.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 22 Jul 2025 14:29:08 -0700 (PDT)
-From: Rosen Penev <rosenp@gmail.com>
-To: linux-wireless@vger.kernel.org
-Cc: Johannes Berg <johannes@sipsolutions.net>,
-	Rob Herring <robh@kernel.org>,
+	id 1ueRMG-000000040L3-3Lpp;
+	Wed, 23 Jul 2025 04:45:37 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 2A37C43639;
+	Wed, 23 Jul 2025 04:45:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D9AF1C4CEE7;
+	Wed, 23 Jul 2025 04:45:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1753245936;
+	bh=BKZAmLwgvxaSIoSf5Jl7qz1ZZWhSXwuKKwePOfDXBws=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=tOUnKlrkZNQ30wvJmNd91NZsyelRJzyrBXpucF0GkpPNv2/hc+ynZF8gb4NJfMYte
+	 16HxU0tdOTDEXEAoNx3m7k8yQGfvbxDg7pfgexxilMUv6wdGjzWdcJJ6F75VRlHlv1
+	 mYEXS+DcNrI6MjpSD6K9kd+9FyscX+akEu9YC+yQf70//QiZ3yp9MubsEnQs8F/to9
+	 ErCotnPuTpVdwFlcUrAlZuICDe1BSvv9CCFBQwIxXErv1J2zfFmLaolLwFHIkS7GUl
+	 MFL6d5prxc+CvXLAd1ISFv4u42Rj5QdOzglqsVl/MAv356fD1Uf5R0YJDHQ4qj7YF7
+	 GRgBpOVmVJ40Q==
+Date: Tue, 22 Jul 2025 23:45:35 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Macpaul Lin <macpaul.lin@mediatek.com>
+Cc: Macpaul Lin <macpaul@gmail.com>, Peter Wang <peter.wang@mediatek.com>,
+	linux-scsi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	Pablo Sun <pablo.sun@mediatek.com>,
+	linux-mediatek@lists.infradead.org,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+	"Martin K . Petersen" <martin.petersen@oracle.com>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Avri Altman <avri.altman@wdc.com>, Ramax Lo <ramax.lo@mediatek.com>,
+	stable@vger.kernel.org, Bart Van Assche <bvanassche@acm.org>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Stanislaw Gruszka <stf_xl@wp.pl>,
-	devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS),
-	linux-kernel@vger.kernel.org (open list),
-	linux-mips@vger.kernel.org (open list:MIPS),
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
-	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
-Subject: [PATCHv5 wireless-next 7/7] dt-bindings: net: wireless: rt2800: add SOC Wifi
-Date: Tue, 22 Jul 2025 14:28:56 -0700
-Message-ID: <20250722212856.11343-8-rosenp@gmail.com>
-X-Mailer: git-send-email 2.50.0
-In-Reply-To: <20250722212856.11343-1-rosenp@gmail.com>
-References: <20250722212856.11343-1-rosenp@gmail.com>
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	devicetree@vger.kernel.org, Bear Wang <bear.wang@mediatek.com>,
+	MediaTek Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	linux-kernel@vger.kernel.org,
+	"James E . J . Bottomley" <James.Bottomley@hansenpartnership.com>,
+	Stanley Jhu <chu.stanley@gmail.com>,
+	Conor Dooley <conor+dt@kernel.org>
+Subject: Re: [PATCH v2 2/4] dt-bindings: ufs: mediatek,ufs: add
+ ufs-disable-mcq flag for UFS host
+Message-ID: <175324593457.1217884.7283187331572765587.robh@kernel.org>
+References: <20250722085721.2062657-1-macpaul.lin@mediatek.com>
+ <20250722085721.2062657-2-macpaul.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250722085721.2062657-2-macpaul.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250722_142909_350397_9296B2CB 
-X-CRM114-Status: GOOD (  12.81  )
+X-CRM114-CacheID: sfid-20250722_214536_857088_64D229A2 
+X-CRM114-Status: GOOD (  14.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,71 +87,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add device-tree bindings for the RT2800 SOC wifi device found in older
-Ralink/Mediatek devices.
 
-Signed-off-by: Rosen Penev <rosenp@gmail.com>
----
- .../bindings/net/wireless/ralink,rt2880.yaml  | 49 +++++++++++++++++++
- 1 file changed, 49 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/net/wireless/ralink,rt2880.yaml
+On Tue, 22 Jul 2025 16:57:18 +0800, Macpaul Lin wrote:
+> Add the 'mediatek,ufs-disable-mcq' property to the UFS device-tree
+> bindings. This flag corresponds to the UFS_MTK_CAP_DISABLE_MCQ host
+> capability recently introduced in the UFS host driver, allowing it
+> to disable the Multiple Circular Queue (MCQ) feature when present.
+> The binding schema has also been updated to resolve DTBS check errors.
+> 
+> Cc: stable@vger.kernel.org
+> Fixes: 46bd3e31d74b ("scsi: ufs: mediatek: Add UFS_MTK_CAP_DISABLE_MCQ")
+> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> Changes for v2:
+>  - Split new property from the origin patch.
+>  - Add dependency description. Since the code in ufs-mediatek.c
+>    has been backport to stable tree. The dt-bindings should be backport
+>    to the same stable tree as well.
+> 
 
-diff --git a/Documentation/devicetree/bindings/net/wireless/ralink,rt2880.yaml b/Documentation/devicetree/bindings/net/wireless/ralink,rt2880.yaml
-new file mode 100644
-index 000000000000..04dc5bb2edcc
---- /dev/null
-+++ b/Documentation/devicetree/bindings/net/wireless/ralink,rt2880.yaml
-@@ -0,0 +1,49 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/net/wireless/ralink,rt2880.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Ralink RT2880 wireless device
-+
-+maintainers:
-+  - Stanislaw Gruszka <stf_xl@wp.pl>
-+
-+description: |
-+  This node provides properties for configuring RT2880 SOC wifi devices.
-+  The node is expected to be specified as a root node of the device.
-+
-+allOf:
-+  - $ref: ieee80211.yaml#
-+
-+properties:
-+  compatible:
-+    enum:
-+      - ralink,rt2880-wifi
-+
-+  reg:
-+    maxItems: 1
-+
-+  clocks:
-+    maxItems: 1
-+
-+  interrupts:
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - clocks
-+  - interrupts
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    wifi@110180000 {
-+      compatible = "ralink,rt2880-wifi";
-+      reg = <0x10180000 0x40000>;
-+      clocks = <&sysc 16>;
-+      interrupt-parent = <&cpuintc>;
-+      interrupts = <6>;
-+    };
--- 
-2.50.0
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
 
