@@ -4,88 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFC9DC83F17
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jul 2025 08:34:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64D8DC83F17
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jul 2025 08:46:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=olMtrJnLhEjWHgL/HG3oGrg4NlZ32OtAMmwdF/ifXOs=; b=Rmifka6s0IUgI3zRxJMMPqKHK/
-	QYsYiGnuM1QFUNvJUOhfGkyZlXrnVijM9X+LO1N6IC2LxhIylr49eVnB9FiOVzQr0Ta9eIsOHpx3Y
-	gNZEQ57GCStDD/4RbSm7s2ZnbK5xuvHcqJRUdqPRA3OifH9eoSb0+bbjjj7tBTb9ndscXK9F4au4x
-	Of4mJHGo1q38N7cUtsWMzw5n2p9PhTZkWIPIbJvnx4w+X6kHHMea1EdC0YoW4xpVLpVbjYbwi4a+e
-	Phdp32279JLlRNzSXostmeOZUibC3S2rOej66EWu3rAFcUvLBVct2cc9KfiJ9nmdlgxGjOQ76vPWz
-	WlMosUVg==;
+	bh=mOVE8ERVcdvnV2l+bviWeKhAZwDCoktNkI360zMeYh4=; b=u/y4QOtTt0py3C3tmo823suL9P
+	aXgufrXo0wXlK+v/h6QBiqe4YJ7CAeKzNSdoANh6DM0rgMSiZpmoud4yPEZuloSLKgD6Vl6wdvZb0
+	aMRbeqapWuNvDs1tlYZJdnEyEwY4tzOAzKcv6oCal+e67pV8N0DyC1Cm9ceePplXMA/DCdP8duS5M
+	W8cD7JwvhP2RB4rtzoY4CKIDkig0eeBXPocqAFDJUalXedt6QmibtkGeU72hlEkul0YoP2D5tOcNi
+	kZuTnztmQ5mr7Ycg3CBjmKH3SaYlOyZBdRebVbkmuzOvQtED2YHl+YlRUbLSY7udR8Q0JD5Wg3wFT
+	KKMlq9yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueUvV-00000004O1R-3uph;
-	Wed, 23 Jul 2025 08:34:13 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1ueV7g-00000004PY3-4AOj;
+	Wed, 23 Jul 2025 08:46:48 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueUY9-00000004L54-3Or3;
-	Wed, 23 Jul 2025 08:10:07 +0000
+	id 1ueUef-00000004Lou-3WiZ;
+	Wed, 23 Jul 2025 08:16:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1753258204;
-	bh=EdhV/HoC6xZnX2bnuCV2/LzTZIEfyRdVxGCTzPm+bK0=;
+	s=mail; t=1753258608;
+	bh=+VQ4AqRNQYlMRlFVDGpoehc6xQniWJm1BPQ7EST4cqg=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=BL+gnleZ794iAZx7tLA6dt0FfFB0Q2Rry3uLk1sG7yLLhffct61DNXSoRs1cQgUZK
-	 4Qw3EgNGeV0zUItANc/V4ytSOX65TwPojnYtzpZunG6rteQWx5buVSEEeiKupwvrKE
-	 0l155W/3aZOxY0DNpNIJVfO5F90N/pKQu2lirmfNXgOXOgzhNSTLBOyhDVpDRq+emY
-	 kgvq6bQa99iUXtmlgGB3aKpR9FkSVhXIqnieSa2Lcx1EsNcUppCYv4Je87Doa3n9hB
-	 /phYF0vawpq5rbJtDl8LGOadDEkNX5CD8KGZpUpc3eCq37VmXIbWGl+8hLvOV+teW4
-	 N3FxYLUOoiP6w==
+	b=NzoEBDDFyHT92D135vYyDMDEg/L899CZaatPg8ttNTCMCzYXMmO9SSXl8HJxzi/eB
+	 ouGmCUtK+4g9lbugxf9cGXhtzHCTnX8aIjeBUxrjc18JZeoLDMEQBa66bHd+PZAT1f
+	 ANBKPB8CKnumyYU9hNBgfDomPdJJE2gw6cG4kKNlaKgq29lChRTcNb/z+nYrZaEyFl
+	 +uML3FedhGDrxPcoHXNNSn23ekKEKAZxz/UstEwZT7/AmC43Zkhp0V1hhbBQ94jRaq
+	 oUmudd6wIoxXJ6Cd5j5nPhZfQJbMPGWctqn/5XiCA5PMpcUPLSUC/fJhDMKNOJcIMu
+	 yHgFL6I3Dm9Hw==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E48DD17E0CE6;
-	Wed, 23 Jul 2025 10:10:02 +0200 (CEST)
-Message-ID: <f1589156-7e4a-4f47-88a1-8c51f6594366@collabora.com>
-Date: Wed, 23 Jul 2025 10:10:02 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 96B8517E017D;
+	Wed, 23 Jul 2025 10:16:47 +0200 (CEST)
+Message-ID: <5d7557f0-841b-45ea-901c-5b595ac8bde3@collabora.com>
+Date: Wed, 23 Jul 2025 10:16:47 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/4] dt-bindings: ufs: mediatek,ufs: add MT8195
- compatible and update clock nodes
-To: =?UTF-8?B?TWFjcGF1bCBMaW4gKOael+aZuuaWjCk=?= <Macpaul.Lin@mediatek.com>,
- =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
- "chu.stanley@gmail.com" <chu.stanley@gmail.com>,
- "robh@kernel.org" <robh@kernel.org>,
- "James.Bottomley@HansenPartnership.com"
- <James.Bottomley@HansenPartnership.com>,
- "bvanassche@acm.org" <bvanassche@acm.org>,
- "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
- "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "avri.altman@wdc.com" <avri.altman@wdc.com>,
- "martin.petersen@oracle.com" <martin.petersen@oracle.com>
-Cc: "macpaul@gmail.com" <macpaul@gmail.com>,
- =?UTF-8?B?UGFibG8gU3VuICjlravmr5Pnv5Qp?= <pablo.sun@mediatek.com>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- =?UTF-8?B?QmVhciBXYW5nICjokKnljp/mg5/lvrcp?= <bear.wang@mediatek.com>,
- =?UTF-8?B?UmFtYXggTG8gKOe+heaYjumBoCk=?= <Ramax.Lo@mediatek.com>
-References: <20250722085721.2062657-1-macpaul.lin@mediatek.com>
- <20250722085721.2062657-3-macpaul.lin@mediatek.com>
- <b90956e8-adf9-4411-b6f9-9212fcd14b59@collabora.com>
- <845f204b2b2e39b794cdb9c0f3293dc8cba7286a.camel@mediatek.com>
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8183: Fix out of range pull
+ values
+To: "Rob Herring (Arm)" <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Enric Balletbo i Serra <eballetbo@kernel.org>, Ben Ho <Ben.Ho@mediatek.com>,
+ Fabien Parent <fparent@baylibre.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20250722171152.58923-2-robh@kernel.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <845f204b2b2e39b794cdb9c0f3293dc8cba7286a.camel@mediatek.com>
+In-Reply-To: <20250722171152.58923-2-robh@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250723_011005_999564_8581A177 
-X-CRM114-Status: GOOD (  14.29  )
+X-CRM114-CacheID: sfid-20250723_011650_032926_194F2444 
+X-CRM114-Status: GOOD (  15.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,48 +79,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 23/07/25 09:33, Macpaul Lin (林智斌) ha scritto:
-> On Tue, 2025-07-22 at 11:39 +0200, AngeloGioacchino Del Regno wrote:
->>
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
->>
+Il 22/07/25 19:11, Rob Herring (Arm) ha scritto:
+> A value of 10 is not valid for "mediatek,pull-down-adv" and
+> "mediatek,pull-up-adv" properties which have defined values of 0-3. It
+> appears the "10" was written as a binary value. The driver only looks at
+> the lowest 2 bits, so the value "10" decimal works out the same as if
+> "2" was used.
 > 
-> [snip...]
-> 
->> The unipro mp_bclk really is the ufs-sap clock; besides, the standard
->> has clocks
->> for both TX and RX symbols - and also MT8195 (and also MT6991,
->> MT8196, and others)
->> UFS controller do have both TX and RX symbol clocks.
->>
->> Besides, you're also missing the crypto clocks for UFS, which brings
->> the count to
->> 12 total clocks for MT8195.
->>
->> Please, look at my old submission, which actually fixes the
->> compatibles other than
->> adding the right clocks for all UFS controllers in MediaTek
->> platforms.
->>
->> https://lore.kernel.org/all/20240612074309.50278-1-angelogioacchino.delregno@collabora.com/
->>
->> I want to take the occasion to remind everyone that my fixes were
->> discarded because
->> the MediaTek UFS driver maintainer wants to keep the low quality of
->> the driver in
->> favor of easier downstream porting - which is *not* in any way
->> adhering to quality
->> standards that the Linux community deserves.
->>
-> 
-> Oops, it is sad to hear that.
-> MediaTek will raise an internal discussion and hope
-> we could get the more specific requirements back to you soon.
+> Fixes: cd894e274b74 ("arm64: dts: mt8183: Add krane-sku176 board")
+> Fixes: 19b6403f1e2a ("arm64: dts: mt8183: add mt8183 pumpkin board")
+> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+> ---
+> This is just a few of the warnings related to mt8183-pinctrl... Mediatek
+> is #1 for DT warnings on arm64. And by #1, I mean worst. :( It would be
+> nice to see some progress on fixing them. Otherwise, seeing new Mediatek
+> bindings rather than fixing the existing stuff makes me grumpy.
 > 
 
-Thanks for that.
+Thanks for this fix.
 
-Cheers,
-Angelo
+You're absolutely right about this, let me check what I can do (and if I can get
+some colleague(s) of mine to look at that while I'm away in August).
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 
