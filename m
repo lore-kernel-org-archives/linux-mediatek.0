@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF461C83F1A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jul 2025 09:50:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36EF9C83F26
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jul 2025 09:50:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=I6+0BsV6qdXQP7PjuS+noAxPkQb7MO2n4/GCE1tFh00=; b=LsxAdR0I6LtGMy
-	VH7RsGd8cJyYogUEozyxe/i5WSXK4Kh6GVgXm4CEu0Vbw4uJ3jeSGVqck2EWtkwLljMs5b1ZJRA0h
-	BvCfhr01wokmJkSLjjgru/nxzYSPbGzAqkIy8UfT2mGngRe5A7TldVUCse4PfyDCHbxxjGBZlosSP
-	iZeuEWAJQhXK0c9IeuDYwbQoqUPEk44vvg5SVWrQRUmtFvK0kCkZutTCcskINtCy+1Rhkkq2ffer6
-	C0tYOAXSh5zBgDvqp8Jjc9WYf4WVd4q+VP8grTt/TzbGdysebTUBzJ0b7i/cvFv7ueQI5TIQ59VRb
-	JR9V2fTv2A859cDOMj4A==;
+	List-Owner; bh=g0dEUYCWaCLGxj0HUXAzcZtH62ObprkJZfKxeM/BQF4=; b=ezNEzy5/HEwBTk
+	Xvrtz+S4S9lFuUbAdYc1hrtY5AnZtECWfA/RiA31+WBcyR0F4kYOO4iM3hJvcpyaBQXsi5ONEvFbB
+	V5AcvN+izMCb02OsauRRUeSNX4jKg8eHO68wguyQSe4z913qo9KthBwCMTRmlK3pjsmU9EEM21mTB
+	krpXhDd19BJTBa9+/nwo5pQXWogftDoYN0tOX6cgfhL1KV+N6A16pPkAmMC1ulzHxirkAbtAKodV3
+	CsnkylM4O8DCsf6bFzeBlALEEcjEOm5TreqJZn9iVlR9cPybl+qid1o8c+2JHt5ginMVkSx5d3Aby
+	eCtNMsbZCL0wd9yFMupA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uesaQ-0000000775H-2wlQ;
-	Thu, 24 Jul 2025 09:50:02 +0000
+	id 1uesab-0000000778e-18tM;
+	Thu, 24 Jul 2025 09:50:13 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uerVA-00000006ttV-41bD;
-	Thu, 24 Jul 2025 08:40:34 +0000
+	id 1uerVD-00000006tv3-2afk;
+	Thu, 24 Jul 2025 08:40:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1753346431;
-	bh=9fKIYjIV4SGt7rPXJPvy/SpLKjsqtMdVmIqKKyBRmX0=;
+	s=mail; t=1753346434;
+	bh=3oy2CuNT3RTCa4KJqXicuZA1frxgjUVo175718v251A=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=XtkoGg1UWqDhQ7Vb1svrYHeYg3br8OxgQy7pXTi0Q7POqcmfx6TDd2q6RYEP6/o8l
-	 nt1cyFs6YalHENJAuPfpmR9iF1w9p8CLXGMRcLmSdJNRxYqZJkntzFvza82o0rZ1Zd
-	 vRJeOq0w+ZSeK/x7achH0qXcSe/2tO2ATNl1A64kUIGmaA76P8zMLGw6EHvkn3K2ut
-	 B4f5NUgmsYm/8ab8KzZNnFj9bt3GIbWPvKYcrGyxNoVmtQ0gyiqIaffjHxqW9VewRF
-	 5ZCQT/6onF9khBboqUhC81P0zg4Hoq1Mgx51zh1Mx4QoFCDpAb22vUoFg51+gjOzHH
-	 Ay2ajyoiVZJbA==
+	b=D/KhJ0/N2soyqJ3ZqOmYVhqqZHCT9Vy60VEwKawrwaCLhukaDik/XOzjo0vB5/XT5
+	 MjPxIylpmTLWW73wtWzZ/rJxJD0Dx0DpF5AZgiv+Il/GWyYJMagVHlWpoLBNZmaUSt
+	 DjBWvKTNjGXOAip0wd4hI+2xq0MGR8FYECbpVHvuQY2k5TG130KGDeFx17ULUohZAz
+	 eH06sgnA6wUay+F11VKsiucFHqK9dCjxFxREydWDDHFg/kUgFqeeSJ6oDOi5OBQhN+
+	 G7tAK47wOATjwxsbSOSQQkaQ+bOCVNvTeoATur9dTfSsp9tKB3e3LwwgTQtwAINfkC
+	 cCveuzw+8zmEw==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 38A9617E128C;
-	Thu, 24 Jul 2025 10:40:29 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D6D6317E1062;
+	Thu, 24 Jul 2025 10:40:31 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: linux-mediatek@lists.infradead.org,
 	robh@kernel.org
-Subject: [PATCH 25/38] arm64: dts: mediatek: mt7986a-bpi-r3: Set interrupt-parent to mdio switch
-Date: Thu, 24 Jul 2025 10:39:01 +0200
-Message-ID: <20250724083914.61351-26-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 26/38] arm64: dts: mediatek: acelink-ew-7886cax: Remove unnecessary cells in spi-nand
+Date: Thu, 24 Jul 2025 10:39:02 +0200
+Message-ID: <20250724083914.61351-27-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com>
 References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250724_014033_145335_A8AA76CE 
-X-CRM114-Status: UNSURE (   9.00  )
+X-CRM114-CacheID: sfid-20250724_014035_816989_3181565A 
+X-CRM114-Status: UNSURE (   8.13  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -73,33 +73,31 @@ Cc: daniel.lezcano@linaro.org, mwalle@kernel.org, devicetree@vger.kernel.org, li
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Being this an interrupt controller, the binding forbids to use
-interrupts-extended and wants an `interrupts` property instead.
+There is no need to specify #address-cells and #size-cells in a
+node that has only one non-addressable subnode, and this is the
+case of the flash@0 node in this devicetree, as it has only one
+"partitions" subnode.
 
-Since this interrupt controller's parent is on the GPIO controller
-set it as interrupt-parent and change interrupts-extended to just
-interrupts to silence a dtbs_check warning.
+Remove those to suppress an avoid_unnecessary_addr_size warning.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-index 6d2762866a1a..e7654dc9a1c9 100644
---- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-@@ -200,8 +200,9 @@ switch: switch@31 {
- 		compatible = "mediatek,mt7531";
- 		reg = <31>;
- 		interrupt-controller;
-+		interrupt-parent = <&pio>;
-+		interrupts = <66 IRQ_TYPE_LEVEL_HIGH>;
- 		#interrupt-cells = <1>;
--		interrupts-extended = <&pio 66 IRQ_TYPE_LEVEL_HIGH>;
- 		reset-gpios = <&pio 5 GPIO_ACTIVE_HIGH>;
- 	};
- };
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts b/arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts
+index 08b3b0827436..30805a610262 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts
+@@ -98,8 +98,6 @@ &spi0 {
+ 	flash@0 {
+ 		compatible = "spi-nand";
+ 		reg = <0>;
+-		#address-cells = <1>;
+-		#size-cells = <1>;
+ 		spi-max-frequency = <52000000>;
+ 		spi-rx-bus-width = <4>;
+ 		spi-tx-bus-width = <4>;
 -- 
 2.50.1
 
