@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87C13C87FD6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jul 2025 09:48:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26429C87FD3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jul 2025 09:48:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yQe3gVpB7ORvRfs0E3QkqPTBzjHLUJIaoBZr2CGHMIA=; b=iQVl1iQze5sGRE
-	Uh2C8CzP70xWvWbPXAwMmOR/yLA5s6dhqPFVUOpmCKZghPVeXj3VloeFlATtFvIjYUtdMGTlFPBth
-	FNk6llxRkaHGh8hzuL7Zsy8sQCICNcXlDUwTyvAtnqnGbfqpntLdEk6aWSGkF3C/3NGtVzrdqWwL5
-	H8eGc1TqPUB4bsyki1sORlZtuoiGaZwnjRxXs4j6hgJnZroDUF1tsQCplqq7Ntap48occKp4hHMLG
-	eLULk1RuFlHyFtqHWBtB1Qloa4U/WOs0RKv+4u/b3WnmBfmUuusj9gzIWeusRE1FuUutj9uO7Wb+7
-	REld7WlTQ8I45Oqx+CWg==;
+	List-Owner; bh=RplRFp+JqVVQeG0WWaQHGJ9lNsAaUPl3rbaCZ0k2v5c=; b=ZEkAnoQjlpnuwG
+	KkEj5W1c/ctYbGtRtpapbWxT0Vg6/VorRy0Nj6qdZAsZVPyt6G9RB8ylX43sAX2smN6MwYcvlmfou
+	d6VUd9OthfwQeHouuu2fVfn8LwnsGh581eWpO+AonFA6MLuQ3SPNs5Y1EWZ/GBAUs3U/x38tHGf0y
+	tKNI8xDB8W552l101M8URn4wszpumd0t00KZRcF+FBRUGIWO+1BpcrV+fw0HAn8B0igKTxtjcnYVK
+	2TXZr+vO3owhEHSK6F11DHixOCmKiAz65xl3QumLXGk3VvLxZczuYrvCEMuyX0yEV4Ulx6C+V3tPl
+	zFl4HlqtIWkFzl/xZpmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uesYk-000000076NC-2E0Q;
-	Thu, 24 Jul 2025 09:48:18 +0000
+	id 1uesYm-000000076Q0-08Ob;
+	Thu, 24 Jul 2025 09:48:20 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uerUS-00000006tOF-163S;
-	Thu, 24 Jul 2025 08:39:49 +0000
+	id 1uerUX-00000006tSk-2Fkk;
+	Thu, 24 Jul 2025 08:39:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1753346386;
-	bh=jjLUE5HdPRZzn/E9l0Gx0a05LnILHnJ7+pTe/jrPRJk=;
+	s=mail; t=1753346392;
+	bh=HaevetnnFKHRcc+1X06S28eq0CnYSBndrM5Inix6OWk=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=FQufsu6051wTm6fdYu0USqifJaXEeaojrxuyjpx9ESnaHdZ9dxjUDJ5fDPs7dra8H
-	 Q11J84GLCUpHk1LR3Qi/ctJTsqKIVmH3Msnra34UCBMopNVkuTov9XlwhddeRiJm5U
-	 eC7Wgag89tzveIoL+kUo1GL8URd+uIhC4UhMBcPMlRWMiZgy67lMgXzahxQfNCTA6T
-	 hNBd2UIP6iF6/UuFMpD5th209wioY40Ly6guT99csiRQ0kv2Cl5Al81FBD2Ea9apy/
-	 b7p0+hNCKpQSGxA7BQTbTIEqxTeYki6DJKYitFgbTZpTZhzK2rP13nVKw3Rnmuxrm3
-	 l4VibTq/R4Big==
+	b=A0xSFSrwXmhFdEpFiRIOiNyey3TgbknRE5XDUw1F5tUVQsL5f3WK/l2eKQoWsNmRo
+	 yH8XaCq0zkGZRPW0Qgi9g5jVNN3j1g7JR6PJlOCxt4ruz0mWBJHOnyRy6d4XxDyqf0
+	 UQobqYC9ol5z4zOej529l1Qe/7xQbkJrMikUfRAXGUlnIM3wcHdbWcfzzjCPLEF50z
+	 CGAwS4lSyM6+9V3UFJKb0Utew0gYeNpbHXhNhTQIEuPEJ6c/uCBh8SehctDl/Faqy5
+	 OcQu8iPCfO1jKE/q7cjVlaxxRtDcPl8qvYVc67mm4HXEsdsNdl8WYHzRWlYtMBnqX/
+	 9TwJmccLNoygw==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 399A317E0FC2;
-	Thu, 24 Jul 2025 10:39:44 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8073D17E1298;
+	Thu, 24 Jul 2025 10:39:49 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: linux-mediatek@lists.infradead.org,
 	robh@kernel.org
-Subject: [PATCH 08/38] dt-bindings: pinctrl: mediatek,mt7622-pinctrl: Add missing base reg
-Date: Thu, 24 Jul 2025 10:38:44 +0200
-Message-ID: <20250724083914.61351-9-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 10/38] dt-bindings: regulator: mediatek,mt6332-regulator: Add missing compatible
+Date: Thu, 24 Jul 2025 10:38:46 +0200
+Message-ID: <20250724083914.61351-11-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com>
 References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250724_013948_481023_9A6FAA0A 
-X-CRM114-Status: UNSURE (   8.18  )
+X-CRM114-CacheID: sfid-20250724_013953_762121_E344627A 
+X-CRM114-Status: UNSURE (   6.96  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -73,35 +73,41 @@ Cc: daniel.lezcano@linaro.org, mwalle@kernel.org, devicetree@vger.kernel.org, li
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The pin controller for both MT7622 and MT7629 need both a "base"
-and an "eint" MMIO like the ones found on other MediaTek SoCs:
-while devicetrees have always been correct, the binding is not,
-as it only allows an "eint" reg.
+This binding had no compatible and for this reason would not be
+applied to anything: add the missing "mediatek,mt6332-regulator"
+compatible.
 
-Add "base" to reg-names and increment maxItems for reg to two.
-
+Fixes: e22943e32e1f regulator: ("Add bindings for MT6332 regulator")
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml   | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ .../bindings/regulator/mediatek,mt6332-regulator.yaml      | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
-index 57b19031925d..a6a1d321bb26 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
-@@ -19,10 +19,11 @@ properties:
-       - mediatek,mt7629-pinctrl
+diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6332-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6332-regulator.yaml
+index 2eb512c29a0d..475f18d4f261 100644
+--- a/Documentation/devicetree/bindings/regulator/mediatek,mt6332-regulator.yaml
++++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6332-regulator.yaml
+@@ -15,6 +15,10 @@ description: |
+   buck-<name> and ldo-<name>.
+   MT6332 regulators node should be sub node of the MT6397 MFD node.
  
-   reg:
--    maxItems: 1
-+    maxItems: 2
++properties:
++  compatible:
++    const: mediatek,mt6332-regulator
++
+ patternProperties:
+   "^buck-v(dram|dvfs2|pa|rf18a|rf18b|sbst)$":
+     type: object
+@@ -36,6 +40,9 @@ patternProperties:
  
-   reg-names:
-     items:
-+      - const: base
-       - const: eint
+     unevaluatedProperties: false
  
-   gpio-controller: true
++required:
++  - compatible
++
+ additionalProperties: false
+ 
+ examples:
 -- 
 2.50.1
 
