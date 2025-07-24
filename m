@@ -4,87 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3660C83F1A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jul 2025 13:53:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF42CC83F26
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jul 2025 13:53:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hZNixusr+c3cACc4GCTidZUQE/E0dLpa/Bb6bVcQhms=; b=fNK7+Tkd3AB0SPMwWhvEGKW6Ez
-	I02HRC/uC4fzoFvkbYWgu7/M40NAihri/rPhvA77CmAyfaIixFUMMA/snIWR995LLAWFYrxBup32d
-	g14NrgvLOWvqtFaF0qH3JJVThIVLh02nVmxPnaagzPaQpoDP92/3pOkHYMqsxZfYn6rOm+u6PPO1y
-	yoxAsCpquzhV42lCnvoTsM0O3yL9ZxcCdfB/kpROgeIARwWU4DhGfaEwfHn3DC60Ss+VMVuDUJ9Ks
-	QjBFj4L16XlD2g+3wQEEDNidqOqrgDorpl9jrTWwTeH7MXUkBOz8nOeGD3jtXi27dHjQWc6ARsQPm
-	vQAknXIw==;
+	bh=QAtHv6jVtOKPfBxG+t4sPI1ngV8CsevwVhkX4+9+HYY=; b=ulxhiNld2OANsO2UCe9wyxYFMG
+	j2+6gwtMf1Wrw/KMSRRoWVoyJLaaO5nmovxiPhhIpjoJPMpGeuOD31mrZ7vI2I27IeulPDeCPv5Ur
+	RRDbF4gQgWgUraqvtjX5sHrzUx8Sh8wW+gtftNlH5ZZQpsdA0x22ukTfRcUhbXnmiw5uMhot8m7xo
+	Peedc2yeR5aAvvO2TsbWpL0+iAxiLAQFPbJOrzgOGwChLb/aowiSeo7bcW5wbI/su2uZBfwTsWwBc
+	Jxjo/rR+zCCKvOlD9o6BkT13y+PQ7/l4eHCgrCUgDgGHa8URa/miTK7GShCXxzGNfFnIJ6Nb+JwrZ
+	iQb07KUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uewNw-00000007aio-1vBN;
-	Thu, 24 Jul 2025 13:53:24 +0000
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+	id 1uewO5-00000007azf-0Nuq;
+	Thu, 24 Jul 2025 13:53:33 +0000
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uett9-00000007JHa-27e1;
-	Thu, 24 Jul 2025 11:13:28 +0000
-Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-ae0df6f5758so129707966b.0;
-        Thu, 24 Jul 2025 04:13:27 -0700 (PDT)
+	id 1uetup-00000007JZI-0bEX;
+	Thu, 24 Jul 2025 11:15:12 +0000
+Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-607cf70b00aso1768436a12.2;
+        Thu, 24 Jul 2025 04:15:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1753355606; x=1753960406; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1753355709; x=1753960509; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=hZNixusr+c3cACc4GCTidZUQE/E0dLpa/Bb6bVcQhms=;
-        b=PEyRRZx/ET/OYWAnZba729vAmy7sck/PBmKzerSrKiHs0rga5OjAsMNWt/B62/d3Ik
-         /ifzur0McWOxvLrLTGgb27TX0HY/0MUoN1QLqnC2Fam9hxayHciHwkn2mhvnbzg/Uz+r
-         O35pdmjazdemrwlVI7QD+tg7zOYPrAb6iZL+uTmx6tGKTpr3tbefD8eioJyaNrD6+2S8
-         wickx1yWtyPKpq/CmKocfPJdvWHiWgaREU57DgXmiOevKjbTOCNmQjM5LBiVyP6hv21Q
-         1CKvsljgPfr6JGq1LqI3Axbu5ddymhbCs9Kn9i6wDr59l+NECXsWL70eRv9mFB0e5Lu9
-         Ibwg==
+        bh=QAtHv6jVtOKPfBxG+t4sPI1ngV8CsevwVhkX4+9+HYY=;
+        b=DgW+aDXAw+vqbNn5bXnJZhBqJKzCCGWxnb+huHkN3kxL+xc0XLm9LCnriRzW9wuvmp
+         EAal5mU+cesWfBC1Qij4Za0FHJ1RzNwlWL6lI8jfYunlbiXVSZx1bysASY5Eroec9rck
+         TMArex/eUI17JuaTy5TIOQXwFOp986RzcHOpjUepoYqrgWWqHOZGdEwN0jbQuuwDON1J
+         kQsHiJXOefXg/xSzQJY/VmSGXxwXfhEE0Sm/Bh4RhqLYI44/oADZEUH8eHCU7yNwsyDV
+         Y4PP/b+SHO2JzmURLbIuCcrMr/enNo0kowxmGs7sZ6tB1VRZpC/yh0oUTALiK8qirfxh
+         8kEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1753355606; x=1753960406;
+        d=1e100.net; s=20230601; t=1753355709; x=1753960509;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=hZNixusr+c3cACc4GCTidZUQE/E0dLpa/Bb6bVcQhms=;
-        b=V907QRUWgaUYF4Iux8/DfFxwn8+pWZSV/0ZEmU2dkQZN4qKFZ7A7cbCQ74nHttq2a5
-         T54oXUeEaTo1H9rSGvODb3//dc4ELUzsH4i2PTa/QJcfAaocI5IMr78Nc+wmqTt7lQOE
-         j+Mc+eWDLwu5BeRczUYp6fKzCLrVHJBm6LS5liaxHmqtC+1KQcdVR6D27UjhFF9u+Tpn
-         t/Ryd1Yn/2M/5isK5LggBreFeUUqAx/WwhDVqbwn9kSjSpIKm6gelPWQpQ08csl4wGMR
-         QqzWgT0C3kylZDzes9de6fXTLem8LideKNv3wCOS5XadzIgVIzVcyno7bzjg+oDAY40e
-         0Z7w==
-X-Forwarded-Encrypted: i=1; AJvYcCV5KJ37wdBsKAJcVnq3gy8Mo+G2j/mW9kvbrVV3867+72MyZDwVwvihzF2IFbWC3dUNLBqYILOVVWjpFRhKCl8=@lists.infradead.org, AJvYcCWtccL9bGNdu1NwQRbHAnmMXfydqlEviy2eamSlvPH8z1fEhqVq5uibemXjOoGLgW0unOkY9wgX35wO2g0dqvW8@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw614QcnIFAgn0/Swva0A3bC0IR/OQ56j383OfF4xRxMpygrAPI
-	YTFS6k8Ut7wxeIFTWXFZ3Awj+mvMrUUsCBoCzyJsKVDzFlq2Kiw97wVcivQoGJUxsW6jyEDzIC8
-	hYDgMq0xJhdf8lOptDopMhFqiwvpRVsA=
-X-Gm-Gg: ASbGncsQJ4WRO0v3nnqwQzD0k2J2e9AdnlVzX254sxJGvqB9MjhBVzIAosDSL1CoU7v
-	tbbZfdbUlIJv8VauybVpWJwbemzYAZOT/vU0i+bJproCE+yYAMQu1OcZGWXOqHja7grVev5q9EQ
-	Rb+WO7yHB4Cd7TlVoUC4CrDqK57KW/lRMzWFvc7bp74r2kl6NLs6E117KnsTIo8LZEngkBDOuSg
-	q255/3444w3L07gwwVO
-X-Google-Smtp-Source: AGHT+IELZnhRssUojeUfzx03q7k6D/HSNcNEJ5i+elToR/sTLOJXIaiozbv7LfFc6lY38aKQkwYpn9FdGW+sEeYsiSw=
-X-Received: by 2002:a17:906:f581:b0:ade:2e4b:50d1 with SMTP id
- a640c23a62f3a-af2f895ad43mr692412466b.29.1753355605638; Thu, 24 Jul 2025
- 04:13:25 -0700 (PDT)
+        bh=QAtHv6jVtOKPfBxG+t4sPI1ngV8CsevwVhkX4+9+HYY=;
+        b=Jv65JMeiBaz4Eh4kovLj8v97MbSMnSpZeOmlndfIgQV8xnPOagyyzTok6YJdlbDViH
+         6jlUXH90ZqmqlS29AI9yaqji3DnplB+FEfdP5rmSuhvjzooHHzRwdt+IelHGOY6cLPwa
+         ii3FGh/kMObS1/Gs9aOyBkBkcjK1Vp1RDcY+n5MVGmLvrXunODHYrh1v1lykr73WQxin
+         xyO/aHJcLOMpLcpa7f8s/N4OXvDeBof2nZd4d9lZmw8LuEcpUIul3PWOSjVopdfBjfmx
+         z3b8sUEvuHtnPUabawsgDspFSPqvT9K214i9m/eD86xGA/IisY3EmlsWrcpv17nXBlxy
+         mFAw==
+X-Forwarded-Encrypted: i=1; AJvYcCUbZL9w53xv7gMl+B+YvJMvDMja/R/efkXync2hIEpR4P7TMfAx4B13mihqms1uSc5mP4X/qHLd8qau+R7gODIa@lists.infradead.org, AJvYcCWCOrvLwjPmbbSivxsFhsZhDIg8SVZ1MHVAGw7p7suQD9ZrOFFcMjH6zIKtzyshm/1V5MIH9NM+eHBZx2UZP3s=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzLKNDmQkZDWPl/knz5pcpCeBR7z756hERRItpwErkKCIDttyQ7
+	umlaCsmyExEf4Kzc7ENJGaNefmDd6mS3ke/vz3a0esM+9nlKOY+OBiww79SZduBBXCrEI1Tf9QH
+	tfUV2dbrcbuoF1h4TFQ2XHo9d2FnVgH8=
+X-Gm-Gg: ASbGncvIJ4HrqzeEPmH58w/Hmjex/a6d2k/QDXOkxNyVxn/OeGGlHPbjjsd7ZPAAlfH
+	aO40l6Tw6ExdeckUY8cppK1Qd9QTn8ALo4GQzL1ibxxS8yvCVFiV3yGw6SXMPgJhXLIQoBPgXrd
+	pGD9+eqfB0icWr6XxdJAqgKc91m6qXFEZ+33/mYpNKbeb+lX3+WGJrbQC5aHA3P7g+dwG/l+yv/
+	lEQqYu3txSFFaJHZcS+
+X-Google-Smtp-Source: AGHT+IGWvdFdi6zzckyJlm6N2JYQgwAj1cZ4UkHgtQjTXi3F8fk1lJZ/2HIRvhtKXI2VlvbdwgIvW4p0HjJsBk5xRxw=
+X-Received: by 2002:a17:907:9487:b0:ae0:e065:ddfb with SMTP id
+ a640c23a62f3a-af2f6c0ae2fmr725433866b.18.1753355709200; Thu, 24 Jul 2025
+ 04:15:09 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250724-pinctrl-gpio-pinfuncs-v3-0-af4db9302de4@linaro.org>
- <20250724-pinctrl-gpio-pinfuncs-v3-1-af4db9302de4@linaro.org> <e1253b8a-4940-417f-b530-09e57c6a8932@lucifer.local>
-In-Reply-To: <e1253b8a-4940-417f-b530-09e57c6a8932@lucifer.local>
+References: <20250724-pinctrl-gpio-pinfuncs-v3-0-af4db9302de4@linaro.org> <20250724-pinctrl-gpio-pinfuncs-v3-9-af4db9302de4@linaro.org>
+In-Reply-To: <20250724-pinctrl-gpio-pinfuncs-v3-9-af4db9302de4@linaro.org>
 From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Thu, 24 Jul 2025 13:12:49 +0200
-X-Gm-Features: Ac12FXx4uwXTilr-eVY-szF3msWYq6-eRwPAeJOQDJhF69DCjZUNeC203FQ8yl0
-Message-ID: <CAHp75VeWbhuL1pYvEza44Pnb5YUufgY=1WYXSx2nNMJVfcytTA@mail.gmail.com>
-Subject: Re: [PATCH v3 01/15] lib: provide kmemdup_const()
-To: Lorenzo Stoakes <lorenzo.stoakes@oracle.com>
-Cc: Bartosz Golaszewski <brgl@bgdev.pl>, Linus Walleij <linus.walleij@linaro.org>, 
-	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>, 
-	Alexey Klimov <alexey.klimov@linaro.org>, Lorenzo Bianconi <lorenzo@kernel.org>, 
-	Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+Date: Thu, 24 Jul 2025 13:14:32 +0200
+X-Gm-Features: Ac12FXyOn0y78pX82gZjLVt_m4TA-GVnUEaS_-xxL1ntUx22Wj5veadNWvnjdU4
+Message-ID: <CAHp75VcEX6FBzAu3+-5iia6Z1+kSQLYFGp0FnO71gXwCF+-wDg@mail.gmail.com>
+Subject: Re: [PATCH v3 09/15] pinctrl: constify pinmux_generic_get_function()
+To: Bartosz Golaszewski <brgl@bgdev.pl>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Bjorn Andersson <andersson@kernel.org>, 
+	Konrad Dybcio <konradybcio@kernel.org>, Alexey Klimov <alexey.klimov@linaro.org>, 
+	Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
 	Paul Cercueil <paul@crapouillou.net>, Kees Cook <kees@kernel.org>, 
 	Andy Shevchenko <andy@kernel.org>, Andrew Morton <akpm@linux-foundation.org>, 
-	David Hildenbrand <david@redhat.com>, "Liam R. Howlett" <Liam.Howlett@oracle.com>, 
-	Vlastimil Babka <vbabka@suse.cz>, Mike Rapoport <rppt@kernel.org>, Suren Baghdasaryan <surenb@google.com>, 
-	Michal Hocko <mhocko@suse.com>, Dong Aisheng <aisheng.dong@nxp.com>, 
-	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
+	David Hildenbrand <david@redhat.com>, Lorenzo Stoakes <lorenzo.stoakes@oracle.com>, 
+	"Liam R. Howlett" <Liam.Howlett@oracle.com>, Vlastimil Babka <vbabka@suse.cz>, 
+	Mike Rapoport <rppt@kernel.org>, Suren Baghdasaryan <surenb@google.com>, Michal Hocko <mhocko@suse.com>, 
+	Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, 
+	Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
 	Pengutronix Kernel Team <kernel@pengutronix.de>, NXP S32 Linux Team <s32@nxp.com>, 
 	Sascha Hauer <s.hauer@pengutronix.de>, Tony Lindgren <tony@atomide.com>, 
 	Haojian Zhuang <haojian.zhuang@linaro.org>, Geert Uytterhoeven <geert+renesas@glider.be>, 
@@ -97,8 +97,9 @@ Cc: Bartosz Golaszewski <brgl@bgdev.pl>, Linus Walleij <linus.walleij@linaro.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250724_041327_541738_1CB0F8AF 
-X-CRM114-Status: GOOD (  10.75  )
+X-CRM114-CacheID: sfid-20250724_041511_180773_3E161643 
+X-CRM114-Status: UNSURE (   8.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,31 +114,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 24, 2025 at 1:10=E2=80=AFPM Lorenzo Stoakes
-<lorenzo.stoakes@oracle.com> wrote:
-> On Thu, Jul 24, 2025 at 11:24:29AM +0200, Bartosz Golaszewski wrote:
-
-...
-
-> >  extern void *kmemdup_noprof(const void *src, size_t len, gfp_t gfp) __=
-realloc_size(2);
-> >  #define kmemdup(...) alloc_hooks(kmemdup_noprof(__VA_ARGS__))
-> >
-> > +extern const void *kmemdup_const(const void *src, size_t len, gfp_t gf=
-p);
+On Thu, Jul 24, 2025 at 11:25=E2=80=AFAM Bartosz Golaszewski <brgl@bgdev.pl=
+> wrote:
 >
-> Please drop extern, it's unnecessary.
+> With all users of struct function_desc limited to only accessing it using
+> the dedicated function and never modifying it, we can now constify the
+> return value of pinmux_generic_get_function() treewide.
 
-It's all over the header. This should be done as a precursor patch and
-I know that usually people push back on doing that. I gave up on this.
-Kernel is going to rot sooner or later... :-(
-
-> >  extern void *kvmemdup(const void *src, size_t len, gfp_t gfp) __reallo=
-c_size(2);
-> >  extern char *kmemdup_nul(const char *s, size_t len, gfp_t gfp);
-> >  extern void *kmemdup_array(const void *src, size_t count, size_t eleme=
-nt_size, gfp_t gfp)
-
+I like this change.
+Reviewed-by: Andy Shevchenko <andy@kernel.org>
 
 --=20
 With Best Regards,
