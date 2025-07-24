@@ -4,73 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C4D4C83F1A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jul 2025 08:16:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81A46C87FC5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jul 2025 09:02:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=QDGF9T5dTNs+C/JVlj3oE/CVOJhjvBeXRBAQW6usNB8=; b=PU2Hc0aEE7k1JcwPPgPApKEaMc
-	Ytg3NHWHVaJrO3kYvfxy1utF57Y37dOkwG1322G8NqMTJNFynjgH9Ux4c1Fa06hlinpfqa7ZhSjvq
-	GAxYlUWeozwCaE5W07FoZHkjYPD//vmFzey+lECNq78wMyow9CEH4yHIKeZ4z/hdVQvhrZPEcZGM7
-	MxaKmCo7FcJ9RyeDwuejtBAyqoc27qFqZX/6XYnuAGR6eFvnHHFkpWa7yg85HQI1Mka80WvV7uOmN
-	WZoi3gZusfG++ttGG93Uz1J/VSqeY4X5Rir3Yu98+k5aL0CllZxSFkVon4v56HboqNhWCVDS+xO30
-	b1thGuJQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0YlXW0DvXaO6Z3VFuU5e2aJVgUGN9ccNWCZxeaTBQNk=; b=ahYnimQ8zPzXNbTW0DiwG4Zhq2
+	cHvr93DcHeN3qC8uHtIfOHbO9/0cor3EF/LJWag6abnqT1SQOgnfHWGDbocPof8n3m1O3yUHTgkAL
+	wxTEywqmmpDbBfuZrzT04vsCf9zFYL9mcYnBVuc5vVKWw/m2T/ZKJIgPuiXyHPzQ1quIat6mzrT8L
+	CkX36HZcLjojVdQUALCyGHUfC8osj37Uw7nqDAL5GRgceX9+PMXhYTEy4aHAgE+flQWbAT6vBH4J/
+	1WpwCSR+L5CGkCZq/+8kbHI8QFW2NBJHKB3wrbDD4eIpeoGQ17lAjHTdDjQtCBrv8n8EfvaetX3nm
+	avPnEW6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uer8K-00000006pTX-2T1I;
-	Thu, 24 Jul 2025 08:16:56 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1uerqj-00000006ybG-3DJI;
+	Thu, 24 Jul 2025 09:02:49 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueqt3-00000006mFk-3dh0;
-	Thu, 24 Jul 2025 08:01:10 +0000
-X-UUID: 575d361a686411f09eb0dd999d3936bf-20250724
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=QDGF9T5dTNs+C/JVlj3oE/CVOJhjvBeXRBAQW6usNB8=;
-	b=BcSedB6tSKn2tEMmMJiplfjWBmFTmQfxrVosTXKr0KBap5GJJRZzvu0pojphUTFp53ANjPzwIpjF+Ov9BvqqVabpEE7gRROMpVy7Fe7j6VPFoGh90DBNw2Qf4Th9nnOzwZGmEBAKyIz3Srui3jNL6vpfiyOQCTPvd8KNztz7rFs=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.2,REQID:3988cce7-0239-4388-9149-f825a87161d4,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:9eb4ff7,CLOUDID:bd32200f-6968-429c-a74d-a1cce2b698bd,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 575d361a686411f09eb0dd999d3936bf-20250724
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
-	(envelope-from <akash.tyagi@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1860014632; Thu, 24 Jul 2025 01:01:02 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Thu, 24 Jul 2025 16:00:57 +0800
-Received: from mtisdccf01.mediatek.inc (10.18.1.155) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Thu, 24 Jul 2025 16:00:55 +0800
-From: akash.tyagi <akash.tyagi@mediatek.com>
-To: <akpm@linux-foundation.org>, <vbabka@suse.cz>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>
-CC: <surenb@google.com>, <mhocko@suse.com>, <jackmanb@google.com>,
-	<hannes@cmpxchg.org>, <ziy@nvidia.com>, <linux-mm@kvack.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <wsd_upstream@mediatek.com>,
-	<akash.tyagi@mediatek.com>
-Subject: [RFC PATCH] mm/page_alloc: Add PCP list for THP CMA
-Date: Thu, 24 Jul 2025 13:23:01 +0530
-Message-ID: <20250724075301.1151817-1-akash.tyagi@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1uer1J-00000006oAh-26CC;
+	Thu, 24 Jul 2025 08:09:42 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 1B65043A2F;
+	Thu, 24 Jul 2025 08:09:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 24E82C4CEED;
+	Thu, 24 Jul 2025 08:09:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1753344581;
+	bh=J+e0/YX5TuvDUu7nG/EdllqV7j18ePW7fJkME0Q1od4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=PsKqa4TUSqX2xZA+/s3g1TpdFihf1LAPkHvDh5ndkl7O1//kxXR6obuNhx8jaDV/o
+	 LLPCkP73OdYsUiio/Y1U3z+HHI0w597M8Gph4poSbSo6yUfLZTSiR2LAo6oag/HSuH
+	 j/B81eLfl8XpDn7ySic1hDfyFuGiI7IZ8UtUlrg0XLxwUPg2g/BEGAX2o+JaI1Vc+E
+	 dIQ/uSCY61i3tqHO5GDI3HpcuY0cqPdlrCquuXs/iWoYWCOJAkRFT8NquWs9ZDYfzF
+	 ik6sc5Wl1kImszdja9X70QD39/e+hDViTaNfqGkRVh0aVY0pu9gyTylSghdDrvXjlK
+	 FzEBvW9rIdEAA==
+Message-ID: <1e9de035-9d32-45d1-9f11-33c3439143be@kernel.org>
+Date: Thu, 24 Jul 2025 10:09:36 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 2/2] memory: mtk-smi: mt8188: Add SMI reset and clamp
+ for MT8188
+To: =?UTF-8?B?RnJpZGF5IFlhbmcgKOadqOmYsyk=?= <Friday.Yang@mediatek.com>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+References: <20250521063347.31578-1-friday.yang@mediatek.com>
+ <20250521063347.31578-3-friday.yang@mediatek.com>
+ <fe4d93d1-fb6a-4985-8316-7a76fa1a481f@kernel.org>
+ <7421d8f4f3d5fdb392f46df93bfee21a97cc2e1c.camel@mediatek.com>
+ <633ea291-2e02-44be-bd03-220634b3c62d@kernel.org>
+ <d7e6e9f9da7adf5c806f29c577f6bf51b35fdeed.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <d7e6e9f9da7adf5c806f29c577f6bf51b35fdeed.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250724_010109_914566_7D252E22 
-X-CRM114-Status: GOOD (  15.14  )
+X-CRM114-CacheID: sfid-20250724_010941_583089_2C5576C8 
+X-CRM114-Status: GOOD (  20.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,63 +132,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Currently, THP CMA pages share PCP lists with UNMOVABLE and RECLAIMABLE
-pages. This may result in CMA THP pages being allocated from the PCP
-list for other migratetypes. When this occurs, these pages may fail to
-be isolated, leading to CMA allocation failures when drivers request
-them.
+On 24/07/2025 09:59, Friday Yang (杨阳) wrote:
+> On Thu, 2025-07-24 at 09:08 +0200, Krzysztof Kozlowski wrote:
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
+>>
+>>
+>> On 24/07/2025 03:49, Friday Yang (杨阳) wrote:
+>>> On Thu, 2025-06-12 at 17:16 +0200, Krzysztof Kozlowski wrote:
+>>>> External email : Please do not click links or open attachments
+>>>> until
+>>>> you have verified the sender or the content.
+>>>>
+>>>>
+>>>> On 21/05/2025 08:33, Friday Yang wrote:
+>>>>> From: "Friday Yang" <friday.yang@mediatek.com>
+>>>>>
+>>>>> To prevent handling glitch signals during MTCMOS on/off
+>>>>> transitions,
+>>>>> SMI requires clamp and reset operations. Parse the reset
+>>>>> settings
+>>>>> for
+>>>>> SMI LARBs and the clamp settings for the SMI Sub-Common.
+>>>>> Register
+>>>>> genpd callback for the SMI LARBs located in image, camera and
+>>>>> IPE
+>>>>> subsystems, and apply reset and clamp operations within the
+>>>>> callback.
+>>>>>
+>>>>> Signed-off-by: Friday Yang <friday.yang@mediatek.com>
+>>>>> Reviewed-by: AngeloGioacchino Del Regno <
+>>>>> angelogioacchino.delregno@collabora.com>
+>>>>> Acked-by: Rob Herring <robh@kernel.org>
+>>>>
+>>>> You did not respond to previous review. Sending the same while
+>>>> ignoring
+>>>> previous review is obvious NAK.
+>>>>
+>>>
+>>> Apologies for missing the message. In the v6 patch, I replaced
+>>> 'pm_runtime_enable' with 'devm_pm_runtime_enable'. You pointed out
+>>> that
+>>> this change might alter the cleanup order and potentially introduce
+>>> errors.
+>>>
+>>> v6:
+>>>
+> https://lore.kernel.org/lkml/20250408033206.12176-3-friday.yang@mediatek.com/
+>>>
+>>> Therefore, in the v7 patch, I reverted this change and continued
+>>> using
+>>> 'pm_runtime_enable' in the SMI driver. However, I did not include a
+>>> clear description of the changes between v6 and v7 in the cover
+>>> letter.
+>>>
+>>> v7:
+>>>
+> https://lore.kernel.org/lkml/9f01a9a4-89b2-4bfc-97cd-827be989ef16@kernel.org/
+>>>
+>>> In the v8 patch, I have added a description in the cover letter.
+>>> This series just add functions for SMI clamp and not change
+>>> anything
+>>> else. Is this acceptable to you?
+>>
+>> That was month ago. Nothing form this thread is in my memory, nothing
+>> is
+>> in the mailbox. There is no cover letter to find anymore.
+>>
+>> Anyway, you did not respond to the actual comment and you send the
+>> same.
+>> Now you respond... to something else still ignoring the comment about
+>> fake tags.
+>>
+>> I will not be wasting more time on this patchset.
+>>
+> 
+> Changes v7:
+> - Remove the 'devm_pm_runtime_enable' change.
+> 
+> Above is the tag you ask. You are right, the 'devm_pm_runtime_enable'
+> tag I mentionded in the patchset v6 is truly a fake tag. So please
 
-This patch introduces a dedicated PCP list for the THP CMA migratetype,
-ensuring that CMA THP pages are not mixed with other migratetypes and
-remain available for CMA allocations as intended.
+This is a function. Not a tag. I asked about tag.
 
-Signed-off-by: akash.tyagi <akash.tyagi@mediatek.com>
----
- include/linux/mmzone.h | 10 ++++++++--
- mm/page_alloc.c        |  5 +++++
- 2 files changed, 13 insertions(+), 2 deletions(-)
+> ignore this tag. What I intended to explain here was that I decided not
+> to use 'devm_pm_runtime_enable' to replace 'pm_runtime_enable'
+> functions. Unfortunately, the fake tag didn't explain this clearly in
+> the changelog, which was my fault. To address this, I updated patchset
+> v8 to include an explanation.
+> 
+> In patchset v6, I replaced 'pm_runtime_enable' with
+> 'devm_pm_runtime_enable'. However, in patchset v8, I reverted this
+> change and included the reason for this decision in the changelog.
+> Apologize for the delay and the trouble again.
 
-diff --git a/include/linux/mmzone.h b/include/linux/mmzone.h
-index 283913d42d7b..dd93088ce851 100644
---- a/include/linux/mmzone.h
-+++ b/include/linux/mmzone.h
-@@ -696,11 +696,17 @@ enum zone_watermarks {
- 
- /*
-  * One per migratetype for each PAGE_ALLOC_COSTLY_ORDER. Two additional lists
-- * are added for THP. One PCP list is used by GPF_MOVABLE, and the other PCP list
-- * is used by GFP_UNMOVABLE and GFP_RECLAIMABLE.
-+ * are added for THP: one for GFP_MOVABLE, and one for GFP_UNMOVABLE and
-+ * GFP_RECLAIMABLE. With CMA enabled, an extra THP PCP list is added for
-+ * MIGRATE_CMA, allowing further distinction between MIGRATE_MOVABLE and
-+ * MIGRATE_CMA for THP allocations.
-  */
- #ifdef CONFIG_TRANSPARENT_HUGEPAGE
-+#ifdef CONFIG_CMA
-+#define NR_PCP_THP 3
-+#else
- #define NR_PCP_THP 2
-+#endif
- #else
- #define NR_PCP_THP 0
- #endif
-diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-index 2ef3c07266b3..35f8041afbcc 100644
---- a/mm/page_alloc.c
-+++ b/mm/page_alloc.c
-@@ -519,6 +519,11 @@ static inline unsigned int order_to_pindex(int migratetype, int order)
- 	if (order > PAGE_ALLOC_COSTLY_ORDER) {
- 		VM_BUG_ON(order != HPAGE_PMD_ORDER);
- 
-+#ifdef CONFIG_CMA
-+		if (migratetype == MIGRATE_CMA)
-+			return NR_LOWORDER_PCP_LISTS + 2;
-+#endif
-+
- 		movable = migratetype == MIGRATE_MOVABLE;
- 
- 		return NR_LOWORDER_PCP_LISTS + movable;
--- 
-2.18.0
+Nothing above is related to my question about the
+fake/invented/questioned tag.
 
+Best regards,
+Krzysztof
 
