@@ -4,71 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6689C83F26
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jul 2025 10:01:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0685CC87FCA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jul 2025 10:04:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9XzOQCdp3Cej628qd/tiIYrBQw2XGQnlxiQRKYscS8s=; b=qqZ8TwDhbBKlYf+fAyGITswavp
-	Mk4tI0joKmr4jjmu1w85h3EavB8dKjF9TL4cbkugKiJ6otO5o3XgKIAT5aVQnBdYh075fCXcoYsJL
-	LjhHp6Lyh6TPfQeYonUaZAb2HaWASxvWBS0z0j0AzEjJzdNOBfr2c+x9wEPxyxj0AstYfKg8GhpHy
-	2kVvp3ZJoyhEP3yJV24+54797iIDxLccs7QSVZFy24/hF038166lW5NwMI+ZEIsY9F7n4iSpO8JkL
-	kgjJj5l7ZFJjsEjW+JRuSgq8NKARqZo3RjQshEkGWQntfMvNQmRYb2n8B2htIGdS8tk/RCkPcY+Gz
-	f2pgRquw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=QG2BHvufUMTf3ISgwUepfBIALWAvgS3oMExSZhzchVM=; b=FF3u56lMda5xEC
+	Y8awTm60Z0uBaefKx8hIEoHXKey/phlNgGItCTKoSQI0n/VVxpETMXylyjyLxvko3H7FtEYWWIoay
+	R9L3hRWkQBbkBeaZFJzOxBPxJrYBbQTI0+7vM0F/7BoNzh5Tr12SrYBh7/VVcQy6T8NfVzSt16A5a
+	XvlV0Q2B6T1WjNcKSwlwF3x3GX/xsoVunnoenT7uqKiVukvz3/gfRXaPcHq/T2wot4x7ZUzEhGV4+
+	E4n+qJHs7g13LJvYlgC2swyzqwQtNbXYm4wZ5byMTSjBwaUqC1LiU4vyoQR8Mx5fUuLP4GUmZxULA
+	9+Kc26ZlG1ly0M4az9PQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueslW-000000079Jy-3rXP;
-	Thu, 24 Jul 2025 10:01:30 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uesnz-000000079ln-3t6N;
+	Thu, 24 Jul 2025 10:04:03 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uerjj-00000006xA1-0n9E;
-	Thu, 24 Jul 2025 08:55:35 +0000
+	id 1ueryG-00000006zXC-0ojb;
+	Thu, 24 Jul 2025 09:10:37 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5C184601D5;
-	Thu, 24 Jul 2025 08:55:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0E5E2C4CEED;
-	Thu, 24 Jul 2025 08:55:30 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id A98E043F19;
+	Thu, 24 Jul 2025 09:10:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 05053C4CEED;
+	Thu, 24 Jul 2025 09:10:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1753347334;
-	bh=7Rl73eTGs9cKwu4cmtief0kRNJb/4nA5rJoiL8w0XqM=;
+	s=k20201202; t=1753348235;
+	bh=Zd9OpEjRiIzb39t5LxgO0mowTxzXV9MUzTsMnRqyMR0=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=rhOgaKafB01JlDdf8OmBacQSgkKTNO0rtPHQuGkfk2YpR+UQC4jkIg+jZqJbYM5LJ
-	 0DIW9r+bhkHk2D1iCdal1VbYwvdmfFJ9XfQ3XvHKMuPQRIewqj0ajSGDnAVF3D9yjQ
-	 6SG7/adqin0lxOKllPMgWIp7x3coZFgazAjMDBJ6UvE0RjY0ZE+ylAqIMYeRWHvpwc
-	 KDFUDXL475ujpsLCGvjL+ubuHytUdY9FUcKlW+IdUfJDLv0TTOFePhLk8Sq56DhjHQ
-	 fG9ofvEWAbRq4hTLO719Tu37R1SIj8tQh/K6X1w9ehil3bqTeWTBZIy8egovpzbO1q
-	 YRXHVvo+4KZ9g==
-Message-ID: <03dece78-44d5-4b85-b71c-bb6794849ddd@kernel.org>
-Date: Thu, 24 Jul 2025 10:55:29 +0200
+	b=FCZd+o0+la8dDvf554+uYLsCDrmhuv9fQEAPLSc42ID/pQQJlkLk/yEkl/TAjyX+0
+	 /eY5csmQeU82/T2RqRT/wA40C2URTCrd9N3SxCqDrnjZ8vjHbzoEXObJNi/LGykLPy
+	 NbnKY81MTWRdBohRDumI1xKiTCRJVIF1XzWuB/gAAZztsl4fO06aoup5YNrzkefnv/
+	 IoWgsq2gRRQX7iY5gVJgsIRh9jyvjG2G+6BNwvistJ1zUfWNetCNM+bJHGXowBcPkU
+	 wIQA2Tdm4HpJFz6LjP4sL2xw0L7lBXV99nUck0ZQyzTrEG6LZ62jtzp/JaxGAlDT4w
+	 6J5Ha4n2gOr8g==
+Message-ID: <f4c00e80-5f1e-47d2-ad49-80343668ac3f@kernel.org>
+Date: Thu, 24 Jul 2025 11:10:22 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 2/2] memory: mtk-smi: mt8188: Add SMI reset and clamp
- for MT8188
-To: =?UTF-8?B?RnJpZGF5IFlhbmcgKOadqOmYsyk=?= <Friday.Yang@mediatek.com>,
- "robh@kernel.org" <robh@kernel.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-References: <20250521063347.31578-1-friday.yang@mediatek.com>
- <20250521063347.31578-3-friday.yang@mediatek.com>
- <fe4d93d1-fb6a-4985-8316-7a76fa1a481f@kernel.org>
- <7421d8f4f3d5fdb392f46df93bfee21a97cc2e1c.camel@mediatek.com>
- <633ea291-2e02-44be-bd03-220634b3c62d@kernel.org>
- <d7e6e9f9da7adf5c806f29c577f6bf51b35fdeed.camel@mediatek.com>
- <1e9de035-9d32-45d1-9f11-33c3439143be@kernel.org>
- <2cc7a0be13d2b35b8728fb23e56097620a40fc05.camel@mediatek.com>
+Subject: Re: [PATCH 05/38] dt-bindings: crypto: inside-secure,safexcel:
+ Mandate only ring IRQs
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-mediatek@lists.infradead.org, robh@kernel.org
+References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com>
+ <20250724083914.61351-6-angelogioacchino.delregno@collabora.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -114,9 +96,13 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <2cc7a0be13d2b35b8728fb23e56097620a40fc05.camel@mediatek.com>
+In-Reply-To: <20250724083914.61351-6-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250724_021036_284744_9C551BA8 
+X-CRM114-Status: UNSURE (   9.41  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,39 +114,26 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: daniel.lezcano@linaro.org, mwalle@kernel.org, devicetree@vger.kernel.org, linus.walleij@linaro.org, linux-remoteproc@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, olivia.wen@mediatek.com, shane.chien@mediatek.com, linux-gpio@vger.kernel.org, linux-phy@lists.infradead.org, airlied@gmail.com, simona@ffwll.ch, herbert@gondor.apana.org.au, jassisinghbrar@gmail.com, jiaxin.yu@mediatek.com, andy.teng@mediatek.com, chunfeng.yun@mediatek.com, jieyy.yang@mediatek.com, chunkuang.hu@kernel.org, conor+dt@kernel.org, jitao.shi@mediatek.com, p.zabel@pengutronix.de, arnd@arndb.de, kishon@kernel.org, kyrie.wu@mediatek.corp-partner.google.com, maarten.lankhorst@linux.intel.com, tinghan.shen@mediatek.com, mripard@kernel.org, ck.hu@mediatek.com, broonie@kernel.org, eugen.hristev@linaro.org, houlong.wei@mediatek.com, matthias.bgg@gmail.com, tglx@linutronix.de, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, granquet@baylibre.com, sam.shih@mediatek.com, mathieu.poirier@linaro.org, fparent@baylibre.com, andersson@kernel.org, sean.wang@kernel.org, linux-sound@vger.kernel.org, lgirdwood@gmail.com, vkoul@kernel.org, linux-crypto@vger.kernel.org, tzimmermann@suse.de, atenart@kernel.org, krzk+dt@kernel.org, linux-media@vger.kernel.org, davem@davemloft.net
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 24/07/2025 10:43, Friday Yang (杨阳) wrote:
->>
->>> ignore this tag. What I intended to explain here was that I decided
->>> not
->>> to use 'devm_pm_runtime_enable' to replace 'pm_runtime_enable'
->>> functions. Unfortunately, the fake tag didn't explain this clearly
->>> in
->>> the changelog, which was my fault. To address this, I updated
->>> patchset
->>> v8 to include an explanation.
->>>
->>> In patchset v6, I replaced 'pm_runtime_enable' with
->>> 'devm_pm_runtime_enable'. However, in patchset v8, I reverted this
->>> change and included the reason for this decision in the changelog.
->>> Apologize for the delay and the trouble again.
->>
->> Nothing above is related to my question about the
->> fake/invented/questioned tag.
->>
+On 24/07/2025 10:38, AngeloGioacchino Del Regno wrote:
+> Not all IP implementations of EIP97 and EIP197 have the EIP and
+> MEM interrupts hooked up to the SoC, and those are not required
+> for functionality as status for both can be polled (and anyway
+> there's even no real need to poll, but that's another story).
 > 
-> I got your point, you refer to the 'reviewed-by' and 'acked-by' tag in
-> this patch.
-> These are the tags from two reviewers.
+> As an example of this, the MediaTek MT7968A and MT7986B SoCs do
+> not have those two interrupts hooked up to their irq controlller.
 > 
-> https://lore.kernel.org/lkml/174172361378.44650.15345202042780383326.robh@kernel.org/
+> For this reason, make the EIP and MEM interrupt optional.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
 
-
-You are really not responding to my initial comments and keep dragging
-this discussion in some confused directions. Do we talk here about that
-patch? No.
+Same comments as for Aleksander patch doing the same. You solved second
+part of them, but first - missing SoC compatibles - needs to be addressed.
 
 Best regards,
 Krzysztof
