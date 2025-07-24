@@ -4,78 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF2B1C83F26
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jul 2025 10:54:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7381C87FC5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jul 2025 13:51:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4BiDDqrD6a5pZkcMdx9/g3Y4QyPCSLekJ/xiBVz6j3w=; b=AqoVIG2Z4zzbpQ
-	Dt6iuumWDFrO6tXiewga0Y1CNBlG3F8FVl1rwpYaAi0GSVN1tw3rqd8xAdiBeWFqLLtlqBt2tQ6Dd
-	+OlHkD6tPa+CVZhzPNzcL8frdv3XsT8qCdHz8ekC+tGV6s7ai9bOjrvoWwom2MZYrpkstQRLQvyZX
-	5/C/d6B481AWSuuV2/WH5QdY8WfJUGLLwluECq7L5bdaqJR0R/O2ypEcODGodWyCKVIWv4W6jdJsp
-	NbhqXgS+WO0RwmKFVi/O2vWO/4qYlcP1pxlFmaAlJ62YQe17UwfnPDdJSWi/KUjgqnlFIp9f94TwP
-	K6tzhOnMk5p2/bUbbZvg==;
+	List-Owner; bh=L9FQ9e+6QrSgFWR/zL+SarceeBtqf3W8b4WkgK0vUaU=; b=0q0wjSZ+TOasC2
+	dIffImx8mWPiZzR+ui9nXPZjULPHLCllNJS1pg2/UPVuW+l2EmMiqCEVwBTQT1o5vzRJ7Y9nOwU9I
+	FG3SasULT3wBYdbwQhH1myTzE80cIt1nXUEYCqJ09neA1GhnYK6HiXAH99iJurFA1y8X864VUPVeG
+	lXEC4AT8+57EOHuJWGk266nhAfsWoXwd94QPPGIaXqgxUvE3b58ekJHFqzmZEs0mlF+u3K1P60eHW
+	tWrBE0F3jg31MEHeCW5YE1okH+QIj9rfOCxBWZfTWzwFsxoMQoAMAnHcXfjP5ZXW1Q5HIKALHrkqy
+	p+3lM3d6M4OFsEhKx6QQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uetaT-00000007GRZ-12L6;
-	Thu, 24 Jul 2025 10:54:09 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1uewMU-00000007YKV-417V;
+	Thu, 24 Jul 2025 13:51:55 +0000
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uesLN-000000073dd-21oR
+	id 1uesZZ-000000076pK-0LA5
 	for linux-mediatek@lists.infradead.org;
-	Thu, 24 Jul 2025 09:34:31 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-556373661aaso685070e87.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 24 Jul 2025 02:34:29 -0700 (PDT)
+	Thu, 24 Jul 2025 09:49:10 +0000
+Received: by mail-lf1-x132.google.com with SMTP id 2adb3069b0e04-553b5165cf5so936572e87.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 24 Jul 2025 02:49:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1753349668; x=1753954468; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1753350547; x=1753955347; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=4BiDDqrD6a5pZkcMdx9/g3Y4QyPCSLekJ/xiBVz6j3w=;
-        b=QTGRy9ENFX8w2iI2r7AiRaTfiqVVOYAEk6fJHYVqGAqxUW+ykr3bs+OaLzRc13Z2Ru
-         0+/qO4226eq6Q9iXcgMOrbnY+j08/uehjKMpcXsKR77doPR+pUZgbJRiUXGcB2ButvKt
-         Jms/7qYbU+VZzO8OOUc5C6RceUdYNDrtl/34c=
+        bh=L9FQ9e+6QrSgFWR/zL+SarceeBtqf3W8b4WkgK0vUaU=;
+        b=nUbu2/mK0vAXBCOZRH/Py/PDimtwsSWEaHDlgT7vp5jhxjMq7LYCmjcHTwdLS0Vef5
+         F28g+Yffl1k+f6LwuhWH0fRMxFz7bIBygF/KvQ33yFfaMYYejkOgaAmGBjFc0Z20isy2
+         Zwdz/TX9RzoEgkJPF/aq/jvshYgZIts8sbcLo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1753349668; x=1753954468;
+        d=1e100.net; s=20230601; t=1753350547; x=1753955347;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=4BiDDqrD6a5pZkcMdx9/g3Y4QyPCSLekJ/xiBVz6j3w=;
-        b=F0LASP0ZuOzjfZK/5RqWfp5RGjj+7YZdcWdRi8oI5wylgcx5cyaSHWZbkrDVPbytiU
-         WEGUHECuaWWM25nuyY44LwiTIqOqMg+9DtdG4kSoAwl86AhU/qVQzAAdkhXRFDeQkFED
-         FWRJ/Tw6WWhXf3PofvbgbUQjFNrPYlnIdkTPdQRNr2cO7zsxQ5A/2jCbFetpfhb3fva4
-         GvNhDrWSj4s1ZddPxK8nH6bOKYAaljq/aCrhLosn6oUgFk1sptkK5eAJIuVWyln1mn1f
-         B1VjGjAPvwbu8/TorvGiAdhIUzB/hVvuOyxlGWBy7hphaZsNj1Vk/h+ei3lRCXuULtna
-         RteA==
-X-Gm-Message-State: AOJu0Yx3ZbPB8AMzqXm95peqmk39EmbFlyKjTT0/LVJgz7L2zlR3uT0z
-	ge46R0WmRtV8FWenJ3xlSRlxnINz9wE3bSAwvwFTYkkkce5Z1Y4Hk8J8z0VBkBKUBIGhf9zypkS
-	jD+vvgWrVlLwwI6b6n0dMIjZf4UqcF/WQBMJZ80A1
-X-Gm-Gg: ASbGncuYN0jGnNcLu6zKBcVu+uMYvg/hVelzQ3csm3TRDgXeIU3hfCurw2uO/+PDxG3
-	fZwVxx+ynfyVtrrpqvAqA3/Ry4cCH/VR2aQpzMDS2uiOlU0h7f73zCs+44nZtzSdI/OT71uvdQ7
-	rNIndJjJnmwCyT+VroXjnGB7djyz095l4T5Y33JszsyNDwHQz1InxWTYfl0VWrnk58OMUaEUwGp
-	XEtkf6ffhfwRiHwiXbv1ps7qk9Ggb+8fSs=
-X-Google-Smtp-Source: AGHT+IGbQGAzYrZuGKb7ZyVDVB2IA3/m7/1T14ShQ1gB/s052YEW14kETsBT1/6F7qIVfTgZAU3RoBMdAKdnokA3DJc=
-X-Received: by 2002:a05:6512:2391:b0:553:65bc:4232 with SMTP id
- 2adb3069b0e04-55a513bf799mr2287118e87.31.1753349667560; Thu, 24 Jul 2025
- 02:34:27 -0700 (PDT)
+        bh=L9FQ9e+6QrSgFWR/zL+SarceeBtqf3W8b4WkgK0vUaU=;
+        b=lTeA87W52jNGWf7vxGYTBk72iwGJ94MawY5Vqr1v7dqoiVagy6+x4uTUNsIzVWzWlj
+         SpHk3/f056SCo435WL3YaJIJqqAb5PGLelQEHoqyLfDCyBLnnHngbAccpsE7ktpkLRRs
+         PPM/BQPwrlRfyzy5tHUev7ihEAmCXfPmjNezY82xzA6vb8w723NluKHM2Atfztd/RvOY
+         zLOj/8eWbWm0t8+Vdw95qYVjFKpRhTzpx9MVtxrsKiAs07bUyCWYPT7wrzaK12QY7b75
+         LAhsPV7mhgnsY4dVZNCoGDODMF6ghFKUfwFo6OBmvrzs+laWSO9i3hO8nO2NxZX7AbVf
+         /pSw==
+X-Gm-Message-State: AOJu0YxamHWlbqLNibbfYkNbLrgDBASonRqE52uY5g6JqlNFwIe5zkBn
+	8hDp66L+rRaRFO7SptG0UNA9bXMO6Naci22LS3/HPxpnq9exZzBGZTnKUrDRAxxqLToI3hQ01Ww
+	uyEw2W9wkavVPaYp0gXDUikc5avC9KTHcqTz3yntp
+X-Gm-Gg: ASbGncvlL5I0uI5PKsokhoG0cD/sGHJuo1ZPXo5X5tL5JT36HYjage790HwNkxj5D/y
+	1RatA27Ritg1KMXFTrE3Id0XEe6OedhfqNLsZnaIEjhGs03EscqojS0yl9NzZUdw4+u7KP5aOTc
+	4J7vfdD17r8iL0KHiQJ5GdpK29SZCfoGVmRyD2XimR18q4/wmdoI/+MC/+emU4n4MTqw1ld3bEq
+	OnXGrndv35Vdm/VWIKbzt1I6Wtp1xuJFrU=
+X-Google-Smtp-Source: AGHT+IGzfXywNqkl7ab0cE9pUdYYCcgre/IBfX1N5nV04X+BJ3rA6VLZb3GDp2uT00oIYqG6uR1IPA8f6Im9wahsv0o=
+X-Received: by 2002:a05:6512:3084:b0:558:f694:a65e with SMTP id
+ 2adb3069b0e04-55a513b2e09mr1933097e87.34.1753350547115; Thu, 24 Jul 2025
+ 02:49:07 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com> <20250724083914.61351-34-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20250724083914.61351-34-angelogioacchino.delregno@collabora.com>
+References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com> <20250724083914.61351-29-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250724083914.61351-29-angelogioacchino.delregno@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 24 Jul 2025 17:34:15 +0800
-X-Gm-Features: Ac12FXx-dC7GqsweL9em8IYbzr7gdu7h7TRc-hJouMaDYtIUw_U2Osb1ZV53HA8
-Message-ID: <CAGXv+5ECM53Q4ndZ49Xa71mamy=GhGqdOMQYXydH6cEeT=0EgA@mail.gmail.com>
-Subject: Re: [PATCH 33/38] arm64: dts: mediatek: mt8183-kukui: Move DSI panel
- node to machine dtsis
+Date: Thu, 24 Jul 2025 17:48:56 +0800
+X-Gm-Features: Ac12FXyvTWPQD4hmzcW0ijsxU85GUvKBlnETlBmcYtQk6_oa7dGsCrwzhdueCNE
+Message-ID: <CAGXv+5FvqKNB5Ufx65p5QnueKgEYwNW20tahVPg-kG5N3t+WGQ@mail.gmail.com>
+Subject: Re: [PATCH 28/38] arm64: dts: mediatek: mt8173: Fix pinctrl node
+ names and cleanup
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250724_023429_525576_1F9E17CD 
-X-CRM114-Status: GOOD (  18.83  )
+X-CRM114-CacheID: sfid-20250724_024909_143168_8D3C6703 
+X-CRM114-Status: GOOD (  18.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,209 +94,173 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Thu, Jul 24, 2025 at 4:40=E2=80=AFPM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> Not all of the kukui machines have got a real DSI panel, infact,
-> some of those have got a DSI to eDP bridge instead: this means
-> that the address and size cells are necessary in the first case
-> but unnecessary in the latter.
+> Fix the pinctrl node names to adhere to the bindings, as the main
+> pin node is supposed to be named like "uart0-pins" and the pinmux
+> node named like "pins-bus".
 >
-> Instead of adding a bunch of /delete-node/ which would impact on
-> human readability, move the entire panel node declaration to each
-> of the relevant Kukui machine dtsi: even though this introduces
-> some duplication, the advantages in readability surclass that.
-
-This is just an artifact of the lineage. Kukui the original design
-was a tablet with MIPI DSI panels. Then the Jacuzzi clamshell design
-with eDP panels was derived from that.
-
-If we really don't like the duplication, maybe we could introduce
-a `mt8183-kukui-tablet.dtsi` file for the bits that are specific
-to the tablet design.
-
+> While at it, also cleanup all of the MTK_DRIVE_(x)mA by changing
+> that to just the (x) number.
+>
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
 abora.com>
-
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-
 > ---
->  .../dts/mediatek/mt8183-kukui-jacuzzi.dtsi    |  5 ----
->  .../dts/mediatek/mt8183-kukui-kakadu.dtsi     | 27 ++++++++++++++++++
->  .../dts/mediatek/mt8183-kukui-kodama.dtsi     | 28 +++++++++++++++++++
->  .../boot/dts/mediatek/mt8183-kukui-krane.dtsi | 28 +++++++++++++++++++
->  .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 23 ---------------
->  5 files changed, 83 insertions(+), 28 deletions(-)
+>  .../boot/dts/mediatek/mt8173-elm-hana.dtsi    |  34 ++---
+>  arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi  | 138 +++++++++---------
+>  arch/arm64/boot/dts/mediatek/mt8173-evb.dts   |  60 ++++----
+>  arch/arm64/boot/dts/mediatek/mt8173.dtsi      |  28 ++--
+>  4 files changed, 128 insertions(+), 132 deletions(-)
 >
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi b/arc=
-h/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
-> index f2afca63c75a..1b74ec171c10 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
-> @@ -93,11 +93,6 @@ cros_ec_pwm: pwm {
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi b/arch/arm=
+64/boot/dts/mediatek/mt8173-elm-hana.dtsi
+> index dfc5c2f0ddef..1004eb8ea52c 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi
+> @@ -5,6 +5,14 @@
+>
+>  #include "mt8173-elm.dtsi"
+>
+> +&hdmi_mux_pins {
+> +       pins-mux {
+> +               pinmux =3D <MT8173_PIN_98_URTS1__FUNC_GPIO98>;
+> +               bias-pull-up;
+> +               output-high;
+> +       };
+> +};
+> +
+
+Should probably mention that a duplicate path reference was fixed.
+
+>  &i2c0 {
+>         clock-frequency =3D <200000>;
+>  };
+> @@ -67,26 +75,16 @@ trackpad2: trackpad@2c {
 >         };
 >  };
 >
-> -&dsi0 {
-> -       status =3D "okay";
-> -       /delete-node/panel@0;
+> -&mmc1 {
+> -       wp-gpios =3D <&pio 42 GPIO_ACTIVE_HIGH>;
 > -};
 > -
->  &dsi_out {
->         remote-endpoint =3D <&anx7625_in>;
->  };
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi b/arch=
-/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
-> index 472d4987615a..d71972c94e42 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
-> @@ -61,6 +61,33 @@ &bluetooth {
->         firmware-name =3D "nvm_00440302_i2s_eu.bin";
->  };
->
-> +&dsi0 {
-> +       #address-cells =3D <1>;
-> +       #size-cells =3D <0>;
-> +
-> +       panel: panel@0 {
-> +               /* compatible will be set in board dts */
-> +               reg =3D <0>;
-> +               enable-gpios =3D <&pio 45 0>;
-> +               pinctrl-names =3D "default";
-> +               pinctrl-0 =3D <&panel_pins_default>;
-> +               avdd-supply =3D <&ppvarn_lcd>;
-> +               avee-supply =3D <&ppvarp_lcd>;
-> +               pp1800-supply =3D <&pp1800_lcd>;
-> +               backlight =3D <&backlight_lcd0>;
-> +               rotation =3D <270>;
-> +               port {
-> +                       panel_in: endpoint {
-> +                               remote-endpoint =3D <&dsi_out>;
-> +                       };
-> +               };
-> +       };
-> +};
-> +
-> +&dsi_out {
-> +       remote-endpoint =3D <&panel_in>;
-> +};
-> +
->  &i2c0 {
->         status =3D "okay";
->  };
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi b/arch=
-/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
-> index 1b21e3958061..b702ff066636 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
-> @@ -42,6 +42,34 @@ pp1800_lcd: pp1800-lcd {
+> -&pio {
+> -       hdmi_mux_pins: hdmi_mux_pins {
+> -               pins2 {
+> -                       pinmux =3D <MT8173_PIN_98_URTS1__FUNC_GPIO98>;
+> -                       bias-pull-up;
+> -                       output-high;
+> -               };
+> +&mmc1_pins_default {
+> +       pins-wp {
+> +               pinmux =3D <MT8173_PIN_42_DSI_TE__FUNC_GPIO42>;
+> +               input-enable;
+> +               bias-pull-up;
 >         };
->  };
->
-> +&dsi0 {
-> +       #address-cells =3D <1>;
-> +       #size-cells =3D <0>;
-> +       status =3D "okay";
-> +
-> +       panel: panel@0 {
-> +               /* compatible will be set in board dts */
-> +               reg =3D <0>;
-> +               enable-gpios =3D <&pio 45 0>;
-> +               pinctrl-names =3D "default";
-> +               pinctrl-0 =3D <&panel_pins_default>;
-> +               avdd-supply =3D <&ppvarn_lcd>;
-> +               avee-supply =3D <&ppvarp_lcd>;
-> +               pp1800-supply =3D <&pp1800_lcd>;
-> +               backlight =3D <&backlight_lcd0>;
-> +               rotation =3D <270>;
-> +               port {
-> +                       panel_in: endpoint {
-> +                               remote-endpoint =3D <&dsi_out>;
-> +                       };
-> +               };
-> +       };
 > +};
-> +
-> +&dsi_out {
-> +       remote-endpoint =3D <&panel_in>;
-> +};
-> +
->  &i2c0 {
->         status =3D "okay";
 >
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi b/arch/=
-arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
-> index a85c73b43195..b6cfcafd8b06 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
-> @@ -45,6 +45,34 @@ &bluetooth {
->         firmware-name =3D "nvm_00440302_i2s_eu.bin";
->  };
->
-> +&dsi0 {
-> +       #address-cells =3D <1>;
-> +       #size-cells =3D <0>;
-> +       status =3D "okay";
-> +
-> +       panel: panel@0 {
-> +               /* compatible will be set in board dts */
-> +               reg =3D <0>;
-> +               enable-gpios =3D <&pio 45 0>;
-> +               pinctrl-names =3D "default";
-> +               pinctrl-0 =3D <&panel_pins_default>;
-> +               avdd-supply =3D <&ppvarn_lcd>;
-> +               avee-supply =3D <&ppvarp_lcd>;
-> +               pp1800-supply =3D <&pp1800_lcd>;
-> +               backlight =3D <&backlight_lcd0>;
-> +               rotation =3D <270>;
-> +               port {
-> +                       panel_in: endpoint {
-> +                               remote-endpoint =3D <&dsi_out>;
-> +                       };
-> +               };
-> +       };
-> +};
-> +
-> +&dsi_out {
-> +       remote-endpoint =3D <&panel_in>;
-> +};
-> +
->  &i2c0 {
->         status =3D "okay";
->
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/=
-boot/dts/mediatek/mt8183-kukui.dtsi
-> index 8f3a0e85b4ed..4ac0a60fdd24 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-> @@ -252,29 +252,6 @@ &cpu7 {
->
->  &dsi0 {
->         status =3D "okay";
-> -       #address-cells =3D <1>;
-> -       #size-cells =3D <0>;
-> -       panel: panel@0 {
-> -               /* compatible will be set in board dts */
-> -               reg =3D <0>;
-> -               enable-gpios =3D <&pio 45 0>;
-> -               pinctrl-names =3D "default";
-> -               pinctrl-0 =3D <&panel_pins_default>;
-> -               avdd-supply =3D <&ppvarn_lcd>;
-> -               avee-supply =3D <&ppvarp_lcd>;
-> -               pp1800-supply =3D <&pp1800_lcd>;
-> -               backlight =3D <&backlight_lcd0>;
-> -               rotation =3D <270>;
-> -               port {
-> -                       panel_in: endpoint {
-> -                               remote-endpoint =3D <&dsi_out>;
-> -                       };
+> -       mmc1_pins_default: mmc1default {
+> -               pins_wp {
+> -                       pinmux =3D <MT8173_PIN_42_DSI_TE__FUNC_GPIO42>;
+> -                       input-enable;
+> -                       bias-pull-up;
 > -               };
 > -       };
-> -};
-> -
-> -&dsi_out {
-> -       remote-endpoint =3D <&panel_in>;
+> +&mmc1 {
+> +       wp-gpios =3D <&pio 42 GPIO_ACTIVE_HIGH>;
 >  };
 >
->  &gic {
-> --
-> 2.50.1
+>  &touchscreen {
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/bo=
+ot/dts/mediatek/mt8173-elm.dtsi
+> index 0d995b342d46..9ec930058b92 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+
+[...]
+
+> -       bt_wake_pins: bt_wake_pins {
+> -               pins1 {
+> +       bt_wake_pins: bt-pins {
+
+Nit: I think the original name is better, because IIRC this is
+using the RX pin as a GPIO interrupt to wake the system from suspend.
+
+> +               pins-wake {
+>                         pinmux =3D <MT8173_PIN_119_KPROW0__FUNC_GPIO119>;
+>                         bias-pull-up;
+>                 };
+>         };
 >
+
+[...]
+
+>
+> -               pins_ds {
+> +               pins-ds {
+>                         pinmux =3D <MT8173_PIN_67_MSDC0_DSL__FUNC_MSDC0_D=
+SL>;
+>                         drive-strength =3D <MTK_DRIVE_10mA>;
+
+Missed one here.
+
+>                         bias-pull-down =3D <MTK_PUPD_SET_R1R0_01>;
+>                 };
+
+[...]
+
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boo=
+t/dts/mediatek/mt8173-evb.dts
+> index 9fffed0ef4bf..51118a4149d8 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+
+[...]
+
+> @@ -245,20 +245,29 @@ pins_cmd_dat {
+>                         bias-pull-up =3D <MTK_PUPD_SET_R1R0_01>;
+>                 };
+>
+> -               pins_clk {
+> +               pins-clk {
+>                         pinmux =3D <MT8173_PIN_65_MSDC0_CLK__FUNC_MSDC0_C=
+LK>;
+>                         drive-strength =3D <2>;
+>                         bias-pull-down =3D <MTK_PUPD_SET_R1R0_01>;
+>                 };
+>
+> -               pins_rst {
+> +               pins-rst {
+>                         pinmux =3D <MT8173_PIN_68_MSDC0_RST___FUNC_MSDC0_=
+RSTB>;
+>                         bias-pull-up;
+>                 };
+>         };
+>
+> -       mmc1_pins_uhs: mmc1 {
+> -               pins_cmd_dat {
+> +       spi_pins_a: spi0-pins {
+> +               pins-bus {
+> +                       pinmux =3D <MT8173_PIN_69_SPI_CK__FUNC_SPI_CK_0_>=
+,
+> +                               <MT8173_PIN_70_SPI_MI__FUNC_SPI_MI_0_>,
+> +                               <MT8173_PIN_71_SPI_MO__FUNC_SPI_MO_0_>,
+> +                               <MT8173_PIN_72_SPI_CS__FUNC_SPI_CS_0_>;
+> +               };
+> +       };
+> +
+> +       mmc1_pins_uhs: mmc1-uhs-pins {
+
+Wrong order?
+
+> +               pins-cmd-dat {
+>                         pinmux =3D <MT8173_PIN_73_MSDC1_DAT0__FUNC_MSDC1_=
+DAT0>,
+>                                  <MT8173_PIN_74_MSDC1_DAT1__FUNC_MSDC1_DA=
+T1>,
+>                                  <MT8173_PIN_75_MSDC1_DAT2__FUNC_MSDC1_DA=
+T2>,
+
+[...]
+
+Once fixed,
+
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
