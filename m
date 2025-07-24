@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 201A5C87FCA
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4649C87FCE
 	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jul 2025 09:51:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
@@ -12,52 +12,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Rty2vqtoNh4cS11/7Xzcwguiafl4gshq93WpRPUJNYc=; b=wGb6mcsqtdqVta
-	7Z/llBn7xrgXS3XjCZFHiNTqLtW21VF9aDE/FQ0rVVlQR87pbGGMwjLbQg98ahtwwUnl3Xg9bza8+
-	S8Bp0VpgmpEvv+mRXIE96babCmvkikdbO05RlvaEwOXE/RUir7376MZs6QUhCLpQCmuAiYC7OG0Uk
-	+jS14v5ZHefwUM95YY+9mBDlTWMC4M3va4UbXnnL6iDd5KeRUrjQ1pFumHJDkp2I8rbXGD4bKO4Cf
-	xTGGNgtxy6ph4uS2fnAEWMyKTpwOeH4w+Jkhjib4Ni4tQoRvHJRHZi2COZauzMBk1czxXJsMISw0T
-	wmuGy/FjsiCvzsKDjmrA==;
+	List-Owner; bh=tMmVU2a5vjle2Zg/8h2PW0o37EVV9UjdsFyDptyWR5Q=; b=qBUhRZsV0Tq+YP
+	9+RIfh60GNabi7owHHiAtkxnpL1N/IRy6iwqSbHvnHh5anZe3Yav/tDzdp7bHt0xXSdGxZ2ryFi0f
+	smeLHd8PDimZ5WqEeNCNRDLPqm1fC2rUVwHrkJMzO62BGFdKXcUOIcCuwQvxNi9punRoF4/nkWLvO
+	9jSaPckarraoKeVU5RLWSviWzUQqJCOJd5oWU4mTY4nL8kll5GPiJJUDalxO0iLvuG9BL7Re3veez
+	/Fa5mvRc6nJonfi0voEj6XvTmxPQscV4krYvk+61Gi3lEi+2VBqo6S3T4kld/SjLO5hMdkzQcGBwA
+	vaN2VrxH0Xmbdi6+3IpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uesbo-000000077Xv-0Xug;
+	id 1uesbo-000000077YZ-3Aiv;
 	Thu, 24 Jul 2025 09:51:28 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uerVY-00000006u8A-3IfN;
-	Thu, 24 Jul 2025 08:40:58 +0000
+	id 1uerVb-00000006u9n-1muB;
+	Thu, 24 Jul 2025 08:41:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1753346455;
-	bh=mFbuAM5ZhB+OJa9KME98odHO4UJ473ILd2p4q9JxTKI=;
+	s=mail; t=1753346458;
+	bh=ujVdYOL/kD6nq4vkzbaijjYm7dNaRsIKSU9o/0er5HI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=mohmbY1pYbDjkf6kEDQF/IH0XkbcczQ5frh6z1HJDMqThe6CYH0tysljApwDw1NuM
-	 KkaStjTUtDm8fbHkG41N9PizXPGd08cbFyhyZavsJx0A5b0lQ1iqB8rjoFrCDZmahK
-	 o/Mucxkd4DCNLO3vW+0xdEJwLypaaGUhizPfU8fHLCvwit6gnUspvdNsM2bnkdGjjM
-	 zs6XpQMjngBqYBtc4ptxOqrLfFFFeYHB1zTipu2Jkj3rJbd7REqCzO3Cu9YR5DQvzP
-	 kcp5BrHHf7YQ+RVKjcu83t2+Pzf7no+o9bqZHDaAhQuHaHNwB9kv67OyurqVdgFP1Z
-	 /rqdiOPszak0A==
+	b=leJi8MqpM1LFfjdNNUZhgteybFuRy2qMNZ5aNDLl7SrT8+QpHpAG1pu6r3dR4xroT
+	 NaaXgJrG9tVUdrw14YtwRdLDJKoEPg0N5w0na+smo0JcnSWzV/XnrteBtQ/By5Fd2z
+	 AgZ3xJ1pKafoz927DhxGJ8JsNUYCL/MY0kXOIRwCIdve0aAxOfkZdOEjEF3SAXxri7
+	 tJBcl2WMX9ukok/tRPn2vIoBVJm9dtgx8R7sgEl6ogITLwG5XiEeR53+ICQU6IUJy6
+	 hHPTg04wXXbLRui45XH28kbMZdNC9nFUVK9IM98TpBNA7IGusA6yf2xYyrdaYjfvS+
+	 plLudM1jVUBFg==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0BAF117E11EE;
-	Thu, 24 Jul 2025 10:40:53 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A60F617E108A;
+	Thu, 24 Jul 2025 10:40:55 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: linux-mediatek@lists.infradead.org,
 	robh@kernel.org
-Subject: [PATCH 34/38] arm64: dts: mediatek: mt8195: Fix ranges for jpeg enc/decoder nodes
-Date: Thu, 24 Jul 2025 10:39:10 +0200
-Message-ID: <20250724083914.61351-35-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 35/38] arm64: dts: mediatek: mt8195-cherry: Move VBAT-supply to Tomato R1/R2
+Date: Thu, 24 Jul 2025 10:39:11 +0200
+Message-ID: <20250724083914.61351-36-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com>
 References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250724_014056_985740_3304D153 
-X-CRM114-Status: UNSURE (   9.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250724_014059_610232_36C1B1B3 
+X-CRM114-Status: GOOD (  10.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,111 +72,52 @@ Cc: daniel.lezcano@linaro.org, mwalle@kernel.org, devicetree@vger.kernel.org, li
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The jpeg decoder main node is under the soc bus but currently has
-no ranges or reg specified, while the children do, and this is
-wrong in multiple aspects.
-
-The very same is also valid for the jpeg encoder node.
-
-Rename the decoder and encoder nodes to "jpeg-decoder@1a040000"
-and to "jpeg-encoder@1a030000" respectively, and change their
-children to use the newly defined ranges.
+Move the VBAT supply to mt8195-cherry-tomato-{r1,r2} as this power
+supply is named like that only for the Realtek RT5682i codec.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 30 +++++++++++++-----------
- 1 file changed, 16 insertions(+), 14 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts | 1 +
+ arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts | 1 +
+ arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi          | 1 -
+ 3 files changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index dd065b1bf94a..35b10082bb89 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -3014,7 +3014,7 @@ venc: video-codec@1a020000 {
- 			#size-cells = <2>;
- 		};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
+index a82d716f10d4..a50b4e8efaba 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
+@@ -13,6 +13,7 @@ / {
+ &audio_codec {
+ 	compatible = "realtek,rt5682i";
+ 	realtek,btndet-delay = <16>;
++	VBAT-supply = <&pp3300_z5>;
+ };
  
--		jpgdec-master {
-+		jpeg-decoder@1a040000 {
- 			compatible = "mediatek,mt8195-jpgdec";
- 			power-domains = <&spm MT8195_POWER_DOMAIN_VDEC1>;
- 			iommus = <&iommu_vdo M4U_PORT_L19_JPGDEC_WDMA0>,
-@@ -3025,11 +3025,12 @@ jpgdec-master {
- 				 <&iommu_vdo M4U_PORT_L19_JPGDEC_BUFF_OFFSET0>;
- 			#address-cells = <2>;
- 			#size-cells = <2>;
--			ranges;
-+			ranges = <0 0 0 0x1a040000 0 0x20000>,
-+				 <1 0 0 0x1b040000 0 0x10000>;
+ &sound {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts
+index 2d6522c144b7..a8657c0068d5 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts
+@@ -13,6 +13,7 @@ / {
+ &audio_codec {
+ 	compatible = "realtek,rt5682i";
+ 	realtek,btndet-delay = <16>;
++	VBAT-supply = <&pp3300_z5>;
+ };
  
--			jpgdec@1a040000 {
-+			jpgdec@0,0 {
- 				compatible = "mediatek,mt8195-jpgdec-hw";
--				reg = <0 0x1a040000 0 0x10000>;/* JPGDEC_C0 */
-+				reg = <0 0 0 0x10000>;/* JPGDEC_C0 */
- 				iommus = <&iommu_vdo M4U_PORT_L19_JPGDEC_WDMA0>,
- 					 <&iommu_vdo M4U_PORT_L19_JPGDEC_BSDMA0>,
- 					 <&iommu_vdo M4U_PORT_L19_JPGDEC_WDMA1>,
-@@ -3042,9 +3043,9 @@ jpgdec@1a040000 {
- 				power-domains = <&spm MT8195_POWER_DOMAIN_VDEC0>;
- 			};
+ &pio_default {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+index e70599807bb1..d40f4c1b9766 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+@@ -535,7 +535,6 @@ audio_codec: codec@1a {
  
--			jpgdec@1a050000 {
-+			jpgdec@0,10000 {
- 				compatible = "mediatek,mt8195-jpgdec-hw";
--				reg = <0 0x1a050000 0 0x10000>;/* JPGDEC_C1 */
-+				reg = <0 0 0x10000 0x10000>;/* JPGDEC_C1 */
- 				iommus = <&iommu_vdo M4U_PORT_L19_JPGDEC_WDMA0>,
- 					 <&iommu_vdo M4U_PORT_L19_JPGDEC_BSDMA0>,
- 					 <&iommu_vdo M4U_PORT_L19_JPGDEC_WDMA1>,
-@@ -3057,9 +3058,9 @@ jpgdec@1a050000 {
- 				power-domains = <&spm MT8195_POWER_DOMAIN_VDEC1>;
- 			};
+ 		AVDD-supply = <&mt6359_vio18_ldo_reg>;
+ 		MICVDD-supply = <&pp3300_z2>;
+-		VBAT-supply = <&pp3300_z5>;
+ 	};
+ };
  
--			jpgdec@1b040000 {
-+			jpgdec@1,0 {
- 				compatible = "mediatek,mt8195-jpgdec-hw";
--				reg = <0 0x1b040000 0 0x10000>;/* JPGDEC_C2 */
-+				reg = <1 0 0 0x10000>;/* JPGDEC_C2 */
- 				iommus = <&iommu_vpp M4U_PORT_L20_JPGDEC_WDMA0>,
- 					 <&iommu_vpp M4U_PORT_L20_JPGDEC_BSDMA0>,
- 					 <&iommu_vpp M4U_PORT_L20_JPGDEC_WDMA1>,
-@@ -3088,7 +3089,7 @@ vdosys0: syscon@1c01a000 {
- 		};
- 
- 
--		jpgenc-master {
-+		jpeg-encoder@1a030000 {
- 			compatible = "mediatek,mt8195-jpgenc";
- 			power-domains = <&spm MT8195_POWER_DOMAIN_VENC_CORE1>;
- 			iommus = <&iommu_vpp M4U_PORT_L20_JPGENC_Y_RDMA>,
-@@ -3097,11 +3098,12 @@ jpgenc-master {
- 					<&iommu_vpp M4U_PORT_L20_JPGENC_BSDMA>;
- 			#address-cells = <2>;
- 			#size-cells = <2>;
--			ranges;
-+			ranges = <0 0 0 0x1a030000 0 0x10000>,
-+				 <1 0 0 0x1b030000 0 0x10000>;
- 
--			jpgenc@1a030000 {
-+			jpgenc@0,0 {
- 				compatible = "mediatek,mt8195-jpgenc-hw";
--				reg = <0 0x1a030000 0 0x10000>;
-+				reg = <0 0 0 0x10000>;
- 				iommus = <&iommu_vdo M4U_PORT_L19_JPGENC_Y_RDMA>,
- 						<&iommu_vdo M4U_PORT_L19_JPGENC_C_RDMA>,
- 						<&iommu_vdo M4U_PORT_L19_JPGENC_Q_TABLE>,
-@@ -3112,9 +3114,9 @@ jpgenc@1a030000 {
- 				power-domains = <&spm MT8195_POWER_DOMAIN_VENC>;
- 			};
- 
--			jpgenc@1b030000 {
-+			jpgenc@1,0 {
- 				compatible = "mediatek,mt8195-jpgenc-hw";
--				reg = <0 0x1b030000 0 0x10000>;
-+				reg = <1 0 0 0x10000>;
- 				iommus = <&iommu_vpp M4U_PORT_L20_JPGENC_Y_RDMA>,
- 						<&iommu_vpp M4U_PORT_L20_JPGENC_C_RDMA>,
- 						<&iommu_vpp M4U_PORT_L20_JPGENC_Q_TABLE>,
 -- 
 2.50.1
 
