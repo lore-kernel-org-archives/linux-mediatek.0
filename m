@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15441C87FCF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8DA1C83F26
 	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jul 2025 09:48:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
@@ -12,51 +12,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=l6G6M5yfJJh3tqzro8aR2ikupItCKnxTgSwaxs8QY1A=; b=vMymz4ZiZ3T79m
-	LGPgIq+UTDFrX/PbbbXwv7+SkaQCpWu7Dph+uP09gXtDs42iPgfFtCGM2Kk7B6iyQOKu9R0jtJLD6
-	uWKrW/pwcJnIJhZ6yNOe5x/YW84ZQOkU50v/y3BMUyMCtInkhrT8AhI2TAPJYk9+UW1/6uFhSFJ7n
-	GASSu4vXXrg/Fz7gQ6EhJIslrREm64l05eq84zwmpkgcgT9wCKWmdhinZjOjijQxHBhRuPHbFONiE
-	Bp8zBoRytReF6iTJdLn05MLziVqGKm98sGt2/0Q4mgtAhtRsnKDbwlzqiunkTpFgKMRbx2F1Pbzcy
-	0XCCkqX1VvRAR2JqCR/g==;
+	List-Owner; bh=hIuhdO717Av6b/d6VtfpIog+W7Jxdapkx4VKmL2Jef4=; b=fApRrGzu11gKSC
+	1PNZZWh76asuBSTtFCnYTkQr0hzM0PCdRMc6JoMzzwPvZZnT8NVdzZcmaOSdU17YaPaMrjWwknM6P
+	GIsV7dK7lNQNPVSpFmHZ55XkATjXYcHjc9o3ob+tEjifzymAQTL7qrgF/HklVPdQ6NHKw4FVmX7GC
+	vRIwH7exc9TVFb5oyPKqMQLMAFsr28L5LmAv5av/h4OdojoFGfN2Px3uRq1CLsQcB7j85RxQmsZD7
+	dh7MefHRnEKDpJPeVq8SjUFkXG5yIHGWT0pvpxoYngnEjhGEP+TWxN9ruNwUMCZRzcFfMMBLdD3U1
+	eEXnO+2sW+5cfa9Qxt/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uesYo-000000076V8-40Pp;
-	Thu, 24 Jul 2025 09:48:22 +0000
+	id 1uesYp-000000076WM-2cWS;
+	Thu, 24 Jul 2025 09:48:23 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uerUh-00000006tbY-3sys;
-	Thu, 24 Jul 2025 08:40:05 +0000
+	id 1uerUk-00000006tdP-2TKt;
+	Thu, 24 Jul 2025 08:40:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1753346402;
-	bh=esBSalMVnvl0Uf4eNeIJU2nxBczdBlqdpwKmxJ5zN5Q=;
+	s=mail; t=1753346405;
+	bh=zcY6uixOKmgsG390lY8yjsxAZ7IOK+MdAKUlFrBCbSE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=B1EOpJ3Eqbl29y8r6oaLBY7j7IrxKo1uw6DqBtdSpcprT97dX94NoRrGNqs799uv/
-	 OlimjamnTTT+8gY2wRdNRZ61pzdyEc5ZsC2/h8sOsefn52CyCAh8Okvd13e/RohBSU
-	 /U2dzL1B9O13FUb74tiGJVyrJROoMLC692X8aHLNG7iTD+/VkyxFHkhP2HO1qZcOoC
-	 svwb0ewQQTNn88/QLa3MxNv8j5v3URZ0oAYlOcBu9R8It5pyByyOjo2LH9yR+TwLTE
-	 kT5ZYUhHvKJ/dyMfr/OYikieVSmpbRoFefLoFGl2vCmQaABALWN8dIXuVPOam2bd9T
-	 Ytcqr2afnyM+g==
+	b=K4W8XI2uE0OOilyU6OFwbaIasgN3IdwzN5wzOns+tcvMWd9KxtwyOS1Y7dMXw8tep
+	 pWFlkTvh7lHlM2FlKX3qG+qEqKdz4P6Da+MZDIfGZ9YGA00agCTLQqtAxODCsXLFLJ
+	 nmSxSgAr42nlNcPvn7sVQUXrjsUKPASnZqC1Hu7qt/GS+ESCmGQHyQLU3f6DvGAV1b
+	 yKJDJ+8hOgj8MDWtyzKc1ORkpFa5eFF3kJJLJobcaztYJHVgwmKgo0q5e8ezMLvNFK
+	 Slrn09Q/kh5NpSpakWLJOL/vHgqAI3OwP8tDuUBnvhPFfl1X7rLlgchc4RpGEDJ7fd
+	 ebcaqT6JLJlGQ==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1C67E17E11EE;
-	Thu, 24 Jul 2025 10:40:00 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id BC34517E1298;
+	Thu, 24 Jul 2025 10:40:02 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: linux-mediatek@lists.infradead.org,
 	robh@kernel.org
-Subject: [PATCH 14/38] dt-bindings: media: mediatek,mt8195-jpeg: Allow range number in node address
-Date: Thu, 24 Jul 2025 10:38:50 +0200
-Message-ID: <20250724083914.61351-15-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 15/38] dt-bindings: phy: mediatek,hdmi-phy: Fix clock output names for MT8195
+Date: Thu, 24 Jul 2025 10:38:51 +0200
+Message-ID: <20250724083914.61351-16-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com>
 References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250724_014004_132426_68AE5599 
-X-CRM114-Status: GOOD (  10.25  )
+X-CRM114-CacheID: sfid-20250724_014006_773019_5BDE0591 
+X-CRM114-Status: UNSURE (   9.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,48 +73,70 @@ Cc: daniel.lezcano@linaro.org, mwalle@kernel.org, devicetree@vger.kernel.org, li
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The dual and triple core jpeg encoder and decoder (respectively)
-on MT8195 are far apart: the only way to have this to make sense
-is to split those in multiple address ranges in device trees as
-one big range would overlap with other IP in at least the MT8195
-SoC.
+For all of the HDMI PHYs compatible with the one found on MT8195
+the output clock has a different datasheet name and specifically
+it is called "hdmi_txpll", differently from the older HDMI PHYs
+which output block is called "hdmitx_dig_cts".
 
-Change both the jpegdec and jpegenc bindings to allow specifying
-children nodes such as "jpegdec@0,10000", "jpegdec@1,0" or for
-encoder "jpegenc@0,0", "jpegenc@1,0" to resolve dtbs_check issues.
+Add a conditional to allow the new clock output name on all of the
+HDMI PHY IPs that are perfectly compatible with MT8195.
 
+Fixes: c78fe548b062 ("dt-bindings: phy: mediatek: hdmi-phy: Add mt8195 compatible")
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml      | 2 +-
- .../devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml      | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ .../bindings/phy/mediatek,hdmi-phy.yaml       | 25 ++++++++++++++++---
+ 1 file changed, 22 insertions(+), 3 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
-index e5448c60e3eb..935f124a9c05 100644
---- a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
-@@ -36,7 +36,7 @@ properties:
+diff --git a/Documentation/devicetree/bindings/phy/mediatek,hdmi-phy.yaml b/Documentation/devicetree/bindings/phy/mediatek,hdmi-phy.yaml
+index f3a8b0b745d1..f1207aea8605 100644
+--- a/Documentation/devicetree/bindings/phy/mediatek,hdmi-phy.yaml
++++ b/Documentation/devicetree/bindings/phy/mediatek,hdmi-phy.yaml
+@@ -26,6 +26,10 @@ properties:
+           - enum:
+               - mediatek,mt7623-hdmi-phy
+           - const: mediatek,mt2701-hdmi-phy
++      - items:
++          - enum:
++              - mediatek,mt8188-hdmi-phy
++          - const: mediatek,mt8195-hdmi-phy
+       - const: mediatek,mt2701-hdmi-phy
+       - const: mediatek,mt8173-hdmi-phy
+       - const: mediatek,mt8195-hdmi-phy
+@@ -41,9 +45,7 @@ properties:
+     items:
+       - const: pll_ref
  
- # Required child node:
- patternProperties:
--  "^jpgdec@[0-9a-f]+$":
-+  "^jpgdec@([0-9],)?[0-9a-f]+$":
-     type: object
-     description:
-       The jpeg decoder hardware device node which should be added as subnodes to
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
-index 596186497b68..d7a8f2e3bc1a 100644
---- a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
-@@ -36,7 +36,7 @@ properties:
+-  clock-output-names:
+-    items:
+-      - const: hdmitx_dig_cts
++  clock-output-names: true
  
- # Required child node:
- patternProperties:
--  "^jpgenc@[0-9a-f]+$":
-+  "^jpgenc@([0-9],)?[0-9a-f]+$":
-     type: object
-     description:
-       The jpeg encoder hardware device node which should be added as subnodes to
+   "#phy-cells":
+     const: 0
+@@ -76,6 +78,23 @@ required:
+   - "#phy-cells"
+   - "#clock-cells"
+ 
++if:
++  properties:
++    compatible:
++      contains:
++        enum:
++          - mediatek,mt8195-hdmi-phy
++then:
++  properties:
++    clock-output-names:
++      items:
++        - const: hdmi_txpll
++else:
++  properties:
++    clock-output-names:
++      items:
++        - const: hdmitx_dig_cts
++
+ additionalProperties: false
+ 
+ examples:
 -- 
 2.50.1
 
