@@ -4,154 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4387FC83F1A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jul 2025 13:53:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5ADD9C83F1A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jul 2025 13:53:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=frgttlq1wUpHfs85c6sOB8oFTBM5O4TFBHJ8W4S/2Zg=; b=aElJYreuqyt6RgbRJps4LQ7DOR
-	LK+qb934gNw9i1p5DUiqznco1EfDY27dhmmkZusgLhBJLhn792k5UFOBHvH4MFQ2Em22FpRpAGkoi
-	6uQlgk25F0VklZwG0p79gPGql1sQhAXLQnrCPA9yVJ1T7nAyYx7nEXezySgBuseSA/Iqp7Fk6yaRd
-	CTnnwCwTTsBKnHiHKMM/yBvw8oz5T0CtCQ9QgCTls/G9kN/wQrhg7UUtw3i7YFhCR9reGLNsjoe2j
-	oUpnSCV+utnbKQLP/YGrvXMP3TEnv8EW05QJm5Kg7aY41e8BczTVMQ/pNfUIQokGfwjrJpvjItxG+
-	GYTb52LQ==;
+	bh=hIUwmPHAS5I/CUOP00py81w0hjNzvTvkcVdQbKas/DA=; b=eOJsSslpecR25Uph7pHi0Aqw+g
+	8uzXEbqVpGE/yLXpX2JhYLoIpGwgN72BIAsD/cCk1vtgGb/RjABYrFHR4075J5AUdWwFzbRrDszKp
+	FhbHrMDsyg0x3rb+QKcRkSJ0m7KZ4UusRzj0BY0XD6Goz2LyxhJZzjvigNWPB4MomGbRSbLIL3JgS
+	LbBWRsxC91lJ606Ovi1GMZN8KlGtPIspzjyoqibBO3NnFxM0mVklefEKk57l80f50dICzJ4NwyExd
+	FphJekcbV3LcxxoLtJ0DQo/7kV35Ct8np6Yz3grUGh6A9yrIhFwBQ5rhIZbSxZvm7NqmaKXwCckP4
+	vhUnCKVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uewNb-00000007a5i-3gfw;
-	Thu, 24 Jul 2025 13:53:03 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1uewNk-00000007aKU-0Io8;
+	Thu, 24 Jul 2025 13:53:12 +0000
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uete1-00000007H6d-1G0D
-	for linux-mediatek@lists.infradead.org;
-	Thu, 24 Jul 2025 10:57:50 +0000
-Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 56O9tGTo001523
-	for <linux-mediatek@lists.infradead.org>; Thu, 24 Jul 2025 10:57:47 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	frgttlq1wUpHfs85c6sOB8oFTBM5O4TFBHJ8W4S/2Zg=; b=MCM9U+EIRXdUhkkj
-	RnaQHyphmlwj8ufux4uRqT1CeeRyh4WJeQyMhFCoM7HUZE8B54OyMur9MQ7pLAHK
-	q7Q1KVrS7BFGTDMUnHwdUrmlCjNOXtf0Rp/Gdwturu54n0TsR+qJU3AtKnFv2WhV
-	Ajeq9g9mm1HxhnKm5PMSdv09h5GF5GTeKQLa+UREcjMI+vHbBSZEp5ZsQOJYdrBc
-	29cuk/jHFBZqdsYWQeB8ET0R6F2HpIBhXtEQ0eTVFTrqxXZJKuhGlQ4XUWQjybWw
-	SQmEEyV1+dpeOxXC5puV3gSzpq8fRjewj3wouaPKzcYBH4zMbbbQ82M9zd+81FQV
-	uLJMxQ==
-Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com [209.85.219.70])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 482b1uf17r-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Thu, 24 Jul 2025 10:57:47 +0000 (GMT)
-Received: by mail-qv1-f70.google.com with SMTP id 6a1803df08f44-6fabbaa1937so2435286d6.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 24 Jul 2025 03:57:47 -0700 (PDT)
+	id 1uetkx-00000007IDC-2F1y;
+	Thu, 24 Jul 2025 11:05:00 +0000
+Received: by mail-ej1-x632.google.com with SMTP id a640c23a62f3a-ae0b2ead33cso170676766b.0;
+        Thu, 24 Jul 2025 04:04:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1753355097; x=1753959897; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=hIUwmPHAS5I/CUOP00py81w0hjNzvTvkcVdQbKas/DA=;
+        b=nsd3l7x3U/x2j0uB+KhKfc8l4Qh25XrNYi+v/b8AfbNyiPoRA/9dCa6FHMjVL1LOm1
+         HoqgP2MrbO6RL8P8fxJaSZQxAbgGg3uEwJryHLH9/+OENVielZUQOF32IythSSDgUaWV
+         Mh19R3ELsMHf6yZpPv5g96RJR3NuCDjsb2JXkvxUSPyS+mHaHkNMjbjVmuhBKZA5o/lx
+         uHx3BlP/99kDk5lfOlRsvT5TOG7MYpdMmy0LzGyO7us+piudsatPWvJaj1b929ebBuUC
+         74FgAi+hSlHa8+BAFFbDQXOxwGpeoUONrYW2o95ZiKNDBDFMmLe+esgFC5RfkcSvSOfM
+         puqQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1753354666; x=1753959466;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=frgttlq1wUpHfs85c6sOB8oFTBM5O4TFBHJ8W4S/2Zg=;
-        b=tWgS99FmXTMpT44NsAC1rXBKp1oNm7kL7plXr6dVkNU2SeIPIhlZzmZhsXTwBO9haX
-         ypvZ6+Imn2znrHjmtspksP3o1xqqiHsJEC1Z7gY68Vzy0RTvD7mrMS//U2AYKFz8N9BV
-         07CBEqrkRnFgFfvv/p6ouhm0RddJhnF5wAmVdW/COEsZTOW+J4+32+bJrakZ+3K+XPAY
-         8Uan1Vty9+D8jVcS9LPq98wx5SN8qVvGPBSvPWbEQwW6cjlDkGUQEUUG0gnGIL/03ApA
-         N2/SzkHz5wh8KsCBUPptkZER1xMklYJAip3thFSgNvD42qxuCDHZL2qNp58Yjwl/O4JP
-         m01g==
-X-Forwarded-Encrypted: i=1; AJvYcCV1pxCXGQN3XxKs99nOYhM/HSLdElq6fYw28mBfCWTwTxUGzg6aiJ8zFTDo6pSei3yo9+KKUXKXrsZcN7eTOA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxqZazb2LyF72hrviVBzhY9VCmnnnfC9PGWouh+PB5wvXy/pfr+
-	c9orXnZXvglHHa+pQA8IQ6aIM1AlPunelzBTD+NCrJRYE2tbivNEg2/7nqALbJxN3g1JEmQC2yc
-	6mi8ZEj70ZFk2y4OsMeJEJS+oU4Yp//eVwolJG7TFff7K8hMwy1B6XVyiIQzsIhVCMtMFgbQYoN
-	o=
-X-Gm-Gg: ASbGnctDY89mitf5jFJMkAvYLrPuXsi4RMlNGtvnjlfv2bzHGbqhfFg14ysdhEEM7ja
-	6rL5SHAl6c98fFzRHgW0TX8YM8Qe1S3SMa6g/REx37qRX3o8e5dopoMbf9w4IuF/iay6nAIgcfM
-	v1X7sc50OWlbMZsr7uQNHp8B32JYqV4l5L7U/nEPorBFzVrvmNE3UkfhTOdLXV0LlQ9GY4XX5aC
-	OGbJQq3wqTJTozMaymyeKS533vKB49Voyq6T6SYfcvAjWqZH/MfQi+DvpDX4iSXF9MAZUuFudCS
-	bxNdSA6DqToqJx2qS7eESuFhFLy+6943rnJEmFL6mP2jAU56ijLpS/BwjJW5eudnM3CEIT8AsVC
-	mfjRNZKaXJhUEydwpmw==
-X-Received: by 2002:a05:6214:1d2f:b0:702:d3c5:2bf1 with SMTP id 6a1803df08f44-70700537849mr43874566d6.3.1753354666030;
-        Thu, 24 Jul 2025 03:57:46 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGOPUGD8doV9+jglxqU2GB0DYEWEF7aTYg/TWGqOaOfQBWULvPms9oF3r1fFWzU0hBkNoKlEg==
-X-Received: by 2002:a05:6214:1d2f:b0:702:d3c5:2bf1 with SMTP id 6a1803df08f44-70700537849mr43874396d6.3.1753354665532;
-        Thu, 24 Jul 2025 03:57:45 -0700 (PDT)
-Received: from [192.168.43.16] (078088045245.garwolin.vectranet.pl. [78.88.45.245])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-af47cc6e753sm95191866b.50.2025.07.24.03.57.40
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 24 Jul 2025 03:57:44 -0700 (PDT)
-Message-ID: <bbb07270-cf7d-4fc6-9a74-334fcaf00f05@oss.qualcomm.com>
-Date: Thu, 24 Jul 2025 12:57:39 +0200
+        d=1e100.net; s=20230601; t=1753355097; x=1753959897;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=hIUwmPHAS5I/CUOP00py81w0hjNzvTvkcVdQbKas/DA=;
+        b=VXlTuGMAG+LMVdkJUNJQMAFPuF9asOftWcciRRizBkMjpjhQAVOiHb3F5+pyXpgXhL
+         1JuSv5XmDrTgYGQcWPpHj9A5zzpHJrXI7swTLgoiVp/vYJVNhaSrPxnz6z/eTfW2tzX+
+         fFK4ZuJMZur1JVNRQo8O40Sw2p8D3rygvrkivJwW3Kt2+BQzEutEtBtrQNVly9LymO8Z
+         WquXTCz/hT1nuQl4C7+hQA0xOeoMofpB9rq8HYZKDnXAhqzGa/KGXQk3bRA8BPfD0jzf
+         rvIPhsZLflFdAYkfXKbOUylWs57rXAfWUUJWkcqMlammkA2uI5qxd5Lr/uCd9F8ZvYY9
+         EQtg==
+X-Forwarded-Encrypted: i=1; AJvYcCX2hY/VoIAeB+vwdYrzik+SuwZtczIhDgUe4dFPUkdXmy+s9PuMX4UCoLQMNg18imH1cPIJUw6MwOiRaEgf4OOx@lists.infradead.org, AJvYcCXZimUvBBvPXdhMnDlDDi/NLhpBHiSfMImB1/JeLsqSCPuaBR3ZBRTwFxOP+sy46FhWeoYlPJYu7jg6lj6ZnoA=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzbSyVa5LEWdeqmpUYrt00HYm/LAKEDRC5Oi+LFfLF5+kkIN7+q
+	fOpKQ5ecdedjCWO4wvChM53vUwhwc6nEICDBZXRL5HtbS5FpjEIo6arrblr5P6K+vpOrYLpOYrY
+	NxRfpX3BYL6B3o+KChJ6HlOevR46Tz50=
+X-Gm-Gg: ASbGncvoydw2rxdCUoW0cW44A+TdLhSypg0r8ExEFXIvuJoIJp9tsFQIuftCpDISpaP
+	Y9OzPICtvKcUZPI7uox1HUbaUr+5giyB7z0hrkIBitt0Tz/ZEa/V55+v8haI298Wawm1jVpzlQR
+	w2zZBDXLOqTvaqwFmct2eOdl+UK0TL4ObZH9oNwKPA/XguXh8nQgDj0OynSFPrKS+jsH+A0UQuA
+	m4YQJ9Uug==
+X-Google-Smtp-Source: AGHT+IHPG9CppWQlW2WG11oa6jW9jIvsCOFaEPh9C4R84HymaGR9H07ZVvtMJ1em3UaqkyymENVRG1C3VhJB+3+pi38=
+X-Received: by 2002:a17:906:478a:b0:ae0:7e95:fb with SMTP id
+ a640c23a62f3a-af4c1e2633dmr202631066b.5.1753355097066; Thu, 24 Jul 2025
+ 04:04:57 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 11/15] pinctrl: qcom: use generic pin function helpers
-To: Bartosz Golaszewski <brgl@bgdev.pl>,
-        Linus Walleij <linus.walleij@linaro.org>,
-        Bjorn Andersson <andersson@kernel.org>,
-        Konrad Dybcio <konradybcio@kernel.org>,
-        Alexey Klimov <alexey.klimov@linaro.org>,
-        Lorenzo Bianconi <lorenzo@kernel.org>,
-        Sean Wang <sean.wang@kernel.org>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Paul Cercueil <paul@crapouillou.net>, Kees Cook <kees@kernel.org>,
-        Andy Shevchenko <andy@kernel.org>,
-        Andrew Morton
- <akpm@linux-foundation.org>,
-        David Hildenbrand <david@redhat.com>,
-        Lorenzo Stoakes <lorenzo.stoakes@oracle.com>,
-        "Liam R. Howlett" <Liam.Howlett@oracle.com>,
-        Vlastimil Babka
- <vbabka@suse.cz>, Mike Rapoport <rppt@kernel.org>,
-        Suren Baghdasaryan <surenb@google.com>, Michal Hocko <mhocko@suse.com>,
-        Dong Aisheng <aisheng.dong@nxp.com>,
-        Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
-        Jacky Bai <ping.bai@nxp.com>,
-        Pengutronix Kernel Team <kernel@pengutronix.de>,
-        NXP S32 Linux Team <s32@nxp.com>,
-        Sascha Hauer <s.hauer@pengutronix.de>,
-        Tony Lindgren <tony@atomide.com>,
-        Haojian Zhuang
- <haojian.zhuang@linaro.org>,
-        Geert Uytterhoeven <geert+renesas@glider.be>
-Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
-        linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
-        linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
-        linux-hardening@vger.kernel.org, linux-mm@kvack.org,
-        imx@lists.linux.dev, linux-omap@vger.kernel.org,
-        linux-renesas-soc@vger.kernel.org,
-        Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-References: <20250724-pinctrl-gpio-pinfuncs-v3-0-af4db9302de4@linaro.org>
- <20250724-pinctrl-gpio-pinfuncs-v3-11-af4db9302de4@linaro.org>
-Content-Language: en-US
-From: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-In-Reply-To: <20250724-pinctrl-gpio-pinfuncs-v3-11-af4db9302de4@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Authority-Analysis: v=2.4 cv=LdY86ifi c=1 sm=1 tr=0 ts=688211ab cx=c_pps
- a=oc9J++0uMp73DTRD5QyR2A==:117 a=FpWmc02/iXfjRdCD7H54yg==:17
- a=IkcTkHD0fZMA:10 a=Wb1JkmetP80A:10 a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8
- a=jpok1_DMC_Ne8w05vhoA:9 a=QEXdDO2ut3YA:10 a=iYH6xdkBrDN1Jqds4HTS:22
- a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzI0MDA4MiBTYWx0ZWRfX5KmwKyWcywe2
- Fg6xPdaPrz5b+3w+1WoAART6PhQzZnWgYM9V2SAiFl5N99fA/gW0CFKWBIZmVGS+Az2vMbeznpI
- x9TcbYiFGpl92UJ0CwPfNRz+pA2CRl1/vimezKRCmQ+w3uSwO78q4hXQyJc8kL39HPSZPymwTx2
- tviCQgNh674B88sRYsN773vCBoOkNQouEVp0kzn7iWYAPwYFMPNFoo3aUcp+eHaD0iMlNb8ZgF8
- dzXePThD6wRmyVXKPqU/d77i89ZOlkB9K+WwJpmkJ3sxDSmIKxF30HziuLFD+DLs8ptjkBZhFQD
- YRbb7Gp+ZVtj0cA5+bZpR0R3egN9hgaKeWXfT5pIHOwxtchpc1xX9/ie8lSv3Gob102jaNUAiYm
- WnFtPc6R2UNAATY1LQzBQoKjHS6kqUuuQQ2646G/y1lCqFkTkXG8KscA2t+HkV7Bieqxo4BT
-X-Proofpoint-ORIG-GUID: K80ld-gSbNd5mnUnSf475WY4orB8apa9
-X-Proofpoint-GUID: K80ld-gSbNd5mnUnSf475WY4orB8apa9
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-07-24_01,2025-07-24_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 mlxscore=0 priorityscore=1501 adultscore=0 phishscore=0
- malwarescore=0 lowpriorityscore=0 mlxlogscore=508 bulkscore=0 spamscore=0
- suspectscore=0 clxscore=1011 classifier=spam authscore=0 authtc=n/a authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2505280000
- definitions=main-2507240082
+References: <20250724-pinctrl-gpio-pinfuncs-v3-0-af4db9302de4@linaro.org> <20250724-pinctrl-gpio-pinfuncs-v3-1-af4db9302de4@linaro.org>
+In-Reply-To: <20250724-pinctrl-gpio-pinfuncs-v3-1-af4db9302de4@linaro.org>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Thu, 24 Jul 2025 13:04:20 +0200
+X-Gm-Features: Ac12FXwYO9py2pad9YYkUaWtcE51AjTlJa3erYsopqu9ohpn5SMp_S7iBIXDS4k
+Message-ID: <CAHp75VdoZr0YCm3Pc7F5jOV8Q-H9K+gje2fi71nonHoXq2YPdQ@mail.gmail.com>
+Subject: Re: [PATCH v3 01/15] lib: provide kmemdup_const()
+To: Bartosz Golaszewski <brgl@bgdev.pl>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Bjorn Andersson <andersson@kernel.org>, 
+	Konrad Dybcio <konradybcio@kernel.org>, Alexey Klimov <alexey.klimov@linaro.org>, 
+	Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Paul Cercueil <paul@crapouillou.net>, Kees Cook <kees@kernel.org>, 
+	Andy Shevchenko <andy@kernel.org>, Andrew Morton <akpm@linux-foundation.org>, 
+	David Hildenbrand <david@redhat.com>, Lorenzo Stoakes <lorenzo.stoakes@oracle.com>, 
+	"Liam R. Howlett" <Liam.Howlett@oracle.com>, Vlastimil Babka <vbabka@suse.cz>, 
+	Mike Rapoport <rppt@kernel.org>, Suren Baghdasaryan <surenb@google.com>, Michal Hocko <mhocko@suse.com>, 
+	Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, 
+	Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, NXP S32 Linux Team <s32@nxp.com>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Tony Lindgren <tony@atomide.com>, 
+	Haojian Zhuang <haojian.zhuang@linaro.org>, Geert Uytterhoeven <geert+renesas@glider.be>, 
+	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
+	linux-hardening@vger.kernel.org, linux-mm@kvack.org, imx@lists.linux.dev, 
+	linux-omap@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250724_035749_349040_A8FC0C75 
-X-CRM114-Status: GOOD (  11.50  )
+X-CRM114-CacheID: sfid-20250724_040459_573319_C07BFBBF 
+X-CRM114-Status: GOOD (  10.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -166,18 +113,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/24/25 11:24 AM, Bartosz Golaszewski wrote:
+On Thu, Jul 24, 2025 at 11:24=E2=80=AFAM Bartosz Golaszewski <brgl@bgdev.pl=
+> wrote:
+>
 > From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-> 
-> With the pinmux core no longer duplicating memory used to store the
-> struct pinfunction objects in .rodata, we can now use the existing
-> infrastructure for storing and looking up pin functions in qualcomm
-> drivers. Remove hand-crafted callbacks.
-> 
-> Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-> ---
+>
+> Provide a function similar to strdup_const() but for copying blocks of
+> memory that are likely to be placed in .rodata.
 
-Reviewed-by: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+Makes sense, one nit-pick below.
 
-Konrad
+...
+
+>  extern void *kmemdup_noprof(const void *src, size_t len, gfp_t gfp) __re=
+alloc_size(2);
+>  #define kmemdup(...)   alloc_hooks(kmemdup_noprof(__VA_ARGS__))
+>
+> +extern const void *kmemdup_const(const void *src, size_t len, gfp_t gfp)=
+;
+
+Can we locate this in the similar order to the C-file? I would put it
+before kmemdup_array().
+
+>  extern void *kvmemdup(const void *src, size_t len, gfp_t gfp) __realloc_=
+size(2);
+>  extern char *kmemdup_nul(const char *s, size_t len, gfp_t gfp);
+>  extern void *kmemdup_array(const void *src, size_t count, size_t element=
+_size, gfp_t gfp)
+
+(below left for the context)
+> +
+>  /**
+>   * kmemdup_array - duplicate a given array.
+
+--=20
+With Best Regards,
+Andy Shevchenko
 
