@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 642BCC87FCA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jul 2025 10:09:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80771C87FC5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jul 2025 10:09:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RE/8CNZ2np+YbXswms+SwuytJrFA2DwruDrLjq3M86Y=; b=GHtFNF97f6P8df
-	9i/LLEjapwgmEM2XjX8jGdCHqYIXU9ET8NTRIEYrz2v1ZvU/5vb3VdTFM1QRpR8IeDgNWcZpK4gFU
-	7/mM62Q8ztlGqINST2J9R0fkscQ+OpD531rj6OCI9DTuayvMqS8v+LdxLIFfEp17sa5BRY5TQjZp9
-	vt+okA8/q1TPs/CcsQqNuBus84RuZbzMvsax1xB0cmliPRNTj/6j4T2zed4AWMhiIyQ5xGtT6sxcA
-	v9puQEKDzgyxMpUgrhr/UedS4eVKu4oRRCvxBRLGoO8cdr82pT6/ph5Avna5VttvgqGplZ6BcuaqB
-	uTGlNpnV+lZT4Vg5c3lA==;
+	List-Owner; bh=bJ1Ke5Y0L0Tl1xtrjxnsZJZPT3blA7nXF1uS91XySHI=; b=pFH9cjGs1TN51F
+	PRIbvmkEgL3JWVXEXTnlk37TvwH2+I8bGKmO+KM7NorgTLVT1SkJZzOLyv+kj7VOiatTepSP/QCO3
+	QzYa5k8EPVe6TyTmC6ALQHd2bUMdqwGRcnhAp7BFl9MYYJKSPwvlB4FIKIXcKR5MOGhODZKm1BJPu
+	ifv/vfH+RgnaKqetuTUuzHSlkFy/ElgPXircgW6P6uAvIpYOAFMnos1SUpys6tNwQKgqNhauso/n+
+	OtceqHVTNfXnUW+kXxO+LscEWqRv1xi36jCxhsTNVJbBasTqUcoamyINUIFcWGW8uncpy3hWx5YrJ
+	vHF8JTVDQ7SBSprjqhUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uessr-00000007AOr-0zKd;
-	Thu, 24 Jul 2025 10:09:05 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1uesss-00000007AQ4-1xtI;
+	Thu, 24 Jul 2025 10:09:06 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ues17-0000000706Z-1oy7;
-	Thu, 24 Jul 2025 09:13:34 +0000
+	id 1ues2U-000000070LM-0dDc;
+	Thu, 24 Jul 2025 09:14:58 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 52073A56102;
-	Thu, 24 Jul 2025 09:13:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 89B74C4CEF4;
-	Thu, 24 Jul 2025 09:13:20 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 74807601D5;
+	Thu, 24 Jul 2025 09:14:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9FB83C4CEF4;
+	Thu, 24 Jul 2025 09:14:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1753348412;
-	bh=sWc0yEy6Cd35ZjpBpGmYfeV2qZHM+ODroGPwcwarzUU=;
+	s=k20201202; t=1753348497;
+	bh=HvehlH/2CLE3MGaL9UtFsif+bmgfGYTsR5JQ7GEt1p0=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=tiCkKB/K/rkYwavuOfNvMUSI3XyhFZuvImxGEz8jQj0rKARnlQw1TpRfb/aA6A287
-	 ZEiVMdi/1M+PsvizRK+CojtNMSMDnGpys5AbgYVSx/aslQBh7BTblBOD+Vf8EhPTRZ
-	 rl6DcFs9MQtyIDH7rb+/uK2VyG5EWgh0mSOBxSqj515sMCMzb8t6Jqw+aI83bSl9Rp
-	 0rCLUtV6U/I+VuZ+gsGBaeVxocAr2TPUh1RX9wh6n/ddKGtPyFaeppNWafjkBfO4gz
-	 Nu9FciZorEJSADrCrFlpA5U8GHCz+/u9BCqYco4amDUP2AtHZhdoAIbq8mHwPcKaYO
-	 wBtzsg9rpFrIA==
-Message-ID: <a7962584-f6b4-40ca-ae11-c08b67b9f42d@kernel.org>
-Date: Thu, 24 Jul 2025 11:13:18 +0200
+	b=j6GRV9cY8JJjAsshQQczASZlfbPLxoOPeuumnGEhTmG1bf+islCdh1pt0NH/SZWHJ
+	 D3eI9TQ8eZsT2Kx2fCrTiCwCMYx21ExNTJqECq7o7PUbHH0KzQKL7jnSIyaQwqWVz2
+	 5p3evYUmAdvKhoN06V5EpvbN/gZCjWuZyDXE0WVhKytxSzrU6qLdYkfD7GwfmfepHD
+	 IIlE1v3cJaR7xL+0k5Vsb1FfIPhV94Z99cKISQHLT9Myj1PXYxzLMp1EWX7z7i73KK
+	 2Mc25V+caW5Vbd2Z4ypLj3g3fY973i4pYzDaGvsSszA0z9CGCF5jDofdpRxHN4t6c1
+	 ItqoHCvcdyvPQ==
+Message-ID: <70ae6787-ee0b-43a0-851e-1fb6c82f6c31@kernel.org>
+Date: Thu, 24 Jul 2025 11:14:43 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 08/38] dt-bindings: pinctrl: mediatek,mt7622-pinctrl: Add
- missing base reg
+Subject: Re: [PATCH 14/38] dt-bindings: media: mediatek,mt8195-jpeg: Allow
+ range number in node address
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  linux-mediatek@lists.infradead.org, robh@kernel.org
 References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com>
- <20250724083914.61351-9-angelogioacchino.delregno@collabora.com>
+ <20250724083914.61351-15-angelogioacchino.delregno@collabora.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -96,13 +96,9 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20250724083914.61351-9-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250724083914.61351-15-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250724_021333_627532_DB6DA662 
-X-CRM114-Status: UNSURE (   6.24  )
-X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,18 +115,21 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 24/07/2025 10:38, AngeloGioacchino Del Regno wrote:
-> The pin controller for both MT7622 and MT7629 need both a "base"
-> and an "eint" MMIO like the ones found on other MediaTek SoCs:
-> while devicetrees have always been correct, the binding is not,
-> as it only allows an "eint" reg.
+> The dual and triple core jpeg encoder and decoder (respectively)
+> on MT8195 are far apart: the only way to have this to make sense
+> is to split those in multiple address ranges in device trees as
+> one big range would overlap with other IP in at least the MT8195
+> SoC.
 > 
-> Add "base" to reg-names and increment maxItems for reg to two.
+> Change both the jpegdec and jpegenc bindings to allow specifying
+> children nodes such as "jpegdec@0,10000", "jpegdec@1,0" or for
+> encoder "jpegenc@0,0", "jpegenc@1,0" to resolve dtbs_check issues.
 
 
-Fixes tag, please.
+This should not be needed for standard MMIO/simple-bus nodes. I think
+DTS is wrong here.
 
-With that:
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Which cases really need the ','?
 
 
 Best regards,
