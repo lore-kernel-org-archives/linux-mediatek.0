@@ -4,130 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3D04C83F1A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jul 2025 10:49:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DB70C83F26
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jul 2025 10:51:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=h4a+gzu7f3EwTZaPbk859mLIqTYIGZRRwraHyXMWvss=; b=tAwWmbeqEkRfOmwVzF6W+BN7Fx
-	Di0xH66MmICBhLqGmiQ0xw7DOgU+fjCjFY/AH13kVm1TFkvugQW1bACGVl+a3TPy+4Imi43Df6SX6
-	VkJYLBRqzkZi3YANp6k/wrpZjAvltd9ASbVMDo+7T3jDIkwBC5/90n2mQO2O2CrEGjp4LIvGltNHk
-	O4t1Qa2QemLNHtxZIL8T4iJFKMcaXlqK38ozaeHAGygplV/Y3m/4j4S+LwGKS46WACv4oabkdDJTw
-	oQ3s+S4B4uogg+/xKD9K3rNvX1HpVQPNiuRHA4xhndPje3GMWlCR8gsPESWUJV4BNLVJfGR4epd5X
-	u1WkE9Ww==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=UomwMYm6V80ZuZPrz7YKXe0vLuxIpqX7vRa+Pl5FCU8=; b=mV+uS7nYtKYcFa
+	Yn0iQ79xNW1N4F9zVYO/8Jtxr0eXkxizp/NIsDiDOmrRNN3I8UoVcVoxXQoc6PXtEf+awAB2dJyrF
+	QE1AeDE/CaKr9D6B5xabTvcWbf7bsY+a+9/9GCcsPm5EQ5618HlVYt9LAqM1PS6VbCvnEO3fjkDta
+	Bsuni/dpcUi+C/chRzb1USJOB4ZWcIWu5LNYkatUDR/O5evq+uuN51i4JTIw/jVl7fDzIC14TeeOh
+	fFY1wv8Trp7yaWseAVWWmQYbl1HOSmElssBkwuh7/czxA11vGTnmaWI1xeRGZkPx6mhjaJDx3hJSW
+	oPsY+/EudfW29/9Og1DQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uetVb-00000007FcW-2tc5;
-	Thu, 24 Jul 2025 10:49:07 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1uetY2-00000007G0u-0aXT;
+	Thu, 24 Jul 2025 10:51:38 +0000
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uesCG-000000071uF-2tOl
+	id 1uesHL-000000072uR-1YJN
 	for linux-mediatek@lists.infradead.org;
-	Thu, 24 Jul 2025 09:25:06 +0000
-Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-3a531fcaa05so353080f8f.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 24 Jul 2025 02:25:04 -0700 (PDT)
+	Thu, 24 Jul 2025 09:30:20 +0000
+Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-553d52cb80dso893175e87.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 24 Jul 2025 02:30:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1753349103; x=1753953903; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=h4a+gzu7f3EwTZaPbk859mLIqTYIGZRRwraHyXMWvss=;
-        b=RVKIWY7yEjbUkoCS2PbbrLsoUv33riSGqMaDRvzdVEsXs9EhiTGKr3WrSzI7FonE7d
-         ghkvv1/ccdo0Awmmi//tNvtlKPUfeWpJHiqH6CynkFxdeiTOT3pcy8YX96/AtlWIIfpE
-         OZSZI5zxNtsSbdQFoJglSis0wCjnXuiy9P0xMsWtnnjLuYxlQ21xUBHrJ1if76hJBrnx
-         7zmeofm5Uat0BWyIGDzE6GxIC6HXaOtbkqJNEyBggwpTp/Zn/5MAZLotkZ3lC+20PrLG
-         gEx7NNi8FMVGlJ2yLGnjQKaNw1BmfwHHCzT8aJ5j5xtZU4X1e7Bvx7xvXA7wH7iBp4vV
-         at/A==
+        d=chromium.org; s=google; t=1753349418; x=1753954218; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=UomwMYm6V80ZuZPrz7YKXe0vLuxIpqX7vRa+Pl5FCU8=;
+        b=PpYfRzD6dzoZhyzpPgIgzNrBDMh4I8CknrDOQ/OXvO8MlfbCnycPNzzkw/I24irjuy
+         87fKpVpEVU8D2Wh6LwGJ2k4KX0KQDnU675gge4bhpoVJg5ToWCuKpnhaLA7c5PxeJqJJ
+         pdQsxn9NtBFLvPbjb8MWvYnlCS8BFM0lfYnfw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1753349103; x=1753953903;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20230601; t=1753349418; x=1753954218;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=h4a+gzu7f3EwTZaPbk859mLIqTYIGZRRwraHyXMWvss=;
-        b=N223b2fD3RzybkR0kK+jD3vx/ud57A8zViLEjpp1OJI2WtYjQjvCMKWPqUFvsb2Gz8
-         AwxoxwAwhC4sB49CWC8ZckyBcpaomtB0tLnJ/rKMndg4I4MaZKVi9uCv/wc8npoQ8Qhf
-         uxKMXe9YwJTSl1RgPphlU5Zc/Of3mhcEwy1oU3tKuS49v0bc4zuGImgLuonzbd3d3JdV
-         Je4JssDmyLsTXm1Q7QA1U87Lt8QAPOhyQlv7ixQHCw1jnD3uomN3T9FQZZsO7JqOOc1z
-         znVZ6g+qMhVWRf4tr6W5jWAoNqkWeOMiepQVCcd92MNkg/yzzvwB85NOo5G3Qi9T6dDm
-         +n1A==
-X-Forwarded-Encrypted: i=1; AJvYcCWzNrVvUbhRHhoPf1ne5RbKX3PDBzn/qzzDVYoXQqxzqZQuaWtoHEMM2Qp4YRYWXo9fZmLx79/V2mymceYI9w==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz8Lqi85jt+0yNE0y56eIlAUQSd9cJoe7tiXW+iDifxL2Sm99i1
-	Qq5PrKBGazgT4SBvIV82sgY6EHpGRmLqldInxtV15Ry+vcpa7oyehZxyFlC8D/5IHDQ=
-X-Gm-Gg: ASbGnctWmZgLTUhJDvs/Ab9Hseh403BWXMob0EfidcZEw5ysg21zqaf+Q1Wt8D3vLTF
-	tkdmlyeXfsmTJa1WlKgKbvbyBPcdokdWT54qkm2vsumJtKJYzrWvtG/N2DMUcGS4RGhg+s4u3lC
-	cPsC7STX5tWzhw0kr9ig2Yu7OKNIFDhBFc8HqH+4OUJkfVNBheqZk45ceGOLzpa8n21wbqVrlWe
-	Wm3BkuLRvVIJNMa0x0pO03S+nVK16UqYQS3scaINdhkYKO7GyIkPf3lArKFs0e6sJ1A/g81uf/x
-	jVKCM2fNsXC7u2yFmVXm1TKnai2QRoH5FjuINWJbCRU346Nvbu5+lyE39N8gdCNvgkqiuoygnY0
-	BGBkiEoNuj7fnjeRg
-X-Google-Smtp-Source: AGHT+IH0iAkuA6GzMHME9lyvaFVrb9WaSOmQdANpljoKy1DeZvDX7IaJl8X91dcX7f0LjUclpn3P5A==
-X-Received: by 2002:a05:6000:1447:b0:3a5:2b75:56cc with SMTP id ffacd0b85a97d-3b768cb3ac1mr4981697f8f.23.1753349103057;
-        Thu, 24 Jul 2025 02:25:03 -0700 (PDT)
-Received: from [127.0.1.1] ([2a01:cb1d:dc:7e00:f44c:20db:7ada:b556])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3b76fc72548sm1600833f8f.30.2025.07.24.02.25.01
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 24 Jul 2025 02:25:02 -0700 (PDT)
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Thu, 24 Jul 2025 11:24:43 +0200
-Subject: [PATCH v3 15/15] pinctrl: qcom: make the pinmuxing strict
+        bh=UomwMYm6V80ZuZPrz7YKXe0vLuxIpqX7vRa+Pl5FCU8=;
+        b=l4GT/UOOUw9Hvxs+Pd3i77tGqz71ltIeMV+t4b6tGIoJZbCGYq2rM5LqUFipDIDqvv
+         MhbY5+ObU4VJMrVvtGnDd7RP+Qr2ey6uFHQ5L4xcn1ffrMuwQE5W6nbzw5wfoCcM2lNv
+         qCHtuyvEDUQJN6d6XrC4ulYrudBxV31qyJjiPhCyFlQ/+jA1UQ/SdiFouHBx2d1PtNb4
+         J/aROtPBf+t0P9X2A0c6rSR4SpuVSBsDyz3iKq9aqDR/AN3rDwQaYvL6oF8ZyDkL8nSR
+         q/QJh5jh7LIsRaZiSi9PVTprwpHrKqbdmrzmA0uRBeeZ8esy8cGMAicTreA7onB2StxC
+         +5ZA==
+X-Gm-Message-State: AOJu0Ywen5IHX8hwUcPHqs0HHiKtM+pir3IbvgFb+ZiwIz0UtLESvytd
+	V8I3v+pmAlIrsfOyBqP3+vvS8Kl24Ngm90NVlFgl24Mmg+HRVubSdJBpnIqU/4/hK12DFC/J+Ao
+	gRwmD/v402SdUU1fAzRcsprt6+Jf6GW2WgQsQ4f4h
+X-Gm-Gg: ASbGncvknm+4YNA84x0UkuGSMYg0xTDuiIKU2gvTXx28a8GEngNGVYo8PcPl1qF5ZE6
+	eJeZNKh1meK8s93MbwkIB0aKWdRWFxJA2jPKxRkgNNdstnOM4zf2dEu54RgNhOCmmogD+/w2EyP
+	RxGuvZJ7x4Q5HUovRydanMlxLJLim8ABGB3+3ph1Zaxx5x8wp6fAoFdT3GMhXVofvs+SvD/AP6D
+	qkRlPD8OMwX4lfix4zZUwaw+mBWct2UBQiTV+q0/A5i7Q==
+X-Google-Smtp-Source: AGHT+IH1lXhOoKFIGLzswAaXQ/xdrKCcLg4Bs+hSUU/wAe3mRs3pt6lfFpYUUkDOjisZO/3IZcyl3MPX+Jll/FYr+/8=
+X-Received: by 2002:a05:6512:2c87:b0:55a:4e67:7cdb with SMTP id
+ 2adb3069b0e04-55b5589a412mr400418e87.18.1753349417507; Thu, 24 Jul 2025
+ 02:30:17 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250724-pinctrl-gpio-pinfuncs-v3-15-af4db9302de4@linaro.org>
-References: <20250724-pinctrl-gpio-pinfuncs-v3-0-af4db9302de4@linaro.org>
-In-Reply-To: <20250724-pinctrl-gpio-pinfuncs-v3-0-af4db9302de4@linaro.org>
-To: Linus Walleij <linus.walleij@linaro.org>, 
- Bjorn Andersson <andersson@kernel.org>, 
- Konrad Dybcio <konradybcio@kernel.org>, 
- Alexey Klimov <alexey.klimov@linaro.org>, 
- Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Paul Cercueil <paul@crapouillou.net>, Kees Cook <kees@kernel.org>, 
- Andy Shevchenko <andy@kernel.org>, 
- Andrew Morton <akpm@linux-foundation.org>, 
- David Hildenbrand <david@redhat.com>, 
- Lorenzo Stoakes <lorenzo.stoakes@oracle.com>, 
- "Liam R. Howlett" <Liam.Howlett@oracle.com>, 
- Vlastimil Babka <vbabka@suse.cz>, Mike Rapoport <rppt@kernel.org>, 
- Suren Baghdasaryan <surenb@google.com>, Michal Hocko <mhocko@suse.com>, 
- Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, 
- Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- NXP S32 Linux Team <s32@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>, 
- Tony Lindgren <tony@atomide.com>, 
- Haojian Zhuang <haojian.zhuang@linaro.org>, 
- Geert Uytterhoeven <geert+renesas@glider.be>
-Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
- linux-hardening@vger.kernel.org, linux-mm@kvack.org, imx@lists.linux.dev, 
- linux-omap@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
- Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, 
- Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1142;
- i=bartosz.golaszewski@linaro.org; h=from:subject:message-id;
- bh=M36QPREHYk2Y1Ol3wL/sT7z2U9JVD+MimNp7WJSOHU0=;
- b=owEBbQKS/ZANAwAKARGnLqAUcddyAcsmYgBogfvUuNqnvhBaTQ7E02dLbZ93XPdMix/+wojXR
- G62efWlN2eJAjMEAAEKAB0WIQQWnetsC8PEYBPSx58Rpy6gFHHXcgUCaIH71AAKCRARpy6gFHHX
- csIEEACcYzcalCunEHwwLc8fC351P1QZ0/EviGqXfAPEAKDWr3P+rwFdN2Ta12zzVjBkLzjyQ91
- Zv3Pyd8ByzwdIUsKqqnTCqQXU561HpvlpivEPwqQfk2Fv1/z8zXTLdhqLYeWc2DtYwXVL47+ep1
- hvPNS0sKjxZZSbhD2Cv0so7lDbU9TIvO8FfROCo+OUmJ+fNRIHwJdm3DZ3UCBbKrfqj0JKqwStC
- SmdBFpZg+RC6pqBdqVp2puRBkrX4kkPXma3WhGUgbQa/jdRrzeKTzhOecZSN78aF+JYuAOuEWas
- 9ZYmbC12bDFImUccK4LcZfdm6UKPE66KoyCTfbJSdLsUaafuNUop1v3HMU+T1Qr/Xjdxcfc1d72
- xDxNII3sKlNkkl6WGjDNi7bqM437VkY4D3MqKo2PdUpL8pWVacs90dpKk/TeHcMZqMlSPpWf6Ir
- w0BoC8kdAtDjE9Xmx8h4NgBJrMuqyRB+w2H/MkSVj85rAH3A8nrxlRd/vqL77bGkehXfVeY7coP
- hWnYxxxDdbXZTNWgEpW4pWcbFrtw2pyKmva81FwQzEbINBVc2nQJQb2Qpd68J7/3170a6GFWyeN
- MElcFiUfHMZhzI5U6MPEUSceL4b9e10SrngoFXdrORgydvHqnRID4/lq5Qv8dryavy2pK7C0AN1
- RovE1kMQsSfBwRA==
-X-Developer-Key: i=bartosz.golaszewski@linaro.org; a=openpgp;
- fpr=169DEB6C0BC3C46013D2C79F11A72EA01471D772
+References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com> <20250724083914.61351-23-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250724083914.61351-23-angelogioacchino.delregno@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 24 Jul 2025 17:30:06 +0800
+X-Gm-Features: Ac12FXxWUOXitKh1quEjvg3RMxamDaOT0bnXe7uMSX2DfmXQwXv_3I70hIvhN2Q
+Message-ID: <CAGXv+5GBq5CqHAHWLMsZLU=NYVurAQZBgknsvOZoK_XhyUfxew@mail.gmail.com>
+Subject: Re: [PATCH 22/38] arm64: dts: mediatek: Fix node name for SYSIRQ
+ controller on all SoCs
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250724_022504_743359_CACBFEDA 
-X-CRM114-Status: GOOD (  10.60  )
+X-CRM114-CacheID: sfid-20250724_023019_434725_4FC4A7B4 
+X-CRM114-Status: GOOD (  13.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -139,37 +87,90 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: daniel.lezcano@linaro.org, mwalle@kernel.org, chunkuang.hu@kernel.org, linus.walleij@linaro.org, linux-remoteproc@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, olivia.wen@mediatek.com, shane.chien@mediatek.com, devicetree@vger.kernel.org, linux-gpio@vger.kernel.org, linux-phy@lists.infradead.org, airlied@gmail.com, simona@ffwll.ch, robh@kernel.org, herbert@gondor.apana.org.au, eugen.hristev@linaro.org, jassisinghbrar@gmail.com, jiaxin.yu@mediatek.com, andy.teng@mediatek.com, chunfeng.yun@mediatek.com, jieyy.yang@mediatek.com, kishon@kernel.org, conor+dt@kernel.org, jitao.shi@mediatek.com, p.zabel@pengutronix.de, arnd@arndb.de, kyrie.wu@mediatek.corp-partner.google.com, maarten.lankhorst@linux.intel.com, tinghan.shen@mediatek.com, mripard@kernel.org, ck.hu@mediatek.com, broonie@kernel.org, linux-mediatek@lists.infradead.org, houlong.wei@mediatek.com, matthias.bgg@gmail.com, tglx@linutronix.de, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, granquet@baylibre.com, sam.shih@mediatek.com, mathieu.poirier@linaro.org, fparent@baylibre.com, andersson@kernel.org, sean.wang@kernel.org, linux-sound@vger.kernel.org, lgirdwood@gmail.com, vkoul@kernel.org, linux-crypto@vger.kernel.org, tzimmermann@suse.de, atenart@kernel.org, krzk+dt@kernel.org, linux-media@vger.kernel.org, davem@davemloft.net
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+On Thu, Jul 24, 2025 at 4:40=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> The sysirq has "intpol-controller" as node name, but being this an
+> interrupt controller, it needs to be named "interrupt-controller"
+> as per what the bindings (correctly) expect.
+>
+> This commit brings no functional changes, but fixes a dtbs_check
+> warning.
+>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
 
-The strict flag in struct pinmux_ops disallows the usage of the same pin
-as a GPIO and for another function. Without it, a rouge user-space
-process with enough privileges (or even a buggy driver) can request a
-used pin as GPIO and drive it, potentially confusing devices or even
-crashing the system. Set it globally for all pinctrl-msm users.
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
-Reviewed-by: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
----
- drivers/pinctrl/qcom/pinctrl-msm.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/pinctrl/qcom/pinctrl-msm.c b/drivers/pinctrl/qcom/pinctrl-msm.c
-index 7010be8d1ace062fcf7743e539d2065d4aed856b..ad572c923e2ab8caed134207ec02c4107d4dc2bd 100644
---- a/drivers/pinctrl/qcom/pinctrl-msm.c
-+++ b/drivers/pinctrl/qcom/pinctrl-msm.c
-@@ -268,6 +268,7 @@ static const struct pinmux_ops msm_pinmux_ops = {
- 	.function_is_gpio	= pinmux_generic_function_is_gpio,
- 	.gpio_request_enable	= msm_pinmux_request_gpio,
- 	.set_mux		= msm_pinmux_set_mux,
-+	.strict			= true,
- };
- 
- static int msm_config_reg(struct msm_pinctrl *pctrl,
-
--- 
-2.48.1
-
+> ---
+>  arch/arm64/boot/dts/mediatek/mt6755.dtsi | 2 +-
+>  arch/arm64/boot/dts/mediatek/mt6779.dtsi | 2 +-
+>  arch/arm64/boot/dts/mediatek/mt6795.dtsi | 2 +-
+>  arch/arm64/boot/dts/mediatek/mt6797.dtsi | 2 +-
+>  4 files changed, 4 insertions(+), 4 deletions(-)
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt6755.dtsi b/arch/arm64/boot/d=
+ts/mediatek/mt6755.dtsi
+> index b55d3fac9bd4..8da5c0a56a02 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt6755.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt6755.dtsi
+> @@ -98,7 +98,7 @@ timer {
+>                              (GIC_CPU_MASK_SIMPLE(8) | IRQ_TYPE_LEVEL_LOW=
+)>;
+>         };
+>
+> -       sysirq: intpol-controller@10200620 {
+> +       sysirq: interrupt-controller@10200620 {
+>                 compatible =3D "mediatek,mt6755-sysirq",
+>                              "mediatek,mt6577-sysirq";
+>                 interrupt-controller;
+> diff --git a/arch/arm64/boot/dts/mediatek/mt6779.dtsi b/arch/arm64/boot/d=
+ts/mediatek/mt6779.dtsi
+> index 5c579e88e749..70f3375916e8 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt6779.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt6779.dtsi
+> @@ -138,7 +138,7 @@ ppi_cluster1: interrupt-partition-1 {
+>
+>                 };
+>
+> -               sysirq: intpol-controller@c53a650 {
+> +               sysirq: interrupt-controller@c53a650 {
+>                         compatible =3D "mediatek,mt6779-sysirq",
+>                                      "mediatek,mt6577-sysirq";
+>                         interrupt-controller;
+> diff --git a/arch/arm64/boot/dts/mediatek/mt6795.dtsi b/arch/arm64/boot/d=
+ts/mediatek/mt6795.dtsi
+> index 38f65aad2802..58833e5135c8 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt6795.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
+> @@ -404,7 +404,7 @@ pwrap: pwrap@1000d000 {
+>                         clock-names =3D "spi", "wrap";
+>                 };
+>
+> -               sysirq: intpol-controller@10200620 {
+> +               sysirq: interrupt-controller@10200620 {
+>                         compatible =3D "mediatek,mt6795-sysirq",
+>                                      "mediatek,mt6577-sysirq";
+>                         interrupt-controller;
+> diff --git a/arch/arm64/boot/dts/mediatek/mt6797.dtsi b/arch/arm64/boot/d=
+ts/mediatek/mt6797.dtsi
+> index f2d93bf6a055..8ac98a378fd6 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt6797.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt6797.dtsi
+> @@ -228,7 +228,7 @@ apmixedsys: apmixed@1000c000 {
+>                 #clock-cells =3D <1>;
+>         };
+>
+> -       sysirq: intpol-controller@10200620 {
+> +       sysirq: interrupt-controller@10200620 {
+>                 compatible =3D "mediatek,mt6797-sysirq",
+>                              "mediatek,mt6577-sysirq";
+>                 interrupt-controller;
+> --
+> 2.50.1
+>
 
