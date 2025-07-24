@@ -4,120 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81A46C87FC5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jul 2025 09:02:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFC85C83F1A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jul 2025 09:30:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0YlXW0DvXaO6Z3VFuU5e2aJVgUGN9ccNWCZxeaTBQNk=; b=ahYnimQ8zPzXNbTW0DiwG4Zhq2
-	cHvr93DcHeN3qC8uHtIfOHbO9/0cor3EF/LJWag6abnqT1SQOgnfHWGDbocPof8n3m1O3yUHTgkAL
-	wxTEywqmmpDbBfuZrzT04vsCf9zFYL9mcYnBVuc5vVKWw/m2T/ZKJIgPuiXyHPzQ1quIat6mzrT8L
-	CkX36HZcLjojVdQUALCyGHUfC8osj37Uw7nqDAL5GRgceX9+PMXhYTEy4aHAgE+flQWbAT6vBH4J/
-	1WpwCSR+L5CGkCZq/+8kbHI8QFW2NBJHKB3wrbDD4eIpeoGQ17lAjHTdDjQtCBrv8n8EfvaetX3nm
-	avPnEW6Q==;
+	bh=inucMIKhxEvXP9jZT/ROlUmFAW5Fk+3g/o1C1Us0aGM=; b=jKlW3Tul0W+fCiTrc1Vm6dzztf
+	PCj634+XqOEt+GgqH9+TQctwQ5QiAZ6SWAg929UPbXa3B0TnWGxEXU7jY3dQG7tBg9XoY2cVoKGd6
+	FvbPq3Hfcu85oWGmQicRqydZK8EZOEmv0bNFsB3bHZygFWzp9HGnhxtRENxLVx4T0VlTxFSKXit2g
+	D/w4YmRZAMCbxujq98OIST+b5+9ML3M4gY+BHE8SNJNyE1u+nQDcqkWe9qhh85HLg5m34BRl4Bm85
+	Ng4jyTCoE0V8TeaZklFqs87zP/P6KiZKzsjuZh2P2TpZa9bsTlZwv4aOEsSbizPH2YSX0ebBSW2Q0
+	GA5mWtIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uerqj-00000006ybG-3DJI;
-	Thu, 24 Jul 2025 09:02:49 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uesHf-000000072yb-0mYl;
+	Thu, 24 Jul 2025 09:30:39 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uer1J-00000006oAh-26CC;
-	Thu, 24 Jul 2025 08:09:42 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1B65043A2F;
-	Thu, 24 Jul 2025 08:09:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 24E82C4CEED;
-	Thu, 24 Jul 2025 08:09:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1753344581;
-	bh=J+e0/YX5TuvDUu7nG/EdllqV7j18ePW7fJkME0Q1od4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=PsKqa4TUSqX2xZA+/s3g1TpdFihf1LAPkHvDh5ndkl7O1//kxXR6obuNhx8jaDV/o
-	 LLPCkP73OdYsUiio/Y1U3z+HHI0w597M8Gph4poSbSo6yUfLZTSiR2LAo6oag/HSuH
-	 j/B81eLfl8XpDn7ySic1hDfyFuGiI7IZ8UtUlrg0XLxwUPg2g/BEGAX2o+JaI1Vc+E
-	 dIQ/uSCY61i3tqHO5GDI3HpcuY0cqPdlrCquuXs/iWoYWCOJAkRFT8NquWs9ZDYfzF
-	 ik6sc5Wl1kImszdja9X70QD39/e+hDViTaNfqGkRVh0aVY0pu9gyTylSghdDrvXjlK
-	 FzEBvW9rIdEAA==
-Message-ID: <1e9de035-9d32-45d1-9f11-33c3439143be@kernel.org>
-Date: Thu, 24 Jul 2025 10:09:36 +0200
+	id 1uerEj-00000006qj0-1oiV
+	for linux-mediatek@lists.infradead.org;
+	Thu, 24 Jul 2025 08:23:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1753345412;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=inucMIKhxEvXP9jZT/ROlUmFAW5Fk+3g/o1C1Us0aGM=;
+	b=YtSsf0rELQQXdyXLLLp92rLiLKd4D1b/dTJ9+yHfshldG1qOs/XYa5lKIC5PfcGqmAQ1Tv
+	tUVUeWVXwnDaRg98d9C5UT4g2/xocKv0F9iwHuLixNEMCJyOMDAulOojDtWMxbTe+UmQ/f
+	uGF4yqvdTEy5cb51yYVPPm12E3jyldc=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-511-d73jv-sqNJSl3ufwRfq5DQ-1; Thu, 24 Jul 2025 04:23:30 -0400
+X-MC-Unique: d73jv-sqNJSl3ufwRfq5DQ-1
+X-Mimecast-MFC-AGG-ID: d73jv-sqNJSl3ufwRfq5DQ_1753345409
+Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-45867ac308dso3719375e9.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 24 Jul 2025 01:23:29 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1753345409; x=1753950209;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=inucMIKhxEvXP9jZT/ROlUmFAW5Fk+3g/o1C1Us0aGM=;
+        b=Dl/3fvObjcHYUeGJ5aCX44kVfL7eEObXGcseNL8JTw2sZoSfX0chxgkdHj3BWnoroe
+         NpI4xC78Drc6EXmeJihVytcOxO5CmdworlpnwqyluMncy+uhpWJ85+nRH4VqhFUsL64Q
+         Pf6s0vjGQtu2T9IbLTKZHx5tQf1VT6G21YSc1nzQJO/cwrd28bufZxUiqjqc6NqAYtqs
+         CfnlZpbgF1eb/pFRe8/PVdqI13dGIpVWGn8o1huZ/RB7Q7HwB1CNeUMduspI7YUe8dbM
+         n3ilnKHA1di6H4ouqHGOyLrcU6V1Xib2Gtt0IMsThuvR143IeZyyjiQwgumnjZXT/YME
+         LNzg==
+X-Forwarded-Encrypted: i=1; AJvYcCUAmjAYAq9QwfoFBOrM/7Yld8gZXBpbBmuFHC4HllOq/nWH8AZCwqoQEC5wzlx5ky5tDD7/cvpz5XBdgIlE3w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzqRz1fgiTFt6kCe1i/B4gOu3tZMR6sQIOznFKqQTO1m2m010CG
+	4HwdKHTgRNv8epDja4lRDhhwLM2uNEtqISmI6B89zFAhhWb1tUgika1sBCp6+w7f0Z0x+G2+mTa
+	0yORYSav2wYk1yFOD/jj6U7LC/uSYKBySbNPQSVAfgojnIrXonXTJEHYhYmVn+Gw7SgqAytlQ/g
+	==
+X-Gm-Gg: ASbGncv67hiBGdPWfNqHePrIlu0vXMLiRR/ravwTbjgIuOSvoqnzRnFw9g97lu58ErS
+	lttRiY28Amg5gVZE1It5n7tNbPBAxIsb64/ll/L5MRyX4MW/6MzCtgxaeuPy7q/eyfo3C/wa5UZ
+	+LNRcEYE0zoN8Ls+uv9LqfDrXXkhmD34wE4WzwgFuAXvLuwhefTCzV3LgcpxuHPeOWU+kgOU4MZ
+	ZlYAyN6k7MGMMwnE0OIn/5LUM0O1QDVOHgOKnp4XVC+aY76fhEj1vjK7+RSR93cbocvOCtsmF5w
+	hxzSzcbx+EeEozbTAPsTwmBwZNCuJDJOrfSoUa5rkJs7IoPylkkejABy/dUWrwHsnLXwkg==
+X-Received: by 2002:a05:600c:8b08:b0:456:1b93:76b with SMTP id 5b1f17b1804b1-45868c79052mr53695525e9.4.1753345408889;
+        Thu, 24 Jul 2025 01:23:28 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFdtLcyEdZUOsZv2sq0CbPs5hZqiaOagRDT3jXPlexGgIDzMlul8E40cqYAQwrjLryESM9Uzw==
+X-Received: by 2002:a05:600c:8b08:b0:456:1b93:76b with SMTP id 5b1f17b1804b1-45868c79052mr53695235e9.4.1753345408515;
+        Thu, 24 Jul 2025 01:23:28 -0700 (PDT)
+Received: from jlelli-thinkpadt14gen4.remote.csb ([151.29.46.230])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4587054e37dsm10581635e9.14.2025.07.24.01.23.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 24 Jul 2025 01:23:27 -0700 (PDT)
+Date: Thu, 24 Jul 2025 10:23:25 +0200
+From: "juri.lelli@redhat.com" <juri.lelli@redhat.com>
+To: Pierce Wen =?utf-8?B?KOa6q+W9pee/lCk=?= <Pierce.Wen@mediatek.com>
+Cc: Kuyo Chang =?utf-8?B?KOW8teW7uuaWhyk=?= <Kuyo.Chang@mediatek.com>,
+	"bsegall@google.com" <bsegall@google.com>,
+	"vschneid@redhat.com" <vschneid@redhat.com>,
+	"dietmar.eggemann@arm.com" <dietmar.eggemann@arm.com>,
+	"peterz@infradead.org" <peterz@infradead.org>,
+	"rostedt@goodmis.org" <rostedt@goodmis.org>,
+	"mingo@redhat.com" <mingo@redhat.com>,
+	"vincent.guittot@linaro.org" <vincent.guittot@linaro.org>,
+	"mgorman@suse.de" <mgorman@suse.de>,
+	"jstultz@google.com" <jstultz@google.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [RFC PATCH 1/1] sched/deadline: Fix RT task potential starvation
+ when expiry time passed
+Message-ID: <aIHtfRB6UuVVbp2z@jlelli-thinkpadt14gen4.remote.csb>
+References: <20250615131129.954975-1-kuyo.chang@mediatek.com>
+ <aFAyN4rfssKmbUE5@jlelli-thinkpadt14gen4.remote.csb>
+ <089882f95b1b910f7feecddd0ad9b17f38394c64.camel@mediatek.com>
+ <aFQM8TdZIIvvGv8T@jlelli-thinkpadt14gen4.remote.csb>
+ <6ec534be0618de3e2b4d81555e5f24155326c0b9.camel@mediatek.com>
+ <aFV8qeH__bw0chWM@jlelli-thinkpadt14gen4.remote.csb>
+ <a1103727ffaaf5f4d1b077bc09a3cc5168c5708d.camel@mediatek.com>
+ <cd10d32b514d2792659fe03ad1235771982a6e2f.camel@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 2/2] memory: mtk-smi: mt8188: Add SMI reset and clamp
- for MT8188
-To: =?UTF-8?B?RnJpZGF5IFlhbmcgKOadqOmYsyk=?= <Friday.Yang@mediatek.com>,
- "robh@kernel.org" <robh@kernel.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-References: <20250521063347.31578-1-friday.yang@mediatek.com>
- <20250521063347.31578-3-friday.yang@mediatek.com>
- <fe4d93d1-fb6a-4985-8316-7a76fa1a481f@kernel.org>
- <7421d8f4f3d5fdb392f46df93bfee21a97cc2e1c.camel@mediatek.com>
- <633ea291-2e02-44be-bd03-220634b3c62d@kernel.org>
- <d7e6e9f9da7adf5c806f29c577f6bf51b35fdeed.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <d7e6e9f9da7adf5c806f29c577f6bf51b35fdeed.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <cd10d32b514d2792659fe03ad1235771982a6e2f.camel@mediatek.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: IoOs40gO_fHRvbwKpWcmZHWgl3VoYu9EigYZ4MI64iE_1753345409
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250724_010941_583089_2C5576C8 
-X-CRM114-Status: GOOD (  20.95  )
+X-CRM114-CacheID: sfid-20250724_012333_537543_039EBF14 
+X-CRM114-Status: GOOD (  17.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,103 +130,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 24/07/2025 09:59, Friday Yang (杨阳) wrote:
-> On Thu, 2025-07-24 at 09:08 +0200, Krzysztof Kozlowski wrote:
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
->>
->>
->> On 24/07/2025 03:49, Friday Yang (杨阳) wrote:
->>> On Thu, 2025-06-12 at 17:16 +0200, Krzysztof Kozlowski wrote:
->>>> External email : Please do not click links or open attachments
->>>> until
->>>> you have verified the sender or the content.
->>>>
->>>>
->>>> On 21/05/2025 08:33, Friday Yang wrote:
->>>>> From: "Friday Yang" <friday.yang@mediatek.com>
->>>>>
->>>>> To prevent handling glitch signals during MTCMOS on/off
->>>>> transitions,
->>>>> SMI requires clamp and reset operations. Parse the reset
->>>>> settings
->>>>> for
->>>>> SMI LARBs and the clamp settings for the SMI Sub-Common.
->>>>> Register
->>>>> genpd callback for the SMI LARBs located in image, camera and
->>>>> IPE
->>>>> subsystems, and apply reset and clamp operations within the
->>>>> callback.
->>>>>
->>>>> Signed-off-by: Friday Yang <friday.yang@mediatek.com>
->>>>> Reviewed-by: AngeloGioacchino Del Regno <
->>>>> angelogioacchino.delregno@collabora.com>
->>>>> Acked-by: Rob Herring <robh@kernel.org>
->>>>
->>>> You did not respond to previous review. Sending the same while
->>>> ignoring
->>>> previous review is obvious NAK.
->>>>
->>>
->>> Apologies for missing the message. In the v6 patch, I replaced
->>> 'pm_runtime_enable' with 'devm_pm_runtime_enable'. You pointed out
->>> that
->>> this change might alter the cleanup order and potentially introduce
->>> errors.
->>>
->>> v6:
->>>
-> https://lore.kernel.org/lkml/20250408033206.12176-3-friday.yang@mediatek.com/
->>>
->>> Therefore, in the v7 patch, I reverted this change and continued
->>> using
->>> 'pm_runtime_enable' in the SMI driver. However, I did not include a
->>> clear description of the changes between v6 and v7 in the cover
->>> letter.
->>>
->>> v7:
->>>
-> https://lore.kernel.org/lkml/9f01a9a4-89b2-4bfc-97cd-827be989ef16@kernel.org/
->>>
->>> In the v8 patch, I have added a description in the cover letter.
->>> This series just add functions for SMI clamp and not change
->>> anything
->>> else. Is this acceptable to you?
->>
->> That was month ago. Nothing form this thread is in my memory, nothing
->> is
->> in the mailbox. There is no cover letter to find anymore.
->>
->> Anyway, you did not respond to the actual comment and you send the
->> same.
->> Now you respond... to something else still ignoring the comment about
->> fake tags.
->>
->> I will not be wasting more time on this patchset.
->>
+On 23/07/25 22:22, Pierce Wen (溫彥翔) wrote:
+
+...
+
+> Hi all,
+
+Hello!
+
+> I wanted to follow up on the discussion regarding the potential RT task
+> starvation issue and check if there have been any further updates or
+> feedback.
 > 
-> Changes v7:
-> - Remove the 'devm_pm_runtime_enable' change.
+> To recap and provide some additional context:
 > 
-> Above is the tag you ask. You are right, the 'devm_pm_runtime_enable'
-> tag I mentionded in the patchset v6 is truly a fake tag. So please
+> 1. As discussed in the thread (see
+> https://lore.kernel.org/all/CANDhNCqYCpdhYS9afdKeY34Bmw8MXyqKWCSTxOZNLTjYrUaVXg@mail.gmail.com/
+> ), it has been demonstrated that the use of a scaled timer can indeed
+> induce RT starvation under certain conditions.
 
-This is a function. Not a tag. I asked about tag.
+This first case has been handled by fc975cfb36393 ("sched/deadline: Fix
+dl_server runtime calculation formula") on tip/master.
 
-> ignore this tag. What I intended to explain here was that I decided not
-> to use 'devm_pm_runtime_enable' to replace 'pm_runtime_enable'
-> functions. Unfortunately, the fake tag didn't explain this clearly in
-> the changelog, which was my fault. To address this, I updated patchset
-> v8 to include an explanation.
+> 2. Furthermore, since the delta_exec time calculation relies on the
+> clock_task member of struct rq, which is affected by IRQ time on the
+> runqueue, there is a risk that if IRQ time becomes excessively long in
+> some corner cases, it could also lead to RT starvation.
 > 
-> In patchset v6, I replaced 'pm_runtime_enable' with
-> 'devm_pm_runtime_enable'. However, in patchset v8, I reverted this
-> change and included the reason for this decision in the changelog.
-> Apologize for the delay and the trouble again.
+> 3. Based on these observations, we strongly recommend adopting a
+> recovery patch to address these critical scenarios and prevent RT task
+> starvation, especially in cases where the current logic may not be
+> sufficient.
 
-Nothing above is related to my question about the
-fake/invented/questioned tag.
+As I was saying, I am not against the patch proposed to address the
+starvation issue discussed in this thread. Maybe the patch can be
+reposted with the addition of a comment on the code path related to
+dl-server explaining why the special case is needed?
 
-Best regards,
-Krzysztof
+Thanks,
+Juri
+
 
