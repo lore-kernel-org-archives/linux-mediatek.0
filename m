@@ -4,58 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AFD9C87FCA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jul 2025 13:53:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0041C87FC5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jul 2025 13:53:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
 	References:In-Reply-To:To:From:MIME-Version:Content-Transfer-Encoding:
 	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pDqaLZwStKi6Z4/3DX7faFt+0KgWHqlolEyhY7mNuGA=; b=y0XlqHnYK/GzsFxd/GQoZg1I6O
-	EfUELIkDiQ8vJEVp6rCJHLT6XMlVsG2n6WS7rTjzSzZ6OuOrnI6H6gynR9tQrbnZq33Ks6IQ2sTqS
-	XwYHQUpDHaL5nBWe/cUAUsv/NNWyNOpFgMJDTG4fS4EY1iwlTHmA0ESPLx8oBnM6fFjYonTab78T3
-	UB5AUnOJXmhX7cUjaKEqvYvnddwVwUj2PLvtCSEUt1mBeTRuOlP6uL6F6b8EeLrmJR4ma7qNsD43Y
-	WY1/68Mq40p9qtq4U2DATlnq76BeazWSL9fV1ILLhcgVzIXlrH++LqdAnOv0zmw3jVciR7R9DGhjZ
-	59+Q8S0A==;
+	bh=XEVQRsxn0zXT4aqVHn8hzN1KQtVrCridlfiw5MJNtD8=; b=d3uJ0WZTr9IEKLB/joN8U6yVq8
+	SZOMuHnn3iFtpAP0Xcrk7ffEc5LAUf9MUBd7hTTdK7bPprBk8y2xLT2W/94AHYX7TkBejOPWhU6+E
+	KbZyFh2HaXmWm4V1ZRfO7FbQpls6MvU6TEzbZ3asXAwhacGQNQ0CbHoqJQzSeS4FWYsqV+1tWvF9Q
+	7C+QaaGQCoorp/Zx4+mhOoU1yQK1pCKtpIGTklQYUonC3hqiii6j1EQUytasbEN3wsPqic6lzbYIF
+	M9X8p2/wu/LkXR56OcN5kxhs2FbQLsAfwyXA6G35tkMbepJRUmG1aMj0aEFI7Mgbeby1dzogTQdu2
+	pIzIJOjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uewOB-00000007bCi-2fhT;
-	Thu, 24 Jul 2025 13:53:39 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uewOD-00000007bFP-11tb;
+	Thu, 24 Jul 2025 13:53:41 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uetz3-00000007K8M-1ej1;
-	Thu, 24 Jul 2025 11:19:34 +0000
+	id 1uetz5-00000007KAS-3h6s;
+	Thu, 24 Jul 2025 11:19:35 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id BDE9C449F5;
-	Thu, 24 Jul 2025 11:19:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7BECBC4AF09;
-	Thu, 24 Jul 2025 11:19:32 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 1139D613F7;
+	Thu, 24 Jul 2025 11:19:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ADBABC4AF0B;
+	Thu, 24 Jul 2025 11:19:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1753355972;
-	bh=fKCuPREZ1fbNq7ig0PZdlTERupyUK7tD1jI8Qmyxs+g=;
+	s=k20201202; t=1753355974;
+	bh=xr9UfPrtsc/ykSfE3EhQN0BAiqLo6Aci+RNDYoh3hig=;
 	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=sB9F7RQrKGg3BH5HBxZKEtr+kJAxtHztDJOH4j06rLBPmyPtxR8iCzQpvE8FN+9Iy
-	 mcD/YAzmcUN8OsUa43o8rwSj9x+YBqvRJh5DMVuUHTFfj26IXlM/FWU+DH4kTUOUnl
-	 FTi6NYjKApl0W1cCWyKtot5HZx3NdodGu8tGv8g+/FaCls7mqFfxAzSgirg+XBM7mp
-	 YGT8Ybuu8+k/A3ti+/lmcOOP8rNX+h4vLb+A/HBHRXSF2bbwqJj6IdGKM6kE5fzSw3
-	 zV9RNcWAGwDhEKw8LyJsm8l8Xse6hXdc0a6Hv6btUM7ggBxiqyHO9q+EUnGjDVQupz
-	 EcJuB5Dd0NFIg==
-Date: Thu, 24 Jul 2025 06:19:31 -0500
+	b=gtcIHEg+ph2IJp1WJwEVEk3R4hb7SfpYBo9kg5zwfeF9fN/WnQ/3g4N5KdsEraUxJ
+	 a4kPxnUb6bid5gAmKGKCF0eNsTLWvajd+kYVB4502wn7qiMsf11sjF4R9lpE6mCSR+
+	 P67vfBvqBl1xbYZsCu2vX1bxZGrZ52K4QMWbuo9F9vjdiw2jK+i6++M5BfJ5MP73Hc
+	 6kOllnuqTh9sjsC7d3K1OIsNLehSe8QcLzIASlA5D65JUPFShxhMhZJ0esq5Y2XylZ
+	 Kw+y5W5Hc6gxWxuEybtqyQNpcVHYHK+xTxB5pnUfeY2DDLHt8hF0/MdFi4v5IQxVVo
+	 BR6VL794/V8cg==
+Date: Thu, 24 Jul 2025 06:19:34 -0500
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
 From: "Rob Herring (Arm)" <robh@kernel.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20250724083914.61351-9-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250724083914.61351-14-angelogioacchino.delregno@collabora.com>
 References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com>
- <20250724083914.61351-9-angelogioacchino.delregno@collabora.com>
-Message-Id: <175335596917.1587632.3054141049365225304.robh@kernel.org>
-Subject: Re: [PATCH 08/38] dt-bindings: pinctrl: mediatek,mt7622-pinctrl:
- Add missing base reg
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250724_041933_478938_751308F4 
-X-CRM114-Status: GOOD (  11.33  )
+ <20250724083914.61351-14-angelogioacchino.delregno@collabora.com>
+Message-Id: <175335597061.1587930.6517956701582557579.robh@kernel.org>
+Subject: Re: [PATCH 13/38] dt-bindings: remoteproc: mediatek: Remove l1tcm
+ MMIO from MT8188 dual
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,23 +64,26 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: jassisinghbrar@gmail.com, mwalle@kernel.org, chunkuang.hu@kernel.org, linus.walleij@linaro.org, simona@ffwll.ch, linux-remoteproc@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, olivia.wen@mediatek.com, fparent@baylibre.com, linux-phy@lists.infradead.org, airlied@gmail.com, kishon@kernel.org, andersson@kernel.org, herbert@gondor.apana.org.au, daniel.lezcano@linaro.org, jiaxin.yu@mediatek.com, chunfeng.yun@mediatek.com, andy.teng@mediatek.com, ck.hu@mediatek.com, linux-media@vger.kernel.org, devicetree@vger.kernel.org, conor+dt@kernel.org, jitao.shi@mediatek.com, p.zabel@pengutronix.de, arnd@arndb.de, kyrie.wu@mediatek.corp-partner.google.com, maarten.lankhorst@linux.intel.com, linux-sound@vger.kernel.org, linux-gpio@vger.kernel.org, broonie@kernel.org, eugen.hristev@linaro.org, mripard@kernel.org, matthias.bgg@gmail.com, tglx@linutronix.de, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, granquet@baylibre.com, sam.shih@mediatek.com, mathieu.poirier@linaro.org, shane.chien@mediatek.com, atenart@kernel.org, sean.wang@kernel.org, lgirdwood@gmail.com, davem@davemloft.net, houlong.wei@mediatek.com, vkoul@kernel.org, linux-crypto@vger.kernel.org, tzimmermann@suse.de, linux-mediatek@lists.infradead.org, krzk+dt@kernel.org, jieyy.yang@mediatek.com, tinghan.shen@mediatek.com
+Cc: jassisinghbrar@gmail.com, daniel.lezcano@linaro.org, mwalle@kernel.org, chunkuang.hu@kernel.org, linus.walleij@linaro.org, linux-remoteproc@vger.kernel.org, dri-devel@lists.freedesktop.org, lgirdwood@gmail.com, olivia.wen@mediatek.com, fparent@baylibre.com, kishon@kernel.org, linux-phy@lists.infradead.org, airlied@gmail.com, simona@ffwll.ch, herbert@gondor.apana.org.au, tinghan.shen@mediatek.com, jiaxin.yu@mediatek.com, chunfeng.yun@mediatek.com, sam.shih@mediatek.com, ck.hu@mediatek.com, linux-media@vger.kernel.org, devicetree@vger.kernel.org, conor+dt@kernel.org, jitao.shi@mediatek.com, tzimmermann@suse.de, arnd@arndb.de, andy.teng@mediatek.com, maarten.lankhorst@linux.intel.com, linux-sound@vger.kernel.org, linux-gpio@vger.kernel.org, broonie@kernel.org, eugen.hristev@linaro.org, mripard@kernel.org, matthias.bgg@gmail.com, tglx@linutronix.de, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, granquet@baylibre.com, mathieu.poirier@linaro.org, shane.chien@mediatek.com, atenart@kernel.org, sean.wang@kernel.org, linux-kernel@vger.kernel.org, davem@davemloft.net, houlong.wei@mediatek.com, vkoul@kernel.org, kyrie.wu@mediatek.corp-partner.google.com, linux-crypto@vger.kernel.org, p.zabel@pengutronix.de, linux-mediatek@lists.infradead.org, krzk+dt@kernel.org, jieyy.yang@mediatek.com, andersson@kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 24 Jul 2025 10:38:44 +0200, AngeloGioacchino Del Regno wrote:
-> The pin controller for both MT7622 and MT7629 need both a "base"
-> and an "eint" MMIO like the ones found on other MediaTek SoCs:
-> while devicetrees have always been correct, the binding is not,
-> as it only allows an "eint" reg.
+On Thu, 24 Jul 2025 10:38:49 +0200, AngeloGioacchino Del Regno wrote:
+> Even though the MT8188 SoC's Dual-Core SCP IP is practically the
+> same as the one found on MT8195, it doesn't have a dedicated L1
+> TCM and relies only on SRAM.
 > 
-> Add "base" to reg-names and increment maxItems for reg to two.
+> Set reg/reg-names minItems to 1 globally and override it in all of
+> the conditionals for the SoCs that require more, and then split
+> the mt8195/8188 conditionals to allow specifying only the cfg MMIO
+> on MT8188.
 > 
+> Fixes: 91e0d560b9fd ("dt-bindings: remoteproc: mediatek: Support MT8188 dual-core SCP")
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  .../devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml   | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+>  .../bindings/remoteproc/mtk,scp.yaml          | 23 ++++++++++++++++---
+>  1 file changed, 20 insertions(+), 3 deletions(-)
 > 
 
 My bot found errors running 'make dt_binding_check' on your patch:
@@ -91,12 +91,29 @@ My bot found errors running 'make dt_binding_check' on your patch:
 yamllint warnings/errors:
 
 dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.example.dtb: pinctrl@10211000 (mediatek,mt7622-pinctrl): reg: [[0, 270602240, 0, 4096]] is too short
-	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt7622-pinctrl.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml: allOf:1:then:properties:reg-names: 'oneOf' conditional failed, one must be fixed:
+	[{'const': 'sram'}, {'const': 'cfg'}] is too long
+	[{'const': 'sram'}, {'const': 'cfg'}] is too short
+	False schema does not allow 2
+	1 was expected
+	hint: "minItems" is only needed if less than the "items" list length
+	from schema $id: http://devicetree.org/meta-schemas/items.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml: allOf:3:then:properties:reg-names: 'oneOf' conditional failed, one must be fixed:
+	[{'const': 'cfg'}] is too short
+	False schema does not allow 1
+	hint: "minItems" is only needed if less than the "items" list length
+	from schema $id: http://devicetree.org/meta-schemas/items.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml: allOf:4:then:properties:reg-names: 'oneOf' conditional failed, one must be fixed:
+	[{'const': 'cfg'}, {'const': 'l1tcm'}] is too long
+	[{'const': 'cfg'}, {'const': 'l1tcm'}] is too short
+	False schema does not allow 2
+	1 was expected
+	hint: "minItems" is only needed if less than the "items" list length
+	from schema $id: http://devicetree.org/meta-schemas/items.yaml#
 
 doc reference errors (make refcheckdocs):
 
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250724083914.61351-9-angelogioacchino.delregno@collabora.com
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250724083914.61351-14-angelogioacchino.delregno@collabora.com
 
 The base for the series is generally the latest rc1. A different dependency
 should be noted in *this* patch.
