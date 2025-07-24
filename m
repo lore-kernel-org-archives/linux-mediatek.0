@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24A68C83F1A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jul 2025 09:49:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6D36C83F1A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jul 2025 09:49:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=G+Ug1fNXKqhMIsYovXrNoGeoiYN1L74TmzLpXJQ+rb4=; b=0GHyhp4BrXb4AK
-	X069hwtILPB9iuQUAc16fgHayVi7NwKQbe3m3NF8I6Rbk7gjTmcw5IQB77Z5PEd7rIyU9ID51nADU
-	XRZPYmMQnXD/lER7Y/IKQ3s5luUbzoqH4oujTD3ly902U+Z71eHwhzI/WHtitXZqEHq52hrKQ7XXR
-	zgz4jRqBPn7gCJYC6Q/ye7Jga48LJJX7t4j+/DcqdmpZ9xD8SoVnnzqVYe8v0cN7vgMZJMknIGstS
-	Hb4lQgVbyUq+Vk0dVhFbb7+rOxO5YZBdhl7I6T/a3cM4YB/sQWKCiHPJB2jeteiQWhaPQ3uFIyjiz
-	p4KlV4r1jmFP1Jr8x2Dg==;
+	List-Owner; bh=IdoOScIKryjTnc9uuQaCAx2fQ1RSGpWkGF5lUBFo3Gs=; b=cFVCnixhboyy7/
+	1HzOCjphqZqUA3wO4IMvFuuWNjmClOC/Q39bk7Ucz88GJWS5h50YZS/orXBmncJF+Krdd5MzStoP8
+	VR9GIl2Djp85JUO0OyDb3X97vJjtejJVCmDfNmgzZy8sy5k6xNZMX8+qog6rJaDhe5VEhFkfogEL3
+	3E2LKO7HSpQO3zgg6DrfLDen7aIvLUnxuRKqZQtXdqg6JGlMI8BTejf8GaK0A4bYRmk48NpgvnfkE
+	gJ2NGnTzjR6U8aYs4yzEgG72k7WbXdXsY2mX1QYxwUaT+TXZu0zNhUhHFpPBqhiV4jXZEca06Agv1
+	sovpDUCMWtR7x2sEGKBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uesZk-000000076tX-0jXE;
-	Thu, 24 Jul 2025 09:49:20 +0000
+	id 1uesZu-000000076wX-44Ox;
+	Thu, 24 Jul 2025 09:49:30 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uerV0-00000006tna-20Pz;
-	Thu, 24 Jul 2025 08:40:23 +0000
+	id 1uerV3-00000006tou-15Ai;
+	Thu, 24 Jul 2025 08:40:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1753346421;
-	bh=6OOCevs7P0On/TexTueu0AhU/Ozx/Y1fqp4QRf6p5mQ=;
+	s=mail; t=1753346423;
+	bh=HmcM0WeCZU7S4LzqqW3oQHysgDBq3tk4yf4yJqDJOZY=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=NX+d18t24qSNl9AjPCeLiaNG/c1iUQb6l95upybpkRtkP++4F5fNhb6WUA8sptqVA
-	 04+zJCkZ83mXEYM76ozJUztKeMaHUJegw7MLpGqFEPCU4eAGNx4IM6rKQEytqk8gxU
-	 Gytyf44PqcucTzUWyHUUr78IwvAUzYtsZCISZiG9ij1eGgUp1V/D+bLlK7hDnKgBTi
-	 nsr6Nl8R/1xtTLJtZmzkbTiWP5pPacL53NntI+DrvvKzEYy577Hf4bhLzyD8z+BH1f
-	 KLfLHuWmJU/0dxF9P1LAgBbqKvhjAvq472a9H8knrX2PUIPTt4w6+Mn47NNSBDetpX
-	 eoFf/GiO4ZB3A==
+	b=YUcauFlv/b9vDuXRLNiXYP5fX6JLVhE2p5S2nlvhh8SjU50Eebfq3Km5CMp8paEVi
+	 xMIYIYOZjSGJ2BmtPCEHEZisaGV2nY2me9bSngW4ysRMzTnLqsfKj47VMO//FEhSZ4
+	 wWiz/zHDd18LGWCFuls9E2VjeKey52GoZ7U43O5foDLbDoG3rOJysSu8ZmsJQH1Zgq
+	 wdIaPt6lTMkADy/C/REo+6HH4P2zKErEBI3VSFtofio5OdnBqWoiAlffopBK627c0+
+	 wSx5wrl8I6jIGHoQjAcyz083dAlke8YtbqxH7JaUzcDsuT4r7dgkPsrElJ8EVmD/Er
+	 Cj4JPDO2tipDw==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9E4FE17E11FE;
-	Thu, 24 Jul 2025 10:40:18 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 464D117E1110;
+	Thu, 24 Jul 2025 10:40:21 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: linux-mediatek@lists.infradead.org,
 	robh@kernel.org
-Subject: [PATCH 21/38] arm64: dts: mediatek: mt6795-sony-xperia-m5: Add pinctrl for mmc1/mmc2
-Date: Thu, 24 Jul 2025 10:38:57 +0200
-Message-ID: <20250724083914.61351-22-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 22/38] arm64: dts: mediatek: Fix node name for SYSIRQ controller on all SoCs
+Date: Thu, 24 Jul 2025 10:38:58 +0200
+Message-ID: <20250724083914.61351-23-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com>
 References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250724_014022_669753_B497F458 
-X-CRM114-Status: UNSURE (   8.95  )
+X-CRM114-CacheID: sfid-20250724_014025_485108_8AA7D589 
+X-CRM114-Status: UNSURE (   9.77  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -73,80 +73,73 @@ Cc: daniel.lezcano@linaro.org, mwalle@kernel.org, devicetree@vger.kernel.org, li
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add pinctrl nodes for the MicroSD slot on mmc1 and SDIO Controller
-on mmc2 and assign those to the respective controller nodes.
-This makes sure that all of the pins are muxed in the right state
-and with the right pullup/down(s) before trying to use the mmc
-controllers.
+The sysirq has "intpol-controller" as node name, but being this an
+interrupt controller, it needs to be named "interrupt-controller"
+as per what the bindings (correctly) expect.
+
+This commit brings no functional changes, but fixes a dtbs_check
+warning.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../dts/mediatek/mt6795-sony-xperia-m5.dts    | 38 +++++++++++++++++++
- 1 file changed, 38 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt6755.dtsi | 2 +-
+ arch/arm64/boot/dts/mediatek/mt6779.dtsi | 2 +-
+ arch/arm64/boot/dts/mediatek/mt6795.dtsi | 2 +-
+ arch/arm64/boot/dts/mediatek/mt6797.dtsi | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts b/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
-index 03cc48321a3f..fccb948cfa45 100644
---- a/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
-@@ -227,6 +227,8 @@ &mmc0 {
- 
- &mmc1 {
- 	/* MicroSD card slot */
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&mmc1_pins_default>;
- 	vmmc-supply = <&mt6331_vmc_reg>;
- 	vqmmc-supply = <&mt6331_vmch_reg>;
- 	status = "okay";
-@@ -234,6 +236,8 @@ &mmc1 {
- 
- &mmc2 {
- 	/* SDIO WiFi on MMC2 */
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&mmc2_pins_default>;
- 	vmmc-supply = <&mt6331_vmc_reg>;
- 	vqmmc-supply = <&mt6331_vmch_reg>;
- 	status = "okay";
-@@ -311,6 +315,40 @@ pins-ds {
- 		};
+diff --git a/arch/arm64/boot/dts/mediatek/mt6755.dtsi b/arch/arm64/boot/dts/mediatek/mt6755.dtsi
+index b55d3fac9bd4..8da5c0a56a02 100644
+--- a/arch/arm64/boot/dts/mediatek/mt6755.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt6755.dtsi
+@@ -98,7 +98,7 @@ timer {
+ 			     (GIC_CPU_MASK_SIMPLE(8) | IRQ_TYPE_LEVEL_LOW)>;
  	};
  
-+	mmc1_pins_default: microsd-pins {
-+		pins-cmd-dat {
-+			pinmux = <PINMUX_GPIO171__FUNC_MSDC1_DAT0>,
-+				 <PINMUX_GPIO172__FUNC_MSDC1_DAT1>,
-+				 <PINMUX_GPIO173__FUNC_MSDC1_DAT2>,
-+				 <PINMUX_GPIO174__FUNC_MSDC1_DAT3>,
-+				 <PINMUX_GPIO170__FUNC_MSDC1_CMD>;
-+			input-enable;
-+			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-+		};
-+
-+		pins-clk {
-+			pinmux = <PINMUX_GPIO175__FUNC_MSDC1_CLK>;
-+			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-+		};
-+	};
-+
-+	mmc2_pins_default: sdio-pins {
-+		pins-cmd-dat {
-+			pinmux = <PINMUX_GPIO100__FUNC_MSDC2_DAT0>,
-+				 <PINMUX_GPIO101__FUNC_MSDC2_DAT1>,
-+				 <PINMUX_GPIO102__FUNC_MSDC2_DAT2>,
-+				 <PINMUX_GPIO103__FUNC_MSDC2_DAT3>,
-+				 <PINMUX_GPIO105__FUNC_MSDC2_CMD>;
-+			input-enable;
-+			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-+		};
-+
-+		pins-clk {
-+			pinmux = <PINMUX_GPIO104__FUNC_MSDC2_CLK>;
-+			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-+		};
-+	};
-+
- 	nfc_pins: nfc-pins {
- 		pins-irq {
- 			pinmux = <PINMUX_GPIO3__FUNC_GPIO3>;
+-	sysirq: intpol-controller@10200620 {
++	sysirq: interrupt-controller@10200620 {
+ 		compatible = "mediatek,mt6755-sysirq",
+ 			     "mediatek,mt6577-sysirq";
+ 		interrupt-controller;
+diff --git a/arch/arm64/boot/dts/mediatek/mt6779.dtsi b/arch/arm64/boot/dts/mediatek/mt6779.dtsi
+index 5c579e88e749..70f3375916e8 100644
+--- a/arch/arm64/boot/dts/mediatek/mt6779.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt6779.dtsi
+@@ -138,7 +138,7 @@ ppi_cluster1: interrupt-partition-1 {
+ 
+ 		};
+ 
+-		sysirq: intpol-controller@c53a650 {
++		sysirq: interrupt-controller@c53a650 {
+ 			compatible = "mediatek,mt6779-sysirq",
+ 				     "mediatek,mt6577-sysirq";
+ 			interrupt-controller;
+diff --git a/arch/arm64/boot/dts/mediatek/mt6795.dtsi b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
+index 38f65aad2802..58833e5135c8 100644
+--- a/arch/arm64/boot/dts/mediatek/mt6795.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
+@@ -404,7 +404,7 @@ pwrap: pwrap@1000d000 {
+ 			clock-names = "spi", "wrap";
+ 		};
+ 
+-		sysirq: intpol-controller@10200620 {
++		sysirq: interrupt-controller@10200620 {
+ 			compatible = "mediatek,mt6795-sysirq",
+ 				     "mediatek,mt6577-sysirq";
+ 			interrupt-controller;
+diff --git a/arch/arm64/boot/dts/mediatek/mt6797.dtsi b/arch/arm64/boot/dts/mediatek/mt6797.dtsi
+index f2d93bf6a055..8ac98a378fd6 100644
+--- a/arch/arm64/boot/dts/mediatek/mt6797.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt6797.dtsi
+@@ -228,7 +228,7 @@ apmixedsys: apmixed@1000c000 {
+ 		#clock-cells = <1>;
+ 	};
+ 
+-	sysirq: intpol-controller@10200620 {
++	sysirq: interrupt-controller@10200620 {
+ 		compatible = "mediatek,mt6797-sysirq",
+ 			     "mediatek,mt6577-sysirq";
+ 		interrupt-controller;
 -- 
 2.50.1
 
