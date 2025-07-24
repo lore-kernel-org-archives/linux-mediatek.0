@@ -4,102 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96181C87FCA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jul 2025 13:54:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 132E8C87FCE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jul 2025 15:25:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PCH9wMZuCq9rz+O+tflGRTfcHTnRU43/VMnWUAJfNWE=; b=ioGRkO7HXqK29DWRzBeTEZsZ+E
-	AXoDpa9sD5pUyfemLiM+n3SD79LELxlsj9wNdn7xT4Eoi8r4PumgOF98c4lMdX4b7al01KEBEszAK
-	Qa9NB+QF1nWkCQ2vRPM6Jkg58QFI0MfWN89XiEY5WXENEYmdHb4tLRV252lOovCpdKgZ+q9E1yXpy
-	h5XmVRjyS+dYVeUZd0hkymMCCW2NSThQJkkF9vPxNeCRQTZoBEItQyJzmtQcJ36DG4WM75h7Qt98z
-	Xs8G5zlu23OqDCfYHJ4uAXzEqimoqIwpOGbstx8v+gktNWpEtaISnXUCvsde8HQO1QRXkInKOgfB1
-	JdHpK9Lg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XAYSetqh9eSNkwVhXRc1QeqVbL4i4v1DvR8ou7zVszs=; b=hVUsN+juGs6aejQj/ZCDl1JGui
+	uv7cZstX9ugvjtOGk7lWC/v4atyaydf9Mr/H9Ibg/eV55v11kihHzEwK4Au5EN4e+a0SeWubwEXRa
+	/kUyB4MNwss50geGH+xQISlzCYac7jSd4Ucs/NuyC95US4xw2hinByLHgCf4D3Uf0iFxAEXczTdJv
+	zIYtH6eExpglJ1aBLidP9DX6W6HbmZdizsY3BpZW6tEK9JWj5yeSZbL3HhoHVk6vlGuUQynEVb1uV
+	qsZcLs+6UKdTqVDuUyks6dbcgDKzm9BDaJtZpgs5eEPbz9Ycybam1+G6HvRes7HX8MYQrmrYmoSH7
+	SnaxeZrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uewOt-00000007cOB-1IuI;
-	Thu, 24 Jul 2025 13:54:23 +0000
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	id 1uexpA-00000007qI7-0SH2;
+	Thu, 24 Jul 2025 15:25:36 +0000
+Received: from mgamail.intel.com ([198.175.65.14])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueuxz-00000007PB6-36xJ;
-	Thu, 24 Jul 2025 12:22:32 +0000
-Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-ae0d7b32322so149904866b.2;
-        Thu, 24 Jul 2025 05:22:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1753359750; x=1753964550; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=PCH9wMZuCq9rz+O+tflGRTfcHTnRU43/VMnWUAJfNWE=;
-        b=apvgJLClgt488rSSoFFzUmAEPEbNLkXZj/4etqobm/UqAA6mc60GEWkYetEbj06NUi
-         xP+Roz2RE732ssxImhLdjULfSvMYWhasY60QHrtYDlgQrElUN8DuMjtevRYUJHE+ycHv
-         8S664MD3aXDDR26llrOVq6o9nWCiCgx7nU2BFwYPBhZdzp0wZoyXzzoR7HwRFmSOaNSy
-         7M9g/Yx1b4ZuX6oy66k5dQoIX9LpAaHBVHMqft6kIlhw4kC7RSV1nbZeOA652aTOFU1j
-         sqTUsOX3u97oleuffaCKvB+xQo9qw2hOZi1tmba/P4fk8u3rwhAbkIdcahTVbQQUnweK
-         qe8g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1753359750; x=1753964550;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=PCH9wMZuCq9rz+O+tflGRTfcHTnRU43/VMnWUAJfNWE=;
-        b=qNfPvBO8wb0Glo1PZSwdmmRqADxpvm1hG3rA+OcAmbGE5dVRMY83QmhJBT6W0WjzeX
-         7OuHAZHtOA2kEbjvoWaNetGErn05VsCuhk9Wr5rayhIoSzIh1l5md1DqTLHsWPPQ/oTW
-         S0aBd/IDegUmyunC0Qhw3mnI4TX9bir0Xml/h/IuA6FDghi/LJyPTbhaiTuRkNPSFfSu
-         Op/LsacoBpkSzg2meU9UmwiaAkhhMxYRffMQwq83R+Eartl8McGVNcQDM34e0w3Lz8UQ
-         2hfSb4OTdqqXI43smccPF6VMOC0tGVb9WxnoX6xjuNyrcSVnvfmGOd6EwZVoPzkBAW8o
-         ytAA==
-X-Forwarded-Encrypted: i=1; AJvYcCXCo5rZbOEFZmnGwqLRIJJAicnMKC296LF+gttvUXL+lQnoGW09Oc2jzxgj4VBylTa8Md/v5yIdZbt2irGnXtDI@lists.infradead.org, AJvYcCXkpDi85iRRgtnfibpm44jBX/Dkvo2nIn/e7kRGe5aZWb5IJnCnnoRV3+xLsFn+YQufIuOGe4Z0manY0ymkgDg=@lists.infradead.org
-X-Gm-Message-State: AOJu0YyiXNzT9b2DXwqvxa3ybK04Bzkc7D413vhWVV+/UdzavbHeWVYF
-	2zLZXpwHGkqcPxfFoJ1316vr2zN5snPZ12QlZY44ErSfnA23TMv9T6EZXWtw0ckUC/RTuXOV9ww
-	Dm0xjQe/f3IRMpi4iU8uXUSJIpu7EzSU=
-X-Gm-Gg: ASbGncs4ISP8vJXO1wA2gqbszkTEKBt0Wp1vpQvIbZNNobrnaf4Qhvpy4QaYpi9FDYG
-	NusvoNuw3vVGvPuU2QWPgDb9J8aZ5Xy484/rdDlf+yMtCA4PgEdNVKyQKeTEL8fTmVi8jfedVW1
-	WWbVP0HuuqOzAQqHiAn4OhE8x6vClQ5w5J9veo8Vws1SoJtxgepjN6cg0gwBG5YBXd4ug9aAdSV
-	iSCJW2zHA==
-X-Google-Smtp-Source: AGHT+IHK0IoDJ6PED5zWXfzDhpKgh5VZvydISu4XMaUvDPUT/I7krIj8dXVVfHCUqibcmSSRfe/rVr8gG8zy8ado+mw=
-X-Received: by 2002:a17:907:60cb:b0:aec:6600:dbe3 with SMTP id
- a640c23a62f3a-af2f9385acfmr671282766b.56.1753359749816; Thu, 24 Jul 2025
- 05:22:29 -0700 (PDT)
-MIME-Version: 1.0
-References: <20250724-pinctrl-gpio-pinfuncs-v3-0-af4db9302de4@linaro.org> <20250724-pinctrl-gpio-pinfuncs-v3-12-af4db9302de4@linaro.org>
-In-Reply-To: <20250724-pinctrl-gpio-pinfuncs-v3-12-af4db9302de4@linaro.org>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Thu, 24 Jul 2025 14:21:53 +0200
-X-Gm-Features: Ac12FXz2KOnsH_foq66JE5xieoDhq1Ik71OykKjuCvc1b-KzV3FeiggPCBwSd4M
-Message-ID: <CAHp75Vc4vsJh_-GbP+YO50veoGoGtfAPL4tjcF+73uophfmnGw@mail.gmail.com>
-Subject: Re: [PATCH v3 12/15] pinctrl: allow to mark pin functions as
- requestable GPIOs
-To: Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Bjorn Andersson <andersson@kernel.org>, 
-	Konrad Dybcio <konradybcio@kernel.org>, Alexey Klimov <alexey.klimov@linaro.org>, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Paul Cercueil <paul@crapouillou.net>, Kees Cook <kees@kernel.org>, 
-	Andy Shevchenko <andy@kernel.org>, Andrew Morton <akpm@linux-foundation.org>, 
-	David Hildenbrand <david@redhat.com>, Lorenzo Stoakes <lorenzo.stoakes@oracle.com>, 
-	"Liam R. Howlett" <Liam.Howlett@oracle.com>, Vlastimil Babka <vbabka@suse.cz>, 
-	Mike Rapoport <rppt@kernel.org>, Suren Baghdasaryan <surenb@google.com>, Michal Hocko <mhocko@suse.com>, 
-	Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, 
-	Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, NXP S32 Linux Team <s32@nxp.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Tony Lindgren <tony@atomide.com>, 
-	Haojian Zhuang <haojian.zhuang@linaro.org>, Geert Uytterhoeven <geert+renesas@glider.be>, 
-	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
-	linux-hardening@vger.kernel.org, linux-mm@kvack.org, imx@lists.linux.dev, 
-	linux-omap@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+	id 1ueuVE-00000007Myb-3sVM;
+	Thu, 24 Jul 2025 11:52:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1753357969; x=1784893969;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=skduPBA0XOiRRFwQNtjlPasZ0GUfqz6drj8febfSOhY=;
+  b=eARZHpmL96dD7ERSZtIFH0sQreI8UQ3n3gZ4+pwPPw3GKa4F3wnbUVdN
+   yQ1MJWrBTzS1Y8Y/ugkb/oAypHjL7ZfGvSE3Mbu+FyOuxEFiT1YXqfBDq
+   zex+Ebseehw1kmDECTTDvOoumikfnws0G6gf9Wi0L2FSLoItrvdU6y+G3
+   6BAg7EZhj9QExs5dVIdgkCAU0c8ngrv6FrEJaIEYATSJdUbQBazQ8/EjN
+   EG+38Ry2t49Fbg+4efxXyU19ltppw16CDFfRfJGrn5LCaxRNgU1SZzZPa
+   0sT6DpcTKQSS20DvSm0E3cPoaXnnePxiYaoDiBdvTuCOaidnukpXsNOtP
+   Q==;
+X-CSE-ConnectionGUID: OZdNWVHKRne2nn7eC9CIPw==
+X-CSE-MsgGUID: j8O0r9BdR0aoj1w9mzuJog==
+X-IronPort-AV: E=McAfee;i="6800,10657,11501"; a="59473459"
+X-IronPort-AV: E=Sophos;i="6.16,337,1744095600"; 
+   d="scan'208";a="59473459"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jul 2025 04:52:46 -0700
+X-CSE-ConnectionGUID: gH3texk5RoaLOe2vbIi/aw==
+X-CSE-MsgGUID: lF7KjgBaRhmOljQc+wknEA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,337,1744095600"; 
+   d="scan'208";a="164253907"
+Received: from smile.fi.intel.com ([10.237.72.52])
+  by fmviesa003.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jul 2025 04:52:36 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.98.2)
+	(envelope-from <andriy.shevchenko@intel.com>)
+	id 1ueuUx-00000000Yl0-3pfo;
+	Thu, 24 Jul 2025 14:52:31 +0300
+Date: Thu, 24 Jul 2025 14:52:31 +0300
+From: Andy Shevchenko <andriy.shevchenko@intel.com>
+To: Lorenzo Stoakes <lorenzo.stoakes@oracle.com>
+Cc: Andy Shevchenko <andy.shevchenko@gmail.com>,
+	Bartosz Golaszewski <brgl@bgdev.pl>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konradybcio@kernel.org>,
+	Alexey Klimov <alexey.klimov@linaro.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Sean Wang <sean.wang@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Paul Cercueil <paul@crapouillou.net>, Kees Cook <kees@kernel.org>,
+	Andy Shevchenko <andy@kernel.org>,
+	Andrew Morton <akpm@linux-foundation.org>,
+	David Hildenbrand <david@redhat.com>,
+	"Liam R. Howlett" <Liam.Howlett@oracle.com>,
+	Vlastimil Babka <vbabka@suse.cz>, Mike Rapoport <rppt@kernel.org>,
+	Suren Baghdasaryan <surenb@google.com>,
+	Michal Hocko <mhocko@suse.com>, Dong Aisheng <aisheng.dong@nxp.com>,
+	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
+	Jacky Bai <ping.bai@nxp.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	NXP S32 Linux Team <s32@nxp.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Tony Lindgren <tony@atomide.com>,
+	Haojian Zhuang <haojian.zhuang@linaro.org>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
+	linux-hardening@vger.kernel.org, linux-mm@kvack.org,
+	imx@lists.linux.dev, linux-omap@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
 	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v3 01/15] lib: provide kmemdup_const()
+Message-ID: <aIIef0MDcZiElgN1@smile.fi.intel.com>
+References: <20250724-pinctrl-gpio-pinfuncs-v3-0-af4db9302de4@linaro.org>
+ <20250724-pinctrl-gpio-pinfuncs-v3-1-af4db9302de4@linaro.org>
+ <e1253b8a-4940-417f-b530-09e57c6a8932@lucifer.local>
+ <CAHp75VeWbhuL1pYvEza44Pnb5YUufgY=1WYXSx2nNMJVfcytTA@mail.gmail.com>
+ <5c7edf57-bf13-4633-8348-791e0620cc79@lucifer.local>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <5c7edf57-bf13-4633-8348-791e0620cc79@lucifer.local>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250724_052231_782597_9BE03F91 
-X-CRM114-Status: GOOD (  24.72  )
+X-CRM114-CacheID: sfid-20250724_045249_030680_767A6BA0 
+X-CRM114-Status: GOOD (  16.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,108 +124,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 24, 2025 at 11:25=E2=80=AFAM Bartosz Golaszewski <brgl@bgdev.pl=
-> wrote:
->
-> The name of the pin function has no real meaning to pinctrl core and is
-> there only for human readability of device properties. Some pins are
-> muxed as GPIOs but for "strict" pinmuxers it's impossible to request
-> them as GPIOs if they're bound to a devide - even if their function name
-> explicitly says "gpio". Add a new field to struct pinfunction that
-> allows to pass additional flags to pinctrl core. While we could go with
+On Thu, Jul 24, 2025 at 12:15:11PM +0100, Lorenzo Stoakes wrote:
+> On Thu, Jul 24, 2025 at 01:12:49PM +0200, Andy Shevchenko wrote:
+> > On Thu, Jul 24, 2025 at 1:10 PM Lorenzo Stoakes
+> > <lorenzo.stoakes@oracle.com> wrote:
+> > > On Thu, Jul 24, 2025 at 11:24:29AM +0200, Bartosz Golaszewski wrote:
+> > > > +extern const void *kmemdup_const(const void *src, size_t len, gfp_t gfp);
+> > >
+> > > Please drop extern, it's unnecessary.
+> >
+> > It's all over the header. This should be done as a precursor patch and
+> > I know that usually people push back on doing that. I gave up on this.
+> > Kernel is going to rot sooner or later... :-(
+> 
+> In mm we just update as we go, this is probably the best approach to avoid
+> unnecessary churn.
 
-passing
-to the pinctrl
+I agree on the idea of eliminating it, but also I agree on the consistency over
+redundancy. That's why I prefer to see this done at once for all (in the same
+header) than doing one-by-one. And this approach got a lot of pushes back, while
+the former even more pushed back on the (in)consistency matters.
 
-> a boolean "is_gpio" field, a flags field is more future-proof.
->
-> If the PINFUNCTION_FLAG_GPIO is set for a given function, the pin muxed
-> to it can be requested as GPIO even on strict pin controllers. Add a new
-
-"...the pin, which is muxed to it, ..."
-
-> callback to struct pinmux_ops - function_is_gpio() - that allows pinmux
-> core to inspect a function and see if it's a GPIO one. Provide a generic
-> implementation of this callback.
-
-...
-
-> -       if (ops->strict && desc->mux_usecount)
-> +       if (ops->function_is_gpio && mux_setting)
-
-Seems mux_setting presence is prior to the GPIO checks, I would swap
-the parameters of &&.
-
-> +               func_is_gpio =3D ops->function_is_gpio(pctldev,
-> +                                                    mux_setting->func);
-
-One line is okay.
-
-> +       if (ops->strict && desc->mux_usecount && !func_is_gpio)
->                 return false;
->
->         return !(ops->strict && !!desc->gpio_owner);
-
-I think this whole if/return chain can be made slightly more readable,
-but I haven't had something to provide right now. Lemme think about
-it,
-
-...
-
-> +               if (ops->function_is_gpio && mux_setting)
-> +                       func_is_gpio =3D ops->function_is_gpio(pctldev,
-> +                                                            mux_setting-=
->func);
-> +               if ((!gpio_range || ops->strict) && !func_is_gpio &&
->                     desc->mux_usecount && strcmp(desc->mux_owner, owner))=
- {
-
-This is very similar to the above check, I think at bare minimum here
-can be a helper for both cases.
-
-...
-
-> +/**
-> + * pinmux_generic_function_is_gpio() - returns true if given function is=
- a GPIO
-> + * @pctldev: pin controller device
-> + * @selector: function number
-
-Missing Return section. Please run kernel-doc validator against new kernel-=
-docs.
-
-> + */
-> +bool pinmux_generic_function_is_gpio(struct pinctrl_dev *pctldev,
-> +                                    unsigned int selector)
-> +{
-> +       struct function_desc *function;
-> +
-> +       function =3D radix_tree_lookup(&pctldev->pin_function_tree,
-> +                                    selector);
-
-One line is okay.
-
-> +       if (!function)
-> +               return false;
-> +
-> +       return function->func->flags & PINFUNCTION_FLAG_GPIO;
-> +}
-
-...
-
->  struct pinfunction {
->         const char *name;
->         const char * const *groups;
->         size_t ngroups;
-> +       unsigned long flags;
-
-Not sure we need this. If the function is GPIO, pin control already
-knows about this. The pin muxing has gpio request / release callbacks
-that change the state. Why do we need an additional flag(s)?
-
->  };
-
---=20
+-- 
 With Best Regards,
 Andy Shevchenko
+
+
 
