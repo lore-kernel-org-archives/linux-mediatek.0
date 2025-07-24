@@ -4,63 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51664C83F26
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jul 2025 23:07:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D756BC83F26
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jul 2025 23:47:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EuT4OECneQlqr9IoS0XFEkJgV+fWU6vO0yfNC4odBz0=; b=TITN7TANsulqdXqahvK8SJjA4r
-	Wn6pg8lw8PKZWug9BOBq2yj8a46KB1JYAuVrwDsQ85ny8n7MvvxD5BPlT+V3HWa3U726lPcY5Tj44
-	ryPAySyi//zXoQkDRVI+7gqHapJYRKiDaghkIxvxMYmGN7NjxmyKi5M4vAQGr4wP7y8GMYCh8WRza
-	FkxCcIWqv1DtNmXanDXr13O5fw4Raql6mCnhqQg34v4pdNhIzRj73Gmdeoa4qBOVUxVLA33qnkJB0
-	qrZ2VSO1jf8IUyDnzT9ZVetc8kGwy4cWknMckZIj+w+llM0nfBlhwU7x3V1Afy9rsQ7z/5yoXs5ds
-	ht8TBCBA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	bh=Ox1ZdBKdE1+7cWyX+ZvTW2cCqppnnWI0+MrgMX4qxOQ=; b=PP4/qnJTqqNcbLovVCtlPj2G4/
+	c41DSDySFS1mlNA7QYbxJJPHbiUPo8hFJYEVudF5v08pgpbkZEEI2tX5Ru6shQJA+0O/7ncNHvw4P
+	Fgv5ec52w4vwXiUu6UIhcLNdcPS852GEzjHwCEnAFrCgqYdegQFKzmLOvqW2LUx1hqPksE6dcIzXg
+	MyErN0OqcqcYnoo0em0ZwsvEbK6amWXIsb8tBBgRAlfzJykYwEnY0y/SwV5WyPM2GXCroM+Q4q92l
+	Eai2xUX1PIF2naHEJfvkZyO36anTre/EesPIky92AHAsqoJWD4k4QAjsjHhzlviPLs5m5lPM3rgku
+	py76Qt3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uf52X-00000008ej7-2Pp3;
-	Thu, 24 Jul 2025 23:07:53 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uf5f0-00000008i9A-1RZw;
+	Thu, 24 Jul 2025 23:47:38 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uf4Qp-00000008arl-1iiT;
-	Thu, 24 Jul 2025 22:28:56 +0000
+	id 1uf55I-00000008euU-0tQx;
+	Thu, 24 Jul 2025 23:10:45 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id CDF255C653F;
-	Thu, 24 Jul 2025 22:28:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CD3C8C4CEED;
-	Thu, 24 Jul 2025 22:28:52 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 146BCA55FD2;
+	Thu, 24 Jul 2025 23:10:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 991B9C4CEED;
+	Thu, 24 Jul 2025 23:10:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1753396134;
-	bh=6UkftOwnWcxhW5u2uOEGRNPfwKgOe+LwjHtv4z8eR48=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=b1Ek78QfqtZjdMROv13a3MI9lk2CQb/ZFCPsYltjPEztgLPfASrf3Xm8j7KCVtDFI
-	 EMFM3YJnc0GXsXo+fbfc7t8Ain1WcuUUDNgXu9Kvoso/OnGvEMRMo+mmkz7qIXP2iU
-	 k8RGxvNDx8PBNfsMvwFQMcyCIqKPonowa+stBQnBmX53chEsl0hu9oNTb3GDs1MMkI
-	 npTz7BPnFKg5vu2b5Wdz/wrS/4F2o5phZaHBb2eYDuRiFp44dvlPAiRRmXTnhdGyYW
-	 lkxfsoaD38OD7egR8udMRgbLPH0VlIOfkzGMc7EptWAHMuklKzvV2b4c0kOMB83iIi
-	 gqCesMrV9NcfQ==
-From: Mark Brown <broonie@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Colin Ian King <colin.i.king@gmail.com>
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
-In-Reply-To: <20250724114832.146718-1-colin.i.king@gmail.com>
-References: <20250724114832.146718-1-colin.i.king@gmail.com>
-Subject: Re: [PATCH][next] regulator: mt6370: Fix spelling mistake in
- mt6370_regualtor_register
-Message-Id: <175339613258.176873.9240561400072710018.b4-ty@kernel.org>
-Date: Thu, 24 Jul 2025 23:28:52 +0100
+	s=k20201202; t=1753398642;
+	bh=ctpeYJqI/YS0Fz29wSZX7bb68pB9rc2aEqPRsFb/1KE=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=lSLVJCpjYwUU6EPqgYYzdE0EdZ8oDFYV/0lJmwugU9tGIjO60nUjs09D8lBXA2yD2
+	 Fg+poR+eB1EfvBNYE2i3RVYyZPST5UK5sfIj0LypqPXmp1bLQmkPURstpTK+B6NMSp
+	 /Sfgh0pY4nlMuB4/0ij4qBxIT6xYfSu0rWD5a5iWx9teYnuxBtAVIOpRb4pEi2dvr6
+	 /+sNmOe5f5CmDySNo8eMIeR8BaeiOIXW+stkdtE+1inF9pSsOOSVuhZ3wj5IbR5BCb
+	 L9VNWckESPamfiqs1XMgM9OgC7CiGY92IF4J3JD1+WqxMkRUfrloP9aTViDrQ2cT2n
+	 UDut2GywlmQhg==
+Date: Thu, 24 Jul 2025 18:10:41 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: "Jiri Slaby (SUSE)" <jirislaby@kernel.org>
+Cc: bhelgaas@google.com, tglx@linutronix.de, linux-kernel@vger.kernel.org,
+	Jingoo Han <jingoohan1@gmail.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>,
+	Hou Zhiqiang <Zhiqiang.Hou@nxp.com>,
+	Joyce Ooi <joyce.ooi@intel.com>, Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Michal Simek <michal.simek@amd.com>,
+	Daire McNamara <daire.mcnamara@microchip.com>,
+	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, Arnd Bergmann <arnd@arndb.de>,
+	Nam Cao <namcao@linutronix.de>
+Subject: Re: [PATCH] PCI: controller: use dev_fwnode()
+Message-ID: <20250724231041.GA3079592@bhelgaas>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.15-dev-cff91
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20250723065907.1841758-1-jirislaby@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250724_152855_502270_5DCC0323 
-X-CRM114-Status: GOOD (  10.29  )
+X-CRM114-CacheID: sfid-20250724_161044_388069_08C43CD2 
+X-CRM114-Status: GOOD (  18.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,38 +83,186 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 24 Jul 2025 12:48:32 +0100, Colin Ian King wrote:
-> The function name mt6370_regualtor_register contains a spelling mistake,
-> fix it.
+[+cc Arnd, Nam]
+
+On Wed, Jul 23, 2025 at 08:59:07AM +0200, Jiri Slaby (SUSE) wrote:
+> All irq_domain functions now accept fwnode instead of of_node. But many
+> PCI controllers still extract dev to of_node and then of_node to fwnode.
 > 
+> Instead, clean this up and simply use the dev_fwnode() helper to extract
+> fwnode directly from dev. Internally, it still does dev => of_node =>
+> fwnode steps, but it's now hidden from the users.
 > 
+> Signed-off-by: Jiri Slaby (SUSE) <jirislaby@kernel.org>
+> Link: https://lore.kernel.org/all/4ee9c7c0-4a3f-4afa-ae5a-7fd8a750c92b@kernel.org/
+> Link: https://lore.kernel.org/all/4bc0e1ca-a523-424a-8759-59e353317fba@kernel.org/
 
-Applied to
+Thanks, Jiri, I applied this on pci/controller/msi-parent for v6.17;
+it's at
+https://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git/log/?h=controller/msi-parent
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
+The dev_fwnode() conversions touched the same places as Nam's changes
+to use msi_create_parent_irq_domain().  The previous dev_fwnode()
+conversions were *before* Nam's changes and these are *after*, and it
+all ended up looking more complicated than I wanted, so I squashed all
+the dev_fwnode() conversions together in
+https://git.kernel.org/cgit/linux/kernel/git/pci/pci.git/commit/?id=a103d2dede56
+("PCI: controller: Use dev_fwnode() instead of of_fwnode_handle()")
+and then added Nam's msi_create_parent_irq_domain() patches on top.
 
-Thanks!
+So a103d2dede56 ("PCI: controller: Use dev_fwnode() instead of
+of_fwnode_handle()") ends up *looking* different from the patch below,
+but I think having them all together makes it more obvious that
+they're all making the same conversion, and I think the end result is
+identical.
 
-[1/1] regulator: mt6370: Fix spelling mistake in mt6370_regualtor_register
-      commit: 0bd042ae771d61ef7ccd5882f7aeca59a25f71d9
+Bjorn
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+> Cc: Jingoo Han <jingoohan1@gmail.com>
+> Cc: Manivannan Sadhasivam <mani@kernel.org>
+> Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>
+> Cc: "Krzysztof Wilczyński" <kwilczynski@kernel.org>
+> Cc: Rob Herring <robh@kernel.org>
+> Cc: Bjorn Helgaas <bhelgaas@google.com>
+> Cc: Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>
+> Cc: Hou Zhiqiang <Zhiqiang.Hou@nxp.com>
+> Cc: Joyce Ooi <joyce.ooi@intel.com>
+> Cc: Ryder Lee <ryder.lee@mediatek.com>
+> Cc: Jianjun Wang <jianjun.wang@mediatek.com>
+> Cc: Michal Simek <michal.simek@amd.com>
+> Cc: Daire McNamara <daire.mcnamara@microchip.com>
+> ---
+> Cc: linux-pci@vger.kernel.org
+> Cc: linux-mediatek@lists.infradead.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> ---
+>  drivers/pci/controller/dwc/pcie-designware-host.c    | 3 +--
+>  drivers/pci/controller/mobiveil/pcie-mobiveil-host.c | 3 +--
+>  drivers/pci/controller/pcie-altera-msi.c             | 3 +--
+>  drivers/pci/controller/pcie-mediatek.c               | 4 +---
+>  drivers/pci/controller/pcie-xilinx-dma-pl.c          | 3 +--
+>  drivers/pci/controller/pcie-xilinx-nwl.c             | 3 +--
+>  drivers/pci/controller/plda/pcie-plda-host.c         | 3 +--
+>  7 files changed, 7 insertions(+), 15 deletions(-)
+> 
+> diff --git a/drivers/pci/controller/dwc/pcie-designware-host.c b/drivers/pci/controller/dwc/pcie-designware-host.c
+> index 4af7da14b350..952f8594b501 100644
+> --- a/drivers/pci/controller/dwc/pcie-designware-host.c
+> +++ b/drivers/pci/controller/dwc/pcie-designware-host.c
+> @@ -214,9 +214,8 @@ static const struct irq_domain_ops dw_pcie_msi_domain_ops = {
+>  int dw_pcie_allocate_domains(struct dw_pcie_rp *pp)
+>  {
+>  	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
+> -	struct fwnode_handle *fwnode = of_fwnode_handle(pci->dev->of_node);
+>  	struct irq_domain_info info = {
+> -		.fwnode		= fwnode,
+> +		.fwnode		= dev_fwnode(pci->dev),
+>  		.ops		= &dw_pcie_msi_domain_ops,
+>  		.size		= pp->num_vectors,
+>  		.host_data	= pp,
+> diff --git a/drivers/pci/controller/mobiveil/pcie-mobiveil-host.c b/drivers/pci/controller/mobiveil/pcie-mobiveil-host.c
+> index d17e887b6b61..dbc72c73fd0a 100644
+> --- a/drivers/pci/controller/mobiveil/pcie-mobiveil-host.c
+> +++ b/drivers/pci/controller/mobiveil/pcie-mobiveil-host.c
+> @@ -439,13 +439,12 @@ static const struct irq_domain_ops msi_domain_ops = {
+>  static int mobiveil_allocate_msi_domains(struct mobiveil_pcie *pcie)
+>  {
+>  	struct device *dev = &pcie->pdev->dev;
+> -	struct fwnode_handle *fwnode = of_fwnode_handle(dev->of_node);
+>  	struct mobiveil_msi *msi = &pcie->rp.msi;
+>  
+>  	mutex_init(&msi->lock);
+>  
+>  	struct irq_domain_info info = {
+> -		.fwnode		= fwnode,
+> +		.fwnode		= dev_fwnode(dev),
+>  		.ops		= &msi_domain_ops,
+>  		.host_data	= pcie,
+>  		.size		= msi->num_of_vectors,
+> diff --git a/drivers/pci/controller/pcie-altera-msi.c b/drivers/pci/controller/pcie-altera-msi.c
+> index 2e48acd632c5..ea2ca2e70f20 100644
+> --- a/drivers/pci/controller/pcie-altera-msi.c
+> +++ b/drivers/pci/controller/pcie-altera-msi.c
+> @@ -166,9 +166,8 @@ static const struct irq_domain_ops msi_domain_ops = {
+>  
+>  static int altera_allocate_domains(struct altera_msi *msi)
+>  {
+> -	struct fwnode_handle *fwnode = of_fwnode_handle(msi->pdev->dev.of_node);
+>  	struct irq_domain_info info = {
+> -		.fwnode		= fwnode,
+> +		.fwnode		= dev_fwnode(&msi->pdev->dev),
+>  		.ops		= &msi_domain_ops,
+>  		.host_data	= msi,
+>  		.size		= msi->num_of_vectors,
+> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+> index 3ac5d14dd543..24cc30a2ab6c 100644
+> --- a/drivers/pci/controller/pcie-mediatek.c
+> +++ b/drivers/pci/controller/pcie-mediatek.c
+> @@ -487,12 +487,10 @@ static const struct msi_parent_ops mtk_msi_parent_ops = {
+>  
+>  static int mtk_pcie_allocate_msi_domains(struct mtk_pcie_port *port)
+>  {
+> -	struct fwnode_handle *fwnode = of_fwnode_handle(port->pcie->dev->of_node);
+> -
+>  	mutex_init(&port->lock);
+>  
+>  	struct irq_domain_info info = {
+> -		.fwnode		= fwnode,
+> +		.fwnode		= dev_fwnode(port->pcie->dev),
+>  		.ops		= &msi_domain_ops,
+>  		.host_data	= port,
+>  		.size		= MTK_MSI_IRQS_NUM,
+> diff --git a/drivers/pci/controller/pcie-xilinx-dma-pl.c b/drivers/pci/controller/pcie-xilinx-dma-pl.c
+> index fbc379fd118b..b037c8f315e4 100644
+> --- a/drivers/pci/controller/pcie-xilinx-dma-pl.c
+> +++ b/drivers/pci/controller/pcie-xilinx-dma-pl.c
+> @@ -465,9 +465,8 @@ static int xilinx_pl_dma_pcie_init_msi_irq_domain(struct pl_dma_pcie *port)
+>  	struct device *dev = port->dev;
+>  	struct xilinx_msi *msi = &port->msi;
+>  	int size = BITS_TO_LONGS(XILINX_NUM_MSI_IRQS) * sizeof(long);
+> -	struct fwnode_handle *fwnode = of_fwnode_handle(port->dev->of_node);
+>  	struct irq_domain_info info = {
+> -		.fwnode		= fwnode,
+> +		.fwnode		= dev_fwnode(port->dev),
+>  		.ops		= &dev_msi_domain_ops,
+>  		.host_data	= port,
+>  		.size		= XILINX_NUM_MSI_IRQS,
+> diff --git a/drivers/pci/controller/pcie-xilinx-nwl.c b/drivers/pci/controller/pcie-xilinx-nwl.c
+> index de76c836915f..05b8c205493c 100644
+> --- a/drivers/pci/controller/pcie-xilinx-nwl.c
+> +++ b/drivers/pci/controller/pcie-xilinx-nwl.c
+> @@ -498,10 +498,9 @@ static int nwl_pcie_init_msi_irq_domain(struct nwl_pcie *pcie)
+>  {
+>  #ifdef CONFIG_PCI_MSI
+>  	struct device *dev = pcie->dev;
+> -	struct fwnode_handle *fwnode = of_fwnode_handle(dev->of_node);
+>  	struct nwl_msi *msi = &pcie->msi;
+>  	struct irq_domain_info info = {
+> -		.fwnode		= fwnode,
+> +		.fwnode		= dev_fwnode(dev),
+>  		.ops		= &dev_msi_domain_ops,
+>  		.host_data	= pcie,
+>  		.size		= INT_PCI_MSI_NR,
+> diff --git a/drivers/pci/controller/plda/pcie-plda-host.c b/drivers/pci/controller/plda/pcie-plda-host.c
+> index 92866840875e..8e2db2e5b64b 100644
+> --- a/drivers/pci/controller/plda/pcie-plda-host.c
+> +++ b/drivers/pci/controller/plda/pcie-plda-host.c
+> @@ -153,13 +153,12 @@ static const struct msi_parent_ops plda_msi_parent_ops = {
+>  static int plda_allocate_msi_domains(struct plda_pcie_rp *port)
+>  {
+>  	struct device *dev = port->dev;
+> -	struct fwnode_handle *fwnode = of_fwnode_handle(dev->of_node);
+>  	struct plda_msi *msi = &port->msi;
+>  
+>  	mutex_init(&port->msi.lock);
+>  
+>  	struct irq_domain_info info = {
+> -		.fwnode		= fwnode,
+> +		.fwnode		= dev_fwnode(dev),
+>  		.ops		= &msi_domain_ops,
+>  		.host_data	= port,
+>  		.size		= msi->num_vectors,
+> -- 
+> 2.50.1
+> 
 
