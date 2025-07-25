@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0010C87FCF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jul 2025 12:13:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A592C87FCE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jul 2025 12:15:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6mqK1RSBPE9C31GyE2vJbWJ8NDfAV+1bNXjXR8+rtBo=; b=0zd+zulf7tfmkhsjq0PbZ47Azp
-	g4x7WAor6BJIVxKrPYOy6HOlahdNpunHg/g/mn+GeSbrZ0y2xzdc/lIXfxBTSGBgIlPtvKD9C8rAj
-	D2+HT1RtNRa/SgfosjOGt41E18StvUfLW/dSykvv1MXUr+/K9Sl++wsrFaTph+hCurPx/kyI6Cn88
-	DdyPiJ4XaOrPLL9BySULGIG8sqbIBg3HmjniTXRwIUfg7BaZDemr9ncirT8UxgTnK4jDlvU9WGUy+
-	fsRdDhMuQzZhCpFkl6SwUndDDS2QTjzz0ajzHNgtSrRt7BvzZ+KSZyGiUNGjyQQ5GK32A3X3rz/oS
-	ZQyM3wkw==;
+	bh=t63BOHgVickClQUeVRs7VclE4TnB0fFJ8koSEGsWT2s=; b=ZEgXoITkQjW0pT5uhXgyY4ixzt
+	dIR/pvhtgUok/9vlZ40gHhkFWvjke7LOAqnezi04UxDMyhnaq1fSj7m3bhRI4uh/VNQ6WCk4RcQv/
+	kCV1RxiLFdkIRZB0QCWkbq95NSVlMJdp0gK5qICd7gQkIU97YQNWifZ7pGNV69hupfkL7enah+SIh
+	Wjc2pOTMZPefflq44yRNYQQ1L4tMyB47ncKPe42AqvtRNGaVLn+amA6gV6N9zJ9LtfvJ1dzfSHuFy
+	UQ8i815UG8VFV1NIfmKHlXWvAXx2Sclvcxu8mYRBKz3++1nERuG3QrShq2tRku5V4q6K05TzjADRp
+	1xgAn13g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ufHIb-00000009nFt-1MOJ;
-	Fri, 25 Jul 2025 12:13:17 +0000
-Received: from mail-oa1-x35.google.com ([2001:4860:4864:20::35])
+	id 1ufHL1-00000009nSz-1jxD;
+	Fri, 25 Jul 2025 12:15:47 +0000
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ufGuK-00000009kf6-2il9
+	id 1ufGvj-00000009kqQ-2gfS
 	for linux-mediatek@lists.infradead.org;
-	Fri, 25 Jul 2025 11:48:13 +0000
-Received: by mail-oa1-x35.google.com with SMTP id 586e51a60fabf-301a83477e5so1552373fac.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 25 Jul 2025 04:48:12 -0700 (PDT)
+	Fri, 25 Jul 2025 11:49:40 +0000
+Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-23dc5bcf49eso26316125ad.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 25 Jul 2025 04:49:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1753444091; x=1754048891; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1753444179; x=1754048979; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=6mqK1RSBPE9C31GyE2vJbWJ8NDfAV+1bNXjXR8+rtBo=;
-        b=bTLlyOqmE/fZJQ8fY34pyom4LtRvXCDrS7ZYsFzzI1BbJV+fNU6ThNHU3HbAdSGtaC
-         Ni6J8oHt7LiXGVMuvOWjhZSmHSf6dwgO1ufrQIB9rzndg5deucaS8XZZg8zbvUvhQzU1
-         s4qMWuIshwxinjULQ4ZXiLbKlLbFEne66IQHA=
+        bh=t63BOHgVickClQUeVRs7VclE4TnB0fFJ8koSEGsWT2s=;
+        b=eavYPbaYfaQ2HIEUjIc3aL2zS9es2axEk9aY0zx23GNTaGE1ItByF0c0405NK9PNl2
+         sUk99eC1or3HcfFbki/YyZmBDlf9LQGmUdMx1LLqMuVtZmVYxaBeDm3ZITp92YPeqgO/
+         FaQIjMPVZEk1aVAnUDLVUna2kA9/ry+CLu/pw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1753444091; x=1754048891;
+        d=1e100.net; s=20230601; t=1753444179; x=1754048979;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=6mqK1RSBPE9C31GyE2vJbWJ8NDfAV+1bNXjXR8+rtBo=;
-        b=HNHPsHNX9mpNiQNvxgQuX3NrqNAse6355UPT45PhfimI5nYbrMNdgC2r3x3cF1BC6t
-         ZvUesXABL8WrdbzKR0EHUfFClkp/Bp6c/clIJbhnoemfxi0Ci+PHfMQL8RyMY3XuMDme
-         sm/rvPfybeWenv4bpJ3ZoikgO9ezm4C/Eiv80BFn10H6repYci2J1MlUnMjyTA251EoP
-         u9K5u9N2vY4995saoOWZQD9GrpdIi6I4G4f4CIH04KUsc0kg/X7luNpzJUpkTYhWNukO
-         9Lun71uiHqorUNdxGtjiG02sstZa5Ci7/dovxhuC/gZVFlK00rGNuhg+PcvYw5MLkox6
-         Nd8w==
-X-Gm-Message-State: AOJu0YyasqreMzvZGEYR/VU3lplwSPOAyfxwJinM6XlmWeVpUA+SYC4t
-	1DH5X5Q0ua0SO8LLmxggLfvArUIGhOF9R36oDj7lz45WqKrycm2TsZUNypN4ky7Yitank/J8AUk
-	zaYs1kA==
-X-Gm-Gg: ASbGncuJvgudpUqMyevKRsQOu/hxvC9G0RAcFOa6uP3f9SgRv5CfVa4kkD63uhBkvBr
-	tSunJlmYijM6EVTXhPANXMPq33L5KYduROBjQ+w9akAWNaNhssUY9TxFXlXqcO3e85MXEANjrHw
-	kqDVY7E5ZNTLR0kL5ICLeNwf0y7Yf2HF2he9o/ePB/AE0U2d0rO4oezeVGYTaFB4qYPErRjJMlZ
-	LUgDt+79V7y/ay8X46VplDHTHvrKUwIAvyOLRFCCZM5u9TZOg6P1iJTwO3T2hpiSxptkFTyYjGO
-	uyZ4edUpQS9+f/n+4PfIDYBALxraEnEHMfLLiwqKlpEUljuyrG8DY3SaIcGymumTcMz8QFX99aw
-	ySAJuJQkOcfejSdxWi++azpyj0IPTY5s4Qn0beoOpq8RjXt8+v7YUraXQnPfBLQ==
-X-Google-Smtp-Source: AGHT+IF+re5k9yldgyJvX1qy1I27hg2VVlvDdY8vm1hA5FiRdBGIv8BOY+jDavG5GM5gzt1KfE4b4g==
-X-Received: by 2002:a05:6871:9f0b:b0:2d5:25b6:ec14 with SMTP id 586e51a60fabf-30701d18b22mr971603fac.15.1753444091387;
-        Fri, 25 Jul 2025 04:48:11 -0700 (PDT)
-Received: from mail-oi1-f174.google.com (mail-oi1-f174.google.com. [209.85.167.174])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7412d2ad45esm640948a34.36.2025.07.25.04.48.10
+        bh=t63BOHgVickClQUeVRs7VclE4TnB0fFJ8koSEGsWT2s=;
+        b=oHHA134jaeTm6tsrVfQgq0Mm/fLkCTy1dvIXjHbXt2RoSIOi8nvS8Pnr6bhODXmmkM
+         phYCsCIK4ghD5bjZSfnz5gPa7BQFQyVVsKc99udJXHlBfDsywBwd+99Lb81dXZ6kWCrA
+         E3TAGbQ40y6fR9CLJcLOUbMSEPkZBk9GqauBnVr5nGHRk+E/clZby7dYSXYjkPiuF2FP
+         E+QkXFaH+n6f5t6VVYfAGYUBFNp01lVSAf5/MXOfauSCvRmy7fhbQ7lsQISfL4PcX1fe
+         yorByg+Vb7NxDBuQtaFd8vfYEat+mNrXUAgEwcewHp29zL9HQZzWdCs1EnO7QisS1zyu
+         UPpQ==
+X-Gm-Message-State: AOJu0YwgVy2rft+DEQy/ykyGOaAvMOD11vAqI7wyQudfTxDRBhhIkT2a
+	kF3n+k/618eCWoU1N5wBk4q5MygsE9/PMvIo14LQ/In7gTvoJBEMrPQJfPFAEeADBAfygFLifLG
+	XxWqMAiDX
+X-Gm-Gg: ASbGncsrCAYb9qacStXuu/jwbYrT4HC1/Bi48VA4yiNlyFrkSR7htrqYWJ9dthi1lZ/
+	+nBlVAtpS9dt8F5l6ryn+yaQ8c4BzFu48uYA6LwzisN9RyjZ8l29DRb4lCviOuzuljm7wsndcsJ
+	vRilPMbMJBPC8/dj+8MPK72UBLVhJJhJWiLL9/MlwK6gJ9bQaWp2zldxKVU7igB+XtD+eRwZEnP
+	xP9HcjnklYl87hLBZy/f5gOnFhn3ZIv1aK5bvnzsFHQjSiCPLy5eWp6DJZRkzwr3QJ5wVpBYaAJ
+	svu+wK3me9xO43jTNh51X2ivNpGlJn4Qcq58lQqNMZ5xk5dTbBHFOcShmrNnR9nDGC388pthJs9
+	BLh//VRLMNlTwm06E6RlT+vveva8dJRNO5j4p7+Cs3Z+SDFRRWUtLi/dOgg==
+X-Google-Smtp-Source: AGHT+IGTSjUKNd8zgpW2xHCCGOALj4fE5m0pQeYoMfkJT8cHGNmfEO8R46fYklq6ClrcIfA/CwP4IQ==
+X-Received: by 2002:a17:902:f745:b0:234:e3b7:5ce0 with SMTP id d9443c01a7336-23fb31b544fmr24203645ad.47.1753444178651;
+        Fri, 25 Jul 2025 04:49:38 -0700 (PDT)
+Received: from mail-pj1-f48.google.com (mail-pj1-f48.google.com. [209.85.216.48])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-23fa4785f54sm35934395ad.77.2025.07.25.04.49.38
         for <linux-mediatek@lists.infradead.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 25 Jul 2025 04:48:11 -0700 (PDT)
-Received: by mail-oi1-f174.google.com with SMTP id 5614622812f47-41b7d12401bso1259171b6e.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 25 Jul 2025 04:48:10 -0700 (PDT)
-X-Received: by 2002:a05:6102:5a92:b0:4eb:502c:569a with SMTP id
- ada2fe7eead31-4fa3fb3f3f9mr285813137.9.1753440864290; Fri, 25 Jul 2025
- 03:54:24 -0700 (PDT)
+        Fri, 25 Jul 2025 04:49:38 -0700 (PDT)
+Received: by mail-pj1-f48.google.com with SMTP id 98e67ed59e1d1-313bb9b2f5bso1803646a91.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 25 Jul 2025 04:49:38 -0700 (PDT)
+X-Received: by 2002:a05:6102:3053:b0:4e6:67f6:e9af with SMTP id
+ ada2fe7eead31-4fa3fa71860mr256656137.9.1753440125688; Fri, 25 Jul 2025
+ 03:42:05 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com> <20250724083914.61351-19-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20250724083914.61351-19-angelogioacchino.delregno@collabora.com>
+References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com> <20250724083914.61351-27-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250724083914.61351-27-angelogioacchino.delregno@collabora.com>
 From: Fei Shao <fshao@chromium.org>
-Date: Fri, 25 Jul 2025 18:53:47 +0800
-X-Gmail-Original-Message-ID: <CAC=S1njpbfARTSBwddCeeO+c0vvf=GVaD6+QhauJOki0NS9dTQ@mail.gmail.com>
-X-Gm-Features: Ac12FXy3jzZS4uZ6X5J7uIwzpvgV1oXiUrEGuonvNPTbsP1Oacxt9m6NF-3FvZA
-Message-ID: <CAC=S1njpbfARTSBwddCeeO+c0vvf=GVaD6+QhauJOki0NS9dTQ@mail.gmail.com>
-Subject: Re: [PATCH 18/38] arm64: dts: mediatek: mt6797: Remove bogus id
- property in i2c nodes
+Date: Fri, 25 Jul 2025 18:41:29 +0800
+X-Gmail-Original-Message-ID: <CAC=S1ni_6YRK0RWheKZJDgCknaZzPsde0J4dFdmkNhY7HMMD+w@mail.gmail.com>
+X-Gm-Features: Ac12FXwspafB6XO0s33DaaDCIfXTapXC0TbPbPDsXvwxpmO6Wfy_iIb8kWhO-Rk
+Message-ID: <CAC=S1ni_6YRK0RWheKZJDgCknaZzPsde0J4dFdmkNhY7HMMD+w@mail.gmail.com>
+Subject: Re: [PATCH 26/38] arm64: dts: mediatek: acelink-ew-7886cax: Remove
+ unnecessary cells in spi-nand
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: linux-mediatek@lists.infradead.org, robh@kernel.org, 
 	daniel.lezcano@linaro.org, mwalle@kernel.org, devicetree@vger.kernel.org, 
@@ -106,8 +106,8 @@ Cc: linux-mediatek@lists.infradead.org, robh@kernel.org,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250725_044812_691721_986DA458 
-X-CRM114-Status: GOOD (  13.31  )
+X-CRM114-CacheID: sfid-20250725_044939_673079_FD809437 
+X-CRM114-Status: GOOD (  14.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,14 +122,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 24, 2025 at 5:48=E2=80=AFPM AngeloGioacchino Del Regno
+On Thu, Jul 24, 2025 at 5:50=E2=80=AFPM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> All of the I2C nodes in this devicetree has a bogus "id" property,
-> which was probably specifying the I2C bus number.
+> There is no need to specify #address-cells and #size-cells in a
+> node that has only one non-addressable subnode, and this is the
+> case of the flash@0 node in this devicetree, as it has only one
+> "partitions" subnode.
 >
-> This property was never parsed and never used - and besides, it
-> also gives dtbs_check warnings: remove it from all i2c nodes.
+> Remove those to suppress an avoid_unnecessary_addr_size warning.
 >
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
 abora.com>
@@ -137,94 +138,23 @@ abora.com>
 Reviewed-by: Fei Shao <fshao@chromium.org>
 
 > ---
->  arch/arm64/boot/dts/mediatek/mt6797.dtsi | 10 ----------
->  1 file changed, 10 deletions(-)
+>  arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts | 2 --
+>  1 file changed, 2 deletions(-)
 >
-> diff --git a/arch/arm64/boot/dts/mediatek/mt6797.dtsi b/arch/arm64/boot/d=
-ts/mediatek/mt6797.dtsi
-> index be401617dfd8..f2d93bf6a055 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt6797.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt6797.dtsi
-> @@ -285,7 +285,6 @@ uart3: serial@11005000 {
->         i2c0: i2c@11007000 {
->                 compatible =3D "mediatek,mt6797-i2c",
->                              "mediatek,mt6577-i2c";
-> -               id =3D <0>;
->                 reg =3D <0 0x11007000 0 0x1000>,
->                       <0 0x11000100 0 0x80>;
->                 interrupts =3D <GIC_SPI 84 IRQ_TYPE_LEVEL_LOW>;
-> @@ -301,7 +300,6 @@ i2c0: i2c@11007000 {
->         i2c1: i2c@11008000 {
->                 compatible =3D "mediatek,mt6797-i2c",
->                              "mediatek,mt6577-i2c";
-> -               id =3D <1>;
->                 reg =3D <0 0x11008000 0 0x1000>,
->                       <0 0x11000180 0 0x80>;
->                 interrupts =3D <GIC_SPI 85 IRQ_TYPE_LEVEL_LOW>;
-> @@ -317,7 +315,6 @@ i2c1: i2c@11008000 {
->         i2c8: i2c@11009000 {
->                 compatible =3D "mediatek,mt6797-i2c",
->                              "mediatek,mt6577-i2c";
-> -               id =3D <8>;
->                 reg =3D <0 0x11009000 0 0x1000>,
->                       <0 0x11000200 0 0x80>;
->                 interrupts =3D <GIC_SPI 86 IRQ_TYPE_LEVEL_LOW>;
-> @@ -334,7 +331,6 @@ i2c8: i2c@11009000 {
->         i2c9: i2c@1100d000 {
->                 compatible =3D "mediatek,mt6797-i2c",
->                              "mediatek,mt6577-i2c";
-> -               id =3D <9>;
->                 reg =3D <0 0x1100d000 0 0x1000>,
->                       <0 0x11000280 0 0x80>;
->                 interrupts =3D <GIC_SPI 87 IRQ_TYPE_LEVEL_LOW>;
-> @@ -351,7 +347,6 @@ i2c9: i2c@1100d000 {
->         i2c6: i2c@1100e000 {
->                 compatible =3D "mediatek,mt6797-i2c",
->                              "mediatek,mt6577-i2c";
-> -               id =3D <6>;
->                 reg =3D <0 0x1100e000 0 0x1000>,
->                       <0 0x11000500 0 0x80>;
->                 interrupts =3D <GIC_SPI 88 IRQ_TYPE_LEVEL_LOW>;
-> @@ -367,7 +362,6 @@ i2c6: i2c@1100e000 {
->         i2c7: i2c@11010000 {
->                 compatible =3D "mediatek,mt6797-i2c",
->                              "mediatek,mt6577-i2c";
-> -               id =3D <7>;
->                 reg =3D <0 0x11010000 0 0x1000>,
->                       <0 0x11000580 0 0x80>;
->                 interrupts =3D <GIC_SPI 89 IRQ_TYPE_LEVEL_LOW>;
-> @@ -383,7 +377,6 @@ i2c7: i2c@11010000 {
->         i2c4: i2c@11011000 {
->                 compatible =3D "mediatek,mt6797-i2c",
->                              "mediatek,mt6577-i2c";
-> -               id =3D <4>;
->                 reg =3D <0 0x11011000 0 0x1000>,
->                       <0 0x11000300 0 0x80>;
->                 interrupts =3D <GIC_SPI 90 IRQ_TYPE_LEVEL_LOW>;
-> @@ -399,7 +392,6 @@ i2c4: i2c@11011000 {
->         i2c2: i2c@11013000 {
->                 compatible =3D "mediatek,mt6797-i2c",
->                              "mediatek,mt6577-i2c";
-> -               id =3D <2>;
->                 reg =3D <0 0x11013000 0 0x1000>,
->                       <0 0x11000400 0 0x80>;
->                 interrupts =3D <GIC_SPI 95 IRQ_TYPE_LEVEL_LOW>;
-> @@ -416,7 +408,6 @@ i2c2: i2c@11013000 {
->         i2c3: i2c@11014000 {
->                 compatible =3D "mediatek,mt6797-i2c",
->                              "mediatek,mt6577-i2c";
-> -               id =3D <3>;
->                 reg =3D <0 0x11014000 0 0x1000>,
->                       <0 0x11000480 0 0x80>;
->                 interrupts =3D <GIC_SPI 96 IRQ_TYPE_LEVEL_LOW>;
-> @@ -433,7 +424,6 @@ i2c3: i2c@11014000 {
->         i2c5: i2c@1101c000 {
->                 compatible =3D "mediatek,mt6797-i2c",
->                              "mediatek,mt6577-i2c";
-> -               id =3D <5>;
->                 reg =3D <0 0x1101c000 0 0x1000>,
->                       <0 0x11000380 0 0x80>;
->                 interrupts =3D <GIC_SPI 83 IRQ_TYPE_LEVEL_LOW>;
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts =
+b/arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts
+> index 08b3b0827436..30805a610262 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts
+> @@ -98,8 +98,6 @@ &spi0 {
+>         flash@0 {
+>                 compatible =3D "spi-nand";
+>                 reg =3D <0>;
+> -               #address-cells =3D <1>;
+> -               #size-cells =3D <1>;
+>                 spi-max-frequency =3D <52000000>;
+>                 spi-rx-bus-width =3D <4>;
+>                 spi-tx-bus-width =3D <4>;
 > --
 > 2.50.1
 >
