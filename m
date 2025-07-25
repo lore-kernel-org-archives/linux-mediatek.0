@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7969C87FCA
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D305C87FCE
 	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jul 2025 12:23:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,76 +12,75 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=liSvRWA4OuPhKZFuMFSYIULFcTNts/JUeGi4znSdmNM=; b=rvgxmqr76O4SdZPgu/FhRFwLQG
-	XtY5TbtAKMB7lxZHJEcN0bkKQWpjoL7ls6EZKiE3v2s5yCYFT45hiF9dT8+GnduJ3ZeQTFTjhwqh5
-	PQBC9eewFIQADwxSxOYlwaYDoLagjCyXf5BoUrN/O8oXW579FvTghwKNz+xTA4+wUCwPzOKqtr+W5
-	xNn+X0zMsXkz1UYPADlL6ykBDVe3PwZOI6Mp99OvibE6fOpuwGP59/h00YWw7vTVGs0wyFUaelTh5
-	EN/wnBHY4TYY13a42YX/+AxU1o3RdIAGERlgYckNeqJc54ovwdXswl8LWngXIDEb0f8iQ3duQ1WkV
-	DIASVPXQ==;
+	bh=PrirJd8VRiPqD9MKXgOuUU8KSWZo2kqc4pWOmW9YaxM=; b=hTbVsk2HqNMTQb2kmQyr81pUun
+	gM1k0hG8UArztzfsn3KNrNMxwu8RoSRf8fQzaF6Whpd4tKBdtA3OZEcgw0qs5+kJyDFJ01HVgxdVG
+	yA2E6QSkKgHSIcem857FZd/MqASWhZtDoli9FllUgnBT6fUE5DQTaUJ2uVftm7nIa9s+zgP0eIPyg
+	tLoM8hh07mfhRv6+S/XVjw5lj9BQ+oMD0B3roWt2OM66/Jvj4XQK+lDdHdNnf4Eg1hedINloorGik
+	TgBdSlQVaBqRyG6rN1oRRQ63wxNPHWy61Nz6L7PM8B2Zf6jlL03HcuQFnTX5dOxK8ErFwWVmBNIRX
+	HiuGJn9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ufHSR-00000009oPH-1eGU;
+	id 1ufHSR-00000009oP3-0HKD;
 	Fri, 25 Jul 2025 12:23:27 +0000
-Received: from mail-yb1-xb2e.google.com ([2607:f8b0:4864:20::b2e])
+Received: from mail-qv1-xf2e.google.com ([2607:f8b0:4864:20::f2e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ufHQH-00000009o9k-0HHV
+	id 1ufHOW-00000009nwg-0Dqf
 	for linux-mediatek@lists.infradead.org;
-	Fri, 25 Jul 2025 12:21:14 +0000
-Received: by mail-yb1-xb2e.google.com with SMTP id 3f1490d57ef6-e8defed8130so342927276.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 25 Jul 2025 05:21:12 -0700 (PDT)
+	Fri, 25 Jul 2025 12:19:25 +0000
+Received: by mail-qv1-xf2e.google.com with SMTP id 6a1803df08f44-6fad3400ea3so15074166d6.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 25 Jul 2025 05:19:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1753446072; x=1754050872; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1753445963; x=1754050763; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=liSvRWA4OuPhKZFuMFSYIULFcTNts/JUeGi4znSdmNM=;
-        b=akotVNf9zDtSZvKjRMFJQWUp7w5blbSAjcZ+x6ruusq1RpRDWCzcuzly06aXU6Y9w6
-         NVozptb8pdXvzz48G7tu42H996Oa40VAk2NSy4OimJGfItQlSdzXhuAxVOTn4mUYWdvO
-         NnLp3/F78/FCJ5T1pW839vcEGBmoc0of79KaE=
+        bh=PrirJd8VRiPqD9MKXgOuUU8KSWZo2kqc4pWOmW9YaxM=;
+        b=HEKmgDu0EprhK2TJsqDfaCCZzXAaUQLRf1/PjDfJeiCOkb0ElZgMYjcakXVspISZLi
+         0SJAM4L1Mx7NJhw1NRfc6V/icbiDe4vRdswA1BOq+r93+hJKYn2I8ooIo1T3mCqjFOGG
+         TWILBPeLBw01qX+JFEkAxgiXYcd7joTQe4m9Q=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1753446072; x=1754050872;
+        d=1e100.net; s=20230601; t=1753445963; x=1754050763;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=liSvRWA4OuPhKZFuMFSYIULFcTNts/JUeGi4znSdmNM=;
-        b=M9f9hENEAocskRkCP3E3ApQtXFX1S6voMZPHILwTCP/F7H3yfq7w/9uCxe7sJjSlMc
-         20Ymo1zWTf0gi5ZCLNdV8tv2gcTmGAQoEivemiUBzA9WQb/AZgDxnhGnk22j4tUpW/zT
-         z3kVKb4jvMhdiJl0DMr6G5WQvDpX5KAFQaV2FaVlQbWZQJME0z5JECdMvq90QMq/WQhf
-         RIN34fNothEhae3J247wrn6Iafr2jInczkrTtO84Vo3QWm6kwiOWWTc5k4H0b1AVn4or
-         zBVFyqhqriq0Xgqft54u9bccsrUfnR75OGeoHipWOgQ6WE6l3LrQBNN/tn0J/hukwjBH
-         t57Q==
-X-Gm-Message-State: AOJu0Yx0pH5sRQT2aO6Nk9E65sitf9p1TvNQv3F9wlfZ6oQcqeTaxPpj
-	+9m4boEyEBA2cN37JEvLDmwxqZj1eSEX4BLm+9kqlKAgGgVVe0NanNfpXXM/Ykm2STwHFYWSHlW
-	T83U=
-X-Gm-Gg: ASbGncvSPal+/oGIHTCjEI47v9E1MIRDFABKSlgN3Z6DVEQtmxxOOni3O5g8aCTN3s6
-	iLv/MDHUssqhA+bGr5q8rsI0TuSZJEcfpddUOEoY3HnAF66phnaZEY26Ljgd4nCibPpyR2PlkJ5
-	F7etGdhfPst+1AX/3jp21SLrpXIWLJ9yfOTWRXmMft2lWpJ+CRk5d7a4X1u2ZeqXmp0zeOXpEvf
-	WbMQW1X+rC01yKDM10ftM7jj7KkAW+zysbUpFV3Q4ozrj4Io7Ljr+p5Amgvci5ZK5hpiv+a6B4m
-	o14Cgsuz/WsUYOSoP6h6jMknm7yNdbGiLnIKVPhisZasbTi1o4u6pxCwxIjmJMY0zAkDyH+KgeB
-	KLIU02lPxrgnC5FpHX0Yya1qYHPcCJXag3QsLgD4Drp2O6kLoyuzokPVU3+ggPDP3SxWQNmfd
-X-Google-Smtp-Source: AGHT+IHao3yX0OThb65J8TEWHMXa8tEwBfiiL4o9QQhHnk5+6/rbRZy5QRuRIZCu/hzX50TMg1TTFw==
-X-Received: by 2002:a05:6902:15cd:b0:e84:27a0:6ad0 with SMTP id 3f1490d57ef6-e8df110b514mr1442237276.7.1753446071539;
-        Fri, 25 Jul 2025 05:21:11 -0700 (PDT)
-Received: from mail-yb1-f182.google.com (mail-yb1-f182.google.com. [209.85.219.182])
-        by smtp.gmail.com with ESMTPSA id 3f1490d57ef6-e8ddf038c97sm1139095276.0.2025.07.25.05.21.11
+        bh=PrirJd8VRiPqD9MKXgOuUU8KSWZo2kqc4pWOmW9YaxM=;
+        b=IqgZkRVJ/g7UhancR6kWSi0m6NMUc8UUiSZmuaMx+8x9k4db3jiypdSvCwQaU0ghAZ
+         qJFDcv4aN1zotE+cCx/cpK8J5BgvnNwhjuaab6mIy1gWuRXiBPQd0tmkvXqf6s6yG+eZ
+         MiktivhgOPHRHQtRjNKYeJz9iCFd5xTFSxrIAc95hcsT0xUkqKBsoRLRaU2HSH6+Nj5F
+         bmkT40EgAwIW0nE5J34ZFUyRGO/l2EOy018WX2EHuLpdjtlkVTiVsUtfGGHQJWUlhy7L
+         H281JpH3bzd2ikdssy0rS7dZ+v1CBcGlpLs5b1mx+Ppa6BUXRlHLUc5ys8QZKjTt4y3L
+         X+Kg==
+X-Gm-Message-State: AOJu0Yz9J56utjyXKA/YijOcz4eU4o/c/dKAIdl4WrDpAB9iWe6ei4cX
+	4DNDZNg99KvsYyMHVhhy/2y1YiUmy6ARNYSrtKGPz0ZavGxMaWrScplY5Qq8aIkMRToeKCM10JF
+	tzCs=
+X-Gm-Gg: ASbGnctwVOkPriddMyQN5GfKsx14Hge/dL2oHuNPXE/qsivAqlJcvYYTQJP/FDbDVfh
+	Mo+f9MRYNZdBKt70wn8iGminUUQTDN3B2g49cdYGk2FSb4kctMTAMedc8nSqvV9y6Zy0YiG+Mfz
+	l6SW6omRAMQ7CcYq7njeiT5Y0XPfCYD0SNTSFplf9/acKx07vj39nq1RZlTX8DIThfFHb5yug1w
+	PxTx4aXiQnnCjhlkflpbWf8stBtj5XutdWujYofhCUXgbZVC9Ql2FOIBacbYWioROJEyLkMc9mL
+	SaSjmv1QvbyOw0/lwzPvF7HuOKRvfTofCYElyrbsgULkcmPVpap/3xMXftZNBFV8HyUrZL+K7Ae
+	efLfneR2UwG4m6820rR+tjK9n1qRYa9qL9BeK7OOW5NbhrTnL9lB31NIUBQ==
+X-Google-Smtp-Source: AGHT+IEjxQDO3G8zlL7BORqWciyUrvhP6SMK5hdxoRMIxrhT8xQMmjcY0dhI7hN5F+wAOFV7on1hIw==
+X-Received: by 2002:a0c:da0e:0:b0:707:2220:e08b with SMTP id 6a1803df08f44-7072220ee45mr9023316d6.24.1753445962152;
+        Fri, 25 Jul 2025 05:19:22 -0700 (PDT)
+Received: from mail-qv1-f42.google.com (mail-qv1-f42.google.com. [209.85.219.42])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-7070fce22d9sm26064256d6.97.2025.07.25.05.19.22
         for <linux-mediatek@lists.infradead.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 25 Jul 2025 05:21:11 -0700 (PDT)
-Received: by mail-yb1-f182.google.com with SMTP id 3f1490d57ef6-e8defed8130so342908276.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 25 Jul 2025 05:21:11 -0700 (PDT)
-X-Received: by 2002:a05:6102:6891:b0:4dd:b82d:e0de with SMTP id
- ada2fe7eead31-4fa3ff44195mr308667137.17.1753440019738; Fri, 25 Jul 2025
- 03:40:19 -0700 (PDT)
+        Fri, 25 Jul 2025 05:19:22 -0700 (PDT)
+Received: by mail-qv1-f42.google.com with SMTP id 6a1803df08f44-6fadd3ad18eso17676406d6.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 25 Jul 2025 05:19:22 -0700 (PDT)
+X-Received: by 2002:a05:6102:4189:b0:4e7:efa3:6475 with SMTP id
+ ada2fe7eead31-4fa3feec1c3mr259497137.25.1753439904300; Fri, 25 Jul 2025
+ 03:38:24 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com> <20250724083914.61351-38-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20250724083914.61351-38-angelogioacchino.delregno@collabora.com>
+References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com> <20250724083914.61351-30-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250724083914.61351-30-angelogioacchino.delregno@collabora.com>
 From: Fei Shao <fshao@chromium.org>
-Date: Fri, 25 Jul 2025 18:39:43 +0800
-X-Gmail-Original-Message-ID: <CAC=S1njv7qrL0LyhZsp=HVdxxDo2bA7FbCkMVqJ9R9qpg-0hMw@mail.gmail.com>
-X-Gm-Features: Ac12FXzAeqGgOrEJjRR1J4ryO0U3L8RJWv4_H_TyT4RYPsIpmGY3ViSbTr41uno
-Message-ID: <CAC=S1njv7qrL0LyhZsp=HVdxxDo2bA7FbCkMVqJ9R9qpg-0hMw@mail.gmail.com>
-Subject: Re: [PATCH 37/38] arm64: dts: mediatek: mt8395-kontron-i1200: Fix
- MT6360 regulator nodes
+Date: Fri, 25 Jul 2025 18:37:48 +0800
+X-Gmail-Original-Message-ID: <CAC=S1njj09KgrNa_3VX7VeaK3nsW+jqBZF7aEg_Umv6WLSRRDw@mail.gmail.com>
+X-Gm-Features: Ac12FXxdd5uFk8-UFyXPvWwDifRa0isEQfedIYH5-7QbMGirM6GwiOfkuIBzx6U
+Message-ID: <CAC=S1njj09KgrNa_3VX7VeaK3nsW+jqBZF7aEg_Umv6WLSRRDw@mail.gmail.com>
+Subject: Re: [PATCH 29/38] arm64: dts: mediatek: mt8183: Fix pinctrl node names
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: linux-mediatek@lists.infradead.org, robh@kernel.org, 
 	daniel.lezcano@linaro.org, mwalle@kernel.org, devicetree@vger.kernel.org, 
@@ -106,8 +105,8 @@ Cc: linux-mediatek@lists.infradead.org, robh@kernel.org,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250725_052113_100994_145DA60D 
-X-CRM114-Status: GOOD (  14.35  )
+X-CRM114-CacheID: sfid-20250725_051924_108347_D4216FC3 
+X-CRM114-Status: GOOD (  13.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,109 +121,587 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 24, 2025 at 5:51=E2=80=AFPM AngeloGioacchino Del Regno
+On Thu, Jul 24, 2025 at 5:50=E2=80=AFPM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> All of the MT6360 regulator nodes were wrong and would not probe
-> because the regulator names are supposed to be lower case, but
-> they are upper case in this devicetree.
+> Fix the pinctrl node names to adhere to the bindings, as the main
+> pin node is supposed to be named like "uart0-pins" and the pinmux
+> node named like "pins-bus".
 >
-> Change all nodes to be lower case to get working regulators.
->
-> Fixes: 94aaf79a6af5 ("arm64: dts: mediatek: add Kontron 3.5"-SBC-i1200")
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
 abora.com>
 
 Reviewed-by: Fei Shao <fshao@chromium.org>
 
 > ---
->  .../mediatek/mt8395-kontron-3-5-sbc-i1200.dts    | 16 ++++++++--------
->  1 file changed, 8 insertions(+), 8 deletions(-)
+>  .../mediatek/mt8183-kukui-audio-da7219.dtsi   |  4 +-
+>  .../mediatek/mt8183-kukui-audio-ts3a227e.dtsi |  2 +-
+>  .../dts/mediatek/mt8183-kukui-jacuzzi.dtsi    | 22 +++---
+>  .../dts/mediatek/mt8183-kukui-kakadu.dtsi     | 16 ++--
+>  .../dts/mediatek/mt8183-kukui-kodama.dtsi     | 12 +--
+>  .../boot/dts/mediatek/mt8183-kukui-krane.dtsi | 12 +--
+>  .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 78 +++++++++----------
+>  7 files changed, 73 insertions(+), 73 deletions(-)
 >
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dt=
-s b/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts
-> index 4985b65925a9..d16f545cbbb2 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts
-> @@ -352,7 +352,7 @@ regulator {
->                         LDO_VIN2-supply =3D <&vsys>;
->                         LDO_VIN3-supply =3D <&vsys>;
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219.dtsi =
+b/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219.dtsi
+> index 586eee79c73c..f69ffcb9792a 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219.dtsi
+> @@ -39,8 +39,8 @@ da7219_aad {
+>  };
 >
-> -                       mt6360_buck1: BUCK1 {
-> +                       mt6360_buck1: buck1 {
->                                 regulator-name =3D "emi_vdd2";
->                                 regulator-min-microvolt =3D <600000>;
->                                 regulator-max-microvolt =3D <1800000>;
-> @@ -362,7 +362,7 @@ MT6360_OPMODE_LP
->                                 regulator-always-on;
->                         };
+>  &pio {
+> -       da7219_pins: da7219_pins {
+> -               pins1 {
+> +       da7219_pins: da7219-pins {
+> +               pins-intn {
+>                         pinmux =3D <PINMUX_GPIO165__FUNC_GPIO165>;
+>                         input-enable;
+>                         bias-pull-up;
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-ts3a227e.dts=
+i b/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-ts3a227e.dtsi
+> index 548e22c194a2..c4aedf8cbfcd 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-ts3a227e.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-ts3a227e.dtsi
+> @@ -17,7 +17,7 @@ ts3a227e: ts3a227e@3b {
+>  };
 >
-> -                       mt6360_buck2: BUCK2 {
-> +                       mt6360_buck2: buck2 {
->                                 regulator-name =3D "emi_vddq";
->                                 regulator-min-microvolt =3D <300000>;
->                                 regulator-max-microvolt =3D <1300000>;
-> @@ -372,7 +372,7 @@ MT6360_OPMODE_LP
->                                 regulator-always-on;
->                         };
+>  &pio {
+> -       ts3a227e_pins: ts3a227e_pins {
+> +       ts3a227e_pins: ts3a227e-pins {
+>                 pins1 {
+>                         pinmux =3D <PINMUX_GPIO157__FUNC_GPIO157>;
+>                         input-enable;
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi b/arc=
+h/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
+> index 80888bd4ad82..f2afca63c75a 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
+> @@ -395,14 +395,14 @@ &pio {
+>                 "",
+>                 "";
 >
-> -                       mt6360_ldo1: LDO1 {
-> +                       mt6360_ldo1: ldo1 {
->                                 regulator-name =3D "mt6360_ldo1"; /* Test=
- point */
->                                 regulator-min-microvolt =3D <1200000>;
->                                 regulator-max-microvolt =3D <3600000>;
-> @@ -380,7 +380,7 @@ mt6360_ldo1: LDO1 {
->                                                            MT6360_OPMODE_=
-LP>;
->                         };
+> -       pp1000_mipibrdg_en: pp1000-mipibrdg-en {
+> +       pp1000_mipibrdg_en: pp1000-mipibrdg-en-pins {
+>                 pins1 {
+>                         pinmux =3D <PINMUX_GPIO54__FUNC_GPIO54>;
+>                         output-low;
+>                 };
+>         };
 >
-> -                       mt6360_ldo2: LDO2 {
-> +                       mt6360_ldo2: ldo2 {
->                                 regulator-name =3D "panel1_p1v8";
->                                 regulator-min-microvolt =3D <1800000>;
->                                 regulator-max-microvolt =3D <1800000>;
-> @@ -388,7 +388,7 @@ mt6360_ldo2: LDO2 {
->                                                            MT6360_OPMODE_=
-LP>;
->                         };
+> -       pp1800_mipibrdg_en: pp1800-mipibrdg-en {
+> +       pp1800_mipibrdg_en: pp1800-mipibrdg-en-pins {
+>                 pins1 {
+>                         pinmux =3D <PINMUX_GPIO36__FUNC_GPIO36>;
+>                         output-low;
+> @@ -410,20 +410,20 @@ pins1 {
+>         };
 >
-> -                       mt6360_ldo3: LDO3 {
-> +                       mt6360_ldo3: ldo3 {
->                                 regulator-name =3D "vmc_pmu";
->                                 regulator-min-microvolt =3D <1800000>;
->                                 regulator-max-microvolt =3D <3300000>;
-> @@ -396,7 +396,7 @@ mt6360_ldo3: LDO3 {
->                                                            MT6360_OPMODE_=
-LP>;
->                         };
+>         pp3300_panel_pins: pp3300-panel-pins {
+> -               panel_3v3_enable: panel-3v3-enable {
+> +               panel_3v3_enable: pins-panel-en {
+>                         pinmux =3D <PINMUX_GPIO35__FUNC_GPIO35>;
+>                         output-low;
+>                 };
+>         };
 >
-> -                       mt6360_ldo5: LDO5 {
-> +                       mt6360_ldo5: ldo5 {
->                                 regulator-name =3D "vmch_pmu";
->                                 regulator-min-microvolt =3D <3300000>;
->                                 regulator-max-microvolt =3D <3300000>;
-> @@ -404,7 +404,7 @@ mt6360_ldo5: LDO5 {
->                                                            MT6360_OPMODE_=
-LP>;
->                         };
+> -       ppvarp_lcd_en: ppvarp-lcd-en {
+> +       ppvarp_lcd_en: ppvarp-lcd-en-pins {
+>                 pins1 {
+>                         pinmux =3D <PINMUX_GPIO66__FUNC_GPIO66>;
+>                         output-low;
+>                 };
+>         };
 >
-> -                       mt6360_ldo6: LDO6 {
-> +                       mt6360_ldo6: ldo6 {
->                                 regulator-name =3D "mt6360_ldo6"; /* Test=
- point */
->                                 regulator-min-microvolt =3D <500000>;
->                                 regulator-max-microvolt =3D <2100000>;
-> @@ -412,7 +412,7 @@ mt6360_ldo6: LDO6 {
->                                                            MT6360_OPMODE_=
-LP>;
->                         };
+> -       ppvarn_lcd_en: ppvarn-lcd-en {
+> +       ppvarn_lcd_en: ppvarn-lcd-en-pins {
+>                 pins1 {
+>                         pinmux =3D <PINMUX_GPIO166__FUNC_GPIO166>;
+>                         output-low;
+> @@ -444,27 +444,27 @@ pins2 {
+>         };
 >
-> -                       mt6360_ldo7: LDO7 {
-> +                       mt6360_ldo7: ldo7 {
->                                 regulator-name =3D "emi_vmddr_en";
->                                 regulator-min-microvolt =3D <1800000>;
->                                 regulator-max-microvolt =3D <1800000>;
+>         touchscreen_pins: touchscreen-pins {
+> -               touch-int-odl {
+> +               pins-intn {
+>                         pinmux =3D <PINMUX_GPIO155__FUNC_GPIO155>;
+>                         input-enable;
+>                         bias-pull-up;
+>                 };
+>
+> -               touch-rst-l {
+> +               pins-rst {
+>                         pinmux =3D <PINMUX_GPIO156__FUNC_GPIO156>;
+>                         output-high;
+>                 };
+>         };
+>
+>         trackpad_pins: trackpad-pins {
+> -               trackpad-int {
+> +               pins-intn {
+>                         pinmux =3D <PINMUX_GPIO7__FUNC_GPIO7>;
+>                         input-enable;
+>                         bias-disable; /* pulled externally */
+>                 };
+>         };
+>
+> -       pp3300_mipibrdg_en: pp3300-mipibrdg-en {
+> +       pp3300_mipibrdg_en: pp3300-mipibrdg-en-pins {
+>                 pins1 {
+>                         pinmux =3D <PINMUX_GPIO37__FUNC_GPIO37>;
+>                         output-low;
+> @@ -472,13 +472,13 @@ pins1 {
+>         };
+>
+>         volume_button_pins: volume-button-pins {
+> -               voldn-btn-odl {
+> +               pins-voldn {
+>                         pinmux =3D <PINMUX_GPIO6__FUNC_GPIO6>;
+>                         input-enable;
+>                         bias-pull-up;
+>                 };
+>
+> -               volup-btn-odl {
+> +               pins-volup {
+>                         pinmux =3D <PINMUX_GPIO5__FUNC_GPIO5>;
+>                         input-enable;
+>                         bias-pull-up;
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi b/arch=
+/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
+> index ff02f63bac29..472d4987615a 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
+> @@ -304,35 +304,35 @@ &pio {
+>                 "",
+>                 "";
+>
+> -       ppvarp_lcd_en: ppvarp-lcd-en {
+> +       ppvarp_lcd_en: ppvarp-lcd-en-pins {
+>                 pins1 {
+>                         pinmux =3D <PINMUX_GPIO66__FUNC_GPIO66>;
+>                         output-low;
+>                 };
+>         };
+>
+> -       ppvarn_lcd_en: ppvarn-lcd-en {
+> +       ppvarn_lcd_en: ppvarn-lcd-en-pins {
+>                 pins1 {
+>                         pinmux =3D <PINMUX_GPIO166__FUNC_GPIO166>;
+>                         output-low;
+>                 };
+>         };
+>
+> -       pp1800_lcd_en: pp1800-lcd-en {
+> +       pp1800_lcd_en: pp1800-lcd-en-pins {
+>                 pins1 {
+>                         pinmux =3D <PINMUX_GPIO36__FUNC_GPIO36>;
+>                         output-low;
+>                 };
+>         };
+>
+> -       open_touch: open_touch {
+> -               irq_pin {
+> +       open_touch: opentouch-pins {
+> +               pins-intn {
+>                         pinmux =3D <PINMUX_GPIO155__FUNC_GPIO155>;
+>                         input-enable;
+>                         bias-pull-up;
+>                 };
+>
+> -               rst_pin {
+> +               pins-rst {
+>                         pinmux =3D <PINMUX_GPIO156__FUNC_GPIO156>;
+>
+>                         /*
+> @@ -349,8 +349,8 @@ rst_pin {
+>                 };
+>         };
+>
+> -       pen_eject: peneject {
+> -               pen_eject {
+> +       pen_eject: pen-pins {
+> +               pins-eject {
+>                         pinmux =3D <PINMUX_GPIO6__FUNC_GPIO6>;
+>                         input-enable;
+>                         /* External pull-up. */
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi b/arch=
+/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
+> index da6e767b4cee..1b21e3958061 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
+> @@ -292,35 +292,35 @@ &pio {
+>                 "",
+>                 "";
+>
+> -       ppvarp_lcd_en: ppvarp-lcd-en {
+> +       ppvarp_lcd_en: ppvarp-lcd-en-pins {
+>                 pins1 {
+>                         pinmux =3D <PINMUX_GPIO66__FUNC_GPIO66>;
+>                         output-low;
+>                 };
+>         };
+>
+> -       ppvarn_lcd_en: ppvarn-lcd-en {
+> +       ppvarn_lcd_en: ppvarn-lcd-en-pins {
+>                 pins1 {
+>                         pinmux =3D <PINMUX_GPIO166__FUNC_GPIO166>;
+>                         output-low;
+>                 };
+>         };
+>
+> -       pp1800_lcd_en: pp1800-lcd-en {
+> +       pp1800_lcd_en: pp1800-lcd-en-pins {
+>                 pins1 {
+>                         pinmux =3D <PINMUX_GPIO36__FUNC_GPIO36>;
+>                         output-low;
+>                 };
+>         };
+>
+> -       touch_default: touchdefault {
+> -               pin_irq {
+> +       touch_default: touch-pins {
+> +               pins-intn {
+>                         pinmux =3D <PINMUX_GPIO155__FUNC_GPIO155>;
+>                         input-enable;
+>                         bias-pull-up;
+>                 };
+>
+> -               touch_pin_reset: pin_reset {
+> +               touch_pin_reset: pins-rst {
+>                         pinmux =3D <PINMUX_GPIO156__FUNC_GPIO156>;
+>
+>                         /*
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi b/arch/=
+arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
+> index 8b56b8564ed7..a85c73b43195 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
+> @@ -296,35 +296,35 @@ &pio {
+>                 "",
+>                 "";
+>
+> -       ppvarp_lcd_en: ppvarp-lcd-en {
+> +       ppvarp_lcd_en: ppvarp-lcd-en-pins {
+>                 pins1 {
+>                         pinmux =3D <PINMUX_GPIO66__FUNC_GPIO66>;
+>                         output-low;
+>                 };
+>         };
+>
+> -       ppvarn_lcd_en: ppvarn-lcd-en {
+> +       ppvarn_lcd_en: ppvarn-lcd-en-pins {
+>                 pins1 {
+>                         pinmux =3D <PINMUX_GPIO166__FUNC_GPIO166>;
+>                         output-low;
+>                 };
+>         };
+>
+> -       pp1800_lcd_en: pp1800-lcd-en {
+> +       pp1800_lcd_en: pp1800-lcd-en-pins {
+>                 pins1 {
+>                         pinmux =3D <PINMUX_GPIO36__FUNC_GPIO36>;
+>                         output-low;
+>                 };
+>         };
+>
+> -       open_touch: open_touch {
+> -               irq_pin {
+> +       open_touch: opentouch-pins {
+> +               pins-intn {
+>                         pinmux =3D <PINMUX_GPIO155__FUNC_GPIO155>;
+>                         input-enable;
+>                         bias-pull-up;
+>                 };
+>
+> -               rst_pin {
+> +               pins-rst {
+>                         pinmux =3D <PINMUX_GPIO156__FUNC_GPIO156>;
+>
+>                         /*
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/=
+boot/dts/mediatek/mt8183-kukui.dtsi
+> index 400c61d11035..8f3a0e85b4ed 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> @@ -435,7 +435,7 @@ &mt6358_vsram_gpu_reg {
+>  };
+>
+>  &pio {
+> -       aud_pins_default: audiopins {
+> +       aud_pins_default: audio-pins {
+>                 pins-bus {
+>                         pinmux =3D <PINMUX_GPIO97__FUNC_I2S2_MCK>,
+>                                 <PINMUX_GPIO98__FUNC_I2S2_BCK>,
+> @@ -457,7 +457,7 @@ pins-bus {
+>                 };
+>         };
+>
+> -       aud_pins_tdm_out_on: audiotdmouton {
+> +       aud_pins_tdm_out_on: audio-tdmout-on-pins {
+>                 pins-bus {
+>                         pinmux =3D <PINMUX_GPIO169__FUNC_TDM_BCK_2ND>,
+>                                 <PINMUX_GPIO170__FUNC_TDM_LRCK_2ND>,
+> @@ -469,7 +469,7 @@ pins-bus {
+>                 };
+>         };
+>
+> -       aud_pins_tdm_out_off: audiotdmoutoff {
+> +       aud_pins_tdm_out_off: audio-tdmout-off-pins {
+>                 pins-bus {
+>                         pinmux =3D <PINMUX_GPIO169__FUNC_GPIO169>,
+>                                 <PINMUX_GPIO170__FUNC_GPIO170>,
+> @@ -490,22 +490,22 @@ pins-bt-en {
+>                 };
+>         };
+>
+> -       ec_ap_int_odl: ec-ap-int-odl {
+> -               pins1 {
+> +       ec_ap_int_odl: ec-ap-int-odl-pins {
+> +               pins-intn {
+>                         pinmux =3D <PINMUX_GPIO151__FUNC_GPIO151>;
+>                         input-enable;
+>                         bias-pull-up;
+>                 };
+>         };
+>
+> -       h1_int_od_l: h1-int-od-l {
+> -               pins1 {
+> +       h1_int_od_l: h1-int-od-l-pins {
+> +               pins-intn {
+>                         pinmux =3D <PINMUX_GPIO153__FUNC_GPIO153>;
+>                         input-enable;
+>                 };
+>         };
+>
+> -       i2c0_pins: i2c0 {
+> +       i2c0_pins: i2c0-pins {
+>                 pins-bus {
+>                         pinmux =3D <PINMUX_GPIO82__FUNC_SDA0>,
+>                                  <PINMUX_GPIO83__FUNC_SCL0>;
+> @@ -513,7 +513,7 @@ pins-bus {
+>                 };
+>         };
+>
+> -       i2c1_pins: i2c1 {
+> +       i2c1_pins: i2c1-pins {
+>                 pins-bus {
+>                         pinmux =3D <PINMUX_GPIO81__FUNC_SDA1>,
+>                                  <PINMUX_GPIO84__FUNC_SCL1>;
+> @@ -521,7 +521,7 @@ pins-bus {
+>                 };
+>         };
+>
+> -       i2c2_pins: i2c2 {
+> +       i2c2_pins: i2c2-pins {
+>                 pins-bus {
+>                         pinmux =3D <PINMUX_GPIO103__FUNC_SCL2>,
+>                                  <PINMUX_GPIO104__FUNC_SDA2>;
+> @@ -529,7 +529,7 @@ pins-bus {
+>                 };
+>         };
+>
+> -       i2c3_pins: i2c3 {
+> +       i2c3_pins: i2c3-pins {
+>                 pins-bus {
+>                         pinmux =3D <PINMUX_GPIO50__FUNC_SCL3>,
+>                                  <PINMUX_GPIO51__FUNC_SDA3>;
+> @@ -537,7 +537,7 @@ pins-bus {
+>                 };
+>         };
+>
+> -       i2c4_pins: i2c4 {
+> +       i2c4_pins: i2c4-pins {
+>                 pins-bus {
+>                         pinmux =3D <PINMUX_GPIO105__FUNC_SCL4>,
+>                                  <PINMUX_GPIO106__FUNC_SDA4>;
+> @@ -545,7 +545,7 @@ pins-bus {
+>                 };
+>         };
+>
+> -       i2c5_pins: i2c5 {
+> +       i2c5_pins: i2c5-pins {
+>                 pins-bus {
+>                         pinmux =3D <PINMUX_GPIO48__FUNC_SCL5>,
+>                                  <PINMUX_GPIO49__FUNC_SDA5>;
+> @@ -553,7 +553,7 @@ pins-bus {
+>                 };
+>         };
+>
+> -       i2c6_pins: i2c6 {
+> +       i2c6_pins: i2c6-pins {
+>                 pins-bus {
+>                         pinmux =3D <PINMUX_GPIO11__FUNC_SCL6>,
+>                                  <PINMUX_GPIO12__FUNC_SDA6>;
+> @@ -561,7 +561,7 @@ pins-bus {
+>                 };
+>         };
+>
+> -       mmc0_pins_default: mmc0-pins-default {
+> +       mmc0_pins_default: mmc0-default-pins {
+>                 pins-cmd-dat {
+>                         pinmux =3D <PINMUX_GPIO123__FUNC_MSDC0_DAT0>,
+>                                  <PINMUX_GPIO128__FUNC_MSDC0_DAT1>,
+> @@ -625,7 +625,7 @@ pins-rst {
+>                 };
+>         };
+>
+> -       mmc1_pins_default: mmc1-pins-default {
+> +       mmc1_pins_default: mmc1-default-pins {
+>                 pins-cmd-dat {
+>                         pinmux =3D <PINMUX_GPIO31__FUNC_MSDC1_CMD>,
+>                                  <PINMUX_GPIO32__FUNC_MSDC1_DAT0>,
+> @@ -643,7 +643,7 @@ pins-clk {
+>                 };
+>         };
+>
+> -       mmc1_pins_uhs: mmc1-pins-uhs {
+> +       mmc1_pins_uhs: mmc1-uhs-pins {
+>                 pins-cmd-dat {
+>                         pinmux =3D <PINMUX_GPIO31__FUNC_MSDC1_CMD>,
+>                                  <PINMUX_GPIO32__FUNC_MSDC1_DAT0>,
+> @@ -663,15 +663,15 @@ pins-clk {
+>                 };
+>         };
+>
+> -       panel_pins_default: panel-pins-default {
+> -               panel-reset {
+> +       panel_pins_default: panel-pins {
+> +               pins-panel-reset {
+>                         pinmux =3D <PINMUX_GPIO45__FUNC_GPIO45>;
+>                         output-low;
+>                         bias-pull-up;
+>                 };
+>         };
+>
+> -       pwm0_pin_default: pwm0-pin-default {
+> +       pwm0_pin_default: pwm0-pins {
+>                 pins1 {
+>                         pinmux =3D <PINMUX_GPIO176__FUNC_GPIO176>;
+>                         output-high;
+> @@ -682,15 +682,15 @@ pins2 {
+>                 };
+>         };
+>
+> -       scp_pins: scp {
+> +       scp_pins: scp-pins {
+>                 pins-scp-uart {
+>                         pinmux =3D <PINMUX_GPIO110__FUNC_TP_URXD1_AO>,
+>                                  <PINMUX_GPIO112__FUNC_TP_UTXD1_AO>;
+>                 };
+>         };
+>
+> -       spi0_pins: spi0 {
+> -               pins-spi {
+> +       spi0_pins: spi0-pins {
+> +               pins-bus {
+>                         pinmux =3D <PINMUX_GPIO85__FUNC_SPI0_MI>,
+>                                  <PINMUX_GPIO86__FUNC_GPIO86>,
+>                                  <PINMUX_GPIO87__FUNC_SPI0_MO>,
+> @@ -699,8 +699,8 @@ pins-spi {
+>                 };
+>         };
+>
+> -       spi1_pins: spi1 {
+> -               pins-spi {
+> +       spi1_pins: spi1-pins {
+> +               pins-bus {
+>                         pinmux =3D <PINMUX_GPIO161__FUNC_SPI1_A_MI>,
+>                                  <PINMUX_GPIO162__FUNC_SPI1_A_CSB>,
+>                                  <PINMUX_GPIO163__FUNC_SPI1_A_MO>,
+> @@ -709,21 +709,21 @@ pins-spi {
+>                 };
+>         };
+>
+> -       spi2_pins: spi2 {
+> -               pins-spi {
+> +       spi2_pins: spi2-pins {
+> +               pins-bus {
+>                         pinmux =3D <PINMUX_GPIO0__FUNC_SPI2_CSB>,
+>                                  <PINMUX_GPIO1__FUNC_SPI2_MO>,
+>                                  <PINMUX_GPIO2__FUNC_SPI2_CLK>;
+>                         bias-disable;
+>                 };
+> -               pins-spi-mi {
+> +               pins-miso {
+>                         pinmux =3D <PINMUX_GPIO94__FUNC_SPI2_MI>;
+>                         mediatek,pull-down-adv =3D <00>;
+>                 };
+>         };
+>
+> -       spi3_pins: spi3 {
+> -               pins-spi {
+> +       spi3_pins: spi3-pins {
+> +               pins-bus {
+>                         pinmux =3D <PINMUX_GPIO21__FUNC_SPI3_MI>,
+>                                  <PINMUX_GPIO22__FUNC_SPI3_CSB>,
+>                                  <PINMUX_GPIO23__FUNC_SPI3_MO>,
+> @@ -732,8 +732,8 @@ pins-spi {
+>                 };
+>         };
+>
+> -       spi4_pins: spi4 {
+> -               pins-spi {
+> +       spi4_pins: spi4-pins {
+> +               pins-bus {
+>                         pinmux =3D <PINMUX_GPIO17__FUNC_SPI4_MI>,
+>                                  <PINMUX_GPIO18__FUNC_SPI4_CSB>,
+>                                  <PINMUX_GPIO19__FUNC_SPI4_MO>,
+> @@ -742,8 +742,8 @@ pins-spi {
+>                 };
+>         };
+>
+> -       spi5_pins: spi5 {
+> -               pins-spi {
+> +       spi5_pins: spi5-pins {
+> +               pins-bus {
+>                         pinmux =3D <PINMUX_GPIO13__FUNC_SPI5_MI>,
+>                                  <PINMUX_GPIO14__FUNC_SPI5_CSB>,
+>                                  <PINMUX_GPIO15__FUNC_SPI5_MO>,
+> @@ -752,7 +752,7 @@ pins-spi {
+>                 };
+>         };
+>
+> -       uart0_pins_default: uart0-pins-default {
+> +       uart0_pins_default: uart0-pins {
+>                 pins-rx {
+>                         pinmux =3D <PINMUX_GPIO95__FUNC_URXD0>;
+>                         input-enable;
+> @@ -763,7 +763,7 @@ pins-tx {
+>                 };
+>         };
+>
+> -       uart1_pins_default: uart1-pins-default {
+> +       uart1_pins_default: uart1-pins {
+>                 pins-rx {
+>                         pinmux =3D <PINMUX_GPIO121__FUNC_URXD1>;
+>                         input-enable;
+> @@ -781,7 +781,7 @@ pins-cts {
+>                 };
+>         };
+>
+> -       uart1_pins_sleep: uart1-pins-sleep {
+> +       uart1_pins_sleep: uart1-sleep-pins {
+>                 pins-rx {
+>                         pinmux =3D <PINMUX_GPIO121__FUNC_GPIO121>;
+>                         input-enable;
+> @@ -799,14 +799,14 @@ pins-cts {
+>                 };
+>         };
+>
+> -       wifi_pins_pwrseq: wifi-pins-pwrseq {
+> +       wifi_pins_pwrseq: wifi-pwr-pins {
+>                 pins-wifi-enable {
+>                         pinmux =3D <PINMUX_GPIO119__FUNC_GPIO119>;
+>                         output-low;
+>                 };
+>         };
+>
+> -       wifi_pins_wakeup: wifi-pins-wakeup {
+> +       wifi_pins_wakeup: wifi-wake-pins {
+>                 pins-wifi-wakeup {
+>                         pinmux =3D <PINMUX_GPIO113__FUNC_GPIO113>;
+>                         input-enable;
 > --
 > 2.50.1
 >
