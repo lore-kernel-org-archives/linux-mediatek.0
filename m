@@ -4,65 +4,150 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2447C87FCF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jul 2025 13:53:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BF65C87FCE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jul 2025 14:30:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WmHU3bE4CMAEE2or3f3L1Jeeqiow3eBmGC3TpXqQ5w0=; b=XVUl9W6X7XUoSj
-	ZMMhrYeKlT35l1uYyQUp36XqUbqbQbp2RCg4sy5xnVGN93OFXkEPQpv3N0NvFlZnzqx3VBDAOqTXx
-	BvqvPK6ss/fQcIjO9EnxpSeeIziiLV76BrKQnOoGeyM5yVwQoaySNZ8kMSJrESZvLf+/qHq+4U2G7
-	Q2hvIgPQREc2n5TZTAeEH60LmMYoNHMbtSLDrTOhdMyy062TvgvxD1NZVfZoQ/NCRGuI6eUArN90S
-	cbhoB+2nG29bA1RZIPSfV91Lsi3hrNyQpSnwCJZFLWxkNUx8D+WXeKhhy8yOYN6vGERNxfYiZhVvS
-	NwfUpJPgSxH46X62uotw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mDjJq/TaZ7G+Vrp5JRrcnZi4KR4rNV2fczy3Y4096/o=; b=CGDlJjO5/aeghx1Xcqhx8g1Gbd
+	xx5RTVASkNNOTv0HLPJkugsA+9FMW8LpgyGcxDmYhKnkZ2R5npB5V+JPNcIyUk+OUVmEduOdhDWab
+	EnJ3B/achasxtFI6kiK0CuFj3g59pkF7j5H80kec0OtIgpKV3dM68frs0THj0staKpgwtzTcDoLPh
+	m22S/kiPVn7TKu1TvXis49xDWDfEEGLXqnghOlNyx3YA/NWafEoHQ5Bgf0uRVK5WEK7bVzvz+1Y/C
+	h2uO56PZp/om7wDXMqqq9gpD+cB4Czh3ZuTzTIWyL2y1gzq4MxN84SZuVDfCQfzrAKT0lgrH6xEYs
+	z8ejfwOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ufIrB-00000009waF-1laj;
-	Fri, 25 Jul 2025 13:53:05 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1ufJRC-0000000A0m2-0rtS;
+	Fri, 25 Jul 2025 14:30:18 +0000
+Received: from mail-dm6nam11on2060e.outbound.protection.outlook.com ([2a01:111:f403:2415::60e] helo=NAM11-DM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ufIrA-00000009wa1-2kEe;
-	Fri, 25 Jul 2025 13:53:04 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id EC8EE601DC;
-	Fri, 25 Jul 2025 13:53:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8CF6CC4CEEB;
-	Fri, 25 Jul 2025 13:53:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1753451583;
-	bh=oU729MW8v42O4+DLHvPxdMXGBdD9trCPOhSgmsjK+gc=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=b9ZVuhXbGKIHEtNeDQ409+eweWUsMpZy22RxH5IYVSgYVj0smXsczXCUASbR2zcHv
-	 3ksOYLU+ClG7dHHSJ+Lt4FE/G7KvwGW0+pfW3u2UR/vDEetuGpKYDRCQ+lLQt4KCpf
-	 sK9LLsM232lfRTuEIc4KqR8jtYKmE5vneCGZrXauSdJNasK2ZhoQgsDfQ3HXft6Ldj
-	 EtCFba82wPZH9KWTOyHCA4J+0DnyTcHPPnNxE31XaHdXpcxGenB1C3uk02Ip1a0qst
-	 CQoISiWdQmhMgYyObVkGbQmHyq/y6IRmfBxZr8XwBKpfXMbb2x+l4rVma25VSgvnh9
-	 6afiH1EcbsCaQ==
-Received: by mail-ed1-f49.google.com with SMTP id 4fb4d7f45d1cf-60702d77c60so3912782a12.3;
-        Fri, 25 Jul 2025 06:53:03 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCVjoPvlJfBbF0hG6D9ZKCJDH2H9eGc+b4RJKwY4fg8dOhzwFunJG+B+Zk0QBpwHepw1AQe5ZmxcTb7A@lists.infradead.org, AJvYcCXO6mYdNehsyI34Hv3JVNsPfGfJRpHVpO73r2E4KDm2Fg3DQvyCOpFDuREEWGnCBABUcyZeorrT55ngkI1euqxE@lists.infradead.org
-X-Gm-Message-State: AOJu0YzDaI7ImHAtCxoHIEI6KILtQe+M9TxU2klPJZd0+cpznj7Ezt96
-	lkKBgd8dmNEOPcVUqX/5oaUk0pfFfAEdCOcpvrRJ64O0oLyM0W446fHzAFLEStbSogG7PaxHJf4
-	JP1VY6b8RXvlQx7KS9g7ARqfK6yhtKA==
-X-Google-Smtp-Source: AGHT+IGMwaL+rmBfPzDJz4oey1pCXFPHKKw91Bot2wKSkFx4bXMvOHLEpxJUfZntcXB0BI+C/DLMALjqO45Bu9z0YRA=
-X-Received: by 2002:a17:907:6d0b:b0:ae3:5da3:1a23 with SMTP id
- a640c23a62f3a-af61750a50dmr235368466b.21.1753451582011; Fri, 25 Jul 2025
- 06:53:02 -0700 (PDT)
-MIME-Version: 1.0
-References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com>
-From: Rob Herring <robh@kernel.org>
-Date: Fri, 25 Jul 2025 08:52:49 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqJGNdp3Z0sXaEXWY8nqXD+0kSCo+BYCkcGstE7zcVVcXw@mail.gmail.com>
-X-Gm-Features: Ac12FXwKwOUzIhM63V196in4PCS6Bf2k_E9MkYLnnuY9m0IymXlzSXNHAMKf4rk
-Message-ID: <CAL_JsqJGNdp3Z0sXaEXWY8nqXD+0kSCo+BYCkcGstE7zcVVcXw@mail.gmail.com>
-Subject: Re: [PATCH 00/38] MediaTek devicetree/bindings warnings sanitization
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
+	id 1ufJOi-0000000A0Ym-14vv;
+	Fri, 25 Jul 2025 14:27:45 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=t6xrYp/5Ti77YoXCDZmTmZb3easGqJNfIawtDPz9gn1jEKT6pEk1CyK+D8ahiO8NnLJ0irhU+piLNjN6zTMDzRaXOYPZXIfSVJLlUICouJGJGtJAGnUfknlXs8gh1tLUbqjPIAa7p5UUBDAru53/hB3s3Kw5XWQpXP1Nu58T30MKC8KTE1H6mW9L2Wt5t++b3bX4ME/fI5R4a19XyuiN/k6fc4kbQQZgKB53+05h8fGCgCLAyBUnnX2s2n0FwommhTlmGPlrk1hCw9bKBoqS62K6Ij7iAFVGq8tGfQ6IaIMfRW0f76QGyLRTtVuoBBLad9pOYL+i8CMDZhr8gGlkaQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=mDjJq/TaZ7G+Vrp5JRrcnZi4KR4rNV2fczy3Y4096/o=;
+ b=PknGx92YG35jyWr/C4sGBpYiQ0YYxp6UgWWIMs7bVQPqjEVr7rCIwXc5ztKP3f0vmelt3NzvlOsIcXyaWthxA7iN055GiOaDcFnF2JEqOPiB7c2v3dy1jhDJlKNNGz/Vk34cKPvok69bMEGusTIyFMYoRLLjGzLEeNXXtRd1PYL4MZFGNmQGy193AJZGWksCsiq0vnlOoko7eXL9gLBWz5DjXp7jafGksMktzAr1x5VajkOWHQqiimukprsYkaEaTlspz1js7cGdrlLppVJTEYXBb3sXyOhPFGxdcouYTcZy+9zDfOD18SoE93zmNNjTWalWZWfO0B0aH6+CkoA1CA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=mDjJq/TaZ7G+Vrp5JRrcnZi4KR4rNV2fczy3Y4096/o=;
+ b=EghiTEm6EZTiLvSvZMH7qqnBxbrrMDda+pqI/wU7hELB55bCQlyAyRDVSUJYPT+vtfp9O/71dCb3919vEwA+LGPktd6VH0mrb4mEHRPqiSbbQMn5tGQxA/lHGwi7ZEkOQcPWgxpWjTs2kH5+iHMQxr8FNm1DPraxD5TgIy2ZoCURfINNa0u6uGQfzNIiIsuibjKf4yxuj/gXdwFzQ9aDnJfwtun63mCbOO1c4PC737qMLpak76CHKEE+nQF6kEcDWV4MBHOdBelfkKRQqOI70uKcpphvMp5ltQql3v90fgdG/7vb4jQ5NtTQ1B7jnzEF/iSR9K7VNcgzm03XnGbswg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from DS7PR12MB9473.namprd12.prod.outlook.com (2603:10b6:8:252::5) by
+ CY5PR12MB6345.namprd12.prod.outlook.com (2603:10b6:930:22::21) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.8964.21; Fri, 25 Jul 2025 14:27:39 +0000
+Received: from DS7PR12MB9473.namprd12.prod.outlook.com
+ ([fe80::5189:ecec:d84a:133a]) by DS7PR12MB9473.namprd12.prod.outlook.com
+ ([fe80::5189:ecec:d84a:133a%6]) with mapi id 15.20.8922.037; Fri, 25 Jul 2025
+ 14:27:38 +0000
+From: Zi Yan <ziy@nvidia.com>
+To: David Hildenbrand <david@redhat.com>
+Cc: "akash.tyagi" <akash.tyagi@mediatek.com>, akpm@linux-foundation.org,
+ vbabka@suse.cz, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, surenb@google.com, mhocko@suse.com,
+ jackmanb@google.com, hannes@cmpxchg.org, linux-mm@kvack.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com,
+ chinwen.chang@mediatek.com
+Subject: Re: [RFC PATCH] mm/page_alloc: Add PCP list for THP CMA
+Date: Fri, 25 Jul 2025 10:27:33 -0400
+X-Mailer: MailMate (2.0r6272)
+Message-ID: <E70C1648-DDAB-4027-AB07-1C19B10C6AEF@nvidia.com>
+In-Reply-To: <c678789a-4fe3-46f0-9cba-9298b55b328a@redhat.com>
+References: <67a54f31-e568-427a-8fc8-9791fd34e11b@redhat.com>
+ <20250725050810.1164957-1-akash.tyagi@mediatek.com>
+ <c678789a-4fe3-46f0-9cba-9298b55b328a@redhat.com>
+Content-Type: text/plain
 Content-Transfer-Encoding: quoted-printable
+X-ClientProxiedBy: BY3PR03CA0020.namprd03.prod.outlook.com
+ (2603:10b6:a03:39a::25) To DS7PR12MB9473.namprd12.prod.outlook.com
+ (2603:10b6:8:252::5)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS7PR12MB9473:EE_|CY5PR12MB6345:EE_
+X-MS-Office365-Filtering-Correlation-Id: fbd4da72-00e9-4cb4-76de-08ddcb876848
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|7416014|366016;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?B16vuqgELm4d/SdwBZ7PP3IcxHKzH+FAuFrjIXmgesksxPvDRBzbyfVSxxwd?=
+ =?us-ascii?Q?vJIwJUvUZTTFO0WRFaHfCU4maOQnlvTkYP2ebEWXyzeqC8KTIQQyMtnHNWWX?=
+ =?us-ascii?Q?xwQ3aLMBlXb12n1arpHO8OJNPl1ZChFGStgn/hcMCeCXSQpyastzGPR4XnyD?=
+ =?us-ascii?Q?7p68lpiF43XCHyAxVfPwz0Kg49LMuilzPIy6mK16wFgsRUQt5q+UNgMChWvG?=
+ =?us-ascii?Q?lIbk9XkTuoUZZIY/Di+w3IsyUS9lH8FS8RCVbXty0TIXU5DrYtpemhAtzUvj?=
+ =?us-ascii?Q?MrOhfafJMPY33s6DPNO/YaZp+L5UItckXBz72P3h/JYBPwMITiJlmBXMSY2n?=
+ =?us-ascii?Q?DJhNakj6x0b35NOnxCelLYkF1DD7y6CtdxT/hNF0uYNs42KOxOjuYKXRBRtP?=
+ =?us-ascii?Q?vrGurwjTwk3QgDYAB/ddkC1vqn47NJnFhY+/KYq5Hr2QpFZJhfn/fxo9nEUA?=
+ =?us-ascii?Q?8VTO+6zBGQ8NxJiiyLBuWZ9DzEWJgsH4DAS+9jz+wIDY6dbpFaLOCe4Di6nG?=
+ =?us-ascii?Q?hh+COb2kpko2QxLACrVIGd1E4DnwXRhJRbL9DDc+Dk6AmI8Z3zYfpZGNDQ1r?=
+ =?us-ascii?Q?zBaOAcKwXiho2AjqAbZCVYuFBy0euHu9oOLolBrKaAfh2P8magjaM4rDRIhk?=
+ =?us-ascii?Q?uV8dF2xSGa1DHDsJduJfcUyu+JcIryMVaj9UA3P0+3068CcX1WefBkiT1VkN?=
+ =?us-ascii?Q?nUGr+HNRmzApIfUU/t+Ib+676GGisjevEMK/ceCg/STzt4WObuwcOppSXyFy?=
+ =?us-ascii?Q?j2nvFaL5HIG+B5Y/A+yUu+/RWyIyT1G1IPsWMpc36mElmLCOVnOFb1Ps0BhY?=
+ =?us-ascii?Q?e8xymY/lmcmpxtqbMMMk8cAE6sSYFG4bXxq8fMWVbNhHKZu3637p0WPyv9nl?=
+ =?us-ascii?Q?OOQproaFkfMsppCvouW004COdPnlOidCxjto93bV0m77psLq8tV9ZiBhkMc0?=
+ =?us-ascii?Q?nkFZ6kCOTlZkAUrKbssFBGT2/uUdLwsxnDl0lv21ISQXYaWWVQ53Py+enbju?=
+ =?us-ascii?Q?S6WJWoJhOqQbjbzJKnk7S2nj+OYqekBSIe/i7eLpOrIscFVeaUf6wDkimgaX?=
+ =?us-ascii?Q?+el+zYPzOzKEgAJhiCWUY+fYI6r+W4o6eqxgj9AklnYIlYxM6DE7jR9QWy0f?=
+ =?us-ascii?Q?noNsb7SyO0HE1CudZTvEiOIyBydR7pMcA+7xWMcvfGbVbMvH/VdsKRCpIeJ9?=
+ =?us-ascii?Q?YNlQb+Lu0ioE2ZCdQgM3ZqbwG2UCQqGnr9bz6Y2Ko2MN9Pt7U7epMm6KtCdM?=
+ =?us-ascii?Q?BRQ7CkmGlB2tbwp3XBVnrBl7TvEGsTJbcGlOORI6q/4rkGJVNA7PU7lCuO7o?=
+ =?us-ascii?Q?6u0W4QqdONtxpVciRIYgRFQ6AsrbwpCgCpiNGrRwnXwffVqonhjJoRttSjBQ?=
+ =?us-ascii?Q?m7Ll9zr/stO1FTuwuQPUMc0MWAnFtN9u+RE85bxDijbo314xaGzvMOTJJdg0?=
+ =?us-ascii?Q?KLnvUij8ykg=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DS7PR12MB9473.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(7416014)(366016);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?WAi1kW7OX3ij0V5hkkqkUb4k45ymwrXCgrXoKA0JuGkwR5p3v/Rl5FucMdpR?=
+ =?us-ascii?Q?yab5CmV4kgzD50aerqnp730J8hQQukBmUE+cP17R1C5PbOMUvIYP7+JfyL2k?=
+ =?us-ascii?Q?LKXCG49fDWQ4TXUXYXXjBNRyfQZJwPdHsGIc9F0UERkxP0yGHJ2Fk4021xto?=
+ =?us-ascii?Q?eglrh1u6HdKl5sMghEyPDsw/fDCffmcbxycXCkBKKSURmOhPaRCYm0Yamra2?=
+ =?us-ascii?Q?4vP/B+Qzp4ol6F+IHJlOtmgIi5lwDhtTFrKC6g5OVX5O9JEn0tjszBx5TCnt?=
+ =?us-ascii?Q?85Mms/w5Z5lQKmhZswUFyYeQMQy7iPPoXZOnUp37HoqrQ6K0DrY8TSsBXy/8?=
+ =?us-ascii?Q?TKd+nPsayJP67eAJIH4tKOyuB98GxJ7+N3KuDQE1v734xnkHfj1IrMCxScP1?=
+ =?us-ascii?Q?17EM8GizeAoW07jAijodX9HSmwRsguyvepfdyO044REaD9p1MWNzZ8tm7W74?=
+ =?us-ascii?Q?MunQ1oql0UqhOFAWpw8CLgGeGekH2xKyALMmsdWiusrjzyvQcseF5sttRtq7?=
+ =?us-ascii?Q?U3NAeBGNrNU40oCgERj55lsO4Moe7/84iUbSs9OwJ4GiNLZrZMUIwznczz9M?=
+ =?us-ascii?Q?xjbiPeBp5ak8b1qMSwViNHgdG2/ZiyV2BQW8FegbMPOzSpXlab0D86yyMjiH?=
+ =?us-ascii?Q?I7yqkOiCgHq3dCqZIbqmbdl1QxHeJT9HLHpx1W290jzOInab9WwxKNdFIsBA?=
+ =?us-ascii?Q?3Xz+OmmUeFlgLGvviZUyyeAgjMJicOzmNrmIedQ18a8ZaSlzTEnBpXHb3kbZ?=
+ =?us-ascii?Q?vvQhQnyxglwJMkj+WhKn8nETsOrKhaKVhqEHhM0NxnmIeHqE9aIsmxCW6shL?=
+ =?us-ascii?Q?6XKkbPo2QjPK1RXSLtKXuxGJl9rN5cPsuoSNISJILstDU+cJ+nPh6dMVHWfl?=
+ =?us-ascii?Q?Sq9uEfHuT1paukjZNht5hRoEgDsXnX891/VvROqssCRRZzLazqrweGNy6e8b?=
+ =?us-ascii?Q?MFgCNCVhNXgAmoqsX4W3GnCAQFf2Y1NuGsQ5/CUVxZt0FJ6WtofKgKmIzKR2?=
+ =?us-ascii?Q?E46+Ee/RMvP6QY/IzqHAvQ+ds/NrqTSAxVEMNmzo4+USmu3yM61DoXi3pRsI?=
+ =?us-ascii?Q?ftT4hVwxQBxf+bOEfzX/g2pNPWe3p6JLthp+0mknRcRWcNqerpI3YNb9b0qY?=
+ =?us-ascii?Q?FbdEtk1NGSBaprhM8XriXAigm+TjU7bL/HytQttjO0r305OFX0x7xdDz1ngA?=
+ =?us-ascii?Q?QZTRCSGXqAw4u6rHMk0nkbjU2GM/kOz7fMvaIRk0fJAFBi83Cfsb7lfP88my?=
+ =?us-ascii?Q?7vsqwa4ZtVi1V++5cysVPJe+VFD6+foGq5le/vYiOyOzSfDiTrQA8m8TtxOW?=
+ =?us-ascii?Q?GaUdWr3edhdUtEDYORCXnaP8ngQyf9tKNDY+cTZyilp1VFeOrF4kPpZynV0l?=
+ =?us-ascii?Q?yc4Lorjr+OEi5Cd9yE1qP+i730WpXiloMDDa2UpiTx1Ph1J/96VrKqF8g5UQ?=
+ =?us-ascii?Q?SYha8fdYA6c82UE1DXbXmfSWbI7QoP6qksJQVxxncmNPNrFmQ2OlN8C04kgI?=
+ =?us-ascii?Q?xgbm6FL/ZJ7m5EIpSa0CRUFTv+IF7L18bbvBSn2+E3sPjLEvdE7iZjHDNj9X?=
+ =?us-ascii?Q?ypJpnHVKZo8VKPFkHig=3D?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: fbd4da72-00e9-4cb4-76de-08ddcb876848
+X-MS-Exchange-CrossTenant-AuthSource: DS7PR12MB9473.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Jul 2025 14:27:38.9020
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: o7QOQOD/YgHzVmlz87V3fiTSNQ0IWRWL0fjYomi6WNs2u0jupeInWfgxHdlX10Nx
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY5PR12MB6345
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250725_072744_312915_18B63EB5 
+X-CRM114-Status: GOOD (  15.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,201 +159,117 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: daniel.lezcano@linaro.org, mwalle@kernel.org, devicetree@vger.kernel.org, linus.walleij@linaro.org, linux-remoteproc@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, olivia.wen@mediatek.com, shane.chien@mediatek.com, linux-gpio@vger.kernel.org, linux-phy@lists.infradead.org, airlied@gmail.com, simona@ffwll.ch, herbert@gondor.apana.org.au, eugen.hristev@linaro.org, jassisinghbrar@gmail.com, jiaxin.yu@mediatek.com, andy.teng@mediatek.com, chunfeng.yun@mediatek.com, jieyy.yang@mediatek.com, chunkuang.hu@kernel.org, conor+dt@kernel.org, jitao.shi@mediatek.com, p.zabel@pengutronix.de, arnd@arndb.de, kishon@kernel.org, kyrie.wu@mediatek.corp-partner.google.com, maarten.lankhorst@linux.intel.com, tinghan.shen@mediatek.com, mripard@kernel.org, ck.hu@mediatek.com, broonie@kernel.org, linux-mediatek@lists.infradead.org, houlong.wei@mediatek.com, matthias.bgg@gmail.com, tglx@linutronix.de, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, granquet@baylibre.com, sam.shih@mediatek.com, mathieu.poirier@linaro.org, fparent@baylibre.com, andersson@kernel.org, sean.wang@kernel.org, linux-sound@vger.kernel.org, lgirdwood@gmail.com, vkoul@kernel.org, linux-crypto@vger.kernel.org, tzimmermann@suse.de, atenart@kernel.org, krzk+dt@kernel.org, linux-media@vger.kernel.org, davem@davemloft.net
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 24, 2025 at 3:39=E2=80=AFAM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> As Rob pointed out, MediaTek devicetrees are *poor* in the dtbs_check
-> tests, and got an infinite load of warnings.
->
-> This series starts attacking this situation.
->
-> I didn't really count how many warnings I have resolved - it's a lot
-> of them anyway - and I think that this is a good start in any case.
+On 25 Jul 2025, at 3:04, David Hildenbrand wrote:
 
-40 out of 125 (on arm64) fixed! Thanks! FYI, here's the ones that
-remain (first number is number of times the warning occurs):
+> On 25.07.25 07:08, akash.tyagi wrote:
+>> Hi David,
+>>
+>> Thank you for your feedback.
+>>
+>> We encountered this issue in the Android Common Kernel (version 6.12),=
+ which uses PCP lists for CMA pages.
+>>
+>> page_owner trace-
+>> Page allocated via order 9, mask 0x52dc0(GFP_KERNEL|__GFP_NOWARN|__GFP=
+_NORETRY|__GFP_COMP|__GFP_ZERO), pid 1, tgid 1 (swapper/0), ts 1065952310=
+ ns
+>> PFN 0x23d200 type Unmovable Block 4585 type CMA Flags 0x40000000000000=
+40(head|zone=3D1|kasantag=3D0x0)
+>>   post_alloc_hook+0x228/0x230
+>>   prep_new_page+0x28/0x148
+>>   get_page_from_freelist+0x19d0/0x1a38
+>>   __alloc_pages_noprof+0x1b0/0x440
+>>   ___kmalloc_large_node+0xb4/0x1ec
+>>   __kmalloc_large_node_noprof+0x2c/0xec
+>>   __kmalloc_node_noprof+0x39c/0x548
+>>   __kvmalloc_node_noprof+0xd8/0x18c
+>>   nf_ct_alloc_hashtable+0x64/0x108
+>>   nf_nat_init+0x3c/0xf8
+>>   do_one_initcall+0x150/0x3c0
+>>   do_initcall_level+0xa4/0x15c
+>>   do_initcalls+0x70/0xc0
+>>   do_basic_setup+0x1c/0x28
+>>   kernel_init_freeable+0xcc/0x130
+>>   kernel_init+0x20/0x1ac
+>>  This UNMOVABLE page was allocated from CMA, but it could not be migra=
+ted - so CMA alloc failed
+>> At first, we fixed this by adding CMA THP pages to the movable THP PCP=
+ list.
+>> This fixed the issue of CMA pages being put in the wrong list, but now=
+ any movable allocation can use these CMA pages.
+>>
+>> Later, we saw that a movable allocation used a CMA page and was pinned=
+ by __filemap_get_folio(). This page was pinned for too long, and eventua=
+lly, CMA allocation failed
+>>
+>> page_owner trace-
+>> Page allocated via order 0, mask 0x140c48(GFP_NOFS|__GFP_COMP|__GFP_HA=
+RDWALL|__GFP_MOVABLE), pid 1198, tgid 1194 (ccci_mdinit), ts 17918751965 =
+ns
+>> PFN 0x207233 type Movable Block 4153 type CMA Flags 0x4020000000008224=
+(referenced|lru|workingset|private|zone=3D1|kasantag=3D0x0)
+>>   post_alloc_hook+0x23c/0x254
+>>   prep_new_page+0x28/0x148
+>>   get_page_from_freelist+0x19d8/0x1a40
+>>   __alloc_pages_noprof+0x1a8/0x430
+>>   __folio_alloc_noprof+0x14/0x5c
+>>   __filemap_get_folio+0x1bc/0x430
+>>   bdev_getblk+0xd4/0x294
+>>   __read_extent_tree_block+0x6c/0x260
+>>   ext4_find_extent+0x22c/0x3dc
+>>   ext4_ext_map_blocks+0x88/0x173c
+>>   ext4_map_query_blocks+0x54/0xe0
+>>   ext4_map_blocks+0xf8/0x518
+>>   _ext4_get_block+0x70/0x188
+>>   ext4_get_block+0x18/0x24
+>>   ext4_block_write_begin+0x154/0x62c
+>>   ext4_write_begin+0x20c/0x630
+>> Page has been migrated, last migrate reason: compaction
+>> Charged to memcg /
+>>
+>>
+>> Currently, free_unref_page treats CMA pages as movable. So, some MOVAB=
+LE allocations may use these CMA pages and pinned them. Later, when CMA n=
+eeds these pages, these pages failed to migrate.
+>
+>
+> MOVABLE allocations commonly fallback to CMA allocations, independent o=
+f pcp.
+>
+> Long-term pinning is forbidden on MIGRATE_CMA pages. We had a bug recen=
+tly fixed,
+> maybe you ran into that?
+>
+> See
+>
+> commit 517f496e1e61bd169d585dab4dd77e7147506322
+> Author: David Hildenbrand <david@redhat.com>
+> Date:   Wed Jun 11 15:13:14 2025 +0200
+>
+>     mm/gup: revert "mm: gup: fix infinite loop within __get_longterm_lo=
+cked"
+>         After commit 1aaf8c122918 ("mm: gup: fix infinite loop within
+>     __get_longterm_locked") we are able to longterm pin folios that are=
+ not
+>     supposed to get longterm pinned, simply because they temporarily ha=
+ve the
+>     LRU flag cleared (esp.  temporarily isolated).
+>         For example, two __get_longterm_locked() callers can race, or
+>     __get_longterm_locked() can race with anything else that temporaril=
+y
+>     isolates folios.
+>
+> But there is this known problem that CMA can fail temporarily due to
+> short-term pinnings. See the "reliable CMA" work (don't remember the ex=
+act name).
+I think you mean Guaranteed CMA[1].
 
-     29 (mediatek,mt8183-mfgcfg): 'power-domains' does not match any
-of the regexes: '^pinctrl-[0-9]+$'
-     29 failed to match any schema with compatible:
-['mediatek,mt8183-audiosys', 'syscon']
-     29 failed to match any schema with compatible: ['mediatek,mt8183-audio=
-']
-     27 (mediatek,mt8183-pinctrl): 'gpio-line-names' does not match
-any of the regexes: '-pins(-[a-z]+)?$', '^pinctrl-[0-9]+$'
-     22 (mediatek,mt6359): '#sound-dai-cells' does not match any of
-the regexes: '^pinctrl-[0-9]+$'
-     14 failed to match any schema with compatible:
-['mediatek,mt8183_mt6358_ts3a227_max98357']
-     12 (mediatek,mt8186-mt6366-rt1019-rt5682s-sound): 'model' is a
-required property
-     12 failed to match any schema with compatible: ['mediatek,mt8173-mdp-r=
-sz']
-      9 (mediatek,mt8195-iommu-infra): interrupts: [[0, 795, 4, 0],
-[0, 796, 4, 0], [0, 797, 4, 0], [0, 798, 4, 0], [0, 799, 4, 0]] is too
-long
-      8 failed to match any schema with compatible: ['mediatek,mt8173-mdp-w=
-rot']
-      8 failed to match any schema with compatible:
-['mediatek,mt8173-mdp-rdma', 'mediatek,mt8173-mdp']
-      6 failed to match any schema with compatible:
-['mediatek,mt8183_da7219_rt1015p']
-      5 (mediatek,mt7986-eth): interrupts: [[0, 196, 4], [0, 197, 4],
-[0, 198, 4], [0, 199, 4]] is too short
-      5 failed to match any schema with compatible:
-['mediatek,mt8183_mt6358_ts3a227_rt1015p']
-      4 (mediatek,mt8173-mmsys): 'assigned-clock-rates',
-'assigned-clocks' do not match any of the regexes: '^pinctrl-[0-9]+$'
-      4 (mediatek,mt8173-disp-ufoe): 'mediatek,gce-client-reg' does
-not match any of the regexes: '^pinctrl-[0-9]+$'
-      4 (mediatek,mt8173-disp-od): 'mediatek,gce-client-reg' does not
-match any of the regexes: '^pinctrl-[0-9]+$'
-      4 (mediatek,mt6360): #interrupt-cells: 1 was expected
-      4 failed to match any schema with compatible: ['mediatek,mt8173-vpu']
-      4 failed to match any schema with compatible: ['mediatek,mt8173-mdp-w=
-dma']
-      4 failed to match any schema with compatible: ['mediatek,mt8173-mdp-r=
-dma']
-      4 failed to match any schema with compatible: ['mediatek,mt7622-pcie'=
-]
-      3 (mediatek,mt8192-audsys): 'mt8192-afe-pcm' does not match any
-of the regexes: '^pinctrl-[0-9]+$'
-      3 (mediatek,mt8173-thermal): Unevaluated properties are not
-allowed ('bank0-supply', 'bank1-supply' were unexpected)
-      3 (mediatek,mt8173-pinctrl): 'gpio-line-names' does not match
-any of the regexes: '^pinctrl-[0-9]+$', 'pins$'
-      3 (mediatek,mt8173-dsi): Unevaluated properties are not allowed
-('ports' was unexpected)
-      3 (mediatek,mt8173-dsi): ports: 'port@1' is a required property
-      3 (mediatek,mt8173-dsi): ports: 'port@0' is a required property
-      3 failed to match any schema with compatible: ['mediatek,mt8173-rt565=
-0']
-      2 (mediatek,mt8192_mt6359_rt1015p_rt5682): 'model' is a required prop=
-erty
-      2 (mediatek,mt8192-i2c): Unevaluated properties are not allowed
-('clock-stretch-ns' was unexpected)
-      2 (mediatek,mt8186-spmi): Unevaluated properties are not allowed
-('interrupts' was unexpected)
-      2 (mediatek,mt7986-tphy): usb-phy@700:reg: [[0, 1792], [0,
-2304]] is too long
-      2 (mediatek,mt7622-pwrap): 'regulators' does not match any of
-the regexes: '^pinctrl-[0-9]+$'
-      2 (mediatek,mt7622-pciesys): compatible: 'oneOf' conditional
-failed, one must be fixed:
-      2 (mediatek,mt7622-audsys): audio-controller: 'power-domains' is
-a required property
-      2 (mediatek,mt7622-audsys): audio-controller:clock-names:
-['infra_sys_audio_clk', 'top_audio_mux1_sel
-', 'top_audio_mux2_sel', 'top_audio_a1sys_hp', 'top_audio_a2sys_hp',
-'i2s0_src_sel', 'i2s1_src_sel', 'i2s2_
-src_sel', 'i2s3_src_sel', 'i2s0_src_div', 'i2s1_src_div',
-'i2s2_src_div', 'i2s3_src_div', 'i2s0_mclk_en', '
-i2s1_mclk_en', 'i2s2_mclk_en', 'i2s3_mclk_en', 'i2so0_hop_ck',
-'i2so1_hop_ck', 'i2so2_hop_ck', 'i2so3_hop_c
-k', 'i2si0_hop_ck', 'i2si1_hop_ck', 'i2si2_hop_ck', 'i2si3_hop_ck',
-'asrc0_out_ck', 'asrc1_out_ck', 'asrc2_
-out_ck', 'asrc3_out_ck', 'audio_afe_pd', 'audio_afe_conn_pd',
-'audio_a1sys_pd', 'audio_a2sys_pd'] is too sh
-ort
-      2 (mediatek,mt7622-audio): 'power-domains' is a required property
-      2 (mediatek,mt7622-audio): clock-names: ['infra_sys_audio_clk',
-'top_audio_mux1_sel', 'top_audio_mux2
-_sel', 'top_audio_a1sys_hp', 'top_audio_a2sys_hp', 'i2s0_src_sel',
-'i2s1_src_sel', 'i2s2_src_sel', 'i2s3_sr
-c_sel', 'i2s0_src_div', 'i2s1_src_div', 'i2s2_src_div',
-'i2s3_src_div', 'i2s0_mclk_en', 'i2s1_mclk_en', 'i2
-s2_mclk_en', 'i2s3_mclk_en', 'i2so0_hop_ck', 'i2so1_hop_ck',
-'i2so2_hop_ck', 'i2so3_hop_ck', 'i2si0_hop_ck'
-, 'i2si1_hop_ck', 'i2si2_hop_ck', 'i2si3_hop_ck', 'asrc0_out_ck',
-'asrc1_out_ck', 'asrc2_out_ck', 'asrc3_ou
-t_ck', 'audio_afe_pd', 'audio_afe_conn_pd', 'audio_a1sys_pd',
-'audio_a2sys_pd'] is too short
-      2 (mediatek,mt6795-mmsys): 'assigned-clock-rates',
-'assigned-clocks' do not match any of the regexes: '^pinctrl-[0-9]+$'
-      2 (mediatek,mt6795-mmc): Unevaluated properties are not allowed
-('pinctrl-names' was unexpected)
-      2 (mediatek,mt6795-mmc): pinctrl-names: ['default'] is too short
-      2 (mediatek,mt6795-mmc): 'pinctrl-1' is a required property
-      2 (mediatek,mt6795-disp-ufoe): 'mediatek,gce-client-reg' does
-not match any of the regexes: '^pinctrl-[0-9]+$'
-      2 (mediatek,mt6795-disp-od): 'mediatek,gce-client-reg' does not
-match any of the regexes: '^pinctrl-[0-9]+$'
-      2 failed to match any schema with compatible:
-['mediatek,mt8183_da7219_max98357']
-      2 failed to match any schema with compatible:
-['mediatek,mt7622-scpsys', 'syscon']
-      2 failed to match any schema with compatible: ['mediatek,mt6797-scpsy=
-s']
-      2 failed to match any schema with compatible:
-['mediatek,mt6380-regulator']
-      2 failed to match any schema with compatible: ['mediatek,mt2712-pcie'=
-]
-      1 (mediatek,mt8516-topckgen): compatible: 'oneOf' conditional
-failed, one must be fixed:
-      1 (mediatek,mt8516-apmixedsys): compatible: 'oneOf' conditional
-failed, one must be fixed:
-      1 (mediatek,mt8186-mt6366-rt5682s-max98360-sound): 'model' is a
-required property
-      1 (mediatek,mt8186-cci): 'proc-supply' is a required property
-      1 (mediatek,mt8183-pinctrl): 'i2c0', 'i2c1', 'i2c2', 'i2c3',
-'i2c4', 'i2c5', 'mmc0', 'mmc0default', 'mmc1', 'mmc1default', 'pwm1',
-'spi0', 'spi1', 'spi2', 'spi3', 'spi4', 'spi5' do not match any of the
-regexes: '-pins(-[a-z]+)?$', '^pinctrl-[0-9]+$'
-      1 (mediatek,mt8183-pinctrl): 'i2c0', 'i2c1', 'i2c2', 'i2c3',
-'i2c4', 'i2c5', 'i2c6', 'keyboard' do not match any of the regexes:
-'-pins(-[a-z]+)?$', '^pinctrl-[0-9]+$'
-      1 (mediatek,mt8183-pinctrl): bt-pins-wakeup: 'piins-bt-wakeup'
-does not match any of the regexes: '^pinctrl-[0-9]+$', '^pins'
-      1 (mediatek,mt8173-pwrap): 'power-domains' does not match any of
-the regexes: '^pinctrl-[0-9]+$'
-      1 (mediatek,mt7622-pinctrl): 'asm-sel-hog' does not match any of
-the regexes: '-pins(-[a-z]+)?$', '^pinctrl-[0-9]+$'
-      1 (mediatek,mt7622-audsys): audio-controller:clocks: [[2, 2],
-[18, 80], [18, 81], [18, 107], [18, 108], [18, 89], [18, 90], [18,
-91], [18, 92], [18, 95], [18, 96], [18, 97], [18, 98], [18, 103], [18,
-104], [18, 105], [18, 106], [38, 8], [38, 9], [38, 10], [38, 11], [38,
-4], [38, 5], [38, 6], [38, 7], [38, 14], [38, 15], [38, 39], [38, 40],
-[38, 0], [38, 46], [38, 17], [38, 18]] is too short
-      1 (mediatek,mt7622-audsys): audio-controller:clocks: [[2, 2],
-[18, 80], [18, 81], [18, 107], [18, 108], [18, 89], [18, 90], [18,
-91], [18, 92], [18, 95], [18, 96], [18, 97], [18, 98], [18, 103], [18,
-104], [18, 105], [18, 106], [37, 8], [37, 9], [37, 10], [37, 11], [37,
-4], [37, 5], [37, 6], [37, 7], [37, 14], [37, 15], [37, 39], [37, 40],
-[37, 0], [37, 46], [37, 17], [37, 18]] is too short
-      1 (mediatek,mt7622-audio): clocks: [[2, 2], [18, 80], [18, 81],
-[18, 107], [18, 108], [18, 89], [18, 90], [18, 91], [18, 92], [18,
-95], [18, 96], [18, 97], [18, 98], [18, 103], [18, 104], [18, 105],
-[18, 106], [38, 8], [38, 9], [38, 10], [38, 11], [38, 4], [38, 5],
-[38, 6], [38, 7], [38, 14], [38, 15], [38, 39], [38, 40], [38, 0],
-[38, 46], [38, 17], [38, 18]] is too short
-      1 (mediatek,mt7622-audio): clocks: [[2, 2], [18, 80], [18, 81],
-[18, 107], [18, 108], [18, 89], [18, 90], [18, 91], [18, 92], [18,
-95], [18, 96], [18, 97], [18, 98], [18, 103], [18, 104], [18, 105],
-[18, 106], [37, 8], [37, 9], [37, 10], [37, 11], [37, 4], [37, 5],
-[37, 6], [37, 7], [37, 14], [37, 15], [37, 39], [37, 40], [37, 0],
-[37, 46], [37, 17], [37, 18]] is too short
-      1 (mediatek,mt7531): 'interrupts' is a dependency of
-'interrupt-controller'
-      1 (mediatek,mt6357): 'adc' does not match any of the regexes:
-'^pinctrl-[0-9]+$'
-      1 (mediatek,mt6331): regulators:compatible: 'oneOf' conditional
-failed, one must be fixed:
-      1 (mediatek,mt6331-regulator): 'ldo-vio28' does not match any of
-the regexes: '^buck-v(core2|io18|dvfs11|dvfs12|dvfs13|dvfs14)$',
-'^ldo-(avdd32aud|vauxa32)$',
-'^ldo-v(dig18|emc33|ibr|mc|mch|mipi|rtc|sim1|sim2|sram|usb10)$',
-'^ldo-vcam(a|af|d|io)$', '^ldo-vgp[1234]$', '^ldo-vtcxo[12]$',
-'^pinctrl-[0-9]+$'
-      1 (mediatek,mt6331-regulator): ldo-vcamio:regulator-name:0:
-'vcam_io' does not match '^vcam(a|_af|d|io)$'
-      1 (mediatek,mt6331): 'mt6332-led' does not match any of the
-regexes: '^pinctrl-[0-9]+$'
-      1 failed to match any schema with compatible:
-['mediatek,mt6779-audio', 'syscon']
-      1 failed to match any schema with compatible:
-['mediatek,mt2712-scpsys', 'syscon']
+[1] https://lore.kernel.org/linux-mm/CAJuCfpEWVEqsivd7oTvp4foEho_HaD1XNP8=
+KTeKWzG_X2skfGQ@mail.gmail.com/
+
+Best Regards,
+Yan, Zi
 
