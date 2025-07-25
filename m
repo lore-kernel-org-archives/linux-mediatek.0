@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A592C87FCE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jul 2025 12:15:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28E11C87FD3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jul 2025 12:18:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t63BOHgVickClQUeVRs7VclE4TnB0fFJ8koSEGsWT2s=; b=ZEgXoITkQjW0pT5uhXgyY4ixzt
-	dIR/pvhtgUok/9vlZ40gHhkFWvjke7LOAqnezi04UxDMyhnaq1fSj7m3bhRI4uh/VNQ6WCk4RcQv/
-	kCV1RxiLFdkIRZB0QCWkbq95NSVlMJdp0gK5qICd7gQkIU97YQNWifZ7pGNV69hupfkL7enah+SIh
-	Wjc2pOTMZPefflq44yRNYQQ1L4tMyB47ncKPe42AqvtRNGaVLn+amA6gV6N9zJ9LtfvJ1dzfSHuFy
-	UQ8i815UG8VFV1NIfmKHlXWvAXx2Sclvcxu8mYRBKz3++1nERuG3QrShq2tRku5V4q6K05TzjADRp
-	1xgAn13g==;
+	bh=5hJBa13s79OQWhYLxMwSe1UwJVG9FUdchi7fOARwLxY=; b=GpLwuVymCUd0eqqSchKcbI2GkJ
+	dl7RqNSD50/K8WjRkdMqkysANz0ffsEODFvj2DLchbp4ygDAX2uFU9Di9QnZCgSi2egyfR0IZVD9b
+	a1LxFEYOJ+F3zvO0NCa+KSwjCzy3ifhdXZuXKBkXh5wS8yJiXgRTiCrRYZGikt/kSitPxy1sIVs5C
+	N73y/WPQbubjKZBnqXHDOOU93BDqAor469tQbssOErJLk1Sx1NJ7o5uPGeXCEXPu9G0S7vMoWPp3Y
+	UZU7Cme+qASJUCI9K49cjWrjGvJ9gj5Qs0AKYyIL5r7iXGUn7u41nqgQNmtO9GmCfkJr2XUBHJMUZ
+	w9RfZqOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ufHL1-00000009nSz-1jxD;
-	Fri, 25 Jul 2025 12:15:47 +0000
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+	id 1ufHNT-00000009nlK-03yd;
+	Fri, 25 Jul 2025 12:18:19 +0000
+Received: from mail-qt1-x82b.google.com ([2607:f8b0:4864:20::82b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ufGvj-00000009kqQ-2gfS
+	id 1ufH3R-00000009lVW-1qwF
 	for linux-mediatek@lists.infradead.org;
-	Fri, 25 Jul 2025 11:49:40 +0000
-Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-23dc5bcf49eso26316125ad.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 25 Jul 2025 04:49:39 -0700 (PDT)
+	Fri, 25 Jul 2025 11:57:38 +0000
+Received: by mail-qt1-x82b.google.com with SMTP id d75a77b69052e-4ab93f24dc3so37276561cf.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 25 Jul 2025 04:57:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1753444179; x=1754048979; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1753444656; x=1754049456; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=t63BOHgVickClQUeVRs7VclE4TnB0fFJ8koSEGsWT2s=;
-        b=eavYPbaYfaQ2HIEUjIc3aL2zS9es2axEk9aY0zx23GNTaGE1ItByF0c0405NK9PNl2
-         sUk99eC1or3HcfFbki/YyZmBDlf9LQGmUdMx1LLqMuVtZmVYxaBeDm3ZITp92YPeqgO/
-         FaQIjMPVZEk1aVAnUDLVUna2kA9/ry+CLu/pw=
+        bh=5hJBa13s79OQWhYLxMwSe1UwJVG9FUdchi7fOARwLxY=;
+        b=ifWy7R9lYW8w5+BgeTziADZngsq/QW7hKcqW8jD2LbFojNQyZz/bZ2yorS3W7zIsdE
+         ukvAWT/v/YW2Hvq4k0EWZXodWXCEfb+1Wei0zQBHq8SL7HavPmQu6zO56yU4jnV4KbkM
+         BjnlF5+UuRbpHM+QlYh72Ca11U41VielSdsWY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1753444179; x=1754048979;
+        d=1e100.net; s=20230601; t=1753444656; x=1754049456;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=t63BOHgVickClQUeVRs7VclE4TnB0fFJ8koSEGsWT2s=;
-        b=oHHA134jaeTm6tsrVfQgq0Mm/fLkCTy1dvIXjHbXt2RoSIOi8nvS8Pnr6bhODXmmkM
-         phYCsCIK4ghD5bjZSfnz5gPa7BQFQyVVsKc99udJXHlBfDsywBwd+99Lb81dXZ6kWCrA
-         E3TAGbQ40y6fR9CLJcLOUbMSEPkZBk9GqauBnVr5nGHRk+E/clZby7dYSXYjkPiuF2FP
-         E+QkXFaH+n6f5t6VVYfAGYUBFNp01lVSAf5/MXOfauSCvRmy7fhbQ7lsQISfL4PcX1fe
-         yorByg+Vb7NxDBuQtaFd8vfYEat+mNrXUAgEwcewHp29zL9HQZzWdCs1EnO7QisS1zyu
-         UPpQ==
-X-Gm-Message-State: AOJu0YwgVy2rft+DEQy/ykyGOaAvMOD11vAqI7wyQudfTxDRBhhIkT2a
-	kF3n+k/618eCWoU1N5wBk4q5MygsE9/PMvIo14LQ/In7gTvoJBEMrPQJfPFAEeADBAfygFLifLG
-	XxWqMAiDX
-X-Gm-Gg: ASbGncsrCAYb9qacStXuu/jwbYrT4HC1/Bi48VA4yiNlyFrkSR7htrqYWJ9dthi1lZ/
-	+nBlVAtpS9dt8F5l6ryn+yaQ8c4BzFu48uYA6LwzisN9RyjZ8l29DRb4lCviOuzuljm7wsndcsJ
-	vRilPMbMJBPC8/dj+8MPK72UBLVhJJhJWiLL9/MlwK6gJ9bQaWp2zldxKVU7igB+XtD+eRwZEnP
-	xP9HcjnklYl87hLBZy/f5gOnFhn3ZIv1aK5bvnzsFHQjSiCPLy5eWp6DJZRkzwr3QJ5wVpBYaAJ
-	svu+wK3me9xO43jTNh51X2ivNpGlJn4Qcq58lQqNMZ5xk5dTbBHFOcShmrNnR9nDGC388pthJs9
-	BLh//VRLMNlTwm06E6RlT+vveva8dJRNO5j4p7+Cs3Z+SDFRRWUtLi/dOgg==
-X-Google-Smtp-Source: AGHT+IGTSjUKNd8zgpW2xHCCGOALj4fE5m0pQeYoMfkJT8cHGNmfEO8R46fYklq6ClrcIfA/CwP4IQ==
-X-Received: by 2002:a17:902:f745:b0:234:e3b7:5ce0 with SMTP id d9443c01a7336-23fb31b544fmr24203645ad.47.1753444178651;
-        Fri, 25 Jul 2025 04:49:38 -0700 (PDT)
-Received: from mail-pj1-f48.google.com (mail-pj1-f48.google.com. [209.85.216.48])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-23fa4785f54sm35934395ad.77.2025.07.25.04.49.38
+        bh=5hJBa13s79OQWhYLxMwSe1UwJVG9FUdchi7fOARwLxY=;
+        b=BjGPcmuZBX5e2sAKwSO/F7lhj0CUPn48XUuMCCR3LgfjZwI2wG66D4gZJJg8WGKiq2
+         mBBbk2Kw7nNc242nMnIN/lyifZcAzMSAIB/ilXxhYZhr/DZhtUOZmW+8OtSd1mitCmMf
+         MK5QBVpL3BA7NMRbjG4wnSlsUo8JACB71uLsiVUDSHlbHjPnyPeqJzv9/4svIAglqwJ3
+         4cSiRI261uv/5g5BSbJYKTEoI/mYPk0UOtbC/RU1UXGqVN9+Zs7NEH+8QrZkGRPs3rm0
+         ziLXgb13snAvfjhtoUK8v2T8BHS4bmQ+zFsWakSM6q4yXE4N5qH/j4f2c7ffHkScy/4j
+         HzxA==
+X-Gm-Message-State: AOJu0YzrN9nSjkk4rDvE/RteP8CPmqRTnJWtrb6seDcGsx95rkBrt5/W
+	z2cL+JbWfnx9mc97UpzX3M69QxDbW1BrtA19VRSZfLi+5q6oZiVK4pwuEynMNgz3pPu2swydPHD
+	3JHQ=
+X-Gm-Gg: ASbGncsu1wSY49bu4FPDB3cxWONMTnUeofu2eHBdjc8+FYQA+cM7iodE5sGBtmFZFNp
+	P9vyzkfejg45rvm9S0tnbK2cXatw3XEQOomnBynjtPf9J+ZHdhdLZlEPuACBBXCxo3JhKNAatEf
+	dxb4S9ujH0Ybnbxrf/DG9EMANIPGjf1eLmjp4S0VclAx/Kh5lX02/h6E5/PSiPSTAiEpmYs2/rW
+	0VTK1xF96ULbYMRpmBp2r14D3rPjM1GJYH+OTUr9JJQGSb1w09TGcPZ93hX0080C4shhxm7mZ65
+	xLoj43SS3BiEunn1jzFJuIXpXZ0bjGBTwjTYLQ7abE/Xzr8Vjs6y9GFCi0vJqHcKwrej23Y/EYB
+	m7K4jYBBUvRvsox2WEeEYkqJRXXJ4bDlNazqAaXT9ruBwKhIoDE9tY/HJSg==
+X-Google-Smtp-Source: AGHT+IHZeNBZWKA4a6kTuEerCdJhdrTrtVp490Z8gbsTn6I5zB9X217eo77lh2RSUE2Qb7wUxwlIAA==
+X-Received: by 2002:ad4:5d62:0:b0:704:8fa0:969e with SMTP id 6a1803df08f44-707205e6db0mr18268836d6.41.1753444656132;
+        Fri, 25 Jul 2025 04:57:36 -0700 (PDT)
+Received: from mail-qv1-f43.google.com (mail-qv1-f43.google.com. [209.85.219.43])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-707165d08c3sm18078536d6.37.2025.07.25.04.57.36
         for <linux-mediatek@lists.infradead.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 25 Jul 2025 04:49:38 -0700 (PDT)
-Received: by mail-pj1-f48.google.com with SMTP id 98e67ed59e1d1-313bb9b2f5bso1803646a91.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 25 Jul 2025 04:49:38 -0700 (PDT)
-X-Received: by 2002:a05:6102:3053:b0:4e6:67f6:e9af with SMTP id
- ada2fe7eead31-4fa3fa71860mr256656137.9.1753440125688; Fri, 25 Jul 2025
- 03:42:05 -0700 (PDT)
+        Fri, 25 Jul 2025 04:57:36 -0700 (PDT)
+Received: by mail-qv1-f43.google.com with SMTP id 6a1803df08f44-7072628404dso2121946d6.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 25 Jul 2025 04:57:36 -0700 (PDT)
+X-Received: by 2002:a05:6102:6891:b0:4dd:b82d:e0de with SMTP id
+ ada2fe7eead31-4fa3ff44195mr316348137.17.1753440787376; Fri, 25 Jul 2025
+ 03:53:07 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com> <20250724083914.61351-27-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20250724083914.61351-27-angelogioacchino.delregno@collabora.com>
+References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com> <20250724083914.61351-20-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250724083914.61351-20-angelogioacchino.delregno@collabora.com>
 From: Fei Shao <fshao@chromium.org>
-Date: Fri, 25 Jul 2025 18:41:29 +0800
-X-Gmail-Original-Message-ID: <CAC=S1ni_6YRK0RWheKZJDgCknaZzPsde0J4dFdmkNhY7HMMD+w@mail.gmail.com>
-X-Gm-Features: Ac12FXwspafB6XO0s33DaaDCIfXTapXC0TbPbPDsXvwxpmO6Wfy_iIb8kWhO-Rk
-Message-ID: <CAC=S1ni_6YRK0RWheKZJDgCknaZzPsde0J4dFdmkNhY7HMMD+w@mail.gmail.com>
-Subject: Re: [PATCH 26/38] arm64: dts: mediatek: acelink-ew-7886cax: Remove
- unnecessary cells in spi-nand
+Date: Fri, 25 Jul 2025 18:52:31 +0800
+X-Gmail-Original-Message-ID: <CAC=S1nguRWyG3ubmSFE95_zgsCjjq4dxGWr5ErV9-Yu2+mTmpw@mail.gmail.com>
+X-Gm-Features: Ac12FXzhNEGCOc6TL2wVpoG5kEXhC599YdNWu941VvXlO0dL7_W9Jc4if8EyMHA
+Message-ID: <CAC=S1nguRWyG3ubmSFE95_zgsCjjq4dxGWr5ErV9-Yu2+mTmpw@mail.gmail.com>
+Subject: Re: [PATCH 19/38] arm64: dts: mediatek: mt6795: Add mediatek,infracfg
+ to iommu node
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: linux-mediatek@lists.infradead.org, robh@kernel.org, 
 	daniel.lezcano@linaro.org, mwalle@kernel.org, devicetree@vger.kernel.org, 
@@ -106,8 +106,8 @@ Cc: linux-mediatek@lists.infradead.org, robh@kernel.org,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250725_044939_673079_FD809437 
-X-CRM114-Status: GOOD (  14.22  )
+X-CRM114-CacheID: sfid-20250725_045737_476137_879D4B94 
+X-CRM114-Status: GOOD (  12.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,15 +122,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 24, 2025 at 5:50=E2=80=AFPM AngeloGioacchino Del Regno
+On Thu, Jul 24, 2025 at 5:49=E2=80=AFPM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> There is no need to specify #address-cells and #size-cells in a
-> node that has only one non-addressable subnode, and this is the
-> case of the flash@0 node in this devicetree, as it has only one
-> "partitions" subnode.
->
-> Remove those to suppress an avoid_unnecessary_addr_size warning.
+> The "M4U" IOMMU requires a handle to the infracfg to switch to
+> the 4gb/pae addressing mode: add it.
 >
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
 abora.com>
@@ -138,23 +134,22 @@ abora.com>
 Reviewed-by: Fei Shao <fshao@chromium.org>
 
 > ---
->  arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts | 2 --
->  1 file changed, 2 deletions(-)
+>  arch/arm64/boot/dts/mediatek/mt6795.dtsi | 1 +
+>  1 file changed, 1 insertion(+)
 >
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts =
-b/arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts
-> index 08b3b0827436..30805a610262 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts
-> @@ -98,8 +98,6 @@ &spi0 {
->         flash@0 {
->                 compatible =3D "spi-nand";
->                 reg =3D <0>;
-> -               #address-cells =3D <1>;
-> -               #size-cells =3D <1>;
->                 spi-max-frequency =3D <52000000>;
->                 spi-rx-bus-width =3D <4>;
->                 spi-tx-bus-width =3D <4>;
+> diff --git a/arch/arm64/boot/dts/mediatek/mt6795.dtsi b/arch/arm64/boot/d=
+ts/mediatek/mt6795.dtsi
+> index e5e269a660b1..38f65aad2802 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt6795.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
+> @@ -427,6 +427,7 @@ iommu: iommu@10205000 {
+>                         clocks =3D <&infracfg CLK_INFRA_M4U>;
+>                         clock-names =3D "bclk";
+>                         interrupts =3D <GIC_SPI 146 IRQ_TYPE_LEVEL_LOW>;
+> +                       mediatek,infracfg =3D <&infracfg>;
+>                         mediatek,larbs =3D <&larb0 &larb1 &larb2 &larb3>;
+>                         power-domains =3D <&spm MT6795_POWER_DOMAIN_MM>;
+>                         #iommu-cells =3D <1>;
 > --
 > 2.50.1
 >
