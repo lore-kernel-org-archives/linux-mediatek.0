@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0E64C87FCE
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0EAEC87FD2
 	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jul 2025 12:13:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,76 +12,75 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lj71s94DBO5ChtWnhYstkEV7QIcBC/2WSymKueRnDS4=; b=c472Kb2WJGm5fXoxX+z6sTCxZa
-	Ccd/f9WuToCkxZ/98UXnyupSlCaPR9sv9C5Wx7kxFHEfDOhY5iAvPE0+4NovO9JoOVzj5SeF4Ioit
-	TUuCL44cpMKSIDMQShaQHxbaUm3xicBrKQgvIiPc68eWo2DOtjJO0BnAj4Ae55cLpsl4tD4vmB6WR
-	0ns6bFIE9SK6ArdoG6YcTnB+8EMKdkr6eRnRocpDwojlZNsDL945M9Vg8NpSwqts1tH0IPZ176n2V
-	BL44aAfClxY+tqi1A1MhZto49Ku0Z5LX3T72/lrIpmJ4G/OL6yCo6CjpSAkGD+ZK2gBZPLH3IBhwa
-	iPGU2Y7Q==;
+	bh=PlkE41QL6s4x1GqYESsGC6jimQ+2xKl71+VqMJsnR/Q=; b=TQ/wgU53Mv0h0yK7v6Ti5YddcW
+	brRRlSIdX7bQykJ0GuqwJ6G2cPyXdokkPNRG/JkybONQ57bPar5XGkEcm4SeeKpFelOBYXN5sLebr
+	Wo2x2U3+mH5Ix79/9ja6EmHp0xYelRQZ7+L5Du78qpoIYmu5DmK2tvGFzQvHzOahPuf3Hp0BWsxJz
+	DpyTFRfSpP0L5G1ihU0pyh4u9rW2qZZfO7HCs/eAntLk8inscjxKKnz6Pk26czfBiCcMJlrEbfRk8
+	u2YE24D/VvX0e//sFAuM4dG61/8OYYSNmhgkbUZNBIbXkK881oUmtcYk1WfKT7xWbB9x87P6mgKeh
+	sHLxREyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ufHIa-00000009nEQ-0O7d;
+	id 1ufHIa-00000009nEX-1e3P;
 	Fri, 25 Jul 2025 12:13:16 +0000
-Received: from mail-ot1-x336.google.com ([2607:f8b0:4864:20::336])
+Received: from mail-qt1-x834.google.com ([2607:f8b0:4864:20::834])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ufGs4-00000009kTC-20KN
+	id 1ufGsS-00000009kV6-1BX7
 	for linux-mediatek@lists.infradead.org;
-	Fri, 25 Jul 2025 11:45:53 +0000
-Received: by mail-ot1-x336.google.com with SMTP id 46e09a7af769-73e82d2ec9eso1196992a34.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 25 Jul 2025 04:45:52 -0700 (PDT)
+	Fri, 25 Jul 2025 11:46:17 +0000
+Received: by mail-qt1-x834.google.com with SMTP id d75a77b69052e-4ae73b0a891so34757911cf.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 25 Jul 2025 04:46:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1753443951; x=1754048751; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1753443975; x=1754048775; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=lj71s94DBO5ChtWnhYstkEV7QIcBC/2WSymKueRnDS4=;
-        b=MoJg8D1VcRJ6Z30+ed7Bc0WJaZh849GvUie12VSbXR5ZrFIZQAQzp/gzX63LiMxwPf
-         rzsaDCI8PYEe2OYBexkLdhjfMteZnvUf8NibnJHNFua9BeTw0HUV6kMd/4K6Hg+UStO/
-         3ySGK01zor3N4STWimSwhQ0TN17EFlqbJ2mm4=
+        bh=PlkE41QL6s4x1GqYESsGC6jimQ+2xKl71+VqMJsnR/Q=;
+        b=hyRaSlWwMiNNmTSoqev/t15EygVSifJ88oXZ/MBIJA0BauT03OWLX2/iCw4f5Dvq4s
+         frDaslvvAYzLF0AkofpsBV0WSA7Wst/lwX+du1aQ0iQl3qW3aoBRct4zN3ruOer/b+/w
+         4d5HuqKey5ysKHPbqk50/Ds9P/75Q1yH7Llsk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1753443951; x=1754048751;
+        d=1e100.net; s=20230601; t=1753443975; x=1754048775;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=lj71s94DBO5ChtWnhYstkEV7QIcBC/2WSymKueRnDS4=;
-        b=NRVbAGCKOHTQKCW0/Aj1FXyuPARPq2Zf0ADuhEVWb1z7fMqupG3swLdDqUX8JFao9v
-         pZ674hebLp5aSgLV/Yf17I/jBZV6fkxe433k2i/PdCrFBKtOtR9iGZwU9ebP0Ph+MbV4
-         dmGfRXb4TbHHUiPLQlzzDC2eO+Q1MrLxEec16z6MNiyYr1DwkB0zETB8ieWOjfB9wnI1
-         BaLVW9nz60Tq6GKxwQPzHVzPlOmi+UUDodzGxXbYd+p948fBfqvYni0mXjSn8JBzYinY
-         xD31Mff5294lwhRx63kOEDULJb9qxB/l4bq7FRugKLS+Hcfz1EwIIDeoBobdtkNKEOjD
-         Q1BA==
-X-Gm-Message-State: AOJu0YwbGEbErB9ScoQsrUHXAjZtICDo++B5UcwXazEKI1c2xcR3a1Ud
-	Yc7gomq53sLYSoPQ+lqOFzpcQIuV8zHNiqcoyIBOz05ekTiv3vowpp3J106pf8swRC/DBSKTkzH
-	hiVe44Q==
-X-Gm-Gg: ASbGncvzea4OqiAdK7VH/+KCOedxiOjuRD1sZLdyW/hWL91SES++sop+xGv6ZLZbWnl
-	S9mnIiH31x1gW/IwSW3sUsG0tKDymORORGuEsop1cmvHctCJFUNG36NQH0D9wjkvWEuhPzpxwSj
-	C46h+PNCNeJ5W7cs8U6oNM6liCYLh9dED3ARCGB49gu1y80xvu4RXgJtWyJjxlpmQ72lxg9bT+e
-	l4oclO1T7pig2eFr457vDIY4y6nA7MDi9cUHv9g+stO/2Q7UHmqtD8nQNWw71hDaNQsGaPAoRvm
-	Sr6tyd0rRWvGSOx/dMgSBRmwsNeiviflBFV7EYlKKCPO54olyyo+ChKlsij+8QgzpT2dLVgQIce
-	zokmRdR74i3qJ/niXhHly+nlMAhhgaIWS10JqFtSKULYM6RwOvp9BHYlLng==
-X-Google-Smtp-Source: AGHT+IGpJz0c4Kp0Q+SvxhMCBxOPLSNIX+UBCu8QcEi5s2hL37BgLs3b+hxsDfV1uPfVSpLp4qK7Rg==
-X-Received: by 2002:a05:6830:628d:b0:73e:a4b7:f8fa with SMTP id 46e09a7af769-7413dd30e28mr1187663a34.21.1753443951285;
-        Fri, 25 Jul 2025 04:45:51 -0700 (PDT)
-Received: from mail-ot1-f47.google.com (mail-ot1-f47.google.com. [209.85.210.47])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7412d2e8988sm639189a34.41.2025.07.25.04.45.50
+        bh=PlkE41QL6s4x1GqYESsGC6jimQ+2xKl71+VqMJsnR/Q=;
+        b=tVQjbHeK2kU4WTSRyi0sNjhakCsNusGW8YWcFHRBMK8mgMmwCMMHb44bUb30uuX/jt
+         +j2LEhaeNlg5LwjObtnJqyr1f60oD9lvs6yq+0W1+FxuHc+GjIBIlbfVAJoBrcNAmV46
+         2LX64IEVs3qKbri7Dxr8TyeShLfT+SJuyY7+VIAsxZ0qhGQWMPH1vnKGQqHpQ88L22sa
+         HQF95fib7es/ebyQ0+qwefw5LgvH/a6Yo4+2PDb6uwVjlj4sCJsLzxAVlDUaYpKJEMxr
+         MOG3cYyfpGE6Rd83T/WG3+OQoeEJbSjta4/opsy57JGdGdBbMolCBXA0tXaAuiOgqYfJ
+         OViQ==
+X-Gm-Message-State: AOJu0Yw8ox6RkCpxjtHlFHWXVFlMynLHkeeV0hw88XFSUk6osX49e3pG
+	WLKz3oT6eqEV08khxGsyYGgK0ytAaSAWPhK4R9yH5gsglri9s4nEfy51uWpaWfT1gI5AqHI2tPC
+	XerF1qg==
+X-Gm-Gg: ASbGnctr4u0qRdPYoR/Z5PW6X4xmkC2rgIuqKIQxRarhFG55EP5wqS0leGt2mUBJb7i
+	nTDufrLKITecWpkGhhW3JP/NyIKx9SJBzRBOoXcM6g8SPsXRRV1fv9r5ByrayN8q0oi8ph0ezaH
+	iXM9Ge1bVu28uYlJkXOR00MH+6VRAb5kKzG/7zL30wmAPCS6U8j541Zo6/EkVRPe1wQxLLjgpkg
+	dzwBkqu+i3bMP8xNySmq5hN3qR2OycPCOvDEo2HQDde4arSgEfi7Xfym4OLiMIXUcE0mqWricWJ
+	TEWKQeC0EPFr//iNJlU30moD25Q/Fyod0+hwJeaQuOZj2khCOfnpzZcz3NUiLRVW43VyT/pIroM
+	LdbmZ2EgIvkx5KYu5VVBgpuKcJ8sTmMGfDQxOxMWnWvz5JWlFaCJn1szIhw==
+X-Google-Smtp-Source: AGHT+IERYoUsP2KKqjShBhUP5bm3+B1XXDls2v8TeDZL6JI9SizFCwDAkjHJWX13DS5fRq8gvrm89A==
+X-Received: by 2002:a05:622a:1654:b0:4ab:7e22:8553 with SMTP id d75a77b69052e-4ae8ef89ebfmr14573551cf.12.1753443974248;
+        Fri, 25 Jul 2025 04:46:14 -0700 (PDT)
+Received: from mail-qv1-f53.google.com (mail-qv1-f53.google.com. [209.85.219.53])
+        by smtp.gmail.com with ESMTPSA id d75a77b69052e-4ae7e2c5de2sm23068581cf.13.2025.07.25.04.46.14
         for <linux-mediatek@lists.infradead.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 25 Jul 2025 04:45:51 -0700 (PDT)
-Received: by mail-ot1-f47.google.com with SMTP id 46e09a7af769-73e82d2ec9eso1196983a34.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 25 Jul 2025 04:45:50 -0700 (PDT)
-X-Received: by 2002:a05:6102:358d:b0:4eb:f003:a636 with SMTP id
- ada2fe7eead31-4fa3f8f1683mr313640137.0.1753440679035; Fri, 25 Jul 2025
- 03:51:19 -0700 (PDT)
+        Fri, 25 Jul 2025 04:46:14 -0700 (PDT)
+Received: by mail-qv1-f53.google.com with SMTP id 6a1803df08f44-6fac7147cb8so27037416d6.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 25 Jul 2025 04:46:14 -0700 (PDT)
+X-Received: by 2002:a05:6102:4a8f:b0:4e9:a2bd:b456 with SMTP id
+ ada2fe7eead31-4fa3feb1976mr334393137.12.1753439957846; Fri, 25 Jul 2025
+ 03:39:17 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com> <20250724083914.61351-25-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20250724083914.61351-25-angelogioacchino.delregno@collabora.com>
+References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com> <20250724083914.61351-39-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250724083914.61351-39-angelogioacchino.delregno@collabora.com>
 From: Fei Shao <fshao@chromium.org>
-Date: Fri, 25 Jul 2025 18:50:41 +0800
-X-Gmail-Original-Message-ID: <CAC=S1nhS8yY6iWNDfv4Lwz8zUJEy0nMxC5MVZGb983hDsg7bhA@mail.gmail.com>
-X-Gm-Features: Ac12FXxJVbrVgIPSlm6u4--DKBHxaHRjM_36IT45XEIgpl9bR5PM8dE-s5Wt-28
-Message-ID: <CAC=S1nhS8yY6iWNDfv4Lwz8zUJEy0nMxC5MVZGb983hDsg7bhA@mail.gmail.com>
-Subject: Re: [PATCH 24/38] arm64: dts: mediatek: mt7986a-bpi-r3: Fix SFP I2C
- node names
+Date: Fri, 25 Jul 2025 18:38:40 +0800
+X-Gmail-Original-Message-ID: <CAC=S1njc7_+EhDA_HrVsPfhYsrFEmeb5TQ55X+YOKE=NrpoCaA@mail.gmail.com>
+X-Gm-Features: Ac12FXzORC58mPF_B982fHDjnhtiL_-5O2nAq5PI4bkUJDNwvq8vw0VlaVEnRW8
+Message-ID: <CAC=S1njc7_+EhDA_HrVsPfhYsrFEmeb5TQ55X+YOKE=NrpoCaA@mail.gmail.com>
+Subject: Re: [PATCH 38/38] arm64: dts: mediatek: mt8516-pumpkin: Fix machine compatible
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: linux-mediatek@lists.infradead.org, robh@kernel.org, 
 	daniel.lezcano@linaro.org, mwalle@kernel.org, devicetree@vger.kernel.org, 
@@ -106,8 +105,8 @@ Cc: linux-mediatek@lists.infradead.org, robh@kernel.org,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250725_044552_510220_7F64639C 
-X-CRM114-Status: GOOD (  15.28  )
+X-CRM114-CacheID: sfid-20250725_044616_316531_2BCEA70D 
+X-CRM114-Status: GOOD (  14.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,62 +121,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 24, 2025 at 5:49=E2=80=AFPM AngeloGioacchino Del Regno
+On Thu, Jul 24, 2025 at 5:51=E2=80=AFPM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> The binding wants the node to be named "i2c-number", alternatively
-> "i2c@address", but those are named "i2c-gpio-number" instead.
+> This devicetree contained only the SoC compatible but lacked the
+> machine specific one: add a "mediatek,mt8516-pumpkin" compatible
+> to the list to fix dtbs_check warnings.
 >
-> Rename those to i2c-0, i2c-1 to adhere to the binding and suppress
-> dtbs_check warnings.
->
+> Fixes: 9983822c8cf9 ("arm64: dts: mediatek: add pumpkin board dts")
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
 abora.com>
-
-It'd be nice to mention in v2 (if needed) that this patch also drops
-redundant #address-cells and #size-cells, but it's minor.
 
 Reviewed-by: Fei Shao <fshao@chromium.org>
 
 > ---
->  arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts | 8 ++------
->  1 file changed, 2 insertions(+), 6 deletions(-)
+>  arch/arm64/boot/dts/mediatek/mt8516-pumpkin.dts | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts b/a=
-rch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-> index ed79ad1ae871..6d2762866a1a 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-> @@ -64,23 +64,19 @@ wps-key {
->         };
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8516-pumpkin.dts b/arch/arm64=
+/boot/dts/mediatek/mt8516-pumpkin.dts
+> index cce642c53812..3d3db33a64dc 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8516-pumpkin.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8516-pumpkin.dts
+> @@ -11,7 +11,7 @@
 >
->         /* i2c of the left SFP cage (wan) */
-> -       i2c_sfp1: i2c-gpio-0 {
-> +       i2c_sfp1: i2c-0 {
->                 compatible =3D "i2c-gpio";
->                 sda-gpios =3D <&pio 16 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAI=
-N)>;
->                 scl-gpios =3D <&pio 17 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAI=
-N)>;
->                 i2c-gpio,delay-us =3D <2>;
-> -               #address-cells =3D <1>;
-> -               #size-cells =3D <0>;
->         };
+>  / {
+>         model =3D "Pumpkin MT8516";
+> -       compatible =3D "mediatek,mt8516";
+> +       compatible =3D "mediatek,mt8516-pumpkin", "mediatek,mt8516";
 >
->         /* i2c of the right SFP cage (lan) */
-> -       i2c_sfp2: i2c-gpio-1 {
-> +       i2c_sfp2: i2c-1 {
->                 compatible =3D "i2c-gpio";
->                 sda-gpios =3D <&pio 18 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAI=
-N)>;
->                 scl-gpios =3D <&pio 19 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAI=
-N)>;
->                 i2c-gpio,delay-us =3D <2>;
-> -               #address-cells =3D <1>;
-> -               #size-cells =3D <0>;
->         };
->
->         leds {
+>         memory@40000000 {
+>                 device_type =3D "memory";
 > --
 > 2.50.1
 >
