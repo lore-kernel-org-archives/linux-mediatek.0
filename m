@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E6F5C87FD1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jul 2025 11:20:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9558DC87FCA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jul 2025 11:25:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=29HDb0CStjqCTbdMTaT8ki881uLabi0viRhzF0Cw5Io=; b=cCg5z85z39oDFZYFFA87ZFaoDb
-	CN7jr8OvxFKxTHpiFHRbgtMQDOpXFTdpD3YaDaoIKDPiT67fmGKIjW5Ny+JvE80Kh2AjlYHqthdUI
-	K5AAFAFVtYd7Kij5ced6SZcb9xtP5qwHHuT3n+uXxI0SlSkEbKt3kdWb8NJ3pSJd4SsXlgFlDDBnz
-	0bqaWlzVWyGN/KWZM64axrGjciB8xfikbda6OcK0mGL7Wwl4SNWHajl1+EQ+lNEkcFTtEoAj8IkuS
-	uHBfXbZd9RkB+iMuHSaMtChg74LvwPu92LAIm3mHhBOvuXDSAriy2qAYwyIKB9atrHiSjXPrT9LtM
-	g4+AwSrQ==;
+	bh=YfE909p8Iq119G3J/2SxiBSXlMMdz4SFa3hpgANK2k8=; b=aWMEWh2zbTr86z4wTA83hxxcjF
+	ZpG9z0cn2QVnxLHHcdzd+fEzhrIYlEFjM+XZsDD8KnDxTERak5zniVSPX+lpIfU16YP+XHDcfkc5e
+	TAmAIxiKoVjVO/LlTVL4qY1aRh/DM8HVNvlZX3cxRUh9HtxhL6HjHeaR7vcwmlaWakv0CD4wmGpny
+	kYC4NbMYZhBAtnfMW3Mz3ZPtEbsmVY7GzuIojT5ON4qPL2SkdkPWHUfaTC//N3sQgQwetASXMnBoT
+	HuKQdid6fpHtDrrisQUd3R6cBAr5g5LezxB8TPqjzqBzMfOYT4eYgRvJHd/ucMqWYAfQ6X1p5OTD/
+	dQGf5e5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ufGTM-00000009hEE-0B6Q;
-	Fri, 25 Jul 2025 11:20:20 +0000
-Received: from mail-ot1-x334.google.com ([2607:f8b0:4864:20::334])
+	id 1ufGYE-00000009hlB-0OCn;
+	Fri, 25 Jul 2025 11:25:22 +0000
+Received: from mail-ot1-x329.google.com ([2607:f8b0:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ufFps-00000009cSX-2vtY
+	id 1ufG0e-00000009dWk-2f2k
 	for linux-mediatek@lists.infradead.org;
-	Fri, 25 Jul 2025 10:39:33 +0000
-Received: by mail-ot1-x334.google.com with SMTP id 46e09a7af769-73e810dc01aso1103444a34.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 25 Jul 2025 03:39:32 -0700 (PDT)
+	Fri, 25 Jul 2025 10:50:41 +0000
+Received: by mail-ot1-x329.google.com with SMTP id 46e09a7af769-73e88bc3891so1125509a34.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 25 Jul 2025 03:50:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1753439971; x=1754044771; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1753440639; x=1754045439; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=29HDb0CStjqCTbdMTaT8ki881uLabi0viRhzF0Cw5Io=;
-        b=m1y7foVU/nh0JKLYm1Q/T/e7tS5EfaYeGjXu4j8omIX1YGKEzn4kJdm3taHReze1VJ
-         fS2c9MPlFW8akJ7ftRBSXmCsFX0NDVKvr4TyrH/VUvg/HS0sOHUVat6XKcq9EFndKJMf
-         AKu+nLlNKlzkEfa37ILLRjf0CgtqD0v7ooYjY=
+        bh=YfE909p8Iq119G3J/2SxiBSXlMMdz4SFa3hpgANK2k8=;
+        b=WV/3bWKmqMmpf23slxG+WVpYy1JMlsPbfUMCYnk2M9FWNy2ez2j7FRIHUbMHbSpffb
+         hBYeqZ6tYdG9q8o6ImQew2I+ILR8j4bWsy6hPPZlbvWW2yZkTVibYOe1tLRuy2Wkr+Uu
+         nwdYqPK+EHKJZ3bobPcdTSFhiHwvGHQKD2b5w=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1753439971; x=1754044771;
+        d=1e100.net; s=20230601; t=1753440639; x=1754045439;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=29HDb0CStjqCTbdMTaT8ki881uLabi0viRhzF0Cw5Io=;
-        b=qg2NfrDdOzhcTQd7NIyygtzgBw/HMmF0zCVwJYBy+MGt8jpciJPzZZHeQaOdTp9hKH
-         hseo1WJ8RlEF7zDe68ZGeTZSrZiOnoYUto0jdc/kGcvBhkXG4M+mpMsupsbxCioSgZ41
-         S0d7q5LUOKM5Cxewwb6D0/HvBz7lvpLJlF+BxB3xALxoits3s86PnR/8ho+9rMJWSSfI
-         w16lhzU5tZ/V2iauRt/Rg1DNJKFQt+MDUBFwE2phK9NSymAcGPgO0FcncdOHthluA1PJ
-         VuGHFZPav33GCKksPZVyMFLPKCnnWhtWOCDxL25dXxX1zoEGIzhD/tZAHOdAC4YnSQet
-         RFEw==
-X-Gm-Message-State: AOJu0YxPgEPaQMY7GOXJmBwQy5dXs0LZK8UQhSvEURHWzdA1swnLKz6P
-	jkp3Of3LExetkHcRtN3jh9g4rDzMMp/NC4H6RtlgN//Vx+2teJyHk47WL7BqyshEOkwT4fpg8yt
-	RES+54A==
-X-Gm-Gg: ASbGncsl04sSCLDBoxS3rQdr2PI3xVDdKMApT0+bjJQKZerJQrd11rci4y7qGeM9FRU
-	XsXFC9dxin7quCL6er786Tg1bJF5aJL6rKdVtMwxUfnd45B49KenUruQ2wMpFTK/x3Z1baVBTVY
-	RtaHkMivBI73DncORhS/S67O+IeLIGWDg/Y1OHeRgjBt6L6FZ9B1lC7lchYMj/YyzXyUR8s7muS
-	mVyEaJUFgKNP56TAXuyW+x2mG/tANaEHFYdcgtDi3AkOySYXRA+cmTFWbnlQYhAb1J3vpjELY5j
-	m7/ZgFLRkEAOTomuPhxChvM+m+pKio3h7O5idxUarkuhQu+8sHBoq5VHe6303t46D/sdDOQMU/Y
-	HZf/NBkecFQg20lvAMZ2nlLXnI703PbGZTjcUjc+PS1WM2eQcLNGdy8FkdQ==
-X-Google-Smtp-Source: AGHT+IHpP4/NE179auQ8rDdbzMP+yuzFfQQ/OC62w/U9KVC7hZHWZEB07Hk3WB53rjgoKKQPC0Hlpw==
-X-Received: by 2002:a05:6830:448f:b0:73c:8758:bf62 with SMTP id 46e09a7af769-7413dca8325mr797713a34.13.1753439971439;
-        Fri, 25 Jul 2025 03:39:31 -0700 (PDT)
-Received: from mail-ot1-f49.google.com (mail-ot1-f49.google.com. [209.85.210.49])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7412d2eb6d5sm620807a34.45.2025.07.25.03.39.30
+        bh=YfE909p8Iq119G3J/2SxiBSXlMMdz4SFa3hpgANK2k8=;
+        b=D9cfFRjOptJmSDzyv9KYhyAHzdmnrUPyHenpTVxIMu+sOXMPchucrktItBysRghkMF
+         e9SVFWr2zYUFY2tPU08v3ccOoA6834aMkOVETt0SlkqM2o/h4x3tHss8dI2U0pyGAZ9t
+         q5J2dOmTjQyj0GJPjrx0JgZyNpXxm/l2Nibvu3z/H3l4d+kpboziTk2QIwjjZYkejj67
+         BYo0uyvjw+8b8S6QIGc/NDTXLvmrIkxgHOKAZ4O/nYJJyho0my0f7cLoWvKlYLtK9xo8
+         9k4nvdbCBxr3PvmHU4JovLaLVFCjIbtrDyafOhAmKluZuSvTt7d4VkzjNRCq5gYsIAK+
+         z3Qg==
+X-Gm-Message-State: AOJu0YypKTR3FOVck75e1ybc111e8q6uOCzKDOby2O3+2kwtWsPQIssf
+	TF8eZ0lCAkeUE48MfxlIqqwiPt2jurSDCYBK1SFtq5OTRwK0XjkCAyY+o3br5vyfCz6Be5i8MCC
+	jMRgsEA==
+X-Gm-Gg: ASbGncu+tLIAENdoveHq3Vtpj+1IXDvxa1ycC0hNVJ1uqpSpJZfhcnjKYaB0b3FGNou
+	yD0diRkZF5zdlC2ZnIRtXWvvrGp6k9di8hbswsj1004NcpIxo2nuVAge09Ky620wFlm+55UeSUP
+	tSFB+HKTfNJgHIba5n82/enIBPP0blg/sbEeEys+46WZNh/8IAVzHbhAyZAbQ/NSuC2DYXvrDlv
+	7PrdOX4URuxWobPSle7cdxrF76qVjREkoWUk+OM1T0fHS5FgOG+7jCrgv61GTZFTQqKzp28CjyL
+	NvsMgXeX3hTpKPFVYxw8Wu4p9NqsMQ52Njxx2AIEXcM/Pf1ety0stzDJ1ipgAEAKMYHN8XJlMEf
+	Lp15j93d5y4V7K9C85oO6re/W7yDs/3U/QSKrXYuLXe6vBZRIDnNO7b7gBQ==
+X-Google-Smtp-Source: AGHT+IFytdfssfl9vokE8XBsBODEz+QCefbKGt8Mwku2Q580mvBjhWcwADi0lNCnJ5XerzKEabSlnw==
+X-Received: by 2002:a05:6830:43a8:b0:72b:94d8:9466 with SMTP id 46e09a7af769-7413ddb987amr714541a34.28.1753440639447;
+        Fri, 25 Jul 2025 03:50:39 -0700 (PDT)
+Received: from mail-oa1-f44.google.com (mail-oa1-f44.google.com. [209.85.160.44])
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7412d2ad45esm627612a34.36.2025.07.25.03.50.38
         for <linux-mediatek@lists.infradead.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 25 Jul 2025 03:39:31 -0700 (PDT)
-Received: by mail-ot1-f49.google.com with SMTP id 46e09a7af769-73e9f2d8f41so793263a34.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 25 Jul 2025 03:39:30 -0700 (PDT)
-X-Received: by 2002:a05:6102:5799:b0:4e5:ade7:eb7c with SMTP id
- ada2fe7eead31-4fa3fac29femr330925137.12.1753439652105; Fri, 25 Jul 2025
- 03:34:12 -0700 (PDT)
+        Fri, 25 Jul 2025 03:50:39 -0700 (PDT)
+Received: by mail-oa1-f44.google.com with SMTP id 586e51a60fabf-2ea6dd628a7so1030210fac.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 25 Jul 2025 03:50:38 -0700 (PDT)
+X-Received: by 2002:a05:6102:3713:b0:4e9:b7e3:bdcd with SMTP id
+ ada2fe7eead31-4fa3fad468amr285963137.12.1753440273293; Fri, 25 Jul 2025
+ 03:44:33 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com> <20250724083914.61351-35-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20250724083914.61351-35-angelogioacchino.delregno@collabora.com>
+References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com> <20250724083914.61351-24-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250724083914.61351-24-angelogioacchino.delregno@collabora.com>
 From: Fei Shao <fshao@chromium.org>
-Date: Fri, 25 Jul 2025 18:33:36 +0800
-X-Gmail-Original-Message-ID: <CAC=S1nhfg_qD044bO8EOV=MckoNVtJXQ47XBeDFMPwJ9goHg-A@mail.gmail.com>
-X-Gm-Features: Ac12FXyYX3cOTb6n6096sUC59Z8DCV1ifB6_qbpW9gH46tmstAs2fiwwoJYhrGs
-Message-ID: <CAC=S1nhfg_qD044bO8EOV=MckoNVtJXQ47XBeDFMPwJ9goHg-A@mail.gmail.com>
-Subject: Re: [PATCH 34/38] arm64: dts: mediatek: mt8195: Fix ranges for jpeg
- enc/decoder nodes
+Date: Fri, 25 Jul 2025 18:43:57 +0800
+X-Gmail-Original-Message-ID: <CAC=S1njhu11nHpyMULbK6PE-BLrBMq+d397pDU6gBzgo7xivXg@mail.gmail.com>
+X-Gm-Features: Ac12FXyc7RkTIKa4HnSlf_SM-GYdwIREUn6AcAkOBKhNuekdCdvFzy29o7Ufs68
+Message-ID: <CAC=S1njhu11nHpyMULbK6PE-BLrBMq+d397pDU6gBzgo7xivXg@mail.gmail.com>
+Subject: Re: [PATCH 23/38] arm64: dts: mediatek: mt7986a: Fix PCI-Express
+ T-PHY node address
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: linux-mediatek@lists.infradead.org, robh@kernel.org, 
 	daniel.lezcano@linaro.org, mwalle@kernel.org, devicetree@vger.kernel.org, 
@@ -106,8 +106,8 @@ Cc: linux-mediatek@lists.infradead.org, robh@kernel.org,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250725_033932_731653_9B03D208 
-X-CRM114-Status: GOOD (  15.51  )
+X-CRM114-CacheID: sfid-20250725_035040_688497_FD792391 
+X-CRM114-Status: GOOD (  15.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,155 +122,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 24, 2025 at 5:51=E2=80=AFPM AngeloGioacchino Del Regno
+On Thu, Jul 24, 2025 at 5:49=E2=80=AFPM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> The jpeg decoder main node is under the soc bus but currently has
-> no ranges or reg specified, while the children do, and this is
-> wrong in multiple aspects.
+> The PCIe TPHY is under the soc bus, which provides MMIO, and all
+> nodes under that must use the bus, otherwise those would clearly
+> be out of place.
 >
-> The very same is also valid for the jpeg encoder node.
+> Add ranges to the PCIe tphy and assign the address to the main
+> node to silence a dtbs_check warning, and fix the children to
+> use the MMIO range of t-phy.
 >
-> Rename the decoder and encoder nodes to "jpeg-decoder@1a040000"
-> and to "jpeg-encoder@1a030000" respectively, and change their
-> children to use the newly defined ranges.
->
+> Fixes: 963c3b0c47ec ("arm64: dts: mediatek: fix t-phy unit name")
+> Fixes: 918aed7abd2d ("arm64: dts: mt7986: add pcie related device nodes")
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
 abora.com>
-
-Despite now jpeg-encoder isn't sorted in order, I guess we all agree
-it's much easier to read in this way, so
 
 Reviewed-by: Fei Shao <fshao@chromium.org>
 
 > ---
->  arch/arm64/boot/dts/mediatek/mt8195.dtsi | 30 +++++++++++++-----------
->  1 file changed, 16 insertions(+), 14 deletions(-)
+>  arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
 >
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/d=
-ts/mediatek/mt8195.dtsi
-> index dd065b1bf94a..35b10082bb89 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> @@ -3014,7 +3014,7 @@ venc: video-codec@1a020000 {
->                         #size-cells =3D <2>;
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/=
+dts/mediatek/mt7986a.dtsi
+> index 559990dcd1d1..3211905b6f86 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> @@ -428,16 +428,16 @@ pcie_intc: interrupt-controller {
+>                         };
 >                 };
 >
-> -               jpgdec-master {
-> +               jpeg-decoder@1a040000 {
->                         compatible =3D "mediatek,mt8195-jpgdec";
->                         power-domains =3D <&spm MT8195_POWER_DOMAIN_VDEC1=
->;
->                         iommus =3D <&iommu_vdo M4U_PORT_L19_JPGDEC_WDMA0>=
-,
-> @@ -3025,11 +3025,12 @@ jpgdec-master {
->                                  <&iommu_vdo M4U_PORT_L19_JPGDEC_BUFF_OFF=
-SET0>;
->                         #address-cells =3D <2>;
->                         #size-cells =3D <2>;
+> -               pcie_phy: t-phy {
+> +               pcie_phy: t-phy@11c00000 {
+>                         compatible =3D "mediatek,mt7986-tphy",
+>                                      "mediatek,generic-tphy-v2";
 > -                       ranges;
-> +                       ranges =3D <0 0 0 0x1a040000 0 0x20000>,
-> +                                <1 0 0 0x1b040000 0 0x10000>;
+> -                       #address-cells =3D <2>;
+> -                       #size-cells =3D <2>;
+> +                       ranges =3D <0 0 0x11c00000 0x20000>;
+> +                       #address-cells =3D <1>;
+> +                       #size-cells =3D <1>;
+>                         status =3D "disabled";
 >
-> -                       jpgdec@1a040000 {
-> +                       jpgdec@0,0 {
->                                 compatible =3D "mediatek,mt8195-jpgdec-hw=
-";
-> -                               reg =3D <0 0x1a040000 0 0x10000>;/* JPGDE=
-C_C0 */
-> +                               reg =3D <0 0 0 0x10000>;/* JPGDEC_C0 */
->                                 iommus =3D <&iommu_vdo M4U_PORT_L19_JPGDE=
-C_WDMA0>,
->                                          <&iommu_vdo M4U_PORT_L19_JPGDEC_=
-BSDMA0>,
->                                          <&iommu_vdo M4U_PORT_L19_JPGDEC_=
-WDMA1>,
-> @@ -3042,9 +3043,9 @@ jpgdec@1a040000 {
->                                 power-domains =3D <&spm MT8195_POWER_DOMA=
-IN_VDEC0>;
->                         };
->
-> -                       jpgdec@1a050000 {
-> +                       jpgdec@0,10000 {
->                                 compatible =3D "mediatek,mt8195-jpgdec-hw=
-";
-> -                               reg =3D <0 0x1a050000 0 0x10000>;/* JPGDE=
-C_C1 */
-> +                               reg =3D <0 0 0x10000 0x10000>;/* JPGDEC_C=
-1 */
->                                 iommus =3D <&iommu_vdo M4U_PORT_L19_JPGDE=
-C_WDMA0>,
->                                          <&iommu_vdo M4U_PORT_L19_JPGDEC_=
-BSDMA0>,
->                                          <&iommu_vdo M4U_PORT_L19_JPGDEC_=
-WDMA1>,
-> @@ -3057,9 +3058,9 @@ jpgdec@1a050000 {
->                                 power-domains =3D <&spm MT8195_POWER_DOMA=
-IN_VDEC1>;
->                         };
->
-> -                       jpgdec@1b040000 {
-> +                       jpgdec@1,0 {
->                                 compatible =3D "mediatek,mt8195-jpgdec-hw=
-";
-> -                               reg =3D <0 0x1b040000 0 0x10000>;/* JPGDE=
-C_C2 */
-> +                               reg =3D <1 0 0 0x10000>;/* JPGDEC_C2 */
->                                 iommus =3D <&iommu_vpp M4U_PORT_L20_JPGDE=
-C_WDMA0>,
->                                          <&iommu_vpp M4U_PORT_L20_JPGDEC_=
-BSDMA0>,
->                                          <&iommu_vpp M4U_PORT_L20_JPGDEC_=
-WDMA1>,
-> @@ -3088,7 +3089,7 @@ vdosys0: syscon@1c01a000 {
->                 };
->
->
-> -               jpgenc-master {
-> +               jpeg-encoder@1a030000 {
->                         compatible =3D "mediatek,mt8195-jpgenc";
->                         power-domains =3D <&spm MT8195_POWER_DOMAIN_VENC_=
-CORE1>;
->                         iommus =3D <&iommu_vpp M4U_PORT_L20_JPGENC_Y_RDMA=
->,
-> @@ -3097,11 +3098,12 @@ jpgenc-master {
->                                         <&iommu_vpp M4U_PORT_L20_JPGENC_B=
-SDMA>;
->                         #address-cells =3D <2>;
->                         #size-cells =3D <2>;
-> -                       ranges;
-> +                       ranges =3D <0 0 0 0x1a030000 0 0x10000>,
-> +                                <1 0 0 0x1b030000 0 0x10000>;
->
-> -                       jpgenc@1a030000 {
-> +                       jpgenc@0,0 {
->                                 compatible =3D "mediatek,mt8195-jpgenc-hw=
-";
-> -                               reg =3D <0 0x1a030000 0 0x10000>;
-> +                               reg =3D <0 0 0 0x10000>;
->                                 iommus =3D <&iommu_vdo M4U_PORT_L19_JPGEN=
-C_Y_RDMA>,
->                                                 <&iommu_vdo M4U_PORT_L19_=
-JPGENC_C_RDMA>,
->                                                 <&iommu_vdo M4U_PORT_L19_=
-JPGENC_Q_TABLE>,
-> @@ -3112,9 +3114,9 @@ jpgenc@1a030000 {
->                                 power-domains =3D <&spm MT8195_POWER_DOMA=
-IN_VENC>;
->                         };
->
-> -                       jpgenc@1b030000 {
-> +                       jpgenc@1,0 {
->                                 compatible =3D "mediatek,mt8195-jpgenc-hw=
-";
-> -                               reg =3D <0 0x1b030000 0 0x10000>;
-> +                               reg =3D <1 0 0 0x10000>;
->                                 iommus =3D <&iommu_vpp M4U_PORT_L20_JPGEN=
-C_Y_RDMA>,
->                                                 <&iommu_vpp M4U_PORT_L20_=
-JPGENC_C_RDMA>,
->                                                 <&iommu_vpp M4U_PORT_L20_=
-JPGENC_Q_TABLE>,
+> -                       pcie_port: pcie-phy@11c00000 {
+> -                               reg =3D <0 0x11c00000 0 0x20000>;
+> +                       pcie_port: pcie-phy@0 {
+> +                               reg =3D <0 0x20000>;
+>                                 clocks =3D <&clk40m>;
+>                                 clock-names =3D "ref";
+>                                 #phy-cells =3D <1>;
 > --
 > 2.50.1
 >
