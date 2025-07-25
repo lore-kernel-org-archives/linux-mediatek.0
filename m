@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28E11C87FD3
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93CC0C87FD5
 	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jul 2025 12:18:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,76 +12,75 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5hJBa13s79OQWhYLxMwSe1UwJVG9FUdchi7fOARwLxY=; b=GpLwuVymCUd0eqqSchKcbI2GkJ
-	dl7RqNSD50/K8WjRkdMqkysANz0ffsEODFvj2DLchbp4ygDAX2uFU9Di9QnZCgSi2egyfR0IZVD9b
-	a1LxFEYOJ+F3zvO0NCa+KSwjCzy3ifhdXZuXKBkXh5wS8yJiXgRTiCrRYZGikt/kSitPxy1sIVs5C
-	N73y/WPQbubjKZBnqXHDOOU93BDqAor469tQbssOErJLk1Sx1NJ7o5uPGeXCEXPu9G0S7vMoWPp3Y
-	UZU7Cme+qASJUCI9K49cjWrjGvJ9gj5Qs0AKYyIL5r7iXGUn7u41nqgQNmtO9GmCfkJr2XUBHJMUZ
-	w9RfZqOw==;
+	bh=IaRYlYWMnL5FdToAvFBY21N9TEhebXI6JAmJStjizl0=; b=h37pp5kbS3GKsxbW/tWchZqnyL
+	ZyjKeZoSjn2KKpIcYDi1LcE+KJ1yBDZGec1L/8vfw8kw0CbvEQ+3iE50wFN45qypDkR+YbRWG3flj
+	wUd/aJt289DxjKaHMk7NJfeUJrYgL8MwNDDazTZZdgypoIwDEqCyXlazJ6JSRjevYH7hdlzdQcgxs
+	EpdyzgpzqVnqwHxuLhBps11J+TMu/xcYB/1jw5sGVFC2U+s8dR4J2nuE4OMJteYddry9lJmeLQr7Y
+	jTNHGtlElmt69w/RNokLzxrz8FE/ejmApTWph4t5V6WoUecvqueYTmu6gjEnwPuXOfV/XJ3YUZyrG
+	dVbib04Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ufHNT-00000009nlK-03yd;
+	id 1ufHNT-00000009nld-1Ws2;
 	Fri, 25 Jul 2025 12:18:19 +0000
-Received: from mail-qt1-x82b.google.com ([2607:f8b0:4864:20::82b])
+Received: from mail-qk1-x72d.google.com ([2607:f8b0:4864:20::72d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ufH3R-00000009lVW-1qwF
+	id 1ufH3X-00000009lVr-1Lep
 	for linux-mediatek@lists.infradead.org;
-	Fri, 25 Jul 2025 11:57:38 +0000
-Received: by mail-qt1-x82b.google.com with SMTP id d75a77b69052e-4ab93f24dc3so37276561cf.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 25 Jul 2025 04:57:37 -0700 (PDT)
+	Fri, 25 Jul 2025 11:57:44 +0000
+Received: by mail-qk1-x72d.google.com with SMTP id af79cd13be357-7e62a1cbf83so193225585a.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 25 Jul 2025 04:57:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1753444656; x=1754049456; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1753444662; x=1754049462; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=5hJBa13s79OQWhYLxMwSe1UwJVG9FUdchi7fOARwLxY=;
-        b=ifWy7R9lYW8w5+BgeTziADZngsq/QW7hKcqW8jD2LbFojNQyZz/bZ2yorS3W7zIsdE
-         ukvAWT/v/YW2Hvq4k0EWZXodWXCEfb+1Wei0zQBHq8SL7HavPmQu6zO56yU4jnV4KbkM
-         BjnlF5+UuRbpHM+QlYh72Ca11U41VielSdsWY=
+        bh=IaRYlYWMnL5FdToAvFBY21N9TEhebXI6JAmJStjizl0=;
+        b=M11UNfHk0F2w6yIspbyGwa7EwfJN7RuAgLQVGUFE5KkNeGJQSqwTjMU4pfw8a8nNQB
+         56xCpDADkWy5cejPTb0j6bWsZIKXRIwwV4H4lb85IDNLM+/e4sQWh9fzpS12MuZhV1QP
+         15uNMjWMANHqN0FZcKWZC+VNguj1GXBBUCAC4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1753444656; x=1754049456;
+        d=1e100.net; s=20230601; t=1753444662; x=1754049462;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=5hJBa13s79OQWhYLxMwSe1UwJVG9FUdchi7fOARwLxY=;
-        b=BjGPcmuZBX5e2sAKwSO/F7lhj0CUPn48XUuMCCR3LgfjZwI2wG66D4gZJJg8WGKiq2
-         mBBbk2Kw7nNc242nMnIN/lyifZcAzMSAIB/ilXxhYZhr/DZhtUOZmW+8OtSd1mitCmMf
-         MK5QBVpL3BA7NMRbjG4wnSlsUo8JACB71uLsiVUDSHlbHjPnyPeqJzv9/4svIAglqwJ3
-         4cSiRI261uv/5g5BSbJYKTEoI/mYPk0UOtbC/RU1UXGqVN9+Zs7NEH+8QrZkGRPs3rm0
-         ziLXgb13snAvfjhtoUK8v2T8BHS4bmQ+zFsWakSM6q4yXE4N5qH/j4f2c7ffHkScy/4j
-         HzxA==
-X-Gm-Message-State: AOJu0YzrN9nSjkk4rDvE/RteP8CPmqRTnJWtrb6seDcGsx95rkBrt5/W
-	z2cL+JbWfnx9mc97UpzX3M69QxDbW1BrtA19VRSZfLi+5q6oZiVK4pwuEynMNgz3pPu2swydPHD
-	3JHQ=
-X-Gm-Gg: ASbGncsu1wSY49bu4FPDB3cxWONMTnUeofu2eHBdjc8+FYQA+cM7iodE5sGBtmFZFNp
-	P9vyzkfejg45rvm9S0tnbK2cXatw3XEQOomnBynjtPf9J+ZHdhdLZlEPuACBBXCxo3JhKNAatEf
-	dxb4S9ujH0Ybnbxrf/DG9EMANIPGjf1eLmjp4S0VclAx/Kh5lX02/h6E5/PSiPSTAiEpmYs2/rW
-	0VTK1xF96ULbYMRpmBp2r14D3rPjM1GJYH+OTUr9JJQGSb1w09TGcPZ93hX0080C4shhxm7mZ65
-	xLoj43SS3BiEunn1jzFJuIXpXZ0bjGBTwjTYLQ7abE/Xzr8Vjs6y9GFCi0vJqHcKwrej23Y/EYB
-	m7K4jYBBUvRvsox2WEeEYkqJRXXJ4bDlNazqAaXT9ruBwKhIoDE9tY/HJSg==
-X-Google-Smtp-Source: AGHT+IHZeNBZWKA4a6kTuEerCdJhdrTrtVp490Z8gbsTn6I5zB9X217eo77lh2RSUE2Qb7wUxwlIAA==
-X-Received: by 2002:ad4:5d62:0:b0:704:8fa0:969e with SMTP id 6a1803df08f44-707205e6db0mr18268836d6.41.1753444656132;
-        Fri, 25 Jul 2025 04:57:36 -0700 (PDT)
-Received: from mail-qv1-f43.google.com (mail-qv1-f43.google.com. [209.85.219.43])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-707165d08c3sm18078536d6.37.2025.07.25.04.57.36
+        bh=IaRYlYWMnL5FdToAvFBY21N9TEhebXI6JAmJStjizl0=;
+        b=sYncNpU/Ju0CUZIKSx45Kv3FZC37AR5tK7von7/RM5/l50h8XQ5tQ6bXD2VDFoox2s
+         ivUT18kDKkF+inWaB9mXc35PCqG4MwECvk3Noyt0Fp+SKcAIE73kycug0cXsAQ3+3w26
+         txWTFCQPQXen0oOHswhS5/fun+XN1Bm98518zm78ISa68LaJU+l7rWRQJ8EZsB5nFgUM
+         zOcdJXGllZ7TIM+okTCIN3gcjLYr82b8fsSHvY/wPjnRYBWQ49YJj6Z3VDtwU+lx30iQ
+         k5xPMwZyQKwQrb35nUQpiv+GHAtjpi1kPPXi0WhlUQV1Sp0j13k6XAAqaAaTLpco5n8C
+         bo8Q==
+X-Gm-Message-State: AOJu0YytLgAAWnQV/d7MpsJtKBYQJ+GXReleLOzya7h0v+uGH6v27/Qw
+	eDPr0oYsHJ6zCmBYGCPNPj2UbEPon6NTE7sBqmqPt4m5z7Gcj2OlRMc7VrvIMk58gHUkwvqROjW
+	s6no=
+X-Gm-Gg: ASbGnctsTqIsXal/z+zuLBaf6DryJ8BOoX9CZZYxoTjTFrv3Efql8qN9xS/WbDjbh5O
+	hEOXC/x6i7OTTZctqGUw//WdBU+9B04pn1H+piYar4nMLdfusYHFrt0cuNNBf1c5asMS6NNXdqd
+	9NyFHhwWfoKolg7r39Q8hXgbUU85IQ3y+n6/n8fon7nbUvyaLB9msdJRR7hWAWiwf46FagzT8M9
+	cCaLBvvbsDj0lyxUFGFFz2qOsjbWQK3x6x3q9d4E0d8LkDI9EHyMyoTjDnVNCb+aefUQig59SdP
+	wx+eavGLn1FWOTGVf6PUrjSaIErTwNPm9TmQOcKfnNWSvlUUUpkXmu68eZNBLzQoBhC8Uskt6Lx
+	202gJ6R1GLaiWMJ/KL0uSO0x+a927GwKZXqtJaRqG8R3tGB+MykYvJwvFBw==
+X-Google-Smtp-Source: AGHT+IE2z3exOFuZojgWs0DFvYvABtPERJ4nt4Kp5av9zPDMzZ+KTXxsQxtrXKnkO4yuj/p1dtWh9g==
+X-Received: by 2002:a05:620a:4e1:b0:7e3:397c:8c24 with SMTP id af79cd13be357-7e63bf9d592mr152917085a.48.1753444662009;
+        Fri, 25 Jul 2025 04:57:42 -0700 (PDT)
+Received: from mail-qv1-f51.google.com (mail-qv1-f51.google.com. [209.85.219.51])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-7e632d6413csm239067685a.29.2025.07.25.04.57.41
         for <linux-mediatek@lists.infradead.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 25 Jul 2025 04:57:36 -0700 (PDT)
-Received: by mail-qv1-f43.google.com with SMTP id 6a1803df08f44-7072628404dso2121946d6.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 25 Jul 2025 04:57:36 -0700 (PDT)
-X-Received: by 2002:a05:6102:6891:b0:4dd:b82d:e0de with SMTP id
- ada2fe7eead31-4fa3ff44195mr316348137.17.1753440787376; Fri, 25 Jul 2025
- 03:53:07 -0700 (PDT)
+        Fri, 25 Jul 2025 04:57:41 -0700 (PDT)
+Received: by mail-qv1-f51.google.com with SMTP id 6a1803df08f44-6fad4a1dc33so15994546d6.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 25 Jul 2025 04:57:41 -0700 (PDT)
+X-Received: by 2002:a05:6102:cce:b0:4e6:4e64:baeb with SMTP id
+ ada2fe7eead31-4fa3ff55fbamr323634137.17.1753441040390; Fri, 25 Jul 2025
+ 03:57:20 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com> <20250724083914.61351-20-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20250724083914.61351-20-angelogioacchino.delregno@collabora.com>
+References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com> <20250724083914.61351-18-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250724083914.61351-18-angelogioacchino.delregno@collabora.com>
 From: Fei Shao <fshao@chromium.org>
-Date: Fri, 25 Jul 2025 18:52:31 +0800
-X-Gmail-Original-Message-ID: <CAC=S1nguRWyG3ubmSFE95_zgsCjjq4dxGWr5ErV9-Yu2+mTmpw@mail.gmail.com>
-X-Gm-Features: Ac12FXzhNEGCOc6TL2wVpoG5kEXhC599YdNWu941VvXlO0dL7_W9Jc4if8EyMHA
-Message-ID: <CAC=S1nguRWyG3ubmSFE95_zgsCjjq4dxGWr5ErV9-Yu2+mTmpw@mail.gmail.com>
-Subject: Re: [PATCH 19/38] arm64: dts: mediatek: mt6795: Add mediatek,infracfg
- to iommu node
+Date: Fri, 25 Jul 2025 18:56:44 +0800
+X-Gmail-Original-Message-ID: <CAC=S1nh5bF6kZe7TFA_EGPGt8Xp_rfuc-rkeXgjRCU=QEtZQiw@mail.gmail.com>
+X-Gm-Features: Ac12FXw-hSTS0fHSbHXeHNK-nhzfyTLOXfpWf3gYQQXz8LA0IhEjugCIp682sPw
+Message-ID: <CAC=S1nh5bF6kZe7TFA_EGPGt8Xp_rfuc-rkeXgjRCU=QEtZQiw@mail.gmail.com>
+Subject: Re: [PATCH 17/38] arm64: dts: mediatek: mt6797: Fix pinctrl node names
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: linux-mediatek@lists.infradead.org, robh@kernel.org, 
 	daniel.lezcano@linaro.org, mwalle@kernel.org, devicetree@vger.kernel.org, 
@@ -106,8 +105,8 @@ Cc: linux-mediatek@lists.infradead.org, robh@kernel.org,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250725_045737_476137_879D4B94 
-X-CRM114-Status: GOOD (  12.20  )
+X-CRM114-CacheID: sfid-20250725_045743_355232_4FD82A56 
+X-CRM114-Status: GOOD (  11.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,11 +121,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 24, 2025 at 5:49=E2=80=AFPM AngeloGioacchino Del Regno
+On Thu, Jul 24, 2025 at 5:48=E2=80=AFPM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> The "M4U" IOMMU requires a handle to the infracfg to switch to
-> the 4gb/pae addressing mode: add it.
+> Change the pinctrl node names to adhere to the binding: the main
+> nodes are now named like "uart0-pins" and the children "pins-bus".
 >
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
 abora.com>
@@ -134,22 +133,106 @@ abora.com>
 Reviewed-by: Fei Shao <fshao@chromium.org>
 
 > ---
->  arch/arm64/boot/dts/mediatek/mt6795.dtsi | 1 +
->  1 file changed, 1 insertion(+)
+>  arch/arm64/boot/dts/mediatek/mt6797.dtsi | 40 ++++++++++++------------
+>  1 file changed, 20 insertions(+), 20 deletions(-)
 >
-> diff --git a/arch/arm64/boot/dts/mediatek/mt6795.dtsi b/arch/arm64/boot/d=
-ts/mediatek/mt6795.dtsi
-> index e5e269a660b1..38f65aad2802 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-> @@ -427,6 +427,7 @@ iommu: iommu@10205000 {
->                         clocks =3D <&infracfg CLK_INFRA_M4U>;
->                         clock-names =3D "bclk";
->                         interrupts =3D <GIC_SPI 146 IRQ_TYPE_LEVEL_LOW>;
-> +                       mediatek,infracfg =3D <&infracfg>;
->                         mediatek,larbs =3D <&larb0 &larb1 &larb2 &larb3>;
->                         power-domains =3D <&spm MT6795_POWER_DOMAIN_MM>;
->                         #iommu-cells =3D <1>;
+> diff --git a/arch/arm64/boot/dts/mediatek/mt6797.dtsi b/arch/arm64/boot/d=
+ts/mediatek/mt6797.dtsi
+> index 0e9d11b4585b..be401617dfd8 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt6797.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt6797.dtsi
+> @@ -135,71 +135,71 @@ pio: pinctrl@10005000 {
+>                 gpio-controller;
+>                 #gpio-cells =3D <2>;
+>
+> -               uart0_pins_a: uart0 {
+> -                       pins0 {
+> +               uart0_pins_a: uart0-pins {
+> +                       pins-bus {
+>                                 pinmux =3D <MT6797_GPIO234__FUNC_UTXD0>,
+>                                          <MT6797_GPIO235__FUNC_URXD0>;
+>                         };
+>                 };
+>
+> -               uart1_pins_a: uart1 {
+> -                       pins1 {
+> +               uart1_pins_a: uart1-pins {
+> +                       pins-bus {
+>                                 pinmux =3D <MT6797_GPIO232__FUNC_URXD1>,
+>                                          <MT6797_GPIO233__FUNC_UTXD1>;
+>                         };
+>                 };
+>
+> -               i2c0_pins_a: i2c0 {
+> -                       pins0 {
+> +               i2c0_pins_a: i2c0-pins {
+> +                       pins-bus {
+>                                 pinmux =3D <MT6797_GPIO37__FUNC_SCL0_0>,
+>                                          <MT6797_GPIO38__FUNC_SDA0_0>;
+>                         };
+>                 };
+>
+> -               i2c1_pins_a: i2c1 {
+> -                       pins1 {
+> +               i2c1_pins_a: i2c1-pins {
+> +                       pins-bus {
+>                                 pinmux =3D <MT6797_GPIO55__FUNC_SCL1_0>,
+>                                          <MT6797_GPIO56__FUNC_SDA1_0>;
+>                         };
+>                 };
+>
+> -               i2c2_pins_a: i2c2 {
+> -                       pins2 {
+> +               i2c2_pins_a: i2c2-pins {
+> +                       pins-bus {
+>                                 pinmux =3D <MT6797_GPIO96__FUNC_SCL2_0>,
+>                                          <MT6797_GPIO95__FUNC_SDA2_0>;
+>                         };
+>                 };
+>
+> -               i2c3_pins_a: i2c3 {
+> -                       pins3 {
+> +               i2c3_pins_a: i2c3-pins {
+> +                       pins-bus {
+>                                 pinmux =3D <MT6797_GPIO75__FUNC_SDA3_0>,
+>                                          <MT6797_GPIO74__FUNC_SCL3_0>;
+>                         };
+>                 };
+>
+> -               i2c4_pins_a: i2c4 {
+> -                       pins4 {
+> +               i2c4_pins_a: i2c4-pins {
+> +                       pins-bus {
+>                                 pinmux =3D <MT6797_GPIO238__FUNC_SDA4_0>,
+>                                          <MT6797_GPIO239__FUNC_SCL4_0>;
+>                         };
+>                 };
+>
+> -               i2c5_pins_a: i2c5 {
+> -                       pins5 {
+> +               i2c5_pins_a: i2c5-pins {
+> +                       pins-bus {
+>                                 pinmux =3D <MT6797_GPIO240__FUNC_SDA5_0>,
+>                                          <MT6797_GPIO241__FUNC_SCL5_0>;
+>                         };
+>                 };
+>
+> -               i2c6_pins_a: i2c6 {
+> -                       pins6 {
+> +               i2c6_pins_a: i2c6-pins {
+> +                       pins-bus {
+>                                 pinmux =3D <MT6797_GPIO152__FUNC_SDA6_0>,
+>                                          <MT6797_GPIO151__FUNC_SCL6_0>;
+>                         };
+>                 };
+>
+> -               i2c7_pins_a: i2c7 {
+> -                       pins7 {
+> +               i2c7_pins_a: i2c7-pins {
+> +                       pins-bus {
+>                                 pinmux =3D <MT6797_GPIO154__FUNC_SDA7_0>,
+>                                          <MT6797_GPIO153__FUNC_SCL7_0>;
+>                         };
 > --
 > 2.50.1
 >
