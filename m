@@ -4,91 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76116C87FCA
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jul 2025 16:09:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A2D2C87FCA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jul 2025 20:27:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=naH0zBfJIyOjDeXHISo3GWSZjSEthCAmEqnzdT+LFjw=; b=oodnG4aIiyyAsdEceTRzvli5yQ
-	mXHToBaiQmspEUeCpMzhidEu5TdODQ9zyRAJHsRJZf6lWJtaXev6znxGooNun7KxpvIO2OrOi7JFP
-	gxydaWKzddyAgalGxaMAGxcsRU817ijnQog1S0Q2tiwrlcWCUFuXlp9VUw5XoJ3uPTrfeneIY1uBa
-	ybdvJS4WIYLYOL91LJe+J3GuTyw5qYybg35CTF4oFR6Rf6nxu/XWax+pjKkVHpDVdjk5WdbIioozr
-	NAtsyoo+MPpb9vXoz2IzbQYGzqWZwKOmIr4F+2Ie+754jWc0gP6yoSpcTQ0C6ulynmbcd6UESoPPk
-	TX7uGS7Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vhvRIGuxm4FSZ08xYbjtEkasCWtV0IxaBg99BewfkZ0=; b=MdNO4eSico4XP8jADBjm2e8NJk
+	t697EJqJlBAA0w1iDLZpvspQNtsv/MF7tya8PYqx0X2rOZJgLmr5qhTYFUS35BaQLO5TZrcT61tsw
+	PsnAaeEeEt0i3/S8WXj68cx5OZPrx8sF4BD6H/wzT6Pqgap8MevxVfQzRCtrKMQU1tQbdjE6YIpeA
+	O4rDwpH4WugCwn/ym5D3OcR28XNnT87VIuV8jslHoIV8JO/8Nwf7SE5Ztpu1QQhbCwawL+F2zjqGw
+	0wtJDHI1pH5d6GWW4XHZtDcwf003PkdScsHfd2s2YiIgYAZqkTXd52c8baO49cOf46hpX6zONLo66
+	Bo1QuJKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ufKyv-0000000AB8E-3kEP;
-	Fri, 25 Jul 2025 16:09:13 +0000
-Received: from mail-wm1-f44.google.com ([209.85.128.44])
+	id 1ufP0Q-0000000AdVW-2NXh;
+	Fri, 25 Jul 2025 20:27:02 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ufKcM-0000000A8ah-1MDp
-	for linux-mediatek@lists.infradead.org;
-	Fri, 25 Jul 2025 15:45:55 +0000
-Received: by mail-wm1-f44.google.com with SMTP id 5b1f17b1804b1-4561ed868b5so16487805e9.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 25 Jul 2025 08:45:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1753458352; x=1754063152; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=naH0zBfJIyOjDeXHISo3GWSZjSEthCAmEqnzdT+LFjw=;
-        b=U6BhLWTq27IR/OuaC2rKqcMiS9E4ce08vzj4ZPNoERvvTg7gELrxximQYVlpU4oDdq
-         6YOm1z8ztY2fzW8+PNMbFXOSrxMmTPDdHcHzUQZ4zH1aGPukec6DbRDOdwHHDUAQvP7O
-         +Km35sxUCtY/q4Z5VdGFA2m5IvGyiMLdUtZUaRPA0lpHGEuN8JiEna7grjLFm2B1PsdN
-         MQtu4ymtGS+M6Mjtgqu9JfYQSEb+ZQIbkiYk9wlr+f7WWm1fIpH2MDP975aeDfIHuOkb
-         WDSwwWaC7P75Q6xhucZ76/LYQfl6Aj9fc4qOhnnK+Th71LXUT2cHK88pkm4vLTfazLXI
-         zEWw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1753458352; x=1754063152;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=naH0zBfJIyOjDeXHISo3GWSZjSEthCAmEqnzdT+LFjw=;
-        b=O8f0+VUk5nXlmsXJxUj5FCNnbYWL/8kwxZ0HAdihA2bJjVaTKi619YZMNTSTblnPNn
-         MT65rF6TEztRbdnD8Gx+BwnaUUftHkbkE12i4rM4V55qRwvLK5ElD7MQR4pbCn75YPEt
-         NYvkj7acjkOWOvn9sRGDtMtNw+39yjtCZVKcNsUM0ywMBp2rwaED+rTQLvq8uSVhAvsc
-         nGtKN4S1bwLs8ZMZS26UPI0rQi1B8YiHuaCDmW4USeNKf1eTjpg4Y0sLaWyNqkiR5pYk
-         EvBuWoJoVe4oe0l/PeYTTtnLlkNzudypH/RRyiCR6lhGTF76FhRI5qbBEAUTrPMPDczH
-         Ae0A==
-X-Forwarded-Encrypted: i=1; AJvYcCUopY1sgIO4vQ96VdL+7UT2tE7l/aT98hoJPhLmZ/6Hwn48icEK+j5K/gVxbPOxkAa5xVXnbYGywxfeNZxApg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwPfojZUl7fKFBMHSum96tPka4JI/ANVXYj2O6f7N0FJmnoI8t4
-	uYGKwBOPVADvr0G+ctB+StlA3AYfK/6N/SfumiqczvLeIIVGWPRoQodDgNAOn26ud8w=
-X-Gm-Gg: ASbGnctdu3HGiOgNqZTV4k2OP/fJqzu7jCtP1o3QOpwVFRQXSTrtLRGw3GCjrPAqzKY
-	Z8rwyOaJ9q71igoZ8UO+37duIN0H/BTy7wFJZsvVsHUSiv0pBE+LuU6F5PkWpQstcnJHoPHQvFH
-	HcVz83u9msct4OhGRhzDNjKcYgmXTBBRIq+AV6TffrzjOXJRSyIe+KjOc2X9AFo/ptoGdDRj4AS
-	ZWcWaX2hj1Xqw68N+P4E3qwW/IESyV9Cd14g0sRfdCcpvejRcvbhRL/3ooTBZzdgSH9IxlxzmrP
-	Qx1l4uHOnZ73NaqTEsuCC3eWdOUDP06K+hdwogX1swaHztdwp2zbrmLqk+xBHPxrdlwpQis7QSJ
-	ZDbEc2Y/0GcsnxqtXYUMLzLpv6VnzhNQvlfnHdyn2CLyWA06m3+bnLQhEgGV+SCJL
-X-Google-Smtp-Source: AGHT+IEu8ytExD33oY8pDlifvvoC9Uw4+3MTOanmfCvAAGoz6TXxb9utudI1/HDDkQ0BFNyvOatJtw==
-X-Received: by 2002:a05:600c:4f87:b0:456:133f:a02d with SMTP id 5b1f17b1804b1-4587644278emr27146735e9.17.1753458352317;
-        Fri, 25 Jul 2025 08:45:52 -0700 (PDT)
-Received: from localhost (p200300f65f06ab0400000000000001b9.dip0.t-ipconnect.de. [2003:f6:5f06:ab04::1b9])
-        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-3b778f0c2d8sm217740f8f.59.2025.07.25.08.45.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 25 Jul 2025 08:45:51 -0700 (PDT)
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-pwm@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 8/8] pwm: mediatek: Convert to waveform API
-Date: Fri, 25 Jul 2025 17:45:12 +0200
-Message-ID: <20250725154506.2610172-18-u.kleine-koenig@baylibre.com>
-X-Mailer: git-send-email 2.50.0
-In-Reply-To: <20250725154506.2610172-10-u.kleine-koenig@baylibre.com>
-References: <20250725154506.2610172-10-u.kleine-koenig@baylibre.com>
+	id 1ufP0M-0000000AdUl-1Ik9;
+	Fri, 25 Jul 2025 20:26:59 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 5FBE15C6415;
+	Fri, 25 Jul 2025 20:26:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DD53CC4CEE7;
+	Fri, 25 Jul 2025 20:26:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1753475217;
+	bh=gwiksp3J4bGpqvzDaXhOxRpN1GcS86ZmMLM2DmIXBlI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=hGN9Hi1imKljswG6X/DBWlkd92MGaNXkl7nCpM96OQLcPyU/TkuYmNgKqvYkbtIVR
+	 9dckup9w/GKbTvNcPaRj1rQ77iwFaIjwjQJQaekWBHEzdCiBLNfF+qnHajVK1zC8T2
+	 fEvTe7JTB/wj79CyGw4A/ansr+AR4VppgZXBymyhe5oAQt0Z2tmwxe0DngswssY1h+
+	 /kyUy6w2NxgYSmTlvqwU4n4bVhYX9RCEZ0BaoTO9ElMI5nyzjj++ig1nJ4q+GO0v9F
+	 wJwMkqxcH4BdiQte7QQqI9MDqYfQBMxJAWlvaDvqDWvRMUTD3lgPtZMZNoj8a+7PJG
+	 yUHsU9u7dT27A==
+Date: Fri, 25 Jul 2025 15:26:55 -0500
+From: Rob Herring <robh@kernel.org>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Subject: Re: [PATCH 01/38] dt-bindings: display: mediatek: dpi: Allow
+ specifying resets
+Message-ID: <20250725202655.GA1826181-robh@kernel.org>
+References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com>
+ <20250724083914.61351-2-angelogioacchino.delregno@collabora.com>
+ <CAGXv+5HTdK8aiUYdtNVhWAvsSNfMPgK6iCqe-Jsb-OBqQBWsBg@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=11070; i=u.kleine-koenig@baylibre.com; h=from:subject; bh=JVTMa1u9uKOzTEr4zF5qVt0q2p6fcHsxcxX+/IcWAvo=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBog6aYnbWwK1WCYiQ3Y4ZhcAgzh73Cq5IQthP54 ezkCFDJX8aJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCaIOmmAAKCRCPgPtYfRL+ TrWIB/sEWcWCZgK8EaNr/3uB1XUq1mHUFi+V7SaMzsEzr1JKVcFnK2jxMwaqdEXxjIUdyXgD9vg CVmN9Eef0UqFsuxVNRLcZBr9w9+MBTqiir6tGQTZGGvIaKMeyh0KMCV9cTr1OVebd/GkdvCZpKm O+cbD4n+KNf1CmTrWn+gHQQI/wWJ9juV8j661yZa0tq8zVffwLg/wNzz3+9sZnDVfoeF/PrAwgc altyxw0AIrqWYmAtCUxc71+w3SJp76MsIojD+BNLU2DCbyragZ6m0To8/2tMflJDfjJY2+x4Skn 5Ezd9DKCvtxxidp/BN+H0sqI/92AN0k6Zk5zTYKsAvgj6itR
-X-Developer-Key: i=u.kleine-koenig@baylibre.com; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAGXv+5HTdK8aiUYdtNVhWAvsSNfMPgK6iCqe-Jsb-OBqQBWsBg@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250725_084554_378578_F077D85E 
-X-CRM114-Status: GOOD (  25.98  )
+X-CRM114-CacheID: sfid-20250725_132658_422661_0104C988 
+X-CRM114-Status: GOOD (  21.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,370 +69,51 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: daniel.lezcano@linaro.org, mwalle@kernel.org, devicetree@vger.kernel.org, linus.walleij@linaro.org, linux-remoteproc@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, olivia.wen@mediatek.com, shane.chien@mediatek.com, linux-gpio@vger.kernel.org, linux-phy@lists.infradead.org, airlied@gmail.com, simona@ffwll.ch, herbert@gondor.apana.org.au, eugen.hristev@linaro.org, jassisinghbrar@gmail.com, jiaxin.yu@mediatek.com, andy.teng@mediatek.com, chunfeng.yun@mediatek.com, jieyy.yang@mediatek.com, chunkuang.hu@kernel.org, conor+dt@kernel.org, jitao.shi@mediatek.com, p.zabel@pengutronix.de, arnd@arndb.de, kishon@kernel.org, kyrie.wu@mediatek.corp-partner.google.com, maarten.lankhorst@linux.intel.com, tinghan.shen@mediatek.com, mripard@kernel.org, ck.hu@mediatek.com, broonie@kernel.org, linux-mediatek@lists.infradead.org, houlong.wei@mediatek.com, matthias.bgg@gmail.com, tglx@linutronix.de, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, granquet@baylibre.com, sam.shih@mediatek.com, mathieu.poirier@linaro.org, fparent@baylibre.com, andersson@kernel.org, sean.wang@kernel.org, linux-sound@vger.kernel.org, lgirdwood@gmail.com, vkoul@kernel.org, linux-crypto@vger.kernel.org, tzimmermann@suse.de, atenart@kernel.org, krzk+dt@kernel.org, linux-media@vger.kernel.org, davem@davemloft.net
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Implement the new waveform callbacks which makes the usage of this
-hardware more flexible and allows to use it via the pwm character
-device.
+On Thu, Jul 24, 2025 at 05:16:21PM +0800, Chen-Yu Tsai wrote:
+> On Thu, Jul 24, 2025 at 4:39 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+> >
+> > Even though the DPI IP has a reset bit on all MediaTek SoCs, it
+> > is optional, and has always been unused until MT8195; specifically:
+> > on older SoCs, like MT8173, the reset bit is located in MMSYS, and
+> > on newer SoCs, like MT8195, it is located in VDOSYS.
+> >
+> > For this reason, allow specifying the resets and reset-names on
+> > all MediaTek SoCs.
+> >
+> > Those properties are optional because there are multiple ways to
+> > reset this IP and the reset lines in MM/VDO are used only if the
+> > IP cannot perform warm-reset.
+> >
+> > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> > ---
+> >  .../devicetree/bindings/display/mediatek/mediatek,dpi.yaml | 7 +++++++
+> >  1 file changed, 7 insertions(+)
+> >
+> > diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+> > index b659d79393a8..eb4f276e8dc4 100644
+> > --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+> > +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+> > @@ -102,6 +102,13 @@ properties:
+> >        - port@0
+> >        - port@1
+> >
+> > +  resets:
+> > +    maxItems: 1
+> > +
+> > +  reset-names:
+> > +    items:
+> > +      - const: dpi
+> > +
+> 
+> Do we really need the name if there is only one though?
 
-Signed-off-by: Uwe Kleine-König <u.kleine-koenig@baylibre.com>
----
- drivers/pwm/pwm-mediatek.c | 283 +++++++++++++++++++++----------------
- 1 file changed, 164 insertions(+), 119 deletions(-)
+Not really, but if it is already in use then easier to just fix the 
+binding than both the binding and dts.
 
-diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
-index e3db54995f7b..8ad289b06352 100644
---- a/drivers/pwm/pwm-mediatek.c
-+++ b/drivers/pwm/pwm-mediatek.c
-@@ -135,50 +135,53 @@ static inline u32 pwm_mediatek_readl(struct pwm_mediatek_chip *chip,
- 		     num * chip->soc->chanreg_width + offset);
- }
- 
--static void pwm_mediatek_enable(struct pwm_chip *chip, struct pwm_device *pwm)
--{
--	struct pwm_mediatek_chip *pc = to_pwm_mediatek_chip(chip);
--	u32 value;
--
--	value = readl(pc->regs);
--	value |= BIT(pwm->hwpwm);
--	writel(value, pc->regs);
--}
--
--static void pwm_mediatek_disable(struct pwm_chip *chip, struct pwm_device *pwm)
--{
--	struct pwm_mediatek_chip *pc = to_pwm_mediatek_chip(chip);
--	u32 value;
--
--	value = readl(pc->regs);
--	value &= ~BIT(pwm->hwpwm);
--	writel(value, pc->regs);
--}
--
--static int pwm_mediatek_config(struct pwm_chip *chip, struct pwm_device *pwm,
--			       u64 duty_ns, u64 period_ns)
-+struct pwm_mediatek_waveform {
-+	u32 enable;
-+	u32 con;
-+	u32 width;
-+	u32 thres;
-+};
-+
-+static int pwm_mediatek_round_waveform_tohw(struct pwm_chip *chip, struct pwm_device *pwm,
-+					    const struct pwm_waveform *wf, void *_wfhw)
- {
-+	struct pwm_mediatek_waveform *wfhw = _wfhw;
- 	struct pwm_mediatek_chip *pc = to_pwm_mediatek_chip(chip);
- 	u32 clkdiv, enable;
--	u32 reg_width = PWMDWIDTH, reg_thres = PWMTHRES;
- 	u64 cnt_period, cnt_duty;
- 	unsigned long clk_rate;
--	int ret;
-+	int ret = 0;
- 
--	ret = pwm_mediatek_clk_enable(pc, pwm->hwpwm);
--	if (ret < 0)
--		return ret;
-+	if (wf->period_length_ns == 0) {
-+		*wfhw = (typeof(*wfhw)){
-+			.con = 0,
-+		};
-+
-+		return 0;
-+	}
-+
-+	if (!pc->clk_pwms[pwm->hwpwm].rate) {
-+		struct clk *clk = pc->clk_pwms[pwm->hwpwm].clk;
-+
-+		ret = clk_prepare_enable(clk);
-+		if (ret)
-+			return ret;
-+
-+		pc->clk_pwms[pwm->hwpwm].rate = clk_get_rate(clk);
-+
-+		clk_disable_unprepare(clk);
-+
-+		if (pc->clk_pwms[pwm->hwpwm].rate == 0 ||
-+		    pc->clk_pwms[pwm->hwpwm].rate > 1000000000)
-+			return -EINVAL;
-+	}
- 
- 	clk_rate = pc->clk_pwms[pwm->hwpwm].rate;
- 
--	/* Make sure we use the bus clock and not the 26MHz clock */
--	if (pc->soc->pwm_ck_26m_sel_reg)
--		writel(0, pc->regs + pc->soc->pwm_ck_26m_sel_reg);
--
--	cnt_period = mul_u64_u64_div_u64(period_ns, clk_rate, NSEC_PER_SEC);
-+	cnt_period = mul_u64_u64_div_u64(wf->period_length_ns, clk_rate, NSEC_PER_SEC);
- 	if (cnt_period == 0) {
--		ret = -ERANGE;
--		goto out;
-+		cnt_period = 1;
-+		ret = 1;
- 	}
- 
- 	if (cnt_period > FIELD_MAX(PWMDWIDTH_PERIOD) + 1) {
-@@ -193,7 +196,7 @@ static int pwm_mediatek_config(struct pwm_chip *chip, struct pwm_device *pwm,
- 		clkdiv = 0;
- 	}
- 
--	cnt_duty = mul_u64_u64_div_u64(duty_ns, clk_rate, NSEC_PER_SEC) >> clkdiv;
-+	cnt_duty = mul_u64_u64_div_u64(wf->duty_length_ns, clk_rate, NSEC_PER_SEC) >> clkdiv;
- 	if (cnt_duty > cnt_period)
- 		cnt_duty = cnt_period;
- 
-@@ -206,123 +209,165 @@ static int pwm_mediatek_config(struct pwm_chip *chip, struct pwm_device *pwm,
- 
- 	cnt_period -= 1;
- 
--	dev_dbg(&chip->dev, "pwm#%u: %lld/%lld @%lu -> CON: %x, PERIOD: %llx, DUTY: %llx\n",
--		pwm->hwpwm, duty_ns, period_ns, clk_rate, clkdiv, cnt_period, cnt_duty);
-+	dev_dbg(&chip->dev, "pwm#%u: %lld/%lld @%lu -> ENABLE: %x, CON: %x, PERIOD: %llx, DUTY: %llx\n",
-+		pwm->hwpwm, wf->duty_length_ns, wf->period_length_ns, clk_rate,
-+		enable, clkdiv, cnt_period, cnt_duty);
- 
--	if (pc->soc->pwm45_fixup && pwm->hwpwm > 2) {
--		/*
--		 * PWM[4,5] has distinct offset for PWMDWIDTH and PWMTHRES
--		 * from the other PWMs on MT7623.
--		 */
--		reg_width = PWM45DWIDTH_FIXUP;
--		reg_thres = PWM45THRES_FIXUP;
--	}
--
--	pwm_mediatek_writel(pc, pwm->hwpwm, PWMCON, BIT(15) | clkdiv);
--	pwm_mediatek_writel(pc, pwm->hwpwm, reg_width, cnt_period);
--
--	if (enable) {
--		pwm_mediatek_writel(pc, pwm->hwpwm, reg_thres, cnt_duty);
--		pwm_mediatek_enable(chip, pwm);
--	} else {
--		pwm_mediatek_disable(chip, pwm);
--	}
--
--	pwm_mediatek_clk_disable(pc, pwm->hwpwm);
-+	*wfhw = (typeof(*wfhw)){
-+		.enable = enable,
-+		.con = clkdiv,
-+		.width = cnt_period,
-+		.thres = cnt_duty,
-+	};
- 
- 	return ret;
- }
- 
--static int pwm_mediatek_apply(struct pwm_chip *chip, struct pwm_device *pwm,
--			      const struct pwm_state *state)
-+static int pwm_mediatek_round_waveform_fromhw(struct pwm_chip *chip, struct pwm_device *pwm,
-+					      const void *_wfhw, struct pwm_waveform *wf)
- {
-+	const struct pwm_mediatek_waveform *wfhw = _wfhw;
- 	struct pwm_mediatek_chip *pc = to_pwm_mediatek_chip(chip);
--	int err;
-+	u32 clkdiv, cnt_period, cnt_duty;
-+	unsigned long clk_rate;
- 
--	if (state->polarity != PWM_POLARITY_NORMAL)
--		return -EINVAL;
-+	/*
-+	 * When _wfhw was populated, the clock was on, so .rate is
-+	 * already set appropriately.
-+	 */
-+	clk_rate = pc->clk_pwms[pwm->hwpwm].rate;
- 
--	if (!state->enabled) {
--		if (pwm->state.enabled) {
--			pwm_mediatek_disable(chip, pwm);
--			pwm_mediatek_clk_disable(pc, pwm->hwpwm);
--		}
-+	clkdiv = FIELD_GET(PWMCON_CLKDIV, wfhw->con);
-+	cnt_period = FIELD_GET(PWMDWIDTH_PERIOD, wfhw->width);
-+	cnt_duty = FIELD_GET(PWMTHRES_DUTY, wfhw->thres);
- 
--		return 0;
--	}
-+	/*
-+	 * cnt_period is a 13 bit value, NSEC_PER_SEC is 30 bits wide
-+	 * and clkdiv is less than 8, so the multiplication doesn't
-+	 * overflow an u64.
-+	 */
-+	*wf = (typeof(*wf)){
-+		.period_length_ns =
-+			DIV_ROUND_UP_ULL((u64)(cnt_period + 1) * NSEC_PER_SEC << clkdiv, clk_rate),
-+		.duty_length_ns =
-+			wfhw->enable ?
-+			DIV_ROUND_UP_ULL((u64)(cnt_duty + 1) * NSEC_PER_SEC << clkdiv, clk_rate) : 0,
-+		.duty_offset_ns = 0,
-+	};
-+	dev_dbg(&chip->dev, "pwm#%u: ENABLE: %x, CLKDIV: %x, PERIOD: %x, DUTY: %x @%lu -> %lld/%lld\n",
-+		pwm->hwpwm, wfhw->enable, clkdiv, cnt_period, cnt_duty, clk_rate,
-+		wf->duty_length_ns, wf->period_length_ns);
- 
--	err = pwm_mediatek_config(chip, pwm, state->duty_cycle, state->period);
--	if (err)
--		return err;
--
--	if (!pwm->state.enabled) {
--		err = pwm_mediatek_clk_enable(pc, pwm->hwpwm);
--		if (err < 0)
--			return err;
--	}
--
--	return err;
-+	return 0;
- }
- 
--static int pwm_mediatek_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
--				  struct pwm_state *state)
-+static int pwm_mediatek_read_waveform(struct pwm_chip *chip,
-+				      struct pwm_device *pwm, void *_wfhw)
- {
-+	struct pwm_mediatek_waveform *wfhw = _wfhw;
- 	struct pwm_mediatek_chip *pc = to_pwm_mediatek_chip(chip);
--	int ret;
--	u32 enable;
-+	u32 enable, clkdiv, cnt_period, cnt_duty;
- 	u32 reg_width = PWMDWIDTH, reg_thres = PWMTHRES;
--
--	if (pc->soc->pwm45_fixup && pwm->hwpwm > 2) {
--		/*
--		 * PWM[4,5] has distinct offset for PWMDWIDTH and PWMTHRES
--		 * from the other PWMs on MT7623.
--		 */
--		reg_width = PWM45DWIDTH_FIXUP;
--		reg_thres = PWM45THRES_FIXUP;
--	}
-+	int ret;
- 
- 	ret = pwm_mediatek_clk_enable(pc, pwm->hwpwm);
- 	if (ret < 0)
- 		return ret;
- 
- 	enable = readl(pc->regs);
--	if (enable & BIT(pwm->hwpwm)) {
--		u32 clkdiv, cnt_period, cnt_duty;
--		unsigned long clk_rate;
--
--		clk_rate = pc->clk_pwms[pwm->hwpwm].rate;
--
--		state->enabled = true;
--		state->polarity = PWM_POLARITY_NORMAL;
--
--		clkdiv = FIELD_GET(PWMCON_CLKDIV,
--				   pwm_mediatek_readl(pc, pwm->hwpwm, PWMCON));
--		cnt_period = FIELD_GET(PWMDWIDTH_PERIOD,
--				       pwm_mediatek_readl(pc, pwm->hwpwm, reg_width));
--		cnt_duty = FIELD_GET(PWMTHRES_DUTY,
--				     pwm_mediatek_readl(pc, pwm->hwpwm, reg_thres));
- 
-+	if (pc->soc->pwm45_fixup && pwm->hwpwm > 2) {
- 		/*
--		 * cnt_period is a 13 bit value, NSEC_PER_SEC is 30 bits wide
--		 * and clkdiv is less than 8, so the multiplication doesn't
--		 * overflow an u64.
-+		 * PWM[4,5] has distinct offset for PWMDWIDTH and PWMTHRES
-+		 * from the other PWMs on MT7623.
- 		 */
--		state->period =
--			DIV_ROUND_UP_ULL((u64)cnt_period * NSEC_PER_SEC << clkdiv, clk_rate);
--		state->duty_cycle =
--			DIV_ROUND_UP_ULL((u64)cnt_duty * NSEC_PER_SEC << clkdiv, clk_rate);
--	} else {
--		state->enabled = false;
-+		reg_width = PWM45DWIDTH_FIXUP;
-+		reg_thres = PWM45THRES_FIXUP;
- 	}
- 
-+	clkdiv = FIELD_GET(PWMCON_CLKDIV, pwm_mediatek_readl(pc, pwm->hwpwm, PWMCON));
-+	cnt_period = FIELD_GET(PWMDWIDTH_PERIOD, pwm_mediatek_readl(pc, pwm->hwpwm, reg_width));
-+	cnt_duty = FIELD_GET(PWMTHRES_DUTY, pwm_mediatek_readl(pc, pwm->hwpwm, reg_thres));
-+
-+	*wfhw = (typeof(*wfhw)){
-+		.enable = enable & BIT(pwm->hwpwm),
-+		.con = BIT(15) | clkdiv,
-+		.width = cnt_period,
-+		.thres = cnt_duty,
-+	};
-+
-+	pwm_mediatek_clk_disable(pc, pwm->hwpwm);
-+
-+	return ret;
-+}
-+
-+static int pwm_mediatek_write_waveform(struct pwm_chip *chip,
-+				       struct pwm_device *pwm, const void *_wfhw)
-+{
-+	const struct pwm_mediatek_waveform *wfhw = _wfhw;
-+	struct pwm_mediatek_chip *pc = to_pwm_mediatek_chip(chip);
-+	u32 ctrl;
-+	int ret;
-+
-+	ret = pwm_mediatek_clk_enable(pc, pwm->hwpwm);
-+	if (ret < 0)
-+		return ret;
-+
-+	ctrl = readl(pc->regs);
-+
-+	if (wfhw->con & BIT(15)) {
-+		u32 reg_width = PWMDWIDTH, reg_thres = PWMTHRES;
-+
-+		if (pc->soc->pwm45_fixup && pwm->hwpwm > 2) {
-+			/*
-+			 * PWM[4,5] has distinct offset for PWMDWIDTH and PWMTHRES
-+			 * from the other PWMs on MT7623.
-+			 */
-+			reg_width = PWM45DWIDTH_FIXUP;
-+			reg_thres = PWM45THRES_FIXUP;
-+		}
-+
-+		if (!(ctrl & BIT(pwm->hwpwm))) {
-+			ctrl |= BIT(pwm->hwpwm);
-+			writel(ctrl, pc->regs);
-+
-+			/*
-+			 * The clks are already on, just increasing the usage
-+			 * counter doesn't fail.
-+			 */
-+			ret = pwm_mediatek_clk_enable(pc, pwm->hwpwm);
-+			if (unlikely(ret < 0))
-+				goto out;
-+		}
-+
-+		/* Make sure we use the bus clock and not the 26MHz clock */
-+		if (pc->soc->pwm_ck_26m_sel_reg)
-+			writel(0, pc->regs + pc->soc->pwm_ck_26m_sel_reg);
-+
-+		pwm_mediatek_writel(pc, pwm->hwpwm, PWMCON, wfhw->con);
-+		pwm_mediatek_writel(pc, pwm->hwpwm, reg_width, wfhw->width);
-+		pwm_mediatek_writel(pc, pwm->hwpwm, reg_thres, wfhw->thres);
-+	} else {
-+		if (ctrl & BIT(pwm->hwpwm)) {
-+			ctrl &= ~BIT(pwm->hwpwm);
-+			writel(ctrl, pc->regs);
-+
-+			pwm_mediatek_clk_disable(pc, pwm->hwpwm);
-+		}
-+	}
-+
-+out:
- 	pwm_mediatek_clk_disable(pc, pwm->hwpwm);
- 
- 	return ret;
- }
- 
- static const struct pwm_ops pwm_mediatek_ops = {
--	.apply = pwm_mediatek_apply,
--	.get_state = pwm_mediatek_get_state,
-+	.sizeof_wfhw = sizeof(struct pwm_mediatek_waveform),
-+	.round_waveform_tohw = pwm_mediatek_round_waveform_tohw,
-+	.round_waveform_fromhw = pwm_mediatek_round_waveform_fromhw,
-+	.read_waveform = pwm_mediatek_read_waveform,
-+	.write_waveform = pwm_mediatek_write_waveform,
- };
- 
- static int pwm_mediatek_init_used_clks(struct pwm_mediatek_chip *pc)
--- 
-2.50.0
-
+Rob
 
