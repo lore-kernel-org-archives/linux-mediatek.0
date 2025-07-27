@@ -4,83 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 545E8C87FCE
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Jul 2025 07:37:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F62AC87FCC
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Jul 2025 08:45:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=h/6Q7ujA0qP8HOsCdISb9GQQ5dFVRD6CG+119es1Sxg=; b=z6V4nH7Gn8rkR2/5Jsw8wKTdNv
-	qzr2aoN9phofJ0D0raxF061DdgJxgjaR8R/gkUXjTnGmzlrRrG7hw+h51dDeMlK2gwGi5RFK1t+b3
-	wqwGVraFvpW99oLIVPX6qOMVqyuQXe936xLPFu5l52Jybwf52nCHgFxHJsQQQ+rDI+szLmkmXxcdj
-	/cjdx3txlSTk5GV6pJctXZFdKaE1NyTkKj93ORI1JVHU3uF/+qJ9Lo6y324KwpTMl1Q9U+Zm+syAE
-	stHJ0LZADhiwkKgJKhOVFEetuaigBZRARgMarMNbM+e8haD3RmeC+s9f5b5hEBH0EU2wPhmKkbZ4C
-	X8hodn4w==;
+	bh=GNtHvKbNGd7S/FDxlX6GLzDuGpZNFkHJSzYPKzyRdM0=; b=Z0wq3mht3zgc4CJKMw4LIzDDYj
+	3dRwQd/SNuuhb/jsDcbUa8Bn9+NlFM+Ty631U5UYIyZczIprXKoobbV5DpOziscfLS43Bhhqt4AZM
+	rYrEJbyvS1WtTesWC/gRIm22+F8ZV4dk5B02rM0GA1j+U67jIyuGYqOx+LeSrPq+TM/zcJ7yFcJcD
+	v87UsxGgCfWXwladfyDs8nOPTCNEPnM1Rr5e2lghM38P7JVDiU3sMvAh3Jn+K5FdHch93yZ8BMN+E
+	iacmrn3ZkDkAZ6yusdE+7zA9NvfSzYGqzHGiV34jR8eeD0cmv0Gjck4WetWe+eFlRwzt9hE1F3MgX
+	OPLIS6Fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ufvwT-0000000CRWi-0mT4;
-	Sun, 27 Jul 2025 07:37:09 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ufx0I-0000000CWCJ-0y0P;
+	Sun, 27 Jul 2025 08:45:10 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ufvdB-0000000CPwg-11Xs;
-	Sun, 27 Jul 2025 07:17:14 +0000
-X-UUID: b608c2cc6ab911f09f706fa2197c6ceb-20250727
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=h/6Q7ujA0qP8HOsCdISb9GQQ5dFVRD6CG+119es1Sxg=;
-	b=NVDgzHjYAH4+bHaBnlYXs8pLfJMRz/WsyoqllVKHvCb/JaQUg6ctS2tNyoavejBbbp5DpHBipHMPWqGGRXW3ZJ9QVueTihP5rVpadZTUB1R3ZJp301Ep2OmhjoJFk5TncrikIp7bvJ4pX9a0PoG3fmdGNjfVTWtuDRcCn4oQUuM=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.2,REQID:83fb91dc-192f-4b5d-b7a7-e659cac800b8,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:9eb4ff7,CLOUDID:145ed208-aadc-4681-92d7-012627504691,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|15|50,EDM
-	:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-	,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: b608c2cc6ab911f09f706fa2197c6ceb-20250727
-Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
-	(envelope-from <jay.liu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 258397551; Sun, 27 Jul 2025 00:17:10 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Sun, 27 Jul 2025 15:17:05 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Sun, 27 Jul 2025 15:17:04 +0800
-From: Jay Liu <jay.liu@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
-	<p.zabel@pengutronix.de>, Maarten Lankhorst
-	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Krzysztof
- Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, Jay Liu <jay.liu@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Hsin-Yi
- Wang <hsinyi@chromium.org>, CK Hu <ck.hu@mediatek.com>, Yongqiang Niu
-	<yongqiang.niu@mediatek.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>
-Subject: [PATCH v2 7/7] dt-bindings: display: mediatek: gamma: Add support for MT8196
-Date: Sun, 27 Jul 2025 15:15:57 +0800
-Message-ID: <20250727071609.26037-8-jay.liu@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20250727071609.26037-1-jay.liu@mediatek.com>
-References: <20250727071609.26037-1-jay.liu@mediatek.com>
+	id 1ufwxk-0000000CW35-2t5K;
+	Sun, 27 Jul 2025 08:42:33 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id EBC265C5597;
+	Sun, 27 Jul 2025 08:42:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D8BB3C4CEEB;
+	Sun, 27 Jul 2025 08:42:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1753605749;
+	bh=1FBsq3RJo4viUjTTcy8YHS5y2gw/+JTmgv3W+/1sNcc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=DkGPnJijKVgVkPNWynxQoXYQPWllTcSUGGm1qWoE2LkOL7WW0DJemmcv9Sj6aSeQl
+	 2ytVgW4bGL8CsGWfW+FIx/I8QYszufxSMK8hh0Ah0BnOMX+sHtXUwXDxRHTen1yKgk
+	 Py/RDpfVRcdEaWqIq4GLu2tahKmAaJ8FwgqL2ewnWQp2gdFG+HzdcUZ+XAedM0xRYG
+	 mXiiB0FSelfP5TrkzMo0oHwChQ/NCqmBmmq3Oqx94WNz042sqzXVttjVubxMfEq2/n
+	 3hgDKXKo1WrAMyBMu5RDFezLkTt1rf6WPI8Qhm1J2sDUnUHZRW2DIkEW9eLEmiemqT
+	 PDPtR5mqBBWZA==
+Date: Sun, 27 Jul 2025 10:42:25 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Vadim Fedorenko <vadim.fedorenko@linux.dev>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Simon Horman <horms@kernel.org>,
+	Felix Fietkau <nbd@nbd.name>, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH net-next v5 3/7] net: airoha: npu: Add
+ wlan_{send,get}_msg NPU callbacks
+Message-ID: <aIXmcUCQe7-gm9--@lore-desk>
+References: <20250723-airoha-en7581-wlan-offlaod-v5-0-da92e0f8c497@kernel.org>
+ <20250723-airoha-en7581-wlan-offlaod-v5-3-da92e0f8c497@kernel.org>
+ <ff106cec-7e63-4475-a0e6-452bfcb823b3@linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="KcwatzaRMwMSfQy/"
+Content-Disposition: inline
+In-Reply-To: <ff106cec-7e63-4475-a0e6-452bfcb823b3@linux.dev>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250727_001713_295200_844125B0 
-X-CRM114-Status: UNSURE (   9.75  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250727_014232_814994_D9924203 
+X-CRM114-Status: GOOD (  19.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,30 +82,92 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a compatible string for the GAMMA IP found in the MT8196 SoC.
-Each GAMMA IP of this SoC is fully compatible with the ones found
-in MT8195.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Jay Liu <jay.liu@mediatek.com>
-Signed-off-by: 20220315152503 created <jay.liu@mediatek.com>
----
- .../devicetree/bindings/display/mediatek/mediatek,gamma.yaml     | 1 +
- 1 file changed, 1 insertion(+)
+--KcwatzaRMwMSfQy/
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
-index 48542dc7e784..513e51c6d2b9 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
-@@ -40,6 +40,7 @@ properties:
-       - items:
-           - enum:
-               - mediatek,mt8188-disp-gamma
-+              - mediatek,mt8196-disp-gamma
-           - const: mediatek,mt8195-disp-gamma
- 
-   reg:
--- 
-2.46.0
+> On 23/07/2025 18:19, Lorenzo Bianconi wrote:
+> > Introduce wlan_send_msg() and wlan_get_msg() NPU wlan callbacks used
+> > by the wlan driver (MT76) to initialize NPU module registers in order to
+> > offload wireless-wired traffic.
+> > This is a preliminary patch to enable wlan flowtable offload for EN7581
+> > SoC with MT76 driver.
+> >=20
+> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > ---
+> >   drivers/net/ethernet/airoha/airoha_npu.c | 58 +++++++++++++++++++++++=
++++++++++
+> >   drivers/net/ethernet/airoha/airoha_npu.h | 21 ++++++++++++
+> >   2 files changed, 79 insertions(+)
+> >=20
+>=20
+> [...]
+>=20
+> > @@ -131,6 +147,12 @@ struct wlan_mbox_data {
+> >   	u32 func_id;
+> >   	union {
+> >   		u32 data;
+> > +		struct {
+> > +			u32 dir;
+> > +			u32 in_counter_addr;
+> > +			u32 out_status_addr;
+> > +			u32 out_counter_addr;
+> > +		} txrx_addr;
+> >   		u8 stats[WLAN_MAX_STATS_SIZE];
+> >   	};
+> >   };
+> > @@ -424,6 +446,30 @@ static int airoha_npu_wlan_msg_send(struct airoha_=
+npu *npu, int ifindex,
+> >   	return err;
+> >   }
+> > +static int airoha_npu_wlan_msg_get(struct airoha_npu *npu, int ifindex,
+> > +				   enum airoha_npu_wlan_get_cmd func_id,
+> > +				   u32 *data, gfp_t gfp)
+> > +{
+> > +	struct wlan_mbox_data *wlan_data;
+> > +	int err;
+> > +
+> > +	wlan_data =3D kzalloc(sizeof(*wlan_data), gfp);
+> > +	if (!wlan_data)
+> > +		return -ENOMEM;
+> > +
+> > +	wlan_data->ifindex =3D ifindex;
+> > +	wlan_data->func_type =3D NPU_OP_GET;
+> > +	wlan_data->func_id =3D func_id;
+> > +
+> > +	err =3D airoha_npu_send_msg(npu, NPU_FUNC_WIFI, wlan_data,
+> > +				  sizeof(*wlan_data));
+> > +	if (!err)
+> > +		*data =3D wlan_data->data;
+> > +	kfree(wlan_data);
+> > +
+> > +	return err;
+> > +}
+>=20
+> Am I reading it correct, that on message_get you allocate 4408 + 8 byte,
+> setting it 0, then reallocate the same size in airoha_npu_send_msg() and
+> copy the data, and then free both buffers, and this is all done just to
+> get u32 value back?
 
+ack, right. This is was the original approach in the vendor sdk.
+I will fix in v6.
+
+Regards,
+Lorenzo
+
+
+--KcwatzaRMwMSfQy/
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaIXmcQAKCRA6cBh0uS2t
+rFrAAP4yzHsHYDp6pps4peenrqug/hiwFirsQerZGdFYZscxxgD/ZPuKL0EPUbb9
+du8EkSKxgOkHAkO0SUXlzjl0Dc4R+Q8=
+=TBNx
+-----END PGP SIGNATURE-----
+
+--KcwatzaRMwMSfQy/--
 
