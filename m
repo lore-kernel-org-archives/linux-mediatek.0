@@ -4,63 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C56EC87FCE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jul 2025 23:16:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FE4CC87FCE
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Jul 2025 07:19:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GlkeWf2+O8Ox/jS4qOtOfWYFOcC7DcKeM7EHeI3Y0Hs=; b=E6TSkbWi/AZBfuQpVFWqZwDbEd
-	kiDIPJbkGTjQD7JsjLXp9r8Ix7O4ocuN//TJ37T50dR+nKC3VV+xaxaG++nJeu4Ngeva1GT22Zyt0
-	X2S4he5fmrKm/yZ9JO0zMZuUl5BQKVMjNSj8fnytTgFGWWp9UyM18PRe5/Yu+L26GzimAVkRcX4Ji
-	sOI14PseOKbMptAaqbkdCLROcVoPmit+cszCpxtjXUvL/V2pYpTwIuPCSI2NdoMqWx0D3BTkv2Uap
-	z1C0F94F8fz3mXrWIC9pAMGxeuZK9onr2lW/u3CM5btPkOKLzhhI1YeDpNzZmTe3TAA4eiARK3ZFH
-	hMODExwg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=P2axRt7kp87WizBRx7EY7gZVCvOymR2hXiii9+E/OHk=; b=E5GQ3pTry4C1/eLga+I76KtwG7
+	h3htXc6sh3sgj/c0qUzRyGft9QTRNHHRKFmnOMWaJAWCOBXOfur+NKIqJ6G70uqP3BO/RCfLIAs47
+	PeRkN94oV1il+IAH8fWE3rddztrrqoVT+qeX7kNkWjYaUaDwtf4uTM+01uJhMGakT3pnx3CfRr8Sz
+	gvQZijAPp0GiSgUwnN7GTT/GRMrFQAK8j116szlempOu6XqeWnP4F0SCesxJ2n6jVKRSTyavc8MYk
+	d+RlPyEaDnmoXGRrHb9azpXf4TJP+U6SeLNl0VHVOctBXhtTzfeCJwP5aly8h0LxnjV3o2ovY202w
+	QdPFKNMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ufReK-0000000AqVm-46lt;
-	Fri, 25 Jul 2025 23:16:24 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1ufvey-0000000CQGD-0uze;
+	Sun, 27 Jul 2025 07:19:04 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ufRae-0000000ApxZ-1Wur;
-	Fri, 25 Jul 2025 23:12:37 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 73D78A56771;
-	Fri, 25 Jul 2025 23:12:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D4F03C4CEE7;
-	Fri, 25 Jul 2025 23:12:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1753485155;
-	bh=lKPeV4dbiMZgeOgy5vCWxzKkrNkCOUiKusQlfwyyh4g=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=eUO6gcNman3Vtu/exvEYRzEjR7cFwafa00xuS8x2urfr/gOW2Bj7tembJ35BQTYTM
-	 sg1PZAIPVXEHqG9QluUBkbzuEdOZRuljdC6ARmZ8pyWDWdeVH5i0aatgDw3RtEdxEg
-	 xpPlkVUvOHHg19vB7hidb0J5UytvvysKl/vIvKGSIUtThtJWJLydupBWpQiuEqjs+d
-	 EzUemwm89JaJBGb4llfCrohBuQSTN0iG/CNdVtQYdI5LqZlXNTaLvXEVJPyV5Ma7mP
-	 IiLffzZHtemi1ChCQZZQA3i9Qtc0PnkfDdorR1wTC+RJH5m1NC7GGDg4VXVy14umvk
-	 lCRTefb+Hgb5w==
-Date: Fri, 25 Jul 2025 18:12:34 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: u.kleine-koenig@baylibre.com, mturquette@baylibre.com,
-	linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
-	sboyd@kernel.org, krzk+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org, geert+renesas@glider.be,
-	kernel@collabora.com, devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, conor+dt@kernel.org,
-	matthias.bgg@gmail.com
-Subject: Re: [PATCH 1/3] dt-bindings: clock: mt7622: Add AFE_MRGIF clock
-Message-ID: <175348515340.2008768.1491160057381781606.robh@kernel.org>
-References: <20250724083907.61313-1-angelogioacchino.delregno@collabora.com>
+	id 1ufvcP-0000000CPlk-2g3c;
+	Sun, 27 Jul 2025 07:16:26 +0000
+X-UUID: 97844f066ab911f09f706fa2197c6ceb-20250727
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=P2axRt7kp87WizBRx7EY7gZVCvOymR2hXiii9+E/OHk=;
+	b=jVYaZ339EmIYINjHEHF6WTvQPH9YokUnGYuklbrNGM3FW9zzEPpL3IhmU4X+1kJVhrMxNn5H4HAAeNwN+4f7FCo8KWyia4INv0uqnc7OssLxrM4G6lYk8QShRgzgra2TcA7MYfJ1TTDvSf7OzhUmhGB7++g8gaUFs7TJ2aVnMQ8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.2,REQID:0387059c-7455-42fc-be28-25526a7d2010,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:9eb4ff7,CLOUDID:4f154f9a-32fc-44a3-90ac-aa371853f23f,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|15|50,EDM:-3,IP
+	:nil,URL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,
+	LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 97844f066ab911f09f706fa2197c6ceb-20250727
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
+	(envelope-from <jay.liu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1568745986; Sun, 27 Jul 2025 00:16:19 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Sun, 27 Jul 2025 15:16:14 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Sun, 27 Jul 2025 15:16:13 +0800
+From: Jay Liu <jay.liu@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+	<p.zabel@pengutronix.de>, Maarten Lankhorst
+	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, Jay Liu <jay.liu@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Hsin-Yi
+ Wang <hsinyi@chromium.org>, CK Hu <ck.hu@mediatek.com>, Yongqiang Niu
+	<yongqiang.niu@mediatek.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>
+Subject: [PATCH v2 0/7] porting pq compnent for MT8196
+Date: Sun, 27 Jul 2025 15:15:50 +0800
+Message-ID: <20250727071609.26037-1-jay.liu@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250724083907.61313-1-angelogioacchino.delregno@collabora.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250725_161236_477073_93F39891 
-X-CRM114-Status: GOOD (  11.03  )
+X-CRM114-CacheID: sfid-20250727_001625_683554_318BBBCD 
+X-CRM114-Status: GOOD (  10.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,19 +92,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: 20220315152503 created <jay.liu@mediatek.com>
 
-On Thu, 24 Jul 2025 10:39:05 +0200, AngeloGioacchino Del Regno wrote:
-> Add the missing AFE Merge Interface clock to MT7622 to make use of
-> it in the audio subsystem.
-> 
-> While at it, also remove the useless CLK_AUDIO_NR_CLK definition.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  include/dt-bindings/clock/mt7622-clk.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
+add ccorr/dither/gamma/tdshp support for MT8196
 
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
+Change in v2:
+- Modify the ccorr driver code to optimize the ctm_set process and avoid affecting other ICs.
+- Modify the tdshp driver code to remove unnecessary code.
+- Update the dt-bindings of tdshp, including clocks, description, examples, etc.
+
+This patch series id base on [1]
+[1] Add components to support PQ in display path for MT8196
+    - https://patchwork.kernel.org/project/linux-mediatek/list/?series=955361
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Jay Liu (7):
+  drm/mediatek: Add CCORR component support for MT8196
+  drm/mediatek: fix CCORR mtk_ctm_s31_32_to_s1_n function issue
+  drm/mediatek: Add TDSHP component support for MT8196
+  dt-bindings: display: mediatek: disp-tdshp: Add support for MT8196
+  dt-bindings: display: mediatek: ccorr: Add support for MT8196
+  dt-bindings: display: mediatek: dither: Add support for MT8196
+  dt-bindings: display: mediatek: gamma: Add support for MT8196
+
+ .../display/mediatek/mediatek,ccorr.yaml      |  1 +
+ .../display/mediatek/mediatek,disp-tdshp.yaml | 50 ++++++++++++++++++
+ .../display/mediatek/mediatek,dither.yaml     |  1 +
+ .../display/mediatek/mediatek,gamma.yaml      |  1 +
+ drivers/gpu/drm/mediatek/mtk_crtc.c           |  5 +-
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.c       | 52 ++++++++++++++++++-
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.h       |  8 +--
+ drivers/gpu/drm/mediatek/mtk_disp_ccorr.c     | 30 +++--------
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  2 +-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c        |  2 +
+ 10 files changed, 122 insertions(+), 30 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,disp-tdshp.yaml
+
+-- 
+2.46.0
 
 
