@@ -4,63 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43124C83F17
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Jul 2025 11:05:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A9BAC83F17
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Jul 2025 12:01:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0e1OLpLT7DS/zFHFHcwDEA+UIo5h0X6OPn4l0C+JQA8=; b=vqc8+SVl3E/hK6
-	UTH/ck/PxrCXADL8apkFmhn27pc5lhx7nEu+yfpGkpJrmkXJH2aDPGho6blC6oq1RJG8TckYuxIcR
-	vv21z9PWeTJYC51RAuhw1UQtq9REJ95zMUdj3hsq/zp1amlGY7ZEqZo7w2Bhv9ZyURuGGAdJwL4Iu
-	MVNTR5OZckT/m+IoHgbDoKwhgTH19yrwT4gaZ7AGaboFwSu1qBKGSEyBa6MvfgQ5+oDcnB+GCz7iU
-	P0l2dPYjVJrUw1ppKyF6cp3V7VDHgD+2RuoMeDPXg+4cMPR8TA/M0utH4Qmi85fiHL+liLBuuqNNW
-	1tqinvQwqGGww8IGL/ag==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=J4R+3pU08OkX3gKtctWPVhTGZmgj7VlZ1diX4X8BMsk=; b=zNiay46j9Pp+Ykd4Q2B4CELjlj
+	BaICMOGEl6LP1bONv0N4jFmiUyYdgDFgD4mcKoK0cAN/JLCz9JPjXrIiE40VUIwg0BCSx3iVbg8ia
+	9dXIPSBkBJTzOiIoPJW9tEQFWmicCq7eXOVZpGyr460ZoDeC6r99f+gDtT1/nQV7xlgo+wXthyw8q
+	To/IhqFVwFrSWFw9E5RQj/QQXaDx8R38VukcWtISgIKnkClnSvXX8JZvAo42gC7VpHrumSP2ijm62
+	AUdaxo2LjJu8rqycf/jRVfJqu4+EctJP+HESkkDeAlDZNjgftSW2KeT9vEEyo10cg5r1L0hi/0yx0
+	gR3ORdfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugLfl-0000000EJVR-0FrP;
-	Mon, 28 Jul 2025 11:05:37 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1ugMYC-0000000EOF4-0k3h;
+	Mon, 28 Jul 2025 12:01:52 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugLVh-0000000EHeu-2mLo;
-	Mon, 28 Jul 2025 10:55:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1753700111;
-	bh=W/a1/xZzEgZMEVHhYSue9fgjv4ZrPtKFHh6NMQSoygU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Z4GnV0RhagZI/l+vTFifPA3DWnvbrrycblRTy62QNPy0HMqJq7wn7Ocqo4aRxl41C
-	 wAiBoWnqsQuKyCk23pnPVHMnQi8cQclM4RqiYlM+la+UKFBbBVv5cXIoKTiMKB89+E
-	 9pmt6SJyXxYmlWvEbWfdb1o0HXPUWUB6h09prEJJrl1OlCaMB0LqlLa02kpIZHWWmc
-	 BLml2gDUkClRvinF4cK7aKSjCsWgvXWIOc07U2mZfOuJBCgIpyUC9XteWI+GtxJg32
-	 o/BNTUaeiOsgQnk1gRSLcbl03vd3WOCgtozzwfmHwpz4T0SIMU2hieX9GAkqpuuvVA
-	 E6RE832yEBBtQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1F4DC17E00EC;
-	Mon, 28 Jul 2025 12:55:09 +0200 (CEST)
-Message-ID: <f804c19f-622e-41af-8be5-3751532c4e9c@collabora.com>
-Date: Mon, 28 Jul 2025 12:55:08 +0200
+	id 1ugMUw-0000000ENhv-17jL;
+	Mon, 28 Jul 2025 11:58:31 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 51984A54CC6;
+	Mon, 28 Jul 2025 11:58:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9D697C4CEF8;
+	Mon, 28 Jul 2025 11:58:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1753703908;
+	bh=i7aKOq5KQVfB2/q14tophkJxPE1KTHjxLov6PFKAuzw=;
+	h=From:Date:Subject:To:Cc:From;
+	b=UiGFFLRXph6DIdO80VKAEFr2r6lwmFgP4INSrr85ATz85g79zqF06Rx5g03sDaGVU
+	 L0Sqmb0Na8c0PN/ylDtMv7CEuixYli5AI70nU37zR0mneU4ZoxIvL/KbSddUBvKAo+
+	 nECOR9/VZf1Wr77gN7+KYaQxpcHA3vfqVh9MnO6XAMxBnKcb3cLgG9pjtQv3WiWimA
+	 NS+vhowSnmqMzmFYkMG4l7ZOcyNthPkXqLJgxaF9ZV7m2b07DezwEJKj52Mdj8BwJR
+	 x5jxgsme08NjPMBzs5cuV/muESj8VaPzUoWHnXKtF8hb/LLwJvFN966vXYXNC2U+O9
+	 FG2ierM9a/5AQ==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Mon, 28 Jul 2025 13:58:08 +0200
+Subject: [PATCH net] net: airoha: Fix PPE table access in
+ airoha_ppe_debugfs_foe_show()
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 00/38] MediaTek devicetree/bindings warnings sanitization
-To: Rob Herring <robh@kernel.org>, Matthias Brugger
- <matthias.bgg@kernel.org>, Julien Massot <julien.massot@collabora.com>,
- Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com>
- <CAL_JsqJGNdp3Z0sXaEXWY8nqXD+0kSCo+BYCkcGstE7zcVVcXw@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <CAL_JsqJGNdp3Z0sXaEXWY8nqXD+0kSCo+BYCkcGstE7zcVVcXw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250728-airoha_ppe_foe_get_entry_locked-v1-1-8630ec73f3d1@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAM9lh2gC/x3NQQqDMBBG4avIrA2kwaL1KkWGqL86VJIwkdIi3
+ r2hy2/z3kkZKsjUVycp3pIlhoJbXdG0+bDCyFxMzrq7bV1nvGjcPKcEXiJ4xcEIh355j9MLs2k
+ tGowj8OgaKpWkWOTzPzyH6/oBWBGJdXEAAAA=
+X-Change-ID: 20250728-airoha_ppe_foe_get_entry_locked-70e4ebbee984
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250728_035514_002586_5CB7C2CA 
-X-CRM114-Status: GOOD (  23.34  )
+X-CRM114-CacheID: sfid-20250728_045830_461901_06879D31 
+X-CRM114-Status: GOOD (  11.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,216 +74,95 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: daniel.lezcano@linaro.org, mwalle@kernel.org, devicetree@vger.kernel.org, linus.walleij@linaro.org, linux-remoteproc@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, olivia.wen@mediatek.com, shane.chien@mediatek.com, linux-gpio@vger.kernel.org, linux-phy@lists.infradead.org, airlied@gmail.com, simona@ffwll.ch, herbert@gondor.apana.org.au, eugen.hristev@linaro.org, jassisinghbrar@gmail.com, jiaxin.yu@mediatek.com, andy.teng@mediatek.com, chunfeng.yun@mediatek.com, jieyy.yang@mediatek.com, chunkuang.hu@kernel.org, conor+dt@kernel.org, jitao.shi@mediatek.com, p.zabel@pengutronix.de, arnd@arndb.de, kishon@kernel.org, kyrie.wu@mediatek.corp-partner.google.com, maarten.lankhorst@linux.intel.com, tinghan.shen@mediatek.com, mripard@kernel.org, ck.hu@mediatek.com, broonie@kernel.org, linux-mediatek@lists.infradead.org, houlong.wei@mediatek.com, matthias.bgg@gmail.com, tglx@linutronix.de, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, granquet@baylibre.com, sam.shih@mediatek.com, mathieu.poirier@linaro.org, fparent@baylibre.com, andersson@kernel.org, sean.wang@kernel.org, linux-sound@vger.kernel.org, lgirdwood@gmail.com, vkoul@kernel.org, linux-crypto@vger.kernel.org, tzimmermann@suse.de, atenart@kernel.org, krzk+dt@kernel.org, linux-media@vger.kernel.org, davem@davemloft.net
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 25/07/25 15:52, Rob Herring ha scritto:
-> On Thu, Jul 24, 2025 at 3:39 AM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> As Rob pointed out, MediaTek devicetrees are *poor* in the dtbs_check
->> tests, and got an infinite load of warnings.
->>
->> This series starts attacking this situation.
->>
->> I didn't really count how many warnings I have resolved - it's a lot
->> of them anyway - and I think that this is a good start in any case.
-> 
-> 40 out of 125 (on arm64) fixed! Thanks! FYI, here's the ones that
-> remain (first number is number of times the warning occurs):
-> 
+In order to avoid any possible race we need to hold the ppe_lock
+spinlock accessing the hw PPE table. airoha_ppe_foe_get_entry routine is
+always executed holding ppe_lock except in airoha_ppe_debugfs_foe_show
+routine. Fix the problem introducing airoha_ppe_foe_get_entry_locked
+routine.
 
-Thanks Rob!
+Fixes: 3fe15c640f380 ("net: airoha: Introduce PPE debugfs support")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/ethernet/airoha/airoha_eth.h         |  4 ++--
+ drivers/net/ethernet/airoha/airoha_ppe.c         | 18 ++++++++++++++++--
+ drivers/net/ethernet/airoha/airoha_ppe_debugfs.c |  2 +-
+ 3 files changed, 19 insertions(+), 5 deletions(-)
 
-I know that there are more warnings to be fixed - but I am unable to do that
-right now, as I'm going on holiday in a few days.
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
+index a970b789cf232c316e5ea27b0146493bf91c3767..cf33d731ad0db43bca8463fde76673b39a4f6796 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.h
++++ b/drivers/net/ethernet/airoha/airoha_eth.h
+@@ -615,8 +615,8 @@ int airoha_ppe_setup_tc_block_cb(struct net_device *dev, void *type_data);
+ int airoha_ppe_init(struct airoha_eth *eth);
+ void airoha_ppe_deinit(struct airoha_eth *eth);
+ void airoha_ppe_init_upd_mem(struct airoha_gdm_port *port);
+-struct airoha_foe_entry *airoha_ppe_foe_get_entry(struct airoha_ppe *ppe,
+-						  u32 hash);
++struct airoha_foe_entry *
++airoha_ppe_foe_get_entry_locked(struct airoha_ppe *ppe, u32 hash);
+ void airoha_ppe_foe_entry_get_stats(struct airoha_ppe *ppe, u32 hash,
+ 				    struct airoha_foe_stats64 *stats);
+ 
+diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
+index 0e217acfc5ef748453b020e5713ace1910abc4a8..4dbf2bf187d02e3e8b9d2b966036c3aa58c867b1 100644
+--- a/drivers/net/ethernet/airoha/airoha_ppe.c
++++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+@@ -498,9 +498,11 @@ static void airoha_ppe_foe_flow_stats_update(struct airoha_ppe *ppe,
+ 		FIELD_PREP(AIROHA_FOE_IB2_NBQ, nbq);
+ }
+ 
+-struct airoha_foe_entry *airoha_ppe_foe_get_entry(struct airoha_ppe *ppe,
+-						  u32 hash)
++static struct airoha_foe_entry *
++airoha_ppe_foe_get_entry(struct airoha_ppe *ppe, u32 hash)
+ {
++	lockdep_assert_held(&ppe_lock);
++
+ 	if (hash < PPE_SRAM_NUM_ENTRIES) {
+ 		u32 *hwe = ppe->foe + hash * sizeof(struct airoha_foe_entry);
+ 		struct airoha_eth *eth = ppe->eth;
+@@ -527,6 +529,18 @@ struct airoha_foe_entry *airoha_ppe_foe_get_entry(struct airoha_ppe *ppe,
+ 	return ppe->foe + hash * sizeof(struct airoha_foe_entry);
+ }
+ 
++struct airoha_foe_entry *
++airoha_ppe_foe_get_entry_locked(struct airoha_ppe *ppe, u32 hash)
++{
++	struct airoha_foe_entry *hwe;
++
++	spin_lock_bh(&ppe_lock);
++	hwe = airoha_ppe_foe_get_entry(ppe, hash);
++	spin_unlock_bh(&ppe_lock);
++
++	return hwe;
++}
++
+ static bool airoha_ppe_foe_compare_entry(struct airoha_flow_table_entry *e,
+ 					 struct airoha_foe_entry *hwe)
+ {
+diff --git a/drivers/net/ethernet/airoha/airoha_ppe_debugfs.c b/drivers/net/ethernet/airoha/airoha_ppe_debugfs.c
+index 05a756233f6a44fa51d1c57dd39d89c8ea488054..992bf2e9598414ee3f1f126be3f451e486b26640 100644
+--- a/drivers/net/ethernet/airoha/airoha_ppe_debugfs.c
++++ b/drivers/net/ethernet/airoha/airoha_ppe_debugfs.c
+@@ -67,7 +67,7 @@ static int airoha_ppe_debugfs_foe_show(struct seq_file *m, void *private,
+ 		u32 type, state, ib2, data;
+ 		bool ipv6 = false;
+ 
+-		hwe = airoha_ppe_foe_get_entry(ppe, i);
++		hwe = airoha_ppe_foe_get_entry_locked(ppe, i);
+ 		if (!hwe)
+ 			continue;
+ 
 
-However, I will ask to some colleagues of mine (Ariel and Julien, added to this
-thread so that they also get your log and can take action) to try to solve
-some more warnings while I am away, starting with the easiest ones so that we
-reduce this bad number.
+---
+base-commit: afd8c2c9e2e29c6c7705635bea2960593976dacc
+change-id: 20250728-airoha_ppe_foe_get_entry_locked-70e4ebbee984
 
-In that pinctrl dt fixes commit, you made me realize how many (old leftover and
-new) warnings we had on MediaTek - it's bad, and must be fixed.. but in the
-meanwhile, thanks again for making me notice.
-
-Speaking of holidays, I'll also ask to Matthias to manage this merge window, so
-that those commits won't have to wait for the next one (as I'll be back in early
-September, I'm not sure how much time will be left until the window closes).
-
-Cheers!
-Angelo
-
->       29 (mediatek,mt8183-mfgcfg): 'power-domains' does not match any
-> of the regexes: '^pinctrl-[0-9]+$'
->       29 failed to match any schema with compatible:
-> ['mediatek,mt8183-audiosys', 'syscon']
->       29 failed to match any schema with compatible: ['mediatek,mt8183-audio']
->       27 (mediatek,mt8183-pinctrl): 'gpio-line-names' does not match
-> any of the regexes: '-pins(-[a-z]+)?$', '^pinctrl-[0-9]+$'
->       22 (mediatek,mt6359): '#sound-dai-cells' does not match any of
-> the regexes: '^pinctrl-[0-9]+$'
->       14 failed to match any schema with compatible:
-> ['mediatek,mt8183_mt6358_ts3a227_max98357']
->       12 (mediatek,mt8186-mt6366-rt1019-rt5682s-sound): 'model' is a
-> required property
->       12 failed to match any schema with compatible: ['mediatek,mt8173-mdp-rsz']
->        9 (mediatek,mt8195-iommu-infra): interrupts: [[0, 795, 4, 0],
-> [0, 796, 4, 0], [0, 797, 4, 0], [0, 798, 4, 0], [0, 799, 4, 0]] is too
-> long
->        8 failed to match any schema with compatible: ['mediatek,mt8173-mdp-wrot']
->        8 failed to match any schema with compatible:
-> ['mediatek,mt8173-mdp-rdma', 'mediatek,mt8173-mdp']
->        6 failed to match any schema with compatible:
-> ['mediatek,mt8183_da7219_rt1015p']
->        5 (mediatek,mt7986-eth): interrupts: [[0, 196, 4], [0, 197, 4],
-> [0, 198, 4], [0, 199, 4]] is too short
->        5 failed to match any schema with compatible:
-> ['mediatek,mt8183_mt6358_ts3a227_rt1015p']
->        4 (mediatek,mt8173-mmsys): 'assigned-clock-rates',
-> 'assigned-clocks' do not match any of the regexes: '^pinctrl-[0-9]+$'
->        4 (mediatek,mt8173-disp-ufoe): 'mediatek,gce-client-reg' does
-> not match any of the regexes: '^pinctrl-[0-9]+$'
->        4 (mediatek,mt8173-disp-od): 'mediatek,gce-client-reg' does not
-> match any of the regexes: '^pinctrl-[0-9]+$'
->        4 (mediatek,mt6360): #interrupt-cells: 1 was expected
->        4 failed to match any schema with compatible: ['mediatek,mt8173-vpu']
->        4 failed to match any schema with compatible: ['mediatek,mt8173-mdp-wdma']
->        4 failed to match any schema with compatible: ['mediatek,mt8173-mdp-rdma']
->        4 failed to match any schema with compatible: ['mediatek,mt7622-pcie']
->        3 (mediatek,mt8192-audsys): 'mt8192-afe-pcm' does not match any
-> of the regexes: '^pinctrl-[0-9]+$'
->        3 (mediatek,mt8173-thermal): Unevaluated properties are not
-> allowed ('bank0-supply', 'bank1-supply' were unexpected)
->        3 (mediatek,mt8173-pinctrl): 'gpio-line-names' does not match
-> any of the regexes: '^pinctrl-[0-9]+$', 'pins$'
->        3 (mediatek,mt8173-dsi): Unevaluated properties are not allowed
-> ('ports' was unexpected)
->        3 (mediatek,mt8173-dsi): ports: 'port@1' is a required property
->        3 (mediatek,mt8173-dsi): ports: 'port@0' is a required property
->        3 failed to match any schema with compatible: ['mediatek,mt8173-rt5650']
->        2 (mediatek,mt8192_mt6359_rt1015p_rt5682): 'model' is a required property
->        2 (mediatek,mt8192-i2c): Unevaluated properties are not allowed
-> ('clock-stretch-ns' was unexpected)
->        2 (mediatek,mt8186-spmi): Unevaluated properties are not allowed
-> ('interrupts' was unexpected)
->        2 (mediatek,mt7986-tphy): usb-phy@700:reg: [[0, 1792], [0,
-> 2304]] is too long
->        2 (mediatek,mt7622-pwrap): 'regulators' does not match any of
-> the regexes: '^pinctrl-[0-9]+$'
->        2 (mediatek,mt7622-pciesys): compatible: 'oneOf' conditional
-> failed, one must be fixed:
->        2 (mediatek,mt7622-audsys): audio-controller: 'power-domains' is
-> a required property
->        2 (mediatek,mt7622-audsys): audio-controller:clock-names:
-> ['infra_sys_audio_clk', 'top_audio_mux1_sel
-> ', 'top_audio_mux2_sel', 'top_audio_a1sys_hp', 'top_audio_a2sys_hp',
-> 'i2s0_src_sel', 'i2s1_src_sel', 'i2s2_
-> src_sel', 'i2s3_src_sel', 'i2s0_src_div', 'i2s1_src_div',
-> 'i2s2_src_div', 'i2s3_src_div', 'i2s0_mclk_en','
-> i2s1_mclk_en', 'i2s2_mclk_en', 'i2s3_mclk_en', 'i2so0_hop_ck',
-> 'i2so1_hop_ck', 'i2so2_hop_ck', 'i2so3_hop_c
-> k', 'i2si0_hop_ck', 'i2si1_hop_ck', 'i2si2_hop_ck', 'i2si3_hop_ck',
-> 'asrc0_out_ck', 'asrc1_out_ck', 'asrc2_
-> out_ck', 'asrc3_out_ck', 'audio_afe_pd', 'audio_afe_conn_pd',
-> 'audio_a1sys_pd', 'audio_a2sys_pd'] is too sh
-> ort
->        2 (mediatek,mt7622-audio): 'power-domains' is a required property
->        2 (mediatek,mt7622-audio): clock-names: ['infra_sys_audio_clk',
-> 'top_audio_mux1_sel', 'top_audio_mux2
-> _sel', 'top_audio_a1sys_hp', 'top_audio_a2sys_hp', 'i2s0_src_sel',
-> 'i2s1_src_sel', 'i2s2_src_sel', 'i2s3_sr
-> c_sel', 'i2s0_src_div', 'i2s1_src_div', 'i2s2_src_div',
-> 'i2s3_src_div', 'i2s0_mclk_en', 'i2s1_mclk_en', 'i2
-> s2_mclk_en', 'i2s3_mclk_en', 'i2so0_hop_ck', 'i2so1_hop_ck',
-> 'i2so2_hop_ck', 'i2so3_hop_ck', 'i2si0_hop_ck'
-> , 'i2si1_hop_ck', 'i2si2_hop_ck', 'i2si3_hop_ck', 'asrc0_out_ck',
-> 'asrc1_out_ck', 'asrc2_out_ck', 'asrc3_ou
-> t_ck', 'audio_afe_pd', 'audio_afe_conn_pd', 'audio_a1sys_pd',
-> 'audio_a2sys_pd'] is too short
->        2 (mediatek,mt6795-mmsys): 'assigned-clock-rates',
-> 'assigned-clocks' do not match any of the regexes: '^pinctrl-[0-9]+$'
->        2 (mediatek,mt6795-mmc): Unevaluated properties are not allowed
-> ('pinctrl-names' was unexpected)
->        2 (mediatek,mt6795-mmc): pinctrl-names: ['default'] is too short
->        2 (mediatek,mt6795-mmc): 'pinctrl-1' is a required property
->        2 (mediatek,mt6795-disp-ufoe): 'mediatek,gce-client-reg' does
-> not match any of the regexes: '^pinctrl-[0-9]+$'
->        2 (mediatek,mt6795-disp-od): 'mediatek,gce-client-reg' does not
-> match any of the regexes: '^pinctrl-[0-9]+$'
->        2 failed to match any schema with compatible:
-> ['mediatek,mt8183_da7219_max98357']
->        2 failed to match any schema with compatible:
-> ['mediatek,mt7622-scpsys', 'syscon']
->        2 failed to match any schema with compatible: ['mediatek,mt6797-scpsys']
->        2 failed to match any schema with compatible:
-> ['mediatek,mt6380-regulator']
->        2 failed to match any schema with compatible: ['mediatek,mt2712-pcie']
->        1 (mediatek,mt8516-topckgen): compatible: 'oneOf' conditional
-> failed, one must be fixed:
->        1 (mediatek,mt8516-apmixedsys): compatible: 'oneOf' conditional
-> failed, one must be fixed:
->        1 (mediatek,mt8186-mt6366-rt5682s-max98360-sound): 'model' is a
-> required property
->        1 (mediatek,mt8186-cci): 'proc-supply' is a required property
->        1 (mediatek,mt8183-pinctrl): 'i2c0', 'i2c1', 'i2c2', 'i2c3',
-> 'i2c4', 'i2c5', 'mmc0', 'mmc0default', 'mmc1', 'mmc1default', 'pwm1',
-> 'spi0', 'spi1', 'spi2', 'spi3', 'spi4', 'spi5' do not match any of the
-> regexes: '-pins(-[a-z]+)?$', '^pinctrl-[0-9]+$'
->        1 (mediatek,mt8183-pinctrl): 'i2c0', 'i2c1', 'i2c2', 'i2c3',
-> 'i2c4', 'i2c5', 'i2c6', 'keyboard' do not match any of the regexes:
-> '-pins(-[a-z]+)?$', '^pinctrl-[0-9]+$'
->        1 (mediatek,mt8183-pinctrl): bt-pins-wakeup: 'piins-bt-wakeup'
-> does not match any of the regexes: '^pinctrl-[0-9]+$', '^pins'
->        1 (mediatek,mt8173-pwrap): 'power-domains' does not match any of
-> the regexes: '^pinctrl-[0-9]+$'
->        1 (mediatek,mt7622-pinctrl): 'asm-sel-hog' does not match any of
-> the regexes: '-pins(-[a-z]+)?$', '^pinctrl-[0-9]+$'
->        1 (mediatek,mt7622-audsys): audio-controller:clocks: [[2, 2],
-> [18, 80], [18, 81], [18, 107], [18, 108], [18, 89], [18, 90], [18,
-> 91], [18, 92], [18, 95], [18, 96], [18, 97], [18, 98], [18, 103], [18,
-> 104], [18, 105], [18, 106], [38, 8], [38, 9], [38, 10], [38, 11], [38,
-> 4], [38, 5], [38, 6], [38, 7], [38, 14], [38, 15], [38, 39], [38, 40],
-> [38, 0], [38, 46], [38, 17], [38, 18]] is too short
->        1 (mediatek,mt7622-audsys): audio-controller:clocks: [[2, 2],
-> [18, 80], [18, 81], [18, 107], [18, 108], [18, 89], [18, 90], [18,
-> 91], [18, 92], [18, 95], [18, 96], [18, 97], [18, 98], [18, 103], [18,
-> 104], [18, 105], [18, 106], [37, 8], [37, 9], [37, 10], [37, 11], [37,
-> 4], [37, 5], [37, 6], [37, 7], [37, 14], [37, 15], [37, 39], [37, 40],
-> [37, 0], [37, 46], [37, 17], [37, 18]] is too short
->        1 (mediatek,mt7622-audio): clocks: [[2, 2], [18, 80], [18, 81],
-> [18, 107], [18, 108], [18, 89], [18, 90], [18, 91], [18, 92], [18,
-> 95], [18, 96], [18, 97], [18, 98], [18, 103], [18, 104], [18, 105],
-> [18, 106], [38, 8], [38, 9], [38, 10], [38, 11], [38, 4], [38, 5],
-> [38, 6], [38, 7], [38, 14], [38, 15], [38, 39], [38, 40], [38, 0],
-> [38, 46], [38, 17], [38, 18]] is too short
->        1 (mediatek,mt7622-audio): clocks: [[2, 2], [18, 80], [18, 81],
-> [18, 107], [18, 108], [18, 89], [18, 90], [18, 91], [18, 92], [18,
-> 95], [18, 96], [18, 97], [18, 98], [18, 103], [18, 104], [18, 105],
-> [18, 106], [37, 8], [37, 9], [37, 10], [37, 11], [37, 4], [37, 5],
-> [37, 6], [37, 7], [37, 14], [37, 15], [37, 39], [37, 40], [37, 0],
-> [37, 46], [37, 17], [37, 18]] is too short
->        1 (mediatek,mt7531): 'interrupts' is a dependency of
-> 'interrupt-controller'
->        1 (mediatek,mt6357): 'adc' does not match any of the regexes:
-> '^pinctrl-[0-9]+$'
->        1 (mediatek,mt6331): regulators:compatible: 'oneOf' conditional
-> failed, one must be fixed:
->        1 (mediatek,mt6331-regulator): 'ldo-vio28' does not match any of
-> the regexes: '^buck-v(core2|io18|dvfs11|dvfs12|dvfs13|dvfs14)$',
-> '^ldo-(avdd32aud|vauxa32)$',
-> '^ldo-v(dig18|emc33|ibr|mc|mch|mipi|rtc|sim1|sim2|sram|usb10)$',
-> '^ldo-vcam(a|af|d|io)$', '^ldo-vgp[1234]$', '^ldo-vtcxo[12]$',
-> '^pinctrl-[0-9]+$'
->        1 (mediatek,mt6331-regulator): ldo-vcamio:regulator-name:0:
-> 'vcam_io' does not match '^vcam(a|_af|d|io)$'
->        1 (mediatek,mt6331): 'mt6332-led' does not match any of the
-> regexes: '^pinctrl-[0-9]+$'
->        1 failed to match any schema with compatible:
-> ['mediatek,mt6779-audio', 'syscon']
->        1 failed to match any schema with compatible:
-> ['mediatek,mt2712-scpsys', 'syscon']
-
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
