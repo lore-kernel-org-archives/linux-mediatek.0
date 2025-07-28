@@ -4,45 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE70DC83F26
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Jul 2025 08:01:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA712C83F17
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Jul 2025 10:40:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=vUvp0ttX3lOxjdOrvZsKvJKNpHHNusfF6naBdS8j1E8=; b=Evg185sPXAqCDKHUtAHHWI+HS9
-	CjgFXiHJHZh/Olg/tWEvuLuQEP4Bi3+NwXGCBsASU+DzjWL5wMmtTL4fppaEyFs3+BBIQkLuXZ1VO
-	4H9r0xbAGCuTZj5ULEDuDq321ux3NQwB265ImEbZ+aCZF6436KtivztIcwkOBCf46SSHlMQjAX5Xq
-	Un7ZFo+v63QGAIvjbJC+pT3M/HiV6y5nx1F5n5L1cUMadfgE++fvbdqqVxJyqpz4ERLA/VbcJRLeG
-	p6DgCcLBcMi5aGJJwWD3iOdSA7GImOiCrZ2QIb8nJW4DwBOD7o4W3DvUpx1LTy8g349m+9URcM267
-	yy8/e6Nw==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uRoodUQrGHcA3B0Yw4kL+QZUbnQIbcySG2CHZ5wmGVA=; b=tUHlxtiJE8M5My5c4ySYrC2Az5
+	VmVxVaYEYnQse0t3yjvzcxBbwojR0kI8CEk6yNB5F4lTHe0fW6ausUZRkYZZNDh0IrJXlCj1gsCYz
+	Ayh2matrOtlTXeXBSRCHD3tD//X14IXzfTZ+XRd8fIHKMT7TCuSBMp4Bws47cksSfclxTbQmP6rUl
+	zxBiowVWx4AGQ+oMFi7McaV/BMd/Hm+jUBfgbaPYh0vy9rJGxF463NoujyKnLwTKth/L43fbkzwD9
+	xaoiPQbDVT0SEczVa81s9zdl//ltkLZ47f77IaOEWvuHChMShML04zeaO3Iszc1gAjwgr3SnSu6Nf
+	p/7v2TAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugInx-0000000DvIB-2WBU;
-	Mon, 28 Jul 2025 08:01:53 +0000
-Received: from mail.fundixo.pl ([57.128.173.14])
+	id 1ugLHY-0000000EFuP-0V5L;
+	Mon, 28 Jul 2025 10:40:36 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugIZj-0000000DtOu-2VLd
-	for linux-mediatek@lists.infradead.org;
-	Mon, 28 Jul 2025 07:47:12 +0000
-Received: by mail.fundixo.pl (Postfix, from userid 1002)
-	id 5A0B04A3C1; Mon, 28 Jul 2025 09:47:07 +0200 (CEST)
-Received: by mail.fundixo.pl for <linux-mediatek@lists.infradead.org>; Mon, 28 Jul 2025 07:46:08 GMT
-Message-ID: <20250728084500-0.1.gp.3j1ow.0.uemn46rhje@CyberCitadel.pl>
-Date: Mon, 28 Jul 2025 07:46:08 GMT
-From: "Marek Kucharski" <marek.kucharski@fundixo.pl>
-To: <linux-mediatek@lists.infradead.org>
-Subject: =?UTF-8?Q?Prosz=C4=99_o_kontakt?=
-X-Mailer: mail.CyberCitadel.pl
+	id 1ugL8f-0000000EEnp-0tZK;
+	Mon, 28 Jul 2025 10:31:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1753698682;
+	bh=fr2sMayk+dxmv8PYp2bPRYDp+i45PTMIsl+txmuuBxA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=KLD00ixd1h76FA7vAK4g+5ZbjutxtwRH+azhwUNgHmFoXi7COHA0Y6NKxDDKDcxOI
+	 Cr2mn6GnWMQ6pcyye0AgJtp6E4/GdLRVmpm+3mdrS3Q+nbGi/qHrhHNBXpQ1FUXeiX
+	 cl9N2RqmSFcknA/vV/ftwjpRatRjdOnX9c34MrVBrpO/wtAII0fuHnyi92JAcHZq/+
+	 KuZT2c14PN3TNj3+0CKnz8FLgjQKYcfLcALiDQEIRZExMuCjTcVkFJQLwVt6jBhfh1
+	 ouOWZrXpbXbFd2VNdiNI+5Sb+F4HM8rYHlm/zf2Ib2g0POxBlKiWQaRXLPdKvADaEJ
+	 YBB3iUppD+qcQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id CEA1A17E1439;
+	Mon, 28 Jul 2025 12:31:21 +0200 (CEST)
+Message-ID: <8ff50873-f6c5-4c83-bb65-0f234eaf8172@collabora.com>
+Date: Mon, 28 Jul 2025 12:31:20 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] pwm: mediatek: Fix duty and period setting
+To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, John Crispin <john@phrozen.org>
+Cc: linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20250724210041.2513590-2-u.kleine-koenig@baylibre.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250724210041.2513590-2-u.kleine-koenig@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250728_004711_774180_F02869C5 
-X-CRM114-Status: UNSURE (   0.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250728_033125_476686_48BBD84D 
+X-CRM114-Status: GOOD (  25.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -57,19 +75,178 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dzie=C5=84 dobry,
+Il 24/07/25 23:00, Uwe Kleine-König ha scritto:
+> The period generated by the hardware is
+> 
+> 	(PWMDWIDTH + 1) << CLKDIV) / freq
+> 
+> according to my tests with a signal analyser and also the documentation.
+> 
+> The current algorithm doesn't consider the `+ 1` part and so configures
+> slightly too high periods. The same issue exists for the duty cycle
+> setting. So subtract 1 from both the register values for period and
+> duty cycle. If period is 0, bail out, if duty_cycle is 0, just disable
+> the PWM which results in a constant low output.
+> 
+> Note that clk handling is dropped from pwm_mediatek_{en,dis}able to
+> handle duty_cycle = 0, so the calls in pwm_mediatek_apply() have to be
+> modified to do clk handling, too.
 
-Czy jest mo=C5=BCliwo=C5=9B=C4=87 nawi=C4=85zania wsp=C3=B3=C5=82pracy z =
-Pa=C5=84stwem?
+The changes LGTM, but please split those in two commits, one that fixes the +1
+and one that changes the clock handling.
 
-Z ch=C4=99ci=C4=85 porozmawiam z osob=C4=85 zajmuj=C4=85c=C4=85 si=C4=99 =
-dzia=C5=82aniami zwi=C4=85zanymi ze sprzeda=C5=BC=C4=85.
+After which:
 
-Pomagamy skutecznie pozyskiwa=C4=87 nowych klient=C3=B3w.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Zapraszam do kontaktu.
+Cheers,
+Angelo
+
+> 
+> Fixes: caf065f8fd58 ("pwm: Add MediaTek PWM support")
+> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@baylibre.com>
+> ---
+> Hello,
+> 
+> changes since (implicit) v1,
+> https://lore.kernel.org/linux-pwm/20250710163705.2095418-2-u.kleine-koenig@baylibre.com/:
+> 
+>   - Drop superflous parenthesis from commit log
+>   - To implement drop the enable register instead of bit 15 in the CON
+>     register, adapt commit log accordingly.
+> 
+> Best regards
+> Uwe
+> 
+>   drivers/pwm/pwm-mediatek.c | 76 ++++++++++++++++++++------------------
+>   1 file changed, 41 insertions(+), 35 deletions(-)
+> 
+> diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
+> index 6777c511622a..4460bbca2582 100644
+> --- a/drivers/pwm/pwm-mediatek.c
+> +++ b/drivers/pwm/pwm-mediatek.c
+> @@ -121,6 +121,26 @@ static inline void pwm_mediatek_writel(struct pwm_mediatek_chip *chip,
+>   	writel(value, chip->regs + chip->soc->reg_offset[num] + offset);
+>   }
+>   
+> +static void pwm_mediatek_enable(struct pwm_chip *chip, struct pwm_device *pwm)
+> +{
+> +	struct pwm_mediatek_chip *pc = to_pwm_mediatek_chip(chip);
+> +	u32 value;
+> +
+> +	value = readl(pc->regs);
+> +	value |= BIT(pwm->hwpwm);
+> +	writel(value, pc->regs);
+> +}
+> +
+> +static void pwm_mediatek_disable(struct pwm_chip *chip, struct pwm_device *pwm)
+> +{
+> +	struct pwm_mediatek_chip *pc = to_pwm_mediatek_chip(chip);
+> +	u32 value;
+> +
+> +	value = readl(pc->regs);
+> +	value &= ~BIT(pwm->hwpwm);
+> +	writel(value, pc->regs);
+> +}
+> +
+>   static int pwm_mediatek_config(struct pwm_chip *chip, struct pwm_device *pwm,
+>   			       int duty_ns, int period_ns)
+>   {
+> @@ -150,7 +170,10 @@ static int pwm_mediatek_config(struct pwm_chip *chip, struct pwm_device *pwm,
+>   	do_div(resolution, clk_rate);
+>   
+>   	cnt_period = DIV_ROUND_CLOSEST_ULL((u64)period_ns * 1000, resolution);
+> -	while (cnt_period > 8191) {
+> +	if (!cnt_period)
+> +		return -EINVAL;
+> +
+> +	while (cnt_period > 8192) {
+>   		resolution *= 2;
+>   		clkdiv++;
+>   		cnt_period = DIV_ROUND_CLOSEST_ULL((u64)period_ns * 1000,
+> @@ -173,9 +196,16 @@ static int pwm_mediatek_config(struct pwm_chip *chip, struct pwm_device *pwm,
+>   	}
+>   
+>   	cnt_duty = DIV_ROUND_CLOSEST_ULL((u64)duty_ns * 1000, resolution);
+> +
+>   	pwm_mediatek_writel(pc, pwm->hwpwm, PWMCON, BIT(15) | clkdiv);
+> -	pwm_mediatek_writel(pc, pwm->hwpwm, reg_width, cnt_period);
+> -	pwm_mediatek_writel(pc, pwm->hwpwm, reg_thres, cnt_duty);
+> +	pwm_mediatek_writel(pc, pwm->hwpwm, reg_width, cnt_period - 1);
+> +
+> +	if (cnt_duty) {
+> +		pwm_mediatek_writel(pc, pwm->hwpwm, reg_thres, cnt_duty - 1);
+> +		pwm_mediatek_enable(chip, pwm);
+> +	} else {
+> +		pwm_mediatek_disable(chip, pwm);
+> +	}
+>   
+>   out:
+>   	pwm_mediatek_clk_disable(chip, pwm);
+> @@ -183,35 +213,6 @@ static int pwm_mediatek_config(struct pwm_chip *chip, struct pwm_device *pwm,
+>   	return ret;
+>   }
+>   
+> -static int pwm_mediatek_enable(struct pwm_chip *chip, struct pwm_device *pwm)
+> -{
+> -	struct pwm_mediatek_chip *pc = to_pwm_mediatek_chip(chip);
+> -	u32 value;
+> -	int ret;
+> -
+> -	ret = pwm_mediatek_clk_enable(chip, pwm);
+> -	if (ret < 0)
+> -		return ret;
+> -
+> -	value = readl(pc->regs);
+> -	value |= BIT(pwm->hwpwm);
+> -	writel(value, pc->regs);
+> -
+> -	return 0;
+> -}
+> -
+> -static void pwm_mediatek_disable(struct pwm_chip *chip, struct pwm_device *pwm)
+> -{
+> -	struct pwm_mediatek_chip *pc = to_pwm_mediatek_chip(chip);
+> -	u32 value;
+> -
+> -	value = readl(pc->regs);
+> -	value &= ~BIT(pwm->hwpwm);
+> -	writel(value, pc->regs);
+> -
+> -	pwm_mediatek_clk_disable(chip, pwm);
+> -}
+> -
+>   static int pwm_mediatek_apply(struct pwm_chip *chip, struct pwm_device *pwm,
+>   			      const struct pwm_state *state)
+>   {
+> @@ -221,8 +222,10 @@ static int pwm_mediatek_apply(struct pwm_chip *chip, struct pwm_device *pwm,
+>   		return -EINVAL;
+>   
+>   	if (!state->enabled) {
+> -		if (pwm->state.enabled)
+> +		if (pwm->state.enabled) {
+>   			pwm_mediatek_disable(chip, pwm);
+> +			pwm_mediatek_clk_disable(chip, pwm);
+> +		}
+>   
+>   		return 0;
+>   	}
+> @@ -231,8 +234,11 @@ static int pwm_mediatek_apply(struct pwm_chip *chip, struct pwm_device *pwm,
+>   	if (err)
+>   		return err;
+>   
+> -	if (!pwm->state.enabled)
+> -		err = pwm_mediatek_enable(chip, pwm);
+> +	if (!pwm->state.enabled) {
+> +		err = pwm_mediatek_clk_enable(chip, pwm);
+> +		if (err < 0)
+> +			return err;
+> +	}
+>   
+>   	return err;
+>   }
+> 
+> base-commit: a02b105fe9f2b82cbd13b13a98c2b9ffae4a7c27
 
 
-Pozdrawiam
-Marek Kucharski
 
