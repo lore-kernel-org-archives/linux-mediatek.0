@@ -4,65 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A9BAC83F17
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Jul 2025 12:01:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D8E9C87FC9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Jul 2025 12:06:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=J4R+3pU08OkX3gKtctWPVhTGZmgj7VlZ1diX4X8BMsk=; b=zNiay46j9Pp+Ykd4Q2B4CELjlj
-	BaICMOGEl6LP1bONv0N4jFmiUyYdgDFgD4mcKoK0cAN/JLCz9JPjXrIiE40VUIwg0BCSx3iVbg8ia
-	9dXIPSBkBJTzOiIoPJW9tEQFWmicCq7eXOVZpGyr460ZoDeC6r99f+gDtT1/nQV7xlgo+wXthyw8q
-	To/IhqFVwFrSWFw9E5RQj/QQXaDx8R38VukcWtISgIKnkClnSvXX8JZvAo42gC7VpHrumSP2ijm62
-	AUdaxo2LjJu8rqycf/jRVfJqu4+EctJP+HESkkDeAlDZNjgftSW2KeT9vEEyo10cg5r1L0hi/0yx0
-	gR3ORdfQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3al+hMDe/zBohoOAzsYCMM35v93UO8lNtVq8nt80bjY=; b=eY1dxuqjPPIluKDHC3RSaiDUOB
+	6toca7DooM2n4unjuUvQ3v6Itvozp65S3BqMxjYzrngFvlv+pasrdXAy8nQRjHN4GSS/7fzLWeIp0
+	ICQlKVVou7M+du7VWEl7ozV22ysiOV2VJLwbWCpbfdeyJ48svC/dNsHRZViygBJZMyJ13qPcsxbli
+	iuI9BrJhZlmFwbuGV4Ev456MdX6DnS59p27czpI/xMEDP/t1K1vNTQKxH5kZy4KBaHmNpJJlWrRQh
+	xKYcZxhDOEQgA8VK4dRrebgDzBosfXK0KuGhlfbwypOOORn/SAGPAbcpeq2GMCJPzXpQFR2mauZyj
+	tsy4ltWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugMYC-0000000EOF4-0k3h;
-	Mon, 28 Jul 2025 12:01:52 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1ugMd2-0000000EOhZ-0KXq;
+	Mon, 28 Jul 2025 12:06:52 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugMUw-0000000ENhv-17jL;
-	Mon, 28 Jul 2025 11:58:31 +0000
+	id 1ugMXU-0000000EO9s-3fA5;
+	Mon, 28 Jul 2025 12:01:09 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 51984A54CC6;
-	Mon, 28 Jul 2025 11:58:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9D697C4CEF8;
-	Mon, 28 Jul 2025 11:58:27 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 33195450F9;
+	Mon, 28 Jul 2025 12:01:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 63D59C4CEE7;
+	Mon, 28 Jul 2025 12:01:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1753703908;
-	bh=i7aKOq5KQVfB2/q14tophkJxPE1KTHjxLov6PFKAuzw=;
-	h=From:Date:Subject:To:Cc:From;
-	b=UiGFFLRXph6DIdO80VKAEFr2r6lwmFgP4INSrr85ATz85g79zqF06Rx5g03sDaGVU
-	 L0Sqmb0Na8c0PN/ylDtMv7CEuixYli5AI70nU37zR0mneU4ZoxIvL/KbSddUBvKAo+
-	 nECOR9/VZf1Wr77gN7+KYaQxpcHA3vfqVh9MnO6XAMxBnKcb3cLgG9pjtQv3WiWimA
-	 NS+vhowSnmqMzmFYkMG4l7ZOcyNthPkXqLJgxaF9ZV7m2b07DezwEJKj52Mdj8BwJR
-	 x5jxgsme08NjPMBzs5cuV/muESj8VaPzUoWHnXKtF8hb/LLwJvFN966vXYXNC2U+O9
-	 FG2ierM9a/5AQ==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Mon, 28 Jul 2025 13:58:08 +0200
-Subject: [PATCH net] net: airoha: Fix PPE table access in
- airoha_ppe_debugfs_foe_show()
+	s=k20201202; t=1753704068;
+	bh=AT9yKQg5kRN8nra0kolGIDcgq8P5PHiV3m58mHJz5rw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=hNQEaGnvdB8vZbpyHKEoHvYZlMF6Z3S0L4w0ht6X57FtC2rpGIk7AnL1SV0vh7HtQ
+	 PSBrRWAolXqHOLYPJrFdIvLaVOf8BGUnhaec1Vqd4aBwzly6MLMd2uyHC6yo84aG+J
+	 p/fGkzu735OIRpgeHPJ7S+ulyCofvBfRq8f9bUdQ0vosb4EgbSPlRHM1VwTnZqfY0o
+	 aNxEOQWb5yPp9TTbUeye3B9e/OtAqGc+KuAOLdDIHYcmHu0pEogvdVP0vCRzF/oIuG
+	 e4xIns42Nr+HIx4i/zf3qi8+GNIJ2NTxj5ra8fudKgo7me9hq+9jVnkvtCoOpm4lXW
+	 //GYp7n1lkAbg==
+Message-ID: <8d6ba467-d418-441f-aa49-8b615f3c333a@kernel.org>
+Date: Mon, 28 Jul 2025 14:01:01 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 4/7] dt-bindings: display: mediatek: disp-tdshp: Add
+ support for MT8196
+To: Jay Liu <jay.liu@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, CK Hu <ck.hu@mediatek.com>,
+ Yongqiang Niu <yongqiang.niu@mediatek.com>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20250727071609.26037-1-jay.liu@mediatek.com>
+ <20250727071609.26037-5-jay.liu@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <20250727071609.26037-5-jay.liu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250728-airoha_ppe_foe_get_entry_locked-v1-1-8630ec73f3d1@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAM9lh2gC/x3NQQqDMBBG4avIrA2kwaL1KkWGqL86VJIwkdIi3
- r2hy2/z3kkZKsjUVycp3pIlhoJbXdG0+bDCyFxMzrq7bV1nvGjcPKcEXiJ4xcEIh355j9MLs2k
- tGowj8OgaKpWkWOTzPzyH6/oBWBGJdXEAAAA=
-X-Change-ID: 20250728-airoha_ppe_foe_get_entry_locked-70e4ebbee984
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250728_045830_461901_06879D31 
-X-CRM114-Status: GOOD (  11.99  )
+X-CRM114-CacheID: sfid-20250728_050108_957172_1C376089 
+X-CRM114-Status: UNSURE (   7.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,92 +129,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In order to avoid any possible race we need to hold the ppe_lock
-spinlock accessing the hw PPE table. airoha_ppe_foe_get_entry routine is
-always executed holding ppe_lock except in airoha_ppe_debugfs_foe_show
-routine. Fix the problem introducing airoha_ppe_foe_get_entry_locked
-routine.
+On 27/07/2025 09:15, Jay Liu wrote:
+> Add disp-tdshp hardware description for MediaTek MT8196 SoC
+> 
+> Signed-off-by: Jay Liu <jay.liu@mediatek.com>
+> Signed-off-by: 20220315152503 created <jay.liu@mediatek.com>
 
-Fixes: 3fe15c640f380 ("net: airoha: Introduce PPE debugfs support")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.h         |  4 ++--
- drivers/net/ethernet/airoha/airoha_ppe.c         | 18 ++++++++++++++++--
- drivers/net/ethernet/airoha/airoha_ppe_debugfs.c |  2 +-
- 3 files changed, 19 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index a970b789cf232c316e5ea27b0146493bf91c3767..cf33d731ad0db43bca8463fde76673b39a4f6796 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -615,8 +615,8 @@ int airoha_ppe_setup_tc_block_cb(struct net_device *dev, void *type_data);
- int airoha_ppe_init(struct airoha_eth *eth);
- void airoha_ppe_deinit(struct airoha_eth *eth);
- void airoha_ppe_init_upd_mem(struct airoha_gdm_port *port);
--struct airoha_foe_entry *airoha_ppe_foe_get_entry(struct airoha_ppe *ppe,
--						  u32 hash);
-+struct airoha_foe_entry *
-+airoha_ppe_foe_get_entry_locked(struct airoha_ppe *ppe, u32 hash);
- void airoha_ppe_foe_entry_get_stats(struct airoha_ppe *ppe, u32 hash,
- 				    struct airoha_foe_stats64 *stats);
- 
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index 0e217acfc5ef748453b020e5713ace1910abc4a8..4dbf2bf187d02e3e8b9d2b966036c3aa58c867b1 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -498,9 +498,11 @@ static void airoha_ppe_foe_flow_stats_update(struct airoha_ppe *ppe,
- 		FIELD_PREP(AIROHA_FOE_IB2_NBQ, nbq);
- }
- 
--struct airoha_foe_entry *airoha_ppe_foe_get_entry(struct airoha_ppe *ppe,
--						  u32 hash)
-+static struct airoha_foe_entry *
-+airoha_ppe_foe_get_entry(struct airoha_ppe *ppe, u32 hash)
- {
-+	lockdep_assert_held(&ppe_lock);
-+
- 	if (hash < PPE_SRAM_NUM_ENTRIES) {
- 		u32 *hwe = ppe->foe + hash * sizeof(struct airoha_foe_entry);
- 		struct airoha_eth *eth = ppe->eth;
-@@ -527,6 +529,18 @@ struct airoha_foe_entry *airoha_ppe_foe_get_entry(struct airoha_ppe *ppe,
- 	return ppe->foe + hash * sizeof(struct airoha_foe_entry);
- }
- 
-+struct airoha_foe_entry *
-+airoha_ppe_foe_get_entry_locked(struct airoha_ppe *ppe, u32 hash)
-+{
-+	struct airoha_foe_entry *hwe;
-+
-+	spin_lock_bh(&ppe_lock);
-+	hwe = airoha_ppe_foe_get_entry(ppe, hash);
-+	spin_unlock_bh(&ppe_lock);
-+
-+	return hwe;
-+}
-+
- static bool airoha_ppe_foe_compare_entry(struct airoha_flow_table_entry *e,
- 					 struct airoha_foe_entry *hwe)
- {
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe_debugfs.c b/drivers/net/ethernet/airoha/airoha_ppe_debugfs.c
-index 05a756233f6a44fa51d1c57dd39d89c8ea488054..992bf2e9598414ee3f1f126be3f451e486b26640 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe_debugfs.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe_debugfs.c
-@@ -67,7 +67,7 @@ static int airoha_ppe_debugfs_foe_show(struct seq_file *m, void *private,
- 		u32 type, state, ib2, data;
- 		bool ipv6 = false;
- 
--		hwe = airoha_ppe_foe_get_entry(ppe, i);
-+		hwe = airoha_ppe_foe_get_entry_locked(ppe, i);
- 		if (!hwe)
- 			continue;
- 
+Who is this person?
 
----
-base-commit: afd8c2c9e2e29c6c7705635bea2960593976dacc
-change-id: 20250728-airoha_ppe_foe_get_entry_locked-70e4ebbee984
+Test your bindings BEFORE you send them, not after. That's v2 so I don't
+get why this is not tested at this point.
+
 
 Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
-
+Krzysztof
 
