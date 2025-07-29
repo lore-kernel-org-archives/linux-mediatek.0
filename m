@@ -4,89 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE71AC83F26
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Jul 2025 03:54:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0072C83F26
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Jul 2025 06:40:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=VaH78BxSqInc7YWoloFx3Urvp7YqnyUZb3BPxUwn1CQ=; b=dzPpAF0Dxm489bakXrtQZYywoz
-	GKU8GmAGuQZ1yeNscBXPHkwl25i5uChyL/QH74UG592GIMhr/622j+AxdE3DHChZRHWbYrKTZ0Qrf
-	uAE1CTWXgvipIZYvokLWf3Bmh1fyS41rHpaF9g7yq0MCtBDXRlj20iQOoCfTXBgXcU0157uzi+1G2
-	zSg22AMGZFrPvnjo4xlBTNSyXP7h+ZFxwPHEMY+0MUvEXSVAoTIeO9cx0E7/pmK18LKnp7nz5E9v/
-	rdQF82pogayQFqxD/qRMZhjWa/1TbxIxZdcKWO+A0S+8GtTpC4I598id6mZAKcWxk+wFYq/qnwQuz
-	jwIeDZaw==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AdQC/K3LIKSscNRyk8T2PgRCFaUQc02f6qftAleHQdI=; b=r329MznltWiMxBuqLPRDv49K0k
+	tH3hKZBxq5NfZmLDf/zGXJl3LN5uYAcqd4HExmB+N6n1X2kq+LblQQ1SCLq0R3W42ktDrI/30su5J
+	q8LhHnqW8CX3aTvXFqg0HlIdCylYisn9jOypSlPGP0rtL9znWqRGChtWCddSzpg0zEL3pfRZc9PuL
+	S4gzfMin79UIe+QZlyCkP4I3GYvXv45W/tUgNIKvPLlcXPlOz1liCUBPGt3p6K9ncUTmh7WKZJNE+
+	dDKGgwKnMe/nHAoRQoWtnm/ZbO10Ig+kJ9h6JNLKMdjBeRSvE8YPFwWZa9r9z9iCEOD2c4/wa3Xoj
+	o5LrWrhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugbPe-0000000Fri6-0Odj;
-	Tue, 29 Jul 2025 03:54:02 +0000
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+	id 1uge0N-0000000G2Ny-3tfg;
+	Tue, 29 Jul 2025 06:40:07 +0000
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugbNA-0000000Frb4-3AJe;
-	Tue, 29 Jul 2025 03:51:29 +0000
-Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-2403c13cac3so4780435ad.0;
-        Mon, 28 Jul 2025 20:51:28 -0700 (PDT)
+	id 1ugdxu-0000000G2El-25q1
+	for linux-mediatek@lists.infradead.org;
+	Tue, 29 Jul 2025 06:37:36 +0000
+Received: by mail-lf1-x130.google.com with SMTP id 2adb3069b0e04-553b5165cf5so6505919e87.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 28 Jul 2025 23:37:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1753761087; x=1754365887; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=VaH78BxSqInc7YWoloFx3Urvp7YqnyUZb3BPxUwn1CQ=;
-        b=RdnSpMfUarR2gx0MyP27u+YUnfM3PkNyS2FP55twLyN5NdOxfRO6Ic138Oju3qhzdj
-         td64XNGr9Zmnr45Ait5d817E5MuK8OpNG9XSUZBd3/dbHxOUTj8LUiV0Seo4qFliiW9N
-         hQifzYsDr+Q4zfzDipOQ09K2TMNV+FehSrAKSwxBuMrRng1jWRUIv9pOECEZHAN5dx5k
-         G5SDy7czfFDqPF86tQCNYwZI3XcBmKrsa47PERMwJ04qtjsMSCv0sJDH1wuXexiOdx2Q
-         jK+VeOUnshgIGnAXYjN1+7Z0Nst7oZ1clggVrVQQ8JxAQhqnmSfcH4fS1QFT7w097/1l
-         uKMw==
+        d=chromium.org; s=google; t=1753771052; x=1754375852; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=AdQC/K3LIKSscNRyk8T2PgRCFaUQc02f6qftAleHQdI=;
+        b=UxmFoUjfEFukCCItWOQ/e5qGBo4Fzh1pLvDDbs3+xkeeCxKZXeW77arwSdLciev/XA
+         2LKQqfzA5WsX5Bu4S6/QaJHnbpbkPkwrLgcVqN1FavJRi6cpIDGGqC2z8FFZacuMgXXg
+         8JaG/FvQZciaM557GOx+yN6CBu/LdWeszAxOg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1753761087; x=1754365887;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=VaH78BxSqInc7YWoloFx3Urvp7YqnyUZb3BPxUwn1CQ=;
-        b=VbatyEoWWBuq/xdhHGwN8WeO9p6VuCJYEiNCi3EuH5vI2OgU/fsJ1XngfnQaZnZEd5
-         6Qu7L+qII80m+Z+8EyJsgYQVvWkhdRnrZg79Ubb95HPpdSRPkeykkzMaV7kxvv39XR9N
-         uzGBqJhpSrACdFGRlZfy1vGGu9o6AdLQKWhn31kUJOQubTtaJA2kM+ijSV84AUX90CiT
-         g5grWENiSZrg/SVbFfszW8MdTjV8MpZdq7MG7pqh4oT09RgCfcDEtk3E3Lf6D/rLgcaH
-         MA+N9APCsqhI65UL6Ulvw5f2AwX0VG7laKXLvMwwRkkOrTQmrX998lYGAinbQhrIer8n
-         HB8A==
-X-Forwarded-Encrypted: i=1; AJvYcCVVTJE+5pbxOFbNqf3lE2o0hSfR2bC4q9ECyVSmBVEgK7oLZEuFXoy28E3P4S/g6iahfGCyEnucGW3oPgqOPBs=@lists.infradead.org, AJvYcCWoZjJjdHVatBQdTh65p6j/9maObu9BzGLtX7ra2r1JVGF3K0PVFZU6BZD5hazdq1/cGxLSmm1zxhnbDMhdz2V7@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy5TGQ3xc7uA628nCadWeaw4CIfNZZjh7rLU9FDhFQ7UduRbgNQ
-	9oKlROd4RBEDPPdhLz2gvS13NebCiZ2jDnL3ueCmzR+K2jSMGSyXSso0
-X-Gm-Gg: ASbGnct7exYh0JgIcZx5ynOjSgmjpd7tPmFhBmrr4BBaWIeDrSjWQMKT9lFHCrczaC0
-	M1HwNSn4F/bXTXMOUDXsuruLT1N0O8676lhHR6MfUENDASilT5TiURBKtemR4QJM8TslZWuD5EO
-	56C+o3ZFsl9U1UDgshAQqS47OSUFLhrMiwtr/mVD4njiA1lsBpFVI0pTQLYIesObPysDU8+W1jv
-	eGHP3kz/+tMHtyvO5rRYMuxoQWVG22HAWvPQOjD7XenPr0lK6BP/LGY4vhjFeO7hv/Ku8ru6iHO
-	lag0h7dAqOHfqi63crb6+YYuff4IYlHU4/g138UU76fstumPakrHRJQ1tzY5gHTbFUAK/yLBYJe
-	TOjb8Wub4KhNk7+pZde6gmO5qTzkfxG8s4XWEJgEoDGMXemwGhBc5fA==
-X-Google-Smtp-Source: AGHT+IELJXUiKm6KGXwaWiJUOPXk0c1EvlpOE0FOhZcoN6Z2MeI+X6ZgSi+Gg/tOSGKg3s7RZBPU3A==
-X-Received: by 2002:a17:902:e84e:b0:23f:9718:85f5 with SMTP id d9443c01a7336-24063d62911mr24916295ad.15.1753761087280;
-        Mon, 28 Jul 2025 20:51:27 -0700 (PDT)
-Received: from CQSWSUNAO.transsion.com ([107.155.12.245])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-24025f5a3cesm34549145ad.72.2025.07.28.20.51.23
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Jul 2025 20:51:26 -0700 (PDT)
-From: Ao Sun <aosun718@gmail.com>
-To: wim@linux-watchdog.org,
-	linux@roeck-us.net,
-	matthias.bgg@gmail.com,
-	p.zabel@pengutronix.de
-Cc: linux-watchdog@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	geng.sun@transsion.com,
-	Ao Sun <aosun718@gmail.com>
-Subject: [PATCH] watchdog: mtk_wdt: Use NOIRQ_SYSTEM_SLEEP_PM_OPS()
-Date: Tue, 29 Jul 2025 11:51:17 +0800
-Message-Id: <20250729035117.3170-1-aosun718@gmail.com>
-X-Mailer: git-send-email 2.34.1
+        d=1e100.net; s=20230601; t=1753771052; x=1754375852;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=AdQC/K3LIKSscNRyk8T2PgRCFaUQc02f6qftAleHQdI=;
+        b=ZmIry825EJT+3a6eM/OqLxq78DpNjdGEHW0e0o2u+0S7+CUvQuURiHTB+KYaKLGlVd
+         azZk8oGwbs7+SiDm//4FbRk2XuCU8Y2QqoRcVqPETp45zVvGGyJACwCWHzc/1/jBKty5
+         dAm1Od0xhSp+8Uwm9f9mdC7lH4fsHCQZYWyOSQgQmdEj2j0oCZmqZCSTI9ctTKkaZeru
+         EcRWHwX4+sJS5tR9OVlKCjUczX3la9TjxR3b3wEy3XcXxtGO/0OECliCVo3BTi5Wq0LA
+         NHTP5VEGKjyIhZBzgMig7zzjtIYKD7Ln5mantlEIU818uLdGKl6GFHVi7+oSsuqLeQyf
+         tLaw==
+X-Forwarded-Encrypted: i=1; AJvYcCXGCqxwgJUPQ6tQLk12va96Gmr6kyci6J3HxJl1hELukjrL6sfxBqJTvSvc+euNVxGvn6bxSVWaf0Gg/YD94w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxB9/d46fxpLXS7BQPduyWFa8wF3RQYHWe0Dln2WY9zS0qAo4TC
+	phTkZKJi4TRGoAUV7R9cyEDCxZpQ+sj4E3RlUWWwv+ewX4uMj41mBfwyjuMe5MCWZss1K7QDmgw
+	Jdeve8INM/KN4L12CayD2nIt8GHCU5GNzwwMVZgja
+X-Gm-Gg: ASbGncvbUhDTDyRYoccLh7rUGDGw4HRyw321ONt3S7cY9NjLDdHSX+HjVyBjRjX1nfd
+	FMwWR9N9FEyYL5EAgi62w8sNveOwkVJN/00AT9pdOkgtjtP/SP9BKiQvvTLkdio3zgUenvZrthp
+	Ed5BR9TwU9Ret/vVls38GELxfsODZTUxJLLM0j1VjPHJvDVzVu/u+FFyRw3dA1PumTAgl9gn7mZ
+	r3U0to5Xbs97q0sQAKBmQ/jtjIsnlPoZwmoUWV13kK6
+X-Google-Smtp-Source: AGHT+IEgvlc297To6fHbXdTZorsH91fq0QGaKclycxBL1IjMJRB888ehZGOrD1mGdyChv8MiWaDPZvyajrhgWyt/Rok=
+X-Received: by 2002:a05:6512:3c84:b0:55b:57e8:16c4 with SMTP id
+ 2adb3069b0e04-55b5f4abb78mr3766968e87.30.1753771052463; Mon, 28 Jul 2025
+ 23:37:32 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20250723-mtk-hdmi-v1-1-4ff945eb6136@chromium.org>
+In-Reply-To: <20250723-mtk-hdmi-v1-1-4ff945eb6136@chromium.org>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 29 Jul 2025 14:37:21 +0800
+X-Gm-Features: Ac12FXzoxBPnyvKXGXlu3ix-9ADJidAZNN4VQPkrQrPMR3ZfP3Di7o5rHnp5ZrM
+Message-ID: <CAGXv+5HCnAXoPJmh4ewSF4ay=qRVM_BK0w17yvjbx9efktXX_A@mail.gmail.com>
+Subject: Re: [PATCH] ASoC: mediatek: Use SND_JACK_AVOUT for HDMI/DP jacks
+To: Terry Cheong <htcheong@chromium.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Baili Deng <bailideng@google.com>, 
+	linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250728_205128_831935_5FF12482 
-X-CRM114-Status: GOOD (  11.21  )
+X-CRM114-CacheID: sfid-20250728_233734_988146_B5BB50F6 
+X-CRM114-Status: UNSURE (   9.13  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,32 +97,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-During the device resume process, an interrupt storm occurs after
-interrupts are enabled, preventing the watchdog device from being
-awakened and functioning.
+On Wed, Jul 23, 2025 at 5:44=E2=80=AFPM Terry Cheong <htcheong@chromium.org=
+> wrote:
+>
+> The SND_JACK_AVOUT is a more specific jack type for HDMI and DisplayPort.
+> Updatae the MediaTek drivers to use such jack type, allowing system to
 
-To ensure that the watchdog is executed before interrupts are enabled,
-Use NOIRQ_SYSTEM_SLEEP_PM_OPS().
+       ^ typo
 
-Signed-off-by: Ao Sun <aosun718@gmail.com>
----
- drivers/watchdog/mtk_wdt.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> determine the device type based on jack event.
+>
+> Signed-off-by: Terry Cheong <htcheong@chromium.org>
 
-diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-index d6a6393f609d..5f2179dabd67 100644
---- a/drivers/watchdog/mtk_wdt.c
-+++ b/drivers/watchdog/mtk_wdt.c
-@@ -327,7 +327,7 @@ static const struct of_device_id mtk_wdt_dt_ids[] = {
- MODULE_DEVICE_TABLE(of, mtk_wdt_dt_ids);
- 
- static const struct dev_pm_ops mtk_wdt_pm_ops = {
--	SET_SYSTEM_SLEEP_PM_OPS(mtk_wdt_suspend,
-+	 SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(mtk_wdt_suspend,
- 				mtk_wdt_resume)
- };
- 
--- 
-2.34.1
+Otherwise,
 
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
