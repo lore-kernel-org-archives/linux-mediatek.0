@@ -4,57 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB7EFC83F26
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Jul 2025 22:56:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1CD3C83F17
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Jul 2025 02:31:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SK/NDznNF5xIG9UZ2JX6YwAPNtJeRFw1p+CZfhfhdNE=; b=Vq6G4aoIzQtsTNNX9h8wXXI/NY
-	7je3hBHoKN+4vsqojQC/9Gfx4KTjsTw1W+3RJ/o7YgdbIYgauKqRxvGAsnuQNloRQNSlfnAd/astp
-	ZY1Ywj4AeR/BtQRI8U5APB1KUFBENI+vBqvN2h/d4Bn3Z6qONmFrav1D/Ueer9Dd9mGQK4ASfFD45
-	ELCDY9slq1Opfwnxtz//W++wYe2lj48tWMIZlgBBMBu0mi/Ek/ht0NcbaQJEJjZImB+lComrrtzGe
-	wM7XeKKJptRIInWFGsJXwjH9tOhcpjCON80ZxKEE/UCea4Shm8lOckS6Ba9dUgDCfB81ZVsaJgJyU
-	8jYUq2TQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=41rw4LISPl+iO7NfLc3Ar1MC/dnrRsPRo+py+vvxe0E=; b=djjrBKSCpdZlRO1jk6oYYCAgQf
+	9Ws2jQvO8MFKcU5KDsEdbg14zKBNuJduf5dvgcaHjA89YYd+IxvZrtP0MDGPuIsLZ6dagnd41W06q
+	/37N9BF4sCs1I1RHDMPoBagBzRStJeNvtsc2gzIYm6BJjjm7hP1CEbNVz6IqAo12Vooa7SctqWsKH
+	uWWKAPURw0RJTNShrzNQbL3QZXA75U5lS8bMjhh4DFJOD92tlknkn5ZLtN2HWOUWvHvhWc9p+IdIh
+	kLeSCRBrrfwZ0IgYAPbVvwcdTvAwfsEoJ1PWJR3frRPApAk/FADfOAKhqn4xOBgiMyX4BnGwqc9WO
+	uHspggrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugWlE-0000000FYTu-0xF8;
-	Mon, 28 Jul 2025 22:56:00 +0000
-Received: from woodpecker.gentoo.org ([140.211.166.183] helo=smtp.gentoo.org)
+	id 1uga7z-0000000FlkC-0Miv;
+	Tue, 29 Jul 2025 02:31:43 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugWik-0000000FYCZ-3BDO;
-	Mon, 28 Jul 2025 22:53:28 +0000
-Received: from localhost (unknown [116.232.124.18])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: dlan)
-	by smtp.gentoo.org (Postfix) with ESMTPSA id E8D24341F0B;
-	Mon, 28 Jul 2025 22:53:23 +0000 (UTC)
-Date: Tue, 29 Jul 2025 06:53:19 +0800
-From: Yixun Lan <dlan@gentoo.org>
-To: Alex Elder <elder@riscstar.com>
-Cc: gregkh@linuxfoundation.org, jirislaby@kernel.org, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, lkundrak@v3.sk,
-	devicetree@vger.kernel.org, linux-serial@vger.kernel.org,
-	spacemit@lists.linux.dev, linux-mediatek@lists.infradead.org,
-	linux-riscv@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	kernel test robot <lkp@intel.com>
-Subject: Re: [PATCH] dt-bindings: serial: 8250: allow "main" and "uart" as
- clock names
-Message-ID: <20250728225319-GYA900803@gentoo>
-References: <20250728220002.599554-1-elder@riscstar.com>
+	id 1uga7w-0000000Flii-168s;
+	Tue, 29 Jul 2025 02:31:41 +0000
+X-UUID: 242c8f026c2411f09eb0dd999d3936bf-20250728
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=41rw4LISPl+iO7NfLc3Ar1MC/dnrRsPRo+py+vvxe0E=;
+	b=LD/lu15gcYba++9X9lodLeKiqr1jW3FCU+NThFwCj3IqedqH48AQbiuTRbDwfD5l1y2H6h8RIbu1CojLOaAaCRl9J9ppNVAWpwWJ5Uzg8dauYQI7fl7hbd/JHTrS3RF3vSuB1JxYnNDh//9n2gIGJdyMJrc7AJgKEx300tXGMj0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.2,REQID:cfb7a39c-efc0-450c-92b6-b1ce59ada530,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:9eb4ff7,CLOUDID:b4ba450f-6968-429c-a74d-a1cce2b698bd,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|15|50,EDM:-3,IP
+	:nil,URL:99|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
+	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 242c8f026c2411f09eb0dd999d3936bf-20250728
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw02.mediatek.com
+	(envelope-from <huayu.zong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 183473938; Mon, 28 Jul 2025 19:31:33 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Tue, 29 Jul 2025 10:31:30 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Tue, 29 Jul 2025 10:31:29 +0800
+From: Huayu Zong <huayu.zong@mediatek.com>
+To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
+	<mathieu.poirier@linaro.org>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Tinghan Shen
+	<tinghan.shen@mediatek.com>
+CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<--cc=Project_Global_Chrome_Upstream_Group@mediatek.com>, Huayu Zong
+	<huayu.zong@mediatek.com>
+Subject: [PATCH 0/3] Add support for MT8189 SCP and device tree bindings
+Date: Tue, 29 Jul 2025 10:31:10 +0800
+Message-ID: <20250729023125.9036-1-huayu.zong@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250728220002.599554-1-elder@riscstar.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250728_155326_820405_1DB39119 
-X-CRM114-Status: GOOD (  20.79  )
+X-CRM114-CacheID: sfid-20250728_193140_307370_BEF05215 
+X-CRM114-Status: UNSURE (   9.57  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,87 +91,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Alex,
+  This patch series adds support for the System Companion
+Processor (SCP) on MediaTek MT8189, including device tree
+bindings, dts node, and driver support.
 
-On 17:00 Mon 28 Jul     , Alex Elder wrote:
-> There are two compatible strings defined in "8250.yaml" that require
-> two clocks to be specified, along with their names:
->   - "spacemit,k1-uart", used in "spacemit/k1.dtsi"
->   - "nxp,lpc1850-uart", used in "lpc/lpc18xx.dtsi"
-> 
-> When only one clock is used, the name is not required.  However there
-> are two places that do specify a name:
->   - In "mediatek/mt7623.dtsi", the clock for the "mediatek,mtk-btif"
->     compatible serial device is named "main"
->   - In "qca/ar9132.dtsi", the clock for the "ns8250" compatible
->     serial device is named "uart"
-> 
-> In commit d2db0d7815444 ("dt-bindings: serial: 8250: allow clock 'uartclk'
-> and 'reg' for nxp,lpc1850-uart"), Frank Li added the restriction that two
-> named clocks be used for the NXP platform mentioned above.  Extend that
-> so that the two named clocks used by the SpacemiT platform are similarly
-> restricted.
-> 
-> Add "main" and "uart" as allowed names when a single clock is specified.
-> 
-> Fixes: 2c0594f9f0629 ("dt-bindings: serial: 8250: support an optional second clock")
-> Reported-by: kernel test robot <lkp@intel.com>
-> Closes: https://lore.kernel.org/oe-kbuild-all/202507160314.wrC51lXX-lkp@intel.com/
-> Signed-off-by: Alex Elder <elder@riscstar.com>
-> ---
->  .../devicetree/bindings/serial/8250.yaml      | 19 ++++++++++++++-----
->  1 file changed, 14 insertions(+), 5 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/serial/8250.yaml b/Documentation/devicetree/bindings/serial/8250.yaml
-> index e46bee8d25bf0..cef52ebd8f7da 100644
-> --- a/Documentation/devicetree/bindings/serial/8250.yaml
-> +++ b/Documentation/devicetree/bindings/serial/8250.yaml
-> @@ -61,11 +61,17 @@ allOf:
->              - const: uartclk
->              - const: reg
-..
->      else:
-would it be better to drop this 'else', and moving following 'if' block
-to the same level with "nxp,lpc1850-uart"?
+---
+This series patches dependent on:
+[1]
+https://patchwork.kernel.org/project/linux-mediatek/cover/20250718075630.644870-1-sirius.wang@mediatek.com/
 
-the reason here would avoid too many indentions if add more constraint in
-the future if other SoC uart need different clock-names..
+Huayu Zong (3):
+  dt-bindings: remoteproc: mediatek: Add binding for mt8189 scp
+  arm64: dts: mt8189: Add scp node
+  remoteproc: mediatek: Support MT8189 SCP
 
-> -      properties:
-> -        clock-names:
-> -          items:
-> -            - const: core
-> -            - const: bus
-> +      if:
-> +        properties:
-> +          compatible:
-> +            contains:
-> +              const: spacemit,k1-uart
-> +      then:
-> +        properties:
-> +          clock-names:
-> +            items:
-> +              - const: core
-> +              - const: bus
->  
->  properties:
->    compatible:
-> @@ -162,6 +168,9 @@ properties:
->      minItems: 1
->      maxItems: 2
->      oneOf:
-> +      - enum:
-> +          - main
-> +          - uart
->        - items:
->            - const: core
->            - const: bus
-> 
-> base-commit: 0b90c3b6d76ea512dc3dac8fb30215e175b0019a
-> -- 
-> 2.48.1
-> 
+ .../bindings/remoteproc/mtk,scp.yaml          |  2 +
+ arch/arm64/boot/dts/mediatek/mt8189-evb.dts   | 17 +++++++++
+ arch/arm64/boot/dts/mediatek/mt8189.dtsi      | 11 ++++++
+ drivers/remoteproc/mtk_common.h               | 11 ++++++
+ drivers/remoteproc/mtk_scp.c                  | 37 +++++++++++++++++--
+ 5 files changed, 75 insertions(+), 3 deletions(-)
 
 -- 
-Yixun Lan (dlan)
+2.45.2
+
 
