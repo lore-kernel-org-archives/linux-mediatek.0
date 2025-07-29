@@ -4,72 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E14AC87FC9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Jul 2025 17:48:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F1CEC83F26
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Jul 2025 17:56:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=x3HNOWZw5hkcyGSQgmqXfoEJ+ny9/ZCvslOQJp7MB2E=; b=MCb9ibHhI4BFZz7mAHA92NnGZr
-	NozALIQgi3JP6vtKDw5jrkknRIKxEsxKUCX0x6H+wGpFfefSSBqqbTSmIUAg/LDfu8+REAl6VZnPR
-	/QOEBi+83CLuF1dtt+bzK46ZyJKbmMX9du2Iie07AikATJmr41k0+umYh2xV4+JFM1Rzyi1riAGQZ
-	E31AKeRbn38T+MFJUGwt19LmOMRS0EE8/Cf+CcgrVXiSFwy90c+hU781B8uzRwh1QRULcD4z/Wp/e
-	+8VF4giwUGWKEsP3ncYW7g+6e8wAALa66bJ/F25zS8MCPC1qEKaHbVrEFTSzlR7JObFkWJni1bMvY
-	HdsIZa9A==;
+	bh=xxEfwZZVQON9rzKpeEf3w/DZmcBf+IaqVJSn86t2ssQ=; b=ApARGFr7cuC7by3jNq9/p1Yw22
+	5R6ChrPuqftnFfMEwZaSTYeQfvNl+mxC8Qrk/dYOWPJFWQT6wgX4iSyvhTuT4WHYh5KPpa3MG/+Qy
+	3P276AdGabBzc9L8J0CqoDRM0EWIYv+zZjEkvmL5DLQTEI3KCvk7VFYjZSfnff9beqzPzzS9vutM+
+	6PhCPoGvnZzlcfO7h8u4md2DnLXkShnW9UwNsV51PUoXRYiJ8fQ5sZQ2AJ/OJIUET9k0r0bvi5Zvp
+	KYdWr/5NT09YE4FKHb6h+NaAjzVx7PYPw8RegtirmjuFKDzLWfF88+AMX6Q+4QvJOpik9y0dnPtlt
+	PLQ+YwBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugoQj-0000000HOQW-28hF;
-	Tue, 29 Jul 2025 17:48:01 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1ugoZE-0000000HP6O-0vHB;
+	Tue, 29 Jul 2025 17:56:48 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugoOG-0000000HOAG-0Mbn;
-	Tue, 29 Jul 2025 17:45:29 +0000
+	id 1ugoWk-0000000HOtX-1jKH;
+	Tue, 29 Jul 2025 17:54:15 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 6004EA549BE;
-	Tue, 29 Jul 2025 17:45:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 07791C4CEF4;
-	Tue, 29 Jul 2025 17:45:23 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id C1D015C36EB;
+	Tue, 29 Jul 2025 17:54:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DFCFBC4CEEF;
+	Tue, 29 Jul 2025 17:54:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1753811127;
-	bh=x3HNOWZw5hkcyGSQgmqXfoEJ+ny9/ZCvslOQJp7MB2E=;
+	s=k20201202; t=1753811653;
+	bh=Iwuu7Y+7MX/mR2K6h/H9itzDgZzQD+SpABNB9DHk9R4=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KpYz6p89DzVpv//o/gFNgWEc5Gm98fYQHRh53L/XAWVBwKf6VN4selbeF3gdwwEvg
-	 u98KjXQ+5iE3qf+0PljVq+7U6G0i+8g8/g9PlFz68kwZDKNgUlgQjigkgP9A1YfC6B
-	 9X8Ms26uAs+GCTr1uCtrFAuSHuRLHW1z2YDRJsI5z3Nf70z4vA/bBChgiwI2YG2OEe
-	 naZZVD+u9g8sLV6R4EQMlhKSJ7f/5V8LlkT4e+czD5gn/DRl/Y4EvNof/bpqSNfdpw
-	 p+dlMs7GS/CXFDGcJ3/fWfe2l8DGD5l4E2fAVzl/R2WObcVvwyyop5zZBqcVz2NVQ6
-	 VnYBAwpJko4pw==
-Date: Tue, 29 Jul 2025 18:45:21 +0100
+	b=hkddaFw0w8n5PeSLmPokQCXVbPWkUNv/qFzM8HUmsD4Ls4zM0dlU5USFutiWoKcmK
+	 XkQMCf738wBF+ouzYx1L/8DxqiSfZdCxyjVuyDpVcApKovpMI3iwRQoO4QpNnEx4YU
+	 rEWP5zzTfhnR5laJT3sN6/N0p2s1NLocO6kt2hNkh7kjShvylztPPRnaeKpv9DTPSr
+	 P1SxWuITUk5iDytvQCkInAGP7N4K47c2JGqjd0YvcEmPWzZTMuCE8BoW5R1mbx13c1
+	 hb8a8h3I6eewofsiFPOhGhbqHDdYmgCDjW1jwZG2S2fAfo4qPIHPCbclUfq7U2hEfV
+	 qncPTyh9JLgxA==
+Date: Tue, 29 Jul 2025 18:54:07 +0100
 From: Conor Dooley <conor@kernel.org>
-To: Huayu Zong <huayu.zong@mediatek.com>
-Cc: Bjorn Andersson <andersson@kernel.org>,
-	Mathieu Poirier <mathieu.poirier@linaro.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Tinghan Shen <tinghan.shen@mediatek.com>,
-	linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH 1/3] dt-bindings: remoteproc: mediatek: Add binding for
- mt8189 scp
-Message-ID: <20250729-flask-applaud-7af817ef7a94@spud>
-References: <20250729023125.9036-1-huayu.zong@mediatek.com>
- <20250729023125.9036-2-huayu.zong@mediatek.com>
+To: Yixun Lan <dlan@gentoo.org>
+Cc: Alex Elder <elder@riscstar.com>, gregkh@linuxfoundation.org,
+	jirislaby@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
+	conor+dt@kernel.org, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, lkundrak@v3.sk,
+	devicetree@vger.kernel.org, linux-serial@vger.kernel.org,
+	spacemit@lists.linux.dev, linux-mediatek@lists.infradead.org,
+	linux-riscv@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	kernel test robot <lkp@intel.com>
+Subject: Re: [PATCH] dt-bindings: serial: 8250: allow "main" and "uart" as
+ clock names
+Message-ID: <20250729-reshuffle-contented-e6def76b540b@spud>
+References: <20250728220002.599554-1-elder@riscstar.com>
+ <20250728225319-GYA900803@gentoo>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="kD2euniIewJpEG2U"
+	protocol="application/pgp-signature"; boundary="sAUlFocIDHyTEwNs"
 Content-Disposition: inline
-In-Reply-To: <20250729023125.9036-2-huayu.zong@mediatek.com>
+In-Reply-To: <20250728225319-GYA900803@gentoo>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250729_104528_190234_FA2618A7 
-X-CRM114-Status: UNSURE (   9.04  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250729_105414_540018_DB40F8A7 
+X-CRM114-Status: GOOD (  26.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,28 +81,79 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---kD2euniIewJpEG2U
+--sAUlFocIDHyTEwNs
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Tue, Jul 29, 2025 at 10:31:11AM +0800, Huayu Zong wrote:
-> Add the compatible for mt8189 SCP to the binding.
+On Tue, Jul 29, 2025 at 06:53:19AM +0800, Yixun Lan wrote:
+> Hi Alex,
 >=20
-> Signed-off-by: Huayu Zong <huayu.zong@mediatek.com>
+> On 17:00 Mon 28 Jul     , Alex Elder wrote:
+> > There are two compatible strings defined in "8250.yaml" that require
+> > two clocks to be specified, along with their names:
+> >   - "spacemit,k1-uart", used in "spacemit/k1.dtsi"
+> >   - "nxp,lpc1850-uart", used in "lpc/lpc18xx.dtsi"
+> >=20
+> > When only one clock is used, the name is not required.  However there
+> > are two places that do specify a name:
+> >   - In "mediatek/mt7623.dtsi", the clock for the "mediatek,mtk-btif"
+> >     compatible serial device is named "main"
+> >   - In "qca/ar9132.dtsi", the clock for the "ns8250" compatible
+> >     serial device is named "uart"
+> >=20
+> > In commit d2db0d7815444 ("dt-bindings: serial: 8250: allow clock 'uartc=
+lk'
+> > and 'reg' for nxp,lpc1850-uart"), Frank Li added the restriction that t=
+wo
+> > named clocks be used for the NXP platform mentioned above.  Extend that
+> > so that the two named clocks used by the SpacemiT platform are similarly
+> > restricted.
+> >=20
+> > Add "main" and "uart" as allowed names when a single clock is specified.
+> >=20
+> > Fixes: 2c0594f9f0629 ("dt-bindings: serial: 8250: support an optional s=
+econd clock")
+> > Reported-by: kernel test robot <lkp@intel.com>
+> > Closes: https://lore.kernel.org/oe-kbuild-all/202507160314.wrC51lXX-lkp=
+@intel.com/
+> > Signed-off-by: Alex Elder <elder@riscstar.com>
+> > ---
+> >  .../devicetree/bindings/serial/8250.yaml      | 19 ++++++++++++++-----
+> >  1 file changed, 14 insertions(+), 5 deletions(-)
+> >=20
+> > diff --git a/Documentation/devicetree/bindings/serial/8250.yaml b/Docum=
+entation/devicetree/bindings/serial/8250.yaml
+> > index e46bee8d25bf0..cef52ebd8f7da 100644
+> > --- a/Documentation/devicetree/bindings/serial/8250.yaml
+> > +++ b/Documentation/devicetree/bindings/serial/8250.yaml
+> > @@ -61,11 +61,17 @@ allOf:
+> >              - const: uartclk
+> >              - const: reg
+> ..
+> >      else:
+> would it be better to drop this 'else', and moving following 'if' block
+> to the same level with "nxp,lpc1850-uart"?
+>=20
+> the reason here would avoid too many indentions if add more constraint in
+> the future if other SoC uart need different clock-names..
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
+I agree, it's more typical to do it that way I think to boot.
 
---kD2euniIewJpEG2U
+Also, why is there a k1/lpc conditional bit that is not part of the
+allOf in addition to the bits in the allOf? Can that get merged with the
+allOf please?
+
+--sAUlFocIDHyTEwNs
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaIkIsQAKCRB4tDGHoIJi
-0pwmAQDF9XgoLzRZN2+HymZe6A7A4abQRqFlzcGxlUnimpt8xQD7BQ2lbwb8Iw7n
-KyWPgmI4hfaZEK9QDBPIsnCbJOyAaQk=
-=qcBV
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaIkKvwAKCRB4tDGHoIJi
+0pONAP9z4KxzBZNfA6xqUmrszss49y0ubUoa2zcWYPh1PRgK0QEA5wD3A3FO0a+r
+lTA/zPRsDFuxU4vdnLj7IcL94dKEXAM=
+=6Rl4
 -----END PGP SIGNATURE-----
 
---kD2euniIewJpEG2U--
+--sAUlFocIDHyTEwNs--
 
