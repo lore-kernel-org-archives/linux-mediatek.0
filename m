@@ -4,104 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7420FC87FCB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jul 2025 09:54:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32747C87FCB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jul 2025 10:09:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b6vdhp2EWkPtq+IAr0ObGae8XoJd1fUV2G+NSQOgeB0=; b=r0IqD8xgFWNTqPoWdgHcVAXzcw
-	qBXwFCa0avBrf1cYdlDMDsF/m4zOHJD4aRe/Qbits1igOCcN9e4JWWObHRKL6vOMwL6eHXbe7FN7q
-	vHOFlIix5wVaBPey1iQy73VsIRMlmL3Kd/VRFZWwVYSxcnbr2yWaV0iQcSiMnbXZQQrih263OhGV1
-	4PMu6RyIJ59ybLiClfB3I/MQv0WVwErjSMm+HMB7utwO8PVrOuERvPxUiKV/nDX0q6cQNCJcTNlRl
-	eWtN06H/ZtRGbC0cxtQjvrw3WZSMm4x3PbvAN78AY0TYReFGZ1fdyilWn1Y0schRlSND/+wDVHeNx
-	n6fryhQg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bsrA2A2QMyCV/Ikd00XgPWtG5DcZPDcgRSJ6z3M0gt8=; b=pnCw2L4jPJkQFJBnMChp9w4YW7
+	UWQe2yp7jhco65p8uaNwToqJ0QasfxmMfnANHBiwUeU3/7u4b1Kc10Ir/8fPiAo+8R924CYCfnh3r
+	sERjAJuCTjAwA5gOURJ/PK/W7Ta1yyeoR6Ypglt1/5Bg7FFx5IGY9aElznuyNa4o1BRDO+RYONG3Y
+	lMgu8Pw7aeLw277sF7obHdkzEVaWQxZaMrTJ3aCwl25V7up5q/frhl6g6UIhlshFDRVAsbih3qozy
+	0LBdkaQHsB1MYyud7ud9jMZlBAgkZOBR0xefFISFbEW49/4gFdBYy4nWm+/FRHk9k8wf9RxBYm2s8
+	Z6ThhaLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uh3WR-00000001AsL-2oS1;
-	Wed, 30 Jul 2025 09:54:55 +0000
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+	id 1uh3kN-00000001CZ2-2hqT;
+	Wed, 30 Jul 2025 10:09:19 +0000
+Received: from mail-ua1-f42.google.com ([209.85.222.42])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uh3WO-00000001AqC-2FkY
-	for linux-mediatek@lists.infradead.org;
-	Wed, 30 Jul 2025 09:54:53 +0000
-Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-55b827aba01so321012e87.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 30 Jul 2025 02:54:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1753869290; x=1754474090; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=b6vdhp2EWkPtq+IAr0ObGae8XoJd1fUV2G+NSQOgeB0=;
-        b=QbEdC91KDi1VDmOsyei3Pmk9KLKN5Sclvgq473nR12RIwg5wGwJNMgXyKc7IjKTPuh
-         PScNSz7a1iAaVQP/NXZjAFAqPOQFe8pHuW/sIfS/95nHvEM1WAqSEl37MSn+tccULt20
-         DUB3JBXHNQcfdv3ikEv+gEsHeGai1ERAhkugGlP3J0olwf9WjzmCCsEy20e7cqlE7k02
-         DHzk574MYAz87T7EVrlqz1DsjnF3PjsLg3K3Emxrb0L3XddSDswf0rqSaH8zRPwQWCIJ
-         xvZoKY9W4laUgxML1aGYm7ozX6W1HYKRUAG7HLm9ve0zR71E2J1zDQmIaSkRyykyhFoj
-         EvBw==
+	id 1uh3hq-00000001CJW-2mMe;
+	Wed, 30 Jul 2025 10:06:43 +0000
+Received: by mail-ua1-f42.google.com with SMTP id a1e0cc1a2514c-87f1b3a3e7bso1501950241.1;
+        Wed, 30 Jul 2025 03:06:42 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1753869290; x=1754474090;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=b6vdhp2EWkPtq+IAr0ObGae8XoJd1fUV2G+NSQOgeB0=;
-        b=ruK2PAR3BVLe+c4eGiUWjA+yn1OJn3yjKLD97zA6DeaPrtext/TMeUo4Sirbh+jYWX
-         m4lTwzKPYPOyZh8myuZLW2SeVUk2dvMpztgqLANg6S179ZRvMrT/U4BDW+x4jI6NO01v
-         Jd6oGZPkvgE3j0UoOqMpE2aB7m97qH8rZlkPErkzkenjNuiY0NRjUlsuGP7K1lhM9tMj
-         5ZnJxs1Env90z196Sa92KD110M69aptYTetAiBiY3J/NlVH4E7ZXUMf3u3X+TC+Aqvnj
-         PZkZGdJcksIlyxQRMVUrIU9xZDBwLa8XJxe92byXzChOm3gvdgxUHYFuQxOUza1XZK7z
-         y2/A==
-X-Forwarded-Encrypted: i=1; AJvYcCV+JHR1NiN9SzXjsz1AMAqtQl6rZdjRPgyOv9ny3FZY/yWZiRbRf5s9u+9KUKJq9VzIsrOUh05HvKPXRZiACw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw45CxroMhp4CKvo5w00ClyiXDWz4/C61gOf2OIJJ1aH+PQ2MF2
-	WekE2Ax1S4wsKt1zUTSW/AKE0RRMQvhYbX4Ww0cOiYZC3VP7Xwr74VJ6pDQtIHb+BXWJlAaf2eu
-	deN7OZTNMYe0S8jBGbcULL2gH1h9gE8IWplOVprJy2w==
-X-Gm-Gg: ASbGncswL0iYokY6/P8X4G0J+bmnOsjdKEG7YB5nU1ujpq8zyKLwcClbdD5fSYXvlfa
-	io39wLYX8+XFrJSYSQiiTH+ELkt51BGLmrrzIeXiYzt0vnJFl2NuBrmuvxFBnVhI7jIOEyRYLMX
-	OKmtechGmxhIzc5WZlgfZL1ipZEbfPiFhlVdMLA6K5hsnzZSXNoUW/UJ21fTIup31gevE7bb4SU
-	yIaYeSYpilmvd7DOAQjp4dURKFHYlEY27uPcb8=
-X-Google-Smtp-Source: AGHT+IFD0mC+adTu2tQIUqoYqi4YbEm6lb9KfHl4WlQUhUVwQ9owZPBnvnUOvhF+89ksRVwAv/r0YIR9B2aVVdKhoAo=
-X-Received: by 2002:a05:6512:33c7:b0:554:e7f2:d76b with SMTP id
- 2adb3069b0e04-55b7c0b0f66mr939851e87.56.1753869289592; Wed, 30 Jul 2025
- 02:54:49 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1753870001; x=1754474801;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=bsrA2A2QMyCV/Ikd00XgPWtG5DcZPDcgRSJ6z3M0gt8=;
+        b=e7ecGuV+Y777Ako5km/2GQFhZ8WyKldKajoppBJbOF/oyw5egJDcFDgOkQhqfbsxqr
+         r9NlFu0OsHSfSzOjzREontZHi24llzGdY8T3joHu5TnjI0Amy+g3rgduiAitu0mL1Pb5
+         /T5Rr2pKZ7ACmRirXLinf/Uon9rnokqxD86AyxWjhoZidv3128VzYZnflgt9RopLhrJO
+         pIYl/xUOTynZlS80nn1kP5Rw4nUJL0IH7YKJGWql3Yjrt1dNaCHH4AwjMXypEQK2DB63
+         xJVMiUcZRDEdNy3CwD4MVKHiCaO/Nug4MjH85uNeipeiZr0ejYawmhqIeOeCd3wpJ/Gi
+         6I8A==
+X-Forwarded-Encrypted: i=1; AJvYcCUJFxdXjcqF7vUeZE+MNQ5Ga3+SJSRjXSZ+EfQvLLDoJ96hNT0rDtWQe8Yhhvn5u7fC9LPggh0UmCAk/7EnPqE=@lists.infradead.org, AJvYcCXMAqQzworKFYAOD0MoYdy5GznH57uL/G45Mwpro0LwojOK8o+mSA9QJTGEWZAj2vbckiOh5COUvwTqXJ+ow+VL@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw3amD5DLct2LLlqwT124Y7JnWSEZL1w2ShTE1j6gdvQBZAimvi
+	DYY0oUSNPmX5AKHJXtQ7F4xxEMgfLRHUngJkYxF9/GTeTq0OAqi9BLTFlpU9RnN6
+X-Gm-Gg: ASbGncvmycIrYpaWrps7eCT2OMWSqjxkUUXFzuplyJOEhJ7h15OkBOdNu9SXPWMDCgc
+	4othv8xULX4mWRQ0Q9sNG9IsK7XpHgV1YoJgs9CdcJtDCCV7eJofTN2ZLtORfIHbO8ocDNU46Ym
+	p0DDnb+i57TpvrqesyI1TuAm0CoiZHrRFt5P5xUHS3lgq/HUDpPhh7RO+sphDh7XfuR5vtOpVbk
+	k75zOvGkC86n4Sgw6sK6ml6jJ5dmQMuVKq14T+dDbydCRKzS71S7D20YU1kQW5BmB84Mt4li/RX
+	uIwZ1gEaB0TT2fhzU8avgDDRggZ0HcoFHia21wfIPLrdwACfRdX//91JAuxZmwFv+nyk3kj/+wc
+	uvwfqm6RseICn6hA8beSj4VLvNyPfKBe8zSeWTSAxtSe+ObaQjMsKb2MdC49y
+X-Google-Smtp-Source: AGHT+IEM6ew48HomVl6yxyiNu8vmOgLDYS7CMyQVLquJMNNa0lun+yUpo5dCqJf69jprIpLjIUsS0w==
+X-Received: by 2002:a05:6102:3e92:b0:4fb:dde8:76cf with SMTP id ada2fe7eead31-4fbe8753b11mr1756226137.13.1753870001452;
+        Wed, 30 Jul 2025 03:06:41 -0700 (PDT)
+Received: from mail-ua1-f44.google.com (mail-ua1-f44.google.com. [209.85.222.44])
+        by smtp.gmail.com with ESMTPSA id ada2fe7eead31-4fa678adeb5sm1185880137.18.2025.07.30.03.06.40
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 30 Jul 2025 03:06:40 -0700 (PDT)
+Received: by mail-ua1-f44.google.com with SMTP id a1e0cc1a2514c-88bacb82a6dso705358241.3;
+        Wed, 30 Jul 2025 03:06:40 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCUnARc9EDXvSzIrqH+NAhS+B6LrEPCQ2D958X+P1/M5gKT86e8y0SCegY6oE7unOlrOGbrDvCV/yYWvGPFGq/ET@lists.infradead.org, AJvYcCVv5TUCpMKT38ZQS3FdmpSOiiHojtvGwAefPssiRcazepJdK8V8SW6lhag40occHIHad0XkDpUUfTuGsgWD7Po=@lists.infradead.org
+X-Received: by 2002:a05:6102:3c81:b0:4fb:dd65:b97f with SMTP id
+ ada2fe7eead31-4fbe87dd1aamr1637733137.23.1753869999913; Wed, 30 Jul 2025
+ 03:06:39 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250724-pinctrl-gpio-pinfuncs-v3-0-af4db9302de4@linaro.org>
- <20250724-pinctrl-gpio-pinfuncs-v3-12-af4db9302de4@linaro.org> <CAHp75Vc4vsJh_-GbP+YO50veoGoGtfAPL4tjcF+73uophfmnGw@mail.gmail.com>
-In-Reply-To: <CAHp75Vc4vsJh_-GbP+YO50veoGoGtfAPL4tjcF+73uophfmnGw@mail.gmail.com>
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Wed, 30 Jul 2025 11:54:38 +0200
-X-Gm-Features: Ac12FXyouWksKyGI1Z-cYawOTPPQ3IbuMxJxWat2oIDr-ST0nxIlLBCifNIDusI
-Message-ID: <CAMRc=Mc1ophkofB6MmtD4adBAi69C3JyovM-S9YD_y7UA3V1qA@mail.gmail.com>
-Subject: Re: [PATCH v3 12/15] pinctrl: allow to mark pin functions as
- requestable GPIOs
-To: Andy Shevchenko <andy.shevchenko@gmail.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Bjorn Andersson <andersson@kernel.org>, 
-	Konrad Dybcio <konradybcio@kernel.org>, Alexey Klimov <alexey.klimov@linaro.org>, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Paul Cercueil <paul@crapouillou.net>, Kees Cook <kees@kernel.org>, 
-	Andy Shevchenko <andy@kernel.org>, Andrew Morton <akpm@linux-foundation.org>, 
-	David Hildenbrand <david@redhat.com>, Lorenzo Stoakes <lorenzo.stoakes@oracle.com>, 
-	"Liam R. Howlett" <Liam.Howlett@oracle.com>, Vlastimil Babka <vbabka@suse.cz>, 
-	Mike Rapoport <rppt@kernel.org>, Suren Baghdasaryan <surenb@google.com>, Michal Hocko <mhocko@suse.com>, 
-	Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, 
-	Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, NXP S32 Linux Team <s32@nxp.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Tony Lindgren <tony@atomide.com>, 
-	Haojian Zhuang <haojian.zhuang@linaro.org>, Geert Uytterhoeven <geert+renesas@glider.be>, 
-	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
-	linux-hardening@vger.kernel.org, linux-mm@kvack.org, imx@lists.linux.dev, 
-	linux-omap@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+References: <20250615131129.954975-1-kuyo.chang@mediatek.com>
+In-Reply-To: <20250615131129.954975-1-kuyo.chang@mediatek.com>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Wed, 30 Jul 2025 12:06:28 +0200
+X-Gmail-Original-Message-ID: <CAMuHMdWZHwr_nmMbVREKC9nQCYigT_gvKH3M9v+oyYqk6FLONw@mail.gmail.com>
+X-Gm-Features: Ac12FXwS-l7uHGU1oTYcgJSesd4W3K8Q8G2IZz1kbq4jmTeRDTrEyXIFWqDBxL0
+Message-ID: <CAMuHMdWZHwr_nmMbVREKC9nQCYigT_gvKH3M9v+oyYqk6FLONw@mail.gmail.com>
+Subject: Re: [RFC PATCH 1/1] sched/deadline: Fix RT task potential starvation
+ when expiry time passed
+To: Kuyo Chang <kuyo.chang@mediatek.com>
+Cc: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>, 
+	Juri Lelli <juri.lelli@redhat.com>, Vincent Guittot <vincent.guittot@linaro.org>, 
+	Dietmar Eggemann <dietmar.eggemann@arm.com>, Steven Rostedt <rostedt@goodmis.org>, 
+	Ben Segall <bsegall@google.com>, Mel Gorman <mgorman@suse.de>, 
+	Valentin Schneider <vschneid@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, jstultz <jstultz@google.com>, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250730_025452_807413_A4ADFDC1 
-X-CRM114-Status: GOOD (  10.13  )
+X-CRM114-CacheID: sfid-20250730_030642_693614_B298E133 
+X-CRM114-Status: GOOD (  24.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,22 +99,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 24, 2025 at 2:22=E2=80=AFPM Andy Shevchenko
-<andy.shevchenko@gmail.com> wrote:
->
-> >  struct pinfunction {
-> >         const char *name;
-> >         const char * const *groups;
-> >         size_t ngroups;
-> > +       unsigned long flags;
->
-> Not sure we need this. If the function is GPIO, pin control already
-> knows about this. The pin muxing has gpio request / release callbacks
-> that change the state. Why do we need an additional flag(s)?
->
+Hi Kuyo,
 
-I'm not following, how does the pin controller know that the function
-is GPIO exactly, other than by the bit set in this field?
+On Mon, 16 Jun 2025 at 14:39, Kuyo Chang <kuyo.chang@mediatek.com> wrote:
+> From: kuyo chang <kuyo.chang@mediatek.com>
+>
+> [Symptom]
+> The fair server mechanism, which is intended to prevent fair starvation
+> when higher-priority tasks monopolize the CPU.
+> Specifically, RT tasks on the runqueue may not be scheduled as expected.
+>
+> [Analysis]
+> ---------
+> The log "sched: DL replenish lagged too much" triggered.
+>
+> By memory dump of dl_server:
+> --------------
+>     curr = 0xFFFFFF80D6A0AC00 (
+>       dl_server = 0xFFFFFF83CD5B1470(
+>         dl_runtime = 0x02FAF080,
+>         dl_deadline = 0x3B9ACA00,
+>         dl_period = 0x3B9ACA00,
+>         dl_bw = 0xCCCC,
+>         dl_density = 0xCCCC,
+>         runtime = 0x02FAF080,
+>         deadline = 0x0000082031EB0E80,
+>         flags = 0x0,
+>         dl_throttled = 0x0,
+>         dl_yielded = 0x0,
+>         dl_non_contending = 0x0,
+>         dl_overrun = 0x0,
+>         dl_server = 0x1,
+>         dl_server_active = 0x1,
+>         dl_defer = 0x1,
+>         dl_defer_armed = 0x0,
+>         dl_defer_running = 0x1,
+>         dl_timer = (
+>           node = (
+>             expires = 0x000008199756E700),
+>           _softexpires = 0x000008199756E700,
+>           function = 0xFFFFFFDB9AF44D30 = dl_task_timer,
+>           base = 0xFFFFFF83CD5A12C0,
+>           state = 0x0,
+>           is_rel = 0x0,
+>           is_soft = 0x0,
+>     clock_update_flags = 0x4,
+>     clock = 0x000008204A496900,
+>
+> - The timer expiration time (rq->curr->dl_server->dl_timer->expires)
+>   is already in the past, indicating the timer has expired.
+> - The timer state (rq->curr->dl_server->dl_timer->state) is 0.
+>
+> [Suspected Root Cause]
+> --------------------
+> The relevant code flow in the throttle path of
+> update_curr_dl_se() as follows:
+>
+> dequeue_dl_entity(dl_se, 0);                // the DL entity is dequeued
+>
+> if (unlikely(is_dl_boosted(dl_se) || !start_dl_timer(dl_se))) {
+>     if (dl_server(dl_se))                   // timer registration fails
+>         enqueue_dl_entity(dl_se, ENQUEUE_REPLENISH);//enqueue immediately
+>     ...
+> }
+>
+> The failure of `start_dl_timer` is caused by attempting to register a
+> timer with an expiration time that is already in the past. When this
+> situation persists, the code repeatedly re-enqueues the DL entity
+> without properly replenishing or restarting the timer, resulting in RT
+> task may not be scheduled as expected.
+>
+> [Proposed Solution]:
+> ------------------
+> Instead of immediately re-enqueuing the DL entity on timer registration
+> failure, this change ensures the DL entity is properly replenished and
+> the timer is restarted, preventing RT potential starvation.
+>
+> Signed-off-by: kuyo chang <kuyo.chang@mediatek.com>
 
-Bartosz
+Thanks, this fixes the issue I was seeing!
+
+Closes: https://lore.kernel.org/CAMuHMdXn4z1pioTtBGMfQM0jsLviqS2jwysaWXpoLxWYoGa82w@mail.gmail.com
+Tested-by: Geert Uytterhoeven <geert@linux-m68k.org>
+
+Gr{oetje,eeting}s,
+
+                        Geert
+
+-- 
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
 
