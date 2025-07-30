@@ -4,82 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C58FC83F26
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jul 2025 14:51:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25C30C83F26
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jul 2025 14:56:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=m6AXuDDeUL1WpUxErghD7iQZDxn7tXl0MHZ3gm9RjBI=; b=fCQ0FIBwDk5ko/ftiWtpNQTHE0
-	SlEhCglzY/KG6npE9+ffKuOg3tisfbiRgzsmvi8FrcMnuBCDbiaR5zQlv74W1Sd5ACPdeSQsAAXYB
-	308fq/SpKFRx1GRElyuvRx0gq3R9/E2EI9Q3oRa2JPlRKatgTRnPm+0/v25qO6/WqfNalj7PHFVWf
-	zABRfokeXhS5Wr7hPyEs7/huTjxvS00DxUpSbiZ6m11VV8yWL8vrh3Xv27f6yM281wOS1i08Jx32L
-	R7+JyRj5hhSP84GgG26XmQDOuEeSSm6b0/oq5JKLBLJ5yeRYZEyJobkKx8Fja6upVkXURH+iD3Nj9
-	cPWEHASg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oCufAOV94HIMKHfZVdb3wjn9NSi/Vfyn02LpL1/VMoY=; b=lcbp/Jdd0Otpx2rh/G3CTLVIOp
+	79o16FpRtKAdwU7VdxD3Bj9cGWZcRm9OwTbPX812WG8CkPUkxzUUUrmZ0z0yUJOurGJr3qAEA7xiG
+	6omT9NemnZzvGrj63bhxw3HTg6elTSHv/XpKVKSGUxqCLgnAKKkBadDT17vgYALkOGdupSyXvWUmm
+	fJSnbFca9RXxBXFDz6iHsxXufSC69QIJFDw9dzmntNCCIWExci1SWZ4hlTPh7ALRb/vhUBqaeNgsu
+	9z0Sjbwxu7YsEW1itQCToJPUCUDLflQwpbttcKHDC4n+tMicJXHYKSFJI+tbHso6u7w+1bttIpRu5
+	O6/pD+vQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uh899-00000001mbp-49at;
-	Wed, 30 Jul 2025 14:51:11 +0000
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+	id 1uh8E4-00000001nA4-0byc;
+	Wed, 30 Jul 2025 14:56:16 +0000
+Received: from mail-vk1-f173.google.com ([209.85.221.173])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uh83j-00000001lsX-0RLJ
-	for linux-mediatek@lists.infradead.org;
-	Wed, 30 Jul 2025 14:45:36 +0000
-Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-553dceb342fso5560859e87.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 30 Jul 2025 07:45:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1753886733; x=1754491533; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=m6AXuDDeUL1WpUxErghD7iQZDxn7tXl0MHZ3gm9RjBI=;
-        b=d3AhZe64Z/4CaFKb1BYhBWHv2UZSJkfMOI9Z/iZd9O9L9fMu+H2xW9I+s+uHpBtbUX
-         8Jbbgp4r24XKTGLhVJUNCf3XgfqCCW7RU4aNAlskPhq9cOkVr7SzXClyyIPJmHqA6NmF
-         yIagDu11Ao86wjX1p2iRUMeapZ37l3Cnb2AtSorWb4v7Dt0cUWEGfJrs+PUqHMwuGMBF
-         gEosyLE62YCfp2g7/5NNL2kJA4tKLODRkgEsl6eshlst6xOBE6CClxpo2bueZ6W05BfR
-         NvEf/sOeLBerYWP0qr5CGwb20/HZKF/zIOcT4EzzMpt38Evg1UZi7Tc04ZM3+Y0c6wYF
-         2deg==
+	id 1uh8C3-00000001n0Q-336X;
+	Wed, 30 Jul 2025 14:54:12 +0000
+Received: by mail-vk1-f173.google.com with SMTP id 71dfb90a1353d-537a0d384b2so3054615e0c.2;
+        Wed, 30 Jul 2025 07:54:11 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1753886733; x=1754491533;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=m6AXuDDeUL1WpUxErghD7iQZDxn7tXl0MHZ3gm9RjBI=;
-        b=GrorgtUdXFho8i6NE1zzol4uBmOxsMfYh/5zFDHqtHiNlQWnB4Hw1idw0vcpe+h87i
-         pEc9J8GN8WpGpuxHFElK57U2i7PvtlpN23qqPS8WzD5PtJmBN1jAXicAMn7S6FZ2+z56
-         FFJAe5jsTyrKkxJY9OspZitcL8SKRK1RgxUW91UqEhMhwkVfOhupYpTKAXJKynEQiynl
-         7jbfqJGneUrmmKVF/RrIJ+AEsyySTQ5OguGxLZ1pt45QECLPUxn3Jmg/yew/+P+RNi/W
-         mjDQpC0Qct+E6G9U4dK+XK90anS2yJpqC8z/vmLez2G4cQRXsO09FjRkCdp9duQTJWVq
-         +64g==
-X-Forwarded-Encrypted: i=1; AJvYcCWd83Fn5Ee2qzhZdAvQdh9lJyvjTSVfAGfHDhWVEge3qUJl0qQ5gEAKd5BQ5hIOWIA0SZnMnaOtI5nVpdppaw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwSdcHgZohyYZjx+SL4AQ5Ha5s5zZLnKxaLxAxviy0zGpl+vgnf
-	PpoVv1sb4KRtYwpnIsMF8CusOgAHny9KUB3hXOf7ie0Q2ejvpqhvuM8QXm5tA5eqvqmyW7qe8PS
-	jAgmWUteuPQmXzYq/AQuGawpgmbDOvUj4NiW3Q2MrQw==
-X-Gm-Gg: ASbGncs0vpOmWPzVddrHnIMd3/jPOVIJM8hGmRIufBVMLUt09qzF6XbI9h6Eo2GjLtT
-	selZ9KuZ8Y5CICyqb4FPjdErSaHiXVLbtpQMIdLR2Bw2CEsuSfXvNnhvyZLPqCC/Efxq5kzVYYg
-	ElIEybYPe5/sAvx1VLpzryHMOjkEowhJON4CCgvI+6ms49its13DbBnbZKmMxm91v4pFPLOJaLd
-	Uh/sTE40Eynd2Eho4J9d3nICZ/DRHIeyLK9AFU=
-X-Google-Smtp-Source: AGHT+IG0Q6hH9i+UpqLftCvpSVBouzPpbLbuygIY2t4i0+nQyoHOVMz3gwtmG10RMLHn13yYgB8U2bSlEYWDzelEprk=
-X-Received: by 2002:a05:6512:23a3:b0:554:f7ec:3b23 with SMTP id
- 2adb3069b0e04-55b7c027afamr1034186e87.15.1753886733212; Wed, 30 Jul 2025
- 07:45:33 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1753887250; x=1754492050;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=oCufAOV94HIMKHfZVdb3wjn9NSi/Vfyn02LpL1/VMoY=;
+        b=PjJ2V+XUI7uqzAZdd22eDPUEyaYx7yoNJZKvggq5AiFcEUD+Cgc4Fk2TcAxmVs3Wkw
+         5DOVlMNP9r/jDKZk9bGyNeizGC6mCRymFl2bqMwssliUueKOsKK0wd3fu5SKz0IAJFQC
+         geZBvclLOvK+zghonx7pvZbT5YrAbt6oKt/sPrRxaIkS6gUdTYAndsm8I3P8ljbCQ34S
+         SpR5qsp9ex5RBC0Ny2ueHPeDp6/3529CsJQTLTsnrmeobX0kgXhG7bXUPlhcDrmMg2vg
+         hh1rslxbKaUttgbWCfX8PuywAYyvseUUWKTjmOow4/cf8Qing1nJqcEQLAnqO8yRm6TS
+         R/6A==
+X-Forwarded-Encrypted: i=1; AJvYcCUh8mY0FSwOdL1DTkEWTJ8oi5Jn35JOyUYKHmNqCJTny7FenLBIC1Jo2vaWBlf/rUycNaTsv6EqQvsbYGe4PKcP@lists.infradead.org, AJvYcCWzTGBpgZJuQgumR9DGN4c4iS9D1iWyi/KgDSW3TxEDG9oLhJyd7ceG04rGWLBvh7RYLkvK7Az5Axs72vwg2Z0=@lists.infradead.org
+X-Gm-Message-State: AOJu0YyMARuYlEe8Xr7+MasmvuxhKqJg3p7fCY3E/nYWNB5SM3EvokDr
+	NY2xNfGma6VMYSkJN9itYIqq2cL8GnD3BXSusL2R8P+P97cJqskiTQ7wfOq5SxuZ7DQ=
+X-Gm-Gg: ASbGncv3NOW4zJqb0XAZHmwSxTRiFMoxGqbUdVwlBy18YIj1SHcWDzj5FJ3bNuQbtOX
+	CfjYPDv5Sx7XvrsKS92L/Te64u6RkoxfoEOLzJUCNlNI+IHaC1y/5DQ5YMncaNVgkE+jkFCMKdd
+	GVbUyBX3BPbdpYNYRrMSmzxcUJeETke4JjJ3C7lscST7lZaF2mNU3dJa+prqSQNFZwy1qyWn6NF
+	Nz0aG68+/baN2iR2DrNvi9BlzINEUS80DLC0uL62+5GsuhtmL7mYcQfmw/CG5jI64PT74Bik1Nx
+	29hcdbYP20wDn66rJf3QVVj0xI63b1ZXmYQUtowlK2op3HSy2mXAmHyi51XQPNf5INEWbREoO1E
+	On9FSRr6n47txJ9Buyi/NIGBvJh3+8lu3IJPfJ4uq3s/5a80VIjg36PcerKonKBcTP1x0kN0=
+X-Google-Smtp-Source: AGHT+IGrDQmib4RErKzmd6wMqGyzciLF/q5Q8t1gLuiowXfPX05tkHAPkJQTXbpMnQJFIdRy9M2/Aw==
+X-Received: by 2002:a05:6122:50c:b0:535:b383:c91e with SMTP id 71dfb90a1353d-5391cee0f1cmr2520017e0c.6.1753887250468;
+        Wed, 30 Jul 2025 07:54:10 -0700 (PDT)
+Received: from mail-vs1-f47.google.com (mail-vs1-f47.google.com. [209.85.217.47])
+        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-538e28ca2f0sm2783905e0c.36.2025.07.30.07.54.08
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 30 Jul 2025 07:54:09 -0700 (PDT)
+Received: by mail-vs1-f47.google.com with SMTP id ada2fe7eead31-4e7f367ea11so2922106137.3;
+        Wed, 30 Jul 2025 07:54:08 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCW36xhdUrEJN1Sv5bcelzi+PNGFDsIAzLyyNSxxQqGgbL45pqXUpWtk688dVfjHVHUd1BqOfBk44vLZMG/jo0Of@lists.infradead.org, AJvYcCXWAO+TjBeRTz1UD1EXbIj9IcQ439vMKLBm/XXt9uL76aZZ7NNKNVE9YsOo3DQTOWs7EKVNiN8C3TP2VpkNonw=@lists.infradead.org
+X-Received: by 2002:a05:6102:358c:b0:4fa:85f:31c0 with SMTP id
+ ada2fe7eead31-4fbe87acbd8mr2306438137.19.1753887248543; Wed, 30 Jul 2025
+ 07:54:08 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250724-pinctrl-gpio-pinfuncs-v3-0-af4db9302de4@linaro.org>
- <20250724-pinctrl-gpio-pinfuncs-v3-12-af4db9302de4@linaro.org>
- <CAHp75Vc4vsJh_-GbP+YO50veoGoGtfAPL4tjcF+73uophfmnGw@mail.gmail.com>
- <CAMRc=Mc1ophkofB6MmtD4adBAi69C3JyovM-S9YD_y7UA3V1qA@mail.gmail.com>
- <CAHp75VcV=K-DfOGs0z64==nO+wQNoEB2Ngd2vc+dLYr3WLChjg@mail.gmail.com>
- <CAMRc=MeVOEFkdqf+SwQ-a=7ZPvpoerb4G_kn-aZgNLR3aTTUog@mail.gmail.com> <CAHp75Vd_5HVwzuiV17XKkzpEvzd8dzPDRRx5w-VqZnjuCz6m6A@mail.gmail.com>
-In-Reply-To: <CAHp75Vd_5HVwzuiV17XKkzpEvzd8dzPDRRx5w-VqZnjuCz6m6A@mail.gmail.com>
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Wed, 30 Jul 2025 16:45:21 +0200
-X-Gm-Features: Ac12FXyd8ePQ6VSvFuinf3meGy3NBROTyjzQV07xe8o_XLvEkxT-hmgEmHvLoEA
-Message-ID: <CAMRc=McPvFzb7CSFSKOsQZD9ZPwtf+bCw+Ui=m6OoX0GxH9DtQ@mail.gmail.com>
-Subject: Re: [PATCH v3 12/15] pinctrl: allow to mark pin functions as
- requestable GPIOs
-To: Andy Shevchenko <andy.shevchenko@gmail.com>
+References: <20250724-pinctrl-gpio-pinfuncs-v3-0-af4db9302de4@linaro.org> <20250724-pinctrl-gpio-pinfuncs-v3-9-af4db9302de4@linaro.org>
+In-Reply-To: <20250724-pinctrl-gpio-pinfuncs-v3-9-af4db9302de4@linaro.org>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Wed, 30 Jul 2025 16:53:57 +0200
+X-Gmail-Original-Message-ID: <CAMuHMdX+fmSPDZ1q0UeWxYJsrUgHPi2+_HC0Hy6TtC+W=kaULw@mail.gmail.com>
+X-Gm-Features: Ac12FXzcRmJnrFvnxFG5jsyy_jc5Ss1VNLUefIVdE-6ssqD0s07eH4xzZW0L3Ow
+Message-ID: <CAMuHMdX+fmSPDZ1q0UeWxYJsrUgHPi2+_HC0Hy6TtC+W=kaULw@mail.gmail.com>
+Subject: Re: [PATCH v3 09/15] pinctrl: constify pinmux_generic_get_function()
+To: Bartosz Golaszewski <brgl@bgdev.pl>
 Cc: Linus Walleij <linus.walleij@linaro.org>, Bjorn Andersson <andersson@kernel.org>, 
 	Konrad Dybcio <konradybcio@kernel.org>, Alexey Klimov <alexey.klimov@linaro.org>, 
 	Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
@@ -94,18 +86,17 @@ Cc: Linus Walleij <linus.walleij@linaro.org>, Bjorn Andersson <andersson@kernel.
 	Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
 	Pengutronix Kernel Team <kernel@pengutronix.de>, NXP S32 Linux Team <s32@nxp.com>, 
 	Sascha Hauer <s.hauer@pengutronix.de>, Tony Lindgren <tony@atomide.com>, 
-	Haojian Zhuang <haojian.zhuang@linaro.org>, Geert Uytterhoeven <geert+renesas@glider.be>, 
-	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
-	linux-hardening@vger.kernel.org, linux-mm@kvack.org, imx@lists.linux.dev, 
-	linux-omap@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+	Haojian Zhuang <haojian.zhuang@linaro.org>, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mips@vger.kernel.org, linux-hardening@vger.kernel.org, 
+	linux-mm@kvack.org, imx@lists.linux.dev, linux-omap@vger.kernel.org, 
+	linux-renesas-soc@vger.kernel.org, 
 	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250730_074535_144968_0495534F 
-X-CRM114-Status: GOOD (  29.50  )
+X-CRM114-CacheID: sfid-20250730_075411_764620_32FC7980 
+X-CRM114-Status: GOOD (  18.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,65 +111,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 30, 2025 at 3:30=E2=80=AFPM Andy Shevchenko
-<andy.shevchenko@gmail.com> wrote:
+On Thu, 24 Jul 2025 at 11:24, Bartosz Golaszewski <brgl@bgdev.pl> wrote:
+> From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 >
-> On Wed, Jul 30, 2025 at 2:53=E2=80=AFPM Bartosz Golaszewski <brgl@bgdev.p=
-l> wrote:
-> > On Wed, Jul 30, 2025 at 2:50=E2=80=AFPM Andy Shevchenko
-> > <andy.shevchenko@gmail.com> wrote:
-> > > On Wed, Jul 30, 2025 at 11:54=E2=80=AFAM Bartosz Golaszewski <brgl@bg=
-dev.pl> wrote:
-> > > > On Thu, Jul 24, 2025 at 2:22=E2=80=AFPM Andy Shevchenko
-> > > > <andy.shevchenko@gmail.com> wrote:
-> > > > >
-> > > > > >  struct pinfunction {
-> > > > > >         const char *name;
-> > > > > >         const char * const *groups;
-> > > > > >         size_t ngroups;
-> > > > > > +       unsigned long flags;
-> > > > >
-> > > > > Not sure we need this. If the function is GPIO, pin control alrea=
-dy
-> > > > > knows about this. The pin muxing has gpio request / release callb=
-acks
-> > > > > that change the state. Why do we need an additional flag(s)?
-> > > >
-> > > > I'm not following, how does the pin controller know that the functi=
-on
-> > > > is GPIO exactly, other than by the bit set in this field?
-> > >
-> > > AFAICS the gpio_owner !=3D NULL means that. No need to have a duplica=
-te
-> > > of this information.
-> >
-> > No, that's not at all what this series does... gpio_owner is the
-> > consumer label of a pin used by the GPIOLIB framework. The flag I'm
-> > introducing it telling the pinctrl core - before GPIOLIB is ever
-> > involved - that *this pin can be requested as a GPIO by GPIOLIB*.
+> With all users of struct function_desc limited to only accessing it using
+> the dedicated function and never modifying it, we can now constify the
+> return value of pinmux_generic_get_function() treewide.
 >
-> The certain pin control driver may even not know about this. But even
-> though the proposed change is an overkill. If it indeed needs to be
-> done, the solution of valid_mask approach sounds to me much better. It
-> will be a single bitmask per pin control to tell this.
->
-> > It's
-> > the other way around - without knowing this, for strict pinmuxers,
-> > GPIOLIB would never be able to request this pin if it was muxed to a
-> > function (even if the function is called "GPIO").
->
-> I need to read the series again, but I truly believe we don't need
-> this new field in the struct pinfunction.
->
+> Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 
-Without a code example, I can't tell what you're imagining but let me
-give some more context: the flags field could only exist in the
-qualcomm drivers but the problem will be the same on all existing
-platforms so IMO it's better to centralize it right away. And if we're
-already centralizing it, let's make it future proof by making it
-possible to define more such flags if we need it. Since the GPIO
-category is a function property, it only makes sense to put it in the
-structure defining the function.
+>  drivers/pinctrl/renesas/pinctrl-rza1.c    | 2 +-
+>  drivers/pinctrl/renesas/pinctrl-rza2.c    | 2 +-
+>  drivers/pinctrl/renesas/pinctrl-rzg2l.c   | 2 +-
+>  drivers/pinctrl/renesas/pinctrl-rzv2m.c   | 2 +-
 
-Bartosz
+Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be> # renesas
+Acked-by: Geert Uytterhoeven <geert+renesas@glider.be> # renesas
+
+Gr{oetje,eeting}s,
+
+                        Geert
+
+-- 
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
 
