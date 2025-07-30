@@ -4,87 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32747C87FCB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jul 2025 10:09:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FEAAC87FCB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jul 2025 11:02:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bsrA2A2QMyCV/Ikd00XgPWtG5DcZPDcgRSJ6z3M0gt8=; b=pnCw2L4jPJkQFJBnMChp9w4YW7
-	UWQe2yp7jhco65p8uaNwToqJ0QasfxmMfnANHBiwUeU3/7u4b1Kc10Ir/8fPiAo+8R924CYCfnh3r
-	sERjAJuCTjAwA5gOURJ/PK/W7Ta1yyeoR6Ypglt1/5Bg7FFx5IGY9aElznuyNa4o1BRDO+RYONG3Y
-	lMgu8Pw7aeLw277sF7obHdkzEVaWQxZaMrTJ3aCwl25V7up5q/frhl6g6UIhlshFDRVAsbih3qozy
-	0LBdkaQHsB1MYyud7ud9jMZlBAgkZOBR0xefFISFbEW49/4gFdBYy4nWm+/FRHk9k8wf9RxBYm2s8
-	Z6ThhaLQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=rtkTsML0SgiyxB4HRxcyE0Dg7dVQnCnvsW3qOAMl6K8=; b=xrQfh5zZHWBKQb/nNw31JJd0H5
+	wBwn5YRXYL09UhqjAnv1Lt663zIPmL822qqsnH0tT690k4p8Q+nNaK4ec+V7kJerikcsjHkffAhPO
+	sK9d/9+XzmB7UDC3g93fpjF2nTvpqsFjpptbcFgbJs8pHekY3IsX18gd1+zwa8UsFOgbpcLFvXYCd
+	ehhiMXqrc6+PIW0anbzof48y4wPud5wyxRiVMSgfvDi2JinvAG61kBre262EpbsKoQtZG6cdf4b2Q
+	rv0ddBgvNUmolb8sKMn0FNTMiLz3jnLEjkW4xktLerTgPrL+tVZ5wURQuWXP+SvYNLBS9JBjkaMyT
+	jWDmfwgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uh3kN-00000001CZ2-2hqT;
-	Wed, 30 Jul 2025 10:09:19 +0000
-Received: from mail-ua1-f42.google.com ([209.85.222.42])
+	id 1uh4Zc-00000001I2y-16C0;
+	Wed, 30 Jul 2025 11:02:16 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uh3hq-00000001CJW-2mMe;
-	Wed, 30 Jul 2025 10:06:43 +0000
-Received: by mail-ua1-f42.google.com with SMTP id a1e0cc1a2514c-87f1b3a3e7bso1501950241.1;
-        Wed, 30 Jul 2025 03:06:42 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1753870001; x=1754474801;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=bsrA2A2QMyCV/Ikd00XgPWtG5DcZPDcgRSJ6z3M0gt8=;
-        b=e7ecGuV+Y777Ako5km/2GQFhZ8WyKldKajoppBJbOF/oyw5egJDcFDgOkQhqfbsxqr
-         r9NlFu0OsHSfSzOjzREontZHi24llzGdY8T3joHu5TnjI0Amy+g3rgduiAitu0mL1Pb5
-         /T5Rr2pKZ7ACmRirXLinf/Uon9rnokqxD86AyxWjhoZidv3128VzYZnflgt9RopLhrJO
-         pIYl/xUOTynZlS80nn1kP5Rw4nUJL0IH7YKJGWql3Yjrt1dNaCHH4AwjMXypEQK2DB63
-         xJVMiUcZRDEdNy3CwD4MVKHiCaO/Nug4MjH85uNeipeiZr0ejYawmhqIeOeCd3wpJ/Gi
-         6I8A==
-X-Forwarded-Encrypted: i=1; AJvYcCUJFxdXjcqF7vUeZE+MNQ5Ga3+SJSRjXSZ+EfQvLLDoJ96hNT0rDtWQe8Yhhvn5u7fC9LPggh0UmCAk/7EnPqE=@lists.infradead.org, AJvYcCXMAqQzworKFYAOD0MoYdy5GznH57uL/G45Mwpro0LwojOK8o+mSA9QJTGEWZAj2vbckiOh5COUvwTqXJ+ow+VL@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw3amD5DLct2LLlqwT124Y7JnWSEZL1w2ShTE1j6gdvQBZAimvi
-	DYY0oUSNPmX5AKHJXtQ7F4xxEMgfLRHUngJkYxF9/GTeTq0OAqi9BLTFlpU9RnN6
-X-Gm-Gg: ASbGncvmycIrYpaWrps7eCT2OMWSqjxkUUXFzuplyJOEhJ7h15OkBOdNu9SXPWMDCgc
-	4othv8xULX4mWRQ0Q9sNG9IsK7XpHgV1YoJgs9CdcJtDCCV7eJofTN2ZLtORfIHbO8ocDNU46Ym
-	p0DDnb+i57TpvrqesyI1TuAm0CoiZHrRFt5P5xUHS3lgq/HUDpPhh7RO+sphDh7XfuR5vtOpVbk
-	k75zOvGkC86n4Sgw6sK6ml6jJ5dmQMuVKq14T+dDbydCRKzS71S7D20YU1kQW5BmB84Mt4li/RX
-	uIwZ1gEaB0TT2fhzU8avgDDRggZ0HcoFHia21wfIPLrdwACfRdX//91JAuxZmwFv+nyk3kj/+wc
-	uvwfqm6RseICn6hA8beSj4VLvNyPfKBe8zSeWTSAxtSe+ObaQjMsKb2MdC49y
-X-Google-Smtp-Source: AGHT+IEM6ew48HomVl6yxyiNu8vmOgLDYS7CMyQVLquJMNNa0lun+yUpo5dCqJf69jprIpLjIUsS0w==
-X-Received: by 2002:a05:6102:3e92:b0:4fb:dde8:76cf with SMTP id ada2fe7eead31-4fbe8753b11mr1756226137.13.1753870001452;
-        Wed, 30 Jul 2025 03:06:41 -0700 (PDT)
-Received: from mail-ua1-f44.google.com (mail-ua1-f44.google.com. [209.85.222.44])
-        by smtp.gmail.com with ESMTPSA id ada2fe7eead31-4fa678adeb5sm1185880137.18.2025.07.30.03.06.40
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 30 Jul 2025 03:06:40 -0700 (PDT)
-Received: by mail-ua1-f44.google.com with SMTP id a1e0cc1a2514c-88bacb82a6dso705358241.3;
-        Wed, 30 Jul 2025 03:06:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCUnARc9EDXvSzIrqH+NAhS+B6LrEPCQ2D958X+P1/M5gKT86e8y0SCegY6oE7unOlrOGbrDvCV/yYWvGPFGq/ET@lists.infradead.org, AJvYcCVv5TUCpMKT38ZQS3FdmpSOiiHojtvGwAefPssiRcazepJdK8V8SW6lhag40occHIHad0XkDpUUfTuGsgWD7Po=@lists.infradead.org
-X-Received: by 2002:a05:6102:3c81:b0:4fb:dd65:b97f with SMTP id
- ada2fe7eead31-4fbe87dd1aamr1637733137.23.1753869999913; Wed, 30 Jul 2025
- 03:06:39 -0700 (PDT)
+	id 1uh4Vc-00000001GzW-02ts;
+	Wed, 30 Jul 2025 10:58:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1753873086;
+	bh=lYv7QHbDNZ0Rc0wYrcyojYSl0/lSp3gFzLiTa6zBXlY=;
+	h=From:To:Cc:Subject:Date:From;
+	b=lW8Gg+GeZCJ9O8G3LKJcykUKKJbkTpmyGUycdZchqGWe0jTwwl7ejAwNzKgyYjoNw
+	 qAK7vYEdH3ZiQ7c15eCC9Cl/rDm+2Rg/L01XqJcTxECJeZd5aED5Tiu49JHZZaImnL
+	 OYqHmUXwldaDKg1waTILTaUglqVEVp/g4qS5hni9bPdJFbKfP8Ar6b/h25jY44pKxy
+	 qECYxEzCUkRA0bMNv7oN4J/VNcdUtRZyF1i6ogUDy8ukK1UB8lav1o998PzWpIV/a0
+	 4ehYdZMGogmBOBC+O721hqkhGvOPUmJwAFt0nIrx1dofTx3BTzDoCuLavTnfd0uC3v
+	 qo3FjjI19katQ==
+Received: from laura.lan (unknown [IPv6:2001:b07:646b:e2:4db2:e926:c82d:3276])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: laura.nao)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id EA0B817E130E;
+	Wed, 30 Jul 2025 12:58:04 +0200 (CEST)
+From: Laura Nao <laura.nao@collabora.com>
+To: mturquette@baylibre.com,
+	sboyd@kernel.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	p.zabel@pengutronix.de,
+	richardcochran@gmail.com
+Cc: guangjie.song@mediatek.com,
+	wenst@chromium.org,
+	linux-clk@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	netdev@vger.kernel.org,
+	kernel@collabora.com,
+	Laura Nao <laura.nao@collabora.com>
+Subject: [PATCH v3 00/27] Add support for MT8196 clock controllers
+Date: Wed, 30 Jul 2025 12:56:26 +0200
+Message-Id: <20250730105653.64910-1-laura.nao@collabora.com>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
-References: <20250615131129.954975-1-kuyo.chang@mediatek.com>
-In-Reply-To: <20250615131129.954975-1-kuyo.chang@mediatek.com>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Wed, 30 Jul 2025 12:06:28 +0200
-X-Gmail-Original-Message-ID: <CAMuHMdWZHwr_nmMbVREKC9nQCYigT_gvKH3M9v+oyYqk6FLONw@mail.gmail.com>
-X-Gm-Features: Ac12FXwS-l7uHGU1oTYcgJSesd4W3K8Q8G2IZz1kbq4jmTeRDTrEyXIFWqDBxL0
-Message-ID: <CAMuHMdWZHwr_nmMbVREKC9nQCYigT_gvKH3M9v+oyYqk6FLONw@mail.gmail.com>
-Subject: Re: [RFC PATCH 1/1] sched/deadline: Fix RT task potential starvation
- when expiry time passed
-To: Kuyo Chang <kuyo.chang@mediatek.com>
-Cc: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>, 
-	Juri Lelli <juri.lelli@redhat.com>, Vincent Guittot <vincent.guittot@linaro.org>, 
-	Dietmar Eggemann <dietmar.eggemann@arm.com>, Steven Rostedt <rostedt@goodmis.org>, 
-	Ben Segall <bsegall@google.com>, Mel Gorman <mgorman@suse.de>, 
-	Valentin Schneider <vschneid@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, jstultz <jstultz@google.com>, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250730_030642_693614_B298E133 
-X-CRM114-Status: GOOD (  24.58  )
+X-CRM114-CacheID: sfid-20250730_035808_348393_35333F42 
+X-CRM114-Status: GOOD (  13.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,97 +87,115 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Kuyo,
+This patch series introduces support for the clock controllers on the
+MediaTek MT8196 platform, following up on an earlier submission[1].
 
-On Mon, 16 Jun 2025 at 14:39, Kuyo Chang <kuyo.chang@mediatek.com> wrote:
-> From: kuyo chang <kuyo.chang@mediatek.com>
->
-> [Symptom]
-> The fair server mechanism, which is intended to prevent fair starvation
-> when higher-priority tasks monopolize the CPU.
-> Specifically, RT tasks on the runqueue may not be scheduled as expected.
->
-> [Analysis]
-> ---------
-> The log "sched: DL replenish lagged too much" triggered.
->
-> By memory dump of dl_server:
-> --------------
->     curr = 0xFFFFFF80D6A0AC00 (
->       dl_server = 0xFFFFFF83CD5B1470(
->         dl_runtime = 0x02FAF080,
->         dl_deadline = 0x3B9ACA00,
->         dl_period = 0x3B9ACA00,
->         dl_bw = 0xCCCC,
->         dl_density = 0xCCCC,
->         runtime = 0x02FAF080,
->         deadline = 0x0000082031EB0E80,
->         flags = 0x0,
->         dl_throttled = 0x0,
->         dl_yielded = 0x0,
->         dl_non_contending = 0x0,
->         dl_overrun = 0x0,
->         dl_server = 0x1,
->         dl_server_active = 0x1,
->         dl_defer = 0x1,
->         dl_defer_armed = 0x0,
->         dl_defer_running = 0x1,
->         dl_timer = (
->           node = (
->             expires = 0x000008199756E700),
->           _softexpires = 0x000008199756E700,
->           function = 0xFFFFFFDB9AF44D30 = dl_task_timer,
->           base = 0xFFFFFF83CD5A12C0,
->           state = 0x0,
->           is_rel = 0x0,
->           is_soft = 0x0,
->     clock_update_flags = 0x4,
->     clock = 0x000008204A496900,
->
-> - The timer expiration time (rq->curr->dl_server->dl_timer->expires)
->   is already in the past, indicating the timer has expired.
-> - The timer state (rq->curr->dl_server->dl_timer->state) is 0.
->
-> [Suspected Root Cause]
-> --------------------
-> The relevant code flow in the throttle path of
-> update_curr_dl_se() as follows:
->
-> dequeue_dl_entity(dl_se, 0);                // the DL entity is dequeued
->
-> if (unlikely(is_dl_boosted(dl_se) || !start_dl_timer(dl_se))) {
->     if (dl_server(dl_se))                   // timer registration fails
->         enqueue_dl_entity(dl_se, ENQUEUE_REPLENISH);//enqueue immediately
->     ...
-> }
->
-> The failure of `start_dl_timer` is caused by attempting to register a
-> timer with an expiration time that is already in the past. When this
-> situation persists, the code repeatedly re-enqueues the DL entity
-> without properly replenishing or restarting the timer, resulting in RT
-> task may not be scheduled as expected.
->
-> [Proposed Solution]:
-> ------------------
-> Instead of immediately re-enqueuing the DL entity on timer registration
-> failure, this change ensures the DL entity is properly replenished and
-> the timer is restarted, preventing RT potential starvation.
->
-> Signed-off-by: kuyo chang <kuyo.chang@mediatek.com>
+MT8196 uses a hardware voting mechanism to control some of the clock muxes
+and gates, along with a fence register responsible for tracking PLL and mux
+gate readiness. The series introduces support for these voting and fence
+mechanisms, and includes drivers for all clock controllers on the platform.
 
-Thanks, this fixes the issue I was seeing!
+[1] https://lore.kernel.org/all/20250307032942.10447-1-guangjie.song@mediatek.com/
 
-Closes: https://lore.kernel.org/CAMuHMdXn4z1pioTtBGMfQM0jsLviqS2jwysaWXpoLxWYoGa82w@mail.gmail.com
-Tested-by: Geert Uytterhoeven <geert@linux-m68k.org>
+Changes in v3:
+- Removed duplication in clock parent lists in the topckgen, topckgen2, and vlpckgen drivers
+- Added vlp_clk26m parent and index table for audio clocks in the vlpckgen driver
+- Added APLL tuner initialization to the probe function of the vlpckgen driver
+- Dropped the adsp driver
+- Merged reset controller binding into the clock binding doc commit
+- Dropped .owner entry from mfg driver
+- Added R-b tags
 
-Gr{oetje,eeting}s,
+Link to v2: https://lore.kernel.org/all/20250624143220.244549-1-laura.nao@collabora.com
 
-                        Geert
+Laura Nao (27):
+  clk: mediatek: clk-pll: Add set/clr regs for shared PLL enable control
+  clk: mediatek: clk-pll: Add ops for PLLs using set/clr regs and FENC
+  clk: mediatek: clk-mux: Add ops for mux gates with set/clr/upd and
+    FENC
+  clk: mediatek: clk-mtk: Introduce mtk_clk_get_hwv_regmap()
+  clk: mediatek: clk-mux: Add ops for mux gates with HW voter and FENC
+  clk: mediatek: clk-gate: Refactor mtk_clk_register_gate to use
+    mtk_gate struct
+  clk: mediatek: clk-gate: Add ops for gates with HW voter
+  clk: mediatek: clk-mtk: Add MUX_DIV_GATE macro
+  dt-bindings: clock: mediatek: Describe MT8196 clock controllers
+  clk: mediatek: Add MT8196 apmixedsys clock support
+  clk: mediatek: Add MT8196 topckgen clock support
+  clk: mediatek: Add MT8196 topckgen2 clock support
+  clk: mediatek: Add MT8196 vlpckgen clock support
+  clk: mediatek: Add MT8196 peripheral clock support
+  clk: mediatek: Add MT8196 ufssys clock support
+  clk: mediatek: Add MT8196 pextpsys clock support
+  clk: mediatek: Add MT8196 I2C clock support
+  clk: mediatek: Add MT8196 mcu clock support
+  clk: mediatek: Add MT8196 mdpsys clock support
+  clk: mediatek: Add MT8196 mfg clock support
+  clk: mediatek: Add MT8196 disp0 clock support
+  clk: mediatek: Add MT8196 disp1 clock support
+  clk: mediatek: Add MT8196 disp-ao clock support
+  clk: mediatek: Add MT8196 ovl0 clock support
+  clk: mediatek: Add MT8196 ovl1 clock support
+  clk: mediatek: Add MT8196 vdecsys clock support
+  clk: mediatek: Add MT8196 vencsys clock support
+
+ .../bindings/clock/mediatek,mt8196-clock.yaml |  86 ++
+ .../clock/mediatek,mt8196-sys-clock.yaml      |  81 ++
+ drivers/clk/mediatek/Kconfig                  |  71 ++
+ drivers/clk/mediatek/Makefile                 |  13 +
+ drivers/clk/mediatek/clk-gate.c               | 106 +-
+ drivers/clk/mediatek/clk-gate.h               |   3 +
+ drivers/clk/mediatek/clk-mt8196-apmixedsys.c  | 203 ++++
+ drivers/clk/mediatek/clk-mt8196-disp0.c       | 169 +++
+ drivers/clk/mediatek/clk-mt8196-disp1.c       | 170 +++
+ .../clk/mediatek/clk-mt8196-imp_iic_wrap.c    | 117 +++
+ drivers/clk/mediatek/clk-mt8196-mcu.c         | 166 +++
+ drivers/clk/mediatek/clk-mt8196-mdpsys.c      | 187 ++++
+ drivers/clk/mediatek/clk-mt8196-mfg.c         | 149 +++
+ drivers/clk/mediatek/clk-mt8196-ovl0.c        | 154 +++
+ drivers/clk/mediatek/clk-mt8196-ovl1.c        | 153 +++
+ drivers/clk/mediatek/clk-mt8196-peri_ao.c     | 144 +++
+ drivers/clk/mediatek/clk-mt8196-pextp.c       | 131 +++
+ drivers/clk/mediatek/clk-mt8196-topckgen.c    | 984 ++++++++++++++++++
+ drivers/clk/mediatek/clk-mt8196-topckgen2.c   | 567 ++++++++++
+ drivers/clk/mediatek/clk-mt8196-ufs_ao.c      | 109 ++
+ drivers/clk/mediatek/clk-mt8196-vdec.c        | 253 +++++
+ drivers/clk/mediatek/clk-mt8196-vdisp_ao.c    |  79 ++
+ drivers/clk/mediatek/clk-mt8196-venc.c        | 235 +++++
+ drivers/clk/mediatek/clk-mt8196-vlpckgen.c    | 726 +++++++++++++
+ drivers/clk/mediatek/clk-mtk.c                |  16 +
+ drivers/clk/mediatek/clk-mtk.h                |  23 +
+ drivers/clk/mediatek/clk-mux.c                | 119 ++-
+ drivers/clk/mediatek/clk-mux.h                |  87 ++
+ drivers/clk/mediatek/clk-pll.c                |  46 +-
+ drivers/clk/mediatek/clk-pll.h                |   9 +
+ .../dt-bindings/clock/mediatek,mt8196-clock.h | 802 ++++++++++++++
+ .../reset/mediatek,mt8196-resets.h            |  26 +
+ 32 files changed, 6160 insertions(+), 24 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt8196-clock.yaml
+ create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt8196-sys-clock.yaml
+ create mode 100644 drivers/clk/mediatek/clk-mt8196-apmixedsys.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8196-disp0.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8196-disp1.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8196-imp_iic_wrap.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8196-mcu.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8196-mdpsys.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8196-mfg.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8196-ovl0.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8196-ovl1.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8196-peri_ao.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8196-pextp.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8196-topckgen.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8196-topckgen2.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8196-ufs_ao.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8196-vdec.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8196-vdisp_ao.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8196-venc.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8196-vlpckgen.c
+ create mode 100644 include/dt-bindings/clock/mediatek,mt8196-clock.h
+ create mode 100644 include/dt-bindings/reset/mediatek,mt8196-resets.h
 
 -- 
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+2.39.5
 
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
 
