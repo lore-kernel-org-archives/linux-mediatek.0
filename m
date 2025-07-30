@@ -4,99 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25C30C83F26
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jul 2025 14:56:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1B06C83F26
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jul 2025 15:12:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oCufAOV94HIMKHfZVdb3wjn9NSi/Vfyn02LpL1/VMoY=; b=lcbp/Jdd0Otpx2rh/G3CTLVIOp
-	79o16FpRtKAdwU7VdxD3Bj9cGWZcRm9OwTbPX812WG8CkPUkxzUUUrmZ0z0yUJOurGJr3qAEA7xiG
-	6omT9NemnZzvGrj63bhxw3HTg6elTSHv/XpKVKSGUxqCLgnAKKkBadDT17vgYALkOGdupSyXvWUmm
-	fJSnbFca9RXxBXFDz6iHsxXufSC69QIJFDw9dzmntNCCIWExci1SWZ4hlTPh7ALRb/vhUBqaeNgsu
-	9z0Sjbwxu7YsEW1itQCToJPUCUDLflQwpbttcKHDC4n+tMicJXHYKSFJI+tbHso6u7w+1bttIpRu5
-	O6/pD+vQ==;
+	bh=6zbDF6DuNywreDfjORRT1cKAmeYmyOF35f+RgRaR5Jw=; b=34UGUcGFzk2sXEo6xZcyA1otoc
+	G9PwlK6hMuiGdwSbqKMvD6ZR7qBcjbLUwnt5bTabvmGj2FMSANDQt9e/dILysZJXG5kwxYo3YV7wy
+	fknR1UmElfw1jeEwX0lLZfEfG8/hwzsqvoYJ+l5zpdgr+Dgdhv5iJleO2PNTDLL8PmYtSFCkiYVnW
+	fHDVY/I29XZ8tITHnt3Kdj6VlvwWCn3DtmiGXNYSnhU5aYfkFtWEfNGsinV+aJcLeE7F681Mu0fFI
+	DOekvd/bMSbiwOc6U63SzYsPLmdxb860qoOxtqruhYOP88bOKFKkIRZpxofTwwZ5hG9+fYQ89386q
+	k/6PChAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uh8E4-00000001nA4-0byc;
-	Wed, 30 Jul 2025 14:56:16 +0000
-Received: from mail-vk1-f173.google.com ([209.85.221.173])
+	id 1uh8Tj-00000001oyl-0Mry;
+	Wed, 30 Jul 2025 15:12:27 +0000
+Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uh8C3-00000001n0Q-336X;
-	Wed, 30 Jul 2025 14:54:12 +0000
-Received: by mail-vk1-f173.google.com with SMTP id 71dfb90a1353d-537a0d384b2so3054615e0c.2;
-        Wed, 30 Jul 2025 07:54:11 -0700 (PDT)
+	id 1uh8Ow-00000001oPc-3UgA
+	for linux-mediatek@lists.infradead.org;
+	Wed, 30 Jul 2025 15:07:32 +0000
+Received: by mail-pf1-x435.google.com with SMTP id d2e1a72fcca58-76b36e6b9ddso733497b3a.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 30 Jul 2025 08:07:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1753888049; x=1754492849; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=6zbDF6DuNywreDfjORRT1cKAmeYmyOF35f+RgRaR5Jw=;
+        b=w3xuTAFcWhEpgVSive4jCUKpnzh1Ubbl3L0u5vf5cozXcu9pePYCgWAu9mFr9GlCMn
+         SzMqlzRco84stRwiuMa3qUDPydP6IJBwSE8TjiMKRvTxfTcMcHHKKsJ9Wrwq5ixMKmF5
+         15wc/J2JRTSzwXtbThC8hAgOrC1YyIkYaHHVdmfGnwSo08Y28y0WOz70bNXWsbtzkh33
+         JSBoyoScOVMuOtfBZATk9Yf2szfffVhPnpEFWjkaTXLJ/0bqg7JKSgXN76/W6/y7UVap
+         pe6isMbykL8h63kpc6+BD81Xp2dKidnfvtKr3gP7bDZdx2mzDPlpawKW6wbW7Tz/FpQM
+         hK1Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1753887250; x=1754492050;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=oCufAOV94HIMKHfZVdb3wjn9NSi/Vfyn02LpL1/VMoY=;
-        b=PjJ2V+XUI7uqzAZdd22eDPUEyaYx7yoNJZKvggq5AiFcEUD+Cgc4Fk2TcAxmVs3Wkw
-         5DOVlMNP9r/jDKZk9bGyNeizGC6mCRymFl2bqMwssliUueKOsKK0wd3fu5SKz0IAJFQC
-         geZBvclLOvK+zghonx7pvZbT5YrAbt6oKt/sPrRxaIkS6gUdTYAndsm8I3P8ljbCQ34S
-         SpR5qsp9ex5RBC0Ny2ueHPeDp6/3529CsJQTLTsnrmeobX0kgXhG7bXUPlhcDrmMg2vg
-         hh1rslxbKaUttgbWCfX8PuywAYyvseUUWKTjmOow4/cf8Qing1nJqcEQLAnqO8yRm6TS
-         R/6A==
-X-Forwarded-Encrypted: i=1; AJvYcCUh8mY0FSwOdL1DTkEWTJ8oi5Jn35JOyUYKHmNqCJTny7FenLBIC1Jo2vaWBlf/rUycNaTsv6EqQvsbYGe4PKcP@lists.infradead.org, AJvYcCWzTGBpgZJuQgumR9DGN4c4iS9D1iWyi/KgDSW3TxEDG9oLhJyd7ceG04rGWLBvh7RYLkvK7Az5Axs72vwg2Z0=@lists.infradead.org
-X-Gm-Message-State: AOJu0YyMARuYlEe8Xr7+MasmvuxhKqJg3p7fCY3E/nYWNB5SM3EvokDr
-	NY2xNfGma6VMYSkJN9itYIqq2cL8GnD3BXSusL2R8P+P97cJqskiTQ7wfOq5SxuZ7DQ=
-X-Gm-Gg: ASbGncv3NOW4zJqb0XAZHmwSxTRiFMoxGqbUdVwlBy18YIj1SHcWDzj5FJ3bNuQbtOX
-	CfjYPDv5Sx7XvrsKS92L/Te64u6RkoxfoEOLzJUCNlNI+IHaC1y/5DQ5YMncaNVgkE+jkFCMKdd
-	GVbUyBX3BPbdpYNYRrMSmzxcUJeETke4JjJ3C7lscST7lZaF2mNU3dJa+prqSQNFZwy1qyWn6NF
-	Nz0aG68+/baN2iR2DrNvi9BlzINEUS80DLC0uL62+5GsuhtmL7mYcQfmw/CG5jI64PT74Bik1Nx
-	29hcdbYP20wDn66rJf3QVVj0xI63b1ZXmYQUtowlK2op3HSy2mXAmHyi51XQPNf5INEWbREoO1E
-	On9FSRr6n47txJ9Buyi/NIGBvJh3+8lu3IJPfJ4uq3s/5a80VIjg36PcerKonKBcTP1x0kN0=
-X-Google-Smtp-Source: AGHT+IGrDQmib4RErKzmd6wMqGyzciLF/q5Q8t1gLuiowXfPX05tkHAPkJQTXbpMnQJFIdRy9M2/Aw==
-X-Received: by 2002:a05:6122:50c:b0:535:b383:c91e with SMTP id 71dfb90a1353d-5391cee0f1cmr2520017e0c.6.1753887250468;
-        Wed, 30 Jul 2025 07:54:10 -0700 (PDT)
-Received: from mail-vs1-f47.google.com (mail-vs1-f47.google.com. [209.85.217.47])
-        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-538e28ca2f0sm2783905e0c.36.2025.07.30.07.54.08
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 30 Jul 2025 07:54:09 -0700 (PDT)
-Received: by mail-vs1-f47.google.com with SMTP id ada2fe7eead31-4e7f367ea11so2922106137.3;
-        Wed, 30 Jul 2025 07:54:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCW36xhdUrEJN1Sv5bcelzi+PNGFDsIAzLyyNSxxQqGgbL45pqXUpWtk688dVfjHVHUd1BqOfBk44vLZMG/jo0Of@lists.infradead.org, AJvYcCXWAO+TjBeRTz1UD1EXbIj9IcQ439vMKLBm/XXt9uL76aZZ7NNKNVE9YsOo3DQTOWs7EKVNiN8C3TP2VpkNonw=@lists.infradead.org
-X-Received: by 2002:a05:6102:358c:b0:4fa:85f:31c0 with SMTP id
- ada2fe7eead31-4fbe87acbd8mr2306438137.19.1753887248543; Wed, 30 Jul 2025
- 07:54:08 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1753888049; x=1754492849;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=6zbDF6DuNywreDfjORRT1cKAmeYmyOF35f+RgRaR5Jw=;
+        b=Aw0Z4bRiHB2uhpB/sqoelc4JFZw75XYBjtM4uIABgoORt2njz7hrAuVe4P+J6K3s2j
+         NM+fvVxFGIDpmBve32Vi86JcZKNcH8AIBER7mV0xc6oDCSqJl2+dS1+hgzc6VG5TeA3h
+         5N7IDKMamdmzNsolf5qKtI0huJeXtYCoJfNuWqGbWn4gKgRFXrKsmMLdQQbRmMjPZSJC
+         OaG8TOAY8r5rVWocKDh3ni2sn6Xo2fAu9A34T4fmu7uFpl49qA0Pi93oVWEfe8Vkc4bl
+         S3C7TTcv9hacob2K4NwWdg7s56olTpAWe8iUPmpiw5Nl1AZohYhRXU0TMlPQQV8g+J7q
+         xogw==
+X-Forwarded-Encrypted: i=1; AJvYcCUZ4fcS+J/BEMybXaW6hx5qqNT+zHjaofyX7obVWSKuCQ8pusBY2tEecVt7b23Si2sOSbvzgeQdUCJO+OK7dg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxw7CBPFkVDxcHvy9b5ufTVcSMZXkb5FnN0vboyWi4QNryD67hC
+	JgpTYVPFSbHidUdJ601RMKqg1coFUFBuuu+akPLo3Yqix56fyn8fj0mXi1iLWvmAPAI=
+X-Gm-Gg: ASbGncstRygn1JOOx0a82ogHQVtklQTyqmcq1ksU02xznSIuLLYlfQiOz4WSsfJbDRR
+	/DoRRup7+YcyyEDXWx2AchmZThE++u4mFN7cmDnh3m3drNyHDlGt//JRoo1U96yk4F9wpDZ9AhV
+	ByPUdbzyr2CLkvUkDU1g9SGleRC9toeBrCcc3Fz4/fVhtXItpP7g67G5t/KLBBg1xImoaNMNbgz
+	f85CRZb80I8VfBgjAZ1nWR4tB625rfeKy5v4/vTED7JQVPj+/ud5LtPaubdwr354GXLtD419xLt
+	nqE+iYM5UAdn55z1P+odbEuDoVidxDkRdSN6uYvUDmMD9rBR52D25iXQAHUh4TsxCrng9ZcVqC6
+	ZrDprMO4fZTqqfRUAuH1El9RRRhKLY7yxNok6
+X-Google-Smtp-Source: AGHT+IFaZ9+p55hN5f6LxwvTNGvq2uEnkVbWsMgb6AANE/sV3IXqIf2qyYyxe/SLSbbyK1EkPLnaaw==
+X-Received: by 2002:a05:6a00:4b0c:b0:740:b394:3ebd with SMTP id d2e1a72fcca58-76ab092312amr5779637b3a.7.1753888049439;
+        Wed, 30 Jul 2025 08:07:29 -0700 (PDT)
+Received: from p14s ([2604:3d09:148c:c800:19cc:e53e:637f:aa72])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-76408cf75dfsm10232542b3a.50.2025.07.30.08.07.28
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 30 Jul 2025 08:07:28 -0700 (PDT)
+Date: Wed, 30 Jul 2025 09:07:26 -0600
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: Huayu Zong <huayu.zong@mediatek.com>
+Cc: Bjorn Andersson <andersson@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Tinghan Shen <tinghan.shen@mediatek.com>,
+	linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	--cc=Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH 3/3] remoteproc: mediatek: Support MT8189 SCP
+Message-ID: <aIo1LsFeKqtPoCDm@p14s>
+References: <20250729023125.9036-1-huayu.zong@mediatek.com>
+ <20250729023125.9036-4-huayu.zong@mediatek.com>
 MIME-Version: 1.0
-References: <20250724-pinctrl-gpio-pinfuncs-v3-0-af4db9302de4@linaro.org> <20250724-pinctrl-gpio-pinfuncs-v3-9-af4db9302de4@linaro.org>
-In-Reply-To: <20250724-pinctrl-gpio-pinfuncs-v3-9-af4db9302de4@linaro.org>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Wed, 30 Jul 2025 16:53:57 +0200
-X-Gmail-Original-Message-ID: <CAMuHMdX+fmSPDZ1q0UeWxYJsrUgHPi2+_HC0Hy6TtC+W=kaULw@mail.gmail.com>
-X-Gm-Features: Ac12FXzcRmJnrFvnxFG5jsyy_jc5Ss1VNLUefIVdE-6ssqD0s07eH4xzZW0L3Ow
-Message-ID: <CAMuHMdX+fmSPDZ1q0UeWxYJsrUgHPi2+_HC0Hy6TtC+W=kaULw@mail.gmail.com>
-Subject: Re: [PATCH v3 09/15] pinctrl: constify pinmux_generic_get_function()
-To: Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Bjorn Andersson <andersson@kernel.org>, 
-	Konrad Dybcio <konradybcio@kernel.org>, Alexey Klimov <alexey.klimov@linaro.org>, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Paul Cercueil <paul@crapouillou.net>, Kees Cook <kees@kernel.org>, 
-	Andy Shevchenko <andy@kernel.org>, Andrew Morton <akpm@linux-foundation.org>, 
-	David Hildenbrand <david@redhat.com>, Lorenzo Stoakes <lorenzo.stoakes@oracle.com>, 
-	"Liam R. Howlett" <Liam.Howlett@oracle.com>, Vlastimil Babka <vbabka@suse.cz>, 
-	Mike Rapoport <rppt@kernel.org>, Suren Baghdasaryan <surenb@google.com>, Michal Hocko <mhocko@suse.com>, 
-	Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, 
-	Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, NXP S32 Linux Team <s32@nxp.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Tony Lindgren <tony@atomide.com>, 
-	Haojian Zhuang <haojian.zhuang@linaro.org>, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mips@vger.kernel.org, linux-hardening@vger.kernel.org, 
-	linux-mm@kvack.org, imx@lists.linux.dev, linux-omap@vger.kernel.org, 
-	linux-renesas-soc@vger.kernel.org, 
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250729023125.9036-4-huayu.zong@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250730_075411_764620_32FC7980 
-X-CRM114-Status: GOOD (  18.58  )
+X-CRM114-CacheID: sfid-20250730_080730_897735_761AA45D 
+X-CRM114-Status: GOOD (  24.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,31 +106,148 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 24 Jul 2025 at 11:24, Bartosz Golaszewski <brgl@bgdev.pl> wrote:
-> From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
->
-> With all users of struct function_desc limited to only accessing it using
-> the dedicated function and never modifying it, we can now constify the
-> return value of pinmux_generic_get_function() treewide.
->
-> Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+Hi,
 
->  drivers/pinctrl/renesas/pinctrl-rza1.c    | 2 +-
->  drivers/pinctrl/renesas/pinctrl-rza2.c    | 2 +-
->  drivers/pinctrl/renesas/pinctrl-rzg2l.c   | 2 +-
->  drivers/pinctrl/renesas/pinctrl-rzv2m.c   | 2 +-
+On Tue, Jul 29, 2025 at 10:31:13AM +0800, Huayu Zong wrote:
+> Add SCP support for mt8189.
+> 
+> Signed-off-by: Huayu Zong <huayu.zong@mediatek.com>
+> ---
+>  drivers/remoteproc/mtk_common.h | 11 ++++++++++
+>  drivers/remoteproc/mtk_scp.c    | 37 ++++++++++++++++++++++++++++++---
+>  2 files changed, 45 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
+> index fd5c539ab2ac..fb2131e0ed07 100644
+> --- a/drivers/remoteproc/mtk_common.h
+> +++ b/drivers/remoteproc/mtk_common.h
+> @@ -35,6 +35,11 @@
+>  #define MT8186_SCP_L1_SRAM_PD_P1	0x40B0
+>  #define MT8186_SCP_L1_SRAM_PD_p2	0x40B4
+>  
+> +#define MT8189_SCP2APMCU_IPC_CLR	0x30010
+> +#define MT8189_SCP2SPM_IPC_CLR		0x30018
+> +#define MT8189_SCP_SECURE_DOMAIN	0xA080
+> +#define MT8189_SCP_DOMAIN_VAL		0x3303003
+> +
+>  #define MT8192_L2TCM_SRAM_PD_0		0x10C0
+>  #define MT8192_L2TCM_SRAM_PD_1		0x10C4
+>  #define MT8192_L2TCM_SRAM_PD_2		0x10C8
+> @@ -112,6 +117,12 @@ struct mtk_scp_of_data {
+>  
+>  	u32 host_to_scp_reg;
+>  	u32 host_to_scp_int_bit;
+> +	u32 scp_to_host_ipc_set_reg;
+> +	u32 scp_to_host_ipc_clr_reg;
+> +	u32 scp_to_spm_ipc_clr_reg;
+> +
+> +	u32 scp_secure_domain_reg;
+> +	u32 scp_domain_value;
+>  
+>  	size_t ipi_buf_offset;
+>  	const struct mtk_scp_sizes_data *scp_sizes;
+> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+> index 8206a1766481..956793fc6901 100644
+> --- a/drivers/remoteproc/mtk_scp.c
+> +++ b/drivers/remoteproc/mtk_scp.c
+> @@ -225,7 +225,8 @@ static void mt8192_scp_irq_handler(struct mtk_scp *scp)
+>  {
+>  	u32 scp_to_host;
+>  
+> -	scp_to_host = readl(scp->cluster->reg_base + MT8192_SCP2APMCU_IPC_SET);
+> +	scp_to_host = readl(scp->cluster->reg_base +
+> +			    scp->data->scp_to_host_ipc_set_reg);
 
-Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be> # renesas
-Acked-by: Geert Uytterhoeven <geert+renesas@glider.be> # renesas
+As far as I can tell, this is the same for both mt8189 and mt8192 - it should
+not be needed.
 
-Gr{oetje,eeting}s,
+>  
+>  	if (scp_to_host & MT8192_SCP_IPC_INT_BIT) {
+>  		scp_ipi_handler(scp);
+> @@ -235,7 +236,7 @@ static void mt8192_scp_irq_handler(struct mtk_scp *scp)
+>  		 * MT8192_SCP2APMCU_IPC.
+>  		 */
+>  		writel(MT8192_SCP_IPC_INT_BIT,
+> -		       scp->cluster->reg_base + MT8192_SCP2APMCU_IPC_CLR);
+> +		       scp->cluster->reg_base + scp->data->scp_to_host_ipc_clr_reg);
+>  	} else {
+>  		scp_wdt_handler(scp, scp_to_host);
+>  		writel(1, scp->cluster->reg_base + MT8192_CORE0_WDT_IRQ);
+> @@ -559,8 +560,10 @@ static int mt8188_scp_c1_before_load(struct mtk_scp *scp)
+>  
+>  static int mt8192_scp_before_load(struct mtk_scp *scp)
+>  {
+> +	u32 scp2spm_ipc_clr = scp->data->scp_to_spm_ipc_clr_reg;
+> +
+>  	/* clear SPM interrupt, SCP2SPM_IPC_CLR */
+> -	writel(0xff, scp->cluster->reg_base + MT8192_SCP2SPM_IPC_CLR);
+> +	writel(0xff, scp->cluster->reg_base + scp2spm_ipc_clr);
+>  
+>  	writel(1, scp->cluster->reg_base + MT8192_CORE0_SW_RSTN_SET);
+>  
+> @@ -574,6 +577,11 @@ static int mt8192_scp_before_load(struct mtk_scp *scp)
+>  	/* enable MPU for all memory regions */
+>  	writel(0xff, scp->cluster->reg_base + MT8192_CORE0_MEM_ATT_PREDEF);
+>  
+> +	/* set the domain of master in SCP */
+> +	if (scp->data->scp_secure_domain_reg)
+> +		writel(scp->data->scp_domain_value,
+> +		       scp->cluster->reg_base + scp->data->scp_secure_domain_reg);
+> +
+>  	return 0;
+>  }
+>  
+> @@ -1464,6 +1472,24 @@ static const struct mtk_scp_of_data mt8188_of_data_c1 = {
+>  	.scp_sizes = &mt8188_scp_c1_sizes,
+>  };
+>  
+> +static const struct mtk_scp_of_data mt8189_of_data = {
+> +	.scp_clk_get = mt8195_scp_clk_get,
+> +	.scp_before_load = mt8192_scp_before_load,
+> +	.scp_irq_handler = mt8192_scp_irq_handler,
+> +	.scp_reset_assert = mt8192_scp_reset_assert,
+> +	.scp_reset_deassert = mt8192_scp_reset_deassert,
+> +	.scp_stop = mt8192_scp_stop,
+> +	.scp_da_to_va = mt8192_scp_da_to_va,
+> +	.host_to_scp_reg = MT8192_GIPC_IN_SET,
+> +	.host_to_scp_int_bit = MT8192_HOST_IPC_INT_BIT,
+> +	.scp_to_host_ipc_set_reg = MT8192_SCP2APMCU_IPC_SET,
+> +	.scp_to_host_ipc_clr_reg = MT8189_SCP2APMCU_IPC_CLR,
+> +	.scp_to_spm_ipc_clr_reg = MT8189_SCP2SPM_IPC_CLR,
+> +	.scp_secure_domain_reg = MT8189_SCP_SECURE_DOMAIN,
+> +	.scp_domain_value = MT8189_SCP_DOMAIN_VAL,
+> +	.scp_sizes = &default_scp_sizes,
+> +};
+> +
+>  static const struct mtk_scp_of_data mt8192_of_data = {
+>  	.scp_clk_get = mt8192_scp_clk_get,
+>  	.scp_before_load = mt8192_scp_before_load,
+> @@ -1475,6 +1501,10 @@ static const struct mtk_scp_of_data mt8192_of_data = {
+>  	.host_to_scp_reg = MT8192_GIPC_IN_SET,
+>  	.host_to_scp_int_bit = MT8192_HOST_IPC_INT_BIT,
+>  	.scp_sizes = &default_scp_sizes,
+> +	.scp_to_host_ipc_set_reg = MT8192_SCP2APMCU_IPC_SET,
+> +	.scp_to_host_ipc_clr_reg = MT8192_SCP2APMCU_IPC_CLR,
+> +	.scp_to_spm_ipc_clr_reg = MT8192_SCP2SPM_IPC_CLR,
+> +	.scp_sizes = &default_scp_sizes,
 
-                        Geert
+You are introducing a duplicate .scp_sizes
 
--- 
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+Thanks,
+Mathieu
 
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+>  };
+>  
+>  static const struct mtk_scp_of_data mt8195_of_data = {
+> @@ -1520,6 +1550,7 @@ static const struct of_device_id mtk_scp_of_match[] = {
+>  	{ .compatible = "mediatek,mt8186-scp", .data = &mt8186_of_data },
+>  	{ .compatible = "mediatek,mt8188-scp", .data = &mt8188_of_data },
+>  	{ .compatible = "mediatek,mt8188-scp-dual", .data = &mt8188_of_data_cores },
+> +	{ .compatible = "mediatek,mt8189-scp", .data = &mt8189_of_data },
+>  	{ .compatible = "mediatek,mt8192-scp", .data = &mt8192_of_data },
+>  	{ .compatible = "mediatek,mt8195-scp", .data = &mt8195_of_data },
+>  	{ .compatible = "mediatek,mt8195-scp-dual", .data = &mt8195_of_data_cores },
+> -- 
+> 2.45.2
+> 
 
