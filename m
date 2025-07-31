@@ -4,64 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 373FDC83F17
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Jul 2025 09:31:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F183C87FCC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Jul 2025 10:18:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xFdq7UpjL9aTNtZ2OV0vOiqdMOBKJaP4cAvmEBkhieM=; b=nMzN35nbluLx7VN1T26OgT7O4J
-	Dx++aGGJp+vIDEuPySrbHLDmiiFrvkChayqsxMk1DidH/f8xCdK2W+4XJrna2bR8IHzzWlutxyfy3
-	fWPoC9cF7i9bYpWpD0GhJDG0U196rKS9ecDD1gzlgAfK8POk6EBqHRCN+jP2mi+VSlQ+v25D3Btwm
-	eJnkQ3lbgpNu1Pe/q/LCyMm5+HQBGWx8i0ruvJVaKxR6M28FeDi9nGGHy+6e0m7LZ6h3VL9bNBQRg
-	Q6GjsArUD4vjLcwdyMqGt2USx2aRCgb45uL1I+CWA4GoOEruY+8vL8Jd9ara0q4fmkCuRF/EKhLiv
-	sqStLNkg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xxk1GEBxgt7Wq5m0JMo2E8p/OXKtwtzOI0AI4QbYiho=; b=JHOZRcboUT1UPZGYw5TT4OEEOC
+	mgnNWyjQKqiTA3ZWBbIYP6/jQ9i8B4BU3Na/IA/lIMFvhJNFvdcjNDN/iRO2nUhwPxkkDn1l1iDyw
+	BjY7lGDSo80CGsryE//579iCrQpoAv+9vzYLQ18KkdOG2Uc4OuAX9U9d8+vy+k1K5EzZeWiPYmtoS
+	v49CimMGBsgirDkNX1XotGkrqxk7HlEGcGsRhTnrhbPhe3kKZxSH6xP7p5MRzxlwkLaP/kLoVakLs
+	Cl4ghkW+2i9kYI94ifO7do4U1z95bLF/74TAdwy6s1QtV/ulmZd3g6jBEzDjDVVyWqNCW0G2L09i9
+	Y/o+gGkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uhPdJ-00000003HQO-0af3;
-	Thu, 31 Jul 2025 09:31:29 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1uhQMu-00000003LxK-2FtL;
+	Thu, 31 Jul 2025 10:18:36 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uhPTB-00000003GDP-3IAe;
-	Thu, 31 Jul 2025 09:21:02 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id F16CEA52298;
-	Thu, 31 Jul 2025 09:21:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2C541C4CEEF;
-	Thu, 31 Jul 2025 09:20:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1753953660;
-	bh=YQitdJZEqx49z+aEtgIFZrSpHymltedYz+RclMvgrQk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=rbJLOQHDqprFeguHWI4PoV3aRzwTXcJU6XhvZc7x4IPsLrXsOMrL0wRPExZxowbHD
-	 GXNz6bnZutQbK3/TCxxB9MLMC91Ty6BrQ2gWiadtfLDVTKcMRFoA4CYz80vYEwiv9L
-	 V7eNWJj3DSBru/pqEwz5t2lFvzX6Bil/hG1jyWMVxnVGqjcuQwTenpv6NpkCjcnE7q
-	 7Prto0sYallXr14WCC0MY5umXrDhVYP+/4Le0wPNuuv0w7JY8MOuTQ331gn5e3MVo0
-	 yf08rfB8B/VZIlftPeaoEN8JBLkIDJmVXMScNO3Mc07qhkI5kbVw82LbFAwK1hq62V
-	 37IRTFD5FuhlQ==
-Date: Thu, 31 Jul 2025 11:20:57 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+	id 1uhQKD-00000003LjK-3gfr;
+	Thu, 31 Jul 2025 10:15:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1753956948;
+	bh=RJiuaDp9mWdvOO/DBR0WGEM4OUuHTFOlawmLNB3P+G4=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=njKKHKIzlvWFgIIXcjpz+iskyPm9MiUUMKAUvxUtiG1R1CgxIxZBHbJjZBHW5uq3u
+	 jiKMiAau9Fc3+HFgb86VauHp12rel7f8aFYebPkZHci0x0Q4agt18ckSKOTwDUSiXb
+	 naWk8UpG8LvfB6reJg+U+S8i3x6yNwU06vqxE3Kyj96t372JvbxtEv/FS4iQrpm52A
+	 vdIHItdj2KWjh0XbwNH5BTVLH4H5lanquQcnsqIyYj2ZbiVAP0rTJRA1kwIUkRMD4m
+	 Q1HrtCVCOmc4oY9mqSYISE9uT3ccecOvDRfl1rFvwg8v0pC2d75f+fEShZd3VCvuCk
+	 ohEj4DvNj4y8A==
+Received: from laura.lan (unknown [IPv6:2001:b07:646b:e2:e229:d0be:3141:7dd2])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: laura.nao)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8432E17E05F0;
+	Thu, 31 Jul 2025 12:15:38 +0200 (CEST)
+From: Laura Nao <laura.nao@collabora.com>
+To: fshao@chromium.org
+Cc: andrew-ct.chen@mediatek.com,
+	angelogioacchino.delregno@collabora.com,
+	arnd@arndb.de,
+	bchihi@baylibre.com,
+	colin.i.king@gmail.com,
+	conor+dt@kernel.org,
+	daniel.lezcano@linaro.org,
+	devicetree@vger.kernel.org,
+	kernel@collabora.com,
+	krzk+dt@kernel.org,
+	lala.lin@mediatek.com,
+	laura.nao@collabora.com,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net] net: airoha: Fix PPE table access in
- airoha_ppe_debugfs_foe_show()
-Message-ID: <aIs1eXkuez-sZtfH@lore-desk>
-References: <20250728-airoha_ppe_foe_get_entry_locked-v1-1-8630ec73f3d1@kernel.org>
- <20250730181249.78dbe4f2@kernel.org>
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-pm@vger.kernel.org,
+	lukasz.luba@arm.com,
+	matthias.bgg@gmail.com,
+	nfraprado@collabora.com,
+	rafael@kernel.org,
+	robh@kernel.org,
+	rui.zhang@intel.com,
+	srini@kernel.org,
+	u.kleine-koenig@baylibre.com,
+	wenst@chromium.org
+Subject: Re: [PATCH v2 6/9] thermal/drivers/mediatek/lvts: Add support for ATP mode
+Date: Thu, 31 Jul 2025 12:14:41 +0200
+Message-Id: <20250731101441.142132-1-laura.nao@collabora.com>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <CAC=S1njcFhyY6+dT2MHU02ZsLDq+k_vAVv==bWuoGt3KA18PHg@mail.gmail.com>
+References: <CAC=S1njcFhyY6+dT2MHU02ZsLDq+k_vAVv==bWuoGt3KA18PHg@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="iy9ceCsbIKdzJyDD"
-Content-Disposition: inline
-In-Reply-To: <20250730181249.78dbe4f2@kernel.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250731_022101_889754_38CB2FF1 
-X-CRM114-Status: GOOD (  13.45  )
+X-CRM114-CacheID: sfid-20250731_031550_073949_6A45A64B 
+X-CRM114-Status: GOOD (  15.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,55 +96,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Fei,
 
---iy9ceCsbIKdzJyDD
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On 7/31/25 06:25, Fei Shao wrote:
+> On Wed, Jul 30, 2025 at 11:40 PM Laura Nao <laura.nao@collabora.com> wrote:
+>>
+>> MT8196/MT6991 uses ATP (Abnormal Temperature Prevention) mode to detect
+>> abnormal temperature conditions, which involves reading temperature data
+>> from a dedicated set of registers separate from the ones used for
+>> immediate and filtered modes.
+>>
+>> Add support for ATP mode and its relative registers to ensure accurate
+>> temperature readings and proper thermal management on MT8196/MT6991
+>> devices.
+>>
+>> While at it, convert mode defines to enum.
+>>
+>> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+>> Signed-off-by: Laura Nao <laura.nao@collabora.com>
+>
+> It's not visible in this patch, but a heads-up that I see
+> lvts_ctrl_start() also depends on whether lvts is in immediate mode. I
+> wonder if anything is needed there for ATP mode e.g. a new
+> sensor_atp_bitmap.
+> Feel free to ignore if this is a false alarm.
+>
 
-> On Mon, 28 Jul 2025 13:58:08 +0200 Lorenzo Bianconi wrote:
-> > +struct airoha_foe_entry *
-> > +airoha_ppe_foe_get_entry_locked(struct airoha_ppe *ppe, u32 hash)
->=20
-> Hm, could be just me, but the way we/I used _locked in the core was=20
-> the opposite. _locked means the caller's already taken the lock.
-> Here you seem to be saying that the "callee is locked"..
-> Can we stick to core's interpretation?
+Thanks for the heads up - the bitmap for ATP mode is the same as 
+sensor_filt_bitmap, so the function is already working as intended.
 
-sure, that's fine.
+Best,
 
->=20
-> > +	struct airoha_foe_entry *hwe;
-> > +
-> > +	spin_lock_bh(&ppe_lock);
-> > +	hwe =3D airoha_ppe_foe_get_entry(ppe, hash);
-> > +	spin_unlock_bh(&ppe_lock);
-> > +
-> > +	return hwe;
->=20
-> Is the lifetime of the hwe object somehow guaranteed in the debugfs
-> code? Looks questionable..
+Laura
 
-PPE table entries are allocated at driver load and never freed, the hw is j=
-ust
-writing into this DMA area when the entry is binded.
+> Regards,
+> Fei
 
-Regards,
-Lorenzo
-
-> --=20
-> pw-bot: cr
-
---iy9ceCsbIKdzJyDD
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaIs1eQAKCRA6cBh0uS2t
-rKE+AP9acbZ1NXEFMJ8nPy6u1cFPCw8RfBLLOGACBYGpxGOffgEAwSwgpDJiqJnM
-Nv8H3NbW2BL1j9z8OroubX6meSBdZwU=
-=PjV9
------END PGP SIGNATURE-----
-
---iy9ceCsbIKdzJyDD--
 
