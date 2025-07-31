@@ -4,58 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E559AC83F17
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Jul 2025 10:36:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9881C87FCC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Jul 2025 10:38:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zk14oY7Azme+0tnLvcrF3Z1tvIjv6S4Vu59YuCpxu5E=; b=2AL2qvWJ6M3wdr
-	wW33fJfXUx0+OQvcLGNf72Cz9K54tgtchBAffYyfT33D3BH0EgUoUrfWAJZDi+BmfGYfK8Bjy72Oo
-	hfe91UKxEIykl99pcDrLsizw+Oajs6afVWGrVphagUqErdG0o1r3Idc5IBhc8EMFnFT3lMYtxdLZh
-	aDiJpW3k7R1ujX4ikMygwenZZKw/o6jWcplaZYuHwFscsod3AWk2SkKI7fSjRxo2TJPA6+5xigEOH
-	UgB2/QxNvh/VPLGbDCFrX/S9YsLhP+HZ7PrPsV1/9Xict2LDg6tsfYHdZsA2eNZ5rNzPtmXjIY59I
-	jDQDNZgEGlpYGeKq+MSg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ehsQEF9YHeNhP8ob8sKXpKxHKKHF1FIYnlgtXwOJINM=; b=QNkL9MoF6YdvqS0IGoEtWnvyJe
+	T3U3ZefH/dDqndRSTYFdNc3d8IdED5CKba6HE/ZwcVtW/69WOiZevbUKIhRCYr0vA/jqjlzz8ybsY
+	8QDb0q/xDM8wY/cih/kSrI1+MtbThFiKd1NxHv/BqzQOR03ky03JMv7r8qJ/3gvrhN9+OP5xfZQuh
+	5Tha6XMCykDdcH9dmuJ/+r2hD5AT+J5MVmW0ohaZSr/lFLnrm4ePHJv1NNHrXPoDnedmiLZZpNSLO
+	prORvu8bGdjmy70qSz+xNAbcMuSbJdbFSPhw0O4EHbRD6fn6rEoqO6Rv/pJjF2hnDj1R8H6QKj82P
+	LYzAmckg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uhQdz-00000003O4d-40iI;
-	Thu, 31 Jul 2025 10:36:15 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uhQga-00000003OKZ-09oq;
+	Thu, 31 Jul 2025 10:38:56 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uhQVu-00000003MoJ-0IOt;
-	Thu, 31 Jul 2025 10:27:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1753957672;
-	bh=dnZjKRCbKVsKnQZ0apVq2Lv4BunDXwUPUKqAx1JmXY0=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ATmu3VSXbzmFgfERV8e6Eu09Yb59Km6Ykr6zjqidJhxo8lYfAjorCqIYjaanz1Xc0
-	 SDTTZwne3FbduuRoAV8Y/xwDpdV6BK5JzzkqzlEW7Ie6hljRkQu6DKHGiCSBo1nkUm
-	 BIWUana48yyrDcO3OgtfYzQOUIGzQZJqmqDVJDHN462wFB1GT1rsPysz/22CzIhtLB
-	 YvgID2t64hFdwfPzDT6p1PyUv4JrsZburd1XaKV3dCjkJS1V8UrZ2Mx26uKLFiVC8q
-	 uHeVH839HFlFeTHR87ZH9CwNcNUu7fQKhOIoWTLOhyOaxCpSdpICjfqJF+T1r8cTQt
-	 cL2PGkX+pmnog==
-Received: from laura.lan (unknown [IPv6:2001:b07:646b:e2:e229:d0be:3141:7dd2])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: laura.nao)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 82F5617E0A49;
-	Thu, 31 Jul 2025 12:27:47 +0200 (CEST)
-From: Laura Nao <laura.nao@collabora.com>
-To: robh@kernel.org
-Subject: Re: [PATCH v2 9/9] dt-bindings: nvmem: mediatek: efuse: Add support for MT8196
-Date: Thu, 31 Jul 2025 12:26:50 +0200
-Message-Id: <20250731102650.145641-1-laura.nao@collabora.com>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250730235451.GA1911689-robh@kernel.org>
-References: <20250730235451.GA1911689-robh@kernel.org>
+	id 1uhQXQ-00000003N6Q-118B;
+	Thu, 31 Jul 2025 10:29:29 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id BD9BF40BD1;
+	Thu, 31 Jul 2025 10:29:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 49203C4CEEF;
+	Thu, 31 Jul 2025 10:29:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1753957766;
+	bh=YfUsBUo4ovzeXnKYZGrQHH7bnuk3EN5LYkXrLstAfJo=;
+	h=From:Date:Subject:To:Cc:From;
+	b=pZi6JGbZxBuFXF8FG2gBNppKNgyyp9C4ewQvFvHrJYPhIxPkrHkqRYIPRlXWzJMDQ
+	 ODbTXPslfRYLVBbL42GfZXWpn8iEvhT2UqQ2JqgMcSwIuDDyyOowwKwBXwauVA5tkn
+	 k/0Si4p6+6sbX3+ZsEws7nxovanj8fnCdPqF6evll26KXRee5kewEKuEg5WhhdXi5F
+	 5+cYDCAKNL32t+w0/dboTEXSrF45Ih1KxyID8G8bS2Otg5K0QP6uNVhPGUJZV50yI/
+	 Ly3rDVYjFPzhzpMIsR0+nBjRoB8RcnjKzJNGvJcRT/SuV4x1n3CC7UXXn0Uj4+TpJ8
+	 sX9PpZRYfRwXw==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Thu, 31 Jul 2025 12:29:08 +0200
+Subject: [PATCH net v2] net: airoha: Fix PPE table access in
+ airoha_ppe_debugfs_foe_show()
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250731-airoha_ppe_foe_get_entry_locked-v2-1-50efbd8c0fd6@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAHNFi2gC/42NTQ6CMBQGr0K6tqYtKOjKexjS8PMBL5CWvBIiI
+ dzdyglczixmdhHAhCCeyS4YKwXyLoK5JKIZKtdDUhtZGGVuKjeFrIj9UNl5hu08bI/Fwi282ck
+ 3I1qZK2Soa+BRZCJWZkZHn/PwLiMPFBbP2zlc9c/+31611LK4pwpNnnZpq18j2GG6eu5FeRzHF
+ xA3CGXPAAAA
+X-Change-ID: 20250728-airoha_ppe_foe_get_entry_locked-70e4ebbee984
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250731_032754_260531_A3124653 
-X-CRM114-Status: GOOD (  15.15  )
+X-CRM114-CacheID: sfid-20250731_032928_331063_CAB8D15C 
+X-CRM114-Status: GOOD (  12.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,61 +76,107 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: andrew-ct.chen@mediatek.com, lala.lin@mediatek.com, rafael@kernel.org, laura.nao@collabora.com, kernel@collabora.com, bchihi@baylibre.com, nfraprado@collabora.com, daniel.lezcano@linaro.org, wenst@chromium.org, rui.zhang@intel.com, colin.i.king@gmail.com, devicetree@vger.kernel.org, conor+dt@kernel.org, arnd@arndb.de, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com, linux-kernel@vger.kernel.org, srini@kernel.org, u.kleine-koenig@baylibre.com, krzk+dt@kernel.org, lukasz.luba@arm.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rob,
+In order to avoid any possible race we need to hold the ppe_lock
+spinlock accessing the hw PPE table. airoha_ppe_foe_get_entry routine is
+always executed holding ppe_lock except in airoha_ppe_debugfs_foe_show
+routine. Fix the problem introducing airoha_ppe_foe_get_entry_locked
+routine.
 
-On 7/31/25 01:54, Rob Herring wrote:
-> On Wed, Jul 30, 2025 at 05:21:28PM +0200, Laura Nao wrote:
->> The MT8196 eFuse layout is compatible with MT8186 and shares the same
->> decoding scheme for the gpu-speedbin cell.
->>
->> Signed-off-by: Laura Nao <laura.nao@collabora.com>
->> ---
->>  Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml | 1 +
->>  1 file changed, 1 insertion(+)
->>
->> diff --git a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
->> index 4dc0d42df3e6..455b96c1e1f4 100644
->> --- a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
->> +++ b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
->> @@ -25,6 +25,7 @@ properties:
->>    compatible:
->>      oneOf:
->>        - items:
->> +          - const: mediatek,mt8196-efuse
->>            - const: mediatek,mt8188-efuse
->>            - const: mediatek,mt8186-efuse
->
-> You just broke mt8188 as it had 2 entries and now has 3. I think 
-> (based on the commit msg) you want to change 8188 entry to an enum with 
-> mediatek,mt8196-efuse and mediatek,mt8188-efuse.
->
+Fixes: 3fe15c640f380 ("net: airoha: Introduce PPE debugfs support")
+Reviewed-by: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+Changes in v2:
+- Use locked postfix for the routine that is running holding the
+  ppe_lock spinlock
+- Link to v1: https://lore.kernel.org/r/20250728-airoha_ppe_foe_get_entry_locked-v1-1-8630ec73f3d1@kernel.org
+---
+ drivers/net/ethernet/airoha/airoha_ppe.c | 26 ++++++++++++++++++++------
+ 1 file changed, 20 insertions(+), 6 deletions(-)
 
-You're absolutely right, not sure how I missed that.
-It should be:
+diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
+index c354d536bc66e97ab853792e4ab4273283d2fb91..47411d2cbd2803c0a448243fb3e92b32d9179bd8 100644
+--- a/drivers/net/ethernet/airoha/airoha_ppe.c
++++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+@@ -508,9 +508,11 @@ static void airoha_ppe_foe_flow_stats_update(struct airoha_ppe *ppe,
+ 		FIELD_PREP(AIROHA_FOE_IB2_NBQ, nbq);
+ }
+ 
+-struct airoha_foe_entry *airoha_ppe_foe_get_entry(struct airoha_ppe *ppe,
+-						  u32 hash)
++static struct airoha_foe_entry *
++airoha_ppe_foe_get_entry_locked(struct airoha_ppe *ppe, u32 hash)
+ {
++	lockdep_assert_held(&ppe_lock);
++
+ 	if (hash < PPE_SRAM_NUM_ENTRIES) {
+ 		u32 *hwe = ppe->foe + hash * sizeof(struct airoha_foe_entry);
+ 		struct airoha_eth *eth = ppe->eth;
+@@ -537,6 +539,18 @@ struct airoha_foe_entry *airoha_ppe_foe_get_entry(struct airoha_ppe *ppe,
+ 	return ppe->foe + hash * sizeof(struct airoha_foe_entry);
+ }
+ 
++struct airoha_foe_entry *airoha_ppe_foe_get_entry(struct airoha_ppe *ppe,
++						  u32 hash)
++{
++	struct airoha_foe_entry *hwe;
++
++	spin_lock_bh(&ppe_lock);
++	hwe = airoha_ppe_foe_get_entry_locked(ppe, hash);
++	spin_unlock_bh(&ppe_lock);
++
++	return hwe;
++}
++
+ static bool airoha_ppe_foe_compare_entry(struct airoha_flow_table_entry *e,
+ 					 struct airoha_foe_entry *hwe)
+ {
+@@ -651,7 +665,7 @@ airoha_ppe_foe_commit_subflow_entry(struct airoha_ppe *ppe,
+ 	struct airoha_flow_table_entry *f;
+ 	int type;
+ 
+-	hwe_p = airoha_ppe_foe_get_entry(ppe, hash);
++	hwe_p = airoha_ppe_foe_get_entry_locked(ppe, hash);
+ 	if (!hwe_p)
+ 		return -EINVAL;
+ 
+@@ -703,7 +717,7 @@ static void airoha_ppe_foe_insert_entry(struct airoha_ppe *ppe,
+ 
+ 	spin_lock_bh(&ppe_lock);
+ 
+-	hwe = airoha_ppe_foe_get_entry(ppe, hash);
++	hwe = airoha_ppe_foe_get_entry_locked(ppe, hash);
+ 	if (!hwe)
+ 		goto unlock;
+ 
+@@ -818,7 +832,7 @@ airoha_ppe_foe_flow_l2_entry_update(struct airoha_ppe *ppe,
+ 		u32 ib1, state;
+ 		int idle;
+ 
+-		hwe = airoha_ppe_foe_get_entry(ppe, iter->hash);
++		hwe = airoha_ppe_foe_get_entry_locked(ppe, iter->hash);
+ 		if (!hwe)
+ 			continue;
+ 
+@@ -855,7 +869,7 @@ static void airoha_ppe_foe_flow_entry_update(struct airoha_ppe *ppe,
+ 	if (e->hash == 0xffff)
+ 		goto unlock;
+ 
+-	hwe_p = airoha_ppe_foe_get_entry(ppe, e->hash);
++	hwe_p = airoha_ppe_foe_get_entry_locked(ppe, e->hash);
+ 	if (!hwe_p)
+ 		goto unlock;
+ 
 
-  compatible:
-    oneOf:
-      - items:
-          - enum:
-              - mediatek,mt8196-efuse
-              - mediatek,mt8188-efuse
-          - const: mediatek,mt8186-efuse
-      - const: mediatek,mt8186-efuse
-[...]
+---
+base-commit: 759dfc7d04bab1b0b86113f1164dc1fec192b859
+change-id: 20250728-airoha_ppe_foe_get_entry_locked-70e4ebbee984
 
-I'll address it in v3.
-
-Thanks!
-
-Laura
-
->>        - const: mediatek,mt8186-efuse
->> -- 
->> 2.39.5
->>
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
