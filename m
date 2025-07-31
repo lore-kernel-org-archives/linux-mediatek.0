@@ -4,101 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74918C83F17
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Jul 2025 04:44:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6050AC83F17
+	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Jul 2025 07:28:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xJ8iu3jZoiRrtYFwj61oSYpGXm8vhe4hBIcesrlQsFI=; b=4cjrtLGxqgL5I9LENSY16ojwEM
-	PICaIThmHMH0//ZMQuehRQ8Sdn3w7oFN21LcJSM2Vj9I9i6kHaKU07aRrCUssMNC2Pww295tNJ5MB
-	5juceZkBdtVL9BviI4RiGCB/1/FN0TtWG8w0i8LmVADFYgaNAbaFMJn2Pg4xONrqQh56rji4yNc0F
-	vuE2ibZZRsCPBBxVj2eTQU8HNLbL1MgnXa6d/JEJFCHU+1wG9syk8/Z6PvcUkis79sBvOlnSLD6Ci
-	Bt+TJQxFRjj71u6VRZDhYNnqMPZ8zTQUHrxVBY1AR0OlVuUG+Ng6QwHgXr6Lo1Z7fR2UdNzRHQ+mK
-	HbvMBrMw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=nRs/hDxYY28k1vGh70q5IQsg9RAMHgUy9QeIIWRPDBw=; b=3yGUhg9m5omayu
+	SW6mAgaYylNbjKJbFm4pLXakRaC2oFXCcPwR95VJ5gHJt+0EsWAisI0XC4oeKnSX9u2x/plrl9Nyz
+	QP41aToZacH/FIIgzURZxczD3jQEz4uHu0jQADtVk3H05OeZtD2eqsJlFCYbCPhDhm/uK1MKjLu+8
+	oVUt9ad65oqyKsYQZ5CshC0EZXreI1Z8s9uO9JILvcS/o7QaXekK97/XlxfTdGzMs5s12OX/z//XR
+	wphqx93AvBWxBZB3cMG78uokGNiN6mUO8gcc9VZ3va8juN7mAzFDCLl3BdzXz7BkjNnfc/WROiecT
+	36/j+W5p1TDUqw4FcBRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uhL9s-00000002tV8-0i5o;
-	Thu, 31 Jul 2025 04:44:48 +0000
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	id 1uhNia-000000033d2-2lbE;
+	Thu, 31 Jul 2025 07:28:48 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uhL9p-00000002tT7-0SNj
-	for linux-mediatek@lists.infradead.org;
-	Thu, 31 Jul 2025 04:44:46 +0000
-Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 56V2gN3Y031797;
-	Thu, 31 Jul 2025 04:44:38 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
-	:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=
-	corp-2025-04-25; bh=xJ8iu3jZoiRrtYFwj61oSYpGXm8vhe4hBIcesrlQsFI=; b=
-	NNqs/Xf8Jell3KNpCRRlUw4zf2VQcyz/4tgqCHUHjRY7ynvfBlyveXxvYbcKWgBI
-	M5AUxWl/yZaxQhIUG3FWr3WiWS1BbsEEUoQZnE5lzNg+h6tQ8a5kaXL2DE8AgecC
-	7Zk19BCqbJr64PsocaJYmQDeQupbmrYvZh0oymUBOkr2VITWHqqcl2Rv44oDc3gj
-	wFjELXQ4rv4x73Yc2PWdikb3Cfa3hHY5w5BK3i4CthQCgtA9TFV6J24jBWV2qdbj
-	RRbHun1JJQB1NoX26gxQaoNTxbuCAxAs3wOd6Uw8EXkkFGURYWyngCJJcp5mfryr
-	vQ8+gtBOjH6c+6wzTAZm8g==
-Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta01.appoci.oracle.com [130.35.100.223])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 484q4yk9n5-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Thu, 31 Jul 2025 04:44:38 +0000 (GMT)
-Received: from pps.filterd (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 56V4eJOg016759;
-	Thu, 31 Jul 2025 04:44:37 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
-	by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 484nfjb2uv-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Thu, 31 Jul 2025 04:44:37 +0000
-Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 56V4iX49035411;
-	Thu, 31 Jul 2025 04:44:36 GMT
-Received: from ca-mkp2.ca.oracle.com.com (mpeterse-ol9.allregionaliads.osdevelopmeniad.oraclevcn.com [100.100.251.135])
-	by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id 484nfjb2tg-8;
-	Thu, 31 Jul 2025 04:44:36 +0000
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-To: linux-scsi@vger.kernel.org, peter.wang@mediatek.com
-Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
-        wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
-        chun-hung.wu@mediatek.com, alice.chao@mediatek.com,
-        cc.chou@mediatek.com, chaotian.jing@mediatek.com,
-        jiajie.hao@mediatek.com, yi-fan.peng@mediatek.com,
-        qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
-        eddie.huang@mediatek.com, naomi.chu@mediatek.com, ed.tsai@mediatek.com,
-        bvanassche@acm.org
-Subject: Re: [PATCH v4 0/9] ufs: host: mediatek: Provide features and fixes in MediaTek platforms
-Date: Thu, 31 Jul 2025 00:44:26 -0400
-Message-ID: <175375581133.455613.799244421685167637.b4-ty@oracle.com>
-X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20250722030841.1998783-1-peter.wang@mediatek.com>
-References: <20250722030841.1998783-1-peter.wang@mediatek.com>
+	id 1uhNg5-000000033S5-1F5f;
+	Thu, 31 Jul 2025 07:26:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1753946771;
+	bh=xLDZ92NZiZGURqy1KihB6GBNQMXzkiyFkWW7HUN2XkQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=dBBNP2PxvhWmV9tpMlbU84kK3XubH6TLRhjv3KHB1DpnXq+DRkLRBkGGApHzeBGF2
+	 sTEhUbXPFchJLu56c0oKNH6eAp4lSM50LfL+wypuKg4YRYAmlUwR7GD4GrFWyoO1fV
+	 4NRMY9UCGpOtURK0ZfneIbMtJTHaUlfvUi1tqx0YdWwfU+Jbzl9EMs8EG4qYNR7fpf
+	 IOWLvNw6VvuUD1eo+L8SiMOFfou3UdyNaMffn6NYbcyrUQMB6JZ2X2QeLWdE1p7U/I
+	 RunxdJii1uHH/gX5fM0AbdaQ9HsHcyWOCplLnb/Nosqqs7A5H/Efph6l+u25nxcgdE
+	 6u7dq3oTnRlww==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5136617E088C;
+	Thu, 31 Jul 2025 09:26:10 +0200 (CEST)
+Message-ID: <10fd2758-4ad2-4f5e-97d7-0dcdeefd15c0@collabora.com>
+Date: Thu, 31 Jul 2025 09:26:09 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-07-31_01,2025-07-30_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0 spamscore=0 mlxscore=0
- phishscore=0 suspectscore=0 mlxlogscore=999 adultscore=0 malwarescore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2505160000
- definitions=main-2507310030
-X-Proofpoint-GUID: 6FEtWkgKqFa5YhMAPJA5i4fVrs5NV5eG
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzMxMDAzMCBTYWx0ZWRfX30e6SzO6ITaZ
- QuXAP1UZ+llrR0aD37/KMlwVBUMIr+1HkPDKrx2ou3qqtHREC0SDeaqfXgD6rZ9o0DPmhUM+CFt
- 4P3Au1Sn7H/uHTFarorzuIsgymSwwFqNAFsFK0g047PYMwBDC4Qcp1IvAT0i5d1Wtt8UM/4IVmk
- O066788j2OtQ8v1WGhBAMQbE6r6RU0RUa/2DHeo+eRLZjCJnTOzKDDn2WQZHakdGwnFvut07FGi
- C3YXhcT6b82PFBffUKu5oZGzGyQnr1F7Mui0xKyvawlgV1hJklJOJlM2Y/mWTgghb1fjgx/ma/b
- 4v1ZY/0p4I2NKL4hmxQ9qGfXgurtd0Pu0wbD7WYO0whm6KUKG/ISUATzK1OFpNQnPPEvdFxEye9
- Da6Epr+11fD6CyCdDz+nhr+7gE9EBSiwlGfd89QXGEyfYvyrC6O851m12apJ8jNGnno63fSj
-X-Authority-Analysis: v=2.4 cv=ZMjXmW7b c=1 sm=1 tr=0 ts=688af4b6 b=1 cx=c_pps
- a=zPCbziy225d3KhSqZt3L1A==:117 a=zPCbziy225d3KhSqZt3L1A==:17
- a=IkcTkHD0fZMA:10 a=Wb1JkmetP80A:10 a=VwQbUJbxAAAA:8 a=mpaa-ttXAAAA:8
- a=M1Cv4AyAfq6yeDsx1bgA:9 a=QEXdDO2ut3YA:10 cc=ntf awl=host:12070
-X-Proofpoint-ORIG-GUID: 6FEtWkgKqFa5YhMAPJA5i4fVrs5NV5eG
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 9/9] dt-bindings: nvmem: mediatek: efuse: Add support
+ for MT8196
+To: Laura Nao <laura.nao@collabora.com>, srini@kernel.org, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, rafael@kernel.org,
+ daniel.lezcano@linaro.org, rui.zhang@intel.com, lukasz.luba@arm.com,
+ matthias.bgg@gmail.com
+References: <20250730152128.311109-1-laura.nao@collabora.com>
+ <20250730152128.311109-10-laura.nao@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250730152128.311109-10-laura.nao@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250730_214445_265514_6BD12B67 
-X-CRM114-Status: UNSURE (   9.53  )
+X-CRM114-CacheID: sfid-20250731_002613_495717_84AE21A5 
+X-CRM114-Status: UNSURE (   5.51  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -111,49 +75,17 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: andrew-ct.chen@mediatek.com, kernel@collabora.com, nfraprado@collabora.com, arnd@arndb.de, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, u.kleine-koenig@baylibre.com, linux-arm-kernel@lists.infradead.org, wenst@chromium.org, linux-mediatek@lists.infradead.org, bchihi@baylibre.com, colin.i.king@gmail.com, lala.lin@mediatek.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 22 Jul 2025 11:07:15 +0800, peter.wang@mediatek.com wrote:
-
-> This series fixes some defects and provide features in MediaTek UFS drivers.
+Il 30/07/25 17:21, Laura Nao ha scritto:
+> The MT8196 eFuse layout is compatible with MT8186 and shares the same
+> decoding scheme for the gpu-speedbin cell.
 > 
-> Changes since v3:
-> 1. Fix comment message in patch:
->   ufs: host: mediatek: Simplify boolean conversion
-> 
-> Peter Wang (7):
->   ufs: host: mediatek: Simplify boolean conversion
->   ufs: host: mediatek: Change ref-clk timeout policy
->   ufs: host: mediatek: Handle broken RTC based on DTS setting
->   ufs: host: mediatek: Set IRQ affinity policy for MCQ mode
->   ufs: host: mediatek: Add clock scaling query function
->   ufs: host: mediatek: Support clock scaling with Vcore binding
->   ufs: host: mediatek: Support FDE (AES) clock scaling
-> 
-> [...]
+> Signed-off-by: Laura Nao <laura.nao@collabora.com>
 
-Applied to 6.17/scsi-queue, thanks!
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-[1/9] ufs: host: mediatek: Simplify boolean conversion
-      https://git.kernel.org/mkp/scsi/c/262893939604
-[2/9] ufs: host: mediatek: Add DDR_EN setting
-      https://git.kernel.org/mkp/scsi/c/a84a9ba7888f
-[3/9] ufs: host: mediatek: Change ref-clk timeout policy
-      https://git.kernel.org/mkp/scsi/c/16b30c7a4c56
-[4/9] ufs: host: mediatek: Handle broken RTC based on DTS setting
-      https://git.kernel.org/mkp/scsi/c/a44ff97f895b
-[5/9] ufs: host: mediatek: Set IRQ affinity policy for MCQ mode
-      https://git.kernel.org/mkp/scsi/c/66e26a4b8a77
-[6/9] ufs: host: mediatek: Add more UFSCHI hardware versions
-      https://git.kernel.org/mkp/scsi/c/7996746394df
-[7/9] ufs: host: mediatek: Add clock scaling query function
-      https://git.kernel.org/mkp/scsi/c/ff40f31216ff
-[8/9] ufs: host: mediatek: Support clock scaling with Vcore binding
-      https://git.kernel.org/mkp/scsi/c/31a20e9f7c76
-[9/9] ufs: host: mediatek: Support FDE (AES) clock scaling
-      https://git.kernel.org/mkp/scsi/c/5e5976f5242d
 
--- 
-Martin K. Petersen	Oracle Linux Engineering
 
