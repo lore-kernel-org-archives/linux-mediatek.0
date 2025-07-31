@@ -4,86 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F7D8C83F17
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Jul 2025 04:07:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E633BC83F17
+	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Jul 2025 04:10:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VYfZznB0Bwd01EwuH/VCVY8bkI+jlyZ0D2t//XUPrtU=; b=QKKER8Ptu4EcIA6+kfaw3eetYv
-	s4MMTB8M3z8rhfYNO0SdrBBMcjTmT23cbH/P/MCqpADNSj5nSuGqT0EHg02j9E9KgEwa4YW0YXuLA
-	BpNMLs+2gZixF4dBAWw+ZVcLqg51rrVadB46LEbObAIJMefAeUpfn6z4dXZPh84bVckKagIlY2PEv
-	O/XsdNXZaOIz9V1BgOBxiRdmyJzAMtnen3+vTuQJ3E8JQGExzETmGta0O1wlQLvaziHI8OyLJklWo
-	rADb9EFPqi88mAUmVQ2x4gb5Hmsf4EQDeRnnQ5fNja/reFoEcxEEqPpAafI0Zl2wZlU2LthLveq2T
-	JKSGDGfg==;
+	bh=l1REz7lxNqCP0vRE/ucDmbyORYxFecR0vhh1/DbBdVo=; b=o+5MdYJbIBr991A28EO7q64ty1
+	Xr3xsHOMWR9XWnQXJktFJMh9IziZqrzhQi04jb1DFTlJ50Z5Rtjhr5NajN/Wua8IDqKcjNG19co5A
+	vVGadvt5m47dINSip45yfpyXojTKXC1z4LEX0eVOSTul0JSDgU9XTRh5dcTo+KcQeWDWHcIbVm2zl
+	3n52D8q+8kgUAd7ITnV37/ZF+G7MaxP+n78cT3cc6ykrHi2m81zmhrp7iaYP5FPN55/wf1F5wD3Yu
+	a20V/yokdQGxIXFM9HYj5vhCBEfMG7gkpbj9uEIwpqtCO2Ugg4TQc5E76E56Z7cnfOqne++52tIHK
+	S5vY2SIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uhKZV-00000002rSZ-22Pa;
-	Thu, 31 Jul 2025 04:07:13 +0000
-Received: from mail-ua1-x92c.google.com ([2607:f8b0:4864:20::92c])
+	id 1uhKcB-00000002rcR-3NUT;
+	Thu, 31 Jul 2025 04:09:59 +0000
+Received: from mail-oa1-x32.google.com ([2001:4860:4864:20::32])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uhKZS-00000002rRs-1zdE
+	id 1uhKc8-00000002rbW-3AS1
 	for linux-mediatek@lists.infradead.org;
-	Thu, 31 Jul 2025 04:07:11 +0000
-Received: by mail-ua1-x92c.google.com with SMTP id a1e0cc1a2514c-87f234ba1abso119017241.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 30 Jul 2025 21:07:10 -0700 (PDT)
+	Thu, 31 Jul 2025 04:09:57 +0000
+Received: by mail-oa1-x32.google.com with SMTP id 586e51a60fabf-2ffaa884a44so273193fac.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 30 Jul 2025 21:09:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1753934829; x=1754539629; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1753934995; x=1754539795; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=VYfZznB0Bwd01EwuH/VCVY8bkI+jlyZ0D2t//XUPrtU=;
-        b=ZmHVU0S13qktS0QimOqNR0XId+PKPomLQaG/1VNIrYZ1/dEPJrfc/thSUfJl3UDhlq
-         snFUyKNUykjNlHorwNFfm6gxbMhSQ7At8nzEqIJXZPMDFPs2RlKMhpZsiD2JbdAjqPKX
-         9t2nnKtFaHU5n5kGJg7ZxEB//JsmGQhOl963c=
+        bh=l1REz7lxNqCP0vRE/ucDmbyORYxFecR0vhh1/DbBdVo=;
+        b=Z91X2dTM0KjY7uFdiX1x6aETQDtK1vy0bzLpXgdpCR7igabDK0gy4VilKLGyS+vWvg
+         HyY0QrWwDplR88FzlY5Id1RcQrACHzTIzv3srxqzUVPhGlUdTZAwmPDWJ7i5b9iprFOw
+         lpsFg/vYpMMIRPAsF7/snYI/yJ/oljBuE1nUY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1753934829; x=1754539629;
+        d=1e100.net; s=20230601; t=1753934995; x=1754539795;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=VYfZznB0Bwd01EwuH/VCVY8bkI+jlyZ0D2t//XUPrtU=;
-        b=Z7UyxfJkE4Dge9P+T2q5gtbQxSaRsSUf/AuyNr54W+zI8oBjt3iAyeA5u1BknxMNbe
-         nk1qFhO7zo3EjuLDJzq4XCPiFGo+AatpIKG8HfhPMIGUOaP7JtVDCWfOat6XgI5adP5D
-         iditN6vwAXXZqVHeTJybaE2cZq2aGH/cadnmqO1gAHCPVwznWS6cUKelZl+gZ0PxgIIr
-         4pt0MbMsrNmc/fpM2rGDbxlpaRBOl4DWsI+A6a0dVEysJLx5gs6FW/VdFW/y2LO2YnpG
-         7P48Dst26qMrsdSEt1WPsF2gQii5EUoi4sgoR75hwwX//NHh+bfPpq3qxuW1LPIMIUfm
-         qOQw==
-X-Forwarded-Encrypted: i=1; AJvYcCWXi0uao4Z6XXG5PazdRPYDdlAs2ToJPNTK+Xn0AJQTs2dpRbDfaVTm4MWkQG0KRdlN71SlEp+i2uROFgJi6w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzFOrlj12vzisrC8mDy7OyTwSLVkZC/gnCmj2uU2wSMR0PGe5qi
-	ImH0lpOGiHmp7fU08T+fuxgsaufGx44mN6iJz+u1xuq6HhVPtzjIQqfz/P1rkTUWltW9guv1JXq
-	gF/U=
-X-Gm-Gg: ASbGnctKLHAsxc9hxdQ9XMKD9EWT5htbrHRRxZ3+s07wfc4rW2YGtl4y169AKP56rr3
-	ONlGPf+8pwSf+ixYGvtC+TbetyjX6O5VzRA2NW7WmcxVNCsEkW2XXBj4OLHKj3mEIOI/jfwlTBw
-	qrXE8rpUHlxFtnr/natLgf4RSA7LSzy4vrQ/ed9zOgEzQOLfdNII7zAbdSG5BZsWalqf1c+JzCL
-	0aTvD96ej5iZNEWM5zkY4V10Q+AYu686RJf1Zc9wYztxtGSmJoutiOuX/xMUcOLpzzWYwIL0KSu
-	ahvXDvrn/Di5n8b2wauk5bAUQXx0/vMyZ6vxnmHfs3MZ9O7+qdCvSCF9SxoSOui4br6RB+wjnfX
-	WFpUdlj8X+xjDHG/M938q3V0HXvX4RTjuDKkiqxgCDiVyuLtL1A62TK8mue7m3AnQ0wZh
-X-Google-Smtp-Source: AGHT+IE0AAswnI103ZvmjWhpzLjQ0/VpfEORZxR0PbqueFDQNozEpwueuoxEVQT1XtNFLOaieyeOYA==
-X-Received: by 2002:a05:6102:1515:b0:4e9:8f71:bd6e with SMTP id ada2fe7eead31-4fbe7ad3035mr4387157137.0.1753934829343;
-        Wed, 30 Jul 2025 21:07:09 -0700 (PDT)
-Received: from mail-ua1-f48.google.com (mail-ua1-f48.google.com. [209.85.222.48])
-        by smtp.gmail.com with ESMTPSA id a1e0cc1a2514c-88d8f3257d7sm204658241.2.2025.07.30.21.07.09
+        bh=l1REz7lxNqCP0vRE/ucDmbyORYxFecR0vhh1/DbBdVo=;
+        b=ukYrE8rIUMt7+jq4yVHoK2k18DA1XEo+xGxq7/B8WSJ9Sihzi7zG31l5NtY8PexiEP
+         LyClqPgDer+aWcJuBTucSuU87unyqNWs6glrgIMWeR6lIaCCkb6t4hlDBLYCio9eDX+Z
+         JF5a0+R3bYPYjt5S+DD2lRJdbUrNUnvHKTS6UNXMTAZSrcZByIS3KxlLxSp/yWQZEK/B
+         aIND0rSCTVUvvrmwTnJMRXjYGxEyXR1AavholCpsjlTqBORyvfASoRckqsFXcAYxHNwu
+         Vo/hPJciDHwdLa2jjhz4FPDCsT0/MomVcf/cvFRppt3LR+/sKytPf8O7AfN+pCzAuIig
+         AIxg==
+X-Forwarded-Encrypted: i=1; AJvYcCW1e82ucPOg7mwZjDwTwig/r++XDw/ZRIGB9zQ7KbNAvJx6mZOa+vzP3ZYP1YLufxP7v0T7rlY0e2LxWOEEdQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxAn4YV1njDMZdXdn1ecD1uwt1P/WND8iiikiSEULWmOud10C+2
+	fkaaRF1RMq2j8UPQUq4cydxdEBA7GcteRH38MjTZ5Hs1uuXYM2rgKrL9lOb6xpedNW7rtp/HJpT
+	//lk=
+X-Gm-Gg: ASbGnct5yVt2tLohEq1lAGVzCrrnaW0XqOHM0FRYmpHfouThIDJNDR7Qoq1fjHK4VaQ
+	K4eWvD0v9YQgWStp6wJKwn7FcrVtR+U9kzImtYNQoRHonVTY70p+9xrDx/atnvhHySZChpgiZDy
+	PHwEWd8256qvO5YjDCQxp5mTxDzQed4vrGwoX+qQE3GK26va6YDfoCLAqim7FHBr3gW5fz0WkRi
+	9R3b7DYrN9KHBgrfRXOCLw6/O1CbACaf7YsrAF/1yQsyqFsZRk9FNmWxTHpokcH2iAsDGdy2f0W
+	bnOzQ49xZP+qJgkOJPV3OMmZtx3b9bJ0p689t+pzA/fUh+0EAnSLhfbyVd+utJtIVXHCnL1QSFU
+	+agi/hDqkbx4rh2mE8RAYDzC14hWaAn8M9iAoeZYoS2dg2N6LE1o0J61EsFtKSw==
+X-Google-Smtp-Source: AGHT+IGvH+IaOsA0/DEZs2ya2Qiubc3JDf7rHZZrgVXNGve63nR0f8Ilobi2Qp8pelktjgQT22GZ6w==
+X-Received: by 2002:a05:6870:7316:b0:2ff:d18b:5b39 with SMTP id 586e51a60fabf-307aa51358cmr359687fac.6.1753934995118;
+        Wed, 30 Jul 2025 21:09:55 -0700 (PDT)
+Received: from mail-oi1-f176.google.com (mail-oi1-f176.google.com. [209.85.167.176])
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-307a7391f84sm203982fac.20.2025.07.30.21.09.54
         for <linux-mediatek@lists.infradead.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 30 Jul 2025 21:07:09 -0700 (PDT)
-Received: by mail-ua1-f48.google.com with SMTP id a1e0cc1a2514c-87f234ba1abso119014241.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 30 Jul 2025 21:07:09 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCWYnmH5OusytVHE8Cx1LfXpA8miUCwTJB2tu2bc3mop9tGZMBfjhoPWMuBSM7Ypc6z/9mQaMqT49kN7Xmjn2A==@lists.infradead.org
-X-Received: by 2002:a05:6102:fa0:b0:4e5:abd3:626e with SMTP id
- ada2fe7eead31-4fbe87eaa8cmr4099520137.24.1753934828784; Wed, 30 Jul 2025
- 21:07:08 -0700 (PDT)
+        Wed, 30 Jul 2025 21:09:54 -0700 (PDT)
+Received: by mail-oi1-f176.google.com with SMTP id 5614622812f47-432ae370f7dso448533b6e.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 30 Jul 2025 21:09:54 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCV019HdlWkIv5KlrqyjG77z+AExo8EpTfTg9rdbjjjCBKYQtkCV8T4Jg1QpV0XzZlV+yBZjmbY/dwuDX1sPdw==@lists.infradead.org
+X-Received: by 2002:a05:6102:5122:b0:4e7:be09:df07 with SMTP id
+ ada2fe7eead31-4fc100ad7d7mr227087137.12.1753934630495; Wed, 30 Jul 2025
+ 21:03:50 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250730152128.311109-1-laura.nao@collabora.com> <20250730152128.311109-6-laura.nao@collabora.com>
-In-Reply-To: <20250730152128.311109-6-laura.nao@collabora.com>
+References: <20250730152128.311109-1-laura.nao@collabora.com> <20250730152128.311109-5-laura.nao@collabora.com>
+In-Reply-To: <20250730152128.311109-5-laura.nao@collabora.com>
 From: Fei Shao <fshao@chromium.org>
-Date: Thu, 31 Jul 2025 12:06:32 +0800
-X-Gmail-Original-Message-ID: <CAC=S1nj0F-k37-v-gp5A4p3B_R9Q8exM+STb6vLhJ46=oQV6Eg@mail.gmail.com>
-X-Gm-Features: Ac12FXzu20jT5Yk4GmMtSAZzZKsOMgulvP8pOesv2GOi_pI-RDe1qMoPgLQDq0Q
-Message-ID: <CAC=S1nj0F-k37-v-gp5A4p3B_R9Q8exM+STb6vLhJ46=oQV6Eg@mail.gmail.com>
-Subject: Re: [PATCH v2 5/9] thermal/drivers/mediatek/lvts: Add
- lvts_temp_to_raw variant
+Date: Thu, 31 Jul 2025 12:03:14 +0800
+X-Gmail-Original-Message-ID: <CAC=S1ngvS9z-KOZXeV4kLiW_pDx2F+3AOMcTokaq9O=-E4Pneg@mail.gmail.com>
+X-Gm-Features: Ac12FXze0WWvW6KolXpxHVZ5mr5bsteDEMGk6n5CvaPH_JsjnG6BTJ_hncHj4Ic
+Message-ID: <CAC=S1ngvS9z-KOZXeV4kLiW_pDx2F+3AOMcTokaq9O=-E4Pneg@mail.gmail.com>
+Subject: Re: [PATCH v2 4/9] thermal: mediatek: lvts: Add platform ops to
+ support alternative conversion logic
 To: Laura Nao <laura.nao@collabora.com>
 Cc: srini@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
 	rafael@kernel.org, daniel.lezcano@linaro.org, rui.zhang@intel.com, 
@@ -98,9 +98,8 @@ Cc: srini@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250730_210710_513956_72FAA12A 
-X-CRM114-Status: UNSURE (   9.30  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250730_210956_796515_D9B78D97 
+X-CRM114-Status: GOOD (  15.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,19 +114,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 30, 2025 at 11:37=E2=80=AFPM Laura Nao <laura.nao@collabora.com=
+On Wed, Jul 30, 2025 at 11:35=E2=80=AFPM Laura Nao <laura.nao@collabora.com=
 > wrote:
 >
-> MT8196/MT6991 require a different version of lvts_temp_to_raw(),
-> specifically the multiplicative inverse of the existing implementation.
-> Introduce a variant of the function with inverted calculation logic to
-> match this requirement.
+> Introduce lvts_platform_ops struct to support SoC-specific versions of
+> lvts_raw_to_temp() and lvts_temp_to_raw() conversion functions.
 >
-> This ensures accurate raw value generation for temperature
-> thresholds, avoiding spurious thermal interrupts or unintended hardware
-> resets on MT8196/MT6991.
+> This is in preparation for supporting SoCs like MT8196/MT6991, which
+> require a different lvts_temp_to_raw() implementation.
 >
 > Signed-off-by: Laura Nao <laura.nao@collabora.com>
+> ---
+>  drivers/thermal/mediatek/lvts_thermal.c | 46 +++++++++++++++++++++++--
+>  1 file changed, 43 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/me=
+diatek/lvts_thermal.c
+> index 8398af657ba2..6e4a35ecaf34 100644
+> --- a/drivers/thermal/mediatek/lvts_thermal.c
+> +++ b/drivers/thermal/mediatek/lvts_thermal.c
+> @@ -125,8 +125,14 @@ struct lvts_ctrl_data {
+>                         continue; \
+>                 else
+>
+> +struct lvts_platform_ops {
+> +       int (*lvts_raw_to_temp)(u32 raw_temp, int temp_factor);
+> +       u32 (*lvts_temp_to_raw)(int temperature, int temp_factor);
+> +};
+> +
+>  struct lvts_data {
+>         const struct lvts_ctrl_data *lvts_ctrl;
+> +       struct lvts_platform_ops ops;
 
+nit: I think this can also be a const struct, since ops are all
+initialized in the platform data and never change.
+
+Anyway, the changes look good IMO, so
 Reviewed-by: Fei Shao <fshao@chromium.org>
+
+>         const u32 *conn_cmd;
+>         const u32 *init_cmd;
+>         int num_cal_offsets;
+
+[...]
 
