@@ -4,69 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEA16C87FCB
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Aug 2025 14:02:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74AF8C87FCA
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Aug 2025 15:28:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KYl6gHCrVR/A+/kiIdOxnWNF3Rfy3eS4XK9j6S8445s=; b=B0h+DxqU51rKfjlBDZLIoCKHBC
-	wKf8gwummTdd4jo47qiP3m2pc56cSqPLjcCmLgq8N5I3aQIdis0vkinuVPvDxGTAjeCs1ksXqDvzp
-	kCwC5xIR6x3mXhzy7t3tO6mLCjRVuJQIzpfqLP9LOgvCve1DeLUjUA/SI0dtCEdWumJDEhfL/SFaK
-	WebrQ2NZYBmMzUfZGpFGP0JUNFcLwxcHPK1Hv/NkXTGU4eyNvczXAbxtuV5AAT0WQuc3ethM3zYhF
-	/pVBkUpQR0w0QmjksxwtCthkFWOPCRa3xbx5J75qaoP7xLBC1H8OYNF+gIKRUP1p8DwwfgxNDNyH+
-	ixoArVqg==;
+	bh=ZqfomFmrTA/uC7kqqM+3HZpOgzPFlpCtuZaJurBX7aU=; b=C5ph5e7ljeugJcnWZ0uTLk23S6
+	NeCcQWAchZCQdW5kEhWv3Zq8aSBCJC399wkbySSpfKWvy2DNXrzrYIke/0xNO7TyNx2kBz0FPTfH7
+	SIvS6+Y6EqaJAWt9tk10H7Pz/i7pUIusfwd9TNowX41iQfh9xIxI2f/egRrlTRLT5EgagRlMGmQoT
+	QUX+BAmoDP21sAbKvUcEFMs0dn02p55J/0s6nBqruhfM4U+uySYjnwlG6K9cTW0zAU77ed0ICYW6s
+	nAjTOZh0/zwx6LwjQz1eS1tyJ2L4sEB3s+7FSUOYlxqtwng3BcSyyJbo1EzO6y72b63OEoNZkWg36
+	b8da+bbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uhqKw-00000006AeS-2soF;
-	Fri, 01 Aug 2025 14:02:18 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uhrg4-00000006LxA-3xSB;
+	Fri, 01 Aug 2025 15:28:12 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uhqFz-00000006A0u-1MTq;
-	Fri, 01 Aug 2025 13:57:12 +0000
+	id 1uhrdT-00000006Lj7-3SCE;
+	Fri, 01 Aug 2025 15:25:33 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B08785C6770;
-	Fri,  1 Aug 2025 13:57:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3EC78C4CEE7;
-	Fri,  1 Aug 2025 13:57:10 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 2420DA555E0;
+	Fri,  1 Aug 2025 15:25:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9BA5EC4CEE7;
+	Fri,  1 Aug 2025 15:25:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1754056630;
-	bh=ODFfb+QAAqr6E6So/c4wBLjAbythTMbcmohhbIRP7Z8=;
+	s=k20201202; t=1754061930;
+	bh=UV8FDHpbNM9aWBAqfMgYeTlU8Uc7fbwEdxNlwwotWow=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=HYVLna3I2WaENWcmwrOtQHlnHx9n5kSO61/R3IwON8bfkhKmTH5gg/W51WKGenC6K
-	 ftQW4jUfeVAezxjBp/tQ7NzkUv5moGiHVAXVR4J9jTWPOM5zUjtTg02uicu7kR01fP
-	 ERq8Tw2/2u0crORVkjSpEhy+oe/bTUujY2qtq/SUWsiO+4Xd0anTZXK5F+B2g6X0mD
-	 Zxx1SciqjzRF5V2A4rRKT9G5ICLCfr/yg+U4N5B0JzyyrUpSqCFJYT4ON/zDMjEO0M
-	 JwYPSGKiowhLEUtZWPO7atEaRjk2FhNhs3lu+4rMkVDgR/lkVY5NplpQzBQG1quCFJ
-	 woym3/NjsyI3g==
-Date: Fri, 1 Aug 2025 08:57:09 -0500
-From: Rob Herring <robh@kernel.org>
-To: Laura Nao <laura.nao@collabora.com>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, p.zabel@pengutronix.de,
-	richardcochran@gmail.com, guangjie.song@mediatek.com,
-	wenst@chromium.org, linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	kernel@collabora.com,
-	=?iso-8859-1?Q?N=EDcolas_F_=2E_R_=2E_A_=2E?= Prado <nfraprado@collabora.com>
-Subject: Re: [PATCH v3 09/27] dt-bindings: clock: mediatek: Describe MT8196
- clock controllers
-Message-ID: <20250801135604.GA3045005-robh@kernel.org>
-References: <20250730105653.64910-1-laura.nao@collabora.com>
- <20250730105653.64910-10-laura.nao@collabora.com>
+	b=qjPPLucDOIqxae35F+/Af8liJe2JeEKw8JpYVIv9VJ+GahNyBO8QmPfyIUDMhctHN
+	 VltQmkJ0og7V8GWxQTxrUS5OhH0URqUoMh71In1rnlhmxkN9x8nFXBencTZz9aYdWa
+	 KHuH07SpDf85QiHsMBmJxxuhehcE1J9JNIMwJAdUbIo/zTUqo83PXOI7ahaCgoC25g
+	 ThHR+yxRGcvMAv5nLSS5rKTEHSrEi+1U2fs3KSkmg0qEmgYE/P+oOFC/pDh1xUuQ92
+	 XKMaYyi5+jCKFde9jTUTT6zIFhOaAsfmxhP70jGynyrM12F9N82mxx9+YTkidhzoM6
+	 huykH2ukqHX3A==
+Date: Fri, 1 Aug 2025 16:25:23 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Subject: Re: [RFC RESEND PATCH 2/2] ASoC: airoha: Add AFE driver for Airoha
+ AN7581
+Message-ID: <7068c875-189e-428c-bf29-4c58052e409f@sirena.org.uk>
+References: <20250801091812.4866-1-ansuelsmth@gmail.com>
+ <20250801091812.4866-3-ansuelsmth@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="u4i6tmdHxjn6/iCa"
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250730105653.64910-10-laura.nao@collabora.com>
+In-Reply-To: <20250801091812.4866-3-ansuelsmth@gmail.com>
+X-Cookie: Who messed with my anti-paranoia shot?
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250801_065711_442053_6BD1F28D 
-X-CRM114-Status: GOOD (  17.56  )
+X-CRM114-CacheID: sfid-20250801_082531_990648_274C1BFE 
+X-CRM114-Status: GOOD (  13.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,100 +69,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Julien Massot <julien.massot@collabora.com>, Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, Liam Girdwood <lgirdwood@gmail.com>, parkeryang <Parker.Yang@mediatek.com>, Takashi Iwai <tiwai@suse.com>, YR Yang <yr.yang@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>, Charles Keepax <ckeepax@opensource.cirrus.com>, =?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>, linux-sound@vger.kernel.org, linux-mediatek@lists.infradead.org, Zhang Yi <zhangyi@everest-semi.com>, Matthias Brugger <matthias.bgg@gmail.com>, Jaroslav Kysela <perex@perex.cz>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Tang Bin <tangbin@cmss.chinamobile.com>, Alexandre Mergnat <amergnat@baylibre.com>, linux-kernel@vger.kernel.org, "Dr. David Alan Gilbert" <linux@treblig.org>, Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@baylibre.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 30, 2025 at 12:56:35PM +0200, Laura Nao wrote:
-> Add new binding documentation for system clocks, functional clocks and
-> PEXTP0/1 and UFS reset controllers on MediaTek MT8196.
-> 
-> Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> Co-developed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Signed-off-by: Laura Nao <laura.nao@collabora.com>
+
+--u4i6tmdHxjn6/iCa
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Aug 01, 2025 at 11:18:09AM +0200, Christian Marangi wrote:
+> Add support for the Sound system present on Airoha AN7581 SoC. This is
+> based on the mediatek AFE drivers.
+>=20
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 > ---
->  .../bindings/clock/mediatek,mt8196-clock.yaml |  86 ++
->  .../clock/mediatek,mt8196-sys-clock.yaml      |  81 ++
->  .../dt-bindings/clock/mediatek,mt8196-clock.h | 802 ++++++++++++++++++
->  .../reset/mediatek,mt8196-resets.h            |  26 +
->  4 files changed, 995 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt8196-clock.yaml
->  create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt8196-sys-clock.yaml
->  create mode 100644 include/dt-bindings/clock/mediatek,mt8196-clock.h
->  create mode 100644 include/dt-bindings/reset/mediatek,mt8196-resets.h
-> 
-> diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt8196-clock.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt8196-clock.yaml
-> new file mode 100644
-> index 000000000000..03ee0dff464b
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/clock/mediatek,mt8196-clock.yaml
-> @@ -0,0 +1,86 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/clock/mediatek,mt8196-clock.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek Functional Clock Controller for MT8196
-> +
-> +maintainers:
-> +  - Guangjie Song <guangjie.song@mediatek.com>
-> +  - Laura Nao <laura.nao@collabora.com>
-> +
-> +description: |
-> +  The clock architecture in MediaTek SoCs is structured like below:
-> +  PLLs -->
-> +          dividers -->
-> +                      muxes
-> +                           -->
-> +                              clock gate
-> +
-> +  The device nodes provide clock gate control in different IP blocks.
-> +
-> +properties:
-> +  compatible:
-> +    items:
-> +      - enum:
-> +          - mediatek,mt8196-imp-iic-wrap-c
-> +          - mediatek,mt8196-imp-iic-wrap-e
-> +          - mediatek,mt8196-imp-iic-wrap-n
-> +          - mediatek,mt8196-imp-iic-wrap-w
-> +          - mediatek,mt8196-mdpsys0
-> +          - mediatek,mt8196-mdpsys1
-> +          - mediatek,mt8196-pericfg-ao
-> +          - mediatek,mt8196-pextp0cfg-ao
-> +          - mediatek,mt8196-pextp1cfg-ao
-> +          - mediatek,mt8196-ufscfg-ao
-> +          - mediatek,mt8196-vencsys
-> +          - mediatek,mt8196-vencsys-c1
-> +          - mediatek,mt8196-vencsys-c2
-> +          - mediatek,mt8196-vdecsys
-> +          - mediatek,mt8196-vdecsys-soc
-> +          - mediatek,mt8196-vdisp-ao
-> +      - const: syscon
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  '#clock-cells':
-> +    const: 1
-> +
-> +  '#reset-cells':
-> +    const: 1
-> +    description:
-> +      Reset lines for PEXTP0/1 and UFS blocks.
-> +
-> +  mediatek,hardware-voter:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description:
-> +      On the MT8196 SoC, a Hardware Voter (HWV) backed by a fixed-function
-> +      MCU manages clock and power domain control across the AP and other
-> +      remote processors. By aggregating their votes, it ensures clocks are
-> +      safely enabled/disabled and power domains are active before register
-> +      access.
+>  sound/soc/Makefile                          |   1 +
+>  sound/soc/airoha/Kconfig                    |  10 +
+>  sound/soc/airoha/Makefile                   |   2 +
+>  sound/soc/airoha/an7581/Makefile            |   7 +
+>  sound/soc/airoha/an7581/an7581-afe-common.h |  35 ++
+>  sound/soc/airoha/an7581/an7581-afe-pcm.c    | 455 ++++++++++++++++++++
+>  sound/soc/airoha/an7581/an7581-reg.h        |  29 ++
 
-I thought this was going away based on v2 discussion?
+Commercially this might be a separate company (well, subsidiary) but
+this really does look like in technical terms it's in the same family as
+Mediatek so it's not clear why it's a separate directory.
 
-Rob
+--u4i6tmdHxjn6/iCa
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmiM3GMACgkQJNaLcl1U
+h9AxQQf/cXI+oOJD0ocVccB1R1aH6Mz784IpZrG5A1J7QxDxrfQXl/E8FQArB0aR
+LVB+A8JEApb5Bcu2hSB+luSv/yCoFzK+l54YVPRnZsvfE9Caa06wVenJGR9Q32nf
+owvAz2th0Fy0SndV7Pz7DSxIsgaEPAE5Rf4rnb2vOqJu7GCa8GcBqyD6AeLzqRyn
+fSbmTPPhQ5UsGIE8PAY0P0+TxNxT19n3HsfAKTDZ36j1fpnU4dfp5iNTMRzI3/Wq
+SwWu4ylE75ivAMK9v+kicTto1bAzbmJmpNLMOdPpYxZuO0tRqrnymwQvaBdQceUr
+fDJithAny9ANXVkzMKdhwXJclntdNQ==
+=tZJ6
+-----END PGP SIGNATURE-----
+
+--u4i6tmdHxjn6/iCa--
 
