@@ -4,66 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 694A1C87FD2
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Aug 2025 07:47:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12AEBC87FD2
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Aug 2025 07:49:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Fyiy27i2+Z4zCLmLQG1usEQLiIN2gUEV9aj6dfIm6fA=; b=VRAYfbmmmtl2Jb
-	4ims64XLN8jNOwHaa8UrI0RtV/6fOiAvXprwRSjkQ4pJt8AmpWO8fh6l14SHqzjjM66mQb7bqFRnt
-	ZKamc0gDw24YBOKSEKQZgaeBkHX9xZKlVq91YQIeLbwy+aZkmv5jD9bbQmHsWdNtgyUCada++Vrgm
-	z+ZJb1FwisnkDmMbmEDi6NGXK2gjim4idphbKhGeHkUbKAbziTNspOoElSgR6xD5rKo6IZ3kBWlLU
-	ic6cixIptIsaGfM1qPPjkyBYiR1lFCvrYiv0+dmtfhe5m/m/BdL7kVHh/7z1sQKOk+nWzLcLNCOgR
-	3XyPW9wQzNY0yaUyl08Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=htF75GZq0w8gN2mFjIxAXyCVQ/hkCUtjFwdvPNYh4nE=; b=iE2dMhPdKE6je62IX2Y7A31+WG
+	aA/8KAPFP/UlCYUJn+byWt/HavVvqgrrnUyssSL197AukwForTBU0CaTE4tweCxZLI3q3IFco6dol
+	+aK8SJK2uaIZec8KtwhN2UBKzVeTr6AvU8IVdASRIN3t3NNdDkubvUKSwqzSpQ+AjN+IblEgWopeh
+	13du4BUmPSuUh1F8PIhpvL0Lu9CbzqLzjQE2NH4os/be8BUcg0hDkgNW35hPCtYPq5+ql2ahxOyNo
+	9DdhGFXUkPPs40TocmEW5YNG6FBLxTwn4I2D2GI/ztXWKTi1FbnIgT49Rr1E0K74TXFCA73F4s3O2
+	q0cFiFew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uhkTt-00000005Aar-2DTM;
-	Fri, 01 Aug 2025 07:47:09 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uhkWR-00000005AmC-026n;
+	Fri, 01 Aug 2025 07:49:47 +0000
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uhkC9-000000058Ke-0n0Q;
-	Fri, 01 Aug 2025 07:28:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1754033327;
-	bh=ampSXwXhrsh0B69HgKlyT4DdAISxdbwFoDCgBK1hfc8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=cjvIiO48+WQC4N5/io9LgHRVljj/OmVGX3CRimyWTBRQx8T87takQ6PcYWeLJVNq6
-	 k+ApgpZNHp39HyAFs+VYK1D1d2f889PQq5S3AWLbKwKPilh6XDEpRA7r6w8JwBQT9P
-	 mm02Ccu2cR6wQFVIph0bPyIOTQL72BbJ/wXHGbcj4Du44xkNht4o2jSYuZ/GU+uP+C
-	 5OKpFkE3etD0rYpp2l1/GVQ7dBEWFVPCJmnPhPv2CpysyVuGQL/iv0mvutTzlFPH10
-	 dJ8ToQ6zD1ipagVp0osunQuN8GX8HfvErmXMuh1NN69t8CRnr86dDnWoqwfeEfi+Zx
-	 daPAl2xBA2uWA==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id BF71A17E1293;
-	Fri,  1 Aug 2025 09:28:46 +0200 (CEST)
-Message-ID: <6d117b30-1017-42db-af45-9d4137e9656d@collabora.com>
-Date: Fri, 1 Aug 2025 09:28:46 +0200
+	id 1uhkEN-000000058kb-0FH4
+	for linux-mediatek@lists.infradead.org;
+	Fri, 01 Aug 2025 07:31:09 +0000
+Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-55b797ad392so734164e87.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 01 Aug 2025 00:31:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1754033465; x=1754638265; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=htF75GZq0w8gN2mFjIxAXyCVQ/hkCUtjFwdvPNYh4nE=;
+        b=ap+b6TN8P2aszs0IsqwHzVKXoWTYa9hIaukaJSaQoCftt1bIKJ9VSigXtjbyFgGe/Q
+         BKnUFZmf3mTLRV+KCimNY2u1DuFOVcY6TOPlPvLBtvfazDrwC39qgG+7F5XtnJOgAU2w
+         15I4rHSoaiD0u7/6My/IdbRFhYmfmhM1uWrZI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1754033465; x=1754638265;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=htF75GZq0w8gN2mFjIxAXyCVQ/hkCUtjFwdvPNYh4nE=;
+        b=gMlnnpzHLdeE6Irn+WDu++U8IBmblUOzO2XvOXtUgNIRP/sPV8iCP1rbI3tiznSapw
+         B7wk+FOUr2kLhYRwlBDwE39tKDU7HS2UiA48lmvADuVBDkabw9xsNl1u1CsLy8jHWRR6
+         u1u7NRXtbd7RH303lSMUs/Ma30Y+ZRXtzg/EwsMPrKbpeLwga8xRL+tlihOL0ygQaDfp
+         XnaLAD7fwTGGFhU9klYczWKyMpnrxeLpyWpN7HZFMf1UG3d9MCKtDPyX5/lN372kbIIi
+         ug26yoVNsKl35tsnf7BuZwd9wzgzBz/jwq759d+HnW3fYTZakks6CaU681zDT37gvG1b
+         0Flg==
+X-Forwarded-Encrypted: i=1; AJvYcCX79BE19gnS5ICMJuFKaWk2noOrH81SoWh4CT/iUNySM8tQU6yVuObEoNgWonkLu7SEr8Vs01EwnDIvd/bgkg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxvETYhCkqvpKDUv3oQjpgsJa5rXp7bzyz2dlG6QzN35CTbQoeU
+	Hv3ta7hrjdtG1PKTKAVulPTTdSU295Nmek8sJIZufh7ye8L4A70NRBBk4PsOsr2z2A5dsLDA7du
+	GURihDsXNe4pn5ymvaQVlU0ILOD2y1yYGDV62zMXa
+X-Gm-Gg: ASbGncu23z61HVvItegISb8h5WIu1DR3yX5PFCl2uOOcNkD4dH2WSo7GYQMKdnnRTaS
+	Z9TQaJDjiiG+1aMd4asifiDanl8oGGorVjpHGlNG4VjFtcJwyHik/bHXA+binsg1fev/RQ52eK3
+	eOJIR/eYqVHacoXHej2cxUeiylJSm2WycAZ+0F6sJP4K+VxJ79ylZCk4WbD9EQVlYl2WJw4d9xF
+	AQJTs5FXxMg/mH2UUMDkAeaT5kvC1xkJH4=
+X-Google-Smtp-Source: AGHT+IGf+XWnJSS1ofdtRG4xXIiHJgHkwfLVUEtsoVjwZ6AcLoQT6SI+5n+wdM88xlKeQgIZ3eNKpD6h6k9lnfP4oTc=
+X-Received: by 2002:a05:6512:3e17:b0:55a:32b7:6273 with SMTP id
+ 2adb3069b0e04-55b7c08a13amr3066799e87.39.1754033465235; Fri, 01 Aug 2025
+ 00:31:05 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 8/9] thermal/drivers/mediatek/lvts_thermal: Add MT8196
- support
-To: Laura Nao <laura.nao@collabora.com>, srini@kernel.org, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, rafael@kernel.org,
- daniel.lezcano@linaro.org, rui.zhang@intel.com, lukasz.luba@arm.com,
- matthias.bgg@gmail.com
-References: <20250730152128.311109-1-laura.nao@collabora.com>
- <20250730152128.311109-9-laura.nao@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250730152128.311109-9-laura.nao@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20250801070913.3109-1-niklaus.liu@mediatek.com> <20250801070913.3109-4-niklaus.liu@mediatek.com>
+In-Reply-To: <20250801070913.3109-4-niklaus.liu@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Fri, 1 Aug 2025 15:30:53 +0800
+X-Gm-Features: Ac12FXywJYCGCnChotG_esGvBZERmatIw20FKLlBH7Yl4ATPob-8dBgyN2iGj1M
+Message-ID: <CAGXv+5ELHjc_egKVyNn4kqGfoj0jRxcmzP7H5VnE3dSv-YcERw@mail.gmail.com>
+Subject: Re: [PATCH 3/3] regulator: Modify mt6315 regulator mode mask
+To: "niklaus.liu" <niklaus.liu@mediatek.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Stephen Boyd <sboyd@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+	Flora Fu <flora.fu@mediatek.com>, Alexandre Mergnat <amergnat@baylibre.com>, 
+	Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250801_002849_374448_39C50AD3 
-X-CRM114-Status: UNSURE (   6.66  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250801_003107_238218_EC8A0950 
+X-CRM114-Status: GOOD (  18.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,51 +97,72 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: andrew-ct.chen@mediatek.com, kernel@collabora.com, nfraprado@collabora.com, arnd@arndb.de, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, u.kleine-koenig@baylibre.com, linux-arm-kernel@lists.infradead.org, wenst@chromium.org, linux-mediatek@lists.infradead.org, bchihi@baylibre.com, colin.i.king@gmail.com, lala.lin@mediatek.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 30/07/25 17:21, Laura Nao ha scritto:
-> Add LVTS driver support for MT8196.
-> 
-> Signed-off-by: Laura Nao <laura.nao@collabora.com>
+On Fri, Aug 1, 2025 at 3:20=E2=80=AFPM niklaus.liu <niklaus.liu@mediatek.co=
+m> wrote:
+>
+> Modify mt6315 regulator mode mask, compatible with all 6315 models
+>
+> Signed-off-by: niklaus.liu <niklaus.liu@mediatek.com>
+> ---
+>  drivers/regulator/mt6315-regulator.c | 6 ++++++
+>  1 file changed, 6 insertions(+)
+>
+> diff --git a/drivers/regulator/mt6315-regulator.c b/drivers/regulator/mt6=
+315-regulator.c
+> index 2608a6652d77..092ff748fe21 100644
+> --- a/drivers/regulator/mt6315-regulator.c
+> +++ b/drivers/regulator/mt6315-regulator.c
+> @@ -218,8 +218,10 @@ static int mt6315_regulator_probe(struct spmi_device=
+ *pdev)
+>         struct regmap *regmap;
+>         struct mt6315_chip *chip;
+>         struct mt_regulator_init_data *init_data;
+> +       struct device_node *node =3D pdev->dev.of_node;
+>         struct regulator_config config =3D {};
+>         struct regulator_dev *rdev;
+> +       unsigned int val =3D 0;
+>         int i;
+>
+>         regmap =3D devm_regmap_init_spmi_ext(pdev, &mt6315_regmap_config)=
+;
+> @@ -247,6 +249,10 @@ static int mt6315_regulator_probe(struct spmi_device=
+ *pdev)
+>                 init_data->modeset_mask[MT6315_VBUCK1] =3D BIT(MT6315_VBU=
+CK1);
+>                 break;
+>         }
+> +
+> +       if (!of_property_read_u32(node, "buck1-modeset-mask", &val))
+> +               init_data->modeset_mask[MT6315_VBUCK1] =3D val;
+> +
 
-When changing commit 4/9, this also needs to follow with
+This needs a matching change to the DT bindings.
 
-const struct lvts_platform_ops lvts_platform_ops_v2 = {
-	.lvts_raw_to_temp = lvts_raw_to_temp,
-	.lvts_temp_to_raw = lvts_temp_to_raw_v2,
-};
+However, please take a look at Angelo's recent series [1] for MT8196
+PMICs that also adds variants of the MT6316 series regulators and how
+it adds compatible strings for various parts to cover 2-phase, 3-phase,
+and 4-phase settings.
 
-and
-
-static const struct lvts_data mt8196_lvts_mcu_data = {
-	.lvts_ctrl	= mt8196_lvts_mcu_data_ctrl,
-	.num_lvts_ctrl	= ARRAY_SIZE(mt8196_lvts_mcu_data_ctrl),
-	.temp_factor	= LVTS_COEFF_A_MT8196,
-	.temp_offset	= LVTS_COEFF_B_MT8196,
-	.gt_calib_bit_offset = 0,
-	.def_calibration = 14437,
-	.num_cal_offsets = 2,
-	.msr_offset = LVTS_MSR_OFFSET_MT8196,
-	.ops = lvts_platform_ops_v2,
-};
-
-static const struct lvts_data mt8196_lvts_ap_data = {
-	.lvts_ctrl	= mt8196_lvts_ap_data_ctrl,
-	.num_lvts_ctrl	= ARRAY_SIZE(mt8196_lvts_ap_data_ctrl),
-	.temp_factor	= LVTS_COEFF_A_MT8196,
-	.temp_offset	= LVTS_COEFF_B_MT8196,
-	.gt_calib_bit_offset = 0,
-	.def_calibration = 14437,
-	.num_cal_offsets = 2,
-	.msr_offset = LVTS_MSR_OFFSET_MT8196,
-	.ops = lvts_platform_ops_v2,
-};
-
-After which:
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Now personally I think a better way would be if we could somehow read back
+a) the part number, or b) the multi-phase settings from the chip itself,
+and derive `modeset_mask` automatically. Is that possible? Can MediaTek
+share this information?
 
 
+ChenYu
+
+[1] https://lore.kernel.org/all/20250715140224.206329-1-angelogioacchino.de=
+lregno@collabora.com/
+
+
+>         for (i =3D MT6315_VBUCK2; i < MT6315_VBUCK_MAX; i++)
+>                 init_data->modeset_mask[i] =3D BIT(i);
+>
+> --
+> 2.46.0
+>
+>
 
