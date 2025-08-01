@@ -4,67 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04143C87FCA
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Aug 2025 16:12:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7215CC87FCA
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Aug 2025 17:37:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Obmn7BweOFvcjYjMX6MqF3VWPW0BsDq7Re6ntdnZEEA=; b=fXxZM/NQeide/ViCBa6AB4Tk1A
-	XDxSchF6Ivp5Zf4y+Hwt9eqwOhxgwvAFZE46Zz2X/WneaMDtTZzjiez27MUvrK2o1qFweNORBCJKe
-	z/+HIz04k23W2HI911z/MUHBlEyoRbYSWARMunrY3U1gMvv00CfRXvTKhy9Ep7SNUrPI9l1gYOf1x
-	mCTa6Vm855/2gIQ2n8AnsEVDCerkGyER16It4rOiyPSFp4pLqakY0YEMbND9VfE1vDLaL0HTIu0OZ
-	jes9EEEa7AVhpamKaHWxsCahAevkfJcI3/LdD6ThoMe6ImgIQVQEE5XKyUx5PfJsvHQivD4Rx5oQB
-	6/eki9bg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Bmh+M+hQ8TbCJMwsU3KCo3H2fbDSmNc5FcltHVaSJjo=; b=A5mblwDLXBGl1Zjj17HdxcMG0j
+	Z/gM2ZOw7s5gCeLtBHoNLJEIj4qw/+v3FcwhBGqNE8hqSOidedN0CcRB0DC4hBtdOU8x2SWCUZOiW
+	d1e+SboxVGkfP7RJ0Ed6wQD527YtYDC4HsSA9fcRuZL4bn9n7BoxlJFs13Vx01/SyhsIrcYzcUyL8
+	VeFGe88i05A1VRUxEbjjydwa6kHahIqXABP+ub9IostlfEaZ0tlFDDkdKx2HnkORcLnIbKnNtByhh
+	y1Ch4wFm+fQKubRVGR/y/CvYWAVwlYIGs6HSi+H9gZiMaMt6so2H7IeuW4UEgMgECyb5SkRig1l19
+	NuakY8/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uhsMr-00000006Q0N-1gxn;
-	Fri, 01 Aug 2025 16:12:25 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uhth6-00000006Yse-3Ov2;
+	Fri, 01 Aug 2025 17:37:24 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uhsKP-00000006PgA-22FA
-	for linux-mediatek@lists.infradead.org;
-	Fri, 01 Aug 2025 16:09:54 +0000
+	id 1uhtQ6-00000006Wdx-3Z9W;
+	Fri, 01 Aug 2025 17:19:52 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 6D3E25C6860;
-	Fri,  1 Aug 2025 16:09:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1997EC4CEE7;
-	Fri,  1 Aug 2025 16:09:52 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 291CDA558EB;
+	Fri,  1 Aug 2025 17:19:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AE16DC4CEE7;
+	Fri,  1 Aug 2025 17:19:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1754064592;
-	bh=557zFmaKmS5bXOb+hv1LzxNQ0EgTYImX1LKbBCq3dEQ=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=WViL9ibGPexJ1p5LhUn9e0uJTI+eX6Svug5ZIc86AB+Bjjjdgh67xU0jDbNgD+aOR
-	 DDzf0wehy9DFzcHHPLoAo1SvVnJfppdzcGLDGCCeevoR8sunPcQNvOJnenCiVcStx0
-	 nenD956h0xsoA3qcN98eEdENC9qheLfveCLQtajO5+bP62YJ86V7r5gHcDy8y2fGDG
-	 lJAbXUcbIifmkePQCQ5HwoOcuy9yiQyk0YK9fWCdlxHTC1QCuG6XjWcMzFcFwxvjwq
-	 D0ca8C31sTGXEDiGZsPPW/RjInDqXsMAEvleS3ZQ7sFE4fImd8cIRU5qAGBPjrqG6F
-	 ay6MowWFP8bXA==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id ADD03383BF63;
-	Fri,  1 Aug 2025 16:10:08 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	s=k20201202; t=1754068789;
+	bh=1QG/YY4VsuAP8+Akf6wF4d+CfQtLKEQkwrhF47hA3wM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=U2dMCxiimBSUE/8WTlPRDbvOBBZCznp3sp60fZU+araGvGgnr/MYRFcTDn2LQEJba
+	 Wh1bhzUZCVX83V1V50KV6aqulpcALSH2jz1f7GgHw//sTRi4gdpM/EzB9qjdZDXf2j
+	 SJb0n2quFKyx0JhNsbcFmL2QzwD9hTq1zw8RKpCYVLmn+1ofpMVFxS38DKIWbwGpz6
+	 t0dGbHfDjQXh9ekZcHU0Mcjrwqdsnyb0INgjnG9/v7YmChD7a1mHuO0AmxHpr/8nYR
+	 5/pH1dvh9f94ywi9s2SLGvELGBViUkl5vRSQ7psjMZuqK8WKZyWbL9PKvV1nAJ3wwx
+	 MeBHHeF8YnBNQ==
+Date: Fri, 1 Aug 2025 12:19:49 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Julien Massot <julien.massot@collabora.com>
+Cc: Ikjoon Jang <ikjn@chromium.org>, linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org, Mark Brown <broonie@kernel.org>,
+	linux-gpio@vger.kernel.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Julien Massot <jmassot@collabora.com>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Conor Dooley <conor+dt@kernel.org>, Stephen Boyd <sboyd@kernel.org>,
+	Weiyi Lu <weiyi.lu@mediatek.com>, Sean Wang <sean.wang@kernel.org>,
+	devicetree@vger.kernel.org, kernel@collabora.com,
+	linux-sound@vger.kernel.org,
+	Michael Turquette <mturquette@baylibre.com>,
+	Eugen Hristev <eugen.hristev@linaro.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Enric Balletbo i Serra <eballetbo@kernel.org>,
+	linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org
+Subject: Re: [PATCH 1/9] dt-bindings: clock: mediatek: Add power-domains
+ property
+Message-ID: <175406878860.3104776.852136364391160797.robh@kernel.org>
+References: <20250801-mtk-dtb-warnings-v1-0-6ba4e432427b@collabora.com>
+ <20250801-mtk-dtb-warnings-v1-1-6ba4e432427b@collabora.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH] Bluetooth: btmtk: Fix wait_on_bit_timeout interruption
- during
- shutdown
-From: patchwork-bot+bluetooth@kernel.org
-Message-Id: <175406460749.3987296.5929961346941776054.git-patchwork-notify@kernel.org>
-Date: Fri, 01 Aug 2025 16:10:07 +0000
-References: <20250724085117.2678313-1-jiande.lu@mediatek.com>
-In-Reply-To: <20250724085117.2678313-1-jiande.lu@mediatek.com>
-To: Jiande Lu <jiande.lu@mediatek.com>
-Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
- sean.wang@mediatek.com, chris.lu@mediatek.com, will-cy.lee@mediatek.com,
- ss.wu@mediatek.com, steve.lee@mediatek.com, linux-bluetooth@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250801-mtk-dtb-warnings-v1-1-6ba4e432427b@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250801_090953_570216_69438E97 
-X-CRM114-Status: UNSURE (   8.26  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250801_101950_953396_4E10304E 
+X-CRM114-Status: GOOD (  11.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,29 +88,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
 
-This patch was applied to bluetooth/bluetooth-next.git (master)
-by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
-
-On Thu, 24 Jul 2025 16:51:17 +0800 you wrote:
-> During the shutdown process, an interrupt occurs that
-> prematurely terminates the wait for the expected event.
-> This change replaces TASK_INTERRUPTIBLE with
-> TASK_UNINTERRUPTIBLE in the wait_on_bit_timeout call to ensure
-> the shutdown process completes as intended without being
-> interrupted by signals.
+On Fri, 01 Aug 2025 13:18:03 +0200, Julien Massot wrote:
+> The mt8183-mfgcfg node uses a power domain in its device tree node.
+> To prevent schema validation warnings, add the optional `power-domains`
+> property to the binding schema for mediatek syscon clocks.
 > 
-> [...]
+> Fixes: 1781f2c46180 ("arm64: dts: mediatek: mt8183: Add power-domains property to mfgcfg")
+> Signed-off-by: Julien Massot <julien.massot@collabora.com>
+> ---
+>  Documentation/devicetree/bindings/clock/mediatek,syscon.yaml | 3 +++
+>  1 file changed, 3 insertions(+)
+> 
 
-Here is the summary with links:
-  - Bluetooth: btmtk: Fix wait_on_bit_timeout interruption during shutdown
-    https://git.kernel.org/bluetooth/bluetooth-next/c/5ecd1fbdacce
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
 
