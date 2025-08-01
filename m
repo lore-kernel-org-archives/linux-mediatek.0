@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A8CDC87FCA
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Aug 2025 17:42:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CC5AC87FCA
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Aug 2025 17:45:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ONxgia4Xl1Y/U5Md2wPoLdHCdLlxHcTUcJoQUxb0yDM=; b=Nbbq4dZGSNgp4VXckPk5QavAbu
-	GGNvSn1a/JL9jwlE9jGwuOt2OM3h/8hrbbeKPJ6BRCKxlbILaIHVxcE5k0aR9TqHZF0v4QLyQRjve
-	4bmUrxE3iLLz3JBLwwMVHpQ2E9DSDTjmNYQBgQL3PRmAaF3QrogdZ2yub2d1HjfAgd6/KOgsNrrjn
-	QS6h9GNW+cWWRK2N9BZyNRQ0Jd+4Ymm59VdHdE8wp9Ljh8k+WUWjFvlwiQp8aMfYD5V6Yfcjd99yM
-	GWnrCWrxQZz1/fsguWSs4X3bIlmxELBgcefVCti2YAneBC2G+lPmEavBibaNJhPq8Xb52jIebYLss
-	DwGRwpqw==;
+	bh=7dUZmtADBN3x1tCeMJaPcLRRToObb0jfGO4/4nSFc3U=; b=aw669NwUVRV+6p0oxWV6SvmvEq
+	QXpN/7/+W97yhke4f4/ezt699efMQaNb84LxCTZy/ypvwTWoUxT/DD9cHqBl9ldLiQ1BD1XEDwFbl
+	+s3M2MQK2nr6cU6V+nQd/vkgzkdyX3SP24T5uKabXE7MS611OaktYmQoH6EhaQBWqPQwWh9h9Il+6
+	ZkWP+MEGMmiLbOUlrTgBiJEFnRaXSWyIm9U9j06g7Tjvnoljd9MjiznjZPSINQcjTTSAlpKfMOEYj
+	J9iJmY5mwOEb+KzU7yCxWF7+z6s/imErk+XvJzMb5GF3/P9T2UWJYyuW68I8IShW0RbwdXUIHQJnc
+	53q4FThQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uhtmG-00000006ZaS-08qO;
-	Fri, 01 Aug 2025 17:42:44 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1uhtoo-00000006ZpG-0lDi;
+	Fri, 01 Aug 2025 17:45:22 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uhtW6-00000006XaT-09UF;
-	Fri, 01 Aug 2025 17:26:03 +0000
+	id 1uhtYN-00000006XuZ-2TZ1;
+	Fri, 01 Aug 2025 17:28:24 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id BE56C42B62;
-	Fri,  1 Aug 2025 17:26:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 839CAC4CEE7;
-	Fri,  1 Aug 2025 17:26:01 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id C90E4A54612;
+	Fri,  1 Aug 2025 17:28:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 588B6C4CEE7;
+	Fri,  1 Aug 2025 17:28:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1754069161;
-	bh=LAZESKJ9vhRa/bc31RvUlPJh1epXwsBYl7jFSiRgvlc=;
+	s=k20201202; t=1754069302;
+	bh=Hw1MV3oclXxapTMMH7EOZwKLaNES+dV1oG87CCkwVTc=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=nPCBVQAmia+vZiDmAx2NhLMVzrZAd7zpvfeYEiS6WzsM7Xv5PHFnskzDNhmVy017R
-	 fJOtLQESMGVGWGDoHuuQqP62qowOX/FJLnXFqLvT5ADCKB6OD5tP8riLjL10Jr3idx
-	 XhBhxSre+7LteAoLSTpSBRs/ab5jO56RCFFN9rlS3DsP9PeT9RdJ6UcKhgS95ZJ+Ln
-	 kANQkEq1BWn1kYtqIK7m4TD1amZ8i6vafmb3STYHAo937BVwXUks79e49iBPLRc308
-	 6D5vPPHJz/VTHAhKgwVOPCqNGscXckHrBhWJ3aAmIxx0vWvnVpawGNEDkJ8rlGeq08
-	 HdPB562ELicbw==
-Date: Fri, 1 Aug 2025 12:26:00 -0500
+	b=IZNua/2SbzwcTMoQr8Rk/2gn3Vpnvc8gVJ/P3eGtwrBhIxMBoSEUtbah6/q2JTk+Z
+	 eUOwcoEENsK/CeHNVAXEop7YPru0d4IMJP6VC13XZc4jZu4v58EHXJcUTdaY6wFpCH
+	 C50kwD+180UzsuIrKwyQ7ttUU2EBZgvPojm1ushfRW/xJiUhmRvOocNevpbeFwxP41
+	 xmbFq8B+nb+wauuegjGlxTiCWe2z09wORH0Ir4vNrH4ggMWcKB1KfjDjaNvB4ivPo6
+	 sf1A5Ya6T0EtCRE6FO/owW3EgyaErvxKTZyYRDxuAMeuc1dEx9+N33drBiQ3W9VNj2
+	 uR+/1MIvAq8JA==
+Date: Fri, 1 Aug 2025 12:28:21 -0500
 From: Rob Herring <robh@kernel.org>
 To: Julien Massot <julien.massot@collabora.com>
 Cc: kernel@collabora.com, Michael Turquette <mturquette@baylibre.com>,
@@ -63,18 +63,18 @@ Cc: kernel@collabora.com, Michael Turquette <mturquette@baylibre.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, linux-sound@vger.kernel.org,
 	linux-gpio@vger.kernel.org
-Subject: Re: [PATCH 4/9] ASoc: dt-binding: Convert mt8183-afe-pcm binding to
- YAML
-Message-ID: <20250801172600.GA3107067-robh@kernel.org>
+Subject: Re: [PATCH 5/9] dt-bindings: sound: Convert MT8183 DA7219 sound card
+ bindings to YAML
+Message-ID: <20250801172821.GA3111733-robh@kernel.org>
 References: <20250801-mtk-dtb-warnings-v1-0-6ba4e432427b@collabora.com>
- <20250801-mtk-dtb-warnings-v1-4-6ba4e432427b@collabora.com>
+ <20250801-mtk-dtb-warnings-v1-5-6ba4e432427b@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250801-mtk-dtb-warnings-v1-4-6ba4e432427b@collabora.com>
+In-Reply-To: <20250801-mtk-dtb-warnings-v1-5-6ba4e432427b@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250801_102602_093421_5BD69E92 
-X-CRM114-Status: GOOD (  13.07  )
+X-CRM114-CacheID: sfid-20250801_102823_694567_1F2A1EDC 
+X-CRM114-Status: GOOD (  12.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,21 +89,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 01, 2025 at 01:18:06PM +0200, Julien Massot wrote:
-> Convert the MediaTek MT8183 AFE PCM Device Tree binding from the old
-> .txt format to YAML schema format to improve validation.
+On Fri, Aug 01, 2025 at 01:18:07PM +0200, Julien Massot wrote:
+> Convert the Device Tree binding for MT8183-based boards using the
+> DA7219 headset codec and optional MAX98357, RT1015 or RT1015P speaker
+> amplifiers from the legacy .txt format to YAML schema.
 > 
-> While converting, also document all clock inputs used by the AFE block.
+> This improves binding validation and removes DT schema warnings
+> for boards using these audio components.
 > 
 > Signed-off-by: Julien Massot <julien.massot@collabora.com>
 > ---
->  .../devicetree/bindings/sound/mt8183-afe-pcm.txt   |  42 ----
->  .../devicetree/bindings/sound/mt8183-afe-pcm.yaml  | 225 +++++++++++++++++++++
->  2 files changed, 225 insertions(+), 42 deletions(-)
+>  .../bindings/sound/mt8183-da7219-max98357.txt      | 21 ----------
+>  .../devicetree/bindings/sound/mt8183-da7219.yaml   | 49 ++++++++++++++++++++++
 
-This should come before patch 2 since it is referenced there.
+mediatek,mt8183_da7219.yaml
 
-Use the compatible string for the filename.
-
-Otherwise, looks good to me.
+>  2 files changed, 49 insertions(+), 21 deletions(-)
 
