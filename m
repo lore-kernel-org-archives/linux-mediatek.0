@@ -4,206 +4,155 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0A9AC87FCA
-	for <linux-mediatek@archiver.kernel.org>; Sat,  2 Aug 2025 01:25:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0502C87FC9
+	for <linux-mediatek@archiver.kernel.org>; Sat,  2 Aug 2025 09:23:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c4hSROOTkLjcNm7aHplWnuJrUEch5mTDTRSGmJgSn1k=; b=0VruqP+czzWhTzzBhRrgDiaBcP
-	aa27BfgXwQwI33u0yBRDqcIf18KKn6+qyReFXX8NCpGJf/uxl22Sb31lJ6qWOa2FhRn300MaE+fMa
-	3e9BukTQ1YN7ERdmQc05RVgvtL6XZfPbdrOmn4sG7KgLfTcXVWxXooYxlsQcHG9dtbmCgHlTGG2/s
-	9m0PUKNshtEfyUd1KU2HAyLbTbhCsjc1AW9KPrO3FbMUtYCtXZcKchkb2vHfqiAqynN7DvSLdiFO9
-	qO5+LuHGw9+MUpinzVsyxUxVfvboc1lOjaSIVzVgmPo0kkDJsHPYATBlbA60Zt+mLepm3MS26lCnO
-	42w+0EpQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fcMBOveeQGTVhABz4lmEQ5tvyKKN4mS1DectVmcoApk=; b=X+EAkDJHRvpdBj
+	j41OCs9hXFvcyS5MM+9eHdGOu+05qxw/9yZLaWrkES+tc3xu+2wyrnGIbTZ3xIRwnBlxDzQSrcaKP
+	GItrwtEzIYjTqRQaC/avtnmo6k/g5o20X3OPHSIvAcLOXl1fXtZRtfmuulYN3ncZhBfIcpcWPscch
+	Xl3AtJ6yA65sm/dux/ljlJO+scDTlQ3Sa4X3S2QhbOL54TOe+oQhYFt77hX/x8f56pl37Jdv7Xy8/
+	NGeWeLlaoXakYXFNjy8q5O0PJ8PAbjRQ2LhJg2sIeenUtpgNo/JnrMwwHaSfmVOqnuFaRHWwFU9S6
+	uWyBPucX9omMjknlx+QA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ui10U-000000072PI-1iSr;
-	Sat, 02 Aug 2025 01:25:54 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ui8Sj-00000007NYo-0Gfx;
+	Sat, 02 Aug 2025 09:23:33 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ui10R-000000072ON-2Q7D;
-	Sat, 02 Aug 2025 01:25:52 +0000
-X-UUID: 9d627b486f3f11f09f706fa2197c6ceb-20250801
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=c4hSROOTkLjcNm7aHplWnuJrUEch5mTDTRSGmJgSn1k=;
-	b=jbLppbLeXMvDOyMVqe9aQfNDdur3HNCu9kQhW4+9COoXgP0n/+NIulkMyiq8ElEwbmVc2I1YoVVc4GtwHKH/drYQ7rDsYKeoZcHdHC05CFtOAWLpkmol3FJUSBSUxLsHcNmURuMFiuQWUHDlA0tkvcAHGEQNYAblIFxUBHPAUt0=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.2,REQID:c48143a2-ebfc-4971-926a-2ecd3325a66f,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:9eb4ff7,CLOUDID:91cf7f50-93b9-417a-b51d-915a29f1620f,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111,TC:-5,Conten
-	t:0|15|50,EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:
-	0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 9d627b486f3f11f09f706fa2197c6ceb-20250801
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
-	(envelope-from <yong.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 644610044; Fri, 01 Aug 2025 18:25:46 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Sat, 2 Aug 2025 09:25:41 +0800
-Received: from TYPPR03CU001.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Sat, 2 Aug 2025 09:25:41 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=JWbyLkaXVDUnuZYVNk2VBBrYZNcvVp3a/YQ554jxSaAUMrc7oH4iRhWmcjfZsgLE6x6ZU7KNBVte04A2UTCZc+HPh8cyiH9FtMCVSGpwY3uU2DfUeuujaZs+q9DR2ExLrdlXWCSstU6CX6Y8i22TZy4DjlHa6FD3xUm5fTTHXm9zLgG+90zywbMAKnyc9JR1GB7Bb9vgqZP9lOQHreWije+Ni1aGymLZrTi7C9O6+2tLPUPaR+1rdPlai1QYDdl2WcccVVEtjHuCl0zsYOaDoCUJIAhFShwM3ikz0TsT4s8boppDnQBoBjQG/3M9SHe9NQuRItrO+UIvHvKwlTHlVA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=c4hSROOTkLjcNm7aHplWnuJrUEch5mTDTRSGmJgSn1k=;
- b=DCbiu3Iq16czeWnI3b4AkHO+/zIt8fR7y9LhhtX/M+x1ihp4R7IKTQSftBoPxSnZW/50i+AyqN4s2kuEDRT+8a3RmxAapPNV8G2gfDF0ho2WCambpKOgG4yZ1r9gluTmEU+fDiEJAMVI5eSh9LqeADSGoiiUqsCPUrPm3U0BdRZW0iqyRpK5y+bRmlcBurIQBbCYB+cxCVGGnNj/xjVi/tPm4fGhxnp73Ac012oGD67K6ew6mJzIjKsmREwmH/fXHyAwpMh4QFDVr1jnlU9p3b4j91XxLspG6uCtB2nhwIo//qmklzPa3HeqOc1ddoj252utdsGpQV5Ov3BlNFDgjA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=c4hSROOTkLjcNm7aHplWnuJrUEch5mTDTRSGmJgSn1k=;
- b=BKS9ckmSUuEKGIztZocLxpuVzvPHVYaca5/zto+aWhFEDXFyfNYfkmgdLP3Me1LiA+QJQBzYLxHfAI0wHSlNIwQAe4tqmpo+3wgUQm6vr6+9tAIm7yeTyU5TzifUDwR0SbYGABBoItZgqluwL0J7wR7tB7dlLu9pZtrcdhVI/+Y=
-Received: from SI2PR03MB5885.apcprd03.prod.outlook.com (2603:1096:4:142::7) by
- TYZPR03MB8241.apcprd03.prod.outlook.com (2603:1096:405:1f::7) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.8989.13; Sat, 2 Aug 2025 01:25:40 +0000
-Received: from SI2PR03MB5885.apcprd03.prod.outlook.com
- ([fe80::683a:246a:d31f:1c0]) by SI2PR03MB5885.apcprd03.prod.outlook.com
- ([fe80::683a:246a:d31f:1c0%4]) with mapi id 15.20.8989.015; Sat, 2 Aug 2025
- 01:25:40 +0000
-From: =?utf-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>
-To: "robh@kernel.org" <robh@kernel.org>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
-	"conor+dt@kernel.org" <conor+dt@kernel.org>, "krzk@kernel.org"
-	<krzk@kernel.org>, =?utf-8?B?RnJpZGF5IFlhbmcgKOadqOmYsyk=?=
-	<Friday.Yang@mediatek.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "devicetree@vger.kernel.org"
-	<devicetree@vger.kernel.org>, Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: Re: [PATCH v8 2/2] memory: mtk-smi: mt8188: Add SMI reset and clamp
- for MT8188
-Thread-Topic: [PATCH v8 2/2] memory: mtk-smi: mt8188: Add SMI reset and clamp
- for MT8188
-Thread-Index: AQHbyhpyeanHqT+sjUmR6kEKvwqT/rRPBICA
-Date: Sat, 2 Aug 2025 01:25:40 +0000
-Message-ID: <8cb598c782fa376967f8e676b5ec9f195a3475fc.camel@mediatek.com>
-References: <20250521063347.31578-1-friday.yang@mediatek.com>
-	 <20250521063347.31578-3-friday.yang@mediatek.com>
-In-Reply-To: <20250521063347.31578-3-friday.yang@mediatek.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SI2PR03MB5885:EE_|TYZPR03MB8241:EE_
-x-ms-office365-filtering-correlation-id: b49e222c-2d30-456b-360e-08ddd1637e3f
-x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|1800799024|366016|376014|7416014|38070700018;
-x-microsoft-antispam-message-info: =?utf-8?B?ZE9uTzhFOUQ1TnpFUjJ2c1F6aXZDTjBzKzROSDNJcVRPelFqQTNnbW4wckJN?=
- =?utf-8?B?YVQ3ZzRCTHU1ZWhVQTJUdUpPdkwwVzh4ZnN2NnBtdWNDN3J1N1hlMVhKcTBk?=
- =?utf-8?B?ajJqc2VvUnlGTTRvUG9zcHQ5R0phSlpReTdjUVZpWXFyS2x3ZlI3K2VRM3Vv?=
- =?utf-8?B?YjZqRlVYNk5Dck51Qk82UUxVa2tUdVUrR0c5b1BYQ2YwTEJNRU5hQ0pubEtm?=
- =?utf-8?B?VHd2dTJqRWFRejBQb0NibkhZV2FyL3dSM2RmakFQMnRyWnV6RDNhSmhweUdU?=
- =?utf-8?B?WXlDR3ZDSEoxR2dva29LRzdERGdhS3M4N3hQQ0kyYnhXZkFVYktFekRxb2Fy?=
- =?utf-8?B?QmRWb0E3ZStwSmc3VTc2QmpZTXhZcllaTVdNdWtyNnNaZXJCREdXQS9KdXA5?=
- =?utf-8?B?ZEc2YnRzRzc2VmE5Z0ltQ3FITGt2WE4vQ2Y2czFkbC9kQnM1OEtMN2szRCtt?=
- =?utf-8?B?Y0hPSDZ3TjZMcjRGdVNYNm5rTFJqYjM1WWo3VG9IbWNnZzlFejBNM09EZjd3?=
- =?utf-8?B?bXdralRTeGVMU29XRlgyUTlTRnM5QkQyRmRvTHNPdmRkOXFLanFadHBySEJP?=
- =?utf-8?B?S3gzaXVOVjVWZEJyQVVZV1lJWW9velk1b0VWblFuQ21xb2w4eGRybmpZeGxG?=
- =?utf-8?B?cjVNL3pXd3JTU0FiNWczU1dORlZrY1V1dDUzQ2FZcWNGdjBOUyswMnp2OEVl?=
- =?utf-8?B?OXBZb3ZwQk9jNXc2Z3dHODFXSWJsYnlnY3RLeHVSTktOY3pka2JMTGp3a3pY?=
- =?utf-8?B?MEk2cm9KY3crUWMwelBDUHBCNUVzZzRiYXdOT0kwKzU1OVByblNBZngzd0ZH?=
- =?utf-8?B?b1FqRDd6NUhtS1NRbUtoM0lFNEZDWm8velZrbHpHeXJBd0ZOOFJkd2c4MkhP?=
- =?utf-8?B?dE1ONlk5bHgvWG9tSFNrRktJdnROV1o2UGNDSTFuek1uSFJydDNFa3ZuN2Er?=
- =?utf-8?B?aW1qWWlGSHFpRWxqMEtER0xBQ3ZLT0VVdVM2bWc2d1dvQTV2dlhnallIZW56?=
- =?utf-8?B?WnpsL2NuY3h0UGoyNDRiRlRkOEhNU2IzdHZyemFRWmdrb0lTa3B0MGhsVFZK?=
- =?utf-8?B?MHd4Q3Rac2dTcEV4NTN0RVZEQWpkRDZmbVJTODFQV29mZ1AwdHNzelVVNTZw?=
- =?utf-8?B?NVA1N2MvbWs5OWpoVGdKNUdaejJVWWwrK0FzR1kzeFd2NUh1SnBhMjI2d3U0?=
- =?utf-8?B?UTEwZDVSdXdNZEZEMVRnQTFmMlF6dXhvODZwcUZMTERqUjMzY1VrV1ZuZ2Z1?=
- =?utf-8?B?cjRBbWFINTJJZ2EzOTdySGlXRDYxcG1uWEVuUWI4ZWhUUFR3eXNsWi9IOVhB?=
- =?utf-8?B?SG1lcmFtMVd6UisxMnFmNVh1NDVwQlZhWWpkZnoxbTB0UHJKSlJ0cmhscHlJ?=
- =?utf-8?B?TThwcmxhRy9OY3RzRnlzS3R5dXhtYUhUcDlOS0ZxVlZQbVFJaDJOenJHY2dW?=
- =?utf-8?B?bUsrK3FLWkYwL29HSGFVR3NPMXpmbzBYL05qcndBdmNWN2ZId0tmWHk4dnJM?=
- =?utf-8?B?R1FRenlWcE54WkVJb2UvUllXRDlkbzlWd1B6Q1JkbzhiM2o0SDlWYWJkNklJ?=
- =?utf-8?B?OEZWUmFQV1R3SVk1R3RaKzVCVHlhRW5nd3VFTXpWT2k0VHpEdnpzZkpsYmhs?=
- =?utf-8?B?V2J2TlVRcEQ3clpuUW91RzB3dW1hS1dtWGVQeTVXb1dEK3RmTkNzUUxTc0h1?=
- =?utf-8?B?VWtvYnRmczZmbjVpSHhSNklRWDZqMjBUNmJSczZ0bTZ1cjdxV3pEY2R1UVl5?=
- =?utf-8?B?ZDl3bEg0NUUwRXlMVjVjSVo4SzhabDIwRkg1d2pRWVFJUVpLYXpzTVV5OXdh?=
- =?utf-8?B?Z3JZTnY1d0xUM0R3cmFleTlTY205WkpBTWRjWkNsQnBMaCt6Mkw4dEdnc1Jv?=
- =?utf-8?B?WFBJOXM0OXFaVUFCT0VjTnlJc3owUStlblUxeW1xemIzNmxXMmpreEpjclRn?=
- =?utf-8?B?QnpqbktWVzVJWEpLNHZzODdtZkFZME80RVplK1dYQzF2eUJhdEQxczVHZFV6?=
- =?utf-8?B?aEtHc3VmOVN3PT0=?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SI2PR03MB5885.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014)(7416014)(38070700018);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?VUFJeU5OQTFVTERjemJhUU9PT3NnclRUQmdRZlhxVG9aVVhTTzA1T2tscTJ6?=
- =?utf-8?B?ZDNIU2M5NkszYm5IZ0owWGhuK2xtVjJvV0VkVFZtVWQyV3YzZ2xiTFVmaUpm?=
- =?utf-8?B?RmZaQjh0NkZBeXU1c25KSCtMRUNzbmM3dWpwb00wVVZDdlUzWkFsNmJGRHZu?=
- =?utf-8?B?Z29JQk9HSDZscWxrV0VycWdiMHpsdndLUkY0R2JhRWgvbm0ybjAzZ3BCMmkz?=
- =?utf-8?B?SkpscmR3Wi8zL1p1VjFKdGVid2x1YjhuTFRVZnFMZG5hWjc1ZUkvUXd2eHA5?=
- =?utf-8?B?WWFIcm1Xa3dUeWZjejIwYVJ1N0xJZFlNdCtYdnhTdUJFVTRBYmRSaEU0YjRH?=
- =?utf-8?B?WmhxcTVselY3UHdWbysrWlVXc3dmNXdjbldxTnRsQWd1aDFSMFNBTnhmSzJZ?=
- =?utf-8?B?MXpqdEcwalpVUXNHWHlTcTVwanNLcTBWZ1RBQW53MUxEcjZFcG9RSFp2UGRo?=
- =?utf-8?B?NFlpL1ovTGxFYUVJSWx1OTVxUXNIWVhPdTVUVi91RUNpSjVURk1sOUxlbVVY?=
- =?utf-8?B?Tkhwd2tOdjE2OVZDRWFBdGJpY3dUc2lZOHprK0cxMFFjbENzTVVvMFZUNHdD?=
- =?utf-8?B?TGhyYTZqaG1YdG9sbmRlMFUrbDdTU1VmSi9CT3BUOGdjb21NWmZHdW84YVdF?=
- =?utf-8?B?b3cybk4zam5yTXllQWt1MjNFeGJWM3pWSXFhV1dHQ0tQT3VZRHlwK2ZGYjdr?=
- =?utf-8?B?cWIvVnRORmZmK0lzYVBuSnVCSG9zMEE1SDJ4OXdtUnJqZkNLWlF3WERCcGJv?=
- =?utf-8?B?cTZESnl0VHh2dWtEQWErajQ4VVlkbXJpUHhSYlVUYW4rRVpWNTMySEtrZVdt?=
- =?utf-8?B?eVp1by9CZkRoV2MzYmpBUTZMTmxEdyszS2hzeDl2QjFTNWwvQmFBWXRJYWIx?=
- =?utf-8?B?bzNxbDdlV2xtQzMxaTRoUGZJbkg2YWhSckdkQk03OER6Yk55dEdNbkpMU2RT?=
- =?utf-8?B?bis3R3V6QS9PYklLQlMxSG15V0ltQUNnaEdJcWR0blFEVlJoblI1RlNFNURy?=
- =?utf-8?B?WlRYWjFkQW94WVdiSCt1ZzljUkxMenh6b01PcjVsSnNJYTJhNUVjallJV0dO?=
- =?utf-8?B?YllWaGFndCtoQ2FqaEJBQkFhelcxcWMvbTRYb0QyZmd2eGc5a3ZPU3kydWps?=
- =?utf-8?B?YUFMazFIWWQ1WjlxcXJsTnlZRmJiZUloZWk1S0Z1VFcwNlFYUDArbEI4aDdp?=
- =?utf-8?B?bDFCeU4zRHFtbDZrN3I0L1cyVm11dlVUZGhHV1Q2SEZNc2JGWW5YeW9MSVZV?=
- =?utf-8?B?eGxlVkwraVRScWVoOGhoMkRWMFF2VGJVSlcxWTJva1pNZGs5MnlQTUxBUXNL?=
- =?utf-8?B?K0N3c0ZNcno0ZHR4VUdEa2taK2RGYkRGVGh5L3ZxSk1kS2hSamNoNU52ZE9R?=
- =?utf-8?B?NUZQWkJIVDVsdHJ1RTVzQWlZVCswMzJUdWRuTE5kZjJqdWp1QVV0S3ZqL0Uw?=
- =?utf-8?B?TmFQZDdNbmJ4eUQxZHlTZjFpUHFVK2VxbC9GZDUycTdUY0VUVXdxaGJrZjQ2?=
- =?utf-8?B?ZUJKOUt5Vm5TMnBhdXhaRnd1ckNoZUFrNTByS1hSUlU0UGxpZ0Q5cEpkSUx0?=
- =?utf-8?B?amI5RTdvYnpwb0VWbVJlYzhNQkEwTGdtVzdzNENoeW5UckwzUEF5MmZPaDZC?=
- =?utf-8?B?eG1TbVgvU3E1N2k4OUlWR1pWZ1ZPRXhhdXJjSEROeCt4U2YxOVlneDlCRWJo?=
- =?utf-8?B?eFdTK0piTjkydGovQ0JXNEFFRWVudTFWSEpZcTJpVmdiZ2xSa1Nvc2NjcXBq?=
- =?utf-8?B?a2habDNRenNjVlVKalN2TEl3cllmZ1FNR1ZsYzlMOHpRbGN0OVViK1lhT0hO?=
- =?utf-8?B?YW96N2hPbTkvN3dFdkpOaXA5bk44UEFoeE5vcThranBKY08xQllvYStZSG0z?=
- =?utf-8?B?Q2ZaaVB0Yk5xVHlLbkFGVkxMbGtIeWkrMUJrWkgxV3pBS29vQ3Y3dGpjaFRn?=
- =?utf-8?B?cVF4SUk0NlcrV0w4dXBMK2lodUFTSUJjR1FXczRtV09PZHVxdnhoc3h1ZzN2?=
- =?utf-8?B?S1FsVGpmdjhtZ3liRGpxNkNEb3M2amtYdTZhL2xTa2JWYjdGWnN2VFlZajR3?=
- =?utf-8?B?VjVNNzVIejJranFTMXNLeW8rU0xDME1jZ3pTTkozYmlCV1FGOTgrcTRocStX?=
- =?utf-8?Q?0HqZ/NjI+c6npunR3LgOXDa29?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <18193282B4075A4D97C5D7F0A9036C25@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+	id 1ui8Sg-00000007NY8-07NR;
+	Sat, 02 Aug 2025 09:23:31 +0000
+Received: from [192.168.0.172] (mob-5-90-138-121.net.vodafone.it [5.90.138.121])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id CDE1F379;
+	Sat,  2 Aug 2025 11:22:26 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1754126560;
+	bh=/CwucPoTSB8D3As+zjvoiuc4x93zR6gcvXt9/Ab/ivI=;
+	h=From:Subject:Date:To:Cc:From;
+	b=LZZyMdaFWHa6y26iE7y4JE05rPB8CXeZCDhhOcwCqussrJCfnIHsciuVBPN5t9jkg
+	 5kYEpgw+FbMmd9rb/1xghUjwPkrZH1/sEfUxVuWv05Fy889OkWsy4rpJClsTFCDOyE
+	 fwvaj0WUscP/5nbJH4GLQgdU54/9lq2NtkH9Kd6Y=
+From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+Subject: [PATCH 00/65] media: Rationalise usage of v4l2_fh
+Date: Sat, 02 Aug 2025 11:22:22 +0200
+Message-Id: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SI2PR03MB5885.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b49e222c-2d30-456b-360e-08ddd1637e3f
-X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Aug 2025 01:25:40.5950
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: rIiyGmVb3/kYeFWcuIoJZbGCCnCAuXTYKOCtDdYYHRcnWCRFxS+qagOi+SfBduIhZ5iudkbRhhJUyMy+49VDtw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR03MB8241
-X-MTK: N
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAM/YjWgC/x3MSwqAMAxF0a1IxgYasShuRRwE+9QM/NCKCOLeL
+ Q7P4N6HEqIhUVc8FHFZsn3LkLKgcdFtBlvIpspV3rVOeEUw5SPapSc46Klce/GtFzSQQDk8Iia
+ 7/2k/vO8HBMBr1GQAAAA=
+X-Change-ID: 20250801-media-private-data-4515851e7e1d
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Devarsh Thakkar <devarsht@ti.com>, Benoit Parrot <bparrot@ti.com>, 
+ Hans Verkuil <hverkuil@kernel.org>, Mike Isely <isely@pobox.com>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Hans de Goede <hansg@kernel.org>, 
+ Parthiban Veerasooran <parthiban.veerasooran@microchip.com>, 
+ Christian Gromm <christian.gromm@microchip.com>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Alex Shi <alexs@kernel.org>, Yanteng Si <si.yanteng@linux.dev>, 
+ Dongliang Mu <dzm91@hust.edu.cn>, Jonathan Corbet <corbet@lwn.net>, 
+ Tomasz Figa <tfiga@chromium.org>, 
+ Marek Szyprowski <m.szyprowski@samsung.com>, 
+ Andy Walls <awalls@md.metrocast.net>, 
+ Michael Tretter <m.tretter@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Bin Liu <bin.liu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Dmitry Osipenko <digetx@gmail.com>, 
+ Thierry Reding <thierry.reding@gmail.com>, 
+ Jonathan Hunter <jonathanh@nvidia.com>, 
+ Mirela Rabulea <mirela.rabulea@nxp.com>, Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
+ Michal Simek <michal.simek@amd.com>, Ming Qian <ming.qian@nxp.com>, 
+ Zhou Peng <eagle.zhou@nxp.com>, 
+ Xavier Roumegue <xavier.roumegue@oss.nxp.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Vikash Garodia <quic_vgarodia@quicinc.com>, 
+ Dikshita Agarwal <quic_dikshita@quicinc.com>, 
+ Abhinav Kumar <abhinav.kumar@linux.dev>, 
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
+ Sylwester Nawrocki <sylvester.nawrocki@gmail.com>, 
+ Jernej Skrabec <jernej.skrabec@gmail.com>, Chen-Yu Tsai <wens@csie.org>, 
+ Samuel Holland <samuel@sholland.org>, 
+ Daniel Almeida <daniel.almeida@collabora.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+ Nas Chung <nas.chung@chipsnmedia.com>, 
+ Jackson Lee <jackson.lee@chipsnmedia.com>, 
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>, 
+ Houlong Wei <houlong.wei@mediatek.com>, 
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
+ Tiffany Lin <tiffany.lin@mediatek.com>, 
+ Yunfei Dong <yunfei.dong@mediatek.com>, 
+ Geert Uytterhoeven <geert+renesas@glider.be>, 
+ Magnus Damm <magnus.damm@gmail.com>, 
+ Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>, 
+ Jacob Chen <jacob-chen@iotwrt.com>, 
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
+ Heiko Stuebner <heiko@sntech.de>, 
+ Detlev Casanova <detlev.casanova@collabora.com>, 
+ Krzysztof Kozlowski <krzk@kernel.org>, 
+ Alim Akhtar <alim.akhtar@samsung.com>, 
+ Sylwester Nawrocki <s.nawrocki@samsung.com>, 
+ =?utf-8?q?=C5=81ukasz_Stelmach?= <l.stelmach@samsung.com>, 
+ Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>, 
+ Jacek Anaszewski <jacek.anaszewski@gmail.com>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Fabien Dessenne <fabien.dessenne@foss.st.com>, 
+ Hugues Fruchet <hugues.fruchet@foss.st.com>, 
+ Jean-Christophe Trotin <jean-christophe.trotin@foss.st.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+ Steve Longerbeam <slongerbeam@gmail.com>, 
+ Maxime Ripard <mripard@kernel.org>, Paul Kocialkowski <paulk@sys-base.io>, 
+ =?utf-8?q?Niklas_S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>, 
+ Robert Foss <rfoss@kernel.org>, Todor Tomov <todor.too@gmail.com>, 
+ Vladimir Zapolskiy <vladimir.zapolskiy@linaro.org>, 
+ Corentin Labbe <clabbe@baylibre.com>, 
+ Sakari Ailus <sakari.ailus@linux.intel.com>, 
+ Bingbu Cao <bingbu.cao@intel.com>, Tianshu Qiu <tian.shu.qiu@intel.com>, 
+ Stanislaw Gruszka <stanislaw.gruszka@linux.intel.com>
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-staging@lists.linux.dev, linux-doc@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-tegra@vger.kernel.org, imx@lists.linux.dev, 
+ linux-renesas-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
+ linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev, 
+ linux-usb@vger.kernel.org, linux-amlogic@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, 
+ linux-stm32@st-md-mailman.stormreply.com, mjpeg-users@lists.sourceforge.net, 
+ Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=14022;
+ i=jacopo.mondi@ideasonboard.com; h=from:subject:message-id;
+ bh=/CwucPoTSB8D3As+zjvoiuc4x93zR6gcvXt9/Ab/ivI=;
+ b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj3I2azCFFgaF5K6ecFezAiX2zQ8xa8jLP7u
+ NmvbEkTWUuJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y9wAKCRByNAaPFqFW
+ PHCVD/9zYdUbtLqCkT3NJEuFfmWvle2Q57iJBekEF2Do+o01RwzCVM2Iy8pzMjQgapnuAXhhEhb
+ FLamEfL0yAUFEGZSp5h/SMxm5G7f8dttq5rLwtAkkMSw+dUp2jcfyNyZeBBHEbCokFzHyzg4Ekb
+ fjGFdutDiZWm/ScUGv6aMFntJuhhB+Z37FWGlX3MjBpPo1VRW9vS92Dxz2RD+Bd5yqUWzO6i6N8
+ o+CE47nbf9zpN8LlJnVOm+nFy22mJOsd6e7Nlord9dmQeqEo4QjTWHtGn+9nKJUzJI3CoR6I+Jj
+ 7YE6H08QKJ9PwoD+mfEQKulTOukxsbjPCs5yy6FX+PXBEGN0irJIYmckSd0XhlIjeO4b6ZBw9en
+ ifZrtu1v0kemCQ+CGaHv3Dzddx1ZHVJiTEuBEDWj82rXYcReLNzeLZCk42ilo8t3rzdJne9Ss7H
+ nnk8y5QZxIMuyU+HpDcgw1zIgVDZ4qzjxslIajnCfmmDxJ5QbrDg8Lq2lacqfaUTcKlNiI77FWe
+ PQoxa9OQItgTzQTBWo34a3dq46YBNAkPlziZA4QMdfRQ45McDNw7+AVsGhVwmCTkFYtmTet9cRE
+ Bu2277ABCKu7ZaTuF/khVf02/5utDenATBy+PiKz6L8kO0TlD7g/x4dgvzYMysYiJHWVT6uwgqA
+ 68mU6u+20OC9CmQ==
+X-Developer-Key: i=jacopo.mondi@ideasonboard.com; a=openpgp;
+ fpr=72392EDC88144A65C701EA9BA5826A2587AD026B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250801_182551_652626_64601B12 
-X-CRM114-Status: GOOD (  16.44  )
+X-CRM114-CacheID: sfid-20250802_022330_358920_702A6E4F 
+X-CRM114-Status: GOOD (  19.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -218,175 +167,250 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCAyMDI1LTA1LTIxIGF0IDE0OjMzICswODAwLCBGcmlkYXkgWWFuZyB3cm90ZToNCj4g
-RnJvbTogIkZyaWRheSBZYW5nIiA8ZnJpZGF5LnlhbmdAbWVkaWF0ZWsuY29tPg0KPiANCj4gVG8g
-cHJldmVudCBoYW5kbGluZyBnbGl0Y2ggc2lnbmFscyBkdXJpbmcgTVRDTU9TIG9uL29mZiB0cmFu
-c2l0aW9ucywNCj4gU01JIHJlcXVpcmVzIGNsYW1wIGFuZCByZXNldCBvcGVyYXRpb25zLiBQYXJz
-ZSB0aGUgcmVzZXQgc2V0dGluZ3MgZm9yDQo+IFNNSSBMQVJCcyBhbmQgdGhlIGNsYW1wIHNldHRp
-bmdzIGZvciB0aGUgU01JIFN1Yi1Db21tb24uIFJlZ2lzdGVyDQo+IGdlbnBkIGNhbGxiYWNrIGZv
-ciB0aGUgU01JIExBUkJzIGxvY2F0ZWQgaW4gaW1hZ2UsIGNhbWVyYSBhbmQgSVBFDQo+IHN1YnN5
-c3RlbXMsIGFuZCBhcHBseSByZXNldCBhbmQgY2xhbXAgb3BlcmF0aW9ucyB3aXRoaW4gdGhlIGNh
-bGxiYWNrLg0KPiANCj4gU2lnbmVkLW9mZi1ieTogRnJpZGF5IFlhbmcgPGZyaWRheS55YW5nQG1l
-ZGlhdGVrLmNvbT4NCj4gUmV2aWV3ZWQtYnk6IEFuZ2Vsb0dpb2FjY2hpbm8gRGVsIFJlZ25vIDwN
-Cj4gYW5nZWxvZ2lvYWNjaGluby5kZWxyZWdub0Bjb2xsYWJvcmEuY29tPg0KPiBBY2tlZC1ieTog
-Um9iIEhlcnJpbmcgPHJvYmhAa2VybmVsLm9yZz4NCj4gDQo+IC0tLQ0KPiAgZHJpdmVycy9tZW1v
-cnkvbXRrLXNtaS5jIHwgMTMzDQo+ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKw0KPiAgMSBmaWxlIGNoYW5nZWQsIDEzMyBpbnNlcnRpb25zKCspDQo+IA0KPiBkaWZmIC0t
-Z2l0IGEvZHJpdmVycy9tZW1vcnkvbXRrLXNtaS5jIGIvZHJpdmVycy9tZW1vcnkvbXRrLXNtaS5j
-DQo+IGluZGV4IGMwODZjMjI1MTFmNy4uZjM3NDVmNTQ5NjI5IDEwMDY0NA0KPiAtLS0gYS9kcml2
-ZXJzL21lbW9yeS9tdGstc21pLmMNCj4gKysrIGIvZHJpdmVycy9tZW1vcnkvbXRrLXNtaS5jDQo+
-IEBAIC0xMCwxMSArMTAsMTUgQEANCj4gICNpbmNsdWRlIDxsaW51eC9lcnIuaD4NCj4gICNpbmNs
-dWRlIDxsaW51eC9pby5oPg0KPiAgI2luY2x1ZGUgPGxpbnV4L2lvcG9sbC5oPg0KPiArI2luY2x1
-ZGUgPGxpbnV4L21mZC9zeXNjb24uaD4NCj4gICNpbmNsdWRlIDxsaW51eC9tb2R1bGUuaD4NCj4g
-ICNpbmNsdWRlIDxsaW51eC9vZi5oPg0KPiAgI2luY2x1ZGUgPGxpbnV4L29mX3BsYXRmb3JtLmg+
-DQo+ICAjaW5jbHVkZSA8bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+DQo+ICsjaW5jbHVkZSA8bGlu
-dXgvcG1fZG9tYWluLmg+DQo+ICAjaW5jbHVkZSA8bGludXgvcG1fcnVudGltZS5oPg0KPiArI2lu
-Y2x1ZGUgPGxpbnV4L3JlZ21hcC5oPg0KPiArI2luY2x1ZGUgPGxpbnV4L3Jlc2V0Lmg+DQo+ICAj
-aW5jbHVkZSA8bGludXgvc29jL21lZGlhdGVrL210a19zaXBfc3ZjLmg+DQo+ICAjaW5jbHVkZSA8
-c29jL21lZGlhdGVrL3NtaS5oPg0KPiAgI2luY2x1ZGUgPGR0LWJpbmRpbmdzL21lbW9yeS9tdDI3
-MDEtbGFyYi1wb3J0Lmg+DQo+IEBAIC0zNiw2ICs0MCwxMiBAQA0KPiAgI2RlZmluZSBTTUlfRENN
-CQkJCTB4MzAwDQo+ICAjZGVmaW5lIFNNSV9EVU1NWQkJCTB4NDQ0DQo+IA0KPiArI2RlZmluZSBT
-TUlfQ09NTU9OX0NMQU1QX0VOCQkweDNjMA0KDQpOb3QgdXNlZC4gcmVtb3ZlIHRoaXMuDQoNCj4g
-KyNkZWZpbmUgU01JX0NPTU1PTl9DTEFNUF9FTl9TRVQJCTB4M2M0DQo+ICsjZGVmaW5lIFNNSV9D
-T01NT05fQ0xBTVBfRU5fQ0xSCQkweDNjOA0KDQpTb3J0IGJ5IHRoZSBhZGRyZXNzLiBwdXQgYWJv
-dmUgMHg0NDQuDQoNCj4gKw0KPiArI2RlZmluZSBTTUlfU1VCX0NPTU1fSU5QT1JUX05SCQkoOCkN
-Cg0KTm90IHVzZWQuIHJlbW92ZSB0aGlzLg0KDQo+ICsNCj4gIC8qIFNNSSBMQVJCICovDQo+ICAj
-ZGVmaW5lIFNNSV9MQVJCX1NMUF9DT04gICAgICAgICAgICAgICAgMHhjDQo+ICAjZGVmaW5lIFNM
-UF9QUk9UX0VOICAgICAgICAgICAgICAgICAgICAgQklUKDApDQo+IEBAIC0xMzQsNiArMTQ0LDcg
-QEAgc3RydWN0IG10a19zbWlfbGFyYl9nZW4gew0KPiAgCXVuc2lnbmVkIGludAkJCWxhcmJfZGly
-ZWN0X3RvX2NvbW1vbl9tYXNrOw0KPiAgCXVuc2lnbmVkIGludAkJCWZsYWdzX2dlbmVyYWw7DQo+
-ICAJY29uc3QgdTgJCQkoKm9zdGQpW1NNSV9MQVJCX1BPUlRfTlJfTUFYXTsNCj4gKwljb25zdCB1
-OAkJCSpjbGFtcF9wb3J0Ow0KPiAgfTsNCj4gDQo+ICBzdHJ1Y3QgbXRrX3NtaSB7DQo+IEBAIC0x
-NTAsNiArMTYxLDcgQEAgc3RydWN0IG10a19zbWkgew0KPiAgfTsNCj4gDQo+ICBzdHJ1Y3QgbXRr
-X3NtaV9sYXJiIHsgLyogbGFyYjogbG9jYWwgYXJiaXRlciAqLw0KPiArCXN0cnVjdCBkZXZpY2UJ
-CQkqZGV2Ow0KPiAgCXN0cnVjdCBtdGtfc21pCQkJc21pOw0KPiAgCXZvaWQgX19pb21lbQkJCSpi
-YXNlOw0KPiAgCXN0cnVjdCBkZXZpY2UJCQkqc21pX2NvbW1vbl9kZXY7IC8qIGNvbW1vbiBvcg0K
-PiBzdWItY29tbW9uIGRldiAqLw0KPiBAQCAtMTU3LDYgKzE2OSwxMCBAQCBzdHJ1Y3QgbXRrX3Nt
-aV9sYXJiIHsgLyogbGFyYjogbG9jYWwgYXJiaXRlciAqLw0KPiAgCWludAkJCQlsYXJiaWQ7DQo+
-ICAJdTMyCQkJCSptbXU7DQo+ICAJdW5zaWduZWQgY2hhcgkJCSpiYW5rOw0KPiArCXN0cnVjdCBy
-ZWdtYXAJCQkqc3ViX2NvbW1fc3lzY29uOw0KDQpUaGlzIGlzIGFsc28gb2sgd2hlbiB0aGUgcGFy
-ZW50IGlzIHNtaS1jb21tb24sIG5vdCBqdXN0IHNtaS1zdWItY29tbS4NCnRodXMsIHBlcnNvbmFs
-eSBJJ2QgbGlrZSB0byByZW5hbWUgdG8gc29tZXRoaW5nIGxpa2U6DQoNCiAgICAgICBzdHJ1Y3Qg
-cmVnbWFwICpzbWlfY29tbV9zeXNjb247IC8qIHNtaS1jb21tIG9yIHN1Yl9jb21tICovDQoNCj4g
-Kwl1OAkJCQlzdWJfY29tbV9pbnBvcnQ7DQogICAgICANCmFsc28gcmVuYW1lIHRvIHNtaV9jb21t
-X2lucG9ydF9pZC4NCg0KPiArCXN0cnVjdCBub3RpZmllcl9ibG9jawkJbmI7DQo+ICsJc3RydWN0
-IHJlc2V0X2NvbnRyb2wJCSpyc3RfY29uOw0KPiAgfTsNCj4gDQo+ICBzdGF0aWMgaW50DQo+IEBA
-IC00NDYsNiArNDYyLDE5IEBAIHN0YXRpYyBjb25zdCB1OA0KPiBtdGtfc21pX2xhcmJfbXQ4MTk1
-X29zdGRbXVtTTUlfTEFSQl9QT1JUX05SX01BWF0gPSB7DQo+ICAJWzI4XSA9IHsweDFhLCAweDBl
-LCAweDBhLCAweDBhLCAweDBjLCAweDBlLCAweDEwLH0sDQo+ICB9Ow0KPiANCj4gK3N0YXRpYyBj
-b25zdCB1OCBtdGtfc21pX2xhcmJfY2xhbXBfcG9ydF9tdDgxODhbTVRLX0xBUkJfTlJfTUFYXSA9
-IHsNCj4gKwlbOV0JPSBCSVQoMSksIC8qIGxhcmIxMCAqLw0KPiArCVsxMF0JPSBCSVQoMiksIC8q
-IGxhcmIxMWEgKi8NCj4gKwlbMTFdCT0gQklUKDIpLCAvKiBsYXJiMTFiICovDQo+ICsJWzEyXQk9
-IEJJVCgzKSwgLyogbGFyYjExYyAqLw0KPiArCVsxM10JPSBCSVQoMCksIC8qIGxhcmIxMiAqLw0K
-PiArCVsxNl0JPSBCSVQoMSksIC8qIGxhcmIxNSAqLw0KPiArCVsxN10JPSBCSVQoMiksIC8qIGxh
-cmIxNmEgKi8NCj4gKwlbMThdCT0gQklUKDIpLCAvKiBsYXJiMTZiICovDQo+ICsJWzE5XQk9IEJJ
-VCgzKSwgLyogbGFyYjE3YSAqLw0KPiArCVsyMF0JPSBCSVQoMyksIC8qIGxhcmIxN2IgKi8NCj4g
-K307DQo+ICsNCj4gIHN0YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX3NtaV9sYXJiX2dlbiBtdGtfc21p
-X2xhcmJfbXQyNzAxID0gew0KPiAgCS5wb3J0X2luX2xhcmIgPSB7DQo+ICAJCUxBUkIwX1BPUlRf
-T0ZGU0VULCBMQVJCMV9QT1JUX09GRlNFVCwNCj4gQEAgLTQ5OCw2ICs1MjcsNyBAQCBzdGF0aWMg
-Y29uc3Qgc3RydWN0IG10a19zbWlfbGFyYl9nZW4NCj4gbXRrX3NtaV9sYXJiX210ODE4OCA9IHsN
-Cj4gIAkuZmxhZ3NfZ2VuZXJhbAkgICAgICAgICAgICA9IE1US19TTUlfRkxBR19USFJUX1VQREFU
-RSB8DQo+IE1US19TTUlfRkxBR19TV19GTEFHIHwNCj4gIAkJCQkgICAgICBNVEtfU01JX0ZMQUdf
-U0xFRVBfQ1RMIHwNCj4gTVRLX1NNSV9GTEFHX0NGR19QT1JUX1NFQ19DVEwsDQo+ICAJLm9zdGQJ
-CSAgICAgICAgICAgID0gbXRrX3NtaV9sYXJiX210ODE4OF9vc3RkLA0KPiArCS5jbGFtcF9wb3J0
-ICAgICAgICAgICAgICAgICA9IG10a19zbWlfbGFyYl9jbGFtcF9wb3J0X210ODE4OCwNCj4gIH07
-DQo+IA0KPiAgc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfc21pX2xhcmJfZ2VuIG10a19zbWlfbGFy
-Yl9tdDgxOTIgPSB7DQo+IEBAIC01NDksNiArNTc5LDQ2IEBAIHN0YXRpYyB2b2lkDQo+IG10a19z
-bWlfbGFyYl9zbGVlcF9jdHJsX2Rpc2FibGUoc3RydWN0IG10a19zbWlfbGFyYiAqbGFyYikNCj4g
-IAl3cml0ZWxfcmVsYXhlZCgwLCBsYXJiLT5iYXNlICsgU01JX0xBUkJfU0xQX0NPTik7DQo+ICB9
-DQo+IA0KPiArc3RhdGljIGludCBtdGtfc21pX2xhcmJfY2xhbXBfcHJvdGVjdF9lbmFibGUoc3Ry
-dWN0IGRldmljZSAqZGV2LA0KPiBib29sIGVuYWJsZSkNCj4gK3sNCj4gKwlzdHJ1Y3QgbXRrX3Nt
-aV9sYXJiICpsYXJiID0gZGV2X2dldF9kcnZkYXRhKGRldik7DQo+ICsJdTMyIHJlZzsNCj4gKwlp
-bnQgcmV0Ow0KPiArDQo+ICsJLyogc3ViX2NvbW1fc3lzY29uIGNvdWxkIGJlIE5VTEwgaWYgbGFy
-YiBkaXJlY3RseSBsaW5rZWQgdG8gU01JDQo+IGNvbW1vbiAqLw0KPiArCWlmICghbGFyYi0+c3Vi
-X2NvbW1fc3lzY29uKQ0KPiArCQlyZXR1cm4gLUVJTlZBTDsNCj4gKw0KPiArCXJlZyA9IGVuYWJs
-ZSA/IFNNSV9DT01NT05fQ0xBTVBfRU5fU0VUIDoNCj4gU01JX0NPTU1PTl9DTEFNUF9FTl9DTFI7
-DQo+ICsNCj4gKwlyZXQgPSByZWdtYXBfd3JpdGUobGFyYi0+c3ViX2NvbW1fc3lzY29uLCByZWcs
-DQo+ICsJCQkgICBsYXJiLT5zdWJfY29tbV9pbnBvcnQpOw0KDQpvbmUgbGluZS4NCg0KPiArCWlm
-IChyZXQpDQo+ICsJCWRldl9lcnIoZGV2LCAiVW5hYmxlIHRvICVzIGNsYW1wIGZvciBpbnB1dCBw
-b3J0ICVkOg0KPiAlZFxuIiwNCj4gKwkJCWVuYWJsZSA/ICJlbmFibGUiIDogImRpc2FibGUiLA0K
-PiArCQkJbGFyYi0+c3ViX2NvbW1faW5wb3J0LCByZXQpOw0KPiArDQo+ICsJcmV0dXJuIHJldDsN
-Cj4gK30NCj4gKw0KPiArc3RhdGljIGludCBtdGtfc21pX2dlbnBkX2NhbGxiYWNrKHN0cnVjdCBu
-b3RpZmllcl9ibG9jayAqbmIsDQo+ICsJCQkJICB1bnNpZ25lZCBsb25nIGZsYWdzLCB2b2lkICpk
-YXRhKQ0KPiArew0KPiArCXN0cnVjdCBtdGtfc21pX2xhcmIgKmxhcmIgPSBjb250YWluZXJfb2Yo
-bmIsIHN0cnVjdA0KPiBtdGtfc21pX2xhcmIsIG5iKTsNCj4gKwlzdHJ1Y3QgZGV2aWNlICpkZXYg
-PSBsYXJiLT5kZXY7DQo+ICsNCj4gKwlpZiAoZmxhZ3MgPT0gR0VOUERfTk9USUZZX1BSRV9PTiB8
-fCBmbGFncyA9PQ0KPiBHRU5QRF9OT1RJRllfUFJFX09GRikgew0KPiArCQkvKiBkaXNhYmxlIHJl
-bGF0ZWQgU01JIHN1Yi1jb21tb24gcG9ydCAqLw0KPiArCQltdGtfc21pX2xhcmJfY2xhbXBfcHJv
-dGVjdF9lbmFibGUoZGV2LCB0cnVlKTsNCj4gKwl9IGVsc2UgaWYgKGZsYWdzID09IEdFTlBEX05P
-VElGWV9PTikgew0KPiArCQkvKiBlbmFibGUgcmVsYXRlZCBTTUkgc3ViLWNvbW1vbiBwb3J0ICov
-DQo+ICsJCXJlc2V0X2NvbnRyb2xfcmVzZXQobGFyYi0+cnN0X2Nvbik7DQo+ICsJCW10a19zbWlf
-bGFyYl9jbGFtcF9wcm90ZWN0X2VuYWJsZShkZXYsIGZhbHNlKTsNCj4gKwl9DQo+ICsNCj4gKwly
-ZXR1cm4gTk9USUZZX09LOw0KPiArfQ0KPiArDQo+ICBzdGF0aWMgaW50IG10a19zbWlfZGV2aWNl
-X2xpbmtfY29tbW9uKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0DQo+IGRldmljZSAqKmNvbV9k
-ZXYpDQo+ICB7DQo+ICAJc3RydWN0IHBsYXRmb3JtX2RldmljZSAqc21pX2NvbV9wZGV2Ow0KPiBA
-QCAtNjA1LDYgKzY3NSw1MyBAQCBzdGF0aWMgaW50IG10a19zbWlfZHRzX2Nsa19pbml0KHN0cnVj
-dCBkZXZpY2UNCj4gKmRldiwgc3RydWN0IG10a19zbWkgKnNtaSwNCj4gIAlyZXR1cm4gcmV0Ow0K
-PiAgfQ0KPiANCj4gK3N0YXRpYyBpbnQgbXRrX3NtaV9sYXJiX3BhcnNlX2NsYW1wX29wdGlvbmFs
-KHN0cnVjdCBtdGtfc21pX2xhcmINCj4gKmxhcmIpDQo+ICt7DQo+ICsJc3RydWN0IGRldmljZSAq
-ZGV2ID0gbGFyYi0+ZGV2Ow0KPiArCWNvbnN0IHN0cnVjdCBtdGtfc21pX2xhcmJfZ2VuICpsYXJi
-X2dlbiA9IGxhcmItPmxhcmJfZ2VuOw0KPiArCXUzMiBsYXJiX2lkOw0KPiArCWludCByZXQ7DQo+
-ICsNCj4gKwkvKg0KPiArCSAqIE9ubHkgU01JIExBUkJzIGluIGNhbWVyYSwgaW1hZ2UgYW5kIElQ
-RSBzdWJzeXMgbmVlZCB0bw0KPiArCSAqIGFwcGx5IGNsYW1wIGFuZCByZXNldCBvcGVyYXRpb25z
-LCBvdGhlcnMgY2FuIGJlIHNraXBwZWQuDQo+ICsJICovDQo+ICsJcmV0ID0gb2ZfcHJvcGVydHlf
-cmVhZF91MzIoZGV2LT5vZl9ub2RlLCAibWVkaWF0ZWssbGFyYi1pZCIsDQo+ICZsYXJiX2lkKTsN
-Cj4gKwlpZiAocmV0KQ0KPiArCQlyZXR1cm4gLUVJTlZBTDsNCj4gKwlpZiAoIWxhcmJfZ2VuLT5j
-bGFtcF9wb3J0IHx8ICFsYXJiX2dlbi0+Y2xhbXBfcG9ydFtsYXJiX2lkXSkNCj4gKwkJcmV0dXJu
-IDA7DQo+ICsNCj4gKwlsYXJiLT5zdWJfY29tbV9pbnBvcnQgPSBsYXJiX2dlbi0+Y2xhbXBfcG9y
-dFtsYXJiX2lkXTsNCj4gKwlsYXJiLT5zdWJfY29tbV9zeXNjb24gPSBzeXNjb25fcmVnbWFwX2xv
-b2t1cF9ieV9waGFuZGxlKGRldi0NCj4gPm9mX25vZGUsDQo+ICsJCQkJCQkJCSJtZWRpYXQNCj4g
-ZWssc21pIik7DQo+ICsJaWYgKElTX0VSUihsYXJiLT5zdWJfY29tbV9zeXNjb24pKSB7DQo+ICsJ
-CWxhcmItPnN1Yl9jb21tX3N5c2NvbiA9IE5VTEw7DQo+ICsJCXJldHVybiBkZXZfZXJyX3Byb2Jl
-KGRldiwgLUVJTlZBTCwNCj4gKwkJCQkgICAgICJVbmtub3duIGNsYW1wIHBvcnQgZm9yIGxhcmIN
-Cj4gJWRcbiIsIGxhcmJfaWQpOw0KPiArCX0NCj4gKw0KPiArCXJldHVybiAwOw0KPiArfQ0KPiAr
-DQo+ICtzdGF0aWMgaW50IG10a19zbWlfbGFyYl9wYXJzZV9yZXNldF9vcHRpb25hbChzdHJ1Y3Qg
-bXRrX3NtaV9sYXJiDQo+ICpsYXJiKQ0KPiArew0KPiArCXN0cnVjdCBkZXZpY2UgKmRldiA9IGxh
-cmItPmRldjsNCj4gKwlpbnQgcmV0Ow0KPiArDQo+ICsJbGFyYi0+cnN0X2NvbiA9IGRldm1fcmVz
-ZXRfY29udHJvbF9nZXRfb3B0aW9uYWxfZXhjbHVzaXZlKGRldiwNCj4gImxhcmIiKTsNCj4gKwlp
-ZiAoIWxhcmItPnJzdF9jb24pDQo+ICsJCXJldHVybiAwOw0KPiArDQo+ICsJbGFyYi0+bmIubm90
-aWZpZXJfY2FsbCA9IG10a19zbWlfZ2VucGRfY2FsbGJhY2s7DQo+ICsJcmV0ID0gZGV2X3BtX2dl
-bnBkX2FkZF9ub3RpZmllcihkZXYsICZsYXJiLT5uYik7DQoNCkFkZCBkZXZfcG1fZ2VucGRfcmVt
-b3ZlX25vdGlmaWVyIGluIGxhcmJfcmVtb3ZlLg0KDQpUaGFua3MuDQoNCj4gKwlpZiAocmV0KQ0K
-PiArCQlyZXR1cm4gZGV2X2Vycl9wcm9iZShkZXYsIC1FSU5WQUwsDQo+ICsJCQkJICAgICAiRmFp
-bGVkIHRvIGFkZCBnZW5wZCBjYWxsYmFjaw0KPiAlZFxuIiwgcmV0KTsNCj4gKw0KPiArCXJldHVy
-biAwOw0KPiArfQ0KPiArDQo+ICBzdGF0aWMgaW50IG10a19zbWlfbGFyYl9wcm9iZShzdHJ1Y3Qg
-cGxhdGZvcm1fZGV2aWNlICpwZGV2KQ0KPiAgew0KPiAgCXN0cnVjdCBtdGtfc21pX2xhcmIgKmxh
-cmI7DQo+IEBAIC02MTUsNiArNzMyLDcgQEAgc3RhdGljIGludCBtdGtfc21pX2xhcmJfcHJvYmUo
-c3RydWN0DQo+IHBsYXRmb3JtX2RldmljZSAqcGRldikNCj4gIAlpZiAoIWxhcmIpDQo+ICAJCXJl
-dHVybiAtRU5PTUVNOw0KPiANCj4gKwlsYXJiLT5kZXYgPSBkZXY7DQo+ICAJbGFyYi0+bGFyYl9n
-ZW4gPSBvZl9kZXZpY2VfZ2V0X21hdGNoX2RhdGEoZGV2KTsNCj4gIAlsYXJiLT5iYXNlID0gZGV2
-bV9wbGF0Zm9ybV9pb3JlbWFwX3Jlc291cmNlKHBkZXYsIDApOw0KPiAgCWlmIChJU19FUlIobGFy
-Yi0+YmFzZSkpDQo+IEBAIC02MzEsNiArNzQ5LDE0IEBAIHN0YXRpYyBpbnQgbXRrX3NtaV9sYXJi
-X3Byb2JlKHN0cnVjdA0KPiBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpDQo+ICAJaWYgKHJldCA8IDAp
-DQo+ICAJCXJldHVybiByZXQ7DQo+IA0KPiArCXJldCA9IG10a19zbWlfbGFyYl9wYXJzZV9jbGFt
-cF9vcHRpb25hbChsYXJiKTsNCj4gKwlpZiAocmV0KQ0KPiArCQlnb3RvIGVycl9saW5rX3JlbW92
-ZTsNCj4gKw0KPiArCXJldCA9IG10a19zbWlfbGFyYl9wYXJzZV9yZXNldF9vcHRpb25hbChsYXJi
-KTsNCj4gKwlpZiAocmV0KQ0KPiArCQlnb3RvIGVycl9saW5rX3JlbW92ZTsNCj4gKw0KPiAgCXBt
-X3J1bnRpbWVfZW5hYmxlKGRldik7DQo+ICAJcGxhdGZvcm1fc2V0X2RydmRhdGEocGRldiwgbGFy
-Yik7DQo+ICAJcmV0ID0gY29tcG9uZW50X2FkZChkZXYsICZtdGtfc21pX2xhcmJfY29tcG9uZW50
-X29wcyk7DQo+IEBAIC02NDAsNiArNzY2LDcgQEAgc3RhdGljIGludCBtdGtfc21pX2xhcmJfcHJv
-YmUoc3RydWN0DQo+IHBsYXRmb3JtX2RldmljZSAqcGRldikNCj4gDQo+ICBlcnJfcG1fZGlzYWJs
-ZToNCj4gIAlwbV9ydW50aW1lX2Rpc2FibGUoZGV2KTsNCj4gK2Vycl9saW5rX3JlbW92ZToNCj4g
-IAlkZXZpY2VfbGlua19yZW1vdmUoZGV2LCBsYXJiLT5zbWlfY29tbW9uX2Rldik7DQo+ICAJcmV0
-dXJuIHJldDsNCj4gIH0NCj4gQEAgLTc3MCw2ICs4OTcsMTEgQEAgc3RhdGljIGNvbnN0IHN0cnVj
-dCBtdGtfc21pX2NvbW1vbl9wbGF0DQo+IG10a19zbWlfY29tbW9uX210ODE4OF92cHAgPSB7DQo+
-ICAJLmluaXQgICAgID0gbXRrX3NtaV9jb21tb25fbXQ4MTk1X2luaXQsDQo+ICB9Ow0KPiANCj4g
-K3N0YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX3NtaV9jb21tb25fcGxhdCBtdGtfc21pX3N1Yl9jb21t
-b25fbXQ4MTg4ID0NCj4gew0KPiArCS50eXBlICAgICA9IE1US19TTUlfR0VOMl9TVUJfQ09NTSwN
-Cj4gKwkuaGFzX2dhbHMgPSB0cnVlLA0KPiArfTsNCj4gKw0KPiAgc3RhdGljIGNvbnN0IHN0cnVj
-dCBtdGtfc21pX2NvbW1vbl9wbGF0IG10a19zbWlfY29tbW9uX210ODE5MiA9IHsNCj4gIAkudHlw
-ZSAgICAgPSBNVEtfU01JX0dFTjIsDQo+ICAJLmhhc19nYWxzID0gdHJ1ZSwNCj4gQEAgLTgxNCw2
-ICs5NDYsNyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZA0KPiBtdGtfc21pX2Nv
-bW1vbl9vZl9pZHNbXSA9IHsNCj4gIAl7LmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTg2LXNt
-aS1jb21tb24iLCAuZGF0YSA9DQo+ICZtdGtfc21pX2NvbW1vbl9tdDgxODZ9LA0KPiAgCXsuY29t
-cGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxODgtc21pLWNvbW1vbi12ZG8iLCAuZGF0YSA9DQo+ICZt
-dGtfc21pX2NvbW1vbl9tdDgxODhfdmRvfSwNCj4gIAl7LmNvbXBhdGlibGUgPSAibWVkaWF0ZWss
-bXQ4MTg4LXNtaS1jb21tb24tdnBwIiwgLmRhdGEgPQ0KPiAmbXRrX3NtaV9jb21tb25fbXQ4MTg4
-X3ZwcH0sDQo+ICsJey5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE4OC1zbWktc3ViLWNvbW1v
-biIsIC5kYXRhID0NCj4gJm10a19zbWlfc3ViX2NvbW1vbl9tdDgxODh9LA0KPiAgCXsuY29tcGF0
-aWJsZSA9ICJtZWRpYXRlayxtdDgxOTItc21pLWNvbW1vbiIsIC5kYXRhID0NCj4gJm10a19zbWlf
-Y29tbW9uX210ODE5Mn0sDQo+ICAJey5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE5NS1zbWkt
-Y29tbW9uLXZkbyIsIC5kYXRhID0NCj4gJm10a19zbWlfY29tbW9uX210ODE5NV92ZG99LA0KPiAg
-CXsuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxOTUtc21pLWNvbW1vbi12cHAiLCAuZGF0YSA9
-DQo+ICZtdGtfc21pX2NvbW1vbl9tdDgxOTVfdnBwfSwNCj4gLS0NCj4gMi40Ni4wDQo+IA0K
+The v4l2_fh abstraction layer provides to drivers support to represent
+per-open file handle context and associate driver-specific data to them.
+
+Currently drivers that do not require custom per-file handle data can
+use the v4l2_fh_open() and v4l2_fh_release() helpers as handlers
+v4l2_file_operations open() and close() functions. The two helpers
+set the file->private_data pointer to the newly allocated v4l2_fh.
+
+Drivers that instead store per-file handle data and represent them with
+driver-specific types that embed an instance of struct v4l2_fh have
+instead to use different helpers: v4l2_fh_init() and v4l2_fh_add() it's
+their responsibility to initialize file->private_data with what they
+consider more opportune.
+
+Unfortunately this leads to inconsistencies and slightly different
+implementations in drivers, which increase the maintenance burden.
+
+The series starts with patches from Laurent to address some of
+these inconsistencies. Some drivers in-facts set the file->private_data
+pointer to their own driver-specific types that embed the v4l2_fh.
+As the driver-specific type can be accessed with a simple container_of
+we can make all drivers set file->private_data to point to the v4l2_fh
+to make all the code base use the same pattern.
+
+Once all drivers have been made consistent we can modify the framework
+to automate the file->private_data initialisation by modifying
+v4l2_fh_add() to set file->private_data to the v4l2_fh allocated by
+drivers as part of their private structures. Once that's done we can now
+remove all direct accesses to file->private_data by providing the
+file_to_v4l2_fh helper.
+
+Now that all drivers that use v4l2_fh are guaranteed to have
+file->private_data initialised we can remove accesses to the 'void
+*priv' filed provided by v4l2-ioctl to drivers to make sure they always
+go through the file * and retrieve the driver specific type from the
+v4l2_fh there embedded. This guarantees a more robust data type layout
+and make usage of v4l2_fh more consistent and clear across the code
+base.
+
+Once that's done, the v4l2-ioctl layer can be modified to stop passing
+file->private_data as the second argument to all ioctl handlers, as it
+is not ideal to have access to the same data through two different entry
+point.
+
+As mentioned in the commit message of the last patch, there are plans to
+re-use the second ioctl argument to provide drivers a
+video_device_state. This patch series paves the way for that by making
+sure the argument can be re-used safely.
+
+Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+---
+Jacopo Mondi (36):
+      media: rcar-vin: Do not set file->private_data
+      media: rzg2l-cru: Do not set file->private_data
+      media: camss: Remove custom .release fop()
+      media: v4l2-ioctl: Access v4l2_fh from private_data
+      media: allegro: Access v4l2_fh from file
+      media: meson-ge2d: Access v4l2_fh from file
+      media: coda: Access v4l2_fh from file
+      media: wave5: Access v4l2_fh from file
+      media: m2m-deinterlace: Access v4l2_fh from file
+      media: mtk: jpeg: Access v4l2_fh from file->private_data
+      media: mtk_mdp_m2m: Access v4l2_fh from file
+      media: mtk: mdp3: Access v4l2_fh from file
+      media: mtk: vcodec: Access v4l2_fh from file
+      media: tegra-vde: Access v4l2_fh from file
+      media: imx-jpeg: Access v4l2_fh from file
+      media: imx-isi: Access v4l2_fh from file
+      media: nxp: mx2: Access v4l2_fh from file
+      media: renesas: Access v4l2_fh from file
+      media: rockhip: rga: Access v4l2_fh from file
+      media: rockchip: rkvdec: Access v4l2_fh from file
+      media: exynos-gsc: Access v4l2_fh from file
+      media: exynos4-is: Access v4l2_fh from file
+      media: s3c-camif: Set queue owner using file
+      media: s5p-g2d: Access v4l2_fh from file
+      media: s5p-jpeg: Access v4l2_fh from file
+      media: s5p-mfc: Access v4l2_fh from file
+      media: bdisp: Access v4l2_fh from file
+      media: st: delta: Access v4l2_fh from file
+      media: stm32: dma2d: Access v4l2_fh from file
+      media: omap3isp: Access v4l2_fh from file
+      media: cx18:  Access v4l2_fh from file
+      media: ivtv: Access v4l2_fh from file
+      media: zoran: Remove access to __fh
+      media: usb: hdpvr: Access v4l2_fh from file
+      media: usb: uvc: Access v4l2_fh from file
+      media: staging: imx: Access v4l2_fh from file
+
+Laurent Pinchart (29):
+      media: pci: saa7164: Store v4l2_fh pointer in file->private_data
+      media: imagination: Store v4l2_fh pointer in file->private_data
+      media: ti: vpe: Store v4l2_fh pointer in file->private_data
+      media: usb: hdpvr: Store v4l2_fh pointer in file->private_data
+      media: usb: pvrusb2: Store v4l2_fh pointer in file->private_data
+      media: usb: uvcvideo: Store v4l2_fh pointer in file->private_data
+      media: staging: most: Store v4l2_fh pointer in file->private_data
+      media: Wrap file->private_data access with a helper function
+      media: Replace file->private_data access with file_to_v4l2_fh()
+      media: nvidia: tegra-vde: Replace file->private_data access
+      media: Replace file->private_data access with custom functions
+      media: pci: ivtv: Don't create fake v4l2_fh
+      media: amphion: Make some vpu_v4l2 functions static
+      media: amphion: Delete v4l2_fh synchronously in .release()
+      media: visl: Drop visl_v4l2fh_to_ctx() function
+      media: v4l2-fh: Move piece of documentation to correct function
+      media: camss: Replace .open() file operation with v4l2_fh_open()
+      media: chips-media: wave5: Pass file pointer to wave5_cleanup_instance()
+      media: qcom: iris: Pass file pointer to iris_v4l2_fh_(de)init()
+      media: qcom: iris: Set file->private_data in iris_v4l2_fh_(de)init()
+      media: qcom: iris: Drop unused argument to iris_get_inst()
+      media: qcom: venus: Pass file pointer to venus_close_common()
+      media: Set file->private_data in v4l2_fh_add()
+      media: Reset file->private_data to NULL in v4l2_fh_del()
+      media: hantro: Access v4l2_fh from file->private_data
+      media: v4l2-ctrls: Move v4l2_fh retrieval after V4L2_FL_USES_V4L2_FH check
+      media: ipu6: isys: Don't set V4L2_FL_USES_V4L2_FH manually
+      media: staging: ipu7: isys: Don't set V4L2_FL_USES_V4L2_FH manually
+      media: v4l2-ioctl: Stop passing fh pointer to ioctl handlers
+
+ Documentation/driver-api/media/v4l2-fh.rst         |  56 ++---
+ .../zh_CN/video4linux/v4l2-framework.txt           |  11 +-
+ drivers/media/common/videobuf2/videobuf2-v4l2.c    |   2 +-
+ drivers/media/pci/cx18/cx18-driver.h               |   2 +-
+ drivers/media/pci/cx18/cx18-fileops.c              |  11 +-
+ drivers/media/pci/cx18/cx18-ioctl.c                |  64 +++---
+ drivers/media/pci/intel/ipu6/ipu6-isys-video.c     |   1 -
+ drivers/media/pci/ivtv/ivtv-alsa-pcm.c             |   2 -
+ drivers/media/pci/ivtv/ivtv-driver.h               |   7 +-
+ drivers/media/pci/ivtv/ivtv-fileops.c              |  40 ++--
+ drivers/media/pci/ivtv/ivtv-ioctl.c                | 124 +++++------
+ drivers/media/pci/ivtv/ivtv-irq.c                  |   4 +-
+ drivers/media/pci/saa7164/saa7164-encoder.c        |  30 ++-
+ drivers/media/pci/saa7164/saa7164-vbi.c            |  25 ++-
+ drivers/media/pci/saa7164/saa7164.h                |  10 +
+ drivers/media/pci/zoran/zoran.h                    |   6 -
+ drivers/media/pci/zoran/zoran_driver.c             |   3 +-
+ drivers/media/platform/allegro-dvt/allegro-core.c  |  32 +--
+ drivers/media/platform/amlogic/meson-ge2d/ge2d.c   |  25 ++-
+ drivers/media/platform/amphion/vpu.h               |   2 +-
+ drivers/media/platform/amphion/vpu_v4l2.c          |  22 +-
+ drivers/media/platform/amphion/vpu_v4l2.h          |   8 -
+ .../media/platform/chips-media/coda/coda-common.c  |  50 +++--
+ .../platform/chips-media/wave5/wave5-helper.c      |  10 +-
+ .../platform/chips-media/wave5/wave5-helper.h      |   2 +-
+ .../platform/chips-media/wave5/wave5-vpu-dec.c     |  23 +-
+ .../platform/chips-media/wave5/wave5-vpu-enc.c     |  29 ++-
+ .../media/platform/chips-media/wave5/wave5-vpu.h   |   5 +
+ .../media/platform/imagination/e5010-jpeg-enc.c    |  23 +-
+ .../media/platform/imagination/e5010-jpeg-enc.h    |   5 +
+ drivers/media/platform/m2m-deinterlace.c           |  26 ++-
+ .../media/platform/mediatek/jpeg/mtk_jpeg_core.c   |  37 ++--
+ drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c  |  29 ++-
+ .../media/platform/mediatek/mdp3/mtk-mdp3-m2m.c    |  25 ++-
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec.c       |  36 ++--
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c   |   9 +-
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h   |   5 +
+ .../mediatek/vcodec/encoder/mtk_vcodec_enc.c       |  37 ++--
+ .../mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c   |   9 +-
+ .../mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h   |   4 +-
+ drivers/media/platform/nvidia/tegra-vde/v4l2.c     |  35 ++-
+ drivers/media/platform/nxp/dw100/dw100.c           |   7 +-
+ drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c     |  45 ++--
+ drivers/media/platform/nxp/imx-pxp.c               |   7 +-
+ drivers/media/platform/nxp/imx8-isi/imx8-isi-m2m.c |  21 +-
+ drivers/media/platform/nxp/mx2_emmaprp.c           |  24 ++-
+ drivers/media/platform/qcom/camss/camss-video.c    |  43 +---
+ drivers/media/platform/qcom/iris/iris_vidc.c       |  36 ++--
+ drivers/media/platform/qcom/venus/core.c           |   4 +-
+ drivers/media/platform/qcom/venus/core.h           |   4 +-
+ drivers/media/platform/qcom/venus/vdec.c           |   5 +-
+ drivers/media/platform/qcom/venus/venc.c           |   5 +-
+ .../media/platform/renesas/rcar-vin/rcar-v4l2.c    |   2 -
+ drivers/media/platform/renesas/rcar_fdp1.c         |  17 +-
+ drivers/media/platform/renesas/rcar_jpu.c          |  27 ++-
+ .../media/platform/renesas/rzg2l-cru/rzg2l-video.c |   1 -
+ drivers/media/platform/renesas/vsp1/vsp1_histo.c   |   6 +-
+ drivers/media/platform/renesas/vsp1/vsp1_video.c   |  18 +-
+ drivers/media/platform/rockchip/rga/rga.c          |  16 +-
+ drivers/media/platform/rockchip/rga/rga.h          |   5 +
+ drivers/media/platform/rockchip/rkvdec/rkvdec.c    |  21 +-
+ drivers/media/platform/rockchip/rkvdec/rkvdec.h    |   4 +-
+ .../media/platform/samsung/exynos-gsc/gsc-core.h   |   6 +-
+ .../media/platform/samsung/exynos-gsc/gsc-m2m.c    |  37 ++--
+ .../media/platform/samsung/exynos4-is/fimc-core.h  |   5 +-
+ .../media/platform/samsung/exynos4-is/fimc-m2m.c   |  19 +-
+ .../platform/samsung/s3c-camif/camif-capture.c     |  26 +--
+ drivers/media/platform/samsung/s5p-g2d/g2d.c       |  22 +-
+ .../media/platform/samsung/s5p-jpeg/jpeg-core.c    |  33 ++-
+ drivers/media/platform/samsung/s5p-mfc/s5p_mfc.c   |  13 +-
+ .../platform/samsung/s5p-mfc/s5p_mfc_common.h      |   6 +
+ .../media/platform/samsung/s5p-mfc/s5p_mfc_dec.c   |  22 +-
+ .../media/platform/samsung/s5p-mfc/s5p_mfc_enc.c   |  24 +--
+ drivers/media/platform/st/sti/bdisp/bdisp-v4l2.c   |  30 +--
+ drivers/media/platform/st/sti/delta/delta-v4l2.c   |  41 ++--
+ drivers/media/platform/st/sti/hva/hva-v4l2.c       |  38 ++--
+ drivers/media/platform/st/sti/hva/hva.h            |   2 -
+ drivers/media/platform/st/stm32/dma2d/dma2d.c      |  18 +-
+ drivers/media/platform/sunxi/sun8i-di/sun8i-di.c   |  10 +-
+ .../platform/sunxi/sun8i-rotate/sun8i_rotate.c     |  10 +-
+ drivers/media/platform/ti/omap3isp/ispvideo.c      |  36 ++--
+ drivers/media/platform/ti/omap3isp/ispvideo.h      |   6 +-
+ drivers/media/platform/ti/vpe/vpe.c                |  21 +-
+ drivers/media/platform/verisilicon/hantro.h        |   4 +-
+ drivers/media/platform/verisilicon/hantro_drv.c    |  10 +-
+ drivers/media/platform/verisilicon/hantro_v4l2.c   |  22 +-
+ drivers/media/platform/xilinx/xilinx-dma.c         |  10 +-
+ drivers/media/test-drivers/vicodec/vicodec-core.c  |   7 +-
+ drivers/media/test-drivers/vim2m.c                 |   7 +-
+ drivers/media/test-drivers/visl/visl-core.c        |   5 +-
+ drivers/media/test-drivers/visl/visl.h             |   7 +-
+ drivers/media/test-drivers/vivid/vivid-core.c      |   4 +-
+ drivers/media/test-drivers/vivid/vivid-radio-rx.c  |   4 +-
+ drivers/media/test-drivers/vivid/vivid-radio-tx.c  |   4 +-
+ drivers/media/usb/hdpvr/hdpvr-video.c              |  39 ++--
+ drivers/media/usb/pvrusb2/pvrusb2-v4l2.c           |  69 +++---
+ drivers/media/usb/uvc/uvc_metadata.c               |  10 +-
+ drivers/media/usb/uvc/uvc_v4l2.c                   |  47 ++--
+ drivers/media/usb/uvc/uvcvideo.h                   |   5 +
+ drivers/media/v4l2-core/v4l2-compat-ioctl32.c      |   2 +-
+ drivers/media/v4l2-core/v4l2-ctrls-api.c           |   9 +-
+ drivers/media/v4l2-core/v4l2-fh.c                  |  16 +-
+ drivers/media/v4l2-core/v4l2-ioctl.c               |  53 ++---
+ drivers/media/v4l2-core/v4l2-mem2mem.c             |  34 +--
+ drivers/media/v4l2-core/v4l2-subdev.c              |  16 +-
+ drivers/staging/media/imx/imx-media-csc-scaler.c   |  26 +--
+ drivers/staging/media/ipu7/ipu7-isys-video.c       |   1 -
+ drivers/staging/media/meson/vdec/vdec.c            |  29 +--
+ drivers/staging/media/meson/vdec/vdec.h            |   5 +
+ drivers/staging/media/sunxi/cedrus/cedrus.c        |   8 +-
+ drivers/staging/media/sunxi/cedrus/cedrus.h        |   5 +
+ drivers/staging/media/sunxi/cedrus/cedrus_video.c  |   5 -
+ drivers/staging/most/video/video.c                 |  19 +-
+ drivers/usb/gadget/function/uvc.h                  |   5 +
+ drivers/usb/gadget/function/uvc_v4l2.c             |   8 +-
+ include/media/v4l2-fh.h                            |  28 ++-
+ include/media/v4l2-ioctl.h                         | 236 ++++++++++-----------
+ 117 files changed, 1203 insertions(+), 1185 deletions(-)
+---
+base-commit: d968e50b5c26642754492dea23cbd3592bde62d8
+change-id: 20250801-media-private-data-4515851e7e1d
+
+Best regards,
+-- 
+Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+
 
