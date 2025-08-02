@@ -4,65 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98711C87FCA
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Aug 2025 21:22:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6347C87FCB
+	for <linux-mediatek@archiver.kernel.org>; Sat,  2 Aug 2025 01:05:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lGoKNyU/DP1+F+NdarvWyN8xwWYaLDLYHl9HaCLP4dQ=; b=FKWWEkEyEwFl7U7i2MCuCIssIo
-	+KcNwiW4GFu+9R3CO8756VdUEaHgYZkJFRe8fUBKNwv4c5bEtUfIVOnb7+8NVadGJJu91eHTFfuFG
-	cXKxGM4mK8D+VsryeR4OuupLaLUtgYGPo+6Dd52ED+nnQkONWYYoyBSdlH58cyyko4xm4G4Rf+tSc
-	89n2nersMV+rJFN01wh7IToFTSfyw4d2SpAErOMr8e5SYAOo0u4WJ6iayrLdCWmbkszLYR+7NVal7
-	Avg5Slo5j3Q4nzKc3jujKtWiV5QwX4xqi5KctbErjpoRqR7yr2fBjbBzOC5z8ATdx++dPX7AxfHvE
-	vK0TUd7g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NVmhYqNtei1eqQoZ6cWUUligQ95Gk5AjZthMc4r8q1E=; b=zWnAa6VtYY/wezFbNr8+uCPm9s
+	0L0PDyRx9Oo7olojMvDAcUAuONsaVFtQ441G25UMfcNAOiHjqmreJZSBq8dtWkkNWShZXy4mWGmEX
+	yBdTx5cqBmpwT6PVTpTUDu+eA/XstnylKO4s4es4o+lRVAeZUyHSZVv6OWKBSD/po/ob0d/ODmFS4
+	WkE50EoJf50T9GXAzFeunehMvCHCgDv5HLfwyiwMjTgyDYZVxMSA4irTFSZJfRpe23VhxuXQjAqx9
+	Cfge6OU4uaYeynP82Hg7P3PvbSed0PyWsoEiyMO74tfP9VR80PRtY1hsuLFqJsLxrqIDuVM2+eqbS
+	WEJBCdAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uhxD1-00000006oz8-3xiI;
-	Fri, 01 Aug 2025 21:22:35 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1ui0hB-000000071bm-34L1;
+	Sat, 02 Aug 2025 01:05:57 +0000
+Received: from mgamail.intel.com ([198.175.65.16])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uhxAS-00000006oiO-1nFV;
-	Fri, 01 Aug 2025 21:19:57 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 718C745C5D;
-	Fri,  1 Aug 2025 21:19:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 45C84C4CEF8;
-	Fri,  1 Aug 2025 21:19:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1754083193;
-	bh=zw7q6QujQeHuGeDv2YbOW+aFGXe0we/oA8BPQwe+9xk=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=UUk46MMZrJgYNzibf7Uy3NTHP9igR/B7nxY/hIG4nfJbcqFa95s2zL/ucrYmcu7uE
-	 OxLgD94U0ZpDhgfcGw6qFpT3Usv48XnnhdAUGeMU7NcqgIpmlvPvONtMHDMuHXRMuN
-	 4sQHg5bb8IKlUe5y5bbMtJ6dmvxE4tBes5YB8QrvVCR3yrp27YYWJ6RWH5vu6lrZ/T
-	 WSQ8mcTdKR5hWF0fGn2i0OZz5R6wif4Vauu3n0TuVgVUB34hCWBiRahqvn+Piljbtz
-	 bXOOSoW8JAwJgsdDS289371PXm8/qE85yiVvuXO9Bevu98HG1iZ2TTO6+mpT57MZFY
-	 TucigeKJs3Huw==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id C6971383BF56;
-	Fri,  1 Aug 2025 21:20:09 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1ui0eb-000000071Uw-3EwG;
+	Sat, 02 Aug 2025 01:03:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1754096598; x=1785632598;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=AY7j+7mv2dE5hcJpd/tAvFtobFcD1mgqJgfqGiQynVE=;
+  b=GrjFrVCfg07bgBXf243cSC1nfnch7uVHeICmSlXlX5JsDfT0nJF/n4IQ
+   dVre7CIjsKVRcdNm7nl0J7sjynVVVRsN4KRZ9iya3X5/qWWgIk/rjLPjV
+   f2RlPK/yo1loqKYnmFC+eZTLiJsbuHdltldNV1EKcIbhx0GG2+KaflW8W
+   b2kGGGBHa7ZzlUc3l/sml2thmK8/a8HzSbEMmnd9h8zh0O44hlOXrLYk3
+   NcDTb83MGZmY5qIqMXCa/dRWtYIKyn9KPfTHnuTQwqLMY2I3greUG84XP
+   X/84kgM9kw8vc0LqX+o60ip4jEzES0G6lLS05eHBwK560WkZU2Vd8o2QK
+   g==;
+X-CSE-ConnectionGUID: lOJco3RYScKf7IPh/9J73g==
+X-CSE-MsgGUID: A435o3AFSleKj9iXmu1wdw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11508"; a="56586894"
+X-IronPort-AV: E=Sophos;i="6.17,258,1747724400"; 
+   d="scan'208";a="56586894"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Aug 2025 18:03:12 -0700
+X-CSE-ConnectionGUID: k31tPsVwSPa+bMhbp3/FQA==
+X-CSE-MsgGUID: 5Bej1XubQpKWWuO99tKLyw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.17,258,1747724400"; 
+   d="scan'208";a="168165493"
+Received: from lkp-server01.sh.intel.com (HELO 160750d4a34c) ([10.239.97.150])
+  by orviesa004.jf.intel.com with ESMTP; 01 Aug 2025 18:03:08 -0700
+Received: from kbuild by 160750d4a34c with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1ui0eQ-00053c-00;
+	Sat, 02 Aug 2025 01:03:06 +0000
+Date: Sat, 2 Aug 2025 09:02:10 +0800
+From: kernel test robot <lkp@intel.com>
+To: Julien Massot <julien.massot@collabora.com>, kernel@collabora.com,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: oe-kbuild-all@lists.linux.dev, linux-input@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	Julien Massot <julien.massot@collabora.com>
+Subject: Re: [PATCH 1/3] Input: mtk-pmic-keys - MT6359 has a specific release
+ irq
+Message-ID: <202508020802.nZBo2mGV-lkp@intel.com>
+References: <20250801-radxa-nio-12-l-gpio-v1-1-d0840f85d2c8@collabora.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net v2] net: airoha: Fix PPE table access in
- airoha_ppe_debugfs_foe_show()
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <175408320875.4079639.16331280350179780525.git-patchwork-notify@kernel.org>
-Date: Fri, 01 Aug 2025 21:20:08 +0000
-References: <20250731-airoha_ppe_foe_get_entry_locked-v2-1-50efbd8c0fd6@kernel.org>
-In-Reply-To: <20250731-airoha_ppe_foe_get_entry_locked-v2-1-50efbd8c0fd6@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
- dawid.osuchowski@linux.intel.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250801-radxa-nio-12-l-gpio-v1-1-d0840f85d2c8@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250801_141956_489026_665CA5D5 
-X-CRM114-Status: UNSURE (   9.11  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250801_180317_858003_77AE77D7 
+X-CRM114-Status: GOOD (  11.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,32 +95,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Hi Julien,
 
-This patch was applied to netdev/net.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+kernel test robot noticed the following build errors:
 
-On Thu, 31 Jul 2025 12:29:08 +0200 you wrote:
-> In order to avoid any possible race we need to hold the ppe_lock
-> spinlock accessing the hw PPE table. airoha_ppe_foe_get_entry routine is
-> always executed holding ppe_lock except in airoha_ppe_debugfs_foe_show
-> routine. Fix the problem introducing airoha_ppe_foe_get_entry_locked
-> routine.
-> 
-> Fixes: 3fe15c640f380 ("net: airoha: Introduce PPE debugfs support")
-> Reviewed-by: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> 
-> [...]
+[auto build test ERROR on b9ddaa95fd283bce7041550ddbbe7e764c477110]
 
-Here is the summary with links:
-  - [net,v2] net: airoha: Fix PPE table access in airoha_ppe_debugfs_foe_show()
-    https://git.kernel.org/netdev/net/c/38358fa3cc8e
+url:    https://github.com/intel-lab-lkp/linux/commits/Julien-Massot/Input-mtk-pmic-keys-MT6359-has-a-specific-release-irq/20250801-211817
+base:   b9ddaa95fd283bce7041550ddbbe7e764c477110
+patch link:    https://lore.kernel.org/r/20250801-radxa-nio-12-l-gpio-v1-1-d0840f85d2c8%40collabora.com
+patch subject: [PATCH 1/3] Input: mtk-pmic-keys - MT6359 has a specific release irq
+config: arc-randconfig-002-20250802 (https://download.01.org/0day-ci/archive/20250802/202508020802.nZBo2mGV-lkp@intel.com/config)
+compiler: arc-linux-gcc (GCC) 14.3.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250802/202508020802.nZBo2mGV-lkp@intel.com/reproduce)
 
-You are awesome, thank you!
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202508020802.nZBo2mGV-lkp@intel.com/
+
+All error/warnings (new ones prefixed by >>):
+
+>> drivers/input/keyboard/mtk-pmic-keys.c:132:10: error: 'const struct mtk_pmic_regs' has no member named 'key_release_irq'
+     132 |         .key_release_irq = true,
+         |          ^~~~~~~~~~~~~~~
+>> drivers/input/keyboard/mtk-pmic-keys.c:132:28: warning: excess elements in struct initializer
+     132 |         .key_release_irq = true,
+         |                            ^~~~
+   drivers/input/keyboard/mtk-pmic-keys.c:132:28: note: (near initialization for 'mt6359_regs')
+
+
+vim +132 drivers/input/keyboard/mtk-pmic-keys.c
+
+   120	
+   121	static const struct mtk_pmic_regs mt6359_regs = {
+   122		.keys_regs[MTK_PMIC_PWRKEY_INDEX] =
+   123			MTK_PMIC_KEYS_REGS(MT6359_TOPSTATUS,
+   124					   0x2, MT6359_PSC_TOP_INT_CON0, 0x5,
+   125					   MTK_PMIC_PWRKEY_RST),
+   126		.keys_regs[MTK_PMIC_HOMEKEY_INDEX] =
+   127			MTK_PMIC_KEYS_REGS(MT6359_TOPSTATUS,
+   128					   0x8, MT6359_PSC_TOP_INT_CON0, 0xa,
+   129					   MTK_PMIC_HOMEKEY_RST),
+   130		.pmic_rst_reg = MT6359_TOP_RST_MISC,
+   131		.rst_lprst_mask = MTK_PMIC_RST_DU_MASK,
+ > 132		.key_release_irq = true,
+   133	};
+   134	
+
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
