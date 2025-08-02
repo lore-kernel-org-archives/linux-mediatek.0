@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9A0EC87FD2
-	for <linux-mediatek@archiver.kernel.org>; Sat,  2 Aug 2025 09:23:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57D8FC87FC9
+	for <linux-mediatek@archiver.kernel.org>; Sat,  2 Aug 2025 09:24:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mytpTapUbF9DFdZcBvU25dsviQMjHRL/PAKnwSASr4k=; b=fyVvbadBxcKmb9ZMafw4NVnDYU
-	bJDH3CkQfBLSozhxRmaWMCk8ri2l2s89nQN/Ko15tdpKE92pocgaUmLPfwZyf3j9rqH/ZQyojBjko
-	IwgjPhka2Y+J3W1Ohi3b9eZtly4LicxcWWYJdRkrRMY+Eq36/0NBoEZeYPqwl2BTYtvBbxqu8rjwu
-	5mmpgH20owlcRfowSV3Zap4nGMMpxMcwGoJlAtcSkRbObXmggKIk45cpVrml8qbhoqoFpVlmm7iId
-	Z/C0s+ioUTl/wqb4dks45aWxAAKFpD6FoVrmm67ICD+bja4ptBt2sE1jWD65IidkHE8iWCB6V/lg0
-	cy+huhOQ==;
+	bh=PNCwnB42AmmXIjyisSPPlO75YC5lGVExeOMrVEgwe7g=; b=yVX3EA2qmaALVw/G7s5VUGpqqs
+	YlYkLooEqc5ttCPyCU1R89vbAG7iJ6AsqCHYqzkT14sG4yK80oogl/v4dJ4r57GIobweEG85pwOn8
+	YR6IEaxIEVkLbDlB8TkA2GxOMUHFAxE4sfsgFYMgJn5pDvYWQQPzuH1kBTDNuNdG7mW0wZcZNqgDx
+	SHzA7XwHhyVNR7CKqvhPew20TC5BEccE2QM61eMUa/PSgQPFPjPmjdm+sXF8fPRYooI8lpttcqPWq
+	DgFOXDSk7lwBpb/dByIr0E2hphR69bxD5i9Eb3mXYTBwtcQeelc5aZdo2xuMzu7vk9/+K4q0oeVJO
+	3asvVxgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ui8T8-00000007NmO-3o2r;
-	Sat, 02 Aug 2025 09:23:58 +0000
+	id 1ui8TI-00000007NqN-1GTj;
+	Sat, 02 Aug 2025 09:24:08 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ui8T6-00000007NlQ-0c3t;
-	Sat, 02 Aug 2025 09:23:57 +0000
+	id 1ui8TF-00000007NpH-10zN;
+	Sat, 02 Aug 2025 09:24:06 +0000
 Received: from [192.168.0.172] (mob-5-90-138-121.net.vodafone.it [5.90.138.121])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 3885A842;
-	Sat,  2 Aug 2025 11:23:00 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 03757502;
+	Sat,  2 Aug 2025 11:23:09 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1754126589;
-	bh=M16fcXPSFGIgO1fjImCRLdBNZivtR5rZm3smOC67Dos=;
+	s=mail; t=1754126598;
+	bh=631Jp9Q9HtN9dP9KUd1m/USa3iWCujlx3YtZUAdIf8E=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Xh5QMoMjqrqkgjHWdCiChhC1kdX3rt6vslL7ao3U194rehb2t/LzhlzZlqrh6+4Li
-	 TXEK7x4SM24jeMVMI9tnUtNWGlre6MKBX/a1G7iPg7TPV5tvdJ4RtiQc9hq6VaiCnv
-	 i2Hx8PcD5E6xY6KEeR7bvKmTwPdPJt9t1aXwo9Q4=
+	b=FeVm5O500dAmHc2FksbxPqgQmgW5GMwIICmDuqzmrqW1P+fvOYimsBC2slbLUqXrT
+	 UZ3uSbVeYpxuIDXjRKJglyXn/I65Mk5wCu91MEMoXSdfCsaEXVLON2seHpotu5RwP7
+	 4sV78CbR0Tx7kMmKq3k42zHLANw0S2gHetQnb24A=
 From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Date: Sat, 02 Aug 2025 11:22:25 +0200
-Subject: [PATCH 03/65] media: ti: vpe: Store v4l2_fh pointer in
+Date: Sat, 02 Aug 2025 11:22:26 +0200
+Subject: [PATCH 04/65] media: usb: hdpvr: Store v4l2_fh pointer in
  file->private_data
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250802-media-private-data-v1-3-eb140ddd6a9d@ideasonboard.com>
+Message-Id: <20250802-media-private-data-v1-4-eb140ddd6a9d@ideasonboard.com>
 References: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 In-Reply-To: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -132,26 +132,26 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com, mjpeg-users@lists.sourceforge.net, 
  Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3454;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1433;
  i=jacopo.mondi@ideasonboard.com; h=from:subject:message-id;
- bh=Np6gXh7MItHymabBs1Yqzt+CAwSTLfj7TvMeffHrbwk=;
- b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj33+4XwqxYN9ZW66BafwfZLuLpBrwno2f/A
- DUK8COJi/uJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y9wAKCRByNAaPFqFW
- PAwfD/9nt85cmSPVXvNKQvfs5+zCtyPn2ct+RqtRZcjNxMi7ESzI1Hd093H9IIFBZSRZ4js9WNd
- SR4bWDMxl4ZMN3Z15rOrZEiyXKKAsu7Mjczefb5pYS67Rt0zsQR4M3vBAyjSgt4ONv/YOPnyJUv
- A/52sMC/hiQTgIJBrXaRA9qrECHWA1TMDYIDhdFZ/wJQWSd0NtEXkHnDmrtP2S38BtR03Rph1Iw
- +atlfcIB85GJX5d9Z4qXFlxfbm+EzZN5wzwP2wo3o1SZ08cbgOoBxuYYL+y15d4BmaWjlInbYEg
- Y8n2vsiO/Bhhqlg5rFC27ReaLp3GU0OgdlWkvoe7Mul/hXsRqFBXYgXTITfEfKYXA/h9ngMaUwC
- zJ5Gl3JNY/bevC/OE7UUStL/LwSByKeXsWAAIgK5g87BIN/iwMoIvLBpeEhf3/bIujUIrs0TxJ9
- /e2/GqK06yKJoqucWoTtgYEwYGsxxOfMZRPj1gS1nyFpJKkpEjc/6cj5A39OUSpa3SO2TBZekO0
- f5Mz3BWD7OjNemqOtj7qWsC9Q+Inze9auS33BFlI1MEnsZAoOcZWnXFqmb7jQSi1bgOJkzvSF1Q
- q3ddzKvIzhgXHi8v2KnEilNsO2s2MzBSzpqBIKTBKzAAhCtYWz+IxE8ZD+ax14Ax4/cNmk2ruLZ
- vHl5gQqKJGgGbbQ==
+ bh=U3ev2gHGjMj8nv+N40Llo7W3J8u/K6ZbwlVUowvWkPY=;
+ b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj3IH8fOMbXUtz0tvCIWrGh/p06iInRR+vXC
+ v8mXTbAB3CJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y9wAKCRByNAaPFqFW
+ PMxMD/9xdPurBF8VH9kd+ouOYLKov7Q5+LoHrIxqJ1UmDxRqFU3cO2MMwZir0jLofAtJI5rkUR3
+ V/NT8hmtjI3UXxxJnEpD+ZLVGI8qtV5fTPhrqUA0Cqsou7Z1ZgYlXxaois9AatHd0k8fKXD0nGV
+ WU5MTu7++Qlpxc3Colj8npAsI+74hEi7EVtryKMKExVO95DbQz8ZvFb4gN+9r8zWpNTuTkVk0Ke
+ KJNA+SL0fju2ltzBe8i2SQ7BjApa2Z6059yEyxr2yJLTEfc4t0JpV/uvlW0KsiAnB2lTdFlt3T6
+ FzlvYChBMTK9kTeCxaeoQwyzdAzhjXDqed3+BggT4OVG1MfcrjjGDOg89bfW1FZhaaiLIxHsIpF
+ g/t2ipysNOfmIpKA92HLCwhXD3SDVxFys7fS7BZD9Za4Fad7qVXbZmC7VBViUZKhL2YE2oYRtkl
+ Zrt7aTUMq+RQqNTyGuETmZjBztDsa/sRSGt6h7Nqtm4uvcZzzzQle2M1PrmN5w4zI2ruGtdtl1q
+ KSbYZ3jrn7KwZ2Blc3ZvdCnk+3ve5t26EsLWgug6iwjcfsdJ3gww59pmjztFYyHyVRCaVvmbh2T
+ 92VnFLQpUlDOLSaq3tzbDu3xtgyD/a7vHtT5QgPR3/f83oXPm985F2rNinVeA5rDqLEQ4hlk80q
+ 2F2/YsprDujyjMw==
 X-Developer-Key: i=jacopo.mondi@ideasonboard.com; a=openpgp;
  fpr=72392EDC88144A65C701EA9BA5826A2587AD026B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250802_022356_333383_728AAB73 
-X-CRM114-Status: GOOD (  13.76  )
+X-CRM114-CacheID: sfid-20250802_022405_427611_F8DA30AF 
+X-CRM114-Status: GOOD (  14.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -169,94 +169,35 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
 Most V4L2 drivers store the v4l2_fh pointer in file->private_data. The
-ti-vpe driver instead stores the pointer to the driver-specific
-structure that embeds the v4l2_fh. Switch to storing the v4l2_fh pointer
-itself to standardize behaviour across drivers. This also prepares for
-future refactoring that depends on v4l2_fh being stored in private_data.
+hdpvr driver instead stores the pointer to the driver-specific structure
+that embeds the v4l2_fh. Switch to storing the v4l2_fh pointer itself to
+standardize behaviour across drivers. This also prepares for future
+refactoring that depends on v4l2_fh being stored in private_data.
+
+No extensive driver refactoring is required, as file->private_data is
+only used to check if a file handle is the owner of the device by
+comparing pointer values. The private_data pointer is actually compared
+to a struct v4l2_fh pointer, which happens to be the first field of the
+hdpvr_fh structure.
 
 Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 ---
- drivers/media/platform/ti/vpe/vpe.c | 18 +++++++++++-------
- 1 file changed, 11 insertions(+), 7 deletions(-)
+ drivers/media/usb/hdpvr/hdpvr-video.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/ti/vpe/vpe.c b/drivers/media/platform/ti/vpe/vpe.c
-index 636d76ecebcd7e6f4e98d6fe4873bf98b0f0239e..b76b5d18c963d9a3313d34cfe0e12772738d336f 100644
---- a/drivers/media/platform/ti/vpe/vpe.c
-+++ b/drivers/media/platform/ti/vpe/vpe.c
-@@ -422,6 +422,10 @@ struct vpe_ctx {
- 	unsigned int		src_mv_buf_selector;
- };
- 
-+static inline struct vpe_ctx *to_vpe_ctx(struct file *filp)
-+{
-+	return container_of(filp->private_data, struct vpe_ctx, fh);
-+}
- 
- /*
-  * M2M devices get 2 queues.
-@@ -1562,7 +1566,7 @@ static int vpe_enum_fmt(struct file *file, void *priv,
- static int vpe_g_fmt(struct file *file, void *priv, struct v4l2_format *f)
- {
- 	struct v4l2_pix_format_mplane *pix = &f->fmt.pix_mp;
--	struct vpe_ctx *ctx = file->private_data;
-+	struct vpe_ctx *ctx = to_vpe_ctx(file);
- 	struct vb2_queue *vq;
- 	struct vpe_q_data *q_data;
- 
-@@ -1719,7 +1723,7 @@ static int __vpe_try_fmt(struct vpe_ctx *ctx, struct v4l2_format *f,
- 
- static int vpe_try_fmt(struct file *file, void *priv, struct v4l2_format *f)
- {
--	struct vpe_ctx *ctx = file->private_data;
-+	struct vpe_ctx *ctx = to_vpe_ctx(file);
- 	struct vpe_fmt *fmt = find_format(f);
- 
- 	if (V4L2_TYPE_IS_OUTPUT(f->type))
-@@ -1783,7 +1787,7 @@ static int __vpe_s_fmt(struct vpe_ctx *ctx, struct v4l2_format *f)
- static int vpe_s_fmt(struct file *file, void *priv, struct v4l2_format *f)
- {
- 	int ret;
--	struct vpe_ctx *ctx = file->private_data;
-+	struct vpe_ctx *ctx = to_vpe_ctx(file);
- 
- 	ret = vpe_try_fmt(file, priv, f);
- 	if (ret)
-@@ -1871,7 +1875,7 @@ static int __vpe_try_selection(struct vpe_ctx *ctx, struct v4l2_selection *s)
- static int vpe_g_selection(struct file *file, void *fh,
- 		struct v4l2_selection *s)
- {
--	struct vpe_ctx *ctx = file->private_data;
-+	struct vpe_ctx *ctx = to_vpe_ctx(file);
- 	struct vpe_q_data *q_data;
- 	struct v4l2_pix_format_mplane *pix;
- 	bool use_c_rect = false;
-@@ -1935,7 +1939,7 @@ static int vpe_g_selection(struct file *file, void *fh,
- static int vpe_s_selection(struct file *file, void *fh,
- 		struct v4l2_selection *s)
- {
--	struct vpe_ctx *ctx = file->private_data;
-+	struct vpe_ctx *ctx = to_vpe_ctx(file);
- 	struct vpe_q_data *q_data;
- 	struct v4l2_selection sel = *s;
- 	int ret;
-@@ -2306,7 +2310,7 @@ static int vpe_open(struct file *file)
- 	init_adb_hdrs(ctx);
- 
- 	v4l2_fh_init(&ctx->fh, video_devdata(file));
--	file->private_data = ctx;
-+	file->private_data = &ctx->fh;
- 
- 	hdl = &ctx->hdl;
- 	v4l2_ctrl_handler_init(hdl, 1);
-@@ -2400,7 +2404,7 @@ static int vpe_open(struct file *file)
- static int vpe_release(struct file *file)
- {
- 	struct vpe_dev *dev = video_drvdata(file);
--	struct vpe_ctx *ctx = file->private_data;
-+	struct vpe_ctx *ctx = to_vpe_ctx(file);
- 
- 	vpe_dbg(dev, "releasing instance %p\n", ctx);
+diff --git a/drivers/media/usb/hdpvr/hdpvr-video.c b/drivers/media/usb/hdpvr/hdpvr-video.c
+index fd7d2a9d0449ab9ba68ddfa148a167797ea243fc..4c431bd9b50352ed1bd3da3e62625c9cff6c149d 100644
+--- a/drivers/media/usb/hdpvr/hdpvr-video.c
++++ b/drivers/media/usb/hdpvr/hdpvr-video.c
+@@ -381,7 +381,7 @@ static int hdpvr_open(struct file *file)
+ 	fh->legacy_mode = true;
+ 	v4l2_fh_init(&fh->fh, video_devdata(file));
+ 	v4l2_fh_add(&fh->fh);
+-	file->private_data = fh;
++	file->private_data = &fh->fh;
+ 	return 0;
+ }
  
 
 -- 
