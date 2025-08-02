@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD83FC87FC9
-	for <linux-mediatek@archiver.kernel.org>; Sat,  2 Aug 2025 09:30:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA050C87FC9
+	for <linux-mediatek@archiver.kernel.org>; Sat,  2 Aug 2025 09:30:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ge+FZFHNLU0GDL+ayYU0krPs3gLgHxLjd1Hg9ZQ/jyk=; b=EvpdhqPsGYm/9iv95Ykj0u5bEO
-	3lFlpT4hpHHM6ECu8MPXKGIt/QDUg3/pNFX4IXXsk8OM3W71Jmcd+V981U3GIymhRqif9n/lbwuvG
-	u88kB1GJhJbGnrRdEM8K7wE7qOl8LMk0bP7cXMr7efRm+QIVy8LACGNfkXRSvlSlFTUrz4i3OweCl
-	/UxFHzD7bS7rwnZFqSf4jS+a1MCqt36+3bBSbpxXDdGdceet+eFJQa40Djt4ue/OfUB+snIlI/m22
-	UDNAwEwzVl5YlW75PWp4smnTCbMJwDo80YlXYiUJWW2DJkhUuEp5R1INCm1gLSEeWoPrQvXru5r3a
-	ocjUrjTA==;
+	bh=nLGNPEDom6sHs3vhAks+lDfqy50gOL05JXCQ2LXF9UQ=; b=pl2y/qtMb+ysVbVScPgAgIIU6I
+	R+UL53iTYaFjcYvaTYDqa/jz7bT0wwvcvZLKWL+dG3ks5H0LNTOnP2qWNHEKy8aM6DgheQsn7lKnW
+	vewv1tfjT+F+wI8XHExQisEiZLU1vawdl3PKC7Bm02WKCUmSvjxs0vWLAPu5JWyB5vL5S5/Qr5pHS
+	ZW1lGMjO8hWfSMxdgJ0PoQUAe08w5057/SEyrY4MKuDk2N7F5nLObM+4m0VV9AJXuedBV8toYKcPz
+	37Hz1z5qpPZwiFFdEYsCltIqTjuiQ5ISXYrBNdmoVG8suhySfqB01xSbaR+Jvr3U4oo7FVv3r8ZJo
+	Ntgc9ahA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ui8Z6-00000007QdQ-45uE;
-	Sat, 02 Aug 2025 09:30:08 +0000
+	id 1ui8ZE-00000007Qkb-47PA;
+	Sat, 02 Aug 2025 09:30:16 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ui8Z4-00000007Qay-0iBs;
-	Sat, 02 Aug 2025 09:30:07 +0000
+	id 1ui8ZC-00000007Qim-0YK5;
+	Sat, 02 Aug 2025 09:30:15 +0000
 Received: from [192.168.0.172] (mob-5-90-138-121.net.vodafone.it [5.90.138.121])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id EDA0D3C97;
-	Sat,  2 Aug 2025 11:29:10 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id F05833F8F;
+	Sat,  2 Aug 2025 11:29:19 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1754126959;
-	bh=DR8H5PIAc8L4JOzfoP4xWpCxebhDCEnaJqqWhPBFy+0=;
+	s=mail; t=1754126967;
+	bh=M2x6tXzxCjjFAUXbEL3SC1QII47wQxoBv/wBb1wDsp0=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=hT8Gx6BmOM76bDFeML8LExuJPTAnht6Wvn57/qJhB7+ZhlNMqfXhEkASH3NW3RuyW
-	 UZTqUXH/j8H6xn9lPsNIuJ1E2Ht2wzHcwFHMec6ZTXX4zFnaK3T8vOqZ9UuNg86A45
-	 wLsnMm4kFRwPqYJBTI/nmtZ/BWbP+cVS1qJzP4Mw=
+	b=i9zx++aQy/alvIpuEbDg4B8AZJJ6ljo40OX7t/PQh+QoqR2JKsunNOZik5UtJPOIh
+	 HkA0w1qtbec7i1eXH98uzHZHkmMQTSdGwYpy1rVrXNPF25rPMV/Q0resMuSAHRSHzr
+	 WRbwUjUj18J0V9ZzY59wjrgffWpq5xaH1xshksJw=
 From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Date: Sat, 02 Aug 2025 11:23:02 +0200
-Subject: [PATCH 40/65] media: imx-isi: Access v4l2_fh from file
+Date: Sat, 02 Aug 2025 11:23:03 +0200
+Subject: [PATCH 41/65] media: nxp: mx2: Access v4l2_fh from file
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250802-media-private-data-v1-40-eb140ddd6a9d@ideasonboard.com>
+Message-Id: <20250802-media-private-data-v1-41-eb140ddd6a9d@ideasonboard.com>
 References: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 In-Reply-To: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -131,26 +131,26 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com, mjpeg-users@lists.sourceforge.net, 
  Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3477;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2558;
  i=jacopo.mondi@ideasonboard.com; h=from:subject:message-id;
- bh=DR8H5PIAc8L4JOzfoP4xWpCxebhDCEnaJqqWhPBFy+0=;
- b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj8EoZgkMCHL3+wASHVhjTV75Orj6SKgaDZA
- 6AcS4LUd4KJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y/AAKCRByNAaPFqFW
- POVpD/9a3Ls6bK9algAcZ2oeiBjNz7tRIjEIwEqB46qB5Bq/kQDbriurqxVTCwNigHT9yYh0mXP
- 7cACNJ33RBJeyO9365kZBXs/wmIKGs/p4y+dJ8d2bdWddvcupEtgqZNitoozeu7ESiwRcXbm3y+
- BoqB1V1jDTE11ypab29+vcaKo4qzSBIP3Hrtk4YeBKLn7gvYgaFBrNEonU6NKD9ODA/LIQulZRe
- 73jR/l7r+PYcnZ7Rx2T3rwKBgs8D83nyaNr0oEZik56YfleC18XsXP3MSfruSvbfjD6GZWeNrgd
- 712W4aBRF81a+B6kH5V8Aovltk00OUqLELIBHSUZ7El7W4Me1pXr/QPd6vAC1H+DRpxf2j40+RN
- TDxqmDHi3YGoi8kJ0PnEMVgSCBCaLXRuhS8dGLvwvkIDAcuHVFiPB8byYSwpkGOYBKB7luuYB7H
- 4xIhq9bAWnGPh09Xfuwcd9HL+8K5DLRYr1sqRYZZ55yszHbxWsYKKm4yD7EKfvDRiOMJb3LBBrX
- Z35HmnmFMEe15m2PWocAX01Sgl4eA0YFESsMERAWjZQgueknFQDoJGsL4JOMUxeaYI6kcUScc+3
- RYuRDI3FkGlEJpgXEYQ+q+gim7m/X5v4sL1NiwSpLY259tUn9RHwSBlkYDikigIZORsM45vlmyz
- zSJL01P1ffA0xNA==
+ bh=M2x6tXzxCjjFAUXbEL3SC1QII47wQxoBv/wBb1wDsp0=;
+ b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj8n9hAMD57A4gTd58HcmF9kOI9d41H8TaVb
+ 6NpnZLKiN6JAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y/AAKCRByNAaPFqFW
+ PPR3D/49Ma84Vh9j5F5lg+aITWx3vFs2W0Ao6fxs0ce6jAjUUycjjm5bMR9ul9yvs+bvwNYKCu/
+ /unwZHnferqh4e3z6zoxuYb5CSXpIxc1jr4Kk/EqeGOiKOnn/YkW+utx+fsqKKsVIK3uLt6FOta
+ IRAVmTSR8HwUKkhJhuyYlHsJGaAkKoWSm2XBBa+OSM7TrXCqm+6xGIl1iAYtuma4zB0R8Z1bTx8
+ d1Kz+3QMgH29z52NvDsY4L+9bP3myDbJQBCBicACsU4DseVlbjXaqhtC8zrMi4wNQsxF3nyQg5w
+ zw3tKqg+X/9n4dj8egNhtrzQ9fajVM1xp1exUiOe0JiH6u00E97/9DPUiXPiiAxpSpq4QTc1rd4
+ aCPhF7bX6bqcgmnb1by/d1vqkuaASPi/VRmo9x4tykyyWZfd8rh6IOkiGJf5V/wFf9qJz6zuOSX
+ kCEGX03VCm2ksn8iOZMB5bPilBNd060ETYyKNsSODxpRwLbmfaN7wBbl3oOwV5WOWLM7Wn0znRs
+ uwu8gEf8zravjInXPbM2xA1mhcei9mOg3RyrE43J4rwjCagzVyEwvT7d8Bf731bR0ng6svImvD3
+ p+kgM+LGY/7CfBWG3zHWNRPfvzpPzytKg/8ZNIqHfTSj0gqunclhwK7YXop3L5pAAwnCvhko2yA
+ fM1004fYqBkAsEA==
 X-Developer-Key: i=jacopo.mondi@ideasonboard.com; a=openpgp;
  fpr=72392EDC88144A65C701EA9BA5826A2587AD026B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250802_023006_356996_E5231000 
-X-CRM114-Status: GOOD (  11.27  )
+X-CRM114-CacheID: sfid-20250802_023014_324187_9482170E 
+X-CRM114-Status: GOOD (  12.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -171,74 +171,69 @@ to be available in file->private_data, initialised by v4l2_fh_add().
 Access the v4l2_fh, and from there the driver-specific structure,
 from the file * in all ioctl handlers.
 
-While at it, remove the now unused to_isi_m2m_ctx() macro.
-
 Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 ---
- drivers/media/platform/nxp/imx8-isi/imx8-isi-m2m.c | 15 +++++----------
- 1 file changed, 5 insertions(+), 10 deletions(-)
+ drivers/media/platform/nxp/mx2_emmaprp.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/media/platform/nxp/imx8-isi/imx8-isi-m2m.c b/drivers/media/platform/nxp/imx8-isi/imx8-isi-m2m.c
-index 850dd8ae95841d4470ac6bd7cb1e54a7510d6d5e..5501214cc6c0ce3e0188ae6d4ff4ae277b975911 100644
---- a/drivers/media/platform/nxp/imx8-isi/imx8-isi-m2m.c
-+++ b/drivers/media/platform/nxp/imx8-isi/imx8-isi-m2m.c
-@@ -74,11 +74,6 @@ to_isi_m2m_buffer(struct vb2_v4l2_buffer *buf)
- 	return container_of(buf, struct mxc_isi_m2m_buffer, buf.vb);
+diff --git a/drivers/media/platform/nxp/mx2_emmaprp.c b/drivers/media/platform/nxp/mx2_emmaprp.c
+index d23da93304bd6f55898cfb96319d2fa101036ca1..3aae8c0b690c0b1b0dd4f05a1c9184b089719a20 100644
+--- a/drivers/media/platform/nxp/mx2_emmaprp.c
++++ b/drivers/media/platform/nxp/mx2_emmaprp.c
+@@ -456,13 +456,13 @@ static int vidioc_g_fmt(struct emmaprp_ctx *ctx, struct v4l2_format *f)
+ static int vidioc_g_fmt_vid_out(struct file *file, void *priv,
+ 				struct v4l2_format *f)
+ {
+-	return vidioc_g_fmt(priv, f);
++	return vidioc_g_fmt(file_to_emmaprp_ctx(file), f);
  }
  
--static inline struct mxc_isi_m2m_ctx *to_isi_m2m_ctx(struct v4l2_fh *fh)
--{
--	return container_of(fh, struct mxc_isi_m2m_ctx, fh);
--}
--
- static inline struct mxc_isi_m2m_ctx *file_to_isi_m2m_ctx(struct file *filp)
+ static int vidioc_g_fmt_vid_cap(struct file *file, void *priv,
+ 				struct v4l2_format *f)
  {
- 	return container_of(file_to_v4l2_fh(filp), struct mxc_isi_m2m_ctx, fh);
-@@ -432,7 +427,7 @@ static int mxc_isi_m2m_try_fmt_vid(struct file *file, void *fh,
- 	const enum mxc_isi_video_type type =
- 		f->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE ?
- 		MXC_ISI_VIDEO_M2M_OUT : MXC_ISI_VIDEO_M2M_CAP;
--	struct mxc_isi_m2m_ctx *ctx = to_isi_m2m_ctx(fh);
-+	struct mxc_isi_m2m_ctx *ctx = file_to_isi_m2m_ctx(file);
+-	return vidioc_g_fmt(priv, f);
++	return vidioc_g_fmt(file_to_emmaprp_ctx(file), f);
+ }
  
- 	__mxc_isi_m2m_try_fmt_vid(ctx, &f->fmt.pix_mp, type);
- 
-@@ -442,7 +437,7 @@ static int mxc_isi_m2m_try_fmt_vid(struct file *file, void *fh,
- static int mxc_isi_m2m_g_fmt_vid(struct file *file, void *fh,
- 				 struct v4l2_format *f)
+ static int vidioc_try_fmt(struct v4l2_format *f)
+@@ -502,8 +502,8 @@ static int vidioc_try_fmt(struct v4l2_format *f)
+ static int vidioc_try_fmt_vid_cap(struct file *file, void *priv,
+ 				  struct v4l2_format *f)
  {
--	struct mxc_isi_m2m_ctx *ctx = to_isi_m2m_ctx(fh);
-+	struct mxc_isi_m2m_ctx *ctx = file_to_isi_m2m_ctx(file);
- 	const struct mxc_isi_m2m_ctx_queue_data *qdata =
- 		mxc_isi_m2m_ctx_qdata(ctx, f->type);
++	struct emmaprp_ctx *ctx = file_to_emmaprp_ctx(file);
+ 	struct emmaprp_fmt *fmt;
+-	struct emmaprp_ctx *ctx = priv;
  
-@@ -457,7 +452,7 @@ static int mxc_isi_m2m_s_fmt_vid(struct file *file, void *fh,
- 	const enum mxc_isi_video_type type =
- 		f->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE ?
- 		MXC_ISI_VIDEO_M2M_OUT : MXC_ISI_VIDEO_M2M_CAP;
--	struct mxc_isi_m2m_ctx *ctx = to_isi_m2m_ctx(fh);
-+	struct mxc_isi_m2m_ctx *ctx = file_to_isi_m2m_ctx(file);
- 	struct v4l2_pix_format_mplane *pix = &f->fmt.pix_mp;
- 	const struct mxc_isi_format_info *info;
- 	struct vb2_queue *vq;
-@@ -489,7 +484,7 @@ static int mxc_isi_m2m_s_fmt_vid(struct file *file, void *fh,
- static int mxc_isi_m2m_streamon(struct file *file, void *fh,
- 				enum v4l2_buf_type type)
+ 	fmt = find_format(f);
+ 	if (!fmt || !(fmt->types & MEM2MEM_CAPTURE)) {
+@@ -519,8 +519,8 @@ static int vidioc_try_fmt_vid_cap(struct file *file, void *priv,
+ static int vidioc_try_fmt_vid_out(struct file *file, void *priv,
+ 				  struct v4l2_format *f)
  {
--	struct mxc_isi_m2m_ctx *ctx = to_isi_m2m_ctx(fh);
-+	struct mxc_isi_m2m_ctx *ctx = file_to_isi_m2m_ctx(file);
- 	struct mxc_isi_m2m_ctx_queue_data *q = mxc_isi_m2m_ctx_qdata(ctx, type);
- 	const struct v4l2_pix_format_mplane *out_pix = &ctx->queues.out.format;
- 	const struct v4l2_pix_format_mplane *cap_pix = &ctx->queues.cap.format;
-@@ -577,7 +572,7 @@ static int mxc_isi_m2m_streamon(struct file *file, void *fh,
- static int mxc_isi_m2m_streamoff(struct file *file, void *fh,
- 				 enum v4l2_buf_type type)
- {
--	struct mxc_isi_m2m_ctx *ctx = to_isi_m2m_ctx(fh);
-+	struct mxc_isi_m2m_ctx *ctx = file_to_isi_m2m_ctx(file);
- 	struct mxc_isi_m2m_ctx_queue_data *q = mxc_isi_m2m_ctx_qdata(ctx, type);
- 	struct mxc_isi_m2m *m2m = ctx->m2m;
++	struct emmaprp_ctx *ctx = file_to_emmaprp_ctx(file);
+ 	struct emmaprp_fmt *fmt;
+-	struct emmaprp_ctx *ctx = priv;
  
+ 	fmt = find_format(f);
+ 	if (!fmt || !(fmt->types & MEM2MEM_OUTPUT)) {
+@@ -580,7 +580,7 @@ static int vidioc_s_fmt_vid_cap(struct file *file, void *priv,
+ 	if (ret)
+ 		return ret;
+ 
+-	return vidioc_s_fmt(priv, f);
++	return vidioc_s_fmt(file_to_emmaprp_ctx(file), f);
+ }
+ 
+ static int vidioc_s_fmt_vid_out(struct file *file, void *priv,
+@@ -592,7 +592,7 @@ static int vidioc_s_fmt_vid_out(struct file *file, void *priv,
+ 	if (ret)
+ 		return ret;
+ 
+-	return vidioc_s_fmt(priv, f);
++	return vidioc_s_fmt(file_to_emmaprp_ctx(file), f);
+ }
+ 
+ static const struct v4l2_ioctl_ops emmaprp_ioctl_ops = {
 
 -- 
 2.49.0
