@@ -4,45 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E1F5C87FD2
-	for <linux-mediatek@archiver.kernel.org>; Sat,  2 Aug 2025 09:26:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A25AC87FD2
+	for <linux-mediatek@archiver.kernel.org>; Sat,  2 Aug 2025 09:26:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LcKzZMjcJSQpf0+/vQZwOvvZ6kmatLo1oju952aUH84=; b=eSJUNauJeD6Ncu9KU9/3Tut9dQ
-	OSzL90lqBl7PZDYqu8QEIoiwlCp/yNQZ6jdtcgaz7CTm6xRymk40ugL5dREJmcrhR+BaLesRxtLug
-	oZ6TWFbDODx6XOSGRROWYGLaVl+pKFzyZx56yvYjOMZ3PfJW9aEwgX6puo9U1F+IbIv6RJ0nxLA6/
-	smFHWHVntIttrVlpbZV+51CVd9DzczBDGu+hHt1ifB0dL2dj/PNKlP4NjVKoVFe2AEyS1PqFx9pMi
-	MsyIhmiTrzHB5nllRnTcQmllO9qz1OYHEWQAmTvaBqc5AYxQtP0vXBLIhwFl+Eh/4+z35zCm+BHxD
-	6QF5dBSg==;
+	bh=BOQIcVCnDJuLbDdxo/mPvQJ+D+r8j4AKxLhSV0E3Z5w=; b=B55/cbn24zNRspGakmuxV2BvJ7
+	xL+b/Jxc1k9fdNcewXOWRDtvq4GPir4npdE5pAy0DDH0vFii4+6xJIu1PQYVszGTUbnv/f5f+e1KG
+	1Kj0Dxy7LNBslluswnQQHbQC+xv5UWPKSQ7iO/n0zHZSqVt3rupy441Akurxt70Nd2pxmHeOMhOz1
+	wrVcUhyJv2e0BE/9Cy0JI+HXguC+YVgMvD7dHfsDJBptpzKPmsr0MuucTVBdi3fJAjBNY4Ne7xcYT
+	wuQuJQEB18oIB8VUGZ3fP+XcJfZTgKkli3WmIuijPmG9vQVT2nM7iacOe52twG9JmVCGLWQdm5ZlV
+	fkKjUGNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ui8Vf-00000007OxV-0rq4;
-	Sat, 02 Aug 2025 09:26:35 +0000
+	id 1ui8Vp-00000007P2V-0cgn;
+	Sat, 02 Aug 2025 09:26:45 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ui8Vb-00000007Owf-3NC2;
-	Sat, 02 Aug 2025 09:26:33 +0000
+	id 1ui8Vm-00000007P0v-2lP5;
+	Sat, 02 Aug 2025 09:26:43 +0000
 Received: from [192.168.0.172] (mob-5-90-138-121.net.vodafone.it [5.90.138.121])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 5C5733382;
-	Sat,  2 Aug 2025 11:25:32 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 92F0C3484;
+	Sat,  2 Aug 2025 11:25:45 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1754126745;
-	bh=w27FBrYuy5luuq8sfLJhkAyXcxYLO6q6OgUGzOvjXCg=;
+	s=mail; t=1754126756;
+	bh=W7Xf+mYBvYt6o9va9RI60UvIC8rElGReU++HhnCmVfg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=KfCGdKe1K3Fc0zAQ4xzG9+N4gRTgUX7hp2XSLsiS8QJYWuuBMu/dxj1woEa4oaDSG
-	 ePa2piLt7m4G65UgqLGBXtTVqiJuzfB5hKjMmfZtMDLqdf2V+hRecSUEVTop8muZJ9
-	 6AtH6ZyFsW2g9mm1rqXW6sWXRXQIwCNR02B0Uaeg=
+	b=FmxGWJBO4E5gfmQ58+RSnlUN52ZRP+BEdoqkKtsfvQR6jjDAnirS/9gNoOYc57lfI
+	 RexzJSryXfalvYWYRWKmdwZ8L2tq10eTyRsJFwKGBOzBN7fqkrTHkfy8UsCflim1KR
+	 F/nX+wFryQEtYqk1VrqnVMHTDoDHwqd89mcMY3hM=
 From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Date: Sat, 02 Aug 2025 11:22:40 +0200
-Subject: [PATCH 18/65] media: rzg2l-cru: Do not set file->private_data
+Date: Sat, 02 Aug 2025 11:22:41 +0200
+Subject: [PATCH 19/65] media: camss: Replace .open() file operation with
+ v4l2_fh_open()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250802-media-private-data-v1-18-eb140ddd6a9d@ideasonboard.com>
+Message-Id: <20250802-media-private-data-v1-19-eb140ddd6a9d@ideasonboard.com>
 References: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 In-Reply-To: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -131,26 +132,26 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com, mjpeg-users@lists.sourceforge.net, 
  Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=954;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2008;
  i=jacopo.mondi@ideasonboard.com; h=from:subject:message-id;
- bh=w27FBrYuy5luuq8sfLJhkAyXcxYLO6q6OgUGzOvjXCg=;
- b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj5leh6NZr7YBb5F3lUqdPDVAoAv/E+Apn8a
- VdBJqbYhJOJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y+QAKCRByNAaPFqFW
- PDjxEACcu4vUKoDreIA9sdrRv0rPntbmVcO2EIY5HI+PZ7TWdXhWtE/uwJnsTBw8XW8YyxFL1Ko
- B7edSHJtyHk7hhRiCEQshw3WA5B3rs82kRtrhLR3zwlgcyLE96k1J2SJQpEzrtt9p9E51UWfD0U
- BqcZAisqTFozP7zQW0WGKc8lEyJt0/F2RNj3Ic0vjqTjBg90DgZsPtueqxNGkinh50/AXDKsZxA
- +HMqE2gTktb4hQIXKTjZpa+e+3ILeB5U0Mnrz1/6EBcONhc0haAuWp1Vf5xRpZkQxJXpVtBEi47
- RusW/FbWHWez/uMc68lFdXOe005GtLsYoP9jbKJmi9am2yQGdjulGsavfIHnnwNdSSwhRFKyeEj
- Frh8FHbh6zi6N/2qZQqS2HLKV0PQvUit8vqN86W8YqZ30843b51yZ1uMMqXDa4JpeJV+5by9KaL
- XXbn9tYid9Mu+NVhfQxXxTiUFZRRWTUMhKJ/fb+7d6Ckohv/KfMZT2NCIIsQQNLzJb7V9iR5jJT
- Qw6Q2Yr6GB/yGn+78O8+pyIAfOS1/O36Otr4bdVWOkjkBzfXrJ/RksX8plhoJE390pM1Wbd0GC2
- 9ByBL0oNCt/Vvv8CMMv1vO87h4lAeh3jTbr5YVmfD3+1X/gXXOZRR1GBpkDZJLW8ctFkCmxHueY
- fs0wBGy3WUnSD6w==
+ bh=UzWhpz4xRfaNWR/lEJP22EOtdoViE3HjL6eKhJD+k4E=;
+ b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj5QI9RGxRjTZ4i0/Oxsr0jsuAyLpLtzBDRp
+ lLra/Ptx/+JAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y+QAKCRByNAaPFqFW
+ PLxcD/9DQ1eh+7ORvSewCGfbUsdvwcusgLEdfimWMtixIHeb8GHjJBgZDHWANs4tzRhizZXc00D
+ eB14EgzGTuYSfBh+SeiIQc2W821bIB4AF47VJ7paLr+6Ehpkjta3Z9R8684aE4hVEiozkIjYbTm
+ YDe7CD5rgm8Jxkr6rX3dnXVv3MwvobNjhi4ZLVj6k9GQi4Knz4hcfrM/vftFhzLuQJ7iO0z72Pt
+ kNNyNzwedzcS25WOSLeBekAuKEUA5on008vbsIrI+w6ZkD1g3nPmRoK0ak2y8wZBKOFoxpWVg41
+ hHb++Y41ZeyaCZqGPftDkbkZiTaN/mlWTMoxSmxYGEQK98fuyUmJlocZW7DqkRmRr+0QaBXBuUX
+ 2P/KOa1ID1yyoeGLNOtc/IJoi0NMW/2fxW504y5sisWA36Esidq6GNT+5Brx9IwS98eXy8ujgHC
+ OeQ9v8xXeq/kiAy1xvlranHBEXkvrjxMJrC+Mh8Q075Ps5z2MIKmHxhkZ3hp3a0UEtZOHnSr1w3
+ e++lQSZIhkz5edb0mFzoBAz4eZuAcMxacVvDKu6o0H//a5qBlxcGCrWKfBGmMCamzv5ClbFVnOg
+ WvJO6KxSYl0EQPtZIbie3YGK/346Ea3AjdRLlWbUUCy1XZ+IuhfreqtwvYzPbTByCucwYBv86xb
+ RdlrEzhdk+VnUcg==
 X-Developer-Key: i=jacopo.mondi@ideasonboard.com; a=openpgp;
  fpr=72392EDC88144A65C701EA9BA5826A2587AD026B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250802_022631_992356_90AFA259 
-X-CRM114-Status: GOOD (  11.52  )
+X-CRM114-CacheID: sfid-20250802_022642_847071_002197F0 
+X-CRM114-Status: GOOD (  14.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -165,29 +166,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The RZ G2/L CRU driver sets file->private_data to the driver-specific
-structure, but the following call to v4l2_fh_open() overwrites it
-with a pointer to the just allocated v4l2_fh.
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
-Remove the mis-leading assignment in the driver.
+The custom video_open() function in the camss driver open-codes the
+v4l2_fh_open() helper, with an additional mutex that protects the whole
+function. Given that the function does not modify any data guarded by
+the lock, there's no need for using the mutex and the function can be
+replaced by v4l2_fh_open().
 
+Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 ---
- drivers/media/platform/renesas/rzg2l-cru/rzg2l-video.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/media/platform/qcom/camss/camss-video.c | 32 +------------------------
+ 1 file changed, 1 insertion(+), 31 deletions(-)
 
-diff --git a/drivers/media/platform/renesas/rzg2l-cru/rzg2l-video.c b/drivers/media/platform/renesas/rzg2l-cru/rzg2l-video.c
-index a8817a7066b22f8a8dd1fdab50efabc486e4dfdb..941badc90ff55c5225644f88de1d70239eb3a247 100644
---- a/drivers/media/platform/renesas/rzg2l-cru/rzg2l-video.c
-+++ b/drivers/media/platform/renesas/rzg2l-cru/rzg2l-video.c
-@@ -1078,7 +1078,6 @@ static int rzg2l_cru_open(struct file *file)
- 	if (ret)
- 		return ret;
+diff --git a/drivers/media/platform/qcom/camss/camss-video.c b/drivers/media/platform/qcom/camss/camss-video.c
+index 8d05802d1735a35cb1a1a0a81c6666b1517dd2e6..c5d02f9ebc6aa9bfd6910944f3d40a2e5f0a908f 100644
+--- a/drivers/media/platform/qcom/camss/camss-video.c
++++ b/drivers/media/platform/qcom/camss/camss-video.c
+@@ -604,36 +604,6 @@ static const struct v4l2_ioctl_ops msm_vid_ioctl_ops = {
+  * V4L2 file operations
+  */
  
--	file->private_data = cru;
- 	ret = v4l2_fh_open(file);
- 	if (ret)
- 		goto err_unlock;
+-static int video_open(struct file *file)
+-{
+-	struct video_device *vdev = video_devdata(file);
+-	struct camss_video *video = video_drvdata(file);
+-	struct v4l2_fh *vfh;
+-	int ret;
+-
+-	mutex_lock(&video->lock);
+-
+-	vfh = kzalloc(sizeof(*vfh), GFP_KERNEL);
+-	if (vfh == NULL) {
+-		ret = -ENOMEM;
+-		goto error_alloc;
+-	}
+-
+-	v4l2_fh_init(vfh, vdev);
+-	v4l2_fh_add(vfh);
+-
+-	file->private_data = vfh;
+-
+-	mutex_unlock(&video->lock);
+-
+-	return 0;
+-
+-error_alloc:
+-	mutex_unlock(&video->lock);
+-
+-	return ret;
+-}
+-
+ static int video_release(struct file *file)
+ {
+ 	vb2_fop_release(file);
+@@ -646,7 +616,7 @@ static int video_release(struct file *file)
+ static const struct v4l2_file_operations msm_vid_fops = {
+ 	.owner          = THIS_MODULE,
+ 	.unlocked_ioctl = video_ioctl2,
+-	.open           = video_open,
++	.open           = v4l2_fh_open,
+ 	.release        = video_release,
+ 	.poll           = vb2_fop_poll,
+ 	.mmap		= vb2_fop_mmap,
 
 -- 
 2.49.0
