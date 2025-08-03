@@ -4,82 +4,153 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7818C87FCB
-	for <linux-mediatek@archiver.kernel.org>; Sun,  3 Aug 2025 10:35:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50F5DC87FCA
+	for <linux-mediatek@archiver.kernel.org>; Sun,  3 Aug 2025 13:58:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:MIME-Version:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Message-Id:Date:Subject:To:From:Reply-To:Cc:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=4oRnuP4jSrdJzDgvqaR3lx1iHlupn4sHr1B/8K6MSts=; b=EcJGn72m52pDWQHDpE07dVACPI
-	YEyu6HuTuWPEe0HvTpg4oZbqJxjY7TDcoqQTQyBizhJFIiweS7iaIRmBs6iouD+zWFlva2PEYgf69
-	SMQ1mtWfsMqa/6V4wvxpaxgAaA6CDhfnfZo9B5jQfIh08TdHVXOmwEsg9VQMQg+Eock578DPsgvIQ
-	8Bo4wNrnf8JpgxUtnhkwHFRBg0+72wBh+Npl/acWDNPS5ZOl6LmLVhjlgOlsC+jNd21Vw53dNCNqK
-	MV5mXR3N+leR7TEtCeDC3W1SZ2ne14yvQzUKKS2HfKQg55JISbyCGTYzvry55SNz9nFVdwoojr4xS
-	BjONkpSQ==;
+	bh=7/n7ZskUfIeFvbmIe/VLVh1DBQLcTTicScvLBLe4ikI=; b=UPETX4Osao6ppvPaOBWIscCqU6
+	19lSXgj1xBd6KLZpfGPsv2OVg5F60YFJCBsXAmq9UvUlu5zAni61kxpm08HvcR/x4+h3jO5hId3Z+
+	6a//1loB6hPKyPq7ObLtCYi/g8vkPXQPHCjmaCf9klns8WdJYHFegFeD55/CwSj/HTrIezV78r/l5
+	pOtS14fvoPA5vdKzVZO9SobrTxuL9ZEAASAlJgR25ODaVq/gQwH5FAQbilWuHULp3y1gOcy7UMT7J
+	h5C9eTVcArjNnXiVswzXTb32rgdbMiiLY4qRVq0Gl7Lb5p7JOVI0PymNfxoKJW+k7Jw0pIf9Y3QIY
+	DZLEzlTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uiW4G-00000008bcJ-40Eg;
-	Sun, 03 Aug 2025 10:35:52 +0000
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+	id 1uiZEA-00000008kkP-122d;
+	Sun, 03 Aug 2025 13:58:18 +0000
+Received: from mail-koreacentralazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c40f::7] helo=SEYPR02CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uiW1d-00000008bRO-1d6N;
-	Sun, 03 Aug 2025 10:33:10 +0000
-Received: by mail-ej1-x632.google.com with SMTP id a640c23a62f3a-af939afe5efso245969466b.2;
-        Sun, 03 Aug 2025 03:33:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1754217187; x=1754821987; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=4oRnuP4jSrdJzDgvqaR3lx1iHlupn4sHr1B/8K6MSts=;
-        b=Sc9oQaZVTJMujt3EHlVCM8EmeW3h+BcbOP7tPEzFFoHUDqz+GAat5zfK1GF70OeOO4
-         10L+wKr2QgmjWo6ukbEGQhiLCL5JAY3iCNn1TXJU3YCFMaCwMKlRnCixNQFFl3hel6V+
-         XPmydn5/cWxs7yLVazqpmWCeE6YhEbfGMvklyH410pmSkjbnbQDqd5gkv+U2QzDog8Rk
-         RYbB63qc4XYp7KNsFovxJvL14bML7+X3O7PlAfkYxIrF40AfsRHCFXzWKdEzwn/gpnje
-         QHaTQhl8vYMXuVW9l7844SXjRJA4oTuN67nBmha/RJADNRBZH0X5nPO882tANNBgRMlV
-         kFZA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1754217187; x=1754821987;
-        h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=4oRnuP4jSrdJzDgvqaR3lx1iHlupn4sHr1B/8K6MSts=;
-        b=ZjizvBquWGNXpS4jgy2n+k982wDYWJR3t6Y/VlkTvtDRICFEWCIpoxvC1xHDhav6ip
-         z/atwDF1oJVEgcLexG6fFsdxXHbYa7jhq+pkVu+d+GX8lxQI7y1gQFKe4ysyvcOb01Gw
-         UFv4NKKOhy3X+YOp38u6WT2u9zioA4Tp0VFNwJaM7yd55IEHDi7LSOkm/SrP9BqoPSpv
-         Kzlbns8M66y4Pl8OnumYhqUGx5xEenvaENeAZnCjRdzn8S1u0AD0K+Ecwqod22dF6lBk
-         eMn/xX7TAxyhPgOq9cPblf8diY5s19pdhTDiXihKV9Y0ThbV73TnHds16SQmS+021trk
-         OfJA==
-X-Forwarded-Encrypted: i=1; AJvYcCXbbUSKnaZYs1jT3vrgOhvxYUllcNQuKk5c3Ec/bhH4+T6FVt2XY32t3tmIQBdnASrOAbef9/ytVhmmWyHOtA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwR21XcumwrglCacuPG2LjUjS3YQ5mVsrL6IUjrKxUn4JJOjnQh
-	4PbbdRTrX8voFmTO1P4dTbXkebx+K5S9osDSsdHD3bWHEsZKAKIxQsoUkqlmSoH1yrQAVC6pbDj
-	NM0MekzByyAZtYmI3HglSpZcO+OaEDnIDnr1SwoJJxQ==
-X-Gm-Gg: ASbGnctptfjlCVpot8FA/VDBMAcYj/EXBOLnbNCCVHOWU/O9bzRuR+IZKFbZkR/6eVY
-	ZIU1Z8uoSKzERghXho2/SfMsw6BdtXl1lr8sqZ7OsNXS34MeYls7EbDb6AvJmSLYZDHrZs/CamZ
-	qm4aA0nQKmDd3e2/Tp1G7XJK6ZI2GDBBmeSKhN6o4b676CmWSWjzBVJGAgo4JQgprCUoFdXSEKD
-	y/e9wnXkPHMJeQ2EPzn1TTyPzpBLKUNfegizssCxA==
-X-Google-Smtp-Source: AGHT+IEsiLjMRyXYhncxuci92btZ+xh5rvmcRX5wKkTyopgH/WMz7bhDERZr/gb2/fxeD2QWq8Haa1xO8DxrAysRNyE=
-X-Received: by 2002:a17:907:7fa3:b0:af9:3d0a:f38f with SMTP id
- a640c23a62f3a-af93fd64bf3mr624693166b.0.1754217186911; Sun, 03 Aug 2025
- 03:33:06 -0700 (PDT)
+	id 1uiZBc-00000008kdi-3O30;
+	Sun, 03 Aug 2025 13:55:42 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=xMTZKIrn71TSm2tQ0a6OaLyM77cFhPD0G/GvSK4JqeaOolE+2XlM989l+U6FPEOzpc6WcMLoGxTx4anK4+UhWNh8UPx0gNfgnJLg99X1xVORo/Swb0C8MZCzgAAWru765o9WvxwyqenZS3pPu9JLKtuusbxNPyzTOlW96r8IPO5khfK9VWj+t52OXUJsaTjwPVs8bGNcxqY5nJsb8sFQSzdoaPtaLTFf3GB3FLvtb4/IYxyNSea9Lib766OFFG5HzFl1FNEZU11ENT6WuMOwrznrbmhYPSjXI2VXMU8sYEvhRc7tZSihAqy0D3SVRVm+eVS6VGF0oX+pA+66pfKXUw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=7/n7ZskUfIeFvbmIe/VLVh1DBQLcTTicScvLBLe4ikI=;
+ b=PPe3xJ2Cyjq40Clgvrgs+oZbsphbTeIn9PNCWBMJB3M6fUJjXHkTkuuZcGt5bp0igbdTmDNL0NLM2F9y3e9zTHfKLusC5VNFmu9OMaUVO0WtaI24Ve82nz4oBt0wXvxg+3kyTIrK/buKjfHPbtIXAPr0DBD65mbjSofcSyYWwGpvdVQyZMWLPVaDPiSptge838sR9nh+EwdhPYx5/wtVnG/I9uYk8yHNZMiqAVUBX0KTWp/JoXBmHZpYNF7o4KXKypr/QnnOqr10DckPL3YF1LQvO69SjTlOtW5Qu28TikDoeH2hBehQA8yaA7kGQ9vyYBxXjM7TaA/5fYXDF8y4wA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
+ dkim=pass header.d=vivo.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=7/n7ZskUfIeFvbmIe/VLVh1DBQLcTTicScvLBLe4ikI=;
+ b=f/Ru5bc3wSYNPww25Uj+pfO4gM9D0P7xnIOBJgzeaV2BJ0p5DNm4jGWRZaHXK74S5oWzP099p7wkZS/DLGb/5qtF9i0KmvqE24OXEShnBao3wvQ2k+tMCngUGS/RN/7FRPQk/pDNDzz8x2eRK7RkLxp6FKXWNyeXIXtDvZHEbPm2yDIUr6PGOy2i+7uN/4v5JDp719o5G4UewPsxX61SNE2KXIcKxFDAvDs0eIO4/Dd1GM9yFyn4RezQvaJtkB0Eevem2cqk/ytCcicK9Lh1RyaUAPn9JPRmNjn3gcu2gt0Ll5n+nHEmxhv1xPNAo8W+UWfFo+m3ilJwmhYrNmCgKA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=vivo.com;
+Received: from SI2PR06MB5140.apcprd06.prod.outlook.com (2603:1096:4:1af::9) by
+ KL1PR0601MB5861.apcprd06.prod.outlook.com (2603:1096:820:bd::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8989.20; Sun, 3 Aug
+ 2025 13:55:26 +0000
+Received: from SI2PR06MB5140.apcprd06.prod.outlook.com
+ ([fe80::468a:88be:bec:666]) by SI2PR06MB5140.apcprd06.prod.outlook.com
+ ([fe80::468a:88be:bec:666%4]) with mapi id 15.20.8989.017; Sun, 3 Aug 2025
+ 13:55:26 +0000
+From: Qianfeng Rong <rongqianfeng@vivo.com>
+To: Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Qianfeng Rong <rongqianfeng@vivo.com>,
+	Hans Verkuil <hverkuil@kernel.org>,
+	Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] media: mediatek: vcodec: use = { } instead of memset()
+Date: Sun,  3 Aug 2025 21:55:06 +0800
+Message-Id: <20250803135514.118892-1-rongqianfeng@vivo.com>
+X-Mailer: git-send-email 2.34.1
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: TYCP286CA0104.JPNP286.PROD.OUTLOOK.COM
+ (2603:1096:400:2b4::20) To SI2PR06MB5140.apcprd06.prod.outlook.com
+ (2603:1096:4:1af::9)
 MIME-Version: 1.0
-From: Haru Zheng <towwy321@gmail.com>
-Date: Sun, 3 Aug 2025 18:32:55 +0800
-X-Gm-Features: Ac12FXzIOcl_0A4Ih1a8nY3gchgr3V34vE8-EiuwlXia7lYUBWk08DLPwS9N9FI
-Message-ID: <CACw2aoTa8KU-KkxqA10OeVK+yV7t-B94KDa4Odi1sbpY6qAENg@mail.gmail.com>
-Subject: [PATCH] drm/mediatek: dp: Fix suspend/resume training failure
-To: granquet@baylibre.com, "ck.hu@mediatek.com" <ck.hu@mediatek.com>, 
-	"msp@baylibre.com" <msp@baylibre.com>, 
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>, 
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "simona@ffwll.ch" <simona@ffwll.ch>, 
-	"airlied@gmail.com" <airlied@gmail.com>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>, chunkuang.hu@kernel.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	rex-bc.chen@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SI2PR06MB5140:EE_|KL1PR0601MB5861:EE_
+X-MS-Office365-Filtering-Correlation-Id: e700253b-9583-4840-9a08-08ddd29565e6
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|376014|52116014|7416014|38350700014|921020;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?k4btojquFFcJbqYQKw0Dj30oY8lYw3yeHLsKGoJKtU0WGC6bdRxkosp9D5J7?=
+ =?us-ascii?Q?IdluzkkuLLc+Tmlcq1FfO/SrK42SA4zCSotXLA8KEhpwpGDyR4iPteiNZfZc?=
+ =?us-ascii?Q?iie7PuaPF4EdmBKTbPCz6+XzJfbTMP6OKqJGk9dyiYzlal1m2GHy1Eoklne8?=
+ =?us-ascii?Q?DUsU0LsYs23pqrJ/hrWivnXNhWUwTu2eO8vDlxzcz9h+y3sw++uS3FGXaDRK?=
+ =?us-ascii?Q?0uVHxydfcpL+MMtWmNjkU+jHZpD+GjKyfcBMBcwpKLZEfDmY9lTadIHk85Qf?=
+ =?us-ascii?Q?wMVZsSCW9YHk94GJdQFcbN5PYnGMLAwj49Mb1QGupvXWICcUc4x4vMqpEQ0l?=
+ =?us-ascii?Q?Ogq7hdV9r/tmb9vbxFcOK2JMOieRS8BBqic8YOG1m9vH/vaEYWnwoC0vCjeo?=
+ =?us-ascii?Q?Pi97EayW9SqviZoiNNE0SEgcmI0M6xTvyKSgJoMzmLeylU3izzPkgCdU1icO?=
+ =?us-ascii?Q?6klRAwcNq6+JC76rbOSn8GiC2DNt0I1WQUIWKJzsWqFbvUVM+KCOvRNDGJnS?=
+ =?us-ascii?Q?gEuovrmjzCgNHSn1vEa1QvtBjiI3PF7jRIR4m2eJVMjrOUSZa40h8a/4KT5l?=
+ =?us-ascii?Q?PH3F5ZZXBxTj4cxM4y6wfT7Deg2w34wdAJLz/o6SpH2ovqDFsiBEOE8febfD?=
+ =?us-ascii?Q?HiFbIvT0EGU4j8KtAZXd2hrUlJywnaznvkQsptqcQq59+IvfVozanOWUWzsN?=
+ =?us-ascii?Q?N4hUn7S8COU5b2Q+LA7TH+OifAB/4pnim2pihp4N62mJ/FEzXFaqw8eidu70?=
+ =?us-ascii?Q?I04nCs5JmuPOgvhN3Tu6nkrzk32h/EOVo0qSP03J7AZouzYhnWbj2aO2ueOq?=
+ =?us-ascii?Q?cKBTzhLoUIsmYuQHn6rVnZw85aTJ+lBvGXYViFnsn/yjeh6yniFax8xHobCN?=
+ =?us-ascii?Q?mrq/R1hKJp2VKwMtUqP4maZqyH2wkqYwniY9u6xPPjMcqdanRh9M2vaoKoqd?=
+ =?us-ascii?Q?zkmiUtqhP0e6aOgedH3/SeVmdVxpURWZks0IVbGc9CxvTjkNXMuNK86TsblN?=
+ =?us-ascii?Q?DZopenMzzI6grMg0fUKfPzrTaO0bqYuN7ZBIQD7+reIPnL1u6eR1+gsCNgjQ?=
+ =?us-ascii?Q?YdeG5Usv0mvMVTxZxoXhPDtgLgRg4mHTLDzurQqfXE6pU0zkuJ/bC9a7Tdg+?=
+ =?us-ascii?Q?RZFgmv/IuYas1epJJwB+FAE843t0BEA/ee2f7uRwVJy5N/yII80T7qD5exZV?=
+ =?us-ascii?Q?XZA07PTKgVx+ivT73yjVgsP97kbs1Daslyw9A4gf7xmtyS/nKDT7LyEmNCFv?=
+ =?us-ascii?Q?8H8hG5N/FBKlkV5jhUS2O+PEXgOQ/6X1uWuvOcCzlf/O3oSWyFaXgeN3WUAl?=
+ =?us-ascii?Q?1jrpckjLl9HfnVmNxHleqaAFrz4Il+wFoxywGZe93YRG8iYByG1UxYtJQ5PO?=
+ =?us-ascii?Q?YFSBBZ+i9f8jIrWyVfmhmPTgD9uJNIXJmaCFLjKTuVKGFc06ENhD2kmhNqqp?=
+ =?us-ascii?Q?NzIFUCxd7yHsocb6jMs7Gb46UtcITN8GmBA42U7R5r/eEyUWS7QVYXIdjqWZ?=
+ =?us-ascii?Q?KsA9WcTf3fgR7wzgiYGfHqkjojLeRs2Psp5o?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SI2PR06MB5140.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014)(52116014)(7416014)(38350700014)(921020);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?gXBmtWRuETsRj0q8rBbYinhTsSC1nHulPXtjjXxNeyVvL58ef/meHMmmvb3E?=
+ =?us-ascii?Q?OTw385YcV7DEWxpYCNqfXRwhbpsVK+RVC2Uo8zR7/aVwXNRorpnQ9pxNZm8J?=
+ =?us-ascii?Q?ufBbrvPLKS5+xfcfvYDbupK4iwRqwMvlJlk54Xb+dud1NYQJx5kuCBXrCuR9?=
+ =?us-ascii?Q?X01psuTSJZm2R8Wq2ElUcPFvQotED5GlbiMYta/0EEoFd1cojQC80N1kYueO?=
+ =?us-ascii?Q?L4KEBwOTcHWj3Tr1f97c8npJYGS994PPAlz5s7wB6ApSemmYhrio8KHoIvGI?=
+ =?us-ascii?Q?Sk57PwjtWvahiIUjHyqZpWhy9ebQJqw95ZPDYhq6wtV03Cv1mNcIpcqQ20N2?=
+ =?us-ascii?Q?cXXq5mK/Sz7CP5Xi7rkGGD19fehTtjHyyaURVbtWi6XQzV3HWjmbb05NCmwx?=
+ =?us-ascii?Q?O4wfcWgVa8t6EYSSM1FZH6uRK6fWefFdO3ZX1p9+lpv1vYSm/peYzr2Huh33?=
+ =?us-ascii?Q?2wkIqHut12rGyI+34nyLDOPdMKMjdbHw9P+C6nz/ybk+vtFFYsv+jGF5fUbg?=
+ =?us-ascii?Q?Rrgbby2sYmx8WotjhZJl76w3dAcI+DQXRiGdkl6biofvSK76Cpql22Dct6Nj?=
+ =?us-ascii?Q?EwiwHAvDvOGUuTpllO6muRbt59MP1yatc65AbjXfXpuLZoYybPLStyfWgQ2n?=
+ =?us-ascii?Q?+TT+ebOkNvoF8zx/YUkmo6gaD/rFfKSBP1QkVYSEHGysRaG0LJoOaNLt9mdQ?=
+ =?us-ascii?Q?sjhqrB9DYaVcMmFnP8kHrTuR533D2ZSCZU/P0lehOOcZJ6Q+G9imb0+VWOSI?=
+ =?us-ascii?Q?xLI+6viLWS9EXYN+pXaG+PPnVYE7z5EfmM5OCwLyD9Fjpz1tacK++jbuYJE2?=
+ =?us-ascii?Q?j+R9J7bIF6omF7PRXDmpl9cLJX1l1gPyP25QFScPCH1G172ZIODt2xXf5O/c?=
+ =?us-ascii?Q?3Z9o4b/ol6uI6aqqwb2w2cDEd/jTuQF0b3apyOKMWzSlZoAh2z/n2s+hV3WY?=
+ =?us-ascii?Q?8JTFQkO6nyPP5T3z2rQ4owYQe64kh6Km+Z2tH1E7BqN2NC63MLpPX6sh6/AW?=
+ =?us-ascii?Q?tv58X8bRWvAgL5dZdeTGAkLTFfIgJH2kwEwK8/QPpO2cold+RarAkPM/DZnH?=
+ =?us-ascii?Q?yGVyGsfplTrEq2HCj1YYH8lcB4awcsiHVwKDZDj/0LKcLlYRgFfP2oPBrsh/?=
+ =?us-ascii?Q?ea+LtyKHrJq7hkuWtMZ8xgM8M3ktoH/CXBN/+S3OpxqY/q8jmuejLK8eUj3Q?=
+ =?us-ascii?Q?g+UJRPpEOh0hnJH4qHI8a8XJ52VlFqRcCSZM620jZPHTU9ZTXQLnddyL2FNE?=
+ =?us-ascii?Q?ILuRctvyJ7hCJzA54s9S18160gzkGLfEJxwb4lBK5d3naYQ9juqmdOdC2WCP?=
+ =?us-ascii?Q?LQKLflytGfID2EiX9iEMidM8XWr8Y8yvfmGwV4rt5qBibEjZPqna/OtNFEXv?=
+ =?us-ascii?Q?UNx0OBupYIcAKZUy+l5c4iXlXx5pWdWfeSjYBZIfabmPGwv2CvttegBVns7f?=
+ =?us-ascii?Q?XwgBNVj3e8891HJ2T1DlcKfm+28j59gkXhLJeixrbsV4InYCsG+Fat5qjhic?=
+ =?us-ascii?Q?i7Ao7btHT32xbrRZT6SxAUnb/4MgSoIXgx9NVfZ0a3bZem0x6ZmNS0Nim45L?=
+ =?us-ascii?Q?yNL6A5s+Fo8DN+57tX0p7+RzeDIly0sX6/m407rz?=
+X-OriginatorOrg: vivo.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e700253b-9583-4840-9a08-08ddd29565e6
+X-MS-Exchange-CrossTenant-AuthSource: SI2PR06MB5140.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Aug 2025 13:55:26.4430
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: tKes1wa+U0zEB9tJMUB9xATYQFKSMKJWsbZ05XoBn31uSXWdO1lYpfgYBciYgToTfSmyNP21t0sEDX5mqvO+2g==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR0601MB5861
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250803_033309_449722_3CABBC8F 
-X-CRM114-Status: GOOD (  16.90  )
+X-CRM114-CacheID: sfid-20250803_065540_971195_3727DB1A 
+X-CRM114-Status: GOOD (  14.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,228 +165,221 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From 4919bd858cd9cba8e4aadba7c3d1fd434ef3b09e Mon Sep 17 00:00:00 2001
-From: Haru Zheng <towwy321@gmail.com>
-Date: Wed, 18 Jun 2025 11:28:37 +0800
-Subject: [PATCH] drm/mediatek: dp: Fix suspend/resume training failure
+Based on testing and recommendations by David Lechner et al. [1][2],
+using = { } to initialize a structure or array is the preferred way
+to do this in the kernel.
 
-When suspending and resuming DisplayPort via Type-C,
-link training may fail.
+This patch converts memset() to = { }, thereby:
+- Eliminating the risk of sizeof() mismatches.
+- Simplifying the code.
 
-This patch backports the software IRQ handling for DP,
-as eDP uses hardware IRQ while DP uses software IRQ.
-Additionally, cable_plugged_in is flipped in
-mtk_dp_hpd_event to ensure correct hotplug detection
-during resume.
+[1]: https://lore.kernel.org/linux-iio/202505090942.48EBF01B@keescook/
+[2]: https://lore.kernel.org/lkml/20250614151844.50524610@jic23-huawei/
 
-These changes fix the DP training failure after suspend/resume.
-
-Fixes: f70ac097a2cf ("drm/mediatek: Add MT8195 Embedded DisplayPort driver")
-Tested-on: Genio G700 EVK
-Signed-off-by: Haru Zheng <towwy321@gmail.com>
+Signed-off-by: Qianfeng Rong <rongqianfeng@vivo.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dp.c     | 100 ++++++++++++++++++++++++--
- drivers/gpu/drm/mediatek/mtk_dp_reg.h |   3 +
- 2 files changed, 96 insertions(+), 7 deletions(-)
+ .../mediatek/vcodec/decoder/vdec/vdec_vp9_if.c    |  3 +--
+ .../mediatek/vcodec/decoder/vdec_vpu_if.c         | 12 ++++--------
+ .../mediatek/vcodec/encoder/mtk_vcodec_enc.c      |  6 ++----
+ .../mediatek/vcodec/encoder/venc_vpu_if.c         | 15 +++++----------
+ 4 files changed, 12 insertions(+), 24 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c
-b/drivers/gpu/drm/mediatek/mtk_dp.c
-index bef6eeb30d3e..0cfe792bc36d 100644
---- a/drivers/gpu/drm/mediatek/mtk_dp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -1012,6 +1012,16 @@ static u32 mtk_dp_swirq_get_clear(struct mtk_dp *mtk_dp)
-  return irq_status;
- }
-
-+static void mtk_dp_swirq_enable(struct mtk_dp *mtk_dp, bool enable)
-+{
-+ if (enable)
-+ mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_35C4, 0,
-+    SW_IRQ_FINAL_STATUS_DP_TRANS_P0_MASK);
-+ else
-+ mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_35C4, 0xFFFF,
-+    SW_IRQ_FINAL_STATUS_DP_TRANS_P0_MASK);
-+}
-+
- static u32 mtk_dp_hwirq_get_clear(struct mtk_dp *mtk_dp)
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_if.c
+index eb3354192853..80554b2c26c0 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_if.c
+@@ -548,10 +548,9 @@ static bool vp9_wait_dec_end(struct vdec_vp9_inst *inst)
+ static struct vdec_vp9_inst *vp9_alloc_inst(struct mtk_vcodec_dec_ctx *ctx)
  {
-  u32 irq_status = (mtk_dp_read(mtk_dp, MTK_DP_TRANS_P0_3418) &
-@@ -1751,6 +1761,8 @@ static int mtk_dp_parse_capabilities(struct
-mtk_dp *mtk_dp)
-      mtk_dp->train_info.sink_ssc)
-  return 0;
-
-+ memset(mtk_dp->rx_cap, 0, DP_RECEIVER_CAP_SIZE);
-+
-  ret = drm_dp_read_dpcd_caps(&mtk_dp->aux, mtk_dp->rx_cap);
-  if (ret < 0)
-  return ret;
-@@ -2031,8 +2043,8 @@ static irqreturn_t mtk_dp_hpd_event(int hpd, void *dev)
-  spin_unlock_irqrestore(&mtk_dp->irq_thread_lock, flags);
-
-  if (cable_sta_chg) {
-- if (!!(mtk_dp_read(mtk_dp, MTK_DP_TRANS_P0_3414) &
--        HPD_DB_DP_TRANS_P0_MASK))
-+ if (!(mtk_dp_read(mtk_dp, MTK_DP_TRANS_P0_3414) &
-+       HPD_DB_DP_TRANS_P0_MASK))
-  mtk_dp->train_info.cable_plugged_in = true;
-  else
-  mtk_dp->train_info.cable_plugged_in = false;
-@@ -2265,6 +2277,41 @@ static ssize_t mtk_dp_aux_transfer(struct
-drm_dp_aux *mtk_aux,
-  return ret;
- }
-
-+static void mtk_dp_swirq_hpd(struct mtk_dp *mtk_dp, u8 conn)
-+{
-+ u32 data;
-+
-+ data = mtk_dp_read(mtk_dp, MTK_DP_TRANS_P0_3414);
-+
-+ mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_3414,
-+    HPD_OVR_EN_DP_TRANS_P0_MASK,
-+    HPD_OVR_EN_DP_TRANS_P0_MASK);
-+
-+ if (conn)
-+ mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_3414,
-+    HPD_SET_DP_TRANS_P0_MASK,
-+    HPD_SET_DP_TRANS_P0_MASK);
-+ else
-+ mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_3414,
-+    0,
-+    HPD_SET_DP_TRANS_P0_MASK);
-+}
-+
-+static void mtk_dp_swirq_hpd_interrupt_set(struct mtk_dp *mtk_dp, u8 status)
-+{
-+ dev_info(mtk_dp->dev, "[DPTX] status:%d [2:DISCONNECT, 4:CONNECT]\n", status);
-+
-+ if (status == MTK_DP_HPD_CONNECT) {
-+ mtk_dp_init_port(mtk_dp);
-+ mtk_dp_swirq_hpd(mtk_dp, TRUE);
-+ } else {
-+ mtk_dp_swirq_hpd(mtk_dp, FALSE);
-+ }
-+
-+ mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_35C0, status,
-+    SW_IRQ_SET_DP_TRANS_P0_MASK);
-+}
-+
- static int mtk_dp_poweron(struct mtk_dp *mtk_dp)
+ 	int result;
+-	struct mtk_vcodec_mem mem;
++	struct mtk_vcodec_mem mem = { };
+ 	struct vdec_vp9_inst *inst;
+ 
+-	memset(&mem, 0, sizeof(mem));
+ 	mem.size = sizeof(struct vdec_vp9_inst);
+ 	result = mtk_vcodec_mem_alloc(ctx, &mem);
+ 	if (result)
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
+index 145958206e38..d5e943f81c15 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
+@@ -181,12 +181,11 @@ static int vcodec_vpu_send_msg(struct vdec_vpu_inst *vpu, void *msg, int len)
+ 
+ static int vcodec_send_ap_ipi(struct vdec_vpu_inst *vpu, unsigned int msg_id)
  {
-  int ret;
-@@ -2534,7 +2581,7 @@ static int mtk_dp_bridge_atomic_check(struct
-drm_bridge *bridge,
-
-  dev_dbg(mtk_dp->dev, "input format 0x%04x, output format 0x%04x\n",
-  bridge_state->input_bus_cfg.format,
-- bridge_state->output_bus_cfg.format);
-+ bridge_state->output_bus_cfg.format);
-
-  if (input_bus_format == MEDIA_BUS_FMT_YUYV8_1X16)
-  mtk_dp->info.format = DP_PIXELFORMAT_YUV422;
-@@ -2552,6 +2599,30 @@ static int mtk_dp_bridge_atomic_check(struct
-drm_bridge *bridge,
-  return 0;
- }
-
-+static void mtk_dp_bridge_hpd_notify(struct drm_bridge *bridge,
-+      enum drm_connector_status status)
-+{
-+ struct mtk_dp *mtk_dp = mtk_dp_from_bridge(bridge);
-+ struct mtk_dp_train_info *train_info = &mtk_dp->train_info;
-+
-+ if (mtk_dp->bridge.type != DRM_MODE_CONNECTOR_eDP) {
-+ if (mtk_dp->hpd_state != status) {
-+ if (status == connector_status_disconnected) {
-+ train_info->cable_plugged_in = false;
-+ } else {
-+ mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_3414,
-+    HPD_OVR_EN_DP_TRANS_P0_MASK,
-+    HPD_OVR_EN_DP_TRANS_P0_MASK);
-+ mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_3414,
-+    HPD_SET_DP_TRANS_P0_MASK,
-+    HPD_SET_DP_TRANS_P0_MASK);
-+ train_info->cable_plugged_in = true;
-+ }
-+ mtk_dp->hpd_state = status;
-+ }
-+ }
-+}
-+
- static const struct drm_bridge_funcs mtk_dp_bridge_funcs = {
-  .atomic_check = mtk_dp_bridge_atomic_check,
-  .atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
-@@ -2801,7 +2872,8 @@ static int mtk_dp_probe(struct platform_device *pdev)
-  mtk_dp_power_enable(mtk_dp);
-
-  /* Disable HW interrupts: we don't need any for eDP */
-- mtk_dp_hwirq_enable(mtk_dp, false);
-+ mtk_dp_hwirq_enable(mtk_dp, true);
-+ mtk_dp_swirq_enable(mtk_dp, false);
-
-  /*
-  * Power on the AUX to allow reading the EDID from aux-bus:
-@@ -2829,6 +2901,9 @@ static int mtk_dp_probe(struct platform_device *pdev)
-  }
-  }
-  } else {
-+ mtk_dp_swirq_enable(mtk_dp, false);
-+ mtk_dp_hwirq_enable(mtk_dp, false);
-+ mtk_dp_swirq_enable(mtk_dp, true);
-  mtk_dp->bridge.ops = DRM_BRIDGE_OP_DETECT |
-       DRM_BRIDGE_OP_EDID | DRM_BRIDGE_OP_HPD;
-  ret = devm_drm_bridge_add(dev, &mtk_dp->bridge);
-@@ -2861,10 +2936,15 @@ static int mtk_dp_suspend(struct device *dev)
-  struct mtk_dp *mtk_dp = dev_get_drvdata(dev);
-
-  mtk_dp_power_disable(mtk_dp);
-- if (mtk_dp->bridge.type != DRM_MODE_CONNECTOR_eDP)
-+
-+ if (mtk_dp->bridge.type == DRM_MODE_CONNECTOR_eDP) {
-  mtk_dp_hwirq_enable(mtk_dp, false);
-- pm_runtime_put_sync(dev);
-+ } else {
-+ mtk_dp_swirq_hpd_interrupt_set(mtk_dp, MTK_DP_HPD_DISCONNECT);
-+ mtk_dp_swirq_enable(mtk_dp, false);
-+ }
-
-+ pm_runtime_put_sync(dev);
-  return 0;
- }
-
-@@ -2874,8 +2954,14 @@ static int mtk_dp_resume(struct device *dev)
-
-  pm_runtime_get_sync(dev);
-  mtk_dp_init_port(mtk_dp);
-- if (mtk_dp->bridge.type != DRM_MODE_CONNECTOR_eDP)
-+
-+ if (mtk_dp->bridge.type == DRM_MODE_CONNECTOR_eDP) {
-  mtk_dp_hwirq_enable(mtk_dp, true);
-+ } else {
-+ mtk_dp_swirq_hpd_interrupt_set(mtk_dp, MTK_DP_HPD_CONNECT);
-+ mtk_dp_swirq_enable(mtk_dp, true);
-+ }
-+
-  mtk_dp_power_enable(mtk_dp);
-
-  return 0;
-diff --git a/drivers/gpu/drm/mediatek/mtk_dp_reg.h
-b/drivers/gpu/drm/mediatek/mtk_dp_reg.h
-index 8ad7a9cc259e..7c97e230be50 100644
---- a/drivers/gpu/drm/mediatek/mtk_dp_reg.h
-+++ b/drivers/gpu/drm/mediatek/mtk_dp_reg.h
-@@ -286,7 +286,10 @@
- #define POST_MISC_DATA_LANE1_OV_DP_TRANS_P0_MASK BIT(9)
- #define POST_MISC_DATA_LANE2_OV_DP_TRANS_P0_MASK BIT(10)
- #define POST_MISC_DATA_LANE3_OV_DP_TRANS_P0_MASK BIT(11)
-+#define MTK_DP_TRANS_P0_35C0 0x35c0
-+#define MTK_DP_TRANS_P0_35C4 0x35c4
- #define MTK_DP_TRANS_P0_35C8 0x35c8
-+#define SW_IRQ_SET_DP_TRANS_P0_MASK GENMASK(15, 0)
- #define SW_IRQ_CLR_DP_TRANS_P0_MASK GENMASK(15, 0)
- #define SW_IRQ_STATUS_DP_TRANS_P0_MASK GENMASK(15, 0)
- #define MTK_DP_TRANS_P0_35D0 0x35d0
+-	struct vdec_ap_ipi_cmd msg;
++	struct vdec_ap_ipi_cmd msg = { };
+ 	int err = 0;
+ 
+ 	mtk_vdec_debug(vpu->ctx, "+ id=%X", msg_id);
+ 
+-	memset(&msg, 0, sizeof(msg));
+ 	msg.msg_id = msg_id;
+ 	if (vpu->fw_abi_version < 2)
+ 		msg.vpu_inst_addr = vpu->inst_addr;
+@@ -201,7 +200,7 @@ static int vcodec_send_ap_ipi(struct vdec_vpu_inst *vpu, unsigned int msg_id)
+ 
+ int vpu_dec_init(struct vdec_vpu_inst *vpu)
+ {
+-	struct vdec_ap_ipi_init msg;
++	struct vdec_ap_ipi_init msg = { };
+ 	int err;
+ 
+ 	init_waitqueue_head(&vpu->wq);
+@@ -225,7 +224,6 @@ int vpu_dec_init(struct vdec_vpu_inst *vpu)
+ 		}
+ 	}
+ 
+-	memset(&msg, 0, sizeof(msg));
+ 	msg.msg_id = AP_IPIMSG_DEC_INIT;
+ 	msg.ap_inst_addr = (unsigned long)vpu;
+ 	msg.codec_type = vpu->codec_type;
+@@ -245,7 +243,7 @@ int vpu_dec_init(struct vdec_vpu_inst *vpu)
+ 
+ int vpu_dec_start(struct vdec_vpu_inst *vpu, uint32_t *data, unsigned int len)
+ {
+-	struct vdec_ap_ipi_dec_start msg;
++	struct vdec_ap_ipi_dec_start msg = { };
+ 	int i;
+ 	int err = 0;
+ 
+@@ -254,7 +252,6 @@ int vpu_dec_start(struct vdec_vpu_inst *vpu, uint32_t *data, unsigned int len)
+ 		return -EINVAL;
+ 	}
+ 
+-	memset(&msg, 0, sizeof(msg));
+ 	msg.msg_id = AP_IPIMSG_DEC_START;
+ 	if (vpu->fw_abi_version < 2)
+ 		msg.vpu_inst_addr = vpu->inst_addr;
+@@ -273,7 +270,7 @@ int vpu_dec_start(struct vdec_vpu_inst *vpu, uint32_t *data, unsigned int len)
+ int vpu_dec_get_param(struct vdec_vpu_inst *vpu, uint32_t *data,
+ 		      unsigned int len, unsigned int param_type)
+ {
+-	struct vdec_ap_ipi_get_param msg;
++	struct vdec_ap_ipi_get_param msg = { };
+ 	int err;
+ 
+ 	if (len > ARRAY_SIZE(msg.data)) {
+@@ -281,7 +278,6 @@ int vpu_dec_get_param(struct vdec_vpu_inst *vpu, uint32_t *data,
+ 		return -EINVAL;
+ 	}
+ 
+-	memset(&msg, 0, sizeof(msg));
+ 	msg.msg_id = AP_IPIMSG_DEC_GET_PARAM;
+ 	msg.inst_id = vpu->inst_id;
+ 	memcpy(msg.data, data, sizeof(unsigned int) * len);
+diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
+index a01dc25a7699..bc6435a7543f 100644
+--- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
++++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
+@@ -1064,7 +1064,7 @@ static int mtk_venc_encode_header(void *priv)
+ 
+ static int mtk_venc_param_change(struct mtk_vcodec_enc_ctx *ctx)
+ {
+-	struct venc_enc_param enc_prm;
++	struct venc_enc_param enc_prm = { };
+ 	struct vb2_v4l2_buffer *vb2_v4l2 = v4l2_m2m_next_src_buf(ctx->m2m_ctx);
+ 	struct mtk_video_enc_buf *mtk_buf;
+ 	int ret = 0;
+@@ -1075,7 +1075,6 @@ static int mtk_venc_param_change(struct mtk_vcodec_enc_ctx *ctx)
+ 
+ 	mtk_buf = container_of(vb2_v4l2, struct mtk_video_enc_buf, m2m_buf.vb);
+ 
+-	memset(&enc_prm, 0, sizeof(enc_prm));
+ 	if (mtk_buf->param_change == MTK_ENCODE_PARAM_NONE)
+ 		return 0;
+ 
+@@ -1138,7 +1137,7 @@ static void mtk_venc_worker(struct work_struct *work)
+ 	struct mtk_vcodec_enc_ctx *ctx = container_of(work, struct mtk_vcodec_enc_ctx,
+ 				    encode_work);
+ 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
+-	struct venc_frm_buf frm_buf;
++	struct venc_frm_buf frm_buf = { };
+ 	struct mtk_vcodec_mem bs_buf;
+ 	struct venc_done_result enc_result;
+ 	int ret, i;
+@@ -1168,7 +1167,6 @@ static void mtk_venc_worker(struct work_struct *work)
+ 		return;
+ 	}
+ 
+-	memset(&frm_buf, 0, sizeof(frm_buf));
+ 	for (i = 0; i < src_buf->vb2_buf.num_planes ; i++) {
+ 		frm_buf.fb_addr[i].dma_addr =
+ 				vb2_dma_contig_plane_dma_addr(&src_buf->vb2_buf, i);
+diff --git a/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c b/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
+index 51bb7ee141b9..55627b71348d 100644
+--- a/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
++++ b/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
+@@ -132,7 +132,7 @@ static int vpu_enc_send_msg(struct venc_vpu_inst *vpu, void *msg,
+ int vpu_enc_init(struct venc_vpu_inst *vpu)
+ {
+ 	int status;
+-	struct venc_ap_ipi_msg_init out;
++	struct venc_ap_ipi_msg_init out = { };
+ 
+ 	init_waitqueue_head(&vpu->wq_hd);
+ 	vpu->signaled = 0;
+@@ -148,7 +148,6 @@ int vpu_enc_init(struct venc_vpu_inst *vpu)
+ 		return -EINVAL;
+ 	}
+ 
+-	memset(&out, 0, sizeof(out));
+ 	out.msg_id = AP_IPIMSG_ENC_INIT;
+ 	out.venc_inst = (unsigned long)vpu;
+ 	if (vpu_enc_send_msg(vpu, &out, sizeof(out))) {
+@@ -191,11 +190,10 @@ int vpu_enc_set_param(struct venc_vpu_inst *vpu,
+ 	size_t msg_size = is_ext ?
+ 		sizeof(struct venc_ap_ipi_msg_set_param_ext) :
+ 		sizeof(struct venc_ap_ipi_msg_set_param);
+-	struct venc_ap_ipi_msg_set_param_ext out;
++	struct venc_ap_ipi_msg_set_param_ext out = { };
+ 
+ 	mtk_venc_debug(vpu->ctx, "id %d ->", id);
+ 
+-	memset(&out, 0, sizeof(out));
+ 	out.base.msg_id = AP_IPIMSG_ENC_SET_PARAM;
+ 	out.base.vpu_inst_addr = vpu->inst_addr;
+ 	out.base.param_id = id;
+@@ -258,11 +256,10 @@ static int vpu_enc_encode_32bits(struct venc_vpu_inst *vpu,
+ 	size_t msg_size = is_ext ?
+ 		sizeof(struct venc_ap_ipi_msg_enc_ext) :
+ 		sizeof(struct venc_ap_ipi_msg_enc);
+-	struct venc_ap_ipi_msg_enc_ext out;
++	struct venc_ap_ipi_msg_enc_ext out = { };
+ 
+ 	mtk_venc_debug(vpu->ctx, "bs_mode %d ->", bs_mode);
+ 
+-	memset(&out, 0, sizeof(out));
+ 	out.base.msg_id = AP_IPIMSG_ENC_ENCODE;
+ 	out.base.vpu_inst_addr = vpu->inst_addr;
+ 	out.base.bs_mode = bs_mode;
+@@ -302,12 +299,11 @@ static int vpu_enc_encode_34bits(struct venc_vpu_inst *vpu,
+ 				 struct mtk_vcodec_mem *bs_buf,
+ 				 struct venc_frame_info *frame_info)
+ {
+-	struct venc_ap_ipi_msg_enc_ext_34 out;
++	struct venc_ap_ipi_msg_enc_ext_34 out = { };
+ 	size_t msg_size = sizeof(struct venc_ap_ipi_msg_enc_ext_34);
+ 
+ 	mtk_venc_debug(vpu->ctx, "bs_mode %d ->", bs_mode);
+ 
+-	memset(&out, 0, sizeof(out));
+ 	out.msg_id = AP_IPIMSG_ENC_ENCODE;
+ 	out.vpu_inst_addr = vpu->inst_addr;
+ 	out.bs_mode = bs_mode;
+@@ -367,9 +363,8 @@ int vpu_enc_encode(struct venc_vpu_inst *vpu, unsigned int bs_mode,
+ 
+ int vpu_enc_deinit(struct venc_vpu_inst *vpu)
+ {
+-	struct venc_ap_ipi_msg_deinit out;
++	struct venc_ap_ipi_msg_deinit out = { };
+ 
+-	memset(&out, 0, sizeof(out));
+ 	out.msg_id = AP_IPIMSG_ENC_DEINIT;
+ 	out.vpu_inst_addr = vpu->inst_addr;
+ 	if (vpu_enc_send_msg(vpu, &out, sizeof(out))) {
 -- 
-2.45.2
+2.34.1
+
 
