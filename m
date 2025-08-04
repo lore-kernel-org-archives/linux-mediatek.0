@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2CB8C87FCF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Aug 2025 14:09:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 909F6C87FCB
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Aug 2025 14:12:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=h4XCFDuyzG2Kj32vyv3guZI1OAmo+uzMJ+3n3ZjD+y4=; b=Tuem/8Ii6LulPK
-	dXodFZGaD1o55Tw4fvsFNaPgzSfdh/AP5vKcxn3pwfqifjf4DZIiVuHWpOeFuoW+2SfBa17ubkXvP
-	Y7HMfptbLBvWeB+sTIRUPuBRgRfj0gb/DnNRKvjJOw3U9WYRmWOON/4k6P7yEqf5PFPOhl+h/oO6R
-	CZcTb3oLUPdbEC5w9ECJ2HqXlyR109aFPqORnIod/EluNbnV2zmHUrXZwdZKW8HeGbcgmzBObXxxf
-	/q7ZQ2WNOwKVBxL2xVG7J+U9bg2UJ6FjSm9wKsby2mvDi0a/kH2B7VY5ARcVa9dXs+zuUgzonlotq
-	lEJEPymCLeqQToJ/aa6g==;
+	List-Owner; bh=XtBYkZV30A+aKurGv3t5SDxUZqXRs2WQhQ/R1sv+1g0=; b=dwPz/U4ltTBDjb
+	GYv7+quGJtvcWaxL4WiDOcihWCPatiggeQSP0ICfMbFThmnBTyg8PltbV9gG1bidbjSSorifrE6Fj
+	4y33gjpRynuNHDAprGUMN+cFe52g/YRz84n5SqYk5TDQ3Xg5KeeCUZKmRu52HxK3ZNih5P5VIy0Js
+	pf1/L8LhAM3MvpAcNDDZ4yVX4D1lyQLy79bSrbdnWPlCeTlLIXeP7aI66J5vZDh6Ag6LZ3eZJPqot
+	qjWDPD3ER6PjkWFmLL+aeWnBqoRyc8A+Yrq9d1gR8bqICDZy9LpDty2Ho7Cwmnfnni0zFz5XLF01S
+	Gf4tUnV6iIv1v318cs0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uivsq-0000000AcYP-3GAB;
-	Mon, 04 Aug 2025 14:09:48 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uivvO-0000000Ad2P-0aqB;
+	Mon, 04 Aug 2025 14:12:26 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uivIw-0000000AXl6-3H1e;
-	Mon, 04 Aug 2025 13:32:44 +0000
+	id 1uivIy-0000000AXlT-2FuS;
+	Mon, 04 Aug 2025 13:32:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1754314361;
-	bh=odWRAl94AI131ZH9bWkD5WdWUHexg4q4fcoXkXOB/Gg=;
+	s=mail; t=1754314363;
+	bh=m/48SHb+sDgnCPz39BvxsQGwb3qepM8dH2EhkYdEQ/4=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ndgqcUqVYcbUD2NXFPt0fYbaY2jrSG3jw6FJeKR22KyZkaHqUiPIPyOBmxhxVbNFI
-	 a9m3XKnyXFfMcBs0ON06R47cn7fpGzyLUCSxH2qi+hwWR/LPJMrNz3TZkS5GNNqScc
-	 2ApT0K37PeP1DwbRlXA95qDgUeXu88IFAExhwIdMsXn7HtHzye3vPHtxEQOtkNbSWY
-	 TrmoGjUKJxXxx3HRwhZfjLrqXoxWOnwnhpabMKX3lHWNd7gtF9SVowqGCl/jBKj56a
-	 5SHvLLsTK706WyjOwWV9NwCxoGboMvEm5MGcRD9/cG2Z0utmLOcLCU+werVpqifoAY
-	 x9iVRcrMoAeCQ==
+	b=qMyECc5nfIKEzSfqerCeK5QCJS7dXE6GL6kHgX8mC2W6DgUqdsGLdwv6qpuZ2yiBE
+	 kJ5v3qCExt617uWGl8EycuhwYqg4hweUYIauJ4+8ZSOCqebiryxhjzck/TTlCR3QPt
+	 uPJ2C1OTuvuzMoW3hdRe6HLUt2w0TJFEYk2hUrtWHJHJaDBxG8vQmOYODXa5jLrcJX
+	 66qxkwW3vyDv8K5cx9asMz/ih0p+PXJn6304nX2f0j4wcc4K3B8u2rEIEG1FRs1yZD
+	 tb5fWGVkxbTJbFZf9LMR/Ys43W9XGFI8AOzgAi2EaWbNb0AsPPk8qzg1oqXVgpIbVJ
+	 MtJeWFWsVdZKA==
 Received: from laura.lan (unknown [IPv6:2001:b07:646b:e2:865e:547d:4830:837d])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laura.nao)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 07F5417E0F3C;
-	Mon,  4 Aug 2025 15:32:39 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id AABF517E0202;
+	Mon,  4 Aug 2025 15:32:41 +0200 (CEST)
 From: Laura Nao <laura.nao@collabora.com>
 To: srini@kernel.org,
 	robh@kernel.org,
@@ -54,17 +54,17 @@ To: srini@kernel.org,
 	lukasz.luba@arm.com,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com
-Subject: [PATCH v3 3/9] thermal/drivers/mediatek/lvts: Guard against zero temp_factor in lvts_raw_to_temp
-Date: Mon,  4 Aug 2025 15:30:29 +0200
-Message-Id: <20250804133035.309990-4-laura.nao@collabora.com>
+Subject: [PATCH v3 4/9] thermal: mediatek: lvts: Add platform ops to support alternative conversion logic
+Date: Mon,  4 Aug 2025 15:30:30 +0200
+Message-Id: <20250804133035.309990-5-laura.nao@collabora.com>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250804133035.309990-1-laura.nao@collabora.com>
 References: <20250804133035.309990-1-laura.nao@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250804_063242_965520_75D02BB2 
-X-CRM114-Status: GOOD (  11.15  )
+X-CRM114-CacheID: sfid-20250804_063244_725634_FCD0FB35 
+X-CRM114-Status: GOOD (  12.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,54 +76,149 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: andrew-ct.chen@mediatek.com, lala.lin@mediatek.com, arnd@arndb.de, linux-pm@vger.kernel.org, Laura Nao <laura.nao@collabora.com>, linux-kernel@vger.kernel.org, nfraprado@collabora.com, devicetree@vger.kernel.org, u.kleine-koenig@baylibre.com, linux-arm-kernel@lists.infradead.org, Chen-Yu Tsai <wenst@chromium.org>, linux-mediatek@lists.infradead.org, kernel@collabora.com, colin.i.king@gmail.com, bchihi@baylibre.com
+Cc: andrew-ct.chen@mediatek.com, lala.lin@mediatek.com, arnd@arndb.de, linux-pm@vger.kernel.org, Laura Nao <laura.nao@collabora.com>, linux-kernel@vger.kernel.org, nfraprado@collabora.com, devicetree@vger.kernel.org, u.kleine-koenig@baylibre.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, kernel@collabora.com, colin.i.king@gmail.com, bchihi@baylibre.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a guard against zero temp_factor in lvts_raw_to_temp() to prevent
-division by zero and ensure safe conversion.
+Introduce lvts_platform_ops struct to support SoC-specific versions of
+lvts_raw_to_temp() and lvts_temp_to_raw() conversion functions.
 
-Fixes: 6725a29321e4 ("thermal/drivers/mediatek/lvts_thermal: Make coeff configurable")
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+This is in preparation for supporting SoCs like MT8196/MT6991, which
+require a different lvts_temp_to_raw() implementation.
+
 Reviewed-by: Fei Shao <fshao@chromium.org>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Laura Nao <laura.nao@collabora.com>
 ---
- drivers/thermal/mediatek/lvts_thermal.c | 12 +++++++++---
- 1 file changed, 9 insertions(+), 3 deletions(-)
+ drivers/thermal/mediatek/lvts_thermal.c | 27 ++++++++++++++++++++++---
+ 1 file changed, 24 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-index 05aa8895ccce..8398af657ba2 100644
+index 8398af657ba2..47124d33ca2e 100644
 --- a/drivers/thermal/mediatek/lvts_thermal.c
 +++ b/drivers/thermal/mediatek/lvts_thermal.c
-@@ -284,11 +284,14 @@ static int lvts_raw_to_temp(u32 raw_temp, int temp_factor)
+@@ -125,8 +125,14 @@ struct lvts_ctrl_data {
+ 			continue; \
+ 		else
  
- static u32 lvts_temp_to_raw(int temperature, int temp_factor)
- {
--	u32 raw_temp = ((s64)(golden_temp_offset - temperature)) << 14;
-+	u32 raw_temp;
- 
--	raw_temp = div_s64(raw_temp, -temp_factor);
-+	if (temp_factor == 0)
-+		return temperature;
- 
--	return raw_temp;
-+	raw_temp = ((s64)(golden_temp_offset - temperature)) << 14;
++struct lvts_platform_ops {
++	int (*lvts_raw_to_temp)(u32 raw_temp, int temp_factor);
++	u32 (*lvts_temp_to_raw)(int temperature, int temp_factor);
++};
 +
-+	return div_s64(raw_temp, -temp_factor);
+ struct lvts_data {
+ 	const struct lvts_ctrl_data *lvts_ctrl;
++	const struct lvts_platform_ops *ops;
+ 	const u32 *conn_cmd;
+ 	const u32 *init_cmd;
+ 	int num_cal_offsets;
+@@ -300,6 +306,7 @@ static int lvts_get_temp(struct thermal_zone_device *tz, int *temp)
+ 	struct lvts_ctrl *lvts_ctrl = container_of(lvts_sensor, struct lvts_ctrl,
+ 						   sensors[lvts_sensor->id]);
+ 	const struct lvts_data *lvts_data = lvts_ctrl->lvts_data;
++	const struct lvts_platform_ops *ops = lvts_data->ops;
+ 	void __iomem *msr = lvts_sensor->msr;
+ 	u32 value;
+ 	int rc;
+@@ -332,7 +339,7 @@ static int lvts_get_temp(struct thermal_zone_device *tz, int *temp)
+ 	if (rc)
+ 		return -EAGAIN;
+ 
+-	*temp = lvts_raw_to_temp(value & 0xFFFF, lvts_data->temp_factor);
++	*temp = ops->lvts_raw_to_temp(value & 0xFFFF, lvts_data->temp_factor);
+ 
+ 	return 0;
  }
+@@ -400,10 +407,11 @@ static int lvts_set_trips(struct thermal_zone_device *tz, int low, int high)
+ 	struct lvts_ctrl *lvts_ctrl = container_of(lvts_sensor, struct lvts_ctrl,
+ 						   sensors[lvts_sensor->id]);
+ 	const struct lvts_data *lvts_data = lvts_ctrl->lvts_data;
++	const struct lvts_platform_ops *ops = lvts_data->ops;
+ 	void __iomem *base = lvts_sensor->base;
+-	u32 raw_low = lvts_temp_to_raw(low != -INT_MAX ? low : LVTS_MINIMUM_THRESHOLD,
++	u32 raw_low = ops->lvts_temp_to_raw(low != -INT_MAX ? low : LVTS_MINIMUM_THRESHOLD,
+ 				       lvts_data->temp_factor);
+-	u32 raw_high = lvts_temp_to_raw(high, lvts_data->temp_factor);
++	u32 raw_high = ops->lvts_temp_to_raw(high, lvts_data->temp_factor);
+ 	bool should_update_thresh;
  
- static int lvts_get_temp(struct thermal_zone_device *tz, int *temp)
-@@ -1346,6 +1349,9 @@ static int lvts_probe(struct platform_device *pdev)
- 	if (irq < 0)
- 		return irq;
+ 	lvts_sensor->low_thresh = low;
+@@ -1763,6 +1771,11 @@ static const struct lvts_ctrl_data mt8195_lvts_ap_data_ctrl[] = {
+ 	}
+ };
  
-+	if (!lvts_data->temp_factor)
-+		dev_warn(dev, "temp_factor should never be zero; check platform data.\n");
++static const struct lvts_platform_ops lvts_platform_ops_v1 = {
++	.lvts_raw_to_temp = lvts_raw_to_temp,
++	.lvts_temp_to_raw = lvts_temp_to_raw,
++};
 +
- 	golden_temp_offset = lvts_data->temp_offset;
+ static const struct lvts_data mt7988_lvts_ap_data = {
+ 	.lvts_ctrl	= mt7988_lvts_ap_data_ctrl,
+ 	.conn_cmd	= mt7988_conn_cmds,
+@@ -1774,6 +1787,7 @@ static const struct lvts_data mt7988_lvts_ap_data = {
+ 	.temp_offset	= LVTS_COEFF_B_MT7988,
+ 	.gt_calib_bit_offset = 24,
+ 	.num_cal_offsets = 3,
++	.ops = &lvts_platform_ops_v1,
+ };
  
- 	ret = lvts_domain_init(dev, lvts_td, lvts_data);
+ static const struct lvts_data mt8186_lvts_data = {
+@@ -1788,6 +1802,7 @@ static const struct lvts_data mt8186_lvts_data = {
+ 	.gt_calib_bit_offset = 24,
+ 	.def_calibration = 19000,
+ 	.num_cal_offsets = 3,
++	.ops = &lvts_platform_ops_v1,
+ };
+ 
+ static const struct lvts_data mt8188_lvts_mcu_data = {
+@@ -1802,6 +1817,7 @@ static const struct lvts_data mt8188_lvts_mcu_data = {
+ 	.gt_calib_bit_offset = 20,
+ 	.def_calibration = 35000,
+ 	.num_cal_offsets = 3,
++	.ops = &lvts_platform_ops_v1,
+ };
+ 
+ static const struct lvts_data mt8188_lvts_ap_data = {
+@@ -1816,6 +1832,7 @@ static const struct lvts_data mt8188_lvts_ap_data = {
+ 	.gt_calib_bit_offset = 20,
+ 	.def_calibration = 35000,
+ 	.num_cal_offsets = 3,
++	.ops = &lvts_platform_ops_v1,
+ };
+ 
+ static const struct lvts_data mt8192_lvts_mcu_data = {
+@@ -1830,6 +1847,7 @@ static const struct lvts_data mt8192_lvts_mcu_data = {
+ 	.gt_calib_bit_offset = 24,
+ 	.def_calibration = 35000,
+ 	.num_cal_offsets = 3,
++	.ops = &lvts_platform_ops_v1,
+ };
+ 
+ static const struct lvts_data mt8192_lvts_ap_data = {
+@@ -1844,6 +1862,7 @@ static const struct lvts_data mt8192_lvts_ap_data = {
+ 	.gt_calib_bit_offset = 24,
+ 	.def_calibration = 35000,
+ 	.num_cal_offsets = 3,
++	.ops = &lvts_platform_ops_v1,
+ };
+ 
+ static const struct lvts_data mt8195_lvts_mcu_data = {
+@@ -1858,6 +1877,7 @@ static const struct lvts_data mt8195_lvts_mcu_data = {
+ 	.gt_calib_bit_offset = 24,
+ 	.def_calibration = 35000,
+ 	.num_cal_offsets = 3,
++	.ops = &lvts_platform_ops_v1,
+ };
+ 
+ static const struct lvts_data mt8195_lvts_ap_data = {
+@@ -1872,6 +1892,7 @@ static const struct lvts_data mt8195_lvts_ap_data = {
+ 	.gt_calib_bit_offset = 24,
+ 	.def_calibration = 35000,
+ 	.num_cal_offsets = 3,
++	.ops = &lvts_platform_ops_v1,
+ };
+ 
+ static const struct of_device_id lvts_of_match[] = {
 -- 
 2.39.5
 
