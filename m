@@ -4,110 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6706DC87FD1
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Aug 2025 11:21:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BC96C87FCB
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Aug 2025 13:12:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=p4kywHmwhqtqVz40iciKUMySmT4Bu2S53ZRukdyZDFc=; b=ICZMptLzKORgWLdRuAElvEuQC1
-	xxRydRoyoas5BWWoqGPYnvEvWC6Fcv+6ZfhSYK84oO0q38hcFLJWFXt/5GWJsi7RnDzUBmGBMhnI5
-	9r1wFayTv28Tt0rva6uYZnXl/JfGCPjSRaZDyzOtmahcKqlnBDCpg3Ka2tm7T3IGbbOQz8vZbukFd
-	Fh5RxEMOF2Z2ON+OWIV3S9nhuQHaamvAbuEx40x0OdcHHuYRPbW7+CLOwaJhYSM5CzqA8ae8RHYZ7
-	eXIf3L1DmEgyo7367IrMrMqmxcL9fqVcD4xmIp9wzGJH0gaMNnXM+odQ1lHNEu+rPOsHT/drjfGb6
-	mjuNI2WA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=rYMR5chlPy2tpwvio9NlfPgzh2Cb5gxMxxA1dz+0yWU=; b=OikPQdcIiU5hmW+IkwlNt94+sM
+	56s6YD3vYo22joWlVgVYZY5Hem87mrXLh3UwU147L/1FP6Zdp8G1FadFl6yUwOFsc5fse4fu18pO6
+	wJ22kyYKU3gZ7S8RlU8JTE76f2xPLBj0YOP4IA7rv/1Wq8PNt/CKOTZboduKJfYpZIGxxzhek0vd0
+	sN75ZYW1Ixp0sZ1SwVMImCsr3y+qDvYwRz4kN8RB2yFe5G/y5Taq4HcqCYhmkRzYPq+F2D6EAEFpn
+	a/HPD32rQDR0t0asBC7YH8vu0pTRhdKx9jSICfDxroiCWVqLIbD1k6YjfL0hTDQkEg51hFrX+agxe
+	9P12gVaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uitG3-0000000AHTj-2oUm;
-	Mon, 04 Aug 2025 11:21:35 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uiuzB-0000000AVHm-2w3Y;
+	Mon, 04 Aug 2025 13:12:17 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uisww-0000000AFFi-05eH;
-	Mon, 04 Aug 2025 11:01:50 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5225960008;
-	Mon,  4 Aug 2025 11:01:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C058AC4CEE7;
-	Mon,  4 Aug 2025 11:01:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1754305309;
-	bh=7Vi2uJ7wlOkjGx9qtfXpPL/qV6tJLMJ0r02efBl/RdU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=KFThwELH3T5ifPqtFbwqhyae5Q/2x1er0BGr0D97vm6NzpiJ/WdvYnIbiERaeBpEq
-	 9m4sl65ewl3Cpi3Dp0GrZlh6VEpjuV413JWUh39a5hPxgTsvSenPC9pQSS7jJdCzCD
-	 6KK/axvlSZzLtSBqsEvwVLoj8K/j1kW6HI0docMW3YcuwEEcQLJYpo83qPQu/sO1XI
-	 p68FfKqFr/Dlopctgu28HrZ5EHdC2SXYhnV7AiyDjWPL6W+Jlcc+gyNZ2zSpOTEvzz
-	 T5OUWeom4/ztyiSmX+SLsEynwPySjovcM1bpL4Eh5RMatBoE3g5pgshLnS8NZGdhtl
-	 LSkFYkBTgGugQ==
-Message-ID: <e9ee33b0-d6b0-4641-aeeb-9803b4d1658a@kernel.org>
-Date: Mon, 4 Aug 2025 13:01:42 +0200
+	id 1uiufw-0000000ARHA-1Zul;
+	Mon, 04 Aug 2025 12:52:25 +0000
+X-UUID: dc375034713111f09f706fa2197c6ceb-20250804
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=rYMR5chlPy2tpwvio9NlfPgzh2Cb5gxMxxA1dz+0yWU=;
+	b=FVaDJIztjGKJW2kFpvPS3+qHIGjM7headQVPnJv9nBA7m9vRW80rL2Ilb+PedtQlma9UOTh39h3qmkSKxwNp/Vm0swuqi4vehSNlSwouavRcSqEsx4rD0q6W5xYUhLSpGsplanttEYPC2vVJpfX36Rxi5PakNEf2RASvZo3fLbI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.2,REQID:750d9b25-95a1-48f8-9861-9c3b30735f70,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:9eb4ff7,CLOUDID:46029150-93b9-417a-b51d-915a29f1620f,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:-5,Content:0|15|50,EDM:-3,IP:
+	nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,L
+	ES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: dc375034713111f09f706fa2197c6ceb-20250804
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <friday.yang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1377308192; Mon, 04 Aug 2025 05:52:21 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Mon, 4 Aug 2025 20:52:17 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Mon, 4 Aug 2025 20:52:16 +0800
+From: Friday Yang <friday.yang@mediatek.com>
+To: Yong Wu <yong.wu@mediatek.com>, Krzysztof Kozlowski <krzk@kernel.org>, Rob
+ Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Philipp Zabel
+	<p.zabel@pengutronix.de>
+CC: Friday Yang <friday.yang@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v9 0/2] Add SMI reset and clamp for MediaTek MT8188 SoC
+Date: Mon, 4 Aug 2025 20:51:52 +0800
+Message-ID: <20250804125215.23076-1-friday.yang@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 09/27] dt-bindings: clock: mediatek: Describe MT8196
- clock controllers
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Laura Nao <laura.nao@collabora.com>, wenst@chromium.org
-Cc: conor+dt@kernel.org, devicetree@vger.kernel.org,
- guangjie.song@mediatek.com, kernel@collabora.com, krzk+dt@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, mturquette@baylibre.com, netdev@vger.kernel.org,
- nfraprado@collabora.com, p.zabel@pengutronix.de, richardcochran@gmail.com,
- robh@kernel.org, sboyd@kernel.org
-References: <fbe7b083-bc3f-4156-8056-e45c9adcb607@kernel.org>
- <20250804083540.19099-1-laura.nao@collabora.com>
- <373f44c3-8a6a-4d52-ba6b-4c9484e2eac1@kernel.org>
- <1db77784-a59a-49bd-89b5-9e81e6d3bafc@collabora.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <1db77784-a59a-49bd-89b5-9e81e6d3bafc@collabora.com>
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250804_055224_419134_C084C24F 
+X-CRM114-Status: GOOD (  16.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,92 +88,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 04/08/2025 11:27, AngeloGioacchino Del Regno wrote:
-> Il 04/08/25 11:16, Krzysztof Kozlowski ha scritto:
->> On 04/08/2025 10:35, Laura Nao wrote:
->>> Hi,
->>>
->>> On 8/3/25 10:17, Krzysztof Kozlowski wrote:
->>>> On 01/08/2025 15:57, Rob Herring wrote:
->>>>>> +  reg:
->>>>>> +    maxItems: 1
->>>>>> +
->>>>>> +  '#clock-cells':
->>>>>> +    const: 1
->>>>>> +
->>>>>> +  '#reset-cells':
->>>>>> +    const: 1
->>>>>> +    description:
->>>>>> +      Reset lines for PEXTP0/1 and UFS blocks.
->>>>>> +
->>>>>> +  mediatek,hardware-voter:
->>>>>> +    $ref: /schemas/types.yaml#/definitions/phandle
->>>>>> +    description:
->>>>>> +      On the MT8196 SoC, a Hardware Voter (HWV) backed by a fixed-function
->>>>>> +      MCU manages clock and power domain control across the AP and other
->>>>>> +      remote processors. By aggregating their votes, it ensures clocks are
->>>>>> +      safely enabled/disabled and power domains are active before register
->>>>>> +      access.
->>>>>
->>>>> I thought this was going away based on v2 discussion?
->>>>
->>>> Yes, I asked to drop it and do not include it in v3. There was also
->>>> discussion clarifying review.
->>>>
->>>> I am really surprised that review meant nothing and code is still the same.
->>>>
->>>
->>> This has been re-submitted as-is, following the outcome of the discussion
->>> here: https://lore.kernel.org/all/242bf682-cf8f-4469-8a0b-9ec982095f04@collabora.com/
->>>
->>> We haven't found a viable alternative to the current approach so far, and
->>> the thread outlines why other options don’t apply. I'm happy to continue
->>> the discussion there if anyone has further suggestions or ideas on how
->>> to address this.
->>>
->>
->> And where is any of that resolution/new facts in the commit msg? You
->> must clearly reflect long discussions like that in the commit msg.
-> 
-> On that, I agree. That's a miss.
-> 
->>
->> There was no objection from Chen to use clocks or power domains as I
->> requested.
-> 
-> Sorry Krzysztof, but now I really think that you don't understand the basics of
-> MediaTek SoCs and how they're split in hardware - and I'm sorry again, but to me
-> it really looks like that you're not even trying to understand it.
+Based on tag: next-20250804, linux-next/master
 
-There is no DTS here. No diagrams or some simplified drawings to help me
-understand.
+On the MediaTek MT8188 SoC platform, we encountered power-off failures
+and SMI bus hang issues during camera stress tests. The issue arises
+because bus glitches are sometimes produced when MTCMOS powers on or
+off. While this is fairly normal, the software must handle these
+glitches to avoid mistaking them for transaction signals. What's
+more, this issue emerged only after the initial upstreaming of SMI
+driver.
 
-> 
->> The objection was about DUPLICATING interfaces or nodes.
-> 
-> I don't see that duplication. The interface to each clock controller for each
-> of the hardware subdomains of each controller is scattered all around the (broken
-> by hardware and by concept, if you missed that in the discussion) HW Voter MMIO.
-> 
-> There are multiple clock controllers in the hardware.
-> Each of those has its own interface to the HWV.
-> 
-> And there are some that require you to write to both its HWV interface and to the
-> clock controller specific MMIO at the same time for the same operation. I explained
-> that in the big discussion that Laura linked.
+The software solutions can be summarized as follows:
 
-That's not what property description says. I discussed that part. Your
-description says - to aggregate votes.
+1. Use CLAMP to disable the SMI sub-common port after turning off the
+   LARB CG and before turning off the LARB MTCMOS.
+2. Use CLAMP to disable/enable the SMI sub-common port.
+3. Implement an AXI reset for SMI LARBs.
 
-Above you say that control is split between two different MMIO blocks.
+---
+Changes in v9:
+- Add 'dev_pm_genpd_remove_notifier' in 'mtk_smi_larb_remove'.
+- Remove unused macros.
+- Rename 'sub_comm_syscon' to 'smi_comm_syscon'.
+- Rename 'sub_comm_inport_id' to 'smi_comm_inport_id'.
+- Add more detailed descriptions in change log.
+- Fix incorrect tags.
 
-Aggregating votes is exactly what we discussed last time and you should
-not use custom phandle for it.
+Changes in v8:
+- Fix incorrect tags.
 
-Maybe it is just the name, so avoid all the confusing "votes" if this is
-not voting system. If this is a voting system, then don't use custom
-phandles.
+Changes in v7:
+- We replaced 'pm_runtime_enable' with 'devm_pm_runtime_enable' in the
+  v6 patch. This changed the order of cleanup, and reviewers expressed
+  concerns that it could introduce unexpected issues. So v7 discard this
+  change and continue using 'pm_runtime_enable'. We need to conduct
+  further investigation to determine if there are any issues related
+  to the cleanup order. This might be resolved in the future, but for
+  now, we just maintain the current status.
 
-Best regards,
-Krzysztof
+Changes in v6:
+- Fix coding style.
+- Add another patch to replace 'pm_runtime_enable' with
+  'devm_pm_runtime_enable'.
+
+Changes in v5:
+- Use 'devm_pm_runtime_enable' instead of 'pm_runtime_enable'.
+- Remove 'pm_runtime_disable' in 'mtk_smi_common_remove' and
+  'mtk_smi_larb_remove'.
+
+Changes in v4:
+- Use 'devm_reset_control_get_optional_exclusive' instead of
+  'devm_reset_control_get'.
+
+Changes in v3:
+- Remove redundant descriptions for 'resets' and 'reset-names'.
+- Modify the requirements for 'resets' and 'reset-names'.
+- Rename 'mtk_smi_larb_parse_clamp' to 'mtk_smi_larb_parse_clamp_optional'.
+- Rename 'mtk_smi_larb_parse_reset' to 'mtk_smi_larb_parse_reset_optional'.
+- Merge 'mtk_smi_larb_clamp_protect_enable' and
+  'mtk_smi_larb_clamp_protect_disble' into one function.
+- Modify the definition for mtk_smi_larb_clamp_port_mt8188,
+  use 'larbid' as the index of the array.
+- Use 'syscon_regmap_lookup_by_phandle' instead of 'device_node_to_regmap'.
+- Do Not parse 'resets', just check the return value of
+  'devm_reset_control_get'.
+- Add 'has_gals' flag for 'mtk_smi_sub_common_mt8188'.
+
+Changes in v2:
+- According to previous discussions in v1, divided these four
+  patches into two topic separately.
+- Modify the description for 'resets' in binding.
+- Add const value 'larb' for 'reset-names' in binding.
+- Modify requirement for 'resets' and 'reset-names' in binding.
+- Delete 'mediatek,smi-sub-comm' in binding.
+- Delete 'mediatek,smi-sub-comm-in-portid' in binding.
+- Modify the example in binding.
+- Add 'mtk_smi_larb_clamp_port_mt8188' definition in SMI driver.
+- Change the way to parse the 'resets' in driver.
+- Change label from 'err_pm_disable' to 'err_link_remove'.
+
+---
+Friday Yang (2):
+  dt-bindings: memory: mediatek: Add SMI reset and clamp for MT8188
+  memory: mtk-smi: mt8188: Add SMI reset and clamp for MT8188
+
+ .../mediatek,smi-common.yaml                  |   2 +
+ .../memory-controllers/mediatek,smi-larb.yaml |  19 +++
+ drivers/memory/mtk-smi.c                      | 131 ++++++++++++++++++
+ 3 files changed, 152 insertions(+)
+
+--
+2.46.0
+
 
