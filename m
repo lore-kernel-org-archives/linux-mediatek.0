@@ -4,90 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14F87C87FCB
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Aug 2025 13:38:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9D4BC87FCF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Aug 2025 13:56:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O5z665d7ULd43whPiXaAaYwiZPV604txXYt7r582gyw=; b=whVUNaCi+sFFOcjKFHEBKWOBb6
-	BI9oLBwRHqce5xPuy/zBcnxcbGweENDSh35L0wyRfrcbu7vcGmZWuGGioMTVzExn3m/kGFoNhZhOD
-	CHWtOukD/cmg1HTXIvbOzDQAv0fO0xLC3uE05sJ8HNFuDpY/WTo+EP7ei5EzhfRjiD6ix5IxHFAjk
-	lcShZX5Fkg0zvlA7avT3h73W5tulubOF+CsNqXZX+7pvwy5ANRjAoNXehGEtSq14CiB1Ptyev66Ea
-	oY2MCswAvgLVo30kz0r8lNJTq9iZ4KCf2sybTwuZxDPWuifiZkiDOWVUT79ZbdWaOrgfH30RILR6e
-	8MOaeeQw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7GXZ13TgXPh4Djh573h8yZGLAaR1/M9uecEvviVUYkU=; b=xVy7pf/SiHB43hR7DHNm6Z6sq4
+	Cg7Iqt+NF8C0ighudh2733LuX6ewDvB1e/XDdeP9WLd18c3GX1sB1G+VslkYrNnxExMTJowmaJRGh
+	ig23YHajyM3HL2tUF/+tnB2FYjDeRoBP9l79JwZsMPJx74JZRxP0Far0PXto+WaAZfu3Sa5QBuNTF
+	WaiN9YkqOC5wT/cUUaFFwU6oh1OmPFrnLB/iiqwy4kBHIuJ7FzLKoQ2GdLADlFoUeAa2bu/uUleqX
+	LTGbhTeBJyPzJrbP73v3m2f3DDs9RSu2/zTlfioy7i7Y5wptOsqRc/tFDzUz4pNw82SDhWUMFVf8R
+	aJBUVGew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uivOV-0000000AYkl-3moX;
-	Mon, 04 Aug 2025 13:38:27 +0000
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+	id 1uivgD-0000000Ab5c-0rnK;
+	Mon, 04 Aug 2025 13:56:45 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uiv18-0000000AVZK-2vUS
-	for linux-mediatek@lists.infradead.org;
-	Mon, 04 Aug 2025 13:14:20 +0000
-Received: by mail-wr1-x434.google.com with SMTP id ffacd0b85a97d-3b790dbb112so2383532f8f.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 04 Aug 2025 06:14:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1754313257; x=1754918057; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=O5z665d7ULd43whPiXaAaYwiZPV604txXYt7r582gyw=;
-        b=gvLLV33fxNsJdVEngH6XdMqVRGVLW615V4xOMHHfcizEK8DKxZCYg5ZcS+83lteSqc
-         aUm2YG/caJL1DQ83HXpqxBeSq2/1L54SMCUie//xXNfJ4808EWjczsWLGSLP2dLCN5KX
-         CGBkVYZR6oDj1PJ5bWa7Jlg/NEx/B+uFPJvRtowQ+tjsm5K1caUnVOnJU/mwKM90rOvc
-         4fxHtzTE4R4bxR+nvQAFsYZXWbUbtLFDhDq/OWrqU+T4dw5qyyiLA92kmSncgH7iTHLR
-         TI+sS8t9oNM0KbwsaiAlovFwEQqZx1cnrfVaaF1cJZf4+oubCFIOxC5IzHSkEaygXJhT
-         arVA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1754313257; x=1754918057;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=O5z665d7ULd43whPiXaAaYwiZPV604txXYt7r582gyw=;
-        b=aH+8LZIXqhBiAqrArqedH1GLcRLXrJ3gkA3er261g6RxOs2q0lvKZ+xn6tjICVoVok
-         QJWGNo4gAy0uViEf+lFo00YRmLxJ3xcYIWd2daN+X3f7WVB5xHPe94xh9yWYCmwwO252
-         PGycvUEJzeQItOVvgxzmXUldqBn0Id1xx8ci7LpOQfVkbkZgLHFOmA8vY25yBkMUgoh7
-         JvhBhonMDO+mINWw01wsU8td9DOtyX1zcR3S7tlE9jILvjWM3AbAP2bKDahnz3qNvdyu
-         RVYfNdV2kjq16fF8q9lYkgPUF7XIj8cK/YzHT+2dxAPmzo81SBmj6lOpQa9h2boJUtcf
-         9S7w==
-X-Forwarded-Encrypted: i=1; AJvYcCXyQD76PBEKmfCKiAaFC8MmZDxCZ0rqnnxWOdTDBT2FDKMgqs59Rilo73/MxFhGiIBDRwPv1cStOvF0APWdyw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxRZawxRoQxBEX8CFSmohvuXUskjsAhu+mexnT9ORnHCLRzJvYO
-	hFDLUkAoMnFJUXpqHZ95ezl85b8k26cQ+pKRmm/exk3SziDx6z3ewPxTLbFwFaJ/t/Y=
-X-Gm-Gg: ASbGncvoWlBUixrIHeaxikz3qKjFqHSmQ0hX9fozLC03YRrROO6CVta9+gNhokjclGc
-	urXU+5b2QL4xMWr0f+RMOZcUHE5GaMX4WVSRELAFJtezdRagzNKnAvxHIQxSO36RtgjWB6+bERH
-	ilOw7pqwXr6nskBmRRPTRroMmM1JpR7ijy0DVh7eMnLrS0pSPKsllTphSDW5cqPFPBJgFNvw1ev
-	f2xnIf09HSfzXoJELfB04nZidy09cu1bCvgnd9DMY/pZbRoOX5vR42xvsErt8SIdj+8KT3AomjT
-	DIFnkKyZjq6nK2BDdiIh86+wkZ9c2iSfbXp570MZrQkEcLzrZivmJKfVWwQUdOUTNUW4VobUzRx
-	mkZ/8lpwIP7EutMKZlZDd0me9A8gpmIOh74R5lX76sNLsFPFiUxH6pEq6IeodTgvW
-X-Google-Smtp-Source: AGHT+IFGBSFH04wTKs3VT00hlwsj4lQLGS9nZwv9teVWJYIP3DZgwC7WU4Vo/i6UgQoIBOTG3UlchQ==
-X-Received: by 2002:a5d:5f8b:0:b0:3b8:d4ad:6ae8 with SMTP id ffacd0b85a97d-3b8d94c9d0bmr5521600f8f.50.1754313256812;
-        Mon, 04 Aug 2025 06:14:16 -0700 (PDT)
-Received: from localhost (p200300f65f06ab0400000000000001b9.dip0.t-ipconnect.de. [2003:f6:5f06:ab04::1b9])
-        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-45895377708sm204872295e9.8.2025.08.04.06.14.15
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 04 Aug 2025 06:14:16 -0700 (PDT)
-Date: Mon, 4 Aug 2025 15:14:14 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-pwm@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 1/8] pwm: mediatek: Simplify representation of channel
- offsets
-Message-ID: <fpgfnzx57qzr5jxfl7g7kwtjodw5pvpjz3z42fft5p6rtyzbro@hjgavja6numh>
-References: <20250725154506.2610172-10-u.kleine-koenig@baylibre.com>
- <20250725154506.2610172-11-u.kleine-koenig@baylibre.com>
- <e3495f99-4a78-4910-9b67-6c25dfe7f989@collabora.com>
- <g4qrehzi44mgvmy76wnrhabmin454wwrngubvvikgjv3w5udl7@wmxrly3mxoiu>
+	id 1uivDa-0000000AX1O-2wYg;
+	Mon, 04 Aug 2025 13:27:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1754314028;
+	bh=HdvT5261gzhE4aRSmJHv+tFzObgX93mplUmVc06GufI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=EyfmxvdXZ+NzDsRzzPqikBca7aExVvjMxp9273QrCTmQDt5W03Ujk77tESdn04Cko
+	 0xSGbdjRQJHSijFEarIcVioaWZakdnvAoCCaSPc/gxCt1hPn64sI47ckjYMeHCmtw/
+	 VRfHcDkV2IjUclj1M2UBJ8IwGDrns57lcScN4xdZbM0UwsciK4xIrPk7151HRdQlmx
+	 lZT6iYkRYJZVLKZq40Ihoygwa70YWtTLZ75HCHrewFFF7J1RtLmn4tIg5xD1HgGJBU
+	 XP2U1JXD+JLDo8+oFCuob8guMEtN+qP5Wn4fxuCJOx727NVTWfCtWG0nC5xNkuFeIC
+	 m42FsuLYnQlzQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7A25817E01CC;
+	Mon,  4 Aug 2025 15:27:07 +0200 (CEST)
+Message-ID: <00a12553-b248-4193-8017-22fea07ee196@collabora.com>
+Date: Mon, 4 Aug 2025 15:27:07 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="4bimetohzlxl6fm2"
-Content-Disposition: inline
-In-Reply-To: <g4qrehzi44mgvmy76wnrhabmin454wwrngubvvikgjv3w5udl7@wmxrly3mxoiu>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 09/27] dt-bindings: clock: mediatek: Describe MT8196
+ clock controllers
+To: Krzysztof Kozlowski <krzk@kernel.org>, Laura Nao
+ <laura.nao@collabora.com>, wenst@chromium.org
+Cc: conor+dt@kernel.org, devicetree@vger.kernel.org,
+ guangjie.song@mediatek.com, kernel@collabora.com, krzk+dt@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ matthias.bgg@gmail.com, mturquette@baylibre.com, netdev@vger.kernel.org,
+ nfraprado@collabora.com, p.zabel@pengutronix.de, richardcochran@gmail.com,
+ robh@kernel.org, sboyd@kernel.org
+References: <fbe7b083-bc3f-4156-8056-e45c9adcb607@kernel.org>
+ <20250804083540.19099-1-laura.nao@collabora.com>
+ <373f44c3-8a6a-4d52-ba6b-4c9484e2eac1@kernel.org>
+ <1db77784-a59a-49bd-89b5-9e81e6d3bafc@collabora.com>
+ <e9ee33b0-d6b0-4641-aeeb-9803b4d1658a@kernel.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <e9ee33b0-d6b0-4641-aeeb-9803b4d1658a@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250804_061419_000164_73982C78 
-X-CRM114-Status: GOOD (  30.33  )
+X-CRM114-CacheID: sfid-20250804_062710_956138_4700A37D 
+X-CRM114-Status: GOOD (  36.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,301 +85,144 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Il 04/08/25 13:01, Krzysztof Kozlowski ha scritto:
+> On 04/08/2025 11:27, AngeloGioacchino Del Regno wrote:
+>> Il 04/08/25 11:16, Krzysztof Kozlowski ha scritto:
+>>> On 04/08/2025 10:35, Laura Nao wrote:
+>>>> Hi,
+>>>>
+>>>> On 8/3/25 10:17, Krzysztof Kozlowski wrote:
+>>>>> On 01/08/2025 15:57, Rob Herring wrote:
+>>>>>>> +  reg:
+>>>>>>> +    maxItems: 1
+>>>>>>> +
+>>>>>>> +  '#clock-cells':
+>>>>>>> +    const: 1
+>>>>>>> +
+>>>>>>> +  '#reset-cells':
+>>>>>>> +    const: 1
+>>>>>>> +    description:
+>>>>>>> +      Reset lines for PEXTP0/1 and UFS blocks.
+>>>>>>> +
+>>>>>>> +  mediatek,hardware-voter:
+>>>>>>> +    $ref: /schemas/types.yaml#/definitions/phandle
+>>>>>>> +    description:
+>>>>>>> +      On the MT8196 SoC, a Hardware Voter (HWV) backed by a fixed-function
+>>>>>>> +      MCU manages clock and power domain control across the AP and other
+>>>>>>> +      remote processors. By aggregating their votes, it ensures clocks are
+>>>>>>> +      safely enabled/disabled and power domains are active before register
+>>>>>>> +      access.
+>>>>>>
+>>>>>> I thought this was going away based on v2 discussion?
+>>>>>
+>>>>> Yes, I asked to drop it and do not include it in v3. There was also
+>>>>> discussion clarifying review.
+>>>>>
+>>>>> I am really surprised that review meant nothing and code is still the same.
+>>>>>
+>>>>
+>>>> This has been re-submitted as-is, following the outcome of the discussion
+>>>> here: https://lore.kernel.org/all/242bf682-cf8f-4469-8a0b-9ec982095f04@collabora.com/
+>>>>
+>>>> We haven't found a viable alternative to the current approach so far, and
+>>>> the thread outlines why other options don’t apply. I'm happy to continue
+>>>> the discussion there if anyone has further suggestions or ideas on how
+>>>> to address this.
+>>>>
+>>>
+>>> And where is any of that resolution/new facts in the commit msg? You
+>>> must clearly reflect long discussions like that in the commit msg.
+>>
+>> On that, I agree. That's a miss.
+>>
+>>>
+>>> There was no objection from Chen to use clocks or power domains as I
+>>> requested.
+>>
+>> Sorry Krzysztof, but now I really think that you don't understand the basics of
+>> MediaTek SoCs and how they're split in hardware - and I'm sorry again, but to me
+>> it really looks like that you're not even trying to understand it.
+> 
+> There is no DTS here. No diagrams or some simplified drawings to help me
+> understand.
+> 
+>>
+>>> The objection was about DUPLICATING interfaces or nodes.
+>>
+>> I don't see that duplication. The interface to each clock controller for each
+>> of the hardware subdomains of each controller is scattered all around the (broken
+>> by hardware and by concept, if you missed that in the discussion) HW Voter MMIO.
+>>
+>> There are multiple clock controllers in the hardware.
+>> Each of those has its own interface to the HWV.
+>>
+>> And there are some that require you to write to both its HWV interface and to the
+>> clock controller specific MMIO at the same time for the same operation. I explained
+>> that in the big discussion that Laura linked.
+> 
+> That's not what property description says. I discussed that part. Your
+> description says - to aggregate votes.
+> 
 
---4bimetohzlxl6fm2
-Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v2 1/8] pwm: mediatek: Simplify representation of channel
- offsets
-MIME-Version: 1.0
+Yes. That is what the datasheets say, but read down there.
 
-On Mon, Aug 04, 2025 at 12:30:45PM +0200, Uwe Kleine-K=F6nig wrote:
-> Hallo AngeloGioacchino,
->=20
-> On Mon, Aug 04, 2025 at 10:50:01AM +0200, AngeloGioacchino Del Regno wrot=
-e:
-> > Il 25/07/25 17:45, Uwe Kleine-K=F6nig ha scritto:
-> > > The general register layout contains some per-chip registers starting=
- at
-> > > offset 0 and then at a higher address there are n nearly identical and
-> > > equidistant blocks for the registers of the n channels.
-> > >=20
-> > > This allows to represent the offsets of per-channel registers as $bas=
-e +
-> > > i * $width instead of listing all (or too many) offsets explicitly in=
- an
-> > > array. So for a small additional effort in pwm_mediatek_writel() the
-> > > three arrays with the channel offsets can be dropped.
-> > >=20
-> > > The size changes according to bloat-o-meter are:
-> > >=20
-> > > 	add/remove: 0/3 grow/shrink: 1/0 up/down: 12/-96 (-84)
-> > > 	Function                                     old     new   delta
-> > > 	pwm_mediatek_apply                           696     708     +12
-> > > 	mtk_pwm_reg_offset_v3                         32       -     -32
-> > > 	mtk_pwm_reg_offset_v2                         32       -     -32
-> > > 	mtk_pwm_reg_offset_v1                         32       -     -32
-> > > 	Total: Before=3D5347, After=3D5263, chg -1.57%
-> > >=20
-> > > Signed-off-by: Uwe Kleine-K=F6nig <u.kleine-koenig@baylibre.com>
-> >=20
-> > What if we do, instead...
-> >=20
-> > struct pwm_mediatek_regs {
-> > 	u16 pwm_ck_26m_sel_reg;
-> > 	u16 chan_base;
-> > 	u16 chan_width;
-> > };
-> >=20
-> > struct pwm_mediatek_regs pwm_v1_reg_data =3D {
-> > 	.pwm_ck_26m_sel_reg =3D PWM_CK_26M_SEL,
-> > 	.chan_base =3D 0x10,
-> > 	.chan_width =3D 0x40,
-> > };
-> >=20
-> > static const struct pwm_mediatek_of_data mt7986_pwm_data =3D {
-> > 	....
-> > 	.reg_data =3D &pwm_v1_reg_data,
-> > };
-> >=20
-> > ...that should reduce the bloat even more :-)
->=20
-> Having the three u16 directly in pwm_mediatek_of_data is cheaper because
-> .reg_data is a pointer and so 64 bits wide (on arm64) and so bigger than
-> 3xu16. Also having the data directly in pwm_mediatek_of_data saves one
-> indirection and so it should also be slightly faster.
+> Above you say that control is split between two different MMIO blocks.
+> 
 
-I took the time to complete your patch suggestion and the bloat-o-meter
-output is:
+Also yes.
 
-add/remove: 4/3 grow/shrink: 1/0 up/down: 56/-96 (-40)
-Function                                     old     new   delta
-pwm_mediatek_apply                           776     808     +32
-pwm_mediatek_v3_26m_reg_data                   -       6      +6
-pwm_mediatek_v2_reg_data                       -       6      +6
-pwm_mediatek_v1_reg_data                       -       6      +6
-pwm_mediatek_v1_26m_reg_data                   -       6      +6
-mtk_pwm_reg_offset_v3                         32       -     -32
-mtk_pwm_reg_offset_v2                         32       -     -32
-mtk_pwm_reg_offset_v1                         32       -     -32
-Total: Before=3D5427, After=3D5387, chg -0.74%
+> Aggregating votes is exactly what we discussed last time and you should
+> not use custom phandle for it.
+> 
 
-See below for the complete patch for reference.
+We discussed about aggregating votes, yes, in software - this instead is a
+*broken* hardware that does the aggregation internally and does not require
+nor want external drivers to do the aggregation.
 
-I tend to stick to my variant, also because then all info is in a single
-struct which is nice for both the human reader and the generated code
-(only on indirection).
+> Maybe it is just the name, so avoid all the confusing "votes" if this is
+> not voting system. If this is a voting system, then don't use custom
+> phandles.
 
-Best regards
-Uwe
+Being it fundamentally *broken*, this being a voting system is what the hardware
+initially wanted to be - but effectively, since it requires YOU to:
+  - Make sure that power supplies are turned on, if not, turn them on by "touching"
+    HW registers (so, without any assistance from the voter MCU), if any;
+  - Turn on parent clocks manually, if any, before using the "voter mcu" to try
+    to ungate that clock; and
+    - Enable the "FENC" manually, after the mcu says that the clock was ungated.
 
----->8----
-diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
-index e4b595fc5a5e..ae8fa561ce2c 100644
---- a/drivers/pwm/pwm-mediatek.c
-+++ b/drivers/pwm/pwm-mediatek.c
-@@ -34,11 +34,38 @@
-=20
- #define PWM_CLK_DIV_MAX		7
-=20
-+struct pwm_mediatek_regs {
-+	u16 pwm_ck_26m_sel_reg;
-+	u16 chan_base;
-+	u16 chan_width;
-+};
-+
-+struct pwm_mediatek_regs pwm_mediatek_v1_reg_data =3D {
-+        .chan_base =3D 0x10,
-+        .chan_width =3D 0x40,
-+};
-+
-+struct pwm_mediatek_regs pwm_mediatek_v1_26m_reg_data =3D {
-+        .pwm_ck_26m_sel_reg =3D PWM_CK_26M_SEL,
-+        .chan_base =3D 0x10,
-+        .chan_width =3D 0x40,
-+};
-+
-+struct pwm_mediatek_regs pwm_mediatek_v2_reg_data =3D {
-+        .chan_base =3D 0x80,
-+        .chan_width =3D 0x40,
-+};
-+
-+struct pwm_mediatek_regs pwm_mediatek_v3_26m_reg_data =3D {
-+        .pwm_ck_26m_sel_reg =3D PWM_CK_26M_SEL_V3,
-+        .chan_base =3D 0x100,
-+        .chan_width =3D 0x100,
-+};
-+
- struct pwm_mediatek_of_data {
- 	unsigned int num_pwms;
- 	bool pwm45_fixup;
--	u16 pwm_ck_26m_sel_reg;
--	const unsigned int *reg_offset;
-+	const struct pwm_mediatek_regs *reg_data;
- };
-=20
- /**
-@@ -57,19 +84,6 @@ struct pwm_mediatek_chip {
- 	const struct pwm_mediatek_of_data *soc;
- };
-=20
--static const unsigned int mtk_pwm_reg_offset_v1[] =3D {
--	0x0010, 0x0050, 0x0090, 0x00d0, 0x0110, 0x0150, 0x0190, 0x0220
--};
--
--static const unsigned int mtk_pwm_reg_offset_v2[] =3D {
--	0x0080, 0x00c0, 0x0100, 0x0140, 0x0180, 0x01c0, 0x0200, 0x0240
--};
--
--/* PWM IP Version 3.0.2 */
--static const unsigned int mtk_pwm_reg_offset_v3[] =3D {
--	0x0100, 0x0200, 0x0300, 0x0400, 0x0500, 0x0600, 0x0700, 0x0800
--};
--
- static inline struct pwm_mediatek_chip *
- to_pwm_mediatek_chip(struct pwm_chip *chip)
- {
-@@ -118,7 +132,7 @@ static inline void pwm_mediatek_writel(struct pwm_media=
-tek_chip *chip,
- 				       unsigned int num, unsigned int offset,
- 				       u32 value)
- {
--	writel(value, chip->regs + chip->soc->reg_offset[num] + offset);
-+	writel(value, chip->regs + chip->soc->reg_data->chan_base + num * chip->s=
-oc->reg_data->chan_width + offset);
- }
-=20
- static void pwm_mediatek_enable(struct pwm_chip *chip, struct pwm_device *=
-pwm)
-@@ -162,8 +176,8 @@ static int pwm_mediatek_config(struct pwm_chip *chip, s=
-truct pwm_device *pwm,
- 	}
-=20
- 	/* Make sure we use the bus clock and not the 26MHz clock */
--	if (pc->soc->pwm_ck_26m_sel_reg)
--		writel(0, pc->regs + pc->soc->pwm_ck_26m_sel_reg);
-+	if (pc->soc->reg_data->pwm_ck_26m_sel_reg)
-+		writel(0, pc->regs + pc->soc->reg_data->pwm_ck_26m_sel_reg);
-=20
- 	/* Using resolution in picosecond gets accuracy higher */
- 	resolution =3D (u64)NSEC_PER_SEC * 1000;
-@@ -303,86 +317,79 @@ static int pwm_mediatek_probe(struct platform_device =
-*pdev)
- static const struct pwm_mediatek_of_data mt2712_pwm_data =3D {
- 	.num_pwms =3D 8,
- 	.pwm45_fixup =3D false,
--	.reg_offset =3D mtk_pwm_reg_offset_v1,
-+	.reg_data =3D &pwm_mediatek_v1_reg_data,
- };
-=20
- static const struct pwm_mediatek_of_data mt6795_pwm_data =3D {
- 	.num_pwms =3D 7,
- 	.pwm45_fixup =3D false,
--	.reg_offset =3D mtk_pwm_reg_offset_v1,
-+	.reg_data =3D &pwm_mediatek_v1_reg_data,
- };
-=20
- static const struct pwm_mediatek_of_data mt7622_pwm_data =3D {
- 	.num_pwms =3D 6,
- 	.pwm45_fixup =3D false,
--	.pwm_ck_26m_sel_reg =3D PWM_CK_26M_SEL,
--	.reg_offset =3D mtk_pwm_reg_offset_v1,
-+	.reg_data =3D &pwm_mediatek_v1_26m_reg_data,
- };
-=20
- static const struct pwm_mediatek_of_data mt7623_pwm_data =3D {
- 	.num_pwms =3D 5,
- 	.pwm45_fixup =3D true,
--	.reg_offset =3D mtk_pwm_reg_offset_v1,
-+	.reg_data =3D &pwm_mediatek_v1_reg_data,
- };
-=20
- static const struct pwm_mediatek_of_data mt7628_pwm_data =3D {
- 	.num_pwms =3D 4,
- 	.pwm45_fixup =3D true,
--	.reg_offset =3D mtk_pwm_reg_offset_v1,
-+	.reg_data =3D &pwm_mediatek_v1_reg_data,
- };
-=20
- static const struct pwm_mediatek_of_data mt7629_pwm_data =3D {
- 	.num_pwms =3D 1,
- 	.pwm45_fixup =3D false,
--	.reg_offset =3D mtk_pwm_reg_offset_v1,
-+	.reg_data =3D &pwm_mediatek_v1_reg_data,
- };
-=20
- static const struct pwm_mediatek_of_data mt7981_pwm_data =3D {
- 	.num_pwms =3D 3,
- 	.pwm45_fixup =3D false,
--	.pwm_ck_26m_sel_reg =3D PWM_CK_26M_SEL,
--	.reg_offset =3D mtk_pwm_reg_offset_v2,
-+	.reg_data =3D &pwm_mediatek_v1_26m_reg_data,
- };
-=20
- static const struct pwm_mediatek_of_data mt7986_pwm_data =3D {
- 	.num_pwms =3D 2,
- 	.pwm45_fixup =3D false,
--	.pwm_ck_26m_sel_reg =3D PWM_CK_26M_SEL,
--	.reg_offset =3D mtk_pwm_reg_offset_v1,
-+	.reg_data =3D &pwm_mediatek_v1_26m_reg_data,
- };
-=20
- static const struct pwm_mediatek_of_data mt7988_pwm_data =3D {
- 	.num_pwms =3D 8,
- 	.pwm45_fixup =3D false,
--	.reg_offset =3D mtk_pwm_reg_offset_v2,
-+	.reg_data =3D &pwm_mediatek_v2_reg_data,
- };
-=20
- static const struct pwm_mediatek_of_data mt8183_pwm_data =3D {
- 	.num_pwms =3D 4,
- 	.pwm45_fixup =3D false,
--	.pwm_ck_26m_sel_reg =3D PWM_CK_26M_SEL,
--	.reg_offset =3D mtk_pwm_reg_offset_v1,
-+	.reg_data =3D &pwm_mediatek_v1_26m_reg_data,
- };
-=20
- static const struct pwm_mediatek_of_data mt8365_pwm_data =3D {
- 	.num_pwms =3D 3,
- 	.pwm45_fixup =3D false,
--	.pwm_ck_26m_sel_reg =3D PWM_CK_26M_SEL,
--	.reg_offset =3D mtk_pwm_reg_offset_v1,
-+	.reg_data =3D &pwm_mediatek_v1_26m_reg_data,
- };
-=20
- static const struct pwm_mediatek_of_data mt8516_pwm_data =3D {
- 	.num_pwms =3D 5,
- 	.pwm45_fixup =3D false,
--	.pwm_ck_26m_sel_reg =3D PWM_CK_26M_SEL,
--	.reg_offset =3D mtk_pwm_reg_offset_v1,
-+	.reg_data =3D &pwm_mediatek_v1_26m_reg_data,
- };
-=20
- static const struct pwm_mediatek_of_data mt6991_pwm_data =3D {
- 	.num_pwms =3D 4,
- 	.pwm45_fixup =3D false,
--	.pwm_ck_26m_sel_reg =3D PWM_CK_26M_SEL_V3,
--	.reg_offset =3D mtk_pwm_reg_offset_v3,
-+	.reg_data =3D &pwm_mediatek_v3_26m_reg_data,
- };
-=20
- static const struct of_device_id pwm_mediatek_of_match[] =3D {
+in the current state, it is just an hardware managed refcounting system and
+nothing else, because the MCU seems to be unfinished, hence, again, b r o k e n.
 
---4bimetohzlxl6fm2
-Content-Type: application/pgp-signature; name="signature.asc"
+Note that by "manually" I always mean "with direct writes to a clock controller's
+registerS, and without any automation/assistance from the HWV MCU".
 
------BEGIN PGP SIGNATURE-----
+We're using the "hardware-voter" name because this is how MediaTek calls it in the
+datasheets, and no it doesn't really *deserve* that name for what it is exactly in
+MT8196 and MT6991.
 
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmiQsiMACgkQj4D7WH0S
-/k7B6wf/W8Xkd+lg6Ku9HwlkEvcsnzcnunBcY0ZlpFUKSwUGGebEN76Ay5U2tWOz
-ND3ejlWJxiyBJ3e+zBUQ+znv8BaYVeYd0TkeSk/2Ys1v/yvI1MfnZKT6GW4Rx3MT
-VuCMgFhsYh37aGWftLcPtlD1KuqdNUNI4E2Fz7gQt1kKN4VMQV3+mzS72D90JIt9
-YytkRom9L1JoOCPKLT2xvuopLdc+eCaizTesxmVZsahglrxA+7eLqxMcpAwkNQ9r
-kA/AI1wdUwCaJ2f1S1pac5wFMqdaqMiHg1G8aQJbUb1nFcC8bbgqpp9gg5oMndrS
-oX+0PdYM4Dze3pLdDDUTGqSDQfbJ2Q==
-=ZI+Z
------END PGP SIGNATURE-----
+And mind you - if using the "interconnect" property for this means that we have to
+add an interconnect driver for it, no, we will not do that, as placing a software
+vote that votes clocks in a a voter MCU that does exactly what the interconnect
+driver would do - then requiring virtual/fake clocks - is not a good solution.
 
---4bimetohzlxl6fm2--
+So, what should we do then?
+
+Change it to "mediatek,clock-hw-refcounter", and adding a comment to the binding
+saying that this is called "Hardware Voter (HWV)" in the datasheets?
+
+Or is using the "interconnect" property without any driver in the interconnect API
+actually legit? - Because to me it doesn't look like being legit (and if it is, it
+shouldn't be, as I'm sure that everyone would expect an interconnect API driver
+when encountering an "interconnect" property in DT), and if so, we should just add
+a new "hw-interconnect" or "interconnect-hw" instead to not create confusion.
+
+Regards,
+Angelo
+
+> 
+> Best regards,
+> Krzysztof
+
+
 
