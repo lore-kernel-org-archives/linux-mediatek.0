@@ -4,68 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1EE9C87FCB
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Aug 2025 13:30:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14F87C87FCB
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Aug 2025 13:38:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Rh2Wef0cBFBWSWutY4str4ZsRpy8u5dUjoTA6GpAokY=; b=GfkzqG+izaWqoXW9PpV1Lrk9KB
-	zArSnDtEXqr6ilU+uqvOPeMACIS7IqUEcIb8NXXwPcqV87ZF+V+Woc9sd654HzsMU6ymNGOlH2gs6
-	xD3+TjDQXphg5gmT7eh71PwI9DBDmOCICFqlGW96xrm7CpjbUGiyfxu5AqFVbDVwSHIOaubhdSeUi
-	35kt5bhRnM0Ea5fU2PlyLZDFBJHwFnh0h8/DuBU/FbeW1qnC21H9XeKKnQleL4XM8ypDauaajxlm2
-	9A9utSlJyJSAHK4BhmUCampUl79pzhT+96X5lTMsAPI2rwCVCJsiNtL+GFqMMxDcjz3EbuZ8guMi4
-	r4dmp0aw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=O5z665d7ULd43whPiXaAaYwiZPV604txXYt7r582gyw=; b=whVUNaCi+sFFOcjKFHEBKWOBb6
+	BI9oLBwRHqce5xPuy/zBcnxcbGweENDSh35L0wyRfrcbu7vcGmZWuGGioMTVzExn3m/kGFoNhZhOD
+	CHWtOukD/cmg1HTXIvbOzDQAv0fO0xLC3uE05sJ8HNFuDpY/WTo+EP7ei5EzhfRjiD6ix5IxHFAjk
+	lcShZX5Fkg0zvlA7avT3h73W5tulubOF+CsNqXZX+7pvwy5ANRjAoNXehGEtSq14CiB1Ptyev66Ea
+	oY2MCswAvgLVo30kz0r8lNJTq9iZ4KCf2sybTwuZxDPWuifiZkiDOWVUT79ZbdWaOrgfH30RILR6e
+	8MOaeeQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uivGt-0000000AXNk-1FSq;
-	Mon, 04 Aug 2025 13:30:35 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uivOV-0000000AYkl-3moX;
+	Mon, 04 Aug 2025 13:38:27 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uiuvx-0000000AUi3-1ksj;
-	Mon, 04 Aug 2025 13:08:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1754312935;
-	bh=5LVkbgiD2NT7kB2V03VaRBcLMdHcMGeNlkxO2cC6+Oc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=hNetT4/NwAlmil4SyV5AYGx0nJg6fHQiUfuRJTuA0gLLc+fivNxhOT5gZKDxBPEbn
-	 yQRBeiCrOJOfXrnoloiDiNf/+b6d2T6oWIq9KCgpcLEIwvFVYxb7JIlHSAFb5e57ci
-	 0wFaTNVAW/WFaCxRJrNLdcA7wZZwnltH3t6xdGDf6s2/bwtRJddIJu6UK1abm4XcNC
-	 Ba0pWOZkB6Iv54VadrWeEbHeXkZ+ZAfFMfSLQeTRVKP0WtwWolYvsCeNkVuYbSVCIC
-	 GzZB+k0aLkaC5TIuKwsZQT9p+ocggXq1juW7z2qjBlE5EI5tEjut30qHeED+/EOI9q
-	 iwitkSUSD4EFg==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9311A17E0202;
-	Mon,  4 Aug 2025 15:08:54 +0200 (CEST)
-Message-ID: <bc8d1bdc-8e19-4a1d-b5f4-d0e463e22dc9@collabora.com>
-Date: Mon, 4 Aug 2025 15:08:54 +0200
+	id 1uiv18-0000000AVZK-2vUS
+	for linux-mediatek@lists.infradead.org;
+	Mon, 04 Aug 2025 13:14:20 +0000
+Received: by mail-wr1-x434.google.com with SMTP id ffacd0b85a97d-3b790dbb112so2383532f8f.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 04 Aug 2025 06:14:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1754313257; x=1754918057; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=O5z665d7ULd43whPiXaAaYwiZPV604txXYt7r582gyw=;
+        b=gvLLV33fxNsJdVEngH6XdMqVRGVLW615V4xOMHHfcizEK8DKxZCYg5ZcS+83lteSqc
+         aUm2YG/caJL1DQ83HXpqxBeSq2/1L54SMCUie//xXNfJ4808EWjczsWLGSLP2dLCN5KX
+         CGBkVYZR6oDj1PJ5bWa7Jlg/NEx/B+uFPJvRtowQ+tjsm5K1caUnVOnJU/mwKM90rOvc
+         4fxHtzTE4R4bxR+nvQAFsYZXWbUbtLFDhDq/OWrqU+T4dw5qyyiLA92kmSncgH7iTHLR
+         TI+sS8t9oNM0KbwsaiAlovFwEQqZx1cnrfVaaF1cJZf4+oubCFIOxC5IzHSkEaygXJhT
+         arVA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1754313257; x=1754918057;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=O5z665d7ULd43whPiXaAaYwiZPV604txXYt7r582gyw=;
+        b=aH+8LZIXqhBiAqrArqedH1GLcRLXrJ3gkA3er261g6RxOs2q0lvKZ+xn6tjICVoVok
+         QJWGNo4gAy0uViEf+lFo00YRmLxJ3xcYIWd2daN+X3f7WVB5xHPe94xh9yWYCmwwO252
+         PGycvUEJzeQItOVvgxzmXUldqBn0Id1xx8ci7LpOQfVkbkZgLHFOmA8vY25yBkMUgoh7
+         JvhBhonMDO+mINWw01wsU8td9DOtyX1zcR3S7tlE9jILvjWM3AbAP2bKDahnz3qNvdyu
+         RVYfNdV2kjq16fF8q9lYkgPUF7XIj8cK/YzHT+2dxAPmzo81SBmj6lOpQa9h2boJUtcf
+         9S7w==
+X-Forwarded-Encrypted: i=1; AJvYcCXyQD76PBEKmfCKiAaFC8MmZDxCZ0rqnnxWOdTDBT2FDKMgqs59Rilo73/MxFhGiIBDRwPv1cStOvF0APWdyw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxRZawxRoQxBEX8CFSmohvuXUskjsAhu+mexnT9ORnHCLRzJvYO
+	hFDLUkAoMnFJUXpqHZ95ezl85b8k26cQ+pKRmm/exk3SziDx6z3ewPxTLbFwFaJ/t/Y=
+X-Gm-Gg: ASbGncvoWlBUixrIHeaxikz3qKjFqHSmQ0hX9fozLC03YRrROO6CVta9+gNhokjclGc
+	urXU+5b2QL4xMWr0f+RMOZcUHE5GaMX4WVSRELAFJtezdRagzNKnAvxHIQxSO36RtgjWB6+bERH
+	ilOw7pqwXr6nskBmRRPTRroMmM1JpR7ijy0DVh7eMnLrS0pSPKsllTphSDW5cqPFPBJgFNvw1ev
+	f2xnIf09HSfzXoJELfB04nZidy09cu1bCvgnd9DMY/pZbRoOX5vR42xvsErt8SIdj+8KT3AomjT
+	DIFnkKyZjq6nK2BDdiIh86+wkZ9c2iSfbXp570MZrQkEcLzrZivmJKfVWwQUdOUTNUW4VobUzRx
+	mkZ/8lpwIP7EutMKZlZDd0me9A8gpmIOh74R5lX76sNLsFPFiUxH6pEq6IeodTgvW
+X-Google-Smtp-Source: AGHT+IFGBSFH04wTKs3VT00hlwsj4lQLGS9nZwv9teVWJYIP3DZgwC7WU4Vo/i6UgQoIBOTG3UlchQ==
+X-Received: by 2002:a5d:5f8b:0:b0:3b8:d4ad:6ae8 with SMTP id ffacd0b85a97d-3b8d94c9d0bmr5521600f8f.50.1754313256812;
+        Mon, 04 Aug 2025 06:14:16 -0700 (PDT)
+Received: from localhost (p200300f65f06ab0400000000000001b9.dip0.t-ipconnect.de. [2003:f6:5f06:ab04::1b9])
+        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-45895377708sm204872295e9.8.2025.08.04.06.14.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 04 Aug 2025 06:14:16 -0700 (PDT)
+Date: Mon, 4 Aug 2025 15:14:14 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-pwm@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2 1/8] pwm: mediatek: Simplify representation of channel
+ offsets
+Message-ID: <fpgfnzx57qzr5jxfl7g7kwtjodw5pvpjz3z42fft5p6rtyzbro@hjgavja6numh>
+References: <20250725154506.2610172-10-u.kleine-koenig@baylibre.com>
+ <20250725154506.2610172-11-u.kleine-koenig@baylibre.com>
+ <e3495f99-4a78-4910-9b67-6c25dfe7f989@collabora.com>
+ <g4qrehzi44mgvmy76wnrhabmin454wwrngubvvikgjv3w5udl7@wmxrly3mxoiu>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 2/2] memory: mtk-smi: mt8188: Add SMI reset and clamp
- for MT8188
-To: Friday Yang <friday.yang@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Rob Herring <robh@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20250804125215.23076-1-friday.yang@mediatek.com>
- <20250804125215.23076-3-friday.yang@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250804125215.23076-3-friday.yang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="4bimetohzlxl6fm2"
+Content-Disposition: inline
+In-Reply-To: <g4qrehzi44mgvmy76wnrhabmin454wwrngubvvikgjv3w5udl7@wmxrly3mxoiu>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250804_060857_838894_24BB6C32 
-X-CRM114-Status: GOOD (  28.02  )
+X-CRM114-CacheID: sfid-20250804_061419_000164_73982C78 
+X-CRM114-Status: GOOD (  30.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,238 +102,301 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 04/08/25 14:51, Friday Yang ha scritto:
-> To prevent handling glitch signals during MTCMOS on/off transitions,
-> SMI requires clamp and reset operations. Parse the reset settings for
-> SMI LARBs and the clamp settings for the SMI Sub-Common. Register
-> genpd callback for the SMI LARBs located in image, camera and IPE
-> subsystems, and apply reset and clamp operations within the callback.
-> 
-> Signed-off-by: Friday Yang <friday.yang@mediatek.com>
-> ---
->   drivers/memory/mtk-smi.c | 131 +++++++++++++++++++++++++++++++++++++++
->   1 file changed, 131 insertions(+)
-> 
-> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-> index 733e22f695ab..8c1bd245aac9 100644
-> --- a/drivers/memory/mtk-smi.c
-> +++ b/drivers/memory/mtk-smi.c
-> @@ -10,11 +10,15 @@
->   #include <linux/err.h>
->   #include <linux/io.h>
->   #include <linux/iopoll.h>
-> +#include <linux/mfd/syscon.h>
->   #include <linux/module.h>
->   #include <linux/of.h>
->   #include <linux/of_platform.h>
->   #include <linux/platform_device.h>
-> +#include <linux/pm_domain.h>
->   #include <linux/pm_runtime.h>
-> +#include <linux/regmap.h>
-> +#include <linux/reset.h>
->   #include <linux/soc/mediatek/mtk_sip_svc.h>
->   #include <soc/mediatek/smi.h>
->   #include <dt-bindings/memory/mt2701-larb-port.h>
-> @@ -34,6 +38,8 @@
->   #define SMI_FIFO_TH1			0x238
->   #define SMI_FIFO_TH2			0x23c
->   #define SMI_DCM				0x300
-> +#define SMI_COMMON_CLAMP_EN_SET		0x3c4
-> +#define SMI_COMMON_CLAMP_EN_CLR		0x3c8
->   #define SMI_DUMMY			0x444
-> 
->   /* SMI LARB */
-> @@ -134,6 +140,7 @@ struct mtk_smi_larb_gen {
->   	unsigned int			larb_direct_to_common_mask;
->   	unsigned int			flags_general;
->   	const u8			(*ostd)[SMI_LARB_PORT_NR_MAX];
-> +	const u8			*clamp_port;
->   };
-> 
->   struct mtk_smi {
-> @@ -150,6 +157,7 @@ struct mtk_smi {
->   };
-> 
->   struct mtk_smi_larb { /* larb: local arbiter */
-> +	struct device			*dev;
->   	struct mtk_smi			smi;
->   	void __iomem			*base;
->   	struct device			*smi_common_dev; /* common or sub-common dev */
-> @@ -157,6 +165,10 @@ struct mtk_smi_larb { /* larb: local arbiter */
->   	int				larbid;
->   	u32				*mmu;
->   	unsigned char			*bank;
-> +	struct regmap			*smi_comm_syscon; /* smi-comm or sub-comm */
-> +	u8				smi_comm_inport_id; /* smi-comm or sub-comm */
 
-one nit nere: smi_comm_in_port_id
+--4bimetohzlxl6fm2
+Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v2 1/8] pwm: mediatek: Simplify representation of channel
+ offsets
+MIME-Version: 1.0
 
-> +	struct notifier_block		nb;
-> +	struct reset_control		*rst_con;
->   };
-> 
->   static int
-> @@ -478,6 +490,19 @@ static const u8 mtk_smi_larb_mt8195_ostd[][SMI_LARB_PORT_NR_MAX] = {
->   	[28] = {0x1a, 0x0e, 0x0a, 0x0a, 0x0c, 0x0e, 0x10,},
->   };
-> 
-> +static const u8 mtk_smi_larb_clamp_port_mt8188[MTK_LARB_NR_MAX] = {
-> +	[9]	= BIT(1), /* larb10 */
-> +	[10]	= BIT(2), /* larb11a */
-> +	[11]	= BIT(2), /* larb11b */
-> +	[12]	= BIT(3), /* larb11c */
-> +	[13]	= BIT(0), /* larb12 */
-> +	[16]	= BIT(1), /* larb15 */
-> +	[17]	= BIT(2), /* larb16a */
-> +	[18]	= BIT(2), /* larb16b */
-> +	[19]	= BIT(3), /* larb17a */
-> +	[20]	= BIT(3), /* larb17b */
-> +};
-> +
->   static const struct mtk_smi_larb_gen mtk_smi_larb_mt2701 = {
->   	.port_in_larb = {
->   		LARB0_PORT_OFFSET, LARB1_PORT_OFFSET,
-> @@ -531,6 +556,7 @@ static const struct mtk_smi_larb_gen mtk_smi_larb_mt8188 = {
->   	.flags_general	            = MTK_SMI_FLAG_THRT_UPDATE | MTK_SMI_FLAG_SW_FLAG |
->   				      MTK_SMI_FLAG_SLEEP_CTL | MTK_SMI_FLAG_CFG_PORT_SEC_CTL,
->   	.ostd		            = mtk_smi_larb_mt8188_ostd,
-> +	.clamp_port                 = mtk_smi_larb_clamp_port_mt8188,
->   };
-> 
->   static const struct mtk_smi_larb_gen mtk_smi_larb_mt8192 = {
-> @@ -582,6 +608,45 @@ static void mtk_smi_larb_sleep_ctrl_disable(struct mtk_smi_larb *larb)
->   	writel_relaxed(0, larb->base + SMI_LARB_SLP_CON);
->   }
-> 
-> +static int mtk_smi_larb_clamp_protect_enable(struct device *dev, bool enable)
-> +{
-> +	struct mtk_smi_larb *larb = dev_get_drvdata(dev);
-> +	u32 reg;
-> +	int ret;
-> +
-> +	/* smi_comm_syscon may be NULL if the subsys doesn't have bus glitch issues */
-> +	if (!larb->smi_comm_syscon)
-> +		return -EINVAL;
-> +
-> +	reg = enable ? SMI_COMMON_CLAMP_EN_SET : SMI_COMMON_CLAMP_EN_CLR;
-> +
-> +	ret = regmap_write(larb->smi_comm_syscon, reg, larb->smi_comm_inport_id);
-> +	if (ret)
-> +		dev_err(dev, "Unable to %s clamp for input port %d: %d\n",
-> +			enable ? "enable" : "disable",
-> +			larb->smi_comm_inport_id, ret);
-> +
-> +	return ret;
-> +}
-> +
-> +static int mtk_smi_genpd_callback(struct notifier_block *nb,
-> +				  unsigned long flags, void *data)
-> +{
-> +	struct mtk_smi_larb *larb = container_of(nb, struct mtk_smi_larb, nb);
-> +	struct device *dev = larb->dev;
-> +
-> +	if (flags == GENPD_NOTIFY_PRE_ON || flags == GENPD_NOTIFY_PRE_OFF) {
-> +		/* disable related SMI sub-common port */
-> +		mtk_smi_larb_clamp_protect_enable(dev, true);
-> +	} else if (flags == GENPD_NOTIFY_ON) {
-> +		/* enable related SMI sub-common port */
-> +		reset_control_reset(larb->rst_con);
-> +		mtk_smi_larb_clamp_protect_enable(dev, false);
-> +	}
-> +
-> +	return NOTIFY_OK;
-> +}
-> +
->   static int mtk_smi_device_link_common(struct device *dev, struct device **com_dev)
->   {
->   	struct platform_device *smi_com_pdev;
-> @@ -638,6 +703,53 @@ static int mtk_smi_dts_clk_init(struct device *dev, struct mtk_smi *smi,
->   	return ret;
->   }
-> 
-> +static int mtk_smi_larb_parse_clamp_optional(struct mtk_smi_larb *larb)
-> +{
-> +	struct device *dev = larb->dev;
-> +	const struct mtk_smi_larb_gen *larb_gen = larb->larb_gen;
-> +	u32 larb_id;
-> +	int ret;
-> +
-> +	/*
-> +	 * Only SMI LARBs in camera, image and IPE subsys need to
-> +	 * apply clamp and reset operations, others can be skipped.
-> +	 */
-> +	ret = of_property_read_u32(dev->of_node, "mediatek,larb-id", &larb_id);
-> +	if (ret)
-> +		return -EINVAL;
+On Mon, Aug 04, 2025 at 12:30:45PM +0200, Uwe Kleine-K=F6nig wrote:
+> Hallo AngeloGioacchino,
+>=20
+> On Mon, Aug 04, 2025 at 10:50:01AM +0200, AngeloGioacchino Del Regno wrot=
+e:
+> > Il 25/07/25 17:45, Uwe Kleine-K=F6nig ha scritto:
+> > > The general register layout contains some per-chip registers starting=
+ at
+> > > offset 0 and then at a higher address there are n nearly identical and
+> > > equidistant blocks for the registers of the n channels.
+> > >=20
+> > > This allows to represent the offsets of per-channel registers as $bas=
+e +
+> > > i * $width instead of listing all (or too many) offsets explicitly in=
+ an
+> > > array. So for a small additional effort in pwm_mediatek_writel() the
+> > > three arrays with the channel offsets can be dropped.
+> > >=20
+> > > The size changes according to bloat-o-meter are:
+> > >=20
+> > > 	add/remove: 0/3 grow/shrink: 1/0 up/down: 12/-96 (-84)
+> > > 	Function                                     old     new   delta
+> > > 	pwm_mediatek_apply                           696     708     +12
+> > > 	mtk_pwm_reg_offset_v3                         32       -     -32
+> > > 	mtk_pwm_reg_offset_v2                         32       -     -32
+> > > 	mtk_pwm_reg_offset_v1                         32       -     -32
+> > > 	Total: Before=3D5347, After=3D5263, chg -1.57%
+> > >=20
+> > > Signed-off-by: Uwe Kleine-K=F6nig <u.kleine-koenig@baylibre.com>
+> >=20
+> > What if we do, instead...
+> >=20
+> > struct pwm_mediatek_regs {
+> > 	u16 pwm_ck_26m_sel_reg;
+> > 	u16 chan_base;
+> > 	u16 chan_width;
+> > };
+> >=20
+> > struct pwm_mediatek_regs pwm_v1_reg_data =3D {
+> > 	.pwm_ck_26m_sel_reg =3D PWM_CK_26M_SEL,
+> > 	.chan_base =3D 0x10,
+> > 	.chan_width =3D 0x40,
+> > };
+> >=20
+> > static const struct pwm_mediatek_of_data mt7986_pwm_data =3D {
+> > 	....
+> > 	.reg_data =3D &pwm_v1_reg_data,
+> > };
+> >=20
+> > ...that should reduce the bloat even more :-)
+>=20
+> Having the three u16 directly in pwm_mediatek_of_data is cheaper because
+> .reg_data is a pointer and so 64 bits wide (on arm64) and so bigger than
+> 3xu16. Also having the data directly in pwm_mediatek_of_data saves one
+> indirection and so it should also be slightly faster.
 
-This looks wrong.
+I took the time to complete your patch suggestion and the bloat-o-meter
+output is:
 
-> +	if (!larb_gen->clamp_port || !larb_gen->clamp_port[larb_id])
-> +		return 0;
-> +
-> +	larb->smi_comm_inport_id = larb_gen->clamp_port[larb_id];
-> +	larb->smi_comm_syscon = syscon_regmap_lookup_by_phandle(dev->of_node,
-> +								"mediatek,smi");
-> +	if (IS_ERR(larb->smi_comm_syscon)) {
-> +		larb->smi_comm_syscon = NULL;
-> +		return dev_err_probe(dev, -EINVAL,
-> +				     "Unknown clamp port for larb %d\n", larb_id);
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int mtk_smi_larb_parse_reset_optional(struct mtk_smi_larb *larb)
-> +{
-> +	struct device *dev = larb->dev;
-> +	int ret;
-> +
-> +	larb->rst_con = devm_reset_control_get_optional_exclusive(dev, "larb");
-> +	if (!larb->rst_con)
-> +		return 0;
-> +
-> +	larb->nb.notifier_call = mtk_smi_genpd_callback;
-> +	ret = dev_pm_genpd_add_notifier(dev, &larb->nb);
-> +	if (ret)
-> +		return dev_err_probe(dev, -EINVAL,
-> +				     "Failed to add genpd callback %d\n", ret);
-> +
-> +	return 0;
-> +}
-> +
->   static int mtk_smi_larb_probe(struct platform_device *pdev)
->   {
->   	struct mtk_smi_larb *larb;
-> @@ -648,6 +760,7 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
->   	if (!larb)
->   		return -ENOMEM;
-> 
-> +	larb->dev = dev;
->   	larb->larb_gen = of_device_get_match_data(dev);
->   	larb->base = devm_platform_ioremap_resource(pdev, 0);
->   	if (IS_ERR(larb->base))
-> @@ -664,6 +777,14 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
->   	if (ret < 0)
->   		return ret;
-> 
-> +	ret = mtk_smi_larb_parse_clamp_optional(larb);
-> +	if (ret)
-> +		goto err_link_remove;
+add/remove: 4/3 grow/shrink: 1/0 up/down: 56/-96 (-40)
+Function                                     old     new   delta
+pwm_mediatek_apply                           776     808     +32
+pwm_mediatek_v3_26m_reg_data                   -       6      +6
+pwm_mediatek_v2_reg_data                       -       6      +6
+pwm_mediatek_v1_reg_data                       -       6      +6
+pwm_mediatek_v1_26m_reg_data                   -       6      +6
+mtk_pwm_reg_offset_v3                         32       -     -32
+mtk_pwm_reg_offset_v2                         32       -     -32
+mtk_pwm_reg_offset_v1                         32       -     -32
+Total: Before=3D5427, After=3D5387, chg -0.74%
 
-That's optional, right?
+See below for the complete patch for reference.
 
-In function mtk_smi_larb_parse_clamp_optional(), you're returning -EINVAL
-and here you're failing probe, so that's not optional anymore.
+I tend to stick to my variant, also because then all info is in a single
+struct which is nice for both the human reader and the generated code
+(only on indirection).
 
-Regards,
-Angelo
+Best regards
+Uwe
 
-> +
-> +	ret = mtk_smi_larb_parse_reset_optional(larb);
-> +	if (ret)
-> +		goto err_link_remove;
-> +
->   	pm_runtime_enable(dev);
->   	platform_set_drvdata(pdev, larb);
->   	ret = component_add(dev, &mtk_smi_larb_component_ops);
+---->8----
+diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
+index e4b595fc5a5e..ae8fa561ce2c 100644
+--- a/drivers/pwm/pwm-mediatek.c
++++ b/drivers/pwm/pwm-mediatek.c
+@@ -34,11 +34,38 @@
+=20
+ #define PWM_CLK_DIV_MAX		7
+=20
++struct pwm_mediatek_regs {
++	u16 pwm_ck_26m_sel_reg;
++	u16 chan_base;
++	u16 chan_width;
++};
++
++struct pwm_mediatek_regs pwm_mediatek_v1_reg_data =3D {
++        .chan_base =3D 0x10,
++        .chan_width =3D 0x40,
++};
++
++struct pwm_mediatek_regs pwm_mediatek_v1_26m_reg_data =3D {
++        .pwm_ck_26m_sel_reg =3D PWM_CK_26M_SEL,
++        .chan_base =3D 0x10,
++        .chan_width =3D 0x40,
++};
++
++struct pwm_mediatek_regs pwm_mediatek_v2_reg_data =3D {
++        .chan_base =3D 0x80,
++        .chan_width =3D 0x40,
++};
++
++struct pwm_mediatek_regs pwm_mediatek_v3_26m_reg_data =3D {
++        .pwm_ck_26m_sel_reg =3D PWM_CK_26M_SEL_V3,
++        .chan_base =3D 0x100,
++        .chan_width =3D 0x100,
++};
++
+ struct pwm_mediatek_of_data {
+ 	unsigned int num_pwms;
+ 	bool pwm45_fixup;
+-	u16 pwm_ck_26m_sel_reg;
+-	const unsigned int *reg_offset;
++	const struct pwm_mediatek_regs *reg_data;
+ };
+=20
+ /**
+@@ -57,19 +84,6 @@ struct pwm_mediatek_chip {
+ 	const struct pwm_mediatek_of_data *soc;
+ };
+=20
+-static const unsigned int mtk_pwm_reg_offset_v1[] =3D {
+-	0x0010, 0x0050, 0x0090, 0x00d0, 0x0110, 0x0150, 0x0190, 0x0220
+-};
+-
+-static const unsigned int mtk_pwm_reg_offset_v2[] =3D {
+-	0x0080, 0x00c0, 0x0100, 0x0140, 0x0180, 0x01c0, 0x0200, 0x0240
+-};
+-
+-/* PWM IP Version 3.0.2 */
+-static const unsigned int mtk_pwm_reg_offset_v3[] =3D {
+-	0x0100, 0x0200, 0x0300, 0x0400, 0x0500, 0x0600, 0x0700, 0x0800
+-};
+-
+ static inline struct pwm_mediatek_chip *
+ to_pwm_mediatek_chip(struct pwm_chip *chip)
+ {
+@@ -118,7 +132,7 @@ static inline void pwm_mediatek_writel(struct pwm_media=
+tek_chip *chip,
+ 				       unsigned int num, unsigned int offset,
+ 				       u32 value)
+ {
+-	writel(value, chip->regs + chip->soc->reg_offset[num] + offset);
++	writel(value, chip->regs + chip->soc->reg_data->chan_base + num * chip->s=
+oc->reg_data->chan_width + offset);
+ }
+=20
+ static void pwm_mediatek_enable(struct pwm_chip *chip, struct pwm_device *=
+pwm)
+@@ -162,8 +176,8 @@ static int pwm_mediatek_config(struct pwm_chip *chip, s=
+truct pwm_device *pwm,
+ 	}
+=20
+ 	/* Make sure we use the bus clock and not the 26MHz clock */
+-	if (pc->soc->pwm_ck_26m_sel_reg)
+-		writel(0, pc->regs + pc->soc->pwm_ck_26m_sel_reg);
++	if (pc->soc->reg_data->pwm_ck_26m_sel_reg)
++		writel(0, pc->regs + pc->soc->reg_data->pwm_ck_26m_sel_reg);
+=20
+ 	/* Using resolution in picosecond gets accuracy higher */
+ 	resolution =3D (u64)NSEC_PER_SEC * 1000;
+@@ -303,86 +317,79 @@ static int pwm_mediatek_probe(struct platform_device =
+*pdev)
+ static const struct pwm_mediatek_of_data mt2712_pwm_data =3D {
+ 	.num_pwms =3D 8,
+ 	.pwm45_fixup =3D false,
+-	.reg_offset =3D mtk_pwm_reg_offset_v1,
++	.reg_data =3D &pwm_mediatek_v1_reg_data,
+ };
+=20
+ static const struct pwm_mediatek_of_data mt6795_pwm_data =3D {
+ 	.num_pwms =3D 7,
+ 	.pwm45_fixup =3D false,
+-	.reg_offset =3D mtk_pwm_reg_offset_v1,
++	.reg_data =3D &pwm_mediatek_v1_reg_data,
+ };
+=20
+ static const struct pwm_mediatek_of_data mt7622_pwm_data =3D {
+ 	.num_pwms =3D 6,
+ 	.pwm45_fixup =3D false,
+-	.pwm_ck_26m_sel_reg =3D PWM_CK_26M_SEL,
+-	.reg_offset =3D mtk_pwm_reg_offset_v1,
++	.reg_data =3D &pwm_mediatek_v1_26m_reg_data,
+ };
+=20
+ static const struct pwm_mediatek_of_data mt7623_pwm_data =3D {
+ 	.num_pwms =3D 5,
+ 	.pwm45_fixup =3D true,
+-	.reg_offset =3D mtk_pwm_reg_offset_v1,
++	.reg_data =3D &pwm_mediatek_v1_reg_data,
+ };
+=20
+ static const struct pwm_mediatek_of_data mt7628_pwm_data =3D {
+ 	.num_pwms =3D 4,
+ 	.pwm45_fixup =3D true,
+-	.reg_offset =3D mtk_pwm_reg_offset_v1,
++	.reg_data =3D &pwm_mediatek_v1_reg_data,
+ };
+=20
+ static const struct pwm_mediatek_of_data mt7629_pwm_data =3D {
+ 	.num_pwms =3D 1,
+ 	.pwm45_fixup =3D false,
+-	.reg_offset =3D mtk_pwm_reg_offset_v1,
++	.reg_data =3D &pwm_mediatek_v1_reg_data,
+ };
+=20
+ static const struct pwm_mediatek_of_data mt7981_pwm_data =3D {
+ 	.num_pwms =3D 3,
+ 	.pwm45_fixup =3D false,
+-	.pwm_ck_26m_sel_reg =3D PWM_CK_26M_SEL,
+-	.reg_offset =3D mtk_pwm_reg_offset_v2,
++	.reg_data =3D &pwm_mediatek_v1_26m_reg_data,
+ };
+=20
+ static const struct pwm_mediatek_of_data mt7986_pwm_data =3D {
+ 	.num_pwms =3D 2,
+ 	.pwm45_fixup =3D false,
+-	.pwm_ck_26m_sel_reg =3D PWM_CK_26M_SEL,
+-	.reg_offset =3D mtk_pwm_reg_offset_v1,
++	.reg_data =3D &pwm_mediatek_v1_26m_reg_data,
+ };
+=20
+ static const struct pwm_mediatek_of_data mt7988_pwm_data =3D {
+ 	.num_pwms =3D 8,
+ 	.pwm45_fixup =3D false,
+-	.reg_offset =3D mtk_pwm_reg_offset_v2,
++	.reg_data =3D &pwm_mediatek_v2_reg_data,
+ };
+=20
+ static const struct pwm_mediatek_of_data mt8183_pwm_data =3D {
+ 	.num_pwms =3D 4,
+ 	.pwm45_fixup =3D false,
+-	.pwm_ck_26m_sel_reg =3D PWM_CK_26M_SEL,
+-	.reg_offset =3D mtk_pwm_reg_offset_v1,
++	.reg_data =3D &pwm_mediatek_v1_26m_reg_data,
+ };
+=20
+ static const struct pwm_mediatek_of_data mt8365_pwm_data =3D {
+ 	.num_pwms =3D 3,
+ 	.pwm45_fixup =3D false,
+-	.pwm_ck_26m_sel_reg =3D PWM_CK_26M_SEL,
+-	.reg_offset =3D mtk_pwm_reg_offset_v1,
++	.reg_data =3D &pwm_mediatek_v1_26m_reg_data,
+ };
+=20
+ static const struct pwm_mediatek_of_data mt8516_pwm_data =3D {
+ 	.num_pwms =3D 5,
+ 	.pwm45_fixup =3D false,
+-	.pwm_ck_26m_sel_reg =3D PWM_CK_26M_SEL,
+-	.reg_offset =3D mtk_pwm_reg_offset_v1,
++	.reg_data =3D &pwm_mediatek_v1_26m_reg_data,
+ };
+=20
+ static const struct pwm_mediatek_of_data mt6991_pwm_data =3D {
+ 	.num_pwms =3D 4,
+ 	.pwm45_fixup =3D false,
+-	.pwm_ck_26m_sel_reg =3D PWM_CK_26M_SEL_V3,
+-	.reg_offset =3D mtk_pwm_reg_offset_v3,
++	.reg_data =3D &pwm_mediatek_v3_26m_reg_data,
+ };
+=20
+ static const struct of_device_id pwm_mediatek_of_match[] =3D {
+
+--4bimetohzlxl6fm2
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmiQsiMACgkQj4D7WH0S
+/k7B6wf/W8Xkd+lg6Ku9HwlkEvcsnzcnunBcY0ZlpFUKSwUGGebEN76Ay5U2tWOz
+ND3ejlWJxiyBJ3e+zBUQ+znv8BaYVeYd0TkeSk/2Ys1v/yvI1MfnZKT6GW4Rx3MT
+VuCMgFhsYh37aGWftLcPtlD1KuqdNUNI4E2Fz7gQt1kKN4VMQV3+mzS72D90JIt9
+YytkRom9L1JoOCPKLT2xvuopLdc+eCaizTesxmVZsahglrxA+7eLqxMcpAwkNQ9r
+kA/AI1wdUwCaJ2f1S1pac5wFMqdaqMiHg1G8aQJbUb1nFcC8bbgqpp9gg5oMndrS
+oX+0PdYM4Dze3pLdDDUTGqSDQfbJ2Q==
+=ZI+Z
+-----END PGP SIGNATURE-----
+
+--4bimetohzlxl6fm2--
 
