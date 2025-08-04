@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 498E9C87FDA
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59E03C87FCB
 	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Aug 2025 09:26:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,56 +12,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8RvrtrohpxYBMhZkRolIAL7D/O4cRs6GbQI5Nhxuyc0=; b=UAg6QhKlcwIEQD86FB5N19k7AV
-	bMuiDeIfRL9MHML2tabPIwmy3hgU6um4gZRKzfgVKF61AvDhMXbNurhxW1fr5j5qqUnVR3Nh13ztl
-	g2S3QdCkVfWluKsBo6pFdovYU1HRuXDFMps1WSWuYk4zVS9TZPCmDpVCUbhtlUoY3eemyRYmDuv1L
-	69WkEEcp9mDYAsPzDeaR2N6ZWcs53YUkgXRINxGlj5H3C8cBTw1asE5dCpW6Iu9xSe8Pb21L2cwkd
-	e4z2R3P4srGMKK2Eo7h6hPb5NaSdL6l+wH8qSCIgnvDna2PUeMk5l6KagV9Tlf79abC807sf7yTkF
-	0os7Dswg==;
+	bh=Em+ot/5F7i0z19ruCoIikWEuU6nSyDSRHZONGRNm3Cs=; b=je/bhbDaJ2Jl0zSdCUEPE5YP40
+	ZXuuveeaFtpwT+z1yivY1XbRFdoMkPxl31AtN6gVMkE2t/DX2WyTftaai5reUKfc6DhZOreRErIeq
+	Tre9j26CFja4bC8bl7XUYgmi5BOMtEHW3oBFriPmNWoGiQgeY/OiZphdH8n4ReUsifkwdOMUb7e5I
+	HGFqQsORwdGRPRo32BD+pmU8Nfakd2tiQWJYF+2RkHQer9Y25XwC8OyRwjNyoTju90X8t8Q3c3HE1
+	Tilc6BvxZdzg6fjX1c/BOPZ5MMMgEsx+RVS/CxSI7U9JHu2H6JniAtfNYcptdrLa6Irh7tjIYKQUt
+	bgl65/kA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uirSh-0000000A4fz-2VC8;
-	Mon, 04 Aug 2025 09:26:31 +0000
+	id 1uirSg-0000000A4ff-13Ae;
+	Mon, 04 Aug 2025 09:26:30 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uiqtL-0000000A08Y-1HvV;
-	Mon, 04 Aug 2025 08:50:00 +0000
+	id 1uiqtE-0000000A03O-1P8k;
+	Mon, 04 Aug 2025 08:49:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1754297397;
-	bh=naqlfPKLXvb78dqLVocaBDc2QnhdiYMy5h3X2PMZnCM=;
+	s=mail; t=1754297390;
+	bh=wWy+JFHn9TTrt/BnNBPzBV4qBir5M7cDuw4hMnmgdGw=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=HZ9NsFYaPzGXFEYCS6bOtJFzBi88MZL2y1sDBABQC9PxhjgaFgbg9jFtCpbAIMzeq
-	 H6tTkbZnsBO4IGEJhbRny54r+vsng06HizbsUa840iB6F/c4hBSsM+42jUdKR7KsTg
-	 Rpq0JN9hp9sl5Lkc1YQpoy5zzYZ08RzBYcruHetdwSyAKQH+6/3NaYJDEElLOyfUxd
-	 2JC6+G4U5O1wJ5+IFree3ZB3qLYDttYFmBc4fOjolrbR4XcCodGDaQsGfBgvAHVI8O
-	 UFJuF8F0VRtKuhPxz2t/Tcm9gDWwOAz0a3FWG9gHx0xGJ4WaQ6IGh4rapbOmQE7qhx
-	 wqWtT/tDdtHng==
+	b=J2KSrEKZXvkSw6awxmikCOT2fCqLzPNHtiawXMhKdCpw0utM0XPQbFAmkoT8LbEqh
+	 XkfeeeOOPMg+VajPj4Uhv2vgoE2QTjw5o+oTgiUWF1q4opT/woI+AFXRiO8pck+UUM
+	 Q3MX1x78Eu87ZTaa+a/Bjbv5zAgzGfbahiC+vNquyjYFW1crkQixRMaSZX6Qw3yySh
+	 QrJhOmKCUccDqeoEWIcxv0Jr9MFd8boo61zhA5IAsD/o8lLf0WZDmMliMFy+IrPevj
+	 GJxX6wAiKV4lr4SkDMqhFbm112t/2sjtKREDK8zXYVy5+Q9faZO7Dk+RlbtCVHx7dl
+	 Z5z2Sw88h35fA==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 66C7217E0B8C;
-	Mon,  4 Aug 2025 10:49:57 +0200 (CEST)
-Message-ID: <3ec8df0d-5c2e-4c2e-a48a-333f904b56c8@collabora.com>
-Date: Mon, 4 Aug 2025 10:49:57 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5515A17E0B8C;
+	Mon,  4 Aug 2025 10:49:50 +0200 (CEST)
+Message-ID: <8585fd8c-80d9-4551-862d-79b11defde0d@collabora.com>
+Date: Mon, 4 Aug 2025 10:49:49 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 5/8] pwm: mediatek: Implement .get_state() callback
+Subject: Re: [PATCH v2 2/8] pwm: mediatek: Introduce and use a few more
+ register defines
 To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
  Matthias Brugger <matthias.bgg@gmail.com>
 Cc: linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
 References: <20250725154506.2610172-10-u.kleine-koenig@baylibre.com>
- <20250725154506.2610172-15-u.kleine-koenig@baylibre.com>
+ <20250725154506.2610172-12-u.kleine-koenig@baylibre.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250725154506.2610172-15-u.kleine-koenig@baylibre.com>
+In-Reply-To: <20250725154506.2610172-12-u.kleine-koenig@baylibre.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250804_014959_534818_B2DB77D9 
-X-CRM114-Status: UNSURE (   7.91  )
+X-CRM114-CacheID: sfid-20250804_014952_555400_75C53A82 
+X-CRM114-Status: UNSURE (   6.36  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,14 +79,13 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 25/07/25 17:45, Uwe Kleine-König ha scritto:
-> The registers can be read out just fine on an MT8365. In the assumption
-> that this works on all supported devices, a .get_state() callback can be
-> implemented. This enables consumers to make use of pwm_get_state_hw() and
-> improves the usefulness of /sys/kernel/debug/pwm.
+> Instead of using a magic constant for bound checking, derive the numbers
+> from appropriate register defines.
 > 
 > Signed-off-by: Uwe Kleine-König <u.kleine-koenig@baylibre.com>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Awesome.
 
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
