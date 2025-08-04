@@ -4,66 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27097C87FDA
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Aug 2025 08:57:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01C7FC87FCB
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Aug 2025 09:00:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=96GM457l/d/bHxJQEkE/zozx8y9NLt+R/nqgYYzYfvg=; b=B+wwfwmpLg0XgLMO3yS2Ktcc0Q
-	wC9y08A5eMrPpBAt7Il9zNqQ5akPqOD3SlsOJbRb2jrEKEHdzzjQIpW6qPhjHjS2SOufkbAclO1nT
-	dr5YZehApyVASnQ0OFexCQ2JT+8FG4fyfPeS1V8Ma8OaM9LsIB2zSWa1HKrBBZyT1s+LhQhtMfP6c
-	ZbAqe6x6+bZzzCKSJM17VsXAM7WKsOf7kHpsjFbGRX1pNtC7PZdwO8Tf4GwDtCuGUgQms+R5ZmlKj
-	OfP/bKrrnRyyTZ7D3zB73qnYhqQ3c7iB/ohsM4yaONTrfOBC4wyyfg4E8v7DHnyP97mh2zmKsmAR1
-	+OIvz1XA==;
+	bh=fERCsVog03ftAkrtNYahspZxv6nhaznzE1BFai+kA4k=; b=H2wr6O/Y8xmrwBY/FEIOuxFYyt
+	V1h7NWUyIK0ZKLv8fbhlkLMWhCnxhTL6taiQ6B+a/EHdPgJ3G5AmEnCgzoNRcj1LjMmV5z/BRJ+0R
+	F4BFX7/W113bH/6zs+bdjQwAJdR5Uozhk13IKBakigUjaT3wZU8GkvKgQsGV0wgzmUMpsnlgDPvHI
+	/UIUoVxS9+CaqOCH3M6wq+SXtB06V8XvM3W7ErmpXAImXgLO0h/4eEilRA5QepS+Xy1MmLJijYbTT
+	/e6oOIdvw6xoVdFQKy5eddXzEyA3eY1pxfFeqDTU1tBkwSf0sZ4SUVR5fyzAk5JGBEou8VPn00Llv
+	iUMTH50g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uir0j-0000000A1NI-0yqi;
-	Mon, 04 Aug 2025 08:57:37 +0000
+	id 1uir3G-0000000A1nK-1lWF;
+	Mon, 04 Aug 2025 09:00:14 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uiqsx-00000009zey-2D3d;
-	Mon, 04 Aug 2025 08:49:37 +0000
+	id 1uiqt0-00000009zkO-2gSH;
+	Mon, 04 Aug 2025 08:49:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1754297374;
-	bh=v9lomfM7rbZjRE8grQ/cTNg/PFAYWz1Hl/I0KQp90wM=;
+	s=mail; t=1754297377;
+	bh=nXkeDIP7ZV/N4coPJgNQkt15fEwvTffRHGCDXbFcPYA=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=nizeyTGxFerOSNofcf6J2JzRD6zmQIg0IE1yFArqpJvFVFsQOzmVzb/nWbep/qnRs
-	 ls0QMiUMmIX/9bJJhRy8IUD0ibqJ3VJ5nfx7PyejeuZkJ7SiO1GC0Fcrrq7K5UaKTz
-	 /Fic1IyANDXU1LttGRe6CWAdBZ5HfYM2A3kzfWUSjVNO+dIDPlHWHSMs1U9f6y6UYz
-	 gYKfheWv7ZsyP0XN/oTTMOLi2Aiuq0HFGjWAsqU6gNHEexiH/kQafUo9VS7FLQFfmv
-	 hxjeB9kF7vW4o4KiM8fiEzSIrfm9y4fempXMuErvloTXKsbwfPVlLcSZkFa494E0Sv
-	 FVwg/Ry7GaVxQ==
+	b=eWKxayx+aet4gpAcun29UOprDRBTBFLW5jmDx2U+nxPRWF+Mn3n0YJIB97hjtoTmI
+	 qPxujPoYGZ15Gx8ywyRGXdfeLabHbp6s1uQUunMGWma7MT3tTZbmpGOcbBwsMuxdaE
+	 iUGff76XXc9IX5Wnylc49m7C2i4hNTlu143eTl51hEnbSeQMjmQnUJuXLgG6swjGau
+	 /oKOYzEwusmIkLa4N3MDz3aT3Ias+0P2hCowIxjEfjDHz2UTbyjKTH4RisCdv9cbc9
+	 xjcyTSbls3yISLG69UoLfyi4gXOMqVDm+maMfDE4bTEdS+/Z9+Nr9OJfEV2lhyumM3
+	 F5P5tgVeF2Iiw==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id DA0F917E1110;
-	Mon,  4 Aug 2025 10:49:33 +0200 (CEST)
-Message-ID: <8508db81-eea3-4d2f-96d5-e669edd6a25e@collabora.com>
-Date: Mon, 4 Aug 2025 10:49:33 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0EE3A17E048E;
+	Mon,  4 Aug 2025 10:49:37 +0200 (CEST)
+Message-ID: <b32e561c-4587-4bdc-b108-2ceb342d3e37@collabora.com>
+Date: Mon, 4 Aug 2025 10:49:36 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 4/8] pwm: mediatek: Initialize clks when the hardware
- is enabled at probe time
+Subject: Re: [PATCH v2 6/8] pwm: mediatek: Fix various issues in the .apply()
+ callback
 To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
  Matthias Brugger <matthias.bgg@gmail.com>
 Cc: linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
 References: <20250725154506.2610172-10-u.kleine-koenig@baylibre.com>
- <20250725154506.2610172-14-u.kleine-koenig@baylibre.com>
+ <20250725154506.2610172-16-u.kleine-koenig@baylibre.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250725154506.2610172-14-u.kleine-koenig@baylibre.com>
+In-Reply-To: <20250725154506.2610172-16-u.kleine-koenig@baylibre.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250804_014935_747102_FA29DA00 
-X-CRM114-Status: UNSURE (   7.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250804_014938_838414_83F5CBDE 
+X-CRM114-Status: GOOD (  12.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,10 +78,21 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 25/07/25 17:45, Uwe Kleine-König ha scritto:
-> When a PWM is already configured by the bootloader (e.g. to power a
-> backlight), the clk enable count must be increased to keep clock usage
-> balanced. So check which PWMs are enabled during probe and enable the
-> respective clocks.
+> duty_cycle and period were silently cast from u64 to int losing
+> relevant bits. Dividing by the result of a division (resolution) looses
+> precision. clkdiv was determined using a loop while it can be done
+> without one. Also too low period values were not catched.
+> 
+> Improve all these issues. Handling period and duty_cycle being u64 now
+> requires a bit more care to prevent overflows, so mul_u64_u64_div_u64()
+> is used.
+> 
+> The changes implemented in this change also align the chosen hardware
+> settings to match the usual PWM rules (i.e. round down instead round
+> nearest) and so .apply() also matches .get_state() silencing several
+> warnings with PWM_DEBUG=y. While this probably doesn't result in
+> problems, this aspect makes this change---though it might be considered
+> a fix---unsuitable for backporting.
 > 
 > Signed-off-by: Uwe Kleine-König <u.kleine-koenig@baylibre.com>
 
