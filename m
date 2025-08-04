@@ -4,66 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59E03C87FCB
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Aug 2025 09:26:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 780F4C88CB9
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Aug 2025 09:26:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Em+ot/5F7i0z19ruCoIikWEuU6nSyDSRHZONGRNm3Cs=; b=je/bhbDaJ2Jl0zSdCUEPE5YP40
-	ZXuuveeaFtpwT+z1yivY1XbRFdoMkPxl31AtN6gVMkE2t/DX2WyTftaai5reUKfc6DhZOreRErIeq
-	Tre9j26CFja4bC8bl7XUYgmi5BOMtEHW3oBFriPmNWoGiQgeY/OiZphdH8n4ReUsifkwdOMUb7e5I
-	HGFqQsORwdGRPRo32BD+pmU8Nfakd2tiQWJYF+2RkHQer9Y25XwC8OyRwjNyoTju90X8t8Q3c3HE1
-	Tilc6BvxZdzg6fjX1c/BOPZ5MMMgEsx+RVS/CxSI7U9JHu2H6JniAtfNYcptdrLa6Irh7tjIYKQUt
-	bgl65/kA==;
+	bh=5cPsurSQCTJuh6URefwarH/f2msTgGmy2Fo3DfS7UiM=; b=Idn1WHQ5a7rMESGCW1BMureHGe
+	xUb4BuuVMlvWdQ/rsklbEDrSmHejGhe9ZK8UwXzX6NjSoBWjzq+WnpIZxB/gIBKkIg6JaCB6s3atT
+	HB7mll6x/d5clRXDiukB28JhrCyNiWwAKFsBd9YYYPfvCPSy6f7HEJVS2pA43NGdzGV+0KfCU00Lz
+	FK7Aq5JAFStNx1q8Kjzger6Y3vAaHy5x11w0dMnu5LuIB+dLG7+PiS3rcG7lVLG2RrzkSMiwUneDt
+	vxA+t4+LhfgS92QsarjU1qDXSBnoUUa3o1z8oqicAlh5/RAJHHsQkq0Ai1sa7izdzwreXYhLO75I8
+	ijhSaUUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uirSg-0000000A4ff-13Ae;
-	Mon, 04 Aug 2025 09:26:30 +0000
+	id 1uirSk-0000000A4kL-2Wx2;
+	Mon, 04 Aug 2025 09:26:34 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uiqtE-0000000A03O-1P8k;
-	Mon, 04 Aug 2025 08:49:53 +0000
+	id 1uir14-0000000A1Sm-2N2L;
+	Mon, 04 Aug 2025 08:57:59 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1754297390;
-	bh=wWy+JFHn9TTrt/BnNBPzBV4qBir5M7cDuw4hMnmgdGw=;
+	s=mail; t=1754297877;
+	bh=BYlIvi6N1B4zZkudRep+yBSyFMv2TAT55xPmCHgg8Ts=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=J2KSrEKZXvkSw6awxmikCOT2fCqLzPNHtiawXMhKdCpw0utM0XPQbFAmkoT8LbEqh
-	 XkfeeeOOPMg+VajPj4Uhv2vgoE2QTjw5o+oTgiUWF1q4opT/woI+AFXRiO8pck+UUM
-	 Q3MX1x78Eu87ZTaa+a/Bjbv5zAgzGfbahiC+vNquyjYFW1crkQixRMaSZX6Qw3yySh
-	 QrJhOmKCUccDqeoEWIcxv0Jr9MFd8boo61zhA5IAsD/o8lLf0WZDmMliMFy+IrPevj
-	 GJxX6wAiKV4lr4SkDMqhFbm112t/2sjtKREDK8zXYVy5+Q9faZO7Dk+RlbtCVHx7dl
-	 Z5z2Sw88h35fA==
+	b=UMeLnFLlhxIsDh+1vjILNaFUWz2Ao8Cj3nIdLdKn+tM+b5dPaOc2KNTNCHabvB/bZ
+	 f8PtG+ypH4ZuKB/MplnsrSYUU/nrqU+jdEsQ81s+4PFMHXiILEbtX8Xrf8V/3eyeeO
+	 PRW8B2Qu5X5Oe/EUIydBpfYbS35kF3JTFOsSt6xJ2tueuWJekO2lGUM523bOdXah4U
+	 uNZ3W5TAT0uur0BAcCfo+H3HufxnuNZJmLfFcNZBRYITI4aOyPgZ4ADCsNlMLpLA/k
+	 EbZ1Dj4H8ziFv9IgNnYlo/W5p+qyEYth2cp7k1iYO9xlNXdFitrlPh2HUSST/1iTc5
+	 iTKyI69Q7Gw7A==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5515A17E0B8C;
-	Mon,  4 Aug 2025 10:49:50 +0200 (CEST)
-Message-ID: <8585fd8c-80d9-4551-862d-79b11defde0d@collabora.com>
-Date: Mon, 4 Aug 2025 10:49:49 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0B05917E04DA;
+	Mon,  4 Aug 2025 10:57:55 +0200 (CEST)
+Message-ID: <edaeb213-d1df-40bf-9538-9ea86198f3c2@collabora.com>
+Date: Mon, 4 Aug 2025 10:57:55 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/8] pwm: mediatek: Introduce and use a few more
- register defines
-To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20250725154506.2610172-10-u.kleine-koenig@baylibre.com>
- <20250725154506.2610172-12-u.kleine-koenig@baylibre.com>
+Subject: Re: [PATCH v2 1/7] drm/mediatek: Add CCORR component support for
+ MT8196
+To: Jay Liu <jay.liu@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ CK Hu <ck.hu@mediatek.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20250727071609.26037-1-jay.liu@mediatek.com>
+ <20250727071609.26037-2-jay.liu@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250725154506.2610172-12-u.kleine-koenig@baylibre.com>
+In-Reply-To: <20250727071609.26037-2-jay.liu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250804_014952_555400_75C53A82 
-X-CRM114-Status: UNSURE (   6.36  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250804_015758_758925_811022CB 
+X-CRM114-Status: GOOD (  11.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,14 +85,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 25/07/25 17:45, Uwe Kleine-König ha scritto:
-> Instead of using a magic constant for bound checking, derive the numbers
-> from appropriate register defines.
+Il 27/07/25 09:15, Jay Liu ha scritto:
+> Add CCORR component support for MT8196.
 > 
-> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@baylibre.com>
+> CCORR is a hardware module that optimizes the visual effects of
+> images by adjusting the color matrix, enabling features such as
+> night light.
+> 
+> The 8196 SoC has two CCORR hardware units, which must be chained
+> together in a fixed order in the display path to display the image
+> correctly. the `mtk_ccorr_ctm_set` API only utilizes one of these units.
+> To prevent the unused CCORR unit from inadvertently taking effect,
+> we need to block it in the mtk_crtc.c.
+> 
+> Signed-off-by: Jay Liu <jay.liu@mediatek.com>
+> Signed-off-by: 20220315152503 created <jay.liu@mediatek.com>
 
-Awesome.
+Please, remove that bogus "20220315152503 created" user that does not exist.
+
+After which:
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 
 
