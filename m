@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B30F6C87FDB
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Aug 2025 09:02:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 498E9C87FDA
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Aug 2025 09:26:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gAP44j28KapwFCLX1U0mRx+4kozUg4OUPSLosvMvTBw=; b=S7vUPsioendmFsPM189OP+e8DB
-	kGfhZ4+lFJ9iW1T5fmSoK/AqmwZa3oVm8r6bBj4wnuQamiFCK9hXCb1d/DxLli6+1s060i8gGaoU0
-	Q31b90m2mmintKQ57QZudV/cP1VbzhMYo4ZyItSC4eTMoHUgL9jU3Qf4Csn3tXN37QKTvDnGeVpV+
-	iZObI23AAh5WI0VSIIvRbbB9DPYZK4IElBW5rXWZglv1dLDUbHzWXyUvuylHXRr58OW7kXgNjnIOn
-	eT3q3zCLmNjsnfPHENjaz5my2OJMfaKyPyAg2s2SH8DwinUcRqUAmK3RHT9b8TKJxa4VCVMd7UGG7
-	dt6ZRjdQ==;
+	bh=8RvrtrohpxYBMhZkRolIAL7D/O4cRs6GbQI5Nhxuyc0=; b=UAg6QhKlcwIEQD86FB5N19k7AV
+	bMuiDeIfRL9MHML2tabPIwmy3hgU6um4gZRKzfgVKF61AvDhMXbNurhxW1fr5j5qqUnVR3Nh13ztl
+	g2S3QdCkVfWluKsBo6pFdovYU1HRuXDFMps1WSWuYk4zVS9TZPCmDpVCUbhtlUoY3eemyRYmDuv1L
+	69WkEEcp9mDYAsPzDeaR2N6ZWcs53YUkgXRINxGlj5H3C8cBTw1asE5dCpW6Iu9xSe8Pb21L2cwkd
+	e4z2R3P4srGMKK2Eo7h6hPb5NaSdL6l+wH8qSCIgnvDna2PUeMk5l6KagV9Tlf79abC807sf7yTkF
+	0os7Dswg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uir5m-0000000A26G-2D09;
-	Mon, 04 Aug 2025 09:02:50 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uirSh-0000000A4fz-2VC8;
+	Mon, 04 Aug 2025 09:26:31 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uiqt2-00000009zn9-1bg0;
-	Mon, 04 Aug 2025 08:49:42 +0000
+	id 1uiqtL-0000000A08Y-1HvV;
+	Mon, 04 Aug 2025 08:50:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1754297379;
-	bh=uEPY2NMSqAK+CpEdpvsDmGeXQkYcRzHTYJ6NvWltjLw=;
+	s=mail; t=1754297397;
+	bh=naqlfPKLXvb78dqLVocaBDc2QnhdiYMy5h3X2PMZnCM=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=gl5sO8psb9LsdY8FYwWSXG35W8zf2MMs7VI3+Jv3GmDCA/+PIJY0pCizKmQHZnXS8
-	 H7RIoHkiq8YMORSIHO/gStf3f834yywI/NsLAoDgT1ye212GqI/eNWjYFLGGgYypxp
-	 r8Ysd5K8lBObzjQwQcpDccpVxegSTfdvYE1Qwc1Zrm4SDKzfnhjZwRKBBdKz/o0uAB
-	 Gmrtg79ZB1iTM306zHXddO0rBfj8zChZ4j2HGidF6xIIGCJQWte0fWnqLUxZArRPUZ
-	 A48VNKTutYAH6eTSFzy8JaC91+IQYASSCPpzv3FWPNvTi7GQ9q/Z+gj3iBG9IAEBkV
-	 Opp88qX0mQ9zw==
+	b=HZ9NsFYaPzGXFEYCS6bOtJFzBi88MZL2y1sDBABQC9PxhjgaFgbg9jFtCpbAIMzeq
+	 H6tTkbZnsBO4IGEJhbRny54r+vsng06HizbsUa840iB6F/c4hBSsM+42jUdKR7KsTg
+	 Rpq0JN9hp9sl5Lkc1YQpoy5zzYZ08RzBYcruHetdwSyAKQH+6/3NaYJDEElLOyfUxd
+	 2JC6+G4U5O1wJ5+IFree3ZB3qLYDttYFmBc4fOjolrbR4XcCodGDaQsGfBgvAHVI8O
+	 UFJuF8F0VRtKuhPxz2t/Tcm9gDWwOAz0a3FWG9gHx0xGJ4WaQ6IGh4rapbOmQE7qhx
+	 wqWtT/tDdtHng==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id AFD0017E04DA;
-	Mon,  4 Aug 2025 10:49:38 +0200 (CEST)
-Message-ID: <958e731c-6c4b-45bd-ad9f-1860552c57c6@collabora.com>
-Date: Mon, 4 Aug 2025 10:49:38 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 66C7217E0B8C;
+	Mon,  4 Aug 2025 10:49:57 +0200 (CEST)
+Message-ID: <3ec8df0d-5c2e-4c2e-a48a-333f904b56c8@collabora.com>
+Date: Mon, 4 Aug 2025 10:49:57 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/8] pwm: mediatek: Rework parameters for clk helper
- function
+Subject: Re: [PATCH v2 5/8] pwm: mediatek: Implement .get_state() callback
 To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
  Matthias Brugger <matthias.bgg@gmail.com>
 Cc: linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
 References: <20250725154506.2610172-10-u.kleine-koenig@baylibre.com>
- <20250725154506.2610172-13-u.kleine-koenig@baylibre.com>
+ <20250725154506.2610172-15-u.kleine-koenig@baylibre.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250725154506.2610172-13-u.kleine-koenig@baylibre.com>
+In-Reply-To: <20250725154506.2610172-15-u.kleine-koenig@baylibre.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250804_014940_614720_403E8874 
-X-CRM114-Status: UNSURE (   7.43  )
+X-CRM114-CacheID: sfid-20250804_014959_534818_B2DB77D9 
+X-CRM114-Status: UNSURE (   7.91  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,9 +78,10 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 25/07/25 17:45, Uwe Kleine-König ha scritto:
-> Convert pwm_mediatek_clk_enable() and pwm_mediatek_clk_disable() to take
-> lower level parameters. This enables these functions to be used in the next
-> commit when there is no valid pwm_chip and pwm_device yet.
+> The registers can be read out just fine on an MT8365. In the assumption
+> that this works on all supported devices, a .get_state() callback can be
+> implemented. This enables consumers to make use of pwm_get_state_hw() and
+> improves the usefulness of /sys/kernel/debug/pwm.
 > 
 > Signed-off-by: Uwe Kleine-König <u.kleine-koenig@baylibre.com>
 
