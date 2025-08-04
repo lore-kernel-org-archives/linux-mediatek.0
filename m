@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AC29C87FDA
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5D7CC87FCB
 	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Aug 2025 08:55:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,56 +12,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=T+Vzn7s81LEOZ8ibIdNbFJmqX0SbVY2nkGqZXOOjSz0=; b=ADCMs2vlGfCOFLIeEJ8k6EuZoz
-	nWcCG+b0ZZkl1i4bFxkVmgeZQao4ZZpvHLcRs5Y7D/wviZQTJpYQKKtr2hAembkIn4KXSUGlU3jLr
-	raW9+zAXRtNyFszDkKbVpXhH0yn/CxBg5vAYxqyUTnHUM35mMHEOy699ZdjkroQ2XDfgmKNnKr+nh
-	s3NJ0L4O2N41ltLXb/WQ89JAi84Ue4YdCcSGnlBpJugseeRJY8UEZwa0Rrd4gZdTIjeFJwqCTH742
-	5b3D3nZnt2qjO3z1wVws+bWpm6gUV1ScZKTtRBkzyx28O46rzfEMowNR7c4mA+G/3yuL/11vN+bqj
-	x+wKF8fg==;
+	bh=4k7PNCKO7CmyD7zu7JPwzHc3IbLDKNNoDi8H44jK8e4=; b=I2YH9X19zMteD0k0QeyYlQYT+7
+	YAya5L6/1wvPfEG0gJVEpKOtVAZ0AhGchMU9ZXHI0WdI2t2xfpLOPH/rpeBxPSEbkES2Ut7MSdklh
+	Zan8rPutyqwiAAYklHZHkTobCCn+KJpkfK2zAbuNVtpz1EQ+ahqFeBp/EYXz2vP1f/0JZHjlpBTwq
+	MjoWexTRycZuyO2LvY7XfByZUEerxB//OZ6rYCXReH3/aseAmKZ6H3d4SaUOvjYJXFqZiFHIxQSNA
+	yNWDYaL4Fm19ZQ9YSO2u7wwgNHhtf+luaEcO/9hcI31oUh6uL5Nz4TelfSE/Neasv1WGGpvwsgfAb
+	EvjTbd8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uiqyC-0000000A153-2N63;
+	id 1uiqyC-0000000A15L-3fbN;
 	Mon, 04 Aug 2025 08:55:00 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uiqsv-00000009zbl-2aeV;
-	Mon, 04 Aug 2025 08:49:35 +0000
+	id 1uiqsw-00000009zcy-0Lbk;
+	Mon, 04 Aug 2025 08:49:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1754297372;
-	bh=kEGNcRKii091OoZOGBge+aHBW6zYX0bGJrlr0K3nWNo=;
+	bh=3qrX1jknYp4qOJKggBsAx8Iwi18RT/dYzgUfn0sqFr0=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=lt4LunEh6xeDTdscoj61LEXgzFVU3LukujP6O2+cDi4VCjOw0rdF+GDsJzH5d2bQb
-	 aE7xUdrIULgB6iNNO29i/cxHYGAmgmGfYaN63Z9iNvPKL0ZbDWxsCqcW0YKDaHvjQ0
-	 UR4bwwwMmTR8P+eLFhATB7OsFEYn7fgcIDd8Ai9fMcDP2IUnd/CU0x5ZijxKdbwQlF
-	 R6IZCSu5YEZERGMo6U8RghFdvshVOpcd4+UBSmGWEKPlQnINUcAqXBphTAMrqYwL7X
-	 5KS3dLO0iT68XqpSUz2DuRlINkIBwPlkfgVR8/qtwG6XKRivHA7f/USgxeI9nryYmS
-	 TDZzECPwqw4HQ==
+	b=hnUxh6WBTaOpXfYFHlkV61oo8O6aw0KHmCGDH3VVACls9w0uVgRfRtpnMlYM3RD57
+	 cnGWmgvJxNX5nAqOLNTkWHBvByEj11WlgfSriaZFxcMSeYzoxY9zJuKC9sx7sMzd/A
+	 b9kCYNAzkusFQ03F1QnGXe3aIxDhkjiw9NZjWvHcMX5Xaswah+WEDUkBY7rYQKbVlj
+	 3mtPbfwndY5KhDTZTKQPQNGypluMxB/YtOpgtQfP5H7ZPfLJQ/Lri5VgFUWNGcxhXj
+	 c1AVh26T8p7zyUTcuTs8Pve4typc5Ege+rExN9rp2evHEdcENt60fQzP+D5TR8vIf3
+	 XBKIEVy0Nnd8A==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id AB10D17E048E;
-	Mon,  4 Aug 2025 10:49:31 +0200 (CEST)
-Message-ID: <75a48820-a79d-41f3-9e96-b49332865eb0@collabora.com>
-Date: Mon, 4 Aug 2025 10:49:31 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 67B4C17E04DA;
+	Mon,  4 Aug 2025 10:49:32 +0200 (CEST)
+Message-ID: <606f520a-9921-454c-9967-e545cbfa5a3b@collabora.com>
+Date: Mon, 4 Aug 2025 10:49:32 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 8/8] pwm: mediatek: Convert to waveform API
+Subject: Re: [PATCH v2 7/8] pwm: mediatek: Lock and cache clock rate
 To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
  Matthias Brugger <matthias.bgg@gmail.com>
 Cc: linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
 References: <20250725154506.2610172-10-u.kleine-koenig@baylibre.com>
- <20250725154506.2610172-18-u.kleine-koenig@baylibre.com>
+ <20250725154506.2610172-17-u.kleine-koenig@baylibre.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250725154506.2610172-18-u.kleine-koenig@baylibre.com>
+In-Reply-To: <20250725154506.2610172-17-u.kleine-koenig@baylibre.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250804_014934_329908_AFC90CBE 
-X-CRM114-Status: UNSURE (   6.83  )
+X-CRM114-CacheID: sfid-20250804_014934_335458_07A89983 
+X-CRM114-Status: UNSURE (   8.35  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,11 +78,15 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 25/07/25 17:45, Uwe Kleine-König ha scritto:
-> Implement the new waveform callbacks which makes the usage of this
-> hardware more flexible and allows to use it via the pwm character
-> device.
+> This simplifies error handling and reduces the amount of clk_get_rate()
+> calls.
+> 
+> While touching the clk handling also allocate the clock array as part of
+> driver data and lock the clock rate to ensure that the output doesn't
+> change unexpectedly.
 > 
 > Signed-off-by: Uwe Kleine-König <u.kleine-koenig@baylibre.com>
+
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
