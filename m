@@ -4,78 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27CDBC87FCB
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Aug 2025 15:11:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C92FEC87FD1
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Aug 2025 15:44:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PsV5TuUWJZfRV+UX3IJEalcMvDNfAPiOTqfFz7RTrvQ=; b=ujeneFOFn2ol8ga+sVpQhkHjg0
-	UGwi+Gg4wfn7VYzWq1M5/UCs574KF2nQ8H7LRu+RGWXAx815Gg1OiVTtTBSP2L4cKYbG1xKRiiCyS
-	S37a8Bq9P4DkaDJ4rKqipPLh9X7RY/OZR0dwifoG7UILeP47Or9ILtAOHj2p/cbJ0xyKVSTYqPkCI
-	R62csswNT3PTpBTP6VkrxVjnw9wZhChZ7x+q3kAd6yZw1BLI7ocyi5Vc6sjQXuk980nXYw4u+Yluf
-	cGvwcr57TjOvaT5br97JiD547IiA5QpVbbFLjJhMtbTOz2aneNio8iIA7l/kjPw7eqcElJQZ7qEH9
-	ZpJe4LUQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oyEkq65BqnjSHUSEvPlgeOq00yihdtpSGk7ZlYleULo=; b=Reo27Tphi8UkRfersViqGnn366
+	nsS+EZM0d92mFtgBCYYPQj4jtFSeMBzFACUBukx7gWu3wG/g8yug+I2+ODbcxkY2D+RdIBv2u0503
+	pxisSga1ySh1iZmsTG/A/mcKyhP9SeBI6CQMt5nd9oOFf51gtbITbKG1l4Os94GvXL8GE5I224PNR
+	G8LPW++wDKrwzeWuETUzyRgudFSJ4Jwfkks2yLMnPDWrR77JNMJyr+ZzEVnduYM1ek6ZTzoQgn7zF
+	xuS8D38U8fJZOLjzv1O5Y5BhdXFL2dUOm6rWGA8uGdmXeo/pentbdVE8CPR0KcRyQ2NwKsrWBJFNZ
+	T2x8gJBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ujJK9-0000000D710-0Vzk;
-	Tue, 05 Aug 2025 15:11:33 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1ujJpo-0000000DBuw-1cIR;
+	Tue, 05 Aug 2025 15:44:16 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ujI9D-0000000CuLc-2f3S;
-	Tue, 05 Aug 2025 13:56:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1754402170;
-	bh=r8H3+YDpCtjw639WiP3nv8ipbljLkDAhnSg6tlf/o6A=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=SThfW0P9ZoshXuL+4uS/4MulcWJEuYvtt3gHK6xZzvc3+RnuCwPcToKJ4Z8IlLhBD
-	 I4S/BkZ3P1vrmBgM8v/bK03aOFTy4dBOChGwz2QJ73/9SLSmeDhhKjse/nPlHAOiqj
-	 O2p6La2680Mpi+vs88fhYeiMa4ExOUgyODDviqGbKxmsr66/jDS/opdBt9x7vK/l8L
-	 Eb2Glw9fI7NmxE/IPSXdnxq4teoBS+8bauncwq9jonv3gybfy1jO1C3zNc/RDIAW1w
-	 BDyq+NF4J4trMXEAZT7fTWZ7IgCgt7PKCtsk65Hbj8t7+GSRmTlAD8KGJdlvjqrcAg
-	 Lw9R0obsr88aw==
-Received: from laura.lan (unknown [IPv6:2001:b07:646b:e2:1976:d3fe:e682:e398])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: laura.nao)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 70F8A17E04DA;
-	Tue,  5 Aug 2025 15:56:09 +0200 (CEST)
-From: Laura Nao <laura.nao@collabora.com>
-To: mturquette@baylibre.com,
-	sboyd@kernel.org,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	p.zabel@pengutronix.de,
-	richardcochran@gmail.com
-Cc: guangjie.song@mediatek.com,
-	wenst@chromium.org,
-	linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	netdev@vger.kernel.org,
-	kernel@collabora.com,
-	Laura Nao <laura.nao@collabora.com>,
-	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>
-Subject: [PATCH v4 27/27] clk: mediatek: Add MT8196 vencsys clock support
-Date: Tue,  5 Aug 2025 15:54:47 +0200
-Message-Id: <20250805135447.149231-28-laura.nao@collabora.com>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250805135447.149231-1-laura.nao@collabora.com>
-References: <20250805135447.149231-1-laura.nao@collabora.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+	id 1ujImJ-0000000D2DT-489C;
+	Tue, 05 Aug 2025 14:36:37 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 1378DA55370;
+	Tue,  5 Aug 2025 14:36:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 50079C4CEF0;
+	Tue,  5 Aug 2025 14:36:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1754404594;
+	bh=w44VePDoslCBQmbyhcmLPxQ8EP9h0hyA++ku5mPHf3g=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=n2fhACyVyCVvYGuPP5yMUtOJLO69zohrl67B4qO7tkrc85q6AhS4HjOpKq0IO06bx
+	 VLOboqGBT7smqDbTFjCjnp2DG/po4EcjHpfGR+JZzM+IT6QVECop5qsXyHugSDQVn1
+	 7BxqhQncciEoyBbL90Tleof1s2k1YIBjNcc/G6VkKx9VK9DZYHWJmt0BeV8bGLwals
+	 jVcfnveLCEGmUfV72Wqta+sV+RLjN4QoW+l7EnzBS27caLKnsqRCSbbuO8ts3bESBT
+	 uZRvfvo06OiRv/fMXlJzoKPT59UHy7yOPcsip0yUx7VPtwZ/MS2HXmhai2mdCjkufK
+	 6DrQgtBEh+o6g==
+Date: Tue, 05 Aug 2025 09:36:32 -0500
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
+MIME-Version: 1.0
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250805074746.29457-1-angelogioacchino.delregno@collabora.com>
+References: <20250805074746.29457-1-angelogioacchino.delregno@collabora.com>
+Message-Id: <175440455336.1687500.12826833378916085402.robh@kernel.org>
+Subject: Re: [PATCH v3 00/10] pmdomain: Partial refactor, support modem and
+ RTFF
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250805_065611_824244_AEDD0F4B 
-X-CRM114-Status: GOOD (  17.03  )
+X-CRM114-CacheID: sfid-20250805_073636_168919_C27657C8 
+X-CRM114-Status: GOOD (  35.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,294 +66,180 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, ulf.hansson@linaro.org, mbrugger@suse.com, y.oudjana@protonmail.com, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, mandyjh.liu@mediatek.com, lihongbo22@huawei.com, wenst@chromium.org, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, krzk+dt@kernel.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for the MT8196 vencsys clock controller, which provides
-clock gate control for the video encoder.
 
-Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Laura Nao <laura.nao@collabora.com>
----
- drivers/clk/mediatek/Kconfig           |   7 +
- drivers/clk/mediatek/Makefile          |   1 +
- drivers/clk/mediatek/clk-mt8196-venc.c | 235 +++++++++++++++++++++++++
- 3 files changed, 243 insertions(+)
- create mode 100644 drivers/clk/mediatek/clk-mt8196-venc.c
+On Tue, 05 Aug 2025 09:47:36 +0200, AngeloGioacchino Del Regno wrote:
+> Changes in v3:
+>  - Dropped specified items for cells restriction as suggested by Rob
+>  - Fixed an issue in patch 4 still referencing "mediatek,bus-protection"
+>    as it is entirely replaced by "access-controllers"
+> 
+> Changes in v2:
+>  - Added #access-controller-cells allowance for MT8188/95 infracfg_ao
+> 
+> This series is a subset of [1], leaving out the Hardware Voter specific
+> bits for MT8196 until the discussion around it reaches a conclusion.
+> 
+> Even though the proposed code was born as a preparation to support the
+> MT8196/MT6991 SoCs power domain controllers, it is a necessary cleanup
+> for all power domain controllers of all of the currently supported SoCs
+> from MediaTek.
+> 
+> You may also notice the addition of support for modem power sequences:
+> this was brought up 6 months ago (or more) by community contributors
+> (mainly Yassine Oudjana) that were trying to upstream the MediaTek
+> MT6735 Smartphone SoC and needed support to provide power to the MD
+> subsystem - so, even though in this specific series the code for the
+> modem power sequence is not yet triggered by any SoC, please please
+> please, let it in.
+> Besides, "a bunch" of upstream supported SoCs do have the MD power
+> domain even though it wasn't added to their drivers (because if there
+> was no support in the driver, it would just crash the system); the
+> addition is something that I plan to do at some point, but definitely
+> not now as I have no bandwidth for that (bar MT8196, which will have
+> this domain).
+> 
+> Compared to v1 in [1]:
+>  - Changed mediatek,bus-protection to access-controllers
+>    as suggested by Rob (thanks!)
+>  - Added commits to document #access-controller-cells on all of
+>    the access control providers
+> 
+> In the meanwhile.... relevant excerpt from the old series:
+> 
+> This series refactors the bus protection regmaps retrieval to avoid
+> searching in all power domain devicetree subnodes for vendor properties
+> to get syscons for different busses, and adds a new property which is
+> located in the power controller root node containing handles to the same.
+> 
+> Retrocompatibility is retained and was tested on multiple SoCs in the
+> Collabora lab - specifically, on Genio 350/510/700/1200, and manually
+> on MT6795 Helio (Xperia M5 Smartphone), MT8186, MT8192 and MT8195
+> Chromebooks.
+> 
+> This was tested *three times*:
+>  - Before the per-SoC conversion in drivers/pmdomain/mediatek
+>  - With per-SoC conversion code but with *legacy* devicetree
+>  - With per-SoC conversion code and with *new* devicetree conversion
+> 
+> All of those tests were successful on all of the aforementioned SoCs.
+> 
+> This also adds support for:
+>  - Modem power domain for both old and new MediaTek SoCs, useful for
+>    bringing up the GSM/3G/4G/5G modem for both laptop and smartphone use
+>  - RTFF MCU HW, as found in MT8196 Chromebooks and MT6991 Dimensity 9400
+> 
+> ...and prepares the pmdomain code to accomodate only the directly
+> controlled power domains for MT8196 (HW Voter support was left out).
+> 
+> [1] https://lore.kernel.org/all/20250623120154.109429-1-angelogioacchino.delregno@collabora.com
+> 
+> AngeloGioacchino Del Regno (10):
+>   dt-bindings: memory: mtk-smi: Document #access-controller-cells
+>   dt-bindings: clock: mediatek: Document #access-controller-cells
+>   dt-bindings: power: mediatek: Document access-controllers property
+>   pmdomain: mediatek: Refactor bus protection regmaps retrieval
+>   pmdomain: mediatek: Handle SoCs with inverted SRAM power-down bits
+>   pmdomain: mediatek: Move ctl sequences out of power_on/off functions
+>   pmdomain: mediatek: Add support for modem power sequences
+>   pmdomain: mediatek: Add support for RTFF Hardware in MT8196/MT6991
+>   pmdomain: mediatek: Convert all SoCs to new style regmap retrieval
+>   arm64: dts: mediatek: Convert all SoCs to use access-controllers
+> 
+>  .../bindings/clock/mediatek,infracfg.yaml     |   3 +
+>  .../clock/mediatek,mt8186-sys-clock.yaml      |  15 +
+>  .../clock/mediatek,mt8188-sys-clock.yaml      |  15 +
+>  .../clock/mediatek,mt8192-sys-clock.yaml      |  15 +
+>  .../clock/mediatek,mt8195-sys-clock.yaml      |  15 +
+>  .../clock/mediatek,mt8365-sys-clock.yaml      |  15 +
+>  .../mediatek,smi-common.yaml                  |  16 +
+>  .../power/mediatek,power-controller.yaml      |  37 ++
+>  arch/arm64/boot/dts/mediatek/mt6795.dtsi      |   5 +-
+>  arch/arm64/boot/dts/mediatek/mt8167.dtsi      |   6 +-
+>  arch/arm64/boot/dts/mediatek/mt8173.dtsi      |   4 +-
+>  arch/arm64/boot/dts/mediatek/mt8183.dtsi      |  17 +-
+>  arch/arm64/boot/dts/mediatek/mt8186.dtsi      |  12 +-
+>  arch/arm64/boot/dts/mediatek/mt8188.dtsi      |  23 +-
+>  arch/arm64/boot/dts/mediatek/mt8192.dtsi      |  13 +-
+>  arch/arm64/boot/dts/mediatek/mt8195.dtsi      |  20 +-
+>  arch/arm64/boot/dts/mediatek/mt8365.dtsi      |  16 +-
+>  drivers/pmdomain/mediatek/mt6795-pm-domains.h |   5 +
+>  drivers/pmdomain/mediatek/mt8167-pm-domains.h |   5 +
+>  drivers/pmdomain/mediatek/mt8173-pm-domains.h |   5 +
+>  drivers/pmdomain/mediatek/mt8183-pm-domains.h |   5 +
+>  drivers/pmdomain/mediatek/mt8186-pm-domains.h |   5 +
+>  drivers/pmdomain/mediatek/mt8188-pm-domains.h |   6 +
+>  drivers/pmdomain/mediatek/mt8192-pm-domains.h |   5 +
+>  drivers/pmdomain/mediatek/mt8195-pm-domains.h |   5 +
+>  drivers/pmdomain/mediatek/mt8365-pm-domains.h |  14 +-
+>  drivers/pmdomain/mediatek/mtk-pm-domains.c    | 399 +++++++++++++++---
+>  drivers/pmdomain/mediatek/mtk-pm-domains.h    |  74 +++-
+>  28 files changed, 594 insertions(+), 181 deletions(-)
+> 
+> --
+> 2.50.1
+> 
+> 
+> 
 
-diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-index 12d32bc03fc6..a76344cb74a1 100644
---- a/drivers/clk/mediatek/Kconfig
-+++ b/drivers/clk/mediatek/Kconfig
-@@ -1066,6 +1066,13 @@ config COMMON_CLK_MT8196_VDECSYS
- 	help
- 	  This driver supports MediaTek MT8196 vdecsys clocks.
- 
-+config COMMON_CLK_MT8196_VENCSYS
-+	tristate "Clock driver for MediaTek MT8196 vencsys"
-+	depends on COMMON_CLK_MT8196
-+	default m
-+	help
-+	  This driver supports MediaTek MT8196 vencsys clocks.
-+
- config COMMON_CLK_MT8365
- 	tristate "Clock driver for MediaTek MT8365"
- 	depends on ARCH_MEDIATEK || COMPILE_TEST
-diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index 131582b12783..d8736a060dbd 100644
---- a/drivers/clk/mediatek/Makefile
-+++ b/drivers/clk/mediatek/Makefile
-@@ -162,6 +162,7 @@ obj-$(CONFIG_COMMON_CLK_MT8196_MMSYS) += clk-mt8196-disp0.o clk-mt8196-disp1.o c
- obj-$(CONFIG_COMMON_CLK_MT8196_PEXTPSYS) += clk-mt8196-pextp.o
- obj-$(CONFIG_COMMON_CLK_MT8196_UFSSYS) += clk-mt8196-ufs_ao.o
- obj-$(CONFIG_COMMON_CLK_MT8196_VDECSYS) += clk-mt8196-vdec.o
-+obj-$(CONFIG_COMMON_CLK_MT8196_VENCSYS) += clk-mt8196-venc.o
- obj-$(CONFIG_COMMON_CLK_MT8365) += clk-mt8365-apmixedsys.o clk-mt8365.o
- obj-$(CONFIG_COMMON_CLK_MT8365_APU) += clk-mt8365-apu.o
- obj-$(CONFIG_COMMON_CLK_MT8365_CAM) += clk-mt8365-cam.o
-diff --git a/drivers/clk/mediatek/clk-mt8196-venc.c b/drivers/clk/mediatek/clk-mt8196-venc.c
-new file mode 100644
-index 000000000000..ecbd42629e9f
---- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt8196-venc.c
-@@ -0,0 +1,235 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Copyright (c) 2025 MediaTek Inc.
-+ *                    Guangjie Song <guangjie.song@mediatek.com>
-+ * Copyright (c) 2025 Collabora Ltd.
-+ *                    Laura Nao <laura.nao@collabora.com>
-+ */
-+#include <dt-bindings/clock/mediatek,mt8196-clock.h>
-+#include <linux/clk-provider.h>
-+#include <linux/module.h>
-+#include <linux/of_device.h>
-+#include <linux/platform_device.h>
-+
-+#include "clk-gate.h"
-+#include "clk-mtk.h"
-+
-+static const struct mtk_gate_regs ven10_cg_regs = {
-+	.set_ofs = 0x4,
-+	.clr_ofs = 0x8,
-+	.sta_ofs = 0x0,
-+};
-+
-+static const struct mtk_gate_regs ven10_hwv_regs = {
-+	.set_ofs = 0x00b8,
-+	.clr_ofs = 0x00bc,
-+	.sta_ofs = 0x2c5c,
-+};
-+
-+static const struct mtk_gate_regs ven11_cg_regs = {
-+	.set_ofs = 0x10,
-+	.clr_ofs = 0x14,
-+	.sta_ofs = 0x10,
-+};
-+
-+static const struct mtk_gate_regs ven11_hwv_regs = {
-+	.set_ofs = 0x00c0,
-+	.clr_ofs = 0x00c4,
-+	.sta_ofs = 0x2c60,
-+};
-+
-+#define GATE_VEN10(_id, _name, _parent, _shift) {	\
-+		.id = _id,				\
-+		.name = _name,				\
-+		.parent_name = _parent,			\
-+		.regs = &ven10_cg_regs,			\
-+		.shift = _shift,			\
-+		.flags = CLK_OPS_PARENT_ENABLE,		\
-+		.ops = &mtk_clk_gate_ops_setclr_inv,	\
-+	}
-+
-+#define GATE_HWV_VEN10_FLAGS(_id, _name, _parent, _shift, _flags) {	\
-+		.id = _id,						\
-+		.name = _name,						\
-+		.parent_name = _parent,					\
-+		.regs = &ven10_cg_regs,					\
-+		.hwv_regs = &ven10_hwv_regs,				\
-+		.shift = _shift,					\
-+		.ops = &mtk_clk_gate_hwv_ops_setclr_inv,		\
-+		.flags = (_flags) |					\
-+			 CLK_OPS_PARENT_ENABLE,				\
-+	}
-+
-+#define GATE_HWV_VEN10(_id, _name, _parent, _shift)	\
-+	GATE_HWV_VEN10_FLAGS(_id, _name, _parent, _shift, 0)
-+
-+#define GATE_HWV_VEN11(_id, _name, _parent, _shift) {	\
-+		.id = _id,				\
-+		.name = _name,				\
-+		.parent_name = _parent,			\
-+		.regs = &ven11_cg_regs,			\
-+		.hwv_regs = &ven11_hwv_regs,		\
-+		.shift = _shift,			\
-+		.ops = &mtk_clk_gate_hwv_ops_setclr_inv,\
-+		.flags = CLK_OPS_PARENT_ENABLE		\
-+	}
-+
-+static const struct mtk_gate ven1_clks[] = {
-+	/* VEN10 */
-+	GATE_HWV_VEN10(CLK_VEN1_CKE0_LARB, "ven1_larb", "venc", 0),
-+	GATE_HWV_VEN10(CLK_VEN1_CKE1_VENC, "ven1_venc", "venc", 4),
-+	GATE_VEN10(CLK_VEN1_CKE2_JPGENC, "ven1_jpgenc", "venc", 8),
-+	GATE_VEN10(CLK_VEN1_CKE3_JPGDEC, "ven1_jpgdec", "venc", 12),
-+	GATE_VEN10(CLK_VEN1_CKE4_JPGDEC_C1, "ven1_jpgdec_c1", "venc", 16),
-+	GATE_HWV_VEN10(CLK_VEN1_CKE5_GALS, "ven1_gals", "venc", 28),
-+	GATE_HWV_VEN10(CLK_VEN1_CKE29_VENC_ADAB_CTRL, "ven1_venc_adab_ctrl",
-+			"venc", 29),
-+	GATE_HWV_VEN10_FLAGS(CLK_VEN1_CKE29_VENC_XPC_CTRL,
-+			      "ven1_venc_xpc_ctrl", "venc", 30,
-+			      CLK_IGNORE_UNUSED),
-+	GATE_HWV_VEN10(CLK_VEN1_CKE6_GALS_SRAM, "ven1_gals_sram", "venc", 31),
-+	/* VEN11 */
-+	GATE_HWV_VEN11(CLK_VEN1_RES_FLAT, "ven1_res_flat", "venc", 0),
-+};
-+
-+static const struct mtk_clk_desc ven1_mcd = {
-+	.clks = ven1_clks,
-+	.num_clks = ARRAY_SIZE(ven1_clks),
-+	.need_runtime_pm = true,
-+};
-+
-+static const struct mtk_gate_regs ven20_hwv_regs = {
-+	.set_ofs = 0x00c8,
-+	.clr_ofs = 0x00cc,
-+	.sta_ofs = 0x2c64,
-+};
-+
-+static const struct mtk_gate_regs ven21_hwv_regs = {
-+	.set_ofs = 0x00d0,
-+	.clr_ofs = 0x00d4,
-+	.sta_ofs = 0x2c68,
-+};
-+
-+#define GATE_VEN20(_id, _name, _parent, _shift) {	\
-+		.id = _id,				\
-+		.name = _name,				\
-+		.parent_name = _parent,			\
-+		.regs = &ven10_cg_regs,			\
-+		.shift = _shift,			\
-+		.flags = CLK_OPS_PARENT_ENABLE,		\
-+		.ops = &mtk_clk_gate_ops_setclr_inv,	\
-+	}
-+
-+#define GATE_HWV_VEN20(_id, _name, _parent, _shift) {	\
-+		.id = _id,				\
-+		.name = _name,				\
-+		.parent_name = _parent,			\
-+		.regs = &ven10_cg_regs,			\
-+		.hwv_regs = &ven20_hwv_regs,		\
-+		.shift = _shift,			\
-+		.ops = &mtk_clk_gate_hwv_ops_setclr_inv,\
-+		.flags = CLK_OPS_PARENT_ENABLE,		\
-+	}
-+
-+#define GATE_HWV_VEN21(_id, _name, _parent, _shift) {	\
-+		.id = _id,				\
-+		.name = _name,				\
-+		.parent_name = _parent,			\
-+		.regs = &ven11_cg_regs,			\
-+		.hwv_regs = &ven21_hwv_regs,		\
-+		.shift = _shift,			\
-+		.ops = &mtk_clk_gate_hwv_ops_setclr,	\
-+		.flags = CLK_OPS_PARENT_ENABLE		\
-+	}
-+
-+static const struct mtk_gate ven2_clks[] = {
-+	/* VEN20 */
-+	GATE_HWV_VEN20(CLK_VEN2_CKE0_LARB, "ven2_larb", "venc", 0),
-+	GATE_HWV_VEN20(CLK_VEN2_CKE1_VENC, "ven2_venc", "venc", 4),
-+	GATE_VEN20(CLK_VEN2_CKE2_JPGENC, "ven2_jpgenc", "venc", 8),
-+	GATE_VEN20(CLK_VEN2_CKE3_JPGDEC, "ven2_jpgdec", "venc", 12),
-+	GATE_HWV_VEN20(CLK_VEN2_CKE5_GALS, "ven2_gals", "venc", 28),
-+	GATE_HWV_VEN20(CLK_VEN2_CKE29_VENC_XPC_CTRL, "ven2_venc_xpc_ctrl", "venc", 30),
-+	GATE_HWV_VEN20(CLK_VEN2_CKE6_GALS_SRAM, "ven2_gals_sram", "venc", 31),
-+	/* VEN21 */
-+	GATE_HWV_VEN21(CLK_VEN2_RES_FLAT, "ven2_res_flat", "venc", 0),
-+};
-+
-+static const struct mtk_clk_desc ven2_mcd = {
-+	.clks = ven2_clks,
-+	.num_clks = ARRAY_SIZE(ven2_clks),
-+	.need_runtime_pm = true,
-+};
-+
-+static const struct mtk_gate_regs ven_c20_hwv_regs = {
-+	.set_ofs = 0x00d8,
-+	.clr_ofs = 0x00dc,
-+	.sta_ofs = 0x2c6c,
-+};
-+
-+static const struct mtk_gate_regs ven_c21_hwv_regs = {
-+	.set_ofs = 0x00e0,
-+	.clr_ofs = 0x00e4,
-+	.sta_ofs = 0x2c70,
-+};
-+
-+#define GATE_HWV_VEN_C20(_id, _name, _parent, _shift) {\
-+		.id = _id,				\
-+		.name = _name,				\
-+		.parent_name = _parent,			\
-+		.regs = &ven10_cg_regs,		\
-+		.hwv_regs = &ven_c20_hwv_regs,		\
-+		.shift = _shift,			\
-+		.ops = &mtk_clk_gate_hwv_ops_setclr_inv,\
-+		.flags = CLK_OPS_PARENT_ENABLE,		\
-+	}
-+
-+#define GATE_HWV_VEN_C21(_id, _name, _parent, _shift) {\
-+		.id = _id,				\
-+		.name = _name,				\
-+		.parent_name = _parent,			\
-+		.regs = &ven11_cg_regs,		\
-+		.hwv_regs = &ven_c21_hwv_regs,		\
-+		.shift = _shift,			\
-+		.ops = &mtk_clk_gate_hwv_ops_setclr,	\
-+		.flags = CLK_OPS_PARENT_ENABLE,		\
-+	}
-+
-+static const struct mtk_gate ven_c2_clks[] = {
-+	/* VEN_C20 */
-+	GATE_HWV_VEN_C20(CLK_VEN_C2_CKE0_LARB, "ven_c2_larb", "venc", 0),
-+	GATE_HWV_VEN_C20(CLK_VEN_C2_CKE1_VENC, "ven_c2_venc", "venc", 4),
-+	GATE_HWV_VEN_C20(CLK_VEN_C2_CKE5_GALS, "ven_c2_gals", "venc", 28),
-+	GATE_HWV_VEN_C20(CLK_VEN_C2_CKE29_VENC_XPC_CTRL, "ven_c2_venc_xpc_ctrl",
-+			  "venc", 30),
-+	GATE_HWV_VEN_C20(CLK_VEN_C2_CKE6_GALS_SRAM, "ven_c2_gals_sram", "venc", 31),
-+	/* VEN_C21 */
-+	GATE_HWV_VEN_C21(CLK_VEN_C2_RES_FLAT, "ven_c2_res_flat", "venc", 0),
-+};
-+
-+static const struct mtk_clk_desc ven_c2_mcd = {
-+	.clks = ven_c2_clks,
-+	.num_clks = ARRAY_SIZE(ven_c2_clks),
-+	.need_runtime_pm = true,
-+};
-+
-+static const struct of_device_id of_match_clk_mt8196_venc[] = {
-+	{ .compatible = "mediatek,mt8196-vencsys", .data = &ven1_mcd },
-+	{ .compatible = "mediatek,mt8196-vencsys-c1", .data = &ven2_mcd },
-+	{ .compatible = "mediatek,mt8196-vencsys-c2", .data = &ven_c2_mcd },
-+	{ /* sentinel */ }
-+};
-+MODULE_DEVICE_TABLE(of, of_match_clk_mt8196_venc);
-+
-+static struct platform_driver clk_mt8196_venc_drv = {
-+	.probe = mtk_clk_simple_probe,
-+	.remove = mtk_clk_simple_remove,
-+	.driver = {
-+		.name = "clk-mt8196-venc",
-+		.of_match_table = of_match_clk_mt8196_venc,
-+	},
-+};
-+module_platform_driver(clk_mt8196_venc_drv);
-+
-+MODULE_DESCRIPTION("MediaTek MT8196 Video Encoders clocks driver");
-+MODULE_LICENSE("GPL");
--- 
-2.39.5
+
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
+
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+This patch series was applied (using b4) to base:
+ Base: attempting to guess base-commit...
+ Base: tags/next-20250805 (exact match)
+
+If this is not the correct base, please add 'base-commit' tag
+(or use b4 which does this automatically)
+
+New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/mediatek/' for 20250805074746.29457-1-angelogioacchino.delregno@collabora.com:
+
+arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku4.dtb: syscon@10001000 (mediatek,mt8188-infracfg-ao): #access-controller-cells: False schema does not allow 0
+	from schema $id: http://devicetree.org/schemas/clock/mediatek,mt8188-sys-clock.yaml#
+arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb: syscon@10001000 (mediatek,mt8188-infracfg-ao): #access-controller-cells: False schema does not allow 0
+	from schema $id: http://devicetree.org/schemas/clock/mediatek,mt8188-sys-clock.yaml#
+arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dtb: syscon@10001000 (mediatek,mt8188-infracfg-ao): #access-controller-cells: False schema does not allow 0
+	from schema $id: http://devicetree.org/schemas/clock/mediatek,mt8188-sys-clock.yaml#
+arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dtb: mt8192-afe-pcm (mediatek,mt8192-audio): clocks: [[59, 0], [59, 7], [59, 8], [59, 6], [59, 21], [59, 1], [59, 2], [59, 4], [59, 3], [59, 5], [59, 9], [59, 10], [59, 18], [59, 19], [59, 20], [59, 22], [59, 23], [59, 24], [59, 25], [59, 26], [22, 47], [22, 58], [23, 27], [23, 28], [23, 72], [23, 47], [23, 101], [23, 48], [23, 105], [23, 43], [23, 103], [23, 44], [23, 107], [23, 59], [23, 60], [23, 61], [23, 62], [23, 63], [23, 64], [23, 65], [23, 66], [23, 67], [23, 68], [23, 142], [23, 143], [23, 144], [23, 145], [23, 146], [23, 147], [23, 148], [23, 149], [23, 150], [23, 151], [23, 152], [23, 55], [2]] is too long
+	from schema $id: http://devicetree.org/schemas/sound/mt8192-afe-pcm.yaml#
+arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku1.dtb: syscon@10001000 (mediatek,mt8188-infracfg-ao): #access-controller-cells: False schema does not allow 0
+	from schema $id: http://devicetree.org/schemas/clock/mediatek,mt8188-sys-clock.yaml#
+arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dtb: mt8192-afe-pcm (mediatek,mt8192-audio): clocks: [[56, 0], [56, 7], [56, 8], [56, 6], [56, 21], [56, 1], [56, 2], [56, 4], [56, 3], [56, 5], [56, 9], [56, 10], [56, 18], [56, 19], [56, 20], [56, 22], [56, 23], [56, 24], [56, 25], [56, 26], [22, 47], [22, 58], [23, 27], [23, 28], [23, 72], [23, 47], [23, 101], [23, 48], [23, 105], [23, 43], [23, 103], [23, 44], [23, 107], [23, 59], [23, 60], [23, 61], [23, 62], [23, 63], [23, 64], [23, 65], [23, 66], [23, 67], [23, 68], [23, 142], [23, 143], [23, 144], [23, 145], [23, 146], [23, 147], [23, 148], [23, 149], [23, 150], [23, 151], [23, 152], [23, 55], [2]] is too long
+	from schema $id: http://devicetree.org/schemas/sound/mt8192-afe-pcm.yaml#
+arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku7.dtb: syscon@10001000 (mediatek,mt8188-infracfg-ao): #access-controller-cells: False schema does not allow 0
+	from schema $id: http://devicetree.org/schemas/clock/mediatek,mt8188-sys-clock.yaml#
+arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku3.dtb: syscon@10001000 (mediatek,mt8188-infracfg-ao): #access-controller-cells: False schema does not allow 0
+	from schema $id: http://devicetree.org/schemas/clock/mediatek,mt8188-sys-clock.yaml#
+arch/arm64/boot/dts/mediatek/mt8188-evb.dtb: syscon@10001000 (mediatek,mt8188-infracfg-ao): #access-controller-cells: False schema does not allow 0
+	from schema $id: http://devicetree.org/schemas/clock/mediatek,mt8188-sys-clock.yaml#
+arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku6.dtb: syscon@10001000 (mediatek,mt8188-infracfg-ao): #access-controller-cells: False schema does not allow 0
+	from schema $id: http://devicetree.org/schemas/clock/mediatek,mt8188-sys-clock.yaml#
+arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku0.dtb: syscon@10001000 (mediatek,mt8188-infracfg-ao): #access-controller-cells: False schema does not allow 0
+	from schema $id: http://devicetree.org/schemas/clock/mediatek,mt8188-sys-clock.yaml#
+arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku2.dtb: syscon@10001000 (mediatek,mt8188-infracfg-ao): #access-controller-cells: False schema does not allow 0
+	from schema $id: http://devicetree.org/schemas/clock/mediatek,mt8188-sys-clock.yaml#
+arch/arm64/boot/dts/mediatek/mt8192-evb.dtb: mt8192-afe-pcm (mediatek,mt8192-audio): clocks: [[45, 0], [45, 7], [45, 8], [45, 6], [45, 21], [45, 1], [45, 2], [45, 4], [45, 3], [45, 5], [45, 9], [45, 10], [45, 18], [45, 19], [45, 20], [45, 22], [45, 23], [45, 24], [45, 25], [45, 26], [22, 47], [22, 58], [23, 27], [23, 28], [23, 72], [23, 47], [23, 101], [23, 48], [23, 105], [23, 43], [23, 103], [23, 44], [23, 107], [23, 59], [23, 60], [23, 61], [23, 62], [23, 63], [23, 64], [23, 65], [23, 66], [23, 67], [23, 68], [23, 142], [23, 143], [23, 144], [23, 145], [23, 146], [23, 147], [23, 148], [23, 149], [23, 150], [23, 151], [23, 152], [23, 55], [2]] is too long
+	from schema $id: http://devicetree.org/schemas/sound/mt8192-afe-pcm.yaml#
+arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku5.dtb: syscon@10001000 (mediatek,mt8188-infracfg-ao): #access-controller-cells: False schema does not allow 0
+	from schema $id: http://devicetree.org/schemas/clock/mediatek,mt8188-sys-clock.yaml#
+
+
+
+
 
 
