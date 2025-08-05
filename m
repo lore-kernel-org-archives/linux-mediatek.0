@@ -4,57 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C92FEC87FD1
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Aug 2025 15:44:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC6C2C87FCB
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Aug 2025 17:08:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oyEkq65BqnjSHUSEvPlgeOq00yihdtpSGk7ZlYleULo=; b=Reo27Tphi8UkRfersViqGnn366
-	nsS+EZM0d92mFtgBCYYPQj4jtFSeMBzFACUBukx7gWu3wG/g8yug+I2+ODbcxkY2D+RdIBv2u0503
-	pxisSga1ySh1iZmsTG/A/mcKyhP9SeBI6CQMt5nd9oOFf51gtbITbKG1l4Os94GvXL8GE5I224PNR
-	G8LPW++wDKrwzeWuETUzyRgudFSJ4Jwfkks2yLMnPDWrR77JNMJyr+ZzEVnduYM1ek6ZTzoQgn7zF
-	xuS8D38U8fJZOLjzv1O5Y5BhdXFL2dUOm6rWGA8uGdmXeo/pentbdVE8CPR0KcRyQ2NwKsrWBJFNZ
-	T2x8gJBw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=MDBvzVKssQSva27++Dk9F/cZ5uTyJvj5l+46UJDxufg=; b=M0kka4D126Q2FNW2Uuj3SRYDaU
+	ahr6kqISTieuJJRSO5LH+hBC2TrsEeO/8KxMomkypLBnF2aBGNUzn9w898VTuTbhE2W0SFjpN1vSo
+	ExpEqTvzczmxdyoIPFJFbBfjMA8GXIa/2gdg9AAiqm3xPW/NzZRoklDJe6yp+pCgtFPkhCLHXBAkK
+	5W9dWVWPj/Nx4hK69MoG29X8TlbDNPREjPYrPphMIYQDpFmhogafnRBe697It9Wfnf8nRtr9jAazu
+	BY/wbofXcLJMidyxObg886uYInr6rztsvgTyvyyJ9JnKide0nrYs1/AfJn9wB7V5rpBh6uQNHs2iH
+	P7frszYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ujJpo-0000000DBuw-1cIR;
-	Tue, 05 Aug 2025 15:44:16 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1ujL8z-0000000DNku-086H;
+	Tue, 05 Aug 2025 17:08:09 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ujImJ-0000000D2DT-489C;
-	Tue, 05 Aug 2025 14:36:37 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 1378DA55370;
-	Tue,  5 Aug 2025 14:36:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 50079C4CEF0;
-	Tue,  5 Aug 2025 14:36:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1754404594;
-	bh=w44VePDoslCBQmbyhcmLPxQ8EP9h0hyA++ku5mPHf3g=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=n2fhACyVyCVvYGuPP5yMUtOJLO69zohrl67B4qO7tkrc85q6AhS4HjOpKq0IO06bx
-	 VLOboqGBT7smqDbTFjCjnp2DG/po4EcjHpfGR+JZzM+IT6QVECop5qsXyHugSDQVn1
-	 7BxqhQncciEoyBbL90Tleof1s2k1YIBjNcc/G6VkKx9VK9DZYHWJmt0BeV8bGLwals
-	 jVcfnveLCEGmUfV72Wqta+sV+RLjN4QoW+l7EnzBS27caLKnsqRCSbbuO8ts3bESBT
-	 uZRvfvo06OiRv/fMXlJzoKPT59UHy7yOPcsip0yUx7VPtwZ/MS2HXmhai2mdCjkufK
-	 6DrQgtBEh+o6g==
-Date: Tue, 05 Aug 2025 09:36:32 -0500
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1ujJzC-0000000DCpq-3vKL;
+	Tue, 05 Aug 2025 15:54:00 +0000
+X-UUID: 6237fc78721411f09f706fa2197c6ceb-20250805
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=MDBvzVKssQSva27++Dk9F/cZ5uTyJvj5l+46UJDxufg=;
+	b=FBIbUXO9qrQ4eYsTnY/6jrIVX1SfrsS2u6WJNCXU5tYg61qae9Cy5kgkdanSsc8n/apxrRK9E3ux1Ucze1EX4IiQqW57vDRNvUWurxceKcSEAdprIqaq9QK+SSzFjyctET4iHY39tu5T9VUpIdNhiPMSMaR6NSZxXvV+GL66lxU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.2,REQID:1f258234-e2ca-429b-b77a-7221cf0a8194,IP:0,UR
+	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:-5
+X-CID-META: VersionHash:9eb4ff7,CLOUDID:b320890f-6968-429c-a74d-a1cce2b698bd,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:-5,Content:0|15|50,EDM:-3,IP:
+	nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,L
+	ES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 6237fc78721411f09f706fa2197c6ceb-20250805
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <kuyo.chang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1460845936; Tue, 05 Aug 2025 08:53:52 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Tue, 5 Aug 2025 23:53:49 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Tue, 5 Aug 2025 23:53:49 +0800
+From: Kuyo Chang <kuyo.chang@mediatek.com>
+To: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>,
+	Juri Lelli <juri.lelli@redhat.com>, Vincent Guittot
+	<vincent.guittot@linaro.org>, Dietmar Eggemann <dietmar.eggemann@arm.com>,
+	Steven Rostedt <rostedt@goodmis.org>, Ben Segall <bsegall@google.com>, "Mel
+ Gorman" <mgorman@suse.de>, Valentin Schneider <vschneid@redhat.com>,
+	"Matthias Brugger" <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: kuyo chang <kuyo.chang@mediatek.com>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH] sched/deadline: Add DL server activated message
+Date: Tue, 5 Aug 2025 23:53:32 +0800
+Message-ID: <20250805155347.1693676-1-kuyo.chang@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20250805074746.29457-1-angelogioacchino.delregno@collabora.com>
-References: <20250805074746.29457-1-angelogioacchino.delregno@collabora.com>
-Message-Id: <175440455336.1687500.12826833378916085402.robh@kernel.org>
-Subject: Re: [PATCH v3 00/10] pmdomain: Partial refactor, support modem and
- RTFF
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250805_073636_168919_C27657C8 
-X-CRM114-Status: GOOD (  35.42  )
+X-CRM114-CacheID: sfid-20250805_085358_985145_55FDAEDF 
+X-CRM114-Status: GOOD (  10.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,180 +86,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, ulf.hansson@linaro.org, mbrugger@suse.com, y.oudjana@protonmail.com, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, mandyjh.liu@mediatek.com, lihongbo22@huawei.com, wenst@chromium.org, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, krzk+dt@kernel.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: kuyo chang <kuyo.chang@mediatek.com>
 
-On Tue, 05 Aug 2025 09:47:36 +0200, AngeloGioacchino Del Regno wrote:
-> Changes in v3:
->  - Dropped specified items for cells restriction as suggested by Rob
->  - Fixed an issue in patch 4 still referencing "mediatek,bus-protection"
->    as it is entirely replaced by "access-controllers"
-> 
-> Changes in v2:
->  - Added #access-controller-cells allowance for MT8188/95 infracfg_ao
-> 
-> This series is a subset of [1], leaving out the Hardware Voter specific
-> bits for MT8196 until the discussion around it reaches a conclusion.
-> 
-> Even though the proposed code was born as a preparation to support the
-> MT8196/MT6991 SoCs power domain controllers, it is a necessary cleanup
-> for all power domain controllers of all of the currently supported SoCs
-> from MediaTek.
-> 
-> You may also notice the addition of support for modem power sequences:
-> this was brought up 6 months ago (or more) by community contributors
-> (mainly Yassine Oudjana) that were trying to upstream the MediaTek
-> MT6735 Smartphone SoC and needed support to provide power to the MD
-> subsystem - so, even though in this specific series the code for the
-> modem power sequence is not yet triggered by any SoC, please please
-> please, let it in.
-> Besides, "a bunch" of upstream supported SoCs do have the MD power
-> domain even though it wasn't added to their drivers (because if there
-> was no support in the driver, it would just crash the system); the
-> addition is something that I plan to do at some point, but definitely
-> not now as I have no bandwidth for that (bar MT8196, which will have
-> this domain).
-> 
-> Compared to v1 in [1]:
->  - Changed mediatek,bus-protection to access-controllers
->    as suggested by Rob (thanks!)
->  - Added commits to document #access-controller-cells on all of
->    the access control providers
-> 
-> In the meanwhile.... relevant excerpt from the old series:
-> 
-> This series refactors the bus protection regmaps retrieval to avoid
-> searching in all power domain devicetree subnodes for vendor properties
-> to get syscons for different busses, and adds a new property which is
-> located in the power controller root node containing handles to the same.
-> 
-> Retrocompatibility is retained and was tested on multiple SoCs in the
-> Collabora lab - specifically, on Genio 350/510/700/1200, and manually
-> on MT6795 Helio (Xperia M5 Smartphone), MT8186, MT8192 and MT8195
-> Chromebooks.
-> 
-> This was tested *three times*:
->  - Before the per-SoC conversion in drivers/pmdomain/mediatek
->  - With per-SoC conversion code but with *legacy* devicetree
->  - With per-SoC conversion code and with *new* devicetree conversion
-> 
-> All of those tests were successful on all of the aforementioned SoCs.
-> 
-> This also adds support for:
->  - Modem power domain for both old and new MediaTek SoCs, useful for
->    bringing up the GSM/3G/4G/5G modem for both laptop and smartphone use
->  - RTFF MCU HW, as found in MT8196 Chromebooks and MT6991 Dimensity 9400
-> 
-> ...and prepares the pmdomain code to accomodate only the directly
-> controlled power domains for MT8196 (HW Voter support was left out).
-> 
-> [1] https://lore.kernel.org/all/20250623120154.109429-1-angelogioacchino.delregno@collabora.com
-> 
-> AngeloGioacchino Del Regno (10):
->   dt-bindings: memory: mtk-smi: Document #access-controller-cells
->   dt-bindings: clock: mediatek: Document #access-controller-cells
->   dt-bindings: power: mediatek: Document access-controllers property
->   pmdomain: mediatek: Refactor bus protection regmaps retrieval
->   pmdomain: mediatek: Handle SoCs with inverted SRAM power-down bits
->   pmdomain: mediatek: Move ctl sequences out of power_on/off functions
->   pmdomain: mediatek: Add support for modem power sequences
->   pmdomain: mediatek: Add support for RTFF Hardware in MT8196/MT6991
->   pmdomain: mediatek: Convert all SoCs to new style regmap retrieval
->   arm64: dts: mediatek: Convert all SoCs to use access-controllers
-> 
->  .../bindings/clock/mediatek,infracfg.yaml     |   3 +
->  .../clock/mediatek,mt8186-sys-clock.yaml      |  15 +
->  .../clock/mediatek,mt8188-sys-clock.yaml      |  15 +
->  .../clock/mediatek,mt8192-sys-clock.yaml      |  15 +
->  .../clock/mediatek,mt8195-sys-clock.yaml      |  15 +
->  .../clock/mediatek,mt8365-sys-clock.yaml      |  15 +
->  .../mediatek,smi-common.yaml                  |  16 +
->  .../power/mediatek,power-controller.yaml      |  37 ++
->  arch/arm64/boot/dts/mediatek/mt6795.dtsi      |   5 +-
->  arch/arm64/boot/dts/mediatek/mt8167.dtsi      |   6 +-
->  arch/arm64/boot/dts/mediatek/mt8173.dtsi      |   4 +-
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi      |  17 +-
->  arch/arm64/boot/dts/mediatek/mt8186.dtsi      |  12 +-
->  arch/arm64/boot/dts/mediatek/mt8188.dtsi      |  23 +-
->  arch/arm64/boot/dts/mediatek/mt8192.dtsi      |  13 +-
->  arch/arm64/boot/dts/mediatek/mt8195.dtsi      |  20 +-
->  arch/arm64/boot/dts/mediatek/mt8365.dtsi      |  16 +-
->  drivers/pmdomain/mediatek/mt6795-pm-domains.h |   5 +
->  drivers/pmdomain/mediatek/mt8167-pm-domains.h |   5 +
->  drivers/pmdomain/mediatek/mt8173-pm-domains.h |   5 +
->  drivers/pmdomain/mediatek/mt8183-pm-domains.h |   5 +
->  drivers/pmdomain/mediatek/mt8186-pm-domains.h |   5 +
->  drivers/pmdomain/mediatek/mt8188-pm-domains.h |   6 +
->  drivers/pmdomain/mediatek/mt8192-pm-domains.h |   5 +
->  drivers/pmdomain/mediatek/mt8195-pm-domains.h |   5 +
->  drivers/pmdomain/mediatek/mt8365-pm-domains.h |  14 +-
->  drivers/pmdomain/mediatek/mtk-pm-domains.c    | 399 +++++++++++++++---
->  drivers/pmdomain/mediatek/mtk-pm-domains.h    |  74 +++-
->  28 files changed, 594 insertions(+), 181 deletions(-)
-> 
-> --
-> 2.50.1
-> 
-> 
-> 
+The DL server is introduced as a replacement for realtime throttling.
+When RT throttling is activated, a message
+"sched: RT throttling activated" is shown. However, it is currently
+difficult for users to know when the DL server is activated.
 
+This patch adds a similar message to indicate when the DL server
+is activated, which helps users debug RT/CFS contention issues.
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
+Signed-off-by: kuyo chang <kuyo.chang@mediatek.com>
+---
+ kernel/sched/deadline.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
-
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
-
-  pip3 install dtschema --upgrade
-
-
-This patch series was applied (using b4) to base:
- Base: attempting to guess base-commit...
- Base: tags/next-20250805 (exact match)
-
-If this is not the correct base, please add 'base-commit' tag
-(or use b4 which does this automatically)
-
-New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/mediatek/' for 20250805074746.29457-1-angelogioacchino.delregno@collabora.com:
-
-arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku4.dtb: syscon@10001000 (mediatek,mt8188-infracfg-ao): #access-controller-cells: False schema does not allow 0
-	from schema $id: http://devicetree.org/schemas/clock/mediatek,mt8188-sys-clock.yaml#
-arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb: syscon@10001000 (mediatek,mt8188-infracfg-ao): #access-controller-cells: False schema does not allow 0
-	from schema $id: http://devicetree.org/schemas/clock/mediatek,mt8188-sys-clock.yaml#
-arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dtb: syscon@10001000 (mediatek,mt8188-infracfg-ao): #access-controller-cells: False schema does not allow 0
-	from schema $id: http://devicetree.org/schemas/clock/mediatek,mt8188-sys-clock.yaml#
-arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dtb: mt8192-afe-pcm (mediatek,mt8192-audio): clocks: [[59, 0], [59, 7], [59, 8], [59, 6], [59, 21], [59, 1], [59, 2], [59, 4], [59, 3], [59, 5], [59, 9], [59, 10], [59, 18], [59, 19], [59, 20], [59, 22], [59, 23], [59, 24], [59, 25], [59, 26], [22, 47], [22, 58], [23, 27], [23, 28], [23, 72], [23, 47], [23, 101], [23, 48], [23, 105], [23, 43], [23, 103], [23, 44], [23, 107], [23, 59], [23, 60], [23, 61], [23, 62], [23, 63], [23, 64], [23, 65], [23, 66], [23, 67], [23, 68], [23, 142], [23, 143], [23, 144], [23, 145], [23, 146], [23, 147], [23, 148], [23, 149], [23, 150], [23, 151], [23, 152], [23, 55], [2]] is too long
-	from schema $id: http://devicetree.org/schemas/sound/mt8192-afe-pcm.yaml#
-arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku1.dtb: syscon@10001000 (mediatek,mt8188-infracfg-ao): #access-controller-cells: False schema does not allow 0
-	from schema $id: http://devicetree.org/schemas/clock/mediatek,mt8188-sys-clock.yaml#
-arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dtb: mt8192-afe-pcm (mediatek,mt8192-audio): clocks: [[56, 0], [56, 7], [56, 8], [56, 6], [56, 21], [56, 1], [56, 2], [56, 4], [56, 3], [56, 5], [56, 9], [56, 10], [56, 18], [56, 19], [56, 20], [56, 22], [56, 23], [56, 24], [56, 25], [56, 26], [22, 47], [22, 58], [23, 27], [23, 28], [23, 72], [23, 47], [23, 101], [23, 48], [23, 105], [23, 43], [23, 103], [23, 44], [23, 107], [23, 59], [23, 60], [23, 61], [23, 62], [23, 63], [23, 64], [23, 65], [23, 66], [23, 67], [23, 68], [23, 142], [23, 143], [23, 144], [23, 145], [23, 146], [23, 147], [23, 148], [23, 149], [23, 150], [23, 151], [23, 152], [23, 55], [2]] is too long
-	from schema $id: http://devicetree.org/schemas/sound/mt8192-afe-pcm.yaml#
-arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku7.dtb: syscon@10001000 (mediatek,mt8188-infracfg-ao): #access-controller-cells: False schema does not allow 0
-	from schema $id: http://devicetree.org/schemas/clock/mediatek,mt8188-sys-clock.yaml#
-arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku3.dtb: syscon@10001000 (mediatek,mt8188-infracfg-ao): #access-controller-cells: False schema does not allow 0
-	from schema $id: http://devicetree.org/schemas/clock/mediatek,mt8188-sys-clock.yaml#
-arch/arm64/boot/dts/mediatek/mt8188-evb.dtb: syscon@10001000 (mediatek,mt8188-infracfg-ao): #access-controller-cells: False schema does not allow 0
-	from schema $id: http://devicetree.org/schemas/clock/mediatek,mt8188-sys-clock.yaml#
-arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku6.dtb: syscon@10001000 (mediatek,mt8188-infracfg-ao): #access-controller-cells: False schema does not allow 0
-	from schema $id: http://devicetree.org/schemas/clock/mediatek,mt8188-sys-clock.yaml#
-arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku0.dtb: syscon@10001000 (mediatek,mt8188-infracfg-ao): #access-controller-cells: False schema does not allow 0
-	from schema $id: http://devicetree.org/schemas/clock/mediatek,mt8188-sys-clock.yaml#
-arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku2.dtb: syscon@10001000 (mediatek,mt8188-infracfg-ao): #access-controller-cells: False schema does not allow 0
-	from schema $id: http://devicetree.org/schemas/clock/mediatek,mt8188-sys-clock.yaml#
-arch/arm64/boot/dts/mediatek/mt8192-evb.dtb: mt8192-afe-pcm (mediatek,mt8192-audio): clocks: [[45, 0], [45, 7], [45, 8], [45, 6], [45, 21], [45, 1], [45, 2], [45, 4], [45, 3], [45, 5], [45, 9], [45, 10], [45, 18], [45, 19], [45, 20], [45, 22], [45, 23], [45, 24], [45, 25], [45, 26], [22, 47], [22, 58], [23, 27], [23, 28], [23, 72], [23, 47], [23, 101], [23, 48], [23, 105], [23, 43], [23, 103], [23, 44], [23, 107], [23, 59], [23, 60], [23, 61], [23, 62], [23, 63], [23, 64], [23, 65], [23, 66], [23, 67], [23, 68], [23, 142], [23, 143], [23, 144], [23, 145], [23, 146], [23, 147], [23, 148], [23, 149], [23, 150], [23, 151], [23, 152], [23, 55], [2]] is too long
-	from schema $id: http://devicetree.org/schemas/sound/mt8192-afe-pcm.yaml#
-arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku5.dtb: syscon@10001000 (mediatek,mt8188-infracfg-ao): #access-controller-cells: False schema does not allow 0
-	from schema $id: http://devicetree.org/schemas/clock/mediatek,mt8188-sys-clock.yaml#
-
-
-
-
+diff --git a/kernel/sched/deadline.c b/kernel/sched/deadline.c
+index e2d51f4306b3..8e0de6cdb980 100644
+--- a/kernel/sched/deadline.c
++++ b/kernel/sched/deadline.c
+@@ -2042,6 +2042,9 @@ enqueue_dl_entity(struct sched_dl_entity *dl_se, int flags)
+ 	}
+ 
+ 	__enqueue_dl_entity(dl_se);
++
++	if (dl_server(dl_se))
++		printk_deferred_once("sched: dl_server activated\n");
+ }
+ 
+ static void dequeue_dl_entity(struct sched_dl_entity *dl_se, int flags)
+-- 
+2.45.2
 
 
