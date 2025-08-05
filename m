@@ -4,76 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF60FC87FD1
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Aug 2025 17:18:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6B74C87FCB
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Aug 2025 17:45:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=l0RxCTsXFF8391IAhRwoPNmaelsxs5V8yAF1l14fxkk=; b=iovqGcuSoOlnFw3WUkIDNQVUi5
-	NiIuqmC7zvr6AJqdIvo/SX/E7clg4sfDA3IEzzFMYvZyCYSxACW45Q7Qy5g10fyawng2hXSQX6Is9
-	l7O/0X2Wd7nPI5L8HFXZb/jN1ll2zckKQuNkMLce7fsODGJGyOwSwp2x+OCTyJiovDfe0P7iGfDxn
-	Xe+3nkOWqYPOwLt7dLwl/jnQJWjWCSh0FJ4sl471fT/Oh39iP7fjnJs6dCPKN2+g3H48HORM9OZeh
-	qD6T9/ILslOFvqhJkfydAtOA5KaMa9W3+I3+rSFpft7PmD8ezMTNkS0tdTVxSsUaNHVBfdb8j4Mn7
-	IvForPcA==;
+	bh=ZbqWwHu/MN3vqLicN/YCVD8yPLwHYccLVOVJvse0Ql4=; b=Ngl3Inx1sG6UUqumV8RpIdCuao
+	FjzUmKvp7o7pS0bsue/u06hdTgH/xnzWorlFJOc+o0WbuANHi68G5DYCkccJavvk+oArZINqOolzZ
+	kuE5Y759rShJNtsf3mhJbWGRIRbEmaAWQGBoxAAlxduIrxKp94dBqpyreVQ2HzB6xyfQH0ADgEIJj
+	WS2fjgZzPlxXj4DSXCsNnMSSWTp3Zr8MY+g4gN05j8gsi9qOjJhXGT54TpRmWozkEB4jOwmnRZRhk
+	jikWtIyv6Ln60Md6Xcxbpf6TWfLrW1qqj+GkVkUNhhBacTHOGChNM4e5lZPF1fywsAm/eFiZtE3cB
+	zk0LqC2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ujLJK-0000000DPTZ-2ZZC;
-	Tue, 05 Aug 2025 17:18:50 +0000
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+	id 1ujLj9-0000000DSbG-0RLT;
+	Tue, 05 Aug 2025 17:45:31 +0000
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ujKoF-0000000DKwS-3L14
+	id 1ujLDU-0000000DOZt-1GHu
 	for linux-mediatek@lists.infradead.org;
-	Tue, 05 Aug 2025 16:46:45 +0000
-Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-240708ba498so2575ad.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 05 Aug 2025 09:46:43 -0700 (PDT)
+	Tue, 05 Aug 2025 17:12:49 +0000
+Received: by mail-pl1-x633.google.com with SMTP id d9443c01a7336-240718d5920so11575ad.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 05 Aug 2025 10:12:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1754412403; x=1755017203; darn=lists.infradead.org;
+        d=google.com; s=20230601; t=1754413967; x=1755018767; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=l0RxCTsXFF8391IAhRwoPNmaelsxs5V8yAF1l14fxkk=;
-        b=Fl/E54D+bBWEaaxt9+gU55NA2Rkx5UUPd9hfMiY2tlhXmIfOsS0yrmFQ6rQ8T24TRe
-         p0IBfQvG/f3KO1KzsCgmjLlArUU7LHsoaADHgAWV36t21HOdTh9HQKgiFLoTH6zV6WS6
-         QfonLYoaQ5VxcsW1sP1tShFFelSxXKzGPqMCUgWzHLR6OJ7eae27kLCBw3r6IhCzy8Go
-         WButdJycen1YYFnUwGSV2nr6vUOPYl4zD7425acDjPhOMegRHoVw4zid4nJdrIgUnrEl
-         02I21SptX1peAnOjXdGVDjx4QKTvus9iiYj6zTRv0P8qj/uY6Ar//gCzyQFMYlYu0Z3q
-         lwPQ==
+        bh=ZbqWwHu/MN3vqLicN/YCVD8yPLwHYccLVOVJvse0Ql4=;
+        b=gvVUTyL6XfZsrru5RCq6920AlXU/iTeX2Zqwv2IDXcaphmLv1i8RLIWwK/TleDAmFh
+         +LWCDN+fev7BYQ0tpqr2tgJvZvrlw4g37Q0OLtgdeYZljzMCcgYIoWzY9XzRZZOFWkFj
+         qAKBJPB8B+WMoHaTTGt6JxjvZaLAnFpyF5poTw5OPGrWskMpaJRkWU8r5fC83JbuCpm0
+         AUMCvSnqgw5Y0/S8zNI558mImPHY+QI2GdUiD86y8mpJhiyr/nNLIcyyLwLFRHxP6WeQ
+         YGq+0igv5mlaqvG1PfNFLav2yYAIsrwxhObfYJsDmq+TK5CbwzhH9bOXQVl8anY+jUgd
+         VbYw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1754412403; x=1755017203;
+        d=1e100.net; s=20230601; t=1754413967; x=1755018767;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=l0RxCTsXFF8391IAhRwoPNmaelsxs5V8yAF1l14fxkk=;
-        b=BFxiDjubBbd9yWNUVerZphEqHwabkbSUFlfHK099qhe0FwhpgZSdNKr3IRWda9bawC
-         Sto7j2cRHX+4yC0iEYZA+4sIPvgLW2GS9RbJ/vZYA2qJAbbyq+6/e5CxVmRMojFKSV0o
-         CHSdbPrft2P6U9izfSTu2+GHi9TcV68jdKJEEYi7nvb027jdT02mzqXkxIAeIvQoAj3S
-         6lC9ub6EUmtv6fOLE4BrmlYiDhJtltQtj5SOgkwStOpWldbqZoXTEprTzf5UYhG/tGsj
-         aDtfMVILrW6qONm/EUTFgVYPZTQA6QeB5EN5Zc9HAj/da+UEBcbmk22rnOVxoi3OoDB9
-         QCGA==
-X-Forwarded-Encrypted: i=1; AJvYcCWbGldirSQ7pjkWckq+P3I8ckbxlQ7R+MYZUOMtAeZKwCKctm+RREcvaNt3c1iK/V5SUVjFAVsJ5naokq9eHQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxHzQQQ8RFh9+s641WnMIw+8k57h3zLvRYQjoVhNFri3nA2WUdn
-	RrVbdRAeP4Dkw3qD6fO1neZucQ86MKVor4fdKh/v3VZOdS4fuH9eNo06LCeLsERx+onsOm/H1sF
-	DUUlU3zTfOgwSkYD8wKk06McTSgNO029rSzqoiqKW
-X-Gm-Gg: ASbGncvLWiaPKmWhKbhgV99BF0V1pnlR/FTj6966ESXCCVd7rN4MCD4OyE2xeDpMxcY
-	zdSZoAOlCTcuIy77enfnktNhP14WYxrTBFOA1+cfWRzDy+cnxC1vzzh3cEsz6EBjqehwZ5npHb9
-	/sQqRwMlSDH64Utge30FtzUeuFKxJgJofCNBijXMdLHp/Ab2558nVp+jf0OY0UC47UKlsvbxBTa
-	oU6NRcP7owc2Bqvn1REjYoDcJSE/ffzHJGY0NVR
-X-Google-Smtp-Source: AGHT+IFbtH6J0AjO4QU4T/tefsfeSE0rL1OzSJr1N/DUHjvBaYU77HeoyM1+WKB2X0d+93TslMU104SV+ZAQGFLorx8=
-X-Received: by 2002:a17:902:ea02:b0:234:afcf:d9e8 with SMTP id
- d9443c01a7336-2428e9ca60bmr3484235ad.7.1754412402595; Tue, 05 Aug 2025
- 09:46:42 -0700 (PDT)
+        bh=ZbqWwHu/MN3vqLicN/YCVD8yPLwHYccLVOVJvse0Ql4=;
+        b=LjX6HzeL9GaJhfa2AJ+k9xE+RqHI/DqOQ2eCYaXiZEnbniCLZtN+b2411WokiLCQec
+         9JHlSzlEKE7H4oXete9Eie0uJm7hBXTIk21IgqpQ7WaetKqDutuEUDEFqBpUJpL/sXyf
+         yWxdreYHihAFYkajgeOgbxi2g8PEfruW4yJNBq8ReDZd5NGP6e9o4ysMCLrBgOrF8mPD
+         G2n+43pU4u+lN3g9Ysk6E7DwPBDOUkBulnhsSUPTGSKbzepHv0fC0EJPpIEt+3ypWqiY
+         Y6zR/7glNzuYtjUg4zouJUJLu5D2SMda2zMs0STukz1c+URjUqw5oEMVqwXoGBjR9KeM
+         4nqQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXZy9VNpd/JziG43yBCktFhzSetWg9UmvlJZ94xZpcsJ40fChLBq8Eif4hx5PV0XQSL43ZYS0tKKmcNB90Beg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyXYzhjqagyyhaXeTlT96FI9TDsNG20AGnvkh233XfF6aLRFixV
+	vFeydWy/xSLrp2vSbVkBm11u5nv3qTQBujjvza41hEZdiHfFlJv9U0R6S2TzZagBW1qa+T7MPdY
+	lks/62H0LNV2HCYDTSfnuCfyWjpEvunGW2SDn2mCH
+X-Gm-Gg: ASbGnct6w6dcgVDkujmpTN3beVASxgPH+ITftnyJ3loIjUJt9C5PzSi9Li/zaQy7Qvc
+	wUXV0bhFIa7VKFsXl7D4JUk8WFLdot1mjl4XBU47RyB8Wt1U4F3oXXzWfsdJRD6q8T69rewxQMM
+	pZcFHI+9EGSYkZE8RiumKJCkmrEjI6kT1EgXNO6mQxYzi08VTrfx9wULZP82QsNVeaxWSvvLMHP
+	MQQPDvZZf9jGiFy+OMqn5iuMDxsfk2lI2hhfj7K
+X-Google-Smtp-Source: AGHT+IFqLQ/GSA1XGpDzG6V9bPnbhZrv/PKGEBMGpW4YJVcfW/eWUxu6GeLWbRSsDGK01TuGGZ4dXbAcwThguioGfg0=
+X-Received: by 2002:a17:902:fa08:b0:23f:df2c:9f0d with SMTP id
+ d9443c01a7336-2428eaf87a8mr2475625ad.21.1754413967127; Tue, 05 Aug 2025
+ 10:12:47 -0700 (PDT)
 MIME-Version: 1.0
 References: <CAJDx_rgzkZognxWzOXJ-ZxdTtUaM3FT6bmpkwxMz03XiX3fKAQ@mail.gmail.com>
  <d395b14a-9a84-4f25-b4f0-45e8500fc5fe@redhat.com> <CAJDx_rgrp1TpOt-iDcsSGRTL=qZZsK_dpKL1bSkyunPGcGXt5g@mail.gmail.com>
  <4566222d-6b91-4789-bdd6-61e3769f5dbf@suse.cz>
 In-Reply-To: <4566222d-6b91-4789-bdd6-61e3769f5dbf@suse.cz>
 From: Juan Yescas <jyescas@google.com>
-Date: Tue, 5 Aug 2025 09:46:30 -0700
-X-Gm-Features: Ac12FXy4BT6ZbkseE6fl0wteJa2HqcPFNTVMsUS4ZZOo4qkH5jwtMaLF9Pp-ohE
-Message-ID: <CAJDx_rjxGff38aS_MBwgh6LpDqp6G4zjUvg6tr73KU0HYfGvXA@mail.gmail.com>
+Date: Tue, 5 Aug 2025 10:12:34 -0700
+X-Gm-Features: Ac12FXx118qPMOpTYedhO-FDr1Ci1_iGrsVIoyffTe-jrpJNkQjp-q60_k-xYAk
+Message-ID: <CAJDx_rjvYdjPYHbBDKvkaWV=-OPJG=oRdSAugaOyJAXaOVu-9w@mail.gmail.com>
 Subject: Re: [RFC PATCH] mm/page_alloc: Add PCP list for THP CMA
 To: Vlastimil Babka <vbabka@suse.cz>
 Cc: David Hildenbrand <david@redhat.com>, akash.tyagi@mediatek.com, 
@@ -88,8 +88,8 @@ Cc: David Hildenbrand <david@redhat.com>, akash.tyagi@mediatek.com,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250805_094643_841281_0DFA6C52 
-X-CRM114-Status: GOOD (  38.56  )
+X-CRM114-CacheID: sfid-20250805_101248_349212_30A6FCE6 
+X-CRM114-Status: GOOD (  38.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -160,9 +160,22 @@ rg/T/#u
 > > MIGRATE_MOVABLE
 > > or MIGRATE_CMA.
 >
-> What kinds of allocations would then use __GFP_CMA? (let me try guess
+> What kinds of allocations would then use __GFP_CMA?
+
+The __GFP_CMA allocations are used to allocate userspace anonymous memory. =
+This
+was done initially in the alloc_zeroed_user_highpage_movable()
+function, now it is done
+in vma_alloc_zeroed_movable_folio().
+
+> (let me try guess
 > one - zswap backend?)
->
+
+Yep, the __GFP_CMA pages are also used in zram block driver.
+
+Thanks
+Juan
+
 > > What it happens then, it is that the MIGRATE_MOVABLE
 > > pages in the
 > > PCP lists were consumed pretty fast. To solve this issue, the PCP
@@ -177,11 +190,6 @@ rg/T/#u
 >
 > If you don't want THP's to use the large (THP-sized) MIGRATE_CMA pages,
 > what kind of such large allocations would be ok to use MIGRATE_CMA then?
-
-The large THP MIGRATE_CMA allocs are used by GPUs or devices that require
-large chunks of memory (have many cameras for example).
-
-
 > > These workarounds are mainly because we need to solve this issue upstre=
 am:
 > >
