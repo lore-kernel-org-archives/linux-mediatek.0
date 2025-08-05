@@ -4,132 +4,154 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DF3FC87FD1
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Aug 2025 10:08:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47EE1C87FD1
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Aug 2025 10:19:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CDpfwfDj8mWUuSG1LdS+ozLLdWjJmIOisHydIRxuvwI=; b=uUndpSxuFne116F1rtG8cXjYGZ
-	GdhQdFezwEXPdypAFR2WYvsNUd1ojXZhyJlHA5X3uRMp1OvIZNdD7YRtQduLK5q+J1Lo4FeYmpDpS
-	sQiiBCBAwF49p6kYWhNy2oZLpRkxwTvIPhhGxM31zARHgQ6/Guz7FruC6wHjVcfKk5+JnTCD1Pxgy
-	WmcH/MBgDRUNuAICDcFIF/lSeblroSrltOvv+4E/YiwIzeI0Vf38p5Q1JUtuRzhn08mw8AYy2oHHl
-	g2ap5zT7178Q6WIJTsuNloKU7qfR4LE48ABkcAdB7bL2EYSuF6VcvtkR2bfGOwBtYfszmAi0YXlPF
-	3ETGdEDg==;
+	bh=zm/u8bmVSBWBP7KMq+8GNg/jH0DTBhPVQW1hnHzNiv8=; b=buGsRejSjR/ga2lFRA2zCXzq+e
+	M7S4rp44R6jNYjci6gwXz9CeVCFMbYHkfJM71za/0GnoSe8yyvRr38CZHaGl222MMCWtGPCLYei69
+	wTOCT++soeYQKMhy9YRpq1N0Y85qeT1rvl09BYDW+esDoi9oOVaoJ0f4acuotk5yCyX1qCFzRkr3+
+	mDX4kuHCsR5016eyrV9GWTx8SLrH2ovMFghwfQDiu4Xf4zT+AblqkFGoUHDSCO7PDpBQI1pN/WU9C
+	qK+OJAWpfAaVh1krc0OECTnAbv1vF/KCCLDJpGk9+/2pzIPJeMLyAt7acCVBcppSbs7bgtT9fC0Uz
+	FrAxRICg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ujEb5-0000000CS6v-2uXy;
-	Tue, 05 Aug 2025 10:08:43 +0000
-Received: from smtp-out1.suse.de ([195.135.223.130])
+	id 1ujElc-0000000CT99-3FeN;
+	Tue, 05 Aug 2025 10:19:36 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ujELh-0000000CQBd-0Dx0
+	id 1ujEQz-0000000CQpS-35Hu
 	for linux-mediatek@lists.infradead.org;
-	Tue, 05 Aug 2025 09:52:51 +0000
-Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 00B87211A3;
-	Tue,  5 Aug 2025 09:52:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.cz; s=susede2_rsa;
-	t=1754387566; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
+	Tue, 05 Aug 2025 09:58:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1754387895;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=CDpfwfDj8mWUuSG1LdS+ozLLdWjJmIOisHydIRxuvwI=;
-	b=MbzDK56WATBzpYvm36PNRjnPakyEpA0LxY05vXUpaJh9MMuMEMri4LNxqixWXpZE0ujwi2
-	L+GUGKQmmq3DdmYrQpdZknuq0a52XYiGsEWfKKMuTvrp4/SSXHFbSTNHI1MRqoWx7xx6IB
-	QSBtK4dDay15AfV7AmP8sn0DPxz98k8=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.cz;
-	s=susede2_ed25519; t=1754387566;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=CDpfwfDj8mWUuSG1LdS+ozLLdWjJmIOisHydIRxuvwI=;
-	b=DhVywzYJxBPrz+KzmpiM4/Q2zxvwVcCLxQF6f+fvfGe2r69RE6DlgZiHiEs1FXmPkvD5tA
-	jHuaVAUJKfDbmjCQ==
-Authentication-Results: smtp-out1.suse.de;
-	none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.cz; s=susede2_rsa;
-	t=1754387566; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=CDpfwfDj8mWUuSG1LdS+ozLLdWjJmIOisHydIRxuvwI=;
-	b=MbzDK56WATBzpYvm36PNRjnPakyEpA0LxY05vXUpaJh9MMuMEMri4LNxqixWXpZE0ujwi2
-	L+GUGKQmmq3DdmYrQpdZknuq0a52XYiGsEWfKKMuTvrp4/SSXHFbSTNHI1MRqoWx7xx6IB
-	QSBtK4dDay15AfV7AmP8sn0DPxz98k8=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.cz;
-	s=susede2_ed25519; t=1754387566;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=CDpfwfDj8mWUuSG1LdS+ozLLdWjJmIOisHydIRxuvwI=;
-	b=DhVywzYJxBPrz+KzmpiM4/Q2zxvwVcCLxQF6f+fvfGe2r69RE6DlgZiHiEs1FXmPkvD5tA
-	jHuaVAUJKfDbmjCQ==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id DEFC013A55;
-	Tue,  5 Aug 2025 09:52:45 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
-	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id LolANm3UkWi+VAAAD6G6ig
-	(envelope-from <vbabka@suse.cz>); Tue, 05 Aug 2025 09:52:45 +0000
-Message-ID: <4566222d-6b91-4789-bdd6-61e3769f5dbf@suse.cz>
-Date: Tue, 5 Aug 2025 11:54:43 +0200
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=zm/u8bmVSBWBP7KMq+8GNg/jH0DTBhPVQW1hnHzNiv8=;
+	b=Isu8XnYggxaBh4yPf1FgNEmE1IFo9+tImEr4CTacd0NqXiuL0xLsY47XBMSEADeHu4MDSp
+	3tlJdZfvEFdscJk+H+9RJe9auB3VSeGo4A0HIvTmOFnNKFMBPla7M+38bPmo8MpuOh02XM
+	BsKbrU3+i+lYIbqDstmTmazYa0FSR2Y=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-532-JECzoaqNNyy3eGa-olQh5A-1; Tue, 05 Aug 2025 05:58:14 -0400
+X-MC-Unique: JECzoaqNNyy3eGa-olQh5A-1
+X-Mimecast-MFC-AGG-ID: JECzoaqNNyy3eGa-olQh5A_1754387893
+Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-459e068b5f4so6326065e9.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 05 Aug 2025 02:58:13 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1754387893; x=1754992693;
+        h=content-transfer-encoding:in-reply-to:organization:autocrypt
+         :content-language:from:references:cc:to:subject:user-agent
+         :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=zm/u8bmVSBWBP7KMq+8GNg/jH0DTBhPVQW1hnHzNiv8=;
+        b=cGldL8Z8UbVTjpon1XEPoDz81wS6jy6JaYD74qEopKTQzY48uoeABXlcTLT6QSpXqd
+         0yYZIcZ8KmbOYgFE/Pada3u9eNeg9LBlh7sUfmeIJtDSyFkA511te54X95zZqvx6D2hV
+         B3trUvl5+Xiy1vQjO2kqvpjOYY9oonBNJvJTYtnBEEPkA9m+S7v1cQ+QFdR4SvXyzqMq
+         5jSVmwlDCcFhIbNd08WBj16Hj+B2rmSB3EXyu9VJ3L8PFDJGxWiFkpafS7fEd4y+fcpD
+         kk9WFpR5FfOXTYDHqHfsYOQfkcZimGAQtsk0xq1bDthi0CM/Gj5lGhMBzCUX8yF2WBY8
+         nv5Q==
+X-Forwarded-Encrypted: i=1; AJvYcCV2Z4ifu2XVKplaxVQgWiHDAQx7ttwPc2b/lacB2h0nZUonnmHM8KAPhMvt9lASD5ielTXzjlxDAWltR1dbtA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxapcifssKbQdnITiK/ysI1uDGOELIaj0r/olNrybKFLVen0ZLQ
+	8LA7TeGBJju7opUuhiDdpm8t8drMLoNiuSCR//R6T2NaGgFx8CTbQVd2VTHcTsXfBXmWz3flZ5k
+	CvXl8iYAmTjlivTx9FucPfugFDLd/T9nrslwGom/199DLjyiPM97EgbJ8ty2D43NWUpyuAb4aUg
+	==
+X-Gm-Gg: ASbGncurEVATYyrW7XRBQryJDILym68/zPU506fwckqja6sI0NvjN/0cAEfzrDnW36a
+	Z46DpcV79dacNzUpsQpFHM2HwuzA0ZyXDAHRSa99sjcy3Du+EuiKfJpwlJZ7Uh7rgXKB7IB03f+
+	gCjjf8nmx2Ln5iPdUdPDv39HHjqejsSrhsrLyso+M1yS0nZ5L0va4m2M3RwbGAf/XFs4zR7K/Iz
+	DiES5zD5t+DP7l4n0BCOw1NC6OJDmfqMhfthJsb9fXPUaIAEaqUXzqXVtww9ygwmqRfKcr+RB1g
+	0CgVDOJtvyoYRi3xX5iRwlFObTAHQBhFu2FE/e57HrX03o72K+KCLhVtdx48Clq9zTcuz2E=
+X-Received: by 2002:a05:600c:4ecd:b0:459:e048:af42 with SMTP id 5b1f17b1804b1-459e048af80mr27344355e9.24.1754387892707;
+        Tue, 05 Aug 2025 02:58:12 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHu9rgyjmk0uonkMuGZyFuLrvh1XIgvJwkQbJZTilgPx9GuSO2bLOzz+iugEJg9v4l3IBuIMg==
+X-Received: by 2002:a05:600c:4ecd:b0:459:e048:af42 with SMTP id 5b1f17b1804b1-459e048af80mr27343985e9.24.1754387892256;
+        Tue, 05 Aug 2025 02:58:12 -0700 (PDT)
+Received: from [192.168.3.141] (p57a1a26f.dip0.t-ipconnect.de. [87.161.162.111])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3b79c48de68sm18520294f8f.67.2025.08.05.02.58.10
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 05 Aug 2025 02:58:11 -0700 (PDT)
+Message-ID: <486c5773-c7fa-4e19-b429-90823ed2f7d5@redhat.com>
+Date: Tue, 5 Aug 2025 11:58:04 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [RFC PATCH] mm/page_alloc: Add PCP list for THP CMA
-To: Juan Yescas <jyescas@google.com>, David Hildenbrand <david@redhat.com>
+To: Juan Yescas <jyescas@google.com>
 Cc: akash.tyagi@mediatek.com, Andrew Morton <akpm@linux-foundation.org>,
  angelogioacchino.delregno@collabora.com, hannes@cmpxchg.org,
  Brendan Jackman <jackmanb@google.com>, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
  Linux Memory Management List <linux-mm@kvack.org>, matthias.bgg@gmail.com,
  Michal Hocko <mhocko@suse.com>, Suren Baghdasaryan <surenb@google.com>,
- wsd_upstream@mediatek.com, Zi Yan <ziy@nvidia.com>,
- Kalesh Singh <kaleshsingh@google.com>, "T.J. Mercier"
- <tjmercier@google.com>, Isaac Manjarres <isaacmanjarres@google.com>
+ Vlastimil Babka <vbabka@suse.cz>, wsd_upstream@mediatek.com,
+ Zi Yan <ziy@nvidia.com>, Kalesh Singh <kaleshsingh@google.com>,
+ "T.J. Mercier" <tjmercier@google.com>,
+ Isaac Manjarres <isaacmanjarres@google.com>
 References: <CAJDx_rgzkZognxWzOXJ-ZxdTtUaM3FT6bmpkwxMz03XiX3fKAQ@mail.gmail.com>
  <d395b14a-9a84-4f25-b4f0-45e8500fc5fe@redhat.com>
  <CAJDx_rgrp1TpOt-iDcsSGRTL=qZZsK_dpKL1bSkyunPGcGXt5g@mail.gmail.com>
-From: Vlastimil Babka <vbabka@suse.cz>
-Content-Language: en-US
+From: David Hildenbrand <david@redhat.com>
+Autocrypt: addr=david@redhat.com; keydata=
+ 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
+ g3eXuA==
+Organization: Red Hat
 In-Reply-To: <CAJDx_rgrp1TpOt-iDcsSGRTL=qZZsK_dpKL1bSkyunPGcGXt5g@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: nn7TMNP5JWgBjxsA8VcbUIq-5VOd7WC9j8LszprthE4_1754387893
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Spamd-Result: default: False [-2.80 / 50.00];
-	BAYES_HAM(-3.00)[100.00%];
-	SUSPICIOUS_RECIPS(1.50)[];
-	NEURAL_HAM_LONG(-1.00)[-1.000];
-	NEURAL_HAM_SHORT(-0.20)[-1.000];
-	MIME_GOOD(-0.10)[text/plain];
-	TAGGED_RCPT(0.00)[];
-	FUZZY_RATELIMITED(0.00)[rspamd.com];
-	MIME_TRACE(0.00)[0:+];
-	RCPT_COUNT_TWELVE(0.00)[19];
-	ARC_NA(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	RCVD_TLS_ALL(0.00)[];
-	FREEMAIL_ENVRCPT(0.00)[gmail.com];
-	TO_DN_SOME(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	FREEMAIL_CC(0.00)[mediatek.com,linux-foundation.org,collabora.com,cmpxchg.org,google.com,lists.infradead.org,vger.kernel.org,kvack.org,gmail.com,suse.com,nvidia.com];
-	MID_RHS_MATCH_FROM(0.00)[];
-	FROM_EQ_ENVFROM(0.00)[];
-	RCVD_COUNT_TWO(0.00)[2];
-	TO_MATCH_ENVRCPT_ALL(0.00)[];
-	DKIM_SIGNED(0.00)[suse.cz:s=susede2_rsa,suse.cz:s=susede2_ed25519];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.cz:mid,imap1.dmz-prg2.suse.org:helo]
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250805_025249_236163_4B729794 
-X-CRM114-Status: GOOD (  30.60  )
+X-CRM114-CacheID: sfid-20250805_025817_843167_356ED7CE 
+X-CRM114-Status: GOOD (  31.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -144,7 +166,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 8/5/25 3:22 AM, Juan Yescas wrote:
+On 05.08.25 03:22, Juan Yescas wrote:
 > On Mon, Aug 4, 2025 at 11:50 AM David Hildenbrand <david@redhat.com> wrote:
 >>
 >> On 04.08.25 20:20, Juan Yescas wrote:
@@ -188,12 +210,7 @@ On 8/5/25 3:22 AM, Juan Yescas wrote:
 > 
 > This patch introduced the __GFP_CMA flag that allocates pages from
 > MIGRATE_MOVABLE
-> or MIGRATE_CMA.
-
-What kinds of allocations would then use __GFP_CMA? (let me try guess
-one - zswap backend?)
-
-> What it happens then, it is that the MIGRATE_MOVABLE
+> or MIGRATE_CMA. What it happens then, it is that the MIGRATE_MOVABLE
 > pages in the
 > PCP lists were consumed pretty fast. To solve this issue, the PCP
 > MIGRATE_CMA list was added.
@@ -205,8 +222,10 @@ one - zswap backend?)
 > for THP MIGRATE_MOVABLE
 > making later allocations from THP MIGRATE_CMA to fail.
 
-If you don't want THP's to use the large (THP-sized) MIGRATE_CMA pages,
-what kind of such large allocations would be ok to use MIGRATE_CMA then?
+Okay, so this patch here really is not suitable for the upstream kernel 
+as is. It's purely targeted at the OOT Android patch.
+
+> 
 > These workarounds are mainly because we need to solve this issue upstream:
 > 
 > - When devices reserve big blocks of MIGRATE_CMA pages, the
@@ -217,18 +236,19 @@ what kind of such large allocations would be ok to use MIGRATE_CMA then?
 > 
 > I remember that you presented the problem in LPC. Were you able to
 > make some progress on that?
-> 
-> Thanks
-> Juan
-> 
-> 
-> 
-> 
-> 
->> --
->> Cheers,
->>
->> David / dhildenb
->>
+
+There is the problem of CMA pages getting allocated by someone for a 
+MOVABLE allocation, to then short-term pin it for DMA. Long-term 
+pinnings are disallowed (we just recently fixed a bug where we 
+accidentally allowed it).
+
+One concern is that a steady stream of short-term pinnings can turn such 
+pages unmovable. We discussed ideas on how to handle that, but there is 
+no solution upstream yet.
+
+-- 
+Cheers,
+
+David / dhildenb
 
 
