@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 876B2C87FCB
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Aug 2025 09:41:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3852C87FCB
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Aug 2025 09:50:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=I/mF2ks3tqR0L4N+3Jta1iEzgyJNsm1D7OlTQETio94=; b=jqc4FNx0KnWiwaiLs9KeLYhRNX
-	eD2FE36P9rsgh56EFQPFtIsotHsD5evY6rcu4uLP1WFzRcu+gdL+EwIQ36xag+OlYPgUg5pHYTpNs
-	7ykRUYcqs0blrmlcM2tvCtSbFRGG/5kZNr7aOZTbo98SLHB7+vIS+zGEx1q8sBZjsWG6aHIaOrgD0
-	5uVNUAbSjgnytEujDZi0mhRQicVWTQ5Hs1AEOH0kZQZ4Zu3PM3xnwWNHdgdWcNY/qXSrFq/zSj8A3
-	klDCxJVBwRApAblSm1YwxFF6c/PmBPBLrXl9R+DlOsJSDlYr4PRx3bCMkzJ27ryimNTgBNAO3yr0+
-	TkjU8POw==;
+	bh=0tToxMFVNblhhh6hgXTLQa/jqgprut6FzrRgInYmQjQ=; b=P/pXO283/8qMxJ4N09aUbUAk8W
+	xaAgQWftZ/7PbhDpZ86DZ6WQcnZnKXtgG/i26uK0tMOAPw+waJsh29oyGe67jb7La/NAyJnPHGgnZ
+	1Lt7uBeY5n0NV3CbYpJ2DegIvp47dDTNyAXJ2HQ5EL5yAPkB7zPFvviYgnIQafsE5hvaW5KIovY8R
+	tatTWQrYZRATlqH5Tw1tgH2WgSxw5RquHBqUUwdiFyFzqWw1vji6jW/AdfOxKFcXPtypa+l92hCvy
+	IDGaAO7SefdUM2pIUyGEOOSTucF3bK5x4nbrhglgJPML9x9PIwbrnW8INuO2sZBcQA1rY7WjukazE
+	28em8ajw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ujEB6-0000000CP04-00Eh;
-	Tue, 05 Aug 2025 09:41:52 +0000
-Received: from mail-northeuropeazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c200::3] helo=DU2PR03CU002.outbound.protection.outlook.com)
+	id 1ujEJ4-0000000CPpN-3oFo;
+	Tue, 05 Aug 2025 09:50:06 +0000
+Received: from mail-francesouthazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c207::3] helo=MRWPR03CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ujE3G-0000000CMiC-1QFe;
-	Tue, 05 Aug 2025 09:33:48 +0000
+	id 1ujE3J-0000000CMmP-0RbO;
+	Tue, 05 Aug 2025 09:34:00 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=vydsHIKV4zrxcdOLSnzCsb19yTVNJT1X7BCbrovqtLrqCPEtXRbG6kaX/KsAjym3Z5VWnWNHln1ohFu0ER+pV8QFGoeQgM65kpCYps4LO3/sv4Y6FM4feGHpClEOnrB8yMtQkXN8fwwjoNQSaXVwi1j8Yxfcw/YYF4gJd4Ii2xwfK2r5uWP8ZWGA575kLf3fcBwsjelkvMK/jIKr6OE7bDJd/A8M/gDluXY43oeb43HB3+A5QxgJel92+XXbjX/0UmXpNznJWqPUhQ/KrCNFUUeW6b48LyvoH9Qmp/ae2w5320rGnFRdP6Q8skVPHva10AELeSEXTtqQDybBtjAcOQ==
+ b=k4w9dJ/V8w4yi7hZX34op9d1LSjAQDuYGJupjxAkbqUxDkuWska2i32b1dY91iHXXKaqg52BDZ6qnfw8C+s9asPXvu0NTHMKY9CLYP3TdPnAj1CDumuDRsgJVWcXq5ByzLXHlkTRoDie0Y9TRLpmQlW6LuJmrd1wlwHzQ+tJ+dU9eK/Q/6pyJzzb2q3S0vH7vo/ehBah+Fc24xO90P8VV/v++D64zFC1qjb/kV7eWZ25ykdofTp6cK19eal9Wy0DNNhyMUoyJbfPAurhVhauJpimyA71ad20H56+qVOBpxfNkzOE3VASCv17XcQumje177IkBsPVdej8VZ8KAlhhCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=I/mF2ks3tqR0L4N+3Jta1iEzgyJNsm1D7OlTQETio94=;
- b=Ns+im18hfUu13QbGalZZAWuNb7YLU/G6WpnDyrRissyXGHsnT0t0W56I+DT9SLCjTK9B/3J9NF0gYhgLnRob841Ww2/lAObLJ53fNqn9kFwP5m2MTIuY+5asZ2zenTOMAWybg/PelvP6+UB+EsiS+B3gee8BUf7aVVtQPpuGmvw88xml6oJulGVF0Yx7c98c1olgbjrTfq0afnpc669Yfy6ErW63ErGcZsIO8405f05gq7+KQiWnFBAxM5bnyriRHvgIt9OgDRLo5lsVETNWxAqm1jHGlUTc/IcLZxydUQbLz6HSB1CL5z3bneSA+nL0njpxuDfNST6BERIGJAMuuQ==
+ bh=0tToxMFVNblhhh6hgXTLQa/jqgprut6FzrRgInYmQjQ=;
+ b=Ch/ujzZLL08VGGMu69zSd1UH84va9/8Q/YhaROUNqaNuQyuUrGwcyBtjys3GUoQwBWB7imCnR9+ljLwyF6jFiK7nboUHQ1/Q4nJNcS9gbaZDVza6z7UyLVQCQ+4wTXqhkRI96rRXQCNNpLybccITVwaOiuvIfbMxjYhQwMEaI3c4x3hAbU4Rh0va8xeA+1pA9F0VJ6Muh/aPk5Y/aibFLXAswZie9PLR9CZPg+wy0nTPM7eD/sdEM1517pMN15WERdGQxpvm932WJUf45R3RgV2Cwu5FuinwN6hfps+3ZsAZUdjTJCrIvuAl4WXu8JvXouvEbDkVAOdjWlfOLPm+NQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
  195.60.68.100) smtp.rcpttodomain=lists.infradead.org smtp.mailfrom=axis.com;
  dmarc=pass (p=none sp=none pct=100) action=none header.from=axis.com;
  dkim=none (message not signed); arc=none (0)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=axis.com; s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=I/mF2ks3tqR0L4N+3Jta1iEzgyJNsm1D7OlTQETio94=;
- b=nPS4wfwG/NGXfYwQ6itOLBlKxPOhLIlR0BqsTCCnseh8G8jO6X4kVwXZ/rzgZRke7+hzY1VRPcGapu24NuOGlTbjakTpc+QzgV6PAlcog8ycNMwWX/9n8WJ+LLb2/oEeUCNqDx1qbb3mrOeQS86EycA6198Et6ElwKqv0QeipnY=
-Received: from CWLP123CA0001.GBRP123.PROD.OUTLOOK.COM (2603:10a6:401:56::13)
- by GV1PR02MB8562.eurprd02.prod.outlook.com (2603:10a6:150:96::10) with
+ bh=0tToxMFVNblhhh6hgXTLQa/jqgprut6FzrRgInYmQjQ=;
+ b=Mni/vm+/tLzxc72Bciia5jh2QgoDneoLUo5LwJXLwhk1x8LDTSWPz3RkSuhGSRRDtUNe9zSQt2pKvl+M7lkoAfxgfm6VaJJ/hshBx+XMn3sewHDoAl6pcR4iK3yHPpu+KSwGuEfVPGlJ/Fir1zRkjNikMuoqv7jrr8gfRLDfoIE=
+Received: from CWLP123CA0022.GBRP123.PROD.OUTLOOK.COM (2603:10a6:401:56::34)
+ by DB9PR02MB8000.eurprd02.prod.outlook.com (2603:10a6:10:370::15) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8989.20; Tue, 5 Aug
- 2025 09:33:38 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8989.21; Tue, 5 Aug
+ 2025 09:33:44 +0000
 Received: from AM3PEPF0000A790.eurprd04.prod.outlook.com
- (2603:10a6:401:56:cafe::7c) by CWLP123CA0001.outlook.office365.com
- (2603:10a6:401:56::13) with Microsoft SMTP Server (version=TLS1_3,
+ (2603:10a6:401:56:cafe::e) by CWLP123CA0022.outlook.office365.com
+ (2603:10a6:401:56::34) with Microsoft SMTP Server (version=TLS1_3,
  cipher=TLS_AES_256_GCM_SHA384) id 15.20.8989.21 via Frontend Transport; Tue,
- 5 Aug 2025 09:33:38 +0000
+ 5 Aug 2025 09:33:43 +0000
 X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 195.60.68.100)
  smtp.mailfrom=axis.com; dkim=none (message not signed)
  header.d=none;dmarc=pass action=none header.from=axis.com;
@@ -60,85 +60,75 @@ Received-SPF: Pass (protection.outlook.com: domain of axis.com designates
 Received: from mail.axis.com (195.60.68.100) by
  AM3PEPF0000A790.mail.protection.outlook.com (10.167.16.119) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.9009.8 via Frontend Transport; Tue, 5 Aug 2025 09:33:38 +0000
+ 15.20.9009.8 via Frontend Transport; Tue, 5 Aug 2025 09:33:43 +0000
 Received: from pc52311-2249 (10.4.0.13) by se-mail01w.axis.com (10.20.40.7)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.44; Tue, 5 Aug
- 2025 11:33:34 +0200
+ 2025 11:33:35 +0200
 From: Waqar Hameed <waqar.hameed@axis.com>
-To: Jonathan Cameron <jic23@kernel.org>, David Lechner
-	<dlechner@baylibre.com>, =?utf-8?Q?Nuno_S=C3=A1?= <nuno.sa@analog.com>, "Andy
- Shevchenko" <andy@kernel.org>, Cosmin Tanislav <cosmin.tanislav@analog.com>,
-	Lars-Peter Clausen <lars@metafoo.de>, Michael Hennerich
-	<Michael.Hennerich@analog.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Matteo
- Martelli" <matteomartelli3@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
-	Francesco Dolcini <francesco@dolcini.it>, =?utf-8?Q?Jo?=
- =?utf-8?Q?=C3=A3o_Paulo_Gon=C3=A7alves?= <jpaulo.silvagoncalves@gmail.com>,
-	Hugo Villeneuve <hvilleneuve@dimonoff.com>, Subhajit Ghosh
-	<subhajit.ghosh@tweaklogic.com>, Mudit Sharma <muditsharma.info@gmail.com>,
-	Gerald Loacker <gerald.loacker@wolfvision.net>, Song Qiang
-	<songqiang1304521@gmail.com>, Crt Mori <cmo@melexis.com>
-CC: <kernel@axis.com>, <linux-iio@vger.kernel.org>,
+To: Sebastian Reichel <sre@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <kernel@axis.com>, <linux-pm@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-rockchip@lists.infradead.org>
-Subject: [PATCH v2] iio: Remove error prints for devm_add_action_or_reset()
+	<linux-mediatek@lists.infradead.org>
+Subject: [PATCH v2] power: supply: Remove error prints for
+ devm_add_action_or_reset()
 User-Agent: a.out
-Date: Tue, 5 Aug 2025 11:33:33 +0200
-Message-ID: <pndectqm7te.a.out@axis.com>
+Date: Tue, 5 Aug 2025 11:33:35 +0200
+Message-ID: <pndzfcekt8w.a.out@axis.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.4.0.13]
-X-ClientProxiedBy: se-mail02w.axis.com (10.20.40.8) To se-mail01w.axis.com
+X-ClientProxiedBy: se-mail01w.axis.com (10.20.40.7) To se-mail01w.axis.com
  (10.20.40.7)
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AM3PEPF0000A790:EE_|GV1PR02MB8562:EE_
-X-MS-Office365-Filtering-Correlation-Id: 9f0a34ca-fa97-4edf-8005-08ddd4032844
+X-MS-TrafficTypeDiagnostic: AM3PEPF0000A790:EE_|DB9PR02MB8000:EE_
+X-MS-Office365-Filtering-Correlation-Id: ea776c04-0951-4ca2-6d0a-08ddd4032ba5
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|36860700013|82310400026|1800799024|376014|7416014|921020|13003099007;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?Dp+nadf0yQYWm9HFBz002keRLGMG3a0Hp3I7l8Iq/rOtuIy1SowB47mpdIzy?=
- =?us-ascii?Q?z0YRUbH+SivORvPoT0s4L2rqQm6uAeyrWZLSPzV40NMiZrJUCiUZr4AJltG0?=
- =?us-ascii?Q?P9Op+8qDYb+ArCPu/C0tQXn2cXCetpviJXa3NIx1KsrjKyvqfMUP5c8UQhNa?=
- =?us-ascii?Q?PBFl/Pp3pWWWDToNilgki49gGwXL9/jJUz8J224cAsOukQe+SsSAqjwE8t9C?=
- =?us-ascii?Q?2iBoq7N2N3FBuXTTJ7N3tJNkVfHN6R6o4MLYWYP6MgE78NrFeszBVu7iNbyz?=
- =?us-ascii?Q?ShPGfLJszR/z3nhKi5cISxkqLbEVFSHZsas73K63ed3AyepT5fI/euFQHchx?=
- =?us-ascii?Q?7Mc32enz2QPRiKWwV2Fhu03Rxp/Y9dQuPfWLPg+P+5EPWugzkycOOgyExR8R?=
- =?us-ascii?Q?q6KwxPGgossip8Mq7hdSPFIU8IL53nAJwHYPj+/Sz8Ty/JcU12NY7JXpejaD?=
- =?us-ascii?Q?r3FlzEYiUipZMUEwbnFE1YzbUG4om/CRs4UYmig94X0JLfTl52NSBFVsMo/D?=
- =?us-ascii?Q?FCsvSBqCXi6MNEH8SmfTZvNQzG+31YUo3puYAH0UPFrrOEk5IoBiIDX26C5b?=
- =?us-ascii?Q?O3pdD7/ywYVTVex1QfngAjO7fMvIl5VxnTId9kumf4PT0K+rcpbea88LV8D8?=
- =?us-ascii?Q?K8k/0NTIPZg0XUU+SMuxqI84c9mAhxJuwSGq4B+M5n56TqrEGW9DenJIKvFH?=
- =?us-ascii?Q?AkLAEakHj5G7VtZVMN/LxM169hg36WPtVpFOet40dRjQkfk7Ipri9zlwyYyM?=
- =?us-ascii?Q?Wa4mfUzijmIJjcvUBlndChHQ0HneOMmb7oJalS+a7Dfq9XVuTt1kLsNVYKCW?=
- =?us-ascii?Q?1IuS1y5inCcX5P5XASmJEZxpvluzpETmm3OnLiKNC0H6D9BdWW/FInK7G7wL?=
- =?us-ascii?Q?L4KMp3A3HXMerPUJ+GpEoJnf2ckLF+P+AgaGJ5DWRaTtHk8kpCSgGshfNjos?=
- =?us-ascii?Q?NNbXZDgYr4qqINwu6we5I8DM+7ZDbLmNQt3pDYz3D7yHSzafacD2WirPKU/C?=
- =?us-ascii?Q?QlSQWTgBJhvVC0zYz7IRxKDmbEQ11940zoEWpDqDGNiAGppDJ4UWSWrsexK/?=
- =?us-ascii?Q?srdI8aPMlSKckcPewMys0tA1MVjPTUg8PZnl7/9W+KC716KlO7isCGfQTUck?=
- =?us-ascii?Q?LxUlZl53Qk6VpoeW50MDkyKrjLaPSmPsQ9AkKyltObu9zCVKFDZKo8uYUAaa?=
- =?us-ascii?Q?eU7OJ8l9CQEawnAZL+hGis+BbDEUZ1X1bmUj/HtG8N8w52Jarrh0h5fklOKZ?=
- =?us-ascii?Q?gKqahwa9xibiiN0Hc9mfdPH+rys/pkiiLWcG1b2DiEFptA3i0SNrMT/bDsbY?=
- =?us-ascii?Q?jpjdi6MLuPSjkBMAEV+gRx8aY1jszz1kmXCYkej8+vS/VgQig6sB8e3DAiXf?=
- =?us-ascii?Q?tce0WRtkUmoS6v8vS+TOF6YjAWP0u5cLLnWjpxNooE/LtyJhqLdJzUgvDDnw?=
- =?us-ascii?Q?ev2udHSKAXMsCDOwLEqZcaBlQWsNxQNfjGRgVRvxU8nHC6WQEEwdS17Ta5na?=
- =?us-ascii?Q?tg8x2o9WseBjFRV7R4Tf0gDmgFxr50m+x7ABUFvgY7MTbdn3G5Gj3HHfxw?=
- =?us-ascii?Q?=3D=3D?=
-X-Forefront-Antispam-Report: CIP:195.60.68.100;CTRY:SE;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.axis.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(36860700013)(82310400026)(1800799024)(376014)(7416014)(921020)(13003099007);DIR:OUT;SFP:1101;
+X-Microsoft-Antispam: BCL:0;ARA:13230040|36860700013|1800799024|376014|82310400026;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?sA8qN07/WtcGsRTiTl9oMzMv6Ihl+sOX6wwtCXMinaP+O4ltcT4eCvEtCA1y?=
+ =?us-ascii?Q?G3F8CStRnKXqYuXrWV0yqpOs2CYMXYevI0bqnPj0pBOztjFyjfTMZHWwj/31?=
+ =?us-ascii?Q?3avHQoQiny9M4Nu67eUA6OUmu3GiRxRrTgTlqZGWiygkIz6jpqPtcwru26Jp?=
+ =?us-ascii?Q?c4E4lgVhc/yGFTzop+sJlbEx2lw0963qgZBSgo0JZIojKavGiLdBZ0iPWmcx?=
+ =?us-ascii?Q?w0u6h65oLdHbm3a9ZjcyeJseUSbiORWaMXQlNtSvgUhiceJMiBLYNsJcN838?=
+ =?us-ascii?Q?C9SrU/ZY9YP3guRLD1OzVHuU1l4blTo+xVXHQ78QMP/46WnzPMTTylieHtzA?=
+ =?us-ascii?Q?M4EOd357Ml+aSjI1mAHAn+sSPz25+uRQImzzkzQACt+OUSrM7wEdymR7GseY?=
+ =?us-ascii?Q?LafWRTdABM0ZSl8DVcktTtMZ/eJaoMQ1ZOv8mKgYdSuLYsrT8yRNoOT8LZxj?=
+ =?us-ascii?Q?HDodmD1AAx2ojnAx9BBLnfFrC1BiOAUKSVB+Xd6js1WFoszoDiwrWzbhPKBa?=
+ =?us-ascii?Q?I3eQoXhmWcqJkhHANsPv4Kdb94Xmub1+MQ9UDDMHCL4m/eTMZ8R/5mmaTA50?=
+ =?us-ascii?Q?Gt7B2+mbWUDhUk1761sALZqVI3tnZWr8WaTXHB6CQmtsfyb/ZIEdr6iOjZ+S?=
+ =?us-ascii?Q?G7B3JbVBE1leO+Mb/kRoY/npoojvSRkqZ3iZ7U+64aPExB9z25igJewAOzI5?=
+ =?us-ascii?Q?E31oWhsb9g0hunWPNMf56fbiVjTTgM6fWs0/cCmpXYwNgmroshGA3Ar7wavQ?=
+ =?us-ascii?Q?iA2N5H7/kLi4ROo2Td/As+GZehuaQ8gtISMuSxw+nyU4FGC+odyHLCnYBiZM?=
+ =?us-ascii?Q?A8FIEWQvU8RPqqOsdp5+NN24Gi1XiShXTKNrSBkoNNXU704Z05T+hvH/i5N2?=
+ =?us-ascii?Q?iegWg2TDfjyOGeiGTJBGPchyzpkKQfgk0m5NRP8XACLi2K+Wx8fKn1AUV3xQ?=
+ =?us-ascii?Q?8lqYzY+lGzvTE6qyAQu6F5N4K4JAOe4Tr4G0fxkDO145IT+eBlW72qftPIV/?=
+ =?us-ascii?Q?COFEnUcd41c2HI6OBEkZ4RPedPvi9mUkrlUEIk0zqdUwloPhsiSU9jmTvhQL?=
+ =?us-ascii?Q?E2U++LvCHb5QJdlXH6skipxwwMQturw6VHzNOTr2D4rAIfl4HOM9Kaovz175?=
+ =?us-ascii?Q?S7VBZ3Y20tn49EpIorpfNWRFyzSEihoT9gt/xS3ZDv2yrT8V4cjXbUy0pPb5?=
+ =?us-ascii?Q?qxyz2u4uycWtki+MYLiTNywDl+cmnvaoJT1i7np90hpdTU41VoqjUaJLES35?=
+ =?us-ascii?Q?kMziNQLGj/In577e69Ob0nOJbuHiMMqKT5JZL933DdO1diIHG+8J7MRaASKm?=
+ =?us-ascii?Q?aMMH/m9RKAZFsHinMjrjFuS3CJDTSEwO4OQS8s0J/SyWULui9POlhRjeub4U?=
+ =?us-ascii?Q?kGzgy/QGK4wN+1Stivmm6oA7tsZSaDAX31ei8MdPoCSGpUAVjpc2Vw+gc02W?=
+ =?us-ascii?Q?98T6q3biBO2ysU8qL2tActnwfHaZYuKnqooxut1ZZEBAkViq7pI4GQKfxrj7?=
+ =?us-ascii?Q?QtMwmfMKu4QXcLOIiIyQa30kJZDYQ1IAbykZ?=
+X-Forefront-Antispam-Report: CIP:195.60.68.100;CTRY:SE;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.axis.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(36860700013)(1800799024)(376014)(82310400026);DIR:OUT;SFP:1101;
 X-OriginatorOrg: axis.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Aug 2025 09:33:38.1614
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Aug 2025 09:33:43.8309
  (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9f0a34ca-fa97-4edf-8005-08ddd4032844
+X-MS-Exchange-CrossTenant-Network-Message-Id: ea776c04-0951-4ca2-6d0a-08ddd4032ba5
 X-MS-Exchange-CrossTenant-Id: 78703d3c-b907-432f-b066-88f7af9ca3af
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=78703d3c-b907-432f-b066-88f7af9ca3af;Ip=[195.60.68.100];Helo=[mail.axis.com]
 X-MS-Exchange-CrossTenant-AuthSource: AM3PEPF0000A790.eurprd04.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: GV1PR02MB8562
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB9PR02MB8000
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250805_023346_623848_E91AAB5F 
-X-CRM114-Status: GOOD (  14.29  )
+X-CRM114-CacheID: sfid-20250805_023354_278928_2AEAC491 
+X-CRM114-Status: GOOD (  13.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -167,307 +157,66 @@ Changes in v2:
 
 Link to v1: https://lore.kernel.org/all/pnd7c0s6ji2.fsf@axis.com/
 
- drivers/iio/accel/msa311.c          | 2 +-
- drivers/iio/adc/ad4130.c            | 3 +--
- drivers/iio/adc/ad7124.c            | 2 +-
- drivers/iio/adc/ad7173.c            | 3 +--
- drivers/iio/adc/mt6577_auxadc.c     | 3 +--
- drivers/iio/adc/pac1921.c           | 3 +--
- drivers/iio/adc/rockchip_saradc.c   | 3 +--
- drivers/iio/adc/ti-ads1119.c        | 3 +--
- drivers/iio/adc/ti-ads7924.c        | 6 ++----
- drivers/iio/frequency/adf4350.c     | 3 +--
- drivers/iio/light/al3000a.c         | 2 +-
- drivers/iio/light/apds9306.c        | 2 +-
- drivers/iio/light/bh1745.c          | 3 +--
- drivers/iio/light/opt4001.c         | 3 +--
- drivers/iio/light/opt4060.c         | 3 +--
- drivers/iio/magnetometer/als31300.c | 2 +-
- drivers/iio/magnetometer/tmag5273.c | 2 +-
- drivers/iio/proximity/vl53l0x-i2c.c | 3 +--
- drivers/iio/temperature/mlx90635.c  | 6 ++----
- 19 files changed, 21 insertions(+), 36 deletions(-)
+ drivers/power/supply/mt6370-charger.c | 4 ++--
+ drivers/power/supply/rt9467-charger.c | 8 ++++----
+ 2 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/iio/accel/msa311.c b/drivers/iio/accel/msa311.c
-index 3e10225410e8..2ccb22317bdc 100644
---- a/drivers/iio/accel/msa311.c
-+++ b/drivers/iio/accel/msa311.c
-@@ -1195,7 +1195,7 @@ static int msa311_probe(struct i2c_client *i2c)
- 	 */
- 	err = devm_add_action_or_reset(dev, msa311_powerdown, msa311);
- 	if (err)
--		return dev_err_probe(dev, err, "can't add powerdown action\n");
-+		return err;
- 
- 	err = pm_runtime_set_active(dev);
- 	if (err)
-diff --git a/drivers/iio/adc/ad4130.c b/drivers/iio/adc/ad4130.c
-index 6cf790ff3eb5..ff778a44323f 100644
---- a/drivers/iio/adc/ad4130.c
-+++ b/drivers/iio/adc/ad4130.c
-@@ -2035,8 +2035,7 @@ static int ad4130_probe(struct spi_device *spi)
- 
- 	ret = devm_add_action_or_reset(dev, ad4130_disable_regulators, st);
+diff --git a/drivers/power/supply/mt6370-charger.c b/drivers/power/supply/mt6370-charger.c
+index 98579998b300..29510af4e595 100644
+--- a/drivers/power/supply/mt6370-charger.c
++++ b/drivers/power/supply/mt6370-charger.c
+@@ -898,7 +898,7 @@ static int mt6370_chg_probe(struct platform_device *pdev)
+ 	ret = devm_add_action_or_reset(dev, mt6370_chg_destroy_attach_lock,
+ 				       &priv->attach_lock);
  	if (ret)
--		return dev_err_probe(dev, ret,
--				     "Failed to add regulators disable action\n");
+-		return dev_err_probe(dev, ret, "Failed to init attach lock\n");
 +		return ret;
  
- 	ret = ad4130_soft_reset(st);
+ 	priv->attach = MT6370_ATTACH_STAT_DETACH;
+ 
+@@ -909,7 +909,7 @@ static int mt6370_chg_probe(struct platform_device *pdev)
+ 
+ 	ret = devm_add_action_or_reset(dev, mt6370_chg_destroy_wq, priv->wq);
  	if (ret)
-diff --git a/drivers/iio/adc/ad7124.c b/drivers/iio/adc/ad7124.c
-index 9808df2e9242..4481a4ca7ac3 100644
---- a/drivers/iio/adc/ad7124.c
-+++ b/drivers/iio/adc/ad7124.c
-@@ -1300,7 +1300,7 @@ static int ad7124_probe(struct spi_device *spi)
- 		ret = devm_add_action_or_reset(&spi->dev, ad7124_reg_disable,
- 					       st->vref[i]);
- 		if (ret)
--			return dev_err_probe(dev, ret, "Failed to register disable handler for regulator #%d\n", i);
-+			return ret;
- 	}
+-		return dev_err_probe(dev, ret, "Failed to init wq\n");
++		return ret;
  
- 	st->mclk = devm_clk_get_enabled(&spi->dev, "mclk");
-diff --git a/drivers/iio/adc/ad7173.c b/drivers/iio/adc/ad7173.c
-index 4413207be28f..d15e305d3380 100644
---- a/drivers/iio/adc/ad7173.c
-+++ b/drivers/iio/adc/ad7173.c
-@@ -1717,8 +1717,7 @@ static int ad7173_fw_parse_device_config(struct iio_dev *indio_dev)
- 
- 	ret = devm_add_action_or_reset(dev, ad7173_disable_regulators, st);
+ 	ret = devm_work_autocancel(dev, &priv->bc12_work, mt6370_chg_bc12_work_func);
  	if (ret)
--		return dev_err_probe(dev, ret,
--				     "Failed to add regulators disable action\n");
-+		return ret;
- 
- 	ret = device_property_match_property_string(dev, "clock-names",
- 						    ad7173_clk_sel,
-diff --git a/drivers/iio/adc/mt6577_auxadc.c b/drivers/iio/adc/mt6577_auxadc.c
-index 3343b54e8e44..fe9e3ece3fda 100644
---- a/drivers/iio/adc/mt6577_auxadc.c
-+++ b/drivers/iio/adc/mt6577_auxadc.c
-@@ -297,8 +297,7 @@ static int mt6577_auxadc_probe(struct platform_device *pdev)
- 
- 	ret = devm_add_action_or_reset(&pdev->dev, mt6577_power_off, adc_dev);
+diff --git a/drivers/power/supply/rt9467-charger.c b/drivers/power/supply/rt9467-charger.c
+index e9aba9ad393c..e2ff9c4609ef 100644
+--- a/drivers/power/supply/rt9467-charger.c
++++ b/drivers/power/supply/rt9467-charger.c
+@@ -1218,25 +1218,25 @@ static int rt9467_charger_probe(struct i2c_client *i2c)
+ 	ret = devm_add_action_or_reset(dev, rt9467_chg_destroy_adc_lock,
+ 				       &data->adc_lock);
  	if (ret)
--		return dev_err_probe(&pdev->dev, ret,
--				     "Failed to add action to managed power off\n");
+-		return dev_err_probe(dev, ret, "Failed to init ADC lock\n");
 +		return ret;
  
- 	ret = devm_iio_device_register(&pdev->dev, indio_dev);
- 	if (ret < 0)
-diff --git a/drivers/iio/adc/pac1921.c b/drivers/iio/adc/pac1921.c
-index 72aa4ca2e5a4..35433250b008 100644
---- a/drivers/iio/adc/pac1921.c
-+++ b/drivers/iio/adc/pac1921.c
-@@ -1279,8 +1279,7 @@ static int pac1921_probe(struct i2c_client *client)
- 	ret = devm_add_action_or_reset(dev, pac1921_regulator_disable,
- 				       priv->vdd);
+ 	mutex_init(&data->attach_lock);
+ 	ret = devm_add_action_or_reset(dev, rt9467_chg_destroy_attach_lock,
+ 				       &data->attach_lock);
  	if (ret)
--		return dev_err_probe(dev, ret,
--			"Cannot add action for vdd regulator disposal\n");
+-		return dev_err_probe(dev, ret, "Failed to init attach lock\n");
 +		return ret;
  
- 	msleep(PAC1921_POWERUP_TIME_MS);
- 
-diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
-index bd62daea0a3e..926971cb50bf 100644
---- a/drivers/iio/adc/rockchip_saradc.c
-+++ b/drivers/iio/adc/rockchip_saradc.c
-@@ -527,8 +527,7 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
- 	ret = devm_add_action_or_reset(&pdev->dev,
- 				       rockchip_saradc_regulator_disable, info);
+ 	mutex_init(&data->ichg_ieoc_lock);
+ 	ret = devm_add_action_or_reset(dev, rt9467_chg_destroy_ichg_ieoc_lock,
+ 				       &data->ichg_ieoc_lock);
  	if (ret)
--		return dev_err_probe(&pdev->dev, ret,
--				     "failed to register devm action\n");
+-		return dev_err_probe(dev, ret, "Failed to init ICHG/IEOC lock\n");
 +		return ret;
  
- 	ret = regulator_get_voltage(info->vref);
- 	if (ret < 0)
-diff --git a/drivers/iio/adc/ti-ads1119.c b/drivers/iio/adc/ti-ads1119.c
-index d2f86e1ec656..3e4f79dfb078 100644
---- a/drivers/iio/adc/ti-ads1119.c
-+++ b/drivers/iio/adc/ti-ads1119.c
-@@ -778,8 +778,7 @@ static int ads1119_probe(struct i2c_client *client)
- 
- 	ret = devm_add_action_or_reset(dev, ads1119_powerdown, st);
+ 	init_completion(&data->aicl_done);
+ 	ret = devm_add_action_or_reset(dev, rt9467_chg_complete_aicl_done,
+ 				       &data->aicl_done);
  	if (ret)
--		return dev_err_probe(dev, ret,
--				     "Failed to add powerdown action\n");
+-		return dev_err_probe(dev, ret, "Failed to init AICL done completion\n");
 +		return ret;
  
- 	return devm_iio_device_register(dev, indio_dev);
- }
-diff --git a/drivers/iio/adc/ti-ads7924.c b/drivers/iio/adc/ti-ads7924.c
-index b1f745f75dbe..46255c530cb4 100644
---- a/drivers/iio/adc/ti-ads7924.c
-+++ b/drivers/iio/adc/ti-ads7924.c
-@@ -399,8 +399,7 @@ static int ads7924_probe(struct i2c_client *client)
- 
- 	ret = devm_add_action_or_reset(dev, ads7924_reg_disable, data->vref_reg);
+ 	ret = rt9467_do_charger_init(data);
  	if (ret)
--		return dev_err_probe(dev, ret,
--				     "failed to add regulator disable action\n");
-+		return ret;
- 
- 	ret = ads7924_reset(indio_dev);
- 	if (ret < 0)
-@@ -414,8 +413,7 @@ static int ads7924_probe(struct i2c_client *client)
- 
- 	ret = devm_add_action_or_reset(dev, ads7924_set_idle_mode, data);
- 	if (ret)
--		return dev_err_probe(dev, ret,
--				     "failed to add idle mode action\n");
-+		return ret;
- 
- 	/* Use minimum signal acquire time. */
- 	ret = regmap_update_bits(data->regmap, ADS7924_ACQCONFIG_REG,
-diff --git a/drivers/iio/frequency/adf4350.c b/drivers/iio/frequency/adf4350.c
-index 47f1c7e9efa9..6665409a9a87 100644
---- a/drivers/iio/frequency/adf4350.c
-+++ b/drivers/iio/frequency/adf4350.c
-@@ -673,8 +673,7 @@ static int adf4350_probe(struct spi_device *spi)
- 
- 	ret = devm_add_action_or_reset(&spi->dev, adf4350_power_down, indio_dev);
- 	if (ret)
--		return dev_err_probe(&spi->dev, ret,
--				     "Failed to add action to managed power down\n");
-+		return ret;
- 
- 	return devm_iio_device_register(&spi->dev, indio_dev);
- }
-diff --git a/drivers/iio/light/al3000a.c b/drivers/iio/light/al3000a.c
-index 6f301c067045..9871096cbab3 100644
---- a/drivers/iio/light/al3000a.c
-+++ b/drivers/iio/light/al3000a.c
-@@ -94,7 +94,7 @@ static int al3000a_init(struct al3000a_data *data)
- 
- 	ret = devm_add_action_or_reset(dev, al3000a_set_pwr_off, data);
- 	if (ret)
--		return dev_err_probe(dev, ret, "failed to add action\n");
-+		return ret;
- 
- 	ret = regmap_write(data->regmap, AL3000A_REG_SYSTEM, AL3000A_CONFIG_RESET);
- 	if (ret)
-diff --git a/drivers/iio/light/apds9306.c b/drivers/iio/light/apds9306.c
-index f676da245aa7..5eb33e8e3ad9 100644
---- a/drivers/iio/light/apds9306.c
-+++ b/drivers/iio/light/apds9306.c
-@@ -1309,7 +1309,7 @@ static int apds9306_probe(struct i2c_client *client)
- 
- 	ret = devm_add_action_or_reset(dev, apds9306_powerdown, data);
- 	if (ret)
--		return dev_err_probe(dev, ret, "failed to add action or reset\n");
-+		return ret;
- 
- 	ret = devm_iio_device_register(dev, indio_dev);
- 	if (ret)
-diff --git a/drivers/iio/light/bh1745.c b/drivers/iio/light/bh1745.c
-index 4e9bd8f831f7..c7c604c96f6e 100644
---- a/drivers/iio/light/bh1745.c
-+++ b/drivers/iio/light/bh1745.c
-@@ -814,8 +814,7 @@ static int bh1745_init(struct bh1745_data *data)
- 
- 	ret = devm_add_action_or_reset(dev, bh1745_power_off, data);
- 	if (ret)
--		return dev_err_probe(dev, ret,
--				     "Failed to add action or reset\n");
-+		return ret;
- 
- 	return 0;
- }
-diff --git a/drivers/iio/light/opt4001.c b/drivers/iio/light/opt4001.c
-index ba4eb82d9bc2..95167273bb90 100644
---- a/drivers/iio/light/opt4001.c
-+++ b/drivers/iio/light/opt4001.c
-@@ -428,8 +428,7 @@ static int opt4001_probe(struct i2c_client *client)
- 					opt4001_chip_off_action,
- 					chip);
- 	if (ret < 0)
--		return dev_err_probe(&client->dev, ret,
--				     "Failed to setup power off action\n");
-+		return ret;
- 
- 	return devm_iio_device_register(&client->dev, indio_dev);
- }
-diff --git a/drivers/iio/light/opt4060.c b/drivers/iio/light/opt4060.c
-index 566f1bb8fe2a..7a1b6c703823 100644
---- a/drivers/iio/light/opt4060.c
-+++ b/drivers/iio/light/opt4060.c
-@@ -1299,8 +1299,7 @@ static int opt4060_probe(struct i2c_client *client)
- 
- 	ret = devm_add_action_or_reset(dev, opt4060_chip_off_action, chip);
- 	if (ret < 0)
--		return dev_err_probe(dev, ret,
--				     "Failed to setup power off action\n");
-+		return ret;
- 
- 	ret = opt4060_setup_buffer(chip, indio_dev);
- 	if (ret)
-diff --git a/drivers/iio/magnetometer/als31300.c b/drivers/iio/magnetometer/als31300.c
-index f72af829715f..928e1378304c 100644
---- a/drivers/iio/magnetometer/als31300.c
-+++ b/drivers/iio/magnetometer/als31300.c
-@@ -373,7 +373,7 @@ static int als31300_probe(struct i2c_client *i2c)
- 
- 	ret = devm_add_action_or_reset(dev, als31300_power_down, data);
- 	if (ret)
--		return dev_err_probe(dev, ret, "failed to add powerdown action\n");
-+		return ret;
- 
- 	indio_dev->info = &als31300_info;
- 	indio_dev->modes = INDIO_DIRECT_MODE;
-diff --git a/drivers/iio/magnetometer/tmag5273.c b/drivers/iio/magnetometer/tmag5273.c
-index 2ca5c26f0091..bdb656b031b1 100644
---- a/drivers/iio/magnetometer/tmag5273.c
-+++ b/drivers/iio/magnetometer/tmag5273.c
-@@ -642,7 +642,7 @@ static int tmag5273_probe(struct i2c_client *i2c)
- 	 */
- 	ret = devm_add_action_or_reset(dev, tmag5273_power_down, data);
- 	if (ret)
--		return dev_err_probe(dev, ret, "failed to add powerdown action\n");
-+		return ret;
- 
- 	ret = pm_runtime_set_active(dev);
- 	if (ret < 0)
-diff --git a/drivers/iio/proximity/vl53l0x-i2c.c b/drivers/iio/proximity/vl53l0x-i2c.c
-index ef4aa7b2835e..b92fbd27755b 100644
---- a/drivers/iio/proximity/vl53l0x-i2c.c
-+++ b/drivers/iio/proximity/vl53l0x-i2c.c
-@@ -352,8 +352,7 @@ static int vl53l0x_probe(struct i2c_client *client)
- 
- 	error = devm_add_action_or_reset(&client->dev, vl53l0x_power_off, data);
- 	if (error)
--		return dev_err_probe(&client->dev, error,
--				     "Failed to install poweroff action\n");
-+		return ret;
- 
- 	indio_dev->name = "vl53l0x";
- 	indio_dev->info = &vl53l0x_info;
-diff --git a/drivers/iio/temperature/mlx90635.c b/drivers/iio/temperature/mlx90635.c
-index f7f88498ba0e..1175c7887ae1 100644
---- a/drivers/iio/temperature/mlx90635.c
-+++ b/drivers/iio/temperature/mlx90635.c
-@@ -977,8 +977,7 @@ static int mlx90635_probe(struct i2c_client *client)
- 	ret = devm_add_action_or_reset(&client->dev, mlx90635_disable_regulator,
- 				       mlx90635);
- 	if (ret < 0)
--		return dev_err_probe(&client->dev, ret,
--				     "failed to setup regulator cleanup action\n");
-+		return ret;
- 
- 	ret = mlx90635_wakeup(mlx90635);
- 	if (ret < 0)
-@@ -986,8 +985,7 @@ static int mlx90635_probe(struct i2c_client *client)
- 
- 	ret = devm_add_action_or_reset(&client->dev, mlx90635_sleep, mlx90635);
- 	if (ret < 0)
--		return dev_err_probe(&client->dev, ret,
--				     "failed to setup low power cleanup\n");
-+		return ret;
- 
- 	ret = regmap_read(mlx90635->regmap_ee, MLX90635_EE_VERSION, &dsp_version);
- 	if (ret < 0)
 
 base-commit: 260f6f4fda93c8485c8037865c941b42b9cba5d2
 -- 
