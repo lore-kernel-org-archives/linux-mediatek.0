@@ -4,86 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA19FC87FCB
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Aug 2025 14:48:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D0D8C87FD3
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Aug 2025 16:52:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VH/RNGwsGxAQ5onQ4CWDXuDU973vpIbBVYO78gN0lAk=; b=B5C7wHaAFcXbcH3xIlT19yqzDA
-	tOyp9WEzjkO90E4mrwljJyr5JPzbga+D/nfhQxzhhY+0C0DAKmeba+gUBrVKv7kZALO1eTa46GnZu
-	UImkCyEBSWnFPAwFlYFJD90+JMIO6efqKLKCZDI1E/M8QjPb1npvfzo4D5NvoOECkG3iAhuPpKf78
-	gSjBe4dMbtg8cmmmKxJAeCJYYr0lNpZ3Y5XUNrtkSHpZWigvwT6JEq8cniHnHzHnJhcmnBcGmt4sN
-	mGOriyUbOicI9D0QJ75uxqh1A2wpuxe5ZgxootMTD+q0eS7SLNnl0T8qG02Ild/PsqVVVTgof7ymR
-	OCu66g5A==;
+	bh=2hxPoNGqnrfhBrfHS1iu6MjT/Y0C5RkQPJequbXhIKE=; b=3jBpmAkpclBt6NQGTGuLi/C3SD
+	qVyrG0g8WBt5CM8aZwY4c6NMcm9C2zm4oynxfWBpZfwaqblVkXOFuQzMQLaFPMrQ/EFrj3JB7USGL
+	vu/t3wLUMpHZ5p9gBCmFr6yfHSOl+2dsN2l0ueIWA+zAw9SLwOPA5WgiI2aQ/IJ6+sOVTo2lbPAMq
+	63HEyeudX+NxXwP7SHGjE36dpzF/IFvDHKFbztBfX4oIS/QBY0aiIQ5fGImUOeuy8ly1YFu9B9fjv
+	9N4oX2uNpcBEH5VlZDStIQKFj+UtUv6dJ8JiFGNkXkdXprRqH4iJOl7WSOEZDTuOJc0MfCabzmB+l
+	XCLoKPBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ujfRB-0000000FTsR-1NS9;
-	Wed, 06 Aug 2025 14:48:17 +0000
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+	id 1ujhNT-0000000FoCI-2TQT;
+	Wed, 06 Aug 2025 16:52:35 +0000
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ujfMo-0000000FTNf-1JnH
-	for linux-mediatek@lists.infradead.org;
-	Wed, 06 Aug 2025 14:43:48 +0000
-Received: by mail-wr1-x432.google.com with SMTP id ffacd0b85a97d-3b7848df30cso590071f8f.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 06 Aug 2025 07:43:45 -0700 (PDT)
+	id 1ujhKu-0000000Fnlo-49X2;
+	Wed, 06 Aug 2025 16:49:58 +0000
+Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-76858e9e48aso167309b3a.2;
+        Wed, 06 Aug 2025 09:49:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1754491424; x=1755096224; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1754498996; x=1755103796; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=VH/RNGwsGxAQ5onQ4CWDXuDU973vpIbBVYO78gN0lAk=;
-        b=KGVAYpPKwSlK0bqKOzi2wa8GNgU/oAbIdL72l+3nMWXWDhBh4bZc+dKreZSx69/vLS
-         q6jO1dJSKlnfX+RtQ07lw/TXjYIeXf4Y750h2AHb9QwLMu/2VyzX3N+7u2JseoEIkP3l
-         wo1wXQlBQ8AN5HqgX0nvRzpoDKqlZKIKgLW6iaxFBf6iRZuOSSosbgURsGKZWTtADNvC
-         MG0UAIrwK7s1F+Kde1lLQP1AFq+wnhldq+o6nZq4jHuAkSSk1z6hWw69GjvNZOeJCmRl
-         kMoJe5uMo9c+M0LuWXRQfD3ie4RncuRbWAUmDp9r08s2IgLYQWPkCqBitOhRSPF8/t8y
-         27ow==
+        bh=2hxPoNGqnrfhBrfHS1iu6MjT/Y0C5RkQPJequbXhIKE=;
+        b=SJfB7Ko2YKI8zpHipWqXBFa8e1IS+pWRSTHNag1UPAScVAVE6JAF6zx0S5GpTg08Oz
+         iA32p8TKpjqj9y6n1UvyNghbA4ymugEGz35pmpLCcSFw+EemO2wqdtHiWawEPk8akSMo
+         LM/0LhSpLJKn0svbVIxcBWgIHjyNbTLimxBaseS5jtuXTlFcw5g5qhTaiF3IvrQf9Eei
+         1ynVaGb7qo0eRGdCke6omKmjl8CCbw4p5TNWFrXGLluzusO4LswsSDIMJOCt9cvlAAmo
+         CXk8b9ZO6UhwUg1VfG7zd+XFUR8DI6EMMy9f259pDr4Z5DbRXc0gy3awVKoYEwT3jvUU
+         4OJw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1754491424; x=1755096224;
+        d=1e100.net; s=20230601; t=1754498996; x=1755103796;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=VH/RNGwsGxAQ5onQ4CWDXuDU973vpIbBVYO78gN0lAk=;
-        b=lYhqjkxOD4VilLhE+3hyZa30+sNiu+qv/WCdoHAak3x9nQDf3CxPGnrgI0LJ4cPjZp
-         fvgSf+uhZ+fH8YcqQ92VJjoH535NmzqxZzffv2bFF2tKWh4lxYMmGo1GFcqybVLToX+L
-         RmpxF7orTtdxTU8AMA3qSMdMR83INe6yv3EiVWsR3cFMXjtoO80xXqhaN2P8+se/UsfB
-         Qu+TvR0x2oZ+YbRtCcP7waV2FAzwvZDOoD74Jm3Y9fmVjXXZPS720vSGpevAGToZXvdc
-         8Okg0G1w/VVSOZ4CddnUzTs4Q1E18/k05vmzSJ6xWtHD/pEmbcHCBe2OsvR4CwQhnUb8
-         wZ+Q==
-X-Forwarded-Encrypted: i=1; AJvYcCX37Q/PhZp6cFB1E6mOdwyygM+wVyVXhYZNpJe7fDNZnIKnkKQqvp6fq764JHSa46m2L0cZBO2bZ14zpLnoDw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyJ6E86VPKFIr6B00p3orGNE+LGjSdsfAfktJ7RhDGb3DaE9ZxZ
-	MsSYznye1057eU2/wkgYZXRUhpDinesnV9h1FqXEUZHrwiVcstthSXeYxILqUhjvkJ0=
-X-Gm-Gg: ASbGncsB70v+CQHgCXYdvvPp/FpcV33hD3obCKfncWDHJeFs5NHEgVUIT6mkNUHa7Xr
-	xujZ+8yYLhq83nPuQMik/8rsuYaLHABUQcrAy3fZLI28BrnOM3qUaK8WrSRCt+yzXL/IbeWJQCv
-	qZSy+x/FjU+rQmzGQFfMnO/FdZFeBLQPMn0fGjeVCJiQ/rdKg2uXVafgqn6eDYhxWQG1Ot32If9
-	VLTjV2VWV/lOlBuQRQ68adxlJxYwE6rM0mz8PnY0bg4+JJDyOgPG2FJC0JIuBjvloYGez7NXUUj
-	3vHQpUi2wdMi5km8RnrTqv5xvU6WHEKCgNYCfh5TdBrZGGHqaRz00wCllbSyYclo31JX2GsT80s
-	olUqiakYrc0BiwOvOMKgf1zB+k+1i8scmPf7KuHvlREFQTV+ynHTN8hEXJPpI20ld
-X-Google-Smtp-Source: AGHT+IEjopSKCdy7U8FKkZXAjb3CuQDXRTKLcweLWBxM8N+4unfyWADRxJ/f8jD1TFxZal7semg4Og==
-X-Received: by 2002:a05:6000:2c11:b0:3b7:8f3b:1726 with SMTP id ffacd0b85a97d-3b8f430c2f7mr2812824f8f.7.1754491424474;
-        Wed, 06 Aug 2025 07:43:44 -0700 (PDT)
-Received: from localhost (p200300f65f06ab0400000000000001b9.dip0.t-ipconnect.de. [2003:f6:5f06:ab04::1b9])
-        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-3b79c3ac093sm24451789f8f.9.2025.08.06.07.43.43
+        bh=2hxPoNGqnrfhBrfHS1iu6MjT/Y0C5RkQPJequbXhIKE=;
+        b=HXPPSvh2fyIwS8AADRnAlCpvdboFU4OprlKDUR0qrt+UTqSXpfwOgoQshMExxcRqXX
+         lVS3xQhRaGO7lov9IoL3aWM1XOTxaFTdZmm93jQMWuG9FPNpW6PXQNOWVR433kQPeSTt
+         8UPV8J9fvszUXkvlPgGMKmOaSl7H9jrnkFw4taqOTRM6AD4UIVozLt2VhqRci0W/Z6Vj
+         V/p2y4CoBPhthUnhJwtXQgZUzXrVNs0rTLuIvVxqWR/esLrkU3/E0yIRZxFMEEEk1s3g
+         eWChvSGlMPXmvTVsx+PqP+AMaSDim0ZZhAft5ijr06DNyCATR4r/hx+Ydaw1CDGeHELn
+         6Alg==
+X-Forwarded-Encrypted: i=1; AJvYcCV2YjfEBHvYt/hu1Wbh3+E8pnBDMvHEGbXIb8BzPdFsHzxVksJfMSy2P7rLFHvPSaH6hbxD6WdalFpF58MkezuM@lists.infradead.org, AJvYcCWcI7Rw9Gct6kt61s/RKau7GFqcm1dTI41Dx1pt14eyrv3+9iZMLRd4tuFP+RlZfxGY1UKGKTBpOfJdmhi1lpA=@lists.infradead.org
+X-Gm-Message-State: AOJu0YyNEvaOAmXV8tXr0giO3KIQwja95M8MqanjxND+8Oa8PPpubS1v
+	daob4wzb3mvAVAxVnclmMIADgqmwxkLARMhmTID+IpZJaJk+uhtsnswDoZ0cig==
+X-Gm-Gg: ASbGnctbIo2jKX+1HXy060bxUJ8O28g1gFI16gb5yJbflP6t/kFqGp7mDtr7D78C4sX
+	htX8jU6Z03/DIG6QVxYfjQ6XeENatcyHymlvqCH0Jo87oRb7zYaIFKr2i3la1Hh9AU+2DNVllL6
+	KOYOtjV+3wHT/Upids5qgMTftmOs/jINJOR4lrYcuz5/OvAsiZ7FCbK7la24cns8S/9uNUjJPF5
+	/CY8CX+Qk/z1wl2QoDsADMsbuZQ/ACNg2ClxOoCTpE+RPFpyxWpC7Zar+yYS0LWABH3trZXae3K
+	QrKLru/t1dQvqYAN2vuC2iS1OTGBX6yskIk+JoyPBDGokSGDP0HTzTIRhCT0HSmpWblL504/d9+
+	+Dr4HPlZ3z25hVzeT0kk5Fdk=
+X-Google-Smtp-Source: AGHT+IFsccJl+8grrtfEeQECM+TOHiPBar5NCMMdqnb5GEn/iiF9QyTE/qR0isk8lV8PjxYY9tqQWg==
+X-Received: by 2002:a05:6a20:7484:b0:240:750:58f with SMTP id adf61e73a8af0-240314f5ef5mr5388018637.30.1754498995688;
+        Wed, 06 Aug 2025 09:49:55 -0700 (PDT)
+Received: from google.com ([2620:15c:9d:2:f30b:816f:bb8c:fe9f])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-76bcce6f30bsm15918359b3a.16.2025.08.06.09.49.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 06 Aug 2025 07:43:43 -0700 (PDT)
-Date: Wed, 6 Aug 2025 16:43:42 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
+        Wed, 06 Aug 2025 09:49:55 -0700 (PDT)
+Date: Wed, 6 Aug 2025 09:49:52 -0700
+From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v2 0/8] pwm: mediatek: Convert to waveform API
-Message-ID: <dwycjujhxtxgjyjpfsgm6xttrgcskdobtc7dw5sts2fuutcwxi@5v7ekobsjojv>
-References: <20250725154506.2610172-10-u.kleine-koenig@baylibre.com>
+Cc: Julien Massot <julien.massot@collabora.com>, kernel@collabora.com, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, linux-input@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+Subject: Re: [PATCH 1/3] Input: mtk-pmic-keys - MT6359 has a specific release
+ irq
+Message-ID: <akavphbw2wh5vga3eoe6abqdawdssko4cy2sz7oedef4jvzunn@37whg62gmfoh>
+References: <20250801-radxa-nio-12-l-gpio-v1-0-d0840f85d2c8@collabora.com>
+ <20250801-radxa-nio-12-l-gpio-v1-1-d0840f85d2c8@collabora.com>
+ <a9cd33f5-cc37-4a1d-b1fd-094761a146ed@collabora.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="gdu3m3k3aua2dak5"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250725154506.2610172-10-u.kleine-koenig@baylibre.com>
+In-Reply-To: <a9cd33f5-cc37-4a1d-b1fd-094761a146ed@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250806_074346_579838_70C67C79 
-X-CRM114-Status: GOOD (  21.72  )
+X-CRM114-CacheID: sfid-20250806_094957_026126_715D565B 
+X-CRM114-Status: GOOD (  15.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,77 +102,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, Aug 04, 2025 at 10:05:21AM +0200, AngeloGioacchino Del Regno wrote:
+> Il 01/08/25 15:16, Julien Massot ha scritto:
+> > A recent commit in linux-next added support for key events.
+> > However, the key release event is not properly handled: only key press events
+> > are generated, leaving key states stuck in "pressed".
+> > 
+> > This patch ensures that both key press and key release events are properly
+> > emitted by handling the release logic correctly.
+> > 
+> > Note: the code was introduced in linux-next by commit
+> > bc25e6bf032e ("Input: mtk-pmic-keys - add support for MT6359 PMIC keys")
+> > and is not yet present in mainline.
+> > 
+> > Signed-off-by: Julien Massot <julien.massot@collabora.com>
+> 
+> Well, you are effectively fixing the commit that you pointed out, so this needs
+> 
+> Fixes: bc25e6bf032e ("Input: mtk-pmic-keys - add support for MT6359 PMIC keys")
+> 
+> and
+> 
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
---gdu3m3k3aua2dak5
-Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v2 0/8] pwm: mediatek: Convert to waveform API
-MIME-Version: 1.0
+I am really interested in how exactly this was developed, tested, and
+reviewed...
 
-Hello,
+Thanks.
 
-On Fri, Jul 25, 2025 at 05:45:04PM +0200, Uwe Kleine-K=F6nig wrote:
-> here comes v2 of my effort to convert the pwm-mediatek driver to the new
-> waveform API. Changes since (implicit) v1 (available at
-> https://lore.kernel.org/linux-pwm/cover.1751994509.git.u.kleine-koenig@ba=
-ylibre.com/):
->=20
->  - Rebase on top of the latest fix for period and duty setting
->    (https://lore.kernel.org/linux-pwm/20250724210041.2513590-2-u.kleine-k=
-oenig@baylibre.com/)
->=20
->  - Don't report a disabled PWM when the PWM is disabled. Though that
->    seems counter intuitive, this is the only way to allow the consumer
->    to query the minimal period. This wasn't necessary in v1 because back
->    then the driver claimed to provide a non-disabled setting for
->    duty_cycle=3D0 .
->=20
-> As before the patches in the middle don't serve a functional purpose
-> because the last patch removes the changes again. Still I consider it
-> useful because it reduces the last patch to what is needed in such a
-> conversion.
->=20
-> Best regards
-> Uwe
->=20
-> Uwe Kleine-K=F6nig (8):
->   pwm: mediatek: Simplify representation of channel offsets
->   pwm: mediatek: Introduce and use a few more register defines
->   pwm: mediatek: Rework parameters for clk helper function
->   pwm: mediatek: Initialize clks when the hardware is enabled at probe
->     time
->   pwm: mediatek: Implement .get_state() callback
->   pwm: mediatek: Fix various issues in the .apply() callback
->   pwm: mediatek: Lock and cache clock rate
->   pwm: mediatek: Convert to waveform API
-
-i pushed the first 7 patches to pwm/for-nexxt now. I found a twist in
-the conversion to the waveform APIs that I first want to think about a
-bit more. The problem is that a setting with a small duty cycle now
-reports the PWM as disabled. While this is technically correct,
-this isn't helpful to let the consumer find the smallest possible
-period.
-
-Will followup when I left the current rabbit hole.
-
-Best regards
-Uwe
-
---gdu3m3k3aua2dak5
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmiTahsACgkQj4D7WH0S
-/k5qWQf9GMIt2sdEo77P7lLjheoo6iqKh+5H9p8KulcNmovIksZ/n06236dor+ch
-JNG9DV2LJVxV9XOTHD43lXGOS3BnovK0qAyCnF+iQgLd+6Bbx/WpQfhHn0PieqXy
-5jCWDAWc8L8TALhfqb7PssQlScPdTS+PHj0lhDiAMWTuXshENDmO6kKB/dHT5aln
-E/trUXgP9EScJZZWpcyYspwFSGcQqaoM5Z9h1IZZOA8J4+F/epjR7AQ9sdaCQz9a
-+WJygPOPYCRydbojXrekRPA+6c3MphrSXKKR+HS8cOFbG9SlwMRc9DyXTagZ6ehR
-ZkCGiMh3Gfsr5CXjFuiI/Q+lmeKvug==
-=aEYh
------END PGP SIGNATURE-----
-
---gdu3m3k3aua2dak5--
+-- 
+Dmitry
 
