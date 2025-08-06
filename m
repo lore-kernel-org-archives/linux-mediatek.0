@@ -4,78 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BC96C87FD1
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Aug 2025 09:09:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92A8CC87FD1
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Aug 2025 09:48:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RzRjl0wuxO05mFaAmxgC9m8FQ896f26iiNfacinIM/I=; b=Bku2XjUmEerlrYWFfsBhbbbvB9
-	x4Kffv0241A6dYF86w+a18f8hP5YsfR3fUbo1oQgV2Q/0bQ2nupI/Lyn/2hbunP7t7FezZ+1t2kXw
-	o00sqas7Idj0j9Z8AQYagiYZVXWfwpEq6UibaEW8vEDn9pvlu5Rs03BcabatK25hZmHN00zWyjn5c
-	qcEwFhtIst2m0Q1MbC//us4XQzcy6sUvuea6z9RPr6p8azkh3N/loQXZBGrYueHpHxF38sVE0+15y
-	VHyPM0XOF+mvhwIxD+BL8emAlbgOmKB2QL7B5EEWihVnZ7bCFyA6S50HDXJ0iGpLwLrQH9/lQ7Z8k
-	+WArzahA==;
+	bh=TT2EW+nFoojsts8pXQhURUsF+GG5d3347D0vMpJauGQ=; b=m3sMFswJNX69SiqJpEwiPCtiul
+	bLY5rkSw31ECoO9ii+mXkVcZfl36qHazCwvu8fEh+Qo5N24nBsbji2V+W3khcr/QiznH0TAEgbwpD
+	qAbtytmsngrCoILC+I3aOGXtlyVpF8/tBliupp8EJ7w1ZcxnnD/UdvoEBc0EY7TYd9Np+L/AcZa2i
+	mxtzyvYlP501Mf42oGHvwnS1x/mo4RFRHP4b7dU1K6sgZoeOkY0z1IgVwvqo6WY0j0uaLc1J5TQH9
+	3ddW1DLY1J2afdWdUG06/yVhvb97vEsopK5s8+n/oYvgzjYEVNZMTXlsDvMm6s77xk5UaloEy60NH
+	M2wXNodA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uja9k-0000000Ej04-1BTW;
-	Wed, 06 Aug 2025 09:09:56 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ujalI-0000000EozJ-3zha;
+	Wed, 06 Aug 2025 09:48:44 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uja0C-0000000Eh9a-0fnn;
-	Wed, 06 Aug 2025 09:00:06 +0000
-X-UUID: b976c3ae72a311f09eb0dd999d3936bf-20250806
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=RzRjl0wuxO05mFaAmxgC9m8FQ896f26iiNfacinIM/I=;
-	b=nZe+vm3S5NDP2GaHjwISIR6wpwup/82o6i1hvxu11KrOSX7Z4LA5Eei7XsPLTufpgyJR3r6WysKaThP0/7k9CPxsX/Mrk0bMwEPtQNuAixz/VJqVNZdqShBsjrn6YJ2ChzymGojNY8IN4cKA1IH16xOozzAr3thv8iyxH8p78vQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.2,REQID:0e558b4c-9bdc-49f9-be76-caa6473e48ca,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:9eb4ff7,CLOUDID:bb4c2d09-aadc-4681-92d7-012627504691,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:-5,Content:0|15|50,EDM:
-	-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,
-	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: b976c3ae72a311f09eb0dd999d3936bf-20250806
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <friday.yang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 699484847; Wed, 06 Aug 2025 01:59:56 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Wed, 6 Aug 2025 16:59:54 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Wed, 6 Aug 2025 16:59:54 +0800
-From: Friday Yang <friday.yang@mediatek.com>
-To: Yong Wu <yong.wu@mediatek.com>, Krzysztof Kozlowski <krzk@kernel.org>, Rob
- Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Philipp Zabel
-	<p.zabel@pengutronix.de>
-CC: Friday Yang <friday.yang@mediatek.com>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v10 1/2] dt-bindings: memory: mediatek: Add SMI reset and clamp for MT8188
-Date: Wed, 6 Aug 2025 16:59:35 +0800
-Message-ID: <20250806085946.11383-2-friday.yang@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20250806085946.11383-1-friday.yang@mediatek.com>
-References: <20250806085946.11383-1-friday.yang@mediatek.com>
+	id 1ujalF-0000000EoxS-4AFX;
+	Wed, 06 Aug 2025 09:48:43 +0000
+Received: from pendragon.ideasonboard.com (91-158-51-183.elisa-laajakaista.fi [91.158.51.183])
+	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id AD44511EB;
+	Wed,  6 Aug 2025 11:47:48 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1754473669;
+	bh=dBB2uil8xdYuqq7KSR4GUD8VnaNZFEk4RwnSQxJK8VA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=BVgd+rZsh/ZxoGPA94UhjQapWLxk+gRiwJX2O0VIWWSiN8SZXjLCSOE6MZ8Brh1lv
+	 8XpLo+euerZ1zpRgloZxPxWGh/ChUK6DJKXc9a9m4Y+VmYiVxNuicDSagQBdkuQpE4
+	 LSv8nzfk6MdHfJRD3zCZIOhReZsK2sp0LHv5o6aI=
+Date: Wed, 6 Aug 2025 12:48:22 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Hans Verkuil <hverkuil+cisco@kernel.org>
+Cc: Jacopo Mondi <jacopo.mondi@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Devarsh Thakkar <devarsht@ti.com>, Benoit Parrot <bparrot@ti.com>, Hans Verkuil <hverkuil@kernel.org>, Mike Isely <isely@pobox.com>, Hans de Goede <hansg@kernel.org>, Parthiban Veerasooran <parthiban.veerasooran@microchip.com>, Christian Gromm <christian.gromm@microchip.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Alex Shi <alexs@kernel.org>, Yanteng Si <si.yanteng@linux.dev>, Dongliang Mu <dzm91@hust.edu.cn>, Jonathan Corbet <corbet@lwn.net>, Tomasz Figa <tfiga@chromium.org>, Marek Szyprowski <m.szyprowski@samsung.com>, Andy Walls <awalls@md.metrocast.net>, Michael Tretter <m.tretter@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, Bin Liu <bin.liu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Dmitry Osipenko <digetx@gmail.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Mirela Rabulea <mirela.rabulea@nxp.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, Michal Simek <michal.simek@amd.com>, Ming Qian <ming.qian@nxp.com>, Zhou Peng <eagle.zhou@nxp.com>, Xavier Roumegue <xavier.roumegue@oss.nxp.com>, Philipp Zabel <p.zabel@pengutronix.de>, Vikash Garodia <quic_vgarodia@quicinc.com>, Dikshita Agarwal <quic_dikshita@quicinc.com>, Abhinav Kumar <abhinav.kumar@linux.dev>, Bryan O'Donoghue <bryan.odonoghue@linaro.org>, Sylwester Nawrocki <sylvester.nawrocki@gmail.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, Chen-Yu Tsai <wens@csie.org>, Samuel Holland <samuel@sholland.org>, Daniel Almeida <daniel.almeida@collabora.com>, Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Nas Chung <nas.chung@chipsnmedia.com>, Jackson Lee <jackson.lee@chipsnmedia.com>, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Tiffany Lin <tiffany.lin@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>, Jacob Chen <jacob-chen@iotwrt.com>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Heiko Stuebner <heiko@sntech.de>, Detlev Casanova <detlev.casanova@collabora.com>, Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>, =?utf-8?Q?=C5=81ukasz?= Stelmach <l.stelmach@samsung.com>, Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, Andrzej Hajda <andrzej.hajda@intel.com>, Fabien Dessenne <fabien.dessenne@foss.st.com>, Hugues Fruchet <hugues.fruchet@foss.st.com>, Jean-Christophe Trotin <jean-christophe.trotin@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Benjamin Gaignard <benjamin.gaignard@collabora.com>, Steve Longerbeam <slongerbeam@gmail.com>, Maxime Ripard <mripard@kernel.org>, Paul Kocialkowski <paulk@sys-base.io>, Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>, Robert Foss <rfoss@kernel.org>, Todor Tomov <todor.too@gmail.com>, Vladimir Zapolskiy <vladimir.zapolskiy@linaro.org>, Corentin Labbe <clabbe@baylibre.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, Bingbu Cao <bingbu.cao@intel.com>, Tianshu Qiu <tian.shu.qiu@intel.com>, Stanislaw Gruszka <stanislaw.gruszka@linux.intel.com>, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev, linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org, imx@lists.linux.dev, linux-renesas-soc@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev, linux-usb@vger.kernel.org, linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, mjpeg-users@lists.sourceforge.net
+Subject: Re: [PATCH 11/65] media: Replace file->private_data access with
+ custom functions
+Message-ID: <20250806094822.GA24768@pendragon.ideasonboard.com>
+References: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
+ <20250802-media-private-data-v1-11-eb140ddd6a9d@ideasonboard.com>
+ <49e753f4-f626-49ae-bf23-d2aecfcc6282@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <49e753f4-f626-49ae-bf23-d2aecfcc6282@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250806_020004_234295_4EDF4F1D 
-X-CRM114-Status: GOOD (  11.06  )
+X-CRM114-CacheID: sfid-20250806_024842_173971_86CC1AAF 
+X-CRM114-Status: GOOD (  32.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,91 +68,157 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add 'resets' and 'reset-names' properties for SMI LARBs to support
-SMI reset operations.
-On the MediaTek platform, some SMI LARBs are directly connected to
-the SMI Common, while others are connected to the SMI Sub-Common,
-which in turn is connected to the SMI Common. The hardware block
-diagram can be described as follows.
+Hi Hans,
 
-             SMI-Common(Smart Multimedia Interface Common)
-                 |
-         +----------------+------------------+
-         |                |                  |
-         |                |                  |
-         |                |                  |
-         |                |                  |
-         |                |                  |
-       larb0       SMI-Sub-Common0     SMI-Sub-Common1
-                   |      |     |      |             |
-                  larb1  larb2 larb3  larb7       larb9
+On Wed, Aug 06, 2025 at 10:16:37AM +0200, Hans Verkuil wrote:
+> On 02/08/2025 11:22, Jacopo Mondi wrote:
+> > From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> > 
+> > Accessing file->private_data manually to retrieve the v4l2_fh pointer is
+> > error-prone, as the field is a void * and will happily cast implicitly
+> > to any pointer type.
+> > 
+> > Replace all remaining locations that read the v4l2_fh pointer directly
+> > from file->private_data and cast it to driver-specific file handle
+> > structures with driver-specific functions that use file_to_v4l2_fh() and
+> > perform the same cast.
+> > 
+> > No functional change is intended, this only paves the way to remove
+> > direct accesses to file->private_data and make V4L2 drivers safer.
+> > Other accesses to the field will be addressed separately.
+> > 
+> > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> > Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+> > ---
+> >  drivers/media/pci/ivtv/ivtv-driver.h               |  5 ++++
+> >  drivers/media/pci/ivtv/ivtv-fileops.c              | 10 +++----
+> >  drivers/media/pci/ivtv/ivtv-ioctl.c                |  8 +++---
+> >  drivers/media/platform/allegro-dvt/allegro-core.c  |  7 ++++-
+> >  drivers/media/platform/amlogic/meson-ge2d/ge2d.c   |  8 ++++--
+> >  .../media/platform/chips-media/coda/coda-common.c  |  7 ++++-
+> >  .../platform/chips-media/wave5/wave5-helper.c      |  2 +-
+> >  .../media/platform/chips-media/wave5/wave5-vpu.h   |  5 ++++
+> >  drivers/media/platform/m2m-deinterlace.c           |  7 ++++-
+> >  .../media/platform/mediatek/jpeg/mtk_jpeg_core.c   |  7 ++++-
+> >  drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c  |  7 ++++-
+> >  .../media/platform/mediatek/mdp3/mtk-mdp3-m2m.c    |  7 ++++-
+> >  .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c   |  2 +-
+> >  .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h   |  5 ++++
+> >  .../mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c   |  2 +-
+> >  .../mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h   |  5 ++++
+> >  drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c     |  7 ++++-
+> >  drivers/media/platform/nxp/imx8-isi/imx8-isi-m2m.c |  7 ++++-
+> >  drivers/media/platform/nxp/mx2_emmaprp.c           |  7 ++++-
+> >  drivers/media/platform/renesas/rcar_fdp1.c         |  7 ++++-
+> >  drivers/media/platform/renesas/rcar_jpu.c          |  7 ++++-
+> >  drivers/media/platform/rockchip/rga/rga.c          |  3 +--
+> >  drivers/media/platform/rockchip/rga/rga.h          |  5 ++++
+> >  drivers/media/platform/rockchip/rkvdec/rkvdec.c    |  2 +-
+> >  drivers/media/platform/rockchip/rkvdec/rkvdec.h    |  5 ++++
+> >  .../media/platform/samsung/exynos-gsc/gsc-core.h   |  6 +++++
+> >  .../media/platform/samsung/exynos-gsc/gsc-m2m.c    |  6 ++---
+> >  .../media/platform/samsung/exynos4-is/fimc-core.h  |  5 ++++
+> >  .../media/platform/samsung/exynos4-is/fimc-m2m.c   |  2 +-
+> >  drivers/media/platform/samsung/s5p-g2d/g2d.c       |  7 +++--
+> >  .../media/platform/samsung/s5p-jpeg/jpeg-core.c    |  9 +++++--
+> >  drivers/media/platform/samsung/s5p-mfc/s5p_mfc.c   |  6 ++---
+> >  .../platform/samsung/s5p-mfc/s5p_mfc_common.h      |  6 +++++
+> >  drivers/media/platform/st/sti/bdisp/bdisp-v4l2.c   |  7 ++++-
+> >  drivers/media/platform/st/sti/delta/delta-v4l2.c   | 26 +++++++++++-------
+> >  drivers/media/platform/st/sti/hva/hva-v4l2.c       | 31 ++++++++++++----------
+> >  drivers/media/platform/st/sti/hva/hva.h            |  2 --
+> >  drivers/media/platform/st/stm32/dma2d/dma2d.c      |  7 +++--
+> >  drivers/media/platform/sunxi/sun8i-di/sun8i-di.c   |  3 +--
+> >  .../platform/sunxi/sun8i-rotate/sun8i_rotate.c     |  3 +--
+> >  drivers/media/platform/ti/omap3isp/ispvideo.c      |  4 +--
+> >  drivers/media/platform/ti/omap3isp/ispvideo.h      |  6 +++++
+> >  drivers/media/platform/verisilicon/hantro.h        |  5 ++++
+> >  drivers/media/platform/verisilicon/hantro_drv.c    |  3 +--
+> >  drivers/staging/media/imx/imx-media-csc-scaler.c   |  7 ++++-
+> >  drivers/staging/media/meson/vdec/vdec.c            | 24 ++++++-----------
+> >  drivers/staging/media/meson/vdec/vdec.h            |  5 ++++
+> >  drivers/staging/media/sunxi/cedrus/cedrus.c        |  3 +--
+> >  drivers/staging/media/sunxi/cedrus/cedrus.h        |  5 ++++
+> >  drivers/staging/media/sunxi/cedrus/cedrus_video.c  |  5 ----
+> >  50 files changed, 237 insertions(+), 100 deletions(-)
+> > 
+> > diff --git a/drivers/media/pci/ivtv/ivtv-driver.h b/drivers/media/pci/ivtv/ivtv-driver.h
+> > index a6ffa99e16bc64a5b7d3e48c1ab32b49a7989242..cad548b28e360ecfe2bcb9fcb5d12cd8823c3727 100644
+> > --- a/drivers/media/pci/ivtv/ivtv-driver.h
+> > +++ b/drivers/media/pci/ivtv/ivtv-driver.h
+> > @@ -388,6 +388,11 @@ static inline struct ivtv_open_id *fh2id(struct v4l2_fh *fh)
+> >  	return container_of(fh, struct ivtv_open_id, fh);
+> >  }
+> >  
+> > +static inline struct ivtv_open_id *file2id(struct file *filp)
+> > +{
+> > +	return container_of(file_to_v4l2_fh(filp), struct ivtv_open_id, fh);
+> 
+> Why not write:
+> 
+> 	return fh2id(file_to_v4l2_fh(filp));
+> 
+> Same for all other drivers that do this. I prefer to have the contained_of()
+> in just one place.
 
-Signed-off-by: Friday Yang <friday.yang@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Acked-by: Rob Herring <robh@kernel.org>
----
- .../mediatek,smi-common.yaml                  |  2 ++
- .../memory-controllers/mediatek,smi-larb.yaml | 19 +++++++++++++++++++
- 2 files changed, 21 insertions(+)
+Because fh2id gets removed in "[PATCH 57/65] media: ivtv: Access v4l2_fh
+from file". I can use it in this patch and drop it later, would you
+prefer that ?
 
-diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
-index 0762e0ff66ef..3d98c08b2149 100644
---- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
-+++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
-@@ -40,6 +40,7 @@ properties:
-           - mediatek,mt8186-smi-common
-           - mediatek,mt8188-smi-common-vdo
-           - mediatek,mt8188-smi-common-vpp
-+          - mediatek,mt8188-smi-sub-common
-           - mediatek,mt8192-smi-common
-           - mediatek,mt8195-smi-common-vdo
-           - mediatek,mt8195-smi-common-vpp
-@@ -108,6 +109,7 @@ allOf:
-         compatible:
-           contains:
-             enum:
-+              - mediatek,mt8188-smi-sub-common
-               - mediatek,mt8195-smi-sub-common
-     then:
-       required:
-diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
-index 2e7fac4b5094..fc5feb2eac1f 100644
---- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
-+++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
-@@ -70,6 +70,12 @@ properties:
-     description: the hardware id of this larb. It's only required when this
-       hardware id is not consecutive from its M4U point of view.
- 
-+  resets:
-+    maxItems: 1
-+
-+  reset-names:
-+    const: larb
-+
- required:
-   - compatible
-   - reg
-@@ -126,6 +132,19 @@ allOf:
-       required:
-         - mediatek,larb-id
- 
-+  - if:  # only for image, camera and ipe subsys
-+      properties:
-+        compatible:
-+          const: mediatek,mt8188-smi-larb
-+        mediatek,larb-id:
-+          enum:
-+            [ 9, 10, 11, 12, 13, 16, 17, 18, 19, 20 ]
-+
-+    then:
-+      required:
-+        - resets
-+        - reset-names
-+
- additionalProperties: false
- 
- examples:
+> > +}
+> > +
+> >  struct yuv_frame_info
+> >  {
+> >  	u32 update;
+> 
+> <snip>
+> 
+> > diff --git a/drivers/media/platform/allegro-dvt/allegro-core.c b/drivers/media/platform/allegro-dvt/allegro-core.c
+> > index 1f134e08923a528cc676f825da68951c97ac2f25..74977f3ae4844022c04de877f31b4fc6aaac0749 100644
+> > --- a/drivers/media/platform/allegro-dvt/allegro-core.c
+> > +++ b/drivers/media/platform/allegro-dvt/allegro-core.c
+> > @@ -302,6 +302,11 @@ struct allegro_channel {
+> >  	unsigned int error;
+> >  };
+> >  
+> > +static inline struct allegro_channel *file_to_channel(struct file *filp)
+> > +{
+> > +	return container_of(file_to_v4l2_fh(filp), struct allegro_channel, fh);
+> > +}
+> > +
+> >  static inline int
+> >  allegro_channel_get_i_frame_qp(struct allegro_channel *channel)
+> >  {
+> > @@ -3229,7 +3234,7 @@ static int allegro_open(struct file *file)
+> >  
+> >  static int allegro_release(struct file *file)
+> >  {
+> > -	struct allegro_channel *channel = fh_to_channel(file->private_data);
+> > +	struct allegro_channel *channel = file_to_channel(file);
+> 
+> So a file_to_channel inline function was added, but it is used in just one
+> place.
+> 
+> I would prefer to just drop the inline function and instead write:
+> 
+> 	struct allegro_channel *channel = fh_to_channel(file_to_v4l2_fh(file));
+> 
+> If this is needed in two or more places, then the extra inline makes sense,
+> but it is a fairly common pattern that it is only needed in the release function.
+> 
+> Adding a new inline just for that seems overkill to me.
+
+file_to_channel() gets used in more places in "[PATCH 29/65] media:
+allegro: Access v4l2_fh from file", where fh_to_channel() is dropped.
+I'd rather keep it in this patch instead of having to modify the
+allegro_release() function in patch 29/65.
+
+> >  
+> >  	v4l2_m2m_ctx_release(channel->fh.m2m_ctx);
+> >  
+
 -- 
-2.46.0
+Regards,
 
+Laurent Pinchart
 
