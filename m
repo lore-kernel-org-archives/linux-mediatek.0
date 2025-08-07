@@ -4,63 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3D47C87FCF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Aug 2025 13:18:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80074C87FCA
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Aug 2025 13:26:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E+pyRL1mf4rEOP0750MMjAX/7dLLyVVoiUq13m4ewX0=; b=ftfZmXtdhO5FifbTCvcBSzTC5q
-	j8YEhqkAOGVl5+u+WZLca9xqCtjZQS/y+IZFWDYPG8zzf7xgGTHer5yEhyc7Xpq1TH/qoG87DMkGk
-	Lze4a7AVA5Dr0ae0+yBuxZC7Vg2aO2dKfXbCOvgVkSLjlBGbf+VJK7s5zG7pAOj4X9rQYiemEMCMh
-	tr5hquILd+DUpdNA2uFmfWXx9nEJgknVVzeqA6AE7OJ39ktNQonUqq3G/pzcdn9x/44/xn6VqKT2n
-	65efiIoHYAkP+Nxqnyyepp2zVKo7rmtS/8QOUHS5S1L5xzT5cH0U1fT8JsPum3fRKoY0tjTNi5/ER
-	IZq4j1sg==;
+	bh=dHA46DuTY9pFuv3EKrWijSQmC2yks3Je0CkaUrfoHJU=; b=c7Z2Xm/Ik1TxuBPk9834F2Jo1n
+	r9pvdknoE8WUD1EhUe46skcdhU/XnOGlAzMJTDvmfrneO8VC/4qLXtxu5hrzub+NeAVI6T2XLjzAH
+	fYbd2NJOrj3J37Sa6t+j+JXhpZo9+7un6d/XmivUtm5uUMOPPfr43Kk8i1xhyxPwEwhfd6U2PnMEu
+	GP0EnDfqdraZnTWJjJFu7JQFz1ujt63JKge4m9Om3ia2uy3C3S9js7AFiGFC4K86SPMhuXvo7iFf3
+	1vVdSLeKc73R4N0wklkH09rMbPHq60kkx+3GZbmFOJFXeIgyzLWND7JtKNkyFO9/Lj0K28eiPyeS6
+	3znks9Fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uk0W6-00000000g5x-0s0n;
-	Thu, 07 Aug 2025 13:18:46 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1uk0dq-00000000h2e-1n6R;
+	Thu, 07 Aug 2025 13:26:46 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uk0W4-00000000g4c-0pj0;
-	Thu, 07 Aug 2025 13:18:45 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id C5AF55C6748;
-	Thu,  7 Aug 2025 13:18:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5E7EEC4CEEB;
-	Thu,  7 Aug 2025 13:18:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1754572721;
-	bh=jhZGuKs+VTL1EX9JQsLLNKW9dU7Cq1mi1XfmDpxGgmo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=JrXszesK5tUM43V2eGqUN+jLW7uAsSpNpdAmHts3xnx9QnJBpsYabAVOkIMuN0hlu
-	 vzSFO46kPooQ1U2SGy2fglffZP201jX0qjnxVu3is1h2rPaX0wgEZlqC1slHgg6arf
-	 yfim2V/46ZQzB6iWcvcGW/VFgwkYTHHWrZeMvCx5Q571Hhw5KHIT3k0pRTF/MjEovO
-	 ZwltMIlwKlapLaLNAQpAk4dMiYSWyUMDBcDlSWqJ56K+t555RJyDC/bTgOZ+V4Nys1
-	 PFvalFsiCbVAcywS7w3AHHACq/81AbcrBbBOyU/09/Ie/BhylPBBz3NbkFZV04DH0t
-	 fUmdplWqOQxWQ==
-Message-ID: <8c24481d-dfdf-4923-9629-3f6b074c27da@kernel.org>
-Date: Thu, 7 Aug 2025 15:18:19 +0200
+	id 1uk0aq-00000000gcw-1N4p
+	for linux-mediatek@lists.infradead.org;
+	Thu, 07 Aug 2025 13:23:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1754573018;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=dHA46DuTY9pFuv3EKrWijSQmC2yks3Je0CkaUrfoHJU=;
+	b=IKiCcbvWfpXKRHFMSX4zua9l+mOHQna50VO2bNx5yjF6zk1nlPl120t4ZLKQvS3oCRLgo1
+	3KnL8o0Ro9zfTdKFbLulGIZ7AnGgMpYYBIdrpPgVTelaKM5k508M2CjVdzQj+pwOSOonWg
+	+W4+RPK1MAncokoTD5yQynHFDtTX2G4=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-283-Fr4kd03NMkWchkiREcxYzw-1; Thu, 07 Aug 2025 09:23:37 -0400
+X-MC-Unique: Fr4kd03NMkWchkiREcxYzw-1
+X-Mimecast-MFC-AGG-ID: Fr4kd03NMkWchkiREcxYzw_1754573016
+Received: by mail-wr1-f69.google.com with SMTP id ffacd0b85a97d-3b7812e887aso401170f8f.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 07 Aug 2025 06:23:37 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1754573016; x=1755177816;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=dHA46DuTY9pFuv3EKrWijSQmC2yks3Je0CkaUrfoHJU=;
+        b=C2YMrVrLSFKYcmcc/KgahmMjo4KszeKlV21UM/c67NaMpYn2OeINjmN5Q5D1/Vun9V
+         0cZ+AhR5DcNpqWwwpYMBMF63t9DiNgJjHMZpcOjlA1Z2HXlqLxXG3MffKHPiubJgBiBB
+         SxQf8gvbsgnZSoEpgkqXvqIK9TzivVEa9iP7SzSRjvIJno5XpCHnl/QXN13KwPRjAAh/
+         JKarhXcEgfeGzqJTuyLWoi65dLS4nAJLylAApH92n2ulUHDPG0Rc3FNplr8MgqyClUqS
+         ksJ0/Cnk+zY183ofLns2LYS8JPOn90OdKSRLT9FJRBMCY1YQ/fjBi7Y4LoKxE72V4H2H
+         90Jw==
+X-Forwarded-Encrypted: i=1; AJvYcCW/YX6DtfB1ISoX06n+82l3bWVae6PdBCnSLhsiCBK4WJxzGVYuMWKCnKP8mkpGjKbZPRK/d8uDp2HGAkxYlQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwuO7hAw4kWkbEYSIMyCu6RjfrqZPyrdJjHQ47svjxv0WsGH2uw
+	ydaZJ9Qrwn83Y3SqNn1nMPwStV2vwQ3VvKy80EvVjmUaAA3JLAwnJqkh9yGxjSXDVZ2uFWs57wE
+	Zaum8B8F6s5O9YMTs4et8l842Hdp7VBhRARnmGCPR7Y411E1egDSZagKP6x8XbFmqvGLAcH/0oQ
+	==
+X-Gm-Gg: ASbGncuOjyI+PrBuOXLyFIxCWQDA4P/VAeFg2ctWySREEKh2DgRJhbB3+7xG2RB49i+
+	k2DJIJUblMU/ygsTBFACdErEuqmpQZgJSPVZG/QmRH0ELFCgh/AaRLfepRI7gzc9o1KzvFoGexw
+	ZlJGK0tzYXw2IWMUQ4t4pY8XNf0aYD3IyzN/+baA4kU+vA2ptsSPtlNy6vdT5unzXw9RCbowsGQ
+	Ti3EiIILNnezBco5TjQJtXHS3+5gv+BeTXXYiicPOiO8vAVBfNxmbWMrL0RVb0XGI9XJ3YMvEjl
+	kAoGppErVvoW5pk+5bmCdL06ut8DlBDoY0iqH4gmentSseyPcYo5epcmKj1KfziZcJYZdTiznMu
+	M2D8AfnrU0AHvb8utBj970tg=
+X-Received: by 2002:a05:6000:18a9:b0:3b4:9721:2b32 with SMTP id ffacd0b85a97d-3b8f48d4f26mr5474496f8f.10.1754573016394;
+        Thu, 07 Aug 2025 06:23:36 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGK7RPK/BHk+aiKWpB1FOVkMIFKk4URmY7R5cJde+3vREbiJsn51qHzJTF0lGZx3w/Ix4ugKQ==
+X-Received: by 2002:a05:6000:18a9:b0:3b4:9721:2b32 with SMTP id ffacd0b85a97d-3b8f48d4f26mr5474465f8f.10.1754573015962;
+        Thu, 07 Aug 2025 06:23:35 -0700 (PDT)
+Received: from jlelli-thinkpadt14gen4.remote.csb (host-2-102-14-151.as13285.net. [2.102.14.151])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3b79c3c33fesm27226884f8f.29.2025.08.07.06.23.35
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 07 Aug 2025 06:23:35 -0700 (PDT)
+Date: Thu, 7 Aug 2025 14:23:33 +0100
+From: Juri Lelli <juri.lelli@redhat.com>
+To: Kuyo Chang <kuyo.chang@mediatek.com>
+Cc: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>,
+	Vincent Guittot <vincent.guittot@linaro.org>,
+	Dietmar Eggemann <dietmar.eggemann@arm.com>,
+	Steven Rostedt <rostedt@goodmis.org>,
+	Ben Segall <bsegall@google.com>, Mel Gorman <mgorman@suse.de>,
+	Valentin Schneider <vschneid@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] sched/deadline: Add DL server activated message
+Message-ID: <aJSo1bvZ54Kl_vKb@jlelli-thinkpadt14gen4.remote.csb>
+References: <20250805155347.1693676-1-kuyo.chang@mediatek.com>
+ <aJRSmWCJI-GlApsR@jlelli-thinkpadt14gen4.remote.csb>
+ <9f91f77e5f39857aa84373fe1ae504de2a881533.camel@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 58/65] media: zoran: Remove access to __fh
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Jacopo Mondi <jacopo.mondi@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Devarsh Thakkar <devarsht@ti.com>, Benoit Parrot <bparrot@ti.com>, Hans Verkuil <hverkuil@kernel.org>, Mike Isely <isely@pobox.com>, Hans de Goede <hansg@kernel.org>, Parthiban Veerasooran <parthiban.veerasooran@microchip.com>, Christian Gromm <christian.gromm@microchip.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Alex Shi <alexs@kernel.org>, Yanteng Si <si.yanteng@linux.dev>, Dongliang Mu <dzm91@hust.edu.cn>, Jonathan Corbet <corbet@lwn.net>, Tomasz Figa <tfiga@chromium.org>, Marek Szyprowski <m.szyprowski@samsung.com>, Andy Walls <awalls@md.metrocast.net>, Michael Tretter <m.tretter@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, Bin Liu <bin.liu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Dmitry Osipenko <digetx@gmail.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Mirela Rabulea <mirela.rabulea@nxp.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, Michal Simek <michal.simek@amd.com>, Ming Qian <ming.qian@nxp.com>, Zhou Peng <eagle.zhou@nxp.com>, Xavier Roumegue <xavier.roumegue@oss.nxp.com>, Philipp Zabel <p.zabel@pengutronix.de>, Vikash Garodia <quic_vgarodia@quicinc.com>, Dikshita Agarwal <quic_dikshita@quicinc.com>, Abhinav Kumar <abhinav.kumar@linux.dev>, Bryan O'Donoghue <bryan.odonoghue@linaro.org>, Sylwester Nawrocki <sylvester.nawrocki@gmail.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, Chen-Yu Tsai <wens@csie.org>, Samuel Holland <samuel@sholland.org>, Daniel Almeida <daniel.almeida@collabora.com>, Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Nas Chung <nas.chung@chipsnmedia.com>, Jackson Lee <jackson.lee@chipsnmedia.com>, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Tiffany Lin <tiffany.lin@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>, Jacob Chen <jacob-chen@iotwrt.com>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Heiko Stuebner <heiko@sntech.de>, Detlev Casanova <detlev.casanova@collabora.com>, Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>, =?UTF-8?Q?=C5=81ukasz_Stelmach?= <l.stelmach@samsung.com>, Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, Andrzej Hajda <andrzej.hajda@intel.com>, Fabien Dessenne <fabien.dessenne@foss.st.com>, Hugues Fruchet <hugues.fruchet@foss.st.com>, Jean-Christophe Trotin <jean-christophe.trotin@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Benjamin Gaignard <benjamin.gaignard@collabora.com>, Steve Longerbeam <slongerbeam@gmail.com>, Maxime Ripard <mripard@kernel.org>, Paul Kocialkowski <paulk@sys-base.io>, =?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>, Robert Foss <rfoss@kernel.org>, Todor Tomov <todor.too@gmail.com>, Vladimir Zapolskiy <vladimir.zapolskiy@linaro.org>, Corentin Labbe <clabbe@baylibre.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, Bingbu Cao <bingbu.cao@intel.com>, Tianshu Qiu <tian.shu.qiu@intel.com>, Stanislaw Gruszka <stanislaw.gruszka@linux.intel.com>, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev, linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org, imx@lists.linux.dev, linux-renesas-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev, linux-usb@vger.kernel.org, linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, mjpeg-users@lists.sourceforge.net
-References: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
- <20250802-media-private-data-v1-58-eb140ddd6a9d@ideasonboard.com>
- <d8875dea-aa04-41fc-b1b4-519d06ed6cba@kernel.org>
- <20250807123157.GF11583@pendragon.ideasonboard.com>
-From: Hans Verkuil <hverkuil+cisco@kernel.org>
-Content-Language: en-US
-In-Reply-To: <20250807123157.GF11583@pendragon.ideasonboard.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+In-Reply-To: <9f91f77e5f39857aa84373fe1ae504de2a881533.camel@mediatek.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: mdCGU8b-XaOHNtl6MXnakyKBa9BmTgSfcY37R8I3WCs_1754573016
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250807_061844_310144_EB5F5F5E 
-X-CRM114-Status: GOOD (  26.76  )
+X-CRM114-CacheID: sfid-20250807_062340_447878_7BF35AF6 
+X-CRM114-Status: GOOD (  28.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,94 +120,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 8/7/25 14:31, Laurent Pinchart wrote:
-> On Thu, Aug 07, 2025 at 08:58:01AM +0200, Hans Verkuil wrote:
->> On 02/08/2025 11:23, Jacopo Mondi wrote:
->>> The __fh parameter is assigned to an unsued variable. Remove it
->>> and remove the unused struct zoran_fh type.
->>>
->>> Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
->>> ---
->>>  drivers/media/pci/zoran/zoran.h        | 6 ------
->>>  drivers/media/pci/zoran/zoran_driver.c | 3 +--
->>>  2 files changed, 1 insertion(+), 8 deletions(-)
->>>
->>> diff --git a/drivers/media/pci/zoran/zoran.h b/drivers/media/pci/zoran/zoran.h
->>> index 1cd990468d3de9db8b14b72483972041c57bfee2..d05e222b392156bf1b3b4c83c6591db642c3c377 100644
->>> --- a/drivers/media/pci/zoran/zoran.h
->>> +++ b/drivers/media/pci/zoran/zoran.h
->>> @@ -154,12 +154,6 @@ struct zoran_jpg_settings {
->>>  
->>>  struct zoran;
->>>  
->>> -/* zoran_fh contains per-open() settings */
->>> -struct zoran_fh {
->>> -	struct v4l2_fh fh;
->>> -	struct zoran *zr;
->>> -};
->>> -
->>>  struct card_info {
->>>  	enum card_type type;
->>>  	char name[32];
->>> diff --git a/drivers/media/pci/zoran/zoran_driver.c b/drivers/media/pci/zoran/zoran_driver.c
->>> index f42f596d3e6295e31e3b33cd83c5f7243911bd30..ec7fc1da4cc02f5a344cb49bb9a783c41c758195 100644
->>> --- a/drivers/media/pci/zoran/zoran_driver.c
->>> +++ b/drivers/media/pci/zoran/zoran_driver.c
->>> @@ -511,12 +511,11 @@ static int zoran_s_fmt_vid_cap(struct file *file, void *__fh,
->>
->> This driver uses __fh as the name for the second argument of the ioctl
->> callbacks. Can you take this opportunity to rename it to either 'fh' or 'priv'?
+On 07/08/25 15:52, Kuyo Chang wrote:
+> On Thu, 2025-08-07 at 08:15 +0100, Juri Lelli wrote:
+> > 
+> > External email : Please do not click links or open attachments until
+> > you have verified the sender or the content.
+> > 
+> > 
+> > Hi,
+> > 
+> > On 05/08/25 23:53, Kuyo Chang wrote:
+> > > From: kuyo chang <kuyo.chang@mediatek.com>
+> > > 
+> > > The DL server is introduced as a replacement for realtime
+> > > throttling.
+> > > When RT throttling is activated, a message
+> > > "sched: RT throttling activated" is shown. However, it is currently
+> > > difficult for users to know when the DL server is activated.
+> > > 
+> > > This patch adds a similar message to indicate when the DL server
+> > > is activated, which helps users debug RT/CFS contention issues.
+> > > 
+> > > Signed-off-by: kuyo chang <kuyo.chang@mediatek.com>
+> > > ---
+> > >  kernel/sched/deadline.c | 3 +++
+> > >  1 file changed, 3 insertions(+)
+> > > 
+> > > diff --git a/kernel/sched/deadline.c b/kernel/sched/deadline.c
+> > > index e2d51f4306b3..8e0de6cdb980 100644
+> > > --- a/kernel/sched/deadline.c
+> > > +++ b/kernel/sched/deadline.c
+> > > @@ -2042,6 +2042,9 @@ enqueue_dl_entity(struct sched_dl_entity
+> > > *dl_se, int flags)
+> > >       }
+> > > 
+> > >       __enqueue_dl_entity(dl_se);
+> > > +
+> > > +     if (dl_server(dl_se))
+> > > +             printk_deferred_once("sched: dl_server activated\n");
+> > >  }
+> > 
+> > Not sure if we want/need this, but, if we do, I believe
+> > fair_server_pick_task() might be a better place to put it, as it's
+> > really when the dl-server is called to do its job.
+> > 
 > 
-> It's a bit of yak shaving, but not too difficult so it will be addressed
-> in the next version (Jacopo already wrote the patches, thanks).
+> Thanks for your suggestion, maybe the minor patch as below
 > 
->> Generally it's not a good idea to prefix variables with __ for no good reason.
->>
->> Grepping for __fh also shows two other drivers:
->>
->> drivers/media/platform/chips-media/coda/coda-common.c:#define fh_to_ctx(__fh)   container_of(__fh, struct coda_ctx, fh)
->> drivers/media/platform/samsung/s5p-mfc/s5p_mfc_common.h:#define fh_to_ctx(__fh) container_of(__fh, struct s5p_mfc_ctx, fh)
->>
->> I think it is a good idea to rename __fh to fh there as well.
-> 
-> That can't be done, otherwise things like
-> 
-> #define fh_to_ctx(fh)	container_of(fh, struct coda_ctx, fh)
-> 
-> static inline struct coda_ctx *file_to_ctx(struct file *filp)
-> {
-> 	return fh_to_ctx(file_to_v4l2_fh(filp));
-> }
-> 
-> will expand in the file_to_ctx() function to
-> 
-> 	return container_of(file_to_v4l2_fh(filp), struct coda_ctx, file_to_v4l2_fh(filp))
+> diff --git a/kernel/sched/deadline.c b/kernel/sched/deadline.c
+> index e2d51f4306b3..82d1091e56f5 100644
+> --- a/kernel/sched/deadline.c
+> +++ b/kernel/sched/deadline.c
+> @@ -2395,6 +2395,7 @@ static struct task_struct *__pick_task_dl(struct
+> rq *rq)
+>  			goto again;
+>  		}
+>  		rq->dl_server = dl_se;
+> +		printk_deferred_once("sched: dl_server activated\n");
 
-If the fh_to_ctx #define is changed to a static inline, then there is no problem.
-
-That said, it is overkill.
-
-Regards,
-
-	Hans
-
-> 
-> We could rename the __fh argument to vfh or v4l2fh, but I think __fh is
-> equally good there. It's just the macro argument name.
-> 
->>>  			       struct v4l2_format *fmt)
->>>  {
->>>  	struct zoran *zr = video_drvdata(file);
->>> -	struct zoran_fh *fh = __fh;
->>>  	int i;
->>>  	int res = 0;
->>>  
->>>  	if (fmt->fmt.pix.pixelformat == V4L2_PIX_FMT_MJPEG)
->>> -		return zoran_s_fmt_vid_out(file, fh, fmt);
->>> +		return zoran_s_fmt_vid_out(file, __fh, fmt);
->>>  
->>>  	for (i = 0; i < NUM_FORMATS; i++)
->>>  		if (fmt->fmt.pix.pixelformat == zoran_formats[i].fourcc)
-> 
+Guess it could work. If we are going to add this, maybe printing
+information about the task dl-server is servicing might also be
+interesting.
 
 
