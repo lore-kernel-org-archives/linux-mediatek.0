@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3D1EC87FD2
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Aug 2025 10:39:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E92FC87FD2
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Aug 2025 10:41:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=x0K3+43zKGze8mYucUDC2u0OFle6TSKgLahUYLh2Ylk=; b=cAGCmqiuGvPQejF0u3p6Kzg9zD
-	EfcR7jgFl3BDKSdcFx79OZP7qY6C0gIeXR3nQMeGeCPR6ePoeHwNCXCJI08MtZYEo8QCj5p8MPAnT
-	Ciyxx06eU77H3pZNmASajB/4BWvAQ6TC4u8TNAPwHZRb23WsQC1hEad8/FgUyve710fkfwih2qhjW
-	BIBxg5j4ImfcMK3Ugib5iMzRL5jpa6lMYIgeO2fabwwnyG+EKDBbIw1TwSIPy2ofQSXAIxd2IFDVv
-	jNCs/1bhRPDE6a4JKX2ERRqvY2RFnf3j+Ciu32H2RErAmnvT6t1jZ39wKr1CFiXyM1UQXerrPHfkC
-	xJXt4uqA==;
+	bh=WHykHU7ZktkDGrunlHbRMFoc/P98DxI8CLqC90mI5aA=; b=dGxVhhb8lgH7+1eRAuYDbAcTZc
+	VJmCfu89fFXPrFUOpaOwgVurvERJ7B9xiWcVyo18emwhrDV4KchKTA46wHWeVSFLLCGFyo5wtuexX
+	OAw7GIJcBastUR0ChtTWcFxbckxfwCGZN0e0mbluH8p4bI5V/WxME3wp712x0m4BNahq2ago6eynP
+	ToSPbfdQaeORkjZJxiPDTyaig98RWw1c2fBRW4VBO3mlSd8CXoI8qIMK7Ku5L/5ItdBqGc5MQVGHp
+	7NdUsZvK96ruLEfaUKJDgG5mbdSM1aSdRxUez7CEKN+P+cWPZwFgdNnHUdWSs1DTDiKMGBJUrOxAR
+	B7rIJs5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ukKV8-00000002a7Y-3R7j;
-	Fri, 08 Aug 2025 10:39:06 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1ukKXa-00000002aMZ-3apV;
+	Fri, 08 Aug 2025 10:41:38 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ukK6M-00000002XBx-1HTC;
+	id 1ukK6M-00000002XBo-198D;
 	Fri, 08 Aug 2025 10:13:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1754648008;
-	bh=fvVq52XFZbXufV8NpV5VFjgBa+WEI639gcHsO/EucdM=;
+	bh=EGx3yE8rfdW+AiowBjEmyHsbvFWWmYRTHvFW44bdB6E=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=qD2qnHxqMOTia4EYiwEFN+JUi8LJ0+KgNvlUAPSZDLMSnN1eVL+R3tH9xeTxc+iCl
-	 dYD23J43GC059rikD4LkM666ogTFhxU8xStflrc7y9uulAhBNhf4Fzo57/7mjyT109
-	 akgU7EgbHVZ0AiVT4XjsQ0kNsGANE+Ltx3YKrayn27mXCOyj2i2kMTEgJ6NREKvCXW
-	 h3FI0rjPrQ7QlD7NnC2ACXdC9bMh6aYzeua8shjeCqPcBxQEags7axMwlYI/GFcndR
-	 K8dxaoASnhuP/5llD1+0ehUjHen6Yo+7hOikioW7YCl7cSjrpqHxleLDhG6PrTqflX
-	 ozepQM56d0/bg==
+	b=WYSgl12YrPQWvkntXNq/enVIK8f5Ogoig3DPvtuOTwwp6RafopzJJz4c3hr2yVeKE
+	 EenCETbyhW3flpLC+eKI4o9wu+LMBa/AjRg8vM3231Zp5egTfnbmIjPeWMi0AQ+I0x
+	 xJVJxuHPcsbvzGJrMDeafX1oiPRXpZzg8mdbvi/TSdEctSYIJnUDMzZJahn/xXROu7
+	 y8mR+8SJYlwA1sZYrAJ+cEK7KFcu5ttbu/EBdyLC3pp81ooYX2G/DGhXxQFHDFkqHc
+	 sFyieTzBszZw1+mdGNCiLjqZeeDpi0pdJsVsjBTG8OYv/hMcw7LAeKwsH9byPsafMz
+	 r2oRg58RbkStA==
 Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 641DF17E00A3;
-	Fri,  8 Aug 2025 12:13:28 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B084217E132A;
+	Fri,  8 Aug 2025 12:13:27 +0200 (CEST)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Fri, 08 Aug 2025 12:12:18 +0200
-Subject: [PATCH v10 08/10] drm/mediatek: mtk_hdmi_common: Add var to enable
- interlaced modes
+Date: Fri, 08 Aug 2025 12:12:17 +0200
+Subject: [PATCH v10 07/10] drm/mediatek: mtk_hdmi_common: Add OP_HDMI if
+ helper funcs assigned
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250808-mediatek-drm-hdmi-v2-v10-8-21ea82eec1f6@collabora.com>
+Message-Id: <20250808-mediatek-drm-hdmi-v2-v10-7-21ea82eec1f6@collabora.com>
 References: <20250808-mediatek-drm-hdmi-v2-v10-0-21ea82eec1f6@collabora.com>
 In-Reply-To: <20250808-mediatek-drm-hdmi-v2-v10-0-21ea82eec1f6@collabora.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
@@ -63,16 +63,16 @@ Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
  linux-arm-kernel@lists.infradead.org, 
  Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1754648002; l=1712;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1754648002; l=1902;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=F9CodMOckHFmVHgyCUyMC6SuXyKYebONAVjqKAzRLSY=;
- b=fnkaGNGHjtzzQnU19IfNtb/NPvgIS2ntw8HOnjzL0wvpsCMrsL/JenMyWPMGo0NmRGALmdFCd
- yYTpqOaVNfCAoENQpLdzv8C6bJfPAiIPs851JvTJKSjeoi3E+HLE7zb
+ bh=VFgIkvVzJkA3pH1XUiXTo9X/HXrtyxZhRMF4j8V/Alg=;
+ b=sqyNimNTio89XgmkCZ4TDb3/csaRfDrYegf5ikdYGugP1m5WGZZS4gkK5UlR4Ux+skPTuwIqw
+ HEZr9kQyaavDWlRWFB+5OG0YiOt2gozRAz0A4ds1Nq7Bkeah2au5Jhb
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250808_031330_533196_912B852E 
-X-CRM114-Status: GOOD (  10.13  )
+X-CRM114-CacheID: sfid-20250808_031330_488168_A37A50FC 
+X-CRM114-Status: GOOD (  11.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,42 +89,46 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Add an interlace_allowed bool member to struct mtk_hdmi_ver_conf
-which will be used to signal whether interlaced modes are supported
-by the bridge (in our case, the HDMI IP), and enable it for HDMIv2.
+In preparation for adding the HDMI TX v2 driver, and to allow
+a future modernization of the HDMI v1 one, perform changes
+that enable the usage of the HDMI Helpers provided by DRM.
+
+Check if the HDMI driver provides the function pointers to
+hdmi_{clear,write}_infoframe used by the HDMI Helper API and,
+if present, add DRM_BRIDGE_OP_HDMI to the drm_bridge ops,
+enabling the drm API to register the bridge as HDMI and to use
+the HDMI Helper functions.
+
+If the hdmi_{write,clear}_infoframe pointers are not assigned,
+vendor and product strings and HDMI helpers will not be used,
+hence this commit brings no functional changes to drivers that
+have not been refactored to use the new helpers.
+
+This also means that, in the current state, there is effectively
+no functional change to mtk_hdmi and its other components.
 
 Reviewed-by: CK Hu <ck.hu@mediatek.com>
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- drivers/gpu/drm/mediatek/mtk_hdmi_common.c | 1 +
- drivers/gpu/drm/mediatek/mtk_hdmi_common.h | 1 +
- 2 files changed, 2 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_hdmi_common.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_common.c b/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
-index be63f33d39bfd4625a5f1edd83c873cc20ac0018..38986ab61795c22b5b0659ad2ca258b923034a34 100644
+index 3b589706d61b1e0e4aa66d0c81253b8aeb70c0d3..be63f33d39bfd4625a5f1edd83c873cc20ac0018 100644
 --- a/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
 +++ b/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
-@@ -421,6 +421,7 @@ struct mtk_hdmi *mtk_hdmi_common_probe(struct platform_device *pdev)
+@@ -413,6 +413,10 @@ struct mtk_hdmi *mtk_hdmi_common_probe(struct platform_device *pdev)
+ 	hdmi->bridge.ops = DRM_BRIDGE_OP_DETECT | DRM_BRIDGE_OP_EDID
+ 			 | DRM_BRIDGE_OP_HPD;
+ 
++	if (ver_conf->bridge_funcs->hdmi_write_infoframe &&
++	    ver_conf->bridge_funcs->hdmi_clear_infoframe)
++		hdmi->bridge.ops |= DRM_BRIDGE_OP_HDMI;
++
+ 	hdmi->bridge.type = DRM_MODE_CONNECTOR_HDMIA;
  	hdmi->bridge.ddc = hdmi->ddc_adpt;
  	hdmi->bridge.vendor = "MediaTek";
- 	hdmi->bridge.product = "On-Chip HDMI";
-+	hdmi->bridge.interlace_allowed = ver_conf->interlace_allowed;
- 
- 	ret = devm_drm_bridge_add(dev, &hdmi->bridge);
- 	if (ret)
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_common.h b/drivers/gpu/drm/mediatek/mtk_hdmi_common.h
-index d3de8afff40f2b1a16e87b157859c04109b6da9f..38d1bdf4c77e4f6684473abec0e8c1e6ddc7db0f 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi_common.h
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi_common.h
-@@ -131,6 +131,7 @@ struct mtk_hdmi_ver_conf {
- 	const struct hdmi_codec_ops *codec_ops;
- 	const char * const *mtk_hdmi_clock_names;
- 	int num_clocks;
-+	bool interlace_allowed;
- };
- 
- struct mtk_hdmi_conf {
 
 -- 
 2.50.1
