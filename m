@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15180C87FD2
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Aug 2025 13:03:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FBCCC87FD3
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Aug 2025 13:06:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zb0X9rsG3JIYIPOyvzWRp7JVFlE1RlMq58lAXqHni3A=; b=CG5ui23xJ8ODCTMqXxqshcd8ca
-	Pb9AB5sTx5UOqBFsFrVPg53juRmo6kwKoB7fS5md39XneqV9I2e9hYW+YidSwRvzLLIJr6zOOzQbl
-	5gLwjxCqK4Jx1Wqo1Xk7tTh+KF0oKhBEh0XXVyOZkst4xk6ERV/Iv/PMnUrShqdSFiX74OIw7YeZl
-	96/uny7cvcVnpx0WQhgnF4MeDAsbPMjgmaVetAaf1zD1MZm3y+JpCu8A7kOeYTcPs+lIuNjBiYp69
-	Q1dAZDDy+3dakj+wNGPYpy2sM1GykzsYR6ZPnY3wxionxiZB/ng+NnBuV/2vK8DxIYU9AyBXzgyYB
-	40oHcsQg==;
+	bh=xaE7a1WlCpQG5LbP5mkDzB5O43tR9+ymx9MnqHR0iHc=; b=O25puArt7LeedxnDxYMRP/M6CY
+	47gcgEvxCAl1TVQsbPqOaaF+D2iXOxbensHPXbK+wBf0f25yHjq7BH0uwNoGGjqCodIu8llC/GElu
+	tsR3B8smveIru0U0yizH9w0ynREEI6DqNe+y4FWhLYDe6e6vlubKneYwc1n1OSumds8lnGkve4vVP
+	8VAAUINGT464ofV260nwWyeONCi2HG7D6vE6dmF0ftRa4IXywPmj26QrT5chVNlCSqJej7z0zNwwI
+	fk007Yqzd9ZbEloeUgzAt389wcKQxs9rGOWY4qwzZVQ5Mtlf7EWSJe43bnH/fy89ObpscgI4emz5u
+	Jzarj1CA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ukMkr-00000002sGr-1hLU;
-	Fri, 08 Aug 2025 13:03:29 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ukMnL-00000002sW7-1zXo;
+	Fri, 08 Aug 2025 13:06:03 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ukMej-00000002rGG-3ZkL;
-	Fri, 08 Aug 2025 12:57:11 +0000
-X-UUID: 3098eea8745711f09eb0dd999d3936bf-20250808
+	id 1ukMeo-00000002rI3-2QLC;
+	Fri, 08 Aug 2025 12:57:15 +0000
+X-UUID: 32343934745711f09f706fa2197c6ceb-20250808
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=zb0X9rsG3JIYIPOyvzWRp7JVFlE1RlMq58lAXqHni3A=;
-	b=sxWP2WNLwIgf+GlGre3NaLu0PnHYtOTnsyj91t7NcFwnxyGhtywMgDpqbph68MIzpVERdWVe1HNTZAnpn8vJrH6zTjuFp6ubc7y6aYtF6Twa6bHuiv2saqfpRKT98l7OVVcPn59qOrZmgH14EuH4EEDCSiDsgdG8r21eh52bPb4=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=xaE7a1WlCpQG5LbP5mkDzB5O43tR9+ymx9MnqHR0iHc=;
+	b=HRYjc71KTMfEBOF00J40q/iigNHvrUFl9WY4bO2H/9TOu2Gnxb3ZT96M7q8VG+EJYklxDzOrbT8WDiWraPN3AO/cvy0jVrsrQnqBbKra5uYYZo1244HSN4OWi6BJRy86yW3Rrk0L8Gl2qrqB6tTM4zEKS+7vOPDCKKoGGUKwDmI=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.3,REQID:ddc4afa6-ec32-4968-8fed-46e2804814cd,IP:0,UR
+X-CID-O-INFO: VERSION:1.3.3,REQID:aa20583d-2b0d-4b79-ad94-f8221f393614,IP:0,UR
 	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
 	elease,TS:0
-X-CID-META: VersionHash:f1326cf,CLOUDID:891d3ca1-1800-4e4f-b665-a3d622db32cf,B
+X-CID-META: VersionHash:f1326cf,CLOUDID:178d3551-d89a-4c27-9e37-f7ccfcbebd5b,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:-5,Content:0|15|50,EDM:
 	-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,
 	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -42,18 +42,18 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 3098eea8745711f09eb0dd999d3936bf-20250808
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+X-UUID: 32343934745711f09f706fa2197c6ceb-20250808
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
 	(envelope-from <jay.liu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1084294095; Fri, 08 Aug 2025 05:57:07 -0700
+	with ESMTP id 541157041; Fri, 08 Aug 2025 05:57:10 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Fri, 8 Aug 2025 20:57:02 +0800
+ 15.2.1258.39; Fri, 8 Aug 2025 20:57:06 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Fri, 8 Aug 2025 20:57:01 +0800
+ 15.2.1258.39 via Frontend Transport; Fri, 8 Aug 2025 20:57:04 +0800
 From: Jay Liu <jay.liu@mediatek.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
 	<p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, Simona Vetter
@@ -66,9 +66,9 @@ To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
 CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, Jay Liu <jay.liu@mediatek.com>
-Subject: [PATCH v3 2/6] dt-bindings: display: mediatek: dither: Add support for MT8196
-Date: Fri, 8 Aug 2025 20:53:57 +0800
-Message-ID: <20250808125512.9788-3-jay.liu@mediatek.com>
+Subject: [PATCH v3 3/6] dt-bindings: display: mediatek: ccorr: Add support for MT8196
+Date: Fri, 8 Aug 2025 20:53:58 +0800
+Message-ID: <20250808125512.9788-4-jay.liu@mediatek.com>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20250808125512.9788-1-jay.liu@mediatek.com>
 References: <20250808125512.9788-1-jay.liu@mediatek.com>
@@ -76,8 +76,9 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250808_055709_901574_046B70F2 
-X-CRM114-Status: GOOD (  10.02  )
+X-CRM114-CacheID: sfid-20250808_055714_616845_3DED2302 
+X-CRM114-Status: UNSURE (   9.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,28 +93,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a compatible string for the DITHER IP found in the MT8196 SoC.
-Each DITHER IP of this SoC is fully compatible with the ones found
-in MT8183.
+Add a compatible string for the CCORR IP found in the MT8196 SoC.
+Each CCORR IP of this SoC is fully compatible with the ones found
+in MT8192.
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Jay Liu <jay.liu@mediatek.com>
 ---
- .../devicetree/bindings/display/mediatek/mediatek,dither.yaml    | 1 +
+ .../devicetree/bindings/display/mediatek/mediatek,ccorr.yaml     | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
-index abaf27916d13..25ef7d0c2a2b 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
-@@ -30,6 +30,7 @@ properties:
-               - mediatek,mt8188-disp-dither
-               - mediatek,mt8192-disp-dither
-               - mediatek,mt8195-disp-dither
-+              - mediatek,mt8196-disp-dither
-               - mediatek,mt8365-disp-dither
-           - const: mediatek,mt8183-disp-dither
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
+index fca8e7bb0cbc..581003aa9b9c 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
+@@ -32,6 +32,7 @@ properties:
+               - mediatek,mt8186-disp-ccorr
+               - mediatek,mt8188-disp-ccorr
+               - mediatek,mt8195-disp-ccorr
++              - mediatek,mt8196-disp-ccorr
+           - const: mediatek,mt8192-disp-ccorr
  
+   reg:
 -- 
 2.46.0
 
