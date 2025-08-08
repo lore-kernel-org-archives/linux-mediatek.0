@@ -4,81 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7371BC87FD2
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Aug 2025 13:11:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BAB9C87FD2
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Aug 2025 13:16:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F7/5iPlMS2Eikv0pSJnmqFU+Hn3Pmxuqd3z8Jpy57g0=; b=cFX+Z3jk+ZmR9OdadhIyMwt0FU
-	vJqrwIY2gHRy0aGhsECL8oPHSSQVqrZmMa4U4MBewuq9kgGbSvngtdmU1t1LbCtXiDOooEswo7+FR
-	X2Xpz1QdtTxeKbV2slNkeB3Ks/ze7ijWyjC1a94XCFnWWrQo1W25Mc9NFF0b/4zF47zO+7m3by+JY
-	+el2wLkktSDwxVI9d25EC2ZXUa6yAWNZEBlptwGa2ybHKekOHEo9P9RlW6SDQyqXmoX3M7ojokFbK
-	uulwerK2MSsJdydYTstfRhuDnVdvBNVSJxVH39fqT2Dek3c+anvboqnCxpLovGFF32C2wKHNDIEVA
-	p1RjqY3A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:MIME-Version:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=1G84+v4zX75P6WqTk0EXQj0TqNSq6e+rkwRaOXJCVZ4=; b=vlG5olpxnVmqKnrWrl7+SMVCKD
+	BM6TjRxWSVVffabX57cUyyMQhEJO0sZM8YU22Y1zppozHrVxjmJhR6vIKsA3ut/2jYLqUU8mxh10s
+	Dsvz7HRCkh8+scx5sINQmBNV4M4MJyFaq/+bst821ipT4/ns0Ss6nD1WC/1MUo9ZB/TdYHmcjC5PJ
+	gfrTbjmtTH4FtPresTiv4DCRC1GCuUpXBf4+pXx0OPIAFj7FN+ulsGnepZN2fgvXtK9egh5sL6CLd
+	ROMsCYiVuEmGz5NVwP8qoP2OPtCI3ABB6+Z30B/bm3/aaJGwaeApYB86uPdfN5UZ1VDSXj4Z5ygC2
+	mG0HCrMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ukMsL-00000002t9A-1Pby;
-	Fri, 08 Aug 2025 13:11:13 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ukMxK-00000002tvK-0jub;
+	Fri, 08 Aug 2025 13:16:22 +0000
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ukMey-00000002rKo-3lec;
-	Fri, 08 Aug 2025 12:57:26 +0000
-X-UUID: 384d9ff4745711f09eb0dd999d3936bf-20250808
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=F7/5iPlMS2Eikv0pSJnmqFU+Hn3Pmxuqd3z8Jpy57g0=;
-	b=WDDv0CS8dx/LXnWRh3lSzkR3sK7Jex9b9biqzx7cBDVmtJHnaa+2X4ZxGQAGbJ4oQZB5eKm5xua+ueEquLINf/8Cm9H8jT6xLFyEH+u/iCU/SpUl6H03lF2GiwqZeQLAyLu0yS+xUb2ZNAMC8h736JMaXGLVTrEUCbjOLy06GT8=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.3,REQID:088b2808-46df-4d32-941c-bca30bd6a19f,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:f1326cf,CLOUDID:4ae935ce-1ac4-40cd-97d9-e8f32bab97d5,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:-5,Content:0|15|50,EDM:
-	-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,
-	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 384d9ff4745711f09eb0dd999d3936bf-20250808
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <jay.liu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1933998101; Fri, 08 Aug 2025 05:57:20 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Fri, 8 Aug 2025 20:57:15 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Fri, 8 Aug 2025 20:57:14 +0800
-From: Jay Liu <jay.liu@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
-	<p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, Simona Vetter
-	<simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, Jay Liu <jay.liu@mediatek.com>, CK Hu
-	<ck.hu@mediatek.com>
-Subject: [PATCH v3 6/6] drm/mediatek: Add TDSHP component support for MT8196
-Date: Fri, 8 Aug 2025 20:54:01 +0800
-Message-ID: <20250808125512.9788-7-jay.liu@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20250808125512.9788-1-jay.liu@mediatek.com>
-References: <20250808125512.9788-1-jay.liu@mediatek.com>
+	id 1ukMvz-00000002toX-3aOX
+	for linux-mediatek@lists.infradead.org;
+	Fri, 08 Aug 2025 13:15:01 +0000
+Received: by mail-ed1-x530.google.com with SMTP id 4fb4d7f45d1cf-60bfcada295so3502802a12.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 08 Aug 2025 06:14:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1754658898; x=1755263698; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=1G84+v4zX75P6WqTk0EXQj0TqNSq6e+rkwRaOXJCVZ4=;
+        b=jpZYZ7GL1Kc/xQifKm3pZU5k9jCVZM/kxXeUiL96Kq/LqD7vPHIKU3Gkyk+BZdopOL
+         JEtt8NwPiVq3Bhnq9t9xdV092+nc+w/ksI0VHqm2Gs3EFse1ERtqJBEbbD3JRcp8lqdU
+         kIlllXWVGxayylEgPVpBtBeU6tia5dpohoI/8+HonMXFWs3O8AGJzae8+nDMFmBwIYDO
+         b+6reJwFAljl1elmwr/lt7NPHpyZs9ycAbW43w1N0lqfN5OPs/tnPuxShDJVr82aWYoX
+         7iliwRWNr441nE6A9a2HL0kkhoVTukldOJf97OqbUatYRBrFqev6r09ywkUELaxIK/UE
+         IRbQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1754658898; x=1755263698;
+        h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=1G84+v4zX75P6WqTk0EXQj0TqNSq6e+rkwRaOXJCVZ4=;
+        b=LwZ0J79Yf1qsLM0+m6xjeczpK8mk2Ikc3CR80QcYfWCvsvL+QeIXi702T1F3lk3wRA
+         vmdsQT9d0EdgAIcfc4L+9MgKNc+YD7hbddEWsZFRjC210mhTotArqIql3zghM7KiTwcc
+         TSPvkzE/fM0ooWjhe/l8BaxdJlwxH/lEEj9Z0QpXWBMOSGA6HI3ZtAsc6jnmdrycL8BK
+         JqlyYi3q6n4r80zfHQv38gLHUGIC7LSV/1Tig4RW0kX5UwDIl2CYXTv3Dm51n0cIP7/4
+         ihQVKpavpgAC+Ft7aoxYRq/nopBZHTAaAYr8JxpbpH2c7K+UHckpjk23cH5XsSxPTwpd
+         6iTg==
+X-Forwarded-Encrypted: i=1; AJvYcCUYpzFMlFBs/adCm6S6BGG2fOb9B/LXNljHzBujlix5gP+N3FmLwsFJ/b4+D1Gv691zyZwvXT9ncM/rq+eYIg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywl+ZvZDEMg21TAU/HnDocIT4oUS1FPL4FPfIYlhWm/qGfx5M4N
+	1kVAs2xubKTZE8bZMGW0jR00od8gaASdTdkQVT6NzcZgSkDwp3JrEG/idK78wzx95rr66OfTkP+
+	25zf2hTb1pEvir8wEeOdN1jF9VPHp3Vo=
+X-Gm-Gg: ASbGncsaWRENAtMlfG7ciJ+ayykibiS9z3BjUIMGboTzcQIub/lsFC+lgx8KkGqUGmj
+	MfKidkEQkFOC1Oyb4Dc4P2v/Xjys+73kDerAZ5kW4LLGdwUb4ah6FOhbKDJ9C6ml3XH6y0xYFcW
+	bodOLgUkP8fdN9zeMsoQmBo9GNcULXKI1S3CFq7dm691sfPxSnwGQM/2qjAqlRvg7iJQcmnmdl3
+	KSUwOtEsTqC0ZfJcBjh
+X-Google-Smtp-Source: AGHT+IGevCoZbL9izzwy5cwLKx4/i/TmXKqJBSAQOcJkM9XKP6Ea/sJmVJxiOYQUmUx3N5L5pL8CK1+aI275dIXumZs=
+X-Received: by 2002:a05:6402:2547:b0:602:1b8b:2925 with SMTP id
+ 4fb4d7f45d1cf-617e2e95eeamr1953333a12.29.1754658897651; Fri, 08 Aug 2025
+ 06:14:57 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+From: Tal Inbar <inbartdev@gmail.com>
+Date: Fri, 8 Aug 2025 16:14:46 +0300
+X-Gm-Features: Ac12FXzGwyXXWIsqoqW4GYVdq-yIoDbSx7m80eMIrFIy-Ylc2aYJJ2tFHDO8ZrQ
+Message-ID: <CAJmAMMyOk7AVqQRrtK4Oum2uVKreGeLJ943-kkRCTspoGApZ8w@mail.gmail.com>
+Subject: [REGRESSION] [BISECTED] MT7925 wireless speed drops to zero since
+ kernel 6.14.3 - wifi: mt76: mt7925: integrate *mlo_sta_cmd and *sta_cmd
+To: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+Cc: Sean Wang <sean.wang@mediatek.com>, regressions@lists.linux.dev, 
+	stable@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250808_055724_942964_277715A7 
-X-CRM114-Status: GOOD (  13.58  )
+X-CRM114-CacheID: sfid-20250808_061459_893112_D494F037 
+X-CRM114-Status: GOOD (  15.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,134 +91,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add TDSHP component support for MT8196.
-TDSHP is a hardware module designed to enhance the sharpness and
-clarity of displayed images by analyzing and improving edges and
-fine details in frames.
+Hi,
 
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Jay Liu <jay.liu@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_ddp_comp.c | 49 +++++++++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_ddp_comp.h |  1 +
- drivers/gpu/drm/mediatek/mtk_drm_drv.c  |  2 +
- 3 files changed, 52 insertions(+)
+Since kernel v6.14.3, when using wireless to connect to my home router
+on my laptop, my wireless connection slows down to unusable speeds.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-index 850e3b18da61..c63a12c41215 100644
---- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-@@ -57,6 +57,14 @@
- #define POSTMASK_RELAY_MODE				BIT(0)
- #define DISP_REG_POSTMASK_SIZE			0x0030
- 
-+#define DISP_REG_TDSHP_CTRL			0x0100
-+#define DISP_TDSHP_CTRL_EN			BIT(0)
-+#define DISP_REG_TDSHP_CFG			0x0110
-+#define DISP_TDSHP_RELAY_MODE			BIT(0)
-+#define DISP_REG_TDSHP_INPUT_SIZE		0x0120
-+#define DISP_REG_TDSHP_OUTPUT_OFFSET		0x0124
-+#define DISP_REG_TDSHP_OUTPUT_SIZE		0x0128
-+
- #define DISP_REG_UFO_START			0x0000
- #define UFO_BYPASS				BIT(2)
- 
-@@ -261,6 +269,37 @@ static void mtk_postmask_stop(struct device *dev)
- 	writel_relaxed(0x0, priv->regs + DISP_REG_POSTMASK_EN);
- }
- 
-+static void mtk_disp_tdshp_config(struct device *dev, unsigned int w,
-+				  unsigned int h, unsigned int vrefresh,
-+				  unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
-+{
-+	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
-+
-+	mtk_ddp_write(cmdq_pkt, w << 16 | h, &priv->cmdq_reg, priv->regs,
-+		      DISP_REG_TDSHP_INPUT_SIZE);
-+	mtk_ddp_write(cmdq_pkt, w << 16 | h, &priv->cmdq_reg, priv->regs,
-+		      DISP_REG_TDSHP_OUTPUT_SIZE);
-+	mtk_ddp_write(cmdq_pkt, 0x0, &priv->cmdq_reg, priv->regs,
-+		      DISP_REG_TDSHP_OUTPUT_OFFSET);
-+
-+	mtk_ddp_write(cmdq_pkt, DISP_TDSHP_RELAY_MODE, &priv->cmdq_reg,
-+		      priv->regs, DISP_REG_TDSHP_CFG);
-+}
-+
-+static void mtk_disp_tdshp_start(struct device *dev)
-+{
-+	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
-+
-+	writel(DISP_TDSHP_CTRL_EN, priv->regs + DISP_REG_TDSHP_CTRL);
-+}
-+
-+static void mtk_disp_tdshp_stop(struct device *dev)
-+{
-+	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
-+
-+	writel(0, priv->regs + DISP_REG_TDSHP_CTRL);
-+}
-+
- static void mtk_ufoe_start(struct device *dev)
- {
- 	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
-@@ -268,6 +307,14 @@ static void mtk_ufoe_start(struct device *dev)
- 	writel(UFO_BYPASS, priv->regs + DISP_REG_UFO_START);
- }
- 
-+static const struct mtk_ddp_comp_funcs ddp_tdshp = {
-+	.clk_enable = mtk_ddp_clk_enable,
-+	.clk_disable = mtk_ddp_clk_disable,
-+	.config = mtk_disp_tdshp_config,
-+	.start = mtk_disp_tdshp_start,
-+	.stop = mtk_disp_tdshp_stop,
-+};
-+
- static const struct mtk_ddp_comp_funcs ddp_aal = {
- 	.clk_enable = mtk_aal_clk_enable,
- 	.clk_disable = mtk_aal_clk_disable,
-@@ -441,6 +488,7 @@ static const char * const mtk_ddp_comp_stem[MTK_DDP_COMP_TYPE_MAX] = {
- 	[MTK_DISP_POSTMASK] = "postmask",
- 	[MTK_DISP_PWM] = "pwm",
- 	[MTK_DISP_RDMA] = "rdma",
-+	[MTK_DISP_TDSHP] = "tdshp",
- 	[MTK_DISP_UFOE] = "ufoe",
- 	[MTK_DISP_WDMA] = "wdma",
- 	[MTK_DP_INTF] = "dp-intf",
-@@ -496,6 +544,7 @@ static const struct mtk_ddp_comp_match mtk_ddp_matches[DDP_COMPONENT_DRM_ID_MAX]
- 	[DDP_COMPONENT_RDMA1]		= { MTK_DISP_RDMA,		1, &ddp_rdma },
- 	[DDP_COMPONENT_RDMA2]		= { MTK_DISP_RDMA,		2, &ddp_rdma },
- 	[DDP_COMPONENT_RDMA4]		= { MTK_DISP_RDMA,		4, &ddp_rdma },
-+	[DDP_COMPONENT_TDSHP0]		= { MTK_DISP_TDSHP,		0, &ddp_tdshp },
- 	[DDP_COMPONENT_UFOE]		= { MTK_DISP_UFOE,		0, &ddp_ufoe },
- 	[DDP_COMPONENT_WDMA0]		= { MTK_DISP_WDMA,		0, NULL },
- 	[DDP_COMPONENT_WDMA1]		= { MTK_DISP_WDMA,		1, NULL },
-diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
-index 98a701ac4cde..a03fa3385d2f 100644
---- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
-+++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
-@@ -38,6 +38,7 @@ enum mtk_ddp_comp_type {
- 	MTK_DISP_POSTMASK,
- 	MTK_DISP_PWM,
- 	MTK_DISP_RDMA,
-+	MTK_DISP_TDSHP,
- 	MTK_DISP_UFOE,
- 	MTK_DISP_WDMA,
- 	MTK_DPI,
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index d5e6bab36414..042cf03c7a54 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -812,6 +812,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
- 	  .data = (void *)MTK_DISP_RDMA },
- 	{ .compatible = "mediatek,mt8195-disp-rdma",
- 	  .data = (void *)MTK_DISP_RDMA },
-+	{ .compatible = "mediatek,mt8196-disp-tdshp",
-+	  .data = (void *)MTK_DISP_TDSHP },
- 	{ .compatible = "mediatek,mt8173-disp-ufoe",
- 	  .data = (void *)MTK_DISP_UFOE },
- 	{ .compatible = "mediatek,mt8173-disp-wdma",
--- 
-2.46.0
 
+More specifically, since kernel 6.14.3, when connecting to the
+wireless networks of my OpenWRT Router on my Lenovo IdeaPad Slim 15
+16AKP10 laptop,
+either a 2.4ghz or a 5ghz network, the connection speed drops down to
+0.1-0.2 Mbps download and 0 Mbps upload when measured using
+speedtest-cli.
+My laptop uses an mt7925 chip according to the loaded driver and firmware.
+
+
+Detailed Description:
+
+As mentioned above, my wireless connection becomes unusable when using
+linux 6.14.3 and above, dropping speeds to almost 0 Mbps,
+even when standing next to my router. Further, pinging archlinux.org
+results in "Temporary failure in name resolution".
+Any other wireless device in my house can successfully connect to my
+router and properly use the internet with good speeds, eg. iphones,
+ipads, raspberry pi and a windows laptop.
+When using my Lenovo laptop on a kernel 6.14.3 or higher to connect to
+other access points, such as my iPhone's hotspot and some TPLink and
+Zyxel routers - the connection speed is good, and there are no issues,
+which makes me believe there's something going on with my OpenWRT
+configuration in conjunction with a commit introduced on kernel 6.14.3
+for the mt7925e module as detailed below.
+
+I have followed a related issue previously reported on the mailing
+list regarding a problem with the same wifi chip on kernel 6.14.3, but
+the merged fix doesn't seem to fix my problem:
+https://lore.kernel.org/linux-mediatek/EmWnO5b-acRH1TXbGnkx41eJw654vmCR-8_xMBaPMwexCnfkvKCdlU5u19CGbaapJ3KRu-l3B-tSUhf8CCQwL0odjo6Cd5YG5lvNeB-vfdg=@pm.me/
+
+I've tested stable builds of 6.15 as well up to 6.15.9 in the last
+month, which also do not fix the problem.
+I've also built and bisected v6.14 on june using guides on the Arch
+Linux wiki, for the following bad commit, same as the previously
+mentioned reported issue:
+
+[80007d3f92fd018d0a052a706400e976b36e3c87] wifi: mt76: mt7925:
+integrate *mlo_sta_cmd and *sta_cmd
+
+Testing further this week, I cloned mainline after 6.16 was released,
+built and tested it, and the issue still persists.
+I reverted the following commits on mainline and retested, to
+successfully see good wireless speeds:
+
+[0aa8496adda570c2005410a30df963a16643a3dc] wifi: mt76: mt7925: fix
+missing hdr_trans_tlv command for broadcast wtbl
+[cb1353ef34735ec1e5d9efa1fe966f05ff1dc1e1] wifi: mt76: mt7925:
+integrate *mlo_sta_cmd and *sta_cmd
+
+Then, reverting *only* 0aa8496adda570c2005410a30df963a16643a3dc causes
+the issue to reproduce, which confirms the issue is caused by commit
+cb1353ef34735ec1e5d9efa1fe966f05ff1dc1e1 on mainline.
+
+I've attached the following files to a bugzilla ticket:
+
+- lspci -nnk output:
+https://bugzilla.kernel.org/attachment.cgi?id=308466
+
+- dmesg output:
+https://bugzilla.kernel.org/attachment.cgi?id=308465
+
+- .config for the built mainline kernel:
+https://bugzilla.kernel.org/attachment.cgi?id=308467
+
+
+More information:
+
+OS Distribution: Arch Linux
+
+Linux build information from /proc/version:
+Linux version 6.16.0linux-mainline-11853-g21be711c0235
+(tal@arch-debug) (gcc (GCC) 15.1.1 20250729, GNU ld (GNU Binutils)
+2.45.0) #3 SMP PREEMPT_DYNAMIC
+
+OpenWRT Version on my Router: 24.10.2
+
+Laptop Hardware:
+- Lenovo IdeaPad Slim 15 16AKP10 laptop (x86_64 Ryzen AI 350 CPU)
+- Network device as reported by lscpi: 14c3:7925
+- Network modules and driver in use: mt7925e
+- mediatek chip firmware as of dmesg:
+  HW/SW Version: 0x8a108a10, Build Time: 20250526152947a
+  WM Firmware Version: ____000000, Build Time: 20250526153043
+
+
+Referencing regzbot:
+
+#regzbot introduced: 80007d3f92fd018d0a052a706400e976b36e3c87
+
+
+Please let me know if any other information is needed, or if there is
+anything else that I can test on my end.
+
+Thanks,
+Tal Inbar
 
