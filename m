@@ -4,65 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB6E3C87FCF
-	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Aug 2025 03:14:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42CC6C87FCF
+	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Aug 2025 20:02:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IEXZsoWFcxGS/zaP6LXW8pD/lrIBaj2KM6GnUMMRYT8=; b=B78p/Sm86epoor8PnDFyDp02fA
-	1h0iYSVAMGrhLQp/IfY5yVCi84xb8vn5mRvhVIOeenMMHLAkZNZmR4rVDPLbPpzHgsNzBJgyMIfLM
-	oNwykdVTKyDx+c9E6yQcIN68tgatdMPKSBsGFijAkDu/+QWQVy37wUOmPVajVVHbI6MEh1Byqd+ga
-	IRRdy4iShfgAPDRx5/5ohvC2K5hzM/pzRho3aDtHaeyXy0nr9gleku2Mze7zhkmSRl2IJuANOE+L+
-	4LrwdtRUiIryVccs5kmb3QmyNDSNhutxMAxBmp2CYLaCALz9M1y2yIkPpoCQgGiPdsKxfwAi7Ypxw
-	cCDTXsTg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7fQBK8bgFE1Ri1Krh9HfuYIeNKOzqdzxblIbW7hnQXQ=; b=JUtru395N3NFkbGDiRV/E6L04e
+	bHCDznec/bEsBlG8RZAbCqWLda9xUAWWE+30dz81Tzeo9tRf9rIfBGqflEvjIICxSOzovPDHW45AK
+	mDBLP/eijdFEDkmou4zSZIouRotpD80ygiahzVOgE4+XGpN9aAAFFnxfmTBUCqID3GF4KOEaBaCfK
+	QBi0hqnnhqaPVbl6DJrCzQdzbL0i67fvnAEycW4dovD6bxC8lH1V1j5sYIN+rrXDcBVYSOn1RlNzP
+	2x4ki85tv6eLFyMPlmXQerFq0jprl7xmog/3EUBBpSlrzyswJGNAwLGnK7jMxXR7SNP7szZDDV7ha
+	kC7aNvLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uka2i-000000042Oz-3JqO;
-	Sat, 09 Aug 2025 03:14:48 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1ukpmH-00000004sUr-3yej;
+	Sat, 09 Aug 2025 20:02:53 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uka2f-000000042Ob-47qR
-	for linux-mediatek@lists.infradead.org;
-	Sat, 09 Aug 2025 03:14:47 +0000
+	id 1ukpjm-00000004sNz-1jiJ;
+	Sat, 09 Aug 2025 20:00:18 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 9EA43A55306;
-	Sat,  9 Aug 2025 03:14:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AD8EAC4CEED;
-	Sat,  9 Aug 2025 03:14:43 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 10A6E6141F;
+	Sat,  9 Aug 2025 20:00:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 432F4C4CEE7;
+	Sat,  9 Aug 2025 20:00:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1754709284;
-	bh=AJbLhOWXgNRDDIWHKPqqp01JZJ0f7/n0RkXmffcqdwk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=skMpzBXU3jVaXXs5+TZe3Q9kitY3iEuc39vxU+AG8ZVoH6B2CkicN3MrmrERDpUhk
-	 y4xA4j0Yv3hT0RIugYZFfl0Yz0YBoOaOcV3p6J/QambMTBZFIGzHopWhQ02vw+Dvxz
-	 R9YtPo+FklXqYvkBHhcYE6GW80nBGIKmMDpq0Q5SlgNUNm9RwaGBf6bzx0YYkdvvTo
-	 TyQDhV08l/BqiRFGo6/4FLxkS7IP7XmH84VJ7Rt2GZQgnifdyFi9s/u9G1plxbOQYs
-	 811bfor+uTWkFo8e9ldVc+nAJUkULeH5ObzjSlYWwk0G/T5KPQGXYlO9vlkv45tOCX
-	 KgRlkkzO+AsMQ==
-Date: Sat, 9 Aug 2025 05:14:39 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Chad Monroe <chad@monroe.io>
-Cc: Felix Fietkau <nbd@nbd.name>, Johannes Berg <johannes.berg@intel.com>,
-	Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Evelyn Tsai <evelyn.tsai@mediatek.com>,
-	Ryder Lee <ryder.lee@mediatek.com>, linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] wifi: mt76: mt7996: use the correct vif link for
- scanning/roc
-Message-ID: <aJa9H3XkImgFlDvb@lore-rh-laptop>
-References: <180fffd409aa57f535a3d2c1951e41ae398ce09e.1754659732.git.chad@monroe.io>
+	s=k20201202; t=1754769616;
+	bh=7fQBK8bgFE1Ri1Krh9HfuYIeNKOzqdzxblIbW7hnQXQ=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=GBfpFW+tldLQvKQQnUCTIxV092GzoC3t6M7VHOAiWjRrEBBkv7QIw0lX0maHUrfQn
+	 WNPg5HnhwTezF2HG9Mf+obGeahDBhbzh51uRWrEkfvCUUFVvLxrk/zJfyNCNtL8w2j
+	 k09TFBa8vO1yehyW9TuqvYzGAjNx11Jm+zO7PQwHzuvYdj8GO0yhgNyT0n3FV5d/NP
+	 vpizg1ixql0wV6LjMsH4jn/G5VZPROpKjsYg8vGgN8LQ0IRuwU3jpQdGkehyrAudvI
+	 ekPwDPD/0u+UcAH3gQLmajUXN5nA9OA0uIlzh2/Pcwmb9vYLXkz7OMppBtWWFkzn09
+	 Ky7m/QSekg1sw==
+Date: Sat, 9 Aug 2025 21:00:01 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Andy Shevchenko <andy.shevchenko@gmail.com>
+Cc: Waqar Hameed <waqar.hameed@axis.com>, David Lechner
+ <dlechner@baylibre.com>, Nuno =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>, Andy
+ Shevchenko <andy@kernel.org>, Cosmin Tanislav <cosmin.tanislav@analog.com>,
+ Lars-Peter Clausen <lars@metafoo.de>, Michael Hennerich
+ <Michael.Hennerich@analog.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Matteo Martelli <matteomartelli3@gmail.com>, Heiko Stuebner
+ <heiko@sntech.de>, Francesco Dolcini <francesco@dolcini.it>,
+ =?UTF-8?B?Sm/Do28=?= Paulo =?UTF-8?B?R29uw6dhbHZlcw==?=
+ <jpaulo.silvagoncalves@gmail.com>, Hugo Villeneuve
+ <hvilleneuve@dimonoff.com>, Subhajit Ghosh <subhajit.ghosh@tweaklogic.com>,
+ Mudit Sharma <muditsharma.info@gmail.com>, Gerald Loacker
+ <gerald.loacker@wolfvision.net>, Song Qiang <songqiang1304521@gmail.com>,
+ Crt Mori <cmo@melexis.com>, kernel@axis.com, linux-iio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2] iio: Remove error prints for
+ devm_add_action_or_reset()
+Message-ID: <20250809210001.4d8af4cd@jic23-huawei>
+In-Reply-To: <CAHp75VeGvgv6TAYRRtEySmESkjygW79ms-Yd64h08_+7JjJMJw@mail.gmail.com>
+References: <pndectqm7te.a.out@axis.com>
+	<CAHp75VeGvgv6TAYRRtEySmESkjygW79ms-Yd64h08_+7JjJMJw@mail.gmail.com>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Y7HUEbVQxErEPcAp"
-Content-Disposition: inline
-In-Reply-To: <180fffd409aa57f535a3d2c1951e41ae398ce09e.1754659732.git.chad@monroe.io>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250808_201446_086741_D3138326 
-X-CRM114-Status: GOOD (  13.44  )
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,61 +84,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, 5 Aug 2025 15:06:02 +0200
+Andy Shevchenko <andy.shevchenko@gmail.com> wrote:
 
---Y7HUEbVQxErEPcAp
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-> restore fix which was dropped during MLO rework
+> On Tue, Aug 5, 2025 at 11:33=E2=80=AFAM Waqar Hameed <waqar.hameed@axis.c=
+om> wrote:
+> >
+> > When `devm_add_action_or_reset()` fails, it is due to a failed memory
+> > allocation and will thus return `-ENOMEM`. `dev_err_probe()` doesn't do
+> > anything when error is `-ENOMEM`. Therefore, remove the useless call to
+> > `dev_err_probe()` when `devm_add_action_or_reset()` fails, and just
+> > return the value instead. =20
 >=20
-> Fixes: f0b0b239b8f3 ("wifi: mt76: mt7996: rework mt7996_mac_write_txwi() =
-for MLO support")
-> Signed-off-by: Chad Monroe <chad@monroe.io>
-
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
-
-> ---
->  drivers/net/wireless/mediatek/mt76/mt7996/mac.c | 8 ++++++--
->  1 file changed, 6 insertions(+), 2 deletions(-)
+> Even more, the devm has tracepoints in case somebody really wants to
+> investigate failures.
 >=20
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/ne=
-t/wireless/mediatek/mt76/mt7996/mac.c
-> index 226534490792..6333a064c4f7 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-> @@ -903,8 +903,12 @@ void mt7996_mac_write_txwi(struct mt7996_dev *dev, _=
-_le32 *txwi,
->  				       IEEE80211_TX_CTRL_MLO_LINK);
-> =20
->  	mvif =3D vif ? (struct mt7996_vif *)vif->drv_priv : NULL;
-> -	if (mvif)
-> -		mlink =3D rcu_dereference(mvif->mt76.link[link_id]);
-> +	if (mvif) {
-> +		if (wcid->offchannel)
-> +			mlink =3D rcu_dereference(mvif->mt76.offchannel_link);
-> +		if (!mlink)
-> +			mlink =3D rcu_dereference(mvif->mt76.link[link_id]);
-> +	}
-> =20
->  	if (mlink) {
->  		omac_idx =3D mlink->omac_idx;
-> --=20
-> 2.47.2
->=20
->=20
+> Fully in support of this change.
+> Reviewed-by: Andy Shevchenko <andy@kernel.org>
 >=20
 
---Y7HUEbVQxErEPcAp
-Content-Type: application/pgp-signature; name=signature.asc
+Applied to the testing branch of iio.git. I'll rebase that
+on rc1 once available.
 
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaJa9HAAKCRA6cBh0uS2t
-rE9dAQCqsDnEFH56sDgxZbMfZbOJkzcBPKRS2FRjiH+VcB9eJQD8Cv/kh+QvXdK1
-p/4z1zyFU1PLfwNm7yhNbCBpa2wh9gI=
-=9CB9
------END PGP SIGNATURE-----
-
---Y7HUEbVQxErEPcAp--
+Jonathan
 
