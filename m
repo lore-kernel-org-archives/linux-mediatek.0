@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA0CFC87FCF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 10 Aug 2025 01:44:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1D09C87FCB
+	for <linux-mediatek@archiver.kernel.org>; Sun, 10 Aug 2025 01:47:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kfFh+WMClfMV0s0NLgewfTswA/0YoPlQmS0zynRYUCk=; b=un7gwx1IHgVBPkXJ4ilhfuqw6f
-	hAz9BZAknVT1NAXlmY/keDnw1NPtw/S4uNdXjeS+hHJTgSCaBn+seYdWP2U8qs+1MlOXGAI0HpqHX
-	uS/A3y4pBTLke0qWsYFPcE1cxmLkT9uvsNdAq1Jlg1tw8ARp4r6espTbyFQzGuBRdvR4wA+9UZtz7
-	WpgEL/zJc42YviON6VpHlATjkHIj6JSRQhue+fbIsSuFnhqiaiDKtNZ2/U4OAVuwzxyXs0jWIMvfp
-	eyAf1lAMeK/CRkroyrpws3cZohKjUm4iAlOr+zvwbA3fR+hYjaXaP6T7R5wDkmuhU7D9HxI9JPA/5
-	gxeDlI2A==;
+	bh=mUnk7XAE9DNxLZqUvi6saWJN3ahQyBUjPxHjGAyKBvg=; b=UsR3iJ0nV4QmoHMEdNS1wiyX5L
+	KlJqnpmEVgn6zOeKlsZow+v8ygd+RN6hxfroEcCSNG2b35+eJFUng38haIMXdWwYExA6aoXaXj8xi
+	s2TFzRJ0Ne3P7KYTA82IQwzZ2iZmSi2/LhD3yAe3AsW4CDkbH9ixLT0yOpnLmrKnGMP6OWZDmsAvO
+	ZYaTi9a6KtENUnQfeAgE18JF/r0Uzjz4amGT+wR9DLcoi/okGDQ/8x+slVyd/+qnXUb/aupfFx8ZM
+	rciEystUxcHY95g4XnU0BoyUCFkDQTuCXr5ZXIoGP5FGLSq49cgQgmNsm1G2iwwMnPA40f1A+NRBT
+	DOMtFK/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ukv6w-0000000592h-3C4Q;
-	Sun, 10 Aug 2025 01:44:34 +0000
+	id 1ukv9Q-000000059BV-40s1;
+	Sun, 10 Aug 2025 01:47:08 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ukuvI-000000057bK-1sOH;
-	Sun, 10 Aug 2025 01:32:33 +0000
+	id 1ukuvK-000000057br-0KoW;
+	Sun, 10 Aug 2025 01:32:35 +0000
 Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
-	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id 5EDE019C6;
-	Sun, 10 Aug 2025 03:31:40 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id F272E104D;
+	Sun, 10 Aug 2025 03:31:41 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1754789500;
-	bh=8ZW/fYRbVNxKNkH0puQ2nI/GJaAdMYvb4mxwpUrIp1w=;
+	s=mail; t=1754789502;
+	bh=OalqXRX2BlFGyxMJdGnLlToeFLxIFE59sf/mpzpkEFk=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=OkORkKooUOhwVeXvPPkglqJSS5uIR+TnINksNSnOlz221HSo0vaWKFKX4uc0kRcQF
-	 8vayPHPScIa/uv+0laUgxb3FOuV+YENrllpoQNJMzCCLoX2onyIwZuub4ID8DJ5Lea
-	 DBDkWpzJR/r8EP7uO61am7Kg+9BWXw+Ylw76xs+Y=
+	b=Ft+WpgzJ5TKvLfgzbdV8vv2daDiEGd/rGYkAfT0DpXtoDYpnnqqmU5H6bsTznNCMS
+	 JzAQo8ts6cQ1vpLWGx/QKQKsvDJ2Ye+tyGrPWCxk6xBDICkm/RXjMOO0joFSRIorYz
+	 1RInpb1NKhl147NS8mNQRxGs5ZFu4UVZa2Fsa+/c=
 From: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
 	Hans Verkuil <hans@jjverkuil.nl>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
-	Houlong Wei <houlong.wei@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Hans Verkuil <hverkuil@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 42/76] media: mtk_mdp_m2m: Access v4l2_fh from file
-Date: Sun, 10 Aug 2025 04:30:24 +0300
-Message-ID: <20250810013100.29776-43-laurent.pinchart+renesas@ideasonboard.com>
+Subject: [PATCH v3 43/76] media: mtk: mdp3: Access v4l2_fh from file
+Date: Sun, 10 Aug 2025 04:30:25 +0300
+Message-ID: <20250810013100.29776-44-laurent.pinchart+renesas@ideasonboard.com>
 X-Mailer: git-send-email 2.49.1
 In-Reply-To: <20250810013100.29776-1-laurent.pinchart+renesas@ideasonboard.com>
 References: <20250810013100.29776-1-laurent.pinchart+renesas@ideasonboard.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250809_183232_625043_D3F47D23 
-X-CRM114-Status: GOOD (  10.98  )
+X-CRM114-CacheID: sfid-20250809_183234_261502_84D16B32 
+X-CRM114-Status: GOOD (  10.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,103 +89,83 @@ Changes since v1:
 
 - Update file-to-ctx macro due to removal of fh-to-ctx macro
 ---
- .../media/platform/mediatek/mdp/mtk_mdp_m2m.c | 23 ++++++++-----------
- 1 file changed, 9 insertions(+), 14 deletions(-)
+ .../platform/mediatek/mdp3/mtk-mdp3-m2m.c     | 19 +++++++------------
+ 1 file changed, 7 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c b/drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c
-index 7e89a8443707..03c07948dfdd 100644
---- a/drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c
-+++ b/drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c
-@@ -348,14 +348,9 @@ static int mtk_mdp_try_crop(struct mtk_mdp_ctx *ctx, u32 type,
- 	return 0;
- }
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
+index e68ae19d71a9..9ef956b565a7 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
+@@ -10,14 +10,9 @@
+ #include <media/videobuf2-dma-contig.h>
+ #include "mtk-mdp3-m2m.h"
  
--static inline struct mtk_mdp_ctx *fh_to_ctx(struct v4l2_fh *fh)
+-static inline struct mdp_m2m_ctx *fh_to_ctx(struct v4l2_fh *fh)
 -{
--	return container_of(fh, struct mtk_mdp_ctx, fh);
+-	return container_of(fh, struct mdp_m2m_ctx, fh);
 -}
 -
- static inline struct mtk_mdp_ctx *file_to_ctx(struct file *filp)
+ static inline struct mdp_m2m_ctx *file_to_ctx(struct file *filp)
  {
 -	return fh_to_ctx(file_to_v4l2_fh(filp));
-+	return container_of(file_to_v4l2_fh(filp), struct mtk_mdp_ctx, fh);
++	return container_of(file_to_v4l2_fh(filp), struct mdp_m2m_ctx, fh);
  }
  
- static inline struct mtk_mdp_ctx *ctrl_to_ctx(struct v4l2_ctrl *ctrl)
-@@ -594,7 +589,7 @@ static const struct vb2_ops mtk_mdp_m2m_qops = {
- static int mtk_mdp_m2m_querycap(struct file *file, void *fh,
- 				struct v4l2_capability *cap)
+ static inline struct mdp_m2m_ctx *ctrl_to_ctx(struct v4l2_ctrl *ctrl)
+@@ -290,7 +285,7 @@ static int mdp_m2m_querycap(struct file *file, void *fh,
+ static int mdp_m2m_enum_fmt_mplane(struct file *file, void *fh,
+ 				   struct v4l2_fmtdesc *f)
  {
--	struct mtk_mdp_ctx *ctx = fh_to_ctx(fh);
-+	struct mtk_mdp_ctx *ctx = file_to_ctx(file);
- 	struct mtk_mdp_dev *mdp = ctx->mdp_dev;
+-	struct mdp_m2m_ctx *ctx = fh_to_ctx(fh);
++	struct mdp_m2m_ctx *ctx = file_to_ctx(file);
  
- 	strscpy(cap->driver, MTK_MDP_MODULE_NAME, sizeof(cap->driver));
-@@ -632,7 +627,7 @@ static int mtk_mdp_m2m_enum_fmt_vid_out(struct file *file, void *priv,
- static int mtk_mdp_m2m_g_fmt_mplane(struct file *file, void *fh,
- 				    struct v4l2_format *f)
+ 	return mdp_enum_fmt_mplane(ctx->mdp_dev, f);
+ }
+@@ -298,7 +293,7 @@ static int mdp_m2m_enum_fmt_mplane(struct file *file, void *fh,
+ static int mdp_m2m_g_fmt_mplane(struct file *file, void *fh,
+ 				struct v4l2_format *f)
  {
--	struct mtk_mdp_ctx *ctx = fh_to_ctx(fh);
-+	struct mtk_mdp_ctx *ctx = file_to_ctx(file);
- 	struct mtk_mdp_frame *frame;
+-	struct mdp_m2m_ctx *ctx = fh_to_ctx(fh);
++	struct mdp_m2m_ctx *ctx = file_to_ctx(file);
+ 	struct mdp_frame *frame;
  	struct v4l2_pix_format_mplane *pix_mp;
- 	int i;
-@@ -671,7 +666,7 @@ static int mtk_mdp_m2m_g_fmt_mplane(struct file *file, void *fh,
- static int mtk_mdp_m2m_try_fmt_mplane(struct file *file, void *fh,
- 				      struct v4l2_format *f)
- {
--	struct mtk_mdp_ctx *ctx = fh_to_ctx(fh);
-+	struct mtk_mdp_ctx *ctx = file_to_ctx(file);
  
- 	if (!mtk_mdp_try_fmt_mplane(ctx, f))
+@@ -316,7 +311,7 @@ static int mdp_m2m_g_fmt_mplane(struct file *file, void *fh,
+ static int mdp_m2m_s_fmt_mplane(struct file *file, void *fh,
+ 				struct v4l2_format *f)
+ {
+-	struct mdp_m2m_ctx *ctx = fh_to_ctx(fh);
++	struct mdp_m2m_ctx *ctx = file_to_ctx(file);
+ 	struct mdp_frame *frame = ctx_get_frame(ctx, f->type);
+ 	struct mdp_frame *capture;
+ 	const struct mdp_format *fmt;
+@@ -359,7 +354,7 @@ static int mdp_m2m_s_fmt_mplane(struct file *file, void *fh,
+ static int mdp_m2m_try_fmt_mplane(struct file *file, void *fh,
+ 				  struct v4l2_format *f)
+ {
+-	struct mdp_m2m_ctx *ctx = fh_to_ctx(fh);
++	struct mdp_m2m_ctx *ctx = file_to_ctx(file);
+ 
+ 	if (!mdp_try_fmt_mplane(ctx->mdp_dev, f, &ctx->curr_param, ctx->id))
  		return -EINVAL;
-@@ -681,7 +676,7 @@ static int mtk_mdp_m2m_try_fmt_mplane(struct file *file, void *fh,
- static int mtk_mdp_m2m_s_fmt_mplane(struct file *file, void *fh,
- 				    struct v4l2_format *f)
+@@ -370,7 +365,7 @@ static int mdp_m2m_try_fmt_mplane(struct file *file, void *fh,
+ static int mdp_m2m_g_selection(struct file *file, void *fh,
+ 			       struct v4l2_selection *s)
  {
--	struct mtk_mdp_ctx *ctx = fh_to_ctx(fh);
-+	struct mtk_mdp_ctx *ctx = file_to_ctx(file);
- 	struct vb2_queue *vq;
- 	struct mtk_mdp_frame *frame;
- 	struct v4l2_pix_format_mplane *pix_mp;
-@@ -727,7 +722,7 @@ static int mtk_mdp_m2m_s_fmt_mplane(struct file *file, void *fh,
- static int mtk_mdp_m2m_reqbufs(struct file *file, void *fh,
- 			       struct v4l2_requestbuffers *reqbufs)
- {
--	struct mtk_mdp_ctx *ctx = fh_to_ctx(fh);
-+	struct mtk_mdp_ctx *ctx = file_to_ctx(file);
- 
- 	return v4l2_m2m_reqbufs(file, ctx->m2m_ctx, reqbufs);
- }
-@@ -735,7 +730,7 @@ static int mtk_mdp_m2m_reqbufs(struct file *file, void *fh,
- static int mtk_mdp_m2m_streamon(struct file *file, void *fh,
- 				enum v4l2_buf_type type)
- {
--	struct mtk_mdp_ctx *ctx = fh_to_ctx(fh);
-+	struct mtk_mdp_ctx *ctx = file_to_ctx(file);
- 	int ret;
- 
- 	if (!mtk_mdp_ctx_state_is_set(ctx, MTK_MDP_VPU_INIT)) {
-@@ -773,8 +768,8 @@ static inline bool mtk_mdp_is_target_crop(u32 target)
- static int mtk_mdp_m2m_g_selection(struct file *file, void *fh,
- 				       struct v4l2_selection *s)
- {
-+	struct mtk_mdp_ctx *ctx = file_to_ctx(file);
- 	struct mtk_mdp_frame *frame;
--	struct mtk_mdp_ctx *ctx = fh_to_ctx(fh);
+-	struct mdp_m2m_ctx *ctx = fh_to_ctx(fh);
++	struct mdp_m2m_ctx *ctx = file_to_ctx(file);
+ 	struct mdp_frame *frame;
  	bool valid = false;
  
- 	if (s->type == V4L2_BUF_TYPE_VIDEO_CAPTURE) {
-@@ -840,8 +835,8 @@ static int mtk_mdp_check_scaler_ratio(struct mtk_mdp_variant *var, int src_w,
- static int mtk_mdp_m2m_s_selection(struct file *file, void *fh,
- 				   struct v4l2_selection *s)
+@@ -422,7 +417,7 @@ static int mdp_m2m_g_selection(struct file *file, void *fh,
+ static int mdp_m2m_s_selection(struct file *file, void *fh,
+ 			       struct v4l2_selection *s)
  {
-+	struct mtk_mdp_ctx *ctx = file_to_ctx(file);
- 	struct mtk_mdp_frame *frame;
--	struct mtk_mdp_ctx *ctx = fh_to_ctx(fh);
- 	struct v4l2_rect new_r;
- 	struct mtk_mdp_variant *variant = ctx->mdp_dev->variant;
- 	int ret;
+-	struct mdp_m2m_ctx *ctx = fh_to_ctx(fh);
++	struct mdp_m2m_ctx *ctx = file_to_ctx(file);
+ 	struct mdp_frame *frame = ctx_get_frame(ctx, s->type);
+ 	struct mdp_frame *capture;
+ 	struct v4l2_rect r;
 -- 
 Regards,
 
