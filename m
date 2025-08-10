@@ -4,136 +4,135 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E588CC87FCA
-	for <linux-mediatek@archiver.kernel.org>; Sun, 10 Aug 2025 10:34:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84240C87FDA
+	for <linux-mediatek@archiver.kernel.org>; Sun, 10 Aug 2025 22:26:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Message-Id:MIME-Version:Subject:Date:From:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=k5pojPfDyVvs559M2XGm2RMLEnoqbUiEl1g7qIbo/Wo=; b=PJQ9nE/m7ar0k8c2s8e2Vc3cPN
-	sd5Rf6R5PWPrDCXCnpRtXjffKFcEqxarCg85jyGXfu0FRHshIpNC1vxnAttwaRdD+g01TOd6P9L9x
-	aOpbImF5yi1bkk0lERNo+tpKksu2RoXBQOoTo887z/bi/SJmoDTSjAzlher/xvjtOgeW00ShIlTQI
-	emLr0W2r3XZtaXTIG7JVCF0aISbSpl6zKvXhwNYAQlIutexQxORwKWEmE9c9JyCn3weWP79b1kcsX
-	iaXe8nJWxjDKoHTWebSU8v3U5vtiqj83dwqETig+BjCV34JWGvbsNQSscODyGA/hvdAu+v8Y7pnFc
-	UY0v2A6w==;
+	bh=CioeoXb5/QvchbQJCxl5o+yrQjp6rhhswejt/srDq7A=; b=DIAcv+BPtigWRusNjfUulgH+ms
+	PSLNNVm15MQyWHS0x5F88yXB49BHqFVuegmMnfA5GCSX5Z/w7Hl93KG+RWmNlTn8Z6N4YhgNtkIRa
+	NWHgrzUPVe1b4FJa67aNR7x1gdhELeRONNYWmRHOznPpTGPRoQj53h6hXRNyMxwkr9vH6la73g4e1
+	s1rhr+bp1vDsvntJU3wnG6biP4hMrb8+Xk1bbaXbEy/ClpiJbhJgJWb3CdE4lYQlnGbO3p7PD8tBc
+	Pi/oeGytxE/ElnarwkoHHvw2K4CO1CXFAJ9nTERSo/oKB+08+3hoF4zDgI5Vh8VCl6wvengWwpFcL
+	TQs+cOMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ul3Nk-00000005X6p-2e1X;
-	Sun, 10 Aug 2025 10:34:28 +0000
-Received: from mail-japaneastazolkn190110001.outbound.protection.outlook.com ([2a01:111:f403:d405::1] helo=TYVP286CU001.outbound.protection.outlook.com)
+	id 1ulEUI-000000066b0-2aEm;
+	Sun, 10 Aug 2025 22:25:58 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ul3LE-00000005WzP-1Sza;
-	Sun, 10 Aug 2025 10:31:53 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Q2YtXt0IpxjeEub8ZapLrOZQ/kStbuy0j0VqrIzg6GxSor9kVvZduLrLb8UToQYS6CDqcGRMt4HrxN2bUV2B6RduwN+RiqsVkd2Ju8gOD6qvdnrEey+O+fc31ciftXxsmYcFHlvxthx2/iH9J0VvDfYtb/jdS14wrySIudXq0s3KDcqIxabW2kemjDkh4I0+iw17i9SJtgs4YmDMLeiLHPiMqr4IKJ9zj3pNnrMVe2acQOhY79Qawr4g3O3cnwFVz6NHX4E8VyUVyN1QERQAjMU/lleZtFD5Nbw1qq1hnlPDH9TaYuraf0m7Xfc2GRXMsEzaLPP1DVCz57/eZdKgYA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=k5pojPfDyVvs559M2XGm2RMLEnoqbUiEl1g7qIbo/Wo=;
- b=Dm+ugUx3zhGGkxez0kZmerYFLYVYIvvgTMUYW7QxXTgPGD0gBGcHlnML9chxDP5KsuUTSji0+EUreCad0vnLXyfH0aes9keezp5hOQk0i1HlFpobtCRh7Sudg6nlpGBOUvfx7Y0k1F2++F68PxmKgPSwcf3vNYC9hl0s1EMcTgw7KKla8zuUXXb6LqbIP0K8awaGdQnma/YBuPP8p3KxUoUjn12IZQ4mQ5FEZ9SWQirCYDpyB/w7KUgc4O4PnHIeE8pcoWvq5RtG35MBfTifdKMl9kJtNAxKMnHCgIODlqn3RAW72soCBohwTqgwfubZxFVhTlStKzfPTI4j3JZhqA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=k5pojPfDyVvs559M2XGm2RMLEnoqbUiEl1g7qIbo/Wo=;
- b=AUvjfIUiNsbRTj/gpYnwaUsyng11saGvPoyAt2HlXrARb99E0fK7ZHakZ2FAWlUfxx/R3GU8e/KQ6cc68D1N8LL6Jh24HfM2Yn1s9DA7fzbagA4LXFUZ6kEMq7yaOSqvceuIlWCTXLJvCXApShQcWgARpKQmSh+d87xJPuGFVOazONCH3Zo2nwbT2nJiAOVoNClTNYv2cS4gO5eM/jxm99WBlg0ecEW3ODmjsAUkGN6Gi1W2zUJ3IwtFgoTAS1wwBSqUz0zYouUA2YwvuAQQXPFXvb1fNFpBbpFlASI12EpLGnYC2mWIMAOmI83AwcI5xAYhCFRAVh7pfmxORjrTrQ==
-Received: from OSBPR01MB1670.jpnprd01.prod.outlook.com (2603:1096:603:2::18)
- by TYYPR01MB14263.jpnprd01.prod.outlook.com (2603:1096:405:19f::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9009.20; Sun, 10 Aug
- 2025 10:31:33 +0000
-Received: from OSBPR01MB1670.jpnprd01.prod.outlook.com
- ([fe80::c00:ec4e:ee7e:9b7f]) by OSBPR01MB1670.jpnprd01.prod.outlook.com
- ([fe80::c00:ec4e:ee7e:9b7f%3]) with mapi id 15.20.9009.018; Sun, 10 Aug 2025
- 10:31:33 +0000
-From: Shiji Yang <yangshiji66@outlook.com>
-To: linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	Shiji Yang <yangshiji66@outlook.com>
-Subject: [PATCH] arm64: dts: mediatek: mt7986: increase ATF reserved memory to 256 kiB
-Date: Sun, 10 Aug 2025 18:30:49 +0800
-Message-ID: <OSBPR01MB16701BDF64C43EF07390C830BC29A@OSBPR01MB1670.jpnprd01.prod.outlook.com>
-X-Mailer: git-send-email 2.50.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: SI2P153CA0027.APCP153.PROD.OUTLOOK.COM
- (2603:1096:4:190::22) To OSBPR01MB1670.jpnprd01.prod.outlook.com
- (2603:1096:603:2::18)
-X-Microsoft-Original-Message-ID: <20250810103049.28342-1-yangshiji66@outlook.com>
+	id 1ulELN-000000065yw-0Mvo
+	for linux-mediatek@bombadil.infradead.org;
+	Sun, 10 Aug 2025 22:16:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:Cc:To:Message-Id:MIME-Version:Subject:Date:From:Sender:Reply-To:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=CioeoXb5/QvchbQJCxl5o+yrQjp6rhhswejt/srDq7A=; b=blstfSpE7MYtEToVfvB9r9EhLD
+	3RcNakYWWgvlWZPKxdt65otDEU0tqJF2E5b7keSO2i4QFi3TifZeW5k/1uCNswVmoOp2vnwCE39ot
+	DIujOdr9Slrgb9l9tBHb9mhhI1wIPb/Tak2Xp418o3hvZEb3AGAU/KwxO5cytXOgm8oCkXTohUO0B
+	nBO8pGDSBKUN61PSJT4McPq9QMFEzSkNKwgXj0C8zOj5bkKjFaOpnLN9CFhRmQ3LoR8MdSSneNKTp
+	Htxs3catFng+IGZkklBa+XvP7WYO7wF+Bh3gUVVsz6CI12xGrgCwo2VITsue96AFj8k7V+gi5LejW
+	8W3ufArQ==;
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1ulELI-0000000FJ9q-2BKZ
+	for linux-mediatek@lists.infradead.org;
+	Sun, 10 Aug 2025 22:16:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1754864196;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=CioeoXb5/QvchbQJCxl5o+yrQjp6rhhswejt/srDq7A=;
+	b=ixCjjzJ4E9bwNP4u/KLETxeLgyn7fYeAJgsZeQZWN8747quOBTLsFt49mhFRs+oHFJkz89
+	3WviGbBRZ0sqy0pphFpJU8pOdAQJ4rCkJB0N/zydEHqij4kLHr6vOPiuiJApS5/HFz4Y3B
+	BAiVnt0XqJNFRAkbKTSFyo/6QjZMCGs=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1754864196;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=CioeoXb5/QvchbQJCxl5o+yrQjp6rhhswejt/srDq7A=;
+	b=ixCjjzJ4E9bwNP4u/KLETxeLgyn7fYeAJgsZeQZWN8747quOBTLsFt49mhFRs+oHFJkz89
+	3WviGbBRZ0sqy0pphFpJU8pOdAQJ4rCkJB0N/zydEHqij4kLHr6vOPiuiJApS5/HFz4Y3B
+	BAiVnt0XqJNFRAkbKTSFyo/6QjZMCGs=
+Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
+ [209.85.160.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-658-aqVP1Qi9N0OdOmFVnFtmaA-1; Sun, 10 Aug 2025 18:16:35 -0400
+X-MC-Unique: aqVP1Qi9N0OdOmFVnFtmaA-1
+X-Mimecast-MFC-AGG-ID: aqVP1Qi9N0OdOmFVnFtmaA_1754864194
+Received: by mail-qt1-f198.google.com with SMTP id d75a77b69052e-4af199d0facso122945251cf.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 10 Aug 2025 15:16:34 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1754864194; x=1755468994;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=CioeoXb5/QvchbQJCxl5o+yrQjp6rhhswejt/srDq7A=;
+        b=VOzweyUsO5ggo4eSvAc/7LWXoYsQTFo2syvAAjxSd3mHSPi7NpKLcw5TF0EMVXvTIZ
+         Ep+u9NwQKizI4+4ZYzgswZvxLXJAJcYertOS7eySHDU3vH3SjUv2PE3/bgs4SbK7Wu2e
+         PIMcC36eHz4z0hxtKmRIIAvExFwQ+SbhTxNdKUkQ1l05zJUoWVAPIpNPUcHS5r6d0oZo
+         TIBqA2deXOfyS43OwiKJ13IjBDjEk2lqKWtMdUoqPxxQvxG4x6iWtL6Um/+s4IAj2Bgf
+         GshvrRhFlAT+y2EkmN165Oe12RANVlMPkrVoGAeBfVRO1LGRZq9IAqvb5jVwN8XAqUKx
+         YsPg==
+X-Forwarded-Encrypted: i=1; AJvYcCUInvx/kHpbwzKL43dhqsMWEajBrpJFxHyOI01V4fRERYvYmgsV3kFSwNhWJ7vAc7WfwsTaQGlfRpg5v82Zdg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz5J49pK8RN+pV0pGRxCqi6Jte7P6zpUlk+LCD/n118Zd1JB7zn
+	k19ZoLXuwwFVYjmpl+sMXGLpaONyO6KtJ3mEY7L7Z8Q9TUbRwGI/P2I9y2FnQ0oCShNO4G/JwK9
+	R3YjkNRg3Qeux2+JeM6qBL4rf5OuNd36uHAai7E6mAZjnq4QLpMBpxjM2v21l6ZMjxDKcv++AFw
+	==
+X-Gm-Gg: ASbGncsLo2eEJGHzfHMfxWFMC7Ah+AwTXBl3RxYFltqmfQSeO/jzQ+AVsXRUGXTZMUV
+	SvnDpHNhT6cZW6ZV2JgVE2/Sl3xOBJKKVmarxg1ID9/1jIg0hlAcyzLIV4Frd/ZEhaUGwiEOQOU
+	c/3K/igWXCrWy72wutuPPShWnafuvzyvZ/+hX84FeovgYFVzAr7vr5FpjCPJ50oKDuLdFNBnNMh
+	m0GeZRAd0Yo7q+aIMd+PJvXfcFYS27hi5IlUiEDagNF9sCmezZjg94IlSYsQ9M+N0A/Je4FT0iW
+	DWkq6oQxhoOhsz/eOz7toUw37MQ3pWjAKUZHBrCnMqniw8nkozwM0BwxM0i5t86aEvkWFltBYhi
+	yCfNufw==
+X-Received: by 2002:a05:622a:1308:b0:4b0:7775:d342 with SMTP id d75a77b69052e-4b0afddf96bmr142006411cf.12.1754864194353;
+        Sun, 10 Aug 2025 15:16:34 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFMgL2TfTPBpWSj0xTTh5+SfYn/Qjd/HGVOp6AsQdNWXfn2vKbskTIHSYorfqQM8Oa2g6DGMQ==
+X-Received: by 2002:a05:622a:1308:b0:4b0:7775:d342 with SMTP id d75a77b69052e-4b0afddf96bmr142005961cf.12.1754864193842;
+        Sun, 10 Aug 2025 15:16:33 -0700 (PDT)
+Received: from [10.144.145.224] (c-73-183-52-120.hsd1.pa.comcast.net. [73.183.52.120])
+        by smtp.gmail.com with ESMTPSA id d75a77b69052e-4b06a395932sm92798851cf.38.2025.08.10.15.16.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 10 Aug 2025 15:16:32 -0700 (PDT)
+From: Brian Masney <bmasney@redhat.com>
+Date: Sun, 10 Aug 2025 18:16:19 -0400
+Subject: [PATCH] pmdomain: mediatek: airoha: convert from round_rate() to
+ determine_rate()
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: OSBPR01MB1670:EE_|TYYPR01MB14263:EE_
-X-MS-Office365-Filtering-Correlation-Id: 4c05b281-6bd8-4668-17bc-08ddd7f91274
-X-Microsoft-Antispam: BCL:0;ARA:14566002|41001999006|15080799012|5072599009|461199028|8022599003|5062599005|19110799012|8060799015|1602099012|10035399007|440099028|3412199025|4302099013|1710799026;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?P8OMXtagrpzQ5rtS8OgAv2XTr+8XWgpqMMEg1sJ0hBMVR9mrLQvgmRtWRlIt?=
- =?us-ascii?Q?Y1Yc11aUXKlzsF+N+Oi1Ys/ubXRX2gyvWYVnr0lABFSNIuSBRLwmv61Eij18?=
- =?us-ascii?Q?ZwSaWhQgrVAIoCwIkr10thHzaJNdlmcG7SLZQvHdBtog6NN4uM9EkeMcAGom?=
- =?us-ascii?Q?pwMcBy7FEHxlZkiWMhTEEHCEdV+ZXC2pSzy9n4JiJj7Xf8Y5xmr6hi4T6tBe?=
- =?us-ascii?Q?kXDb+aNZkqJPFi5YIqByRLWdB9CiHpw/yI1NQfDn2yMZaKEpkLfO6xdy2xI0?=
- =?us-ascii?Q?8gvtN/IakyJMdZ6+9YphMWFntg9kxnnvToRHGGsXOzu6fMud4CULZOFlgNSU?=
- =?us-ascii?Q?EXCXOYBeV70CiooFRNhJpQkxdVfbQXJdVkJcfFBdqhTdplu9tIsokFmBCeQ1?=
- =?us-ascii?Q?oHbfoPMPZUv7TY/kcZAnhvVjvPxHpLdL1WXUI3DMV0IFEdqji6a+VvJ6hIoW?=
- =?us-ascii?Q?UyIxPoBKVh3tZeRYT4SqdU2RCOT+x9vjbfpEtFDlEUPT9SX4sCkVm9TyIscd?=
- =?us-ascii?Q?78y8GguM3oA1VF+rdLp/c9MRQ+V9Be7e4sff/fWP15BOaPs0DdTQJTEjdSHF?=
- =?us-ascii?Q?g/LqxTVc0cQB9aG1GstS5XUQewPy4d+ZRYgJ7fh/WcOPh8Cuvqf/IyFpWjKO?=
- =?us-ascii?Q?m1AlsHaTlybeqoeX9lUqhcMV838y5rTTgmteVQchMFPxP95N4WmaeApMp322?=
- =?us-ascii?Q?qtLQ47n5WtP+5lKyRicHwr2MI4A/BfSLZD/WpXyDIKinBIRr1FKbOkMvnP3C?=
- =?us-ascii?Q?9uYvDq/TwHeZJcW8ht/OOMRf/ae1lnGIQY+h4BcZnhQXepAWyimyMh7G9Fdo?=
- =?us-ascii?Q?DD+tsjkyqhPpEgQQhgloPCyNDQ/pSy+LCjThC/EK1mPZv1+dAs6NFW7zhg4I?=
- =?us-ascii?Q?W/kdtn4Yvcse7gBQM0PrVp2/BueMYj4r3xhE9oWiQ15m/ZJKBrD+/kVW/ukj?=
- =?us-ascii?Q?4dvsEP9eKtmjC8PnTfuVXGckzJuCKLxqo6NVz1uluU4h7dnl/dm6N66PnHwE?=
- =?us-ascii?Q?mGtdM+2a317i0B+wTju0ZyTja/HzKGBuzj2e/Z+LrjyZZ2QvDA1VGqdDLq9E?=
- =?us-ascii?Q?1EgwjUSsYOqZA/sh9csJdRoZkPhKmO0zontPT5tcdvWBu2WckE+PW1d7/hMY?=
- =?us-ascii?Q?C1mtEseDmVpYt0E3EeZnYuo+x8vxpo0JLxw9KDBju0buDa98Ev7siV9P6TwU?=
- =?us-ascii?Q?5m4DR496MtzsQ86RSniZ7uCmU2hZTbsih9RKhBU0w8FGSPc0LH2AeAwvWsHH?=
- =?us-ascii?Q?CLvcgnUUD7TXljnOjobQrv766np9oGWyH/Yeqdom4w=3D=3D?=
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?NC5+Ylv+MRvXa5Q7rdPJ0CDetb/lRJbFytwGxP4yG7n7iJNIHZvofIGyLLby?=
- =?us-ascii?Q?UwS/hbVkKtoYj0qM3+vATPJu5I8TFP6Be5LQ9vi8RgQxGoUtuBvkyVW7Ll5w?=
- =?us-ascii?Q?vfA7qv0pJmPVRhpK8MUVb0D5V5j+Yuasd902DoyC3L/bRE/xKfIqAplS/5xX?=
- =?us-ascii?Q?lX4z2zu2VK+aZSTVECJSEq9VXh9LFSlF8OLbav5C3TxYq+xJM735VS+Ml8cw?=
- =?us-ascii?Q?be3Ea1hZaXRf5N002S2EZuBhD56lZyxgYZBdeFVb97M8qy9XaH8wsYhQEMhz?=
- =?us-ascii?Q?omECDYkS4Yd5VvG/tcNqEfvMvR/zaY9AX7f+3vFuiKq9cyqTASEo07IoqLbc?=
- =?us-ascii?Q?p+2id6ZbyvFXeipVPE6FLJNVpXRnYOm2esSoYf6bGdOqhPzgNzXZ5Wfsrc9X?=
- =?us-ascii?Q?xyGeVgGLWjQKVx1BImsn6UGhjNL3/UzWlVDLjpIA/aE7mOZrAlqiFRZhY4D4?=
- =?us-ascii?Q?bCC7qRtvjlMOpDr0gnqysdJtUdJlZE+ok0AMR4c+Nq+okqiN3R5UILoWCJHD?=
- =?us-ascii?Q?hDFyVHtE2GAppaN5VR39+3eEgD7avQpBy85ovZArKBFVXOvDcM2K+2m6oOc1?=
- =?us-ascii?Q?G7dq15g8i0DCNJmc9cy69BRnZ+XVXTSlPLDPIWxdc9cBT4Sg5JzUalnBe407?=
- =?us-ascii?Q?W00UGqQ/yGKrZ1dWOc4GwE1mv2rfShoegsREUSbMP8Qu5PCa6XDBrxggiqZ9?=
- =?us-ascii?Q?TMXbndC066hIQ6Sc8rX47pjYyjVwjjfRy96zQiLLRaItYgz16GlaJTFJ5fRT?=
- =?us-ascii?Q?d6pNRjMYAqTMWELUDtKIiXfDDZJNMigpHFQak2QG3/U0qM1cr9+2VMfShBCb?=
- =?us-ascii?Q?IVrYjwSXKPQrFB+104SWDQlmTFZwKejUWj9KIA5QDBzZx7d1EBXDZv5w+pP+?=
- =?us-ascii?Q?y1LFl6ohvnGr4mwJiBh2i/pd5fLL/cITGMISbXDaT88Ari1IRJW109NGqy1C?=
- =?us-ascii?Q?z0gmP5SwpeWGV9TUNI+losAwU81rgWmpNvv+cYStY3zBA6A2FOhuTVikngwQ?=
- =?us-ascii?Q?NjW2Vq2DZXud3IwsPm01OVq0ikiBUVbq3ngGqO9bIoLzGubEqL0+iFhTBKu3?=
- =?us-ascii?Q?EAwl357jrE8WHq+5nULcO/CXDqpW38glw+k8Je1+i33WHUNGsL7bPXXOZWRw?=
- =?us-ascii?Q?pu4qDAGgHQHrsuDW14ZT2U6qnIvGXOuzTufbz8XiqzeDw2h2jJWKlSa6HbeR?=
- =?us-ascii?Q?BsvhFXd2bjKZT5dhK/IeCUzFzBhaenJtSlqaA/Eonb1abzLw9Lqz6RGx85JX?=
- =?us-ascii?Q?f0n8fhht8YbPqllZW2/n?=
-X-OriginatorOrg: outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4c05b281-6bd8-4668-17bc-08ddd7f91274
-X-MS-Exchange-CrossTenant-AuthSource: OSBPR01MB1670.jpnprd01.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Aug 2025 10:31:33.7777
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYYPR01MB14263
+Message-Id: <20250810-pmdomain-round-rate-v1-1-1a90dbacdeb6@redhat.com>
+X-B4-Tracking: v=1; b=H4sIADIamWgC/x3MMQqAMAxA0atIZgNaFK1XEYfSRM1gK6mKIN7d4
+ viG/x9IrMIJhuIB5UuSxJBRlwX41YWFUSgbTGXaqjMW943i5iSgxjMQqjsYPZmZbFN3vreQy11
+ 5lvu/jtP7fpscdbRlAAAA
+X-Change-ID: 20250729-pmdomain-round-rate-cd2fd9417c89
+To: Ulf Hansson <ulf.hansson@linaro.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Maxime Ripard <mripard@kernel.org>, Stephen Boyd <sboyd@kernel.org>
+Cc: linux-clk@vger.kernel.org, linux-pm@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Brian Masney <bmasney@redhat.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1754864189; l=5844;
+ i=bmasney@redhat.com; s=20250528; h=from:subject:message-id;
+ bh=UYgbTKNNIhZJE5F8ohj4vNnNUmG0W80FAggzMzDyciQ=;
+ b=ycuKCsHxlgyIiQDQP/ZXNrrK5TwG59aDdwvTbF9fA5ZaFGS7T11u3eBjUVpg98IPZ0SR0D/LO
+ HLq8JMzYEaFDHKAwnSPKYgYnuZw3tWz2CNQiFg0AsRVq8jM/iV/b3Pj
+X-Developer-Key: i=bmasney@redhat.com; a=ed25519;
+ pk=x20f2BQYftANnik+wvlm4HqLqAlNs/npfVcbhHPOK2U=
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: IlXC8fYXi_LC59e16_Rvko8lyR-ty7TiXW2sjuReQO4_1754864194
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250810_033152_381474_E1C1416A 
-X-CRM114-Status: GOOD (  10.13  )
+X-CRM114-CacheID: sfid-20250810_231640_795944_A117CE11 
+X-CRM114-Status: GOOD (  20.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,36 +147,185 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The latest Mediatek open-source Trusted Firmware-A project has
-reserved 256 KiB for BL2 and BL31. It is better to increase the
-reserved memory region in the Linux kernel to protect the data.
+The round_rate() clk ops is deprecated, so migrate this driver from
+round_rate() to determine_rate() using the Coccinelle semantic patch
+appended to the "under-the-cut" portion of the patch.
 
-Signed-off-by: Shiji Yang <yangshiji66@outlook.com>
+Note that prior to running the Coccinelle,
+airoha_cpu_pmdomain_clk_round() was renamed to
+airoha_cpu_pmdomain_clk_round_rate().
+
+Signed-off-by: Brian Masney <bmasney@redhat.com>
 ---
+Coccinelle semantic patch is below. It's large and I don't want to
+pollute the kernel changelog with the same code hundreds of times,
+so that's why it's included under the cut. For subsystems with more
+than one patch, I've included it on the cover letter.
 
-Ref:
-https://github.com/mtk-openwrt/arm-trusted-firmware/blob/78a0dfd927bb00ce973a1f8eb4079df0f755887a/plat/mediatek/mt7986/include/platform_def.h#L61-L71
+    virtual patch
 
- arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+    // Look up the current name of the round_rate function
+    @ has_round_rate @
+    identifier round_rate_name =~ ".*_round_rate";
+    identifier hw_param, rate_param, parent_rate_param;
+    @@
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-index 559990dcd..d21e0d13f 100644
---- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-@@ -68,9 +68,9 @@ reserved-memory {
- 		#address-cells = <2>;
- 		#size-cells = <2>;
- 		ranges;
--		/* 192 KiB reserved for ARM Trusted Firmware (BL31) */
-+		/* 256 KiB reserved for ARM Trusted Firmware (BL31 + BL32) */
- 		secmon_reserved: secmon@43000000 {
--			reg = <0 0x43000000 0 0x30000>;
-+			reg = <0 0x43000000 0 0x40000>;
- 			no-map;
- 		};
+    long round_rate_name(struct clk_hw *hw_param, unsigned long rate_param,
+                  unsigned long *parent_rate_param)
+    {
+    	...
+    }
+
+    // Rename the route_rate function name to determine_rate()
+    @ script:python generate_name depends on has_round_rate @
+    round_rate_name << has_round_rate.round_rate_name;
+    new_name;
+    @@
+
+    coccinelle.new_name = round_rate_name.replace("_round_rate", "_determine_rate")
+
+    // Change rate to req->rate; also change occurrences of 'return XXX'.
+    @ chg_rate depends on generate_name @
+    identifier has_round_rate.round_rate_name;
+    identifier has_round_rate.hw_param;
+    identifier has_round_rate.rate_param;
+    identifier has_round_rate.parent_rate_param;
+    identifier ERR =~ "E.*";
+    expression E;
+    @@
+
+    long round_rate_name(struct clk_hw *hw_param, unsigned long rate_param,
+                  unsigned long *parent_rate_param)
+    {
+    <...
+    (
+    -return -ERR;
+    +return -ERR;
+    |
+    - return rate_param;
+    + return 0;
+    |
+    - return E;
+    + req->rate = E;
+    +
+    + return 0;
+    |
+    - rate_param
+    + req->rate
+    )
+    ...>
+    }
+
+    // Coccinelle only transforms the first occurrence of the rate parameter
+    // Run a second time. FIXME: Is there a better way to do this?
+    @ chg_rate2 depends on generate_name @
+    identifier has_round_rate.round_rate_name;
+    identifier has_round_rate.hw_param;
+    identifier has_round_rate.rate_param;
+    identifier has_round_rate.parent_rate_param;
+    @@
+
+    long round_rate_name(struct clk_hw *hw_param, unsigned long rate_param,
+                  unsigned long *parent_rate_param)
+    {
+    <...
+    - rate_param
+    + req->rate
+    ...>
+    }
+
+    // Change parent_rate to req->best_parent_rate
+    @ chg_parent_rate depends on generate_name @
+    identifier has_round_rate.round_rate_name;
+    identifier has_round_rate.hw_param;
+    identifier has_round_rate.rate_param;
+    identifier has_round_rate.parent_rate_param;
+    @@
+
+    long round_rate_name(struct clk_hw *hw_param, unsigned long rate_param,
+                  unsigned long *parent_rate_param)
+    {
+    <...
+    (
+    - *parent_rate_param
+    + req->best_parent_rate
+    |
+    - parent_rate_param
+    + &req->best_parent_rate
+    )
+    ...>
+    }
+
+    // Convert the function definition from round_rate() to determine_rate()
+    @ func_definition depends on chg_rate @
+    identifier has_round_rate.round_rate_name;
+    identifier has_round_rate.hw_param;
+    identifier has_round_rate.rate_param;
+    identifier has_round_rate.parent_rate_param;
+    identifier generate_name.new_name;
+    @@
+
+    - long round_rate_name(struct clk_hw *hw_param, unsigned long rate_param,
+    -               unsigned long *parent_rate_param)
+    + int new_name(struct clk_hw *hw, struct clk_rate_request *req)
+    {
+        ...
+    }
+
+    // Update the ops from round_rate() to determine_rate()
+    @ ops depends on func_definition @
+    identifier has_round_rate.round_rate_name;
+    identifier generate_name.new_name;
+    @@
+
+    {
+        ...,
+    -   .round_rate = round_rate_name,
+    +   .determine_rate = new_name,
+        ...,
+    }
+
+Note that I used coccinelle 1.2 instead of 1.3 since the newer version
+adds unnecessary braces as described in this post.
+https://lore.kernel.org/cocci/67642477-5f3e-4b2a-914d-579a54f48cbd@intel.com/
+---
+ drivers/pmdomain/mediatek/airoha-cpu-pmdomain.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/pmdomain/mediatek/airoha-cpu-pmdomain.c b/drivers/pmdomain/mediatek/airoha-cpu-pmdomain.c
+index 0fd88d2f9ac29da371590ee3af92c1260e4f2f5f..3b1d202f89dc516922887cdd968c95f5147491f4 100644
+--- a/drivers/pmdomain/mediatek/airoha-cpu-pmdomain.c
++++ b/drivers/pmdomain/mediatek/airoha-cpu-pmdomain.c
+@@ -21,10 +21,10 @@ struct airoha_cpu_pmdomain_priv {
+ 	struct generic_pm_domain pd;
+ };
  
+-static long airoha_cpu_pmdomain_clk_round(struct clk_hw *hw, unsigned long rate,
+-					  unsigned long *parent_rate)
++static int airoha_cpu_pmdomain_clk_determine_rate(struct clk_hw *hw,
++						  struct clk_rate_request *req)
+ {
+-	return rate;
++	return 0;
+ }
+ 
+ static unsigned long airoha_cpu_pmdomain_clk_get(struct clk_hw *hw,
+@@ -48,7 +48,7 @@ static int airoha_cpu_pmdomain_clk_is_enabled(struct clk_hw *hw)
+ static const struct clk_ops airoha_cpu_pmdomain_clk_ops = {
+ 	.recalc_rate = airoha_cpu_pmdomain_clk_get,
+ 	.is_enabled = airoha_cpu_pmdomain_clk_is_enabled,
+-	.round_rate = airoha_cpu_pmdomain_clk_round,
++	.determine_rate = airoha_cpu_pmdomain_clk_determine_rate,
+ };
+ 
+ static int airoha_cpu_pmdomain_set_performance_state(struct generic_pm_domain *domain,
+
+---
+base-commit: 8f5ae30d69d7543eee0d70083daf4de8fe15d585
+change-id: 20250729-pmdomain-round-rate-cd2fd9417c89
+
+Best regards,
 -- 
-2.50.0
+Brian Masney <bmasney@redhat.com>
 
 
