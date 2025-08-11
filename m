@@ -4,129 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78764CA0EDA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Aug 2025 18:10:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93611CA0EC4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Aug 2025 18:14:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
-	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
-	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J47SuQSY3P5H+eZT6szmTDEfpCAtnVfNzMCgNPTeCeM=; b=vP6VKT+w1wEnG2ij2FV9bfUifT
-	uKQ2ERPlTDUVpu7AwepvUy2VTSKdLUC7rq1xnx+R2rz20wGeu0/lS8RMtCITDkMeABs3AtspOzoVB
-	gR6i63pmGMhmQPF6phyMJ/3U1Lf+4zrvhwZgkM8l/qVyNC9ecXQGKD3eNfGAAex1akyxfJdeZLw9B
-	2Y69cGWvFOBLGK0/1DCPWUfTO6CFOSYB5fsxLN3Q/fBKKunJXfOrQ7wSRmTgxTmjGvoxqjlSg1A+N
-	oa1CNBQ20tnSEX6VGumwtobrxvSbV689+Fk9iBfNGiRaBawBL0s4GA1dN4Nh3S1pygsIBcBhYSuQ5
-	QVb4Mqrg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=KPGBI2bkhf/am7EGN9J5YiDxCkJNuS1Z8cIR/YZnh3U=; b=WPGTkdjHyiP+GJ
+	ymD1TwCvVM/E5NocQ4X7J8o3nHqyL6QaRnM+oycGtdQZqsSLTSRo+Lyb6LOdyFUQdbMn48hIIgPAA
+	b1czpRjfIjc0hMr+C3x6V1LhDecTamcem+gZzfKyUUot9VXSdpZZbfRzRbi3FEmUKvEWnozfeUGkM
+	3Sdl+xEn55QGsUbqzb1O+Et9T34ptd1k8fslkdHMHY+pUr/tYYiGH9NigXSubuB+ibINl4UYHaf0T
+	zOxZyOvBex3cC/HkRLSZzRnFRtHMeHIKBxxKC0+cfJ4ZkSJf/ieLpscauqH6yFxIadrbZZ7FWQRXu
+	xZNWwudws8oDhqXXYKaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulWyi-00000008j7l-0o2F;
-	Mon, 11 Aug 2025 18:10:36 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1ulX2m-00000008kV3-2rxE;
+	Mon, 11 Aug 2025 18:14:48 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulUIo-00000008BFu-3wNl;
-	Mon, 11 Aug 2025 15:19:11 +0000
+	id 1ulUVI-00000008Cxu-2WOP;
+	Mon, 11 Aug 2025 15:32:05 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5F4E4669EE;
-	Mon, 11 Aug 2025 15:18:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 7CD24C4FF5B;
-	Mon, 11 Aug 2025 15:18:36 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 0BB545C5531;
+	Mon, 11 Aug 2025 15:32:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7DDD1C4CEED;
+	Mon, 11 Aug 2025 15:32:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1754925516;
-	bh=m78DV2zSD9uqTTZTe+VLdvNS6pgFLPKMmR9Tja/DEes=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=Wm3999anwzJZLAsMfXtmHF/2AjShEzDOKrwZxk9METfQFaPy4DJF+PAI29QAWpBvD
-	 l8Ej0emAoY5+6SnnOIotcmMHp1KBQlKScxzGH9rWhUI5qeuvCkY3WaOJ8uoNKghxLJ
-	 8watR7BciNiGZfs0L92ciUWPzPGb/jf0T3eVmbtP+jAV+GIlJx+2TUjjlDNhsyyyDG
-	 oBOEiUokVIeZRlj1atucWlmQ5K75wXxzFV7DmhZWaWno5n4pqKQEcP4CR9Q7xy+ldt
-	 WqRA8qiAiUdTIhDqauuuiba6gvyYR99DvkjsPksFJnZIP+kU7Kg/epHRA6rMwuW665
-	 +Cm8XOMKgjzCw==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 648A4CA0ED3;
-	Mon, 11 Aug 2025 15:18:36 +0000 (UTC)
-From: Brian Masney via B4 Relay <devnull+bmasney.redhat.com@kernel.org>
-Date: Mon, 11 Aug 2025 11:19:43 -0400
-Subject: [PATCH 111/114] clk: divider: remove round_rate() in favor of
- determine_rate()
+	s=k20201202; t=1754926323;
+	bh=6q79iZqgmRYKyPHnlMqwPzEGP8FF+iIXD11AwfalVcU=;
+	h=From:Subject:Date:To:Cc:From;
+	b=aABcN5QmeJa0Pmwl9RL6gqihtSfKmm+rxMX8XRsLUt9rXTP55OGJKwPyHWndGnyEc
+	 DCx7XTUyKQFeZ3G9tyuEWX0qBwpmDwPKnvJnVPPS/X/oJc/DSakUN3SnYB7r9fd+PQ
+	 ut85ODRKfp0xlJHm9QYgAkOOFk4TC9n7ged34geRH51FAIK1TpRCWHIvwGYgEMTla3
+	 gblEoctGffVSVWPvMtU4gw8OVhrlfxm/jepuUKFeMPIrUuawCbCxbkXvLt7h9AohW0
+	 OAUFbao4LnXkU2AvSaY0z82+tOIO03JN7UxSxlyT9ijjs5BwxcjEXTsaRO1moBVA9Y
+	 6cfWjSAeVaL1A==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH net-next v7 0/7] net: airoha: Introduce NPU callbacks for
+ wlan offloading
+Date: Mon, 11 Aug 2025 17:31:35 +0200
+Message-Id: <20250811-airoha-en7581-wlan-offlaod-v7-0-58823603bb4e@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250811-clk-for-stephen-round-rate-v1-111-b3bf97b038dc@redhat.com>
-References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
-In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
-To: Michael Turquette <mturquette@baylibre.com>, 
- Stephen Boyd <sboyd@kernel.org>, Sudeep Holla <sudeep.holla@arm.com>, 
- Cristian Marussi <cristian.marussi@arm.com>, 
- Chen Wang <unicorn_wang@outlook.com>, Inochi Amaoto <inochiama@gmail.com>, 
- Nicolas Ferre <nicolas.ferre@microchip.com>, 
- Alexandre Belloni <alexandre.belloni@bootlin.com>, 
- Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
- Paul Cercueil <paul@crapouillou.net>, 
- Keguang Zhang <keguang.zhang@gmail.com>, 
- Taichi Sugaya <sugaya.taichi@socionext.com>, 
- Takao Orito <orito.takao@socionext.com>, Shawn Guo <shawnguo@kernel.org>, 
- Sascha Hauer <s.hauer@pengutronix.de>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Fabio Estevam <festevam@gmail.com>, Jacky Huang <ychuang3@nuvoton.com>, 
- Shan-Chun Hung <schung@nuvoton.com>, Vladimir Zapolskiy <vz@mleia.com>, 
- Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>, 
- Paul Walmsley <paul.walmsley@sifive.com>, 
- Samuel Holland <samuel.holland@sifive.com>, Yixun Lan <dlan@gentoo.org>, 
- Steen Hegelund <Steen.Hegelund@microchip.com>, 
- Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, 
- Orson Zhai <orsonzhai@gmail.com>, 
- Baolin Wang <baolin.wang@linux.alibaba.com>, 
- Chunyan Zhang <zhang.lyra@gmail.com>, 
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
- Alexandre Torgue <alexandre.torgue@foss.st.com>, 
- Michal Simek <michal.simek@amd.com>, Maxime Ripard <mripard@kernel.org>, 
- =?utf-8?q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
- Manivannan Sadhasivam <mani@kernel.org>, Sven Peter <sven@kernel.org>, 
- Janne Grunau <j@jannau.net>, Alyssa Rosenzweig <alyssa@rosenzweig.io>, 
- Neal Gompa <neal@gompa.dev>, Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>, 
- Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, 
- Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
- Max Filippov <jcmvbkbc@gmail.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Daniel Palmer <daniel@thingy.jp>, Romain Perier <romain.perier@gmail.com>, 
- Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>, 
- Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, 
- Bjorn Andersson <andersson@kernel.org>, 
- Geert Uytterhoeven <geert+renesas@glider.be>, 
- Heiko Stuebner <heiko@sntech.de>, 
- Andrea della Porta <andrea.porta@suse.com>, 
- Krzysztof Kozlowski <krzk@kernel.org>, 
- Sylwester Nawrocki <s.nawrocki@samsung.com>, 
- Chanwoo Choi <cw00.choi@samsung.com>, Alim Akhtar <alim.akhtar@samsung.com>, 
- Qin Jian <qinjian@cqplus1.com>, Viresh Kumar <vireshk@kernel.org>, 
- Ulf Hansson <ulf.hansson@linaro.org>, 
- Luca Ceresoli <luca.ceresoli@bootlin.com>, 
- Alex Helms <alexander.helms.jy@renesas.com>, 
- Linus Walleij <linus.walleij@linaro.org>, Liviu Dudau <liviu.dudau@arm.com>, 
- Lorenzo Pieralisi <lpieralisi@kernel.org>, 
- Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>
-Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, 
- arm-scmi@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- sophgo@lists.linux.dev, linux-mips@vger.kernel.org, imx@lists.linux.dev, 
- linux-riscv@lists.infradead.org, spacemit@lists.linux.dev, 
- linux-stm32@st-md-mailman.stormreply.com, patches@opensource.cirrus.com, 
- linux-actions@lists.infradead.org, asahi@lists.linux.dev, 
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev, 
- Brian Masney <bmasney@redhat.com>
+X-B4-Tracking: v=1; b=H4sIANcMmmgC/33Oy2rDMBCF4VcJWldF90tXfY/SxdgaxaLGCnJxU
+ oLfvbKh4GLQ8szim/9JZiwJZ/J2eZKCS5pTnuqwLxfSDzBdkaZQNxFMaGYZp5BKHoDiZLXj9D7
+ CRHOMI+RAje19gBidspJU4FYwpseOf3zWPaT5O5ef/dfCt+sfK1rswimjjknGvGWsk+79C8uE4
+ 2suV7K5izhaummJask+SmGdRun4yZIHi6umJfcu6KIBQI/qZKmjZZuWqpYJHbdOeo5BnCx9sIR
+ sWrpaAbxAFl2vvD1Z5mi1u8zWBRGCN9Bza/5Z67r+Ahk49ehBAgAA
+X-Change-ID: 20250701-airoha-en7581-wlan-offlaod-67c9daff8473
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Simon Horman <horms@kernel.org>, Felix Fietkau <nbd@nbd.name>, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ netdev@vger.kernel.org, devicetree@vger.kernel.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925498; l=2270;
- i=bmasney@redhat.com; s=20250528; h=from:subject:message-id;
- bh=ZIHCAEVSfzUYC7gs59802c9M/dWpJRCFCvoeCSAJWOI=;
- b=ers9IA4nnmWnnnlCVnGasS5HZexaGz09F3l7/rT15n8N76akhVQx+IBd+lMd2sYJN9EmVlJIO
- EA9yeUIhJDwCG7q6iVGduu4D+JEwojIkaqCdALlK7pEQrY/rFTNhJ3U
-X-Developer-Key: i=bmasney@redhat.com; a=ed25519;
- pk=x20f2BQYftANnik+wvlm4HqLqAlNs/npfVcbhHPOK2U=
-X-Endpoint-Received: by B4 Relay for bmasney@redhat.com/20250528 with
- auth_id=472
-X-Original-From: Brian Masney <bmasney@redhat.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250811_083204_728884_D8475DCF 
+X-CRM114-Status: GOOD (  10.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,75 +79,70 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: bmasney@redhat.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Brian Masney <bmasney@redhat.com>
+Similar to wired traffic, EN7581 SoC allows to offload traffic to/from
+the MT76 wireless NIC configuring the NPU module via the Netfilter
+flowtable. This series introduces the necessary NPU callback used by
+the MT7996 driver in order to enable the offloading.
+MT76 support has been posted as RFC in [0] in order to show how the
+APIs are consumed.
 
-This driver implements both the determine_rate() and round_rate() clk
-ops, and the round_rate() clk ops is deprecated. When both are defined,
-clk_core_determine_round_nolock() from the clk core will only use the
-determine_rate() clk ops. Also all clk drivers that directly calls
-divider's round_rate() have been migrated over to determine_rate(). So
-let's remove the round_rate() clk ops.
+[0] https://lore.kernel.org/linux-wireless/cover.1753173330.git.lorenzo@kernel.org/
 
-Signed-off-by: Brian Masney <bmasney@redhat.com>
 ---
- drivers/clk/clk-divider.c | 23 -----------------------
- 1 file changed, 23 deletions(-)
+Changes in v7:
+- Rebase on top of net-next main branch
+- Link to v6: https://lore.kernel.org/r/20250727-airoha-en7581-wlan-offlaod-v6-0-6afad96ac176@kernel.org
 
-diff --git a/drivers/clk/clk-divider.c b/drivers/clk/clk-divider.c
-index c1f426b8a5043cb5a1de08e1da385928ec54a2ed..2601b6155afb7391c6a0ffb91c58fa66cde98197 100644
---- a/drivers/clk/clk-divider.c
-+++ b/drivers/clk/clk-divider.c
-@@ -431,27 +431,6 @@ long divider_ro_round_rate_parent(struct clk_hw *hw, struct clk_hw *parent,
- }
- EXPORT_SYMBOL_GPL(divider_ro_round_rate_parent);
- 
--static long clk_divider_round_rate(struct clk_hw *hw, unsigned long rate,
--				unsigned long *prate)
--{
--	struct clk_divider *divider = to_clk_divider(hw);
--
--	/* if read only, just return current value */
--	if (divider->flags & CLK_DIVIDER_READ_ONLY) {
--		u32 val;
--
--		val = clk_div_readl(divider) >> divider->shift;
--		val &= clk_div_mask(divider->width);
--
--		return divider_ro_round_rate(hw, rate, prate, divider->table,
--					     divider->width, divider->flags,
--					     val);
--	}
--
--	return divider_round_rate(hw, rate, prate, divider->table,
--				  divider->width, divider->flags);
--}
--
- static int clk_divider_determine_rate(struct clk_hw *hw,
- 				      struct clk_rate_request *req)
- {
-@@ -527,7 +506,6 @@ static int clk_divider_set_rate(struct clk_hw *hw, unsigned long rate,
- 
- const struct clk_ops clk_divider_ops = {
- 	.recalc_rate = clk_divider_recalc_rate,
--	.round_rate = clk_divider_round_rate,
- 	.determine_rate = clk_divider_determine_rate,
- 	.set_rate = clk_divider_set_rate,
- };
-@@ -535,7 +513,6 @@ EXPORT_SYMBOL_GPL(clk_divider_ops);
- 
- const struct clk_ops clk_divider_ro_ops = {
- 	.recalc_rate = clk_divider_recalc_rate,
--	.round_rate = clk_divider_round_rate,
- 	.determine_rate = clk_divider_determine_rate,
- };
- EXPORT_SYMBOL_GPL(clk_divider_ro_ops);
+Changes in v6:
+- Fix wlan_mbox_data message size
+- Make NPU memory regions optional in NPU dts
+- Link to v5: https://lore.kernel.org/r/20250723-airoha-en7581-wlan-offlaod-v5-0-da92e0f8c497@kernel.org
 
+Changes in v5:
+- Rebase on top of net-next main branch
+- Link to v4: https://lore.kernel.org/r/20250717-airoha-en7581-wlan-offlaod-v4-0-6db178391ed2@kernel.org
+
+Changes in v4:
+- Improve commit messages
+- Link to v3: https://lore.kernel.org/r/20250714-airoha-en7581-wlan-offlaod-v3-0-80abf6aae9e4@kernel.org
+
+Changes in v3:
+- Rename 'binary' memory region in 'firmware'
+- Do not make memory-region-names property required
+- Link to v2: https://lore.kernel.org/r/20250705-airoha-en7581-wlan-offlaod-v2-0-3cf32785e381@kernel.org
+
+Changes in v2:
+- Introduce binding for memory regions used for wlan offload
+- Rely on of_reserved_mem_region_to_resource_byname
+- Export just wlan_{send,get}_msg NPU callback for MT76
+- Improve commit messages
+- Link to v1: https://lore.kernel.org/r/20250702-airoha-en7581-wlan-offlaod-v1-0-803009700b38@kernel.org
+
+---
+Lorenzo Bianconi (7):
+      dt-bindings: net: airoha: npu: Add memory regions used for wlan offload
+      net: airoha: npu: Add NPU wlan memory initialization commands
+      net: airoha: npu: Add wlan_{send,get}_msg NPU callbacks
+      net: airoha: npu: Add wlan irq management callbacks
+      net: airoha: npu: Read NPU wlan interrupt lines from the DTS
+      net: airoha: npu: Enable core 3 for WiFi offloading
+      net: airoha: Add airoha_offload.h header
+
+ .../devicetree/bindings/net/airoha,en7581-npu.yaml |  22 +-
+ drivers/net/ethernet/airoha/airoha_npu.c           | 175 +++++++++++++-
+ drivers/net/ethernet/airoha/airoha_npu.h           |  36 ---
+ drivers/net/ethernet/airoha/airoha_ppe.c           |   2 +-
+ include/linux/soc/airoha/airoha_offload.h          | 260 +++++++++++++++++++++
+ 5 files changed, 451 insertions(+), 44 deletions(-)
+---
+base-commit: 37816488247ddddbc3de113c78c83572274b1e2e
+change-id: 20250701-airoha-en7581-wlan-offlaod-67c9daff8473
+
+Best regards,
 -- 
-2.50.1
-
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
