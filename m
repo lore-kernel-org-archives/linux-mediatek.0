@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8D9FCA0EE0
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3450CA0EDE
 	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Aug 2025 22:00:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
@@ -12,46 +12,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3c6ewzC3moQOcd+s4x2tXz/+SV88Ws1hwLiJK9HmXEg=; b=Jf3YoxFZFC6VjkK3VUVV2ydbwD
-	TbT6gw2a0Bi5gHNVmAlBeBUwbBCJvJaWTaKuw/5QEsq40xE6DRyRFYaKb0CqNuWGwjgNTRUVZNIJn
-	+K1ibvpEy0FIoIzHQG6M2b6KS+9VSfP92JKROCPQXDCwQI2xU8jd/7zJiyYbAhNZA+phe5VpDJc1g
-	wTFmpYJEz9r8bePFfwjrXCWjmmcqAWp0hzu+QwJzNZX1W7uwcv7FN9ybB1pkXW6SMYjoJu7kpjZuo
-	3IhQUZU2nBZ8S/p3X20W3mBA72bx5BY5glQz+8VjlHmbu+erGXMbZ3gfbudbyoxtzu6UUBGi6uUNY
-	JQTmnnRQ==;
+	bh=DMaVKyn9KeMgT3AWmilcsL92lwaTapSf3+RFB1/khVc=; b=rokc3Q6Rcr9CS1OGZPpVJZH1iO
+	TGbitlFWrdy1zIbMyu+DJGG2P1r0fiy53t23rF3K9MsNUnzc2nblr5aCpaTpwg9F8Yk57KZ7z4xOJ
+	7QukPdgT06/draRc+jjuEWEe16kpqe8cteJvKwXPG3ux00g00qmzyvkHCxvsHqj1Umc/q0csV/VlX
+	uiZIw86fsJBU9dzd0M80+vh8Hd3jAJeanM5L19HOpu9OHRbg4Mu1PNObIgMeo9+LThwkB3eV609Pr
+	2v1AF2d6TJjmv8JLUeMQ8RGNfpUGkdsRh6RnjerVtav+hmoaoSaEOaWDvr8VEIKNZgsHJkI4swK4H
+	6poCG0FQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulaZS-00000009776-2cro;
-	Mon, 11 Aug 2025 22:00:46 +0000
+	id 1ulaZQ-0000000974j-17ww;
+	Mon, 11 Aug 2025 22:00:44 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulUIB-00000008AYp-3eb5;
-	Mon, 11 Aug 2025 15:18:32 +0000
+	id 1ulUIB-00000008AYL-1vxC;
+	Mon, 11 Aug 2025 15:18:31 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 4BFB461444;
-	Mon, 11 Aug 2025 15:18:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id EDE59C4CEF7;
+	by tor.source.kernel.org (Postfix) with ESMTP id E69CB61490;
+	Mon, 11 Aug 2025 15:18:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 7172CC4CEFA;
 	Mon, 11 Aug 2025 15:18:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1754925508;
-	bh=8cfAQ5APmz0aUW+R2XhM6vkzNM+pDGe+NcKVH7zv9Rs=;
+	s=k20201202; t=1754925507;
+	bh=/m0n1INc3kjKj/iN6d8ZFdtoDJNBF32BzXLWWav9174=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=ovB29058zddkttJcwFHc1kfbMTTrsPqlU7Xs2Emtf4O18vXIl7Ocm2zsez0t1n605
-	 OXo6/TZgwzqHPIKODkiF8iEFYze4XhM4rTtKAVNwwZ6zHdS0zwYPROElaglWWBF1NR
-	 /8/6ic3Ycjf/sMdtv0hGIg4vVWLB1gH5mh/8fAEVRhs2i+fysjL6+33Hm0/JAKMYGO
-	 a4aNJx6PKHOk68HO44QMDCZlPQ+97GnAc22FqeJTiIciHi4ULrmqxs5kdZs6i7EIHB
-	 8YKsHG04YLEKkkg0uR9MTstAKsuokcFDntgQge9XGTwQfcNoHwFW8xyE1HAEzAOjKS
-	 PrHd7wXguKzDQ==
+	b=mUbkN6N+CNmm8nTVqGRkFckCwJiU1p1E3R9dGgYnaFaLQtoFQb5BwcNUw9d6hkm7g
+	 XBR7mrDWtporFUlSsi0382MonLYH2BfvtRnW5JtLXwjQHxGy8l7Tz/wwZJYPKCFmXa
+	 7dE6LlaiKs8rhhwF2fClJm+9BV+a4L1YeL4WuYlFltjLoJNxkcrxtA5SO9iJ6my9nd
+	 4kBHQPR9g76oyz42O4yvDvZQlvCz0YikpDjQw32JY8htxsYwhPkgLOssNXzlAsnlY1
+	 nQAjwFU2PhoJ/59YoDs3gAe2PHstlQgAk1hRJRQL/OxfNz1zy1Habt7SkPzARArisl
+	 rutQqSPuNszYg==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CE7D5C88CB9;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5FB12C88CB9;
 	Mon, 11 Aug 2025 15:18:27 +0000 (UTC)
 From: Brian Masney via B4 Relay <devnull+bmasney.redhat.com@kernel.org>
-Date: Mon, 11 Aug 2025 11:18:18 -0400
-Subject: [PATCH 026/114] clk: loongson1: convert from round_rate() to
- determine_rate()
+Date: Mon, 11 Aug 2025 11:18:15 -0400
+Subject: [PATCH 023/114] clk: ingenic: jz4780-cgu: convert from
+ round_rate() to determine_rate()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250811-clk-for-stephen-round-rate-v1-26-b3bf97b038dc@redhat.com>
+Message-Id: <20250811-clk-for-stephen-round-rate-v1-23-b3bf97b038dc@redhat.com>
 References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 To: Michael Turquette <mturquette@baylibre.com>, 
@@ -117,11 +117,11 @@ Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev, 
  Brian Masney <bmasney@redhat.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925497; l=1664;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925497; l=1813;
  i=bmasney@redhat.com; s=20250528; h=from:subject:message-id;
- bh=XsGXwOXgj43SVeRzyN5HKsbs6pZeZ3msotKymgaH4io=;
- b=ZZzV73t26jAwKTfcXFHlwAj63StmdQwy1Sk/J01M5Ouw6deccJrJuKZzCkSSjByEFMZR+NC6G
- +Rj82vsypdMBLePtZxHrhrgfm6NKn961a4cdqQwSmy8GrnJs7Jo5GJ8
+ bh=MPzcrBPQGuTfy56c5U5WcclOdTxeqPehVwkouGqu3Y4=;
+ b=fmvYy9drD5J5zVeuCA/o62mRsAJKEF9i+yF7AEdh4jKSXBdGTuOFIpHpll7aYhS8aCTB6bTPn
+ O9N7kQvZyOzCAZkEfXW5xZFF+SWrOkWWqFNMrkcqg32x9FVx+8pAVZX
 X-Developer-Key: i=bmasney@redhat.com; a=ed25519;
  pk=x20f2BQYftANnik+wvlm4HqLqAlNs/npfVcbhHPOK2U=
 X-Endpoint-Received: by B4 Relay for bmasney@redhat.com/20250528 with
@@ -150,43 +150,53 @@ on the cover letter of this series.
 
 Signed-off-by: Brian Masney <bmasney@redhat.com>
 ---
- drivers/clk/clk-loongson1.c | 12 +++++++-----
- 1 file changed, 7 insertions(+), 5 deletions(-)
+ drivers/clk/ingenic/jz4780-cgu.c | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/clk/clk-loongson1.c b/drivers/clk/clk-loongson1.c
-index a3467aa6790f36e3f5eaf84853b4710804c6c11a..f9f060d08a5fae3291a9408c6dc93531b435609f 100644
---- a/drivers/clk/clk-loongson1.c
-+++ b/drivers/clk/clk-loongson1.c
-@@ -93,14 +93,16 @@ static unsigned long ls1x_divider_recalc_rate(struct clk_hw *hw,
- 				   d->flags, d->width);
+diff --git a/drivers/clk/ingenic/jz4780-cgu.c b/drivers/clk/ingenic/jz4780-cgu.c
+index b1dadc0a5e7556a8570286344818c2d1157bf9e8..07e2f3c5c4549e28726b2dccd5f465f56aa9e694 100644
+--- a/drivers/clk/ingenic/jz4780-cgu.c
++++ b/drivers/clk/ingenic/jz4780-cgu.c
+@@ -128,19 +128,19 @@ static unsigned long jz4780_otg_phy_recalc_rate(struct clk_hw *hw,
+ 	return parent_rate;
  }
  
--static long ls1x_divider_round_rate(struct clk_hw *hw, unsigned long rate,
--				    unsigned long *prate)
-+static int ls1x_divider_determine_rate(struct clk_hw *hw,
-+				       struct clk_rate_request *req)
+-static long jz4780_otg_phy_round_rate(struct clk_hw *hw, unsigned long req_rate,
+-				      unsigned long *parent_rate)
++static int jz4780_otg_phy_determine_rate(struct clk_hw *hw,
++					 struct clk_rate_request *req)
  {
- 	struct ls1x_clk *ls1x_clk = to_ls1x_clk(hw);
- 	const struct ls1x_clk_div_data *d = ls1x_clk->data;
+-	if (req_rate < 15600000)
+-		return 12000000;
+-
+-	if (req_rate < 21600000)
+-		return 19200000;
++	if (req->rate < 15600000)
++		req->rate = 12000000;
++	else if (req->rate < 21600000)
++		req->rate = 19200000;
++	else if (req->rate < 36000000)
++		req->rate = 24000000;
++	else
++		req->rate = 48000000;
  
--	return divider_round_rate(hw, rate, prate, d->table,
--				  d->width, d->flags);
-+	req->rate = divider_round_rate(hw, req->rate, &req->best_parent_rate,
-+				       d->table, d->width, d->flags);
-+
+-	if (req_rate < 36000000)
+-		return 24000000;
+-
+-	return 48000000;
 +	return 0;
  }
  
- static int ls1x_divider_set_rate(struct clk_hw *hw, unsigned long rate,
-@@ -146,7 +148,7 @@ static int ls1x_divider_set_rate(struct clk_hw *hw, unsigned long rate,
+ static int jz4780_otg_phy_set_rate(struct clk_hw *hw, unsigned long req_rate,
+@@ -212,7 +212,7 @@ static int jz4780_otg_phy_is_enabled(struct clk_hw *hw)
  
- static const struct clk_ops ls1x_clk_divider_ops = {
- 	.recalc_rate = ls1x_divider_recalc_rate,
--	.round_rate = ls1x_divider_round_rate,
-+	.determine_rate = ls1x_divider_determine_rate,
- 	.set_rate = ls1x_divider_set_rate,
- };
+ static const struct clk_ops jz4780_otg_phy_ops = {
+ 	.recalc_rate = jz4780_otg_phy_recalc_rate,
+-	.round_rate = jz4780_otg_phy_round_rate,
++	.determine_rate = jz4780_otg_phy_determine_rate,
+ 	.set_rate = jz4780_otg_phy_set_rate,
  
+ 	.enable		= jz4780_otg_phy_enable,
 
 -- 
 2.50.1
