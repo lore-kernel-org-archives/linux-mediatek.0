@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F1ADCA0EC4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Aug 2025 18:08:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC99ACA0ED3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Aug 2025 18:08:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oCeuu0lZCoZ29bEjcv6MrNqWr3B/LJ88K4JK4Yu231Q=; b=RN5iQeoGN4ubWbNk/SB9Ce5QPI
-	OYaNxPQuxdz29pjdk9RJgTPCAjbUaEITF0HrBfL6eRTcSmC64pnRUnucI54FUqnYT8c+RKiW8wnkh
-	u2ul+mi6IVLCcn4VxahVHTQfMLR6P4P8bjecHxCDurWeBPYEB8mugkUDbemd9UJXLjWLLlblKy/3H
-	9oQ4XdGFrURWsltcKGfuOrMvFebkId2exK6az0LYyytM3CUcLTQaOwkUCRf8r7n26QoiP9o5RRgBL
-	YjbuBeJOvAynk0YVvJiiznnNZdiFrGwsCeQ4zaQ/SaBgfzrbVoThF9W6rYTMErlWSGWBl8atr9Szd
-	Pl2u4ICQ==;
+	bh=dVirFHGQinuEg7VXBiD7lxgd9mvOhp6mVujSxMQLlqw=; b=IkEjmsWzCkc0ak7Zi0Sd0soeOw
+	qFe3yLPWAODgRJO4MqX5BA0NLo5IyItXf8YY3t27cinLSCe2LmO1wnT9XmKFdrgo1Z5VKjl/6reqa
+	zgeMvU/4AjbsrSVsGvAB5GrAYso1prlJFbdckJYWTKaACVKayaxXraM9osElS5504ntezrYdvCEJA
+	su0L+O/KyyYbITzdQml50u4Eq0G4LZdqMig4q+57kOBnVY9KmbMK7yrC4tWY3lEfJhwFcRn9XMN42
+	UlXVQWUoG3SLZCSxEsWDxRlKtp8Us/xPOgR8nmPqBIMixiqtKClxbNtjatJYSrvJhDTjgBPYVFZZd
+	K1eqcmjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulWwN-00000008fNt-3IE0;
-	Mon, 11 Aug 2025 18:08:11 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1ulWwP-00000008fRS-3O4g;
+	Mon, 11 Aug 2025 18:08:13 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulUIL-00000008AeW-2j8h;
-	Mon, 11 Aug 2025 15:18:41 +0000
+	id 1ulUII-00000008AgZ-2VTJ;
+	Mon, 11 Aug 2025 15:18:42 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 36A33668D3;
-	Mon, 11 Aug 2025 15:18:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id EDC3FC4FE07;
-	Mon, 11 Aug 2025 15:18:30 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id E6BCA5C5A99;
+	Mon, 11 Aug 2025 15:18:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 4FDB7C2BCF7;
+	Mon, 11 Aug 2025 15:18:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1754925511;
-	bh=Rw9Gk4+QNNQQ22Oplb/nL6UadRxNdVe8S5ltBz9aEjo=;
+	s=k20201202; t=1754925513;
+	bh=ROaN4eyBVwEFVrBWTDzbW5wnwX0Du1rCsskz6Hnt110=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=V+UmgY5RPoiQjUgGh8zftmb+UZPjlG3zK+FfqL9fXQut0cErfA1HF38XeRDuK6cWe
-	 9MVVWHTNdupX3AiNfDesbaGJaRPgQTrgmQS2lMFtujwLc4RTkyE7RlGKxpRW2CBUkf
-	 tFCPGepvG3NrJkXE82t8UzujU/bW568SubHigT0QGwWzf5uhalXtFqzXiy3XMFjjk5
-	 0HoCZPPR3JjuqiHXBos46KlNlqVf6kuijoHMB8OskMk4yTUYsxX+c5CRMLz35BBrcI
-	 hUTQsOevyDHlWK6M0LLXrwhj1J9c/Va+D7qRqYEuEZGK5h2s3ik2YIRypXE44Bahcu
-	 cTwdj/Dd3U4HA==
+	b=bYP/8WYtBPfN2qKAMEd0sAAEjfkG5EnO8i1uhZh5bERSZsOc6Jo5YtxeRCu/kX3YC
+	 6IRg20pgTufxU+CxTUHxF6dSpUEAYWjjL/SdugibcIbMk3sk7Ad3/MLeFqLAeYwoJV
+	 ibRCJ6Ig+RlUMGdhgXFff66oq7veVQw57W/NefAZeqaNvs2M6n+hNrj9KiX5lynQP5
+	 ZIjyhR/hw5nctbh0j7h0sXndwoplV4sl4CvJHEA2HrDpd5Sewr6N5IjNZ2tXTS4U6u
+	 z0DgKdJUVOb2d4+GRgwQEa4X5h7SZgPDmcgjdjNDFRhLaF2C78FsnGs/aOgQIlyV8N
+	 44BfVqCWM+Zlw==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C58BDC87FDA;
-	Mon, 11 Aug 2025 15:18:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3BADECA0ED1;
+	Mon, 11 Aug 2025 15:18:33 +0000 (UTC)
 From: Brian Masney via B4 Relay <devnull+bmasney.redhat.com@kernel.org>
-Date: Mon, 11 Aug 2025 11:18:47 -0400
-Subject: [PATCH 055/114] clk: st: clkgen-fsyn: convert from round_rate() to
+Date: Mon, 11 Aug 2025 11:19:12 -0400
+Subject: [PATCH 080/114] clk: cdce706: convert from round_rate() to
  determine_rate()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250811-clk-for-stephen-round-rate-v1-55-b3bf97b038dc@redhat.com>
+Message-Id: <20250811-clk-for-stephen-round-rate-v1-80-b3bf97b038dc@redhat.com>
 References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 To: Michael Turquette <mturquette@baylibre.com>, 
@@ -117,16 +117,19 @@ Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev, 
  Brian Masney <bmasney@redhat.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925498; l=3173;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925498; l=2194;
  i=bmasney@redhat.com; s=20250528; h=from:subject:message-id;
- bh=gUSLbeZHr73B/I2fV9jotoRj8MmBd1lu8kA4ol+iIJ0=;
- b=G6k4uh/JRAn4/1Td8h7erdt/dHCXUCAhiA0vLqRrFWA9B+Z4UG8OeJjyBbv4xxj66+p+h/rCk
- 7Ok2dvXQYtwDl/u4bPzZSai6M4gKpoLwoMpcJ2RakLzXW4yhmR6iimb
+ bh=UaSvd89DwndfC/Jfkrn5bzm2mpom1d/OQ5nJ7RnMUek=;
+ b=52jSnCcEU3HNMp6ESkgp6tuWFfcF+PbyIJFATB0+VXkng/zgF+/My8bTw5/tY5zZHKN2t3E+z
+ XVO7I4hD8OzCm+1WTmWt5wcqgyDU2Valob+3GveF/gswEN7vxFCa20H
 X-Developer-Key: i=bmasney@redhat.com; a=ed25519;
  pk=x20f2BQYftANnik+wvlm4HqLqAlNs/npfVcbhHPOK2U=
 X-Endpoint-Received: by B4 Relay for bmasney@redhat.com/20250528 with
  auth_id=472
 X-Original-From: Brian Masney <bmasney@redhat.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250811_081838_833243_E06ACDE4 
+X-CRM114-Status: GOOD (  13.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -150,89 +153,59 @@ on the cover letter of this series.
 
 Signed-off-by: Brian Masney <bmasney@redhat.com>
 ---
- drivers/clk/st/clkgen-fsyn.c | 33 +++++++++++++++++----------------
- 1 file changed, 17 insertions(+), 16 deletions(-)
+ drivers/clk/clk-cdce706.c | 16 +++++++++-------
+ 1 file changed, 9 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/clk/st/clkgen-fsyn.c b/drivers/clk/st/clkgen-fsyn.c
-index 40df1db102a77bbe5144d42f6e05361b66634e9a..e06e7e5cc1a56192cceeea20343c292423015bbe 100644
---- a/drivers/clk/st/clkgen-fsyn.c
-+++ b/drivers/clk/st/clkgen-fsyn.c
-@@ -375,22 +375,21 @@ static int clk_fs660c32_vco_get_params(unsigned long input,
+diff --git a/drivers/clk/clk-cdce706.c b/drivers/clk/clk-cdce706.c
+index d0705bb03a2aae2c2a1abc7031183ee0a9ec053e..a495d313b02f39840b4ad0242758db06f1715e28 100644
+--- a/drivers/clk/clk-cdce706.c
++++ b/drivers/clk/clk-cdce706.c
+@@ -183,8 +183,8 @@ static unsigned long cdce706_pll_recalc_rate(struct clk_hw *hw,
  	return 0;
  }
  
--static long quadfs_pll_fs660c32_round_rate(struct clk_hw *hw,
--					   unsigned long rate,
--					   unsigned long *prate)
-+static int quadfs_pll_fs660c32_determine_rate(struct clk_hw *hw,
-+					      struct clk_rate_request *req)
+-static long cdce706_pll_round_rate(struct clk_hw *hw, unsigned long rate,
+-				   unsigned long *parent_rate)
++static int cdce706_pll_determine_rate(struct clk_hw *hw,
++				      struct clk_rate_request *req)
  {
- 	struct stm_fs params;
+ 	struct cdce706_hw_data *hwd = to_hw_data(hw);
+ 	unsigned long mul, div;
+@@ -192,9 +192,9 @@ static long cdce706_pll_round_rate(struct clk_hw *hw, unsigned long rate,
  
--	if (clk_fs660c32_vco_get_params(*prate, rate, &params))
--		return rate;
-+	if (clk_fs660c32_vco_get_params(req->best_parent_rate, req->rate, &params))
-+		return 0;
+ 	dev_dbg(&hwd->dev_data->client->dev,
+ 		"%s, rate: %lu, parent_rate: %lu\n",
+-		__func__, rate, *parent_rate);
++		__func__, req->rate, req->best_parent_rate);
  
--	clk_fs660c32_vco_get_rate(*prate, &params, &rate);
-+	clk_fs660c32_vco_get_rate(req->best_parent_rate, &params, &req->rate);
+-	rational_best_approximation(rate, *parent_rate,
++	rational_best_approximation(req->rate, req->best_parent_rate,
+ 				    CDCE706_PLL_N_MAX, CDCE706_PLL_M_MAX,
+ 				    &mul, &div);
+ 	hwd->mul = mul;
+@@ -204,9 +204,11 @@ static long cdce706_pll_round_rate(struct clk_hw *hw, unsigned long rate,
+ 		"%s, pll: %d, mul: %lu, div: %lu\n",
+ 		__func__, hwd->idx, mul, div);
  
- 	pr_debug("%s: %s new rate %ld [ndiv=%u]\n",
- 		 __func__, clk_hw_get_name(hw),
--		 rate, (unsigned int)params.ndiv);
-+		 req->rate, (unsigned int)params.ndiv);
- 
--	return rate;
+-	res = (u64)*parent_rate * hwd->mul;
++	res = (u64)req->best_parent_rate * hwd->mul;
+ 	do_div(res, hwd->div);
+-	return res;
++	req->rate = res;
++
 +	return 0;
  }
  
- static int quadfs_pll_fs660c32_set_rate(struct clk_hw *hw, unsigned long rate,
-@@ -436,7 +435,7 @@ static const struct clk_ops st_quadfs_pll_c32_ops = {
- 	.disable	= quadfs_pll_disable,
- 	.is_enabled	= quadfs_pll_is_enabled,
- 	.recalc_rate	= quadfs_pll_fs660c32_recalc_rate,
--	.round_rate	= quadfs_pll_fs660c32_round_rate,
-+	.determine_rate = quadfs_pll_fs660c32_determine_rate,
- 	.set_rate	= quadfs_pll_fs660c32_set_rate,
+ static int cdce706_pll_set_rate(struct clk_hw *hw, unsigned long rate,
+@@ -251,7 +253,7 @@ static int cdce706_pll_set_rate(struct clk_hw *hw, unsigned long rate,
+ 
+ static const struct clk_ops cdce706_pll_ops = {
+ 	.recalc_rate = cdce706_pll_recalc_rate,
+-	.round_rate = cdce706_pll_round_rate,
++	.determine_rate = cdce706_pll_determine_rate,
+ 	.set_rate = cdce706_pll_set_rate,
  };
  
-@@ -814,19 +813,21 @@ static unsigned long quadfs_recalc_rate(struct clk_hw *hw,
- 	return rate;
- }
- 
--static long quadfs_round_rate(struct clk_hw *hw, unsigned long rate,
--				     unsigned long *prate)
-+static int quadfs_determine_rate(struct clk_hw *hw,
-+				 struct clk_rate_request *req)
- {
- 	struct stm_fs params;
- 
--	rate = quadfs_find_best_rate(hw, rate, *prate, &params);
-+	req->rate = quadfs_find_best_rate(hw, req->rate,
-+					  req->best_parent_rate, &params);
- 
- 	pr_debug("%s: %s new rate %ld [sdiv=0x%x,md=0x%x,pe=0x%x,nsdiv3=%u]\n",
- 		 __func__, clk_hw_get_name(hw),
--		 rate, (unsigned int)params.sdiv, (unsigned int)params.mdiv,
--			 (unsigned int)params.pe, (unsigned int)params.nsdiv);
-+		 req->rate, (unsigned int)params.sdiv,
-+		 (unsigned int)params.mdiv,
-+		 (unsigned int)params.pe, (unsigned int)params.nsdiv);
- 
--	return rate;
-+	return 0;
- }
- 
- 
-@@ -873,7 +874,7 @@ static const struct clk_ops st_quadfs_ops = {
- 	.enable		= quadfs_fsynth_enable,
- 	.disable	= quadfs_fsynth_disable,
- 	.is_enabled	= quadfs_fsynth_is_enabled,
--	.round_rate	= quadfs_round_rate,
-+	.determine_rate = quadfs_determine_rate,
- 	.set_rate	= quadfs_set_rate,
- 	.recalc_rate	= quadfs_recalc_rate,
- };
 
 -- 
 2.50.1
