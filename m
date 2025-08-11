@@ -4,86 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E981AC87FD2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Aug 2025 11:41:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C7D6C87FDB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Aug 2025 13:20:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=L5GmgDRwLzjGy8dLnCeLiuAfeTbFgGKNWM+nzJ45dpA=; b=PrNhSev9djd0hDZHBPSqKq8cBB
-	grFgloQITNRmPtlVOxmFkBc4Qmtch8De4MW7En2LYzLDRpiz/Li7C4WMYSXW8F52UUhXonCMjTfp1
-	30vRDTOpXpovQbXibKtIu8atV1l/SkMS0Y7hUJEvpa3cM2njX/53eVBDrQYejWdWYGmoLbFNAPA77
-	cLZv1E3fgGSav39nSoBKIrBQVmVBt8+tPIixxs+G9p8Oxlrg1s8fxAzGBq1MPQ2vXLgtTSh5/pleZ
-	k05Y81fFQah63D8MgwDQlYIn7Q1bm5uK57ah+A4tyD+heSNXQ7FmASi1O9Z9eAmkSsl3ymJYFvpxa
-	ZDi8GNdw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YmlXeyOWfKWSje0Td8DQAPRRqN2xhLGJ9irnz2oty0I=; b=kcCjwaIYyqkpu7UJsvEkIh2Xwb
+	lfs9KvLH0U3PMWjrdTHpvTc4Q3SGduV/liBPud9NyNJ/EywM8bIKKisSJUbYCnWxWrP8tBO96EAOf
+	3iWN8HtXKTtNQXI8blHoIRzmMB5WqwOCs/RgZEu7d/38Ufz2p/MjPGAYV4dppe2ZJqf0Yb7rr2AeM
+	gON0PNjottctfWIM0Us1AJRLibn8SJAxJTJH5T6OE4EfrNyxUWhG/V/p6/MQBPyD/4wL+IBCCMscX
+	C9VPeTvp2ykVl1KaeR4dNT/Xf6pHglAlcierE3Ii2Q2stK+LpWO1ZlF+2danoOFPtVT2m2E1Rhf5G
+	3xY3pJ2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulQuc-00000007Ydw-2K6u;
-	Mon, 11 Aug 2025 11:41:58 +0000
-Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
+	id 1ulSS3-00000007nRM-27yy;
+	Mon, 11 Aug 2025 13:20:35 +0000
+Received: from relay1-d.mail.gandi.net ([2001:4b98:dc4:8::221])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulQdS-00000007VIm-3Syf
-	for linux-mediatek@lists.infradead.org;
-	Mon, 11 Aug 2025 11:24:16 +0000
-Received: by mail-lj1-x235.google.com with SMTP id 38308e7fff4ca-33229f67729so37804221fa.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 11 Aug 2025 04:24:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1754911453; x=1755516253; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=L5GmgDRwLzjGy8dLnCeLiuAfeTbFgGKNWM+nzJ45dpA=;
-        b=Mrk2koV5zViSUaK1IBSA/gKOcj/es4LHdRLCPj721/fnB3LDf5PebNiZTD3KEekWAY
-         LZNttmcGiavVK+TFecG8Oy0GdhWusn747ApG+GpGBQAkWQoIJLueTRLWMWFuvBxK4WdF
-         NiNPg0zLgrVndInP9WTkJZcf5RdUYYM/swEtc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1754911453; x=1755516253;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=L5GmgDRwLzjGy8dLnCeLiuAfeTbFgGKNWM+nzJ45dpA=;
-        b=bEXMSzJ7qknp+KyWLdloGlxJ/uC6ISKeK7swVRriU/frt01sq4GLw/icI/6EfFGE7L
-         L+E4RP2N0dJ36FWIx/XrA+hqvcU+Rg6OUujZqu1NMzlQc5Wqw4GZzjmRb7PXwnzvA7sz
-         Z2X1JIXRIb1G3UMDCkzr0IM2OCX8KfSF4u61F4IX2GIqtqft0Yosob128vNmzFFp8+Vo
-         EXYqCfiDIqsARtPcK6FGijiwGVeX57R85Rnp4JAF1Ww5IE6pP3btMfi1CY5BSGh7pQ+g
-         MYJQ16+hRLcVYAIjbbwofMM9daIJpZdsChVziEzRA95j07ZKpqoz3a7HWfNYs4PesYCT
-         FTJQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUXqN/JnaIhn17fg85vz9Al+zBvpxIFM0xRhBVjeqe9DDNU9zN/lUNdjTiJ40SFk3mjWieqZ8QJzSxOS17zGw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yyrh62Z33CjA+0VLjfoWQLIfFz2MuISiQp+R+BJGHmxp6Gh7uPG
-	FeaOQjDD+UwsIeMTopBH6HAIMED69Eg1Qd36P1RzWWzBvqH/xWtcl8U35NF2vZOL+XvhtukzvrB
-	g2aPXN2Up7zOn6UPWN0jkK7vn5i74K/awHYtoK4LG
-X-Gm-Gg: ASbGncvN9rqLWgTOFYujPNiP1386X+KPWcD5SJaNZWQlYxtQrVRXIwlutzWB0yxfPRl
-	q0W6Y26mDCj5YG8jmTTfnwUki9+PAOKfyzmAXijh5NM1QBoOCDCyrMtlfLTrjOnob2+eeJp67+n
-	nKVA1Lg4xsz13Xj1m2wkwyjLMq3Jfhn0rXM26mszGAiLju5sBroL7bv/2zBkLpeQafuR464bbdp
-	pWeZ499JoZLa+0TBrbTbDoam1Naewda0gE=
-X-Google-Smtp-Source: AGHT+IFH1xwZU4h8r7iEY3jgrVBtJGh2oYXazOzDlq78D9uq3Av2ACb1cuu5hjNFbP0gck6r2pgb1pAL9b77iA9N8VY=
-X-Received: by 2002:a05:6512:3b27:b0:55b:7cc9:41ee with SMTP id
- 2adb3069b0e04-55cc0102717mr3789564e87.38.1754911452958; Mon, 11 Aug 2025
- 04:24:12 -0700 (PDT)
+	id 1ulSH2-00000007lgU-38Yr;
+	Mon, 11 Aug 2025 13:09:14 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 2794F43A15;
+	Mon, 11 Aug 2025 13:09:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1754917748;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=YmlXeyOWfKWSje0Td8DQAPRRqN2xhLGJ9irnz2oty0I=;
+	b=ha0LJNSfZWuWdNA1z8Nq7Dwl77fZGwmujhb/DcMHJwWCo3WCIJaGWAxDRqO5yx1aLxoil9
+	1cuXIqiQoX1OyrfXP6qoEZGBUJD+AbHGw4InLLM1xBhXR7vHmsp52RAlQ/rXZXuR1tJAs7
+	o1HpE/yrhIilPMyWiZspJdXNLBSNmgCIUlPmhUUxcRvf/dWIHUiBj0R9RiuNdGB5Di0F4f
+	pTa6F9GO9EyjF21LkSW9M1D240Bc17zC04BCgkOpOInAyex7XG+vz1vr97UHEguyPsyniE
+	inU3b1EsUc1zTTWao0P6slM1nVa+TyfE0vmJpPT9fc7v2SZUcJcx/u32neKPWw==
+Date: Mon, 11 Aug 2025 15:09:07 +0200
+From: Alexandre Belloni <alexandre.belloni@bootlin.com>
+To: ot_shunxi.zhang@mediatek.com
+Cc: Eddie Huang <eddie.huang@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Lee Jones <lee@kernel.org>, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-rtc@vger.kernel.org,
+	linux-kernel@vger.kernel.org, sirius.wang@mediatek.com,
+	vince-wl.liu@mediatek.com, jh.hsu@mediatek.com
+Subject: Re: [PATCH v1 2/2] rtc: mt6397: Add BBPU alarm status reset and
+ shutdown handling
+Message-ID: <2025081113090716407d59@mail.local>
+References: <20250811081543.4377-1-ot_shunxi.zhang@mediatek.com>
+ <20250811081543.4377-3-ot_shunxi.zhang@mediatek.com>
 MIME-Version: 1.0
-References: <20250708111806.3992-1-darren.ye@mediatek.com> <20250708111806.3992-6-darren.ye@mediatek.com>
-In-Reply-To: <20250708111806.3992-6-darren.ye@mediatek.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 11 Aug 2025 19:24:02 +0800
-X-Gm-Features: Ac12FXxeNaT3MP9n4wih87uuXFKen5GCnd1-R8Ou24yHeRKyjqsVqSE_BwKFLpA
-Message-ID: <CAGXv+5HW1-GByx6BEd46J_n50FxcHNukUWwREpoDne=CdAnSVQ@mail.gmail.com>
-Subject: Re: [PATCH v6 05/10] ASoC: mediatek: mt8196: support I2S in platform driver
-To: "Darren.Ye" <darren.ye@mediatek.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Jaroslav Kysela <perex@perex.cz>, 
-	Takashi Iwai <tiwai@suse.com>, Linus Walleij <linus.walleij@linaro.org>, 
-	Bartosz Golaszewski <brgl@bgdev.pl>, linux-sound@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250811081543.4377-3-ot_shunxi.zhang@mediatek.com>
+X-GND-State: clean
+X-GND-Score: -100
+X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdefgddufedvheegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvvefukfhfgggtuggjsehttdertddttddvnecuhfhrohhmpeetlhgvgigrnhgurhgvuceuvghllhhonhhiuceorghlvgigrghnughrvgdrsggvlhhlohhnihessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnhepgeeiudeuteehhfekgeejveefhfeiudejuefhgfeljefgjeegkeeujeeugfehgefgnecuffhomhgrihhnpegsohhothhlihhnrdgtohhmnecukfhppedvrgdtudemvgdtrgemvdgumeeifeejtdemudgvfeefmehfledvleemhegvsgekmeduudegfeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpedvrgdtudemvgdtrgemvdgumeeifeejtdemudgvfeefmehfledvleemhegvsgekmeduudegfedphhgvlhhopehlohgtrghlhhhoshhtpdhmrghilhhfrhhomheprghlvgigrghnughrvgdrsggvlhhlohhnihessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepuddvpdhrtghpthhtohepohhtpghshhhunhigihdriihhrghnghesmhgvughirghtvghkrdgtohhmpdhrtghpthhtohepvgguughivgdrhhhurghnghesmhgvughirghtvghkrdgtohhmpdhrtghpt
+ hhtohepshgvrghnrdifrghnghesmhgvughirghtvghkrdgtohhmpdhrtghpthhtohepmhgrthhthhhirghsrdgsghhgsehgmhgrihhlrdgtohhmpdhrtghpthhtoheplhgvvgeskhgvrhhnvghlrdhorhhgpdhrtghpthhtoheplhhinhhugidqrghrmhdqkhgvrhhnvghlsehlihhsthhsrdhinhhfrhgruggvrggurdhorhhgpdhrtghpthhtoheplhhinhhugidqmhgvughirghtvghksehlihhsthhsrdhinhhfrhgruggvrggurdhorhhgpdhrtghpthhtoheplhhinhhugidqrhhttgesvhhgvghrrdhkvghrnhgvlhdrohhrgh
+X-GND-Sasl: alexandre.belloni@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250811_042414_885391_223BEE04 
-X-CRM114-Status: GOOD (  22.85  )
+X-CRM114-CacheID: sfid-20250811_060913_429146_4AD12C75 
+X-CRM114-Status: GOOD (  27.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,218 +80,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Sorry for another reply, but I lost some of the context I wanted to reply t=
-o.
-
-On Tue, Jul 8, 2025 at 7:34=E2=80=AFPM Darren.Ye <darren.ye@mediatek.com> w=
-rote:
->
-> From: Darren Ye <darren.ye@mediatek.com>
->
-> Add mt8196 I2S DAI driver support.
->
-> Signed-off-by: Darren Ye <darren.ye@mediatek.com>
+On 11/08/2025 16:15:34+0800, ot_shunxi.zhang@mediatek.com wrote:
+> From: Shunxi Zhang <ot_shunxi.zhang@mediatek.com>
+> 
+> This patch introduces a new function, mtk_rtc_reset_bbpu_alarm_status,
+> to reset the BBPU alarm status in the MT6397 RTC driver. This function
+> writes the necessary bits to the RTC_BBPU register to clear the alarm
+> status and ensure proper operation.
+> 
+> Additionally, the mtk_rtc_shutdown function is added to handle RTC
+> shutdown events. It resets the BBPU alarm status and updates the
+> RTC_IRQ_EN register to disable the one-shot alarm interrupt,
+> ensuring a clean shutdown process.
+> 
+> Signed-off-by: Shunxi Zhang <ot_shunxi.zhang@mediatek.com>
 > ---
->  sound/soc/mediatek/mt8196/mt8196-dai-i2s.c | 3944 ++++++++++++++++++++
->  1 file changed, 3944 insertions(+)
->  create mode 100644 sound/soc/mediatek/mt8196/mt8196-dai-i2s.c
->
-> diff --git a/sound/soc/mediatek/mt8196/mt8196-dai-i2s.c b/sound/soc/media=
-tek/mt8196/mt8196-dai-i2s.c
-> new file mode 100644
-> index 000000000000..59f66ab8fa9f
-> --- /dev/null
-> +++ b/sound/soc/mediatek/mt8196/mt8196-dai-i2s.c
-> @@ -0,0 +1,3944 @@
-
-[...]
-
-> +static int mtk_afe_i2s_share_connect(struct snd_soc_dapm_widget *source,
-> +                                    struct snd_soc_dapm_widget *sink)
+>  drivers/rtc/rtc-mt6397.c | 36 +++++++++++++++++++++++++++++++++++-
+>  1 file changed, 35 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
+> index 692c00ff544b..063bd399de8c 100644
+> --- a/drivers/rtc/rtc-mt6397.c
+> +++ b/drivers/rtc/rtc-mt6397.c
+> @@ -37,6 +37,21 @@ static int mtk_rtc_write_trigger(struct mt6397_rtc *rtc)
+>  	return ret;
+>  }
+>  
+> +static void mtk_rtc_reset_bbpu_alarm_status(struct mt6397_rtc *rtc)
 > +{
-> +       struct snd_soc_dapm_widget *w =3D sink;
-> +       struct snd_soc_component *cmpnt =3D snd_soc_dapm_to_component(w->=
-dapm);
-> +       struct mtk_base_afe *afe =3D snd_soc_component_get_drvdata(cmpnt)=
-;
-> +       struct mtk_afe_i2s_priv *i2s_priv;
-> +       int ret =3D 0;
+> +	u32 bbpu = RTC_BBPU_KEY | RTC_BBPU_PWREN | RTC_BBPU_RESET_AL;
+> +	int ret;
 > +
-> +       i2s_priv =3D get_i2s_priv_by_name(afe, sink->name);
+> +	ret = regmap_write(rtc->regmap, rtc->addr_base + RTC_BBPU, bbpu);
+> +	if (ret < 0) {
+> +		dev_err(rtc->rtc_dev->dev.parent, "%s: write rtc bbpu error\n",
+> +			__func__);
+> +		return;
+> +	}
 > +
+> +	mtk_rtc_write_trigger(rtc);
+> +}
+> +
+>  static irqreturn_t mtk_rtc_irq_handler_thread(int irq, void *data)
+>  {
+>  	struct mt6397_rtc *rtc = data;
+> @@ -51,6 +66,8 @@ static irqreturn_t mtk_rtc_irq_handler_thread(int irq, void *data)
+>  		if (regmap_write(rtc->regmap, rtc->addr_base + RTC_IRQ_EN,
+>  				 irqen) == 0)
+>  			mtk_rtc_write_trigger(rtc);
+> +
+> +		mtk_rtc_reset_bbpu_alarm_status(rtc);
+>  		mutex_unlock(&rtc->lock);
+>  
+>  		return IRQ_HANDLED;
+> @@ -297,6 +314,22 @@ static int mtk_rtc_probe(struct platform_device *pdev)
+>  	return devm_rtc_register_device(rtc->rtc_dev);
+>  }
+>  
+> +static void mtk_rtc_shutdown(struct platform_device *pdev)
+> +{
+> +	struct mt6397_rtc *rtc = platform_get_drvdata(pdev);
+> +	int ret = 0;
+> +
+> +	mtk_rtc_reset_bbpu_alarm_status(rtc);
+> +
+> +	ret = regmap_update_bits(rtc->regmap,
+> +				 rtc->addr_base + RTC_IRQ_EN,
+> +				 RTC_IRQ_EN_ONESHOT_AL, 0);
+> +	if (ret < 0)
+> +		return;
+> +
+> +	mtk_rtc_write_trigger(rtc);
 
-Drop empty line between assignment and check.
-
-> +       if (!i2s_priv)
-> +               return 0;
-> +
-> +       if (i2s_priv->share_i2s_id < 0)
-> +               return 0;
-> +
-> +       ret =3D (i2s_priv->share_i2s_id =3D=3D get_i2s_id_by_name(afe, so=
-urce->name)) ? 1 : 0;
-> +
-> +       return ret;
-
-          return i2s_priv->share_i2s_id =3D=3D get_i2s_id_by_name(afe,
-source->name);
-
-bool casts to int implicitly in the same way you wrote explicitly.
+The whole goal of the RTC is to wakeup the system, why would you disable
+the alarm on shutdown?
 
 > +}
 > +
-> +static int mtk_afe_i2s_hd_connect(struct snd_soc_dapm_widget *source,
-> +                                 struct snd_soc_dapm_widget *sink)
-> +{
-> +       struct snd_soc_dapm_widget *w =3D sink;
-> +       struct snd_soc_component *cmpnt =3D snd_soc_dapm_to_component(w->=
-dapm);
-> +       struct mtk_base_afe *afe =3D snd_soc_component_get_drvdata(cmpnt)=
-;
-> +       struct mtk_afe_i2s_priv *i2s_priv;
-> +       int i2s_num;
+>  #ifdef CONFIG_PM_SLEEP
+>  static int mt6397_rtc_suspend(struct device *dev)
+>  {
+> @@ -345,7 +378,8 @@ static struct platform_driver mtk_rtc_driver = {
+>  		.of_match_table = mt6397_rtc_of_match,
+>  		.pm = &mt6397_pm_ops,
+>  	},
+> -	.probe	= mtk_rtc_probe,
+> +	.probe = mtk_rtc_probe,
+> +	.shutdown = mtk_rtc_shutdown,
+>  };
+>  
+>  module_platform_driver(mtk_rtc_driver);
+> -- 
+> 2.46.0
+> 
 
-Rename to "src_i2s_num" to be explicit.
-
-> +
-> +       i2s_priv =3D get_i2s_priv_by_name(afe, sink->name);
-> +
-
-Drop empty line between assignment and check.
-
-> +       if (!i2s_priv)
-> +               return 0;
-> +
-> +       i2s_num =3D get_i2s_id_by_name(afe, source->name);
-> +       if (get_i2s_id_by_name(afe, sink->name) =3D=3D i2s_num)
-
-Use i2s_priv->id?
-
-> +               return !mtk_is_i2s_low_power(i2s_num) ||
-> +                      i2s_priv->low_jitter_en;
-> +
-> +       /* check if share i2s need hd en */
-> +       if (i2s_priv->share_i2s_id < 0)
-> +               return 0;
-> +
-> +       if (i2s_priv->share_i2s_id =3D=3D i2s_num)
-> +               return !mtk_is_i2s_low_power(i2s_num) ||
-> +                      i2s_priv->low_jitter_en;
-> +
-> +       return 0;
-> +}
-> +
-> +static int mtk_afe_i2s_apll_connect(struct snd_soc_dapm_widget *source,
-> +                                   struct snd_soc_dapm_widget *sink)
-> +{
-> +       struct snd_soc_dapm_widget *w =3D sink;
-> +       struct snd_soc_component *cmpnt =3D snd_soc_dapm_to_component(w->=
-dapm);
-> +       struct mtk_base_afe *afe =3D snd_soc_component_get_drvdata(cmpnt)=
-;
-> +       struct mtk_afe_i2s_priv *i2s_priv;
-> +       int cur_apll;
-> +       int i2s_need_apll;
-
-Rename to needed_apll or desired_apll.
-
-> +
-> +       i2s_priv =3D get_i2s_priv_by_name(afe, w->name);
-> +
-
-Drop empty line between assignment and check.
-
-> +       if (!i2s_priv)
-> +               return 0;
-> +
-> +       /* which apll */
-> +       cur_apll =3D mt8196_get_apll_by_name(afe, source->name);
-> +
-> +       /* choose APLL from i2s rate */
-> +       i2s_need_apll =3D mt8196_get_apll_by_rate(afe, i2s_priv->rate);
-> +
-> +       return (i2s_need_apll =3D=3D cur_apll) ? 1 : 0;
-
-          return i2s_need_apll =3D=3D cur_apll;
-
-> +}
-> +
-> +static int mtk_afe_i2s_mclk_connect(struct snd_soc_dapm_widget *source,
-> +                                   struct snd_soc_dapm_widget *sink)
-> +{
-> +       struct snd_soc_dapm_widget *w =3D sink;
-> +       struct snd_soc_component *cmpnt =3D snd_soc_dapm_to_component(w->=
-dapm);
-> +       struct mtk_base_afe *afe =3D snd_soc_component_get_drvdata(cmpnt)=
-;
-> +       struct mtk_afe_i2s_priv *i2s_priv;
-> +
-> +       i2s_priv =3D get_i2s_priv_by_name(afe, sink->name);
-> +
-
-Drop empty line between assignment and check.
-
-> +       if (!i2s_priv)
-> +               return 0;
-> +
-> +       if (get_i2s_id_by_name(afe, sink->name) =3D=3D
-
-              i2s_priv->id =3D=3D ...
-
-> +           get_i2s_id_by_name(afe, source->name))
-
-Keep a copy of the result ...
-
-> +               return (i2s_priv->mclk_rate > 0) ? 1 : 0;
-
-                  return i2s_priv->mclk_rate > 0;
-
-> +
-> +       /* check if share i2s need mclk */
-> +       if (i2s_priv->share_i2s_id < 0)
-> +               return 0;
-> +
-> +       if (i2s_priv->share_i2s_id =3D=3D get_i2s_id_by_name(afe, source-=
->name))
-
-and use it here, like in mtk_afe_i2s_hd_connect().
-
-> +               return (i2s_priv->mclk_rate > 0) ? 1 : 0;
-
-                  return i2s_priv->mclk_rate > 0;
-
-> +       return 0;
-> +}
-> +
-> +static int mtk_afe_mclk_apll_connect(struct snd_soc_dapm_widget *source,
-> +                                    struct snd_soc_dapm_widget *sink)
-> +{
-> +       struct snd_soc_dapm_widget *w =3D sink;
-> +       struct snd_soc_component *cmpnt =3D snd_soc_dapm_to_component(w->=
-dapm);
-> +       struct mtk_base_afe *afe =3D snd_soc_component_get_drvdata(cmpnt)=
-;
-> +       struct mtk_afe_i2s_priv *i2s_priv;
-> +       int cur_apll;
-> +
-> +       i2s_priv =3D get_i2s_priv_by_name(afe, w->name);
-> +
-
-Drop empty line between assignment and check.
-
-> +       if (!i2s_priv)
-> +               return 0;
-> +
-> +       /* which apll */
-> +       cur_apll =3D mt8196_get_apll_by_name(afe, source->name);
-> +
-> +       return (i2s_priv->mclk_apll =3D=3D cur_apll) ? 1 : 0;
-
-          return i2s_priv->mclk_apll =3D=3D cur_apll;
-
-> +}
-
-[...]
-
-ChenYu
+-- 
+Alexandre Belloni, co-owner and COO, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
