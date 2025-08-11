@@ -4,68 +4,128 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F65ACA0EC4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Aug 2025 17:46:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76EA9CA0ED1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Aug 2025 18:04:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=a770G4hZ4M2S0ts4YkSFwqnmmOksUGwoXqm0ifoj5/M=; b=H+b7g0B5FLpMjwa4gFn5irKsoW
-	3nLejLqBUQdI5m5kZjWvmgRv6GNEzwgKENjQToMZkO5gXLYfalxsLm647a0las4yftqr7KkbMD3QB
-	Fmp86Rc2xEcbj3EOdIr3zlucALeFvT4bfM7C/LbtB1pVFvfb58nIT4VHVuJeD9+UkKm/0R86VQh1y
-	2p0S2+Q2nhXOZRKsTPoOLGvs5LCo6KGZEIeV+nQNpA/XmI1q0EhG98THMXSRkNdUQURfgKT8gBKZw
-	7qz4Uolk0oPimRrK3l+GjziUocMVlsjwH5pnMeMpq85zCIPMhoAzNobd8zYng6VnxZ5o+ydQ80frK
-	SuY9lfMA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
+	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
+	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YVk5B1W2biiDYdwcpY2joVlIc0xxaXsjz3kfIhtAi4M=; b=WGwgrAOMxiOmldYa+CeFWQ8oav
+	kgVIY+SgLNh5MfB6vHR+AQsSZUCOdZL818w8yQtusv6QFNroq6yd8jITuONFG9QHf7R6e7aAgGiV9
+	vv4F2YVbWWu1kHAp5yuQr25LxpkBCe6L7wLeWasQBOkFSBhMb1b2fT8qlBOQfTF10mOVlxs+rcajN
+	APXFvWNJxI/1TPN8j2jMMunrVrzPT6GrSLTOm0oVy3b+AWc8SB56sN5D8A/owKOfK7so1DZmy46qn
+	YI10brZdVIFlDIviJK9o3QoIypGROGAi3JOVT4GMx3eDRGzzqa8nkdjUCg5u1XF/s6+FahvXoir+N
+	6WRK+73g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulWb4-00000008ar6-3aZa;
-	Mon, 11 Aug 2025 17:46:10 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1ulWt7-00000008cpW-3rjA;
+	Mon, 11 Aug 2025 18:04:49 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulUHI-00000008ALq-09IM;
-	Mon, 11 Aug 2025 15:17:36 +0000
+	id 1ulUI7-00000008AWa-2JtX;
+	Mon, 11 Aug 2025 15:18:27 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id C8288601FA;
-	Mon, 11 Aug 2025 15:17:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 660DDC4CEED;
-	Mon, 11 Aug 2025 15:17:31 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id E87316142E;
+	Mon, 11 Aug 2025 15:18:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 182BFC4CEF8;
+	Mon, 11 Aug 2025 15:18:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1754925454;
-	bh=oThR9g2icfJGdLraqN6epyKlvrTrIwhnXHmwgyj+e4U=;
-	h=From:Date:Subject:To:Cc:From;
-	b=PHXoMbBHrxsj90+ujDv/fhsjbKSmZPTpIFG/oVpmVca6mzPEuzcaIa5AVbwjqxXHS
-	 aacHADV2B53n1o22TH+TQsStq8ve4TeSzawrJtR6Pn13DGTxDHf/W4pPVjk0bn6XYl
-	 JptMlAMWlNzh9dGldvwtzMSX6ia8sleg7al4DwN9NelQGW9hJULLbRS9XusvnAm6Ni
-	 H6fupFzH8wQSPjiqld4Mo9sbE4EBvpN4jR5LB0RVP1o792EmVYsm0Z1XzbVulddnaf
-	 gvA75phT6Ko+hY5i3ltOMNqFg+DP2QMF+WxiFvB7RvRCtJ+V7w03KunGVcU3wPvDv+
-	 f4GIUKLjuaf3Q==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Mon, 11 Aug 2025 17:14:42 +0200
-Subject: [PATCH net-next v2] net: mediatek: wed: Introduce MT7992 WED
- support to MT7988 SoC
+	s=k20201202; t=1754925505;
+	bh=XdEl7ffUuP28xNeOs2gpjytOGbx2uwlFS3OuWln0FMs=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=rnZWxC2uSzx9Iag5KESIntjEE520EHDY/0vw9jIhU4XdKtRwJ6WRLkH7yg+G7bWQp
+	 ML0lOLpsjsbfbjqTaylrlPPQCB64/EzsiezzTZ6RLoLgflKyLmkoY7TWQKgw0Ocxpc
+	 lsvgl6Kzq+QN79W4yf4kmJuqD6WwauwbJLSACuaN6WaXlRASSALFgT7dDwgcCtaSOV
+	 jQFggVdOP+fqeYomXarPOJzz2yorzTHPpjwYHYEkgn/MarE63+e0/Tucp1WXs32Qyi
+	 ac7ovgcBsdxu3Ivsfa3mr4Y1bP9rdZA/eSzad/F7OsC/fqrioDrCMFyRB0KTnbg5eX
+	 /X5BQk8X5Wtbg==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 06A57C87FD2;
+	Mon, 11 Aug 2025 15:18:25 +0000 (UTC)
+From: Brian Masney via B4 Relay <devnull+bmasney.redhat.com@kernel.org>
+Date: Mon, 11 Aug 2025 11:17:53 -0400
+Subject: [PATCH 001/114] clk: at91: peripheral: fix return value
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250811-mt7992-wed-support-v2-1-e43024c05305@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAOEImmgC/22NQQ6CMBBFr0Jm7RjaUAuuuIdh0dABGpWSKVYN6
- d2txKXL95L//gaB2FGAc7EBU3TB+TmDPBTQT2YeCZ3NDLKUqtSixvuqm0bikyyGx7J4XrFSJ6N
- Kq8RQC8jDhWlwrz166TJPLqye3/tHFF/7y0n9LxcFCjTGamsq29dat1fimW5HzyN0KaUPjeEV2
- rUAAAA=
-X-Change-ID: 20250718-mt7992-wed-support-456a50d51f81
-To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
- Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+Message-Id: <20250811-clk-for-stephen-round-rate-v1-1-b3bf97b038dc@redhat.com>
+References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
+In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
+To: Michael Turquette <mturquette@baylibre.com>, 
+ Stephen Boyd <sboyd@kernel.org>, Sudeep Holla <sudeep.holla@arm.com>, 
+ Cristian Marussi <cristian.marussi@arm.com>, 
+ Chen Wang <unicorn_wang@outlook.com>, Inochi Amaoto <inochiama@gmail.com>, 
+ Nicolas Ferre <nicolas.ferre@microchip.com>, 
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+ Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
+ Paul Cercueil <paul@crapouillou.net>, 
+ Keguang Zhang <keguang.zhang@gmail.com>, 
+ Taichi Sugaya <sugaya.taichi@socionext.com>, 
+ Takao Orito <orito.takao@socionext.com>, Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, Jacky Huang <ychuang3@nuvoton.com>, 
+ Shan-Chun Hung <schung@nuvoton.com>, Vladimir Zapolskiy <vz@mleia.com>, 
+ Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>, 
+ Paul Walmsley <paul.walmsley@sifive.com>, 
+ Samuel Holland <samuel.holland@sifive.com>, Yixun Lan <dlan@gentoo.org>, 
+ Steen Hegelund <Steen.Hegelund@microchip.com>, 
+ Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, 
+ Orson Zhai <orsonzhai@gmail.com>, 
+ Baolin Wang <baolin.wang@linux.alibaba.com>, 
+ Chunyan Zhang <zhang.lyra@gmail.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Michal Simek <michal.simek@amd.com>, Maxime Ripard <mripard@kernel.org>, 
+ =?utf-8?q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
+ Manivannan Sadhasivam <mani@kernel.org>, Sven Peter <sven@kernel.org>, 
+ Janne Grunau <j@jannau.net>, Alyssa Rosenzweig <alyssa@rosenzweig.io>, 
+ Neal Gompa <neal@gompa.dev>, Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>, 
+ Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, 
+ Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
+ Max Filippov <jcmvbkbc@gmail.com>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-wireless@vger.kernel.org, 
- Rex Lu <rex.lu@mediatek.com>
+ Daniel Palmer <daniel@thingy.jp>, Romain Perier <romain.perier@gmail.com>, 
+ Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>, 
+ Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, 
+ Bjorn Andersson <andersson@kernel.org>, 
+ Geert Uytterhoeven <geert+renesas@glider.be>, 
+ Heiko Stuebner <heiko@sntech.de>, 
+ Andrea della Porta <andrea.porta@suse.com>, 
+ Krzysztof Kozlowski <krzk@kernel.org>, 
+ Sylwester Nawrocki <s.nawrocki@samsung.com>, 
+ Chanwoo Choi <cw00.choi@samsung.com>, Alim Akhtar <alim.akhtar@samsung.com>, 
+ Qin Jian <qinjian@cqplus1.com>, Viresh Kumar <vireshk@kernel.org>, 
+ Ulf Hansson <ulf.hansson@linaro.org>, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+ Alex Helms <alexander.helms.jy@renesas.com>, 
+ Linus Walleij <linus.walleij@linaro.org>, Liviu Dudau <liviu.dudau@arm.com>, 
+ Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+ Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>
+Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ arm-scmi@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ sophgo@lists.linux.dev, linux-mips@vger.kernel.org, imx@lists.linux.dev, 
+ linux-riscv@lists.infradead.org, spacemit@lists.linux.dev, 
+ linux-stm32@st-md-mailman.stormreply.com, patches@opensource.cirrus.com, 
+ linux-actions@lists.infradead.org, asahi@lists.linux.dev, 
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+ linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev, 
+ Brian Masney <bmasney@redhat.com>
 X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925497; l=1242;
+ i=bmasney@redhat.com; s=20250528; h=from:subject:message-id;
+ bh=YDaru8NKwF1RrGzFnGDGBIGGQ7vzTx7xnsU79XG8/hU=;
+ b=o3nykMfjA0nvC2Pj+Fs9ck0fGBH2SVd4bUG7DnDIK3o4g/hxcVLbJNIpCuWx2Jl3F0gOdDjLJ
+ 7YjKI7D7u91Bkah4yiNYKbc1GheZA8NXY93rcAhA3tHh92Yj+QVUE3n
+X-Developer-Key: i=bmasney@redhat.com; a=ed25519;
+ pk=x20f2BQYftANnik+wvlm4HqLqAlNs/npfVcbhHPOK2U=
+X-Endpoint-Received: by B4 Relay for bmasney@redhat.com/20250528 with
+ auth_id=472
+X-Original-From: Brian Masney <bmasney@redhat.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,196 +137,44 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: bmasney@redhat.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce the second WDMA RX ring in WED driver for MT7988 SoC since the
-Mediatek MT7992 WiFi chipset supports two separated WDMA rings.
-Add missing MT7988 configurations to properly support WED for MT7992 in
-MT76 driver.
+From: Brian Masney <bmasney@redhat.com>
 
-Co-developed-by: Rex Lu <rex.lu@mediatek.com>
-Signed-off-by: Rex Lu <rex.lu@mediatek.com>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
-Changes in v2:
-- Fix commit log
-- Rebase on top of net-next main branch
-- Link to v1: https://lore.kernel.org/r/20250727-mt7992-wed-support-v1-1-aad7da4dc877@kernel.org
----
- drivers/net/ethernet/mediatek/mtk_wed.c          | 33 +++++++++++++++++++-----
- drivers/net/ethernet/mediatek/mtk_wed.h          |  2 +-
- drivers/net/wireless/mediatek/mt76/mt7915/mmio.c |  6 ++---
- drivers/net/wireless/mediatek/mt76/mt7996/mmio.c | 12 ++++-----
- include/linux/soc/mediatek/mtk_wed.h             |  2 +-
- 5 files changed, 38 insertions(+), 17 deletions(-)
+determine_rate() is expected to return an error code, or 0 on success.
+clk_sam9x5_peripheral_determine_rate() has a branch that returns the
+parent rate on a certain case. This is the behavior of round_rate(),
+so let's go ahead and fix this by setting req->rate.
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
-index 0a80d8f8cff7f415a60b0cd68c0c9c07e2c88f36..3dbb113b792cf00fb4f89ab20f7e7fa72ecac260 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed.c
-@@ -59,7 +59,9 @@ struct mtk_wed_flow_block_priv {
- static const struct mtk_wed_soc_data mt7622_data = {
- 	.regmap = {
- 		.tx_bm_tkid		= 0x088,
--		.wpdma_rx_ring0		= 0x770,
-+		.wpdma_rx_ring = {
-+			0x770,
-+		},
- 		.reset_idx_tx_mask	= GENMASK(3, 0),
- 		.reset_idx_rx_mask	= GENMASK(17, 16),
- 	},
-@@ -70,7 +72,9 @@ static const struct mtk_wed_soc_data mt7622_data = {
- static const struct mtk_wed_soc_data mt7986_data = {
- 	.regmap = {
- 		.tx_bm_tkid		= 0x0c8,
--		.wpdma_rx_ring0		= 0x770,
-+		.wpdma_rx_ring = {
-+			0x770,
-+		},
- 		.reset_idx_tx_mask	= GENMASK(1, 0),
- 		.reset_idx_rx_mask	= GENMASK(7, 6),
- 	},
-@@ -81,7 +85,10 @@ static const struct mtk_wed_soc_data mt7986_data = {
- static const struct mtk_wed_soc_data mt7988_data = {
- 	.regmap = {
- 		.tx_bm_tkid		= 0x0c8,
--		.wpdma_rx_ring0		= 0x7d0,
-+		.wpdma_rx_ring = {
-+			0x7d0,
-+			0x7d8,
-+		},
- 		.reset_idx_tx_mask	= GENMASK(1, 0),
- 		.reset_idx_rx_mask	= GENMASK(7, 6),
- 	},
-@@ -621,8 +628,8 @@ mtk_wed_amsdu_init(struct mtk_wed_device *dev)
- 		return ret;
- 	}
+Fixes: b4c115c76184f ("clk: at91: clk-peripheral: add support for changeable parent rate")
+Signed-off-by: Brian Masney <bmasney@redhat.com>
+---
+ drivers/clk/at91/clk-peripheral.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/clk/at91/clk-peripheral.c b/drivers/clk/at91/clk-peripheral.c
+index c173a44c800aa8cc6970c266995f4a60b0a38554..629f050a855aaebfd1a03ff87c2b016cd2284a5a 100644
+--- a/drivers/clk/at91/clk-peripheral.c
++++ b/drivers/clk/at91/clk-peripheral.c
+@@ -279,8 +279,11 @@ static int clk_sam9x5_peripheral_determine_rate(struct clk_hw *hw,
+ 	long best_diff = LONG_MIN;
+ 	u32 shift;
  
--	/* eagle E1 PCIE1 tx ring 22 flow control issue */
--	if (dev->wlan.id == 0x7991)
-+	/* Kite and Eagle E1 PCIE1 tx ring 22 flow control issue */
-+	if (dev->wlan.id == 0x7991 || dev->wlan.id == 0x7992)
- 		wed_clr(dev, MTK_WED_AMSDU_FIFO, MTK_WED_AMSDU_IS_PRIOR0_RING);
- 
- 	wed_set(dev, MTK_WED_CTRL, MTK_WED_CTRL_TX_AMSDU_EN);
-@@ -1239,7 +1246,11 @@ mtk_wed_set_wpdma(struct mtk_wed_device *dev)
- 		return;
- 
- 	wed_w32(dev, MTK_WED_WPDMA_RX_GLO_CFG, dev->wlan.wpdma_rx_glo);
--	wed_w32(dev, dev->hw->soc->regmap.wpdma_rx_ring0, dev->wlan.wpdma_rx);
-+	wed_w32(dev, dev->hw->soc->regmap.wpdma_rx_ring[0],
-+		dev->wlan.wpdma_rx[0]);
-+	if (mtk_wed_is_v3_or_greater(dev->hw))
-+		wed_w32(dev, dev->hw->soc->regmap.wpdma_rx_ring[1],
-+			dev->wlan.wpdma_rx[1]);
- 
- 	if (!dev->wlan.hw_rro)
- 		return;
-@@ -2323,6 +2334,16 @@ mtk_wed_start(struct mtk_wed_device *dev, u32 irq_mask)
- 		if (!dev->rx_wdma[i].desc)
- 			mtk_wed_wdma_rx_ring_setup(dev, i, 16, false);
- 
-+	if (dev->wlan.hw_rro) {
-+		for (i = 0; i < MTK_WED_RX_PAGE_QUEUES; i++) {
-+			u32 addr = MTK_WED_RRO_MSDU_PG_CTRL0(i) +
-+				   MTK_WED_RING_OFS_COUNT;
+-	if (periph->id < PERIPHERAL_ID_MIN || !periph->range.max)
+-		return parent_rate;
++	if (periph->id < PERIPHERAL_ID_MIN || !periph->range.max) {
++		req->rate = parent_rate;
 +
-+			if (!wed_r32(dev, addr))
-+				wed_w32(dev, addr, 1);
-+		}
++		return 0;
 +	}
-+
- 	mtk_wed_hw_init(dev);
- 	mtk_wed_configure_irq(dev, irq_mask);
  
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed.h b/drivers/net/ethernet/mediatek/mtk_wed.h
-index c1f0479d7a7182919e77c40efc30ade37abfad58..b49aee9a8b65156310e4f66a17921e5320b3077c 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed.h
-+++ b/drivers/net/ethernet/mediatek/mtk_wed.h
-@@ -17,7 +17,7 @@ struct mtk_wed_wo;
- struct mtk_wed_soc_data {
- 	struct {
- 		u32 tx_bm_tkid;
--		u32 wpdma_rx_ring0;
-+		u32 wpdma_rx_ring[MTK_WED_RX_QUEUES];
- 		u32 reset_idx_tx_mask;
- 		u32 reset_idx_rx_mask;
- 	} regmap;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-index 4a82f8e4c118061fc76459dc0e38f7ee27e25a3a..36488aa6cc20117de4f5b76b80beca149015e055 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-@@ -664,8 +664,8 @@ int mt7915_mmio_wed_init(struct mt7915_dev *dev, void *pdev_ptr,
- 					 MT_RXQ_WED_RING_BASE;
- 		wed->wlan.wpdma_rx_glo = pci_resource_start(pci_dev, 0) +
- 					 MT_WPDMA_GLO_CFG;
--		wed->wlan.wpdma_rx = pci_resource_start(pci_dev, 0) +
--				     MT_RXQ_WED_DATA_RING_BASE;
-+		wed->wlan.wpdma_rx[0] = pci_resource_start(pci_dev, 0) +
-+					MT_RXQ_WED_DATA_RING_BASE;
- 	} else {
- 		struct platform_device *plat_dev = pdev_ptr;
- 		struct resource *res;
-@@ -687,7 +687,7 @@ int mt7915_mmio_wed_init(struct mt7915_dev *dev, void *pdev_ptr,
- 		wed->wlan.wpdma_tx = res->start + MT_TXQ_WED_RING_BASE;
- 		wed->wlan.wpdma_txfree = res->start + MT_RXQ_WED_RING_BASE;
- 		wed->wlan.wpdma_rx_glo = res->start + MT_WPDMA_GLO_CFG;
--		wed->wlan.wpdma_rx = res->start + MT_RXQ_WED_DATA_RING_BASE;
-+		wed->wlan.wpdma_rx[0] = res->start + MT_RXQ_WED_DATA_RING_BASE;
- 	}
- 	wed->wlan.nbuf = MT7915_HW_TOKEN_SIZE;
- 	wed->wlan.tx_tbit[0] = is_mt7915(&dev->mt76) ? 4 : 30;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7996/mmio.c
-index 30b40f4a91be81d429d11f15036167396756d2dc..fb2428a9b877899a0a6fb879aba84e1f6e7840f2 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mmio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mmio.c
-@@ -503,9 +503,9 @@ int mt7996_mmio_wed_init(struct mt7996_dev *dev, void *pdev_ptr,
- 		}
- 
- 		wed->wlan.wpdma_rx_glo = wed->wlan.phy_base + hif1_ofs + MT_WFDMA0_GLO_CFG;
--		wed->wlan.wpdma_rx = wed->wlan.phy_base + hif1_ofs +
--				     MT_RXQ_RING_BASE(MT7996_RXQ_BAND0) +
--				     MT7996_RXQ_BAND0 * MT_RING_SIZE;
-+		wed->wlan.wpdma_rx[0] = wed->wlan.phy_base + hif1_ofs +
-+					MT_RXQ_RING_BASE(MT7996_RXQ_BAND0) +
-+					MT7996_RXQ_BAND0 * MT_RING_SIZE;
- 
- 		wed->wlan.id = MT7996_DEVICE_ID_2;
- 		wed->wlan.tx_tbit[0] = ffs(MT_INT_TX_DONE_BAND2) - 1;
-@@ -518,9 +518,9 @@ int mt7996_mmio_wed_init(struct mt7996_dev *dev, void *pdev_ptr,
- 
- 		wed->wlan.wpdma_rx_glo = wed->wlan.phy_base + MT_WFDMA0_GLO_CFG;
- 
--		wed->wlan.wpdma_rx = wed->wlan.phy_base +
--				     MT_RXQ_RING_BASE(MT7996_RXQ_BAND0) +
--				     MT7996_RXQ_BAND0 * MT_RING_SIZE;
-+		wed->wlan.wpdma_rx[0] = wed->wlan.phy_base +
-+					MT_RXQ_RING_BASE(MT7996_RXQ_BAND0) +
-+					MT7996_RXQ_BAND0 * MT_RING_SIZE;
- 
- 		wed->wlan.wpdma_rx_rro[0] = wed->wlan.phy_base +
- 					    MT_RXQ_RING_BASE(MT7996_RXQ_RRO_BAND0) +
-diff --git a/include/linux/soc/mediatek/mtk_wed.h b/include/linux/soc/mediatek/mtk_wed.h
-index d8949a4ed0dc9d41b3364e85a21e15d258519c45..c4ff6bab176db1f51cd94ac4198df0caeb557df2 100644
---- a/include/linux/soc/mediatek/mtk_wed.h
-+++ b/include/linux/soc/mediatek/mtk_wed.h
-@@ -147,7 +147,7 @@ struct mtk_wed_device {
- 		u32 wpdma_tx;
- 		u32 wpdma_txfree;
- 		u32 wpdma_rx_glo;
--		u32 wpdma_rx;
-+		u32 wpdma_rx[MTK_WED_RX_QUEUES];
- 		u32 wpdma_rx_rro[MTK_WED_RX_QUEUES];
- 		u32 wpdma_rx_pg;
- 
+ 	/* Fist step: check the available dividers. */
+ 	for (shift = 0; shift <= PERIPHERAL_MAX_SHIFT; shift++) {
 
----
-base-commit: 37816488247ddddbc3de113c78c83572274b1e2e
-change-id: 20250718-mt7992-wed-support-456a50d51f81
-
-Best regards,
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.50.1
+
 
 
