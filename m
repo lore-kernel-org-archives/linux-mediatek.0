@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AC3BCA0ED1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Aug 2025 18:10:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 858A0CA0ED3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Aug 2025 18:10:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Pz+0pw1+Oa8xvutfiNlwxog2JGWkjrCSVik4W7Oukq0=; b=Gape37UgkaIWhpxBo+xOHAUos0
-	81zAsyygASTBHCW05Y1j79SnYTOSdkqCr/GZ1AgrSzDQkQ7mktWcT+KpdbaAO9cWy8cvkzbqrIO8i
-	O1MlqYLdFZ7lwYM751TV1FxJ2GFrPdtdqr/snRrypN2VqcSIBdbjCnEsdObeBJ8+95g0HCHu102ti
-	ZkXPts7BMBk+Riua/3idm57Xq0cZNPhngdSfpwC54xRBbF/AEyq+SgvWENTqOFpZMCYKLW67uDp0u
-	ijdVH8ffg6Ha1Z1c238WdKxoMKEcYsfYvBR5G/eE+EO6yv+lqTIKP/gzd5HkLhN9H462FsTZoRbO7
-	BLwzkBvg==;
+	bh=4Ya4BeXskkt/8CEIkPmIiA0NQaCJ6HZwEkOIY16hO7k=; b=0hf9Q/d5uLBJXpnIzJHOyuClGi
+	K27wW0HOpNaYlDrp9450jBFBEOAgH9EIXwT8KuHpOA+4KvTWa64Z8rzMoS9yUAAbcjzG/rDk2bTW/
+	XUdX4Xo5Q8Xq0iRM+gMUKBcyD7LpxRhS26rlbKon4SikreK/R0UDaSIl0e1oqO0DKwEQ887SaxIIF
+	L5xbkEUprahJmFCMT4+MO3T4v/g3Z2X76t6+s11nXCNTYALxF+oLgVsB+ot78ppFsRzCZTcDulZAb
+	ttMvsdCouKx5mwNlzrB5phqxKn63hUGAYudEg4SI8k2Mo/2b0gKTwHwYZM4LtAbIvhRVK4hxPIdxr
+	VhlF1RrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulWye-00000008j1m-4B5T;
-	Mon, 11 Aug 2025 18:10:33 +0000
+	id 1ulWyg-00000008j4m-2OFi;
+	Mon, 11 Aug 2025 18:10:34 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulUIo-00000008BFu-1Giy;
+	id 1ulUIo-00000008BFu-2Vpr;
 	Mon, 11 Aug 2025 15:19:10 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 3A0F9669E0;
+	by tor.source.kernel.org (Postfix) with ESMTP id 4C8C4669EC;
 	Mon, 11 Aug 2025 15:18:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 5DE75C4FF56;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 936D1C568CB;
 	Mon, 11 Aug 2025 15:18:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1754925516;
-	bh=rzpBZkYghAZcxtF48aK2WAxgo7EwTwU3cUAFCTDtOyY=;
+	bh=5YrRyj+0l65qf0GYc/imj37EkrSq2Vv8MkzPE4BVHbs=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=Wkvzqek+eZ2j6dfM5MIuXiSdorEkJB21qNzYKi8aL9xhvlmuaYskZP+qA8rCAZBZT
-	 x6m5Tcqhin1B2YoMlRPhWcyyyJwZl8UafAMMYeyq7XAECSNPI8PhMrOOvib2yGoPDC
-	 btrBdDazbZUf7YpgYhRdUC+7YzUGekFF+iWR/+0YGj81g4hWIL+0E6E61HrK0Ph5I5
-	 udTYJkCqmmaYO3mXm7FnzOxvPTdLHaQr+QiWd7LtQKgpWc3ZNBxfGkCAJxt9u2k4nJ
-	 MWFbv+4OcOj1FRZk7Ia0fPyL59w5YQfeOS2owc9jXE/DZhEx8pkCirrg49xjQt3f3r
-	 z8xGExFXm+79A==
+	b=orKlLAW0QCqRMF078wZyzDmlVWzXyhkXjKmbJtg9GL6BGXrW2dFDctLMacW/Ii36w
+	 jHvI0QtbdA5gQ/RfIlyNfOznoizLEVCkJFgOgm2lW5UEO/6zzMD63/sm4I7fwV6xcZ
+	 scjkM/ARRB9pbykEZ+IjbP8kk1Ydr7KWKXefolSrnIx/PX4HUuaJZUHH5Zf7rs8TTp
+	 4akOQSfzxXtob16WGKY1RrnfOSulRWmmk5gk+HGIzEA/+40M/eYvZMxJ/I7cEZLjb0
+	 Arh47ZwKC80Vq5kGbCcCPCSdqk6v81jLOTn/kT37r/wbRS7C+YH8DvDMpFTNr35EVj
+	 uBGPyXQdW3G4g==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 468DDCA0EC4;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7A778CA0ED1;
 	Mon, 11 Aug 2025 15:18:36 +0000 (UTC)
 From: Brian Masney via B4 Relay <devnull+bmasney.redhat.com@kernel.org>
-Date: Mon, 11 Aug 2025 11:19:42 -0400
-Subject: [PATCH 110/114] clk: visconti: pll: convert from round_rate() to
+Date: Mon, 11 Aug 2025 11:19:44 -0400
+Subject: [PATCH 112/114] clk: scmi: remove round_rate() in favor of
  determine_rate()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250811-clk-for-stephen-round-rate-v1-110-b3bf97b038dc@redhat.com>
+Message-Id: <20250811-clk-for-stephen-round-rate-v1-112-b3bf97b038dc@redhat.com>
 References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 To: Michael Turquette <mturquette@baylibre.com>, 
@@ -117,11 +117,11 @@ Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev, 
  Brian Masney <bmasney@redhat.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925498; l=1976;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925498; l=2063;
  i=bmasney@redhat.com; s=20250528; h=from:subject:message-id;
- bh=r0wZpG3a0OGoiWWOr5otP68Bbfx3lAgII/aJOFlzSdg=;
- b=k8KX5ycT4h+UD6Ldn+nVMm4CPQVIS/kfEwZv0cAIgiTd/uDJjAfgTwd1RRiqR3Paz0ywOWfvw
- Ps307wc4OEfBYUcvIzgQljpxLU2s8HVxlxD56X2u8DKuTuSP9uNJRuh
+ bh=zZPy/VQuXPb4ErTr6RHlPvCDkU/aIn0KlEdetDNPWuc=;
+ b=RbVBCL4Yb1c1v4HxaBdoa/kYbRkOS2Y6t/+bUny/+2wf4rLkx4p0bZdhgkd0UiaREXOUg1KBe
+ 1pW7ayR0qpkC4jyB+yADVFuwFQhWffG3muvex6OgDsSZjfM1zfF6tC0
 X-Developer-Key: i=bmasney@redhat.com; a=ed25519;
  pk=x20f2BQYftANnik+wvlm4HqLqAlNs/npfVcbhHPOK2U=
 X-Endpoint-Received: by B4 Relay for bmasney@redhat.com/20250528 with
@@ -144,59 +144,65 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Brian Masney <bmasney@redhat.com>
 
-The round_rate() clk ops is deprecated, so migrate this driver from
-round_rate() to determine_rate() using the Coccinelle semantic patch
-on the cover letter of this series.
+This driver implements both the determine_rate() and round_rate() clk
+ops, and the round_rate() clk ops is deprecated. When both are defined,
+clk_core_determine_round_nolock() from the clk core will only use the
+determine_rate() clk ops, so let's remove the round_rate() clk ops since
+it's unused.
 
 Signed-off-by: Brian Masney <bmasney@redhat.com>
 ---
- drivers/clk/visconti/pll.c | 17 +++++++++++------
- 1 file changed, 11 insertions(+), 6 deletions(-)
+ drivers/clk/clk-scmi.c | 30 ------------------------------
+ 1 file changed, 30 deletions(-)
 
-diff --git a/drivers/clk/visconti/pll.c b/drivers/clk/visconti/pll.c
-index 8ca1bad61864204027b7aff9020f1cb9e7d198d3..681721d8503203de9ac49ac3207e121bb5bf2163 100644
---- a/drivers/clk/visconti/pll.c
-+++ b/drivers/clk/visconti/pll.c
-@@ -100,8 +100,8 @@ static unsigned long visconti_get_pll_rate_from_data(struct visconti_pll *pll,
- 	return rate_table[0].rate;
+diff --git a/drivers/clk/clk-scmi.c b/drivers/clk/clk-scmi.c
+index d2408403283fc72f0cf902e65f4c08bcbc7b4b0b..6c6ddb92e7cf6a0cfac2c7e19c0f15f777bb8c51 100644
+--- a/drivers/clk/clk-scmi.c
++++ b/drivers/clk/clk-scmi.c
+@@ -54,35 +54,6 @@ static unsigned long scmi_clk_recalc_rate(struct clk_hw *hw,
+ 	return rate;
  }
  
--static long visconti_pll_round_rate(struct clk_hw *hw,
--				    unsigned long rate, unsigned long *prate)
-+static int visconti_pll_determine_rate(struct clk_hw *hw,
-+				       struct clk_rate_request *req)
+-static long scmi_clk_round_rate(struct clk_hw *hw, unsigned long rate,
+-				unsigned long *parent_rate)
+-{
+-	u64 fmin, fmax, ftmp;
+-	struct scmi_clk *clk = to_scmi_clk(hw);
+-
+-	/*
+-	 * We can't figure out what rate it will be, so just return the
+-	 * rate back to the caller. scmi_clk_recalc_rate() will be called
+-	 * after the rate is set and we'll know what rate the clock is
+-	 * running at then.
+-	 */
+-	if (clk->info->rate_discrete)
+-		return rate;
+-
+-	fmin = clk->info->range.min_rate;
+-	fmax = clk->info->range.max_rate;
+-	if (rate <= fmin)
+-		return fmin;
+-	else if (rate >= fmax)
+-		return fmax;
+-
+-	ftmp = rate - fmin;
+-	ftmp += clk->info->range.step_size - 1; /* to round up */
+-	do_div(ftmp, clk->info->range.step_size);
+-
+-	return ftmp * clk->info->range.step_size + fmin;
+-}
+-
+ static int scmi_clk_set_rate(struct clk_hw *hw, unsigned long rate,
+ 			     unsigned long parent_rate)
  {
- 	struct visconti_pll *pll = to_visconti_pll(hw);
- 	const struct visconti_pll_rate_table *rate_table = pll->rate_table;
-@@ -109,11 +109,16 @@ static long visconti_pll_round_rate(struct clk_hw *hw,
+@@ -300,7 +271,6 @@ scmi_clk_ops_alloc(struct device *dev, unsigned long feats_key)
  
- 	/* Assuming rate_table is in descending order */
- 	for (i = 0; i < pll->rate_count; i++)
--		if (rate >= rate_table[i].rate)
--			return rate_table[i].rate;
-+		if (req->rate >= rate_table[i].rate) {
-+			req->rate = rate_table[i].rate;
-+
-+			return 0;
-+		}
- 
- 	/* return minimum supported value */
--	return rate_table[i - 1].rate;
-+	req->rate = rate_table[i - 1].rate;
-+
-+	return 0;
- }
- 
- static unsigned long visconti_pll_recalc_rate(struct clk_hw *hw,
-@@ -232,7 +237,7 @@ static const struct clk_ops visconti_pll_ops = {
- 	.enable = visconti_pll_enable,
- 	.disable = visconti_pll_disable,
- 	.is_enabled = visconti_pll_is_enabled,
--	.round_rate = visconti_pll_round_rate,
-+	.determine_rate = visconti_pll_determine_rate,
- 	.recalc_rate = visconti_pll_recalc_rate,
- 	.set_rate = visconti_pll_set_rate,
- };
+ 	/* Rate ops */
+ 	ops->recalc_rate = scmi_clk_recalc_rate;
+-	ops->round_rate = scmi_clk_round_rate;
+ 	ops->determine_rate = scmi_clk_determine_rate;
+ 	if (feats_key & BIT(SCMI_CLK_RATE_CTRL_SUPPORTED))
+ 		ops->set_rate = scmi_clk_set_rate;
 
 -- 
 2.50.1
