@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E227CA0EC0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Aug 2025 07:52:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95B1CC87FD2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Aug 2025 07:57:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aAufu5QOgmBO/dP2kOAwa0OcdPABX2SzegtWlwnW2CQ=; b=uyKio8891aHX30yxnFqLRTjcMj
-	LZDyXhGQpx7cpoFqVqbh3MNGlIcVo892aeJFvaBdR/lc6fCgz34t+41w/lc/bhMkl5tdP8xAa7mTU
-	32lM9Foh8E3dI6nlZ+7VyzQOuhRAw6lT1ddh9nSqVjhWwRJAXuKa/22oKloRHsoKqJ8ouVnvIAhln
-	ZAgAp8cK5RkDMYwzU1rEGcvxhgl/Gukt5jVIcCzgqX2js+MSktC8440ldpJw+dukzQCxNR8is+Xsu
-	ldVCEKdpR7DaZoH+vdKHpZMXNNBzFxEm1msNxHfjjcl0xzLhaV4ZzF1aq+iVvS5Yug/HlAKjvW80R
-	5cMN7ILg==;
+	bh=W0kQ0XEf/ViXtQuWIzdHwDKQC2+5B/wA3MfeWkXEqX4=; b=L3urynq8cqrF9kGAFycZydAw6x
+	qTsmJoouAh/czVx6n1Y9I1VbLXL2Tm6z5cJHKgWHG/vfxymLXMSp/ROmWoITwONt29jtfaqXZEM3J
+	bkkR67bU9OKHLRJP5bvmXe6h63Pjp2zViXBeWmZP2DkEbEPJV+MTYzHrdfNQrZoqQutGci52jTV9X
+	uR04nX7wzKQExcP74gTEg/z+k11QD1bqne0Ti7E/BZPKt4UNvMBWJT5W+4Hi+qukR8qV7N3OXR+2l
+	N8Nsd/yBGkK/2Bh0n0kVIpdIyRe7hrQ4AaN7jjNUeLggbV1OxalRYjqQhv6L7ehiB01vD9B0ih6SJ
+	ppNRLcdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulNKL-00000006lGN-2C5H;
-	Mon, 11 Aug 2025 07:52:17 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1ulNPU-00000006mBP-2OO6;
+	Mon, 11 Aug 2025 07:57:36 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulNG3-00000006kRb-023X;
-	Mon, 11 Aug 2025 07:47:52 +0000
+	id 1ulNHA-00000006kgH-2271;
+	Mon, 11 Aug 2025 07:49:01 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id B2DBE44B8E;
-	Mon, 11 Aug 2025 07:47:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 36169C4CEF1;
-	Mon, 11 Aug 2025 07:47:50 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id B3A1B5C5CF7;
+	Mon, 11 Aug 2025 07:48:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C67D9C4CEED;
+	Mon, 11 Aug 2025 07:48:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1754898470;
-	bh=RTJN9RqRJ4UnrPrUYqFKFXdjiVHAvBNzSUV0agHEpCw=;
+	s=k20201202; t=1754898539;
+	bh=baeyeGu2iP9CInxAIYDtexBroZfdM4XJvypIfebRVLg=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=fMEvTVq9mH5UQ+CteJtO3qeUITYpyPArJqZdO8zN+Ojtqz/5TLMo5qIb5+VuTvd5O
-	 9WhOMwLS9cQVb34kMY1uVFjDuKhA67JMVk/gPPhqW5MjCFI/pAhU0DFrshJ9BHdMcG
-	 1nSJWesI8hsBoIPvjjMOfOr/hgX4Pvvoh3ZZvYh0TGwBQPmjyBZTgC736gKFDdppLD
-	 M2V6oIe/2WOeeuom3JxeUuwvSFZPIfMnEXvQLL0evzi50Jc5N96kj2fZ8mEla5HZow
-	 7eom7wiHjK9I03tlz1HRvrA5RuGO7PIX+E9BrGsLNxZ2rHn3nGZ4WZ847hGK8LcT+X
-	 IfSz4ABQV9Nhg==
-Date: Mon, 11 Aug 2025 09:47:48 +0200
+	b=pS0s9wkgtFc5B6v3228fIKrwjz7UIgdcv0vXy/fqkPBjTdyOcFAZBFlHoj8WF+BVD
+	 KRjPMTHENl03ZVJv4l/y4D60A/L6+eYNk2kxuILQDPOZjLuC1v9cj/J+mCNmkePQC6
+	 Y7ROJV4UUelNuVz/goa2hJ/K8DO0EcVXEuekzmZOs7wqGyJqixjsCVBXZmTjNA8ThI
+	 zxgz1RN3CJBIk9zV7dywLiNreq7JTIFzvMB4DKrX0G6qL9fl+JDrKrjbeB52RwRW3D
+	 qFIArXZKoI8RA9UP/rqVS+JVSYC8w4Lqy4eSv0HEsxP26+3SU5DoBuM6K/auqx50co
+	 NJxVzKxw0uHWQ==
+Date: Mon, 11 Aug 2025 09:48:56 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Jay Liu <jay.liu@mediatek.com>
 Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
@@ -53,17 +53,17 @@ Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org, 
 	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v3 1/6] dt-bindings: display: mediatek: gamma: Add
+Subject: Re: [PATCH v3 2/6] dt-bindings: display: mediatek: dither: Add
  support for MT8196
-Message-ID: <20250811-chubby-infrared-spider-df0d8c@kuoka>
+Message-ID: <20250811-unique-finicky-toad-cc56a2@kuoka>
 References: <20250808125512.9788-1-jay.liu@mediatek.com>
- <20250808125512.9788-2-jay.liu@mediatek.com>
+ <20250808125512.9788-3-jay.liu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20250808125512.9788-2-jay.liu@mediatek.com>
+In-Reply-To: <20250808125512.9788-3-jay.liu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250811_004751_062864_96ED736D 
+X-CRM114-CacheID: sfid-20250811_004900_561715_6F1982D0 
 X-CRM114-Status: GOOD (  11.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,15 +79,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 08, 2025 at 08:53:56PM +0800, Jay Liu wrote:
-> Add a compatible string for the GAMMA IP found in the MT8196 SoC.
-> Each GAMMA IP of this SoC is fully compatible with the ones found
-> in MT8195.
+On Fri, Aug 08, 2025 at 08:53:57PM +0800, Jay Liu wrote:
+> Add a compatible string for the DITHER IP found in the MT8196 SoC.
+> Each DITHER IP of this SoC is fully compatible with the ones found
+> in MT8183.
 > 
 > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > Signed-off-by: Jay Liu <jay.liu@mediatek.com>
 > ---
->  .../devicetree/bindings/display/mediatek/mediatek,gamma.yaml     | 1 +
+>  .../devicetree/bindings/display/mediatek/mediatek,dither.yaml    | 1 +
 >  1 file changed, 1 insertion(+)
 
 Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
