@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4313FCA0EC0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Aug 2025 08:00:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DB0CC87FD2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Aug 2025 08:10:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ACQiy34NkYJw2kJjJ5R/Oqei2/18MROjJOp5VL4InbI=; b=bkHs3h+R3T+kGH5EzOQ3vDhXah
-	kqhnQNNnGf6pQTEhoGGGKK7AS7RkkLONSqdh8IPYj6Q611ZkD/uiyAJWj2wBoi4ee7yLLZt/JbLsJ
-	r5ifO4+6BnZ/zK3RgbFdP/NuFyquRpL70nvsxohtV8Yz3HGbfFcGtxX1UE15U8+T22RCMg4MDar2x
-	nVyaDuvktNBF7GBmBPSiMrg2ST1RsquaR9jVSa3T/RbI1qdAoRaRFPRWEXGG/kbVKOukb0Q+RMHaG
-	aVjViVoajw1ec87JbFmfs+fD8PMl7NT5zqKuusxvIn1xRzIeuF18QinW0BhT5I4eQPpottBoY4/FL
-	DAKTD6dQ==;
+	bh=PAuGaI74CfjaVTdAYFE8amyCHBl1hlThave4sJNzriQ=; b=lQOEelHE1t1MLFgLp46x+Abg+9
+	BjEdGBOBaqsYe06ZmI79SbHy8se75gde9JGlF2GCRh9XJeg35SCpB5CzrptwgCB751+62oQJSY1ah
+	QXu396+Kfy5A5lBL/crL+KE+61mcu//cLs/XqmOdZtYx27a/njsaJy26gv/Jh24Jg46etS+smT5tK
+	yZHph3tLGYw6W6Bd4t+4eV+60TcVTTXPz7I+V0tTobkb2eYe+ZeTD0TYkX6j8/gkUMcQfAGjuFjiF
+	W15LhKx6RE/HtoWDc8RlkRzcXcdZBYIOkaaFlzbtC+Df01W0OdcB1+M9ENruVLcOdoq9NstMy0E8U
+	8e91q6uQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulNS3-00000006mX5-3YVE;
-	Mon, 11 Aug 2025 08:00:15 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1ulNcL-00000006oSW-1D5B;
+	Mon, 11 Aug 2025 08:10:53 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulNHV-00000006klQ-2jsd;
-	Mon, 11 Aug 2025 07:49:23 +0000
+	id 1ulNKS-00000006lJB-0jW0;
+	Mon, 11 Aug 2025 07:52:25 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5C9BC4589B;
-	Mon, 11 Aug 2025 07:49:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D2564C4CEED;
-	Mon, 11 Aug 2025 07:49:20 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 883D05C5D6F;
+	Mon, 11 Aug 2025 07:52:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A2789C4CEF1;
+	Mon, 11 Aug 2025 07:52:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1754898561;
-	bh=wJOiDdjpV92cFWsEgXBRyCwAM5FN5aB8jQmUBXkj4jk=;
+	s=k20201202; t=1754898743;
+	bh=+BLSntymQrh/XkLGtypJrfw1XGjtmza1kggD9wXIN/s=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=SuRdQsHppCCzKTz8G1v+Zj2MCmum7EcEc6lgQWOCiG32wxatxqFjzCls6lr/mdv6H
-	 tMNmou2ayFVOa5KNgqj31IsU45YQmtPoPlFx6cY4uwWZHey/AsIECNWWr3UHXfu19u
-	 RoJHqxtOzmeFibiyXsdhMs7jCWQXzqUDeff7WbOAuubn+REVI9gCJ3tZ0gQm2NOK2Q
-	 Dq95ITr0zo/QZmKrzOn0I7bBrRaO9VUFQr7Zft3a/cj6w2ra5MykBnl9DxIPnRFcle
-	 ayOycVi+BwfsYsdgXsXeeBAEPZJPqb8jtB/o9W93YiOCVWu9fpYGaxYVM3VPyuKtkI
-	 XRbQAZ6Zomcfw==
-Date: Mon, 11 Aug 2025 09:49:18 +0200
+	b=c3xoNAGGbBNP16XXgIDYcgwJd9nwpp7WrxtkkARd2jjqlGYdgVvAW7yRKCBgy4Rdq
+	 M5at+getsjQyZrr1zDnGMPVAgkJnrvWG7GT1DmeO1ZpQT7l+qC/EIkdVms2N+fm4KC
+	 +p1ZVXt7G6V5YzMfswmlYf8QN5OGHEJ6jorFpbvCPPqSfLhKMro8dWUpQVwLZlWFp7
+	 54u3+f9Vab1ZYWYP9PF6iCHDXSdTOeTOrOkgdeuKx2ieFHH8ivBgegaelFB3zUdrK7
+	 id2rntASo0QuOuceEZec6vuN/kshdYGtk5BBA90nR3rAN87MtGoac6JkEEtMWOA2KO
+	 qDbgYyRAy/rkQ==
+Date: Mon, 11 Aug 2025 09:52:20 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Jay Liu <jay.liu@mediatek.com>
 Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
@@ -53,18 +53,19 @@ Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org, 
 	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v3 3/6] dt-bindings: display: mediatek: ccorr: Add
+Subject: Re: [PATCH v3 4/6] dt-bindings: display: mediatek: disp-tdshp: Add
  support for MT8196
-Message-ID: <20250811-brainy-impartial-emu-da8b46@kuoka>
+Message-ID: <20250811-boisterous-skinny-ammonite-a4ca7b@kuoka>
 References: <20250808125512.9788-1-jay.liu@mediatek.com>
- <20250808125512.9788-4-jay.liu@mediatek.com>
+ <20250808125512.9788-5-jay.liu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20250808125512.9788-4-jay.liu@mediatek.com>
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20250808125512.9788-5-jay.liu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250811_004921_714460_40A3AFE3 
-X-CRM114-Status: GOOD (  11.15  )
+X-CRM114-CacheID: sfid-20250811_005224_299834_83F73626 
+X-CRM114-Status: GOOD (  17.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,18 +80,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 08, 2025 at 08:53:58PM +0800, Jay Liu wrote:
-> Add a compatible string for the CCORR IP found in the MT8196 SoC.
-> Each CCORR IP of this SoC is fully compatible with the ones found
-> in MT8192.
-> 
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+On Fri, Aug 08, 2025 at 08:53:59PM +0800, Jay Liu wrote:
+> Add disp-tdshp hardware description for MediaTek MT8196 SoC
+>=20
 > Signed-off-by: Jay Liu <jay.liu@mediatek.com>
 > ---
->  .../devicetree/bindings/display/mediatek/mediatek,ccorr.yaml     | 1 +
->  1 file changed, 1 insertion(+)
+>  .../display/mediatek/mediatek,disp-tdshp.yaml | 52 +++++++++++++++++++
+>  1 file changed, 52 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/mediatek/me=
+diatek,disp-tdshp.yaml
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+We expect filename based on compatibles (see writing bindings).
+
+>=20
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,=
+disp-tdshp.yaml b/Documentation/devicetree/bindings/display/mediatek/mediat=
+ek,disp-tdshp.yaml
+> new file mode 100644
+> index 000000000000..94aa33a2a5ed
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp-td=
+shp.yaml
+> @@ -0,0 +1,52 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/display/mediatek/mediatek,disp-tdshp.=
+yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek display 2D sharpness processor
+> +
+> +maintainers:
+> +  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> +  - Philipp Zabel <p.zabel@pengutronix.de>
+> +
+> +description: |
+> +  MediaTek display 2D sharpness processor, namely TDSHP, provides a
+> +  operation used to adjust sharpness in=C2=A0display system.
+> +  TDSHP device node must be siblings to the central MMSYS_CONFIG node.
+
+Heh? Why would this have to be a sibling? This is really odd, because
+you cannto actually rely on that.
+
+You just added unverifiable unusual ABI with no explanation.
+
+
+> +  For a description of the MMSYS_CONFIG binding, see
+> +  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+> +  for details.
+> +
+> +properties:
+> +  compatible:
+> +    items:
+
+Drop, just enum.
+
+> +      - enum:
+> +          - mediatek,mt8196-disp-tdshp
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    maxItems: 1
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - clocks
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +
+
+Drop blank line
+
+> +    soc {
+> +      #address-cells =3D <2>;
+> +      #size-cells =3D <2>;
+
+messed indentation
+
+> +
+> +      disp-tdshp@321e0000 {
+
+Node names should be generic. See also an explanation and list of
+examples (not exhaustive) in DT specification:
+https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetr=
+ee-basics.html#generic-names-recommendation
+
+e.g. image-processor
 
 Best regards,
 Krzysztof
