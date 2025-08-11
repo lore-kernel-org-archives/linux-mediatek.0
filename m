@@ -4,71 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEE12C87FDA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Aug 2025 01:59:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6B7FC87FCF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Aug 2025 02:26:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=x+wlAxAzgomGlkcqP5XgcQLFTBuEcdY5HbrFPTqS8Es=; b=BVMtZM5DmM3fwX85UvWXXHidpY
-	6ggjP/ZteP7bOfggImPNzFgm4iH9nFvc5u3XdmHYeHonlDpsRC83C4nLVvg7arjSUTX7L6KUQ5Ccj
-	313m1n3vDxD4nODBROXCFWIFZkMMKlA6YjtTcPWt8FbAKTL7QsRQVlpUkboEbae9d+fTojiKGAzS+
-	kYWDEv1yXvlG8O8Jr9/WNsysHq7MERZNT8tAuj5X244J0rbvY6QByBkZbrnfAT9FdMXY5yr+Fpt+J
-	4a4B/dc8so1D856jLmVQDw9vIWOIVTlVZoEVFWsLDphkIqhh3Xv4Z301Sm7tkUrew7LqboKFg0IW/
-	IqTiDU4A==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oPnzfDsJcATWfOx8jNQesTcT5HfTdx1E8WFzxP87rCk=; b=pim6Kn6m837kGECUhBbYiyEz/K
+	fiJTnHtCOhvGGfYZT5lDVy0bcuF6dtpmqE7CRVCm4i38HbEpm0lwk56VaYaBItqa2Y1C0upUWrtwf
+	t+1SEXUH3lH1PPMM3X5SQgdqZz9fIYeWGlBd2fqNWib74fzh8nfT9gsF25HarsLtsuuKEtNvCLRAA
+	xH8sQV4OYHf10wY9qZG0s+BIsFamvrxZP8XIJnxDP6AuHs651EQcRMfVKNhqGv9jMDOzVMxjWgy1D
+	KhoNCuY4hRptkU01MvCWRnWB2SQ2I3hBwMB3gFnB1xUmdX6+3ezU1IlodWIX5/Z6uhbOliV/403Ts
+	UeVaClwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulHp2-00000006JHn-1XhB;
-	Mon, 11 Aug 2025 01:59:36 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ulIEn-00000006LAH-23K1;
+	Mon, 11 Aug 2025 02:26:13 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulHoz-00000006JHP-2bpx
-	for linux-mediatek@lists.infradead.org;
-	Mon, 11 Aug 2025 01:59:34 +0000
-X-UUID: cfd9e822765611f09f706fa2197c6ceb-20250810
+	id 1ulIEi-00000006L6t-29N3;
+	Mon, 11 Aug 2025 02:26:12 +0000
+X-UUID: 86a0c488765a11f09eb0dd999d3936bf-20250810
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=x+wlAxAzgomGlkcqP5XgcQLFTBuEcdY5HbrFPTqS8Es=;
-	b=qqsYLwA2mt1dLJxj8p68Jcy+B12YIoOMFynHajr/eSxn7smXUxpCWr2RuuAvAmwwKODrVYWXMfL9NG2wxVj9QW583laG5tHF+nOzV3FLccMPAO0Snvfhw7FkfCfwYrkAnk/ByOS27w43slVZ9bIhf5qD72CWJarwMlXjBGbcT4M=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From; bh=oPnzfDsJcATWfOx8jNQesTcT5HfTdx1E8WFzxP87rCk=;
+	b=GkGOZapHCxJobSKQ1v17B6llaS1oaWgeh2dwhPtRxY2/W1KqpoIj+b713B6dO8zl7l5JjS95D2FMjntNBeNQg8Snv21P0yWMpmVWh2Cwa5E+efkBwNsRpphLDQp74tAlLHgnRvonKzG5M74c+rZXMItZ5ezu8tnY9xCd6v1KWK8=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.3,REQID:fa6c5a08-877a-485b-98df-d3ac94395b98,IP:0,UR
-	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:-5
-X-CID-META: VersionHash:f1326cf,CLOUDID:d669cc9d-7ad4-4169-ab95-78e9164f00fe,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:-5,Content:0|15|50,EDM:-3,IP:
-	nil,URL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,L
-	ES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.3.3,REQID:342f3e54-fca8-4df5-883f-c7ae93945082,IP:0,UR
+	L:0,TC:0,Content:-5,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-30
+X-CID-META: VersionHash:f1326cf,CLOUDID:36f643ce-1ac4-40cd-97d9-e8f32bab97d5,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:-5,Content:0|15|50,EDM:
+	1,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,A
+	V:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: cfd9e822765611f09f706fa2197c6ceb-20250810
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
-	(envelope-from <huayu.zong@mediatek.com>)
+X-UUID: 86a0c488765a11f09eb0dd999d3936bf-20250810
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <kyrie.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 182109837; Sun, 10 Aug 2025 18:59:27 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+	with ESMTP id 120091575; Sun, 10 Aug 2025 19:26:02 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Mon, 11 Aug 2025 09:59:19 +0800
+ 15.2.1258.39; Mon, 11 Aug 2025 10:25:55 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Mon, 11 Aug 2025 09:59:19 +0800
-From: Huayu Zong <huayu.zong@mediatek.com>
-To: <linux-firmware@kernel.org>
-CC: <linux-mediatek@lists.infradead.org>, <shawnku@google.com>
-Subject: pull request: linux-firmware: Create Mediatek MT8189 SCP firmware
-Date: Mon, 11 Aug 2025 09:57:52 +0800
-Message-ID: <20250811015922.32680-1-huayu.zong@mediatek.com>
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Mon, 11 Aug 2025 10:25:54 +0800
+From: Kyrie Wu <kyrie.wu@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
+	<krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Kyrie Wu <kyrie.wu@mediatek.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+Subject: [PATCH v8 03/12] media: mediatek: jpeg: fix jpeg buffer layout
+Date: Mon, 11 Aug 2025 10:25:45 +0800
+Message-ID: <20250811022555.1049-4-kyrie.wu@mediatek.com>
 X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20250811022555.1049-1-kyrie.wu@mediatek.com>
+References: <20250811022555.1049-1-kyrie.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250810_185933_667752_923E239B 
-X-CRM114-Status: UNSURE (   5.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250810_192608_556855_9658F4EB 
+X-CRM114-Status: GOOD (  15.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,24 +90,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The following changes since commit 910c190740916a9969ad5105137fb88ae4ce34c8:
+For memory alloc operation of jpeg dst buffer: the mallocing
+memory function interface use vb2_buffer as the base addr.
+If structure mtk_jpeg_src_buf wants to be allocated to memory,
+it needs to be placed vb2_v4l2_buffer at the starting position,
+because structure vb2_buffer is at the starting position of
+vb2_v4l2_buffer, and the allocated size is set to the size of
+structure mtk_jpeg_src_buf, so as to ensure that structures
+mtk_jpeg_src_buf, vb2_v4l2_buffer and vb2_buffer can all be
+allocated memory.
 
-  Merge branch 'intel/dmc/xe3lpd/2.29' into 'main' (2025-07-30 00:18:22 +0000)
+Fixes: 5fb1c2361e56 ("mtk-jpegenc: add jpeg encode worker interface")
+Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
+---
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 2 +-
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-are available in the Git repository at:
-
-  https://github.com/HuayuZong/linux-firmware-mt8189-scp mt8189-fw-upstream
-
-for you to fetch changes up to 777171b10e2671de19fb41afb5bd0bbdd77c0e92:
-
-  mediatek: Add MT8189 SCP firmware (2025-08-05 11:16:23 +0800)
-
-----------------------------------------------------------------
-Huayu Zong (1):
-      mediatek: Add MT8189 SCP firmware
-
- mediatek/mt8189/scp.img | Bin 0 -> 6588300 bytes
- 1 file changed, 0 insertions(+), 0 deletions(-)
- create mode 100644 mediatek/mt8189/scp.img
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index 59ef0cdd378e..fff8c12421af 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -1099,7 +1099,7 @@ static int mtk_jpeg_queue_init(void *priv, struct vb2_queue *src_vq,
+ 	dst_vq->type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
+ 	dst_vq->io_modes = VB2_DMABUF | VB2_MMAP;
+ 	dst_vq->drv_priv = ctx;
+-	dst_vq->buf_struct_size = sizeof(struct v4l2_m2m_buffer);
++	dst_vq->buf_struct_size = sizeof(struct mtk_jpeg_src_buf);
+ 	dst_vq->ops = jpeg->variant->qops;
+ 	dst_vq->mem_ops = &vb2_dma_contig_memops;
+ 	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+index 6be5cf30dea1..148fd41759b7 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+@@ -85,10 +85,10 @@ struct mtk_jpeg_variant {
+ };
+ 
+ struct mtk_jpeg_src_buf {
+-	u32 frame_num;
+ 	struct vb2_v4l2_buffer b;
+ 	struct list_head list;
+ 	u32 bs_size;
++	u32 frame_num;
+ 	struct mtk_jpeg_dec_param dec_param;
+ 
+ 	struct mtk_jpeg_ctx *curr_ctx;
+-- 
+2.46.0
 
 
