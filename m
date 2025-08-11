@@ -4,145 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2D18CA0EC4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Aug 2025 00:00:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47D8BCA0EC4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Aug 2025 01:45:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=aAwe8+dNaMELmcdQi4G85paLJefvggmjozBKCxM0pJM=; b=ehkipYEed36K/V21yJwpoOK8rG
-	GeJHtUjGk20O6fo/EVLZg0eiqS1OOsaHNnqYSDP4mLq2oIVpeOYndPX+41yh3Sc7oRMCl9maS/hrZ
-	/DqWsajsIMJtbsB/otwxG2aXuQHWY6BGZweyzJv6uIH5fv7+PJV18I7zdnGwX4NSP1slGYUbqxpOR
-	j6tIWnMnwXvsT56SEzSqkje0DAjEzpHGV9/to5mZZP6+SPAZ6zph4L/FpoFJY7bCUn9agDFkpRK4I
-	g6z5Lbsq6EqQtRUICZiLskbVWuYvrfAL1+F6J7rY57/0df1RYdBWN+wqxAB0grkdsr9yFJxJwboTm
-	3g28iFzQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-Type
+	:Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
+	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=q1KjeJbB49ftbNOn2iCPBabBUaMVVVaJgJNr/pdOrlM=; b=qq5voAlz9itZLqgNqC0FJbx1CJ
+	PcSq9svuDi+ws3IZc+9noEPFQgLCjkaWzdD+YHFlVHKizLa8Ko3tLhnLnuLReoQ6s/MMjg77hzasV
+	BZY9Cc5tojF8LNsuQSAn5Q/64dYjGk5njmKdrj1lNBgwUF8j7chp6TNTfd+Dg3G5CrevxZ0CLWk5n
+	RT6Rs6IVZeJZdxINfWsBUTgvlo4U/zFBlZTzh/sXD9pBDGKtuJVWq9ozN8GL3Bun0tUaEWE0gSQnF
+	iWa2Kr9aVHlRQtWjaLXoUkHO5OnyhsAbjGYjHMZlNy0a5nWzT810/btSQWc4mbufcQh5b53pclAsP
+	tz2GHSOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulcRZ-00000009QIC-16c7;
-	Tue, 12 Aug 2025 00:00:45 +0000
-Received: from mail-mw2nam10on2060e.outbound.protection.outlook.com ([2a01:111:f403:2412::60e] helo=NAM10-MW2-obe.outbound.protection.outlook.com)
+	id 1ule5I-00000009XTJ-1neD;
+	Tue, 12 Aug 2025 01:45:52 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulbVE-00000009KCP-3YM0;
-	Mon, 11 Aug 2025 23:00:30 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=j41oAOiY5P3oM/kzVq6U3f9B7BIG0pBJYgT717C6wbLC4ifgdLlCoj/c11Qyv13PB9sDtBwRjdaM8KuRf+PvBDvq4+bSmKCppe1OdRtNa1i3N4UJ9kDbjmGtNH/MdvXi87OLEYd0WIskPMHFkyXTR2KUUCNKXY6hqrLfiNiOmvfpkbZf5a6DxwXMqToXFJYCXGpS+N0yLcSW+dFmatO0eRMdsVLF81Ua/vpBeZlifOlgMTnQ89vU4yU4D9I6uFZNvk15tCj/AOxqWPOerZKbXYx1ah0MBjtmmfAezSYyruByWWh+6J5ypAt+yhQd4mYgfJIUtS1IV9NOC0+ijIlvJA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=aAwe8+dNaMELmcdQi4G85paLJefvggmjozBKCxM0pJM=;
- b=CoxMzq9npNisuiYN7TUmRVMoyym3fhAtLTFt4VTV13pbIXOwq9RKp3K5/x3+XdiaTtFr4EmhM0mjvE6/Z+pTO7UqEdElEJdzMeAMe6l/g1z7q/VqVtMaQTgiCcqUarJKXyOKJ535t0x1x9qWaZjAczMJmq85djMEbpTIk3DL5Psc86j/bDM5xNzxVCpcR6Jkc2Ht1LNE8GLnb1xesK94V+fE+wgXsnrQtJIAttG8wgcUHG3/KcQUwOU6+D//Zeq/DSim53i7IGHOvZPuTDy+rCjrCcAgnZYb97qk6Y+ffJziAghDRDiA4hFbOPK4jsIOzS+qcUWgrzadm9rMJutNIw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.161) smtp.rcpttodomain=arm.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=aAwe8+dNaMELmcdQi4G85paLJefvggmjozBKCxM0pJM=;
- b=r+8Ut49fYKURps5cVBTLC3TMHe9P084iBOTRsKahHJrncqO4HMRlqHR4PrgxYHRlNYtSHacnDP5luv6fiDgOWVym95il7KHY60rKa34MIKuRaJZFvyGXToE4kOrP6Nf9mdzIc0J2EbaOyiqAgepC5u7jw/t7AVexcKpHnTV8nfPDpUhVjmGVZY75P4H7s1teqqH8jx13HCNYwdbw/GDPw+zj+ys5yiNV7Rz4hRB2FeXlqJ8v/9x+/xaKtKIE5mtfYXTecyGvMo4jtm4uyfJ4M89WODXYV/ia3JbrVgn+Xdd3Ex1SEHpdLtmOisFnBXFEBg/hHis5xzPtr15x9/PShQ==
-Received: from BN8PR07CA0033.namprd07.prod.outlook.com (2603:10b6:408:ac::46)
- by MW4PR12MB5668.namprd12.prod.outlook.com (2603:10b6:303:16b::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9009.20; Mon, 11 Aug
- 2025 23:00:22 +0000
-Received: from BL6PEPF0002256F.namprd02.prod.outlook.com
- (2603:10b6:408:ac:cafe::ca) by BN8PR07CA0033.outlook.office365.com
- (2603:10b6:408:ac::46) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9009.21 via Frontend Transport; Mon,
- 11 Aug 2025 23:00:21 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.161) by
- BL6PEPF0002256F.mail.protection.outlook.com (10.167.249.37) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9031.11 via Frontend Transport; Mon, 11 Aug 2025 23:00:21 +0000
-Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
- (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Mon, 11 Aug
- 2025 16:00:04 -0700
-Received: from rnnvmail202.nvidia.com (10.129.68.7) by rnnvmail201.nvidia.com
- (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Mon, 11 Aug
- 2025 16:00:03 -0700
-Received: from Asurada-Nvidia.nvidia.com (10.127.8.9) by mail.nvidia.com
- (10.129.68.7) with Microsoft SMTP Server id 15.2.1544.14 via Frontend
- Transport; Mon, 11 Aug 2025 16:00:02 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: <robin.murphy@arm.com>, <joro@8bytes.org>, <bhelgaas@google.com>,
-	<jgg@nvidia.com>
-CC: <will@kernel.org>, <robin.clark@oss.qualcomm.com>, <yong.wu@mediatek.com>,
-	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
-	<thierry.reding@gmail.com>, <vdumpa@nvidia.com>, <jonathanh@nvidia.com>,
-	<rafael@kernel.org>, <lenb@kernel.org>, <kevin.tian@intel.com>,
-	<yi.l.liu@intel.com>, <baolu.lu@linux.intel.com>,
-	<linux-arm-kernel@lists.infradead.org>, <iommu@lists.linux.dev>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-tegra@vger.kernel.org>,
-	<linux-acpi@vger.kernel.org>, <linux-pci@vger.kernel.org>,
-	<patches@lists.linux.dev>, <pjaroszynski@nvidia.com>, <vsethi@nvidia.com>,
-	<helgaas@kernel.org>, <etzhao1900@gmail.com>
-Subject: [PATCH v3 0/5] Disable ATS via iommu during PCI resets
-Date: Mon, 11 Aug 2025 15:59:07 -0700
-Message-ID: <cover.1754952762.git.nicolinc@nvidia.com>
-X-Mailer: git-send-email 2.43.0
+	id 1ulXcn-00000008qHB-1dmw;
+	Mon, 11 Aug 2025 18:52:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
+	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=q1KjeJbB49ftbNOn2iCPBabBUaMVVVaJgJNr/pdOrlM=; b=Vxpiq2pSU59mQ/mD4qQ0ewS3My
+	cx8Y89kxnQlO2cMXG8zIl+aZlT7kLRvo3tScinz9860YDMaugpKuAxWhHrUooJgQGb37k/uhfaJYg
+	MYwGHnfABR6wQhze8fCo6mCfE+N+Y0alWwVuZ+SqqBkEwpaldxt2pzaSksElv7fq4d2sA7gHXu8dN
+	hV599OMREjxeaSm2443Nh3rQanaoJKsFbBEJOkzGzB0fQvVVzsRa1FQfRCT8UUxpf/wJ38IwZoYPh
+	NOo2JukfcNtlK6m8lKFFZ7SApOoe68l5WXNyGtUAUYIEAH+N4TBhwWeFI8HhNewJW5sWf5C+RrUN9
+	oW38ZLYw==;
+Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:48114 helo=rmk-PC.armlinux.org.uk)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <rmk@armlinux.org.uk>)
+	id 1ulXcf-0003bj-3D;
+	Mon, 11 Aug 2025 19:51:54 +0100
+Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
+	id 1ulXbx-008gr4-5H; Mon, 11 Aug 2025 19:51:09 +0100
+In-Reply-To: <aJo7kvoub5voHOUQ@shell.armlinux.org.uk>
+References: <aJo7kvoub5voHOUQ@shell.armlinux.org.uk>
+From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
+To: Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>
+Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>
+Subject: [PATCH net-next 6/9] net: stmmac: pci: convert to suspend()/resume()
+ methods
 MIME-Version: 1.0
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-NV-OnPremToCloud: ExternallySecured
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BL6PEPF0002256F:EE_|MW4PR12MB5668:EE_
-X-MS-Office365-Filtering-Correlation-Id: 9f8ea4cf-29d7-40be-522a-08ddd92ad962
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|376014|1800799024|82310400026|36860700013;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?pzEzXUFOtKGQTzg0K5HT9XQXN6lUJQC9VkBs7a7HgH10VsYVSuOGucrtmoA7?=
- =?us-ascii?Q?OzQmduWgiMGBCj0hj6VlqrsOXuB9Q8L60MMJX2xOVDrRThPSnTrGgLDxJ7D3?=
- =?us-ascii?Q?lQPjXV0Ckie4o9XOlK59h3O80jAxnTHFre0lftzL0M6iZVJzpr0m48633HiG?=
- =?us-ascii?Q?TAnUkJ3rIT3cgEu4ToIX1GPTqCLfYR57nivSf28+tItbsFFrpcEGc1941u58?=
- =?us-ascii?Q?aveKNEzM0ZFJP5a9fqWFg0FWq1woYg1dQH2ZAeHqJPAeGixy5efx/nxKczfT?=
- =?us-ascii?Q?/S9smgHxIPf+CPo7t1EEJfCz7zQHZFeFGZpIXcP1sSdPw9Np87DjbDi7Jb4G?=
- =?us-ascii?Q?QIn3SQ2tp2M7Qo9pApYWsgAbnrQIq5H9yHjNWKxm8riA0s9wf8A/A0DY5xOA?=
- =?us-ascii?Q?cE6ObHOsejfyv9HU96lhX1SMQZq+CQSYgp1v1tLQNli+xrHz2SGXKY8dlRQO?=
- =?us-ascii?Q?tZWnZX4LZetNjhUStaWWnQppwJSdoTO8W7dLZhPZRU7g7QSmm+ZBG1cbolQh?=
- =?us-ascii?Q?F9pQD+tLGisY2kmx21PjIktEu+eKBD9e4XCpWN6UlwrwVwN/AxHDQbD2bfyG?=
- =?us-ascii?Q?8S9vH82o25FT8rKn8et+0ypD8tajqXq33Y/c+7f0Cp+zJpgr/uxbObJWBQCh?=
- =?us-ascii?Q?ZjgLHWsjy5MpGviBuENRAPNcWYm9mmrortxqwOUBc1Xwp+6C/BawsChNeJS4?=
- =?us-ascii?Q?T5zP3YCak5+5sBrL2WOk/9UtOD1Hd0Xz8OnpZNTh/LlxWLI/8dl5vJkwiAey?=
- =?us-ascii?Q?L6Gkj4crNfTAdhiL1u5v7r0GttJXzCuHflIFwRVxybit4n7u3TJd+KnBFHLF?=
- =?us-ascii?Q?Ex/amY0L0P69GdM7zRvf2WarkKyMZhPLQ9RvFNUSizqvD5/90X9dhQkV4ZYd?=
- =?us-ascii?Q?KTOOTn4OYcoh2krH5uSgxr/n9HYsIIYsec7Q4dOwOyvGjw2cUo5XhM8im2K2?=
- =?us-ascii?Q?4FO8sETd3m/ctUQ2HT+k9RCNdf9bL9envSfpyyAtlT2Z9Zq25NKsivdubdRL?=
- =?us-ascii?Q?1bGy4xAsm9V2E/1tNA2Xy7yCB2XrJ2opIUNC5KL4wyfS/vyGxkUipTuuXoPF?=
- =?us-ascii?Q?mWi0gwkxuCR9/prsMZHtYHWwkLdvBt8XXajN/hvxUexgrM40w2lEHzOaGHjr?=
- =?us-ascii?Q?Yt+8eA44wtrkL2S92JKW8B/ahAsBn2vvJS67sCGHPSwTN8Fr7iGuu0c9J/nq?=
- =?us-ascii?Q?rbOFA/NEOfSe3BTs+pNGUzYuvJd4vj2hJHsdoWFWsLhsnbWLVVhC16YsrdIK?=
- =?us-ascii?Q?tim3taBa+PNw8Bd16qHLlBZ7XZ0vAk+xh0DalNJwMQZ5LwZwRVmSyNAxyeMW?=
- =?us-ascii?Q?yEv1fKnvxniwb0+HsR7uM915TP85IYLxlq8FtJsVKJ99SoKCUMDBVKY6LGLZ?=
- =?us-ascii?Q?8Rsyw1iszKkXtZX2MsGwEJQoYgZCSAYmissea+j8kLsmfBmlbfXqijDFF97J?=
- =?us-ascii?Q?ii9ZZdwLIQA/iKcEniZTgdvMfQtyonMHcidMt+1Cz3FOTWBH8ZWyECxFeHzM?=
- =?us-ascii?Q?6lPWRVwj4BttYKmffyxYhB4ArFjlElmuQfBWJkalOjW7wHz3ifpjdNeGLg?=
- =?us-ascii?Q?=3D=3D?=
-X-Forefront-Antispam-Report: CIP:216.228.117.161;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc6edge2.nvidia.com;CAT:NONE;SFS:(13230040)(7416014)(376014)(1800799024)(82310400026)(36860700013);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Aug 2025 23:00:21.3643
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9f8ea4cf-29d7-40be-522a-08ddd92ad962
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.117.161];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BL6PEPF0002256F.namprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR12MB5668
+Content-Type: text/plain; charset="utf-8"
+Message-Id: <E1ulXbx-008gr4-5H@rmk-PC.armlinux.org.uk>
+Date: Mon, 11 Aug 2025 19:51:09 +0100
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250811_160028_906500_7065B962 
-X-CRM114-Status: GOOD (  12.75  )
+X-CRM114-CacheID: sfid-20250811_115201_439069_B1D6A073 
+X-CRM114-Status: GOOD (  13.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -157,90 +90,121 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi all,
+Convert pci to use the new suspend() and resume() methods rather
+than implementing these in custom wrappers around the main driver's
+suspend/resume methods.
 
-PCIe permits a device to ignore ATS invalidation TLPs, while processing a
-reset. This creates a problem visible to the OS where an ATS invalidation
-command will time out: e.g. an SVA domain will have no coordination with a
-reset event and can racily issue ATS invalidations to a resetting device.
+Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+---
+ .../net/ethernet/stmicro/stmmac/stmmac_pci.c  | 73 +++++++++----------
+ 1 file changed, 35 insertions(+), 38 deletions(-)
 
-The OS should do something to mitigate this as we do not want production
-systems to be reporting critical ATS failures, especially in a hypervisor
-environment. Broadly, OS could arrange to ignore the timeouts, block page
-table mutations to prevent invalidations, or disable and block ATS.
-
-The PCIe spec in sec 10.3.1 IMPLEMENTATION NOTE recommends to disable and
-block ATS before initiating a Function Level Reset. It also mentions that
-other reset methods could have the same vulnerability as well.
-
-Provide a callback from the PCI subsystem that will enclose the reset and
-have the iommu core temporarily change domains to group->blocking_domain,
-so IOMMU drivers would fence any incoming ATS queries, synchronously stop
-issuing new ATS invalidations, and wait for existing ATS invalidations to
-complete. Doing this can avoid any ATS invaliation timeouts.
-
-When a device is resetting, any new domain attachment should be deferred,
-until the reset is finished, to prevent ATS activity from being activated
-between the two callback functions. Introduce a new pending_reset flag to
-allow iommu core to cache the target domains in the SW level but bypass
-the driver-level attachment. Later, iommu_dev_reset_done() will re-attach
-these soft-attached domains via __iommu_attach_device/set_group_pasid().
-
-Finally, apply these iommu_dev_reset_prepare/done() functions in the PCI
-reset functions.
-
-This is on Github:
-https://github.com/nicolinc/iommufd/commits/iommu_dev_reset-v3
-
-Changelog
-v3
- * Add Reviewed-by from Jason
- * [iommu] Add a fast return in iommu_deferred_attach()
- * [iommu] Update kdocs, inline comments, and commit logs
- * [iommu] Use group->blocking_domain v.s. ops->blocked_domain
- * [iommu] Drop require_direct, iommu_group_get(), and xa_lock()
- * [iommu] Set the pending_reset flag after RID/PASID domain setups
- * [iommu] Do not bypass PASID domains when RID domain is already the
-           blocking_domain
- * [iommu] Add iommu_get_domain_for_dev_locked to correctly return the
-           blocking_domain
-v2
- https://lore.kernel.org/all/cover.1751096303.git.nicolinc@nvidia.com/
- * [iommu] Update kdocs, inline comments, and commit logs
- * [iommu] Replace long-holding group->mutex with a pending_reset flag
- * [pci] Abort reset routines if iommu_dev_reset_prepare() fails
- * [pci] Apply the same vulnerability fix to other reset functions
-v1
- https://lore.kernel.org/all/cover.1749494161.git.nicolinc@nvidia.com/
-
-Thanks
-Nicolin
-
-Nicolin Chen (5):
-  iommu: Lock group->mutex in iommu_deferred_attach
-  iommu: Pass in gdev to __iommu_device_set_domain
-  iommu: Add iommu_get_domain_for_dev_locked() helper
-  iommu: Introduce iommu_dev_reset_prepare() and iommu_dev_reset_done()
-  pci: Suspend iommu function prior to resetting a device
-
- include/linux/iommu.h                         |  13 ++
- .../arm/arm-smmu-v3/arm-smmu-v3-iommufd.c     |   2 +-
- drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c   |   9 +-
- drivers/iommu/arm/arm-smmu/qcom_iommu.c       |   2 +-
- drivers/iommu/dma-iommu.c                     |   2 +-
- drivers/iommu/fsl_pamu_domain.c               |   2 +-
- drivers/iommu/iommu.c                         | 205 +++++++++++++++++-
- drivers/iommu/ipmmu-vmsa.c                    |   2 +-
- drivers/iommu/msm_iommu.c                     |   2 +-
- drivers/iommu/mtk_iommu.c                     |   2 +-
- drivers/iommu/omap-iommu.c                    |   2 +-
- drivers/iommu/tegra-smmu.c                    |   2 +-
- drivers/pci/pci-acpi.c                        |  17 +-
- drivers/pci/pci.c                             |  68 +++++-
- drivers/pci/quirks.c                          |  23 +-
- 15 files changed, 323 insertions(+), 30 deletions(-)
-
+diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_pci.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_pci.c
+index 9c1b54b701f7..e6a7d0ddac2a 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/stmmac_pci.c
++++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_pci.c
+@@ -138,6 +138,37 @@ static const struct stmmac_pci_info snps_gmac5_pci_info = {
+ 	.setup = snps_gmac5_default_data,
+ };
+ 
++static int stmmac_pci_suspend(struct device *dev, void *bsp_priv)
++{
++	struct pci_dev *pdev = to_pci_dev(dev);
++	int ret;
++
++	ret = pci_save_state(pdev);
++	if (ret)
++		return ret;
++
++	pci_disable_device(pdev);
++	pci_wake_from_d3(pdev, true);
++	return 0;
++}
++
++static int stmmac_pci_resume(struct device *dev, void *bsp_priv)
++{
++	struct pci_dev *pdev = to_pci_dev(dev);
++	int ret;
++
++	pci_restore_state(pdev);
++	pci_set_power_state(pdev, PCI_D0);
++
++	ret = pci_enable_device(pdev);
++	if (ret)
++		return ret;
++
++	pci_set_master(pdev);
++
++	return 0;
++}
++
+ /**
+  * stmmac_pci_probe
+  *
+@@ -217,6 +248,9 @@ static int stmmac_pci_probe(struct pci_dev *pdev,
+ 	plat->safety_feat_cfg->prtyen = 1;
+ 	plat->safety_feat_cfg->tmouten = 1;
+ 
++	plat->suspend = stmmac_pci_suspend;
++	plat->resume = stmmac_pci_resume;
++
+ 	return stmmac_dvr_probe(&pdev->dev, plat, &res);
+ }
+ 
+@@ -231,43 +265,6 @@ static void stmmac_pci_remove(struct pci_dev *pdev)
+ 	stmmac_dvr_remove(&pdev->dev);
+ }
+ 
+-static int __maybe_unused stmmac_pci_suspend(struct device *dev)
+-{
+-	struct pci_dev *pdev = to_pci_dev(dev);
+-	int ret;
+-
+-	ret = stmmac_suspend(dev);
+-	if (ret)
+-		return ret;
+-
+-	ret = pci_save_state(pdev);
+-	if (ret)
+-		return ret;
+-
+-	pci_disable_device(pdev);
+-	pci_wake_from_d3(pdev, true);
+-	return 0;
+-}
+-
+-static int __maybe_unused stmmac_pci_resume(struct device *dev)
+-{
+-	struct pci_dev *pdev = to_pci_dev(dev);
+-	int ret;
+-
+-	pci_restore_state(pdev);
+-	pci_set_power_state(pdev, PCI_D0);
+-
+-	ret = pci_enable_device(pdev);
+-	if (ret)
+-		return ret;
+-
+-	pci_set_master(pdev);
+-
+-	return stmmac_resume(dev);
+-}
+-
+-static SIMPLE_DEV_PM_OPS(stmmac_pm_ops, stmmac_pci_suspend, stmmac_pci_resume);
+-
+ /* synthetic ID, no official vendor */
+ #define PCI_VENDOR_ID_STMMAC		0x0700
+ 
+@@ -289,7 +286,7 @@ static struct pci_driver stmmac_pci_driver = {
+ 	.probe = stmmac_pci_probe,
+ 	.remove = stmmac_pci_remove,
+ 	.driver         = {
+-		.pm     = &stmmac_pm_ops,
++		.pm     = &stmmac_simple_pm_ops,
+ 	},
+ };
+ 
 -- 
-2.43.0
+2.30.2
 
 
