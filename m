@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 892BCCA0ED1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Aug 2025 18:07:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0A2CCA0ED1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Aug 2025 18:08:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JgWJ/4IGzvz4wlAWb78Hdn/2H5yLAUBfgr6KFhIBGZg=; b=eBCTx3YiLOuXD+DhKsVDiLGiOU
-	0b/SE1/JI4Q0v9zpqo4gihDmbdbd1wMtlDLkn/KVwqLCLLKeyS3O83wqq8v8/i3CJo/x0jb5BU/CV
-	re3pQQlKEkRFy0TRx8lTbBc4LHlXWwlZ6FbL7ClI7mtb6jY8VR85TNXCILbVhVvbbJg4PsVDhEkwf
-	h/jUhFF5vpYDGF7lhiuL+Im2hqwAVPfCoEAqXo+VazfEO64bMGuT+XIw7PVWZGv3rqfNCL10NMNfK
-	OeZwAfZt0DUCMflhgSTYmmFQ90/HumzwqjWmjcP7A4P4ZPZHJV45SsvgwTB8y6pXmwLav1TaBmgV0
-	pJOl083Q==;
+	bh=ZxNLhPsaK+JduYFr0HAZvQPocu7gaLkcQZYrm0tORTE=; b=FvcrolmQnIUPAM87E+W0JLegis
+	JBXxqczf225ojIrHEtRMn5o+jmDUxcBGjltIWmFvLq0JXJDPcuV+418nWN1cvHoqKuAhYpt/YrEGm
+	JQHPnkvvGwWHDqyftB19YBs+HNvyl63XNLkerXZexOpMSHd7VYlENoaKcA1pRwHm7RrBVyXY7PG+G
+	nNbvxrAfxsWqgcEJeNnacNs8XbQgcaPJ6br5mrLwvmYBoh1uoHlg+EfRm0TZZHwb+Qslf0ykG66sX
+	BpP9G0QVX1HNGo3BkDHFPZBz4iXrdU7Klr7a+8cFkl+tpThRlPX3IEe9BwEFC4Vw5K8YyzLxZ/7uE
+	ogl9ADwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulWw5-00000008ev0-1f0C;
-	Mon, 11 Aug 2025 18:07:53 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1ulWwF-00000008fAR-1dQ6;
+	Mon, 11 Aug 2025 18:08:03 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulUIE-00000008AgZ-2uLk;
+	id 1ulUIG-00000008AiR-07eb;
 	Mon, 11 Aug 2025 15:18:38 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 7C6D35C5ABD;
-	Mon, 11 Aug 2025 15:18:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 90AB3C4FEF2;
-	Mon, 11 Aug 2025 15:18:31 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id A884CA5729C;
+	Mon, 11 Aug 2025 15:18:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 6FD2FC4FE02;
+	Mon, 11 Aug 2025 15:18:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1754925511;
-	bh=NFCvsdhTuufYDSLX/E9XY/1o6u+avs6SZ4UBqvQwRL4=;
+	s=k20201202; t=1754925512;
+	bh=886H/n+ok80mLXkVrmS6YcevLoJQHX9bhodmGIII/GE=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=Te6tkOiGCFCnBwwkpHEWXZeRgNOZjeNP1T9P/pY5G/2ud7xnt8T/HPMRYz05IzOQI
-	 SgOizF7nWrZPAxN3VqqK8LnbxudCcgq2bhjHxVUE+NahGk1KjOHKBQjdwBVCnviZ49
-	 kkOtV8PRxaiwkvDnVIGF72aPTdvFlQJ2TPFkIIi1634K+/vHCYlpniD7WMWwD5E1G0
-	 /9cnVyK1sToyDZjim42UpNT2wuIOA6TCHAO6hKzsmtqIq4hjFzoRiPXGftWsXjiQmi
-	 ED1a2cJAvhnXQd3IxxITO+O89sqR9eHIFLEif1biGdTo2ahdenCUxBydD4ho/ZgaG3
-	 Gn4rnd13w3AYg==
+	b=HMFaH3nufzX0kUVW/50h6mCzrGoCsSEZb23J5KLBx21+vfabFFefboD1Lh2fowK66
+	 1/Gc8nFQSBJv9rnEndazwo03Kkbnjl66DKNthmJ+c7s7EolOUrqziV+OCpmGEOn805
+	 qi+jDpXVpKck6BjkXlQajtsYmel6w+/CW2W35Jb5r/2hJoLeLrMvkkEvZw21nASTKt
+	 vLtvF/1r3WzkqJ5XmMivUa91tB/WSpGS8eWzM67d52XUuM0YBzF4QnwhD5QAzUj9Rd
+	 JP5DXely99jKAiYzDWgsBjiwez4FURLZRoiPHScE+r+53cBMQ8EXuIePD/eXcoje3b
+	 hAB52beBy9igg==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 80FFFC87FD2;
-	Mon, 11 Aug 2025 15:18:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 54FA9C87FD2;
+	Mon, 11 Aug 2025 15:18:32 +0000 (UTC)
 From: Brian Masney via B4 Relay <devnull+bmasney.redhat.com@kernel.org>
-Date: Mon, 11 Aug 2025 11:18:54 -0400
-Subject: [PATCH 062/114] clk: vt8500: convert from round_rate() to
- determine_rate()
+Date: Mon, 11 Aug 2025 11:19:03 -0400
+Subject: [PATCH 071/114] clk: actions: owl-composite: convert from
+ round_rate() to determine_rate()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250811-clk-for-stephen-round-rate-v1-62-b3bf97b038dc@redhat.com>
+Message-Id: <20250811-clk-for-stephen-round-rate-v1-71-b3bf97b038dc@redhat.com>
 References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 To: Michael Turquette <mturquette@baylibre.com>, 
@@ -117,19 +117,19 @@ Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev, 
  Brian Masney <bmasney@redhat.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925498; l=4942;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925498; l=1656;
  i=bmasney@redhat.com; s=20250528; h=from:subject:message-id;
- bh=jZ22CUcrOjD9ewjvCFdGvPS2YTij7PZfRU8lYtOhk2M=;
- b=gxljePog34SFWKNyz8PmTAiXpvxW8K7cHFeeEFaEsIOALnOyd0Jp0sOAfN+WFPjC78GBeB8N3
- QOMTV4c8pNMCqPc4nr4EShNddG4g4aGy6GhvNJgP/eVjQY7P46ecqEk
+ bh=rppRbGPELjN20Eg42v9ZOmEzkkXGAODN+hzSiKR7wPQ=;
+ b=xqF1eoy8nHktQVdHk5LO771dB8JtR/uR1+DrGu0qXqdC3Dh1OaHMmzI021ud72YEIUAVMcsip
+ yJ9zJyIpo0xBV21DL1imLpWgwybiD2R1/gDavVwe+SW73X3FEfrUZSf
 X-Developer-Key: i=bmasney@redhat.com; a=ed25519;
  pk=x20f2BQYftANnik+wvlm4HqLqAlNs/npfVcbhHPOK2U=
 X-Endpoint-Received: by B4 Relay for bmasney@redhat.com/20250528 with
  auth_id=472
 X-Original-From: Brian Masney <bmasney@redhat.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250811_081834_971207_EE75B720 
-X-CRM114-Status: GOOD (  18.00  )
+X-CRM114-CacheID: sfid-20250811_081836_296099_6DAAC0AB 
+X-CRM114-Status: GOOD (  13.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -153,145 +153,38 @@ on the cover letter of this series.
 
 Signed-off-by: Brian Masney <bmasney@redhat.com>
 ---
- drivers/clk/clk-vt8500.c | 59 ++++++++++++++++++++++++++++--------------------
- 1 file changed, 35 insertions(+), 24 deletions(-)
+ drivers/clk/actions/owl-composite.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/clk/clk-vt8500.c b/drivers/clk/clk-vt8500.c
-index 2a74a713ad5954de578f43972a6243f22dd2c0d6..eae5b3fbfb823f77e6cd9601bd221382d4eccf42 100644
---- a/drivers/clk/clk-vt8500.c
-+++ b/drivers/clk/clk-vt8500.c
-@@ -128,30 +128,31 @@ static unsigned long vt8500_dclk_recalc_rate(struct clk_hw *hw,
- 	return parent_rate / div;
+diff --git a/drivers/clk/actions/owl-composite.c b/drivers/clk/actions/owl-composite.c
+index 48f177f6ce9cfacda80b4809b52a24f4fcd30871..00b74f8bc4375a8f42e9b54c7bf1affe91e1074a 100644
+--- a/drivers/clk/actions/owl-composite.c
++++ b/drivers/clk/actions/owl-composite.c
+@@ -122,13 +122,13 @@ static int owl_comp_fact_set_rate(struct clk_hw *hw, unsigned long rate,
+ 					rate, parent_rate);
  }
  
--static long vt8500_dclk_round_rate(struct clk_hw *hw, unsigned long rate,
--				unsigned long *prate)
-+static int vt8500_dclk_determine_rate(struct clk_hw *hw,
-+				      struct clk_rate_request *req)
+-static long owl_comp_fix_fact_round_rate(struct clk_hw *hw, unsigned long rate,
+-			unsigned long *parent_rate)
++static int owl_comp_fix_fact_determine_rate(struct clk_hw *hw,
++					    struct clk_rate_request *req)
  {
- 	struct clk_device *cdev = to_clk_device(hw);
- 	u32 divisor;
+ 	struct owl_composite *comp = hw_to_owl_comp(hw);
+ 	struct clk_fixed_factor *fix_fact_hw = &comp->rate.fix_fact_hw;
  
--	if (rate == 0)
-+	if (req->rate == 0)
- 		return 0;
- 
--	divisor = *prate / rate;
-+	divisor = req->best_parent_rate / req->rate;
- 
- 	/* If prate / rate would be decimal, incr the divisor */
--	if (rate * divisor < *prate)
-+	if (req->rate * divisor < req->best_parent_rate)
- 		divisor++;
- 
- 	/*
- 	 * If this is a request for SDMMC we have to adjust the divisor
- 	 * when >31 to use the fixed predivisor
- 	 */
--	if ((cdev->div_mask == 0x3F) && (divisor > 31)) {
-+	if ((cdev->div_mask == 0x3F) && (divisor > 31))
- 		divisor = 64 * ((divisor / 64) + 1);
--	}
- 
--	return *prate / divisor;
-+	req->rate = req->best_parent_rate / divisor;
-+
-+	return 0;
+-	return comp->fix_fact_ops->round_rate(&fix_fact_hw->hw, rate, parent_rate);
++	return comp->fix_fact_ops->determine_rate(&fix_fact_hw->hw, req);
  }
  
- static int vt8500_dclk_set_rate(struct clk_hw *hw, unsigned long rate,
-@@ -202,7 +203,7 @@ static const struct clk_ops vt8500_gated_clk_ops = {
- };
+ static unsigned long owl_comp_fix_fact_recalc_rate(struct clk_hw *hw,
+@@ -193,7 +193,7 @@ const struct clk_ops owl_comp_fix_fact_ops = {
+ 	.is_enabled	= owl_comp_is_enabled,
  
- static const struct clk_ops vt8500_divisor_clk_ops = {
--	.round_rate = vt8500_dclk_round_rate,
-+	.determine_rate = vt8500_dclk_determine_rate,
- 	.set_rate = vt8500_dclk_set_rate,
- 	.recalc_rate = vt8500_dclk_recalc_rate,
- };
-@@ -211,7 +212,7 @@ static const struct clk_ops vt8500_gated_divisor_clk_ops = {
- 	.enable = vt8500_dclk_enable,
- 	.disable = vt8500_dclk_disable,
- 	.is_enabled = vt8500_dclk_is_enabled,
--	.round_rate = vt8500_dclk_round_rate,
-+	.determine_rate = vt8500_dclk_determine_rate,
- 	.set_rate = vt8500_dclk_set_rate,
- 	.recalc_rate = vt8500_dclk_recalc_rate,
- };
-@@ -594,8 +595,8 @@ static int vtwm_pll_set_rate(struct clk_hw *hw, unsigned long rate,
- 	return 0;
- }
- 
--static long vtwm_pll_round_rate(struct clk_hw *hw, unsigned long rate,
--				unsigned long *prate)
-+static int vtwm_pll_determine_rate(struct clk_hw *hw,
-+				   struct clk_rate_request *req)
- {
- 	struct clk_pll *pll = to_clk_pll(hw);
- 	u32 filter, mul, div1, div2;
-@@ -604,33 +605,43 @@ static long vtwm_pll_round_rate(struct clk_hw *hw, unsigned long rate,
- 
- 	switch (pll->type) {
- 	case PLL_TYPE_VT8500:
--		ret = vt8500_find_pll_bits(rate, *prate, &mul, &div1);
-+		ret = vt8500_find_pll_bits(req->rate, req->best_parent_rate,
-+					   &mul, &div1);
- 		if (!ret)
--			round_rate = VT8500_BITS_TO_FREQ(*prate, mul, div1);
-+			round_rate = VT8500_BITS_TO_FREQ(req->best_parent_rate,
-+							 mul, div1);
- 		break;
- 	case PLL_TYPE_WM8650:
--		ret = wm8650_find_pll_bits(rate, *prate, &mul, &div1, &div2);
-+		ret = wm8650_find_pll_bits(req->rate, req->best_parent_rate,
-+					   &mul, &div1, &div2);
- 		if (!ret)
--			round_rate = WM8650_BITS_TO_FREQ(*prate, mul, div1, div2);
-+			round_rate = WM8650_BITS_TO_FREQ(req->best_parent_rate,
-+							 mul, div1, div2);
- 		break;
- 	case PLL_TYPE_WM8750:
--		ret = wm8750_find_pll_bits(rate, *prate, &filter, &mul, &div1, &div2);
-+		ret = wm8750_find_pll_bits(req->rate, req->best_parent_rate,
-+					   &filter, &mul, &div1, &div2);
- 		if (!ret)
--			round_rate = WM8750_BITS_TO_FREQ(*prate, mul, div1, div2);
-+			round_rate = WM8750_BITS_TO_FREQ(req->best_parent_rate,
-+							 mul, div1, div2);
- 		break;
- 	case PLL_TYPE_WM8850:
--		ret = wm8850_find_pll_bits(rate, *prate, &mul, &div1, &div2);
-+		ret = wm8850_find_pll_bits(req->rate, req->best_parent_rate,
-+					   &mul, &div1, &div2);
- 		if (!ret)
--			round_rate = WM8850_BITS_TO_FREQ(*prate, mul, div1, div2);
-+			round_rate = WM8850_BITS_TO_FREQ(req->best_parent_rate,
-+							 mul, div1, div2);
- 		break;
- 	default:
--		ret = -EINVAL;
-+		return -EINVAL;
- 	}
- 
- 	if (ret)
--		return ret;
-+		req->rate = ret;
-+	else
-+		req->rate = round_rate;
- 
--	return round_rate;
-+	return 0;
- }
- 
- static unsigned long vtwm_pll_recalc_rate(struct clk_hw *hw,
-@@ -665,7 +676,7 @@ static unsigned long vtwm_pll_recalc_rate(struct clk_hw *hw,
- }
- 
- static const struct clk_ops vtwm_pll_ops = {
--	.round_rate = vtwm_pll_round_rate,
-+	.determine_rate = vtwm_pll_determine_rate,
- 	.set_rate = vtwm_pll_set_rate,
- 	.recalc_rate = vtwm_pll_recalc_rate,
+ 	/* fix_fact_ops */
+-	.round_rate	= owl_comp_fix_fact_round_rate,
++	.determine_rate = owl_comp_fix_fact_determine_rate,
+ 	.recalc_rate	= owl_comp_fix_fact_recalc_rate,
+ 	.set_rate	= owl_comp_fix_fact_set_rate,
  };
 
 -- 
