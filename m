@@ -4,87 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6CFBC87FD2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Aug 2025 03:49:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 187EBC87FD2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Aug 2025 07:49:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cn3htOReln+vOcAcfeE1LgSCT/Ev3OONSHgeMyS579U=; b=N5g70RoaC/UhvplbRToDRWxHDc
-	lGN1xJBszZAST1EfZCRYixEXtoTeD5XBd/qDlmjOyWln4Y6bbJ65K+B+8KW9WnEDr/s3XFfxuCNpi
-	JXKtNMGEBghg1MT93jVAgTnx6tAEns78o7FbcYzzfAjf97KeuVmFIOLR3cJXluIcK/SIcM8YJpZgB
-	WU+6A0BDmNnTavVIfvZ+n8dxBx7+Rp9qAwDPdWynQKCQUszARp4kvsuboZ24UeAhQMst0ZjZIn8Gy
-	7OcKC5o3PrLCaQ/6P1V3slBKH1fQqy+VdfriG7FRhfjrb9fBGU41gWIWS9HMgOtOyn8fZ73Urd63+
-	zXhiTMNA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=oW6XItzS3RhCClczZNyaDVU2qBVnd8oWUKJM2XLF3U0=; b=qT493MdXJ8VssXYNAgyKDAylYW
+	L1e5nqlOiIEp4mTmXGr7Ua1UC6VLjMKrqKhqlBqCh7Ze/22Rj8kXGQOHkDrVuuwmbPd1wYKth3fYb
+	Onec1NqrH73Rovn2xaYEmBQVAmxuYw/R9ac42atF0gkIkr57/ODiIQiXKRea/Hyhn6xbBBsooQz0l
+	ibeKNdRuEep789QRHVq5IHS8u6JUMzy9oTbQMNyy9pFZRKwA8+yiiTXenE+ebF11o/XlFlLb/+ZcY
+	yyucbC1QQ34w42t27S2d3/GhMzTCMZxX1BG0QQErMRy7di1+lrLx/el49ClM+iMOO9gX5V38r0U9n
+	r68puq1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulJXb-00000006Rgw-0vgA;
-	Mon, 11 Aug 2025 03:49:43 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ulNHl-00000006kpC-1w4e;
+	Mon, 11 Aug 2025 07:49:37 +0000
+Received: from galois.linutronix.de ([193.142.43.55])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulJBJ-00000006Paf-0ukf;
-	Mon, 11 Aug 2025 03:26:42 +0000
-X-UUID: fc6dfaa2766211f09f706fa2197c6ceb-20250810
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=cn3htOReln+vOcAcfeE1LgSCT/Ev3OONSHgeMyS579U=;
-	b=LPXkXzj+SYCfBTtp62gA8MVwjVD6P7IPcmD6nCTzmjBnfHCoVFyjgQgcpWJAqtVPhl/5YBLVUsJQbhnxoWN59EibZDuRWkwnKkMacpk0Up11SBqRmSKpFjQyUKSXd3fdabG/sTBNxpp2tyhR1zK+tK8Dl5QKjCP20tJp+FhI7cU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.3,REQID:eb77caf0-ae79-456b-9289-c58f68c865d0,IP:0,UR
-	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:-5
-X-CID-META: VersionHash:f1326cf,CLOUDID:27dd4aa1-1800-4e4f-b665-a3d622db32cf,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:-5,Content:0|15|50,EDM:
-	-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,
-	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: fc6dfaa2766211f09f706fa2197c6ceb-20250810
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
-	(envelope-from <kyrie.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 221575256; Sun, 10 Aug 2025 20:26:36 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Mon, 11 Aug 2025 11:26:27 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Mon, 11 Aug 2025 11:26:26 +0800
-From: Kyrie Wu <kyrie.wu@mediatek.com>
-To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
-	<andrew-ct.chen@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, "Mauro
- Carvalho Chehab" <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Kyrie Wu <kyrie.wu@mediatek.com>,
-	Hans Verkuil <hverkuil@xs4all.nl>, Nicolas Dufresne
-	<nicolas.dufresne@collabora.com>, Christophe JAILLET
-	<christophe.jaillet@wanadoo.fr>, Sebastian Fricke
-	<sebastian.fricke@collabora.com>, Nathan Hebert <nhebert@chromium.org>, "Arnd
- Bergmann" <arnd@arndb.de>, Irui Wang <irui.wang@mediatek.com>, George Sun
-	<george.sun@mediatek.com>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: Neil Armstrong <neil.armstrong@linaro.org>, Andrzej Pietrasiewicz
-	<andrzejtp2010@gmail.com>
-Subject: [PATCH v2 8/8] media: mediatek: encoder: Add MT8189 encoder compatible data
-Date: Mon, 11 Aug 2025 11:26:15 +0800
-Message-ID: <20250811032616.1385-9-kyrie.wu@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20250811032616.1385-1-kyrie.wu@mediatek.com>
-References: <20250811032616.1385-1-kyrie.wu@mediatek.com>
+	id 1ulNF9-00000006kLP-0ao8;
+	Mon, 11 Aug 2025 07:46:56 +0000
+From: =?utf-8?q?Thomas_Wei=C3=9Fschuh?= <thomas.weissschuh@linutronix.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020; t=1754898413;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=oW6XItzS3RhCClczZNyaDVU2qBVnd8oWUKJM2XLF3U0=;
+	b=D7gy0hIMV9tB4JSDXb0uCHwL5gaG18Lk2pQOD3YSLW9as31Yhw8YmISxYfvU/IrfrXqUBS
+	nbowDfp+MVLNNbrDnUscxWIriOdjpSNq2kMtL5hOe5SS2x/a6g1OXqR427CkC5Vco7VUkC
+	DUvD8KxL92ZZOsaaIwe6OIEVO5Bws2AtoSOL6M9y0xUmGBMXpX/2Uppaec1aCcHNXDa2mm
+	IlF/VcvhuWWtGM46hC0WJEy+zwW7WoXgk3tK2PJAtu8UxDc0Vhj08+hGRxNAz5k08BBeWo
+	MNlVAI6Xzt0yzSHEUTm+1b3g7ozNaExmDWolCJh2FXtZHosV3XCVR1Lc4WvV9g==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020e; t=1754898413;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=oW6XItzS3RhCClczZNyaDVU2qBVnd8oWUKJM2XLF3U0=;
+	b=n17P2/fiJG53D5pwyp7NZbW+XMU+NFAGp5OpB3RNIwEkGKA2z6sAG7oYV/2nMctIN1W1Dl
+	zIlYq2zkB4+4Q/Dg==
+Date: Mon, 11 Aug 2025 09:46:49 +0200
+Subject: [PATCH v2] media: platform: mtk-mdp3: don't use %pK through printk
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Message-Id: <20250811-restricted-pointers-mtk-mdp3-v2-1-d76e5e6d5299@linutronix.de>
+X-B4-Tracking: v=1; b=H4sIAOifmWgC/43NQQ6CMBCF4auQWTumrSLEFfcwLJp2lInSkmklG
+ MLdrZzA5f8W31shkTAluFYrCM2cOIYS5lCBG2x4ELIvDUaZWjW6RaGUhV0mj1PkkEkSjvmJo59
+ O2Li2tladlW4dFGISuvOy87e+9MApR/nsb7P+rX/Cs0aNrvG+6BdtyHYvDu8sMfBy9AT9tm1fi
+ r5llMwAAAA=
+X-Change-ID: 20250718-restricted-pointers-mtk-mdp3-7c85aa04018c
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ =?utf-8?q?Thomas_Wei=C3=9Fschuh?= <thomas.weissschuh@linutronix.de>
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1754898413; l=2558;
+ i=thomas.weissschuh@linutronix.de; s=20240209; h=from:subject:message-id;
+ bh=4MMgbTyUJWGMqEvl8cpxSSQkajFSIFS92Abs4DfMrsg=;
+ b=n1Jerr5rl9LAlwvxTZyKzlziPXqsX797vW1petW8HJJp/SY8O5gNi275PdXyjN02ZDrVitc4K
+ Oa9s5IvBC2wBP6nLh/xuazfOJdCXOC8hU58Av291JSfTAqT8CfuBUc0
+X-Developer-Key: i=thomas.weissschuh@linutronix.de; a=ed25519;
+ pk=pfvxvpFUDJV2h2nY0FidLUml22uGLSjByFbM6aqQQws=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250810_202641_269828_BE711B14 
-X-CRM114-Status: UNSURE (   9.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250811_004655_319056_F027B2D6 
+X-CRM114-Status: GOOD (  12.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,46 +87,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-add compatible data to support MT8189 encoding.
+In the past %pK was preferable to %p as it would not leak raw pointer
+values into the kernel log.
+Since commit ad67b74d2469 ("printk: hash addresses printed with %p")
+the regular %p has been improved to avoid this issue.
+Furthermore, restricted pointers ("%pK") were never meant to be used
+through printk(). They can still unintentionally leak raw pointers or
+acquire sleeping locks in atomic contexts.
 
-Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
+Switch to the regular pointer formatting which is safer and
+easier to reason about.
+
+Signed-off-by: Thomas Weißschuh <thomas.weissschuh@linutronix.de>
 ---
- .../mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c   | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+Changes in v2:
+- Rebase on v6.17-rc1
+- Link to v1: https://lore.kernel.org/r/20250718-restricted-pointers-mtk-mdp3-v1-1-c7ddaa0612ea@linutronix.de
+---
+ drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c | 2 +-
+ drivers/media/platform/mediatek/mdp3/mtk-mdp3-vpu.c  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c
-index c869c4245ebc..4f5c2d8d2855 100644
---- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c
-+++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c
-@@ -468,6 +468,19 @@ static const struct mtk_vcodec_enc_pdata mt8196_pdata = {
- 	.set_dma_bit_mask = true,
- };
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+index 8de2c8e4d333a8f92684f1590a3dd0d13bdadcc6..6559d72d5d4278071bcec0c5c9be398d1639ba5c 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+@@ -282,7 +282,7 @@ static int mdp_probe(struct platform_device *pdev)
+ 	}
  
-+static const struct mtk_vcodec_enc_pdata mt8189_pdata = {
-+	.venc_model_num = 8189,
-+	.capture_formats = mtk_video_formats_capture_h264,
-+	.num_capture_formats = ARRAY_SIZE(mtk_video_formats_capture_h264),
-+	.output_formats = mtk_video_formats_output,
-+	.num_output_formats = ARRAY_SIZE(mtk_video_formats_output),
-+	.min_bitrate = 64,
-+	.max_bitrate = 100000000,
-+	.core_id = VENC_SYS,
-+	.uses_common_fw_iface = true,
-+	.set_dma_bit_mask = true,
-+};
-+
- static const struct of_device_id mtk_vcodec_enc_match[] = {
- 	{.compatible = "mediatek,mt8173-vcodec-enc",
- 			.data = &mt8173_avc_pdata},
-@@ -478,6 +491,7 @@ static const struct of_device_id mtk_vcodec_enc_match[] = {
- 	{.compatible = "mediatek,mt8192-vcodec-enc", .data = &mt8192_pdata},
- 	{.compatible = "mediatek,mt8195-vcodec-enc", .data = &mt8195_pdata},
- 	{.compatible = "mediatek,mt8196-vcodec-enc", .data = &mt8196_pdata},
-+	{.compatible = "mediatek,mt8189-vcodec-enc", .data = &mt8189_pdata},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_vcodec_enc_match);
+ 	mdp->rproc_handle = scp_get_rproc(mdp->scp);
+-	dev_dbg(&pdev->dev, "MDP rproc_handle: %pK", mdp->rproc_handle);
++	dev_dbg(&pdev->dev, "MDP rproc_handle: %p", mdp->rproc_handle);
+ 
+ 	mutex_init(&mdp->vpu_lock);
+ 	mutex_init(&mdp->m2m_lock);
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-vpu.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-vpu.c
+index da3a892ad867eedb4898509da8790981475e9a62..fae3e1ad2df758a50bd175479dbaf7a9eb859222 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-vpu.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-vpu.c
+@@ -221,7 +221,7 @@ int mdp_vpu_dev_init(struct mdp_vpu_dev *vpu, struct mtk_scp *scp,
+ 	}
+ 
+ 	dev_dbg(&mdp->pdev->dev,
+-		"VPU param:%pK pa:%pad sz:%zx, work:%pK pa:%pad sz:%zx, config:%pK pa:%pad sz:%zx",
++		"VPU param:%p pa:%pad sz:%zx, work:%p pa:%pad sz:%zx, config:%p pa:%pad sz:%zx",
+ 		vpu->param, &vpu->param_addr, vpu->param_size,
+ 		vpu->work, &vpu->work_addr, vpu->work_size,
+ 		vpu->config, &vpu->config_addr, vpu->config_size);
+
+---
+base-commit: 8f5ae30d69d7543eee0d70083daf4de8fe15d585
+change-id: 20250718-restricted-pointers-mtk-mdp3-7c85aa04018c
+
+Best regards,
 -- 
-2.46.0
+Thomas Weißschuh <thomas.weissschuh@linutronix.de>
 
 
