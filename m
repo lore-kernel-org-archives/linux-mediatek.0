@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F1D9CA0EC4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Aug 2025 18:10:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3698ECA0ED3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Aug 2025 18:10:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hqXSPX3SDcAelvXGikenrgtsfUTIBhJzsXMRgKXtzjo=; b=tp0Dfj5bRwzpvk5KVWzh+81W+4
-	W6V0/9/lQRmWw8vFfl5pvLbxcYvSfrut0l29N1xwnvK6wWeLb/VlhmMDig1wInZdtIFjNjOU1cpfH
-	cMH1JT/HkUMsIuTPz7wiotOnNTp/HRijaKP76bjq+VF5IkMhbTXQjQdMhxkWyrA0XkXAaU5q+YelF
-	nLLiZLyJhI8OSlJs1nXjPTYDlgwjsX8FDbua+Ihab/N5DveW9VaejS76ixTyUq74Zu7mkqp4h0cJL
-	dLejmZWVCpg3VfXk70vgxBIe5DCJngl8Zocex8XW7Ggvil/eAXHDIOyuuRxTALa8UxFQYqg4C+iZ1
-	kvgvmezA==;
+	bh=1+SBUKHMrFg1YGbmYTT9cUX1hpm9VWlsKUFKZcWksQg=; b=db9giVbrw96FhmawbfzWHhPAlt
+	P0pHlMAOOGoNS5j1xPjfyc3BuLXSgB5rQdYjKA/OPrSbocA+zXcNH5BY9d+L2koiYblFwstNIh5Pn
+	JD/Q+sANC5MyXX43OQEohkF16848npH3FkZNAj9o5RX4ZanuCDHmsYeHtkqFbl5Rrr0aTriVoIvb1
+	avo50Uf9p7HHirUvhtAi3cLhi8BfT+7nf4VSlYVD1KB3hA0KGjjepoqNsacrMGQLdyU+rlBmPNhoL
+	7/BZ4bqGlc6CiA51VpH6M5opCUUN+QGzaRU2ngsIDl14BZCOs7QbC4U1eynNETat/0JPJ8qYPt84n
+	M6qVXxTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulWyb-00000008iwN-3YAR;
-	Mon, 11 Aug 2025 18:10:29 +0000
+	id 1ulWyd-00000008iyg-0wwZ;
+	Mon, 11 Aug 2025 18:10:31 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulUIl-00000008BFu-3cEf;
-	Mon, 11 Aug 2025 15:19:07 +0000
+	id 1ulUIn-00000008BFu-0fZH;
+	Mon, 11 Aug 2025 15:19:09 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E950D669C9;
+	by tor.source.kernel.org (Postfix) with ESMTP id E9AE0669CC;
 	Mon, 11 Aug 2025 15:18:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 234EEC2BCB6;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 0B3B6C567F8;
 	Mon, 11 Aug 2025 15:18:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1754925516;
-	bh=I06g9EZ+WeE9wpMdXbgUNj6cuTI+vnV/N4MiCLjBRto=;
+	bh=0qRwAyI6BBJq6rdVO6xTsGUiWxnfqdNJv4I89uhp6PE=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=muXlH9I12xudI1gel43aCQiNXldBaYO92+fpo+deer1eYA+4PlBbVjrbo2tjk3OR/
-	 32k3HwoanF4BrW2/Jgdx+E/GCQifGj83wRm3+dlt0O08zO0kU3osha3vowrnGesSXa
-	 KH+fcCiZKrtwotho5j7Dz+jZmbhMOsNygrJXw2xpjwBefljTfL0goVnOeJN1H+yVtw
-	 atj9gVbqosDL5GEq5X0jviMCtdNJIYEKQ1jH203gIl7+COrVZKwwATn4A7P6VSiaoT
-	 Ak+n9Uvtgs/kfxSukJYgfEUZIVtnjb5XPhoxXywbPNwd5vxyIVFKmfr87UeGhayu50
-	 49Oc0JXirtPvg==
+	b=EJNYcMcJgJfGLB8KQajBCkdDDpfXj6eEvnoAC3mmXdDy7uvjtQ0PpxeiRqPo76Mpz
+	 9hIUjdGEy7I5FBtvfbcTZ/eRB7dC2wRUUakyIjCo2SBivN43Xf8YreKlVQ6FCPcfdi
+	 BCTUAsi65yWu2Mj0sDHvkWIVkz8brD42mJX8cSvhaHKT4S9awrahjNrEOMQb4yFB96
+	 lY4SH+vy5FSBSpziPKm0MRedYqzlIfrOQkjDLbSyi9lxnzHdDrkjRW5qTrG6Xmo3Vr
+	 Jy9vgMAkB4HKTZsyag4ZpSdmkQX9gMZ1ZKsfuZj2u79ZqkzQ6EN32Qe7oZTmJoOsi9
+	 UgN+Tc14LdQQg==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 03D5ACA0ED3;
-	Mon, 11 Aug 2025 15:18:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E1B5ACA0EDA;
+	Mon, 11 Aug 2025 15:18:35 +0000 (UTC)
 From: Brian Masney via B4 Relay <devnull+bmasney.redhat.com@kernel.org>
-Date: Mon, 11 Aug 2025 11:19:40 -0400
-Subject: [PATCH 108/114] clk: versatile: icst: convert from round_rate() to
+Date: Mon, 11 Aug 2025 11:19:39 -0400
+Subject: [PATCH 107/114] clk: versaclock7: convert from round_rate() to
  determine_rate()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250811-clk-for-stephen-round-rate-v1-108-b3bf97b038dc@redhat.com>
+Message-Id: <20250811-clk-for-stephen-round-rate-v1-107-b3bf97b038dc@redhat.com>
 References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 To: Michael Turquette <mturquette@baylibre.com>, 
@@ -117,11 +117,11 @@ Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev, 
  Brian Masney <bmasney@redhat.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925498; l=3737;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925498; l=3930;
  i=bmasney@redhat.com; s=20250528; h=from:subject:message-id;
- bh=s6RrIFratukpDYKqOi9KzbyMVPMeFX+Sv4XuD3QoLpU=;
- b=u+oEBWc/MchojuVxUSN0tz+lCPTO3tXOYo+ZzRrOF/c29BFEP2K2uZuXAcj8p7GUxOUfw7pDI
- LHL7LIH8TfNAi3s/C2jJXayNi/tsw7YnWMh8Xvmo0uF0O2HJvTdYhBb
+ bh=pV0hzX5meej1V9jCXC+yNB+MJ8wG4M3giNUgVcvRU6k=;
+ b=Wdn2Qf11E4dJPJknD+q7/QSac+tyKquY4ucfn3WYnbfrHqheDIUvUlz/ppyf2ZscSer1ShS6t
+ 4+ibqLTJPFrBF9rvjpWKjY/ljTSBF/A9Puce8k+rLTXd4V9Vvqnqy0A
 X-Developer-Key: i=bmasney@redhat.com; a=ed25519;
  pk=x20f2BQYftANnik+wvlm4HqLqAlNs/npfVcbhHPOK2U=
 X-Endpoint-Received: by B4 Relay for bmasney@redhat.com/20250528 with
@@ -150,119 +150,93 @@ on the cover letter of this series.
 
 Signed-off-by: Brian Masney <bmasney@redhat.com>
 ---
- drivers/clk/versatile/clk-icst.c | 72 +++++++++++++++++++++++++---------------
- 1 file changed, 45 insertions(+), 27 deletions(-)
+ drivers/clk/clk-versaclock7.c | 30 ++++++++++++++++++------------
+ 1 file changed, 18 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/clk/versatile/clk-icst.c b/drivers/clk/versatile/clk-icst.c
-index b69c3fbdfbce66876d5b1d4faaf4050759e44561..86ca04ad9fab0334f7b051377db709338a1f7244 100644
---- a/drivers/clk/versatile/clk-icst.c
-+++ b/drivers/clk/versatile/clk-icst.c
-@@ -234,39 +234,51 @@ static unsigned long icst_recalc_rate(struct clk_hw *hw,
- 	return icst->rate;
+diff --git a/drivers/clk/clk-versaclock7.c b/drivers/clk/clk-versaclock7.c
+index 483285b30c13d90117850458998b8fd6136574b8..adcc603e32593121f7e760e62e77a06a976672e7 100644
+--- a/drivers/clk/clk-versaclock7.c
++++ b/drivers/clk/clk-versaclock7.c
+@@ -900,17 +900,18 @@ static unsigned long vc7_fod_recalc_rate(struct clk_hw *hw, unsigned long parent
+ 	return fod_rate;
  }
  
--static long icst_round_rate(struct clk_hw *hw, unsigned long rate,
--			    unsigned long *prate)
-+static int icst_determine_rate(struct clk_hw *hw,
-+			       struct clk_rate_request *req)
+-static long vc7_fod_round_rate(struct clk_hw *hw, unsigned long rate, unsigned long *parent_rate)
++static int vc7_fod_determine_rate(struct clk_hw *hw,
++				  struct clk_rate_request *req)
  {
- 	struct clk_icst *icst = to_icst(hw);
- 	struct icst_vco vco;
+ 	struct vc7_fod_data *fod = container_of(hw, struct vc7_fod_data, hw);
+ 	unsigned long fod_rate;
  
- 	if (icst->ctype == ICST_INTEGRATOR_AP_CM ||
- 	    icst->ctype == ICST_INTEGRATOR_CP_CM_CORE) {
--		if (rate <= 12000000)
--			return 12000000;
--		if (rate >= 160000000)
--			return 160000000;
--		/* Slam to closest megahertz */
--		return DIV_ROUND_CLOSEST(rate, 1000000) * 1000000;
-+		if (req->rate <= 12000000)
-+			req->rate = 12000000;
-+		else if (req->rate >= 160000000)
-+			req->rate = 160000000;
-+		else {
-+			/* Slam to closest megahertz */
-+			req->rate = DIV_ROUND_CLOSEST(req->rate, 1000000) * 1000000;
-+		}
-+
-+		return 0;
- 	}
+ 	pr_debug("%s - %s: requested rate: %lu, parent_rate: %lu\n",
+-		 __func__, clk_hw_get_name(hw), rate, *parent_rate);
++		 __func__, clk_hw_get_name(hw), req->rate, req->best_parent_rate);
  
- 	if (icst->ctype == ICST_INTEGRATOR_CP_CM_MEM) {
--		if (rate <= 6000000)
--			return 6000000;
--		if (rate >= 66000000)
--			return 66000000;
--		/* Slam to closest 0.5 megahertz */
--		return DIV_ROUND_CLOSEST(rate, 500000) * 500000;
-+		if (req->rate <= 6000000)
-+			req->rate = 6000000;
-+		else if (req->rate >= 66000000)
-+			req->rate = 66000000;
-+		else {
-+			/* Slam to closest 0.5 megahertz */
-+			req->rate = DIV_ROUND_CLOSEST(req->rate, 500000) * 500000;
-+		}
-+
-+		return 0;
- 	}
+-	vc7_calc_fod_divider(rate, *parent_rate,
++	vc7_calc_fod_divider(req->rate, req->best_parent_rate,
+ 			     &fod->fod_1st_int, &fod->fod_2nd_int, &fod->fod_frac);
+-	fod_rate = vc7_calc_fod_2nd_stage_rate(*parent_rate, fod->fod_1st_int,
++	fod_rate = vc7_calc_fod_2nd_stage_rate(req->best_parent_rate, fod->fod_1st_int,
+ 					       fod->fod_2nd_int, fod->fod_frac);
  
- 	if (icst->ctype == ICST_INTEGRATOR_AP_SYS) {
- 		/* Divides between 3 and 50 MHz in steps of 0.25 MHz */
--		if (rate <= 3000000)
--			return 3000000;
--		if (rate >= 50000000)
--			return 5000000;
--		/* Slam to closest 0.25 MHz */
--		return DIV_ROUND_CLOSEST(rate, 250000) * 250000;
-+		if (req->rate <= 3000000)
-+			req->rate = 3000000;
-+		else if (req->rate >= 50000000)
-+			req->rate = 5000000;
-+		else {
-+			/* Slam to closest 0.25 MHz */
-+			req->rate = DIV_ROUND_CLOSEST(req->rate, 250000) * 250000;
-+		}
-+
-+		return 0;
- 	}
+ 	pr_debug("%s - %s: fod_1st_int: %u, fod_2nd_int: %u, fod_frac: %llu\n",
+@@ -918,7 +919,9 @@ static long vc7_fod_round_rate(struct clk_hw *hw, unsigned long rate, unsigned l
+ 		 fod->fod_1st_int, fod->fod_2nd_int, fod->fod_frac);
+ 	pr_debug("%s - %s rate: %lu\n", __func__, clk_hw_get_name(hw), fod_rate);
  
- 	if (icst->ctype == ICST_INTEGRATOR_AP_PCI) {
-@@ -274,14 +286,20 @@ static long icst_round_rate(struct clk_hw *hw, unsigned long rate,
- 		 * If we're below or less than halfway from 25 to 33 MHz
- 		 * select 25 MHz
- 		 */
--		if (rate <= 25000000 || rate < 29000000)
--			return 25000000;
--		/* Else just return the default frequency */
--		return 33000000;
-+		if (req->rate <= 25000000 || req->rate < 29000000)
-+			req->rate = 25000000;
-+		else {
-+			/* Else just return the default frequency */
-+			req->rate = 33000000;
-+		}
-+
-+		return 0;
- 	}
- 
--	vco = icst_hz_to_vco(icst->params, rate);
--	return icst_hz(icst->params, vco);
-+	vco = icst_hz_to_vco(icst->params, req->rate);
-+	req->rate = icst_hz(icst->params, vco);
+-	return fod_rate;
++	req->rate = fod_rate;
 +
 +	return 0;
  }
  
- static int icst_set_rate(struct clk_hw *hw, unsigned long rate,
-@@ -329,7 +347,7 @@ static int icst_set_rate(struct clk_hw *hw, unsigned long rate,
+ static int vc7_fod_set_rate(struct clk_hw *hw, unsigned long rate, unsigned long parent_rate)
+@@ -952,7 +955,7 @@ static int vc7_fod_set_rate(struct clk_hw *hw, unsigned long rate, unsigned long
  
- static const struct clk_ops icst_ops = {
- 	.recalc_rate = icst_recalc_rate,
--	.round_rate = icst_round_rate,
-+	.determine_rate = icst_determine_rate,
- 	.set_rate = icst_set_rate,
+ static const struct clk_ops vc7_fod_ops = {
+ 	.recalc_rate = vc7_fod_recalc_rate,
+-	.round_rate = vc7_fod_round_rate,
++	.determine_rate = vc7_fod_determine_rate,
+ 	.set_rate = vc7_fod_set_rate,
+ };
+ 
+@@ -978,21 +981,24 @@ static unsigned long vc7_iod_recalc_rate(struct clk_hw *hw, unsigned long parent
+ 	return iod_rate;
+ }
+ 
+-static long vc7_iod_round_rate(struct clk_hw *hw, unsigned long rate, unsigned long *parent_rate)
++static int vc7_iod_determine_rate(struct clk_hw *hw,
++				  struct clk_rate_request *req)
+ {
+ 	struct vc7_iod_data *iod = container_of(hw, struct vc7_iod_data, hw);
+ 	unsigned long iod_rate;
+ 
+ 	pr_debug("%s - %s: requested rate: %lu, parent_rate: %lu\n",
+-		 __func__, clk_hw_get_name(hw), rate, *parent_rate);
++		 __func__, clk_hw_get_name(hw), req->rate, req->best_parent_rate);
+ 
+-	vc7_calc_iod_divider(rate, *parent_rate, &iod->iod_int);
+-	iod_rate = div64_u64(*parent_rate, iod->iod_int);
++	vc7_calc_iod_divider(req->rate, req->best_parent_rate, &iod->iod_int);
++	iod_rate = div64_u64(req->best_parent_rate, iod->iod_int);
+ 
+ 	pr_debug("%s - %s: iod_int: %u\n", __func__, clk_hw_get_name(hw), iod->iod_int);
+ 	pr_debug("%s - %s rate: %ld\n", __func__, clk_hw_get_name(hw), iod_rate);
+ 
+-	return iod_rate;
++	req->rate = iod_rate;
++
++	return 0;
+ }
+ 
+ static int vc7_iod_set_rate(struct clk_hw *hw, unsigned long rate, unsigned long parent_rate)
+@@ -1023,7 +1029,7 @@ static int vc7_iod_set_rate(struct clk_hw *hw, unsigned long rate, unsigned long
+ 
+ static const struct clk_ops vc7_iod_ops = {
+ 	.recalc_rate = vc7_iod_recalc_rate,
+-	.round_rate = vc7_iod_round_rate,
++	.determine_rate = vc7_iod_determine_rate,
+ 	.set_rate = vc7_iod_set_rate,
  };
  
 
