@@ -4,68 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C7D6C87FDB
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F1BDC88CB9
 	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Aug 2025 13:20:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YmlXeyOWfKWSje0Td8DQAPRRqN2xhLGJ9irnz2oty0I=; b=kcCjwaIYyqkpu7UJsvEkIh2Xwb
-	lfs9KvLH0U3PMWjrdTHpvTc4Q3SGduV/liBPud9NyNJ/EywM8bIKKisSJUbYCnWxWrP8tBO96EAOf
-	3iWN8HtXKTtNQXI8blHoIRzmMB5WqwOCs/RgZEu7d/38Ufz2p/MjPGAYV4dppe2ZJqf0Yb7rr2AeM
-	gON0PNjottctfWIM0Us1AJRLibn8SJAxJTJH5T6OE4EfrNyxUWhG/V/p6/MQBPyD/4wL+IBCCMscX
-	C9VPeTvp2ykVl1KaeR4dNT/Xf6pHglAlcierE3Ii2Q2stK+LpWO1ZlF+2danoOFPtVT2m2E1Rhf5G
-	3xY3pJ2A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=zE7VaC4MONDwK4PE8r0v7fr0w4FR+FHjUHLbyoOF2zs=; b=L0aCaheea5lnmxiC6aYqDkB+n6
+	j69PVP/QsaFMVxfkTm/8csdkZcje14p9JfPIJ4NAU1HIUhiz+wM2e790sQdRN0W+g06cl0LjVXt3w
+	Rm+3aA9XvrtA/Tv43BhFnkTzgtm1e7Ymm7hFaanx845rlGEMxH5SHCPkMDvyrjL5klfppKXGZhZuN
+	FZqdQ/Dhx39XvrjvruBKWpHrdHu54SIC3t2sMJSYSiuNTczG7i4FUeDqGaXwIKV3CAHSwASda5lCm
+	/KubUq6d8A+WLfJYXBbR9faBFsI5X0b09c4Ear6MHfpG/7oQqnY5/o1H2ah6OR486ui9VYA5VkTBV
+	2GgGgFuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulSS3-00000007nRM-27yy;
-	Mon, 11 Aug 2025 13:20:35 +0000
-Received: from relay1-d.mail.gandi.net ([2001:4b98:dc4:8::221])
+	id 1ulSS4-00000007nRg-1Fd6;
+	Mon, 11 Aug 2025 13:20:36 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulSH2-00000007lgU-38Yr;
-	Mon, 11 Aug 2025 13:09:14 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 2794F43A15;
-	Mon, 11 Aug 2025 13:09:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1754917748;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=YmlXeyOWfKWSje0Td8DQAPRRqN2xhLGJ9irnz2oty0I=;
-	b=ha0LJNSfZWuWdNA1z8Nq7Dwl77fZGwmujhb/DcMHJwWCo3WCIJaGWAxDRqO5yx1aLxoil9
-	1cuXIqiQoX1OyrfXP6qoEZGBUJD+AbHGw4InLLM1xBhXR7vHmsp52RAlQ/rXZXuR1tJAs7
-	o1HpE/yrhIilPMyWiZspJdXNLBSNmgCIUlPmhUUxcRvf/dWIHUiBj0R9RiuNdGB5Di0F4f
-	pTa6F9GO9EyjF21LkSW9M1D240Bc17zC04BCgkOpOInAyex7XG+vz1vr97UHEguyPsyniE
-	inU3b1EsUc1zTTWao0P6slM1nVa+TyfE0vmJpPT9fc7v2SZUcJcx/u32neKPWw==
-Date: Mon, 11 Aug 2025 15:09:07 +0200
-From: Alexandre Belloni <alexandre.belloni@bootlin.com>
-To: ot_shunxi.zhang@mediatek.com
-Cc: Eddie Huang <eddie.huang@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Lee Jones <lee@kernel.org>, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-rtc@vger.kernel.org,
-	linux-kernel@vger.kernel.org, sirius.wang@mediatek.com,
-	vince-wl.liu@mediatek.com, jh.hsu@mediatek.com
-Subject: Re: [PATCH v1 2/2] rtc: mt6397: Add BBPU alarm status reset and
- shutdown handling
-Message-ID: <2025081113090716407d59@mail.local>
-References: <20250811081543.4377-1-ot_shunxi.zhang@mediatek.com>
- <20250811081543.4377-3-ot_shunxi.zhang@mediatek.com>
+	id 1ulSMC-00000007mik-1Cf4
+	for linux-mediatek@lists.infradead.org;
+	Mon, 11 Aug 2025 13:14:33 +0000
+X-UUID: 1b7a80a876b511f09f706fa2197c6ceb-20250811
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=zE7VaC4MONDwK4PE8r0v7fr0w4FR+FHjUHLbyoOF2zs=;
+	b=d8WGCaNdZGKemkIrv6UWaJNogDLixsyW5SdiS5uRWCoH74PUhHpLd6WwUcFh8/PGrpGDpcW05z2m/dkMXleLXQzw4MFdfr0oWLeAX5tWDn6vu9QAxHjPbUWWWmq0oZquflX7opbhdIhlRVNSa1t0S7Kcp78AjwDhTOeQxjNjLJU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.3,REQID:4de026bf-4a5a-42d5-94d8-cd7dbe43d08e,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:f1326cf,CLOUDID:69db4fa1-1800-4e4f-b665-a3d622db32cf,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:-5,Content:0|15|50,EDM:-3,IP:
+	nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,L
+	ES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 3,DMD|SSN|SDN
+X-CID-BAS: 3,DMD|SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 1b7a80a876b511f09f706fa2197c6ceb-20250811
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 45114408; Mon, 11 Aug 2025 06:14:27 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Mon, 11 Aug 2025 21:14:24 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Mon, 11 Aug 2025 21:14:24 +0800
+From: <peter.wang@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>
+CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
+	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
+	<yi-fan.peng@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
+	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
+	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>, <bvanassche@acm.org>
+Subject: [PATCH v1 00/10] ufs: host: mediatek: Provide features and fixes in MediaTek platforms
+Date: Mon, 11 Aug 2025 21:11:16 +0800
+Message-ID: <20250811131423.3444014-1-peter.wang@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250811081543.4377-3-ot_shunxi.zhang@mediatek.com>
-X-GND-State: clean
-X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdefgddufedvheegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvvefukfhfgggtuggjsehttdertddttddvnecuhfhrohhmpeetlhgvgigrnhgurhgvuceuvghllhhonhhiuceorghlvgigrghnughrvgdrsggvlhhlohhnihessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnhepgeeiudeuteehhfekgeejveefhfeiudejuefhgfeljefgjeegkeeujeeugfehgefgnecuffhomhgrihhnpegsohhothhlihhnrdgtohhmnecukfhppedvrgdtudemvgdtrgemvdgumeeifeejtdemudgvfeefmehfledvleemhegvsgekmeduudegfeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpedvrgdtudemvgdtrgemvdgumeeifeejtdemudgvfeefmehfledvleemhegvsgekmeduudegfedphhgvlhhopehlohgtrghlhhhoshhtpdhmrghilhhfrhhomheprghlvgigrghnughrvgdrsggvlhhlohhnihessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepuddvpdhrtghpthhtohepohhtpghshhhunhigihdriihhrghnghesmhgvughirghtvghkrdgtohhmpdhrtghpthhtohepvgguughivgdrhhhurghnghesmhgvughirghtvghkrdgtohhmpdhrtghpt
- hhtohepshgvrghnrdifrghnghesmhgvughirghtvghkrdgtohhmpdhrtghpthhtohepmhgrthhthhhirghsrdgsghhgsehgmhgrihhlrdgtohhmpdhrtghpthhtoheplhgvvgeskhgvrhhnvghlrdhorhhgpdhrtghpthhtoheplhhinhhugidqrghrmhdqkhgvrhhnvghlsehlihhsthhsrdhinhhfrhgruggvrggurdhorhhgpdhrtghpthhtoheplhhinhhugidqmhgvughirghtvghksehlihhsthhsrdhinhhfrhgruggvrggurdhorhhgpdhrtghpthhtoheplhhinhhugidqrhhttgesvhhgvghrrdhkvghrnhgvlhdrohhrgh
-X-GND-Sasl: alexandre.belloni@bootlin.com
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250811_060913_429146_4AD12C75 
-X-CRM114-Status: GOOD (  27.85  )
+X-CRM114-CacheID: sfid-20250811_061432_331058_EDC2C5B2 
+X-CRM114-Status: UNSURE (   6.02  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,102 +90,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/08/2025 16:15:34+0800, ot_shunxi.zhang@mediatek.com wrote:
-> From: Shunxi Zhang <ot_shunxi.zhang@mediatek.com>
-> 
-> This patch introduces a new function, mtk_rtc_reset_bbpu_alarm_status,
-> to reset the BBPU alarm status in the MT6397 RTC driver. This function
-> writes the necessary bits to the RTC_BBPU register to clear the alarm
-> status and ensure proper operation.
-> 
-> Additionally, the mtk_rtc_shutdown function is added to handle RTC
-> shutdown events. It resets the BBPU alarm status and updates the
-> RTC_IRQ_EN register to disable the one-shot alarm interrupt,
-> ensuring a clean shutdown process.
-> 
-> Signed-off-by: Shunxi Zhang <ot_shunxi.zhang@mediatek.com>
-> ---
->  drivers/rtc/rtc-mt6397.c | 36 +++++++++++++++++++++++++++++++++++-
->  1 file changed, 35 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
-> index 692c00ff544b..063bd399de8c 100644
-> --- a/drivers/rtc/rtc-mt6397.c
-> +++ b/drivers/rtc/rtc-mt6397.c
-> @@ -37,6 +37,21 @@ static int mtk_rtc_write_trigger(struct mt6397_rtc *rtc)
->  	return ret;
->  }
->  
-> +static void mtk_rtc_reset_bbpu_alarm_status(struct mt6397_rtc *rtc)
-> +{
-> +	u32 bbpu = RTC_BBPU_KEY | RTC_BBPU_PWREN | RTC_BBPU_RESET_AL;
-> +	int ret;
-> +
-> +	ret = regmap_write(rtc->regmap, rtc->addr_base + RTC_BBPU, bbpu);
-> +	if (ret < 0) {
-> +		dev_err(rtc->rtc_dev->dev.parent, "%s: write rtc bbpu error\n",
-> +			__func__);
-> +		return;
-> +	}
-> +
-> +	mtk_rtc_write_trigger(rtc);
-> +}
-> +
->  static irqreturn_t mtk_rtc_irq_handler_thread(int irq, void *data)
->  {
->  	struct mt6397_rtc *rtc = data;
-> @@ -51,6 +66,8 @@ static irqreturn_t mtk_rtc_irq_handler_thread(int irq, void *data)
->  		if (regmap_write(rtc->regmap, rtc->addr_base + RTC_IRQ_EN,
->  				 irqen) == 0)
->  			mtk_rtc_write_trigger(rtc);
-> +
-> +		mtk_rtc_reset_bbpu_alarm_status(rtc);
->  		mutex_unlock(&rtc->lock);
->  
->  		return IRQ_HANDLED;
-> @@ -297,6 +314,22 @@ static int mtk_rtc_probe(struct platform_device *pdev)
->  	return devm_rtc_register_device(rtc->rtc_dev);
->  }
->  
-> +static void mtk_rtc_shutdown(struct platform_device *pdev)
-> +{
-> +	struct mt6397_rtc *rtc = platform_get_drvdata(pdev);
-> +	int ret = 0;
-> +
-> +	mtk_rtc_reset_bbpu_alarm_status(rtc);
-> +
-> +	ret = regmap_update_bits(rtc->regmap,
-> +				 rtc->addr_base + RTC_IRQ_EN,
-> +				 RTC_IRQ_EN_ONESHOT_AL, 0);
-> +	if (ret < 0)
-> +		return;
-> +
-> +	mtk_rtc_write_trigger(rtc);
+From: Peter Wang <peter.wang@mediatek.com>
 
-The whole goal of the RTC is to wakeup the system, why would you disable
-the alarm on shutdown?
+This series fixes some defects and provide features in MediaTek UFS drivers.
 
-> +}
-> +
->  #ifdef CONFIG_PM_SLEEP
->  static int mt6397_rtc_suspend(struct device *dev)
->  {
-> @@ -345,7 +378,8 @@ static struct platform_driver mtk_rtc_driver = {
->  		.of_match_table = mt6397_rtc_of_match,
->  		.pm = &mt6397_pm_ops,
->  	},
-> -	.probe	= mtk_rtc_probe,
-> +	.probe = mtk_rtc_probe,
-> +	.shutdown = mtk_rtc_shutdown,
->  };
->  
->  module_platform_driver(mtk_rtc_driver);
-> -- 
-> 2.46.0
-> 
+Peter Wang (8):
+  ufs: host: mediatek: Simplify variable usage
+  ufs: host: mediatek: Fix auto-hibern8 timer configuration
+  ufs: host: mediatek: Add debug information for Auto-Hibern8
+  ufs: host: mediatek: Fine-tune clock scaling
+  ufs: host: mediatek: Fix PWM mode switch issue
+  ufs: host: mediatek: Optimize power mode change handling
+  ufs: host: mediatek: Fix UniPro setting for MT6989
+  ufs: host: mediatek: Change reset sequence for improved stability
+
+Alice Chao (2):
+  ufs: host: mediatek: Assign power mode userdata before FASTAUTO mode
+    change
+  ufs: host: mediatek: Fix invalid access in vccqx handling
+
+ drivers/ufs/host/ufs-mediatek.c | 185 +++++++++++++++++++++++++++-----
+ 1 file changed, 156 insertions(+), 29 deletions(-)
 
 -- 
-Alexandre Belloni, co-owner and COO, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+2.45.2
+
 
