@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2209BCA0ED1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Aug 2025 22:04:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AC89CA0EC4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Aug 2025 22:04:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-Type
 	:Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
 	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Rt9Yy6R8MPl+O9p7xSfuOwLgdGUHQrVEfhCC9Y5SaqU=; b=FZoles7njIEtrQ4fjb1jTr0q1R
-	ZRLenxAPste1+jpToX6JamIYFyWdVhEdcDU7xvNn04xyvXgRQL1YHmDAOOA7etNHjM2EbRsaB2Q2M
-	Oe/Eazy8rRuxL1THT5+GNdWW89ehCBGK4XiCMAZIlVhlGnqJc3gMtLbY2UUDS+VPsfVBBHrFoXeV6
-	7Y5aqEvm4Bix2G0czCZ+SVO/hmMMab/yVawCMPDdreg2L6nrQIqqyPIi2lZnisiXMSR8iOwt0CRkr
-	bYTpHtrMHW81aFFpZpz3+lPIuGMamQl00GgYD3YavJ4s30H572AA/vBFi084Ec2/I9wFnEmgFF0/w
-	aa4gCm1w==;
+	bh=kgCvgUS1eQnSBH48NMi+KNzNK1rq2y+DzfaY3NytqvA=; b=Jxtjym2HdfeNhme4kQLBaD8yn1
+	npYcc8AuF8MAve0yRhun9PPoQsMFfNLTIwgDwACsV0ik+zXtjwNhSidNt76nvzQh3l/udFNElMJ9G
+	9I7vb0BFgNjUiVROC7tuCxYC+tPGq8Ti18DJKKLLp6xMmI6emZQ61nYjGXiP0oW43E9gSYLIGPvo3
+	sXBghiYcABuv3VedS+Wa2srsetz/Y6k36ahhvrCLSHeAeAvPICZSFqlm3JKhGvpiKCTTmV8I5n6Gu
+	9a1oRYTXwnn/wBXtQuEfAJMojErpuOAuVPEUPLv9Pweeny0r7phNZvCBqWYM2feG8QzWFNppfxqLH
+	m/OSwWcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulacq-00000009CtW-12n9;
-	Mon, 11 Aug 2025 22:04:16 +0000
+	id 1ulacs-00000009CxV-29xS;
+	Mon, 11 Aug 2025 22:04:18 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulXcY-00000008qE1-1x9K;
-	Mon, 11 Aug 2025 18:51:47 +0000
+	id 1ulXcv-00000008qIF-1NCG;
+	Mon, 11 Aug 2025 18:52:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
 	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
 	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=Rt9Yy6R8MPl+O9p7xSfuOwLgdGUHQrVEfhCC9Y5SaqU=; b=ZclpzZR87eO8oSI9PCC/xzcO/Q
-	4Wf4j71P2pGrb3AqlwoVYrLeUZF6RxH9FMHgdP9oBNpEE3RnXRcYJbZdGtU8oDa1DaPEJ8g3AEDD7
-	wyLBrSrm7/jDAzsVfq/7+Gzna6Dk77yKNATBgAOll6rV6EMut8mNIs3Vx81Mq0mREkyvZ+if+OLCQ
-	odb5RxfcoqBEYqO2ifMCij0CE+U1nPDARLXmZeF4deWupqUtfM1DPMxspMPOgWrynrTcUNS8D3Fih
-	QgmjlcDCDANkNfU34NwT+CUBm3qftjxQyCshORNGBwnoLgnDXvljXvycBilOhbs+SH6AXQwnBC+1N
-	1+8dFugA==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:41012 helo=rmk-PC.armlinux.org.uk)
+	bh=kgCvgUS1eQnSBH48NMi+KNzNK1rq2y+DzfaY3NytqvA=; b=Cz8BBGgHAJHQ/tYQmz6RFf6SeJ
+	eqNth5e0ze9DbEqG/ItbXMvwknOe49tawRBHWLORiEc0j0TMChfBwvOr6JFx3zv1SwAx6nB3baoZh
+	495v7ulilMG6BfB8ntswfdT/4Qb8M6n9B1brUl4VbjbcdXeVqEMQG1X7/gAJBv0fXABD7+Vdb8n5y
+	b6Uvy08vgvi0/iH53B6kW71ARvwIxEwgFj7D/ryWTf6QB8aYjU6J4MI99IBGt+HcAMoBhqT0W+tG1
+	h2heG9sNlndj78WkQh+b9z+j3wM+6W0OZQpJ/42qENdebcmUUo/D/uK+TpYtHirSv0aVP06CT26F4
+	yC+AtWMg==;
+Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:38358 helo=rmk-PC.armlinux.org.uk)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.96)
 	(envelope-from <rmk@armlinux.org.uk>)
-	id 1ulXcQ-0003au-1g;
-	Mon, 11 Aug 2025 19:51:38 +0100
+	id 1ulXcl-0003c3-0l;
+	Mon, 11 Aug 2025 19:51:59 +0100
 Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
 	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1ulXbh-008gql-LO; Mon, 11 Aug 2025 19:50:53 +0100
+	id 1ulXc2-008grB-9k; Mon, 11 Aug 2025 19:51:14 +0100
 In-Reply-To: <aJo7kvoub5voHOUQ@shell.armlinux.org.uk>
 References: <aJo7kvoub5voHOUQ@shell.armlinux.org.uk>
 From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
@@ -65,17 +65,17 @@ Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
 	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
 	netdev@vger.kernel.org,
 	Paolo Abeni <pabeni@redhat.com>
-Subject: [PATCH net-next 3/9] net: stmmac: platform: legacy hooks for
- suspend()/resume() methods
+Subject: [PATCH net-next 7/9] net: stmmac: rk: convert to suspend()/resume()
+ methods
 MIME-Version: 1.0
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="utf-8"
-Message-Id: <E1ulXbh-008gql-LO@rmk-PC.armlinux.org.uk>
-Date: Mon, 11 Aug 2025 19:50:53 +0100
+Message-Id: <E1ulXc2-008grB-9k@rmk-PC.armlinux.org.uk>
+Date: Mon, 11 Aug 2025 19:51:14 +0100
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250811_115146_504441_3E0E4896 
-X-CRM114-Status: GOOD (  15.71  )
+X-CRM114-CacheID: sfid-20250811_115209_369298_F5220693 
+X-CRM114-Status: GOOD (  18.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,115 +90,117 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add legacy hooks for the suspend() and resume() methods to forward
-these calls to the init() and exit() methods when the platform code
-hasn't populated the two former methods. This allows us to get rid
-of stmmac_pltfr_suspend() and stmmac_pltfr_resume().
+Convert rk to use the new suspend() and resume() methods rather than
+implementing these in custom wrappers around the main driver's
+suspend/resume methods. This allows this driver to use the simmac
+simple PM ops structure.
+
+We can further simplify the driver as there is no need to track whether
+the device was suspended, we only need to check whether the device is
+wakeup capable in the resume method. This is because the resume method
+will only be called after the suspend method.
 
 Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 ---
- .../ethernet/stmicro/stmmac/stmmac_platform.c | 68 ++++++-------------
- 1 file changed, 22 insertions(+), 46 deletions(-)
+ .../net/ethernet/stmicro/stmmac/dwmac-rk.c    | 58 ++++++++-----------
+ 1 file changed, 25 insertions(+), 33 deletions(-)
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_platform.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_platform.c
-index 21df052eeed0..c849676d98e8 100644
---- a/drivers/net/ethernet/stmicro/stmmac/stmmac_platform.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_platform.c
-@@ -811,6 +811,22 @@ static void stmmac_pltfr_exit(struct platform_device *pdev,
- 		plat->exit(pdev, plat->bsp_priv);
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+index 79b92130a03f..ac8288301994 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+@@ -71,7 +71,6 @@ struct rk_priv_data {
+ 	phy_interface_t phy_iface;
+ 	int id;
+ 	struct regulator *regulator;
+-	bool suspended;
+ 	const struct rk_gmac_ops *ops;
+ 
+ 	bool clk_enabled;
+@@ -1706,6 +1705,28 @@ static int rk_set_clk_tx_rate(void *bsp_priv_, struct clk *clk_tx_i,
+ 	return -EINVAL;
  }
  
-+static int stmmac_plat_suspend(struct device *dev, void *bsp_priv)
++static int rk_gmac_suspend(struct device *dev, void *bsp_priv_)
 +{
-+	struct stmmac_priv *priv = netdev_priv(dev_get_drvdata(dev));
++	struct rk_priv_data *bsp_priv = bsp_priv_;
 +
-+	stmmac_pltfr_exit(to_platform_device(dev), priv->plat);
++	/* Keep the PHY up if we use Wake-on-Lan. */
++	if (!device_may_wakeup(dev))
++		rk_gmac_powerdown(bsp_priv);
 +
 +	return 0;
 +}
 +
-+static int stmmac_plat_resume(struct device *dev, void *bsp_priv)
++static int rk_gmac_resume(struct device *dev, void *bsp_priv_)
 +{
-+	struct stmmac_priv *priv = netdev_priv(dev_get_drvdata(dev));
++	struct rk_priv_data *bsp_priv = bsp_priv_;
 +
-+	return stmmac_pltfr_init(to_platform_device(dev), priv->plat);
++	/* The PHY was up for Wake-on-Lan. */
++	if (!device_may_wakeup(dev))
++		rk_gmac_powerup(bsp_priv);
++
++	return 0;
 +}
 +
- /**
-  * stmmac_pltfr_probe
-  * @pdev: platform device pointer
-@@ -825,6 +841,11 @@ int stmmac_pltfr_probe(struct platform_device *pdev,
+ static int rk_gmac_probe(struct platform_device *pdev)
  {
- 	int ret;
+ 	struct plat_stmmacenet_data *plat_dat;
+@@ -1738,6 +1759,8 @@ static int rk_gmac_probe(struct platform_device *pdev)
  
-+	if (!plat->suspend && plat->exit)
-+		plat->suspend = stmmac_plat_suspend;
-+	if (!plat->resume && plat->init)
-+		plat->resume = stmmac_plat_resume;
-+
- 	ret = stmmac_pltfr_init(pdev, plat);
- 	if (ret)
- 		return ret;
-@@ -886,51 +907,6 @@ void stmmac_pltfr_remove(struct platform_device *pdev)
+ 	plat_dat->get_interfaces = rk_get_interfaces;
+ 	plat_dat->set_clk_tx_rate = rk_set_clk_tx_rate;
++	plat_dat->suspend = rk_gmac_suspend;
++	plat_dat->resume = rk_gmac_resume;
+ 
+ 	plat_dat->bsp_priv = rk_gmac_setup(pdev, plat_dat, data);
+ 	if (IS_ERR(plat_dat->bsp_priv))
+@@ -1772,37 +1795,6 @@ static void rk_gmac_remove(struct platform_device *pdev)
+ 	rk_gmac_powerdown(bsp_priv);
  }
- EXPORT_SYMBOL_GPL(stmmac_pltfr_remove);
  
--/**
-- * stmmac_pltfr_suspend
-- * @dev: device pointer
-- * Description: this function is invoked when suspend the driver and it direcly
-- * call the main suspend function and then, if required, on some platform, it
-- * can call an exit helper.
-- */
--static int __maybe_unused stmmac_pltfr_suspend(struct device *dev)
+-#ifdef CONFIG_PM_SLEEP
+-static int rk_gmac_suspend(struct device *dev)
 -{
--	int ret;
--	struct net_device *ndev = dev_get_drvdata(dev);
--	struct stmmac_priv *priv = netdev_priv(ndev);
--	struct platform_device *pdev = to_platform_device(dev);
+-	struct rk_priv_data *bsp_priv = get_stmmac_bsp_priv(dev);
+-	int ret = stmmac_suspend(dev);
 -
--	ret = stmmac_suspend(dev);
--
--	if (!priv->plat->suspend)
--		stmmac_pltfr_exit(pdev, priv->plat);
+-	/* Keep the PHY up if we use Wake-on-Lan. */
+-	if (!device_may_wakeup(dev)) {
+-		rk_gmac_powerdown(bsp_priv);
+-		bsp_priv->suspended = true;
+-	}
 -
 -	return ret;
 -}
 -
--/**
-- * stmmac_pltfr_resume
-- * @dev: device pointer
-- * Description: this function is invoked when resume the driver before calling
-- * the main resume function, on some platforms, it can call own init helper
-- * if required.
-- */
--static int __maybe_unused stmmac_pltfr_resume(struct device *dev)
+-static int rk_gmac_resume(struct device *dev)
 -{
--	struct net_device *ndev = dev_get_drvdata(dev);
--	struct stmmac_priv *priv = netdev_priv(ndev);
--	struct platform_device *pdev = to_platform_device(dev);
--	int ret;
+-	struct rk_priv_data *bsp_priv = get_stmmac_bsp_priv(dev);
 -
--	if (!priv->plat->resume) {
--		ret = stmmac_pltfr_init(pdev, priv->plat);
--		if (ret)
--			return ret;
+-	/* The PHY was up for Wake-on-Lan. */
+-	if (bsp_priv->suspended) {
+-		rk_gmac_powerup(bsp_priv);
+-		bsp_priv->suspended = false;
 -	}
 -
 -	return stmmac_resume(dev);
 -}
+-#endif /* CONFIG_PM_SLEEP */
 -
- static int __maybe_unused stmmac_runtime_suspend(struct device *dev)
- {
- 	struct net_device *ndev = dev_get_drvdata(dev);
-@@ -998,7 +974,7 @@ static int __maybe_unused stmmac_pltfr_noirq_resume(struct device *dev)
- }
- 
- const struct dev_pm_ops stmmac_pltfr_pm_ops = {
--	SET_SYSTEM_SLEEP_PM_OPS(stmmac_pltfr_suspend, stmmac_pltfr_resume)
-+	SET_SYSTEM_SLEEP_PM_OPS(stmmac_suspend, stmmac_resume)
- 	SET_RUNTIME_PM_OPS(stmmac_runtime_suspend, stmmac_runtime_resume, NULL)
- 	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(stmmac_pltfr_noirq_suspend, stmmac_pltfr_noirq_resume)
+-static SIMPLE_DEV_PM_OPS(rk_gmac_pm_ops, rk_gmac_suspend, rk_gmac_resume);
+-
+ static const struct of_device_id rk_gmac_dwmac_match[] = {
+ 	{ .compatible = "rockchip,px30-gmac",	.data = &px30_ops   },
+ 	{ .compatible = "rockchip,rk3128-gmac", .data = &rk3128_ops },
+@@ -1828,7 +1820,7 @@ static struct platform_driver rk_gmac_dwmac_driver = {
+ 	.remove = rk_gmac_remove,
+ 	.driver = {
+ 		.name           = "rk_gmac-dwmac",
+-		.pm		= &rk_gmac_pm_ops,
++		.pm		= &stmmac_simple_pm_ops,
+ 		.of_match_table = rk_gmac_dwmac_match,
+ 	},
  };
 -- 
 2.30.2
