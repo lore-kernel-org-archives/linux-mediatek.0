@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29080CA0EC4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Aug 2025 12:40:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9EF2CA0EDC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Aug 2025 14:52:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OsZfh7jnCZM1qIdbyzshEpg7lU806F0f1eIeVxq5DZ4=; b=0o0GpSM5HpN2560xvy6LU0EBhf
-	9AtONEk3/AuHzjfB6/qrCYczTavvuI0FnL+QCe5RUMWas1xM92F1Ko8kpKcSOOb4FkoWd0iT6tUqH
-	Muu6Uc5QAITf0WPXCjEDS7knN14jI1Uvm2f0Rbuf0WxzKGH4Dd1tBp2+kE59otg0L1edcZT753esm
-	sQrOlAH4xPsRKrAlU+EF2I+AI15oW8D22TnNwfJ+qsMOqEPrYiNk2dA7Y3RkXvgweRu+nBH/YVU9y
-	I683heD7XpkTeQzduOnDRsm3aTozeNpJbEsPo2LgiPnQpVTUgeS4iHPS8/uW1qx5jRUSYcQolNFCx
-	Xhnaq/3Q==;
+	bh=rOGKCteFZMAy3LeuWf1j/2F5b+EEOJ9yxzrgy674/8c=; b=Q4xK5RLo3/47ZVO2eJjSUYLC5X
+	bpMhPUejlpVsDhb5Pu72BQbzst2GmLznC2blArRzqXc+qdImjUb7c1c+NLNfaTOGOfbhCe+q+Sys5
+	w3PBnByuCh6M7sqHwmz6eV5DuM5kqsyRsBzapJs0Ibg5dTd+OSW99ni931nshugEzEZL/QnEsIk7m
+	SNwgsJsDchI7DVaSS3NdNXeXDS1cFV0t/HfxHQx2/rznYbNzU9SYx0DKz0GN7AX1sqhiGcq+d+Slh
+	YQnVfuxUXiJBH8jIQiQ1XrNUz6/Sc5clv6SrFIGTptS+fbKabeOZsk1lVVhzPAQmKKtmQKQQhbe0t
+	JnSRalTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uloIq-0000000AnKq-3AWk;
-	Tue, 12 Aug 2025 12:40:32 +0000
-Received: from mail-oi1-x22e.google.com ([2607:f8b0:4864:20::22e])
+	id 1ulqMl-0000000B6wr-2CgP;
+	Tue, 12 Aug 2025 14:52:43 +0000
+Received: from mail-ot1-x32c.google.com ([2607:f8b0:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ull8U-0000000ALzR-2OV1;
-	Tue, 12 Aug 2025 09:17:39 +0000
-Received: by mail-oi1-x22e.google.com with SMTP id 5614622812f47-433fa926c9eso3134380b6e.0;
-        Tue, 12 Aug 2025 02:17:38 -0700 (PDT)
+	id 1ull7e-0000000ALoN-3DyO;
+	Tue, 12 Aug 2025 09:16:47 +0000
+Received: by mail-ot1-x32c.google.com with SMTP id 46e09a7af769-741aeba62ccso1211560a34.0;
+        Tue, 12 Aug 2025 02:16:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1754990258; x=1755595058; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1754990205; x=1755595005; darn=lists.infradead.org;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=OsZfh7jnCZM1qIdbyzshEpg7lU806F0f1eIeVxq5DZ4=;
-        b=J/EnFQ0tAZ3Gbh75D96y9oZlKuzqhFAR3w9Oti+hzrOjCYzI9bs3t8tAWEGjc7C2CT
-         ZoNfHusOKrz2Wd4NgClseT/dH1g8di6wPoeuSKq3YGsh3JT4qjN21DsZ1i7PfiflQhin
-         VzweSuDzYiIpHcdkl3LkKNd1VpZtqs8Fe9pnilqdNK/VUkpVGiY6+MQCBVCgzF29u2kz
-         3sAW5C2FHoDRTHZkSzt60dQyPcz8pYBt+Iyxbiii1bSdS91GvztDStQVTHj/3jRZ5xK4
-         iUAi0tFemdixV/SNz34aHl9hjoQ6srDAf+hg1yoIKxiAbnX+ShzinT9lOg0fmLwEYU5e
-         ZIuQ==
+        bh=rOGKCteFZMAy3LeuWf1j/2F5b+EEOJ9yxzrgy674/8c=;
+        b=IJB8Jp74ZVLNkbp+TYDbhwMgAertXW2EyIJ47r3waZ2hOZUbr9JW2NjLXagZ5Wtoan
+         paIi2OPisDTP1o3oLqgsLVs1ktqy0V/iuMQ0v3TbpN1jfJituPc0qU4cgguxR6cU8okJ
+         nx+tI2+1YyfdopP37IepVY5DO38kSDFQzEq145I9W9WN/s2b8iLzCXzifnPaVQwSs7dF
+         PxYrHnNEcSlKt/in+Jp+LvSiH6zD2LIZTDSNPIikv+SmOGgnxVra5M30TbG3KiXU2KaW
+         RiU+Lsb5i1yUCS3CBiTxZVOPEMgAKQgtXO7T26t+6zJlHl3IbVFHdjJR3jfEJiDDzVJU
+         LC1w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1754990258; x=1755595058;
+        d=1e100.net; s=20230601; t=1754990205; x=1755595005;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=OsZfh7jnCZM1qIdbyzshEpg7lU806F0f1eIeVxq5DZ4=;
-        b=YCEWyEfY/uZS+i4N4L97N6wLqvLlJJCRX0vnzhK0jWMyq/MPgDgoZQIEzJ5kb6ILVu
-         XDjo0AM9jSEGulQk9v5PxyidStrRFAqd6IeWgxwW4tqgWJSTHRMoLpGlPkfw4G6M7S8S
-         o+9vueZ+l7nykVKwupMIY9o0LrJlmgDlos7sGCIsYNelDEDD5v/cXggCJtXpOed2ggR9
-         cumuWYfqru4Te8jLNae9JQX8JgaQJaULHqRXBM2f/7dktYCLc7Akfo7Fa326x+ELapf9
-         +sRo3MQmgAb6SIMVro5oc910rLSZCPajRFJXZJuG/DKKuGB2Ui53jz4FGHZ5mA6nvJug
-         ORcg==
-X-Forwarded-Encrypted: i=1; AJvYcCU8DFrcQ+aASdEIQ7l0+4BkiNSkmnjAXsTe80r5YAPdMSIlPf5FJoFiLTAHv24IOSASgVR/czaboszy7Jyc@lists.infradead.org, AJvYcCUW6IurOHOMz77Q/Se2M6GFNWdACr6rn0xscqzegMZof/t8ee+R5YisxI2WKz3xDryE+Z5DmSu3mujnBrs=@lists.infradead.org, AJvYcCWVWB7KvrO5XlS5Y6oOtWzyfxfkq+odrJuwU9UesDTE4mdHkiU5ls7/LbfYr7JxcHNZHEO8E5dnThze4pcPenU=@lists.infradead.org, AJvYcCWmT0/YJ0D3grFbS/B/dbLsrl8hMU11shq1qR9wGq/S1fwrP+pa5TBaSpodGbvQ6lqBGekg8lUKbK2nhEQESb4=@lists.infradead.org, AJvYcCX+0f3U0LPXPJlpjVuAcnLvwPlcfHxJbSDSqiallHwqRCIrpPADA/IQP2qRaxPjwhETod8/n311rwoYMN4uSpcvuA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxC09Cr2cU3pYB+Sfw5gITE13N2BfmJuhN+xh+OOuiJGwI6E1Uk
-	qLGB6vnkJDinaM8Ia1uOnlg9jigE6XmyMPFqxEQd/Hr2qbTz38hy0qM1Xw9VOgC4qSDseUO2Ckg
-	n1xKQKJgEtaNSVoSqbKUnil1rAHH+xgk=
-X-Gm-Gg: ASbGncuWrjv0BIo782V2rocfumoMnkW0RrEuKdEaV7QdKmJ0tC9g3+1Eyp91RJ2Mbds
-	/V+/K5zY6z/6de8TUDwiUepDEyi7Ibo9ghEG+boXCmm2/bdIGuswLPamdvkbw1AWH1L4eG05f45
-	HuB/WgJJFmmmuOe2zCKskfo0IuPQbN4L1cLoSnbnESUZ5uNYw2vJztjt2RnLVDwH1iXuMxxdlGM
-	2jsMMp7YAGIBUljnjE/+g==
-X-Google-Smtp-Source: AGHT+IGeKg+1AsHT8OzWJRaAIn4nQ5un+51PPsEFZqXXG7zkpSAAOASU4iUV34U5Po600E/i/8biPwPW0aGpB8iXi3U=
-X-Received: by 2002:a05:6808:30a4:b0:433:fd1b:73f3 with SMTP id
- 5614622812f47-43597b3b9d0mr10072751b6e.5.1754990257436; Tue, 12 Aug 2025
- 02:17:37 -0700 (PDT)
+        bh=rOGKCteFZMAy3LeuWf1j/2F5b+EEOJ9yxzrgy674/8c=;
+        b=CioFSKn/T4qydR3lex9Pt/peeOfvSkarraigciRh9ZsiAHgw2R/0N8xET7AlnlKyQo
+         orG61UvftcX7RwvRp/9sNUUVBmGIBYDQx442UrKHHmgxE/zMF4MJJNozttAw1NwEWqM9
+         SNvXh0vBJCQEueo6Pq8neyloPJlQCrBIrDsF3PBwvIAaPCOZbAMcJjAk8+MAtIG2dnbB
+         gYylo9zSl+LD8uLGZbtst0v2YgMMY0CtW1ZW2Vt47CBt1RQOg077aMhVjfTEGYky+oc1
+         l6fWIruAowhPgBkp4TuEEKfYoQO3dSimLP8wocIU8JS9qePfg5H5uVE4p/RlT2jlZbLC
+         hAkQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUvxIVRgLcKen8NcMqmB4lCIamKZClmCzeqbqKb1VuXI3vO1cIIyUlWE5ve5xwDQL50PudsS8LpoSxUqx+XFEg=@lists.infradead.org, AJvYcCVeXdsw1mXT9Pu/a1QN8VY++UGHcphFD2kHUM82KyMFS5klID4UpW6/rn4UGrxUVqcCAfInUP5Vy079PVzr@lists.infradead.org, AJvYcCVm7fTpZtpNI8xQdlvHCn/W8I1s64W73Fvb8VzIqYDDSjU/l8jl5BzXdpjN8JXW3lBkcpkkETOGh+Ni+p8=@lists.infradead.org, AJvYcCVq8rsABjsnqVnJz2Z30rWrOntB+OaGwo1E8TlD+AuIpvNYonKuJvsFg1npjTSUqn5k9NAwJMQJKim5Hs2b9ms=@lists.infradead.org, AJvYcCX0bZA0Y2zLGZCW4xlkrB3U9MqC8I4dUJpvJuiNm22CVYijx5QXmUGdnARqQMKqnDysVbm1EqUuUxPdUKWHQyhxfw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxHon+tHdQol/8DkkLa7bjOkfdoJvYdsA7KQM2zOybtauBgw+HE
+	bq+8qYQ02mrL8f0uTMn9xJw/ujcmVp+SLYEMFaYLYoWVSZkbPKx/23vOrV2uKU5be2eFX04vHy+
+	Up6eV0DgY+Wmm2Cguoa2uSHXAIHNrXSc=
+X-Gm-Gg: ASbGncvfv1u0eZc2G5nndwJm2pzpiE9ASlXnVxGNoAvAbTRjZiy62A6SamxtO9UIFxL
+	g3giqRlJctegWa+mllZ3dDkIF8xjx/MFOjS/NWseSq+kgdK6+WD+YHeuU8+RfTr+j5UFc/8MxzF
+	l1qy1HtwSNvxG/cCnOQ2PaWcVFRnbt0KBHe3TmuzPq/AQvebQCuX53DzlsthHI6fnzN9YnUveQi
+	TIxmA==
+X-Google-Smtp-Source: AGHT+IETTIJEQRSUprmEW/PZ43+7aaIWslt+bYkWZi3Waoz2cOUzGNm7S8/l4wJRhakmB2sfTn3K3AA6daLwKG1Ea8M=
+X-Received: by 2002:a05:6808:181a:b0:433:fd1b:73f1 with SMTP id
+ 5614622812f47-435c90f0e8fmr1519318b6e.6.1754990205351; Tue, 12 Aug 2025
+ 02:16:45 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com> <20250811-clk-for-stephen-round-rate-v1-53-b3bf97b038dc@redhat.com>
-In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-53-b3bf97b038dc@redhat.com>
+References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com> <20250811-clk-for-stephen-round-rate-v1-54-b3bf97b038dc@redhat.com>
+In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-54-b3bf97b038dc@redhat.com>
 From: Chunyan Zhang <zhang.lyra@gmail.com>
-Date: Tue, 12 Aug 2025 17:17:01 +0800
-X-Gm-Features: Ac12FXwWvkLhtiiPhiHwQqmN1cgPTqDfCjN_x0Nmsu9rzni9NmKJK-aaPD6k1MI
-Message-ID: <CAAfSe-spVF480JyBwxFN=KH82CdKNR0oY87oR6fsR+-CUH356Q@mail.gmail.com>
-Subject: Re: [PATCH 053/114] clk: sprd: div: convert from round_rate() to determine_rate()
+Date: Tue, 12 Aug 2025 17:16:09 +0800
+X-Gm-Features: Ac12FXzs0-qDCA0x0Aw1aZmy8texiIAG_F4IY6MycSoBtAjQ1ujDKaGaSXI8gxQ
+Message-ID: <CAAfSe-u-YkkwKyS4+6EU+-zg5ghemk-4VJVE8p4Sky1-e4Y13g@mail.gmail.com>
+Subject: Re: [PATCH 054/114] clk: sprd: pll: convert from round_rate() to determine_rate()
 To: bmasney@redhat.com
 Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
 	Sudeep Holla <sudeep.holla@arm.com>, Cristian Marussi <cristian.marussi@arm.com>, 
@@ -120,8 +120,8 @@ Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>
 	linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250812_021738_621616_604645AB 
-X-CRM114-Status: GOOD (  21.35  )
+X-CRM114-CacheID: sfid-20250812_021646_808461_B27DCD01 
+X-CRM114-Status: GOOD (  20.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -150,43 +150,34 @@ On Mon, 11 Aug 2025 at 23:18, Brian Masney via B4 Relay
 Reviewed-by: Chunyan Zhang <zhang.lyra@gmail.com>
 
 > ---
->  drivers/clk/sprd/div.c | 13 ++++++++-----
->  1 file changed, 8 insertions(+), 5 deletions(-)
+>  drivers/clk/sprd/pll.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
 >
-> diff --git a/drivers/clk/sprd/div.c b/drivers/clk/sprd/div.c
-> index 936782c241271832c0a1957c99cbecc287351d1b..013423881968002d29c4e9536e7cd7b944779196 100644
-> --- a/drivers/clk/sprd/div.c
-> +++ b/drivers/clk/sprd/div.c
-> @@ -9,13 +9,16 @@
+> diff --git a/drivers/clk/sprd/pll.c b/drivers/clk/sprd/pll.c
+> index 13a322b2535ac37ecb17f2c39d17d2c03532cfcb..bc6610d5fcb72faa7406ea78dca4cd9b848e9392 100644
+> --- a/drivers/clk/sprd/pll.c
+> +++ b/drivers/clk/sprd/pll.c
+> @@ -254,16 +254,16 @@ static int sprd_pll_clk_prepare(struct clk_hw *hw)
+>         return 0;
+>  }
 >
->  #include "div.h"
->
-> -static long sprd_div_round_rate(struct clk_hw *hw, unsigned long rate,
-> -                               unsigned long *parent_rate)
-> +static int sprd_div_determine_rate(struct clk_hw *hw,
+> -static long sprd_pll_round_rate(struct clk_hw *hw, unsigned long rate,
+> -                               unsigned long *prate)
+> +static int sprd_pll_determine_rate(struct clk_hw *hw,
 > +                                  struct clk_rate_request *req)
 >  {
->         struct sprd_div *cd = hw_to_sprd_div(hw);
->
-> -       return divider_round_rate(&cd->common.hw, rate, parent_rate, NULL,
-> -                                 cd->div.width, 0);
-> +       req->rate = divider_round_rate(&cd->common.hw, req->rate,
-> +                                      &req->best_parent_rate,
-> +                                      NULL, cd->div.width, 0);
-> +
+> -       return rate;
 > +       return 0;
 >  }
 >
->  unsigned long sprd_div_helper_recalc_rate(struct sprd_clk_common *common,
-> @@ -75,7 +78,7 @@ static int sprd_div_set_rate(struct clk_hw *hw, unsigned long rate,
->
->  const struct clk_ops sprd_div_ops = {
->         .recalc_rate = sprd_div_recalc_rate,
-> -       .round_rate = sprd_div_round_rate,
-> +       .determine_rate = sprd_div_determine_rate,
->         .set_rate = sprd_div_set_rate,
+>  const struct clk_ops sprd_pll_ops = {
+>         .prepare = sprd_pll_clk_prepare,
+>         .recalc_rate = sprd_pll_recalc_rate,
+> -       .round_rate = sprd_pll_round_rate,
+> +       .determine_rate = sprd_pll_determine_rate,
+>         .set_rate = sprd_pll_set_rate,
 >  };
->  EXPORT_SYMBOL_GPL(sprd_div_ops);
+>  EXPORT_SYMBOL_GPL(sprd_pll_ops);
 >
 > --
 > 2.50.1
