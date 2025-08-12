@@ -4,79 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED54DC87FCB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Aug 2025 12:37:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0EDFCA0EDE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Aug 2025 12:37:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qNkdBhL4SofepKXOMLPV0ruEBSHstnzYJRcPgI9HdoA=; b=AQeOI3AdG7OAd/fLfJxmdv2Ytc
-	Ve4do3gnfQMfYBLSR/8ZCJYs21TrcScb76R7iboGeMhuqQXdIxLc0XJL3qIgV2ZtQYNj//t+23Blh
-	8x4TiGHOoUq8bbFp45vvKmu5bQchorT0mrtBjkBFzIX1Vb7WAYrV82iNe9DOoo1plCF2j81XCyi/k
-	30E/SENgyf4qHjcl6YU4Lz4+mBRYbQrP7f2yre/X7mLtoKDcnDnFqWMdzBygEi3yhTQ7dhVmQ2Y/7
-	TJh7xZlTzgoIsweR1NPgTZLsfOs8OLihtj3UoOxC3FMr3v0ewZca8o2A2V+LS7iWUPKZbC+V7qsxR
-	jDo3Eoxw==;
+	bh=JThKrLTPuFVwzCwJhKd4fJmIEtCxHnGrNzSYzGU4KrU=; b=H7DK3xMMH1vCDo/F5+GkNA0yyT
+	JUjd5UpoTjNiEBmzUIG/gRVPlbXAGuDPi1vH8DDHcZH+lxqn1ZbYsrhuaOm2CvTLiUf7T4XKTh9ya
+	SKCkJvRDBFRK1X5I7WoDMoJLh2oisNR6xIZ+n/RDZnPWztXMvslJE8xYJ2guON2Z8JGjKe4m/dKYh
+	Hhn2qXjTbioJAB06bhWdKnOLFJvkcZBu6BmHNkShI97Pv685K5n513dOYdAJMMXqp9Y59INcIv1EJ
+	901FaAs04e6GFk42RdSKL+FP9pUj+/9CUmXw0un299dEufDwRMKB1wH+AijBcOHNfyXBcT/nabMYA
+	EWtYYMnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uloFT-0000000Aits-3RMF;
-	Tue, 12 Aug 2025 12:37:03 +0000
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+	id 1uloFU-0000000Aiuk-24BO;
+	Tue, 12 Aug 2025 12:37:04 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulkLy-0000000AEn2-2FpG
+	id 1ulkM0-0000000AEo7-0hIt
 	for linux-mediatek@lists.infradead.org;
-	Tue, 12 Aug 2025 08:27:31 +0000
-Received: by mail-wr1-x42e.google.com with SMTP id ffacd0b85a97d-3b79bddd604so3029417f8f.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 12 Aug 2025 01:27:30 -0700 (PDT)
+	Tue, 12 Aug 2025 08:27:33 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-455b00339c8so33167565e9.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 12 Aug 2025 01:27:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1754987249; x=1755592049; darn=lists.infradead.org;
+        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1754987250; x=1755592050; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=qNkdBhL4SofepKXOMLPV0ruEBSHstnzYJRcPgI9HdoA=;
-        b=q5m0WttIHdSUlV3t4zjq1cPT7zMFW7YWqhz67W+zjHYO0+n7RB6rihRi8IUw4otS5e
-         vtdCO9LWaoFyNpI3Hf4c8LP6SagdG6iRp2pkn8zDW9hSNz6CcQNXRORJg6TrVICOR8uJ
-         LJAY6KKmwWcu8DIK45KB/XFvOctOmPqd1I+/ygXL/zkQPBrmFBjzFeIimt7YoLZdx61Y
-         PvZukrmKYsIss/rHqUuBs9HkB/8otAuYqiMl0YtuTPfR3qilKgE4W6UysB9f+pKqODz5
-         qGKQ4C1hU9G2EHzaK6htd1QXdhboKMXBzPAySDTokAX4PQ2120GpPebu/7lXjdgv9/tr
-         1+PA==
+        bh=JThKrLTPuFVwzCwJhKd4fJmIEtCxHnGrNzSYzGU4KrU=;
+        b=K6bwqFxy2d2D2LOG+4IE/QV5VJYLBAhpdsLhyfB8t71v6YffqN8pWxMhnANTsmnX2h
+         879W2mya1muOlP6WLhlwgeSNSEqvCyufmk1ZEyaXn0j5V8hkJPKQtNoq2xVNFbkjV3xc
+         /kFJYlvebnjDp9IOjKF3kwYv4O2Ku+8bo1upz++Ep+TxwzNc4LrYdzNsFNDx1AoEByW/
+         XtJ1Zdd0O6Z8EBZVugQ/Y2BjnDwz/dPR50x3r6WMwqeZly9Va6tzeYaKA1kqEulWvwfJ
+         YXqxlJqJvBJ15FNWeK7EidwSRw6f0toCpacjtk6mUy7uH2ksY/7mJP0jSsKs/aC05Emp
+         M4Tg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1754987249; x=1755592049;
+        d=1e100.net; s=20230601; t=1754987250; x=1755592050;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=qNkdBhL4SofepKXOMLPV0ruEBSHstnzYJRcPgI9HdoA=;
-        b=nv7ffNrU46g+MIOdL0GOKZJyhieLVkTgD2pCZ0WYmEQ65usGEalPnVl9ig8BC5no2y
-         6WiN/F6oIzndxmzNM2IZBt6InNdkZ6wPMqIXwqTjN2uo/uIBIJZHOANMmanIkFePeek8
-         bRc5JZFQ956pOTghyv1CMKgXmPOUJzzabAKTdar6hHQDcQXs+1p7hBZh8zTOyVJpBNF1
-         xD5iZaIDmASXttpdCw+MUyOzkMp/sa6wB6xWzb6gZMl3enNmBXx1B6/N1xCzNvsoEXBd
-         ocVLFcDTtXiuu3XHqoXD+swlJafeFGV+PmoHgE9JLwLl9nsVmnHX5hxr9QEBrqFkBRnm
-         zlTA==
-X-Forwarded-Encrypted: i=1; AJvYcCVeKaoFkaWYh1+ikV8WJWMG5D4qlrCz/dMqYbPiWJfEsww2ph4RohPy7pdvp43oxHt71n4hrm+dbq6cWQHOEQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwGOH5TuS7uzifTUpixrJEpdMPKx8FPWeAPFNi2F/6EL9Yjgsq/
-	RgE0qMNM/5yrY2JWwZLad4zJ0NuKJNUwXW7ZY6YiYZz4eVV57qE/glPWrCRrV+yfZKc=
-X-Gm-Gg: ASbGncvudEVSdKdLEaM37burBK7RO6DAiIpEGuGSNjczmTPVAz8pHP2xWbIOnUnf4Cg
-	xzHoOZgfcGjMTx8/emwYC/Le23IVuaGMiegg88QEYMYEwOM53/oa7yKkV3h0RPueSd4cXpgpM6j
-	lqelOngPhBvasrP7aE/OLKN8Wi/yrBM2xRAYgoeLYJLbYRjOM2GA9NUHNzrMnHoeJcY4a1z3uPf
-	vC0FCDDaJE9wGql7Ckg6p18ltilbSzjwVZ5M7Ig9eKO90XOJGrwkzPGsqoQFBVu2rYTdiA/DWoF
-	tT6tcHaw+bqLWgNaSOuhtdD0IdIz85rf1FZ5CKHt5mv+tVtODjvH8u4vpMRT9HowF8nf8ciGH2l
-	WZ3CADlP27oBpRAI=
-X-Google-Smtp-Source: AGHT+IF1aOctmbWm54Tz9TzOo9LheJ0g+HtTHoUDuTShXnMfH1+OQDhTbVjjMEL+NvcX3+PUPhfyHA==
-X-Received: by 2002:a05:6000:24c3:b0:3b6:d95:a3a4 with SMTP id ffacd0b85a97d-3b910fd0076mr2224430f8f.4.1754987248840;
-        Tue, 12 Aug 2025 01:27:28 -0700 (PDT)
+        bh=JThKrLTPuFVwzCwJhKd4fJmIEtCxHnGrNzSYzGU4KrU=;
+        b=RGF6Ca0OUVM8d6pIj9VpxzS6TspHFXEOXDqMZwdkmF8xRerZiqi9mLle0611eLJs0s
+         K/dD7qLGVI6t3QT8Ohm6NuyQI5N9vjdX+9GhHgGaMYC77FbHiDodyewaGgIWvrWlRAl4
+         31I/THP7E4ZOHViWyuoImgoAJPy+uz3UcfcjYAwGFs2xxcoTMIe6OoU8pFkN77AwpCev
+         NCyPuFMNMBDuuRPqUf54aym/G3CuMygCXTVDDEhyxc3Rxz7pt0hC3e505k+LloPM+OtV
+         bJUqTv/FDr9ATcRIFObl4A7zOQFvoJkBMbvbYxKwcXW2XQfXa5OoHsZojtyu5YRue8/H
+         vcoA==
+X-Forwarded-Encrypted: i=1; AJvYcCVN5UPqpupfrP4+6iuo4r9cQ4k60bENg2YCcX0pXV7IRIPj6fWl45gG/mfAiBlmmHlVw4taOmK3v4HDsQr97A==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz3tQqRJvDP3P9EcbH4IxpVq23KgSx8YTdlinvNKgog75WEr6us
+	+fvwHpGotnJjIlws+A78FszOMuYTAY4/obSTokO133RiYThbhDdRM7fJx8LcmfognWk=
+X-Gm-Gg: ASbGncvDKqtbOOowx5K/XBBOPsA2hlJfj598uWaCWzuNc2m1lmg88b2hLjUAkFlgWqL
+	Rz3dKZvD1qncyje/QEOPH3N7QwJ1XlWBrUaCTwzLD/6F08koybFpvcvag+f169vTJONi/gZC8ei
+	u49pePR51t5qrlNLoun1qa9gq+9cSLZvbVjIVfneLu85d24dVlZDs0MSQrjat1/iK1GU0ApEoMR
+	Kt8Im8qH1v9OXEifcM2kTPEhdrHYnerne9/pTN71m7470WLMH59fDLlX3AtrqZ0Ika2wJrjbteI
+	yXqF0Ut6N1IfsIOO37VAtYVHPvCms9LzfkabhpWAUVirPOPmet5AQQh1K3uMrCWr4rG/wwX8NU/
+	X0ha8a6Q2HaM6Omg=
+X-Google-Smtp-Source: AGHT+IFshlOvFK729Q2HiNSttBuhYGO5t1MHAK8R1Tl8WnDbe/OVg6KL0Aon7hXzH1skJVAbXFREsA==
+X-Received: by 2002:a5d:64ce:0:b0:3b7:8473:31bd with SMTP id ffacd0b85a97d-3b910f9ab5emr2145237f8f.0.1754987250520;
+        Tue, 12 Aug 2025 01:27:30 -0700 (PDT)
 Received: from [127.0.1.1] ([2a01:cb1d:dc:7e00:16c8:50:27fe:4d94])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3b79c3b9386sm43549423f8f.18.2025.08.12.01.27.27
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3b79c3b9386sm43549423f8f.18.2025.08.12.01.27.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 12 Aug 2025 01:27:28 -0700 (PDT)
+        Tue, 12 Aug 2025 01:27:30 -0700 (PDT)
 From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Tue, 12 Aug 2025 10:27:11 +0200
-Subject: [PATCH v4 12/15] pinctrl: allow to mark pin functions as
- requestable GPIOs
+Date: Tue, 12 Aug 2025 10:27:12 +0200
+Subject: [PATCH v4 13/15] pinctrl: qcom: add infrastructure for marking pin
+ functions as GPIOs
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250812-pinctrl-gpio-pinfuncs-v4-12-bb3906c55e64@linaro.org>
+Message-Id: <20250812-pinctrl-gpio-pinfuncs-v4-13-bb3906c55e64@linaro.org>
 References: <20250812-pinctrl-gpio-pinfuncs-v4-0-bb3906c55e64@linaro.org>
 In-Reply-To: <20250812-pinctrl-gpio-pinfuncs-v4-0-bb3906c55e64@linaro.org>
 To: Linus Walleij <linus.walleij@linaro.org>, 
@@ -108,28 +108,29 @@ Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
  linux-hardening@vger.kernel.org, linux-mm@kvack.org, imx@lists.linux.dev, 
  linux-omap@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
- Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+ Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, 
+ Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=6831;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1755;
  i=bartosz.golaszewski@linaro.org; h=from:subject:message-id;
- bh=O5vQZ4MKE8bL3a5x2rEAk2QUL7J9Hk6iGEI+vVX0jVg=;
- b=owEBbQKS/ZANAwAKARGnLqAUcddyAcsmYgBomvrZe3Gk6A7K6BuZ6C7ogxwBSW/5+axg5EzCc
- cPcQp7eSOWJAjMEAAEKAB0WIQQWnetsC8PEYBPSx58Rpy6gFHHXcgUCaJr62QAKCRARpy6gFHHX
- cr5pEADQKhyLMmGAMuIfT6I9nesZoE3YTWBvYFEsHrpHOXW7IcwofY+k/j4lTrHXWiFSH2aSHiH
- h09HksFuzIbVBj3KRssbgyxg1qec25nBDbuq+SG327Y8lzA/ElXT7l06ZMgLIhC6WbM+MwKsbmZ
- fK1xMMKfxJ/FbO2+CMtw2ZK1JEcpsOWRLy48UNMqhQvWhg47T3lFxxjxqJQK75Ga5zNGJif47oG
- SL4wNsfpGlfU1Ol5kRE1A6Bzp8ET/WvJ0S4SHCf9XLEdnkRFfckWCxKnsm3J7OlXIzUQl8D5ahM
- YhgYiQcXC3QYeQ26JOOa4soGndCYmSj48a5PTH+zGR7YM25kOINjlq/okZ0YsGLdZnNDudPbi4d
- ZxpU62lK0QknRASPsHd0k34j6edoSRowVsIJ/81b2ZyduahX2oGqZVO5b4nmaXxWQb14txOwfYf
- LB1eEbstCLY3GEBhgjPb0rvctBDxQxC1W/EPi2AVS0tNMSEte35/6dBiOunvTpLifOS7kV6UJ2C
- 0SSFrUGBZGIudW/RB4Giyakl25Mz771OvscKs1Z6m7ebofkxHrHIoQRkKGeEVhs3DrKbP3VQcdk
- +XtwiXOJbfTT8I/2s/LLdvqGESE5IYGwSFp01drsYWOUm79oxdipIdgQjqexu/b1xGghJkJhzXt
- 0MEwMGHjLVNQrqg==
+ bh=1TtCXH0c1SnNyHC+v6gZsytFHMfkLN/q6H3Fm9nBNlI=;
+ b=owEBbQKS/ZANAwAKARGnLqAUcddyAcsmYgBomvrZ/VR1c42/G4TctgjID2K26TyPL0+Vrg6x4
+ 9ryMo61KYWJAjMEAAEKAB0WIQQWnetsC8PEYBPSx58Rpy6gFHHXcgUCaJr62QAKCRARpy6gFHHX
+ cvCLEACYvBW59+M3gJi5bBpvwd53LIDA7Fi09bh7cf6sZQwrhnc+q7Z7XDWdo3gOU7A4yZx8nrE
+ lf5eZ6c3y4GemvfNQDbmd0gu0FBsb/49YwP4k87d87Cdt8fNQd/08Gh/u32vbVpO16l2Je9VuY8
+ 3WZS7KC5/KJQPKXbmxUpP5C2z8mULdzAb4PKQT3dZ3s7f2T+hMUUwinrZx5u1klaFQrlOXkNTTE
+ ba1l7tJFuZ8cxCTDfvpt3YSkOLMkDNM5HWjtfxL/gfiQ11OM42MAVw/QrrA0hu0Ez37gjOlTBx8
+ ZfQwmRq7Gx7f8H5yXUyG7PrHQL+qjkqv673/8cqJFGcqwAse7K8jlSiu5yAKyPafqYT3neO/k4u
+ APj8e2LBEwVjTBl0IhJdS6/+3AlWncZFxd6E60ROpK0huq9Ds5Fv1bIjzPvmGW2GKpF9MFCbdd/
+ LX+uj8t8HrERHsIxj8Mov/RLEFgf1ECdyKINeMXsW0lLsbYkkDL62TYt2+/nXHkr6BSKZ1JX3gQ
+ HmqI5/Ni9xR1d9/yvtzD91OFmakZA9BucAoum0WdD/tWCaF24vSjO/wdUntMJqmkxYWMM4CY0ro
+ B/bQkovAcHO+am85u11GmUCv0se9FwLnggtnVe9u5hXKsKp22bC+38tNUX6xqHYV+hSPyXCLYu8
+ hN8vLrtlGpDakqA==
 X-Developer-Key: i=bartosz.golaszewski@linaro.org; a=openpgp;
  fpr=169DEB6C0BC3C46013D2C79F11A72EA01471D772
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250812_012730_602112_3E28BFE4 
-X-CRM114-Status: GOOD (  23.42  )
+X-CRM114-CacheID: sfid-20250812_012732_214985_C40152F2 
+X-CRM114-Status: GOOD (  12.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -146,184 +147,44 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 
-The name of the pin function has no real meaning to pinctrl core and is
-there only for human readability of device properties. Some pins are
-muxed as GPIOs but for "strict" pinmuxers it's impossible to request
-them as GPIOs if they're bound to a devide - even if their function name
-explicitly says "gpio". Add a new field to struct pinfunction that
-allows to pass additional flags to pinctrl core. While we could go with
-a boolean "is_gpio" field, a flags field is more future-proof.
+Add a helper macro that wraps PINCTRL_GPIO_PINFUNCTION() for pinctrl-msm
+pin functions and assign the .function_is_gpio() callback in pinmux_ops.
 
-If the PINFUNCTION_FLAG_GPIO is set for a given function, the pin muxed
-to it can be requested as GPIO even on strict pin controllers. Add a new
-callback to struct pinmux_ops - function_is_gpio() - that allows pinmux
-core to inspect a function and see if it's a GPIO one. Provide a generic
-implementation of this callback.
-
+Reviewed-by: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
 Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 ---
- drivers/pinctrl/pinmux.c        | 37 +++++++++++++++++++++++++++++++++++--
- drivers/pinctrl/pinmux.h        |  3 +++
- include/linux/pinctrl/pinctrl.h | 14 ++++++++++++++
- include/linux/pinctrl/pinmux.h  |  2 ++
- 4 files changed, 54 insertions(+), 2 deletions(-)
+ drivers/pinctrl/qcom/pinctrl-msm.c | 1 +
+ drivers/pinctrl/qcom/pinctrl-msm.h | 5 +++++
+ 2 files changed, 6 insertions(+)
 
-diff --git a/drivers/pinctrl/pinmux.c b/drivers/pinctrl/pinmux.c
-index 6f5e3ede972bbfa78e279790df359632e2d63485..1f99547deebe085e907a6fc5d66b01deb55cb41c 100644
---- a/drivers/pinctrl/pinmux.c
-+++ b/drivers/pinctrl/pinmux.c
-@@ -89,13 +89,18 @@ bool pinmux_can_be_used_for_gpio(struct pinctrl_dev *pctldev, unsigned int pin)
- {
- 	struct pin_desc *desc = pin_desc_get(pctldev, pin);
- 	const struct pinmux_ops *ops = pctldev->desc->pmxops;
-+	const struct pinctrl_setting_mux *mux_setting = desc->mux_setting;
-+	bool func_is_gpio = false;
- 
- 	/* Can't inspect pin, assume it can be used */
- 	if (!desc || !ops)
- 		return true;
- 
- 	guard(mutex)(&desc->mux_lock);
--	if (ops->strict && desc->mux_usecount)
-+	if (mux_setting && ops->function_is_gpio)
-+		func_is_gpio = ops->function_is_gpio(pctldev, mux_setting->func);
-+
-+	if (ops->strict && desc->mux_usecount && !func_is_gpio)
- 		return false;
- 
- 	return !(ops->strict && !!desc->gpio_owner);
-@@ -116,7 +121,9 @@ static int pin_request(struct pinctrl_dev *pctldev,
- {
- 	struct pin_desc *desc;
- 	const struct pinmux_ops *ops = pctldev->desc->pmxops;
-+	const struct pinctrl_setting_mux *mux_setting;
- 	int status = -EINVAL;
-+	bool func_is_gpio = false;
- 
- 	desc = pin_desc_get(pctldev, pin);
- 	if (desc == NULL) {
-@@ -126,11 +133,16 @@ static int pin_request(struct pinctrl_dev *pctldev,
- 		goto out;
- 	}
- 
-+	mux_setting = desc->mux_setting;
-+
- 	dev_dbg(pctldev->dev, "request pin %d (%s) for %s\n",
- 		pin, desc->name, owner);
- 
- 	scoped_guard(mutex, &desc->mux_lock) {
--		if ((!gpio_range || ops->strict) &&
-+		if (ops->function_is_gpio && mux_setting)
-+			func_is_gpio = ops->function_is_gpio(pctldev,
-+							     mux_setting->func);
-+		if ((!gpio_range || ops->strict) && !func_is_gpio &&
- 		    desc->mux_usecount && strcmp(desc->mux_owner, owner)) {
- 			dev_err(pctldev->dev,
- 				"pin %s already requested by %s; cannot claim for %s\n",
-@@ -861,6 +873,27 @@ pinmux_generic_get_function(struct pinctrl_dev *pctldev, unsigned int selector)
- }
- EXPORT_SYMBOL_GPL(pinmux_generic_get_function);
- 
-+/**
-+ * pinmux_generic_function_is_gpio() - returns true if given function is a GPIO
-+ * @pctldev: pin controller device
-+ * @selector: function number
-+ *
-+ * Returns:
-+ * True if given function is a GPIO, false otherwise.
-+ */
-+bool pinmux_generic_function_is_gpio(struct pinctrl_dev *pctldev,
-+				     unsigned int selector)
-+{
-+	struct function_desc *function;
-+
-+	function = radix_tree_lookup(&pctldev->pin_function_tree, selector);
-+	if (!function)
-+		return false;
-+
-+	return function->func->flags & PINFUNCTION_FLAG_GPIO;
-+}
-+EXPORT_SYMBOL_GPL(pinmux_generic_function_is_gpio);
-+
- /**
-  * pinmux_generic_add_function() - adds a function group
-  * @pctldev: pin controller device
-diff --git a/drivers/pinctrl/pinmux.h b/drivers/pinctrl/pinmux.h
-index 653684290666d78fd725febb5f8bc987b66a1afb..4e826c1a5246cf8b1ac814c8c0df24c4e036edd2 100644
---- a/drivers/pinctrl/pinmux.h
-+++ b/drivers/pinctrl/pinmux.h
-@@ -169,6 +169,9 @@ int pinmux_generic_remove_function(struct pinctrl_dev *pctldev,
- 
- void pinmux_generic_free_functions(struct pinctrl_dev *pctldev);
- 
-+bool pinmux_generic_function_is_gpio(struct pinctrl_dev *pctldev,
-+				     unsigned int selector);
-+
- #else
- 
- static inline void pinmux_generic_free_functions(struct pinctrl_dev *pctldev)
-diff --git a/include/linux/pinctrl/pinctrl.h b/include/linux/pinctrl/pinctrl.h
-index d138e18156452e008f24ca06358fcab45135632f..1a8084e2940537f8f0862761d3e47c56c8783193 100644
---- a/include/linux/pinctrl/pinctrl.h
-+++ b/include/linux/pinctrl/pinctrl.h
-@@ -11,6 +11,7 @@
- #ifndef __LINUX_PINCTRL_PINCTRL_H
- #define __LINUX_PINCTRL_PINCTRL_H
- 
-+#include <linux/bits.h>
- #include <linux/types.h>
- 
- struct device;
-@@ -206,16 +207,20 @@ extern int pinctrl_get_group_pins(struct pinctrl_dev *pctldev,
- 				  const char *pin_group, const unsigned int **pins,
- 				  unsigned int *num_pins);
- 
-+#define PINFUNCTION_FLAG_GPIO	BIT(0)
-+
- /**
-  * struct pinfunction - Description about a function
-  * @name: Name of the function
-  * @groups: An array of groups for this function
-  * @ngroups: Number of groups in @groups
-+ * @flags: Additional pin function flags
-  */
- struct pinfunction {
- 	const char *name;
- 	const char * const *groups;
- 	size_t ngroups;
-+	unsigned long flags;
+diff --git a/drivers/pinctrl/qcom/pinctrl-msm.c b/drivers/pinctrl/qcom/pinctrl-msm.c
+index 96e40c2342bdedb8857629e503897f171a80e579..a5f69464827119dfe2a7781b558094b283fca215 100644
+--- a/drivers/pinctrl/qcom/pinctrl-msm.c
++++ b/drivers/pinctrl/qcom/pinctrl-msm.c
+@@ -265,6 +265,7 @@ static const struct pinmux_ops msm_pinmux_ops = {
+ 	.get_functions_count	= pinmux_generic_get_function_count,
+ 	.get_function_name	= pinmux_generic_get_function_name,
+ 	.get_function_groups	= pinmux_generic_get_function_groups,
++	.function_is_gpio	= pinmux_generic_function_is_gpio,
+ 	.gpio_request_enable	= msm_pinmux_request_gpio,
+ 	.set_mux		= msm_pinmux_set_mux,
  };
+diff --git a/drivers/pinctrl/qcom/pinctrl-msm.h b/drivers/pinctrl/qcom/pinctrl-msm.h
+index d7dc0947bb161868c8f433dc2536719b8afc8bd8..4625fa5320a95a4d24e3a0c98a249e4f163dd4c7 100644
+--- a/drivers/pinctrl/qcom/pinctrl-msm.h
++++ b/drivers/pinctrl/qcom/pinctrl-msm.h
+@@ -29,6 +29,11 @@ struct pinctrl_pin_desc;
+ 					fname##_groups,		\
+ 					ARRAY_SIZE(fname##_groups))
  
- /* Convenience macro to define a single named pinfunction */
-@@ -226,6 +231,15 @@ struct pinfunction {
- 		.ngroups = (_ngroups),			\
- 	}
- 
-+/* Same as PINCTRL_PINFUNCTION() but for the GPIO category of functions */
-+#define PINCTRL_GPIO_PINFUNCTION(_name, _groups, _ngroups)	\
-+(struct pinfunction) {						\
-+		.name = (_name),				\
-+		.groups = (_groups),				\
-+		.ngroups = (_ngroups),				\
-+		.flags = PINFUNCTION_FLAG_GPIO,			\
-+	}
++#define MSM_GPIO_PIN_FUNCTION(fname)				\
++	[msm_mux_##fname] = PINCTRL_GPIO_PINFUNCTION(#fname,	\
++					fname##_groups,		\
++					ARRAY_SIZE(fname##_groups))
 +
- #if IS_ENABLED(CONFIG_OF) && IS_ENABLED(CONFIG_PINCTRL)
- extern struct pinctrl_dev *of_pinctrl_get(struct device_node *np);
- #else
-diff --git a/include/linux/pinctrl/pinmux.h b/include/linux/pinctrl/pinmux.h
-index d6f7b58d6ad0cce421aad80463529c9ccc65d68e..6db6c3e1ccc2249d4b4204e6fc19bf7b4397cc81 100644
---- a/include/linux/pinctrl/pinmux.h
-+++ b/include/linux/pinctrl/pinmux.h
-@@ -66,6 +66,8 @@ struct pinmux_ops {
- 				    unsigned int selector,
- 				    const char * const **groups,
- 				    unsigned int *num_groups);
-+	bool (*function_is_gpio) (struct pinctrl_dev *pctldev,
-+				  unsigned int selector);
- 	int (*set_mux) (struct pinctrl_dev *pctldev, unsigned int func_selector,
- 			unsigned int group_selector);
- 	int (*gpio_request_enable) (struct pinctrl_dev *pctldev,
+ #define QCA_PIN_FUNCTION(fname)					\
+ 	[qca_mux_##fname] = PINCTRL_PINFUNCTION(#fname,		\
+ 					fname##_groups,		\
 
 -- 
 2.48.1
