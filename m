@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5280DCA0EC4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Aug 2025 07:28:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4AF4C87FCB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Aug 2025 07:35:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kLCKgC/5+BoG+FIzo3RVjBgspCUy0QHhAEmll+Q+bzA=; b=osMFQNOCse4uYBvsV6/roSg5Uy
-	Zd26pWGR5A2rOgyl3ydzPXuJXQYPfZmTC+W06K0ay74Nts/1YPtx6UcWdcbqF6vakbEBjlO0Awfwp
-	Jem5vIqDmXK3E/sY5V4BtWEsrFpY7+WgfgyP9IlOFZh+RPAy8I1AFKJzwIjjXXzQrztfa/ub1nYsD
-	JJh10hx6KGCOJEfiV6W0HBonAoVA9m8d2PlyLFgATlRNktqSSrSL9jisHpYK+y9qegoGQjI1p91Yi
-	1G+EUWQxcQlDGfRetsnuLKTLumK/TNKVVQJ26FBPad9TlMjsM2anTAs0w7zVI9K70fLBt2SoW5ZYJ
-	rmmapzIw==;
+	bh=O+0/mMzcYBzAXr5xY2ybwh3+r//NqA3Z+JWUeLP3lH4=; b=wP239Q30ytD3R/sT+TiXdH7zIY
+	RhvDLqRgLUAx56H7ScN7MLBKMpRBs4qPd/nZvfADYDB0PfeP/V0VZ/Kc0uiYcdGgMUt/U6F4ylWzB
+	CRd1EUtmvlSL+SiMzwLxavF0zsbENtaJj6RLZmXTIUzCMIoKU3ernbwQI8pLuAKyiZD0pVfq4m4Ar
+	Mjx720WSPNa6F6f08eyjbe3u7OdOER0PZ9wpLXSiGDFRBjcDX/obu26DF31QolFCewTOI4VmAkBQn
+	UJtBiNxZCbt3O+FNrmSChT6B/28eaa/lBazkZGkyRmmCzUkpq9Hq8dk4RWinr4y/HRL85rZonAAAZ
+	aznSQ9pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uljQY-0000000A7FP-427r;
-	Tue, 12 Aug 2025 07:28:10 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1uljXI-0000000A85R-1gWC;
+	Tue, 12 Aug 2025 07:35:08 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uljM9-0000000A6gh-2rc4;
-	Tue, 12 Aug 2025 07:23:38 +0000
+	id 1uljUS-0000000A7bO-3gmM;
+	Tue, 12 Aug 2025 07:32:12 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E5D175C66DA;
-	Tue, 12 Aug 2025 07:23:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2C126C4CEF0;
-	Tue, 12 Aug 2025 07:23:30 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 161A360203;
+	Tue, 12 Aug 2025 07:32:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 76E05C4CEF0;
+	Tue, 12 Aug 2025 07:32:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1754983416;
-	bh=JiE8CKcIxE7skuyrDeYkQpvSNgGqopGhxb7VfznaQeE=;
+	s=k20201202; t=1754983931;
+	bh=O+0/mMzcYBzAXr5xY2ybwh3+r//NqA3Z+JWUeLP3lH4=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=J9NTolveGpBhWAvij58oUWOP2vguKLwWjqPfp95pSn5u0OVwuc/8HgIIRNp/hgTYu
-	 Z2PzUYkZaSRY4k2AgBDndi3Tk97DXMXp2sclnItCHN+LNaMFnrD1snBel/5N/Zntht
-	 hR3VwLfaDfoIPLajJwG0kpZ5PCrUMC6ZMDdFUJ5nFe6+vmOzHgqknrroIQpoxjPRrs
-	 Y8R17VT6eeuHFcOc4dk6bPJnPohq/aqyonDJwiG21J4gx6VxcgHqTDIUWzdhq/+csO
-	 ll8+FioTFQeaBXJ4UFNBfqOdjR3drwg07aFdQzRH7uDuV3lW9cKwMys4CAebNhA3qe
-	 a2aczlbG19g/g==
-Message-ID: <09179c67-1dbe-41e5-9905-26b4c6bf9f60@kernel.org>
-Date: Tue, 12 Aug 2025 09:23:29 +0200
+	b=jqUtyZCnXk+znDbQjnFeGQOxKcz2AIPqI60/CZMZjjVL9St8LUuPHFepgL2ODH7Ve
+	 R7obL8/R2LFEiuafdIg0vPBB01R6gCyFyC0OGFJ80ZiB5iAFUoqiu99lD3qKJ6s7YM
+	 BUHD9b5IME2vAdrMcXwkOxGCJ7UxXd0PXx7MgdhaU4K6p7KY4vM1PaYKy73BYGIPQ9
+	 /1bD1fHuQK5srVVFWb9lluTLfm5V0alCUm/M8g+91BcVSw3YXzxNaViXF0g6AWjfDA
+	 wdyayNd14vwOZ2wM4jlUzeaRhkB0bmbdViN2v1lJ0f4Vjl67cTMEeTijj/accEY/7R
+	 7BkAoveiQrjJA==
+Message-ID: <c44c9aad-b08e-4be8-b135-258305b1f950@kernel.org>
+Date: Tue, 12 Aug 2025 09:32:04 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v13 04/25] virt: geniezone: Add GenieZone hypervisor
@@ -126,10 +126,6 @@ Autocrypt: addr=krzk@kernel.org; keydata=
 In-Reply-To: <cb84d8d87a67516f9b92a89f81fe4efc088f7617.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250812_002337_805488_7A28FAE4 
-X-CRM114-Status: UNSURE (   8.55  )
-X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -145,34 +141,12 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 12/08/2025 09:04, Liju-clr Chen (陳麗如) wrote:
-> On Wed, 2024-12-11 at 09:44 +0100, Krzysztof Kozlowski wrote:
->>
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
->>
->>
->> On 14/11/2024 11:07, Liju-clr Chen wrote:
->>> +
->>> +static int gzvm_dev_open(struct inode *inode, struct file *file)
->>> +{
->>> +     /*
->>> +      * Reference count to prevent this module is unload without
->>> destroying
->>> +      * VM
->>
->> So you re-implemented suppress-bind attrs... no, drop.
->>
-> 
-> Thanks, will fix in next version.
+> we have guarded the gzvm driver with the CONFIG_MTK_GZVM Kconfig
+> option. This ensures the code is only compiled and active on selected
+> platforms, and will not affect other users or systems.
 
-I gave you comments within hours. You responded 8 months after. That is
-not making the process easy.
-
-I expect all comments applied in such case and I will not be reading
-further. You got comments, implement them fully. I think you reject
-them, but rejection after 8 months, means all context is gone.
-
-NAK
+That is simply not true, since it will be enabled in defconfig in EVERY
+platform. Look up approach of single kernel and single image.
 
 Best regards,
 Krzysztof
