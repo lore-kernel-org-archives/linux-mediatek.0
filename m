@@ -4,148 +4,223 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD3D9C87FCB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Aug 2025 12:37:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61450CA0EC4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Aug 2025 12:39:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6TfQEE8cwbjM9plrugfaKaYq7luPamLR3QwxxGoQ810=; b=NIeeDjjRvNMJwYBucqDWYAuGV8
-	xS5Z/pGQpCh8lO7zap0fcbdAu2WiysmC/YJDRFb2cPSusKJESdakgXij7NdypYM5SbCllSG9fCzra
-	m1YJLpHKeuTGhC+DTT4mFaILwOlEk+QTDqczOGdhEbFrHhn3XiPIpeK5nBPh9PlpyMGDLzP4iWynn
-	0sibBdi12hcXmRcK69hjgSpPIZO+5RCj21qxxlwgJbV0jPLLAL7c0tzHOQwfUm8Gufewpg4MdceOD
-	f+tyr+Yvgiv7yIxvWTPVVTz+h7BMvaotq9dTJzSsJCLtDymv2n9TuEYuMKqWd+0vpA3mCpXcU7rwU
-	A+fu42HA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xB429bzdgZUTxIbLTus+KLSR+lz8BAYWt5dY4sSnbfY=; b=VaQJ2+Uy65zKlnfIT4Tp4yAv2o
+	ttuENhkQCfw0Cxpgr3RXjTNBbsZU0hJlWBbJwqa7FhFLpfJ+0JHF7Gq49SyyqsXb/RSNQs3IMktnx
+	0YfG1PqpQEI9tpvBfEYukoqkqIzkcAaIa9dBp/duFWNIB1yqalOgLhk5WLatm9h0lgPzYkQSA4Qvs
+	23idPkRh+gwkntt91TSQLSlTF05/dIooU1mE0Ojy3dakfzzWFf9eZ0oegMOAYTqaqinuhhsiTggJr
+	VO4CimAS3S6aL697/kId7I/pF3bXzkqX3N7lKguhp3ijBZ1ED9Vvk/4uiw9TyMT+3aZqc4V2/OQCC
+	mWKtje5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uloFf-0000000AjD7-1hH4;
-	Tue, 12 Aug 2025 12:37:15 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uloHO-0000000AlGE-0G2g;
+	Tue, 12 Aug 2025 12:39:02 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulkM4-0000000AErO-2zn3
-	for linux-mediatek@bombadil.infradead.org;
-	Tue, 12 Aug 2025 08:27:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=6TfQEE8cwbjM9plrugfaKaYq7luPamLR3QwxxGoQ810=; b=Dzwei3fpfCOblbcuSsqcWbuhv1
-	gYhRnq0esYx/D/sBibhZeeMMwQlZyd2YHIid3CrcCtwR7CvBYtvthAr3638ZnOy6IPn1XkZnUZiWu
-	GhzP5znfpFrQ8F9Ict9DXIO+41Qm5t6B4wRUGPe0rG6PSdlVatkhZEvXJRXDP8LvaLVD4XlNRYEvV
-	Mxg8aRYaRhsDhPXYfNszyBnOuopM8fFXf9mJM+QBF+PU/iFqwo2lt92pH+Ofgzg68+8r4Und3dk62
-	oqOrs4dmKXbDA9AN+K2hJ6XWVqGb5QCq38CoFkPlKvV4LJvk04HqdiCFm5I6fpvHIWxqEsaffTRlC
-	ny4WuYIw==;
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulkM1-0000000FkuY-31hH
-	for linux-mediatek@lists.infradead.org;
-	Tue, 12 Aug 2025 08:27:35 +0000
-Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-3b913a76ba9so242136f8f.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 12 Aug 2025 01:27:33 -0700 (PDT)
+	id 1ulkXc-0000000AGgR-3XZp;
+	Tue, 12 Aug 2025 08:39:35 +0000
+X-UUID: db275c26775711f09eb0dd999d3936bf-20250812
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=xB429bzdgZUTxIbLTus+KLSR+lz8BAYWt5dY4sSnbfY=;
+	b=kd0Rpl8NVYtnc/sDEPe6UjtQ6Z/xExntuQHa5Hpy2jKcg8H0pZ1el1zRUjyuozeQn+24pZm+JaIKyxESgYi8Ytbb7CWLe8diIpkd/7/edsLCrkq1K1LSsxoSzOOMSoU2ElbOteJWoUTbAQahK4P6meJvTPsDM/VHcMsBqNhFC+U=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.3,REQID:3cef9188-aac6-4cdf-9cca-e8a925f7c397,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:f1326cf,CLOUDID:6f6bda9d-7ad4-4169-ab95-78e9164f00fe,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111,TC:-5,Conten
+	t:0|15|50,EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:
+	0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: db275c26775711f09eb0dd999d3936bf-20250812
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
+	(envelope-from <liju-clr.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 476661702; Tue, 12 Aug 2025 01:39:27 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Tue, 12 Aug 2025 16:39:23 +0800
+Received: from TYDPR03CU002.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Tue, 12 Aug 2025 16:39:22 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=imw5iy9q7tTYa2lrvl8iO0ERAYkPzK6kVpyR3PI8elgA53bZoMes2kEfcFGWkbOt/YoUDIhPDaB2uwFronGP+dwvqgB05z2Yp4nW0jedYaf+iykvaq0WS9QCWKFwnlv9XSE7w05EIEPt3EYyhvSqdsKxEby6HVPoKOB6DHOJiMmIpImk/1XQQfxrrizn4+wtFGNJfdLjaVwfuBO0fBEm/lSSzUo2xBRK4mH2LZujiDZ6/8Wh3g8r26TlgOWprEPTS2KXG8A3p4JvdLOsg1uckz0v70WAHThogDZMZpu9Otp942TMiknJxcWBmVhKS1/aiFSN/w7gmTpZ6cqHG2yVpQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=xB429bzdgZUTxIbLTus+KLSR+lz8BAYWt5dY4sSnbfY=;
+ b=NfmbHwBtjN+G11vNCZo8CGKqJ4GRUOaZ6T0ehvwpSV8GCrjYfss+5pQzcuF84ime7xICtxEGN4eL6ajojzitXsnStUGYag/wbe/SB4KbojTcRLEAyWYQkML3vhCsP0cyx3HK5UsN8BmX25KKCsp/HxD6IptkDLolojeaUTWRugAWZXVpZjM156dqmWoFP7qOnqw+nppDO7J7mRFPwP2uqx2cmiXdTmE/sffJo4fQf3ugTX2It/n70H995NcNB+u/vqZmPHYNh4DBGm8cvZLchh2djWgPCaLkV0mT4iceKFST7M22tBwWySzTQNqQeNC+IAuH0dbuG497B7W6N4Magg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1754987252; x=1755592052; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=6TfQEE8cwbjM9plrugfaKaYq7luPamLR3QwxxGoQ810=;
-        b=iqcTYgoav5ORGdjc3wwbP1TDiqwkMGG5pzljFTQ0+vbCS5tBoPJMOrgTiMqSt+jZ8t
-         UboFavPZdR+Al8kzkYbGOX8+NMi2gluV6BDhVa1LHpAhYbVH4MdIlvaCDpik0MVvmmNY
-         Z/ZPFFLFWK6csnx9LGzWYdqvq9H80r/n04T1p67SGztjhJ7ygcmK/NrFCwWnwYcdLps0
-         dKIw1T9IBCcs6LrFFDfrwJBGsgXXjBccZz4wfVatFZXSSA4tlNYsV/zIBpLgkFyR32XP
-         0SYGZCj1xmynKbRLtz5DjVfNPP7jvuoJiZyeRyP1UOXG87Shyp1kz5GUo9iHEgZMlbHN
-         EtRw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1754987252; x=1755592052;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=6TfQEE8cwbjM9plrugfaKaYq7luPamLR3QwxxGoQ810=;
-        b=rL+lp0OrpgBzUpJZkxEt+N1x2jrXv0IfmhDtquPZFRe53BgSDHzuGeCByUy1tyDOr8
-         Nm3N9Ya6Ykjp2Tf+xqioriPkdnPkEmWk06IjW8zrjfqpeLdXZ8Nggsh920d1bDB5LAmY
-         2dSG5R6r1cMY2O3hlOb971ykurA81zQZMKuEFInW0dJ/K/2Ie6Zfj3QFs5FiIP9bimDh
-         hpCzd+Jzj+5alljTgtdmP601lseG1bNSrTwUurJdLr7dJrxbfZssmgwrISqUwCjo5AfH
-         HjepxwW2nfMksrxi7EKdK/kYbbyEHw/JUijiSGznEIBXtH+sEYLdWnAqTXpHDIZFcFlY
-         axuA==
-X-Forwarded-Encrypted: i=1; AJvYcCXutOtXO6EjEoRORfdAMxHEmxHgw8rpBSccdvAySKZV4KAyP1tMM2Lu7egcTR5nUF5w+UlMnHgWkzujaO1ZBQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy46rbSnF5bo+cSjH/7iGGocM1ZZt5eqW8u8PV/GA6BrOx7GN+E
-	U3EpL+wEACVpvgpGxMmCcsJBpKQX5xoOWwAualpFgXLjlGD7WD3A3/nMMS4A5sGrEXo=
-X-Gm-Gg: ASbGncs1nGJ8AqSYSLDaTD863LqnV3XnMqv3ZyUF+5MObCjG0zyWmtguKe1iA4028uO
-	nlWz8dQUHI89d154fg2cNWqd/Ou7KhIKZV8kY/Yl3lPt7D98hacUQ3dTyhA6Qndr/UbrQHJK6NT
-	qjsohL7eug7698xxSlhHuc2vb/FXoLc7smqkmkufTSJgK2W50LJXYPfl5Qv5tJSRM0S4eSxnQH8
-	mTTQN3BLAOJ1389htgc7q5TCj7sZD6C9bGb7G00Hm8rlNqaQMLWWhuFcHgPDBZkPNHzslEOTU01
-	13OMg/Q4d5b/3gsH4mN25U48dxilstHEqWP7vZJWHdksa3icVhyBS1yw9qioL3JAiAqz/8OljNY
-	7eUxCSmUjOCexwUU=
-X-Google-Smtp-Source: AGHT+IGAT+yrW4EGuKkhDjsCd9DDEzxiwycfLIQ7ogC+jspy9kzADQyf9wP5ZP0khrlyZA2+JvOX6Q==
-X-Received: by 2002:a05:6000:178c:b0:3b7:8a49:eed0 with SMTP id ffacd0b85a97d-3b910fd9b17mr2078998f8f.22.1754987252291;
-        Tue, 12 Aug 2025 01:27:32 -0700 (PDT)
-Received: from [127.0.1.1] ([2a01:cb1d:dc:7e00:16c8:50:27fe:4d94])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3b79c3b9386sm43549423f8f.18.2025.08.12.01.27.30
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 12 Aug 2025 01:27:31 -0700 (PDT)
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Tue, 12 Aug 2025 10:27:13 +0200
-Subject: [PATCH v4 14/15] pinctrl: qcom: mark the `gpio` and `egpio` pins
- function as non-strict functions
-MIME-Version: 1.0
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=xB429bzdgZUTxIbLTus+KLSR+lz8BAYWt5dY4sSnbfY=;
+ b=EOqqZTpxiscn1EYT0F75TpX27VqetNC3GuqWg4hfIfYQQBKdi/kJaJnoAh/ZWdNfn1FrlTo1GgfT/HewBjnTjedq62z3O6ROg0NmPgK/zlw7TGrRyaY0kECLNi0nkdodYdeHxOzwQ8MK3MLRcKudtPMrYGWKTztXzzHBLhvzLb4=
+Received: from SEZPR03MB8273.apcprd03.prod.outlook.com (2603:1096:101:19a::11)
+ by TYZPR03MB7483.apcprd03.prod.outlook.com (2603:1096:400:423::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9009.21; Tue, 12 Aug
+ 2025 08:39:21 +0000
+Received: from SEZPR03MB8273.apcprd03.prod.outlook.com
+ ([fe80::f7ac:70cb:3cb4:acac]) by SEZPR03MB8273.apcprd03.prod.outlook.com
+ ([fe80::f7ac:70cb:3cb4:acac%5]) with mapi id 15.20.9009.018; Tue, 12 Aug 2025
+ 08:39:21 +0000
+From: =?utf-8?B?TGlqdS1jbHIgQ2hlbiAo6Zmz6bqX5aaCKQ==?=
+	<Liju-clr.Chen@mediatek.com>
+To: "corbet@lwn.net" <corbet@lwn.net>, "krzk@kernel.org" <krzk@kernel.org>,
+	=?utf-8?B?WmUteXUgV2FuZyAo546L5r6k5a6HKQ==?= <Ze-yu.Wang@mediatek.com>,
+	"catalin.marinas@arm.com" <catalin.marinas@arm.com>, "rostedt@goodmis.org"
+	<rostedt@goodmis.org>, "robh@kernel.org" <robh@kernel.org>,
+	"mathieu.desnoyers@efficios.com" <mathieu.desnoyers@efficios.com>,
+	"mhiramat@kernel.org" <mhiramat@kernel.org>, "krzk+dt@kernel.org"
+	<krzk+dt@kernel.org>, "will@kernel.org" <will@kernel.org>,
+	=?utf-8?B?WWluZ3NoaXVhbiBQYW4gKOa9mOepjui7kik=?=
+	<Yingshiuan.Pan@mediatek.com>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
+	"richardcochran@gmail.com" <richardcochran@gmail.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: =?utf-8?B?U2hhd24gSHNpYW8gKOiVreW/l+elpSk=?= <shawn.hsiao@mediatek.com>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>,
+	=?utf-8?B?S2V2ZW5ueSBIc2llaCAo6Kyd5a6c6Iq4KQ==?=
+	<Kevenny.Hsieh@mediatek.com>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "netdev@vger.kernel.org"
+	<netdev@vger.kernel.org>, =?utf-8?B?Q2hpLXNoZW4gWWVoICjokYnlpYfou5Ip?=
+	<Chi-shen.Yeh@mediatek.com>, "linux-trace-kernel@vger.kernel.org"
+	<linux-trace-kernel@vger.kernel.org>,
+	=?utf-8?B?UGVpTHVuIFN1ZWkgKOmai+WfueWAqyk=?= <PeiLun.Suei@mediatek.com>
+Subject: Re: [PATCH v13 04/25] virt: geniezone: Add GenieZone hypervisor
+ driver
+Thread-Topic: [PATCH v13 04/25] virt: geniezone: Add GenieZone hypervisor
+ driver
+Thread-Index: AQHbNn029Xq+tnHy3U+kHaTtB6IkebLg5LqAgX9dFQCAAAU2gIAAFTEA
+Date: Tue, 12 Aug 2025 08:39:21 +0000
+Message-ID: <faa50dbe58e021a67786aff6fe646b6dcaaa05f5.camel@mediatek.com>
+References: <20241114100802.4116-1-liju-clr.chen@mediatek.com>
+	 <20241114100802.4116-5-liju-clr.chen@mediatek.com>
+	 <7b79d4b5-ba91-41a0-90d1-c64bcab53cec@kernel.org>
+	 <cb84d8d87a67516f9b92a89f81fe4efc088f7617.camel@mediatek.com>
+	 <09179c67-1dbe-41e5-9905-26b4c6bf9f60@kernel.org>
+In-Reply-To: <09179c67-1dbe-41e5-9905-26b4c6bf9f60@kernel.org>
+Accept-Language: zh-TW, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SEZPR03MB8273:EE_|TYZPR03MB7483:EE_
+x-ms-office365-filtering-correlation-id: b4e964a0-d7b8-4f72-3b43-08ddd97bbbea
+x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|1800799024|366016|376014|7416014|921020|38070700018;
+x-microsoft-antispam-message-info: =?utf-8?B?dGR5UmlMcXZ6TzY2Rm15bUdETmVhTFF2L2dlZHZERHdVbVVCTmZ3OURBeThj?=
+ =?utf-8?B?SUMrVUE0S0lrTEdzZEtQeWdiYmtPTEFxUUVlemg1QjJ6Y2tSZXAvZk95UzQ4?=
+ =?utf-8?B?UHRDUm1BTjBRU2h5NzhQNUVXa3laejMzcFRsclNjWTlLK25ub2hjQUxoWmVR?=
+ =?utf-8?B?cVpHaENBbUtjdVlMSXdRVTJNK2hDV3Vvb3JUQTg2dE5WTTdkVGxrSXhqRFQw?=
+ =?utf-8?B?NHIrRlozQS9GRzdNcmFzZkEwM3BpVjBwaTVreHV2eFB2QUpUcDZ6UmcxRi8r?=
+ =?utf-8?B?STFtT1dUTVJHN0xiY04zZ1JCb004NmNTNG9SNVg0Lzk3SXRQRkQyTkFndEZx?=
+ =?utf-8?B?WHNUcmxFK0tJeGYzajNGalVnU1JoUWFpZ1R0VHVFSnhWWldpajFTUDZNQkpi?=
+ =?utf-8?B?eTN4Z3hTclJZNDh0N1RBMVBUWnlOMDNTYzFxYUx0aWJXazVHYXhHaU9ydlVH?=
+ =?utf-8?B?RkxrQnp5RFRRU0UrazB0a3prUjJQNHVOZ0NtcFY0VW9sSjVjRHNvNWFRZ2VJ?=
+ =?utf-8?B?Q1BDd1JGS0NMQWIzQ3NZNmtQQ21wZGpUT2NvckFKblVtdlNOcStnYnNhN0J5?=
+ =?utf-8?B?eFNBNWViNElVclptaHd2NnhsNkhWUlpPMUtBcnZReVVsTllpT2pmbHBoR25p?=
+ =?utf-8?B?ZlN1MWt5VWljeU9pSWpiVjFsOWlWRTl0NnExbkx4b09TSG9YanJBOFZkSnpr?=
+ =?utf-8?B?d2diVlVBQXlXN00rOVBkenp1R3M4UFhYQWdYYWlFdnVWc2MvRGlZS0ZRL09L?=
+ =?utf-8?B?VTNpWjFMQnZaNDlvVmtmSlQzNUUxZ0Z4Mm8yN0lmRHI1bm1vU0dldGZmZmpE?=
+ =?utf-8?B?UjZINklzSXpycUgzS2FhbjFWaHh0MG15VEk1SGhBL3M2eFJtdk5yOVBGbldC?=
+ =?utf-8?B?SmdqSWFJQW1GYzNmb0Fjb3gvTDRzYy9jT08vM1BISGFBRDRuNnNqYWNnWlpn?=
+ =?utf-8?B?emRyemFlQktJbm9mSCszNlMyenZxUTY0b0MyeEtUSkRqVXo4UmtwRWFNN1Ri?=
+ =?utf-8?B?NVVUek5Bd1lPajV3dVVFSWl6dEJPUS9vTTF0aGN3YTF0ZFozUkNZbnNXd1d5?=
+ =?utf-8?B?VTQxeWMrRDRpSHZ6TFhFWUNOSHhYU29RakxhUU1FL0ZLVlg5V1E4QitxY2lS?=
+ =?utf-8?B?c0ZpTjdlTzlRNVlHOVZ3YmdlZGM4YlQxU0wyZW5hTGNEaW44emozQm5lNHVQ?=
+ =?utf-8?B?Y3J2Qk1mYXpxZjNHTTBBRElNeWdvY1lpRmRsNThMaUczZlRMcG1RMC81SXVn?=
+ =?utf-8?B?a0JDOXhJMDB2Q3JEb1FPMG9HY2dYNGJKbzN0bWZ1WXpyb1NDOHlaRjNFNWV6?=
+ =?utf-8?B?b0o3MEN6TDNnZDFsM1lmdUd1bnFzMWkvQXlBWmxNelF4aHB4bnZNZ2NpMFdJ?=
+ =?utf-8?B?QWV6MHdtNy9GZFRDNVZmUGZKMEltOUhqOERRMURodzB1b2FLU1haTnB6U3FW?=
+ =?utf-8?B?ZnRmOXdQYlRqeEs4SzQxRE9yMGd4eG5YL1JUc25Sc0V3cWRick01ZWsvQVhU?=
+ =?utf-8?B?SEI5VWNXRzZ1K3pIRm1UQm54bitJVm5ZVmNRMzBZVnJ4bzROTGRFOFA0ZGhZ?=
+ =?utf-8?B?cWVIQWhDVFJYUVlKc3l4eFVZanVtb3JNUzVhcUxPblVtYmZ0RXhhM2pBMko0?=
+ =?utf-8?B?N2Q4NWM2QUxCOGgxWUR4WUhpZVhYdWc5Qk93a2JxN25kRFdsRm11eHZVZkN2?=
+ =?utf-8?B?Y2JUWVJhQ2hidm5HMWJtM05NS1k5UU9JSDVYME14YzJNb3kzL3Q4dE5iUnBE?=
+ =?utf-8?B?UEZxRGdjRnNxL2N6NTRWb2szSHQ3ZzR3WmNrSFRVWENQL2FONGVaZkJnS2l3?=
+ =?utf-8?B?a0lhMHY5QXZyL2JuMUJyWkRxcTBKcng1TlpjRTh2dExTdGMvSWNkOTZPSENk?=
+ =?utf-8?B?eUJEdFlZRys4NjdzVnNlejgzWktscVBSVXF1V0ZVMHhXNUhpKzkyQlhTU1cw?=
+ =?utf-8?B?a1p1Wk1nTjdGSkN4N0dkeTh2Z0xSVHhveVlvcVFvS3dLT3ZQMnFwelA3YlJL?=
+ =?utf-8?Q?6IOjshP9Xx8fA/9lZhxl+zYQ9FJecI=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR03MB8273.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014)(7416014)(921020)(38070700018);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?TzhxelRhblIwUTJLUVVrbW5IYld0eWg4cXZMblZwaTBjRUluR080K293TkdU?=
+ =?utf-8?B?ZWdJbUdVL0krcG52WjN3VUJoU3gwVE05S28waStJRHNaZURNdmtpeHRVSFEy?=
+ =?utf-8?B?cENURTlYOXJFZjcrTkM2MVF5WWtsYnhiOTJEcm1GSFZSeitQK01xSzJObDZC?=
+ =?utf-8?B?Z1ZRV0M3eENrSytvMS83LzZ5QWcraDVnVEhPZ0M5RFA4ZVRhbnRCVjkzL2FW?=
+ =?utf-8?B?SGZZeVBiRUZMeGVqdmlPL3R2dEdua2k5UUY3WnRZOTVMYm1vYkw0R2tyTm0y?=
+ =?utf-8?B?bHJtdHAyTTIyRUZ1b3NnUnJQdWNTZEpTaWNJZlkxdkxsZk9hRHo0ZmZDenJz?=
+ =?utf-8?B?NWZPTFBXQWM5MVN3Zno2clhWd1R6YlpnRjBPL2ZZd2lPWWFZRGE5V3k1WUFo?=
+ =?utf-8?B?dGlQMTVIMkZZbkpyL3VGVU93ZFlEVjdHdVJqNU9TSmhKMFZhWXlhb2EwUmF3?=
+ =?utf-8?B?RHlabGRYWGc0bG9ZVGcrUDNETFhZQm9NSWd1VjErWkZRL25qYUVWS1N4dGFq?=
+ =?utf-8?B?KzBpMUFoMURZNEo1YTlnQjlSVXNRRmdKWWcxZUhndHNPWWh5MjRzZXVyTHcv?=
+ =?utf-8?B?bnIrQlY4bHNxckorKzhIWkF5VG5tMTQwdVg1c3l5ME9DWUpkaHFWSnF2UUJK?=
+ =?utf-8?B?TEp2STgvUnhpeC9adVJpUzdyVjNzUmNCYnVUYWF3NjVmZWJUQ1J0YlJaMHEy?=
+ =?utf-8?B?RTYyUlZ4Vy9xc2hieGRFbitwRmF4ZTBRMWFwYVZTRE5aRzlvdVlCSGg5M29Q?=
+ =?utf-8?B?NkM1Q2J1Y1hkOGMwM3NKY1NweUh3MFpEWUxobGhsR1plWlFPaFMyeU14RGUw?=
+ =?utf-8?B?ZlhNZndLR0I2UFQyZEh5T1dlL3h6R3VZYTFOV250QXp4VFRYUXVYb1hQbmU2?=
+ =?utf-8?B?eHcrdExpT0t6WEZzWWpGRHUvKysvdjViTFFQQlJtOC80V1NiNWd3b1V4WTBB?=
+ =?utf-8?B?bTFoUVh6aFBod1RzaWt2YUxRaEo5SnhoRUlTYUplNkNuUXl1Rko4QkJFUlhC?=
+ =?utf-8?B?VEdxbVBtRHJlQXhFeHZrR1c0RFZSRUNLdzBLSElPT25aeEhnQnMrVFBKRXBq?=
+ =?utf-8?B?aG9uYUg2aUt5by9ZR1d5VVZjZEtqTXF0aVB4cmNqTFJhSXFneUhKN0NkdHdl?=
+ =?utf-8?B?cExpN2lYL2owL1VlYjh5RjhvVGdZb3E1eEdNaE1MZlhZVlc5V0dCNVErelkz?=
+ =?utf-8?B?WUI1dkE5a3hORDFYOWJwVjQySWlJNWhuMmx0UDJCM2lxUjU5UmtUTnloRUZQ?=
+ =?utf-8?B?dGRYaVphbThRK2lCZEJRRS8zUUVDWW1YVSt5bzBUSU1tckVJK2ljWUZyRlpx?=
+ =?utf-8?B?TksrUnhKUWs4azF4d0w2eWJ0T000bUVGQmFWQ1dYVTBoTlpPV0ZNaXlFQjZv?=
+ =?utf-8?B?a3FoZm5GUDRHb3BQdS9yanI4MENpRUdubUlvRWxiWFBtZXdzWTlKdE1COTRL?=
+ =?utf-8?B?MXRDOExiam1Ea3dvS0hNUDNEODVGeHIwemx3TjZsNTlqTkcvNkRydHZBQWQr?=
+ =?utf-8?B?MlduTHlaVmwrWmFXN0ZEM3VtMmJVUm5hQ1c2Y3l1WmJUdi9FRE1tRVFOeC83?=
+ =?utf-8?B?enRUYjhISUd5MXgrZ1V1U0NNc1VwcVBUNFg2cXcvZWVXQlAzRm9Cb0U3LzRP?=
+ =?utf-8?B?TGpwdUVkT1BWMVVaRjRDakIvbzI2clpoV1pWMVo0U00vSlUvQ09hdnBUajhl?=
+ =?utf-8?B?QlZtSXhyZk1LL0xhY0FwdWdkbUlLWmJTTjdmTGxNRTlRem81SGtGTjZYdHVi?=
+ =?utf-8?B?eWp3dHdiTXBNTnZSMTFLSTdBMkMzL2RoT3RQRlN0SFVDN2NoN1Jkb0V6d3hH?=
+ =?utf-8?B?QmtWTnNPbVhwdUpaY21mT1pOemNidEZIVXJoQzRNTjI0N1BLdTBPWEhEQ1Q1?=
+ =?utf-8?B?dEZvclFwMkJqQnM2ejBnZVYvTlQ1cE4wcCtWak8wZEl0NHdWQ0dQL1lJSlBo?=
+ =?utf-8?B?OVhyRlE4OGhyTG1hYnBCL0IyeDNLTXdwZHAzRkxRcm9HaWZtVXJrNXR4QTh4?=
+ =?utf-8?B?d24wOU56TnNINGFmOXhuQzNVMnh1WEZOMytrQzhVV21FTlorVjJVYUVpU1Ra?=
+ =?utf-8?B?UFZPaFIrcXp0UmQ5UVEzcThBVUtDVm1EdnA1MTBMbThKMjRYb1VCL3VnQzMw?=
+ =?utf-8?B?RDlLQ1k3WnFUa0pKVmhUeUsya2pTdnYxZ1orNnlmbUVFNUxCTDEvRUlIdGRZ?=
+ =?utf-8?B?WGc9PQ==?=
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250812-pinctrl-gpio-pinfuncs-v4-14-bb3906c55e64@linaro.org>
-References: <20250812-pinctrl-gpio-pinfuncs-v4-0-bb3906c55e64@linaro.org>
-In-Reply-To: <20250812-pinctrl-gpio-pinfuncs-v4-0-bb3906c55e64@linaro.org>
-To: Linus Walleij <linus.walleij@linaro.org>, 
- Bjorn Andersson <andersson@kernel.org>, 
- Konrad Dybcio <konradybcio@kernel.org>, 
- Alexey Klimov <alexey.klimov@linaro.org>, 
- Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Paul Cercueil <paul@crapouillou.net>, Kees Cook <kees@kernel.org>, 
- Andy Shevchenko <andy@kernel.org>, 
- Andrew Morton <akpm@linux-foundation.org>, 
- David Hildenbrand <david@redhat.com>, 
- Lorenzo Stoakes <lorenzo.stoakes@oracle.com>, 
- "Liam R. Howlett" <Liam.Howlett@oracle.com>, 
- Vlastimil Babka <vbabka@suse.cz>, Mike Rapoport <rppt@kernel.org>, 
- Suren Baghdasaryan <surenb@google.com>, Michal Hocko <mhocko@suse.com>, 
- Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, 
- Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- NXP S32 Linux Team <s32@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>, 
- Tony Lindgren <tony@atomide.com>, 
- Haojian Zhuang <haojian.zhuang@linaro.org>, 
- Geert Uytterhoeven <geert+renesas@glider.be>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- "Rafael J. Wysocki" <rafael@kernel.org>, Danilo Krummrich <dakr@kernel.org>
-Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
- linux-hardening@vger.kernel.org, linux-mm@kvack.org, imx@lists.linux.dev, 
- linux-omap@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
- Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, 
- Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=35951;
- i=bartosz.golaszewski@linaro.org; h=from:subject:message-id;
- bh=nHsco2Wzr2CAT5gE0mq3nSAwj0pKQdcWwYpWK83YXU0=;
- b=owEBbQKS/ZANAwAKARGnLqAUcddyAcsmYgBomvrZhBeY5SG4bny1pFhK5ASy4hfy0jGaYtAfn
- v3nW8fb7b6JAjMEAAEKAB0WIQQWnetsC8PEYBPSx58Rpy6gFHHXcgUCaJr62QAKCRARpy6gFHHX
- cmDMD/492yEQV6iiYDVthHLZuIylGSQggBfIHXJMBVonlBr7xr4kKdUXqxWOAi5IzexJgsfTxun
- 0gUJ0NAfn3EB0qJxShxYytT20u1K8tFn/BJPe8BuHvR1CS4w37ik3Idu/kqEp1y8w22xa5PR69u
- KCcvSen9TLRHnwN/zYBy2JYPYSk7TdUUAfoBG55raAexVtVEePaVWcEC5aDIoKkJpFJv3JvmE25
- VNM5OAWBFrVO5l04tL9RQOhqz3/HZggLqGP4kCMUPNjjXjAOsr4wg6A1+tAWeXIYzrRo2kdQxGL
- MhTdOy+YPQBZrq36UNPDilG9UJlCSWS8Exk6JSMu07Gup+221ScGdews0CRUmgMpn3bZwSEtgDI
- PlxBLEzXQQ2jfGLJqGNCyUgPHRJU6BxTrEoj7kOkFniWngbQ7KLeuP1/cRUhv67tFl/Fqqzsymq
- kYvnjry9miFLiufXVnPapqvvDCiOjxaAZnwuTN+6uIz+AVM1zWRfKylySLr+5BuPkTd6x8uB19F
- 9XaqBa5c8LBPux5YUo6mmlFf405w/TmnGo1iBt4r1c5cskVv1hc8jCgAE4fFE1w85uIBdb2C2ZY
- JSJKn5QsJr3BaZ1kumpHyX/liUQrKcZfFE6DWuNgOvaD2TcJq3gsyyadZW/v/iLTha5/fZvRwiS
- CYrTwh6XK5rb+fA==
-X-Developer-Key: i=bartosz.golaszewski@linaro.org; a=openpgp;
- fpr=169DEB6C0BC3C46013D2C79F11A72EA01471D772
+Content-ID: <0EBAB4CDD1B50C4DB557758DA880D551@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SEZPR03MB8273.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b4e964a0-d7b8-4f72-3b43-08ddd97bbbea
+X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Aug 2025 08:39:21.3137
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: oYmRIS+9hkww3K1BrqiLuoWOxG/JjeIslMWyquQmjeZOOVR2BI8JntCDohN4VtK/kXIt1kRA+F0iOrjWMIYZYOIohvE7d907Kj3un5aqZR4=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR03MB7483
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250812_092734_084627_E16E7803 
-X-CRM114-Status: GOOD (  12.29  )
+X-CRM114-CacheID: sfid-20250812_013932_914833_0670D514 
+X-CRM114-Status: GOOD (  18.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -160,810 +235,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-
-Allow pins muxed to the "gpio" or "egpio" function to be requested as
-GPIOs even if pinmux_ops say the controller should be strict.
-
-Reviewed-by: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
----
- drivers/pinctrl/qcom/pinctrl-ipq5018.c  | 2 +-
- drivers/pinctrl/qcom/pinctrl-ipq5332.c  | 2 +-
- drivers/pinctrl/qcom/pinctrl-ipq5424.c  | 2 +-
- drivers/pinctrl/qcom/pinctrl-ipq6018.c  | 2 +-
- drivers/pinctrl/qcom/pinctrl-ipq8074.c  | 2 +-
- drivers/pinctrl/qcom/pinctrl-ipq9574.c  | 2 +-
- drivers/pinctrl/qcom/pinctrl-mdm9607.c  | 2 +-
- drivers/pinctrl/qcom/pinctrl-mdm9615.c  | 2 +-
- drivers/pinctrl/qcom/pinctrl-milos.c    | 2 +-
- drivers/pinctrl/qcom/pinctrl-msm8226.c  | 2 +-
- drivers/pinctrl/qcom/pinctrl-msm8660.c  | 2 +-
- drivers/pinctrl/qcom/pinctrl-msm8909.c  | 2 +-
- drivers/pinctrl/qcom/pinctrl-msm8916.c  | 2 +-
- drivers/pinctrl/qcom/pinctrl-msm8917.c  | 2 +-
- drivers/pinctrl/qcom/pinctrl-msm8953.c  | 2 +-
- drivers/pinctrl/qcom/pinctrl-msm8960.c  | 2 +-
- drivers/pinctrl/qcom/pinctrl-msm8976.c  | 2 +-
- drivers/pinctrl/qcom/pinctrl-msm8994.c  | 2 +-
- drivers/pinctrl/qcom/pinctrl-msm8996.c  | 2 +-
- drivers/pinctrl/qcom/pinctrl-msm8998.c  | 2 +-
- drivers/pinctrl/qcom/pinctrl-msm8x74.c  | 2 +-
- drivers/pinctrl/qcom/pinctrl-qcm2290.c  | 4 ++--
- drivers/pinctrl/qcom/pinctrl-qcs404.c   | 2 +-
- drivers/pinctrl/qcom/pinctrl-qcs615.c   | 2 +-
- drivers/pinctrl/qcom/pinctrl-qcs8300.c  | 4 ++--
- drivers/pinctrl/qcom/pinctrl-qdu1000.c  | 2 +-
- drivers/pinctrl/qcom/pinctrl-sa8775p.c  | 4 ++--
- drivers/pinctrl/qcom/pinctrl-sar2130p.c | 2 +-
- drivers/pinctrl/qcom/pinctrl-sc7180.c   | 2 +-
- drivers/pinctrl/qcom/pinctrl-sc7280.c   | 4 ++--
- drivers/pinctrl/qcom/pinctrl-sc8180x.c  | 2 +-
- drivers/pinctrl/qcom/pinctrl-sc8280xp.c | 4 ++--
- drivers/pinctrl/qcom/pinctrl-sdm660.c   | 2 +-
- drivers/pinctrl/qcom/pinctrl-sdm670.c   | 2 +-
- drivers/pinctrl/qcom/pinctrl-sdm845.c   | 2 +-
- drivers/pinctrl/qcom/pinctrl-sdx55.c    | 2 +-
- drivers/pinctrl/qcom/pinctrl-sdx65.c    | 2 +-
- drivers/pinctrl/qcom/pinctrl-sdx75.c    | 2 +-
- drivers/pinctrl/qcom/pinctrl-sm4450.c   | 2 +-
- drivers/pinctrl/qcom/pinctrl-sm6115.c   | 2 +-
- drivers/pinctrl/qcom/pinctrl-sm6125.c   | 2 +-
- drivers/pinctrl/qcom/pinctrl-sm6350.c   | 2 +-
- drivers/pinctrl/qcom/pinctrl-sm6375.c   | 2 +-
- drivers/pinctrl/qcom/pinctrl-sm7150.c   | 2 +-
- drivers/pinctrl/qcom/pinctrl-sm8150.c   | 2 +-
- drivers/pinctrl/qcom/pinctrl-sm8250.c   | 2 +-
- drivers/pinctrl/qcom/pinctrl-sm8350.c   | 2 +-
- drivers/pinctrl/qcom/pinctrl-sm8450.c   | 4 ++--
- drivers/pinctrl/qcom/pinctrl-sm8550.c   | 2 +-
- drivers/pinctrl/qcom/pinctrl-sm8650.c   | 4 ++--
- drivers/pinctrl/qcom/pinctrl-sm8750.c   | 4 ++--
- drivers/pinctrl/qcom/pinctrl-x1e80100.c | 2 +-
- 52 files changed, 60 insertions(+), 60 deletions(-)
-
-diff --git a/drivers/pinctrl/qcom/pinctrl-ipq5018.c b/drivers/pinctrl/qcom/pinctrl-ipq5018.c
-index 10b99d5d8a11db644e974a80b9d7d04ffc09bd4c..cbf34854f8826507430a9bb5a527bdc5d87b9a8c 100644
---- a/drivers/pinctrl/qcom/pinctrl-ipq5018.c
-+++ b/drivers/pinctrl/qcom/pinctrl-ipq5018.c
-@@ -630,7 +630,7 @@ static const struct pinfunction ipq5018_functions[] = {
- 	MSM_PIN_FUNCTION(eud_gpio),
- 	MSM_PIN_FUNCTION(gcc_plltest),
- 	MSM_PIN_FUNCTION(gcc_tlmm),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(led0),
- 	MSM_PIN_FUNCTION(led2),
- 	MSM_PIN_FUNCTION(mac0),
-diff --git a/drivers/pinctrl/qcom/pinctrl-ipq5332.c b/drivers/pinctrl/qcom/pinctrl-ipq5332.c
-index 1ac2fc09c11923cd716495b16a7f4af5686ce398..239cbe75f198d3fadf39ed13387f5cea625a8f63 100644
---- a/drivers/pinctrl/qcom/pinctrl-ipq5332.c
-+++ b/drivers/pinctrl/qcom/pinctrl-ipq5332.c
-@@ -692,7 +692,7 @@ static const struct pinfunction ipq5332_functions[] = {
- 	MSM_PIN_FUNCTION(dbg_out),
- 	MSM_PIN_FUNCTION(gcc_plltest),
- 	MSM_PIN_FUNCTION(gcc_tlmm),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(lock_det),
- 	MSM_PIN_FUNCTION(mac0),
- 	MSM_PIN_FUNCTION(mac1),
-diff --git a/drivers/pinctrl/qcom/pinctrl-ipq5424.c b/drivers/pinctrl/qcom/pinctrl-ipq5424.c
-index 7ff1f8acc1a3a81037298464130fda59f329d53e..67b452a033d62340d669bfff4b6ae7b6d6cc430d 100644
---- a/drivers/pinctrl/qcom/pinctrl-ipq5424.c
-+++ b/drivers/pinctrl/qcom/pinctrl-ipq5424.c
-@@ -641,7 +641,7 @@ static const struct pinfunction ipq5424_functions[] = {
- 	MSM_PIN_FUNCTION(dbg_out),
- 	MSM_PIN_FUNCTION(gcc_plltest),
- 	MSM_PIN_FUNCTION(gcc_tlmm),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(i2c0_scl),
- 	MSM_PIN_FUNCTION(i2c0_sda),
- 	MSM_PIN_FUNCTION(i2c1_scl),
-diff --git a/drivers/pinctrl/qcom/pinctrl-ipq6018.c b/drivers/pinctrl/qcom/pinctrl-ipq6018.c
-index a4ba980252e187879947e7057004fa48815f2620..be177fb0a92d957bd57126df9c2a495b69ef1457 100644
---- a/drivers/pinctrl/qcom/pinctrl-ipq6018.c
-+++ b/drivers/pinctrl/qcom/pinctrl-ipq6018.c
-@@ -891,7 +891,7 @@ static const struct pinfunction ipq6018_functions[] = {
- 	MSM_PIN_FUNCTION(dbg_out),
- 	MSM_PIN_FUNCTION(gcc_plltest),
- 	MSM_PIN_FUNCTION(gcc_tlmm),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(lpass_aud),
- 	MSM_PIN_FUNCTION(lpass_aud0),
- 	MSM_PIN_FUNCTION(lpass_aud1),
-diff --git a/drivers/pinctrl/qcom/pinctrl-ipq8074.c b/drivers/pinctrl/qcom/pinctrl-ipq8074.c
-index 482f13282fc2be951032cbe6dc5100bf9129ea5f..e94de90833140c83d50535778e64044bb315c4ea 100644
---- a/drivers/pinctrl/qcom/pinctrl-ipq8074.c
-+++ b/drivers/pinctrl/qcom/pinctrl-ipq8074.c
-@@ -838,7 +838,7 @@ static const struct pinfunction ipq8074_functions[] = {
- 	MSM_PIN_FUNCTION(dbg_out),
- 	MSM_PIN_FUNCTION(gcc_plltest),
- 	MSM_PIN_FUNCTION(gcc_tlmm),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(ldo_en),
- 	MSM_PIN_FUNCTION(ldo_update),
- 	MSM_PIN_FUNCTION(led0),
-diff --git a/drivers/pinctrl/qcom/pinctrl-ipq9574.c b/drivers/pinctrl/qcom/pinctrl-ipq9574.c
-index 89c05d8eb55034dea3e1c7299ede6567c20e0159..3ed093ea8eb9074426934336dcfb9d74e3b8af22 100644
---- a/drivers/pinctrl/qcom/pinctrl-ipq9574.c
-+++ b/drivers/pinctrl/qcom/pinctrl-ipq9574.c
-@@ -651,7 +651,7 @@ static const struct pinfunction ipq9574_functions[] = {
- 	MSM_PIN_FUNCTION(dwc_ddrphy),
- 	MSM_PIN_FUNCTION(gcc_plltest),
- 	MSM_PIN_FUNCTION(gcc_tlmm),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(mac),
- 	MSM_PIN_FUNCTION(mdc),
- 	MSM_PIN_FUNCTION(mdio),
-diff --git a/drivers/pinctrl/qcom/pinctrl-mdm9607.c b/drivers/pinctrl/qcom/pinctrl-mdm9607.c
-index 3e18ba124fede923f56eab1aec5aaf875f06e343..cef330547ce78d4c8cc873251d77f18b29aff57b 100644
---- a/drivers/pinctrl/qcom/pinctrl-mdm9607.c
-+++ b/drivers/pinctrl/qcom/pinctrl-mdm9607.c
-@@ -861,7 +861,7 @@ static const struct pinfunction mdm9607_functions[] = {
- 	MSM_PIN_FUNCTION(gcc_plltest),
- 	MSM_PIN_FUNCTION(gcc_tlmm),
- 	MSM_PIN_FUNCTION(gmac_mdio),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(gsm0_tx),
- 	MSM_PIN_FUNCTION(lcd_rst),
- 	MSM_PIN_FUNCTION(ldo_en),
-diff --git a/drivers/pinctrl/qcom/pinctrl-mdm9615.c b/drivers/pinctrl/qcom/pinctrl-mdm9615.c
-index bea1ca3d1b7f84c28c23af2a52cc464da44a90b0..729fe3d7e14efcfa247da2daac999c4038e1613c 100644
---- a/drivers/pinctrl/qcom/pinctrl-mdm9615.c
-+++ b/drivers/pinctrl/qcom/pinctrl-mdm9615.c
-@@ -313,7 +313,7 @@ static const char * const cdc_mclk_groups[] = {
- };
- 
- static const struct pinfunction mdm9615_functions[] = {
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(gsbi2_i2c),
- 	MSM_PIN_FUNCTION(gsbi3),
- 	MSM_PIN_FUNCTION(gsbi4),
-diff --git a/drivers/pinctrl/qcom/pinctrl-milos.c b/drivers/pinctrl/qcom/pinctrl-milos.c
-index d11a7bbcd7331675bdd979f5a9933d9ff226c823..19abd5233a2c54e9a5fcf3a2ed44056471196146 100644
---- a/drivers/pinctrl/qcom/pinctrl-milos.c
-+++ b/drivers/pinctrl/qcom/pinctrl-milos.c
-@@ -974,7 +974,7 @@ static const char *const wcn_sw_ctrl_groups[] = {
- };
- 
- static const struct pinfunction milos_functions[] = {
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(aoss_cti),
- 	MSM_PIN_FUNCTION(atest_char),
- 	MSM_PIN_FUNCTION(atest_usb),
-diff --git a/drivers/pinctrl/qcom/pinctrl-msm8226.c b/drivers/pinctrl/qcom/pinctrl-msm8226.c
-index f9a957347340813f87e58d3bcbea81faa9d6255e..a81aa092ef1240c9e951352720d48db6d269aff9 100644
---- a/drivers/pinctrl/qcom/pinctrl-msm8226.c
-+++ b/drivers/pinctrl/qcom/pinctrl-msm8226.c
-@@ -483,7 +483,7 @@ static const struct pinfunction msm8226_functions[] = {
- 	MSM_PIN_FUNCTION(cci_i2c0),
- 	MSM_PIN_FUNCTION(gp0_clk),
- 	MSM_PIN_FUNCTION(gp1_clk),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(sdc3),
- 	MSM_PIN_FUNCTION(wlan),
- };
-diff --git a/drivers/pinctrl/qcom/pinctrl-msm8660.c b/drivers/pinctrl/qcom/pinctrl-msm8660.c
-index 4dbc19ffd80efcdab059a253904e1ffe95fd36f7..5ded00396cd949f432c4bdcd3b1224cbfae34f8c 100644
---- a/drivers/pinctrl/qcom/pinctrl-msm8660.c
-+++ b/drivers/pinctrl/qcom/pinctrl-msm8660.c
-@@ -714,7 +714,7 @@ static const char * const ebi2_groups[] = {
- };
- 
- static const struct pinfunction msm8660_functions[] = {
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(cam_mclk),
- 	MSM_PIN_FUNCTION(dsub),
- 	MSM_PIN_FUNCTION(ext_gps),
-diff --git a/drivers/pinctrl/qcom/pinctrl-msm8909.c b/drivers/pinctrl/qcom/pinctrl-msm8909.c
-index 0aa4f77b774f45947ffade7d167dd25cc4da5297..544a52fb8f3d6e6abfd97e2c0736e8242b51d7ba 100644
---- a/drivers/pinctrl/qcom/pinctrl-msm8909.c
-+++ b/drivers/pinctrl/qcom/pinctrl-msm8909.c
-@@ -696,7 +696,7 @@ static const struct pinfunction msm8909_functions[] = {
- 	MSM_PIN_FUNCTION(gcc_gp3_clk_a),
- 	MSM_PIN_FUNCTION(gcc_gp3_clk_b),
- 	MSM_PIN_FUNCTION(gcc_plltest),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(gsm0_tx),
- 	MSM_PIN_FUNCTION(ldo_en),
- 	MSM_PIN_FUNCTION(ldo_update),
-diff --git a/drivers/pinctrl/qcom/pinctrl-msm8916.c b/drivers/pinctrl/qcom/pinctrl-msm8916.c
-index 0dfc6dd33d58b2d9df7a5cc3f7ff8890976207d3..b1b6934bb4b6357f04d84ce9c244ba930c1916ba 100644
---- a/drivers/pinctrl/qcom/pinctrl-msm8916.c
-+++ b/drivers/pinctrl/qcom/pinctrl-msm8916.c
-@@ -743,7 +743,7 @@ static const struct pinfunction msm8916_functions[] = {
- 	MSM_PIN_FUNCTION(gcc_gp2_clk_b),
- 	MSM_PIN_FUNCTION(gcc_gp3_clk_a),
- 	MSM_PIN_FUNCTION(gcc_gp3_clk_b),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(gsm0_tx0),
- 	MSM_PIN_FUNCTION(gsm0_tx1),
- 	MSM_PIN_FUNCTION(gsm1_tx0),
-diff --git a/drivers/pinctrl/qcom/pinctrl-msm8917.c b/drivers/pinctrl/qcom/pinctrl-msm8917.c
-index 2e1a94ab18b219f818c591ff3b07280578822d1a..f23d92d6615b8926dc04ba0056cbce6715cc7b21 100644
---- a/drivers/pinctrl/qcom/pinctrl-msm8917.c
-+++ b/drivers/pinctrl/qcom/pinctrl-msm8917.c
-@@ -1302,7 +1302,7 @@ static const struct pinfunction msm8917_functions[] = {
- 	MSM_PIN_FUNCTION(gcc_gp3_clk_b),
- 	MSM_PIN_FUNCTION(gcc_plltest),
- 	MSM_PIN_FUNCTION(gcc_tlmm),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(gsm0_tx),
- 	MSM_PIN_FUNCTION(key_focus),
- 	MSM_PIN_FUNCTION(key_snapshot),
-diff --git a/drivers/pinctrl/qcom/pinctrl-msm8953.c b/drivers/pinctrl/qcom/pinctrl-msm8953.c
-index 956383341a7a777edf28c710353dc6deab124ef9..67db062fdf5628fb41588f2dc5a79a9e3499e5b6 100644
---- a/drivers/pinctrl/qcom/pinctrl-msm8953.c
-+++ b/drivers/pinctrl/qcom/pinctrl-msm8953.c
-@@ -1533,7 +1533,7 @@ static const struct pinfunction msm8953_functions[] = {
- 	MSM_PIN_FUNCTION(gcc_gp3_clk_b),
- 	MSM_PIN_FUNCTION(gcc_plltest),
- 	MSM_PIN_FUNCTION(gcc_tlmm),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(gsm0_tx),
- 	MSM_PIN_FUNCTION(gsm1_tx),
- 	MSM_PIN_FUNCTION(gyro_int),
-diff --git a/drivers/pinctrl/qcom/pinctrl-msm8960.c b/drivers/pinctrl/qcom/pinctrl-msm8960.c
-index a937ea867de709326a2aea77f980cae1d8480f35..2fb15208aba050a1bf669a2e304e389fd10fe0be 100644
---- a/drivers/pinctrl/qcom/pinctrl-msm8960.c
-+++ b/drivers/pinctrl/qcom/pinctrl-msm8960.c
-@@ -974,7 +974,7 @@ static const struct pinfunction msm8960_functions[] = {
- 	MSM_PIN_FUNCTION(gp_pdm_1b),
- 	MSM_PIN_FUNCTION(gp_pdm_2a),
- 	MSM_PIN_FUNCTION(gp_pdm_2b),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(gsbi1),
- 	MSM_PIN_FUNCTION(gsbi1_spi_cs1_n),
- 	MSM_PIN_FUNCTION(gsbi1_spi_cs2a_n),
-diff --git a/drivers/pinctrl/qcom/pinctrl-msm8976.c b/drivers/pinctrl/qcom/pinctrl-msm8976.c
-index 3bcb03387781f803bf7e0251496a88a43b562b8d..345539b9e696f0decdb02b24eb0f966c7439af9d 100644
---- a/drivers/pinctrl/qcom/pinctrl-msm8976.c
-+++ b/drivers/pinctrl/qcom/pinctrl-msm8976.c
-@@ -812,7 +812,7 @@ static const char * const ss_switch_groups[] = {
- };
- 
- static const struct pinfunction msm8976_functions[] = {
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(blsp_spi1),
- 	MSM_PIN_FUNCTION(smb_int),
- 	MSM_PIN_FUNCTION(blsp_i2c1),
-diff --git a/drivers/pinctrl/qcom/pinctrl-msm8994.c b/drivers/pinctrl/qcom/pinctrl-msm8994.c
-index 7a3b6cbccb687c8b5040ee6bf372f092f21aa872..94e042d1f4b2a5f20c3c3e9287b254e1e06c4050 100644
---- a/drivers/pinctrl/qcom/pinctrl-msm8994.c
-+++ b/drivers/pinctrl/qcom/pinctrl-msm8994.c
-@@ -1071,7 +1071,7 @@ static const struct pinfunction msm8994_functions[] = {
- 	MSM_PIN_FUNCTION(uim2),
- 	MSM_PIN_FUNCTION(uim3),
- 	MSM_PIN_FUNCTION(uim4),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- };
- 
- static const struct msm_pingroup msm8994_groups[] = {
-diff --git a/drivers/pinctrl/qcom/pinctrl-msm8996.c b/drivers/pinctrl/qcom/pinctrl-msm8996.c
-index d86d83106d3ba12343a4685e5b87c661f823c35b..e5b55693d02377c1bd992504a9d15a9ce015cf84 100644
---- a/drivers/pinctrl/qcom/pinctrl-msm8996.c
-+++ b/drivers/pinctrl/qcom/pinctrl-msm8996.c
-@@ -1532,7 +1532,7 @@ static const struct pinfunction msm8996_functions[] = {
- 	MSM_PIN_FUNCTION(gcc_gp2_clk_b),
- 	MSM_PIN_FUNCTION(gcc_gp3_clk_a),
- 	MSM_PIN_FUNCTION(gcc_gp3_clk_b),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(gsm_tx),
- 	MSM_PIN_FUNCTION(hdmi_cec),
- 	MSM_PIN_FUNCTION(hdmi_ddc),
-diff --git a/drivers/pinctrl/qcom/pinctrl-msm8998.c b/drivers/pinctrl/qcom/pinctrl-msm8998.c
-index 1daee815888f54b711505dfacefd614df83affc0..b727593af34af94925fd9c938e3c03c40ad59eaa 100644
---- a/drivers/pinctrl/qcom/pinctrl-msm8998.c
-+++ b/drivers/pinctrl/qcom/pinctrl-msm8998.c
-@@ -1160,7 +1160,7 @@ static const char * const mss_lte_groups[] = {
- };
- 
- static const struct pinfunction msm8998_functions[] = {
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(adsp_ext),
- 	MSM_PIN_FUNCTION(agera_pll),
- 	MSM_PIN_FUNCTION(atest_char),
-diff --git a/drivers/pinctrl/qcom/pinctrl-msm8x74.c b/drivers/pinctrl/qcom/pinctrl-msm8x74.c
-index 8253aa25775b247dc54a377c9781094e465e22b6..202bec003e96f1d2d68703676e6e8a88f1ffdae5 100644
---- a/drivers/pinctrl/qcom/pinctrl-msm8x74.c
-+++ b/drivers/pinctrl/qcom/pinctrl-msm8x74.c
-@@ -778,7 +778,7 @@ static const char * const slimbus_groups[] = { "gpio70", "gpio71" };
- static const char * const hsic_ctl_groups[] = { "hsic_strobe", "hsic_data" };
- 
- static const struct pinfunction msm8x74_functions[] = {
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(cci_i2c0),
- 	MSM_PIN_FUNCTION(cci_i2c1),
- 	MSM_PIN_FUNCTION(uim1),
-diff --git a/drivers/pinctrl/qcom/pinctrl-qcm2290.c b/drivers/pinctrl/qcom/pinctrl-qcm2290.c
-index eeeec6434f6a68a588ff58641b7c25c261b5749a..38200957451e1975b7215eae6a2d10329a30a57d 100644
---- a/drivers/pinctrl/qcom/pinctrl-qcm2290.c
-+++ b/drivers/pinctrl/qcom/pinctrl-qcm2290.c
-@@ -870,11 +870,11 @@ static const struct pinfunction qcm2290_functions[] = {
- 	MSM_PIN_FUNCTION(ddr_pxi1),
- 	MSM_PIN_FUNCTION(ddr_pxi2),
- 	MSM_PIN_FUNCTION(ddr_pxi3),
--	MSM_PIN_FUNCTION(egpio),
-+	MSM_GPIO_PIN_FUNCTION(egpio),
- 	MSM_PIN_FUNCTION(gcc_gp1),
- 	MSM_PIN_FUNCTION(gcc_gp2),
- 	MSM_PIN_FUNCTION(gcc_gp3),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(gp_pdm0),
- 	MSM_PIN_FUNCTION(gp_pdm1),
- 	MSM_PIN_FUNCTION(gp_pdm2),
-diff --git a/drivers/pinctrl/qcom/pinctrl-qcs404.c b/drivers/pinctrl/qcom/pinctrl-qcs404.c
-index 54e3b44353494e9398a88702945b7a85ff901b4d..0b8db2c7e58a9b6f6b832c8998766f2711068dd2 100644
---- a/drivers/pinctrl/qcom/pinctrl-qcs404.c
-+++ b/drivers/pinctrl/qcom/pinctrl-qcs404.c
-@@ -1296,7 +1296,7 @@ static const char * const i2s_3_ws_a_groups[] = {
- };
- 
- static const struct pinfunction qcs404_functions[] = {
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(hdmi_tx),
- 	MSM_PIN_FUNCTION(hdmi_ddc),
- 	MSM_PIN_FUNCTION(blsp_uart_tx_a2),
-diff --git a/drivers/pinctrl/qcom/pinctrl-qcs615.c b/drivers/pinctrl/qcom/pinctrl-qcs615.c
-index 2a943bc46a6299899abd87523f24e7e291f24c57..4dfa820d4e77ce8157a3503ee8ec6e426b54e030 100644
---- a/drivers/pinctrl/qcom/pinctrl-qcs615.c
-+++ b/drivers/pinctrl/qcom/pinctrl-qcs615.c
-@@ -819,7 +819,7 @@ static const char *const wsa_data_groups[] = {
- };
- 
- static const struct pinfunction qcs615_functions[] = {
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(adsp_ext),
- 	MSM_PIN_FUNCTION(agera_pll),
- 	MSM_PIN_FUNCTION(aoss_cti),
-diff --git a/drivers/pinctrl/qcom/pinctrl-qcs8300.c b/drivers/pinctrl/qcom/pinctrl-qcs8300.c
-index d6437e26392b60f5d345f2591e98516a9d933a0f..f1af1a620684cd48e0282d4452c3f00af6ca0302 100644
---- a/drivers/pinctrl/qcom/pinctrl-qcs8300.c
-+++ b/drivers/pinctrl/qcom/pinctrl-qcs8300.c
-@@ -929,7 +929,7 @@ static const char *const vsense_trigger_groups[] = {
- };
- 
- static const struct pinfunction qcs8300_functions[] = {
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(aoss_cti),
- 	MSM_PIN_FUNCTION(atest_char),
- 	MSM_PIN_FUNCTION(atest_usb2),
-@@ -949,7 +949,7 @@ static const struct pinfunction qcs8300_functions[] = {
- 	MSM_PIN_FUNCTION(edp0_hot),
- 	MSM_PIN_FUNCTION(edp0_lcd),
- 	MSM_PIN_FUNCTION(edp1_lcd),
--	MSM_PIN_FUNCTION(egpio),
-+	MSM_GPIO_PIN_FUNCTION(egpio),
- 	MSM_PIN_FUNCTION(emac0_mcg0),
- 	MSM_PIN_FUNCTION(emac0_mcg1),
- 	MSM_PIN_FUNCTION(emac0_mcg2),
-diff --git a/drivers/pinctrl/qcom/pinctrl-qdu1000.c b/drivers/pinctrl/qcom/pinctrl-qdu1000.c
-index eacb89fa388850ef39ceb50497df9e5cca54191c..7c535698a780041c2660c08d22146c8d700ce081 100644
---- a/drivers/pinctrl/qcom/pinctrl-qdu1000.c
-+++ b/drivers/pinctrl/qcom/pinctrl-qdu1000.c
-@@ -904,7 +904,7 @@ static const char * const vsense_trigger_groups[] = {
- };
- 
- static const struct pinfunction qdu1000_functions[] = {
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(cmo_pri),
- 	MSM_PIN_FUNCTION(si5518_int),
- 	MSM_PIN_FUNCTION(atest_char),
-diff --git a/drivers/pinctrl/qcom/pinctrl-sa8775p.c b/drivers/pinctrl/qcom/pinctrl-sa8775p.c
-index 1b62eb3e6620c978225c5fd2ab541451cbe93093..53f28b9c49ba2dba7cfbbeb13774d011bd31fae9 100644
---- a/drivers/pinctrl/qcom/pinctrl-sa8775p.c
-+++ b/drivers/pinctrl/qcom/pinctrl-sa8775p.c
-@@ -1181,7 +1181,7 @@ static const char * const vsense_trigger_groups[] = {
- };
- 
- static const struct pinfunction sa8775p_functions[] = {
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(atest_char),
- 	MSM_PIN_FUNCTION(atest_usb2),
- 	MSM_PIN_FUNCTION(audio_ref),
-@@ -1217,7 +1217,7 @@ static const struct pinfunction sa8775p_functions[] = {
- 	MSM_PIN_FUNCTION(edp2_lcd),
- 	MSM_PIN_FUNCTION(edp3_hot),
- 	MSM_PIN_FUNCTION(edp3_lcd),
--	MSM_PIN_FUNCTION(egpio),
-+	MSM_GPIO_PIN_FUNCTION(egpio),
- 	MSM_PIN_FUNCTION(emac0_mcg0),
- 	MSM_PIN_FUNCTION(emac0_mcg1),
- 	MSM_PIN_FUNCTION(emac0_mcg2),
-diff --git a/drivers/pinctrl/qcom/pinctrl-sar2130p.c b/drivers/pinctrl/qcom/pinctrl-sar2130p.c
-index 3dd1b5e5cfee489ec34b16ee2ae1c8d2c2756553..4a53f4ee20418e755926770693f81a582c431e6f 100644
---- a/drivers/pinctrl/qcom/pinctrl-sar2130p.c
-+++ b/drivers/pinctrl/qcom/pinctrl-sar2130p.c
-@@ -1128,7 +1128,7 @@ static const char * const vsense_trigger_groups[] = {
- };
- 
- static const struct pinfunction sar2130p_functions[] = {
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(qup0),
- 	MSM_PIN_FUNCTION(ibi_i3c),
- 	MSM_PIN_FUNCTION(jitter_bist),
-diff --git a/drivers/pinctrl/qcom/pinctrl-sc7180.c b/drivers/pinctrl/qcom/pinctrl-sc7180.c
-index c43fe10b71add7d6294c90e86578ed472b8759a3..3eae51472b137372f358278a7fb04ace7430bcf4 100644
---- a/drivers/pinctrl/qcom/pinctrl-sc7180.c
-+++ b/drivers/pinctrl/qcom/pinctrl-sc7180.c
-@@ -903,7 +903,7 @@ static const struct pinfunction sc7180_functions[] = {
- 	MSM_PIN_FUNCTION(gcc_gp1),
- 	MSM_PIN_FUNCTION(gcc_gp2),
- 	MSM_PIN_FUNCTION(gcc_gp3),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(gp_pdm0),
- 	MSM_PIN_FUNCTION(gp_pdm1),
- 	MSM_PIN_FUNCTION(gp_pdm2),
-diff --git a/drivers/pinctrl/qcom/pinctrl-sc7280.c b/drivers/pinctrl/qcom/pinctrl-sc7280.c
-index 1b070e9d41f5972470d245edb821d202ca24522b..44e09608aad07acbd8354d5cb3e7f02b6e736f01 100644
---- a/drivers/pinctrl/qcom/pinctrl-sc7280.c
-+++ b/drivers/pinctrl/qcom/pinctrl-sc7280.c
-@@ -1153,11 +1153,11 @@ static const struct pinfunction sc7280_functions[] = {
- 	MSM_PIN_FUNCTION(dp_lcd),
- 	MSM_PIN_FUNCTION(edp_hot),
- 	MSM_PIN_FUNCTION(edp_lcd),
--	MSM_PIN_FUNCTION(egpio),
-+	MSM_GPIO_PIN_FUNCTION(egpio),
- 	MSM_PIN_FUNCTION(gcc_gp1),
- 	MSM_PIN_FUNCTION(gcc_gp2),
- 	MSM_PIN_FUNCTION(gcc_gp3),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(host2wlan_sol),
- 	MSM_PIN_FUNCTION(ibi_i3c),
- 	MSM_PIN_FUNCTION(jitter_bist),
-diff --git a/drivers/pinctrl/qcom/pinctrl-sc8180x.c b/drivers/pinctrl/qcom/pinctrl-sc8180x.c
-index 26dd165d154348a8659720335ec16c3e5ace30ef..d494e176383d25a369c217d1c649b580c374d35b 100644
---- a/drivers/pinctrl/qcom/pinctrl-sc8180x.c
-+++ b/drivers/pinctrl/qcom/pinctrl-sc8180x.c
-@@ -1272,7 +1272,7 @@ static const struct pinfunction sc8180x_functions[] = {
- 	MSM_PIN_FUNCTION(gcc_gp3),
- 	MSM_PIN_FUNCTION(gcc_gp4),
- 	MSM_PIN_FUNCTION(gcc_gp5),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(gps),
- 	MSM_PIN_FUNCTION(grfc),
- 	MSM_PIN_FUNCTION(hs1_mi2s),
-diff --git a/drivers/pinctrl/qcom/pinctrl-sc8280xp.c b/drivers/pinctrl/qcom/pinctrl-sc8280xp.c
-index 6ccd7e5648d420072f7ce467d92ef0764a6d7764..cf8297e8b8f8c98add4cc5d305e99a2cd1f7a52a 100644
---- a/drivers/pinctrl/qcom/pinctrl-sc8280xp.c
-+++ b/drivers/pinctrl/qcom/pinctrl-sc8280xp.c
-@@ -1506,7 +1506,7 @@ static const struct pinfunction sc8280xp_functions[] = {
- 	MSM_PIN_FUNCTION(edp2_lcd),
- 	MSM_PIN_FUNCTION(edp3_lcd),
- 	MSM_PIN_FUNCTION(edp_hot),
--	MSM_PIN_FUNCTION(egpio),
-+	MSM_GPIO_PIN_FUNCTION(egpio),
- 	MSM_PIN_FUNCTION(emac0_dll),
- 	MSM_PIN_FUNCTION(emac0_mcg0),
- 	MSM_PIN_FUNCTION(emac0_mcg1),
-@@ -1527,7 +1527,7 @@ static const struct pinfunction sc8280xp_functions[] = {
- 	MSM_PIN_FUNCTION(gcc_gp3),
- 	MSM_PIN_FUNCTION(gcc_gp4),
- 	MSM_PIN_FUNCTION(gcc_gp5),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(hs1_mi2s),
- 	MSM_PIN_FUNCTION(hs2_mi2s),
- 	MSM_PIN_FUNCTION(hs3_mi2s),
-diff --git a/drivers/pinctrl/qcom/pinctrl-sdm660.c b/drivers/pinctrl/qcom/pinctrl-sdm660.c
-index 1a78288f1bc832837d5c72d9eb1659f397d79b94..687d986de75c4df5d91c6cda3c43beecfb24795b 100644
---- a/drivers/pinctrl/qcom/pinctrl-sdm660.c
-+++ b/drivers/pinctrl/qcom/pinctrl-sdm660.c
-@@ -1157,7 +1157,7 @@ static const struct pinfunction sdm660_functions[] = {
- 	MSM_PIN_FUNCTION(gcc_gp1),
- 	MSM_PIN_FUNCTION(gcc_gp2),
- 	MSM_PIN_FUNCTION(gcc_gp3),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(gps_tx_a),
- 	MSM_PIN_FUNCTION(gps_tx_b),
- 	MSM_PIN_FUNCTION(gps_tx_c),
-diff --git a/drivers/pinctrl/qcom/pinctrl-sdm670.c b/drivers/pinctrl/qcom/pinctrl-sdm670.c
-index 0fe1fa94cd6da13591397442a63ce8daec9f4674..486b72edf7b4ec9d30bbbffbf53d41db2c9e8157 100644
---- a/drivers/pinctrl/qcom/pinctrl-sdm670.c
-+++ b/drivers/pinctrl/qcom/pinctrl-sdm670.c
-@@ -991,7 +991,7 @@ static const char * const mss_lte_groups[] = {
- };
- 
- static const struct pinfunction sdm670_functions[] = {
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(adsp_ext),
- 	MSM_PIN_FUNCTION(agera_pll),
- 	MSM_PIN_FUNCTION(atest_char),
-diff --git a/drivers/pinctrl/qcom/pinctrl-sdm845.c b/drivers/pinctrl/qcom/pinctrl-sdm845.c
-index 0446e291aa4831da439af12b7934fbda5915ee5a..4cf8575797a0f49646e0dd7a93480dfbd6ba3a04 100644
---- a/drivers/pinctrl/qcom/pinctrl-sdm845.c
-+++ b/drivers/pinctrl/qcom/pinctrl-sdm845.c
-@@ -976,7 +976,7 @@ static const char * const tsif1_sync_groups[] = {
- };
- 
- static const struct pinfunction sdm845_functions[] = {
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(adsp_ext),
- 	MSM_PIN_FUNCTION(agera_pll),
- 	MSM_PIN_FUNCTION(atest_char),
-diff --git a/drivers/pinctrl/qcom/pinctrl-sdx55.c b/drivers/pinctrl/qcom/pinctrl-sdx55.c
-index 2c17bf889146362edf9f482d33b17d35a255882e..79a7010b73f187f4aeab8ff7e27461984c1c9c3f 100644
---- a/drivers/pinctrl/qcom/pinctrl-sdx55.c
-+++ b/drivers/pinctrl/qcom/pinctrl-sdx55.c
-@@ -796,7 +796,7 @@ static const struct pinfunction sdx55_functions[] = {
- 	MSM_PIN_FUNCTION(gcc_gp2),
- 	MSM_PIN_FUNCTION(gcc_gp3),
- 	MSM_PIN_FUNCTION(gcc_plltest),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(i2s_mclk),
- 	MSM_PIN_FUNCTION(jitter_bist),
- 	MSM_PIN_FUNCTION(ldo_en),
-diff --git a/drivers/pinctrl/qcom/pinctrl-sdx65.c b/drivers/pinctrl/qcom/pinctrl-sdx65.c
-index 85b5c0206dbd199c6efc15aad10784d20c1addde..cc8a99a6a91ed253883535f3eb0338939db9a677 100644
---- a/drivers/pinctrl/qcom/pinctrl-sdx65.c
-+++ b/drivers/pinctrl/qcom/pinctrl-sdx65.c
-@@ -732,7 +732,7 @@ static const struct pinfunction sdx65_functions[] = {
- 	MSM_PIN_FUNCTION(gcc_gp2),
- 	MSM_PIN_FUNCTION(gcc_gp3),
- 	MSM_PIN_FUNCTION(gcc_plltest),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(i2s_mclk),
- 	MSM_PIN_FUNCTION(jitter_bist),
- 	MSM_PIN_FUNCTION(ldo_en),
-diff --git a/drivers/pinctrl/qcom/pinctrl-sdx75.c b/drivers/pinctrl/qcom/pinctrl-sdx75.c
-index ab13a3a57a830781f35916ff508ca65d6699271d..4078d83d818c3352253563fc45273a293cfe4ce8 100644
---- a/drivers/pinctrl/qcom/pinctrl-sdx75.c
-+++ b/drivers/pinctrl/qcom/pinctrl-sdx75.c
-@@ -852,7 +852,7 @@ static const struct pinfunction sdx75_functions[] = {
- 	MSM_PIN_FUNCTION(gcc_gp2_clk),
- 	MSM_PIN_FUNCTION(gcc_gp3_clk),
- 	MSM_PIN_FUNCTION(gcc_plltest),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(i2s_mclk),
- 	MSM_PIN_FUNCTION(jitter_bist),
- 	MSM_PIN_FUNCTION(ldo_en),
-diff --git a/drivers/pinctrl/qcom/pinctrl-sm4450.c b/drivers/pinctrl/qcom/pinctrl-sm4450.c
-index 1ecdf1ab4f275ede7cb629321f9c37d3f81a25e9..d51e271e336101796b75d64e56f573f3547f1121 100644
---- a/drivers/pinctrl/qcom/pinctrl-sm4450.c
-+++ b/drivers/pinctrl/qcom/pinctrl-sm4450.c
-@@ -722,7 +722,7 @@ static const char * const wlan1_adc_dtest1_groups[] = {
- };
- 
- static const struct pinfunction sm4450_functions[] = {
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(atest_char),
- 	MSM_PIN_FUNCTION(atest_usb0),
- 	MSM_PIN_FUNCTION(audio_ref_clk),
-diff --git a/drivers/pinctrl/qcom/pinctrl-sm6115.c b/drivers/pinctrl/qcom/pinctrl-sm6115.c
-index c273efa4399630a2187845382e231fe150d997fd..06700685ea2a380b84464d17955d040e55eb587c 100644
---- a/drivers/pinctrl/qcom/pinctrl-sm6115.c
-+++ b/drivers/pinctrl/qcom/pinctrl-sm6115.c
-@@ -687,7 +687,7 @@ static const struct pinfunction sm6115_functions[] = {
- 	MSM_PIN_FUNCTION(gcc_gp1),
- 	MSM_PIN_FUNCTION(gcc_gp2),
- 	MSM_PIN_FUNCTION(gcc_gp3),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(gp_pdm0),
- 	MSM_PIN_FUNCTION(gp_pdm1),
- 	MSM_PIN_FUNCTION(gp_pdm2),
-diff --git a/drivers/pinctrl/qcom/pinctrl-sm6125.c b/drivers/pinctrl/qcom/pinctrl-sm6125.c
-index 5092f20e0c1bdee2e99b768f12cfbec31972c24c..5d3d1e402345ebb86524b508c45cf9fc9a0f2031 100644
---- a/drivers/pinctrl/qcom/pinctrl-sm6125.c
-+++ b/drivers/pinctrl/qcom/pinctrl-sm6125.c
-@@ -943,7 +943,7 @@ static const char * const dmic1_data_groups[] = {
- 
- static const struct pinfunction sm6125_functions[] = {
- 	MSM_PIN_FUNCTION(qup00),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(qdss),
- 	MSM_PIN_FUNCTION(qup01),
- 	MSM_PIN_FUNCTION(qup02),
-diff --git a/drivers/pinctrl/qcom/pinctrl-sm6350.c b/drivers/pinctrl/qcom/pinctrl-sm6350.c
-index ba4686c86c54b8c1dc32522c83587521e149a5ae..220fb582cac9fcc97271cc0feb2adc5b32c85994 100644
---- a/drivers/pinctrl/qcom/pinctrl-sm6350.c
-+++ b/drivers/pinctrl/qcom/pinctrl-sm6350.c
-@@ -1048,7 +1048,7 @@ static const struct pinfunction sm6350_functions[] = {
- 	MSM_PIN_FUNCTION(gp_pdm0),
- 	MSM_PIN_FUNCTION(gp_pdm1),
- 	MSM_PIN_FUNCTION(gp_pdm2),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(gps_tx),
- 	MSM_PIN_FUNCTION(ibi_i3c),
- 	MSM_PIN_FUNCTION(jitter_bist),
-diff --git a/drivers/pinctrl/qcom/pinctrl-sm6375.c b/drivers/pinctrl/qcom/pinctrl-sm6375.c
-index 49031571e65ee3291fb1e5269e071a08a77c87de..08b8ef6efaf09741e8826e08a2c12ef49680504a 100644
---- a/drivers/pinctrl/qcom/pinctrl-sm6375.c
-+++ b/drivers/pinctrl/qcom/pinctrl-sm6375.c
-@@ -1172,7 +1172,7 @@ static const struct pinfunction sm6375_functions[] = {
- 	MSM_PIN_FUNCTION(gp_pdm0),
- 	MSM_PIN_FUNCTION(gp_pdm1),
- 	MSM_PIN_FUNCTION(gp_pdm2),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(gps_tx),
- 	MSM_PIN_FUNCTION(ibi_i3c),
- 	MSM_PIN_FUNCTION(jitter_bist),
-diff --git a/drivers/pinctrl/qcom/pinctrl-sm7150.c b/drivers/pinctrl/qcom/pinctrl-sm7150.c
-index 6e89966cd70e34bcb74cfb50e80e110e40655b0e..78dd8153a4d4e5bb68dd5d22aa7f2b6dc6a5fddb 100644
---- a/drivers/pinctrl/qcom/pinctrl-sm7150.c
-+++ b/drivers/pinctrl/qcom/pinctrl-sm7150.c
-@@ -960,7 +960,7 @@ static const char * const wsa_data_groups[] = {
- };
- 
- static const struct pinfunction sm7150_functions[] = {
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(adsp_ext),
- 	MSM_PIN_FUNCTION(agera_pll),
- 	MSM_PIN_FUNCTION(aoss_cti),
-diff --git a/drivers/pinctrl/qcom/pinctrl-sm8150.c b/drivers/pinctrl/qcom/pinctrl-sm8150.c
-index 794ed99463f76032f56be9464a4aa3018537df94..ad861cd66958c4faa929737e5088b82a35ffc95b 100644
---- a/drivers/pinctrl/qcom/pinctrl-sm8150.c
-+++ b/drivers/pinctrl/qcom/pinctrl-sm8150.c
-@@ -1217,7 +1217,7 @@ static const struct pinfunction sm8150_functions[] = {
- 	MSM_PIN_FUNCTION(gcc_gp1),
- 	MSM_PIN_FUNCTION(gcc_gp2),
- 	MSM_PIN_FUNCTION(gcc_gp3),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(hs1_mi2s),
- 	MSM_PIN_FUNCTION(hs2_mi2s),
- 	MSM_PIN_FUNCTION(hs3_mi2s),
-diff --git a/drivers/pinctrl/qcom/pinctrl-sm8250.c b/drivers/pinctrl/qcom/pinctrl-sm8250.c
-index fb6f005d64f53f318d58e69681f07e36404439cf..6021d9f6e407ef57a6b1ebaaa27039c0fea7e18c 100644
---- a/drivers/pinctrl/qcom/pinctrl-sm8250.c
-+++ b/drivers/pinctrl/qcom/pinctrl-sm8250.c
-@@ -1021,7 +1021,7 @@ static const struct pinfunction sm8250_functions[] = {
- 	MSM_PIN_FUNCTION(gcc_gp1),
- 	MSM_PIN_FUNCTION(gcc_gp2),
- 	MSM_PIN_FUNCTION(gcc_gp3),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(ibi_i3c),
- 	MSM_PIN_FUNCTION(jitter_bist),
- 	MSM_PIN_FUNCTION(lpass_slimbus),
-diff --git a/drivers/pinctrl/qcom/pinctrl-sm8350.c b/drivers/pinctrl/qcom/pinctrl-sm8350.c
-index c8a3f39ce6f1b8565a783f04100269b3cadb9bcc..99949b552021131f5aade06a80bd01799835e67a 100644
---- a/drivers/pinctrl/qcom/pinctrl-sm8350.c
-+++ b/drivers/pinctrl/qcom/pinctrl-sm8350.c
-@@ -1267,7 +1267,7 @@ static const struct pinfunction sm8350_functions[] = {
- 	MSM_PIN_FUNCTION(gcc_gp1),
- 	MSM_PIN_FUNCTION(gcc_gp2),
- 	MSM_PIN_FUNCTION(gcc_gp3),
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(ibi_i3c),
- 	MSM_PIN_FUNCTION(jitter_bist),
- 	MSM_PIN_FUNCTION(lpass_slimbus),
-diff --git a/drivers/pinctrl/qcom/pinctrl-sm8450.c b/drivers/pinctrl/qcom/pinctrl-sm8450.c
-index f2e52d5a0f9369d21922d0651539908d592301e5..9889fc5dc2cd204588abd06cfd7d1ae0e4513af0 100644
---- a/drivers/pinctrl/qcom/pinctrl-sm8450.c
-+++ b/drivers/pinctrl/qcom/pinctrl-sm8450.c
-@@ -1269,7 +1269,7 @@ static const char * const vsense_trigger_groups[] = {
- };
- 
- static const struct pinfunction sm8450_functions[] = {
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(aon_cam),
- 	MSM_PIN_FUNCTION(atest_char),
- 	MSM_PIN_FUNCTION(atest_usb),
-@@ -1291,7 +1291,7 @@ static const struct pinfunction sm8450_functions[] = {
- 	MSM_PIN_FUNCTION(ddr_pxi2),
- 	MSM_PIN_FUNCTION(ddr_pxi3),
- 	MSM_PIN_FUNCTION(dp_hot),
--	MSM_PIN_FUNCTION(egpio),
-+	MSM_GPIO_PIN_FUNCTION(egpio),
- 	MSM_PIN_FUNCTION(gcc_gp1),
- 	MSM_PIN_FUNCTION(gcc_gp2),
- 	MSM_PIN_FUNCTION(gcc_gp3),
-diff --git a/drivers/pinctrl/qcom/pinctrl-sm8550.c b/drivers/pinctrl/qcom/pinctrl-sm8550.c
-index 1b4496cb39eb46b2b660ef213e1f3c8fdac2b21e..10a62031fdfd044f851165e346059d1834ff7c9c 100644
---- a/drivers/pinctrl/qcom/pinctrl-sm8550.c
-+++ b/drivers/pinctrl/qcom/pinctrl-sm8550.c
-@@ -1340,7 +1340,7 @@ static const char *const vsense_trigger_mirnat_groups[] = {
- };
- 
- static const struct pinfunction sm8550_functions[] = {
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(aon_cci),
- 	MSM_PIN_FUNCTION(aoss_cti),
- 	MSM_PIN_FUNCTION(atest_char),
-diff --git a/drivers/pinctrl/qcom/pinctrl-sm8650.c b/drivers/pinctrl/qcom/pinctrl-sm8650.c
-index 449a0077f4b10666ecd9dfaae8e0057a91e181a6..e2ae038002060d2f93c091c716b1ec7fb9b6498d 100644
---- a/drivers/pinctrl/qcom/pinctrl-sm8650.c
-+++ b/drivers/pinctrl/qcom/pinctrl-sm8650.c
-@@ -1328,7 +1328,7 @@ static const char *const vsense_trigger_mirnat_groups[] = {
- };
- 
- static const struct pinfunction sm8650_functions[] = {
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(aoss_cti),
- 	MSM_PIN_FUNCTION(atest_char),
- 	MSM_PIN_FUNCTION(atest_usb),
-@@ -1359,7 +1359,7 @@ static const struct pinfunction sm8650_functions[] = {
- 	MSM_PIN_FUNCTION(ddr_pxi3),
- 	MSM_PIN_FUNCTION(do_not),
- 	MSM_PIN_FUNCTION(dp_hot),
--	MSM_PIN_FUNCTION(egpio),
-+	MSM_GPIO_PIN_FUNCTION(egpio),
- 	MSM_PIN_FUNCTION(gcc_gp1),
- 	MSM_PIN_FUNCTION(gcc_gp2),
- 	MSM_PIN_FUNCTION(gcc_gp3),
-diff --git a/drivers/pinctrl/qcom/pinctrl-sm8750.c b/drivers/pinctrl/qcom/pinctrl-sm8750.c
-index 8516693d1db51d3e890e298ea6500ae62333bc69..6f92f176edd4593563a95dc8b0cfde2b6ad3a213 100644
---- a/drivers/pinctrl/qcom/pinctrl-sm8750.c
-+++ b/drivers/pinctrl/qcom/pinctrl-sm8750.c
-@@ -1290,7 +1290,7 @@ static const char *const wcn_sw_ctrl_groups[] = {
- };
- 
- static const struct pinfunction sm8750_functions[] = {
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(aoss_cti),
- 	MSM_PIN_FUNCTION(atest_char),
- 	MSM_PIN_FUNCTION(atest_usb),
-@@ -1319,7 +1319,7 @@ static const struct pinfunction sm8750_functions[] = {
- 	MSM_PIN_FUNCTION(ddr_pxi2),
- 	MSM_PIN_FUNCTION(ddr_pxi3),
- 	MSM_PIN_FUNCTION(dp_hot),
--	MSM_PIN_FUNCTION(egpio),
-+	MSM_GPIO_PIN_FUNCTION(egpio),
- 	MSM_PIN_FUNCTION(gcc_gp1),
- 	MSM_PIN_FUNCTION(gcc_gp2),
- 	MSM_PIN_FUNCTION(gcc_gp3),
-diff --git a/drivers/pinctrl/qcom/pinctrl-x1e80100.c b/drivers/pinctrl/qcom/pinctrl-x1e80100.c
-index d4b215f34c39bf67a0656a3f894b8639491e898b..bb36f40b19fa53eedf68d46d02986410d07a733c 100644
---- a/drivers/pinctrl/qcom/pinctrl-x1e80100.c
-+++ b/drivers/pinctrl/qcom/pinctrl-x1e80100.c
-@@ -1407,7 +1407,7 @@ static const char * const vsense_trigger_groups[] = {
- };
- 
- static const struct pinfunction x1e80100_functions[] = {
--	MSM_PIN_FUNCTION(gpio),
-+	MSM_GPIO_PIN_FUNCTION(gpio),
- 	MSM_PIN_FUNCTION(RESOUT_GPIO),
- 	MSM_PIN_FUNCTION(aon_cci),
- 	MSM_PIN_FUNCTION(aoss_cti),
-
--- 
-2.48.1
-
+T24gVHVlLCAyMDI1LTA4LTEyIGF0IDA5OjIzICswMjAwLCBLcnp5c3p0b2YgS296bG93c2tpIHdy
+b3RlOg0KPiANCj4gRXh0ZXJuYWwgZW1haWwgOiBQbGVhc2UgZG8gbm90IGNsaWNrIGxpbmtzIG9y
+IG9wZW4gYXR0YWNobWVudHMgdW50aWwNCj4geW91IGhhdmUgdmVyaWZpZWQgdGhlIHNlbmRlciBv
+ciB0aGUgY29udGVudC4NCj4gDQo+IA0KPiBPbiAxMi8wOC8yMDI1IDA5OjA0LCBMaWp1LWNsciBD
+aGVuICjpmbPpupflpoIpIHdyb3RlOg0KPiA+IE9uIFdlZCwgMjAyNC0xMi0xMSBhdCAwOTo0NCAr
+MDEwMCwgS3J6eXN6dG9mIEtvemxvd3NraSB3cm90ZToNCj4gPiA+IA0KPiA+ID4gRXh0ZXJuYWwg
+ZW1haWwgOiBQbGVhc2UgZG8gbm90IGNsaWNrIGxpbmtzIG9yIG9wZW4gYXR0YWNobWVudHMNCj4g
+PiA+IHVudGlsDQo+ID4gPiB5b3UgaGF2ZSB2ZXJpZmllZCB0aGUgc2VuZGVyIG9yIHRoZSBjb250
+ZW50Lg0KPiA+ID4gDQo+ID4gPiANCj4gPiA+IE9uIDE0LzExLzIwMjQgMTE6MDcsIExpanUtY2xy
+IENoZW4gd3JvdGU6DQo+ID4gPiA+ICsNCj4gPiA+ID4gK3N0YXRpYyBpbnQgZ3p2bV9kZXZfb3Bl
+bihzdHJ1Y3QgaW5vZGUgKmlub2RlLCBzdHJ1Y3QgZmlsZQ0KPiA+ID4gPiAqZmlsZSkNCj4gPiA+
+ID4gK3sNCj4gPiA+ID4gK8KgwqDCoMKgIC8qDQo+ID4gPiA+ICvCoMKgwqDCoMKgICogUmVmZXJl
+bmNlIGNvdW50IHRvIHByZXZlbnQgdGhpcyBtb2R1bGUgaXMgdW5sb2FkDQo+ID4gPiA+IHdpdGhv
+dXQNCj4gPiA+ID4gZGVzdHJveWluZw0KPiA+ID4gPiArwqDCoMKgwqDCoCAqIFZNDQo+ID4gPiAN
+Cj4gPiA+IFNvIHlvdSByZS1pbXBsZW1lbnRlZCBzdXBwcmVzcy1iaW5kIGF0dHJzLi4uIG5vLCBk
+cm9wLg0KPiA+ID4gDQo+ID4gDQo+ID4gVGhhbmtzLCB3aWxsIGZpeCBpbiBuZXh0IHZlcnNpb24u
+DQo+IA0KPiBJIGdhdmUgeW91IGNvbW1lbnRzIHdpdGhpbiBob3Vycy4gWW91IHJlc3BvbmRlZCA4
+IG1vbnRocyBhZnRlci4gVGhhdA0KPiBpcw0KPiBub3QgbWFraW5nIHRoZSBwcm9jZXNzIGVhc3ku
+DQo+IA0KPiBJIGV4cGVjdCBhbGwgY29tbWVudHMgYXBwbGllZCBpbiBzdWNoIGNhc2UgYW5kIEkg
+d2lsbCBub3QgYmUgcmVhZGluZw0KPiBmdXJ0aGVyLiBZb3UgZ290IGNvbW1lbnRzLCBpbXBsZW1l
+bnQgdGhlbSBmdWxseS4gSSB0aGluayB5b3UgcmVqZWN0DQo+IHRoZW0sIGJ1dCByZWplY3Rpb24g
+YWZ0ZXIgOCBtb250aHMsIG1lYW5zIGFsbCBjb250ZXh0IGlzIGdvbmUuDQo+IA0KPiBOQUsNCj4g
+DQo+IEJlc3QgcmVnYXJkcywNCj4gS3J6eXN6dG9mDQoNCkhpIEtyenlzenRvZiwNCg0KVGhhbmtz
+IGZvciB5b3VyIGZlZWRiYWNrIGFuZCBmb3IgcG9pbnRpbmcgb3V0IHRoZXNlIGlzc3Vlcy4NCkkn
+bSByZWFsbHkgc29ycnkgZm9yIHRoZSBsYXRlIHJlcGx5IGFuZCB1bmRlcnN0YW5kIHRoaXMgbWF5
+DQpoYXZlIGRlbGF5ZWQgdGhlIHJldmlldyBwcm9jZXNzLiBJJ2xsIG1ha2Ugc3VyZSB0byByZXNw
+b25kDQptb3JlIHByb21wdGx5IG5leHQgdGltZS4NCg0KVGhhbmsgeW91IGZvciB5b3VyIHRpbWUg
+YW5kIHVuZGVyc3RhbmRpbmcuDQoNCkJlc3QgUmVnYXJkcywNCkxpanUtY2xyIENoZW4NCg0K
 
