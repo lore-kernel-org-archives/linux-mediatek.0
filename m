@@ -4,73 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0300CA0EC4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Aug 2025 08:00:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9269CA0EC4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Aug 2025 08:03:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7PzhdUS/xEgx9Mlbt0lDEg5Anqq3Vbab8zte0BNFu1o=; b=gia0+TvVcv37ueHPQFLzSjEtfj
-	Yf+YlUXO1PTnMFpf6EEshevpKsrzohsrdvFSHwFye0vGAVWRXKbqvAtGtNUlPq2Pwdb5v0Z3cnOcB
-	0EBSTmaiHBpzmFvAPDqtmhz69BOzAuH4ZSdYQYhMGD92QlniSA53JCxkWJYmYn3/i+O8h/sPHPs18
-	jkROA/w6qTR+4hfMsn4q1xxeDjL3X7klZxllRSrRMUab8XEmJu5SSfIrdsphIHS3uolrn9tU0IB+/
-	UP/61SiAChBCrp89Iw8BuAER7sQjsxsr27gqgJ7y//umjo4jtF9cRp/XxFg5WAxO46uE7RBQjkIzi
-	Ah+x8U5w==;
+	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=vUvp0ttX3lOxjdOrvZsKvJKNpHHNusfF6naBdS8j1E8=; b=ISOk6GGY9cQ/K1vmHbgD/qWhtK
+	ncZmkZSgWh6u9uZra4Q6QfpqXaK0AAg5i5ADxvG+n7I5wlUujgUvzCIuNFRckx0aZBW/X+yDIMQK/
+	eprt/v5B45MK6qqdWkPH6I6vioA0xHasFmjXz9s/opxgcQ3DJ3uGf9iv9IRHy1+q3sbHlAMB4at9C
+	N57/7ISQncYRFh7ADocf4gzdWAqfqlUZoXRg965lp9SGPeDB9pomRcUvJSVg0DzRMWQG6wdZRIlDe
+	qNyT7xV9YI+mN7/5X7aefQrSFoL6WvgnD3sWFYvexOgpYPhLLDkCvJxbFo83aNiA/9iq88+D+/f9b
+	nefsHbxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uljvm-0000000AB3O-2nK3;
-	Tue, 12 Aug 2025 08:00:26 +0000
-Received: from relay15.mail.gandi.net ([2001:4b98:dc4:8::235])
+	id 1uljyQ-0000000AByX-3va4;
+	Tue, 12 Aug 2025 08:03:10 +0000
+Received: from mail.fundixo.pl ([57.128.173.14])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uljpw-0000000AAFR-14zy;
-	Tue, 12 Aug 2025 07:54:25 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 507D2442D7;
-	Tue, 12 Aug 2025 07:54:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1754985261;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=7PzhdUS/xEgx9Mlbt0lDEg5Anqq3Vbab8zte0BNFu1o=;
-	b=F4STLiwGVw/fe3wzB0IkkYBYc+9IZKe52z7Zxir5p6HjJhdrLr5JDxsDHhs0dkhFTMTI/c
-	UqdH/mBemcSLZHVFaPF6UV/hsmI2q4zTByqj9AFCV8MJdxgN9DdFY3wRkk6tD90W7QaERU
-	F9lRg2FRa3U6g3AKFbyMJs/kwYaXgzlBTU8NoqebW/2cvts+KnufjTSwEIF8ShjyS0ib22
-	XmBbfhNMh6DeqwU9dtFX3M+kbxkE2jN+dsaQ5UQdlnMDbH/e/+Z9SAvwWZhwYprJ2W2iPC
-	Jy4pQmjiqiB5XhoNVGvi1eO71WOONfxM9oHCjxBaoCkBajeJtKf+Tn21HfJgLQ==
-Date: Tue, 12 Aug 2025 09:54:16 +0200
-From: Maxime Chevallier <maxime.chevallier@bootlin.com>
-To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>, Andrew Lunn
- <andrew+netdev@lunn.ch>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
- <kuba@kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, Matthias Brugger
- <matthias.bgg@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- netdev@vger.kernel.org, Paolo Abeni <pabeni@redhat.com>
-Subject: Re: [PATCH net-next 2/9] net: stmmac: provide a set of simple PM
- ops
-Message-ID: <20250812095416.029b9838@fedora.home>
-In-Reply-To: <E1ulXbc-008gqf-GJ@rmk-PC.armlinux.org.uk>
-References: <aJo7kvoub5voHOUQ@shell.armlinux.org.uk>
-	<E1ulXbc-008gqf-GJ@rmk-PC.armlinux.org.uk>
-Organization: Bootlin
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+	id 1uljrH-0000000AAXx-0QLU
+	for linux-mediatek@lists.infradead.org;
+	Tue, 12 Aug 2025 07:55:48 +0000
+Received: by mail.fundixo.pl (Postfix, from userid 1002)
+	id BC9B84C566; Tue, 12 Aug 2025 09:51:33 +0200 (CEST)
+Received: by mail.fundixo.pl for <linux-mediatek@lists.infradead.org>; Tue, 12 Aug 2025 07:50:52 GMT
+Message-ID: <20250812084500-0.1.h0.3q9vr.0.6eg54agdnn@CyberCitadel.pl>
+Date: Tue, 12 Aug 2025 07:50:52 GMT
+From: "Marek Kucharski" <marek.kucharski@fundixo.pl>
+To: <linux-mediatek@lists.infradead.org>
+Subject: =?UTF-8?Q?Prosz=C4=99_o_kontakt?=
+X-Mailer: mail.CyberCitadel.pl
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-GND-State: clean
-X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdefgddufeegjeekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvvefukfgjfhhoofggtgfgsehtjeertdertddvnecuhfhrohhmpeforgigihhmvgcuvehhvghvrghllhhivghruceomhgrgihimhgvrdgthhgvvhgrlhhlihgvrhessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnhepgeevledtvdevueehhfevhfelhfekveeftdfgiedufeffieeltddtgfefuefhueeknecukfhppedvrgdtudemtggsudelmeekugegheemgeeltddtmeeiheeikeemvdelsgdumeelvghfheemvgektgejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepvdgrtddumegtsgduleemkegugeehmeegledttdemieehieekmedvlegsudemlegvfhehmegvkegtjedphhgvlhhopehfvgguohhrrgdrhhhomhgvpdhmrghilhhfrhhomhepmhgrgihimhgvrdgthhgvvhgrlhhlihgvrhessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepudeipdhrtghpthhtoheprhhmkhdokhgvrhhnvghlsegrrhhmlhhinhhugidrohhrghdruhhkpdhrtghpthhtoheprghnughrvgifsehluhhnnhdrtghhpdhrtghpthhtohephhhkrghllhifvghithdusehgmhgrihhlrdgto
- hhmpdhrtghpthhtoheprghlvgigrghnughrvgdrthhorhhguhgvsehfohhsshdrshhtrdgtohhmpdhrtghpthhtoheprghnughrvgifodhnvghtuggvvheslhhunhhnrdgthhdprhgtphhtthhopegrnhhgvghlohhgihhorggttghhihhnohdruggvlhhrvghgnhhosegtohhllhgrsghorhgrrdgtohhmpdhrtghpthhtohepuggrvhgvmhesuggrvhgvmhhlohhfthdrnhgvthdprhgtphhtthhopegvughumhgriigvthesghhoohhglhgvrdgtohhm
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250812_005424_455885_44C6AEE7 
-X-CRM114-Status: UNSURE (   7.41  )
+X-CRM114-CacheID: sfid-20250812_005547_280476_E2A05E4F 
+X-CRM114-Status: UNSURE (   0.91  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,15 +57,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 11 Aug 2025 19:50:48 +0100
-"Russell King (Oracle)" <rmk+kernel@armlinux.org.uk> wrote:
+Dzie=C5=84 dobry,
 
-> Several drivers will want to make use of simple PM operations, so
-> provide these from the core driver.
-> 
-> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+Czy jest mo=C5=BCliwo=C5=9B=C4=87 nawi=C4=85zania wsp=C3=B3=C5=82pracy z =
+Pa=C5=84stwem?
 
-Reviewed-by: Maxime Chevallier <maxime.chevallier@bootlin.com>
+Z ch=C4=99ci=C4=85 porozmawiam z osob=C4=85 zajmuj=C4=85c=C4=85 si=C4=99 =
+dzia=C5=82aniami zwi=C4=85zanymi ze sprzeda=C5=BC=C4=85.
 
-Maxime
+Pomagamy skutecznie pozyskiwa=C4=87 nowych klient=C3=B3w.
+
+Zapraszam do kontaktu.
+
+
+Pozdrawiam
+Marek Kucharski
 
