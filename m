@@ -4,44 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9269CA0EC4
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EED6C87FCB
 	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Aug 2025 08:03:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=vUvp0ttX3lOxjdOrvZsKvJKNpHHNusfF6naBdS8j1E8=; b=ISOk6GGY9cQ/K1vmHbgD/qWhtK
-	ncZmkZSgWh6u9uZra4Q6QfpqXaK0AAg5i5ADxvG+n7I5wlUujgUvzCIuNFRckx0aZBW/X+yDIMQK/
-	eprt/v5B45MK6qqdWkPH6I6vioA0xHasFmjXz9s/opxgcQ3DJ3uGf9iv9IRHy1+q3sbHlAMB4at9C
-	N57/7ISQncYRFh7ADocf4gzdWAqfqlUZoXRg965lp9SGPeDB9pomRcUvJSVg0DzRMWQG6wdZRIlDe
-	qNyT7xV9YI+mN7/5X7aefQrSFoL6WvgnD3sWFYvexOgpYPhLLDkCvJxbFo83aNiA/9iq88+D+/f9b
-	nefsHbxg==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=K7e8CHb+7pxSeZnIxVAzyVqqJXnBNnNeosk2mQgYDM0=; b=Um1GOLJEy4a3Ylz+GsOvsWKaVo
+	hMqB7rx3dDMC14mQzzg14M5HDzIjogaXtklyO5cWrV1wP8I2omSAncsZWtFlp9KPKTExKDUAiBc8L
+	TDp9PbbzUFrBhI4UOT95m/wEUa0GuU4RJufMpnIeE10UGF0FGeeGxfHDrvFh/PtwDobpGEd5qvg/j
+	e8gxqu1evAy1llcrPxS2oH18tZm4qns3B/2bRHJwhD42gfJgSuiuQfvNfmlgkaKNpKIST4/bLBB+Q
+	Hwrj4Zg/lAxxjGUcPIkA+AxE6Y6JjqALk6F8DuRAC5bM1IwnmEOJkdibkVGAbDjrffS1oFX4zRLTO
+	Mx1XztvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uljyQ-0000000AByX-3va4;
+	id 1uljyQ-0000000AByI-2UHa;
 	Tue, 12 Aug 2025 08:03:10 +0000
-Received: from mail.fundixo.pl ([57.128.173.14])
+Received: from relay9-d.mail.gandi.net ([217.70.183.199])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uljrH-0000000AAXx-0QLU
-	for linux-mediatek@lists.infradead.org;
-	Tue, 12 Aug 2025 07:55:48 +0000
-Received: by mail.fundixo.pl (Postfix, from userid 1002)
-	id BC9B84C566; Tue, 12 Aug 2025 09:51:33 +0200 (CEST)
-Received: by mail.fundixo.pl for <linux-mediatek@lists.infradead.org>; Tue, 12 Aug 2025 07:50:52 GMT
-Message-ID: <20250812084500-0.1.h0.3q9vr.0.6eg54agdnn@CyberCitadel.pl>
-Date: Tue, 12 Aug 2025 07:50:52 GMT
-From: "Marek Kucharski" <marek.kucharski@fundixo.pl>
-To: <linux-mediatek@lists.infradead.org>
-Subject: =?UTF-8?Q?Prosz=C4=99_o_kontakt?=
-X-Mailer: mail.CyberCitadel.pl
+	id 1uljqI-0000000AAJK-1XSn;
+	Tue, 12 Aug 2025 07:54:47 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 550C4443EC;
+	Tue, 12 Aug 2025 07:54:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1754985283;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=K7e8CHb+7pxSeZnIxVAzyVqqJXnBNnNeosk2mQgYDM0=;
+	b=jW3hN6v/hT09ux7QDh2APdvmQBXhci7+vu+3TRLZ9L0zkd4VExvz7Eu0cewqcuqaiUTUBP
+	ygvGNQL9qKl4K3koNNXNuc+rGknw+tubblMZchuovNlRw6joEoFn5Eoy/G/AfR3fmf0RJy
+	xa3hdgybkToThjt2GzvWKnQTFFQoRkKh3WPH0N6nCGBhssDgDDAX4M1Q3pTLlzGX5ctyqW
+	fuL/IpcxBpDfPw+4ij9xL+HobNqhpamIPlASuUQ90+s05PK2elLI9ScQgTfGj5LQ+thF5j
+	50HJzqEIwIW93Cbt+VEtY+1y5DDtxvkocwvz7eOyoKBjxFWCed+ROYDDLdzQ4g==
+Date: Tue, 12 Aug 2025 09:54:40 +0200
+From: Maxime Chevallier <maxime.chevallier@bootlin.com>
+To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, Andrew Lunn
+ <andrew+netdev@lunn.ch>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
+ <kuba@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, Matthias Brugger
+ <matthias.bgg@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ netdev@vger.kernel.org, Paolo Abeni <pabeni@redhat.com>
+Subject: Re: [PATCH net-next 3/9] net: stmmac: platform: legacy hooks for
+ suspend()/resume() methods
+Message-ID: <20250812095440.4dd9e79d@fedora.home>
+In-Reply-To: <E1ulXbh-008gql-LO@rmk-PC.armlinux.org.uk>
+References: <aJo7kvoub5voHOUQ@shell.armlinux.org.uk>
+	<E1ulXbh-008gql-LO@rmk-PC.armlinux.org.uk>
+Organization: Bootlin
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-GND-State: clean
+X-GND-Score: -100
+X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdefgddufeegjeekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvvefukfgjfhhoofggtgfgsehtjeertdertddvnecuhfhrohhmpeforgigihhmvgcuvehhvghvrghllhhivghruceomhgrgihimhgvrdgthhgvvhgrlhhlihgvrhessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnhepgeevledtvdevueehhfevhfelhfekveeftdfgiedufeffieeltddtgfefuefhueeknecukfhppedvrgdtudemtggsudelmeekugegheemgeeltddtmeeiheeikeemvdelsgdumeelvghfheemvgektgejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepvdgrtddumegtsgduleemkegugeehmeegledttdemieehieekmedvlegsudemlegvfhehmegvkegtjedphhgvlhhopehfvgguohhrrgdrhhhomhgvpdhmrghilhhfrhhomhepmhgrgihimhgvrdgthhgvvhgrlhhlihgvrhessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepudeipdhrtghpthhtoheprhhmkhdokhgvrhhnvghlsegrrhhmlhhinhhugidrohhrghdruhhkpdhrtghpthhtoheprghnughrvgifsehluhhnnhdrtghhpdhrtghpthhtohephhhkrghllhifvghithdusehgmhgrihhlrdgto
+ hhmpdhrtghpthhtoheprghlvgigrghnughrvgdrthhorhhguhgvsehfohhsshdrshhtrdgtohhmpdhrtghpthhtoheprghnughrvgifodhnvghtuggvvheslhhunhhnrdgthhdprhgtphhtthhopegrnhhgvghlohhgihhorggttghhihhnohdruggvlhhrvghgnhhosegtohhllhgrsghorhgrrdgtohhmpdhrtghpthhtohepuggrvhgvmhesuggrvhgvmhhlohhfthdrnhgvthdprhgtphhtthhopegvughumhgriigvthesghhoohhglhgvrdgtohhm
+X-GND-Sasl: maxime.chevallier@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250812_005547_280476_E2A05E4F 
-X-CRM114-Status: UNSURE (   0.91  )
+X-CRM114-CacheID: sfid-20250812_005446_540509_60CE4509 
+X-CRM114-Status: UNSURE (   8.77  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -57,19 +87,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dzie=C5=84 dobry,
+On Mon, 11 Aug 2025 19:50:53 +0100
+"Russell King (Oracle)" <rmk+kernel@armlinux.org.uk> wrote:
 
-Czy jest mo=C5=BCliwo=C5=9B=C4=87 nawi=C4=85zania wsp=C3=B3=C5=82pracy z =
-Pa=C5=84stwem?
+> Add legacy hooks for the suspend() and resume() methods to forward
+> these calls to the init() and exit() methods when the platform code
+> hasn't populated the two former methods. This allows us to get rid
+> of stmmac_pltfr_suspend() and stmmac_pltfr_resume().
+> 
+> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 
-Z ch=C4=99ci=C4=85 porozmawiam z osob=C4=85 zajmuj=C4=85c=C4=85 si=C4=99 =
-dzia=C5=82aniami zwi=C4=85zanymi ze sprzeda=C5=BC=C4=85.
+Reviewed-by: Maxime Chevallier <maxime.chevallier@bootlin.com>
 
-Pomagamy skutecznie pozyskiwa=C4=87 nowych klient=C3=B3w.
-
-Zapraszam do kontaktu.
-
-
-Pozdrawiam
-Marek Kucharski
+Maxime
 
