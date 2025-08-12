@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EED6C87FCB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Aug 2025 08:03:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 789DCCA0EC4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Aug 2025 09:42:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=K7e8CHb+7pxSeZnIxVAzyVqqJXnBNnNeosk2mQgYDM0=; b=Um1GOLJEy4a3Ylz+GsOvsWKaVo
-	hMqB7rx3dDMC14mQzzg14M5HDzIjogaXtklyO5cWrV1wP8I2omSAncsZWtFlp9KPKTExKDUAiBc8L
-	TDp9PbbzUFrBhI4UOT95m/wEUa0GuU4RJufMpnIeE10UGF0FGeeGxfHDrvFh/PtwDobpGEd5qvg/j
-	e8gxqu1evAy1llcrPxS2oH18tZm4qns3B/2bRHJwhD42gfJgSuiuQfvNfmlgkaKNpKIST4/bLBB+Q
-	Hwrj4Zg/lAxxjGUcPIkA+AxE6Y6JjqALk6F8DuRAC5bM1IwnmEOJkdibkVGAbDjrffS1oFX4zRLTO
-	Mx1XztvA==;
+	bh=l/CjTDdsTZ2vJWhyV91RfZWaBwK5X85vossX277eUwg=; b=TJ4bKd2j/6PwJlZm6gAs0qvohR
+	xIkw5zn0qB4B25l26I6AG/M2pLbcE3BODXarMkiOFEemcCTUVWsa4fc78BtJr1MatSyim8eVK3qb/
+	6uiQJ+pQx/dbMJ0PIe8A3wVf35p/Px6Y7Ld9LJPWi4clsTLPXQCJ96zuDHi41eUEFiI8GmGaq+4Rk
+	e8inKPOOICLL/ZVSiwtoTLFKy7a7l43a1Q730+BdUDwr8+aR+FGUqDj4cCCaAxK0DMIPdT8ANxXOZ
+	PHyon1dtIWWBSBKnfZC0mA9vveFM/cnjN+JSJwlNm2o/9B+LidRHPzPPUD2fSlD1zGSMpFlRNKU9q
+	IVTHUlAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uljyQ-0000000AByI-2UHa;
-	Tue, 12 Aug 2025 08:03:10 +0000
-Received: from relay9-d.mail.gandi.net ([217.70.183.199])
+	id 1ullWx-0000000APlE-0RDX;
+	Tue, 12 Aug 2025 09:42:55 +0000
+Received: from relay3-d.mail.gandi.net ([217.70.183.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uljqI-0000000AAJK-1XSn;
-	Tue, 12 Aug 2025 07:54:47 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 550C4443EC;
-	Tue, 12 Aug 2025 07:54:41 +0000 (UTC)
+	id 1uljpW-0000000AABY-3zhH;
+	Tue, 12 Aug 2025 07:54:01 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 603EC2059B;
+	Tue, 12 Aug 2025 07:53:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1754985283;
+	t=1754985235;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=K7e8CHb+7pxSeZnIxVAzyVqqJXnBNnNeosk2mQgYDM0=;
-	b=jW3hN6v/hT09ux7QDh2APdvmQBXhci7+vu+3TRLZ9L0zkd4VExvz7Eu0cewqcuqaiUTUBP
-	ygvGNQL9qKl4K3koNNXNuc+rGknw+tubblMZchuovNlRw6joEoFn5Eoy/G/AfR3fmf0RJy
-	xa3hdgybkToThjt2GzvWKnQTFFQoRkKh3WPH0N6nCGBhssDgDDAX4M1Q3pTLlzGX5ctyqW
-	fuL/IpcxBpDfPw+4ij9xL+HobNqhpamIPlASuUQ90+s05PK2elLI9ScQgTfGj5LQ+thF5j
-	50HJzqEIwIW93Cbt+VEtY+1y5DDtxvkocwvz7eOyoKBjxFWCed+ROYDDLdzQ4g==
-Date: Tue, 12 Aug 2025 09:54:40 +0200
+	bh=l/CjTDdsTZ2vJWhyV91RfZWaBwK5X85vossX277eUwg=;
+	b=AWBVEjcvzKNPnFkloklo+5BU0lhN9r5BCBBgmxfLKDZnBEUesvnUBK3Ln1wpKhyRc7aUG4
+	HJZE8WWImX/GZwdxoNJbGvVbwtDcn/9HS1N34zKvzWm7lpnFiM59eN6kTioX6ZEABwxE+0
+	8/5zcjZU6vxA4HgguKTVaQS6nB2BmYMQ0ycbDh/RQ9itsV3FsaHN5XcBFOG/eMs+qrwYyK
+	L9R99Q5ZzNvFTlacDHq48Sv99QQ78mA2lfhwbXjeRMT5j4JBcWab/AnGMPLYcpQY+h13R2
+	Hv4AegNB+k6kdxEak/JnwEuQh9vyZewN6ZXtJzR0ChlFGqgMQO9KUgvkM8zy3w==
+Date: Tue, 12 Aug 2025 09:53:51 +0200
 From: Maxime Chevallier <maxime.chevallier@bootlin.com>
 To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
 Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
@@ -53,12 +53,12 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
  linux-stm32@st-md-mailman.stormreply.com, Matthias Brugger
  <matthias.bgg@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
  netdev@vger.kernel.org, Paolo Abeni <pabeni@redhat.com>
-Subject: Re: [PATCH net-next 3/9] net: stmmac: platform: legacy hooks for
- suspend()/resume() methods
-Message-ID: <20250812095440.4dd9e79d@fedora.home>
-In-Reply-To: <E1ulXbh-008gql-LO@rmk-PC.armlinux.org.uk>
+Subject: Re: [PATCH net-next 1/9] net: stmmac: add suspend()/resume()
+ platform ops
+Message-ID: <20250812095351.7ec35164@fedora.home>
+In-Reply-To: <E1ulXbX-008gqZ-Bb@rmk-PC.armlinux.org.uk>
 References: <aJo7kvoub5voHOUQ@shell.armlinux.org.uk>
-	<E1ulXbh-008gql-LO@rmk-PC.armlinux.org.uk>
+	<E1ulXbX-008gqZ-Bb@rmk-PC.armlinux.org.uk>
 Organization: Bootlin
 X-Mailer: Claws Mail 4.3.1 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
@@ -70,8 +70,8 @@ X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdefgddufeegjeekucetufdoteggode
  hhmpdhrtghpthhtoheprghlvgigrghnughrvgdrthhorhhguhgvsehfohhsshdrshhtrdgtohhmpdhrtghpthhtoheprghnughrvgifodhnvghtuggvvheslhhunhhnrdgthhdprhgtphhtthhopegrnhhgvghlohhgihhorggttghhihhnohdruggvlhhrvghgnhhosegtohhllhgrsghorhgrrdgtohhmpdhrtghpthhtohepuggrvhgvmhesuggrvhgvmhhlohhfthdrnhgvthdprhgtphhtthhopegvughumhgriigvthesghhoohhglhgvrdgtohhm
 X-GND-Sasl: maxime.chevallier@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250812_005446_540509_60CE4509 
-X-CRM114-Status: UNSURE (   8.77  )
+X-CRM114-CacheID: sfid-20250812_005359_790890_67CB37A3 
+X-CRM114-Status: UNSURE (   8.44  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,13 +87,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 11 Aug 2025 19:50:53 +0100
+On Mon, 11 Aug 2025 19:50:43 +0100
 "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk> wrote:
 
-> Add legacy hooks for the suspend() and resume() methods to forward
-> these calls to the init() and exit() methods when the platform code
-> hasn't populated the two former methods. This allows us to get rid
-> of stmmac_pltfr_suspend() and stmmac_pltfr_resume().
+> Add suspend/resume platform operations, which, when populated, override
+> the init/exit platform operations when we suspend and resume. These
+> suspend()/resume() methods are called by core code, and thus are
+> designed to support any struct device, not just platform devices. This
+> allows them to be used by the PCI drivers we have.
 > 
 > Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 
