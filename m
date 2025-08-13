@@ -4,100 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26F6ECA0EC4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Aug 2025 19:23:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72F84CA0EDC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Aug 2025 01:22:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8QR5Rwk5xYJiAVFY+3V9RxtdNdC7oDybFHY7DxZwFtg=; b=qhRlnVhGargQE2AemtZxoB6t6Z
-	G4IOzJK2xMijflEG84j2o6SspsLLIaGLdj3/il8fCg2ZSHgs6FcEAeLeybD/KUcp2WQg9eDAd4eqp
-	y/WT1t77AQ/CgkAWkwJhj9/+nNs0EYKkG1Jy6ZNvR+2XmMYQLurT8xz9/SJhGOqpaC77XPtiOt3fq
-	yUZ/rmgF8rfsvt6sbJnDR5yf1bfN9IDER832o9W7l0X4yKI1gj+8Nzr2DvApnSBEdAZqDqiB55lUC
-	JXNQZwdTJBsrsLI6M0UGMugvb2pDG2Q4EDZ7qnn1PC1EmEFtgjzRZJGM6E3jZ8CZjyp6qUN+XZq2f
-	c4l9OhCg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EJUYcTOJUJSu2mPwLc7qg64eNYE1cCnM1aoJb8LiDXM=; b=p4U58rLFkLVA0slakWyzRhONEJ
+	Db8bS2P1TDufe9uEe/+SUzvODJ1yGdO/PiyjLJPaTCZT+4w5r40Awc9cMunZPTYpi7aoGnNwm5gB3
+	UCsMn8hZ4IquLlnLWw8qYS4/q07dZqVCPOzRIeHN4njFmh1joQHY3cTMBGyEQoYWJ6hhu/O8J4WLD
+	OuYbrzLJ/po0t97DBe29/e76fQPrfvDVklHRVlqaWaio58OFZtk+Vht8uvzKgFXRtyold6ofpaGvQ
+	lRad1pTVUS53HwRYZ7hl3OcwKHZC1FFDpwBBdSQucnm8SyNZie9Fhr2C2xXWNarOtQeZsLFSC/XVk
+	nvlmFo+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uluan-0000000Bn3d-2Jas;
-	Tue, 12 Aug 2025 19:23:29 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1um0CW-0000000CKeL-39WA;
+	Wed, 13 Aug 2025 01:22:48 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulr5m-0000000BBQo-1sh0;
-	Tue, 12 Aug 2025 15:39:15 +0000
+	id 1um09y-0000000CKUp-2KLe;
+	Wed, 13 Aug 2025 01:20:10 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id C95534433E;
-	Tue, 12 Aug 2025 15:39:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 284FDC4CEF0;
-	Tue, 12 Aug 2025 15:38:40 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 7EBD3600B0;
+	Wed, 13 Aug 2025 01:20:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 12942C4CEF0;
+	Wed, 13 Aug 2025 01:20:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755013153;
-	bh=iGUpF1C71k7qo9/61ohvQv5Z7z5laJQcZjUsXmHz/vc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=LiZpRdpDhra8HQLi6oTJvzINkJJSuv23n4QKhmL0GdIDFfOjMCDM1OqYhcWHHq3TI
-	 L28O5b3iPN5wVc9EXSMe1wiMP/NajukL3ql7pF4a85lv1fNAUZsV+TlMAAvN2rrzmr
-	 wRMnMSseO6nd8/EPTJY79HOmJ9zeY5vY0LS0u24hUa3icUGD8uDqDLMHMPTvWLEQv1
-	 l7Tw7lcXGU5Rs7ZD4eklupowdOLUecuU8uOFa6RlUoRtZfGlD+/8Ge0Ca3RaSQaoYZ
-	 h2ClWJH1Q8I12fZ++utjNSDaO59Bx51zYgkj3Rxo8YY8S6cPtFbxYBa0hRIu+GN5Me
-	 k5jWalHFpopnQ==
-Date: Tue, 12 Aug 2025 21:08:28 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: bmasney@redhat.com
-Cc: Michael Turquette <mturquette@baylibre.com>, 
-	Stephen Boyd <sboyd@kernel.org>, Sudeep Holla <sudeep.holla@arm.com>, 
-	Cristian Marussi <cristian.marussi@arm.com>, Chen Wang <unicorn_wang@outlook.com>, 
-	Inochi Amaoto <inochiama@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
-	Paul Cercueil <paul@crapouillou.net>, Keguang Zhang <keguang.zhang@gmail.com>, 
-	Taichi Sugaya <sugaya.taichi@socionext.com>, Takao Orito <orito.takao@socionext.com>, 
-	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
-	Jacky Huang <ychuang3@nuvoton.com>, Shan-Chun Hung <schung@nuvoton.com>, 
-	Vladimir Zapolskiy <vz@mleia.com>, Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>, 
-	Paul Walmsley <paul.walmsley@sifive.com>, Samuel Holland <samuel.holland@sifive.com>, 
-	Yixun Lan <dlan@gentoo.org>, Steen Hegelund <Steen.Hegelund@microchip.com>, 
-	Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, Orson Zhai <orsonzhai@gmail.com>, 
-	Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	Michal Simek <michal.simek@amd.com>, Maxime Ripard <mripard@kernel.org>, 
-	Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>, Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>, 
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>, Neal Gompa <neal@gompa.dev>, 
-	Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>, Ray Jui <rjui@broadcom.com>, 
-	Scott Branden <sbranden@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Max Filippov <jcmvbkbc@gmail.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Daniel Palmer <daniel@thingy.jp>, 
-	Romain Perier <romain.perier@gmail.com>, Andrew Lunn <andrew@lunn.ch>, 
-	Gregory Clement <gregory.clement@bootlin.com>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, 
-	Bjorn Andersson <andersson@kernel.org>, Geert Uytterhoeven <geert+renesas@glider.be>, 
-	Heiko Stuebner <heiko@sntech.de>, Andrea della Porta <andrea.porta@suse.com>, 
-	Krzysztof Kozlowski <krzk@kernel.org>, Sylwester Nawrocki <s.nawrocki@samsung.com>, 
-	Chanwoo Choi <cw00.choi@samsung.com>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Qin Jian <qinjian@cqplus1.com>, Viresh Kumar <vireshk@kernel.org>, 
-	Ulf Hansson <ulf.hansson@linaro.org>, Luca Ceresoli <luca.ceresoli@bootlin.com>, 
-	Alex Helms <alexander.helms.jy@renesas.com>, Linus Walleij <linus.walleij@linaro.org>, 
-	Liviu Dudau <liviu.dudau@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	arm-scmi@vger.kernel.org, linux-arm-kernel@lists.infradead.org, sophgo@lists.linux.dev, 
-	linux-mips@vger.kernel.org, imx@lists.linux.dev, linux-riscv@lists.infradead.org, 
-	spacemit@lists.linux.dev, linux-stm32@st-md-mailman.stormreply.com, 
-	patches@opensource.cirrus.com, linux-actions@lists.infradead.org, asahi@lists.linux.dev, 
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev
-Subject: Re: [PATCH 079/114] clk: bm1880: convert from round_rate() to
- determine_rate()
-Message-ID: <tcl4eqicuqcptnbo4mcvjhacxkh2gh344k2bdrwfjbqflxspy7@x24np6pxjacf>
-References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
- <20250811-clk-for-stephen-round-rate-v1-79-b3bf97b038dc@redhat.com>
+	s=k20201202; t=1755048009;
+	bh=0OvQcSBq7+nWfUTs0J8PYw0DBRmzFTWE1hI4XBot3Ek=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=rckoJnAbdr6SDwFTCpifJP3CXyIKCp2JAyVGAJCMzU2Yb50Z8L2QyT+g+C36PYcIQ
+	 XbAU7olp91xZdfzeOjZYFmIRQKuN4Mn4RpwaXGLq00JHa98ZITidgRvOudkM9pkArv
+	 xCkatqb2CpqtPbhIVJNeIwtxDVdctGOgDKWNqRZ4+A7e4aSczfe/3S44AEgbnIDbtH
+	 FrVu1y0ffWLJ6WZFmy//1Pq4cEoFEAaPEv42JmzTNQuZ4UgxeakTaq6z618Row18qu
+	 rFte8M4R022SDwy1JvuKYyP2XqQb6Z4cM+JqUGnWDQyRfzMVJ17+lcAKFlHqtS/j9E
+	 QlYDpSdwp2Jyw==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 34A9C39D0C2E;
+	Wed, 13 Aug 2025 01:20:22 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-79-b3bf97b038dc@redhat.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250812_083914_530348_16EF596B 
-X-CRM114-Status: GOOD (  22.13  )
+Subject: Re: [PATCH net-next 0/9] net: stmmac: improbe suspend/resume
+ architecture
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <175504802100.2913300.7913222842711784004.git-patchwork-notify@kernel.org>
+Date: Wed, 13 Aug 2025 01:20:21 +0000
+References: <aJo7kvoub5voHOUQ@shell.armlinux.org.uk>
+In-Reply-To: <aJo7kvoub5voHOUQ@shell.armlinux.org.uk>
+To: Russell King (Oracle) <linux@armlinux.org.uk>
+Cc: andrew@lunn.ch, hkallweit1@gmail.com, alexandre.torgue@foss.st.com,
+ andrew+netdev@lunn.ch, angelogioacchino.delregno@collabora.com,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, matthias.bgg@gmail.com,
+ mcoquelin.stm32@gmail.com, netdev@vger.kernel.org, pabeni@redhat.com
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,79 +75,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 11, 2025 at 11:19:11AM GMT, Brian Masney via B4 Relay wrote:
-> From: Brian Masney <bmasney@redhat.com>
-> 
-> The round_rate() clk ops is deprecated, so migrate this driver from
-> round_rate() to determine_rate() using the Coccinelle semantic patch
-> on the cover letter of this series.
-> 
+Hello:
 
-Once this patch gets merged, the 'Coccinelle semantic patch on the cover letter
-of this series' becomes irrelevant. I'd suggest to either include the script
-here or do not mention it at all.
+This series was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-- Mani
+On Mon, 11 Aug 2025 19:50:58 +0100 you wrote:
+> Hi,
+> 
+> This series improves the stmmac suspend/resume architecture by
+> providing a couple of method hooks in struct plat_stmmacenet_data which
+> are called by core code, and thus are available for any of the
+> platform glue drivers, whether using a platform or PCI device.
+> 
+> [...]
 
-> Signed-off-by: Brian Masney <bmasney@redhat.com>
-> ---
->  drivers/clk/clk-bm1880.c | 21 +++++++++++++--------
->  1 file changed, 13 insertions(+), 8 deletions(-)
-> 
-> diff --git a/drivers/clk/clk-bm1880.c b/drivers/clk/clk-bm1880.c
-> index 002f7360b1c6c6e3058606a0808115b48fd3147a..dac190bc6e19a6dd4be413ea52d41f74934a1aa9 100644
-> --- a/drivers/clk/clk-bm1880.c
-> +++ b/drivers/clk/clk-bm1880.c
-> @@ -608,8 +608,8 @@ static unsigned long bm1880_clk_div_recalc_rate(struct clk_hw *hw,
->  	return rate;
->  }
->  
-> -static long bm1880_clk_div_round_rate(struct clk_hw *hw, unsigned long rate,
-> -				      unsigned long *prate)
-> +static int bm1880_clk_div_determine_rate(struct clk_hw *hw,
-> +					 struct clk_rate_request *req)
->  {
->  	struct bm1880_div_hw_clock *div_hw = to_bm1880_div_clk(hw);
->  	struct bm1880_div_clock *div = &div_hw->div;
-> @@ -621,13 +621,18 @@ static long bm1880_clk_div_round_rate(struct clk_hw *hw, unsigned long rate,
->  		val = readl(reg_addr) >> div->shift;
->  		val &= clk_div_mask(div->width);
->  
-> -		return divider_ro_round_rate(hw, rate, prate, div->table,
-> -					     div->width, div->flags,
-> -					     val);
-> +		req->rate = divider_ro_round_rate(hw, req->rate,
-> +						  &req->best_parent_rate,
-> +						  div->table,
-> +						  div->width, div->flags, val);
-> +
-> +		return 0;
->  	}
->  
-> -	return divider_round_rate(hw, rate, prate, div->table,
-> -				  div->width, div->flags);
-> +	req->rate = divider_round_rate(hw, req->rate, &req->best_parent_rate,
-> +				       div->table, div->width, div->flags);
-> +
-> +	return 0;
->  }
->  
->  static int bm1880_clk_div_set_rate(struct clk_hw *hw, unsigned long rate,
-> @@ -665,7 +670,7 @@ static int bm1880_clk_div_set_rate(struct clk_hw *hw, unsigned long rate,
->  
->  static const struct clk_ops bm1880_clk_div_ops = {
->  	.recalc_rate = bm1880_clk_div_recalc_rate,
-> -	.round_rate = bm1880_clk_div_round_rate,
-> +	.determine_rate = bm1880_clk_div_determine_rate,
->  	.set_rate = bm1880_clk_div_set_rate,
->  };
->  
-> 
-> -- 
-> 2.50.1
-> 
-> 
+Here is the summary with links:
+  - [net-next,1/9] net: stmmac: add suspend()/resume() platform ops
+    https://git.kernel.org/netdev/net-next/c/07bbbfe7addf
+  - [net-next,2/9] net: stmmac: provide a set of simple PM ops
+    https://git.kernel.org/netdev/net-next/c/7e84b3fae58c
+  - [net-next,3/9] net: stmmac: platform: legacy hooks for suspend()/resume() methods
+    https://git.kernel.org/netdev/net-next/c/b51f34bc85e3
+  - [net-next,4/9] net: stmmac: intel: convert to suspend()/resume() methods
+    https://git.kernel.org/netdev/net-next/c/062b42801733
+  - [net-next,5/9] net: stmmac: loongson: convert to suspend()/resume() methods
+    https://git.kernel.org/netdev/net-next/c/38772638d6d1
+  - [net-next,6/9] net: stmmac: pci: convert to suspend()/resume() methods
+    https://git.kernel.org/netdev/net-next/c/c91918a1e976
+  - [net-next,7/9] net: stmmac: rk: convert to suspend()/resume() methods
+    https://git.kernel.org/netdev/net-next/c/d7a276a5768f
+  - [net-next,8/9] net: stmmac: stm32: convert to suspend()/resume() methods
+    https://git.kernel.org/netdev/net-next/c/c7308b2f3d0d
+  - [net-next,9/9] net: stmmac: mediatek: convert to resume() method
+    https://git.kernel.org/netdev/net-next/c/d6e1f2272960
 
+You are awesome, thank you!
 -- 
-மணிவண்ணன் சதாசிவம்
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
