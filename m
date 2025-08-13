@@ -4,97 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 039DDCA0EC4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Aug 2025 03:13:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBF3CC87FCF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Aug 2025 06:01:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=8PhVQGmNNzCiMu9pw3hx+9YH1Eu7sHoNmFIOK1HnGfI=; b=3BYXbaXmH/NoittZNETrbHyTxO
-	qTtparShzidGPj/o8vt4czfUAibbAWRgf96IKMB7KwIolngitVVzsx66+PPi1buzB47IliED/lv2f
-	k5FOQilJhLOPBywtEF4XMx7m8ecsoeU4rHvY/j23Zr432ZhNd8u1qnlwlOhiAvMQwMSJgCG8GDMxh
-	CgUfPaTRe0FvS/eI5z1hzMkEzfsSZb23xZr6KokCTUu1agvPrAzwAZFX8EqKJoyTyF/cvwVIFFlkR
-	JJVUwOuXWY7cFUcYlX7/4rEQYfhjRAB7+kc9KchLbthuaovcQTMrkqNdtcd+X2Bqrfts6bJ1xNEiF
-	92aYyfng==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:From:
+	Subject:Message-ID:References:Mime-Version:In-Reply-To:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7BRD/FiSa0hIxPhbV2v5R9dmUKhZt4vQoKPKl+drGfw=; b=DoBgfkAOwBKIK5lu8GlpOhkMD0
+	WU3ZwJgnWSxKj7bH0MeLtdJfShSwa+1LS7X7cNcxzmlUI2XMCp6y+1b1vy1y9hFSebj3J/2cZhBC2
+	Tpw9Ext0zEDa2l7Ddnmkt8vK7z2gqAq+XIKgLev0cR9HOwqgiUvDziIpV7MlzEba1nDHeH6F3JUbp
+	U0t8Chj3SpzWkKblP9s8Z6ZqTS6rfJ19ERxhmBGJzwu5cZKmbCs0WIt/n+RlCOziEPSi2rxi1yZKk
+	EABolg9TXqXuW1w4beiJNqpTjCHXmJqetqSRVHPxCFK1Oj8MKmoZ2U8+MVc9hqM7WHRin0LowoTIW
+	fIN/rYOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1um1vs-0000000CUlv-49ex;
-	Wed, 13 Aug 2025 03:13:44 +0000
-Received: from mail-il1-x12d.google.com ([2607:f8b0:4864:20::12d])
+	id 1um4YY-0000000Cj1i-2eV8;
+	Wed, 13 Aug 2025 06:01:50 +0000
+Received: from mail-pl1-x649.google.com ([2607:f8b0:4864:20::649])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1um1vq-0000000CUkP-2ONc
+	id 1um4Sn-0000000Ci58-27es
 	for linux-mediatek@lists.infradead.org;
-	Wed, 13 Aug 2025 03:13:43 +0000
-Received: by mail-il1-x12d.google.com with SMTP id e9e14a558f8ab-3e55b170787so2614795ab.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 12 Aug 2025 20:13:42 -0700 (PDT)
+	Wed, 13 Aug 2025 05:55:54 +0000
+Received: by mail-pl1-x649.google.com with SMTP id d9443c01a7336-23fe28867b7so84803645ad.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 12 Aug 2025 22:55:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=riscstar-com.20230601.gappssmtp.com; s=20230601; t=1755054821; x=1755659621; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=8PhVQGmNNzCiMu9pw3hx+9YH1Eu7sHoNmFIOK1HnGfI=;
-        b=PnMnonRbSACDqRAuvGpnYXYwd09bd90Qy4lgJVxoihZgqRj6f6r2JqBgNbOL8AXMQ+
-         Sq5M2DZ/xzOEcerc2kYbAhdcgnpZozII872m19JyfBZlWlC4et2q7RDgHr241USUPTTz
-         KGod6QvCtfXHvFX9k9gyVO+CyS7BZ7CUvErDqzQ/7UFqkLcAz2mgdM0dcDTXvG7NDI+6
-         cORjCOl1gwywiGibGkxHq+oB7T4Dt6eYJfeogmfgLJk4b6RoBFYXeayrrJtTrkIcUGQ3
-         5Cy2CN5DJQgb/XMco/gIsGuAAr5e9xufOXBLzKegY/vFSLk8NyIjmN9Bfkp2dsjlEPMd
-         ITLw==
+        d=google.com; s=20230601; t=1755064552; x=1755669352; darn=lists.infradead.org;
+        h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+         :date:from:to:cc:subject:date:message-id:reply-to;
+        bh=7BRD/FiSa0hIxPhbV2v5R9dmUKhZt4vQoKPKl+drGfw=;
+        b=rHrSFaJWX7dTWM9ZSIGJYTgshr3LBfCrCETrrESDRqLgcyvYmd03eWpUqWtwAM2KD+
+         eEe/swy7ma7uuW32IzO2wZGP/Y5kWv8mQxQG+7w3sCB9+aNyU5oCZGI3PQrOg8ajc3LY
+         P98nuRjD8kGB70RgfGlaV2NQZ/R0icEb8DEMJejDrN32MBKaJhHi6IWNxTNhfNDc3cHM
+         tE8HqMIr/vE/japnSqkMzavsrdSngQapdkJsMgmtlnu4rGMPToojrOX8GFjnq5OYlVDG
+         L22YGAcxEuNKUn7QzbNhtBI1TfmJBMDHQjlbE2FNvx75Vr3K54zFrMHRt5WyC4kcqX5P
+         qvCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1755054821; x=1755659621;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=8PhVQGmNNzCiMu9pw3hx+9YH1Eu7sHoNmFIOK1HnGfI=;
-        b=nj9ZNP1mdLulceftZqTENGOvY/mZVblsyo3VLqm9xpulGq9+Lsz02Z//JGHkGGo3Rr
-         mylOkPFErynvpzgQFs8radZCKI2y3P0AG65s5VDf+XiJeTHt5kvRo9AA/cduALq4wmeN
-         KhyTAp+ZU6JekfMQ02ZUgyeUxdBIRc/0v9tvWv3lydyuhkF8Gqyjw4QaK90Y2RtRLw0m
-         02sSqzC+DaE5QUhDPh16uDYrqZtOaUpNDChkFSNsn3u0WqVY/4dFC6XrZWCT84U/gcrz
-         FySYpFyMf/8fbl4SQBJuxZZipBsQHPwcRiwKKBbicgznbFec1iUL7N5l1ANKV+OVqu1i
-         HMXg==
-X-Forwarded-Encrypted: i=1; AJvYcCXuqIpTjWpbdVA/HvOf2gEmNE1FXoz0d3GvPUtIvSMFOT5CHJXvjoRDI8mEQ7aWqC68xiDpFgqeYz58ajtmSw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YztiUd8eYHRgz7XGMyP6nO2dkylGzR3XpOkiYDzxTGx+NVqhoY6
-	exTqDro5SytvWsUSYskN5tgpF/AP3RciTbiSX6qmbx2jD42o5tNem69TDmY0OEoPUjM=
-X-Gm-Gg: ASbGncsb9UP6PvN0OXq/lFKxe3t6x9m1ODgj2/zmeX3m36YoDe/vuGUCm7h1bhjQAEG
-	pOdb8M87fbGIVU1QeqwjCc5fH/t5yE/rlnr6G/ADKDIz9arRGXwoJg1ki4ibdxCKI1r3sqjGJZM
-	uniu8Bxw5MGP4ZT5VJvuKTn2wjAvsWMnbrHx4raJZ9O/OuwoF0+9gnsUmyuqB1M2QOVMAcwBBbz
-	teHTa9M/Clem91FDJDYdiTzjjxAyQZK0nrv2gqMi4WpC09VtqoPynVNY4g+mBh14LMSruIRLwyJ
-	OTib9I4QrRfvPt3CC3Z9TnjrSZ9Yl+O2lQU7j6R5Dnc1GOrcnrPVYrtHRbIG9Xb06Vu287ayR09
-	jHeL5n+fXx8XLC4BryU098p9CzgCe7v0C0s1rLSI1uTniokz7Sr1lNS/UNWx1kFDNvA==
-X-Google-Smtp-Source: AGHT+IHJ3cV6K51nVGXbggkk4n0mggTrNvjqK58YjsUKI/uGamOMw1V+7ccv0fj3Is/jMTtEld3VjA==
-X-Received: by 2002:a92:ca07:0:b0:3e5:55b7:1eb5 with SMTP id e9e14a558f8ab-3e5685ab4f6mr13673995ab.11.1755054821496;
-        Tue, 12 Aug 2025 20:13:41 -0700 (PDT)
-Received: from zippy.localdomain (c-75-72-117-212.hsd1.mn.comcast.net. [75.72.117.212])
-        by smtp.gmail.com with ESMTPSA id 8926c6da1cb9f-50ae9bcfecbsm3616330173.62.2025.08.12.20.13.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 12 Aug 2025 20:13:41 -0700 (PDT)
-From: Alex Elder <elder@riscstar.com>
-To: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	gregkh@linuxfoundation.org,
-	jirislaby@kernel.org
-Cc: dlan@gentoo.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	lkundrak@v3.sk,
-	devicetree@vger.kernel.org,
-	linux-serial@vger.kernel.org,
-	spacemit@lists.linux.dev,
-	linux-mediatek@lists.infradead.org,
-	linux-riscv@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	kernel test robot <lkp@intel.com>
-Subject: [PATCH v2] dt-bindings: serial: 8250: allow "main" and "uart" as clock names
-Date: Tue, 12 Aug 2025 22:13:35 -0500
-Message-ID: <20250813031338.2328392-1-elder@riscstar.com>
-X-Mailer: git-send-email 2.48.1
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+        d=1e100.net; s=20230601; t=1755064552; x=1755669352;
+        h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+         :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=7BRD/FiSa0hIxPhbV2v5R9dmUKhZt4vQoKPKl+drGfw=;
+        b=OA1uTUEcWzi6x78sKTrR68bfa3Hffo9ZbWDVdLUYICI5AXAOMP/XZzHd6jq+4PSOhj
+         X+p4pmhgo51zP111m2PVE3ohgU8riAvyLZ7NDMAYlEethc7M+3Qn8+UZi5j4hzvnUWsG
+         ML2BGZPX77TPkV/8OuDKsLIg1YwM9djfrVRo7y2AEwGgZpOj0JJPbaAEtl9VmUPuIcdE
+         6esdjFVG/zyXPloTuHuEQcJiRQfzBeyPVm6Heg0pCzoCUkmf/ZPKW11utzHZWqpJvzSD
+         Er1nEy8kiQLqYp5iHA36t4ggyzG9uX66HlKXIz/O0nAES1zM7mFOfFANQJK4zQs3zQ6d
+         sWgQ==
+X-Forwarded-Encrypted: i=1; AJvYcCX9s+QyNupAMPoHwpdVNMKyXNo9c6r0fIt8/DJ7nEFtXTOIwHJzEtoomIJc/ml1jnMlgyejSU7Rna/W/G4s1g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzeuUdE+UoSTFrRQEv71XkQjLgl7LfklteeF5endi4Eaff8WTWP
+	FKdMYFyQzeVbYFg50rY2FUm5X389k3vheIqxc/FIGMRparPG0WomFvmZrcTstAAY/wRTOGDEG+z
+	GD4FblQ==
+X-Google-Smtp-Source: AGHT+IFoxYNoLghmdpptP7tDhzLk87CD3oeZhiQZUU42sNUj217+eYJVUow5Fo+S87ldA3ZHGB6RAPq/1Sw=
+X-Received: from pjbsq11.prod.google.com ([2002:a17:90b:530b:b0:321:c475:716e])
+ (user=kuniyu job=prod-delivery.src-stubby-dispatcher) by 2002:a17:902:e812:b0:23f:c760:fdf0
+ with SMTP id d9443c01a7336-2430d1f71e5mr29923185ad.45.1755064551813; Tue, 12
+ Aug 2025 22:55:51 -0700 (PDT)
+Date: Wed, 13 Aug 2025 05:55:48 +0000
+In-Reply-To: <20250813014819.262405-2-dqfext@gmail.com>
+Mime-Version: 1.0
+References: <20250813014819.262405-2-dqfext@gmail.com>
+X-Mailer: git-send-email 2.51.0.rc0.205.g4a044479a3-goog
+Message-ID: <20250813055550.98488-1-kuniyu@google.com>
+Subject: Re: [PATCH net v2 2/2] net: ethernet: mtk_ppe: add RCU lock around dev_fill_forward_path
+From: Kuniyuki Iwashima <kuniyu@google.com>
+To: dqfext@gmail.com
+Cc: andrew+netdev@lunn.ch, angelogioacchino.delregno@collabora.com, 
+	davem@davemloft.net, edumazet@google.com, kuba@kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, lorenzo@kernel.org, 
+	matthias.bgg@gmail.com, nbd@nbd.name, netdev@vger.kernel.org, 
+	pabeni@redhat.com, sean.wang@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250812_201342_609637_A3097A84 
-X-CRM114-Status: GOOD (  12.11  )
+X-CRM114-CacheID: sfid-20250812_225553_539245_3CB1E410 
+X-CRM114-Status: GOOD (  11.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,69 +93,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There are two compatible strings defined in "8250.yaml" that require
-two clocks to be specified, along with their names:
-  - "spacemit,k1-uart", used in "spacemit/k1.dtsi"
-  - "nxp,lpc1850-uart", used in "lpc/lpc18xx.dtsi"
+From: Qingfang Deng <dqfext@gmail.com>
+Date: Wed, 13 Aug 2025 09:48:18 +0800
+> Ensure ndo_fill_forward_path() is called with RCU lock held.
+> 
+> Fixes: 2830e314778d ("net: ethernet: mtk-ppe: fix traffic offload with bridged wlan")
+> Signed-off-by: Qingfang Deng <dqfext@gmail.com>
+> ---
+> v2: New patch
+> 
+>  drivers/net/ethernet/mediatek/mtk_ppe_offload.c | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
+> index c855fb799ce1..e9bd32741983 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
+> @@ -101,7 +101,9 @@ mtk_flow_get_wdma_info(struct net_device *dev, const u8 *addr, struct mtk_wdma_i
+>  	if (!IS_ENABLED(CONFIG_NET_MEDIATEK_SOC_WED))
+>  		return -1;
+>  
+> +	rcu_read_lock();
+>  	err = dev_fill_forward_path(dev, addr, &stack);
+> +	rcu_read_unlock();
 
-When only one clock is used, the name is not required.  However there
-are two places that do specify a name:
-  - In "mediatek/mt7623.dtsi", the clock for the "mediatek,mtk-btif"
-    compatible serial device is named "main"
-  - In "qca/ar9132.dtsi", the clock for the "ns8250" compatible
-    serial device is named "uart"
+This should be squashed to patch 1 or reorded as patch 1.
 
-In commit d2db0d7815444 ("dt-bindings: serial: 8250: allow clock
-'uartclk' and 'reg' for nxp,lpc1850-uart"), Frank Li added the
-restriction that two named clocks be used for the NXP platform
-mentioned above.
 
-Change that logic, so that an additional condition for (only) the
-SpacemiT platform similarly restricts the two clocks to have the
-names "core" and "bus".
-
-Finally, add "main" and "uart" as allowed names when a single clock is
-specified.
-
-Fixes: 2c0594f9f0629 ("dt-bindings: serial: 8250: support an optional second clock")
-Reported-by: kernel test robot <lkp@intel.com>
-Closes: https://lore.kernel.org/oe-kbuild-all/202507160314.wrC51lXX-lkp@intel.com/
-Signed-off-by: Alex Elder <elder@riscstar.com>
----
- Documentation/devicetree/bindings/serial/8250.yaml | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
-
-diff --git a/Documentation/devicetree/bindings/serial/8250.yaml b/Documentation/devicetree/bindings/serial/8250.yaml
-index e46bee8d25bf0..0a05a1647b5cc 100644
---- a/Documentation/devicetree/bindings/serial/8250.yaml
-+++ b/Documentation/devicetree/bindings/serial/8250.yaml
-@@ -60,7 +60,12 @@ allOf:
-           items:
-             - const: uartclk
-             - const: reg
--    else:
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            const: spacemit,k1-uart
-+    then:
-       properties:
-         clock-names:
-           items:
-@@ -162,6 +167,9 @@ properties:
-     minItems: 1
-     maxItems: 2
-     oneOf:
-+      - enum:
-+          - main
-+          - uart
-       - items:
-           - const: core
-           - const: bus
-
-base-commit: 8f5ae30d69d7543eee0d70083daf4de8fe15d585
--- 
-2.48.1
-
+>  	if (err)
+>  		return err;
+>  
+> -- 
+> 2.43.0
+> 
 
