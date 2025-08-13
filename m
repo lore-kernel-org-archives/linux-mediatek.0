@@ -4,72 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCCB9CA0EE4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Aug 2025 18:06:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CB15CA0EE0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Aug 2025 22:10:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3E70uCZdsVlnY5HHNZKc6pAhrrnlA5QbBWcg/yc6aGs=; b=b1ocjfAqP1rCXCZ9uAiXKgBc60
-	ch8Q1MP0cHRquvIXLeViwaJt4aBb5zfbLBqWXxkOOnKyLm5ck83S26sK/KoWOp0cusGPojz9fjckf
-	gxOEAL+A389j6S0SqLeHaR5s90yJ3PPc0Mud8gZKvwtsLwO/kQ6GlCQ/4vRioP+PZg2yUMbpgJoer
-	Kz/6M8R/yiZQqgcQLOYbFWoToNZEslzyHTZZq9qXxRUpnrq7sOLABNNMw3P2aZe6ixn0D+0G2hAjk
-	s5HHMxEs2JRoF080pO2xeh+/7dZ61apk5J7ZpK4XQyZUTNk8jMZM9t3bwSkWJLulfydZMOOEtmUBO
-	dgq0NcAg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=/N6L/iDMXiJ0jIm1ilu4+o+zlu1qgBDAbPtzXAqMRnY=; b=wx7k5g3dcttzfb2cIza64TrVVA
+	xzs7m5WwXI6SKo555kiWva3rcx5oyAuaItDUu7DLI3QzoHoPOQczdtSbBX/cSMidUbTaS/cpGEAyH
+	Op69PtfxH1GC2Qz1kd+0nI/GHslR444/M55yVy46rpMTRPBuLZ2JtDVh/HmHOjxt1JGy4S2arqkik
+	ZgzRDpCtgfJC+OVV5t3C0gEAQ+OijEqI+GBhGZ2MZP9EBomye0ug/BrfWPPm4dj49W72M6QC78lj8
+	TV7oYok0jVcWfshuZT7r+Wjj31/StX+FoJaGlnXUtQl9smpbgPT2a2XFw0alHYDdQj3yJVRyjUSKz
+	tDPQp3Lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umFrM-0000000Eeec-1nmu;
-	Wed, 13 Aug 2025 18:06:00 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1umJfi-0000000F7kq-2CYJ;
+	Wed, 13 Aug 2025 22:10:14 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umEpv-0000000EV20-2gEY;
-	Wed, 13 Aug 2025 17:00:28 +0000
+	id 1umJLL-0000000F4re-14HO;
+	Wed, 13 Aug 2025 21:49:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=/N6L/iDMXiJ0jIm1ilu4+o+zlu1qgBDAbPtzXAqMRnY=; b=bh+WHKdpdorAnWF731OOzcskJz
+	yCxpJP72dL/WXKwprk9jfahCvTgvnyLZHbmhoAxb0NApU5kiKzq0SMZdllL6gZP4DpHWCXiF64iCW
+	d5HtUmkljyVMfoJmfKfTHSPCFCFmG8utLQcY5wTyvG3D1Exm3LaVOdlJLUCsh2KM1443xqw2BHSdK
+	xy4xuFobJuLa0EMngI0tYEi2EI7dVa3kpOh2l+B/z7H1qL4psYYKE5EQ6AREGgb6uRcF3FHenb7cg
+	+SSl17jkTVmCoUp2PCNCjPumlYX17jADQqavn70WXfzjUuAmN6sjgHESX9jU3YG9Tl2Fy4eufzA2o
+	DatZYAXw==;
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1umJLI-0000000GD93-0Cx8;
+	Wed, 13 Aug 2025 21:49:09 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 6F8B65C6DF6;
-	Wed, 13 Aug 2025 17:00:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 69673C4CEEB;
-	Wed, 13 Aug 2025 17:00:22 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 130725C2726;
+	Wed, 13 Aug 2025 21:49:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9DC24C4CEEB;
+	Wed, 13 Aug 2025 21:49:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755104426;
-	bh=3E70uCZdsVlnY5HHNZKc6pAhrrnlA5QbBWcg/yc6aGs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=By8FiGPMEFptGHgQ5TuONHulpMaV9p2sQTpptDgAywUyFdcoQ7+U6GiDN5nhvGueE
-	 Owgw+K0YrlNTo/pENceZu+VwGDl78+SiGdyNH4TW6P1zX9IfJu/hEifFtmHl7xGvRs
-	 nwQ8WRId3z+pM252k9FKgqVe5/JTFraR9Kh1MLh6s4bxHTSofilB++Ct+4rRT/ijLA
-	 qfaHEpzl4IqjrBsEtwrN7SJN9bpVmE+V4JL9cOMi9/Y5a1T/5PX/doNSl7b0M6bOmE
-	 gFyg8WSxC/47wxmh5Kclzh/ZnH68ZVx/uCpcr2vfhZQJtklcIUUcoWs1gBMFozF6rb
-	 cj5e4Dm3d0Keg==
-Date: Wed, 13 Aug 2025 18:00:20 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+	s=k20201202; t=1755121743;
+	bh=NAKVChDx7eHSjPyS9MwFrZDTgCpBq7ZuI5Zr92sTTO8=;
+	h=From:To:Cc:Subject:Date:From;
+	b=ZkqPyIyjciE+xpPSXPAk3QJ3hSJ2VJGyKdF6L0cUNNgg2gkWivy5IVz4eSB5/PrZt
+	 DmQqTzGd/fFU71i6wqapoVhSubcxISY+31bPEek6Jn8y4Ihh/aHhosH6tT73VxwkOy
+	 ch8Ov92Jk9QVBmHa8AD7A8JDkmfjQ+sx8yaM/m78Vtoc5W6U0dTazp/D9x6zdj04wR
+	 53Tm2bk2dfXBHjHVsfc509yHAOiXa0sFKGRo12mRBzGpH5CUWr4WBQxm5piPVYKUIF
+	 tgVTjmXGXb70psPWaKpzsJ5qMcFHZBOLDmdfn8ife0/tnN97J31Kot922XdrAs3qwW
+	 2g+N/5HUCgKwA==
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	kernel@collabora.com, dri-devel@lists.freedesktop.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/3] dt-bindings: gpu: mali-bifrost: Add compatible for
- MT8365 SoC
-Message-ID: <20250813-tinwork-outfit-ead86c38585d@spud>
-References: <20250813-mt8365-enable-gpu-v1-0-46c44c6c1566@collabora.com>
- <20250813-mt8365-enable-gpu-v1-1-46c44c6c1566@collabora.com>
+Subject: [PATCH v2] wifi: mt76: Use of_reserved_mem_region_to_resource() for "memory-region"
+Date: Wed, 13 Aug 2025 16:48:58 -0500
+Message-ID: <20250813214859.896704-1-robh@kernel.org>
+X-Mailer: git-send-email 2.47.2
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ST/TrnE4ajryBS2Z"
-Content-Disposition: inline
-In-Reply-To: <20250813-mt8365-enable-gpu-v1-1-46c44c6c1566@collabora.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250813_100027_728355_97BD152C 
-X-CRM114-Status: GOOD (  10.44  )
+X-CRM114-CacheID: sfid-20250813_224908_399973_A479DC47 
+X-CRM114-Status: GOOD (  11.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,31 +90,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Use the newly added of_reserved_mem_region_to_resource() function to
+handle "memory-region" properties.
 
---ST/TrnE4ajryBS2Z
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+---
+v3:
+ - Rebase on v6.17-rc1
 
-On Wed, Aug 13, 2025 at 11:25:42AM +0200, Louis-Alexis Eyraud wrote:
-> Add a compatible for the MediaTek MT8365 SoC, that has an integrated
-> ARM Mali G52 MC1 GPU and compatible with arm,mali-bifrost.
->=20
-> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+v2:
+  - Split to separate patch
+---
+ .../net/wireless/mediatek/mt76/mt7915/soc.c   | 21 +++++++------------
+ 1 file changed, 8 insertions(+), 13 deletions(-)
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/soc.c b/drivers/net/wireless/mediatek/mt76/mt7915/soc.c
+index c823a7554a3a..5f19b506cc50 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/soc.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/soc.c
+@@ -284,20 +284,15 @@ static int mt798x_wmac_coninfra_check(struct mt7915_dev *dev)
+ static int mt798x_wmac_coninfra_setup(struct mt7915_dev *dev)
+ {
+ 	struct device *pdev = dev->mt76.dev;
+-	struct reserved_mem *rmem;
+-	struct device_node *np;
++	struct resource res;
+ 	u32 val;
++	int ret;
+ 
+-	np = of_parse_phandle(pdev->of_node, "memory-region", 0);
+-	if (!np)
+-		return -EINVAL;
+-
+-	rmem = of_reserved_mem_lookup(np);
+-	of_node_put(np);
+-	if (!rmem)
+-		return -EINVAL;
++	ret = of_reserved_mem_region_to_resource(pdev->of_node, 0, &res);
++	if (ret)
++		return ret;
+ 
+-	val = (rmem->base >> 16) & MT_TOP_MCU_EMI_BASE_MASK;
++	val = (res.start >> 16) & MT_TOP_MCU_EMI_BASE_MASK;
+ 
+ 	if (is_mt7986(&dev->mt76)) {
+ 		/* Set conninfra subsys PLL check */
+@@ -318,8 +313,8 @@ static int mt798x_wmac_coninfra_setup(struct mt7915_dev *dev)
+ 			       MT_TOP_EFUSE_BASE_MASK, 0x11f20000 >> 16);
+ 	}
+ 
+-	mt76_wr(dev, MT_INFRA_BUS_EMI_START, rmem->base);
+-	mt76_wr(dev, MT_INFRA_BUS_EMI_END, rmem->size);
++	mt76_wr(dev, MT_INFRA_BUS_EMI_START, res.start);
++	mt76_wr(dev, MT_INFRA_BUS_EMI_END, resource_size(&res));
+ 
+ 	mt76_rr(dev, MT_CONN_INFRA_EFUSE);
+ 
+-- 
+2.47.2
 
-
---ST/TrnE4ajryBS2Z
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaJzEowAKCRB4tDGHoIJi
-0sDMAP4+0xSBcmMGGhX5SJe5IJFeOimSGjNftWdRCFtpLo9HWgD8D8T3LnfuaWZf
-iFanLD4cGtlfmp+DFdIhwe8VPds0iAs=
-=sFgA
------END PGP SIGNATURE-----
-
---ST/TrnE4ajryBS2Z--
 
