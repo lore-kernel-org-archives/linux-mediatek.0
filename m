@@ -4,66 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED624CA0EC4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Aug 2025 03:04:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 039DDCA0EC4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Aug 2025 03:13:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H7wojqlpVbJfc9ZFNdTgWU2YZfWeRZ5UHcPAYt4iY4U=; b=QyyoT8VBBGd0H1eBsKdre3Qw8y
-	d9uz32EbKViASbE/7hs19Z3bBEKQ2A69JDhQY4qu5Bw212SEyHk8ynu87BqG5s0a2nhMq5Ztk3Ayi
-	Me8uuCwVxXg1woiK+0ulqUvyASesgOhhcK+pX46rvF5LiZyL7rPBtILU5SqDyayhMB7mfY3T/VXFa
-	BDSUO8MI3+fmzaHP5Lm+61b1nHLWKQcuYBNm9OWapOCd8W/Adcf0BB+EkgAwxr9VgFtcL1847Dep7
-	Bndb+cP+ayTrSJUz3qIVNwj5YvOvNHlJABeEU10JNuO4BgeVpVnfh4Q+Wi7nWGntIp4nU9KkP4aHB
-	HiXKLxjg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8PhVQGmNNzCiMu9pw3hx+9YH1Eu7sHoNmFIOK1HnGfI=; b=3BYXbaXmH/NoittZNETrbHyTxO
+	qTtparShzidGPj/o8vt4czfUAibbAWRgf96IKMB7KwIolngitVVzsx66+PPi1buzB47IliED/lv2f
+	k5FOQilJhLOPBywtEF4XMx7m8ecsoeU4rHvY/j23Zr432ZhNd8u1qnlwlOhiAvMQwMSJgCG8GDMxh
+	CgUfPaTRe0FvS/eI5z1hzMkEzfsSZb23xZr6KokCTUu1agvPrAzwAZFX8EqKJoyTyF/cvwVIFFlkR
+	JJVUwOuXWY7cFUcYlX7/4rEQYfhjRAB7+kc9KchLbthuaovcQTMrkqNdtcd+X2Bqrfts6bJ1xNEiF
+	92aYyfng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1um1mT-0000000CU1b-2M46;
-	Wed, 13 Aug 2025 03:04:01 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1um1vs-0000000CUlv-49ex;
+	Wed, 13 Aug 2025 03:13:44 +0000
+Received: from mail-il1-x12d.google.com ([2607:f8b0:4864:20::12d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1um1jv-0000000CTtg-0wKM;
-	Wed, 13 Aug 2025 03:01:24 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id BEDFC438F7;
-	Wed, 13 Aug 2025 03:01:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 91B7FC4CEF0;
-	Wed, 13 Aug 2025 03:01:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755054082;
-	bh=ah5s8QI5yHtW13rFxqFgRLPbL9Ck1PJlUKhkvkzSQak=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=ZtaFsfBpGd4++cIB4bzulDyJTU+BzAc+HjH/48RK5e+BPK6wUbQjUptHB+rpDh6wQ
-	 dDpxmjbLnJKlG3eoXWwo7sDZLmCkRzYGzH1hsS1dQ/i4n3sFNCCH8hZI6iTVW0eLYD
-	 31YhUsdh/x7zHyQxISNMxz2cf+N0R/gZ/fl2w2ffneruvZ37TuK1O6TO0zB7HmyYsl
-	 NPGIM56c4rXmAoq5dJB71XU1oq+27uzWrOcJE7v1+UqUW0YKXJVuIKbbBOSocxg0ea
-	 Xwe4wSh070Dz9L5uYr+MsJ9e4kzIGivLxNqnCWMC0J3J/brzB87wQBxYX/hoXf50os
-	 W70J47kv1lMPA==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id ADE2539D0C2E;
-	Wed, 13 Aug 2025 03:01:35 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1um1vq-0000000CUkP-2ONc
+	for linux-mediatek@lists.infradead.org;
+	Wed, 13 Aug 2025 03:13:43 +0000
+Received: by mail-il1-x12d.google.com with SMTP id e9e14a558f8ab-3e55b170787so2614795ab.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 12 Aug 2025 20:13:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=riscstar-com.20230601.gappssmtp.com; s=20230601; t=1755054821; x=1755659621; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=8PhVQGmNNzCiMu9pw3hx+9YH1Eu7sHoNmFIOK1HnGfI=;
+        b=PnMnonRbSACDqRAuvGpnYXYwd09bd90Qy4lgJVxoihZgqRj6f6r2JqBgNbOL8AXMQ+
+         Sq5M2DZ/xzOEcerc2kYbAhdcgnpZozII872m19JyfBZlWlC4et2q7RDgHr241USUPTTz
+         KGod6QvCtfXHvFX9k9gyVO+CyS7BZ7CUvErDqzQ/7UFqkLcAz2mgdM0dcDTXvG7NDI+6
+         cORjCOl1gwywiGibGkxHq+oB7T4Dt6eYJfeogmfgLJk4b6RoBFYXeayrrJtTrkIcUGQ3
+         5Cy2CN5DJQgb/XMco/gIsGuAAr5e9xufOXBLzKegY/vFSLk8NyIjmN9Bfkp2dsjlEPMd
+         ITLw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1755054821; x=1755659621;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=8PhVQGmNNzCiMu9pw3hx+9YH1Eu7sHoNmFIOK1HnGfI=;
+        b=nj9ZNP1mdLulceftZqTENGOvY/mZVblsyo3VLqm9xpulGq9+Lsz02Z//JGHkGGo3Rr
+         mylOkPFErynvpzgQFs8radZCKI2y3P0AG65s5VDf+XiJeTHt5kvRo9AA/cduALq4wmeN
+         KhyTAp+ZU6JekfMQ02ZUgyeUxdBIRc/0v9tvWv3lydyuhkF8Gqyjw4QaK90Y2RtRLw0m
+         02sSqzC+DaE5QUhDPh16uDYrqZtOaUpNDChkFSNsn3u0WqVY/4dFC6XrZWCT84U/gcrz
+         FySYpFyMf/8fbl4SQBJuxZZipBsQHPwcRiwKKBbicgznbFec1iUL7N5l1ANKV+OVqu1i
+         HMXg==
+X-Forwarded-Encrypted: i=1; AJvYcCXuqIpTjWpbdVA/HvOf2gEmNE1FXoz0d3GvPUtIvSMFOT5CHJXvjoRDI8mEQ7aWqC68xiDpFgqeYz58ajtmSw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YztiUd8eYHRgz7XGMyP6nO2dkylGzR3XpOkiYDzxTGx+NVqhoY6
+	exTqDro5SytvWsUSYskN5tgpF/AP3RciTbiSX6qmbx2jD42o5tNem69TDmY0OEoPUjM=
+X-Gm-Gg: ASbGncsb9UP6PvN0OXq/lFKxe3t6x9m1ODgj2/zmeX3m36YoDe/vuGUCm7h1bhjQAEG
+	pOdb8M87fbGIVU1QeqwjCc5fH/t5yE/rlnr6G/ADKDIz9arRGXwoJg1ki4ibdxCKI1r3sqjGJZM
+	uniu8Bxw5MGP4ZT5VJvuKTn2wjAvsWMnbrHx4raJZ9O/OuwoF0+9gnsUmyuqB1M2QOVMAcwBBbz
+	teHTa9M/Clem91FDJDYdiTzjjxAyQZK0nrv2gqMi4WpC09VtqoPynVNY4g+mBh14LMSruIRLwyJ
+	OTib9I4QrRfvPt3CC3Z9TnjrSZ9Yl+O2lQU7j6R5Dnc1GOrcnrPVYrtHRbIG9Xb06Vu287ayR09
+	jHeL5n+fXx8XLC4BryU098p9CzgCe7v0C0s1rLSI1uTniokz7Sr1lNS/UNWx1kFDNvA==
+X-Google-Smtp-Source: AGHT+IHJ3cV6K51nVGXbggkk4n0mggTrNvjqK58YjsUKI/uGamOMw1V+7ccv0fj3Is/jMTtEld3VjA==
+X-Received: by 2002:a92:ca07:0:b0:3e5:55b7:1eb5 with SMTP id e9e14a558f8ab-3e5685ab4f6mr13673995ab.11.1755054821496;
+        Tue, 12 Aug 2025 20:13:41 -0700 (PDT)
+Received: from zippy.localdomain (c-75-72-117-212.hsd1.mn.comcast.net. [75.72.117.212])
+        by smtp.gmail.com with ESMTPSA id 8926c6da1cb9f-50ae9bcfecbsm3616330173.62.2025.08.12.20.13.40
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 12 Aug 2025 20:13:41 -0700 (PDT)
+From: Alex Elder <elder@riscstar.com>
+To: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	gregkh@linuxfoundation.org,
+	jirislaby@kernel.org
+Cc: dlan@gentoo.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	lkundrak@v3.sk,
+	devicetree@vger.kernel.org,
+	linux-serial@vger.kernel.org,
+	spacemit@lists.linux.dev,
+	linux-mediatek@lists.infradead.org,
+	linux-riscv@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	kernel test robot <lkp@intel.com>
+Subject: [PATCH v2] dt-bindings: serial: 8250: allow "main" and "uart" as clock names
+Date: Tue, 12 Aug 2025 22:13:35 -0500
+Message-ID: <20250813031338.2328392-1-elder@riscstar.com>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next v7 0/7] net: airoha: Introduce NPU callbacks for
- wlan offloading
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <175505409423.2923440.2479531614501125802.git-patchwork-notify@kernel.org>
-Date: Wed, 13 Aug 2025 03:01:34 +0000
-References: <20250811-airoha-en7581-wlan-offlaod-v7-0-58823603bb4e@kernel.org>
-In-Reply-To: <20250811-airoha-en7581-wlan-offlaod-v7-0-58823603bb4e@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, horms@kernel.org, nbd@nbd.name,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org, devicetree@vger.kernel.org,
- krzysztof.kozlowski@linaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250812_200123_279875_620C406B 
-X-CRM114-Status: GOOD (  10.83  )
+X-CRM114-CacheID: sfid-20250812_201342_609637_A3097A84 
+X-CRM114-Status: GOOD (  12.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,41 +109,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+There are two compatible strings defined in "8250.yaml" that require
+two clocks to be specified, along with their names:
+  - "spacemit,k1-uart", used in "spacemit/k1.dtsi"
+  - "nxp,lpc1850-uart", used in "lpc/lpc18xx.dtsi"
 
-This series was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+When only one clock is used, the name is not required.  However there
+are two places that do specify a name:
+  - In "mediatek/mt7623.dtsi", the clock for the "mediatek,mtk-btif"
+    compatible serial device is named "main"
+  - In "qca/ar9132.dtsi", the clock for the "ns8250" compatible
+    serial device is named "uart"
 
-On Mon, 11 Aug 2025 17:31:35 +0200 you wrote:
-> Similar to wired traffic, EN7581 SoC allows to offload traffic to/from
-> the MT76 wireless NIC configuring the NPU module via the Netfilter
-> flowtable. This series introduces the necessary NPU callback used by
-> the MT7996 driver in order to enable the offloading.
-> MT76 support has been posted as RFC in [0] in order to show how the
-> APIs are consumed.
-> 
-> [...]
+In commit d2db0d7815444 ("dt-bindings: serial: 8250: allow clock
+'uartclk' and 'reg' for nxp,lpc1850-uart"), Frank Li added the
+restriction that two named clocks be used for the NXP platform
+mentioned above.
 
-Here is the summary with links:
-  - [net-next,v7,1/7] dt-bindings: net: airoha: npu: Add memory regions used for wlan offload
-    https://git.kernel.org/netdev/net-next/c/cebd717d8f01
-  - [net-next,v7,2/7] net: airoha: npu: Add NPU wlan memory initialization commands
-    https://git.kernel.org/netdev/net-next/c/564923b02c1d
-  - [net-next,v7,3/7] net: airoha: npu: Add wlan_{send,get}_msg NPU callbacks
-    https://git.kernel.org/netdev/net-next/c/f97fc66185b2
-  - [net-next,v7,4/7] net: airoha: npu: Add wlan irq management callbacks
-    https://git.kernel.org/netdev/net-next/c/03b7ca3ee5e1
-  - [net-next,v7,5/7] net: airoha: npu: Read NPU wlan interrupt lines from the DTS
-    https://git.kernel.org/netdev/net-next/c/a1740b16c837
-  - [net-next,v7,6/7] net: airoha: npu: Enable core 3 for WiFi offloading
-    https://git.kernel.org/netdev/net-next/c/29c4a3ce5089
-  - [net-next,v7,7/7] net: airoha: Add airoha_offload.h header
-    https://git.kernel.org/netdev/net-next/c/b3ef7bdec66f
+Change that logic, so that an additional condition for (only) the
+SpacemiT platform similarly restricts the two clocks to have the
+names "core" and "bus".
 
-You are awesome, thank you!
+Finally, add "main" and "uart" as allowed names when a single clock is
+specified.
+
+Fixes: 2c0594f9f0629 ("dt-bindings: serial: 8250: support an optional second clock")
+Reported-by: kernel test robot <lkp@intel.com>
+Closes: https://lore.kernel.org/oe-kbuild-all/202507160314.wrC51lXX-lkp@intel.com/
+Signed-off-by: Alex Elder <elder@riscstar.com>
+---
+ Documentation/devicetree/bindings/serial/8250.yaml | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/serial/8250.yaml b/Documentation/devicetree/bindings/serial/8250.yaml
+index e46bee8d25bf0..0a05a1647b5cc 100644
+--- a/Documentation/devicetree/bindings/serial/8250.yaml
++++ b/Documentation/devicetree/bindings/serial/8250.yaml
+@@ -60,7 +60,12 @@ allOf:
+           items:
+             - const: uartclk
+             - const: reg
+-    else:
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: spacemit,k1-uart
++    then:
+       properties:
+         clock-names:
+           items:
+@@ -162,6 +167,9 @@ properties:
+     minItems: 1
+     maxItems: 2
+     oneOf:
++      - enum:
++          - main
++          - uart
+       - items:
+           - const: core
+           - const: bus
+
+base-commit: 8f5ae30d69d7543eee0d70083daf4de8fe15d585
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.48.1
 
 
