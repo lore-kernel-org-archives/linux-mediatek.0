@@ -4,66 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F4DFC87FCF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Aug 2025 18:05:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77364CA0EE5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Aug 2025 18:05:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tcZLAPBrcBRZbgAiiOIrhCddWIN8mlNpYkGIS5xui4Q=; b=JbT2eqpKaobBb20vHEt3UnQvBL
-	chyNEkprXPdOiAAz0IfVh24EFgue9b7/+/5BTkkXYvLPrP1KGD8S+j3sEzrDtG+ZnWLXswlbiZ7ny
-	frm5feEEDHuCQzeoEFT21W8vPAb/cndGYApV8AYDmdQz2x9T0lKk2Q+2JqI32xrByS/mmfDwx1DsX
-	WMlbn9zwma84Hc0S2tn1/Qrxv++JpXN/jEnEUmuop9lMW/KeImMFwN0kmaL4y/a5rt/I6LI4GY+ic
-	uoseNO5q03rrJFoRWLei68OU7rvYR4vedUnyNW449hZTEpEKDICAO9FXs7gZ82IKnH9cRhVtxAs3j
-	mVuxgAww==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=a2gxI4yFXWVOtLhM/0polO/7seLsXtV2FXKtzlfxTr8=; b=BbP+h0lXa/+X4LV31tRBF4vDEK
+	QKWyLrehYzwt4YY+Sl0UTP2se7qJKR9o10HR0jw8rRs3N/3M/7RrXZdJT7D5aLVLIKuJO+hTLTmCw
+	WKLBeFmm6OSrQoRRfwB+UC1ORE7mPJi0ijuh9kqe5HRWMtciqxdnoWuDV2IiQrZgO449kB3ArzO1B
+	kU2Due3BDZ4UalP9aZ6Kilt4dzXiT+M0UStEyz3cTvhtuc0DXqIy1sySOj4hxedzpA/ojY71sioO5
+	ZdpEdzi+TgVkQKjm1LA4nfeI5y35CJsRachCdfBwz3BXOQWN40kKGVWfp/ez7ytUx9U0jBQ1gvxmU
+	UKRyWcMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umFrD-0000000EeWz-1sR3;
-	Wed, 13 Aug 2025 18:05:51 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1umFrJ-0000000Eeat-2Y7F;
+	Wed, 13 Aug 2025 18:05:57 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umEhL-0000000ETMW-1CW3;
-	Wed, 13 Aug 2025 16:51:36 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id A8DC6458EB;
-	Wed, 13 Aug 2025 16:51:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D6F9FC4CEF1;
-	Wed, 13 Aug 2025 16:51:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755103894;
-	bh=alZxexKuJRxDY0e4fO9bj6yA3dNEp3f4NpaBSvlkKBI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=PDg2ZCyH4ajXLj2AbKVypeCzSlWWhmIXAAed3U43vAolmHFPzJIq9xj+2SQS2CGnf
-	 A1fi6/1H5G+qtbMRoasHX2D6eKcY7JszjfW52QpacYgT0YMP1tdEpe3HcD3GPv1r9W
-	 L+ly6AHYVg70ypQulceswIE+sAUx1g8krjGpvCa5mkV1MvbaYlhbUgx0jXWenuEEW1
-	 0Y/ijSPMoHWjq09GvXB9cDpHC78faqTjOJrKxCVp9OzqMF/CRWYgyw/Nytt75o7mC/
-	 mXe15yxiS0h6ZqTBOcAYQLMsJ2t4ZW1SCbELcvZBCUDtI+ztjNd7dOaiutegNF+mse
-	 RHfwFT3XnI0Dw==
-Date: Wed, 13 Aug 2025 17:51:28 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Alex Elder <elder@riscstar.com>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
-	gregkh@linuxfoundation.org, jirislaby@kernel.org, dlan@gentoo.org,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	lkundrak@v3.sk, devicetree@vger.kernel.org,
-	linux-serial@vger.kernel.org, spacemit@lists.linux.dev,
-	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	kernel test robot <lkp@intel.com>
-Subject: Re: [PATCH v2] dt-bindings: serial: 8250: allow "main" and "uart" as
- clock names
-Message-ID: <20250813-squint-glass-b68c6520a229@spud>
-References: <20250813031338.2328392-1-elder@riscstar.com>
+	id 1umEnD-0000000EUPB-2Hgo;
+	Wed, 13 Aug 2025 16:57:40 +0000
+Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-afcb73394b4so11705166b.0;
+        Wed, 13 Aug 2025 09:57:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1755104258; x=1755709058; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=a2gxI4yFXWVOtLhM/0polO/7seLsXtV2FXKtzlfxTr8=;
+        b=H2A/hCvJ3Tqud8QwFDpzFzQA5SyAOCl7A8ob/iCZggqVLZdXu7gOnjoYSXzbZnM8dI
+         j4QWQBZlz+1n5+N6+BeEfoKVHg5EMIeFlet3Nf9pyoWz5aVm88QXM05Rxj64QFJwW4Mf
+         QhoYZkFKYWAeHcrCU5pubK+zrOFw6Ry7cF684UV0EVkBc6vKeMXiJI4VGD+jorui7JhY
+         ZyK75EGmmCnwXka2oEtmCF8O8PYMcj1DpSGSlDKmG1Ni09lzBHhdT49fbO1JnEmD1SY2
+         hVK8tQMrisY7u14iPEjcdrih2+OUXQ6Igw7LhDB6aOsxAO/Unz/n8PFk6uZgkbjbut4T
+         3l0g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1755104258; x=1755709058;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=a2gxI4yFXWVOtLhM/0polO/7seLsXtV2FXKtzlfxTr8=;
+        b=CTJRiGSVxyuPPq+OGI5aiJaUDSAO1DxupbtanrpMhcuxVY/2HVpwLmIh0/6eG4z46q
+         +LKzlseQCDRueKLH7+TB3RMMUGX1Rk4Xz/QNcfD25Llnll+lLwYSHevk1FQklGbPpfwn
+         UkHOSn8xm7pfgq7lE8D5Bz4sSdIIf+DLM7WbeYDDk2l7fx6spWhpn8f0Tz60FXY18ON+
+         DYxQ5cAjLxf7BRCic6cL4VzW6So7/fkpFeXmSGe/6p96I5dDg/kLH9PeIyVZS4+Kn0mq
+         huPT76QxTjR5GtSrOD4XHDAYzNKflZWtvaLka6z7492VDTXKbl2k5ktaxlfkEAag14i9
+         IpDQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXQNpz9txENDFvbnnv7ozpACrv6mOlcQFsjvzUZKH6+sI8UQxO409J/g9kfgBLbJIZZu4DhBXd2KPVd4UuhkvU=@lists.infradead.org, AJvYcCXxj0dKGm7lChNxDk9zGSZmT21pe0El6yMqjoMcWUVZQs+iWx752b4EZObzCw3jjuxG11pIoBdy/kCfewEq0zo9@lists.infradead.org
+X-Gm-Message-State: AOJu0YylDKqUujS0k3w2lx0kGSkXQlZbLQoqNJ/CL/gKP+kgA2hnk1pi
+	gd9aDn83d+DGyPDk1ke9nxxBfngCpVDZW48t/Yh616JwhlSQcz/gEPfmqbdQQyR3bQ12TvVLPP1
+	EK+c9Nmklx4Wta95sBp/o0kP0EZOFNkQ=
+X-Gm-Gg: ASbGncvAi/ELRB9hOjF/axF/f6meh4ShMXOLhccvbU7cgkUegKHb9lpvCTbFanwfhlP
+	lQx0coPqMRppCWYfCeWlL6FPyr4hVBQLISq2+vvwmrxU+v+G4jU5u9HMnQK3MxDVOtbUeixHBKB
+	KxqmZ6wlNQH4v0fbsmo7AvN0sCbuGB5Ms6ZtQ6DPNfrxnt8ItbxhXH0ExX5SGziGuWDbUDPckvJ
+	AzS6tZI8g==
+X-Google-Smtp-Source: AGHT+IHbk44OEj1r3kasIcTcyEDngMuhrBuyXGAMgY2npDrtdlj0x5dJHeL/vjl9xwrgnQvrGKpG6wybKFGCryjWMzw=
+X-Received: by 2002:a17:907:3f0b:b0:af9:116c:61c4 with SMTP id
+ a640c23a62f3a-afca4e44cd7mr358157166b.48.1755104257569; Wed, 13 Aug 2025
+ 09:57:37 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="1anDfOTh12y5hzMv"
-Content-Disposition: inline
-In-Reply-To: <20250813031338.2328392-1-elder@riscstar.com>
+References: <20250812-pinctrl-gpio-pinfuncs-v4-0-bb3906c55e64@linaro.org> <20250812-pinctrl-gpio-pinfuncs-v4-3-bb3906c55e64@linaro.org>
+In-Reply-To: <20250812-pinctrl-gpio-pinfuncs-v4-3-bb3906c55e64@linaro.org>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Wed, 13 Aug 2025 18:57:00 +0200
+X-Gm-Features: Ac12FXzRwEdbOG7WcfkJrIX52h7RVyVAx5HnOB8PpoXFNYyQXL2enxp09SWUXag
+Message-ID: <CAHp75VeSA=AYDKOV5XQ5nnz7EZRmnhbbVyJrcBUcMO2LrRMTmQ@mail.gmail.com>
+Subject: Re: [PATCH v4 03/15] pinctrl: airoha: replace struct function_desc
+ with struct pinfunction
+To: Bartosz Golaszewski <brgl@bgdev.pl>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Bjorn Andersson <andersson@kernel.org>, 
+	Konrad Dybcio <konradybcio@kernel.org>, Alexey Klimov <alexey.klimov@linaro.org>, 
+	Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Paul Cercueil <paul@crapouillou.net>, Kees Cook <kees@kernel.org>, 
+	Andy Shevchenko <andy@kernel.org>, Andrew Morton <akpm@linux-foundation.org>, 
+	David Hildenbrand <david@redhat.com>, Lorenzo Stoakes <lorenzo.stoakes@oracle.com>, 
+	"Liam R. Howlett" <Liam.Howlett@oracle.com>, Vlastimil Babka <vbabka@suse.cz>, 
+	Mike Rapoport <rppt@kernel.org>, Suren Baghdasaryan <surenb@google.com>, Michal Hocko <mhocko@suse.com>, 
+	Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, 
+	Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, NXP S32 Linux Team <s32@nxp.com>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Tony Lindgren <tony@atomide.com>, 
+	Haojian Zhuang <haojian.zhuang@linaro.org>, Geert Uytterhoeven <geert+renesas@glider.be>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Danilo Krummrich <dakr@kernel.org>, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
+	linux-hardening@vger.kernel.org, linux-mm@kvack.org, imx@lists.linux.dev, 
+	linux-omap@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250813_095135_347119_0507C4AA 
-X-CRM114-Status: GOOD (  15.58  )
+X-CRM114-CacheID: sfid-20250813_095739_586894_F72A693F 
+X-CRM114-Status: GOOD (  13.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,56 +115,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, Aug 12, 2025 at 10:27=E2=80=AFAM Bartosz Golaszewski <brgl@bgdev.pl=
+> wrote:
+>
+> From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+>
+> struct function_desc is a wrapper around struct pinfunction with an
+> additional void *data pointer. This driver doesn't use the data pointer.
+> We're also working towards reducing the usage of struct function_desc in
+> pinctrl drivers - they should only be created by pinmux core and
+> accessed by drivers using pinmux_generic_get_function(). Replace the
+> struct function_desc objects in this driver with smaller struct
+> pinfunction instances.
 
---1anDfOTh12y5hzMv
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+...
 
-On Tue, Aug 12, 2025 at 10:13:35PM -0500, Alex Elder wrote:
-> There are two compatible strings defined in "8250.yaml" that require
-> two clocks to be specified, along with their names:
->   - "spacemit,k1-uart", used in "spacemit/k1.dtsi"
->   - "nxp,lpc1850-uart", used in "lpc/lpc18xx.dtsi"
->=20
-> When only one clock is used, the name is not required.  However there
-> are two places that do specify a name:
->   - In "mediatek/mt7623.dtsi", the clock for the "mediatek,mtk-btif"
->     compatible serial device is named "main"
->   - In "qca/ar9132.dtsi", the clock for the "ns8250" compatible
->     serial device is named "uart"
->=20
-> In commit d2db0d7815444 ("dt-bindings: serial: 8250: allow clock
-> 'uartclk' and 'reg' for nxp,lpc1850-uart"), Frank Li added the
-> restriction that two named clocks be used for the NXP platform
-> mentioned above.
->=20
-> Change that logic, so that an additional condition for (only) the
-> SpacemiT platform similarly restricts the two clocks to have the
-> names "core" and "bus".
->=20
-> Finally, add "main" and "uart" as allowed names when a single clock is
-> specified.
->=20
-> Fixes: 2c0594f9f0629 ("dt-bindings: serial: 8250: support an optional sec=
-ond clock")
-> Reported-by: kernel test robot <lkp@intel.com>
-> Closes: https://lore.kernel.org/oe-kbuild-all/202507160314.wrC51lXX-lkp@i=
-ntel.com/
-> Signed-off-by: Alex Elder <elder@riscstar.com>
+>  #define PINCTRL_FUNC_DESC(id)                                          \
+>         {                                                               \
+>                 .desc =3D {                                              =
+ \
+> -                       .func =3D {                                      =
+ \
+> -                               .name =3D #id,                           =
+ \
+> -                               .groups =3D id##_groups,                 =
+ \
+> -                               .ngroups =3D ARRAY_SIZE(id##_groups),    =
+ \
+> -                       }                                               \
+> +                       .name =3D #id,                                   =
+ \
+> +                       .groups =3D id##_groups,                         =
+ \
+> +                       .ngroups =3D ARRAY_SIZE(id##_groups),            =
+ \
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Can this use PINCTRL_PINFUNCITON() ?
 
---1anDfOTh12y5hzMv
-Content-Type: application/pgp-signature; name="signature.asc"
+>                 },                                                      \
+>                 .groups =3D id##_func_group,                             =
+ \
+>                 .group_size =3D ARRAY_SIZE(id##_func_group),             =
+ \
 
------BEGIN PGP SIGNATURE-----
+>  };
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaJzCkAAKCRB4tDGHoIJi
-0hf5AQCJLTs84F3yXa+J58tT2Ytl+UUy+1ftd0PWZy75L6EgiQEAqd0HSvhT8Kdp
-3558GIp4PpqlN9n18fVGmK6z3ca8Cgo=
-=iaPg
------END PGP SIGNATURE-----
-
---1anDfOTh12y5hzMv--
+--=20
+With Best Regards,
+Andy Shevchenko
 
