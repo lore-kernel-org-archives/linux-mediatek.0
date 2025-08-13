@@ -4,102 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BB65CA0EDC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Aug 2025 02:26:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED624CA0EC4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Aug 2025 03:04:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mBhVYQJ4k4rDFsLNru2SLpL9ASO1ELNiQBKV72UvRao=; b=NCwp18imsQSGh/ivJzvniPbWov
-	kTAPhY24Q4vvNd/CS3Bi5B9XA4YZPtgirM+rfbaSMzcJraXIV7bJzEK95yjBHlOECaq/49NwK0xC4
-	ColDX7U6JaydzXooGu0unAv1FgKRagZtsAvDOlBMVGbCQ7KuR5sOxImwuRL3INVn6MBSaRiZbEKjQ
-	8XqSeMs4hvFOt+C8/GcTA6/IbqDY9lT5jDy6akLOXoKQpAHs6Q0alC9JKGAJHjibBUuwoDqgrF/C4
-	ZAkcfB8pXsGzyTx3AGA7V3lgQjzVpxnF6VYn3nwb6IryLP7oTTJ9uwVho+QqGt/dklznKHDzkI9WR
-	LwUTqSfA==;
+	bh=H7wojqlpVbJfc9ZFNdTgWU2YZfWeRZ5UHcPAYt4iY4U=; b=QyyoT8VBBGd0H1eBsKdre3Qw8y
+	d9uz32EbKViASbE/7hs19Z3bBEKQ2A69JDhQY4qu5Bw212SEyHk8ynu87BqG5s0a2nhMq5Ztk3Ayi
+	Me8uuCwVxXg1woiK+0ulqUvyASesgOhhcK+pX46rvF5LiZyL7rPBtILU5SqDyayhMB7mfY3T/VXFa
+	BDSUO8MI3+fmzaHP5Lm+61b1nHLWKQcuYBNm9OWapOCd8W/Adcf0BB+EkgAwxr9VgFtcL1847Dep7
+	Bndb+cP+ayTrSJUz3qIVNwj5YvOvNHlJABeEU10JNuO4BgeVpVnfh4Q+Wi7nWGntIp4nU9KkP4aHB
+	HiXKLxjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1um1CT-0000000CPPD-2fYp;
-	Wed, 13 Aug 2025 02:26:49 +0000
-Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
+	id 1um1mT-0000000CU1b-2M46;
+	Wed, 13 Aug 2025 03:04:01 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1um1CQ-0000000CPOf-0g5E
-	for linux-mediatek@lists.infradead.org;
-	Wed, 13 Aug 2025 02:26:48 +0000
-Received: from pps.filterd (m0246627.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 57CLQqpr025501;
-	Wed, 13 Aug 2025 02:26:40 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
-	:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=
-	corp-2025-04-25; bh=mBhVYQJ4k4rDFsLNru2SLpL9ASO1ELNiQBKV72UvRao=; b=
-	lLOwcFn0kLnKje2/khuJvCdEb3eRhwJlq5bZC8H4wHU0r8+VKs2GywgdhwMf+Z2g
-	CSj9iNpiB6kAs8CZcFn+dyZ9MUvBnBs09K5IXE7W3gCgP7Q+WJD9id06r4ArykFn
-	WkbEU0JDH78dlOwqJyG3DCK0r0p/efHXXx4yofWdxSrx/rckaHg3tcehH+aARKBi
-	sLqYQN8XJVPfc9Uv3q7f0E+YJcDDr7F58nQOE/wq5de40aW2w9rX4TQXR474Mcq9
-	hGxG2JBuevPY6m+6J3wGY2KQ4nlUUNa9B9KkycNjdzArQmIyfUbYVq9go3eTZdO0
-	6bo7jYf1Ji7GD1Y1YOctyQ==
-Received: from phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta02.appoci.oracle.com [147.154.114.232])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 48dvx4e7n6-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 13 Aug 2025 02:26:39 +0000 (GMT)
-Received: from pps.filterd (phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 57D2Mvma030396;
-	Wed, 13 Aug 2025 02:26:39 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
-	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 48dvsarqr3-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 13 Aug 2025 02:26:39 +0000
-Received: from phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 57D2QaNa004410;
-	Wed, 13 Aug 2025 02:26:38 GMT
-Received: from ca-mkp2.ca.oracle.com.com (mpeterse-ol9.allregionaliads.osdevelopmeniad.oraclevcn.com [100.100.251.135])
-	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id 48dvsarqpw-2;
-	Wed, 13 Aug 2025 02:26:38 +0000
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-To: linux-scsi@vger.kernel.org, peter.wang@mediatek.com
-Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
-        wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
-        chun-hung.wu@mediatek.com, alice.chao@mediatek.com,
-        cc.chou@mediatek.com, chaotian.jing@mediatek.com,
-        jiajie.hao@mediatek.com, yi-fan.peng@mediatek.com,
-        qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
-        eddie.huang@mediatek.com, naomi.chu@mediatek.com, ed.tsai@mediatek.com,
-        bvanassche@acm.org, dan.carpenter@linaro.org, stable@vger.kernel.org
-Subject: Re: [PATCH v1] ufs: host: mediatek: Fix out-of-bounds access in MCQ IRQ mapping
-Date: Tue, 12 Aug 2025 22:26:27 -0400
-Message-ID: <175504926152.959040.7941884969837574533.b4-ty@oracle.com>
-X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20250804060249.1387057-1-peter.wang@mediatek.com>
-References: <20250804060249.1387057-1-peter.wang@mediatek.com>
-MIME-Version: 1.0
+	id 1um1jv-0000000CTtg-0wKM;
+	Wed, 13 Aug 2025 03:01:24 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id BEDFC438F7;
+	Wed, 13 Aug 2025 03:01:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 91B7FC4CEF0;
+	Wed, 13 Aug 2025 03:01:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1755054082;
+	bh=ah5s8QI5yHtW13rFxqFgRLPbL9Ck1PJlUKhkvkzSQak=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=ZtaFsfBpGd4++cIB4bzulDyJTU+BzAc+HjH/48RK5e+BPK6wUbQjUptHB+rpDh6wQ
+	 dDpxmjbLnJKlG3eoXWwo7sDZLmCkRzYGzH1hsS1dQ/i4n3sFNCCH8hZI6iTVW0eLYD
+	 31YhUsdh/x7zHyQxISNMxz2cf+N0R/gZ/fl2w2ffneruvZ37TuK1O6TO0zB7HmyYsl
+	 NPGIM56c4rXmAoq5dJB71XU1oq+27uzWrOcJE7v1+UqUW0YKXJVuIKbbBOSocxg0ea
+	 Xwe4wSh070Dz9L5uYr+MsJ9e4kzIGivLxNqnCWMC0J3J/brzB87wQBxYX/hoXf50os
+	 W70J47kv1lMPA==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id ADE2539D0C2E;
+	Wed, 13 Aug 2025 03:01:35 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-08-12_08,2025-08-11_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0 phishscore=0
- adultscore=0 mlxscore=0 bulkscore=0 spamscore=0 mlxlogscore=883
- suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2507300000 definitions=main-2508130022
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODEzMDAyMiBTYWx0ZWRfX5+waSLaEdOGQ
- oapPXSRCILOfXhQbjvFicC4lXM+3AYCHO2lEXetLLeBupDjyNI9BscZmpgLfKxqcdJNTd46X5j2
- b2n0FJk80bAmf7/usUe39V1HhfrmDuaSpQd3hiGL1y2GxbwOVyIB4HLV/ri9EcG5CDvhnuHUF/9
- asXMkMcj9cEuwZUafest3Um7ScBPuiKoacYLWcJIJP2ZS/NMau7Phex1TwnjCz3rnuG67YUlZ99
- YZdnU+DyWfPCW5HVbuP5E7wL7b5Xgw/dHdarOl3/g5IqDznQSlU58mydOcX7fScOBHZliuDjkbM
- rwBbrwhjHC0vga5lc/cnP1ke64H/t3rNXAOdw7jxAgWrsDrjN8jkKtjcdjFrk8Z7dotDeTo3RQG
- BPmgwbeyezz3/Lrdyl6RLsIkStYiyRx+M7I4r6RBpAfntL7frngyFV6QQ6a56SIWJWsLpVQU
-X-Authority-Analysis: v=2.4 cv=eIsTjGp1 c=1 sm=1 tr=0 ts=689bf7df cx=c_pps
- a=OOZaFjgC48PWsiFpTAqLcw==:117 a=OOZaFjgC48PWsiFpTAqLcw==:17
- a=IkcTkHD0fZMA:10 a=2OwXVqhp2XgA:10 a=VwQbUJbxAAAA:8 a=mpaa-ttXAAAA:8
- a=RfrRo3qXp3HNN7_xwbkA:9 a=QEXdDO2ut3YA:10 a=zZCYzV9kfG8A:10
-X-Proofpoint-GUID: wy7UUR5grPWlbE3U7V9VSR6-ExGS47Nt
-X-Proofpoint-ORIG-GUID: wy7UUR5grPWlbE3U7V9VSR6-ExGS47Nt
+Subject: Re: [PATCH net-next v7 0/7] net: airoha: Introduce NPU callbacks for
+ wlan offloading
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <175505409423.2923440.2479531614501125802.git-patchwork-notify@kernel.org>
+Date: Wed, 13 Aug 2025 03:01:34 +0000
+References: <20250811-airoha-en7581-wlan-offlaod-v7-0-58823603bb4e@kernel.org>
+In-Reply-To: <20250811-airoha-en7581-wlan-offlaod-v7-0-58823603bb4e@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, horms@kernel.org, nbd@nbd.name,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ krzysztof.kozlowski@linaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250812_192646_329958_29675F81 
-X-CRM114-Status: UNSURE (   8.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250812_200123_279875_620C406B 
+X-CRM114-Status: GOOD (  10.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,22 +78,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 04 Aug 2025 14:01:54 +0800, peter.wang@mediatek.com wrote:
+Hello:
 
-> This patch addresses a potential out-of-bounds access issue when
-> accessing 'host->mcq_intr_info[q_index]'. The value of 'q_index'
-> might exceed the valid array bounds if 'q_index == nr'.
-> The condition is corrected to 'q_index >= nr' to prevent
-> accessing invalid memory.
-> 
+This series was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Mon, 11 Aug 2025 17:31:35 +0200 you wrote:
+> Similar to wired traffic, EN7581 SoC allows to offload traffic to/from
+> the MT76 wireless NIC configuring the NPU module via the Netfilter
+> flowtable. This series introduces the necessary NPU callback used by
+> the MT7996 driver in order to enable the offloading.
+> MT76 support has been posted as RFC in [0] in order to show how the
+> APIs are consumed.
 > 
 > [...]
 
-Applied to 6.17/scsi-fixes, thanks!
+Here is the summary with links:
+  - [net-next,v7,1/7] dt-bindings: net: airoha: npu: Add memory regions used for wlan offload
+    https://git.kernel.org/netdev/net-next/c/cebd717d8f01
+  - [net-next,v7,2/7] net: airoha: npu: Add NPU wlan memory initialization commands
+    https://git.kernel.org/netdev/net-next/c/564923b02c1d
+  - [net-next,v7,3/7] net: airoha: npu: Add wlan_{send,get}_msg NPU callbacks
+    https://git.kernel.org/netdev/net-next/c/f97fc66185b2
+  - [net-next,v7,4/7] net: airoha: npu: Add wlan irq management callbacks
+    https://git.kernel.org/netdev/net-next/c/03b7ca3ee5e1
+  - [net-next,v7,5/7] net: airoha: npu: Read NPU wlan interrupt lines from the DTS
+    https://git.kernel.org/netdev/net-next/c/a1740b16c837
+  - [net-next,v7,6/7] net: airoha: npu: Enable core 3 for WiFi offloading
+    https://git.kernel.org/netdev/net-next/c/29c4a3ce5089
+  - [net-next,v7,7/7] net: airoha: Add airoha_offload.h header
+    https://git.kernel.org/netdev/net-next/c/b3ef7bdec66f
 
-[1/1] ufs: host: mediatek: Fix out-of-bounds access in MCQ IRQ mapping
-      https://git.kernel.org/mkp/scsi/c/7ec2bd6cd2d0
-
+You are awesome, thank you!
 -- 
-Martin K. Petersen	Oracle Linux Engineering
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
