@@ -4,111 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75B27CA0EE6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Aug 2025 13:14:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A04EFCA0EE6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Aug 2025 13:22:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=l+SUkVruI2YCcUMa+FcC5+QPx3okcUg5cMFby/7ouv4=; b=NFdfMMP9WRPa6qrzYibwq9S/xr
-	XEOLGpgQXtUf2bjEAc3l7bJ+gLqYpXpdRMMmAb8o0e0jbY9m8MVrLQL3Ij36goLqKuSKG6+75qBis
-	1+3RcGKQuj3Yuk/NzDwvT6deFJLGbB3jnCd1PzqFPXC287XxqWwUti79KrNpvl1GoT7lhaj1uEIT6
-	lR77nn9d3Lt6y0zWwhw2oZai+3NCah2UbY3VVQQjvjrehu0ca2wN2OS5UPCrwGgft9LxHZEUwarzt
-	eqTgX33hfGfiag48bMf0X0VYJ7TCe1o+u9HDvvo0IqfacGWQ54tWJ4oX203oxYa0UbS/TB4sNtEsM
-	g5slVkYA==;
+	bh=tb315cmtvC7XRKPOkvyrzytTN46nIxubLRXMz5iL+MY=; b=SWFnGB2eK6FAl75I1l6Q91+0Op
+	7UCxTPqiadpi2hR7cReDnC5KD5XFvELeKODJ4Zgpoiqoq1WgBzICS7LENttvI792Hrs39GV48kTBu
+	dxrWOKK3CusgqW1aWb1TsjfBy7Q1WXmXZvNVcOdOMdMCfbwNFlB9IHK5pgaSrGftB5zmJlCz2mrMh
+	sl8fWql4f8SHypToXW1HtZb/aWTzocTu/qsKDBDOMd9nQlOqCX4GB/V+OJYdYL00wtVTooEEWqmOy
+	1FAPba+QdQk5Fh8BFEJdb9hAzfSZyZcuI03ma2+NZqsqDPvTkLPyEyWcdgLWcQ9Xj8OB27lI8sG94
+	ZwQkwxvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umXn7-0000000Gxja-1thl;
-	Thu, 14 Aug 2025 13:14:49 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1umXuj-0000000H2EN-2p0y;
+	Thu, 14 Aug 2025 13:22:41 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umUbc-0000000GUKr-1A5j
-	for linux-mediatek@bombadil.infradead.org;
-	Thu, 14 Aug 2025 09:50:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=l+SUkVruI2YCcUMa+FcC5+QPx3okcUg5cMFby/7ouv4=; b=cH9seLJV8NGyW01o/kVl1BD0NK
-	FkAVuFK7GJNS16QS8neI6v2JJ0ilT9SDeAwumFc6E9kKOd8wNr8n2jx04u2bSA8VHAqs7AtWgQx3k
-	cw/7vo0SG8MRemTkulswTTjGwkK43HJaPpdc5+BPQoHCV1ts5mZ3IF21So0ZNXgClIvcalVjcDGS8
-	WldpKl8LTDbjiFqtMllpnVyicFgzTI5YDWR2mbKIP/7BulmPcfzlrZEPXDOw7EOuYmMbMzlxlltAI
-	YW6ozPE8AnUJHI8JPNTbDYDY9vjrLNn4ALndNkwggREEZ7LupBFTNLMoVDRaWULopa7nQiXe8gMA+
-	h03iIabg==;
-Received: from mail-vk1-xa31.google.com ([2607:f8b0:4864:20::a31])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umUbY-0000000GLBW-27aU
+	id 1umWYq-0000000Gn5j-11D6
 	for linux-mediatek@lists.infradead.org;
-	Thu, 14 Aug 2025 09:50:42 +0000
-Received: by mail-vk1-xa31.google.com with SMTP id 71dfb90a1353d-53b174ac3e5so307237e0c.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 14 Aug 2025 02:50:39 -0700 (PDT)
+	Thu, 14 Aug 2025 11:56:01 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-6188b7550c0so1146374a12.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 14 Aug 2025 04:55:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1755165037; x=1755769837; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1755172558; x=1755777358; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=l+SUkVruI2YCcUMa+FcC5+QPx3okcUg5cMFby/7ouv4=;
-        b=GhCSm2FAqzAJCmoCmBySwycl9eE1StABjyQnYK+kOxdql0+7QVUXULqkl8AMvvRxZn
-         wcLD0UJywsv0GWhYiRTMRgAsHnB18//ORcYw4fh3T+A41E7hgOABxQ0xpWorYPY3+Qw8
-         hjbRj2Ab5HYBCiaQqrpEDaUaWoA5LPrNKeHe8=
+        bh=tb315cmtvC7XRKPOkvyrzytTN46nIxubLRXMz5iL+MY=;
+        b=T7mhnlVkENKpa7vFKLcEMlb+yiH7JUMdqos4toVfOn1mcvZrlA12roLRv+3Mm68BYB
+         KHiv7HcRQYWw/1OkzEkT4qKNtE1nGjF49HGVf1vUDedLWTd6O7dTRst4cUXjg8XlYn2n
+         Q8GgQAqIxkPeaId34RrwcKfW71ihl1sZqd0YgZlnpxP0SIRjaxyrErxXMZXk350Kg9ez
+         o9X5hR1Db7ynkKme41sFgg18J6dpv6+gP6umjxl0sdSkz7pMC2YVeNB6D/EhwiQAaCXv
+         TEuZv1ZRJaHNjqrN6uG2VcELE1CCzgfrZ2prRGL4Fkhj+TaH6NFHVZmA+r2CqjOJ2QnU
+         9bcA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1755165037; x=1755769837;
+        d=1e100.net; s=20230601; t=1755172558; x=1755777358;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=l+SUkVruI2YCcUMa+FcC5+QPx3okcUg5cMFby/7ouv4=;
-        b=D9vzejXZN7au8/znHUblZLFltUkjsEMjqDpXrBPtnWZr/5cJ+/0pZI01fGNxxkwRAq
-         oME1ItDPf1h7IM+COTkvjtyb88ByKCBTOvK1JRicBTRfp5KhSQkb74/BEQzk7GwtE7PB
-         eNxK2eKcGh+pmQMypxOUbrHlvJjZVjFqDcxXTlv0H/RfwAjuQYALo6j0RotltV6Wdph2
-         Pe8CeR623CfrPdritKLqK4ctqXQ75qubYAwKzgNJDyQagthb8++oO4RUM3BBKvviA5aW
-         uSwh5eWO6vVP74+HBvVX8Qs1KBx1Hj94ydG3BnpXOIzyXwDzo1+9GOyEH8i+ZnNtVc7y
-         lb7Q==
-X-Forwarded-Encrypted: i=1; AJvYcCXMqKO0GwYcbqWh0qIqGJ7+Dqr5axelErDCxqedWXNSaf3B/wrRYdLowecydRslkLghOFya3i7Bxtti49CM+w==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzj+x1OSOhgg2nyC76SQY320TaaW7bDh0ZheiCEahkXTOsBFSjc
-	JNAULPPltUltSfcznSm2ExN1SLAsoqDSQWeHmQ5P+KrVkQoMFCxYgwPVDucOll8esL19LtP2Wqx
-	MD/g=
-X-Gm-Gg: ASbGncvwXhew6mNLc9LyRRM8P6U/AcEJtfx2ul2nlJBwsZGp4gHa8q/+V3yup1NNjiq
-	at4RyEVq+/t7o1strUCpC9DBK+9pqVYI/jCuB2eckTKkI5BvKttRGQViOT6x8f0jFQXiD3hSBQI
-	f/s7UXu01hmJUoqI95b2ucUtCZIU8CdVRX590xTRKkYbFsmYeR4QBFY8vvyl3hQfMvgGbQyaghL
-	eXib5bD6zhzCzfUZZM1cnbkjBSeP1AeDl397ypng56PqSBmfn99YIwiaoN31oDBujtn6cfIS360
-	SuwK+Xgy+bqRSv7U9zH+s+oExiFp+rJSubj7zDLM9ZPrnFKyCHilGir+m9kQaIrso7cmnt7zFw3
-	N6vaSlVdQGAbPwZI90UdrG56vAP2WMwsKjhYvdW9bnxSc762nr81n0IJSyqLZAQ3Oz1xN
-X-Google-Smtp-Source: AGHT+IFvY6noA7c2+heOu2HcXMzFMU3INf5GxH+QPFONXePKMHXdKQXJ9PH0eNlbihLwovr9OFuc0Q==
-X-Received: by 2002:a05:6122:659f:b0:52f:47de:3700 with SMTP id 71dfb90a1353d-53b1899d513mr758767e0c.5.1755165037285;
-        Thu, 14 Aug 2025 02:50:37 -0700 (PDT)
-Received: from mail-vs1-f53.google.com (mail-vs1-f53.google.com. [209.85.217.53])
-        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-539b02a1d78sm4415596e0c.25.2025.08.14.02.50.36
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 14 Aug 2025 02:50:37 -0700 (PDT)
-Received: by mail-vs1-f53.google.com with SMTP id ada2fe7eead31-50f8bf6a9d7so237639137.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 14 Aug 2025 02:50:36 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCUUPhI+4XQsN66IDk0SAWlQKSP9aLsaDlGNnlZzFusqMrsErLXYaqc43yPNhJfYkYuQrR3nEOCCOK7LbIWfIg==@lists.infradead.org
-X-Received: by 2002:a05:6102:3f9f:b0:4e2:ecd8:a27 with SMTP id
- ada2fe7eead31-50fe030e2damr804847137.4.1755165036132; Thu, 14 Aug 2025
- 02:50:36 -0700 (PDT)
+        bh=tb315cmtvC7XRKPOkvyrzytTN46nIxubLRXMz5iL+MY=;
+        b=liq/HEEQsGP/b9G4OKQnQj37IN/N10e3MfRJ5Kt4q6Ut6vGV4CFcAhCJnozAKQMmFV
+         PMlfNdwkCwjgyKpc1Hzr8QDCFCtWMVz0M7VvVp4/JONoQTvjR0Z6MN/HYVGJI1zY3pea
+         7fJcL1Tmv0tixv7AXNpN5/2xXfku8iB/5CZ0TCvMeELMqZlP8wUMKr8zZIfntRT25Qta
+         Hsw1vbHmCaqUvilBqS63xYZkFMwJlt784yx45FuEasHGdKv+v0vwRyschNx0brt+Jkp/
+         A7V6J/ALmMiAI1WfTJ8R4up9QAMo9D/ZOewRlYn7etfNh3Oh/mSoDGzaB17S9zjl2zbW
+         A9SA==
+X-Forwarded-Encrypted: i=1; AJvYcCXHB7WFGf1Dr85sDWLrqLEjefZ4fX59xWzsKnCNLv2ykI9Y2ei3qyQcc5WzsbKgO0aGzVYNjmzuvcdXdqiKNA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwXvMpKodpnWVdczv08Q12rlV8UlvY21HoGwmhhvkRzhUtgFtrZ
+	EoqJhvzkzflzh87tsGaMwfk6HXo9quTmbDweNkEeua0XTs86CxsnbkzJtpjbG/Jk421Ym9aASQA
+	fooK0qTFQfZEaBgi9lNx+Lh4+xFeSCvg=
+X-Gm-Gg: ASbGncvZp0+icokjFLh3lIEcl0Ce61A+6JB4ynNNfI4O3rwYi2Lc4NAFpzfYGYoQw29
+	8Vv7YIqMaXkOAN9I38uDlzpjK1KdhHmjsXul48ZaTB0Bh8U00Ek5SLRNoTVV9gOfYJvIyzWcabb
+	jGRMuSAdpkVkpaaXpMNbMtVHEsUOkVvWKqbzBal4ivKS1MOz27VLAqakZsuYF7xRKhpzaDsuwdm
+	sZCK9xVqw==
+X-Google-Smtp-Source: AGHT+IFrvGlyyUa4/Eu4Vj5ie79bie0Z0kQT3gWwNEi9fvArmWk7nAaceJDjE9bqa4GntjTYG3K8gVLiOM5WSvemVI4=
+X-Received: by 2002:a05:6402:13c7:b0:618:196b:1f8a with SMTP id
+ 4fb4d7f45d1cf-618911a7eb0mr2297174a12.4.1755172558047; Thu, 14 Aug 2025
+ 04:55:58 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250814092510.211672-1-wenst@chromium.org>
-In-Reply-To: <20250814092510.211672-1-wenst@chromium.org>
-From: Fei Shao <fshao@chromium.org>
-Date: Thu, 14 Aug 2025 17:49:59 +0800
-X-Gmail-Original-Message-ID: <CAC=S1nhw2R-2YVpgBnRDAn-6prJGm2a9oq9tCASkpXHDP_-BoA@mail.gmail.com>
-X-Gm-Features: Ac12FXwCy2I4l7L6eb4V9g1X9AwsA4Ouah27uikhuRM8HDiKM-hrJ7wZo6sGxh0
-Message-ID: <CAC=S1nhw2R-2YVpgBnRDAn-6prJGm2a9oq9tCASkpXHDP_-BoA@mail.gmail.com>
-Subject: Re: [PATCH v2] arm64: dts: mediatek: mt8188-geralt: Enable first SCP core
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <CAJmAMMyOk7AVqQRrtK4Oum2uVKreGeLJ943-kkRCTspoGApZ8w@mail.gmail.com>
+ <CAJmAMMyt5QQQOavVy+Gytf00Y0F6G+GCLYhj0E9RZ8cV85gwCw@mail.gmail.com>
+ <10850475be9302b5b397173c1d4554335c0df966.camel@mediatek.com> <CAJmAMMxtH+WnJfU2tcHRxP472cnyM4cZ7vaTcZN0NSxQ6U5HCg@mail.gmail.com>
+In-Reply-To: <CAJmAMMxtH+WnJfU2tcHRxP472cnyM4cZ7vaTcZN0NSxQ6U5HCg@mail.gmail.com>
+From: Tal Inbar <inbartdev@gmail.com>
+Date: Thu, 14 Aug 2025 14:55:46 +0300
+X-Gm-Features: Ac12FXzL763y85w5TLRnSxTOv88UagtlDVl64Ouyp_ebALHCLfT1LPFzZnOagHY
+Message-ID: <CAJmAMMzYkoVWq2w4UCdyF1x2huwtcbW37RyKiDiCR9pmACdDuQ@mail.gmail.com>
+Subject: Re: [REGRESSION] [BISECTED] MT7925 wireless speed drops to zero since
+ kernel 6.14.3 - wifi: mt76: mt7925: integrate *mlo_sta_cmd and *sta_cmd
+To: =?UTF-8?B?TWluZ3llbiBIc2llaCAo6Kyd5piO6Ku6KQ==?= <Mingyen.Hsieh@mediatek.com>
+Cc: Sean Wang <Sean.Wang@mediatek.com>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+	"stable@vger.kernel.org" <stable@vger.kernel.org>, =?UTF-8?B?QWxsYW4gV2FuZyAo546L5a625YGJKQ==?= <Allan.Wang@mediatek.com>, 
+	"regressions@lists.linux.dev" <regressions@lists.linux.dev>, 
+	=?UTF-8?B?RGVyZW4gV3UgKOatpuW+t+S7gSk=?= <Deren.Wu@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250814_105040_800776_76C0B9AC 
-X-CRM114-Status: UNSURE (   7.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250814_045600_284786_9725FA9C 
+X-CRM114-Status: GOOD (  45.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,12 +101,190 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 14, 2025 at 5:25=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.org> w=
-rote:
->
-> The first SCP core is used to drive the video decoder and encoders.
->
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+Hi Mingyen,
 
-Reviewed-by: Fei Shao <fshao@chromium.org>
+I've collected some of my Routers' configuration information which
+I'll share with you in a private email message.
+
+Tal
+
+On Mon, Aug 11, 2025 at 12:08=E2=80=AFPM Tal Inbar <inbartdev@gmail.com> wr=
+ote:
+>
+> Hi Mingyen,
+>
+> I'll see what I can gather and I'll let you know.
+>
+> Tal
+>
+> On Mon, Aug 11, 2025 at 4:47=E2=80=AFAM Mingyen Hsieh (=E8=AC=9D=E6=98=8E=
+=E8=AB=BA)
+> <Mingyen.Hsieh@mediatek.com> wrote:
+> >
+> > On Fri, 2025-08-08 at 17:37 +0300, Tal Inbar wrote:
+> > >
+> > > External email : Please do not click links or open attachments until
+> > > you have verified the sender or the content.
+> > >
+> > >
+> > > typo, laptop model is:
+> > > Lenovo IdeaPad Slim 5 16AKP10
+> > >
+> > > On Fri, Aug 8, 2025 at 4:14=E2=80=AFPM Tal Inbar <inbartdev@gmail.com=
+> wrote:
+> > > >
+> > > > Hi,
+> > > >
+> > > > Since kernel v6.14.3, when using wireless to connect to my home
+> > > > router
+> > > > on my laptop, my wireless connection slows down to unusable speeds.
+> > > >
+> > > >
+> > > > More specifically, since kernel 6.14.3, when connecting to the
+> > > > wireless networks of my OpenWRT Router on my Lenovo IdeaPad Slim 15
+> > > > 16AKP10 laptop,
+> > > > either a 2.4ghz or a 5ghz network, the connection speed drops down
+> > > > to
+> > > > 0.1-0.2 Mbps download and 0 Mbps upload when measured using
+> > > > speedtest-cli.
+> > > > My laptop uses an mt7925 chip according to the loaded driver and
+> > > > firmware.
+> > > >
+> > > >
+> > > > Detailed Description:
+> > > >
+> > > > As mentioned above, my wireless connection becomes unusable when
+> > > > using
+> > > > linux 6.14.3 and above, dropping speeds to almost 0 Mbps,
+> > > > even when standing next to my router. Further, pinging
+> > > > archlinux.org
+> > > > results in "Temporary failure in name resolution".
+> > > > Any other wireless device in my house can successfully connect to
+> > > > my
+> > > > router and properly use the internet with good speeds, eg. iphones,
+> > > > ipads, raspberry pi and a windows laptop.
+> > > > When using my Lenovo laptop on a kernel 6.14.3 or higher to connect
+> > > > to
+> > > > other access points, such as my iPhone's hotspot and some TPLink
+> > > > and
+> > > > Zyxel routers - the connection speed is good, and there are no
+> > > > issues,
+> > > > which makes me believe there's something going on with my OpenWRT
+> > > > configuration in conjunction with a commit introduced on kernel
+> > > > 6.14.3
+> > > > for the mt7925e module as detailed below.
+> > > >
+> > > > I have followed a related issue previously reported on the mailing
+> > > > list regarding a problem with the same wifi chip on kernel 6.14.3,
+> > > > but
+> > > > the merged fix doesn't seem to fix my problem:
+> > > > https://lore.kernel.org/linux-mediatek/EmWnO5b-acRH1TXbGnkx41eJw654=
+vmCR-8_xMBaPMwexCnfkvKCdlU5u19CGbaapJ3KRu-l3B-tSUhf8CCQwL0odjo6Cd5YG5lvNeB-=
+vfdg=3D@pm.me/
+> > > >
+> > > > I've tested stable builds of 6.15 as well up to 6.15.9 in the last
+> > > > month, which also do not fix the problem.
+> > > > I've also built and bisected v6.14 on june using guides on the Arch
+> > > > Linux wiki, for the following bad commit, same as the previously
+> > > > mentioned reported issue:
+> > > >
+> > > > [80007d3f92fd018d0a052a706400e976b36e3c87] wifi: mt76: mt7925:
+> > > > integrate *mlo_sta_cmd and *sta_cmd
+> > > >
+> > > > Testing further this week, I cloned mainline after 6.16 was
+> > > > released,
+> > > > built and tested it, and the issue still persists.
+> > > > I reverted the following commits on mainline and retested, to
+> > > > successfully see good wireless speeds:
+> > > >
+> > > > [0aa8496adda570c2005410a30df963a16643a3dc] wifi: mt76: mt7925: fix
+> > > > missing hdr_trans_tlv command for broadcast wtbl
+> > > > [cb1353ef34735ec1e5d9efa1fe966f05ff1dc1e1] wifi: mt76: mt7925:
+> > > > integrate *mlo_sta_cmd and *sta_cmd
+> > > >
+> > > > Then, reverting *only* 0aa8496adda570c2005410a30df963a16643a3dc
+> > > > causes
+> > > > the issue to reproduce, which confirms the issue is caused by
+> > > > commit
+> > > > cb1353ef34735ec1e5d9efa1fe966f05ff1dc1e1 on mainline.
+> > > >
+> > > > I've attached the following files to a bugzilla ticket:
+> > > >
+> > > > - lspci -nnk output:
+> > > > https://urldefense.com/v3/__https://bugzilla.kernel.org/attachment.=
+cgi?id=3D308466__;!!CTRNKA9wMg0ARbw!gTAaJeIN6s3eF_Kp6U3iwfv0wCCO_BVcRkNVpJY=
+nwR8qeqIIh134mEJ5dxdeNqzuWSPF2ocLAt43LxaBTIY-7w$
+> > > >
+> > > > - dmesg output:
+> > > > https://urldefense.com/v3/__https://bugzilla.kernel.org/attachment.=
+cgi?id=3D308465__;!!CTRNKA9wMg0ARbw!gTAaJeIN6s3eF_Kp6U3iwfv0wCCO_BVcRkNVpJY=
+nwR8qeqIIh134mEJ5dxdeNqzuWSPF2ocLAt43LxY1pkjZCA$
+> > > >
+> > > > - .config for the built mainline kernel:
+> > > > https://urldefense.com/v3/__https://bugzilla.kernel.org/attachment.=
+cgi?id=3D308467__;!!CTRNKA9wMg0ARbw!gTAaJeIN6s3eF_Kp6U3iwfv0wCCO_BVcRkNVpJY=
+nwR8qeqIIh134mEJ5dxdeNqzuWSPF2ocLAt43LxYcu-Db2g$
+> > > >
+> > > >
+> > > > More information:
+> > > >
+> > > > OS Distribution: Arch Linux
+> > > >
+> > > > Linux build information from /proc/version:
+> > > > Linux version 6.16.0linux-mainline-11853-g21be711c0235
+> > > > (tal@arch-debug) (gcc (GCC) 15.1.1 20250729, GNU ld (GNU Binutils)
+> > > > 2.45.0) #3 SMP PREEMPT_DYNAMIC
+> > > >
+> > > > OpenWRT Version on my Router: 24.10.2
+> > > >
+> > > > Laptop Hardware:
+> > > > - Lenovo IdeaPad Slim 15 16AKP10 laptop (x86_64 Ryzen AI 350 CPU)
+> > > > - Network device as reported by lscpi: 14c3:7925
+> > > > - Network modules and driver in use: mt7925e
+> > > > - mediatek chip firmware as of dmesg:
+> > > >   HW/SW Version: 0x8a108a10, Build Time: 20250526152947a
+> > > >   WM Firmware Version: ____000000, Build Time: 20250526153043
+> > > >
+> > > >
+> > > > Referencing regzbot:
+> > > >
+> > > > #regzbot introduced: 80007d3f92fd018d0a052a706400e976b36e3c87
+> > > >
+> > > >
+> > > > Please let me know if any other information is needed, or if there
+> > > > is
+> > > > anything else that I can test on my end.
+> > > >
+> > > > Thanks,
+> > > > Tal Inbar
+> >
+> > Hi,
+> >
+> > Can you capture a sniffer log? There should be some configuration
+> > differences that we can identify from the packet frames during the
+> > connection process. So please provide the sniffer logs when connecting
+> > to your OpenWRT, TPLink, and Zyxel.
+> >
+> > Or you can check for any configuration differences between OpenWRT and
+> > the other routers, which might also help with debugging.
+> >
+> > Thanks~
+> >
+> > Yen.
+> >
+> >
+> > *********** MEDIATEK Confidentiality Notice
+> >  ***********
+> > The information contained in this e-mail message (including any
+> > attachments) may be confidential, proprietary, privileged, or
+> > otherwise exempt from disclosure under applicable laws. It is
+> > intended to be conveyed only to the designated recipient(s). Any
+> > use, dissemination, distribution, printing, retaining or copying
+> > of this e-mail (including its attachments) by unintended recipient(s)
+> > is strictly prohibited and may be unlawful. If you are not an
+> > intended recipient of this e-mail, or believe that you have received
+> > this e-mail in error, please notify the sender immediately
+> > (by replying to this e-mail), delete any and all copies of this
+> > e-mail (including any attachments) from your system, and do not
+> > disclose the content of this e-mail to any other person. Thank you!
 
