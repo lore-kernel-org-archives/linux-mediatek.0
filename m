@@ -4,54 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DEFCCA0EDC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Aug 2025 08:29:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65C2BCA0EDC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Aug 2025 08:38:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=0Yjr6NsrKkaYb/LNYm1mPKHuxqkR0iWhkNkzH9QSzrg=; b=wjiY9xDYCjhYjqBjmN7dkhhAI5
-	zACO7Uacm/bTu307J155/8O7Sr7pI45nUv1yGBbm9SQQ1AFA8q9LhBod2bex7Ij1Zjz/6kknuFijk
-	Oed70kwa4hchBf8RUIaaDS0gCpPAydFC3NMgU21Qz/cOQB2hM4gismuJF9Agg6N1diVaXUKoeeatv
-	A1uvx0goaWqqFRvOUOhc5FMh2O7BllCwoZkvKtebJm5V7GVbPcbAPmP+ltvTKKnhWxo7W1hQ8hR2m
-	URwq9cB8FJeQDZ7p//TYmn7Xbk+R9BLCBJKd0sCvMp/q43w+5KXZPu/L5BE5pCrf2rJHsIdswgGlO
-	Gyh1EjyQ==;
+	bh=t5lh1GA3+nbQMxzV+tGHExe9OHBSJYl0b1Mlv1COJrg=; b=RaqHUk759Ws4L51caAaWlmMo1m
+	5nqljEJurW9YgraAa1W/oFIqgutaCyQ1ufxVW4wxPEWmNW+b/wTQvCD4vAfOKTJT4CQBmp2enELc+
+	XsVPXy6v/GImdZFukGVLbdoWPGtVxkaOcay89+BBNmmST9TxKMLejt3BNMTd9Ied4EMD8/NjOPtxd
+	kL5RDpRZpgduN0YyXPlheW/i+/3lz/6kQ+utURyz2KsSUi0Bj1mpwauH1yCrKwfbdpteF97S1IB/6
+	JaehsL6bZVCc9GoCL6gaU8gmhVP8X5rjaLYbk4t1sfJmsprdRNjZEkcmhgx0y/uf8shAk5fwvi/gC
+	DC1k+yWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umTL1-0000000GFHG-2FsA;
-	Thu, 14 Aug 2025 08:29:31 +0000
-Received: from mail.fintara.pl ([51.68.214.200])
+	id 1umTTW-0000000GGyO-0KMk;
+	Thu, 14 Aug 2025 08:38:18 +0000
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umT2y-0000000GCjj-0KYw
+	id 1umTNR-0000000GFx6-2DN0
 	for linux-mediatek@lists.infradead.org;
-	Thu, 14 Aug 2025 08:10:53 +0000
-Received: by mail.fintara.pl (Postfix, from userid 1002)
-	id AE41B4D005; Thu, 14 Aug 2025 10:06:53 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=fintara.pl; s=mail;
-	t=1755158875; bh=0Yjr6NsrKkaYb/LNYm1mPKHuxqkR0iWhkNkzH9QSzrg=;
-	h=Date:From:To:Subject:From;
-	b=PHcQRmuP4ijvUw3jtH7a/EmR8x1viquEkGdOI/gubLE0yRMVh9YUZFQA6Zu7xDFC8
-	 Cc0FIrlby386V2Dnny9isoULtrxQgU89R+cG7LpVYaDeTlJZDhA85bRSiARGJeyxZo
-	 5jLelufCsXMbC59axUfRqPFow6SvGRxHzO2CSb16LtJAZ67TNnNP0D/H/z2WtnzNOQ
-	 lGH72dbtMiBf4WsSnRmdKvuAcQN+Nudo/WusZEBT/FSQjcb4X1k4dSk7ST1atGLpxY
-	 TFTVTE0pT0FQBcUlj5Trk052NoZYPMYQxLFPA/Ni64MC2R3xwKNK/Fgqa9EK5oRsdn
-	 8L90aJJNwdc2A==
-Received: by mail.fintara.pl for <linux-mediatek@lists.infradead.org>; Thu, 14 Aug 2025 08:06:03 GMT
-Message-ID: <20250814084500-0.1.ba.36un7.0.kwa39nfhll@fintara.pl>
-Date: Thu, 14 Aug 2025 08:06:03 GMT
-From: "Dominik Lotka" <dominik.lotka@fintara.pl>
-To: <linux-mediatek@lists.infradead.org>
-Subject: =?UTF-8?Q?Prosz=C4=99_o_kontakt?=
-X-Mailer: mail.fintara.pl
+	Thu, 14 Aug 2025 08:32:02 +0000
+Received: by mail-pf1-x42c.google.com with SMTP id d2e1a72fcca58-76e2e614b84so733300b3a.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 14 Aug 2025 01:32:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1755160321; x=1755765121; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=t5lh1GA3+nbQMxzV+tGHExe9OHBSJYl0b1Mlv1COJrg=;
+        b=iPiign+ayqF26d9a/df4iFTwZC/akkyAdUg0rORS3hsg23noXeTNDoRbC1VPEuPrkL
+         HA1UoZD7aElsfEm13NnH0iCS46GmUCo0YI+X3CuLQhaPU9TiKZDFeaD/U18Nzty1WnNH
+         /VvKIOxBb5mkqWtFMqVmFvBnEIYIdcmHOs7Vc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1755160321; x=1755765121;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=t5lh1GA3+nbQMxzV+tGHExe9OHBSJYl0b1Mlv1COJrg=;
+        b=mVHYoKyhIvEe2o3lFrISqN5U4cNzYNHoO+frnwwDsx4Lp1WT8avBFbQqqb6Fq191jW
+         KUEZo/CnMgy7arM+9arLdyYUuhB5MiheHT3ygUWw68mwv7Gr/ELoXVyknHLALO+bLcQ2
+         igfVrtJIUB2F/KQCR7cqq1vcn/N3UNonzl/4JPHO9uboexTay58EjwGTMd8aw/nmYLB5
+         aB6CbxaANoCRIOh5hB7pq7PRjnT0K8lkK4UDnxhowTjWziEXYW9bdGvhmrZ0p5V4UK4X
+         VvfhTCz6EU72xhdifES4QQr4l93IRprnZRL5HR1OAxvVCc+UW6D/rRzcFAb3CnSuhDx+
+         r1eA==
+X-Forwarded-Encrypted: i=1; AJvYcCXD+pwoPxjZJgufpbEVAnNyyGp1ISal/7H/79sGYaIyc1HipzWBk7DpIOBjyADCoPIFx7ttixfoJXSg9ZHjOA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxCk4NeM/1/acD/VtoI9qnEL+lMK1+l/JsyQxN1WAvXHh7MdNSV
+	UVYokKZxuRZq2vcj5fIUNu99EnP9Zh560qUYoU8sMBE0Y5Z3zrPzinMNV6g9qHMyn2ytyeQ2khk
+	LarM=
+X-Gm-Gg: ASbGncsZqtLAyuZEdvxwW/J3l1b5IvcIV0V6gUn7cX6RNPmkwbfLNgHQh0Iv/xSbdRK
+	RCvoXWMVTguWeMI0SBihtU3EQeiCFaOd2aPtrEPzX/NoKHW9r9d41gLG0TGDuYUBKPevxKERCWi
+	Ymc3hGw/ROF2HMFoKAiH6UjuwSSWehDIQrg+aloDfgTrl19VULtoI70aSamZMMtk8hVG68EvSTV
+	44JRTnrYiGGpWe5jJmFAv7tZ4ozLzX6mtWE+OpmwCVJq1Iy7gh+10eJ/RksPWU8o/p3bvfKiJW1
+	ImC92/Tk8xndaVduairPRRAxuYQsAW+kP1ZCibS68HIxjhEx9hXfPLC02aIU6r2X89NoZ0Yi7Cj
+	abqzWF//raV/DkTtw+/81BfpmvW6KUM2m3oniH0qD
+X-Google-Smtp-Source: AGHT+IFTH7AAc4CwiqK7IOMNsqVxgw4eojzXip3g8FQlYFzBeGkUveBb2j3eLKrE/Y5UsiKs0/PrHw==
+X-Received: by 2002:a17:903:1585:b0:234:9656:7db9 with SMTP id d9443c01a7336-244586a100emr33596695ad.32.1755160320704;
+        Thu, 14 Aug 2025 01:32:00 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:c44f:5805:6bc2:66d4])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-241e897716bsm347532695ad.112.2025.08.14.01.31.58
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 14 Aug 2025 01:32:00 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Yunfei Dong <yunfei.dong@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Hans Verkuil <hverkuil@xs4all.nl>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] media: mediatek: vcodec: Use spinlock for context list protection lock
+Date: Thu, 14 Aug 2025 16:31:43 +0800
+Message-ID: <20250814083144.191554-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.51.0.rc1.163.g2494970778-goog
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250814_011052_377857_932256B0 
-X-CRM114-Status: UNSURE (   0.31  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250814_013201_567402_39F01E13 
+X-CRM114-Status: GOOD (  18.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,19 +99,251 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dzie=C5=84 dobry,
+Previously a mutex was added to protect the encoder and decoder context
+lists from unexpected changes originating from the SCP IP block, causing
+the context pointer to go invalid, resulting in a NULL pointer
+dereference in the IPI handler.
 
-Czy jest mo=C5=BCliwo=C5=9B=C4=87 nawi=C4=85zania wsp=C3=B3=C5=82pracy z =
-Pa=C5=84stwem?
+Turns out on the MT8173, the VPU IPI handler is called from hard IRQ
+context. This causes a big warning from the scheduler. This was first
+reported downstream on the ChromeOS kernels, but is also reproducible
+on mainline using Fluster with the FFmpeg v4l2m2m decoders. Even though
+the actual capture format is not supported, the affected code paths
+are triggered.
 
-Z ch=C4=99ci=C4=85 porozmawiam z osob=C4=85 zajmuj=C4=85c=C4=85 si=C4=99 =
-dzia=C5=82aniami zwi=C4=85zanymi ze sprzeda=C5=BC=C4=85.
+Since this lock just protects the context list and operations on it are
+very fast, it should be OK to switch to a spinlock.
 
-Pomagamy skutecznie pozyskiwa=C4=87 nowych klient=C3=B3w.
+Fixes: 6467cda18c9f ("media: mediatek: vcodec: adding lock to protect decoder context list")
+Fixes: afaaf3a0f647 ("media: mediatek: vcodec: adding lock to protect encoder context list")
+Cc: Yunfei Dong <yunfei.dong@mediatek.com>
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ .../mediatek/vcodec/common/mtk_vcodec_fw_vpu.c       | 10 ++++++----
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c     | 12 +++++++-----
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h     |  2 +-
+ .../platform/mediatek/vcodec/decoder/vdec_vpu_if.c   |  4 ++--
+ .../mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c     | 12 +++++++-----
+ .../mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h     |  2 +-
+ .../platform/mediatek/vcodec/encoder/venc_vpu_if.c   |  4 ++--
+ 7 files changed, 26 insertions(+), 20 deletions(-)
 
-Zapraszam do kontaktu.
+diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
+index d7027d600208..223fb2294894 100644
+--- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
++++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
+@@ -47,30 +47,32 @@ static void mtk_vcodec_vpu_reset_dec_handler(void *priv)
+ {
+ 	struct mtk_vcodec_dec_dev *dev = priv;
+ 	struct mtk_vcodec_dec_ctx *ctx;
++	unsigned long flags;
+ 
+ 	dev_err(&dev->plat_dev->dev, "Watchdog timeout!!");
+ 
+-	mutex_lock(&dev->dev_ctx_lock);
++	spin_lock_irqsave(&dev->dev_ctx_lock, flags);
+ 	list_for_each_entry(ctx, &dev->ctx_list, list) {
+ 		ctx->state = MTK_STATE_ABORT;
+ 		mtk_v4l2_vdec_dbg(0, ctx, "[%d] Change to state MTK_STATE_ABORT", ctx->id);
+ 	}
+-	mutex_unlock(&dev->dev_ctx_lock);
++	spin_unlock_irqrestore(&dev->dev_ctx_lock, flags);
+ }
+ 
+ static void mtk_vcodec_vpu_reset_enc_handler(void *priv)
+ {
+ 	struct mtk_vcodec_enc_dev *dev = priv;
+ 	struct mtk_vcodec_enc_ctx *ctx;
++	unsigned long flags;
+ 
+ 	dev_err(&dev->plat_dev->dev, "Watchdog timeout!!");
+ 
+-	mutex_lock(&dev->dev_ctx_lock);
++	spin_lock_irqsave(&dev->dev_ctx_lock, flags);
+ 	list_for_each_entry(ctx, &dev->ctx_list, list) {
+ 		ctx->state = MTK_STATE_ABORT;
+ 		mtk_v4l2_vdec_dbg(0, ctx, "[%d] Change to state MTK_STATE_ABORT", ctx->id);
+ 	}
+-	mutex_unlock(&dev->dev_ctx_lock);
++	spin_unlock_irqrestore(&dev->dev_ctx_lock, flags);
+ }
+ 
+ static const struct mtk_vcodec_fw_ops mtk_vcodec_vpu_msg = {
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
+index 46d176e6de63..3b81fae9f913 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
+@@ -198,6 +198,7 @@ static int fops_vcodec_open(struct file *file)
+ 	struct mtk_vcodec_dec_ctx *ctx = NULL;
+ 	int ret = 0, i, hw_count;
+ 	struct vb2_queue *src_vq;
++	unsigned long flags;
+ 
+ 	ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
+ 	if (!ctx)
+@@ -267,9 +268,9 @@ static int fops_vcodec_open(struct file *file)
+ 
+ 	ctx->dev->vdec_pdata->init_vdec_params(ctx);
+ 
+-	mutex_lock(&dev->dev_ctx_lock);
++	spin_lock_irqsave(&dev->dev_ctx_lock, flags);
+ 	list_add(&ctx->list, &dev->ctx_list);
+-	mutex_unlock(&dev->dev_ctx_lock);
++	spin_unlock_irqrestore(&dev->dev_ctx_lock, flags);
+ 	mtk_vcodec_dbgfs_create(ctx);
+ 
+ 	mutex_unlock(&dev->dev_mutex);
+@@ -294,6 +295,7 @@ static int fops_vcodec_release(struct file *file)
+ {
+ 	struct mtk_vcodec_dec_dev *dev = video_drvdata(file);
+ 	struct mtk_vcodec_dec_ctx *ctx = file_to_dec_ctx(file);
++	unsigned long flags;
+ 
+ 	mtk_v4l2_vdec_dbg(0, ctx, "[%d] decoder", ctx->id);
+ 	mutex_lock(&dev->dev_mutex);
+@@ -312,9 +314,9 @@ static int fops_vcodec_release(struct file *file)
+ 	v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
+ 
+ 	mtk_vcodec_dbgfs_remove(dev, ctx->id);
+-	mutex_lock(&dev->dev_ctx_lock);
++	spin_lock_irqsave(&dev->dev_ctx_lock, flags);
+ 	list_del_init(&ctx->list);
+-	mutex_unlock(&dev->dev_ctx_lock);
++	spin_unlock_irqrestore(&dev->dev_ctx_lock, flags);
+ 	kfree(ctx);
+ 	mutex_unlock(&dev->dev_mutex);
+ 	return 0;
+@@ -407,7 +409,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 	for (i = 0; i < MTK_VDEC_HW_MAX; i++)
+ 		mutex_init(&dev->dec_mutex[i]);
+ 	mutex_init(&dev->dev_mutex);
+-	mutex_init(&dev->dev_ctx_lock);
++	spin_lock_init(&dev->dev_ctx_lock);
+ 	spin_lock_init(&dev->irqlock);
+ 
+ 	snprintf(dev->v4l2_dev.name, sizeof(dev->v4l2_dev.name), "%s",
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+index d047d7c580fb..9d68808e8f9c 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+@@ -285,7 +285,7 @@ struct mtk_vcodec_dec_dev {
+ 	/* decoder hardware mutex lock */
+ 	struct mutex dec_mutex[MTK_VDEC_HW_MAX];
+ 	struct mutex dev_mutex;
+-	struct mutex dev_ctx_lock;
++	spinlock_t dev_ctx_lock;
+ 	struct workqueue_struct *decode_workqueue;
+ 
+ 	spinlock_t irqlock;
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
+index 145958206e38..e9b5cac9c63b 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
+@@ -77,14 +77,14 @@ static bool vpu_dec_check_ap_inst(struct mtk_vcodec_dec_dev *dec_dev, struct vde
+ 	struct mtk_vcodec_dec_ctx *ctx;
+ 	int ret = false;
+ 
+-	mutex_lock(&dec_dev->dev_ctx_lock);
++	spin_lock(&dec_dev->dev_ctx_lock);
+ 	list_for_each_entry(ctx, &dec_dev->ctx_list, list) {
+ 		if (!IS_ERR_OR_NULL(ctx) && ctx->vpu_inst == vpu) {
+ 			ret = true;
+ 			break;
+ 		}
+ 	}
+-	mutex_unlock(&dec_dev->dev_ctx_lock);
++	spin_unlock(&dec_dev->dev_ctx_lock);
+ 
+ 	return ret;
+ }
+diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c
+index fb1c3bdc2dae..82b8ff38e8f1 100644
+--- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c
++++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c
+@@ -117,6 +117,7 @@ static int fops_vcodec_open(struct file *file)
+ 	struct mtk_vcodec_enc_ctx *ctx = NULL;
+ 	int ret = 0;
+ 	struct vb2_queue *src_vq;
++	unsigned long flags;
+ 
+ 	ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
+ 	if (!ctx)
+@@ -176,9 +177,9 @@ static int fops_vcodec_open(struct file *file)
+ 	mtk_v4l2_venc_dbg(2, ctx, "Create instance [%d]@%p m2m_ctx=%p ",
+ 			  ctx->id, ctx, ctx->m2m_ctx);
+ 
+-	mutex_lock(&dev->dev_ctx_lock);
++	spin_lock_irqsave(&dev->dev_ctx_lock, flags);
+ 	list_add(&ctx->list, &dev->ctx_list);
+-	mutex_unlock(&dev->dev_ctx_lock);
++	spin_unlock_irqrestore(&dev->dev_ctx_lock, flags);
+ 
+ 	mutex_unlock(&dev->dev_mutex);
+ 	mtk_v4l2_venc_dbg(0, ctx, "%s encoder [%d]", dev_name(&dev->plat_dev->dev),
+@@ -203,6 +204,7 @@ static int fops_vcodec_release(struct file *file)
+ {
+ 	struct mtk_vcodec_enc_dev *dev = video_drvdata(file);
+ 	struct mtk_vcodec_enc_ctx *ctx = file_to_enc_ctx(file);
++	unsigned long flags;
+ 
+ 	mtk_v4l2_venc_dbg(1, ctx, "[%d] encoder", ctx->id);
+ 	mutex_lock(&dev->dev_mutex);
+@@ -213,9 +215,9 @@ static int fops_vcodec_release(struct file *file)
+ 	v4l2_fh_exit(&ctx->fh);
+ 	v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
+ 
+-	mutex_lock(&dev->dev_ctx_lock);
++	spin_lock_irqsave(&dev->dev_ctx_lock, flags);
+ 	list_del_init(&ctx->list);
+-	mutex_unlock(&dev->dev_ctx_lock);
++	spin_unlock_irqrestore(&dev->dev_ctx_lock, flags);
+ 	kfree(ctx);
+ 	mutex_unlock(&dev->dev_mutex);
+ 	return 0;
+@@ -297,7 +299,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 
+ 	mutex_init(&dev->enc_mutex);
+ 	mutex_init(&dev->dev_mutex);
+-	mutex_init(&dev->dev_ctx_lock);
++	spin_lock_init(&dev->dev_ctx_lock);
+ 	spin_lock_init(&dev->irqlock);
+ 
+ 	snprintf(dev->v4l2_dev.name, sizeof(dev->v4l2_dev.name), "%s",
+diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h
+index 5b304a551236..0cddfa13594f 100644
+--- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h
++++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h
+@@ -206,7 +206,7 @@ struct mtk_vcodec_enc_dev {
+ 	/* encoder hardware mutex lock */
+ 	struct mutex enc_mutex;
+ 	struct mutex dev_mutex;
+-	struct mutex dev_ctx_lock;
++	spinlock_t dev_ctx_lock;
+ 	struct workqueue_struct *encode_workqueue;
+ 
+ 	int enc_irq;
+diff --git a/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c b/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
+index 51bb7ee141b9..79a91283da78 100644
+--- a/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
++++ b/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
+@@ -47,14 +47,14 @@ static bool vpu_enc_check_ap_inst(struct mtk_vcodec_enc_dev *enc_dev, struct ven
+ 	struct mtk_vcodec_enc_ctx *ctx;
+ 	int ret = false;
+ 
+-	mutex_lock(&enc_dev->dev_ctx_lock);
++	spin_lock(&enc_dev->dev_ctx_lock);
+ 	list_for_each_entry(ctx, &enc_dev->ctx_list, list) {
+ 		if (!IS_ERR_OR_NULL(ctx) && ctx->vpu_inst == vpu) {
+ 			ret = true;
+ 			break;
+ 		}
+ 	}
+-	mutex_unlock(&enc_dev->dev_ctx_lock);
++	spin_unlock(&enc_dev->dev_ctx_lock);
+ 
+ 	return ret;
+ }
+-- 
+2.51.0.rc1.163.g2494970778-goog
 
-
-Pozdrawiam
-Dominik Lotka
 
