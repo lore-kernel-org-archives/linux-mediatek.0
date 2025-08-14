@@ -4,64 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97EF3CA0EDC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Aug 2025 08:21:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DEFCCA0EDC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Aug 2025 08:29:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=QUe9rlUXRtSFBdvBHEKDFyeAsTRBjlooxhUZO8iF2Bs=; b=mw7M6Ywa++LEU6taZbg5gau7H/
-	AkfdOasDhCP+hu0wFdaHN1IFQQ+LT6OWQnV2m/oCQu70f6ue+cslFIF9Lk62awxa/uYeUiYFo6bAj
-	6p0R79fvH+C82/raRG1jPOhVnuHgmkH6XyhJaIh9+2e1jahnZU17c+qlx0IkPalYo7eaxmhm7Mm6J
-	GJShqk+zs0sG2dJ0MmQ2gxJ8jfsDrU1B9nl/nAEsWI+tk+Fy4TYeAAkMaHtp/M88yTXR9jYcXRTkc
-	UJdG5iCyxbTcph/HzTRz9r6IQ+fi2BZMtATXxEbcavdxJEE9GNzaEJPrtPDxrHBpCEsmq7LYVCwfr
-	erk0dbHw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=0Yjr6NsrKkaYb/LNYm1mPKHuxqkR0iWhkNkzH9QSzrg=; b=wjiY9xDYCjhYjqBjmN7dkhhAI5
+	zACO7Uacm/bTu307J155/8O7Sr7pI45nUv1yGBbm9SQQ1AFA8q9LhBod2bex7Ij1Zjz/6kknuFijk
+	Oed70kwa4hchBf8RUIaaDS0gCpPAydFC3NMgU21Qz/cOQB2hM4gismuJF9Agg6N1diVaXUKoeeatv
+	A1uvx0goaWqqFRvOUOhc5FMh2O7BllCwoZkvKtebJm5V7GVbPcbAPmP+ltvTKKnhWxo7W1hQ8hR2m
+	URwq9cB8FJeQDZ7p//TYmn7Xbk+R9BLCBJKd0sCvMp/q43w+5KXZPu/L5BE5pCrf2rJHsIdswgGlO
+	Gyh1EjyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umTDF-0000000GE5q-0yrX;
-	Thu, 14 Aug 2025 08:21:29 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1umTL1-0000000GFHG-2FsA;
+	Thu, 14 Aug 2025 08:29:31 +0000
+Received: from mail.fintara.pl ([51.68.214.200])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umSkV-0000000G9Xg-25RN;
-	Thu, 14 Aug 2025 07:51:48 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E67D9429C1;
-	Thu, 14 Aug 2025 07:51:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C9A8DC4CEF4;
-	Thu, 14 Aug 2025 07:51:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755157906;
-	bh=dmpTosncAaE7Nn1ATog0PXraXtGDs0p8ha4JWC1qTo4=;
-	h=From:Date:Subject:To:Cc:From;
-	b=nZzOPP56EsxqzgrTP30aj4u8udATEp39etY8efpK0WqF/olSle/O9PEoRhfnINou6
-	 XusIcCtzqkD1tseoGvfJlyU+7qzFhKdltSZ2ygHaPphVnXUya2X7JSzzmRLjJvo5G7
-	 D9u7qz+GZFCgB8w8kmjm2gok2N8prV268n8CwH11auKsdVoPx8fYDQvRJ6lFqHsstb
-	 6Lx9btVFw31Cm0WRHdbv+8JuCkMbNNeymbyodMLMazr0w6ij2fr7Iz/NyZPUTW1ft+
-	 tWNXnE3+UK3zbEx0YqahL51yMzC6G3WPxui837ktBsoDA6/IxwSDUP9OqwEG0/CX1t
-	 RBBJ00Pg+psVw==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Thu, 14 Aug 2025 09:51:16 +0200
-Subject: [PATCH net-next] net: airoha: Add wlan flowtable TX offload
+	id 1umT2y-0000000GCjj-0KYw
+	for linux-mediatek@lists.infradead.org;
+	Thu, 14 Aug 2025 08:10:53 +0000
+Received: by mail.fintara.pl (Postfix, from userid 1002)
+	id AE41B4D005; Thu, 14 Aug 2025 10:06:53 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=fintara.pl; s=mail;
+	t=1755158875; bh=0Yjr6NsrKkaYb/LNYm1mPKHuxqkR0iWhkNkzH9QSzrg=;
+	h=Date:From:To:Subject:From;
+	b=PHcQRmuP4ijvUw3jtH7a/EmR8x1viquEkGdOI/gubLE0yRMVh9YUZFQA6Zu7xDFC8
+	 Cc0FIrlby386V2Dnny9isoULtrxQgU89R+cG7LpVYaDeTlJZDhA85bRSiARGJeyxZo
+	 5jLelufCsXMbC59axUfRqPFow6SvGRxHzO2CSb16LtJAZ67TNnNP0D/H/z2WtnzNOQ
+	 lGH72dbtMiBf4WsSnRmdKvuAcQN+Nudo/WusZEBT/FSQjcb4X1k4dSk7ST1atGLpxY
+	 TFTVTE0pT0FQBcUlj5Trk052NoZYPMYQxLFPA/Ni64MC2R3xwKNK/Fgqa9EK5oRsdn
+	 8L90aJJNwdc2A==
+Received: by mail.fintara.pl for <linux-mediatek@lists.infradead.org>; Thu, 14 Aug 2025 08:06:03 GMT
+Message-ID: <20250814084500-0.1.ba.36un7.0.kwa39nfhll@fintara.pl>
+Date: Thu, 14 Aug 2025 08:06:03 GMT
+From: "Dominik Lotka" <dominik.lotka@fintara.pl>
+To: <linux-mediatek@lists.infradead.org>
+Subject: =?UTF-8?Q?Prosz=C4=99_o_kontakt?=
+X-Mailer: mail.fintara.pl
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250814-airoha-en7581-wlan-tx-offload-v1-1-72e0a312003e@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAHOVnWgC/x3MwQqEIBAA0F+JOTeQsa7Sr0SHKcdtIDQ0KpD+f
- aXju7wCmZNwhqEpkPiULDFUqLaBZaXwYxRXDX3X686qD5KkuBJyMNoqvDYKeNwYvd8iOZzN/NW
- GHFlPUI89sZf7/cfpef7z11YzbwAAAA==
-X-Change-ID: 20250814-airoha-en7581-wlan-tx-offload-b7b657ada8fa
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-X-Mailer: b4 0.14.2
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250814_005147_579082_8B73BFAC 
-X-CRM114-Status: GOOD (  17.61  )
+X-CRM114-CacheID: sfid-20250814_011052_377857_932256B0 
+X-CRM114-Status: UNSURE (   0.31  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,210 +66,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce support to offload the traffic received on the ethernet NIC
-and forwarded to the wireless one using HW Packet Processor Engine (PPE)
-capabilities.
+Dzie=C5=84 dobry,
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.h |  11 ++++
- drivers/net/ethernet/airoha/airoha_ppe.c | 103 ++++++++++++++++++++++---------
- 2 files changed, 85 insertions(+), 29 deletions(-)
+Czy jest mo=C5=BCliwo=C5=9B=C4=87 nawi=C4=85zania wsp=C3=B3=C5=82pracy z =
+Pa=C5=84stwem?
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index a970b789cf232c316e5ea27b0146493bf91c3767..9f721e2b972f0e547978419701caf532df664910 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -252,6 +252,10 @@ enum {
- #define AIROHA_FOE_MAC_SMAC_ID		GENMASK(20, 16)
- #define AIROHA_FOE_MAC_PPPOE_ID		GENMASK(15, 0)
- 
-+#define AIROHA_FOE_MAC_WDMA_QOS		GENMASK(15, 12)
-+#define AIROHA_FOE_MAC_WDMA_BAND	BIT(11)
-+#define AIROHA_FOE_MAC_WDMA_WCID	GENMASK(10, 0)
-+
- struct airoha_foe_mac_info_common {
- 	u16 vlan1;
- 	u16 etype;
-@@ -481,6 +485,13 @@ struct airoha_flow_table_entry {
- 	unsigned long cookie;
- };
- 
-+struct airoha_wdma_info {
-+	u8 idx;
-+	u8 queue;
-+	u16 wcid;
-+	u8 bss;
-+};
-+
- /* RX queue to IRQ mapping: BIT(q) in IRQ(n) */
- #define RX_IRQ0_BANK_PIN_MASK			0x839f
- #define RX_IRQ1_BANK_PIN_MASK			0x7fe00000
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index 82163392332c92d3bf50a976ffd473ae7a31a344..2bf1c584ba7b7217549ce79df86f7a123199b5e1 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -190,6 +190,31 @@ static int airoha_ppe_flow_mangle_ipv4(const struct flow_action_entry *act,
- 	return 0;
- }
- 
-+static int airoha_ppe_get_wdma_info(struct net_device *dev, const u8 *addr,
-+				    struct airoha_wdma_info *info)
-+{
-+	struct net_device_path_stack stack;
-+	struct net_device_path *path;
-+	int err;
-+
-+	if (!dev)
-+		return -ENODEV;
-+
-+	err = dev_fill_forward_path(dev, addr, &stack);
-+	if (err)
-+		return err;
-+
-+	path = &stack.path[stack.num_paths - 1];
-+	if (path->type != DEV_PATH_MTK_WDMA)
-+		return -1;
-+
-+	info->idx = path->mtk_wdma.wdma_idx;
-+	info->bss = path->mtk_wdma.bss;
-+	info->wcid = path->mtk_wdma.wcid;
-+
-+	return 0;
-+}
-+
- static int airoha_get_dsa_port(struct net_device **dev)
- {
- #if IS_ENABLED(CONFIG_NET_DSA)
-@@ -220,9 +245,9 @@ static int airoha_ppe_foe_entry_prepare(struct airoha_eth *eth,
- 					struct airoha_flow_data *data,
- 					int l4proto)
- {
--	int dsa_port = airoha_get_dsa_port(&dev);
-+	u32 qdata = FIELD_PREP(AIROHA_FOE_SHAPER_ID, 0x7f), ports_pad, val;
-+	int wlan_etype = -EINVAL, dsa_port = airoha_get_dsa_port(&dev);
- 	struct airoha_foe_mac_info_common *l2;
--	u32 qdata, ports_pad, val;
- 	u8 smac_id = 0xf;
- 
- 	memset(hwe, 0, sizeof(*hwe));
-@@ -236,31 +261,47 @@ static int airoha_ppe_foe_entry_prepare(struct airoha_eth *eth,
- 	      AIROHA_FOE_IB1_BIND_TTL;
- 	hwe->ib1 = val;
- 
--	val = FIELD_PREP(AIROHA_FOE_IB2_PORT_AG, 0x1f) |
--	      AIROHA_FOE_IB2_PSE_QOS;
--	if (dsa_port >= 0)
--		val |= FIELD_PREP(AIROHA_FOE_IB2_NBQ, dsa_port);
--
-+	val = FIELD_PREP(AIROHA_FOE_IB2_PORT_AG, 0x1f);
- 	if (dev) {
--		struct airoha_gdm_port *port = netdev_priv(dev);
--		u8 pse_port;
--
--		if (!airoha_is_valid_gdm_port(eth, port))
--			return -EINVAL;
--
--		if (dsa_port >= 0)
--			pse_port = port->id == 4 ? FE_PSE_PORT_GDM4 : port->id;
--		else
--			pse_port = 2; /* uplink relies on GDM2 loopback */
--		val |= FIELD_PREP(AIROHA_FOE_IB2_PSE_PORT, pse_port);
--
--		/* For downlink traffic consume SRAM memory for hw forwarding
--		 * descriptors queue.
--		 */
--		if (airhoa_is_lan_gdm_port(port))
--			val |= AIROHA_FOE_IB2_FAST_PATH;
--
--		smac_id = port->id;
-+		struct airoha_wdma_info info = {};
-+
-+		if (!airoha_ppe_get_wdma_info(dev, data->eth.h_dest, &info)) {
-+			val |= FIELD_PREP(AIROHA_FOE_IB2_NBQ, info.idx) |
-+			       FIELD_PREP(AIROHA_FOE_IB2_PSE_PORT,
-+					  FE_PSE_PORT_CDM4);
-+			qdata |= FIELD_PREP(AIROHA_FOE_ACTDP, info.bss);
-+			wlan_etype = FIELD_PREP(AIROHA_FOE_MAC_WDMA_BAND,
-+						info.idx) |
-+				     FIELD_PREP(AIROHA_FOE_MAC_WDMA_WCID,
-+						info.wcid);
-+		} else {
-+			struct airoha_gdm_port *port = netdev_priv(dev);
-+			u8 pse_port;
-+
-+			if (!airoha_is_valid_gdm_port(eth, port))
-+				return -EINVAL;
-+
-+			if (dsa_port >= 0)
-+				pse_port = port->id == 4 ? FE_PSE_PORT_GDM4
-+							 : port->id;
-+			else
-+				pse_port = 2; /* uplink relies on GDM2
-+					       * loopback
-+					       */
-+
-+			val |= FIELD_PREP(AIROHA_FOE_IB2_PSE_PORT, pse_port) |
-+			       AIROHA_FOE_IB2_PSE_QOS;
-+			/* For downlink traffic consume SRAM memory for hw
-+			 * forwarding descriptors queue.
-+			 */
-+			if (airhoa_is_lan_gdm_port(port))
-+				val |= AIROHA_FOE_IB2_FAST_PATH;
-+			if (dsa_port >= 0)
-+				val |= FIELD_PREP(AIROHA_FOE_IB2_NBQ,
-+						  dsa_port);
-+
-+			smac_id = port->id;
-+		}
- 	}
- 
- 	if (is_multicast_ether_addr(data->eth.h_dest))
-@@ -272,7 +313,6 @@ static int airoha_ppe_foe_entry_prepare(struct airoha_eth *eth,
- 	if (type == PPE_PKT_TYPE_IPV6_ROUTE_3T)
- 		hwe->ipv6.ports = ports_pad;
- 
--	qdata = FIELD_PREP(AIROHA_FOE_SHAPER_ID, 0x7f);
- 	if (type == PPE_PKT_TYPE_BRIDGE) {
- 		airoha_ppe_foe_set_bridge_addrs(&hwe->bridge, &data->eth);
- 		hwe->bridge.data = qdata;
-@@ -313,7 +353,9 @@ static int airoha_ppe_foe_entry_prepare(struct airoha_eth *eth,
- 			l2->vlan2 = data->vlan.hdr[1].id;
- 	}
- 
--	if (dsa_port >= 0) {
-+	if (wlan_etype >= 0) {
-+		l2->etype = wlan_etype;
-+	} else if (dsa_port >= 0) {
- 		l2->etype = BIT(dsa_port);
- 		l2->etype |= !data->vlan.num ? BIT(15) : 0;
- 	} else if (data->pppoe.num) {
-@@ -490,6 +532,10 @@ static void airoha_ppe_foe_flow_stats_update(struct airoha_ppe *ppe,
- 		meter = &hwe->ipv4.l2.meter;
- 	}
- 
-+	pse_port = FIELD_GET(AIROHA_FOE_IB2_PSE_PORT, *ib2);
-+	if (pse_port == FE_PSE_PORT_CDM4)
-+		return;
-+
- 	airoha_ppe_foe_flow_stat_entry_reset(ppe, npu, index);
- 
- 	val = FIELD_GET(AIROHA_FOE_CHANNEL | AIROHA_FOE_QID, *data);
-@@ -500,7 +546,6 @@ static void airoha_ppe_foe_flow_stats_update(struct airoha_ppe *ppe,
- 		      AIROHA_FOE_IB2_PSE_QOS | AIROHA_FOE_IB2_FAST_PATH);
- 	*meter |= FIELD_PREP(AIROHA_FOE_TUNNEL_MTU, val);
- 
--	pse_port = FIELD_GET(AIROHA_FOE_IB2_PSE_PORT, *ib2);
- 	nbq = pse_port == 1 ? 6 : 5;
- 	*ib2 &= ~(AIROHA_FOE_IB2_NBQ | AIROHA_FOE_IB2_PSE_PORT |
- 		  AIROHA_FOE_IB2_PSE_QOS);
+Z ch=C4=99ci=C4=85 porozmawiam z osob=C4=85 zajmuj=C4=85c=C4=85 si=C4=99 =
+dzia=C5=82aniami zwi=C4=85zanymi ze sprzeda=C5=BC=C4=85.
 
----
-base-commit: 3b5ca25ecfa85098c7015251a0e7c78a8ff392e5
-change-id: 20250814-airoha-en7581-wlan-tx-offload-b7b657ada8fa
+Pomagamy skutecznie pozyskiwa=C4=87 nowych klient=C3=B3w.
 
-Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+Zapraszam do kontaktu.
 
+
+Pozdrawiam
+Dominik Lotka
 
