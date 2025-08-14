@@ -4,92 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D156CA0EE4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Aug 2025 15:23:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44B3BCA0EE4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Aug 2025 15:28:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3Rxe8fclWU9eKQhUr4r0+qJ5LJ20LHWcKq4r0Ksq24c=; b=VHT8NGGKQQsh/hieUd4pf7wHCN
-	FENl74icuPsAp3NcCoxI6zhnZSLpYXlxJDdUd5/etF1csYBENQWqk6MBgAnPtVGTi/ZSbEHJnQak2
-	4ST4C0ydsYyXgr/WGtsQpaOGsYT9ehDLOp6LpFwMAR+bhhpmi2Pt3kLudnbI5JR7BLQs8fZtcuqP5
-	dLA+YwUV4WcBdstcBW87VCMKONuJSksdisRBq0EknlNg4IS1SSyAUwQqZlAelvDiAw+YWkglmw7MO
-	PWfr2X98z1rOy6luBP3GAKRZnZ/7cIOHecCK//qxs0YaPuyCsFLRWfYBv1Z9MnAH710ySjjQrxYqP
-	NXsOz4+Q==;
+	bh=v5M0Qos1gNG9BhySlvlZJoHLGeHj6L3mYrNuRgeHmNM=; b=boShdAFTO/uhyDOkmEebKB42zo
+	UnjLwLCdtc1Z6zDVbrHk4kpOmVTmGZNSfZkE/yTU0AtIu1lQCTl1dz/gGrrvZI8PpNvuiG7Pyq4Bv
+	x7t4zKWEr2EP2UkJMESpGnpsnNsMBVEQ05A9p2ko3VSYwUODeLKABcjXYAj8PnzQYw0cztrF/KX+9
+	97x0rvuZzMFLE+Qd0H0uL10mLRdvCJdkY9/ZMEh9jY1xaq9SsGsd+rzHlAFirVtlGUTLxu+eNb4+l
+	P53vi54jS9qTMmpPVqXpgQ1m7e95c/o/kIInqpYyzNzjHaTrjoP9DFmVHFjdwlvhcnYVgXDJVyzeo
+	ciVLhFgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umZnF-0000000HQET-3I7Y;
-	Thu, 14 Aug 2025 15:23:05 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1umZsb-0000000HRE4-1Tqp;
+	Thu, 14 Aug 2025 15:28:37 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umYfx-0000000HBRC-2SPb;
-	Thu, 14 Aug 2025 14:11:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=3Rxe8fclWU9eKQhUr4r0+qJ5LJ20LHWcKq4r0Ksq24c=; b=FiDj4GAPVYaaON4tetyT9V0dBM
-	nx6w7bPa8U5pgLoFLkSGYqDZtAt0m6Q4RUyuwga1cLAbwK8I1WlaoUyaALFVH4xVAJXxz618iLCPQ
-	5Cedv8yqtvBBBzlUoH0OpCCzJZNqKI8RObJZiPfkAvvqGLDmE5ot079gqhPPaO6qQfNcBSlS62uW6
-	CItJkkiO3//2jThlGYDeD9i7LK3bJFO6tEj9bIUMzKk9NEjx+tUvGQdJjSjHLcdesyz2SRcghA9n2
-	0jiWy18T8uVyUfBdIum6Fu8Vzxg47iRuioqZi8muqVg3ggkX5NHqB09Nf7JTrALgyvNccVBWUEJIy
-	g9DDU5fQ==;
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umYft-0000000GQxl-2idf;
-	Thu, 14 Aug 2025 14:11:28 +0000
+	id 1umZ2H-0000000HHYm-2ROD
+	for linux-mediatek@lists.infradead.org;
+	Thu, 14 Aug 2025 14:34:34 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 4639FA553AA;
-	Thu, 14 Aug 2025 14:11:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DEE6CC4CEF7;
-	Thu, 14 Aug 2025 14:11:20 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 1409D44F49
+	for <linux-mediatek@lists.infradead.org>; Thu, 14 Aug 2025 14:34:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E6CAEC4CEF7
+	for <linux-mediatek@lists.infradead.org>; Thu, 14 Aug 2025 14:34:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755180680;
-	bh=EtreIo4RmDvEX0MIutMMZJFN4Qc14MzIRQ/PqGEOA/E=;
+	s=k20201202; t=1755182072;
+	bh=v5M0Qos1gNG9BhySlvlZJoHLGeHj6L3mYrNuRgeHmNM=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=FQP9lgRbJpaU/omrvPEuTR4GtID0tGpr5hPgbP/9Ucp7gJA9Aro/wW2YHWZqgu5Vc
-	 wsD+2GRbUwtIAN6PV8J4qDdcfgLyvLZnhsN66UKNdehPNe6wGBr9AlHFwIrxkHhndR
-	 BnXc28vFwXJR9AfpRnv++NudL556N7g7Wx66/Ro026kXM+fwGwifhAtDo/j+Vl64m2
-	 emnVjOKqdGlQP8/EXg6auJrR1duahyqT1PJXKhGqrli1naUed1nTQ3uYz+7ztaFhPN
-	 gk4F5kb5Vx8w/UlHP8joFWuRO7W3rSebNLZYmCda1MGSLvjsEw28Ic5UpFUu/iYcQl
-	 XVNYH6CmaNOhw==
-Received: by mail-pl1-f172.google.com with SMTP id d9443c01a7336-244581caca6so7092875ad.2;
-        Thu, 14 Aug 2025 07:11:20 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCUOdbuP2rPvEk11S9lbjLPR7Ked41G35np+Y6Pe4vU83Au8oPbN3g5yZ7TZMKRj7w1yQNqGJPSpNOPiZAg6DNXg@lists.infradead.org, AJvYcCV8QafQD58CD+IvpbCEoUFKYSOtUkQsJH9smQ+OTc9IJFL4g3m/g3yg0h0RNfejVcxK5rLMTWmq6GL4UdXxB4E=@lists.infradead.org
-X-Gm-Message-State: AOJu0YxQEEivpFGeaMsNTUivbRNsb97cRjujvaHP3wD0Tj6dcPUc0h+o
-	rWzVckim697QE3LlyicptltVHeLVvGT49X6W0NAO2I9LICfiUDPqcZZr54Esj1ILGx6qnsFIdFz
-	bBBhTDQA5VhVvm5v5PyFSE83AZ41ZnQ==
-X-Google-Smtp-Source: AGHT+IEv9bl0mTCA5QeP2B9Sxyl/+418cvcY/Da5c3dtb2moz6zUZWAO3T1U7DLbuoeYmCLdV4cIQSoAiWVpGPO+VXs=
-X-Received: by 2002:a17:902:d2c1:b0:240:a430:91d with SMTP id
- d9443c01a7336-244584ed485mr48360715ad.10.1755180680384; Thu, 14 Aug 2025
- 07:11:20 -0700 (PDT)
+	b=lQuL1dcfA9Mh6kS+gpg/fIYiacslravvCVw6R20RG0t2oFKNFR8Nl622gdyMn6wmJ
+	 knWfr+Ohdof410k4MScHUh2oM+RCxxvJFYcCG9cV4q1zE7pdO4w++3gOEcvBytXuWF
+	 yuIF+9ELzArxsSVTyDi4wgrb37Bn+eq5SMH0fRZLDKLlFKKyEmqSwSgruCptRptaZm
+	 KF2v42p6XWvW8BUyH1HrqzuVkmtphWs5FzzX7GbB0usgPipI0PGnwR62+U66hMRNDW
+	 ExQQ4KhIZON93Vv2DqFAfTU8grgfHdZIPiolbgN8AfxyIPsYXyhR66BnepgDrpzeSH
+	 /hDeXieIhlwwg==
+Received: by mail-pj1-f48.google.com with SMTP id 98e67ed59e1d1-32326789e06so941129a91.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 14 Aug 2025 07:34:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCW5/CXd6x+twHy1lEyLixHHLS5ZPBDxGSIlITxk+DgaucKkL9OhsLkgmxcObrFSHAK74HCjwnhH0R/d+85lEg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwZkJ3JFFpK53mFQSeEEyO9+Qjn4c3/nLpigcmva8Ckynz1EPSw
+	UQwRLkcvBX6wTJ8XwjpPdOLcW9mKLeLoxzGaCtHFvWtzzszxYTKsRIIhquTh8BuVtSM+Nkq4Y4j
+	75byqZlqo51v6MGD2Aqu2r6FySt/5eg==
+X-Google-Smtp-Source: AGHT+IFZBGHiyx4R8I0ZtPt03HyzJ/h+SHoNTrWb26RWZtlcu/LuBo3basMRoZchAXRPaCN5XUhmJgnvc08y4GlhQHw=
+X-Received: by 2002:a17:903:1ae4:b0:23d:f986:6472 with SMTP id
+ d9443c01a7336-24458a65075mr40000145ad.25.1755182072478; Thu, 14 Aug 2025
+ 07:34:32 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250701-mediatek-drm-fix-dsi-panel-init-v1-1-7af4adb9fdeb@collabora.com>
-In-Reply-To: <20250701-mediatek-drm-fix-dsi-panel-init-v1-1-7af4adb9fdeb@collabora.com>
+References: <c8a64686-f1a2-44f1-9d13-fd5b4f923e0f@molgen.mpg.de>
+In-Reply-To: <c8a64686-f1a2-44f1-9d13-fd5b4f923e0f@molgen.mpg.de>
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Thu, 14 Aug 2025 22:12:28 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_9u2R3k5BORM2pwJnE9XOVfFBE_5gDfs8-PD9fBgTtmgQ@mail.gmail.com>
-X-Gm-Features: Ac12FXz7hoERrgUkkr3SijSA29p_W0qoePN2uF4iKzdoy_Nb5WblBq2K-Bi3CRU
-Message-ID: <CAAOTY_9u2R3k5BORM2pwJnE9XOVfFBE_5gDfs8-PD9fBgTtmgQ@mail.gmail.com>
-Subject: Re: [PATCH] drm/mediatek: dsi: Fix DSI host and panel bridge
- pre-enable order
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Date: Thu, 14 Aug 2025 22:35:41 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_8vLqU30L3+ijYJPLrioRsUwVwJAeumtVYfRJ9e5tjp4A@mail.gmail.com>
+X-Gm-Features: Ac12FXy0NDb8BGMAM7k-PNcb_9DgKIcM0T0DGazslGHWEE6YexmPG9CoPZcHXNE
+Message-ID: <CAAOTY_8vLqU30L3+ijYJPLrioRsUwVwJAeumtVYfRJ9e5tjp4A@mail.gmail.com>
+Subject: Re: MT8183: Only maximum resolution 1280x720?
+To: Paul Menzel <pmenzel@molgen.mpg.de>
 Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
 	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Aradhya Bhatia <a-bhatia1@ti.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, Dmitry Baryshkov <lumag@kernel.org>, 
-	Maxime Ripard <mripard@kernel.org>, Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
-	kernel@collabora.com, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250814_151125_951247_7B47187D 
-X-CRM114-Status: GOOD (  22.02  )
+X-CRM114-CacheID: sfid-20250814_073433_666710_B24F9B4E 
+X-CRM114-Status: GOOD (  17.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,90 +86,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Louis:
-
-Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com> =E6=96=BC 2025=E5=B9=
-=B47=E6=9C=881=E6=97=A5 =E9=80=B1=E4=BA=8C =E4=B8=8B=E5=8D=883:31=E5=AF=AB=
-=E9=81=93=EF=BC=9A
+Paul Menzel <pmenzel@molgen.mpg.de> =E6=96=BC 2025=E5=B9=B45=E6=9C=8825=E6=
+=97=A5 =E9=80=B1=E6=97=A5 =E4=B8=8B=E5=8D=882:01=E5=AF=AB=E9=81=93=EF=BC=9A
 >
-> Since commit c9b1150a68d9 ("drm/atomic-helper: Re-order bridge chain
-> pre-enable and post-disable"), the bridge pre_enable callbacks are now
-> called before crtc enable, and the bridge post_disable callbacks after
-> the crtc disable.
-> In the mediatek-drm driver, this change leads to transfer errors on
-> mtk_dsi_host_transfer callback processing during the panel bridge
-> pre-enable sequence because the DSI host bridge pre_enable and CRTC
-> enable sequences, that are enabling the required clocks and PHY using
-> mtk_dsi_poweron function, are called after.
+> Dear Linux folks,
 >
-> So, in order to fix this call order issue, request the DSI host bridge
-> be pre-enabled before panel bridge by setting pre_enable_prev_first
-> flag on DSI device bridge in the mtk_dsi_host_attach function.
+>
+> On the older MT8183 device Lenovo IdeaPad Duet Chromebook, running
+> ChromeOS with their Linux 5.10.x, connecting a 1920x1080 Dell monitor to
+> a USB-C adapter using HDMI, only the resolution of 1280x720 is
+> configured, although the adapter also support 1920x1080. It happens with
+> all adapters, for example, LMP USB-C mini Dock [1].
+>
+> I reported it to the Chromium OS issue tracker [1], and the last comment =
+is:
+>
+> > It seems the display pipeline for the internal display (DSI) has
+> > higher clock rate. Also, the resolution support depends on the
+> > refresh rate as well, so the claimed 2400x1080 might only work on
+> > lower refresh rate.
+> >
+> > For the external display, the display modes are mostly rejected by
+> > the pre-defined max_clock_khz in mtk_dpi.c:
+> > https://elixir.bootlin.com/linux/v6.11.4/source/drivers/gpu/drm/mediate=
+k/mtk_dpi.c#L940
+>
+> Can you confirm this? The font rendering seems not so good in the lower
+> resolution, and strangely, playing movies these seem to be rendered in
+> higher resolution (or the monitor or hardware does a good job in
+> up-scaling).
 
-Applied to mediatek-drm-fixes [1], thanks.
+8183 max_clock_khz is defined in patch [3] by Rex, but this is a
+prepare patch for mt8192 [4].
+I'm not sure that Rex has test it for mt8183.
+Maybe you could try to enlarge 8183 max_clock_khz and see.
 
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
-log/?h=3Dmediatek-drm-fixes
+[3] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/comm=
+it/drivers/gpu/drm/mediatek/mtk_dpi.c?h=3Dv6.17-rc1&id=3D44b07120291c4b7a67=
+22ccb7149f6b9d938cf5a2
+[4] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/comm=
+it/drivers/gpu/drm/mediatek/mtk_dpi.c?h=3Dv6.17-rc1&id=3D38eaef2dca4ec8dfb9=
+ea84d9dde0f76da5c8caaa
 
 Regards,
-Chun-Kuang.
+CK
 
 >
-> Fixes: c9b1150a68d9 ("drm/atomic-helper: Re-order bridge chain pre-enable=
- and post-disable")
-> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-> ---
-> This patch fixes an issue that can be observed on boards such as
-> MediatekGenio 1200-EVK or 350-EVK with a kernel based on linux-next
-> (tag: next-20250635) since commit c9b1150a68d9 ("drm/atomic-helper:
-> Re-order bridge chain pre-enable and post-disable").
-> In boot logs, there are multiples errors such as IRQ timeouts and
-> panel init errors, leading the DSI panel not being enabled:
 >
-> Example on Genio 1200-EVK:
-> ```
-> [drm] Wait DSI IRQ(0x00000002) Timeout
-> panel-himax-hx8279 1c008000.dsi.0: sending generic data b0 05 failed:
->   -62
-> [drm] Wait DSI IRQ(0x00000008) Timeout
-> [drm:mtk_dsi_host_transfer [mediatek_drm]] *ERROR* failed to switch cmd
->  mode
-> panel-himax-hx8279 1c008000.dsi.0: sending DCS SET_DISPLAY_ON failed:
->   -62
-> ```
-> ---
->  drivers/gpu/drm/mediatek/mtk_dsi.c | 6 ++++++
->  1 file changed, 6 insertions(+)
+> Kind regards,
 >
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediate=
-k/mtk_dsi.c
-> index d7726091819c4762698b41060b3d4d8d27940238..0e2bcd5f67b767d92f2697a5b=
-8183f67ee178a38 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> @@ -1002,6 +1002,12 @@ static int mtk_dsi_host_attach(struct mipi_dsi_hos=
-t *host,
->                         return PTR_ERR(dsi->next_bridge);
->         }
+> Paul
 >
-> +       /*
-> +        * set flag to request the DSI host bridge be pre-enabled before =
-device bridge
-> +        * in the chain, so the DSI host is ready when the device bridge =
-is pre-enabled
-> +        */
-> +       dsi->next_bridge->pre_enable_prev_first =3D true;
-> +
->         drm_bridge_add(&dsi->bridge);
 >
->         ret =3D component_add(host->dev, &mtk_dsi_component_ops);
->
-> ---
-> base-commit: c6a68d8f7b81a6ce8962885408cc2d0c1f8b9470
-> change-id: 20250630-mediatek-drm-fix-dsi-panel-init-1a4b534c40a6
->
-> Best regards,
-> --
-> Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
->
+> [1]: https://lmp-adapter.com/product/lmp-usb-c-mini-dock/
+> [2]: https://issuetracker.google.com/issues/295666708
 
