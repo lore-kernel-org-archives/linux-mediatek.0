@@ -4,110 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97C08CA0ED1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Aug 2025 04:38:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B20B7CA0ED1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Aug 2025 05:12:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=frICAbzQ9s+Ewx5WvdTnyGriJhg9Kftola2qKf+tuEk=; b=MU/pR/4cljW/cc7OZwWkclVz8o
-	abIZ5FUXJGhvN8ZnAhVOkFf29XbTgKDLS/DVdXy7mzfAogQtXkMdmyas4EKSh6SA8xlpVzcLDpcI5
-	3+9EwVlWN6U1ABS8eGwEHmWNCpMuWu3M/RituQyqnaVeEkjjHbWw9ovK2QccuHxsMc/SjTjrwiA1h
-	JaqbE6tP8Z8KaZRbBItr2KzAbePkTzgHW4G5ooR6DE2pwH8xvxpXBmcVXoFqLJ31sH8M481I+KQHx
-	HUsdhL3oICOTrfQt2KsMfnv8/hPaWqJlltlltn4V/kv8i+wCdY9HCXr2NFeLPBvmJUtQM9Eo7H4lB
-	6Jl0jb2g==;
+	bh=FcL7hPbmGDM4HASvdhu3BAiCTa7aoi6Rpo2JWPsFZp8=; b=VsRjOZC1KaKJAP1/2+PT5Jk9IN
+	EWA7qhiO4+Q5FUyucBHXeU6zv3xSIEL1of7c/ttAj4/13HU04m+Vp0vEqBXA5P+B2UqVjr/0FUMTI
+	cL4a7GKGK7o88HKsHn4z1Oc11hXywMHdhoQBzNfDYzL8BB5XnNOE7qT26NaEOaZBjAkGSqdtHhKny
+	tJsw+BGBuEgQWiIzju6JK6wlE/RcNidlWFYV4rROysvjZJWS53M7suaoxRyVXnX8wMNsrBtCXCiBQ
+	EALgRO869T/Hwe0XD/jY1w3sJ741pJcGB8CaDHEvej/G5ycRdQng4z8ZOCZorLr3t4R+hxjKWpz+q
+	KHVRIfYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ummCt-00000001QiK-0DCQ;
-	Fri, 15 Aug 2025 04:38:23 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1ummjW-00000001Ufe-0Oja;
+	Fri, 15 Aug 2025 05:12:06 +0000
+Received: from mgamail.intel.com ([198.175.65.13])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ummAF-00000001Qb7-3YiO;
-	Fri, 15 Aug 2025 04:35:39 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id D4B2E6115D;
-	Fri, 15 Aug 2025 04:35:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E209EC4CEEB;
-	Fri, 15 Aug 2025 04:35:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755232538;
-	bh=9eQLcCfJKHZzqpoRSejOUwJu3t+rEcFE1zLLnuifpPY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Mj9ZpvrV34fzsb9HIQeQwFGHisFMXcjpnkweu6v8htuqLPbblqeFlxwJQ9Y/2WUiM
-	 XAktlw/VfcHLxuPgXYuydw3E91tnEOP1q6Uuy42fKbtCrd2VyrW6gQMROutygvrW7/
-	 DV5KnE3zKzb6k/HxM+qZPD9Q5krtHWF9XFpVffNn2wWQarY0UxraRT4MbOnl+qcikQ
-	 nfMzk9U4U9cjEx/tbnj4znAPKz//gMhBn9wCDRzRCQs0G1tHW5TIW9yFKPdvC8IqJU
-	 1M0jhhRsK5fsuQp9vjAPJB1hRbT7k2fpN42MqzXMbUnD3P1A0D2zvTrB/gFSJCQ6jr
-	 GXGnCIVX6ZpZg==
-Message-ID: <bb52ebe6-a3b0-428e-8c97-d7366dedae92@kernel.org>
-Date: Fri, 15 Aug 2025 06:35:32 +0200
+	id 1ummjU-00000001Uez-1mHU;
+	Fri, 15 Aug 2025 05:12:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1755234725; x=1786770725;
+  h=message-id:date:mime-version:subject:to:cc:references:
+   from:in-reply-to:content-transfer-encoding;
+  bh=piFJDMoWgMoAcz5ZrOxOxHNp2cNxC29xMo9DwzCJmRM=;
+  b=DJbzy0qxP8x6PiAC5TuolIEGqMs2nGcaFOMJoNXE8BHmPrlLdXCsvP7i
+   hEkRpMalLMUsr53MlS7lXrQH116+1N4FM+Geb62k6hBCU0Hk1RKs2XX5g
+   JbPetjNyrxSi5uE923IXVbFvuCKpvwa/mmOZl4V85WBFMXTs7SItK1+wJ
+   +ZjeH9uTkj3fZOlS0kqWNRrlizif7/a1kAgfsQJaHodleuSIj9eLJIzfX
+   3E9O+ZGCu6esrCMVjzHhU5aUKOk3QnXUK6Wybe09VqzXu6EOHVsFF8xuz
+   el8NdSO7ukckFv2TQH5HbSepAQAuAL7gMK7a9MH1lm++XOg3U+H+gP6BC
+   g==;
+X-CSE-ConnectionGUID: U42NNKyZTWuCV8CsLkdIOQ==
+X-CSE-MsgGUID: YsWACPAwQTSXlUjGy6KdlQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11522"; a="68646435"
+X-IronPort-AV: E=Sophos;i="6.17,290,1747724400"; 
+   d="scan'208";a="68646435"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Aug 2025 22:12:03 -0700
+X-CSE-ConnectionGUID: z3XLWN8JSkSewaRE53xizA==
+X-CSE-MsgGUID: k+jCi0MrTzK5WA2i0FqSdQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.17,290,1747724400"; 
+   d="scan'208";a="197786291"
+Received: from allen-sbox.sh.intel.com (HELO [10.239.159.30]) ([10.239.159.30])
+  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Aug 2025 22:11:57 -0700
+Message-ID: <eb248b73-7fb6-47cd-9e10-5c54ca2391b2@linux.intel.com>
+Date: Fri, 15 Aug 2025 13:09:51 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 1/1] sched/deadline: Fix RT task potential starvation
- when expiry time passed
-To: Geert Uytterhoeven <geert@linux-m68k.org>,
- Kuyo Chang <kuyo.chang@mediatek.com>
-Cc: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>,
- Juri Lelli <juri.lelli@redhat.com>,
- Vincent Guittot <vincent.guittot@linaro.org>,
- Dietmar Eggemann <dietmar.eggemann@arm.com>,
- Steven Rostedt <rostedt@goodmis.org>, Ben Segall <bsegall@google.com>,
- Mel Gorman <mgorman@suse.de>, Valentin Schneider <vschneid@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- jstultz <jstultz@google.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20250615131129.954975-1-kuyo.chang@mediatek.com>
- <CAMuHMdWZHwr_nmMbVREKC9nQCYigT_gvKH3M9v+oyYqk6FLONw@mail.gmail.com>
+Subject: Re: [PATCH v3 1/5] iommu: Lock group->mutex in iommu_deferred_attach
+To: Nicolin Chen <nicolinc@nvidia.com>, robin.murphy@arm.com,
+ joro@8bytes.org, bhelgaas@google.com, jgg@nvidia.com
+Cc: will@kernel.org, robin.clark@oss.qualcomm.com, yong.wu@mediatek.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ thierry.reding@gmail.com, vdumpa@nvidia.com, jonathanh@nvidia.com,
+ rafael@kernel.org, lenb@kernel.org, kevin.tian@intel.com,
+ yi.l.liu@intel.com, linux-arm-kernel@lists.infradead.org,
+ iommu@lists.linux.dev, linux-kernel@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-tegra@vger.kernel.org, linux-acpi@vger.kernel.org,
+ linux-pci@vger.kernel.org, patches@lists.linux.dev, pjaroszynski@nvidia.com,
+ vsethi@nvidia.com, helgaas@kernel.org, etzhao1900@gmail.com
+References: <cover.1754952762.git.nicolinc@nvidia.com>
+ <44783ca52e17a9ca0ce7acfe8daae3edc3d7b45b.1754952762.git.nicolinc@nvidia.com>
 Content-Language: en-US
-From: Jiri Slaby <jirislaby@kernel.org>
-Autocrypt: addr=jirislaby@kernel.org; keydata=
- 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
-In-Reply-To: <CAMuHMdWZHwr_nmMbVREKC9nQCYigT_gvKH3M9v+oyYqk6FLONw@mail.gmail.com>
+From: Baolu Lu <baolu.lu@linux.intel.com>
+In-Reply-To: <44783ca52e17a9ca0ce7acfe8daae3edc3d7b45b.1754952762.git.nicolinc@nvidia.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250814_221204_509239_1BFD9D4F 
+X-CRM114-Status: GOOD (  17.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,28 +94,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 30. 07. 25, 12:06, Geert Uytterhoeven wrote:
->> [Proposed Solution]:
->> ------------------
->> Instead of immediately re-enqueuing the DL entity on timer registration
->> failure, this change ensures the DL entity is properly replenished and
->> the timer is restarted, preventing RT potential starvation.
->>
->> Signed-off-by: kuyo chang <kuyo.chang@mediatek.com>
+On 8/12/25 06:59, Nicolin Chen wrote:
+> The iommu_deferred_attach() is a runtime asynchronous function called by
+> iommu-dma function, which could race against other attach functions if it
+> accesses something in the dev->iommu_group.
 > 
-> Thanks, this fixes the issue I was seeing!
+> So, grab the mutex to guard __iommu_attach_device() like other callers.
 > 
-> Closes: https://lore.kernel.org/CAMuHMdXn4z1pioTtBGMfQM0jsLviqS2jwysaWXpoLxWYoGa82w@mail.gmail.com
-> Tested-by: Geert Uytterhoeven <geert@linux-m68k.org>
+> Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
+> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+> ---
+>   drivers/iommu/iommu.c | 13 ++++++++++---
+>   1 file changed, 10 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
+> index 060ebe330ee16..1e0116bce0762 100644
+> --- a/drivers/iommu/iommu.c
+> +++ b/drivers/iommu/iommu.c
+> @@ -2144,10 +2144,17 @@ EXPORT_SYMBOL_GPL(iommu_attach_device);
+>   
+>   int iommu_deferred_attach(struct device *dev, struct iommu_domain *domain)
+>   {
+> -	if (dev->iommu && dev->iommu->attach_deferred)
+> -		return __iommu_attach_device(domain, dev);
+> +	/*
+> +	 * This is called on the dma mapping fast path so avoid locking. This is
+> +	 * racy, but we have an expectation that the driver will setup its DMAs
 
-As well as:
-Closes: 
-https://lore.kernel.org/all/58c46200-95b0-4cd8-bb5e-44f963a66875@kernel.org/
-Tested-by: Jiri Slaby <jirislaby@kernel.org>
+Why not making it like this,
 
-thanks,
--- 
-js
-suse labs
+int iommu_deferred_attach(struct device *dev, struct iommu_domain *domain)
+{
+         /* Caller must be a probed driver on dev */
+         if (!dev->iommu_group)
+                 return 0;
 
+         guard(mutex)(&dev->iommu_group->mutex);
+         if (!dev->iommu->attach_deferred)
+                 return 0;
+
+         return __iommu_attach_device(domain, dev);
+}
+
+?
+
+> +	 * inside probe while being single threaded to avoid racing.
+> +	 */
+> +	if (!dev->iommu || !dev->iommu->attach_deferred)
+> +		return 0;
+>   
+> -	return 0;
+> +	guard(mutex)(&dev->iommu_group->mutex);
+> +
+> +	return __iommu_attach_device(domain, dev);
+>   }
+>   
+>   void iommu_detach_device(struct iommu_domain *domain, struct device *dev)
+
+Thanks,
+baolu
 
