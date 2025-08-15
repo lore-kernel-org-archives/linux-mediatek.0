@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA0C1CA0ED1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Aug 2025 09:52:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37F3CCA0ED1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Aug 2025 09:58:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tQBsvhrt8U4jRDvYim4ISpMoYGz+FkkDdT4pQKZQR+Q=; b=iOuT3nCMpCyTqC1IiyecXNucpW
-	NqB1iolZjZ93QNxz+wjoHRwrjORjoHevhaha0igt2/2sbeikqrqXnBuk29vH2R+C2rXKPF4qF+PHi
-	ai4KxueWizvhO62Cggj6+6fXdWEMKrjwAu98mVDkjyF1GIBWQbKsvCAi8zIVbKhBq74g61U6Sl/y7
-	5QUflwT3REGlOf5N3GMYjW+wfDkoAoDYivj3YsFtFVCKShOU1XZBj+VFnwSMuUdAwwiGNZlzkS7qN
-	+gNcdPx2CTur2m0V81P2KgdCtN6mpqGvzI08COUC7svhgkVDWpF2h1Yy4EgQS8DNS1OYSDtqxKP7u
-	oPFLp0yg==;
+	bh=FUjURj/ae+gmzvgq67If+VwE06yKrdAtWmry18dhRG8=; b=I/l4A+n1BfBRLs87IjMj8WP1IP
+	r32g7KfVC2co0SuuvWnQVZC1Zr8BOGTQkNNmJkYFVB3zB6QoZF0DEuMDxDGe67IFEHoD108W0fUpX
+	EXrATlN3jyaVbJ9YzBxwWe5KqNusAgljopurS+SUNr39MccgPhLi1L9vIrVGfsLZNoS2nihx6gLXK
+	i2BaXix9ALSuwR6NibxFjZ61FAPoImD/O4pMlVyfa0b1cRGla2F6pKNk80OhVXYLVWfL7O7BzGwuQ
+	KCPmR3EIn6CC8vlylcWXylS8EMq8/+AEIknxM1Mvqi4o8v9IYIxOKNJvOcSG+8gENPw6kg4NVtIjc
+	RBAYvYeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umr7F-000000027R2-1gQO;
-	Fri, 15 Aug 2025 09:52:53 +0000
+	id 1umrCR-00000002804-0gQq;
+	Fri, 15 Aug 2025 09:58:15 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umqBO-00000001v54-4BD0;
-	Fri, 15 Aug 2025 08:53:08 +0000
-X-UUID: 411d176479b511f09f706fa2197c6ceb-20250815
+	id 1umqBP-00000001v5h-4BFI;
+	Fri, 15 Aug 2025 08:53:09 +0000
+X-UUID: 40ab7e1a79b511f09f706fa2197c6ceb-20250815
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=tQBsvhrt8U4jRDvYim4ISpMoYGz+FkkDdT4pQKZQR+Q=;
-	b=mwR3SlyUWLa9frrB5G5GRD0VrfB4rLH3Hi0lcN1UDUA1g+LfjUpwWU6pKk2/HJ3CHh7bUATKBQz3fB2s8oXY4TwqZlc+ffc2QIiz3qRaHcZbFfZMmkKeXwdMQlxb5sk284uU4w7Vmk0Rg6ZG7sv2fBhrDoMdaDES0gk0K+uLBUk=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=FUjURj/ae+gmzvgq67If+VwE06yKrdAtWmry18dhRG8=;
+	b=VAwDY8v9FMsfe5rGx1NYrmwKNAd/dI/j7xC/TmSeNrTaLHgsa/q7eOag6NWwFToNoCUhIoCUZDq0MDJl4rqER92d10JAPCIb4XF0c0fgCaShao/ahun4C3fZQi9uHDdfsVnavEhzJRi5W3gapF8hUu+MqEqhYIQFRB1WC8mDfKc=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.3,REQID:e575921b-f286-4423-b1c1-af39808d7631,IP:0,UR
+X-CID-O-INFO: VERSION:1.3.3,REQID:e7108727-b05d-4387-9b61-317de0ca77de,IP:0,UR
 	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:-5
-X-CID-META: VersionHash:f1326cf,CLOUDID:a384416d-c2f4-47a6-876f-59a53e9ecc6e,B
+X-CID-META: VersionHash:f1326cf,CLOUDID:a184416d-c2f4-47a6-876f-59a53e9ecc6e,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:-5,Content:0|15|50,EDM:
 	-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,
 	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -42,18 +42,18 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 411d176479b511f09f706fa2197c6ceb-20250815
+X-UUID: 40ab7e1a79b511f09f706fa2197c6ceb-20250815
 Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 771531004; Fri, 15 Aug 2025 01:53:03 -0700
+	with ESMTP id 1187044671; Fri, 15 Aug 2025 01:53:02 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Fri, 15 Aug 2025 16:53:00 +0800
+ 15.2.1258.39; Fri, 15 Aug 2025 16:52:59 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Fri, 15 Aug 2025 16:53:00 +0800
+ 15.2.1258.39 via Frontend Transport; Fri, 15 Aug 2025 16:52:59 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
 	<nfraprado@collabora.com>, Sebastian Fricke <sebastian.fricke@collabora.com>,
@@ -68,9 +68,9 @@ CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v2 14/14] media: mediatek: decoder: support av1 extend vsi
-Date: Fri, 15 Aug 2025 16:52:27 +0800
-Message-ID: <20250815085232.30240-15-yunfei.dong@mediatek.com>
+Subject: [PATCH v2 13/14] media: mediatek: decoder: fill av1 buffer size with picinfo
+Date: Fri, 15 Aug 2025 16:52:26 +0800
+Message-ID: <20250815085232.30240-14-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20250815085232.30240-1-yunfei.dong@mediatek.com>
 References: <20250815085232.30240-1-yunfei.dong@mediatek.com>
@@ -79,8 +79,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250815_015307_044588_87710733 
-X-CRM114-Status: GOOD (  14.63  )
+X-CRM114-CacheID: sfid-20250815_015308_038365_74D9E820 
+X-CRM114-Status: GOOD (  10.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,145 +95,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The driver can't access tile buffer address for extend architecture,
-set tile group information in vcp and share it with kernel.
+The buffer size of y and c plane has been calculated in vcp/scp,
+can fill each frame buffer size with picinfo directly.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- .../vcodec/decoder/vdec/vdec_av1_req_lat_if.c | 46 ++++++++++++++++---
- 1 file changed, 39 insertions(+), 7 deletions(-)
+ .../vcodec/decoder/vdec/vdec_av1_req_lat_if.c      | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c
-index 6070485e26c4..43541faeea87 100644
+index 2b2173062cb0..6070485e26c4 100644
 --- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c
 +++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c
-@@ -25,6 +25,8 @@
- 
- #define AV1_INVALID_IDX			-1
- 
-+#define AV1_NON_EXT_VSI_SIZE		0xD50
-+
- #define AV1_DIV_ROUND_UP_POW2(value, n)			\
- ({							\
- 	typeof(n) _n  = n;				\
-@@ -641,6 +643,8 @@ struct vdec_av1_slice_fb {
-  * @frame:		current frame info
-  * @state:		status after decode done
-  * @cur_lst_tile_id:	tile id for large scale
-+ * @tile_group:	tile group info
-+ * @reserved:		reserved
-  */
- struct vdec_av1_slice_vsi {
- 	/* lat */
-@@ -665,6 +669,8 @@ struct vdec_av1_slice_vsi {
- 	struct vdec_av1_slice_frame frame;
- 	struct vdec_av1_slice_state state;
- 	u32 cur_lst_tile_id;
-+	struct vdec_av1_slice_tile_group tile_group;
-+	unsigned int reserved[4];
- };
- 
- /**
-@@ -1394,13 +1400,18 @@ static int vdec_av1_slice_setup_tile_group(struct vdec_av1_slice_instance *insta
- 					   struct vdec_av1_slice_vsi *vsi)
+@@ -1799,18 +1799,19 @@ static int vdec_av1_slice_setup_core_buffer(struct vdec_av1_slice_instance *inst
  {
- 	struct v4l2_ctrl_av1_tile_group_entry *ctrl_tge;
--	struct vdec_av1_slice_tile_group *tile_group = &instance->tile_group;
-+	struct vdec_av1_slice_tile_group *tile_group;
- 	struct vdec_av1_slice_uncompressed_header *uh = &vsi->frame.uh;
- 	struct vdec_av1_slice_tile *tile = &uh->tile;
- 	struct v4l2_ctrl *ctrl;
- 	u32 tge_size;
+ 	struct vb2_buffer *vb;
+ 	struct vb2_queue *vq;
+-	int w, h, plane, size;
++	int plane;
  	int i;
  
-+	if (IS_VDEC_SUPPORT_EXT(instance->ctx->dev->dec_capability))
-+		tile_group = &vsi->tile_group;
-+	else
-+		tile_group = &instance->tile_group;
+ 	plane = instance->ctx->q_data[MTK_Q_DATA_DST].fmt->num_planes;
+-	w = vsi->frame.uh.upscaled_width;
+-	h = vsi->frame.uh.frame_height;
+-	size = ALIGN(w, VCODEC_DEC_ALIGNED_64) * ALIGN(h, VCODEC_DEC_ALIGNED_64);
+ 
+ 	/* frame buffer */
+ 	vsi->fb.y.dma_addr = fb->base_y.dma_addr;
 +
- 	ctrl = v4l2_ctrl_find(&instance->ctx->ctrl_hdl, V4L2_CID_STATELESS_AV1_TILE_GROUP_ENTRY);
- 	if (!ctrl)
- 		return -EINVAL;
-@@ -1601,6 +1612,7 @@ static void vdec_av1_slice_setup_lat_buffer(struct vdec_av1_slice_instance *inst
- 					    struct vdec_lat_buf *lat_buf)
- {
- 	struct vdec_av1_slice_work_buffer *work_buffer;
-+	u32 num_tiles;
- 	int i;
- 
- 	vsi->bs.dma_addr = bs->dma_addr;
-@@ -1635,12 +1647,18 @@ static void vdec_av1_slice_setup_lat_buffer(struct vdec_av1_slice_instance *inst
- 
- 	vsi->tile.buf = instance->tile.dma_addr;
- 	vsi->tile.size = instance->tile.size;
--	memcpy(lat_buf->tile_addr.va, instance->tile.va, 64 * instance->tile_group.num_tiles);
- 
- 	vsi->cdf_table.buf = instance->cdf_table.dma_addr;
- 	vsi->cdf_table.size = instance->cdf_table.size;
- 	vsi->iq_table.buf = instance->iq_table.dma_addr;
- 	vsi->iq_table.size = instance->iq_table.size;
++	vsi->fb.y.size = instance->ctx->picinfo.fb_sz[0];
++	vsi->fb.c.size = instance->ctx->picinfo.fb_sz[1];
 +
-+	if (IS_VDEC_SUPPORT_EXT(instance->ctx->dev->dec_capability))
-+		num_tiles = vsi->tile_group.num_tiles;
-+	else
-+		num_tiles = instance->tile_group.num_tiles;
-+
-+	memcpy(lat_buf->tile_addr.va, instance->tile.va, 64 * num_tiles);
- }
+ 	if (plane == 1)
+-		vsi->fb.c.dma_addr = fb->base_y.dma_addr + size;
++		vsi->fb.c.dma_addr = fb->base_y.dma_addr + vsi->fb.y.size;
+ 	else
+ 		vsi->fb.c.dma_addr = fb->base_c.dma_addr;
  
- static void vdec_av1_slice_setup_seg_buffer(struct vdec_av1_slice_instance *instance,
-@@ -1663,7 +1681,7 @@ static void vdec_av1_slice_setup_tile_buffer(struct vdec_av1_slice_instance *ins
- 					     struct vdec_av1_slice_vsi *vsi,
- 					     struct mtk_vcodec_mem *bs)
- {
--	struct vdec_av1_slice_tile_group *tile_group = &instance->tile_group;
-+	struct vdec_av1_slice_tile_group *tile_group;
- 	struct vdec_av1_slice_uncompressed_header *uh = &vsi->frame.uh;
- 	struct vdec_av1_slice_tile *tile = &uh->tile;
- 	u32 tile_num, tile_row, tile_col;
-@@ -1674,6 +1692,11 @@ static void vdec_av1_slice_setup_tile_buffer(struct vdec_av1_slice_instance *ins
- 	u32 *tile_info_buf = instance->tile.va;
- 	u64 pa = (u64)bs->dma_addr;
+@@ -1835,8 +1836,9 @@ static int vdec_av1_slice_setup_core_buffer(struct vdec_av1_slice_instance *inst
+ 		}
  
-+	if (IS_VDEC_SUPPORT_EXT(instance->ctx->dev->dec_capability))
-+		tile_group = &vsi->tile_group;
-+	else
-+		tile_group = &instance->tile_group;
-+
- 	if (uh->disable_cdf_update == 0)
- 		allow_update_cdf = 1;
- 
-@@ -1887,7 +1910,7 @@ static int vdec_av1_slice_init(struct mtk_vcodec_dec_ctx *ctx)
- {
- 	struct vdec_av1_slice_instance *instance;
- 	struct vdec_av1_slice_init_vsi *vsi;
--	int ret;
-+	int ret, vsi_size = AV1_NON_EXT_VSI_SIZE;
- 
- 	instance = kzalloc(sizeof(*instance), GFP_KERNEL);
- 	if (!instance)
-@@ -1926,9 +1949,18 @@ static int vdec_av1_slice_init(struct mtk_vcodec_dec_ctx *ctx)
- 		goto error_vsi;
+ 		vref->y.dma_addr = vb2_dma_contig_plane_dma_addr(vb, 0);
++		vref->y.size = vsi->fb.y.size;
+ 		if (plane == 1)
+-			vref->c.dma_addr = vref->y.dma_addr + size;
++			vref->c.dma_addr = vref->y.dma_addr + vsi->fb.y.size;
+ 		else
+ 			vref->c.dma_addr = vb2_dma_contig_plane_dma_addr(vb, 1);
  	}
- 
--	if (vsi->vsi_size != sizeof(struct vdec_av1_slice_vsi))
--		mtk_vdec_err(ctx, "remote vsi size 0x%x mismatch! expected: 0x%zx\n",
--			     vsi->vsi_size, sizeof(struct vdec_av1_slice_vsi));
-+	if (IS_VDEC_SUPPORT_EXT(ctx->dev->dec_capability)) {
-+		vsi_size = sizeof(struct vdec_av1_slice_vsi);
-+		vsi->iq_table_size = AV1_IQ_TABLE_SIZE;
-+		vsi->cdf_table_size = AV1_CDF_SIZE;
-+	}
-+
-+	if (vsi->vsi_size != vsi_size) {
-+		mtk_vdec_err(ctx, "remote vsi size 0x%x mismatch! expected: 0x%x\n",
-+			     vsi->vsi_size, vsi_size);
-+		ret = -EINVAL;
-+		goto error_vsi;
-+	}
- 
- 	instance->irq_enabled = 1;
- 	instance->inneracing_mode = IS_VDEC_INNER_RACING(instance->ctx->dev->dec_capability);
 -- 
 2.45.2
 
