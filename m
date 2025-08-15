@@ -4,87 +4,198 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8992CA0ED1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Aug 2025 03:33:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 816BBCA0ED1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Aug 2025 03:35:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=L/gqheUAiJBZVnBDKCO9AHvkTlNKIjI8xnUPe2UrTYE=; b=DEcfe9sdTVScxq2LRtEn+2AM1o
-	5XuPnyMapqiIaVwnn4Z1vn+LlYU2AXaA7IvI5kUDMZTtpcyNFXEZtTOsiYlFe9XSuPSjJOwXqlue4
-	Anua2CjKIKMJTzs+MOg58Gu79F3kxgol9qp1C7ObzdGUhQDvZO2B6ADCw+vZ3BeVt/8cIUNACROdz
-	Nw87RXrgjIsLfYSMbfXCa9eSZe2zzyHkUCE+xRrxIMRHo0c62hQ0GqaPYwfj6IiSMh3vhho3iwoN1
-	ID4D4AjNFKQ9isvFJFt11vp82ZJUdoTGp567OM4YaxOiXA8gkDa46Fe8p0Hg8n92EvKSJqUVLpsEb
-	2GhD7puQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Date:References:Message-ID:In-Reply-To:From:Subject:Cc:To:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NvmgK6eNymWj1wQ62aDWUIpv2MemHwaAGhY8bYiEBNs=; b=xPxXNOQyRNXkzqfCv24Lkx7bTa
+	vUabuy59Ji8+YNA3KN+05VCpQ7klhs3ua73OBrgKBdrBQRgBEIgkaLB9LH4PbERoOeuqxblne4UEj
+	zuVbATYP5YMNrYQVgAWhgsfIVLZihX+fOoxBXRdAkjo8Hi2LFYrcG/4kuvQkkVVGSzoeN+gTCX07T
+	hve63ny/hnNMsrnFN14OYTjbMSME1ep3cMUu0WhejXF9PP0ZF5uS/IkgwJe0X8dwUIBEiFUGPdA9R
+	fWIyB4DAvClkU93vogzb9ATOCkGMwFn+2RSc1pId1lTyuh/iNGA2ry0w/SUW3UdNyTkHn2b9+GqNi
+	ukF0GhGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umlBo-00000001IxU-1gM1;
-	Fri, 15 Aug 2025 03:33:12 +0000
-Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
+	id 1umlEP-00000001J71-2IOX;
+	Fri, 15 Aug 2025 03:35:53 +0000
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umkxX-00000001HS0-0mQh
+	id 1umkyM-00000001HZ6-2hJy
 	for linux-mediatek@lists.infradead.org;
-	Fri, 15 Aug 2025 03:18:28 +0000
-Received: by mail-lj1-x22e.google.com with SMTP id 38308e7fff4ca-333f8d24c6fso14086491fa.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 14 Aug 2025 20:18:26 -0700 (PDT)
+	Fri, 15 Aug 2025 03:19:20 +0000
+Received: from pps.filterd (m0333520.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 57EHfo1g020800;
+	Fri, 15 Aug 2025 03:19:10 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
+	:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to; s=corp-2025-04-25; bh=NvmgK6eNymWj1wQ62a
+	DWUIpv2MemHwaAGhY8bYiEBNs=; b=X7ekIymtzJg3PYFruby1OpN7oi4wG6+evp
+	bslaApYAoW9Aa7orxdqpnHbV+sFMfUuOYD+wDirWTpyIXct92a6d/Okxyck2nbdJ
+	8Nmp/Hy5gkC63VuizeDSyQty54yzgVv8SOyuePxgjT0hxQ4HrsFnz0cSiNNQeX6o
+	hDDgtU5V07Jaw6ukxCJUXM1rhDrVSF/fJ2+ew30CZwOV2Jhvp9V4dSv8Hjiqfg5S
+	d9nAmKzXsO71GIcOGwNQfmoCJ/X6tYJ6ORt/xKSsFOzjmBQspeJA4CwjPvNce8q6
+	0xzyIHM6fVTludWZR1cOcqNHUotkMGagm13vAVVAfQJSNgxv0XKQ==
+Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 48dxcfbf1g-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 15 Aug 2025 03:19:10 +0000 (GMT)
+Received: from pps.filterd (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 57F31SCk038543;
+	Fri, 15 Aug 2025 03:19:09 GMT
+Received: from nam10-dm6-obe.outbound.protection.outlook.com (mail-dm6nam10on2059.outbound.protection.outlook.com [40.107.93.59])
+	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 48dvsm3ym0-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 15 Aug 2025 03:19:09 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=vO/WzAnACFZKpCvRDc8XxX5FyTbiAYS/qcD1AGR0bQLwBsRNt2PEWNrTO4OVGCegkgqMybL9bzXRp1yb6XfOAw1G/VfBv0OjerqRoXUElIvIBq74L656XwxKAIOi+BP8ojdi80L4k8TtBBC58WtpI8nt/7Mfn+hYyEJKUOPwlkrarQSyk5gA17fwqnkF/TID5Nuw45g8QACnJKDieeTgEqhwSauGs3kgMkrDZfyHSI/fiyTFLIKM27Xm0sptzl2JzeT/oAGrK5F3dNiAXU4aOBmSBLbKIN9Qh9/qxrv45DyM8CNzghbm1qPj1BfsBNWGoiRxeEO1YzuKLRR4zMh+9A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=NvmgK6eNymWj1wQ62aDWUIpv2MemHwaAGhY8bYiEBNs=;
+ b=WGgq7YP8R3p6HPhzwAdkUHZHUd5iOqEYyW153vPpa++SAka0uHk2LK0kDASOt49J7pYF6GYW5WQwr+MB6GdF4I48anHbIuyjEVCKDUlCXH3ethm0scUX7ICEbc0hcgxiZuINpL9AGU6h25gfw7mUFA5nMhsJRcIIaWbUsITlNf5JJfyCD2Cw9KyVt7TvFoTYha54Npd/KcxZDgAxgW/NqfXgSypfWrpUmPwDNyq38Ov/rh1a0Yb4FRUYiip9/66b9bZ+qaqIS5oJHP3tApYydwzyjFQo3HUHeu/dUp38A/UsDFzT8sRa2YV4shPb97+OqxT1+VxRuV0niXWKutmG1w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1755227905; x=1755832705; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=L/gqheUAiJBZVnBDKCO9AHvkTlNKIjI8xnUPe2UrTYE=;
-        b=B1sqJqHKtulF1ax54lJkb44VblCuEfWfhCA5QZky7JJsSqePSabQ5Ov7eVsbp2xC1/
-         h1foCedbZp0JO05GWrbfPwwYMiQAIdVKKzrK398PpK0eguZyx7oH9d0O32SEYejoCDz7
-         9aex6dgxV7GwjuQDy6LL95P2FB2RYfgOO3UUM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1755227905; x=1755832705;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=L/gqheUAiJBZVnBDKCO9AHvkTlNKIjI8xnUPe2UrTYE=;
-        b=VYtAp2saUSYLAi9A1OCeYZqHLwHWaeSzpomDkk3674RXwWjqjjbbvHd1PHdWZCrvYp
-         ZH383Wja4p0kz4rz0cuD0g1oCsNgXJ6Bz+3baK9hRw5qiDTiA86dlxGzfW/LsJPagYXM
-         xx/m2NOq6ybM7H9NKS8du8S0vfmsHlGJr8UusF/Iag5WJqigQ+BwXUgpqPw45BQZjkZx
-         rV0AubByAi9zkPH0FQEKia5yPsZJT7ztd9eYYiiX68zzQVv7DfmntOmS24Ig0ikx6/rG
-         C+sUnpJis4TlacIElPpdxmotLf5FtYIHTQ0qKWe73pDeznRvhLrHp3LXmzHEIet40CwW
-         gOMg==
-X-Forwarded-Encrypted: i=1; AJvYcCWWPJjOBPQM3JPt7chgtUukVdf5frIQsd35/evJCbmcAR75+geDZdBxhZgVtOLuo2luVf+S+43HafkPOAZ5fw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx/iyPhwQo2WOtImeVa5Gjd86g9i9fxRkaKZ9SZXRxDcA6bZW6l
-	g6Et1zUxCXiQeDqI776K43yl1vVps/16JD0dii+OvmetQsAMfVN/s8HFpWwdgBlXIwdbOp5jmvq
-	9T5LkD1pYWEf11MLJcsbNypVbz678pup6Gxfyjnd4
-X-Gm-Gg: ASbGncutHQtKBQRA+sM4qXslcT8rLcnftn2fvvok4sSFFcNB5KYlki63gNfjrMZyW7p
-	SM9biGf0mmzGT8LpcJYJw3uBg7GVhm96iO3wvJvp+DITqIhYpbP0S5m5Trs3Rmd6fdT4RTgkLI3
-	FiZEWN55XtK56OQhG3M0OU3+Ij14w6iMAO7Lf+nsyjn+nhU12XsplPC9gxnQ2+SnrhnL2ZJl0r/
-	FSLXoSuwWbZSa2/zLI9Hk+/TFBgIzYqk3inWQ==
-X-Google-Smtp-Source: AGHT+IH45CMxbyHBWhXJ/RabdXbIvSLoKeM5EMqrf7xlLady27fRhPu6U8KzyNXc6RGLGWgakK4Y6MekAcD2c3hLvVo=
-X-Received: by 2002:a2e:b8c5:0:b0:332:6304:3076 with SMTP id
- 38308e7fff4ca-33409809835mr1950611fa.1.1755227905389; Thu, 14 Aug 2025
- 20:18:25 -0700 (PDT)
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=NvmgK6eNymWj1wQ62aDWUIpv2MemHwaAGhY8bYiEBNs=;
+ b=LgKMelo01TNojXvf0VPOez49c+1nD++2PjQsOyQSH+6XVgmo3Y/eNMc3ory6DjTc3s0s55wAUroL9RTdWZUc/Ya0+JJbN5IMgJUdY47NG7/DRvxsIsh4koHWalQozKNPYiSLFKc7FiQEyf3GoY+0HqA2nHNhWH60aORsIZ7/tH8=
+Received: from CH0PR10MB5338.namprd10.prod.outlook.com (2603:10b6:610:cb::8)
+ by CY8PR10MB6516.namprd10.prod.outlook.com (2603:10b6:930:5c::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9031.15; Fri, 15 Aug
+ 2025 03:19:07 +0000
+Received: from CH0PR10MB5338.namprd10.prod.outlook.com
+ ([fe80::5cca:2bcc:cedb:d9bf]) by CH0PR10MB5338.namprd10.prod.outlook.com
+ ([fe80::5cca:2bcc:cedb:d9bf%6]) with mapi id 15.20.9031.014; Fri, 15 Aug 2025
+ 03:19:07 +0000
+To: <peter.wang@mediatek.com>
+Cc: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
+        <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+        <chun-hung.wu@mediatek.com>, <alice.chao@mediatek.com>,
+        <cc.chou@mediatek.com>, <chaotian.jing@mediatek.com>,
+        <jiajie.hao@mediatek.com>, <yi-fan.peng@mediatek.com>,
+        <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
+        <tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
+        <naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>, <bvanassche@acm.org>
+Subject: Re: [PATCH v1 00/10] ufs: host: mediatek: Provide features and
+ fixes in MediaTek platforms
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+In-Reply-To: <20250811131423.3444014-1-peter.wang@mediatek.com> (peter wang's
+	message of "Mon, 11 Aug 2025 21:11:16 +0800")
+Organization: Oracle Corporation
+Message-ID: <yq1h5y9qnso.fsf@ca-mkp.ca.oracle.com>
+References: <20250811131423.3444014-1-peter.wang@mediatek.com>
+Date: Thu, 14 Aug 2025 23:19:04 -0400
+Content-Type: text/plain
+X-ClientProxiedBy: PH8PR05CA0008.namprd05.prod.outlook.com
+ (2603:10b6:510:2cc::19) To CH0PR10MB5338.namprd10.prod.outlook.com
+ (2603:10b6:610:cb::8)
 MIME-Version: 1.0
-References: <20250805135447.149231-1-laura.nao@collabora.com> <20250805135447.149231-3-laura.nao@collabora.com>
-In-Reply-To: <20250805135447.149231-3-laura.nao@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 15 Aug 2025 12:18:14 +0900
-X-Gm-Features: Ac12FXwqbJqR6dXDCHoREy9cuJVuDHi_sxjr2uRku7Hw7ujClZ2WhTJ_l5duokI
-Message-ID: <CAGXv+5Fnaict=9Agixn1vCrP3GkugaR3qEKmEYyYiXCGx8ZZ6w@mail.gmail.com>
-Subject: Re: [PATCH v4 02/27] clk: mediatek: clk-pll: Add ops for PLLs using
- set/clr regs and FENC
-To: Laura Nao <laura.nao@collabora.com>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, robh@kernel.org, 
-	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com, p.zabel@pengutronix.de, 
-	richardcochran@gmail.com, guangjie.song@mediatek.com, 
-	linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
-	kernel@collabora.com, =?UTF-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4gUHJhZG8=?= <nfraprado@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CH0PR10MB5338:EE_|CY8PR10MB6516:EE_
+X-MS-Office365-Filtering-Correlation-Id: 37eb4769-7934-4c5b-6a77-08dddbaa7e9b
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|1800799024|366016;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?XXGF3LIGV9zaYD8XR4LR94Tsc2jZZxkVoxmEiXFkndgMZ7hMfNmTnWTyuufz?=
+ =?us-ascii?Q?VJ4S5v0QMJJzfmKIqFBPbdoNALJof08WaZOwtzWPvLqEACrorRKDy1AycJRF?=
+ =?us-ascii?Q?hn6JCHhfbo8TQfO9/KBiaIJnkJfMWK2xeMnKTqB7JTFRXkDmNU5Qw6UqH64U?=
+ =?us-ascii?Q?a2ZK3zPQY1HFsvheOG95f+jnCa7+jg3rUIeeJnNTu+5iN8vDKBHWtHnuI5tR?=
+ =?us-ascii?Q?EYGB3KpT7muYdrSZDjahmEYMoGYvf0KltqQdVuCcgmtegNEm1M96Hqewbn3L?=
+ =?us-ascii?Q?WTzlME9tNiQ67yA4GtQI6ZFMydS2Jot0MXclK67X1WlzwSW0JVGcvt/X36KJ?=
+ =?us-ascii?Q?yeaw/erHWRUMKIgDO/c5qOlDWAkvCbxRJtH0ptXqhDU4EWv618Mtl1kEMdao?=
+ =?us-ascii?Q?uD3V5wzaOeXmGAwfL54Vcyqemlnf1A3sMYXwa+CV6pfHPJ5OqNQ5I0lRwN/I?=
+ =?us-ascii?Q?Cq8/fUcX20/yuLrRn5pxu/ekng3rgnryIcN7b78MaoACnScdVTFW7hp+C/7W?=
+ =?us-ascii?Q?5dQGhLRLaoVJO9HCWwoQYFW68xCXuMFDOESNNvECkjgRDaUhugLkKnnm+U9U?=
+ =?us-ascii?Q?y+wxiamiRZKxtJ0K9DY7boF6R61yDr6X3PyWhyohMiLdkNBUUoFSDXvHQ9Uc?=
+ =?us-ascii?Q?P3588PZQSFXM7K5KWpDb7hODlTrTWPAZSJB5jU78KidD+aemUfIIVmTU7o8O?=
+ =?us-ascii?Q?YMqVTxb4jeuikXp3XZB5dmn5ukRrQZhe9XH2aS6N/ySKWPoCcI8wUI/pFSdU?=
+ =?us-ascii?Q?tVWzbbn3n06fSMTCADdvc21Arj+CLLmQLBWAMCVAUerAlAolelIUyDNAREWH?=
+ =?us-ascii?Q?IwK1t6x96wvIH0JnZWwoZz4pvixgRgi3oiev1Dx1J3H6ESUOIsropUcSKuDP?=
+ =?us-ascii?Q?/cX2P69j20brEx3vaBABWG77Ar7g7Sx5b9n4Pn28lFLi8Aj/wBOPOce2moRY?=
+ =?us-ascii?Q?zSRLIGfDvDJyVhxplkMOvRwOcoV6LtG18nBIAJrTbymJRQF/jXtf++Ub3Z8T?=
+ =?us-ascii?Q?LWK4xA/zs3me+tj4k6EFMOXszxNS2vuSb/dt+cIFD2t2Yw0+iCCz61hLKSl2?=
+ =?us-ascii?Q?q4Qe0pTG/UdeuRg/WexrJ5KfYCQrx/BeM0KMz/gsNjBadHpdu/fa3xeibNhE?=
+ =?us-ascii?Q?QS9JlS0I909sMPLNE9MJ8sOYT/9CG221y/lSrcmrWWvxgcLQBE7h6HsPdQLt?=
+ =?us-ascii?Q?GiWREvmgNHPIL1lBpJHBaUSjrk99xMu0GL8mOoMnOXolpGM0n6qd8nUD98/+?=
+ =?us-ascii?Q?lOM/zAPcSjZI8RVvNA0TX7aajIS2Kr9t1bUQ36NC3nr44rqLHVEsQiuH88i9?=
+ =?us-ascii?Q?QWQJXNR5/cM/s7D+CvH5MJNZ5wct9rswlrK8rUNqzsh9RvwFZdu1WVvy6DLc?=
+ =?us-ascii?Q?4wehR7rfhmyX2IPS9oKpizz72HXLNrVaL5M2beZnigqPxE13BA=3D=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH0PR10MB5338.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(1800799024)(366016);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?W00+ePlhh3vM905csSiARCL3GbluQh2TvprzhWN5JZrgYs7oi74EH0BPLVXB?=
+ =?us-ascii?Q?lzi0vpsZSQcWRhErubnz01vKBXbLl56+A+tu+CJsWyvBecUZsFxn62mCzeZ1?=
+ =?us-ascii?Q?UGls8LIr2WXBrAKmroMGNlpXhzjLIjRdm5e7Tq4JOvxdqVNXepU99leJPLAc?=
+ =?us-ascii?Q?w+mXMKhBgFcrEylTAE2gfo9/pFLNEdTEtVBb26R8HfwjddoGCS5wSdz9IY/z?=
+ =?us-ascii?Q?srZeC1jAiJ7KOEAFCEeoeitkdJBYKwd3gwkQHKw44W24HVt+Gn2v1nUekvpZ?=
+ =?us-ascii?Q?UexIe21mT8xmpgdPeF4AGpa3tihmEBaXYxXWxBnHrCbCRPZTpWYux+B4Ss4Q?=
+ =?us-ascii?Q?uc8Xouxpkh2I5BQuJPdjSTsejZmqoBtDfcQh9oIWJDW1/qHy8I59l2mhmQtG?=
+ =?us-ascii?Q?KS1TjwaktBekKH8UbV1YcHYfEWoVCsOdQ5Ozek9U/APbEe8N/zkhanqvsyjN?=
+ =?us-ascii?Q?IWi92BlNkN2acMw3DTWB22qqaSMXbqzXC7m31BBnpoCAvCGNGZKgVBkhRrXD?=
+ =?us-ascii?Q?gf1GxoOJB1sF3q9t4f82S03VJ1xMZ7yF3VK2LuXYwxqIIewRV5JSw3hniM/t?=
+ =?us-ascii?Q?0FSkKqd5IolXLo+phQaiwFu7MPxVSmmg+czm86gTCIooYfMFpCdsgWtDHAfZ?=
+ =?us-ascii?Q?9rSOeNUIne+ZWm952/4izfZ2d1eDDLc62p7fJiE0PkCAHlyJIFqwvZVQaySE?=
+ =?us-ascii?Q?iQrYmhTWOU1QzGUIOBy4xuiWBnfWZJd+w4Ff8SsRr3piKjOXksAIakKxPNrk?=
+ =?us-ascii?Q?svI6ffFFGipHUIrXI3v7F4IedXXRKeo46fF/fOEOf/bKAeWtUI5O2xFXmjZ4?=
+ =?us-ascii?Q?msYuvkkPYsoESqFb9PCFTccuWKUV8P2FKfOXEDBOKKVjEu/1WYKr2Gqx3+bG?=
+ =?us-ascii?Q?SBuF8m1ItweF0itPmwtcshjFNukad4fnM3BFzc8SdE1Ea3lOz0Yyz4fK2V3m?=
+ =?us-ascii?Q?Lzz5nRhENtKTbKl6E3UBUft43wU03YsbXFMuP4/y6HdiII2sTVlTiEejI+x+?=
+ =?us-ascii?Q?P+Zii1AUimh5xqiV7GlSbINVGelQWBT2/9+fQZ7Fk0WCNl2kbmQRjVsRtxJI?=
+ =?us-ascii?Q?yqfk8orvIykre46h2xRYfprxA6cRM3G9HRDPp28wenz+wWTpRrSf68DcqX2q?=
+ =?us-ascii?Q?dkvT4Hnc5JVHkIkbgfvdCNsFnWxA+yY/rZ/7ab3aHTD4NO3jOSj3iVSZIWOq?=
+ =?us-ascii?Q?0fg8gnDyBe7F79x8VJFnGgkNz9wODC9Yz1K41EJfFznklquBKvJvYzV42cWm?=
+ =?us-ascii?Q?xsEYcJ3aDYmxdOccXX0blEogmjvNTsWTwqHLf9gIcq5DIRYaJUdyXOp3ST2I?=
+ =?us-ascii?Q?FzO23m3DjTjnQ1Qmg6BFyQyLS5Yn7+vFIYi6vWbgJKaAl27r0X9y0VMSEIO7?=
+ =?us-ascii?Q?qU4HOFv8YvXLFY3u/uUEctX/UExaeE/nB4W6+u56I+bjLqDkdMuQirsWZSSe?=
+ =?us-ascii?Q?Ybu1pOgptGtod4cqmfz58v15g4tLFvM7zeSkJTIveS3PEroE3IYz+bTjpOIb?=
+ =?us-ascii?Q?3GkPruFQxrdz7vr3nulW+MGjGhpuSH8srKIkAXUrEYcc2zZ2kRorshXK6JOK?=
+ =?us-ascii?Q?8xKYONRcBGkw55U6vvUx8RZ/FWts+ps9W++tJqUFYD5yNyjdImdFPujRPl+J?=
+ =?us-ascii?Q?XA=3D=3D?=
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: K4zSzFtzlUdNM6AJ91PdJ6o0xnMutiyBjzEFEBibnF2FSxQLnOqJB42yMLwsEzma4VkNYF2LLMFEK4jT9JXxyxGLzcgO44Fcu7QLxulGydOxjr3BV7A+IILD7lT2q0x4UYNTm9+zQlwjH8wlRw0eWFaYljE1a3SV1OE7j3KQn7QHDG5gKRr+jqGjYzNKsN8wbZ9YsyjMHyA4QI6fiKu+bljWGm6IQ8IG6H8oCMdSJMR/jbOhwf11t/Jw1IRYRPjWBUjhzuGuWaghYzP1HCaOCj+zFwwh2GtZSekpPRIcNDlyR4ZjAhgCjpp9Rc5UUCwQZp1S7yYTryPUZa0hCG8aUfejZX5RTFGF122loujEAsb5R5V3eyi9G4gBhL3J2Ab9idu59cVG/bITSOninGbGj1B9FAZw8kl20Bw9/Y5RhoE1YfapSiOJdeeOEh2JEnnDnwaw7rsOj0Zr8PGfGMUr3ShT64RpIsV9GRTm5iMgiuvyGsOW2NIwVx8KtW8doa3BMUhDd617rDXEpakGNQ+SXOuuD+e0kxHrhCC+Bl1yOvArM6NNk4/MgDpxBsycg/VSdpi7Lld1Pguhl2+xq7pI76AuiqFKRHprp1or3SWShdI=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 37eb4769-7934-4c5b-6a77-08dddbaa7e9b
+X-MS-Exchange-CrossTenant-AuthSource: CH0PR10MB5338.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Aug 2025 03:19:07.3666
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: fimQFm8ZjpjZWuxUktN32r++DyeruBWsHHA/nIKJV5b6ff8yNk7qVxIWp8zEttR6Rf9FtRWKOtOAwB87lpsKggdyyRCV5vvZReuJOEznKGI=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR10MB6516
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-08-15_01,2025-08-14_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0 mlxscore=0 phishscore=0
+ spamscore=0 suspectscore=0 mlxlogscore=709 adultscore=0 malwarescore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2507300000
+ definitions=main-2508150024
+X-Proofpoint-GUID: WGlmMevBTMerfrhYd8NGXN11tNeryVBB
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODE1MDAyNCBTYWx0ZWRfX3ZFNxnXIlLVB
+ d1zhnUYg5qPQg+0A0SlvMS634D1RCtk4/fZbTPS2H+0uGCNdLKDimDVg6uEk4+FHYNW3KHs9aHg
+ xgYPYYz4CvJQCjGf/ob8CH2RqV7BrgVieq4Q8Nig0mxa6QVQypZ0jeZ7c0dZ7DELjpFs97EqH+5
+ yy6+RJ3CBZ9vvB9aJE3RDlc1DKv+yflMpQZ3gRl8acQZe9kKlxe/YSyV367B2qdUd+r89c8BBo/
+ QSoY1bHCQm8hyxd4N3j+dGDwBZCkLbKoWMINQvxoJSWboNx03ZgCo7q/cLoGZoYCDGGQoG+ldwt
+ 2EAW2UeFVgTe+THv5CrPjvQ01VAmJ6EGHRg3vvh+Q8DkvE9SUbryn/bv+py4h+N2hEASZtnw1Rs
+ qNvnEP4EvcmnjXQ7RlvU3v492o4/6QJ5xF6RPdydVdJsHIMHevHo1tYCJctulk9b3YqaSH3E
+X-Authority-Analysis: v=2.4 cv=W8M4VQWk c=1 sm=1 tr=0 ts=689ea72e b=1 cx=c_pps
+ a=qoll8+KPOyaMroiJ2sR5sw==:117 a=qoll8+KPOyaMroiJ2sR5sw==:17
+ a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19 a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19
+ a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19 a=wKuvFiaSGQ0qltdbU6+NXLB8nM8=:19
+ a=Ol13hO9ccFRV9qXi2t6ftBPywas=:19 a=xqWC_Br6kY4A:10 a=2OwXVqhp2XgA:10
+ a=GoEa3M9JfhUA:10 a=BdrA9yahslMVlmzdRrYA:9 cc=ntf awl=host:12070
+X-Proofpoint-ORIG-GUID: WGlmMevBTMerfrhYd8NGXN11tNeryVBB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250814_201827_432333_1825E324 
-X-CRM114-Status: GOOD (  24.82  )
+X-CRM114-CacheID: sfid-20250814_201918_798166_FBC52F46 
+X-CRM114-Status: UNSURE (   7.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,170 +210,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 5, 2025 at 10:55=E2=80=AFPM Laura Nao <laura.nao@collabora.com>=
- wrote:
->
-> MT8196 uses a combination of set/clr registers to control the PLL
-> enable state, along with a FENC bit to check the preparation status.
-> Add new set of PLL clock operations with support for set/clr enable and
-> FENC status logic.
->
-> Reviewed-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
-> Signed-off-by: Laura Nao <laura.nao@collabora.com>
-> ---
->  drivers/clk/mediatek/clk-pll.c | 42 +++++++++++++++++++++++++++++++++-
->  drivers/clk/mediatek/clk-pll.h |  5 ++++
->  2 files changed, 46 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pl=
-l.c
-> index 49ca25dd5418..8f46de77f42d 100644
-> --- a/drivers/clk/mediatek/clk-pll.c
-> +++ b/drivers/clk/mediatek/clk-pll.c
-> @@ -37,6 +37,13 @@ int mtk_pll_is_prepared(struct clk_hw *hw)
->         return (readl(pll->en_addr) & BIT(pll->data->pll_en_bit)) !=3D 0;
->  }
->
-> +static int mtk_pll_fenc_is_prepared(struct clk_hw *hw)
-> +{
-> +       struct mtk_clk_pll *pll =3D to_mtk_clk_pll(hw);
-> +
-> +       return readl(pll->fenc_addr) & pll->fenc_mask;
 
-Nits:
+Peter,
 
-I'd do a double-negate (!!) just to indicate that we only care about
-true or false.
+> This series fixes some defects and provide features in MediaTek UFS
+> drivers.
 
-Also, why do we need to store fenc_mask instead of just shifting the bit
-here? Same goes for the register address. |pll| has the base address.
-Why do we need to pre-calculate it?
+Applied to 6.18/scsi-staging, thanks!
 
-The code is OK; it just seems a bit wasteful on memory.
+Please make sure you use imperative mood in your commit descriptions.
+Every patch started with "This patch <does something>" instead of "<Do
+something>".
 
-Either way, this is
-
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-
-> +}
-> +
->  static unsigned long __mtk_pll_recalc_rate(struct mtk_clk_pll *pll, u32 =
-fin,
->                 u32 pcw, int postdiv)
->  {
-> @@ -274,6 +281,25 @@ void mtk_pll_unprepare(struct clk_hw *hw)
->         writel(r, pll->pwr_addr);
->  }
->
-> +static int mtk_pll_prepare_setclr(struct clk_hw *hw)
-> +{
-> +       struct mtk_clk_pll *pll =3D to_mtk_clk_pll(hw);
-> +
-> +       writel(BIT(pll->data->pll_en_bit), pll->en_set_addr);
-> +
-> +       /* Wait 20us after enable for the PLL to stabilize */
-> +       udelay(20);
-> +
-> +       return 0;
-> +}
-> +
-> +static void mtk_pll_unprepare_setclr(struct clk_hw *hw)
-> +{
-> +       struct mtk_clk_pll *pll =3D to_mtk_clk_pll(hw);
-> +
-> +       writel(BIT(pll->data->pll_en_bit), pll->en_clr_addr);
-> +}
-> +
->  const struct clk_ops mtk_pll_ops =3D {
->         .is_prepared    =3D mtk_pll_is_prepared,
->         .prepare        =3D mtk_pll_prepare,
-> @@ -283,6 +309,16 @@ const struct clk_ops mtk_pll_ops =3D {
->         .set_rate       =3D mtk_pll_set_rate,
->  };
->
-> +const struct clk_ops mtk_pll_fenc_clr_set_ops =3D {
-> +       .is_prepared    =3D mtk_pll_fenc_is_prepared,
-> +       .prepare        =3D mtk_pll_prepare_setclr,
-> +       .unprepare      =3D mtk_pll_unprepare_setclr,
-> +       .recalc_rate    =3D mtk_pll_recalc_rate,
-> +       .round_rate     =3D mtk_pll_round_rate,
-> +       .set_rate       =3D mtk_pll_set_rate,
-> +};
-> +EXPORT_SYMBOL_GPL(mtk_pll_fenc_clr_set_ops);
-> +
->  struct clk_hw *mtk_clk_register_pll_ops(struct mtk_clk_pll *pll,
->                                         const struct mtk_pll_data *data,
->                                         void __iomem *base,
-> @@ -315,6 +351,9 @@ struct clk_hw *mtk_clk_register_pll_ops(struct mtk_cl=
-k_pll *pll,
->         pll->hw.init =3D &init;
->         pll->data =3D data;
->
-> +       pll->fenc_addr =3D base + data->fenc_sta_ofs;
-> +       pll->fenc_mask =3D BIT(data->fenc_sta_bit);
-> +
->         init.name =3D data->name;
->         init.flags =3D (data->flags & PLL_AO) ? CLK_IS_CRITICAL : 0;
->         init.ops =3D pll_ops;
-> @@ -337,12 +376,13 @@ struct clk_hw *mtk_clk_register_pll(const struct mt=
-k_pll_data *data,
->  {
->         struct mtk_clk_pll *pll;
->         struct clk_hw *hw;
-> +       const struct clk_ops *pll_ops =3D data->ops ? data->ops : &mtk_pl=
-l_ops;
->
->         pll =3D kzalloc(sizeof(*pll), GFP_KERNEL);
->         if (!pll)
->                 return ERR_PTR(-ENOMEM);
->
-> -       hw =3D mtk_clk_register_pll_ops(pll, data, base, &mtk_pll_ops);
-> +       hw =3D mtk_clk_register_pll_ops(pll, data, base, pll_ops);
->         if (IS_ERR(hw))
->                 kfree(pll);
->
-> diff --git a/drivers/clk/mediatek/clk-pll.h b/drivers/clk/mediatek/clk-pl=
-l.h
-> index c4d06bb11516..7fdc5267a2b5 100644
-> --- a/drivers/clk/mediatek/clk-pll.h
-> +++ b/drivers/clk/mediatek/clk-pll.h
-> @@ -29,6 +29,7 @@ struct mtk_pll_data {
->         u32 reg;
->         u32 pwr_reg;
->         u32 en_mask;
-> +       u32 fenc_sta_ofs;
->         u32 pd_reg;
->         u32 tuner_reg;
->         u32 tuner_en_reg;
-> @@ -51,6 +52,7 @@ struct mtk_pll_data {
->         u32 en_clr_reg;
->         u8 pll_en_bit; /* Assume 0, indicates BIT(0) by default */
->         u8 pcw_chg_bit;
-> +       u8 fenc_sta_bit;
->  };
->
->  /*
-> @@ -72,6 +74,8 @@ struct mtk_clk_pll {
->         void __iomem    *en_addr;
->         void __iomem    *en_set_addr;
->         void __iomem    *en_clr_addr;
-> +       void __iomem    *fenc_addr;
-> +       u32             fenc_mask;
->         const struct mtk_pll_data *data;
->  };
->
-> @@ -82,6 +86,7 @@ void mtk_clk_unregister_plls(const struct mtk_pll_data =
-*plls, int num_plls,
->                              struct clk_hw_onecell_data *clk_data);
->
->  extern const struct clk_ops mtk_pll_ops;
-> +extern const struct clk_ops mtk_pll_fenc_clr_set_ops;
->
->  static inline struct mtk_clk_pll *to_mtk_clk_pll(struct clk_hw *hw)
->  {
-> --
-> 2.39.5
->
+-- 
+Martin K. Petersen
 
