@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03D7CCA0ED1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Aug 2025 03:03:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8992CA0ED1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Aug 2025 03:33:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HinHQKZUtxe4t41iR9D9bn+PEZ105vFBbOQmMnTwk9Y=; b=ix0PkbymLJAWNK8ymLiFgQR++s
-	WvcFT6sZ40jEl2W3zUrJ8Zss3H8nNlEHxYpOyDsjUOwmhoTVzsf1Pu39ngghb7JAerTR9rJOwSFEG
-	HudI+CZkuDG+SIeNUE6YzGyLp8qg0mk6l63xuCSuJBE4eApqBV051fGqyEkhQCMBBSj6AsMcROwp8
-	u74ow9qG/8Y+AqYZL1tTo/s8WEbD4oHfcriNJE6SHZ4VDOmvIJvkE2GC9mKpPdjfC5jDSwTGDsMbs
-	FLJFJw6RePvcoFistxwzbuAZkF+no20DNIswUfYWgAZWhc6e5an4yTA4bOqYTHQGrYOSMi3WoU0Dz
-	f1FCycSg==;
+	bh=L/gqheUAiJBZVnBDKCO9AHvkTlNKIjI8xnUPe2UrTYE=; b=DEcfe9sdTVScxq2LRtEn+2AM1o
+	5XuPnyMapqiIaVwnn4Z1vn+LlYU2AXaA7IvI5kUDMZTtpcyNFXEZtTOsiYlFe9XSuPSjJOwXqlue4
+	Anua2CjKIKMJTzs+MOg58Gu79F3kxgol9qp1C7ObzdGUhQDvZO2B6ADCw+vZ3BeVt/8cIUNACROdz
+	Nw87RXrgjIsLfYSMbfXCa9eSZe2zzyHkUCE+xRrxIMRHo0c62hQ0GqaPYwfj6IiSMh3vhho3iwoN1
+	ID4D4AjNFKQ9isvFJFt11vp82ZJUdoTGp567OM4YaxOiXA8gkDa46Fe8p0Hg8n92EvKSJqUVLpsEb
+	2GhD7puQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umkjT-00000001FLA-36A5;
-	Fri, 15 Aug 2025 03:03:55 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1umlBo-00000001IxU-1gM1;
+	Fri, 15 Aug 2025 03:33:12 +0000
+Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umkjR-00000001FKT-0298
+	id 1umkxX-00000001HS0-0mQh
 	for linux-mediatek@lists.infradead.org;
-	Fri, 15 Aug 2025 03:03:54 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-55ce52b01caso1699237e87.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 14 Aug 2025 20:03:52 -0700 (PDT)
+	Fri, 15 Aug 2025 03:18:28 +0000
+Received: by mail-lj1-x22e.google.com with SMTP id 38308e7fff4ca-333f8d24c6fso14086491fa.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 14 Aug 2025 20:18:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1755227031; x=1755831831; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1755227905; x=1755832705; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=HinHQKZUtxe4t41iR9D9bn+PEZ105vFBbOQmMnTwk9Y=;
-        b=esfbJXg62k9CrF2RJZCIsRu2Xm/TA4n/EzPo0PuB9mG3Q0KnM+nN1bvONoMnAda9Mb
-         ilM5pxPFXS/yVyeipE2IPNAt/+JH1fUQrHHk707yyvg/dQgFiYyJR3GTLnwtNfoarv4X
-         NO45xKNPwRBgbDHyDaqRSdaQAT0id4IKNftz4=
+        bh=L/gqheUAiJBZVnBDKCO9AHvkTlNKIjI8xnUPe2UrTYE=;
+        b=B1sqJqHKtulF1ax54lJkb44VblCuEfWfhCA5QZky7JJsSqePSabQ5Ov7eVsbp2xC1/
+         h1foCedbZp0JO05GWrbfPwwYMiQAIdVKKzrK398PpK0eguZyx7oH9d0O32SEYejoCDz7
+         9aex6dgxV7GwjuQDy6LL95P2FB2RYfgOO3UUM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1755227031; x=1755831831;
+        d=1e100.net; s=20230601; t=1755227905; x=1755832705;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=HinHQKZUtxe4t41iR9D9bn+PEZ105vFBbOQmMnTwk9Y=;
-        b=ccZnWk8ruuQQBeaaZcrKQ/xdTOeMyydmd0vHoVqVKatMurxVZ9NKnPLY7fMu6fS0Aq
-         ELrSgdNSAO4HvWLn8wxP7Ks26ai4Wouhpotghlzb3oF+Rodph3+jxGmoB0MuduzqhKTa
-         s+hRh2Vjn7ZNEl4Fv+8P+i/1VTQ8LuZbMp+6o2Ylv5QqNddGFneoXRlgmd7nY6PHmP4v
-         CoveEt1kssXnlDTWyh2sA7F/wpjMuuLHDHwdxOmC3ObnJzfojrNYiHbZ4ErsSraX54lc
-         tJFQQQtvK+yonGSuJ9yPpur3QHifU/b8tZeh71QUos5cXr0szlUtRCuE5yXnPbQvNu1m
-         nPqQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWXmxAFq++5+mlqR395LiqeWIAScDX8w69PIo/vY9FVS2K9OVaPBMgEhk5nfFJ5axjHwoGjwJ0pDVcL9aAHQg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwOBTVu4k0LTEP2C3CNvX8eVMvgWbhgiSaALUnOGU2h/P6xpEGo
-	hZo44m+a7jGp1bECKoFmdjAW7ylRHL2JHg358nOzXNT2P9nr4UXhMrCj9Xs8+HH6coM/4/5Iyig
-	rTUL6ke0bE20SPl4kKTjjKmLkcE1b6IK3gnUJJSq2
-X-Gm-Gg: ASbGncukd16vsijVngpl05evvdt6xjuCM+1nuBuklMtvX96sVke9idFRO6KRTZq5NVY
-	FVht/CgvSKz0T6powLZe/HMcmkF0Q7x8Wf/d83Hg6TnJXkM33IJjTP7PJpLzjc65POBW0PBdNzR
-	MFPNCZO5nFZXPnnij6oL4RobMEpg805Jz2IsSfBZu42BTHTSdB8HWb8lWCi1mcZrEthmLdvRgZn
-	A6ehIX9It8XbyJGkGa2muXyePi1i+HVm6lvJw==
-X-Google-Smtp-Source: AGHT+IE5oudoWOuExXFcWc613ObdeU+xcba/kkjYM4lQww+ElYzSmi2/gSXFiaP7UzcFCgh/kx+W9zwxu3OJ8SIUDuU=
-X-Received: by 2002:a05:6512:1104:b0:553:a9af:9e43 with SMTP id
- 2adb3069b0e04-55ceeb906demr143594e87.53.1755227031067; Thu, 14 Aug 2025
- 20:03:51 -0700 (PDT)
+        bh=L/gqheUAiJBZVnBDKCO9AHvkTlNKIjI8xnUPe2UrTYE=;
+        b=VYtAp2saUSYLAi9A1OCeYZqHLwHWaeSzpomDkk3674RXwWjqjjbbvHd1PHdWZCrvYp
+         ZH383Wja4p0kz4rz0cuD0g1oCsNgXJ6Bz+3baK9hRw5qiDTiA86dlxGzfW/LsJPagYXM
+         xx/m2NOq6ybM7H9NKS8du8S0vfmsHlGJr8UusF/Iag5WJqigQ+BwXUgpqPw45BQZjkZx
+         rV0AubByAi9zkPH0FQEKia5yPsZJT7ztd9eYYiiX68zzQVv7DfmntOmS24Ig0ikx6/rG
+         C+sUnpJis4TlacIElPpdxmotLf5FtYIHTQ0qKWe73pDeznRvhLrHp3LXmzHEIet40CwW
+         gOMg==
+X-Forwarded-Encrypted: i=1; AJvYcCWWPJjOBPQM3JPt7chgtUukVdf5frIQsd35/evJCbmcAR75+geDZdBxhZgVtOLuo2luVf+S+43HafkPOAZ5fw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx/iyPhwQo2WOtImeVa5Gjd86g9i9fxRkaKZ9SZXRxDcA6bZW6l
+	g6Et1zUxCXiQeDqI776K43yl1vVps/16JD0dii+OvmetQsAMfVN/s8HFpWwdgBlXIwdbOp5jmvq
+	9T5LkD1pYWEf11MLJcsbNypVbz678pup6Gxfyjnd4
+X-Gm-Gg: ASbGncutHQtKBQRA+sM4qXslcT8rLcnftn2fvvok4sSFFcNB5KYlki63gNfjrMZyW7p
+	SM9biGf0mmzGT8LpcJYJw3uBg7GVhm96iO3wvJvp+DITqIhYpbP0S5m5Trs3Rmd6fdT4RTgkLI3
+	FiZEWN55XtK56OQhG3M0OU3+Ij14w6iMAO7Lf+nsyjn+nhU12XsplPC9gxnQ2+SnrhnL2ZJl0r/
+	FSLXoSuwWbZSa2/zLI9Hk+/TFBgIzYqk3inWQ==
+X-Google-Smtp-Source: AGHT+IH45CMxbyHBWhXJ/RabdXbIvSLoKeM5EMqrf7xlLady27fRhPu6U8KzyNXc6RGLGWgakK4Y6MekAcD2c3hLvVo=
+X-Received: by 2002:a2e:b8c5:0:b0:332:6304:3076 with SMTP id
+ 38308e7fff4ca-33409809835mr1950611fa.1.1755227905389; Thu, 14 Aug 2025
+ 20:18:25 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250805135447.149231-1-laura.nao@collabora.com> <20250805135447.149231-2-laura.nao@collabora.com>
-In-Reply-To: <20250805135447.149231-2-laura.nao@collabora.com>
+References: <20250805135447.149231-1-laura.nao@collabora.com> <20250805135447.149231-3-laura.nao@collabora.com>
+In-Reply-To: <20250805135447.149231-3-laura.nao@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 15 Aug 2025 12:03:40 +0900
-X-Gm-Features: Ac12FXzlE2kni0q5NyqXgX7d170kjvAVh0V3KwwS63urIxRRXRRBW2zdHpmR4vA
-Message-ID: <CAGXv+5GDU45O46A+mpdu1HQ_sfT2Su4fgFCtr4xPjoRPzwOWmg@mail.gmail.com>
-Subject: Re: [PATCH v4 01/27] clk: mediatek: clk-pll: Add set/clr regs for
- shared PLL enable control
+Date: Fri, 15 Aug 2025 12:18:14 +0900
+X-Gm-Features: Ac12FXwqbJqR6dXDCHoREy9cuJVuDHi_sxjr2uRku7Hw7ujClZ2WhTJ_l5duokI
+Message-ID: <CAGXv+5Fnaict=9Agixn1vCrP3GkugaR3qEKmEYyYiXCGx8ZZ6w@mail.gmail.com>
+Subject: Re: [PATCH v4 02/27] clk: mediatek: clk-pll: Add ops for PLLs using
+ set/clr regs and FENC
 To: Laura Nao <laura.nao@collabora.com>
 Cc: mturquette@baylibre.com, sboyd@kernel.org, robh@kernel.org, 
 	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, 
@@ -83,9 +83,8 @@ Cc: mturquette@baylibre.com, sboyd@kernel.org, robh@kernel.org,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250814_200353_063538_3FA1359A 
-X-CRM114-Status: UNSURE (   7.86  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250814_201827_432333_1825E324 
+X-CRM114-Status: GOOD (  24.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,15 +102,167 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Tue, Aug 5, 2025 at 10:55=E2=80=AFPM Laura Nao <laura.nao@collabora.com>=
  wrote:
 >
-> On MT8196, there are set/clr registers to control a shared PLL enable
-> register. These are intended to prevent different masters from
-> manipulating the PLLs independently. Add the corresponding en_set_reg
-> and en_clr_reg fields to the mtk_pll_data structure.
+> MT8196 uses a combination of set/clr registers to control the PLL
+> enable state, along with a FENC bit to check the preparation status.
+> Add new set of PLL clock operations with support for set/clr enable and
+> FENC status logic.
 >
 > Reviewed-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
 > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
 ora.com>
 > Signed-off-by: Laura Nao <laura.nao@collabora.com>
+> ---
+>  drivers/clk/mediatek/clk-pll.c | 42 +++++++++++++++++++++++++++++++++-
+>  drivers/clk/mediatek/clk-pll.h |  5 ++++
+>  2 files changed, 46 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pl=
+l.c
+> index 49ca25dd5418..8f46de77f42d 100644
+> --- a/drivers/clk/mediatek/clk-pll.c
+> +++ b/drivers/clk/mediatek/clk-pll.c
+> @@ -37,6 +37,13 @@ int mtk_pll_is_prepared(struct clk_hw *hw)
+>         return (readl(pll->en_addr) & BIT(pll->data->pll_en_bit)) !=3D 0;
+>  }
+>
+> +static int mtk_pll_fenc_is_prepared(struct clk_hw *hw)
+> +{
+> +       struct mtk_clk_pll *pll =3D to_mtk_clk_pll(hw);
+> +
+> +       return readl(pll->fenc_addr) & pll->fenc_mask;
+
+Nits:
+
+I'd do a double-negate (!!) just to indicate that we only care about
+true or false.
+
+Also, why do we need to store fenc_mask instead of just shifting the bit
+here? Same goes for the register address. |pll| has the base address.
+Why do we need to pre-calculate it?
+
+The code is OK; it just seems a bit wasteful on memory.
+
+Either way, this is
 
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+
+> +}
+> +
+>  static unsigned long __mtk_pll_recalc_rate(struct mtk_clk_pll *pll, u32 =
+fin,
+>                 u32 pcw, int postdiv)
+>  {
+> @@ -274,6 +281,25 @@ void mtk_pll_unprepare(struct clk_hw *hw)
+>         writel(r, pll->pwr_addr);
+>  }
+>
+> +static int mtk_pll_prepare_setclr(struct clk_hw *hw)
+> +{
+> +       struct mtk_clk_pll *pll =3D to_mtk_clk_pll(hw);
+> +
+> +       writel(BIT(pll->data->pll_en_bit), pll->en_set_addr);
+> +
+> +       /* Wait 20us after enable for the PLL to stabilize */
+> +       udelay(20);
+> +
+> +       return 0;
+> +}
+> +
+> +static void mtk_pll_unprepare_setclr(struct clk_hw *hw)
+> +{
+> +       struct mtk_clk_pll *pll =3D to_mtk_clk_pll(hw);
+> +
+> +       writel(BIT(pll->data->pll_en_bit), pll->en_clr_addr);
+> +}
+> +
+>  const struct clk_ops mtk_pll_ops =3D {
+>         .is_prepared    =3D mtk_pll_is_prepared,
+>         .prepare        =3D mtk_pll_prepare,
+> @@ -283,6 +309,16 @@ const struct clk_ops mtk_pll_ops =3D {
+>         .set_rate       =3D mtk_pll_set_rate,
+>  };
+>
+> +const struct clk_ops mtk_pll_fenc_clr_set_ops =3D {
+> +       .is_prepared    =3D mtk_pll_fenc_is_prepared,
+> +       .prepare        =3D mtk_pll_prepare_setclr,
+> +       .unprepare      =3D mtk_pll_unprepare_setclr,
+> +       .recalc_rate    =3D mtk_pll_recalc_rate,
+> +       .round_rate     =3D mtk_pll_round_rate,
+> +       .set_rate       =3D mtk_pll_set_rate,
+> +};
+> +EXPORT_SYMBOL_GPL(mtk_pll_fenc_clr_set_ops);
+> +
+>  struct clk_hw *mtk_clk_register_pll_ops(struct mtk_clk_pll *pll,
+>                                         const struct mtk_pll_data *data,
+>                                         void __iomem *base,
+> @@ -315,6 +351,9 @@ struct clk_hw *mtk_clk_register_pll_ops(struct mtk_cl=
+k_pll *pll,
+>         pll->hw.init =3D &init;
+>         pll->data =3D data;
+>
+> +       pll->fenc_addr =3D base + data->fenc_sta_ofs;
+> +       pll->fenc_mask =3D BIT(data->fenc_sta_bit);
+> +
+>         init.name =3D data->name;
+>         init.flags =3D (data->flags & PLL_AO) ? CLK_IS_CRITICAL : 0;
+>         init.ops =3D pll_ops;
+> @@ -337,12 +376,13 @@ struct clk_hw *mtk_clk_register_pll(const struct mt=
+k_pll_data *data,
+>  {
+>         struct mtk_clk_pll *pll;
+>         struct clk_hw *hw;
+> +       const struct clk_ops *pll_ops =3D data->ops ? data->ops : &mtk_pl=
+l_ops;
+>
+>         pll =3D kzalloc(sizeof(*pll), GFP_KERNEL);
+>         if (!pll)
+>                 return ERR_PTR(-ENOMEM);
+>
+> -       hw =3D mtk_clk_register_pll_ops(pll, data, base, &mtk_pll_ops);
+> +       hw =3D mtk_clk_register_pll_ops(pll, data, base, pll_ops);
+>         if (IS_ERR(hw))
+>                 kfree(pll);
+>
+> diff --git a/drivers/clk/mediatek/clk-pll.h b/drivers/clk/mediatek/clk-pl=
+l.h
+> index c4d06bb11516..7fdc5267a2b5 100644
+> --- a/drivers/clk/mediatek/clk-pll.h
+> +++ b/drivers/clk/mediatek/clk-pll.h
+> @@ -29,6 +29,7 @@ struct mtk_pll_data {
+>         u32 reg;
+>         u32 pwr_reg;
+>         u32 en_mask;
+> +       u32 fenc_sta_ofs;
+>         u32 pd_reg;
+>         u32 tuner_reg;
+>         u32 tuner_en_reg;
+> @@ -51,6 +52,7 @@ struct mtk_pll_data {
+>         u32 en_clr_reg;
+>         u8 pll_en_bit; /* Assume 0, indicates BIT(0) by default */
+>         u8 pcw_chg_bit;
+> +       u8 fenc_sta_bit;
+>  };
+>
+>  /*
+> @@ -72,6 +74,8 @@ struct mtk_clk_pll {
+>         void __iomem    *en_addr;
+>         void __iomem    *en_set_addr;
+>         void __iomem    *en_clr_addr;
+> +       void __iomem    *fenc_addr;
+> +       u32             fenc_mask;
+>         const struct mtk_pll_data *data;
+>  };
+>
+> @@ -82,6 +86,7 @@ void mtk_clk_unregister_plls(const struct mtk_pll_data =
+*plls, int num_plls,
+>                              struct clk_hw_onecell_data *clk_data);
+>
+>  extern const struct clk_ops mtk_pll_ops;
+> +extern const struct clk_ops mtk_pll_fenc_clr_set_ops;
+>
+>  static inline struct mtk_clk_pll *to_mtk_clk_pll(struct clk_hw *hw)
+>  {
+> --
+> 2.39.5
+>
 
