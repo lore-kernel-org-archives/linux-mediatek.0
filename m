@@ -4,61 +4,204 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 624E6CA0ED1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Aug 2025 07:31:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 643FBCA0ED1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Aug 2025 08:29:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KCvd8qhSnrjYEbbBKMxE60mVYAblurPp71JXdhjllZk=; b=OWE6bo2DTuZpcFytkc9QUIXmvA
-	uxYEfgmk6sgmstza6/9PAuBM3FOoOnFL7IeW1msRy8A/B4GqRuLY/6U9IK0rn21CZj+qPT8ZgD5Jb
-	J/Bl6AccX0jQvK5C9oZxd8QocybyFMhaTSFmZexV8t99FC5bAW+xZZaae3VntmrfuDR+mNayxpfDO
-	Y9Zw290fG5SvEulxQDNaKhhEfhL43qHAYwrePQ17xlRL0GJHfRWlyAkG/3zFACwCeFanvUIVrwBV7
-	mZrAcfyl0zXQIQI76yJkqFJPeUuCd/g9mVkyG3TVYTBSDYKp3sTDYfASMr3hGALfHR05zN3t+arey
-	kVisx+YQ==;
+	bh=cxmnhJHbeHxs70TSr7TH/Z3cto3qeE1yz67+SPh2EC0=; b=CGXSFy9jIdvsiHYKRiuyQUs1Yo
+	yE8gueGVBIY6nBkkMTUUIx7F1f6Df1hRtM3JU2RkxmtWRysnUCM8BTyJeCyUoZ7JxN8ZFylbGHNP4
+	netjbwxNw6JbYdkAqBBPZwsR9wh/OL+N3bfVekNwAfCJwFdS+qHziXf6mR1Yz1wfy0cm9cIsVqyTs
+	R0QYoKLnCO7bvsv+irh56O/h7npKCpU+QYM6B33gRxEx7NEe78GT2xANHtiZ5LrH2bSddEo/Vd+sC
+	8eB3+BPWe+bNRaNvix5Ozs5hnz1GF4WIrkp743TRyOxqVFDlT2SrZyI4XJcOHRFsRXtTcOnsxjckJ
+	5xD/+5vA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umoue-00000001k2X-0AiZ;
-	Fri, 15 Aug 2025 07:31:44 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1umpoq-00000001rDB-17Yd;
+	Fri, 15 Aug 2025 08:29:48 +0000
+Received: from mgamail.intel.com ([192.198.163.18])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umnvn-00000001cT3-0lDn;
-	Fri, 15 Aug 2025 06:28:51 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 44AA76116F;
-	Fri, 15 Aug 2025 06:28:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5BBEDC4CEEB;
-	Fri, 15 Aug 2025 06:28:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755239329;
-	bh=yKdH7Z9mYp9349ekyyGJWE0NQ8UBnE41L7EHWM+Ek4E=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=i7vsWi/BXk//+Pjnr9JDZdR0HIPG2NYFOihtA77ypfoS55mcrb4ozma1lsZEyZoVk
-	 m+FYAHOG3jF1ZPXvAfl8bIAMzsC2Tqg6OgqkfQRnRPXo1gniB49cNcY+EUexxtGe3a
-	 RpCy+0o0/Raz0YwrudQGXyX2yEwXjfeGTasxx8W4CLaFUhDAwT5nzY9ltBOkt1SA2Z
-	 Ey/MbjOPMAsosrwbYb6j3toEkjm4zuY1L8jZtHmUJW3whHri/XTos+gT5HuAZkRNqb
-	 0WWUhekbWH/zwuUpvT08oUTY05vmjF4w0aTeclQ1C82wC77PbGOA2Nzgn1SjCKbT0q
-	 9k4tN3DihrAXw==
-Date: Fri, 15 Aug 2025 08:28:47 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Arseniy Velikanov <me@adomerle.pw>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, 
-	Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, ~postmarketos/upstreaming@lists.sr.ht
-Subject: Re: [PATCH v1 1/2] dt-bindings: phy: mtk-tphy: add property for
- software role switch
-Message-ID: <20250815-important-warm-dove-03dde5@kuoka>
-References: <20250814234825.810-1-me@adomerle.pw>
+	id 1umpkK-00000001qb6-1zjC;
+	Fri, 15 Aug 2025 08:25:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1755246308; x=1786782308;
+  h=from:to:cc:subject:date:message-id:references:
+   in-reply-to:content-transfer-encoding:mime-version;
+  bh=NRDdqxN659/vwsysgRGFLfJcB/1nuf8UrhwSWL19wTs=;
+  b=afdC1x7NaQNlTeMOix4YUYBh9CzXIcbRKALXAlHe18pL9jBFHQFzcF87
+   5uoTR/clRRQzKj0KeW1b+X/wXpS6txkq1AouaHR+1ciUWYgUTz66c0Nfc
+   NkPkA7+2C4F+r5DQY4NEhHhGp2fG+tDDtz8f/bBbPWwgc1c1clqnA3Pt5
+   bs3wKt07kAgkwzly0DWx6L578Jv0QRdhPstPQ5WUzJPXVQlcauUCmZjxn
+   O/XhKLah6G+BRualIahi4AT+ciR9Jgl09yR9FjJSNzTk0/YkotnHdVtOp
+   1rEeqCGh4D6zAE5Np5blTEEEhOWuPditczr+aYL7HA65hXwkv3HuQc+Ni
+   w==;
+X-CSE-ConnectionGUID: DCJrz0NKQXiZs4bTdqPhqQ==
+X-CSE-MsgGUID: ADjikqk2QX6x6VMAZiRdtQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11522"; a="56778096"
+X-IronPort-AV: E=Sophos;i="6.17,290,1747724400"; 
+   d="scan'208";a="56778096"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Aug 2025 01:25:02 -0700
+X-CSE-ConnectionGUID: FWI9iLsDSQWzrtrqpU69eg==
+X-CSE-MsgGUID: jYarVl0jRFmcq45b9GXLkg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.17,290,1747724400"; 
+   d="scan'208";a="197965392"
+Received: from fmsmsx902.amr.corp.intel.com ([10.18.126.91])
+  by orviesa002.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Aug 2025 01:25:02 -0700
+Received: from FMSMSX902.amr.corp.intel.com (10.18.126.91) by
+ fmsmsx902.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.17; Fri, 15 Aug 2025 01:25:01 -0700
+Received: from fmsedg902.ED.cps.intel.com (10.1.192.144) by
+ FMSMSX902.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.17 via Frontend Transport; Fri, 15 Aug 2025 01:25:01 -0700
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (40.107.236.41)
+ by edgegateway.intel.com (192.55.55.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.17; Fri, 15 Aug 2025 01:25:00 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=fPigQ84/z0XLlqDORMF6gNGlAfHBzYB7Q7pHtwc3BsgyKVh7q2fC5KybvJO0XmiZ5i7sPQagn793M6k/G6K4WnNA4Ea+4jkEuyKbSHJmMgtc9Y06R3WfZIFx+q+50guMuM7hE3pOrDX93Tox07dHIeoQzOSDoGSr1FOIPOIa6fLIrgjwTDDGnBayg4vLvpViFGpbHWK+UH44KooNG/2S2pHm9wcC8cCtxZh5mJAYVxrWy8L8Sx8Uxc0poZxCBUF8Vz5YhCsAYuF/ETj8+z5hBP8P7lY4QsnowUNCqQysMj8wQyCsZWUBrPimrNUkDK9psRyOHK4LQ5vq1Cl7hwhJ8Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=cxmnhJHbeHxs70TSr7TH/Z3cto3qeE1yz67+SPh2EC0=;
+ b=yzzlWHpABImspIzApZEbgPogbY6y767dTuGYJVBn4vhKRvekGPuH3tU+zb0iiIURTLrm12NYJsKIHcpZhaF15WZ9BEK9DuMMnstDcOdXYIi2ghobkqiCC7LcTzlsmPcmy8cJ+Ff/2Xn7b/W4P/yd+vfWoNfOpsLIN2stduDbrhGkuMN1PAhw3LU9T1mWsUYEIDy2W6VDVfgHTmUmu5KaBq+/kgQLSIdjC7lYjgOy4ed3WWMhe3XUiTVs9mJq5aQoUPKWTMClA2Af0Z9piBq8qIidxKjYzq6xBbvpBW1AZzeoQskLXxPWdYzDAcUaunONMN3+ggW7Yw5CIj3BYror4A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com (2603:10b6:408:135::18)
+ by DS7PR11MB6246.namprd11.prod.outlook.com (2603:10b6:8:99::15) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9031.15; Fri, 15 Aug
+ 2025 08:24:58 +0000
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::b576:d3bd:c8e0:4bc1]) by BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::b576:d3bd:c8e0:4bc1%4]) with mapi id 15.20.9031.014; Fri, 15 Aug 2025
+ 08:24:57 +0000
+From: "Tian, Kevin" <kevin.tian@intel.com>
+To: Nicolin Chen <nicolinc@nvidia.com>, "robin.murphy@arm.com"
+	<robin.murphy@arm.com>, "joro@8bytes.org" <joro@8bytes.org>,
+	"bhelgaas@google.com" <bhelgaas@google.com>, "jgg@nvidia.com"
+	<jgg@nvidia.com>
+CC: "will@kernel.org" <will@kernel.org>, "robin.clark@oss.qualcomm.com"
+	<robin.clark@oss.qualcomm.com>, "yong.wu@mediatek.com"
+	<yong.wu@mediatek.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>, "thierry.reding@gmail.com"
+	<thierry.reding@gmail.com>, "vdumpa@nvidia.com" <vdumpa@nvidia.com>,
+	"jonathanh@nvidia.com" <jonathanh@nvidia.com>, "rafael@kernel.org"
+	<rafael@kernel.org>, "lenb@kernel.org" <lenb@kernel.org>, "Liu, Yi L"
+	<yi.l.liu@intel.com>, "baolu.lu@linux.intel.com" <baolu.lu@linux.intel.com>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "iommu@lists.linux.dev"
+	<iommu@lists.linux.dev>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "linux-arm-msm@vger.kernel.org"
+	<linux-arm-msm@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "linux-tegra@vger.kernel.org"
+	<linux-tegra@vger.kernel.org>, "linux-acpi@vger.kernel.org"
+	<linux-acpi@vger.kernel.org>, "linux-pci@vger.kernel.org"
+	<linux-pci@vger.kernel.org>, "patches@lists.linux.dev"
+	<patches@lists.linux.dev>, "Jaroszynski, Piotr" <pjaroszynski@nvidia.com>,
+	"Sethi, Vikram" <vsethi@nvidia.com>, "helgaas@kernel.org"
+	<helgaas@kernel.org>, "etzhao1900@gmail.com" <etzhao1900@gmail.com>
+Subject: RE: [PATCH v3 1/5] iommu: Lock group->mutex in iommu_deferred_attach
+Thread-Topic: [PATCH v3 1/5] iommu: Lock group->mutex in iommu_deferred_attach
+Thread-Index: AQHcCxPR9QhO2RgIz0mPcy8d8fJgaLRjZRxg
+Date: Fri, 15 Aug 2025 08:24:57 +0000
+Message-ID: <BN9PR11MB5276F543286807E05FB465F58C34A@BN9PR11MB5276.namprd11.prod.outlook.com>
+References: <cover.1754952762.git.nicolinc@nvidia.com>
+ <44783ca52e17a9ca0ce7acfe8daae3edc3d7b45b.1754952762.git.nicolinc@nvidia.com>
+In-Reply-To: <44783ca52e17a9ca0ce7acfe8daae3edc3d7b45b.1754952762.git.nicolinc@nvidia.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BN9PR11MB5276:EE_|DS7PR11MB6246:EE_
+x-ms-office365-filtering-correlation-id: 579f6c62-80ea-42f3-78d5-08dddbd53883
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|1800799024|7416014|376014|366016|38070700018;
+x-microsoft-antispam-message-info: =?us-ascii?Q?d9wjLJwApFbIGCZrT2O584xZGxRBGVYlXnRFSE4r1H1Y7SVyNB6aKG+H/YzT?=
+ =?us-ascii?Q?OhKCb/DBNuCdqjcp7tVgN6JjAuFGHFLhOmgw+HILhJKpO04DHd9niSWV4PJx?=
+ =?us-ascii?Q?/gjuuaL3VDZeEzyyM2f8vw0sd9/uaiFClJ9nno+Ci8e+3KurkM3KPKzXdTwM?=
+ =?us-ascii?Q?L4xX/ZNIsHjY3KdRYFQM5kcPwUs8VLkeHqNI/xc5sBrFJozCYnTUIcAHDc3/?=
+ =?us-ascii?Q?nrDpAG2dc1B4pBFOUVPudHCBtdcczdDTG3kMEBzQeMKWwXh+LmpPcaSUqfRG?=
+ =?us-ascii?Q?/qa1pXITL1rtiPolBrDs18ny6Zgotb2hqWFTEPkSibLY+23iKNjF6O7/cCjw?=
+ =?us-ascii?Q?DsrjYTOjjxQe+NfkpGKB04w+67Lprpy1MKGpiY0Po2h8oFRwrP7I9n5hW+Pt?=
+ =?us-ascii?Q?14Pik/qLBJX8sJcpgTrV9ddLIDeRWI11bjZ24fYbdhdJoqrhhMwlBvnrGhT2?=
+ =?us-ascii?Q?vNtMeB9xDrCCrVwFki7gNAU1w3lMljyRhsdQkmyMAd5emp8kqhxENbaVspG5?=
+ =?us-ascii?Q?HSYbBjWr/RZPUd6HgxA8LgVnbiM1cMwkG0IJW61BBgvAeSqlI1Q5TDW4RDWL?=
+ =?us-ascii?Q?vNLDYCCMKvinua0Iz5/DfLFbOl2fTTtfySZTcDJIrrbQKGPZyFa+PZUqYhwL?=
+ =?us-ascii?Q?egRsuqXdu+q+N2OWfWQDUYQ0z5C1MiOWgqZp0nRkog2rYolG0q91teHhnH/g?=
+ =?us-ascii?Q?lQFiCOPQh4BZh9hHCMAqBv8SbyNaS8Q/njgMtpCDzLdBy0LvJrLj/KbdWTl2?=
+ =?us-ascii?Q?NJTVr2TfO0GbvIurGKZC5ef2eulHwc5tDvqGfKeyiNmZN4fY8eFTEIwmL3aQ?=
+ =?us-ascii?Q?2DOx+ONV9OANIxAax1I8jCZGss8jB4OCBJqE2mzZyDHqf9KOryyoiOZedPfJ?=
+ =?us-ascii?Q?t/VrSrwltVYorYiBZH+sSsIjwBKwL7n0uCL8+Tq2xCjmEjecS0mtzqxlf135?=
+ =?us-ascii?Q?n+isdEBiLTQ+XWfKMeOAhKaU2Su8LjIhbX92OQsY8iTgche7UGm0ii17gP6F?=
+ =?us-ascii?Q?rsPvnmN1pxbWjIcEMH2R3ZCpl7XAAJpr3rD0ZyZgSF/qJ8Hq3RDj3VNwphvi?=
+ =?us-ascii?Q?3zIFTE9u6cJ1/ibJvoHOMQJGVXrq+wQbaXO4kxQatFb64cNCy8CZHoxVUDlN?=
+ =?us-ascii?Q?9Tm8TVBXLPIGUSeCHB87/xFKtwsutbSIzustq3cAOR/t9NA2yLamG3F/s7ax?=
+ =?us-ascii?Q?knr1T2i6PW4kpA+XiBDHnhxJu5JPhYsPNLz7zAJ7yT8ZgtQrc2zlw8kGm3pd?=
+ =?us-ascii?Q?edcwgOTmDlI0lG7qQJykKxKIz3iRlO5oHAbaCrm8D3FpJXLhZnXyxTKe7st3?=
+ =?us-ascii?Q?Y20Ti6vCsPUEyUQtPkYfPqk4vKoj20SGcqGW//gImbvBcE8Qozv97DHzHS8o?=
+ =?us-ascii?Q?uC+5XcsxlqU6zt3OcmLj2aq8RlSiO45DQBNsiJL5vEe5l9FqNU6G8yRNunC8?=
+ =?us-ascii?Q?b3wh5iNaKZDTQ+fsIUHxDoMAr9vyCYXIErs2Dblwxl0rXYxJHF9LxA=3D=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BN9PR11MB5276.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(7416014)(376014)(366016)(38070700018);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?hqNj9XEvL5li55LjpJxRVTNSNHOHmYgdscGuSuNTcMs1bfmMXySVsY6NdRbM?=
+ =?us-ascii?Q?IVtkGA5pIB7ogaicDcnPbGF5JlEt6gjQ3nx0X9SGHaf1ryHw5Fz+iucaVgJR?=
+ =?us-ascii?Q?2tGrIUahaz/mnexOtQwlXVmzMA9uh3B0aTTc9bp9kO43N2aGH1xhBA/B7WRk?=
+ =?us-ascii?Q?atOyiSQ/WsSalPrL8yDiAQwLDAqpHg3zzsdwJc6wdyUOKQnNbXBSDom1RSUX?=
+ =?us-ascii?Q?l3iPZpZluFWjqmOhdjzcde0UijUQMq+S2+VfG4lqf9NlTB7zrDT5VjMuFpDD?=
+ =?us-ascii?Q?TSYifnRryBS3jrL6vJtbuP7iOAyM6W9Hhao0qxPnzgzaAcVSexK1/qJUp0sW?=
+ =?us-ascii?Q?2eP0WwZzKk2BCxEh8ThiREXz7j3hGPcv1MhXc43ol50ts3CNPbmi147z8K2Y?=
+ =?us-ascii?Q?V+Z4CG1fJFS7bGEOM4wwI3aJJskQ6S1DS40clKNJVZolC7s/2HnW9TuZLCDp?=
+ =?us-ascii?Q?YeGF2Tp2h0NEI7Stz9rgDs3M/Z6umZx0u+7LjVaeCUi6bFDkNM9R5+rxb0tI?=
+ =?us-ascii?Q?ko32l8EySNeVvvz+DGCno4G96wC1xTlqqUdMODhVftrekRK+Yz+W5JhgHY+y?=
+ =?us-ascii?Q?1NI+lMkQ1wxpLErtJlWtTDDpiA6f4UB8RggrhNbal8fpIXTLYDpxM3BdMTI/?=
+ =?us-ascii?Q?so5xbJRYx3uSDBCzPG71QO1qpNeDjkGnpm10FAoiIZelrBj+9kr7SYLY6eS/?=
+ =?us-ascii?Q?MsVlSQ5sb5/Npl3F1cBKE5EmrcaLMFzyJqBXAu1of+LGRRDwZmtFqB2hCQe6?=
+ =?us-ascii?Q?9tYr/61toUudogh/TerRF0XSTiQALlzJOz0pRl8MNo4KhBpkcrlOPpJ1CzT9?=
+ =?us-ascii?Q?OZv2gIKetdQfgx63C91kl6XKkPkkfME96KVbz5HAF5GxDWkh7z1Z0kK3HmIn?=
+ =?us-ascii?Q?tKDJULauKn4lwIHNO85nRn66it8DYb90Hy3Q/m3or6US2fr9bKbpQfUZcU/r?=
+ =?us-ascii?Q?2Iy2TKo1ctoWYI4TAuDvsH5knwBfQryEh7nybCp/HiVsPVD66Im9LsxZIaka?=
+ =?us-ascii?Q?q7Nb0G+jEOIbzFCOg0dHTUjVwGZHzTeB2jvu2ZdMzk1lhHst6LKKxuK2dPrM?=
+ =?us-ascii?Q?rKSHVoIVNQ+PGMZqtUubRaOMjoJPzbKsd+6dUCMKBfv1YXqcl94VvRnTipzD?=
+ =?us-ascii?Q?59HuWwHLoG3wH8uSrjAc66sQw1VL6LbIFfn/iYjna8jwJLhbqCPQkXk36ySu?=
+ =?us-ascii?Q?8zuFP8QxwFmH/EabxyZcYA2mRsSzmfyNtRE5JrzdyE7F9I05EZFrfm9Je7xx?=
+ =?us-ascii?Q?CNE+/LvRgIr/EHvPCDLubcsH2cNamACx6cD9vF9SyyDVugY5nQD+75ZUCakC?=
+ =?us-ascii?Q?7dSOiy2HkdgSBahjgLptBfjVi5/yaGMQYGCyP1HGf7GG0JAzSPrJClLI9xvU?=
+ =?us-ascii?Q?V/dunUxe75AIzay/xQu9UJz1mSK9Ke7p2qkoxSk7UPmmnwcWScB7oLbfCyYM?=
+ =?us-ascii?Q?cGFl/uJ8Ei5WevfjUTaCfLrHnYbxv5UudzwkzY6KMtQeBldx3vctg3Zhb7A0?=
+ =?us-ascii?Q?ZNkheiiDqamAb5rJrYpvcIb6aWLUevVGpLzF7AWAA+XeB61oG1jcBwRfmNgk?=
+ =?us-ascii?Q?Ay255+fcQMiM5Yt6Cnemt1qY6TDV/dkF6KlxhuPt?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20250814234825.810-1-me@adomerle.pw>
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BN9PR11MB5276.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 579f6c62-80ea-42f3-78d5-08dddbd53883
+X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Aug 2025 08:24:57.8796
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: t5+NGTSUzfufc3mHoQ2yhQZXVa/qiSMfZ6P+ttkcPPSK4Y6pfvTNlBvhm5/DeYdW8Sh358/CbZ5/A3jaoqRQZg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR11MB6246
+X-OriginatorOrg: intel.com
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250815_012508_563656_7D1762D5 
+X-CRM114-Status: GOOD (  20.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,30 +216,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 15, 2025 at 03:48:24AM +0400, Arseniy Velikanov wrote:
-> Add a boolean property to enable software control of the PHY mode
-> switching.
-> 
-> Signed-off-by: Arseniy Velikanov <me@adomerle.pw>
+> From: Nicolin Chen <nicolinc@nvidia.com>
+> Sent: Tuesday, August 12, 2025 6:59 AM
+>=20
+> The iommu_deferred_attach() is a runtime asynchronous function called by
+> iommu-dma function, which could race against other attach functions if it
+> accesses something in the dev->iommu_group.
+
+Is there a real racing scenario being observed or more theoretical?
+
+If the former may need a Fix tag.=20
+
+>=20
+> So, grab the mutex to guard __iommu_attach_device() like other callers.
+>=20
+> Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
+> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
 > ---
->  Documentation/devicetree/bindings/phy/mediatek,tphy.yaml | 6 ++++++
->  1 file changed, 6 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
-> index b2218c151939..a90890d4a86f 100644
-> --- a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
-> +++ b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
-> @@ -255,6 +255,12 @@ patternProperties:
->            use the property "mediatek,syscon-type" for newer SoCs that support it.
->          type: boolean
->  
-> +      mediatek,software-role-switch:
+>  drivers/iommu/iommu.c | 13 ++++++++++---
+>  1 file changed, 10 insertions(+), 3 deletions(-)
+>=20
+> diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
+> index 060ebe330ee16..1e0116bce0762 100644
+> --- a/drivers/iommu/iommu.c
+> +++ b/drivers/iommu/iommu.c
+> @@ -2144,10 +2144,17 @@ EXPORT_SYMBOL_GPL(iommu_attach_device);
+>=20
+>  int iommu_deferred_attach(struct device *dev, struct iommu_domain
+> *domain)
+>  {
+> -	if (dev->iommu && dev->iommu->attach_deferred)
+> -		return __iommu_attach_device(domain, dev);
+> +	/*
+> +	 * This is called on the dma mapping fast path so avoid locking. This i=
+s
+> +	 * racy, but we have an expectation that the driver will setup its
+> DMAs
+> +	 * inside probe while being single threaded to avoid racing.
+> +	 */
+> +	if (!dev->iommu || !dev->iommu->attach_deferred)
+> +		return 0;
 
-No, bindings do not describe software.
+Is there any way to detect a driver breaking the expectation?
 
-Also, never tested.
-
-Best regards,
-Krzysztof
+>=20
+> -	return 0;
+> +	guard(mutex)(&dev->iommu_group->mutex);
+> +
+> +	return __iommu_attach_device(domain, dev);
+>  }
+>=20
+>  void iommu_detach_device(struct iommu_domain *domain, struct device
+> *dev)
+> --
+> 2.43.0
 
 
