@@ -4,206 +4,131 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BF5ACA0ED1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Aug 2025 10:14:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C8EDCA0EE4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Aug 2025 12:09:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xIepCS12bFqKv5Eb+Y5kjgJJuExDZf+V5KCTk5DXIcY=; b=jmfTlbSX/FD0WxO5Ydux93xyYp
-	kZ8bjAVfUysZ67T4INHL300ptY/nujtu1hbty+5RWjxp8/eF1SILnlacDN3zoapG1CkV7JU64soKd
-	cWgojI8sgmssEtl2QDEVQq2mqID9H1myP2TNuUgu1Co2WBGq4OjXEBu+viMhyDFFvnrf52EJhKfi7
-	Er6o4Wf7Ro9DtnAj5WP+19UV1jxBR3ITVdb/QVdeLf17zbQOe7RqmrDhyIPXwOLE6GRmTMwJjFaVH
-	+RMduU6df2llAIFuASj2HYWKeCU6X1Wdv49W9yV6eLpXvEWUlmzWMKMbL+70w4wj2clPzqi7iwLR3
-	CLfM4ICA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jWxB7D3jJyBkITTYt/u8P0qX4HLXnEbcjEWeuCzP8c8=; b=ZSaAyeQxL/V3MQs3u3n4oCCMKn
+	sMhT09qCIXPpzXmww/1d+gNNmEtj1QYOy7HvtJ/ufBFUdv7D9lqvaxDSrLmC2wGCbQNjbzRHJdsLY
+	ypPNeRDJaWxhkiSPqdDxoXFjHGMyVQOzxt8i+XJVkQGDO114GuMyo1Sdmk6Mn4AeIBW+Gz6rmygNx
+	hHru0/YuXer1VQJ+S77gVHgVVcxjF4E6f6q/gC4Cv/z4THczZsawiE60DdbwzyizT/KCPHN504VBJ
+	mWgHdV2JBWKc8Mrtz27XRafNEOmld52ukbDX/UJqxqlN0+GAAtHEnJG7Ao9cjT0Huw42mWZ6TblS9
+	kHywIIlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umrS0-00000002BG4-0R7n;
-	Fri, 15 Aug 2025 10:14:20 +0000
-Received: from mgamail.intel.com ([192.198.163.7])
+	id 1umtFM-00000002QOh-2KEG;
+	Fri, 15 Aug 2025 12:09:24 +0000
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umqDm-00000001vd6-1CPm;
-	Fri, 15 Aug 2025 08:55:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1755248134; x=1786784134;
-  h=from:to:cc:subject:date:message-id:references:
-   in-reply-to:content-transfer-encoding:mime-version;
-  bh=P78ljHkFi0XsKP0ZO9cP+r1NhBR77e5uswviDfvI8Bo=;
-  b=iU/9GfQCHPNYgnO15jL7MqLlomOC43w0/iEjLWxtL7cJUIQwAwAGq1Tf
-   IzM0ft9iDa7yPXSoS2TmEDjO114n123i2lBqaeHL/NZIlCxwrro2zNxnw
-   7E3Yr71iUJAABRTC4xPaj7yXEXm2rFw50n46+cwlJNDGTWVjuvN0NX3on
-   Fjy5T7sAfe0iCHjqi2BRc55gx7pK98vCW6RTGmdj478kWgjTnJPNzRXCw
-   GcVcRP9HPfbNMHqwqxk/EUPPMVzsVhfb5eMVkhH0kUGvVnKK5yANHWL35
-   CGE3sRlQBPprZL00KCaow12mjn50DozqgpEWG5nzSWWrAONZoWFj1p3X7
-   A==;
-X-CSE-ConnectionGUID: LXf4j0Q9R56nDYDNaY71nw==
-X-CSE-MsgGUID: 6ayb7hQkSBGb2jtSq4su8w==
-X-IronPort-AV: E=McAfee;i="6800,10657,11522"; a="83004264"
-X-IronPort-AV: E=Sophos;i="6.17,290,1747724400"; 
-   d="scan'208";a="83004264"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
-  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Aug 2025 01:55:33 -0700
-X-CSE-ConnectionGUID: r4Jb5twVR+OuqwiHAsrDiQ==
-X-CSE-MsgGUID: 3rXX/iVhS8iFr184s97xzA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.17,290,1747724400"; 
-   d="scan'208";a="171176307"
-Received: from fmsmsx903.amr.corp.intel.com ([10.18.126.92])
-  by fmviesa005.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Aug 2025 01:55:33 -0700
-Received: from FMSMSX903.amr.corp.intel.com (10.18.126.92) by
- fmsmsx903.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.17; Fri, 15 Aug 2025 01:55:32 -0700
-Received: from fmsedg901.ED.cps.intel.com (10.1.192.143) by
- FMSMSX903.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.17 via Frontend Transport; Fri, 15 Aug 2025 01:55:32 -0700
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (40.107.223.52)
- by edgegateway.intel.com (192.55.55.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.17; Fri, 15 Aug 2025 01:55:32 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=H8k0OoK1k65oerpMBBv1DFVBaQ/G11gMKRHGWvOCNP4D3rIdvAxT55V2/BQK3O2cjj4LIHcFiV/ykoZbslA4tDgPdECV5cjVrkYv3oHydKMKx5mtL9EImy7m6PtaUK3XNozDLi2YryDwXbz9FmC/yQUMyqzCvzXm7d7XZcBOlsDvgSlaqMrXfEVk+jnc6t+fX6//TLYOYe5hKWd2EgAFprdPN519iaFLefSPx5+gg12A7dD5SAnIP5+ubE5srvUc9ewBa24omDG43Mlyy0n8S3YNapBbgcV/+0OhqZiN+CR90eb0XqGkfpiXaV4YkyfOUitN2nlY9VqEif7yJUSBxQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=xIepCS12bFqKv5Eb+Y5kjgJJuExDZf+V5KCTk5DXIcY=;
- b=DqNaLwyXsKt4bjdB//EkeS6cuAqmgVadNpiTk0vclX53AJGLnLcaad9fM7dd22Cbyuslv/ikM9MgGTqAXGiRLu7uTOClBoswawjet9Wy/VX7InHqqKhAm+doJfe6DjTyGiILMZcEISakZT1E2AIGXlSXsQXEq2L/x1GCkRi4cmoZ6W+BEs/SmoEjC8MtaBjKMjNV+mle3vUHh/m73rhydY8BrT0fHsiT+OFDgBerv038N3INxC+uPfNoEDg88PINbknGm7Glb+/XApCzndy+qyagvBa9h2UwmbVePQx2iuMNE5X/Ej2ATAL7lOoJwlh2yaiIh666vFeDkPuYjO5CIg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from BN9PR11MB5276.namprd11.prod.outlook.com (2603:10b6:408:135::18)
- by PH0PR11MB4854.namprd11.prod.outlook.com (2603:10b6:510:35::18) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9031.18; Fri, 15 Aug
- 2025 08:55:29 +0000
-Received: from BN9PR11MB5276.namprd11.prod.outlook.com
- ([fe80::b576:d3bd:c8e0:4bc1]) by BN9PR11MB5276.namprd11.prod.outlook.com
- ([fe80::b576:d3bd:c8e0:4bc1%4]) with mapi id 15.20.9031.014; Fri, 15 Aug 2025
- 08:55:29 +0000
-From: "Tian, Kevin" <kevin.tian@intel.com>
-To: Nicolin Chen <nicolinc@nvidia.com>, "robin.murphy@arm.com"
-	<robin.murphy@arm.com>, "joro@8bytes.org" <joro@8bytes.org>,
-	"bhelgaas@google.com" <bhelgaas@google.com>, "jgg@nvidia.com"
-	<jgg@nvidia.com>
-CC: "will@kernel.org" <will@kernel.org>, "robin.clark@oss.qualcomm.com"
-	<robin.clark@oss.qualcomm.com>, "yong.wu@mediatek.com"
-	<yong.wu@mediatek.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "thierry.reding@gmail.com"
-	<thierry.reding@gmail.com>, "vdumpa@nvidia.com" <vdumpa@nvidia.com>,
-	"jonathanh@nvidia.com" <jonathanh@nvidia.com>, "rafael@kernel.org"
-	<rafael@kernel.org>, "lenb@kernel.org" <lenb@kernel.org>, "Liu, Yi L"
-	<yi.l.liu@intel.com>, "baolu.lu@linux.intel.com" <baolu.lu@linux.intel.com>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "iommu@lists.linux.dev"
-	<iommu@lists.linux.dev>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "linux-arm-msm@vger.kernel.org"
-	<linux-arm-msm@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "linux-tegra@vger.kernel.org"
-	<linux-tegra@vger.kernel.org>, "linux-acpi@vger.kernel.org"
-	<linux-acpi@vger.kernel.org>, "linux-pci@vger.kernel.org"
-	<linux-pci@vger.kernel.org>, "patches@lists.linux.dev"
-	<patches@lists.linux.dev>, "Jaroszynski, Piotr" <pjaroszynski@nvidia.com>,
-	"Sethi, Vikram" <vsethi@nvidia.com>, "helgaas@kernel.org"
-	<helgaas@kernel.org>, "etzhao1900@gmail.com" <etzhao1900@gmail.com>
-Subject: RE: [PATCH v3 3/5] iommu: Add iommu_get_domain_for_dev_locked()
- helper
-Thread-Topic: [PATCH v3 3/5] iommu: Add iommu_get_domain_for_dev_locked()
- helper
-Thread-Index: AQHcCxPRj0zb6W5cHUaGmJqSwKG0krRja68A
-Date: Fri, 15 Aug 2025 08:55:28 +0000
-Message-ID: <BN9PR11MB52769ACDFED7201CE282FE3C8C34A@BN9PR11MB5276.namprd11.prod.outlook.com>
-References: <cover.1754952762.git.nicolinc@nvidia.com>
- <a69557026b7e2353bae67104bbe6a88f0682305e.1754952762.git.nicolinc@nvidia.com>
-In-Reply-To: <a69557026b7e2353bae67104bbe6a88f0682305e.1754952762.git.nicolinc@nvidia.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: BN9PR11MB5276:EE_|PH0PR11MB4854:EE_
-x-ms-office365-filtering-correlation-id: ead7ad91-b026-405b-19a8-08dddbd97bec
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|1800799024|376014|7416014|366016|38070700018;
-x-microsoft-antispam-message-info: =?us-ascii?Q?fAwDAGg+uISwY9gGhOE8Qxd+qdN4mOSU1LtG3s9ft0Rna9XfoYW4v5vx96+G?=
- =?us-ascii?Q?THMLckEQ8C2Uz7MjMGMPRgTL8dUL9AJNle3wkljhUrHDKfEge/XjuYeJpoh1?=
- =?us-ascii?Q?HOLCxqHZb79kisLDDqxLNjteXpcN+bKnCb3FiEhiSJ6Vh51+2/lXrbJ2w5SH?=
- =?us-ascii?Q?aW4aqjKyP8Ymu0DwweYYISzYmAEhxHGrUUHAaqwWnmlifBfKyPATfJlNjxBX?=
- =?us-ascii?Q?kgwD4N5qLyoutrAwTwjMfW5dUILmEM5zpST4Wh9TWEJiZAx+kKkOKibzI3EE?=
- =?us-ascii?Q?nk1YwWHOgqsPp/nwiTlnZhIvh1OPLqDicfFVODJHkssbk2NAaVS+RPWJfn81?=
- =?us-ascii?Q?8V9qxH0xiFm+xFU0fjOxZfOZHxN4ioQ8LSfyCj2ZVmEzmUOJ3dTJDYOHlbUo?=
- =?us-ascii?Q?ZLi3hEKaCAvoKl3rT9Fb48UUe+eVjvZam6eQESMrHI/HqYz4uRgpzFyMLFUU?=
- =?us-ascii?Q?mkKRvgM/YI//vWZ5c3aHbOQwLggFRnqTsXDdaFB+joGDldN4UGbiyYLygd7U?=
- =?us-ascii?Q?s9Bc3ltfdegabNOarGLvHfel/HT9UMFDyIRmMOAxh3C/H6d1ziDT6XPi7xWN?=
- =?us-ascii?Q?S+rdHTMSMCmE/HEeZVtBfyV7tR1JznVxrPDBB2yXnNboDCP8XVQWZ1m1ioig?=
- =?us-ascii?Q?PVDZcHUN5m9W4XPJ6Z+aIZhIxYUgBWNTH7ygHzttmoxzMB/unFDzhkG5o22c?=
- =?us-ascii?Q?WbuIViDUZnORABiUTeUB/ULGu2zdP79P6a+QSnMXcIJInJcESswtVXqHdicE?=
- =?us-ascii?Q?YxjBVOgLVywXl+feAA4ER4RbIy3mII0SzmZjtRqct/g/xslwumcP3e78Jyn6?=
- =?us-ascii?Q?o/CsjjH3V9kZUB8rvW9KboXMIDjgZFuDm7wn8qm7pxcTZ6nlja6yDntCMikf?=
- =?us-ascii?Q?Q8zPj9PlQleAydX898dO3k44DW8MOY2jT8d9YIcczo2YbIjekG526slpdHdn?=
- =?us-ascii?Q?UwgaFThS6V16goNdvVyJPzyL8cldaN1C0NGSXmDBFIGvd5lfmFqrVaeQZyuc?=
- =?us-ascii?Q?nAkAN2MaAV4RuuQSCgQ6lCcDL8cuZmmjcF3+Mq94AwKN1p7Zv3Vda1GyVTxM?=
- =?us-ascii?Q?F4U7QuSqpNodlP59+FfFFXV8Fbh1b7zVanL1psI6is83Z9Sq7Uu5sQ4qDwpf?=
- =?us-ascii?Q?9IY68ZGsgj8S5FK+ENoHDPS6l+Evt1GthzkX0LBdwMN5JXaeqrUSmeyk/LTB?=
- =?us-ascii?Q?/vlNDdjSCAUDVe49VF6vKaepq/njC/ICgppPQESoBkzcTiYboTX5/xPQbrOk?=
- =?us-ascii?Q?ich2Jc+VVgFlnU6dNS53NX54o5AOvlmtYkAbPgvrCy0P45XlXRVNQ0mWly+E?=
- =?us-ascii?Q?LUtY4+dGTiNP16jEduRtSSJ2Eds831brFw2dXIUhsxF/eLKhPC7DIZOcIJUK?=
- =?us-ascii?Q?gpXh9qmezZCl4pfXfBy14DUlnaob7lvggWIgndVWAhF2ROGo0s/EC6rjSh5f?=
- =?us-ascii?Q?SHCzedVHkTYKCeMu143eyhkB0lH+GO8xV4lbGtNP0STDEjtZTC+fMA=3D=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BN9PR11MB5276.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(7416014)(366016)(38070700018);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?/bngbC7Lxu+pALJ2qlUDqdncCqSUjuBmUPJm2PY9uBbr9hX4VOSfL3QfC3f0?=
- =?us-ascii?Q?IiUnt0GkA45I2sKfFPLiv+/FfCftoonL3JEIfTWnzzo352rfc/CpiO9KGYe6?=
- =?us-ascii?Q?Webihyg4zoNXWzYXCI/FNCafEWOR/mXh4GlTjIpJAvjiD0AjERcnrIm/lCGk?=
- =?us-ascii?Q?eHC6x4BNhjAUMi5rc71N5xJUA3luAKBbTB6p0jykp37gxtKRUPJVgsCvJy20?=
- =?us-ascii?Q?KUzHdHtTYQ0KwYCWE5+1cK8Ocv++ENX9gkWqoKLntnQqRDBA0qiCN0W2wOkZ?=
- =?us-ascii?Q?4rB3yf3SIvJsgmPSK9ZFxKE6yandHILkaBteNjh/knEX7s0l/xb+HPx62pmp?=
- =?us-ascii?Q?T1/2nWXFXXu2PODGrU5RADHqkblJb3UEUlPmu8P0RcajH/qBRVgWGJS+LF4p?=
- =?us-ascii?Q?ZujVOMs+KRiX1GDxzPKLuSN22fEDwRWqAoOooQoDEbOz3blbO4pQO4glHqRj?=
- =?us-ascii?Q?dgl2vuSVANXVF5AG9IEYdXPXaWv7g9NgzH8RaF+P6CcYkjL/nSFIjIh81XbX?=
- =?us-ascii?Q?wnpcLScfM/ErjW4tVgYq0ST7Sl4JU1H6+iL3DAf+/Na0IN2P5KBIuKEMVCY5?=
- =?us-ascii?Q?DNfWp2dc2mlpJlKcpFHk7LpX5ofuwdyVY63+mN59FOX6JWyJYyoTC54flfrM?=
- =?us-ascii?Q?ZHVzaCcodc6Kk9OwZH4Bo872S7LH8r5pFhjSirevwZF6fhauMEc3VqFKNmIc?=
- =?us-ascii?Q?TC5TiL6ICt/OFo89bt4Y28Ncqu4R9N8oCG/xifzcU7cZGqt72x5jCkAUKj4u?=
- =?us-ascii?Q?2+FjLrq/Jpkm5+gd+hYTptYzfme4EYuWQe5FHfYSVr75j3E5EPTyTdqUTVRR?=
- =?us-ascii?Q?O6NadACCuMe5r8tTLHlMArXDR165XWg/n9Th+TpromyLsVNr6s3ttcvYUwiT?=
- =?us-ascii?Q?RiBplVFpjLhc6kj02JCxqO6X7WsKg7vn43JgXtx4qkmnEMm6YZvfhUGCqgbg?=
- =?us-ascii?Q?TFzJ3FLQ13J82ZjTdmpBjw07KrW+hkfMwc2DhwMdU9loD/WEzi3iTiH1GUE1?=
- =?us-ascii?Q?1sscpdSRqS4rBAD+9gaomR5gAVEYDhNCQB6TMkYdZbmkyaiUHO6pq+fmDzpE?=
- =?us-ascii?Q?UrHV7TYnQal41dvszZsISWCYYll28dgCecz+fwpGPlFvTNkMPWFGa/lWo/Ji?=
- =?us-ascii?Q?Rjjtc8cHFO2xZ5EpsM7UceAuisVNum3xUSWuDR1+OekOD3MVBsXO98b7wmiv?=
- =?us-ascii?Q?BjMlES6lkwpowtCIpspBIWjLMB3Hlgwx+R/SrlLYyg57uCTuGeRTvFH2MNOO?=
- =?us-ascii?Q?Uj5VftNap5Pd5RFwzYKp5hElhBWw98TjX+urSZJpjvpFjNjEMFS1Yd3kTwox?=
- =?us-ascii?Q?CP+agEDKyh7414EEjEUTBh1EDe0Q2jFOqo7cqxi+dOi95m1pR4LEh8N1IzjO?=
- =?us-ascii?Q?VAuASKZzlasb55NN3mZbZaK05rFj2XXxUaRTMG7oK3XgPurcWvC3VZPI250M?=
- =?us-ascii?Q?yukd0tDs+d/N0b/wOl/B0UTJHpm0/3QQfw0rxdQVCmnAVRZwEzJmf67QcV1Y?=
- =?us-ascii?Q?Zap1MQ8U7TDEFQSRXHqO5lsL7GmqT4mpS/aYkosb7yeuV4U5jvwoWM6WlZzi?=
- =?us-ascii?Q?K1zvIOcpvSe4oSqXYikOsWKEqdx8IsN00ox94akn?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+	id 1umqR5-00000001zpb-1RFO
+	for linux-mediatek@lists.infradead.org;
+	Fri, 15 Aug 2025 09:09:20 +0000
+Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-3b9e4193083so1552518f8f.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 15 Aug 2025 02:09:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1755248958; x=1755853758; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=jWxB7D3jJyBkITTYt/u8P0qX4HLXnEbcjEWeuCzP8c8=;
+        b=qA8jG/U/RZz1FjuW7dRnEVgpisy84BqhSoob7H+SDgnvaZVkdfU0AbRq7Rphk+xQOB
+         f5ugV2zVuBRmY6o+L8mFuJWYcTATm40UwRwC7ntnlIPrcxx8WI3C/Q5QQRBy90xP2z+Z
+         3d7A+90Q7nVdQmjRNdEmYzw3wJYzhJ4Q1p2HybemSaSby4E8Utca37G6w3CN5uVu+Jfg
+         65YMu2+dKTHteDJa/tBxvjR+y6ABRk4X+odyTnzVkQB/2hl9uSrfYr3x2QT5908F6W2X
+         aSoaggr86OBhSaG5caebJQeYoZh3muwYlkNEM14k87xtpbmE+vTDeaWRMjtQkR6VXx+n
+         aCRw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1755248958; x=1755853758;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=jWxB7D3jJyBkITTYt/u8P0qX4HLXnEbcjEWeuCzP8c8=;
+        b=YeRFwiG4xRTt9nUw/2ER6dikKr0FcywRkmVPdfxgLCcjF7JCohv3DN96r0s81gyp9C
+         vpQbrK01EGQ3xNHQks3hw7ZavFtJmuXh4HpaAtHCeYc5frl1p/N8NAgnrH4QnFBIMDmr
+         ZEQwaWtIaIT3PuhnP5i0mABzqMyF4Zq2eeUPnUhXV8dWCpDkDxck+vfjsuU+8lYLeWjb
+         dkXExjS52cujIxfIM1buW9qUUrzzwNVNqbbDBOV7xeuf2EPBOvUBBSr5oI+Qqz2PxxO/
+         sWJGHXpo8gQMyKENe+XI263jLsJUxkCv5EIhIRLmFa3n2TV8K68B9ac8FJh2UWQM8zuR
+         DetQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUaXKYGVE624InYPdfo0LeG95Il2zupqarQC/Rhf1ZdFyLrrd+Hh7tVs7vBMYZUeBnQEez5ANTu7HKaXeP8Fw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzszes50zecaJ900prwj5F/T2ISwkS4PJDQxNEvOssSAiv2fADZ
+	5bZJ/6l5GGP1R2UA9kOHsXZhfcUDB3iq/lDNJdbYWWCytr0g2aT8TNAPsuTVH/9KyDA=
+X-Gm-Gg: ASbGncvaoJQB/jiODYBX5rJUBzcHXIFUkixaTxXJoWVtZ8SpQABvDVeZ/hgMLv3ZT5V
+	nwve9cllTsIBYd2QPOns+vdu20JHjofKxhRRB/EszrvKb+P8Z5072tzTsCTCYFxH5fo7VLMDp4A
+	XP+r0R/oSreNdWjLPZy2dpKZNjtBopgliytl1sU2QrqxfD8coPJqRYiYVQu8JEcMafvJZu3T2vd
+	NFsHs63380dvdN7WOVhavjivGzI0rBnL020FZbNlk4mlOd34wPhb7v8/IZbhhpxYKnvmED9WBpI
+	VAoeDWs2z/zO16dWaFKGwl5CRSnX/I/s5+eiqy8CrlzDlfSeVytQTp9uLtJITG45rxZttjXkTqC
+	aqUKZUogJkC5ZF4AAew==
+X-Google-Smtp-Source: AGHT+IGnCJeDOqE3G4r581ayfk7huZyQHMOX+PmOKQXkUeS7zf7iEj9jqH6oiGPuorRj19lkyqveSA==
+X-Received: by 2002:a5d:5d11:0:b0:3b7:810f:6caf with SMTP id ffacd0b85a97d-3bb68a1874amr1166149f8f.32.1755248957733;
+        Fri, 15 Aug 2025 02:09:17 -0700 (PDT)
+Received: from [127.0.1.1] ([2a01:cb1d:dc:7e00:a125:bd3e:6904:c9f9])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3bb676c9a67sm1205210f8f.35.2025.08.15.02.09.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 15 Aug 2025 02:09:17 -0700 (PDT)
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+Date: Fri, 15 Aug 2025 11:09:03 +0200
+Subject: [PATCH v5 01/15] devres: provide devm_kmemdup_const()
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BN9PR11MB5276.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ead7ad91-b026-405b-19a8-08dddbd97bec
-X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Aug 2025 08:55:28.9565
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: yKpOCKPkrQdMtQo7c2GlFXkD/ODA6LJRDJvzofQ1FZu2s5hGhmN/WP21Fh5Gh8726+zgvXznlbDq1Ljf7ui/gw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB4854
-X-OriginatorOrg: intel.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250815-pinctrl-gpio-pinfuncs-v5-1-955de9fd91db@linaro.org>
+References: <20250815-pinctrl-gpio-pinfuncs-v5-0-955de9fd91db@linaro.org>
+In-Reply-To: <20250815-pinctrl-gpio-pinfuncs-v5-0-955de9fd91db@linaro.org>
+To: Linus Walleij <linus.walleij@linaro.org>, 
+ Bjorn Andersson <andersson@kernel.org>, 
+ Konrad Dybcio <konradybcio@kernel.org>, 
+ Alexey Klimov <alexey.klimov@linaro.org>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Paul Cercueil <paul@crapouillou.net>, Kees Cook <kees@kernel.org>, 
+ Andy Shevchenko <andy@kernel.org>, 
+ Andrew Morton <akpm@linux-foundation.org>, 
+ David Hildenbrand <david@redhat.com>, 
+ Lorenzo Stoakes <lorenzo.stoakes@oracle.com>, 
+ "Liam R. Howlett" <Liam.Howlett@oracle.com>, 
+ Vlastimil Babka <vbabka@suse.cz>, Mike Rapoport <rppt@kernel.org>, 
+ Suren Baghdasaryan <surenb@google.com>, Michal Hocko <mhocko@suse.com>, 
+ Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, 
+ Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ NXP S32 Linux Team <s32@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>, 
+ Tony Lindgren <tony@atomide.com>, 
+ Haojian Zhuang <haojian.zhuang@linaro.org>, 
+ Geert Uytterhoeven <geert+renesas@glider.be>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ "Rafael J. Wysocki" <rafael@kernel.org>, Danilo Krummrich <dakr@kernel.org>
+Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
+ linux-hardening@vger.kernel.org, linux-mm@kvack.org, imx@lists.linux.dev, 
+ linux-omap@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+ Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2111;
+ i=bartosz.golaszewski@linaro.org; h=from:subject:message-id;
+ bh=yGM1a+aC0va5PQYzRl7VigwSABEcy8VUGQM8wt+k8EA=;
+ b=owEBbQKS/ZANAwAKARGnLqAUcddyAcsmYgBonvk2b9jhbpZSR4bPSrpRtG6g+7NeYTvJmeHom
+ mkeMTq5AUSJAjMEAAEKAB0WIQQWnetsC8PEYBPSx58Rpy6gFHHXcgUCaJ75NgAKCRARpy6gFHHX
+ ckzrD/9dpMT6eFmPjEdr9qjjRqAOs5l02AiDkl3dHtrzFi9yMxxW2FtEtRuxPAhpHPVWiHPN07r
+ 0RROaKlAKF++hEfZYnZedgxj3QWia5uQqkTZGIk1C6yktsS//GQGe0diPUrRMbSsMNANL6SA3Nx
+ S4wRM4tUkMPqKt23QdTH5TWkZhIsNDbuDR8Zj4iNO/Oe9tiVLXFbPOslY91hsYRIOx+29AVkUu0
+ nfRh3+Be+5nBAQc73pr8bf0gR8TwhJtXlQ4oMq6OGzCUWMZs0cTeSGFiQdzL6oP9De/SWcMCMPO
+ 3XA0BNI12lUneQ4UuYedE1N0KElf76XPTEx2UrholVQN+5KpqruqPKypec/HgHGhpMQv0ywBWUO
+ kkjEJiumlJd7SzYJ+Cl7t9foAdOHlVGbHrSwhNNAsZ6NP4umioBGxWb3qFwna55mgCL1R1YynSo
+ KPOx6RPkda84XsjOzlOwSqAPBufV3AON+YIKuJBUmKqGk5ba2nja9OqTYjlQEHBOeN2QmF05iUK
+ z+4I82/CtLqSGznLLQbzoJu3sRwnPRgEc1iZEg8oYC/4IqFC6/noCf4YYYvIA7C03q+RTCyPCRn
+ z465BIQ5H0TfkwTOj4sYbbMsTcq7N2mrfE+fqMp4J4jUxTAhjOXedXvSYOIXvvmYPQxWMphF+EQ
+ nh1EvmLIpVJ9QHA==
+X-Developer-Key: i=bartosz.golaszewski@linaro.org; a=openpgp;
+ fpr=169DEB6C0BC3C46013D2C79F11A72EA01471D772
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250815_015534_343480_4212EED6 
-X-CRM114-Status: GOOD (  20.05  )
+X-CRM114-CacheID: sfid-20250815_020919_410655_1996C89A 
+X-CRM114-Status: GOOD (  12.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -218,55 +143,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> From: Nicolin Chen <nicolinc@nvidia.com>
-> Sent: Tuesday, August 12, 2025 6:59 AM
->=20
-> There is a need to attach a PCI device that's under a reset to temporally
-> the blocked domain (i.e. detach it from its previously attached domain),
-> and then to reattach it back to its previous domain (i.e. detach it from
-> the blocked domain) after reset.
->=20
-> During the reset stage, there can be races from other attach/detachment.
-> To solve this, a per-gdev reset flag will be introduced so that all the
-> attach functions will bypass the driver-level attach_dev callbacks, but
-> only update the group->domain pointer. The reset recovery procedure will
-> attach directly to the cached pointer so things will be back to normal.
->=20
-> On the other hand, the iommu_get_domain_for_dev() API always returns the
-> group->domain pointer, and several IOMMMU drivers call this API in their
-> attach_dev callback functions to get the currently attached domain for a
-> device, which will be broken for the recovery case mentioned above:
->  1. core asks the driver to attach dev from blocked to group->domain
->  2. driver attaches dev from group->domain to group->domain
+From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 
-the 2nd bullet implies that a driver may skip the operation by noting that
-old domain is same as the new one?
+Provide a function similar to devm_strdup_const() but for copying blocks
+of memory that are likely to be placed in .rodata.
 
->=20
-> So, iommu_get_domain_for_dev() should check the gdev flag and return the
-> blocked domain if the flag is set. But the caller of this API could hold
-> the group->mutex already or not, making it difficult to add the lock.
->=20
-> Introduce a new iommu_get_domain_for_dev_locked() helper to be used by
-> those drivers in a context that is already under the protection of the
-> group->mutex, e.g. those attach_dev callback functions. And roll out the
-> new helper to all the existing IOMMU drivers.
+Reviewed-by: Andy Shevchenko <andy@kernel.org>
+Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+---
+ drivers/base/devres.c         | 21 +++++++++++++++++++++
+ include/linux/device/devres.h |  2 ++
+ 2 files changed, 23 insertions(+)
 
-iommu_get_domain_for_dev() is also called outside of attach_dev
-callback functions, e.g. malidp_get_pgsize_bitmap(). and the returned
-info according to the attached domain might be saved in static
-structures, e.g.:
+diff --git a/drivers/base/devres.c b/drivers/base/devres.c
+index ff55e1bcfa30057849a352c577bd32f1aa196532..c948c88d395607ff511ffa6eb0a75b7847ab9239 100644
+--- a/drivers/base/devres.c
++++ b/drivers/base/devres.c
+@@ -1117,6 +1117,27 @@ void *devm_kmemdup(struct device *dev, const void *src, size_t len, gfp_t gfp)
+ }
+ EXPORT_SYMBOL_GPL(devm_kmemdup);
+ 
++/**
++ * devm_kmemdup_const - conditionally duplicate and manage a region of memory
++ *
++ * @dev: Device this memory belongs to
++ * @src: memory region to duplicate
++ * @len: memory region length,
++ * @gfp: GFP mask to use
++ *
++ * Return: source address if it is in .rodata or the return value of kmemdup()
++ * to which the function falls back otherwise.
++ */
++const void *
++devm_kmemdup_const(struct device *dev, const void *src, size_t len, gfp_t gfp)
++{
++	if (is_kernel_rodata((unsigned long)src))
++		return src;
++
++	return devm_kmemdup(dev, src, len, gfp);
++}
++EXPORT_SYMBOL_GPL(devm_kmemdup_const);
++
+ struct pages_devres {
+ 	unsigned long addr;
+ 	unsigned int order;
+diff --git a/include/linux/device/devres.h b/include/linux/device/devres.h
+index ae696d10faff4468a41f37b5d5fd679d4ff11997..8c5f57e0d613492fd0b2ec97dd384181608192fc 100644
+--- a/include/linux/device/devres.h
++++ b/include/linux/device/devres.h
+@@ -80,6 +80,8 @@ void devm_kfree(struct device *dev, const void *p);
+ 
+ void * __realloc_size(3)
+ devm_kmemdup(struct device *dev, const void *src, size_t len, gfp_t gfp);
++const void *
++devm_kmemdup_const(struct device *dev, const void *src, size_t len, gfp_t gfp);
+ static inline void *devm_kmemdup_array(struct device *dev, const void *src,
+ 				       size_t n, size_t size, gfp_t flags)
+ {
 
-	ms->mmu_prefetch_pgsize =3D malidp_get_pgsize_bitmap(mp);
-
-would that cause weird issues when blocking domain is returned
-though one may not expect reset to happen at that point?
-
-> +/* Caller can be any general/external function that isn't an IOMMU callb=
-ack
-> */
->  struct iommu_domain *iommu_get_domain_for_dev(struct device *dev)
-
-s/can/must/ ?
+-- 
+2.48.1
 
 
