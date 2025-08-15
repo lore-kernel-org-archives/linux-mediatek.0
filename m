@@ -4,87 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77573CA0EE0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Aug 2025 03:46:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D310CA0EE4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Aug 2025 03:46:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gXv9G7c+svq4lqcz4OBGpCl+m14S/SAGU1DXHucm83E=; b=oSVyhhshE6kWECmzocre0CQ2Xk
-	b1lPcrHNKEZH1KDTM9pguCShTMLGkDipO1n2yZVHonwgDDvXNizGoIwRZjuvw1u7/LVvU9fPei5J/
-	MleN60+4Ltlu+6HSJdz+pmSjlxCzFEqlR+arCyvEKA3z/1N50GEadMDt6qW1FId2x+2TXLktUSQ3T
-	BEHcSb2qyqaW0UqYFWeLTXrNuW4pj6KciZNJ3Y3XTK87UhrG0n0Ff7Ewm+9HAKc59nrMeat9qq+s/
-	RzWrTz7q5Wld3p6NsKwj4MJuEuA+shPEwztcCa383glK/NZfg0gjwJPKmW0/UbZgvsEvSGaD/CC2y
-	CPWbfP6w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7gTQhgS/PCAFF82SZ6Z1u8WHxfzOCE9NSg1LWgEZgX4=; b=T3O52ogkrKZK5OiwJ0SB2saYtr
+	brYl1+7lGOtKfZSPEn29mPPiaXp4xWk6ZAI5kB0ttbmvz8t9HrV0L4D0bCwSzUegVXTAhwIbsrPJJ
+	NBLubjlJCScEwFUjB3gZ5srZKrqB7f3Ro6oEJamL/pgqBirSPJ8Siw5ssTQlgCouUJiA/aWET8niy
+	PVsQ3uaupt3Vojbp+DEUxw4SCEtYlXQWwfXTyP1OidoRwLTLNsT9/OCjZCMMqDagTNM2W0h18H8FP
+	t8EAezLOnN5eYEo2vxMHZHrpFjLzhV4LcCpuo47JpvfqGBwUn5FbV/05cnAUXkVHYv+4528VUMmAc
+	HthsmSjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umlOr-00000001KSo-1CeY;
-	Fri, 15 Aug 2025 03:46:41 +0000
-Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
+	id 1umlOt-00000001KTp-0u9X;
+	Fri, 15 Aug 2025 03:46:43 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umlFq-00000001JEM-3gku
-	for linux-mediatek@lists.infradead.org;
-	Fri, 15 Aug 2025 03:37:24 +0000
-Received: by mail-lf1-x130.google.com with SMTP id 2adb3069b0e04-55ce4d3b746so1991691e87.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 14 Aug 2025 20:37:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1755229041; x=1755833841; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=gXv9G7c+svq4lqcz4OBGpCl+m14S/SAGU1DXHucm83E=;
-        b=Ei3EfwaOWxW7NSlsW2xXnhgiD6NVZ0wK3MRwxurLAPuFbc9DGeXnR6ciTSFSnPnYv4
-         TwL56qaKMkjPtM2C1Hc2z08W61ermf2LFX25qPSMjIlETMJ0TNUj7K1wTmNni/kpjrLs
-         GUGYPbAIbanKmpBJMdrSztiFYPOU8ebNAXrvM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1755229041; x=1755833841;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=gXv9G7c+svq4lqcz4OBGpCl+m14S/SAGU1DXHucm83E=;
-        b=Z79x64HaQPjN5Aaspj/jsmbpC0ocTT0lfKUbzhdGh2SKdGdYs+VSlp6AGOi6ZlSUJW
-         NWLry6rjmhiS1pVttHqecGAB1TsRY1MTxTqF8tufVYGUQyWcydwRYEa4ad01cnEFh5wh
-         cctZ/HVq/iP84dLn/LiTyzlNXB9bqUYJshhKjHLmeMm2hZeDhKJDwiWmnJkCrpIEL6NM
-         Lx4Bx/XmtOk+yyzeBvNcgPc5PTyoLEGDF7aaWsLeNEvCdSxX4gSQQosYPiHQuT5DAmXq
-         RCrNIC7eLec4v2zSL8JvA/Mrn0p2RTUTvzOHssY0FoCEWEC+s3LvB5IVIf8jljRaYbVf
-         URgw==
-X-Forwarded-Encrypted: i=1; AJvYcCUL5RI/jZFHiWxRAgWqnRsi8Ds/G455ppYrFzFgbMYATm1TEqIspfG/psAcbSIagVYVQOpDGgGYHbe7e72g5A==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy1lJSvch1P84POnrSfSwdctIucfgaLfKD9uLCieLAaatIC3fZz
-	LY/4rAxaJ1P5CW0nkr5ekkrtE9ZQGBh2eUo03k4C6fbpdp9KnAPuXMmTx+3VcXwgDOoc/0JmPxc
-	lDF8WvP/3ZsE9RFWH2mx0igoZoC6IPeptIXT5lLxy
-X-Gm-Gg: ASbGnctsCLouz43J6lbiD2CFOeMD/sORv2+JJLasuqsGiQSj3acp1rCSHCOTavse+uZ
-	6ZXvVy4HbZnV8RIJc4h47PVYxOWbHUV+JCq45veKpUE/33n7FxAdOw0WDdVtND8Fq044fnrd+sM
-	JFMdY8UBzsCYz2saij8bS/a6FuPzlhQ3gK3jUuOQB2pUkfIWFkva/ZGXIlMD8ELRrDrP29kx3QE
-	D07jMBJiEvvkwSpA5r94XFISBKtAPslQQMWnVWx9nTYbLq2
-X-Google-Smtp-Source: AGHT+IE49Nkw8AqkoPWjH8rrU5caEV+oXUcux5DcWnc9n4SFkD9kc07Lncn2SXp+60xyQBp5APfIrw8/0vNtRBrb6YM=
-X-Received: by 2002:a05:6512:2249:b0:55c:d730:c86f with SMTP id
- 2adb3069b0e04-55cee824254mr223207e87.21.1755229041062; Thu, 14 Aug 2025
- 20:37:21 -0700 (PDT)
+	id 1umkBi-000000019qs-3nZO;
+	Fri, 15 Aug 2025 02:29:04 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 6BE38461BA;
+	Fri, 15 Aug 2025 02:29:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 34840C4CEED;
+	Fri, 15 Aug 2025 02:29:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1755224942;
+	bh=mrIFnf38WHuWo+npT76l0eVvwyuTXr6L3piFWujpfYc=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=EzZtiW0EkhDcPGb/p/XGknovtZlObtJ74JLzKRktWStLzPDoAREAwQEFmBGG4/lcU
+	 kJuJFI88d1Yg2M2TvE6lsWrgbzUKuygxVu9K21jHkXSEyd1FkDWAAvE4XTtV3NbK/h
+	 geGbVEAi8hJOV6ODUe/wkbWQEUtBmi3R97vumnNvgkw7oFM08dk40yR+BSI14Hb3oN
+	 4U5DLAgmgVEtkvI86f+afxxIuhyerFeqA48dlhOsUNbh8eW9vI71vzTPwjN2zTWAaP
+	 zpEC0HK44AeIIe/NNS5pDu6IK2kTLuPo1zCSpF0fhgfUHJBF7/+WEvv7QnxVxLTclW
+	 6z8ISRsmiX7cg==
+Date: Thu, 14 Aug 2025 21:29:01 -0500
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-References: <20250805135447.149231-1-laura.nao@collabora.com> <20250805135447.149231-8-laura.nao@collabora.com>
-In-Reply-To: <20250805135447.149231-8-laura.nao@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 15 Aug 2025 12:37:10 +0900
-X-Gm-Features: Ac12FXy4p8YRr4aG5a7_JIWdQm-9n2bHamyXaYwe_ClxduFqvhUqhAoMHloBxT8
-Message-ID: <CAGXv+5HRKFrdjjXkwN6=OLtk=bK3C3mBnrDtmkEWeuxjz0pFKg@mail.gmail.com>
-Subject: Re: [PATCH v4 07/27] clk: mediatek: clk-gate: Add ops for gates with
- HW voter
-To: Laura Nao <laura.nao@collabora.com>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, robh@kernel.org, 
-	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com, p.zabel@pengutronix.de, 
-	richardcochran@gmail.com, guangjie.song@mediatek.com, 
-	linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
-	kernel@collabora.com, =?UTF-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4gUHJhZG8=?= <nfraprado@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, devicetree@vger.kernel.org, 
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, 
+ linux-mediatek@lists.infradead.org, ~postmarketos/upstreaming@lists.sr.ht, 
+ Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>, 
+ Kishon Vijay Abraham I <kishon@kernel.org>, 
+ linux-arm-kernel@lists.infradead.org, 
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, 
+ linux-phy@lists.infradead.org
+To: Arseniy Velikanov <me@adomerle.pw>
+In-Reply-To: <20250814234825.810-1-me@adomerle.pw>
+References: <20250814234825.810-1-me@adomerle.pw>
+Message-Id: <175522494130.180632.985870901068506270.robh@kernel.org>
+Subject: Re: [PATCH v1 1/2] dt-bindings: phy: mtk-tphy: add property for
+ software role switch
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250814_203722_949583_5343731E 
-X-CRM114-Status: GOOD (  24.40  )
+X-CRM114-CacheID: sfid-20250814_192902_963744_8265E2FA 
+X-CRM114-Status: UNSURE (   9.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,236 +79,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 5, 2025 at 10:55=E2=80=AFPM Laura Nao <laura.nao@collabora.com>=
- wrote:
->
-> MT8196 use a HW voter for gate enable/disable control. Voting is
-> performed using set/clr regs, with a status bit used to verify the vote
-> state. Add new set of gate clock operations with support for voting via
-> set/clr regs.
->
-> Reviewed-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
-> Signed-off-by: Laura Nao <laura.nao@collabora.com>
+
+On Fri, 15 Aug 2025 03:48:24 +0400, Arseniy Velikanov wrote:
+> Add a boolean property to enable software control of the PHY mode
+> switching.
+> 
+> Signed-off-by: Arseniy Velikanov <me@adomerle.pw>
 > ---
->  drivers/clk/mediatek/clk-gate.c | 77 +++++++++++++++++++++++++++++++--
->  drivers/clk/mediatek/clk-gate.h |  3 ++
->  2 files changed, 77 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/clk/mediatek/clk-gate.c b/drivers/clk/mediatek/clk-g=
-ate.c
-> index 0375ccad4be3..426f3a25763d 100644
-> --- a/drivers/clk/mediatek/clk-gate.c
-> +++ b/drivers/clk/mediatek/clk-gate.c
-> @@ -5,6 +5,7 @@
->   */
->
->  #include <linux/clk-provider.h>
-> +#include <linux/dev_printk.h>
->  #include <linux/mfd/syscon.h>
->  #include <linux/module.h>
->  #include <linux/printk.h>
-> @@ -12,14 +13,19 @@
->  #include <linux/slab.h>
->  #include <linux/types.h>
->
-> +#include "clk-mtk.h"
->  #include "clk-gate.h"
->
->  struct mtk_clk_gate {
->         struct clk_hw   hw;
->         struct regmap   *regmap;
-> +       struct regmap   *regmap_hwv;
->         int             set_ofs;
->         int             clr_ofs;
->         int             sta_ofs;
-> +       unsigned int    hwv_set_ofs;
-> +       unsigned int    hwv_clr_ofs;
-> +       unsigned int    hwv_sta_ofs;
->         u8              bit;
->  };
->
-> @@ -100,6 +106,28 @@ static void mtk_cg_disable_inv(struct clk_hw *hw)
->         mtk_cg_clr_bit(hw);
->  }
->
-> +static int mtk_cg_hwv_set_en(struct clk_hw *hw, bool enable)
-> +{
-> +       struct mtk_clk_gate *cg =3D to_mtk_clk_gate(hw);
-> +       u32 val;
-> +
-> +       regmap_write(cg->regmap_hwv, enable ? cg->hwv_set_ofs : cg->hwv_c=
-lr_ofs, BIT(cg->bit));
-> +
-> +       return regmap_read_poll_timeout_atomic(cg->regmap_hwv, cg->hwv_st=
-a_ofs, val,
-> +                                              val & BIT(cg->bit),
-> +                                              0, MTK_WAIT_HWV_DONE_US);
-> +}
-> +
-> +static int mtk_cg_hwv_enable(struct clk_hw *hw)
-> +{
-> +       return mtk_cg_hwv_set_en(hw, true);
-> +}
-> +
-> +static void mtk_cg_hwv_disable(struct clk_hw *hw)
-> +{
-> +       mtk_cg_hwv_set_en(hw, false);
-> +}
-> +
->  static int mtk_cg_enable_no_setclr(struct clk_hw *hw)
->  {
->         mtk_cg_clr_bit_no_setclr(hw);
-> @@ -124,6 +152,15 @@ static void mtk_cg_disable_inv_no_setclr(struct clk_=
-hw *hw)
->         mtk_cg_clr_bit_no_setclr(hw);
->  }
->
-> +static bool mtk_cg_uses_hwv(const struct clk_ops *ops)
-> +{
-> +       if (ops =3D=3D &mtk_clk_gate_hwv_ops_setclr ||
-> +           ops =3D=3D &mtk_clk_gate_hwv_ops_setclr_inv)
-> +               return true;
-> +
-> +       return false;
-> +}
-> +
->  const struct clk_ops mtk_clk_gate_ops_setclr =3D {
->         .is_enabled     =3D mtk_cg_bit_is_cleared,
->         .enable         =3D mtk_cg_enable,
-> @@ -138,6 +175,20 @@ const struct clk_ops mtk_clk_gate_ops_setclr_inv =3D=
- {
->  };
->  EXPORT_SYMBOL_GPL(mtk_clk_gate_ops_setclr_inv);
->
-> +const struct clk_ops mtk_clk_gate_hwv_ops_setclr =3D {
-> +       .is_enabled     =3D mtk_cg_bit_is_cleared,
-> +       .enable         =3D mtk_cg_hwv_enable,
-> +       .disable        =3D mtk_cg_hwv_disable,
-> +};
-> +EXPORT_SYMBOL_GPL(mtk_clk_gate_hwv_ops_setclr);
-> +
-> +const struct clk_ops mtk_clk_gate_hwv_ops_setclr_inv =3D {
-> +       .is_enabled     =3D mtk_cg_bit_is_set,
-> +       .enable         =3D mtk_cg_hwv_enable,
-> +       .disable        =3D mtk_cg_hwv_disable,
-> +};
-> +EXPORT_SYMBOL_GPL(mtk_clk_gate_hwv_ops_setclr_inv);
-> +
->  const struct clk_ops mtk_clk_gate_ops_no_setclr =3D {
->         .is_enabled     =3D mtk_cg_bit_is_cleared,
->         .enable         =3D mtk_cg_enable_no_setclr,
-> @@ -153,8 +204,9 @@ const struct clk_ops mtk_clk_gate_ops_no_setclr_inv =
-=3D {
->  EXPORT_SYMBOL_GPL(mtk_clk_gate_ops_no_setclr_inv);
->
->  static struct clk_hw *mtk_clk_register_gate(struct device *dev,
-> -                                               const struct mtk_gate *ga=
-te,
-> -                                               struct regmap *regmap)
-> +                                           const struct mtk_gate *gate,
-> +                                           struct regmap *regmap,
-> +                                           struct regmap *regmap_hwv)
->  {
->         struct mtk_clk_gate *cg;
->         int ret;
-> @@ -169,11 +221,22 @@ static struct clk_hw *mtk_clk_register_gate(struct =
-device *dev,
->         init.parent_names =3D gate->parent_name ? &gate->parent_name : NU=
-LL;
->         init.num_parents =3D gate->parent_name ? 1 : 0;
->         init.ops =3D gate->ops;
-> +       if (mtk_cg_uses_hwv(init.ops) && !regmap_hwv) {
-> +               dev_err(dev, "regmap not found for hardware voter clocks\=
-n");
-> +               return ERR_PTR(-ENXIO);
+>  Documentation/devicetree/bindings/phy/mediatek,tphy.yaml | 6 ++++++
+>  1 file changed, 6 insertions(+)
+> 
 
-return dev_err_probe()?
+My bot found errors running 'make dt_binding_check' on your patch:
 
-I believe the same applies to the previous patch.
+yamllint warnings/errors:
 
-> +       }
->
->         cg->regmap =3D regmap;
-> +       cg->regmap_hwv =3D regmap_hwv;
->         cg->set_ofs =3D gate->regs->set_ofs;
->         cg->clr_ofs =3D gate->regs->clr_ofs;
->         cg->sta_ofs =3D gate->regs->sta_ofs;
-> +       if (gate->hwv_regs) {
-> +               cg->hwv_set_ofs =3D gate->hwv_regs->set_ofs;
-> +               cg->hwv_clr_ofs =3D gate->hwv_regs->clr_ofs;
-> +               cg->hwv_sta_ofs =3D gate->hwv_regs->sta_ofs;
-> +       }
-> +
->         cg->bit =3D gate->shift;
->
->         cg->hw.init =3D &init;
-> @@ -206,6 +269,7 @@ int mtk_clk_register_gates(struct device *dev, struct=
- device_node *node,
->         int i;
->         struct clk_hw *hw;
->         struct regmap *regmap;
-> +       struct regmap *regmap_hwv;
->
->         if (!clk_data)
->                 return -ENOMEM;
-> @@ -216,6 +280,13 @@ int mtk_clk_register_gates(struct device *dev, struc=
-t device_node *node,
->                 return PTR_ERR(regmap);
->         }
->
-> +       regmap_hwv =3D mtk_clk_get_hwv_regmap(node);
-> +       if (IS_ERR(regmap_hwv)) {
-> +               pr_err("Cannot find hardware voter regmap for %pOF: %pe\n=
-",
-> +                      node, regmap_hwv);
-> +               return PTR_ERR(regmap_hwv);
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml: mediatek,software-role-switch: missing type definition
 
-return dev_err_probe();
+doc reference errors (make refcheckdocs):
 
-ChenYu
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250814234825.810-1-me@adomerle.pw
 
-> +       }
-> +
->         for (i =3D 0; i < num; i++) {
->                 const struct mtk_gate *gate =3D &clks[i];
->
-> @@ -225,7 +296,7 @@ int mtk_clk_register_gates(struct device *dev, struct=
- device_node *node,
->                         continue;
->                 }
->
-> -               hw =3D mtk_clk_register_gate(dev, gate, regmap);
-> +               hw =3D mtk_clk_register_gate(dev, gate, regmap, regmap_hw=
-v);
->
->                 if (IS_ERR(hw)) {
->                         pr_err("Failed to register clk %s: %pe\n", gate->=
-name,
-> diff --git a/drivers/clk/mediatek/clk-gate.h b/drivers/clk/mediatek/clk-g=
-ate.h
-> index 1a46b4c56fc5..4f05b9855dae 100644
-> --- a/drivers/clk/mediatek/clk-gate.h
-> +++ b/drivers/clk/mediatek/clk-gate.h
-> @@ -19,6 +19,8 @@ extern const struct clk_ops mtk_clk_gate_ops_setclr;
->  extern const struct clk_ops mtk_clk_gate_ops_setclr_inv;
->  extern const struct clk_ops mtk_clk_gate_ops_no_setclr;
->  extern const struct clk_ops mtk_clk_gate_ops_no_setclr_inv;
-> +extern const struct clk_ops mtk_clk_gate_hwv_ops_setclr;
-> +extern const struct clk_ops mtk_clk_gate_hwv_ops_setclr_inv;
->
->  struct mtk_gate_regs {
->         u32 sta_ofs;
-> @@ -31,6 +33,7 @@ struct mtk_gate {
->         const char *name;
->         const char *parent_name;
->         const struct mtk_gate_regs *regs;
-> +       const struct mtk_gate_regs *hwv_regs;
->         int shift;
->         const struct clk_ops *ops;
->         unsigned long flags;
-> --
-> 2.39.5
->
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
+
 
