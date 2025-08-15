@@ -4,85 +4,160 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4820CA0EE4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Aug 2025 20:20:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56A4DCA0ED1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Aug 2025 20:20:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:
-	To:From:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=TK240Dx1dzoWdaIXJuYaN3i3wwO6c6dW8DEoHJi+mJA=; b=zD8DVOVpWt+AUm
-	X4pxQ7MeM+NVouDUBFN0pDvOBArD9oYJov1Tp7rb1OUtfr0UAhvjjrGyCGxuBR7Szxpg2NXZMEuZK
-	0AAEJ0fp5d1vrCYea5Mh/tHVFLL5qNBakYvfjXVCd0pkJ6MagnY7/d5uPZzL7lwIc7rCLfeoaY1Km
-	mrLwu0c0aTXv4NwSWc/0GuFPIOIIEuVCUqmW3/2p+fmYxyNi7iGyr/gQNW8QIEBwckcLZRRa3fMEF
-	GZLiXR75UY5Gx72d1qykoBOgaoCOs6NCk/3BQa9w1YhamnYChHsJ9773OMRmC+YxHQ6FG/LystZga
-	rp0eTqL7HpOVPvp/ijDA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FqX+/7tqtvqZ0h2XZ5+txCb4YhUTQ2SiaPt7MP9iPD0=; b=Xr2RpW2Joa5TGnxdE+nZSa3V7h
+	dwD+FxiAoQf1CVnLPQATtTOyEErgDj9wDcY28ZaeEJidQ/3+PayRwKxx1GqXaaWUwtqtjXu9iIDsT
+	cL/4T3JGuReTQJesrnvdhbKOD9m3FjK1xucrlSBET/RqzwkKWF0JB0uoWpd+E+OxfgMEJX2i6XWiy
+	PwIHhjZApVnNTrpP8/BEEZdvmO9zl+3ua7raajhWfBaWHpsT1n6Kz9+XdK8H+Qy2a+d3M9VFVekMs
+	CPNT6LW/0iCyxCqYTv/7s+WDTBRloGet22cGuwSplp0JGUXDh70npjiia/jISXDWIMaGm1YocACeo
+	6ABLLYQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1un0u8-00000003Qex-0x2P;
-	Fri, 15 Aug 2025 20:20:00 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1un0uA-00000003Qhk-1Jew;
+	Fri, 15 Aug 2025 20:20:02 +0000
+Received: from mail-bn8nam11on20606.outbound.protection.outlook.com ([2a01:111:f403:2414::606] helo=NAM11-BN8-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umz6I-00000003F9X-1S5r
-	for linux-mediatek@bombadil.infradead.org;
-	Fri, 15 Aug 2025 18:24:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
-	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Sender:Cc:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=TK240Dx1dzoWdaIXJuYaN3i3wwO6c6dW8DEoHJi+mJA=; b=BHjKnrIhNUfqIjt04y9UQMqjK8
-	escLY+ojRsWaCVupGF+XFMbIDtRAbMks9XHic3RdjEaiyylta2XdYcWZbSamcN2EcWuK67rzAlsPc
-	/cfpQ9m3CllNLEmm7kPEaN/QWxH1Gk1M2A0gXiwpeD6IUPhAoc4TAwJldH9d7OAyfSmfGPUg57Pe1
-	Mn/JZTvsAekFtLJ2Yo7ZM79QC3k6h+dpSfSQ/vJXV/hsqnFfOpzcxK2rT3ofO43AGTbjMFJEb1alh
-	aMXX0yzrf3LTk/QQ0Da3iSrgdIxdz2CEiYl4h+7dv7C6cUJYJ1VAIH7etjLLEzhw7ZFlBY3yjEex0
-	mrfdLKMw==;
-Received: from vzded161.smartservers.com.au ([203.98.83.53])
-	by casper.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umz6E-0000000G0Td-1PDr
-	for linux-mediatek@lists.infradead.org;
-	Fri, 15 Aug 2025 18:24:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=arcmarine.com; s=default; h=Content-Transfer-Encoding:Content-Type:
-	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Sender:Cc:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=TK240Dx1dzoWdaIXJuYaN3i3wwO6c6dW8DEoHJi+mJA=; b=drg2JZjHD+zcZ2HvylbQ+z1i32
-	SlmItLeL21fqo2a/q9bElXD0UdWMOk2ZfWavQ7J90wxv31c+4oqib5RSoxlgLWP6yVAC53W1twDG+
-	+nJHn9tltWvOJS7wBYjWqxtXlqkvQWsEB9vt0oYY6e9zIWIShOyLKGUorTmrW4YYESwcHHIst868o
-	+DMFYO6wj//Czas18X7COFciy+/s0bhiEk+zl3wZOkvlzaLvblNfbA3IJGBTZXmJrubOaE8x/1e9j
-	oIm95KPNbfTM2tvbGrvS4SBvNy8pVQU/8KmmKrQwZjGDap2YmAdrj6s5r1Q3fGaIghYFoZOKLY8Dy
-	8yJUeZOg==;
-Received: from [45.94.31.42] (port=57482)
-	by vzded161.smartservers.com.au with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
-	(Exim 4.98.2)
-	(envelope-from <mail.yanalfinance@gmail.com>)
-	id 1umz69-00000003AcC-1g7w
-	for linux-mediatek@lists.infradead.org;
-	Sat, 16 Aug 2025 04:24:14 +1000
-From: "John Walter " <mail.yanalfinance@gmail.com>
-To: linux-mediatek@lists.infradead.org
-Subject: PARTNERSHIP\LOAN
-Date: 15 Aug 2025 11:24:01 -0700
-Message-ID: <20250815112400.03E128584C95D9B8@gmail.com>
+	id 1umzQz-00000003H7D-17jp;
+	Fri, 15 Aug 2025 18:45:50 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=hAx+KXYpfTaTvvvyw3CdjbTF1uclyNPvlICY7ssgmiCMYJ6C+udVenue0wuLt7D9vTfiCpQt692ntHPfnJz6oBP8Tesz0bpgq8nukr2EAWzGxzEM0VCSTV9MFOAAwxkAwcSeTUik9Xtn7TQ4/O+XiZ/pDOHimOyfTHKZmGt30RsmH2t2CHJiiHD5ee3zopD0Zvp152lh2Q81dlaTYSTM3QvEZKl+Nodcz4f2EBa9g6XhNLazaxmVs2gSTzSCXUTQpt0izYgWzdnUm9z8IgYPgQ9ejUqeXe3XGZv2yZ1yMl87xeThY/eiI83N8VneS2lSx83905pJ+dA8ZJ99+YRpvg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=FqX+/7tqtvqZ0h2XZ5+txCb4YhUTQ2SiaPt7MP9iPD0=;
+ b=tIDgmAs9Se+S+lH19yAVGqKSXR14hi+uGLsQaBU8hwg+s4p3m32GsIUkDS3NBpcE9NvYviw4AKePZ3O3X16s2YfQIgO1q4tM+r+1JHiyflytovqLJ33dY/viICxZdlvVak3SRWkhOWVtJyQ51GbnuL+yM8J3maLKJBaZ/GUBI6IM2Nm4QDITL0x5l5geSBaYi0xvcTW9PU3l4gxdIm95S9OAca2gcZ5KUuBCsh1hNM6OI+mmcCGV1X4MjJkFmH4o/9OMJlU7jJWhuYYMNJ6LiQmpsw+XaDD5dlUONaku9M1dLATwwTFnp+ZyQoeEHoQn6aE8OMC2xOvocO50iFXPEQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.160) smtp.rcpttodomain=intel.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=FqX+/7tqtvqZ0h2XZ5+txCb4YhUTQ2SiaPt7MP9iPD0=;
+ b=si8WfRdRp9fno8qBtbDJdvHQU6+Lz7N6pgCWfze36DvXqB2tICIrndRio24Bbf0tUCO0PJazHDcBPORKpXGsxBy9NV0CvkEpGEg9YtQjOGASEv8YGDbZml717xPJXZh9gEXGYYXqV+u0t4AzOuGcTWC2hU9ka8REhNnfp6225Md9cY6RCnc/PkVtXHfAQAJFiubeZuwi79pQDaRqZllwvQKfdpDIP5trQYPgsl5lFp0GxkyNZrQxiEvCiucae4KCU9ZsKYDP3EQgcMS5pGnj2+4Gvoas6o6RftYDPujrpZUSCiGHax9XH49yRLMxZCmfmTABIYkjsg2nisea05KIrQ==
+Received: from DS7PR03CA0167.namprd03.prod.outlook.com (2603:10b6:5:3b2::22)
+ by IA0PPFAF4999BF6.namprd12.prod.outlook.com (2603:10b6:20f:fc04::be0) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9031.14; Fri, 15 Aug
+ 2025 18:45:42 +0000
+Received: from DS1PEPF0001709C.namprd05.prod.outlook.com
+ (2603:10b6:5:3b2:cafe::40) by DS7PR03CA0167.outlook.office365.com
+ (2603:10b6:5:3b2::22) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9031.18 via Frontend Transport; Fri,
+ 15 Aug 2025 18:45:41 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
+ smtp.mailfrom=nvidia.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.160) by
+ DS1PEPF0001709C.mail.protection.outlook.com (10.167.18.106) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9052.8 via Frontend Transport; Fri, 15 Aug 2025 18:45:41 +0000
+Received: from rnnvmail205.nvidia.com (10.129.68.10) by mail.nvidia.com
+ (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Fri, 15 Aug
+ 2025 11:45:24 -0700
+Received: from rnnvmail201.nvidia.com (10.129.68.8) by rnnvmail205.nvidia.com
+ (10.129.68.10) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Fri, 15 Aug
+ 2025 11:45:23 -0700
+Received: from Asurada-Nvidia (10.127.8.9) by mail.nvidia.com (10.129.68.8)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14 via Frontend
+ Transport; Fri, 15 Aug 2025 11:45:21 -0700
+Date: Fri, 15 Aug 2025 11:45:19 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: "Tian, Kevin" <kevin.tian@intel.com>
+CC: "robin.murphy@arm.com" <robin.murphy@arm.com>, "joro@8bytes.org"
+	<joro@8bytes.org>, "bhelgaas@google.com" <bhelgaas@google.com>,
+	"jgg@nvidia.com" <jgg@nvidia.com>, "will@kernel.org" <will@kernel.org>,
+	"robin.clark@oss.qualcomm.com" <robin.clark@oss.qualcomm.com>,
+	"yong.wu@mediatek.com" <yong.wu@mediatek.com>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>, "thierry.reding@gmail.com"
+	<thierry.reding@gmail.com>, "vdumpa@nvidia.com" <vdumpa@nvidia.com>,
+	"jonathanh@nvidia.com" <jonathanh@nvidia.com>, "rafael@kernel.org"
+	<rafael@kernel.org>, "lenb@kernel.org" <lenb@kernel.org>, "Liu, Yi L"
+	<yi.l.liu@intel.com>, "baolu.lu@linux.intel.com" <baolu.lu@linux.intel.com>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "iommu@lists.linux.dev"
+	<iommu@lists.linux.dev>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "linux-arm-msm@vger.kernel.org"
+	<linux-arm-msm@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "linux-tegra@vger.kernel.org"
+	<linux-tegra@vger.kernel.org>, "linux-acpi@vger.kernel.org"
+	<linux-acpi@vger.kernel.org>, "linux-pci@vger.kernel.org"
+	<linux-pci@vger.kernel.org>, "patches@lists.linux.dev"
+	<patches@lists.linux.dev>, "Jaroszynski, Piotr" <pjaroszynski@nvidia.com>,
+	"Sethi, Vikram" <vsethi@nvidia.com>, "helgaas@kernel.org"
+	<helgaas@kernel.org>, "etzhao1900@gmail.com" <etzhao1900@gmail.com>
+Subject: Re: [PATCH v3 3/5] iommu: Add iommu_get_domain_for_dev_locked()
+ helper
+Message-ID: <aJ+AP18ucw3Jb6QO@Asurada-Nvidia>
+References: <cover.1754952762.git.nicolinc@nvidia.com>
+ <a69557026b7e2353bae67104bbe6a88f0682305e.1754952762.git.nicolinc@nvidia.com>
+ <BN9PR11MB52769ACDFED7201CE282FE3C8C34A@BN9PR11MB5276.namprd11.prod.outlook.com>
 MIME-Version: 1.0
-Content-Type: text/plain;
-	charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
-X-AntiAbuse: Primary Hostname - vzded161.smartservers.com.au
-X-AntiAbuse: Original Domain - lists.infradead.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - gmail.com
-X-Get-Message-Sender-Via: vzded161.smartservers.com.au: authenticated_id: arcmumacct7@arcmarine.com
-X-Authenticated-Sender: vzded161.smartservers.com.au: arcmumacct7@arcmarine.com
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <BN9PR11MB52769ACDFED7201CE282FE3C8C34A@BN9PR11MB5276.namprd11.prod.outlook.com>
+X-NV-OnPremToCloud: ExternallySecured
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS1PEPF0001709C:EE_|IA0PPFAF4999BF6:EE_
+X-MS-Office365-Filtering-Correlation-Id: 0865e9ea-fef3-4ddf-b002-08dddc2befae
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|82310400026|36860700013|7416014|376014;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?Q05Meb7QQNBdDfARrZ62OUm1QwgCAAzK+VxnWLRs3oc6bokHBNzi7tM3ZQEe?=
+ =?us-ascii?Q?OLyCYkekDBUcGo0DQzA+JNoscHZKFW6eU+XEVcw67DbR/S+Kx0ntOULdFWT/?=
+ =?us-ascii?Q?TDwojtl2NYEJwidv/+r0AND/XLHPnqhBr/80mvhhtHDRry5aBtlwAu2D3UAY?=
+ =?us-ascii?Q?cNqrMWKr+Q0M1Uf9op6RK84k2yf11x8MzcHpnQ7ICqHSR5NEIVTzXuDaP8Wp?=
+ =?us-ascii?Q?KFoys1dBS4nMtK1IUjHr3pZdzT1lP6+IM2vcap4qkcDw8zI9ZEQBl0vFdrNq?=
+ =?us-ascii?Q?C9FVhLkvjY+0hL2328m6O8IyCSNQl3QXeE32STvgE/PS07wi7TU1xrX4axXB?=
+ =?us-ascii?Q?fhpo3XnhkWZTgrxNhD/C9GSfxrsViuhLstmMYQkzWeJM1Aj4OAuI2Xx13BIZ?=
+ =?us-ascii?Q?OzcJY6fPDkV4UvoD9h3SBLo2QJXf4RCQ15ul0w0I38H6oF88D6qBNCpVseB+?=
+ =?us-ascii?Q?GRTHlL4+WClJnjkItDjQrDQ7u8aa5idioe+d8mKeTweG62a4eL9wQz63VIK7?=
+ =?us-ascii?Q?pLMQ+JpDp0T1lSspNDl4Sxgom8kUt1AK64hhaAi1IIVglUj/l4DpogahPJVq?=
+ =?us-ascii?Q?Trm4Y5bJV6tbRWJZUtm6BHTMU4KZLC7Cr1v1NRgsWVwpxvtzpg0rL1WHLOra?=
+ =?us-ascii?Q?j3gzMS2Chpw9CTxrtc9WrWkIp4brqEz+LkX8mG/GnuhFOx6IGpaysWwGwpSI?=
+ =?us-ascii?Q?ck04S6sOEVtS/JSwc9y96dAadUXjDIlyluyy8n6k0k9xfhngxMWSgFKNitF4?=
+ =?us-ascii?Q?s/uul+zAhNTe5/A+lHrEZLL9uwVXiER039mlSUNvIAZAKo1/sV9Jvc20rwXc?=
+ =?us-ascii?Q?Oo8kIbR9gBW2ALyjtlvZk+nQ4ZYocYkThBp89YL3CEw/wGaUfPQ4YBbTehcD?=
+ =?us-ascii?Q?OLB7gb7kkqn5f3t1RZOyCUYMhYIQUFkFtLSzU/Ux6+jSk469Yl5cwCxTVe42?=
+ =?us-ascii?Q?cMNFGxoWf4gL4j3AFr690u9NLP5LbycBNiRS7LTPmCoMpgso8R5U8Is5CTvq?=
+ =?us-ascii?Q?BCVJe4p/CsZRx2ODdkB0A73uKkANzTCQ08TsqEswPDpSoAVWWX6nbWQlmM/X?=
+ =?us-ascii?Q?cazlFp613+pTYgvolJKMDXFs6sUUK5RKOpomKk5zXeV5r3B9Od7dQWkz7MSJ?=
+ =?us-ascii?Q?kpH1jaGWeZQlnOlDaenRru7rcR3tVzpAWGtcGp6FXH1qUNZFf5rBbZkgQkqY?=
+ =?us-ascii?Q?R155fJ0w7mf4A9cc7jq4JvJ1QX2QgplASucrtQFjC6QPsW30PRvL2wP7I8AM?=
+ =?us-ascii?Q?Ep7MfCfOH7sXCYjBz7XFqAAYE+tQ2HNRHLN4NFGypI03QM1WqSdYGE5en3GP?=
+ =?us-ascii?Q?I9IiWxqziC3BcsyQhuA/yuRzu+qBPEnxkLsM7HHMu9ysAzy0i9exVrISQz/L?=
+ =?us-ascii?Q?Tw2ZrD4Ec50T3BB4fKrahuOx02qPzICZRNv5MCyli70sRisMEZuz2z42x8xJ?=
+ =?us-ascii?Q?Rgpl2Z+Q1eqJzzdXZ75b+XPF01GD3rZXJmKIypZp/or9Yqj0aiqyqKBGsjHC?=
+ =?us-ascii?Q?rWrXZoxftsGWgLyhh34hS+mhVT5U8eh6PzBQ?=
+X-Forefront-Antispam-Report: CIP:216.228.117.160;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc6edge1.nvidia.com;CAT:NONE;SFS:(13230040)(1800799024)(82310400026)(36860700013)(7416014)(376014);DIR:OUT;SFP:1101;
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Aug 2025 18:45:41.8008
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0865e9ea-fef3-4ddf-b002-08dddc2befae
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.117.160];Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: DS1PEPF0001709C.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA0PPFAF4999BF6
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250815_192423_657014_FCF4B779 
-X-CRM114-Status: SPAM  (  -6.89  )
+X-CRM114-CacheID: sfid-20250815_114549_312999_B6048CF5 
+X-CRM114-Status: GOOD (  22.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,30 +169,53 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: consultjohnwalter@gmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Greetings linux-mediatek,
+On Fri, Aug 15, 2025 at 08:55:28AM +0000, Tian, Kevin wrote:
+> > From: Nicolin Chen <nicolinc@nvidia.com>
+> > Sent: Tuesday, August 12, 2025 6:59 AM
+> > On the other hand, the iommu_get_domain_for_dev() API always returns the
+> > group->domain pointer, and several IOMMMU drivers call this API in their
+> > attach_dev callback functions to get the currently attached domain for a
+> > device, which will be broken for the recovery case mentioned above:
+> >  1. core asks the driver to attach dev from blocked to group->domain
+> >  2. driver attaches dev from group->domain to group->domain
+> 
+> the 2nd bullet implies that a driver may skip the operation by noting that
+> old domain is same as the new one?
 
-I am Financial Consultant and I found your email contact in
-google business directory.
+Drivers uses iommu_get_domain_for_dev() to get the "old domain".
+But during a reset, it doesn't return the actual old domain that
+should be blocked domain but returns the group->domain.
 
-I'm contacting you to recommend an investment as I have high
-profiled Investors with capacity to approve direct loan from=20
-$2million to $500 million or more, to implement genuine projects.
+Driver needs the actual domain (blocked) in that case because it
+handles the requests from iommu_dev_reset_prepare/done().
 
-Respond if you have a project that requires capital to execute.
+> > So, iommu_get_domain_for_dev() should check the gdev flag and return the
+> > blocked domain if the flag is set. But the caller of this API could hold
+> > the group->mutex already or not, making it difficult to add the lock.
+> > 
+> > Introduce a new iommu_get_domain_for_dev_locked() helper to be used by
+> > those drivers in a context that is already under the protection of the
+> > group->mutex, e.g. those attach_dev callback functions. And roll out the
+> > new helper to all the existing IOMMU drivers.
+> 
+> iommu_get_domain_for_dev() is also called outside of attach_dev
+> callback functions, e.g. malidp_get_pgsize_bitmap(). and the returned
+> info according to the attached domain might be saved in static
+> structures, e.g.:
+> 
+> 	ms->mmu_prefetch_pgsize = malidp_get_pgsize_bitmap(mp);
+> 
+> would that cause weird issues when blocking domain is returned
+> though one may not expect reset to happen at that point?
 
-I will provide guidelines for you to apply funding through the
-Investment company I work with on interest rate of 1.5% annually.
+We aren't changing the iommu_get_domain_for_dev(). So, it should
+be used exclusively for functions that are outside group->mutex,
+like this one, i.e. they should still get the group->domain v.s.
+the blocked domain.
 
-Once you respond I will provide you with more details.
-
-Look forward to hearing you.
-
-Best Regards,
-
-John Walter
-Financial Advisor/Consultant
+Thanks
+Nicolin
 
