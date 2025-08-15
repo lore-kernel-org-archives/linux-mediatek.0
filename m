@@ -4,60 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C62D7CA0EE0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Aug 2025 05:20:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00D39CA0ED1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Aug 2025 05:30:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Nj5rA64RD6qkRiVqBvawEfccQ2+uLkrtP869UCuNn10=; b=uPg4oTkznQ2kbUPayuRam9jUlN
-	MP/G3PHcoEEYt3EUvMcAq5W9MkdAEOyq/oVwZURreWIQ98AEjm4WsHqNElNMo898w7UOqJfphWwfo
-	qINUg9G3KJw7s6YNOZdhh2IZEv4Qfmr/aAlkOdoQQCIAxx2FEJC+3UOlRE4i8ssUdNCNBFvimbU6Z
-	PUrYxJlf4fXJh2lqofuCVE9Yx49Kuf4I+Hm+gOJvufcXglbzo8MkdD14qTlHlpDF9Y/sLs6vQwBfJ
-	auM6PLU/V3rRrEWdKlkVSO9tkmA6QY6+zYwyMsUqXOznSnOZ4XPv/GlE5d1EsRVfMnJHNr9X0IpOA
-	pvotqYvw==;
+	bh=hf+KlM64LNNVE7O9+mvl/RJLu1Tb3EG6siALgLBwUCE=; b=KeVPyEYngWDfj8FWg5IAFUQdjn
+	z4F/CTwoyXIHwbRRNXSEi8eSIFEmS9ky9psTqUMSv6HCfP1NfIYWgAQYpXNJns83rziWdNaOTmZi0
+	phrF4aw+NSP6hOhNjwmFUnJHoEuxmqUmo/wZ9//iQja5lkVMn6M+qfeA2Pqsj+uD8WOQc6f6drtLN
+	+2f+9XAJHEnivkKkZr6b007I1A6VaVBBFaFtE4VtefBEke/yq+j+g9QdcDZHENZKzF8mKQDJ/axDu
+	4Fkewx6hVr1bqKZdT9EQl3hkl5IHW3ogOfwBjdcLSsYAKs4wasjrxgl1aReZoEr1at8CqsixfKqoP
+	zlH3fJEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ummrl-00000001W5p-3cqC;
-	Fri, 15 Aug 2025 05:20:37 +0000
-Received: from mgamail.intel.com ([192.198.163.7])
+	id 1umn1F-00000001Wuh-2eti;
+	Fri, 15 Aug 2025 05:30:25 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ummrh-00000001W5I-22OS;
-	Fri, 15 Aug 2025 05:20:36 +0000
+	id 1umn1E-00000001WuJ-1IRd;
+	Fri, 15 Aug 2025 05:30:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=hf+KlM64LNNVE7O9+mvl/RJLu1Tb3EG6siALgLBwUCE=; b=oLDz4NKueCvfqY99y4v5xmf1uy
+	JgqIycDhStY1rGhnoCP1AxLD8PhlH4N3yE/WpoJXQY0XfKDioXP+X1gOziJLHUFUvSo5JA+dYYBRx
+	73J7XRaz306cwV3YcG5R3ZNAWTAYbPPAhC57IHpKAishDhm+Kf2ATVKVerlqxxLZwj8qIlPRQPrBn
+	UEX44iQhY6L3F40XRKzttjXWQ7Z4Kt8WIZ6Bw0Oj95QABj4SzKvui1kb2RLGJu7tv+Ee6ehvnS/J/
+	iSvXD6733nV/HSFbf9WCv6wj12TyCYf4AkMH19L7GrKrEVksPXWiaiqyh5Zd4rpEARawNZnTm6zn0
+	Q2smjjAA==;
+Received: from mgamail.intel.com ([192.198.163.7])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1umn1A-0000000GcgO-2tMi;
+	Fri, 15 Aug 2025 05:30:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1755235234; x=1786771234;
+  t=1755235821; x=1786771821;
   h=message-id:date:mime-version:subject:to:cc:references:
    from:in-reply-to:content-transfer-encoding;
-  bh=bfWN7p/dN5CQdIzjUhkdC/9puNhPF03kOfuc8TkPySk=;
-  b=GZfEpUeRvhASrdUkBhJT/i3LpH9+oKqMaNsJY9PpOyWbenagy3o/uDyU
-   ZVlyVOAiInYgWapf4zlUbZDW9bgPkTqbYMxtuuoefmqRwxRVUatdW/1XX
-   Iuh2Ojn2lusPd5FL0aIwDGXKINjQlyXXWuzOqdxZbvMz1cHTO8EEbuFhQ
-   6t8TwPnZRu5MK4gP/VnBSzDnZ390xYulBKngEBEj8KAhrfC+1eGsu2y9N
-   5nf7osqomvbvoc9kVnC4OjG5JwlLWvOj64ClVkQvqI3tWG4Voy/FWU9ye
-   W95Ivph2Nmpcx3B4OenzdPG3FFo/UCvwZeBZ0CZVKLHKSnEPwOpZiZMdt
-   g==;
-X-CSE-ConnectionGUID: 52xdbsSDTFSb58GXO1XNSw==
-X-CSE-MsgGUID: hjdBPTaRQv2wkPTVg4jcgg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11522"; a="82994561"
+  bh=y0xyaJyPtcDPNLHhbPevkPLJ5VRQZj0+f0qVNL2ihWc=;
+  b=lCQcLeG1dS5V6/H3Nn0ZABizJ7oYTaZh2waLl2Q36mHsOfyiqRrJ4HkG
+   RvjCoVaLZgKd2tGggE2M8VSfWF+FJds63BxmrmKQ3UCklSAaeJgtBlg+9
+   UZwENbJPTsVT7/3NRvaJRuAvjBvmbMsRiLujWFbq9vFkDLQBico8J2K3k
+   fx3aiQsliRHr4Ta/htAbgIDAl2348/caYWNj24uYahL+AOm95ARCcalOz
+   cK3FFOUFQc3yqFNsjUwAlAXAKv4CaMC9eV94CUlufkTiA1UBKU0yl5yLi
+   ZgeE5mz3YgLiXNtjGA3r6w5XmXRWFX+zpf2lm4WpkNaQ8c3npexjAAH1L
+   Q==;
+X-CSE-ConnectionGUID: b+EJo9d3RgC4H1QLFaMPfg==
+X-CSE-MsgGUID: U3KTQhoxSV+OnsDRMSRN/Q==
+X-IronPort-AV: E=McAfee;i="6800,10657,11522"; a="82994977"
 X-IronPort-AV: E=Sophos;i="6.17,290,1747724400"; 
-   d="scan'208";a="82994561"
+   d="scan'208";a="82994977"
 Received: from orviesa007.jf.intel.com ([10.64.159.147])
-  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Aug 2025 22:20:33 -0700
-X-CSE-ConnectionGUID: jEHnJRqjTqGy3Eyj8EPakQ==
-X-CSE-MsgGUID: 8mms4+OcTRSPtWyL1PCG4w==
+  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Aug 2025 22:30:15 -0700
+X-CSE-ConnectionGUID: RseyzJmKT36kWr3vroMtQg==
+X-CSE-MsgGUID: a9/KIfTrTBati7fQxiXAIQ==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.17,290,1747724400"; 
-   d="scan'208";a="166913623"
+   d="scan'208";a="166914870"
 Received: from allen-sbox.sh.intel.com (HELO [10.239.159.30]) ([10.239.159.30])
-  by orviesa007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Aug 2025 22:20:27 -0700
-Message-ID: <a9cc9b2c-71fa-4ee8-a82e-3254588cf964@linux.intel.com>
-Date: Fri, 15 Aug 2025 13:18:20 +0800
+  by orviesa007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Aug 2025 22:30:08 -0700
+Message-ID: <aeb04f91-ffce-4092-8dbc-17d116cd7c7e@linux.intel.com>
+Date: Fri, 15 Aug 2025 13:28:02 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 2/5] iommu: Pass in gdev to __iommu_device_set_domain
+Subject: Re: [PATCH v3 3/5] iommu: Add iommu_get_domain_for_dev_locked()
+ helper
 To: Nicolin Chen <nicolinc@nvidia.com>, robin.murphy@arm.com,
  joro@8bytes.org, bhelgaas@google.com, jgg@nvidia.com
 Cc: will@kernel.org, robin.clark@oss.qualcomm.com, yong.wu@mediatek.com,
@@ -71,16 +86,15 @@ Cc: will@kernel.org, robin.clark@oss.qualcomm.com, yong.wu@mediatek.com,
  linux-pci@vger.kernel.org, patches@lists.linux.dev, pjaroszynski@nvidia.com,
  vsethi@nvidia.com, helgaas@kernel.org, etzhao1900@gmail.com
 References: <cover.1754952762.git.nicolinc@nvidia.com>
- <b07a15780fd5a8c688f1ae6285438a112a9b9478.1754952762.git.nicolinc@nvidia.com>
+ <a69557026b7e2353bae67104bbe6a88f0682305e.1754952762.git.nicolinc@nvidia.com>
 Content-Language: en-US
 From: Baolu Lu <baolu.lu@linux.intel.com>
-In-Reply-To: <b07a15780fd5a8c688f1ae6285438a112a9b9478.1754952762.git.nicolinc@nvidia.com>
+In-Reply-To: <a69557026b7e2353bae67104bbe6a88f0682305e.1754952762.git.nicolinc@nvidia.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250814_222033_567717_FA880907 
-X-CRM114-Status: UNSURE (   8.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250815_063021_273342_4691607E 
+X-CRM114-Status: GOOD (  19.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,19 +110,55 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 8/12/25 06:59, Nicolin Chen wrote:
-> The device under the reset will be attached to a blocked domain, while not
-> updating the group->domain pointer. So there needs to be a per-device flag
-> to indicate the reset state, for other iommu core functions to check so as
-> not to shift the attached domain during the reset state.
+> There is a need to attach a PCI device that's under a reset to temporally
+> the blocked domain (i.e. detach it from its previously attached domain),
+> and then to reattach it back to its previous domain (i.e. detach it from
+> the blocked domain) after reset.
 > 
-> The regular device pointer can't store any private any private iommu flag.
-> So, the flag has to be in the gdev structure.
+> During the reset stage, there can be races from other attach/detachment.
+> To solve this, a per-gdev reset flag will be introduced so that all the
+> attach functions will bypass the driver-level attach_dev callbacks, but
+> only update the group->domain pointer. The reset recovery procedure will
+> attach directly to the cached pointer so things will be back to normal.
 > 
-> Pass in the gdev pointer instead to the functions that will check that per
-> device flag.
+> On the other hand, the iommu_get_domain_for_dev() API always returns the
+> group->domain pointer, and several IOMMMU drivers call this API in their
+> attach_dev callback functions to get the currently attached domain for a
+> device, which will be broken for the recovery case mentioned above:
+>   1. core asks the driver to attach dev from blocked to group->domain
+>   2. driver attaches dev from group->domain to group->domain
 > 
-> Reviewed-by: Jason Gunthorpe<jgg@nvidia.com>
+> So, iommu_get_domain_for_dev() should check the gdev flag and return the
+> blocked domain if the flag is set. But the caller of this API could hold
+> the group->mutex already or not, making it difficult to add the lock.
+> 
+> Introduce a new iommu_get_domain_for_dev_locked() helper to be used by
+> those drivers in a context that is already under the protection of the
+> group->mutex, e.g. those attach_dev callback functions. And roll out the
+> new helper to all the existing IOMMU drivers.
+
+Given that iommu_group->mutex is transparent to the iommu driver, how
+about
+
+/*
+  * Called only by iommu drivers in the callback context where
+  * group->mutex has already been held by the core.
+  */
+struct iommu_domain *iommu_get_domain_for_dev_internal(struct device *dev)
+{
+	...
+	lockdep_assert_held(&group->mutex);
+	...
+}
+
+?
+
+> 
+> Add a lockdep_assert_not_held to the existing iommu_get_domain_for_dev()
+> to note that it would be only used outside the group->mutex.
+> 
 > Signed-off-by: Nicolin Chen<nicolinc@nvidia.com>
 
-Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
+Thanks,
+baolu
 
