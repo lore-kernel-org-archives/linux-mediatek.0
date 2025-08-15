@@ -4,83 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 611A8CA0EE0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Aug 2025 05:52:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AF8BCA0EE0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Aug 2025 06:13:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xcpbxuwfjsk8ja+dfts2UkmPV4eGfiEsAzYzWBYW6k4=; b=XnqoTiKjF7xnJAebYA0b4uNZdr
-	CLt5BklVlS9I8UW/vBzbGi0zlNYwP22OJvY8VAw+b/yT1Cffl5XO96MmJRgropbqJnpNCR0Qp7dlq
-	stPMyEq/uAKBn9ae0qScGzCS4O5eds1mcqo22IMcm1Z+u9yj8YtjC3FGaLC3eQfJR344MSM6MZ5wk
-	YojC5jgGMcZdD2DK2yEiWiUk8ha5LqtrjndG9vg6uifXL8hrufREPLVpuxZhTa9X8S6YSH3XvXmlS
-	3+hJ0W2yBpLPL1Dk0NomonvnjnhNbvuW5jHpvPCaHGPqcX1u4+HHaDtuzkvP7cmmltZZmq9LtVFf0
-	t4ZJxwdg==;
+	bh=TXrqAOGSKlkHkTRQ7lUZKBYVIpeSl7z2gePyrfHvoQU=; b=NPxcjbwbrACdlPlcIZpNUi0PLf
+	rEmGF4P6rLhIDrdHSN1BAFznIWy1ZqmQYRg3CNN6X/hQjzJ19Obl5bNFcpKIwiwLLHLtiEmBaTNqb
+	wxeaBlLPEpZUhbQQ19piAQSsFFrgm03PSVyAb/hXNg1lehL9D8lnui4gEZ97xUzDT1Gx88w24t7il
+	xyuuLnStkFguAE9sqcZYnXhpgQHP8g/AgPvtcKrzs8HUCVjeoxGoxRDfUEDaXTT2wySfNcnFM45hY
+	CNpLJYhkVgpuw50fxT59M6vo+amqoiSsgNoofRxBhtAke5IZfzkCLyUpqS8oHFeP84oSCaHCT48/j
+	nFpPy/Dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umnMP-00000001YMG-3nq5;
-	Fri, 15 Aug 2025 05:52:17 +0000
-Received: from mgamail.intel.com ([192.198.163.17])
+	id 1umngn-00000001adT-1qPm;
+	Fri, 15 Aug 2025 06:13:21 +0000
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umnMJ-00000001YKb-3Syk;
-	Fri, 15 Aug 2025 05:52:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1755237131; x=1786773131;
-  h=message-id:date:mime-version:subject:to:cc:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=0vH1jDcgJGA2Wn7lpJdojReOpMDMj8xScxd5knXRY9g=;
-  b=CnWy8sB/ggZP4crbNsWAd2LM45vyVDYJcpP/gZhG5xyMZ2MI/imI8Mkd
-   BSYXeCuoNtMIPwIuz6U3AR+PKElEYSqgtieRzougFFInF6+AaKA47lCKo
-   1uPIqU8JuVwu7i1A85zloS2UGZohkYZ0KeWZR18phcMjVWz6AHaRIR7ex
-   W9ufy1IlACDR7u94On9BhQQe8WL7z2K93RiL7mn1RpIje40botowIsw04
-   EbgmlkwpD9YXsXBIR6+GehkSFN4AmWa/UsbXcvI07A7TtYqga6tsk/4SA
-   o0EwCrdL53Eb2nTh6H/6YX4qL9JWoJuF5Kk4Wp+S18pGTlhcRqQgh5Z1I
-   Q==;
-X-CSE-ConnectionGUID: QcBA1QOTTP612gDS4WkNdA==
-X-CSE-MsgGUID: d9OAebbaTWej1uMwqKw1kg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11522"; a="57488206"
-X-IronPort-AV: E=Sophos;i="6.17,290,1747724400"; 
-   d="scan'208";a="57488206"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
-  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Aug 2025 22:52:08 -0700
-X-CSE-ConnectionGUID: QsCBNTNzS2uKIJOGMmnTTA==
-X-CSE-MsgGUID: wssFlJjGSga9ENc1rcVaxg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.17,290,1747724400"; 
-   d="scan'208";a="197937723"
-Received: from allen-sbox.sh.intel.com (HELO [10.239.159.30]) ([10.239.159.30])
-  by orviesa002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Aug 2025 22:52:02 -0700
-Message-ID: <7b8d8bfa-ca6b-4a07-8a4d-a30d8993c7c7@linux.intel.com>
-Date: Fri, 15 Aug 2025 13:49:55 +0800
+	id 1umngl-00000001ack-2DtV
+	for linux-mediatek@lists.infradead.org;
+	Fri, 15 Aug 2025 06:13:20 +0000
+Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-55ce5268cb8so1602764e87.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 14 Aug 2025 23:13:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1755238398; x=1755843198; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=TXrqAOGSKlkHkTRQ7lUZKBYVIpeSl7z2gePyrfHvoQU=;
+        b=SZ5xldG8vJUfVjmC9+hpPUq7sVMpbgAcN5bW+q3Qkk20yVi72RpIdBJLL4sPhhj2bU
+         /ilkbh39Ld2Ru1+WPHcLexo9ru+WeTmzn5y3bRknIfEAHtx9onyguho8JQl6VMMRXM9d
+         yNh9nPfjlTHSw6iYWlsGrbsvja2lPqjJ5hMGk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1755238398; x=1755843198;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=TXrqAOGSKlkHkTRQ7lUZKBYVIpeSl7z2gePyrfHvoQU=;
+        b=dEMLKAmxfrAqy0VA2lCQxvnRBQppYcfNewFXoI/qREU2JDUskfMm2uU0mu0iSCPDzx
+         Kb3KobonJdgO2rhOOFJflVs2ZaSb+FpKnro/aYn/7pEPkggUfOsd/eLGWID0v4F8p37K
+         Dt3egKUX71jLw3yHAbCiRX59fpCR6Zp2358ACLhhsRKGgoCl6k+qn/GAYl5uXApTv8Za
+         v8MI5ZcSlIRLNx+pKQKWjwa7XpIYRBK3HjTM0WGALMcXaXede9V0nlJtwZkR8WG3E24Y
+         UhlqaUapUciYvRJfa4fYAKhKCI56/k5ea+BF8yF8hxcCmvKr8rbDATh3hyYkYko/3qvx
+         KjSQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVFDZyMmX6uPkQMuj1HSoqkx3+9tJWjXfcXjaG57jc58Ez0ZFWQxcmh32TrCljYkKEAr9MIRuP06aQbcXybQQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx+D4egx+yiwI/JJIa2EZ9iW0w4IAXBBvQitF6fUfMp3nlsV1aq
+	X1uk/Xw5c9t7DfGBWEecz28qcqWh5iiGBCIrY2uaII9ff3n+KJDe0lf4vyKdJmhb1+rFMD2Zm6n
+	VGl6lr9VC0cZKN6ovOTuyQUKG92k8oeD+i7cE8puz
+X-Gm-Gg: ASbGncsI+wnjtFVaGQUcPjGRb1PyNswFU5SqkdMyMPDPYnsvOuojeMJx+t1dvwU65Gt
+	fKoua3ko/6oIs+3q6vLMAA2AYtqTiqoQjKawRPAVZhKhhf3sA+CulgiVH8COby2nbmp/+1AiWVH
+	FOFJy8ucX/r/ctaxwkwC/XNQ6Q9I48j8HSDnvUL0t7uUPjBJVUzxz6dcdPrafDL9pZX1+7M5HQL
+	mTrJiXu/WpE0bATREzBgHUDYgx0eUcN08RAQA==
+X-Google-Smtp-Source: AGHT+IHgien6Ta30w9thH606OXZ37uev4E3SyZFiYtbUjF+ewjbtl9wYml18XdGcJArNMrSrqAKCEoyzfxTTcxLF8kw=
+X-Received: by 2002:a05:6512:401a:b0:55c:e61c:6969 with SMTP id
+ 2adb3069b0e04-55ceeb8e474mr204360e87.45.1755238397730; Thu, 14 Aug 2025
+ 23:13:17 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 4/5] iommu: Introduce iommu_dev_reset_prepare() and
- iommu_dev_reset_done()
-To: Nicolin Chen <nicolinc@nvidia.com>, robin.murphy@arm.com,
- joro@8bytes.org, bhelgaas@google.com, jgg@nvidia.com
-Cc: will@kernel.org, robin.clark@oss.qualcomm.com, yong.wu@mediatek.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- thierry.reding@gmail.com, vdumpa@nvidia.com, jonathanh@nvidia.com,
- rafael@kernel.org, lenb@kernel.org, kevin.tian@intel.com,
- yi.l.liu@intel.com, linux-arm-kernel@lists.infradead.org,
- iommu@lists.linux.dev, linux-kernel@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-tegra@vger.kernel.org, linux-acpi@vger.kernel.org,
- linux-pci@vger.kernel.org, patches@lists.linux.dev, pjaroszynski@nvidia.com,
- vsethi@nvidia.com, helgaas@kernel.org, etzhao1900@gmail.com
-References: <cover.1754952762.git.nicolinc@nvidia.com>
- <5ba556fc54777853c499186f494f3411d7a4a5a9.1754952762.git.nicolinc@nvidia.com>
-Content-Language: en-US
-From: Baolu Lu <baolu.lu@linux.intel.com>
-In-Reply-To: <5ba556fc54777853c499186f494f3411d7a4a5a9.1754952762.git.nicolinc@nvidia.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20250805135447.149231-1-laura.nao@collabora.com> <20250805135447.149231-18-laura.nao@collabora.com>
+In-Reply-To: <20250805135447.149231-18-laura.nao@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Fri, 15 Aug 2025 15:13:06 +0900
+X-Gm-Features: Ac12FXzr5keexSM3h938Aqs72YKWpIyCvPBM6Nr2RSvEz3GKsQxqYO4KthSuqtA
+Message-ID: <CAGXv+5EDxVe6k7FQM2HenDaHM1Rz7eEcQhVL1q1AqUFfr9apnA@mail.gmail.com>
+Subject: Re: [PATCH v4 17/27] clk: mediatek: Add MT8196 I2C clock support
+To: Laura Nao <laura.nao@collabora.com>
+Cc: mturquette@baylibre.com, sboyd@kernel.org, robh@kernel.org, 
+	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, p.zabel@pengutronix.de, 
+	richardcochran@gmail.com, guangjie.song@mediatek.com, 
+	linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+	kernel@collabora.com, =?UTF-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4gUHJhZG8=?= <nfraprado@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250814_225211_907851_40FAE48D 
-X-CRM114-Status: GOOD (  16.95  )
+X-CRM114-CacheID: sfid-20250814_231319_586278_67BFE4AB 
+X-CRM114-Status: GOOD (  19.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,43 +98,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 8/12/25 06:59, Nicolin Chen wrote:
-> PCIe permits a device to ignore ATS invalidation TLPs, while processing a
-> reset. This creates a problem visible to the OS where an ATS invalidation
-> command will time out: e.g. an SVA domain will have no coordination with a
-> reset event and can racily issue ATS invalidations to a resetting device.
-> 
-> The OS should do something to mitigate this as we do not want production
-> systems to be reporting critical ATS failures, especially in a hypervisor
-> environment. Broadly, OS could arrange to ignore the timeouts, block page
-> table mutations to prevent invalidations, or disable and block ATS.
-> 
-> The PCIe spec in sec 10.3.1 IMPLEMENTATION NOTE recommends to disable and
-> block ATS before initiating a Function Level Reset. It also mentions that
-> other reset methods could have the same vulnerability as well.
-> 
-> Provide a callback from the PCI subsystem that will enclose the reset and
-> have the iommu core temporarily change all the attached domain to BLOCKED.
-> After attaching a BLOCKED domain, IOMMU drivers should fence any incoming
+On Tue, Aug 5, 2025 at 10:55=E2=80=AFPM Laura Nao <laura.nao@collabora.com>=
+ wrote:
+>
+> Add support for the MT8196 I2C clock controller, which provides clock
+> gate control for I2C.
+>
+> Reviewed-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+> Signed-off-by: Laura Nao <laura.nao@collabora.com>
+> ---
+>  drivers/clk/mediatek/Kconfig                  |   7 ++
+>  drivers/clk/mediatek/Makefile                 |   1 +
+>  .../clk/mediatek/clk-mt8196-imp_iic_wrap.c    | 117 ++++++++++++++++++
+>  3 files changed, 125 insertions(+)
+>  create mode 100644 drivers/clk/mediatek/clk-mt8196-imp_iic_wrap.c
+>
+> diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+> index c977719046a4..fe2697b64ef0 100644
+> --- a/drivers/clk/mediatek/Kconfig
+> +++ b/drivers/clk/mediatek/Kconfig
+> @@ -1010,6 +1010,13 @@ config COMMON_CLK_MT8196
+>         help
+>           This driver supports MediaTek MT8196 basic clocks.
+>
+> +config COMMON_CLK_MT8196_IMP_IIC_WRAP
+> +       tristate "Clock driver for MediaTek MT8196 imp_iic_wrap"
+> +       depends on COMMON_CLK_MT8196
+> +       default COMMON_CLK_MT8196
+> +       help
+> +         This driver supports MediaTek MT8196 i2c clocks.
+> +
+>  config COMMON_CLK_MT8196_PEXTPSYS
+>         tristate "Clock driver for MediaTek MT8196 pextpsys"
+>         depends on COMMON_CLK_MT8196
+> diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefil=
+e
+> index 88f7d8a229c2..241e7f5e7316 100644
+> --- a/drivers/clk/mediatek/Makefile
+> +++ b/drivers/clk/mediatek/Makefile
+> @@ -153,6 +153,7 @@ obj-$(CONFIG_COMMON_CLK_MT8195_WPESYS) +=3D clk-mt819=
+5-wpe.o
+>  obj-$(CONFIG_COMMON_CLK_MT8196) +=3D clk-mt8196-apmixedsys.o clk-mt8196-=
+topckgen.o \
+>                                    clk-mt8196-topckgen2.o clk-mt8196-vlpc=
+kgen.o \
+>                                    clk-mt8196-peri_ao.o
+> +obj-$(CONFIG_COMMON_CLK_MT8196_IMP_IIC_WRAP) +=3D clk-mt8196-imp_iic_wra=
+p.o
+>  obj-$(CONFIG_COMMON_CLK_MT8196_PEXTPSYS) +=3D clk-mt8196-pextp.o
+>  obj-$(CONFIG_COMMON_CLK_MT8196_UFSSYS) +=3D clk-mt8196-ufs_ao.o
+>  obj-$(CONFIG_COMMON_CLK_MT8365) +=3D clk-mt8365-apmixedsys.o clk-mt8365.=
+o
+> diff --git a/drivers/clk/mediatek/clk-mt8196-imp_iic_wrap.c b/drivers/clk=
+/mediatek/clk-mt8196-imp_iic_wrap.c
+> new file mode 100644
+> index 000000000000..98db1476e72c
+> --- /dev/null
+> +++ b/drivers/clk/mediatek/clk-mt8196-imp_iic_wrap.c
+> @@ -0,0 +1,117 @@
+> +// SPDX-License-Identifier: GPL-2.0-only
+> +/*
+> + * Copyright (c) 2025 MediaTek Inc.
+> + *                    Guangjie Song <guangjie.song@mediatek.com>
+> + * Copyright (c) 2025 Collabora Ltd.
+> + *                    Laura Nao <laura.nao@collabora.com>
+> + */
+> +#include <dt-bindings/clock/mediatek,mt8196-clock.h>
 
-Nit, my understanding is that it's not the "IOMMU drivers" but the
-"IOMMU hardware" that fences any further incoming translation requests,
-right?
+Nit: add line for separation.
 
-> ATS queries, synchronously stop issuing new ATS invalidations, and wait
-> for all ATS invalidations to complete. This can avoid any ATS invaliation
-> timeouts.
-> 
-> However, if there is a domain attachment/replacement happening during an
-> ongoing reset, ATS routines may be re-activated between the two function
-> calls. So, introduce a new pending_reset flag in group_device to defer an
-> attachment during a reset, allowing iommu core to cache target domains in
-> the SW level while bypassing the driver. The iommu_dev_reset_done() will
-> re-attach these soft-attached domains, once the device reset is finished.
-> 
-> Signed-off-by: Nicolin Chen<nicolinc@nvidia.com>
+> +#include <linux/clk-provider.h>
+> +#include <linux/module.h>
+> +#include <linux/of_device.h>
+> +#include <linux/platform_device.h>
+> +
+> +#include "clk-gate.h"
+> +#include "clk-mtk.h"
+> +
+> +static const struct mtk_gate_regs imp_cg_regs =3D {
+> +       .set_ofs =3D 0xe08,
+> +       .clr_ofs =3D 0xe04,
+> +       .sta_ofs =3D 0xe00,
+> +};
+> +
+> +#define GATE_IMP(_id, _name, _parent, _shift) {        \
+> +               .id =3D _id,                              \
+> +               .name =3D _name,                          \
+> +               .parent_name =3D _parent,                 \
+> +               .regs =3D &imp_cg_regs,                   \
+> +               .shift =3D _shift,                        \
+> +               .flags =3D CLK_OPS_PARENT_ENABLE,         \
 
-The code looks good to me:
+So here it likely works because the parent for all the gates are the same,
+which is the clock feeding this block.
 
-Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
+
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
