@@ -4,61 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 252DECA0EE4
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Aug 2025 06:58:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A150CA0EE6
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Aug 2025 07:55:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cOdNjKyebw/s0rYRUwH2anrLdBAU4WTiR9sWOyp0RzU=; b=ha/u23coc/Bn28
-	WtV+N1qt27k4FHgQgsMBMWTh86ooE8347y4TIjJasaM4z6Wz5WARuP1ejIs40PULUex3OqfHLX1uv
-	rQsZxyfL4MKBXuwHNKDwQTqUbMD4O5lB9JuM2QtB/0bTkRTc3zsTQJO/vTHYLInXw+LmdiVk8f+WT
-	1g/aWZgK1cG3hxerqXH5Oq76PzfD0sDVpL/+NMAnt/F8dnoH7tdqc7PUFrH+1mVoi+TRHUcbP5YcG
-	/qjoOwsVjMxVhXKtiRZQJ/0xawCgOyVJEZnEQSTPs7u0qUYiNWKLdp2cedkFRzRzLDFW9osEqBj92
-	iM1EGNLVIE2+dbjC3ZaA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=fnw6L/2KwNT+tgpsNYiO/B84S45uSAGUvD6nwPyE38I=; b=F6Yb/9IpIUaxvep5tPCmsjsIcA
+	I79TJcFvtyK87pp/HR2tg/0Hkzn2zx/Q8BHxu+BWu4vnreoMX+q/yUKwH492+RXfKdDInMEf5Kg2c
+	cxOONpbcyeSMbtGM3dsmH+CNNrzphE0MbE9oefTEUC1Gczs7awpnhFf8imV8DR/bNwt2+EqToH1Ae
+	CM44awPc/WCF8ngRuRlWCjdRs6cGft3I6nZVQXLtx9dW2JiU1g2j7yLOZce+FXNSFK7jkAlWZLHvr
+	fzS2vkWezwzde21yZMmr5gh5eqnhA1cexYqH0t8/0tD/gBOnjdI/V7upxefXgacG3sbUkjvXc7oc0
+	RxfAYtoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1unAs8-00000004BBi-2hBb;
-	Sat, 16 Aug 2025 06:58:36 +0000
-Received: from mxout4.routing.net ([2a03:2900:1:a::9])
+	id 1unBkm-00000004FXL-0ClT;
+	Sat, 16 Aug 2025 07:55:04 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1unApZ-00000004AiE-0O5P;
-	Sat, 16 Aug 2025 06:55:58 +0000
-Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
-	by mxout4.routing.net (Postfix) with ESMTP id 87FCD10078F;
-	Sat, 16 Aug 2025 06:55:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1755327352;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=cOdNjKyebw/s0rYRUwH2anrLdBAU4WTiR9sWOyp0RzU=;
-	b=B90Bbbv3kORkuslteF8M9lfemmr/Ar1i0t3y1qMPZ3aNWD5GMw4AF99Zmf/twP1Z2Xvzxh
-	VHoMItSyNhLXYNk6eJP2k+iwn8QLsnvEmMzpau4i7qAkKW02XnkQBDIX7WsMeXFCbyVHbA
-	JGT7zABH+1AdtypI/z6yjto4yaFzkLc=
-Received: from [IPv6:::1] (unknown [IPv6:2a01:599:a34:a3b8:9076:e76e:6930:1412])
-	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id 156781002C7;
-	Sat, 16 Aug 2025 06:55:51 +0000 (UTC)
-Date: Sat, 16 Aug 2025 08:55:51 +0200
-From: Frank Wunderlich <linux@fw-web.de>
-To: patchwork-bot+netdevbpf@kernel.org
-Subject: Re: [PATCH v9 00/13] further mt7988 devicetree work
-User-Agent: K-9 Mail for Android
-In-Reply-To: <175218542224.1682269.17523198222056896163.git-patchwork-notify@kernel.org>
-References: <20250709111147.11843-1-linux@fw-web.de> <175218542224.1682269.17523198222056896163.git-patchwork-notify@kernel.org>
-Message-ID: <8A21C091-0C26-4E9F-9B9E-E28A01F71369@fw-web.de>
+	id 1unBkj-00000004FWe-1nqB;
+	Sat, 16 Aug 2025 07:55:02 +0000
+X-UUID: 4b8fa6f07a7611f09f706fa2197c6ceb-20250816
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=fnw6L/2KwNT+tgpsNYiO/B84S45uSAGUvD6nwPyE38I=;
+	b=mqo1r5jszh+4Hf5VKTpsE/MowD0eF0vXlI1HJUGI40AYjoSOcsg/9AWcVHFI7m+8+PatYqofmCfj7PUFrYAsO0iymu6n87lJxnx75WarW33ZV893xy8U4vw4MHTmYrfECEKUuD9nZQramx0dUGGjdE1oiz5GVuP8dEWz93NsUr4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.3,REQID:a932ae5a-4770-4dc6-bc65-ac479db35df8,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:f1326cf,CLOUDID:d5338944-18c5-4075-a135-4c0afe29f9d6,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:-5,Content:0|15|50,EDM:-3,IP:
+	nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,L
+	ES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 4b8fa6f07a7611f09f706fa2197c6ceb-20250816
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <leilk.liu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 201738723; Sat, 16 Aug 2025 00:54:54 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Sat, 16 Aug 2025 15:54:50 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Sat, 16 Aug 2025 15:54:49 +0800
+From: Leilk Liu <leilk.liu@mediatek.com>
+To: Andi Shyti <andi.shyti@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: Qii Wang <qii.wang@mediatek.com>, Wolfram Sang <wsa@kernel.org>, Liguo
+ Zhang <liguo.zhang@mediatek.com>, <linux-i2c@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Leilk.Liu
+	<leilk.liu@mediatek.com>
+Subject: [PATCH] i2c: mediatek: fix potential incorrect use of I2C_MASTER_WRRD
+Date: Sat, 16 Aug 2025 15:53:54 +0800
+Message-ID: <20250816075434.31780-1-leilk.liu@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Mail-ID: d7d08745-eee0-42d0-ad9e-cba520e4f9d1
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250815_235557_301078_2D725B11 
-X-CRM114-Status: UNSURE (   8.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250816_005501_483222_55D4911E 
+X-CRM114-Status: GOOD (  14.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,68 +86,80 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: andrew@lunn.ch, Landen.Chao@mediatek.com, linux-kernel@vger.kernel.org, edumazet@google.com, robh@kernel.org, linux-pm@vger.kernel.org, cw00.choi@samsung.com, myungjoo.ham@samsung.com, johnson.wang@mediatek.com, kuba@kernel.org, pabeni@redhat.com, lorenzo@kernel.org, devicetree@vger.kernel.org, conor+dt@kernel.org, sean.wang@mediatek.com, dqfext@gmail.com, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com, arinc.unal@arinc9.com, netdev@vger.kernel.org, daniel@makrotopia.org, kyungmin.park@samsung.com, djakov@kernel.org, krzk+dt@kernel.org, olteanv@gmail.com, davem@davemloft.net, nbd@nbd.name
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 11=2E Juli 2025 00:10:22 MESZ schrieb patchwork-bot+netdevbpf@kernel=2Eo=
-rg:
->Hello:
->
->This series was applied to netdev/net-next=2Egit (main)
->by Jakub Kicinski <kuba@kernel=2Eorg>:
->
->On Wed,  9 Jul 2025 13:09:36 +0200 you wrote:
->> From: Frank Wunderlich <frank-w@public-files=2Ede>
->>=20
->> This series continues mt7988 devicetree work
->>=20
->> - Extend cpu frequency scaling with CCI
->> - GPIO leds
->> - Basic network-support (ethernet controller + builtin switch + SFP Cag=
-es)
->>=20
->> [=2E=2E=2E]
->
->Here is the summary with links:
->  - [v9,01/13] dt-bindings: net: mediatek,net: update mac subnode pattern=
- for mt7988
->    https://git=2Ekernel=2Eorg/netdev/net-next/c/29712b437339
->  - [v9,02/13] dt-bindings: net: mediatek,net: allow up to 8 IRQs
->    https://git=2Ekernel=2Eorg/netdev/net-next/c/356dea0baf4c
->  - [v9,03/13] dt-bindings: net: mediatek,net: allow irq names
->    https://git=2Ekernel=2Eorg/netdev/net-next/c/23ac2a71bdbd
->  - [v9,04/13] dt-bindings: net: mediatek,net: add sram property
->    https://git=2Ekernel=2Eorg/netdev/net-next/c/c4582a31efd9
->  - [v9,05/13] dt-bindings: net: dsa: mediatek,mt7530: add dsa-port defin=
-ition for mt7988
->    https://git=2Ekernel=2Eorg/netdev/net-next/c/588cb646ce70
->  - [v9,06/13] dt-bindings: net: dsa: mediatek,mt7530: add internal mdio =
-bus
->    https://git=2Ekernel=2Eorg/netdev/net-next/c/66a44adf4c3d
->  - [v9,07/13] arm64: dts: mediatek: mt7986: add sram node
->    (no matching commit)
->  - [v9,08/13] arm64: dts: mediatek: mt7986: add interrupts for RSS and i=
-nterrupt names
->    (no matching commit)
->  - [v9,09/13] arm64: dts: mediatek: mt7988: add basic ethernet-nodes
->    (no matching commit)
->  - [v9,10/13] arm64: dts: mediatek: mt7988: add switch node
->    (no matching commit)
->  - [v9,11/13] arm64: dts: mediatek: mt7988a-bpi-r4: add aliases for ethe=
-rnet
->    (no matching commit)
->  - [v9,12/13] arm64: dts: mediatek: mt7988a-bpi-r4: add sfp cages and li=
-nk to gmac
->    (no matching commit)
->  - [v9,13/13] arm64: dts: mediatek: mt7988a-bpi-r4: configure switch phy=
-s and leds
->    (no matching commit)
->
->You are awesome, thank you!
+From: "Leilk.Liu" <leilk.liu@mediatek.com>
 
-Hi
+The old IC does not support the I2C_MASTER_WRRD (write-then-read)
+function, but the current code’s handling of i2c->auto_restart may
+potentially lead to entering the I2C_MASTER_WRRD software flow,
+resulting in unexpected bugs.
 
-Any comments on the missing DTS parts or can they applied too?
-regards Frank
+Instead of repurposing the auto_restart flag, add a separate flag
+to signal I2C_MASTER_WRRD operations.
+
+Also fix handling of msgs. If the operation (i2c->op) is
+I2C_MASTER_WRRD, then the msgs pointer is incremented by 2.
+For all other operations, msgs is simply incremented by 1.
+
+Fixes: 173b77e8d8fe ("i2c: mediatek: add i2c first write then read optimization")
+
+Signed-off-by: Leilk.Liu <leilk.liu@mediatek.com>
+---
+ drivers/i2c/busses/i2c-mt65xx.c | 17 ++++++++++-------
+ 1 file changed, 10 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+index ab456c3717db..dee40704825c 100644
+--- a/drivers/i2c/busses/i2c-mt65xx.c
++++ b/drivers/i2c/busses/i2c-mt65xx.c
+@@ -1243,6 +1243,7 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
+ {
+ 	int ret;
+ 	int left_num = num;
++	bool write_then_read_en = false;
+ 	struct mtk_i2c *i2c = i2c_get_adapdata(adap);
+ 
+ 	ret = clk_bulk_enable(I2C_MT65XX_CLK_MAX, i2c->clocks);
+@@ -1256,6 +1257,7 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
+ 		if (!(msgs[0].flags & I2C_M_RD) && (msgs[1].flags & I2C_M_RD) &&
+ 		    msgs[0].addr == msgs[1].addr) {
+ 			i2c->auto_restart = 0;
++			write_then_read_en = true;
+ 		}
+ 	}
+ 
+@@ -1280,12 +1282,10 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
+ 		else
+ 			i2c->op = I2C_MASTER_WR;
+ 
+-		if (!i2c->auto_restart) {
+-			if (num > 1) {
+-				/* combined two messages into one transaction */
+-				i2c->op = I2C_MASTER_WRRD;
+-				left_num--;
+-			}
++		if (write_then_read_en) {
++			/* combined two messages into one transaction */
++			i2c->op = I2C_MASTER_WRRD;
++			left_num--;
+ 		}
+ 
+ 		/* always use DMA mode. */
+@@ -1293,7 +1293,10 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
+ 		if (ret < 0)
+ 			goto err_exit;
+ 
+-		msgs++;
++		if (i2c->op == I2C_MASTER_WRRD)
++			msgs += 2;
++		else
++			msgs++;
+ 	}
+ 	/* the return value is number of executed messages */
+ 	ret = num;
+-- 
+2.46.0
+
 
