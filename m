@@ -4,84 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47F9FCA0ED1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Aug 2025 03:53:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1515CA0ED1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Aug 2025 05:19:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=72HjhGwzLL0PbZTSkv6wDk9duccZmIns+xeA/qk65fA=; b=128ngxHxWZE8Y92zdm77vgFuE7
-	a1kCcrqBmFUbw6qeBzAAa/avk2Ge+mdL4R2bE88lsS0amAOTP7jrc0lnfWUOSgmr72EbG5UIsADFg
-	LqDJV1MbXEJVogyNzZQGFUF4yzTIGmy+H0WQv/SD8+YNe1xpgi8r/P6xXB/wUrvinBVt+uRuZGBEC
-	FDog3439HVOUQvf/6Xx1IL6PJ1onowgYRBG25PcWg4zcyjr+FdaM6g8n2ki1PtWVPXEXZe85/BczG
-	hF84XOyVLfEtaEK34nWMqZ7DR3m2+6w9JvsFsveIANYZkNCZ2ap/UbB+H7+jIEGxVusNuHUUqkG0+
-	QKPOL67w==;
+	bh=BfsQWtM9zlBkMaLNEqnp5wSBhlrCP40LK6Q9xsKtZy4=; b=sdp1kCIluTxbarOdfGwdkAKf7m
+	Ht7F457eJYYvh/a4+5mbF67BpDvZTatwVri/Z5obVgEijuGKXR+mu8vZuO97Q+gtlhcV+PDys2dn3
+	qJyLY3HkbgEP11vENzRVflaieS2p1KZWUgxCaqRnNAwmVVrPYgQ4qlmz1qg9oxpN+Jdd5bG8z9w4c
+	PSnPtIe1kELnoFfY5Ve/qo9IoXpSl7lsqT0qvPI6q4CJ/nVn+I7VtOirrgq/Qz9JtZOTnmilvSq0T
+	Qj2ViyKDNzvAs/Sd/6013ob1Cqji4288PXhfykGOOR75pDslogMrYoEnox0igsxG/EdlYcoYjyQ4q
+	UGFHFbQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1unqw2-00000006PWS-2mxm;
-	Mon, 18 Aug 2025 03:53:26 +0000
-Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
+	id 1unsHB-00000006XfO-1NQZ;
+	Mon, 18 Aug 2025 05:19:21 +0000
+Received: from mail-ot1-x334.google.com ([2607:f8b0:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1unqvz-00000006PVh-2l91
+	id 1unrha-00000006UFM-0AFp
 	for linux-mediatek@lists.infradead.org;
-	Mon, 18 Aug 2025 03:53:24 +0000
-Received: by mail-lj1-x22d.google.com with SMTP id 38308e7fff4ca-333f8f22292so27079791fa.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 17 Aug 2025 20:53:23 -0700 (PDT)
+	Mon, 18 Aug 2025 04:42:35 +0000
+Received: by mail-ot1-x334.google.com with SMTP id 46e09a7af769-74381fdbdbeso2024542a34.2
+        for <linux-mediatek@lists.infradead.org>; Sun, 17 Aug 2025 21:42:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1755489201; x=1756094001; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1755492152; x=1756096952; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=72HjhGwzLL0PbZTSkv6wDk9duccZmIns+xeA/qk65fA=;
-        b=eKvpZSw/a5GL9Q8ouS38RaBJkGCOnippZP7DBLvMus3y+4sDpsWz5wLESo+Gn3/eJ7
-         3IPZ2Vfeyfqt2qxotX3mEGffx927j31kgrAFDyAnsZLcKgfb48x3aHKTyQvybuF9VKLr
-         YmuWeeImIzHf9bINMAGqX0MHtYpDYnZLlRYrg=
+        bh=BfsQWtM9zlBkMaLNEqnp5wSBhlrCP40LK6Q9xsKtZy4=;
+        b=ZjpbmSItgaqULnwzYwvfhTZG9uvxMMElglzTDy0ZBU5vPOCAvSn3WFp8ksM75UVoJX
+         5WWnMcrCaYq+tCC7c5VVjOFPPGS8DbOn7wj39qwsmiBXgaNeNa8II1lpWD4mE8Bcdm+R
+         yWVeXaOgzJJhtr34ve6FzTrB9R86SQy8VY768=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1755489201; x=1756094001;
+        d=1e100.net; s=20230601; t=1755492152; x=1756096952;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=72HjhGwzLL0PbZTSkv6wDk9duccZmIns+xeA/qk65fA=;
-        b=FeKVWf+lmZLH/teSMDQmttF0VZlSqpZ1w8Qg2ampDexwS9Tc3WOvvtjzngG5PunQtU
-         J4FaL81n25YOvJbTEh895Z504vpd3ywnF91s1LPaULEp5rL52XmYGMILgI0nd3PIhyQ0
-         MIkNPOLEjOj5CU/DkdFSIZMKy7s/oOrzfit/ZMQ2En8Lm76tFSDjfemZ54cMLUGtrmlH
-         sFolIes64zXWtUb9WapMhGJDxVTh7H40DIuDvb3H31gvpyJbndWYqDPEwrJLjdAIpo0k
-         OeAjcAbh/QCNm0nZS3zIFCg1+tuqymIpLfTWYSWrSGkgWUcUt178rCZ8w0AOq/aASxp+
-         HX+w==
-X-Forwarded-Encrypted: i=1; AJvYcCUf/Rq7wiNN64fNGarAbN9B5OhTeHLu12gCdrhwWGUZm0kr23ZlRx4qrvbbEz/9Yxial7tvaTmqk00otDRB6g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzPUp4Q1G8KWERv4zKm6IMf/4a6oVQUM9L+wUNuXfD2lkV9roiv
-	l7LahjUWSC+vSxNbT9hhqs0Jib4X7n93OPkkI1bJEnxZWMalTfvTzn7UBmQ5qKsslvFjAnFhgCa
-	Natao4J43REo1H5RnJK+P12V4h19CMy41bqGpM8hy
-X-Gm-Gg: ASbGncsm71Y00JUDI7xlazzkdBt7qQ5dxPfxNg86hEKgpp5Oad+bzduJtvFiH2RRWTM
-	hlA3VTYko1guTFWPIOeQ6wrockHtdpgHV3SkzgDeqfmYwg7kSuqCRXeBz/GgjHC+1TtoH5B5/zy
-	OiyRuz9lpxo19HBqOydgqolzelUrziceAbb63mNV6FoeeqjRX7SoyQ9JtM9SufK9EOwztGM7Uew
-	UlHNBQ2e11s6MXxkh4KeSs5C+UnDDqRWi0=
-X-Google-Smtp-Source: AGHT+IFPS+3sb9CZbTWfnTjbDa0k7A4z8cLwROgvhlDgLeCCeIOup1wcDfmt4xXnfNBN2Bv5bh02EwambURnN0B3nkM=
-X-Received: by 2002:a2e:b8d1:0:b0:32b:6bae:e3fe with SMTP id
- 38308e7fff4ca-3340982d970mr29405411fa.9.1755489201494; Sun, 17 Aug 2025
- 20:53:21 -0700 (PDT)
+        bh=BfsQWtM9zlBkMaLNEqnp5wSBhlrCP40LK6Q9xsKtZy4=;
+        b=KRvn2c/Udfi84CgXCII/nPsujh4LNoA4LAeGrcTCvCTd/AgfyTq3lzZlLeOUcNiBTA
+         4TBvdsLNQtxsIprtmMNWbWZ0HsVjgmZznEFbers1VNUxQZZJ3ck1VKpxRiXHD7RLZWTr
+         Frp/0+1AiDFdloAoGc1gN9uoN24z3B1aAzc1Lroc6JkQo3mQd8TE32tqwPPVWQnoE3/z
+         nlw7v0Z5nDuF7PadayL2nwz7UwtUTat46P/ccdEut2FY3y3pqO3QR7YMzRkBc/uP8IXg
+         qczJUngX0DSrowERoTVbjn3PIBrdf4sNulePIx9Ticb1htQKtfTZ0AAB0hlwWbR+p2Y2
+         icrQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWZt1znjCVtkMJ8y1efH8R8NlE/HKiwPAhpesYlm72Hkw+0gGPEApdTAgnkkVK10uzRH0i/lM3LDd7xqqv4CA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzoB9WjokX22yoZM5+GBUnwmjrwqoar8/Ckpu+uDfSSJHHJ9gpa
+	aufVrnsE0VlqdyU4z6QX89+hvlZRaTM85XMg+6xSaBJ4uI2loWFH5cN18iEEGxHcPhOD64fZIxL
+	VgrAhp44SUgpmXRl2hz7vrkxsbLZc5yls+kDLPmnq
+X-Gm-Gg: ASbGncutU6jVZTGNaeLb5vePxF0GLKBHf/9jgPS3jE+TpXhp4TIrJQ8mUAhlgKZ++zE
+	nqtWFmyBnDBdE5B7/RCr+UHL+Ueivi6nWSf1HPLoNDJGQUQlqtiQoWx+ms+AGqrvLW3f8x3aIbh
+	fw8sEcsGMvHrvChsiB96sszCYyZPXVwrGveTovhiJfeUVZgQ0u6wCjX9+z7c2ozEBRIsN+oqWQQ
+	THvgolgDr+8Bl7GO3q+XujpEYD4TvfR/V8=
+X-Google-Smtp-Source: AGHT+IF/RhLz2fIw1VbTnK6kOfNHtaBYI/Gt5l9e8XL0REmA8tvh4RTpWjRQOCaWMMFqwIexvepYVZNLyvLCWG85f6w=
+X-Received: by 2002:a05:6830:3148:b0:727:3439:5bdf with SMTP id
+ 46e09a7af769-7439bab7241mr4262682a34.13.1755492152672; Sun, 17 Aug 2025
+ 21:42:32 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250816075434.31780-1-leilk.liu@mediatek.com>
-In-Reply-To: <20250816075434.31780-1-leilk.liu@mediatek.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 18 Aug 2025 11:53:10 +0800
-X-Gm-Features: Ac12FXzbC3a5fYlt94iOei7CP2T8RPhSU-BFGXIPrEu4iVpFb5TXKRGwyAlG1lg
-Message-ID: <CAGXv+5F8ABGTRdUrf0j68cLiHZHSEFjwDOBtfTZBTOWt9APVVQ@mail.gmail.com>
-Subject: Re: [PATCH] i2c: mediatek: fix potential incorrect use of I2C_MASTER_WRRD
-To: Leilk Liu <leilk.liu@mediatek.com>
-Cc: Andi Shyti <andi.shyti@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Qii Wang <qii.wang@mediatek.com>, 
-	Wolfram Sang <wsa@kernel.org>, Liguo Zhang <liguo.zhang@mediatek.com>, linux-i2c@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <c8a64686-f1a2-44f1-9d13-fd5b4f923e0f@molgen.mpg.de> <CAAOTY_8vLqU30L3+ijYJPLrioRsUwVwJAeumtVYfRJ9e5tjp4A@mail.gmail.com>
+In-Reply-To: <CAAOTY_8vLqU30L3+ijYJPLrioRsUwVwJAeumtVYfRJ9e5tjp4A@mail.gmail.com>
+From: Pin-yen Lin <treapking@chromium.org>
+Date: Mon, 18 Aug 2025 12:42:21 +0800
+X-Gm-Features: Ac12FXz5rMxf27QySQIDZc7iDa9NZ942iMQjso7rsmfG9duoC6kvEJjFLzERuyU
+Message-ID: <CAEXTbpd=-mB-n1EVb4Y7RDxkJ86b-HrFWyErgTE_FYoViZRdpw@mail.gmail.com>
+Subject: Re: MT8183: Only maximum resolution 1280x720?
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Paul Menzel <pmenzel@molgen.mpg.de>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250817_205323_726053_B581ACC9 
-X-CRM114-Status: GOOD (  12.03  )
+X-CRM114-CacheID: sfid-20250817_214234_096573_2470AD08 
+X-CRM114-Status: GOOD (  22.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,34 +94,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Aug 16, 2025 at 3:55=E2=80=AFPM Leilk Liu <leilk.liu@mediatek.com> =
-wrote:
->
-> From: "Leilk.Liu" <leilk.liu@mediatek.com>
->
-> The old IC does not support the I2C_MASTER_WRRD (write-then-read)
-> function, but the current code=E2=80=99s handling of i2c->auto_restart ma=
-y
-> potentially lead to entering the I2C_MASTER_WRRD software flow,
-> resulting in unexpected bugs.
->
-> Instead of repurposing the auto_restart flag, add a separate flag
-> to signal I2C_MASTER_WRRD operations.
->
-> Also fix handling of msgs. If the operation (i2c->op) is
-> I2C_MASTER_WRRD, then the msgs pointer is incremented by 2.
-> For all other operations, msgs is simply incremented by 1.
->
-> Fixes: 173b77e8d8fe ("i2c: mediatek: add i2c first write then read optimi=
-zation")
->
-> Signed-off-by: Leilk.Liu <leilk.liu@mediatek.com>
+Hi CK and Paul,
 
-This was
+On Mon, Aug 18, 2025 at 12:39=E2=80=AFPM Chun-Kuang Hu <chunkuang.hu@kernel=
+.org> wrote:
+>
+> Paul Menzel <pmenzel@molgen.mpg.de> =E6=96=BC 2025=E5=B9=B45=E6=9C=8825=
+=E6=97=A5 =E9=80=B1=E6=97=A5 =E4=B8=8B=E5=8D=882:01=E5=AF=AB=E9=81=93=EF=BC=
+=9A
+> >
+> > Dear Linux folks,
+> >
+> >
+> > On the older MT8183 device Lenovo IdeaPad Duet Chromebook, running
+> > ChromeOS with their Linux 5.10.x, connecting a 1920x1080 Dell monitor t=
+o
+> > a USB-C adapter using HDMI, only the resolution of 1280x720 is
+> > configured, although the adapter also support 1920x1080. It happens wit=
+h
+> > all adapters, for example, LMP USB-C mini Dock [1].
+> >
+> > I reported it to the Chromium OS issue tracker [1], and the last commen=
+t is:
+> >
+> > > It seems the display pipeline for the internal display (DSI) has
+> > > higher clock rate. Also, the resolution support depends on the
+> > > refresh rate as well, so the claimed 2400x1080 might only work on
+> > > lower refresh rate.
+> > >
+> > > For the external display, the display modes are mostly rejected by
+> > > the pre-defined max_clock_khz in mtk_dpi.c:
+> > > https://elixir.bootlin.com/linux/v6.11.4/source/drivers/gpu/drm/media=
+tek/mtk_dpi.c#L940
+> >
+> > Can you confirm this? The font rendering seems not so good in the lower
+> > resolution, and strangely, playing movies these seem to be rendered in
+> > higher resolution (or the monitor or hardware does a good job in
+> > up-scaling).
+>
+> 8183 max_clock_khz is defined in patch [3] by Rex, but this is a
+> prepare patch for mt8192 [4].
+> I'm not sure that Rex has test it for mt8183.
+> Maybe you could try to enlarge 8183 max_clock_khz and see.
 
-Suggested-by: Chen-Yu Tsai <wenst@chromium.org>
+I found the internal discussion about this (back in 2018), and the
+owner had confirmed MT8183 DPI only supports up to 100Mhz. They also
+clearly stated that 1080p@60 is not supported by MT8183.
+>
+> [3] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/co=
+mmit/drivers/gpu/drm/mediatek/mtk_dpi.c?h=3Dv6.17-rc1&id=3D44b07120291c4b7a=
+6722ccb7149f6b9d938cf5a2
+> [4] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/co=
+mmit/drivers/gpu/drm/mediatek/mtk_dpi.c?h=3Dv6.17-rc1&id=3D38eaef2dca4ec8df=
+b9ea84d9dde0f76da5c8caaa
+>
+> Regards,
+> CK
+>
+> >
+> >
+> > Kind regards,
+> >
+> > Paul
+> >
+> >
+> > [1]: https://lmp-adapter.com/product/lmp-usb-c-mini-dock/
+> > [2]: https://issuetracker.google.com/issues/295666708
 
-internally because the code looked funny.
-
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Regards,
+Pin-yen
 
