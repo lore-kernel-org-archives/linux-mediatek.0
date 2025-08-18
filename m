@@ -4,79 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1A5FCA0EF1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Aug 2025 13:37:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6319CA0ED1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Aug 2025 13:41:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=zTc9ILZszspIergQBlX6+NhSE6Fs5a72JurzfDZwPEA=; b=KHHWBlL4zN94aub3cTKMI46kVT
-	WbKM5DH79OA0U9I16AkBxW75kZKEiWkGcOXRnWTn2t0KUk3Tc2bhP7322gFF8lr6FrXvC/w4acA3k
-	DRuqmvsyBlbFx078lj4hFeJVdzNIGj/IQod3DycvXfDWPg3aJC11VmXioI1DUaB2IBzGjYk1L2XG4
-	wP4VSi4qjfdgMh17vYBPAp8Pxyn8thDrAS5H4qe/jDXEMkXh05qnosfYy/d7XnAO5LE/GYYpzd432
-	YWGOAlSdDPv9KdO9ogllXutgN5MSXW7MWmrUQ731FqVVb26+NsPdhzrF2Bm/FLOd3S5oKqJ17lDPW
-	WImlhmzQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ULtP4TPRiwLFVgdH9tMF4FKUEQSjydA2syIDemXrgs4=; b=Uko3v++ism8aPUoInPwAzx59Iw
+	KDWJ+/lUJ1RHodEP6bNQbBEIbH3wj3ZoREQ+d6ySPMdpE8R8GrwU0AF5S/LkHuvoZFMfuZHGfzQyU
+	SvLkjl7O4ECsGfquzqMT4AGWkgtCtTkEVjLzERXxFYFQjP8hAAUfyvVqBgV1fFt03eSOzyBjWprHo
+	60iLwjzuQakIvzADENe+c4CjOOq2XFakCSUzZSMQBemzfEAvSS4o0Yny3P2UbaYcSduh2m3FBfFvI
+	N3g0G8LWrAMBmQX5KCZhPGPlXSIhIzoU65EH0rEu1wbganxWWN9QXALVTOZo7lrrN1Th/Z2cSawj2
+	ncLP/4gA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uo03d-00000007Ulh-2hGL;
-	Mon, 18 Aug 2025 13:37:53 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1uo06x-00000007ZzS-36uA;
+	Mon, 18 Aug 2025 13:41:19 +0000
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1unvSB-00000006xg3-1sxW;
-	Mon, 18 Aug 2025 08:42:56 +0000
-X-UUID: 53ae029c7c0f11f09eb0dd999d3936bf-20250818
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=zTc9ILZszspIergQBlX6+NhSE6Fs5a72JurzfDZwPEA=;
-	b=GibQaDwujkcuFxcFtqCRQUOl63b5NIQ5C+sDQAXh8wK/KwkX3tZBtcy8/1QF9Z2XCvWBQgDqVdeFSr0J4dp0X3/MbHuLc3l4ltUslZbcp70MMfV6Xc7O94bQdD0Ear/dEHt5w0M7aNWNMeQjdV4w6n/yqRfslqKEehq41PLO2pc=;
-X-CID-CACHE: Type:Local,Time:202508180134-07,HitQuantity:1
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.3,REQID:76fcc70c-f177-4135-beaa-541b09fbbf5b,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:f1326cf,CLOUDID:0c48556d-c2f4-47a6-876f-59a53e9ecc6e,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:-5,Content:0|15|50,EDM:-3,IP:
-	nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,L
-	ES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 53ae029c7c0f11f09eb0dd999d3936bf-20250818
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
-	(envelope-from <payne.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 867325749; Mon, 18 Aug 2025 01:42:51 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Mon, 18 Aug 2025 16:42:48 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Mon, 18 Aug 2025 16:42:48 +0800
-From: payne.lin <payne.lin@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
-	<p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, Simona Vetter
-	<simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<sirius.wang@mediatek.com>, <vince-wl.liu@mediatek.com>,
-	<jh.hsu@mediatek.com>, Bincai Liu <bincai.liu@mediatek.com>, Payne Lin
-	<payne.lin@mediatek.com>
-Subject: [PATCH] gpu: drm: mediatek: correct clk setting AUX_RX_UI_CNT_THR_AUX_FOR_26M
-Date: Mon, 18 Aug 2025 16:42:36 +0800
-Message-ID: <20250818084242.1045095-1-payne.lin@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1unwM5-0000000754a-0gni
+	for linux-mediatek@lists.infradead.org;
+	Mon, 18 Aug 2025 09:40:42 +0000
+Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-619ff42ae79so2692288a12.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 18 Aug 2025 02:40:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1755510039; x=1756114839; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ULtP4TPRiwLFVgdH9tMF4FKUEQSjydA2syIDemXrgs4=;
+        b=LlgQyq7Oq938bmK3b1q+2U0src5hKhu6ssZRkrgBm6fewgoeAPrWZyIkftKLaTr83Y
+         Hf1fPi5NoQL2ra/dRUrNMR1UVm/jyELW5ztYYenQUDZJuZkRtIDg2h5UxrZDsvxvQBe/
+         jB2pQJZGpmnQcP+zev1Hz+y7z4Qw5qc4m/WcFWrkM3AFMuW59O6OSyqwo7hP3+m5Fv21
+         eVL6Inczvisuar0wu5Ta68DXEIPSZ+DGKzz1Lx6NR07aJguYgtrOUOKb/TpTkJXgOYnS
+         Bbib1KudNd0dyLgFnOv+oY2bneivEVb5eWQb/iWAvz2cOl4jQ6Yg6Q1BfOKBX/ajpspO
+         LcoA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1755510039; x=1756114839;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=ULtP4TPRiwLFVgdH9tMF4FKUEQSjydA2syIDemXrgs4=;
+        b=u24htRHsJjxZwM9lymxnk+HuShXdgGXcCxe1gYVwwD7f9/Jcd7wcYj5ucE7OsO7aEX
+         l2uEQqKdR6hBWeyBc0YDp/NZdlNCMWuhAvEd/SXeclNJdWFMiMhS2COC1nu+0H5m+hFS
+         baG/tL0x0iXm+1PocPMWb0WPLuzZvBOW+QBH+Qmnefq2JZwhJrqwtQTalNyXDCIRBm17
+         C6M7R9xb5KKREY8HBQY0blMiwE4fF9UqX/RrV42ICC0P0FKdgOrn7RCPgScS7f2yuF0c
+         IjjQ7cuqbn+hcBHfu1syphR+5scOLYY2/if2KvX9sh0ILY6mVuVgDWcg8/P/IixfmfYy
+         EbjA==
+X-Forwarded-Encrypted: i=1; AJvYcCWjSNjNLjzLbxpxpPbE73KZtchpTTjVRsjNzQyTEGbf4bEUYW5fIf7vO6HUy4zvOokyKxaL+KZA8SpddMc1mw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw+r6WOSxrjmqQHrYRhZoigykCAf+Tfg/6uNkrirg7c53FNogr1
+	1Cv9B7k7fP98dif2el9WxmcBMdbQgNrxpm34FM7UsnAlKndjI7S6zBj+CyOuf9yrQ6K9EsJAEqT
+	y+y/AP1zV5E4qiTzrJSn2YDaNDdEbVIs=
+X-Gm-Gg: ASbGncuL8F4bvUSN/hdShwtwr4R0AriOkqKUiOiQN3C1+CzXtxrmup8tzNAVm8jVEh6
+	KdW/8zMxSHG9NqZyuhaVqsQq9UuBKL3K1VAgSeygOf8vaSulIGLHtQmpoD67JX6WqO8jGESDwQZ
+	oJf8axixFJ0M7wtXHzbbIYtk5EiHfMRD1jdDFLHQkWchtxCrSQEcp0Odc8E172vI6G1fj5JrlZG
+	YiKXFCvLg==
+X-Google-Smtp-Source: AGHT+IF8KA/khkHfW1zM5A6VICcLQcaTlNP2NaY79413IWzC7ZXQoMbtUjB4YFC1WmKSdkoLWnGX/LuUFnS7Ou+6WdM=
+X-Received: by 2002:a05:6402:2686:b0:618:6af8:3f71 with SMTP id
+ 4fb4d7f45d1cf-618b05322cfmr8012966a12.9.1755510038754; Mon, 18 Aug 2025
+ 02:40:38 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+References: <CAJmAMMyOk7AVqQRrtK4Oum2uVKreGeLJ943-kkRCTspoGApZ8w@mail.gmail.com>
+ <CAJmAMMyt5QQQOavVy+Gytf00Y0F6G+GCLYhj0E9RZ8cV85gwCw@mail.gmail.com>
+ <10850475be9302b5b397173c1d4554335c0df966.camel@mediatek.com>
+ <CAJmAMMxtH+WnJfU2tcHRxP472cnyM4cZ7vaTcZN0NSxQ6U5HCg@mail.gmail.com>
+ <CAJmAMMzYkoVWq2w4UCdyF1x2huwtcbW37RyKiDiCR9pmACdDuQ@mail.gmail.com> <a28a7735e9ac1bdebb7b2e875c7c8433c40f7e38.camel@mediatek.com>
+In-Reply-To: <a28a7735e9ac1bdebb7b2e875c7c8433c40f7e38.camel@mediatek.com>
+From: Tal Inbar <inbartdev@gmail.com>
+Date: Mon, 18 Aug 2025 12:40:27 +0300
+X-Gm-Features: Ac12FXxMCu7eSzBQVb_UY0JnTLwZiuEPdhH3wExn75Hp4TUW0Ygum7_B1H-rsCM
+Message-ID: <CAJmAMMx7u9Zf4yMvV9KMz25SLrLx+MRHPRmhJZCn+iBqo+kp6w@mail.gmail.com>
+Subject: Re: [REGRESSION] [BISECTED] MT7925 wireless speed drops to zero since
+ kernel 6.14.3 - wifi: mt76: mt7925: integrate *mlo_sta_cmd and *sta_cmd
+To: =?UTF-8?B?TWluZ3llbiBIc2llaCAo6Kyd5piO6Ku6KQ==?= <Mingyen.Hsieh@mediatek.com>
+Cc: Sean Wang <Sean.Wang@mediatek.com>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+	"stable@vger.kernel.org" <stable@vger.kernel.org>, =?UTF-8?B?QWxsYW4gV2FuZyAo546L5a625YGJKQ==?= <Allan.Wang@mediatek.com>, 
+	"regressions@lists.linux.dev" <regressions@lists.linux.dev>, 
+	=?UTF-8?B?RGVyZW4gV3UgKOatpuW+t+S7gSk=?= <Deren.Wu@mediatek.com>, 
+	"nbd@nbd.name" <nbd@nbd.name>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250818_014255_484949_1E928494 
-X-CRM114-Status: GOOD (  11.46  )
+X-CRM114-CacheID: sfid-20250818_024041_214362_C5BA46E1 
+X-CRM114-Status: GOOD (  51.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,33 +104,266 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Bincai Liu <bincai.liu@mediatek.com>
+Hi,
 
-Updated the definition of AUX_RX_UI_CNT_THR_AUX_FOR_26M from 13 to 14.
-No other code or logic changes were made; only the macro value was modified.
-This change affects the timing configuration for AUX RX at 26MHz.
-The formula is xtal_clk / 2 + 1.
+Indeed as discussed privately, the aforementioned patch fixes the issue.
 
-Signed-off-by: Bincai Liu <bincai.liu@mediatek.com>
-Signed-off-by: Payne Lin <payne.lin@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_dp_reg.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Thanks,
+Tal
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dp_reg.h b/drivers/gpu/drm/mediatek/mtk_dp_reg.h
-index 8ad7a9cc259e..f8c7b3c0935f 100644
---- a/drivers/gpu/drm/mediatek/mtk_dp_reg.h
-+++ b/drivers/gpu/drm/mediatek/mtk_dp_reg.h
-@@ -301,7 +301,7 @@
- #define AUX_TIMEOUT_THR_AUX_TX_P0_VAL			0x1595
- #define MTK_DP_AUX_P0_3614			0x3614
- #define AUX_RX_UI_CNT_THR_AUX_TX_P0_MASK		GENMASK(6, 0)
--#define AUX_RX_UI_CNT_THR_AUX_FOR_26M			13
-+#define AUX_RX_UI_CNT_THR_AUX_FOR_26M			14
- #define MTK_DP_AUX_P0_3618			0x3618
- #define AUX_RX_FIFO_FULL_AUX_TX_P0_MASK			BIT(9)
- #define AUX_RX_FIFO_WRITE_POINTER_AUX_TX_P0_MASK	GENMASK(3, 0)
--- 
-2.45.2
-
+On Mon, Aug 18, 2025 at 6:22=E2=80=AFAM Mingyen Hsieh (=E8=AC=9D=E6=98=8E=
+=E8=AB=BA)
+<Mingyen.Hsieh@mediatek.com> wrote:
+>
+> On Thu, 2025-08-14 at 14:55 +0300, Tal Inbar wrote:
+> >
+> > External email : Please do not click links or open attachments until
+> > you have verified the sender or the content.
+> >
+> >
+> > Hi Mingyen,
+> >
+> > I've collected some of my Routers' configuration information which
+> > I'll share with you in a private email message.
+> >
+> > Tal
+> >
+> > On Mon, Aug 11, 2025 at 12:08=E2=80=AFPM Tal Inbar <inbartdev@gmail.com=
+>
+> > wrote:
+> > >
+> > > Hi Mingyen,
+> > >
+> > > I'll see what I can gather and I'll let you know.
+> > >
+> > > Tal
+> > >
+> > > On Mon, Aug 11, 2025 at 4:47=E2=80=AFAM Mingyen Hsieh (=E8=AC=9D=E6=
+=98=8E=E8=AB=BA)
+> > > <Mingyen.Hsieh@mediatek.com> wrote:
+> > > >
+> > > > On Fri, 2025-08-08 at 17:37 +0300, Tal Inbar wrote:
+> > > > >
+> > > > > External email : Please do not click links or open attachments
+> > > > > until
+> > > > > you have verified the sender or the content.
+> > > > >
+> > > > >
+> > > > > typo, laptop model is:
+> > > > > Lenovo IdeaPad Slim 5 16AKP10
+> > > > >
+> > > > > On Fri, Aug 8, 2025 at 4:14=E2=80=AFPM Tal Inbar <inbartdev@gmail=
+.com>
+> > > > > wrote:
+> > > > > >
+> > > > > > Hi,
+> > > > > >
+> > > > > > Since kernel v6.14.3, when using wireless to connect to my
+> > > > > > home
+> > > > > > router
+> > > > > > on my laptop, my wireless connection slows down to unusable
+> > > > > > speeds.
+> > > > > >
+> > > > > >
+> > > > > > More specifically, since kernel 6.14.3, when connecting to
+> > > > > > the
+> > > > > > wireless networks of my OpenWRT Router on my Lenovo IdeaPad
+> > > > > > Slim 15
+> > > > > > 16AKP10 laptop,
+> > > > > > either a 2.4ghz or a 5ghz network, the connection speed drops
+> > > > > > down
+> > > > > > to
+> > > > > > 0.1-0.2 Mbps download and 0 Mbps upload when measured using
+> > > > > > speedtest-cli.
+> > > > > > My laptop uses an mt7925 chip according to the loaded driver
+> > > > > > and
+> > > > > > firmware.
+> > > > > >
+> > > > > >
+> > > > > > Detailed Description:
+> > > > > >
+> > > > > > As mentioned above, my wireless connection becomes unusable
+> > > > > > when
+> > > > > > using
+> > > > > > linux 6.14.3 and above, dropping speeds to almost 0 Mbps,
+> > > > > > even when standing next to my router. Further, pinging
+> > > > > > archlinux.org
+> > > > > > results in "Temporary failure in name resolution".
+> > > > > > Any other wireless device in my house can successfully
+> > > > > > connect to
+> > > > > > my
+> > > > > > router and properly use the internet with good speeds, eg.
+> > > > > > iphones,
+> > > > > > ipads, raspberry pi and a windows laptop.
+> > > > > > When using my Lenovo laptop on a kernel 6.14.3 or higher to
+> > > > > > connect
+> > > > > > to
+> > > > > > other access points, such as my iPhone's hotspot and some
+> > > > > > TPLink
+> > > > > > and
+> > > > > > Zyxel routers - the connection speed is good, and there are
+> > > > > > no
+> > > > > > issues,
+> > > > > > which makes me believe there's something going on with my
+> > > > > > OpenWRT
+> > > > > > configuration in conjunction with a commit introduced on
+> > > > > > kernel
+> > > > > > 6.14.3
+> > > > > > for the mt7925e module as detailed below.
+> > > > > >
+> > > > > > I have followed a related issue previously reported on the
+> > > > > > mailing
+> > > > > > list regarding a problem with the same wifi chip on kernel
+> > > > > > 6.14.3,
+> > > > > > but
+> > > > > > the merged fix doesn't seem to fix my problem:
+> > > > > > https://lore.kernel.org/linux-mediatek/EmWnO5b-acRH1TXbGnkx41eJ=
+w654vmCR-8_xMBaPMwexCnfkvKCdlU5u19CGbaapJ3KRu-l3B-tSUhf8CCQwL0odjo6Cd5YG5lv=
+NeB-vfdg=3D@pm.me/
+> > > > > >
+> > > > > > I've tested stable builds of 6.15 as well up to 6.15.9 in the
+> > > > > > last
+> > > > > > month, which also do not fix the problem.
+> > > > > > I've also built and bisected v6.14 on june using guides on
+> > > > > > the Arch
+> > > > > > Linux wiki, for the following bad commit, same as the
+> > > > > > previously
+> > > > > > mentioned reported issue:
+> > > > > >
+> > > > > > [80007d3f92fd018d0a052a706400e976b36e3c87] wifi: mt76:
+> > > > > > mt7925:
+> > > > > > integrate *mlo_sta_cmd and *sta_cmd
+> > > > > >
+> > > > > > Testing further this week, I cloned mainline after 6.16 was
+> > > > > > released,
+> > > > > > built and tested it, and the issue still persists.
+> > > > > > I reverted the following commits on mainline and retested, to
+> > > > > > successfully see good wireless speeds:
+> > > > > >
+> > > > > > [0aa8496adda570c2005410a30df963a16643a3dc] wifi: mt76:
+> > > > > > mt7925: fix
+> > > > > > missing hdr_trans_tlv command for broadcast wtbl
+> > > > > > [cb1353ef34735ec1e5d9efa1fe966f05ff1dc1e1] wifi: mt76:
+> > > > > > mt7925:
+> > > > > > integrate *mlo_sta_cmd and *sta_cmd
+> > > > > >
+> > > > > > Then, reverting *only*
+> > > > > > 0aa8496adda570c2005410a30df963a16643a3dc
+> > > > > > causes
+> > > > > > the issue to reproduce, which confirms the issue is caused by
+> > > > > > commit
+> > > > > > cb1353ef34735ec1e5d9efa1fe966f05ff1dc1e1 on mainline.
+> > > > > >
+> > > > > > I've attached the following files to a bugzilla ticket:
+> > > > > >
+> > > > > > - lspci -nnk output:
+> > > > > > https://urldefense.com/v3/__https://bugzilla.kernel.org/attachm=
+ent.cgi?id=3D308466__;!!CTRNKA9wMg0ARbw!gTAaJeIN6s3eF_Kp6U3iwfv0wCCO_BVcRkN=
+VpJYnwR8qeqIIh134mEJ5dxdeNqzuWSPF2ocLAt43LxaBTIY-7w$
+> > > > > >
+> > > > > > - dmesg output:
+> > > > > > https://urldefense.com/v3/__https://bugzilla.kernel.org/attachm=
+ent.cgi?id=3D308465__;!!CTRNKA9wMg0ARbw!gTAaJeIN6s3eF_Kp6U3iwfv0wCCO_BVcRkN=
+VpJYnwR8qeqIIh134mEJ5dxdeNqzuWSPF2ocLAt43LxY1pkjZCA$
+> > > > > >
+> > > > > > - .config for the built mainline kernel:
+> > > > > > https://urldefense.com/v3/__https://bugzilla.kernel.org/attachm=
+ent.cgi?id=3D308467__;!!CTRNKA9wMg0ARbw!gTAaJeIN6s3eF_Kp6U3iwfv0wCCO_BVcRkN=
+VpJYnwR8qeqIIh134mEJ5dxdeNqzuWSPF2ocLAt43LxYcu-Db2g$
+> > > > > >
+> > > > > >
+> > > > > > More information:
+> > > > > >
+> > > > > > OS Distribution: Arch Linux
+> > > > > >
+> > > > > > Linux build information from /proc/version:
+> > > > > > Linux version 6.16.0linux-mainline-11853-g21be711c0235
+> > > > > > (tal@arch-debug) (gcc (GCC) 15.1.1 20250729, GNU ld (GNU
+> > > > > > Binutils)
+> > > > > > 2.45.0) #3 SMP PREEMPT_DYNAMIC
+> > > > > >
+> > > > > > OpenWRT Version on my Router: 24.10.2
+> > > > > >
+> > > > > > Laptop Hardware:
+> > > > > > - Lenovo IdeaPad Slim 15 16AKP10 laptop (x86_64 Ryzen AI 350
+> > > > > > CPU)
+> > > > > > - Network device as reported by lscpi: 14c3:7925
+> > > > > > - Network modules and driver in use: mt7925e
+> > > > > > - mediatek chip firmware as of dmesg:
+> > > > > >   HW/SW Version: 0x8a108a10, Build Time: 20250526152947a
+> > > > > >   WM Firmware Version: ____000000, Build Time: 20250526153043
+> > > > > >
+> > > > > >
+> > > > > > Referencing regzbot:
+> > > > > >
+> > > > > > #regzbot introduced: 80007d3f92fd018d0a052a706400e976b36e3c87
+> > > > > >
+> > > > > >
+> > > > > > Please let me know if any other information is needed, or if
+> > > > > > there
+> > > > > > is
+> > > > > > anything else that I can test on my end.
+> > > > > >
+> > > > > > Thanks,
+> > > > > > Tal Inbar
+> > > >
+> > > > Hi,
+> > > >
+> > > > Can you capture a sniffer log? There should be some configuration
+> > > > differences that we can identify from the packet frames during
+> > > > the
+> > > > connection process. So please provide the sniffer logs when
+> > > > connecting
+> > > > to your OpenWRT, TPLink, and Zyxel.
+> > > >
+> > > > Or you can check for any configuration differences between
+> > > > OpenWRT and
+> > > > the other routers, which might also help with debugging.
+> > > >
+> > > > Thanks~
+> > > >
+> > > > Yen.
+> > > >
+> > > >
+> > > > *********** MEDIATEK Confidentiality Notice
+> > > >  ***********
+> > > > The information contained in this e-mail message (including any
+> > > > attachments) may be confidential, proprietary, privileged, or
+> > > > otherwise exempt from disclosure under applicable laws. It is
+> > > > intended to be conveyed only to the designated recipient(s). Any
+> > > > use, dissemination, distribution, printing, retaining or copying
+> > > > of this e-mail (including its attachments) by unintended
+> > > > recipient(s)
+> > > > is strictly prohibited and may be unlawful. If you are not an
+> > > > intended recipient of this e-mail, or believe that you have
+> > > > received
+> > > > this e-mail in error, please notify the sender immediately
+> > > > (by replying to this e-mail), delete any and all copies of this
+> > > > e-mail (including any attachments) from your system, and do not
+> > > > disclose the content of this e-mail to any other person. Thank
+> > > > you!
+>
+> Hi,
+>
+> As we discussion on the private mail, this issue has been fixed at this
+> patch:
+> https://patchwork.kernel.org/project/linux-wireless/patch/20250818030201.=
+997940-1-mingyen.hsieh@mediatek.com/
+>
+> Thanks.
+>
+> *********** MEDIATEK Confidentiality Notice
+>  ***********
+> The information contained in this e-mail message (including any
+> attachments) may be confidential, proprietary, privileged, or
+> otherwise exempt from disclosure under applicable laws. It is
+> intended to be conveyed only to the designated recipient(s). Any
+> use, dissemination, distribution, printing, retaining or copying
+> of this e-mail (including its attachments) by unintended recipient(s)
+> is strictly prohibited and may be unlawful. If you are not an
+> intended recipient of this e-mail, or believe that you have received
+> this e-mail in error, please notify the sender immediately
+> (by replying to this e-mail), delete any and all copies of this
+> e-mail (including any attachments) from your system, and do not
+> disclose the content of this e-mail to any other person. Thank you!
 
