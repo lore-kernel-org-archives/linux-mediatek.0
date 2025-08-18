@@ -4,63 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C91DCA0EF1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Aug 2025 13:41:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56D46CA0ED1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Aug 2025 13:42:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=c2psIv9qKbiJ6YLrBPsU39p5+TEb8fUSSv2gD6HEML0=; b=cfZ7d/4wELJAld6kgfNPw8DbPG
-	9U1p8Kzm9zMkYghbmsmI2xIDoNbmBnzGoQe/imSzj2isxQTB56xAmX1CQ6oTgmYc9zWb9z9goOhqx
-	K+cP8HkvYr/fUqdn7eJG2g79wCo8FBQlWzMnvK+6senL4BGNEw4LNViQOjI7HTDW+Ewz0/Owi+OAu
-	fZPrAknJfy1nNF4MoDMcJPahKxaNl1gfdWF8dIs7q8MZQzMLU4N3DSC+/Nai8BNAcrEgtWHiZXBzd
-	jqxWAYMgbAVknCHm8cAvLlOPHY//lfVNAfNtUyl2eBwYLe0t9TDvYCUeOUJPUmDY/8lkfVFIRLrFi
-	7sZl3YCQ==;
+	bh=lyPRgtJIrl+DCxGXCftDbyg/RUx12+pyN49Ht/Rz3Ao=; b=Lj8yt252PV8ZA1yYw3KWA356ts
+	otjZC/aI3CoSqg3lmQwgEl8bbFJzqT2W8NKh3Mk2ggq4HkLmsoda879aY3N9bUvqwSfi78cLrpNII
+	6ayr3XU0N8MTnwrFf4kahjWZJ8JhN7NHqpIXhftLl9tuuhmZWtBxm6Th2jTCrjxPPnmgItbNOnKI9
+	a8csabimYvlN6CExMF1kIYfc91wM+liviR7LusWG6oiwvfwoOaqCU+o4EOcELu90BdImNJzesF9Ow
+	LxN08MFIAbb5Y3pQ4ucHrEFGTuXZ9yRAK3hZzr0p0W1p0AkaV2Lo0bwODdVkvhSzGcLtlJtVZWUZq
+	m30p+WUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uo07E-00000007aTj-0S2c;
-	Mon, 18 Aug 2025 13:41:36 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uo07g-00000007bQb-1CYz;
+	Mon, 18 Aug 2025 13:42:04 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1unwdV-000000076rG-0ZUt;
-	Mon, 18 Aug 2025 09:58:41 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 40BCF601D1;
-	Mon, 18 Aug 2025 09:58:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 446B2C4CEEB;
-	Mon, 18 Aug 2025 09:58:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755511119;
-	bh=IVmYnonridwoQ6jxBvPZC4yerBdgroDgBZFPopy1r4g=;
-	h=From:Date:Subject:To:Cc:From;
-	b=Nb29xwR4T10F6R7bKovgIT+ZChFem4oFqrrSeKarqu8BltJfcqsKclZEQmv7Hih1X
-	 JWpstzx1AnSCQ1wur/mxxVwjheTkLnXd+DDywd4XnNzbUPqAemGb+/PQKe9Ez3SuwQ
-	 +2fsH2idrkM2Ssw9zcAS7ft6fl5x4P+UiXcgbM2xBXH1kkRkWJEPFKyn4T6cDczVvL
-	 mOP5pnQ4m2HBG4jtSv/15lT4lT07wjOT7LcHQIpGQANBwaEsyY5fOMU4o/jp00TMut
-	 7Bkn07TCGqvEKxhLHASHCWBDre+/ev2Dpcm3weav2nLhXG5WMusdSBTvhilIyqxqaf
-	 aYYMv4h5bKBjw==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Mon, 18 Aug 2025 11:58:25 +0200
-Subject: [PATCH net] net: airoha: ppe: Do not invalid PPE entries in case
- of SW hash collision
+	id 1unyMO-00000007GVh-04Rg;
+	Mon, 18 Aug 2025 11:49:09 +0000
+X-UUID: 552d5b6c7c2911f09f706fa2197c6ceb-20250818
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=lyPRgtJIrl+DCxGXCftDbyg/RUx12+pyN49Ht/Rz3Ao=;
+	b=Ts5uEDShSHdxHPRZ2FhRS2c1TFPtaL1BpYBKo8Wrn4bpNQ+ZhzSC+t+sApbc+VkFz2j6co1AHYNqgHhx6Eziz6KSrfGC5YZ+0gpL6mAs/9jpDACIzXhqBSorRLQelj0j3sKB+bPshGr+Zqnkhf5SORTqJA0kwtobjubl24JOy3Y=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.3,REQID:5c957ed9-5b4e-471f-83d8-2e068aa5832a,IP:0,UR
+	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:-5
+X-CID-META: VersionHash:f1326cf,CLOUDID:a400417a-966c-41bd-96b5-7d0b3c22e782,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:-5,Content:0|15|50,EDM:-3,IP:
+	nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,L
+	ES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 552d5b6c7c2911f09f706fa2197c6ceb-20250818
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
+	(envelope-from <mengqi.zhang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 9539747; Mon, 18 Aug 2025 04:49:01 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Mon, 18 Aug 2025 19:48:58 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Mon, 18 Aug 2025 19:48:57 +0800
+From: Mengqi Zhang <mengqi.zhang@mediatek.com>
+To: Chaotian Jing <chaotian.jing@mediatek.com>, Ulf Hansson
+	<ulf.hansson@linaro.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
+	<krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Wenbin Mei
+	<wenbin.mei@mediatek.com>
+CC: <linux-mmc@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Mengqi Zhang
+	<mengqi.zhang@mediatek.com>
+Subject: [PATCH] dt-bindings: mmc: Add compatible for MT8189 SoC
+Date: Mon, 18 Aug 2025 19:47:27 +0800
+Message-ID: <20250818114855.8637-1-mengqi.zhang@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250818-airoha-en7581-hash-collision-fix-v1-1-d190c4b53d1c@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAED5omgC/x2NUQqAIBAFrxL73YJKpnSV6MNqzQXRUIggunvS5
- zyYNw9UKkwVpu6BQhdXzqmB7DvYgksHIe+NQQmlhZUWHZccHFIy2koMrgbccoy/iJ5v9F4N62j
- MLoyCdnMWavOfmJf3/QAi4fK4cgAAAA==
-X-Change-ID: 20250818-airoha-en7581-hash-collision-fix-ff24b677d072
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Michal Kubiak <michal.kubiak@intel.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250818_044908_059456_063211DA 
+X-CRM114-Status: UNSURE (   8.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,49 +90,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SW hash computed by airoha_ppe_foe_get_entry_hash routine (used for
-foe_flow hlist) can theoretically produce collisions between two
-different HW PPE entries.
-In airoha_ppe_foe_insert_entry() if the collision occurs we will mark
-the second PPE entry in the list as stale (setting the hw hash to 0xffff).
-Stale entries are no more updated in airoha_ppe_foe_flow_entry_update
-routine and so they are removed by Netfilter.
-Fix the problem not marking the second entry as stale in
-airoha_ppe_foe_insert_entry routine if we have already inserted the
-brand new entry in the PPE table and let Netfilter remove real stale
-entries according to their timestamp.
-Please note this is just a theoretical issue spotted reviewing the code
-and not faced running the system.
+Add a compatible string for the MT8189 SoC's mtk-sd mmc controllers.
 
-Fixes: cd53f622611f9 ("net: airoha: Add L2 hw acceleration support")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Signed-off-by: Mengqi Zhang <mengqi.zhang@mediatek.com>
 ---
- drivers/net/ethernet/airoha/airoha_ppe.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ .../devicetree/bindings/mmc/mtk-sd.yaml       | 29 +++++++++++++++++++
+ 1 file changed, 29 insertions(+)
 
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index 47411d2cbd2803c0a448243fb3e92b32d9179bd8..88694b08afa1ce232b34c64f605a151aed137b6d 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -736,10 +736,8 @@ static void airoha_ppe_foe_insert_entry(struct airoha_ppe *ppe,
- 			continue;
- 		}
+diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+index 6dd26ad31491..1285dddeaec9 100644
+--- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
++++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+@@ -25,6 +25,7 @@ properties:
+           - mediatek,mt8135-mmc
+           - mediatek,mt8173-mmc
+           - mediatek,mt8183-mmc
++          - mediatek,mt8189-mmc
+           - mediatek,mt8196-mmc
+           - mediatek,mt8516-mmc
+       - items:
+@@ -192,6 +193,7 @@ allOf:
+             - mediatek,mt8183-mmc
+             - mediatek,mt8186-mmc
+             - mediatek,mt8188-mmc
++            - mediatek,mt8189-mmc
+             - mediatek,mt8195-mmc
+             - mediatek,mt8196-mmc
+             - mediatek,mt8516-mmc
+@@ -240,6 +242,7 @@ allOf:
+               - mediatek,mt7986-mmc
+               - mediatek,mt7988-mmc
+               - mediatek,mt8183-mmc
++              - mediatek,mt8189-mmc
+               - mediatek,mt8196-mmc
+     then:
+       properties:
+@@ -319,6 +322,32 @@ allOf:
+             - const: source_cg
+             - const: crypto
  
--		if (commit_done || !airoha_ppe_foe_compare_entry(e, hwe)) {
--			e->hash = 0xffff;
-+		if (!airoha_ppe_foe_compare_entry(e, hwe))
- 			continue;
--		}
- 
- 		airoha_ppe_foe_commit_entry(ppe, &e->data, hash);
- 		commit_done = true;
-
----
-base-commit: 715c7a36d59f54162a26fac1d1ed8dc087a24cf1
-change-id: 20250818-airoha-en7581-hash-collision-fix-ff24b677d072
-
-Best regards,
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: mediatek,mt8189-mmc
++    then:
++      properties:
++        clocks:
++         items:
++            - description: source clock
++            - description: HCLK which used for host
++            - description: independent source clock gate
++            - description: bus clock used for internal register access
++            - description: peripheral bus clock gate
++            - description: AXI bus clock gate
++            - description: crypto clock used for data encrypt/decrypt (optional)
++        clock-names:
++          items:
++            - const: source
++            - const: hclk
++            - const: source_cg
++            - const: bus_clk
++            - const: pclk_cg
++            - const: axi_cg
++            - const: crypto
++
+   - if:
+       properties:
+         compatible:
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.46.0
 
 
