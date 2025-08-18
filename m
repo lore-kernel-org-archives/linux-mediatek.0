@@ -4,175 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F364CA0ED1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Aug 2025 13:42:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B877CA0EE4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Aug 2025 13:43:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Di2sJMGDTfc2gFtc34a6qY4519gtg5sAUPBz5vhubF0=; b=OUjbP2TBSu2jxqx0xvObtvAM+t
-	Htr+dtAKYz5bxlYzsCRzZv9g66xD5Dot7TA0pCmlcAv3+vPi0LnuhLi3O4v4AZWSXlnmzheavQF0I
-	9frMi+SGRKi7R1C0KUwvq55WMBacJEKrd6WxCwe8qPOVuFxU+RD1g6KeE33PYh+7tuckaqvDuFrf4
-	ZUNPvcU+XfpAHCsxFDKg0uP9xUPcTdsacaUjvi3dKKf06AynXegPKRBrp9yYMMxEWldoCfWtPJs3/
-	f2mvIKQaDWi3CM9Y8rI02Z2l/jVOidOaff163B9zirz2Dknn/LtWXv4vfrkljM+9R0rg1P1dk7LpZ
-	iBOoVUCg==;
+	bh=OtOEOIx+5rw6ruoieqKatcY07A3do2Iag5u4w1kVSH8=; b=1S4QmtVyKPhQt8cRcdQ6XqXmHr
+	eui+fop2x6e3ECT4I1v//sVqg7RZP6CvC6A3Zz1jMABG123GgzfJB/ZtLTDrnzyP9++fXQd198qnl
+	Igx9xHNV6/ri4v/FSD1kywMWaoqp6X1xQjj+cQj9AC9vLdGxqiWW6Eep+tqnrbK1kB9PXAANLo35P
+	WwTbgFkpD+MYAzVNMQPYNjxQpFo9lKqXDAIj5+e3uPmDoQj+0AfZMMbRjUaCwU5vWkuKZ2/nUlImd
+	E/7D1Ij95hqD4cgts9g0V17TcZMM+X1RxQedKfF/hU91rvca2LODgngq7kt5OeuxvZdHAhYRsSg1n
+	Lm2Q7+PQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uo08X-00000007ctA-09dA;
-	Mon, 18 Aug 2025 13:42:57 +0000
-Received: from mx08-00178001.pphosted.com ([91.207.212.93] helo=mx07-00178001.pphosted.com)
+	id 1uo08Z-00000007cyI-3a9K;
+	Mon, 18 Aug 2025 13:42:59 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1unylJ-00000007JDO-19f7;
-	Mon, 18 Aug 2025 12:14:54 +0000
-Received: from pps.filterd (m0046660.ppops.net [127.0.0.1])
-	by mx07-00178001.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 57IBFYxq016305;
-	Mon, 18 Aug 2025 14:14:22 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=selector1; bh=
-	Di2sJMGDTfc2gFtc34a6qY4519gtg5sAUPBz5vhubF0=; b=1hz90Qtb072d/lZA
-	y9NnyHsNccVQIbaFxcx7E7yMN9BVd6YWYCKylGEN0e+OTGXy865/O0Gbf3dEl9Z1
-	+pyjnZtqZmY2hzn9RxRMNrPWlLtWLnBzv9SpI7iBuZ/YBnTIyzd+BxQeYYhkAnBf
-	lX0UbccWrDFNhEjef3I/A05Gy8if96eAhsYMdQYBIYX+g0MMFq0OgbfziCesFdFl
-	nXQ1MgcAlJriBhvCSa3kyLIDJFZiBSDm3BbHyZUB9/jrK0ro6YbspzGy9IWCI7bL
-	FHgHd+KEt/UAXCrUnRbJH4HCqt+6p5voVSZk9OWqBUOTtwg3MAsd6wUIGVvnupeu
-	MGwV9Q==
-Received: from beta.dmz-ap.st.com (beta.dmz-ap.st.com [138.198.100.35])
-	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 48jf47p5mr-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 18 Aug 2025 14:14:22 +0200 (MEST)
-Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
-	by beta.dmz-ap.st.com (STMicroelectronics) with ESMTP id 2B43640058;
-	Mon, 18 Aug 2025 14:11:18 +0200 (CEST)
-Received: from Webmail-eu.st.com (shfdag1node1.st.com [10.75.129.69])
-	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id 5BF7971CEFF;
-	Mon, 18 Aug 2025 14:09:58 +0200 (CEST)
-Received: from [10.48.87.121] (10.48.87.121) by SHFDAG1NODE1.st.com
- (10.75.129.69) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Mon, 18 Aug
- 2025 14:09:53 +0200
-Message-ID: <836b8be6-ec6a-413d-8657-ee02025ebc24@foss.st.com>
-Date: Mon, 18 Aug 2025 14:09:52 +0200
+	id 1unynt-00000007JY3-3iqc;
+	Mon, 18 Aug 2025 12:17:34 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 52929601EC;
+	Mon, 18 Aug 2025 12:17:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CD5FBC113D0;
+	Mon, 18 Aug 2025 12:17:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1755519453;
+	bh=pN2ktZgnpU5sK96YS6Tu1DHHMe1tgA4d0/aTsg8hRIQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=UY9MJR43L0uR+Ikd9ylXHu1aOmrBA/7g3/+yN2tAuxDOj3YyjJx0UZKXzFmsx3ke1
+	 UDQe2i9fdHOCDsbeGjoNKn2sG071EmlrEC6xIX32MB/iQZI6amgVRHR3NuSbI6EjwV
+	 VRm9qdF7us/uUn+esSPNRA8ubckZ8gd7fuOh7dAVmSB7gYg+jBlXwSrUo2bgXxuyaB
+	 R0OCt5oEXS8VMDsKFUn3mQhFdf0ANPxX6saS0vAU4Gb7MqtS4cC7+R5GaIlCvnZJYm
+	 3lxoWXkBBwTTFKSh+FK9Drb/T6bxGdaGnXyyusPD/qPGIuvUAh/VLqvzJWUVrdTHn0
+	 jbBrDJEUMw+gw==
+Message-ID: <401876fa-0786-44b4-aadc-da85ee829880@kernel.org>
+Date: Mon, 18 Aug 2025 14:17:27 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 059/114] clk: stm32: stm32mp1: convert from round_rate()
- to determine_rate()
-To: <bmasney@redhat.com>, Michael Turquette <mturquette@baylibre.com>,
-        "Stephen Boyd" <sboyd@kernel.org>, Sudeep Holla <sudeep.holla@arm.com>,
-        "Cristian Marussi" <cristian.marussi@arm.com>,
-        Chen Wang
-	<unicorn_wang@outlook.com>,
-        Inochi Amaoto <inochiama@gmail.com>,
-        Nicolas
- Ferre <nicolas.ferre@microchip.com>,
-        Alexandre Belloni
-	<alexandre.belloni@bootlin.com>,
-        Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-        Paul Cercueil <paul@crapouillou.net>,
-        Keguang Zhang
-	<keguang.zhang@gmail.com>,
-        Taichi Sugaya <sugaya.taichi@socionext.com>,
-        "Takao Orito" <orito.takao@socionext.com>,
-        Shawn Guo <shawnguo@kernel.org>,
-        "Sascha Hauer" <s.hauer@pengutronix.de>,
-        Pengutronix Kernel Team
-	<kernel@pengutronix.de>,
-        Fabio Estevam <festevam@gmail.com>,
-        Jacky Huang
-	<ychuang3@nuvoton.com>,
-        Shan-Chun Hung <schung@nuvoton.com>,
-        "Vladimir
- Zapolskiy" <vz@mleia.com>,
-        Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>,
-        Paul Walmsley <paul.walmsley@sifive.com>,
-        Samuel Holland
-	<samuel.holland@sifive.com>,
-        Yixun Lan <dlan@gentoo.org>,
-        Steen Hegelund
-	<Steen.Hegelund@microchip.com>,
-        Daniel Machon <daniel.machon@microchip.com>,
-        <UNGLinuxDriver@microchip.com>, Orson Zhai <orsonzhai@gmail.com>,
-        Baolin Wang
-	<baolin.wang@linux.alibaba.com>,
-        Chunyan Zhang <zhang.lyra@gmail.com>,
-        "Maxime Coquelin" <mcoquelin.stm32@gmail.com>,
-        Alexandre Torgue
-	<alexandre.torgue@foss.st.com>,
-        Michal Simek <michal.simek@amd.com>,
-        "Maxime
- Ripard" <mripard@kernel.org>,
-        =?UTF-8?Q?Andreas_F=C3=A4rber?=
-	<afaerber@suse.de>,
-        Manivannan Sadhasivam <mani@kernel.org>, Sven Peter
-	<sven@kernel.org>,
-        Janne Grunau <j@jannau.net>, Alyssa Rosenzweig
-	<alyssa@rosenzweig.io>,
-        Neal Gompa <neal@gompa.dev>,
-        Eugeniy Paltsev
-	<Eugeniy.Paltsev@synopsys.com>,
-        Ray Jui <rjui@broadcom.com>, Scott Branden
-	<sbranden@broadcom.com>,
-        Broadcom internal kernel review list
-	<bcm-kernel-feedback-list@broadcom.com>,
-        Max Filippov <jcmvbkbc@gmail.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>,
-        Daniel Palmer <daniel@thingy.jp>,
-        Romain Perier <romain.perier@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
-        Gregory Clement <gregory.clement@bootlin.com>,
-        Sebastian Hesselbarth
-	<sebastian.hesselbarth@gmail.com>,
-        Bjorn Andersson <andersson@kernel.org>,
-        Geert Uytterhoeven <geert+renesas@glider.be>,
-        Heiko Stuebner
-	<heiko@sntech.de>,
-        Andrea della Porta <andrea.porta@suse.com>,
-        "Krzysztof
- Kozlowski" <krzk@kernel.org>,
-        Sylwester Nawrocki <s.nawrocki@samsung.com>,
-        Chanwoo Choi <cw00.choi@samsung.com>,
-        Alim Akhtar <alim.akhtar@samsung.com>, Qin Jian <qinjian@cqplus1.com>,
-        Viresh Kumar <vireshk@kernel.org>,
-        "Ulf
- Hansson" <ulf.hansson@linaro.org>,
-        Luca Ceresoli <luca.ceresoli@bootlin.com>,
-        Alex Helms <alexander.helms.jy@renesas.com>,
-        Linus Walleij
-	<linus.walleij@linaro.org>,
-        Liviu Dudau <liviu.dudau@arm.com>,
-        "Lorenzo
- Pieralisi" <lpieralisi@kernel.org>,
-        Nobuhiro Iwamatsu
-	<nobuhiro1.iwamatsu@toshiba.co.jp>
-CC: <linux-clk@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-        <arm-scmi@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-        <sophgo@lists.linux.dev>, <linux-mips@vger.kernel.org>,
-        <imx@lists.linux.dev>, <linux-riscv@lists.infradead.org>,
-        <spacemit@lists.linux.dev>, <linux-stm32@st-md-mailman.stormreply.com>,
-        <patches@opensource.cirrus.com>, <linux-actions@lists.infradead.org>,
-        <asahi@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
-        <linux-arm-msm@vger.kernel.org>, <linux-renesas-soc@vger.kernel.org>,
-        <linux-rockchip@lists.infradead.org>,
-        <linux-samsung-soc@vger.kernel.org>, <soc@lists.linux.dev>
-References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
- <20250811-clk-for-stephen-round-rate-v1-59-b3bf97b038dc@redhat.com>
+Subject: Re: [PATCH] dt-bindings: mmc: Add compatible for MT8189 SoC
+To: Mengqi Zhang <mengqi.zhang@mediatek.com>,
+ Chaotian Jing <chaotian.jing@mediatek.com>,
+ Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Wenbin Mei <wenbin.mei@mediatek.com>
+Cc: linux-mmc@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20250818114855.8637-1-mengqi.zhang@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
-From: Gabriel FERNANDEZ <gabriel.fernandez@foss.st.com>
-In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-59-b3bf97b038dc@redhat.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <20250818114855.8637-1-mengqi.zhang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.48.87.121]
-X-ClientProxiedBy: EQNCAS1NODE3.st.com (10.75.129.80) To SHFDAG1NODE1.st.com
- (10.75.129.69)
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-08-18_05,2025-08-14_01,2025-03-28_01
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250818_051453_587938_B6DEDC3A 
-X-CRM114-Status: GOOD (  16.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -187,53 +119,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 18/08/2025 13:47, Mengqi Zhang wrote:
+> Add a compatible string for the MT8189 SoC's mtk-sd mmc controllers.
 
-On 8/11/25 17:18, Brian Masney via B4 Relay wrote:
-> From: Brian Masney <bmasney@redhat.com>
->
-> The round_rate() clk ops is deprecated, so migrate this driver from
-> round_rate() to determine_rate() using the Coccinelle semantic patch
-> on the cover letter of this series.
->
-> Signed-off-by: Brian Masney <bmasney@redhat.com>
-Reviewed-by: Gabriel Fernandez <gabriel.fernandez@foss.st.com>
+Where is any user of that?
 
+> 
+> Signed-off-by: Mengqi Zhang <mengqi.zhang@mediatek.com>
 > ---
->   drivers/clk/stm32/clk-stm32mp1.c | 13 ++++++++-----
->   1 file changed, 8 insertions(+), 5 deletions(-)
->
-> diff --git a/drivers/clk/stm32/clk-stm32mp1.c b/drivers/clk/stm32/clk-stm32mp1.c
-> index b8b45ed22f981df580506f3d4ca801ba11d2bab2..2d9ccd96ec98c05eb836d632bfd9903de60ba1bb 100644
-> --- a/drivers/clk/stm32/clk-stm32mp1.c
-> +++ b/drivers/clk/stm32/clk-stm32mp1.c
-> @@ -970,12 +970,15 @@ static unsigned long __bestmult(struct clk_hw *hw, unsigned long rate,
->   	return mult;
->   }
->   
-> -static long timer_ker_round_rate(struct clk_hw *hw, unsigned long rate,
-> -				 unsigned long *parent_rate)
-> +static int timer_ker_determine_rate(struct clk_hw *hw,
-> +				    struct clk_rate_request *req)
->   {
-> -	unsigned long factor = __bestmult(hw, rate, *parent_rate);
-> +	unsigned long factor = __bestmult(hw, req->rate,
-> +					  req->best_parent_rate);
->   
-> -	return *parent_rate * factor;
-> +	req->rate = req->best_parent_rate * factor;
-> +
-> +	return 0;
->   }
->   
->   static int timer_ker_set_rate(struct clk_hw *hw, unsigned long rate,
-> @@ -1026,7 +1029,7 @@ static unsigned long timer_ker_recalc_rate(struct clk_hw *hw,
->   
->   static const struct clk_ops timer_ker_ops = {
->   	.recalc_rate	= timer_ker_recalc_rate,
-> -	.round_rate	= timer_ker_round_rate,
-> +	.determine_rate = timer_ker_determine_rate,
->   	.set_rate	= timer_ker_set_rate,
->   
->   };
->
+>  .../devicetree/bindings/mmc/mtk-sd.yaml       | 29 +++++++++++++++++++
+>  1 file changed, 29 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> index 6dd26ad31491..1285dddeaec9 100644
+> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> @@ -25,6 +25,7 @@ properties:
+>            - mediatek,mt8135-mmc
+>            - mediatek,mt8173-mmc
+>            - mediatek,mt8183-mmc
+> +          - mediatek,mt8189-mmc
+>            - mediatek,mt8196-mmc
+>            - mediatek,mt8516-mmc
+>        - items:
+> @@ -192,6 +193,7 @@ allOf:
+>              - mediatek,mt8183-mmc
+>              - mediatek,mt8186-mmc
+>              - mediatek,mt8188-mmc
+> +            - mediatek,mt8189-mmc
+
+huh? This sets the clocks
+
+>              - mediatek,mt8195-mmc
+>              - mediatek,mt8196-mmc
+>              - mediatek,mt8516-mmc
+> @@ -240,6 +242,7 @@ allOf:
+>                - mediatek,mt7986-mmc
+>                - mediatek,mt7988-mmc
+>                - mediatek,mt8183-mmc
+> +              - mediatek,mt8189-mmc
+>                - mediatek,mt8196-mmc
+>      then:
+>        properties:
+> @@ -319,6 +322,32 @@ allOf:
+>              - const: source_cg
+>              - const: crypto
+>  
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            const: mediatek,mt8189-mmc
+> +    then:
+> +      properties:
+> +        clocks:
+> +         items:
+
+As this as well..
+
+And obviously never tested.
+
+Please don't send untested (and buggy) code :(. Why do you think
+reviewers should spend time on it instead of tools?
+
+Best regards,
+Krzysztof
 
