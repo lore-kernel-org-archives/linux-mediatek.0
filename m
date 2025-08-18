@@ -4,92 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6319CA0ED1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Aug 2025 13:41:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C91DCA0EF1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Aug 2025 13:41:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ULtP4TPRiwLFVgdH9tMF4FKUEQSjydA2syIDemXrgs4=; b=Uko3v++ism8aPUoInPwAzx59Iw
-	KDWJ+/lUJ1RHodEP6bNQbBEIbH3wj3ZoREQ+d6ySPMdpE8R8GrwU0AF5S/LkHuvoZFMfuZHGfzQyU
-	SvLkjl7O4ECsGfquzqMT4AGWkgtCtTkEVjLzERXxFYFQjP8hAAUfyvVqBgV1fFt03eSOzyBjWprHo
-	60iLwjzuQakIvzADENe+c4CjOOq2XFakCSUzZSMQBemzfEAvSS4o0Yny3P2UbaYcSduh2m3FBfFvI
-	N3g0G8LWrAMBmQX5KCZhPGPlXSIhIzoU65EH0rEu1wbganxWWN9QXALVTOZo7lrrN1Th/Z2cSawj2
-	ncLP/4gA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=c2psIv9qKbiJ6YLrBPsU39p5+TEb8fUSSv2gD6HEML0=; b=cfZ7d/4wELJAld6kgfNPw8DbPG
+	9U1p8Kzm9zMkYghbmsmI2xIDoNbmBnzGoQe/imSzj2isxQTB56xAmX1CQ6oTgmYc9zWb9z9goOhqx
+	K+cP8HkvYr/fUqdn7eJG2g79wCo8FBQlWzMnvK+6senL4BGNEw4LNViQOjI7HTDW+Ewz0/Owi+OAu
+	fZPrAknJfy1nNF4MoDMcJPahKxaNl1gfdWF8dIs7q8MZQzMLU4N3DSC+/Nai8BNAcrEgtWHiZXBzd
+	jqxWAYMgbAVknCHm8cAvLlOPHY//lfVNAfNtUyl2eBwYLe0t9TDvYCUeOUJPUmDY/8lkfVFIRLrFi
+	7sZl3YCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uo06x-00000007ZzS-36uA;
-	Mon, 18 Aug 2025 13:41:19 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1uo07E-00000007aTj-0S2c;
+	Mon, 18 Aug 2025 13:41:36 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1unwM5-0000000754a-0gni
-	for linux-mediatek@lists.infradead.org;
-	Mon, 18 Aug 2025 09:40:42 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-619ff42ae79so2692288a12.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 18 Aug 2025 02:40:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1755510039; x=1756114839; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ULtP4TPRiwLFVgdH9tMF4FKUEQSjydA2syIDemXrgs4=;
-        b=LlgQyq7Oq938bmK3b1q+2U0src5hKhu6ssZRkrgBm6fewgoeAPrWZyIkftKLaTr83Y
-         Hf1fPi5NoQL2ra/dRUrNMR1UVm/jyELW5ztYYenQUDZJuZkRtIDg2h5UxrZDsvxvQBe/
-         jB2pQJZGpmnQcP+zev1Hz+y7z4Qw5qc4m/WcFWrkM3AFMuW59O6OSyqwo7hP3+m5Fv21
-         eVL6Inczvisuar0wu5Ta68DXEIPSZ+DGKzz1Lx6NR07aJguYgtrOUOKb/TpTkJXgOYnS
-         Bbib1KudNd0dyLgFnOv+oY2bneivEVb5eWQb/iWAvz2cOl4jQ6Yg6Q1BfOKBX/ajpspO
-         LcoA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1755510039; x=1756114839;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ULtP4TPRiwLFVgdH9tMF4FKUEQSjydA2syIDemXrgs4=;
-        b=u24htRHsJjxZwM9lymxnk+HuShXdgGXcCxe1gYVwwD7f9/Jcd7wcYj5ucE7OsO7aEX
-         l2uEQqKdR6hBWeyBc0YDp/NZdlNCMWuhAvEd/SXeclNJdWFMiMhS2COC1nu+0H5m+hFS
-         baG/tL0x0iXm+1PocPMWb0WPLuzZvBOW+QBH+Qmnefq2JZwhJrqwtQTalNyXDCIRBm17
-         C6M7R9xb5KKREY8HBQY0blMiwE4fF9UqX/RrV42ICC0P0FKdgOrn7RCPgScS7f2yuF0c
-         IjjQ7cuqbn+hcBHfu1syphR+5scOLYY2/if2KvX9sh0ILY6mVuVgDWcg8/P/IixfmfYy
-         EbjA==
-X-Forwarded-Encrypted: i=1; AJvYcCWjSNjNLjzLbxpxpPbE73KZtchpTTjVRsjNzQyTEGbf4bEUYW5fIf7vO6HUy4zvOokyKxaL+KZA8SpddMc1mw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw+r6WOSxrjmqQHrYRhZoigykCAf+Tfg/6uNkrirg7c53FNogr1
-	1Cv9B7k7fP98dif2el9WxmcBMdbQgNrxpm34FM7UsnAlKndjI7S6zBj+CyOuf9yrQ6K9EsJAEqT
-	y+y/AP1zV5E4qiTzrJSn2YDaNDdEbVIs=
-X-Gm-Gg: ASbGncuL8F4bvUSN/hdShwtwr4R0AriOkqKUiOiQN3C1+CzXtxrmup8tzNAVm8jVEh6
-	KdW/8zMxSHG9NqZyuhaVqsQq9UuBKL3K1VAgSeygOf8vaSulIGLHtQmpoD67JX6WqO8jGESDwQZ
-	oJf8axixFJ0M7wtXHzbbIYtk5EiHfMRD1jdDFLHQkWchtxCrSQEcp0Odc8E172vI6G1fj5JrlZG
-	YiKXFCvLg==
-X-Google-Smtp-Source: AGHT+IF8KA/khkHfW1zM5A6VICcLQcaTlNP2NaY79413IWzC7ZXQoMbtUjB4YFC1WmKSdkoLWnGX/LuUFnS7Ou+6WdM=
-X-Received: by 2002:a05:6402:2686:b0:618:6af8:3f71 with SMTP id
- 4fb4d7f45d1cf-618b05322cfmr8012966a12.9.1755510038754; Mon, 18 Aug 2025
- 02:40:38 -0700 (PDT)
+	id 1unwdV-000000076rG-0ZUt;
+	Mon, 18 Aug 2025 09:58:41 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 40BCF601D1;
+	Mon, 18 Aug 2025 09:58:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 446B2C4CEEB;
+	Mon, 18 Aug 2025 09:58:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1755511119;
+	bh=IVmYnonridwoQ6jxBvPZC4yerBdgroDgBZFPopy1r4g=;
+	h=From:Date:Subject:To:Cc:From;
+	b=Nb29xwR4T10F6R7bKovgIT+ZChFem4oFqrrSeKarqu8BltJfcqsKclZEQmv7Hih1X
+	 JWpstzx1AnSCQ1wur/mxxVwjheTkLnXd+DDywd4XnNzbUPqAemGb+/PQKe9Ez3SuwQ
+	 +2fsH2idrkM2Ssw9zcAS7ft6fl5x4P+UiXcgbM2xBXH1kkRkWJEPFKyn4T6cDczVvL
+	 mOP5pnQ4m2HBG4jtSv/15lT4lT07wjOT7LcHQIpGQANBwaEsyY5fOMU4o/jp00TMut
+	 7Bkn07TCGqvEKxhLHASHCWBDre+/ev2Dpcm3weav2nLhXG5WMusdSBTvhilIyqxqaf
+	 aYYMv4h5bKBjw==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Mon, 18 Aug 2025 11:58:25 +0200
+Subject: [PATCH net] net: airoha: ppe: Do not invalid PPE entries in case
+ of SW hash collision
 MIME-Version: 1.0
-References: <CAJmAMMyOk7AVqQRrtK4Oum2uVKreGeLJ943-kkRCTspoGApZ8w@mail.gmail.com>
- <CAJmAMMyt5QQQOavVy+Gytf00Y0F6G+GCLYhj0E9RZ8cV85gwCw@mail.gmail.com>
- <10850475be9302b5b397173c1d4554335c0df966.camel@mediatek.com>
- <CAJmAMMxtH+WnJfU2tcHRxP472cnyM4cZ7vaTcZN0NSxQ6U5HCg@mail.gmail.com>
- <CAJmAMMzYkoVWq2w4UCdyF1x2huwtcbW37RyKiDiCR9pmACdDuQ@mail.gmail.com> <a28a7735e9ac1bdebb7b2e875c7c8433c40f7e38.camel@mediatek.com>
-In-Reply-To: <a28a7735e9ac1bdebb7b2e875c7c8433c40f7e38.camel@mediatek.com>
-From: Tal Inbar <inbartdev@gmail.com>
-Date: Mon, 18 Aug 2025 12:40:27 +0300
-X-Gm-Features: Ac12FXxMCu7eSzBQVb_UY0JnTLwZiuEPdhH3wExn75Hp4TUW0Ygum7_B1H-rsCM
-Message-ID: <CAJmAMMx7u9Zf4yMvV9KMz25SLrLx+MRHPRmhJZCn+iBqo+kp6w@mail.gmail.com>
-Subject: Re: [REGRESSION] [BISECTED] MT7925 wireless speed drops to zero since
- kernel 6.14.3 - wifi: mt76: mt7925: integrate *mlo_sta_cmd and *sta_cmd
-To: =?UTF-8?B?TWluZ3llbiBIc2llaCAo6Kyd5piO6Ku6KQ==?= <Mingyen.Hsieh@mediatek.com>
-Cc: Sean Wang <Sean.Wang@mediatek.com>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	"stable@vger.kernel.org" <stable@vger.kernel.org>, =?UTF-8?B?QWxsYW4gV2FuZyAo546L5a625YGJKQ==?= <Allan.Wang@mediatek.com>, 
-	"regressions@lists.linux.dev" <regressions@lists.linux.dev>, 
-	=?UTF-8?B?RGVyZW4gV3UgKOatpuW+t+S7gSk=?= <Deren.Wu@mediatek.com>, 
-	"nbd@nbd.name" <nbd@nbd.name>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250818_024041_214362_C5BA46E1 
-X-CRM114-Status: GOOD (  51.98  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250818-airoha-en7581-hash-collision-fix-v1-1-d190c4b53d1c@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAED5omgC/x2NUQqAIBAFrxL73YJKpnSV6MNqzQXRUIggunvS5
+ zyYNw9UKkwVpu6BQhdXzqmB7DvYgksHIe+NQQmlhZUWHZccHFIy2koMrgbccoy/iJ5v9F4N62j
+ MLoyCdnMWavOfmJf3/QAi4fK4cgAAAA==
+X-Change-ID: 20250818-airoha-en7581-hash-collision-fix-ff24b677d072
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Michal Kubiak <michal.kubiak@intel.com>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,266 +75,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+SW hash computed by airoha_ppe_foe_get_entry_hash routine (used for
+foe_flow hlist) can theoretically produce collisions between two
+different HW PPE entries.
+In airoha_ppe_foe_insert_entry() if the collision occurs we will mark
+the second PPE entry in the list as stale (setting the hw hash to 0xffff).
+Stale entries are no more updated in airoha_ppe_foe_flow_entry_update
+routine and so they are removed by Netfilter.
+Fix the problem not marking the second entry as stale in
+airoha_ppe_foe_insert_entry routine if we have already inserted the
+brand new entry in the PPE table and let Netfilter remove real stale
+entries according to their timestamp.
+Please note this is just a theoretical issue spotted reviewing the code
+and not faced running the system.
 
-Indeed as discussed privately, the aforementioned patch fixes the issue.
+Fixes: cd53f622611f9 ("net: airoha: Add L2 hw acceleration support")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/ethernet/airoha/airoha_ppe.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-Thanks,
-Tal
+diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
+index 47411d2cbd2803c0a448243fb3e92b32d9179bd8..88694b08afa1ce232b34c64f605a151aed137b6d 100644
+--- a/drivers/net/ethernet/airoha/airoha_ppe.c
++++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+@@ -736,10 +736,8 @@ static void airoha_ppe_foe_insert_entry(struct airoha_ppe *ppe,
+ 			continue;
+ 		}
+ 
+-		if (commit_done || !airoha_ppe_foe_compare_entry(e, hwe)) {
+-			e->hash = 0xffff;
++		if (!airoha_ppe_foe_compare_entry(e, hwe))
+ 			continue;
+-		}
+ 
+ 		airoha_ppe_foe_commit_entry(ppe, &e->data, hash);
+ 		commit_done = true;
 
-On Mon, Aug 18, 2025 at 6:22=E2=80=AFAM Mingyen Hsieh (=E8=AC=9D=E6=98=8E=
-=E8=AB=BA)
-<Mingyen.Hsieh@mediatek.com> wrote:
->
-> On Thu, 2025-08-14 at 14:55 +0300, Tal Inbar wrote:
-> >
-> > External email : Please do not click links or open attachments until
-> > you have verified the sender or the content.
-> >
-> >
-> > Hi Mingyen,
-> >
-> > I've collected some of my Routers' configuration information which
-> > I'll share with you in a private email message.
-> >
-> > Tal
-> >
-> > On Mon, Aug 11, 2025 at 12:08=E2=80=AFPM Tal Inbar <inbartdev@gmail.com=
->
-> > wrote:
-> > >
-> > > Hi Mingyen,
-> > >
-> > > I'll see what I can gather and I'll let you know.
-> > >
-> > > Tal
-> > >
-> > > On Mon, Aug 11, 2025 at 4:47=E2=80=AFAM Mingyen Hsieh (=E8=AC=9D=E6=
-=98=8E=E8=AB=BA)
-> > > <Mingyen.Hsieh@mediatek.com> wrote:
-> > > >
-> > > > On Fri, 2025-08-08 at 17:37 +0300, Tal Inbar wrote:
-> > > > >
-> > > > > External email : Please do not click links or open attachments
-> > > > > until
-> > > > > you have verified the sender or the content.
-> > > > >
-> > > > >
-> > > > > typo, laptop model is:
-> > > > > Lenovo IdeaPad Slim 5 16AKP10
-> > > > >
-> > > > > On Fri, Aug 8, 2025 at 4:14=E2=80=AFPM Tal Inbar <inbartdev@gmail=
-.com>
-> > > > > wrote:
-> > > > > >
-> > > > > > Hi,
-> > > > > >
-> > > > > > Since kernel v6.14.3, when using wireless to connect to my
-> > > > > > home
-> > > > > > router
-> > > > > > on my laptop, my wireless connection slows down to unusable
-> > > > > > speeds.
-> > > > > >
-> > > > > >
-> > > > > > More specifically, since kernel 6.14.3, when connecting to
-> > > > > > the
-> > > > > > wireless networks of my OpenWRT Router on my Lenovo IdeaPad
-> > > > > > Slim 15
-> > > > > > 16AKP10 laptop,
-> > > > > > either a 2.4ghz or a 5ghz network, the connection speed drops
-> > > > > > down
-> > > > > > to
-> > > > > > 0.1-0.2 Mbps download and 0 Mbps upload when measured using
-> > > > > > speedtest-cli.
-> > > > > > My laptop uses an mt7925 chip according to the loaded driver
-> > > > > > and
-> > > > > > firmware.
-> > > > > >
-> > > > > >
-> > > > > > Detailed Description:
-> > > > > >
-> > > > > > As mentioned above, my wireless connection becomes unusable
-> > > > > > when
-> > > > > > using
-> > > > > > linux 6.14.3 and above, dropping speeds to almost 0 Mbps,
-> > > > > > even when standing next to my router. Further, pinging
-> > > > > > archlinux.org
-> > > > > > results in "Temporary failure in name resolution".
-> > > > > > Any other wireless device in my house can successfully
-> > > > > > connect to
-> > > > > > my
-> > > > > > router and properly use the internet with good speeds, eg.
-> > > > > > iphones,
-> > > > > > ipads, raspberry pi and a windows laptop.
-> > > > > > When using my Lenovo laptop on a kernel 6.14.3 or higher to
-> > > > > > connect
-> > > > > > to
-> > > > > > other access points, such as my iPhone's hotspot and some
-> > > > > > TPLink
-> > > > > > and
-> > > > > > Zyxel routers - the connection speed is good, and there are
-> > > > > > no
-> > > > > > issues,
-> > > > > > which makes me believe there's something going on with my
-> > > > > > OpenWRT
-> > > > > > configuration in conjunction with a commit introduced on
-> > > > > > kernel
-> > > > > > 6.14.3
-> > > > > > for the mt7925e module as detailed below.
-> > > > > >
-> > > > > > I have followed a related issue previously reported on the
-> > > > > > mailing
-> > > > > > list regarding a problem with the same wifi chip on kernel
-> > > > > > 6.14.3,
-> > > > > > but
-> > > > > > the merged fix doesn't seem to fix my problem:
-> > > > > > https://lore.kernel.org/linux-mediatek/EmWnO5b-acRH1TXbGnkx41eJ=
-w654vmCR-8_xMBaPMwexCnfkvKCdlU5u19CGbaapJ3KRu-l3B-tSUhf8CCQwL0odjo6Cd5YG5lv=
-NeB-vfdg=3D@pm.me/
-> > > > > >
-> > > > > > I've tested stable builds of 6.15 as well up to 6.15.9 in the
-> > > > > > last
-> > > > > > month, which also do not fix the problem.
-> > > > > > I've also built and bisected v6.14 on june using guides on
-> > > > > > the Arch
-> > > > > > Linux wiki, for the following bad commit, same as the
-> > > > > > previously
-> > > > > > mentioned reported issue:
-> > > > > >
-> > > > > > [80007d3f92fd018d0a052a706400e976b36e3c87] wifi: mt76:
-> > > > > > mt7925:
-> > > > > > integrate *mlo_sta_cmd and *sta_cmd
-> > > > > >
-> > > > > > Testing further this week, I cloned mainline after 6.16 was
-> > > > > > released,
-> > > > > > built and tested it, and the issue still persists.
-> > > > > > I reverted the following commits on mainline and retested, to
-> > > > > > successfully see good wireless speeds:
-> > > > > >
-> > > > > > [0aa8496adda570c2005410a30df963a16643a3dc] wifi: mt76:
-> > > > > > mt7925: fix
-> > > > > > missing hdr_trans_tlv command for broadcast wtbl
-> > > > > > [cb1353ef34735ec1e5d9efa1fe966f05ff1dc1e1] wifi: mt76:
-> > > > > > mt7925:
-> > > > > > integrate *mlo_sta_cmd and *sta_cmd
-> > > > > >
-> > > > > > Then, reverting *only*
-> > > > > > 0aa8496adda570c2005410a30df963a16643a3dc
-> > > > > > causes
-> > > > > > the issue to reproduce, which confirms the issue is caused by
-> > > > > > commit
-> > > > > > cb1353ef34735ec1e5d9efa1fe966f05ff1dc1e1 on mainline.
-> > > > > >
-> > > > > > I've attached the following files to a bugzilla ticket:
-> > > > > >
-> > > > > > - lspci -nnk output:
-> > > > > > https://urldefense.com/v3/__https://bugzilla.kernel.org/attachm=
-ent.cgi?id=3D308466__;!!CTRNKA9wMg0ARbw!gTAaJeIN6s3eF_Kp6U3iwfv0wCCO_BVcRkN=
-VpJYnwR8qeqIIh134mEJ5dxdeNqzuWSPF2ocLAt43LxaBTIY-7w$
-> > > > > >
-> > > > > > - dmesg output:
-> > > > > > https://urldefense.com/v3/__https://bugzilla.kernel.org/attachm=
-ent.cgi?id=3D308465__;!!CTRNKA9wMg0ARbw!gTAaJeIN6s3eF_Kp6U3iwfv0wCCO_BVcRkN=
-VpJYnwR8qeqIIh134mEJ5dxdeNqzuWSPF2ocLAt43LxY1pkjZCA$
-> > > > > >
-> > > > > > - .config for the built mainline kernel:
-> > > > > > https://urldefense.com/v3/__https://bugzilla.kernel.org/attachm=
-ent.cgi?id=3D308467__;!!CTRNKA9wMg0ARbw!gTAaJeIN6s3eF_Kp6U3iwfv0wCCO_BVcRkN=
-VpJYnwR8qeqIIh134mEJ5dxdeNqzuWSPF2ocLAt43LxYcu-Db2g$
-> > > > > >
-> > > > > >
-> > > > > > More information:
-> > > > > >
-> > > > > > OS Distribution: Arch Linux
-> > > > > >
-> > > > > > Linux build information from /proc/version:
-> > > > > > Linux version 6.16.0linux-mainline-11853-g21be711c0235
-> > > > > > (tal@arch-debug) (gcc (GCC) 15.1.1 20250729, GNU ld (GNU
-> > > > > > Binutils)
-> > > > > > 2.45.0) #3 SMP PREEMPT_DYNAMIC
-> > > > > >
-> > > > > > OpenWRT Version on my Router: 24.10.2
-> > > > > >
-> > > > > > Laptop Hardware:
-> > > > > > - Lenovo IdeaPad Slim 15 16AKP10 laptop (x86_64 Ryzen AI 350
-> > > > > > CPU)
-> > > > > > - Network device as reported by lscpi: 14c3:7925
-> > > > > > - Network modules and driver in use: mt7925e
-> > > > > > - mediatek chip firmware as of dmesg:
-> > > > > >   HW/SW Version: 0x8a108a10, Build Time: 20250526152947a
-> > > > > >   WM Firmware Version: ____000000, Build Time: 20250526153043
-> > > > > >
-> > > > > >
-> > > > > > Referencing regzbot:
-> > > > > >
-> > > > > > #regzbot introduced: 80007d3f92fd018d0a052a706400e976b36e3c87
-> > > > > >
-> > > > > >
-> > > > > > Please let me know if any other information is needed, or if
-> > > > > > there
-> > > > > > is
-> > > > > > anything else that I can test on my end.
-> > > > > >
-> > > > > > Thanks,
-> > > > > > Tal Inbar
-> > > >
-> > > > Hi,
-> > > >
-> > > > Can you capture a sniffer log? There should be some configuration
-> > > > differences that we can identify from the packet frames during
-> > > > the
-> > > > connection process. So please provide the sniffer logs when
-> > > > connecting
-> > > > to your OpenWRT, TPLink, and Zyxel.
-> > > >
-> > > > Or you can check for any configuration differences between
-> > > > OpenWRT and
-> > > > the other routers, which might also help with debugging.
-> > > >
-> > > > Thanks~
-> > > >
-> > > > Yen.
-> > > >
-> > > >
-> > > > *********** MEDIATEK Confidentiality Notice
-> > > >  ***********
-> > > > The information contained in this e-mail message (including any
-> > > > attachments) may be confidential, proprietary, privileged, or
-> > > > otherwise exempt from disclosure under applicable laws. It is
-> > > > intended to be conveyed only to the designated recipient(s). Any
-> > > > use, dissemination, distribution, printing, retaining or copying
-> > > > of this e-mail (including its attachments) by unintended
-> > > > recipient(s)
-> > > > is strictly prohibited and may be unlawful. If you are not an
-> > > > intended recipient of this e-mail, or believe that you have
-> > > > received
-> > > > this e-mail in error, please notify the sender immediately
-> > > > (by replying to this e-mail), delete any and all copies of this
-> > > > e-mail (including any attachments) from your system, and do not
-> > > > disclose the content of this e-mail to any other person. Thank
-> > > > you!
->
-> Hi,
->
-> As we discussion on the private mail, this issue has been fixed at this
-> patch:
-> https://patchwork.kernel.org/project/linux-wireless/patch/20250818030201.=
-997940-1-mingyen.hsieh@mediatek.com/
->
-> Thanks.
->
-> *********** MEDIATEK Confidentiality Notice
->  ***********
-> The information contained in this e-mail message (including any
-> attachments) may be confidential, proprietary, privileged, or
-> otherwise exempt from disclosure under applicable laws. It is
-> intended to be conveyed only to the designated recipient(s). Any
-> use, dissemination, distribution, printing, retaining or copying
-> of this e-mail (including its attachments) by unintended recipient(s)
-> is strictly prohibited and may be unlawful. If you are not an
-> intended recipient of this e-mail, or believe that you have received
-> this e-mail in error, please notify the sender immediately
-> (by replying to this e-mail), delete any and all copies of this
-> e-mail (including any attachments) from your system, and do not
-> disclose the content of this e-mail to any other person. Thank you!
+---
+base-commit: 715c7a36d59f54162a26fac1d1ed8dc087a24cf1
+change-id: 20250818-airoha-en7581-hash-collision-fix-ff24b677d072
+
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
+
 
