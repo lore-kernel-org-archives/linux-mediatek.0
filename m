@@ -4,116 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B54D9CA0EE4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Aug 2025 17:31:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5ACA3CA0EED
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Aug 2025 17:31:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tOnuvngwyphRjukCF8A4HRn8PHYjpebE0Ts7pOi4CKY=; b=Q8DRpumUTWDM7N7DCdVwRqzJk2
-	BgsqPmOoWPa1EwMAga7xFcV2SsG4Jjkicmvah7uKMcGMYOxTprqU0hjNX4W6pXntNGR3b4fmJEGpY
-	YwWgQicVhGovb1KXoJYC6xMJHV8KuOJQNWsjI+Df/tF4Ee8TpcE2QnYim+H9hJX6Rcpref9Op1zCl
-	eIBl/OfgrJtGWxKmSaiEU2tELojxU58CkqVWOD3ubRx4DOWZJnCB21ZtZIHd9wPM7gNKHWXLwRjtq
-	ktU76ClzJWdsUs5OC08L2mXw7E9nvFEMhwPxRkEF2olQjVmt1WhP+4l7fb/Zqrz1OYylBEixL0nX1
-	VfwgOcgg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PZw2Tu1tH3/gQd6qgFBBQxZ2fni1Fda4ZGlkzxnPfAA=; b=gJ7oDW0Z0g2LR8iEXAJqUZ0yjC
+	q6Ibj1W1NR0F+mtrVh3TXiF0mfbDT7Qg2vWMPnOoTxq5Ft2ZpN06kDspFEth82P1uc2d5HklCDj/Y
+	WkHxAb3xh2aBGgjw2ioewNT85EaYbmLGUVTtNhxYnXz5ryq8biA9FCOJkjJcc9LoUHoIBLcwcJA0v
+	G1iO299ylzigIEsEqqXWW44BqGGJfvZ3Fizz6L9IammKwx6FCyeYS4kuCdIIkz3jCBcJEaa/5JWUh
+	MsegmSH6scMyv6r1sq6AVbPE+F4mQ/aDnWrnKeUyUj9UJPywkdZXXFUW6O4kY5VFSxwDfSdAmboL5
+	jr4Mk7zQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uo3hR-000000088rP-1G31;
+	id 1uo3hR-000000088sy-3tgB;
 	Mon, 18 Aug 2025 17:31:13 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uo148-00000007ms3-1JOn;
-	Mon, 18 Aug 2025 14:42:29 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 0B4D3435BB;
-	Mon, 18 Aug 2025 14:42:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 34F81C4CEEB;
-	Mon, 18 Aug 2025 14:42:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755528147;
-	bh=fGHdn9+ygD6wlu1IBkHUW+r7l+vTsYKlue/b33fPSm8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=AxI+QpqYR1kFMN1tDndYVoLEFWEYphqlaWEVCTWJcs5r3gjJ3QzHrLrHWskc0FJul
-	 Uj5dhIjKKCagZQ5NhWD7/vWqNqoiMaZ33lowG+/oOJ65NNicjWWsp8TpQBhslUoWvr
-	 bSar+K0AU9kmag9nmho5q8VCoaWvofmDPkUnGmhre7Wjyh0aF/sabAvLLwUJnWqXZO
-	 mhg2mDvDv/vjewUoP+UMMyiTCwfPN3bCAi7TYLsrYXXsB+EWsN7b1PaJRWNmaLJcJ3
-	 ldrKlXi/XCgKp2ycfwNVbTXObFAVFDRtkkNiGyqVnmKEDrgSuDnQpu+YNMRd+zxyao
-	 nnwjRkppAtXHA==
-Message-ID: <b1807a5a-9507-49e2-9a4b-5101078c7a90@kernel.org>
-Date: Mon, 18 Aug 2025 16:42:21 +0200
+	id 1uo14i-00000007mxU-01CF
+	for linux-mediatek@lists.infradead.org;
+	Mon, 18 Aug 2025 14:43:05 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1755528180; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=UQELXUHU9grh1MQOj1NGaeoUI+nkaiZhPqsR/ULfhrUktrRGB9GTsxIX8MtJz886D3pJjU028hd4XO8Uy08HWJ+v4OgLLpdqQbfQZIA5Bm/RcWsqcgWJScPF6Qr8V8+zGub3BX4g5nV9UZfVn9F1sLOJz33plg+4c9oOXjQGZbc=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1755528180; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=PZw2Tu1tH3/gQd6qgFBBQxZ2fni1Fda4ZGlkzxnPfAA=; 
+	b=j8IUt2WrK4mP4J8L2xhto981pbprqK0HeRF11tzlXR4C9g48uRsbG5vm2CY5keB8bWtET732WbyJ2V3aIs1zZD12iRrCsN59X6WGIWD6ub12785EOo11pMAVxp+T+xnoI+ezdhrlKZ6tv1+WTfDB9htyCY66nF7rVCcbUAziUjc=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=louisalexis.eyraud@collabora.com;
+	dmarc=pass header.from=<louisalexis.eyraud@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1755528180;
+	s=zohomail; d=collabora.com; i=louisalexis.eyraud@collabora.com;
+	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
+	bh=PZw2Tu1tH3/gQd6qgFBBQxZ2fni1Fda4ZGlkzxnPfAA=;
+	b=OZPfQyL+E3WuJ0Y08nQNXX9pwSuLWc42JQu312jPMiC9o41nCye5H/+pYHCovja4
+	N8xtuC2N9pBcWacauqJib9BA3RxEYjOTo3eI5xzK4Nko/qE/OX+SpMlYEq7nmJpXb0G
+	SJRjKQ75BxWz3RHovQhbyA0V2xsWnKpKrXvL48OA=
+Received: by mx.zohomail.com with SMTPS id 1755528177867952.1163424829272;
+	Mon, 18 Aug 2025 07:42:57 -0700 (PDT)
+Message-ID: <dfb0e47c755f2e055887c421b25dbcf575eb2dbb.camel@collabora.com>
+Subject: Re: Commit d6e25b3590 breaks external video (HDMI) on mt8173
+ (chromebook oak)
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, andy@chernyak.nl, DRI
+ Development	 <dri-devel@lists.freedesktop.org>, "moderated
+ list:ARM/Mediatek SoC support"	 <linux-mediatek@lists.infradead.org>
+Cc: bugs@lists.linux.dev, granquet@baylibre.com, 
+	angelogioacchino.delregno@collabora.com
+Date: Mon, 18 Aug 2025 16:42:54 +0200
+In-Reply-To: <CAAOTY_8L_tJwL77wqBVxrmoMLEGgXue8wW5dz8TLfUg4Ehn4dw@mail.gmail.com>
+References: <CAHjEvi5mb+1-zD+x1_Bp_0Z2Aov7KDyFksbU4PZKFxmrPa77VQ@mail.gmail.com>
+	 <CAAOTY_8L_tJwL77wqBVxrmoMLEGgXue8wW5dz8TLfUg4Ehn4dw@mail.gmail.com>
+Organization: Collabora Ltd
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/6] dt-bindings: clock: mediatek: Add new MT8189 clock
-To: "irving.ch.lin" <irving-ch.lin@mediatek.com>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Ulf Hansson <ulf.hansson@linaro.org>,
- Richard Cochran <richardcochran@gmail.com>
-Cc: Qiqi Wang <qiqi.wang@mediatek.com>, linux-clk@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-pm@vger.kernel.org, netdev@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com, sirius.wang@mediatek.com,
- vince-wl.liu@mediatek.com, jh.hsu@mediatek.com
-References: <20250818115754.1067154-1-irving-ch.lin@mediatek.com>
- <20250818115754.1067154-2-irving-ch.lin@mediatek.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <20250818115754.1067154-2-irving-ch.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250818_074228_396733_012D7FBD 
-X-CRM114-Status: UNSURE (   8.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250818_074304_100164_AD317F12 
+X-CRM114-Status: GOOD (  14.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,31 +83,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 18/08/2025 13:57, irving.ch.lin wrote:
-> From: Irving-ch Lin <irving-ch.lin@mediatek.com>
-> 
-> Add the new binding documentation for system clock
-> and functional clock on MediaTek MT8189.
-> 
-> Signed-off-by: Irving-ch Lin <irving-ch.lin@mediatek.com>
+Hi Andy,
 
-Never tested so just quick review to for obvious issues. I won't bother
-with full review :(
+On Thu, 2025-08-14 at 22:38 +0800, Chun-Kuang Hu wrote:
+> Forward to dri-devel and linux-mediatek.
+>=20
+> Andy Chernyak <andy.chernyak@gmail.com> =E6=96=BC 2025=E5=B9=B47=E6=9C=88=
+2=E6=97=A5 =E9=80=B1=E4=B8=89 =E4=B8=8B=E5=8D=8811:12=E5=AF=AB=E9=81=93=EF=
+=BC=9A
+> >=20
+> > Kernel 6.16 has external video (both hdmi and displayport-over-
+> > usbc) broken (black screen) on mt8173-based chromebooks (platform
+> > codename "oak", device codename "hana"). Bisect points finger to
+> > following commit:
+> >=20
+> > From d6e25b3590a0679bca1a1becc04e3999f1dfd461
+> > From: Guillaume Ranquet <granquet@baylibre.com>
+> > Date: Tue, 15 Apr 2025 12:43:05 +0200
+> > Subject: drm/mediatek: hdmi: Use regmap instead of iomem for main
+> > registers
+> > In preparation for the addition of a new version of the HDMI IP
+> > which will need to share its iospace between multiple subdrivers,
+> > and in preparation for moving out the common bits between the two,
+> > migrate this driver to fully use regmap.
+> >=20
+> > Reverting d6e25b3590 with "patch -R" on top of 6.16-rc4 fixes this.
 
+thank you for the bug report.
 
+By reading and checking this patch changes, I found two modifications
+that looked incorrect, so I sent a patch to fix them:
+https://lore.kernel.org/dri-devel/20250818-mt8173-fix-hdmi-issue-v1-1-55aff=
+9b0295d@collabora.com/
 
-> +
-> +examples:
-> +  - |
-> +    imp_iic_wrap_ws_clk@11b21000 {
+Since I don't have any mt8173-based board myself, could you test this
+patch and tell if it does fix the issue (or not)?
 
-1. Follow closely DTS coding style.
+Looking forward to your reply,
 
-2. Node names should be generic. See also an explanation and list of
-examples (not exhaustive) in DT specification:
-https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
-
-
-Best regards,
-Krzysztof
+Regards,
+Louis-Alexis
 
