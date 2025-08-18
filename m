@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D858ACA0ED1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Aug 2025 17:31:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA73DCA0EF2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Aug 2025 17:31:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7Z/5ShTH7LV5KmeNk4OQfpuTsyYRY00JQNG48jf8044=; b=3XPc9zqb/OcKTOsee66LYmVScT
-	dLs3qI9ukTLLeJb9u5I8+PoxonCPdwnDhvKA67fqikXc2pou6rDPrtFalL9yhA93K34oujP4wO+4t
-	PCXox7HRHU8SOwtDoiuHmyxk3q7e+r27Mtc26QzhBsNTof9uWEGwdRLxsgqddqDr2qn7jSD28LByB
-	DefDysZidVT8oH+/zPP2boSdOY3B8TjAe3Fg5UMXCe0W5Lz1spcZmHvklBIv7dgZF/hGvPAm6JiMc
-	IzpMIX0vT2TnhIxHcDX39s/t6WRNfiELJKdItn+jE5rsxddYQ8X4obUnvjiCgW21oaKLylPpRmEkF
-	zui1NUNQ==;
+	bh=17i9BMNJlS5roUZeSCwAEadb7IdbACbJbXLsW0klFtk=; b=Snb+S5FjraPyteZkggUJihCfuk
+	Nl7wCaGNfBa/m0zpS7sy/KkO+90SRSmMQjC147FVX3uvJmv5g8LM7tcRKLfr6bwrKzaFPyMBcF7bf
+	m7QT3lhy/dhO+DrrviyDq9gHRXjPeyQuhgIkK4QjiVaZAMBCEmYoMmjEhpeBpJ+ANG9e6iLGqfVRd
+	q6a7NWI7XK0jRg2MeBL7inapZVwddFZs5f0SU551Z5XI7ShrQRPN+VQ3o5G74SZmcno2/NJ6sGzrr
+	9+dUlu0vcz7113hwJjdXtTL8aHimkNHruaYivO9Jg6n3J/di1hjN+n6xjumuvPRXtaPNgVwjEyQFP
+	SW2hSDzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uo3hY-0000000895T-2tiN;
-	Mon, 18 Aug 2025 17:31:20 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uo3ha-0000000898j-29H0;
+	Mon, 18 Aug 2025 17:31:22 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uo180-00000007nfx-2iIx;
-	Mon, 18 Aug 2025 14:46:29 +0000
+	id 1uo19K-00000007o48-0My1;
+	Mon, 18 Aug 2025 14:47:50 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1B41145AAC;
-	Mon, 18 Aug 2025 14:46:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 366FBC4CEEB;
-	Mon, 18 Aug 2025 14:46:22 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 32F0660052;
+	Mon, 18 Aug 2025 14:47:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ABA08C4CEEB;
+	Mon, 18 Aug 2025 14:47:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755528388;
-	bh=rhMWOlKbgLB4SstwMrfyJxOrWkE39Ryuhps7LFLOsNY=;
+	s=k20201202; t=1755528461;
+	bh=vtad+Vt/g0Mn/1dIoAI+yot5Owrf8DkcHM51X8vJpVs=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=E8s6Jp3m9CxTQzYk38FM8rV6oWfcWkD0vXdrbZ9DfwX0Zb9oLfBf6lLBYl583o8xg
-	 ay9UN4kuwGdxLyn4wKbDo+XXSPMLpj9XKipVufd6QcDvInq8dgwU9BcO9YHb3Tsh/K
-	 lKJMdRjt+o++FPZuqZqD2TG6XJdXU+QvM/xlVqbtYhmCszosR+gwllqZg/f9y1OeK2
-	 nvMMdUebJRcI0XuGDR6umR86509pVSuvwlzljhgscQQK2HYMPOjXQknEi9NZvd8lVB
-	 PwC0r6ckk3PHaDeBm9ZWLsDzjt6jVF5PPImiszlM//UWqUHm3kVZ4idlnQfVMED2QY
-	 Ah4wqitkdZ+Xw==
-Message-ID: <7ddd14b4-5da1-4df1-911b-654c567e9931@kernel.org>
-Date: Mon, 18 Aug 2025 16:46:21 +0200
+	b=mDAA5znmWKzyN9V4eVtxeTntvL5GsU6SKhdDm+v/gX6IkAKhgp0wZrXQcFVqh5tBS
+	 QfEWif3qL1rz+prRXPLq9gInFvch7Lzhx9rDUXfyt5pXsX4o02ZCG3Eyvnn/gHPa8q
+	 OP7aZ+dJFKceyG/3WDkY4rtf4Dk4QNuedPAucFenwb6XDE2Dwiv8wkwrFlsRWcHVvY
+	 I8dplR+LyEe43Ev9FowAbwdSk5ImNhc8s9K21ckL06NLY21eVAabASM0tcNQgaWuyK
+	 rAwpyxCzWYw6dAemG12kfwtiF8Diq8IGhGJBOmGPupEPeiQSCygk8Dbj3BW4JyLhec
+	 uKKGymbqha1fA==
+Message-ID: <3756f584-11c5-4591-b9fb-091b416daba7@kernel.org>
+Date: Mon, 18 Aug 2025 16:47:35 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/6] dt-bindings: power: mediatek: Add MT8189 power domain
+Subject: Re: [PATCH 3/6] dt-bindings: clock: mediatek: Add MT8189 clock
  definitions
 To: "irving.ch.lin" <irving-ch.lin@mediatek.com>,
  Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
@@ -62,7 +62,7 @@ Cc: Qiqi Wang <qiqi.wang@mediatek.com>, linux-clk@vger.kernel.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com, sirius.wang@mediatek.com,
  vince-wl.liu@mediatek.com, jh.hsu@mediatek.com
 References: <20250818115754.1067154-1-irving-ch.lin@mediatek.com>
- <20250818115754.1067154-5-irving-ch.lin@mediatek.com>
+ <20250818115754.1067154-4-irving-ch.lin@mediatek.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -108,13 +108,9 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20250818115754.1067154-5-irving-ch.lin@mediatek.com>
+In-Reply-To: <20250818115754.1067154-4-irving-ch.lin@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250818_074628_730787_6AE0F22C 
-X-CRM114-Status: UNSURE (   7.90  )
-X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,16 +126,9 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 18/08/2025 13:57, irving.ch.lin wrote:
-> From: Irving-ch Lin <irving-ch.lin@mediatek.com>
-> 
-> Add device tree bindings for the power domains of MediaTek MT8189 SoC.
-> These definitions will be used to describe the power domain topology in
-> device tree sources.
-> 
-> Signed-off-by: Irving-ch Lin <irving-ch.lin@mediatek.com>
-> ---
->  include/dt-bindings/power/mt8189-power.h | 38 ++++++++++++++++++++++++
-Same issues.
+> +#define CLK_MDP_NR_CLK					27
+That's not a binding. Drop everywhere. Mediatek already received such
+feedback.
 
 Best regards,
 Krzysztof
