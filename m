@@ -4,104 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15061CA0EE6
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Aug 2025 20:42:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BAC6CA0EEB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Aug 2025 20:42:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:To:
+	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nduGwRgCS4jl5SzExLMSPPD9EivCrI3lCOm2UzUncAk=; b=YYKsDa0GZy/C00Ge7vyyJcIa3d
-	ZDz5OrQ68h892lgWMPtud6AgxJdHNyvJZSk4yoQXhQOSantMX7HT7FoVKklW1LC8ePwsa/c0TLcu3
-	e+buyVvAAcbDvLyVjWysklhBXjovI1m9z4K974u2iy9pv2U9NXAqeFPynm3i+PABho+VYydXVOu8l
-	zmo6oYb5Asp45TBJH/mfZ/VYbEV6VlcS/BbPfNqaxxtcBKFuFJFAln6oBOLWVozTq+KcuJ5ciLhaG
-	5VfZjJzgR2X+t+bOODanBx3/0AlImKZ2RBaBssVDOTFGpHTSaCCFE2lr0cC1TRTZSVpDdtGfz3iA4
-	2nmwzgvA==;
+	bh=S3QvULILPiJhQx+3azi75CxDR2UwJAQV6a3CiOHiJ+k=; b=XzOJcY2amvuVK9ks4uxKV+mGP4
+	HFCsORIgXm8RoS8WkHMTGxiQYqnVsOqOEGycWHb3XQgD7u0tUe6QGgEy7KPA9qUKAq7Ee4lQ1D5OX
+	nkp2Fkl1nmKSocrWYQXsBkeudKNLpdeYkPH6UqWZ9fBYhgcdzaKns1XK0LqjGIhyxUkAIIGP3iLMJ
+	oIDO7vKyKmdMueq8ecR4Is30UmSkrFpWl18umnDblp0pdiMxpD+17R+ENmzai6lh7tCWhXf4Jjg2j
+	jMgDK1slME1JNtnwpabx2GFijX42oUe6J98/dCDBjB3vKIsUP7uctnwar3Og4gm/ygzq2itgy866v
+	YpMqpwuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoTAP-0000000BYqd-2VA3;
-	Tue, 19 Aug 2025 20:42:49 +0000
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	id 1uoTAX-0000000BZ1Y-12Jw;
+	Tue, 19 Aug 2025 20:42:57 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoR7k-0000000BJ6u-28bB;
-	Tue, 19 Aug 2025 18:31:57 +0000
-Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-afcb78d5dcbso797311266b.1;
-        Tue, 19 Aug 2025 11:31:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1755628315; x=1756233115; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=nduGwRgCS4jl5SzExLMSPPD9EivCrI3lCOm2UzUncAk=;
-        b=IyhBVW3i1f9UP5V1Wl0ZTNNpO61ceNl0MOrgm4tJGlK52wGPPhq7fcvN+PJdYUrcEi
-         r4WXLWOLjOMOm1Qlz1bpSIAUm9Dj47Gjk7Bk9qJpVdKD9TTQ+bNw1N3HmkVL27mTOcLJ
-         MTYdWTz2x2cU0ujmr3OF2bbwmHGRJ7gsIgn//rPvU0RXybqUKWyQ4eFZpenAylh4s9Is
-         pgJ6qM/jUwkC4j1x4rrZP1UDYMSssySiaQOumu9tJGmkdVKETLAyrAlNRnWD6Pl4af8F
-         rJdxDEgxxactL9fw4tv+VbNzskovs9eIe+kZu7iNOkIP5CDQMHlNZCRIKZA/WwSsFEKd
-         0Qyw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1755628315; x=1756233115;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=nduGwRgCS4jl5SzExLMSPPD9EivCrI3lCOm2UzUncAk=;
-        b=D5sQV2nwAH+Ubvt5VVQffG6XP0eQFr1w2C1i9GuSFlM8RP9PXkpZdv/EzU6D+uOOQz
-         w0VCjmotZGES6mwij21iiiSXr7n0GM/9q7apvdoTBwFIJyXikpZO6zX3Ro21bZAQWLYZ
-         Gd3LUXU+l9QxuLAwid4zkp+t/R+Vj5Mk2891cSVwp0ZGnQ+vXjgivodMYRhwn5flIrTa
-         NR0btNqnR7N//fUw0AsRuYLeNB9crDjd7F9K7Myz+DlYnGGfy7HYYH6YF6Fgp4pa+st4
-         7fyQ6S+Jv1yblug80Q6BemwWn0LTJlYbpL8QFN0GcLHW99m/GTpjPOdaA1uacd1haJk9
-         WveQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXCv8lzmHeOaU3TomQZuQlZUFMEoH46OGJT09LE2x0UF9BzblPLXAwpjgVJ7/LPHQznS/75zJBZppiMuvB7+5Q=@lists.infradead.org, AJvYcCXqVKDcqHr/bNlQAcR3jhsDNnJI/DRrH5zThoU6fi4u2ZTxNNURyV1iJKfmGZLUG5QxQTgBNApJCXEaznkSc5TV@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx7W+bw4RAzTpoMV713B43UiTW/98NEUm1tP2wcU0FoUTBfJCDY
-	MICzA528H1ahg6REPjFmv96m2nhapGl3jDjsahKYF473myJgYLniNthUo0VOXDagdZ5XQtP2dY1
-	9OrRgiHvm21Uy8KVGSwF8UwwpJZQ/D2Q=
-X-Gm-Gg: ASbGncu07IARiGX/hWaWxpiWoO6ahcuZ13Z9p24xbDWWftFNWBCKhkPcApeY9h0V2cm
-	UxIDKgr2dQrutKce6p8oLoxpl2Qe4KtmXttJKjfWnSSjtUQsw5rbXKsf38xUk2n7uqXjosIGKcu
-	Qsc30SNWRKlLfhGBcCkBC9jooBzJGiuhr13ZRRw2wkGYPvH5NWVxkjrd5G3ThTOReqOADMRh1Be
-	0H5ja0=
-X-Google-Smtp-Source: AGHT+IF9qpemszLCjKdTIPsWz0t4GcsgIaQduXYK/rUO4127Ry+Cx5d3EXzVvEU87daLwDxw0y5nugBK0Rk2QA9qZjg=
-X-Received: by 2002:a17:906:dc8d:b0:af9:1be8:c2aa with SMTP id
- a640c23a62f3a-afddd1e42e4mr344769166b.45.1755628314808; Tue, 19 Aug 2025
- 11:31:54 -0700 (PDT)
+	id 1uoRRc-0000000BLQ7-2lOt;
+	Tue, 19 Aug 2025 18:52:29 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 7B76B5C65AD;
+	Tue, 19 Aug 2025 18:52:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 64AB7C4CEF1;
+	Tue, 19 Aug 2025 18:52:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1755629547;
+	bh=UtpGsqXUkldWGa3nJKuOrHaS+PduZ9qTMdBlN9e+xOY=;
+	h=From:To:In-Reply-To:References:Subject:Date:From;
+	b=r+iA9dLmj6cVcyob6HLoSTvGYGcB4vNpyq5nDs1dLlAuYwxuYvdz2dIxJMRTFnDbB
+	 ngKZot3gY1gBpWm8qEElguO95+95Fjhx2qo3EZPCTtBiDhFkwUQ15WTT4omOLWdUDJ
+	 fb+seFWe7JcwLS5EAT3BuLplKV9J0hp6BHU/FYieC0RXGHRK2ga4wFag12a87a3nHa
+	 2GASII1kgQFzWdB6huGdUs9exYHIfvPOv8+lS4Iq9FE3+UIN1jfGtUsA/tg/48dPex
+	 jS2H5rn2P2+aHxmw6t7sbD4Ciod6k7kqfB1MW3Oa8aiRgVAJt0VFLBnC/5K9tkH9RX
+	 xy6zNeW7U8SUg==
+From: Mark Brown <broonie@kernel.org>
+To: Raju Rangoju <Raju.Rangoju@amd.com>, Sunny Luo <sunny.luo@amlogic.com>, 
+ Xianwei Zhao <xianwei.zhao@amlogic.com>, 
+ Conor Dooley <conor.dooley@microchip.com>, 
+ Daire McNamara <daire.mcnamara@microchip.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Daniel Mack <daniel@zonque.org>, Haojian Zhuang <haojian.zhuang@gmail.com>, 
+ Robert Jarzmik <robert.jarzmik@free.fr>, Andi Shyti <andi.shyti@kernel.org>, 
+ Tudor Ambarus <tudor.ambarus@linaro.org>, 
+ Krzysztof Kozlowski <krzk@kernel.org>, 
+ Alim Akhtar <alim.akhtar@samsung.com>, linux-spi@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org, 
+ linux-riscv@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
+ Xichao Zhao <zhao.xichao@vivo.com>
+In-Reply-To: <20250819092044.549464-1-zhao.xichao@vivo.com>
+References: <20250819092044.549464-1-zhao.xichao@vivo.com>
+Subject: Re: [PATCH v1 0/6] spi: Remove the use of dev_err_probe()
+Message-Id: <175562954316.246851.7964895006967945147.b4-ty@kernel.org>
+Date: Tue, 19 Aug 2025 19:52:23 +0100
 MIME-Version: 1.0
-References: <20250815-pinctrl-gpio-pinfuncs-v5-0-955de9fd91db@linaro.org> <CACRpkdaDGmdhaik+1saRv7Ts4myQ+tg1aQqGU3xQyT7ma8dJFw@mail.gmail.com>
-In-Reply-To: <CACRpkdaDGmdhaik+1saRv7Ts4myQ+tg1aQqGU3xQyT7ma8dJFw@mail.gmail.com>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Tue, 19 Aug 2025 21:31:17 +0300
-X-Gm-Features: Ac12FXzsYRtjNObv84CHy6T-R0DRBoqbq7I0xmmsDobIVB43mAqIdnnlLv2k1FE
-Message-ID: <CAHp75VephepLq61HrVy=PX2oKUQd5NK2qS-vOC5h_NR65td3Uw@mail.gmail.com>
-Subject: Re: [PATCH v5 00/15] pinctrl: introduce the concept of a GPIO pin
- function category
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Bartosz Golaszewski <brgl@bgdev.pl>, Bjorn Andersson <andersson@kernel.org>, 
-	Konrad Dybcio <konradybcio@kernel.org>, Alexey Klimov <alexey.klimov@linaro.org>, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Paul Cercueil <paul@crapouillou.net>, Kees Cook <kees@kernel.org>, 
-	Andy Shevchenko <andy@kernel.org>, Andrew Morton <akpm@linux-foundation.org>, 
-	David Hildenbrand <david@redhat.com>, Lorenzo Stoakes <lorenzo.stoakes@oracle.com>, 
-	"Liam R. Howlett" <Liam.Howlett@oracle.com>, Vlastimil Babka <vbabka@suse.cz>, 
-	Mike Rapoport <rppt@kernel.org>, Suren Baghdasaryan <surenb@google.com>, Michal Hocko <mhocko@suse.com>, 
-	Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, 
-	Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, NXP S32 Linux Team <s32@nxp.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Tony Lindgren <tony@atomide.com>, 
-	Haojian Zhuang <haojian.zhuang@linaro.org>, Geert Uytterhoeven <geert+renesas@glider.be>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Danilo Krummrich <dakr@kernel.org>, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
-	linux-hardening@vger.kernel.org, linux-mm@kvack.org, imx@lists.linux.dev, 
-	linux-omap@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, Chen-Yu Tsai <wenst@chromium.org>, 
-	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.15-dev-cff91
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250819_113156_550002_7F0E65C6 
-X-CRM114-Status: GOOD (  14.86  )
+X-CRM114-CacheID: sfid-20250819_115228_777508_6C7EB6DE 
+X-CRM114-Status: GOOD (  12.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,40 +83,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 19, 2025 at 4:02=E2=80=AFPM Linus Walleij <linus.walleij@linaro=
-.org> wrote:
-> On Fri, Aug 15, 2025 at 11:09=E2=80=AFAM Bartosz Golaszewski <brgl@bgdev.=
-pl> wrote:
+On Tue, 19 Aug 2025 17:20:37 +0800, Xichao Zhao wrote:
+> The dev_err_probe() doesn't do anything when error is '-ENOMEM'. Therefore,
+> remove the useless call to dev_err_probe(), and just return the value instead.
+> 
+> Xichao Zhao (6):
+>   spi: spi_amd: Remove the use of dev_err_probe()
+>   spi: SPISG: Remove the use of dev_err_probe()
+>   spi: Remove the use of dev_err_probe()
+>   spi: mt65xx: Remove the use of dev_err_probe()
+>   spi: pxa2xx: Remove the use of dev_err_probe()
+>   spi: s3c64xx: Remove the use of dev_err_probe()
+> 
+> [...]
 
-...
+Applied to
 
-> >       devres: provide devm_kmemdup_const()
-> >       pinctrl: ingenic: use struct pinfunction instead of struct functi=
-on_desc
-> >       pinctrl: airoha: replace struct function_desc with struct pinfunc=
-tion
-> >       pinctrl: mediatek: mt7988: use PINCTRL_PIN_FUNCTION()
-> >       pinctrl: mediatek: moore: replace struct function_desc with struc=
-t pinfunction
-> >       pinctrl: imx: don't access the pin function radix tree directly
-> >       pinctrl: keembay: release allocated memory in detach path
-> >       pinctrl: keembay: use a dedicated structure for the pinfunction d=
-escription
-> >       pinctrl: constify pinmux_generic_get_function()
-> >       pinctrl: make struct pinfunction a pointer in struct function_des=
-c
-> >       pinctrl: qcom: use generic pin function helpers
-> >       pinctrl: allow to mark pin functions as requestable GPIOs
->
-> I applied these 12 patches as a starter so they can
-> stabilize in linux-next.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
 
-Hmm... I'm still sure that we don't need to have a separate flags
-field, but since I am on vacation and will be able to look at this
-closer next week, I can't look closer to it.
+Thanks!
 
+[1/6] spi: spi_amd: Remove the use of dev_err_probe()
+      commit: 2a5d410916d3a8dcac06f72494f252314e933cfb
+[2/6] spi: SPISG: Remove the use of dev_err_probe()
+      commit: 0d00ebc6b869f4df67c05522bc1e8d01d1c7daa7
+[3/6] spi: Remove the use of dev_err_probe()
+      commit: b875b97017050b92c64273178a0b0d282ea67874
+[4/6] spi: mt65xx: Remove the use of dev_err_probe()
+      commit: 2bee48c9d1cd1749922d0e2df54330c924e14a0e
+[5/6] spi: pxa2xx: Remove the use of dev_err_probe()
+      commit: 67259af78219bdbdea00491f32b1c0971a33401e
+[6/6] spi: s3c64xx: Remove the use of dev_err_probe()
+      commit: 27848c082ba0b22850fd9fb7b185c015423dcdc7
 
---=20
-With Best Regards,
-Andy Shevchenko
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
