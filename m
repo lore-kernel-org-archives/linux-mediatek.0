@@ -4,79 +4,165 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F5CDCA0EEB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Aug 2025 03:54:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46EBFCA0EE9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Aug 2025 05:12:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vIWuG+WVJjNc2hcfx1hLo1CL1sEhZVXu1kn1PQUdOog=; b=o9LsANa7YVAOclqnXVP7fRNxKb
-	vWA+sE+8HBwsUY0eiH9XUnVoj/W0Mb0zN/CPk0Bkshjn5XM8kTkiCr1CAp0dndBfRT3120VF9DpPo
-	33GxfGK6u9WxwuadVQ7vp/DFgDHGJJbLQSc/U1tqDppNuqpUW48WYOG5ygj/TCTQ6/0Jo8fSZkGPh
-	MKTVnxO2ewXzPB6hmRtvTBOHv3SQwj4PVf1gG2hBgv0uPjrQeWcD94/z1j74z0Z16gSz58iCukCj1
-	EgOieuIzQmMG2c+4hDxJwanErpjNtOPpDY1OIDqHWql5x6k1XaGIwzLE8CqptiYUADHPxuyySs+gg
-	5wVua1lA==;
+	bh=cXCNfbWjCF/BfcQHtOUaxxpKBtyS5DcvGg3uFoFC/5w=; b=1CrUisvpjuGQztAEJ9OzCZxQJV
+	hacYRpKrqlUFE3lXxwMQXW4Hk6xUD1R39FtNHJ6kvh3MLtMkCBAClVfcxe9cd+I4MLs+TAqzsgOti
+	d5v3qk5Yb0FzTL93J7dXVko2iEfxEw4LbKMW5B9PiNLxgbJTqxnH8PFI3Rs9lqYMtLt/oBMqQiuqE
+	+mFVDYA+OjgrDfVZj+IBdsNrP80epMatxmarRKzfOSP07eYjizTp5M0XkzriRaAdbIHJRjpfVIadM
+	ZKqt06XVC5Gahi69Njol2lKivRQGMip/kdKfkYJVdkkLouDAN+zFdabpUBUBBhRU/MTOZfgLO7vWd
+	Jdh9ynaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoDQ5-00000009JnV-3uXG;
-	Tue, 19 Aug 2025 03:53:57 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1uoEeG-00000009Pi6-4BxI;
+	Tue, 19 Aug 2025 05:12:41 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoDAu-00000009HTR-1LU0;
-	Tue, 19 Aug 2025 03:38:17 +0000
-X-UUID: ecd7216c7cad11f09f706fa2197c6ceb-20250818
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=vIWuG+WVJjNc2hcfx1hLo1CL1sEhZVXu1kn1PQUdOog=;
-	b=OvJgfNkUw21g49uXU11j9E2EyeYsOpR6J6kpiQYfPstcisqXEe0QbL1dtWkWFh8eo+ZbQzLHzubYyDG2yWOOTZVOPRMHAqCTvcKll6I4AMmwpPbktYXwxIiMXYwzk70tavtIcdRcC+659oVsw5SYNFtmqfrdzcFUjS3N/zpDk0g=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.3,REQID:04e5663d-317d-42a6-aba2-370a5cf0201e,IP:0,UR
-	L:0,TC:0,Content:58,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:58
-X-CID-META: VersionHash:f1326cf,CLOUDID:b56212f4-66cd-4ff9-9728-6a6f64661009,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|801,TC:-5,Content:3|15|50,
-	EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
-	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: ecd7216c7cad11f09f706fa2197c6ceb-20250818
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
-	(envelope-from <xiandong.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 189241124; Mon, 18 Aug 2025 20:38:09 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+	id 1uoEbM-00000009PWr-1S1L;
+	Tue, 19 Aug 2025 05:09:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:CC:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=cXCNfbWjCF/BfcQHtOUaxxpKBtyS5DcvGg3uFoFC/5w=; b=lS+0d5srvwYVdwUcMjE95u8Jxl
+	57uirHWi7lMxcK1Y4mJ90cBOTfhK/lQrpre1wop/qXgFYfVXCBtiEWAFJNmPXa9CX4NBetYrf2wRp
+	LKGWPpy00NqnABTsANDHdSjp7sGvwDaYd2iIJFWn5eT0I8vkDwUoLutcetdFeecmZ0etHs4w7gbq+
+	9FeQoWvRxheVVKWNYlTO0+rtSEwnAUSCchck+Q3o9sWbERF1Y6k8uXIRZrpGXjLCI2NV8I6crfaZt
+	BMwFfsZktfeYIBto+KajUhcLYb83BxgOL/RgYeAZK1NM+13b44NVFMaNRk8gEHih+ol4wPLndZbQL
+	iF9qsnzw==;
+Received: from mail-bn8nam12on2060a.outbound.protection.outlook.com ([2a01:111:f403:2418::60a] helo=NAM12-BN8-obe.outbound.protection.outlook.com)
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uoEbI-0000000HZaT-0coH;
+	Tue, 19 Aug 2025 05:09:38 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=BqrtZTFWbv5xzqjvKfWHyXlhmLAWgalUw4vSmV0tS7QCjdFppnaSkJKQ5G4Mj+RNb2oKBcAn+mmra/NiwDyrzqRMzdkyslWPIDhLtY3EUtJfTJBf5CYD0bO7cP5XURcG/ZKLXCvMv1Kmw0X7yY/KkmV60dximIpaZmrkXVfg2mSoHiDX7xBqv/LWpteuQXZgHiC1Hm8VQGuesjBnPhrkO5R+bTbAnTyQXikKIWCS1pEj0LeMJrX5oceIE3ouXoc8Qd2RrhBVPGH1oH/ATOhIbL4KMhL0AGGxTEEljw0cVU3bnF/fltegjsJWuIpV16hAaozDS8Re0wctPAFfI9eBgw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=cXCNfbWjCF/BfcQHtOUaxxpKBtyS5DcvGg3uFoFC/5w=;
+ b=hEnpfmMTxB1cmuo2NenuTE0lomeKgfp4kiV7WA/VBlt0xr96Rj7aZ8d9b5TRy/lhaB5O6E1Smh7DLFuYyjsFsfp+3IpQVYK/TGEtbY9MQgHMbrKrzuXK5+96ZeaLMf9iAsKfncXNsTkkBAATarAiXx/gJeuxZc3HsjwFDMCHaWaoNQN0a7wtZQWxFjp2ZM+bsDx4gYCtnwwtbx1u62f5wWRSpNaYDMG9E0/hvVtU+A3Q5XYopZeN/Ook6rqJqmcNh/B7o4JA+lgyJkmte00pgGP+E4VFYKg8UTszc7u/+dOoz6aW9O0SxvyWJEQ3TGSW6cm9cpckS18Uc9TbEGLLSQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.118.233) smtp.rcpttodomain=lists.linux.dev smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=cXCNfbWjCF/BfcQHtOUaxxpKBtyS5DcvGg3uFoFC/5w=;
+ b=IgZ+dRf/GPbG1UwR+OjAzJwVT319h1Sj3TsB27jdu/DpdI000krJopK3batxwDY3mztTvDxeEvKlMRWySwGXNM3GabqK9HEH3DrxcZmXVJ8U56QF+GWfiE6pJmiM88JVtMBC3RlJo0UO1Jf3Gz/gwawN0pZvqN/DpzA8QO4hZfvxu1aixJPhrwUkqCd73HoKAXkv7k6FWoqYs1Eaq/2qsDzS7akJNMB23HiSdrmQiJ4260ntZov4+iQr0/MzD3mVB0E7Haeci+rwAzIeRCMzQFgLoOCwYEbBbXkrEed/fbc27RiTuKMb7qBaqSV3qEQgf6m8HwH2R6wkRK/+pGW5OQ==
+Received: from BL0PR02CA0137.namprd02.prod.outlook.com (2603:10b6:208:35::42)
+ by DS0PR12MB6486.namprd12.prod.outlook.com (2603:10b6:8:c5::21) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9009.21; Tue, 19 Aug
+ 2025 05:09:22 +0000
+Received: from BN2PEPF000044AB.namprd04.prod.outlook.com
+ (2603:10b6:208:35:cafe::40) by BL0PR02CA0137.outlook.office365.com
+ (2603:10b6:208:35::42) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9031.24 via Frontend Transport; Tue,
+ 19 Aug 2025 05:09:22 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.233)
+ smtp.mailfrom=nvidia.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.118.233 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.118.233; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.118.233) by
+ BN2PEPF000044AB.mail.protection.outlook.com (10.167.243.106) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9052.8 via Frontend Transport; Tue, 19 Aug 2025 05:09:22 +0000
+Received: from drhqmail203.nvidia.com (10.126.190.182) by mail.nvidia.com
+ (10.127.129.6) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Mon, 18 Aug
+ 2025 22:09:14 -0700
+Received: from drhqmail203.nvidia.com (10.126.190.182) by
+ drhqmail203.nvidia.com (10.126.190.182) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Tue, 19 Aug 2025 11:38:05 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Tue, 19 Aug 2025 11:38:04 +0800
-From: Xiandong Wang <xiandong.wang@mediatek.com>
-To: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Yongqiang Niu
-	<yongqiang.niu@mediatek.com>
-CC: <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<sirius.wang@mediatek.com>, <vince-wl.liu@mediatek.com>,
-	<jh.hsu@mediatek.com>, <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	Xiandong Wang <xiandong.wang@mediatek.com>
-Subject: [PATCH v3 3/4] mailbox: mtk-cmdq: Add cmdq driver for mt8189
-Date: Tue, 19 Aug 2025 11:36:10 +0800
-Message-ID: <20250819033746.16405-4-xiandong.wang@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20250819033746.16405-1-xiandong.wang@mediatek.com>
-References: <20250819033746.16405-1-xiandong.wang@mediatek.com>
+ 15.2.1544.14; Mon, 18 Aug 2025 22:09:14 -0700
+Received: from Asurada-Nvidia (10.127.8.12) by mail.nvidia.com
+ (10.126.190.182) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14 via Frontend
+ Transport; Mon, 18 Aug 2025 22:09:13 -0700
+Date: Mon, 18 Aug 2025 22:09:11 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
+CC: <robin.murphy@arm.com>, <joro@8bytes.org>, <bhelgaas@google.com>,
+	<will@kernel.org>, <robin.clark@oss.qualcomm.com>, <yong.wu@mediatek.com>,
+	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
+	<thierry.reding@gmail.com>, <vdumpa@nvidia.com>, <jonathanh@nvidia.com>,
+	<rafael@kernel.org>, <lenb@kernel.org>, <kevin.tian@intel.com>,
+	<yi.l.liu@intel.com>, <baolu.lu@linux.intel.com>,
+	<linux-arm-kernel@lists.infradead.org>, <iommu@lists.linux.dev>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-tegra@vger.kernel.org>,
+	<linux-acpi@vger.kernel.org>, <linux-pci@vger.kernel.org>,
+	<patches@lists.linux.dev>, <pjaroszynski@nvidia.com>, <vsethi@nvidia.com>,
+	<helgaas@kernel.org>, <etzhao1900@gmail.com>
+Subject: Re: [PATCH v3 3/5] iommu: Add iommu_get_domain_for_dev_locked()
+ helper
+Message-ID: <aKQG9/skig6F8LdQ@Asurada-Nvidia>
+References: <cover.1754952762.git.nicolinc@nvidia.com>
+ <a69557026b7e2353bae67104bbe6a88f0682305e.1754952762.git.nicolinc@nvidia.com>
+ <20250818143949.GO802098@nvidia.com>
+ <aKNhIr08fK+xIYcg@Asurada-Nvidia>
+ <20250818234241.GF802098@nvidia.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20250818234241.GF802098@nvidia.com>
+X-NV-OnPremToCloud: ExternallySecured
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BN2PEPF000044AB:EE_|DS0PR12MB6486:EE_
+X-MS-Office365-Filtering-Correlation-Id: 0a329ab8-bf74-4abc-7c46-08dddede8f4e
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|36860700013|376014|7416014|82310400026|1800799024;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?/KoUkVY/xfblW/QGfS3GEXu1t4mpzkBAZUG/OwlawZgCEARhi7Icjf0k8vIy?=
+ =?us-ascii?Q?lCDMKBwK0vGQvSWhuFjPAhDFo0B86WKqF73svTI7OvdXuBH0b69hBu6pkZCu?=
+ =?us-ascii?Q?TlmiOn6+DruG7EMEoTBGUNJke+H/uN4EzQpB8VmkIPRS/vddzyUrpv3+ZZ1m?=
+ =?us-ascii?Q?8EnM3oR+31V0WiUeYBU2FBRvhmvoiSRqpibAsojTPemKJkdiY9eNtJcGy3b4?=
+ =?us-ascii?Q?NrwZflbJizXVFZQdm4xKa/6Hv6lTKFfTm3a5I8sweBUM4s3fVcy4EMeRtkYE?=
+ =?us-ascii?Q?iDwufwyEAlsfmVZdpgw2fAy/OhB/EzDF5Kh6qT6E96wt5ucdHJRNhyaPQgy9?=
+ =?us-ascii?Q?9sczAEUdqCwQnLTPkDzGTu2lUJTyPbNhu7L9ElDDU0gwIruOwsPfd0b2YckT?=
+ =?us-ascii?Q?CxShsvOo1+O91d2CiS9WZm8kcKZFgs6gw6W3GjJuLblfogoCR5g/aHVXWDCK?=
+ =?us-ascii?Q?sDyFB+AjPA/3H+R3yzpop1026780u38cTlbDhnb1jxT+12aOAzhV8KF2SnwN?=
+ =?us-ascii?Q?e69BbOlIZt+8xonW4pDNMdCuqzFtrBRKUfJDgDCnozprHBL6cvifpbBkhpjd?=
+ =?us-ascii?Q?4IxyjAybFF43vwtV3Un0ikhOz70aibiY1iaRlJK8NteSbVXcwb7iXn0FjBqR?=
+ =?us-ascii?Q?1LTS569K9fzDpYXHb5nn6jpOajIXsu82P3X/CiXpxJ8k8Pdmxm2WTSPdnGoG?=
+ =?us-ascii?Q?imfzRNZRY5JUA09NXdauPDe6FB8S0f2fTphzJ0936MaNml8k7fgHqTKXR7aO?=
+ =?us-ascii?Q?HTd9SMoPJ8qMezfbowakj4D1D9elx4Uzs8FWrZ2T24OFuB3u5wi0ZTU1qJm5?=
+ =?us-ascii?Q?UYwCevJ0OhP6r1ZdMQdNhBy2Pe27u98f2BjYjiGi+wyf2voE2gYTXzBwxSnq?=
+ =?us-ascii?Q?s6e1neN2yC3ebl5hVYDFx1s76LvvAWCRBWZ1RvimEzxT1hEOh5i9AQTbH1a2?=
+ =?us-ascii?Q?R6OITM2Y2SP7souzhehi0661O5bsBrnSDiGNDJB+cLM5Dh+uJLvZAnME58Bv?=
+ =?us-ascii?Q?KszxVD6XM3/pzpHWJY/nsZGCXG/6U9uaJmwRRPHblN6CaoX7SlO6Bk2j7eiP?=
+ =?us-ascii?Q?1riDBIRoMwLZrjfcm2vkcIdLH6bXgIXPee/MJYIwf5PDVuHH/1ZOXNxcvpws?=
+ =?us-ascii?Q?nEYcTYDrqEldO3yDofIQd5NiHLvX06qpZWzNkq/4/6Cm1434Dgbby9qJa8C4?=
+ =?us-ascii?Q?IR3ol82dXfzys0A15Xweb92rkyI++O0OXo0iBlzxPbKp4jfdCfRwLQTyovz3?=
+ =?us-ascii?Q?CQvzGTdsiqNPAf1e17Z93s1u5y2WIwT5Pns27k2NEaMXc7K+iRzgEzPG4MlS?=
+ =?us-ascii?Q?RZEJ3S87LeW0ptDEDAamwbEPu0wvu7cGpEYIEL63zkwIdOTU36LrpU+RpYgA?=
+ =?us-ascii?Q?Bh1GHfBsKujrWRRD9ZfBqM4k/BnJhmG46AcIJruYuq5fuZq6Ou2YIRchWXqa?=
+ =?us-ascii?Q?g7YfTSLM+KFy4C7KvVi9A/ErUzINSF6NURnza3TuXL0TZIelncnDqe4erEpw?=
+ =?us-ascii?Q?XkqcCp8XpaG3CjRao7c/ZRRDV1ywcHK3L1yM?=
+X-Forefront-Antispam-Report: CIP:216.228.118.233;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc7edge2.nvidia.com;CAT:NONE;SFS:(13230040)(36860700013)(376014)(7416014)(82310400026)(1800799024);DIR:OUT;SFP:1101;
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Aug 2025 05:09:22.2948
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0a329ab8-bf74-4abc-7c46-08dddede8f4e
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.118.233];Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: BN2PEPF000044AB.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR12MB6486
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250818_203816_365555_13B62E18 
-X-CRM114-Status: GOOD (  11.24  )
+X-CRM114-CacheID: sfid-20250819_060936_536445_1FA40C92 
+X-CRM114-Status: GOOD (  30.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,45 +177,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add GCE platform data for MediaTek MT8189 to cmdq driver,
-enabling support for MT8189 SoC by register MT8189 platform
-data in gce_plat and device table.
+On Mon, Aug 18, 2025 at 08:42:41PM -0300, Jason Gunthorpe wrote:
+> On Mon, Aug 18, 2025 at 10:22:52AM -0700, Nicolin Chen wrote:
+> > > Because this is a very common pattern in drivers.
+> > > 
+> > > Once that is done we can see what calls to iommu_get_domain_for_dev()
+> > > are even left,
+> > 
+> > ... I found that in SMMUv3 driver, iommu_get_domain_for_dev() is
+> > used to get the RID domain for an SVA domain:
+> >     arm_smmu_set_pasid()
+> >     arm_smmu_blocking_set_dev_pasid()
+> > 
+> > These two are already given an "old" (SVA) domain pointer, FWIW.
+> > 
+> > So, we may change to passing in the old domain as you suggested,
+> > yet we still have to fix the iommu_get_domain_for_dev() in order
+> > to reflect the RID domain correctly for the driver that calls it
+> > (or even potentially) in some group->mutex locked context where
+> > the RID domain might not be naturally passed in.
+> 
+> It could probably be avoided by keeping track of more information in
+> the master, but also it is not so bad to use a _locked version here.
 
-These changes ensure correct GCE operation for MT8189.
+Yes, I've thought about that. The concern is that some other place
+someday may want to use iommu_get_domain_for_dev() in similar cases
+but would find that it doesn't work. So it would have to duplicate
+the domain pointer in its "master" structure.
 
-Signed-off-by: Xiandong Wang <xiandong.wang@mediatek.com>
----
- drivers/mailbox/mtk-cmdq-mailbox.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+Overall, having a _locked version feels cleaner to me.
 
-diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-index 177de5ab0ab2..543cd86b5bb0 100644
---- a/drivers/mailbox/mtk-cmdq-mailbox.c
-+++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -799,12 +799,22 @@ static const struct gce_plat gce_plat_mt8195 = {
- 	.gce_num = 2
- };
- 
-+static const struct gce_plat gce_plat_mt8189 = {
-+	.thread_nr = 32,
-+	.shift = 3,
-+	.mminfra_offset = 0x40000000, /* 1GB */
-+	.control_by_sw = false,
-+	.sw_ddr_en = true,
-+	.gce_num = 2
-+};
-+
- static const struct of_device_id cmdq_of_ids[] = {
- 	{.compatible = "mediatek,mt6779-gce", .data = (void *)&gce_plat_mt6779},
- 	{.compatible = "mediatek,mt8173-gce", .data = (void *)&gce_plat_mt8173},
- 	{.compatible = "mediatek,mt8183-gce", .data = (void *)&gce_plat_mt8183},
- 	{.compatible = "mediatek,mt8186-gce", .data = (void *)&gce_plat_mt8186},
- 	{.compatible = "mediatek,mt8188-gce", .data = (void *)&gce_plat_mt8188},
-+	{.compatible = "mediatek,mt8189-gce", .data = (void *)&gce_plat_mt8189},
- 	{.compatible = "mediatek,mt8192-gce", .data = (void *)&gce_plat_mt8192},
- 	{.compatible = "mediatek,mt8195-gce", .data = (void *)&gce_plat_mt8195},
- 	{}
--- 
-2.46.0
+> > > arguably we should be trying to eliminate this badly
+> > > locked thing...
+> > 
+> > Any suggestion?
+> 
+> Bit by bit.. I counted 58 by grep
+> 
+> Changing attach will get rid of alot of them
+> 
+> Then there is stuff like this:
+> 
+>         domain = iommu_get_domain_for_dev(emu->card->dev);
+>         if (!domain || domain->type == IOMMU_DOMAIN_IDENTITY)
+>                 return;
+> 
+> Which should be more like 
+>    if (iommu_get_translation_mode(dev) == IDENTITY)
+>
+> With sensible internal locking
 
+Hmm, I feel this iommu_get_translation_mode() is somewhat the same
+as the current iommu_get_domain_for_dev(). It would just return the
+group->domain->type v.s. group->domain, right?
+
+This doesn't have any UAF concern though.
+
+> So that is another bunch. Not sure what will be left after.
+
+I recall that some of the drivers manages their own domains, e.g.
+    drivers/gpu/drm/tegra/drm.c
+
+So, they would want more out of the domain pointer than just type.
+
+> Not saying to do all that here, just prefer we move toward that direction.
+
+Yea.. I also think it's a bit difficult to justify the changes in
+the non-iommu callers, since they are not affected by any patch in
+this series.
+
+Thanks
+Nicolin
 
