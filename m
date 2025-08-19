@@ -4,59 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 933E7CA0EEB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Aug 2025 16:09:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79DD5CA0EF7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Aug 2025 18:13:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MLzPPob4PWRr5o1X29idn583JxcMkCwzNQmuZnGLTE8=; b=RMBiS36YktXUOU/l61FIBpLMkh
-	VRp5r2avBDc9BtKUINFBV3ayFm2H9FJSU+MUCn/T6vMHY4TRxCLmPFj9yNwbjGTYc5kP5LjMQq7b4
-	RvYjcg8HUvt4/rcKoceBGwEFHL8mTcc1W2piPLcA9pilfAPdX0suuQDPchE0BAiL1fQxop7XWy7/H
-	G7Kvf5oN3cUv//+DzzmNdqv1HcdQOH+iUfR/KIE8zIpbb6IyzbLZG9gVna9xVLN22E+znX0tjfYIF
-	MnlaDCTwzghxoRzvDXpjCJXK7Iw9pCavOTgj4CGrnligR7elYEdvew2HNl9TmVeDd9Uvs8hynuF7G
-	OU5ksjxA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=oZZIdP+oBFimapfXAqXLnsiUg0mGHxd7q9JW+Ig3Zqk=; b=OW8YaxtROYqCyPAV31Tuw2JevV
+	rse9hLhiOvdqLut3EGS1KOm30HtVdDkl+xYFQYEkA6W1yM7hy2T5QL0WPhVHGqEUy2jQWyuOj/BG1
+	5yX+Vbh4FnwMYF+dLCcS4A94A9L86N+qLnFGwpcGe5cncu520KaSTtwDWXmOutgxc/cUjkehpP+V/
+	ZAFFnhkJtUAyTb+x5O8MM19IPG3DRNTv/J93kaNmkJ1Dvcc8Fpuvi3iJBaB3UrCnCPCDgJa23Ceq7
+	73MVXQyaRRf0FFlvKqrbM6rXdloMP5fSJgKyJ1Qo4BgNX+4rrwP+c7MA5LfSINMdQenjfNklrbDnQ
+	dJpTeHFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoOtj-0000000Ayh4-1BFk;
-	Tue, 19 Aug 2025 16:09:19 +0000
-Received: from mail.grinn-global.com ([77.55.128.204])
+	id 1uoQpg-0000000BC8a-3Hqt;
+	Tue, 19 Aug 2025 18:13:16 +0000
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoM0Q-0000000AWP2-27mB;
-	Tue, 19 Aug 2025 13:04:03 +0000
-X-Virus-Scanned: by amavisd-new using ClamAV (9)
-Received: from mateusz.int.grinn-global.com (f90-187.icpnet.pl [46.228.90.187])
-	by server220076.nazwa.pl (Postfix) with ESMTP id 6D7DA1BE43A;
-	Tue, 19 Aug 2025 15:03:59 +0200 (CEST)
-From: Mateusz Koza <mateusz.koza@grinn-global.com>
-To: angelogioacchino.delregno@collabora.com,
-	robh@kernel.org
-Cc: krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
+	id 1uoMCW-0000000AZ5p-3cmQ
+	for linux-mediatek@lists.infradead.org;
+	Tue, 19 Aug 2025 13:16:33 +0000
+Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-afcb731ca55so71896266b.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 19 Aug 2025 06:16:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1755609391; x=1756214191; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=oZZIdP+oBFimapfXAqXLnsiUg0mGHxd7q9JW+Ig3Zqk=;
+        b=toGNskn5MgvTD4FX+/cGS+r8ss3kOS+l+RGnIHD8f9IV1jPz4vr15fab0YP6KPl0uH
+         h1GX2LTmSYJzRZyqb202210e0BCPWg01DWCSo16u0MOa9f+q7GOyqrWK3Zuj4yyT5DuR
+         7sunZu9HvC1UhSBBqDb/CdzNdZldgt64hJyKjE/nBFGRND69Nab6vMzkqNQNjDLCFZTV
+         9sBGEqbgXx8G0Ecd8Mn5DIP5/yNdmAbXclozbRTv70a8arnCFAKtWYvwOnE/+hHQ6Pft
+         wAndrAlULgprnenAcutQrummbweklwgNf1qquFPw4pjqaCWN8ZeaaFuXlGcBdWLbabRr
+         iD/Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1755609391; x=1756214191;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=oZZIdP+oBFimapfXAqXLnsiUg0mGHxd7q9JW+Ig3Zqk=;
+        b=W5Zh/H+DXxInXVyREm4hAIwlmy2L36dOn3VPaw29h6p+DDVGjBP6/CdAvxfKnnkSaz
+         mwVPvrswfvA2T3QX8ricau9rvpl3FJu3hmd40U5p2vTyESOB4UJ/rQjgptAS7AiCk5Ol
+         rCaht0OGHunkAg1l/QNvuq64wOW7G//w3A1cn4cFYWrJmQJTewvjbG2piGinaw1iU+Vq
+         mTniHerWDkgL4YxaWqHO9Z3z6ADt3GfEZkUQ626e2vLP9JP7Z99Lsyt/ajoxbvhgVNHl
+         eXaZc+IEbKRZ7P6fHu3tu3B4Ze+ZB3TGGu7JA5mW1/8s28EpJIvstz4fgoKuFjpFZvK3
+         0hMw==
+X-Forwarded-Encrypted: i=1; AJvYcCWq120dENekCKI8/Tc7c+iQFQl7SWouZ9s4+zKOMtetahHNeGq1rRQyleqRTDu2fDXuJ/eophSWnhKlYQ624w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YylrXOtVZ84xNe0uA4ig3OcOaAEc4BJGUuzBYcl9TBgEM9uOm9t
+	hjwkhMKG8lgwLGAn+daNmthE8Dd4Ocujde1oVHys7OEX4lqCyTkXO9QsItXh2tlc/o8=
+X-Gm-Gg: ASbGnctq1Lxp0ttG0BvXo6wPwMGl0zbEBoIs8Tj0qRMkJ0Yc/y2bNGA8AoO5rMCYhR4
+	JWrNd25p3gVgz/D8BqaH509JZ0UaGaIGJHj7ICN6FCfsBBh5kxZ3jyYc9IMePouQmNChOchtwO8
+	fqxbDoPz/CnqOkqGzueIwzIEHTb+WDQdfcCLwL1tTd0mJxnOQOl4FE0DaREqJRFVbdv8ISqzj5H
+	maLkSoCvDhlFAaBekKga4B9xBxDz8JvNVNUGjpJ+laAdJPEUS60c/iWMLtN3ur+4H8ksZG1F2Q4
+	nH/apJbJKskBbp8zJU/6a9r6BdcGeEIxYJE1OVOtjWsK7PGiuDFzGxrAsgQjhyvz/OM/v9MO8JH
+	z8C0WDVgqqHYhW+DHAAvxSwIO4JZKgBs+Jg==
+X-Google-Smtp-Source: AGHT+IEpObl3AXqG5YLwGioik5GupCpWPb0I5hX7zakwD7RPUsahBj7xHDVrUgh2Vb0G+dzv1Jp3Uw==
+X-Received: by 2002:a17:907:86a4:b0:ad8:9207:b436 with SMTP id a640c23a62f3a-afddd0c7d0bmr118076766b.5.1755609391064;
+        Tue, 19 Aug 2025 06:16:31 -0700 (PDT)
+Received: from kuoka.. ([178.197.219.123])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-afcdd010d4csm988721666b.85.2025.08.19.06.16.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 19 Aug 2025 06:16:30 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	marcin.czarnecki@grinn-global.com,
-	b.bilas@grinn-global.com,
-	Mateusz Koza <mateusz.koza@grinn-global.com>
-Subject: [PATCH v2 4/4] dt-bindings: arm: mediatek: Add grinn,genio-510-sbc
-Date: Tue, 19 Aug 2025 15:02:31 +0200
-Message-ID: <20250819130231.181571-5-mateusz.koza@grinn-global.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250819130231.181571-1-mateusz.koza@grinn-global.com>
-References: <20250819130231.181571-1-mateusz.koza@grinn-global.com>
+	linux-mediatek@lists.infradead.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH] arm64: dts: mediatek: Minor whitespace cleanup
+Date: Tue, 19 Aug 2025 15:16:27 +0200
+Message-ID: <20250819131626.86437-2-krzysztof.kozlowski@linaro.org>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4619; i=krzysztof.kozlowski@linaro.org;
+ h=from:subject; bh=y7xStFE0NPIkxi9Pu680sxAPkxq15o/aAJd/KvC53fU=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBopHkqIAFaQMi6BKsdOrJ8UDRbfn4vqnrFDGbrN
+ xSLPx67B5aJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaKR5KgAKCRDBN2bmhouD
+ 18ZuD/0cgDdl1OlZpiiI58Xe1O/d1MRcs7ODqESE1H53OSKkPjVj+Nvo3yifk8r2Cwr83p0DLHu
+ SwlQLCZE/TyxzbWtWec1WsG2peVHMfYpDOJY5HzZmLHOXuB+u8oqWfpg+JBdbymqF98iZDbM7AU
+ N3UQTzl81ZmerRBZSsBTv7tb7PIKtu1oSjpl/DB01EfmjdoV/dlb1Kw/P8Rzg69AxooAn2//vLW
+ zvQ5+Q91CoYD8D9NU9L0rAuXnzhqLw1z1vL3El1L3T4i4lYvo+gL55yoZTQ11BklEzPmL9MK/or
+ Q4f+QbDVhQRrBJJsbv0tw3CniZd3d2FMksMH3Ogxxrd/JBKhYpXNp1YY1U6kFvy6HoPtJTwFOhX
+ b5x84gZ0b3HqsY12RyvG0PTzinl4ZtwaQiIhYsiAJ3jH8Upm10jj3MzBm1VH7O0ChZn4EkLGHCu
+ lz3+a5YIcbLSHgDCYn9jpMjc5n5lwF5BTG3jZqMLRQKmO4ifFTPf/qJNYLl9C2cQYcU8p760Upa
+ iq1Tg9Gh19osc/k8MnQm/F47iuDl8KpUytL9QcK7LG61T4h9ZoFyp5F0QA+ieryGdwOPW+k09Xa
+ ARtd+Zx+NOXEKTZlNIUgtOa4Iz5uWYNZGloOeVU/DuFhpuLWP6xt2vEUBXP/TsjP86FCRwEU9Ec smZe34u2DJppFLw==
+X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp; fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 Content-Transfer-Encoding: 8bit
-X-NA-AI-Spam-Probability: 0.49
-X-NA-AI-Is-Spam: no
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250819_060402_729447_DCA9985B 
-X-CRM114-Status: UNSURE (   8.56  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250819_061632_907531_1BA9C85C 
+X-CRM114-Status: GOOD (  11.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,31 +116,120 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add device tree bindings support for the Grinn GenioSBC-510, a
-single-board computer based on the MediaTek Genio 510 SoC.
+The DTS code coding style expects exactly one space around '='
+character.
 
-More details about the hardware:
-- https://grinn-global.com/products/grinn-geniosom-510
-- https://grinn-global.com/products/grinn-genioboard-edge-ai-sbc
-
-Signed-off-by: Mateusz Koza <mateusz.koza@grinn-global.com>
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- Documentation/devicetree/bindings/arm/mediatek.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ arch/arm64/boot/dts/mediatek/mt7988a.dtsi                 | 2 +-
+ arch/arm64/boot/dts/mediatek/mt8188.dtsi                  | 8 ++++----
+ arch/arm64/boot/dts/mediatek/mt8365.dtsi                  | 2 +-
+ arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi     | 4 ++--
+ arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts    | 2 +-
+ .../boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts    | 2 +-
+ 6 files changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-index 122af0bad141..468672b0296a 100644
---- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-@@ -425,6 +425,7 @@ properties:
-           - const: mediatek,mt8365
-       - items:
-           - enum:
-+              - grinn,genio-510-sbc
-               - mediatek,mt8370-evk
-           - const: mediatek,mt8370
-           - const: mediatek,mt8188
+diff --git a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+index 560ec86dbec0..2e108aad8aec 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+@@ -253,7 +253,7 @@ mux {
+ 			uart0_pins: uart0-pins {
+ 				mux {
+ 					function = "uart";
+-					groups =  "uart0";
++					groups = "uart0";
+ 				};
+ 			};
+ 		};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+index 202478407727..ef18117dc5d6 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+@@ -1152,9 +1152,9 @@ power-domain@MT8188_POWER_DOMAIN_CAM_MAIN {
+ 									 <&camsys CLK_CAM_MAIN_CAM2MM0_GALS>,
+ 									 <&camsys CLK_CAM_MAIN_CAM2MM1_GALS>,
+ 									 <&camsys CLK_CAM_MAIN_CAM2SYS_GALS>;
+-								clock-names= "ss-cam-l13", "ss-cam-l14",
+-									     "ss-cam-mm0", "ss-cam-mm1",
+-									     "ss-camsys";
++								clock-names = "ss-cam-l13", "ss-cam-l14",
++									      "ss-cam-mm0", "ss-cam-mm1",
++									      "ss-camsys";
+ 								mediatek,infracfg = <&infracfg_ao>;
+ 								#address-cells = <1>;
+ 								#size-cells = <0>;
+@@ -1172,7 +1172,7 @@ power-domain@MT8188_POWER_DOMAIN_CAM_SUBB {
+ 								};
+ 
+ 								power-domain@MT8188_POWER_DOMAIN_CAM_SUBA {
+-									reg =<MT8188_POWER_DOMAIN_CAM_SUBA>;
++									reg = <MT8188_POWER_DOMAIN_CAM_SUBA>;
+ 									clocks = <&camsys CLK_CAM_MAIN_CAM_SUBA>,
+ 										 <&camsys_rawa CLK_CAM_RAWA_LARBX>,
+ 										 <&camsys_yuva CLK_CAM_YUVA_LARBX>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
+index e6d2b3221a3b..9d6b5ce8c421 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8365.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
+@@ -780,7 +780,7 @@ mmsys_ext: endpoint@1 {
+ 		};
+ 
+ 		mutex: mutex@14001000 {
+-			compatible =  "mediatek,mt8365-disp-mutex";
++			compatible = "mediatek,mt8365-disp-mutex";
+ 			reg = <0 0x14001000 0 0x1000>;
+ 			interrupts = <GIC_SPI 154 IRQ_TYPE_LEVEL_LOW>;
+ 			power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
+index a2cdecd2b903..18b2771e7705 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
+@@ -414,7 +414,7 @@ connector {
+ 			data-role = "dual";
+ 			op-sink-microwatt = <10000000>;
+ 			power-role = "dual";
+-			try-power-role  = "sink";
++			try-power-role = "sink";
+ 			pd-revision = /bits/ 8 <0x03 0x00 0x01 0x08>;
+ 
+ 			sink-pdos = <PDO_FIXED(5000, 2000,
+@@ -1130,7 +1130,7 @@ pins-wifi-enable {
+ };
+ 
+ &eth {
+-	phy-mode ="rgmii-id";
++	phy-mode = "rgmii-id";
+ 	phy-handle = <&ethernet_phy0>;
+ 	pinctrl-names = "default", "sleep";
+ 	pinctrl-0 = <&eth_default_pins>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
+index cf8cd37f5708..58ce34e7fde8 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
+@@ -263,7 +263,7 @@ dsi0_out: endpoint {
+ };
+ 
+ &eth {
+-	phy-mode ="rgmii-rxid";
++	phy-mode = "rgmii-rxid";
+ 	phy-handle = <&eth_phy0>;
+ 	snps,reset-gpio = <&pio 93 GPIO_ACTIVE_HIGH>;
+ 	snps,reset-delays-us = <0 10000 10000>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts b/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts
+index 4985b65925a9..1a89de14ac3a 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts
+@@ -266,7 +266,7 @@ &auxadc {
+ };
+ 
+ &eth {
+-	phy-mode ="rgmii-id";
++	phy-mode = "rgmii-id";
+ 	phy-handle = <&ethernet_phy0>;
+ 	pinctrl-names = "default", "sleep";
+ 	pinctrl-0 = <&eth_default_pins>;
 -- 
-2.43.0
+2.48.1
 
 
