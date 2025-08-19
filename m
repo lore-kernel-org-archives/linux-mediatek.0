@@ -4,165 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46EBFCA0EE9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Aug 2025 05:12:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08269CA0EE6
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Aug 2025 05:28:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cXCNfbWjCF/BfcQHtOUaxxpKBtyS5DcvGg3uFoFC/5w=; b=1CrUisvpjuGQztAEJ9OzCZxQJV
-	hacYRpKrqlUFE3lXxwMQXW4Hk6xUD1R39FtNHJ6kvh3MLtMkCBAClVfcxe9cd+I4MLs+TAqzsgOti
-	d5v3qk5Yb0FzTL93J7dXVko2iEfxEw4LbKMW5B9PiNLxgbJTqxnH8PFI3Rs9lqYMtLt/oBMqQiuqE
-	+mFVDYA+OjgrDfVZj+IBdsNrP80epMatxmarRKzfOSP07eYjizTp5M0XkzriRaAdbIHJRjpfVIadM
-	ZKqt06XVC5Gahi69Njol2lKivRQGMip/kdKfkYJVdkkLouDAN+zFdabpUBUBBhRU/MTOZfgLO7vWd
-	Jdh9ynaQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=x1RoE19cvLBaBi0011V8fYVXjhA8rp/exNRIajTxVcc=; b=q4mX6/AKWLRjndAWAcsjeaEckg
+	1E+aHO43gG74EyEoaEyK+LY7HXaEaivp5rGdIdeckrYEhKWRYOuxX6M3EHGehxsRcMrwsiAdXbYHx
+	mOANDPxJritCYUq54tGfXTc2dS1WFenqY6rIQJ5sunPM3BPH3wOUrIArKSKByQzEk7OTacByiB1/d
+	54ZiwEIEj2/3D7FwgjPFM5qZ0ZRfou6Pk9UjA6kwA6EqT1MIUHaFBcfdzhnciSJ3N7gLH93Kt11zW
+	CnGR6knLY6I81cgvd9iFMdbFV7av5elyHcyHf3Q3kb9ISseqx8Fa8WL+iokNFlabNbYw/W+ixK8jn
+	8Gzl0KaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoEeG-00000009Pi6-4BxI;
-	Tue, 19 Aug 2025 05:12:41 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uoEtB-00000009Qm2-1opu;
+	Tue, 19 Aug 2025 05:28:05 +0000
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoEbM-00000009PWr-1S1L;
-	Tue, 19 Aug 2025 05:09:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:CC:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=cXCNfbWjCF/BfcQHtOUaxxpKBtyS5DcvGg3uFoFC/5w=; b=lS+0d5srvwYVdwUcMjE95u8Jxl
-	57uirHWi7lMxcK1Y4mJ90cBOTfhK/lQrpre1wop/qXgFYfVXCBtiEWAFJNmPXa9CX4NBetYrf2wRp
-	LKGWPpy00NqnABTsANDHdSjp7sGvwDaYd2iIJFWn5eT0I8vkDwUoLutcetdFeecmZ0etHs4w7gbq+
-	9FeQoWvRxheVVKWNYlTO0+rtSEwnAUSCchck+Q3o9sWbERF1Y6k8uXIRZrpGXjLCI2NV8I6crfaZt
-	BMwFfsZktfeYIBto+KajUhcLYb83BxgOL/RgYeAZK1NM+13b44NVFMaNRk8gEHih+ol4wPLndZbQL
-	iF9qsnzw==;
-Received: from mail-bn8nam12on2060a.outbound.protection.outlook.com ([2a01:111:f403:2418::60a] helo=NAM12-BN8-obe.outbound.protection.outlook.com)
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoEbI-0000000HZaT-0coH;
-	Tue, 19 Aug 2025 05:09:38 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=BqrtZTFWbv5xzqjvKfWHyXlhmLAWgalUw4vSmV0tS7QCjdFppnaSkJKQ5G4Mj+RNb2oKBcAn+mmra/NiwDyrzqRMzdkyslWPIDhLtY3EUtJfTJBf5CYD0bO7cP5XURcG/ZKLXCvMv1Kmw0X7yY/KkmV60dximIpaZmrkXVfg2mSoHiDX7xBqv/LWpteuQXZgHiC1Hm8VQGuesjBnPhrkO5R+bTbAnTyQXikKIWCS1pEj0LeMJrX5oceIE3ouXoc8Qd2RrhBVPGH1oH/ATOhIbL4KMhL0AGGxTEEljw0cVU3bnF/fltegjsJWuIpV16hAaozDS8Re0wctPAFfI9eBgw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=cXCNfbWjCF/BfcQHtOUaxxpKBtyS5DcvGg3uFoFC/5w=;
- b=hEnpfmMTxB1cmuo2NenuTE0lomeKgfp4kiV7WA/VBlt0xr96Rj7aZ8d9b5TRy/lhaB5O6E1Smh7DLFuYyjsFsfp+3IpQVYK/TGEtbY9MQgHMbrKrzuXK5+96ZeaLMf9iAsKfncXNsTkkBAATarAiXx/gJeuxZc3HsjwFDMCHaWaoNQN0a7wtZQWxFjp2ZM+bsDx4gYCtnwwtbx1u62f5wWRSpNaYDMG9E0/hvVtU+A3Q5XYopZeN/Ook6rqJqmcNh/B7o4JA+lgyJkmte00pgGP+E4VFYKg8UTszc7u/+dOoz6aW9O0SxvyWJEQ3TGSW6cm9cpckS18Uc9TbEGLLSQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.118.233) smtp.rcpttodomain=lists.linux.dev smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=cXCNfbWjCF/BfcQHtOUaxxpKBtyS5DcvGg3uFoFC/5w=;
- b=IgZ+dRf/GPbG1UwR+OjAzJwVT319h1Sj3TsB27jdu/DpdI000krJopK3batxwDY3mztTvDxeEvKlMRWySwGXNM3GabqK9HEH3DrxcZmXVJ8U56QF+GWfiE6pJmiM88JVtMBC3RlJo0UO1Jf3Gz/gwawN0pZvqN/DpzA8QO4hZfvxu1aixJPhrwUkqCd73HoKAXkv7k6FWoqYs1Eaq/2qsDzS7akJNMB23HiSdrmQiJ4260ntZov4+iQr0/MzD3mVB0E7Haeci+rwAzIeRCMzQFgLoOCwYEbBbXkrEed/fbc27RiTuKMb7qBaqSV3qEQgf6m8HwH2R6wkRK/+pGW5OQ==
-Received: from BL0PR02CA0137.namprd02.prod.outlook.com (2603:10b6:208:35::42)
- by DS0PR12MB6486.namprd12.prod.outlook.com (2603:10b6:8:c5::21) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9009.21; Tue, 19 Aug
- 2025 05:09:22 +0000
-Received: from BN2PEPF000044AB.namprd04.prod.outlook.com
- (2603:10b6:208:35:cafe::40) by BL0PR02CA0137.outlook.office365.com
- (2603:10b6:208:35::42) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9031.24 via Frontend Transport; Tue,
- 19 Aug 2025 05:09:22 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.233)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.118.233 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.118.233; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.118.233) by
- BN2PEPF000044AB.mail.protection.outlook.com (10.167.243.106) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9052.8 via Frontend Transport; Tue, 19 Aug 2025 05:09:22 +0000
-Received: from drhqmail203.nvidia.com (10.126.190.182) by mail.nvidia.com
- (10.127.129.6) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Mon, 18 Aug
- 2025 22:09:14 -0700
-Received: from drhqmail203.nvidia.com (10.126.190.182) by
- drhqmail203.nvidia.com (10.126.190.182) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.14; Mon, 18 Aug 2025 22:09:14 -0700
-Received: from Asurada-Nvidia (10.127.8.12) by mail.nvidia.com
- (10.126.190.182) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14 via Frontend
- Transport; Mon, 18 Aug 2025 22:09:13 -0700
-Date: Mon, 18 Aug 2025 22:09:11 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-CC: <robin.murphy@arm.com>, <joro@8bytes.org>, <bhelgaas@google.com>,
-	<will@kernel.org>, <robin.clark@oss.qualcomm.com>, <yong.wu@mediatek.com>,
-	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
-	<thierry.reding@gmail.com>, <vdumpa@nvidia.com>, <jonathanh@nvidia.com>,
-	<rafael@kernel.org>, <lenb@kernel.org>, <kevin.tian@intel.com>,
-	<yi.l.liu@intel.com>, <baolu.lu@linux.intel.com>,
-	<linux-arm-kernel@lists.infradead.org>, <iommu@lists.linux.dev>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-tegra@vger.kernel.org>,
-	<linux-acpi@vger.kernel.org>, <linux-pci@vger.kernel.org>,
-	<patches@lists.linux.dev>, <pjaroszynski@nvidia.com>, <vsethi@nvidia.com>,
-	<helgaas@kernel.org>, <etzhao1900@gmail.com>
-Subject: Re: [PATCH v3 3/5] iommu: Add iommu_get_domain_for_dev_locked()
- helper
-Message-ID: <aKQG9/skig6F8LdQ@Asurada-Nvidia>
-References: <cover.1754952762.git.nicolinc@nvidia.com>
- <a69557026b7e2353bae67104bbe6a88f0682305e.1754952762.git.nicolinc@nvidia.com>
- <20250818143949.GO802098@nvidia.com>
- <aKNhIr08fK+xIYcg@Asurada-Nvidia>
- <20250818234241.GF802098@nvidia.com>
+	id 1uoEt9-00000009QlD-0vDf
+	for linux-mediatek@lists.infradead.org;
+	Tue, 19 Aug 2025 05:28:04 +0000
+Received: by mail-lf1-x130.google.com with SMTP id 2adb3069b0e04-55ce5095c8fso3947286e87.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 18 Aug 2025 22:28:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1755581281; x=1756186081; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=x1RoE19cvLBaBi0011V8fYVXjhA8rp/exNRIajTxVcc=;
+        b=Es/x4xed4X051AlFjA+l7RlMRPrifdpLjZggZsK1f5DbTRH/AO3Tas5nEC1Nw+Li8R
+         UOWVHUjKFJodNYu7+0eviwVTHv0nKj8RqzNMOIdcnshAZpLGHNQLxCDIvboio71gM2/Y
+         Tn3V42rRibhCDSsWP3au6bT9oHZr1KPWX59Qo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1755581281; x=1756186081;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=x1RoE19cvLBaBi0011V8fYVXjhA8rp/exNRIajTxVcc=;
+        b=B4pre8sJ0ry0dXkCj2KBsleB159PSA39KvEVDxX6OwogQv/EZSBI+sSI0MN2tAbw+R
+         oNIeOF1ELYlFGRJtQN2qWmIY4H8Usu56Vs+SvSzf8Vc/A/h4mj3sgF9jb9V5VL/qq6e2
+         sghKcwU8Cpp8dIAwHMZFtDCl8VRzVA3WEfJSb//98eAULnpgHZCOh7JtHrgLi+XCCp+m
+         fk2w+Ie2HsfRjW082cK2lHT3tZ77kenWL5Fp51CVsFSRTmpbcy6KIDGCn3EVTE3NcJad
+         hIX0XchSjYnmPM6vdcnsOpdVaSvAWDDy6sRaHDzx0UTOX8fS/JzUphbdl0xfkbYbzm+x
+         Br9Q==
+X-Forwarded-Encrypted: i=1; AJvYcCWXLAmFQfEA/ecjReFUrcCFvWMiEV6wP1iouIqADqdo/eDAf2KblQPGJvAa5//F43Aeo54mGOs1oc4gIDMoCQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywgwuyw5DLC3yvwfSMKihD4McyBF767o9DCVX3TePvCYh/BrIHt
+	vykoHykaG5uwYA9WgYGkwOikocETRwYgztfI/2WgE52JsrsxRdDstdHaPfouXKzr7QQCaaFhOmd
+	93595ptL+DYGGLeuRE6ZFCPT8dwC8RjKxm0qYwpmP
+X-Gm-Gg: ASbGncvyRQ26boiWd5swfMhA8M2MTlqLZN70KJ8HvP28oEMr86EhWCF2tx7bvTUmzos
+	M52bEZnDI6F/EjGiJVlmWmzVrcJ+BEn5n4lMDggMocdUtD3l/66d95oYhFL/SlRO5xSyGzuSkqU
+	tXCOQJ1Ikf3SMtwVDhMach5VDYSCHy6Uu/IrsD28+fFz+xzs6Xw4uy1vgn2noiHkhKqiIhesqL8
+	7/7Tm3pfWGcJSVrWd/XeVgV534htbgHaZo=
+X-Google-Smtp-Source: AGHT+IGQHTGEbyr4SR72kvidWQutZvf7AK9o9RoOcU43ggNdNpSPatYscdMG6FtrXgyqF7WItvuWeeeG17g3X0SMn88=
+X-Received: by 2002:a05:6512:1585:b0:553:2f40:3705 with SMTP id
+ 2adb3069b0e04-55e007aeccamr350494e87.15.1755581280895; Mon, 18 Aug 2025
+ 22:28:00 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20250818234241.GF802098@nvidia.com>
-X-NV-OnPremToCloud: ExternallySecured
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BN2PEPF000044AB:EE_|DS0PR12MB6486:EE_
-X-MS-Office365-Filtering-Correlation-Id: 0a329ab8-bf74-4abc-7c46-08dddede8f4e
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|36860700013|376014|7416014|82310400026|1800799024;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?/KoUkVY/xfblW/QGfS3GEXu1t4mpzkBAZUG/OwlawZgCEARhi7Icjf0k8vIy?=
- =?us-ascii?Q?lCDMKBwK0vGQvSWhuFjPAhDFo0B86WKqF73svTI7OvdXuBH0b69hBu6pkZCu?=
- =?us-ascii?Q?TlmiOn6+DruG7EMEoTBGUNJke+H/uN4EzQpB8VmkIPRS/vddzyUrpv3+ZZ1m?=
- =?us-ascii?Q?8EnM3oR+31V0WiUeYBU2FBRvhmvoiSRqpibAsojTPemKJkdiY9eNtJcGy3b4?=
- =?us-ascii?Q?NrwZflbJizXVFZQdm4xKa/6Hv6lTKFfTm3a5I8sweBUM4s3fVcy4EMeRtkYE?=
- =?us-ascii?Q?iDwufwyEAlsfmVZdpgw2fAy/OhB/EzDF5Kh6qT6E96wt5ucdHJRNhyaPQgy9?=
- =?us-ascii?Q?9sczAEUdqCwQnLTPkDzGTu2lUJTyPbNhu7L9ElDDU0gwIruOwsPfd0b2YckT?=
- =?us-ascii?Q?CxShsvOo1+O91d2CiS9WZm8kcKZFgs6gw6W3GjJuLblfogoCR5g/aHVXWDCK?=
- =?us-ascii?Q?sDyFB+AjPA/3H+R3yzpop1026780u38cTlbDhnb1jxT+12aOAzhV8KF2SnwN?=
- =?us-ascii?Q?e69BbOlIZt+8xonW4pDNMdCuqzFtrBRKUfJDgDCnozprHBL6cvifpbBkhpjd?=
- =?us-ascii?Q?4IxyjAybFF43vwtV3Un0ikhOz70aibiY1iaRlJK8NteSbVXcwb7iXn0FjBqR?=
- =?us-ascii?Q?1LTS569K9fzDpYXHb5nn6jpOajIXsu82P3X/CiXpxJ8k8Pdmxm2WTSPdnGoG?=
- =?us-ascii?Q?imfzRNZRY5JUA09NXdauPDe6FB8S0f2fTphzJ0936MaNml8k7fgHqTKXR7aO?=
- =?us-ascii?Q?HTd9SMoPJ8qMezfbowakj4D1D9elx4Uzs8FWrZ2T24OFuB3u5wi0ZTU1qJm5?=
- =?us-ascii?Q?UYwCevJ0OhP6r1ZdMQdNhBy2Pe27u98f2BjYjiGi+wyf2voE2gYTXzBwxSnq?=
- =?us-ascii?Q?s6e1neN2yC3ebl5hVYDFx1s76LvvAWCRBWZ1RvimEzxT1hEOh5i9AQTbH1a2?=
- =?us-ascii?Q?R6OITM2Y2SP7souzhehi0661O5bsBrnSDiGNDJB+cLM5Dh+uJLvZAnME58Bv?=
- =?us-ascii?Q?KszxVD6XM3/pzpHWJY/nsZGCXG/6U9uaJmwRRPHblN6CaoX7SlO6Bk2j7eiP?=
- =?us-ascii?Q?1riDBIRoMwLZrjfcm2vkcIdLH6bXgIXPee/MJYIwf5PDVuHH/1ZOXNxcvpws?=
- =?us-ascii?Q?nEYcTYDrqEldO3yDofIQd5NiHLvX06qpZWzNkq/4/6Cm1434Dgbby9qJa8C4?=
- =?us-ascii?Q?IR3ol82dXfzys0A15Xweb92rkyI++O0OXo0iBlzxPbKp4jfdCfRwLQTyovz3?=
- =?us-ascii?Q?CQvzGTdsiqNPAf1e17Z93s1u5y2WIwT5Pns27k2NEaMXc7K+iRzgEzPG4MlS?=
- =?us-ascii?Q?RZEJ3S87LeW0ptDEDAamwbEPu0wvu7cGpEYIEL63zkwIdOTU36LrpU+RpYgA?=
- =?us-ascii?Q?Bh1GHfBsKujrWRRD9ZfBqM4k/BnJhmG46AcIJruYuq5fuZq6Ou2YIRchWXqa?=
- =?us-ascii?Q?g7YfTSLM+KFy4C7KvVi9A/ErUzINSF6NURnza3TuXL0TZIelncnDqe4erEpw?=
- =?us-ascii?Q?XkqcCp8XpaG3CjRao7c/ZRRDV1ywcHK3L1yM?=
-X-Forefront-Antispam-Report: CIP:216.228.118.233;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc7edge2.nvidia.com;CAT:NONE;SFS:(13230040)(36860700013)(376014)(7416014)(82310400026)(1800799024);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Aug 2025 05:09:22.2948
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0a329ab8-bf74-4abc-7c46-08dddede8f4e
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.118.233];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BN2PEPF000044AB.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR12MB6486
+References: <20250801-mtk-dtb-warnings-v1-0-6ba4e432427b@collabora.com>
+ <20250801-mtk-dtb-warnings-v1-8-6ba4e432427b@collabora.com>
+ <CAGXv+5EHk=f62+KiLo-aWMcd0-q+_59kno+uOW5rdYaq5q+5tQ@mail.gmail.com> <CACRpkdbWctNH0XJfcHfVJM9Etp0WCXpdyhhyaQemH-Xc0LDr0A@mail.gmail.com>
+In-Reply-To: <CACRpkdbWctNH0XJfcHfVJM9Etp0WCXpdyhhyaQemH-Xc0LDr0A@mail.gmail.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 19 Aug 2025 13:27:50 +0800
+X-Gm-Features: Ac12FXyZj9pu4uTVlJ9GtMYFjXUlZm3D496E2G53MlvCfEEQUDKze_RDvsyqUZk
+Message-ID: <CAGXv+5ECsP7_wbdcaAkWuD=RyJiJpPe4r60bhD5U8xUvEBzmXw@mail.gmail.com>
+Subject: Re: [PATCH 8/9] arm64: dts: mediatek: mt8183-kukui: Fix
+ pull-down/up-adv values
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: Julien Massot <julien.massot@collabora.com>, kernel@collabora.com, 
+	Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Ikjoon Jang <ikjn@chromium.org>, 
+	Enric Balletbo i Serra <eballetbo@kernel.org>, Weiyi Lu <weiyi.lu@mediatek.com>, 
+	Eugen Hristev <eugen.hristev@linaro.org>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Mark Brown <broonie@kernel.org>, Julien Massot <jmassot@collabora.com>, 
+	Sean Wang <sean.wang@kernel.org>, linux-clk@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-sound@vger.kernel.org, linux-gpio@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250819_060936_536445_1FA40C92 
-X-CRM114-Status: GOOD (  30.33  )
+X-CRM114-CacheID: sfid-20250818_222803_287449_72AE0A75 
+X-CRM114-Status: GOOD (  19.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -177,75 +105,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 18, 2025 at 08:42:41PM -0300, Jason Gunthorpe wrote:
-> On Mon, Aug 18, 2025 at 10:22:52AM -0700, Nicolin Chen wrote:
-> > > Because this is a very common pattern in drivers.
-> > > 
-> > > Once that is done we can see what calls to iommu_get_domain_for_dev()
-> > > are even left,
-> > 
-> > ... I found that in SMMUv3 driver, iommu_get_domain_for_dev() is
-> > used to get the RID domain for an SVA domain:
-> >     arm_smmu_set_pasid()
-> >     arm_smmu_blocking_set_dev_pasid()
-> > 
-> > These two are already given an "old" (SVA) domain pointer, FWIW.
-> > 
-> > So, we may change to passing in the old domain as you suggested,
-> > yet we still have to fix the iommu_get_domain_for_dev() in order
-> > to reflect the RID domain correctly for the driver that calls it
-> > (or even potentially) in some group->mutex locked context where
-> > the RID domain might not be naturally passed in.
-> 
-> It could probably be avoided by keeping track of more information in
-> the master, but also it is not so bad to use a _locked version here.
-
-Yes, I've thought about that. The concern is that some other place
-someday may want to use iommu_get_domain_for_dev() in similar cases
-but would find that it doesn't work. So it would have to duplicate
-the domain pointer in its "master" structure.
-
-Overall, having a _locked version feels cleaner to me.
-
-> > > arguably we should be trying to eliminate this badly
-> > > locked thing...
-> > 
-> > Any suggestion?
-> 
-> Bit by bit.. I counted 58 by grep
-> 
-> Changing attach will get rid of alot of them
-> 
-> Then there is stuff like this:
-> 
->         domain = iommu_get_domain_for_dev(emu->card->dev);
->         if (!domain || domain->type == IOMMU_DOMAIN_IDENTITY)
->                 return;
-> 
-> Which should be more like 
->    if (iommu_get_translation_mode(dev) == IDENTITY)
+On Mon, Aug 18, 2025 at 11:22=E2=80=AFPM Linus Walleij <linus.walleij@linar=
+o.org> wrote:
 >
-> With sensible internal locking
+> On Wed, Aug 6, 2025 at 8:38=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org> =
+wrote:
+> > On Fri, Aug 1, 2025 at 7:18=E2=80=AFPM Julien Massot wrote
+>
+> > >                 pins-clk {
+> > >                         pinmux =3D <PINMUX_GPIO124__FUNC_MSDC0_CLK>;
+> > >                         drive-strength =3D <MTK_DRIVE_14mA>;
+> > > -                       mediatek,pull-down-adv =3D <10>;
+> > > +                       mediatek,pull-down-adv =3D <2>;
+> >
+> >         bias-pull-down =3D <MTK_PUPD_SET_R1R0_10>;
+> >
+> > and so on.
+> >
+> > ChenYu
+>
+> I agree with ChenYu, the more standardized properties are the better it i=
+s.
+>
+> All the custom properties makes sense for an engineer working with just
+> that one SoC (like the SoC vendor...) but for field engineers who have
+> to use different SoCs every day this is just a big mess for the mind.
+>
+> The standard properties are clear, concise and tell you exactly what
+> they are about.
+>
+> The argument should be in Ohms though, according to the standard
+> bindings, but maybe the value of MTK_PUPD_SET_R1R0_10 is
+> something like that?
 
-Hmm, I feel this iommu_get_translation_mode() is somewhat the same
-as the current iommu_get_domain_for_dev(). It would just return the
-group->domain->type v.s. group->domain, right?
+For reasons I can't recall clearly these are just placeholder values
+that the driver then maps to the R1 and R0 settings. But at least they
+use the standard properties.
 
-This doesn't have any UAF concern though.
+The reason was either one of the following or both:
 
-> So that is another bunch. Not sure what will be left after.
+  a. not every group of pins had the same resistance values for R1 & R0
+  b. there are no known precise values; the values depend on the process
+     and batch
 
-I recall that some of the drivers manages their own domains, e.g.
-    drivers/gpu/drm/tegra/drm.c
 
-So, they would want more out of the domain pointer than just type.
-
-> Not saying to do all that here, just prefer we move toward that direction.
-
-Yea.. I also think it's a bit difficult to justify the changes in
-the non-iommu callers, since they are not affected by any patch in
-this series.
-
-Thanks
-Nicolin
+ChenYu
 
