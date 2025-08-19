@@ -4,75 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C206DCA0EED
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Aug 2025 11:35:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BAE2CA0EE6
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Aug 2025 11:35:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RdTVW2acL3x4TY+q3fiwzcKJmZ14PXDkj8EpJokxAbo=; b=WJwK9IMvfoEVeabRRx/i6Pc+X8
-	6xC7Hki++Loo3Mq90mUmVZ48DoaWtAChkbvTdNeqD/vmFhHEvvCYQswD/5TNIHOBDefHpOaTTya9D
-	O0a/cAh4CLjj2IoxR99dynQ1TGWC+mbiercbwUGMx1jpoqRMeyWTFdxJkqcbdgcNEsDzbo3QJ8ARu
-	hVJZnllEghOqV/TkG08Zp9k8lOwZQFDQ5BQVz1me+RvlgP8FhwVTlhzYSXpOR5NYsrUkmziJJnGaY
-	aH0AdGRw4Z7bTn4mou5xtK6cJzgjpqsUIEQ3SZjFsq6pA+tchqI2ToRF6n/e3ajaPEnbiXffXKj/Q
-	eHLZ3Lhw==;
+	bh=RdTVW2acL3x4TY+q3fiwzcKJmZ14PXDkj8EpJokxAbo=; b=lY2gjeXbGdbEUpneC+DAu5ASb0
+	pauyk47DDu6/wReCf13KaQp465mpZoSU6pbna0iY8sj8IPrTJ8+ln31iMd+ny8Uhl1AHsqrB/2FNb
+	jI70ru2cVuqMpKM8rxmckUzmfbjqsxtkNNoE3OnEmct38l8a2X9QW0KIy1/aeG0A3QN6HhYCs1eUF
+	WJVgkB7H4DIfJebT7DiF1Bht2wzmY//pwTnFEMQbfMOcb3uJaP5HFDnuZjtxZt7cK3m/ijvEPeA+O
+	JGveUyoddpNvu40sqvUUrBJp4WeBf5CI5YtLElK6pgvhUTgApcCW+L7wS0rKhT8K7eGG+J6zrlVzC
+	BGM0jPQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoKcq-0000000AIYn-2yiJ;
-	Tue, 19 Aug 2025 11:35:36 +0000
-Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
+	id 1uoKd9-0000000AIi4-1OZX;
+	Tue, 19 Aug 2025 11:35:55 +0000
+Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoIwJ-0000000A1Ez-0Lsw
+	id 1uoIwm-0000000A1LD-1F1H
 	for linux-mediatek@lists.infradead.org;
-	Tue, 19 Aug 2025 09:47:37 +0000
-Received: by mail-lj1-x22d.google.com with SMTP id 38308e7fff4ca-333f91526bcso36960771fa.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 19 Aug 2025 02:47:34 -0700 (PDT)
+	Tue, 19 Aug 2025 09:48:06 +0000
+Received: by mail-lj1-x230.google.com with SMTP id 38308e7fff4ca-333f8d3be05so35095871fa.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 19 Aug 2025 02:48:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1755596853; x=1756201653; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1755596882; x=1756201682; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
         bh=RdTVW2acL3x4TY+q3fiwzcKJmZ14PXDkj8EpJokxAbo=;
-        b=dGXPqLjYlxrFgBbb+2jsShCZAA6/NN+IKaeiJ9q7bZNS3vy3AqUz1fSzHa5GUfx9Te
-         YJjyaCt65+2yAQuGdJ9djwOUDsC+SsHqIPc8/kdqV6+q5DlFPUF/coecNRZ60nzsyrmF
-         hMXXTOwl3hTWXs+eDhuh7RrkIO3AFbc0xorC1Pvt9ZVjdnPAFD8pPAnHiKavTnJglfiC
-         5u74FjQ2UkAcmBmWC3wrYjEL0/06I7BbUgqksaAMwXvxKqWknKWSWfgdyuAB1zKn3Fhx
-         mgXFzIeN4N0l0Sk8IRq+eJ1ZkiB2ygnlvzUZLcfUrU/Ic0Ki53Z3gfh5FI1rt4wQVqc8
-         eLPw==
+        b=lXf18gYa4Bs0bPrmqC9hbXXB7hZQNHrK5ZlVQUvgnAI8NgcKjGznZM6qvOcsqnC9/8
+         jHChTVfs7TfYQystA6stgJeO7S99Nz+HXUJC6IHyBcBCiKVBRX17JOQNpnOZWYkOU1LN
+         y4hyjatQJEjwdaZO1DttPqWljuuoHV4bayJxqh14wOxyzpAGp08EOfrAoHKlna/3CSVi
+         Iif66G99DQHP2LADxwWs86x4rNfeuToR+dzdCnUjwPov/vsHCKOQXkNeLUYNAaqhMmhq
+         AHcnyg4OGefL8FFPxMYo5lU07kaVEDRxZ6tIzlvF2PJl9IfWjJzRXOPbfAgvtClBW7OE
+         b5HA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1755596853; x=1756201653;
+        d=1e100.net; s=20230601; t=1755596882; x=1756201682;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
         bh=RdTVW2acL3x4TY+q3fiwzcKJmZ14PXDkj8EpJokxAbo=;
-        b=ufps6zNgLQGdASCQpA5bX+/1yVF7onIHV2x0HdTu6zVwLEC+savVe2I3G+ts2Mn1vd
-         75+Uvq+R5YQUy0CsrDpuVPapuz+TiOy2vJaYXCzcoTw+TLwf8GvJtWG+Ab2Eax2NXqla
-         w17oZTNvAv2smWD0rIehQP5cPBPuMkH+H4KuQeftDixPQWRqUpfrRAp9ZmOeoxuKRkWI
-         kVCGl25bQ96YAfK/DRXNOoP9mcS8g/9EuQddkQCZX++Ln5qGZjWFUd7I91scj/IijUX2
-         Q6OXcxUhV4aR7Jfp+QpOOTUUJzTGzoWM+9M2zMtDNvNWPwxM0b6mrE97bI+RSvb0bxdh
-         mouQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXIE0BIPQQnAwoLj6RTvVhXIDSX2uz4ZtLquQI/Au1RBuQ/BpZK3Ar9TK/GHs8ZHFZIELYaUZl2VStHIL2PTw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzPYYAIHuL8i6Iu5dQTi7wEvUG+TNQ7jTyKYUjdhfOrh814PqyE
-	sDO8pG3h+wAveGgRQLaNpmO9k1kA7ZhRmfGtTYfunbmBk6N4lXBIVxHWT6/r/6kmQ4d2chhOK98
-	BUlfbP7AK1oEVGG5e0MjHkCgl5HSZurJLIQylJaMWZg==
-X-Gm-Gg: ASbGncvlRKlLUvB8w869hglD6Riie1RpmPZpgqxmCSKxfKI8iVF3WI+m+AhKYEPM1Mw
-	VPPFbcKxq3Q1EPQ1b6NK8Non//cwzoHh0J0scnn3jeeZUyMWSf8A4Zms27vAPWB7bQuomRgsabF
-	c2gUVWWsa66S6WEafmpLZPwWpIV+gI82Nl+uUneWWSz8PKHYoxutOIK9Iy48APmdEGUUmrFUwt7
-	Hv019rv7/En
-X-Google-Smtp-Source: AGHT+IFaAkF1r4GWgj+j3Xeyk0sBgHgQuFXAyBRPToaJvqEtDi6Qt1cFt8RtILv6l5mltG8+0huqL2sCrZ81MI3EBAM=
-X-Received: by 2002:a05:651c:b2c:b0:333:ad0c:a44e with SMTP id
- 38308e7fff4ca-335305347dbmr5252501fa.7.1755596852940; Tue, 19 Aug 2025
- 02:47:32 -0700 (PDT)
+        b=ig/pXYHQ29t1nTdItnJpcNDuGe7pKOEglWErf14vqEC+L4K7In2GxRa4ECNW19r0XW
+         2eqMQ7lwPEdNs/fz/OQulMcJZ410F1D20DZbk/dBATKchkukAe0dI6fz1D4rYMfz0sFG
+         Dn6uid+mvXDObWPJ2dmi/q4WBCYLu8pqmzg3XDSuJcFNNXmrVubwOb6Olh5bTnDJa/bZ
+         J+lScXii+t1vAIvBxUsyF6dPhDHlnwaH7detm+UM9Q7gbFjPbKlTGH+U3t3C/XVhth8f
+         vt1vSmBbuq4VV2P3txxnDmm8eZGp5FYKdDB8eUWqfedoK1pnkd+VhpbhKu1XPjeFXYVc
+         iKzA==
+X-Forwarded-Encrypted: i=1; AJvYcCULoAcn1WjHghgj2qfUeTq0fVdf1MxD/ceuB1LJekqdW2DeyUBaVG8eweW2H4uciNyGz3fpP472wypqBT3bwQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxXg6sU+1hrI62IKCIPOTMKUUaIYHKrP3AiJMU9uiXwXySoNvQ5
+	Qvr1nSnVEnunF2pdOqSiQnEr0m98f03yFto0dhKOCnXDqZ5BL3zeK7YSY6j++9SNMcY6iGHzhZm
+	gMQFsmquBQvw0ph9ZXRAqpL6A0Z8yZ24IL67ffkQXag==
+X-Gm-Gg: ASbGncsQV5uyBHmTWmY6QGBHpLDCVVHFaiZEAWmyyaBAW5UW17F+Ca3HhBNSDkJHNAr
+	1UqnbGbsEPGCsZPqtPxGsGxdojoiExMAcq+45+ycDqreNtgTQnfFkUkKoBDmqRGvIjVEaOtBhwp
+	gx2wo0MDv/97tdWL4IB2M23Xb18l0uYWK6rZpEXzXQpxjoajQDskbxad1Ir3mM/mso9stsJY/7w
+	gKXqno=
+X-Google-Smtp-Source: AGHT+IEolFO6aeJABYr1hNPxQasixpAjIgJqFl/o9dwJCRxvFjpbc3xagoFqiJPlswYsIWJYgR30Ss513xxDR9NTkTU=
+X-Received: by 2002:a2e:b8c1:0:b0:332:45b5:d68a with SMTP id
+ 38308e7fff4ca-335305347e8mr6104861fa.5.1755596882380; Tue, 19 Aug 2025
+ 02:48:02 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com> <20250811-clk-for-stephen-round-rate-v1-105-b3bf97b038dc@redhat.com>
-In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-105-b3bf97b038dc@redhat.com>
+References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com> <20250811-clk-for-stephen-round-rate-v1-108-b3bf97b038dc@redhat.com>
+In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-108-b3bf97b038dc@redhat.com>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Tue, 19 Aug 2025 11:47:21 +0200
-X-Gm-Features: Ac12FXwQ8ZNlahHw5FRReJn3coSNBp0waFbtb0dR-jKWl_cQ9vhC2BCpFgBry0M
-Message-ID: <CACRpkdZ3M65bKzaHcKPRhEFCy+TvHUq8bZ-8Zr_7HSRKsk_TWQ@mail.gmail.com>
-Subject: Re: [PATCH 105/114] clk: ux500: prcmu: convert from round_rate() to determine_rate()
+Date: Tue, 19 Aug 2025 11:47:51 +0200
+X-Gm-Features: Ac12FXyAMutAnmM6yYaTGFkQgGmOcrXudlcTGzS_av87nGHcGPs7Xb4FZygWAbE
+Message-ID: <CACRpkdZonmP8rSQS-rwzthNPv_MyddMReZQaD13b1qkRexxWyA@mail.gmail.com>
+Subject: Re: [PATCH 108/114] clk: versatile: icst: convert from round_rate()
+ to determine_rate()
 To: bmasney@redhat.com
 Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
 	Sudeep Holla <sudeep.holla@arm.com>, Cristian Marussi <cristian.marussi@arm.com>, 
@@ -122,7 +123,7 @@ Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250819_024735_139210_376B207F 
+X-CRM114-CacheID: sfid-20250819_024804_369496_FA684344 
 X-CRM114-Status: GOOD (  11.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
