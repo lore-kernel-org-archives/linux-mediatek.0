@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95ADDCA0EF5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Aug 2025 02:00:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDAC3CA0EE4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Aug 2025 02:02:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=w72hmReb5KMNMVr1REunFBZzQRf6nu6DrZtxaxj3TWE=; b=wkIh4SxzMSMBlslCFeY6QVM2xo
-	BAZeM83BvRTXCSp5rSSEBSghCGiyswjzcZ9unO9rd8Q1C6U61w/uxpULCaMF9Zu87AqRRozifBYeC
-	y7rE4sfs9iWc6nZmUKwMmQc39iGSLMABxHsF8cKwHyyYBY5fZ2VEKQ0smAIVhIw34vnrYZrd9F0xL
-	Ot8xBDTYw7BV0VAMokpDK56INnnkSMY8+k16TVW9tKLM2owQ5O73cVRn4//rNta2uhCjJxOU38tOB
-	6potJEJJAU+fxTNvSWbkmJSef3NUP3N0yU8nZ15NQsaLLWleEKCmzDCegU1ZNNEw8IJTs9tl5xrsS
-	wosg+BJg==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rt7a9tFP3NJpqQ87VNq7BzaEeeFPAru3oeg14qBjfDA=; b=bNwmrDIXzMBu4yGpNFBqjIh4t9
+	COdiSgJvQNXJE8KikOJXSgFMVT1RZLpbeR5AqdhFWHGWXk4gordEG8PUf4yt63Rc+P5m//NIoonDm
+	lYqkcMW6iArtCusluuq40dsQGD/BK57bpq3lBeLtjWQiYjnDHhFUmz+wVLl5hRFREjV4jH0rLu/kZ
+	0B5SraF1iHb2mi8xDPNnySbGOd8PJPiiOx+HFb/Kz+bEFG43tRpgMjf35kRGm6++1VwryLtDoE9a/
+	7q3ctAvyKhRa0XoUWsSAmzT6Trb8gRjwtaQ9uelJC0pk19LMQGr6pccOwzHa4gkO69yP0UdsNw/QA
+	k/85h82w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoBdr-000000099cS-2zZJ;
-	Tue, 19 Aug 2025 02:00:03 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1uoBgP-00000009A0G-3X7G;
+	Tue, 19 Aug 2025 02:02:41 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoBdp-000000099b3-1u4N;
-	Tue, 19 Aug 2025 02:00:02 +0000
-X-UUID: 350871d87ca011f09f706fa2197c6ceb-20250818
+	id 1uoBdr-000000099bp-2Ey5;
+	Tue, 19 Aug 2025 02:00:04 +0000
+X-UUID: 373de2767ca011f09eb0dd999d3936bf-20250818
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=w72hmReb5KMNMVr1REunFBZzQRf6nu6DrZtxaxj3TWE=;
-	b=IUbXgbREQa5WHcrOXbsqaoofXd0mYdUWJBvxAOHIsCpYRr9eixTeu4REs8QByKSRwFtBae8NQPxnQCVO8yWiQkzqwTYwtxMFrHOYbu0hgBD+qfk/nmEEH8E5zW3CjO8XYy44cD5UDBipxskXgp8tORmqE9fSRfnMJ+UgMMl1lcw=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=rt7a9tFP3NJpqQ87VNq7BzaEeeFPAru3oeg14qBjfDA=;
+	b=spkpvnUHaOGPNbTYb0/pxI/5KmUQxZTYN3QJl7V8NqBznXKJ4lNlkewwqs2uSQuDgXoTImNgOWueEEpjutKa/Q9Ew2+qdpJcgeo0uRS2tLjpbQUT+URKZfGRem8uds8dQQPfrnGwjTNVLIHRKwWqzkBH+BG93xFBBdrvftsMd14=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.3,REQID:46d807b2-ae75-41da-9cd4-9a28d90f4a84,IP:0,UR
+X-CID-O-INFO: VERSION:1.3.3,REQID:baac1536-53ec-40ca-9569-2740827cf468,IP:0,UR
 	L:0,TC:0,Content:100,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
 	:release,TS:100
-X-CID-META: VersionHash:f1326cf,CLOUDID:3d3211f4-66cd-4ff9-9728-6a6f64661009,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|801,TC:-5,Content:3|15|50,EDM:-3
-	,IP:nil,URL:99|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-	,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-META: VersionHash:f1326cf,CLOUDID:9f099d44-18c5-4075-a135-4c0afe29f9d6,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|801,TC:-5,Content:3|15|50,
+	EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
+	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 350871d87ca011f09f706fa2197c6ceb-20250818
-Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
+X-UUID: 373de2767ca011f09eb0dd999d3936bf-20250818
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
 	(envelope-from <xiandong.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2081594345; Mon, 18 Aug 2025 18:59:57 -0700
+	with ESMTP id 1940605690; Mon, 18 Aug 2025 19:00:01 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Tue, 19 Aug 2025 09:59:53 +0800
+ 15.2.1258.39; Tue, 19 Aug 2025 09:59:58 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Tue, 19 Aug 2025 09:59:52 +0800
+ 15.2.1258.39 via Frontend Transport; Tue, 19 Aug 2025 09:59:56 +0800
 From: Xiandong Wang <xiandong.wang@mediatek.com>
 To: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
@@ -65,17 +65,18 @@ CC: <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<sirius.wang@mediatek.com>, <vince-wl.liu@mediatek.com>,
 	<jh.hsu@mediatek.com>, <Project_Global_Chrome_Upstream_Group@mediatek.com>,
 	Xiandong Wang <xiandong.wang@mediatek.com>
-Subject: [PATCH v2 0/4] Add GCE driver for 8189
-Date: Tue, 19 Aug 2025 09:59:37 +0800
-Message-ID: <20250819015948.15450-1-xiandong.wang@mediatek.com>
+Subject: [PATCH v2 2/4] mailbox: mtk-cmdq: Add cmdq driver for mt8189
+Date: Tue, 19 Aug 2025 09:59:39 +0800
+Message-ID: <20250819015948.15450-3-xiandong.wang@mediatek.com>
 X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20250819015948.15450-1-xiandong.wang@mediatek.com>
+References: <20250819015948.15450-1-xiandong.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250818_190001_505043_084A358D 
-X-CRM114-Status: UNSURE (   9.42  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250818_190003_579951_F0B8B672 
+X-CRM114-Status: GOOD (  11.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,20 +91,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This serides patches dependent on:[1]https://lore.kernel.org/all/20250601173355.1731140-8-jason-jh.lin@mediatek.com/
+add cmdq driver support for mt8189
 
-Xiandong Wang (4):
- [v2,01/04] dt-bindings: mailbox: add cmdq yaml for MT8189
- [v2,02/04] mailbox: mtk-cmdq: Add cmdq driver for mt8189
- [v2,03/04] arm64: dts: mediatek: Add GCE header for mt8189
- [v2,04/04] mailbox: mtk-cmdq: modify clk api for suspend/resume
+Signed-off-by: Xiandong Wang <xiandong.wang@mediatek.com>
+---
+ drivers/mailbox/mtk-cmdq-mailbox.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
- .../mailbox/mediatek,gce-mailbox.yaml         |   1 +
- arch/arm64/boot/dts/mediatek/mt8189-gce.h     | 870 ++++++++++++++++++
- drivers/mailbox/mtk-cmdq-mailbox.c            |  24 +-
- 3 files changed, 885 insertions(+), 10 deletions(-)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8189-gce.h
-
+diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+index 177de5ab0ab2..543cd86b5bb0 100644
+--- a/drivers/mailbox/mtk-cmdq-mailbox.c
++++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+@@ -799,12 +799,22 @@ static const struct gce_plat gce_plat_mt8195 = {
+ 	.gce_num = 2
+ };
+ 
++static const struct gce_plat gce_plat_mt8189 = {
++	.thread_nr = 32,
++	.shift = 3,
++	.mminfra_offset = 0x40000000, /* 1GB */
++	.control_by_sw = false,
++	.sw_ddr_en = true,
++	.gce_num = 2
++};
++
+ static const struct of_device_id cmdq_of_ids[] = {
+ 	{.compatible = "mediatek,mt6779-gce", .data = (void *)&gce_plat_mt6779},
+ 	{.compatible = "mediatek,mt8173-gce", .data = (void *)&gce_plat_mt8173},
+ 	{.compatible = "mediatek,mt8183-gce", .data = (void *)&gce_plat_mt8183},
+ 	{.compatible = "mediatek,mt8186-gce", .data = (void *)&gce_plat_mt8186},
+ 	{.compatible = "mediatek,mt8188-gce", .data = (void *)&gce_plat_mt8188},
++	{.compatible = "mediatek,mt8189-gce", .data = (void *)&gce_plat_mt8189},
+ 	{.compatible = "mediatek,mt8192-gce", .data = (void *)&gce_plat_mt8192},
+ 	{.compatible = "mediatek,mt8195-gce", .data = (void *)&gce_plat_mt8195},
+ 	{}
 -- 
 2.46.0
 
