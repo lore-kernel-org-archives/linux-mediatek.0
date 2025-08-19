@@ -4,89 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8CD3CA0EF5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Aug 2025 00:22:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95ADDCA0EF5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Aug 2025 02:00:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=roe29+fz++V63so2dZhZwHT7bS9jaeraGI0E5iRcbX8=; b=J1t4ICryN1zb0g04BxuEFCJR86
-	IfbTaZArzYlCB23WhtrPYtm8uLgTKEVUSmVs5nKiEho8m/V5RIE8iNv5PJQxkBmM4KqEHMW2uuHEc
-	+WdhF+8XfLDius4rYoJm/7UTUV255r5U5NtrwUOYXKphAVT4IDnlSeDVPXHyOR1RnVxKx2Z1eXWRE
-	+vnuisIe8EfMdm3tG8GVdFSKvpfygguk8hqhjEeM7Gvt/BOWcqZJYd0VWMUhMoYO9bKtN0Pl571Ys
-	Pn/d2v1wrkVEeMJxDsHl3mFsz09AqK1KSPIUe3X/G8oafM8hDQ0XJNy2eoDyKDYRyn/+PKzR0Qc8d
-	GpFWZyuQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=w72hmReb5KMNMVr1REunFBZzQRf6nu6DrZtxaxj3TWE=; b=wkIh4SxzMSMBlslCFeY6QVM2xo
+	BAZeM83BvRTXCSp5rSSEBSghCGiyswjzcZ9unO9rd8Q1C6U61w/uxpULCaMF9Zu87AqRRozifBYeC
+	y7rE4sfs9iWc6nZmUKwMmQc39iGSLMABxHsF8cKwHyyYBY5fZ2VEKQ0smAIVhIw34vnrYZrd9F0xL
+	Ot8xBDTYw7BV0VAMokpDK56INnnkSMY8+k16TVW9tKLM2owQ5O73cVRn4//rNta2uhCjJxOU38tOB
+	6potJEJJAU+fxTNvSWbkmJSef3NUP3N0yU8nZ15NQsaLLWleEKCmzDCegU1ZNNEw8IJTs9tl5xrsS
+	wosg+BJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoA7H-00000008zjA-2Wds;
-	Tue, 19 Aug 2025 00:22:19 +0000
-Received: from mgamail.intel.com ([192.198.163.12])
+	id 1uoBdr-000000099cS-2zZJ;
+	Tue, 19 Aug 2025 02:00:03 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uo9k3-00000008xkh-3fDR;
-	Mon, 18 Aug 2025 23:58:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1755561500; x=1787097500;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=c76ffSU+z29EdjuvcwEaZdMVo1BGLglOk32LHUKT+8Q=;
-  b=hOBQGF0jQtt5MsShE687WSvhVaMFaAaFtd0kwoOftpnL0eEm0SnN9hs4
-   DAMPEbDf6o7PhJtKyTGBaJ4iW00h8/dIfqHeftK2p3BZpaamAxrJtlCHT
-   mRhOMRvzFxhUEB8yKeC1MdaiZR6x7qQqj2CAsxSSgfxMPKtaCXVc5B7EC
-   yLSvFMXcR/lV+JjB+gWk5WSTd2WWy+DpbRVJpBT8je9T0tHTFfBbH8AUW
-   5Yf3wpkKWKs0tBaz+Oj/rODcTBec6hMy5LED/CB5jH3H828hS+PzivGnc
-   9FpDvqjkGzpfOaoxgE6ARwHx0zkBnoL2SrHi+f1b2+ENqLmD72y3BDLy7
-   A==;
-X-CSE-ConnectionGUID: xz8nKihNTtSLIt6jAUvilw==
-X-CSE-MsgGUID: v8iMwR87QMCNRjjtAZnycw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11526"; a="61609889"
-X-IronPort-AV: E=Sophos;i="6.17,300,1747724400"; 
-   d="scan'208";a="61609889"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
-  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Aug 2025 16:58:16 -0700
-X-CSE-ConnectionGUID: 8bXpQ/8MRnerAdHif+U/Bw==
-X-CSE-MsgGUID: /qIoloXhS5W34Jon6neR7Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.17,300,1747724400"; 
-   d="scan'208";a="167934762"
-Received: from lkp-server02.sh.intel.com (HELO 4ea60e6ab079) ([10.239.97.151])
-  by orviesa008.jf.intel.com with ESMTP; 18 Aug 2025 16:58:10 -0700
-Received: from kbuild by 4ea60e6ab079 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1uo9js-000GJr-0M;
-	Mon, 18 Aug 2025 23:58:08 +0000
-Date: Tue, 19 Aug 2025 07:57:37 +0800
-From: kernel test robot <lkp@intel.com>
-To: "irving.ch.lin" <irving-ch.lin@mediatek.com>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ulf Hansson <ulf.hansson@linaro.org>,
-	Richard Cochran <richardcochran@gmail.com>
-Cc: oe-kbuild-all@lists.linux.dev, Qiqi Wang <qiqi.wang@mediatek.com>,
-	linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
-	netdev@vger.kernel.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	sirius.wang@mediatek.com, vince-wl.liu@mediatek.com,
-	jh.hsu@mediatek.com, irving-ch.lin@mediatek.com
-Subject: Re: [PATCH 6/6] pmdomain: mediatek: Add power domain driver for
- MT8189 SoC
-Message-ID: <202508190709.36QIqpVt-lkp@intel.com>
-References: <20250818115754.1067154-7-irving-ch.lin@mediatek.com>
+	id 1uoBdp-000000099b3-1u4N;
+	Tue, 19 Aug 2025 02:00:02 +0000
+X-UUID: 350871d87ca011f09f706fa2197c6ceb-20250818
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=w72hmReb5KMNMVr1REunFBZzQRf6nu6DrZtxaxj3TWE=;
+	b=IUbXgbREQa5WHcrOXbsqaoofXd0mYdUWJBvxAOHIsCpYRr9eixTeu4REs8QByKSRwFtBae8NQPxnQCVO8yWiQkzqwTYwtxMFrHOYbu0hgBD+qfk/nmEEH8E5zW3CjO8XYy44cD5UDBipxskXgp8tORmqE9fSRfnMJ+UgMMl1lcw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.3,REQID:46d807b2-ae75-41da-9cd4-9a28d90f4a84,IP:0,UR
+	L:0,TC:0,Content:100,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:100
+X-CID-META: VersionHash:f1326cf,CLOUDID:3d3211f4-66cd-4ff9-9728-6a6f64661009,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|801,TC:-5,Content:3|15|50,EDM:-3
+	,IP:nil,URL:99|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
+	,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 350871d87ca011f09f706fa2197c6ceb-20250818
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
+	(envelope-from <xiandong.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2081594345; Mon, 18 Aug 2025 18:59:57 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Tue, 19 Aug 2025 09:59:53 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Tue, 19 Aug 2025 09:59:52 +0800
+From: Xiandong Wang <xiandong.wang@mediatek.com>
+To: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Houlong Wei
+	<houlong.wei@mediatek.com>
+CC: <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<sirius.wang@mediatek.com>, <vince-wl.liu@mediatek.com>,
+	<jh.hsu@mediatek.com>, <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	Xiandong Wang <xiandong.wang@mediatek.com>
+Subject: [PATCH v2 0/4] Add GCE driver for 8189
+Date: Tue, 19 Aug 2025 09:59:37 +0800
+Message-ID: <20250819015948.15450-1-xiandong.wang@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250818115754.1067154-7-irving-ch.lin@mediatek.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250818_165819_954949_D8D4AEFB 
-X-CRM114-Status: GOOD (  13.51  )
+X-CRM114-CacheID: sfid-20250818_190001_505043_084A358D 
+X-CRM114-Status: UNSURE (   9.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,37 +90,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi irving.ch.lin,
+This serides patches dependent on:[1]https://lore.kernel.org/all/20250601173355.1731140-8-jason-jh.lin@mediatek.com/
 
-kernel test robot noticed the following build warnings:
+Xiandong Wang (4):
+ [v2,01/04] dt-bindings: mailbox: add cmdq yaml for MT8189
+ [v2,02/04] mailbox: mtk-cmdq: Add cmdq driver for mt8189
+ [v2,03/04] arm64: dts: mediatek: Add GCE header for mt8189
+ [v2,04/04] mailbox: mtk-cmdq: modify clk api for suspend/resume
 
-[auto build test WARNING on clk/clk-next]
-[also build test WARNING on robh/for-next linus/master v6.17-rc2 next-20250818]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/irving-ch-lin/dt-bindings-clock-mediatek-Add-new-MT8189-clock/20250818-200449
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/clk/linux.git clk-next
-patch link:    https://lore.kernel.org/r/20250818115754.1067154-7-irving-ch.lin%40mediatek.com
-patch subject: [PATCH 6/6] pmdomain: mediatek: Add power domain driver for MT8189 SoC
-config: arm-randconfig-001-20250819 (https://download.01.org/0day-ci/archive/20250819/202508190709.36QIqpVt-lkp@intel.com/config)
-compiler: arm-linux-gnueabi-gcc (GCC) 12.5.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250819/202508190709.36QIqpVt-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202508190709.36QIqpVt-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
->> Warning: drivers/pmdomain/mediatek/mtk-scpsys.c:219 struct member 'sram_slp_bits' not described in 'scp_domain_data'
->> Warning: drivers/pmdomain/mediatek/mtk-scpsys.c:219 struct member 'sram_slp_ack_bits' not described in 'scp_domain_data'
->> Warning: drivers/pmdomain/mediatek/mtk-scpsys.c:219 struct member 'subsys_clk_prefix' not described in 'scp_domain_data'
->> Warning: drivers/pmdomain/mediatek/mtk-scpsys.c:219 struct member 'bp_table' not described in 'scp_domain_data'
+ .../mailbox/mediatek,gce-mailbox.yaml         |   1 +
+ arch/arm64/boot/dts/mediatek/mt8189-gce.h     | 870 ++++++++++++++++++
+ drivers/mailbox/mtk-cmdq-mailbox.c            |  24 +-
+ 3 files changed, 885 insertions(+), 10 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8189-gce.h
 
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.46.0
+
 
