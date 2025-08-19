@@ -4,159 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 121A1CA0EE6
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Aug 2025 15:48:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04592CA0EEB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Aug 2025 15:53:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G0WYBkpfTmAQ0ngXdQSeH11u9Ngezm98mFsxEeWTqnM=; b=k1UCZt2DLB0SkkXsxINe/y8J72
-	Y971/SY6K6v574Llnt/47wGCe+teRtrNarGIB8Sxb73Rep2uLENu+eVwPWklnf/ycGsauJU0N8cOU
-	50j1I/CNSjBqvZEVKSvTYdI7kL6FXgvIhrIv/yvOLM4jcrf/63F1QwFmL8TmCEJ35SPWbjEM3Prv5
-	ImikEa8doemU2kH2r3S8sVQwv/vdv57+/kgs9BHknLT5nm1UU2YswJnr38hR2MtEEw4tz1OYE5AYY
-	gy0kNfNryUYHzwNjzpZkvL5vACsc3wOZNjOOutwKcZYRqLkUYNc5AxdeJBAMS7cdN23N+YVeCtvuu
-	NQOluc6w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qxb1RM5Ht9n1r5SEfzEp8KCVi3ssjTbIBjJD7cNdVUs=; b=4SduI4bDDip/1LmNi/8aaMNp6G
+	3ft95JwvBl5NcZXM/lpbX9g9Xttu/ia2v9npb3qSAEOywuUCRWaaPyfJv3vUKIyI9oLGmnVioangc
+	eWfq/2LPqOxbcAch6WFSkbLOTkb8WR2z6j3ZhDU9eoaXgVtHNqHj577IFHH3Z6EZD0ht8jh5nyc6c
+	+eh+iLG0SSicSWmxjuZ5a8YySDy0XZ5vvv+gYl1ee54bSVaAdebXC5u6724gYXmSVK85FMybK10K3
+	p08w7jU0dxtJFB9LC3zkFL655NDxo3u6gH5bH2Y+uVz6W607kppPiCyIoVMGQLBau+qB8VfZIkFf9
+	mY6d6yMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoOZL-0000000Avir-02dA;
-	Tue, 19 Aug 2025 15:48:15 +0000
-Received: from mail-dm6nam11on20606.outbound.protection.outlook.com ([2a01:111:f403:2415::606] helo=NAM11-DM6-obe.outbound.protection.outlook.com)
+	id 1uoOeP-0000000AwN9-2frw;
+	Tue, 19 Aug 2025 15:53:29 +0000
+Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoLpg-0000000AUoH-37Kh;
-	Tue, 19 Aug 2025 12:52:58 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=OoEBxnDK+TRilACrrG35cvQuw1k2nS1Vodi38SY3d/UmRR/Wh+NSkghxWVJqaVsVMXpzUS+LpN4QURp78h09ehbL0EvPDGd1JfnoqNG+alnFkIhLenBMyWhpFLXy2YiFQ1KlFV7eFpXZHlRJRmT20zoouSgoisP62mV/hRkJ+ujeqxvAe5xt5ZVb246w01Fe0+ZIntr9S2H7DoWBaEC1xpENeyuCRF+kweMwC1D5QfKl4WZm0XDGk45eP/Xzfr9cTtaj/JNOGHo9yqQlQVtYUu2GDQoZAfwub7DaSHoh9SnNUafrNdO7PKLlvKhPexHTQYiRgJPXR8WO/p47nvuoWw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=G0WYBkpfTmAQ0ngXdQSeH11u9Ngezm98mFsxEeWTqnM=;
- b=olGRQpN3z03oyHV69TVNThaOx0eZZKXZJ1cT0xgaUkfKTVyJEba4gEpcjf3wI69dNez9gkjEm8CY4WNS3f/mHCqza29QV9h1D65d3H7/XBKAg6xInQoLS/LEke/O07tpEij7ImR9d4jbd2545JxrZKzHSqDLGTwwInB9fieM/sNu5w6xXOP0M0gPBxSUFScaL6nHa9w1Tc9jD+GXaIsjSpoeNoSVA6/veil0jP2PefvXvuJUAxqv/CWH5U1bl9lqUMuDM4ykic6IFGxLr74WgdmNOzGPtOSL0TTr8rflSuLIsAO9I3Tw9OsjQkbWv/FLabIdsPj2eH9cN8Yac6CNYA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=G0WYBkpfTmAQ0ngXdQSeH11u9Ngezm98mFsxEeWTqnM=;
- b=UNuL3mmTL7yBbvocaZ+fU12Eft8djdt1L7zMcKh+iak8APo2M7Sw+DUyXu88QjvS6dQ1yNq6Psa9e+tGn22AahjpLHdy2J947VURyOchWzP9ypq8hZc7wzb6Fb3FRE3lRI5mAexgXIbjN2TKAnEcRidXCxK2VY7jC2HD9hGBKQ5AyA9S2fLYpskOK6qjNlB72Lb15+mFjJBpC0ens6OiSDCxDKVO9PihrHPVhevYfMdwpH6GLyRV2V4z1do0FeJqxjW+Ld5LVDYUQDqbuZrFJKOL1vRXE24dmerbmPkUSo3YO5E9BKYjrLtUZYQEfx6TQc4/g4DYoyXvjap5DqMoYA==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from CH3PR12MB8659.namprd12.prod.outlook.com (2603:10b6:610:17c::13)
- by DS2PR12MB9614.namprd12.prod.outlook.com (2603:10b6:8:276::11) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9031.24; Tue, 19 Aug
- 2025 12:52:52 +0000
-Received: from CH3PR12MB8659.namprd12.prod.outlook.com
- ([fe80::6eb6:7d37:7b4b:1732]) by CH3PR12MB8659.namprd12.prod.outlook.com
- ([fe80::6eb6:7d37:7b4b:1732%4]) with mapi id 15.20.9031.024; Tue, 19 Aug 2025
- 12:52:52 +0000
-Date: Tue, 19 Aug 2025 09:52:49 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Nicolin Chen <nicolinc@nvidia.com>
-Cc: robin.murphy@arm.com, joro@8bytes.org, bhelgaas@google.com,
-	will@kernel.org, robin.clark@oss.qualcomm.com, yong.wu@mediatek.com,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	thierry.reding@gmail.com, vdumpa@nvidia.com, jonathanh@nvidia.com,
-	rafael@kernel.org, lenb@kernel.org, kevin.tian@intel.com,
-	yi.l.liu@intel.com, baolu.lu@linux.intel.com,
-	linux-arm-kernel@lists.infradead.org, iommu@lists.linux.dev,
-	linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org,
-	linux-acpi@vger.kernel.org, linux-pci@vger.kernel.org,
-	patches@lists.linux.dev, pjaroszynski@nvidia.com, vsethi@nvidia.com,
-	helgaas@kernel.org, etzhao1900@gmail.com
-Subject: Re: [PATCH v3 3/5] iommu: Add iommu_get_domain_for_dev_locked()
- helper
-Message-ID: <20250819125249.GG802098@nvidia.com>
-References: <cover.1754952762.git.nicolinc@nvidia.com>
- <a69557026b7e2353bae67104bbe6a88f0682305e.1754952762.git.nicolinc@nvidia.com>
- <20250818143949.GO802098@nvidia.com>
- <aKNhIr08fK+xIYcg@Asurada-Nvidia>
- <20250818234241.GF802098@nvidia.com>
- <aKQG9/skig6F8LdQ@Asurada-Nvidia>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <aKQG9/skig6F8LdQ@Asurada-Nvidia>
-X-ClientProxiedBy: PH8P220CA0032.NAMP220.PROD.OUTLOOK.COM
- (2603:10b6:510:348::10) To CH3PR12MB8659.namprd12.prod.outlook.com
- (2603:10b6:610:17c::13)
+	id 1uoLyS-0000000AW3B-3nlX
+	for linux-mediatek@lists.infradead.org;
+	Tue, 19 Aug 2025 13:02:02 +0000
+Received: by mail-lj1-x22c.google.com with SMTP id 38308e7fff4ca-335360f9b6aso2887791fa.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 19 Aug 2025 06:02:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1755608519; x=1756213319; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=qxb1RM5Ht9n1r5SEfzEp8KCVi3ssjTbIBjJD7cNdVUs=;
+        b=VK/UyA8OE5UjmRLhZENfScAIoGsI6rEYTcQb8+9zqu/M4Zq1UzH3aKcKNzAiT6PoUn
+         TWuUt1Lcd35NFFBvj33ntpLeivWlOu7MDGY6gNScGscBlMq3yCof1weyCDYBfwjG8Md+
+         eEv/7vbYt3B8YLDQfkmAo2ooYfkCTn4taMWOJ9cKSZN6RFdbDlT9CMhlp79RRlVKh0uB
+         htdMxBESl2GBl9U5FdBYzh+w0hhkQwmrau8cgwQjaxrmS+DCJTOKkSXrRZ/RJmTuwpGD
+         ES985SBynPELxhxUarB2cp08cwPKdv1Lwl+fkPjGQZxGrWbia5Lr+eMHzOYxGwxULBPt
+         KVgA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1755608519; x=1756213319;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=qxb1RM5Ht9n1r5SEfzEp8KCVi3ssjTbIBjJD7cNdVUs=;
+        b=JV5PUl2BzvWLwhdLs7+j9nb2wmHx/Yb+Pn75WJM74H4HV+gSZtxXvPw9P5wa2kmxYK
+         EQFVzXJjMzztYKfvH1y+Mq7YTE21EvMybz7ePkYS5LDZ4smiDEzARuchdvPPM/5zWc7n
+         bAVQ9DBDWNKA6FdgnksdhNZaErOTFPCOz20doUWXypt+hM1Mkm25afF+dhK7hdWcW2x4
+         oVOYY4EcKLGLDIorAsc+6NauJcxRZCxQ4srLp8hCvpkdx/x91/7lvE7JM/oAQoulgKgN
+         Ce6j2vWQUYkD8LR8dWquo+NYseGnRYCKcCY0+whG4Qx6O4EetiCOzVg3yN7dNjEs8+2u
+         5jfQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXXZZOpWV98od3yHyJP8SgdzbNCWJ8AIy7U7r4G5FYvtf9WJUmnO25x3//vf7Lh7eLvGTi6eEFZpulwALJQkA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzM0tpuH/M6/JljCCasEa9H/x8ml0ZzeKDmwBb9/lIsgB8kWmSz
+	gTqaQfvN5PL2aNskTYGyA0Bogq3PHAVgqARyLRE6DTIXuNmb+Nxnk7zhToo7wMAN7zffPzSvu6y
+	8IvF5GIllseIFGPrMLgG3gLLeuyxSdE5fsRjD0oF1tQ==
+X-Gm-Gg: ASbGncumaAsaz0dIcvDAx5gm8ztPWgFtJ9lcMDI9ApjrbITJB+wJdZvKs7DfOYq05Vq
+	FGAm1dyTBbAu8WEoA6wHFQlN+BorxNDVBw/8llrRCmGnXn28C9YcI1C2ZahjBMDl6pXcsEPUC3H
+	3kz7BEGRacs0Q4YZU0jOe208FA/pVpsl+bHIBWPMsfbj7ibceYF8c/1EglQoMf0uELEy1aIPvMc
+	nKWUqQ=
+X-Google-Smtp-Source: AGHT+IE7bjsIxvb3/p90/iX8lbM0JfYfSlfdYQ83gKcwpD46fl2MWv7BXJs8CRajKFvUVpb0cf1UMxfJ5zwUc8D1bZs=
+X-Received: by 2002:a2e:a490:0:b0:332:20c7:2820 with SMTP id
+ 38308e7fff4ca-33531348988mr4833881fa.5.1755608518741; Tue, 19 Aug 2025
+ 06:01:58 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH3PR12MB8659:EE_|DS2PR12MB9614:EE_
-X-MS-Office365-Filtering-Correlation-Id: 50076d52-c356-4847-cda9-08dddf1f4ef9
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|1800799024|366016;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?9pOSJPylLQBfCOoBjDhtfIVpS56vFOUudv2OanJHLM1ERwS3434jVgafRVow?=
- =?us-ascii?Q?PJnrzWZvjLqNn+C3N0WB/uodI18o7ak+s7jSczDV2q6AK71WC6Ppzd/tZE/9?=
- =?us-ascii?Q?Mr071ytzOOLEoY23TEsSiBkqb6wMYPSh4jDBYWp8BiZ8xFLH9nyAXQIQyEMJ?=
- =?us-ascii?Q?CGeXY52oSEP6+5DGGwpFUgt7n3v+8SK9/AfMaNGgyhZ4g/rCoWxKTjHNGuCU?=
- =?us-ascii?Q?I9TZwrvIdMlEVIxQ/Q2vAhgC6dDWlCKAxwOYEWwAowCaNTitc+/sXv0PwR4E?=
- =?us-ascii?Q?QeE0jF14MuV00Hm87QzNUmVuiubCTVwuWqDsGmNZWCf8GrWySupzP2Nj+VvO?=
- =?us-ascii?Q?Fg7YNv9y7OTPf+WOKtKnEAq+r4iE9rKgI+vlywo3WT5DvkD6QjegZZWxgAHe?=
- =?us-ascii?Q?N8qqY06H8SRWRxVM4xtbM6jYQlihdE/ZlWRZN14KJ3yc0gKysU8BWNqEsx6+?=
- =?us-ascii?Q?gnMCBUwtzumWIgM6D94UGcJKHmXTHgXMO7ZPhDA8CpYLlin/p/a/50gf0Bo3?=
- =?us-ascii?Q?HAedMUPj5UCsIu/9uc80/vtxBOHl407AOPpE7obS9/zuW3IU5sUEmW7nxk9h?=
- =?us-ascii?Q?BjufX0or3Y/jb+vZk0wmNZsDSyGBNUh5PG7dfq0SzHT8xN+O2s5KwKn7kGm2?=
- =?us-ascii?Q?JshyirMGoWTxlqPR06zdiAHY9WLCD96osmNH630bAsbuROT4BWFnbx4sOy24?=
- =?us-ascii?Q?Y5dmXeO0rDbXqsvdtRsXGDwT61XayPwTBW5kMSuhVBHUBqzKoUFFgKYDKaA0?=
- =?us-ascii?Q?LvuK7z7g/MY8iyvrP0kDvUy/9XOFF9gpLRjytRqGgMu0cumrY2Yz77EitweY?=
- =?us-ascii?Q?qu+huJwOWEcPlujzCInmHmaXz+6CFekxEdrmvhfJIHBCdRCJIVIkOiJuwLnd?=
- =?us-ascii?Q?mM5IqEYnjnlnhbylwNrLnbcMJ+dL3gPmJBGwAkcuj1l9uyFsSFHxKpAyedlg?=
- =?us-ascii?Q?/Vem6ehQmBsLxvSvgpKkCpaWW5kaB/7Mj+ieNJ+az2855EliyUxZE4Vr35fG?=
- =?us-ascii?Q?vPMS6Wjc6/k9R01OXPeokIsY2B4IlVOnw5fk8p7L74BkeRjgHY2JFU7ddDq8?=
- =?us-ascii?Q?O40Cz5I8giIuaJWPZ1ndgt4uzVNFgj4IGYKNzm6MzMl8eNau0GMG+3sRvv+r?=
- =?us-ascii?Q?bLjIAR67rUPL5bolACZanfgLoaKKotJj2MeH9SBEGU8ilZgXOuiyK/yjdorr?=
- =?us-ascii?Q?lD0jvzp6VkHBkO2oUnnHXT6oKWTnxH/eqben+s1DJIt9tn5sv7aI5i7fPRKo?=
- =?us-ascii?Q?S4JbJDSeWK8s3To84YbWFXTLIdX95sjGM9b4hTiXfX4ITm/5lKzZM354Xu0q?=
- =?us-ascii?Q?yFSOc5hxAdz6AivMhYXSQ95fjiaVqwAigFBlSXC2a8qvwQeWlU3uzZrZXHGN?=
- =?us-ascii?Q?Rou4RZiPOIjoMQ8IFdixqelv5blO/rJAN4FT0IcFKPpA3AqbuP2dVnqzyKCp?=
- =?us-ascii?Q?uzgzxj82gHk=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH3PR12MB8659.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(1800799024)(366016);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?VKG4/eAtNwg1Z7t97i40t8n/smI/1PrARTvORRZXCqs+7/0jlT8GBUKOVXRP?=
- =?us-ascii?Q?tI1mnYc5s+95cCkH4lmSjE5pXKtXyyIUd/ZjLtEyxSP93izDnYGx8PeSLfpe?=
- =?us-ascii?Q?0yxy/5nz63Di7KurRhNFT5quBVHRwJcRUWowzqHZ25c5W+ibTm+H1pqjqlOc?=
- =?us-ascii?Q?RemRCJgrsgGqaRbTLMCZhZs8Vwzms5QFWKVpa790G8F+5Af92uiHxaxwgWp5?=
- =?us-ascii?Q?q0XZKEMnK75NBZ2t8A44YbvwKpbPI732eLNrwI336E3ZNOeWdl9XdlYDpz3D?=
- =?us-ascii?Q?2ZTN+BmwLMetGAhobUpvATYvwlTZ4ET+72Aob/mGY5pkn10WLL3fzmNFuGLu?=
- =?us-ascii?Q?JZD3dgciYSEbbq8wqt6ghrn3Ibe+I8mAJazCgKHRkJ4ueLN23TheOs2E1a/D?=
- =?us-ascii?Q?orkUIghZf+b18O8mn+kfcG8fD4UBZ4n9WmPb5gFkYhjumefISzzdzGNMagbc?=
- =?us-ascii?Q?hxJCOTtGinzeV7Frz4uprbTUV8t8H7/e8gvmjzHo+iGdO63x3ph9pE1iWRt0?=
- =?us-ascii?Q?fVS470NleSoo+urMHnha0lwGVxkgR2wTAXnw+a8vH2FiKJoVCDbcjxwBVgHl?=
- =?us-ascii?Q?Idp4ytvEx7DljMZYz4QsZjNACYsD2ehmH/AsTs3y83aaVaiwAAwqSBzL/90y?=
- =?us-ascii?Q?OFCPZ8C/pM9ajJ7uXNsVQz+JLxpFkrDHPvkDXnQhkm6x69zL9xy/eXf4jVM9?=
- =?us-ascii?Q?i/cEYWcm68L/qIKRZCyxzU5obL0cVmTf6n9PumnmIlTudseG4jgBYI2t6OFD?=
- =?us-ascii?Q?KmxUV/DjyQmUOCVk8lvKateixKtPqPf/oKAB9hzbgJ/b/hSrKVykPOzvsZd2?=
- =?us-ascii?Q?shbfjHPtTBNFRKodrYAxoX1Yd7qRD4Fd/gmZLlq3TVI7TkCchWfAzBj7SE5C?=
- =?us-ascii?Q?Przivws5BLRtQRbyQX4pyt/jkz0cbJKHfNkd1hdDVtZLScdzkGXpcSuYqFHK?=
- =?us-ascii?Q?gA9mHEKlHOksAHTOSCRdCj4zciV1MxYglI/HbmrI1BbcXJoGfYUB7N8vMxho?=
- =?us-ascii?Q?iS03buqxrX8e3bEf9nLJI9FSMvVuhoODjQ6WxuYl6I1xxF68NIyNMI3f8oy4?=
- =?us-ascii?Q?PJ2SKCPA351IwGkWLjOZQyy6XRA2QdxgeXZrCJYw/Laxudw4MIGUR0BKr4iE?=
- =?us-ascii?Q?JWx9A5/DHJmqkh0M6MIbV5C8tX1ri7wfCRzgfIGtDp5ePk5n0JKDbtq6oVgj?=
- =?us-ascii?Q?Edk3aNESiVb3XPiOW5D7j95rvpVabKDANFENj3oHNP56XQCbsi5EpH3V9Iab?=
- =?us-ascii?Q?7P4vlnVu6YLE4MgsLvdGxi/DNCQXmEsutADplvwWppNb6ykxwzMRhdABptMa?=
- =?us-ascii?Q?zXFktKCbL0LkI310Z5FzfRcDB1PTWlKIZJ2J+XcQW//1uQs7F5zUy9t5Spg9?=
- =?us-ascii?Q?tr2sdK3SnHHQUWI/VC/d9IhemSr3ING+5MKJJykAU/anfOM9bOb4E0F4BC+E?=
- =?us-ascii?Q?ORAqp3sHaEqi5hN7rAUryit3tHm9g0pOjwxSJq3wipQhJepHAvd4tVNjX3GQ?=
- =?us-ascii?Q?ihSPTpIImWmaYwfq/rvT4nVc+YCd7bZiCn+37lKB9cBeY0bsOf1NBX0J+9sZ?=
- =?us-ascii?Q?uCSMjVKhi/h5fE401sSKz1C6Z5sPL33r2TrkgH1z?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 50076d52-c356-4847-cda9-08dddf1f4ef9
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB8659.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Aug 2025 12:52:52.0638
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: IRv0RDvpt3B+ij8GgxSQ6V2kiIDVaCmmBqgI2zQZjgWs2ovKjOu6Fsa/rX7xYAy+
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS2PR12MB9614
+References: <20250815-pinctrl-gpio-pinfuncs-v5-0-955de9fd91db@linaro.org>
+In-Reply-To: <20250815-pinctrl-gpio-pinfuncs-v5-0-955de9fd91db@linaro.org>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Tue, 19 Aug 2025 15:01:47 +0200
+X-Gm-Features: Ac12FXyC72fjsmfBKj8qknXL2IcZGnP7oQB_by_QmlQnlUNrEkhpI-BF0K24mIM
+Message-ID: <CACRpkdaDGmdhaik+1saRv7Ts4myQ+tg1aQqGU3xQyT7ma8dJFw@mail.gmail.com>
+Subject: Re: [PATCH v5 00/15] pinctrl: introduce the concept of a GPIO pin
+ function category
+To: Bartosz Golaszewski <brgl@bgdev.pl>
+Cc: Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>, 
+	Alexey Klimov <alexey.klimov@linaro.org>, Lorenzo Bianconi <lorenzo@kernel.org>, 
+	Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Paul Cercueil <paul@crapouillou.net>, Kees Cook <kees@kernel.org>, 
+	Andy Shevchenko <andy@kernel.org>, Andrew Morton <akpm@linux-foundation.org>, 
+	David Hildenbrand <david@redhat.com>, Lorenzo Stoakes <lorenzo.stoakes@oracle.com>, 
+	"Liam R. Howlett" <Liam.Howlett@oracle.com>, Vlastimil Babka <vbabka@suse.cz>, 
+	Mike Rapoport <rppt@kernel.org>, Suren Baghdasaryan <surenb@google.com>, Michal Hocko <mhocko@suse.com>, 
+	Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, 
+	Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, NXP S32 Linux Team <s32@nxp.com>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Tony Lindgren <tony@atomide.com>, 
+	Haojian Zhuang <haojian.zhuang@linaro.org>, Geert Uytterhoeven <geert+renesas@glider.be>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Danilo Krummrich <dakr@kernel.org>, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
+	linux-hardening@vger.kernel.org, linux-mm@kvack.org, imx@lists.linux.dev, 
+	linux-omap@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, Chen-Yu Tsai <wenst@chromium.org>, 
+	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250819_055257_136131_3A36B0D6 
-X-CRM114-Status: GOOD (  15.15  )
+X-CRM114-CacheID: sfid-20250819_060200_951949_94B835F0 
+X-CRM114-Status: GOOD (  31.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -171,35 +116,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 18, 2025 at 10:09:11PM -0700, Nicolin Chen wrote:
-> Yes, I've thought about that. The concern is that some other place
-> someday may want to use iommu_get_domain_for_dev() in similar cases
-> but would find that it doesn't work. So it would have to duplicate
-> the domain pointer in its "master" structure.
-> 
-> Overall, having a _locked version feels cleaner to me.
+On Fri, Aug 15, 2025 at 11:09=E2=80=AFAM Bartosz Golaszewski <brgl@bgdev.pl=
+> wrote:
 
-We probably need the locked version, but it just shouldn't be called very
-much..
+> Problem: when pinctrl core binds pins to a consumer device and the
+> pinmux ops of the underlying driver are marked as strict, the pin in
+> question can no longer be requested as a GPIO using the GPIO descriptor
+> API. It will result in the following error:
+>
+> [    5.095688] sc8280xp-tlmm f100000.pinctrl: pin GPIO_25 already request=
+ed by regulator-edp-3p3; cannot claim for f100000.pinctrl:570
+> [    5.107822] sc8280xp-tlmm f100000.pinctrl: error -EINVAL: pin-25 (f100=
+000.pinctrl:570)
+>
+> This typically makes sense except when the pins are muxed to a function
+> that actually says "GPIO". Of course, the function name is just a string
+> so it has no meaning to the pinctrl subsystem.
+>
+> We have many Qualcomm SoCs (and I can imagine it's a common pattern in
+> other platforms as well) where we mux a pin to "gpio" function using the
+> `pinctrl-X` property in order to configure bias or drive-strength and
+> then access it using the gpiod API. This makes it impossible to mark the
+> pin controller module as "strict".
+>
+> This series proposes to introduce a concept of a sub-category of
+> pinfunctions: GPIO functions where the above is not true and the pin
+> muxed as a GPIO can still be accessed via the GPIO consumer API even for
+> strict pinmuxers.
+>
+> To that end: we first clean up the drivers that use struct function_desc
+> and make them use the smaller struct pinfunction instead - which is the
+> correct structure for drivers to describe their pin functions with. We
+> also rework pinmux core to not duplicate memory used to store the
+> pinfunctions unless they're allocated dynamically.
+>
+> First: provide the kmemdup_const() helper which only duplicates memory
+> if it's not in the .rodata section. Then rework all pinctrl drivers that
+> instantiate objects of type struct function_desc as they should only be
+> created by pinmux core. Next constify the return value of the accessor
+> used to expose these structures to users and finally convert the
+> pinfunction object within struct function_desc to a pointer and use
+> kmemdup_const() to assign it. With this done proceed to add
+> infrastructure for the GPIO pin function category and use it in Qualcomm
+> drivers. At the very end: make the Qualcomm pinmuxer strict.
+>
+> Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+(...)
+> Bartosz Golaszewski (15):
+>       devres: provide devm_kmemdup_const()
+>       pinctrl: ingenic: use struct pinfunction instead of struct function=
+_desc
+>       pinctrl: airoha: replace struct function_desc with struct pinfuncti=
+on
+>       pinctrl: mediatek: mt7988: use PINCTRL_PIN_FUNCTION()
+>       pinctrl: mediatek: moore: replace struct function_desc with struct =
+pinfunction
+>       pinctrl: imx: don't access the pin function radix tree directly
+>       pinctrl: keembay: release allocated memory in detach path
+>       pinctrl: keembay: use a dedicated structure for the pinfunction des=
+cription
+>       pinctrl: constify pinmux_generic_get_function()
+>       pinctrl: make struct pinfunction a pointer in struct function_desc
+>       pinctrl: qcom: use generic pin function helpers
+>       pinctrl: allow to mark pin functions as requestable GPIOs
 
-> > With sensible internal locking
-> 
-> Hmm, I feel this iommu_get_translation_mode() is somewhat the same
-> as the current iommu_get_domain_for_dev(). It would just return the
-> group->domain->type v.s. group->domain, right?
-> 
-> This doesn't have any UAF concern though.
+I applied these 12 patches as a starter so they can
+stabilize in linux-next.
 
-Yes, no UAF concern is the point
+>       pinctrl: qcom: add infrastructure for marking pin functions as GPIO=
+s
+>       pinctrl: qcom: mark the `gpio` and `egpio` pins function as non-str=
+ict functions
+>       pinctrl: qcom: make the pinmuxing strict
 
-> > So that is another bunch. Not sure what will be left after.
-> 
-> I recall that some of the drivers manages their own domains, e.g.
->     drivers/gpu/drm/tegra/drm.c
-> 
-> So, they would want more out of the domain pointer than just type.
+Neil reports of regressions on qcom platforms so I assume it's something
+in the last three patches that's causing it and I hold these three off
+until you have time to look at it (and focus at just the final qcom pieces)=
+.
 
-This looks like it wants an 'is currently attached' operation
-
-Jason
+Yours,
+Linus Walleij
 
