@@ -4,64 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF5F5CA0EE6
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Aug 2025 19:22:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEBF2CA0EEB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Aug 2025 19:22:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=u1cCmSm/e+MRZhQY8TNslwLcTb5qXBORvRiaXPOs8+0=; b=R/3sENeyAh1UffQfNmdKVf0XWB
-	CRk+S2uY33LfIaW+fIE0PAgF7/WcFUaZtpXX+njaaaJaRRVhAymTDPfeaAvbMs0z4nnr8o4XJ0DR/
-	m871cLr4+p2/pmjVcg8krxfO6zhmjx7D1pzQn/aZmTPMQNqoZlnKsqUFUfATupUW/hSOWVowogtHN
-	l1wSpQQKpxa+Fxh1APaZxCShVCKJ2461SrAWfVF/RXwcctlen7YdAUqtMAHaZ0BN6qrXXfNTPhMzm
-	h5CN2S4dGGeMqvBqXAuiNoRbkqOLtHpkRmNPILO8kK3gnchWXt8Mr3B19m8oNRV0mvNq1L0K0Enoa
-	CqUJlfXw==;
+	bh=Ybc4a5zVNR2n4RONlCYCS49NxANnn9uP57Jdk+jOlDY=; b=J2RcrhkRIAvT8YNuMm/LsIsMS1
+	XLtMuyEcjJDxHQI5FPy0LUhDJQazqUyRsZHPkBpcMnuOdjkVv26kHrjW5e/ZFCbs40h5UtQoB+2gX
+	Uue8ip1jFXYCw6sLzwY0ZCrWVfwYm6WSp9+lI5bexo1HC02QJ9CG5T35up7ZKTo4mC5HvXmWCFY1j
+	yBosL5EHJJiJaOO4O7EVbaYXAf1Y0rXSA0pomNSO2bHZ1+USV7XUXK0MkEykNkE0Pw4vhHH+n0K0O
+	p/nWLJVMqnzo+kRxEak8jJ6vlfIqgk1MtLDJlMD2TRg81oxEigo1K4NfzLBW3glF1G7ov8LJoWoi/
+	3KzmZgDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoRup-0000000BONZ-2jeg;
-	Tue, 19 Aug 2025 19:22:39 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uoRv2-0000000BOdS-30bL;
+	Tue, 19 Aug 2025 19:22:52 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoNJh-0000000AklK-2rOX;
-	Tue, 19 Aug 2025 14:28:02 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 57A0543F38;
-	Tue, 19 Aug 2025 14:28:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A5961C4CEF1;
-	Tue, 19 Aug 2025 14:27:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755613681;
-	bh=Mfb/JnDJzyPSwOWfwKNljxJBiGU1tZif6yiH46BsXDc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=gCTPkpq2+5osYcwBFB2fCOuFJgtRFhXn7gK+vWu2oN0FhoIghk4lWZVH2MX2OGHwi
-	 U+6eOqzw8ylA1Re2jgD7G6hlL5q5+AQvzWKx2esSF8Fsb7YBmElbNC0KkPM/DBS2zI
-	 RmCoxNjS4FQIagF2VXOjMe5NBSxBDlSY8WT/T/vs/WDutb+1PxDEtfqeIkJzKJ6Z2p
-	 /FzeqxjxzIiqKIdW6Q+KFIOEB4ERtQ/cwuL/OINj2q+RXIzEz3nC9xrmOAbvXhBz6R
-	 cxgGFvZt4aH58ZO8oej+NGEuTLLiIIeYH+FMUGyfzlHyX2Hhxx/NH18YnSxpP/vqK6
-	 CPFdNeN2CRI7g==
-Date: Tue, 19 Aug 2025 19:57:50 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: jianjun.wang@mediatek.com, ryder.lee@mediatek.com, bhelgaas@google.com, 
-	lpieralisi@kernel.org, kwilczynski@kernel.org, manivannan.sadhasivam@linaro.org, 
-	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, 
-	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v2 1/3] PCI: mediatek-gen3: Implement sys clock ready
- time setting
-Message-ID: <lwvp5j5okfc6sny2ypiljgq7hyshjyfiyczsglrq4ds75voqoa@mdwrbozqcinv>
-References: <20250703120847.121826-1-angelogioacchino.delregno@collabora.com>
- <20250703120847.121826-2-angelogioacchino.delregno@collabora.com>
+	id 1uoOtI-0000000Aydu-2sMn;
+	Tue, 19 Aug 2025 16:08:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=Ybc4a5zVNR2n4RONlCYCS49NxANnn9uP57Jdk+jOlDY=; b=d9QvesH04zlFpjUZ2zRbNsJtME
+	uSnMz3e3gbt8KUCCTclrt+0NDJ+xblcwIx5ke8tVTAxT/L9V2P6WkCsGxOCTYcfCzCmiEcUgscpfW
+	W7vfoHdSwrvw4NfoUKwSEhB2nb0Z4Q5ZB4s7UB4hhdDnAI6MWnugqDl6xBSZiQBfRRT8=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1uoOtC-005D9T-Q0; Tue, 19 Aug 2025 18:08:46 +0200
+Date: Tue, 19 Aug 2025 18:08:46 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Mateusz Koza <mateusz.koza@grinn-global.com>
+Cc: angelogioacchino.delregno@collabora.com, robh@kernel.org,
+	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	marcin.czarnecki@grinn-global.com, b.bilas@grinn-global.com
+Subject: Re: [PATCH v2 1/4] arm64: dts: mediatek: mt8390-genio-700-evk: Add
+ Grinn GenioSBC-700
+Message-ID: <350133ab-a116-4555-8d5e-90b718c7b0e1@lunn.ch>
+References: <20250819130231.181571-1-mateusz.koza@grinn-global.com>
+ <20250819130231.181571-2-mateusz.koza@grinn-global.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250703120847.121826-2-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250819130231.181571-2-mateusz.koza@grinn-global.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250819_072801_760635_FFBA6351 
-X-CRM114-Status: GOOD (  23.30  )
+X-CRM114-CacheID: sfid-20250819_090852_722155_4C3034AD 
+X-CRM114-Status: UNSURE (   6.08  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,75 +72,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 03, 2025 at 02:08:45PM GMT, AngeloGioacchino Del Regno wrote:
-> In preparation to add support for the PCI-Express Gen3 controller
-> found in newer MediaTek SoCs, such as the Dimensity 9400 MT6991
-> and the MT8196 Chromebook SoC, add the definition for the PCIE
-> Resource Control register and a new sys_clk_rdy_time_us variable
-> in platform data.
-> 
-> If sys_clk_rdy_time_us is found (> 0), set the new value in the
-> aforementioned register only after configuring the controller to
-> RC mode, as this may otherwise be reset.
-> 
-> Overriding the register defaults for SYS_CLK_RDY_TIME allows to
-> work around sys_clk_rdy signal glitching in MT6991 and MT8196.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  drivers/pci/controller/pcie-mediatek-gen3.c | 14 ++++++++++++++
->  1 file changed, 14 insertions(+)
-> 
-> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-> index 5464b4ae5c20..8035f7f812aa 100644
-> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
-> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-> @@ -101,6 +101,9 @@
->  #define PCIE_MSI_SET_ADDR_HI_BASE	0xc80
->  #define PCIE_MSI_SET_ADDR_HI_OFFSET	0x04
->  
-> +#define PCIE_RESOURCE_CTRL_REG		0xd2c
-> +#define PCIE_RSRC_SYS_CLK_RDY_TIME_MASK	GENMASK(7, 0)
-> +
->  #define PCIE_ICMD_PM_REG		0x198
->  #define PCIE_TURN_OFF_LINK		BIT(4)
->  
-> @@ -148,6 +151,7 @@ enum mtk_gen3_pcie_flags {
->   * struct mtk_gen3_pcie_pdata - differentiate between host generations
->   * @power_up: pcie power_up callback
->   * @phy_resets: phy reset lines SoC data.
-> + * @sys_clk_rdy_time_us: System clock ready time override (microseconds)
->   * @flags: pcie device flags.
->   */
->  struct mtk_gen3_pcie_pdata {
-> @@ -156,6 +160,7 @@ struct mtk_gen3_pcie_pdata {
->  		const char *id[MAX_NUM_PHY_RESETS];
->  		int num_resets;
->  	} phy_resets;
-> +	u8 sys_clk_rdy_time_us;
->  	u32 flags;
->  };
->  
-> @@ -436,6 +441,15 @@ static int mtk_pcie_startup_port(struct mtk_gen3_pcie *pcie)
->  		writel_relaxed(val, pcie->base + PCIE_CONF_LINK2_CTL_STS);
->  	}
->  
-> +	/* If parameter is present, adjust SYS_CLK_RDY_TIME to avoid glitching */
-> +	if (pcie->soc->sys_clk_rdy_time_us) {
-> +		val = readl_relaxed(pcie->base + PCIE_RESOURCE_CTRL_REG);
-> +		val &= ~PCIE_RSRC_SYS_CLK_RDY_TIME_MASK;
-> +		val |= FIELD_PREP(PCIE_RSRC_SYS_CLK_RDY_TIME_MASK,
-> +				  pcie->soc->sys_clk_rdy_time_us);
+> +&eth {
+> +	phy-mode = "rgmii-rxid";
 
-Nit: Mask and update could be simplified with:
+Does the PCB have an extra long TX clock line?
 
-		FIELD_MODIFY(PCIE_RSRC_SYS_CLK_RDY_TIME_MASK, &val,
-			     pcie->soc->sys_clk_rdy_time_us);
+https://elixir.bootlin.com/linux/v6.15/source/Documentation/devicetree/bindings/net/ethernet-controller.yaml#L287
 
-I'll ammend it while applying.
+> +	phy-handle = <&ethernet_phy0>;
+> +	snps,reset-active-low;
+> +	snps,reset-delays-us = <0 11000 200000>;
+> +	mediatek,tx-delay-ps = <2030>;
 
-- Mani
+Please try setting this to 30, and use 'rgmii-id'
 
--- 
-மணிவண்ணன் சதாசிவம்
+	Andrew
 
