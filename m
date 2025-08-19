@@ -4,100 +4,214 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4521ACA0EE6
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Aug 2025 18:15:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70394CA0EF7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Aug 2025 18:15:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4rom/ptDsxRGJM1AJ//ihjpMNAtsF50k3kKj9llJ3pM=; b=m/yOycjxHEe7tyxDuUwBy4LLL3
-	vPyEc6sSKCqiGXb9+rjGLOCHXB72VcUnwkA5/jsh9eVFFjj2/32w4ynzGGgjvEpDG5oVD6WnrTBdX
-	ESTFm/SFLgW0Zh5r3VQhWPKGkaywxtvXXFfi/tWetkDpHWLMkPRJpMyqMJZOWwaKadZqLiuIrheu1
-	R91FKzBoTOZep7/l+dRyIjVx4xazOItXdiiXPBYHaWo1UGWKizhA53IqVfd1yigog6+p+uxfGj5rK
-	4nbm4sxB1HOL408uaKPzoZ4ycn+z/EkP9l5EayD+OdijvwTKRNYQOY/f0TgIVn14AEMdhAoZBkGd4
-	Ur1BOjZA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=S4prxwgpffGkHl4rrMnTw6E9iuxzv9RM0Wokqac/F+8=; b=zMlH9+vnkP1/fHl5yfuK9Ax8J8
+	6jvYSfjrfVljJBqv+EtS44vzmLP3ijiaqMeelMmI6HpJPeEbvK05b7P0JpLq0CyhHAQgf8WWmX5pK
+	c0zZcqtbScZJ63Hl87Uvs77GTbx3THnGAEc7z7nu7cPkHAI0CYsPf7Ijk43TocGRiFdzGVAQYEG6y
+	ZoDbx68aKlW03HZHrbvVgh+iTchR529fTT7NuyAyTpq4Gv7ds7Z2AJGBWIzXz9gXj07yoKhi/CUEb
+	T70hXRiCbdyWd7VsXiDB0bUln0yJ+OfviqubOaDUVHrxgGLGW29AojPr72z4Oh6mPelWoPRJr69xd
+	iYDpRkNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoQrc-0000000BEvo-0c4C;
-	Tue, 19 Aug 2025 18:15:16 +0000
-Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541])
+	id 1uoQs0-0000000BFRL-1EiO;
+	Tue, 19 Aug 2025 18:15:40 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoN58-0000000AiaH-1gfS;
-	Tue, 19 Aug 2025 14:12:59 +0000
-Received: by mail-ed1-x541.google.com with SMTP id 4fb4d7f45d1cf-618adc251f0so6940102a12.3;
-        Tue, 19 Aug 2025 07:12:57 -0700 (PDT)
+	id 1uoNP2-0000000AlYD-1hLz;
+	Tue, 19 Aug 2025 14:33:33 +0000
+X-UUID: 77a897fc7d0911f09eb0dd999d3936bf-20250819
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=S4prxwgpffGkHl4rrMnTw6E9iuxzv9RM0Wokqac/F+8=;
+	b=kowKYaa5Nkm7hf/GYl/g3jNy9IGtWX/naB29OuS5d9sqewo4Lb8Mx3pyJ6LvCrUYVwLzHUTZnW+FO47SdYvDCrHC9slXbrWe83Ac/FcLoefJY10idFa3yvxWd99vKUYnsb8hiCgExBe5UhVThkUb/liy76OHm9ifBjgvgHt6Vig=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.3,REQID:7871d480-303e-4c77-b36e-d1099478a0f1,IP:0,UR
+	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:-5
+X-CID-META: VersionHash:f1326cf,CLOUDID:f32e4c7a-966c-41bd-96b5-7d0b3c22e782,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|83|102|110|111,TC:-5,Content:0
+	|15|50,EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,O
+	SI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 77a897fc7d0911f09eb0dd999d3936bf-20250819
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <zoie.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 20751419; Tue, 19 Aug 2025 07:33:26 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Tue, 19 Aug 2025 22:33:20 +0800
+Received: from TYDPR03CU002.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Tue, 19 Aug 2025 22:33:22 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=K8tNOKL6Peag/3jJd2xhNHjr3kOWE9LkEIlvi2VKooYZe2YePi3zVPADH4qX0c6WG7ElqIKa4wwga2nxf9BqMvUF1zmUGSYVA//+P4AN8ag0HZXjwNw9Xd//khrn7utfr16Hs1dqm3eaR1A39gyDuoWEx7iNFjNMEJWUQfLVh1n4Ghm52tqpy1nwsDqhLLpmAxFn8bM3nmeqmK3iNMkuN00Sj3AUIWRI7/G5lYNGhWkoAMsEp6hh0Xbbb6NuMG5ZTdy3NTiP3jSSgsMOeBeEJVjREB2qHBPxM0Kj+RjN9K758x+0YL/nRE3S6kx4wW8xy6cMWE4B4lfjN/I2FSIgBw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=S4prxwgpffGkHl4rrMnTw6E9iuxzv9RM0Wokqac/F+8=;
+ b=UwSrUiBFy8P72SNZtTt9Ex1WwHUfoDojcbuw/JlUuDhyF/KV8YLrTI1ZYpana8PXJl/N6g+T4nWQj2Z67ASoR5Urc2Sbq3W/B8deujN35GgSqFWnw/hf9uVJEdcXdNViYUvqwRPJ15+pQCeiMtoqAkQ2aeTj1wksuCo3ydQ2/8eJgrfJjPKWYIjjgFIcXt9J+bOBSNGWtKH6yQWdmYXiAe1aa+v6jGAUZa+WKGl0IAAQ6GbZWrEYRp+qOGvNg9Jbfxq3y23+kW03jvGNliLrAHabH4slroOUxfJnoZyoO9+KeDHZKGxNeGiBvR9ZHL2brKK2xaLB1NEJIAo83NYwQQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1755612776; x=1756217576; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=4rom/ptDsxRGJM1AJ//ihjpMNAtsF50k3kKj9llJ3pM=;
-        b=f0Bvuyfeqh3HFQuXhyVl7FqpuZud/fYLGQYRPZDvn+4o2qoZpJwnOPfXrkLngM+BUF
-         z/x3u/0Arwd9qSd3Zu7stEJt46ep1XJ7F1rLzqjfcU8xRNvyYsyDB1Jy9gXpR7FMDCSy
-         V5FczRwEfbslB+5QvUnJvSLd05UvUJLdsAKI6orDxel0duWNs2P/26AJ8GHsTLAQOOjw
-         Y13DmIgO47SXlKTJaYRO6dMIl8Zkvl0lBVz/G44fQ1JsWxmv6J8Rpbh+Re6E0bcbXm5E
-         QcDbv/cYEwXqIG3YGkOWQ1RluUU3C3OnaubzLiowCPMF/RxCYbZxxg2qvBNWB2gQf2Q3
-         Qabg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1755612776; x=1756217576;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=4rom/ptDsxRGJM1AJ//ihjpMNAtsF50k3kKj9llJ3pM=;
-        b=hUaZRqwMO8s4FK/PDv0/fMWRg+nC0uyvx4DBfmXyh7HMhEfO8L1PCQauhhYj4xEuWO
-         SF97PK0+h2HbgFt30m7zFXiadiU4xDpVBdUHV808eK8D3DISIARu3YSQ9ZIf70T9Y5Go
-         Krpq7+BvTwuSmT+8Msx8mgQtuBcDd7dF2S0a+uLyi/qpJYgVVQC8VSUSRkq2yYUG1ZBa
-         8VvA60t2yFjCq8F9Y73NsnCz4xCIlC9V8U/HYUWDlCH5+VJz5ekDaG6c3P0vVIxnaTIm
-         o4HVV50kakxVxoGCq6PGA0UmMxq2UdiUvY3h7SkZKNUyuzdHIIePvWu0am1DIVrqLVar
-         8lGw==
-X-Forwarded-Encrypted: i=1; AJvYcCVsw8slacArDouY7eEwJcRWImpfW/I/oqfHfNpPfj7n7dy5FkLoSrt1T8cr8/XgwKgcTm+DqDIgl88UAnEOVtA=@lists.infradead.org, AJvYcCX3xjFog4K27fPT6L6BGU86vd0mqUOOxOpYZUGCJta6BJKB3HHALy93ytFLSwbOCF97AIo8R5qjp4t85/LISz/9@lists.infradead.org
-X-Gm-Message-State: AOJu0YxpVNgbgyENGGF7yoge5YWCzbQ7+P6ZfsOM4KvfocHuEG+sUpfj
-	Z2m1GKN49l4esGobHgFnWYqLE28n3wimy9wIDc0gtdsd5FdlvCqzWdTD
-X-Gm-Gg: ASbGncsLNWirVu0SS9Hl4vQXpvYhZflmkyOhdOCEb8B/mtoNeWdyIS2xaiZdPDu/Bdt
-	xKUQ1VFxUoaaLFHTB5RIl5eJNUBbrCokMVZs+yMBWBOrUPf5Ii9Aq8YIcAP7yc9HPmVexCzYfRf
-	XsMPWydHOovXHUII9EtcD9huXIx9dORaneVzcsTXuQOkk2OBTQLWSGk1+nhWeOiGWqFquR1CFWH
-	PzDR2UXTDvdf8FMxeVoW9jz3MWqSihYcDACtx1QE5DGEOoYfGie4jGo60ahuTIqzpAoFYfIOvc+
-	yY/VsZII7m4EGE/2SHOULWlyU7V1TTzW/GOkTQqwet9Cjzx16fcRfRLjbCo0OEuytN3uP0lSG29
-	SxW9seWkLq7uuCek0rg5z0DpDCrlSTSatwHGvHuToHIQefiJFhjtCX5ali4aBTuO7QH5fWXODrM
-	MCf4AyxvFJrAMJbAEKxaBj
-X-Google-Smtp-Source: AGHT+IFjds2SJBGycL2SuHhwQHLH3bYoZmPtau2WcISFrPcM8JLn2BauR7tIIFylmYhvn0dRldBLkQ==
-X-Received: by 2002:a17:907:9493:b0:af9:74b4:f4b7 with SMTP id a640c23a62f3a-afddd201b61mr242326466b.45.1755612775940;
-        Tue, 19 Aug 2025 07:12:55 -0700 (PDT)
-Received: from [26.26.26.1] (95.112.207.35.bc.googleusercontent.com. [35.207.112.95])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-afdb602ca0esm589785866b.2.2025.08.19.07.12.46
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 19 Aug 2025 07:12:55 -0700 (PDT)
-Message-ID: <550635db-00ce-410e-add0-77c1a75adb11@gmail.com>
-Date: Tue, 19 Aug 2025 22:12:41 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 5/5] pci: Suspend iommu function prior to resetting a
- device
-To: Nicolin Chen <nicolinc@nvidia.com>, robin.murphy@arm.com,
- joro@8bytes.org, bhelgaas@google.com, jgg@nvidia.com
-Cc: will@kernel.org, robin.clark@oss.qualcomm.com, yong.wu@mediatek.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- thierry.reding@gmail.com, vdumpa@nvidia.com, jonathanh@nvidia.com,
- rafael@kernel.org, lenb@kernel.org, kevin.tian@intel.com,
- yi.l.liu@intel.com, baolu.lu@linux.intel.com,
- linux-arm-kernel@lists.infradead.org, iommu@lists.linux.dev,
- linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org,
- linux-acpi@vger.kernel.org, linux-pci@vger.kernel.org,
- patches@lists.linux.dev, pjaroszynski@nvidia.com, vsethi@nvidia.com,
- helgaas@kernel.org
-References: <cover.1754952762.git.nicolinc@nvidia.com>
- <3749cd6a1430ac36d1af1fadaa4d90ceffef9c62.1754952762.git.nicolinc@nvidia.com>
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=S4prxwgpffGkHl4rrMnTw6E9iuxzv9RM0Wokqac/F+8=;
+ b=C4zUS7r8XnhvXDS+kRpcAh/RGNBPrMjMKKSIPcCV5qrwKbJMEO7gT4ultl1g6Nws+xazf41Yu5NGdW5dqW0wr1hnTTR/MdQDmq6BMzd+iX5V+oEwoIU52M1uw0QCZI6j41T3Z9Fe7cfKngb9k+fqHpcsDH2TB5tCzwvbK7IffCk=
+Received: from TY0PR03MB6369.apcprd03.prod.outlook.com (2603:1096:400:149::5)
+ by TY1PPF4D0176D00.apcprd03.prod.outlook.com (2603:1096:408::a53) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9031.15; Tue, 19 Aug
+ 2025 14:33:19 +0000
+Received: from TY0PR03MB6369.apcprd03.prod.outlook.com
+ ([fe80::5be6:4966:bde3:3508]) by TY0PR03MB6369.apcprd03.prod.outlook.com
+ ([fe80::5be6:4966:bde3:3508%5]) with mapi id 15.20.9031.023; Tue, 19 Aug 2025
+ 14:33:19 +0000
+From: =?utf-8?B?Wm9pZSBMaW4gKOael+emueWmoSk=?= <Zoie.Lin@mediatek.com>
+To: "daniel@makrotopia.org" <daniel@makrotopia.org>, "andi.shyti@kernel.org"
+	<andi.shyti@kernel.org>
+CC: "john@phrozen.org" <john@phrozen.org>,
+	=?utf-8?B?TGVpbGsgTGl1ICjliJjno4op?= <Leilk.Liu@mediatek.com>,
+	=?utf-8?B?VGVkZHkgQ2hlbiAo6Zmz5Lm+5YWDKQ==?= <Teddy.Chen@mediatek.com>,
+	Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, "AngeloGioacchino Del
+ Regno" <angelogioacchino.delregno@collabora.com>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, =?utf-8?B?UWlpIFdhbmcgKOeOi+eQqik=?=
+	<Qii.Wang@mediatek.com>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, =?utf-8?B?Sm9zZXBoLUNDIENoYW5nICjlvLXmrL3mtLIp?=
+	<Joseph-CC.Chang@mediatek.com>, "linux-i2c@vger.kernel.org"
+	<linux-i2c@vger.kernel.org>
+Subject: Re: [PATCH v5 1/1] i2c: mediatek: add runtime PM operations and bus
+ regulator control
+Thread-Topic: [PATCH v5 1/1] i2c: mediatek: add runtime PM operations and bus
+ regulator control
+Thread-Index: AQHblPD8aCJuLR3mjEKjCfcqm/NKPrN5ktCAgAMMlQCAACicAIBdkWWAgJCpIAA=
+Date: Tue, 19 Aug 2025 14:33:19 +0000
+Message-ID: <2b23a56c71548bec7114c2ac6034c3b8c0d51362.camel@mediatek.com>
+References: <20250314145407.2900190-1-zoie.lin@mediatek.com>
+	 <fqicrglyug7gmkmysok7hilhmkyhxmnkztzv4iffgry6xce6t3@2i6b2ihfu4rb>
+	 <Z9yR6pyg1mtqKynh@makrotopia.org>
+	 <em2y3tkiwlxc45f4sjtzdd3oy4v5zpqgdpqfppyzah2ilzidg2@wn6cnrezygpl>
+	 <8874a29ba42eb828d70deb73d4b84a59126b84c8.camel@mediatek.com>
+In-Reply-To: <8874a29ba42eb828d70deb73d4b84a59126b84c8.camel@mediatek.com>
+Accept-Language: zh-TW, en-US
 Content-Language: en-US
-From: Ethan Zhao <etzhao1900@gmail.com>
-In-Reply-To: <3749cd6a1430ac36d1af1fadaa4d90ceffef9c62.1754952762.git.nicolinc@nvidia.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TY0PR03MB6369:EE_|TY1PPF4D0176D00:EE_
+x-ms-office365-filtering-correlation-id: b9a3a738-bb99-4adf-310d-08dddf2d57d4
+x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|1800799024|376014|366016|38070700018;
+x-microsoft-antispam-message-info: =?utf-8?B?SEJoWkJLNmFrZWpCOXQvQjFGU3FyQzBtZ09EbUNDZE15ZVdCdWtGL3RVSXAw?=
+ =?utf-8?B?TTVnTDNzTlVIYnFObGhlNFk0Z3o3a283eWhGblJhOXpRazFjUHI1OWZoTXpH?=
+ =?utf-8?B?bWwyMEZ3ZTQ5dTQzT2wrdmtKaVd6SUJPSWhaenlsMnpJSHNJY2IvREtGRWFx?=
+ =?utf-8?B?SDBGL1JuY1B6REF2NStBdDMralZOeFhsclFJeXhvV3ZjWTVsL2dBMWxHR0Vk?=
+ =?utf-8?B?OW4wNXA0ZDhISkhiRUpkdjhGQ21tRHE1V3JwWm9wZzBJVStWSFMxNnFUOXNy?=
+ =?utf-8?B?YjhrdkoxWGc2UkV3ejJLdWpiSHhYUExBa2RSMUFrU1FTRDVVdmhwVDU4elpn?=
+ =?utf-8?B?RzZsclZZcURoWTYrK2VMWVdLaXVlQVdHd1U1RU9DQ1A3OGpCQjF0aWNqbHVW?=
+ =?utf-8?B?Q1RYK2NZVXFwQXl2a1RZVElMY3B0TzltMlArM3owVHBITTFOYURlZlUwT2Nm?=
+ =?utf-8?B?Wjk4UzVRa3NnbWFYUXdyU1J0OG14ZkVvdlp3R0JxM3pTeEtTaThBTVVTcWg2?=
+ =?utf-8?B?QTV6K0djdnNXaHkxc3NSVTJkc3lJVUdhRHlmVkNOcmJGaXh0b2pHVDQwN1Ji?=
+ =?utf-8?B?VnovdzBjV3J4dm84eTlSZDh4a1BubjQvakRBWXFPNHNQUnNCYUwwaXYzWG5l?=
+ =?utf-8?B?RVVYZW1sOHNOOVk2SVU5MU9kc1hJT2lJUDNZRFJ4UENBVEdrRHVxbWJMbTNn?=
+ =?utf-8?B?NE0zVFVaVDZ2aXpSVVd4UGd1SFd5c2pweW45OUIwRFZnejg5UTFvSzhFTjdD?=
+ =?utf-8?B?TDRaZWI3eFhVUWtCc3p2M01GSnNXTm8vcXNpV2k4bksrL1pqcEpFcVBPZGxt?=
+ =?utf-8?B?bTZ4VDZEcHo0enpGTDJBbXlKdFBOaUFnM05uYllGRXVMVWdvZHl1dmNPbEVV?=
+ =?utf-8?B?aXdGeTNWWFR6cmgzaGVHWjV2WVNJeW82WG13QU4xY2NheTRacVpwRUx1VzBF?=
+ =?utf-8?B?UWkyWklQOERXUGJ5RVEyaTgweVg4VWxVaWV3a0ZmQ2htQ1ZLOXFRb0drRzZw?=
+ =?utf-8?B?UkdDaXFNdGc0RkRNK0N4STllZTRwbktzTXBvT0lWRldhNHRrUTBiZ0Q2SFpx?=
+ =?utf-8?B?V3pPRElvYkpxd2YzNTVNeklrbmJPTjJjalE5WUs3MVcvaEVHVGxxMUhsdkJP?=
+ =?utf-8?B?Z1drRzVQWHF6SHBNcCttOWYxK2RNeEY4cDlkME1TbzlWeFpTUkdlbTdyUHAr?=
+ =?utf-8?B?TVIzTTZSczJJZkRPNklLSjlmdGNIWDU0ejBobXRmam9DY1hGSGVseVUwVGxu?=
+ =?utf-8?B?QTRpREd4UXpHbVlZKytUYVZ5WSsyWDI4Rmd1ZldOQ0FwbEtZUU8wcDkvZFlp?=
+ =?utf-8?B?Rk9SdElhUEdtWWVxcVBkTmlqdi9WWFV4ZlJlSlBVNStoY3c0QjEvTkJuNy9p?=
+ =?utf-8?B?T0t1VXlGK1BZaEx5dDB2MEtrYzZyZXQvK1hzank0UGxRaFpKOUhkQ0NyNHc1?=
+ =?utf-8?B?TEZzeVZFTGgwdGtWcHFQeFRiYnEvVWx0RnJGZVpzWnlEUUd2eS93RG55Z1BY?=
+ =?utf-8?B?TEp3dXYxLzdBVkVDZmdqb3cxTTlGYytxL0pod0JyNWk4Vjc0SGJYWWVVZ21i?=
+ =?utf-8?B?Ry94aVNRODdZVGxIY0JQUGZqZnkzTDRUeGloQlc3RDUxNWJPemkvbUVMS20y?=
+ =?utf-8?B?bWlCTGFaRTQxcUo5VXVISm0vV3BaV3BLNXNOSDlIUjJFS1QzNnZYNWtNb3NE?=
+ =?utf-8?B?d1JXWXFDTzJKOTA1RVRrK0IwMkt6Wjc0MDZ5WVdhMHdId3czYkVtS1VheitJ?=
+ =?utf-8?B?VXhQejhzN09VaDAxK0VycWNwc0QzQVNmWWlncXp4VzRFRHlGU3lNR3pjaE1F?=
+ =?utf-8?B?eVphQ1F0MjRSNVBpM0Y1S1lPM2dScmVJbEI3akdRWkRsWGoxYnQwSytBTU1O?=
+ =?utf-8?B?SDg5RVRDbStndDBUcC91OW81SFlDU1BJNVE1NGpjMlkxL0FpWXJWUjUwTTR2?=
+ =?utf-8?B?eHMxN3U5M1dGb2NhbS9HSnNtSHVpKzhlejltUGVCYVlReWN4SE5yYmo5ekFx?=
+ =?utf-8?Q?Vp/OkBXa7bZDQJYJ3MmCF9k9Kuum5g=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TY0PR03MB6369.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(366016)(38070700018);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?QjZkRXBBeWJPNHVhU1R2Z2pmOGNHM2JxbFd2cVdXbmhjRkVVNEpiY3pkNDll?=
+ =?utf-8?B?SjlOTjBWVkZrVHY0SWM2SDlXd293clU3SXVtclJSclAxWHVQU1JZdnJ2ZkxW?=
+ =?utf-8?B?RjBpSlV5djBsOUdtVzhSZUR3WW9zS21NK3FqY2RmL294Ty9BTEhxSXpEZCtO?=
+ =?utf-8?B?RTNlNStBMXJoQTZENUZmQUxiazlnNURMRWtyU1lsV3hoV1RpODBlOGZZUWVm?=
+ =?utf-8?B?M0R4YUNXUjNkU0NNenVtZGFwbWlrdC91K0ZGWm82YXFCUmZ1OUZ6S1RxSlNU?=
+ =?utf-8?B?c1pMZmZYQVJDRG5LTUUwSXJoWm8rWTZPUkl0YWhQdjQ1eHJSNnFCUU9MUnBO?=
+ =?utf-8?B?TCtVNExlREZzRW05VmVLS0hTMWcwamI2K3JGVzNCdGpPOVZVT3hxMENqUzBL?=
+ =?utf-8?B?T1hKSjFsRWIyRHVEZ3hOZllRVmdkQVBRMnJ6OGN1c1BySENEN01OamNrUGh0?=
+ =?utf-8?B?ZGhMaEplZEZ1ejhQR3pVdHZmcG1NeUpycVBKNml1UXRsVnE0NWJqZnpIUlRH?=
+ =?utf-8?B?UEI5QVB1ejJYUE5lbWZYMU91UXZkcUtTQlRHUWlPc0pLZlloRzJtUTJSNmR1?=
+ =?utf-8?B?TFVFNG9OczByNE1SdGRaNW5xVTVIN0xlWFdLZy8rZW43TEJTaVpxcnhXbzFY?=
+ =?utf-8?B?VnJ2V0xhOTU0ZmdzKzNldU03N09oaUJDL1R6Y3h0RXcreUIxdmZYTHZ4SHFx?=
+ =?utf-8?B?L2Q1dGYvbXpHMWFPZUFWeFlEVGVEczhKSThSR1FRL2tzUlJPNC9mZ05qZnVQ?=
+ =?utf-8?B?Ulo0Wm9rRFg1ZEZNYnUxVHFKaytDdE1renBHeVNZeE95RnA3M2U1Skp3VE9u?=
+ =?utf-8?B?QWZwYmhlbms4RlY5U0I4NjhMMXBzVUJyVEcyWEpaNlpiODREWG51QTV0dXdB?=
+ =?utf-8?B?NWFFS0hvZGlpNjV5azhsNFRjcit2QWEvR2F4R25pZjl4TEJ3cEhkSGZpR25O?=
+ =?utf-8?B?bktZekZnRXRuSDRmS1ZXVkxXNDV0b2JyN2xLTnRLWWwrdWRudUU4amI3Uk9j?=
+ =?utf-8?B?TVhuV1o0UVZFNjQ1YndDa05GK1pTczVZd1lGcmgrLzMwOEdwWDhVSVQ5clFp?=
+ =?utf-8?B?MndmenR0ZndNSURNUXptYWtiUmdLZDRXL2dWZWZBNklUMDV4aEJWbi83QVl4?=
+ =?utf-8?B?YTAxYVZHeFp5QVpJNUoyZGdEc1hIeWcxUkRGLyt3QVpqeVBBVHdYN0tBdzFS?=
+ =?utf-8?B?aVAzSnFGOWdPL0hJbTNRaEdOUDJDTVMycmhTaUlCcGltZ2RHdEs4K2dYaGpz?=
+ =?utf-8?B?V0FKalU0V1BtSUNaVEtnTWdyOEdVaHNEem5PMzE2RkZQSkgwNVI2VE5vOTFV?=
+ =?utf-8?B?aGJ1UE9ocWY5ZmhOSnhnU3k5N2xLM1o4czZUVGFJR2VjWktsS0d1N0dOS0dP?=
+ =?utf-8?B?MFpZWVIrbEwrYlcyRGZtb2hhZU1LaU9SZlg3VTlXK0FuWFNHaFJFeHZhVGpr?=
+ =?utf-8?B?SExJVlJnZU1peEhBdUxTL1BEYnIrNHFCbjBzRHo3bHFEaGx6Wm1McVFDMFlU?=
+ =?utf-8?B?Q1V1L3FGeFhDR1JPZ0ROQ3Q0RHpjM2ZkS1M5V1Zhcm5kZGFXZkphQ1J4cUkv?=
+ =?utf-8?B?Y2s0dGg0ZW5HQThVMWphSEpWL09VMkVOSVJtMkNiL0w0MS9WMW95ZGMxS1Ra?=
+ =?utf-8?B?dHRLTThxcWJGcVl1TGtOQ1V3MHhueGMzNmw1UmZNaHVjTnpEdFdGVVd6aStq?=
+ =?utf-8?B?N0RzbHpUT1ZpeEY2YUl3MnJkUENyd29hRE1HMGNjVEZ2dGFzWDlTckFtSC9H?=
+ =?utf-8?B?a0U0WkU2eTh5MGxncURKb3R4elA2K3FBUkkxcks0YUwvK0hLRGhKc01WS0Vn?=
+ =?utf-8?B?bEtGQmFWU3ZBSGFoQ0RvV2wwb1pvNms0dlRLMDRrNkptZ2pXNVZqUFFjdUhY?=
+ =?utf-8?B?bHVVMnc3ZkVxV21sa1NYdnJ3T0R4NWZwV2FnN0FGZ2V4S2xtL3lGZ2srQzA4?=
+ =?utf-8?B?VUI1aWZMS2FyZGNGQXhGcG4rVjUxSmJQQ3llN2hqcDBKWjB0b2JPdmR5Mmdv?=
+ =?utf-8?B?bC85RWVPbVZLSXU3NjBSaVpqekZncit2ck5vU1k2U1dGQnhHRWx6ckx6TFFr?=
+ =?utf-8?B?eWxvQ1BGUjZsV3Y5eWFVVXNmelV1UHg0Kys5Z3RqK3BGVGxVWTZtQjkranQ2?=
+ =?utf-8?B?NUNscDNoN1lKTzZjZTkvSGtIZGtBR1VicG9uN1pydGVCZExyL3lWUmllOVI2?=
+ =?utf-8?B?Rnc9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <8E2B06B5F942414E908C7F3B3E6AF517@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TY0PR03MB6369.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b9a3a738-bb99-4adf-310d-08dddf2d57d4
+X-MS-Exchange-CrossTenant-originalarrivaltime: 19 Aug 2025 14:33:19.6052
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 87lAV6sSJNhc2/Wf/8XTrwaDVCsH33OwnEZjTLxWkf542KeA73e5f0s5lktBNt4ezIA5ozJjG3RQIegM9JOO5g==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY1PPF4D0176D00
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250819_071258_451640_86B2496C 
-X-CRM114-Status: GOOD (  31.27  )
+X-CRM114-CacheID: sfid-20250819_073332_460392_C71AD0CE 
+X-CRM114-Status: UNSURE (   8.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,296 +226,10 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 8/12/2025 6:59 AM, Nicolin Chen wrote:
-> PCIe permits a device to ignore ATS invalidation TLPs, while processing a
-> reset. This creates a problem visible to the OS where an ATS invalidation
-> command will time out: e.g. an SVA domain will have no coordination with a
-> reset event and can racily issue ATS invalidations to a resetting device.
-> 
-> The PCIe spec in sec 10.3.1 IMPLEMENTATION NOTE recommends to disable and
-> block ATS before initiating a Function Level Reset. It also mentions that
-> other reset methods could have the same vulnerability as well.
-> 
-> Now iommu_dev_reset_prepare/done() helpers are introduced for this matter.
-> Use them in all the existing reset functions, which will attach the device
-> to an IOMMU_DOMAIN_BLOCKED during a reset, so as to allow IOMMU driver to:
->   - invoke pci_disable_ats() and pci_enable_ats(), if necessary
->   - wait for all ATS invalidations to complete
->   - stop issuing new ATS invalidations
->   - fence any incoming ATS queries
-> 
-> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
-> ---
->   drivers/pci/pci-acpi.c | 17 +++++++++--
->   drivers/pci/pci.c      | 68 ++++++++++++++++++++++++++++++++++++++----
->   drivers/pci/quirks.c   | 23 +++++++++++++-
->   3 files changed, 100 insertions(+), 8 deletions(-)
-> 
-> diff --git a/drivers/pci/pci-acpi.c b/drivers/pci/pci-acpi.c
-> index ddb25960ea47d..adaf46422c05d 100644
-> --- a/drivers/pci/pci-acpi.c
-> +++ b/drivers/pci/pci-acpi.c
-> @@ -9,6 +9,7 @@
->   
->   #include <linux/delay.h>
->   #include <linux/init.h>
-> +#include <linux/iommu.h>
->   #include <linux/irqdomain.h>
->   #include <linux/pci.h>
->   #include <linux/msi.h>
-> @@ -969,6 +970,7 @@ void pci_set_acpi_fwnode(struct pci_dev *dev)
->   int pci_dev_acpi_reset(struct pci_dev *dev, bool probe)
->   {
->   	acpi_handle handle = ACPI_HANDLE(&dev->dev);
-> +	int ret = 0;
->   
->   	if (!handle || !acpi_has_method(handle, "_RST"))
->   		return -ENOTTY;
-> @@ -976,12 +978,23 @@ int pci_dev_acpi_reset(struct pci_dev *dev, bool probe)
->   	if (probe)
->   		return 0;
->   
-> +	/*
-> +	 * Per PCIe r6.3, sec 10.3.1 IMPLEMENTATION NOTE, software disables ATS
-> +	 * before initiating a reset. Notify the iommu driver that enabled ATS.
-> +	 */
-> +	ret = iommu_dev_reset_prepare(&dev->dev);
-> +	if (ret) {
-> +		pci_err(dev, "failed to stop IOMMU\n");
-> +		return ret;
-> +	}
-> +
->   	if (ACPI_FAILURE(acpi_evaluate_object(handle, "_RST", NULL, NULL))) {
->   		pci_warn(dev, "ACPI _RST failed\n");
-> -		return -ENOTTY;
-> +		ret = -ENOTTY;
->   	}
->   
-> -	return 0;
-> +	iommu_dev_reset_done(&dev->dev);
-> +	return ret;
->   }
->   
->   bool acpi_pci_power_manageable(struct pci_dev *dev)
-> diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
-> index b0f4d98036cdd..d6d87e22d81b3 100644
-> --- a/drivers/pci/pci.c
-> +++ b/drivers/pci/pci.c
-> @@ -13,6 +13,7 @@
->   #include <linux/delay.h>
->   #include <linux/dmi.h>
->   #include <linux/init.h>
-> +#include <linux/iommu.h>
->   #include <linux/msi.h>
->   #include <linux/of.h>
->   #include <linux/pci.h>
-> @@ -4529,13 +4530,26 @@ EXPORT_SYMBOL(pci_wait_for_pending_transaction);
->    */
->   int pcie_flr(struct pci_dev *dev)
->   {
-> +	int ret = 0;
-> +
->   	if (!pci_wait_for_pending_transaction(dev))
->   		pci_err(dev, "timed out waiting for pending transaction; performing function level reset anyway\n");
->   
-> +	/*
-> +	 * Per PCIe r6.3, sec 10.3.1 IMPLEMENTATION NOTE, software disables ATS
-> +	 * before initiating a reset. Notify the iommu driver that enabled ATS.
-> +	 * Have to call it after waiting for pending DMA transaction.
-> +	 */
-> +	ret = iommu_dev_reset_prepare(&dev->dev);
-If we dont' consider the association between IOMMU and devices in FLR(),
-it can be understood that more complex processing logic resides outside
-this function. However, if the FLR() function already synchironizes and
-handles the association with IOMMU like this (disabling ATS by attaching
-device to blocking domain), then how would the following scenarios
-behave ?
-
-1. Reset one of PCIe alias devices.
-2. Reset PF when its VFs are actvie.
-....
-
-Thanks,
-Ethan> +	if (ret) {
-> +		pci_err(dev, "failed to stop IOMMU\n");
-> +		return ret;
-> +	}
-> +
->   	pcie_capability_set_word(dev, PCI_EXP_DEVCTL, PCI_EXP_DEVCTL_BCR_FLR);
->   
->   	if (dev->imm_ready)
-> -		return 0;
-> +		goto done;
->   
->   	/*
->   	 * Per PCIe r4.0, sec 6.6.2, a device must complete an FLR within
-> @@ -4544,7 +4558,11 @@ int pcie_flr(struct pci_dev *dev)
->   	 */
->   	msleep(100);
->   
-> -	return pci_dev_wait(dev, "FLR", PCIE_RESET_READY_POLL_MS);
-> +	ret = pci_dev_wait(dev, "FLR", PCIE_RESET_READY_POLL_MS);
-> +
-> +done:
-> +	iommu_dev_reset_done(&dev->dev);
-> +	return ret;
->   }
->   EXPORT_SYMBOL_GPL(pcie_flr);
->   
-> @@ -4572,6 +4590,7 @@ EXPORT_SYMBOL_GPL(pcie_reset_flr);
->   
->   static int pci_af_flr(struct pci_dev *dev, bool probe)
->   {
-> +	int ret = 0;
->   	int pos;
->   	u8 cap;
->   
-> @@ -4598,10 +4617,21 @@ static int pci_af_flr(struct pci_dev *dev, bool probe)
->   				 PCI_AF_STATUS_TP << 8))
->   		pci_err(dev, "timed out waiting for pending transaction; performing AF function level reset anyway\n");
->   
-> +	/*
-> +	 * Per PCIe r6.3, sec 10.3.1 IMPLEMENTATION NOTE, software disables ATS
-> +	 * before initiating a reset. Notify the iommu driver that enabled ATS.
-> +	 * Have to call it after waiting for pending DMA transaction.
-> +	 */
-> +	ret = iommu_dev_reset_prepare(&dev->dev);
-> +	if (ret) {
-> +		pci_err(dev, "failed to stop IOMMU\n");
-> +		return ret;
-> +	}
-> +
->   	pci_write_config_byte(dev, pos + PCI_AF_CTRL, PCI_AF_CTRL_FLR);
->   
->   	if (dev->imm_ready)
-> -		return 0;
-> +		goto done;
->   
->   	/*
->   	 * Per Advanced Capabilities for Conventional PCI ECN, 13 April 2006,
-> @@ -4611,7 +4641,11 @@ static int pci_af_flr(struct pci_dev *dev, bool probe)
->   	 */
->   	msleep(100);
->   
-> -	return pci_dev_wait(dev, "AF_FLR", PCIE_RESET_READY_POLL_MS);
-> +	ret = pci_dev_wait(dev, "AF_FLR", PCIE_RESET_READY_POLL_MS);
-> +
-> +done:
-> +	iommu_dev_reset_done(&dev->dev);
-> +	return ret;
->   }
->   
->   /**
-> @@ -4632,6 +4666,7 @@ static int pci_af_flr(struct pci_dev *dev, bool probe)
->   static int pci_pm_reset(struct pci_dev *dev, bool probe)
->   {
->   	u16 csr;
-> +	int ret;
->   
->   	if (!dev->pm_cap || dev->dev_flags & PCI_DEV_FLAGS_NO_PM_RESET)
->   		return -ENOTTY;
-> @@ -4646,6 +4681,16 @@ static int pci_pm_reset(struct pci_dev *dev, bool probe)
->   	if (dev->current_state != PCI_D0)
->   		return -EINVAL;
->   
-> +	/*
-> +	 * Per PCIe r6.3, sec 10.3.1 IMPLEMENTATION NOTE, software disables ATS
-> +	 * before initiating a reset. Notify the iommu driver that enabled ATS.
-> +	 */
-> +	ret = iommu_dev_reset_prepare(&dev->dev);
-> +	if (ret) {
-> +		pci_err(dev, "failed to stop IOMMU\n");
-> +		return ret;
-> +	}
-> +
->   	csr &= ~PCI_PM_CTRL_STATE_MASK;
->   	csr |= PCI_D3hot;
->   	pci_write_config_word(dev, dev->pm_cap + PCI_PM_CTRL, csr);
-> @@ -4656,7 +4701,9 @@ static int pci_pm_reset(struct pci_dev *dev, bool probe)
->   	pci_write_config_word(dev, dev->pm_cap + PCI_PM_CTRL, csr);
->   	pci_dev_d3_sleep(dev);
->   
-> -	return pci_dev_wait(dev, "PM D3hot->D0", PCIE_RESET_READY_POLL_MS);
-> +	ret = pci_dev_wait(dev, "PM D3hot->D0", PCIE_RESET_READY_POLL_MS);
-> +	iommu_dev_reset_done(&dev->dev);
-> +	return ret;
->   }
->   
->   /**
-> @@ -5111,6 +5158,16 @@ static int cxl_reset_bus_function(struct pci_dev *dev, bool probe)
->   	if (rc)
->   		return -ENOTTY;
->   
-> +	/*
-> +	 * Per PCIe r6.3, sec 10.3.1 IMPLEMENTATION NOTE, software disables ATS
-> +	 * before initiating a reset. Notify the iommu driver that enabled ATS.
-> +	 */
-> +	rc = iommu_dev_reset_prepare(&dev->dev);
-> +	if (rc) {
-> +		pci_err(dev, "failed to stop IOMMU\n");
-> +		return rc;
-> +	}
-> +
->   	if (reg & PCI_DVSEC_CXL_PORT_CTL_UNMASK_SBR) {
->   		val = reg;
->   	} else {
-> @@ -5125,6 +5182,7 @@ static int cxl_reset_bus_function(struct pci_dev *dev, bool probe)
->   		pci_write_config_word(bridge, dvsec + PCI_DVSEC_CXL_PORT_CTL,
->   				      reg);
->   
-> +	iommu_dev_reset_done(&dev->dev);
->   	return rc;
->   }
->   
-> diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-> index d97335a401930..6157c6c02bdb0 100644
-> --- a/drivers/pci/quirks.c
-> +++ b/drivers/pci/quirks.c
-> @@ -21,6 +21,7 @@
->   #include <linux/pci.h>
->   #include <linux/isa-dma.h> /* isa_dma_bridge_buggy */
->   #include <linux/init.h>
-> +#include <linux/iommu.h>
->   #include <linux/delay.h>
->   #include <linux/acpi.h>
->   #include <linux/dmi.h>
-> @@ -4225,6 +4226,26 @@ static const struct pci_dev_reset_methods pci_dev_reset_methods[] = {
->   	{ 0 }
->   };
->   
-> +static int __pci_dev_specific_reset(struct pci_dev *dev, bool probe,
-> +				    const struct pci_dev_reset_methods *i)
-> +{
-> +	int ret;
-> +
-> +	/*
-> +	 * Per PCIe r6.3, sec 10.3.1 IMPLEMENTATION NOTE, software disables ATS
-> +	 * before initiating a reset. Notify the iommu driver that enabled ATS.
-> +	 */
-> +	ret = iommu_dev_reset_prepare(&dev->dev);
-> +	if (ret) {
-> +		pci_err(dev, "failed to stop IOMMU\n");
-> +		return ret;
-> +	}
-> +
-> +	ret = i->reset(dev, probe);
-> +	iommu_dev_reset_done(&dev->dev);
-> +	return ret;
-> +}
-> +
->   /*
->    * These device-specific reset methods are here rather than in a driver
->    * because when a host assigns a device to a guest VM, the host may need
-> @@ -4239,7 +4260,7 @@ int pci_dev_specific_reset(struct pci_dev *dev, bool probe)
->   		     i->vendor == (u16)PCI_ANY_ID) &&
->   		    (i->device == dev->device ||
->   		     i->device == (u16)PCI_ANY_ID))
-> -			return i->reset(dev, probe);
-> +			return __pci_dev_specific_reset(dev, probe, i);
->   	}
->   
->   	return -ENOTTY;
-
+SGkgQW5kaSwgSGkgRGFuaWVsLA0KIA0KSnVzdCBjaGVja2luZyBpbiB0byBzZWUgaWYgdGhlcmUg
+YXJlIGFueSB1cGRhdGVzIG9yIGZlZWRiYWNrIHJlZ2FyZGluZw0KdGhpcyBwYXRjaC4NCg0KQXMg
+bWVudGlvbmVkIGVhcmxpZXIsIHRoZSBpc3N1ZSBzZWVtcyB0byBiZSByZWxhdGVkIHRvIHRoZSBy
+dDUxOTBhDQpjYWxsaW5nIGNvbnRleHQgcmF0aGVyIHRoYW4gdGhpcyBwYXRoIGl0c2VsZi4NCg0K
+V291bGQgYXBwcmVjaWF0ZSB5b3VyIHJldmlldyBvciBjb21tZW50cy4gVGhhbmsgeW91IQ0KIA0K
+QmVzdCByZWdhcmRzLA0KWm9pZQ0K
 
