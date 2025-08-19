@@ -4,71 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BAC6CA0EEB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Aug 2025 20:42:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A638CA0EE6
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Aug 2025 22:52:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:To:
-	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S3QvULILPiJhQx+3azi75CxDR2UwJAQV6a3CiOHiJ+k=; b=XzOJcY2amvuVK9ks4uxKV+mGP4
-	HFCsORIgXm8RoS8WkHMTGxiQYqnVsOqOEGycWHb3XQgD7u0tUe6QGgEy7KPA9qUKAq7Ee4lQ1D5OX
-	nkp2Fkl1nmKSocrWYQXsBkeudKNLpdeYkPH6UqWZ9fBYhgcdzaKns1XK0LqjGIhyxUkAIIGP3iLMJ
-	oIDO7vKyKmdMueq8ecR4Is30UmSkrFpWl18umnDblp0pdiMxpD+17R+ENmzai6lh7tCWhXf4Jjg2j
-	jMgDK1slME1JNtnwpabx2GFijX42oUe6J98/dCDBjB3vKIsUP7uctnwar3Og4gm/ygzq2itgy866v
-	YpMqpwuw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cj4kI8/yD81x4k/3/fRhFKit8IIVcBticQyInzsa14o=; b=YNK2OByIgVedqGGEVVDb46uhfL
+	wS/FNc23ZuXNt1j0tTp/6yIKtZ5hR2H/vgSz/oGEjs+Br2eLRghgMhS/PSxondDSm/KDVDNJgoEnK
+	500C+K+awWL22UA44g4SPe2Z8NDMCIsY1e6z6WbkemlJlOVQdXCY8+INClsM8elzcZ2Cqi5aVwyJ2
+	UtHigOJFzUEp9xA77hdhkIDmBxerHGwn7A7qdTD47rrJQ05KiVcU9s7KRpcQRKXmkCiMo74lEae6k
+	QroyCtVpbPYCuHXma86EGEiHujYP/W6l6FJgouz0Szqal1TommoaiA2kGNbDdqgKENxB4JmsSR57F
+	amh5hVwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoTAX-0000000BZ1Y-12Jw;
-	Tue, 19 Aug 2025 20:42:57 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1uoVCH-0000000BnGg-2ywV;
+	Tue, 19 Aug 2025 22:52:53 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoRRc-0000000BLQ7-2lOt;
-	Tue, 19 Aug 2025 18:52:29 +0000
+	id 1uoTal-0000000BcIh-3j1d;
+	Tue, 19 Aug 2025 21:10:03 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 7B76B5C65AD;
-	Tue, 19 Aug 2025 18:52:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 64AB7C4CEF1;
-	Tue, 19 Aug 2025 18:52:23 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 2C696613EF;
+	Tue, 19 Aug 2025 21:10:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 12D18C4CEF1;
+	Tue, 19 Aug 2025 21:09:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755629547;
-	bh=UtpGsqXUkldWGa3nJKuOrHaS+PduZ9qTMdBlN9e+xOY=;
-	h=From:To:In-Reply-To:References:Subject:Date:From;
-	b=r+iA9dLmj6cVcyob6HLoSTvGYGcB4vNpyq5nDs1dLlAuYwxuYvdz2dIxJMRTFnDbB
-	 ngKZot3gY1gBpWm8qEElguO95+95Fjhx2qo3EZPCTtBiDhFkwUQ15WTT4omOLWdUDJ
-	 fb+seFWe7JcwLS5EAT3BuLplKV9J0hp6BHU/FYieC0RXGHRK2ga4wFag12a87a3nHa
-	 2GASII1kgQFzWdB6huGdUs9exYHIfvPOv8+lS4Iq9FE3+UIN1jfGtUsA/tg/48dPex
-	 jS2H5rn2P2+aHxmw6t7sbD4Ciod6k7kqfB1MW3Oa8aiRgVAJt0VFLBnC/5K9tkH9RX
-	 xy6zNeW7U8SUg==
-From: Mark Brown <broonie@kernel.org>
-To: Raju Rangoju <Raju.Rangoju@amd.com>, Sunny Luo <sunny.luo@amlogic.com>, 
- Xianwei Zhao <xianwei.zhao@amlogic.com>, 
- Conor Dooley <conor.dooley@microchip.com>, 
- Daire McNamara <daire.mcnamara@microchip.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Daniel Mack <daniel@zonque.org>, Haojian Zhuang <haojian.zhuang@gmail.com>, 
- Robert Jarzmik <robert.jarzmik@free.fr>, Andi Shyti <andi.shyti@kernel.org>, 
- Tudor Ambarus <tudor.ambarus@linaro.org>, 
- Krzysztof Kozlowski <krzk@kernel.org>, 
- Alim Akhtar <alim.akhtar@samsung.com>, linux-spi@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org, 
- linux-riscv@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
- Xichao Zhao <zhao.xichao@vivo.com>
-In-Reply-To: <20250819092044.549464-1-zhao.xichao@vivo.com>
-References: <20250819092044.549464-1-zhao.xichao@vivo.com>
-Subject: Re: [PATCH v1 0/6] spi: Remove the use of dev_err_probe()
-Message-Id: <175562954316.246851.7964895006967945147.b4-ty@kernel.org>
-Date: Tue, 19 Aug 2025 19:52:23 +0100
+	s=k20201202; t=1755637801;
+	bh=V4rSZobOG7FpaYQDoGuuNjzv1YSuHyGLCK7LLSVzUOc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=thCYtja21lUCQto/XtSxT9corknakG5qz6lpKP/K4wUjJs3/kMDqfxL2Tl21gWLKy
+	 wtRmbwonV+WsfBYpt1o6aPIkq3OpZqDaqtDL0srux6zKqCGNgMCuY+ULNgE2uUPM/g
+	 OJl81QrxCpvL6rbm+VbahV0kte3eP8S/Ir9aUn52s/ERLlJ/vNDewrVvbeshxnxxjm
+	 MxeAHfpPkmQtNs2duT2AKbodr6IOX0sV9tynWgmLBr37v0VCb4qZfK874Mj7iHVDKp
+	 Q27kYIZ8xQc/fdVpXf/YtDOpu7Qae9xHz1CKBZJfZFH2nreVNcp6HlQHEOfGChL5dZ
+	 /LkdzawHJlhbA==
+Date: Tue, 19 Aug 2025 20:09:48 -0100
+From: Andi Shyti <andi.shyti@kernel.org>
+To: Leilk Liu <leilk.liu@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Qii Wang <qii.wang@mediatek.com>, Wolfram Sang <wsa@kernel.org>, 
+	Liguo Zhang <liguo.zhang@mediatek.com>, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH] i2c: mediatek: fix potential incorrect use of
+ I2C_MASTER_WRRD
+Message-ID: <cf5wxalhd2536cxnj7zn2jngly5dmvoknjnb2gbq6mzqff4tgp@4syhblgi35yu>
+References: <20250816075434.31780-1-leilk.liu@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.15-dev-cff91
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250819_115228_777508_6C7EB6DE 
-X-CRM114-Status: GOOD (  12.60  )
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20250816075434.31780-1-leilk.liu@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,56 +72,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 19 Aug 2025 17:20:37 +0800, Xichao Zhao wrote:
-> The dev_err_probe() doesn't do anything when error is '-ENOMEM'. Therefore,
-> remove the useless call to dev_err_probe(), and just return the value instead.
+Hi Leilk,
+
+On Sat, Aug 16, 2025 at 03:53:54PM +0800, Leilk Liu wrote:
+> From: "Leilk.Liu" <leilk.liu@mediatek.com>
 > 
-> Xichao Zhao (6):
->   spi: spi_amd: Remove the use of dev_err_probe()
->   spi: SPISG: Remove the use of dev_err_probe()
->   spi: Remove the use of dev_err_probe()
->   spi: mt65xx: Remove the use of dev_err_probe()
->   spi: pxa2xx: Remove the use of dev_err_probe()
->   spi: s3c64xx: Remove the use of dev_err_probe()
+> The old IC does not support the I2C_MASTER_WRRD (write-then-read)
+> function, but the current code’s handling of i2c->auto_restart may
+> potentially lead to entering the I2C_MASTER_WRRD software flow,
+> resulting in unexpected bugs.
+
+do you mean unexpected behaviour?
+
+> Instead of repurposing the auto_restart flag, add a separate flag
+> to signal I2C_MASTER_WRRD operations.
 > 
-> [...]
+> Also fix handling of msgs. If the operation (i2c->op) is
+> I2C_MASTER_WRRD, then the msgs pointer is incremented by 2.
+> For all other operations, msgs is simply incremented by 1.
+> 
+> Fixes: 173b77e8d8fe ("i2c: mediatek: add i2c first write then read optimization")
+> 
 
-Applied to
+No need for blank line here. BTW, this doesn't look the commit
+that is introducing the issue.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+> Signed-off-by: Leilk.Liu <leilk.liu@mediatek.com>
+> ---
+>  drivers/i2c/busses/i2c-mt65xx.c | 17 ++++++++++-------
+>  1 file changed, 10 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+> index ab456c3717db..dee40704825c 100644
+> --- a/drivers/i2c/busses/i2c-mt65xx.c
+> +++ b/drivers/i2c/busses/i2c-mt65xx.c
+> @@ -1243,6 +1243,7 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
+>  {
+>  	int ret;
+>  	int left_num = num;
+> +	bool write_then_read_en = false;
+>  	struct mtk_i2c *i2c = i2c_get_adapdata(adap);
+>  
+>  	ret = clk_bulk_enable(I2C_MT65XX_CLK_MAX, i2c->clocks);
+> @@ -1256,6 +1257,7 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
+>  		if (!(msgs[0].flags & I2C_M_RD) && (msgs[1].flags & I2C_M_RD) &&
+>  		    msgs[0].addr == msgs[1].addr) {
+>  			i2c->auto_restart = 0;
+> +			write_then_read_en = true;
 
-Thanks!
-
-[1/6] spi: spi_amd: Remove the use of dev_err_probe()
-      commit: 2a5d410916d3a8dcac06f72494f252314e933cfb
-[2/6] spi: SPISG: Remove the use of dev_err_probe()
-      commit: 0d00ebc6b869f4df67c05522bc1e8d01d1c7daa7
-[3/6] spi: Remove the use of dev_err_probe()
-      commit: b875b97017050b92c64273178a0b0d282ea67874
-[4/6] spi: mt65xx: Remove the use of dev_err_probe()
-      commit: 2bee48c9d1cd1749922d0e2df54330c924e14a0e
-[5/6] spi: pxa2xx: Remove the use of dev_err_probe()
-      commit: 67259af78219bdbdea00491f32b1c0971a33401e
-[6/6] spi: s3c64xx: Remove the use of dev_err_probe()
-      commit: 27848c082ba0b22850fd9fb7b185c015423dcdc7
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+why don't we set "i2c->op = I2C_MASTER_WRRD" here and avoid an
+extra flag?
 
 Thanks,
-Mark
+Andi
 
+>  		}
+>  	}
+>  
 
