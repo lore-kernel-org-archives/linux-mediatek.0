@@ -4,120 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF930CA0EF5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Aug 2025 09:42:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED8D8CA0EF5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Aug 2025 09:58:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QnXiuIxaokcuSo15qKXZtA+QjWaeBQk02y9Ttn3mEC4=; b=AIK2xy2VuaQI0tT+MfOz6h7z0x
-	AXXIuRtXnrx02/6lOtOp9v6RB6M+j4OAwywqhFkbSEbeQ2ew3XtU23YAFtKT1aW4/3/eIMNvblsgN
-	nOkyjYYasahczCaqYoTZFVMzfATg4qmQ+vUXEgXtBRWC23YYuygp001Xc9pkaDes2wMwYn7IlX5gm
-	LZD51QvwWUZaLel8/aam3hxoQW8eJVCwiPsS/lAv1HFO1l/3QBuKwrSPQZ3193IQTVWgKiuw9BaJ7
-	+Vpd/cMCmi+7wxsfUXWGFjKaJ2FCY/3eKlKr1jVXguIA8Cm4dmXLDf+r2IXA8N6vWZ9GNegWEICGM
-	Aosp2M2A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xTaLGV7hdRR53W/flRFCSJFdyfrUEiBzK8a5bGNYHEc=; b=miF8ZmDjeIFm5kMjO+RmDdiW6R
+	3u+iLsa6QNpoRMOatU/rKAfUlLJWxOcPA+I6TULV35W+cJW9gWjRQBXH2V7iSSMTGyjDyogTPE0Ap
+	pba+8RpDCZqSMBBcgcno0zU+W0Sz7XoXpGzi6Lj0t/qJyVKJAuFhbRIv36LxklYGX2TtXsj49XopX
+	5n6z3T0cKbTJ7AJledqqyWXc9ev+uqckU68O8yuMy8ElDDI2Vapegg3I0bYgyPCpvfeVsr+HV+jtW
+	L3H3OeaQwndM5nUWuvKj2tZgAGfcocKkBKz55zqBiPt34iQTeIh7YdlOP1qyUJ7G7JJr030pyhLsR
+	G3VZc3yA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoIqt-0000000A0CY-3bSH;
-	Tue, 19 Aug 2025 09:41:59 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uoJ6s-0000000A3Me-2UqX;
+	Tue, 19 Aug 2025 09:58:30 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoIHh-00000009tMk-4AIO;
-	Tue, 19 Aug 2025 09:05:39 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id B7D9345A6A;
-	Tue, 19 Aug 2025 09:05:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5D362C4CEF1;
-	Tue, 19 Aug 2025 09:05:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755594337;
-	bh=pP3eZifOX9Dy1sY+bGhRqy5fEcOl+MhXTNZZ7gowFqA=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=oGmj8yx8M/ZeZ1HSRSn4x6n5C+8tqlU5HrC+96h8MrbiGJxKrsCOdInNik43Gq/U0
-	 Xm16u0cDjQGpf0y8xk11AavN/XtbpZ4E/XcGCO/XkzM36yBA6CHVl6fq/1SSKL2dt2
-	 y9IrRRVBwij9bjLA3FIsZV+Wsgv46k7tjo+OobYoC0DhVL785MynE749ea0PEtrKuo
-	 joALcJzTGGQlXdx8KNcQ5tmizzrXPKbokXrKMqTbud+uQcBpSVWVVokr5z3wFNa8mj
-	 35x6GGYy7yWjE+3jLbapiRTMgN5a8B6JGtRMmuR0hWpP039q6Mv/bUEDyplIzU+cgS
-	 IFolBObuffIrQ==
-Message-ID: <b62ed000-e21f-4b19-8d26-c431dc3ea42b@kernel.org>
-Date: Tue, 19 Aug 2025 11:05:31 +0200
+	id 1uoIOs-00000009uQl-2Dkz;
+	Tue, 19 Aug 2025 09:13:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1755594779;
+	bh=nLwgX0rt2w+Inkkf34i/Uun1hxhNuo283Du7mGcFnw0=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=dmyJzvwdD2oD2FA+P7Jf0WYb7DiNDMsSsqqC+w3eByrplSvm5P6/JiN4Bnmc9RXZg
+	 ZBzFkqlUjidrS5O2k++VziehpoX4z+eoBg/tDFXcfbuaULb5mNpaCDbaHK4qc/OK6P
+	 KaKLwfcXifGQyx4e0J9Wnnoco2dFwUx4ZNr63+kEyHp2PFncQGwJNx885D7bLnYWUP
+	 wLNMiYKllEWYiYE0nZXQ4R+e2YdR0wmf8bR7VSNN8x7k68F3XpwLdN+VQje1uZISaE
+	 2OKFTumwkHm729xNyan5REMukD1yFfBl1w8P9ZmspuNCF/YKVRGPQCCt4RjVPY3HPY
+	 SVaDtz8wlAsxA==
+Received: from 2a01cb0892f2d600c8f85cf092d4af51.ipv6.abo.wanadoo.fr (2a01cb0892F2d600c8f85cF092d4AF51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: jmassot)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DC5FA17E0154;
+	Tue, 19 Aug 2025 11:12:58 +0200 (CEST)
+Message-ID: <8be063910b553945da12263818bd05c4e90e27f6.camel@collabora.com>
+Subject: Re: [PATCH 8/9] arm64: dts: mediatek: mt8183-kukui: Fix
+ pull-down/up-adv values
+From: Julien Massot <julien.massot@collabora.com>
+To: Chen-Yu Tsai <wenst@chromium.org>, Linus Walleij
+ <linus.walleij@linaro.org>
+Cc: kernel@collabora.com, Michael Turquette <mturquette@baylibre.com>, 
+ Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski <krzk+dt@kernel.org>,  Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
+ <angelogioacchino.delregno@collabora.com>, Ikjoon Jang <ikjn@chromium.org>,
+  Enric Balletbo i Serra	 <eballetbo@kernel.org>, Weiyi Lu
+ <weiyi.lu@mediatek.com>, Eugen Hristev	 <eugen.hristev@linaro.org>, Liam
+ Girdwood <lgirdwood@gmail.com>, Mark Brown	 <broonie@kernel.org>, Julien
+ Massot <jmassot@collabora.com>, Sean Wang	 <sean.wang@kernel.org>,
+ linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-sound@vger.kernel.org, 
+	linux-gpio@vger.kernel.org
+Date: Tue, 19 Aug 2025 11:12:58 +0200
+In-Reply-To: <CAGXv+5FXZ_byK8Ftb9LjfQMkgtLd7mTmWgz_Nsvcv8=jy53T=g@mail.gmail.com>
+References: <20250801-mtk-dtb-warnings-v1-0-6ba4e432427b@collabora.com>
+	 <20250801-mtk-dtb-warnings-v1-8-6ba4e432427b@collabora.com>
+	 <CAGXv+5EHk=f62+KiLo-aWMcd0-q+_59kno+uOW5rdYaq5q+5tQ@mail.gmail.com>
+	 <CACRpkdbWctNH0XJfcHfVJM9Etp0WCXpdyhhyaQemH-Xc0LDr0A@mail.gmail.com>
+	 <CAGXv+5ECsP7_wbdcaAkWuD=RyJiJpPe4r60bhD5U8xUvEBzmXw@mail.gmail.com>
+	 <CAGXv+5FXZ_byK8Ftb9LjfQMkgtLd7mTmWgz_Nsvcv8=jy53T=g@mail.gmail.com>
+Organization: Collabora Ltd.
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 01/14] dt-bindings: media: mediatek: vcodec: add
- decoder dt-bindings for mt8196
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Yunfei Dong <yunfei.dong@mediatek.com>
-Cc: =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?=
- <nfraprado@collabora.com>, Sebastian Fricke
- <sebastian.fricke@collabora.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Nathan Hebert <nhebert@chromium.org>,
- Daniel Almeida <daniel.almeida@collabora.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
- Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20250815085232.30240-1-yunfei.dong@mediatek.com>
- <20250815085232.30240-2-yunfei.dong@mediatek.com>
- <20250819-expert-airborne-marten-caea84@kuoka>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <20250819-expert-airborne-marten-caea84@kuoka>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250819_020538_080287_72BB632D 
-X-CRM114-Status: UNSURE (   7.40  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250819_021302_731742_2A85A1E0 
+X-CRM114-Status: GOOD (  27.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,15 +92,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 19/08/2025 11:01, Krzysztof Kozlowski wrote:
-> On Fri, Aug 15, 2025 at 04:52:14PM +0800, Yunfei Dong wrote:
->> Add decoder document in dt-bindings yaml file for mt8196 platform.
-> 
-> Nothing improved.
-Although maybe I am mixing patchsets, but all other comments apply here
-as well. Anyway, you did not bother to cc maintainers, so I will
-actually ignore patchset as requested.
+Hi,
+On Tue, 2025-08-19 at 13:29 +0800, Chen-Yu Tsai wrote:
+> On Tue, Aug 19, 2025 at 1:27=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.org>=
+ wrote:
+> >=20
+> > On Mon, Aug 18, 2025 at 11:22=E2=80=AFPM Linus Walleij <linus.walleij@l=
+inaro.org> wrote:
+> > >=20
+> > > On Wed, Aug 6, 2025 at 8:38=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.o=
+rg> wrote:
+> > > > On Fri, Aug 1, 2025 at 7:18=E2=80=AFPM Julien Massot wrote
+> > >=20
+> > > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 pins-clk {
+> > > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ pinmux =3D <PINMUX_GPIO124__FUNC_MSDC0_CLK>;
+> > > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ drive-strength =3D <MTK_DRIVE_14mA>;
+> > > > > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 media=
+tek,pull-down-adv =3D <10>;
+> > > > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 media=
+tek,pull-down-adv =3D <2>;
+> > > >=20
+> > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bias-pull-down =3D <MTK_=
+PUPD_SET_R1R0_10>;
+> > > >=20
+> > > > and so on.
+> > > >=20
+> > > > ChenYu
+> > >=20
+> > > I agree with ChenYu, the more standardized properties are the better =
+it is.
+> > >=20
+> > > All the custom properties makes sense for an engineer working with ju=
+st
+> > > that one SoC (like the SoC vendor...) but for field engineers who hav=
+e
+> > > to use different SoCs every day this is just a big mess for the mind.
+> > >=20
+> > > The standard properties are clear, concise and tell you exactly what
+> > > they are about.
+> > >=20
+> > > The argument should be in Ohms though, according to the standard
+> > > bindings, but maybe the value of MTK_PUPD_SET_R1R0_10 is
+> > > something like that?
+> >=20
+> > For reasons I can't recall clearly these are just placeholder values
+> > that the driver then maps to the R1 and R0 settings. But at least they
+> > use the standard properties.
+> >=20
+> > The reason was either one of the following or both:
+> >=20
+> > =C2=A0 a. not every group of pins had the same resistance values for R1=
+ & R0
+> > =C2=A0 b. there are no known precise values; the values depend on the p=
+rocess
+> > =C2=A0=C2=A0=C2=A0=C2=A0 and batch
+>=20
+> I don't know for (b), but no there is a lot of different values for R1 & =
+R0
+>=20
 
-Best regards,
-Krzysztof
+From what I saw in the register table
+We can have for the pull up resistors
+75K / 200K
+2K  / 75K
+5K  / 20K
+50k / 10K=20
+
+And for the pull down ones:
+
+75k/2k
+75k/75k
+10k/50k
+
+And we can have a combination of both resistors that will give odd values=
+=20
+(e.g 1948 Ohm for 2k/75K, 545454 Ohm for 75k/200k) to express in the device=
+ tree=20
+
+
+>=20
+> Also, their customers seemed more accustomed to dealing with toggling
+> R1 & R0 vs setting some actual value. I presume that comes with the
+> uncertainty of the actual hardware value, and they just try which
+> combination works better.
+>=20
+> ChenYu
+
+Regards,
+Julien
 
