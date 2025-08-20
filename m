@@ -4,98 +4,127 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69D30CA0EDC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Aug 2025 05:16:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DAB1CA0EDC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Aug 2025 05:58:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YMOc0zAG5IHElycDwN0z3G1Bp9v6la9CFRr7DqTKuhw=; b=WGEo6M8N5QDyOIOh5OOUOJO+2D
-	nx56BrLAtgSVuVj/wUtH4lZinohg4u99V8nTX9opVfRZdncG1eb/VHr3Sk8SrWUD+mb5QxAQPTAcT
-	gaBEdJ/oMbh6ZLfYGnHSoyNwI2bs+NJyUYzYyKPKhSef+uhShv6YB2B8fuW25qsWz8P8Slu+9SyRl
-	SJPImgAJf3JU/TKX5f9auWzO4E0slAa+GtagAy+wDxsnWSbQpdQhz3uaphuT1Xj05YBWQtyj7DRZv
-	3/oB8lbFR/21Q4AvwkC3VZTtWeL/3LpxLiS6dvi3Hs86Tzsozeu98O7vfvBO/vQ0HME9yCCEAPlmy
-	Mznmvflw==;
+	bh=Th0aex22vpUXxeMnBghyy/cXmBUbZKgG6ASEEtClCfQ=; b=ydCf7Qaz8+pAQt6mcd03HapDEL
+	2M8+Ml3dAWxMufl25b0La3xeOA0rKzypoDEMK2tL7fq1O5lf2AsMXuSMsuxVyDRBeQHTrRRtV67zZ
+	GbqvIMEfeGm70pyjVO2xtG69XxCXn1s9BvikqL5RMFvlgIuJmI4yPOhok1sN+c3FDk9YyNICmk4B1
+	7CqdQGJqUc0818Ku/S+URalvfdVPNWK0AinaKW22ksU8Q1pQxHTWnEqcJKeEM+Z55Dyt/BcCBN6nm
+	fAXDluAqGAUSKafT3jt7Mdj3caED02ImnqBK1S3eSpl7hJ8Dei35a5IFAoKXard8JfjQLDcTjWFIb
+	ApH0n9Fw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uobB3-0000000COAb-0RuV;
-	Wed, 20 Aug 2025 05:16:01 +0000
-Received: from mail-qv1-xf2f.google.com ([2607:f8b0:4864:20::f2f])
+	id 1uobq9-0000000CSda-3CHC;
+	Wed, 20 Aug 2025 05:58:29 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uobB0-0000000CO9o-2WhE
-	for linux-mediatek@lists.infradead.org;
-	Wed, 20 Aug 2025 05:15:59 +0000
-Received: by mail-qv1-xf2f.google.com with SMTP id 6a1803df08f44-70a9282f475so51574676d6.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 19 Aug 2025 22:15:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1755666957; x=1756271757; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=YMOc0zAG5IHElycDwN0z3G1Bp9v6la9CFRr7DqTKuhw=;
-        b=BgFAd2eeskb+9tcLHzkpfeC8h8TDyqM3jRbLEvPVYtgDgdZDcL9fH95rVUrKzVXLuE
-         rBepMeFGL2XA5iz/FR3APn4M0XUMmMt/A8a7cZZ2CbjJG/vu02L7+iD0IJvz3NJhfJTS
-         oUCVqq9S9Jez5SXdDQhqcYhKAdVnfyqEdVji4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1755666957; x=1756271757;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=YMOc0zAG5IHElycDwN0z3G1Bp9v6la9CFRr7DqTKuhw=;
-        b=S59AKX4JXjrlF3QbN2mdkMMd6Gudi1u1buZMiiKUXxAjz3HLTNis/sULlcaUXHch3W
-         WPMMh5TpwYDq8MAfJlx8vTm4ncivTHNMIIo+nkmh0aTamtZMZIyuizr9OyJoq5SFcxWM
-         ys952mMRb3iXW8xyQ45q6sHTODUMJ2jk5uiafopO1jXiLCnUcmzC32OpbuRcCum1wHZq
-         UKyF/UnM995WOHVnhSgaFx+p+nebByB2LI7qKyIiZy7jw1x1sMTInBv6QgWvSk4XxQ5+
-         pv6mE5NVJVbffvnH1IJkMzGPCH3jfes2S6W0VIKnq+3sh73NbCmLZtZHGwqrt6vwIECX
-         pqzA==
-X-Forwarded-Encrypted: i=1; AJvYcCUXbqnhvFX9UvmlRw3O9IAfzqPvkKB/LGTCCFASIqa/sEStF0JGhOV20N4ckSpjLOq060qT5kAUo1Qe5IbIWw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzE45c7dFzRViGKROdZPnfZ8RtykmI23OEnjjDq7LSxT6DdV6Xl
-	6dDyzTreY9XJwP+yoVmq4Celg9Y1KhWFVZuybBWFiCpF6R3c4CsGB6woK0XUkC4Juz7qutxA1ey
-	UZIfwcw==
-X-Gm-Gg: ASbGncs5W26iZSqTcxQNiyAMWf5YxwZMXj6gBby34umEygVMk4Jyg6WEv0zwQHL41UZ
-	R4o0mBFhYDyXgpDfQSLYWdNDs257HZA1VxsMBmriLowrN7sYhghikIEW9I7nvqD3TxIp19uSRwP
-	5VqY+PV0csnM/l6ikhCK7/dHOWWrlawLRXI6UrBQA3SSXwvF6WFSlp0KZ2bRVllN8Psb867Osv0
-	qQ8bOuVVO5uqLRjCobtvEe5j2l7i7vUB1jkF7Rwsf0pZowZar+PY1WEHbNpvcDv87zDegXrOPqx
-	olQMHHzP9v1j1RSL2FBVU4io59YkJZsYORfWNPOc4WiXTUCh5niO0sLvIOsm09OOCvyDOmNcCoD
-	YQX3P14YXNCBNz5KXISWWsHtIz5gD2Gs1H6DZMltYRuH4mLO6UnXBX+q+FyEhtQ==
-X-Google-Smtp-Source: AGHT+IGAstHSfqVbW/qjoNdyc1/TXIRqPSOyEk2Qdbnn7rPrcunjgnYo2NTQ1H8Gh5hAVng1HYKUEw==
-X-Received: by 2002:a05:6214:2b09:b0:707:71d9:d6de with SMTP id 6a1803df08f44-70d770b89cbmr14387996d6.36.1755666956491;
-        Tue, 19 Aug 2025 22:15:56 -0700 (PDT)
-Received: from mail-qt1-f173.google.com (mail-qt1-f173.google.com. [209.85.160.173])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-70bb34e3fa9sm62465366d6.22.2025.08.19.22.15.54
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 19 Aug 2025 22:15:54 -0700 (PDT)
-Received: by mail-qt1-f173.google.com with SMTP id d75a77b69052e-4b0bf08551cso140491cf.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 19 Aug 2025 22:15:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCWhVcRM7fMpwPE3LRYgRKpqlxvfkzu0CmLLUik+dI88cCRkO3u6xVkem/4fLs0kcScGp1hn5v/wSFWLca+xIw==@lists.infradead.org
-X-Received: by 2002:ac8:7d0c:0:b0:4a6:f525:e35a with SMTP id
- d75a77b69052e-4b292f95907mr2439661cf.9.1755666954079; Tue, 19 Aug 2025
- 22:15:54 -0700 (PDT)
+	id 1uobnY-0000000CSR1-043Y;
+	Wed, 20 Aug 2025 05:55:48 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 54D1A601EF;
+	Wed, 20 Aug 2025 05:55:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AF70FC4CEEB;
+	Wed, 20 Aug 2025 05:55:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1755669346;
+	bh=E0+N2wRZMXrF5z7DzstfXp7XFzQUZ047KHqMx/8n9/c=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=MaYnT4m0WN5eTjiALC52eebZA7CkBr3MIQgRikIjOLXsB1N/2HNI44GM7HjYB0eMO
+	 35d8QG8sppzDG/FQA4DJ6YRhE7zFvBRcsPPnZFxLuWdKGqWLyfk+r4OETZLoOlbpU2
+	 2I9MGCNJJBp0HStJczx2UvAveNeXt6dZLsH3ssUbSD5zn0zklCvyFEeAUI8LpglyA8
+	 16AGF6zKHv0PlLhuPRhiuugUPQX/nNMUS0Cg1Y0gPf/zwP0PNIDRweRbQGDURyY1L+
+	 2KOz61EailChCTvdMFzZtvnqRVGNJiYk8P9Amq95gVlQUL85iysu9N0n1aRha0lE14
+	 YGCMqKkRc5l0Q==
+Message-ID: <aab06f96-83c9-4e1c-9e1b-6148a3055e67@kernel.org>
+Date: Wed, 20 Aug 2025 07:55:38 +0200
 MIME-Version: 1.0
-References: <20250814083144.191554-1-wenst@chromium.org> <CAC=S1nhz_ESY4VrgWs=dVinLtdOamh6to3EgD1w1Kx=4YBOD9A@mail.gmail.com>
- <CAGXv+5Hke6aEYdyc096_aeS9KHiOzcNqirB-rFT2odepaYhayQ@mail.gmail.com> <CAC=S1nheT46K+jkmtq4EJxOVO=nwasan0LCJwv-HTEK6P6DgxA@mail.gmail.com>
-In-Reply-To: <CAC=S1nheT46K+jkmtq4EJxOVO=nwasan0LCJwv-HTEK6P6DgxA@mail.gmail.com>
-From: Tomasz Figa <tfiga@chromium.org>
-Date: Wed, 20 Aug 2025 14:15:35 +0900
-X-Gmail-Original-Message-ID: <CAAFQd5CRZaCvaw5fQxgWBgBjnK6Y05p6kHJ2hrHGtLY47Ymsog@mail.gmail.com>
-X-Gm-Features: Ac12FXy8CAi4s4o72NAJVVqc3RW7R9QsaD5heHRhqLT1YoNyBEvsC2eFaSQEZVc
-Message-ID: <CAAFQd5CRZaCvaw5fQxgWBgBjnK6Y05p6kHJ2hrHGtLY47Ymsog@mail.gmail.com>
-Subject: Re: [PATCH] media: mediatek: vcodec: Use spinlock for context list
- protection lock
-To: Fei Shao <fshao@chromium.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, Yunfei Dong <yunfei.dong@mediatek.com>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-media@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250819_221558_675580_D288A62B 
-X-CRM114-Status: GOOD (  33.60  )
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 5/6] dt-bindings: media: Add MT8196
+ mediatek,vcodec-encoder
+To: =?UTF-8?B?SXJ1aSBXYW5nICjnjovnkZ4p?= <Irui.Wang@mediatek.com>,
+ =?UTF-8?B?S3lyaWUgV3UgKOWQtOaZlyk=?= <Kyrie.Wu@mediatek.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ =?UTF-8?B?R2VvcmdlIFN1biAo5a2Z5p6XKQ==?= <George.Sun@mediatek.com>,
+ =?UTF-8?B?VGlmZmFueSBMaW4gKOael+aFp+ePiik=?= <tiffany.lin@mediatek.com>,
+ "andrzejtp2010@gmail.com" <andrzejtp2010@gmail.com>,
+ "nhebert@chromium.org" <nhebert@chromium.org>,
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "mchehab@kernel.org" <mchehab@kernel.org>,
+ "hverkuil@xs4all.nl" <hverkuil@xs4all.nl>,
+ "nicolas.dufresne@collabora.com" <nicolas.dufresne@collabora.com>,
+ =?UTF-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "sebastian.fricke@collabora.com" <sebastian.fricke@collabora.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "christophe.jaillet@wanadoo.fr" <christophe.jaillet@wanadoo.fr>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>, "arnd@arndb.de" <arnd@arndb.de>,
+ =?UTF-8?B?QW5kcmV3LUNUIENoZW4gKOmZs+aZuui/qik=?=
+ <Andrew-CT.Chen@mediatek.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "neil.armstrong@linaro.org" <neil.armstrong@linaro.org>
+References: <20250814085642.17343-1-kyrie.wu@mediatek.com>
+ <20250814085642.17343-6-kyrie.wu@mediatek.com>
+ <20250815-meek-porcelain-oarfish-1411e3@kuoka>
+ <cff7beabdfce15b014597f6fbb0ea23375ecb902.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <cff7beabdfce15b014597f6fbb0ea23375ecb902.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,224 +139,122 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 14, 2025 at 6:52=E2=80=AFPM Fei Shao <fshao@chromium.org> wrote=
-:
->
-> On Thu, Aug 14, 2025 at 5:06=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.org>=
- wrote:
-> >
-> > On Thu, Aug 14, 2025 at 4:59=E2=80=AFPM Fei Shao <fshao@chromium.org> w=
-rote:
-> > >
-> > > On Thu, Aug 14, 2025 at 4:38=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.=
-org> wrote:
-> > > >
-> > > > Previously a mutex was added to protect the encoder and decoder con=
-text
-> > > > lists from unexpected changes originating from the SCP IP block, ca=
-using
-> > > > the context pointer to go invalid, resulting in a NULL pointer
-> > > > dereference in the IPI handler.
-> > > >
-> > > > Turns out on the MT8173, the VPU IPI handler is called from hard IR=
-Q
-> > > > context. This causes a big warning from the scheduler. This was fir=
-st
-> > > > reported downstream on the ChromeOS kernels, but is also reproducib=
-le
-> > > > on mainline using Fluster with the FFmpeg v4l2m2m decoders. Even th=
-ough
-> > > > the actual capture format is not supported, the affected code paths
-> > > > are triggered.
-> > > >
-> > > > Since this lock just protects the context list and operations on it=
- are
-> > > > very fast, it should be OK to switch to a spinlock.
-> > > >
-> > > > Fixes: 6467cda18c9f ("media: mediatek: vcodec: adding lock to prote=
-ct decoder context list")
-> > > > Fixes: afaaf3a0f647 ("media: mediatek: vcodec: adding lock to prote=
-ct encoder context list")
-> > > > Cc: Yunfei Dong <yunfei.dong@mediatek.com>
-> > > > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> > > > ---
-> > > >  .../mediatek/vcodec/common/mtk_vcodec_fw_vpu.c       | 10 ++++++--=
---
-> > > >  .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c     | 12 +++++++-=
-----
-> > > >  .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h     |  2 +-
-> > > >  .../platform/mediatek/vcodec/decoder/vdec_vpu_if.c   |  4 ++--
-> > > >  .../mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c     | 12 +++++++-=
-----
-> > > >  .../mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h     |  2 +-
-> > > >  .../platform/mediatek/vcodec/encoder/venc_vpu_if.c   |  4 ++--
-> > > >  7 files changed, 26 insertions(+), 20 deletions(-)
-> > > >
-> > >
-> > > [...]
-> > >
-> > > > diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vp=
-u_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-> > > > index 145958206e38..e9b5cac9c63b 100644
-> > > > --- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-> > > > +++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-> > > > @@ -77,14 +77,14 @@ static bool vpu_dec_check_ap_inst(struct mtk_vc=
-odec_dec_dev *dec_dev, struct vde
-> > > >         struct mtk_vcodec_dec_ctx *ctx;
-> > > >         int ret =3D false;
-> > > >
-> > > > -       mutex_lock(&dec_dev->dev_ctx_lock);
-> > > > +       spin_lock(&dec_dev->dev_ctx_lock);
-> > >
-> > > Do you mean spin_lock_irqsave()?
-> >
-> > This function is only called from the handler below (outside the diff
-> > context), which itself is called from hard IRQ context. This is mention=
-ed
-> > in the comment above the handler.
->
-> I see. I only searched here but didn't check the full source.
-> Leaving a comment would be clearer if a revision is made, but it's not
-> worth resending just for that alone.
+On 20/08/2025 04:55, Irui Wang (王瑞) wrote:
+> Dear Krzysztof,
+> 
+> Thanks for your reviewing.
+> 
+> On Fri, 2025-08-15 at 10:54 +0200, Krzysztof Kozlowski wrote:
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
+>>
+>>
+>> On Thu, Aug 14, 2025 at 04:56:41PM +0800, Kyrie Wu wrote:
+>>> From: Irui Wang <irui.wang@mediatek.com>
+>>>
+>>> Add MT8196 encoder compatible string, which will reference VCP
+>>> device.
+>>
+>> You ignored comments from v2.
+> 
+> I think I misunderstood the v2 comments, I rewrote the title because it
+> said dt-bindings and encoder twice, this is not enough, right? we need
+> to describe more information in Body text?
 
-Hmm, I feel like this could make it easy to introduce further locking
-bugs in the future, because someone may just decide to call this
-function from a different context. Also having the _irqsave variants
-consistently used for the lock make it clear that it's used to
-synchronize with an IRQ handler regardless of which place in the code
-one looks at.
+where are lore links in the changelog? Why aren't you using b4 to submit
+patches?
 
-My recommendation would be to still amend the patch to do that.
+> 
+>>
+>>>
+>>> Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+>>
+>> Incorrect SoB chain.
+>>
+>>> ---
+>>>  .../bindings/media/mediatek,vcodec-encoder.yaml | 17
+>>> +++++++++++++++++
+>>>  1 file changed, 17 insertions(+)
+>>>
+>>> diff --git
+>>> a/Documentation/devicetree/bindings/media/mediatek,vcodec-
+>>> encoder.yaml
+>>> b/Documentation/devicetree/bindings/media/mediatek,vcodec-
+>>> encoder.yaml
+>>> index ebc615584f92..bb4dbf23ccc5 100644
+>>> --- a/Documentation/devicetree/bindings/media/mediatek,vcodec-
+>>> encoder.yaml
+>>> +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-
+>>> encoder.yaml
+>>> @@ -24,6 +24,7 @@ properties:
+>>>                - mediatek,mt8188-vcodec-enc
+>>>                - mediatek,mt8192-vcodec-enc
+>>>                - mediatek,mt8195-vcodec-enc
+>>> +              - mediatek,mt8196-vcodec-enc
+>>>        - items:
+>>>            - const: mediatek,mt8186-vcodec-enc
+>>>            - const: mediatek,mt8183-vcodec-enc
+>>> @@ -58,6 +59,11 @@ properties:
+>>>      description:
+>>>        Describes point to scp.
+>>>
+>>> +  mediatek,vcp:
+>>> +    $ref: /schemas/types.yaml#/definitions/phandle
+>>> +    description:
+>>> +      Describes point to vcp.
+>>
+>> For what? You just repeated the property name. You must say here
+>> something useful instead: why this is needed, what is its purpose.
+> 
+> I would like to say:
+> "define this 'mediatek,vcp' property here, this is a phandle point to
 
->
-> Reviewed-by: Fei Shao <fshao@chromium.org>
->
->
-> On Thu, Aug 14, 2025 at 5:06=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.org>=
- wrote:
-> >
-> > On Thu, Aug 14, 2025 at 4:59=E2=80=AFPM Fei Shao <fshao@chromium.org> w=
-rote:
-> > >
-> > > On Thu, Aug 14, 2025 at 4:38=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.=
-org> wrote:
-> > > >
-> > > > Previously a mutex was added to protect the encoder and decoder con=
-text
-> > > > lists from unexpected changes originating from the SCP IP block, ca=
-using
-> > > > the context pointer to go invalid, resulting in a NULL pointer
-> > > > dereference in the IPI handler.
-> > > >
-> > > > Turns out on the MT8173, the VPU IPI handler is called from hard IR=
-Q
-> > > > context. This causes a big warning from the scheduler. This was fir=
-st
-> > > > reported downstream on the ChromeOS kernels, but is also reproducib=
-le
-> > > > on mainline using Fluster with the FFmpeg v4l2m2m decoders. Even th=
-ough
-> > > > the actual capture format is not supported, the affected code paths
-> > > > are triggered.
-> > > >
-> > > > Since this lock just protects the context list and operations on it=
- are
-> > > > very fast, it should be OK to switch to a spinlock.
-> > > >
-> > > > Fixes: 6467cda18c9f ("media: mediatek: vcodec: adding lock to prote=
-ct decoder context list")
-> > > > Fixes: afaaf3a0f647 ("media: mediatek: vcodec: adding lock to prote=
-ct encoder context list")
-> > > > Cc: Yunfei Dong <yunfei.dong@mediatek.com>
-> > > > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> > > > ---
-> > > >  .../mediatek/vcodec/common/mtk_vcodec_fw_vpu.c       | 10 ++++++--=
---
-> > > >  .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c     | 12 +++++++-=
-----
-> > > >  .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h     |  2 +-
-> > > >  .../platform/mediatek/vcodec/decoder/vdec_vpu_if.c   |  4 ++--
-> > > >  .../mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c     | 12 +++++++-=
-----
-> > > >  .../mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h     |  2 +-
-> > > >  .../platform/mediatek/vcodec/encoder/venc_vpu_if.c   |  4 ++--
-> > > >  7 files changed, 26 insertions(+), 20 deletions(-)
-> > > >
-> > >
-> > > [...]
-> > >
-> > > > diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vp=
-u_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-> > > > index 145958206e38..e9b5cac9c63b 100644
-> > > > --- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-> > > > +++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-> > > > @@ -77,14 +77,14 @@ static bool vpu_dec_check_ap_inst(struct mtk_vc=
-odec_dec_dev *dec_dev, struct vde
-> > > >         struct mtk_vcodec_dec_ctx *ctx;
-> > > >         int ret =3D false;
-> > > >
-> > > > -       mutex_lock(&dec_dev->dev_ctx_lock);
-> > > > +       spin_lock(&dec_dev->dev_ctx_lock);
-> > >
-> > > Do you mean spin_lock_irqsave()?
-> >
-> > This function is only called from the handler below (outside the diff
-> > context), which itself is called from hard IRQ context. This is mention=
-ed
-> > in the comment above the handler.
-> >
-> > > >         list_for_each_entry(ctx, &dec_dev->ctx_list, list) {
-> > > >                 if (!IS_ERR_OR_NULL(ctx) && ctx->vpu_inst =3D=3D vp=
-u) {
-> > > >                         ret =3D true;
-> > > >                         break;
-> > > >                 }
-> > > >         }
-> > > > -       mutex_unlock(&dec_dev->dev_ctx_lock);
-> > > > +       spin_unlock(&dec_dev->dev_ctx_lock);
-> > > >
-> > > >         return ret;
-> > > >  }
-> > >
-> > > [...]
-> > >
-> > > > diff --git a/drivers/media/platform/mediatek/vcodec/encoder/venc_vp=
-u_if.c b/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
-> > > > index 51bb7ee141b9..79a91283da78 100644
-> > > > --- a/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
-> > > > +++ b/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
-> > > > @@ -47,14 +47,14 @@ static bool vpu_enc_check_ap_inst(struct mtk_vc=
-odec_enc_dev *enc_dev, struct ven
-> > > >         struct mtk_vcodec_enc_ctx *ctx;
-> > > >         int ret =3D false;
-> > > >
-> > > > -       mutex_lock(&enc_dev->dev_ctx_lock);
-> > > > +       spin_lock(&enc_dev->dev_ctx_lock);
-> > >
-> > > Also here.
-> >
-> > Same reasoning applies here as well.
-> >
-> > ChenYu
-> >
-> > > Regards,
-> > > Fei
-> > >
-> > > >         list_for_each_entry(ctx, &enc_dev->ctx_list, list) {
-> > > >                 if (!IS_ERR_OR_NULL(ctx) && ctx->vpu_inst =3D=3D vp=
-u) {
-> > > >                         ret =3D true;
-> > > >                         break;
-> > > >                 }
-> > > >         }
-> > > > -       mutex_unlock(&enc_dev->dev_ctx_lock);
-> > > > +       spin_unlock(&enc_dev->dev_ctx_lock);
-> > > >
-> > > >         return ret;
-> > > >  }
-> > > > --
-> > > > 2.51.0.rc1.163.g2494970778-goog
-> > > >
-> > > >
->
+Don't explain to us what DT is. Above is 100% redundant.
+
+> vcp device, for platforms using vcp firmware."
+
+Explain what is the purpose of this in hardware, how hardware uses it,
+what problem for hardware this addresses.
+
+
+> 
+> Is this OK for you?
+>>
+>>
+> 
+>>> +
+>>>    power-domains:
+>>>      maxItems: 1
+>>>
+>>> @@ -76,6 +82,17 @@ required:
+>>>    - iommus
+>>>
+>>>  allOf:
+>>> +  - if:
+>>> +      properties:
+>>> +        compatible:
+>>> +          contains:
+>>> +            enum:
+>>> +              - mediatek,mt8196-vcodec-enc
+>>> +
+>>> +    then:
+>>> +      required:
+>>> +        - mediatek,vcp
+>>
+>> else
+>>
+>> mediatek,vcp: false
+> 
+> I think the else statement is no need here. Different platforms are
+> using different firmware phandle, vpu, scp, and vcp. so we use if-then
+> to describe the required property for these platforms. 
+
+Hm? I just told you it is needed. Otherwise, explain why each
+variant/device has now VCP.
+
+You have entire commit msg to explain all this.
+
+
+Best regards,
+Krzysztof
 
