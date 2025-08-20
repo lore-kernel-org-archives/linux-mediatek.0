@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E8B4CA0EE4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Aug 2025 14:37:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF22ACA0EDC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Aug 2025 14:41:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tLq16Zj6kgymXh2u+w7dDQTssYODXOK++9QU5jtPoKs=; b=I9RmJjCONkT0ZLirDiSgV/a180
-	8vPM8uM5a2QmoU12lHAKQsM6/tOvbgzTX88Tb3DJEmyiqt4arJZpst3a0aJ3/uNCspyShhPaPAOWz
-	Ixxmu4EMdVrxOtXkELRwL3DyD095nsqZIiemUJNZHpBaDAuw4jY3EQsV2/yr6dvg2cdAeeVNVSiSw
-	T214FEIyDsIxQpwnil+351BF1KpB/MjNri7Nn124TCvMYjno/TTVl3cWqtO9elkImCjRCKhojRT/R
-	3paUc6y+OMGWHC7SMqf6vMvdJBiQSSSJNv4CvuGl7GiSPMwa4p4vNlkfLoF/Xc31mfsnHgqI9HDOC
-	HEkqbfxQ==;
+	bh=eqmP9vgg2YTWAUuE8YE8aiTjhe6juTxiIV2rXz3Bw1k=; b=JwfqxWdhXfYVJmUuNPn3ImDJOM
+	CmWNeAA7UGCu8Uuf8nRAEuMLth98hDrYjxe9tr89h2n/fSCZAoMnH+b1Zx3olXXZTEh5JEGi4KZjF
+	tLgECTMWlvE3ZP+niZt9SyMFGmZPNgF2/2qET23DZEAqBMWnpWbzSTyjroQD6t1rHXTs2ZFpjVniX
+	iUijroKF7CdpKhaYgUpQkcwsZl9rw5cMThdQvUpQT1lsOX60XkV0aI4cmmsAHbVm+3bTkjGkdm6Np
+	u/qhOdHVLfHeBQP2q9s1yIqM5p0FwwP0rEfZH5ZwXwp0adO5W4sloynGYfMeVOQmwD5TMlrz+jg16
+	uQs8wedQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uojwQ-0000000E74o-2Org;
-	Wed, 20 Aug 2025 14:37:30 +0000
+	id 1uojzs-0000000E84x-0T4f;
+	Wed, 20 Aug 2025 14:41:04 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoj7f-0000000DsUM-1O65;
-	Wed, 20 Aug 2025 13:45:04 +0000
+	id 1uoj7l-0000000DsXm-2nxZ;
+	Wed, 20 Aug 2025 13:45:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1755697502;
-	bh=M2JSTPKjyC2uRzfPqh059736CpYrmwrQssTYdHL6Cto=;
+	s=mail; t=1755697508;
+	bh=USQrAZZJj10MR5a19PgXs2S92DCFQyDjwkKul1A2/QU=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=eLu8swv61TMlyKu2OxiDhrkSLdrky7tjAVAtsSdlpHfKEKUsU5pJzzlr1VfO+e8UF
-	 7EvMPWZtzbRVqOJgoOV7Rk9lt46lr//irFRzHm71AZu43xVE0LB9Yr40q56jd8smEZ
-	 l8DNwOHv0OmdzDiiOUr5vY8WlGWGRPprKxzomGOm6rPYPrBTz9b2gnh/6PVqtIBogu
-	 G1D4YLoQQMhoeGjXKrF/txbfxUS5GB8SgZg+AhT69Iundi61R/hl6+spJKdTpbWbmV
-	 jmX+p5HwFqRkhiouLGhtIeOZzCbts0tzYPNugY8c8ww9emCHo4LH11rQbB1hb/55ll
-	 YnRgul0KZ3t7g==
+	b=V+ACyZEeuzaNAus8J+TTuv3/kSXjuUTRWqt2YJhX28Fu/ocqChkEESUuwNvexKYvu
+	 uFTfvMwN5FX12IBFr+W/iGQZ6KVG9lJMbu8pq7KmVaEK9MkQNqF+il2DUWwXnuNTVz
+	 fbJdNJWeI0JiQxFuQ9PZwwJkrNLOP2WXd0D8ryHB5HB76nIWIn8+jKpCBofN2ZHk6d
+	 MfwHTkX1F2D/CAuBtShAvxpjkNYsCsWdEYBVZZ8X8XQkBRq9hZDxwjsal+e9HmzUnp
+	 Vh9pOrZbiHSQ9vrTU9H4fW95oS9qZHzBqHjAX+m3ui9FCiIL9/0CWdz0f3r8VLg7Ju
+	 QCY69rb1HpHTQ==
 Received: from localhost-live.home (2a01cb0892F2D600C8f85CF092d4AF51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: jmassot)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D754817E0483;
-	Wed, 20 Aug 2025 15:45:00 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2905F17E0483;
+	Wed, 20 Aug 2025 15:45:07 +0200 (CEST)
 From: Julien Massot <julien.massot@collabora.com>
-Date: Wed, 20 Aug 2025 15:44:52 +0200
-Subject: [PATCH v2 1/6] dt-bindings: clock: mediatek: Add power-domains
- property
+Date: Wed, 20 Aug 2025 15:44:57 +0200
+Subject: [PATCH v2 6/6] ASoC: dt-binding: Convert MediaTek mt8183-mt6358
+ bindings to YAML
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250820-mtk-dtb-warnings-v2-1-cf4721e58f4e@collabora.com>
+Message-Id: <20250820-mtk-dtb-warnings-v2-6-cf4721e58f4e@collabora.com>
 References: <20250820-mtk-dtb-warnings-v2-0-cf4721e58f4e@collabora.com>
 In-Reply-To: <20250820-mtk-dtb-warnings-v2-0-cf4721e58f4e@collabora.com>
 To: kernel@collabora.com, Michael Turquette <mturquette@baylibre.com>, 
@@ -72,9 +72,8 @@ Cc: linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
  linux-gpio@vger.kernel.org, Julien Massot <julien.massot@collabora.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250820_064503_533792_CE0F349E 
-X-CRM114-Status: UNSURE (   9.21  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250820_064509_861439_21900018 
+X-CRM114-Status: GOOD (  15.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,50 +88,112 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mt8183-mfgcfg node uses a power domain in its device tree node.
-To prevent schema validation warnings, add the optional `power-domains`
-property to the binding schema for mediatek syscon clocks.
+Convert the existing text-based DT binding for MT8183 sound cards using
+MT6358 and various other codecs to a YAML schema.
 
-Fixes: 1781f2c46180 ("arm64: dts: mediatek: mt8183: Add power-domains property to mfgcfg")
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Julien Massot <julien.massot@collabora.com>
 ---
- .../devicetree/bindings/clock/mediatek,syscon.yaml        | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ .../sound/mediatek,mt8183_mt6358_ts3a227.yaml      | 59 ++++++++++++++++++++++
+ .../sound/mt8183-mt6358-ts3a227-max98357.txt       | 25 ---------
+ 2 files changed, 59 insertions(+), 25 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/clock/mediatek,syscon.yaml b/Documentation/devicetree/bindings/clock/mediatek,syscon.yaml
-index a86a64893c675ac134af609b3a49242565db6ad8..a52f90bfc9f92b52feb9f488db5550630ac55f0a 100644
---- a/Documentation/devicetree/bindings/clock/mediatek,syscon.yaml
-+++ b/Documentation/devicetree/bindings/clock/mediatek,syscon.yaml
-@@ -76,6 +76,9 @@ properties:
-           - const: mediatek,mt2701-vdecsys
-           - const: syscon
- 
-+  power-domains:
-+    maxItems: 1
+diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8183_mt6358_ts3a227.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8183_mt6358_ts3a227.yaml
+new file mode 100644
+index 0000000000000000000000000000000000000000..048fe62715d67d44daa08e75a63c782238815689
+--- /dev/null
++++ b/Documentation/devicetree/bindings/sound/mediatek,mt8183_mt6358_ts3a227.yaml
+@@ -0,0 +1,59 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/sound/mediatek,mt8183_mt6358_ts3a227.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-   reg:
-     maxItems: 1
- 
-@@ -86,6 +89,18 @@ required:
-   - compatible
-   - '#clock-cells'
- 
-+if:
-+  properties:
-+    compatible:
-+      contains:
-+        const: mediatek,mt8183-mfgcfg
-+then:
-+  properties:
-+    power-domains: true
-+else:
-+  properties:
-+    power-domains: false
++title: MediaTek MT8183 sound card with MT6358, TS3A227, and MAX98357/RT1015 codecs
 +
- additionalProperties: false
- 
- examples:
++maintainers:
++  - Julien Massot <julien.massot@collabora.com>
++
++description:
++  Binding for MediaTek MT8183 SoC-based sound cards using the MT6358 codec,
++  with optional TS3A227 headset codec, EC codec (via Chrome EC), and HDMI audio.
++  Speaker amplifier can be one of MAX98357A/B, RT1015, or RT1015P.
++
++properties:
++  compatible:
++    enum:
++      - mediatek,mt8183_mt6358_ts3a227_max98357
++      - mediatek,mt8183_mt6358_ts3a227_max98357b
++      - mediatek,mt8183_mt6358_ts3a227_rt1015
++      - mediatek,mt8183_mt6358_ts3a227_rt1015p
++
++  mediatek,platform:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description: Phandle to the MT8183 ASoC platform node (e.g., AFE).
++
++  mediatek,headset-codec:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description: Phandle to the TS3A227 headset codec.
++
++  mediatek,ec-codec:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description: |
++      Optional phandle to a ChromeOS EC codec node.
++      See bindings in google,cros-ec-codec.yaml.
++
++  mediatek,hdmi-codec:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description: Optional phandle to an HDMI audio codec node.
++
++required:
++  - compatible
++  - mediatek,platform
++
++additionalProperties: false
++
++examples:
++  - |
++    sound {
++        compatible = "mediatek,mt8183_mt6358_ts3a227_max98357";
++        mediatek,headset-codec = <&ts3a227>;
++        mediatek,ec-codec = <&ec_codec>;
++        mediatek,hdmi-codec = <&it6505dptx>;
++        mediatek,platform = <&afe>;
++    };
++
++...
+diff --git a/Documentation/devicetree/bindings/sound/mt8183-mt6358-ts3a227-max98357.txt b/Documentation/devicetree/bindings/sound/mt8183-mt6358-ts3a227-max98357.txt
+deleted file mode 100644
+index ecd46ed8eb98b99d0f2cc9eeca5f6d0aef6a5ada..0000000000000000000000000000000000000000
+--- a/Documentation/devicetree/bindings/sound/mt8183-mt6358-ts3a227-max98357.txt
++++ /dev/null
+@@ -1,25 +0,0 @@
+-MT8183 with MT6358, TS3A227, MAX98357, and RT1015 CODECS
+-
+-Required properties:
+-- compatible : "mediatek,mt8183_mt6358_ts3a227_max98357" for MAX98357A codec
+-               "mediatek,mt8183_mt6358_ts3a227_max98357b" for MAX98357B codec
+-               "mediatek,mt8183_mt6358_ts3a227_rt1015" for RT1015 codec
+-               "mediatek,mt8183_mt6358_ts3a227_rt1015p" for RT1015P codec
+-- mediatek,platform: the phandle of MT8183 ASoC platform
+-
+-Optional properties:
+-- mediatek,headset-codec: the phandles of ts3a227 codecs
+-- mediatek,ec-codec: the phandle of EC codecs.
+-                     See google,cros-ec-codec.txt for more details.
+-- mediatek,hdmi-codec: the phandles of HDMI codec
+-
+-Example:
+-
+-	sound {
+-		compatible = "mediatek,mt8183_mt6358_ts3a227_max98357";
+-		mediatek,headset-codec = <&ts3a227>;
+-		mediatek,ec-codec = <&ec_codec>;
+-		mediatek,hdmi-codec = <&it6505dptx>;
+-		mediatek,platform = <&afe>;
+-	};
+-
 
 -- 
 2.50.1
