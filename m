@@ -4,77 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC02FCA0EDC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Aug 2025 14:34:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1242DCA0EFC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Aug 2025 14:37:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CXQSwAv8e6eEfacG/HeYdxYzZSrhuUbOicdQbourYnc=; b=fZw2XpHWcP42h2bnSM0vo/AArN
-	s6FHtjMc/nERr+Y0pcK2WjqTINcxA2K7wcuvTNBmFJK2A1OKxP5/ll9/hHiQR+FIOUDCR8KbtW/So
-	8T8104rTnUu4oWeIQdWtheACy/G/uBfmzXtrU23S05ep2tHlN7ppcKKnJwL1jWQqhqvhOn7Ks7Xty
-	i+ta6YwtOhoTSNGRo4qY8KZgPZ5I+iGIONNSqqh2K7NEyeh8wPBz0HfEqdfZ0aoh077S2fzUI8845
-	CmuwgcOZlLagvxbhyaERxbuZWbCa9p7G8FbOd6DUq1uaJbfurAZfw5LihC41egxYuC8VeJsJktu4J
-	lzhJnOyw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ArA4CM8yGbvcXCAze1bThQpHSt0CYRptbT3mkn4ruZs=; b=CHTkpiccnsiKfg
+	h7lhBet9Mm3e0S7dw9ROQtwRlsHKzIQB8BkotR3pd8JDXZdQODqVH08By+qkyUTO0XBv0MY/nJoLV
+	3Oe0TC6cuXhdpwgrsQQz/JU0MsxX7eMwvVOJDALHqejNw01UVI6U4exwaoCcCXOu0GSF9ECzHp45+
+	8hbamHR6B6rrEgKntIGvkZS1jS1jX9/kY/xXo5GAuDbJkvqwT48Dtw3S0gsw2L3uPZBQ3CLitksRS
+	rEZhfGmrgiUv3uQBNSScVSbqVhCkok3ooDOItgBMmdJGl2/sgIzJLUb+Rv7wMx6/K28kXuMmNJT1f
+	RaqPUuY6ZI+XKT2pWoqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uojtV-0000000E5tU-1HBz;
-	Wed, 20 Aug 2025 14:34:29 +0000
+	id 1uojwG-0000000E6t6-10TH;
+	Wed, 20 Aug 2025 14:37:20 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoixr-0000000Dp2G-3I8V;
-	Wed, 20 Aug 2025 13:34:57 +0000
+	id 1uoj7e-0000000DsU3-2ADj;
+	Wed, 20 Aug 2025 13:45:04 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1755696894;
-	bh=CXQSwAv8e6eEfacG/HeYdxYzZSrhuUbOicdQbourYnc=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=BMyk2AYeLys2RolPoykxrhvNbeytaoF2/aKwgif7GzLleZCp2kTE5vHm5rsTNPH/9
-	 wRxe1QgO5JRhTIelbfqDkmKX6vs1zhr7/ROYfDwXjLpBt/AG2VrjNl8hiDh1h/htNm
-	 IytmPOMbYs3FKvK6FJ0fNXcWrwW+xQ4BATx/7a9O+D/rvH0RClxrICXYvHY23U6Xr/
-	 LmqE3lHwB99RvuFO5LQLTAjXGVMlIYunVwGj0pRrkl8O33F18PYSKyyIjexX+O7gO4
-	 t4KYJujfi0dUClNfSgIfIBkC/Lx/oTo76KmPAtaXRQYyIOtbLDJw6tn4iPnMYJmJdh
-	 KQ+kdM7IIBeFA==
-Received: from localhost-live.home (2a01cb0892F2D600C8F85Cf092D4aF51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
+	s=mail; t=1755697500;
+	bh=KfG24pPgv1Uh1EexQ+H85Ze6YKWSeO2wkVKi6hfXFb4=;
+	h=From:Subject:Date:To:Cc:From;
+	b=o2Q2+ZgbK78wJb9uQKi4s/epP/4RRxMajW9l1L4ZrZplygagLaCdFh951EdeS+fuN
+	 UaBUbKv1r1pWFjvIqWkFnXz+OqwYtwCmChe7tpXh3ZLXAccO+JrFzxgUM8I5ZKb26k
+	 Tm1uDq3v5PcgVILUqrU2M5SVHyhzao/5ZyZlEBVPaOjBrB+sSBGoqYlOyOHpawFqHN
+	 GpYpvdA8eBfQGqzxk8UtZWGW0g/SNP8VM36Z34LKi59ReTj7tijITfU5qJlZ95XDFk
+	 CZeIt1KFP5yy9nAZwS5iYfifUhZeIe17YAqaT28pswfb22L5ApPB7LmBYPNVzx7i2R
+	 i/gh1aPHxuqvg==
+Received: from localhost-live.home (2a01cb0892F2D600C8f85CF092d4AF51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: jmassot)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0D76817E02B0;
-	Wed, 20 Aug 2025 15:34:53 +0200 (CEST)
-Message-ID: <5ae569e8a1b3d00408d8ad4e934a4585a7479f7e.camel@collabora.com>
-Subject: Re: [PATCH 6/9] ASoC: dt-binding: Convert MediaTek mt8183-mt6358
- bindings to YAML
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9AFC817E01F5;
+	Wed, 20 Aug 2025 15:44:59 +0200 (CEST)
 From: Julien Massot <julien.massot@collabora.com>
-To: Rob Herring <robh@kernel.org>
-Cc: kernel@collabora.com, Michael Turquette <mturquette@baylibre.com>, 
- Stephen Boyd <sboyd@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,  Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>,  Ikjoon Jang
- <ikjn@chromium.org>, Enric Balletbo i Serra <eballetbo@kernel.org>, Chen-Yu
- Tsai	 <wenst@chromium.org>, Weiyi Lu <weiyi.lu@mediatek.com>, Eugen Hristev
-	 <eugen.hristev@linaro.org>, Liam Girdwood <lgirdwood@gmail.com>, Mark
- Brown	 <broonie@kernel.org>, Julien Massot <jmassot@collabora.com>, Sean
- Wang	 <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, 
-	linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-sound@vger.kernel.org, 
-	linux-gpio@vger.kernel.org
-Date: Wed, 20 Aug 2025 15:34:52 +0200
-In-Reply-To: <20250801172927.GA3114452-robh@kernel.org>
-References: <20250801-mtk-dtb-warnings-v1-0-6ba4e432427b@collabora.com>
-	 <20250801-mtk-dtb-warnings-v1-6-6ba4e432427b@collabora.com>
-	 <20250801172927.GA3114452-robh@kernel.org>
-Organization: Collabora Ltd.
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
+Subject: [PATCH v2 0/6] MediaTek devicetree/bindings warnings sanitization
+ second round
+Date: Wed, 20 Aug 2025 15:44:51 +0200
+Message-Id: <20250820-mtk-dtb-warnings-v2-0-cf4721e58f4e@collabora.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAFTRpWgC/32NSw6CMBRFt0Le2GfaWqxx5D4Mg37hRWhNS1BD2
+ LuVBTg8J7nnrlB8Jl/g2qyQ/UKFUqwgDg3YQcfeI7nKIJho2YVxnOYHutngS+dIsS/IW+VksJw
+ FpaDOntkHeu/Je1d5oDKn/NkfFv6zf2ILR4Zno6WXJyGFMjebxlGblPXRpgm6bdu+s/ArSLQAA
+ AA=
+X-Change-ID: 20250801-mtk-dtb-warnings-157d4fc10f77
+To: kernel@collabora.com, Michael Turquette <mturquette@baylibre.com>, 
+ Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Ikjoon Jang <ikjn@chromium.org>, 
+ Enric Balletbo i Serra <eballetbo@kernel.org>, 
+ Chen-Yu Tsai <wenst@chromium.org>, Weiyi Lu <weiyi.lu@mediatek.com>, 
+ Eugen Hristev <eugen.hristev@linaro.org>, 
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Julien Massot <jmassot@collabora.com>, Sean Wang <sean.wang@kernel.org>, 
+ Linus Walleij <linus.walleij@linaro.org>
+Cc: linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-sound@vger.kernel.org, 
+ linux-gpio@vger.kernel.org, Julien Massot <julien.massot@collabora.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250820_063456_003426_0120B02D 
-X-CRM114-Status: GOOD (  11.19  )
+X-CRM114-CacheID: sfid-20250820_064502_752086_E28A9E50 
+X-CRM114-Status: GOOD (  12.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,20 +91,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2025-08-01 at 12:29 -0500, Rob Herring wrote:
-> On Fri, Aug 01, 2025 at 01:18:08PM +0200, Julien Massot wrote:
-> > Convert the existing text-based DT binding for MT8183 sound cards using
-> > MT6358 and various other codecs to a YAML schema.
-> >=20
-> > Signed-off-by: Julien Massot <julien.massot@collabora.com>
-> > ---
-> > =C2=A0.../sound/mt8183-mt6358-ts3a227-max98357.txt=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 | 25 ---------
-> > =C2=A0.../devicetree/bindings/sound/mt8183-mt6358.yaml=C2=A0=C2=A0 | 59=
- ++++++++++++++++++++++
->=20
-> mediatek,mt8183_mt6358_ts3a227.yaml
+This patch series continues the effort to address Device Tree validation warnings for MediaTek platforms, with a focus on MT8183. It follows the initial cleanup series by Angelo (https://www.spinics.net/lists/kernel/msg5780177.html)
 
-Ok, Thanks for the review.
-Julien
+The patches in this set eliminate several of the remaining warnings by improving or converting DT bindings to YAML, adding missing properties, and updating device tree files accordingly.
+
+Signed-off-by: Julien Massot <julien.massot@collabora.com>
+---
+Changes in v2:
+
+- Restrict power-domain usage to mediatek,mt8183-mfgcfg only
+- Add the MT8183 AFE binding before audiosys (it is referenced in the example) and include the memory-region property
+- Rename binding files to align with the compatible name
+- Drop former patch 7/9 (already applied via the pinctrl tree)
+- Drop patches 8/9 and 9/9 until we decide how to represent R0 and R1 values
+
+---
+Julien Massot (6):
+      dt-bindings: clock: mediatek: Add power-domains property
+      ASoC: dt-binding: Convert mt8183-afe-pcm binding to YAML
+      dt-bindings: arm: mediatek: Support mt8183-audiosys binding variant
+      arm64: dts: mt8183: Rename nodes to match audiosys binding schema
+      dt-bindings: sound: Convert MT8183 DA7219 sound card bindings to YAML
+      ASoC: dt-binding: Convert MediaTek mt8183-mt6358 bindings to YAML
+
+ .../bindings/arm/mediatek/mediatek,audsys.yaml     |  16 +-
+ .../devicetree/bindings/clock/mediatek,syscon.yaml |  15 ++
+ .../bindings/sound/mediatek,mt8183-audio.yaml      | 228 +++++++++++++++++++++
+ .../bindings/sound/mediatek,mt8183_da7219.yaml     |  49 +++++
+ .../sound/mediatek,mt8183_mt6358_ts3a227.yaml      |  59 ++++++
+ .../devicetree/bindings/sound/mt8183-afe-pcm.txt   |  42 ----
+ .../bindings/sound/mt8183-da7219-max98357.txt      |  21 --
+ .../sound/mt8183-mt6358-ts3a227-max98357.txt       |  25 ---
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi           |   4 +-
+ 9 files changed, 368 insertions(+), 91 deletions(-)
+---
+base-commit: 5303936d609e09665deda94eaedf26a0e5c3a087
+change-id: 20250801-mtk-dtb-warnings-157d4fc10f77
+
+Best regards,
+-- 
+Julien Massot <julien.massot@collabora.com>
+
 
