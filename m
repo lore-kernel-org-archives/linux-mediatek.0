@@ -4,60 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F0B2CA0EDC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Aug 2025 13:18:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74BB8CA0EE4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Aug 2025 13:22:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b509UcHV/nD/zR1tIDR10olGmWUcgvkzcQm5Hh7Fsbk=; b=rwv5k1Sg4tIyRgK5yz5jcdP+jG
-	XJ/Jo8S/0nhAqDgHsNcwZedS+OpPU8Jyu7UIeqnDJe3Y6A3nAZVKbUpOqZW+SxD/Hvt6/d9MzEV8g
-	lbZZ/AMW9qyRb9OJwlU7gda7I2tjyZ/f9ae0AJfwSdu7mS48Zkm0O/izmqsaITfNdmN+uwatf1+yZ
-	q+ueL9P/KoptsY9PJVy2/6E6/P+VBC77JB1vpQ7C5R2jtlBDpQG1vokIiP7a4E3El2npWBupfD7vS
-	GLoDLyfhgRKVYMjDEDxPFWbzoxLC77INtFYz9oTrzzXNLxfllQ1cn2Rau6wjeo62dJvOxsOsVwLnH
-	bHAmiMDA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:
+	From:Subject:Cc:Message-Id:Date:Content-Type:Mime-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FL1qdsJdYlTPhxXhO1xYRX1SdNE4oOgS41cv9EJcUJk=; b=c9NYTt9aoDVVdV11k4zRQRP/I+
+	rQTM3LFk34uTCFh6dy1K3okr7ocvmhlsaxitBaWnrG/gCAzA2k/Myn26CbUIr7Swxt0/C84APsgTb
+	NfjCxp/xsFHY/EMYBmcOji3f96uvwA3d+pPrm3GlEhQET4F/a55xqEKn6mY4/OtrQA3+Ab7IOLhPq
+	+AugmKNgIBu6PiDc1uk1j+4KLzQ+Uq72A/+xXlztE7q7d1oVPy04IZdVQMWaHm25d0P2oeD6VxbAv
+	KhCHCmXoyxWe6uMKZz5fUC62bq510hXGctKtOq/qjT/aAWPzCuZAwv2zVsa53K8GrbynzxBIf/SuR
+	lClR0Baw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoiiJ-0000000Dk8N-1Mnc;
-	Wed, 20 Aug 2025 13:18:51 +0000
-Received: from mail.grinn-global.com ([77.55.128.204])
+	id 1uoilP-0000000Dl7q-1QJf;
+	Wed, 20 Aug 2025 13:22:03 +0000
+Received: from out-177.mta1.migadu.com ([95.215.58.177])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uohed-0000000DWPP-1Yxz;
-	Wed, 20 Aug 2025 12:11:00 +0000
-X-Virus-Scanned: by amavisd-new using ClamAV (16)
-Received: from mateusz.int.grinn-global.com (f90-187.icpnet.pl [46.228.90.187])
-	by server220076.nazwa.pl (Postfix) with ESMTP id 9C91F1BDD64;
-	Wed, 20 Aug 2025 14:10:56 +0200 (CEST)
-From: Mateusz Koza <mateusz.koza@grinn-global.com>
-To: angelogioacchino.delregno@collabora.com,
-	robh@kernel.org
-Cc: krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	marcin.czarnecki@grinn-global.com,
-	b.bilas@grinn-global.com,
-	mateusz.koza@grinn-global.com,
-	andrew@lunn.ch,
-	Conor Dooley <conor.dooley@microchip.com>
-Subject: [PATCH v3 2/4] dt-bindings: arm: mediatek: Add grinn,genio-700-sbc
-Date: Wed, 20 Aug 2025 14:09:03 +0200
-Message-ID: <20250820120905.993189-3-mateusz.koza@grinn-global.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250820120905.993189-1-mateusz.koza@grinn-global.com>
-References: <20250820120905.993189-1-mateusz.koza@grinn-global.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-NA-AI-Spam-Probability: 0.50
-X-NA-AI-Is-Spam: no
+	id 1uoiOO-0000000Dggr-1fPs
+	for linux-mediatek@lists.infradead.org;
+	Wed, 20 Aug 2025 12:58:17 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1755694683;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=FL1qdsJdYlTPhxXhO1xYRX1SdNE4oOgS41cv9EJcUJk=;
+	b=uqd944jumwt/OqCvrVikg2k18gKD+hcC10wE87TN4ey5hS2uK8bgYIg3dpnF6NIMrNcmc7
+	Q3G5w+hq+EgOo0wO5XkHwJ/vsZS16lmFs0aB/ILxGoLeBqQPLP6c2qW8H1GrWgA6rTYPU6
+	Eu5Bsi3EVMgzCRqC5FVUoV2+l9dcW1KWE37xCSFvHiMkWMEcSFx7EsobzETUGxvrJHSdM/
+	/Y2Ne0v8pKyuEJhokVgbYlPk+KpAF4rMKJTNSk8B21YB0PmFRr5bb8wViwpAWOj/JdyhZ0
+	nyiC+P+5A5pB4dAlwYgA4KYBwCN90mgm4I2kHk6t/v0jzB8ydbQOZF4QZDfXbg==
+Content-Type: multipart/signed;
+ boundary=f312b39eb8656774e4bd11dce79ebb120775cc336f024edd6bee753f42fc;
+ micalg=pgp-sha512; protocol="application/pgp-signature"
+Date: Wed, 20 Aug 2025 14:57:51 +0200
+Message-Id: <DC79THC2NMDM.1BHGJPJHTYPTV@cknow.org>
+Cc: "Ingo Molnar" <mingo@redhat.com>, "Peter Zijlstra"
+ <peterz@infradead.org>, "Juri Lelli" <juri.lelli@redhat.com>, "Vincent
+ Guittot" <vincent.guittot@linaro.org>, "Dietmar Eggemann"
+ <dietmar.eggemann@arm.com>, "Steven Rostedt" <rostedt@goodmis.org>, "Ben
+ Segall" <bsegall@google.com>, "Mel Gorman" <mgorman@suse.de>, "Valentin
+ Schneider" <vschneid@redhat.com>, "Matthias Brugger"
+ <matthias.bgg@gmail.com>, "AngeloGioacchino Del Regno"
+ <angelogioacchino.delregno@collabora.com>, "jstultz" <jstultz@google.com>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-rockchip@lists.infradead.org>
+Subject: Re: [RFC PATCH 1/1] sched/deadline: Fix RT task potential
+ starvation when expiry time passed
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+To: "Geert Uytterhoeven" <geert@linux-m68k.org>, "Kuyo Chang"
+ <kuyo.chang@mediatek.com>
+References: <20250615131129.954975-1-kuyo.chang@mediatek.com>
+ <CAMuHMdWZHwr_nmMbVREKC9nQCYigT_gvKH3M9v+oyYqk6FLONw@mail.gmail.com>
+In-Reply-To: <CAMuHMdWZHwr_nmMbVREKC9nQCYigT_gvKH3M9v+oyYqk6FLONw@mail.gmail.com>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250820_051059_583506_79752169 
-X-CRM114-Status: UNSURE (   8.71  )
+X-CRM114-CacheID: sfid-20250820_055816_577473_10355798 
+X-CRM114-Status: UNSURE (   7.62  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -73,32 +82,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add device tree bindings support for the Grinn GenioSBC-700, a
-single-board computer based on the MediaTek Genio 700 SoC.
+--f312b39eb8656774e4bd11dce79ebb120775cc336f024edd6bee753f42fc
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
-More details about the hardware:
-- https://grinn-global.com/products/grinn-geniosom-700
-- https://grinn-global.com/products/grinn-genioboard-edge-ai-sbc
+On Wed Jul 30, 2025 at 12:06 PM CEST, Geert Uytterhoeven wrote:
+> On Mon, 16 Jun 2025 at 14:39, Kuyo Chang <kuyo.chang@mediatek.com> wrote:
+>> From: kuyo chang <kuyo.chang@mediatek.com>
+>>
+>> [Analysis]
+>> ---------
+>> The log "sched: DL replenish lagged too much" triggered.
+>>
+>> Signed-off-by: kuyo chang <kuyo.chang@mediatek.com>
+>
+> Thanks, this fixes the issue I was seeing!
+>
+> Closes: https://lore.kernel.org/CAMuHMdXn4z1pioTtBGMfQM0jsLviqS2jwysaWXpo=
+LxWYoGa82w@mail.gmail.com
+> Tested-by: Geert Uytterhoeven <geert@linux-m68k.org>
 
-Signed-off-by: Mateusz Koza <mateusz.koza@grinn-global.com>
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
----
- Documentation/devicetree/bindings/arm/mediatek.yaml | 1 +
- 1 file changed, 1 insertion(+)
+I was seeing this warning as well on several of my Rockchip based
+devices, but that is gone after applying this patch. Thanks!
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-index a7e0a72f6e4c..122af0bad141 100644
---- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-@@ -430,6 +430,7 @@ properties:
-           - const: mediatek,mt8188
-       - items:
-           - enum:
-+              - grinn,genio-700-sbc
-               - mediatek,mt8390-evk
-           - const: mediatek,mt8390
-           - const: mediatek,mt8188
--- 
-2.43.0
+Tested-by: Diederik de Haas <didi.debian@cknow.org>
 
+--f312b39eb8656774e4bd11dce79ebb120775cc336f024edd6bee753f42fc
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaKXGVQAKCRDXblvOeH7b
+brWcAQCUmEK2dQiUw8567AElKttA2Xw1XSBJji4KjZ0aIcOkqgD+KJh6ivSpDeo0
+sE85VdYRU6hAT+Uh8u65OcOlnN6feQ4=
+=riNm
+-----END PGP SIGNATURE-----
+
+--f312b39eb8656774e4bd11dce79ebb120775cc336f024edd6bee753f42fc--
 
