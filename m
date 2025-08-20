@@ -4,69 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74BB8CA0EE4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Aug 2025 13:22:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B2BBCA0EDC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Aug 2025 13:33:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:
-	From:Subject:Cc:Message-Id:Date:Content-Type:Mime-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FL1qdsJdYlTPhxXhO1xYRX1SdNE4oOgS41cv9EJcUJk=; b=c9NYTt9aoDVVdV11k4zRQRP/I+
-	rQTM3LFk34uTCFh6dy1K3okr7ocvmhlsaxitBaWnrG/gCAzA2k/Myn26CbUIr7Swxt0/C84APsgTb
-	NfjCxp/xsFHY/EMYBmcOji3f96uvwA3d+pPrm3GlEhQET4F/a55xqEKn6mY4/OtrQA3+Ab7IOLhPq
-	+AugmKNgIBu6PiDc1uk1j+4KLzQ+Uq72A/+xXlztE7q7d1oVPy04IZdVQMWaHm25d0P2oeD6VxbAv
-	KhCHCmXoyxWe6uMKZz5fUC62bq510hXGctKtOq/qjT/aAWPzCuZAwv2zVsa53K8GrbynzxBIf/SuR
-	lClR0Baw==;
+	bh=23JiI9Gumsb/rLx4cuVULAx/qkeZ5t8+893/fbaahsA=; b=jeU+sqxmxMOa5av5tIUsrt3MeY
+	S0LTp0PzmVEeKKLFvi9RwHCh2cgTAw6YXxdtUjXPoD3gnJVyILedvug69IHlcjNSIV2eWHFkqV7MX
+	AUqCF7NUz4wZnn1QhNpi5fX661WYdmd2CF6Cv46BeVsWAKBahSd5wHO1r6R+BbHRy9z4LGXrFnHOY
+	UDsTyxxzG/euClh+3DdAdDIg2zP+qSsilopu9s6E7gFuZp4vpIqvar1ZF6hevqA5XeYJpB8FfTWz+
+	63uwYKvayBjMZ9rvk9xjxVRBhVXcwYbRyyLgHtFOfNYNF606XVQ+9LWhFvFTdXlL4+rsch98WpUz+
+	gW7biMhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoilP-0000000Dl7q-1QJf;
-	Wed, 20 Aug 2025 13:22:03 +0000
-Received: from out-177.mta1.migadu.com ([95.215.58.177])
+	id 1uoiwp-0000000DoDF-1JwS;
+	Wed, 20 Aug 2025 13:33:51 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoiOO-0000000Dggr-1fPs
-	for linux-mediatek@lists.infradead.org;
-	Wed, 20 Aug 2025 12:58:17 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1755694683;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=FL1qdsJdYlTPhxXhO1xYRX1SdNE4oOgS41cv9EJcUJk=;
-	b=uqd944jumwt/OqCvrVikg2k18gKD+hcC10wE87TN4ey5hS2uK8bgYIg3dpnF6NIMrNcmc7
-	Q3G5w+hq+EgOo0wO5XkHwJ/vsZS16lmFs0aB/ILxGoLeBqQPLP6c2qW8H1GrWgA6rTYPU6
-	Eu5Bsi3EVMgzCRqC5FVUoV2+l9dcW1KWE37xCSFvHiMkWMEcSFx7EsobzETUGxvrJHSdM/
-	/Y2Ne0v8pKyuEJhokVgbYlPk+KpAF4rMKJTNSk8B21YB0PmFRr5bb8wViwpAWOj/JdyhZ0
-	nyiC+P+5A5pB4dAlwYgA4KYBwCN90mgm4I2kHk6t/v0jzB8ydbQOZF4QZDfXbg==
-Content-Type: multipart/signed;
- boundary=f312b39eb8656774e4bd11dce79ebb120775cc336f024edd6bee753f42fc;
- micalg=pgp-sha512; protocol="application/pgp-signature"
-Date: Wed, 20 Aug 2025 14:57:51 +0200
-Message-Id: <DC79THC2NMDM.1BHGJPJHTYPTV@cknow.org>
-Cc: "Ingo Molnar" <mingo@redhat.com>, "Peter Zijlstra"
- <peterz@infradead.org>, "Juri Lelli" <juri.lelli@redhat.com>, "Vincent
- Guittot" <vincent.guittot@linaro.org>, "Dietmar Eggemann"
- <dietmar.eggemann@arm.com>, "Steven Rostedt" <rostedt@goodmis.org>, "Ben
- Segall" <bsegall@google.com>, "Mel Gorman" <mgorman@suse.de>, "Valentin
- Schneider" <vschneid@redhat.com>, "Matthias Brugger"
- <matthias.bgg@gmail.com>, "AngeloGioacchino Del Regno"
- <angelogioacchino.delregno@collabora.com>, "jstultz" <jstultz@google.com>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-rockchip@lists.infradead.org>
-Subject: Re: [RFC PATCH 1/1] sched/deadline: Fix RT task potential
- starvation when expiry time passed
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Geert Uytterhoeven" <geert@linux-m68k.org>, "Kuyo Chang"
- <kuyo.chang@mediatek.com>
-References: <20250615131129.954975-1-kuyo.chang@mediatek.com>
- <CAMuHMdWZHwr_nmMbVREKC9nQCYigT_gvKH3M9v+oyYqk6FLONw@mail.gmail.com>
-In-Reply-To: <CAMuHMdWZHwr_nmMbVREKC9nQCYigT_gvKH3M9v+oyYqk6FLONw@mail.gmail.com>
-X-Migadu-Flow: FLOW_OUT
+	id 1uohiX-0000000DWtF-1fSm;
+	Wed, 20 Aug 2025 12:15:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=23JiI9Gumsb/rLx4cuVULAx/qkeZ5t8+893/fbaahsA=; b=X185EkT0rWuh6auczvYqCm1Sk6
+	aOK4BsPPzEBb5mULL84/PKIqjOCJSRGE1PNIEC+cT3a3IecUMSQQLriOQboXNUzVi9V2JhJwbY7xt
+	0j0WJmZWBjUB2xYlu176+q623lX+ow5OFIsQI/vpH4funOwGxcrdzvaOy+Yj8w8xjUXs=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1uohiR-005JoT-1m; Wed, 20 Aug 2025 14:14:55 +0200
+Date: Wed, 20 Aug 2025 14:14:55 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Mateusz Koza <mateusz.koza@grinn-global.com>
+Cc: angelogioacchino.delregno@collabora.com, robh@kernel.org,
+	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	marcin.czarnecki@grinn-global.com, b.bilas@grinn-global.com
+Subject: Re: [PATCH v3 1/4] arm64: dts: mediatek: mt8390-genio-700-evk: Add
+ Grinn GenioSBC-700
+Message-ID: <d72ae17f-f634-4148-9c89-d5a7ed4f6b21@lunn.ch>
+References: <20250820120905.993189-1-mateusz.koza@grinn-global.com>
+ <20250820120905.993189-2-mateusz.koza@grinn-global.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250820120905.993189-2-mateusz.koza@grinn-global.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250820_055816_577473_10355798 
-X-CRM114-Status: UNSURE (   7.62  )
+X-CRM114-CacheID: sfid-20250820_051501_439584_1564DA54 
+X-CRM114-Status: UNSURE (   6.32  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,41 +72,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---f312b39eb8656774e4bd11dce79ebb120775cc336f024edd6bee753f42fc
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
+> +&eth {
+> +	phy-mode = "rgmii-id";
+> +	phy-handle = <&ethernet_phy0>;
+> +	snps,reset-active-low;
+> +	snps,reset-delays-us = <0 11000 200000>;
+> +	mediatek,tx-delay-ps = <30>;
+> +	pinctrl-names = "default", "sleep";
+> +	pinctrl-0 = <&eth_default_pins>;
+> +	pinctrl-1 = <&eth_sleep_pins>;
+> +	mediatek,mac-wol;
+> +	snps,reset-gpio = <&pio 147 GPIO_ACTIVE_LOW>;
+> +	status = "okay";
+> +};
+> +
+> +&eth_mdio {
+> +	ethernet_phy0: ethernet-phy@3 {
+> +		reg = <3>;
+> +		compatible = "ethernet-phy-ieee802.3-c22";
+> +		eee-broken-1000t;
+> +		interrupts-extended = <&pio 148 IRQ_TYPE_LEVEL_LOW>;
+> +	};
+> +};
 
-On Wed Jul 30, 2025 at 12:06 PM CEST, Geert Uytterhoeven wrote:
-> On Mon, 16 Jun 2025 at 14:39, Kuyo Chang <kuyo.chang@mediatek.com> wrote:
->> From: kuyo chang <kuyo.chang@mediatek.com>
->>
->> [Analysis]
->> ---------
->> The log "sched: DL replenish lagged too much" triggered.
->>
->> Signed-off-by: kuyo chang <kuyo.chang@mediatek.com>
->
-> Thanks, this fixes the issue I was seeing!
->
-> Closes: https://lore.kernel.org/CAMuHMdXn4z1pioTtBGMfQM0jsLviqS2jwysaWXpo=
-LxWYoGa82w@mail.gmail.com
-> Tested-by: Geert Uytterhoeven <geert@linux-m68k.org>
+Thanks for fixing the phy-mode.
 
-I was seeing this warning as well on several of my Rockchip based
-devices, but that is gone after applying this patch. Thanks!
+For these two nodes only:
 
-Tested-by: Diederik de Haas <didi.debian@cknow.org>
+Reviewed-by: Andrew Lunn <andrew@lunn.ch>
 
---f312b39eb8656774e4bd11dce79ebb120775cc336f024edd6bee753f42fc
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaKXGVQAKCRDXblvOeH7b
-brWcAQCUmEK2dQiUw8567AElKttA2Xw1XSBJji4KjZ0aIcOkqgD+KJh6ivSpDeo0
-sE85VdYRU6hAT+Uh8u65OcOlnN6feQ4=
-=riNm
------END PGP SIGNATURE-----
-
---f312b39eb8656774e4bd11dce79ebb120775cc336f024edd6bee753f42fc--
+    Andrew
 
