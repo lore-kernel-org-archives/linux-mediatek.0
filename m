@@ -4,94 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63BC7CA0EF8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Aug 2025 10:51:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 330B1CA0EDC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Aug 2025 10:51:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=l1zMvEX5DRNOfBq8wZXAWH0EFZuVIv7jq4PHjQLkxbo=; b=Q1fgLQcexPDx67IwWzs7tKuo+i
-	1i6Zj1Sz/m68mymNTFbpAeSkYL5xmbznsFgDX+qlEb8M/FMQaw1FjapGP8gAka+KsTNaGLV1JfpFR
-	1yVYdcdIYQnUJucT7z+8mAgupsWVRbLmSmbBLeLljv2ip9K0spTwwjesWFT5N6BqvnoHmWnl9hsSU
-	vRkZcfU00CCHhtQgjLX1LdmXlDp2W5et9GWJF7zjsde2a8FPYdg49af9dL8qVnEBK+s3Gn1xo8Xm7
-	pqklJRBiw69Apwg2MHe2iKetBDGa7GiMCpkP9rgzOaillkyfKYTRY4cva66/bd1G4yPWfx1IPRRXK
-	DFGuDIvA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pPSwHXJiuPboMvGmzdZl86YoheXT2JJemMGGCNbTXh4=; b=jgjronmknxCLeqASdjnMDt38FS
+	JxNHXpRKxJHAxXGwgbsryIllA+kCHT3r+FmQHReci02uLSqvk8vC0TELgOIOdumEfxy3NKx1PikVt
+	LjzIoMA117+TzYd8JF/b7t801NgBKKzto7TEXQwV/z8CHBgERdSInkaQIw3WiBF+4FQ25AhqjEatE
+	m1fUqUGsrnSmAFnvUBUoh4dQgCgi1wca85qa8n+RlNtDoQc/Ne9/y8iOyLlSc2V9VBFpuN+pPahow
+	Njo0XwZCyqSEZfRuJ4LtKa28mhOLNszbmlhNulL7jubpO0CHUOzWRI4U0LJlaeP4QDo/nUQmxuAlh
+	hv+6FkxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uogPQ-0000000DFCK-1KRj;
-	Wed, 20 Aug 2025 10:51:12 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uogPS-0000000DFDm-0isx;
+	Wed, 20 Aug 2025 10:51:14 +0000
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uofWH-0000000D2Y3-0V2W
-	for linux-mediatek@bombadil.infradead.org;
-	Wed, 20 Aug 2025 09:54:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=l1zMvEX5DRNOfBq8wZXAWH0EFZuVIv7jq4PHjQLkxbo=; b=Bcuj30ho/fM0VVkGDUEY4cm612
-	djZXxFv3cVUM9HCX7HPIGIa2s+RmyMKSFcNQoLWb/mjAUJIHZ3xzODxL4WqASxNQVGh3cziu76bTp
-	GT9/SGox5Z3K/hABC2Vy9LfXDII9zSy4r/cpSBTPEogrV1aHlBWELxBonhTAY7xBgblDvytUlmTgf
-	PxVt0RHFLO3tIuu4eQNNdtqEHxchJo+UXlXEaqluosndE2xlY5zf0Hb4nypS4MSE6M7gomyT4dr9Z
-	EymFPm8tcOWBbrcX1+ejywIBA6QLx3rQZvprDgP6erKzcnjcQZa7XfQCcAVLwyVtWrHhXYWP04pBi
-	2pOE6+vg==;
-Received: from mailgw01.mediatek.com ([216.200.240.184])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uofWD-00000000Hsr-10eM
-	for linux-mediatek@lists.infradead.org;
-	Wed, 20 Aug 2025 09:54:11 +0000
-X-UUID: 729ff4127da911f09f706fa2197c6ceb-20250820
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=l1zMvEX5DRNOfBq8wZXAWH0EFZuVIv7jq4PHjQLkxbo=;
-	b=t2eeBea0GsVvey88vYSGGq/fLapNffZACFo2ZDS5n/nI8hfEGBCBfnilbs1YPzYGDH+sdzy5w6v1OK06aFCS++B0VsNWUilumcSklqAZRydlONcfhWBUDubRQQ4vvjN16J98+JZgwYfRJz1itEIPplQHL4EwWO2oOQ6Djylchv8=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.3,REQID:fdb97ab1-e0dc-458c-80ac-088929435b41,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:f1326cf,CLOUDID:6aa5547a-966c-41bd-96b5-7d0b3c22e782,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:-5,Content:0|15|50,EDM:-3,IP:
-	nil,URL:99|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:
-	0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 729ff4127da911f09f706fa2197c6ceb-20250820
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
-	(envelope-from <xiandong.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 572247609; Wed, 20 Aug 2025 02:38:37 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Wed, 20 Aug 2025 17:38:33 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Wed, 20 Aug 2025 17:38:32 +0800
-From: Xiandong Wang <xiandong.wang@mediatek.com>
-To: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Yongqiang Niu
-	<yongqiang.niu@mediatek.com>
-CC: <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<sirius.wang@mediatek.com>, <vince-wl.liu@mediatek.com>,
-	<jh.hsu@mediatek.com>, <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	Xiandong Wang <xiandong.wang@mediatek.com>
-Subject: [PATCH v4 0/4] Add CMDQ driver support for 8189
-Date: Wed, 20 Aug 2025 17:38:19 +0800
-Message-ID: <20250820093831.23437-1-xiandong.wang@mediatek.com>
-X-Mailer: git-send-email 2.46.0
+	id 1uofbY-0000000D43f-0Bso;
+	Wed, 20 Aug 2025 09:59:41 +0000
+Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-afcb7a8dd3dso896843666b.3;
+        Wed, 20 Aug 2025 02:59:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1755683978; x=1756288778; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=pPSwHXJiuPboMvGmzdZl86YoheXT2JJemMGGCNbTXh4=;
+        b=YzN27j+V4ME6RNAJ7ZeGQBnfIQr0jjrG0tL9u60PgF/us/B/VoEmj5gayw6s+0LPCr
+         vKpr6OctWqH3uoIfznnAwRCEaKvpYvLny01rcOxOTn+klP6QkA+XiTJv9YIvpPblXow3
+         v3EO98Qr6bVg2Qq0/snDGqQfwS6nHYSvedrBUPRrvYMZ8J88vGm/V9AJq1NBUyK8cBFP
+         HGCmHrQzJ3PDdpXvw8nu5cb9jfKJkCEhKKlrb7Jk9COujVrd0P8ilE6yLte0ibeyHP8V
+         hcUV/Hmkh0j9tcMg+/nGqqVsx0kfwegc/rDkZXKo9VygQLkF6WNMeKIm7IdXvpaMvAxg
+         /dEA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1755683978; x=1756288778;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=pPSwHXJiuPboMvGmzdZl86YoheXT2JJemMGGCNbTXh4=;
+        b=J2czjpinbJFwyxVDXigTYWQMmh3xRcC/NwJ2Ismm2hi+6Le4PewLWwhMjJJRTsL/i+
+         Iw31ISM0yXMsdNWgk95LChRdeIZssgJK4u5CON/KrQXGoITSg6L5Oc8N9DwBGBMtihXq
+         YifNmGybJvjmZWFw3QmMeaytCV1I3mjYEMv9w52djW41uBDPcXE/PTbTBFFKf+Agu0SJ
+         atJf3wAWA5/gmdBHx0UOarpxpPaCD3DP+SD0+pGrr8rvLqr+9kkW4jCs0Nl0oAh/sNYH
+         chpW145V8cTLNwkl9yXk4egRLMGG7honHFMbOm+wVrq/TQZjZQBNhpTsWJVCKBeQPkXy
+         G1Xw==
+X-Forwarded-Encrypted: i=1; AJvYcCVxtljx7XUC8SzgqU61QoHEaIrjArUMpYS5ZwxGCk2Y1+HYzSR91awJ9rp5chXlhiSun6HTqtNxSFmQWsDpOHr9@lists.infradead.org, AJvYcCXgJ5MjRXzARG5FS1i2N7J+6tqDi0AnEJ/VTj/IAKH/LpRKzl0QTZjNvBh60FGFMOfLuAcobpP8G0U8F4W7yEA=@lists.infradead.org
+X-Gm-Message-State: AOJu0YxFRJ1gjisrbL0EEftLAsX1uL/GIDOCYDJl4Rjn5Ml50tDCEkrc
+	HnE9KEQqTySzydkjr07Veikf8sDFnT/sHwKI3uf5uj7ghrGjTaPQErl7I5yEjabyHbS72zB2fJr
+	KKM8F4g3VsVQNJoAyeVQQCDCoQO6D/hc891nHG80=
+X-Gm-Gg: ASbGncumxYCfGWFgoKOX36otxJp18qjugxMz+5QmIF6tIhTQKMKtkuNarZFp0Fb935M
+	pcYwJnnf7u1WZowRfXhZ1wUYYyev8jBZIGEMf/PXyM1TGrSS5o6to2ImzVZKJ6aNGEg6MObW/e+
+	ZifykSH02K42h+N3CPk5465n3bU+DdQXYOnYeecpXnxehput4MfKbG3MzvUiiSYr9AtoATC9TmO
+	AO2yUNXkw==
+X-Google-Smtp-Source: AGHT+IFLILsumUxXGG8Le22U8VXLfiB3UImn/sKCUBHCwulcrWRoCPLLCjJAWxmPAx6D8QUNkGdtQmpTps7zJUlvWzY=
+X-Received: by 2002:a17:906:fe01:b0:ae8:fd2d:44b8 with SMTP id
+ a640c23a62f3a-afdf00e1d0amr167565066b.29.1755683978222; Wed, 20 Aug 2025
+ 02:59:38 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+References: <20250815-pinctrl-gpio-pinfuncs-v5-0-955de9fd91db@linaro.org>
+ <CACRpkdaDGmdhaik+1saRv7Ts4myQ+tg1aQqGU3xQyT7ma8dJFw@mail.gmail.com>
+ <CAHp75VephepLq61HrVy=PX2oKUQd5NK2qS-vOC5h_NR65td3Uw@mail.gmail.com> <CACRpkda4soRCLF5=W=6R4wnwT3pjk743j022XfJxjTTQzuarAA@mail.gmail.com>
+In-Reply-To: <CACRpkda4soRCLF5=W=6R4wnwT3pjk743j022XfJxjTTQzuarAA@mail.gmail.com>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Wed, 20 Aug 2025 12:59:01 +0300
+X-Gm-Features: Ac12FXycXziPzAbLNx1s7hMXfLqQ2mmNzJaOepqBGK1kK3uBfF-tyE-7OZscDUk
+Message-ID: <CAHp75VfNhBrukJ46ahY77La5Ywkeu1xiC_eUbUj99ZQcderHbw@mail.gmail.com>
+Subject: Re: [PATCH v5 00/15] pinctrl: introduce the concept of a GPIO pin
+ function category
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: Bartosz Golaszewski <brgl@bgdev.pl>, Bjorn Andersson <andersson@kernel.org>, 
+	Konrad Dybcio <konradybcio@kernel.org>, Alexey Klimov <alexey.klimov@linaro.org>, 
+	Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Paul Cercueil <paul@crapouillou.net>, Kees Cook <kees@kernel.org>, 
+	Andy Shevchenko <andy@kernel.org>, Andrew Morton <akpm@linux-foundation.org>, 
+	David Hildenbrand <david@redhat.com>, Lorenzo Stoakes <lorenzo.stoakes@oracle.com>, 
+	"Liam R. Howlett" <Liam.Howlett@oracle.com>, Vlastimil Babka <vbabka@suse.cz>, 
+	Mike Rapoport <rppt@kernel.org>, Suren Baghdasaryan <surenb@google.com>, Michal Hocko <mhocko@suse.com>, 
+	Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, 
+	Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, NXP S32 Linux Team <s32@nxp.com>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Tony Lindgren <tony@atomide.com>, 
+	Haojian Zhuang <haojian.zhuang@linaro.org>, Geert Uytterhoeven <geert+renesas@glider.be>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Danilo Krummrich <dakr@kernel.org>, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
+	linux-hardening@vger.kernel.org, linux-mm@kvack.org, imx@lists.linux.dev, 
+	linux-omap@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, Chen-Yu Tsai <wenst@chromium.org>, 
+	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250820_105409_702206_148BD316 
-X-CRM114-Status: UNSURE (   9.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250820_025940_083939_A5495410 
+X-CRM114-Status: GOOD (  21.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,43 +118,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The patches are based on the series:
-https://lore.kernel.org/all/20250601173355.1731140-3-jason-jh.lin@mediatek.com/
-https://lore.kernel.org/all/20250601173355.1731140-4-jason-jh.lin@mediatek.com/
-https://lore.kernel.org/all/20250601173355.1731140-7-jason-jh.lin@mediatek.com/
-https://lore.kernel.org/all/20250601173355.1731140-8-jason-jh.lin@mediatek.com/
+On Wed, Aug 20, 2025 at 10:13=E2=80=AFAM Linus Walleij <linus.walleij@linar=
+o.org> wrote:
+> On Tue, Aug 19, 2025 at 8:31=E2=80=AFPM Andy Shevchenko
+> <andy.shevchenko@gmail.com> wrote:
+> > On Tue, Aug 19, 2025 at 4:02=E2=80=AFPM Linus Walleij <linus.walleij@li=
+naro.org> wrote:
+> > > On Fri, Aug 15, 2025 at 11:09=E2=80=AFAM Bartosz Golaszewski <brgl@bg=
+dev.pl> wrote:
 
-Changes in v4:
--Modify the order of driver data for 8189.
--All uppercase characters in the GCE header have been converted to lowercase characters.
--Link to v3: https://lore.kernel.org/all/20250819033746.16405-2-xiandong.wang@mediatek.com/
+...
 
-Changes in v3:
--Modify unused property of 8189 driver data
--Link to v3: https://lore.kernel.org/all/20250819033746.16405-4-xiandong.wang@mediatek.com/ 
+> > > >       devres: provide devm_kmemdup_const()
+> > > >       pinctrl: ingenic: use struct pinfunction instead of struct fu=
+nction_desc
+> > > >       pinctrl: airoha: replace struct function_desc with struct pin=
+function
+> > > >       pinctrl: mediatek: mt7988: use PINCTRL_PIN_FUNCTION()
+> > > >       pinctrl: mediatek: moore: replace struct function_desc with s=
+truct pinfunction
+> > > >       pinctrl: imx: don't access the pin function radix tree direct=
+ly
+> > > >       pinctrl: keembay: release allocated memory in detach path
+> > > >       pinctrl: keembay: use a dedicated structure for the pinfuncti=
+on description
+> > > >       pinctrl: constify pinmux_generic_get_function()
 
-Changes in v2:
--Modify the title for series.
--Link to v2: https://lore.kernel.org/all/20250819015948.15450-2-xiandong.wang@mediatek.com/
+At least the above I'm pretty much okay with. Can you still have them
+being applied?
 
-Changes in v1:
--Add GCE driver data for 8189.
--Modify the clk api for 8189 gce suspend/resume.
--Link to v1: https://lore.kernel.org/all/20250814070401.13432-1-xiandong.wang@mediatek.com/
+> > > >       pinctrl: make struct pinfunction a pointer in struct function=
+_desc
+> > > >       pinctrl: qcom: use generic pin function helpers
+> > > >       pinctrl: allow to mark pin functions as requestable GPIOs
+> > >
+> > > I applied these 12 patches as a starter so they can
+> > > stabilize in linux-next.
+> >
+> > Hmm... I'm still sure that we don't need to have a separate flags
+> > field, but since I am on vacation and will be able to look at this
+> > closer next week, I can't look closer to it.
+>
+> The qualcomm 32bit platforms fail in next anyway so I dropped the patches
+> for now.
+>
+> Both you and Bartosz are on vacation so let's let it rest for a week or t=
+wo.
 
-Xiandong Wang (4):
-[v4,01/04] dt-bindings: mailbox: add cmdq yaml for MT8189
-[v4,02/04] arm64: dts: mediatek: Add GCE header for mt8189
-[v4,03/04] mailbox: mtk-cmdq: Add CMDQ driver support for mt8189
-[v4,04/04] mailbox: mtk-cmdq: Fix clock handling using clk_bulk_prepare_enable
+I will be available fully next week.
 
- .../mailbox/mediatek,gce-mailbox.yaml         |   1 +
- arch/arm64/boot/dts/mediatek/mt8189-gce.h     | 870 ++++++++++++++++++
- drivers/mailbox/mtk-cmdq-mailbox.c            |  24 +-
- 3 files changed, 885 insertions(+), 10 deletions(-)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8189-gce.h
-
--- 
-2.46.0
-
+--=20
+With Best Regards,
+Andy Shevchenko
 
