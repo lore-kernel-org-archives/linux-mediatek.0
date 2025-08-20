@@ -4,68 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CB8BCA0EF5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Aug 2025 12:18:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0350CA0EE4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Aug 2025 12:21:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1BvZFqmRTJ7ahMq/XeE/0dEi295M+UK3CiexvNDLCpk=; b=EPUEAr13CTTcoWl5JU+uLecnxz
-	z3ZxutYlcckYJgnrMu7Ri4yjZMqJWF/p+qWb+yTrZfF8IWXjVy5l7ToiWVQbYhGrcyWMuyzgCWeRb
-	YZusJ51pbXP8cQOYq1pRTihr6cHEWHUXr9WmuwHfPbjkmN/5jCD3RzIIvP7rsAlUhw0Gk4f9Vau3h
-	N93lNMGNPaY+u6SKB3OdifJM9i4/dasVm95Uihx95iYRwGMKks5yYh7yardQNmygQqB7aJjubKJZ1
-	JIgC+cUx3WUkggAL9rooQGgB+wFN4COGZbuwY4qwmfv5Hk9Ju7j+N92KhEt3YbGQw3SPk94ff+bOA
-	ss6mH2Ng==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RnRtL0mJnAXo6RKnAbHz4UZe7fbv6cMDcPHXS2xQHck=; b=nsvupdACDsb/lkS8mYk9XEF9e/
+	6IXslwfAL1Vr89Uw4D6ngvK4Y8/3Ll1+Ny6PWQaYXR6mf42w4Ezkn6Zlm2iIhFGxI5wEXH6mSJB8i
+	pVQ551Z5z82s6cVawONMNxoh0D53w9WOEqEAE34Q1HqpW8BRtZ8LwceFyeQEZZtkNbcjYUNBmozKC
+	pj4eFvV82Mt9p7CiKyymD3BZtcYtkOMU7YEU63zI5lkztH80yR57TQNsWUeliHMq+YdGHM+xjrdVa
+	CDrRHXCTdEx3hiBMbAjCNKoO/o+pwyOoDBWQTwy7CzBUT+EM55KXz661gTlkWDuIGgy6X1EA09m9e
+	5F6QZiFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uohmJ-0000000DXFG-2LxB;
-	Wed, 20 Aug 2025 12:18:55 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uohoM-0000000DXoR-3uFT;
+	Wed, 20 Aug 2025 12:21:02 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uog0K-0000000D8Oz-22sF
-	for linux-mediatek@lists.infradead.org;
-	Wed, 20 Aug 2025 10:25:17 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1755685507; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=h+AXgcvpxaUzhSA5YhulYfrjQ4KFcdOtl1RQpZ7oMSLx4x/g+mILjjK+xwqh50gjr+AmDdUdaIGIn0MEI6apJ3oIokXP1gsF6Dc/JpXEg41cB/PnMQ2m4cgkJOgTGgzArDs3BdIeFLXGwzEvgXPQ2xXXnQXI68kUjrS8HgaQ7wg=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1755685507; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=1BvZFqmRTJ7ahMq/XeE/0dEi295M+UK3CiexvNDLCpk=; 
-	b=Q7mFMEBNFHrliTOFA8r99c0TuW6/ceLcyqDZcmb4qS9Mofdo4DwZZ3ttTu7Xsue2cXn6d0RetGQCbvd8ek7KXWQHrEogY/OSfvUKIzNLombVH2xVqZUjR+xGZ0gydYEEEUKqiW0G8zaxULO7cOwchW7KIBgGNAf5uW/z2k20LBc=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=gus@collabora.com;
-	dmarc=pass header.from=<gus@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1755685507;
-	s=zohomail; d=collabora.com; i=gus@collabora.com;
-	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=1BvZFqmRTJ7ahMq/XeE/0dEi295M+UK3CiexvNDLCpk=;
-	b=LX4KEaeeJkwci3Q/FTR8g0+bk4Xjs8UzJvLG0dZbfihZ98yMW1ucPyZuQvbZzwEQ
-	AviazBo0V/TeIh3b2NkExDU4tl4hZzf9KonGFrBfPv78LXbVNPNuM8LvEVSreXR7jb8
-	xlBfwwtJorwTGvM8KIbnMp/lzm9f1x5r3W42Wexg=
-Received: by mx.zohomail.com with SMTPS id 1755685504993404.4586990290858;
-	Wed, 20 Aug 2025 03:25:04 -0700 (PDT)
-Message-ID: <b169f9cc331254dafc3060b0dc3b8bfee882a285.camel@collabora.com>
-Subject: Re: [REGRESSION] next/master: (boot) sleeping function called from
- invalid context at kernel/locking/rw...
-From: Gustavo Padovan <gus@collabora.com>
-To: kernelci@lists.linux.dev, kernelci-results@groups.io
-Cc: regressions@lists.linux.dev, linux-mediatek@lists.infradead.org, 
-	linux-next@vger.kernel.org
-Date: Wed, 20 Aug 2025 07:25:00 -0300
-In-Reply-To: <175568535010.3222387.7351336690916179632@poutine>
-References: <175568535010.3222387.7351336690916179632@poutine>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.54.3 (3.54.3-1.fc41) 
+	id 1uoheq-0000000DWRQ-1IGr;
+	Wed, 20 Aug 2025 12:11:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=RnRtL0mJnAXo6RKnAbHz4UZe7fbv6cMDcPHXS2xQHck=; b=eUpwcvjhxv/5IxFiCI21R9jvKR
+	1Wo9RV2KUxJMofw6/2kcDSQe3FVHIiUbOKu32FenuS0EEWcTOMYiTtlti1lqzEbBn2NvsYpgIBu7T
+	5azNXKYlylrRhGUOXN2gJzMVN1iBX7ow+hXwAo64XHU7PqqVznkMpLynBuJL8QryK3AyWgD9/g3vk
+	YDYG9q3Oh8ciW1W4FYvCNh9e7PzFN1Le/XAzk+QwwcgUoltIVc4Fzun6GmrfJgmGoRjOXsDKo5NAz
+	9vyBAeN2CxBML+vdMmO0xX1YI3Fu7hNTGhMe196sh+eOqFNo/+VuTmynCqdpWL7DDVBw6SFtU0/zE
+	a4/Mf8IQ==;
+Received: from mail.grinn-global.com ([77.55.128.204])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uohen-00000000Jo4-0Yhy;
+	Wed, 20 Aug 2025 12:11:11 +0000
+X-Virus-Scanned: by amavisd-new using ClamAV (16)
+Received: from mateusz.int.grinn-global.com (f90-187.icpnet.pl [46.228.90.187])
+	by server220076.nazwa.pl (Postfix) with ESMTP id 603A21BDE37;
+	Wed, 20 Aug 2025 14:11:05 +0200 (CEST)
+From: Mateusz Koza <mateusz.koza@grinn-global.com>
+To: angelogioacchino.delregno@collabora.com,
+	robh@kernel.org
+Cc: krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	marcin.czarnecki@grinn-global.com,
+	b.bilas@grinn-global.com,
+	mateusz.koza@grinn-global.com,
+	andrew@lunn.ch
+Subject: [PATCH v3 3/4] arm64: dts: mediatek: mt8370-grinn-genio-510-sbc: Add Grinn GenioSBC-510
+Date: Wed, 20 Aug 2025 14:09:04 +0200
+Message-ID: <20250820120905.993189-4-mateusz.koza@grinn-global.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250820120905.993189-1-mateusz.koza@grinn-global.com>
+References: <20250820120905.993189-1-mateusz.koza@grinn-global.com>
 MIME-Version: 1.0
-X-ZohoMailClient: External
+Content-Transfer-Encoding: 8bit
+X-NA-AI-Spam-Probability: 0.44
+X-NA-AI-Is-Spam: no
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250820_032516_574571_08F07BC2 
-X-CRM114-Status: UNSURE (   9.15  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250820_131109_337149_FEEDD6A3 
+X-CRM114-Status: GOOD (  13.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,239 +85,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2025-08-20 at 10:22 +0000, KernelCI bot wrote:
->=20
->=20
->=20
->=20
->=20
-> Hello,
->=20
-> New boot regression found on next/master:
->=20
-> ---
-> =C2=A0sleeping function called from invalid context at
-> kernel/locking/rwsem.c:1589
-> [logspec:generic_linux_boot,linux.kernel.bug]
-> ---
->=20
-> - dashboard:
-> https://d.kernelci.org/i/maestro:4a7604ad2b208f9142109c871e17a6453ee9ff9c
-> - giturl:
-> https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
-> - commit HEAD:=C2=A0 5303936d609e09665deda94eaedf26a0e5c3a087
-> - tags: next-20250820
->=20
->=20
-> Log excerpt:
-> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D
+From: Bartosz Bilas <b.bilas@grinn-global.com>
 
-Our logspec tool failed to collect the relevant part of the crash.
-Here it is: (We will fix this).
+Add support for Grinn GenioSBC-510. Based on the commit introducing
+support for the Grinn GenioSBC-700, this change adds support for the
+Grinn GenioSBC-510, a single-board computer based on the MediaTek Genio
+510 SoC.
 
+More details about the hardware:
+- https://grinn-global.com/products/grinn-geniosom-510
+- https://grinn-global.com/products/grinn-genioboard-edge-ai-sbc
 
-[    5.926489] =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D
-[    5.930486] [ BUG: Invalid wait context ]
-[    5.934484] 6.17.0-rc2-next-20250820 #1 Not tainted
-[    5.939350] -----------------------------
-[    5.943347] kworker/u32:0/12 is trying to lock:
-[    5.947864] ffffbca6d49c19b8 (sysfs_symlink_target_lock){+.+.}-
-{3:3}, at: sysfs_remove_dir+0x48/0xe8
-[    5.956997] other info that might help us debug this:
-[    5.962034] context-{5:5}
-[    5.964642] 4 locks held by kworker/u32:0/12:
-[    5.968986]  #0: ffff0000c0039148
-((wq_completion)events_unbound){+.+.}-{0:0}, at:
-process_one_work+0x674/0x1800
-[    5.979153]  #1: ffff800080187ce0 (deferred_probe_work){+.+.}-{0:0},
-at: process_one_work+0x698/0x1800
-[    5.988450]  #2: ffff0000c24a10f8 (&dev->mutex){....}-{4:4}, at:
-__device_attach+0x80/0x358
-[    5.996794]  #3: ffffbca6d6571cd8 (devtree_lock){....}-{2:2}, at:
-of_find_node_with_property+0x34/0x204
-[    6.003882] usb 1-1: new high-speed USB device number 2 using xhci-
-mtk
-[    6.006180] stack backtrace:
-[    6.006183] CPU: 7 UID: 0 PID: 12 Comm: kworker/u32:0 Not tainted
-6.17.0-rc2-next-20250820 #1 PREEMPT
-[    6.006187] Hardware name: Acer Tomato (rev2) board (DT)
-[    6.006190] Workqueue: events_unbound deferred_probe_work_func
-[    6.006195] Call trace:
-[    6.006196]  show_stack+0x18/0x24 (C)
-[    6.006201]  dump_stack_lvl+0x90/0xd0
-[    6.006205]  dump_stack+0x1c/0x28
-[    6.006208]  __lock_acquire+0x924/0xc2c
-[    6.006213]  lock_acquire.part.0+0x164/0x25c
-[    6.006216]  lock_acquire+0x88/0x1a0
-[    6.006219]  _raw_spin_lock+0xa8/0xd8
-[    6.006223]  sysfs_remove_dir+0x48/0xe8
-[    6.006226]  __kobject_del+0xb0/0x27c
-[    6.006228]  kobject_release+0xfc/0x134
-[    6.006231]  kobject_put+0xb0/0x130
-[    6.006234]  of_node_put+0x18/0x28
-[    6.006237]  of_find_node_with_property+0xcc/0x204
-[    6.006240]  scpsys_get_bus_protection_legacy+0x16c/0x428
-[    6.006244]  scpsys_probe+0x3bc/0x584
-[    6.006247]  platform_probe+0xc4/0x1c0
-[    6.006250]  really_probe+0x188/0x5d0
-[    6.006253]  __driver_probe_device+0x160/0x2e8
-[    6.006256]  driver_probe_device+0x5c/0x298
-[    6.006259]  __device_attach_driver+0x184/0x328
-[    6.006262]  bus_for_each_drv+0x104/0x18c
-[    6.006265]  __device_attach+0x168/0x358
-[    6.006268]  device_initial_probe+0x14/0x20
-[    6.006271]  bus_probe_device+0x128/0x160
-[    6.006274]  deferred_probe_work_func+0x128/0x1d0
-[    6.006277]  process_one_work+0x740/0x1800
-[    6.006279]  worker_thread+0x738/0xb88
-[    6.006282]  kthread+0x328/0x3d4
-[    6.006285]  ret_from_fork+0x10/0x20
-[    6.006291] BUG: sleeping function called from invalid context at
-kernel/locking/rwsem.c:1589
-[    6.017529] i2c_hid_of 4-0010: i2c_hid_get_input: IRQ triggered but
-there's no data
-[    6.024878] in_atomic(): 1, irqs_disabled(): 1, non_block: 0, pid:
-12, name: kworker/u32:0
-[    6.024881] preempt_count: 1, expected: 0
-[    6.024882] RCU nest depth: 0, expected: 0
-[    6.024884] INFO: lockdep is turned off.
-[    6.024886] irq event stamp: 537370
-[    6.024887] hardirqs last  enabled at (537369): [<ffffbca6cf0a140c>]
-_raw_spin_unlock_irqrestore+0x84/0x90
-[    6.024891] hardirqs last disabled at (537370): [<ffffbca6cf0a033c>]
-_raw_spin_lock_irqsave+0xe0/0xf4
-[    6.024894] softirqs last  enabled at (365608): [<ffffbca6cb9bcfc4>]
-handle_softirqs+0x8ec/0xd90
-[    6.219570] softirqs last disabled at (365431): [<ffffbca6cb810ab8>]
-__do_softirq+0x14/0x20
-[    6.227908] CPU: 7 UID: 0 PID: 12 Comm: kworker/u32:0 Not tainted
-6.17.0-rc2-next-20250820 #1 PREEMPT
-[    6.227912] Hardware name: Acer Tomato (rev2) board (DT)
-[    6.227914] Workqueue: events_unbound deferred_probe_work_func
-[    6.227919] Call trace:
-[    6.227920]  show_stack+0x18/0x24 (C)
-[    6.227923]  dump_stack_lvl+0x90/0xd0
-[    6.227927]  dump_stack+0x1c/0x28
-[    6.227930]  __might_resched+0x360/0x578
-[    6.227933]  __might_sleep+0xa4/0x16c
-[    6.227937]  down_write+0x8c/0x21c
-[    6.227940]  kernfs_remove+0x28/0x4c
-[    6.227944]  sysfs_remove_dir+0xa8/0xe8
-[    6.227947]  __kobject_del+0xb0/0x27c
-[    6.227950]  kobject_release+0xfc/0x134
-[    6.227952]  kobject_put+0xb0/0x130
-[    6.227955]  of_node_put+0x18/0x28
-[    6.227958]  of_find_node_with_property+0xcc/0x204
-[    6.227961]  scpsys_get_bus_protection_legacy+0x16c/0x428
-[    6.227965]  scpsys_probe+0x3bc/0x584
-[    6.227967]  platform_probe+0xc4/0x1c0
-[    6.227971]  really_probe+0x188/0x5d0
-[    6.227974]  __driver_probe_device+0x160/0x2e8
-[    6.227977]  driver_probe_device+0x5c/0x298
-[    6.227980]  __device_attach_driver+0x184/0x328
-[    6.227983]  bus_for_each_drv+0x104/0x18c
-[    6.227985]  __device_attach+0x168/0x358
-[    6.227988]  device_initial_probe+0x14/0x20
-[    6.227991]  bus_probe_device+0x128/0x160
-[    6.227993]  deferred_probe_work_func+0x128/0x1d0
-[    6.227996]  process_one_work+0x740/0x1800
-[    6.227999]  worker_thread+0x738/0xb88
-[    6.228002]  kthread+0x328/0x3d4
-[    6.228004]  ret_from_fork+0x10/0x20
-[   31.875576] rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
-[   32.017394] rcu: ?7-...0: (14 ticks this GP)
-idle=3D3c14/1/0x4000000000000000 softirq=3D936/941 fqs=3D1298
-[   32.026515] rcu: ?(detected by 5, t=3D6503 jiffies, g=3D-383, q=3D816
-ncpus=3D8)
-[   32.033203] Sending NMI from CPU 5 to CPUs 7:
-[   44.067673] watchdog: CPU1: Watchdog detected hard LOCKUP on cpu 2
-[   44.073902] Modules linked in:
-[   44.073927] irq event stamp: 17405
-[   44.073942] hardirqs last  enabled at (17405): [<ffffbca6ce8032c0>]
-psci_cpu_suspend_enter+0x1b8/0x320
-[   44.073994] hardirqs last disabled at (17404): [<ffffbca6cbaba4e8>]
-do_idle+0xf8/0x1a0
-[   44.074038] softirqs last  enabled at (17402): [<ffffbca6cb9bcfc4>]
-handle_softirqs+0x8ec/0xd90
-[   44.074079] softirqs last disabled at (17397): [<ffffbca6cb810ab8>]
-__do_softirq+0x14/0x20
-[   44.074118] Sending NMI from CPU 1 to CPUs 2:
-[   44.103650] watchdog: CPU5: Watchdog detected hard LOCKUP on cpu 6
-[   44.125270] Modules linked in:
-[   44.125273] irq event stamp: 26161
-[   44.125274] hardirqs last  enabled at (26161): [<ffffbca6ce8032c0>]
-psci_cpu_suspend_enter+0x1b8/0x320
-[   44.125281] hardirqs last disabled at (26160): [<ffffbca6cbaba4e8>]
-do_idle+0xf8/0x1a0
-[   44.125286] softirqs last  enabled at (26140): [<ffffbca6cb9bcfc4>]
-handle_softirqs+0x8ec/0xd90
-[   44.125289] softirqs last disabled at (26135): [<ffffbca6cb810ab8>]
-__do_softirq+0x14/0x20
-[   56.471758] sched: DL replenish lagged too much
-[  109.911578] rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
-[  109.917672] rcu: ?7-...0: (14 ticks this GP)
-idle=3D3c14/1/0x4000000000000000 softirq=3D936/941 fqs=3D4192
-[  109.926794] rcu: ?(detected by 4, t=3D26012 jiffies, g=3D-383, q=3D816
-ncpus=3D8)
-[  109.933570] Sending NMI from CPU 4 to CPUs 7:
-[  187.931577] rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
-[  187.937669] rcu: ?7-...0: (14 ticks this GP)
-idle=3D3c14/1/0x4000000000000000 softirq=3D936/941 fqs=3D7593
-[  187.946790] rcu: ?(detected by 4, t=3D45517 jiffies, g=3D-383, q=3D816
-ncpus=3D8)
-[  187.953565] Sending NMI from CPU 4 to CPUs 7:
-[  265.951574] rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
-[  265.957666] rcu: ?7-...0: (14 ticks this GP)
-idle=3D3c14/1/0x4000000000000000 softirq=3D936/941 fqs=3D10993
-[  265.966873] rcu: ?(detected by 5, t=3D65022 jiffies, g=3D-383, q=3D816
-ncpus=3D8)
+Signed-off-by: Bartosz Bilas <b.bilas@grinn-global.com>
+---
+ arch/arm64/boot/dts/mediatek/Makefile         |  1 +
+ .../mediatek/mt8370-grinn-genio-510-sbc.dts   | 19 +++++++++++++++++++
+ 2 files changed, 20 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8370-grinn-genio-510-sbc.dts
 
->=20
-> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D
->=20
->=20
-> # Hardware platforms affected:
->=20
-> ## mt8186-corsola-steelix-sku131072
-> - dashboard:
-> https://d.kernelci.org/test/maestro:68a572e9233e484a3fa2c0db
-> - compatibles: google,steelix-sku131072 | google,steelix
-> - 1 fails since 2025-08-20 07:25 UTC
-> - test path: boot
-> - last pass:
-> https://d.kernelci.org/test/maestro:68a429e6233e484a3fa0aba6
-> =C2=A0=C2=A0=C2=A0 - on 2025-08-19 07:38 UTC
-> =C2=A0=C2=A0=C2=A0 - commit hash:=C2=A0 886e5e7b0432360842303d587bb4a65d1=
-0741ae8
-> =C2=A0=C2=A0=C2=A0 - test id:=C2=A0 maestro:68a429e6233e484a3fa0aba6
->=20
-> ## mt8195-cherry-tomato-r2
-> - dashboard:
-> https://d.kernelci.org/test/maestro:68a572ea233e484a3fa2c0e1
-> - compatibles: google,tomato-rev2 | google,tomato | mediatek,mt8195
-> - 1 fails since 2025-08-20 07:25 UTC
-> - test path: boot
-> - last pass:
-> https://d.kernelci.org/test/maestro:68a2ce76233e484a3f9e5dcc
-> =C2=A0=C2=A0=C2=A0 - on 2025-08-18 06:55 UTC
-> =C2=A0=C2=A0=C2=A0 - commit hash:=C2=A0 3ac864c2d9bb8608ee236e89bf5618116=
-13abfce
-> =C2=A0=C2=A0=C2=A0 - test id:=C2=A0 maestro:68a2ce76233e484a3f9e5dcc
->=20
->=20
-> #kernelci issue maestro:4a7604ad2b208f9142109c871e17a6453ee9ff9c
->=20
-> Reported-by: kernelci.org bot <bot@kernelci.org>
->=20
-> --
-> This is an experimental report format. Please send feedback in!
-> Talk to us at kernelci@lists.linux.dev
->=20
-> Made with love by the KernelCI team - https://kernelci.org
+diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+index 7383d75d8041..729d786b1236 100644
+--- a/arch/arm64/boot/dts/mediatek/Makefile
++++ b/arch/arm64/boot/dts/mediatek/Makefile
+@@ -102,6 +102,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8365-evk.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8365-evk-eth.dtbo
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8365-evk-hdmi.dtbo
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8370-genio-510-evk.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt8370-grinn-genio-510-sbc.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8395-genio-1200-evk.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8390-genio-700-evk.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8390-grinn-genio-700-sbc.dtb
+diff --git a/arch/arm64/boot/dts/mediatek/mt8370-grinn-genio-510-sbc.dts b/arch/arm64/boot/dts/mediatek/mt8370-grinn-genio-510-sbc.dts
+new file mode 100644
+index 000000000000..117ea694cda3
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt8370-grinn-genio-510-sbc.dts
+@@ -0,0 +1,19 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright (C) 2025 Grinn sp. z o.o.
++ * Author: Bartosz Bilas <bartosz.bilas@grinn-global.com>
++ */
++/dts-v1/;
++
++#include "mt8370.dtsi"
++#include "mt8390-grinn-genio-som.dtsi"
++#include "mt8390-grinn-genio-sbc.dtsi"
++
++/ {
++	model = "Grinn GenioSBC-510";
++	compatible = "grinn,genio-510-sbc", "mediatek,mt8370", "mediatek,mt8188";
++	memory@40000000 {
++		device_type = "memory";
++		reg = <0 0x40000000 1 0x00000000>;
++	};
++};
+-- 
+2.43.0
 
 
