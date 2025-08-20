@@ -4,60 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B2BBCA0EDC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Aug 2025 13:33:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C09ACA0EDC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Aug 2025 14:13:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=23JiI9Gumsb/rLx4cuVULAx/qkeZ5t8+893/fbaahsA=; b=jeU+sqxmxMOa5av5tIUsrt3MeY
-	S0LTp0PzmVEeKKLFvi9RwHCh2cgTAw6YXxdtUjXPoD3gnJVyILedvug69IHlcjNSIV2eWHFkqV7MX
-	AUqCF7NUz4wZnn1QhNpi5fX661WYdmd2CF6Cv46BeVsWAKBahSd5wHO1r6R+BbHRy9z4LGXrFnHOY
-	UDsTyxxzG/euClh+3DdAdDIg2zP+qSsilopu9s6E7gFuZp4vpIqvar1ZF6hevqA5XeYJpB8FfTWz+
-	63uwYKvayBjMZ9rvk9xjxVRBhVXcwYbRyyLgHtFOfNYNF606XVQ+9LWhFvFTdXlL4+rsch98WpUz+
-	gW7biMhQ==;
+	bh=Iroe3MCa2ZZaRY9jKe2399kPLRw8TL6vb7UDOEeV6xo=; b=07jaI8p2fjFzr7Z56HDDOyR5Xk
+	ZsF89Ic17HGsaK2CEyqayusdJj7tRt2euY3MNITlIA7riHHGwVdq6WEypveStG+Tf4WredB0GMf7N
+	hYWbx3iBkpGpXG0zdDmDID7airkJjbyW42qnO17XaiMOD385eCuKD3hjoJ53oZ+JrZH2UOo0Y2fiY
+	MN2BPH6kgYBBAzxFkgLarttxg7uK0qr3P6U3uBunxSs2hUP1RNDCqY/XiZLVJRSsZPzdo6Y2drn5I
+	ZMgQR+UGgr+dvFGX3obWjToNgh0LDPs7p0o11j3vesJ9bRi/qEOyjvBgt2dCB4ZOtRf8DDnaWXEZL
+	ikKpKnFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoiwp-0000000DoDF-1JwS;
-	Wed, 20 Aug 2025 13:33:51 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1uojYn-0000000DyVZ-3gte;
+	Wed, 20 Aug 2025 14:13:05 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uohiX-0000000DWtF-1fSm;
-	Wed, 20 Aug 2025 12:15:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=23JiI9Gumsb/rLx4cuVULAx/qkeZ5t8+893/fbaahsA=; b=X185EkT0rWuh6auczvYqCm1Sk6
-	aOK4BsPPzEBb5mULL84/PKIqjOCJSRGE1PNIEC+cT3a3IecUMSQQLriOQboXNUzVi9V2JhJwbY7xt
-	0j0WJmZWBjUB2xYlu176+q623lX+ow5OFIsQI/vpH4funOwGxcrdzvaOy+Yj8w8xjUXs=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1uohiR-005JoT-1m; Wed, 20 Aug 2025 14:14:55 +0200
-Date: Wed, 20 Aug 2025 14:14:55 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Mateusz Koza <mateusz.koza@grinn-global.com>
-Cc: angelogioacchino.delregno@collabora.com, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	marcin.czarnecki@grinn-global.com, b.bilas@grinn-global.com
-Subject: Re: [PATCH v3 1/4] arm64: dts: mediatek: mt8390-genio-700-evk: Add
- Grinn GenioSBC-700
-Message-ID: <d72ae17f-f634-4148-9c89-d5a7ed4f6b21@lunn.ch>
-References: <20250820120905.993189-1-mateusz.koza@grinn-global.com>
- <20250820120905.993189-2-mateusz.koza@grinn-global.com>
+	id 1uoiqb-0000000DmQZ-3MgQ;
+	Wed, 20 Aug 2025 13:27:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1755696443;
+	bh=Iroe3MCa2ZZaRY9jKe2399kPLRw8TL6vb7UDOEeV6xo=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=BPhghfmM17dTR9tU6w/x7QCksTcLIMZmJe9nr6IPzIGw7KNbMFlwN7Vy7Ks4TWEdt
+	 +dIh+4Rx64/VObgOsVABZr2GyQDDUTspGLOi7NkBPilc3dQxEETLl89DMf+h2l6v5O
+	 iUpiW5Mm/T1gZtNkKllA9wBB+gAuH62JEyCpqmvebiHanOXdSoqw84/RxoPhMIg9nv
+	 uIiJhWmnNENJCXvDzCPPw+kJDZz7w3VJoo92oHfL4/AisZfUB6tzoouFMo9wK0m+FL
+	 OR6rdIAdm1MFOn6jbjmF/kE6YGuhwXO2+lDjzbqxer5YqNL9MhikIrkrnIH5PkJb0A
+	 xaCNRtP8+0pcw==
+Received: from localhost-live.home (2a01cb0892f2d600C8f85Cf092d4AF51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: jmassot)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0D12717E01F5;
+	Wed, 20 Aug 2025 15:27:22 +0200 (CEST)
+Message-ID: <124e3fbe79660eac9d529b127d888ce6942ba346.camel@collabora.com>
+Subject: Re: [PATCH 1/9] dt-bindings: clock: mediatek: Add power-domains
+ property
+From: Julien Massot <julien.massot@collabora.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	kernel@collabora.com, Michael Turquette <mturquette@baylibre.com>, Stephen
+ Boyd	 <sboyd@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski	 <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger	 <matthias.bgg@gmail.com>, Ikjoon Jang
+ <ikjn@chromium.org>, Enric Balletbo i Serra <eballetbo@kernel.org>, Chen-Yu
+ Tsai <wenst@chromium.org>, Weiyi Lu	 <weiyi.lu@mediatek.com>, Eugen Hristev
+ <eugen.hristev@linaro.org>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown
+ <broonie@kernel.org>, Julien Massot <jmassot@collabora.com>,  Sean Wang
+ <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>
+Cc: linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-sound@vger.kernel.org, 
+	linux-gpio@vger.kernel.org
+Date: Wed, 20 Aug 2025 15:27:21 +0200
+In-Reply-To: <ab97489a-9493-4005-9a1a-9f88ad970b05@collabora.com>
+References: <20250801-mtk-dtb-warnings-v1-0-6ba4e432427b@collabora.com>
+	 <20250801-mtk-dtb-warnings-v1-1-6ba4e432427b@collabora.com>
+	 <ab97489a-9493-4005-9a1a-9f88ad970b05@collabora.com>
+Organization: Collabora Ltd.
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250820120905.993189-2-mateusz.koza@grinn-global.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250820_051501_439584_1564DA54 
-X-CRM114-Status: UNSURE (   6.32  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250820_062725_991896_3A643E4F 
+X-CRM114-Status: GOOD (  13.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,34 +88,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> +&eth {
-> +	phy-mode = "rgmii-id";
-> +	phy-handle = <&ethernet_phy0>;
-> +	snps,reset-active-low;
-> +	snps,reset-delays-us = <0 11000 200000>;
-> +	mediatek,tx-delay-ps = <30>;
-> +	pinctrl-names = "default", "sleep";
-> +	pinctrl-0 = <&eth_default_pins>;
-> +	pinctrl-1 = <&eth_sleep_pins>;
-> +	mediatek,mac-wol;
-> +	snps,reset-gpio = <&pio 147 GPIO_ACTIVE_LOW>;
-> +	status = "okay";
-> +};
-> +
-> +&eth_mdio {
-> +	ethernet_phy0: ethernet-phy@3 {
-> +		reg = <3>;
-> +		compatible = "ethernet-phy-ieee802.3-c22";
-> +		eee-broken-1000t;
-> +		interrupts-extended = <&pio 148 IRQ_TYPE_LEVEL_LOW>;
-> +	};
-> +};
+Hi Angelo,
 
-Thanks for fixing the phy-mode.
+On Mon, 2025-08-04 at 09:59 +0200, AngeloGioacchino Del Regno wrote:
+> Il 01/08/25 13:18, Julien Massot ha scritto:
+> > The mt8183-mfgcfg node uses a power domain in its device tree node.
+> > To prevent schema validation warnings, add the optional `power-domains`
+> > property to the binding schema for mediatek syscon clocks.
+> >=20
+> > Fixes: 1781f2c46180 ("arm64: dts: mediatek: mt8183: Add power-domains p=
+roperty to mfgcfg")
+> > Signed-off-by: Julien Massot <julien.massot@collabora.com>
+>=20
+> Is MT8183 the only one?
+>=20
+> if:
+> =C2=A0=C2=A0 properties:
+> =C2=A0=C2=A0=C2=A0=C2=A0 compatible:
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 contains:
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: mediatek,mt8183=
+-mfgcfg
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ^^^^^^^(if it's not just=
+ mt8183, this should be an enum)
+>=20
+> then:
+> =C2=A0=C2=A0 properties:
+> =C2=A0=C2=A0=C2=A0=C2=A0 power-domains: true
+> else:
+> =C2=A0=C2=A0 properties:
+> =C2=A0=C2=A0=C2=A0=C2=A0 power-domains: false
+>=20
+> (check if the above is correct, don't blindly trust what I wrote! :P)
+>=20
+>=20
+Verified on my side 'mediatek,mt8183-mfgcfg' is the only one with a power-d=
+omain
+property.
+I will add the if/else and disable the power-domains property for other com=
+patible
+as suggested.
 
-For these two nodes only:
+>=20
+> after which:
+>=20
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+> (if it's not only mt8183, keep the R-b on this commit regardless)
+Thanks,
 
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
-
-    Andrew
+Julien
 
