@@ -4,96 +4,221 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04B43CA0EDC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Aug 2025 09:02:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1F91CA0EF8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Aug 2025 09:13:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wUGdpiEBvij3QABk3TeXAVu9+edp1QZJrsLkuXoDk+M=; b=oNkbM16eoSaPDynohb+Y+G/AgC
-	AITin2L5uqwAYbiSPom8Eax3HbFxG43n+1QATmoz0JtPLz+SP7lHJYA2EHaV4SjTLycMEdH0teE6t
-	bTowXdRdkHpQKciY10ul/9GRP6dVl1jaC7FMlCJ1Npwj5721hc/75Z2u6wNs4krt3i/bGRRLpLkEt
-	/RhCR5/HFzP1vs5nF/ZJ9wRVbcpiFd5HGx1WMpt0jXD+f8BNxrBQ85xutuj/RLRMQEMeZcTJD9jHD
-	aQtwjIjrJim5HPU6qXcWMvMk9PUI8/V4BNRfccweax6p1rdjkOp18l2YfkhEv7+KRx/ron+sLNWBG
-	FnAoH3Dw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0kvSXFpaVCQxPy7b1VdZJxUidDItHhFi7kniCpqAjnQ=; b=p6Voxw3yGC5xqH/iGLJ+4vPSwn
+	g4X5fwnirrC8j7XhMYjyhZNA0STXfnuzXatzAwXYIzGMtTvBiA+eu+hm55JHtWXeblumKZ92PE6sW
+	OlmH77s0nuOQrmAKipHdtF2i7lbWFEKD4096o2NFPrbE6gQN4KlNWKZMEvZA6kv7WQ+gvx7GAe0sQ
+	rUtlw8+QJESM66JfmejvoPGjRIg9fq3zh3eN0fxEcVLR4Wxco3u+PdSNUk77JBoEnh10o556MyoHK
+	DRXmPmnqV3eH0zb8pc6DBTia0v/CBw5W4lAi9puHX7R88RXoZmdcPaAbGzqp3OL3hRpREXY5r3TN1
+	5dqFZJhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoeiD-0000000Cpfq-1jlx;
-	Wed, 20 Aug 2025 09:02:29 +0000
-Received: from mail-qk1-x735.google.com ([2607:f8b0:4864:20::735])
+	id 1uoesU-0000000CrqL-1qIJ;
+	Wed, 20 Aug 2025 09:13:06 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uodxW-0000000Ch6z-2A3L
-	for linux-mediatek@lists.infradead.org;
-	Wed, 20 Aug 2025 08:14:15 +0000
-Received: by mail-qk1-x735.google.com with SMTP id af79cd13be357-7e8704c7a46so728929185a.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 20 Aug 2025 01:14:14 -0700 (PDT)
+	id 1uoe7D-0000000Cj7G-1AaP;
+	Wed, 20 Aug 2025 08:24:16 +0000
+X-UUID: 0abc10887d9f11f09eb0dd999d3936bf-20250820
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=0kvSXFpaVCQxPy7b1VdZJxUidDItHhFi7kniCpqAjnQ=;
+	b=NwddQVtf2NuEa3jnQYPI06fYFWYrWk8gu/2xaHV6CDItHs+nh7fCYY3twSklSoqbq6vJHCHcQDrKPnGL+bsdzDmzixc8hwI8Sv1P3+flj9XEXtWLtvA0MYuaZNbHzYmU0sTqt6qVdLWsJIfuoimzIEtIV8nHGERVKSXJHHDcTbI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.3,REQID:76e649aa-ec1a-4517-af41-3c12d8ffd337,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:f1326cf,CLOUDID:c3cb696d-c2f4-47a6-876f-59a53e9ecc6e,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111,TC:-5,Conten
+	t:0|15|50,EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:
+	0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 0abc10887d9f11f09eb0dd999d3936bf-20250820
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <irui.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2111070915; Wed, 20 Aug 2025 01:24:08 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Wed, 20 Aug 2025 16:24:03 +0800
+Received: from TYPPR03CU001.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Wed, 20 Aug 2025 16:24:02 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=tRbpuWS66Kbrp9glahg0JexbQuajoVMh9lCVKtPVfISLGLeNc4Ytn7YayQzKSIyxzlcImmxphoTHaCzD6368LEbRy7HCG61Na9eTicAsisM9lAEZjZubHLkLF2csZpOq1LxRCxEKZcRvwIB4cyujQb1wtbY++y6gMDlc/DiVqgu6qcpD5w9zB/X/5wHIs/kn2HIuwo8wbds61NjO+Vyt/5V5GprKUnevP8oyF098ROuGTy9jESN8lbK+UYLVEU+/CK2tiwAuWrZrGctR7qdCPlAk5ur++m6+ctVG/phqHE+z+bCR0VuYNu9NYYfocuPnbYhoqyopXklL24hN13FT5w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=0kvSXFpaVCQxPy7b1VdZJxUidDItHhFi7kniCpqAjnQ=;
+ b=vD1U0/JzM/Y2ZvCjPCp8AxNv3/M3L84FAWSt9P3oKD8Kt5HbjFKe1VrHSKTaBIwYtrddys2AHsKq1vorsguTsfEFyjLThmE+7F3PorISKO9rmaTfb2aJwfVIve8LAu8aFrEn3MvmuJJzKiEBtzbBo0+FZn0Y1ObZd5a6tKOmrnDj15WhpJMZo6ICAvQLQvV3I+hw5pOMRLpTLRhsBze+t95USAExeL0ybcEIIAx71oznY2NLNl3A38hmmW9FwWSBffKoLvhSZNoU4mPdWODdgv7yFSQJlRCloQ96M7BhmZku7T7qdfzG2YimT2ve8GdyZcHqAO7S17m24rfvfPZpjw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1755677653; x=1756282453; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=wUGdpiEBvij3QABk3TeXAVu9+edp1QZJrsLkuXoDk+M=;
-        b=ll4ZXRcKGfoOUBWtsTwAYAFNL/rLlbwn6JX1Aej0do4zESvcMRKm0mmMshOeLSTJoR
-         bb9OANBgj+wW2clnLh9+sjVL/C2D6VMstb7G5o4f7MCjQQC5ImmL+H0efVSJs6G6AbB5
-         b54MKF5mUMpEdfY0W8R8e/agg/bp2IuTLCbns=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1755677653; x=1756282453;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=wUGdpiEBvij3QABk3TeXAVu9+edp1QZJrsLkuXoDk+M=;
-        b=XhJjjk1owEuAe3TtSm2pJqpbUrv3wuxmKpeVnSRU89wEIl6bANd13b9SYtMFr6yNs3
-         zn5R4FrmEX00sv50cqBU9FevIRvsyZ7wjvkN8acvHuCBHr/Le3tBzwOtnBdYDpibkBXh
-         pYFG9nEsOVhEi2Ac7w3mdxwAbH6Z0Qq4eDw/Z3JfxgyjMo38Eii8bAqj8hACvqPh0shJ
-         HRn+cpEYuP/kiIoXQGoHJhf8kSFjK51V1s3o4rNH7ojnXoXevCjot0YwDw6UxErXYU++
-         qnZlHDcVu7qE0x/tKwQUNNEy5azr6EU3WpTIDRSJWk06o7zVbkIQeX7PZ7DCbqJpAPNu
-         fs4g==
-X-Forwarded-Encrypted: i=1; AJvYcCW8QHLe5aVOU+bCGMqo6VYAeCJKjuT1fibp2bhkaVcgmbZ0DTAioXUUG+zDpH9FoRFHnrMEx3h9tloGWFHwWQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxQ3G6Ht/LkdIAgz/tH1VGmHFcf6n3CZZ+9CvXJ3aNCo2YSl19D
-	cRjSkiHFZOwvdTmonyxHN8TKl+l9MHcozvlpaphr2mIRyU7AFaf1mwQWkOgENKUxR80OhbCbL3L
-	6V6hBKg==
-X-Gm-Gg: ASbGncv0ISu9Y0g1aRe6lwAWBdfvUJLFP6zVH2ITuxvn4LfVrEGFzMALa34dbqW8ofX
-	O3sjKOeKxeAmMK0nUmc4bteHvn8jUZ7tR4QnBUWaJ5+Q+Sc+vtlzYRl2R6lC/uCFfXYY0aJT0yk
-	E+VloL+uxJR7mH6ZhI4ZwKdMEz7+vczACJH629JSzxYA0rUpQcs39mddyVH+YXkptL6IGZDF2iE
-	gwVrTn0NHGXJe/cZCKyHNwfiQ+q+2rqLv0AFCQUqFV8oaxHgg4kXoAC9cOvJh8ESoUTCGuXzvov
-	DGqpfTxXcYZ8HoZ7CzyKqVQvdS0rTuOyB9B/B9mPvg5Kyc6LkIm7tmYugfM/WeNZbIy8WtBircC
-	1V96D3lBXhEaAeEvx5HqytAl3VZpV01Tip9F9ptQ52RnAH41GpYpIT25nyUkE1g==
-X-Google-Smtp-Source: AGHT+IEdJrbH7rZpdL4nR2957UIAcTV3RHxNdisj4zfdgNs/e9b1w8Vt79rW9MiD+n4TheZ6FQ1hgg==
-X-Received: by 2002:a05:620a:710c:b0:7e8:46f8:6d5e with SMTP id af79cd13be357-7e9fcb08b87mr228948585a.51.1755677652613;
-        Wed, 20 Aug 2025 01:14:12 -0700 (PDT)
-Received: from mail-qt1-f175.google.com (mail-qt1-f175.google.com. [209.85.160.175])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-7e87e192901sm900408485a.38.2025.08.20.01.14.11
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 20 Aug 2025 01:14:11 -0700 (PDT)
-Received: by mail-qt1-f175.google.com with SMTP id d75a77b69052e-4b0bf08551cso181311cf.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 20 Aug 2025 01:14:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCXkFj+/DavIUY5O6sz43TabL6oq6DIEJcjz9Y7KNuyzhgAm2/PVjBGGVyc78C/s2txl4A68D2o0Ib8KvXm6Nw==@lists.infradead.org
-X-Received: by 2002:ac8:580f:0:b0:4b0:8318:a95 with SMTP id
- d75a77b69052e-4b291917518mr3343931cf.8.1755677650289; Wed, 20 Aug 2025
- 01:14:10 -0700 (PDT)
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=0kvSXFpaVCQxPy7b1VdZJxUidDItHhFi7kniCpqAjnQ=;
+ b=fWOE3p0kSvLxTR8PtZEI538rpvjQ42knh66IsnrSp+Z6ga8vFqptSVGhGwLTPvUOFL4BGmKPazYul4rcnKyFGLUVhBniw6/w8DnkrmOsDhAICP3vJjyaMDiI6qxr+uCPgu7WQ0LaobuDwQRfIeYQSUj0QshcGUgZtBp4ZuuvxrY=
+Received: from SEZPR03MB7947.apcprd03.prod.outlook.com (2603:1096:101:187::6)
+ by SE1PPFF1A6F6344.apcprd03.prod.outlook.com (2603:1096:108:1::86f) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9031.24; Wed, 20 Aug
+ 2025 08:24:01 +0000
+Received: from SEZPR03MB7947.apcprd03.prod.outlook.com
+ ([fe80::ee7a:da9c:2ea4:50d3]) by SEZPR03MB7947.apcprd03.prod.outlook.com
+ ([fe80::ee7a:da9c:2ea4:50d3%4]) with mapi id 15.20.9031.023; Wed, 20 Aug 2025
+ 08:24:01 +0000
+From: =?utf-8?B?SXJ1aSBXYW5nICjnjovnkZ4p?= <Irui.Wang@mediatek.com>
+To: =?utf-8?B?S3lyaWUgV3UgKOWQtOaZlyk=?= <Kyrie.Wu@mediatek.com>,
+	"krzk@kernel.org" <krzk@kernel.org>
+CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	=?utf-8?B?R2VvcmdlIFN1biAo5a2Z5p6XKQ==?= <George.Sun@mediatek.com>,
+	=?utf-8?B?VGlmZmFueSBMaW4gKOael+aFp+ePiik=?= <tiffany.lin@mediatek.com>,
+	"andrzejtp2010@gmail.com" <andrzejtp2010@gmail.com>,
+	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+	"nhebert@chromium.org" <nhebert@chromium.org>, "devicetree@vger.kernel.org"
+	<devicetree@vger.kernel.org>, "mchehab@kernel.org" <mchehab@kernel.org>,
+	"hverkuil@xs4all.nl" <hverkuil@xs4all.nl>, "nicolas.dufresne@collabora.com"
+	<nicolas.dufresne@collabora.com>,
+	=?utf-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>,
+	"conor+dt@kernel.org" <conor+dt@kernel.org>, "robh@kernel.org"
+	<robh@kernel.org>, "sebastian.fricke@collabora.com"
+	<sebastian.fricke@collabora.com>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "christophe.jaillet@wanadoo.fr"
+	<christophe.jaillet@wanadoo.fr>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+	"arnd@arndb.de" <arnd@arndb.de>,
+	=?utf-8?B?QW5kcmV3LUNUIENoZW4gKOmZs+aZuui/qik=?=
+	<Andrew-CT.Chen@mediatek.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, "neil.armstrong@linaro.org"
+	<neil.armstrong@linaro.org>
+Subject: Re: [PATCH v3 5/6] dt-bindings: media: Add MT8196
+ mediatek,vcodec-encoder
+Thread-Topic: [PATCH v3 5/6] dt-bindings: media: Add MT8196
+ mediatek,vcodec-encoder
+Thread-Index: AQHcDPmHU/RhhVHUtEqe9mu7nGSfe7RjalaAgAeqAgaAAClEAA==
+Date: Wed, 20 Aug 2025 08:24:01 +0000
+Message-ID: <dec4b60d5e01066a6d3d665af35b6d4b6bb4206d.camel@mediatek.com>
+References: <20250814085642.17343-1-kyrie.wu@mediatek.com>
+	 <20250814085642.17343-6-kyrie.wu@mediatek.com>
+	 <20250815-meek-porcelain-oarfish-1411e3@kuoka>
+	 <cff7beabdfce15b014597f6fbb0ea23375ecb902.camel@mediatek.com>
+	 <aab06f96-83c9-4e1c-9e1b-6148a3055e67@kernel.org>
+In-Reply-To: <aab06f96-83c9-4e1c-9e1b-6148a3055e67@kernel.org>
+Accept-Language: zh-CN, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SEZPR03MB7947:EE_|SE1PPFF1A6F6344:EE_
+x-ms-office365-filtering-correlation-id: aac975c2-a8eb-45eb-26e0-08dddfc2eaed
+x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|366016|7416014|376014|1800799024|38070700018;
+x-microsoft-antispam-message-info: =?utf-8?B?amhXOE9HdjlIazdxY1c3SUI3YUpUNmFhWloxa0IvTEdOVFZEUi9iSGNBdE1I?=
+ =?utf-8?B?NXpzdlM2cjQrUEdINFBKdEw1dGs3NmJqTjlhRFVyWGtMd29YY0JSVDVIdTBa?=
+ =?utf-8?B?NHpDVHBqeVlMUkVNUVNuV0RUSDYvYy9HV0ZBVGtQd01JaldsVEdlTGExdS93?=
+ =?utf-8?B?eG9YODcvZDZNMGo2Um5mVTJpV2U3QTQ1WW4yYjNKWFloMVdtR1VrdjVPd1U5?=
+ =?utf-8?B?Zk9XcGtmSHZpL2lwNmJLVkxSTDRDTVJzQ3FETk52Tm50TGNkU3VyOW1iZzZr?=
+ =?utf-8?B?TWNnSXFJSFBvU1FqUlc4NGFaV3BadExYQTBSMytMUURNNTk0TzdhR0dnMG95?=
+ =?utf-8?B?RnptWDhsdUlOTm1SeGJnNEhCcFVIVjFtMjU2dm5BT04wdytzcWljWXJCYS9U?=
+ =?utf-8?B?ZXNTdmNQV3lBb0Qra3N5MG9QT1dOZlN4Q1lVd2piOHMzR0RDUFVDVk5ReTRR?=
+ =?utf-8?B?U010RytXSWFIcVQzdzF5d0xrSVVrRklEM2xjbVhSWHYrSm0vMlVKVExDN0Rz?=
+ =?utf-8?B?S2gwUnUrYldzZDhDQ01lUXBOd2lNU0N3UWgvZnA5MCtzQk51dW9LL1hQU0Z2?=
+ =?utf-8?B?a2Uzci9YQ2pwak56SXp6di9iandZb3dFc3NSVHZjaFdLS3FaemdLd1lkem1w?=
+ =?utf-8?B?eGhpaTQ4NVBJSWNTSjhuaTNnbk1LNTdBZzl4bGV4b2ltNlUrUXJkS1VxNkR5?=
+ =?utf-8?B?MXkzc05yY2FjT3FvTzcycjh3WGZYMFJSYThnTm9RV1ZtN3pVYnBPNjY2azFO?=
+ =?utf-8?B?UTYvTDQ3L2lWR2J6cm5tb01wVFRudGpKNUhaRlpUTXE2Ny9xY2dHQUpXWVha?=
+ =?utf-8?B?NjNicUU4Zm81MkpzdGR0TlBPVGt1Uis1SzhDbytJK0dsZkhQOWd5YjR6bWpt?=
+ =?utf-8?B?ektBblRYTkVUS3AweksvY1d5cEdNMjltWXYzZmh6YUhWdVl5NmIwZ3V5Nko4?=
+ =?utf-8?B?K3BWTUZCd0V0ZWx0eTB4d2tQNUVWcDd1WDM2NWQ3Y2JIK0svSU5OazV1dU84?=
+ =?utf-8?B?VlNvWGxyaEVHUWdyVnhDWVZ6TThvbFJuVkc5RDFVeVQ0MXhYalpSUVhPbVJk?=
+ =?utf-8?B?VmxpS0xCQmJodFFxcnVSOEpjdW5DNTVQYU5jQXhmOXQvSHJnRkQ4SDBoZGRR?=
+ =?utf-8?B?M1Nrd2xYbmE5V1BBZ1dITjQ5OE9Lc05GNGttTlRhdkFIVWdMeFBZcmZwT2Jm?=
+ =?utf-8?B?STdJaFBFMjdlcEp2ZUNlb25CTWxtMUNJQU12cURFMzd1V25zb050TU83RWtO?=
+ =?utf-8?B?QzVTVExBOHdoSUV4QTFMR1FzZUV1c1J3UHhhZjc1VTltdVhGdHJJd3phM1dn?=
+ =?utf-8?B?dnI4RHdTNi9PMDdZejZvUzRGam9nVXMwRGNxN2ExbVhxMjVtVUxHRjNkUjVw?=
+ =?utf-8?B?NDhCNER5Vlc1YmpMSDMvT1VtTVVnc05PVXpBZ3UrMGVwOVVrWFcxVG4yT1Ju?=
+ =?utf-8?B?c080ZFJJQWlHbjFFRXZGM09la0xsMS9rNTR1ZUhTNGlpRThYZUt6ODYvV2k2?=
+ =?utf-8?B?U0FETTYrNFZxOVhSR25mb2Y4MGR1eXRHUURxSElGcWhxT1o5eElkNlF1UGZ3?=
+ =?utf-8?B?M01oK042OWRFM004cTVIVURwRVZ2bXdyMElLaDF0OFdZa3BtZkNvYnpMeml1?=
+ =?utf-8?B?K25jeVBPTnlOaGRGcFhGWm4xOW9KUFlwaFpPNDJueGFUWEhXdktBTS9rOVpa?=
+ =?utf-8?B?K21Ob2JkZDYraUR2bTdhR0l0bWs3QXVDMEZndklLT3FldjFhTVdJeURvditF?=
+ =?utf-8?B?N2xZc1hPbmdKM2ZMM281WFFrdkFEWXdQbVFrdlNHUnVMcjdsN042TEl1RVNo?=
+ =?utf-8?B?VUh6WXNmS0tqRkdCQW53YlVLb05Zd0kyZldqUGxuS0Y1SFYzcGk1MlU0ZUJv?=
+ =?utf-8?B?TGIyRkwvNGlzZ2JuZm9KeFRRY1hVc2w0eFlDbGJGMUVzaWFQREZNMEVaQi9s?=
+ =?utf-8?B?em9pNWxwUkZBZkFkNnc0SHgzcEVDSFc0ejczd1pYU1dtdUI2QzRLY0Q2ZUEv?=
+ =?utf-8?Q?mq9yhsWFZQn/96mA0UpvLV+E0xORh4=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR03MB7947.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(7416014)(376014)(1800799024)(38070700018);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?SGxiMTdpOUMvdjhNbjNDZjNIdWl4T1hSd2hHMkJLWFEzVGZFNDlLaUplbTlo?=
+ =?utf-8?B?Q0dnNWJQeElNbm5nUHlodTB4QlNNc0tuWDBDa2EwYkIwOEcrSHBmN1lqYU9W?=
+ =?utf-8?B?aHA1eGpRVzMvVlBkbmRlTy9HeXo5a2xUNEUrOFlTSnNsK0d1Z3VxMStoNzYx?=
+ =?utf-8?B?dXVTWWoyQVgvWFBNTHdjVTJpSUluNndUVkxYM0JaRGxGcFB4RnNKdFJYRFp6?=
+ =?utf-8?B?QjUxeS8vUWlnZDVpUjhjdzNsQXBPQ0JRc3lTa2hnTmRURUpEWWhiS0FwNWdM?=
+ =?utf-8?B?d3JMUkV5blQ5WG9jdmVFV2E2UUozb2lJM2lSMktuaUtVbkx3cklSY3gyY2hK?=
+ =?utf-8?B?S05mY2F0RHJRSlVEV2xhSnJDQ25ud0xQM0Vmd2xDbXg5M3N0WUZaSzRQSzBC?=
+ =?utf-8?B?UkxLdFZudUpZcElkSDU4M01EUFZ0OHRUUlUrYlk5M1g4TnB6aG5aaFZyNVpM?=
+ =?utf-8?B?RENmWEFOT2lEdkdiYTZHVDh1OFEvWG9WYVg0bEdWdkNaT2FCREM2NlE0ZzRV?=
+ =?utf-8?B?WkNGUnFwcFh2czNFODU3UVZTRjMrZEo4SlNVZ2crZHNBTWZxWkM1QWkwZU1n?=
+ =?utf-8?B?K1U4Zll4NnI2RnVRMnVtYWxza0ZxZ240V0NCMmVqV1NaejhwK3FQQWFJUGVt?=
+ =?utf-8?B?NS9IQUd0cU5lcUZBTC9XNm1NZlNJOG1PNklFbnA2anBkUVZZUnhmTUdtL0ZN?=
+ =?utf-8?B?a2MybDU4ZmJUdUVjMHh3NzhJVGx0QlNHMkpseXFualB6YUd6TU5JY2NLbXZR?=
+ =?utf-8?B?ZXdYdU1DVVRTS3hrMVNsQXQxeTQ1WTNPamRKdEx3SVZHY1ZRM2huc2hDazhz?=
+ =?utf-8?B?Z3NtQXFvdlhIaGNiMmxzcEtOaE9GSnROTVBCVGpDS0cvTi9hVURYeC9Dbnlw?=
+ =?utf-8?B?ZWdremRMSDBybEJ2QnVqRk9YQisyMkF4RVA1anRuVTdacXk5ZERmWHd5Skxm?=
+ =?utf-8?B?STRxckFPOGM4dEc0azZkMDdwNlVOL0pQVkN3TDgyVFN1OG1tSFFFUDMyNUxD?=
+ =?utf-8?B?ZzQ0TjVaSS9YekpiTC9kd1RKU0p0UWpIT1VzSVhyK2NQTmYyQ3JoZVFLbkpT?=
+ =?utf-8?B?VHBKSGRFUzN0dFRlRWYvK2lBMmR3ekFrNDlsUjErWi9LaXUxQWU1MHlIMmpX?=
+ =?utf-8?B?UFBEbTZFcm11Q09QRHdVOHB1NGllZkdiUDNzZ3o0QWZqNHA5TVNraHZ6ck1R?=
+ =?utf-8?B?Q3p6Sm5TbEI1RysrdWNoVFJvTjZ4WWluUGcvc2ZBRE5OUmgrWXVMRzh0Vko4?=
+ =?utf-8?B?VHcyY0RyQyt6QUNSajMzWXdLSzhqbWtZRitOcE05aUJuSUx5MHNxbFhUbmkw?=
+ =?utf-8?B?WlRkRFE5WGVYR2ZHYzhqUXNqNDdNN2JPRC9Ld3cxN2wzWmthajdpWVRMUzNP?=
+ =?utf-8?B?SnNuRkhFV2ppSGFqU2ZUbEdSZlJsLy80TDhveWlDTEJwTGhjS2h5aE1FQk9J?=
+ =?utf-8?B?amRsVzJGcGJtYndCMWhEVFZ3NE4xTjh2RkRFMCszZGhpVDBGVWUzMHVacGNX?=
+ =?utf-8?B?Mll6UUVPdHpyZTdRaFhjVzQybk1QZ1hjYUxqMTFQYW5tNzByb2dCTWMxMHo2?=
+ =?utf-8?B?NWs2UVU0ckIwQXBnd2xZSWkxQWhzMnA0V3BLRWpocVhMZjJhQkp3cERvVXdC?=
+ =?utf-8?B?WVZNT2VuMS9qOWxDOWtuYTJJZC84dnB5Ym9IYmpVUHRveHUrVWttSiswODhM?=
+ =?utf-8?B?ZjM3aHNKUlU3bFp1MnVudFdza2d6NkZkbm9UbkdPUmZWcDZEalArekdrVUI0?=
+ =?utf-8?B?VHNJSSs5ZzhIeG0waHJVRFZiN1pUbTZMVEVCaFI3OVpseDNvUWlJeURER2Yr?=
+ =?utf-8?B?UHhOZkNFM21PaDZZcTEvNlo4Q2lYSU0vajI2cUE0ZnFLUkZnalZEMkhBQ0pN?=
+ =?utf-8?B?SmZWdzNXT1k3WDhRdjZycHZIdHg0Q1pDQ0JOMTNKWmxTMCs4VlBQRWVacUo3?=
+ =?utf-8?B?eDh5WTd3K3JJVXJ5NXFRbGlnNXRDaDdteW9pUXlsS3JiVzNrSHNlQ1RqR2hH?=
+ =?utf-8?B?Q3Q0Qjk0UTAra3JsWHE1MXBTVXVOYjQ2c3RUZjFPNjF0Rk5ISFRQU3lIbU14?=
+ =?utf-8?B?c1JnNDVyZlp5ejczUVBqcVV2TnhvNHNJRkh5ajAwQTBWQm14UWZESnYvekFz?=
+ =?utf-8?B?ZVpjTFN3WXcxMnFHN216TnN3bjZ3ZWlkdi9NUWpISnE3WHFuMkZkdW5HNmVn?=
+ =?utf-8?B?SWc9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <7478EC4CEE315741A8FA05723BCC14DD@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-References: <20250820075405.1041838-1-wenst@chromium.org>
-In-Reply-To: <20250820075405.1041838-1-wenst@chromium.org>
-From: Tomasz Figa <tfiga@chromium.org>
-Date: Wed, 20 Aug 2025 17:13:52 +0900
-X-Gmail-Original-Message-ID: <CAAFQd5DTOJ2=ibyykpCxDnUhUM8EXm4-MShKxBbH02FA8fzQGw@mail.gmail.com>
-X-Gm-Features: Ac12FXz1tD17T4pJyJ5nYaNhIcW7uWOQMmG3q0C-wH7bBxp3Zu-B_gudXTVL_ek
-Message-ID: <CAAFQd5DTOJ2=ibyykpCxDnUhUM8EXm4-MShKxBbH02FA8fzQGw@mail.gmail.com>
-Subject: Re: [PATCH v2] media: mediatek: vcodec: Use spinlock for context list
- protection lock
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Yunfei Dong <yunfei.dong@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Hans Verkuil <hverkuil@xs4all.nl>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-media@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SEZPR03MB7947.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: aac975c2-a8eb-45eb-26e0-08dddfc2eaed
+X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Aug 2025 08:24:01.4468
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: W1PLt2ydJSSPuK5EFeSDU8zV1O7EkSiammdz+G5l2rgoES8gLLsvVpHCTkI3xCXTLimgjdkRYLkWy++vZZ5RfQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SE1PPFF1A6F6344
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250820_011414_593182_D8DC3EE9 
-X-CRM114-Status: GOOD (  24.85  )
+X-CRM114-CacheID: sfid-20250820_012415_332750_AF2E3A54 
+X-CRM114-Status: GOOD (  23.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,296 +233,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 20, 2025 at 4:54=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.org> w=
-rote:
->
-> Previously a mutex was added to protect the encoder and decoder context
-> lists from unexpected changes originating from the SCP IP block, causing
-> the context pointer to go invalid, resulting in a NULL pointer
-> dereference in the IPI handler.
->
-> Turns out on the MT8173, the VPU IPI handler is called from hard IRQ
-> context. This causes a big warning from the scheduler. This was first
-> reported downstream on the ChromeOS kernels, but is also reproducible
-> on mainline using Fluster with the FFmpeg v4l2m2m decoders. Even though
-> the actual capture format is not supported, the affected code paths
-> are triggered.
->
-> Since this lock just protects the context list and operations on it are
-> very fast, it should be OK to switch to a spinlock.
->
-> Fixes: 6467cda18c9f ("media: mediatek: vcodec: adding lock to protect dec=
-oder context list")
-> Fixes: afaaf3a0f647 ("media: mediatek: vcodec: adding lock to protect enc=
-oder context list")
-> Cc: Yunfei Dong <yunfei.dong@mediatek.com>
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> ---
-> Changes since v1:
-> - Switched to _irqsave / _irqrestore variants even in helper only called
->   by IRQ handler (Tomasz)
->
->  .../mediatek/vcodec/common/mtk_vcodec_fw_vpu.c       | 10 ++++++----
->  .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c     | 12 +++++++-----
->  .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h     |  2 +-
->  .../platform/mediatek/vcodec/decoder/vdec_vpu_if.c   |  5 +++--
->  .../mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c     | 12 +++++++-----
->  .../mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h     |  2 +-
->  .../platform/mediatek/vcodec/encoder/venc_vpu_if.c   |  5 +++--
->  7 files changed, 28 insertions(+), 20 deletions(-)
-
-Thanks!
-
-Reviewed-by: Tomasz Figa <tfiga@chromium.org>
-
-Best,
-Tomasz
-
->
-> diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_=
-vpu.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
-> index d7027d600208..223fb2294894 100644
-> --- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
-> +++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
-> @@ -47,30 +47,32 @@ static void mtk_vcodec_vpu_reset_dec_handler(void *pr=
-iv)
->  {
->         struct mtk_vcodec_dec_dev *dev =3D priv;
->         struct mtk_vcodec_dec_ctx *ctx;
-> +       unsigned long flags;
->
->         dev_err(&dev->plat_dev->dev, "Watchdog timeout!!");
->
-> -       mutex_lock(&dev->dev_ctx_lock);
-> +       spin_lock_irqsave(&dev->dev_ctx_lock, flags);
->         list_for_each_entry(ctx, &dev->ctx_list, list) {
->                 ctx->state =3D MTK_STATE_ABORT;
->                 mtk_v4l2_vdec_dbg(0, ctx, "[%d] Change to state MTK_STATE=
-_ABORT", ctx->id);
->         }
-> -       mutex_unlock(&dev->dev_ctx_lock);
-> +       spin_unlock_irqrestore(&dev->dev_ctx_lock, flags);
->  }
->
->  static void mtk_vcodec_vpu_reset_enc_handler(void *priv)
->  {
->         struct mtk_vcodec_enc_dev *dev =3D priv;
->         struct mtk_vcodec_enc_ctx *ctx;
-> +       unsigned long flags;
->
->         dev_err(&dev->plat_dev->dev, "Watchdog timeout!!");
->
-> -       mutex_lock(&dev->dev_ctx_lock);
-> +       spin_lock_irqsave(&dev->dev_ctx_lock, flags);
->         list_for_each_entry(ctx, &dev->ctx_list, list) {
->                 ctx->state =3D MTK_STATE_ABORT;
->                 mtk_v4l2_vdec_dbg(0, ctx, "[%d] Change to state MTK_STATE=
-_ABORT", ctx->id);
->         }
-> -       mutex_unlock(&dev->dev_ctx_lock);
-> +       spin_unlock_irqrestore(&dev->dev_ctx_lock, flags);
->  }
->
->  static const struct mtk_vcodec_fw_ops mtk_vcodec_vpu_msg =3D {
-> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_de=
-c_drv.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv=
-.c
-> index 46d176e6de63..3b81fae9f913 100644
-> --- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
-> +++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
-> @@ -198,6 +198,7 @@ static int fops_vcodec_open(struct file *file)
->         struct mtk_vcodec_dec_ctx *ctx =3D NULL;
->         int ret =3D 0, i, hw_count;
->         struct vb2_queue *src_vq;
-> +       unsigned long flags;
->
->         ctx =3D kzalloc(sizeof(*ctx), GFP_KERNEL);
->         if (!ctx)
-> @@ -267,9 +268,9 @@ static int fops_vcodec_open(struct file *file)
->
->         ctx->dev->vdec_pdata->init_vdec_params(ctx);
->
-> -       mutex_lock(&dev->dev_ctx_lock);
-> +       spin_lock_irqsave(&dev->dev_ctx_lock, flags);
->         list_add(&ctx->list, &dev->ctx_list);
-> -       mutex_unlock(&dev->dev_ctx_lock);
-> +       spin_unlock_irqrestore(&dev->dev_ctx_lock, flags);
->         mtk_vcodec_dbgfs_create(ctx);
->
->         mutex_unlock(&dev->dev_mutex);
-> @@ -294,6 +295,7 @@ static int fops_vcodec_release(struct file *file)
->  {
->         struct mtk_vcodec_dec_dev *dev =3D video_drvdata(file);
->         struct mtk_vcodec_dec_ctx *ctx =3D file_to_dec_ctx(file);
-> +       unsigned long flags;
->
->         mtk_v4l2_vdec_dbg(0, ctx, "[%d] decoder", ctx->id);
->         mutex_lock(&dev->dev_mutex);
-> @@ -312,9 +314,9 @@ static int fops_vcodec_release(struct file *file)
->         v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
->
->         mtk_vcodec_dbgfs_remove(dev, ctx->id);
-> -       mutex_lock(&dev->dev_ctx_lock);
-> +       spin_lock_irqsave(&dev->dev_ctx_lock, flags);
->         list_del_init(&ctx->list);
-> -       mutex_unlock(&dev->dev_ctx_lock);
-> +       spin_unlock_irqrestore(&dev->dev_ctx_lock, flags);
->         kfree(ctx);
->         mutex_unlock(&dev->dev_mutex);
->         return 0;
-> @@ -407,7 +409,7 @@ static int mtk_vcodec_probe(struct platform_device *p=
-dev)
->         for (i =3D 0; i < MTK_VDEC_HW_MAX; i++)
->                 mutex_init(&dev->dec_mutex[i]);
->         mutex_init(&dev->dev_mutex);
-> -       mutex_init(&dev->dev_ctx_lock);
-> +       spin_lock_init(&dev->dev_ctx_lock);
->         spin_lock_init(&dev->irqlock);
->
->         snprintf(dev->v4l2_dev.name, sizeof(dev->v4l2_dev.name), "%s",
-> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_de=
-c_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv=
-.h
-> index d047d7c580fb..9d68808e8f9c 100644
-> --- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-> +++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-> @@ -285,7 +285,7 @@ struct mtk_vcodec_dec_dev {
->         /* decoder hardware mutex lock */
->         struct mutex dec_mutex[MTK_VDEC_HW_MAX];
->         struct mutex dev_mutex;
-> -       struct mutex dev_ctx_lock;
-> +       spinlock_t dev_ctx_lock;
->         struct workqueue_struct *decode_workqueue;
->
->         spinlock_t irqlock;
-> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c=
- b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-> index 145958206e38..40b97f114cf6 100644
-> --- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-> +++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-> @@ -75,16 +75,17 @@ static void handle_get_param_msg_ack(const struct vde=
-c_vpu_ipi_get_param_ack *ms
->  static bool vpu_dec_check_ap_inst(struct mtk_vcodec_dec_dev *dec_dev, st=
-ruct vdec_vpu_inst *vpu)
->  {
->         struct mtk_vcodec_dec_ctx *ctx;
-> +       unsigned long flags;
->         int ret =3D false;
->
-> -       mutex_lock(&dec_dev->dev_ctx_lock);
-> +       spin_lock_irqsave(&dec_dev->dev_ctx_lock, flags);
->         list_for_each_entry(ctx, &dec_dev->ctx_list, list) {
->                 if (!IS_ERR_OR_NULL(ctx) && ctx->vpu_inst =3D=3D vpu) {
->                         ret =3D true;
->                         break;
->                 }
->         }
-> -       mutex_unlock(&dec_dev->dev_ctx_lock);
-> +       spin_unlock_irqrestore(&dec_dev->dev_ctx_lock, flags);
->
->         return ret;
->  }
-> diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_en=
-c_drv.c b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv=
-.c
-> index fb1c3bdc2dae..82b8ff38e8f1 100644
-> --- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c
-> +++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c
-> @@ -117,6 +117,7 @@ static int fops_vcodec_open(struct file *file)
->         struct mtk_vcodec_enc_ctx *ctx =3D NULL;
->         int ret =3D 0;
->         struct vb2_queue *src_vq;
-> +       unsigned long flags;
->
->         ctx =3D kzalloc(sizeof(*ctx), GFP_KERNEL);
->         if (!ctx)
-> @@ -176,9 +177,9 @@ static int fops_vcodec_open(struct file *file)
->         mtk_v4l2_venc_dbg(2, ctx, "Create instance [%d]@%p m2m_ctx=3D%p "=
-,
->                           ctx->id, ctx, ctx->m2m_ctx);
->
-> -       mutex_lock(&dev->dev_ctx_lock);
-> +       spin_lock_irqsave(&dev->dev_ctx_lock, flags);
->         list_add(&ctx->list, &dev->ctx_list);
-> -       mutex_unlock(&dev->dev_ctx_lock);
-> +       spin_unlock_irqrestore(&dev->dev_ctx_lock, flags);
->
->         mutex_unlock(&dev->dev_mutex);
->         mtk_v4l2_venc_dbg(0, ctx, "%s encoder [%d]", dev_name(&dev->plat_=
-dev->dev),
-> @@ -203,6 +204,7 @@ static int fops_vcodec_release(struct file *file)
->  {
->         struct mtk_vcodec_enc_dev *dev =3D video_drvdata(file);
->         struct mtk_vcodec_enc_ctx *ctx =3D file_to_enc_ctx(file);
-> +       unsigned long flags;
->
->         mtk_v4l2_venc_dbg(1, ctx, "[%d] encoder", ctx->id);
->         mutex_lock(&dev->dev_mutex);
-> @@ -213,9 +215,9 @@ static int fops_vcodec_release(struct file *file)
->         v4l2_fh_exit(&ctx->fh);
->         v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
->
-> -       mutex_lock(&dev->dev_ctx_lock);
-> +       spin_lock_irqsave(&dev->dev_ctx_lock, flags);
->         list_del_init(&ctx->list);
-> -       mutex_unlock(&dev->dev_ctx_lock);
-> +       spin_unlock_irqrestore(&dev->dev_ctx_lock, flags);
->         kfree(ctx);
->         mutex_unlock(&dev->dev_mutex);
->         return 0;
-> @@ -297,7 +299,7 @@ static int mtk_vcodec_probe(struct platform_device *p=
-dev)
->
->         mutex_init(&dev->enc_mutex);
->         mutex_init(&dev->dev_mutex);
-> -       mutex_init(&dev->dev_ctx_lock);
-> +       spin_lock_init(&dev->dev_ctx_lock);
->         spin_lock_init(&dev->irqlock);
->
->         snprintf(dev->v4l2_dev.name, sizeof(dev->v4l2_dev.name), "%s",
-> diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_en=
-c_drv.h b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv=
-.h
-> index 5b304a551236..0cddfa13594f 100644
-> --- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h
-> +++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h
-> @@ -206,7 +206,7 @@ struct mtk_vcodec_enc_dev {
->         /* encoder hardware mutex lock */
->         struct mutex enc_mutex;
->         struct mutex dev_mutex;
-> -       struct mutex dev_ctx_lock;
-> +       spinlock_t dev_ctx_lock;
->         struct workqueue_struct *encode_workqueue;
->
->         int enc_irq;
-> diff --git a/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c=
- b/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
-> index 51bb7ee141b9..3c229b1f6b21 100644
-> --- a/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
-> +++ b/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
-> @@ -45,16 +45,17 @@ static void handle_enc_encode_msg(struct venc_vpu_ins=
-t *vpu, const void *data)
->  static bool vpu_enc_check_ap_inst(struct mtk_vcodec_enc_dev *enc_dev, st=
-ruct venc_vpu_inst *vpu)
->  {
->         struct mtk_vcodec_enc_ctx *ctx;
-> +       unsigned long flags;
->         int ret =3D false;
->
-> -       mutex_lock(&enc_dev->dev_ctx_lock);
-> +       spin_lock_irqsave(&enc_dev->dev_ctx_lock, flags);
->         list_for_each_entry(ctx, &enc_dev->ctx_list, list) {
->                 if (!IS_ERR_OR_NULL(ctx) && ctx->vpu_inst =3D=3D vpu) {
->                         ret =3D true;
->                         break;
->                 }
->         }
-> -       mutex_unlock(&enc_dev->dev_ctx_lock);
-> +       spin_unlock_irqrestore(&enc_dev->dev_ctx_lock, flags);
->
->         return ret;
->  }
-> --
-> 2.51.0.rc1.167.g924127e9c0-goog
->
+RGVhciBLcnp5c3p0b2YsDQoNClRoYW5rcyBmb3IgeW91ciByZXZpZXdpbmcuDQoNCk9uIFdlZCwg
+MjAyNS0wOC0yMCBhdCAwNzo1NSArMDIwMCwgS3J6eXN6dG9mIEtvemxvd3NraSB3cm90ZToNCj4g
+RXh0ZXJuYWwgZW1haWwgOiBQbGVhc2UgZG8gbm90IGNsaWNrIGxpbmtzIG9yIG9wZW4gYXR0YWNo
+bWVudHMgdW50aWwNCj4geW91IGhhdmUgdmVyaWZpZWQgdGhlIHNlbmRlciBvciB0aGUgY29udGVu
+dC4NCj4gDQo+IA0KPiBPbiAyMC8wOC8yMDI1IDA0OjU1LCBJcnVpIFdhbmcgKOeOi+eRnikgd3Jv
+dGU6DQo+ID4gRGVhciBLcnp5c3p0b2YsDQo+ID4gDQo+ID4gVGhhbmtzIGZvciB5b3VyIHJldmll
+d2luZy4NCj4gPiANCj4gPiBPbiBGcmksIDIwMjUtMDgtMTUgYXQgMTA6NTQgKzAyMDAsIEtyenlz
+enRvZiBLb3psb3dza2kgd3JvdGU6DQo+ID4gPiBFeHRlcm5hbCBlbWFpbCA6IFBsZWFzZSBkbyBu
+b3QgY2xpY2sgbGlua3Mgb3Igb3BlbiBhdHRhY2htZW50cw0KPiA+ID4gdW50aWwNCj4gPiA+IHlv
+dSBoYXZlIHZlcmlmaWVkIHRoZSBzZW5kZXIgb3IgdGhlIGNvbnRlbnQuDQo+ID4gPiANCj4gPiA+
+IA0KPiA+ID4gT24gVGh1LCBBdWcgMTQsIDIwMjUgYXQgMDQ6NTY6NDFQTSArMDgwMCwgS3lyaWUg
+V3Ugd3JvdGU6DQo+ID4gPiA+IEZyb206IElydWkgV2FuZyA8aXJ1aS53YW5nQG1lZGlhdGVrLmNv
+bT4NCj4gPiA+ID4gDQo+ID4gPiA+IEFkZCBNVDgxOTYgZW5jb2RlciBjb21wYXRpYmxlIHN0cmlu
+Zywgd2hpY2ggd2lsbCByZWZlcmVuY2UgVkNQDQo+ID4gPiA+IGRldmljZS4NCj4gPiA+IA0KPiA+
+ID4gWW91IGlnbm9yZWQgY29tbWVudHMgZnJvbSB2Mi4NCj4gPiANCj4gPiBJIHRoaW5rIEkgbWlz
+dW5kZXJzdG9vZCB0aGUgdjIgY29tbWVudHMsIEkgcmV3cm90ZSB0aGUgdGl0bGUNCj4gPiBiZWNh
+dXNlIGl0DQo+ID4gc2FpZCBkdC1iaW5kaW5ncyBhbmQgZW5jb2RlciB0d2ljZSwgdGhpcyBpcyBu
+b3QgZW5vdWdoLCByaWdodD8gd2UNCj4gPiBuZWVkDQo+ID4gdG8gZGVzY3JpYmUgbW9yZSBpbmZv
+cm1hdGlvbiBpbiBCb2R5IHRleHQ/DQo+IA0KPiB3aGVyZSBhcmUgbG9yZSBsaW5rcyBpbiB0aGUg
+Y2hhbmdlbG9nPw0KDQpXZSBuZWVkIHB1dCB0aGUgbG9yZSBsaW5rcyBpbiB0aGUgY2hhbmdlIGxv
+ZywgSSBtZWFuIHB1dCB0aGUgcHJldmlvdXMNCnZlcnNpb24odjIpIHBhdGNoc2V0IGxvcmUgbGlu
+az8gV2Ugc2hvdWxkIHRvIGluZGljYXRlIHRoZSBjaGFuZ2VzIGluDQplYWNoIHZlcnNpb24gaW4g
+dGhlIGNoYW5nZSBsb2cgYW5kIHdlIGRpZCB0aGUgc2FtZS4gSWYgZWFjaCB2ZXJzaW9uDQpsb3Jl
+IGxpbmtzIG9yIFVSTCBpcyBuZWVkZWQsIHdlIHdpbGwgc3RhcnQgYWRkIHRoZW0gaW4gbmV4dCBw
+YXRjaC4gDQoNCj4gIFdoeSBhcmVuJ3QgeW91IHVzaW5nIGI0IHRvIHN1Ym1pdA0KPiBwYXRjaGVz
+Pw0KDQpXZSBoYXZlIGJlZW4gdXNpbmcgJ2dpdCBzZW5kLWVtYWlsJyB0byBzdWJtaXQgcGF0Y2hl
+cyB0byBjb21tdW5pdHksIGI0DQppcyBub3QgZGVwbG95ZWQgcmVhZHkgb24gbXkgc2VydmVyIHll
+dCwgd2UgY2FuIHN0dWR5IGl0IGZpcnN0Lg0KDQo+ID4gDQo+ID4gPiANCj4gPiA+ID4gDQo+ID4g
+PiA+IFNpZ25lZC1vZmYtYnk6IElydWkgV2FuZyA8aXJ1aS53YW5nQG1lZGlhdGVrLmNvbT4NCj4g
+PiA+IA0KPiA+ID4gSW5jb3JyZWN0IFNvQiBjaGFpbi4NCj4gPiA+IA0KPiA+ID4gPiAtLS0NCj4g
+PiA+ID4gIC4uLi9iaW5kaW5ncy9tZWRpYS9tZWRpYXRlayx2Y29kZWMtZW5jb2Rlci55YW1sIHwg
+MTcNCj4gPiA+ID4gKysrKysrKysrKysrKysrKysNCj4gPiA+ID4gIDEgZmlsZSBjaGFuZ2VkLCAx
+NyBpbnNlcnRpb25zKCspDQo+ID4gPiA+IA0KPiA+ID4gPiBkaWZmIC0tZ2l0DQo+ID4gPiA+IGEv
+RG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlhL21lZGlhdGVrLHZjb2RlYy0N
+Cj4gPiA+ID4gZW5jb2Rlci55YW1sDQo+ID4gPiA+IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVl
+L2JpbmRpbmdzL21lZGlhL21lZGlhdGVrLHZjb2RlYy0NCj4gPiA+ID4gZW5jb2Rlci55YW1sDQo+
+ID4gPiA+IGluZGV4IGViYzYxNTU4NGY5Mi4uYmI0ZGJmMjNjY2M1IDEwMDY0NA0KPiA+ID4gPiAt
+LS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWVkaWEvbWVkaWF0ZWssdmNv
+ZGVjLQ0KPiA+ID4gPiBlbmNvZGVyLnlhbWwNCj4gPiA+ID4gKysrIGIvRG9jdW1lbnRhdGlvbi9k
+ZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlhL21lZGlhdGVrLHZjb2RlYy0NCj4gPiA+ID4gZW5jb2Rl
+ci55YW1sDQo+ID4gPiA+IEBAIC0yNCw2ICsyNCw3IEBAIHByb3BlcnRpZXM6DQo+ID4gPiA+ICAg
+ICAgICAgICAgICAgIC0gbWVkaWF0ZWssbXQ4MTg4LXZjb2RlYy1lbmMNCj4gPiA+ID4gICAgICAg
+ICAgICAgICAgLSBtZWRpYXRlayxtdDgxOTItdmNvZGVjLWVuYw0KPiA+ID4gPiAgICAgICAgICAg
+ICAgICAtIG1lZGlhdGVrLG10ODE5NS12Y29kZWMtZW5jDQo+ID4gPiA+ICsgICAgICAgICAgICAg
+IC0gbWVkaWF0ZWssbXQ4MTk2LXZjb2RlYy1lbmMNCj4gPiA+ID4gICAgICAgIC0gaXRlbXM6DQo+
+ID4gPiA+ICAgICAgICAgICAgLSBjb25zdDogbWVkaWF0ZWssbXQ4MTg2LXZjb2RlYy1lbmMNCj4g
+PiA+ID4gICAgICAgICAgICAtIGNvbnN0OiBtZWRpYXRlayxtdDgxODMtdmNvZGVjLWVuYw0KPiA+
+ID4gPiBAQCAtNTgsNiArNTksMTEgQEAgcHJvcGVydGllczoNCj4gPiA+ID4gICAgICBkZXNjcmlw
+dGlvbjoNCj4gPiA+ID4gICAgICAgIERlc2NyaWJlcyBwb2ludCB0byBzY3AuDQo+ID4gPiA+IA0K
+PiA+ID4gPiArICBtZWRpYXRlayx2Y3A6DQo+ID4gPiA+ICsgICAgJHJlZjogL3NjaGVtYXMvdHlw
+ZXMueWFtbCMvZGVmaW5pdGlvbnMvcGhhbmRsZQ0KPiA+ID4gPiArICAgIGRlc2NyaXB0aW9uOg0K
+PiA+ID4gPiArICAgICAgRGVzY3JpYmVzIHBvaW50IHRvIHZjcC4NCj4gPiA+IA0KPiA+ID4gRm9y
+IHdoYXQ/IFlvdSBqdXN0IHJlcGVhdGVkIHRoZSBwcm9wZXJ0eSBuYW1lLiBZb3UgbXVzdCBzYXkg
+aGVyZQ0KPiA+ID4gc29tZXRoaW5nIHVzZWZ1bCBpbnN0ZWFkOiB3aHkgdGhpcyBpcyBuZWVkZWQs
+IHdoYXQgaXMgaXRzDQo+ID4gPiBwdXJwb3NlLg0KPiA+IA0KPiA+IEkgd291bGQgbGlrZSB0byBz
+YXk6DQo+ID4gImRlZmluZSB0aGlzICdtZWRpYXRlayx2Y3AnIHByb3BlcnR5IGhlcmUsIHRoaXMg
+aXMgYSBwaGFuZGxlIHBvaW50DQo+ID4gdG8NCj4gDQo+IERvbid0IGV4cGxhaW4gdG8gdXMgd2hh
+dCBEVCBpcy4gQWJvdmUgaXMgMTAwJSByZWR1bmRhbnQuDQo+IA0KPiA+IHZjcCBkZXZpY2UsIGZv
+ciBwbGF0Zm9ybXMgdXNpbmcgdmNwIGZpcm13YXJlLiINCj4gDQo+IEV4cGxhaW4gd2hhdCBpcyB0
+aGUgcHVycG9zZSBvZiB0aGlzIGluIGhhcmR3YXJlLCBob3cgaGFyZHdhcmUgdXNlcw0KPiBpdCwN
+Cj4gd2hhdCBwcm9ibGVtIGZvciBoYXJkd2FyZSB0aGlzIGFkZHJlc3Nlcy4NCg0KTWF5YmUgSSB3
+b3VsZCBsaWtlIHRvIHNheToNCg0KcGhhbmRsZSB0byB0aGUgVkNQIG5vZGUsIHRoZSB2aWRlbyBl
+bmNvZGVyIGtlcm5lbCBkcml2ZXIgdXNlcyB0aGlzDQpwaGFuZGxlIHRvIGNvb3JkaW5hdGUgd2l0
+aCB0aGUgZW5jb2RlciBzb2Z0d2FyZSBkcml2ZXIgd2hpY2ggcnVubmluZyBpbg0KVkNQIGZpcm13
+YXJlIGZvciBjb21tYW5kIHN1Ym1pc3Npb24gYW5kIGludGVycnVwdCBoYW5kbGluZyBkdXJpbmcN
+CmVuY29kaW5nIHByb2Nlc3MuDQoNCj4gDQo+IA0KPiA+IA0KPiA+IElzIHRoaXMgT0sgZm9yIHlv
+dT8NCj4gPiA+IA0KPiA+ID4gDQo+ID4gPiA+ICsNCj4gPiA+ID4gICAgcG93ZXItZG9tYWluczoN
+Cj4gPiA+ID4gICAgICBtYXhJdGVtczogMQ0KPiA+ID4gPiANCj4gPiA+ID4gQEAgLTc2LDYgKzgy
+LDE3IEBAIHJlcXVpcmVkOg0KPiA+ID4gPiAgICAtIGlvbW11cw0KPiA+ID4gPiANCj4gPiA+ID4g
+IGFsbE9mOg0KPiA+ID4gPiArICAtIGlmOg0KPiA+ID4gPiArICAgICAgcHJvcGVydGllczoNCj4g
+PiA+ID4gKyAgICAgICAgY29tcGF0aWJsZToNCj4gPiA+ID4gKyAgICAgICAgICBjb250YWluczoN
+Cj4gPiA+ID4gKyAgICAgICAgICAgIGVudW06DQo+ID4gPiA+ICsgICAgICAgICAgICAgIC0gbWVk
+aWF0ZWssbXQ4MTk2LXZjb2RlYy1lbmMNCj4gPiA+ID4gKw0KPiA+ID4gPiArICAgIHRoZW46DQo+
+ID4gPiA+ICsgICAgICByZXF1aXJlZDoNCj4gPiA+ID4gKyAgICAgICAgLSBtZWRpYXRlayx2Y3AN
+Cj4gPiA+IA0KPiA+ID4gZWxzZQ0KPiA+ID4gDQo+ID4gPiBtZWRpYXRlayx2Y3A6IGZhbHNlDQo+
+ID4gDQo+ID4gSSB0aGluayB0aGUgZWxzZSBzdGF0ZW1lbnQgaXMgbm8gbmVlZCBoZXJlLiBEaWZm
+ZXJlbnQgcGxhdGZvcm1zIGFyZQ0KPiA+IHVzaW5nIGRpZmZlcmVudCBmaXJtd2FyZSBwaGFuZGxl
+LCB2cHUsIHNjcCwgYW5kIHZjcC4gc28gd2UgdXNlIGlmLQ0KPiA+IHRoZW4NCj4gPiB0byBkZXNj
+cmliZSB0aGUgcmVxdWlyZWQgcHJvcGVydHkgZm9yIHRoZXNlIHBsYXRmb3Jtcy4NCj4gDQo+IEht
+PyBJIGp1c3QgdG9sZCB5b3UgaXQgaXMgbmVlZGVkLiBPdGhlcndpc2UsIGV4cGxhaW4gd2h5IGVh
+Y2gNCj4gdmFyaWFudC9kZXZpY2UgaGFzIG5vdyBWQ1AuDQoNCkN1cnJlbnRseSwganVzdCBtdDgx
+OTYgdXNlIFZDUCBkZXZpY2VzLCBzbyAnbWVkaWF0ZWssdmNwJyBwcm9wZXJ0eSBpcw0KcmVxdWly
+ZWQgb24gbXQ4MTk2IHBsYXRmb3JtLCBzb3JyeSBJIGRpZG4ndCBnZXQgeW91ciBvcGluaW9uIHdo
+eSAnZWFjaCB2YXJpYW50L2RldmljZSBoYXMgbm93IFZDUC4nIA0KDQo+IA0KPiBZb3UgaGF2ZSBl
+bnRpcmUgY29tbWl0IG1zZyB0byBleHBsYWluIGFsbCB0aGlzLg0KPiANCj4gDQo+IEJlc3QgcmVn
+YXJkcywNCj4gS3J6eXN6dG9mDQoNClRoYW5rcyBhZ2FpbiBmb3IgeW91ciBraW5kbHkgcmV2aWV3
+aW5nLg0KDQpCZXN0IHJlZ2FyZHMNCg==
 
