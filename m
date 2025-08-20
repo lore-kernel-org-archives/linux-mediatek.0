@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 730AFCA0EDC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Aug 2025 21:34:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D30CCA0EF8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Aug 2025 21:37:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fbWU5pWt1jYsHmgGoCV0Xj8rM8SO1tarK2D1hlMGKuM=; b=un8nxzd2+iJqQlpCpmyPqeYBPi
-	eW57ZepkzTMRJfmFOt9R6nz64YWMTpKIEr40s69+eH+W7gUFgUDAydKn0GshWQ6yOH8oEK8VP3fIW
-	OjM274Zr/xMHQzFwWl14mIzps1oMARzW6uzz8/Vz9RemSs423XnnLyxsQ3YNzcIRzRbBNRLOxEqYE
-	kIaMpLFY77XkA+6LU3zMfAEEu9lcNuUi4l2Js/LHjGe3zHwA5Sugt3TcF8OvvbC+AO0nJb19Trhwc
-	aVjnL8xi1gMtAzHomm+ToL6JbbPms2udS+JfsLmSDoGweqf8r5I252/XPznAZLFkM7TT/qCzJAfIA
-	qmfrPS/g==;
+	bh=Sjr5FjezJ3DnctvttPhGjVA1HSx0Nva4gNLgYPU187w=; b=0pIgNi2VE9zFHRpNlJVIS1F1a4
+	FB3/7bVDHrceI5b6C8EDEjVKX3p4gxzZ/hUzougt5L/nVUeVEgTV6BTuX6gUIIKv2ktsjnxfoqMha
+	NJ8D+GH/2a4yzFYEW75HVokKtP8uOvfOKHdtnxxO4juWZ5BTjs5JqxdSFTjPA96KEUSeeIPSgGM8a
+	G64+rBp1FOIpTRcKO0e7aMJh2EUDrQiOBy9s03R7rf9Gvhm8kKSv0MLTEm8XCT0aR+zzCfIqEkj3f
+	qat+3QDcei5J95WZucKf/hQnfmin69ZuXjcPe5nE4rAqCs1m8CtJFB9dOqZPDoLsQvYmIaZFYBZCO
+	gTnTyc8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoqSO-0000000F07B-2Ujt;
-	Wed, 20 Aug 2025 21:34:56 +0000
+	id 1uoqUz-0000000F0Qt-0C3d;
+	Wed, 20 Aug 2025 21:37:37 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uomR7-0000000EVj3-0qf6;
-	Wed, 20 Aug 2025 17:17:22 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1755710202; cv=none; 
+	id 1uomRJ-0000000EVnD-3gk3;
+	Wed, 20 Aug 2025 17:17:34 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1755710216; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=JFRte4iAUD8WS9zgYMl01cN3fdagLl+xrzEKef7yIZShODGP5t7tOOLRWKdYaYlmvRn0t4DFWLMMwUaA64TjL3upQdIkaJxnfqDf/uP4yJFbKNcOmy4LleqwV97aD2keGvvltN/wsV62vYIK7c+z1wRV6PrMfLinjpzXHwQaZRs=
+	b=PLrIntXILnml1BIJ4BKOOJHB+dggwwR55pQmTCMNaVaL56E+NhRK0NYvDgVfAppUw9JSWVJF4Fb2oQ7s844Fb6gW5dijwYE/egCvJk+2C2BEKF2BsIRe+KULPPGGpmpVP7/0onVFbWiKK1pmkaC2wiXSJktd6w6mtkUVJjJGeQs=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1755710202; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=fbWU5pWt1jYsHmgGoCV0Xj8rM8SO1tarK2D1hlMGKuM=; 
-	b=TTO5vdICmIVNbbpL4jBvXPdQY7hYuE11MycmqqOvWnIoC6wH+0Ff//vb+UqA+x3A5kiTbKqD6u+tAHSMg5QuWfSGLhwWPWFwWX9ZjI1sR90JlbhX4WBthe4zP3zoGg/0GTZvlqCoIsvp3M6ndMEovrkYgxQMZMfapjquL/3Y0wg=
+	t=1755710216; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Sjr5FjezJ3DnctvttPhGjVA1HSx0Nva4gNLgYPU187w=; 
+	b=hwpkoa+EEzGcfuGj09O2DUaJhu3NH1zsClkAgUEsW22wBsHCCyvGcj9LqBtiKfEllRfrPVb3xMa+7t7KnRGSrgHLtjEYwe7QkRnvCZbu7JXwQkEme1TO05+5DZhzksRlJV1T7l/aS+3Y/QQGLWFxhJmMYfA7oxurqJ2abFqm1BU=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=ariel.dalessandro@collabora.com;
 	dmarc=pass header.from=<ariel.dalessandro@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1755710202;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1755710216;
 	s=zohomail; d=collabora.com; i=ariel.dalessandro@collabora.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=fbWU5pWt1jYsHmgGoCV0Xj8rM8SO1tarK2D1hlMGKuM=;
-	b=bwh4pIeDK1MgXLPqhfjEgFGJGOWqgcUGQrw/1S/xCf0xuFDGDvs+WWVCNPuJ0kOd
-	HH4OibcvwcYTu/4324jI76Mmfsxw3iiNFbyQiojUgd9nS7rVTC8/O89ek59ifpRGFs0
-	aZ2u48p7EwI9PEHjw6sRclCc51nnlSe+gxJFkB1o=
-Received: by mx.zohomail.com with SMTPS id 1755710200082444.74997358661824;
-	Wed, 20 Aug 2025 10:16:40 -0700 (PDT)
+	bh=Sjr5FjezJ3DnctvttPhGjVA1HSx0Nva4gNLgYPU187w=;
+	b=TvxHDTFqL5xmg0YBTOXCeinVn4RGQeDw+WcChZtVbiilJeA2+ZvhS3b5GZr699c+
+	6UrdZhv/P8WzDCeEE2MEmjb/0RYaaQXDKwMJT6YrEYVY1ahn0FkBWU6h0eYCGlZY1EF
+	WwEmckYK+LJ0hx59BNRzJb/wUPwSR6ytm8GwUgtQ=
+Received: by mx.zohomail.com with SMTPS id 1755710214216103.48931777604218;
+	Wed, 20 Aug 2025 10:16:54 -0700 (PDT)
 From: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
 To: airlied@gmail.com,
 	amergnat@baylibre.com,
@@ -96,9 +96,9 @@ Cc: devicetree@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	linux-sound@vger.kernel.org,
 	netdev@vger.kernel.org
-Subject: [PATCH v1 11/14] arm64: dts: mediatek: mt8173-elm: Drop unused bank supply
-Date: Wed, 20 Aug 2025 14:12:59 -0300
-Message-ID: <20250820171302.324142-12-ariel.dalessandro@collabora.com>
+Subject: [PATCH v1 12/14] dt-bindings: soc: mediatek: pwrap: Add power-domains property
+Date: Wed, 20 Aug 2025 14:13:00 -0300
+Message-ID: <20250820171302.324142-13-ariel.dalessandro@collabora.com>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20250820171302.324142-1-ariel.dalessandro@collabora.com>
 References: <20250820171302.324142-1-ariel.dalessandro@collabora.com>
@@ -106,8 +106,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250820_101721_298526_DB006D6B 
-X-CRM114-Status: UNSURE (   7.60  )
+X-CRM114-CacheID: sfid-20250820_101733_968642_4266E8A7 
+X-CRM114-Status: UNSURE (   6.91  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -123,31 +123,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mediatek,mt8173-thermal device tree binding schema doesn't allow
-regulator supplies like the ones defined in mt8173-elm.dtsi. Drop these
-as the associated driver doesn't implement them either.
+Currently, the DT bindings for Mediatek PMIC Wrapper is missing the
+power-domains property, which is used in the MT8173 E1 evaluation board
+as it needs USB power domain.
 
 Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 5 -----
- 1 file changed, 5 deletions(-)
+ .../bindings/soc/mediatek/mediatek,pwrap.yaml     | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-index 0766026864c9d..b6fe979fcfb10 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-@@ -1149,11 +1149,6 @@ &ssusb {
- 	status = "okay";
- };
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
+index 4737e5f45d541..54c0cd64d3094 100644
+--- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
++++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
+@@ -98,6 +98,9 @@ properties:
+       - const: pwrap
+       - const: pwrap-bridge
  
--&thermal {
--	bank0-supply = <&mt6397_vpca15_reg>;
--	bank1-supply = <&da9211_vcpu_reg>;
--};
--
- &uart0 {
- 	status = "okay";
- };
++  power-domains:
++    maxItems: 1
++
+   pmic:
+     type: object
+ 
+@@ -126,6 +129,18 @@ allOf:
+         clock-names:
+           minItems: 4
+ 
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: mediatek,mt8173-pwrap
++    then:
++      properties:
++        power-domains: true
++    else:
++      properties:
++        power-domains: false
++
+ additionalProperties: false
+ 
+ examples:
 -- 
 2.50.1
 
