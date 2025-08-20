@@ -4,79 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 587FACA0EDC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Aug 2025 10:27:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C572CA0EE4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Aug 2025 10:48:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=adpM1Tc6z23ljyv7fv///mOfS5qWi2huzDH4dGeqvos=; b=qiGAAv4oB+Nrw2J8ScAyLtI0+6
-	f9ZzASwS/mLs/eAMc9PJQSz46BBPIwtTeTZCxwK/yG2m998OCoONLD/8KHP0nMHW4aR8mokrRmUAl
-	8qOroVu8w9i9hRk/ZF6fyh9js7yWMSh41uq400fjAxPp1bRbmQQP+oWDBQZqalP6p/1qrcDSnHJtF
-	WkJ6QNI/NPsqeSpcgXKkwqfCMwc8WjSxM5JlC2jG+3txJB78bANzhG7Il0KMeF5wGQCoWa5SRzIni
-	DzJ/q9j3vlpZU6cFtlajODtl6/ciK4WP0kg7SLLPEdPBSQ0AwvoNcc4BgYhWhUpaXpNC6yubXbScY
-	MM6f/u2w==;
+	bh=5u4Vwb4xtJAYyfnNc08mhjzP1rRytSY2FLewgd5mi3s=; b=0f8DArjQKfs/8A9JaVT58kEC9J
+	8wH09aN7snM1waDb5TFSSSWqJoYsa8UOvcx3uJEnI5wawmWaaBcq0IZ5lj7mJRfa6mpzRvS/jie5F
+	mdrt3RXVdcg3zr9H16LoQCsr8aF7FiX7IVk281o4QNHpMK1qYv/buND29HaDQoGQaJEIXz5pwn+eJ
+	AzQXYZL5E/HbNftDsbc5bfERGoHgNE+Cv0/Vmk/9+NaunHeC9tvoWbnbgWkPQox8SsRdxzTSrJ0qw
+	1Mhaj0+p1H8HMkTHVUSxJ3Jt5et0A1ub5+D6JV8Va3Y74Xe6kbeOtikrfTPtCeRwdwLGneHa4fEJV
+	v5yNOMdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uog26-0000000D8k3-09FM;
-	Wed, 20 Aug 2025 10:27:06 +0000
+	id 1uogMo-0000000DEfL-0eKi;
+	Wed, 20 Aug 2025 10:48:30 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uofOJ-0000000D07x-1Urz;
-	Wed, 20 Aug 2025 09:46:00 +0000
-X-UUID: 7723a8b67daa11f09eb0dd999d3936bf-20250820
+	id 1uofW3-0000000D2TB-2vuC;
+	Wed, 20 Aug 2025 09:54:00 +0000
+X-UUID: 73377c107da911f09eb0dd999d3936bf-20250820
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=adpM1Tc6z23ljyv7fv///mOfS5qWi2huzDH4dGeqvos=;
-	b=i6Fdn38ymq9E8JBzHCdpcT0nh6pKaI9M4qTjZZgWFIo9+F/DJFtLwe8SbgyjRJFp3ltyEB4VrsdZ/EQNoztLK9hEfoT3eBKZEGNQawgrC4NNfIXqezjR3YDvih6OmhzvHKRBkuxADCN61K/3NamFdO0jyO5VNc69OGZW3psF5Uk=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=5u4Vwb4xtJAYyfnNc08mhjzP1rRytSY2FLewgd5mi3s=;
+	b=kGodK6Kgwq/SJmpjTNJzYLNos+zPkNDXwm/eI2Po+Zjp4sQvWTaAOs6qI/JCV1Ud8LXoFE5Wx8Q+1h1ogD5qVtMq2o4ty81RtQF8QPJCu82TzkqyUhjmZpjYOAU4xo7fZvMjrylPzHFkekV3lAklVaoQgX1exn3UFqd1zYdsYTU=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.3,REQID:75e4d431-8be2-40d6-a71f-c828cabf83a4,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:f1326cf,CLOUDID:57b6547a-966c-41bd-96b5-7d0b3c22e782,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:-5,Content:0|15|50,EDM:
-	-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,
-	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.3.3,REQID:d97e4eae-4d69-4d07-ad7d-748341cfc63e,IP:0,UR
+	L:0,TC:0,Content:100,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:100
+X-CID-META: VersionHash:f1326cf,CLOUDID:63a5547a-966c-41bd-96b5-7d0b3c22e782,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|801,TC:-5,Content:3|15|50,
+	EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
+	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 7723a8b67daa11f09eb0dd999d3936bf-20250820
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
-	(envelope-from <jjian.zhou@mediatek.com>)
+X-UUID: 73377c107da911f09eb0dd999d3936bf-20250820
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw02.mediatek.com
+	(envelope-from <xiandong.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1733882499; Wed, 20 Aug 2025 02:45:54 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+	with ESMTP id 1752593688; Wed, 20 Aug 2025 02:38:38 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Wed, 20 Aug 2025 17:45:50 +0800
+ 15.2.1258.39; Wed, 20 Aug 2025 17:38:34 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Wed, 20 Aug 2025 17:45:49 +0800
-From: Jjian Zhou <jjian.zhou@mediatek.com>
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Wed, 20 Aug 2025 17:38:33 +0800
+From: Xiandong Wang <xiandong.wang@mediatek.com>
 To: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Jjian Zhou
-	<Jjian.Zhou@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>
+	<angelogioacchino.delregno@collabora.com>, Yongqiang Niu
+	<yongqiang.niu@mediatek.com>
 CC: <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jjian Zhou
-	<jjian.zhou@mediatek.com>
-Subject: [PATCH v4 2/2] mailbox: mediatek: Add mtk-vcp-mailbox driver
-Date: Wed, 20 Aug 2025 17:45:38 +0800
-Message-ID: <20250820094545.23821-3-jjian.zhou@mediatek.com>
+	<sirius.wang@mediatek.com>, <vince-wl.liu@mediatek.com>,
+	<jh.hsu@mediatek.com>, <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	Xiandong Wang <xiandong.wang@mediatek.com>
+Subject: [PATCH v4 1/4] dt-bindings: mailbox: add cmdq yaml for MT8189
+Date: Wed, 20 Aug 2025 17:38:20 +0800
+Message-ID: <20250820093831.23437-2-xiandong.wang@mediatek.com>
 X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20250820094545.23821-1-jjian.zhou@mediatek.com>
-References: <20250820094545.23821-1-jjian.zhou@mediatek.com>
+In-Reply-To: <20250820093831.23437-1-xiandong.wang@mediatek.com>
+References: <20250820093831.23437-1-xiandong.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250820_024559_408912_415C734D 
-X-CRM114-Status: GOOD (  26.77  )
+X-CRM114-CacheID: sfid-20250820_025359_734621_1F0D6076 
+X-CRM114-Status: GOOD (  10.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,271 +91,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mtk-vcp-mailbox driver to support the communication with
-VCP remote microprocessor.
+Add compatible string to support cmdq for MT8189.
 
-Signed-off-by: Jjian Zhou <jjian.zhou@mediatek.com>
+Signed-off-by: Xiandong Wang <xiandong.wang@mediatek.com>
 ---
- drivers/mailbox/Kconfig                 |   9 ++
- drivers/mailbox/Makefile                |   2 +
- drivers/mailbox/mtk-vcp-mailbox.c       | 174 ++++++++++++++++++++++++
- include/linux/mailbox/mtk-vcp-mailbox.h |  32 +++++
- 4 files changed, 217 insertions(+)
- create mode 100644 drivers/mailbox/mtk-vcp-mailbox.c
- create mode 100644 include/linux/mailbox/mtk-vcp-mailbox.h
+ .../devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml        | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/mailbox/Kconfig b/drivers/mailbox/Kconfig
-index 02432d4a5ccd..c28bdb855663 100644
---- a/drivers/mailbox/Kconfig
-+++ b/drivers/mailbox/Kconfig
-@@ -294,6 +294,15 @@ config MTK_CMDQ_MBOX
- 	  critical time limitation, such as updating display configuration
- 	  during the vblank.
- 
-+config MTK_VCP_MBOX
-+	tristate "MediaTek VCP Mailbox Support"
-+	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	help
-+	  Say yes here to add support for the MediaTek VCP mailbox driver.
-+	  The mailbox implementation provides access from the application
-+	  processor to Video Companion Processor Unit.
-+	  If unsure say N.
-+
- config ZYNQMP_IPI_MBOX
- 	tristate "Xilinx ZynqMP IPI Mailbox"
- 	depends on ARCH_ZYNQMP && OF
-diff --git a/drivers/mailbox/Makefile b/drivers/mailbox/Makefile
-index 98a68f838486..07278871d254 100644
---- a/drivers/mailbox/Makefile
-+++ b/drivers/mailbox/Makefile
-@@ -63,6 +63,8 @@ obj-$(CONFIG_MTK_ADSP_MBOX)	+= mtk-adsp-mailbox.o
- 
- obj-$(CONFIG_MTK_CMDQ_MBOX)	+= mtk-cmdq-mailbox.o
- 
-+obj-$(CONFIG_MTK_VCP_MBOX)	+= mtk-vcp-mailbox.o
-+
- obj-$(CONFIG_ZYNQMP_IPI_MBOX)	+= zynqmp-ipi-mailbox.o
- 
- obj-$(CONFIG_SUN6I_MSGBOX)	+= sun6i-msgbox.o
-diff --git a/drivers/mailbox/mtk-vcp-mailbox.c b/drivers/mailbox/mtk-vcp-mailbox.c
-new file mode 100644
-index 000000000000..6f48215896d2
---- /dev/null
-+++ b/drivers/mailbox/mtk-vcp-mailbox.c
-@@ -0,0 +1,174 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (c) 2025 MediaTek Corporation. All rights reserved.
-+ * Author: Jjian Zhou <jjian.zhou.@mediatek.com>
-+ */
-+
-+#include <linux/interrupt.h>
-+#include <linux/io.h>
-+#include <linux/kernel.h>
-+#include <linux/mailbox_controller.h>
-+#include <linux/mailbox/mtk-vcp-mailbox.h>
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/platform_device.h>
-+#include <linux/slab.h>
-+
-+struct mtk_vcp_mbox_priv {
-+	void __iomem *base;
-+	struct device *dev;
-+	struct mbox_controller mbox;
-+	const struct mtk_vcp_mbox_cfg *cfg;
-+	struct mtk_ipi_info ipi_recv;
-+};
-+
-+struct mtk_vcp_mbox_cfg {
-+	u32 set_in;
-+	u32 clr_out;
-+};
-+
-+static inline struct mtk_vcp_mbox_priv *get_mtk_vcp_mbox_priv(struct mbox_controller *mbox)
-+{
-+	return container_of(mbox, struct mtk_vcp_mbox_priv, mbox);
-+}
-+
-+static irqreturn_t mtk_vcp_mbox_irq_thread(int irq, void *data)
-+{
-+	struct mbox_chan *chan = data;
-+	struct mtk_vcp_mbox_priv *priv = get_mtk_vcp_mbox_priv(chan->mbox);
-+
-+	/* get irq status */
-+	priv->ipi_recv.irq_status = readl(priv->base + priv->cfg->clr_out);
-+
-+	__ioread32_copy(priv->ipi_recv.msg, priv->base, MBOX_SLOT_MAX_SIZE / 4);
-+
-+	mbox_chan_received_data(chan, &priv->ipi_recv);
-+
-+	/* clear irq status */
-+	writel(priv->ipi_recv.irq_status, priv->base + priv->cfg->clr_out);
-+
-+	return IRQ_HANDLED;
-+}
-+
-+static struct mbox_chan *mtk_vcp_mbox_xlate(struct mbox_controller *mbox,
-+					    const struct of_phandle_args *sp)
-+{
-+	if (sp->args_count)
-+		return NULL;
-+
-+	return mbox->chans;
-+}
-+
-+static int mtk_vcp_mbox_send_data(struct mbox_chan *chan, void *data)
-+{
-+	struct mtk_vcp_mbox_priv *priv = get_mtk_vcp_mbox_priv(chan->mbox);
-+	struct mtk_ipi_info *ipi_info = data;
-+	u32 status;
-+
-+	if (!ipi_info->msg) {
-+		dev_err(priv->dev, "msg buffer is NULL.\n");
-+		return -EINVAL;
-+	}
-+
-+	status = readl(priv->base + priv->cfg->set_in) & BIT(ipi_info->index);
-+	if (status) {
-+		dev_warn(priv->dev, "mailbox IPI %d is busy.\n", ipi_info->id);
-+		return -EBUSY;
-+	}
-+
-+	if (ipi_info->slot_ofs + ipi_info->len > MBOX_SLOT_MAX_SIZE)
-+		return -EINVAL;
-+	__iowrite32_copy(priv->base + ipi_info->slot_ofs, ipi_info->msg,
-+			 ipi_info->len);
-+
-+	writel(BIT(ipi_info->index), priv->base + priv->cfg->set_in);
-+
-+	return 0;
-+}
-+
-+static bool mtk_vcp_mbox_last_tx_done(struct mbox_chan *chan)
-+{
-+	struct mtk_ipi_info *ipi_info = chan->active_req;
-+	struct mtk_vcp_mbox_priv *priv = get_mtk_vcp_mbox_priv(chan->mbox);
-+
-+	return !(readl(priv->base + priv->cfg->set_in) & BIT(ipi_info->index));
-+}
-+
-+static const struct mbox_chan_ops mtk_vcp_mbox_chan_ops = {
-+	.send_data	= mtk_vcp_mbox_send_data,
-+	.last_tx_done	= mtk_vcp_mbox_last_tx_done,
-+};
-+
-+static int mtk_vcp_mbox_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct mtk_vcp_mbox_priv *priv;
-+	struct mbox_controller *mbox;
-+	int ret, irq;
-+
-+	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-+	if (!priv)
-+		return -ENOMEM;
-+
-+	priv->dev = dev;
-+	mbox = &priv->mbox;
-+	mbox->dev = dev;
-+	mbox->ops = &mtk_vcp_mbox_chan_ops;
-+	mbox->txdone_irq = false;
-+	mbox->txdone_poll = true;
-+	mbox->of_xlate = mtk_vcp_mbox_xlate;
-+	mbox->num_chans = 1;
-+	mbox->chans = devm_kzalloc(dev, sizeof(*mbox->chans), GFP_KERNEL);
-+	if (!mbox->chans)
-+		return -ENOMEM;
-+
-+	priv->ipi_recv.msg = devm_kzalloc(dev, MBOX_SLOT_MAX_SIZE, GFP_KERNEL);
-+	if (!priv->ipi_recv.msg)
-+		return -ENOMEM;
-+
-+	priv->base = devm_platform_ioremap_resource(pdev, 0);
-+	if (IS_ERR(priv->base))
-+		return PTR_ERR(priv->base);
-+
-+	priv->cfg = of_device_get_match_data(dev);
-+	if (!priv->cfg)
-+		return -EINVAL;
-+
-+	irq = platform_get_irq(pdev, 0);
-+	if (irq < 0)
-+		return irq;
-+
-+	ret = devm_request_threaded_irq(dev, irq, NULL,
-+					mtk_vcp_mbox_irq_thread, IRQF_ONESHOT,
-+					dev_name(dev), mbox->chans);
-+	if (ret < 0)
-+		return ret;
-+
-+	platform_set_drvdata(pdev, priv);
-+
-+	return devm_mbox_controller_register(dev, &priv->mbox);
-+}
-+
-+static const struct mtk_vcp_mbox_cfg mt8196_cfg = {
-+	.set_in		= 0x100,
-+	.clr_out	= 0x10C,
-+};
-+
-+static const struct of_device_id mtk_vcp_mbox_of_match[] = {
-+	{ .compatible = "mediatek,mt8196-vcp-mbox", .data = &mt8196_cfg },
-+	{},
-+};
-+MODULE_DEVICE_TABLE(of, mtk_vcp_mbox_of_match);
-+
-+static struct platform_driver mtk_vcp_mbox_driver = {
-+	.probe		= mtk_vcp_mbox_probe,
-+	.driver = {
-+		.name	= "mtk_vcp_mbox",
-+		.of_match_table = mtk_vcp_mbox_of_match,
-+	},
-+};
-+module_platform_driver(mtk_vcp_mbox_driver);
-+
-+MODULE_AUTHOR("Jjian Zhou <jjian.zhou@mediatek.com>");
-+MODULE_DESCRIPTION("MTK VCP Mailbox Controller");
-+MODULE_LICENSE("GPL");
-diff --git a/include/linux/mailbox/mtk-vcp-mailbox.h b/include/linux/mailbox/mtk-vcp-mailbox.h
-new file mode 100644
-index 000000000000..143fb0d06e30
---- /dev/null
-+++ b/include/linux/mailbox/mtk-vcp-mailbox.h
-@@ -0,0 +1,32 @@
-+/* SPDX-License-Identifier: (GPL-2.0 OR MIT) */
-+/*
-+ * Copyright (c) 2025 MediaTek Inc.
-+ */
-+
-+#ifndef __MTK_VCP_MAILBOX_H__
-+#define __MTK_VCP_MAILBOX_H__
-+
-+#define MBOX_SLOT_MAX_SIZE	0x100 /* mbox max slot size */
-+
-+/**
-+ * struct mtk_ipi_info - mailbox message info for mtk-vcp-mailbox
-+ * @msg: The share buffer between IPC and mailbox driver
-+ * @len: Message length
-+ * @id: This is for identification purposes and not actually used
-+ *	by the mailbox hardware.
-+ * @index: The signal number of the mailbox message.
-+ * @slot_ofs: Data slot offset.
-+ * @irq_status: Captures incoming signals for the RX path.
-+ *
-+ * It is used between IPC with mailbox driver.
-+ */
-+struct mtk_ipi_info {
-+	void *msg;
-+	u32 len;
-+	u32 id;
-+	u32 index;
-+	u32 slot_ofs;
-+	u32 irq_status;
-+};
-+
-+#endif
+diff --git a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
+index 73d6db34d64a..f9718b90d36a 100644
+--- a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
++++ b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
+@@ -23,6 +23,7 @@ properties:
+           - mediatek,mt8183-gce
+           - mediatek,mt8186-gce
+           - mediatek,mt8188-gce
++          - mediatek,mt8189-gce
+           - mediatek,mt8192-gce
+           - mediatek,mt8195-gce
+           - mediatek,mt8196-gce
 -- 
-2.45.2
+2.46.0
 
 
