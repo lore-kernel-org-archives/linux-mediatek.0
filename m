@@ -4,76 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F28A2CA0EF8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Aug 2025 15:31:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94C84CA0EEB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Aug 2025 15:31:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=L7PbAw7tFxkqZThPb3yJ9U2UGY2pHnuSaci2IGV7yfc=; b=oZVJvfhX961KSjmUZ5An9w1/Vq
-	3g67lsRmvHeicFY8RE2Zi0h/2fvZy0S5RlKZjDitNK0ihnYJVDs5Et93ZaE0icxFeSjFu7o4mjWGG
-	ksRk9/S8EaUX5bMhWIik0BjybD5yhdZ0EOgQO2ctYyDvR0M8RAsvwVHQ5kUlHVyBAbO5bw4zRBrSq
-	MRBn6iKiae5Ee71FUngK+c0nrOlew9g3n6lAcE20/rwbQqS8R1AntWRLX/Mn76p7jpyS5BWxJo3hh
-	OLsy5SCujP7AyeIIn1sUTekQHUT8zaVzdpOvzykmquiUcSPzxGfpajMFEhetPQ2PSPKsGuU3gjdNr
-	r7vF6N3A==;
+	bh=NTRZmz9b45Hl2bTm1apFpY/NlVi3bfWcm6ULUt78zN4=; b=zB/bDjGHiqFGF9HJB+tTU7zsc7
+	LDFm2Xj82kE46WloWEi+Y9ywnz93jCpkwAzgU4DnLobhYgnqSaYVCajp3LVrJgn3VFYBfMmqGlCEI
+	Xhd9yk95ncuA0SioxOo2KwU0Sm9eq5DW+T789Y2OI8fhKcUNaXFzGsExGooL7/IEqilS0MvKmtxq2
+	lCcbNGGGFxuEiXYAt/aZZNe3Zr4Mci+Di8zntlAlNIyuPbVh22bwERKOdo8GvkkdeH2brMRtNvMDa
+	D1aVe2NxNveFugPLI6mPKhuGW7cmdEE52iCZ44o65DEddbGW4Cd5dZ6Y63CZlrQyUIlK03SMdUJQ7
+	lqtV8n6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1up7G5-0000000HO4l-0TZL;
-	Thu, 21 Aug 2025 15:31:21 +0000
-Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
+	id 1up7GI-0000000HOIE-0OxH;
+	Thu, 21 Aug 2025 15:31:34 +0000
+Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1up3ri-0000000Gol3-10wi
+	id 1up3uH-0000000GpDO-1HtA
 	for linux-mediatek@lists.infradead.org;
-	Thu, 21 Aug 2025 11:53:59 +0000
-Received: by mail-lj1-x22d.google.com with SMTP id 38308e7fff4ca-333e7517adcso18494961fa.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 21 Aug 2025 04:53:58 -0700 (PDT)
+	Thu, 21 Aug 2025 11:56:38 +0000
+Received: by mail-lj1-x22b.google.com with SMTP id 38308e7fff4ca-333f92cb94eso7828761fa.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 21 Aug 2025 04:56:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1755777236; x=1756382036; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1755777395; x=1756382195; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=L7PbAw7tFxkqZThPb3yJ9U2UGY2pHnuSaci2IGV7yfc=;
-        b=m/C2IZTVjRqwYH++G4+yU2tM6Dj0aCPaDzwcxGDqqPcXMo1xK5eP0TXdfSAmkWEk/L
-         BeNwqoYDLovOs2WjoG/rHQJyzGYt1QFF1kMXoinV1HqxQy3r+nc5saKbDsRYlfeULk10
-         VpS+SyKjSUJLpFll+S+NBJv++AggwMy3CLTyYZyl1wwhq0i4qb55QopR/+5Ckq+vkupA
-         V8crIx3A3NvZ7RiyIb+X0h4taNvHRzvLUYlTg+kzGBbPTesJc25LQ6UhfWpthGzMxBn9
-         iTeayMjQNnTwFX3Vy2vkTJFJ5YUOaRK+6a1aFHorhTKl5tL8cBMPxx+WNV7Eh6awPKDl
-         jpPw==
+        bh=NTRZmz9b45Hl2bTm1apFpY/NlVi3bfWcm6ULUt78zN4=;
+        b=VrdEX4nojzg7aWbNyZtHPhxuXwlLOSntx0x7p2kqX8MsKCskn8aRjuwT2255X/4xaU
+         2LCDx9xaMVVLUI/GuWBXMy62WXXI4f+Sy+2BeRzBbH3Xv0P+lnUsJV/31YyJMlFGb/pg
+         JPtx+b3jR/YoWUKiyHcg8KA7MdEVo+C/vzjvsSCTE2YaCuMjYSSW+YTOC+OKITOMhAid
+         nay32UeivToOfW5r3txsjELr6u8rdhGpZ/O5V0QMBunYlHZLk73IzoiIUQq10RbvhXxg
+         CM7/GWImCIy6yohwjewzB8V0jqBMswVMQB+5k7hbK5F1ttKyxsefW7aQ/ZTJH63k5bqb
+         d8og==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1755777236; x=1756382036;
+        d=1e100.net; s=20230601; t=1755777396; x=1756382196;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=L7PbAw7tFxkqZThPb3yJ9U2UGY2pHnuSaci2IGV7yfc=;
-        b=ZT0M3Pvh68cUKbCEEpCdkpGgeAGQgUVkSbHXQ9/citZoGVESvMSyjzBmgDoAhMMOpX
-         5+HTKOvzuLv52N89pxo4isLsz1gE21lQTw5b2+tBHJYx4YY1Pma4NiD020kSwso/Lrtr
-         uLNMwOt7f4xmYfrqDdXcarrbH99Zy+v6M9WcZkAiAG7ZPVz8QEswwnd2QofMUNhBZmEF
-         5+GzMzw3tW7VadRaPelZL2E0NXFiJCVtuXNTBOrfPSitNAFov66H6DnLZIlsRyVYbExQ
-         JKQIyvdYbi0OzA1uIweuXlVYHG+EjFT6b7HgzI1Vq+7cBesh0CiYOS7rxXIejQL5vcvu
-         wiLg==
-X-Forwarded-Encrypted: i=1; AJvYcCWh5ruPXaZOX3aYn16V47cBzcqnbgSBIWq6muK7fq08Kdkc7suL/ovq33E3Y5+ji6K9Jm9VQc0VpVrMXETdhg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yykyn9MNwS9GZ2GJ4HLcS3/FXjZH5l2lEetbhIPCCe0OAvZrQvN
-	IEY1k03bp/IWHaGPKQab1B9LoL1/CmzTQsFNfunUFA6lg0F7r5LgMrg1/AnQY8Eg1IGCIYe7xIb
-	4O+XgXO8zHQKIWywA6NittOzOEjA8oFlHb1SjH8vaSg==
-X-Gm-Gg: ASbGncsFBZVWnKH0OkUetoBK75DCd6Kxl4U9wASfT2ZTgLADXq/mrzbpj5tObx6IrV1
-	rBusoKRLdfJExdzOOsse+JdDXOSDKOXbwXrq0+jVn1OaRA5xQOwiGi4735GrKdhTKI/wxm5cJ8g
-	lz5542Ex1Q4yjQGAxM0VJ4mAyjKgzYIgdGprxHLv0q/8h+bkQzUuN8du5QEYXPWUmvjbKOx5DZI
-	Rq4nYc=
-X-Google-Smtp-Source: AGHT+IFoewdvNuLwpOMDi7tPmb9FEQKLI5JEdERuyolhueuXHZ2+5KnKdkT/j3cc2QMbmt8jG7ipw7ObSBOoHSZHVLc=
-X-Received: by 2002:a2e:a013:0:b0:332:2d5c:e171 with SMTP id
- 38308e7fff4ca-3354a275fd8mr4061531fa.11.1755777236482; Thu, 21 Aug 2025
- 04:53:56 -0700 (PDT)
+        bh=NTRZmz9b45Hl2bTm1apFpY/NlVi3bfWcm6ULUt78zN4=;
+        b=XI8omK4M4sUdYtiqrnVs+pcw9wO3/99ODxSaQp2Tj2pMzcjHv4BWpY/GIgvo8mqwPA
+         okA1kf3QR+NFGPrKFyZchbxXPZP5JmJVUkmi1MijYs9Ld07q3xNBw/LRBcjBNVeKDl3n
+         jguat/btcRY5hw+IU+tAL0jWdwa3ohA/jK/ksjq+FJ2b+7ggbLMm/XXnbFye/JlltStq
+         B7eC5jdMELmk/sEzMg9Vap2l2klSGV9r5rp3kpzKqo4TW2ZRhr87uWwAjsvK2s9avdwJ
+         ljLhjSxaNqTJQGRD56EzckY4lLGgnsYCRc8KR+AlT1Wj2Ug/QZ3RMBkDDJQyfCSj+HVR
+         3kvw==
+X-Forwarded-Encrypted: i=1; AJvYcCVQ17CNKAh+JvyOLFTTuBuhdA3q5RhEDbyDQR7mtzTdd9dKYQOjcyZUcZsAIMXQ4QFf8oL5vA7fcx4yhf33LQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyRQGk6GhJhNac6pCf4wagrnhktlZY0MkiP/fl4xAEVKQ1WG1BE
+	AkmYxWQMMmCKD7i/mYLrzBjA4XCINH/+u7mH9k6Y2skXET/6JG7cAo1Xr6pmFb0KJKIIGaY5jSM
+	DG0M+cjvA3IFr6vt/yiOHcgCbtEGY8WZNiGH9NMARAA==
+X-Gm-Gg: ASbGncuNTF1gg30TEZubI+KcBIjMO218MskVa7HDWxkmi918S7Yk9Ls4ezgrFgtqAwk
+	OLddrMgPkDfhkNyoNSu5JLSqGQq2QUTfFQLYmdvbsx3LICgZFDU2SgT+vmx+LcazEogQ4SCK5f2
+	o8tpl8hTLqzpzdUzwysvodCZQZl6Ttd5FVxLOHxtHQ/aBgDEYx0ZAfSJeWBbPsbeEoTalCRiwfF
+	lBUjIM=
+X-Google-Smtp-Source: AGHT+IHLNT7GNgIK+Yc1AUKtRsJ+Pu3qxvF99KQLgmBORucS0GzpXEZZoUCuuB+z9QVIQwaQ+MKKQAluSVZweFngFeU=
+X-Received: by 2002:a05:651c:54a:b0:332:57b8:92eb with SMTP id
+ 38308e7fff4ca-33549e7e81dmr7293611fa.10.1755777395492; Thu, 21 Aug 2025
+ 04:56:35 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250820171302.324142-1-ariel.dalessandro@collabora.com> <20250820171302.324142-10-ariel.dalessandro@collabora.com>
-In-Reply-To: <20250820171302.324142-10-ariel.dalessandro@collabora.com>
+References: <20250820171302.324142-1-ariel.dalessandro@collabora.com> <20250820171302.324142-14-ariel.dalessandro@collabora.com>
+In-Reply-To: <20250820171302.324142-14-ariel.dalessandro@collabora.com>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Thu, 21 Aug 2025 13:53:45 +0200
-X-Gm-Features: Ac12FXy1SuiUzS280qDRSJHcA_2jVr4y-FjGItB1ru8eWVK-JVnc9Ql5XGWxM9c
-Message-ID: <CACRpkdbVqNpz2HiAz+_vFUkDy1TE6ZDxp6X2g9rRWAt4s=jRgw@mail.gmail.com>
-Subject: Re: [PATCH v1 09/14] dt-bindings: pinctrl: mediatek,mt65xx-pinctrl:
- Allow gpio-line-names
+Date: Thu, 21 Aug 2025 13:56:24 +0200
+X-Gm-Features: Ac12FXxjp4iK3cFyWU_S6p_GaEq9BIq8dd_UPbgZlXscJTvrfMnMiNgyqvjOGHs
+Message-ID: <CACRpkdbpKqKyebADj0xPFq3g0biPh-vm4d6C3sd8r0URyfyYRg@mail.gmail.com>
+Subject: Re: [PATCH v1 13/14] dt-bindings: input/touchscreen: Convert MELFAS
+ MIP4 Touchscreen to YAML
 To: "Ariel D'Alessandro" <ariel.dalessandro@collabora.com>
 Cc: airlied@gmail.com, amergnat@baylibre.com, andrew+netdev@lunn.ch, 
 	andrew-ct.chen@mediatek.com, angelogioacchino.delregno@collabora.com, 
@@ -97,8 +97,8 @@ Cc: airlied@gmail.com, amergnat@baylibre.com, andrew+netdev@lunn.ch,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250821_045358_297181_8E8152CE 
-X-CRM114-Status: UNSURE (   7.33  )
+X-CRM114-CacheID: sfid-20250821_045637_347182_B6DA36A5 
+X-CRM114-Status: UNSURE (   7.87  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -114,14 +114,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 20, 2025 at 7:16=E2=80=AFPM Ariel D'Alessandro
+Hi Ariel,
+
+thanks for your patch!
+
+On Wed, Aug 20, 2025 at 7:17=E2=80=AFPM Ariel D'Alessandro
 <ariel.dalessandro@collabora.com> wrote:
 
-> Current, the DT bindings for MediaTek's MT65xx Pin controller is missing
-> the gpio-line-names property, add it to the associated schema.
->
-> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+> +  ce-gpios:
+> +    description: GPIO connected to the CE (chip enable) pin of the chip
+> +    maxItems: 1
 
+Mention that this should always have the flag GPIO_ACTIVE_HIGH
+as this is required by the hardware.
+
+Unfortunately we have no YAML syntax for enforcing flags :/
+
+With that fix:
 Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
 
 Yours,
