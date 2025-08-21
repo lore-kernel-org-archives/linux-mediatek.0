@@ -4,141 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0E6ECA0FE2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Aug 2025 10:26:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA204CA0EEB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Aug 2025 10:37:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eU7TYaqJ6duBML6uqVqJigVOdQm0L8koItjVVhsfmDY=; b=GwCIkaLFg4RkoH/Dcw0/i/kTky
-	5O7lyP9GDknvv1RKfBoifvYmu4fCzHqgqagy0xhHbuJUOHKlp09KzZflwcNDSWgnREYm/LUmYK++H
-	RxfsaPAK7mZhiisAP38AvZUf4Du/I4ysFA4WOECWf/YVPTS3qSd2AaxIE/moCIEvs0Ha0OToMT8mf
-	oSTbTI1Ma5NAt5Va/XWao8tifLJgOwKD3e1x1S3BIX6ZimWOtz4FnYgTlc3k3GAcwJEJUH+uTsv+V
-	gONkDEP0H//B17Bc1HNGu6vraFbafWsRpcKELSQBZ4lor+NFNwA0EdLWoAQ9Vb+n98fYBGaUg4TbY
-	hXXsOv+Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OOWbc93NNAvuoFHJIERvL2ni0Hh4WX8rxmSVcRBWSh8=; b=fr/seSeWwG0ecNFS8+Kj7G2amH
+	K5BqqjP96fCh1PoCXLYfQe5qmtSa7LPHq4LKWDik4TNOJYVD2tAVGxG+uANBpyjXJ+/VG82qEWm7L
+	zvJ6udROh8FejJMVzMyucikTelTmY3tkXn1futkdVcaVv1xrnWWvE0HXfF36jRlxDy/3AAhAtWGgU
+	pYc3ELQ2TKFnpMIPmDUxpvHQFlQEGxJdP8AQUSeD2y43h+ijCUwPfVouVtXdOLwtW+Usq1sDa1WRw
+	DrsD808vhAl0PbWbrlmZA74O7VKEtrXJfxVUA8qfMqFRPuCufZuNhQmXZjd/c1Q3S+q3Fh6Lx/CGf
+	nm1rcjgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1up2Uu-0000000GbJx-1xhd;
-	Thu, 21 Aug 2025 10:26:20 +0000
-Received: from smtp-out1.suse.de ([195.135.223.130])
+	id 1up2fQ-0000000GdWx-2unF;
+	Thu, 21 Aug 2025 10:37:12 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1up0Zx-0000000GEg7-2ZPd
-	for linux-mediatek@lists.infradead.org;
-	Thu, 21 Aug 2025 08:23:26 +0000
-Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
+	id 1up0os-0000000GHQs-1X1M;
+	Thu, 21 Aug 2025 08:38:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1755765528;
+	bh=OOWbc93NNAvuoFHJIERvL2ni0Hh4WX8rxmSVcRBWSh8=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=UNNSDlpjULRYhhubgyBlL3uOvOZTQmSqPOv2MHax1e1KRJ+2nv98syzqmrv6NZaFI
+	 ew7WR8HtaioqREui4tfTOLNyfdHkExd7J2MWERwm9fix6D4Yb7wQXduX7SWIAqg8UY
+	 mwk3EISANgsXq/dfh6J76UGV1FiYryAIkNMh7w2kLN+gNNkxtHXy/Sh0AF6iaOhCgV
+	 OSffjmCunuEHnVAQmQ81fFFEqoDytDBrz9adhKQFrmh/uVp1TQAg0iQdQ6L93BSgRm
+	 EQ8c1LE2Eb1YwT+uTausgVfHy1MEVfLt20KvB28Zaw0blRjONprF1wgajZb26iDZxJ
+	 YLYdrr4VkAu5w==
+Received: from localhost-live.home (2a01cb0892f2D600c8F85CF092D4aF51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 1F1B92186F;
-	Thu, 21 Aug 2025 08:22:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1755764547; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=eU7TYaqJ6duBML6uqVqJigVOdQm0L8koItjVVhsfmDY=;
-	b=CYfqfqJht5lUOE4zN33sX1KK1JeKs87F5FxRoURqIJ2T5ShyZwV3g4qBgEZ+KqP8nTsFZf
-	nLT7rWhlvWkQDn7dQmdhdw/fdrlD1qNCwuZ8v/WulaOXUTCyiF16OT4nbbkwL8PZYvrsh9
-	hROe7QacKTe/RBk0/FyjaSo8QRb/I00=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1755764547;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=eU7TYaqJ6duBML6uqVqJigVOdQm0L8koItjVVhsfmDY=;
-	b=+9vMn/zlV0/9G7plhgdmRfTkp3ACIUUvEf9Man6jSLLAQMGCg7LRLEpn6WXefo+gK4n8fz
-	c7w74sX7QUxboSCw==
-Authentication-Results: smtp-out1.suse.de;
-	none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1755764547; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=eU7TYaqJ6duBML6uqVqJigVOdQm0L8koItjVVhsfmDY=;
-	b=CYfqfqJht5lUOE4zN33sX1KK1JeKs87F5FxRoURqIJ2T5ShyZwV3g4qBgEZ+KqP8nTsFZf
-	nLT7rWhlvWkQDn7dQmdhdw/fdrlD1qNCwuZ8v/WulaOXUTCyiF16OT4nbbkwL8PZYvrsh9
-	hROe7QacKTe/RBk0/FyjaSo8QRb/I00=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1755764547;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=eU7TYaqJ6duBML6uqVqJigVOdQm0L8koItjVVhsfmDY=;
-	b=+9vMn/zlV0/9G7plhgdmRfTkp3ACIUUvEf9Man6jSLLAQMGCg7LRLEpn6WXefo+gK4n8fz
-	c7w74sX7QUxboSCw==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 90CBC139A8;
-	Thu, 21 Aug 2025 08:22:26 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
-	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id AO8bIkLXpmhzEwAAD6G6ig
-	(envelope-from <tzimmermann@suse.de>); Thu, 21 Aug 2025 08:22:26 +0000
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: simona@ffwll.ch,
-	airlied@gmail.com,
-	mripard@kernel.org,
-	maarten.lankhorst@linux.intel.com,
-	geert@linux-m68k.org,
-	tomi.valkeinen@ideasonboard.com
-Cc: dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	freedreno@lists.freedesktop.org,
-	linux-arm-msm@vger.kernel.org,
-	imx@lists.linux.dev,
-	linux-samsung-soc@vger.kernel.org,
-	nouveau@lists.freedesktop.org,
-	virtualization@lists.linux.dev,
-	spice-devel@lists.freedesktop.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-tegra@vger.kernel.org,
-	intel-xe@lists.freedesktop.org,
-	xen-devel@lists.xenproject.org,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: [PATCH v6 25/25] drm/xlnx: Compute dumb-buffer sizes with drm_mode_size_dumb()
-Date: Thu, 21 Aug 2025 10:17:32 +0200
-Message-ID: <20250821081918.79786-26-tzimmermann@suse.de>
-X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20250821081918.79786-1-tzimmermann@suse.de>
-References: <20250821081918.79786-1-tzimmermann@suse.de>
+	(Authenticated sender: jmassot)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0B55E17E0C8C;
+	Thu, 21 Aug 2025 10:38:46 +0200 (CEST)
+Message-ID: <6491baf3e08454f2ea042934f9f781cf21cbf4d7.camel@collabora.com>
+Subject: Re: [PATCH v2 1/6] dt-bindings: clock: mediatek: Add power-domains
+ property
+From: Julien Massot <julien.massot@collabora.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: kernel@collabora.com, Michael Turquette <mturquette@baylibre.com>, 
+ Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski <krzk+dt@kernel.org>,  Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
+ <angelogioacchino.delregno@collabora.com>, Ikjoon Jang <ikjn@chromium.org>,
+  Enric Balletbo i Serra	 <eballetbo@kernel.org>, Chen-Yu Tsai
+ <wenst@chromium.org>, Weiyi Lu	 <weiyi.lu@mediatek.com>, Eugen Hristev
+ <eugen.hristev@linaro.org>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown
+ <broonie@kernel.org>, Julien Massot <jmassot@collabora.com>,  Sean Wang
+ <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
+ linux-clk@vger.kernel.org, 	devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, 	linux-sound@vger.kernel.org,
+ linux-gpio@vger.kernel.org
+Date: Thu, 21 Aug 2025 10:38:46 +0200
+In-Reply-To: <376a8f00-e803-4ab1-a54e-6535e41ebaee@kernel.org>
+References: <20250820-mtk-dtb-warnings-v2-0-cf4721e58f4e@collabora.com>
+	 <20250820-mtk-dtb-warnings-v2-1-cf4721e58f4e@collabora.com>
+	 <20250821-whimsical-mustang-of-champagne-ca7a7d@kuoka>
+	 <376a8f00-e803-4ab1-a54e-6535e41ebaee@kernel.org>
+Organization: Collabora Ltd.
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Spamd-Result: default: False [-1.30 / 50.00];
-	BAYES_HAM(-3.00)[100.00%];
-	SUSPICIOUS_RECIPS(1.50)[];
-	NEURAL_HAM_LONG(-1.00)[-1.000];
-	MID_CONTAINS_FROM(1.00)[];
-	R_MISSING_CHARSET(0.50)[];
-	NEURAL_HAM_SHORT(-0.20)[-1.000];
-	MIME_GOOD(-0.10)[text/plain];
-	ARC_NA(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:email,suse.de:mid];
-	RCPT_COUNT_TWELVE(0.00)[22];
-	MIME_TRACE(0.00)[0:+];
-	TO_DN_SOME(0.00)[];
-	FUZZY_RATELIMITED(0.00)[rspamd.com];
-	FROM_HAS_DN(0.00)[];
-	FREEMAIL_TO(0.00)[ffwll.ch,gmail.com,kernel.org,linux.intel.com,linux-m68k.org,ideasonboard.com];
-	RCVD_COUNT_TWO(0.00)[2];
-	TO_MATCH_ENVRCPT_ALL(0.00)[];
-	RCVD_TLS_ALL(0.00)[];
-	FROM_EQ_ENVFROM(0.00)[];
-	R_RATELIMIT(0.00)[to_ip_from(RLqirfcw6gnbcr9a9yhi49fhi6),to(RLbwen1niosrcqbxsafh1)];
-	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	FREEMAIL_ENVRCPT(0.00)[gmail.com]
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250821_012325_789029_B92D7CE6 
-X-CRM114-Status: GOOD (  11.00  )
+X-CRM114-CacheID: sfid-20250821_013850_552834_68D0D233 
+X-CRM114-Status: GOOD (  16.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -153,46 +90,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
-buffer size. Align the pitch according to hardware requirements.
+Hi Krzysztof,=20
 
-Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Reviewed-by: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
----
- drivers/gpu/drm/xlnx/zynqmp_kms.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+Thanks for the review
+On Thu, 2025-08-21 at 09:30 +0200, Krzysztof Kozlowski wrote:
+> On 21/08/2025 09:16, Krzysztof Kozlowski wrote:
+> > On Wed, Aug 20, 2025 at 03:44:52PM +0200, Julien Massot wrote:
+> > > The mt8183-mfgcfg node uses a power domain in its device tree node.
+> > > To prevent schema validation warnings, add the optional `power-domain=
+s`
+> > > property to the binding schema for mediatek syscon clocks.
+> > >=20
+> > > Fixes: 1781f2c46180 ("arm64: dts: mediatek: mt8183: Add power-domains=
+ property to mfgcfg")
+> >=20
+> > Checkpatch complains here, but more important - where is explanation of
+> > dropped tag?
 
-diff --git a/drivers/gpu/drm/xlnx/zynqmp_kms.c b/drivers/gpu/drm/xlnx/zynqmp_kms.c
-index 2bee0a2275ed..02f3a7d78cf8 100644
---- a/drivers/gpu/drm/xlnx/zynqmp_kms.c
-+++ b/drivers/gpu/drm/xlnx/zynqmp_kms.c
-@@ -19,6 +19,7 @@
- #include <drm/drm_crtc.h>
- #include <drm/drm_device.h>
- #include <drm/drm_drv.h>
-+#include <drm/drm_dumb_buffers.h>
- #include <drm/drm_encoder.h>
- #include <drm/drm_fbdev_dma.h>
- #include <drm/drm_fourcc.h>
-@@ -363,10 +364,12 @@ static int zynqmp_dpsub_dumb_create(struct drm_file *file_priv,
- 				    struct drm_mode_create_dumb *args)
- {
- 	struct zynqmp_dpsub *dpsub = to_zynqmp_dpsub(drm);
--	unsigned int pitch = DIV_ROUND_UP(args->width * args->bpp, 8);
-+	int ret;
- 
- 	/* Enforce the alignment constraints of the DMA engine. */
--	args->pitch = ALIGN(pitch, dpsub->dma_align);
-+	ret = drm_mode_size_dumb(drm, args, dpsub->dma_align, 0);
-+	if (ret)
-+		return ret;
- 
- 	return drm_gem_dma_dumb_create_internal(file_priv, drm, args);
- }
--- 
-2.50.1
+Right the proper tag is=20
+Fixes: 1781f2c46180 ("arm64: dts: mediatek: mt8183: Add power-domains prope=
+rity to mfgcfg")
 
+> >=20
+> > > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@co=
+llabora.com>
+> >=20
+> > But this tag appeared? It wasn't even given!
+> >=20
+> > You remove public tags and add tags never given on the lists.
+>=20
+> I found Angelo's tag, but still dropping other acks is not explained.
+>=20
+Regarding the tags: in v2 the patch changed quite a lot after I applied
+Angelo's suggestion, so I decided to drop Rob=E2=80=99s Acked-by as it no l=
+onger
+applies to the new version. I should have explained this in the changelog.
+
+Regards,
+Julien
 
