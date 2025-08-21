@@ -4,176 +4,158 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA3A2CA0EEB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Aug 2025 16:34:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1D9CCA0EEB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Aug 2025 16:58:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sfJDevyhbJHQ4pRUZzGgDUzFw8/hjC9NL73k+UbtfNI=; b=XdwhnJV1piBQ5JFNcLv/qB3HfV
-	cblJ9Us+6X3OpgWdkZOHUG6GxT9UZHwfJAOvWo5vtbgSk7wrAJ1MrDcpltk+OyfumRCYkP3rzubox
-	QgRYv0Qps3AjFqTGprKbRN6/aXVOnjQMO6+P2FrYv9gX1ZBQuNbrD86FAVsKchM01X5FMk2PdZ7XS
-	z45uVDmG1ZdG2UiJ5HbwQSpoOO7apxIy4hNkqgitkDgrEFu/3KiP4oFTRR7mfMchTg6im4gxYEKMo
-	AfRNX98qOs+zC2U7RkxCtlSD0BBpHDSvMThvXSQCN0DJwhwZK1es9e/PUKlx+axtVn2EJ3ZhRSnMw
-	W48OtbJA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qWMYkjtDw3K8m2LYn07A7Ejsx/lWKVU0omqfaCp9OEQ=; b=rBa5goP3OYPcNY9r1lFKveHjbU
+	DlbBT1GId6VAYSSBsepwYhUH+zy6B632F7M3nlDzTYe8zzQLPbKqogKsKhiZymtm41pHIKnx21PUV
+	vmT0F1b7ALIVh8Z/6c0wc2BxiP6N8mIwkAZa15cBLHu4PnQUUl7eSVamfofxGkMK1WZ6DII+2J0nm
+	S+2mgpJWGLIYs/C6sFgbBJL883u8zkaFfH79bXJYOZLt24vDGIOJm1f5L9y10OgK2BK5crgabCa7U
+	264WKKHuqET88kUtXjICw/tpA6oNGdeCPYeGTcqZT48M9B0qQQnp8YPkgzehAZe+Y+cCIbKqk2f7e
+	Xh/O1Hmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1up8Ej-0000000HYMn-2Nu0;
-	Thu, 21 Aug 2025 16:34:01 +0000
-Received: from smtp-out1.suse.de ([195.135.223.130])
+	id 1up8cf-000000000dq-1rex;
+	Thu, 21 Aug 2025 16:58:45 +0000
+Received: from mail-bn1nam02on20618.outbound.protection.outlook.com ([2a01:111:f403:2407::618] helo=NAM02-BN1-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1up3tj-0000000Gp7G-1ILo
-	for linux-mediatek@lists.infradead.org;
-	Thu, 21 Aug 2025 11:56:04 +0000
-Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id E8C1D223BF;
-	Thu, 21 Aug 2025 11:56:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1755777361; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=sfJDevyhbJHQ4pRUZzGgDUzFw8/hjC9NL73k+UbtfNI=;
-	b=NJDFrpGJO5iUNdKMkobo3gxiDs3KVSoOo+c0Kx7YFvkYIlgx7bnpDXIsS/c0P0cQgrh+OM
-	dExS90hja4MkiIhNcN5ACrES3HoMUaxtBTvpFmwjVxAsz+p2OyiAVBW8rAxUPAhgsnlwwj
-	CZwQn8osw/hfaBvpa9NaTEKf6lTT/M4=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1755777361;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=sfJDevyhbJHQ4pRUZzGgDUzFw8/hjC9NL73k+UbtfNI=;
-	b=Gj5tANSUdM5J9dvfsooU4xEjtijJBFnr7I7ne0BmLL2IbI4EPgjzdAm3py48jgBwCGMxQT
-	boIwMwnxQsGrzgBw==
-Authentication-Results: smtp-out1.suse.de;
-	dkim=pass header.d=suse.de header.s=susede2_rsa header.b=Tnc6NDIT;
-	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=uTGuQaRo
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1755777360; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=sfJDevyhbJHQ4pRUZzGgDUzFw8/hjC9NL73k+UbtfNI=;
-	b=Tnc6NDIT4e91MUk3u/uv4DBnosFc2L+6LZYV25zaGB1PKdcEVuIh/llq9RiUXqkK4mkPMk
-	PfJV61ySMLhVweEIcriS3pU6Ueb/KxgiopzgPBhPws1+a3mjWGyK16+rO3Zyq+/M8wuFE7
-	qfdE97vz5rt+BUFGKinpdAml62Ot91s=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1755777360;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=sfJDevyhbJHQ4pRUZzGgDUzFw8/hjC9NL73k+UbtfNI=;
-	b=uTGuQaRowDi9JsJ2CDS0TXWPegM6sn88iHyhpAFbnDit/r3KkSK5wNpUCdTeRnRo1G9Xoi
-	pAPRiwf+LpsK+VAA==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 30D9513867;
-	Thu, 21 Aug 2025 11:56:00 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
-	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id Ozw5ClAJp2j0UAAAD6G6ig
-	(envelope-from <tzimmermann@suse.de>); Thu, 21 Aug 2025 11:56:00 +0000
-Message-ID: <7918ea7e-8914-4c0f-97be-d660043a4aab@suse.de>
-Date: Thu, 21 Aug 2025 13:55:59 +0200
+	id 1up51D-0000000GzlK-2wYj;
+	Thu, 21 Aug 2025 13:07:52 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=fi9D/Y2usxGoOLX4WK3MlN7/gaC4s11mXsKZ7j4ftsi18uu4C9X+WJNTfgXtiON1GLHlMCYoQ/O2v+BlAAeB0W+DNRfaAr7TG1CE77+3HBVZJE4VLCHPSB+KlcjyhYFfGpG3LoYiAyIy4GlzaBP5g5H1728T2rDIZcRMF3ubxfY7JT/OMjQNyoNKrAb5LlWe/hmnHG7bqse1YwsJh83vsRpuHrEUpitJAvP8eV+OUaGR60U+Sy9ZI+7y5xC7VMQhZxxCuDav5jc7L5/SC0N/U4k9whWYcWfFpArn0IDH6fJ6q4zCo9m+x9ElBIjz0grrSJpw+2xMlnnME3GPk+oOUA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=qWMYkjtDw3K8m2LYn07A7Ejsx/lWKVU0omqfaCp9OEQ=;
+ b=N18Aypof0DNToq1zrlXXPjgpybAX7TBQHXUBjO5oiQzvWWTAMtFKgWM9fbayv/Ysc/niwmE96C3NYirZtguNO+o6N/gy8WcNhFaFRbzwaJtxGEAttbfiTGbUAF59ADhOMlotmQkxdrCNiP8f3/G0C9AzeyFucm9170uS6kBRK7T7T9/Ev38KumYLYCHVB2RIacEQOpgORaPUIcTBtFGxkGseooD1c7JdWzxlikGNyNgp6BcEXMusL79nA9QKJrvXm3coko/88Bfc4H+JmFbBDUkuuhn6mvaF87ttF+BfjrtSacceF4PEWEfY4gqnZzLw+qc8GepueCtxeN6iS2hnNw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=qWMYkjtDw3K8m2LYn07A7Ejsx/lWKVU0omqfaCp9OEQ=;
+ b=Pxw4xOvLy5bg3GDrjgS9lEkuiI36lF0RS4eAvwaL2cH/R7UgqZEUdgHlhLr1HZcIGuv9JEJ0EhwKQVQ6+9p4ICTTCCi0J3qznTllPmfQS6fImKlP9fKCwVTjkLkmvVHUdXNGawoI/95uSvQFckCAKMw15xJUNUvgA9rBXygmaHQdtR8njyu9+J4TR2XKfjA1raNS3vVyTCAvz10IfwsYcL7h0ioFYwMaTeicOMAcC2tIGs7CG6pUTW8r0Q5RxdvJqzwRURzvFgmyWZuJHRtK+QjmQ6a532KH3vi+t5uzQQFdt0CIhj5hQ+eBWIr8n4oozH/EKujzIwd11HuaFQbTHg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from CH3PR12MB8659.namprd12.prod.outlook.com (2603:10b6:610:17c::13)
+ by IA1PR12MB8191.namprd12.prod.outlook.com (2603:10b6:208:3f3::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9052.15; Thu, 21 Aug
+ 2025 13:07:45 +0000
+Received: from CH3PR12MB8659.namprd12.prod.outlook.com
+ ([fe80::6eb6:7d37:7b4b:1732]) by CH3PR12MB8659.namprd12.prod.outlook.com
+ ([fe80::6eb6:7d37:7b4b:1732%4]) with mapi id 15.20.9031.024; Thu, 21 Aug 2025
+ 13:07:43 +0000
+Date: Thu, 21 Aug 2025 10:07:41 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Nicolin Chen <nicolinc@nvidia.com>
+Cc: Ethan Zhao <etzhao1900@gmail.com>, robin.murphy@arm.com,
+	joro@8bytes.org, bhelgaas@google.com, will@kernel.org,
+	robin.clark@oss.qualcomm.com, yong.wu@mediatek.com,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	thierry.reding@gmail.com, vdumpa@nvidia.com, jonathanh@nvidia.com,
+	rafael@kernel.org, lenb@kernel.org, kevin.tian@intel.com,
+	yi.l.liu@intel.com, baolu.lu@linux.intel.com,
+	linux-arm-kernel@lists.infradead.org, iommu@lists.linux.dev,
+	linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org,
+	linux-acpi@vger.kernel.org, linux-pci@vger.kernel.org,
+	patches@lists.linux.dev, pjaroszynski@nvidia.com, vsethi@nvidia.com,
+	helgaas@kernel.org
+Subject: Re: [PATCH v3 5/5] pci: Suspend iommu function prior to resetting a
+ device
+Message-ID: <20250821130741.GL802098@nvidia.com>
+References: <cover.1754952762.git.nicolinc@nvidia.com>
+ <3749cd6a1430ac36d1af1fadaa4d90ceffef9c62.1754952762.git.nicolinc@nvidia.com>
+ <550635db-00ce-410e-add0-77c1a75adb11@gmail.com>
+ <aKTzq6SLGB22Xq5b@Asurada-Nvidia>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <aKTzq6SLGB22Xq5b@Asurada-Nvidia>
+X-ClientProxiedBy: SJ0PR05CA0178.namprd05.prod.outlook.com
+ (2603:10b6:a03:339::33) To CH3PR12MB8659.namprd12.prod.outlook.com
+ (2603:10b6:610:17c::13)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 18/25] drm/renesas/rz-du: Compute dumb-buffer sizes
- with drm_mode_size_dumb()
-To: Biju Das <biju.das.jz@bp.renesas.com>, "simona@ffwll.ch"
- <simona@ffwll.ch>, "airlied@gmail.com" <airlied@gmail.com>,
- "mripard@kernel.org" <mripard@kernel.org>,
- "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
- geert <geert@linux-m68k.org>,
- "tomi.valkeinen" <tomi.valkeinen@ideasonboard.com>
-Cc: "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "freedreno@lists.freedesktop.org" <freedreno@lists.freedesktop.org>,
- "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
- "imx@lists.linux.dev" <imx@lists.linux.dev>,
- "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
- "nouveau@lists.freedesktop.org" <nouveau@lists.freedesktop.org>,
- "virtualization@lists.linux.dev" <virtualization@lists.linux.dev>,
- "spice-devel@lists.freedesktop.org" <spice-devel@lists.freedesktop.org>,
- "linux-renesas-soc@vger.kernel.org" <linux-renesas-soc@vger.kernel.org>,
- "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
- "linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
- "intel-xe@lists.freedesktop.org" <intel-xe@lists.freedesktop.org>,
- "xen-devel@lists.xenproject.org" <xen-devel@lists.xenproject.org>
-References: <20250821081918.79786-1-tzimmermann@suse.de>
- <20250821081918.79786-19-tzimmermann@suse.de>
- <TY3PR01MB11346A4F40CE555D24C093F278632A@TY3PR01MB11346.jpnprd01.prod.outlook.com>
-Content-Language: en-US
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Autocrypt: addr=tzimmermann@suse.de; keydata=
- xsBNBFs50uABCADEHPidWt974CaxBVbrIBwqcq/WURinJ3+2WlIrKWspiP83vfZKaXhFYsdg
- XH47fDVbPPj+d6tQrw5lPQCyqjwrCPYnq3WlIBnGPJ4/jreTL6V+qfKRDlGLWFjZcsrPJGE0
- BeB5BbqP5erN1qylK9i3gPoQjXGhpBpQYwRrEyQyjuvk+Ev0K1Jc5tVDeJAuau3TGNgah4Yc
- hdHm3bkPjz9EErV85RwvImQ1dptvx6s7xzwXTgGAsaYZsL8WCwDaTuqFa1d1jjlaxg6+tZsB
- 9GluwvIhSezPgnEmimZDkGnZRRSFiGP8yjqTjjWuf0bSj5rUnTGiyLyRZRNGcXmu6hjlABEB
- AAHNJ1Rob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPsLAjgQTAQgAOAIb
- AwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftODH
- AAoJEGgNwR1TC3ojx1wH/0hKGWugiqDgLNXLRD/4TfHBEKmxIrmfu9Z5t7vwUKfwhFL6hqvo
- lXPJJKQpQ2z8+X2vZm/slsLn7J1yjrOsoJhKABDi+3QWWSGkaGwRJAdPVVyJMfJRNNNIKwVb
- U6B1BkX2XDKDGffF4TxlOpSQzdtNI/9gleOoUA8+jy8knnDYzjBNOZqLG2FuTdicBXblz0Mf
- vg41gd9kCwYXDnD91rJU8tzylXv03E75NCaTxTM+FBXPmsAVYQ4GYhhgFt8S2UWMoaaABLDe
- 7l5FdnLdDEcbmd8uLU2CaG4W2cLrUaI4jz2XbkcPQkqTQ3EB67hYkjiEE6Zy3ggOitiQGcqp
- j//OwE0EWznS4AEIAMYmP4M/V+T5RY5at/g7rUdNsLhWv1APYrh9RQefODYHrNRHUE9eosYb
- T6XMryR9hT8XlGOYRwKWwiQBoWSDiTMo/Xi29jUnn4BXfI2px2DTXwc22LKtLAgTRjP+qbU6
- 3Y0xnQN29UGDbYgyyK51DW3H0If2a3JNsheAAK+Xc9baj0LGIc8T9uiEWHBnCH+RdhgATnWW
- GKdDegUR5BkDfDg5O/FISymJBHx2Dyoklv5g4BzkgqTqwmaYzsl8UxZKvbaxq0zbehDda8lv
- hFXodNFMAgTLJlLuDYOGLK2AwbrS3Sp0AEbkpdJBb44qVlGm5bApZouHeJ/+n+7r12+lqdsA
- EQEAAcLAdgQYAQgAIAIbDBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftOH6AAoJEGgNwR1T
- C3ojVSkIALpAPkIJPQoURPb1VWjh34l0HlglmYHvZszJWTXYwavHR8+k6Baa6H7ufXNQtThR
- yIxJrQLW6rV5lm7TjhffEhxVCn37+cg0zZ3j7zIsSS0rx/aMwi6VhFJA5hfn3T0TtrijKP4A
- SAQO9xD1Zk9/61JWk8OysuIh7MXkl0fxbRKWE93XeQBhIJHQfnc+YBLprdnxR446Sh8Wn/2D
- Ya8cavuWf2zrB6cZurs048xe0UbSW5AOSo4V9M0jzYI4nZqTmPxYyXbm30Kvmz0rYVRaitYJ
- 4kyYYMhuULvrJDMjZRvaNe52tkKAvMevcGdt38H4KSVXAylqyQOW5zvPc4/sq9c=
-In-Reply-To: <TY3PR01MB11346A4F40CE555D24C093F278632A@TY3PR01MB11346.jpnprd01.prod.outlook.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Rspamd-Queue-Id: E8C1D223BF
-X-Rspamd-Action: no action
-X-Rspamd-Server: rspamd1.dmz-prg2.suse.org
-X-Spamd-Result: default: False [-3.01 / 50.00];
-	BAYES_HAM(-3.00)[100.00%];
-	SUSPICIOUS_RECIPS(1.50)[];
-	NEURAL_HAM_LONG(-1.00)[-1.000];
-	R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	NEURAL_HAM_SHORT(-0.20)[-1.000];
-	MIME_GOOD(-0.10)[text/plain];
-	MX_GOOD(-0.01)[];
-	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	FREEMAIL_TO(0.00)[bp.renesas.com,ffwll.ch,gmail.com,kernel.org,linux.intel.com,linux-m68k.org,ideasonboard.com];
-	FUZZY_RATELIMITED(0.00)[rspamd.com];
-	TO_DN_EQ_ADDR_SOME(0.00)[];
-	ARC_NA(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[21];
-	MIME_TRACE(0.00)[0:+];
-	TO_MATCH_ENVRCPT_ALL(0.00)[];
-	FREEMAIL_ENVRCPT(0.00)[gmail.com];
-	RCVD_TLS_ALL(0.00)[];
-	RCVD_COUNT_TWO(0.00)[2];
-	FROM_EQ_ENVFROM(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	TO_DN_SOME(0.00)[];
-	MID_RHS_MATCH_FROM(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	RECEIVED_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:106:10:150:64:167:received];
-	DKIM_TRACE(0.00)[suse.de:+];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:dkim,suse.de:mid,suse.de:email]
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CH3PR12MB8659:EE_|IA1PR12MB8191:EE_
+X-MS-Office365-Filtering-Correlation-Id: 6840f9d1-da1c-43f7-5ac1-08dde0b3b761
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|7416014|376014|1800799024;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?vROU9jV2HL5poXDV0cH7YNHOAwxF9UjqSLkAN/zUVIya+FpfhP1dlvP9dFsa?=
+ =?us-ascii?Q?07WNEaICAbuvTXrATtYH7XWhgxm4k7uDHmWmN6IG37I1Q05N3nwxs550s52j?=
+ =?us-ascii?Q?SDOB+Z5wGxVHdbo/4+CdmR1nsgaRlqpN6tuAMIJeuCoPQg3FmXrjfO9LlO/6?=
+ =?us-ascii?Q?b5MhKfS3jxLB0VwuqyWfWJGfVjsMj4GCL9aUp+8Gv44awg1j7lqIR/tsF+F8?=
+ =?us-ascii?Q?lGJSDVT/R4N09ut57Ne/EI9KSwsq1vliJntILQCSSHOOtZLSQwIGm/O/xIqS?=
+ =?us-ascii?Q?/dPTdPIhzTO2oEXH2HP/GzrEWjf1oiSgrGLuY55SMEmMD3EpKW1sjgJoACui?=
+ =?us-ascii?Q?nrVKm7MeSO3vXuhF0ro/Y43HVT6widPDcYG27pIG3kVUjJJbbJpmcolOIVYJ?=
+ =?us-ascii?Q?fpyK5yZeHGfPI/ZdU/Nt67Ci8Jky94Oz2h6afjDDFVBJWO80bAKMbzVQ9UZK?=
+ =?us-ascii?Q?maSpukFU2UZEdp8MZzOtL1WVDfeeTWSfPjGroLxK4F2qtxlewVSoBZlBXm6p?=
+ =?us-ascii?Q?PPsnN8yaX8bkcB1n/EcFzRuT6lN6r+rOwfwVV07AEA3mKXIkJrrvpXPtsgb1?=
+ =?us-ascii?Q?Zln4Tw7VoU8klJP1Wk4DZUd7XifFVBvOItfD2qBERm9grUshIH7Mx1gmyNkV?=
+ =?us-ascii?Q?aboM/B26AEWZB1Zp47WGP4bMwBZ3QpVPlcly0XBaFnS/jlujKn5n3YNJkESO?=
+ =?us-ascii?Q?RQwh5CLh2RbWQV4cgkwL2TS9VMo2UU6tREht5MMKjA5pzOsC1eYpjtOsPRaV?=
+ =?us-ascii?Q?8rgDInogw8AjVGvuo6Ayz8ldmaZODO7ylMMtiEi6vXAR8rC6Vl0lSNVORzrn?=
+ =?us-ascii?Q?5hX0+f564ak77F8UoqY7f/HKWqw1qeBKNzyBnKIkEDPFmefQZyQWyp643eHp?=
+ =?us-ascii?Q?FAxeznlTKH8UAdPd1VB/KfMWRtvRmn++EiHzHHIwf2OCM6s7276e0S5xqEi2?=
+ =?us-ascii?Q?c+i9v0R7zn/MMe4Fbnn2opcHHputkikOK5Khv20Uthwg0anDUfERNIg4ZQsH?=
+ =?us-ascii?Q?ShFJtLiQZbJG+SnmQO2PPOdBC4fvfUVLIG1EhysJKkwpORgL+hVG2Sugfzrr?=
+ =?us-ascii?Q?leoJPZMtvum6pgf3UakNKDr1WnJazoZI2ZadbQCPnWy3Lw6sDs2OD3VI+8vy?=
+ =?us-ascii?Q?nJDhGaPQUnMs2FLBV0QUWdWoxf1E4gkcytROIxwy2UPRnmqAD+meVMTYbnCY?=
+ =?us-ascii?Q?rirDz01v3HMRAuN2WHJJNWZTxwFJEwfgs/QqcESS/mIvqjMEJCxMX9imzHb+?=
+ =?us-ascii?Q?GN4CYiuZ5WTfA2476HzXnMalv5yCVfa6IjWIQ9JxcfSGyaH64eVLW9OmwdGR?=
+ =?us-ascii?Q?EL1hLvJNVuJ46x0gxPdr8PWq8wUYU1lOM5wHUF6/U0d5e2WTHh/fvial9jFO?=
+ =?us-ascii?Q?tthr+R0mJDOhbE76+woUkOmMsXht2E0vmd9l3cHEcifN8TsNfKS7qpQaZ0bj?=
+ =?us-ascii?Q?gR0HkcvIjwY=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH3PR12MB8659.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(7416014)(376014)(1800799024);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?eqeD9lxcWqHis5hh+Y1/SFiVT8CbkVDVyV9IMZuvE5aenm6w4f+ecVh8Woaj?=
+ =?us-ascii?Q?JpJN91FImSEhXcSWRGQX1s//288clAZ+6nka9Vf46IavDWuuGVDRnzP70uOa?=
+ =?us-ascii?Q?pIXacJnyln0H6/oFJSxSH0kojfSTLiFST7zghd3huH4jhf+iDZXvksFdLg2w?=
+ =?us-ascii?Q?HUHL6NXMxdnntud5T6Ge+d7FyC8oOWnnOyIXVNrqYq4fPt1vlbXxugi7zAuc?=
+ =?us-ascii?Q?OPxBv3HsEy6OH1eOjCuHNQj6NDxCvAnvB39EbNIfLYIa0P8KAlhytpc4p9TS?=
+ =?us-ascii?Q?oiN4pJBP18V5WgZ9N1vy69ts/3KBy/JRgCCd9V+KZG0Kk1A9O2bHjqyJsGTs?=
+ =?us-ascii?Q?d4iphXFoBH6yrqfYg6ziecvCG19ErecH1aABcCPS4ZC4VY+r9N8zeXi1Upge?=
+ =?us-ascii?Q?aA7OpEhkGrzUDv46U5WrG50BpFeajBIFMZPC1AA9GAsGyiXj5Rt7V5zqY5uS?=
+ =?us-ascii?Q?dDxDvIsBG+zVkXQJPhiDJk4iAw3uhnal86+28s7U8DHFSPeUVzsKQqBtm5xW?=
+ =?us-ascii?Q?/geNqMLBOPItEUPsisVzWOHBX2qQyaQ7ofGHS9jwlOqWb9NwsFYfi21SvSby?=
+ =?us-ascii?Q?I/ndnuNwvMYjD9npHS1PmcWcKgcupRs02VTpjYSTr+vXFny7aH1nKXTJQpvJ?=
+ =?us-ascii?Q?DGz753wGpvRCJO8w5V0qEHT4rtjZre4MogcS4cdjGotmQT2hSo+1Sqp+PqDT?=
+ =?us-ascii?Q?fc/SoZ8cb7YSiuieRF7KJlnVhNzA6tKIteQ4XFJnImkVuMKa17sB+MC41NRa?=
+ =?us-ascii?Q?84HvMs8xDY0OKZETfgZb7yIHfwPJ8jUuIGmfk4F6SRaDMA2yqPb5tgdHH7y2?=
+ =?us-ascii?Q?uHtlAz+n5dL7Py3ngNBwV75E5F2zcQGEeu0YKD587yj8tP8/Sj7EBWNjAT/q?=
+ =?us-ascii?Q?7zqbGJgS7NB/wgz0Q7MS/9WLol7KxThqeftdz9xQPgiEIvQYMv7JnRg2YOKK?=
+ =?us-ascii?Q?Qw9DEvhnH8Wp8yTkDKROKkHQmhlShs19TbHqiqPPkVb5MpqeEE8G92WULuZM?=
+ =?us-ascii?Q?zbVsOC7nk2oCyFMM0J54pVH6oO56jPt6RRup+Mt6wpt44luwAJQhpIvt2h3p?=
+ =?us-ascii?Q?uL4k/7QvX9QYYZE4n9DQcsR2m2APu1IpvSgiIxjrZ2srZgRYLt7Tz2TLe7cW?=
+ =?us-ascii?Q?+uNy5GGDEirIBMT81zZy/P0NDiHIcnkiLZ0I5S8aO1dJs+xAFbNgR4kafImU?=
+ =?us-ascii?Q?yNUs2YXBTOuIZKU0SjSikVG+qVfe9m75YLEkHy7M3pzCcV9AUA4xODx9sHa8?=
+ =?us-ascii?Q?ewyPDUqQatfj+CBZvl+Vmf7X9mNUU05MKL4FHEetPHh5Qjk9DwwtS8efU/lT?=
+ =?us-ascii?Q?bL66IiEgdsBf6kj4l3/ZThE+Pqp0W+83b3y9CrdCDNnIHV92j3XN9YYH+6IN?=
+ =?us-ascii?Q?LGKro6G+RhSoOF8DZvynUWS5lfE2uAT6Pil1yIkm28/asrpktCy4Jhzn7wAQ?=
+ =?us-ascii?Q?eCO6V4zJ2rYfQkYPf1+d76JYoTYjszxcj6UqwLP+sjQzXS0/911o2QJP3tuU?=
+ =?us-ascii?Q?beqgI9VZ+rSnqH03VUmbXLo/IbGbB5fpw6Jh8/8Ii8K1GiRc8hlh4ZlXYffL?=
+ =?us-ascii?Q?HDF7OUqKBOHrlzzh2+U8RMQ75UWel8o3LEBF27Ii?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6840f9d1-da1c-43f7-5ac1-08dde0b3b761
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB8659.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Aug 2025 13:07:43.8992
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: AouWxZnohcmS2zD6Pv4f2xJEgrSueEdvNbhuckvZfxtNx0/WNUkaJ5GYdKt/4gT2
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB8191
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250821_045603_655072_3D8E3D9D 
-X-CRM114-Status: UNSURE (   8.81  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250821_060751_742043_B34C10D8 
+X-CRM114-Status: GOOD (  10.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -188,45 +170,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
+On Tue, Aug 19, 2025 at 02:59:07PM -0700, Nicolin Chen wrote:
+>  c) multiple pci_devs with their own RIDs
+> 
+>     In this case, either FLR or IOMMU only resets the PF. That
+>     being said, VFs might be affected since PF is resetting?
+>     If there is an issue, I don't see it coming from the IOMMU-
+>     level reset..
 
-Am 21.08.25 um 13:28 schrieb Biju Das:
-> Hi Thomas Zimmermann,
->
-> Thanks for the patch.
->
->> -----Original Message-----
->> From: Thomas Zimmermann <tzimmermann@suse.de>
->> Sent: 21 August 2025 09:17
->> Subject: [PATCH v6 18/25] drm/renesas/rz-du: Compute dumb-buffer sizes with drm_mode_size_dumb()
->>
->> Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and buffer size. Align the pitch
->> according to hardware requirements.
->>
->> v5:
->> - include dumb-buffers header for drm_mode_size_dumb() (kernel test robot)
->>
->> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
->> Cc: Biju Das <biju.das.jz@bp.renesas.com>
-> Tested-by: Biju Das <biju.das.jz@bp.renesas.com>
+It would still allow the ATS issue from the VF side. The VF could be
+pushing an invalidation during the PF reset that will get clobbered.
 
-Thanks for testing. Could you also review the patch, please?
+I haven't fully checked but I think Linux doesn't really (easially?)
+allow resetting a PF while a VF is present...
 
-Best regards
-Thomas
+Arguably if the PF is reset the VFs should have their translations
+blocked too.
 
->
-> Cheers,
-> Biju
-
--- 
---
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Frankenstrasse 146, 90461 Nuernberg, Germany
-GF: Ivo Totev, Andrew Myers, Andrew McDonald, Boudien Moerman
-HRB 36809 (AG Nuernberg)
-
-
+Jason
 
