@@ -4,71 +4,161 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BD4FCA0EEB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Aug 2025 19:13:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D097CA0EEB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Aug 2025 19:13:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=y6X4AGpWLKNADRRQKUdpfbMSeoRMobXM+6PeVQBuBwY=; b=vX4rAGR45h+a5caSBNpuRbgWVf
-	Pf64iKpWvxwhcGVTh6mI95t9IfCMJX67XACv2vJe+l9iR8aFgCyhOKcX21sudTmP3b4ipFtLM2fsJ
-	FUbMqeYyadR2rqY72uNjA/H7+XnNW93z/JngITEMyYXnmRL1uwIxyVzIDCXNaqg7TOwlzx7SxDfro
-	/ETidRgwb/9xmE8TbTulUhmxdtBYQ8kpy+cE776E6xyvthuUMD/lXKTWEIkEcr5zPNmvxg+R1Y5mB
-	Hf+iYqWc+lmdS0NEhJHExqYE0VYMmVUaNmfhPfz3Qw6z5QmD+q/a3xTG9RkJDXtaNS27EkfUhxCpN
-	T3fIgimA==;
+	bh=auVWryte4g8XND3xM/ONIltfPW2/39ShYHPEJL2knZM=; b=fRu/8v3QpTLaFu5hyjpHGouW6O
+	raW7MYOv5SPrR1LIXlvqbD9Eavd3WgTf7Q3YcrQQkY9oddK2wfUIT1cR4Iaw9GF6Sozi8SUuyriTG
+	Uclb2Gl5VqayhunX8N1bBW4hHDBe5JchzDwkOfv9pIeeBsz6jbyrJLGhu4q+HunU2xMACoXy743vN
+	Hu7cZlDLt6qlV+JeeN211xQp8dJchr4djNepbgMRGc+Gf7qDqbJvnfhelS058W6qSAtfWoWcjjp+Y
+	oweM7/nhdXYnofseGUD5NcXEVzXDNxbBoRlC+FrebAm+0NYLqt1KdbkSQ+Bq35A2rLcrDEPBBNkTu
+	Ug65Xjjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upAj2-00000000GBa-1Qkj;
-	Thu, 21 Aug 2025 19:13:28 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1upAjF-00000000GVu-1evc;
+	Thu, 21 Aug 2025 19:13:42 +0000
+Received: from mail-dm6nam11on20619.outbound.protection.outlook.com ([2a01:111:f403:2415::619] helo=NAM11-DM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1up688-0000000HC29-169n;
-	Thu, 21 Aug 2025 14:19:05 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1755785931; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=TITSWMGflXBYwia8q7EzZMAcvHC0xFg4RPhvCCkChyK8z483MvQFXjW8jyBvFLcqLqGJahkwtP8l0BFmv95BI1TLP0qwGPn140VQMk5oHLjvDvmLnAX1PlhzOUTlalUvvOfGYQI9Li4aWp+heiwh7dZ+1A4/v+va8TVh7jVCocM=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1755785931; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=y6X4AGpWLKNADRRQKUdpfbMSeoRMobXM+6PeVQBuBwY=; 
-	b=e8q5Yzeo9yZYOW7j30p3P5H6FOL5f5/btW3ynnplmvhUuloITkZgolesj5bVeOj/hz179YUGkqiga2wBLBZosB7x+WsgSfTSZidGFIgnW4P7MJYJUNeOldXlkDr4ytpa+Uv9iiMlxQUT1j1KH0d01P5xlpBreBPgDZp81ge31yA=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=louisalexis.eyraud@collabora.com;
-	dmarc=pass header.from=<louisalexis.eyraud@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1755785931;
-	s=zohomail; d=collabora.com; i=louisalexis.eyraud@collabora.com;
-	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=y6X4AGpWLKNADRRQKUdpfbMSeoRMobXM+6PeVQBuBwY=;
-	b=CoJke/TfpE6zb1cNaRhfljflsbXb3+tEfZIDvL3oFFFqlvdbkEG8e7KEcL/G4XQw
-	z0wiHdrkPlVMD9zLZFnTIHG92p9NkQDo/exmmvFCzNZidnkvhKZxKuos7xQ+5Ooc0/k
-	/lHOOmFRNDzrm4l506ijFmcjJgP0Vq4L6MPZZ9Ug=
-Received: by mx.zohomail.com with SMTPS id 175578592813233.35386089127883;
-	Thu, 21 Aug 2025 07:18:48 -0700 (PDT)
-Message-ID: <ac1347ee9dffc3d7a0bea1263ef56eb06f0c1a1d.camel@collabora.com>
-Subject: Re: [PATCH v3 1/4] arm64: dts: mediatek: mt8390-genio-700-evk: Add
- Grinn GenioSBC-700
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-To: Mateusz Koza <mateusz.koza@grinn-global.com>, 
-	angelogioacchino.delregno@collabora.com, robh@kernel.org
-Cc: krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
-	marcin.czarnecki@grinn-global.com, b.bilas@grinn-global.com, andrew@lunn.ch
-Date: Thu, 21 Aug 2025 16:18:43 +0200
-In-Reply-To: <20250820120905.993189-2-mateusz.koza@grinn-global.com>
-References: <20250820120905.993189-1-mateusz.koza@grinn-global.com>
-	 <20250820120905.993189-2-mateusz.koza@grinn-global.com>
-Organization: Collabora Ltd
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
+	id 1up6Uo-0000000HG9G-3QSH;
+	Thu, 21 Aug 2025 14:42:32 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=bbLoP72d5dVEbPJWC97t4vG2bWevjCf9Tqj/Of+rO+FLCNYoQvTdnUHciQWocmGo8cucdxgghuMzS+FlDHkkpasuwi26FZecfSNDaBDqLjGGWPUhlRLSv6XzW7MaMwq28mhEp0sJU+8JffuKdfeasllQlxaKuvF7A5o+TEiUyZvBDgirGeoZfSe50spKw6ZNfB0YyvkS4Gg2vslfY+4B9nz026H+Srw+6p0pSGfEXJPwwoSP+GQUTBVATL7ycEsN9wV4iusjBf2PyZJhDMRiNXDIF4d8u9NFmU7ODXbGuASM5+35cdJOZ1wjrS1U3DCYnn+vcWHtpNUJjwxJVNJLtg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=auVWryte4g8XND3xM/ONIltfPW2/39ShYHPEJL2knZM=;
+ b=NBuXHv1szg8wRJ0M++f2nx7uZwkVAU5GSWYsY8Xfhd/aHcHuCMrvhueCzndWtBAlpE+zMY+ugA9NxY+KzUwiQRIDRnrdPLcU37yUwA+hNsWQtYO1pU/afsIRhSauLAtSXnMM4gBDQN4x/xwzAM3LkL2Zanztp38IPIzK2/RuRZzI2WmbSXtB2V08loM5qVBFNkH5YlLzOwSerC0FnvRpTVICR3mcuy7syuHcTMoGlzZ/rd+sMmu4AlW3yJ9q3eq4/KWjR3yO5b7MDE0gpdC5GYr+WnWwxVqYWXqgpbc/CDDRHYILb7PumA0c/WoHDFB1tc/rlBheE2enni6Pvu0g5A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=temperror (sender ip
+ is 216.228.118.233) smtp.rcpttodomain=intel.com smtp.mailfrom=nvidia.com;
+ dmarc=temperror action=none header.from=nvidia.com; dkim=none (message not
+ signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=auVWryte4g8XND3xM/ONIltfPW2/39ShYHPEJL2knZM=;
+ b=mqh4ESGAx2WycR7YPy/YX37NlPtSq8HaUQoeds67ZxT5zSqbHlm+I0DsAT3+uMZ7+kgYVTpRRPkWayB07w/eV3pxHirp6gxckxj9kZa2vzM+xpt+hy03QlXcXKIvHQOhxtHwcou97mMQAtLvYH1HsSFFNcn/Q7+psDWnKXStpJOs7lw/Dt5ssTTpqdnX05+DAn3cwxLs0YDMKdJUcJCFO5o/eJD1UsO6dQDDjXTImA06eri8aN3X7GA2LiVlnwp68loooZs9IkEh3aktnzxSxMP+4GcPYMvu/ihGc14vhi3G40rLqrPMRP6VPrEdeqRfA8mUmJLtk/6s/BxXWqXPng==
+Received: from SN7P220CA0030.NAMP220.PROD.OUTLOOK.COM (2603:10b6:806:123::35)
+ by SJ2PR12MB9087.namprd12.prod.outlook.com (2603:10b6:a03:562::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9052.14; Thu, 21 Aug
+ 2025 14:42:18 +0000
+Received: from SA2PEPF00003F66.namprd04.prod.outlook.com
+ (2603:10b6:806:123:cafe::c6) by SN7P220CA0030.outlook.office365.com
+ (2603:10b6:806:123::35) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9052.16 via Frontend Transport; Thu,
+ 21 Aug 2025 14:42:18 +0000
+X-MS-Exchange-Authentication-Results: spf=temperror (sender IP is
+ 216.228.118.233) smtp.mailfrom=nvidia.com; dkim=none (message not signed)
+ header.d=none;dmarc=temperror action=none header.from=nvidia.com;
+Received-SPF: TempError (protection.outlook.com: error in processing during
+ lookup of nvidia.com: DNS Timeout)
+Received: from mail.nvidia.com (216.228.118.233) by
+ SA2PEPF00003F66.mail.protection.outlook.com (10.167.248.41) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9052.8 via Frontend Transport; Thu, 21 Aug 2025 14:42:16 +0000
+Received: from drhqmail202.nvidia.com (10.126.190.181) by mail.nvidia.com
+ (10.127.129.6) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Thu, 21 Aug
+ 2025 07:41:57 -0700
+Received: from drhqmail201.nvidia.com (10.126.190.180) by
+ drhqmail202.nvidia.com (10.126.190.181) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.14; Thu, 21 Aug 2025 07:41:56 -0700
+Received: from Asurada-Nvidia (10.127.8.12) by mail.nvidia.com
+ (10.126.190.180) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14 via Frontend
+ Transport; Thu, 21 Aug 2025 07:41:55 -0700
+Date: Thu, 21 Aug 2025 07:41:54 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: "Tian, Kevin" <kevin.tian@intel.com>
+CC: "robin.murphy@arm.com" <robin.murphy@arm.com>, "joro@8bytes.org"
+	<joro@8bytes.org>, "bhelgaas@google.com" <bhelgaas@google.com>,
+	"jgg@nvidia.com" <jgg@nvidia.com>, "will@kernel.org" <will@kernel.org>,
+	"robin.clark@oss.qualcomm.com" <robin.clark@oss.qualcomm.com>,
+	"yong.wu@mediatek.com" <yong.wu@mediatek.com>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>, "thierry.reding@gmail.com"
+	<thierry.reding@gmail.com>, "vdumpa@nvidia.com" <vdumpa@nvidia.com>,
+	"jonathanh@nvidia.com" <jonathanh@nvidia.com>, "rafael@kernel.org"
+	<rafael@kernel.org>, "lenb@kernel.org" <lenb@kernel.org>, "Liu, Yi L"
+	<yi.l.liu@intel.com>, "baolu.lu@linux.intel.com" <baolu.lu@linux.intel.com>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "iommu@lists.linux.dev"
+	<iommu@lists.linux.dev>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "linux-arm-msm@vger.kernel.org"
+	<linux-arm-msm@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "linux-tegra@vger.kernel.org"
+	<linux-tegra@vger.kernel.org>, "linux-acpi@vger.kernel.org"
+	<linux-acpi@vger.kernel.org>, "linux-pci@vger.kernel.org"
+	<linux-pci@vger.kernel.org>, "patches@lists.linux.dev"
+	<patches@lists.linux.dev>, "Jaroszynski, Piotr" <pjaroszynski@nvidia.com>,
+	"Sethi, Vikram" <vsethi@nvidia.com>, "helgaas@kernel.org"
+	<helgaas@kernel.org>, "etzhao1900@gmail.com" <etzhao1900@gmail.com>
+Subject: Re: [PATCH v3 3/5] iommu: Add iommu_get_domain_for_dev_locked()
+ helper
+Message-ID: <aKcwMtPJuFfVA8TF@Asurada-Nvidia>
+References: <cover.1754952762.git.nicolinc@nvidia.com>
+ <a69557026b7e2353bae67104bbe6a88f0682305e.1754952762.git.nicolinc@nvidia.com>
+ <BN9PR11MB52769ACDFED7201CE282FE3C8C34A@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <aJ+AP18ucw3Jb6QO@Asurada-Nvidia>
+ <BN9PR11MB5276CCC219B8456DAF289AD78C32A@BN9PR11MB5276.namprd11.prod.outlook.com>
 MIME-Version: 1.0
-X-ZohoMailClient: External
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <BN9PR11MB5276CCC219B8456DAF289AD78C32A@BN9PR11MB5276.namprd11.prod.outlook.com>
+X-NV-OnPremToCloud: ExternallySecured
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SA2PEPF00003F66:EE_|SJ2PR12MB9087:EE_
+X-MS-Office365-Filtering-Correlation-Id: c534d123-5500-4b07-6d4a-08dde0c0ece7
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|36860700013|376014|1800799024|7416014|82310400026;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?dsp5ul4z2sfLqnK/rr1myxKGMZySUfNG+anE8Y1xUTivRPzxcC1uNsovqc/h?=
+ =?us-ascii?Q?8r04w16Zl+cLvQh3geZ9I3kZF1AZRuvtdAyj47u9XW9JlZS8LZsJCAM0JEjk?=
+ =?us-ascii?Q?kR3M1rtLd06oaHML49+NhZDJ8SyWIntfnt3/cPKpk43H5c6ioUKqYKZufQJK?=
+ =?us-ascii?Q?7MjtaKB8Hgl6t0scYYj1ZLWj3FTIbNOndnR6tebCEQvaA7HcH3k1Fpn1WOgM?=
+ =?us-ascii?Q?8hmj0p/COyuErErjzuV61e5Zwk1dwFCrJV9nPiZ7V3D+ma1VB+1Axj1QFlUG?=
+ =?us-ascii?Q?bAdDszFzEH8TtQx4L2BQc0HXFDu8E6HDTU8kM6PyTkMZmHw3Btg61vtEFoDr?=
+ =?us-ascii?Q?RyRxrmAb3x0Y/nRlUjTUtASeGBz8RblR5li7WKoyEXG1S024ngIPSXHRUwz5?=
+ =?us-ascii?Q?c0Tui9cWFqCl/YeIw7zLQWKxSTXGW2SCCUWGBqbMjQYeYvBn/DcRX3HB6SV8?=
+ =?us-ascii?Q?mee8soRX8PvzFcp8wzkJBgfNmJoMVl7VKGOR5vZgyfxNNtmzVo63qGwW5ojt?=
+ =?us-ascii?Q?ZhTGnZpZFNb1y1F/o5GjuJphKBC/lp7f7ZXxSj1TewfZiDzuG0DAxWl6Fkzx?=
+ =?us-ascii?Q?KO3jBIVD48JMe3TOzdVm6EkEX8lQe7zYAleA5JLjiZSlU4yVKl05+xaCAPJ1?=
+ =?us-ascii?Q?cFSqYmge/qQyLwO0RunDJyl7bDkB+2E8ru5yy9giQm/UG0JyjQ9OYRQF7Ro5?=
+ =?us-ascii?Q?izMqWVvzM2ay621smuvjaTY1mlvkl6NUV1qBPE7UIUK5Rgu77rRNs2TkumCe?=
+ =?us-ascii?Q?BuPABQof9ttpwCChdWvY+PF+4d5oqdqnJQMlwUhn8+jaKmdLybqZe8e5D9Ml?=
+ =?us-ascii?Q?JWFby6UA98vabSv1x4PP+7jsKzSP1wN2JhgmoGYqkSUXZFJZOXNJHMsyVzSV?=
+ =?us-ascii?Q?loyCaP28tHZdtEoBqcPVIK+nNe+VTSNMnzqF3+uHPcanY0Fz2F5Ojf1pfJIp?=
+ =?us-ascii?Q?dSQy+W8uPAFdduLnRfZNgwlEYT4qC7kTPWDuGGj1VAl1tUP9dYWP5UFXXuV0?=
+ =?us-ascii?Q?wytnxaV/i1Jw8UwMIoXRzZUNCkZe4sdUh9e3niW2NGcaYh1pxAq6NfEVM2BV?=
+ =?us-ascii?Q?tX61uPI483zhzL7pb1D+B1F1YWm0GnKu6kptY9blRwlDuDRu0+yOY77+I0wN?=
+ =?us-ascii?Q?X2zhfjYp+7ed3qQ9wQabi7ID/FBTlH3DIG2qlJe5kH7184Va1oj9lITP0lCO?=
+ =?us-ascii?Q?WD8VVW7j9Ep6GkeYBdSicFtoK7/+zkYs2YXIHlMjmHIzy8I0WRQ+PuPIp7Vf?=
+ =?us-ascii?Q?LN2LQ1J+8A7LW+xQab+q+d7YG2zrDeMFPzrucAd3FGbVobsqH9vYcIHMRzoo?=
+ =?us-ascii?Q?gUygDsuKhczmJFl/IeW4+64hfEgCqNXhxXl910/XMI4aJkUmTxvIPviuZTPb?=
+ =?us-ascii?Q?5EMOVjOYnfcjHpjvsFLC0zI87DSVbwECKnOk7hBWRo0MYm4mRVT94bmLoMBW?=
+ =?us-ascii?Q?q8ACckA1jhUtWQYAnOSDNciVOuwssTDPnpFaxCK6rY1ZaWLK5rknLpqkosF5?=
+ =?us-ascii?Q?2t8MBqOkEBw0Sme0Kh0bY7MontSqiDFUblKY?=
+X-Forefront-Antispam-Report: CIP:216.228.118.233;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc7edge2.nvidia.com;CAT:NONE;SFS:(13230040)(36860700013)(376014)(1800799024)(7416014)(82310400026);DIR:OUT;SFP:1101;
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Aug 2025 14:42:16.8076
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: c534d123-5500-4b07-6d4a-08dde0c0ece7
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.118.233];Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: SA2PEPF00003F66.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ2PR12MB9087
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250821_071904_373424_A82E2BED 
-X-CRM114-Status: GOOD (  19.81  )
+X-CRM114-CacheID: sfid-20250821_074230_856434_C3D7DACA 
+X-CRM114-Status: GOOD (  24.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,1023 +173,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Mateusz,
+On Thu, Aug 21, 2025 at 08:07:01AM +0000, Tian, Kevin wrote:
+> > From: Nicolin Chen <nicolinc@nvidia.com>
+> > Sent: Saturday, August 16, 2025 2:45 AM
+> > 
+> > On Fri, Aug 15, 2025 at 08:55:28AM +0000, Tian, Kevin wrote:
+> > > > From: Nicolin Chen <nicolinc@nvidia.com>
+> > > > Sent: Tuesday, August 12, 2025 6:59 AM
+> > > > So, iommu_get_domain_for_dev() should check the gdev flag and return
+> > the
+> > > > blocked domain if the flag is set. But the caller of this API could hold
+> > > > the group->mutex already or not, making it difficult to add the lock.
+> > > >
+> > > > Introduce a new iommu_get_domain_for_dev_locked() helper to be used
+> > by
+> > > > those drivers in a context that is already under the protection of the
+> > > > group->mutex, e.g. those attach_dev callback functions. And roll out the
+> > > > new helper to all the existing IOMMU drivers.
+> > >
+> > > iommu_get_domain_for_dev() is also called outside of attach_dev
+> > > callback functions, e.g. malidp_get_pgsize_bitmap(). and the returned
+> > > info according to the attached domain might be saved in static
+> > > structures, e.g.:
+> > >
+> > > 	ms->mmu_prefetch_pgsize = malidp_get_pgsize_bitmap(mp);
+> > >
+> > > would that cause weird issues when blocking domain is returned
+> > > though one may not expect reset to happen at that point?
+> > 
+> > We aren't changing the iommu_get_domain_for_dev(). So, it should
+> > be used exclusively for functions that are outside group->mutex,
+> > like this one, i.e. they should still get the group->domain v.s.
+> > the blocked domain.
+> > 
+> 
+> Usually the difference between func() and func_locked() is only about
+> whether the caller holds a lock. If they mean to return different
+> domains, may need better naming (though I don't have a good option
+> now)...
 
-On Wed, 2025-08-20 at 14:09 +0200, Mateusz Koza wrote:
-> Add support for Grinn GenioSBC-700. The Grinn GenioSBC-700 is a
-> single-board computer based on the MediaTek Genio 700 SoC. Its device
-> tree is split into separate SoM (.dtsi) and SBC (.dtsi) files, which
-> are
-> combined in the SoC-specific .dts file.
->=20
-> More details about the hardware:
-> - https://grinn-global.com/products/grinn-geniosom-700
-> - https://grinn-global.com/products/grinn-genioboard-edge-ai-sbc
->=20
-> Signed-off-by: Mateusz Koza <mateusz.koza@grinn-global.com>
-> ---
-> =C2=A0arch/arm64/boot/dts/mediatek/Makefile=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0 1 +
-> =C2=A0.../mediatek/mt8390-grinn-genio-700-sbc.dts=C2=A0=C2=A0 |=C2=A0 19 =
-+
-> =C2=A0.../dts/mediatek/mt8390-grinn-genio-sbc.dtsi=C2=A0 | 674
-> ++++++++++++++++++
-> =C2=A0.../dts/mediatek/mt8390-grinn-genio-som.dtsi=C2=A0 | 209 ++++++
-> =C2=A04 files changed, 903 insertions(+)
-> =C2=A0create mode 100644 arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-
-> 700-sbc.dts
-> =C2=A0create mode 100644 arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-
-> sbc.dtsi
-> =C2=A0create mode 100644 arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-
-> som.dtsi
->=20
-> diff --git a/arch/arm64/boot/dts/mediatek/Makefile
-> b/arch/arm64/boot/dts/mediatek/Makefile
-> index 1dcea8b9aed9..7383d75d8041 100644
-> --- a/arch/arm64/boot/dts/mediatek/Makefile
-> +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> @@ -104,6 +104,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8365-evk-
-> hdmi.dtbo
-> =C2=A0dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8370-genio-510-evk.dtb
-> =C2=A0dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8395-genio-1200-evk.dtb
-> =C2=A0dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8390-genio-700-evk.dtb
-> +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8390-grinn-genio-700-sbc.dtb
-> =C2=A0dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8395-kontron-3-5-sbc-i1200.dtb
-> =C2=A0dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8395-radxa-nio-12l.dtb
-> =C2=A0dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8395-radxa-nio-12l-8-hd-panel.dt=
-bo
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-700-
-> sbc.dts b/arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-700-sbc.dts
-> new file mode 100644
-> index 000000000000..a37507a5a5d0
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-700-sbc.dts
-> @@ -0,0 +1,19 @@
-> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> +/*
-> + * Copyright (C) 2025 Grinn sp. z o.o.
-> + * Author: Mateusz Koza <mateusz.koza@grinn-global.com>
-> + */
-> +/dts-v1/;
-> +
-> +#include "mt8188.dtsi"
-> +#include "mt8390-grinn-genio-som.dtsi"
-> +#include "mt8390-grinn-genio-sbc.dtsi"
-> +
-> +/ {
-> +	model =3D "Grinn GenioSBC-700";
-> +	compatible =3D "grinn,genio-700-sbc", "mediatek,mt8390",
-> "mediatek,mt8188";
-> +	memory@40000000 {
-> +		device_type =3D "memory";
-> +		reg =3D <0 0x40000000 1 0x00000000>;
-> +	};
-> +};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-sbc.dtsi
-> b/arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-sbc.dtsi
-> new file mode 100644
-> index 000000000000..22765b9a6d20
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-sbc.dtsi
-> @@ -0,0 +1,674 @@
-> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> +/*
-> + * Copyright (C) 2025 Grinn sp. z o.o.
-> + * Author: Mateusz Koza <mateusz.koza@grinn-global.com>
-> + */
-> +
-> +#include <dt-bindings/gpio/gpio.h>
-> +
-> +/ {
-> +	chassis-type =3D "embedded";
-> +	aliases {
-> +		ethernet0 =3D &eth;
-> +		i2c0 =3D &i2c0;
-> +		i2c2 =3D &i2c2;
-> +		i2c3 =3D &i2c3;
-> +		i2c5 =3D &i2c5;
-> +		i2c6 =3D &i2c6;
-> +		serial0 =3D &uart0;
-> +	};
-> +
-> +	chosen {
-> +		stdout-path =3D "serial0:921600n8";
-> +	};
-> +
-> +	firmware {
-> +		optee {
-> +			compatible =3D "linaro,optee-tz";
-> +			method =3D "smc";
-> +		};
-> +	};
-> +
-> +	reserved-memory {
-> +		#address-cells =3D <2>;
-> +		#size-cells =3D <2>;
-> +		ranges;
-> +
-> +		/*
-> +		 * 12 MiB reserved for OP-TEE (BL32)
-> +		 * +-----------------------+ 0x43e0_0000
-> +		 * |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 SHMEM 2MiB=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 |
-> +		 * +-----------------------+ 0x43c0_0000
-> +		 * |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | TA_RAM=C2=A0 8MiB |
-> +		 * + TZDRAM +--------------+ 0x4340_0000
-> +		 * |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | TEE_RAM 2MiB |
-> +		 * +-----------------------+ 0x4320_0000
-> +		 */
-> +		optee_reserved: optee@43200000 {
-> +			no-map;
-> +			reg =3D <0 0x43200000 0 0x00c00000>;
-> +		};
-> +
-> +		scp_mem: memory@50000000 {
-> +			compatible =3D "shared-dma-pool";
-> +			reg =3D <0 0x50000000 0 0x2900000>;
-> +			no-map;
-> +		};
-> +
-> +		/* 2 MiB reserved for ARM Trusted Firmware (BL31) */
-> +		bl31_secmon_reserved: memory@54600000 {
-> +			no-map;
-> +			reg =3D <0 0x54600000 0x0 0x200000>;
-> +		};
-> +
-> +		apu_mem: memory@55000000 {
-> +			compatible =3D "shared-dma-pool";
-> +			reg =3D <0 0x55000000 0 0x1400000>; /* 20 MB
-> */
-> +		};
-> +
-> +		vpu_mem: memory@57000000 {
-> +			compatible =3D "shared-dma-pool";
-> +			reg =3D <0 0x57000000 0 0x1400000>; /* 20 MB
-> */
-> +		};
-> +
-> +		adsp_mem: memory@60000000 {
-> +			compatible =3D "shared-dma-pool";
-> +			reg =3D <0 0x60000000 0 0xf00000>;
-> +			no-map;
-> +		};
-> +
-> +		afe_dma_mem: memory@60f00000 {
-> +			compatible =3D "shared-dma-pool";
-> +			reg =3D <0 0x60f00000 0 0x100000>;
-> +			no-map;
-> +		};
-> +
-> +		adsp_dma_mem: memory@61000000 {
-> +			compatible =3D "shared-dma-pool";
-> +			reg =3D <0 0x61000000 0 0x100000>;
-> +			no-map;
-> +		};
-> +	};
-> +
-> +	connector {
-> +		compatible =3D "hdmi-connector";
-> +		label =3D "hdmi";
-> +		type =3D "a";
-> +		ddc-i2c-bus =3D <&hdmi_ddc>;
-> +		hdmi-pwr-supply =3D <&hdmi_phy>;
-> +
-> +		port {
-> +			hdmi_connector_in: endpoint {
-> +				remote-endpoint =3D <&hdmi0_out>;
-> +			};
-> +		};
-This node and several others below refer or override nodes related to
-DPI, HDMI controller and PHY (hdmi0, dpi1, hdmi_ddc, hdmi_phy...), but
-their support for MT8188 SoC and its variants (MT8370, MT8390...) is
-not yet present in upstream mt8188.dtsi.=C2=A0
-So, if this patch is applied on a branch based on recent linux-next or
-RC tags, this new device tree won't build.=C2=A0
-So, please remove them for now and check it builds and is also passing
-the dtbs check.
+Yea, naming is tricky here :)
 
-Best regards,
-Louis-Alexis
-> +	};
-> +
-> +	reg_sbc_vsys: regulator-vsys {
-> +		compatible =3D "regulator-fixed";
-> +		regulator-name =3D "vsys";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +	};
-> +
-> +	reg_fixed_5v: regulator-0 {
-> +		compatible =3D "regulator-fixed";
-> +		regulator-name =3D "fixed_5v";
-> +		regulator-min-microvolt =3D <5000000>;
-> +		regulator-max-microvolt =3D <5000000>;
-> +		enable-active-high;
-> +		regulator-always-on;
-> +		vin-supply =3D <&reg_sbc_vsys>;
-> +	};
-> +
-> +	reg_fixed_4v2: regulator-1 {
-> +		compatible =3D "regulator-fixed";
-> +		regulator-name =3D "fixed_4v2";
-> +		regulator-min-microvolt =3D <4200000>;
-> +		regulator-max-microvolt =3D <4200000>;
-> +		enable-active-high;
-> +		regulator-always-on;
-> +		vin-supply =3D <&reg_sbc_vsys>;
-> +	};
-> +
-> +	reg_fixed_3v3: regulator-2 {
-> +		compatible =3D "regulator-fixed";
-> +		regulator-name =3D "fixed_3v3";
-> +		regulator-min-microvolt =3D <3300000>;
-> +		regulator-max-microvolt =3D <3300000>;
-> +		enable-active-high;
-> +		regulator-always-on;
-> +		vin-supply =3D <&reg_sbc_vsys>;
-> +	};
-> +};
-> +
-> +&pio {
-> +	gpio-line-names =3D
-> +	/*=C2=A0 0 -=C2=A0 4=C2=A0=C2=A0 */ "RPI_GPIO0", "RPI_GPIO1", "", "",
-> "RPI_GPIO4",
-> +	/*=C2=A0 5 -=C2=A0 9=C2=A0=C2=A0 */ "", "RPI_GPIO6", "", "", "RPI_GPIO9=
-",
-> +	/* 10 - 14=C2=A0=C2=A0 */ "RPI_GPIO10", "RPI_GPIO11", "", "", "",
-> +	/* 15 - 19=C2=A0=C2=A0 */ "", "", "", "", "",
-> +	/* 20 - 24=C2=A0=C2=A0 */ "", "RPI_GPIO21", "", "RPI_GPIO23", "",
-> +	/* 25 - 29=C2=A0=C2=A0 */ "", "", "", "", "",
-> +	/* 30 - 34=C2=A0=C2=A0 */ "RPI_GPIO30", "", "", "", "",
-> +	/* 35 - 39=C2=A0=C2=A0 */ "RPI_GPIO35", "RPI_GPIO36", "", "", "",
-> +	/* 40 - 44=C2=A0=C2=A0 */ "", "", "", "", "",
-> +	/* 45 - 49=C2=A0=C2=A0 */ "", "", "", "", "",
-> +	/* 50 - 54=C2=A0=C2=A0 */ "", "", "", "", "",
-> +	/* 55 - 59=C2=A0=C2=A0 */ "RPI_GPIO55", "RPI_GPIO56", "", "",
-> "RPI_GPIO59",
-> +	/* 60 - 64=C2=A0=C2=A0 */ "RPI_GPIO60", "", "", "", "",
-> +	/* 65 - 69=C2=A0=C2=A0 */ "", "", "", "", "RPI_GPIO69",
-> +	/* 70 - 74=C2=A0=C2=A0 */ "", "", "RPI_GPIO72", "RPI_GPIO73",
-> "RPI_GPIO74",
-> +	/* 75 - 79=C2=A0=C2=A0 */ "", "", "", "", "RPI_GPIO79",
-> +	/* 80 - 84=C2=A0=C2=A0 */ "RPI_GPIO80", "RPI_GPIO81", "RPI_GPIO82",
-> "", "",
-> +	/* 85 - 89=C2=A0=C2=A0 */ "", "", "", "", "",
-> +	/* 90 - 94=C2=A0=C2=A0 */ "", "", "", "", "",
-> +	/* 95 - 99=C2=A0=C2=A0 */ "", "", "", "", "",
-> +	/*100 - 104=C2=A0 */ "", "", "", "", "",
-> +	/*105 - 109=C2=A0 */ "", "", "", "", "",
-> +	/*110 - 114=C2=A0 */ "", "", "", "", "",
-> +	/*115 - 119=C2=A0 */ "", "", "", "", "",
-> +	/*120 - 124=C2=A0 */ "", "RPI_GPIO121", "RPI_GPIO122",
-> "RPI_GPIO123", "RPI_GPIO124";
-> +
-> +	i2c0_pins: i2c0-pins {
-> +		pins {
-> +			pinmux =3D <PINMUX_GPIO56__FUNC_B1_SDA0>,
-> +				 <PINMUX_GPIO55__FUNC_B1_SCL0>;
-> +			bias-pull-up =3D <MTK_PULL_SET_RSEL_011>;
-> +			drive-strength-microamp =3D <1000>;
-> +		};
-> +	};
-> +
-> +	i2c2_pins: i2c2-pins {
-> +		pins {
-> +			pinmux =3D <PINMUX_GPIO60__FUNC_B1_SDA2>,
-> +				 <PINMUX_GPIO59__FUNC_B1_SCL2>;
-> +			bias-pull-up =3D <MTK_PULL_SET_RSEL_011>;
-> +			drive-strength-microamp =3D <1000>;
-> +		};
-> +	};
-> +
-> +	i2c3_pins: i2c3-pins {
-> +		pins {
-> +			pinmux =3D <PINMUX_GPIO62__FUNC_B1_SDA3>,
-> +				 <PINMUX_GPIO61__FUNC_B1_SCL3>;
-> +			bias-pull-up =3D <MTK_PULL_SET_RSEL_011>;
-> +			drive-strength-microamp =3D <1000>;
-> +		};
-> +	};
-> +
-> +	i2c5_pins: i2c5-pins {
-> +		pins {
-> +			pinmux =3D <PINMUX_GPIO66__FUNC_B1_SDA5>,
-> +				 <PINMUX_GPIO65__FUNC_B1_SCL5>;
-> +			bias-pull-up =3D <MTK_PULL_SET_RSEL_011>;
-> +			drive-strength-microamp =3D <1000>;
-> +		};
-> +	};
-> +
-> +	i2c6_pins: i2c6-pins {
-> +		pins {
-> +			pinmux =3D <PINMUX_GPIO68__FUNC_B1_SDA6>,
-> +				 <PINMUX_GPIO67__FUNC_B1_SCL6>;
-> +			bias-pull-up =3D <MTK_PULL_SET_RSEL_011>;
-> +			drive-strength-microamp =3D <1000>;
-> +		};
-> +	};
-> +
-> +	uart0_pins: uart0-pins {
-> +		pins {
-> +			pinmux =3D <PINMUX_GPIO31__FUNC_O_UTXD0>,
-> +				 <PINMUX_GPIO32__FUNC_I1_URXD0>;
-> +			bias-pull-up;
-> +		};
-> +	};
-> +
-> +	uart1_pins: uart1-pins {
-> +		pins {
-> +			pinmux =3D <PINMUX_GPIO86__FUNC_O_UTXD1>,
-> +				 <PINMUX_GPIO87__FUNC_I1_URXD1>;
-> +			bias-pull-up;
-> +		};
-> +	};
-> +
-> +	uart2_pins: uart2-pins {
-> +		pins {
-> +			pinmux =3D <PINMUX_GPIO35__FUNC_O_UTXD2>,
-> +				 <PINMUX_GPIO36__FUNC_I1_URXD2>;
-> +			bias-pull-up;
-> +		};
-> +	};
-> +
-> +	pcie_pins_default: pcie-default {
-> +		mux {
-> +			pinmux =3D <PINMUX_GPIO47__FUNC_I1_WAKEN>,
-> +				 <PINMUX_GPIO48__FUNC_O_PERSTN>,
-> +				 <PINMUX_GPIO49__FUNC_B1_CLKREQN>;
-> +			bias-pull-up;
-> +		};
-> +	};
-> +
-> +	eth_default_pins: eth-default-pins {
-> +		pins-cc {
-> +			pinmux =3D <PINMUX_GPIO139__FUNC_B0_GBE_TXC>,
-> +				 <PINMUX_GPIO140__FUNC_I0_GBE_RXC>,
-> +				 <PINMUX_GPIO141__FUNC_I0_GBE_RXDV>,
-> +				 <PINMUX_GPIO142__FUNC_O_GBE_TXEN>;
-> +			drive-strength =3D <8>;
-> +		};
-> +
-> +		pins-mdio {
-> +			pinmux =3D <PINMUX_GPIO143__FUNC_O_GBE_MDC>,
-> +				 <PINMUX_GPIO144__FUNC_B1_GBE_MDIO>;
-> +			drive-strength =3D <8>;
-> +			input-enable;
-> +		};
-> +
-> +		pins-power {
-> +			pinmux =3D <PINMUX_GPIO145__FUNC_B_GPIO145>,
-> +				 <PINMUX_GPIO146__FUNC_B_GPIO146>;
-> +			output-high;
-> +		};
-> +
-> +		pins-rxd {
-> +			pinmux =3D <PINMUX_GPIO135__FUNC_I0_GBE_RXD3>,
-> +				 <PINMUX_GPIO136__FUNC_I0_GBE_RXD2>,
-> +				 <PINMUX_GPIO137__FUNC_I0_GBE_RXD1>,
-> +				 <PINMUX_GPIO138__FUNC_I0_GBE_RXD0>;
-> +			drive-strength =3D <8>;
-> +		};
-> +
-> +		pins-txd {
-> +			pinmux =3D <PINMUX_GPIO131__FUNC_O_GBE_TXD3>,
-> +				 <PINMUX_GPIO132__FUNC_O_GBE_TXD2>,
-> +				 <PINMUX_GPIO133__FUNC_O_GBE_TXD1>,
-> +				 <PINMUX_GPIO134__FUNC_O_GBE_TXD0>;
-> +			drive-strength =3D <8>;
-> +		};
-> +	};
-> +
-> +	eth_sleep_pins: eth-sleep-pins {
-> +		pins-cc {
-> +			pinmux =3D <PINMUX_GPIO139__FUNC_B_GPIO139>,
-> +				 <PINMUX_GPIO140__FUNC_B_GPIO140>,
-> +				 <PINMUX_GPIO141__FUNC_B_GPIO141>,
-> +				 <PINMUX_GPIO142__FUNC_B_GPIO142>;
-> +		};
-> +
-> +		pins-mdio {
-> +			pinmux =3D <PINMUX_GPIO143__FUNC_B_GPIO143>,
-> +				 <PINMUX_GPIO144__FUNC_B_GPIO144>;
-> +			input-disable;
-> +			bias-disable;
-> +		};
-> +
-> +		pins-rxd {
-> +			pinmux =3D <PINMUX_GPIO135__FUNC_B_GPIO135>,
-> +				 <PINMUX_GPIO136__FUNC_B_GPIO136>,
-> +				 <PINMUX_GPIO137__FUNC_B_GPIO137>,
-> +				 <PINMUX_GPIO138__FUNC_B_GPIO138>;
-> +		};
-> +
-> +		pins-txd {
-> +			pinmux =3D <PINMUX_GPIO131__FUNC_B_GPIO131>,
-> +				 <PINMUX_GPIO132__FUNC_B_GPIO132>,
-> +				 <PINMUX_GPIO133__FUNC_B_GPIO133>,
-> +				 <PINMUX_GPIO134__FUNC_B_GPIO134>;
-> +		};
-> +	};
-> +
-> +	spi2_pins: spi2-pins {
-> +		pins-spi {
-> +			pinmux =3D <PINMUX_GPIO79__FUNC_O_SPIM2_CSB>,
-> +				<PINMUX_GPIO80__FUNC_O_SPIM2_CLK>,
-> +				<PINMUX_GPIO81__FUNC_B0_SPIM2_MOSI>,
-> +				<PINMUX_GPIO82__FUNC_B0_SPIM2_MISO>;
-> +			bias-disable;
-> +		};
-> +	};
-> +
-> +	hdmi_vreg_pins: hdmi-vreg-pins {
-> +		pins-pwr {
-> +			pinmux =3D
-> <PINMUX_GPIO50__FUNC_O_HDMITX20_PWR5V>;
-> +			bias-disable;
-> +		};
-> +	};
-> +
-> +	hdmi_pins: hdmi-pins {
-> +		pins-hotplug {
-> +			pinmux =3D
-> <PINMUX_GPIO51__FUNC_I0_HDMITX20_HTPLG>;
-> +			bias-pull-down;
-> +		};
-> +
-> +		pins-cec {
-> +			pinmux =3D
-> <PINMUX_GPIO52__FUNC_B1_HDMITX20_CEC>;
-> +			bias-disable;
-> +		};
-> +
-> +		pins-ddc {
-> +			pinmux =3D
-> <PINMUX_GPIO53__FUNC_B1_HDMITX20_SCL>,
-> +			=09
-> <PINMUX_GPIO54__FUNC_B1_HDMITX20_SDA>;
-> +			drive-strength =3D <10>;
-> +		};
-> +	};
-> +
-> +	audio_default_pins: audio-default-pins {
-> +		pins-cmd-dat {
-> +			pinmux =3D <PINMUX_GPIO121__FUNC_B0_PCM_CLK>,
-> +				 <PINMUX_GPIO122__FUNC_B0_PCM_SYNC>,
-> +				 <PINMUX_GPIO123__FUNC_O_PCM_DO>,
-> +				 <PINMUX_GPIO124__FUNC_I0_PCM_DI>;
-> +		};
-> +	};
-> +};
-> +
-> +&eth {
-> +	phy-mode =3D "rgmii-id";
-> +	phy-handle =3D <&ethernet_phy0>;
-> +	snps,reset-active-low;
-> +	snps,reset-delays-us =3D <0 11000 200000>;
-> +	mediatek,tx-delay-ps =3D <30>;
-> +	pinctrl-names =3D "default", "sleep";
-> +	pinctrl-0 =3D <&eth_default_pins>;
-> +	pinctrl-1 =3D <&eth_sleep_pins>;
-> +	mediatek,mac-wol;
-> +	snps,reset-gpio =3D <&pio 147 GPIO_ACTIVE_LOW>;
-> +	status =3D "okay";
-> +};
-> +
-> +&eth_mdio {
-> +	ethernet_phy0: ethernet-phy@3 {
-> +		reg =3D <3>;
-> +		compatible =3D "ethernet-phy-ieee802.3-c22";
-> +		eee-broken-1000t;
-> +		interrupts-extended =3D <&pio 148 IRQ_TYPE_LEVEL_LOW>;
-> +	};
-> +};
-> +
-> +&i2c0 {
-> +	pinctrl-names =3D "default";
-> +	pinctrl-0 =3D <&i2c0_pins>;
-> +	clock-frequency =3D <400000>;
-> +	status =3D "okay";
-> +};
-> +
-> +&i2c2 {
-> +	pinctrl-names =3D "default";
-> +	pinctrl-0 =3D <&i2c2_pins>;
-> +	clock-frequency =3D <400000>;
-> +	status =3D "okay";
-> +};
-> +
-> +&i2c3 {
-> +	pinctrl-names =3D "default";
-> +	pinctrl-0 =3D <&i2c3_pins>;
-> +	clock-frequency =3D <400000>;
-> +	status =3D "okay";
-> +};
-> +
-> +&i2c5 {
-> +	pinctrl-names =3D "default";
-> +	pinctrl-0 =3D <&i2c5_pins>;
-> +	clock-frequency =3D <400000>;
-> +	status =3D "okay";
-> +};
-> +
-> +&i2c6 {
-> +	pinctrl-names =3D "default";
-> +	pinctrl-0 =3D <&i2c6_pins>;
-> +	clock-frequency =3D <400000>;
-> +	status =3D "okay";
-> +};
-> +
-> +&uart0 {
-> +	pinctrl-0 =3D <&uart0_pins>;
-> +	pinctrl-names =3D "default";
-> +	status =3D "okay";
-> +};
-> +
-> +&uart1 {
-> +	pinctrl-0 =3D <&uart1_pins>;
-> +	pinctrl-names =3D "default";
-> +	status =3D "okay";
-> +};
-> +
-> +&uart2 {
-> +	pinctrl-0 =3D <&uart2_pins>;
-> +	pinctrl-names =3D "default";
-> +	status =3D "okay";
-> +};
-> +
-> +&pcie {
-> +	pinctrl-names =3D "default";
-> +	pinctrl-0 =3D <&pcie_pins_default>;
-> +	status =3D "okay";
-> +};
-> +
-> +&pciephy {
-> +	status =3D "okay";
-> +};
-> +
-> +&spi2 {
-> +	pinctrl-0 =3D <&spi2_pins>;
-> +	pinctrl-names =3D "default";
-> +	mediatek,pad-select =3D <0>;
-> +	#address-cells =3D <1>;
-> +	#size-cells =3D <0>;
-> +	status =3D "okay";
-> +};
-> +
-> +&vdosys1 {
-> +	port {
-> +		#address-cells =3D <1>;
-> +		#size-cells =3D <0>;
-> +
-> +		vdosys1_ep_ext: endpoint@1 {
-> +			reg =3D <1>;
-> +			remote-endpoint =3D <&ethdr0_in>;
-> +		};
-> +	};
-> +};
-> +
-> +&ethdr0 {
-> +	ports {
-> +		#address-cells =3D <1>;
-> +		#size-cells =3D <0>;
-> +
-> +		port@0 {
-> +			#address-cells =3D <1>;
-> +			#size-cells =3D <0>;
-> +			reg =3D <0>;
-> +
-> +			ethdr0_in: endpoint@1 {
-> +				reg =3D <1>;
-> +				remote-endpoint =3D <&vdosys1_ep_ext>;
-> +			};
-> +		};
-> +
-> +		port@1 {
-> +			#address-cells =3D <1>;
-> +			#size-cells =3D <0>;
-> +			reg =3D <1>;
-> +
-> +			ethdr0_out: endpoint@1 {
-> +				reg =3D <1>;
-> +				remote-endpoint =3D <&merge5_in>;
-> +			};
-> +		};
-> +	};
-> +};
-> +
-> +&merge5 {
-> +	ports {
-> +		#address-cells =3D <1>;
-> +		#size-cells =3D <0>;
-> +
-> +		port@0 {
-> +			#address-cells =3D <1>;
-> +			#size-cells =3D <0>;
-> +			reg =3D <0>;
-> +
-> +			merge5_in: endpoint@1 {
-> +				reg =3D <1>;
-> +				remote-endpoint =3D <&ethdr0_out>;
-> +			};
-> +		};
-> +
-> +		port@1 {
-> +			#address-cells =3D <1>;
-> +			#size-cells =3D <0>;
-> +			reg =3D <1>;
-> +
-> +			merge5_out: endpoint@1 {
-> +				reg =3D <1>;
-> +				remote-endpoint =3D <&dpi1_in>;
-> +			};
-> +		};
-> +	};
-> +};
-> +
-> +&dpi1 {
-> +	status =3D "okay";
-> +};
-> +
-> +&dpi1_in {
-> +	remote-endpoint =3D <&merge5_out>;
-> +};
-> +
-> +&dpi1_out {
-> +	remote-endpoint =3D <&hdmi0_in>;
-> +};
-> +
-> +&hdmi {
-> +	pinctrl-names =3D "default";
-> +	pinctrl-0 =3D <&hdmi_pins>;
-> +	status =3D "okay";
-> +};
-> +
-> +&hdmi0_in {
-> +	remote-endpoint =3D <&dpi1_out>;
-> +};
-> +
-> +&hdmi0_out {
-> +	remote-endpoint =3D <&hdmi_connector_in>;
-> +};
-> +
-> +&hdmi_phy {
-> +	pinctrl-names =3D "default";
-> +	pinctrl-0 =3D <&hdmi_vreg_pins>;
-> +	status =3D "okay";
-> +};
-> +
-> +&u3phy0 {
-> +	status =3D "okay";
-> +};
-> +
-> +&u3phy1 {
-> +	status =3D "okay";
-> +};
-> +
-> +&u3phy2 {
-> +	status =3D "okay";
-> +};
-> +
-> +&xhci1 {
-> +	status =3D "okay";
-> +	vusb33-supply =3D <&mt6359_vusb_ldo_reg>;
-> +	#address-cells =3D <1>;
-> +	#size-cells =3D <0>;
-> +
-> +	hub_2_0: hub@1 {
-> +		compatible =3D "usb451,8027";
-> +		reg =3D <1>;
-> +		peer-hub =3D <&hub_3_0>;
-> +		reset-gpios =3D <&pio 7 GPIO_ACTIVE_HIGH>;
-> +		vdd-supply =3D <&reg_fixed_3v3>;
-> +	};
-> +
-> +	hub_3_0: hub@2 {
-> +		compatible =3D "usb451,8025";
-> +		reg =3D <2>;
-> +		peer-hub =3D <&hub_2_0>;
-> +		reset-gpios =3D <&pio 7 GPIO_ACTIVE_HIGH>;
-> +		vdd-supply =3D <&reg_fixed_3v3>;
-> +	};
-> +};
-> +
-> +&xhci2 {
-> +	status =3D "okay";
-> +	vusb33-supply =3D <&mt6359_vusb_ldo_reg>;
-> +	#address-cells =3D <1>;
-> +	#size-cells =3D <0>;
-> +
-> +	hub@1 {
-> +		compatible =3D "microchip,usb2513bi";
-> +		reg =3D <1>;
-> +		vdd-supply =3D <&reg_fixed_3v3>;
-> +	};
-> +};
-> +
-> +&ssusb0 {
-> +	status =3D "okay";
-> +	dr_mode =3D "peripheral";
-> +	vusb33-supply =3D <&mt6359_vusb_ldo_reg>;
-> +};
-> +
-> +&ssusb1 {
-> +	status =3D "okay";
-> +	dr_mode =3D "host";
-> +	vusb33-supply =3D <&mt6359_vusb_ldo_reg>;
-> +	maximum-speed =3D "super-speed";
-> +};
-> +
-> +&ssusb2 {
-> +	status =3D "okay";
-> +	dr_mode =3D "host";
-> +	vusb33-supply =3D <&mt6359_vusb_ldo_reg>;
-> +	maximum-speed =3D "high-speed";
-> +};
-> +
-> +&scp_c0 {
-> +	firmware-name =3D "mediatek/mt8188/scp.img";
-> +	memory-region =3D <&scp_mem>;
-> +	status =3D "okay";
-> +};
-> +
-> +&gpu {
-> +	mali-supply =3D <&mt6359_vproc2_buck_reg>;
-> +	status =3D "okay";
-> +};
-> +
-> +&adsp {
-> +	memory-region =3D <&adsp_dma_mem>, <&adsp_mem>;
-> +	status =3D "okay";
-> +};
-> +
-> +&afe {
-> +	memory-region =3D <&afe_dma_mem>;
-> +	status =3D "okay";
-> +};
-> +
-> +&sound {
-> +	compatible =3D "mediatek,mt8390-mt6359-evk", "mediatek,mt8188-
-> mt6359-evb";
-> +	model =3D "mt8390-evk";
-> +	pinctrl-names =3D "default";
-> +	pinctrl-0 =3D <&audio_default_pins>;
-> +	audio-routing =3D
-> +		"Headphone", "Headphone L",
-> +		"Headphone", "Headphone R",
-> +		"AP DMIC", "AUDGLB",
-> +		"AP DMIC", "MIC_BIAS_0",
-> +		"AP DMIC", "MIC_BIAS_2",
-> +		"DMIC_INPUT", "AP DMIC";
-> +
-> +	mediatek,adsp =3D <&adsp>;
-> +	status =3D "okay";
-> +
-> +	dai-link-0 {
-> +		link-name =3D "ETDM3_OUT_BE";
-> +
-> +		codec {
-> +			sound-dai =3D <&hdmi 0>;
-> +		};
-> +	};
-> +};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-som.dtsi
-> b/arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-som.dtsi
-> new file mode 100644
-> index 000000000000..d88481beff9d
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-som.dtsi
-> @@ -0,0 +1,209 @@
-> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> +/*
-> + * Copyright (C) 2025 Grinn sp. z o.o.
-> + * Author: Mateusz Koza <mateusz.koza@grinn-global.com>
-> + */
-> +
-> +#include "mt6359.dtsi"
-> +#include <dt-bindings/input/input.h>
-> +
-> +/ {
-> +	aliases {
-> +		i2c1 =3D &i2c1;
-> +		mmc0 =3D &mmc0;
-> +	};
-> +};
-> +
-> +&i2c1 {
-> +	pinctrl-names =3D "default";
-> +	pinctrl-0 =3D <&i2c1_pins>;
-> +	clock-frequency =3D <400000>;
-> +	status =3D "okay";
-> +};
-> +
-> +&mfg0 {
-> +	domain-supply =3D <&mt6359_vproc2_buck_reg>;
-> +};
-> +
-> +&mfg1 {
-> +	domain-supply =3D <&mt6359_vsram_others_ldo_reg>;
-> +};
-> +
-> +&mmc0 {
-> +	status =3D "okay";
-> +	pinctrl-names =3D "default", "state_uhs";
-> +	pinctrl-0 =3D <&mmc0_default_pins>;
-> +	pinctrl-1 =3D <&mmc0_uhs_pins>;
-> +	bus-width =3D <8>;
-> +	max-frequency =3D <200000000>;
-> +	cap-mmc-highspeed;
-> +	mmc-hs200-1_8v;
-> +	mmc-hs400-1_8v;
-> +	supports-cqe;
-> +	cap-mmc-hw-reset;
-> +	no-sdio;
-> +	no-sd;
-> +	hs400-ds-delay =3D <0x1481b>;
-> +	vmmc-supply =3D <&mt6359_vemc_1_ldo_reg>;
-> +	vqmmc-supply =3D <&mt6359_vufs_ldo_reg>;
-> +	non-removable;
-> +};
-> +
-> +&mt6359_vbbck_ldo_reg {
-> +	regulator-always-on;
-> +};
-> +
-> +&mt6359_vcn18_ldo_reg {
-> +	regulator-name =3D "vcn18_pmu";
-> +	regulator-always-on;
-> +};
-> +
-> +&mt6359_vcn33_2_bt_ldo_reg {
-> +	regulator-name =3D "vcn33_2_pmu";
-> +	regulator-always-on;
-> +};
-> +
-> +&mt6359_vcore_buck_reg {
-> +	regulator-name =3D "dvdd_proc_l";
-> +	regulator-always-on;
-> +};
-> +
-> +&mt6359_vgpu11_buck_reg {
-> +	regulator-name =3D "dvdd_core";
-> +	regulator-always-on;
-> +};
-> +
-> +&mt6359_vpa_buck_reg {
-> +	regulator-name =3D "vpa_pmu";
-> +	regulator-max-microvolt =3D <3100000>;
-> +};
-> +
-> +&mt6359_vproc2_buck_reg {
-> +	/* The name "vgpu" is required by mtk-regulator-coupler */
-> +	regulator-name =3D "vgpu";
-> +	regulator-min-microvolt =3D <550000>;
-> +	regulator-max-microvolt =3D <800000>;
-> +	regulator-coupled-with =3D <&mt6359_vsram_others_ldo_reg>;
-> +	regulator-coupled-max-spread =3D <6250>;
-> +};
-> +
-> +&mt6359_vpu_buck_reg {
-> +	regulator-name =3D "dvdd_adsp";
-> +	regulator-always-on;
-> +};
-> +
-> +&mt6359_vrf12_ldo_reg {
-> +	regulator-name =3D "va12_abb2_pmu";
-> +	regulator-always-on;
-> +};
-> +
-> +&mt6359_vsim1_ldo_reg {
-> +	regulator-name =3D "vsim1_pmu";
-> +	regulator-enable-ramp-delay =3D <480>;
-> +};
-> +
-> +&mt6359_vsram_others_ldo_reg {
-> +	/* The name "vsram_gpu" is required by mtk-regulator-coupler
-> */
-> +	regulator-name =3D "vsram_gpu";
-> +	regulator-min-microvolt =3D <750000>;
-> +	regulator-max-microvolt =3D <800000>;
-> +	regulator-coupled-with =3D <&mt6359_vproc2_buck_reg>;
-> +	regulator-coupled-max-spread =3D <6250>;
-> +};
-> +
-> +&mt6359_vufs_ldo_reg {
-> +	regulator-name =3D "vufs18_pmu";
-> +	regulator-always-on;
-> +};
-> +
-> +&pio {
-> +
-> +	i2c1_pins: i2c1-pins {
-> +		pins {
-> +			pinmux =3D <PINMUX_GPIO58__FUNC_B1_SDA1>,
-> +				 <PINMUX_GPIO57__FUNC_B1_SCL1>;
-> +			bias-pull-up =3D <MTK_PULL_SET_RSEL_011>;
-> +			drive-strength-microamp =3D <1000>;
-> +		};
-> +	};
-> +
-> +	mmc0_default_pins: mmc0-default-pins {
-> +		pins-clk {
-> +			pinmux =3D
-> <PINMUX_GPIO157__FUNC_B1_MSDC0_CLK>;
-> +			drive-strength =3D <6>;
-> +			bias-pull-down =3D <MTK_PUPD_SET_R1R0_10>;
-> +		};
-> +
-> +		pins-cmd-dat {
-> +			pinmux =3D
-> <PINMUX_GPIO161__FUNC_B1_MSDC0_DAT0>,
-> +			=09
-> <PINMUX_GPIO160__FUNC_B1_MSDC0_DAT1>,
-> +			=09
-> <PINMUX_GPIO159__FUNC_B1_MSDC0_DAT2>,
-> +			=09
-> <PINMUX_GPIO158__FUNC_B1_MSDC0_DAT3>,
-> +			=09
-> <PINMUX_GPIO154__FUNC_B1_MSDC0_DAT4>,
-> +			=09
-> <PINMUX_GPIO153__FUNC_B1_MSDC0_DAT5>,
-> +			=09
-> <PINMUX_GPIO152__FUNC_B1_MSDC0_DAT6>,
-> +			=09
-> <PINMUX_GPIO151__FUNC_B1_MSDC0_DAT7>,
-> +			=09
-> <PINMUX_GPIO156__FUNC_B1_MSDC0_CMD>;
-> +			input-enable;
-> +			drive-strength =3D <6>;
-> +			bias-pull-up =3D <MTK_PUPD_SET_R1R0_01>;
-> +		};
-> +
-> +		pins-rst {
-> +			pinmux =3D
-> <PINMUX_GPIO155__FUNC_O_MSDC0_RSTB>;
-> +			drive-strength =3D <6>;
-> +			bias-pull-up =3D <MTK_PUPD_SET_R1R0_01>;
-> +		};
-> +	};
-> +
-> +	mmc0_uhs_pins: mmc0-uhs-pins {
-> +		pins-clk {
-> +			pinmux =3D
-> <PINMUX_GPIO157__FUNC_B1_MSDC0_CLK>;
-> +			drive-strength =3D <8>;
-> +			bias-pull-down =3D <MTK_PUPD_SET_R1R0_10>;
-> +		};
-> +
-> +		pins-cmd-dat {
-> +			pinmux =3D
-> <PINMUX_GPIO161__FUNC_B1_MSDC0_DAT0>,
-> +			=09
-> <PINMUX_GPIO160__FUNC_B1_MSDC0_DAT1>,
-> +			=09
-> <PINMUX_GPIO159__FUNC_B1_MSDC0_DAT2>,
-> +			=09
-> <PINMUX_GPIO158__FUNC_B1_MSDC0_DAT3>,
-> +			=09
-> <PINMUX_GPIO154__FUNC_B1_MSDC0_DAT4>,
-> +			=09
-> <PINMUX_GPIO153__FUNC_B1_MSDC0_DAT5>,
-> +			=09
-> <PINMUX_GPIO152__FUNC_B1_MSDC0_DAT6>,
-> +			=09
-> <PINMUX_GPIO151__FUNC_B1_MSDC0_DAT7>,
-> +			=09
-> <PINMUX_GPIO156__FUNC_B1_MSDC0_CMD>;
-> +			input-enable;
-> +			drive-strength =3D <8>;
-> +			bias-pull-up =3D <MTK_PUPD_SET_R1R0_01>;
-> +		};
-> +
-> +		pins-ds {
-> +			pinmux =3D
-> <PINMUX_GPIO162__FUNC_B0_MSDC0_DSL>;
-> +			drive-strength =3D <8>;
-> +			bias-pull-down =3D <MTK_PUPD_SET_R1R0_10>;
-> +		};
-> +
-> +		pins-rst {
-> +			pinmux =3D
-> <PINMUX_GPIO155__FUNC_O_MSDC0_RSTB>;
-> +			drive-strength =3D <8>;
-> +			bias-pull-up =3D <MTK_PUPD_SET_R1R0_01>;
-> +		};
-> +	};
-> +};
-> +
-> +&pmic {
-> +	interrupt-parent =3D <&pio>;
-> +	interrupts =3D <222 IRQ_TYPE_LEVEL_HIGH>;
-> +
-> +	mt6359keys: keys {
-> +		compatible =3D "mediatek,mt6359-keys";
-> +		mediatek,long-press-mode =3D <1>;
-> +		power-off-time-sec =3D <0>;
-> +
-> +		power-key {
-> +			linux,keycodes =3D <KEY_POWER>;
-> +			wakeup-source;
-> +		};
-> +	};
-> +};
+Perhaps it could follow a different pattern:
+    iommu_dev_get_domain_for_driver(struct device *dev);
+
+With a simple note highlighting to be used by IOMMU drivers in the
+iommu callback functions like attach_dev.
+
+Nicolin
 
