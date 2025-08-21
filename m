@@ -4,71 +4,119 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE6C4CA0EEB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Aug 2025 09:39:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47FCDCA0EFA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Aug 2025 09:40:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k8q6wvM0q3RSSVwfq9DHRT2Z/mmz80urXquxKq0rRn4=; b=ED9DGR9p1wVUl6bmu9n3eETJKT
-	mdlEnIgXg95D525SLNMFY1lb+iMplQzA1KJfG/S0TqJW89/3yiEAoeKSdW7Rr9SMfKpuQMMNXeLZ0
-	jgreatfGF0mR7/PiAr2h2HSNXXSb1DaqHRF9Sc+fv4gydW6lJCivJw4X1VBLC7E5+RwOpa8msr0td
-	H+TJ0Ijl3nc7UsDL8NPIwHIlrlNKvInv5nRJWxdQvoasUIOn5xIZZ630jiKvs+FSIGK+g99LgzuEs
-	hjrQ52IeVsPtlxzTgUB1zYQ39+LZjCXw7A9KvdZ6x3CG4FzbiD8ikVa6HOeXkIJwiFTAGKr7SXMzw
-	JiwqEH0g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FNRluRRDHKe0YK+zSW5IoCwbe6CrICaUE6zkiO+/jlk=; b=gI9xJb6pRnNS1hlT9oNwjfNYn6
+	DxOnGNHFi2tS2wYkHy6mcc96mAf1HJnmnUKkz/7JUvqQe4hPGZIfv3tvm7rwDBNbQopGdLcWp+GNw
+	3kwc4gNt34MUahYsbuZ2X11DKvdEXgZHUTF62QnfvA+7PBzcVEbYR7zNEGi9zWyMgxlaL6a379KYG
+	vClD9bPwZe/HCk/g8KRiYIkHwNliKZ8bMrt0L4I+ZZBOwmihKVmSUyj/0XDS9mMF6SrMPKxz20BQ4
+	CcYBuuWayccoBeKRZwZCet+hvSQrMwimI0Pnc2SF2RsmX2NDr38/hzHJT3T1ZEpBC0NNabBCl/++o
+	auS5hJ2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1up1lo-0000000GQEO-0yFZ;
-	Thu, 21 Aug 2025 09:39:44 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1up1mA-0000000GQo4-0ZUe;
+	Thu, 21 Aug 2025 09:40:06 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uozXZ-0000000G4hO-2ubq;
-	Thu, 21 Aug 2025 07:16:54 +0000
+	id 1uozkZ-0000000G6uB-01IE;
+	Thu, 21 Aug 2025 07:30:20 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1F96543B8A;
-	Thu, 21 Aug 2025 07:16:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3C277C2BC86;
-	Thu, 21 Aug 2025 07:16:52 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 63C3A5C5C0C;
+	Thu, 21 Aug 2025 07:30:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7D869C4CEED;
+	Thu, 21 Aug 2025 07:30:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755760613;
-	bh=Up9g/vI3BHwIi+2MZpJPHWZDdmmaSTnrlf6OaSDp48E=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Z4HgHHSW26FlK4PTq5Po5duNBcyGsieoINkWA0JLtgZFu0Za+g3yXAzJogDq3TOHN
-	 muD88A6G1NLSRF1QtrshCP+o3FBA5xRw5rxGFlTtajuLG93TJyuM03PwX+6xbvHyX5
-	 Ar31qrHmZ1T+zTHSCVRKheegezxxIdck5GESemAchjeSFbg6dq9W004RgkRJJ/76rY
-	 XtksCiXETk0d8P/q4fBEH9r4ivd3ZoFdwhQ8WLzuua/zNrQSOaOZerABC4MoFgCZLY
-	 oR7oCCSHTFO4En8VwwcCUn9YaXdCFO0tHS9wsu8m5P4yE+GtHowh+9J+Bab8Os4Vd8
-	 75AvpDAmni6+Q==
-Date: Thu, 21 Aug 2025 09:16:49 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Julien Massot <julien.massot@collabora.com>
-Cc: kernel@collabora.com, Michael Turquette <mturquette@baylibre.com>, 
-	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Ikjoon Jang <ikjn@chromium.org>, 
-	Enric Balletbo i Serra <eballetbo@kernel.org>, Chen-Yu Tsai <wenst@chromium.org>, 
-	Weiyi Lu <weiyi.lu@mediatek.com>, Eugen Hristev <eugen.hristev@linaro.org>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
-	Julien Massot <jmassot@collabora.com>, Sean Wang <sean.wang@kernel.org>, 
-	Linus Walleij <linus.walleij@linaro.org>, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-sound@vger.kernel.org, linux-gpio@vger.kernel.org
+	s=k20201202; t=1755761417;
+	bh=vxlY/X8dtM1EGO1feIikldcljazKbwBz1ntaXK3cUpU=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=q97ul9Ozfed6vNpxwGCGCpJMgRcuiAvswkhCRQbdWAFXt4dVe1ucLVPd4Mdmjv8Q6
+	 FV+Egb9unFMjK3NlU2eiA9LRsUonhKNDhF0iLQormve3cdIM0PXHTJP0DGpbfXu0H3
+	 aPpkqbqQglfni0SyYuPI9Ym4BhcSNPQFig+CrxXS51+LKYt+eQ4LAZZKIIlrf8/RaE
+	 k3xE7clHFNWfX4vFDpZm8nEnHS2yUmdyWUYc/nzrkpDmDUNIQC1RYp9igzIaLMD3/O
+	 j4M/OFbOp8t/YQYCpG7rqItsqn2++bZj2ulhgTnNJ8TldYriooq4B68EcbLulA16CK
+	 k0vj578P3qyyg==
+Message-ID: <376a8f00-e803-4ab1-a54e-6535e41ebaee@kernel.org>
+Date: Thu, 21 Aug 2025 09:30:09 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2 1/6] dt-bindings: clock: mediatek: Add power-domains
  property
-Message-ID: <20250821-whimsical-mustang-of-champagne-ca7a7d@kuoka>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Julien Massot <julien.massot@collabora.com>
+Cc: kernel@collabora.com, Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Ikjoon Jang <ikjn@chromium.org>,
+ Enric Balletbo i Serra <eballetbo@kernel.org>,
+ Chen-Yu Tsai <wenst@chromium.org>, Weiyi Lu <weiyi.lu@mediatek.com>,
+ Eugen Hristev <eugen.hristev@linaro.org>, Liam Girdwood
+ <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Julien Massot <jmassot@collabora.com>, Sean Wang <sean.wang@kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>, linux-clk@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-sound@vger.kernel.org, linux-gpio@vger.kernel.org
 References: <20250820-mtk-dtb-warnings-v2-0-cf4721e58f4e@collabora.com>
  <20250820-mtk-dtb-warnings-v2-1-cf4721e58f4e@collabora.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20250820-mtk-dtb-warnings-v2-1-cf4721e58f4e@collabora.com>
+ <20250821-whimsical-mustang-of-champagne-ca7a7d@kuoka>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <20250821-whimsical-mustang-of-champagne-ca7a7d@kuoka>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250821_001653_751075_1DF86965 
-X-CRM114-Status: UNSURE (   9.66  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250821_003019_131021_DF2EC12A 
+X-CRM114-Status: GOOD (  11.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,23 +131,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 20, 2025 at 03:44:52PM +0200, Julien Massot wrote:
-> The mt8183-mfgcfg node uses a power domain in its device tree node.
-> To prevent schema validation warnings, add the optional `power-domains`
-> property to the binding schema for mediatek syscon clocks.
+On 21/08/2025 09:16, Krzysztof Kozlowski wrote:
+> On Wed, Aug 20, 2025 at 03:44:52PM +0200, Julien Massot wrote:
+>> The mt8183-mfgcfg node uses a power domain in its device tree node.
+>> To prevent schema validation warnings, add the optional `power-domains`
+>> property to the binding schema for mediatek syscon clocks.
+>>
+>> Fixes: 1781f2c46180 ("arm64: dts: mediatek: mt8183: Add power-domains property to mfgcfg")
 > 
-> Fixes: 1781f2c46180 ("arm64: dts: mediatek: mt8183: Add power-domains property to mfgcfg")
+> Checkpatch complains here, but more important - where is explanation of
+> dropped tag?
+> 
+>> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> 
+> But this tag appeared? It wasn't even given!
+> 
+> You remove public tags and add tags never given on the lists.
 
-Checkpatch complains here, but more important - where is explanation of
-dropped tag?
-
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-But this tag appeared? It wasn't even given!
-
-You remove public tags and add tags never given on the lists.
+I found Angelo's tag, but still dropping other acks is not explained.
 
 Best regards,
 Krzysztof
-
 
