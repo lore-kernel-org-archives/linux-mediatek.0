@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B50EBCA0EDC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Aug 2025 07:00:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39C4ACA0EFA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Aug 2025 07:00:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HGOm25qUl9vuhZbo6e1871qgU9amlRVti6anmYOi/MY=; b=GcHsd76DreVSLPrgqXGU803Wuq
-	qj24SsvYtT7GOlsvXVeNQVGBaQ7951erOVMmaD9gwPqAJPCHeNah7B1zChlHicsb7jdEyYmsW241T
-	OUpkOXO26zdHZE8V2gB8LxWPWt2y9XYq1+mT2teYzlV4wDT4Uzwkn21t5km5sWMnwTECvCLbP5MIx
-	gt1FUshYtLZj38X0dW59ZVeDK0HAG5fsDAO4q6HPirvh1C9WfAIbfN/gdSTs9qxSXzL8fm/h9A93Y
-	IvmLHHoW5KXvow/IhBzEv3R1tEqljm91suWtT4lo/JXByzcYlpORjmpLLnWR/nds0Zco3B23Z35fc
-	cr9j+A8w==;
+	bh=Zr1ClKYb90yrQwVrgN/bVVgL9u31pYqFjhU2JA5XXNQ=; b=zPUJOxJtCzL8YcNxLwvbHTXLXQ
+	KLR7KQdbvr0nsy8nhRBspd2BEIUTrJJGwkuaqidyPLPTU354MbYtFZWNL3wpTAdqxkuFY0p3Ng9j4
+	Q1G47TpPzMxwwkTs8gOIFjZht0cuLvSe0r4Zk/aFVxRF8rRqGcDcCgBF7ju05zMYJtQecLKJJtK59
+	CWtSNQwl3a93SxvHHvs9wgN6hu04KZNfCFvHSvj+PYQtuM1ja1oei51RXkXIqcNzBhFYHGFwpiU0M
+	r/p6pY/93EndHbTKrin385Hx4s8aFzrDHmHQ9E2+eFeziGwXQXI71Tss05HSgPQ3xFZDMc3HQzXJK
+	BHPNa/SQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uozHb-0000000G29E-1cGy;
-	Thu, 21 Aug 2025 07:00:23 +0000
+	id 1uozHw-0000000G2P8-0DO4;
+	Thu, 21 Aug 2025 07:00:44 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoz1K-0000000Fz2y-00ab;
-	Thu, 21 Aug 2025 06:43:34 +0000
+	id 1uoz3y-0000000FzYF-3Ce4;
+	Thu, 21 Aug 2025 06:46:18 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 3826D601E9;
-	Thu, 21 Aug 2025 06:43:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5356EC4CEED;
-	Thu, 21 Aug 2025 06:43:32 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 28592601E9;
+	Thu, 21 Aug 2025 06:46:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 44E33C4CEED;
+	Thu, 21 Aug 2025 06:46:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755758612;
-	bh=zaVWerZTZLJ8YGpnqDKef0xiQVpqgGGNlE3XojBrVrQ=;
+	s=k20201202; t=1755758777;
+	bh=i+n/4B/MiYix4PhRatm6mvUq8Z++Ah+iaPndzC5npow=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=RlbxLLphD3s6EoJ5D3WCBJhkvpXfyxmkM+Qya8AKcXeBnVJLqM3Vsrc3PdaE1oGl/
-	 Qo+edh7KSJ0kTQEF7CnlEohahPoHRRs2dickP/uGTguIIdLZVFlS2b52/8ecx5Nk/m
-	 7T2LcSdChTzPHT3itMuL39yH6al0pQprxVmGFsBW9p+lMgWfXyVZWtte+oZjqxv2Uz
-	 sksMu6TvOONzSOEaSF9B1dAWw/J39W6ARtM4nHVYp3KwZbqb9VuE1HT0enMMEDhCZW
-	 i8kxRu1EZ2sYpSQHNpCitTBsBoN1OR7Lkjq536twpmdXapSiVtjLmM2GbVlIRiytW9
-	 +hYeRC8retWSA==
-Date: Thu, 21 Aug 2025 08:43:30 +0200
+	b=qWVE8Im28bcNByDb4nmbii+MVUYW1gsPh1TPxiVjMbVj3iGap2s3VVKOPiLVFPKnd
+	 4Eu+45zODx7dsxT4FLsoLUe0zDJrLe5xa06Y4lRzGAeJkKV+7Q3eT3SmSmt7R0F38z
+	 ra0pegJVHDO71R+XeH/4/xx8U4aL3pNN3wGmeUw2uRh0CQ0qpXe4RFtix1Xr1djnbJ
+	 MJGnBfQGKhAyz67jrXPCbdi1Q5DUERLN2mJz5bq4a9VH+9MpAN986KJJnQD3D9pdrV
+	 POjph9k+6aZgMrrQ5ZAoMjAy48TcKN2O+H2a4/6p5ClojOr7JIlJnE6/E4UsYZ4wFd
+	 c5wAQG7EG7dcg==
+Date: Thu, 21 Aug 2025 08:46:15 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
 Cc: airlied@gmail.com, amergnat@baylibre.com, andrew+netdev@lunn.ch, 
@@ -59,15 +59,15 @@ Cc: airlied@gmail.com, amergnat@baylibre.com, andrew+netdev@lunn.ch,
 	linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, linux-gpio@vger.kernel.org, 
 	linux-input@vger.kernel.org, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
 	linux-mediatek@lists.infradead.org, linux-sound@vger.kernel.org, netdev@vger.kernel.org
-Subject: Re: [PATCH v1 03/14] dt-bindings: arm: mediatek: mmsys: Add
- assigned-clocks/rates properties
-Message-ID: <20250821-electric-kestrel-of-awe-cb89dc@kuoka>
+Subject: Re: [PATCH v1 01/14] media: dt-bindings: Convert MediaTek mt8173-mdp
+ bindings to YAML
+Message-ID: <20250821-silky-slug-of-novelty-e4bb64@kuoka>
 References: <20250820171302.324142-1-ariel.dalessandro@collabora.com>
- <20250820171302.324142-4-ariel.dalessandro@collabora.com>
+ <20250820171302.324142-2-ariel.dalessandro@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20250820171302.324142-4-ariel.dalessandro@collabora.com>
+In-Reply-To: <20250820171302.324142-2-ariel.dalessandro@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,35 +82,165 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 20, 2025 at 02:12:51PM -0300, Ariel D'Alessandro wrote:
-> Current, the DT bindings for MediaTek mmsys controller is missing the
-> assigned-clocks and assigned-clocks-rates properties. Add these and
+On Wed, Aug 20, 2025 at 02:12:49PM -0300, Ariel D'Alessandro wrote:
+> Convert the existing text-based DT bindings for MediaTek MT8173 Media Data Path
+> to a YAML schema.
 
-No, they do not miss them. I don't understand why you are adding these.
+Please wrap commit message according to Linux coding style / submission
+process (neither too early nor over the limit):
+https://elixir.bootlin.com/linux/v6.4-rc1/source/Documentation/process/submitting-patches.rst#L597
 
-> update the example as well.
 > 
 > Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
 > ---
->  .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml | 9 +++++++++
->  1 file changed, 9 insertions(+)
+>  .../bindings/media/mediatek,mt8173-mdp.yaml   | 174 ++++++++++++++++++
+>  .../bindings/media/mediatek-mdp.txt           |  95 ----------
+>  2 files changed, 174 insertions(+), 95 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8173-mdp.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/media/mediatek-mdp.txt
 > 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> index 3f4262e93c789..d045d366eb8e2 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> @@ -68,6 +68,12 @@ properties:
->        of the power controller specified by phandle. See
->        Documentation/devicetree/bindings/power/power-domain.yaml for details.
->  
-> +  assigned-clocks:
-> +    maxItems: 1
+> diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8173-mdp.yaml b/Documentation/devicetree/bindings/media/mediatek,mt8173-mdp.yaml
+> new file mode 100644
+> index 0000000000000..f3a08afc305b1
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/mediatek,mt8173-mdp.yaml
+> @@ -0,0 +1,174 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/media/mediatek,mt8173-mdp.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
 > +
-> +  assigned-clock-rates:
-> +    maxItems: 1
+> +title: MediaTek MT8173 Media Data Path
 > +
+> +maintainers:
+> +  - Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+> +
+> +description:
+> +  Media Data Path is used for scaling and color space conversion.
+> +
+> +properties:
+> +  compatible:
+> +    oneOf:
+> +      - items:
 
-Drop both, completely redundant and not actually in the scope of the binding.
+Just enum, no items here
+
+
+> +          - enum:
+> +              - mediatek,mt8173-mdp-rdma
+> +              - mediatek,mt8173-mdp-rsz
+> +              - mediatek,mt8173-mdp-wdma
+> +              - mediatek,mt8173-mdp-wrot
+> +      - items:
+> +          - enum:
+> +              - mediatek,mt8173-mdp-rdma
+> +              - mediatek,mt8173-mdp-rsz
+> +              - mediatek,mt8173-mdp-wdma
+> +              - mediatek,mt8173-mdp-wrot
+> +          - const: mediatek,mt8173-mdp
+
+This makes no sense. How devices can be compatible and can not be
+compatible.
+
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  clocks: true
+
+No, there's no such syntax. Look at other bindings.
+
+
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  iommus:
+> +    description: |
+
+Drop |
+
+> +      This property should point to the respective IOMMU block with master port as argument,
+> +      see Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
+
+Drop entire description, completely redundant. I don't know why my patch
+fixing this was not applied, so you keep repeating same mistakes...
+
+> +    maxItems: 1
+> +
+> +  mediatek,vpu:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description:
+> +      Describes point to vpu.
+
+Useless description. We see that from the property name. Explain the
+purpose in the hardware.
+
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - clocks
+> +  - power-domains
+> +
+> +allOf:
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            const: mediatek,mt8173-mdp-rdma
+> +    then:
+> +      properties:
+> +        clocks:
+> +          items:
+> +            - description: Main clock
+> +            - description: Mutex clock
+> +    else:
+> +      properties:
+> +        clocks:
+> +          items:
+> +            - description: Main clock
+> +
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            enum:
+> +              - mediatek,mt8173-mdp-rdma
+> +              - mediatek,mt8173-mdp-wdma
+> +              - mediatek,mt8173-mdp-wrot
+> +    then:
+> +      required:
+> +        - iommus
+> +
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            const: mediatek,mt8173-mdp
+
+This makes no sense either.
+
+> +    then:
+> +      required:
+> +        - mediatek,vpu
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/mt8173-clk.h>
+> +    #include <dt-bindings/memory/mt8173-larb-port.h>
+> +    #include <dt-bindings/power/mt8173-power.h>
+> +
+> +    soc {
+> +        #address-cells = <2>;
+> +        #size-cells = <2>;
+> +
+> +        mdp_rdma0: rdma@14001000 {
+
+One example is enough. Two could be fine if they differ significantly.
 
 Best regards,
 Krzysztof
