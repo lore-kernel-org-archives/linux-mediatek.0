@@ -4,70 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B80F4CA0EDC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Aug 2025 07:14:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27595CA0EF8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Aug 2025 07:17:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bOPorWl5Uhit+PYqtGOxV4ZjgLuFoKweoFQEWjf558M=; b=HO5TK2fChylEdqKprmKqmK6/Lv
-	ebfDNR9DWt3foxjCk0w+oZU8dQs2WIngS0yM5/G3p/qudSthTE1I1txG4IFweyoWA/IftZcRv3B3J
-	AexxtfDkwVeoPlCS2z0LkHSF6ECthk+DQDPmvFbiqARX1eXK4wE81P3eJd/9Y7qbgMA8M80U0jvB2
-	Wjzpb1xLMFplgXtBX+PsN0nFLNqSDxK9yzssWuSmdiupFqXonDEM5mXFAQ6k4U19h1t2Rf5GUTbOF
-	o2VWtXIPWoY9k1DaNJVaZDhz1o5HkI3BLska/VgxDXhjV81k02J5RcTw2mLITjfDbBWdCdqCmEtN4
-	pjN4Yiuw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=pLhC4lsKdeJ9/A2G31nCU/i9ls1OYFW3dx0kccZaDUU=; b=0iwdOSvpUJCId24sKGOv+a/hvo
+	u072qV20qNMZjUmhJ5XaNOlGkxm0liezjCGkyzkMfWz5IUTLAuANg+atpmp/lJOQUapm0nxlJ1I37
+	HWUMblc5takWGKN+MXa8RcQiAOE6ES7yySbJmbupH5RXcvzpJXqeA0mWe+QuDbykSKQHtjXhpu4Qt
+	fbqrSKRGjoduBijgktxWrtBL9C6wYQopshJ3I8JXlAzzvNBS4Di7YVV9t2hdR3YTZI+JaaSf3iloJ
+	7EAz9SKAcexArPb4E6HHKBBTFZc0qksliGmNdc9V7fFTS2y9RbsdJK0yWbYBaZOuT4gOAF6jH30dF
+	o1Zm6jFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uozVW-0000000G4Rg-3ala;
-	Thu, 21 Aug 2025 07:14:46 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uozYG-0000000G4op-4AG4;
+	Thu, 21 Aug 2025 07:17:36 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uozAc-0000000G0xA-3mim;
-	Thu, 21 Aug 2025 06:53:11 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 016B0601D7;
-	Thu, 21 Aug 2025 06:53:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 22860C4CEED;
-	Thu, 21 Aug 2025 06:53:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755759189;
-	bh=Bq9tP1dBXwQ3sRC4YKUxmHUFPSXpyXHLlJKSZ1attcQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Qs7XcmMvSsV7ZlsJpkSxU/mY6+27bCRXN2nW1JYMEkIZbbbxqeCb++SHayuZouPBe
-	 pXLdV6i4y+uV93jaiaeZXB1iriW3zE/bbKi69plgG3xa5OIs0Qi76qhRmK7VU1E6ss
-	 LtnBtwtwFnfX6J44cs071lPZ9x5vD+8uwLd7zPounkMciOpdxkDvBvqh8jlNUP8dii
-	 u2f72i1+0PrrVy50oULnOBet9AcjJiPjRXovxGrycQLyhLCkK3Ylvj06fa/HZTKOhm
-	 8BZFUH4yFIxuQlwwigXeCGWanttsE4WFa/g75aoSrNq3PTsRHEf2r+EsWQcMVJMPEe
-	 J0JNPZ+l1tSHA==
-Date: Thu, 21 Aug 2025 08:53:07 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-Cc: airlied@gmail.com, amergnat@baylibre.com, andrew+netdev@lunn.ch, 
-	andrew-ct.chen@mediatek.com, angelogioacchino.delregno@collabora.com, broonie@kernel.org, 
-	chunkuang.hu@kernel.org, ck.hu@mediatek.com, conor+dt@kernel.org, davem@davemloft.net, 
-	dmitry.torokhov@gmail.com, edumazet@google.com, flora.fu@mediatek.com, 
-	houlong.wei@mediatek.com, jeesw@melfas.com, jmassot@collabora.com, kernel@collabora.com, 
-	krzk+dt@kernel.org, kuba@kernel.org, kyrie.wu@mediatek.corp-partner.google.com, 
-	lgirdwood@gmail.com, linus.walleij@linaro.org, louisalexis.eyraud@collabora.com, 
-	maarten.lankhorst@linux.intel.com, matthias.bgg@gmail.com, mchehab@kernel.org, 
-	minghsiu.tsai@mediatek.com, mripard@kernel.org, p.zabel@pengutronix.de, pabeni@redhat.com, 
-	robh@kernel.org, sean.wang@kernel.org, simona@ffwll.ch, 
-	support.opensource@diasemi.com, tiffany.lin@mediatek.com, tzimmermann@suse.de, 
-	yunfei.dong@mediatek.com, devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, linux-gpio@vger.kernel.org, 
-	linux-input@vger.kernel.org, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-sound@vger.kernel.org, netdev@vger.kernel.org
-Subject: Re: [PATCH v1 10/14] regulator: dt-bindings: Convert Dialog
- Semiconductor DA9211 Regulators to YAML
-Message-ID: <20250821-practical-coyote-of-hail-d2fddb@kuoka>
-References: <20250820171302.324142-1-ariel.dalessandro@collabora.com>
- <20250820171302.324142-11-ariel.dalessandro@collabora.com>
+	id 1uozGM-0000000G1n5-3p3u
+	for linux-mediatek@lists.infradead.org;
+	Thu, 21 Aug 2025 06:59:08 +0000
+Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-afcb731ca55so7448966b.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 20 Aug 2025 23:59:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1755759545; x=1756364345; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=pLhC4lsKdeJ9/A2G31nCU/i9ls1OYFW3dx0kccZaDUU=;
+        b=lTG5jLyJcZaKkJGNrE1OHMchDQ7c2+kHduIbfTbPHlWL8bANMkPj1ah+/mZg3Axu6C
+         CpOxkn+1n9uybsKwEMmIedLPBxtSWZ5UT6zLw46OekN3ZkDTNkHg8E6al/pKxyfpCniN
+         5nC+y8KPmV3jGt+Smm1QH45iJ4LLgCLH4XmAxKiyG7al22Guq4TSuL7NAzRfOkOzFlb0
+         WFVETb8cFDtObv0MngnVzxShEuPQiwBDlP5MDLuRPDckLhldHbEPVeJm2+aMDETDUwJQ
+         OkdcZpkqU07kz/FmlbkxxbO+mUpnHl0yqFQHtqfXD+YnnCogON81/te1fWns6Wu/Keve
+         GKOA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1755759545; x=1756364345;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=pLhC4lsKdeJ9/A2G31nCU/i9ls1OYFW3dx0kccZaDUU=;
+        b=Y5Fbwz/fFEV+6cLTnx2FJ0eGBpK/smX88PgCs2LNw57q6pMc00S9p0WTdL61W5bBeO
+         TIxBianmgKejKZxhl+7Zwf1Os7Ac0PVYzz8KSUQ9PurMxegQO1z/56dKAc+iXgFmfo4i
+         1lkD5M87jBtmo5xdBK+uF2sQHpwx2aJaMLt79fRpw4WjbBHmuDqYQ0mFAO+1GuBYonvZ
+         oGbzCtO1sJsc0A5+vgz+5t0OZoZBPH3dDY21W271kLf74kXMFYNgQbeWB5pH082Cm/qG
+         UZtdcua2zuQ87Dor//agnHP6sLcKP+lZxNhaDALi+thJYtoU4Oap6r67Lri5t60wnPD2
+         zmNA==
+X-Forwarded-Encrypted: i=1; AJvYcCWBxYpDiXp0EDrZnqRpgbTkZMFqdAQ7xYm/is6yfZ0fmihSPkm4sIUMrLTiotWAb94SzZN8PzVznu3Th4jI7w==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy5L7PJqV8HVD+0X8aPLR8RgfRLB98bf98FMTclzQMaCc+RrMsT
+	ZXLIwjKhU+FrcNk0cfIK/oyH05GCV+GVBDCA3pZS9FMjgMwCrjB9i3DsPpLS7d+d2gg=
+X-Gm-Gg: ASbGncvd0lrTQkqeNe7hbJT1vJlEmK7C0OboRD7v6Zrsuef31LuZIzLHQTILvY6BQ2a
+	WxRAK0eOsIXVod5hYhj8N4sZkJ9nhg2rTg+FEataIGWW6LlRfZG7m4IT99B2IqJJXOnG1wNMsgg
+	89Ave47kXBrfn3yd0ZT4fzrYYiEeUmT0BqvppW32CsNezJtGZgBRszShFmLF9u1jxCbP1c2ae+d
+	xwuK+dw5NMCY3mVFxYgCSLtGFtnbojE5DfYwO/WpOVwkfoOfjlhqwk/VIG5ljsgrVlv0oZyqny6
+	lgi+5gNOrFt0J0I92baA3JOyoqeGCeEOPpJ1uSEjcFJrvdJJexsFE/lnluqw0J6QxgwGDpdZ3J1
+	zSzWJlGbAAJ4Jjk9O+A3U0h8uexDGR2NsMw==
+X-Google-Smtp-Source: AGHT+IEuVTZYnamN/Xowwi1nRdH6LMjKeL4XdJAvBXyBCXh3wYl1BQwHweSgtnWHDmWjFNyCCYNcGw==
+X-Received: by 2002:a17:907:2d90:b0:ae3:5d47:634 with SMTP id a640c23a62f3a-afe07e9d221mr56729866b.9.1755759545251;
+        Wed, 20 Aug 2025 23:59:05 -0700 (PDT)
+Received: from kuoka.. ([178.197.219.123])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-afdf0ba2a42sm296119266b.49.2025.08.20.23.59.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 20 Aug 2025 23:59:04 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: [PATCH v2] media: dt-bindings: mediatek: Constrain iommus
+Date: Thu, 21 Aug 2025 08:59:01 +0200
+Message-ID: <20250821065900.17430-2-krzysztof.kozlowski@linaro.org>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20250820171302.324142-11-ariel.dalessandro@collabora.com>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3795; i=krzysztof.kozlowski@linaro.org;
+ h=from:subject; bh=noJnXR5fz5uvdCvAkcNEa1jNmbr6rkH0YiAY8IYmjQg=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBopsO0jo7CwTeUi/nTEXn6Hl/cd661HvDUBl1G1
+ CoaNqlc6G2JAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaKbDtAAKCRDBN2bmhouD
+ 13pQD/9vTqb+ZSb40TqgV9s9GSHbKX+jREpUaz1Lbl/H9x1SCzuYcFTdKLgx0SBdIv/3/DnkpJq
+ vo4NhdsbhEwABDRNfTFkidTninZ4+sOOW9IBkJcd81ceHIlMX/+8FhLS+PaWcfQMGzjmOWO2LeM
+ hl1knU+od7Z5A6vy6xOrsQ+UIqs3NPsxc7KkHDjxYdc5HynoLR5dP02syrmBRRvX7A19iy+9RnS
+ ZeW4b4suXJhVRt6Bp+OT3EGGuQxXuJ/lmlt5AX+5b/lYeUkw1+WQSRJDDEpl/7zgoQODT35oveh
+ kmYdjWLaxjh6T99vUluCdHMm20oVUoiF1ESlZ+juv+2wkQ83KrC7H6V4mh24OywQu+omV6FXXgS
+ UkP1ZpMX318tChOvSCx+Flh5W66b+1NAfDyq4eFJzqJsgd8BUj4HP7AXPZtEYZWUB+TlxW58LVY
+ AUqfnNxQKwMp4in3IYO2O0a7/ybRfGUOBxTzYITO4PWbHZq3ofmPG1GG8qayMt9OFJbDjBP/gUb
+ IxShcYENueZ0YrKLb82fSGXqRGhcfnFNr8AB8APcAIjlUg40iWE9ySR+DnZagKj74puDbphzG0Q
+ iUyzR25u2kDVdGOnM5FcwTuUYBApUdObGTvJlNtxmoBzWfuZ6LQyU4DO3bPoiltiVSoKKt3AQlG vlGi4hhxJqNiBxQ==
+X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp; fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250820_235906_963969_0E8CFEF7 
+X-CRM114-Status: GOOD (  10.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,127 +125,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 20, 2025 at 02:12:58PM -0300, Ariel D'Alessandro wrote:
-> Convert the existing text-based DT bindings for Dialog Semiconductor DA9211
-> Voltage Regulators family to a YAML schema. Examples are simplified, as
-> these are all equal.
+Lists should have fixed constraints, because binding must be specific in
+respect to hardware.  Add missing constraints to number of iommus in
+Mediatek media devices and remove completely redundant and obvious
+description.
 
-Also not wrapped... fix your editor to recognize how commits are
-written.
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-> 
-> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-> ---
+---
 
-...
+Changes in v2:
+1. Ack
+2. Mention dropping description
+---
+ .../bindings/display/mediatek/mediatek,ovl-2l.yaml           | 5 ++---
+ .../devicetree/bindings/display/mediatek/mediatek,ovl.yaml   | 5 ++---
+ .../devicetree/bindings/display/mediatek/mediatek,rdma.yaml  | 4 +---
+ .../devicetree/bindings/display/mediatek/mediatek,wdma.yaml  | 4 +---
+ 4 files changed, 6 insertions(+), 12 deletions(-)
 
-> +---
-> +$id: http://devicetree.org/schemas/regulator/dlg,da9211.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: |
-
-Drop |
-
-> +  Dialog Semiconductor DA9211/DA9212/DA9213/DA9223/DA9214/DA9224/DA9215/DA9225
-> +  Voltage Regulator
-> +
-> +maintainers:
-> +  - Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - "dlg,da9211"
-> +      - "dlg,da9212"
-> +      - "dlg,da9213"
-> +      - "dlg,da9223"
-> +      - "dlg,da9214"
-> +      - "dlg,da9224"
-> +      - "dlg,da9215"
-> +      - "dlg,da9225"
-
-No quotes. I don't think this was ever tested.
-
-Also, keep it properly ordered
-
-
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  regulators:
-> +    type: object
-> +    additionalProperties: false
-> +    description: |
-
-Drop |
-
-> +      List of regulators provided by the device
-> +
-> +    patternProperties:
-> +      "^BUCK([A-B])$":
-
-[AB]
-
-> +        type: object
-> +        $ref: regulator.yaml#
-> +        description: |
-> +          Properties for a single BUCK regulator
-> +
-> +        properties:
-> +          regulator-initial-mode:
-> +            items:
-> +              enum: [ 1, 2, 3 ]
-> +            description: Defined in include/dt-bindings/regulator/dlg,da9211-regulator.h
-> +
-> +          regulator-allowed-modes:
-> +            items:
-> +              enum: [ 1, 2, 3 ]
-> +            description: Defined in include/dt-bindings/regulator/dlg,da9211-regulator.h
-> +
-> +          enable-gpios:
-> +            maxItems: 1
-> +            description: Specify a valid GPIO for platform control of the regulator
-
-Drop description, obvious.
-
-> +
-> +        unevaluatedProperties: false
-
-For nested blocks this goes after $ref: regulator.
-
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +  - regulators
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/regulator/dlg,da9211-regulator.h>
-> +
-> +    i2c1 {
-
-i2c
-
-> +        #address-cells = <1>;
-> +        #size-cells = <0>;
-> +
-> +        da9212: da9212@68 {
-
-Node names should be generic. See also an explanation and list of
-examples (not exhaustive) in DT specification:
-https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
-
-
-Best regards,
-Krzysztof
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-2l.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-2l.yaml
+index bacdfe7d08a6..ac0d924a451b 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-2l.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-2l.yaml
+@@ -45,9 +45,8 @@ properties:
+       - description: OVL-2L Clock
+ 
+   iommus:
+-    description:
+-      This property should point to the respective IOMMU block with master port as argument,
+-      see Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
++    minItems: 1
++    maxItems: 2
+ 
+   mediatek,gce-client-reg:
+     description: The register of client driver can be configured by gce with
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
+index 4f110635afb6..c0fd0a91c4d8 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
+@@ -65,9 +65,8 @@ properties:
+       - description: OVL Clock
+ 
+   iommus:
+-    description:
+-      This property should point to the respective IOMMU block with master port as argument,
+-      see Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
++    minItems: 1
++    maxItems: 2
+ 
+   mediatek,gce-client-reg:
+     description: The register of client driver can be configured by gce with
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
+index 878f676b581f..7e5234def39a 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
+@@ -64,9 +64,7 @@ properties:
+       - description: RDMA Clock
+ 
+   iommus:
+-    description:
+-      This property should point to the respective IOMMU block with master port as argument,
+-      see Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
++    maxItems: 1
+ 
+   mediatek,rdma-fifo-size:
+     description:
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml
+index a3a2b71a4523..276868c0fde7 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml
+@@ -43,9 +43,7 @@ properties:
+       - description: WDMA Clock
+ 
+   iommus:
+-    description:
+-      This property should point to the respective IOMMU block with master port as argument,
+-      see Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
++    maxItems: 1
+ 
+   mediatek,gce-client-reg:
+     description: The register of client driver can be configured by gce with
+-- 
+2.48.1
 
 
