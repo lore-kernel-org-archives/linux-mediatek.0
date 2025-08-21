@@ -4,154 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4CD7CA0EFA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Aug 2025 19:33:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D5ACCA0EFA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Aug 2025 22:35:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZUqfvz8d9K9ODltIL+LeaCIsA/d4p1xyaHIX6SU9BUk=; b=zgsItxwST2I0xtY5wTK3H4bKyk
-	+wQ/2HeOXG9QhFV3nVAiS0CwrwcRyK4NH4+OhLhChCrzPOfvRcHCfDvUD6Cl1QfD+cWBnHrhJZRP6
-	r9GIN9ryMLRNWHD8CutXMJI5QcIJyIRLJa0lgN8K9x0bAgfNJhPY92QJQY4cMTLONjZRvUAKt7pF8
-	bCU/XkelJ2aHL2WXtRI/oqDKtzpg5t3dlwXYocMOISdVsPScCmHwYYCItvm/xJKWuoROHxIzlnrnY
-	Wdxas3aMJk20a4DYAaEx3KMBbC9T2niVaftnFa9JUkXMEe8hozaqyQDn45YGkNuUvh+eARRsii0R1
-	m47cdKpg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ho0ivSIJHvNOvOcTwsdD9Zh4IkmPj248oyPmWagnpLg=; b=btSTPcuTZIItBTk7ElfHw48V1A
+	xkJdck430zAS+OtZkxf5kHYwx1KxQpYd8ht+vVE/cdGIrII1uupos6BBIK8vG3Lx+MS3FuzyznXkn
+	G6zuaClcFgHvuSjuBe3qV3xQecvfQTnv8wmD3Fr+bq40vwSVWWaU4BDCATbK9jaIK3dELB92PueNT
+	bHE+XX920/pWgnWuknRS7QpTNerLEBBZNQFwzfzSL/pkzc2EsyJ5bOsrrBpMbyIGTpgFC/Tth5gAR
+	7xPfhiJFzu/BB3AlifdhjyHBOLy5Zb+53zaP5RLuxmV/qcuVo0goTNfvocRIRR7KUTd6mwEpG6Ogl
+	WiNjb5sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upB2b-00000000JUs-0NuG;
-	Thu, 21 Aug 2025 19:33:41 +0000
-Received: from mail-dm6nam10on2061a.outbound.protection.outlook.com ([2a01:111:f403:2413::61a] helo=NAM10-DM6-obe.outbound.protection.outlook.com)
+	id 1upDso-00000000kaG-2rxB;
+	Thu, 21 Aug 2025 22:35:46 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1up77f-0000000HLBc-3EDf;
-	Thu, 21 Aug 2025 15:22:41 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=WrVWBU0A8tfwtVsqeHHBXW3qT16FCEkQlIvuE5aXwRy2bLqDfXjq1G+asA0bcmu2qwUTXH5rpmM7g0Zih73lZH+hnmm3lQpdJA5ZeErDSxzkHE727C0SlIDNOOH6pU9lGFsDla2vXTaqrlYrUpyqPyHtVtARLMjmSjKyiIWCHQ+iVEExCgXQ8gm2QFrL3eUjVFoUGTUzKl/2gjXtfwRir7k3H/sZcXiOstCvJhjRMRjrAFVlMomwhFiq0rS49c/ySppxZZP75+JPtLE2OC5PJdp0QW22xOiFz/xDsA8e4dhqsrIIpd2iH06lQlawpDeDiiSrqKqeW1ExMnMGmOoMWA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ZUqfvz8d9K9ODltIL+LeaCIsA/d4p1xyaHIX6SU9BUk=;
- b=bLUxD8jrtgop9JbLIilOXe2v1CQfQN3mWWJGApbrDD5K18UGzSXEwPK99UU86RZ2cIfNKcg0yxNh/VKONIPqn84OuI8xNxPQsd5iL3AHW+YeiC9Rx+kzV8NvH6lzQSl3mIXwLVB2hPnjS0Eo/SHCFLFlS5KG534dkbRsLExQteOacB4LBwEDI+V1u68iURIn1Tn9MzwEb1r/Tg7NNIUWqfyrHL0c6EeKu119pja721ksbSaspB0Y65EFMSJn6ZVuAEVxYenZAt0g8/dQK/ju8/Jh9FMdQB6dYhNGkC8hXFx3d0Is2FHawey2l9S7WZipjUGS1N+NIjvsRQsRcwjfug==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.118.232) smtp.rcpttodomain=lists.linux.dev smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ZUqfvz8d9K9ODltIL+LeaCIsA/d4p1xyaHIX6SU9BUk=;
- b=e0gS56nawReNppy5OTvkhCLiwDrilBYOLlC18blDKLpY9y23925184TDgXbH0ZZmqffpHzCK3GDdLQ/8LtA/e4Ar0HdzhS181cVXE5wI5YBrIn3q7XGiFsx5UbdPHn8z1J/BzaxV65WpRxIlD50w6KDv6lijyc2Wi001sIaDA3mbg1QVHYBiv4JVejCCdY/mNnsQ2f4dv86SftTZ8p0gVgPe6BmwtvTztkVMno/Ujf822u4Y+RKkuava9F89DbM7RK5ehdTlz4vwD5O2B9fSCGSHOtAI3KQZNfRkeHlR/SAfjHsW/9JmpmFwoBxaC78jGLJkifC1te1r9nwpdeBcaQ==
-Received: from BYAPR01CA0007.prod.exchangelabs.com (2603:10b6:a02:80::20) by
- CH2PR12MB4166.namprd12.prod.outlook.com (2603:10b6:610:78::13) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9052.14; Thu, 21 Aug 2025 15:22:23 +0000
-Received: from SJ1PEPF000023D1.namprd02.prod.outlook.com
- (2603:10b6:a02:80:cafe::d6) by BYAPR01CA0007.outlook.office365.com
- (2603:10b6:a02:80::20) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9052.16 via Frontend Transport; Thu,
- 21 Aug 2025 15:22:52 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.232)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.118.232 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.118.232; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.118.232) by
- SJ1PEPF000023D1.mail.protection.outlook.com (10.167.244.7) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9052.8 via Frontend Transport; Thu, 21 Aug 2025 15:22:23 +0000
-Received: from drhqmail201.nvidia.com (10.126.190.180) by mail.nvidia.com
- (10.127.129.5) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Thu, 21 Aug
- 2025 08:22:09 -0700
-Received: from drhqmail202.nvidia.com (10.126.190.181) by
- drhqmail201.nvidia.com (10.126.190.180) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.14; Thu, 21 Aug 2025 08:22:08 -0700
-Received: from Asurada-Nvidia (10.127.8.12) by mail.nvidia.com
- (10.126.190.181) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14 via Frontend
- Transport; Thu, 21 Aug 2025 08:22:07 -0700
-Date: Thu, 21 Aug 2025 08:22:06 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-CC: <robin.murphy@arm.com>, <joro@8bytes.org>, <bhelgaas@google.com>,
-	<will@kernel.org>, <robin.clark@oss.qualcomm.com>, <yong.wu@mediatek.com>,
-	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
-	<thierry.reding@gmail.com>, <vdumpa@nvidia.com>, <jonathanh@nvidia.com>,
-	<rafael@kernel.org>, <lenb@kernel.org>, <kevin.tian@intel.com>,
-	<yi.l.liu@intel.com>, <baolu.lu@linux.intel.com>,
-	<linux-arm-kernel@lists.infradead.org>, <iommu@lists.linux.dev>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-tegra@vger.kernel.org>,
-	<linux-acpi@vger.kernel.org>, <linux-pci@vger.kernel.org>,
-	<patches@lists.linux.dev>, <pjaroszynski@nvidia.com>, <vsethi@nvidia.com>,
-	<helgaas@kernel.org>, <etzhao1900@gmail.com>
-Subject: Re: [PATCH v3 3/5] iommu: Add iommu_get_domain_for_dev_locked()
- helper
-Message-ID: <aKc5niDWTwaCInH2@Asurada-Nvidia>
-References: <cover.1754952762.git.nicolinc@nvidia.com>
- <a69557026b7e2353bae67104bbe6a88f0682305e.1754952762.git.nicolinc@nvidia.com>
- <20250818143949.GO802098@nvidia.com>
- <aKNhIr08fK+xIYcg@Asurada-Nvidia>
- <20250818234241.GF802098@nvidia.com>
- <aKQG9/skig6F8LdQ@Asurada-Nvidia>
- <20250819125249.GG802098@nvidia.com>
- <aKSyzI9Xz3J0nhfk@Asurada-Nvidia>
- <20250821131304.GM802098@nvidia.com>
+	id 1up6HO-0000000HDgG-2U71;
+	Thu, 21 Aug 2025 14:28:40 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id A86E35C5864;
+	Thu, 21 Aug 2025 14:28:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 25F9AC2BCB0;
+	Thu, 21 Aug 2025 14:28:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1755786517;
+	bh=EMbz8+HtiX+wFGU2pxupJmg8opMHOLpXmJiRY9CoOkI=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=cRWFxu/BPNpqodDqvt1FLl5BcGeujMeWAQcrQgctw9TvOthgFPwJv1EskTamU7fst
+	 mQzi80HtrNlWRLg8/x71MRaPtHwEuWMxVGi67R1kGUrxlAA6QFv8jFd5QoSlaTNJc9
+	 VsHsCf5X8u9pKEhGkTtbvc8EN3W6Ae2VU/fRH/Ow3b4FO95fADdG3ogjEWMdNd/lD/
+	 MQ5A6HSKcraqM1G8VqbvE9p2wcJmdnN5Lcp9SHT1IF+AJxNJwqIz3ABs1IVIbYmzES
+	 o/3J9fZQXk4/j33zoTvzyRiIXVcQsND7pDp6sn7sm1vM2daBOnRpjj8tQfvpxPSGjL
+	 0VVxJB8bhvpIw==
+Received: by mail-ed1-f51.google.com with SMTP id 4fb4d7f45d1cf-61a8c134533so2243277a12.3;
+        Thu, 21 Aug 2025 07:28:37 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCWXSfJEDb5f1tDtgJ0RVVZpkUe47sE3Tk/t0JiJpjleDZ5U6491qkALK8L4nq2LB8CyVPuSda6kAQTHbn/zygA=@lists.infradead.org, AJvYcCXYC9HaKMZqps2bUPcUfRMpQzfwOP2Ln/5T4iSkzYtt7bLwN61a+lPxuJMA6QkhDk1nePnzJ//oWIjt+QDij4j4@lists.infradead.org
+X-Gm-Message-State: AOJu0YyDhcTUK98Omd1rQlSLsiRAw/DfljunPx32eRbeF3CBa/y/Sb3A
+	o16gzJcsPFcLpftg0qF9vB+dLRISC1ZSn1hVY3z9c6HRPs28J3CRFn062Qe2G+3whrKsp5G5Ar3
+	zEsMJUkRii9Cvd6Ie35jmsZi3GIYF9A==
+X-Google-Smtp-Source: AGHT+IFBppYBOkX44YlxMo5/Wkh7Q5eWgNuxdz5vrG5HqTxZPVhTa0iHjCUIJQBUOqi7fhL4+BSSlpYJWfsZYnSvbZ0=
+X-Received: by 2002:a05:6402:1ece:b0:61a:9385:c798 with SMTP id
+ 4fb4d7f45d1cf-61bf8747b36mr1919506a12.37.1755786515468; Thu, 21 Aug 2025
+ 07:28:35 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20250821131304.GM802098@nvidia.com>
-X-NV-OnPremToCloud: ExternallySecured
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SJ1PEPF000023D1:EE_|CH2PR12MB4166:EE_
-X-MS-Office365-Filtering-Correlation-Id: 915b38c3-4cdc-4ff6-6f14-08dde0c68744
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|36860700013|1800799024|7416014|376014|82310400026;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?0utZ2LvmVrNGPlF499/MZ1M6jAdl87UEMGZGIydoGkZBt+Y2lXzYFcrRnWgT?=
- =?us-ascii?Q?qatAkIhU8DwHYy/oN0owuRJoS+eeUaCYT6R5N0gpen3sJKNunRQaEr61azuJ?=
- =?us-ascii?Q?JMJkFkVRUdRaxwlRQKCvu4Devr8gNiUsRhgQPUQ3ujJWBuNPqMQ3Asog2dA0?=
- =?us-ascii?Q?ZrLQApwdXTWEnQadbYgOo8vr2xzE/Wvwv9YKk0UFBKqaARfGefMQw/dW1mOp?=
- =?us-ascii?Q?7HNEmAqAeTIyZmxVqKodb1YGQs9YDRzQVOI/nSlozf47h4WWbRuNrRvuuu9A?=
- =?us-ascii?Q?tQKi3xq27hsPfbs4i7wrD34hUdekLx7mWcpxdLBK83eOoxqDnMMbFf0kWrtd?=
- =?us-ascii?Q?4RN1U0EgfP/3lFN752z0bBNO+KhETkVjbeBjYqUkBrgNKoPRyLwDmkGDiu6S?=
- =?us-ascii?Q?GKbFk1aeOzBPYCOVjNLmvnIXKQ1CzyWmqbs57/04Ly8O0Ubheqhb7raKGFr8?=
- =?us-ascii?Q?g6CfrMTqPhoC0HWAnn7oEfHARPzlIBIVnJsmKHq4AEU6MbW+17p3dmO3IYer?=
- =?us-ascii?Q?awl96rV4FNogVH91+8c6xjIGWvCRg2wh0wtHDTQQ1f1a2DssVmoAz2rlUsq7?=
- =?us-ascii?Q?GsFmZeZkx/tO9o1P0s5bZDcIYAMcOr01PErsJcErApu6fPBxEF7VyDxgDycD?=
- =?us-ascii?Q?7pyqIKW7z+uVUo/JTddSiqUTqJlp7PGN8I86uh6j9XmKQFKUHoZyVtxSnLhz?=
- =?us-ascii?Q?unoEMgzh2Sx5ntlBwt3GOuvEupI812XNe2kFwqPNztNzyJrALHIvm3xGt7Ef?=
- =?us-ascii?Q?cxAfhjVvQyreZmt0mMGWhC7ekuSB/KV2EZVR8fQm7ABUkLYHy5XbLWMxfM5b?=
- =?us-ascii?Q?xbGpNibLzZYlyLe/THdQWC+MrL+NlfjTx7h4NRswDbaolnAGmo3KkVhkNffN?=
- =?us-ascii?Q?xQ3QXt+BtatTcIQBAisLpxInIB59TOu9b8MluvMNlpwfeDECVVMQvX4U1P9Y?=
- =?us-ascii?Q?ZH2MPbIZK+wL1tRxKINJmWtdAxSzICj7sPdVmQWCMMhgORl7VfrU6KQ2Ikr1?=
- =?us-ascii?Q?l8m9GWSMHKBD/TatRi7sRxJMKSDfniW30aoOynVjsTPqXmSxx2yHAZHqhQM3?=
- =?us-ascii?Q?+hIR30Gpd7gqn0eatma307rK4iR0C+xrmB4fbScaQhEN9hXH+ua/nhuc2ZkK?=
- =?us-ascii?Q?yrvWx4Foq9l5LroAfsgBJZuuuREh0SFKo6QfGSEflsxSZxyVkO7wnr45kIG1?=
- =?us-ascii?Q?2xFIGdGkJeXun/5b98IIqPosdfPMvRspia/KSEDKa4gLMpK6zrOiXQuTYz4E?=
- =?us-ascii?Q?p0fEyJT1ndR0Yewv8IMBGvT8m3MT0TqHZTEOwO2pgj/cgaVVBulhXi/h1nx+?=
- =?us-ascii?Q?Da6/YV0doV4eYl0cJ4h8zAYOJjz6YBycopoenDfDxZj3n6B4o1fch0x/ztVt?=
- =?us-ascii?Q?Td1mrCqbk3p+u/keGxzYQewA+YaWlCwF3gI3Cfk7sa4YhFf7foaSwWxccvmc?=
- =?us-ascii?Q?x+WQOrWrmdMoPxdQleW+14GUG+DTJpkNYueFZkbIIv0q3oTuhbZMMPId1FcF?=
- =?us-ascii?Q?KkNQ0Nzj9t7doczcmaCPxUPbIzHCPXjpmtdx?=
-X-Forefront-Antispam-Report: CIP:216.228.118.232;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc7edge1.nvidia.com;CAT:NONE;SFS:(13230040)(36860700013)(1800799024)(7416014)(376014)(82310400026);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Aug 2025 15:22:23.3610
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 915b38c3-4cdc-4ff6-6f14-08dde0c68744
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.118.232];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: SJ1PEPF000023D1.namprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR12MB4166
+References: <20250820171302.324142-1-ariel.dalessandro@collabora.com> <20250820171302.324142-5-ariel.dalessandro@collabora.com>
+In-Reply-To: <20250820171302.324142-5-ariel.dalessandro@collabora.com>
+From: Rob Herring <robh@kernel.org>
+Date: Thu, 21 Aug 2025 09:28:23 -0500
+X-Gmail-Original-Message-ID: <CAL_Jsq+K72Kof-Z3q2DSh3FKO64npLF6hDJnqnTzNBUoOoVQFA@mail.gmail.com>
+X-Gm-Features: Ac12FXyETnp9uvywF5eryvs_DLFHAynyRYtV9sBUVnGCpXqqypbV2hkfxFtEdCo
+Message-ID: <CAL_Jsq+K72Kof-Z3q2DSh3FKO64npLF6hDJnqnTzNBUoOoVQFA@mail.gmail.com>
+Subject: Re: [PATCH v1 04/14] net: dt-bindings: Convert Marvell 8897/8997
+ bindings to YAML
+To: "Ariel D'Alessandro" <ariel.dalessandro@collabora.com>
+Cc: airlied@gmail.com, amergnat@baylibre.com, andrew+netdev@lunn.ch, 
+	andrew-ct.chen@mediatek.com, angelogioacchino.delregno@collabora.com, 
+	broonie@kernel.org, chunkuang.hu@kernel.org, ck.hu@mediatek.com, 
+	conor+dt@kernel.org, davem@davemloft.net, dmitry.torokhov@gmail.com, 
+	edumazet@google.com, flora.fu@mediatek.com, houlong.wei@mediatek.com, 
+	jeesw@melfas.com, jmassot@collabora.com, kernel@collabora.com, 
+	krzk+dt@kernel.org, kuba@kernel.org, 
+	kyrie.wu@mediatek.corp-partner.google.com, lgirdwood@gmail.com, 
+	linus.walleij@linaro.org, louisalexis.eyraud@collabora.com, 
+	maarten.lankhorst@linux.intel.com, matthias.bgg@gmail.com, mchehab@kernel.org, 
+	minghsiu.tsai@mediatek.com, mripard@kernel.org, p.zabel@pengutronix.de, 
+	pabeni@redhat.com, sean.wang@kernel.org, simona@ffwll.ch, 
+	support.opensource@diasemi.com, tiffany.lin@mediatek.com, tzimmermann@suse.de, 
+	yunfei.dong@mediatek.com, devicetree@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
+	linux-clk@vger.kernel.org, linux-gpio@vger.kernel.org, 
+	linux-input@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-sound@vger.kernel.org, netdev@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250821_082239_813517_8A5A44C9 
-X-CRM114-Status: GOOD (  21.94  )
+X-CRM114-CacheID: sfid-20250821_072838_712077_7EE993D3 
+X-CRM114-Status: GOOD (  33.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -166,68 +100,262 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 21, 2025 at 10:13:04AM -0300, Jason Gunthorpe wrote:
-> On Tue, Aug 19, 2025 at 10:22:20AM -0700, Nicolin Chen wrote:
-> 
-> > Yet, I also see some other cases that cannot be helped with the
-> > type function. Just listing a few:
-> 
-> Probably several query functions are needed that can be lock safe
->  
-> > 1) domain matching (and type)
-> > drivers/gpu/drm/tegra/drm.c:965:        if (domain && domain->type != IOMMU_DOMAIN_IDENTITY &&
-> > drivers/gpu/drm/tegra/drm.c:966:            domain != tegra->domain)
-> > drivers/gpu/drm/tegra/drm.c-967-                return 0;
-> 
-> is attached
+On Wed, Aug 20, 2025 at 12:15=E2=80=AFPM Ariel D'Alessandro
+<ariel.dalessandro@collabora.com> wrote:
+>
+> Convert the existing text-based DT bindings for Marvell 8897/8997
+> (sd8897/sd8997) bluetooth devices controller to a YAML schema.
+>
+> While here, bindings for "usb1286,204e" (USB interface) are dropped from
+> the YAML definition as these are currently documented in file:
+>
+> - Documentation/devicetree/bindings/net/btusb.txt
+>
+> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+> ---
+>  .../bindings/net/marvell,sd8897-bt.yaml       | 91 +++++++++++++++++++
 
-I should have pasted the full piece:
-drivers/gpu/drm/tegra/drm.c-960-	/*
-drivers/gpu/drm/tegra/drm.c:961:	 * If the host1x client is already attached to an IOMMU domain that is
-drivers/gpu/drm/tegra/drm.c-962-	 * not the shared IOMMU domain, don't try to attach it to a different
-drivers/gpu/drm/tegra/drm.c-963-	 * domain. This allows using the IOMMU-backed DMA API.
-drivers/gpu/drm/tegra/drm.c-964-	 */
-drivers/gpu/drm/tegra/drm.c-965-	if (domain && domain->type != IOMMU_DOMAIN_IDENTITY &&
-drivers/gpu/drm/tegra/drm.c-966-	    domain != tegra->domain)
+This needs to move to net/bluetooth/
 
-So, the check is two-fold:
-1) is attached
-2) is the shared IOMMU domain (tegra->domain?)
-  
-> > 4) map/unmap
-> > drivers/net/ipa/ipa_mem.c:465:  domain = iommu_get_domain_for_dev(dev);
-> > drivers/net/ipa/ipa_mem.c-466-  if (!domain) {
-> > drivers/net/ipa/ipa_mem.c-467-          dev_err(dev, "no IOMMU domain found for IMEM\n");
-> > drivers/net/ipa/ipa_mem.c-468-          return -EINVAL;
-> > drivers/net/ipa/ipa_mem.c-469-  }
-> > drivers/net/ipa/ipa_mem.c-470-
-> > drivers/net/ipa/ipa_mem.c-471-  /* Align the address down and the size up to page boundaries */
-> > drivers/net/ipa/ipa_mem.c-472-  phys = addr & PAGE_MASK;
-> > drivers/net/ipa/ipa_mem.c-473-  size = PAGE_ALIGN(size + addr - phys);
-> > drivers/net/ipa/ipa_mem.c-474-  iova = phys;    /* We just want a direct mapping */
-> > drivers/net/ipa/ipa_mem.c-475-
-> > drivers/net/ipa/ipa_mem.c-476-  ret = iommu_map(domain, iova, phys, size, IOMMU_READ | IOMMU_WRITE,
-> > ...
-> > drivers/net/ipa/ipa_mem.c:495:  domain = iommu_get_domain_for_dev(dev);
-> > drivers/net/ipa/ipa_mem.c-496-  if (domain) {
-> > drivers/net/ipa/ipa_mem.c-497-          size_t size;
-> > drivers/net/ipa/ipa_mem.c-498-
-> > drivers/net/ipa/ipa_mem.c-499-          size = iommu_unmap(domain, ipa->imem_iova, ipa->imem_size);
-> 
-> Broken! Illegal to call iommu_map on a DMA API domain.
-> 
-> This is exactly the sort of abuse I would like to see made imposible :(
-> 
-> If it really needs something like this then it needs a proper dma api
-> interface to do it and properly reserve the iova from the allocator.
+>  .../bindings/net/marvell-bt-8xxx.txt          | 83 -----------------
+>  2 files changed, 91 insertions(+), 83 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/net/marvell,sd8897-=
+bt.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/net/marvell-bt-8xxx=
+.txt
+>
+> diff --git a/Documentation/devicetree/bindings/net/marvell,sd8897-bt.yaml=
+ b/Documentation/devicetree/bindings/net/marvell,sd8897-bt.yaml
+> new file mode 100644
+> index 0000000000000..6539868c08b8a
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/net/marvell,sd8897-bt.yaml
+> @@ -0,0 +1,91 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/net/marvell,sd8897-bt.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Marvell 8897/8997 (sd8897/sd8997) bluetooth devices (SDIO)
+> +
+> +maintainers:
+> +  - Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+> +
 
-Yea. This particular case is forcing a direct mapping for a small
-piece of memory. So it should probably be described in the Device
-Tree v.s. the of_match_table data in the driver, so that _of core
-would allocate an IOMMU_RESV_DIRECT.
+Needs a $ref to bluetooth-controller.yaml
 
-Overall, I feel this would be a big project yet arguably for a low
-reward..
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - marvell,sd8897-bt
+> +      - marvell,sd8997-bt
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  marvell,cal-data:
+> +    $ref: /schemas/types.yaml#/definitions/uint8-array
+> +    description:
+> +      Calibration data downloaded to the device during initialization.
+> +    minItems: 28
 
-Nicolin
+Just: maxItems: 28
+
+> +
+> +  marvell,wakeup-pin:
+> +    $ref: /schemas/types.yaml#/definitions/uint16
+> +    description:
+> +      Wakeup pin number of the bluetooth chip. Used by firmware to wakeu=
+p host
+> +      system.
+> +
+> +  marvell,wakeup-gap-ms:
+
+This unfortunately needs a uint16 type. That will cause a warning
+which has to be fixed on the dtschema side.
+
+> +    description:
+> +      Wakeup latency of the host platform. Required by the chip sleep fe=
+ature.
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +    #include <dt-bindings/pinctrl/rockchip.h>
+
+Please drop this and just use a number below.
+
+> +
+> +    sdio0 {
+> +        #address-cells =3D <1>;
+> +        #size-cells =3D <0>;
+> +
+> +        btmrvl: btmrvl@2 {
+> +            compatible =3D "marvell,sd8897-bt";
+> +            reg =3D <2>;
+> +            interrupt-parent =3D <&gpio4>;
+> +            interrupts =3D <RK_PD7 IRQ_TYPE_LEVEL_LOW>;
+> +            marvell,wakeup-pin =3D /bits/ 16 <13>;
+> +            pinctrl-names =3D "default";
+> +            pinctrl-0 =3D <&bt_host_wake_l>;
+> +        };
+> +    };
+
+I would drop this example.
+
+> +
+> +    mmc3 {
+
+mmc {
+
+> +        vmmc-supply =3D <&wlan_en_reg>;
+> +        bus-width =3D <4>;
+> +        cap-power-off-card;
+> +        keep-power-in-suspend;
+> +
+> +        #address-cells =3D <1>;
+> +        #size-cells =3D <0>;
+> +
+> +        bluetooth: bluetooth@2 {
+
+Drop the label.
+
+> +            compatible =3D "marvell,sd8897-bt";
+> +            reg =3D <2>;
+> +            interrupt-parent =3D <&pio>;
+> +            interrupts =3D <119 IRQ_TYPE_LEVEL_LOW>;
+> +
+> +            marvell,cal-data =3D /bits/ 8 <
+> +                0x37 0x01 0x1c 0x00 0xff 0xff 0xff 0xff 0x01 0x7f 0x04 0=
+x02
+> +                0x00 0x00 0xba 0xce 0xc0 0xc6 0x2d 0x00 0x00 0x00 0x00 0=
+x00
+> +                0x00 0x00 0xf0 0x00>;
+> +            marvell,wakeup-pin =3D /bits/ 16 <0x0d>;
+> +            marvell,wakeup-gap-ms =3D /bits/ 16 <0x64>;
+> +        };
+> +    };
+> +
+> +...
+> diff --git a/Documentation/devicetree/bindings/net/marvell-bt-8xxx.txt b/=
+Documentation/devicetree/bindings/net/marvell-bt-8xxx.txt
+> deleted file mode 100644
+> index 957e5e5c2927c..0000000000000
+> --- a/Documentation/devicetree/bindings/net/marvell-bt-8xxx.txt
+> +++ /dev/null
+> @@ -1,83 +0,0 @@
+> -Marvell 8897/8997 (sd8897/sd8997) bluetooth devices (SDIO or USB based)
+> -------
+> -The 8997 devices supports multiple interfaces. When used on SDIO interfa=
+ces,
+> -the btmrvl driver is used and when used on USB interface, the btusb driv=
+er is
+> -used.
+> -
+> -Required properties:
+> -
+> -  - compatible : should be one of the following:
+> -       * "marvell,sd8897-bt" (for SDIO)
+> -       * "marvell,sd8997-bt" (for SDIO)
+> -       * "usb1286,204e"      (for USB)
+> -
+> -Optional properties:
+> -
+> -  - marvell,cal-data: Calibration data downloaded to the device during
+> -                     initialization. This is an array of 28 values(u8).
+> -                     This is only applicable to SDIO devices.
+> -
+> -  - marvell,wakeup-pin: It represents wakeup pin number of the bluetooth=
+ chip.
+> -                       firmware will use the pin to wakeup host system (=
+u16).
+> -  - marvell,wakeup-gap-ms: wakeup gap represents wakeup latency of the h=
+ost
+> -                     platform. The value will be configured to firmware.=
+ This
+> -                     is needed to work chip's sleep feature as expected =
+(u16).
+> -  - interrupt-names: Used only for USB based devices (See below)
+> -  - interrupts : specifies the interrupt pin number to the cpu. For SDIO=
+, the
+> -                driver will use the first interrupt specified in the int=
+errupt
+> -                array. For USB based devices, the driver will use the in=
+terrupt
+> -                named "wakeup" from the interrupt-names and interrupt ar=
+rays.
+> -                The driver will request an irq based on this interrupt n=
+umber.
+> -                During system suspend, the irq will be enabled so that t=
+he
+> -                bluetooth chip can wakeup host platform under certain
+> -                conditions. During system resume, the irq will be disabl=
+ed
+> -                to make sure unnecessary interrupt is not received.
+> -
+> -Example:
+> -
+> -IRQ pin 119 is used as system wakeup source interrupt.
+> -wakeup pin 13 and gap 100ms are configured so that firmware can wakeup h=
+ost
+> -using this device side pin and wakeup latency.
+> -
+> -Example for SDIO device follows (calibration data is also available in
+> -below example).
+> -
+> -&mmc3 {
+> -       vmmc-supply =3D <&wlan_en_reg>;
+> -       bus-width =3D <4>;
+> -       cap-power-off-card;
+> -       keep-power-in-suspend;
+> -
+> -       #address-cells =3D <1>;
+> -       #size-cells =3D <0>;
+> -       btmrvl: bluetooth@2 {
+> -               compatible =3D "marvell,sd8897-bt";
+> -               reg =3D <2>;
+> -               interrupt-parent =3D <&pio>;
+> -               interrupts =3D <119 IRQ_TYPE_LEVEL_LOW>;
+> -
+> -               marvell,cal-data =3D /bits/ 8 <
+> -                       0x37 0x01 0x1c 0x00 0xff 0xff 0xff 0xff 0x01 0x7f=
+ 0x04 0x02
+> -                       0x00 0x00 0xba 0xce 0xc0 0xc6 0x2d 0x00 0x00 0x00=
+ 0x00 0x00
+> -                       0x00 0x00 0xf0 0x00>;
+> -               marvell,wakeup-pin =3D /bits/ 16 <0x0d>;
+> -               marvell,wakeup-gap-ms =3D /bits/ 16 <0x64>;
+> -       };
+> -};
+> -
+> -Example for USB device:
+> -
+> -&usb_host1_ohci {
+> -    #address-cells =3D <1>;
+> -    #size-cells =3D <0>;
+> -
+> -    mvl_bt1: bt@1 {
+> -       compatible =3D "usb1286,204e";
+> -       reg =3D <1>;
+> -       interrupt-parent =3D <&gpio0>;
+> -       interrupt-names =3D "wakeup";
+> -       interrupts =3D <119 IRQ_TYPE_LEVEL_LOW>;
+> -       marvell,wakeup-pin =3D /bits/ 16 <0x0d>;
+> -       marvell,wakeup-gap-ms =3D /bits/ 16 <0x64>;
+> -    };
+> -};
+> --
+> 2.50.1
+>
 
