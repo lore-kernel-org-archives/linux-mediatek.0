@@ -4,100 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F036CA0EED
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Aug 2025 15:34:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC475CA0EED
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Aug 2025 21:46:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8rvb5BTFOBJCsAqheRi5OrrkHsnM2r6jQ+WuONy16iw=; b=WRa78wPo36gC4rZHGdauU3XCwd
-	wwJT9PNBAiLSMv2p4bngzjwCC+eIVtiskw1hGMqZhGmrmdGru4j5SycnurACNOGMfqHQM575gr4OF
-	4f0uXfF5hljVfLWWS2WoeW1CV+bzFkwj3u1VD+a3vIhUVwHyMFaMSozscXOjQOzxH5bOPLcedtOdD
-	yPsjC7V7lKAydG2ld0jjiGwh8hxL50wWoh8TCUy1Uaj5Bm7RQGradTw9k/nOD/jV6WR+oUHNhzIB+
-	a3rhC/051/5astxqQtBfkwDcFj1T1dWhjaNgEepVSM71xKCNYveQp9m10iMzCJ4hJrMB8fu0THwQV
-	lFe16eqw==;
+	bh=WFeFiCTp4hGgnI6J2j3pWdkKfwQlbPab/4wEdITdYfs=; b=oiI0rk2s5nItsYkoDS4J6wLnG6
+	6z/IzuwPDujr0mFFxzztkWU469tLvEQ4jvpwz9eYVnS8VAkZ+sSPRGn70Zs5T4Ro8QBq6kqRq1r6L
+	MHf4oVO/KZz3r4MJKzGhOAF3X+4iE9GBo8o8WM85uGB7pFVtSsEetcnljnjYLAd3y6xua0TYXCmNR
+	agPQ6nxhxqfxNe7cENKgVEi4ERyoPJYA6NvTHgNqKy8KXik6QpDyckN/TLvN9jL7X9vuuTFc7hy0K
+	YRJu67sPROCgEBSGr3keBuoCeYokh1OF5rAqe4W+jhR6AVQ+gV2IInQC9dKb3izwmgwdku4qGAM8T
+	3CmIrVzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upTn5-0000000330u-2A2A;
-	Fri, 22 Aug 2025 15:34:55 +0000
-Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
+	id 1upZav-00000003X0J-2RiD;
+	Fri, 22 Aug 2025 21:46:45 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upNzD-0000000226A-10nW
-	for linux-mediatek@lists.infradead.org;
-	Fri, 22 Aug 2025 09:23:04 +0000
-Received: by mail-lj1-x229.google.com with SMTP id 38308e7fff4ca-333f92cb94eso16493111fa.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 22 Aug 2025 02:23:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1755854581; x=1756459381; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=8rvb5BTFOBJCsAqheRi5OrrkHsnM2r6jQ+WuONy16iw=;
-        b=eLTPkhUz6VnRNl/KgVcBEExKRkJtoqhYpy4Ze4kFBDoaQPINl0q1XrzsJGZrQdeKqD
-         O9DLGKVN2L3XnxMVFSM9mjiEU/1UAYdYz9wXYpOTnZs7bpQh1krWw1Eg//fleONa3zOf
-         pXPXVR51O+wPJlsg6q0a8xqRcCdIU8TYIccg4CHV3pFSsT9XgzMsaWqcOwaGQ0ZXHU4M
-         N84W/mdTc2vH1NF7O6UvT3CVmwk+8CeiHQmdwFrn/j98VcPlRaHxD9MbU56rBxk/Zhc8
-         xybInKk7gcpqwm2kK81C4KnilB/RcxuRd4UV3KwpdH62sAyZ5Aa2+TvJSUXDaQ+cP+V6
-         oVUw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1755854581; x=1756459381;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=8rvb5BTFOBJCsAqheRi5OrrkHsnM2r6jQ+WuONy16iw=;
-        b=FaMaF6iQJVOagatXNdi3wtE2iFFDXVdmPfd4K7zqKs7wtVc9D5pTufiWYKRyW9qg0e
-         8X/kIrUDWDhXPue5V456ufTqE2LH1sw4FQgPHV79TOMAoOPV/GpU1wvOML280zUInSm9
-         ehHEEUy8dertidYRtm7auJRqGxihCAGRWCYXr0L2J1yAQ0K5LglVvb+ojWhT9QqKDB2J
-         oDyPN1q+PsGD3KQxQY1XuhS3jMM1h6OfHWjG4oFLvUqvjGowez1VxcTWnNUwd5Wrs13p
-         sCsNnwkamHTPENPJ9e7hsQYl3y8wUEBgBCDsAAN5NcY5v8FnVfjvVAA1wqpA7gM4L2cN
-         Y10A==
-X-Forwarded-Encrypted: i=1; AJvYcCXapjZXD+MELvt5QvptATuQ5Y80x6Yx7CjMhidmZoQPeGmdCoDG8wCOuQqkaWBP9vBX8MBgxOi+Z8crrHWU/g==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yyvsd+amoueLFPfjKY+sEsgH/bK8HdF6xBAWSu7jJvvQk1rgFtk
-	y+l6VwsK7uiQsInPd2Y6lK5w48Kv8mEREg/++HqsTp/QUGdCMn8LsD6qmiwjhC2vBg74TcfRhsV
-	ct78PUeavu1eCS5khpOn4B8gEFKMuP/h3d1j5NPwfZg==
-X-Gm-Gg: ASbGncsmJFkg8TmeavafOfB/r9FinYcHRVXIGkYq2Rxlx0eX5vJjFbgkgjG+J2Vl8Rf
-	SuzumuTDNq3mwemF84wVrwJx0E4456qt2J9dCMQkWJpTrC9HNjjkTNY4fbv3U/2t1P2LmhGy288
-	my7tlrBdQOUlfTFbn4Tif2ytDUZ6JHgYCIuAyP1OchyO2LiJfrnqLW3XG23RLQPCn0MXp4OY3yO
-	Ha5jQ5rxRE7uGMc8w==
-X-Google-Smtp-Source: AGHT+IGmS+5jZRiY3M87jYqtd1N1nFCNBKn5R2TEdrmd3+xxfd4PG/kXNNSVVgmhRVuloDKPRDouFdqjsq+r/vvoIgA=
-X-Received: by 2002:a2e:8a86:0:b0:32b:5272:38eb with SMTP id
- 38308e7fff4ca-33651002d61mr7071001fa.40.1755854580887; Fri, 22 Aug 2025
- 02:23:00 -0700 (PDT)
+	id 1upLza-00000001n6p-2MGD;
+	Fri, 22 Aug 2025 07:15:19 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id B5CB1A408FA;
+	Fri, 22 Aug 2025 07:15:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1228AC4CEF4;
+	Fri, 22 Aug 2025 07:15:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1755846917;
+	bh=jOPT4g+C/W0j/c4BchUoKCE5cSxUQH7bPgzSvRV446Y=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=aE2S00tTBEVHG9x4kYg7IW+3DrRPqKEevLNmY9U+W1jWEmKoQAu5EtEJtmMWIckbM
+	 1dfdPWo/VA2C11+ube+x4bC++5qV8/7jYsNZzyM7D3eyGEWpc6gGGj2LDL+kGjDtZZ
+	 0ejBlVkikQ4VLy7IKKn8tY91yF2IrzT0kD1ZdqdtpfNr2mdsvggg7+4f3JXdUWGUq8
+	 hCmr3DORgWzeb7Va7tzilP5rEnkJlpmxWZGmojMMQyyb3jxWs1M4cunlFfw5SI+ooP
+	 1ym2TupVmrSvCNLXR8QA+kyKMD4foWpiDWkWDKAqV9V1Bea7CFUii7qmaWNo2+uGRJ
+	 hc4VVLCM9yQRQ==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Fri, 22 Aug 2025 09:14:50 +0200
+Subject: [PATCH net-next v2 3/3] net: airoha: Introduce check_skb callback
+ in ppe_dev ops
 MIME-Version: 1.0
-References: <20250822075712.27314-2-krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20250822075712.27314-2-krzysztof.kozlowski@linaro.org>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Fri, 22 Aug 2025 11:22:49 +0200
-X-Gm-Features: Ac12FXwu_A2fq6cbJB5U4ofkj6w0TKETQ4RpzZE3LHHotvIJu8LJQDJ8_-1dTpA
-Message-ID: <CACRpkdbLKXx7GEOPemFGSTFy8oDG99TUFwC7sH7xkaoqe-cY8A@mail.gmail.com>
-Subject: Re: [PATCH v2] dt-bindings: mfd: Move embedded controllers to own directory
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Benson Leung <bleung@chromium.org>, 
-	Guenter Roeck <groeck@chromium.org>, Tim Harvey <tharvey@gateworks.com>, 
-	Michael Walle <mwalle@kernel.org>, Bartosz Golaszewski <brgl@bgdev.pl>, Jean Delvare <jdelvare@suse.com>, 
-	Thomas Gleixner <tglx@linutronix.de>, Lee Jones <lee@kernel.org>, 
-	=?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <ukleinek@kernel.org>, 
-	Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier <mathieu.poirier@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Cheng-Yi Chiang <cychiang@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
-	Wim Van Sebroeck <wim@linux-watchdog.org>, Thierry Reding <thierry.reding@gmail.com>, 
-	Tinghan Shen <tinghan.shen@mediatek.com>, devicetree@vger.kernel.org, 
-	chrome-platform@lists.linux.dev, linux-kernel@vger.kernel.org, 
-	linux-gpio@vger.kernel.org, linux-hwmon@vger.kernel.org, 
-	linux-pwm@vger.kernel.org, linux-remoteproc@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-sound@vger.kernel.org, linux-watchdog@vger.kernel.org, 
-	Mathew McBride <matt@traverse.com.au>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250822-airoha-en7581-wlan-rx-offload-v2-3-8a76e1d3fec2@kernel.org>
+References: <20250822-airoha-en7581-wlan-rx-offload-v2-0-8a76e1d3fec2@kernel.org>
+In-Reply-To: <20250822-airoha-en7581-wlan-rx-offload-v2-0-8a76e1d3fec2@kernel.org>
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250822_022303_280691_59327040 
-X-CRM114-Status: GOOD (  12.44  )
+X-CRM114-CacheID: sfid-20250822_001518_750078_1C81F957 
+X-CRM114-Status: GOOD (  14.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,33 +75,216 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 22, 2025 at 9:57=E2=80=AFAM Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> wrote:
+Export airoha_ppe_check_skb routine in ppe_dev ops. check_skb callback
+will be used by the MT76 driver in order to offload the traffic received
+by the wlan NIC and forwarded to the ethernet one.
+Add rx_wlan parameter to airoha_ppe_check_skb routine signature.
 
-> Move ChromeOS Embedded Controller, Gateworks System Controller and
-> Kontron sl28cpld Board Management Controller to new subdirectory
-> "embedded-controller" matching their purpose.  MFD is coming from Linux
-> and does not really fit the actual purpose of this hardware.
->
-> Rename Gateworks GSC filename to match compatible, as preferred for
-> bindings.
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/ethernet/airoha/airoha_eth.c  |  3 ++-
+ drivers/net/ethernet/airoha/airoha_eth.h  |  8 ++------
+ drivers/net/ethernet/airoha/airoha_ppe.c  | 25 ++++++++++++++-----------
+ include/linux/soc/airoha/airoha_offload.h | 20 ++++++++++++++++++++
+ 4 files changed, 38 insertions(+), 18 deletions(-)
 
-Maybe add some definition of what we mean with "embedded controller"?
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index 5a04f90dd3de47ae0ee8e90bfe221618076297e6..81ea01a652b9c545c348ad6390af8be873a4997f 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -698,7 +698,8 @@ static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
+ 
+ 		reason = FIELD_GET(AIROHA_RXD4_PPE_CPU_REASON, msg1);
+ 		if (reason == PPE_CPU_REASON_HIT_UNBIND_RATE_REACHED)
+-			airoha_ppe_check_skb(eth->ppe, q->skb, hash);
++			airoha_ppe_check_skb(&eth->ppe->dev, q->skb, hash,
++					     false);
+ 
+ 		done++;
+ 		napi_gro_receive(&q->napi, q->skb);
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
+index 9060b1d2814e0e4023d42a05ecb5265212df588f..77fd13d466dcd235a3ab39a488aa26d8f793cf77 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.h
++++ b/drivers/net/ethernet/airoha/airoha_eth.h
+@@ -229,10 +229,6 @@ struct airoha_hw_stats {
+ 	u64 rx_len[7];
+ };
+ 
+-enum {
+-	PPE_CPU_REASON_HIT_UNBIND_RATE_REACHED = 0x0f,
+-};
+-
+ enum {
+ 	AIROHA_FOE_STATE_INVALID,
+ 	AIROHA_FOE_STATE_UNBIND,
+@@ -622,8 +618,8 @@ static inline bool airhoa_is_lan_gdm_port(struct airoha_gdm_port *port)
+ bool airoha_is_valid_gdm_port(struct airoha_eth *eth,
+ 			      struct airoha_gdm_port *port);
+ 
+-void airoha_ppe_check_skb(struct airoha_ppe *ppe, struct sk_buff *skb,
+-			  u16 hash);
++void airoha_ppe_check_skb(struct airoha_ppe_dev *dev, struct sk_buff *skb,
++			  u16 hash, bool rx_wlan);
+ int airoha_ppe_setup_tc_block_cb(struct airoha_ppe_dev *dev, void *type_data);
+ int airoha_ppe_init(struct airoha_eth *eth);
+ void airoha_ppe_deinit(struct airoha_eth *eth);
+diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
+index a73ce673fd37034dd62c6cb710cda6690bc5ca6a..30453e3fab0fe9ff6cfbb4a740502c9b3b19d7d1 100644
+--- a/drivers/net/ethernet/airoha/airoha_ppe.c
++++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+@@ -616,7 +616,7 @@ static bool airoha_ppe_foe_compare_entry(struct airoha_flow_table_entry *e,
+ 
+ static int airoha_ppe_foe_commit_entry(struct airoha_ppe *ppe,
+ 				       struct airoha_foe_entry *e,
+-				       u32 hash)
++				       u32 hash, bool rx_wlan)
+ {
+ 	struct airoha_foe_entry *hwe = ppe->foe + hash * sizeof(*hwe);
+ 	u32 ts = airoha_ppe_get_timestamp(ppe);
+@@ -639,7 +639,8 @@ static int airoha_ppe_foe_commit_entry(struct airoha_ppe *ppe,
+ 		goto unlock;
+ 	}
+ 
+-	airoha_ppe_foe_flow_stats_update(ppe, npu, hwe, hash);
++	if (!rx_wlan)
++		airoha_ppe_foe_flow_stats_update(ppe, npu, hwe, hash);
+ 
+ 	if (hash < PPE_SRAM_NUM_ENTRIES) {
+ 		dma_addr_t addr = ppe->foe_dma + hash * sizeof(*hwe);
+@@ -665,7 +666,7 @@ static void airoha_ppe_foe_remove_flow(struct airoha_ppe *ppe,
+ 		e->data.ib1 &= ~AIROHA_FOE_IB1_BIND_STATE;
+ 		e->data.ib1 |= FIELD_PREP(AIROHA_FOE_IB1_BIND_STATE,
+ 					  AIROHA_FOE_STATE_INVALID);
+-		airoha_ppe_foe_commit_entry(ppe, &e->data, e->hash);
++		airoha_ppe_foe_commit_entry(ppe, &e->data, e->hash, false);
+ 		e->hash = 0xffff;
+ 	}
+ 	if (e->type == FLOW_TYPE_L2_SUBFLOW) {
+@@ -704,7 +705,7 @@ static void airoha_ppe_foe_flow_remove_entry(struct airoha_ppe *ppe,
+ static int
+ airoha_ppe_foe_commit_subflow_entry(struct airoha_ppe *ppe,
+ 				    struct airoha_flow_table_entry *e,
+-				    u32 hash)
++				    u32 hash, bool rx_wlan)
+ {
+ 	u32 mask = AIROHA_FOE_IB1_BIND_PACKET_TYPE | AIROHA_FOE_IB1_BIND_UDP;
+ 	struct airoha_foe_entry *hwe_p, hwe;
+@@ -745,14 +746,14 @@ airoha_ppe_foe_commit_subflow_entry(struct airoha_ppe *ppe,
+ 	}
+ 
+ 	hwe.bridge.data = e->data.bridge.data;
+-	airoha_ppe_foe_commit_entry(ppe, &hwe, hash);
++	airoha_ppe_foe_commit_entry(ppe, &hwe, hash, rx_wlan);
+ 
+ 	return 0;
+ }
+ 
+ static void airoha_ppe_foe_insert_entry(struct airoha_ppe *ppe,
+ 					struct sk_buff *skb,
+-					u32 hash)
++					u32 hash, bool rx_wlan)
+ {
+ 	struct airoha_flow_table_entry *e;
+ 	struct airoha_foe_bridge br = {};
+@@ -785,7 +786,7 @@ static void airoha_ppe_foe_insert_entry(struct airoha_ppe *ppe,
+ 		if (!airoha_ppe_foe_compare_entry(e, hwe))
+ 			continue;
+ 
+-		airoha_ppe_foe_commit_entry(ppe, &e->data, hash);
++		airoha_ppe_foe_commit_entry(ppe, &e->data, hash, rx_wlan);
+ 		commit_done = true;
+ 		e->hash = hash;
+ 	}
+@@ -797,7 +798,7 @@ static void airoha_ppe_foe_insert_entry(struct airoha_ppe *ppe,
+ 	e = rhashtable_lookup_fast(&ppe->l2_flows, &br,
+ 				   airoha_l2_flow_table_params);
+ 	if (e)
+-		airoha_ppe_foe_commit_subflow_entry(ppe, e, hash);
++		airoha_ppe_foe_commit_subflow_entry(ppe, e, hash, rx_wlan);
+ unlock:
+ 	spin_unlock_bh(&ppe_lock);
+ }
+@@ -1301,9 +1302,10 @@ int airoha_ppe_setup_tc_block_cb(struct airoha_ppe_dev *dev, void *type_data)
+ 	return err;
+ }
+ 
+-void airoha_ppe_check_skb(struct airoha_ppe *ppe, struct sk_buff *skb,
+-			  u16 hash)
++void airoha_ppe_check_skb(struct airoha_ppe_dev *dev, struct sk_buff *skb,
++			  u16 hash, bool rx_wlan)
+ {
++	struct airoha_ppe *ppe = dev->priv;
+ 	u16 now, diff;
+ 
+ 	if (hash > PPE_HASH_MASK)
+@@ -1315,7 +1317,7 @@ void airoha_ppe_check_skb(struct airoha_ppe *ppe, struct sk_buff *skb,
+ 		return;
+ 
+ 	ppe->foe_check_time[hash] = now;
+-	airoha_ppe_foe_insert_entry(ppe, skb, hash);
++	airoha_ppe_foe_insert_entry(ppe, skb, hash, rx_wlan);
+ }
+ 
+ void airoha_ppe_init_upd_mem(struct airoha_gdm_port *port)
+@@ -1405,6 +1407,7 @@ int airoha_ppe_init(struct airoha_eth *eth)
+ 		return -ENOMEM;
+ 
+ 	ppe->dev.ops.setup_tc_block_cb = airoha_ppe_setup_tc_block_cb;
++	ppe->dev.ops.check_skb = airoha_ppe_check_skb;
+ 	ppe->dev.priv = ppe;
+ 
+ 	foe_size = PPE_NUM_ENTRIES * sizeof(struct airoha_foe_entry);
+diff --git a/include/linux/soc/airoha/airoha_offload.h b/include/linux/soc/airoha/airoha_offload.h
+index e05ded67c9e6fb89940e5b152f14c6ea0d7c6c49..4da562d0e4db6899d53f95b90a2a4ef2c63c974c 100644
+--- a/include/linux/soc/airoha/airoha_offload.h
++++ b/include/linux/soc/airoha/airoha_offload.h
+@@ -9,10 +9,17 @@
+ #include <linux/spinlock.h>
+ #include <linux/workqueue.h>
+ 
++enum {
++	PPE_CPU_REASON_HIT_UNBIND_RATE_REACHED = 0x0f,
++};
++
+ struct airoha_ppe_dev {
+ 	struct {
+ 		int (*setup_tc_block_cb)(struct airoha_ppe_dev *dev,
+ 					 void *type_data);
++		void (*check_skb)(struct airoha_ppe_dev *dev,
++				  struct sk_buff *skb, u16 hash,
++				  bool rx_wlan);
+ 	} ops;
+ 
+ 	void *priv;
+@@ -27,6 +34,13 @@ static inline int airoha_ppe_dev_setup_tc_block_cb(struct airoha_ppe_dev *dev,
+ {
+ 	return dev->ops.setup_tc_block_cb(dev, type_data);
+ }
++
++static inline void airoha_ppe_dev_check_skb(struct airoha_ppe_dev *dev,
++					    struct sk_buff *skb,
++					    u16 hash, bool rx_wlan)
++{
++	dev->ops.check_skb(dev, skb, hash, rx_wlan);
++}
+ #else
+ static inline airoha_ppe_dev *airoha_ppe_get_dev(struct device *dev)
+ {
+@@ -42,6 +56,12 @@ static inline int airoha_ppe_setup_tc_block_cb(struct airoha_ppe_dev *dev,
+ {
+ 	return -EOPNOTSUPP;
+ }
++
++static inline void airoha_ppe_dev_check_skb(struct airoha_ppe_dev *dev,
++					    struct sk_buff *skb, u16 hash,
++					    bool rx_wlan)
++{
++}
+ #endif
+ 
+ #define NPU_NUM_CORES		8
 
-Something like:
+-- 
+2.50.1
 
-"An embedded controller is a discrete component that contains a
-microcontroller (i.e. a small CPU running a small firmware without
-operating system) mounted into a larger computer system running
-a fully fledged operating system that needs to utilize the embedded
-controller as part of its operation."
-
-> Acked-by: Michael Walle <mwalle@kernel.org> # for sl28cpld
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
-Overall this looks reasonable:
-Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
-
-Yours,
-Linus Walleij
 
