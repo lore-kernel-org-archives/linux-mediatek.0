@@ -4,209 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9388DCA0EEB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Aug 2025 15:01:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F036CA0EED
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Aug 2025 15:34:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yPDytkuc2lzn8xRfExCsev7qCehNqrqXNyOfhH/CTVk=; b=WNWDCf2LDzb+lwKnhqtvB9d8Cu
-	m3sUkeDGJJ22IalqrFjXqTCFxJntxDIFZKaU9VKOg+V7DbETOnQIDjSI93TAsPMMTTMBGvWqsPbwJ
-	8eqk/KCBygg7k+l2s7KFKqOc+a/5sN+DU/T/EY2A+57YUsHGEcorgOLsVzucVJSYQ3JS8Zwoq1CXm
-	o0cHmG0ia4f0w41codV2GYCmdPOJ7ZRtFS5VHye9YKwwacFDaYQupXoCLJuWesNAaC7lzFntJyfxP
-	Sc21SiaoTPh0bnDp+Cj2DYeb/n25ydpZqWsWHZ+3H9uQ/3lyjN75mp/Canrh9YgjABHDLrxoja6cY
-	Qu5RuyGg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8rvb5BTFOBJCsAqheRi5OrrkHsnM2r6jQ+WuONy16iw=; b=WRa78wPo36gC4rZHGdauU3XCwd
+	wwJT9PNBAiLSMv2p4bngzjwCC+eIVtiskw1hGMqZhGmrmdGru4j5SycnurACNOGMfqHQM575gr4OF
+	4f0uXfF5hljVfLWWS2WoeW1CV+bzFkwj3u1VD+a3vIhUVwHyMFaMSozscXOjQOzxH5bOPLcedtOdD
+	yPsjC7V7lKAydG2ld0jjiGwh8hxL50wWoh8TCUy1Uaj5Bm7RQGradTw9k/nOD/jV6WR+oUHNhzIB+
+	a3rhC/051/5astxqQtBfkwDcFj1T1dWhjaNgEepVSM71xKCNYveQp9m10iMzCJ4hJrMB8fu0THwQV
+	lFe16eqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upTGj-00000002vaE-4AQl;
-	Fri, 22 Aug 2025 15:01:29 +0000
-Received: from mgamail.intel.com ([198.175.65.9])
+	id 1upTn5-0000000330u-2A2A;
+	Fri, 22 Aug 2025 15:34:55 +0000
+Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upOL2-000000025mO-1W2q;
-	Fri, 22 Aug 2025 09:45:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1755855937; x=1787391937;
-  h=from:to:cc:subject:date:message-id:references:
-   in-reply-to:content-transfer-encoding:mime-version;
-  bh=Mxv+f2AZIagljhUT0zt8U7K6yBDZCw8jx6zi3wX2kbM=;
-  b=AWHKOaniXA3AK5GZa2mf7GYLhbYp4/Di/9TUqn6y9rse6vjBwZ7nNWtr
-   AcSh1wq9Ku+ofpxzbQD54CCn9Njv4dFAAKVggwyBTRzim4+xGij8/+HEj
-   pHTX4S7E8MJ5cWbLaBxwsFG7wwboc/ydUxBBvDktQOK0DB/D+CvgZm2+k
-   SW2gjgfVSiQZZ6nHnGLPLoZWaYUZVtAo16zEAoEulEDPbzBF7AKbpVjOO
-   wP3U9nGLXoO3W/ZeC8POh3DchdgZRZlE3EU4gWvlbaQEsEpNQq3TA+Wi9
-   8u1xM2cmKUu7VR7oLce0rhMLP4uYPPEa5vKS1rUqEPbnWXo+/WsWQlZet
-   w==;
-X-CSE-ConnectionGUID: PFV8KoBOS6ufmNqjMaWTqw==
-X-CSE-MsgGUID: VeY9I0PISTiT966OXS9X6A==
-X-IronPort-AV: E=McAfee;i="6800,10657,11529"; a="80760992"
-X-IronPort-AV: E=Sophos;i="6.17,309,1747724400"; 
-   d="scan'208";a="80760992"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Aug 2025 02:45:35 -0700
-X-CSE-ConnectionGUID: Gmx24MozSTqzEOsRYc3uLg==
-X-CSE-MsgGUID: rsp6JAzgSdiwcJV6Tg4iPw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.17,309,1747724400"; 
-   d="scan'208";a="169492525"
-Received: from orsmsx902.amr.corp.intel.com ([10.22.229.24])
-  by fmviesa010.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Aug 2025 02:45:34 -0700
-Received: from ORSMSX902.amr.corp.intel.com (10.22.229.24) by
- ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.17; Fri, 22 Aug 2025 02:45:33 -0700
-Received: from ORSEDG901.ED.cps.intel.com (10.7.248.11) by
- ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.17 via Frontend Transport; Fri, 22 Aug 2025 02:45:33 -0700
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com (40.107.237.49)
- by edgegateway.intel.com (134.134.137.111) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.17; Fri, 22 Aug 2025 02:45:31 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=lSKw0LWH/dEL4AM3DPIFKkowsRrdMm2QRdBG9Y4y2yjbwJQzObUz4YXdTpNUuT0NF7GsFtdfZDJG4M/JWRnNBBLGUoa35xK+qlwQO3tyF2T2e+zykUyzjyHrIHzi/0uyU0Vdv5+nhOCB8GYSRaL0s5IJjOEJyG3PdwKVhFstUmajVKQVYj0wBGABrN1+5fAv+ehYQ/wEuYqHdn+/FKGVHlnZOCXzmizLj0Xk5RJkPFSpHvFQhv+RR3V/qanF3i6ZPDtg6bGwgOLTJRQZI1+Cv4vPDpxNEnZGZX3+0m2/Rjbdwv/rbYDPWCXDXavrICwonCXjagRssYLf5N2cvQ6ZrQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=yPDytkuc2lzn8xRfExCsev7qCehNqrqXNyOfhH/CTVk=;
- b=Q2/mgI28mLSZL7gjFZUPtTlLfpLJDo/shQWfr6TpkE4J5kHAzzWD4tPGUypgC++g998IZXRWGS9nq3Ia5ZADENpoBGlnVIZBVfPnVDJ7oYuikS6szQ6UW5mm/pZkMHpEHRfA+AxnYSUODyQ5mDyva19kPhj6fKVEtCg0zHXDj4TTpw7b5s1SA8g4tzGldbUh0JIdCwJ7JJAv+SBB7t+s0YX9o8gMNpZT07opNRm5RmsFkE3IDMV1Bpotac4pmSMLbLI9GA0IEK+/YpidiQ2oQeGNndNYdE8dzxrcUlQP+vzDg1wiAceI+ZmHdbNymZKKYsFbcnVVfes3gD248F8wkA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from BN9PR11MB5276.namprd11.prod.outlook.com (2603:10b6:408:135::18)
- by DM4PR11MB7280.namprd11.prod.outlook.com (2603:10b6:8:108::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9052.17; Fri, 22 Aug
- 2025 09:45:29 +0000
-Received: from BN9PR11MB5276.namprd11.prod.outlook.com
- ([fe80::b576:d3bd:c8e0:4bc1]) by BN9PR11MB5276.namprd11.prod.outlook.com
- ([fe80::b576:d3bd:c8e0:4bc1%4]) with mapi id 15.20.9031.023; Fri, 22 Aug 2025
- 09:45:28 +0000
-From: "Tian, Kevin" <kevin.tian@intel.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-CC: Nicolin Chen <nicolinc@nvidia.com>, "robin.murphy@arm.com"
-	<robin.murphy@arm.com>, "joro@8bytes.org" <joro@8bytes.org>,
-	"bhelgaas@google.com" <bhelgaas@google.com>, "will@kernel.org"
-	<will@kernel.org>, "robin.clark@oss.qualcomm.com"
-	<robin.clark@oss.qualcomm.com>, "yong.wu@mediatek.com"
-	<yong.wu@mediatek.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "thierry.reding@gmail.com"
-	<thierry.reding@gmail.com>, "vdumpa@nvidia.com" <vdumpa@nvidia.com>,
-	"jonathanh@nvidia.com" <jonathanh@nvidia.com>, "rafael@kernel.org"
-	<rafael@kernel.org>, "lenb@kernel.org" <lenb@kernel.org>, "Liu, Yi L"
-	<yi.l.liu@intel.com>, "baolu.lu@linux.intel.com" <baolu.lu@linux.intel.com>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "iommu@lists.linux.dev"
-	<iommu@lists.linux.dev>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "linux-arm-msm@vger.kernel.org"
-	<linux-arm-msm@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "linux-tegra@vger.kernel.org"
-	<linux-tegra@vger.kernel.org>, "linux-acpi@vger.kernel.org"
-	<linux-acpi@vger.kernel.org>, "linux-pci@vger.kernel.org"
-	<linux-pci@vger.kernel.org>, "patches@lists.linux.dev"
-	<patches@lists.linux.dev>, "Jaroszynski, Piotr" <pjaroszynski@nvidia.com>,
-	"Sethi, Vikram" <vsethi@nvidia.com>, "helgaas@kernel.org"
-	<helgaas@kernel.org>, "etzhao1900@gmail.com" <etzhao1900@gmail.com>
-Subject: RE: [PATCH v3 3/5] iommu: Add iommu_get_domain_for_dev_locked()
- helper
-Thread-Topic: [PATCH v3 3/5] iommu: Add iommu_get_domain_for_dev_locked()
- helper
-Thread-Index: AQHcCxPRj0zb6W5cHUaGmJqSwKG0krRohb6AgAAtjgCABBvC0IAAVdMAgAFVcqA=
-Date: Fri, 22 Aug 2025 09:45:28 +0000
-Message-ID: <BN9PR11MB5276A95E69D761271953E9F38C3DA@BN9PR11MB5276.namprd11.prod.outlook.com>
-References: <cover.1754952762.git.nicolinc@nvidia.com>
- <a69557026b7e2353bae67104bbe6a88f0682305e.1754952762.git.nicolinc@nvidia.com>
- <20250818143949.GO802098@nvidia.com> <aKNhIr08fK+xIYcg@Asurada-Nvidia>
- <BN9PR11MB5276262E1925E2CD8AE037EF8C32A@BN9PR11MB5276.namprd11.prod.outlook.com>
- <20250821131426.GN802098@nvidia.com>
-In-Reply-To: <20250821131426.GN802098@nvidia.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: BN9PR11MB5276:EE_|DM4PR11MB7280:EE_
-x-ms-office365-filtering-correlation-id: f440f4da-1274-451a-047a-08dde160a0e8
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|1800799024|366016|7416014|376014|38070700018;
-x-microsoft-antispam-message-info: =?us-ascii?Q?UVTlMcHFNWKNJeavkvedrHGdDCLa7lk0xdz2QDKRmWLYEJVD0o4wD1cQc9ok?=
- =?us-ascii?Q?pStGZCGia6Kqe9V2+sZXGV+8ehILuZr3Us+O8HpGAZVpn4UJSslr7LBbp9ND?=
- =?us-ascii?Q?/54A4DgqNmXuB/2oXnj+xHH0nYXrX9C0t+Z4hwu1UtaTNm31CxiV7AAVTlIP?=
- =?us-ascii?Q?T+RauE56odVDCpx0+g94vbROzftdcNgxHoBHKS7K0a0GKP3j0yjutIxn3qaO?=
- =?us-ascii?Q?3dfb2PigUfJLBPFUlhTIR2M6jYt/C4kCIbbvqVjeehB4v74fbJ4vlRCVdzVQ?=
- =?us-ascii?Q?49ziJkDBET+Tlc0cvRjykmcQJry0V/emd3ojOivJodQ4reVqbWNH2gIxkKu6?=
- =?us-ascii?Q?rIuputsON1oiWic+am69qzmYNpZFcKnTmvdX7bbBooWRZ+ZRVSCthbD200mD?=
- =?us-ascii?Q?umtZcX0ch1NI7M4P8S9SwvioUOkLCkxR1Xri7kEn3lu+XwiltA0tvNBmSAU0?=
- =?us-ascii?Q?2HUYXmbfSud0y2o9daKosDCIlsocxXL4Me5EgOdDGCWn719ihFLn+KUxbZHC?=
- =?us-ascii?Q?bc+zd77HEwclvlD6JWaGB9IUMOQi8+pyNjDhS3IqEmnLokmugnP52lGjr4GO?=
- =?us-ascii?Q?M2x8wEoRQy4kqq2GxlJDPkgxk/S0iH0NysmV0Jpj4o3PpSCJd5+W1CJ0r/9M?=
- =?us-ascii?Q?Yld5XIpS/13gKnWujOLkC6G6SN7ylxxMAR7zr86dSMPbc2nZRhgIcUCyBzRl?=
- =?us-ascii?Q?OdHU8IQQZft+1mxrqCUmbbA+gFGTUF5oO04dQanF9/SZCcwCrSOofebsHgkK?=
- =?us-ascii?Q?tsslu8w/4LCNcwXC5aNhZJGCJ67yUmySoGGVf2UJt9iljPj2VMxnou8YfnpD?=
- =?us-ascii?Q?COBRGbmsANz96r4g4StvXoJBmN+Gze/ENXLzRsb3f8LDPam1NNhsR6AXmpQW?=
- =?us-ascii?Q?14qeUrIhBxVLBD3sNqOYQwLjpWOiP1Tw94zNFLUVzs7iV9y/Z6mwbMEutG5L?=
- =?us-ascii?Q?HEl8St/GBR7wUOodBN/wDUhcqIELteEr656Rpf6zamPX6QPoSbyLOCyXcoP7?=
- =?us-ascii?Q?Jgv91sveFOMiCJgSAUjzcQiShkL+X+CQ+eWDCWZku7gjO7oaRNlAmqXqrurF?=
- =?us-ascii?Q?/1JNZwyMPYc6bUXbVfeZUlUu5w3ZU9yjqMi6FkIv+CRJz1SIvqy/s5UCo62T?=
- =?us-ascii?Q?01Mtj/uQLt5yp6Si2D6ynqqHnCCTa/pXY0hKCQ+oMWpAAMZEy1z0bkNeoxnS?=
- =?us-ascii?Q?1O6y1c+eAx9kiXYHghpZ2RGjII46tjHimJYwRyI/n28h5NLbIAAqwQl46lkC?=
- =?us-ascii?Q?ASqhCk1gYYdnR6MALvm2UkrS9TFcY5vaNVtyYrV/KKXHZiLbs4gc4w+ogJJN?=
- =?us-ascii?Q?SBRc9lM7KGsNnn4tFUxW5KmjmSPjFQyxw+8YYy+zyi42U9zODS9OJUMd+fKK?=
- =?us-ascii?Q?Zo7oP8Bb2A0u6UP7Ss2jLQC6K+Gu8rmrpNZlu8ioJPbAG9tb7zHS1tF+XTmd?=
- =?us-ascii?Q?ovq/JV8wbVzEHebrZp0T4tfWMZzR2eY6ZxacvAcKlaVW5hLDMXNJoQ=3D=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BN9PR11MB5276.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(7416014)(376014)(38070700018);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?6Hy2VARVM7MChO3ALZ2g+BuXvtfFLBUWEESU4pR+m3+YArsm2R+lWwwj9zLx?=
- =?us-ascii?Q?edRJDJ2mUvWFsNtb7N26ynSqdNKzaiLdiarDlR0TgkjvTewq6Lzmp1j1xXHA?=
- =?us-ascii?Q?CBNVdPVoDxpy1XIsbgGGqwhodVARYNxXuoSpffaHdnYDWAgDPruxAisiU+Kp?=
- =?us-ascii?Q?XoS+rkfsH9rpFQYxkhtX0GkJzLtrntgksFwyYq6Ya0Cgys2Or9P6WuK8aE86?=
- =?us-ascii?Q?yvdfL1Jo9e0S6LKB9VGqpEuZj1xx/vUCj09ZkpeFjdMzeqiqZEoHX/+KRe51?=
- =?us-ascii?Q?jExhEf5pVyeGhfTBY++31btK6CPc1bDpK8QqWPf6RZUr/kaNclrhetS5t82i?=
- =?us-ascii?Q?a59J/V3afFV5T71bvON0UPgfILupbYk13uRE1T2rAdaB/xHCJ21uHDzrCoPa?=
- =?us-ascii?Q?QVhapzRk6h2ErOql1j1716fCGwTjOfl45vNZq2+6fsazP7YfYqkTxH8BRV1D?=
- =?us-ascii?Q?DlZ2NoV7ArIZn4VOGIc2gzcR02zEiIIlXsjMydi5a79hCJJAiL4xDqULqrFD?=
- =?us-ascii?Q?Xc60MPX6LUhfGG306HBZ9Rz5D5ZCicurZZ0JqLZ9YNKoVWKc31608aPkppWL?=
- =?us-ascii?Q?pCaPYAEIJ0MbLQjyWoNZ6fGJWhX3kW9cQfarxFNIxdMYLOEkoVXeGfy6nngz?=
- =?us-ascii?Q?AQnnz6TVSg7GpltyvCAkdxNWeUVB0L7psSylasRdVpWjliM1SvJX62UQYL+B?=
- =?us-ascii?Q?6IkGmPvj1A8nPJlQrZAxrJl82xMZAyK949k2Zv9eE7hLEoD9PwFmqP98fpmE?=
- =?us-ascii?Q?Sk1orU4Ih6Xc+VHUMAdypPPMVD9M5HsbyL2QOOjzAwh0eS/+uhMWvPyeUysO?=
- =?us-ascii?Q?spgPjB87nevMpfOnNcZUf1I7IXNKVJzfac6LLYO6kqJJGcEj9crdDsgF7sS3?=
- =?us-ascii?Q?mAuqq8L2yntFhIgH08pyjQ4v1XBFZKewCjx6Txz1I0RJ32gBZ0rQx49EhyZE?=
- =?us-ascii?Q?e0Y49eUaSbbXskUFB7TXYZPC8yVmmHpaR46cDukZtgbJlJqMwPwWkuM5XGAp?=
- =?us-ascii?Q?osb6w8HabfyVw2klASQlgnHuaqHCbQnhpBCMNURDulqp94Rd9FFBebxtXFEe?=
- =?us-ascii?Q?l4cVKL/yJeBKnzr+HAYh5L9VrBxbrbLkq/CVl5DUD73kyyirENneMyj+AiVk?=
- =?us-ascii?Q?Wcwxcf5E9EzfiAjZ90RrK55DnUK3uwF9di5cTdyf7OH512SEW8Bo2IaB03ip?=
- =?us-ascii?Q?rUsPgY6n9ausHUcGJUEiWo4VCMHrZQC6seRuBXI7Wt80USJIZKQwYJ41soj8?=
- =?us-ascii?Q?Oilb8+6iPo8zU4mFGWNgG5M69d+L6TglaOHzgZWP71UQyIqodJ8dCTfUuJU1?=
- =?us-ascii?Q?BIZONtNwyGGBwlmD8CQbpOHeC5jLJVbGdNeT4TRZPgSUSisfz2JAEWbNmfZW?=
- =?us-ascii?Q?4Sv40FQKXRE+L/jKsALT5XPPbG7RkkeTKV5zJQh6jeuPjXLLtRbxb8uhsRZa?=
- =?us-ascii?Q?fGfwPAry+AgCawiM8MujFis6GW8w8aPBmW3h1CS9hsD7zoHq304oJva9v9dX?=
- =?us-ascii?Q?+SwKCioc70dM3sN5o0n5noORvHVR+ca4/hPAuoVuV88TiDnD8u0R5zb8mGCB?=
- =?us-ascii?Q?QnWDbH080VJAC1AAs9mUIxkGexUNrhtBhKpgeoW/?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+	id 1upNzD-0000000226A-10nW
+	for linux-mediatek@lists.infradead.org;
+	Fri, 22 Aug 2025 09:23:04 +0000
+Received: by mail-lj1-x229.google.com with SMTP id 38308e7fff4ca-333f92cb94eso16493111fa.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 22 Aug 2025 02:23:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1755854581; x=1756459381; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=8rvb5BTFOBJCsAqheRi5OrrkHsnM2r6jQ+WuONy16iw=;
+        b=eLTPkhUz6VnRNl/KgVcBEExKRkJtoqhYpy4Ze4kFBDoaQPINl0q1XrzsJGZrQdeKqD
+         O9DLGKVN2L3XnxMVFSM9mjiEU/1UAYdYz9wXYpOTnZs7bpQh1krWw1Eg//fleONa3zOf
+         pXPXVR51O+wPJlsg6q0a8xqRcCdIU8TYIccg4CHV3pFSsT9XgzMsaWqcOwaGQ0ZXHU4M
+         N84W/mdTc2vH1NF7O6UvT3CVmwk+8CeiHQmdwFrn/j98VcPlRaHxD9MbU56rBxk/Zhc8
+         xybInKk7gcpqwm2kK81C4KnilB/RcxuRd4UV3KwpdH62sAyZ5Aa2+TvJSUXDaQ+cP+V6
+         oVUw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1755854581; x=1756459381;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=8rvb5BTFOBJCsAqheRi5OrrkHsnM2r6jQ+WuONy16iw=;
+        b=FaMaF6iQJVOagatXNdi3wtE2iFFDXVdmPfd4K7zqKs7wtVc9D5pTufiWYKRyW9qg0e
+         8X/kIrUDWDhXPue5V456ufTqE2LH1sw4FQgPHV79TOMAoOPV/GpU1wvOML280zUInSm9
+         ehHEEUy8dertidYRtm7auJRqGxihCAGRWCYXr0L2J1yAQ0K5LglVvb+ojWhT9QqKDB2J
+         oDyPN1q+PsGD3KQxQY1XuhS3jMM1h6OfHWjG4oFLvUqvjGowez1VxcTWnNUwd5Wrs13p
+         sCsNnwkamHTPENPJ9e7hsQYl3y8wUEBgBCDsAAN5NcY5v8FnVfjvVAA1wqpA7gM4L2cN
+         Y10A==
+X-Forwarded-Encrypted: i=1; AJvYcCXapjZXD+MELvt5QvptATuQ5Y80x6Yx7CjMhidmZoQPeGmdCoDG8wCOuQqkaWBP9vBX8MBgxOi+Z8crrHWU/g==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyvsd+amoueLFPfjKY+sEsgH/bK8HdF6xBAWSu7jJvvQk1rgFtk
+	y+l6VwsK7uiQsInPd2Y6lK5w48Kv8mEREg/++HqsTp/QUGdCMn8LsD6qmiwjhC2vBg74TcfRhsV
+	ct78PUeavu1eCS5khpOn4B8gEFKMuP/h3d1j5NPwfZg==
+X-Gm-Gg: ASbGncsmJFkg8TmeavafOfB/r9FinYcHRVXIGkYq2Rxlx0eX5vJjFbgkgjG+J2Vl8Rf
+	SuzumuTDNq3mwemF84wVrwJx0E4456qt2J9dCMQkWJpTrC9HNjjkTNY4fbv3U/2t1P2LmhGy288
+	my7tlrBdQOUlfTFbn4Tif2ytDUZ6JHgYCIuAyP1OchyO2LiJfrnqLW3XG23RLQPCn0MXp4OY3yO
+	Ha5jQ5rxRE7uGMc8w==
+X-Google-Smtp-Source: AGHT+IGmS+5jZRiY3M87jYqtd1N1nFCNBKn5R2TEdrmd3+xxfd4PG/kXNNSVVgmhRVuloDKPRDouFdqjsq+r/vvoIgA=
+X-Received: by 2002:a2e:8a86:0:b0:32b:5272:38eb with SMTP id
+ 38308e7fff4ca-33651002d61mr7071001fa.40.1755854580887; Fri, 22 Aug 2025
+ 02:23:00 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BN9PR11MB5276.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f440f4da-1274-451a-047a-08dde160a0e8
-X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Aug 2025 09:45:28.8606
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: cK+R9C6A6EhgMaAHPENsOVWiIdjqxuNtbgp8m4R6RJTyDx6LzK/QcxwUfxsD6UpExTP8/XEI5eiVgpx4e7cn3w==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR11MB7280
-X-OriginatorOrg: intel.com
+References: <20250822075712.27314-2-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20250822075712.27314-2-krzysztof.kozlowski@linaro.org>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Fri, 22 Aug 2025 11:22:49 +0200
+X-Gm-Features: Ac12FXwu_A2fq6cbJB5U4ofkj6w0TKETQ4RpzZE3LHHotvIJu8LJQDJ8_-1dTpA
+Message-ID: <CACRpkdbLKXx7GEOPemFGSTFy8oDG99TUFwC7sH7xkaoqe-cY8A@mail.gmail.com>
+Subject: Re: [PATCH v2] dt-bindings: mfd: Move embedded controllers to own directory
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Benson Leung <bleung@chromium.org>, 
+	Guenter Roeck <groeck@chromium.org>, Tim Harvey <tharvey@gateworks.com>, 
+	Michael Walle <mwalle@kernel.org>, Bartosz Golaszewski <brgl@bgdev.pl>, Jean Delvare <jdelvare@suse.com>, 
+	Thomas Gleixner <tglx@linutronix.de>, Lee Jones <lee@kernel.org>, 
+	=?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <ukleinek@kernel.org>, 
+	Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier <mathieu.poirier@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Cheng-Yi Chiang <cychiang@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+	Wim Van Sebroeck <wim@linux-watchdog.org>, Thierry Reding <thierry.reding@gmail.com>, 
+	Tinghan Shen <tinghan.shen@mediatek.com>, devicetree@vger.kernel.org, 
+	chrome-platform@lists.linux.dev, linux-kernel@vger.kernel.org, 
+	linux-gpio@vger.kernel.org, linux-hwmon@vger.kernel.org, 
+	linux-pwm@vger.kernel.org, linux-remoteproc@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-sound@vger.kernel.org, linux-watchdog@vger.kernel.org, 
+	Mathew McBride <matt@traverse.com.au>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250822_024536_671697_C5FC5EE3 
-X-CRM114-Status: GOOD (  25.71  )
+X-CRM114-CacheID: sfid-20250822_022303_280691_59327040 
+X-CRM114-Status: GOOD (  12.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -221,61 +112,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> From: Jason Gunthorpe <jgg@nvidia.com>
-> Sent: Thursday, August 21, 2025 9:14 PM
->=20
-> On Thu, Aug 21, 2025 at 08:11:05AM +0000, Tian, Kevin wrote:
-> > > From: Nicolin Chen <nicolinc@nvidia.com>
-> > > Sent: Tuesday, August 19, 2025 1:23 AM
-> > >
-> > > ... I found that in SMMUv3 driver, iommu_get_domain_for_dev() is
-> > > used to get the RID domain for an SVA domain:
-> > >     arm_smmu_set_pasid()
-> > >     arm_smmu_blocking_set_dev_pasid()
-> > >
-> > > These two are already given an "old" (SVA) domain pointer, FWIW.
-> > >
-> > > So, we may change to passing in the old domain as you suggested,
-> > > yet we still have to fix the iommu_get_domain_for_dev() in order
-> > > to reflect the RID domain correctly for the driver that calls it
-> > > (or even potentially) in some group->mutex locked context where
-> > > the RID domain might not be naturally passed in.
-> > >
-> >
-> > Out of curiosity.
-> >
-> > arm_smmu_blocking_set_dev_pasid()
-> >
-> > 	/*
-> > 	 * When the last user of the CD table goes away downgrade the STE
-> back
-> > 	 * to a non-cd_table one.
-> > 	 */
-> > 	if (!arm_smmu_ssids_in_use(&master->cd_table)) {
-> > 		struct iommu_domain *sid_domain =3D
-> > 			iommu_get_domain_for_dev(master->dev);
-> >
-> > 		if (sid_domain->type =3D=3D IOMMU_DOMAIN_IDENTITY ||
-> > 		   sid_domain->type =3D=3D IOMMU_DOMAIN_BLOCKED)
-> > 			sid_domain->ops->attach_dev(sid_domain, dev);
-> > 	}
-> >
-> > why cannot downgrade apply to the case where the RID is attached to
-> > a DMA domain?
->=20
-> If the RID is a PAGING domain then it must be a S1 paging domain and ther=
-e
-> is
-> no downgrade possible.
->=20
-> It is impossible for the RID to be a S2 paging domain while ssids are
-> in use.
->=20
+On Fri, Aug 22, 2025 at 9:57=E2=80=AFAM Krzysztof Kozlowski
+<krzysztof.kozlowski@linaro.org> wrote:
 
-Thanks for the background. btw is it technically impossible or just
-not worth of the extra software complexity for no value? e.g. if
-maintaining two page tables (S1/S2 formats) with exact same mappings,
-does SMMU allow smooth transition between two modes w/o breaking
-in-fly DMAs? but probably keeping two page tables in-sync in transition
-is already a problem w/o proper locking in map/unmap...=20
+> Move ChromeOS Embedded Controller, Gateworks System Controller and
+> Kontron sl28cpld Board Management Controller to new subdirectory
+> "embedded-controller" matching their purpose.  MFD is coming from Linux
+> and does not really fit the actual purpose of this hardware.
+>
+> Rename Gateworks GSC filename to match compatible, as preferred for
+> bindings.
+
+Maybe add some definition of what we mean with "embedded controller"?
+
+Something like:
+
+"An embedded controller is a discrete component that contains a
+microcontroller (i.e. a small CPU running a small firmware without
+operating system) mounted into a larger computer system running
+a fully fledged operating system that needs to utilize the embedded
+controller as part of its operation."
+
+> Acked-by: Michael Walle <mwalle@kernel.org> # for sl28cpld
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+Overall this looks reasonable:
+Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+
+Yours,
+Linus Walleij
 
