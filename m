@@ -4,86 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B9C5CA0EE4
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Aug 2025 06:41:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37AD7CA0EE4
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Aug 2025 06:42:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8L9G3q8vCMQ9cticQ95k1bLTJnyChs3c7Vs1uz5R7oA=; b=QFg9NLpsRUrY0x+KsoTJP1PPsk
-	tgwUUpGYUrPY1UoTy/yYnTXUvA43J0+WHq0X0vLHniFUJFLdHXlVhFsnpFitkuwWmQ/JVbrNkxVar
-	OSRcoUkjR9+vxOnBjov1l7hsK2tvzncZzoxkexw7bV+1HNj8NklE2qQ9IR53bXgq3N1ruuIErijIr
-	I2YGJwK1bGGIRWPQfa2SizDaNt6WAWsUlJ34qxC3qAP/GbcG25d3gl41+1vMmeRSXJIjyAYrq1mHZ
-	Hem+jfSHqxh7VmWMPILHkBHSCjWwzRQAOF6p2HZcV4EoDjrj63xx3zKx4/G6Xf2f7qFOjimLoEC6H
-	dst3tn1g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=x8gOs4fYh6eyB5Xg5l22CDzCNbf7B4y9zYp/SzMxQaM=; b=mCDC7jwYJXQnr7
+	pWldhMu5Qi6n/zdfgqUoa6yh0LbzaDnMlFU7ibTbwn9Sv6TCYCl/GFlQKPPM5ol36XDi4HvBtkF8w
+	YbT3EqfrlhfQu3Ls0UpmtiGECDZEqR2xvLYm8LIwlk5Ee2z8WhWcbSn2TWKHqWE3djjLvfG9mcwNT
+	BI8hp879K2XMbSyrau9C5UrGCpoIGXdlJwVKBvDned814oNmqDVyz+TGwaflBkZ7zmwJ1RFlB+a1c
+	VFJHTF0gji14wcuQ4Yywf2QtJynHitwMM0ecPWsWhORPIGDdkDEGdQ8LmHd7SKfnnl940vE7K+N0Y
+	pJmIa6Ong5UisePibHNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uphvx-00000004CaP-0N9T;
-	Sat, 23 Aug 2025 06:41:01 +0000
-Received: from mgamail.intel.com ([198.175.65.17])
+	id 1uphxo-00000004F7B-1sqk;
+	Sat, 23 Aug 2025 06:42:56 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upVGb-00000003DlF-04PG;
-	Fri, 22 Aug 2025 17:09:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1755882569; x=1787418569;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=7Edpu4iaigfyMUiRCVPJ8Q6j8sogTZ4BIgKymb2DFMw=;
-  b=C4+wIUPbOdQDw1nkMdDvYgCMGdWe8VQw+N6EaM9/pcy5Dzkvheu99CW/
-   Pdgxry7ogt9KfZhBQUB0uHDONzmVvcbvt2aotBlq2E3BVHAIHZEnBWjq0
-   b364hUoRWjhnCvKgVieQbezTMHOo/jwETFxVeZoGfbIXBHQMKH8Fw1msB
-   Ay9Cl/0ZOzpeRYAJqs7le3qB6jcd91Yhu9W/A+nePQ0We5c4w3v9PjLxe
-   o9Fj1gS4/7OAhmH6vqFxBWXWcQLoRJRwohHdkHOZW4oVkD86+Jmio3k0L
-   ztc3HJ8DaPnmP1m+H/8mTdvXKuSYRAXrj1CjYtbkuc47jbkxYp/0ZLLhN
-   w==;
-X-CSE-ConnectionGUID: k0QxEAwtSeySkV/rQKOShg==
-X-CSE-MsgGUID: fa9lQaShRPmkyKVhnE9/fA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11529"; a="58145622"
-X-IronPort-AV: E=Sophos;i="6.17,312,1747724400"; 
-   d="scan'208";a="58145622"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
-  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Aug 2025 10:09:28 -0700
-X-CSE-ConnectionGUID: bSznwY7qTReg8XKsoJX+Qw==
-X-CSE-MsgGUID: 5jtGIIBhT2ugTPUQX6bJ8A==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.17,312,1747724400"; 
-   d="scan'208";a="168947402"
-Received: from lkp-server02.sh.intel.com (HELO 4ea60e6ab079) ([10.239.97.151])
-  by orviesa008.jf.intel.com with ESMTP; 22 Aug 2025 10:09:24 -0700
-Received: from kbuild by 4ea60e6ab079 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1upVG1-000LZR-1i;
-	Fri, 22 Aug 2025 17:09:01 +0000
-Date: Sat, 23 Aug 2025 01:07:23 +0800
-From: kernel test robot <lkp@intel.com>
-To: Xiandong Wang <xiandong.wang@mediatek.com>,
-	Jassi Brar <jassisinghbrar@gmail.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Yongqiang Niu <yongqiang.niu@mediatek.com>
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, sirius.wang@mediatek.com,
-	vince-wl.liu@mediatek.com, jh.hsu@mediatek.com,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	Xiandong Wang <xiandong.wang@mediatek.com>
-Subject: Re: [PATCH v3 3/4] mailbox: mtk-cmdq: Add cmdq driver for mt8189
-Message-ID: <202508230035.zCJcuz93-lkp@intel.com>
-References: <20250819033746.16405-4-xiandong.wang@mediatek.com>
+	id 1upWcw-00000003Jqu-3xrp;
+	Fri, 22 Aug 2025 18:36:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1755887795;
+	bh=ojMWLu9sR6XdGXpcfVIIZPVqzPufzHlxziClp8RvZuc=;
+	h=From:Subject:Date:To:Cc:From;
+	b=Qp1zDczVZTuL+KKSr2IZlvqdH3/8Y6QxXavfHVcwdXakerqipjLzv1xqzn6zjw9nS
+	 JCt4PIpVo7dSuYysFkbX8+LcF1aa4CIOY9OodbCsczlOVGuh4sCDhLE3g4NPkxirWp
+	 XgDaCvVoU/10UIhfLRtl5ZSKp6Hs6R0AWhEeIgNQdVAfVIj3Rl0mxFu9mBf0bQyY/b
+	 XaBCBI2ft6njRroOTCJKWe6boNB/pNfe7amjyRE8JJi9/t9AQrWlcw2UK+szQZftP+
+	 JxoQ5GvUlQ4I8k4gCvBNXjJTD5tAKvPzO2LOE4SCra4hg9lLU36M7mK/kpFlTQFL4j
+	 E9deI22a44jgQ==
+Received: from [127.0.1.1] (unknown [IPv6:2600:4041:5b1a:9400:62f0:406e:ac79:4a96])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5C6D017E110D;
+	Fri, 22 Aug 2025 20:36:29 +0200 (CEST)
+From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Subject: [PATCH RFC 0/5] Introduce support for post-blend color pipeline
+Date: Fri, 22 Aug 2025 14:36:10 -0400
+Message-Id: <20250822-mtk-post-blend-color-pipeline-v1-0-a9446d4aca82@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250819033746.16405-4-xiandong.wang@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-B4-Tracking: v=1; b=H4sIAJu4qGgC/x3MTQqDMBAG0KvIrB2If1S7FXqAbosLjV/t0DQJi
+ RRBvLvB5du8nSKCINI92yngL1GcTSjyjPRntAtY5mQqVdmoW6X4t37Zu7jyZGBn1s64wF48jFh
+ w3bUoxk7rpgKlwwe8Zbv+Fz0fPQ3HcQKcyOaBdAAAAA==
+X-Change-ID: 20250730-mtk-post-blend-color-pipeline-498e1a9cc53e
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Alex Hung <alex.hung@amd.com>, wayland-devel@lists.freedesktop.org, 
+ harry.wentland@amd.com, leo.liu@amd.com, ville.syrjala@linux.intel.com, 
+ pekka.paalanen@collabora.com, contact@emersion.fr, mwen@igalia.com, 
+ jadahl@redhat.com, sebastian.wick@redhat.com, shashank.sharma@amd.com, 
+ agoins@nvidia.com, joshua@froggi.es, mdaenzer@redhat.com, aleixpol@kde.org, 
+ xaver.hugl@gmail.com, victoria@system76.com, uma.shankar@intel.com, 
+ quic_naseer@quicinc.com, quic_cbraga@quicinc.com, quic_abhinavk@quicinc.com, 
+ marcan@marcan.st, Liviu.Dudau@arm.com, sashamcintosh@google.com, 
+ chaitanya.kumar.borah@intel.com, louis.chauvet@bootlin.com, 
+ mcanal@igalia.com, kernel@collabora.com, daniels@collabora.com, 
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
+ Simona Vetter <simona.vetter@ffwll.ch>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250822_100929_098116_B2D06112 
-X-CRM114-Status: GOOD (  13.00  )
+X-CRM114-CacheID: sfid-20250822_113639_137337_F3D51CD0 
+X-CRM114-Status: GOOD (  12.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,51 +93,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Xiandong,
+This series is based on "Color Pipeline API w/ VKMS" [1]. It reuses the
+same concept of a color pipeline API but for the post-blend stage
+instead of pre-blend, by attaching the COLOR_PIPELINE property to the
+CRTC rather than a plane.
 
-kernel test robot noticed the following build errors:
+Patch 1 implements the necessary changes in the DRM core to make this
+happen. The remaining patches implement support for this API in the
+MediaTek DRM driver in particular.
 
-[auto build test ERROR on jassibrar-mailbox/for-next]
-[also build test ERROR on robh/for-next krzk/for-next krzk-dt/for-next linus/master v6.17-rc2 next-20250822]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+This series has been tested on the MT8195-Tomato Chromebook with a WIP
+Weston branch [2]. Both gamma LUT and CTM color transformations have
+been simultaneously configured in hardware through the API and validated
+(test commits in weston [3] and the kernel [4]).
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Xiandong-Wang/dt-bindings-mailbox-add-cmdq-yaml-for-MT8189/20250819-113946
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/jassibrar/mailbox.git for-next
-patch link:    https://lore.kernel.org/r/20250819033746.16405-4-xiandong.wang%40mediatek.com
-patch subject: [PATCH v3 3/4] mailbox: mtk-cmdq: Add cmdq driver for mt8189
-config: arm-randconfig-001-20250822 (https://download.01.org/0day-ci/archive/20250823/202508230035.zCJcuz93-lkp@intel.com/config)
-compiler: clang version 22.0.0git (https://github.com/llvm/llvm-project d26ea02060b1c9db751d188b2edb0059a9eb273d)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250823/202508230035.zCJcuz93-lkp@intel.com/reproduce)
+This is a very early implementation but I'd like to get feedback from
+the community before moving forward. For instance one notable thing
+missing it to add init helpers for the post-blend case for the remaining
+colorop types, as only 3x1d LUT and 3x4 Matrix were needed for gamma LUT
+and CTM use cases.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202508230035.zCJcuz93-lkp@intel.com/
+[1] https://lore.kernel.org/all/20250815035047.3319284-1-alex.hung@amd.com/
+[2] https://gitlab.collabora.com/nfraprado/weston/-/tree/post-blend-colorops?ref_type=heads
+[3] https://gitlab.collabora.com/nfraprado/weston/-/commits/post-blend-color-pipeline-lut-ctm-test?ref_type=tags
+[4] https://gitlab.collabora.com/nfraprado/linux/-/commits/post-blend-color-pipeline-ctm-lut-test?ref_type=tags
 
-All errors (new ones prefixed by >>):
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
+Nícolas F. R. A. Prado (5):
+      drm: Support post-blend color pipeline API
+      drm/colorop: Export drm_colorop_cleanup() so drivers can extend it
+      drm/mediatek: Support post-blend colorops for gamma and ctm
+      drm/mediatek: ccorr: Support post-blend color pipeline API
+      drm/mediatek: gamma: Support post-blend color pipeline API
 
->> drivers/mailbox/mtk-cmdq-mailbox.c:781:3: error: field designator 'mminfra_offset' does not refer to any field in type 'const struct gce_plat'
-     781 |         .mminfra_offset = 0x40000000, /* 1GB */
-         |         ~^~~~~~~~~~~~~~~~~~~~~~~~~~~
-   1 error generated.
+ drivers/gpu/drm/drm_atomic.c              |  32 ++++-
+ drivers/gpu/drm/drm_atomic_uapi.c         |  50 ++++++-
+ drivers/gpu/drm/drm_colorop.c             | 147 +++++++++++++++++----
+ drivers/gpu/drm/drm_connector.c           |   1 +
+ drivers/gpu/drm/drm_crtc.c                |  77 +++++++++++
+ drivers/gpu/drm/drm_crtc_internal.h       |   6 +
+ drivers/gpu/drm/drm_ioctl.c               |   7 +
+ drivers/gpu/drm/drm_mode_object.c         |  20 +++
+ drivers/gpu/drm/drm_plane.c               |  36 +----
+ drivers/gpu/drm/mediatek/mtk_crtc.c       | 211 +++++++++++++++++++++++++++++-
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.c   |   6 +-
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.h   |   2 +
+ drivers/gpu/drm/mediatek/mtk_disp_ccorr.c | 100 ++++++++++++--
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h   |   6 +-
+ drivers/gpu/drm/mediatek/mtk_disp_gamma.c | 107 ++++++++++++---
+ include/drm/drm_atomic.h                  |  20 +++
+ include/drm/drm_atomic_uapi.h             |   2 +
+ include/drm/drm_colorop.h                 |  17 ++-
+ include/drm/drm_crtc.h                    |  19 +++
+ include/drm/drm_file.h                    |   7 +
+ include/uapi/drm/drm.h                    |  16 +++
+ 21 files changed, 781 insertions(+), 108 deletions(-)
+---
+base-commit: d152eee7ae3b72e2ce70064a7ad9764f7ba8641d
+change-id: 20250730-mtk-post-blend-color-pipeline-498e1a9cc53e
 
-
-vim +781 drivers/mailbox/mtk-cmdq-mailbox.c
-
-   777	
-   778	static const struct gce_plat gce_plat_mt8189 = {
-   779		.thread_nr = 32,
-   780		.shift = 3,
- > 781		.mminfra_offset = 0x40000000, /* 1GB */
-   782		.control_by_sw = false,
-   783		.sw_ddr_en = true,
-   784		.gce_num = 2
-   785	};
-   786	
-
+Best regards,
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Nícolas F. R. A. Prado <nfraprado@collabora.com>
+
 
