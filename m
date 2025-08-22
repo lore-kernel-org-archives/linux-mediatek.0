@@ -4,77 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB668CA0FE8
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Aug 2025 09:34:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1F90CA0EFF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Aug 2025 09:35:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/L5BtZVJoY6cbJVddxrT48vM5l/1F53xO0z7w+QH6pk=; b=DNb5+Lh/XwUSchDPXHK+3xwUuV
-	RxAI0L1mwnwmbHcrS//mBjRMEzakfqTA0MoNizwndtJDcEAf9SyIqccl2nsB8TMYhuByHg8gt9zdT
-	Kg9v+kzqWwg6kzMrxFUeJ/mdxCxAHA1UAByF8oMzNJHFWClr2qIQdC4OiSzef0V+3ofhJvPB/QyDR
-	7O7M0PRw427MI+ldjX1qi/UrYjNN3xivnpPGtSUOhhzW02zTs7qhSGtkKZriGrUbm1sybZoLAvWea
-	7v3g1qb0zaRLMlWz0qwENG0E0O15+JnlN5Id6M/juyXm/q1PWP0cw3bKlpyOevFJdufzM4vaap6iN
-	97+tvk9w==;
+	bh=pNMRQSVGtpbE9DQVQ/0SgNV9o3SjxzyOiIQeuU61MhE=; b=s8dRIszpjeEAYWNEZES1Y3zZWh
+	oVEmusuK7ksfeHJuj05u9HrvGkIkTozjEry6wh0udhH2TcQRawhjyq1ry1O6twhhB63ihaUaU4yrx
+	Jh8EXUpdQupY1wt0ksDnEb+sEA2GBTj5kJ/3NsBtZ4C04ajiFffPVAo6MIYoEjczDlVBT6lAwv76v
+	DIYYXvWYcEZSQq6hhAoArVAedhs4Xd6pTaI/7PCWNYiWOiELu6aQgM73GF39wD+nVHZRab4eCsWpr
+	N8Q/gztnu9En7WNy3oqg/YW+wN5GIIF03xX/2vJ/y95apNtunwGVsQhwdFpYQv64pzh0XOh89Mzoj
+	GWoZj5kA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upkeF-00000004Sp5-489S;
-	Sat, 23 Aug 2025 09:34:55 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1upkeR-00000004T88-2N5O;
+	Sat, 23 Aug 2025 09:35:07 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upT2c-00000002slX-2rEG;
-	Fri, 22 Aug 2025 14:46:55 +0000
+	id 1upTWQ-00000002z9D-06p4;
+	Fri, 22 Aug 2025 15:17:42 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 0B7BC5C6FE8;
-	Fri, 22 Aug 2025 14:46:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 86587C4CEED;
-	Fri, 22 Aug 2025 14:46:53 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 3C0A260203;
+	Fri, 22 Aug 2025 15:17:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BE912C4CEED;
+	Fri, 22 Aug 2025 15:17:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755874013;
-	bh=+LMAKVwOGszxRowkPXPHA9+jKYN9k/xShb+3HOShYDk=;
+	s=k20201202; t=1755875860;
+	bh=XdRY7HKsACkQeqSKAyGk2v2Vlf2LTnVd6fqMdVcahtg=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=gIuN8hF9wWDGShDvUOB2QK4Nd/qYdV1baMD1PWWrn0lgPIxFWci5eGIbdnbvjUyz8
-	 JCPZE8w7epY/TRHm9LS14Tmux3Pm7TvbCBbPxMskuHdpgKGBiENdgd9l271qVLiuIE
-	 lUJK25RtwR4AJPaYuhGy/tSFK7YbGAFnsKlDjrqAfWXnFwHMF8javBuwrQfC2E56MY
-	 RVQ4OytbvrMwrKfxwLiIDqvolz2QfoR68/ju5eqQ3YEUMRsM0dEGu/CpaOq9hoH7hK
-	 wqzkaTsIqJIdo6xQtm0bziemWvZIE7aDFGOznqFsW/nffenMl8Fz+cRLk6qXCLD4QA
-	 q2Ip/9UEuZ3oQ==
-Date: Fri, 22 Aug 2025 09:46:52 -0500
-From: Rob Herring <robh@kernel.org>
-To: Julien Massot <julien.massot@collabora.com>
-Cc: kernel@collabora.com, Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ikjoon Jang <ikjn@chromium.org>,
-	Enric Balletbo i Serra <eballetbo@kernel.org>,
-	Chen-Yu Tsai <wenst@chromium.org>, Weiyi Lu <weiyi.lu@mediatek.com>,
-	Eugen Hristev <eugen.hristev@linaro.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Julien Massot <jmassot@collabora.com>,
-	Sean Wang <sean.wang@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>, linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-sound@vger.kernel.org,
-	linux-gpio@vger.kernel.org
-Subject: Re: [PATCH v2 6/6] ASoC: dt-binding: Convert MediaTek mt8183-mt6358
- bindings to YAML
-Message-ID: <20250822144652.GA3763665-robh@kernel.org>
-References: <20250820-mtk-dtb-warnings-v2-0-cf4721e58f4e@collabora.com>
- <20250820-mtk-dtb-warnings-v2-6-cf4721e58f4e@collabora.com>
+	b=aeX8kKa/dZgcRh5rVfaqoe1CC8NN0aLGou2XiuH7yWo6zZoT0QIhl5aMWgudGWbFY
+	 PPJfl4qu/m+btSrUwCgNWzdEyti9DSk+4yNowmd5ObzKp71SEHpVRe1OG/T15oBtg8
+	 9AN3tUi+2Dlzatpa4sax+YkIVrb7+SqyD5H2awAnfF1PN1l3gHGmcimjHYyWWl0XLS
+	 KDwELS31Lh0WKfWDKLUMyqgWU4sIpyzrjgQzSw4ldlERimgWAAjaK0Yyi7mXII7kK2
+	 bMuRspo3WJffjr3/yeEtypJUPrix/S0g2/97MTyC+C1McOGFXza9L3Cz4L8nB3UHw8
+	 +rd3s0ZGFUt4Q==
+Date: Fri, 22 Aug 2025 10:17:40 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+Cc: airlied@gmail.com, matthias.bgg@gmail.com, krzk+dt@kernel.org,
+	louisalexis.eyraud@collabora.com, minghsiu.tsai@mediatek.com,
+	dmitry.torokhov@gmail.com, support.opensource@diasemi.com,
+	linux-kernel@vger.kernel.org, kernel@collabora.com,
+	edumazet@google.com, kuba@kernel.org, jeesw@melfas.com,
+	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+	linux-sound@vger.kernel.org, andrew-ct.chen@mediatek.com,
+	linux-input@vger.kernel.org, linux-gpio@vger.kernel.org,
+	davem@davemloft.net, mripard@kernel.org, ck.hu@mediatek.com,
+	maarten.lankhorst@linux.intel.com, linus.walleij@linaro.org,
+	yunfei.dong@mediatek.com, houlong.wei@mediatek.com,
+	p.zabel@pengutronix.de, linux-clk@vger.kernel.org,
+	tzimmermann@suse.de, chunkuang.hu@kernel.org,
+	angelogioacchino.delregno@collabora.com, lgirdwood@gmail.com,
+	simona@ffwll.ch, linux-mediatek@lists.infradead.org,
+	jmassot@collabora.com, linux-arm-kernel@lists.infradead.org,
+	conor+dt@kernel.org, netdev@vger.kernel.org, amergnat@baylibre.com,
+	broonie@kernel.org, sean.wang@kernel.org,
+	linux-media@vger.kernel.org, tiffany.lin@mediatek.com,
+	kyrie.wu@mediatek.corp-partner.google.com, pabeni@redhat.com,
+	flora.fu@mediatek.com, andrew+netdev@lunn.ch, mchehab@kernel.org
+Subject: Re: [PATCH v1 09/14] dt-bindings: pinctrl: mediatek,mt65xx-pinctrl:
+ Allow gpio-line-names
+Message-ID: <175587585960.3825744.17420648666303158652.robh@kernel.org>
+References: <20250820171302.324142-1-ariel.dalessandro@collabora.com>
+ <20250820171302.324142-10-ariel.dalessandro@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250820-mtk-dtb-warnings-v2-6-cf4721e58f4e@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250822_074654_794603_170FEFAA 
-X-CRM114-Status: GOOD (  16.34  )
+In-Reply-To: <20250820171302.324142-10-ariel.dalessandro@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,47 +88,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 20, 2025 at 03:44:57PM +0200, Julien Massot wrote:
-> Convert the existing text-based DT binding for MT8183 sound cards using
-> MT6358 and various other codecs to a YAML schema.
 
-In the subject (on all the patches), avoid saying 'binding' twice and I 
-prefer 'DT schema' over YAML. Lot's of things are YAML, but only one 
-thing is DT schema.
-
+On Wed, 20 Aug 2025 14:12:57 -0300, Ariel D'Alessandro wrote:
+> Current, the DT bindings for MediaTek's MT65xx Pin controller is missing
+> the gpio-line-names property, add it to the associated schema.
 > 
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Signed-off-by: Julien Massot <julien.massot@collabora.com>
+> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
 > ---
->  .../sound/mediatek,mt8183_mt6358_ts3a227.yaml      | 59 ++++++++++++++++++++++
->  .../sound/mt8183-mt6358-ts3a227-max98357.txt       | 25 ---------
->  2 files changed, 59 insertions(+), 25 deletions(-)
+>  .../devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml    | 2 ++
+>  1 file changed, 2 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8183_mt6358_ts3a227.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8183_mt6358_ts3a227.yaml
-> new file mode 100644
-> index 0000000000000000000000000000000000000000..048fe62715d67d44daa08e75a63c782238815689
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/sound/mediatek,mt8183_mt6358_ts3a227.yaml
-> @@ -0,0 +1,59 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/sound/mediatek,mt8183_mt6358_ts3a227.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek MT8183 sound card with MT6358, TS3A227, and MAX98357/RT1015 codecs
-> +
-> +maintainers:
-> +  - Julien Massot <julien.massot@collabora.com>
-> +
-> +description:
-> +  Binding for MediaTek MT8183 SoC-based sound cards using the MT6358 codec,
 
-Drop 'Binding for '.
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
-
-And thank you for jumping on all these Mediatek bindings.
-
-Rob
 
