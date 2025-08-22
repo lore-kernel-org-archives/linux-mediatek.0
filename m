@@ -4,85 +4,150 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6A07CA0FED
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Aug 2025 14:18:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7076CA0EED
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Aug 2025 14:18:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JoZdK50/K/LczwYuf75UT/ft4tdjCZI9J4+8Ndo+nls=; b=04iwjLIOy58iaWH9r3xDN+jhgZ
-	bwECPBvSL/TSChvZm1MtoNbqPHHGkIbYbznBMzU4VL7tblQ0MSK7nXwSgu0CB43f9fZt7IaWnmzEz
-	w6pSHHTMPSSW+svI7Nuh+Q0W2W0uCun1wseU9aGbZb4IeBnYXCq0UHKs1rmjHAVQzCxzTiN4WgDe0
-	Zd6Zc2ai0zMfB1ouxICsDgy7NJWxqoG19EhkrcdD2CxAI9SOIfyBFxJKgXVNug9JmzIBgwJcXtRxa
-	bLheBybDIzcrVpNkyG8qwi2HPy1Lvklt6/c9IDQvKmOfr0yFxUy3XbJ1/fs8tMPiLgCE+NfvLj51X
-	/ZmiKoXg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TgRqmJtyyZZKh40pf/48v4y890uKqUZvohs/c2O01aE=; b=FQfSnfbI0B+eFGL8C1H2f7yWPn
+	kLd/jC4hiht5PISvs33sHdey91s1dPN/yQcASo2KYJbtWZX9qTCA2QFgRPZyme/2BXuPEDJ7I6NNy
+	Pwra03RmiaepHD/TlTrAqN1YXWw8+W7AXIK4djlwYHiO7F1wYMBy0eRNWObUJ154CkJFlNutXY6tS
+	3yC2Fv8BEB62u5OkhaYeTf2pWKZqs+dzMb8sh03HHdUoLHAxdRLr6Gbn6jWbOwdOAsFguJ3Axzotn
+	HpFgCRxw8xytYoU8x9Hjz9B/AqqDGhpFiCJ0S59YWxotAvFwMNcN1PuxTDlNb+2jAqlAYHBubXWaW
+	YSeo/ktg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upSan-00000002kDr-2GRI;
-	Fri, 22 Aug 2025 14:18:09 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1upSb8-00000002keh-1OSP;
+	Fri, 22 Aug 2025 14:18:30 +0000
+Received: from mail-co1nam11on2061a.outbound.protection.outlook.com ([2a01:111:f403:2416::61a] helo=NAM11-CO1-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upKdo-00000001cWS-1gxv
-	for linux-mediatek@lists.infradead.org;
-	Fri, 22 Aug 2025 05:48:46 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-55ce526ac04so1635833e87.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 21 Aug 2025 22:48:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1755841723; x=1756446523; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=JoZdK50/K/LczwYuf75UT/ft4tdjCZI9J4+8Ndo+nls=;
-        b=jtNKnAoAJHlzQ1ikIixAdXIAq8jHKpGkb3p9al2GjP1IPz4+8OcXKyjry2vn37R6tn
-         RPrbiz3y4ahH6MVCd/mSQYcXjrJXRJOVy6jdeOChakoYxl7ZRMk29yVHpVet5b5JhtLk
-         PmPwkYbedxZ2UsA1YGdFZMxCfKa+dmbxXx+vk=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1755841723; x=1756446523;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=JoZdK50/K/LczwYuf75UT/ft4tdjCZI9J4+8Ndo+nls=;
-        b=M8kIaVd+PTdNS6eVW9Qt4HdsX5jDeSU/7/kEWTiD6tLIAkneG6AUShgcyXT1LasNbi
-         ju83PW5nw/EQsnE4oGyyiMtEK+N0saWRlrsdOMFBdSqP7PcALJo0+Bd0Ca6/a8xXQwya
-         iAFJ1M+fODMlO2/1cGC1pXMnf73VKJkJ3/74Boo5uz1ikWIMzO+IjK8B7Vit2jUu5p8H
-         HIjtrmE6e+jHPxmq0+IZ8tYkEdmhgXTt9yyo+Nsi1X7sbF4Wrwde3KFD33c1KTOVueIl
-         VoK5ahqCsM7Ax7rZPYGpY5t4a3vHdeXWTw/zpEwMHBWLTwYXQqUi3z1orV2JAF0W/nI9
-         Q9jg==
-X-Forwarded-Encrypted: i=1; AJvYcCVDss3/0YhNzXP9cGYQ6Qadsb2FvBb85mwhU8670OLZCBafio2390C+XS5pUCDPe95YHsfghMmsD4ykOpQGkQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwVGrlulz+pYXEcxjL+Jv+qpxCYyIcJQLURTAGe9XVBHqKUV+GU
-	fz5x8hxYWUX2VEdmkzQtreu3hjpLs7iPo9q6/LOerpbM1W2W5ODFuabzHuG8/5gtc54VnyUSNSP
-	eY5hgS4jeEOtLluIDCGonRPDJdsn82sVPQ7LFkxiG
-X-Gm-Gg: ASbGncsspBUf4PWFYoNdJIVpuOX2MDTC6Q6Nryhhd7Q1DKp4Lys2CeLrKbMVPIlwYr/
-	WLrzd4NEFujyFNGl+hZJJfSE9g3WldyNiybZjLQHuRDDq05usbXlNUQa4UxEpfjwwhGCckBeJ8l
-	Uhydb3yWwG6NEq7XmQSEeiWH6BzDoKRFP15ENJqqqnMsjF0zUe9ckGtQAyLPIUgeOTZbbPhC6HB
-	QcDUUICIyKUdPWXzuqQdUHky9RM7smXN6M=
-X-Google-Smtp-Source: AGHT+IEOuz9T18C75t4W7tyeC9lnODFUjUpRpgTCCiVHNHFZ4PPPT3oCCCaMJRon2fKjlUHHOi/9WQ3aPKorH0u9spA=
-X-Received: by 2002:a05:6512:3186:b0:55b:9796:5d5a with SMTP id
- 2adb3069b0e04-55f0cd0ab86mr647597e87.26.1755841722615; Thu, 21 Aug 2025
- 22:48:42 -0700 (PDT)
+	id 1upL2m-00000001fUA-2q7N;
+	Fri, 22 Aug 2025 06:14:34 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=SkrnCsbPJItYSA44cv+Q3qGS+D1a/iu3bFFDwqt5JtFCNb+JjAEY/9qE5Rnle+cjTjldIMTRa1V5hAChHdvdTBCy0HDXz04G28aNqzswBGG9b3z4IfXqhgd5JL5Vq3I4VuMM/11z4Vcku3bbptxCPfGyiFpnBkWbTlFPI5RjCuUSP5vltffsAZQ1R0sVPmN8EMQWI7yXhiwF4U4q9L+WuveIRvSfZOr5rPiMYFtRrKwEDSDL8vi8NYZaCYzoTBw1BLsAGr04SjSla+Wx21OBg+EieH5J2hhid60aaBXDdIXsDmN3Ujx1Uh+cfSwNwyzsGG0x23LyQPH/eaAKXSd5aQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=TgRqmJtyyZZKh40pf/48v4y890uKqUZvohs/c2O01aE=;
+ b=JTJhRPILZUpC7RruSmzGErNjnjPM3dJUFL2Qe+BqYvNqytozQTDbMF4ILdS+I4BTqRAGfi+zgqvHNE5FDgXygFbA/Aa6hQjhFqGByXlwKCPRRDrBC6VGwEteWBHnN4MBLhS70pBWlCetIsjaDULFcMTDM5FI7vePZLbSX0mC58jGV1oxqq9idCPZDf5RTemq3XLdVE9O+3BEmPF+KXGIUGLrQRj8rTh8lHHIskVtMevKcnpwc8Yy+IJAEQThYWKxXVkBqD5V0yEUlfzJ854RukCyBaLhowroYOI1Kf+qX1q8WnFLCwr9gp4W+T8W7PSbvpNJXFuyiZLnZ2ZhxQiPuA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.160) smtp.rcpttodomain=gmail.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=TgRqmJtyyZZKh40pf/48v4y890uKqUZvohs/c2O01aE=;
+ b=t5cw1JpbZ2aD1ppKt9P6Fsd/GmIqh59FgdjYOTKhbb9GoPfvpBmsQJIlhWjiX7AjWArAFXFX6JvjUNne/5NbxN1whyQ0uePg34iWTelVemwSw+qdV+vA30CGc3BEmcm6GCRuC2rr5rJz8GXtXU+CWXZ4Q/Ih8zTDTFr3mpAqFkITN4YToyMzN4309sVt99erWc95RC5rKSDsi7MdGpFUPvJAaLiC8FaFOFHVqS/i0xzCjTj92fPf8hfS1LogmloWb68Pu/trKfrfVbKwKcdGwnNib6MPx85DTDEdkcCLWZgJhTPWI9fX9od+lchk6MgIEEvh8Nqg/MgxLw61wfmBcw==
+Received: from DM5PR07CA0054.namprd07.prod.outlook.com (2603:10b6:4:ad::19) by
+ DM4PR12MB5795.namprd12.prod.outlook.com (2603:10b6:8:62::9) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9052.15; Fri, 22 Aug 2025 06:14:27 +0000
+Received: from DS1PEPF00017094.namprd03.prod.outlook.com
+ (2603:10b6:4:ad:cafe::93) by DM5PR07CA0054.outlook.office365.com
+ (2603:10b6:4:ad::19) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9052.16 via Frontend Transport; Fri,
+ 22 Aug 2025 06:14:27 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
+ smtp.mailfrom=nvidia.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.160) by
+ DS1PEPF00017094.mail.protection.outlook.com (10.167.17.137) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9052.8 via Frontend Transport; Fri, 22 Aug 2025 06:14:27 +0000
+Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
+ (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Thu, 21 Aug
+ 2025 23:14:13 -0700
+Received: from rnnvmail205.nvidia.com (10.129.68.10) by rnnvmail201.nvidia.com
+ (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Thu, 21 Aug
+ 2025 23:14:12 -0700
+Received: from Asurada-Nvidia (10.127.8.12) by mail.nvidia.com (10.129.68.10)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14 via Frontend
+ Transport; Thu, 21 Aug 2025 23:14:10 -0700
+Date: Thu, 21 Aug 2025 23:14:09 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Ethan Zhao <etzhao1900@gmail.com>
+CC: <robin.murphy@arm.com>, <joro@8bytes.org>, <bhelgaas@google.com>,
+	<jgg@nvidia.com>, <will@kernel.org>, <robin.clark@oss.qualcomm.com>,
+	<yong.wu@mediatek.com>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <thierry.reding@gmail.com>,
+	<vdumpa@nvidia.com>, <jonathanh@nvidia.com>, <rafael@kernel.org>,
+	<lenb@kernel.org>, <kevin.tian@intel.com>, <yi.l.liu@intel.com>,
+	<baolu.lu@linux.intel.com>, <linux-arm-kernel@lists.infradead.org>,
+	<iommu@lists.linux.dev>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-msm@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-tegra@vger.kernel.org>, <linux-acpi@vger.kernel.org>,
+	<linux-pci@vger.kernel.org>, <patches@lists.linux.dev>,
+	<pjaroszynski@nvidia.com>, <vsethi@nvidia.com>, <helgaas@kernel.org>
+Subject: Re: [PATCH v3 5/5] pci: Suspend iommu function prior to resetting a
+ device
+Message-ID: <aKgKsXmVWS5NZdUn@Asurada-Nvidia>
+References: <cover.1754952762.git.nicolinc@nvidia.com>
+ <3749cd6a1430ac36d1af1fadaa4d90ceffef9c62.1754952762.git.nicolinc@nvidia.com>
+ <550635db-00ce-410e-add0-77c1a75adb11@gmail.com>
+ <aKTzq6SLGB22Xq5b@Asurada-Nvidia>
+ <d6b852bc-328a-41af-b125-e250c72c0d22@gmail.com>
 MIME-Version: 1.0
-References: <20250822021217.1598-1-jjian.zhou@mediatek.com> <20250822021217.1598-3-jjian.zhou@mediatek.com>
-In-Reply-To: <20250822021217.1598-3-jjian.zhou@mediatek.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 22 Aug 2025 13:48:31 +0800
-X-Gm-Features: Ac12FXyAx8hC-gVdNoD4NtkuABbLquAi1UhZ0eVGRrEels7y4nJgdo90ksrJ3Zs
-Message-ID: <CAGXv+5GHSinkMHhBxRekfCxFK8my8JqeeRBsGXGuWDqH=MjmTQ@mail.gmail.com>
-Subject: Re: [PATCH v5 2/2] mailbox: mediatek: Add mtk-vcp-mailbox driver
-To: Jjian Zhou <jjian.zhou@mediatek.com>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <d6b852bc-328a-41af-b125-e250c72c0d22@gmail.com>
+X-NV-OnPremToCloud: ExternallySecured
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS1PEPF00017094:EE_|DM4PR12MB5795:EE_
+X-MS-Office365-Filtering-Correlation-Id: 20684c77-740c-4935-81a9-08dde1432609
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|1800799024|82310400026|36860700013;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?c7EWgqX+O0j6epS8boWfDsSkn5d4PDsY34sDQ+458CqtPwaiOaaGppl9eNLI?=
+ =?us-ascii?Q?909LalIX46dBHkAR4rInJH9XoTmLjoe6ByCidCSvtQSR+cjjLWEC9X64Snz3?=
+ =?us-ascii?Q?EFBzHPQAnEBx+4LCH0d7CQPuh8F27vpnHiQOQn0/GeZ9Xea59EOz1jKpDVUe?=
+ =?us-ascii?Q?tWa+Ny7eRQ9EXF5yqKlRSyfKo6sNC978+a+rsgRvIHQtfNyTotj9/w40egZe?=
+ =?us-ascii?Q?6WFlwmCQPCYQ+XZlifFOSLlpxectizqTqM49rZ2ASkK9Se8FftJIHX6UXqp5?=
+ =?us-ascii?Q?TzRj0aaUBDOfgOhFwKDZ52X4aiWlNbzBCD854h60tTxDaeaxlihNlBHfiNY3?=
+ =?us-ascii?Q?fuajqPs8Gk24SI6EkagRbkEkE6P4L8ihztO2RIFRkNkpDNC7uCOluV/inGbU?=
+ =?us-ascii?Q?6Rt0E6Cm1XtXCrgR+0KkXbJv6xnPfJs700m+ImPs3cQVA3cUkMXnlXjEqq+C?=
+ =?us-ascii?Q?GEITzsa1qJZy4ecZMeH9k/lHwavsQ7BkYuK/sr74HksZo6RzzGFiCTmZuSRA?=
+ =?us-ascii?Q?5Ln4qBZXDEm8PHe5mOommJqVmXN6FyidRenNK/xuC7hnEFoIojX/cKx1HY+P?=
+ =?us-ascii?Q?uT0GGHqPHg99dBUzflDxazbqQEh2dJu9kjslcJOvIXRfYLHAtB+kH07oOB6G?=
+ =?us-ascii?Q?yz6NakqB8xBErm0rnchZ87WxeWXo1YKRKNEcJvpVIJC2m2bP7IekE46AcUkE?=
+ =?us-ascii?Q?lVVtxAKO9ggK3Y+eYxdcGsYNY/LMYxQKioJ+rFZDslQuPysXrc7uB03uG42K?=
+ =?us-ascii?Q?lB0S6yMEv9QoTaG9N5aIEYOEzgtx+9sqDxkY7bdZGkjM32TJrYc2WPhd21WY?=
+ =?us-ascii?Q?Bkh1EhEGK1qrIJtWWBwK0yccjHOAt5EwK3kGMxGVET2Qzc1af8Q2nQqxQ8Ve?=
+ =?us-ascii?Q?IAq8kRBezFe2CYiwjCwomosMlbzclav0RJf6JBUp4GrRJTRzwU2yaGNtXXoA?=
+ =?us-ascii?Q?ROvtnCHIAtAFbBONmY6NDDG06bOGG8JAc4GkHgi4FPZO4cIwax6gMcf5ALBl?=
+ =?us-ascii?Q?oxkfxlhp6jmQ+XOUlyeVvq/t4j682wSa1/QEQB6IecSvkcDUUMLqGAW5sPSc?=
+ =?us-ascii?Q?4JtsVDjrDyu7w9TgggeTihGokJjXGKokxDoiqkk7lpfohlrcU5sI8yjggHET?=
+ =?us-ascii?Q?cQK5Qo2siv0W74fk+SEBeRejGO9xvRcvdlUrE6DZ5hfYibfiTYat3tNiELTv?=
+ =?us-ascii?Q?UB4zF1db22XVz8u1ePgiSZ+0JWSu8MTVlkoC+gvGKu+9Js1hq4HyGgDiqvrp?=
+ =?us-ascii?Q?h6cfFdHe0OBwl9i8hq266VBp9nougMPj/q1fGSR+tzHapS3tMGuNRph+A6nh?=
+ =?us-ascii?Q?X902Bz9dN/OZDlYhuTm5OMykX/c3fomc63LNdzbNqApO3RsvshzKsPp3bVxe?=
+ =?us-ascii?Q?OwL2eGjdhsgdkLagIhgCYiKyUaRyeLjwTqhM/fH46ogsSd3+p21RAd84aDYJ?=
+ =?us-ascii?Q?znxsWYCngoa9LcWLWArr1tS/LG8wOy/FaoJa7EFGnOTzqHqrM8Vs0/0b9yUv?=
+ =?us-ascii?Q?8c6Q8vm62zVarmiedEtMRALvPnaI2ZV6hCLW?=
+X-Forefront-Antispam-Report: CIP:216.228.117.160;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc6edge1.nvidia.com;CAT:NONE;SFS:(13230040)(376014)(7416014)(1800799024)(82310400026)(36860700013);DIR:OUT;SFP:1101;
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Aug 2025 06:14:27.2134
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 20684c77-740c-4935-81a9-08dde1432609
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.117.160];Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: DS1PEPF00017094.namprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB5795
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250821_224844_468193_F4D5EE01 
-X-CRM114-Status: GOOD (  33.24  )
+X-CRM114-CacheID: sfid-20250821_231432_727557_3A66EFDC 
+X-CRM114-Status: GOOD (  21.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,306 +162,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 22, 2025 at 10:12=E2=80=AFAM Jjian Zhou <jjian.zhou@mediatek.co=
-m> wrote:
->
-> Add mtk-vcp-mailbox driver to support the communication with
-> VCP remote microprocessor.
->
-> Signed-off-by: Jjian Zhou <jjian.zhou@mediatek.com>
+On Wed, Aug 20, 2025 at 11:18:52AM +0800, Ethan Zhao wrote:
+> On 8/20/2025 5:59 AM, Nicolin Chen wrote:
+> >   b) multiple pci_devs; single RID
+> > 
+> >      In this case, FLR only resets one device, while the IOMMU-
+> >      level reset will block the entire RID (i.e. all devices),
+> >      since they share the single translation tunnel. This could
+> >      break the siblings, if they aren't also being reset along.
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+> Yup, such alias devices might not have ATS cap. because of they
+> are PCI devices or they share the RID(BDF), so checking ATS cap
+> condition might be useful here to skip the prepare()/done()
 
-A couple minor comments below.
+Yea, I agree, yet I think we need it to be "sure" than "might"?
 
-> ---
->  drivers/mailbox/Kconfig                 |   9 ++
->  drivers/mailbox/Makefile                |   2 +
->  drivers/mailbox/mtk-vcp-mailbox.c       | 174 ++++++++++++++++++++++++
->  include/linux/mailbox/mtk-vcp-mailbox.h |  32 +++++
->  4 files changed, 217 insertions(+)
->  create mode 100644 drivers/mailbox/mtk-vcp-mailbox.c
->  create mode 100644 include/linux/mailbox/mtk-vcp-mailbox.h
->
-> diff --git a/drivers/mailbox/Kconfig b/drivers/mailbox/Kconfig
-> index 02432d4a5ccd..c28bdb855663 100644
-> --- a/drivers/mailbox/Kconfig
-> +++ b/drivers/mailbox/Kconfig
-> @@ -294,6 +294,15 @@ config MTK_CMDQ_MBOX
->           critical time limitation, such as updating display configuratio=
-n
->           during the vblank.
->
-> +config MTK_VCP_MBOX
-> +       tristate "MediaTek VCP Mailbox Support"
-> +       depends on ARCH_MEDIATEK || COMPILE_TEST
-> +       help
-> +         Say yes here to add support for the MediaTek VCP mailbox driver=
-.
-> +         The mailbox implementation provides access from the application
-> +         processor to Video Companion Processor Unit.
-> +         If unsure say N.
-> +
->  config ZYNQMP_IPI_MBOX
->         tristate "Xilinx ZynqMP IPI Mailbox"
->         depends on ARCH_ZYNQMP && OF
-> diff --git a/drivers/mailbox/Makefile b/drivers/mailbox/Makefile
-> index 98a68f838486..07278871d254 100644
-> --- a/drivers/mailbox/Makefile
-> +++ b/drivers/mailbox/Makefile
-> @@ -63,6 +63,8 @@ obj-$(CONFIG_MTK_ADSP_MBOX)   +=3D mtk-adsp-mailbox.o
->
->  obj-$(CONFIG_MTK_CMDQ_MBOX)    +=3D mtk-cmdq-mailbox.o
->
-> +obj-$(CONFIG_MTK_VCP_MBOX)     +=3D mtk-vcp-mailbox.o
-> +
->  obj-$(CONFIG_ZYNQMP_IPI_MBOX)  +=3D zynqmp-ipi-mailbox.o
->
->  obj-$(CONFIG_SUN6I_MSGBOX)     +=3D sun6i-msgbox.o
-> diff --git a/drivers/mailbox/mtk-vcp-mailbox.c b/drivers/mailbox/mtk-vcp-=
-mailbox.c
-> new file mode 100644
-> index 000000000000..6f48215896d2
-> --- /dev/null
-> +++ b/drivers/mailbox/mtk-vcp-mailbox.c
-> @@ -0,0 +1,174 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (c) 2025 MediaTek Corporation. All rights reserved.
-> + * Author: Jjian Zhou <jjian.zhou.@mediatek.com>
-> + */
-> +
-> +#include <linux/interrupt.h>
-> +#include <linux/io.h>
-> +#include <linux/kernel.h>
-> +#include <linux/mailbox_controller.h>
-> +#include <linux/mailbox/mtk-vcp-mailbox.h>
-> +#include <linux/module.h>
-> +#include <linux/of.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/slab.h>
-> +
-> +struct mtk_vcp_mbox_priv {
-> +       void __iomem *base;
-> +       struct device *dev;
-> +       struct mbox_controller mbox;
-> +       const struct mtk_vcp_mbox_cfg *cfg;
-> +       struct mtk_ipi_info ipi_recv;
-> +};
-> +
-> +struct mtk_vcp_mbox_cfg {
-> +       u32 set_in;
-> +       u32 clr_out;
-> +};
-> +
-> +static inline struct mtk_vcp_mbox_priv *get_mtk_vcp_mbox_priv(struct mbo=
-x_controller *mbox)
-> +{
-> +       return container_of(mbox, struct mtk_vcp_mbox_priv, mbox);
-> +}
-> +
-> +static irqreturn_t mtk_vcp_mbox_irq_thread(int irq, void *data)
-> +{
-> +       struct mbox_chan *chan =3D data;
-> +       struct mtk_vcp_mbox_priv *priv =3D get_mtk_vcp_mbox_priv(chan->mb=
-ox);
+So perhaps we should check alias too. Given that all alias devices
+in this case share the same RID and reside in the same iommu_group,
+we could iterate the group devices for pci_devs_are_dma_aliases().
 
-Since there's only one mailbox, you can just pass the private data,
-instead of passing the mbox_chan.
+> > > 2. Reset PF when its VFs are actvie.
+> > 
+> >   c) multiple pci_devs with their own RIDs
+> > 
+> >      In this case, either FLR or IOMMU only resets the PF. That
+> >      being said, VFs might be affected since PF is resetting?
+> >      If there is an issue, I don't see it coming from the IOMMU-
+> >      level reset..
 
-> +
-> +       /* get irq status */
-> +       priv->ipi_recv.irq_status =3D readl(priv->base + priv->cfg->clr_o=
-ut);
-> +
-> +       __ioread32_copy(priv->ipi_recv.msg, priv->base, MBOX_SLOT_MAX_SIZ=
-E / 4);
-> +
-> +       mbox_chan_received_data(chan, &priv->ipi_recv);
-> +
-> +       /* clear irq status */
-> +       writel(priv->ipi_recv.irq_status, priv->base + priv->cfg->clr_out=
-);
-> +
-> +       return IRQ_HANDLED;
-> +}
-> +
-> +static struct mbox_chan *mtk_vcp_mbox_xlate(struct mbox_controller *mbox=
-,
-> +                                           const struct of_phandle_args =
-*sp)
-> +{
-> +       if (sp->args_count)
-> +               return NULL;
-> +
-> +       return mbox->chans;
-> +}
-> +
-> +static int mtk_vcp_mbox_send_data(struct mbox_chan *chan, void *data)
-> +{
-> +       struct mtk_vcp_mbox_priv *priv =3D get_mtk_vcp_mbox_priv(chan->mb=
-ox);
-> +       struct mtk_ipi_info *ipi_info =3D data;
-> +       u32 status;
-> +
-> +       if (!ipi_info->msg) {
-> +               dev_err(priv->dev, "msg buffer is NULL.\n");
-> +               return -EINVAL;
-> +       }
-> +
-> +       status =3D readl(priv->base + priv->cfg->set_in) & BIT(ipi_info->=
-index);
-> +       if (status) {
-> +               dev_warn(priv->dev, "mailbox IPI %d is busy.\n", ipi_info=
-->id);
-> +               return -EBUSY;
-> +       }
-> +
-> +       if (ipi_info->slot_ofs + ipi_info->len > MBOX_SLOT_MAX_SIZE)
-> +               return -EINVAL;
-> +       __iowrite32_copy(priv->base + ipi_info->slot_ofs, ipi_info->msg,
-> +                        ipi_info->len);
-> +
-> +       writel(BIT(ipi_info->index), priv->base + priv->cfg->set_in);
-> +
-> +       return 0;
-> +}
-> +
-> +static bool mtk_vcp_mbox_last_tx_done(struct mbox_chan *chan)
-> +{
-> +       struct mtk_ipi_info *ipi_info =3D chan->active_req;
-> +       struct mtk_vcp_mbox_priv *priv =3D get_mtk_vcp_mbox_priv(chan->mb=
-ox);
-> +
-> +       return !(readl(priv->base + priv->cfg->set_in) & BIT(ipi_info->in=
-dex));
-> +}
-> +
-> +static const struct mbox_chan_ops mtk_vcp_mbox_chan_ops =3D {
-> +       .send_data      =3D mtk_vcp_mbox_send_data,
-> +       .last_tx_done   =3D mtk_vcp_mbox_last_tx_done,
-> +};
-> +
-> +static int mtk_vcp_mbox_probe(struct platform_device *pdev)
-> +{
-> +       struct device *dev =3D &pdev->dev;
-> +       struct mtk_vcp_mbox_priv *priv;
-> +       struct mbox_controller *mbox;
-> +       int ret, irq;
-> +
-> +       priv =3D devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-> +       if (!priv)
-> +               return -ENOMEM;
-> +
-> +       priv->dev =3D dev;
-> +       mbox =3D &priv->mbox;
-> +       mbox->dev =3D dev;
-> +       mbox->ops =3D &mtk_vcp_mbox_chan_ops;
-> +       mbox->txdone_irq =3D false;
-> +       mbox->txdone_poll =3D true;
-> +       mbox->of_xlate =3D mtk_vcp_mbox_xlate;
-> +       mbox->num_chans =3D 1;
-> +       mbox->chans =3D devm_kzalloc(dev, sizeof(*mbox->chans), GFP_KERNE=
-L);
-> +       if (!mbox->chans)
-> +               return -ENOMEM;
-> +
-> +       priv->ipi_recv.msg =3D devm_kzalloc(dev, MBOX_SLOT_MAX_SIZE, GFP_=
-KERNEL);
-> +       if (!priv->ipi_recv.msg)
-> +               return -ENOMEM;
-> +
-> +       priv->base =3D devm_platform_ioremap_resource(pdev, 0);
-> +       if (IS_ERR(priv->base))
-> +               return PTR_ERR(priv->base);
-> +
-> +       priv->cfg =3D of_device_get_match_data(dev);
-> +       if (!priv->cfg)
-> +               return -EINVAL;
-> +
-> +       irq =3D platform_get_irq(pdev, 0);
-> +       if (irq < 0)
-> +               return irq;
-> +
-> +       ret =3D devm_request_threaded_irq(dev, irq, NULL,
-> +                                       mtk_vcp_mbox_irq_thread, IRQF_ONE=
-SHOT,
-> +                                       dev_name(dev), mbox->chans);
-> +       if (ret < 0)
-> +               return ret;
-> +
-> +       platform_set_drvdata(pdev, priv);
-> +
-> +       return devm_mbox_controller_register(dev, &priv->mbox);
-> +}
-> +
-> +static const struct mtk_vcp_mbox_cfg mt8196_cfg =3D {
-> +       .set_in         =3D 0x100,
-> +       .clr_out        =3D 0x10C,
+> Each of the PF and its VFs has it owns RID(BDF), but the VFs' life
+> depends on the living of PF, resetting PF, means all its VFs are
+> lost.
+> 
+> There is no processing logic about PF and its VFs in FLR() yet.
+> my understanding the upper layer callers should consider the
+> complexity of such case.
+> 
+> While we introducing the connection of IOMMU & device in FLR(),
+> seems we brought some of the logic from the outside to the inside
+> part.
+> 
+> One method might we don't handle PF either by explicit checking its
+> VF configuration existing to skip prepare()/done() ? till we have
+> much clearer handling logic about it.
 
-                                ^ use lowercase for hex numbers.
+That sounds a good one to start with.
 
-> +};
-> +
-> +static const struct of_device_id mtk_vcp_mbox_of_match[] =3D {
-> +       { .compatible =3D "mediatek,mt8196-vcp-mbox", .data =3D &mt8196_c=
-fg },
-> +       {},
-> +};
-> +MODULE_DEVICE_TABLE(of, mtk_vcp_mbox_of_match);
-> +
-> +static struct platform_driver mtk_vcp_mbox_driver =3D {
-> +       .probe          =3D mtk_vcp_mbox_probe,
-> +       .driver =3D {
-> +               .name   =3D "mtk_vcp_mbox",
-> +               .of_match_table =3D mtk_vcp_mbox_of_match,
-> +       },
-> +};
-> +module_platform_driver(mtk_vcp_mbox_driver);
-> +
-> +MODULE_AUTHOR("Jjian Zhou <jjian.zhou@mediatek.com>");
-> +MODULE_DESCRIPTION("MTK VCP Mailbox Controller");
-> +MODULE_LICENSE("GPL");
-> diff --git a/include/linux/mailbox/mtk-vcp-mailbox.h b/include/linux/mail=
-box/mtk-vcp-mailbox.h
-> new file mode 100644
-> index 000000000000..143fb0d06e30
-> --- /dev/null
-> +++ b/include/linux/mailbox/mtk-vcp-mailbox.h
-> @@ -0,0 +1,32 @@
-> +/* SPDX-License-Identifier: (GPL-2.0 OR MIT) */
-> +/*
-> + * Copyright (c) 2025 MediaTek Inc.
-> + */
-> +
-> +#ifndef __MTK_VCP_MAILBOX_H__
-> +#define __MTK_VCP_MAILBOX_H__
-> +
-> +#define MBOX_SLOT_MAX_SIZE     0x100 /* mbox max slot size */
-> +
-> +/**
-> + * struct mtk_ipi_info - mailbox message info for mtk-vcp-mailbox
-> + * @msg: The share buffer between IPC and mailbox driver
-> + * @len: Message length
-> + * @id: This is for identification purposes and not actually used
-> + *     by the mailbox hardware.
-> + * @index: The signal number of the mailbox message.
-> + * @slot_ofs: Data slot offset.
-> + * @irq_status: Captures incoming signals for the RX path.
-> + *
-> + * It is used between IPC with mailbox driver.
-> + */
-> +struct mtk_ipi_info {
-> +       void *msg;
-> +       u32 len;
-> +       u32 id;
-> +       u32 index;
-> +       u32 slot_ofs;
-> +       u32 irq_status;
-> +};
-> +
-> +#endif
-> --
-> 2.46.0
->
+The prepare()/done() functions can internally bypass for devices:
+
+	if (!pci_ats_supported(pci_dev) || pci_sriov_get_totalvfs(pci_dev))
+		return 0;
+	/* And check alias too */
+
+Thanks
+Nicolin
 
