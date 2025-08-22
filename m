@@ -4,63 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20FE8CA0EFA
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Aug 2025 06:32:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D21DCA0EFA
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Aug 2025 06:32:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GS/zqLZ7qyXkT4joWGssYQK3kGFHcKwQnTldwg/vqrg=; b=nAy3DCLzG77gZbsl5eusVBX2zH
-	5Pux2eGj1Ps7+FJs/QpPeTH9YM53kN19s7VkrMOqXPnsqMLiLKszRTBu1bJ1BqOyeQrAL2XGscrhu
-	1aKawk0YwbYrSxt7dGIpw0TjNQVuCozZyBXlWaBzDOpDzDqTOGL+aen+uIMqG4mSGKnbq9ciuXD9d
-	Dl+dtDCNIbFm2KfSA4BwOfOz/75rjzuUk++lm0y83j3YmBv8tDWZL1HvHmxil2KkCxq2aSOSlcb1k
-	VCEqMYWCL9GpGell+zLibHX718uQvPXp7YyZWrwhixiwOaAtgJmacu0n/Jp4SK2Poj60Z6C51C4Lf
-	MsA4Ml7Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=smX6GbIm3kSK53C+FTWZLt5gdAAoY1if7kLmaHl1GMY=; b=OohFhBspumHMB+Lr+PiZYNupkk
+	40Szor1RCHSIXVF9f8JK66YYNhV6D5scgFLaubjElnjcxI20U4YNSq4jhdsjHnD9E63QaPPgF3MgI
+	WIhDImA7zPFzaSqXLnMTuvAuGafiu26rqkNeXxSjS94I+/5R463NY0znrMueVtsG0s+QgikcJ+SsM
+	0+QHfUSJJ+BfzX7nk1BRAXcJWPyx7UzqKi0QNLi+5W9ix5dlbyzss9TCIXiISt7b0MwdCLq7CeP6n
+	7xsesp8TXYtCjVRj0RpTma5g1m81pRzMhw8RszmAARTG0xxeRJlWDIjknKgkor64UE+aMcz8gkJvF
+	UF3N3clw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uphnI-000000041DD-32c4;
-	Sat, 23 Aug 2025 06:32:04 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uphnU-000000041QA-3Afx;
+	Sat, 23 Aug 2025 06:32:16 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upSue-00000002rG1-11nD;
-	Fri, 22 Aug 2025 14:38:40 +0000
+	id 1upSvk-00000002rTP-0qRB;
+	Fri, 22 Aug 2025 14:39:49 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id AB8C26026B;
-	Fri, 22 Aug 2025 14:38:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 23E83C113CF;
-	Fri, 22 Aug 2025 14:38:39 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 543C243451;
+	Fri, 22 Aug 2025 14:39:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0D0FAC4CEED;
+	Fri, 22 Aug 2025 14:39:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755873519;
-	bh=0ohbEUcDQtMZ8LIN1dVF0ofMoZ/hGdLyI2kAkLh7ZKA=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=V/o4d2lQpWluTRU64SKjomir38I8NJi6S9ntSkoEbKRY6tqm/4BPvkiVX5b8wSp3H
-	 +CarlZrKKN46utWL+/QSTCo1IXlBGvkLMHYHOZErae2Z3VlxJoYXn8sQnjlvdoz0x9
-	 6cJ17jsyLDY69OMlZJTFrw2aBaa75ACZI0OzNe3DGktGuzAddCX1Mc1mEnomi3XDN/
-	 l+03Fiw9Az8B2Kuv73xg6F8CGQLujZBdr4EusRr2d6oyE+mAIm79qatpEcUceo7B9b
-	 Z5dDy6ck95qOJc9iMv7sscc40h1F+T+AYsyhBxFarpl1Py5S8YLEZaLr95urPyCgpe
-	 62NWVl87KI1lg==
-Date: Fri, 22 Aug 2025 07:38:38 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
- <pabeni@redhat.com>, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net-next 2/3] net: airoha: Add airoha_ppe_dev struct
- definition
-Message-ID: <20250822073838.7da185f9@kernel.org>
-In-Reply-To: <aKh9_g7mgvFxMdAz@lore-rh-laptop>
-References: <20250819-airoha-en7581-wlan-rx-offload-v1-0-71a097e0e2a1@kernel.org>
-	<20250819-airoha-en7581-wlan-rx-offload-v1-2-71a097e0e2a1@kernel.org>
-	<20250821183453.4136c5d3@kernel.org>
-	<aKgVEYMftYgdynxw@lore-rh-laptop>
-	<20250822070440.71bdd804@kernel.org>
-	<aKh9_g7mgvFxMdAz@lore-rh-laptop>
+	s=k20201202; t=1755873586;
+	bh=MQpTXSG/z9wgXCqnHJLGZddIUiDznuwl5RLSvgOuvXs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=VQP9xZ/s3HAazOp75U4TuPEapU2a39p4qFkiPYIQluE9pzYgrWJa51B3d7Os+uHLk
+	 07QHvilTh/0IAMVvP8UtJwPSIc0eJAf5rObM7N29vjvflf6VZGJn0JfN8HKFj7BsYm
+	 9sZgVOXvhX9hE/PeH+yQcevUbLRCskzs5ZFVxFbzilJROE5DFOdSSB/y7jUi5jCEY3
+	 pZa0NNYw/yYl6y4JmKEJG2R1ZlqIP8Nx9urx8QMT0C+9SQZ9XxvbDPU64Ct0zCldhS
+	 nvniOoHUDaRUvwH7j9veUxRB9j9fiSCDgnWPu02PsUE+WsrymcmcHcoABbS0buo7Gl
+	 4I4fTPlTHXjIg==
+Date: Fri, 22 Aug 2025 09:39:45 -0500
+From: Rob Herring <robh@kernel.org>
+To: Julien Massot <julien.massot@collabora.com>
+Cc: kernel@collabora.com, Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Ikjoon Jang <ikjn@chromium.org>,
+	Enric Balletbo i Serra <eballetbo@kernel.org>,
+	Chen-Yu Tsai <wenst@chromium.org>, Weiyi Lu <weiyi.lu@mediatek.com>,
+	Eugen Hristev <eugen.hristev@linaro.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Julien Massot <jmassot@collabora.com>,
+	Sean Wang <sean.wang@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>, linux-clk@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-sound@vger.kernel.org,
+	linux-gpio@vger.kernel.org
+Subject: Re: [PATCH v2 2/6] ASoC: dt-binding: Convert mt8183-afe-pcm binding
+ to YAML
+Message-ID: <20250822143945.GA3709669-robh@kernel.org>
+References: <20250820-mtk-dtb-warnings-v2-0-cf4721e58f4e@collabora.com>
+ <20250820-mtk-dtb-warnings-v2-2-cf4721e58f4e@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250820-mtk-dtb-warnings-v2-2-cf4721e58f4e@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250822_073948_280420_7C0AC264 
+X-CRM114-Status: GOOD (  18.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,17 +89,170 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 22 Aug 2025 16:26:06 +0200 Lorenzo Bianconi wrote:
-> > > I moved the of_node_put() here (and in the if branch) in order to fix a similar
-> > > issue fixed by Alok for airoha_npu.  
-> > 
-> > Ah, didn't notice it in the print..
-> > maybe remove the empty line between the of_find_device.. and the null
-> > check on pdev then?  
+On Wed, Aug 20, 2025 at 03:44:53PM +0200, Julien Massot wrote:
+> Convert the MediaTek MT8183 AFE PCM Device Tree binding from the old
+> .txt format to YAML schema format to improve validation.
 > 
-> I am fine with it. I did it this way just to be consistent with NPU code:
-> https://github.com/torvalds/linux/blob/master/drivers/net/ethernet/airoha/airoha_npu.c#L403
-> Do you want me to post v3?
+> While converting, also document all clock inputs and memory-region
+> used by the AFE block.
+> 
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Julien Massot <julien.massot@collabora.com>
+> ---
+>  .../bindings/sound/mediatek,mt8183-audio.yaml      | 228 +++++++++++++++++++++
+>  .../devicetree/bindings/sound/mt8183-afe-pcm.txt   |  42 ----
+>  2 files changed, 228 insertions(+), 42 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8183-audio.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8183-audio.yaml
+> new file mode 100644
+> index 0000000000000000000000000000000000000000..93517565f0f3a692c824be0897bc88dfd59bd723
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/sound/mediatek,mt8183-audio.yaml
+> @@ -0,0 +1,228 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/sound/mediatek,mt8183-audio.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Mediatek AFE PCM controller for mt8183
+> +
+> +maintainers:
+> +  - Julien Massot <jmassot@collabora.com>
+> +
+> +properties:
+> +  compatible:
+> +    const: mediatek,mt8183-audio
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  resets:
+> +    maxItems: 1
+> +
+> +  reset-names:
+> +    const: audiosys
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  memory-region:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    items:
+> +      - description: AFE clock
+> +      - description: ADDA DAC clock
+> +      - description: ADDA DAC pre-distortion clock
+> +      - description: ADDA ADC clock
+> +      - description: ADDA6 ADC clock
+> +      - description: Audio low-jitter 22.5792m clock
+> +      - description: Audio low-jitter 24.576m clock
+> +      - description: Audio PLL1 tuner clock
+> +      - description: Audio PLL2 tuner clock
+> +      - description: I2S1 bit clock
+> +      - description: I2S2 bit clock
+> +      - description: I2S3 bit clock
+> +      - description: I2S4 bit clock
+> +      - description: Audio Time-Division Multiplexing interface clock
+> +      - description: Powerdown Audio test model clock
+> +      - description: Audio infra sys clock
+> +      - description: Audio infra 26M clock
+> +      - description: Mux for audio clock
+> +      - description: Mux for audio internal bus clock
+> +      - description: Mux main divider by 4
+> +      - description: Primary audio mux
+> +      - description: Primary audio PLL
+> +      - description: Secondary audio mux
+> +      - description: Secondary audio PLL
+> +      - description: Primary audio en-generator clock
+> +      - description: Primary PLL divider by 4 for IEC
+> +      - description: Secondary audio en-generator clock
+> +      - description: Secondary PLL divider by 8 for IEC
+> +      - description: Mux selector for I2S port 0
+> +      - description: Mux selector for I2S port 1
+> +      - description: Mux selector for I2S port 2
+> +      - description: Mux selector for I2S port 3
+> +      - description: Mux selector for I2S port 4
+> +      - description: Mux selector for I2S port 5
+> +      - description: APLL1 and APLL2 divider for I2S port 0
+> +      - description: APLL1 and APLL2 divider for I2S port 1
+> +      - description: APLL1 and APLL2 divider for I2S port 2
+> +      - description: APLL1 and APLL2 divider for I2S port 3
+> +      - description: APLL1 and APLL2 divider for I2S port 4
+> +      - description: APLL1 and APLL2 divider for IEC
+> +      - description: 26MHz clock for audio subsystem
+> +
+> +  clock-names:
+> +    items:
+> +      - const: aud_afe_clk
+> +      - const: aud_dac_clk
+> +      - const: aud_dac_predis_clk
+> +      - const: aud_adc_clk
+> +      - const: aud_adc_adda6_clk
+> +      - const: aud_apll22m_clk
+> +      - const: aud_apll24m_clk
+> +      - const: aud_apll1_tuner_clk
+> +      - const: aud_apll2_tuner_clk
+> +      - const: aud_i2s1_bclk_sw
+> +      - const: aud_i2s2_bclk_sw
+> +      - const: aud_i2s3_bclk_sw
+> +      - const: aud_i2s4_bclk_sw
+> +      - const: aud_tdm_clk
+> +      - const: aud_tml_clk
+> +      - const: aud_infra_clk
+> +      - const: mtkaif_26m_clk
+> +      - const: top_mux_audio
+> +      - const: top_mux_aud_intbus
+> +      - const: top_syspll_d2_d4
+> +      - const: top_mux_aud_1
+> +      - const: top_apll1_ck
+> +      - const: top_mux_aud_2
+> +      - const: top_apll2_ck
+> +      - const: top_mux_aud_eng1
+> +      - const: top_apll1_d8
+> +      - const: top_mux_aud_eng2
+> +      - const: top_apll2_d8
+> +      - const: top_i2s0_m_sel
+> +      - const: top_i2s1_m_sel
+> +      - const: top_i2s2_m_sel
+> +      - const: top_i2s3_m_sel
+> +      - const: top_i2s4_m_sel
+> +      - const: top_i2s5_m_sel
+> +      - const: top_apll12_div0
+> +      - const: top_apll12_div1
+> +      - const: top_apll12_div2
+> +      - const: top_apll12_div3
+> +      - const: top_apll12_div4
+> +      - const: top_apll12_divb
+> +      - const: top_clk26m_clk
+> +
+> +required:
+> +  - compatible
+> +  - interrupts
+> +  - resets
+> +  - reset-names
+> +  - power-domains
+> +  - clocks
+> +  - clock-names
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/mt8183-clk.h>
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +    #include <dt-bindings/power/mt8183-power.h>
+> +    #include <dt-bindings/reset/mt8183-resets.h>
+> +
+> +    afe: mt8183-afe-pcm {
 
-Nah, it's fine.
+audio-controller {
+
+like you changed the .dts.
+
+With that,
+
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
