@@ -4,76 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35102CA0EFA
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Aug 2025 06:32:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B84E3CA0EFA
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Aug 2025 06:33:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SW7v0GvvSwBC0Kw7yL0pRinfOhhZcSD/06I2qrEKC1c=; b=x3PBPE30yLxVwSLMc8WR6I2+Vl
-	xpgcI8+3zjSAzaBQfwmXugCYqRpwXRFvn3CWOR1avyVYieC9CdWToRpQBb/6j6Mh50FC7E6bWtWly
-	IQxwVo+D/jRfmru9N/3ae3xVUZubZRiNxZXRgX1cPQeNoR5fFEawv354wT5DIqHug3lrq1OOn4CL+
-	Jnfa8BhUaTMGSHEs76+y/MyUFHa+b5UwG2AUOHyKcSKRQOud2LeA8jnFdShB7BC5rHG0hx3k4gwlw
-	YBcR6ifZ6fwnnO8USCvj9DToss5D2TZP0w5z+WNFJbSvnRqbPlwaVwLFG8yTqUoHqQYDPkJr6Zzgm
-	rRUiwu2Q==;
+	bh=RAY+0tzjsGQGvSUVxkpYyULcO6q210VE10H6K3CyYWs=; b=1ND/yohphIUI+oUu6KwrbJnDwM
+	XZ1wdtjwcXmukAXKbOV+YUpd15khJSGN6MQu0bEOwQpzuMnu9mst2j2izy1HKBgH5bloHWI+GwbyD
+	RcJyAa1fTiPD07zBYKwp/x4J9Ybs4aWpXMMrPj7mASMlyuKj0bRhYkglEeQHBWtFXkdpcqL/fNEoc
+	xxd24UTTyo77OcYC8ceNDTXZQchWAxcpUnvBsfAKfbMYPL0rRPtIOfupSxkvPZF8fw+LDUcDsX8f9
+	usjwEIaeng9L/UOOMNvrBan/d9GZ5PyatvWsBchSE5TFb8RRsqhJ6gRG56U3q8FZIydtwRdWk+6o2
+	T5R9M2Lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uphnb-000000041a3-05Nw;
-	Sat, 23 Aug 2025 06:32:23 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uphoR-000000042kA-1VMY;
+	Sat, 23 Aug 2025 06:33:15 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upSwc-00000002ric-35p2;
-	Fri, 22 Aug 2025 14:40:44 +0000
+	id 1upTT7-00000002yPg-1mrC;
+	Fri, 22 Aug 2025 15:14:18 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7391740B74;
-	Fri, 22 Aug 2025 14:40:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A1942C4CEED;
-	Fri, 22 Aug 2025 14:40:41 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id C32D15C6EDA;
+	Fri, 22 Aug 2025 15:14:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 28AE3C4CEED;
+	Fri, 22 Aug 2025 15:14:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755873642;
-	bh=bhSe5dlYJAdq6mjCeG2oMHDgFoB39cQ6nyMGPbyEMp0=;
+	s=k20201202; t=1755875656;
+	bh=LonE3rEgRMxIVsYfDjiHDPQfYMJ4W3TyT5tCihgHym0=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=e/84M/IjqLSUe0+HMVanzoXlDpTCK+nKqW9JtOBOWuLgU7/06OXafn7g3HKLAGHrR
-	 6Gy6En5shwo8oZlNxTddq8gaz0m80j55IqHfKG+w8X5eHTOl1RzD7GJUTSTOJf2PlW
-	 n0ttSArSzWQ40eIDMLf8+nMbwN3ZXe0/e3JjrBzYY5ZW8vKgzuFnTuXwA1Ru1iS3kk
-	 KP3HblmM7yMjRbIkTinI9AouRLWqlrwnUwb7ub/dB8m95/jMEUp2Mzr3WZpYkXoF32
-	 kZjuMW1TzyfNZku3dVYyTpgTjKQWjn+qxWfuSmq3O4ae6Kj8/uWIuOOtsyaEc2Fa3N
-	 73QoCyUUCVYzg==
-Date: Fri, 22 Aug 2025 09:40:40 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Julien Massot <julien.massot@collabora.com>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, kernel@collabora.com,
-	Mark Brown <broonie@kernel.org>,
-	Eugen Hristev <eugen.hristev@linaro.org>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Chen-Yu Tsai <wenst@chromium.org>, Sean Wang <sean.wang@kernel.org>,
-	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
-	Conor Dooley <conor+dt@kernel.org>, Ikjoon Jang <ikjn@chromium.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Julien Massot <jmassot@collabora.com>, linux-clk@vger.kernel.org,
-	Michael Turquette <mturquette@baylibre.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Weiyi Lu <weiyi.lu@mediatek.com>, linux-kernel@vger.kernel.org,
-	linux-sound@vger.kernel.org,
-	Enric Balletbo i Serra <eballetbo@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v2 3/6] dt-bindings: arm: mediatek: Support
- mt8183-audiosys binding variant
-Message-ID: <175587364044.3744053.7111449158430262490.robh@kernel.org>
-References: <20250820-mtk-dtb-warnings-v2-0-cf4721e58f4e@collabora.com>
- <20250820-mtk-dtb-warnings-v2-3-cf4721e58f4e@collabora.com>
+	b=lcdvgiT329HDpoh0VCPKjLOr0moxcH5cK28AAxLH4+gdXwe82hWMy5dQXf+hxi+SJ
+	 e5skJ6Ap3UNK0hxPe/1QnheFWVpdsPDuOEyu/CscLYWgU30HdVoKiMx0zfj5Wy/CwO
+	 cSBIRzhdLMkd6X6u2lLgcYTDtvl9pespreueOrlccrxtDtXBmjc4D3yOKhl7LjVwQ5
+	 WRahCkYy+4d50YdUNM+F8DB4LPVIQUwhjRHIh6Ac0h1fO7vCZVT1jWiRh9yW8JCFOw
+	 AZM9juQBSX/GvY2Z50e0J5uHQ1wlVf5cHwNZOkZXtCySwR9zTYxtOWABXBHT5B2nDf
+	 L8Yg2tntKVzEQ==
+Date: Fri, 22 Aug 2025 10:14:15 -0500
+From: Rob Herring <robh@kernel.org>
+To: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+Cc: airlied@gmail.com, amergnat@baylibre.com, andrew+netdev@lunn.ch,
+	andrew-ct.chen@mediatek.com,
+	angelogioacchino.delregno@collabora.com, broonie@kernel.org,
+	chunkuang.hu@kernel.org, ck.hu@mediatek.com, conor+dt@kernel.org,
+	davem@davemloft.net, dmitry.torokhov@gmail.com, edumazet@google.com,
+	flora.fu@mediatek.com, houlong.wei@mediatek.com, jeesw@melfas.com,
+	jmassot@collabora.com, kernel@collabora.com, krzk+dt@kernel.org,
+	kuba@kernel.org, kyrie.wu@mediatek.corp-partner.google.com,
+	lgirdwood@gmail.com, linus.walleij@linaro.org,
+	louisalexis.eyraud@collabora.com, maarten.lankhorst@linux.intel.com,
+	matthias.bgg@gmail.com, mchehab@kernel.org,
+	minghsiu.tsai@mediatek.com, mripard@kernel.org,
+	p.zabel@pengutronix.de, pabeni@redhat.com, sean.wang@kernel.org,
+	simona@ffwll.ch, support.opensource@diasemi.com,
+	tiffany.lin@mediatek.com, tzimmermann@suse.de,
+	yunfei.dong@mediatek.com, devicetree@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
+	linux-gpio@vger.kernel.org, linux-input@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-sound@vger.kernel.org,
+	netdev@vger.kernel.org
+Subject: Re: [PATCH v1 05/14] sound: dt-bindings: Convert MediaTek RT5650
+ codecs bindings to YAML
+Message-ID: <20250822151415.GA3819434-robh@kernel.org>
+References: <20250820171302.324142-1-ariel.dalessandro@collabora.com>
+ <20250820171302.324142-6-ariel.dalessandro@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250820-mtk-dtb-warnings-v2-3-cf4721e58f4e@collabora.com>
+In-Reply-To: <20250820171302.324142-6-ariel.dalessandro@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250822_074042_807933_3FEAAC7F 
-X-CRM114-Status: GOOD (  11.26  )
+X-CRM114-CacheID: sfid-20250822_081417_542879_E73CE482 
+X-CRM114-Status: GOOD (  18.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,20 +92,141 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Wed, 20 Aug 2025 15:44:54 +0200, Julien Massot wrote:
-> Update the mediatek,audsys binding to support the mt8183-audiosys
-> compatible, which uses a different audio controller binding
-> (mediatek,mt8183-audio.yaml) compared to the legacy mt2701-audio
-> controller.
+On Wed, Aug 20, 2025 at 02:12:53PM -0300, Ariel D'Alessandro wrote:
+> Convert the existing text-based DT bindings for Mediatek MT8173 RT5650
+> codecs to a YAML schema.
 > 
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Signed-off-by: Julien Massot <julien.massot@collabora.com>
+> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
 > ---
->  .../bindings/arm/mediatek/mediatek,audsys.yaml           | 16 +++++++++++++++-
->  1 file changed, 15 insertions(+), 1 deletion(-)
+>  .../sound/mediatek,mt8173-rt5650.yaml         | 73 +++++++++++++++++++
+>  .../bindings/sound/mt8173-rt5650.txt          | 31 --------
+>  2 files changed, 73 insertions(+), 31 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt8173-rt5650.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
 > 
+> diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8173-rt5650.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8173-rt5650.yaml
+> new file mode 100644
+> index 0000000000000..36e4f9c4c3d62
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/sound/mediatek,mt8173-rt5650.yaml
+> @@ -0,0 +1,73 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/sound/mediatek,mt8173-rt5650.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Mediatek MT8173 with RT5650 codecs and HDMI via I2S
+> +
+> +maintainers:
+> +  - Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+> +
+> +properties:
+> +  compatible:
+> +    const: "mediatek,mt8173-rt5650"
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Drop quotes.
 
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  mediatek,audio-codec:
+> +    $ref: /schemas/types.yaml#/definitions/phandle-array
+> +    description:
+> +      The phandles of rt5650 codecs and of the HDMI encoder node.
+> +    minItems: 2
+> +
+> +  mediatek,platform:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description:
+> +      The phandle of MT8173 ASoC platform.
+> +
+> +  mediatek,mclk:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description: |
+> +      The MCLK source.
+> +      0: external oscillator, MCLK = 12.288M
+> +      1: internal source from mt8173, MCLK = sampling rate * 256
+> +
+> +  codec-capture:
+> +    description: Subnode of rt5650 codec capture.
+> +    type: object
+> +
+> +    properties:
+> +      sound-dai:
+> +        maxItems: 1
+> +        description: phandle of the CPU DAI
+> +
+> +    additionalProperties: false
+> +
+> +required:
+> +  - compatible
+> +  - mediatek,audio-codec
+> +  - mediatek,platform
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    sound: sound {
+
+Drop unused label.
+
+> +        compatible = "mediatek,mt8173-rt5650";
+> +        mediatek,audio-codec = <&rt5650 &hdmi0>;
+> +        mediatek,platform = <&afe>;
+> +        pinctrl-names = "default";
+> +        pinctrl-0 = <&aud_i2s2>;
+> +
+> +        mediatek,mclk = <1>;
+> +        codec-capture {
+> +            sound-dai = <&rt5650 1>;
+> +        };
+> +    };
+> +
+> +...
+> diff --git a/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt b/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
+> deleted file mode 100644
+> index 29dce2ac8773a..0000000000000
+> --- a/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
+> +++ /dev/null
+> @@ -1,31 +0,0 @@
+> -MT8173 with RT5650 CODECS and HDMI via I2S
+> -
+> -Required properties:
+> -- compatible : "mediatek,mt8173-rt5650"
+> -- mediatek,audio-codec: the phandles of rt5650 codecs
+> -                        and of the hdmi encoder node
+> -- mediatek,platform: the phandle of MT8173 ASoC platform
+> -
+> -Optional subnodes:
+> -- codec-capture : the subnode of rt5650 codec capture
+> -Required codec-capture subnode properties:
+> -- sound-dai: audio codec dai name on capture path
+> -  <&rt5650 0> : Default setting. Connect rt5650 I2S1 for capture. (dai_name = rt5645-aif1)
+> -  <&rt5650 1> : Connect rt5650 I2S2 for capture. (dai_name = rt5645-aif2)
+> -
+> -- mediatek,mclk: the MCLK source
+> -  0 : external oscillator, MCLK = 12.288M
+> -  1 : internal source from mt8173, MCLK = sampling rate*256
+> -
+> -Example:
+> -
+> -	sound {
+> -		compatible = "mediatek,mt8173-rt5650";
+> -		mediatek,audio-codec = <&rt5650 &hdmi0>;
+> -		mediatek,platform = <&afe>;
+> -		mediatek,mclk = <0>;
+> -		codec-capture {
+> -			sound-dai = <&rt5650 1>;
+> -		};
+> -	};
+> -
+> -- 
+> 2.50.1
+> 
 
