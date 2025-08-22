@@ -4,154 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1780CA0EFA
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7469CA0EFF
 	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Aug 2025 08:19:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XqsAVqx2D9fPf18hSHoZHOjMqFsEIFJD0EpmkHZBGjU=; b=d+Z8IWn5OtG9YQBxkrPJNeYk4w
-	AFHmxty7jcZRI4fQT2aSSztYtwmwyR/jePZ7u3Isx42seCH8EwUt0/I9pW1oshJTwEinARthodQmz
-	wPB0WGb31Tmiggw/1vi/5BiuESNOaPSyYzzK/V7DJfiXJE4/hfcI4l2mDaSdl7rLUMG9fZyMnYY59
-	jPp9jTitQajRaykWydNsdM062ttrjWkAoblufA6dclD/TDLLF7aNQg3BKqdcb1mu1I3w87xOGvRVf
-	LXcQQGtvYT+jVQcQLw4TZhQToy7LMrAVOVNSnMrvvtxtTcCIqyKjQEe+7dgabjEOKU3TacUzvgk/4
-	Y0KA9QdA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hImSPX1Q7/RIZhWPKEcKM01WIcBwXwCfa8mKlvyI3PY=; b=aqUtblwHI0EClvHigf8LRAVnQz
+	35eBC6kI/cCNZt5ZJfmAqLj5z4/sY0Q3SVB7rjZ7UxrSmSkfKQmNTZYwdGmS4E6laAxpY2fXD7wr8
+	bZdGVbV5yP1bg+o9ev59JeO9z9ZjNzCWgFlIEFzxUnoATDCaUnFoz2p8WVZxXx2E4H0AHR5HR8Q3C
+	MlvyO1u9yEjZzZYAZ5TCB+FatKEKJHaOCMRVNNwHPYYDKRqt+3OTKbRh/OY9VGfgeCiJ7BnycerGD
+	qIR8LOIgFjEgj1Qbabl6HqzS3sXpPsfTrP8aGh9O94OTdhFg29FiwHehHrYQ7j4jRNqAw0x5EJHyP
+	h+C05ztQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upjTG-00000004KXU-0ZSM;
-	Sat, 23 Aug 2025 08:19:30 +0000
-Received: from mail-mw2nam12on20614.outbound.protection.outlook.com ([2a01:111:f403:200a::614] helo=NAM12-MW2-obe.outbound.protection.outlook.com)
+	id 1upjTF-00000004KXO-3V4C;
+	Sat, 23 Aug 2025 08:19:29 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upWrb-00000003Kgo-219M;
-	Fri, 22 Aug 2025 18:51:48 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=pTWsjEZ+/0EndzCwcvH9w6ArGbgEdDKdzl8eSaAz9xg9deOnQc8GD6vZfr57eVu6Bs3eIqxRb1/aKZVR8mQk87Vd42HkAZdR7FPEh5VJA7/+VANH6thE6t5o6NbjgL2dnmDtctI8CYRzq+M0F33TGcTxvuuzA8jnMV+zVHE+xyR5KQ39J/DTbRHlmguo9vtaeLQ35RRX2lG821oyXn2J5xZKnRm4uIesM3dTDf5UOLLVO3qXZzamVx6PcTv3y6ZpzvHWausFWi/jSXOgG0MykGgncousvTyAYgi3ixAd1HfwOq4mB+8fj+N9w9L6Mlmd2p3ZoB+SpHg6G5pBcz72fg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=XqsAVqx2D9fPf18hSHoZHOjMqFsEIFJD0EpmkHZBGjU=;
- b=c27a7TbfigbI4OkO9I8N9C2JO/JOKOvX1ua9M5DKDv2HlqcBo2Y60l2KGgUMt324hS/s14TETlul9zfFaTxIJ49oTaBfsp/pXg+wUhpWgf0BaEV96nG3JLOeNv4ox8WP/v3UAPppt/vS3WYqva09z/J6epa/xrf8Xb87p4DUIQpARhkro8GypH7dzeTza4AC2VdylJfwMW/p1/JSBMHVWAiV4ueuHq+Z33ckc+uYJT1EuI411KVeHcQSD/a8jqEca/jdpwrvj5uBqiGhX3eF0pDW58+A1PzcFTmtnM6IOmXaedeFkIVPpcxycPVrGiyOsjoTgcsm9l10gC9iwp9U9w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.161) smtp.rcpttodomain=lists.linux.dev smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=XqsAVqx2D9fPf18hSHoZHOjMqFsEIFJD0EpmkHZBGjU=;
- b=RjEAWOvJg8Fu0AGHqv+UtRlOiU6BrBAXL0eiEP9HETxmxyKg1FirCZ3DCqgr2cNRpIfkSFWJ5Tcuvwz4ZuvfGBbaorj1SbO/ohnpal6UNvxe+M2esQ6e1kLOf+j16B3QpDgZ9HBBt+B4ICzLRDA+RBPk8M9EStpY8PpHC4E+BgTk0yfYDtEhXzh0b+GriCuEgVVIrkfM6Ex8ybGYWxbJcRvtwvrt41NhRhhCdwK1PkSaPrGjmeyhia6RiKHDaSLLE8NulPDTtQtAKIg1UHce/nDRzUrnoGdL7kiSAIrKkkD1YChuuL4JODJbaB1gDrNaMWlJBB4zPksOjW+AkUW+zg==
-Received: from MW4PR02CA0003.namprd02.prod.outlook.com (2603:10b6:303:16d::30)
- by DS4PR12MB9658.namprd12.prod.outlook.com (2603:10b6:8:280::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9052.14; Fri, 22 Aug
- 2025 18:51:24 +0000
-Received: from CO1PEPF000042AA.namprd03.prod.outlook.com
- (2603:10b6:303:16d:cafe::92) by MW4PR02CA0003.outlook.office365.com
- (2603:10b6:303:16d::30) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9052.18 via Frontend Transport; Fri,
- 22 Aug 2025 18:51:23 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.161) by
- CO1PEPF000042AA.mail.protection.outlook.com (10.167.243.39) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9052.8 via Frontend Transport; Fri, 22 Aug 2025 18:51:23 +0000
-Received: from rnnvmail204.nvidia.com (10.129.68.6) by mail.nvidia.com
- (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Fri, 22 Aug
- 2025 11:51:02 -0700
-Received: from rnnvmail203.nvidia.com (10.129.68.9) by rnnvmail204.nvidia.com
- (10.129.68.6) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Fri, 22 Aug
- 2025 11:51:01 -0700
-Received: from Asurada-Nvidia (10.127.8.12) by mail.nvidia.com (10.129.68.9)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14 via Frontend
- Transport; Fri, 22 Aug 2025 11:50:59 -0700
-Date: Fri, 22 Aug 2025 11:50:58 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-CC: Ethan Zhao <etzhao1900@gmail.com>, <robin.murphy@arm.com>,
-	<joro@8bytes.org>, <bhelgaas@google.com>, <will@kernel.org>,
-	<robin.clark@oss.qualcomm.com>, <yong.wu@mediatek.com>,
-	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
-	<thierry.reding@gmail.com>, <vdumpa@nvidia.com>, <jonathanh@nvidia.com>,
-	<rafael@kernel.org>, <lenb@kernel.org>, <kevin.tian@intel.com>,
-	<yi.l.liu@intel.com>, <baolu.lu@linux.intel.com>,
-	<linux-arm-kernel@lists.infradead.org>, <iommu@lists.linux.dev>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-tegra@vger.kernel.org>,
-	<linux-acpi@vger.kernel.org>, <linux-pci@vger.kernel.org>,
-	<patches@lists.linux.dev>, <pjaroszynski@nvidia.com>, <vsethi@nvidia.com>,
-	<helgaas@kernel.org>
-Subject: Re: [PATCH v3 5/5] pci: Suspend iommu function prior to resetting a
- device
-Message-ID: <aKi8EqEp1DKG+h38@Asurada-Nvidia>
-References: <cover.1754952762.git.nicolinc@nvidia.com>
- <3749cd6a1430ac36d1af1fadaa4d90ceffef9c62.1754952762.git.nicolinc@nvidia.com>
- <550635db-00ce-410e-add0-77c1a75adb11@gmail.com>
- <aKTzq6SLGB22Xq5b@Asurada-Nvidia>
- <20250821130741.GL802098@nvidia.com>
- <aKgPr3mUcIsd1iuT@Asurada-Nvidia>
- <20250822140821.GE1311579@nvidia.com>
+	id 1upWdR-00000003Jxn-1LMa;
+	Fri, 22 Aug 2025 18:37:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1755887828;
+	bh=WoYBS+suj62us0oVK02xkfT8Ry303QosUdXUG5V5o+s=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=Qn+CCUV/8f0B211PQEIZ3ASGTBtreAbGZUgjGTj0oNYjtUraf6QXNcC/4t3NsI3o7
+	 v9OEIe2saKYvd9+raIU5ENp1g9NAL9Qx2Ea/6ya9nzp8YooSlv6Ekv0f5IALcLL9Kx
+	 sn+cq93AW2B49ksS2SCYWiLBk0sX1GYHqyiExbRHP7E926Ha4R+X6vHgcHwyGAGlzG
+	 Mrt5s/RVuUeVI1gT8IA9SjyIOgEbAaw+p0mtSEuQmNh0UyKVbIofc+u3gF5VjaaBSY
+	 TdeRPDR991v1g/voBpo3RV70ffswkZsDVr3pf9ICxPkgnZ8a7VPzEsnM3fNZqTNsHm
+	 4GYkF5elPocZw==
+Received: from [127.0.1.1] (unknown [IPv6:2600:4041:5b1a:9400:62f0:406e:ac79:4a96])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id AF06617E37EB;
+	Fri, 22 Aug 2025 20:37:02 +0200 (CEST)
+From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Date: Fri, 22 Aug 2025 14:36:15 -0400
+Subject: [PATCH RFC 5/5] drm/mediatek: gamma: Support post-blend color
+ pipeline API
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20250822140821.GE1311579@nvidia.com>
-X-NV-OnPremToCloud: ExternallySecured
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CO1PEPF000042AA:EE_|DS4PR12MB9658:EE_
-X-MS-Office365-Filtering-Correlation-Id: 2c9d1356-26f5-4af7-21e8-08dde1ace464
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|36860700013|1800799024|7416014|82310400026|376014;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?F9NqNtOQk/XokkfZEOw6E09rWDMnPzWrkLZ6Zy26tNzb2zWG+yZ4ZOOGIrRy?=
- =?us-ascii?Q?OOVS2vR4nr+G1oykLPvNivO7z6tk1VXYdCJ1W18Bl/pdQiLWYKMpn3rPAyrm?=
- =?us-ascii?Q?uaC6jKfNyV/fZnNxixvPafcSanajs0v6R09XpmTqhknpqolCjSX4CU7tpPGk?=
- =?us-ascii?Q?oSKOTdHpk/VbaqFmPqpAsyKgR2AnNBP1s5rB3gNFhuKd2ZigIhztk4kcbHeU?=
- =?us-ascii?Q?OVw3HQoBtfXHjyG3b/dZdqLsLewLy662iLMl1sPof8pehXLKizpbVpH38Eed?=
- =?us-ascii?Q?1Mw/4RGVExlN9DFw1AsZADwsaTuTbveoG5mY9D67fhWqeok+kP94xTPHm26+?=
- =?us-ascii?Q?hJyxjqpviUuHRH2uinFZ8u3yrk8ARIm3WfVMI8PCiO8HBJ4qnUK624XmiYa9?=
- =?us-ascii?Q?jK2+KEtGG0ISahiZb21ThzLHYb1yeCeJ2Q3InPDinCOYXxRe5jUJekJq5jxR?=
- =?us-ascii?Q?TX7L27YG7IWbrhhg6R7wOMrgO+0UL638+CiQEzHfhCF6k8hpwoP0YeM8nkl5?=
- =?us-ascii?Q?w6u0rgJNaAG9tfZL/ayj8apoNyBgh9FDhw3kkFBBYJ7kmSde98fHd6QqFB8C?=
- =?us-ascii?Q?hP9mNsfr2MP3g04ziDFRHFGZgpGOtsVV/YRcVEznkCLpmVU3cTHazsffRlsm?=
- =?us-ascii?Q?cLuYSyUBz3e1ApMnrsTQiq0vwwX5I6Pw8NeL2L756Fmute1bWDPcsK8Vb+VK?=
- =?us-ascii?Q?BvH9scCS/MmC5zHUpP7yYy7jgknbU/oSWCmxhvRoUT3YrEjQEYALeDCVPlV9?=
- =?us-ascii?Q?4CghCW1RdptgsTmxzQ2tcctLOUYKLww6GZgx6yD+EzCmqcU5p1BMQ1GsiLJ1?=
- =?us-ascii?Q?wRUUtFfzH+lAoSqoOwOXxqS5EO7PPttMbQoKsiXy7TZ+vYBben/2fFIFg7yn?=
- =?us-ascii?Q?LhjZEG8UdWJVFZdFCyMmVWSoWovBtJCZ0MX49nu2lNxPKfzyMFIy45WjNBQQ?=
- =?us-ascii?Q?fniVgHXEiK+Z//uQt41ySM0rRAIE6gkQna/qIn71Q1rzjZoY4F30bKuZ4OK6?=
- =?us-ascii?Q?Xn0PHAzPmhjLQ3JL43pam/dIfu3UPm1zh9cE24Vn+Y53WfrN/QvptCGxUKvu?=
- =?us-ascii?Q?UBte+0EYMC6QFf+b9Bebp7bgW4rnURFPlJz1JJ8+zkixrIMNdrLqXD99eDSo?=
- =?us-ascii?Q?qzmWtmeQZHAInMnBA7BMhtVoa/jxuKMe/BKqSjuhJ7FmYbjtygKyYpqHBnFY?=
- =?us-ascii?Q?ne9eeGVNIaSG6JVMcyMmSH7OriOQI26hs2P+vm1zXvAQf4SphbH5BPuZcojq?=
- =?us-ascii?Q?5FH7h5pt61bWEWF4sWawU0I0dgakZHD8gpw7RjC7HKWldEqJjWpFw9WP61Oe?=
- =?us-ascii?Q?NDZSqKHn2sLb54zOayn6YfsCbZYV72yskXUjBU8ehdWjrZdTquFChsU/Av9e?=
- =?us-ascii?Q?FgL8e1NbhFB6U8RihNEASIrZBZEklNQH9xYtpvUVNU2fJCSWgp4UtAlNMlyF?=
- =?us-ascii?Q?qNqZqSIzERLtTvX478NZ5iSq9y4llOn/7i/oplz+MZm44nH4Gz7Y/gdqDk89?=
- =?us-ascii?Q?qka5toPAmz3+MnqmSNI9mGWa9TN9WeYWtDY8?=
-X-Forefront-Antispam-Report: CIP:216.228.117.161;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc6edge2.nvidia.com;CAT:NONE;SFS:(13230040)(36860700013)(1800799024)(7416014)(82310400026)(376014);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Aug 2025 18:51:23.7474
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2c9d1356-26f5-4af7-21e8-08dde1ace464
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.117.161];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: CO1PEPF000042AA.namprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS4PR12MB9658
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20250822-mtk-post-blend-color-pipeline-v1-5-a9446d4aca82@collabora.com>
+References: <20250822-mtk-post-blend-color-pipeline-v1-0-a9446d4aca82@collabora.com>
+In-Reply-To: <20250822-mtk-post-blend-color-pipeline-v1-0-a9446d4aca82@collabora.com>
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Alex Hung <alex.hung@amd.com>, wayland-devel@lists.freedesktop.org, 
+ harry.wentland@amd.com, leo.liu@amd.com, ville.syrjala@linux.intel.com, 
+ pekka.paalanen@collabora.com, contact@emersion.fr, mwen@igalia.com, 
+ jadahl@redhat.com, sebastian.wick@redhat.com, shashank.sharma@amd.com, 
+ agoins@nvidia.com, joshua@froggi.es, mdaenzer@redhat.com, aleixpol@kde.org, 
+ xaver.hugl@gmail.com, victoria@system76.com, uma.shankar@intel.com, 
+ quic_naseer@quicinc.com, quic_cbraga@quicinc.com, quic_abhinavk@quicinc.com, 
+ marcan@marcan.st, Liviu.Dudau@arm.com, sashamcintosh@google.com, 
+ chaitanya.kumar.borah@intel.com, louis.chauvet@bootlin.com, 
+ mcanal@igalia.com, kernel@collabora.com, daniels@collabora.com, 
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
+ Simona Vetter <simona.vetter@ffwll.ch>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250822_115147_526650_360B74FD 
-X-CRM114-Status: GOOD (  29.50  )
+X-CRM114-CacheID: sfid-20250822_113709_507529_8CED5D6C 
+X-CRM114-Status: GOOD (  18.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -166,70 +92,228 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 22, 2025 at 11:08:21AM -0300, Jason Gunthorpe wrote:
-> On Thu, Aug 21, 2025 at 11:35:27PM -0700, Nicolin Chen wrote:
-> > On Thu, Aug 21, 2025 at 10:07:41AM -0300, Jason Gunthorpe wrote:
-> > > On Tue, Aug 19, 2025 at 02:59:07PM -0700, Nicolin Chen wrote:
-> > > >  c) multiple pci_devs with their own RIDs
-> > > > 
-> > > >     In this case, either FLR or IOMMU only resets the PF. That
-> > > >     being said, VFs might be affected since PF is resetting?
-> > > >     If there is an issue, I don't see it coming from the IOMMU-
-> > > >     level reset..
-> > > 
-> > > It would still allow the ATS issue from the VF side. The VF could be
-> > > pushing an invalidation during the PF reset that will get clobbered.
-> > > 
-> > > I haven't fully checked but I think Linux doesn't really (easially?)
-> > > allow resetting a PF while a VF is present...
-> > 
-> > Hmm, what if the PF encountered some fault? Does Linux have a choice
-> > not to reset PF?
-> 
-> Upon more reflect I guess outside VFIO I seem to remember the SRIOV
-> reset to the PFs will clobber the VFs too and then restore the SRIOV
-> configuration in config space to bring them back.
+Implement the gamma_set_color_pipeline DDP component function to allow
+configuring the gamma LUT through the post-blend color pipeline API.
 
-Yea, I see ci_restore_iov_state() called in pci_restore_state().
+The color pipeline API uses a 32-bit long, rather than 16-bit long, LUT,
+so also update the functions to handle both cases.
 
-> > > Arguably if the PF is reset the VFs should have their translations
-> > > blocked too.
-> > 
-> > Yea, that sounds plausible to me. But, prior to that (an IOMMU-level
-> > reset), should VFs be first reset at the PCI level?
-> 
-> PF reset of a SRIOV PF disables the VFs and effectively resets them
-> already.
+Also make sure to enable or disable the LUT function depending on
+whether the block should be bypassed or not.
 
-Yea, I was expecting something like a SW reset routine, for each VF,
-which would invoke iommu_dev_reset_prepare/_done() individually.
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.c   |   3 +-
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h   |   3 +-
+ drivers/gpu/drm/mediatek/mtk_disp_gamma.c | 107 +++++++++++++++++++++++++-----
+ 3 files changed, 94 insertions(+), 19 deletions(-)
 
-Without that, iommu_dev_reset_prepare/_done() has to iterate all VFs
-internally and block them.
+diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
+index c873b527423f51733058cbc3d0ad2a719e26bfe1..d253906546506ecf1f1e2a23123b80e774e981ae 100644
+--- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
+@@ -327,7 +327,8 @@ static const struct mtk_ddp_comp_funcs ddp_gamma = {
+ 	.clk_enable = mtk_gamma_clk_enable,
+ 	.clk_disable = mtk_gamma_clk_disable,
+ 	.gamma_get_lut_size = mtk_gamma_get_lut_size,
+-	.gamma_set = mtk_gamma_set,
++	.gamma_set = mtk_gamma_set_legacy,
++	.gamma_set_color_pipeline = mtk_gamma_set_color_pipeline,
+ 	.config = mtk_gamma_config,
+ 	.start = mtk_gamma_start,
+ 	.stop = mtk_gamma_stop,
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+index ac84cf579150fd0535c79f43ad5942f8d412d450..7795aa5bc057fc09597cbd582f04e4dc76d3ecba 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+@@ -58,7 +58,8 @@ void mtk_gamma_config(struct device *dev, unsigned int w,
+ 		      unsigned int h, unsigned int vrefresh,
+ 		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
+ unsigned int mtk_gamma_get_lut_size(struct device *dev);
+-void mtk_gamma_set(struct device *dev, struct drm_crtc_state *state);
++void mtk_gamma_set_legacy(struct device *dev, struct drm_crtc_state *state);
++void mtk_gamma_set_color_pipeline(struct device *dev, struct drm_color_lut32 *lut);
+ void mtk_gamma_start(struct device *dev);
+ void mtk_gamma_stop(struct device *dev);
+ 
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+index 8afd15006df2a21f3f52fe00eca3c5501f4fb76a..dec9eeb53cb8539e49ecc1087e037645c792ee3d 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+@@ -87,13 +87,34 @@ unsigned int mtk_gamma_get_lut_size(struct device *dev)
+ 	return 0;
+ }
+ 
+-static bool mtk_gamma_lut_is_descending(struct drm_color_lut *lut, u32 lut_size)
++static bool mtk_gamma_lut_is_descending(void *lut, bool bits32, u32 lut_size)
+ {
+ 	u64 first, last;
+ 	int last_entry = lut_size - 1;
++	u32 lutr_first, lutg_first, lutb_first, lutr_last, lutg_last, lutb_last;
++	struct drm_color_lut32 *lut32;
++	struct drm_color_lut *lut16;
++
++	if (bits32) {
++		lut32 = (struct drm_color_lut32 *)lut;
++		lutr_first = lut32[0].red;
++		lutg_first = lut32[0].green;
++		lutb_first = lut32[0].blue;
++		lutr_last = lut32[last_entry].red;
++		lutg_last = lut32[last_entry].green;
++		lutb_last = lut32[last_entry].blue;
++	} else {
++		lut16 = (struct drm_color_lut *)lut;
++		lutr_first = lut16[0].red;
++		lutg_first = lut16[0].green;
++		lutb_first = lut16[0].blue;
++		lutr_last = lut16[last_entry].red;
++		lutg_last = lut16[last_entry].green;
++		lutb_last = lut16[last_entry].blue;
++	}
+ 
+-	first = lut[0].red + lut[0].green + lut[0].blue;
+-	last = lut[last_entry].red + lut[last_entry].green + lut[last_entry].blue;
++	first = lutr_first + lutg_first + lutb_first;
++	last = lutr_last + lutg_last + lutb_last;
+ 
+ 	return !!(first > last);
+ }
+@@ -113,7 +134,7 @@ static bool mtk_gamma_lut_is_descending(struct drm_color_lut *lut, u32 lut_size)
+  *     - 12-bits LUT supported
+  *     - 10-its LUT not supported
+  */
+-void mtk_gamma_set(struct device *dev, struct drm_crtc_state *state)
++static void mtk_gamma_set(struct device *dev, void *lut, bool bits32)
+ {
+ 	struct mtk_disp_gamma *gamma = dev_get_drvdata(dev);
+ 	void __iomem *lut0_base = gamma->regs + DISP_GAMMA_LUT;
+@@ -121,19 +142,20 @@ void mtk_gamma_set(struct device *dev, struct drm_crtc_state *state)
+ 	u32 cfg_val, data_mode, lbank_val, word[2];
+ 	u8 lut_bits = gamma->data->lut_bits;
+ 	int cur_bank, num_lut_banks;
+-	struct drm_color_lut *lut;
+ 	unsigned int i;
+-
+-	/* If there's no gamma lut there's nothing to do here. */
+-	if (!state->gamma_lut)
+-		return;
++	struct drm_color_lut32 *lut32;
++	struct drm_color_lut *lut16;
+ 
+ 	num_lut_banks = gamma->data->lut_size / gamma->data->lut_bank_size;
+-	lut = (struct drm_color_lut *)state->gamma_lut->data;
+ 
+ 	/* Switch to 12 bits data mode if supported */
+ 	data_mode = FIELD_PREP(DISP_GAMMA_BANK_DATA_MODE, !!(lut_bits == 12));
+ 
++	if (bits32)
++		lut32 = (struct drm_color_lut32 *)lut;
++	else
++		lut16 = (struct drm_color_lut *)lut;
++
+ 	for (cur_bank = 0; cur_bank < num_lut_banks; cur_bank++) {
+ 
+ 		/* Switch gamma bank and set data mode before writing LUT */
+@@ -146,10 +168,21 @@ void mtk_gamma_set(struct device *dev, struct drm_crtc_state *state)
+ 		for (i = 0; i < gamma->data->lut_bank_size; i++) {
+ 			int n = cur_bank * gamma->data->lut_bank_size + i;
+ 			struct drm_color_lut diff, hwlut;
++			u32 lutr, lutg, lutb;
++
++			if (bits32) {
++				lutr = lut32[n].red;
++				lutg = lut32[n].green;
++				lutb = lut32[n].blue;
++			} else {
++				lutr = lut16[n].red;
++				lutg = lut16[n].green;
++				lutb = lut16[n].blue;
++			}
+ 
+-			hwlut.red = drm_color_lut_extract(lut[n].red, lut_bits);
+-			hwlut.green = drm_color_lut_extract(lut[n].green, lut_bits);
+-			hwlut.blue = drm_color_lut_extract(lut[n].blue, lut_bits);
++			hwlut.red = drm_color_lut_extract(lutr, lut_bits);
++			hwlut.green = drm_color_lut_extract(lutg, lut_bits);
++			hwlut.blue = drm_color_lut_extract(lutb, lut_bits);
+ 
+ 			if (!gamma->data->lut_diff || (i % 2 == 0)) {
+ 				if (lut_bits == 12) {
+@@ -162,13 +195,25 @@ void mtk_gamma_set(struct device *dev, struct drm_crtc_state *state)
+ 					word[0] |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_B, hwlut.blue);
+ 				}
+ 			} else {
+-				diff.red = lut[n].red - lut[n - 1].red;
++				u32 lutr_prev, lutg_prev, lutb_prev;
++
++				if (bits32) {
++					lutr_prev = lut32[n-1].red;
++					lutg_prev = lut32[n-1].green;
++					lutb_prev = lut32[n-1].blue;
++				} else {
++					lutr_prev = lut16[n-1].red;
++					lutg_prev = lut16[n-1].green;
++					lutb_prev = lut16[n-1].blue;
++				}
++
++				diff.red = lutr - lutr_prev;
+ 				diff.red = drm_color_lut_extract(diff.red, lut_bits);
+ 
+-				diff.green = lut[n].green - lut[n - 1].green;
++				diff.green = lutg - lutg_prev;
+ 				diff.green = drm_color_lut_extract(diff.green, lut_bits);
+ 
+-				diff.blue = lut[n].blue - lut[n - 1].blue;
++				diff.blue = lutb - lutb_prev;
+ 				diff.blue = drm_color_lut_extract(diff.blue, lut_bits);
+ 
+ 				if (lut_bits == 12) {
+@@ -191,7 +236,7 @@ void mtk_gamma_set(struct device *dev, struct drm_crtc_state *state)
+ 
+ 	if (!gamma->data->has_dither) {
+ 		/* Descending or Rising LUT */
+-		if (mtk_gamma_lut_is_descending(lut, gamma->data->lut_size - 1))
++		if (mtk_gamma_lut_is_descending(lut, bits32, gamma->data->lut_size - 1))
+ 			cfg_val |= FIELD_PREP(GAMMA_LUT_TYPE, 1);
+ 		else
+ 			cfg_val &= ~GAMMA_LUT_TYPE;
+@@ -206,6 +251,34 @@ void mtk_gamma_set(struct device *dev, struct drm_crtc_state *state)
+ 	writel(cfg_val, gamma->regs + DISP_GAMMA_CFG);
+ }
+ 
++void mtk_gamma_set_legacy(struct device *dev, struct drm_crtc_state *state)
++{
++	struct drm_color_lut *lut = (struct drm_color_lut *)state->gamma_lut->data;
++
++	/* If there's no gamma lut there's nothing to do here. */
++	if (!state->gamma_lut)
++		return;
++
++	mtk_gamma_set(dev, lut, false);
++}
++
++void mtk_gamma_set_color_pipeline(struct device *dev, struct drm_color_lut32 *lut)
++{
++	struct mtk_disp_gamma *gamma = dev_get_drvdata(dev);
++	u32 cfg_val;
++
++	/* Configure block to be bypassed */
++	if (!lut) {
++		cfg_val = readl(gamma->regs + DISP_GAMMA_CFG);
++		cfg_val &= ~GAMMA_LUT_EN;
++		cfg_val |= GAMMA_RELAY_MODE;
++		writel(cfg_val, gamma->regs + DISP_GAMMA_CFG);
++		return;
++	}
++
++	mtk_gamma_set(dev, lut, true);
++}
++
+ void mtk_gamma_config(struct device *dev, unsigned int w,
+ 		      unsigned int h, unsigned int vrefresh,
+ 		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
 
-> But reaching out to mangle the translation of the VFs means you do
-> have to take care not to disrupt anything else the VF owning driver is
-> doing since it is fully unaware of this. Ie it could be reattaching to
-> something else concurrently.
+-- 
+2.47.2
 
-Hmm, and this is tricky now..
-
-The current version allows deferring the concurrent attach during a
-reset. But, as Kevin pointed out, we may have no choice but to fail
-any concurrent attach with -EBUSY, because a deferred attach might
-fail due to incompatibility triggering a WARN_ON only in done().
-
-This isn't likely a problem for PF, as we can expect its driver not
-to do an insane concurrent attach during a reset. But it would be a
-very sane case for a VF. So if its driver doesn't retry or defer an
-EBUSY-ed attach properly, it would not be restored successfully..
-
-It feels like we need a no-fail re-attach operation, or at least an
-unlikely-to-fail one. I recall years ago we tried a can_attach op
-to test the compatibility but it didn't get merged. Maybe we'd need
-it so that a concurrent attach can test compatibility, allowing the
-re-attach in iommu_dev_reset_done() to more likely succeed.
-
-Thanks
-Nicolin
 
