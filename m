@@ -4,63 +4,171 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC475CA0EED
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Aug 2025 21:46:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBFD4CA0EE4
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Aug 2025 06:28:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WFeFiCTp4hGgnI6J2j3pWdkKfwQlbPab/4wEdITdYfs=; b=oiI0rk2s5nItsYkoDS4J6wLnG6
-	6z/IzuwPDujr0mFFxzztkWU469tLvEQ4jvpwz9eYVnS8VAkZ+sSPRGn70Zs5T4Ro8QBq6kqRq1r6L
-	MHf4oVO/KZz3r4MJKzGhOAF3X+4iE9GBo8o8WM85uGB7pFVtSsEetcnljnjYLAd3y6xua0TYXCmNR
-	agPQ6nxhxqfxNe7cENKgVEi4ERyoPJYA6NvTHgNqKy8KXik6QpDyckN/TLvN9jL7X9vuuTFc7hy0K
-	YRJu67sPROCgEBSGr3keBuoCeYokh1OF5rAqe4W+jhR6AVQ+gV2IInQC9dKb3izwmgwdku4qGAM8T
-	3CmIrVzw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=szopGzlKxzQVjhy80Hyf8D8Trqw2L0U+tNPu86d0YYI=; b=t1k/pognGQsg4qKepH24bV1huz
+	rPAfGxEqpo4eiDyxX/dBa/eWHjIfEm0cXknb09/MzS/CKIXgsx685F9pC5q3NK1ovmaENIy3KZSnc
+	apCxWcpnTK0BHW6Yv7D/fOboU8tat0zXxHuSfNyDV2w6REv5IZjPbab8cyjaMNuB1+bO9Y9RAfh8P
+	XNUu/NjwbhXbs+tR6VigN3ndKdAeVQbrx7ujQ31elt/Z7SWIosr0Ww4dj4mX3mCPfs3tN+LEPR1jQ
+	8eNgE9v/S/Fz9aZrGeXFFOtU781HG3Q1YRf/dWDvoXMrvwvRnB9ZT5VEbtXZPHetqH9o7b0O1BzCC
+	5Igcz+mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upZav-00000003X0J-2RiD;
-	Fri, 22 Aug 2025 21:46:45 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1uphjh-00000003w0u-09mg;
+	Sat, 23 Aug 2025 06:28:21 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upLza-00000001n6p-2MGD;
-	Fri, 22 Aug 2025 07:15:19 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id B5CB1A408FA;
-	Fri, 22 Aug 2025 07:15:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1228AC4CEF4;
-	Fri, 22 Aug 2025 07:15:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755846917;
-	bh=jOPT4g+C/W0j/c4BchUoKCE5cSxUQH7bPgzSvRV446Y=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=aE2S00tTBEVHG9x4kYg7IW+3DrRPqKEevLNmY9U+W1jWEmKoQAu5EtEJtmMWIckbM
-	 1dfdPWo/VA2C11+ube+x4bC++5qV8/7jYsNZzyM7D3eyGEWpc6gGGj2LDL+kGjDtZZ
-	 0ejBlVkikQ4VLy7IKKn8tY91yF2IrzT0kD1ZdqdtpfNr2mdsvggg7+4f3JXdUWGUq8
-	 hCmr3DORgWzeb7Va7tzilP5rEnkJlpmxWZGmojMMQyyb3jxWs1M4cunlFfw5SI+ooP
-	 1ym2TupVmrSvCNLXR8QA+kyKMD4foWpiDWkWDKAqV9V1Bea7CFUii7qmaWNo2+uGRJ
-	 hc4VVLCM9yQRQ==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Fri, 22 Aug 2025 09:14:50 +0200
-Subject: [PATCH net-next v2 3/3] net: airoha: Introduce check_skb callback
- in ppe_dev ops
+	id 1upQ0l-00000002LjM-2fHK
+	for linux-mediatek@lists.infradead.org;
+	Fri, 22 Aug 2025 11:32:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1755862366;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=szopGzlKxzQVjhy80Hyf8D8Trqw2L0U+tNPu86d0YYI=;
+	b=BE8CoLr/UTBBNqQsuYyg+Z7I5egLwLXk/zkjwbSJO9qn7gxAjQU3YYnoMeiSs4VtE76gCR
+	lWHeeyH8nptERunJscai8+z/TetKt2naz9dp4bGVEpWZUIpSqpO23Y/iyaSfuY7+0Cc8pG
+	IuCUBiPY6GnkPrVZ+TJxyHlRioBpPv0=
+Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
+ [209.85.222.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-77-HxQLbrOHPRuVCXOb9PHlYw-1; Fri, 22 Aug 2025 07:32:45 -0400
+X-MC-Unique: HxQLbrOHPRuVCXOb9PHlYw-1
+X-Mimecast-MFC-AGG-ID: HxQLbrOHPRuVCXOb9PHlYw_1755862364
+Received: by mail-qk1-f198.google.com with SMTP id af79cd13be357-7e87069677cso453547885a.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 22 Aug 2025 04:32:45 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1755862364; x=1756467164;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=szopGzlKxzQVjhy80Hyf8D8Trqw2L0U+tNPu86d0YYI=;
+        b=L8eIqGXAYCQl5l9KCTD8DRNi08mlkDweNhFtARCb7Yp1e2QblCSKf+5EpUEwyOLsa4
+         JRadxoyMAjexbckbyEKS48wzN1rT0NxI93DW9trgFX80vP/lHlPFIOD+DSzrXDOLl9uV
+         LAB3mW9PtC97SnOqIWPFODhW7U7CUIZLFFrP+RlX5eXSI+Fb/XgsXUw9koDZ8Ypubd3L
+         4VX+tMyeReYVFZPO62FTi2xQ99qoWeAaWxo/jpbjABWVrUClWTfKw4ufQBUpzONL+DhA
+         XPXk4PF4ZE56uqCo0LYgilzOC7vqgGRtRTYIGUT8ai1TSaHdr4+PXiA7zc6IlPcomWIT
+         OfDg==
+X-Forwarded-Encrypted: i=1; AJvYcCUdrf1o30jFUuCpCIjYaAXffcmLvagsRFutf2QpHrM62HGbe2tmYqDugd3VB+PCwdGfGtmtD4Fio3xkl2Fnxg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxB5F4MXhmShZLpLVShO16f851TgThf1PezGX7l/0b+c4+BEVgo
+	9mcuFEsWKaFzYUyivCjnoeDumKSpGnepjXS732Pa1hiR06w20aqwDko8bxrN9e3GnIyPFPQSThm
+	0NigrbpbNKcJBG/XaKrCAna1lmZTpenY8tg0ge0BoWof5YJf1RTzYna367Vjw7imeEG44HjoqUg
+	==
+X-Gm-Gg: ASbGnct4qyzPa2bO/cBLOSLkWkKGPLrvd6r63LoLCB0gPQ/W2r8bcBQF+CG/pfE248l
+	w9WJ/D/ZkXzF+VwQAROTi5a7XDWgQ5sILEY/+E4Mmh5uK7FQX/KUUWsW0HZgNlM22i9wJsejSlr
+	2d8GfckOWMVtaJJ9ffa3ZonBiO1S7PR0ouJIDHlllzpbger/gDgSLd8Qs+Uh+9B0vdbQ8p/DvOw
+	fILM5RtanrltdY7DlaxOIKfc9CFPeiR1rAyLCyBxhz3KXX0Cmw9p3z+PCkbFyLpA/7tA8P8ygjQ
+	48/KiQYcUw/6gRBiKCk9LcQLEagAl3eDxflPWO7r/SRumZyC7i9Ubzs4y7MajsOlc8t+xkOJ6Kp
+	6E8ltP+Eut/ZGnuRzanI=
+X-Received: by 2002:a05:620a:404c:b0:7e8:46ff:baac with SMTP id af79cd13be357-7ea10fc7a12mr283053485a.1.1755862364406;
+        Fri, 22 Aug 2025 04:32:44 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEmUibDYWQCc5l/mEz36xU/pWXO/c0soUOFhWHapUhi9osq4o9OwXIif6VsGjeizcb9uRTquQ==
+X-Received: by 2002:a05:620a:404c:b0:7e8:46ff:baac with SMTP id af79cd13be357-7ea10fc7a12mr283046685a.1.1755862363659;
+        Fri, 22 Aug 2025 04:32:43 -0700 (PDT)
+Received: from x1 (c-73-183-52-120.hsd1.pa.comcast.net. [73.183.52.120])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-7e87e1c186esm1319562485a.68.2025.08.22.04.32.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 22 Aug 2025 04:32:42 -0700 (PDT)
+Date: Fri, 22 Aug 2025 07:32:36 -0400
+From: Brian Masney <bmasney@redhat.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Sudeep Holla <sudeep.holla@arm.com>,
+	Cristian Marussi <cristian.marussi@arm.com>,
+	Chen Wang <unicorn_wang@outlook.com>,
+	Inochi Amaoto <inochiama@gmail.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Keguang Zhang <keguang.zhang@gmail.com>,
+	Taichi Sugaya <sugaya.taichi@socionext.com>,
+	Takao Orito <orito.takao@socionext.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Jacky Huang <ychuang3@nuvoton.com>,
+	Shan-Chun Hung <schung@nuvoton.com>,
+	Vladimir Zapolskiy <vz@mleia.com>,
+	Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Samuel Holland <samuel.holland@sifive.com>,
+	Yixun Lan <dlan@gentoo.org>,
+	Steen Hegelund <Steen.Hegelund@microchip.com>,
+	Daniel Machon <daniel.machon@microchip.com>,
+	UNGLinuxDriver@microchip.com, Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Michal Simek <michal.simek@amd.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>,
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+	Neal Gompa <neal@gompa.dev>,
+	Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Daniel Palmer <daniel@thingy.jp>,
+	Romain Perier <romain.perier@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Gregory Clement <gregory.clement@bootlin.com>,
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Andrea della Porta <andrea.porta@suse.com>,
+	Sylwester Nawrocki <s.nawrocki@samsung.com>,
+	Chanwoo Choi <cw00.choi@samsung.com>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Qin Jian <qinjian@cqplus1.com>, Viresh Kumar <vireshk@kernel.org>,
+	Ulf Hansson <ulf.hansson@linaro.org>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Alex Helms <alexander.helms.jy@renesas.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Liviu Dudau <liviu.dudau@arm.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
+	linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+	arm-scmi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	sophgo@lists.linux.dev, linux-mips@vger.kernel.org,
+	imx@lists.linux.dev, linux-riscv@lists.infradead.org,
+	spacemit@lists.linux.dev, linux-stm32@st-md-mailman.stormreply.com,
+	patches@opensource.cirrus.com, linux-actions@lists.infradead.org,
+	asahi@lists.linux.dev, linux-mediatek@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev
+Subject: Re: [PATCH 000/114] clk: convert drivers from deprecated
+ round_rate() to determine_rate()
+Message-ID: <aKhVVJPEPxCoKKjI@x1>
+References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
+ <1907e1c7-2b15-4729-8497-a7e6f0526366@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250822-airoha-en7581-wlan-rx-offload-v2-3-8a76e1d3fec2@kernel.org>
-References: <20250822-airoha-en7581-wlan-rx-offload-v2-0-8a76e1d3fec2@kernel.org>
-In-Reply-To: <20250822-airoha-en7581-wlan-rx-offload-v2-0-8a76e1d3fec2@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-X-Mailer: b4 0.14.2
+In-Reply-To: <1907e1c7-2b15-4729-8497-a7e6f0526366@kernel.org>
+User-Agent: Mutt/2.2.14 (2025-02-20)
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: _SAiclvC3W0BO2QS58mJVkTN_Ng-o8kjQyJP3D4ABUo_1755862364
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250822_001518_750078_1C81F957 
-X-CRM114-Status: GOOD (  14.98  )
+X-CRM114-CacheID: sfid-20250822_043247_767851_35E4E3AB 
+X-CRM114-Status: GOOD (  22.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,216 +183,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Export airoha_ppe_check_skb routine in ppe_dev ops. check_skb callback
-will be used by the MT76 driver in order to offload the traffic received
-by the wlan NIC and forwarded to the ethernet one.
-Add rx_wlan parameter to airoha_ppe_check_skb routine signature.
+Hi Krzysztof (and Stephen),
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c  |  3 ++-
- drivers/net/ethernet/airoha/airoha_eth.h  |  8 ++------
- drivers/net/ethernet/airoha/airoha_ppe.c  | 25 ++++++++++++++-----------
- include/linux/soc/airoha/airoha_offload.h | 20 ++++++++++++++++++++
- 4 files changed, 38 insertions(+), 18 deletions(-)
+On Fri, Aug 22, 2025 at 08:31:08AM +0200, Krzysztof Kozlowski wrote:
+> On 11/08/2025 17:17, Brian Masney via B4 Relay wrote:
+> > The round_rate() clk ops is deprecated in the clk framework in favor
+> > of the determine_rate() clk ops, so let's go ahead and convert the
+> > various clk drivers using the Coccinelle semantic patch posted below.
+> > I did a few minor cosmetic cleanups of the code in a few cases.
+> 
+> This is going to create huge conflicts and I did not find here any
+> merging strategy.
+> 
+> What do you expect from us here?
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 5a04f90dd3de47ae0ee8e90bfe221618076297e6..81ea01a652b9c545c348ad6390af8be873a4997f 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -698,7 +698,8 @@ static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
- 
- 		reason = FIELD_GET(AIROHA_RXD4_PPE_CPU_REASON, msg1);
- 		if (reason == PPE_CPU_REASON_HIT_UNBIND_RATE_REACHED)
--			airoha_ppe_check_skb(eth->ppe, q->skb, hash);
-+			airoha_ppe_check_skb(&eth->ppe->dev, q->skb, hash,
-+					     false);
- 
- 		done++;
- 		napi_gro_receive(&q->napi, q->skb);
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index 9060b1d2814e0e4023d42a05ecb5265212df588f..77fd13d466dcd235a3ab39a488aa26d8f793cf77 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -229,10 +229,6 @@ struct airoha_hw_stats {
- 	u64 rx_len[7];
- };
- 
--enum {
--	PPE_CPU_REASON_HIT_UNBIND_RATE_REACHED = 0x0f,
--};
--
- enum {
- 	AIROHA_FOE_STATE_INVALID,
- 	AIROHA_FOE_STATE_UNBIND,
-@@ -622,8 +618,8 @@ static inline bool airhoa_is_lan_gdm_port(struct airoha_gdm_port *port)
- bool airoha_is_valid_gdm_port(struct airoha_eth *eth,
- 			      struct airoha_gdm_port *port);
- 
--void airoha_ppe_check_skb(struct airoha_ppe *ppe, struct sk_buff *skb,
--			  u16 hash);
-+void airoha_ppe_check_skb(struct airoha_ppe_dev *dev, struct sk_buff *skb,
-+			  u16 hash, bool rx_wlan);
- int airoha_ppe_setup_tc_block_cb(struct airoha_ppe_dev *dev, void *type_data);
- int airoha_ppe_init(struct airoha_eth *eth);
- void airoha_ppe_deinit(struct airoha_eth *eth);
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index a73ce673fd37034dd62c6cb710cda6690bc5ca6a..30453e3fab0fe9ff6cfbb4a740502c9b3b19d7d1 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -616,7 +616,7 @@ static bool airoha_ppe_foe_compare_entry(struct airoha_flow_table_entry *e,
- 
- static int airoha_ppe_foe_commit_entry(struct airoha_ppe *ppe,
- 				       struct airoha_foe_entry *e,
--				       u32 hash)
-+				       u32 hash, bool rx_wlan)
- {
- 	struct airoha_foe_entry *hwe = ppe->foe + hash * sizeof(*hwe);
- 	u32 ts = airoha_ppe_get_timestamp(ppe);
-@@ -639,7 +639,8 @@ static int airoha_ppe_foe_commit_entry(struct airoha_ppe *ppe,
- 		goto unlock;
- 	}
- 
--	airoha_ppe_foe_flow_stats_update(ppe, npu, hwe, hash);
-+	if (!rx_wlan)
-+		airoha_ppe_foe_flow_stats_update(ppe, npu, hwe, hash);
- 
- 	if (hash < PPE_SRAM_NUM_ENTRIES) {
- 		dma_addr_t addr = ppe->foe_dma + hash * sizeof(*hwe);
-@@ -665,7 +666,7 @@ static void airoha_ppe_foe_remove_flow(struct airoha_ppe *ppe,
- 		e->data.ib1 &= ~AIROHA_FOE_IB1_BIND_STATE;
- 		e->data.ib1 |= FIELD_PREP(AIROHA_FOE_IB1_BIND_STATE,
- 					  AIROHA_FOE_STATE_INVALID);
--		airoha_ppe_foe_commit_entry(ppe, &e->data, e->hash);
-+		airoha_ppe_foe_commit_entry(ppe, &e->data, e->hash, false);
- 		e->hash = 0xffff;
- 	}
- 	if (e->type == FLOW_TYPE_L2_SUBFLOW) {
-@@ -704,7 +705,7 @@ static void airoha_ppe_foe_flow_remove_entry(struct airoha_ppe *ppe,
- static int
- airoha_ppe_foe_commit_subflow_entry(struct airoha_ppe *ppe,
- 				    struct airoha_flow_table_entry *e,
--				    u32 hash)
-+				    u32 hash, bool rx_wlan)
- {
- 	u32 mask = AIROHA_FOE_IB1_BIND_PACKET_TYPE | AIROHA_FOE_IB1_BIND_UDP;
- 	struct airoha_foe_entry *hwe_p, hwe;
-@@ -745,14 +746,14 @@ airoha_ppe_foe_commit_subflow_entry(struct airoha_ppe *ppe,
- 	}
- 
- 	hwe.bridge.data = e->data.bridge.data;
--	airoha_ppe_foe_commit_entry(ppe, &hwe, hash);
-+	airoha_ppe_foe_commit_entry(ppe, &hwe, hash, rx_wlan);
- 
- 	return 0;
- }
- 
- static void airoha_ppe_foe_insert_entry(struct airoha_ppe *ppe,
- 					struct sk_buff *skb,
--					u32 hash)
-+					u32 hash, bool rx_wlan)
- {
- 	struct airoha_flow_table_entry *e;
- 	struct airoha_foe_bridge br = {};
-@@ -785,7 +786,7 @@ static void airoha_ppe_foe_insert_entry(struct airoha_ppe *ppe,
- 		if (!airoha_ppe_foe_compare_entry(e, hwe))
- 			continue;
- 
--		airoha_ppe_foe_commit_entry(ppe, &e->data, hash);
-+		airoha_ppe_foe_commit_entry(ppe, &e->data, hash, rx_wlan);
- 		commit_done = true;
- 		e->hash = hash;
- 	}
-@@ -797,7 +798,7 @@ static void airoha_ppe_foe_insert_entry(struct airoha_ppe *ppe,
- 	e = rhashtable_lookup_fast(&ppe->l2_flows, &br,
- 				   airoha_l2_flow_table_params);
- 	if (e)
--		airoha_ppe_foe_commit_subflow_entry(ppe, e, hash);
-+		airoha_ppe_foe_commit_subflow_entry(ppe, e, hash, rx_wlan);
- unlock:
- 	spin_unlock_bh(&ppe_lock);
- }
-@@ -1301,9 +1302,10 @@ int airoha_ppe_setup_tc_block_cb(struct airoha_ppe_dev *dev, void *type_data)
- 	return err;
- }
- 
--void airoha_ppe_check_skb(struct airoha_ppe *ppe, struct sk_buff *skb,
--			  u16 hash)
-+void airoha_ppe_check_skb(struct airoha_ppe_dev *dev, struct sk_buff *skb,
-+			  u16 hash, bool rx_wlan)
- {
-+	struct airoha_ppe *ppe = dev->priv;
- 	u16 now, diff;
- 
- 	if (hash > PPE_HASH_MASK)
-@@ -1315,7 +1317,7 @@ void airoha_ppe_check_skb(struct airoha_ppe *ppe, struct sk_buff *skb,
- 		return;
- 
- 	ppe->foe_check_time[hash] = now;
--	airoha_ppe_foe_insert_entry(ppe, skb, hash);
-+	airoha_ppe_foe_insert_entry(ppe, skb, hash, rx_wlan);
- }
- 
- void airoha_ppe_init_upd_mem(struct airoha_gdm_port *port)
-@@ -1405,6 +1407,7 @@ int airoha_ppe_init(struct airoha_eth *eth)
- 		return -ENOMEM;
- 
- 	ppe->dev.ops.setup_tc_block_cb = airoha_ppe_setup_tc_block_cb;
-+	ppe->dev.ops.check_skb = airoha_ppe_check_skb;
- 	ppe->dev.priv = ppe;
- 
- 	foe_size = PPE_NUM_ENTRIES * sizeof(struct airoha_foe_entry);
-diff --git a/include/linux/soc/airoha/airoha_offload.h b/include/linux/soc/airoha/airoha_offload.h
-index e05ded67c9e6fb89940e5b152f14c6ea0d7c6c49..4da562d0e4db6899d53f95b90a2a4ef2c63c974c 100644
---- a/include/linux/soc/airoha/airoha_offload.h
-+++ b/include/linux/soc/airoha/airoha_offload.h
-@@ -9,10 +9,17 @@
- #include <linux/spinlock.h>
- #include <linux/workqueue.h>
- 
-+enum {
-+	PPE_CPU_REASON_HIT_UNBIND_RATE_REACHED = 0x0f,
-+};
-+
- struct airoha_ppe_dev {
- 	struct {
- 		int (*setup_tc_block_cb)(struct airoha_ppe_dev *dev,
- 					 void *type_data);
-+		void (*check_skb)(struct airoha_ppe_dev *dev,
-+				  struct sk_buff *skb, u16 hash,
-+				  bool rx_wlan);
- 	} ops;
- 
- 	void *priv;
-@@ -27,6 +34,13 @@ static inline int airoha_ppe_dev_setup_tc_block_cb(struct airoha_ppe_dev *dev,
- {
- 	return dev->ops.setup_tc_block_cb(dev, type_data);
- }
-+
-+static inline void airoha_ppe_dev_check_skb(struct airoha_ppe_dev *dev,
-+					    struct sk_buff *skb,
-+					    u16 hash, bool rx_wlan)
-+{
-+	dev->ops.check_skb(dev, skb, hash, rx_wlan);
-+}
- #else
- static inline airoha_ppe_dev *airoha_ppe_get_dev(struct device *dev)
- {
-@@ -42,6 +56,12 @@ static inline int airoha_ppe_setup_tc_block_cb(struct airoha_ppe_dev *dev,
- {
- 	return -EOPNOTSUPP;
- }
-+
-+static inline void airoha_ppe_dev_check_skb(struct airoha_ppe_dev *dev,
-+					    struct sk_buff *skb, u16 hash,
-+					    bool rx_wlan)
-+{
-+}
- #endif
- 
- #define NPU_NUM_CORES		8
+That's a good question. You are right that there's a handful of drivers
+where this will create a merge conflict with some other work that's been
+posted this development cycle due to other unrelated changes. I suspect
+the majority of these will still apply cleanly.
 
--- 
-2.50.1
+This series doesn't remove round_rate from the clk core, and I'll post
+that change once everything else has been merged across the tree. I've
+been trying to catch any new round_rate implementations that are posted
+in review.
+
+7 of the 114 patches in this series needs a v2 with a minor fix. I see
+several paths forward to merging this. It's ultimately up to Stephen how
+he wants to proceed.
+
+- I send Stephen a PULL request with all of these patches with the minor
+  cleanups to the 7 patches. Depending on the timing, Stephen can merge
+  the other work first, and I deal with cleaning up the merge conflicts.
+  Or he can if he prefers to instead.
+
+- Stephen applies everyone else's work first to his tree, and then the
+  good 107 patches in this series. He skips anything that doesn't apply
+  due to other people's work and I follow up with a smaller series.
+
+I would prefer to not to have to post a v2 114 patch series if
+possible.
+
+If I don't hear back from Stephen about how he wants to proceed, then
+I'm planning to send him a PULL request the week of Sep 1st.
+
+Does this sound good? I'm open to other suggestions.
+
+Brian
 
 
