@@ -4,82 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66877CA0EFA
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Aug 2025 06:39:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B9C5CA0EE4
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Aug 2025 06:41:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=keM8FZ6KRUpmCdaqfX/W6LPu+GVLL1SCkuysb5xQQ5g=; b=LBuSHz+EOuwg9vP/bXzp9syujU
-	7VeHtPbky/ViG2/w3TjZStwfTrBxk/bkDUfW7c1NIlYvvV1EP64RGXvfAcUg1HcVYKcGkNcpqYAgM
-	0ZZuxc2Sc5K9zZ8x9jGCD3Qt3fHuldikpyRxaenm+M/7HKOtCgc+dDKOFZzoMphKt6eaxJR2/lCEF
-	Fcyjz+EZYFqV735bPDyH2+gCmS4SR5MDHYaOlmwcgFMMZEB0+HhKwM/IAJVh/sMqQ+W8r97KCty8O
-	8sdp6Ca4lO8Da/cTmfCKInX7+EbmHYDBT/Cgh34lZn8x5Z1DS+nuOaCH3JaiK75/hhlFJAIFl2dCF
-	shJXi/bw==;
+	bh=8L9G3q8vCMQ9cticQ95k1bLTJnyChs3c7Vs1uz5R7oA=; b=QFg9NLpsRUrY0x+KsoTJP1PPsk
+	tgwUUpGYUrPY1UoTy/yYnTXUvA43J0+WHq0X0vLHniFUJFLdHXlVhFsnpFitkuwWmQ/JVbrNkxVar
+	OSRcoUkjR9+vxOnBjov1l7hsK2tvzncZzoxkexw7bV+1HNj8NklE2qQ9IR53bXgq3N1ruuIErijIr
+	I2YGJwK1bGGIRWPQfa2SizDaNt6WAWsUlJ34qxC3qAP/GbcG25d3gl41+1vMmeRSXJIjyAYrq1mHZ
+	Hem+jfSHqxh7VmWMPILHkBHSCjWwzRQAOF6p2HZcV4EoDjrj63xx3zKx4/G6Xf2f7qFOjimLoEC6H
+	dst3tn1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uphuE-00000004AYS-2fVQ;
-	Sat, 23 Aug 2025 06:39:14 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1uphvx-00000004CaP-0N9T;
+	Sat, 23 Aug 2025 06:41:01 +0000
+Received: from mgamail.intel.com ([198.175.65.17])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upU2P-000000036jk-0dmF;
-	Fri, 22 Aug 2025 15:50:46 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 686615C70B4;
-	Fri, 22 Aug 2025 15:50:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 13BF9C4CEED;
-	Fri, 22 Aug 2025 15:50:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755877844;
-	bh=PRjr1oyN1prDBOKUZ34iupM5Ee2Kn6LvfPBZpedTizo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=NLkvEcDi7va6d8wofQYB7lrrIzy/EqQpNAQJUXQsL0j3e4syTR+r96SoHaJ3jAtJR
-	 7ZckKnr3dczWN36y3PWZAxXyGK69AGZvU7vIBerBELyyjgoLDbNNAcCkA8nodPxDjG
-	 o1EdFfnjI81c9N6hD5URN/3efElktMnJn31DHEJ4tSXKO/4iuxY9Zquzh9Lsue3hJv
-	 Q28Oexi2b1PJzAUXESiyT7HeH2V0N8GEeoQZVSqffF15OnUhUTMiLeyN1JcqQQOYJK
-	 1CcJOJM3mQhb74Hc88k0wxqQw9O3jxOtLRx8iGcXvDWmSZ17ssaR/zBJ0ECkedrAtH
-	 kWisP7d7d+0oQ==
-Date: Fri, 22 Aug 2025 10:50:42 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
-	devicetree@vger.kernel.org, mripard@kernel.org, mchehab@kernel.org,
-	airlied@gmail.com, amergnat@baylibre.com,
-	linux-sound@vger.kernel.org, p.zabel@pengutronix.de,
-	linux-gpio@vger.kernel.org, matthias.bgg@gmail.com,
-	kyrie.wu@mediatek.corp-partner.google.com,
-	linux-input@vger.kernel.org, kuba@kernel.org, conor+dt@kernel.org,
-	linux-mediatek@lists.infradead.org, yunfei.dong@mediatek.com,
-	kernel@collabora.com, lgirdwood@gmail.com,
-	minghsiu.tsai@mediatek.com, edumazet@google.com,
-	jmassot@collabora.com, simona@ffwll.ch,
-	louisalexis.eyraud@collabora.com, support.opensource@diasemi.com,
-	chunkuang.hu@kernel.org, andrew-ct.chen@mediatek.com,
-	dmitry.torokhov@gmail.com, andrew+netdev@lunn.ch,
-	tzimmermann@suse.de, maarten.lankhorst@linux.intel.com,
-	jeesw@melfas.com, broonie@kernel.org, davem@davemloft.net,
-	houlong.wei@mediatek.com, flora.fu@mediatek.com, pabeni@redhat.com,
-	linux-clk@vger.kernel.org, netdev@vger.kernel.org,
+	id 1upVGb-00000003DlF-04PG;
+	Fri, 22 Aug 2025 17:09:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1755882569; x=1787418569;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=7Edpu4iaigfyMUiRCVPJ8Q6j8sogTZ4BIgKymb2DFMw=;
+  b=C4+wIUPbOdQDw1nkMdDvYgCMGdWe8VQw+N6EaM9/pcy5Dzkvheu99CW/
+   Pdgxry7ogt9KfZhBQUB0uHDONzmVvcbvt2aotBlq2E3BVHAIHZEnBWjq0
+   b364hUoRWjhnCvKgVieQbezTMHOo/jwETFxVeZoGfbIXBHQMKH8Fw1msB
+   Ay9Cl/0ZOzpeRYAJqs7le3qB6jcd91Yhu9W/A+nePQ0We5c4w3v9PjLxe
+   o9Fj1gS4/7OAhmH6vqFxBWXWcQLoRJRwohHdkHOZW4oVkD86+Jmio3k0L
+   ztc3HJ8DaPnmP1m+H/8mTdvXKuSYRAXrj1CjYtbkuc47jbkxYp/0ZLLhN
+   w==;
+X-CSE-ConnectionGUID: k0QxEAwtSeySkV/rQKOShg==
+X-CSE-MsgGUID: fa9lQaShRPmkyKVhnE9/fA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11529"; a="58145622"
+X-IronPort-AV: E=Sophos;i="6.17,312,1747724400"; 
+   d="scan'208";a="58145622"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Aug 2025 10:09:28 -0700
+X-CSE-ConnectionGUID: bSznwY7qTReg8XKsoJX+Qw==
+X-CSE-MsgGUID: 5jtGIIBhT2ugTPUQX6bJ8A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.17,312,1747724400"; 
+   d="scan'208";a="168947402"
+Received: from lkp-server02.sh.intel.com (HELO 4ea60e6ab079) ([10.239.97.151])
+  by orviesa008.jf.intel.com with ESMTP; 22 Aug 2025 10:09:24 -0700
+Received: from kbuild by 4ea60e6ab079 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1upVG1-000LZR-1i;
+	Fri, 22 Aug 2025 17:09:01 +0000
+Date: Sat, 23 Aug 2025 01:07:23 +0800
+From: kernel test robot <lkp@intel.com>
+To: Xiandong Wang <xiandong.wang@mediatek.com>,
+	Jassi Brar <jassisinghbrar@gmail.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Yongqiang Niu <yongqiang.niu@mediatek.com>
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	dri-devel@lists.freedesktop.org,
-	angelogioacchino.delregno@collabora.com, sean.wang@kernel.org,
-	tiffany.lin@mediatek.com, ck.hu@mediatek.com, krzk+dt@kernel.org,
-	linus.walleij@linaro.org
-Subject: Re: [PATCH v1 12/14] dt-bindings: soc: mediatek: pwrap: Add
- power-domains property
-Message-ID: <175587784167.3865517.1055280782148729337.robh@kernel.org>
-References: <20250820171302.324142-1-ariel.dalessandro@collabora.com>
- <20250820171302.324142-13-ariel.dalessandro@collabora.com>
+	linux-mediatek@lists.infradead.org, sirius.wang@mediatek.com,
+	vince-wl.liu@mediatek.com, jh.hsu@mediatek.com,
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+	Xiandong Wang <xiandong.wang@mediatek.com>
+Subject: Re: [PATCH v3 3/4] mailbox: mtk-cmdq: Add cmdq driver for mt8189
+Message-ID: <202508230035.zCJcuz93-lkp@intel.com>
+References: <20250819033746.16405-4-xiandong.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250820171302.324142-13-ariel.dalessandro@collabora.com>
+In-Reply-To: <20250819033746.16405-4-xiandong.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250822_085045_229062_D41395FD 
-X-CRM114-Status: UNSURE (   9.01  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250822_100929_098116_B2D06112 
+X-CRM114-Status: GOOD (  13.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,18 +98,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Xiandong,
 
-On Wed, 20 Aug 2025 14:13:00 -0300, Ariel D'Alessandro wrote:
-> Currently, the DT bindings for Mediatek PMIC Wrapper is missing the
-> power-domains property, which is used in the MT8173 E1 evaluation board
-> as it needs USB power domain.
-> 
-> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-> ---
->  .../bindings/soc/mediatek/mediatek,pwrap.yaml     | 15 +++++++++++++++
->  1 file changed, 15 insertions(+)
-> 
+kernel test robot noticed the following build errors:
 
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
+[auto build test ERROR on jassibrar-mailbox/for-next]
+[also build test ERROR on robh/for-next krzk/for-next krzk-dt/for-next linus/master v6.17-rc2 next-20250822]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
+url:    https://github.com/intel-lab-lkp/linux/commits/Xiandong-Wang/dt-bindings-mailbox-add-cmdq-yaml-for-MT8189/20250819-113946
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/jassibrar/mailbox.git for-next
+patch link:    https://lore.kernel.org/r/20250819033746.16405-4-xiandong.wang%40mediatek.com
+patch subject: [PATCH v3 3/4] mailbox: mtk-cmdq: Add cmdq driver for mt8189
+config: arm-randconfig-001-20250822 (https://download.01.org/0day-ci/archive/20250823/202508230035.zCJcuz93-lkp@intel.com/config)
+compiler: clang version 22.0.0git (https://github.com/llvm/llvm-project d26ea02060b1c9db751d188b2edb0059a9eb273d)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250823/202508230035.zCJcuz93-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202508230035.zCJcuz93-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+>> drivers/mailbox/mtk-cmdq-mailbox.c:781:3: error: field designator 'mminfra_offset' does not refer to any field in type 'const struct gce_plat'
+     781 |         .mminfra_offset = 0x40000000, /* 1GB */
+         |         ~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+   1 error generated.
+
+
+vim +781 drivers/mailbox/mtk-cmdq-mailbox.c
+
+   777	
+   778	static const struct gce_plat gce_plat_mt8189 = {
+   779		.thread_nr = 32,
+   780		.shift = 3,
+ > 781		.mminfra_offset = 0x40000000, /* 1GB */
+   782		.control_by_sw = false,
+   783		.sw_ddr_en = true,
+   784		.gce_num = 2
+   785	};
+   786	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
