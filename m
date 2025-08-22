@@ -4,76 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1F90CA0EFF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Aug 2025 09:35:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A385CA0EFA
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Aug 2025 09:35:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pNMRQSVGtpbE9DQVQ/0SgNV9o3SjxzyOiIQeuU61MhE=; b=s8dRIszpjeEAYWNEZES1Y3zZWh
-	oVEmusuK7ksfeHJuj05u9HrvGkIkTozjEry6wh0udhH2TcQRawhjyq1ry1O6twhhB63ihaUaU4yrx
-	Jh8EXUpdQupY1wt0ksDnEb+sEA2GBTj5kJ/3NsBtZ4C04ajiFffPVAo6MIYoEjczDlVBT6lAwv76v
-	DIYYXvWYcEZSQq6hhAoArVAedhs4Xd6pTaI/7PCWNYiWOiELu6aQgM73GF39wD+nVHZRab4eCsWpr
-	N8Q/gztnu9En7WNy3oqg/YW+wN5GIIF03xX/2vJ/y95apNtunwGVsQhwdFpYQv64pzh0XOh89Mzoj
-	GWoZj5kA==;
+	bh=Zx90QVm6GzzZTR1BgRYVVtW+V2nRWjdVuhddzxz8SwA=; b=fPSTbB+ZhiJ1oCrEZV2M0DeDBw
+	nCF+P3kd08kx0dcMeO7MvLjhU1FRrHNl5SUUqXynBxwSHqbAYHe9Xr/+RAEBMRnmlIK+En+Ca4WQo
+	/nGdH//PpKdKemKgRi+MvDM6fxdbr5OkmRzT08ifFEAjKRL6jD1vfQQveaYkwB8VSRRP90EtVPFKi
+	QH1z4gn7xvvhTdeqjLonCimaFoE4N3vlOm4UOPVjkd1P2aMbNP4uCh817XDkjPJvzdl0J3AJ1E4BD
+	qa9BQI/tOxaVymhMwrFdddBBe0L6zkQbMP10fnjO9QUoNc6kF5QLRuhrF3TDs9MtfC28oJcD4A9Dy
+	5SbaSErA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upkeR-00000004T88-2N5O;
-	Sat, 23 Aug 2025 09:35:07 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1upkf1-00000004U9W-42mG;
+	Sat, 23 Aug 2025 09:35:43 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upTWQ-00000002z9D-06p4;
-	Fri, 22 Aug 2025 15:17:42 +0000
+	id 1upU4a-0000000377t-08pm;
+	Fri, 22 Aug 2025 15:53:01 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 3C0A260203;
-	Fri, 22 Aug 2025 15:17:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BE912C4CEED;
-	Fri, 22 Aug 2025 15:17:40 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 02EC6A58AFA;
+	Fri, 22 Aug 2025 15:52:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7D8FAC4CEED;
+	Fri, 22 Aug 2025 15:52:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755875860;
-	bh=XdRY7HKsACkQeqSKAyGk2v2Vlf2LTnVd6fqMdVcahtg=;
+	s=k20201202; t=1755877978;
+	bh=GZcqAUhind1yPvp4zhhO0FBJJvpJTi5iPD/E6Y6N6GE=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=aeX8kKa/dZgcRh5rVfaqoe1CC8NN0aLGou2XiuH7yWo6zZoT0QIhl5aMWgudGWbFY
-	 PPJfl4qu/m+btSrUwCgNWzdEyti9DSk+4yNowmd5ObzKp71SEHpVRe1OG/T15oBtg8
-	 9AN3tUi+2Dlzatpa4sax+YkIVrb7+SqyD5H2awAnfF1PN1l3gHGmcimjHYyWWl0XLS
-	 KDwELS31Lh0WKfWDKLUMyqgWU4sIpyzrjgQzSw4ldlERimgWAAjaK0Yyi7mXII7kK2
-	 bMuRspo3WJffjr3/yeEtypJUPrix/S0g2/97MTyC+C1McOGFXza9L3Cz4L8nB3UHw8
-	 +rd3s0ZGFUt4Q==
-Date: Fri, 22 Aug 2025 10:17:40 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
+	b=tBUykIQBRStiihtAnJe0AVIVB3jiv164suytchNLOiHzXp4/+sT3VdYIWELtCxQ/S
+	 k+XB53PnA2SVEHhRTUS7U4pZc/6+NTJUkZY7CKASmPvQ9QpYCcufIcSzgpR7NWVkSi
+	 jp9XGx5f+pZpXKidRSPAs6K+jdBokudQq0L+JSHKIQsakl6rBCtx53/+fKmRYU7AE5
+	 FMyFc2btLCA2xVryygJW3jkoBWIeiRMncRcBrhZrVRERgO/U1xU0HV1QVl4Lxov6FV
+	 dzjxYmwhLLY/zdK180LgDdUc1uFpRhZ4yyM60sjdxOlRcDnYbBAtClKHQaXm10ebIj
+	 AcsRl3MiOJs+A==
+Date: Fri, 22 Aug 2025 10:52:57 -0500
+From: Rob Herring <robh@kernel.org>
 To: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-Cc: airlied@gmail.com, matthias.bgg@gmail.com, krzk+dt@kernel.org,
-	louisalexis.eyraud@collabora.com, minghsiu.tsai@mediatek.com,
-	dmitry.torokhov@gmail.com, support.opensource@diasemi.com,
-	linux-kernel@vger.kernel.org, kernel@collabora.com,
-	edumazet@google.com, kuba@kernel.org, jeesw@melfas.com,
-	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
-	linux-sound@vger.kernel.org, andrew-ct.chen@mediatek.com,
-	linux-input@vger.kernel.org, linux-gpio@vger.kernel.org,
-	davem@davemloft.net, mripard@kernel.org, ck.hu@mediatek.com,
-	maarten.lankhorst@linux.intel.com, linus.walleij@linaro.org,
-	yunfei.dong@mediatek.com, houlong.wei@mediatek.com,
-	p.zabel@pengutronix.de, linux-clk@vger.kernel.org,
-	tzimmermann@suse.de, chunkuang.hu@kernel.org,
-	angelogioacchino.delregno@collabora.com, lgirdwood@gmail.com,
-	simona@ffwll.ch, linux-mediatek@lists.infradead.org,
-	jmassot@collabora.com, linux-arm-kernel@lists.infradead.org,
-	conor+dt@kernel.org, netdev@vger.kernel.org, amergnat@baylibre.com,
-	broonie@kernel.org, sean.wang@kernel.org,
-	linux-media@vger.kernel.org, tiffany.lin@mediatek.com,
-	kyrie.wu@mediatek.corp-partner.google.com, pabeni@redhat.com,
-	flora.fu@mediatek.com, andrew+netdev@lunn.ch, mchehab@kernel.org
-Subject: Re: [PATCH v1 09/14] dt-bindings: pinctrl: mediatek,mt65xx-pinctrl:
- Allow gpio-line-names
-Message-ID: <175587585960.3825744.17420648666303158652.robh@kernel.org>
+Cc: airlied@gmail.com, amergnat@baylibre.com, andrew+netdev@lunn.ch,
+	andrew-ct.chen@mediatek.com,
+	angelogioacchino.delregno@collabora.com, broonie@kernel.org,
+	chunkuang.hu@kernel.org, ck.hu@mediatek.com, conor+dt@kernel.org,
+	davem@davemloft.net, dmitry.torokhov@gmail.com, edumazet@google.com,
+	flora.fu@mediatek.com, houlong.wei@mediatek.com, jeesw@melfas.com,
+	jmassot@collabora.com, kernel@collabora.com, krzk+dt@kernel.org,
+	kuba@kernel.org, kyrie.wu@mediatek.corp-partner.google.com,
+	lgirdwood@gmail.com, linus.walleij@linaro.org,
+	louisalexis.eyraud@collabora.com, maarten.lankhorst@linux.intel.com,
+	matthias.bgg@gmail.com, mchehab@kernel.org,
+	minghsiu.tsai@mediatek.com, mripard@kernel.org,
+	p.zabel@pengutronix.de, pabeni@redhat.com, sean.wang@kernel.org,
+	simona@ffwll.ch, support.opensource@diasemi.com,
+	tiffany.lin@mediatek.com, tzimmermann@suse.de,
+	yunfei.dong@mediatek.com, devicetree@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
+	linux-gpio@vger.kernel.org, linux-input@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-sound@vger.kernel.org,
+	netdev@vger.kernel.org
+Subject: Re: [PATCH v1 13/14] dt-bindings: input/touchscreen: Convert MELFAS
+ MIP4 Touchscreen to YAML
+Message-ID: <20250822155257.GA3865729-robh@kernel.org>
 References: <20250820171302.324142-1-ariel.dalessandro@collabora.com>
- <20250820171302.324142-10-ariel.dalessandro@collabora.com>
+ <20250820171302.324142-14-ariel.dalessandro@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250820171302.324142-10-ariel.dalessandro@collabora.com>
+In-Reply-To: <20250820171302.324142-14-ariel.dalessandro@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250822_085300_204574_D47C7E06 
+X-CRM114-Status: GOOD (  13.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,17 +92,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Wed, 20 Aug 2025 14:12:57 -0300, Ariel D'Alessandro wrote:
-> Current, the DT bindings for MediaTek's MT65xx Pin controller is missing
-> the gpio-line-names property, add it to the associated schema.
+On Wed, Aug 20, 2025 at 02:13:01PM -0300, Ariel D'Alessandro wrote:
+> Convert the existing text-based DT bindings for MELFAS MIP4 Touchscreen
+> controller to a YAML schema.
 > 
 > Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
 > ---
->  .../devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml    | 2 ++
->  1 file changed, 2 insertions(+)
+>  .../input/touchscreen/melfas,mip4_ts.yaml     | 55 +++++++++++++++++++
+>  .../input/touchscreen/melfas_mip4.txt         | 20 -------
+>  2 files changed, 55 insertions(+), 20 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/input/touchscreen/melfas,mip4_ts.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/input/touchscreen/melfas_mip4.txt
 > 
+> diff --git a/Documentation/devicetree/bindings/input/touchscreen/melfas,mip4_ts.yaml b/Documentation/devicetree/bindings/input/touchscreen/melfas,mip4_ts.yaml
+> new file mode 100644
+> index 0000000000000..170fd4212467e
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/input/touchscreen/melfas,mip4_ts.yaml
+> @@ -0,0 +1,55 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/input/touchscreen/melfas,mip4_ts.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MELFAS MIP4 Touchscreen
+> +
+> +maintainers:
+> +  - Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+> +
+> +properties:
+> +  compatible:
+> +    const: "melfas,mip4_ts"
 
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
+Drop quotes. With that,
 
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
