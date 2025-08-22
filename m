@@ -4,77 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D21DCA0EFA
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Aug 2025 06:32:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35102CA0EFA
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Aug 2025 06:32:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=smX6GbIm3kSK53C+FTWZLt5gdAAoY1if7kLmaHl1GMY=; b=OohFhBspumHMB+Lr+PiZYNupkk
-	40Szor1RCHSIXVF9f8JK66YYNhV6D5scgFLaubjElnjcxI20U4YNSq4jhdsjHnD9E63QaPPgF3MgI
-	WIhDImA7zPFzaSqXLnMTuvAuGafiu26rqkNeXxSjS94I+/5R463NY0znrMueVtsG0s+QgikcJ+SsM
-	0+QHfUSJJ+BfzX7nk1BRAXcJWPyx7UzqKi0QNLi+5W9ix5dlbyzss9TCIXiISt7b0MwdCLq7CeP6n
-	7xsesp8TXYtCjVRj0RpTma5g1m81pRzMhw8RszmAARTG0xxeRJlWDIjknKgkor64UE+aMcz8gkJvF
-	UF3N3clw==;
+	bh=SW7v0GvvSwBC0Kw7yL0pRinfOhhZcSD/06I2qrEKC1c=; b=x3PBPE30yLxVwSLMc8WR6I2+Vl
+	xpgcI8+3zjSAzaBQfwmXugCYqRpwXRFvn3CWOR1avyVYieC9CdWToRpQBb/6j6Mh50FC7E6bWtWly
+	IQxwVo+D/jRfmru9N/3ae3xVUZubZRiNxZXRgX1cPQeNoR5fFEawv354wT5DIqHug3lrq1OOn4CL+
+	Jnfa8BhUaTMGSHEs76+y/MyUFHa+b5UwG2AUOHyKcSKRQOud2LeA8jnFdShB7BC5rHG0hx3k4gwlw
+	YBcR6ifZ6fwnnO8USCvj9DToss5D2TZP0w5z+WNFJbSvnRqbPlwaVwLFG8yTqUoHqQYDPkJr6Zzgm
+	rRUiwu2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uphnU-000000041QA-3Afx;
-	Sat, 23 Aug 2025 06:32:16 +0000
+	id 1uphnb-000000041a3-05Nw;
+	Sat, 23 Aug 2025 06:32:23 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upSvk-00000002rTP-0qRB;
-	Fri, 22 Aug 2025 14:39:49 +0000
+	id 1upSwc-00000002ric-35p2;
+	Fri, 22 Aug 2025 14:40:44 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 543C243451;
-	Fri, 22 Aug 2025 14:39:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0D0FAC4CEED;
-	Fri, 22 Aug 2025 14:39:46 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 7391740B74;
+	Fri, 22 Aug 2025 14:40:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A1942C4CEED;
+	Fri, 22 Aug 2025 14:40:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755873586;
-	bh=MQpTXSG/z9wgXCqnHJLGZddIUiDznuwl5RLSvgOuvXs=;
+	s=k20201202; t=1755873642;
+	bh=bhSe5dlYJAdq6mjCeG2oMHDgFoB39cQ6nyMGPbyEMp0=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=VQP9xZ/s3HAazOp75U4TuPEapU2a39p4qFkiPYIQluE9pzYgrWJa51B3d7Os+uHLk
-	 07QHvilTh/0IAMVvP8UtJwPSIc0eJAf5rObM7N29vjvflf6VZGJn0JfN8HKFj7BsYm
-	 9sZgVOXvhX9hE/PeH+yQcevUbLRCskzs5ZFVxFbzilJROE5DFOdSSB/y7jUi5jCEY3
-	 pZa0NNYw/yYl6y4JmKEJG2R1ZlqIP8Nx9urx8QMT0C+9SQZ9XxvbDPU64Ct0zCldhS
-	 nvniOoHUDaRUvwH7j9veUxRB9j9fiSCDgnWPu02PsUE+WsrymcmcHcoABbS0buo7Gl
-	 4I4fTPlTHXjIg==
-Date: Fri, 22 Aug 2025 09:39:45 -0500
-From: Rob Herring <robh@kernel.org>
+	b=e/84M/IjqLSUe0+HMVanzoXlDpTCK+nKqW9JtOBOWuLgU7/06OXafn7g3HKLAGHrR
+	 6Gy6En5shwo8oZlNxTddq8gaz0m80j55IqHfKG+w8X5eHTOl1RzD7GJUTSTOJf2PlW
+	 n0ttSArSzWQ40eIDMLf8+nMbwN3ZXe0/e3JjrBzYY5ZW8vKgzuFnTuXwA1Ru1iS3kk
+	 KP3HblmM7yMjRbIkTinI9AouRLWqlrwnUwb7ub/dB8m95/jMEUp2Mzr3WZpYkXoF32
+	 kZjuMW1TzyfNZku3dVYyTpgTjKQWjn+qxWfuSmq3O4ae6Kj8/uWIuOOtsyaEc2Fa3N
+	 73QoCyUUCVYzg==
+Date: Fri, 22 Aug 2025 09:40:40 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
 To: Julien Massot <julien.massot@collabora.com>
-Cc: kernel@collabora.com, Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ikjoon Jang <ikjn@chromium.org>,
-	Enric Balletbo i Serra <eballetbo@kernel.org>,
-	Chen-Yu Tsai <wenst@chromium.org>, Weiyi Lu <weiyi.lu@mediatek.com>,
-	Eugen Hristev <eugen.hristev@linaro.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Julien Massot <jmassot@collabora.com>,
-	Sean Wang <sean.wang@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>, linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-sound@vger.kernel.org,
-	linux-gpio@vger.kernel.org
-Subject: Re: [PATCH v2 2/6] ASoC: dt-binding: Convert mt8183-afe-pcm binding
- to YAML
-Message-ID: <20250822143945.GA3709669-robh@kernel.org>
+	linux-mediatek@lists.infradead.org, kernel@collabora.com,
+	Mark Brown <broonie@kernel.org>,
+	Eugen Hristev <eugen.hristev@linaro.org>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Chen-Yu Tsai <wenst@chromium.org>, Sean Wang <sean.wang@kernel.org>,
+	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+	Conor Dooley <conor+dt@kernel.org>, Ikjoon Jang <ikjn@chromium.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Julien Massot <jmassot@collabora.com>, linux-clk@vger.kernel.org,
+	Michael Turquette <mturquette@baylibre.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Weiyi Lu <weiyi.lu@mediatek.com>, linux-kernel@vger.kernel.org,
+	linux-sound@vger.kernel.org,
+	Enric Balletbo i Serra <eballetbo@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2 3/6] dt-bindings: arm: mediatek: Support
+ mt8183-audiosys binding variant
+Message-ID: <175587364044.3744053.7111449158430262490.robh@kernel.org>
 References: <20250820-mtk-dtb-warnings-v2-0-cf4721e58f4e@collabora.com>
- <20250820-mtk-dtb-warnings-v2-2-cf4721e58f4e@collabora.com>
+ <20250820-mtk-dtb-warnings-v2-3-cf4721e58f4e@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250820-mtk-dtb-warnings-v2-2-cf4721e58f4e@collabora.com>
+In-Reply-To: <20250820-mtk-dtb-warnings-v2-3-cf4721e58f4e@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250822_073948_280420_7C0AC264 
-X-CRM114-Status: GOOD (  18.66  )
+X-CRM114-CacheID: sfid-20250822_074042_807933_3FEAAC7F 
+X-CRM114-Status: GOOD (  11.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,170 +88,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 20, 2025 at 03:44:53PM +0200, Julien Massot wrote:
-> Convert the MediaTek MT8183 AFE PCM Device Tree binding from the old
-> .txt format to YAML schema format to improve validation.
-> 
-> While converting, also document all clock inputs and memory-region
-> used by the AFE block.
+
+On Wed, 20 Aug 2025 15:44:54 +0200, Julien Massot wrote:
+> Update the mediatek,audsys binding to support the mt8183-audiosys
+> compatible, which uses a different audio controller binding
+> (mediatek,mt8183-audio.yaml) compared to the legacy mt2701-audio
+> controller.
 > 
 > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > Signed-off-by: Julien Massot <julien.massot@collabora.com>
 > ---
->  .../bindings/sound/mediatek,mt8183-audio.yaml      | 228 +++++++++++++++++++++
->  .../devicetree/bindings/sound/mt8183-afe-pcm.txt   |  42 ----
->  2 files changed, 228 insertions(+), 42 deletions(-)
+>  .../bindings/arm/mediatek/mediatek,audsys.yaml           | 16 +++++++++++++++-
+>  1 file changed, 15 insertions(+), 1 deletion(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8183-audio.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8183-audio.yaml
-> new file mode 100644
-> index 0000000000000000000000000000000000000000..93517565f0f3a692c824be0897bc88dfd59bd723
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/sound/mediatek,mt8183-audio.yaml
-> @@ -0,0 +1,228 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/sound/mediatek,mt8183-audio.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Mediatek AFE PCM controller for mt8183
-> +
-> +maintainers:
-> +  - Julien Massot <jmassot@collabora.com>
-> +
-> +properties:
-> +  compatible:
-> +    const: mediatek,mt8183-audio
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  resets:
-> +    maxItems: 1
-> +
-> +  reset-names:
-> +    const: audiosys
-> +
-> +  power-domains:
-> +    maxItems: 1
-> +
-> +  memory-region:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    items:
-> +      - description: AFE clock
-> +      - description: ADDA DAC clock
-> +      - description: ADDA DAC pre-distortion clock
-> +      - description: ADDA ADC clock
-> +      - description: ADDA6 ADC clock
-> +      - description: Audio low-jitter 22.5792m clock
-> +      - description: Audio low-jitter 24.576m clock
-> +      - description: Audio PLL1 tuner clock
-> +      - description: Audio PLL2 tuner clock
-> +      - description: I2S1 bit clock
-> +      - description: I2S2 bit clock
-> +      - description: I2S3 bit clock
-> +      - description: I2S4 bit clock
-> +      - description: Audio Time-Division Multiplexing interface clock
-> +      - description: Powerdown Audio test model clock
-> +      - description: Audio infra sys clock
-> +      - description: Audio infra 26M clock
-> +      - description: Mux for audio clock
-> +      - description: Mux for audio internal bus clock
-> +      - description: Mux main divider by 4
-> +      - description: Primary audio mux
-> +      - description: Primary audio PLL
-> +      - description: Secondary audio mux
-> +      - description: Secondary audio PLL
-> +      - description: Primary audio en-generator clock
-> +      - description: Primary PLL divider by 4 for IEC
-> +      - description: Secondary audio en-generator clock
-> +      - description: Secondary PLL divider by 8 for IEC
-> +      - description: Mux selector for I2S port 0
-> +      - description: Mux selector for I2S port 1
-> +      - description: Mux selector for I2S port 2
-> +      - description: Mux selector for I2S port 3
-> +      - description: Mux selector for I2S port 4
-> +      - description: Mux selector for I2S port 5
-> +      - description: APLL1 and APLL2 divider for I2S port 0
-> +      - description: APLL1 and APLL2 divider for I2S port 1
-> +      - description: APLL1 and APLL2 divider for I2S port 2
-> +      - description: APLL1 and APLL2 divider for I2S port 3
-> +      - description: APLL1 and APLL2 divider for I2S port 4
-> +      - description: APLL1 and APLL2 divider for IEC
-> +      - description: 26MHz clock for audio subsystem
-> +
-> +  clock-names:
-> +    items:
-> +      - const: aud_afe_clk
-> +      - const: aud_dac_clk
-> +      - const: aud_dac_predis_clk
-> +      - const: aud_adc_clk
-> +      - const: aud_adc_adda6_clk
-> +      - const: aud_apll22m_clk
-> +      - const: aud_apll24m_clk
-> +      - const: aud_apll1_tuner_clk
-> +      - const: aud_apll2_tuner_clk
-> +      - const: aud_i2s1_bclk_sw
-> +      - const: aud_i2s2_bclk_sw
-> +      - const: aud_i2s3_bclk_sw
-> +      - const: aud_i2s4_bclk_sw
-> +      - const: aud_tdm_clk
-> +      - const: aud_tml_clk
-> +      - const: aud_infra_clk
-> +      - const: mtkaif_26m_clk
-> +      - const: top_mux_audio
-> +      - const: top_mux_aud_intbus
-> +      - const: top_syspll_d2_d4
-> +      - const: top_mux_aud_1
-> +      - const: top_apll1_ck
-> +      - const: top_mux_aud_2
-> +      - const: top_apll2_ck
-> +      - const: top_mux_aud_eng1
-> +      - const: top_apll1_d8
-> +      - const: top_mux_aud_eng2
-> +      - const: top_apll2_d8
-> +      - const: top_i2s0_m_sel
-> +      - const: top_i2s1_m_sel
-> +      - const: top_i2s2_m_sel
-> +      - const: top_i2s3_m_sel
-> +      - const: top_i2s4_m_sel
-> +      - const: top_i2s5_m_sel
-> +      - const: top_apll12_div0
-> +      - const: top_apll12_div1
-> +      - const: top_apll12_div2
-> +      - const: top_apll12_div3
-> +      - const: top_apll12_div4
-> +      - const: top_apll12_divb
-> +      - const: top_clk26m_clk
-> +
-> +required:
-> +  - compatible
-> +  - interrupts
-> +  - resets
-> +  - reset-names
-> +  - power-domains
-> +  - clocks
-> +  - clock-names
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/mt8183-clk.h>
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/interrupt-controller/irq.h>
-> +    #include <dt-bindings/power/mt8183-power.h>
-> +    #include <dt-bindings/reset/mt8183-resets.h>
-> +
-> +    afe: mt8183-afe-pcm {
-
-audio-controller {
-
-like you changed the .dts.
-
-With that,
 
 Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+
 
