@@ -4,150 +4,131 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7076CA0EED
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Aug 2025 14:18:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4EC7CA0FE8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Aug 2025 14:19:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TgRqmJtyyZZKh40pf/48v4y890uKqUZvohs/c2O01aE=; b=FQfSnfbI0B+eFGL8C1H2f7yWPn
-	kLd/jC4hiht5PISvs33sHdey91s1dPN/yQcASo2KYJbtWZX9qTCA2QFgRPZyme/2BXuPEDJ7I6NNy
-	Pwra03RmiaepHD/TlTrAqN1YXWw8+W7AXIK4djlwYHiO7F1wYMBy0eRNWObUJ154CkJFlNutXY6tS
-	3yC2Fv8BEB62u5OkhaYeTf2pWKZqs+dzMb8sh03HHdUoLHAxdRLr6Gbn6jWbOwdOAsFguJ3Axzotn
-	HpFgCRxw8xytYoU8x9Hjz9B/AqqDGhpFiCJ0S59YWxotAvFwMNcN1PuxTDlNb+2jAqlAYHBubXWaW
-	YSeo/ktg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=gXvOq0WDJymydEahTOESPI/du0vd8E1f2zWurTAGrWI=; b=oDmPxirqz81tLbEXiiqBeNR4vH
+	uRvY7h78a16d+ZeqFFTxHZwDR8lzloiiwawvfeuXHVMciYYAd4c5q7MgYPfy6SqgqokSngnut95+k
+	Uq5ls/wbYwu84vauO6INGYir/cuJS+FCTmtY8X3fCvYBBL066FOrAY11XREK7KCjHCnFLVwaV7gq3
+	Yi37FIfrtbTLInaTi/AVTZHxnMSGdaAPYrAhgtyjDhG5Dpd3p5eb20ugQ3wQFNTsVDlbnu9sowLZB
+	BGWvoVbRE08Sy0WeyghW3zLiHzroBRpDEo2pDJpgSeSG4pysp0O5pqI9pQTlrrz+XbpkWuLY7ijfI
+	vVEWtoWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upSb8-00000002keh-1OSP;
-	Fri, 22 Aug 2025 14:18:30 +0000
-Received: from mail-co1nam11on2061a.outbound.protection.outlook.com ([2a01:111:f403:2416::61a] helo=NAM11-CO1-obe.outbound.protection.outlook.com)
+	id 1upScW-00000002mSY-1uA5;
+	Fri, 22 Aug 2025 14:19:56 +0000
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upL2m-00000001fUA-2q7N;
-	Fri, 22 Aug 2025 06:14:34 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=SkrnCsbPJItYSA44cv+Q3qGS+D1a/iu3bFFDwqt5JtFCNb+JjAEY/9qE5Rnle+cjTjldIMTRa1V5hAChHdvdTBCy0HDXz04G28aNqzswBGG9b3z4IfXqhgd5JL5Vq3I4VuMM/11z4Vcku3bbptxCPfGyiFpnBkWbTlFPI5RjCuUSP5vltffsAZQ1R0sVPmN8EMQWI7yXhiwF4U4q9L+WuveIRvSfZOr5rPiMYFtRrKwEDSDL8vi8NYZaCYzoTBw1BLsAGr04SjSla+Wx21OBg+EieH5J2hhid60aaBXDdIXsDmN3Ujx1Uh+cfSwNwyzsGG0x23LyQPH/eaAKXSd5aQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=TgRqmJtyyZZKh40pf/48v4y890uKqUZvohs/c2O01aE=;
- b=JTJhRPILZUpC7RruSmzGErNjnjPM3dJUFL2Qe+BqYvNqytozQTDbMF4ILdS+I4BTqRAGfi+zgqvHNE5FDgXygFbA/Aa6hQjhFqGByXlwKCPRRDrBC6VGwEteWBHnN4MBLhS70pBWlCetIsjaDULFcMTDM5FI7vePZLbSX0mC58jGV1oxqq9idCPZDf5RTemq3XLdVE9O+3BEmPF+KXGIUGLrQRj8rTh8lHHIskVtMevKcnpwc8Yy+IJAEQThYWKxXVkBqD5V0yEUlfzJ854RukCyBaLhowroYOI1Kf+qX1q8WnFLCwr9gp4W+T8W7PSbvpNJXFuyiZLnZ2ZhxQiPuA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.160) smtp.rcpttodomain=gmail.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=TgRqmJtyyZZKh40pf/48v4y890uKqUZvohs/c2O01aE=;
- b=t5cw1JpbZ2aD1ppKt9P6Fsd/GmIqh59FgdjYOTKhbb9GoPfvpBmsQJIlhWjiX7AjWArAFXFX6JvjUNne/5NbxN1whyQ0uePg34iWTelVemwSw+qdV+vA30CGc3BEmcm6GCRuC2rr5rJz8GXtXU+CWXZ4Q/Ih8zTDTFr3mpAqFkITN4YToyMzN4309sVt99erWc95RC5rKSDsi7MdGpFUPvJAaLiC8FaFOFHVqS/i0xzCjTj92fPf8hfS1LogmloWb68Pu/trKfrfVbKwKcdGwnNib6MPx85DTDEdkcCLWZgJhTPWI9fX9od+lchk6MgIEEvh8Nqg/MgxLw61wfmBcw==
-Received: from DM5PR07CA0054.namprd07.prod.outlook.com (2603:10b6:4:ad::19) by
- DM4PR12MB5795.namprd12.prod.outlook.com (2603:10b6:8:62::9) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9052.15; Fri, 22 Aug 2025 06:14:27 +0000
-Received: from DS1PEPF00017094.namprd03.prod.outlook.com
- (2603:10b6:4:ad:cafe::93) by DM5PR07CA0054.outlook.office365.com
- (2603:10b6:4:ad::19) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9052.16 via Frontend Transport; Fri,
- 22 Aug 2025 06:14:27 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.160) by
- DS1PEPF00017094.mail.protection.outlook.com (10.167.17.137) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9052.8 via Frontend Transport; Fri, 22 Aug 2025 06:14:27 +0000
-Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
- (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Thu, 21 Aug
- 2025 23:14:13 -0700
-Received: from rnnvmail205.nvidia.com (10.129.68.10) by rnnvmail201.nvidia.com
- (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Thu, 21 Aug
- 2025 23:14:12 -0700
-Received: from Asurada-Nvidia (10.127.8.12) by mail.nvidia.com (10.129.68.10)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14 via Frontend
- Transport; Thu, 21 Aug 2025 23:14:10 -0700
-Date: Thu, 21 Aug 2025 23:14:09 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Ethan Zhao <etzhao1900@gmail.com>
-CC: <robin.murphy@arm.com>, <joro@8bytes.org>, <bhelgaas@google.com>,
-	<jgg@nvidia.com>, <will@kernel.org>, <robin.clark@oss.qualcomm.com>,
-	<yong.wu@mediatek.com>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <thierry.reding@gmail.com>,
-	<vdumpa@nvidia.com>, <jonathanh@nvidia.com>, <rafael@kernel.org>,
-	<lenb@kernel.org>, <kevin.tian@intel.com>, <yi.l.liu@intel.com>,
-	<baolu.lu@linux.intel.com>, <linux-arm-kernel@lists.infradead.org>,
-	<iommu@lists.linux.dev>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-msm@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-tegra@vger.kernel.org>, <linux-acpi@vger.kernel.org>,
-	<linux-pci@vger.kernel.org>, <patches@lists.linux.dev>,
-	<pjaroszynski@nvidia.com>, <vsethi@nvidia.com>, <helgaas@kernel.org>
-Subject: Re: [PATCH v3 5/5] pci: Suspend iommu function prior to resetting a
- device
-Message-ID: <aKgKsXmVWS5NZdUn@Asurada-Nvidia>
-References: <cover.1754952762.git.nicolinc@nvidia.com>
- <3749cd6a1430ac36d1af1fadaa4d90ceffef9c62.1754952762.git.nicolinc@nvidia.com>
- <550635db-00ce-410e-add0-77c1a75adb11@gmail.com>
- <aKTzq6SLGB22Xq5b@Asurada-Nvidia>
- <d6b852bc-328a-41af-b125-e250c72c0d22@gmail.com>
+	id 1upMeU-00000001rtJ-3SDx
+	for linux-mediatek@lists.infradead.org;
+	Fri, 22 Aug 2025 07:57:36 +0000
+Received: by mail-ed1-x533.google.com with SMTP id 4fb4d7f45d1cf-6188b668b52so262865a12.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 22 Aug 2025 00:57:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1755849453; x=1756454253; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=gXvOq0WDJymydEahTOESPI/du0vd8E1f2zWurTAGrWI=;
+        b=dE2HUNUIl4UQyUtBBE/d5ob1tn2SrreTT/k3FDDutF15v4YxKBfEaPM14EYiS4dIVy
+         0gW9yTBxfPwLAeLBigd0MtPIx0eBzmm5wlDQ3vOARtlGVUwfBXwxET3+rVO1ymZ/3/O8
+         Q1kG1nGKz1svidusOuH3foYaNGYYsl3Brs5Sl+ZsHbXdcgDW90bDSZhaw7D1f06d/cGw
+         2upEJD6LfBtDPG/srmtiyixR9QzOHvrEISsR6ULf+UU19tJ22ZUuWR93juDd1UIFbGCV
+         pwG225NSseAlEIyPwGnBeZMzQ0KzEHdReGYRViEPGHovth0lHiYn4Y9wZ2DMzLd5bwVN
+         a1RA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1755849453; x=1756454253;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=gXvOq0WDJymydEahTOESPI/du0vd8E1f2zWurTAGrWI=;
+        b=QiSMB1LLO/p1i29OEcK33YJdBiBdR5+xsFuS9kgk5LuBQOvdaJNqjPMkDxff4CXarF
+         PfQA9WRBrdOA+ICdTiHKSJZEOd1Bd5DsSaj64snoP/McQLAp1xUzcBsiajN2fZbSrAZW
+         rGFHtUyN8wVJ2HqRVDozrvKkC/Sjpn9JtiDzF3rnee1b0PDdWOeEP/aKRkXaw8CxoHjm
+         IYRFIFyDYG3PO1QTp9KP9cse5ra268CbAD82W5BCOZaRDt7Njn9nlkggwvDBXRV2fA0R
+         picOrEwNhEKMsR+WfC4uSJ+8arjVyNFFbNKqWIg0Gg4nzjyfbCO1od1EdinvQTLMXIKK
+         qGXA==
+X-Forwarded-Encrypted: i=1; AJvYcCVxa9MY8FeDpCgCqSCbkdZrHua2D1WiIWWCcReb0qwc7mfQQav2cvKqCwpeqKOdu17YkbwYFYLF+DZeetdwHg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxEJv3kz3xQQXCegFBDJEJLySCBzDvPrYg1Z2dfhFHpd976+N+P
+	rA6s8WTwutsR3HE3AHr8BlHSERpY2BMhA9dBNJUut0kFNRAld7Orkq9X8j3UG2/8/Pc=
+X-Gm-Gg: ASbGncuYUEvSSOQZQQTeIAOpxDBt/NxMr/LheEHXxS/1FZ2mRqYFgP3C3F1npNTRs+e
+	SiB5zJ++zeFQlLdbeEHjaCUj9JAhXmoDOn6ugduCcsP3j/KJb9SOep6tWMxV3R+ftH1Ecn3XSQV
+	KGBZR/D/QdEQKCYyDbaublQBwzMNP4Tmn52Qeeg3ulvxcrcndpxXNkrDNaMZO+bi/c9XI0fagE2
+	mArtHLZweuFPJ070U5oSKshE50pglRSSeTvTvhpFq3lCWrNB/1aCqBB+ylDBUolI340L6dTBy/+
+	5mX2rvbvyv3sPIkkV1BcmQ8LYcR3mNmwpYl6pEsAWGqysqtgaoLcl9beu5obKgjPExXEkEFDesO
+	iluOx7AMoKqd1NDKpAMEdIawkG8+jTdKJuw==
+X-Google-Smtp-Source: AGHT+IHAfwxJieXRqNAC4E/jPz9pCyUBG2KPd9gNolTqqry4bihuNop6WHp+vaYNcJgpxRXSZfhW6w==
+X-Received: by 2002:a05:6402:2714:b0:61a:34c2:58c2 with SMTP id 4fb4d7f45d1cf-61c1b3c8aa9mr786406a12.2.1755849452760;
+        Fri, 22 Aug 2025 00:57:32 -0700 (PDT)
+Received: from kuoka.. ([178.197.219.123])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-61c25709d66sm197196a12.22.2025.08.22.00.57.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 22 Aug 2025 00:57:31 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Benson Leung <bleung@chromium.org>,
+	Guenter Roeck <groeck@chromium.org>,
+	Tim Harvey <tharvey@gateworks.com>,
+	Michael Walle <mwalle@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Bartosz Golaszewski <brgl@bgdev.pl>,
+	Jean Delvare <jdelvare@suse.com>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	Lee Jones <lee@kernel.org>,
+	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <ukleinek@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Mathieu Poirier <mathieu.poirier@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Cheng-Yi Chiang <cychiang@chromium.org>,
+	Tzung-Bi Shih <tzungbi@kernel.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Wim Van Sebroeck <wim@linux-watchdog.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Tinghan Shen <tinghan.shen@mediatek.com>,
+	devicetree@vger.kernel.org,
+	chrome-platform@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	linux-gpio@vger.kernel.org,
+	linux-hwmon@vger.kernel.org,
+	linux-pwm@vger.kernel.org,
+	linux-remoteproc@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-sound@vger.kernel.org,
+	linux-watchdog@vger.kernel.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Mathew McBride <matt@traverse.com.au>
+Subject: [PATCH v2] dt-bindings: mfd: Move embedded controllers to own directory
+Date: Fri, 22 Aug 2025 09:57:13 +0200
+Message-ID: <20250822075712.27314-2-krzysztof.kozlowski@linaro.org>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <d6b852bc-328a-41af-b125-e250c72c0d22@gmail.com>
-X-NV-OnPremToCloud: ExternallySecured
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS1PEPF00017094:EE_|DM4PR12MB5795:EE_
-X-MS-Office365-Filtering-Correlation-Id: 20684c77-740c-4935-81a9-08dde1432609
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|1800799024|82310400026|36860700013;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?c7EWgqX+O0j6epS8boWfDsSkn5d4PDsY34sDQ+458CqtPwaiOaaGppl9eNLI?=
- =?us-ascii?Q?909LalIX46dBHkAR4rInJH9XoTmLjoe6ByCidCSvtQSR+cjjLWEC9X64Snz3?=
- =?us-ascii?Q?EFBzHPQAnEBx+4LCH0d7CQPuh8F27vpnHiQOQn0/GeZ9Xea59EOz1jKpDVUe?=
- =?us-ascii?Q?tWa+Ny7eRQ9EXF5yqKlRSyfKo6sNC978+a+rsgRvIHQtfNyTotj9/w40egZe?=
- =?us-ascii?Q?6WFlwmCQPCYQ+XZlifFOSLlpxectizqTqM49rZ2ASkK9Se8FftJIHX6UXqp5?=
- =?us-ascii?Q?TzRj0aaUBDOfgOhFwKDZ52X4aiWlNbzBCD854h60tTxDaeaxlihNlBHfiNY3?=
- =?us-ascii?Q?fuajqPs8Gk24SI6EkagRbkEkE6P4L8ihztO2RIFRkNkpDNC7uCOluV/inGbU?=
- =?us-ascii?Q?6Rt0E6Cm1XtXCrgR+0KkXbJv6xnPfJs700m+ImPs3cQVA3cUkMXnlXjEqq+C?=
- =?us-ascii?Q?GEITzsa1qJZy4ecZMeH9k/lHwavsQ7BkYuK/sr74HksZo6RzzGFiCTmZuSRA?=
- =?us-ascii?Q?5Ln4qBZXDEm8PHe5mOommJqVmXN6FyidRenNK/xuC7hnEFoIojX/cKx1HY+P?=
- =?us-ascii?Q?uT0GGHqPHg99dBUzflDxazbqQEh2dJu9kjslcJOvIXRfYLHAtB+kH07oOB6G?=
- =?us-ascii?Q?yz6NakqB8xBErm0rnchZ87WxeWXo1YKRKNEcJvpVIJC2m2bP7IekE46AcUkE?=
- =?us-ascii?Q?lVVtxAKO9ggK3Y+eYxdcGsYNY/LMYxQKioJ+rFZDslQuPysXrc7uB03uG42K?=
- =?us-ascii?Q?lB0S6yMEv9QoTaG9N5aIEYOEzgtx+9sqDxkY7bdZGkjM32TJrYc2WPhd21WY?=
- =?us-ascii?Q?Bkh1EhEGK1qrIJtWWBwK0yccjHOAt5EwK3kGMxGVET2Qzc1af8Q2nQqxQ8Ve?=
- =?us-ascii?Q?IAq8kRBezFe2CYiwjCwomosMlbzclav0RJf6JBUp4GrRJTRzwU2yaGNtXXoA?=
- =?us-ascii?Q?ROvtnCHIAtAFbBONmY6NDDG06bOGG8JAc4GkHgi4FPZO4cIwax6gMcf5ALBl?=
- =?us-ascii?Q?oxkfxlhp6jmQ+XOUlyeVvq/t4j682wSa1/QEQB6IecSvkcDUUMLqGAW5sPSc?=
- =?us-ascii?Q?4JtsVDjrDyu7w9TgggeTihGokJjXGKokxDoiqkk7lpfohlrcU5sI8yjggHET?=
- =?us-ascii?Q?cQK5Qo2siv0W74fk+SEBeRejGO9xvRcvdlUrE6DZ5hfYibfiTYat3tNiELTv?=
- =?us-ascii?Q?UB4zF1db22XVz8u1ePgiSZ+0JWSu8MTVlkoC+gvGKu+9Js1hq4HyGgDiqvrp?=
- =?us-ascii?Q?h6cfFdHe0OBwl9i8hq266VBp9nougMPj/q1fGSR+tzHapS3tMGuNRph+A6nh?=
- =?us-ascii?Q?X902Bz9dN/OZDlYhuTm5OMykX/c3fomc63LNdzbNqApO3RsvshzKsPp3bVxe?=
- =?us-ascii?Q?OwL2eGjdhsgdkLagIhgCYiKyUaRyeLjwTqhM/fH46ogsSd3+p21RAd84aDYJ?=
- =?us-ascii?Q?znxsWYCngoa9LcWLWArr1tS/LG8wOy/FaoJa7EFGnOTzqHqrM8Vs0/0b9yUv?=
- =?us-ascii?Q?8c6Q8vm62zVarmiedEtMRALvPnaI2ZV6hCLW?=
-X-Forefront-Antispam-Report: CIP:216.228.117.160;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc6edge1.nvidia.com;CAT:NONE;SFS:(13230040)(376014)(7416014)(1800799024)(82310400026)(36860700013);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Aug 2025 06:14:27.2134
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 20684c77-740c-4935-81a9-08dde1432609
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.117.160];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: DS1PEPF00017094.namprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB5795
+X-Developer-Signature: v=1; a=openpgp-sha256; l=11465; i=krzysztof.kozlowski@linaro.org;
+ h=from:subject; bh=x0j2EQXRqyvt7rxVFdqIAdXw7ahQ63q4FEnvUznWpfY=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBoqCLYC7FUAFD9qCGlqJnlBxpbt50g8PbOa+l9M
+ NreIM7mVGCJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaKgi2AAKCRDBN2bmhouD
+ 17nZD/0WwWQbLXAduO94hhdip6gvnEFCKdZQRALnWyof1QUZFB9t8NgXrPsWvOUtfGM+9UJd/cw
+ PoGktP7MAH4fUgWw64i0ZEp+gbYqfT5EQYbW5yJX+k974ImWaS10DMuCeJbuIFzO45vRbivrgwJ
+ L8H6pNDJq9yzx2PWuh60O59CNcOJ/dtCDi1sd2X+HZsGvgAzBpecjMA5/1fQDOC4BAm+DoRKpdG
+ 0tbnoO1lDeyPwJ0JC2eCV1BlqMf5jdK+mGuwjwmivYYztUdEoL5dr/F8z/Aliw962+J3NHvcvbC
+ xbpPa/fFAz38dADypYTaIydz/WlHz9EfuIqkZKA/S8pVLzW2HIBoZ/En4i9OZbkrIC1YRnurI8i
+ 66aEasQAtZSnlDGxtBfdyEDd4Ph7VOFL7xKlAdLuGvak6P6eBEx+lBPWV5o7oQvf3HMqmmisBWf
+ XFFuSUEkYassRF46J7si7c6thwg8u6/B6qEIO7egCiW2WjPjkBm651TafCF/IjySIoPMY0eg4CL
+ v0C+kqxM7AenLSpDOxy1wMw5K6faJLKRjBUpQm3IkgaD84LS0qANc02VWvfPMzoxY2YpYe9Sq95
+ cEoj/vK9qke/JFDIztGSpT8Q06VaR/Y1RFRq2TtpR9XfReWS94nMp8z1A09h3D/dX/jFzlljNdI OBEr0pNkAcS8t3A==
+X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp; fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250821_231432_727557_3A66EFDC 
-X-CRM114-Status: GOOD (  21.17  )
+X-CRM114-CacheID: sfid-20250822_005734_867620_F1897A82 
+X-CRM114-Status: GOOD (  14.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -162,58 +143,230 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 20, 2025 at 11:18:52AM +0800, Ethan Zhao wrote:
-> On 8/20/2025 5:59 AM, Nicolin Chen wrote:
-> >   b) multiple pci_devs; single RID
-> > 
-> >      In this case, FLR only resets one device, while the IOMMU-
-> >      level reset will block the entire RID (i.e. all devices),
-> >      since they share the single translation tunnel. This could
-> >      break the siblings, if they aren't also being reset along.
+Move ChromeOS Embedded Controller, Gateworks System Controller and
+Kontron sl28cpld Board Management Controller to new subdirectory
+"embedded-controller" matching their purpose.  MFD is coming from Linux
+and does not really fit the actual purpose of this hardware.
 
-> Yup, such alias devices might not have ATS cap. because of they
-> are PCI devices or they share the RID(BDF), so checking ATS cap
-> condition might be useful here to skip the prepare()/done()
+Rename Gateworks GSC filename to match compatible, as preferred for
+bindings.
 
-Yea, I agree, yet I think we need it to be "sure" than "might"?
+Acked-by: Michael Walle <mwalle@kernel.org> # for sl28cpld
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
 
-So perhaps we should check alias too. Given that all alias devices
-in this case share the same RID and reside in the same iommu_group,
-we could iterate the group devices for pci_devs_are_dma_aliases().
+Cc: Mathew McBride <matt@traverse.com.au>
 
-> > > 2. Reset PF when its VFs are actvie.
-> > 
-> >   c) multiple pci_devs with their own RIDs
-> > 
-> >      In this case, either FLR or IOMMU only resets the PF. That
-> >      being said, VFs might be affected since PF is resetting?
-> >      If there is an issue, I don't see it coming from the IOMMU-
-> >      level reset..
+Lee,
+Can you take it via MFD?
 
-> Each of the PF and its VFs has it owns RID(BDF), but the VFs' life
-> depends on the living of PF, resetting PF, means all its VFs are
-> lost.
-> 
-> There is no processing logic about PF and its VFs in FLR() yet.
-> my understanding the upper layer callers should consider the
-> complexity of such case.
-> 
-> While we introducing the connection of IOMMU & device in FLR(),
-> seems we brought some of the logic from the outside to the inside
-> part.
-> 
-> One method might we don't handle PF either by explicit checking its
-> VF configuration existing to skip prepare()/done() ? till we have
-> much clearer handling logic about it.
+Changes in v2:
+1. Correct remaining paths in other schemas ($ref and descriptions)
+---
+ .../bindings/{mfd => embedded-controller}/google,cros-ec.yaml | 2 +-
+ .../gateworks-gsc.yaml => embedded-controller/gw,gsc.yaml}    | 2 +-
+ .../{mfd => embedded-controller}/kontron,sl28cpld.yaml        | 2 +-
+ .../devicetree/bindings/gpio/kontron,sl28cpld-gpio.yaml       | 2 +-
+ .../devicetree/bindings/hwmon/kontron,sl28cpld-hwmon.yaml     | 2 +-
+ .../bindings/interrupt-controller/kontron,sl28cpld-intc.yaml  | 2 +-
+ Documentation/devicetree/bindings/pwm/google,cros-ec-pwm.yaml | 2 +-
+ .../devicetree/bindings/pwm/kontron,sl28cpld-pwm.yaml         | 2 +-
+ Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml     | 4 ++--
+ .../devicetree/bindings/sound/google,cros-ec-codec.yaml       | 2 +-
+ .../devicetree/bindings/watchdog/kontron,sl28cpld-wdt.yaml    | 2 +-
+ MAINTAINERS                                                   | 4 ++--
+ 12 files changed, 14 insertions(+), 14 deletions(-)
+ rename Documentation/devicetree/bindings/{mfd => embedded-controller}/google,cros-ec.yaml (99%)
+ rename Documentation/devicetree/bindings/{mfd/gateworks-gsc.yaml => embedded-controller/gw,gsc.yaml} (98%)
+ rename Documentation/devicetree/bindings/{mfd => embedded-controller}/kontron,sl28cpld.yaml (97%)
 
-That sounds a good one to start with.
+diff --git a/Documentation/devicetree/bindings/mfd/google,cros-ec.yaml b/Documentation/devicetree/bindings/embedded-controller/google,cros-ec.yaml
+similarity index 99%
+rename from Documentation/devicetree/bindings/mfd/google,cros-ec.yaml
+rename to Documentation/devicetree/bindings/embedded-controller/google,cros-ec.yaml
+index 50f457090066..3ab5737c9a8f 100644
+--- a/Documentation/devicetree/bindings/mfd/google,cros-ec.yaml
++++ b/Documentation/devicetree/bindings/embedded-controller/google,cros-ec.yaml
+@@ -1,7 +1,7 @@
+ # SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+ %YAML 1.2
+ ---
+-$id: http://devicetree.org/schemas/mfd/google,cros-ec.yaml#
++$id: http://devicetree.org/schemas/embedded-controller/google,cros-ec.yaml#
+ $schema: http://devicetree.org/meta-schemas/core.yaml#
+ 
+ title: ChromeOS Embedded Controller
+diff --git a/Documentation/devicetree/bindings/mfd/gateworks-gsc.yaml b/Documentation/devicetree/bindings/embedded-controller/gw,gsc.yaml
+similarity index 98%
+rename from Documentation/devicetree/bindings/mfd/gateworks-gsc.yaml
+rename to Documentation/devicetree/bindings/embedded-controller/gw,gsc.yaml
+index dc379f3ebf24..82d4b2dadbae 100644
+--- a/Documentation/devicetree/bindings/mfd/gateworks-gsc.yaml
++++ b/Documentation/devicetree/bindings/embedded-controller/gw,gsc.yaml
+@@ -1,7 +1,7 @@
+ # SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+ %YAML 1.2
+ ---
+-$id: http://devicetree.org/schemas/mfd/gateworks-gsc.yaml#
++$id: http://devicetree.org/schemas/embedded-controller/gw,gsc.yaml#
+ $schema: http://devicetree.org/meta-schemas/core.yaml#
+ 
+ title: Gateworks System Controller
+diff --git a/Documentation/devicetree/bindings/mfd/kontron,sl28cpld.yaml b/Documentation/devicetree/bindings/embedded-controller/kontron,sl28cpld.yaml
+similarity index 97%
+rename from Documentation/devicetree/bindings/mfd/kontron,sl28cpld.yaml
+rename to Documentation/devicetree/bindings/embedded-controller/kontron,sl28cpld.yaml
+index 37207a97e06c..0b752f3baaa9 100644
+--- a/Documentation/devicetree/bindings/mfd/kontron,sl28cpld.yaml
++++ b/Documentation/devicetree/bindings/embedded-controller/kontron,sl28cpld.yaml
+@@ -1,7 +1,7 @@
+ # SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+ %YAML 1.2
+ ---
+-$id: http://devicetree.org/schemas/mfd/kontron,sl28cpld.yaml#
++$id: http://devicetree.org/schemas/embedded-controller/kontron,sl28cpld.yaml#
+ $schema: http://devicetree.org/meta-schemas/core.yaml#
+ 
+ title: Kontron's sl28cpld board management controller
+diff --git a/Documentation/devicetree/bindings/gpio/kontron,sl28cpld-gpio.yaml b/Documentation/devicetree/bindings/gpio/kontron,sl28cpld-gpio.yaml
+index b032471831e7..02663d67eac7 100644
+--- a/Documentation/devicetree/bindings/gpio/kontron,sl28cpld-gpio.yaml
++++ b/Documentation/devicetree/bindings/gpio/kontron,sl28cpld-gpio.yaml
+@@ -11,7 +11,7 @@ maintainers:
+ 
+ description: |
+   This module is part of the sl28cpld multi-function device. For more
+-  details see ../mfd/kontron,sl28cpld.yaml.
++  details see ../embedded-controller/kontron,sl28cpld.yaml.
+ 
+   There are three flavors of the GPIO controller, one full featured
+   input/output with interrupt support (kontron,sl28cpld-gpio), one
+diff --git a/Documentation/devicetree/bindings/hwmon/kontron,sl28cpld-hwmon.yaml b/Documentation/devicetree/bindings/hwmon/kontron,sl28cpld-hwmon.yaml
+index 010333cb25c0..5803a1770cad 100644
+--- a/Documentation/devicetree/bindings/hwmon/kontron,sl28cpld-hwmon.yaml
++++ b/Documentation/devicetree/bindings/hwmon/kontron,sl28cpld-hwmon.yaml
+@@ -11,7 +11,7 @@ maintainers:
+ 
+ description: |
+   This module is part of the sl28cpld multi-function device. For more
+-  details see ../mfd/kontron,sl28cpld.yaml.
++  details see ../embedded-controller/kontron,sl28cpld.yaml.
+ 
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/interrupt-controller/kontron,sl28cpld-intc.yaml b/Documentation/devicetree/bindings/interrupt-controller/kontron,sl28cpld-intc.yaml
+index e8dfa6507f64..87df07beda59 100644
+--- a/Documentation/devicetree/bindings/interrupt-controller/kontron,sl28cpld-intc.yaml
++++ b/Documentation/devicetree/bindings/interrupt-controller/kontron,sl28cpld-intc.yaml
+@@ -11,7 +11,7 @@ maintainers:
+ 
+ description: |
+   This module is part of the sl28cpld multi-function device. For more
+-  details see ../mfd/kontron,sl28cpld.yaml.
++  details see ../embedded-controller/kontron,sl28cpld.yaml.
+ 
+   The following interrupts are available. All types and levels are fixed
+   and handled by the board management controller.
+diff --git a/Documentation/devicetree/bindings/pwm/google,cros-ec-pwm.yaml b/Documentation/devicetree/bindings/pwm/google,cros-ec-pwm.yaml
+index f7bc84b05a87..8f5a468cfb91 100644
+--- a/Documentation/devicetree/bindings/pwm/google,cros-ec-pwm.yaml
++++ b/Documentation/devicetree/bindings/pwm/google,cros-ec-pwm.yaml
+@@ -14,7 +14,7 @@ description: |
+   Google's ChromeOS EC PWM is a simple PWM attached to the Embedded Controller
+   (EC) and controlled via a host-command interface.
+   An EC PWM node should be only found as a sub-node of the EC node (see
+-  Documentation/devicetree/bindings/mfd/google,cros-ec.yaml).
++  Documentation/devicetree/bindings/embedded-controller/google,cros-ec.yaml).
+ 
+ allOf:
+   - $ref: pwm.yaml#
+diff --git a/Documentation/devicetree/bindings/pwm/kontron,sl28cpld-pwm.yaml b/Documentation/devicetree/bindings/pwm/kontron,sl28cpld-pwm.yaml
+index 981cfec53f37..19a9d2e15a96 100644
+--- a/Documentation/devicetree/bindings/pwm/kontron,sl28cpld-pwm.yaml
++++ b/Documentation/devicetree/bindings/pwm/kontron,sl28cpld-pwm.yaml
+@@ -11,7 +11,7 @@ maintainers:
+ 
+ description: |
+   This module is part of the sl28cpld multi-function device. For more
+-  details see ../mfd/kontron,sl28cpld.yaml.
++  details see ../embedded-controller/kontron,sl28cpld.yaml.
+ 
+   The controller supports one PWM channel and supports only four distinct
+   frequencies (250Hz, 500Hz, 1kHz, 2kHz).
+diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
+index adc6b3f36fde..179c98b33b4d 100644
+--- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
++++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
+@@ -58,7 +58,7 @@ properties:
+     maxItems: 1
+ 
+   cros-ec-rpmsg:
+-    $ref: /schemas/mfd/google,cros-ec.yaml
++    $ref: /schemas/embedded-controller/google,cros-ec.yaml
+     description:
+       This subnode represents the rpmsg device. The properties
+       of this node are defined by the individual bindings for
+@@ -126,7 +126,7 @@ patternProperties:
+         maxItems: 1
+ 
+       cros-ec-rpmsg:
+-        $ref: /schemas/mfd/google,cros-ec.yaml
++        $ref: /schemas/embedded-controller/google,cros-ec.yaml
+         description:
+           This subnode represents the rpmsg device. The properties
+           of this node are defined by the individual bindings for
+diff --git a/Documentation/devicetree/bindings/sound/google,cros-ec-codec.yaml b/Documentation/devicetree/bindings/sound/google,cros-ec-codec.yaml
+index 1434f4433738..dd51e8c5b8c2 100644
+--- a/Documentation/devicetree/bindings/sound/google,cros-ec-codec.yaml
++++ b/Documentation/devicetree/bindings/sound/google,cros-ec-codec.yaml
+@@ -15,7 +15,7 @@ description: |
+   Embedded Controller (EC) and is controlled via a host-command
+   interface.  An EC codec node should only be found inside the "codecs"
+   subnode of a cros-ec node.
+-  (see Documentation/devicetree/bindings/mfd/google,cros-ec.yaml).
++  (see Documentation/devicetree/bindings/embedded-controller/google,cros-ec.yaml).
+ 
+ allOf:
+   - $ref: dai-common.yaml#
+diff --git a/Documentation/devicetree/bindings/watchdog/kontron,sl28cpld-wdt.yaml b/Documentation/devicetree/bindings/watchdog/kontron,sl28cpld-wdt.yaml
+index 179272f74de5..872a8471ef65 100644
+--- a/Documentation/devicetree/bindings/watchdog/kontron,sl28cpld-wdt.yaml
++++ b/Documentation/devicetree/bindings/watchdog/kontron,sl28cpld-wdt.yaml
+@@ -11,7 +11,7 @@ maintainers:
+ 
+ description: |
+   This module is part of the sl28cpld multi-function device. For more
+-  details see ../mfd/kontron,sl28cpld.yaml.
++  details see ../embedded-controller/kontron,sl28cpld.yaml.
+ 
+ allOf:
+   - $ref: watchdog.yaml#
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 7969d09dff17..f3e4c1aa656e 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -10129,7 +10129,7 @@ F:	drivers/media/i2c/gc2145.c
+ GATEWORKS SYSTEM CONTROLLER (GSC) DRIVER
+ M:	Tim Harvey <tharvey@gateworks.com>
+ S:	Maintained
+-F:	Documentation/devicetree/bindings/mfd/gateworks-gsc.yaml
++F:	Documentation/devicetree/bindings/embedded-controller/gw,gsc.yaml
+ F:	Documentation/hwmon/gsc-hwmon.rst
+ F:	drivers/hwmon/gsc-hwmon.c
+ F:	drivers/mfd/gateworks-gsc.c
+@@ -23177,10 +23177,10 @@ F:	drivers/usb/misc/sisusbvga/
+ SL28 CPLD MFD DRIVER
+ M:	Michael Walle <mwalle@kernel.org>
+ S:	Maintained
++F:	Documentation/devicetree/bindings/embedded-controller/kontron,sl28cpld.yaml
+ F:	Documentation/devicetree/bindings/gpio/kontron,sl28cpld-gpio.yaml
+ F:	Documentation/devicetree/bindings/hwmon/kontron,sl28cpld-hwmon.yaml
+ F:	Documentation/devicetree/bindings/interrupt-controller/kontron,sl28cpld-intc.yaml
+-F:	Documentation/devicetree/bindings/mfd/kontron,sl28cpld.yaml
+ F:	Documentation/devicetree/bindings/pwm/kontron,sl28cpld-pwm.yaml
+ F:	Documentation/devicetree/bindings/watchdog/kontron,sl28cpld-wdt.yaml
+ F:	drivers/gpio/gpio-sl28cpld.c
+-- 
+2.48.1
 
-The prepare()/done() functions can internally bypass for devices:
-
-	if (!pci_ats_supported(pci_dev) || pci_sriov_get_totalvfs(pci_dev))
-		return 0;
-	/* And check alias too */
-
-Thanks
-Nicolin
 
