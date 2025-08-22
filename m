@@ -4,79 +4,177 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00FA8CA0EFA
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Aug 2025 08:20:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00BCACA0EE4
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Aug 2025 09:34:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iNxCmBx4fjesS26T4nVlp/+DmeSOs2k5r0/57naEFGQ=; b=b0R6JcF0WszwIfdVjzkbaVYdxO
-	JXBlTHJpFjxazpSW6gwSUZ4gC3Jmu/Fcm7uXpctsd/z4X1++SjkdYPMv+GLu03eOZsQNQJh25Kpnm
-	wBQuJwG5+qebqGauf/7oYHJa4udhgTCNG6woxrTND7BgCNLe5dItgJuwiJjzofDGzl08JIcv11xPw
-	TZ7YvEKAfgxIeF9HH3Xf6GPmpNnBHmlDzAxb1/O8lVTP52Wf2aDrfRZma43wFYTnai+P0z7Ch/jYb
-	TEKVXG1wYS1cA0uDcLSN+/OKmKjx9b31peNFzoxKfA4Ac7PCzAnM4nwY3OBWAJDKbnu0a7DdhF11g
-	2TEIQhEg==;
+	bh=aF17v9PsO6nl1JxfujORcyOmP2u2wIInPza2eoQbeIM=; b=J4OxtGHSCtV86HoPwtLiKuhyLX
+	TcLvyFo/mdejj6c5UE3BMdGf6o5HiRlzpMCodfojib/n3eaHLdorjWKk/MMf5uBGV/DNblte4RCGn
+	B3l3qviDD8TFqt/ZLCP822IR6rZ5OeDiy+g+O/BOE2i1+o3Bq7DS0k1bG1QeFMuQVcoMYKKy3LUik
+	oAfKigB6ekg8R9eIokWqEUpkycVzCEMfQHBWp6W17IAAg7JOVppsV/unI0/wn5Oxh9JWwTgszLR2t
+	OyzAfn2SYi/tDE3Ai3d7x/YVK8R7i941HKFSbysgA7vAa9A15oLnlOHIvzz8LdNDExrSSifE3UVd2
+	neVw96qw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upjUf-00000004N2e-3ich;
-	Sat, 23 Aug 2025 08:20:57 +0000
-Received: from mgamail.intel.com ([192.198.163.16])
+	id 1upkdq-00000004SED-1PWI;
+	Sat, 23 Aug 2025 09:34:30 +0000
+Received: from mail-bn8nam11on20613.outbound.protection.outlook.com ([2a01:111:f403:2414::613] helo=NAM11-BN8-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upZMZ-00000003Vud-3f1v
-	for linux-mediatek@lists.infradead.org;
-	Fri, 22 Aug 2025 21:31:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1755898316; x=1787434316;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=OZDL56ts6cpMtHv06rx//Jcb9k8kAprl1hOGapCSJ0Y=;
-  b=XPG8AdwY2qpt6JSo+u5AD5GWNGyz71Mmvtb4GLgadAWKk8+GMkpWnlkA
-   +3A0No6IK7mo1sENy3fI9lzKajRiVyd2uRcTvGAeB5W1Nflj4ue496Jwm
-   YcE+0ce6AoSkOk1o+O7mYr4kp/j4aBfQfsly6sbggtaKFkR+80bzzaL0v
-   iwUCQUnvAyM3GNBotV8qL+OFtKXCxIuFd22yxPaahQ2LyalqBUxuG1Vtp
-   IltKIzI+niwh1yDEvMb+7rWpR3r0xpICiN5ncbPeiRH1bIfuU84ECv6LS
-   26jrWc7tIQ3p0iqBMnbXaRbcsKkDoby5pZOBOUgH6t9SMAVqFEWSsNWWi
-   Q==;
-X-CSE-ConnectionGUID: haUZaQBrTJmL24e9In3/rA==
-X-CSE-MsgGUID: YHyZmK2AQIuKVkgDI5txKQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11529"; a="45784569"
-X-IronPort-AV: E=Sophos;i="6.17,312,1747724400"; 
-   d="scan'208";a="45784569"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
-  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Aug 2025 14:31:52 -0700
-X-CSE-ConnectionGUID: JxdUFZ2jTJWTdC23usu6cA==
-X-CSE-MsgGUID: yb+VR08XSSGzNFcTO+jxnA==
-X-ExtLoop1: 1
-Received: from lkp-server02.sh.intel.com (HELO 4ea60e6ab079) ([10.239.97.151])
-  by fmviesa003.fm.intel.com with ESMTP; 22 Aug 2025 14:31:49 -0700
-Received: from kbuild by 4ea60e6ab079 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1upZM0-000LqR-01;
-	Fri, 22 Aug 2025 21:31:27 +0000
-Date: Sat, 23 Aug 2025 05:31:01 +0800
-From: kernel test robot <lkp@intel.com>
-To: Chen-Yu Tsai <wenst@chromium.org>, Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: oe-kbuild-all@lists.linux.dev, Chen-Yu Tsai <wenst@chromium.org>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	linux-sound@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] ASoC: mediatek: common: Switch to
- for_each_available_child_of_node_scoped()
-Message-ID: <202508230528.DeD3hVns-lkp@intel.com>
-References: <20250822062738.2632746-1-wenst@chromium.org>
-MIME-Version: 1.0
+	id 1upRiS-00000002byF-1Ug3;
+	Fri, 22 Aug 2025 13:22:02 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=GCbyq4Z/JF3+WoYNuyL2LEq5pCoPTeBPd1Afb/Qdrd34ZK8uypSU8/K5/dMnvhjB0Arp99jSnpcybx/IBsZUIAco/1qe9SU3tj1YZw82kyD2LNoe1b4fFNUSX/AaqMsx1sROHp3dclOY9EAdHEpAT6av0MNQWe7ZKWkz8piYEW2RFDWzApuWquxdF2ayqV7yNqnCxAS2ZB+PweHG7OoP5Mg2n/yLew7/N3Kjqw+2QJKKGx9vMLF6ax4aZvStFKCqEfBIuQyOdLlQHQERDM8wllNzKMfsrlqDLJYX9vh5nNP/zCDM6F6TukkOIsh8kxcy1ab9ctuk/9Im9pYpUPvzzA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=aF17v9PsO6nl1JxfujORcyOmP2u2wIInPza2eoQbeIM=;
+ b=fdl0PEcpwmKsToWUChhGptULzRJ67CAU0NhnWM7F7gYxnR5pc8/9YtrBiMKhxWrm0QwAnck6PIa2sYTU6KpcAz5Kis8OA899bTOpSI9xaYQYPwveFo3+3GSziHw3IoF1hI62DFVVDwYszoPkjSbGXbvud4Jd4K9etQcLTc4eJ7E5atth8xYClLU5nQvaLtqjk4O2X4Hj/26R3w4nvourIlWDDAjxeGt19Uuh3ijX4Gf1ykUPhNunvLg4HphHa5X3pADX3uXD2+fAJu0Wo1BYkxKq+U3yt/+lyJXQxl+DkvjQPlORWLfNPaJJbgEJVrzUJ8dryP74ATIDRwsntE6NRw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=aF17v9PsO6nl1JxfujORcyOmP2u2wIInPza2eoQbeIM=;
+ b=SNzuNlO8JaFgeWDalSiMYkokhSddPACjN2vaTQSWvZCIycvLJ2vkKVg+/s7jQyc5nrf2FXCo277Hw0fMnWV2mtNtquXsyApJX32SOxCDUYhLn8Cgg0PaVUuUbD4j7lmj9N97r8Ebz2uW2TxgIMUpsHorHQerVWNp/Ib5lDoeGCrHvkYcEYCvQQqdXsjAOu2zt5hIxT8JQL1xEnQ/yudCUe8tAr4qjqH8bksvnBDqVRtO4/MzeR2h7OEhjRbG/NjIV8BcSxf7ZLEycAWzDWq42jpXSoJ6Vq6i5sZyBczkjBE/VVMXhJVGD1FqG7x8uwypmFDBl21XuIOVOsryJ3aF2w==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from CH3PR12MB8659.namprd12.prod.outlook.com (2603:10b6:610:17c::13)
+ by LV3PR12MB9354.namprd12.prod.outlook.com (2603:10b6:408:211::20) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9052.15; Fri, 22 Aug
+ 2025 13:21:40 +0000
+Received: from CH3PR12MB8659.namprd12.prod.outlook.com
+ ([fe80::6eb6:7d37:7b4b:1732]) by CH3PR12MB8659.namprd12.prod.outlook.com
+ ([fe80::6eb6:7d37:7b4b:1732%4]) with mapi id 15.20.9052.014; Fri, 22 Aug 2025
+ 13:21:39 +0000
+Date: Fri, 22 Aug 2025 10:21:38 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: "Tian, Kevin" <kevin.tian@intel.com>
+Cc: Nicolin Chen <nicolinc@nvidia.com>,
+	"robin.murphy@arm.com" <robin.murphy@arm.com>,
+	"joro@8bytes.org" <joro@8bytes.org>,
+	"bhelgaas@google.com" <bhelgaas@google.com>,
+	"will@kernel.org" <will@kernel.org>,
+	"robin.clark@oss.qualcomm.com" <robin.clark@oss.qualcomm.com>,
+	"yong.wu@mediatek.com" <yong.wu@mediatek.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>,
+	"thierry.reding@gmail.com" <thierry.reding@gmail.com>,
+	"vdumpa@nvidia.com" <vdumpa@nvidia.com>,
+	"jonathanh@nvidia.com" <jonathanh@nvidia.com>,
+	"rafael@kernel.org" <rafael@kernel.org>,
+	"lenb@kernel.org" <lenb@kernel.org>,
+	"Liu, Yi L" <yi.l.liu@intel.com>,
+	"baolu.lu@linux.intel.com" <baolu.lu@linux.intel.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"iommu@lists.linux.dev" <iommu@lists.linux.dev>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
+	"linux-acpi@vger.kernel.org" <linux-acpi@vger.kernel.org>,
+	"linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
+	"patches@lists.linux.dev" <patches@lists.linux.dev>,
+	"Jaroszynski, Piotr" <pjaroszynski@nvidia.com>,
+	"Sethi, Vikram" <vsethi@nvidia.com>,
+	"helgaas@kernel.org" <helgaas@kernel.org>,
+	"etzhao1900@gmail.com" <etzhao1900@gmail.com>
+Subject: Re: [PATCH v3 3/5] iommu: Add iommu_get_domain_for_dev_locked()
+ helper
+Message-ID: <20250822132138.GD1311579@nvidia.com>
+References: <cover.1754952762.git.nicolinc@nvidia.com>
+ <a69557026b7e2353bae67104bbe6a88f0682305e.1754952762.git.nicolinc@nvidia.com>
+ <20250818143949.GO802098@nvidia.com>
+ <aKNhIr08fK+xIYcg@Asurada-Nvidia>
+ <BN9PR11MB5276262E1925E2CD8AE037EF8C32A@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <20250821131426.GN802098@nvidia.com>
+ <BN9PR11MB5276A95E69D761271953E9F38C3DA@BN9PR11MB5276.namprd11.prod.outlook.com>
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250822062738.2632746-1-wenst@chromium.org>
+In-Reply-To: <BN9PR11MB5276A95E69D761271953E9F38C3DA@BN9PR11MB5276.namprd11.prod.outlook.com>
+X-ClientProxiedBy: YT1PR01CA0079.CANPRD01.PROD.OUTLOOK.COM
+ (2603:10b6:b01:2d::18) To CH3PR12MB8659.namprd12.prod.outlook.com
+ (2603:10b6:610:17c::13)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CH3PR12MB8659:EE_|LV3PR12MB9354:EE_
+X-MS-Office365-Filtering-Correlation-Id: 44b33664-874a-4945-9053-08dde17ed3f4
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|376014|366016|1800799024;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?PBNn1j3DH8f55ZDpoIE307x9GRGWl7FB55YmJip+cVj09+TJck8UVSRETBli?=
+ =?us-ascii?Q?4EG8k10Ce32hKQPD9FVz6BVnr/mHYtRO9Irkb6aKABmXKRwQnuaRnATrfcGu?=
+ =?us-ascii?Q?hzyHKm+QyACc5KsSc1Tvb1JsjYXExOzviqyNC9jLNTVSjE4E7nbNNnFkxE0u?=
+ =?us-ascii?Q?RhmzLvzytxEoez2RDHZxQuXdNoq7XVJUNC334R/ZJt79fppCL5ZOTFxCyv3g?=
+ =?us-ascii?Q?2poS366SGNL+SR0en1ntyBWRG2102sAF87FC5e/fCX9u0q/EZhqFFDXt0s8n?=
+ =?us-ascii?Q?ASebB5PYYBJB2CBJLl98JYiHyLRpViOwNOvh/eqXzHbOP9k/2a/3ddkS2FXj?=
+ =?us-ascii?Q?I7sOghUNyigp8ryCYlGqJU4BN0LJAfKmPCEUTVPwbLGduHYjkHEu09ljbYRe?=
+ =?us-ascii?Q?recEXCU6IqrC3ZvcGG/IH3+P/h/9frhNUnCUatuZ5Mgl6/tgPoMW1Q+u2roo?=
+ =?us-ascii?Q?B0rtafo0wNOq3/qiMYd5EqxU3qxgrjAkpmzgTKRRzh0EErWcWpUhQyxHROHX?=
+ =?us-ascii?Q?Ynr9LbljHtod3wj7Ml15abjiy1axUrOZt7Hpt79Ibsz3AAl19r3po/Vm4EuZ?=
+ =?us-ascii?Q?jMxYUuK1GegFopkPIz4IQFWVw6klA0LEDT8a/4K6vfjhZQid80dN8ctqhcw6?=
+ =?us-ascii?Q?mN6rmcRPFQ7gBLvCOwNjvrRSliIO64DMeFdnrdkyINCsCwg/DzGx85Yvb/Ca?=
+ =?us-ascii?Q?nRk6ObSm5Ai4cTdSmb/6jwvuggCJ4JBA+vx180iDJHCySG101+410K79BXUA?=
+ =?us-ascii?Q?B35P8aEbQ/HsuNFWAkp7ukCG+ZFe92VeelEZ/pMQ73IHgXOs1WkdMlwmmNZD?=
+ =?us-ascii?Q?Hy4YWPu32ZuzrDtk/65JFevkEiHbBbjMkQyXeU5k+gwcKMyyfwN89YwQfDVT?=
+ =?us-ascii?Q?WAs3ZE7Fj9wJwLZphBSRFj8mEddK/FwrbcQRpc2BVQuiG1CPmHgjBQr+W+hD?=
+ =?us-ascii?Q?+EYBwy4gbhJARURLtDxMqAgFqtlrdT628fo+8MPGSl4zJykStmEgA8F3ssq1?=
+ =?us-ascii?Q?4t+oEW+pld9hWF4rIeqLd8Qtv4ZwJZh9ln+lkFG1cHJOk294xbQUhzQtDyNF?=
+ =?us-ascii?Q?g4KsPRKCQ8OYjUHCI47DLI6ItM3xXCVQA2ahVMwpiTLyT5akoDOAwxY4EV6i?=
+ =?us-ascii?Q?MH6mE4Ryat3tkw5Nieh4W2WsdVGbOo4O4j4INWwHsFLnSOKyir1ESwyaPIEZ?=
+ =?us-ascii?Q?r22FSJh0M0KM0NYuyCPilXaUS3hJU5Ek7hQHTZHbugeF+UXW3ZjDi2c7bwpZ?=
+ =?us-ascii?Q?b10GW3pKDVDZJcSV5WrFx7iVNtofSohNNUe8YqlptaQDS3eFfws0VSDN+H3x?=
+ =?us-ascii?Q?7DxF3+4itg8otwLa8u7Fmng7Eblm2DNXMGsacIgn3rKV8tMOp+XmDAlkGxat?=
+ =?us-ascii?Q?LBcoU6jPMXarJlnTaLHVmUsRo0ahOErblxWs4gsLosOlxIWvGqkjQc9BXC0w?=
+ =?us-ascii?Q?FbSSJaRP4TE=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH3PR12MB8659.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(376014)(366016)(1800799024);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?GB4H8wFrUml8TAkniby1bicXwu2ln3Sn8iP5kf/t2CZd02u5ZphwiZ+ihR3O?=
+ =?us-ascii?Q?X1YAC0FMtNG22y6Ek+WWppnx3LOa5zdw3Y4w/qQ0h23VzuclLiLv8ywhHgGa?=
+ =?us-ascii?Q?djGAoUhT5/wuuz2V8JGD7VemJUB8dELv69G8doVkqMLHrjijfA/YzQ5gg5BU?=
+ =?us-ascii?Q?j/E8ij+mxedCtrQTrg+uqoLJy9yJp48zva8jFy612S0xUAhJSlfN3oEk6Ulr?=
+ =?us-ascii?Q?3v35/C0kko7wdpxDV5ru9m+ybsSnWjUR/z87dV93fb4BLKvKAMuoONmiRcgg?=
+ =?us-ascii?Q?iozEzBJHkMrkxJwTV6ydQakiO2wec1SgaA8ADTX29hIKLhdZ6s8QujykkxBS?=
+ =?us-ascii?Q?+wYk8NyxIUf3PcaWwYESv+8A5JjKRsp4ZrL4kDJE2vQyrWwEQDZ2nSpkCKof?=
+ =?us-ascii?Q?IL6yVUqyi+WClAMF64yyDvrV+BDXNzdK6rdVXVzT6LPmral9t1UOJ/C60RIZ?=
+ =?us-ascii?Q?KchrAOZuScYnggqIZy3xnxPmSm0d+QvGhhl73c8cS/hzKtVQZucXQp+o68Mf?=
+ =?us-ascii?Q?CGqR6kEUixFuH+u1631WVWJvYTOhZCTZTusN37ODA7ACiHm6etcCoqgUovI4?=
+ =?us-ascii?Q?ZAp96kJKQuOs+oJS0jRbVY2fCrPV88kNjjwxDu9NmKunDpvTFe8Nnhmu6UjC?=
+ =?us-ascii?Q?FlhPkt09u5RmbxUXabB93Vutrj0lVAYYobfb7Phabau3lG8l+MtLJ3VXF14H?=
+ =?us-ascii?Q?0SLsL5sSXw1hOFBZOwrEHozVPKgIJAvzj0Zz8s2XULNe0tyQVOstj2zTV+fM?=
+ =?us-ascii?Q?gxjR/WJqvkiiEA+dcjdgny5tNXW7oo8jqiK3bQwZjugR+WkiP/U2GjY0V5xE?=
+ =?us-ascii?Q?U7HRlA4ZjBQlppHoD7G4PBTHuCYnizLQxfZJj55QM7Two53ko+gAVjr4bNo/?=
+ =?us-ascii?Q?h9pod1VG5iM+n0VkdkLEcSlgiUic8I1Gs0SUcUfU6nzVKDgOLuJj08ay5IYY?=
+ =?us-ascii?Q?LYgkdqn8/U0HPv4oSoSBuaFq9DoYe8g/FDLM0AR1IyQRg+n3Hw0+La6P7GtG?=
+ =?us-ascii?Q?LMQ/B9vJz5VbWXq+ZS9fmpMDW/J/DiU7KTdDoaeTCnns3kJzyzzSttfFN16K?=
+ =?us-ascii?Q?aXkM9rSvoqZfG6XHafIgQStQ9GgRd+dBEs7+Lfpe/39+FSx6psUd1eXqFP6h?=
+ =?us-ascii?Q?FrqwrZ+ps61z1M9qMrx0P/uUOBVcjfhwotj0jVThQtF+T/SY4p8FDqoTPmpD?=
+ =?us-ascii?Q?3VEbHBt/bpZ7ubw2lPe0W3T3I9/lsIKyzLLHSiutUYyFG25tmHHYi1AYuhWu?=
+ =?us-ascii?Q?vjVQhnPm4XKsilb6P7ZnkVqIQdU90SYHcF/P9Xhn+rLWs7yUwjNmNYT7Elq5?=
+ =?us-ascii?Q?2Zj/tAON39LvosquHBrIMEJXuKT8475EaH3l5FVDsN0Ry0x71gRkkVSMptoK?=
+ =?us-ascii?Q?ijnki9EzA4wxBwsH+9wzZxvAjmSS2d1rls8cBoWRwMC+pxrrmbUkREPU9YEL?=
+ =?us-ascii?Q?utbEY9CxdHVpVV8OQS9gcsuH2x05tjgZrjWtTGOb5dee86DQ4rRU2LXBVdwi?=
+ =?us-ascii?Q?2cjsHsmlKhr1CNirxpTN4cZc+c6pcDMcwKLtdaTGpEJ5xCZWEH2CZ665MBav?=
+ =?us-ascii?Q?GAvuKwXUWVonlfuwWE4=3D?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 44b33664-874a-4945-9053-08dde17ed3f4
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB8659.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Aug 2025 13:21:39.8066
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: /FSJVDdVJlnR2p9pcrp8P8K9Q0/6TOBFsskBcLSzEX0Grbm4BtSiXKnG0bBYZ5MM
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV3PR12MB9354
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250822_143155_951125_31AFCCA0 
-X-CRM114-Status: GOOD (  11.91  )
+X-CRM114-CacheID: sfid-20250822_062200_395514_E26CCA6C 
+X-CRM114-Status: GOOD (  10.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,77 +189,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Chen-Yu,
+On Fri, Aug 22, 2025 at 09:45:28AM +0000, Tian, Kevin wrote:
+> Thanks for the background. btw is it technically impossible or just
+> not worth of the extra software complexity for no value? 
 
-kernel test robot noticed the following build warnings:
+Unsupported by HW. It cannot mix S2 and S1 formats on
+SSIDs. If SSID is in use then all must be S1.
 
-[auto build test WARNING on broonie-sound/for-next]
-[also build test WARNING on broonie-spi/for-next linus/master v6.17-rc2 next-20250822]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+> e.g. if maintaining two page tables (S1/S2 formats) with exact same
+> mappings, does SMMU allow smooth transition between two modes w/o
+> breaking in-fly DMAs? 
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Chen-Yu-Tsai/ASoC-mediatek-common-Switch-to-for_each_available_child_of_node_scoped/20250822-142918
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
-patch link:    https://lore.kernel.org/r/20250822062738.2632746-1-wenst%40chromium.org
-patch subject: [PATCH] ASoC: mediatek: common: Switch to for_each_available_child_of_node_scoped()
-config: x86_64-buildonly-randconfig-001-20250823 (https://download.01.org/0day-ci/archive/20250823/202508230528.DeD3hVns-lkp@intel.com/config)
-compiler: gcc-12 (Debian 12.2.0-14+deb12u1) 12.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250823/202508230528.DeD3hVns-lkp@intel.com/reproduce)
+It could and there is SW support for that..
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202508230528.DeD3hVns-lkp@intel.com/
+> but probably keeping two page tables in-sync in transition is
+> already a problem w/o proper locking in map/unmap...
 
-All warnings (new ones prefixed by >>):
+Yes, plus the doubling the memory. It is not worthwile there is really
+very little advantange to the S2 format.
 
-   sound/soc/mediatek/common/mtk-soundcard-driver.c: In function 'parse_dai_link_info':
->> sound/soc/mediatek/common/mtk-soundcard-driver.c:92:29: warning: unused variable 'sub_node' [-Wunused-variable]
-      92 |         struct device_node *sub_node;
-         |                             ^~~~~~~~
-
-
-vim +/sub_node +92 sound/soc/mediatek/common/mtk-soundcard-driver.c
-
-c0e7390e6d3f42b Trevor Wu    2023-05-26   88  
-4302187d955f166 Trevor Wu    2023-01-16   89  int parse_dai_link_info(struct snd_soc_card *card)
-4302187d955f166 Trevor Wu    2023-01-16   90  {
-4302187d955f166 Trevor Wu    2023-01-16   91  	struct device *dev = card->dev;
-4302187d955f166 Trevor Wu    2023-01-16  @92  	struct device_node *sub_node;
-4302187d955f166 Trevor Wu    2023-01-16   93  	struct snd_soc_dai_link *dai_link;
-4302187d955f166 Trevor Wu    2023-01-16   94  	const char *dai_link_name;
-4302187d955f166 Trevor Wu    2023-01-16   95  	int ret, i;
-4302187d955f166 Trevor Wu    2023-01-16   96  
-4302187d955f166 Trevor Wu    2023-01-16   97  	/* Loop over all the dai link sub nodes */
-bd1311e421261f6 Chen-Yu Tsai 2025-08-22   98  	for_each_available_child_of_node_scoped(dev->of_node, sub_node) {
-4302187d955f166 Trevor Wu    2023-01-16   99  		if (of_property_read_string(sub_node, "link-name",
-bd1311e421261f6 Chen-Yu Tsai 2025-08-22  100  					    &dai_link_name))
-4302187d955f166 Trevor Wu    2023-01-16  101  			return -EINVAL;
-4302187d955f166 Trevor Wu    2023-01-16  102  
-4302187d955f166 Trevor Wu    2023-01-16  103  		for_each_card_prelinks(card, i, dai_link) {
-4302187d955f166 Trevor Wu    2023-01-16  104  			if (!strcmp(dai_link_name, dai_link->name))
-4302187d955f166 Trevor Wu    2023-01-16  105  				break;
-4302187d955f166 Trevor Wu    2023-01-16  106  		}
-4302187d955f166 Trevor Wu    2023-01-16  107  
-bd1311e421261f6 Chen-Yu Tsai 2025-08-22  108  		if (i >= card->num_links)
-4302187d955f166 Trevor Wu    2023-01-16  109  			return -EINVAL;
-4302187d955f166 Trevor Wu    2023-01-16  110  
-4302187d955f166 Trevor Wu    2023-01-16  111  		ret = set_card_codec_info(card, sub_node, dai_link);
-bd1311e421261f6 Chen-Yu Tsai 2025-08-22  112  		if (ret < 0)
-4302187d955f166 Trevor Wu    2023-01-16  113  			return ret;
-c0e7390e6d3f42b Trevor Wu    2023-05-26  114  
-c0e7390e6d3f42b Trevor Wu    2023-05-26  115  		ret = set_dailink_daifmt(card, sub_node, dai_link);
-bd1311e421261f6 Chen-Yu Tsai 2025-08-22  116  		if (ret < 0)
-c0e7390e6d3f42b Trevor Wu    2023-05-26  117  			return ret;
-c0e7390e6d3f42b Trevor Wu    2023-05-26  118  	}
-4302187d955f166 Trevor Wu    2023-01-16  119  
-4302187d955f166 Trevor Wu    2023-01-16  120  	return 0;
-4302187d955f166 Trevor Wu    2023-01-16  121  }
-4302187d955f166 Trevor Wu    2023-01-16  122  EXPORT_SYMBOL_GPL(parse_dai_link_info);
-4302187d955f166 Trevor Wu    2023-01-16  123  
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Jason
 
