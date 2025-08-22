@@ -4,80 +4,154 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99ECACA0FE1
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Aug 2025 06:43:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1780CA0EFA
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Aug 2025 08:19:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PMS7dId7xvceyvozFsD7pkdmhYgaYNLQjEILXRMN06o=; b=ZuYQQiCBQzepLTqUuOzE090Sxr
-	uQ2+7LwZk+pbCSgFNRVWyyIe2Was7DMgn8BgqkWw6NYjnzThe677LWui1w3v1G5mZfzOv9yb1rvUD
-	PCilugxR53GOgkXYbmwxsK1fycghwJH6FOakQ+4bTnCPk3JDiNscKrAwMxqU83xced1SAxwZ7d6QA
-	lwyY4DOPJCt1pmElFcrrJCRqdz97/PRV1HbsbsoVvphqxLIcG56Fu0nH6rEAnEGMKLINKR9jyqu4f
-	4LkjuL+NAIIVfACQc0WVFhMK318EqsZktzRfFRU0aNp7IMm9yHmYOsT4v/i2rrUnc/0wAgdko5DON
-	bB5MfZNQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XqsAVqx2D9fPf18hSHoZHOjMqFsEIFJD0EpmkHZBGjU=; b=d+Z8IWn5OtG9YQBxkrPJNeYk4w
+	AFHmxty7jcZRI4fQT2aSSztYtwmwyR/jePZ7u3Isx42seCH8EwUt0/I9pW1oshJTwEinARthodQmz
+	wPB0WGb31Tmiggw/1vi/5BiuESNOaPSyYzzK/V7DJfiXJE4/hfcI4l2mDaSdl7rLUMG9fZyMnYY59
+	jPp9jTitQajRaykWydNsdM062ttrjWkAoblufA6dclD/TDLLF7aNQg3BKqdcb1mu1I3w87xOGvRVf
+	LXcQQGtvYT+jVQcQLw4TZhQToy7LMrAVOVNSnMrvvtxtTcCIqyKjQEe+7dgabjEOKU3TacUzvgk/4
+	Y0KA9QdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uphy5-00000004FS7-3Pc2;
-	Sat, 23 Aug 2025 06:43:13 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1upjTG-00000004KXU-0ZSM;
+	Sat, 23 Aug 2025 08:19:30 +0000
+Received: from mail-mw2nam12on20614.outbound.protection.outlook.com ([2a01:111:f403:200a::614] helo=NAM12-MW2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upWdL-00000003JwA-3UIx;
-	Fri, 22 Aug 2025 18:37:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1755887822;
-	bh=vr9BwkfpPl2aezdbMUSWAGBDTvysFxMaRfBw43Yz+S8=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=pRppNzg5s4uapPjn7YtBbfZGGZIxmaNVknnJRDYFOPwrbTtTsQozz/rDRL8rPzVIM
-	 E24A4TrF/3enIMPnbB6oP8CqmcL/1GVeH859zU4hLJ8/MLfagz2R2G2hjwXTO6ASmC
-	 Tbn/EifM5GU5s00ogR/4pDkaEJV0mx0Kuc3ke5YQ3ejOwv86jURkfdA10pRYixCXk9
-	 eHN0iPOLeIRxB6YuT7kChlJJXqczOUA7TpbGnv6x9+0PnJ8OIkpVBfdzAKubptLFux
-	 f5vlO8VPJyRdVR7nHYxhBy5P9mLz6MDZ7hsaV7IkR5nBk/aCTFnXTB2EvkNTeCHqTj
-	 XylT6vVd2R/wQ==
-Received: from [127.0.1.1] (unknown [IPv6:2600:4041:5b1a:9400:62f0:406e:ac79:4a96])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4B04D17E37C2;
-	Fri, 22 Aug 2025 20:36:56 +0200 (CEST)
-From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Fri, 22 Aug 2025 14:36:14 -0400
-Subject: [PATCH RFC 4/5] drm/mediatek: ccorr: Support post-blend color
- pipeline API
+	id 1upWrb-00000003Kgo-219M;
+	Fri, 22 Aug 2025 18:51:48 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=pTWsjEZ+/0EndzCwcvH9w6ArGbgEdDKdzl8eSaAz9xg9deOnQc8GD6vZfr57eVu6Bs3eIqxRb1/aKZVR8mQk87Vd42HkAZdR7FPEh5VJA7/+VANH6thE6t5o6NbjgL2dnmDtctI8CYRzq+M0F33TGcTxvuuzA8jnMV+zVHE+xyR5KQ39J/DTbRHlmguo9vtaeLQ35RRX2lG821oyXn2J5xZKnRm4uIesM3dTDf5UOLLVO3qXZzamVx6PcTv3y6ZpzvHWausFWi/jSXOgG0MykGgncousvTyAYgi3ixAd1HfwOq4mB+8fj+N9w9L6Mlmd2p3ZoB+SpHg6G5pBcz72fg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=XqsAVqx2D9fPf18hSHoZHOjMqFsEIFJD0EpmkHZBGjU=;
+ b=c27a7TbfigbI4OkO9I8N9C2JO/JOKOvX1ua9M5DKDv2HlqcBo2Y60l2KGgUMt324hS/s14TETlul9zfFaTxIJ49oTaBfsp/pXg+wUhpWgf0BaEV96nG3JLOeNv4ox8WP/v3UAPppt/vS3WYqva09z/J6epa/xrf8Xb87p4DUIQpARhkro8GypH7dzeTza4AC2VdylJfwMW/p1/JSBMHVWAiV4ueuHq+Z33ckc+uYJT1EuI411KVeHcQSD/a8jqEca/jdpwrvj5uBqiGhX3eF0pDW58+A1PzcFTmtnM6IOmXaedeFkIVPpcxycPVrGiyOsjoTgcsm9l10gC9iwp9U9w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.161) smtp.rcpttodomain=lists.linux.dev smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=XqsAVqx2D9fPf18hSHoZHOjMqFsEIFJD0EpmkHZBGjU=;
+ b=RjEAWOvJg8Fu0AGHqv+UtRlOiU6BrBAXL0eiEP9HETxmxyKg1FirCZ3DCqgr2cNRpIfkSFWJ5Tcuvwz4ZuvfGBbaorj1SbO/ohnpal6UNvxe+M2esQ6e1kLOf+j16B3QpDgZ9HBBt+B4ICzLRDA+RBPk8M9EStpY8PpHC4E+BgTk0yfYDtEhXzh0b+GriCuEgVVIrkfM6Ex8ybGYWxbJcRvtwvrt41NhRhhCdwK1PkSaPrGjmeyhia6RiKHDaSLLE8NulPDTtQtAKIg1UHce/nDRzUrnoGdL7kiSAIrKkkD1YChuuL4JODJbaB1gDrNaMWlJBB4zPksOjW+AkUW+zg==
+Received: from MW4PR02CA0003.namprd02.prod.outlook.com (2603:10b6:303:16d::30)
+ by DS4PR12MB9658.namprd12.prod.outlook.com (2603:10b6:8:280::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9052.14; Fri, 22 Aug
+ 2025 18:51:24 +0000
+Received: from CO1PEPF000042AA.namprd03.prod.outlook.com
+ (2603:10b6:303:16d:cafe::92) by MW4PR02CA0003.outlook.office365.com
+ (2603:10b6:303:16d::30) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9052.18 via Frontend Transport; Fri,
+ 22 Aug 2025 18:51:23 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
+ smtp.mailfrom=nvidia.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.161) by
+ CO1PEPF000042AA.mail.protection.outlook.com (10.167.243.39) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9052.8 via Frontend Transport; Fri, 22 Aug 2025 18:51:23 +0000
+Received: from rnnvmail204.nvidia.com (10.129.68.6) by mail.nvidia.com
+ (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Fri, 22 Aug
+ 2025 11:51:02 -0700
+Received: from rnnvmail203.nvidia.com (10.129.68.9) by rnnvmail204.nvidia.com
+ (10.129.68.6) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Fri, 22 Aug
+ 2025 11:51:01 -0700
+Received: from Asurada-Nvidia (10.127.8.12) by mail.nvidia.com (10.129.68.9)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14 via Frontend
+ Transport; Fri, 22 Aug 2025 11:50:59 -0700
+Date: Fri, 22 Aug 2025 11:50:58 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
+CC: Ethan Zhao <etzhao1900@gmail.com>, <robin.murphy@arm.com>,
+	<joro@8bytes.org>, <bhelgaas@google.com>, <will@kernel.org>,
+	<robin.clark@oss.qualcomm.com>, <yong.wu@mediatek.com>,
+	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
+	<thierry.reding@gmail.com>, <vdumpa@nvidia.com>, <jonathanh@nvidia.com>,
+	<rafael@kernel.org>, <lenb@kernel.org>, <kevin.tian@intel.com>,
+	<yi.l.liu@intel.com>, <baolu.lu@linux.intel.com>,
+	<linux-arm-kernel@lists.infradead.org>, <iommu@lists.linux.dev>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-tegra@vger.kernel.org>,
+	<linux-acpi@vger.kernel.org>, <linux-pci@vger.kernel.org>,
+	<patches@lists.linux.dev>, <pjaroszynski@nvidia.com>, <vsethi@nvidia.com>,
+	<helgaas@kernel.org>
+Subject: Re: [PATCH v3 5/5] pci: Suspend iommu function prior to resetting a
+ device
+Message-ID: <aKi8EqEp1DKG+h38@Asurada-Nvidia>
+References: <cover.1754952762.git.nicolinc@nvidia.com>
+ <3749cd6a1430ac36d1af1fadaa4d90ceffef9c62.1754952762.git.nicolinc@nvidia.com>
+ <550635db-00ce-410e-add0-77c1a75adb11@gmail.com>
+ <aKTzq6SLGB22Xq5b@Asurada-Nvidia>
+ <20250821130741.GL802098@nvidia.com>
+ <aKgPr3mUcIsd1iuT@Asurada-Nvidia>
+ <20250822140821.GE1311579@nvidia.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20250822-mtk-post-blend-color-pipeline-v1-4-a9446d4aca82@collabora.com>
-References: <20250822-mtk-post-blend-color-pipeline-v1-0-a9446d4aca82@collabora.com>
-In-Reply-To: <20250822-mtk-post-blend-color-pipeline-v1-0-a9446d4aca82@collabora.com>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Alex Hung <alex.hung@amd.com>, wayland-devel@lists.freedesktop.org, 
- harry.wentland@amd.com, leo.liu@amd.com, ville.syrjala@linux.intel.com, 
- pekka.paalanen@collabora.com, contact@emersion.fr, mwen@igalia.com, 
- jadahl@redhat.com, sebastian.wick@redhat.com, shashank.sharma@amd.com, 
- agoins@nvidia.com, joshua@froggi.es, mdaenzer@redhat.com, aleixpol@kde.org, 
- xaver.hugl@gmail.com, victoria@system76.com, uma.shankar@intel.com, 
- quic_naseer@quicinc.com, quic_cbraga@quicinc.com, quic_abhinavk@quicinc.com, 
- marcan@marcan.st, Liviu.Dudau@arm.com, sashamcintosh@google.com, 
- chaitanya.kumar.borah@intel.com, louis.chauvet@bootlin.com, 
- mcanal@igalia.com, kernel@collabora.com, daniels@collabora.com, 
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
- Simona Vetter <simona.vetter@ffwll.ch>
-X-Mailer: b4 0.14.2
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20250822140821.GE1311579@nvidia.com>
+X-NV-OnPremToCloud: ExternallySecured
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CO1PEPF000042AA:EE_|DS4PR12MB9658:EE_
+X-MS-Office365-Filtering-Correlation-Id: 2c9d1356-26f5-4af7-21e8-08dde1ace464
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|36860700013|1800799024|7416014|82310400026|376014;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?F9NqNtOQk/XokkfZEOw6E09rWDMnPzWrkLZ6Zy26tNzb2zWG+yZ4ZOOGIrRy?=
+ =?us-ascii?Q?OOVS2vR4nr+G1oykLPvNivO7z6tk1VXYdCJ1W18Bl/pdQiLWYKMpn3rPAyrm?=
+ =?us-ascii?Q?uaC6jKfNyV/fZnNxixvPafcSanajs0v6R09XpmTqhknpqolCjSX4CU7tpPGk?=
+ =?us-ascii?Q?oSKOTdHpk/VbaqFmPqpAsyKgR2AnNBP1s5rB3gNFhuKd2ZigIhztk4kcbHeU?=
+ =?us-ascii?Q?OVw3HQoBtfXHjyG3b/dZdqLsLewLy662iLMl1sPof8pehXLKizpbVpH38Eed?=
+ =?us-ascii?Q?1Mw/4RGVExlN9DFw1AsZADwsaTuTbveoG5mY9D67fhWqeok+kP94xTPHm26+?=
+ =?us-ascii?Q?hJyxjqpviUuHRH2uinFZ8u3yrk8ARIm3WfVMI8PCiO8HBJ4qnUK624XmiYa9?=
+ =?us-ascii?Q?jK2+KEtGG0ISahiZb21ThzLHYb1yeCeJ2Q3InPDinCOYXxRe5jUJekJq5jxR?=
+ =?us-ascii?Q?TX7L27YG7IWbrhhg6R7wOMrgO+0UL638+CiQEzHfhCF6k8hpwoP0YeM8nkl5?=
+ =?us-ascii?Q?w6u0rgJNaAG9tfZL/ayj8apoNyBgh9FDhw3kkFBBYJ7kmSde98fHd6QqFB8C?=
+ =?us-ascii?Q?hP9mNsfr2MP3g04ziDFRHFGZgpGOtsVV/YRcVEznkCLpmVU3cTHazsffRlsm?=
+ =?us-ascii?Q?cLuYSyUBz3e1ApMnrsTQiq0vwwX5I6Pw8NeL2L756Fmute1bWDPcsK8Vb+VK?=
+ =?us-ascii?Q?BvH9scCS/MmC5zHUpP7yYy7jgknbU/oSWCmxhvRoUT3YrEjQEYALeDCVPlV9?=
+ =?us-ascii?Q?4CghCW1RdptgsTmxzQ2tcctLOUYKLww6GZgx6yD+EzCmqcU5p1BMQ1GsiLJ1?=
+ =?us-ascii?Q?wRUUtFfzH+lAoSqoOwOXxqS5EO7PPttMbQoKsiXy7TZ+vYBben/2fFIFg7yn?=
+ =?us-ascii?Q?LhjZEG8UdWJVFZdFCyMmVWSoWovBtJCZ0MX49nu2lNxPKfzyMFIy45WjNBQQ?=
+ =?us-ascii?Q?fniVgHXEiK+Z//uQt41ySM0rRAIE6gkQna/qIn71Q1rzjZoY4F30bKuZ4OK6?=
+ =?us-ascii?Q?Xn0PHAzPmhjLQ3JL43pam/dIfu3UPm1zh9cE24Vn+Y53WfrN/QvptCGxUKvu?=
+ =?us-ascii?Q?UBte+0EYMC6QFf+b9Bebp7bgW4rnURFPlJz1JJ8+zkixrIMNdrLqXD99eDSo?=
+ =?us-ascii?Q?qzmWtmeQZHAInMnBA7BMhtVoa/jxuKMe/BKqSjuhJ7FmYbjtygKyYpqHBnFY?=
+ =?us-ascii?Q?ne9eeGVNIaSG6JVMcyMmSH7OriOQI26hs2P+vm1zXvAQf4SphbH5BPuZcojq?=
+ =?us-ascii?Q?5FH7h5pt61bWEWF4sWawU0I0dgakZHD8gpw7RjC7HKWldEqJjWpFw9WP61Oe?=
+ =?us-ascii?Q?NDZSqKHn2sLb54zOayn6YfsCbZYV72yskXUjBU8ehdWjrZdTquFChsU/Av9e?=
+ =?us-ascii?Q?FgL8e1NbhFB6U8RihNEASIrZBZEklNQH9xYtpvUVNU2fJCSWgp4UtAlNMlyF?=
+ =?us-ascii?Q?qNqZqSIzERLtTvX478NZ5iSq9y4llOn/7i/oplz+MZm44nH4Gz7Y/gdqDk89?=
+ =?us-ascii?Q?qka5toPAmz3+MnqmSNI9mGWa9TN9WeYWtDY8?=
+X-Forefront-Antispam-Report: CIP:216.228.117.161;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc6edge2.nvidia.com;CAT:NONE;SFS:(13230040)(36860700013)(1800799024)(7416014)(82310400026)(376014);DIR:OUT;SFP:1101;
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Aug 2025 18:51:23.7474
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2c9d1356-26f5-4af7-21e8-08dde1ace464
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.117.161];Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: CO1PEPF000042AA.namprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS4PR12MB9658
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250822_113704_018136_2098DD75 
-X-CRM114-Status: GOOD (  19.27  )
+X-CRM114-CacheID: sfid-20250822_115147_526650_360B74FD 
+X-CRM114-Status: GOOD (  29.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,188 +166,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Implement the ctm_set_color_pipeline DDP component function to allow
-configuring the CTM through the color pipeline API.
+On Fri, Aug 22, 2025 at 11:08:21AM -0300, Jason Gunthorpe wrote:
+> On Thu, Aug 21, 2025 at 11:35:27PM -0700, Nicolin Chen wrote:
+> > On Thu, Aug 21, 2025 at 10:07:41AM -0300, Jason Gunthorpe wrote:
+> > > On Tue, Aug 19, 2025 at 02:59:07PM -0700, Nicolin Chen wrote:
+> > > >  c) multiple pci_devs with their own RIDs
+> > > > 
+> > > >     In this case, either FLR or IOMMU only resets the PF. That
+> > > >     being said, VFs might be affected since PF is resetting?
+> > > >     If there is an issue, I don't see it coming from the IOMMU-
+> > > >     level reset..
+> > > 
+> > > It would still allow the ATS issue from the VF side. The VF could be
+> > > pushing an invalidation during the PF reset that will get clobbered.
+> > > 
+> > > I haven't fully checked but I think Linux doesn't really (easially?)
+> > > allow resetting a PF while a VF is present...
+> > 
+> > Hmm, what if the PF encountered some fault? Does Linux have a choice
+> > not to reset PF?
+> 
+> Upon more reflect I guess outside VFIO I seem to remember the SRIOV
+> reset to the PFs will clobber the VFs too and then restore the SRIOV
+> configuration in config space to bring them back.
 
-The color pipeline API only defines a 3x4 matrix, while the driver
-currently only supports setting the coefficients for a 3x3 matrix.
-However the underlying hardware does support setting the offset
-coefficients that make up a 3x4 matrix, so implement support for setting
-them so the 3x4 matrix structure for the API can be used as is.
+Yea, I see ci_restore_iov_state() called in pci_restore_state().
 
-Also make sure to enable or disable the CTM function depending on
-whether the block should be bypassed or not.
+> > > Arguably if the PF is reset the VFs should have their translations
+> > > blocked too.
+> > 
+> > Yea, that sounds plausible to me. But, prior to that (an IOMMU-level
+> > reset), should VFs be first reset at the PCI level?
+> 
+> PF reset of a SRIOV PF disables the VFs and effectively resets them
+> already.
 
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
----
- drivers/gpu/drm/mediatek/mtk_ddp_comp.c   |   3 +-
- drivers/gpu/drm/mediatek/mtk_disp_ccorr.c | 100 ++++++++++++++++++++++++++----
- drivers/gpu/drm/mediatek/mtk_disp_drv.h   |   3 +-
- 3 files changed, 93 insertions(+), 13 deletions(-)
+Yea, I was expecting something like a SW reset routine, for each VF,
+which would invoke iommu_dev_reset_prepare/_done() individually.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-index ac6620e10262e3b9a4a82093f13c3101f79520de..c873b527423f51733058cbc3d0ad2a719e26bfe1 100644
---- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-@@ -284,7 +284,8 @@ static const struct mtk_ddp_comp_funcs ddp_ccorr = {
- 	.config = mtk_ccorr_config,
- 	.start = mtk_ccorr_start,
- 	.stop = mtk_ccorr_stop,
--	.ctm_set = mtk_ccorr_ctm_set,
-+	.ctm_set = mtk_ccorr_ctm_set_legacy,
-+	.ctm_set_color_pipeline = mtk_ccorr_ctm_set_color_pipeline,
- };
- 
- static const struct mtk_ddp_comp_funcs ddp_color = {
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-index 10d60d2c2a568ebbe09f90e8f42a73e4c2366662..f69a7d8b97f741f0c5461e8cd6f38f70b0690e7e 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-@@ -28,6 +28,11 @@
- #define DISP_CCORR_COEF_2			0x0088
- #define DISP_CCORR_COEF_3			0x008C
- #define DISP_CCORR_COEF_4			0x0090
-+#define DISP_CCORR_OFFSET_0			0x0100
-+#define CCORR_OFFSET_EN					BIT(31)
-+#define DISP_CCORR_OFFSET_1			0x0104
-+#define DISP_CCORR_OFFSET_2			0x0108
-+#define DISP_CCORR_OFFSET_MASK				GENMASK(26, 14)
- 
- struct mtk_disp_ccorr_data {
- 	u32 matrix_bits;
-@@ -101,25 +106,48 @@ static u16 mtk_ctm_s31_32_to_s1_n(u64 in, u32 n)
- 	return r;
- }
- 
--void mtk_ccorr_ctm_set(struct device *dev, struct drm_crtc_state *state)
-+static void mtk_ccorr_ctm_set(struct device *dev, struct cmdq_pkt *cmdq_pkt,
-+			      void *ctm, bool ctm_3x4)
- {
- 	struct mtk_disp_ccorr *ccorr = dev_get_drvdata(dev);
--	struct drm_property_blob *blob = state->ctm;
--	struct drm_color_ctm *ctm;
--	const u64 *input;
-+	u64 coeffs_in[9];
-+	u64 coeffs_offset_in[3];
- 	uint16_t coeffs[9] = { 0 };
-+	uint16_t coeffs_offset[3];
- 	int i;
--	struct cmdq_pkt *cmdq_pkt = NULL;
- 	u32 matrix_bits = ccorr->data->matrix_bits;
-+	u32 val;
-+
-+	if (ctm_3x4) {
-+		struct drm_color_ctm_3x4 *ctm_3x4 = (struct drm_color_ctm_3x4 *)ctm;
-+
-+		coeffs_in[0] = ctm_3x4->matrix[0];
-+		coeffs_in[1] = ctm_3x4->matrix[1];
-+		coeffs_in[2] = ctm_3x4->matrix[2];
-+		coeffs_in[3] = ctm_3x4->matrix[4];
-+		coeffs_in[4] = ctm_3x4->matrix[5];
-+		coeffs_in[5] = ctm_3x4->matrix[6];
-+		coeffs_in[6] = ctm_3x4->matrix[8];
-+		coeffs_in[7] = ctm_3x4->matrix[9];
-+		coeffs_in[8] = ctm_3x4->matrix[10];
-+
-+		coeffs_offset_in[0] = ctm_3x4->matrix[3];
-+		coeffs_offset_in[1] = ctm_3x4->matrix[7];
-+		coeffs_offset_in[2] = ctm_3x4->matrix[11];
-+	} else {
-+		struct drm_color_ctm *ctm_3x3 = (struct drm_color_ctm *)ctm;
- 
--	if (!blob)
--		return;
--
--	ctm = (struct drm_color_ctm *)blob->data;
--	input = ctm->matrix;
-+		for (i = 0; i < ARRAY_SIZE(coeffs_in); i++)
-+			coeffs_in[i] = ctm_3x3->matrix[i];
-+	}
- 
- 	for (i = 0; i < ARRAY_SIZE(coeffs); i++)
--		coeffs[i] = mtk_ctm_s31_32_to_s1_n(input[i], matrix_bits);
-+		coeffs[i] = mtk_ctm_s31_32_to_s1_n(coeffs_in[i], matrix_bits);
-+
-+	if (ctm_3x4) {
-+		for (i = 0; i < ARRAY_SIZE(coeffs_offset); i++)
-+			coeffs_offset[i] = mtk_ctm_s31_32_to_s1_n(coeffs_offset_in[i], matrix_bits);
-+	}
- 
- 	mtk_ddp_write(cmdq_pkt, coeffs[0] << 16 | coeffs[1],
- 		      &ccorr->cmdq_reg, ccorr->regs, DISP_CCORR_COEF_0);
-@@ -131,6 +159,56 @@ void mtk_ccorr_ctm_set(struct device *dev, struct drm_crtc_state *state)
- 		      &ccorr->cmdq_reg, ccorr->regs, DISP_CCORR_COEF_3);
- 	mtk_ddp_write(cmdq_pkt, coeffs[8] << 16,
- 		      &ccorr->cmdq_reg, ccorr->regs, DISP_CCORR_COEF_4);
-+
-+	if (ctm_3x4) {
-+		val = CCORR_OFFSET_EN;
-+		val |= FIELD_PREP(DISP_CCORR_OFFSET_MASK, coeffs_offset[0]);
-+		mtk_ddp_write(cmdq_pkt, val, &ccorr->cmdq_reg,
-+			      ccorr->regs, DISP_CCORR_OFFSET_0);
-+		val = FIELD_PREP(DISP_CCORR_OFFSET_MASK, coeffs_offset[1]);
-+		mtk_ddp_write(cmdq_pkt, val, &ccorr->cmdq_reg,
-+			      ccorr->regs, DISP_CCORR_OFFSET_1);
-+		val = FIELD_PREP(DISP_CCORR_OFFSET_MASK, coeffs_offset[2]);
-+		mtk_ddp_write(cmdq_pkt, val, &ccorr->cmdq_reg,
-+			      ccorr->regs, DISP_CCORR_OFFSET_2);
-+	} else {
-+		mtk_ddp_write_mask(cmdq_pkt, 0, &ccorr->cmdq_reg,
-+				   ccorr->regs, DISP_CCORR_OFFSET_0,
-+				   CCORR_OFFSET_EN);
-+	}
-+
-+	mtk_ddp_write(cmdq_pkt, CCORR_ENGINE_EN, &ccorr->cmdq_reg,
-+		      ccorr->regs, DISP_CCORR_CFG);
-+}
-+
-+void mtk_ccorr_ctm_set_legacy(struct device *dev, struct drm_crtc_state *state)
-+{
-+	struct drm_property_blob *blob = state->ctm;
-+	struct cmdq_pkt *cmdq_pkt = NULL;
-+	struct drm_color_ctm *ctm;
-+
-+	if (!blob)
-+		return;
-+
-+	ctm = (struct drm_color_ctm *)blob->data;
-+
-+	mtk_ccorr_ctm_set(dev, cmdq_pkt, ctm, false);
-+}
-+
-+void mtk_ccorr_ctm_set_color_pipeline(struct device *dev, struct drm_color_ctm_3x4 *ctm)
-+{
-+	struct mtk_disp_ccorr *ccorr = dev_get_drvdata(dev);
-+	struct cmdq_pkt *cmdq_pkt = NULL;
-+
-+	/* Configure block to be bypassed */
-+	if (!ctm) {
-+		mtk_ddp_write_mask(cmdq_pkt, CCORR_RELAY_MODE, &ccorr->cmdq_reg,
-+				   ccorr->regs, DISP_CCORR_CFG,
-+				   CCORR_RELAY_MODE | CCORR_ENGINE_EN);
-+		return;
-+	}
-+
-+	mtk_ccorr_ctm_set(dev, cmdq_pkt, ctm, true);
- }
- 
- static int mtk_disp_ccorr_bind(struct device *dev, struct device *master,
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-index 679d413bf10be1e2fc4804a60a3fbe5d734614f6..ac84cf579150fd0535c79f43ad5942f8d412d450 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-@@ -22,7 +22,8 @@ void mtk_aal_gamma_set(struct device *dev, struct drm_crtc_state *state);
- void mtk_aal_start(struct device *dev);
- void mtk_aal_stop(struct device *dev);
- 
--void mtk_ccorr_ctm_set(struct device *dev, struct drm_crtc_state *state);
-+void mtk_ccorr_ctm_set_legacy(struct device *dev, struct drm_crtc_state *state);
-+void mtk_ccorr_ctm_set_color_pipeline(struct device *dev, struct drm_color_ctm_3x4 *ctm);
- int mtk_ccorr_clk_enable(struct device *dev);
- void mtk_ccorr_clk_disable(struct device *dev);
- void mtk_ccorr_config(struct device *dev, unsigned int w,
+Without that, iommu_dev_reset_prepare/_done() has to iterate all VFs
+internally and block them.
 
--- 
-2.47.2
+> But reaching out to mangle the translation of the VFs means you do
+> have to take care not to disrupt anything else the VF owning driver is
+> doing since it is fully unaware of this. Ie it could be reattaching to
+> something else concurrently.
 
+Hmm, and this is tricky now..
+
+The current version allows deferring the concurrent attach during a
+reset. But, as Kevin pointed out, we may have no choice but to fail
+any concurrent attach with -EBUSY, because a deferred attach might
+fail due to incompatibility triggering a WARN_ON only in done().
+
+This isn't likely a problem for PF, as we can expect its driver not
+to do an insane concurrent attach during a reset. But it would be a
+very sane case for a VF. So if its driver doesn't retry or defer an
+EBUSY-ed attach properly, it would not be restored successfully..
+
+It feels like we need a no-fail re-attach operation, or at least an
+unlikely-to-fail one. I recall years ago we tried a can_attach op
+to test the compatibility but it didn't get merged. Maybe we'd need
+it so that a concurrent attach can test compatibility, allowing the
+re-attach in iommu_dev_reset_done() to more likely succeed.
+
+Thanks
+Nicolin
 
