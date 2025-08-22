@@ -4,63 +4,156 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E98DCA0EED
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Aug 2025 11:48:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AC23CA0EED
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Aug 2025 14:17:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=s1pHHfLltzg/UHFRRnYuqRsjMVGKrPlNdMhRU2CJ2gQ=; b=IBt0+jp1soK61BMK/AuGj93GD3
-	7DQO/ty8xuBvXDxhn6UmKlcvzsktl9NndypuGEdBwjfTZgVDPMqZptIJ/wjawaXmBJBV8UZeSsA/S
-	K4Ee2BMzvt3hNG4CSmyA09Xj0+o5YygZZaNJzYf5bG9ifxAWCpcYYteA5QEFGflg38JRgm48dErXn
-	R3PrqW9HYni7+i95StngEsPWuQk0frJbzTvIR4XyaulfyEzkctue2HsGRzHWk3+nkRi+B+gB6SkAz
-	ar1c7lxlr15d4qUoDNFhlpqw0yjYzp/pYQXtKWFhZTEB3qBQIZyxSDgsED1itlj7Cy7toKKQHixqo
-	WSx7Spdg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BpIpCP4uEJEkXPDzjwAmYmnsbZihBAoiaiozj7nDRJw=; b=gELxZ6VmNU2SFEWgJkDq9g+BHr
+	CLhoqTF4FwtUHMi/fGGwm5K6NY0ycS9IHwNZFxB04NgPvODm1AAuhuL//3f27VzHhRSYR+m679tct
+	8oJuk12lzxcl+T4i0xN1ePNYM3YckDrLDtC4K0WzDezDCHDkWCJBo737ge8S1hrhA68aZgiI1ddMK
+	fMREutk1EkBHGOum2gP/KUan1c6rCQCxOjnFbc7G1Z9DIvjXRlXf1xjdAXFXjqBH2T6Yk+OKuXs1v
+	XFXdJZDeWhOrZ5sgvxHI6rdfKKb3HTrdGWy3JsOJF0JlGgCFFimYhqv4k+QSW+Br6b/+KhtiSQQFe
+	vKDeXwCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upQGP-00000002Nh1-2Omq;
-	Fri, 22 Aug 2025 11:48:57 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1upSaa-00000002jwO-2SZ4;
+	Fri, 22 Aug 2025 14:17:56 +0000
+Received: from mail-dm6nam12on20622.outbound.protection.outlook.com ([2a01:111:f403:2417::622] helo=NAM12-DM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upLzX-00000001n6H-1RIG;
-	Fri, 22 Aug 2025 07:15:16 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 0A0D140642;
-	Fri, 22 Aug 2025 07:15:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 89BA1C4CEF1;
-	Fri, 22 Aug 2025 07:15:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755846914;
-	bh=BNlQxuSAhPjRJrRi4WzjobkHZ2vrIrehRCDMMMdDoQc=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=hy7sZswW8PhkDnu2p+3K3qi/9hIzGTY5LbEYHigjajL4sr+NOQ8GldJoMUtSjhjps
-	 1DJxa1TyP4V2bU4qazJX70vXs2Z9YEHKhLTnu1kqqlO7UrzFhxxgst0qtcBHPOJkxz
-	 I0Tbak+PbZ1A+BYfekvOxs6NhVpQ6jVn7M9jv3YeI8SY0S655dAKMD2IPHj9yW2L18
-	 I36LQkgWMIs95gO+8jBN13CoT7QJrDPjvIAFnzs5LLLbBRg3LNVcY8AT1LOjEV5Uhl
-	 t4UBQsEdSuYY95C3ZNPyFf1C1LaHfpe030hSXlJDwiM/rS7g+Qux6gd2B8LPI6/0kP
-	 muY1b69POiL9w==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Fri, 22 Aug 2025 09:14:49 +0200
-Subject: [PATCH net-next v2 2/3] net: airoha: Add airoha_ppe_dev struct
- definition
+	id 1upK48-00000001Z74-1bUX;
+	Fri, 22 Aug 2025 05:11:53 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=AVsYzvzDDNOZQtSzeJ2FMw3sb+UQd2iHadyW3r/OLm6hwYBFW4ckL2wIwPRK8ldrrC7ubh3dJtdis1Gn/p8AfqfVGP7C4jtz5omgoyMe66LEi++709tOi747pnuPT+aGGfe3noqP+Dyw+HmwToWW1dmDJN+sCJr4I0/DlaZ0wxx/6q02WWCl7OMBROPgcVKzVyRV4Uk+rM8D4z12A1Q2gAi/JSv5Er+qag2LvQ/ajtLqtHZ9X6cgWy8b7Kq0bJwXrYXE424QFZyM/Wsbpp3dqVMW4IA1NUIIAwqChOT2iBGcuo3XPpu3GjYRV0Agr2I5KM9AEUIQIy+v/iTR1vx9+w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=BpIpCP4uEJEkXPDzjwAmYmnsbZihBAoiaiozj7nDRJw=;
+ b=JuqcZTyqevJlAj4S+tUhNAwsQX3S5gHZ9Hkw/aF1fN7r51cRwLpoad7R0GCDOwAKlb8iU7jBkHgmHPlXRLhqpTRyUXZN9mFNNvwElDQDz32ZmKIIsmoPG9lKfFDkLrC5cZ7eulW3jmkPFNjmR7oPfcbLFBKo8LIHSXHjyG/JfYf6gRtwFz/qiIIiv45zGP3xw/mouA4Bn5BsrV2bsdxUw5sKJPT50JJSYqd9thCIuYGzed6GipaXp09fuQg6ORZ6k76xyV6uH+ZWeNKyZLXDAkv775ueKwXrPx6pvbcyirF10eD38Hl66EpPEPq/zwm4n08L/GakgnNF84n0GRKFJw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.160) smtp.rcpttodomain=lists.linux.dev smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=BpIpCP4uEJEkXPDzjwAmYmnsbZihBAoiaiozj7nDRJw=;
+ b=OsCBn8KXcf3+Jqy6nTa3BjBHMbv9AQxS4nx7KXbq+GDi/jUun0mBHL8l3bhYdTKk9OvFqdQfN1b8bWQ4eA1ytG9y76WkQBKWsfCoGzeVdE3MdwEHhzKtHf//9lo9ABYDAn8qdWddc4W1tVN4TJggnf0Yu3XTL7tTjrRDG9kJF1QpvBd2sI67kgOedk2Cn2LzrdgqcpS2Oa7i3O4IyJq1sYDjAbEu2k2qFqYk3Bz/zdEVXS67RbeZrM7kgTOYaWY3jSW/VrSdseBZs7oyLUo4DBMv21geCcU8Gp12zKrAXzjpIQ5JUAqGOr3gy/TxgxJLXbsQVyLSVpcuIOv/6+VMCQ==
+Received: from IA4P220CA0004.NAMP220.PROD.OUTLOOK.COM (2603:10b6:208:558::8)
+ by IA1PR12MB7759.namprd12.prod.outlook.com (2603:10b6:208:420::16) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9052.15; Fri, 22 Aug
+ 2025 05:11:40 +0000
+Received: from BL02EPF00029929.namprd02.prod.outlook.com
+ (2603:10b6:208:558:cafe::bb) by IA4P220CA0004.outlook.office365.com
+ (2603:10b6:208:558::8) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9052.17 via Frontend Transport; Fri,
+ 22 Aug 2025 05:11:40 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
+ smtp.mailfrom=nvidia.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.160) by
+ BL02EPF00029929.mail.protection.outlook.com (10.167.249.54) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9052.8 via Frontend Transport; Fri, 22 Aug 2025 05:11:40 +0000
+Received: from rnnvmail205.nvidia.com (10.129.68.10) by mail.nvidia.com
+ (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Thu, 21 Aug
+ 2025 22:11:27 -0700
+Received: from rnnvmail204.nvidia.com (10.129.68.6) by rnnvmail205.nvidia.com
+ (10.129.68.10) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Thu, 21 Aug
+ 2025 22:11:27 -0700
+Received: from Asurada-Nvidia (10.127.8.12) by mail.nvidia.com (10.129.68.6)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14 via Frontend
+ Transport; Thu, 21 Aug 2025 22:11:26 -0700
+Date: Thu, 21 Aug 2025 22:11:24 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
+CC: <robin.murphy@arm.com>, <joro@8bytes.org>, <bhelgaas@google.com>,
+	<will@kernel.org>, <robin.clark@oss.qualcomm.com>, <yong.wu@mediatek.com>,
+	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
+	<thierry.reding@gmail.com>, <vdumpa@nvidia.com>, <jonathanh@nvidia.com>,
+	<rafael@kernel.org>, <lenb@kernel.org>, <kevin.tian@intel.com>,
+	<yi.l.liu@intel.com>, <baolu.lu@linux.intel.com>,
+	<linux-arm-kernel@lists.infradead.org>, <iommu@lists.linux.dev>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-tegra@vger.kernel.org>,
+	<linux-acpi@vger.kernel.org>, <linux-pci@vger.kernel.org>,
+	<patches@lists.linux.dev>, <pjaroszynski@nvidia.com>, <vsethi@nvidia.com>,
+	<helgaas@kernel.org>, <etzhao1900@gmail.com>
+Subject: Re: [PATCH v3 3/5] iommu: Add iommu_get_domain_for_dev_locked()
+ helper
+Message-ID: <aKf7/Fk/dT6UZWb9@Asurada-Nvidia>
+References: <a69557026b7e2353bae67104bbe6a88f0682305e.1754952762.git.nicolinc@nvidia.com>
+ <20250818143949.GO802098@nvidia.com>
+ <aKNhIr08fK+xIYcg@Asurada-Nvidia>
+ <20250818234241.GF802098@nvidia.com>
+ <aKQG9/skig6F8LdQ@Asurada-Nvidia>
+ <20250819125249.GG802098@nvidia.com>
+ <aKSyzI9Xz3J0nhfk@Asurada-Nvidia>
+ <20250821131304.GM802098@nvidia.com>
+ <aKc5niDWTwaCInH2@Asurada-Nvidia>
+ <20250821183704.GP802098@nvidia.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250822-airoha-en7581-wlan-rx-offload-v2-2-8a76e1d3fec2@kernel.org>
-References: <20250822-airoha-en7581-wlan-rx-offload-v2-0-8a76e1d3fec2@kernel.org>
-In-Reply-To: <20250822-airoha-en7581-wlan-rx-offload-v2-0-8a76e1d3fec2@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-X-Mailer: b4 0.14.2
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20250821183704.GP802098@nvidia.com>
+X-NV-OnPremToCloud: ExternallySecured
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BL02EPF00029929:EE_|IA1PR12MB7759:EE_
+X-MS-Office365-Filtering-Correlation-Id: 66b59cdb-8784-4321-6367-08dde13a60d2
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|82310400026|376014|7416014|1800799024|36860700013;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?PX08El9zB/iKwWcqDTmB5sNCDCRqqq42VGvhf1D8fWaBzr/5uhBB0haUloEQ?=
+ =?us-ascii?Q?8tvbMV74P2TlEvLCF4f80zleGgMVlhitMKeXYhJw65oc9ukSLvRNHXD7uf24?=
+ =?us-ascii?Q?J4NU3/DNBhF8hjfj2l4tU1Lb6OdjJjSXHPSwJRBqESMi5LBsKg68dK+l44jW?=
+ =?us-ascii?Q?DpUVIQjUaaH3NIeCA0AlrMJS/RuBAY5PLBqj+qYwv5ebXSt6YtgbjVuLwyzd?=
+ =?us-ascii?Q?2UdRo4d5IjfhyZFZYvTGhQ0REpTyBbHzQHCjnCsBRU5Rm+LapxEAW9D6y64k?=
+ =?us-ascii?Q?oFRnrUDTS7Z04BUy1gsANouEAR5ym9jC+zgzo/TbedejgCG5J2CvnucImkye?=
+ =?us-ascii?Q?ZolsM/fRdL+aYEKK5EPq61rN5Jk8kiSO2HzdXUpv4W1VT+k+YC8FaYqp40fU?=
+ =?us-ascii?Q?g7/9qKIWVwxt4yd/oXwMe694JU7bC5MBPuZfqDwwsD2IaU9ZROpWeYAM6da9?=
+ =?us-ascii?Q?YYbAhEViISM8Gy0tofmbDyufwOKqxRZF3V7WzHxhiLxqysKuzNa3lsdH5sAz?=
+ =?us-ascii?Q?y/ehDaCuWb64yFsaAmi8d2dw9nj1K51U+j5V2k72EeeZHkFCA1uk0IZ/X+jw?=
+ =?us-ascii?Q?0SsyrstqoXxKS3fQ2ew6POBQSABKRw/8sOZjXnKq4eXeaak4PwSE05IvsNs4?=
+ =?us-ascii?Q?jf4ljOhnYsJe0cZfbDg7iFfCtdt97iOFeS1juh3CsX9ebE7ER1V09pYpwK8Y?=
+ =?us-ascii?Q?NJ6KpF3xEsj2QaFblH7dly02fwJVHUbqRRsG1dxEeFdd6BoWJGtr64VyU6/+?=
+ =?us-ascii?Q?JHLjGmJWZpw9udICwDnDo4XkrSyiEYU2sGpdGdfVC3fdXmcM/Ufl8XMjb13E?=
+ =?us-ascii?Q?vWumPqefq0iDLiJJvpbu8RMpl0WekUB+DZ4kD8EEPKZZ0oIvMxnjVaXs4rtQ?=
+ =?us-ascii?Q?2UBWHnv4/5EfLgE5DvCrGYQ0c0FEBZJ3+EnIkthf18F6J3lH+/ugcXsBR9Gm?=
+ =?us-ascii?Q?z2Oxox5bYSo4XxvaJaxUticE2wB42AgyteitTpeb9eAssf7KEtXKFEqIF2zm?=
+ =?us-ascii?Q?Ez0Fy1gvTnUvb3pdUIo4/2JykwPNBm9t42+cimnwcJ1InhQ5r04I879wZkew?=
+ =?us-ascii?Q?Nor+XYEks3UcGNhrO/pRFL5tjcPf8Wr9OaJSvXvf2IksfWJoCBJvYvjoU9wX?=
+ =?us-ascii?Q?5M7NAh7MXmz+oWXvNeCY5aWuoCamxBuWKo6w2bLAft3FPhR6I84aCpuMhugU?=
+ =?us-ascii?Q?EAgAe3fWGtb1L5qTH1HFJIWWwjcLuQRaejctt590v06G+qx1DEQZc9WPAwkY?=
+ =?us-ascii?Q?gv1cQQoOh8BfIqUnGSD4gLasbYHBMdWB7RT7eS0HwL+x4bcy/hlbGforofV1?=
+ =?us-ascii?Q?/TU25Rgt3osU4AgpCv7a4HxsFFb3s3yaRBY7szAmj7BymWrusiP4cJo6Y0zD?=
+ =?us-ascii?Q?SntLMcE2u7NC/x19JGYGiC57RGd3VonZrLUhDb5nEV+z/UbEo8Td6Az7tNQA?=
+ =?us-ascii?Q?j2+2qv1Hey7zMLQGGvC/magf+7Av/t/8dTMfhzknExiA7WCI9YDANks/mXnH?=
+ =?us-ascii?Q?KTd3hdA0ferBdwU4xQhiir98AC4rJLHNoxjW?=
+X-Forefront-Antispam-Report: CIP:216.228.117.160;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc6edge1.nvidia.com;CAT:NONE;SFS:(13230040)(82310400026)(376014)(7416014)(1800799024)(36860700013);DIR:OUT;SFP:1101;
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Aug 2025 05:11:40.3324
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 66b59cdb-8784-4321-6367-08dde13a60d2
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.117.160];Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: BL02EPF00029929.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB7759
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250822_001515_429165_824B6C70 
-X-CRM114-Status: GOOD (  17.22  )
+X-CRM114-CacheID: sfid-20250821_221152_427396_12588451 
+X-CRM114-Status: GOOD (  17.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,235 +168,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce airoha_ppe_dev struct as container for PPE offload callbacks
-consumed by the MT76 driver during flowtable offload for traffic
-received by the wlan NIC and forwarded to the wired one.
-Add airoha_ppe_setup_tc_block_cb routine to PPE offload ops for MT76
-driver.
-Rely on airoha_ppe_dev pointer in airoha_ppe_setup_tc_block_cb
-signature.
+On Thu, Aug 21, 2025 at 03:37:04PM -0300, Jason Gunthorpe wrote:
+> On Thu, Aug 21, 2025 at 08:22:06AM -0700, Nicolin Chen wrote:
+> > I should have pasted the full piece:
+> > drivers/gpu/drm/tegra/drm.c-960-	/*
+> > drivers/gpu/drm/tegra/drm.c:961:	 * If the host1x client is already attached to an IOMMU domain that is
+> > drivers/gpu/drm/tegra/drm.c-962-	 * not the shared IOMMU domain, don't try to attach it to a different
+> > drivers/gpu/drm/tegra/drm.c-963-	 * domain. This allows using the IOMMU-backed DMA API.
+> > drivers/gpu/drm/tegra/drm.c-964-	 */
+> > drivers/gpu/drm/tegra/drm.c-965-	if (domain && domain->type != IOMMU_DOMAIN_IDENTITY &&
+> > drivers/gpu/drm/tegra/drm.c-966-	    domain != tegra->domain)
+> > 
+> > So, the check is two-fold:
+> > 1) is attached
+> > 2) is the shared IOMMU domain (tegra->domain?)
+> 
+> Yea
+> 
+>  iommu_is_domain_currently_attached(dev, tegra->domain)
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c  |  4 +-
- drivers/net/ethernet/airoha/airoha_eth.h  |  4 +-
- drivers/net/ethernet/airoha/airoha_npu.c  |  1 -
- drivers/net/ethernet/airoha/airoha_ppe.c  | 68 +++++++++++++++++++++++++++++--
- include/linux/soc/airoha/airoha_offload.h | 35 ++++++++++++++++
- 5 files changed, 105 insertions(+), 7 deletions(-)
+Ah, yea.
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index e6b802e3d84493508d2dbd248fb1cbfa9ace468f..5a04f90dd3de47ae0ee8e90bfe221618076297e6 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -2599,13 +2599,15 @@ static int airoha_dev_setup_tc_block_cb(enum tc_setup_type type,
- 					void *type_data, void *cb_priv)
- {
- 	struct net_device *dev = cb_priv;
-+	struct airoha_gdm_port *port = netdev_priv(dev);
-+	struct airoha_eth *eth = port->qdma->eth;
- 
- 	if (!tc_can_offload(dev))
- 		return -EOPNOTSUPP;
- 
- 	switch (type) {
- 	case TC_SETUP_CLSFLOWER:
--		return airoha_ppe_setup_tc_block_cb(dev, type_data);
-+		return airoha_ppe_setup_tc_block_cb(&eth->ppe->dev, type_data);
- 	case TC_SETUP_CLSMATCHALL:
- 		return airoha_dev_tc_matchall(dev, type_data);
- 	default:
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index 9f721e2b972f0e547978419701caf532df664910..9060b1d2814e0e4023d42a05ecb5265212df588f 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -13,6 +13,7 @@
- #include <linux/kernel.h>
- #include <linux/netdevice.h>
- #include <linux/reset.h>
-+#include <linux/soc/airoha/airoha_offload.h>
- #include <net/dsa.h>
- 
- #define AIROHA_MAX_NUM_GDM_PORTS	4
-@@ -546,6 +547,7 @@ struct airoha_gdm_port {
- #define AIROHA_RXD4_FOE_ENTRY		GENMASK(15, 0)
- 
- struct airoha_ppe {
-+	struct airoha_ppe_dev dev;
- 	struct airoha_eth *eth;
- 
- 	void *foe;
-@@ -622,7 +624,7 @@ bool airoha_is_valid_gdm_port(struct airoha_eth *eth,
- 
- void airoha_ppe_check_skb(struct airoha_ppe *ppe, struct sk_buff *skb,
- 			  u16 hash);
--int airoha_ppe_setup_tc_block_cb(struct net_device *dev, void *type_data);
-+int airoha_ppe_setup_tc_block_cb(struct airoha_ppe_dev *dev, void *type_data);
- int airoha_ppe_init(struct airoha_eth *eth);
- void airoha_ppe_deinit(struct airoha_eth *eth);
- void airoha_ppe_init_upd_mem(struct airoha_gdm_port *port);
-diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ethernet/airoha/airoha_npu.c
-index 1a6b191ae0b0bba2dc0a011b9da4eb5f4686783e..e1d131d6115c10b40a56b63427eec59ea587d22a 100644
---- a/drivers/net/ethernet/airoha/airoha_npu.c
-+++ b/drivers/net/ethernet/airoha/airoha_npu.c
-@@ -11,7 +11,6 @@
- #include <linux/of_platform.h>
- #include <linux/of_reserved_mem.h>
- #include <linux/regmap.h>
--#include <linux/soc/airoha/airoha_offload.h>
- 
- #include "airoha_eth.h"
- 
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index 36b45e98279a1d18ef0c7e185d8fca7b32c70436..a73ce673fd37034dd62c6cb710cda6690bc5ca6a 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -6,8 +6,9 @@
- 
- #include <linux/ip.h>
- #include <linux/ipv6.h>
-+#include <linux/of_platform.h>
-+#include <linux/platform_device.h>
- #include <linux/rhashtable.h>
--#include <linux/soc/airoha/airoha_offload.h>
- #include <net/ipv6.h>
- #include <net/pkt_cls.h>
- 
-@@ -1282,10 +1283,10 @@ static int airoha_ppe_offload_setup(struct airoha_eth *eth)
- 	return err;
- }
- 
--int airoha_ppe_setup_tc_block_cb(struct net_device *dev, void *type_data)
-+int airoha_ppe_setup_tc_block_cb(struct airoha_ppe_dev *dev, void *type_data)
- {
--	struct airoha_gdm_port *port = netdev_priv(dev);
--	struct airoha_eth *eth = port->qdma->eth;
-+	struct airoha_ppe *ppe = dev->priv;
-+	struct airoha_eth *eth = ppe->eth;
- 	int err = 0;
- 
- 	mutex_lock(&flow_offload_mutex);
-@@ -1338,6 +1339,62 @@ void airoha_ppe_init_upd_mem(struct airoha_gdm_port *port)
- 		     PPE_UPDMEM_WR_MASK | PPE_UPDMEM_REQ_MASK);
- }
- 
-+struct airoha_ppe_dev *airoha_ppe_get_dev(struct device *dev)
-+{
-+	struct platform_device *pdev;
-+	struct device_node *np;
-+	struct airoha_eth *eth;
-+
-+	np = of_parse_phandle(dev->of_node, "airoha,eth", 0);
-+	if (!np)
-+		return ERR_PTR(-ENODEV);
-+
-+	pdev = of_find_device_by_node(np);
-+
-+	if (!pdev) {
-+		dev_err(dev, "cannot find device node %s\n", np->name);
-+		of_node_put(np);
-+		return ERR_PTR(-ENODEV);
-+	}
-+	of_node_put(np);
-+
-+	if (!try_module_get(THIS_MODULE)) {
-+		dev_err(dev, "failed to get the device driver module\n");
-+		goto error_pdev_put;
-+	}
-+
-+	eth = platform_get_drvdata(pdev);
-+	if (!eth)
-+		goto error_module_put;
-+
-+	if (!device_link_add(dev, &pdev->dev, DL_FLAG_AUTOREMOVE_SUPPLIER)) {
-+		dev_err(&pdev->dev,
-+			"failed to create device link to consumer %s\n",
-+			dev_name(dev));
-+		goto error_module_put;
-+	}
-+
-+	return &eth->ppe->dev;
-+
-+error_module_put:
-+	module_put(THIS_MODULE);
-+error_pdev_put:
-+	platform_device_put(pdev);
-+
-+	return ERR_PTR(-ENODEV);
-+}
-+EXPORT_SYMBOL_GPL(airoha_ppe_get_dev);
-+
-+void airoha_ppe_put_dev(struct airoha_ppe_dev *dev)
-+{
-+	struct airoha_ppe *ppe = dev->priv;
-+	struct airoha_eth *eth = ppe->eth;
-+
-+	module_put(THIS_MODULE);
-+	put_device(eth->dev);
-+}
-+EXPORT_SYMBOL_GPL(airoha_ppe_put_dev);
-+
- int airoha_ppe_init(struct airoha_eth *eth)
- {
- 	struct airoha_ppe *ppe;
-@@ -1347,6 +1404,9 @@ int airoha_ppe_init(struct airoha_eth *eth)
- 	if (!ppe)
- 		return -ENOMEM;
- 
-+	ppe->dev.ops.setup_tc_block_cb = airoha_ppe_setup_tc_block_cb;
-+	ppe->dev.priv = ppe;
-+
- 	foe_size = PPE_NUM_ENTRIES * sizeof(struct airoha_foe_entry);
- 	ppe->foe = dmam_alloc_coherent(eth->dev, foe_size, &ppe->foe_dma,
- 				       GFP_KERNEL);
-diff --git a/include/linux/soc/airoha/airoha_offload.h b/include/linux/soc/airoha/airoha_offload.h
-index 117c63c2448d2bd2a5c108c5baa56a39f6974d91..e05ded67c9e6fb89940e5b152f14c6ea0d7c6c49 100644
---- a/include/linux/soc/airoha/airoha_offload.h
-+++ b/include/linux/soc/airoha/airoha_offload.h
-@@ -9,6 +9,41 @@
- #include <linux/spinlock.h>
- #include <linux/workqueue.h>
- 
-+struct airoha_ppe_dev {
-+	struct {
-+		int (*setup_tc_block_cb)(struct airoha_ppe_dev *dev,
-+					 void *type_data);
-+	} ops;
-+
-+	void *priv;
-+};
-+
-+#if (IS_BUILTIN(CONFIG_NET_AIROHA) || IS_MODULE(CONFIG_NET_AIROHA))
-+struct airoha_ppe_dev *airoha_ppe_get_dev(struct device *dev);
-+void airoha_ppe_put_dev(struct airoha_ppe_dev *dev);
-+
-+static inline int airoha_ppe_dev_setup_tc_block_cb(struct airoha_ppe_dev *dev,
-+						   void *type_data)
-+{
-+	return dev->ops.setup_tc_block_cb(dev, type_data);
-+}
-+#else
-+static inline airoha_ppe_dev *airoha_ppe_get_dev(struct device *dev)
-+{
-+	return NULL;
-+}
-+
-+static inline void airoha_ppe_put_dev(struct airoha_ppe_dev *dev)
-+{
-+}
-+
-+static inline int airoha_ppe_setup_tc_block_cb(struct airoha_ppe_dev *dev,
-+					       void *type_data)
-+{
-+	return -EOPNOTSUPP;
-+}
-+#endif
-+
- #define NPU_NUM_CORES		8
- #define NPU_NUM_IRQ		6
- #define NPU_RX0_DESC_NUM	512
+> > Overall, I feel this would be a big project yet arguably for a low
+> > reward..
+> 
+> Indeed, we can drop a FIXME comment there and leave it as the last
+> user or something perhaps
 
--- 
-2.50.1
+I see. We could keep it in the library but discourage new callers.
 
+I will start with the internal cleanup as we discussed, as a part
+of this PCI reset series. Then, I will try adding those new helper
+functions that we've listed here, as a separate series.
+
+Thanks
+Nicolin
 
