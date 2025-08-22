@@ -4,173 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 038B4CA0EE4
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Aug 2025 06:30:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3F4ACA0FE1
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Aug 2025 06:30:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=a26YwWriI/cAZNSFk7MZK1EJDFmLtTh5uMUvUQRBu1c=; b=0BcUV6JX/8q+CE29wPZwyBPqZL
-	p5GsztqHL5fWU4gkoeN8Rpte91qJkOU4QVJRE1jmY3LB+oOhB55I0H+22MEM9257KnP/7AoVjC/HK
-	wzVvddd+lkCuHNg3nvRYDSeJ0dqQPQSfJf4kHtIk8ZQjuN0pElSThMMwXrs7pYxAUIyvdQUpzViPc
-	RShAXpewVKWdJzH+tYfpAQzL/z+gR3xOTFPf4IDDa/7Edzvppf+5JL8wNptxMZM56mH9r40AlMm+T
-	6V0I+anDgS4lo3vKsqksIrInNlK3mcxQwCrYRXnGhKlY5aLVyDUf7yuuYdavy7agQtbBu+7b1zWK1
-	f7I1Qvrw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=aaAUnNBQO1VRtLjO1YXIZilaY2y7K5KoxfwlKFSif3M=; b=CCBuRh31JdIsg6P3QbP1oGeDnG
+	QT9o8znk6twh4z5vJzutXhKAhcP6aczn2Iu59bb1trR31b04rcgn7Wz9N3pvkIKXlSM9HRSk7204e
+	oGsE6zBp1LsU5AwLo2E5YEqASqvtrTr5jE8vMFzleivAiHlgeyjq/8FQREdQ6wLlD+plI9dY5Dblk
+	PvgD3Yxy3876LtKC1AzlaO2ynbPSM31fcTVytB1wUY8tUFOi5MzP30IqY0lmtyNobUDu6vaNhrD8R
+	cd3nhwWkBcHybtGAVUOJ/JsvnOyqoZGwyYokdGKXmdE4RgTfyOunzlicRT/AE4FnFO0qUEdyPMD3W
+	6gyTuH1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uphln-00000003yo3-2WrT;
-	Sat, 23 Aug 2025 06:30:31 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1uphls-00000003yvH-1OW7;
+	Sat, 23 Aug 2025 06:30:36 +0000
+Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upRW8-00000002aIN-2t6e
+	id 1upRWY-00000002aOK-0QGx
 	for linux-mediatek@lists.infradead.org;
-	Fri, 22 Aug 2025 13:09:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1755868155;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=a26YwWriI/cAZNSFk7MZK1EJDFmLtTh5uMUvUQRBu1c=;
-	b=UrmG3rbF+cZwUatOZFwNx15Y2LAg9wnjz8Qgz5w9HwYJ/HdtfyZ1HqDNMn4JEoHE3RTguY
-	q2oHD4TodulO7+2EhTaE8/OlCHmxXbmckJOe4TieMK2/+OuyAA6lbjq0H15wQo1blrlHyp
-	v2cX4pnILIDakXS3pf5yFLcAiy8/7Os=
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
- [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-295-W_Arax1IMvuGY8L8qZnv8g-1; Fri, 22 Aug 2025 09:09:14 -0400
-X-MC-Unique: W_Arax1IMvuGY8L8qZnv8g-1
-X-Mimecast-MFC-AGG-ID: W_Arax1IMvuGY8L8qZnv8g_1755868153
-Received: by mail-qk1-f197.google.com with SMTP id af79cd13be357-7e87068f8afso530491985a.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 22 Aug 2025 06:09:13 -0700 (PDT)
+	Fri, 22 Aug 2025 13:09:43 +0000
+Received: by mail-lj1-x230.google.com with SMTP id 38308e7fff4ca-3354b208871so14459371fa.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 22 Aug 2025 06:09:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1755868180; x=1756472980; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=aaAUnNBQO1VRtLjO1YXIZilaY2y7K5KoxfwlKFSif3M=;
+        b=FTX1sDxlbSu7txN/cTw4s/lTW0gowNcrmY/5C+tajJLXgQBOvUuRvOySJZyhNyL8Js
+         xtNzO+84H+Jp0AKjBaydAnTVb7ZHJB5ozWIWTJ2gv6iGlcSWeeVOpyYxWJ+nfwMBl8t/
+         dhLdPTdA9h/1HVUKE2Ipkh6VL52WPkkCc4KqI0wYS+xRF7Ef47kixr++5XlRZVyQm3UI
+         Dnzfx5gdJYrttjiNyOJulpA33W3feslDfl1m+xHkKeZFrnajHjOLqp0wjnenWT/qomBF
+         BsFIDj9tKCvgqpd6oHsj9P6H07yp+oSrvLgHYRRO/lwMpdzU2n9QC41UEqlYj4xn5RQY
+         G0QQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1755868153; x=1756472953;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20230601; t=1755868180; x=1756472980;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=a26YwWriI/cAZNSFk7MZK1EJDFmLtTh5uMUvUQRBu1c=;
-        b=aGgbUtB0vlKhCYI9K5RPQFbVK4cORcpzaNtGTMZZY7nZPJdmDAZftnF5kOhv+eu/X8
-         hUUB7h9iOutj7N/0awf7DA4FPaCfGnA8GASyrb9qtWPQ2VO6FPgl3a17bcjt3kZiyQzr
-         waJyoD0tuzFnvGbbgtECzDyOotZTn4SjAvE7Jv6qyYqEO8l3I5To7fdbmyGeVKEZLYU4
-         kcUxfw/LV+l4g6R83G31Yq6t09dzNNA9Hjad3d8W5pBeBtEEJbT9xVeW+yfYmd0vrhdL
-         7xHpIBuPeFC0K8V8rtftmKaBPByYEZSZHabaugxfFBd3sCnjLd1HHhFGs4T8bGR78JYW
-         a+PA==
-X-Forwarded-Encrypted: i=1; AJvYcCVnukw1FzYcrdYx7M9oh/6Ko3hAF0kYshxFxCPfeK5VUKPQ55zlxyvJYGcyqcAOrruigsDasJSmO9uwr1Arug==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz12mtH6NpYaolNx4ehgWoQIJk7n151dDlmEAYC4LcffgEeESsv
-	PFUttJrpUe914tdbnekPx4NLWEZYYtfmFI9Q4QTNVnvzkNYjjOkDnmmMHPpLukPHdUQC03gv0Wn
-	MpeDgsNKX0WvFd0d5+PVMRwJKNpGlaItJyh8+dk1AsAxc+qFKORgeiiqkGG2Dclb6z2Si7WplcQ
-	==
-X-Gm-Gg: ASbGnctJKXYRly/S115IpCXlmMggjQnz5EzavGuTO8KLtE/tLCVU12p2wbyS4Dmf/ck
-	qh3n9Vf6ElC0m4Kmqd22akE5k/lcDOWEDo8S+b1RnN4wxzVCXB+xdOkMZOQuMyfeqnfIkT99/1N
-	pItIb5QAU+P6mSGefjyBkiooadyhJZFC+UhRZflQOQT9sfogrYrjN822FBeP+fpmvi5LsWB0YDL
-	2kdL6wX+CZttV/u2BlcRb1GNcYEBmMuy3FF+m+dPMTtQ4bfS88rYA7VK41Y09BaLoofysa2cOwC
-	VQsJfr0EJHLt5kIXVqODhdhWjU35Jo4qGJsUaW8JPuITjPQ53Io34X4u9MNtLO6CEzAOEJvJGa3
-	vJnKsSnVcTO8/wRliUys=
-X-Received: by 2002:a05:620a:6cc2:b0:7e3:6a01:e6ba with SMTP id af79cd13be357-7ea10f538ddmr299226185a.8.1755868152290;
-        Fri, 22 Aug 2025 06:09:12 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEW1uvjDvOlgb0eZoGZSzJHV+ZTat1aB9dEJTqNDB/h4VuJNJ3Q109+V4G1CkIe7Ilb4zQPqA==
-X-Received: by 2002:a05:620a:6cc2:b0:7e3:6a01:e6ba with SMTP id af79cd13be357-7ea10f538ddmr299210885a.8.1755868151398;
-        Fri, 22 Aug 2025 06:09:11 -0700 (PDT)
-Received: from x1 (c-73-183-52-120.hsd1.pa.comcast.net. [73.183.52.120])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-7e87e1c9b9dsm1332247685a.70.2025.08.22.06.09.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 22 Aug 2025 06:09:10 -0700 (PDT)
-Date: Fri, 22 Aug 2025 09:09:04 -0400
-From: Brian Masney <bmasney@redhat.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Sudeep Holla <sudeep.holla@arm.com>,
-	Cristian Marussi <cristian.marussi@arm.com>,
-	Chen Wang <unicorn_wang@outlook.com>,
-	Inochi Amaoto <inochiama@gmail.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Keguang Zhang <keguang.zhang@gmail.com>,
-	Taichi Sugaya <sugaya.taichi@socionext.com>,
-	Takao Orito <orito.takao@socionext.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Jacky Huang <ychuang3@nuvoton.com>,
-	Shan-Chun Hung <schung@nuvoton.com>,
-	Vladimir Zapolskiy <vz@mleia.com>,
-	Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Samuel Holland <samuel.holland@sifive.com>,
-	Yixun Lan <dlan@gentoo.org>,
-	Steen Hegelund <Steen.Hegelund@microchip.com>,
-	Daniel Machon <daniel.machon@microchip.com>,
-	UNGLinuxDriver@microchip.com, Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Michal Simek <michal.simek@amd.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	Neal Gompa <neal@gompa.dev>,
-	Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Daniel Palmer <daniel@thingy.jp>,
-	Romain Perier <romain.perier@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Gregory Clement <gregory.clement@bootlin.com>,
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Andrea della Porta <andrea.porta@suse.com>,
-	Sylwester Nawrocki <s.nawrocki@samsung.com>,
-	Chanwoo Choi <cw00.choi@samsung.com>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Qin Jian <qinjian@cqplus1.com>, Viresh Kumar <vireshk@kernel.org>,
-	Ulf Hansson <ulf.hansson@linaro.org>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Alex Helms <alexander.helms.jy@renesas.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Liviu Dudau <liviu.dudau@arm.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
-	linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
-	arm-scmi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	sophgo@lists.linux.dev, linux-mips@vger.kernel.org,
-	imx@lists.linux.dev, linux-riscv@lists.infradead.org,
-	spacemit@lists.linux.dev, linux-stm32@st-md-mailman.stormreply.com,
-	patches@opensource.cirrus.com, linux-actions@lists.infradead.org,
-	asahi@lists.linux.dev, linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev
-Subject: Re: [PATCH 000/114] clk: convert drivers from deprecated
- round_rate() to determine_rate()
-Message-ID: <aKhr8NYhei59At0s@x1>
-References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
- <1907e1c7-2b15-4729-8497-a7e6f0526366@kernel.org>
- <aKhVVJPEPxCoKKjI@x1>
- <4d31df9e-62c9-4988-9301-2911ff7de229@kernel.org>
+        bh=aaAUnNBQO1VRtLjO1YXIZilaY2y7K5KoxfwlKFSif3M=;
+        b=nIakOhMlsCVMnvWpda3hrzYxlyWuR9BvdEY75hj0f5oVrFese94E+Cd5fGWJvvqpkm
+         x5cB7duh4+ktHJ5odUiEscpBCBvWdpm/TQsV0AS9rotgnMIag8pxR+1Peu4AMv9lDnKC
+         FK1VNsmEQzpMnAlWpx75HjI0sydz4N8n5Po3L5kj+cs1HpS2XIAwUfL2/J98rITOzc9M
+         EKeqlwc+3mI+1srr5vCtqF2f/IaC2juHPHV5bU2avE6qesAlyjWpHdfpQaJ4WwdnCOui
+         BbOGd/3sog+wKd2OHWTubZZ048nXaqyDLI66/SVGbSA9dNfBZ6LMbpvkrDH9ua2XO0BA
+         bT9A==
+X-Forwarded-Encrypted: i=1; AJvYcCXjUAYgtOFIZTTp9cyrOqm96Z9K5zBuIIBIJL3WYB7LqR6YV5bWq5ZSSaW17nHkU67RQVcX7UJ+i9HBRa5jPQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyfJCjgyosLjymTd73CtyBcNXQqcrdPkAb2IFi6v1U/5jYYhBeP
+	H5+ArKnDJasmNhzqMDhog5DuVmUvgzVKN4fFWKqyqHmDFwfVbZOTy2jnnURwtbuVmSakFJFa7XB
+	VG+HU5tkeklCDpxhfi+GLHSohgxW3o3lX6wFmX/Mhrw==
+X-Gm-Gg: ASbGncsC1ndQA8bSS5rnYZeYh1d1qTTxO5QjbTY5TI5LXR4Gqv9pJ8+u/HK7zPXcLXB
+	1GZNlFQEIB95Kp1cl7oIiuTH/FOnPlV4wYGSdSDqZlB9pYjbdhB/28Eu0H26+4UPTQK2m6wFW2b
+	mwPc27EXWCFGzUaY4crGW+wBBU88h81ylMD5m8tBoZbCIwo+gnHBuPTMI2fRxML2C8cQFSf+TRu
+	ahdvKA=
+X-Google-Smtp-Source: AGHT+IE38aK14JH5doGJwJ/L1zggU/pkge8LUJowEiyqKCoskKkhAj74fv5SRzqMHcI7hWw+wLFl8EdWHeb5F4Wq9Gk=
+X-Received: by 2002:a2e:8a86:0:b0:32b:6cd3:3938 with SMTP id
+ 38308e7fff4ca-33650e433f0mr7211421fa.13.1755868180212; Fri, 22 Aug 2025
+ 06:09:40 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <4d31df9e-62c9-4988-9301-2911ff7de229@kernel.org>
-User-Agent: Mutt/2.2.14 (2025-02-20)
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: rrxgyH0240Mq6pN-jpyt4ZXF_SiA_vHuliS0HcwD_cU_1755868153
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+References: <20250822-airoha-pinconf-err-val-fix-v1-1-87b4f264ced2@kernel.org>
+In-Reply-To: <20250822-airoha-pinconf-err-val-fix-v1-1-87b4f264ced2@kernel.org>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Fri, 22 Aug 2025 15:09:28 +0200
+X-Gm-Features: Ac12FXyilBE2jL31VnOTILlWWCkKRSKs1Im0EeZ6mew8D2IIMZNOLHho3Nv17MQ
+Message-ID: <CACRpkda4m8awDHOwo9fRj3dxCrGp9=pDYmV5N0qTw39a6-qQ_A@mail.gmail.com>
+Subject: Re: [PATCH] pinctrl: airoha: Fix return value in pinconf callbacks
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Benjamin Larsson <benjamin.larsson@genexis.eu>, linux-mediatek@lists.infradead.org, 
+	linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250822_060916_801994_C6052B17 
-X-CRM114-Status: GOOD (  21.93  )
+X-CRM114-CacheID: sfid-20250822_060942_154937_F6BC076B 
+X-CRM114-Status: UNSURE (   9.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -185,45 +98,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 22, 2025 at 02:23:50PM +0200, Krzysztof Kozlowski wrote:
-> On 22/08/2025 13:32, Brian Masney wrote:
-> > 7 of the 114 patches in this series needs a v2 with a minor fix. I see
-> > several paths forward to merging this. It's ultimately up to Stephen how
-> > he wants to proceed.
-> > 
-> > - I send Stephen a PULL request with all of these patches with the minor
-> >   cleanups to the 7 patches. Depending on the timing, Stephen can merge
-> >   the other work first, and I deal with cleaning up the merge conflicts.
-> >   Or he can if he prefers to instead.
-> > 
-> > - Stephen applies everyone else's work first to his tree, and then the
-> >   good 107 patches in this series. He skips anything that doesn't apply
-> >   due to other people's work and I follow up with a smaller series.
-> 
-> Both cause cross tree merge conflicts. Anyway, please document clearly
-> the dependencies between patches.
+On Fri, Aug 22, 2025 at 2:14=E2=80=AFPM Lorenzo Bianconi <lorenzo@kernel.or=
+g> wrote:
 
-This series only touches drivers/clk, so it shouldn't cause any issues
-with other subsystems, unless there's a topic branch somewhere, or I'm
-missing something?
+> Pinctrl stack requires ENOTSUPP error code if the parameter is not
+> supported by the pinctrl driver. Fix the returned error code in pinconf
+> callbacks if the operation is not supported.
+>
+> Fixes: 1c8ace2d0725 ("pinctrl: airoha: Add support for EN7581 SoC")
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-There are some drivers under drivers/clk/ where there is an entry in the
-MAINTAINERS file that's not Stephen, although it wasn't clear to me if
-all of those people will send PULL requests to Stephen. I described on
-the cover how how the series was broken up.
+Patch applied for fixes.
 
-  - Patches 4-70 are for drivers where there is no clk submaintainer
-  - Patches 71-110 are for drivers where this is an entry in MAINTAINERS
-    (for drivers/clk)
-
-For the clk subdirectories that had say more than 3 patches, I sent
-those off as separate patch series. The ones in this series have an
-entry in MAINTAINERS only have a few patches for each maintainer.
-
-As for patch dependencies, patches 111 (clk/divider) and
-114 (clk/fixed-factor) should go in last. It doesn't matter the order
-everything else goes in.
-
-Brian
-
+Yours,
+Linus Walleij
 
