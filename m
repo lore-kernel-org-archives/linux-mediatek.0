@@ -4,64 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AACFBCA0FEB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Aug 2025 11:48:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0816CCA0FEC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Aug 2025 11:48:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QI4S+Cfn/P10Eg8qjEHO9hXbG9rIH/PlkrXcpQyh7Po=; b=FDBLM/Czrf+YjG8yiQVaPn2wdu
-	ae3T0vLKt4J0gAFn5nTQYT05JDZO7Okbs0n6Qlaed5oPjxsr12iS/D3hCuGY7c0edFewXatFLw8X/
-	5nfNjEFyZx7SGHbq1LUpxfgSZ28BhNeADM6EF3h7g1Wtztgzm9dFbEwfvY89uynlNMH9losWsPGzJ
-	tMW7KwcZG++2UsXPp3jrFTwlJC5MO6XDwcOzoC5QdbZvj/4BgDru3gI19q995eSfzuOtCjqDpx81g
-	6lBolhyillorrNx/sqv+742kgV5U1r4RSExGHqCsM+Mp/RNjoj7aG8Fd4Y1yOFHvl5cQZ1snIYQCA
-	+SOVQIbQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=bYAiVP56Dv81HYzoSnLTHH/+rH2qlhip5rWcnuT2XGc=; b=aur8cFHsDlQORW
+	UqHOL5dKcI4VXYWWZ0c/mrqHSJ+bUtpOGWd4rxXWqgqjY4s4JTiVn3JRZ9P1+693uzMrIxtlcj0yI
+	32KUJGKNEdMaFGdIV65JSMxBPKqX9+q1sYIvypls7pWJuzkyJmkUItj9Rqn1q43cv61naa/VjMdLR
+	p9K5hPs+UMs8Piw3IHpQbn3fVd83MIBGnH6Mq7RiSqczSHxgRv3XspMAJGgwQf29oiZI7B+tlehWn
+	nZ3q0Za5FZa111N9MrW4LPd1pdAuOjJCCXOwn7tIck+RW0jT7fohjI4AzMo8VJQ9UxtCSPhMqSQSE
+	BtIPqwSHRU9YeALMlrsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upQGM-00000002NcZ-3tYV;
-	Fri, 22 Aug 2025 11:48:54 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1upQGN-00000002NeA-3RhU;
+	Fri, 22 Aug 2025 11:48:55 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upLlI-00000001lSu-2b3H;
-	Fri, 22 Aug 2025 07:00:33 +0000
+	id 1upLzS-00000001n4z-29fb;
+	Fri, 22 Aug 2025 07:15:11 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 522934391A;
-	Fri, 22 Aug 2025 07:00:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CC610C4CEF4;
-	Fri, 22 Aug 2025 07:00:31 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id DD377443CD;
+	Fri, 22 Aug 2025 07:15:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3EB10C4CEF1;
+	Fri, 22 Aug 2025 07:15:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755846032;
-	bh=QI4S+Cfn/P10Eg8qjEHO9hXbG9rIH/PlkrXcpQyh7Po=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=eOFIAolKI2qMkjFwPhLSWCq221EIYCu/mID8GiikO/HQtWo0w4r+24RBu5CBpL0YO
-	 X9ept7kI7u4AK2afWQIrHJOI3NUc3mlGfKiO2N1IuJp2zH+1Qp13caqO7qkbjKuOB7
-	 86Fkfv1ClEbT0OM+XEUg/Q1mdYApYzcqY5uAfqIcYMBSy6ujasYV1ZoIdoMPok/8pm
-	 qUZqwsKzGl8F3mA71LrLwg6T4Tuiu1FUEV+OL9nQkVFReqyyZ/i4HaAecovTors+LI
-	 J+ZkT+ZIYz/AHYGsTb71UyFSt5jm8j8hGxKmeEjlkTcDsfo2dbJ7Nz+D9WLMunvNo/
-	 1onFQnaa97Iwg==
-Date: Fri, 22 Aug 2025 09:00:25 +0200
+	s=k20201202; t=1755846909;
+	bh=CVihnyQ1lbG3xmCXsosuDlSrApxiofSs6sf1IgE+ifA=;
+	h=From:Subject:Date:To:Cc:From;
+	b=oa/ZsUGG7trUDAixHJsonNxYZNWCwSb8P+uTbXcAE8amhNjWbpWjMJg9ji3Txg6hd
+	 HmN3DxcKfqw5wcddTVeNZprn+1oDMWwIpNYHblE+Ioq6KUCeiH5i2CKLXYCNt6U/od
+	 +/yIcZpgGt/aKwXWfLtTgxGAoyZ3IZ/R3IQC6Sx6v8LpUW8UuUCQQCnvL46K/5hQ++
+	 v0NnVYhOhoZ2ZSjB5rpA9LuyxaqxdgfR71O2hgDKc3CwUtht2Jb4nQCaMLEzROYUWa
+	 aV2cQSbciDRugLbe5uLsz9jSapNHDygScekpo/7RLxAPNd+Igb1wkctIAk0GyPhCyl
+	 sfl7oSsqQzm5w==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net-next 0/3] net: airoha: Add PPE support for RX wlan
+Subject: [PATCH net-next v2 0/3] net: airoha: Add PPE support for RX wlan
  offload
-Message-ID: <aKgViYI74bN1y--U@lore-rh-laptop>
-References: <20250819-airoha-en7581-wlan-rx-offload-v1-0-71a097e0e2a1@kernel.org>
- <20250821183420.45af8077@kernel.org>
+Date: Fri, 22 Aug 2025 09:14:47 +0200
+Message-Id: <20250822-airoha-en7581-wlan-rx-offload-v2-0-8a76e1d3fec2@kernel.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="onp8zdhmBvKzfJxz"
-Content-Disposition: inline
-In-Reply-To: <20250821183420.45af8077@kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAOcYqGgC/43NTQ6CMBCG4auYWTumU+XPlfcwLCYwhUbSmqlBD
+ OHuVk7g8vkW77dCEvWS4HpYQWX2yceQYY8H6EYOg6Dvs8EaW5iaGmSvcWSUUBU14XvigLpgdG6
+ K3CNZca4sO2fPF8iNp4rzy96/t9mjT6+on/1upt/6b3kmNFgRm6YSI5bp9hANMp2iDtBu2/YFA
+ OL89MsAAAA=
+X-Change-ID: 20250819-airoha-en7581-wlan-rx-offload-12eff66cf234
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250822_000032_690417_2EEF1C26 
-X-CRM114-Status: UNSURE (   9.96  )
+X-CRM114-CacheID: sfid-20250822_001510_582427_9075FFA7 
+X-CRM114-Status: UNSURE (   8.35  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,37 +79,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Introduce the missing bits to airoha ppe driver to offload traffic received
+by the MT76 driver (wireless NIC) and forwarded by the Packet Processor
+Engine (PPE) to the ethernet interface.
 
---onp8zdhmBvKzfJxz
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+---
+Changes in v2:
+- Rebase on top of net-next main branch
+- Link to v1: https://lore.kernel.org/r/20250819-airoha-en7581-wlan-rx-offload-v1-0-71a097e0e2a1@kernel.org
 
-> On Tue, 19 Aug 2025 14:21:05 +0200 Lorenzo Bianconi wrote:
-> > Introduce the missing bits to airoha ppe driver to offload traffic rece=
-ived
-> > by the MT76 driver (wireless NIC) and forwarded by the Packet Processor
-> > Engine (PPE) to the ethernet interface.
->=20
-> Doesn't apply :( please rebase
+---
+Lorenzo Bianconi (3):
+      net: airoha: Rely on airoha_eth struct in airoha_ppe_flow_offload_cmd signature
+      net: airoha: Add airoha_ppe_dev struct definition
+      net: airoha: Introduce check_skb callback in ppe_dev ops
 
-Uhm weird, it applies cleanly on top of net-next to me
-(git://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git). I will
-repost.
+ drivers/net/ethernet/airoha/airoha_eth.c  |   7 +-
+ drivers/net/ethernet/airoha/airoha_eth.h  |  12 ++--
+ drivers/net/ethernet/airoha/airoha_npu.c  |   1 -
+ drivers/net/ethernet/airoha/airoha_ppe.c  | 113 +++++++++++++++++++++++-------
+ include/linux/soc/airoha/airoha_offload.h |  55 +++++++++++++++
+ 5 files changed, 151 insertions(+), 37 deletions(-)
+---
+base-commit: a7bd72158063740212344fad5d99dcef45bc70d6
+change-id: 20250819-airoha-en7581-wlan-rx-offload-12eff66cf234
 
-Regards,
-Lorenzo
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
---onp8zdhmBvKzfJxz
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaKgVhgAKCRA6cBh0uS2t
-rLaTAP0TqBnNLsXSZso8mTSrP9MFqN8++YyOP4qmvMkUNeHOwgD/eCGuV3E9W5fP
-vj5pEBPHqb7A4FhFLjoa2Tl2fauFlgY=
-=ig+N
------END PGP SIGNATURE-----
-
---onp8zdhmBvKzfJxz--
 
