@@ -4,91 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E7AECA0EE4
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Aug 2025 10:49:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DA53CA0EED
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Aug 2025 14:05:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=okKYDLB/6dq+zBpOGTXzZCn1vDDWfN4GHjwM0kMrU8M=; b=MHPa75UdPFCucc/Ea46qCNvgIW
-	dEOpcONlZO0WfAnd/9a6HwOwGVPeyqsXLRDD30TOf8HkpPcKeXG4/8gsUbmQpfoYbUwlhA7fCVCGl
-	9zvlk3DrxpcYZ7lgL0n0UqmFrarIv1BV/rJ8/uaSULh3fDdJ8fE76B1ZwRNjS4geKuyAGh4acRNuP
-	QG0tEd1fBCyxKsXFCg2qjLNCVL6ogE3MvQ/S4zuB/YNi7wb2kE1iTgBEv/8oMa3sNupN36xdb0ANH
-	wInoL/YzJ6FHki0DTMCU4koM4xY/RQiYewZZBlRjMBXjKTW6S9D9jHhHAaSp2mgx27zVhILQ99NH3
-	8Ok3uTgg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:MIME-Version:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=WUMPC8fcE10JCTYxxBeDrtmZAukYnv1xny/Hrq6FOHs=; b=DGHDkazCq/4y4m7HGOy39o0Pt7
+	7ZAFo/zZveanXp/02fl+ewzx7MNSSJBhznS+SbbwdFVhNQSCXWm7wdO37z87A2XV4Xqu5Y1vLJI21
+	bbtBHonujkPbz+1hW7/54FXhv79ZZfZOZactLQfhgOq0bNO28vvLCR+UuSc9FKf0BqMpy/b0VQYnh
+	NLB75FPR+8enETRADLQOy15Nv8RUODKI7wKSeloHqSCCLA3afQhYlJpqunEhkEBRMFp6Zxkg87uGh
+	uOrNL8CYb1LoV/qBBOjWnyrJIrF8Ungdhw4F76ZLivarHbogufgPV39Wz/tevwy7NB0ahctj9SKQl
+	NBKJVg0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uploT-00000004f04-42Mo;
-	Sat, 23 Aug 2025 10:49:33 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uposX-00000004pQK-25YJ;
+	Sat, 23 Aug 2025 14:05:57 +0000
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upSyM-00000002s2f-3fwo;
-	Fri, 22 Aug 2025 14:42:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=okKYDLB/6dq+zBpOGTXzZCn1vDDWfN4GHjwM0kMrU8M=; b=Hr0McLQdZHR0pz0jvZNU7wFFVX
-	D6ojmnDx/2LPSDWpA9geMvXcEzmQz/K2yGXGcCT4evE72a7I4xYsiE1YMDFpQG6E3AOcmZBzJQ6Ke
-	0IThUdDcPXNOkBY9kq6ds31AbOluDFeth/ihO22m6h21+DgsWxplD3IAEGaPG/0Ijm5Vn0iXTX7RA
-	GBvWQEqdQQ+YtNp6O2bfrfi7WvJHQt+PLScedY39/L76e2ZeBvNVcSho0+P5/h4xX61LccP1PnkRz
-	3YlpzN3/OVskbxQkyBrZL1pksiJr1GJJV4yyKKFKpl3Xc2kc0ER+jx0kL85He4Mjf9Mv1Hz6mklNc
-	6bW+IfHA==;
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upSyJ-00000000xNX-36Vo;
-	Fri, 22 Aug 2025 14:42:29 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 40905A58950;
-	Fri, 22 Aug 2025 14:42:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C1097C4CEED;
-	Fri, 22 Aug 2025 14:42:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755873745;
-	bh=HOIMNNW5e2oCIjRIAMTKZXibETeeQjJE5N0fK64fTNk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=k6aTAW7RH03I02SmNJvcSzczG+XkF1OmbOZFfHQjBkBL5CoX3MQvejU2ZVUMDvNIt
-	 M5399RAD1sUKpwS3cMDhJTwXo8tIX3YHDr+3aN9DpAdolUNsfu6ubyjr6hwSXcqpbo
-	 ugDnoQZATyxUBAdrw+qJxk0WVJq4wdM7G4ZE1ZKD+LDpSP//GfExCtId5oyhEJJEtz
-	 faPJ8JpvvvnnJNkrUn5T6g/Wu+Uuj8JumCynArnafYlcePN8Q0pAr03k7Awa0mQlG0
-	 iXCjGGEh0FFShsZ/MBhGq/ApmGgdSMA5esRmVoWZz2qb9nq65qTtRSmvpgK3fcKQcR
-	 E2R70idYGc4Gw==
-Date: Fri, 22 Aug 2025 09:42:24 -0500
-From: Rob Herring <robh@kernel.org>
-To: Julien Massot <julien.massot@collabora.com>
-Cc: kernel@collabora.com, Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ikjoon Jang <ikjn@chromium.org>,
-	Enric Balletbo i Serra <eballetbo@kernel.org>,
-	Chen-Yu Tsai <wenst@chromium.org>, Weiyi Lu <weiyi.lu@mediatek.com>,
-	Eugen Hristev <eugen.hristev@linaro.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Julien Massot <jmassot@collabora.com>,
-	Sean Wang <sean.wang@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>, linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-sound@vger.kernel.org,
-	linux-gpio@vger.kernel.org
-Subject: Re: [PATCH v2 5/6] dt-bindings: sound: Convert MT8183 DA7219 sound
- card bindings to YAML
-Message-ID: <20250822144224.GA3745327-robh@kernel.org>
-References: <20250820-mtk-dtb-warnings-v2-0-cf4721e58f4e@collabora.com>
- <20250820-mtk-dtb-warnings-v2-5-cf4721e58f4e@collabora.com>
+	id 1uposU-00000004pPl-2Z50
+	for linux-mediatek@lists.infradead.org;
+	Sat, 23 Aug 2025 14:05:55 +0000
+Received: by mail-ed1-x529.google.com with SMTP id 4fb4d7f45d1cf-61c20e28380so2550807a12.1
+        for <linux-mediatek@lists.infradead.org>; Sat, 23 Aug 2025 07:05:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1755957952; x=1756562752; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=WUMPC8fcE10JCTYxxBeDrtmZAukYnv1xny/Hrq6FOHs=;
+        b=IvA1Ke1Lsl9d6WrfJ/tFGQgpMl72BPbZo5hdWLIxa/x7waaW/sTsA3k7g6Xgj+AfO3
+         stR5lIkYh/TSgJ/CDgF62XoZfXBt+xUzVimGPoAJX0Xa+qe5gzx8rtyZJ9ZSsgN86o+E
+         zmRVJZxwEsHcAMXulcWACUP/pg6M1a7UjvHTRxMcxMr/nVXbMOWTFIctfeTbC/k4t8hh
+         66Ob7h+v1P2cBeGgglDVp/J1at4uSQt9pJdZ62iQXSyXcaY34kpj4P2aOKj9wayJXc8k
+         tsOnmafO+feFS4GrzhI/Z7BFdQMoazFUXoKTHu1ksuS6upJbR/0n2luTFQUGfAcaEUie
+         iK+A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1755957952; x=1756562752;
+        h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=WUMPC8fcE10JCTYxxBeDrtmZAukYnv1xny/Hrq6FOHs=;
+        b=Ye+pGJiejVS7wtWmmv6vkohuV1P2QHwPX6Vj0Butwx+vD6OlOpJFjFQ8xRAZwj8S2L
+         ddsTMBOdHPtA3WGjgujqSXJh26hb75yUVbyqJh3If5BURL8ArS6fhZRKzNXS8KRrudGz
+         jJJX7y5wNXqLmHPSsNYNGO4vMu27h/gQGvzO37UFqRwg1FIyKzHNtAMR3TeydXV1XJAP
+         dfGv040tKsCD84slTL3sDEnQhbysTd23zP9pJxvAmrqE7WppzUBWygyPF4q6XcYj0v0t
+         uP8wia6xGfWZTVqjyVD466BSkUSKr2LLVdMwlW1QysdnQ+SKwAs5OdbCXc83Ba+uo1Ik
+         Pirg==
+X-Forwarded-Encrypted: i=1; AJvYcCXA7zyhPlE2ovo8oJibs8lGqn9Pogsx57r1wY/rE4z/uU4snl4iiF/0CjpC29x7VbY+6i4zI8QRcV1dN+MwAw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwtHYpohJYvMZrhuvgQ9/AVKBLhX+I7/CH7irpKXsWnr2Sh5q+T
+	5Lz23Tcf2u8Ks2plTnfdWOGK1cqgE8IfLOh/49PyCgc3v8JHuCI/HPVT5alUP3izjSVFG6Z0G/I
+	GFkb7OvMnEiqmX1+56oB4K9YjC83zV0o=
+X-Gm-Gg: ASbGncs/YzcT0ai3FtAEOTezStnTlG9/NRtca/wPBykyg2OlSikbFPKNG78WfWXrAIb
+	CeeyUHAn0jI4z4eu3MybKb3eVzoSiubWQF8IVHzwjjTWLxCPVoIz+mSApiWwj9qqHrDRl5iMK7i
+	PwFgEqKZLY4fHVCBGhjgyeQXQCUgAl5c8U0wpVtOynNVuRtd+8EhNkRu6fPgjhVwUc9rF3aH1RS
+	TmDAgc=
+X-Google-Smtp-Source: AGHT+IG+sM1YjzuWt+dAD2iioZRu/JngAJr05F1DV7lmK6YatPlAJ2bSDfKyhK5IjkJGbFWTFI9vaghccM+p2pHmJ4k=
+X-Received: by 2002:a05:6402:21c1:b0:618:28c3:aee0 with SMTP id
+ 4fb4d7f45d1cf-61c1b45c454mr4815610a12.8.1755957952266; Sat, 23 Aug 2025
+ 07:05:52 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250820-mtk-dtb-warnings-v2-5-cf4721e58f4e@collabora.com>
+From: Zhi-Jun You <hujy652@gmail.com>
+Date: Sat, 23 Aug 2025 22:05:41 +0800
+X-Gm-Features: Ac12FXxEkyjkOsaHAErDwu055kU3cvPBf_YFKYBQEhdjKyTT45dT_sQ0Tfm94Yw
+Message-ID: <CAHGaMk9FOEg3L5Dto87JJLRrsptQbac=trm2e4m=Xh65dxiC-A@mail.gmail.com>
+Subject: Question about mt7981 precal size
+To: nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com
+Cc: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250822_154228_007705_2768FB43 
-X-CRM114-Status: GOOD (  16.39  )
+X-CRM114-CacheID: sfid-20250823_070554_665419_57E57F5E 
+X-CRM114-Status: UNSURE (   8.19  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,42 +90,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 20, 2025 at 03:44:56PM +0200, Julien Massot wrote:
-> Convert the Device Tree binding for MT8183-based boards using the
-> DA7219 headset codec and optional MAX98357, RT1015 or RT1015P speaker
-> amplifiers from the legacy .txt format to YAML schema.
-> 
-> This improves binding validation and removes DT schema warnings
-> for boards using these audio components.
-> 
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Signed-off-by: Julien Massot <julien.massot@collabora.com>
-> ---
->  .../bindings/sound/mediatek,mt8183_da7219.yaml     | 49 ++++++++++++++++++++++
->  .../bindings/sound/mt8183-da7219-max98357.txt      | 21 ----------
->  2 files changed, 49 insertions(+), 21 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8183_da7219.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8183_da7219.yaml
-> new file mode 100644
-> index 0000000000000000000000000000000000000000..b6fee3ff3af9a90820ee57efdf8efb3f3d474804
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/sound/mediatek,mt8183_da7219.yaml
-> @@ -0,0 +1,49 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/sound/mediatek,mt8183_da7219.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek MT8183 sound card with external codecs
-> +
-> +maintainers:
-> +  - Julien Massot <jmassot@collabora.com>
-> +
-> +description:
-> +  Binding for MediaTek MT8183 SoC-based sound cards with DA7219 as headset codec,
+Hi,
 
-Drop 'Binding for '. Otherwise,
+I am trying to convert my device to read EEPROM and precal through
+NVMEM but encountered a problem with precal size.
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Based on documentation and 19a954e, set the precal size to 54K + 16 +
+102K = 159760 but I got a warning saying it failed to load precal and
+the size is 200720. Added some debug line for the precal sizes I got:
+
+mt798x-wmac 18000000.wifi: group size=96272
+mt798x-wmac 18000000.wifi: dpd size=104448
+mt798x-wmac 18000000.wifi: precal size=200720
+
+mt7981 is using 2.4G + 6G cal group size but why? Then I took a look
+at the vendor driver and it's using 2.4G + 5G + 6G cal group size
+which looks even weirder.
+
+So which one is the correct size? I assume the correct size should be
+the same as the vendor driver but I might be wrong.
+
+Best regards,
+Zhi-Jun
 
