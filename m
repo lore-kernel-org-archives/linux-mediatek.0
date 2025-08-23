@@ -4,78 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DA53CA0EED
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Aug 2025 14:05:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81C36CA0EE4
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Aug 2025 14:58:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:MIME-Version:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=WUMPC8fcE10JCTYxxBeDrtmZAukYnv1xny/Hrq6FOHs=; b=DGHDkazCq/4y4m7HGOy39o0Pt7
-	7ZAFo/zZveanXp/02fl+ewzx7MNSSJBhznS+SbbwdFVhNQSCXWm7wdO37z87A2XV4Xqu5Y1vLJI21
-	bbtBHonujkPbz+1hW7/54FXhv79ZZfZOZactLQfhgOq0bNO28vvLCR+UuSc9FKf0BqMpy/b0VQYnh
-	NLB75FPR+8enETRADLQOy15Nv8RUODKI7wKSeloHqSCCLA3afQhYlJpqunEhkEBRMFp6Zxkg87uGh
-	uOrNL8CYb1LoV/qBBOjWnyrJIrF8Ungdhw4F76ZLivarHbogufgPV39Wz/tevwy7NB0ahctj9SKQl
-	NBKJVg0Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=g8Iszz1yvxCGV5Dd4dbUtStcPOogiq5VwkNlSZToCdI=; b=VDvcEGIYF+2qOrO7rbOghjLfUb
+	EYDVeBQq7a6gaad92foB9n0wjWH1rxIcIVa44Sk2f8Q3ukYeSXXRU1ZnwJ7LyGQ1lk21Szf4EKyDo
+	hxEgsjmOmbN+WrZP/mAFVJo4sAn8sfO06FQbCGIgX6Su7bFyyK+BJQ2oq46I0C8Ga7f57gOsj7yTG
+	vTvEK68ELkxlqEVVozoFJpf2aTBz0btdgInbq14hRZXKKCl6vVFhxcMOPnzm+AZTmwm6CVfE+Slo+
+	/MOfv/WhXuW9AB+JFCGFqfVt2MebObGt1QvhnW9M3oStuvixYZuMxodLS9jWnaGG18HYLqob4Xj2n
+	cc22+nmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uposX-00000004pQK-25YJ;
-	Sat, 23 Aug 2025 14:05:57 +0000
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+	id 1upphY-00000004t1z-15cq;
+	Sat, 23 Aug 2025 14:58:40 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uposU-00000004pPl-2Z50
-	for linux-mediatek@lists.infradead.org;
-	Sat, 23 Aug 2025 14:05:55 +0000
-Received: by mail-ed1-x529.google.com with SMTP id 4fb4d7f45d1cf-61c20e28380so2550807a12.1
-        for <linux-mediatek@lists.infradead.org>; Sat, 23 Aug 2025 07:05:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1755957952; x=1756562752; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=WUMPC8fcE10JCTYxxBeDrtmZAukYnv1xny/Hrq6FOHs=;
-        b=IvA1Ke1Lsl9d6WrfJ/tFGQgpMl72BPbZo5hdWLIxa/x7waaW/sTsA3k7g6Xgj+AfO3
-         stR5lIkYh/TSgJ/CDgF62XoZfXBt+xUzVimGPoAJX0Xa+qe5gzx8rtyZJ9ZSsgN86o+E
-         zmRVJZxwEsHcAMXulcWACUP/pg6M1a7UjvHTRxMcxMr/nVXbMOWTFIctfeTbC/k4t8hh
-         66Ob7h+v1P2cBeGgglDVp/J1at4uSQt9pJdZ62iQXSyXcaY34kpj4P2aOKj9wayJXc8k
-         tsOnmafO+feFS4GrzhI/Z7BFdQMoazFUXoKTHu1ksuS6upJbR/0n2luTFQUGfAcaEUie
-         iK+A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1755957952; x=1756562752;
-        h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=WUMPC8fcE10JCTYxxBeDrtmZAukYnv1xny/Hrq6FOHs=;
-        b=Ye+pGJiejVS7wtWmmv6vkohuV1P2QHwPX6Vj0Butwx+vD6OlOpJFjFQ8xRAZwj8S2L
-         ddsTMBOdHPtA3WGjgujqSXJh26hb75yUVbyqJh3If5BURL8ArS6fhZRKzNXS8KRrudGz
-         jJJX7y5wNXqLmHPSsNYNGO4vMu27h/gQGvzO37UFqRwg1FIyKzHNtAMR3TeydXV1XJAP
-         dfGv040tKsCD84slTL3sDEnQhbysTd23zP9pJxvAmrqE7WppzUBWygyPF4q6XcYj0v0t
-         uP8wia6xGfWZTVqjyVD466BSkUSKr2LLVdMwlW1QysdnQ+SKwAs5OdbCXc83Ba+uo1Ik
-         Pirg==
-X-Forwarded-Encrypted: i=1; AJvYcCXA7zyhPlE2ovo8oJibs8lGqn9Pogsx57r1wY/rE4z/uU4snl4iiF/0CjpC29x7VbY+6i4zI8QRcV1dN+MwAw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwtHYpohJYvMZrhuvgQ9/AVKBLhX+I7/CH7irpKXsWnr2Sh5q+T
-	5Lz23Tcf2u8Ks2plTnfdWOGK1cqgE8IfLOh/49PyCgc3v8JHuCI/HPVT5alUP3izjSVFG6Z0G/I
-	GFkb7OvMnEiqmX1+56oB4K9YjC83zV0o=
-X-Gm-Gg: ASbGncs/YzcT0ai3FtAEOTezStnTlG9/NRtca/wPBykyg2OlSikbFPKNG78WfWXrAIb
-	CeeyUHAn0jI4z4eu3MybKb3eVzoSiubWQF8IVHzwjjTWLxCPVoIz+mSApiWwj9qqHrDRl5iMK7i
-	PwFgEqKZLY4fHVCBGhjgyeQXQCUgAl5c8U0wpVtOynNVuRtd+8EhNkRu6fPgjhVwUc9rF3aH1RS
-	TmDAgc=
-X-Google-Smtp-Source: AGHT+IG+sM1YjzuWt+dAD2iioZRu/JngAJr05F1DV7lmK6YatPlAJ2bSDfKyhK5IjkJGbFWTFI9vaghccM+p2pHmJ4k=
-X-Received: by 2002:a05:6402:21c1:b0:618:28c3:aee0 with SMTP id
- 4fb4d7f45d1cf-61c1b45c454mr4815610a12.8.1755957952266; Sat, 23 Aug 2025
- 07:05:52 -0700 (PDT)
+	id 1uppex-00000004sxO-15j9;
+	Sat, 23 Aug 2025 14:55:59 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 2B06160007;
+	Sat, 23 Aug 2025 14:55:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7EFB6C4CEE7;
+	Sat, 23 Aug 2025 14:55:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1755960957;
+	bh=+9rohC3hw9FcT0vjAC99i/cdAi2nMjBPDQ6zTDoXUjs=;
+	h=From:Date:Subject:To:Cc:From;
+	b=V+fn9p788B9pgMpEmSGZCQi6XuiRBEdNYR4n2lcJy6TiPwzdKb/yNXv5Acjr8N/gM
+	 c3FZdhi2iwIg/lkdNE1JWHeHXc+9CQJI1Wa1lc5XKPWo82DJwuBmBN93FcV++N8v0Z
+	 P1/ARMsotMWx2fAPb2/VUutByqTG64Su291NX3R+z3++IiqSqGgR82TGjSk7VFOIrl
+	 y0uQmWCI1BZlFq+cdA2JcPTzoyJApUJPO95gjiRJhU/9Ya7FsraDYTVUKoeFIpNLkf
+	 qyc71vhrBluZkQhy9otv2L35pBgKutjBNaHvTjfD2f3n6t4j+cCKMBY2QJai9w0DU7
+	 d6JsuLioYElsw==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Sat, 23 Aug 2025 16:55:37 +0200
+Subject: [PATCH mt76] wifi: mt76: mt7996: Use deflink for AMPDU rx
+ reordering
 MIME-Version: 1.0
-From: Zhi-Jun You <hujy652@gmail.com>
-Date: Sat, 23 Aug 2025 22:05:41 +0800
-X-Gm-Features: Ac12FXxEkyjkOsaHAErDwu055kU3cvPBf_YFKYBQEhdjKyTT45dT_sQ0Tfm94Yw
-Message-ID: <CAHGaMk9FOEg3L5Dto87JJLRrsptQbac=trm2e4m=Xh65dxiC-A@mail.gmail.com>
-Subject: Question about mt7981 precal size
-To: nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com
-Cc: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250823_070554_665419_57E57F5E 
-X-CRM114-Status: UNSURE (   8.19  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250823-mt7996-mlo-aggr-fix-v1-1-f35cf0ea4c8a@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAGjWqWgC/x2MQQqAIBAAvxJ7biENK/tKdDDbbCErNCII/550n
+ IGZFyIFpgh98UKgmyMfewZRFmBXsztCnjODrKSqOlmjv1qtG/Tbgca5gAs/aK2YG6UXY6cacnk
+ Gyvq/DmNKH8QSfOVlAAAA
+X-Change-ID: 20250823-mt7996-mlo-aggr-fix-cc1d659facb3
+To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,26 +74,291 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Packets belonging to the same TID can be sent over multiple links.
+AMPDU rx reordering must be performed over all active links. Fix the
+problem always using default link for AMPDU rx reordering.
 
-I am trying to convert my device to read EEPROM and precal through
-NVMEM but encountered a problem with precal size.
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/wireless/mediatek/mt76/agg-rx.c        |  2 +
+ drivers/net/wireless/mediatek/mt76/mt7996/mac.c    | 10 ++-
+ drivers/net/wireless/mediatek/mt76/mt7996/main.c   | 97 ++++++++--------------
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c    | 64 +++++++++++---
+ drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h |  6 +-
+ 5 files changed, 101 insertions(+), 78 deletions(-)
 
-Based on documentation and 19a954e, set the precal size to 54K + 16 +
-102K = 159760 but I got a warning saying it failed to load precal and
-the size is 200720. Added some debug line for the precal sizes I got:
+diff --git a/drivers/net/wireless/mediatek/mt76/agg-rx.c b/drivers/net/wireless/mediatek/mt76/agg-rx.c
+index 07c386c7b4d08967f5dcb69ee9282b042afbce10..936ab1ca92460793f4d275ad18dd6f7722445d90 100644
+--- a/drivers/net/wireless/mediatek/mt76/agg-rx.c
++++ b/drivers/net/wireless/mediatek/mt76/agg-rx.c
+@@ -173,6 +173,8 @@ void mt76_rx_aggr_reorder(struct sk_buff *skb, struct sk_buff_head *frames)
+ 	if (ackp == IEEE80211_QOS_CTL_ACK_POLICY_NOACK)
+ 		return;
+ 
++	if (wcid->def_wcid)
++		wcid = wcid->def_wcid;
+ 	tid = rcu_dereference(wcid->aggr[tidno]);
+ 	if (!tid)
+ 		return;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+index d6531b74be1f15467c06e385d0efabad806db6b8..fecf68271234e7949014d5be6b9e2f87c6dbb281 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+@@ -1183,8 +1183,14 @@ mt7996_txwi_free(struct mt7996_dev *dev, struct mt76_txwi_cache *t,
+ 	txwi = (__le32 *)mt76_get_txwi_ptr(mdev, t);
+ 	if (link_sta) {
+ 		wcid_idx = wcid->idx;
+-		if (likely(t->skb->protocol != cpu_to_be16(ETH_P_PAE)))
+-			mt7996_tx_check_aggr(link_sta, wcid, t->skb);
++		if (likely(t->skb->protocol != cpu_to_be16(ETH_P_PAE))) {
++			struct mt7996_sta *msta;
++
++			/* AMPDU state is stored in the primary link */
++			msta = (void *)link_sta->sta->drv_priv;
++			mt7996_tx_check_aggr(link_sta, &msta->deflink.wcid,
++					     t->skb);
++		}
+ 	} else {
+ 		wcid_idx = le32_get_bits(txwi[9], MT_TXD9_WLAN_IDX);
+ 	}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+index 38d15963ec5801e70b8e539b7707a8d47c9a37fd..16b208b0d1c7c529cb8ee4f5090a5ed4287aeddd 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+@@ -988,11 +988,6 @@ static void
+ mt7996_mac_sta_deinit_link(struct mt7996_dev *dev,
+ 			   struct mt7996_sta_link *msta_link)
+ {
+-	int i;
+-
+-	for (i = 0; i < ARRAY_SIZE(msta_link->wcid.aggr); i++)
+-		mt76_rx_aggr_stop(&dev->mt76, &msta_link->wcid, i);
+-
+ 	mt7996_mac_wtbl_update(dev, msta_link->wcid.idx,
+ 			       MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
+ 
+@@ -1367,16 +1362,13 @@ static int
+ mt7996_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 		    struct ieee80211_ampdu_params *params)
+ {
+-	enum ieee80211_ampdu_mlme_action action = params->action;
+ 	struct mt7996_dev *dev = mt7996_hw_dev(hw);
+ 	struct ieee80211_sta *sta = params->sta;
+ 	struct mt7996_sta *msta = (struct mt7996_sta *)sta->drv_priv;
+ 	struct ieee80211_txq *txq = sta->txq[params->tid];
+-	struct ieee80211_link_sta *link_sta;
+ 	u16 tid = params->tid;
+ 	u16 ssn = params->ssn;
+ 	struct mt76_txq *mtxq;
+-	unsigned int link_id;
+ 	int ret = 0;
+ 
+ 	if (!txq)
+@@ -1386,61 +1378,42 @@ mt7996_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 
+ 	mutex_lock(&dev->mt76.mutex);
+ 
+-	for_each_sta_active_link(vif, sta, link_sta, link_id) {
+-		struct mt7996_sta_link *msta_link;
+-		struct mt7996_vif_link *link;
+-
+-		msta_link = mt76_dereference(msta->link[link_id], &dev->mt76);
+-		if (!msta_link)
+-			continue;
+-
+-		link = mt7996_vif_link(dev, vif, link_id);
+-		if (!link)
+-			continue;
+-
+-		switch (action) {
+-		case IEEE80211_AMPDU_RX_START:
+-			mt76_rx_aggr_start(&dev->mt76, &msta_link->wcid, tid,
+-					   ssn, params->buf_size);
+-			ret = mt7996_mcu_add_rx_ba(dev, params, link,
+-						   msta_link, true);
+-			break;
+-		case IEEE80211_AMPDU_RX_STOP:
+-			mt76_rx_aggr_stop(&dev->mt76, &msta_link->wcid, tid);
+-			ret = mt7996_mcu_add_rx_ba(dev, params, link,
+-						   msta_link, false);
+-			break;
+-		case IEEE80211_AMPDU_TX_OPERATIONAL:
+-			mtxq->aggr = true;
+-			mtxq->send_bar = false;
+-			ret = mt7996_mcu_add_tx_ba(dev, params, link,
+-						   msta_link, true);
+-			break;
+-		case IEEE80211_AMPDU_TX_STOP_FLUSH:
+-		case IEEE80211_AMPDU_TX_STOP_FLUSH_CONT:
+-			mtxq->aggr = false;
+-			clear_bit(tid, &msta_link->wcid.ampdu_state);
+-			ret = mt7996_mcu_add_tx_ba(dev, params, link,
+-						   msta_link, false);
+-			break;
+-		case IEEE80211_AMPDU_TX_START:
+-			set_bit(tid, &msta_link->wcid.ampdu_state);
+-			ret = IEEE80211_AMPDU_TX_START_IMMEDIATE;
+-			break;
+-		case IEEE80211_AMPDU_TX_STOP_CONT:
+-			mtxq->aggr = false;
+-			clear_bit(tid, &msta_link->wcid.ampdu_state);
+-			ret = mt7996_mcu_add_tx_ba(dev, params, link,
+-						   msta_link, false);
+-			break;
+-		}
+-
+-		if (ret)
+-			break;
+-	}
+-
+-	if (action == IEEE80211_AMPDU_TX_STOP_CONT)
++	switch (params->action) {
++	case IEEE80211_AMPDU_RX_START:
++		/* Since packets belonging to the same TID can be split over
++		 * multiple links, store the AMPDU state for reordering in the
++		 * primary link
++		 */
++		mt76_rx_aggr_start(&dev->mt76, &msta->deflink.wcid, tid,
++				   ssn, params->buf_size);
++		ret = mt7996_mcu_add_rx_ba(dev, params, vif, true);
++		break;
++	case IEEE80211_AMPDU_RX_STOP:
++		mt76_rx_aggr_stop(&dev->mt76, &msta->deflink.wcid, tid);
++		ret = mt7996_mcu_add_rx_ba(dev, params, vif, false);
++		break;
++	case IEEE80211_AMPDU_TX_OPERATIONAL:
++		mtxq->aggr = true;
++		mtxq->send_bar = false;
++		ret = mt7996_mcu_add_tx_ba(dev, params, vif, true);
++		break;
++	case IEEE80211_AMPDU_TX_STOP_FLUSH:
++	case IEEE80211_AMPDU_TX_STOP_FLUSH_CONT:
++		mtxq->aggr = false;
++		clear_bit(tid, &msta->deflink.wcid.ampdu_state);
++		ret = mt7996_mcu_add_tx_ba(dev, params, vif, false);
++		break;
++	case IEEE80211_AMPDU_TX_START:
++		set_bit(tid, &msta->deflink.wcid.ampdu_state);
++		ret = IEEE80211_AMPDU_TX_START_IMMEDIATE;
++		break;
++	case IEEE80211_AMPDU_TX_STOP_CONT:
++		mtxq->aggr = false;
++		clear_bit(tid, &msta->deflink.wcid.ampdu_state);
++		ret = mt7996_mcu_add_tx_ba(dev, params, vif, false);
+ 		ieee80211_stop_tx_ba_cb_irqsafe(vif, sta->addr, tid);
++		break;
++	}
+ 
+ 	mutex_unlock(&dev->mt76.mutex);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index 0ba60279bbb77dfa94ef3121f75eaadac3c7290e..f641cedf5d6a080baf9cb7d47bd60cabbb147fb0 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -1192,23 +1192,67 @@ mt7996_mcu_sta_ba(struct mt7996_dev *dev, struct mt76_vif_link *mvif,
+ /** starec & wtbl **/
+ int mt7996_mcu_add_tx_ba(struct mt7996_dev *dev,
+ 			 struct ieee80211_ampdu_params *params,
+-			 struct mt7996_vif_link *link,
+-			 struct mt7996_sta_link *msta_link, bool enable)
++			 struct ieee80211_vif *vif, bool enable)
+ {
+-	if (enable && !params->amsdu)
+-		msta_link->wcid.amsdu = false;
++	struct ieee80211_sta *sta = params->sta;
++	struct mt7996_sta *msta = (struct mt7996_sta *)sta->drv_priv;
++	struct ieee80211_link_sta *link_sta;
++	unsigned int link_id;
++	int ret = 0;
++
++	for_each_sta_active_link(vif, sta, link_sta, link_id) {
++		struct mt7996_sta_link *msta_link;
++		struct mt7996_vif_link *link;
++
++		msta_link = mt76_dereference(msta->link[link_id], &dev->mt76);
++		if (!msta_link)
++			continue;
+ 
+-	return mt7996_mcu_sta_ba(dev, &link->mt76, params, &msta_link->wcid,
+-				 enable, true);
++		link = mt7996_vif_link(dev, vif, link_id);
++		if (!link)
++			continue;
++
++		if (enable && !params->amsdu)
++			msta_link->wcid.amsdu = false;
++
++		ret = mt7996_mcu_sta_ba(dev, &link->mt76, params,
++					&msta_link->wcid, enable, true);
++		if (ret)
++			break;
++	}
++
++	return ret;
+ }
+ 
+ int mt7996_mcu_add_rx_ba(struct mt7996_dev *dev,
+ 			 struct ieee80211_ampdu_params *params,
+-			 struct mt7996_vif_link *link,
+-			 struct mt7996_sta_link *msta_link, bool enable)
++			 struct ieee80211_vif *vif, bool enable)
+ {
+-	return mt7996_mcu_sta_ba(dev, &link->mt76, params, &msta_link->wcid,
+-				 enable, false);
++	struct ieee80211_sta *sta = params->sta;
++	struct mt7996_sta *msta = (struct mt7996_sta *)sta->drv_priv;
++	struct ieee80211_link_sta *link_sta;
++	unsigned int link_id;
++	int ret = 0;
++
++	for_each_sta_active_link(vif, sta, link_sta, link_id) {
++		struct mt7996_sta_link *msta_link;
++		struct mt7996_vif_link *link;
++
++		msta_link = mt76_dereference(msta->link[link_id], &dev->mt76);
++		if (!msta_link)
++			continue;
++
++		link = mt7996_vif_link(dev, vif, link_id);
++		if (!link)
++			continue;
++
++		ret = mt7996_mcu_sta_ba(dev, &link->mt76, params,
++					&msta_link->wcid, enable, false);
++		if (ret)
++			break;
++	}
++
++	return ret;
+ }
+ 
+ static void
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
+index b98cfe6e5be8c6b77357cf7d2a76135f10609ca4..97b84710667ffdb5b6188a72d6f8475f7eb9a128 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
+@@ -612,12 +612,10 @@ int mt7996_mcu_teardown_mld_sta(struct mt7996_dev *dev,
+ 				struct mt7996_sta_link *msta_link);
+ int mt7996_mcu_add_tx_ba(struct mt7996_dev *dev,
+ 			 struct ieee80211_ampdu_params *params,
+-			 struct mt7996_vif_link *link,
+-			 struct mt7996_sta_link *msta_link, bool enable);
++			 struct ieee80211_vif *vif, bool enable);
+ int mt7996_mcu_add_rx_ba(struct mt7996_dev *dev,
+ 			 struct ieee80211_ampdu_params *params,
+-			 struct mt7996_vif_link *link,
+-			 struct mt7996_sta_link *msta_link, bool enable);
++			 struct ieee80211_vif *vif, bool enable);
+ int mt7996_mcu_update_bss_color(struct mt7996_dev *dev,
+ 				struct mt76_vif_link *mlink,
+ 				struct cfg80211_he_bss_color *he_bss_color);
 
-mt798x-wmac 18000000.wifi: group size=96272
-mt798x-wmac 18000000.wifi: dpd size=104448
-mt798x-wmac 18000000.wifi: precal size=200720
-
-mt7981 is using 2.4G + 6G cal group size but why? Then I took a look
-at the vendor driver and it's using 2.4G + 5G + 6G cal group size
-which looks even weirder.
-
-So which one is the correct size? I assume the correct size should be
-the same as the vendor driver but I might be wrong.
+---
+base-commit: d0698b9ec737e0d764fbe15805114d67822b0e75
+change-id: 20250823-mt7996-mlo-aggr-fix-cc1d659facb3
 
 Best regards,
-Zhi-Jun
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
+
 
