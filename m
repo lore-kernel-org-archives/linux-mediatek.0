@@ -4,90 +4,159 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0803CA0EED
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Aug 2025 15:39:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D620CA0EFF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Aug 2025 19:08:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FME8LsC6LsbRGRS5b/3/udJ7zZvv4zbkizN/R7jJibU=; b=UblSeCS6SiVaRnP9ApMaUg683D
-	fzgiob11o9P7jNQ9MEIBV1ZPvdL2sGEYW894BuLF4egDrG5J/7qxBZYqzIRPQwZNF6Tl0kMl52SaS
-	qmV1cMPKV9bWmMPSMDK85eJs5aeZgEDTIkDl2b4Mf6mSwkDWwmoFPpaa72WH48CKfaVlqgk1cjO0H
-	/WsaDbc3AuAOrJfeqWf+Zj1HbCw2TMX4WDhtzOFsiTNKfZCcNQPVJgFoEpYlQs2ankiszp7Mf41t4
-	5lGBCPTkyCtYnSqzz7QimKNKgDqcbuzwR4eZCG6U8VFVrPZS3WTM/j0rH0fPcvZ6+tWaPxQOVjEvx
-	FFi59JvA==;
+	bh=cL5ssct3H53mdMJ4QbpLONMpWyzw1TDsjX4LNfXKRNQ=; b=Z0/6LXUfZ+z1BSaCTvGGxQqV9B
+	LJEyB9Zy9FhCZSZ3ikYWkrnmJxN+oOxdVWqXdReac3BhxQZWMkEDjFt0SVefmiBSin6cBF9qsa5OC
+	1BcQoLoUm8TH7qf1d9nx9hTfkHRiuIWbSUpm4ZtRKFei1/x4LsIp3xUQDc6gmGei11RAoRoq0Wd70
+	xFM5XK5huNbAwVbvGewx74d+1ZmMXOVKrAiOu5VWga1LmyjZELXB37OewCsynLCjLrn9Hw3IgpX8k
+	5h7/iO1+CFG70grV6Zw7SGtdyO9rSunArvYW75pMn38tC39fJ1J2dJRLnP5/2vnRTnBuKNEBdiBgl
+	7viWfP6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upqL7-00000004vag-1bM9;
-	Sat, 23 Aug 2025 15:39:33 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uptbj-00000005DLX-2c7O;
+	Sat, 23 Aug 2025 19:08:55 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upqG1-00000004vDK-1oCP;
-	Sat, 23 Aug 2025 15:34:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=FME8LsC6LsbRGRS5b/3/udJ7zZvv4zbkizN/R7jJibU=; b=mq0LR1T2fLLkkWzMqdmxoGsrjE
-	T9l66Bz93UrBl6D6Jv4TKfUunH1LvN4GEtMROvJhf5dENlMuwS8eKGGQRUyPBPG6f9ZpHVJF+gSAq
-	NYUIW1LT4Y2AMEFJaHj9QL40PGy9hvA3etdIwwVmCWO/3fB1OhWGPoCFyRniBuHI82LaHUF8TOtOI
-	F4F5HScFpEcZB8+Qy/JJMyXqN4VMPjuRkDdz9wYugP08284QNBiuP8mq6bmOMGoPLaIgX2VG4FTph
-	bmV5VHCzSiQe+YdHo9KP91SqjKfYkr4HJZFB7kLOeOXkKevcgxxWZbO7dzsql/1tVIEHlL35pkK0/
-	1h7PojNA==;
-Received: from dfw.source.kernel.org ([139.178.84.217])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upqFy-00000001Smg-0iB4;
-	Sat, 23 Aug 2025 15:34:16 +0000
+	id 1uprQ0-000000055N3-1Inn;
+	Sat, 23 Aug 2025 16:48:41 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id D18305C2731;
-	Sat, 23 Aug 2025 15:34:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 81E69C116D0;
-	Sat, 23 Aug 2025 15:34:10 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 458855C53EC;
+	Sat, 23 Aug 2025 16:48:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A3333C4CEE7;
+	Sat, 23 Aug 2025 16:48:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755963250;
-	bh=kTALLSkXGcreCjIk5ouErmIww5GXzdh4sJZ7jSXzRQo=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=fFWJB8rUZTR7k1mJNnrOp0U9u6ycN8+Jk8coMcewCtLpogIycNkCI8WXsKET7qRB3
-	 pltxGuwxlWfyUyFzOT0Y6UANrSTTY7h+e7Tt0uYdoSK+vN5376+mmga3ro7rt8AcKd
-	 xQeJ4b0D11X7cokEVT6D+Z06sQ8efpan8xGj9KS3eAJDbUK1HzkS7xhEKduqugylqf
-	 1arOlaqD4Uxogfzbl2IJUvMpwbuKakn+ZvTkXngEoExybeS67OA8uzF4u11pZkOjbu
-	 gabqZmJULI6gjywr73jsXKqhTv55m20yYbXP/ZS7VRp5XfoQGy+1vh8OUMFiyHFlSG
-	 plEWMicPJ/Srg==
-Received: by mail-pf1-f177.google.com with SMTP id d2e1a72fcca58-76e39ec6f30so2951049b3a.2;
-        Sat, 23 Aug 2025 08:34:10 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCUXuj/HaEZIEVANgxNP/nwVdK93a0/DSpGYNSqc5TBrxQtzdrWqLAkgFXnEBxVHOKXLJojm5GQrMfNPAauHMI5M@lists.infradead.org, AJvYcCVr+HISb2RCmHtfBmelqOHFJvSMFEoyesc5avDkLXvkDYe0UYhvP6OruVvbnsLLaoI5Tg6e7+MmHQ9MtIfP6so=@lists.infradead.org
-X-Gm-Message-State: AOJu0YyP6rN3QeRrU28KyKu/f713ju9C+fyq41TeNBnpJLCf/k8NDqTO
-	bEaxiolVORtPlM4jTQeYbOMQznRK8sxQhU00zZxOjSxZHK7dA6Xba2a0K4FyitpOwmaUH/rtjj7
-	RHEVFhwmPn/p2zscDx2BLEfUNs8kOdA==
-X-Google-Smtp-Source: AGHT+IH4plAM5KbETmxDDjvC+xXEie7PQ9eZg3ukysPt7y/ninQ9lLmP959MYy/IC7jqNGnL7Y1cqkNrWOy3mIJtmoY=
-X-Received: by 2002:a17:903:2012:b0:240:2145:e51d with SMTP id
- d9443c01a7336-2462ef440e3mr63417535ad.31.1755963250030; Sat, 23 Aug 2025
- 08:34:10 -0700 (PDT)
+	s=k20201202; t=1755967718;
+	bh=PDfxYI4xJFYmIUFeVYOEcKsGHc9UOGEej4nxqYpMpgE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=HOXXqNd5ZbNFfXhPJvOSJpuLPaIFgLCHSTOAh/B1wd0Q2+30Sz2yxhHeQ70I+6ira
+	 0Y5NvdqZewIGHh3fkbPEhG731f/9TGrKaqfi79StYlzLt0GkPuc4NLdiVOkkkxLTNj
+	 lCF/coYvgjNcuwJWCN2zhq4sqXhpK39/OUs5pH4vNM0y+kq4UP444vgPGrnlvtOBZ3
+	 vWypYT/Tu9R0zxIRm9lNFsGdK0gPihI1EbGXWDeLh+oYTOkC391/3865/PLGswrKR0
+	 ci3Jz3vltoNG+fME7+Z7D1Hi98pBVKINaG1l8/tKH5WKRXP5EgThnk9ap13vHnwjWY
+	 WyuxowF5X6EHQ==
+Message-ID: <64c311f7-1cc1-4d0d-9f9d-b586050b8fec@kernel.org>
+Date: Sat, 23 Aug 2025 18:48:19 +0200
 MIME-Version: 1.0
-References: <20250818-mt8173-fix-hdmi-issue-v1-1-55aff9b0295d@collabora.com>
-In-Reply-To: <20250818-mt8173-fix-hdmi-issue-v1-1-55aff9b0295d@collabora.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Sat, 23 Aug 2025 23:35:19 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_9mS+VRu9T45xawO-jdT0Zk+JR3XMbj7So3LuiUfO8_0w@mail.gmail.com>
-X-Gm-Features: Ac12FXw07uZw-AZ_HWLRa8XVVMEzzj7o_IkjPil9tjxcN8KsqqRfui-EkO3JR-w
-Message-ID: <CAAOTY_9mS+VRu9T45xawO-jdT0Zk+JR3XMbj7So3LuiUfO8_0w@mail.gmail.com>
-Subject: Re: [PATCH] drm/mediatek: mtk_hdmi: fix inverted parameters in some
- regmap_update_bits calls
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, CK Hu <ck.hu@mediatek.com>, 
-	Guillaume Ranquet <granquet@baylibre.com>, kernel@collabora.com, 
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 000/114] clk: convert drivers from deprecated round_rate()
+ to determine_rate()
+To: bmasney@redhat.com, Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, Sudeep Holla <sudeep.holla@arm.com>,
+ Cristian Marussi <cristian.marussi@arm.com>,
+ Chen Wang <unicorn_wang@outlook.com>, Inochi Amaoto <inochiama@gmail.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+ Paul Cercueil <paul@crapouillou.net>, Keguang Zhang
+ <keguang.zhang@gmail.com>, Taichi Sugaya <sugaya.taichi@socionext.com>,
+ Takao Orito <orito.takao@socionext.com>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Jacky Huang <ychuang3@nuvoton.com>,
+ Shan-Chun Hung <schung@nuvoton.com>, Vladimir Zapolskiy <vz@mleia.com>,
+ Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ Samuel Holland <samuel.holland@sifive.com>, Yixun Lan <dlan@gentoo.org>,
+ Steen Hegelund <Steen.Hegelund@microchip.com>,
+ Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com,
+ Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
+ <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Michal Simek <michal.simek@amd.com>, Maxime Ripard <mripard@kernel.org>,
+ =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
+ Manivannan Sadhasivam <mani@kernel.org>, Sven Peter <sven@kernel.org>,
+ Janne Grunau <j@jannau.net>, Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+ Neal Gompa <neal@gompa.dev>, Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>,
+ Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Daniel Palmer <daniel@thingy.jp>, Romain Perier <romain.perier@gmail.com>,
+ Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>,
+ Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Heiko Stuebner <heiko@sntech.de>, Andrea della Porta
+ <andrea.porta@suse.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>,
+ Chanwoo Choi <cw00.choi@samsung.com>, Alim Akhtar <alim.akhtar@samsung.com>,
+ Qin Jian <qinjian@cqplus1.com>, Viresh Kumar <vireshk@kernel.org>,
+ Ulf Hansson <ulf.hansson@linaro.org>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ Alex Helms <alexander.helms.jy@renesas.com>,
+ Linus Walleij <linus.walleij@linaro.org>, Liviu Dudau <liviu.dudau@arm.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>
+Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+ arm-scmi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ sophgo@lists.linux.dev, linux-mips@vger.kernel.org, imx@lists.linux.dev,
+ linux-riscv@lists.infradead.org, spacemit@lists.linux.dev,
+ linux-stm32@st-md-mailman.stormreply.com, patches@opensource.cirrus.com,
+ linux-actions@lists.infradead.org, asahi@lists.linux.dev,
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev
+References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250823_163414_517438_66D9E33A 
-X-CRM114-Status: GOOD (  13.77  )
+X-CRM114-CacheID: sfid-20250823_094840_433543_96FECE57 
+X-CRM114-Status: UNSURE (   9.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,74 +171,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Louis:
+On 11/08/2025 17:17, Brian Masney via B4 Relay wrote:
+> The round_rate() clk ops is deprecated in the clk framework in favor
+> of the determine_rate() clk ops, so let's go ahead and convert the
+> various clk drivers using the Coccinelle semantic patch posted below.
+> I did a few minor cosmetic cleanups of the code in a few cases.
+> 
+@Stephen,
 
-Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com> =E6=96=BC 2025=E5=B9=
-=B48=E6=9C=8818=E6=97=A5 =E9=80=B1=E4=B8=80
-=E4=B8=8B=E5=8D=8810:18=E5=AF=AB=E9=81=93=EF=BC=9A
->
-> In mtk_hdmi driver, a recent change replaced custom register access
-> function calls by regmap ones, but two replacements by regmap_update_bits
-> were done incorrectly, because original offset and mask parameters were
-> inverted, so fix them.
+There will be dependencies/conflicts for Samsung, so I will take the two
+Samsung patches. Let me know if you disagree.
 
-Applied to mediatek-drm-fixes [1], thanks.
-
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
-log/?h=3Dmediatek-drm-fixes
-
-Regards,
-Chun-Kuang.
-
->
-> Fixes: d6e25b3590a0 ("drm/mediatek: hdmi: Use regmap instead of iomem for=
- main registers")
-> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_hdmi.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediat=
-ek/mtk_hdmi.c
-> index 845fd8aa43c3c91659808d9e6bb78758d1f9b857..b766dd5e6c8de6d16bff50972=
-b45c3c1a083b985 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> @@ -182,8 +182,8 @@ static inline struct mtk_hdmi *hdmi_ctx_from_bridge(s=
-truct drm_bridge *b)
->
->  static void mtk_hdmi_hw_vid_black(struct mtk_hdmi *hdmi, bool black)
->  {
-> -       regmap_update_bits(hdmi->regs, VIDEO_SOURCE_SEL,
-> -                          VIDEO_CFG_4, black ? GEN_RGB : NORMAL_PATH);
-> +       regmap_update_bits(hdmi->regs, VIDEO_CFG_4,
-> +                          VIDEO_SOURCE_SEL, black ? GEN_RGB : NORMAL_PAT=
-H);
->  }
->
->  static void mtk_hdmi_hw_make_reg_writable(struct mtk_hdmi *hdmi, bool en=
-able)
-> @@ -310,8 +310,8 @@ static void mtk_hdmi_hw_send_info_frame(struct mtk_hd=
-mi *hdmi, u8 *buffer,
->
->  static void mtk_hdmi_hw_send_aud_packet(struct mtk_hdmi *hdmi, bool enab=
-le)
->  {
-> -       regmap_update_bits(hdmi->regs, AUDIO_PACKET_OFF,
-> -                          GRL_SHIFT_R2, enable ? 0 : AUDIO_PACKET_OFF);
-> +       regmap_update_bits(hdmi->regs, GRL_SHIFT_R2,
-> +                          AUDIO_PACKET_OFF, enable ? 0 : AUDIO_PACKET_OF=
-F);
->  }
->
->  static void mtk_hdmi_hw_config_sys(struct mtk_hdmi *hdmi)
->
-> ---
-> base-commit: afb39542bbf14acf910012eee2d4159add05d384
-> change-id: 20250818-mt8173-fix-hdmi-issue-287cf353b077
->
-> Best regards,
-> --
-> Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
->
+Best regards,
+Krzysztof
 
