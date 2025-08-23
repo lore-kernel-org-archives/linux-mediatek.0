@@ -4,80 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AF5BCA0EFA
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Aug 2025 09:37:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3946ACA0EE4
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Aug 2025 09:38:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zuwbF9eB3t485vQKBVN40mCG9D/kAybvLkn5/BUf8wY=; b=iY208atT6kxBoJEQEbFn/xCW4e
-	aTGjY+ccftATj5ys7TN08dNuKaPAI/aqms5gmEYXDr5VffwGs9Ev6Fq7l2MKnCmzwaneqXYh9OGkE
-	d43EMXGrgQygsNuewfx5FuAcwij3zwp9z89lpD1U87Y4Nuy0cbrQjrSp+ZsSe/PXLG3GAB3YRvJOT
-	36LTeYpGUZsb7hciahN0QT/fI3WB3jKL3xOyuKj8ywPTtLPbuWVz+qo30qI+U26SGSsd52vtkfWJU
-	TNxK/qgUJF5b/Ky5iLmfxyv6QiLr0XDoMTPja2TzybahLcs2xWfSJg10tpCkAFR2U+CzOckP15uQy
-	NdsVM8Ow==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ZSqradjoNYlEMEbm1ZzV1lrstXti0Rv6XGYgH3hP2f4=; b=GOUlbYTFs8SL0K
+	R/b9WDOw/olNpQr3xcz9tnsBk//xc15ONj5yDkmYSD8PkY+CuPrBWMQtIEsusZAsR1Sp0B8IlZfP5
+	QL0RuAS3kBgoBirO7Sds82lo+URT0wLHBsDDL9dyaDpHz5P3ITmOaVxw3XErgmD8qE81C/xMid/Ob
+	LOO6LC9QiP/1H/SNYTTpE6GEXzjIfmFOtvP1frEeML/mpX1j3N1h9OGg080McdyWfmh39aUgzN2bU
+	WipF4jy2xeWDUSTLVzvsEUbrnAeqIaj9MERVrUIASuMDXrOKsnZ2a6X0XUkP7c16cEPReGN9agqN9
+	Cw/A/2MydrMKYhkeoWdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upkgG-00000004WBL-1ZZV;
-	Sat, 23 Aug 2025 09:37:00 +0000
-Received: from mgamail.intel.com ([198.175.65.14])
+	id 1upkhU-00000004YMB-1mmm;
+	Sat, 23 Aug 2025 09:38:16 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upaLy-00000003bbv-03mN;
-	Fri, 22 Aug 2025 22:35:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1755902122; x=1787438122;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=R5PaTuYrgUIRNnUfVveRfz0LrC26l6MrG1wU0QZXikE=;
-  b=iqjNhe5OiU9p5ROQxaRmNJHGkiI1tM6jawwDtNOObUvjr0lm+ICwaI6c
-   Z0tGPEEiRO1nRUkSWH5eVOBATEKvzEFkNcqaCUahuCm/5WWVZ4wJLvswr
-   Y+IXRR5BJazDHKbcQRaUh4OkGUyEJDnByGA4P+at87P9Im3XPI3LBBk1R
-   zfuHNrn+EJqJngYRZ5Dv4xSD+n22pAitFqx/LfPnhLqICVNKSewafdZJe
-   rdNY5xFctmHl/CV7c0ovPgd2SIvFsLLypdAEjn+VhGOnmOh7negB9Go7u
-   N76/OjDHBo4kWG6Sp1YN24MVUm6WRKiavHqZQcTfRmrc/cDjjR8haeul6
-   Q==;
-X-CSE-ConnectionGUID: okyIvHAXSQ+nlih/fnkXzw==
-X-CSE-MsgGUID: S66dYBbdTMupHIRTmo9lvg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11529"; a="62046732"
-X-IronPort-AV: E=Sophos;i="6.17,312,1747724400"; 
-   d="scan'208";a="62046732"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
-  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Aug 2025 15:35:18 -0700
-X-CSE-ConnectionGUID: 6jX73bC2T3Opq9Yjcn+fYQ==
-X-CSE-MsgGUID: ILGDVUOPTqi4GxU0i/InIw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.17,312,1747724400"; 
-   d="scan'208";a="173076860"
-Received: from lkp-server02.sh.intel.com (HELO 4ea60e6ab079) ([10.239.97.151])
-  by fmviesa005.fm.intel.com with ESMTP; 22 Aug 2025 15:35:16 -0700
-Received: from kbuild by 4ea60e6ab079 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1upaLp-000LtD-3C;
-	Fri, 22 Aug 2025 22:35:13 +0000
-Date: Sat, 23 Aug 2025 06:34:41 +0800
-From: kernel test robot <lkp@intel.com>
-To: Lorenzo Bianconi <lorenzo@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: oe-kbuild-all@lists.linux.dev, netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next v2 2/3] net: airoha: Add airoha_ppe_dev struct
- definition
-Message-ID: <202508230602.GmZrkmas-lkp@intel.com>
-References: <20250822-airoha-en7581-wlan-rx-offload-v2-2-8a76e1d3fec2@kernel.org>
+	id 1upj72-00000004JQp-13Md;
+	Sat, 23 Aug 2025 07:56:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:From:Sender:Reply-To:
+	Content-ID:Content-Description:In-Reply-To:References;
+	bh=ZSqradjoNYlEMEbm1ZzV1lrstXti0Rv6XGYgH3hP2f4=; b=kag9FYfChUNkIwac6Q4QDJIkoL
+	xcKy2ETWtdEudf48Po1nDdErtOhdMH6VGfWlViKqc3Dpha6hIkFeKkf8SpbTdsXSkHmVa8FCfBbVA
+	xC+685zJeBjIp3KB2inhuRRx3ZcuJ1Dhyvl8SGm2ayU09ZyQFBs7IgrTi/8yqftW7v0XoDT/UQxq3
+	4Gdawg5GTNu0Aq1QLi/UbD78mmniha7LKljJhX9i9Bf7WZLsAV4bkumd9GRQrzQ0RkehN7fxnchiW
+	jr8Du+vv+0yr24dv0QyHesMpZHDRNsQOOZxWEETMNlCpdGnGlsE+8eQ5WSZ0d5aQhc3i+emwFSDvu
+	dRwLZqvg==;
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1upj6y-00000001L5A-3omQ;
+	Sat, 23 Aug 2025 07:56:31 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 009D0408B9;
+	Sat, 23 Aug 2025 07:56:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 73F99C4CEE7;
+	Sat, 23 Aug 2025 07:56:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1755935784;
+	bh=jH/zfECS1KSBq9y+UHL0sl+KGHKSrnJ/X+waTIEZKUs=;
+	h=From:Subject:Date:To:Cc:From;
+	b=WyQpAI8W8xXT2XCFMrkjkY3lqT3p0RkvOk1Ku7XJ/l2f52GHpOzG3g7yAELI9pOZD
+	 EWEUzAIoMXh7IMRDUVGkhAvJF6BwMJ6ei8KmZNnY+bKURE6GFx89IH/zPjbPpToE5Y
+	 e0y4Oueij+R+/GAIy3lsA8FB/cVHAGBDpsJaOdNI0y8/kdMki+Qa+yWldOesesTNip
+	 tG/bDgH6an8Qa9FAMyCodDOhalNmjwj8vvFyxynQ1wEHF7DQzmiz48aP6StHnFOM1x
+	 iBd3k60anVS4YJijSNu8hVJT/6E3OujL4n6Gb0UYAgS2e+od5t7IrgQO0qUh5yDGc1
+	 JtN4RagS/HsCg==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH net-next v3 0/3] net: airoha: Add PPE support for RX wlan
+ offload
+Date: Sat, 23 Aug 2025 09:56:01 +0200
+Message-Id: <20250823-airoha-en7581-wlan-rx-offload-v3-0-f78600ec3ed8@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250822-airoha-en7581-wlan-rx-offload-v2-2-8a76e1d3fec2@kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIABF0qWgC/43NQQ6CMBCF4auYrh3TDkLBlfcwLiYwhUbSmtZUD
+ OHuFla60uX/Ft+bReRgOYrTbhaBk43WuxzFfifagVzPYLvcAiWWslYNkA1+IGCny1rBcyQHYQJ
+ vzOipA4VsTFW1BoujyMY9sLHT5l+uuQcbHz68truk1vVfOSmQoBXJRrNkJHW+cXA8HnzoxUon/
+ OAQf3GYuZp0xaorDLf4xS3L8gbmzAWiGgEAAA==
+X-Change-ID: 20250819-airoha-en7581-wlan-rx-offload-12eff66cf234
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250822_153522_122225_0E2DE28B 
-X-CRM114-Status: UNSURE (   9.40  )
+X-CRM114-CacheID: sfid-20250823_085629_203334_7829732C 
+X-CRM114-Status: UNSURE (   7.96  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -93,50 +93,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Lorenzo,
+Introduce the missing bits to airoha ppe driver to offload traffic received
+by the MT76 driver (wireless NIC) and forwarded by the Packet Processor
+Engine (PPE) to the ethernet interface.
 
-kernel test robot noticed the following build errors:
+---
+Changes in v3:
+- Fix compilation error when CONFIG_NET_AIROHA is not enabled
+- Link to v2: https://lore.kernel.org/r/20250822-airoha-en7581-wlan-rx-offload-v2-0-8a76e1d3fec2@kernel.org
 
-[auto build test ERROR on a7bd72158063740212344fad5d99dcef45bc70d6]
+Changes in v2:
+- Rebase on top of net-next main branch
+- Link to v1: https://lore.kernel.org/r/20250819-airoha-en7581-wlan-rx-offload-v1-0-71a097e0e2a1@kernel.org
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Lorenzo-Bianconi/net-airoha-Rely-on-airoha_eth-struct-in-airoha_ppe_flow_offload_cmd-signature/20250822-151720
-base:   a7bd72158063740212344fad5d99dcef45bc70d6
-patch link:    https://lore.kernel.org/r/20250822-airoha-en7581-wlan-rx-offload-v2-2-8a76e1d3fec2%40kernel.org
-patch subject: [PATCH net-next v2 2/3] net: airoha: Add airoha_ppe_dev struct definition
-config: powerpc64-randconfig-003-20250823 (https://download.01.org/0day-ci/archive/20250823/202508230602.GmZrkmas-lkp@intel.com/config)
-compiler: powerpc64-linux-gcc (GCC) 10.5.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250823/202508230602.GmZrkmas-lkp@intel.com/reproduce)
+---
+Lorenzo Bianconi (3):
+      net: airoha: Rely on airoha_eth struct in airoha_ppe_flow_offload_cmd signature
+      net: airoha: Add airoha_ppe_dev struct definition
+      net: airoha: Introduce check_skb callback in ppe_dev ops
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202508230602.GmZrkmas-lkp@intel.com/
+ drivers/net/ethernet/airoha/airoha_eth.c  |   7 +-
+ drivers/net/ethernet/airoha/airoha_eth.h  |  12 ++--
+ drivers/net/ethernet/airoha/airoha_npu.c  |   1 -
+ drivers/net/ethernet/airoha/airoha_ppe.c  | 112 +++++++++++++++++++++++-------
+ include/linux/soc/airoha/airoha_offload.h |  55 +++++++++++++++
+ 5 files changed, 150 insertions(+), 37 deletions(-)
+---
+base-commit: b1c92cdf5af3198e8fbc1345a80e2a1dff386c02
+change-id: 20250819-airoha-en7581-wlan-rx-offload-12eff66cf234
 
-All errors (new ones prefixed by >>):
-
-   In file included from drivers/net/ethernet/airoha/airoha_eth.h:16,
-                    from drivers/net/ethernet/airoha/airoha_npu.c:15:
->> include/linux/soc/airoha/airoha_offload.h:31:15: error: unknown type name 'airoha_ppe_dev'
-      31 | static inline airoha_ppe_dev *airoha_ppe_get_dev(struct device *dev)
-         |               ^~~~~~~~~~~~~~
-
-
-vim +/airoha_ppe_dev +31 include/linux/soc/airoha/airoha_offload.h
-
-    24	
-    25	static inline int airoha_ppe_dev_setup_tc_block_cb(struct airoha_ppe_dev *dev,
-    26							   void *type_data)
-    27	{
-    28		return dev->ops.setup_tc_block_cb(dev, type_data);
-    29	}
-    30	#else
-  > 31	static inline airoha_ppe_dev *airoha_ppe_get_dev(struct device *dev)
-    32	{
-    33		return NULL;
-    34	}
-    35	
-
+Best regards,
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Lorenzo Bianconi <lorenzo@kernel.org>
+
 
