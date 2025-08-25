@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 086A1CA0FE7
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Aug 2025 15:01:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E59F1CA0FE7
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Aug 2025 15:01:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aKZKx2p1oPVlCSCZy03y0rJuHmXw4RrMXBPYRV5aIiQ=; b=HzeCQwhJOJWSZmjNIBO/Zq5q35
-	csSj5za3bCXfI/H1osxaeRURikyL6rbFhEm791j+DqgwXPpeePb9qopuEpHAD5CPkVpu5/YeK+lNB
-	LNCQ9BhsObWRLKK5C+t0MclZ69lLVQ2v/C3dUSiJeE2RwFohVbFU+eyxuuOR3DQTsLR/O3fEpVVPl
-	xAX6yHfsM57uAT4/peF6/c5W761ju2FJYRMFcoMcBhY+HAtYVYojBBUgmFAp49yDx2dQ4MgevWhnL
-	EMS5ssKjcgkS+y5EIoI339azfK9xy/fxKKVetfsnDOyG/7HScDwU7zUMuk3Pxxdm7/4Wz990vxoCe
-	NExecWuw==;
+	bh=BPrh1O+IxzDAj+XFXW7iuOJFl3foKL+pkVQU4oAeGUo=; b=g7xvXYuB05FxF2U1l0rGXRcZat
+	lHBvFYS5qp0/5MD3Rq5d1ZSNFWEpqJ0gSzhRh7BIp8ppg7LJPB6qSAQSsOyn3oynHTT2w+RkgjTBE
+	3mHyLYVmo5uy0xZgogTnhP4g5zW2u6QOw0Ydq8rV0HK7q8nQAAf0rNYiEIP3CNejslpKHKnQIc4H5
+	OratuI9tgTGg+IQsi0kypl6mGQfYTenkPw4yceffdReRGajpVyv/WY6/5czJi8qsscEOqBhwlwXnz
+	2cVtsB18rMme6bCShQRn/WH4cqerRz+n1mhOyiHbmV/3P3g+x3605NsFYl2RiVr6j6hcSm8+xTLHC
+	Fm2zxxWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqYhf-00000008Owy-3HFj;
-	Mon, 25 Aug 2025 15:01:47 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uqYhm-00000008P5Z-2fs7;
+	Mon, 25 Aug 2025 15:01:54 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqXUg-000000087hy-0oNm;
-	Mon, 25 Aug 2025 13:44:19 +0000
+	id 1uqXUl-000000087kx-1N71;
+	Mon, 25 Aug 2025 13:44:25 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id CC85A44D81;
-	Mon, 25 Aug 2025 13:44:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D9057C4CEF4;
-	Mon, 25 Aug 2025 13:44:05 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id A09BB5C5DCE;
+	Mon, 25 Aug 2025 13:44:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BF652C19422;
+	Mon, 25 Aug 2025 13:44:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756129446;
-	bh=zMbFg0p1Hsu9u9xOAhfW6MA410xngWSLfsvX95wACGc=;
+	s=k20201202; t=1756129462;
+	bh=ipEzi5m8pbpqql3fjjBZnFZQT/7rw8bUQKPrztMpMM4=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=D539xSRTSk7gVbYS0In1u7UHKAioWUMXAPgMZVTsJ4UYdi6oBoHBO/OGBSl7lEyqZ
-	 eDZ7NrxaZ/9G7fVk5Vyr58upJxP5r5aTNEMcBhYgPDnrtTK0TsaXeKIP6hC8n11s+I
-	 fViSDR0gUsjzvv2H6vX/dPZHpXlOPqZvF+FgqOMcSutWMuXgwm4HzJpjsjhLWSBPOu
-	 e8WT4GeZmbATJ11iP7T6n30oWo+caHGz7swuw0FESAzLChgiQ+DPrcwToNnYeJ8OBj
-	 cPate3Gc96pRxGluzjUF8tVIHzlQFTR8heaN9AKtvWyriBF20GN4jug5KguFTVXoBg
-	 tVRyDX4zozmpg==
+	b=R6BxImK3j0dba1VW7NlutrRy1g/KUZ1qqZE1WaUss3x7ZlEyQEHthgCTiHcU/avrC
+	 VWSzol0iJ8+TiS3OkdXJpIFI3QpzPBCKg+rJNHU9mzq4WhiTnHQXGZhvXwfTBN6ROm
+	 IN0Dv2L44se3r+E7TGJ6oKnVz0qXuMlC459msSUOXKo0PPznMTipOdfLpzoFFzTRSq
+	 N8cAXnW4rbJZs4UFHfhbZrSqiuLdGBfWNeP7tngkzjaDyLALQ/uas8EsDq99wTXszH
+	 0XhED3BE8hSAcoZD6oMXvtwi8vdccGik+7UILWudWPpGVbieHP1LA+1k0dwLTEAIjg
+	 oczy/mKj3U3eQ==
 From: Maxime Ripard <mripard@kernel.org>
-Date: Mon, 25 Aug 2025 15:43:16 +0200
-Subject: [PATCH 11/39] drm/atomic: Document __drm_planes_state state
- pointer
+Date: Mon, 25 Aug 2025 15:43:22 +0200
+Subject: [PATCH 17/39] drm/exynos: Switch to
+ drm_atomic_get_new_crtc_state()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250825-drm-no-more-existing-state-v1-11-f08ccd9f85c9@kernel.org>
+Message-Id: <20250825-drm-no-more-existing-state-v1-17-f08ccd9f85c9@kernel.org>
 References: <20250825-drm-no-more-existing-state-v1-0-f08ccd9f85c9@kernel.org>
 In-Reply-To: <20250825-drm-no-more-existing-state-v1-0-f08ccd9f85c9@kernel.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -104,17 +104,17 @@ Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
  linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
  Maxime Ripard <mripard@kernel.org>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1495; i=mripard@kernel.org;
- h=from:subject:message-id; bh=zMbFg0p1Hsu9u9xOAhfW6MA410xngWSLfsvX95wACGc=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDBlrMsr9Q/UYNH3vcu8WKZP+cuvO4z87sypsJ0/KsBAv+
- 7T+us/UjqksDMKcDLJiiixPZMJOL29fXOVgv/IHzBxWJpAhDFycAjARK2/Ghg6LC1efC/zc//XX
- +99TXoUsn3Zw/aYoxeh1Vr3LJry4abn1feW+sos1y/RN1y1Oyrl3W4Cx4VnoB6acxdObXtl/b3c
- 36Ql4+n5L/7bKSZw/nGZuKpUu1Yi8Y3VgQZ25v8KppAul+Q9fAgA=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1388; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=ipEzi5m8pbpqql3fjjBZnFZQT/7rw8bUQKPrztMpMM4=;
+ b=owGbwMvMwCmsHn9OcpHtvjLG02pJDBlrMipTb1Sk3RZolbgk0zR5R/cJzx6Jf/atcw2W/Xzwn
+ N8qn4u/YyoLgzAng6yYIssTmbDTy9sXVznYr/wBM4eVCWQIAxenAEzEbSdjw2GZbeJdb+1ff7r8
+ SbWP46nlxKZJbAcWHedZeiBER/KQSYHnzcrCtV3ZaUv8cic/axBjZazTkk0XuPuTYbH0j2U+QVL
+ V91LOHhW4FdKbyKbrcdrlEGPRQXOTqPmSURM0TgXXRfU8mQwA
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_064418_278938_EB25320B 
-X-CRM114-Status: GOOD (  14.71  )
+X-CRM114-CacheID: sfid-20250825_064423_487674_A08E9409 
+X-CRM114-Status: GOOD (  13.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,49 +129,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-While the old and new state pointers are somewhat self-explanatory, the
-state pointer and its relation to the other two really isn't.
+The exynos atomic_check implementation uses the deprecated
+drm_atomic_get_existing_crtc_state() helper.
 
-Now that we've cleaned up everything and it isn't used in any
-modesetting path, we can document what it's still useful for: to free
-the right state when we free the global state.
+This hook is called as part of the global atomic_check, thus before the
+states are swapped. The existing state thus points to the new state, and
+we can use drm_atomic_get_new_crtc_state() instead.
 
 Signed-off-by: Maxime Ripard <mripard@kernel.org>
 ---
- include/drm/drm_atomic.h | 16 +++++++++++++++-
- 1 file changed, 15 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/exynos/exynos_drm_plane.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/drm/drm_atomic.h b/include/drm/drm_atomic.h
-index 2f2c92fc4c20ee4e6abd6911bd574969d9cabbbb..89c9a059b36763205fc2fc764283423cbea62679 100644
---- a/include/drm/drm_atomic.h
-+++ b/include/drm/drm_atomic.h
-@@ -157,11 +157,25 @@ struct drm_crtc_commit {
- 	bool abort_completion;
- };
- 
- struct __drm_planes_state {
- 	struct drm_plane *ptr;
--	struct drm_plane_state *state, *old_state, *new_state;
-+
-+	/**
-+	 * @state:
-+	 *
-+	 * Used to track the @drm_plane_state we will need to free
-+	 * when tearing down the associated &drm_atomic_state.
-+	 *
-+	 * Before a commit, and the call to
-+	 * drm_atomic_helper_swap_state() in particular, it points to
-+	 * the same state than @new_state. After a commit, it points to
-+	 * the same state than @old_state.
-+	 */
-+	struct drm_plane_state *state;
-+
-+	struct drm_plane_state *old_state, *new_state;
- };
- 
- struct __drm_crtcs_state {
- 	struct drm_crtc *ptr;
- 	struct drm_crtc_state *state, *old_state, *new_state;
+diff --git a/drivers/gpu/drm/exynos/exynos_drm_plane.c b/drivers/gpu/drm/exynos/exynos_drm_plane.c
+index 7c3aa77186d3431d7020db4dec70332c0cfccb5d..6400070a4c9bcc00ecd0f21cbce1b5aafe1bff48 100644
+--- a/drivers/gpu/drm/exynos/exynos_drm_plane.c
++++ b/drivers/gpu/drm/exynos/exynos_drm_plane.c
+@@ -56,11 +56,11 @@ static int exynos_plane_get_size(int start, unsigned length, unsigned last)
+ static void exynos_plane_mode_set(struct exynos_drm_plane_state *exynos_state)
+ {
+ 	struct drm_plane_state *state = &exynos_state->base;
+ 	struct drm_crtc *crtc = state->crtc;
+ 	struct drm_crtc_state *crtc_state =
+-			drm_atomic_get_existing_crtc_state(state->state, crtc);
++		drm_atomic_get_new_crtc_state(state->state, crtc);
+ 	struct drm_display_mode *mode = &crtc_state->adjusted_mode;
+ 	int crtc_x, crtc_y;
+ 	unsigned int crtc_w, crtc_h;
+ 	unsigned int src_x, src_y;
+ 	unsigned int src_w, src_h;
 
 -- 
 2.50.1
