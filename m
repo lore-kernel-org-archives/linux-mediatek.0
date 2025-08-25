@@ -4,117 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FF0ACA0FE8
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Aug 2025 15:02:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 103BFCA0EFA
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Aug 2025 15:08:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BZxd9eYS815lGAS40gKDOSDnLp0ddSgV/akvsl4s/Kg=; b=umV+EcRBw9Gcc74EdPw8kbb6N8
-	cOQ0b1NfpTZyFdhkft61TO5J/L3/KR0K8grvnVW94gap/lHUCJjDpCDG5PezSCPVfZWDRmfEzj7z2
-	6N03Z/oIFwX7C0/DUQ9M+PsKlimE6XnKIlO6dAegGUKEyNpp5byALpbOs+xgjGni65y8jFPbhg9vy
-	PVjqXLSrIPv1yd88FZvkPcG06SeA6L/k1cYACxVs4W07Q4BK/ug400tGYCFm0TbVtQTy7a73IgOeu
-	GSfmcrKOslLR0KMAe/nEL+mAEmXIZxVfKi7Z4USyREkJrTL5CJ1gdpuqEI4qXzTHdQFDS2L0LMTAA
-	vt0JfS/g==;
+	bh=D+Wj4lspzxilYHnL2n/XBAI4pOdiOAnsXLwAw+4PFe4=; b=u3yU7TPJC1T+yQI4ol9MSvABSs
+	0b3eolDlkSbnSLE007GMRGieJ7tu7C7sKYC84vD5/Cm7ontD9LNHke5NiYXjBgxFoknRy8DNdS1EB
+	rzzGHvN/VC2aNW4Vaj5c6FLCRzpESskk7m4w2a51meiWCHKWfI8179+L98hWAmzspPPG7cmjOzNQx
+	4FyUEQjoB8DExbtyKRLJ9m2fGdSqp4LuVcQxAhrUZ6PN0GC+bCKfhiRFeZA6upwnqEe74exeIgokS
+	jDi0ZCILigW/Rkrz1dAhhHl89Sof/+YpUDU9donBPBr/pqACdjVwEkMH7LV1vbZKSd5MG/h9nfREf
+	TptxSqTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqYim-00000008QUL-3VQ6;
-	Mon, 25 Aug 2025 15:02:56 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1uqYny-00000008SM7-13BF;
+	Mon, 25 Aug 2025 15:08:18 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqXVl-000000088KV-1bDp;
-	Mon, 25 Aug 2025 13:45:26 +0000
+	id 1uqXx7-00000008DHI-1hS1;
+	Mon, 25 Aug 2025 14:13:42 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id BB9A45C5E39;
-	Mon, 25 Aug 2025 13:45:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 92DFDC19423;
-	Mon, 25 Aug 2025 13:45:12 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 6E75844DB9;
+	Mon, 25 Aug 2025 14:13:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4EED3C113D0;
+	Mon, 25 Aug 2025 14:13:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756129513;
-	bh=YPy4z4OaJoWUL9r4KrGzI/WKjSjH8TP5L3pV+kz8Tdg=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=kHPoqmIKFxMx29yCm9My/Ia0c6HynNhlcgUCc3kcBWfFAxgwb9hmbKmed6kdKTInR
-	 VyC/9fJVC2g6e9wB0rQnWTZZnz//e5fzg7BAaC+8lPqXDaO+6qC3Hw63tPVV3dmzj5
-	 2XEf2UxmqSjDQ9sNZChmihl3Hh6LukbtI6GghaMlOyPPyzOjnwuJF+mLqNW38hsSQ1
-	 VRIApolTvHJIHUVklziyPQ7B46qjruca2szEJykJFON3oAu+1e3hcHnjuRzz6l3m2a
-	 JcKnwRS08Ft8Nf0CdyZnQQUlDqypDg8KHGKttrOOX6SBYoHGUASoyzjwDyEmpSVBov
-	 6imh0w7Zcreow==
-From: Maxime Ripard <mripard@kernel.org>
-Date: Mon, 25 Aug 2025 15:43:41 +0200
-Subject: [PATCH 36/39] drm/atomic: Remove unused
- drm_atomic_get_existing_crtc_state()
+	s=k20201202; t=1756131220;
+	bh=3RLeKCKpDIk2eBgGx5sPwZfoBKyVmeEo49RWhYh8Kh8=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=e4fvRADWc2SiGyvairwMKdDw1zm1wGOXThGQeER0f4MYqsGYBRhD4UrfH+q2kimaE
+	 978Vxb2gnRrcxwK29zKxBr5sDuyaM7DyuM68nemBfDcJoWAJvdefCrMf4ky3tm3mTR
+	 ZEf5XaC0Deu8RHdTatQRuIX1UHKAPHYmvItTm0G3jHrBoDa0LYl7qMs/ZPY2JpgApc
+	 lQtDHIn1yKhsLsiU+tvHyxR+ZutYlrHGoRZcd4IzOHtkeInzrDGgR65atrSWLdNsYt
+	 TaeLwZDvBl70cfWDcKc3Px3Inhk2GTRE0IlvBDIzWF32uT29HeibPtjI2oz6UM54HE
+	 cW6lqbzTmXm7Q==
+Received: by mail-ot1-f54.google.com with SMTP id 46e09a7af769-74526ca79c2so206301a34.3;
+        Mon, 25 Aug 2025 07:13:40 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCUUQG/9/Ge5CHWbTTZH2g+DLp1lqRiNnE4+4H38yBR3mqcqK7V4KG3LTgv0M8wVFg+WMMVK52q1trWVtrDVqx9o@lists.infradead.org, AJvYcCXadzhzBHlULOMddENdhIIa7JgulEbfMrjjAEr8K/G4+PXiUkmVDFXRttrx1Wrh9sMg3mbQH/lthlr15dN0J4g=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzBflFzdfW2d8NZeGbwSX+nHoqT3TtlDGZqj3wRuY5MnhtHkB3F
+	uHoFlbV5iJpXkcaaGwO1RotLl54sqC2aqmlxMkC/nSmE99PrmBuzY3q8vMWCr3Y9A1hKcOmyJWY
+	T/V6hB2kHrTJTb+aVDA84gAyO0HDS/bc=
+X-Google-Smtp-Source: AGHT+IGEnV+1YshDCmjAscdFjkSNQru4o/XG/DWYuObgbMiwP57k9JdqOZlPe3YdSW0fnLXsvsMiCF3QToEZVDUm+Q8=
+X-Received: by 2002:a05:6830:d18:b0:742:fd7f:e105 with SMTP id
+ 46e09a7af769-74500aafdb9mr6734918a34.19.1756131219164; Mon, 25 Aug 2025
+ 07:13:39 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250825-drm-no-more-existing-state-v1-36-f08ccd9f85c9@kernel.org>
-References: <20250825-drm-no-more-existing-state-v1-0-f08ccd9f85c9@kernel.org>
-In-Reply-To: <20250825-drm-no-more-existing-state-v1-0-f08ccd9f85c9@kernel.org>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>, Louis Chauvet <louis.chauvet@bootlin.com>, 
- Haneen Mohammed <hamohammed.sa@gmail.com>, 
- Melissa Wen <melissa.srw@gmail.com>, Jyri Sarha <jyri.sarha@iki.fi>, 
- Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
- Paul Cercueil <paul@crapouillou.net>, Liviu Dudau <liviu.dudau@arm.com>, 
- Russell King <linux@armlinux.org.uk>, 
- Manikandan Muralidharan <manikandan.m@microchip.com>, 
- Dharma Balasubiramani <dharma.b@microchip.com>, 
- Nicolas Ferre <nicolas.ferre@microchip.com>, 
- Alexandre Belloni <alexandre.belloni@bootlin.com>, 
- Claudiu Beznea <claudiu.beznea@tuxon.dev>, Inki Dae <inki.dae@samsung.com>, 
- Seung-Woo Kim <sw0312.kim@samsung.com>, 
- Kyungmin Park <kyungmin.park@samsung.com>, 
- Krzysztof Kozlowski <krzk@kernel.org>, 
- Alim Akhtar <alim.akhtar@samsung.com>, Liu Ying <victor.liu@nxp.com>, 
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Fabio Estevam <festevam@gmail.com>, 
- Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, 
- Lucas Stach <l.stach@pengutronix.de>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Anitha Chrisanthus <anitha.chrisanthus@intel.com>, 
- Edmund Dea <edmund.j.dea@intel.com>, Paul Kocialkowski <paulk@sys-base.io>, 
- Sui Jingfeng <suijingfeng@loongson.cn>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Rob Clark <robin.clark@oss.qualcomm.com>, 
- Dmitry Baryshkov <lumag@kernel.org>, 
- Abhinav Kumar <abhinav.kumar@linux.dev>, 
- Jessica Zhang <jessica.zhang@oss.qualcomm.com>, Sean Paul <sean@poorly.run>, 
- Marijn Suijten <marijn.suijten@somainline.org>, 
- Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>, 
- Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Samuel Holland <samuel@sholland.org>, 
- Thierry Reding <thierry.reding@gmail.com>, 
- Mikko Perttunen <mperttunen@nvidia.com>, 
- Jonathan Hunter <jonathanh@nvidia.com>, Hans de Goede <hansg@kernel.org>, 
- Dave Stevenson <dave.stevenson@raspberrypi.com>, 
- =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
- linux-mips@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-samsung-soc@vger.kernel.org, imx@lists.linux.dev, 
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
- freedreno@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
- Maxime Ripard <mripard@kernel.org>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1526; i=mripard@kernel.org;
- h=from:subject:message-id; bh=YPy4z4OaJoWUL9r4KrGzI/WKjSjH8TP5L3pV+kz8Tdg=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDBlrMpq4z94/mjM5g9Gl0v3fvtfWyp5dT7wuFtZMsp/gl
- eIZan+sYyoLgzAng6yYIssTmbDTy9sXVznYr/wBM4eVCWQIAxenAEzkynTG+hyu5J/GXy8duvOo
- 4fv8iRN2VqVmNm5UWeSgEa+vcukzd0qmT7536edZnF1hJzQaVFfJMjYs3KU6QfJc4bONmvHWIZG
- S8hP3GjXyxnVtUFv68/QjN0bPlW9OL7vpsU28f+2NGj/7yfsB
-X-Developer-Key: i=mripard@kernel.org; a=openpgp;
- fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
+References: <20250825092833.42441-1-zhangzihuan@kylinos.cn>
+In-Reply-To: <20250825092833.42441-1-zhangzihuan@kylinos.cn>
+From: "Rafael J. Wysocki" <rafael@kernel.org>
+Date: Mon, 25 Aug 2025 16:13:27 +0200
+X-Gmail-Original-Message-ID: <CAJZ5v0g7rJn=z5p4DuJJoPpZrR5ismYftpDWp5X=z74DqaGYBQ@mail.gmail.com>
+X-Gm-Features: Ac12FXwCyvYKc8Ipwt4NeaLRZNsWY9t1kMBiUFhDRbkfLg-XPnoGM5Pxq1PIQzg
+Message-ID: <CAJZ5v0g7rJn=z5p4DuJJoPpZrR5ismYftpDWp5X=z74DqaGYBQ@mail.gmail.com>
+Subject: Re: [PATCH v1] cpufreq: use __free() for all cpufreq_cpu_get() references
+To: Zihuan Zhang <zhangzihuan@kylinos.cn>
+Cc: "Rafael J . wysocki" <rafael@kernel.org>, Viresh Kumar <viresh.kumar@linaro.org>, 
+	Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, 
+	Sean Christopherson <seanjc@google.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+	Thomas Gleixner <tglx@linutronix.de>, Ingo Molnar <mingo@redhat.com>, Borislav Petkov <bp@alien8.de>, 
+	Dave Hansen <dave.hansen@linux.intel.com>, Markus Mayer <mmayer@broadcom.com>, 
+	Florian Fainelli <florian.fainelli@broadcom.com>, 
+	Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>, 
+	Madhavan Srinivasan <maddy@linux.ibm.com>, Michael Ellerman <mpe@ellerman.id.au>, 
+	Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, 
+	Chanwoo Choi <cw00.choi@samsung.com>, Jani Nikula <jani.nikula@linux.intel.com>, 
+	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, 
+	Tvrtko Ursulin <tursulin@ursulin.net>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Daniel Lezcano <daniel.lezcano@kernel.org>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>, 
+	Eduardo Valentin <edubezval@gmail.com>, Keerthy <j-keerthy@ti.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	zhenglifeng <zhenglifeng1@huawei.com>, "H . Peter Anvin" <hpa@zytor.com>, Zhang Rui <rui.zhang@intel.com>, 
+	Len Brown <lenb@kernel.org>, Nicholas Piggin <npiggin@gmail.com>, 
+	Christophe Leroy <christophe.leroy@csgroup.eu>, Lukasz Luba <lukasz.luba@arm.com>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Beata Michalska <beata.michalska@arm.com>, 
+	Fabio Estevam <festevam@gmail.com>, Pavel Machek <pavel@kernel.org>, Sumit Gupta <sumitg@nvidia.com>, 
+	Prasanna Kumar T S M <ptsm@linux.microsoft.com>, Sudeep Holla <sudeep.holla@arm.com>, 
+	Yicong Yang <yangyicong@hisilicon.com>, linux-pm@vger.kernel.org, x86@kernel.org, 
+	kvm@vger.kernel.org, linux-acpi@vger.kernel.org, 
+	linuxppc-dev@lists.ozlabs.org, linux-samsung-soc@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-tegra@vger.kernel.org, 
+	intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org, 
+	imx@lists.linux.dev, linux-omap@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_064525_509391_12A487CD 
-X-CRM114-Status: GOOD (  11.54  )
+X-CRM114-CacheID: sfid-20250825_071341_482562_E8107008 
+X-CRM114-Status: GOOD (  19.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,49 +112,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The drm_atomic_get_existing_crtc_state() function is deprecated and
-isn't used anymore, so let's remove it.
+On Mon, Aug 25, 2025 at 11:29=E2=80=AFAM Zihuan Zhang <zhangzihuan@kylinos.=
+cn> wrote:
+>
+> This patch replaces all remaining uses of cpufreq_cpu_get() with
+> the __free(cpufreq_cpu_put) annotation.
+>
+> Motivation:
+> - Ensures automatic cleanup of policy references when they go out of scop=
+e,
+>   reducing the risk of forgetting to call cpufreq_cpu_put() on early retu=
+rn
+>   or error paths.
+> - Brings the code in line with the latest kernel coding style and best
+>   practices for managing reference-counted objects.
+> - No functional changes are introduced; behavior remains the same,
+>   but reference counting is now safer and easier to maintain.
+>
+> Signed-off-by: Zihuan Zhang <zhangzihuan@kylinos.cn>
+> ---
+>  arch/arm64/kernel/topology.c                  |  9 +++----
+>  arch/x86/kvm/x86.c                            | 10 ++++----
+>  drivers/acpi/processor_thermal.c              | 13 ++++------
+>  drivers/cpufreq/brcmstb-avs-cpufreq.c         |  4 +---
+>  drivers/cpufreq/cppc_cpufreq.c                |  4 +---
+>  drivers/cpufreq/intel_pstate.c                |  3 +--
+>  drivers/cpufreq/longhaul.c                    |  3 +--
+>  drivers/cpufreq/mediatek-cpufreq.c            |  6 ++---
+>  drivers/cpufreq/powernv-cpufreq.c             |  6 ++---
+>  drivers/cpufreq/s5pv210-cpufreq.c             |  3 +--
+>  drivers/cpufreq/tegra186-cpufreq.c            |  3 +--
+>  drivers/devfreq/governor_passive.c            | 19 ++++-----------
+>  drivers/gpu/drm/i915/gt/intel_llc.c           |  3 +--
+>  drivers/macintosh/windfarm_cpufreq_clamp.c    |  4 +---
+>  drivers/powercap/dtpm_cpu.c                   | 24 ++++++-------------
+>  drivers/thermal/imx_thermal.c                 |  7 ++----
+>  .../ti-soc-thermal/ti-thermal-common.c        |  5 +---
+>  kernel/power/energy_model.c                   |  7 ++----
+>  18 files changed, 40 insertions(+), 93 deletions(-)
 
-Signed-off-by: Maxime Ripard <mripard@kernel.org>
----
- include/drm/drm_atomic.h | 18 ------------------
- 1 file changed, 18 deletions(-)
+This changes different pieces of code maintained by different people
+and the changes are not interdependent AFAICS, so better send it as a
+series of separate patches.
 
-diff --git a/include/drm/drm_atomic.h b/include/drm/drm_atomic.h
-index 89c9a059b36763205fc2fc764283423cbea62679..cba63857e920515b48b75fc3c2d5239fc1ae59c1 100644
---- a/include/drm/drm_atomic.h
-+++ b/include/drm/drm_atomic.h
-@@ -663,28 +663,10 @@ drm_atomic_get_old_crtc_for_encoder(struct drm_atomic_state *state,
- 					 struct drm_encoder *encoder);
- struct drm_crtc *
- drm_atomic_get_new_crtc_for_encoder(struct drm_atomic_state *state,
- 					 struct drm_encoder *encoder);
- 
--/**
-- * drm_atomic_get_existing_crtc_state - get CRTC state, if it exists
-- * @state: global atomic state object
-- * @crtc: CRTC to grab
-- *
-- * This function returns the CRTC state for the given CRTC, or NULL
-- * if the CRTC is not part of the global atomic state.
-- *
-- * This function is deprecated, @drm_atomic_get_old_crtc_state or
-- * @drm_atomic_get_new_crtc_state should be used instead.
-- */
--static inline struct drm_crtc_state *
--drm_atomic_get_existing_crtc_state(const struct drm_atomic_state *state,
--				   struct drm_crtc *crtc)
--{
--	return state->crtcs[drm_crtc_index(crtc)].state;
--}
--
- /**
-  * drm_atomic_get_old_crtc_state - get old CRTC state, if it exists
-  * @state: global atomic state object
-  * @crtc: CRTC to grab
-  *
-
--- 
-2.50.1
-
+Thanks!
 
