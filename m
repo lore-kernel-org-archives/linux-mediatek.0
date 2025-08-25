@@ -4,100 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 103BFCA0EFA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Aug 2025 15:08:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5513ACA0FE7
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Aug 2025 15:55:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=D+Wj4lspzxilYHnL2n/XBAI4pOdiOAnsXLwAw+4PFe4=; b=u3yU7TPJC1T+yQI4ol9MSvABSs
-	0b3eolDlkSbnSLE007GMRGieJ7tu7C7sKYC84vD5/Cm7ontD9LNHke5NiYXjBgxFoknRy8DNdS1EB
-	rzzGHvN/VC2aNW4Vaj5c6FLCRzpESskk7m4w2a51meiWCHKWfI8179+L98hWAmzspPPG7cmjOzNQx
-	4FyUEQjoB8DExbtyKRLJ9m2fGdSqp4LuVcQxAhrUZ6PN0GC+bCKfhiRFeZA6upwnqEe74exeIgokS
-	jDi0ZCILigW/Rkrz1dAhhHl89Sof/+YpUDU9donBPBr/pqACdjVwEkMH7LV1vbZKSd5MG/h9nfREf
-	TptxSqTQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=yb2SBUjk2cUBYlIMJ026/BKU22gh35Mp+MWKmgCVX6Y=; b=tK1XTKLcjoeFhVGpID05RfX+C3
+	yxVIgvp75qmf1GlgJA6JBgRquSbLxWby2/VnnRt2dp4m7IZXz+nkxxNtEeafdTK9tD4hHisVuUMRt
+	QraLKfumUfrK5iiNKfUNeFRWkfxWGXeJaMcYysWIhtxBkDwkeHuyzVXvxg1ybPGGJELx+WfbKqcaG
+	kSnC4yBognaP7feG6woDWIyYFq5Pm8GtQYv8G+V4RM9Pgjj0mwnJ4a5YRQ42w+OW5BuZTbKgH8mYp
+	6r6UREFnmGjTE+iJhb5GzYCLHoW5syhGclVjYbSyQJQmh2uey/KMX87t0W+yzx/0jAQn3sBMcVcR9
+	kOepUfAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqYny-00000008SM7-13BF;
-	Mon, 25 Aug 2025 15:08:18 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1uqZXk-00000008ZuA-3kGg;
+	Mon, 25 Aug 2025 15:55:36 +0000
+Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqXx7-00000008DHI-1hS1;
-	Mon, 25 Aug 2025 14:13:42 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6E75844DB9;
-	Mon, 25 Aug 2025 14:13:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4EED3C113D0;
-	Mon, 25 Aug 2025 14:13:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756131220;
-	bh=3RLeKCKpDIk2eBgGx5sPwZfoBKyVmeEo49RWhYh8Kh8=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=e4fvRADWc2SiGyvairwMKdDw1zm1wGOXThGQeER0f4MYqsGYBRhD4UrfH+q2kimaE
-	 978Vxb2gnRrcxwK29zKxBr5sDuyaM7DyuM68nemBfDcJoWAJvdefCrMf4ky3tm3mTR
-	 ZEf5XaC0Deu8RHdTatQRuIX1UHKAPHYmvItTm0G3jHrBoDa0LYl7qMs/ZPY2JpgApc
-	 lQtDHIn1yKhsLsiU+tvHyxR+ZutYlrHGoRZcd4IzOHtkeInzrDGgR65atrSWLdNsYt
-	 TaeLwZDvBl70cfWDcKc3Px3Inhk2GTRE0IlvBDIzWF32uT29HeibPtjI2oz6UM54HE
-	 cW6lqbzTmXm7Q==
-Received: by mail-ot1-f54.google.com with SMTP id 46e09a7af769-74526ca79c2so206301a34.3;
-        Mon, 25 Aug 2025 07:13:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCUUQG/9/Ge5CHWbTTZH2g+DLp1lqRiNnE4+4H38yBR3mqcqK7V4KG3LTgv0M8wVFg+WMMVK52q1trWVtrDVqx9o@lists.infradead.org, AJvYcCXadzhzBHlULOMddENdhIIa7JgulEbfMrjjAEr8K/G4+PXiUkmVDFXRttrx1Wrh9sMg3mbQH/lthlr15dN0J4g=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzBflFzdfW2d8NZeGbwSX+nHoqT3TtlDGZqj3wRuY5MnhtHkB3F
-	uHoFlbV5iJpXkcaaGwO1RotLl54sqC2aqmlxMkC/nSmE99PrmBuzY3q8vMWCr3Y9A1hKcOmyJWY
-	T/V6hB2kHrTJTb+aVDA84gAyO0HDS/bc=
-X-Google-Smtp-Source: AGHT+IGEnV+1YshDCmjAscdFjkSNQru4o/XG/DWYuObgbMiwP57k9JdqOZlPe3YdSW0fnLXsvsMiCF3QToEZVDUm+Q8=
-X-Received: by 2002:a05:6830:d18:b0:742:fd7f:e105 with SMTP id
- 46e09a7af769-74500aafdb9mr6734918a34.19.1756131219164; Mon, 25 Aug 2025
- 07:13:39 -0700 (PDT)
+	id 1uqYpL-00000008Sng-1Ao0
+	for linux-mediatek@lists.infradead.org;
+	Mon, 25 Aug 2025 15:09:45 +0000
+Received: by mail-pj1-x102a.google.com with SMTP id 98e67ed59e1d1-323267b98a4so3617133a91.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 25 Aug 2025 08:09:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1756134582; x=1756739382; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=yb2SBUjk2cUBYlIMJ026/BKU22gh35Mp+MWKmgCVX6Y=;
+        b=CuILnwSYc5JGmk51Yb1xmr/PiDDiMqO1Af3tsbeYlujVtk+lgtLDJVzdqdFSKu/prD
+         EjRH9Qi/6sS+nOOU/fgu1OU+HJn96O9ibWjSaOnPWt1Jb4JvVR+B9eOeWbVD2Cb4TgmH
+         Ar4OviR4qGMtfIJIpFp3QKls4RT3/h3p0aHs0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1756134582; x=1756739382;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=yb2SBUjk2cUBYlIMJ026/BKU22gh35Mp+MWKmgCVX6Y=;
+        b=r9zj8LeUmvKlYrzJZVPaVG6CIFT8gFoi65Js7dEWWtH7a4jeO18ZPwaggdGa0+zdj0
+         4z6MGif3uluvTXzL7a89e+rxjmuOfdYdRI6e83yEuIbaJu7ayYM2zY5EMLTIPyBD0Gbl
+         mnhF7p6Iu29ntpa+7wbeu5GdP9QPSFT5+hCyIHIj7+X+2/NLZkI0XFSuqvLEttc2XO8p
+         p8MlMCLc8mwNKjv9cKtpRnRuR0TlpF8N2DQ2rIWAXjNrWth5nk43926xLR4u3RI5npEn
+         2pmOkTZReaASWjJQcaAbys4F0e+lXHKJG6ATQiqveyI5C+1+3V6wck5wFl3qm8g5FBgg
+         i89A==
+X-Forwarded-Encrypted: i=1; AJvYcCWTY8G5uQLIga0cSvNT+vDIY9yqeqDzLQkeJC2EJqlMhjVmyNcQAtKKEzCZtU+O12etqaIDjbU1EKwfIyecEg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwCptX68jbqOyy2eI8ze1FlWhB+hanKCUwnkivkigX3u9Yqg4o/
+	3lowJSIsyFphLeMkSZLAnJKm5hOcSAdtZ5x2weVfjLShiJQPCbY0pHKLaIPYvI9++A==
+X-Gm-Gg: ASbGncuLt8hJdtnBun+GJiGhESvb8rY3JkQy3IJELJLxGhA4c69neO8GIznJmBpFhor
+	oK5VqkVQ7/Iz0RkDs9oWwpYz+MW/6fcGma+uHHYOj8MWIH/6wgGxzhK1/EtB5upj1zltjGLGAD5
+	TkJlsvrnfi6gcBwCpAUwWROYlcNNsFivI0TlNzA7/mYdFWEaNvT0AOTr2HChad3iyMnFSf2p/mY
+	+i7S9qlbz8b5NlS6ABbx4INDp+tDMCTNY/3Cu5HuBja+tNj0NzVjmeXMYmtVWNjcBOY0+jd9ZlD
+	o7aUIEEApFCG0Rg0RtR1CwKgYO1CAEOsLlHSS7VR0sniM66RnDmU75Q+ETDeOl8uq7FIImXWPQw
+	s/+SjMLWPeUYK6sunw5CLft5VPJirbVAnLESq5g30
+X-Google-Smtp-Source: AGHT+IHPJV4TXa61Ud+4jPZUdeIqShsQV2PbYlibNvBybfblxKwhUtY23QymfLSEF6L//QSRFz+xzQ==
+X-Received: by 2002:a17:90b:3e44:b0:313:f9fc:7213 with SMTP id 98e67ed59e1d1-3251744bd41mr15706597a91.21.1756134582435;
+        Mon, 25 Aug 2025 08:09:42 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:d5a9:711e:13f5:e60f])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3254a1e4067sm7481215a91.10.2025.08.25.08.09.40
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 25 Aug 2025 08:09:42 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Stephen Boyd <sboyd@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	linux-clk@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2] clk: mediatek: clk-mux: Do not pass flags to clk_mux_determine_rate_flags()
+Date: Mon, 25 Aug 2025 23:09:31 +0800
+Message-ID: <20250825150932.3695931-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.51.0.261.g7ce5a0a67e-goog
 MIME-Version: 1.0
-References: <20250825092833.42441-1-zhangzihuan@kylinos.cn>
-In-Reply-To: <20250825092833.42441-1-zhangzihuan@kylinos.cn>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Mon, 25 Aug 2025 16:13:27 +0200
-X-Gmail-Original-Message-ID: <CAJZ5v0g7rJn=z5p4DuJJoPpZrR5ismYftpDWp5X=z74DqaGYBQ@mail.gmail.com>
-X-Gm-Features: Ac12FXwCyvYKc8Ipwt4NeaLRZNsWY9t1kMBiUFhDRbkfLg-XPnoGM5Pxq1PIQzg
-Message-ID: <CAJZ5v0g7rJn=z5p4DuJJoPpZrR5ismYftpDWp5X=z74DqaGYBQ@mail.gmail.com>
-Subject: Re: [PATCH v1] cpufreq: use __free() for all cpufreq_cpu_get() references
-To: Zihuan Zhang <zhangzihuan@kylinos.cn>
-Cc: "Rafael J . wysocki" <rafael@kernel.org>, Viresh Kumar <viresh.kumar@linaro.org>, 
-	Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, 
-	Sean Christopherson <seanjc@google.com>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Thomas Gleixner <tglx@linutronix.de>, Ingo Molnar <mingo@redhat.com>, Borislav Petkov <bp@alien8.de>, 
-	Dave Hansen <dave.hansen@linux.intel.com>, Markus Mayer <mmayer@broadcom.com>, 
-	Florian Fainelli <florian.fainelli@broadcom.com>, 
-	Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>, 
-	Madhavan Srinivasan <maddy@linux.ibm.com>, Michael Ellerman <mpe@ellerman.id.au>, 
-	Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, 
-	Chanwoo Choi <cw00.choi@samsung.com>, Jani Nikula <jani.nikula@linux.intel.com>, 
-	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, 
-	Tvrtko Ursulin <tursulin@ursulin.net>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Daniel Lezcano <daniel.lezcano@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>, 
-	Eduardo Valentin <edubezval@gmail.com>, Keerthy <j-keerthy@ti.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	zhenglifeng <zhenglifeng1@huawei.com>, "H . Peter Anvin" <hpa@zytor.com>, Zhang Rui <rui.zhang@intel.com>, 
-	Len Brown <lenb@kernel.org>, Nicholas Piggin <npiggin@gmail.com>, 
-	Christophe Leroy <christophe.leroy@csgroup.eu>, Lukasz Luba <lukasz.luba@arm.com>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Beata Michalska <beata.michalska@arm.com>, 
-	Fabio Estevam <festevam@gmail.com>, Pavel Machek <pavel@kernel.org>, Sumit Gupta <sumitg@nvidia.com>, 
-	Prasanna Kumar T S M <ptsm@linux.microsoft.com>, Sudeep Holla <sudeep.holla@arm.com>, 
-	Yicong Yang <yangyicong@hisilicon.com>, linux-pm@vger.kernel.org, x86@kernel.org, 
-	kvm@vger.kernel.org, linux-acpi@vger.kernel.org, 
-	linuxppc-dev@lists.ozlabs.org, linux-samsung-soc@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-tegra@vger.kernel.org, 
-	intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org, 
-	imx@lists.linux.dev, linux-omap@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_071341_482562_E8107008 
-X-CRM114-Status: GOOD (  19.63  )
+X-CRM114-CacheID: sfid-20250825_080943_362176_A0591FC1 
+X-CRM114-Status: GOOD (  10.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,48 +97,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 25, 2025 at 11:29=E2=80=AFAM Zihuan Zhang <zhangzihuan@kylinos.=
-cn> wrote:
->
-> This patch replaces all remaining uses of cpufreq_cpu_get() with
-> the __free(cpufreq_cpu_put) annotation.
->
-> Motivation:
-> - Ensures automatic cleanup of policy references when they go out of scop=
-e,
->   reducing the risk of forgetting to call cpufreq_cpu_put() on early retu=
-rn
->   or error paths.
-> - Brings the code in line with the latest kernel coding style and best
->   practices for managing reference-counted objects.
-> - No functional changes are introduced; behavior remains the same,
->   but reference counting is now safer and easier to maintain.
->
-> Signed-off-by: Zihuan Zhang <zhangzihuan@kylinos.cn>
-> ---
->  arch/arm64/kernel/topology.c                  |  9 +++----
->  arch/x86/kvm/x86.c                            | 10 ++++----
->  drivers/acpi/processor_thermal.c              | 13 ++++------
->  drivers/cpufreq/brcmstb-avs-cpufreq.c         |  4 +---
->  drivers/cpufreq/cppc_cpufreq.c                |  4 +---
->  drivers/cpufreq/intel_pstate.c                |  3 +--
->  drivers/cpufreq/longhaul.c                    |  3 +--
->  drivers/cpufreq/mediatek-cpufreq.c            |  6 ++---
->  drivers/cpufreq/powernv-cpufreq.c             |  6 ++---
->  drivers/cpufreq/s5pv210-cpufreq.c             |  3 +--
->  drivers/cpufreq/tegra186-cpufreq.c            |  3 +--
->  drivers/devfreq/governor_passive.c            | 19 ++++-----------
->  drivers/gpu/drm/i915/gt/intel_llc.c           |  3 +--
->  drivers/macintosh/windfarm_cpufreq_clamp.c    |  4 +---
->  drivers/powercap/dtpm_cpu.c                   | 24 ++++++-------------
->  drivers/thermal/imx_thermal.c                 |  7 ++----
->  .../ti-soc-thermal/ti-thermal-common.c        |  5 +---
->  kernel/power/energy_model.c                   |  7 ++----
->  18 files changed, 40 insertions(+), 93 deletions(-)
+The `flags` in |struct mtk_mux| are core clk flags, not mux clk flags.
+Passing one to the other is wrong.
 
-This changes different pieces of code maintained by different people
-and the changes are not interdependent AFAICS, so better send it as a
-series of separate patches.
+Since there aren't any actual users adding CLK_MUX_* flags, just drop it
+for now.
 
-Thanks!
+Fixes: b05ea3314390 ("clk: mediatek: clk-mux: Add .determine_rate() callback")
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+Changes since v1:
+- Dropped unused variable
+---
+ drivers/clk/mediatek/clk-mux.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/drivers/clk/mediatek/clk-mux.c b/drivers/clk/mediatek/clk-mux.c
+index 60990296450b..9a12e58230be 100644
+--- a/drivers/clk/mediatek/clk-mux.c
++++ b/drivers/clk/mediatek/clk-mux.c
+@@ -146,9 +146,7 @@ static int mtk_clk_mux_set_parent_setclr_lock(struct clk_hw *hw, u8 index)
+ static int mtk_clk_mux_determine_rate(struct clk_hw *hw,
+ 				      struct clk_rate_request *req)
+ {
+-	struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
+-
+-	return clk_mux_determine_rate_flags(hw, req, mux->data->flags);
++	return clk_mux_determine_rate_flags(hw, req, 0);
+ }
+ 
+ const struct clk_ops mtk_mux_clr_set_upd_ops = {
+-- 
+2.51.0.261.g7ce5a0a67e-goog
+
 
