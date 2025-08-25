@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D807CA0EFA
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8061BCA0FED
 	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Aug 2025 16:31:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,43 +12,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gy8tHfbB7dfOahNj9sqb31f4STqmaO2eDuwe05dy/tQ=; b=YLJ+9Lg6WiOlEuVx6YC3Nxdv7j
-	cJwozjCfVlMu1UwdTBRYd/RnvSp8G9yTANPTWtZqXynL+OUNz5b6xiEDa8vjDPPWM3tjoP8QT6lFo
-	YBS0l5uaCj0ed+RDN+TNEG3kVUgvmUWZQ7+JMnnba5vrh0kDlMLoLlXFctXP2upfeX1g6eAIywId2
-	5yGNUjYS1wS6ADx9c85iBmw89gxCgqz8vUEWdmhc1SyzF+eNUxyhZDIp/wW3bO6JNNGh6lMnB7WCj
-	JHsPvfLCgreLDHXRTCJyhg13c+aYirheXD0Bdy0A0OwtoBeBK/5yzKl6yqpWMv7udQhV/5oM7Fn8s
-	GEttGGuQ==;
+	bh=EhyqT5/Q1ZXtqubHnY3zddlOH8QWimHjDyFRzwlGGdo=; b=cOvYk0/Zh61USRrlRXGRVswf49
+	AuvrR3plCEh32/qZtcj6DUkiNGXTzrHZmJlqISPdAUOidBb5a6BKpK3aabhXl28A69rDOEv754ILR
+	irxkTAlwehchFygGb0CDoL/91RW9Gd8ERRifH/js3SycTxXiyAXnQQS8IfT5XGIvXzk2jk3EXHBDy
+	fQoUwy2Duj5pevPi5KuVrpAfp+lFELCzeSiR0JDamB3304rsy5k50DvLcrkvknFlkvYCyFrCAqWxB
+	zx6DaZ9pT1yrqlngIYY8iGEpCT8R1OkLBmi8FSmQR53fp843t+hozbbqh/Cxv06pb+6wWPgc8rvtB
+	XRI5AYyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqa6Q-00000008fL7-10Gm;
-	Mon, 25 Aug 2025 16:31:26 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1uqa6P-00000008fL3-4ADb;
+	Mon, 25 Aug 2025 16:31:25 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqXUX-000000087bt-3ymI;
-	Mon, 25 Aug 2025 13:44:11 +0000
+	id 1uqXUS-000000087Xz-1moY;
+	Mon, 25 Aug 2025 13:44:05 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 52FE75C5DB6;
-	Mon, 25 Aug 2025 13:44:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 733CCC116C6;
-	Mon, 25 Aug 2025 13:44:08 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id CD5B344D70;
+	Mon, 25 Aug 2025 13:44:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3B8ACC116D0;
+	Mon, 25 Aug 2025 13:44:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756129448;
-	bh=GtAQSdS1ZwpO1wrhzVk13OKCtrYrUZErGzdK85qhnG4=;
+	s=k20201202; t=1756129443;
+	bh=C6SBK9f+7bulLE7wK72wcC2UO49lebBjUaSS4/etSHk=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=QadmStP2v9UsuOYT311avWLlpP/l6egme0AcjpIDhH9ksImI4ORKZ3DWspjrDHPgX
-	 2x6HjZLLaiPUn3WL6Qm2ObWzvKYprTC4VDHS0rhLOjWSWTJ2GnJUIxSwRcjWv2yckw
-	 l8ahX7DN03D2kQsSy79t4TDEgCMcLzLDTp3A2zv52af5r0fgSGjecjNIuzwGZ1nVJW
-	 eFzfPExQ6XUlQqeN8TDT9xjBOJdwXi9T77+svalT5fTLRbHn9VOCulUbwJQhLs1o7z
-	 WEJBMUjjdObXQ0DaH3GjBKTGNiKlHziXtKPcsZ43x49mFnStg8DrIMPX9pn21+T3Rc
-	 ZO0ChC/8E/mag==
+	b=kuFMlZcOaggy7H/TnW/2fIeuvmGmNhqe545JxOWu+FKPHXCEv3cAOLv7tFlmWINkf
+	 Qv87MjPZa7xy+awrIvACXNLmh3Ddwulo4Ex+qJvBLrOfsaxZRy0LTfHmH7egdKHuw1
+	 l8sFTK/Pdfx7iVcmtJNj2AxSGyraWiX89sn//6GtbSGKZjOH9u+jUI281clOQemzKy
+	 XO2aF7QrcXf9T8/6hOLCrzEUPZJ0zVb0755Y60NtFFeA2c0N6OAqkk4E6UyIDi6Oc1
+	 AQUmBn2qvW9NaLqqThvbLnL6eWIYLNBzg4lvtrtufrENmucMM/D5JAiQnxR8zvGCk7
+	 ifM6CCKgvkArw==
 From: Maxime Ripard <mripard@kernel.org>
-Date: Mon, 25 Aug 2025 15:43:17 +0200
-Subject: [PATCH 12/39] drm/atomic: Convert drm_atomic_get_crtc_state() to
- use new connector state
+Date: Mon, 25 Aug 2025 15:43:15 +0200
+Subject: [PATCH 10/39] drm/atomic: Remove unused
+ drm_atomic_get_existing_plane_state()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250825-drm-no-more-existing-state-v1-12-f08ccd9f85c9@kernel.org>
+Message-Id: <20250825-drm-no-more-existing-state-v1-10-f08ccd9f85c9@kernel.org>
 References: <20250825-drm-no-more-existing-state-v1-0-f08ccd9f85c9@kernel.org>
 In-Reply-To: <20250825-drm-no-more-existing-state-v1-0-f08ccd9f85c9@kernel.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -104,17 +104,17 @@ Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
  linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
  Maxime Ripard <mripard@kernel.org>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1291; i=mripard@kernel.org;
- h=from:subject:message-id; bh=GtAQSdS1ZwpO1wrhzVk13OKCtrYrUZErGzdK85qhnG4=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDBlrMsqb7n1MlciLNLj+baGYzBGv5o++wa+/Hb3W3b2iI
- VjL1flLx1QWBmFOBlkxRZYnMmGnl7cvrnKwX/kDZg4rE8gQBi5OAZjI7wDGWqFc1+IbP6z/9FlJ
- VrSbn4pqiO179fVn0iet9HbF3YXW8xc1vrstM5utTsbd332F9H0Hxobnc5h9fB1jt/3prU0r9nK
- rK4x+45n+Y3mkrPiHnoN6rV4LrF5leh1xnibf7mSqr/auCQA=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1476; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=C6SBK9f+7bulLE7wK72wcC2UO49lebBjUaSS4/etSHk=;
+ b=owGbwMvMwCmsHn9OcpHtvjLG02pJDBlrMso6pBSFbaIeRLYXyL7czNnC9c3D9m7r6b35fc568
+ uX7eP52TGVhEOZkkBVTZHkiE3Z6efviKgf7lT9g5rAygQxh4OIUgIkYZjHWh66a8CAp7eDRuS8+
+ rw0uiLZuyqhdb2fRXXz0xUaOPybN1glbM/LOJmn4bu/h8DzXX7SLsaFpjobJ8Xk6SaYX3P8eUDQ
+ VD9xw4WCslc7hKQZVNuoJm5U9l4ZFnH6zrqDq88Ef7z5EBwAA
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_064410_076846_7B39AE1C 
-X-CRM114-Status: GOOD (  13.71  )
+X-CRM114-CacheID: sfid-20250825_064404_509500_FDF76D43 
+X-CRM114-Status: GOOD (  11.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,37 +129,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The drm_atomic_get_crtc_state() function calls the deprecated
-drm_atomic_get_existing_crtc_state() helper to get find if a crtc state
-had already been allocated and was part of the given drm_atomic_state.
-
-At the point in time where drm_atomic_get_crtc_state() can be
-called (ie, during atomic_check), the existing state is the new state
-and drm_atomic_get_existing_crtc_state() can thus be replaced by
-drm_atomic_get_new_crtc_state().
+The drm_atomic_get_existing_plane_state() function is deprecated and
+isn't used anymore, so let's remove it.
 
 Signed-off-by: Maxime Ripard <mripard@kernel.org>
 ---
- drivers/gpu/drm/drm_atomic.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ include/drm/drm_atomic.h | 18 ------------------
+ 1 file changed, 18 deletions(-)
 
-diff --git a/drivers/gpu/drm/drm_atomic.c b/drivers/gpu/drm/drm_atomic.c
-index a9d1265e34602c454866869b81b8837b2c0a97a4..1147fa890a03ef2c3283972c816796d8de6307c9 100644
---- a/drivers/gpu/drm/drm_atomic.c
-+++ b/drivers/gpu/drm/drm_atomic.c
-@@ -347,11 +347,11 @@ drm_atomic_get_crtc_state(struct drm_atomic_state *state,
- 	int ret, index = drm_crtc_index(crtc);
- 	struct drm_crtc_state *crtc_state;
+diff --git a/include/drm/drm_atomic.h b/include/drm/drm_atomic.h
+index 82e74d9444c4fa7f02ee0e472c8c68f7bc44cc6a..2f2c92fc4c20ee4e6abd6911bd574969d9cabbbb 100644
+--- a/include/drm/drm_atomic.h
++++ b/include/drm/drm_atomic.h
+@@ -696,28 +696,10 @@ drm_atomic_get_new_crtc_state(const struct drm_atomic_state *state,
+ 			      struct drm_crtc *crtc)
+ {
+ 	return state->crtcs[drm_crtc_index(crtc)].new_state;
+ }
  
- 	WARN_ON(!state->acquire_ctx);
- 
--	crtc_state = drm_atomic_get_existing_crtc_state(state, crtc);
-+	crtc_state = drm_atomic_get_new_crtc_state(state, crtc);
- 	if (crtc_state)
- 		return crtc_state;
- 
- 	ret = drm_modeset_lock(&crtc->mutex, state->acquire_ctx);
- 	if (ret)
+-/**
+- * drm_atomic_get_existing_plane_state - get plane state, if it exists
+- * @state: global atomic state object
+- * @plane: plane to grab
+- *
+- * This function returns the plane state for the given plane, or NULL
+- * if the plane is not part of the global atomic state.
+- *
+- * This function is deprecated, @drm_atomic_get_old_plane_state or
+- * @drm_atomic_get_new_plane_state should be used instead.
+- */
+-static inline struct drm_plane_state *
+-drm_atomic_get_existing_plane_state(const struct drm_atomic_state *state,
+-				    struct drm_plane *plane)
+-{
+-	return state->planes[drm_plane_index(plane)].state;
+-}
+-
+ /**
+  * drm_atomic_get_old_plane_state - get plane state, if it exists
+  * @state: global atomic state object
+  * @plane: plane to grab
+  *
 
 -- 
 2.50.1
