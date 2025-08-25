@@ -4,99 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E5C8CA0EFA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Aug 2025 15:00:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C43CACA0FE8
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Aug 2025 15:01:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gNAXqOqDA9cqjdX2o6MNVIoW7F+Slfq6PVIdvquqCX0=; b=VOQcdIq4ie/HIEzo9IhKj1LnE+
-	PWMrrTNEr2j6TI/Xrgv4fJ5QPVW3dLEyBc0CmMmu6hz8IC4t6e9LpEqBWcHhuA50tWVpI0BBnQEtU
-	G5Rl7szGiTvbkk4BempRRqd/OniBFqKnUvh64XUpEt9AcHixrv/HuHvNlzBdqY/XNxVYH+fyyGYRE
-	soxf7o7y27iHERpkA7vfYtrkShfJSeq+MhbuFEuCweTF/qycQCJgaPfv5dqHCG/5ZorTWX54HTd/u
-	d3hcvpfMwBPsc2qvopBIl/1hf/vu1wUf/Uyq6Z1L/y2rz0ZkFTF1LNHMxqcHKokPEz6oUu+IkZixz
-	+cj+XH6w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=EpZxPsblbaLLubP63qubmC9HSdlRywmllKgHgTHGmt8=; b=eXAVXghln+c9ga
+	s1MQw5scgPwoXdkbvIaycNf2ummBRPBGbmSWJhLgbKzeYMCalqThHwZY3ymMH13X2BTpUkn0M0xYr
+	zXID3Jhtv3y7jijp7yxnM1xPEsHxYYb7/A/sWGa7wYIRPYj6nqqSHNxWlIf4cJrnx5sUoNV0phez5
+	EMj66n0TFyEOZaoHoA6yplqECGKSrD9jAbDI5cdO/Y+CJwsgvJYoCGz16IjCZxQUWr//s/3y3le6O
+	bMH9yFOH4zZJGX+EVXRI473xeD4abUKuUusW6AG6aKqMxCg9MJctcw6Mb+SakCvbYPWlE9F0yar3L
+	BmU9atHlybtk4Bsv//yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqYgn-00000008Njb-0GdG;
-	Mon, 25 Aug 2025 15:00:53 +0000
-Received: from mail-qk1-x736.google.com ([2607:f8b0:4864:20::736])
+	id 1uqYgt-00000008NuO-1fzr;
+	Mon, 25 Aug 2025 15:00:59 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqXLi-0000000865L-24F6
-	for linux-mediatek@lists.infradead.org;
-	Mon, 25 Aug 2025 13:35:04 +0000
-Received: by mail-qk1-x736.google.com with SMTP id af79cd13be357-7e86f90d162so473025885a.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 25 Aug 2025 06:35:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar.org; s=google; t=1756128901; x=1756733701; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=gNAXqOqDA9cqjdX2o6MNVIoW7F+Slfq6PVIdvquqCX0=;
-        b=c5k3sQ4YnfTrz7VHq59iGgcMWQrQYQu0U/QKenDAxWRVdNNXNMFoq6BQBnse2Rv4yt
-         Ym7B9EGme1NtIv5x7eGpqS8bfNa+aMp/FdML1/vp/i97aA9mRv7e40VXR8QOqoAYsIVh
-         HuMFaJnXmWxwAf+z8GPRPYQzypev1Y0Ltq1NlDSv+tpLGfTtR3Czp7/FP2cHHGIWqtpz
-         umS31LtLo6ZaAn/6Bo/I/oLTsIqCP5SBcnWa8Ql1r82BDOW8w9DmW2yn6tVUtIK2o2RE
-         VkIdNHKDrU8lej/vnAmWs10p5VRvG00uTpx8OEerFC9EkE+20UbWUEUhKxDs4yxAG2Dr
-         5O0g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756128901; x=1756733701;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=gNAXqOqDA9cqjdX2o6MNVIoW7F+Slfq6PVIdvquqCX0=;
-        b=uOrNia5JYSP9Bx6xmcrdE3VtFYSKQ47q8C5E3WDybZDarxBhQbWCTDXkphVkXQAn94
-         vRYmpHBbFh62FPhzYkUdCV61c7mnpZCTWkP3u/Tpajk55TXL0T1VNbQsUUf6Cnp2mcyy
-         yUfNL6fyMLJSVYc1WzaUZim8RC5rNjbacbHY8HTbfxfbStXzdyPwwJFLZ6FdV7Q2einG
-         jgVzDUajsZXWzzowN3AiQUxw7T0HZCy+rR0HLnfukHyvlnulwWC2z8Lf/SE2ueiy+7cO
-         jEYwPUtCnebAwScvZi+t+xIshaFV64Dtqtp6wq+2RigRWGgVjH/meCSOC639zX/haz/A
-         7mlg==
-X-Forwarded-Encrypted: i=1; AJvYcCXaLFeqzIi6B+LWbJk4SmHkq3smb8/wt4zoWRyNbgaSKg0K9x1IKr72U0nL8HlG23OAAF2LSbAgXszMoXvuoQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxuJjCpFZWZBPnd+LicfnPcTlH6oUQdqx4fNsdlH5SizOLktQXs
-	7s4j4E5ID0JEGUIppmbSmTxdy3hj/5kHXM2QRN9wftgNQkpB1TnbT2Cts7gxdSUWuSCrwaJMPT4
-	FiWjRRAv/9QbVD8rF8Q0Oq0cIA4fz+kqbrw0dFJJE3A==
-X-Gm-Gg: ASbGnctgCPsG27K7SQt0NRs6H14cHjx1ll6LffBnxkEUfwNhBbMPrh+VzU+A5Fyec+y
-	YVqRhLW5Obx3JQccCkW57dNJVIvNRQDCrhwKLhNacKg5cZV9FbCZ9HinLMUEsausLnuZhcZi37N
-	6QjYDbG1Uhu8+hU6ErhfR8dEX8m+MCiO9QPdmt3O2GTnt1aN6N+0n/Jzm8ScEECdAyTWgjADDqT
-	MJp7cgwNgBcrk4VdtWO7K6sVSEG3ZYFdQynq7Oznjq/ImDRgUSl
-X-Google-Smtp-Source: AGHT+IGOpK3uEJnQCrmnbOgq3jE9IN0xRtPnGuzZNnzUoPGGiNaxqS5J379tibwH0bqxmCutM7cmIZBZS3IWNjGPhFY=
-X-Received: by 2002:a05:620a:7109:b0:7e6:81cc:6999 with SMTP id
- af79cd13be357-7ea0948df2fmr1733993185a.32.1756128900796; Mon, 25 Aug 2025
- 06:35:00 -0700 (PDT)
+	id 1uqXU0-000000087MG-16HJ;
+	Mon, 25 Aug 2025 13:43:37 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 12C985C5D69;
+	Mon, 25 Aug 2025 13:43:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 38BB9C4CEED;
+	Mon, 25 Aug 2025 13:43:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1756129414;
+	bh=wsGg4o5rIk6iWnwj3c0e+ddrWYACRADM//93hdU20w4=;
+	h=From:Subject:Date:To:Cc:From;
+	b=sqFlSdR6wzioHCIWCTuXe4gIb398iawEGQ0noC6vq3qfSpKD/GhQbNFo/BZMPrL04
+	 fKiuK5wA+i9NFKyGHsjC/hJ22L6DxIOxsIDCQWlHDlbpVj4xLCLv/3e48GURiiSEpo
+	 CpRm/oIfhfcKqoepBNvwkntHaXlfSkrgtiWe3FtbOG2bPeTeDS1nsYCI+SbIpjF4oW
+	 nclGltUfOEK7eUrRlCc238qoG8MsuEdWy35bURpgLz+Tisfc/MMY954heq9Pnfqqmt
+	 RuDCuulMO26sW/CkrFyLalMIN8EiP3wn/2vWATpdOdqe7dd/1NPRg1OQrbh1TYYeIh
+	 wB6/rJBuExbaQ==
+From: Maxime Ripard <mripard@kernel.org>
+Subject: [PATCH 00/39] drm/atomic: Get rid of existing states (not really)
+Date: Mon, 25 Aug 2025 15:43:05 +0200
+Message-Id: <20250825-drm-no-more-existing-state-v1-0-f08ccd9f85c9@kernel.org>
 MIME-Version: 1.0
-References: <20250822-mtk-post-blend-color-pipeline-v1-0-a9446d4aca82@collabora.com>
- <20250822-mtk-post-blend-color-pipeline-v1-1-a9446d4aca82@collabora.com>
-In-Reply-To: <20250822-mtk-post-blend-color-pipeline-v1-1-a9446d4aca82@collabora.com>
-From: Daniel Stone <daniel@fooishbar.org>
-Date: Mon, 25 Aug 2025 14:34:48 +0100
-X-Gm-Features: Ac12FXydArko6F2KpO-xscTn2Bhfj39k97NaH0mQfBe9_vPNG3yvbIIh17F1fXw
-Message-ID: <CAPj87rPAoD2D99zTdsvJ=9K8+G17mTS2jDYHMPYmXNtUyp2L_Q@mail.gmail.com>
-Subject: Re: [PATCH RFC 1/5] drm: Support post-blend color pipeline API
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Alex Hung <alex.hung@amd.com>, 
-	wayland-devel@lists.freedesktop.org, harry.wentland@amd.com, leo.liu@amd.com, 
-	ville.syrjala@linux.intel.com, pekka.paalanen@collabora.com, 
-	contact@emersion.fr, mwen@igalia.com, jadahl@redhat.com, 
-	sebastian.wick@redhat.com, shashank.sharma@amd.com, agoins@nvidia.com, 
-	joshua@froggi.es, mdaenzer@redhat.com, aleixpol@kde.org, xaver.hugl@gmail.com, 
-	victoria@system76.com, uma.shankar@intel.com, quic_naseer@quicinc.com, 
-	quic_cbraga@quicinc.com, quic_abhinavk@quicinc.com, marcan@marcan.st, 
-	Liviu.Dudau@arm.com, sashamcintosh@google.com, 
-	chaitanya.kumar.borah@intel.com, louis.chauvet@bootlin.com, mcanal@igalia.com, 
-	kernel@collabora.com, daniels@collabora.com, dri-devel@lists.freedesktop.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, Simona Vetter <simona.vetter@ffwll.ch>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAGlorGgC/x3MwQqDMAwA0F+RnBeoKQW3XxEPrUaXg+1IyhCk/
+ 76y47u8G4xV2OA13KD8FZOSO8bHAOs75oNRtm4gR8FNFHDTE3PBsygjX2JV8oFWY2V8Jk+B1jF
+ 6n6AHH+Vdrn8+L639AIn9C4BsAAAA
+X-Change-ID: 20250825-drm-no-more-existing-state-9b3252c1a33b
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, Louis Chauvet <louis.chauvet@bootlin.com>, 
+ Haneen Mohammed <hamohammed.sa@gmail.com>, 
+ Melissa Wen <melissa.srw@gmail.com>, Jyri Sarha <jyri.sarha@iki.fi>, 
+ Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
+ Paul Cercueil <paul@crapouillou.net>, Liviu Dudau <liviu.dudau@arm.com>, 
+ Russell King <linux@armlinux.org.uk>, 
+ Manikandan Muralidharan <manikandan.m@microchip.com>, 
+ Dharma Balasubiramani <dharma.b@microchip.com>, 
+ Nicolas Ferre <nicolas.ferre@microchip.com>, 
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+ Claudiu Beznea <claudiu.beznea@tuxon.dev>, Inki Dae <inki.dae@samsung.com>, 
+ Seung-Woo Kim <sw0312.kim@samsung.com>, 
+ Kyungmin Park <kyungmin.park@samsung.com>, 
+ Krzysztof Kozlowski <krzk@kernel.org>, 
+ Alim Akhtar <alim.akhtar@samsung.com>, Liu Ying <victor.liu@nxp.com>, 
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, 
+ Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, 
+ Lucas Stach <l.stach@pengutronix.de>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Anitha Chrisanthus <anitha.chrisanthus@intel.com>, 
+ Edmund Dea <edmund.j.dea@intel.com>, Paul Kocialkowski <paulk@sys-base.io>, 
+ Sui Jingfeng <suijingfeng@loongson.cn>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Rob Clark <robin.clark@oss.qualcomm.com>, 
+ Dmitry Baryshkov <lumag@kernel.org>, 
+ Abhinav Kumar <abhinav.kumar@linux.dev>, 
+ Jessica Zhang <jessica.zhang@oss.qualcomm.com>, Sean Paul <sean@poorly.run>, 
+ Marijn Suijten <marijn.suijten@somainline.org>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>, 
+ Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Samuel Holland <samuel@sholland.org>, 
+ Thierry Reding <thierry.reding@gmail.com>, 
+ Mikko Perttunen <mperttunen@nvidia.com>, 
+ Jonathan Hunter <jonathanh@nvidia.com>, Hans de Goede <hansg@kernel.org>, 
+ Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+ =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-mips@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-samsung-soc@vger.kernel.org, imx@lists.linux.dev, 
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+ freedreno@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
+ linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
+ Maxime Ripard <mripard@kernel.org>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5301; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=wsGg4o5rIk6iWnwj3c0e+ddrWYACRADM//93hdU20w4=;
+ b=owGbwMvMwCmsHn9OcpHtvjLG02pJDBlrMoqmcab9SaxeoL8+8fGLztO2hw5uF8s7cXj22mXn5
+ tepO9/r7ZjKwiDMySArpsjyRCbs9PL2xVUO9it/wMxhZQIZwsDFKQATuXKdsaHn3ankZUatfg2R
+ r99tjDXavWHDnETW9lnXphXduWK1i3/PAUFhlmbnCXk1p2ez1uZ9qmBseF0nvzr8bH5d1fUWnkc
+ 9/asdYqdWijaknuX6vvl6Q5LYkrt7xcpMPwdtYnle5sEVXLUIAA==
+X-Developer-Key: i=mripard@kernel.org; a=openpgp;
+ fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_063502_625817_94FF8B68 
-X-CRM114-Status: GOOD (  15.82  )
+X-CRM114-CacheID: sfid-20250825_064336_383433_78BAEFBE 
+X-CRM114-Status: GOOD (  15.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,79 +130,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Nicolas,
-Thanks for doing this! It's great to see.
+Hi,
 
-On Fri, 22 Aug 2025 at 19:36, N=C3=ADcolas F. R. A. Prado
-<nfraprado@collabora.com> wrote:
-> -/**
-> - * drm_plane_colorop_curve_1d_lut_init - Initialize a DRM_COLOROP_1D_LUT
-> - *
-> - * @dev: DRM device
-> - * @colorop: The drm_colorop object to initialize
-> - * @plane: The associated drm_plane
-> - * @lut_size: LUT size supported by driver
-> - * @lut1d_interpolation: 1D LUT interpolation type
-> - * @flags: bitmask of misc, see DRM_COLOROP_FLAG_* defines.
-> - * @return zero on success, -E value on failure
-> - */
-> -int drm_plane_colorop_curve_1d_lut_init(struct drm_device *dev, struct d=
-rm_colorop *colorop,
-> -                                       struct drm_plane *plane, uint32_t=
- lut_size,
-> -                                       enum drm_colorop_lut1d_interpolat=
-ion_type lut1d_interpolation,
-> -                                       uint32_t flags)
-> +static int
-> +drm_common_colorop_curve_1d_lut_init(struct drm_device *dev,
-> +                                    struct drm_colorop *colorop,
-> +                                    uint32_t lut_size,
-> +                                    enum drm_colorop_lut1d_interpolation=
-_type lut1d_interpolation,
-> +                                    uint32_t flags)
+Here's a series to get rid of the drm_atomic_helper_get_existing_*_state
+accessors.
 
-I think these would be better in a prior commit which only moved the
-plane init around.
+The initial intent was to remove the __drm_*_state->state pointer to
+only rely on old and new states, but we still need it now to know which
+of the two we need to free: if a state has not been committed (either
+dropped or checked only), then we need to free the new one, if it has
+been committed we need to free the old state. 
 
-> @@ -416,6 +417,24 @@ int drm_mode_object_get_properties(struct drm_mode_o=
-bject *obj, bool atomic,
->                                 continue;
->                 }
->
-> +               if (post_blend_color_pipeline && obj->type =3D=3D DRM_MOD=
-E_OBJECT_CRTC) {
-> +                       struct drm_crtc *crtc =3D obj_to_crtc(obj);
-> +                       struct drm_mode_config mode_config =3D crtc->dev-=
->mode_config;
-> +
-> +                       if (prop =3D=3D mode_config.gamma_lut_property ||
-> +                           prop =3D=3D mode_config.degamma_lut_property =
-||
-> +                           prop =3D=3D mode_config.gamma_lut_size_proper=
-ty ||
-> +                           prop =3D=3D mode_config.ctm_property)
-> +                               continue;
-> +               }
-> +
-> +               if (!post_blend_color_pipeline && obj->type =3D=3D DRM_MO=
-DE_OBJECT_CRTC) {
-> +                       struct drm_crtc *crtc =3D obj_to_crtc(obj);
-> +
-> +                       if (prop =3D=3D crtc->color_pipeline_property)
-> +                               continue;
-> +               }
+Thus, the state pointer is kept (and documented) only to point to the
+state we should free eventually.
 
-Hmmm. One issue with this is that it makes things like drm_info
-harder: if drm_info opted into the client cap, it would no longer be
-able to see any GAMMA_LUT/etc programmed by the prior userspace. So I
-think allowing at least read-only access would be reasonable here.
+All users have been converted to the relevant old or new state
+accessors.  
 
-Having a client cap without a driver cap also puts userspace in a
-difficult position. If the driver doesn't support post-blend colorops,
-then enabling the client cap strictly removes support without a
-replacement. And without a driver cap, the client doesn't have a way
-to know which is better.
+This was build tested only.
 
-Cheers,
-Daniel
+Let me know what you think,
+Maxime
+
+Signed-off-by: Maxime Ripard <mripard@kernel.org>
+---
+Maxime Ripard (39):
+      drm/atomic: Make drm_atomic_get_connector_state() early return consistent
+      drm/atomic: Convert drm_atomic_get_connector_state() to state accessor
+      drm/atomic: Convert drm_atomic_get_connector_state() to use new connector state
+      drm/atomic: Remove unused drm_atomic_get_existing_connector_state()
+      drm/atomic: Document __drm_connectors_state state pointer
+      drm/atomic: Convert __drm_atomic_get_current_plane_state() to modern accessor
+      drm/atomic: Convert drm_atomic_get_plane_state() to use new plane state
+      drm/vkms: Convert vkms_crtc_atomic_check() to use new plane state
+      drm/tilcdc: crtc: Use drm_atomic_helper_check_crtc_primary_plane()
+      drm/atomic: Remove unused drm_atomic_get_existing_plane_state()
+      drm/atomic: Document __drm_planes_state state pointer
+      drm/atomic: Convert drm_atomic_get_crtc_state() to use new connector state
+      drm/ingenic: ipu: Switch to drm_atomic_get_new_crtc_state()
+      drm/arm/malidp: Switch to drm_atomic_get_new_crtc_state()
+      drm/armada: Switch to drm_atomic_get_new_crtc_state()
+      drm/atmel-hlcdc: Switch to drm_atomic_get_new_crtc_state()
+      drm/exynos: Switch to drm_atomic_get_new_crtc_state()
+      drm/imx-dc: Switch to drm_atomic_get_new_crtc_state()
+      drm/imx-dcss: Switch to drm_atomic_get_new_crtc_state()
+      drm/imx-ipuv3: Switch to drm_atomic_get_new_crtc_state()
+      drm/ingenic: Switch to drm_atomic_get_new_crtc_state()
+      drm/kmb: Switch to drm_atomic_get_new_crtc_state()
+      drm/logicvc: Switch to drm_atomic_get_new_crtc_state()
+      drm/loongson: Switch to drm_atomic_get_new_crtc_state()
+      drm/mediatek: Switch to drm_atomic_get_new_crtc_state()
+      drm/msm/mdp5: Switch to drm_atomic_get_new_crtc_state()
+      drm/omap: Switch to drm_atomic_get_new_crtc_state()
+      drm/rockchip: Switch to drm_atomic_get_new_crtc_state()
+      drm/sun4i: Switch to drm_atomic_get_new_crtc_state()
+      drm/tegra: Switch to drm_atomic_get_new_crtc_state()
+      drm/tilcdc: Switch to drm_atomic_get_new_crtc_state()
+      drm/vboxvideo: Switch to drm_atomic_get_new_crtc_state()
+      drm/vc4: Switch to drm_atomic_get_new_crtc_state()
+      drm/atomic: Switch to drm_atomic_get_new_crtc_state()
+      drm/framebuffer: Switch to drm_atomic_get_new_crtc_state()
+      drm/atomic: Remove unused drm_atomic_get_existing_crtc_state()
+      drm/atomic: Document __drm_crtcs_state state pointer
+      drm/atomic: Convert drm_atomic_get_private_obj_state() to use new plane state
+      drm/atomic: Document __drm_private_objs_state state pointer
+
+ drivers/gpu/drm/arm/malidp_planes.c             |   2 +-
+ drivers/gpu/drm/armada/armada_plane.c           |   3 +-
+ drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_plane.c |   2 +-
+ drivers/gpu/drm/drm_atomic.c                    |  23 ++--
+ drivers/gpu/drm/drm_framebuffer.c               |   2 +-
+ drivers/gpu/drm/exynos/exynos_drm_plane.c       |   2 +-
+ drivers/gpu/drm/imx/dc/dc-plane.c               |   2 +-
+ drivers/gpu/drm/imx/dcss/dcss-plane.c           |   4 +-
+ drivers/gpu/drm/imx/ipuv3/ipuv3-plane.c         |   3 +-
+ drivers/gpu/drm/ingenic/ingenic-drm-drv.c       |   3 +-
+ drivers/gpu/drm/ingenic/ingenic-ipu.c           |   4 +-
+ drivers/gpu/drm/kmb/kmb_plane.c                 |   3 +-
+ drivers/gpu/drm/logicvc/logicvc_layer.c         |   4 +-
+ drivers/gpu/drm/loongson/lsdc_plane.c           |   2 +-
+ drivers/gpu/drm/mediatek/mtk_plane.c            |   3 +-
+ drivers/gpu/drm/msm/disp/mdp5/mdp5_plane.c      |   7 +-
+ drivers/gpu/drm/omapdrm/omap_plane.c            |   2 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c     |   6 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c    |   2 +-
+ drivers/gpu/drm/sun4i/sun8i_ui_layer.c          |   3 +-
+ drivers/gpu/drm/sun4i/sun8i_vi_layer.c          |   3 +-
+ drivers/gpu/drm/tegra/dc.c                      |   2 +-
+ drivers/gpu/drm/tilcdc/tilcdc_crtc.c            |   9 +-
+ drivers/gpu/drm/tilcdc/tilcdc_plane.c           |   3 +-
+ drivers/gpu/drm/vboxvideo/vbox_mode.c           |   8 +-
+ drivers/gpu/drm/vc4/vc4_plane.c                 |   6 +-
+ drivers/gpu/drm/vkms/vkms_crtc.c                |   4 +-
+ include/drm/drm_atomic.h                        | 144 ++++++++++++------------
+ 28 files changed, 125 insertions(+), 136 deletions(-)
+---
+base-commit: 7fa4d8dc380fbd81a9d702a855c50690c9c6442c
+change-id: 20250825-drm-no-more-existing-state-9b3252c1a33b
+
+Best regards,
+-- 
+Maxime Ripard <mripard@kernel.org>
+
 
