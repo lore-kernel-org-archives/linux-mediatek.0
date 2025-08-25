@@ -4,117 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CDD1CA0FE7
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Aug 2025 19:08:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4BC3C8303F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Aug 2025 19:53:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3Pi9m6GI8LRyQhtxPIhraQIGo7AG5j8Tlp4dQjMsoMo=; b=ZvnF0A3VzCf9KnfS3jLAJb1WKV
-	p0o6CGOETZmZCEEKNH66ZIv+4JDzO1InFljbhcEUo+worE1MVwrhSVQ1mrhBOvVAXMkDiLYBK4xoI
-	lrJ4ywoWYd48kqu4qPDpPNay9G6gYuWK90MdvLKoECLM4V+Kws7NbE0UtXiEmnKszO6eeYYSV0ZJp
-	TEr7BEKjZpd/y6Ej32CVY9bo7RVNCL+S4egIeKrdeddlTIC2HrXkUe6XMSFqDwkUTxauM4lFczMk6
-	95sqK9CIrFu6OVgNLInF99P70dgsjvc4L+rO12Emn2O6wVOsf90p7a3Z4PyORvNkPRIJhiqUzda3O
-	2+ejlVZg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Q2zMojxEaqSXvN7rZ89UIzDP+AqmDlozbvrUX8uFGJo=; b=JPaAPBUXTzVjpZ7mOp6+LSR7j2
+	QMgN9MFdjCpwiBhIdg5ch3zQyhs/xmAma/6M8tQmdjnQdVELPjT22L93c91bvChzEvvbayKBZH4Uc
+	kCnEU0e9M+rzSaW8DPg54ejAhPGH3Rqy7oxaHD6FHxLOmCDkEvSQsjPCrFzyIjmulwQBIlcPJ9bYN
+	cyWINgHtGWnTsyzxEH+fkdwHk9+wQ7KJTPOBCxYGxw/L3y3N3dOvnessxpSJ+oMXoW2+fIzUjgnc4
+	RQdgY4D7r0yvBUrAOW3n2r7miQ9a1zRPVZJqwXEc96fqRS5iNFdzNmP87AHtiUdCIMLghrPI3qKku
+	C0Hb9pPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqcY4-00000009Af3-1clZ;
-	Mon, 25 Aug 2025 19:08:08 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1uqdFd-00000009RlS-0a0t;
+	Mon, 25 Aug 2025 19:53:09 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqXUi-000000087jG-08aC;
-	Mon, 25 Aug 2025 13:44:21 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id B682844D76;
-	Mon, 25 Aug 2025 13:44:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2194FC116C6;
-	Mon, 25 Aug 2025 13:44:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756129459;
-	bh=jHB9qBd94mpoVZjz7oFs7XUljTcZFTODrPUrewnnLNo=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=illFcxV/bFN84mzq62TuLzJem+HLXc+mbLR0AhK+jAIRmfaH97LMfRGo41SgvuL4t
-	 Ih9kDFdN4FSLgAgPj9wV4ueHwr8P8BkeG+l1uM+5MVjOmkhg+sRWH8Q7mr9Oryrj+W
-	 wP3qa6WQIzjlZ+NB4mL91AaMd4mARcYn+9BELfm+kiRyze9onyhvhadmOtFMZXyO02
-	 654yLjtlYnFNuprTHkSIhuQH9SXQrTOcDv8hNB253JD8jJ9Fc5PNsiNqu4RLXqH7Ns
-	 vhW050T1cmh8ZNhnca07e65VY5lgbaAQfDsfEtL6eRxCld64n8K/ESJ22XRH5Gd65f
-	 1jeZS2YTLBZcA==
-From: Maxime Ripard <mripard@kernel.org>
-Date: Mon, 25 Aug 2025 15:43:21 +0200
-Subject: [PATCH 16/39] drm/atmel-hlcdc: Switch to
- drm_atomic_get_new_crtc_state()
+	id 1uqcCL-000000096Qa-0JSJ;
+	Mon, 25 Aug 2025 18:45:42 +0000
+Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-afcb7a16441so757896266b.2;
+        Mon, 25 Aug 2025 11:45:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1756147539; x=1756752339; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=Q2zMojxEaqSXvN7rZ89UIzDP+AqmDlozbvrUX8uFGJo=;
+        b=PdS3lWmwsa0wDn7pOscJmJdttsQqs+XkAp/whJTdoSP4KZJEE2pTQ3MisOgE3Mw+h9
+         9ugmeqhkYCALiTpN7yJiyeT6/WFH6c4hXPk08PpP2ZVxalP79u3A0cYU67EbwMrWvgGX
+         TnjhhGFnbYIOijvU/8eDgGt36jdsdrPOq7wuVdimz+teQZo0v5pNBJyR/NybuX+hscnh
+         8UD11YoBm1tNZGmWOYIFPIA4to5KTY+ugbQTZuwhcWQ/s5pvP0rEPgOVhouGl4EgoKJ5
+         1Zw6tKmxvGAiZ9YMCO+a0M976orGVQCdLE9xWBMdewkVE2/g5WBA0uSGlNdT7LCmcZfq
+         ffZQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1756147539; x=1756752339;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Q2zMojxEaqSXvN7rZ89UIzDP+AqmDlozbvrUX8uFGJo=;
+        b=rIJokGYz6dhV2O7W7ACkXkupqOdFRhHwNnrsD3Xq4kjDFGDTsg1gJ7xzI39LX/4cST
+         +h5KKKMkoaus7M2hAyUsK0yDts4O5VUt9qAiij6FpAttnD8cfIwL2InrvWCrsYqnfZi9
+         O1tbvlzlbD5cF8ZhQzsdfKf/FDR2Uk93EHKHEBw4Lh+3RYpf7XwzhDfUIjg8M4qIsUVQ
+         O279YQFp3k1CBDKebx8WgjH2VlHCML3GW6d88cAhybLox0vQiXQbQSxjGbmnhWdQlqm5
+         6cq90I6crbns4UIqYX/LvcQmo5EwkYmh33KcA58MV1hxB4Zf3TLm+IiWlLA65zxtNtM4
+         rNkA==
+X-Forwarded-Encrypted: i=1; AJvYcCUU63w0zYM1yEDCSZkRe428UiRam4F4X0GC1yMGQJYTsSv1OKfhJaIMLQL75LADabqaNFHXrsXIh9g9LWty3XGe@lists.infradead.org, AJvYcCUyxs2CRAnzTs/wswGGxBrSACMgJehEnAPBbRhNhPju90sIYz9fYprzKh2Su7dCesnnMhjIs+GKel6tRy0S4xI=@lists.infradead.org
+X-Gm-Message-State: AOJu0YyYbnX1zIS8zTslaG7BUZVTppD1HHMadqjgbyWL/IaHwJGqC0Ja
+	pEl2honhqZotsiHHFuC8Ahk2iX44oWgIv0rkhje8HYgaxyByzmnqp/u4XObxaRAtWClrrbi03R6
+	oUOex/pgl9KSR5P0kQwb37hzuF8Kv18M=
+X-Gm-Gg: ASbGncvfsRakzIga3keXr5l2+KEQDVCfaYK1J3FSilwbJVo1esqL1EH7oIYc3OqwFeD
+	GGm+8gvBUC2FWoQd4ttYS/JKssxB+Cuud2iyxattVBGNcVQ4UNcevugh+pBBxoerocKBUG3VFe9
+	7JG4UX6s2fvYaBYhccmu6tN3I8tXCrxuNW+M4Mn9aF/8joT3Ibaog3Vo+YIfi/5eU23gBn7A3Ix
+	Yz2q1lCtRVisoYvSGsJTWrJrfmTIEDnmtMr06hv
+X-Google-Smtp-Source: AGHT+IHSoLDTkq5deXOI5kOXvOEJGs7/045c3SFr+zmXA7JcB8nnmgDCdO7Qbzl8FAm2rty6nUd0qaQ2gfQlRQ8Uk8I=
+X-Received: by 2002:a17:907:d10:b0:af9:1be8:c2aa with SMTP id
+ a640c23a62f3a-afe295e56d1mr1138094366b.45.1756147538797; Mon, 25 Aug 2025
+ 11:45:38 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250825-drm-no-more-existing-state-v1-16-f08ccd9f85c9@kernel.org>
-References: <20250825-drm-no-more-existing-state-v1-0-f08ccd9f85c9@kernel.org>
-In-Reply-To: <20250825-drm-no-more-existing-state-v1-0-f08ccd9f85c9@kernel.org>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>, Louis Chauvet <louis.chauvet@bootlin.com>, 
- Haneen Mohammed <hamohammed.sa@gmail.com>, 
- Melissa Wen <melissa.srw@gmail.com>, Jyri Sarha <jyri.sarha@iki.fi>, 
- Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
- Paul Cercueil <paul@crapouillou.net>, Liviu Dudau <liviu.dudau@arm.com>, 
- Russell King <linux@armlinux.org.uk>, 
- Manikandan Muralidharan <manikandan.m@microchip.com>, 
- Dharma Balasubiramani <dharma.b@microchip.com>, 
- Nicolas Ferre <nicolas.ferre@microchip.com>, 
- Alexandre Belloni <alexandre.belloni@bootlin.com>, 
- Claudiu Beznea <claudiu.beznea@tuxon.dev>, Inki Dae <inki.dae@samsung.com>, 
- Seung-Woo Kim <sw0312.kim@samsung.com>, 
- Kyungmin Park <kyungmin.park@samsung.com>, 
- Krzysztof Kozlowski <krzk@kernel.org>, 
- Alim Akhtar <alim.akhtar@samsung.com>, Liu Ying <victor.liu@nxp.com>, 
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Fabio Estevam <festevam@gmail.com>, 
- Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, 
- Lucas Stach <l.stach@pengutronix.de>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Anitha Chrisanthus <anitha.chrisanthus@intel.com>, 
- Edmund Dea <edmund.j.dea@intel.com>, Paul Kocialkowski <paulk@sys-base.io>, 
- Sui Jingfeng <suijingfeng@loongson.cn>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Rob Clark <robin.clark@oss.qualcomm.com>, 
- Dmitry Baryshkov <lumag@kernel.org>, 
- Abhinav Kumar <abhinav.kumar@linux.dev>, 
- Jessica Zhang <jessica.zhang@oss.qualcomm.com>, Sean Paul <sean@poorly.run>, 
- Marijn Suijten <marijn.suijten@somainline.org>, 
- Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>, 
- Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Samuel Holland <samuel@sholland.org>, 
- Thierry Reding <thierry.reding@gmail.com>, 
- Mikko Perttunen <mperttunen@nvidia.com>, 
- Jonathan Hunter <jonathanh@nvidia.com>, Hans de Goede <hansg@kernel.org>, 
- Dave Stevenson <dave.stevenson@raspberrypi.com>, 
- =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
- linux-mips@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-samsung-soc@vger.kernel.org, imx@lists.linux.dev, 
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
- freedreno@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
- Maxime Ripard <mripard@kernel.org>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1263; i=mripard@kernel.org;
- h=from:subject:message-id; bh=jHB9qBd94mpoVZjz7oFs7XUljTcZFTODrPUrewnnLNo=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDBlrMioDbs6ouL3p0tme1nO7/Mo5VZK/CbLO3tVed6SUe
- 16iivOVjqksDMKcDLJiiixPZMJOL29fXOVgv/IHzBxWJpAhDFycAjARzyzGOnPBtksbNz3+5WvN
- 0ZKwLLh9ktmR3Nl3p/k9O7z7ecWbDeI+S978D1uvc7R2aWbXTonbtxgbNj+rrZqwsiLdKs40+6p
- JpUWMs9yb82kLuAQ3XNNxWXX382HZp3ctp23U6Wj4ec2jcMo0AA==
-X-Developer-Key: i=mripard@kernel.org; a=openpgp;
- fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
+References: <20250822-mtk-post-blend-color-pipeline-v1-0-a9446d4aca82@collabora.com>
+ <20250822-mtk-post-blend-color-pipeline-v1-1-a9446d4aca82@collabora.com> <CAPj87rPAoD2D99zTdsvJ=9K8+G17mTS2jDYHMPYmXNtUyp2L_Q@mail.gmail.com>
+In-Reply-To: <CAPj87rPAoD2D99zTdsvJ=9K8+G17mTS2jDYHMPYmXNtUyp2L_Q@mail.gmail.com>
+From: Xaver Hugl <xaver.hugl@gmail.com>
+Date: Mon, 25 Aug 2025 20:45:27 +0200
+X-Gm-Features: Ac12FXwIBvZYaDx3nXuRC59YLfGWHPRaFpCScdKvQ4nArJPhSi57cSubMBYyjfo
+Message-ID: <CAFZQkGwotQ6cxVCSgp-BhUi5DaZ7MyVvbnrDJW11Z7ztzqy58g@mail.gmail.com>
+Subject: Re: [PATCH RFC 1/5] drm: Support post-blend color pipeline API
+To: Daniel Stone <daniel@fooishbar.org>
+Cc: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Alex Hung <alex.hung@amd.com>, 
+	wayland-devel@lists.freedesktop.org, harry.wentland@amd.com, leo.liu@amd.com, 
+	ville.syrjala@linux.intel.com, pekka.paalanen@collabora.com, 
+	contact@emersion.fr, mwen@igalia.com, jadahl@redhat.com, 
+	sebastian.wick@redhat.com, shashank.sharma@amd.com, agoins@nvidia.com, 
+	joshua@froggi.es, mdaenzer@redhat.com, aleixpol@kde.org, 
+	victoria@system76.com, uma.shankar@intel.com, quic_naseer@quicinc.com, 
+	quic_cbraga@quicinc.com, quic_abhinavk@quicinc.com, marcan@marcan.st, 
+	Liviu.Dudau@arm.com, sashamcintosh@google.com, 
+	chaitanya.kumar.borah@intel.com, louis.chauvet@bootlin.com, mcanal@igalia.com, 
+	kernel@collabora.com, daniels@collabora.com, dri-devel@lists.freedesktop.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, Simona Vetter <simona.vetter@ffwll.ch>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_064420_113237_9BD94750 
-X-CRM114-Status: GOOD (  13.30  )
+X-CRM114-CacheID: sfid-20250825_114541_121785_7D39E7DD 
+X-CRM114-Status: GOOD (  16.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,37 +109,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The atmel-hlcdc atomic_check implementation uses the deprecated
-drm_atomic_get_existing_crtc_state() helper.
+> > @@ -416,6 +417,24 @@ int drm_mode_object_get_properties(struct drm_mode_object *obj, bool atomic,
+> >                                 continue;
+> >                 }
+> >
+> > +               if (post_blend_color_pipeline && obj->type == DRM_MODE_OBJECT_CRTC) {
+> > +                       struct drm_crtc *crtc = obj_to_crtc(obj);
+> > +                       struct drm_mode_config mode_config = crtc->dev->mode_config;
+> > +
+> > +                       if (prop == mode_config.gamma_lut_property ||
+> > +                           prop == mode_config.degamma_lut_property ||
+> > +                           prop == mode_config.gamma_lut_size_property ||
+> > +                           prop == mode_config.ctm_property)
+> > +                               continue;
+> > +               }
+> > +
+> > +               if (!post_blend_color_pipeline && obj->type == DRM_MODE_OBJECT_CRTC) {
+> > +                       struct drm_crtc *crtc = obj_to_crtc(obj);
+> > +
+> > +                       if (prop == crtc->color_pipeline_property)
+> > +                               continue;
+> > +               }
+>
+> Hmmm. One issue with this is that it makes things like drm_info
+> harder: if drm_info opted into the client cap, it would no longer be
+> able to see any GAMMA_LUT/etc programmed by the prior userspace. So I
+> think allowing at least read-only access would be reasonable here.
+FWIW the cap for per-plane pipelines also hides COLOR_RANGE and
+COLOR_ENCODING properties from the client.
 
-This hook is called as part of the global atomic_check, thus before the
-states are swapped. The existing state thus points to the new state, and
-we can use drm_atomic_get_new_crtc_state() instead.
+From a compositor POV, I slightly prefer hiding the properties
+entirely, but ignoring them on the compositor side when a color
+pipeline is available would also be trivial.
 
-Signed-off-by: Maxime Ripard <mripard@kernel.org>
----
- drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_plane.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_plane.c b/drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_plane.c
-index 4a7ba0918eca19eca3fd8febd1db1b2d3a8a6e14..59be5f64c058e2be398f207ad436f922135a5ad0 100644
---- a/drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_plane.c
-+++ b/drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_plane.c
-@@ -712,11 +712,11 @@ static int atmel_hlcdc_plane_atomic_check(struct drm_plane *p,
- 	int i;
- 
- 	if (!hstate->base.crtc || WARN_ON(!fb))
- 		return 0;
- 
--	crtc_state = drm_atomic_get_existing_crtc_state(state, s->crtc);
-+	crtc_state = drm_atomic_get_new_crtc_state(state, s->crtc);
- 	mode = &crtc_state->adjusted_mode;
- 
- 	ret = drm_atomic_helper_check_plane_state(s, crtc_state,
- 						  (1 << 16) / 2048,
- 						  INT_MAX, true, true);
-
--- 
-2.50.1
-
+> Having a client cap without a driver cap also puts userspace in a
+> difficult position. If the driver doesn't support post-blend colorops,
+> then enabling the client cap strictly removes support without a
+> replacement. And without a driver cap, the client doesn't have a way
+> to know which is better.
+>
+> Cheers,
+> Daniel
 
