@@ -4,70 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2496C8303F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Aug 2025 18:23:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86F64C8303F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Aug 2025 19:08:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CMWCTdGAusm3hQWQsg2CdgEGKQ7dsznpkjRuCSAWWVU=; b=WCtdzg8xyyfhwglIv/FQ6fmoWD
-	JWeQ14B6GHcB3gjMVzH3AyjniDjukXmRA12+YsMS9Ei0vip3gozXDm2spnjNKbQfn3uq7ty7bx1KR
-	Fx5odp8AHFt62wRga7Dleav4NrJmMdXZC63ZN7lOV3Qyva6Y7VLqE+WWlt/bpBru680dxSyOXgECX
-	ntlMmtAtnUC6mGBCSYtZw3BYhXULPGkd/LXV9ndaBe9bMaIDm6vDjiJmK0K7XRGf1dJ+USOIHLgxL
-	x62Swzpizt3k0PqYuUxq+WWZQBngnEqZfOiO1lREYKCHSmAiYO7+yKaO1RMfSPEKkd1GE2a5/o5Hc
-	x4vsUYXA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YtLcFX2JsL16SVe/9QAm/hH0bJEpreiA0MkfGpKY6Eo=; b=ur+QyX+lZ3WcUx/Nze8pPh0tfO
+	3KxZq6Z0sBFIUI7WMGlNjCdS4Zng/l9tSpw6Qbq4uE84A1oF8thUI+J+QLKrwYKN0R2ifIgOOnDJs
+	l3OR/sFms/s2mHBwm2t4RR69M2FCHvBL5YpdLaVviWRjRR0R2YLPCgjxHZEcyDO08a2bRf324Qtqp
+	2GdgMVWBhInk5mJrU3QXEVkS6rZO3kszA7A9qIlVLVE7c4vALK0Zbz6MjfWsnElQkxa9Et40PEFLF
+	x8RTJZi3NO9J5Dy/iyFjJGgkHpU0IqmNltyoDM04NI35ddar1A42EaaW3AxTTgEdVN1PEgR8yFA+l
+	n2eUD7aw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqbqZ-00000008xOR-1P60;
-	Mon, 25 Aug 2025 18:23:11 +0000
+	id 1uqcY4-00000009Af7-3dhP;
+	Mon, 25 Aug 2025 19:08:08 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqaDN-00000008hxD-0NxD;
-	Mon, 25 Aug 2025 16:38:38 +0000
+	id 1uqXV2-000000087z2-46yg;
+	Mon, 25 Aug 2025 13:44:42 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 83C8544C9F;
-	Mon, 25 Aug 2025 16:38:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D244C4CEED;
-	Mon, 25 Aug 2025 16:38:33 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id A3AFF44D77;
+	Mon, 25 Aug 2025 13:44:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 162B9C4CEED;
+	Mon, 25 Aug 2025 13:44:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756139916;
-	bh=CMWCTdGAusm3hQWQsg2CdgEGKQ7dsznpkjRuCSAWWVU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Ecv5mkxgN/I8RvhUlsb2sIAZbuxajeGKci91xhxLS+e67mq/3IGp2pManh2kl9JtF
-	 juTegqwAkrr/6I7CbaeEQsMNKsNHDQTELIPHwmRQCUZUKrEBhxTNplr921edcyoouj
-	 99Li2QuK44VfKmxn7X7JeYXs+fvPNSNDlqpAcXcmeLutceImVFZ/TCQ6eQjtQz3Pjw
-	 wUvoa0DFQnub7yXeEYGDrj9RtBUDux+d43iWw7uYYT6sNss+TSs6vHAg05UIrywMLD
-	 2MaevT6zdKRaM58sWPA8nqIhWnF4BnZsS3xXDSnSw7Z4fpFxC5umZ6ngnqjM1tBTQf
-	 zvX3XZSoYhagQ==
-Date: Mon, 25 Aug 2025 17:38:31 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Zhanzhan Ge <zhanzhan.ge@mediatek.com>
-Cc: Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Thomas Gleixner <tglx@linutronix.de>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	sirius.wang@mediatek.com, vince-wl.liu@mediatek.com,
-	jh.hsu@mediatek.com, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] dt-bindings: timer: mediatek,timer: Add compatible for
- MT8189
-Message-ID: <20250825-tissue-rewire-2e74b3f6918f@spud>
-References: <20250825033136.7705-1-zhanzhan.ge@mediatek.com>
+	s=k20201202; t=1756129480;
+	bh=XHw3Zq2Alj3WodqFafXC9/6UX1IcznRZBIsvNDuBM/o=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=nKskBDZXBX2cQOZMH89Kb+JmgbknhWKQZlD4bSHSy1/gbjIK6H4RTJoqQNMLA3XCN
+	 S8r3oQdtXAIXyeIo45funOxfaXa6PKksMM3Y2d7BshdMe3EK+jVRp0wheTiy7UIOkV
+	 /JPJDvoAs9GskynxvD3h31Uqk9l9v2cfg/iCIiGjGTQoCYtaeZYplbPW76vs4mH0Y4
+	 KPRburarHSPSq0rkjR+dIY6DYDwe+1VlInov//xUhIv9CLOSMExlUliDM5HIYFz03n
+	 NfpQtNO5JJh5I2MYeOc8X5HI/rSJ6+4j9M7ZiNVuC4DP1VlpSj/FCXcz9LG18fcoDt
+	 tBktpD7RRcqdQ==
+From: Maxime Ripard <mripard@kernel.org>
+Date: Mon, 25 Aug 2025 15:43:29 +0200
+Subject: [PATCH 24/39] drm/loongson: Switch to
+ drm_atomic_get_new_crtc_state()
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="UI+qKYtt++1CWu95"
-Content-Disposition: inline
-In-Reply-To: <20250825033136.7705-1-zhanzhan.ge@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250825-drm-no-more-existing-state-v1-24-f08ccd9f85c9@kernel.org>
+References: <20250825-drm-no-more-existing-state-v1-0-f08ccd9f85c9@kernel.org>
+In-Reply-To: <20250825-drm-no-more-existing-state-v1-0-f08ccd9f85c9@kernel.org>
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, Louis Chauvet <louis.chauvet@bootlin.com>, 
+ Haneen Mohammed <hamohammed.sa@gmail.com>, 
+ Melissa Wen <melissa.srw@gmail.com>, Jyri Sarha <jyri.sarha@iki.fi>, 
+ Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
+ Paul Cercueil <paul@crapouillou.net>, Liviu Dudau <liviu.dudau@arm.com>, 
+ Russell King <linux@armlinux.org.uk>, 
+ Manikandan Muralidharan <manikandan.m@microchip.com>, 
+ Dharma Balasubiramani <dharma.b@microchip.com>, 
+ Nicolas Ferre <nicolas.ferre@microchip.com>, 
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+ Claudiu Beznea <claudiu.beznea@tuxon.dev>, Inki Dae <inki.dae@samsung.com>, 
+ Seung-Woo Kim <sw0312.kim@samsung.com>, 
+ Kyungmin Park <kyungmin.park@samsung.com>, 
+ Krzysztof Kozlowski <krzk@kernel.org>, 
+ Alim Akhtar <alim.akhtar@samsung.com>, Liu Ying <victor.liu@nxp.com>, 
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, 
+ Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, 
+ Lucas Stach <l.stach@pengutronix.de>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Anitha Chrisanthus <anitha.chrisanthus@intel.com>, 
+ Edmund Dea <edmund.j.dea@intel.com>, Paul Kocialkowski <paulk@sys-base.io>, 
+ Sui Jingfeng <suijingfeng@loongson.cn>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Rob Clark <robin.clark@oss.qualcomm.com>, 
+ Dmitry Baryshkov <lumag@kernel.org>, 
+ Abhinav Kumar <abhinav.kumar@linux.dev>, 
+ Jessica Zhang <jessica.zhang@oss.qualcomm.com>, Sean Paul <sean@poorly.run>, 
+ Marijn Suijten <marijn.suijten@somainline.org>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>, 
+ Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Samuel Holland <samuel@sholland.org>, 
+ Thierry Reding <thierry.reding@gmail.com>, 
+ Mikko Perttunen <mperttunen@nvidia.com>, 
+ Jonathan Hunter <jonathanh@nvidia.com>, Hans de Goede <hansg@kernel.org>, 
+ Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+ =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-mips@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-samsung-soc@vger.kernel.org, imx@lists.linux.dev, 
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+ freedreno@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
+ linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
+ Maxime Ripard <mripard@kernel.org>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1283; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=XHw3Zq2Alj3WodqFafXC9/6UX1IcznRZBIsvNDuBM/o=;
+ b=owGbwMvMwCmsHn9OcpHtvjLG02pJDBlrMmpWSc3s1zcPt3Xqy0vdcbyCv2Rd5v3TS1RPZb6Z4
+ nGC/V9Fx1QWBmFOBlkxRZYnMmGnl7cvrnKwX/kDZg4rE8gQBi5OAZjIszeMtZL9IsaZcc9FFRqS
+ MyZfUQhn9U5n2KtnPj/V8dd/lqYF51dNPhxX8Hsjux3XtRJ12W+3GOv0eeqEy2bfeXPMq7aK8cQ
+ 1/Xd32iXOXNbYpLV7YueGVe7Stm5Vy8+FLLz+PTO7TuqV1DkA
+X-Developer-Key: i=mripard@kernel.org; a=openpgp;
+ fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_093837_142688_69FADC40 
-X-CRM114-Status: UNSURE (   7.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250825_064441_062340_2856649B 
+X-CRM114-Status: GOOD (  13.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,23 +129,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+The loongson atomic_check implementation uses the deprecated
+drm_atomic_get_existing_crtc_state() helper.
 
---UI+qKYtt++1CWu95
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+This hook is called as part of the global atomic_check, thus before the
+states are swapped. The existing state thus points to the new state, and
+we can use drm_atomic_get_new_crtc_state() instead.
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Signed-off-by: Maxime Ripard <mripard@kernel.org>
+---
+ drivers/gpu/drm/loongson/lsdc_plane.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
---UI+qKYtt++1CWu95
-Content-Type: application/pgp-signature; name="signature.asc"
+diff --git a/drivers/gpu/drm/loongson/lsdc_plane.c b/drivers/gpu/drm/loongson/lsdc_plane.c
+index aa9a97f9c4dc28eea3098507ce52e6aa6caa46eb..2967a5cca06936d5d2480fac258b01e11f8d28e1 100644
+--- a/drivers/gpu/drm/loongson/lsdc_plane.c
++++ b/drivers/gpu/drm/loongson/lsdc_plane.c
+@@ -194,11 +194,11 @@ static int lsdc_cursor_plane_atomic_async_check(struct drm_plane *plane,
+ 		drm_dbg(plane->dev, "unsupported cursor size: %ux%u\n",
+ 			new_state->crtc_w, new_state->crtc_h);
+ 		return -EINVAL;
+ 	}
+ 
+-	crtc_state = drm_atomic_get_existing_crtc_state(state, new_state->crtc);
++	crtc_state = drm_atomic_get_new_crtc_state(state, new_state->crtc);
+ 	if (!crtc_state->active)
+ 		return -EINVAL;
+ 
+ 	if (plane->state->crtc != new_state->crtc ||
+ 	    plane->state->src_w != new_state->src_w ||
 
------BEGIN PGP SIGNATURE-----
+-- 
+2.50.1
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaKyRhwAKCRB4tDGHoIJi
-0tFZAQCZfUIEHKet8aipJi3IzMKDa+KfIG5vdjT00QVZWuO/fgD/YdNzRLdgrJAq
-cZBGuWpeXaboQnDiisCuiTDzRKtFowI=
-=37rC
------END PGP SIGNATURE-----
-
---UI+qKYtt++1CWu95--
 
