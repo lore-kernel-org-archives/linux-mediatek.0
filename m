@@ -4,77 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29CEBCA0FE7
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Aug 2025 17:00:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2496C8303F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Aug 2025 18:23:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MXpFBvl/G9TdM58J/HqLeuWhK7n8weJPpEkm2tmgU/s=; b=hmGGGHmZGfEMeCwAZBMSqp9ZBd
-	vApdIbDxwQ54RjVL9CxHxdS0euKSELSGceVLv0NZEmLQDYxBIudsnTY7zHhL9SJZPTa0Qts3Pj4UJ
-	BzQBaUuTUKnReBcAJoc/xiSBIkKMk+71T6hhm1HpYhPxOn0OSAKgTQq/vjGx5ScTjgG54n87dIUoQ
-	ETkq1yGJRh4zbat4IAOVv1J8UKfwhvY7PBtX6jbgXvUaxov0o0YBIrTkCc/hkoyLtYoZaZuur6xhG
-	glorN0ovHPmR/kOV+xC0MU700nKgisvYXi0fhhBqj0JgwyrCV8q7OsWJSK+OT910lKC5OgSDlQkY4
-	MWhw+ApA==;
+	bh=CMWCTdGAusm3hQWQsg2CdgEGKQ7dsznpkjRuCSAWWVU=; b=WCtdzg8xyyfhwglIv/FQ6fmoWD
+	JWeQ14B6GHcB3gjMVzH3AyjniDjukXmRA12+YsMS9Ei0vip3gozXDm2spnjNKbQfn3uq7ty7bx1KR
+	Fx5odp8AHFt62wRga7Dleav4NrJmMdXZC63ZN7lOV3Qyva6Y7VLqE+WWlt/bpBru680dxSyOXgECX
+	ntlMmtAtnUC6mGBCSYtZw3BYhXULPGkd/LXV9ndaBe9bMaIDm6vDjiJmK0K7XRGf1dJ+USOIHLgxL
+	x62Swzpizt3k0PqYuUxq+WWZQBngnEqZfOiO1lREYKCHSmAiYO7+yKaO1RMfSPEKkd1GE2a5/o5Hc
+	x4vsUYXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqaYn-00000008kOA-0eOp;
-	Mon, 25 Aug 2025 17:00:45 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uqbqZ-00000008xOR-1P60;
+	Mon, 25 Aug 2025 18:23:11 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqZhL-00000008cA2-2dxG;
-	Mon, 25 Aug 2025 16:05:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1756137929;
-	bh=MXpFBvl/G9TdM58J/HqLeuWhK7n8weJPpEkm2tmgU/s=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=O3oy07lgJtUmddl3ObqfK0Dw2tOSJrtb1veMxs9gJqc7bsM0XH/3uuLH7p8NbyS28
-	 sOYokpgZqXpq8Ef5TLcv2wU2fJbnufKcoc8VQaI+c4G2+Uijnvj5lRVtMQWMN86vTK
-	 Ce/WkSB2SpjBqC/OQ75c3Pr3Upefjp1H4g0g1C7ns6xLBQgm0bWyb2G5UrzoKjsaKs
-	 ds2/C1Z35njmOiwLvV+HV5LjtyKXoDVcw4RiZ3TJA1VsgCqmlgWZ/slNlZUEAoF/Q/
-	 2taqVa7VlaMgP+o9Z67fi+AfkWgZy8RbxmetnKPghMOkNBEckyliDL3Zsrgw3732N1
-	 YEJyLZFWPlWLg==
-Received: from 2a01cb0892f2d600c8f85cf092d4af51.ipv6.abo.wanadoo.fr (2a01cb0892f2D600C8f85cf092d4AF51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: jmassot)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 218B317E053B;
-	Mon, 25 Aug 2025 18:05:28 +0200 (CEST)
-Message-ID: <57d67b983f527e9a202422dcc329622cceac6b89.camel@collabora.com>
-Subject: Re: [PATCH v2 6/6] ASoC: dt-binding: Convert MediaTek mt8183-mt6358
- bindings to YAML
-From: Julien Massot <julien.massot@collabora.com>
-To: Rob Herring <robh@kernel.org>
-Cc: kernel@collabora.com, Michael Turquette <mturquette@baylibre.com>, 
- Stephen Boyd <sboyd@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,  Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>,  Ikjoon Jang
- <ikjn@chromium.org>, Enric Balletbo i Serra <eballetbo@kernel.org>, Chen-Yu
- Tsai	 <wenst@chromium.org>, Weiyi Lu <weiyi.lu@mediatek.com>, Eugen Hristev
-	 <eugen.hristev@linaro.org>, Liam Girdwood <lgirdwood@gmail.com>, Mark
- Brown	 <broonie@kernel.org>, Julien Massot <jmassot@collabora.com>, Sean
- Wang	 <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, 
-	linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-sound@vger.kernel.org, 
-	linux-gpio@vger.kernel.org
-Date: Mon, 25 Aug 2025 18:05:27 +0200
-In-Reply-To: <20250822144652.GA3763665-robh@kernel.org>
-References: <20250820-mtk-dtb-warnings-v2-0-cf4721e58f4e@collabora.com>
-	 <20250820-mtk-dtb-warnings-v2-6-cf4721e58f4e@collabora.com>
-	 <20250822144652.GA3763665-robh@kernel.org>
-Organization: Collabora Ltd.
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
+	id 1uqaDN-00000008hxD-0NxD;
+	Mon, 25 Aug 2025 16:38:38 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 83C8544C9F;
+	Mon, 25 Aug 2025 16:38:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D244C4CEED;
+	Mon, 25 Aug 2025 16:38:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1756139916;
+	bh=CMWCTdGAusm3hQWQsg2CdgEGKQ7dsznpkjRuCSAWWVU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Ecv5mkxgN/I8RvhUlsb2sIAZbuxajeGKci91xhxLS+e67mq/3IGp2pManh2kl9JtF
+	 juTegqwAkrr/6I7CbaeEQsMNKsNHDQTELIPHwmRQCUZUKrEBhxTNplr921edcyoouj
+	 99Li2QuK44VfKmxn7X7JeYXs+fvPNSNDlqpAcXcmeLutceImVFZ/TCQ6eQjtQz3Pjw
+	 wUvoa0DFQnub7yXeEYGDrj9RtBUDux+d43iWw7uYYT6sNss+TSs6vHAg05UIrywMLD
+	 2MaevT6zdKRaM58sWPA8nqIhWnF4BnZsS3xXDSnSw7Z4fpFxC5umZ6ngnqjM1tBTQf
+	 zvX3XZSoYhagQ==
+Date: Mon, 25 Aug 2025 17:38:31 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Zhanzhan Ge <zhanzhan.ge@mediatek.com>
+Cc: Daniel Lezcano <daniel.lezcano@linaro.org>,
+	Thomas Gleixner <tglx@linutronix.de>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+	sirius.wang@mediatek.com, vince-wl.liu@mediatek.com,
+	jh.hsu@mediatek.com, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] dt-bindings: timer: mediatek,timer: Add compatible for
+ MT8189
+Message-ID: <20250825-tissue-rewire-2e74b3f6918f@spud>
+References: <20250825033136.7705-1-zhanzhan.ge@mediatek.com>
 MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="UI+qKYtt++1CWu95"
+Content-Disposition: inline
+In-Reply-To: <20250825033136.7705-1-zhanzhan.ge@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_090531_850722_12033AD0 
-X-CRM114-Status: GOOD (  18.94  )
+X-CRM114-CacheID: sfid-20250825_093837_142688_69FADC40 
+X-CRM114-Status: UNSURE (   7.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,75 +82,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2025-08-22 at 09:46 -0500, Rob Herring wrote:
-> On Wed, Aug 20, 2025 at 03:44:57PM +0200, Julien Massot wrote:
-> > Convert the existing text-based DT binding for MT8183 sound cards
-> > using
-> > MT6358 and various other codecs to a YAML schema.
->=20
-> In the subject (on all the patches), avoid saying 'binding' twice and I=
-=20
-> prefer 'DT schema' over YAML. Lot's of things are YAML, but only one=20
-> thing is DT schema.
 
-Ok, I fixed all the commit messages and replaced 'YAML' by 'DT schema'.
+--UI+qKYtt++1CWu95
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
->=20
-> >=20
-> > Reviewed-by: AngeloGioacchino Del Regno
-> > <angelogioacchino.delregno@collabora.com>
-> > Signed-off-by: Julien Massot <julien.massot@collabora.com>
-> > ---
-> > =C2=A0.../sound/mediatek,mt8183_mt6358_ts3a227.yaml=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 | 59
-> > ++++++++++++++++++++++
-> > =C2=A0.../sound/mt8183-mt6358-ts3a227-max98357.txt=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 | 25 ---------
-> > =C2=A02 files changed, 59 insertions(+), 25 deletions(-)
-> >=20
-> > diff --git
-> > a/Documentation/devicetree/bindings/sound/mediatek,mt8183_mt6358_ts3a2
-> > 27.yaml
-> > b/Documentation/devicetree/bindings/sound/mediatek,mt8183_mt6358_ts3a2
-> > 27.yaml
-> > new file mode 100644
-> > index
-> > 0000000000000000000000000000000000000000..048fe62715d67d44daa08e75a63c
-> > 782238815689
-> > --- /dev/null
-> > +++
-> > b/Documentation/devicetree/bindings/sound/mediatek,mt8183_mt6358_ts3a2
-> > 27.yaml
-> > @@ -0,0 +1,59 @@
-> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id:
-> > http://devicetree.org/schemas/sound/mediatek,mt8183_mt6358_ts3a227.yaml=
-#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: MediaTek MT8183 sound card with MT6358, TS3A227, and
-> > MAX98357/RT1015 codecs
-> > +
-> > +maintainers:
-> > +=C2=A0 - Julien Massot <julien.massot@collabora.com>
-> > +
-> > +description:
-> > +=C2=A0 Binding for MediaTek MT8183 SoC-based sound cards using the MT6=
-358
-> > codec,
->=20
-> Drop 'Binding for '.
->=20
-> Sure
-> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
->=20
-> And thank you for jumping on all these Mediatek bindings.
->=20
-> Rob
-No problem, Thanks for your time.
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
-Regards,
-Julien
+--UI+qKYtt++1CWu95
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaKyRhwAKCRB4tDGHoIJi
+0tFZAQCZfUIEHKet8aipJi3IzMKDa+KfIG5vdjT00QVZWuO/fgD/YdNzRLdgrJAq
+cZBGuWpeXaboQnDiisCuiTDzRKtFowI=
+=37rC
+-----END PGP SIGNATURE-----
+
+--UI+qKYtt++1CWu95--
 
