@@ -4,88 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB5A6CA0FE8
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Aug 2025 17:00:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41363CA0FED
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Aug 2025 17:00:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EAVZJpgvllT4Mhe7ltBfIHVEtwo4VMq7SD8mCyRK+bY=; b=iwpoQB5AUXBVZya4BXcVP+GF31
-	qUNBugKDUhZsB/UjAusmsfQvJeC8glwB/deZNwzZar2Ayhf0F19p3MqQ1FuyKmkOdqQj6Y6HU6WUb
-	JstxOpYnfzNBIha6LAQxAxnQRrpGVvQbj4cwFlxTfgKmF+8AGOyTrpwLaR4fSVzRQRMczmBJZHZgt
-	9DaaAYhDPEt1/T7+3wZz4AEpAqgzCwwdX55KAI49ziB/UR/NE/6piGSDvbLh48t2OHgp8tSXziq0d
-	yGjkyKkNAtEeZSdt6MdlE08AKL0sJ75OzCQ4beLbZsolIDnJme0Z1SqpAp6Ej6IFOytJ2Dn0xGAlP
-	g0MZQ9Kw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IkjkbY+huenOf2R0Uu+UDRhWYT33+BX0joR0dNvMVOY=; b=pFjbiGafMCYL+KcwrDyg0oXTRk
+	4d1fGFwgjtkhr3GXWDyB+IPntap1sJoT/8QKPMHZg7BiKTUWjTnO8EJBHWxLAYGG1XD6Z/SslFTNI
+	WPsEGTpadaznV+Wyb5uxnNf7tSf4SNPOzqtezmsgy2xi8BGZKU1SOuFVMaqWHo5qTOgWxrSUven5H
+	HQl4rME2F3wITtNJvn2rhYoWAZJxevS0nAXgCOAj/SNBXZKVE5NISuQgNK+vAgMHOkGe+B0z/PBJ2
+	Eh9SbtfHpz+QWTp9ppqKMhUlQElJmFBfG9ljirnHehnGJPTUEVujvHb4z83oSOKpPQzwukhIJ84pa
+	W9jVTwcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqaYf-00000008kEI-0LpE;
-	Mon, 25 Aug 2025 17:00:37 +0000
-Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
+	id 1uqaYj-00000008kIC-0m8y;
+	Mon, 25 Aug 2025 17:00:41 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqYXH-00000008JeT-2cp5
-	for linux-mediatek@lists.infradead.org;
-	Mon, 25 Aug 2025 14:51:06 +0000
-Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-55f4978bc0dso582007e87.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 25 Aug 2025 07:51:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1756133461; x=1756738261; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=EAVZJpgvllT4Mhe7ltBfIHVEtwo4VMq7SD8mCyRK+bY=;
-        b=eaB8mlJl4YAbBhNf5KksFIjU/NG2bzvu57XJ0D2QHrTI+VLZkEVCFzSyoBPudTw90q
-         TPgImQLVzQy3JSGWbsViwjjicmoEvLQi7cFpgkixhgZC1yV2QFYf2VmzTxnyH9Z6RmbC
-         59vAL1fcZzaCPb+a2dYcZd5yLrR0f9yr3B55c=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756133461; x=1756738261;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=EAVZJpgvllT4Mhe7ltBfIHVEtwo4VMq7SD8mCyRK+bY=;
-        b=uxIQEiPhhY6EstHB53JhmgxiMlo47oI9AaI5lCPHBcwkDJTDslH9iN0riljRhsPchu
-         8av3xlm09BrV6nket4z638POe0Qwutw06xZcxZp3WejW3cMmT30zE0kmQaeM1RYBz46Z
-         4qsS4TryGmlgioBGYxMrhhqA0h+kZoqdNUYt+dnhOwf+JbSZYQLiIX174NIC4OTkFNfN
-         9eSNRWc92kLwelqlvybPFZRKFfq5rr2btCyM52r+vIVG0W03FUsObs8y/hRQS4LezD/a
-         mHWOe7Pn9N8QsjFTJdFA5g7GIkrUiUFCGLHm8AHUeaKzRG5PI7P0R0H789Gvk0KwFoYx
-         G0PA==
-X-Forwarded-Encrypted: i=1; AJvYcCWyMDnDyxhGZ/N5JVXruTEMj5tQbOxATQgcCBHisgvik4UEaK60Of1MF8OYDOiOnrTE77u5NDAhO9hWrDQTwA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxjC056a/mvJ2J2rTS5Lfi6ZQnX8+deYfuMUjO+ApMamfk7iI7u
-	Oli/VfpAcwSTHwwIhlxrLX7cih7qAacVmk8PlV77eMkGa7zAEMKyLNL/yyx6FyIDw4jzq9m9akI
-	GqZI7f+Fi+3INHU1aOO8ZibxDQCIXdAq5kRfQygXW
-X-Gm-Gg: ASbGnctS3+4qjzHg/Ld7mFHVTWx7bIgRnCZreQ3b/c66aM+j755/wqlRfxZCgKirPu4
-	HSjBVb85k68WUCCanzq5s8yToKEiA90LI2h9fo1k6YtZhB4BG2a9JlKBCn0F7sD/tpqi5UdAJnp
-	vKQGC0INJvlKwVT71x7KjiabpL6toHKjeJ+YmlSPG5DlI6irGaSDcsvuv0Qz/7UPt4lZs4rx5gm
-	/KoJTid5A==
-X-Google-Smtp-Source: AGHT+IEe7w9pVPejypkcEJDKdxceIu7p/7dzKMCCMCcrZIlfu17d7XkyMHIibXiLNiCq+NAGnq/H6nnnbCqYo6xbSyU=
-X-Received: by 2002:a05:6512:230c:b0:55f:496e:99b1 with SMTP id
- 2adb3069b0e04-55f496ea2e6mr746059e87.31.1756133461346; Mon, 25 Aug 2025
- 07:51:01 -0700 (PDT)
-MIME-Version: 1.0
-References: <CAGXv+5HRKFrdjjXkwN6=OLtk=bK3C3mBnrDtmkEWeuxjz0pFKg@mail.gmail.com>
- <20250825125141.209860-1-laura.nao@collabora.com>
-In-Reply-To: <20250825125141.209860-1-laura.nao@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 25 Aug 2025 16:50:50 +0200
-X-Gm-Features: Ac12FXymdIbpYgVvUuTRHx1l6uFl8EsOrYD9IbMYYkm6u39sg-0GTOO7AjUR4wY
-Message-ID: <CAGXv+5HQrMY+osCZKVOq28fQi-Be-eZ=_-=5HcrkacivHekOTQ@mail.gmail.com>
-Subject: Re: [PATCH v4 07/27] clk: mediatek: clk-gate: Add ops for gates with
- HW voter
-To: Laura Nao <laura.nao@collabora.com>
-Cc: angelogioacchino.delregno@collabora.com, conor+dt@kernel.org, 
-	devicetree@vger.kernel.org, guangjie.song@mediatek.com, kernel@collabora.com, 
-	krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, 
-	mturquette@baylibre.com, netdev@vger.kernel.org, nfraprado@collabora.com, 
-	p.zabel@pengutronix.de, richardcochran@gmail.com, robh@kernel.org, 
-	sboyd@kernel.org
+	id 1uqZa5-00000008b8m-0loL;
+	Mon, 25 Aug 2025 15:58:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1756137479;
+	bh=J5bupA+heQtL5Wcp4JAPKY1z0JPnUwdB+YBwuYoNau8=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=E3+JVySOtDo6B73FegZ6Or80M/ila2fRd1xu2TVpmdEKV9Sc/1jbhYN+Iic29PXGo
+	 ImJeCh0eMufQ8BWvZ/gXuqKyQQP79mjfpwEY1P8VUEMsz5UwauFcm7kPxheNobMKec
+	 NyHFDDwFCs1N3p1feTcjEZK+bSrPSbd5gsDYVqJG2Kd9B1o82RnzEAOkJu9j25SwMc
+	 Hiv0f6eatIri3ZDVVflvsaROY9xNzvxaDkvOG5o61OKcKhBPq59cJ2ITFzx8I9Ab66
+	 qWC0Yn5VFl4k+YA9E5p7XZO8m8uF4RD4Al07heeqORCxhtPYonbw2jvJBUAnV2L7aY
+	 ik/bz0vcVCXFQ==
+Received: from 2a01cb0892f2d600c8f85cf092d4af51.ipv6.abo.wanadoo.fr (2a01cb0892f2d600C8f85CF092d4AF51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: jmassot)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 22E0C17E07FB;
+	Mon, 25 Aug 2025 17:57:58 +0200 (CEST)
+Message-ID: <c3b6c0ff993b7ebc9fb8abd8104b537f0c7f5fb3.camel@collabora.com>
+Subject: Re: [PATCH v2 0/6] MediaTek devicetree/bindings warnings
+ sanitization second round
+From: Julien Massot <julien.massot@collabora.com>
+To: Mark Brown <broonie@kernel.org>
+Cc: kernel@collabora.com, Michael Turquette <mturquette@baylibre.com>, 
+ Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski <krzk+dt@kernel.org>,  Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
+ <angelogioacchino.delregno@collabora.com>, Ikjoon Jang <ikjn@chromium.org>,
+  Enric Balletbo i Serra	 <eballetbo@kernel.org>, Chen-Yu Tsai
+ <wenst@chromium.org>, Weiyi Lu	 <weiyi.lu@mediatek.com>, Eugen Hristev
+ <eugen.hristev@linaro.org>, Liam Girdwood <lgirdwood@gmail.com>, Julien
+ Massot <jmassot@collabora.com>, Sean Wang	 <sean.wang@kernel.org>, Linus
+ Walleij <linus.walleij@linaro.org>, 	linux-clk@vger.kernel.org,
+ devicetree@vger.kernel.org, 	linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, 	linux-mediatek@lists.infradead.org,
+ linux-sound@vger.kernel.org, 	linux-gpio@vger.kernel.org
+Date: Mon, 25 Aug 2025 17:57:57 +0200
+In-Reply-To: <d02d2a5f-b8d7-4fdb-b3c5-6e6d21127733@sirena.org.uk>
+References: <20250820-mtk-dtb-warnings-v2-0-cf4721e58f4e@collabora.com>
+	 <d02d2a5f-b8d7-4fdb-b3c5-6e6d21127733@sirena.org.uk>
+Organization: Collabora Ltd.
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_075103_692698_35719CD9 
-X-CRM114-Status: GOOD (  22.65  )
+X-CRM114-CacheID: sfid-20250825_085801_380020_FDB15CA5 
+X-CRM114-Status: GOOD (  17.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,170 +87,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 25, 2025 at 2:52=E2=80=AFPM Laura Nao <laura.nao@collabora.com>=
- wrote:
->
-> On 8/15/25 05:37, Chen-Yu Tsai wrote:
-> > On Tue, Aug 5, 2025 at 10:55=E2=80=AFPM Laura Nao <laura.nao@collabora.=
-com> wrote:
-> >>
-> >> MT8196 use a HW voter for gate enable/disable control. Voting is
-> >> performed using set/clr regs, with a status bit used to verify the vot=
-e
-> >> state. Add new set of gate clock operations with support for voting vi=
-a
-> >> set/clr regs.
-> >>
-> >> Reviewed-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
-> >> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@col=
-labora.com>
-> >> Signed-off-by: Laura Nao <laura.nao@collabora.com>
-> >> ---
-> >>  drivers/clk/mediatek/clk-gate.c | 77 +++++++++++++++++++++++++++++++-=
--
-> >>  drivers/clk/mediatek/clk-gate.h |  3 ++
-> >>  2 files changed, 77 insertions(+), 3 deletions(-)
-> >>
-> >> diff --git a/drivers/clk/mediatek/clk-gate.c b/drivers/clk/mediatek/cl=
-k-gate.c
-> >> index 0375ccad4be3..426f3a25763d 100644
-> >> --- a/drivers/clk/mediatek/clk-gate.c
-> >> +++ b/drivers/clk/mediatek/clk-gate.c
-> >> @@ -5,6 +5,7 @@
-> >>   */
-> >>
-> >>  #include <linux/clk-provider.h>
-> >> +#include <linux/dev_printk.h>
-> >>  #include <linux/mfd/syscon.h>
-> >>  #include <linux/module.h>
-> >>  #include <linux/printk.h>
-> >> @@ -12,14 +13,19 @@
-> >>  #include <linux/slab.h>
-> >>  #include <linux/types.h>
-> >>
-> >> +#include "clk-mtk.h"
-> >>  #include "clk-gate.h"
-> >>
-> >>  struct mtk_clk_gate {
-> >>         struct clk_hw   hw;
-> >>         struct regmap   *regmap;
-> >> +       struct regmap   *regmap_hwv;
-> >>         int             set_ofs;
-> >>         int             clr_ofs;
-> >>         int             sta_ofs;
-> >> +       unsigned int    hwv_set_ofs;
-> >> +       unsigned int    hwv_clr_ofs;
-> >> +       unsigned int    hwv_sta_ofs;
-> >>         u8              bit;
-> >>  };
-> >>
-> >> @@ -100,6 +106,28 @@ static void mtk_cg_disable_inv(struct clk_hw *hw)
-> >>         mtk_cg_clr_bit(hw);
-> >>  }
-> >>
-> >> +static int mtk_cg_hwv_set_en(struct clk_hw *hw, bool enable)
-> >> +{
-> >> +       struct mtk_clk_gate *cg =3D to_mtk_clk_gate(hw);
-> >> +       u32 val;
-> >> +
-> >> +       regmap_write(cg->regmap_hwv, enable ? cg->hwv_set_ofs : cg->hw=
-v_clr_ofs, BIT(cg->bit));
-> >> +
-> >> +       return regmap_read_poll_timeout_atomic(cg->regmap_hwv, cg->hwv=
-_sta_ofs, val,
-> >> +                                              val & BIT(cg->bit),
-> >> +                                              0, MTK_WAIT_HWV_DONE_US=
-);
-> >> +}
-> >> +
-> >> +static int mtk_cg_hwv_enable(struct clk_hw *hw)
-> >> +{
-> >> +       return mtk_cg_hwv_set_en(hw, true);
-> >> +}
-> >> +
-> >> +static void mtk_cg_hwv_disable(struct clk_hw *hw)
-> >> +{
-> >> +       mtk_cg_hwv_set_en(hw, false);
-> >> +}
-> >> +
-> >>  static int mtk_cg_enable_no_setclr(struct clk_hw *hw)
-> >>  {
-> >>         mtk_cg_clr_bit_no_setclr(hw);
-> >> @@ -124,6 +152,15 @@ static void mtk_cg_disable_inv_no_setclr(struct c=
-lk_hw *hw)
-> >>         mtk_cg_clr_bit_no_setclr(hw);
-> >>  }
-> >>
-> >> +static bool mtk_cg_uses_hwv(const struct clk_ops *ops)
-> >> +{
-> >> +       if (ops =3D=3D &mtk_clk_gate_hwv_ops_setclr ||
-> >> +           ops =3D=3D &mtk_clk_gate_hwv_ops_setclr_inv)
-> >> +               return true;
-> >> +
-> >> +       return false;
-> >> +}
-> >> +
-> >>  const struct clk_ops mtk_clk_gate_ops_setclr =3D {
-> >>         .is_enabled     =3D mtk_cg_bit_is_cleared,
-> >>         .enable         =3D mtk_cg_enable,
-> >> @@ -138,6 +175,20 @@ const struct clk_ops mtk_clk_gate_ops_setclr_inv =
-=3D {
-> >>  };
-> >>  EXPORT_SYMBOL_GPL(mtk_clk_gate_ops_setclr_inv);
-> >>
-> >> +const struct clk_ops mtk_clk_gate_hwv_ops_setclr =3D {
-> >> +       .is_enabled     =3D mtk_cg_bit_is_cleared,
-> >> +       .enable         =3D mtk_cg_hwv_enable,
-> >> +       .disable        =3D mtk_cg_hwv_disable,
-> >> +};
-> >> +EXPORT_SYMBOL_GPL(mtk_clk_gate_hwv_ops_setclr);
-> >> +
-> >> +const struct clk_ops mtk_clk_gate_hwv_ops_setclr_inv =3D {
-> >> +       .is_enabled     =3D mtk_cg_bit_is_set,
-> >> +       .enable         =3D mtk_cg_hwv_enable,
-> >> +       .disable        =3D mtk_cg_hwv_disable,
-> >> +};
-> >> +EXPORT_SYMBOL_GPL(mtk_clk_gate_hwv_ops_setclr_inv);
-> >> +
-> >>  const struct clk_ops mtk_clk_gate_ops_no_setclr =3D {
-> >>         .is_enabled     =3D mtk_cg_bit_is_cleared,
-> >>         .enable         =3D mtk_cg_enable_no_setclr,
-> >> @@ -153,8 +204,9 @@ const struct clk_ops mtk_clk_gate_ops_no_setclr_in=
-v =3D {
-> >>  EXPORT_SYMBOL_GPL(mtk_clk_gate_ops_no_setclr_inv);
-> >>
-> >>  static struct clk_hw *mtk_clk_register_gate(struct device *dev,
-> >> -                                               const struct mtk_gate =
-*gate,
-> >> -                                               struct regmap *regmap)
-> >> +                                           const struct mtk_gate *gat=
-e,
-> >> +                                           struct regmap *regmap,
-> >> +                                           struct regmap *regmap_hwv)
-> >>  {
-> >>         struct mtk_clk_gate *cg;
-> >>         int ret;
-> >> @@ -169,11 +221,22 @@ static struct clk_hw *mtk_clk_register_gate(stru=
-ct device *dev,
-> >>         init.parent_names =3D gate->parent_name ? &gate->parent_name :=
- NULL;
-> >>         init.num_parents =3D gate->parent_name ? 1 : 0;
-> >>         init.ops =3D gate->ops;
-> >> +       if (mtk_cg_uses_hwv(init.ops) && !regmap_hwv) {
-> >> +               dev_err(dev, "regmap not found for hardware voter cloc=
-ks\n");
-> >> +               return ERR_PTR(-ENXIO);
-> >
-> > return dev_err_probe()?
-> >
-> > I believe the same applies to the previous patch.
-> >
->
-> mtk_clk_register_gate and mtk_clk_register_mux actually both return a
-> struct clk_hw *.
+Hi Mark,
 
-Oops, you're right. If that case I believe dev_err_ptr_probe() could be
-used?
+On Wed, 2025-08-20 at 15:21 +0100, Mark Brown wrote:
+> On Wed, Aug 20, 2025 at 03:44:51PM +0200, Julien Massot wrote:
+> > This patch series continues the effort to address Device Tree
+> > validation warnings for MediaTek platforms, with a focus on MT8183. It
+> > follows the initial cleanup series by Angelo
+> > (https://www.spinics.net/lists/kernel/msg5780177.html)
+> >=20
+> > The patches in this set eliminate several of the remaining warnings by
+> > improving or converting DT bindings to YAML, adding missing
+> > properties, and updating device tree files accordingly.
+>=20
+> What's the story with interdepenencies between the patches in this
+> series?
+>=20
+> Please fix your mail client to word wrap within paragraphs at something
+> substantially less than 80 columns.=C2=A0 Doing this makes your messages =
+much
+> easier to read and reply to.
 
-ChenYu
+Thanks for the feedback, and apologies for the long lines =E2=80=94 I have =
+fixed
+my mail client for follow-ups.
+
+Regarding interdependencies in the series:
+
+  * Patch 1/6 can be picked up independently.
+  * Patch 2/6 is standalone.
+  * Patch 3/6 depends on 2/6.
+  * Patch 4/6 fixes the DTS node name as expected by 3/6.
+  * Patches 5/6 and 6/6 are independent.
+
+So the only ordering requirement is that 2/6 should land before 3/6, with
+4/6 included as well to avoid introducing a temporary new DTB warning.
+All others can be applied in any order
+
+Regards,
+Julien
 
