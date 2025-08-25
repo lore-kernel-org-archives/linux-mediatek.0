@@ -4,97 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4BC3C8303F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Aug 2025 19:53:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 720CECA0FE7
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Aug 2025 20:33:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q2zMojxEaqSXvN7rZ89UIzDP+AqmDlozbvrUX8uFGJo=; b=JPaAPBUXTzVjpZ7mOp6+LSR7j2
-	QMgN9MFdjCpwiBhIdg5ch3zQyhs/xmAma/6M8tQmdjnQdVELPjT22L93c91bvChzEvvbayKBZH4Uc
-	kCnEU0e9M+rzSaW8DPg54ejAhPGH3Rqy7oxaHD6FHxLOmCDkEvSQsjPCrFzyIjmulwQBIlcPJ9bYN
-	cyWINgHtGWnTsyzxEH+fkdwHk9+wQ7KJTPOBCxYGxw/L3y3N3dOvnessxpSJ+oMXoW2+fIzUjgnc4
-	RQdgY4D7r0yvBUrAOW3n2r7miQ9a1zRPVZJqwXEc96fqRS5iNFdzNmP87AHtiUdCIMLghrPI3qKku
-	C0Hb9pPg==;
+	bh=uM7kzQOkWTbu7yBd5obpklNYYjW2PU8E7YXI4VJ3tYg=; b=JMimAWyeJVDwZ/bH9A5wMwnl8h
+	N/vt0JuBfvc/iadDnbPScF7aWvzuxxYHfy7f+E2Rtf2DklobEeW48yvF+8zaI3Nl4m93SnJQ0/gjN
+	VFD9x0UCRzxpvOmenP7n6yeczyJRVjlz1YYFeSM01ldbNjXKUP+Z1ZxCYjxBlgTL/M32VPaE/ixFk
+	DusCfJ6HWdmYxieRFSvKDjkCtlYC7gVkKvDSfN5JbrP0EAhgqZzhlIacCQshwcdbKJvTZrLQ37vjm
+	37CKUVdGZwEWrocYetGQlA6hfQFjm5456DTiJOc0L/XfnANZ4FIA55FbiAfDtKpTj4xO4/0wn5cWn
+	cFBfjrRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqdFd-00000009RlS-0a0t;
-	Mon, 25 Aug 2025 19:53:09 +0000
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	id 1uqdsh-00000009c43-0noS;
+	Mon, 25 Aug 2025 20:33:31 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqcCL-000000096Qa-0JSJ;
-	Mon, 25 Aug 2025 18:45:42 +0000
-Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-afcb7a16441so757896266b.2;
-        Mon, 25 Aug 2025 11:45:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1756147539; x=1756752339; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=Q2zMojxEaqSXvN7rZ89UIzDP+AqmDlozbvrUX8uFGJo=;
-        b=PdS3lWmwsa0wDn7pOscJmJdttsQqs+XkAp/whJTdoSP4KZJEE2pTQ3MisOgE3Mw+h9
-         9ugmeqhkYCALiTpN7yJiyeT6/WFH6c4hXPk08PpP2ZVxalP79u3A0cYU67EbwMrWvgGX
-         TnjhhGFnbYIOijvU/8eDgGt36jdsdrPOq7wuVdimz+teQZo0v5pNBJyR/NybuX+hscnh
-         8UD11YoBm1tNZGmWOYIFPIA4to5KTY+ugbQTZuwhcWQ/s5pvP0rEPgOVhouGl4EgoKJ5
-         1Zw6tKmxvGAiZ9YMCO+a0M976orGVQCdLE9xWBMdewkVE2/g5WBA0uSGlNdT7LCmcZfq
-         ffZQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756147539; x=1756752339;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Q2zMojxEaqSXvN7rZ89UIzDP+AqmDlozbvrUX8uFGJo=;
-        b=rIJokGYz6dhV2O7W7ACkXkupqOdFRhHwNnrsD3Xq4kjDFGDTsg1gJ7xzI39LX/4cST
-         +h5KKKMkoaus7M2hAyUsK0yDts4O5VUt9qAiij6FpAttnD8cfIwL2InrvWCrsYqnfZi9
-         O1tbvlzlbD5cF8ZhQzsdfKf/FDR2Uk93EHKHEBw4Lh+3RYpf7XwzhDfUIjg8M4qIsUVQ
-         O279YQFp3k1CBDKebx8WgjH2VlHCML3GW6d88cAhybLox0vQiXQbQSxjGbmnhWdQlqm5
-         6cq90I6crbns4UIqYX/LvcQmo5EwkYmh33KcA58MV1hxB4Zf3TLm+IiWlLA65zxtNtM4
-         rNkA==
-X-Forwarded-Encrypted: i=1; AJvYcCUU63w0zYM1yEDCSZkRe428UiRam4F4X0GC1yMGQJYTsSv1OKfhJaIMLQL75LADabqaNFHXrsXIh9g9LWty3XGe@lists.infradead.org, AJvYcCUyxs2CRAnzTs/wswGGxBrSACMgJehEnAPBbRhNhPju90sIYz9fYprzKh2Su7dCesnnMhjIs+GKel6tRy0S4xI=@lists.infradead.org
-X-Gm-Message-State: AOJu0YyYbnX1zIS8zTslaG7BUZVTppD1HHMadqjgbyWL/IaHwJGqC0Ja
-	pEl2honhqZotsiHHFuC8Ahk2iX44oWgIv0rkhje8HYgaxyByzmnqp/u4XObxaRAtWClrrbi03R6
-	oUOex/pgl9KSR5P0kQwb37hzuF8Kv18M=
-X-Gm-Gg: ASbGncvfsRakzIga3keXr5l2+KEQDVCfaYK1J3FSilwbJVo1esqL1EH7oIYc3OqwFeD
-	GGm+8gvBUC2FWoQd4ttYS/JKssxB+Cuud2iyxattVBGNcVQ4UNcevugh+pBBxoerocKBUG3VFe9
-	7JG4UX6s2fvYaBYhccmu6tN3I8tXCrxuNW+M4Mn9aF/8joT3Ibaog3Vo+YIfi/5eU23gBn7A3Ix
-	Yz2q1lCtRVisoYvSGsJTWrJrfmTIEDnmtMr06hv
-X-Google-Smtp-Source: AGHT+IHSoLDTkq5deXOI5kOXvOEJGs7/045c3SFr+zmXA7JcB8nnmgDCdO7Qbzl8FAm2rty6nUd0qaQ2gfQlRQ8Uk8I=
-X-Received: by 2002:a17:907:d10:b0:af9:1be8:c2aa with SMTP id
- a640c23a62f3a-afe295e56d1mr1138094366b.45.1756147538797; Mon, 25 Aug 2025
- 11:45:38 -0700 (PDT)
+	id 1uqdoI-00000009aks-1wSF;
+	Mon, 25 Aug 2025 20:28:58 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id D87A560240;
+	Mon, 25 Aug 2025 20:28:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 33FF3C4CEED;
+	Mon, 25 Aug 2025 20:28:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1756153737;
+	bh=ComM35XaOofwnrs4E6SooCBJVLjt4r+F5uISZovHRbk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=mK8TnozMk+hiGthqg6YeyX5K9pIAYMFPVR75G238AJAo/HCD9a0QSWhpYZF+II6/+
+	 GYnnrODQVztWLZDy50ntAhUkMwszDSRpzIeUdpj0fvCTUad/qcaM32Hh7FD8r22o/N
+	 5t8SohtCCDesXq7etFZD551C6gCqYtprq5G6EeeE=
+Date: Mon, 25 Aug 2025 22:28:53 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: xion.wang@mediatek.com
+Cc: Arnd Bergmann <arnd@arndb.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	wsd_upstream@mediatek.com, huadian.liu@mediatek.com,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/1] misc: Prevent double registration and deregistration
+ of miscdevice
+Message-ID: <2025082533-ranked-simply-4b63@gregkh>
+References: <20250825084556.10358-1-xion.wang@mediatek.com>
+ <20250825084556.10358-2-xion.wang@mediatek.com>
 MIME-Version: 1.0
-References: <20250822-mtk-post-blend-color-pipeline-v1-0-a9446d4aca82@collabora.com>
- <20250822-mtk-post-blend-color-pipeline-v1-1-a9446d4aca82@collabora.com> <CAPj87rPAoD2D99zTdsvJ=9K8+G17mTS2jDYHMPYmXNtUyp2L_Q@mail.gmail.com>
-In-Reply-To: <CAPj87rPAoD2D99zTdsvJ=9K8+G17mTS2jDYHMPYmXNtUyp2L_Q@mail.gmail.com>
-From: Xaver Hugl <xaver.hugl@gmail.com>
-Date: Mon, 25 Aug 2025 20:45:27 +0200
-X-Gm-Features: Ac12FXwIBvZYaDx3nXuRC59YLfGWHPRaFpCScdKvQ4nArJPhSi57cSubMBYyjfo
-Message-ID: <CAFZQkGwotQ6cxVCSgp-BhUi5DaZ7MyVvbnrDJW11Z7ztzqy58g@mail.gmail.com>
-Subject: Re: [PATCH RFC 1/5] drm: Support post-blend color pipeline API
-To: Daniel Stone <daniel@fooishbar.org>
-Cc: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Alex Hung <alex.hung@amd.com>, 
-	wayland-devel@lists.freedesktop.org, harry.wentland@amd.com, leo.liu@amd.com, 
-	ville.syrjala@linux.intel.com, pekka.paalanen@collabora.com, 
-	contact@emersion.fr, mwen@igalia.com, jadahl@redhat.com, 
-	sebastian.wick@redhat.com, shashank.sharma@amd.com, agoins@nvidia.com, 
-	joshua@froggi.es, mdaenzer@redhat.com, aleixpol@kde.org, 
-	victoria@system76.com, uma.shankar@intel.com, quic_naseer@quicinc.com, 
-	quic_cbraga@quicinc.com, quic_abhinavk@quicinc.com, marcan@marcan.st, 
-	Liviu.Dudau@arm.com, sashamcintosh@google.com, 
-	chaitanya.kumar.borah@intel.com, louis.chauvet@bootlin.com, mcanal@igalia.com, 
-	kernel@collabora.com, daniels@collabora.com, dri-devel@lists.freedesktop.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, Simona Vetter <simona.vetter@ffwll.ch>
-Content-Type: text/plain; charset="UTF-8"
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_114541_121785_7D39E7DD 
-X-CRM114-Status: GOOD (  16.13  )
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250825084556.10358-2-xion.wang@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,45 +70,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> > @@ -416,6 +417,24 @@ int drm_mode_object_get_properties(struct drm_mode_object *obj, bool atomic,
-> >                                 continue;
-> >                 }
-> >
-> > +               if (post_blend_color_pipeline && obj->type == DRM_MODE_OBJECT_CRTC) {
-> > +                       struct drm_crtc *crtc = obj_to_crtc(obj);
-> > +                       struct drm_mode_config mode_config = crtc->dev->mode_config;
-> > +
-> > +                       if (prop == mode_config.gamma_lut_property ||
-> > +                           prop == mode_config.degamma_lut_property ||
-> > +                           prop == mode_config.gamma_lut_size_property ||
-> > +                           prop == mode_config.ctm_property)
-> > +                               continue;
-> > +               }
-> > +
-> > +               if (!post_blend_color_pipeline && obj->type == DRM_MODE_OBJECT_CRTC) {
-> > +                       struct drm_crtc *crtc = obj_to_crtc(obj);
-> > +
-> > +                       if (prop == crtc->color_pipeline_property)
-> > +                               continue;
-> > +               }
->
-> Hmmm. One issue with this is that it makes things like drm_info
-> harder: if drm_info opted into the client cap, it would no longer be
-> able to see any GAMMA_LUT/etc programmed by the prior userspace. So I
-> think allowing at least read-only access would be reasonable here.
-FWIW the cap for per-plane pipelines also hides COLOR_RANGE and
-COLOR_ENCODING properties from the client.
+On Mon, Aug 25, 2025 at 04:45:47PM +0800, xion.wang@mediatek.com wrote:
+> From: Xion Wang <xion.wang@mediatek.com>
+> 
+> When repeated calls to misc_register() or misc_deregister() on the
+> same miscdevice could lead to kernel crashes or misc_list corruption due to
+> multiple INIT_LIST_HEAD or list_del operations on the same list node.
+> 
+> This patch improves the robustness of the misc device driver by preventing
+> both double registration and double deregistration of miscdevice instances.
+> 
+> Signed-off-by: Xion Wang <xion.wang@mediatek.com>
+> ---
+>  drivers/char/misc.c | 7 ++++++-
+>  1 file changed, 6 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/char/misc.c b/drivers/char/misc.c
+> index 558302a64dd9..2f8666312966 100644
+> --- a/drivers/char/misc.c
+> +++ b/drivers/char/misc.c
+> @@ -210,6 +210,9 @@ int misc_register(struct miscdevice *misc)
+>  	int err = 0;
+>  	bool is_dynamic = (misc->minor == MISC_DYNAMIC_MINOR);
+>  
+> +	if (WARN_ON(misc->this_device))
+> +		return -EEXIST;
 
-From a compositor POV, I slightly prefer hiding the properties
-entirely, but ignoring them on the compositor side when a color
-pipeline is available would also be trivial.
+You just crashed the kernel if this ever triggers (remember when
+panic-on-warn is set)
 
-> Having a client cap without a driver cap also puts userspace in a
-> difficult position. If the driver doesn't support post-blend colorops,
-> then enabling the client cap strictly removes support without a
-> replacement. And without a driver cap, the client doesn't have a way
-> to know which is better.
->
-> Cheers,
-> Daniel
+So please, if this can happen, properly handle it.
+
+> +
+>  	INIT_LIST_HEAD(&misc->list);
+>  
+>  	mutex_lock(&misc_mtx);
+> @@ -251,6 +254,7 @@ int misc_register(struct miscdevice *misc)
+>  			misc->minor = MISC_DYNAMIC_MINOR;
+>  		}
+>  		err = PTR_ERR(misc->this_device);
+> +		misc->this_device = NULL;
+>  		goto out;
+>  	}
+>  
+> @@ -275,12 +279,13 @@ EXPORT_SYMBOL(misc_register);
+>  
+>  void misc_deregister(struct miscdevice *misc)
+>  {
+> -	if (WARN_ON(list_empty(&misc->list)))
+> +	if (WARN_ON(!misc->this_device))
+>  		return;
+>  
+>  	mutex_lock(&misc_mtx);
+>  	list_del(&misc->list);
+>  	device_destroy(&misc_class, MKDEV(MISC_MAJOR, misc->minor));
+> +	misc->this_device = NULL;
+
+You are overloading the pointer here to mean something, please don't.
+
+Again, why would this ever happen?  What in-tree driver does this?
+
+thanks,
+
+greg k-h
 
