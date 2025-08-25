@@ -4,164 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 071A3CA0EFC
-	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Aug 2025 19:07:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E297ACA0EED
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Aug 2025 03:32:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kRFerQraihZIanmomm0IKhmbjfbkS3W8YtjfgYvp2fw=; b=Kg4AJnCcd2JN98h7BHf080MFnk
-	yHAj22kIrVdH3DvKBT+1DF3cuuNsjg15mPb1AbCK3WokxlMLQQ9Xm5lwh4+jTxGHSpJyta6NcleNg
-	GMp0NObutORPEzww6R1eBQzsh2h93qumfDIXsNtg8mbnUBny7IudzYtBAoadB+IzCgqwm11Gnunvi
-	QfG63VP7Umf5t7ptoUYatNksLEuuDSNv/ndhTEIy4pq2VYChytwL/lAz0aGjvsG9xQwpW8GdODzVT
-	MnEEcSNWWTYDKEjkvqHBSVuKHjVMXjWvVSGOBAO5mb30vhC1ZBgbtEiq+h4R/Qyn/l931KivNeoJa
-	jrTKyTpg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ou2C/zcmNmDM+9xeKUZQlGrujbR/kb6UxxUv3SCOO+s=; b=Bl6gaRJQmBWDgPkAE25k2Fc3Ar
+	dpfnP1xOHsBiXhMc3U2qzgC9/YGDSpPOpaTuG1/7PLipTkpMC7ScV4MGrAB6DJolvMyUzoxXIfvzd
+	RAxBdgqvqduXkzFP2B7h/pNj9aFANwEm37ZvDxYZtd1EwkCPGNd4Tfnhfb2qQ/WBVi8aREwmf9Ifu
+	lvg98shskG5WFyH+ZlGcJsP/PU2cNhJvxj8nGrv4XolQ3zQnMf1UAFwA6hGEd6557VtqTyJCUEBUM
+	D3swrO+9O15+/9oQdqx51LHfymVJ2mtw1dN75x2hOf2E/Fw5RvjlzfoFkpFEr3TkcxjxBs7GyLUs/
+	H8c45ASg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqG3o-00000006Tr4-3YUR;
-	Sun, 24 Aug 2025 19:07:24 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1uqNws-00000006oLO-0til;
+	Mon, 25 Aug 2025 03:32:46 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqG3l-00000006Tp6-1KsC
-	for linux-mediatek@lists.infradead.org;
-	Sun, 24 Aug 2025 19:07:23 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-55f455e7fe7so22410e87.2
-        for <linux-mediatek@lists.infradead.org>; Sun, 24 Aug 2025 12:07:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1756062439; x=1756667239; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=kRFerQraihZIanmomm0IKhmbjfbkS3W8YtjfgYvp2fw=;
-        b=QXjP9WpGluFL/kKeFDvOBMzKuViaf0VT9jT5PRaRsodA2Sfrag3v7N42g5KmfcaqR5
-         RnmSlhvIplqcxIkRuJJ3ywOseJOX93xDg/3HVFUksKp2Cjz9EAAf54fvU6weMoy6sEBa
-         ujgeb8IFFVZz+jSesKldV76ZuahnX8MSeuXZeUbXsUrubHpO/zhDJ1BftmeSUqfJLLT7
-         Iz6wsrCDU1p/cF9bUXjLQ19nz3Am2+2PRsxCwuHrQF6+IRl7f7FUCZscOrH6XDTtg0Cd
-         CAThtcEpzNY7h1bnmjuHU+lZkzTMi3PjpRmqRp2We/eNNiblM0SoeKfwCiMfWyffE5DV
-         UsDw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756062439; x=1756667239;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=kRFerQraihZIanmomm0IKhmbjfbkS3W8YtjfgYvp2fw=;
-        b=p6tnUF3/lu+IK0tvsr0cjiYq48m0xSBluXkk7Rt3NrzySYrzyszPTjjzEylI+TvJJ4
-         ikajJ0+8SPLS/7xrg40mLZtyAkEQTE2aYC3q0NaoiieooCsHUUXsEDj7uaLM+vVntNp2
-         1uhGoKb7ZQEzKI6J3+h6DOR8jml4uEjGZO4bmfiRR813B9IzipSJxVkNH5pQH9BE6k47
-         2L0SgSyGI6qg8feeM7Hbk5EvHeoGVEF6XEPxmFq8Dh21h4CsIhUj0OCyxL9g6hODcSEU
-         PjWKsbBbTiJbY4V255OQ6Mc1UH5ZdfbsUXHsiLZBy55l83TVnyB52Sj9HkGzkDQFg0I8
-         0kvw==
-X-Forwarded-Encrypted: i=1; AJvYcCViG+/VmcgmSXOguhuISyIhIFRGPbxG6YrveZck9wQufPnLjZGEk3vEn6dJ95LQtSAiO0/Uqm96tlQdySWdjQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywvi2dxILoc5EN77cqqkRMDUwDqfk5ddmj8aviIfd5antj/U9PL
-	LvcjOfD84bI7MJUM1+XhxJXCcRR5Zm6qGX8Uq+OXJed/sMzzQmn7p1SnX8GLYvoGzHU=
-X-Gm-Gg: ASbGncshECXhMiZ0I8iehkYtOxZp/x5cDxYl6kVOyK9yQhckZmhavHwogwqsXU0huPd
-	Ydba4JKlVMEIZBovLsR9+1p0+lqDV08BJb3a/17X4xIBbGnHNG5TZOkME/Wz/XrLVh59aawZjwP
-	B3TPfiEej3prqZWRnqnuybFma+t3vu1Q0g1s8V0dMS5RlJsptlmuhQiRmu1b8Uy1A7s5pHT/SEb
-	KRdButvZw7kRDWSBIW0V/Weq6vFf/2XwM5ip2hTHmVH4QvLy41ZRFqMv4G6OyJrrV/F1iEYd+yI
-	52oc/oFbZvt9BZiVjSIGc7ySTlsdleA5/OMIlf5mVMbACQDekNPfEzdeHC9VMH35tyckvYG6xLA
-	fPe+ASB7f6Uq1uNUlDIb2toOVL8sBzm0t4oD7KtzrDFvpqNHpdeLhrvxRKUoe0M6EbHdrtnICRp
-	BaCL+JGMpiJPE=
-X-Google-Smtp-Source: AGHT+IH13MoxmrDQetMznYo3yow5OENe/3UHzqm8TZjVRtSQjRA+4ERWWZasIRoFRuhqFpxTrCVdqA==
-X-Received: by 2002:a05:6512:2391:b0:55f:44eb:ea92 with SMTP id 2adb3069b0e04-55f44ebec0cmr134730e87.7.1756062439301;
-        Sun, 24 Aug 2025 12:07:19 -0700 (PDT)
-Received: from [192.168.1.100] (88-112-128-43.elisa-laajakaista.fi. [88.112.128.43])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-55f35ca6713sm1206429e87.136.2025.08.24.12.07.16
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 24 Aug 2025 12:07:18 -0700 (PDT)
-Message-ID: <b4221eca-7977-47b3-a563-f392d7dafb8b@linaro.org>
-Date: Sun, 24 Aug 2025 22:07:16 +0300
+	id 1uqNwp-00000006oKw-3IKI;
+	Mon, 25 Aug 2025 03:32:44 +0000
+X-UUID: 24a47e36816411f09eb0dd999d3936bf-20250824
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=ou2C/zcmNmDM+9xeKUZQlGrujbR/kb6UxxUv3SCOO+s=;
+	b=pgXBssemJlUu9KzDGjs3lZUyePFTpvzRUTshs++6qQOHtY5feiNpkALoDtjb5pu9WuL+q8zPNMNjWYW4bm+V3fEo6lkQGMivrYlmNje3ExuUMXmtDe2t+rsgLuJa4irukPcs6SdetUZkxBfMqB9Mep/hOBuO8YNOFjoCNGTiWiQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.3,REQID:32d2b3b1-286f-47e9-900f-fcea3720ae40,IP:0,UR
+	L:0,TC:0,Content:50,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:50
+X-CID-META: VersionHash:f1326cf,CLOUDID:f39e7b7a-966c-41bd-96b5-7d0b3c22e782,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|801,TC:-5,Content:3|15|50,EDM:-3
+	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
+	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 24a47e36816411f09eb0dd999d3936bf-20250824
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <zhanzhan.ge@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2105217404; Sun, 24 Aug 2025 20:32:35 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Mon, 25 Aug 2025 11:32:33 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Mon, 25 Aug 2025 11:32:32 +0800
+From: Zhanzhan Ge <zhanzhan.ge@mediatek.com>
+To: Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner
+	<tglx@linutronix.de>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
+	<krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<sirius.wang@mediatek.com>, <vince-wl.liu@mediatek.com>,
+	<jh.hsu@mediatek.com>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Zhanzhan Ge <zhanzhan.ge@mediatek.com>
+Subject: [PATCH] dt-bindings: timer: mediatek,timer: Add compatible for MT8189
+Date: Mon, 25 Aug 2025 11:31:13 +0800
+Message-ID: <20250825033136.7705-1-zhanzhan.ge@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 20/65] media: camss: Remove custom .release fop()
-Content-Language: ru-RU
-To: Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Devarsh Thakkar
- <devarsht@ti.com>, Benoit Parrot <bparrot@ti.com>,
- Hans Verkuil <hverkuil@kernel.org>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Hans de Goede <hansg@kernel.org>,
- Parthiban Veerasooran <parthiban.veerasooran@microchip.com>,
- Christian Gromm <christian.gromm@microchip.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Alex Shi
- <alexs@kernel.org>, Yanteng Si <si.yanteng@linux.dev>,
- Jonathan Corbet <corbet@lwn.net>, Tomasz Figa <tfiga@chromium.org>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Andy Walls <awalls@md.metrocast.net>,
- Michael Tretter <m.tretter@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Bin Liu <bin.liu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Dmitry Osipenko <digetx@gmail.com>, Thierry Reding
- <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>,
- Mirela Rabulea <mirela.rabulea@nxp.com>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, Fabio Estevam <festevam@gmail.com>,
- Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
- Michal Simek <michal.simek@amd.com>, Ming Qian <ming.qian@nxp.com>,
- Zhou Peng <eagle.zhou@nxp.com>, Xavier Roumegue
- <xavier.roumegue@oss.nxp.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- Vikash Garodia <quic_vgarodia@quicinc.com>,
- Dikshita Agarwal <quic_dikshita@quicinc.com>,
- Abhinav Kumar <abhinav.kumar@linux.dev>,
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
- Sylwester Nawrocki <sylvester.nawrocki@gmail.com>,
- Jernej Skrabec <jernej.skrabec@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
- Samuel Holland <samuel@sholland.org>,
- Daniel Almeida <daniel.almeida@collabora.com>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Nas Chung <nas.chung@chipsnmedia.com>,
- Jackson Lee <jackson.lee@chipsnmedia.com>,
- Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
- Houlong Wei <houlong.wei@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Magnus Damm <magnus.damm@gmail.com>,
- Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Heiko Stuebner <heiko@sntech.de>,
- Detlev Casanova <detlev.casanova@collabora.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar
- <alim.akhtar@samsung.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>,
- =?UTF-8?Q?=C5=81ukasz_Stelmach?= <l.stelmach@samsung.com>,
- Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
- Jacek Anaszewski <jacek.anaszewski@gmail.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Fabien Dessenne <fabien.dessenne@foss.st.com>,
- Jean-Christophe Trotin <jean-christophe.trotin@foss.st.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Steve Longerbeam <slongerbeam@gmail.com>, Maxime Ripard
- <mripard@kernel.org>, =?UTF-8?Q?Niklas_S=C3=B6derlund?=
- <niklas.soderlund@ragnatech.se>, Robert Foss <rfoss@kernel.org>,
- Todor Tomov <todor.too@gmail.com>, Corentin Labbe <clabbe@baylibre.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Bingbu Cao <bingbu.cao@intel.com>,
- Stanislaw Gruszka <stanislaw.gruszka@linux.intel.com>
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-staging@lists.linux.dev, linux-doc@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-tegra@vger.kernel.org, imx@lists.linux.dev,
- linux-renesas-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
- linux-usb@vger.kernel.org, linux-amlogic@lists.infradead.org,
- linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, mjpeg-users@lists.sourceforge.net
-References: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
- <20250802-media-private-data-v1-20-eb140ddd6a9d@ideasonboard.com>
-From: Vladimir Zapolskiy <vladimir.zapolskiy@linaro.org>
-In-Reply-To: <20250802-media-private-data-v1-20-eb140ddd6a9d@ideasonboard.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250824_120721_359761_A5D5EC7F 
-X-CRM114-Status: GOOD (  10.33  )
+X-CRM114-CacheID: sfid-20250824_203243_835384_C745E322 
+X-CRM114-Status: UNSURE (   8.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -176,22 +90,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Jacopo,
+Add the compatible for mt8189 timer to the binding.
 
-thank you for the change!
+Signed-off-by: Zhanzhan Ge <zhanzhan.ge@mediatek.com>
+---
+ Documentation/devicetree/bindings/timer/mediatek,timer.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-On 8/2/25 12:22, Jacopo Mondi wrote:
-> The 'file->private_data' pointer is reset in the vb2_fop_release()
-> call path. For this reason a custom handler for the .release
-> file operation is not needed and the driver can use
-> vb2_fop_release() directly.
-> 
-> Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+diff --git a/Documentation/devicetree/bindings/timer/mediatek,timer.yaml b/Documentation/devicetree/bindings/timer/mediatek,timer.yaml
+index e3e38066c2cb..5ceedc3a4f91 100644
+--- a/Documentation/devicetree/bindings/timer/mediatek,timer.yaml
++++ b/Documentation/devicetree/bindings/timer/mediatek,timer.yaml
+@@ -43,6 +43,7 @@ properties:
+               - mediatek,mt8183-timer
+               - mediatek,mt8186-timer
+               - mediatek,mt8188-timer
++              - mediatek,mt8189-timer
+               - mediatek,mt8192-timer
+               - mediatek,mt8195-timer
+               - mediatek,mt8196-timer
+--
+2.45.2
 
-Tested-by: Vladimir Zapolskiy <vladimir.zapolskiy@linaro.org>
-Reviewed-by: Vladimir Zapolskiy <vladimir.zapolskiy@linaro.org>
-
--- 
-Best wishes,
-Vladimir
 
