@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D950CA0EFA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Aug 2025 15:01:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2E0CCA0FE7
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Aug 2025 15:01:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DEX36ZGbuV2YIOBK6Cb/zSWpo7+Xgxf7u7m0TtV2jPM=; b=tlOqo5upTeHGMdV2OrjybCY3sD
-	RVofotV8li0jOQHDHuLQN6dh+bsg6+aDvk65wtGCEYose/ezkY36K0NS9AqnIasRbXJpI4BELGxMy
-	OO3AsEIZwSJjm7ZjOAKqk1WUNmvxXELNqAPq1QwjEymW3gFWMaYEO8omHK0IrEYOae62jq3w9k+cs
-	m3Q+lmAtcZ0gJifeIA56r14qqpH5nvDDekpFLbyhlvWjx1uvmImPOIc4z6U84nPRbuWJOqbyTYoFG
-	3thssh90WB2jY3EOGe9sUSLgOymLb5bhuxghIzJ4k9jME2paaOUKL3uG1gM1lxD3CcRsldJZnC8Pb
-	8n9+/uOQ==;
+	bh=mWF9ZF7YIxX+sPenVoA2oiPigyr01OV5nY0vtuOaNHI=; b=W358tF8/pefNF7KJtZ5SJomDgp
+	tA754iKDQC1+I5hN1YzXdyPECyI1i7ANSMnDDn+SKRYoOG6L4tWLi0gJ03eY3QldPbQAyUfX/DkKZ
+	NRxdzT1aljLURjXey+87v2n3Ofx6vvyJRv2DCJ73nRDxGKqbIhHV4cvMg4nrTIvwIzajP7s7dgMDw
+	35uvZI4yk29O2japtYi0p6Xai9Nz/7jIoIiwhMRT2pliPHlXSIWo4JMwtrZDXH9KpPY5SnWeC5Scw
+	ikm9tIWV1XkzJMTvbOrtZKN9RRL2zB688lYitmUNFRoyzT/cRJrAHc4wNGWI4BXIM5Pg5qzC6zo4+
+	aF0HSuhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqYh7-00000008OE2-1c5A;
-	Mon, 25 Aug 2025 15:01:13 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1uqYhA-00000008OHc-2UNJ;
+	Mon, 25 Aug 2025 15:01:16 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqXUB-000000087Rh-2MXv;
-	Mon, 25 Aug 2025 13:43:48 +0000
+	id 1uqXUE-000000087Sn-0tpj;
+	Mon, 25 Aug 2025 13:43:51 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id F33A95C578F;
-	Mon, 25 Aug 2025 13:43:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 407D2C116D0;
-	Mon, 25 Aug 2025 13:43:46 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id A15405C5DC1;
+	Mon, 25 Aug 2025 13:43:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E63F9C19421;
+	Mon, 25 Aug 2025 13:43:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756129426;
-	bh=wFYe8IhxpCJtPvgevdyVNVoa1kh0rXMyxXaOMW2sjnE=;
+	s=k20201202; t=1756129429;
+	bh=wk0b8XpwPxcYQ3noQMP9GONlP4C4Be6y8QzZeFkyZik=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=JxtopDQj6ULDe0mqR9DVwTgnUmVDas9rVHH6T+25o1ZWzYgj2ldH8ysOL2+Jz/sOX
-	 GkED+1LHZrZlhCniMPY2Bd7R1uxFiviqZ+R4efulj1fnh8noIAI+Y0GtPW43rNAhPz
-	 NL6tbkZIASVWOFlfJUzGCYwl7xnZfzFTD1rYx3pzpK0hsZKL9VEUs0iWY2ukqqegV1
-	 R/TsbH5UPxLzAA/ynadvyfVVgClyMIYImnS0wu7Z7AsyJPV73+/ycT+n08cqbFY+qo
-	 iOZTxiUiRfI1q28EeadUhBEdVlIgUs5ChVSCmTi5yGNQQ3sgyzIQ0pyJQWphC+GJy6
-	 hu8FvRcQYUTAw==
+	b=TNLr/eqZS5Z5YnxUeOhVHiHkvHvTkPfq6dRrv+J0eaL13OfGotbCDFdtrYU17Psj2
+	 CGX+ig2ydR3YjaxgJD6RCVskBi/KqVQcJAfF85oMmqynJ2mAqd6k8MMJB4zAcmHlKx
+	 0kPw3FGXEZvbQfDbSxGs/EeuNVEzesMvWw014OhX3oRFZ9V6teLe7xB73Rxl7eZZdP
+	 dZJK9hZmIWf935nEi7cvWg6+QflYB8Qcjn4JW4Jt6+vcQl9SHSCsh4BE/xRYw0iBYd
+	 4wc3gBrx20XdyoTxrsvYCzob9TOo4bZvl/cWmWK/kycZ4M1boz9akiSv7VR6thFTt2
+	 /lxt7tx/Lcvog==
 From: Maxime Ripard <mripard@kernel.org>
-Date: Mon, 25 Aug 2025 15:43:09 +0200
-Subject: [PATCH 04/39] drm/atomic: Remove unused
- drm_atomic_get_existing_connector_state()
+Date: Mon, 25 Aug 2025 15:43:10 +0200
+Subject: [PATCH 05/39] drm/atomic: Document __drm_connectors_state state
+ pointer
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250825-drm-no-more-existing-state-v1-4-f08ccd9f85c9@kernel.org>
+Message-Id: <20250825-drm-no-more-existing-state-v1-5-f08ccd9f85c9@kernel.org>
 References: <20250825-drm-no-more-existing-state-v1-0-f08ccd9f85c9@kernel.org>
 In-Reply-To: <20250825-drm-no-more-existing-state-v1-0-f08ccd9f85c9@kernel.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -104,17 +104,17 @@ Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
  linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
  Maxime Ripard <mripard@kernel.org>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1652; i=mripard@kernel.org;
- h=from:subject:message-id; bh=wFYe8IhxpCJtPvgevdyVNVoa1kh0rXMyxXaOMW2sjnE=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDBlrMooDdRfpr76ywjU/fVb0zH8FnB/PBATmPZ7rpyqse
- 1dwpl5sx1QWBmFOBlkxRZYnMmGnl7cvrnKwX/kDZg4rE8gQBi5OAZjIJQfG+hQhb85JMc///dmV
- 4jUh+RNrzPEfYoJ+PDE2pcw199I/LGX6f3djmZ3h1vUbD5XYJb5zZmx4OnHh7j3Hu2VvBny8u75
- rhdJftY1qDiyZSptOZ089E9QUnLBCQvKriES7pveHOUsZeTUA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1590; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=wk0b8XpwPxcYQ3noQMP9GONlP4C4Be6y8QzZeFkyZik=;
+ b=owGbwMvMwCmsHn9OcpHtvjLG02pJDBlrMkpsFz4STLt/pPDOz5CsKmlWm7e+UmcNrFidjyrn6
+ mnPELrdMZWFQZiTQVZMkeWJTNjp5e2LqxzsV/6AmcPKBDKEgYtTACaiMImxYW3Gu1vP5V+wcj6q
+ NGtUkPrZOeO+p2bbzcjqLm62d6/yJp3Z/nK7Ay/HxNch2SbWTbuWMTbMKnLYcC64JKft16ZaL+M
+ tPFyTFi8qVgi/0G+3T9riBJf3p0PHVvotOjOHd7n8N656jTwA
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_064347_688659_EB60281D 
-X-CRM114-Status: GOOD (  11.97  )
+X-CRM114-CacheID: sfid-20250825_064350_334893_93AD8A6E 
+X-CRM114-Status: GOOD (  15.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,52 +129,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The drm_atomic_get_existing_connector_state() function is deprecated and
-isn't used anymore, so let's remove it.
+While the old and new state pointers are somewhat self-explanatory, the
+state pointer and its relation to the other two really isn't.
+
+Now that we've cleaned up everything and it isn't used in any
+modesetting path, we can document what it's still useful for: to free
+the right state when we free the global state.
 
 Signed-off-by: Maxime Ripard <mripard@kernel.org>
 ---
- include/drm/drm_atomic.h | 23 -----------------------
- 1 file changed, 23 deletions(-)
+ include/drm/drm_atomic.h | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
 
 diff --git a/include/drm/drm_atomic.h b/include/drm/drm_atomic.h
-index 38636a593c9d98cadda85ccd67326cb152f0dd27..321c866d5b0a46df7a9adbbf5e4cabd1ff987aad 100644
+index 321c866d5b0a46df7a9adbbf5e4cabd1ff987aad..798d33b50ef7497ce938ce3dbabee32487dda2d6 100644
 --- a/include/drm/drm_atomic.h
 +++ b/include/drm/drm_atomic.h
-@@ -729,33 +729,10 @@ drm_atomic_get_new_plane_state(const struct drm_atomic_state *state,
- 			       struct drm_plane *plane)
- {
- 	return state->planes[drm_plane_index(plane)].new_state;
- }
+@@ -180,11 +180,26 @@ struct __drm_crtcs_state {
+ 	u64 last_vblank_count;
+ };
  
--/**
-- * drm_atomic_get_existing_connector_state - get connector state, if it exists
-- * @state: global atomic state object
-- * @connector: connector to grab
-- *
-- * This function returns the connector state for the given connector,
-- * or NULL if the connector is not part of the global atomic state.
-- *
-- * This function is deprecated, @drm_atomic_get_old_connector_state or
-- * @drm_atomic_get_new_connector_state should be used instead.
-- */
--static inline struct drm_connector_state *
--drm_atomic_get_existing_connector_state(const struct drm_atomic_state *state,
--					struct drm_connector *connector)
--{
--	int index = drm_connector_index(connector);
--
--	if (index >= state->num_connector)
--		return NULL;
--
--	return state->connectors[index].state;
--}
--
- /**
-  * drm_atomic_get_old_connector_state - get connector state, if it exists
-  * @state: global atomic state object
-  * @connector: connector to grab
-  *
+ struct __drm_connnectors_state {
+ 	struct drm_connector *ptr;
+-	struct drm_connector_state *state, *old_state, *new_state;
++
++	/**
++	 * @state:
++	 *
++	 * Used to track the @drm_connector_state we will need to free
++	 * when tearing down the associated &drm_atomic_state.
++	 *
++	 * Before a commit, and the call to
++	 * drm_atomic_helper_swap_state() in particular, it points to
++	 * the same state than @new_state. After a commit, it points to
++	 * the same state than @old_state.
++	 */
++	struct drm_connector_state *state;
++
++	struct drm_connector_state *old_state, *new_state;
++
+ 	/**
+ 	 * @out_fence_ptr:
+ 	 *
+ 	 * User-provided pointer which the kernel uses to return a sync_file
+ 	 * file descriptor. Used by writeback connectors to signal completion of
 
 -- 
 2.50.1
