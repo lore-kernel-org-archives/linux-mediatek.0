@@ -4,75 +4,133 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DCA0CA0FE1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Aug 2025 08:58:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2F63CA0FE1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Aug 2025 09:01:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Tj8a6GPuOmdWC97QKAJpys6LnXM9wpEnatX8NPRY2Qw=; b=EpL0pKl4yDrwqmg3q9IBYWZrdr
-	W6oCKoIQZLVFgzjlUa2zeqhSUl/ugqikW7cFnecqzBTLnF4+nObjyfdxGFudt8C97kTBMpOq0L2NV
-	eZOuPzCUVTKkzb/hH02K43Be0iPWXkzc5ax7q63ywA8EYKUid0wjfaQ9Q72EYTlEiLPEaTp/0oZ7J
-	rGJfSi8KgGW7u+ftl+gSfny8ctvvz6Tetn0D5CkAaJv7Ex47zv7w/swaDIE+xwf6/ReZJFYQ6IuH7
-	aavoFPWDK90PXnI3GFSezIQIhVtDGHznq3S4j4t6TyQav6qdJxkXe148uFiRGr25EC1/pDZxj4vv0
-	4Ep9BGbw==;
+	bh=Wvwj8v1uLhIoR73Z/jk8uLvfA5vZjsFB29zdUfj53MU=; b=tDZX9MyoXwncBYRDsrJAU6oQvB
+	dSu6YTlx4KfEhtBceZRpUsVLenePtWBRhhypYuTAaXlDG6+gdByH1cqOl12QC2RqjdtWaGSp6eWgS
+	M673yvV0dtnaxdoiFkYhhElsjRTONedUqhZFWvbsrA5Z2cEVHDZQiKeq0HPJ/w0Vmwd83DMEYFWkA
+	uxmelhxWjbMw754NM3rw9hrUXhy8MFUy/9TQ7yFt04pcOOPpFpPFE3rur7I7Q39qDjPj8vot9gJ7j
+	2LQ4AmeEOnScS2SBVRMfSnRhsQbyH+UxJHxnQaoRgz6k5phMafxBSyrRmDwtjcJKfeqqVWsEv0WGt
+	S/XfqCZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqT25-00000007QDE-2ND9;
-	Mon, 25 Aug 2025 08:58:29 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1uqT4f-00000007Qej-4AcL;
+	Mon, 25 Aug 2025 09:01:09 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqSlj-00000007MJy-2ZvD;
-	Mon, 25 Aug 2025 08:41:36 +0000
-X-UUID: 4ca7b49a818f11f09eb0dd999d3936bf-20250825
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Tj8a6GPuOmdWC97QKAJpys6LnXM9wpEnatX8NPRY2Qw=;
-	b=aZ3knCbI68NQGGZOMKsi5/62yK9Gogkbn9hXqdtYGeWKSuFDuv0J/ULiNlbWlUjy+svS3umeQz5FrTB2BZlGIj1T+Y0khjouZJw7d6AGX9HdZQXuyYXtyVmEx+ijF5nuNDhCMDdpAMcgGtBUzYHNa+eRwmjywXoUkaRQVsL7MOM=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.3,REQID:ff0ddc88-bffa-49fa-b630-e7fc5b96822a,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:f1326cf,CLOUDID:06e97e7a-966c-41bd-96b5-7d0b3c22e782,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:-5,Content:0|15|50,EDM:
-	-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,
-	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 3,DMD|SSN|SDN
-X-CID-BAS: 3,DMD|SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 4ca7b49a818f11f09eb0dd999d3936bf-20250825
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <xion.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1798410570; Mon, 25 Aug 2025 01:41:31 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Mon, 25 Aug 2025 16:41:28 +0800
-Received: from mbjsdccf07.gcn.mediatek.inc (10.15.20.246) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Mon, 25 Aug 2025 16:41:27 +0800
-From: <xion.wang@mediatek.com>
-To: Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman
-	<gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: <wsd_upstream@mediatek.com>, <huadian.liu@mediatek.com>, Xion Wang
-	<xion.wang@mediatek.com>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH 1/1] misc: Prevent double registration and deregistration of miscdevice
-Date: Mon, 25 Aug 2025 16:45:47 +0800
-Message-ID: <20250825084556.10358-2-xion.wang@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20250825084556.10358-1-xion.wang@mediatek.com>
-References: <20250825084556.10358-1-xion.wang@mediatek.com>
+	id 1uqSlp-00000007MMB-21pn;
+	Mon, 25 Aug 2025 08:41:42 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 3F81744C08;
+	Mon, 25 Aug 2025 08:41:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 86D14C116B1;
+	Mon, 25 Aug 2025 08:41:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1756111298;
+	bh=QBpsTTorkc4pTkqdyLYFQrl7G/3d/UIHjKHmGDhjvh8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Gc94G2p0qbx0jlafND6WSRRDnjNbakv8JEjLETlT1wvutg3+AKWAm9shTWfHSh9nH
+	 T3texahUXyK7O2oESbwoBQBkFFAJ3KFnYqMT+ZeGTLrgd0yWOnXXMJNOOub9b6eZI4
+	 JrKqx6X1NQNrc11YZTMBuP3PvLEcW0W2sbbEeCdQbPszV7fGgdNErXWZKIKoECTuXj
+	 JAjAzrvziLXDJ4eGJMeZFJR8kqTAzP5Crlc95tXJwtxy5c+mIbpcVZc0GjmMuNWbUV
+	 NQjvrL/A+++kZ/GkL8H/vC77AZONQxtF8wgd/bwy1pjDXOppGKbfgT+fCUOjE0Ahlx
+	 OMRZXPhsipZpg==
+Date: Mon, 25 Aug 2025 16:41:35 +0800
+From: Yixun Lan <dlan@kernel.org>
+To: bmasney@redhat.com
+Cc: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Sudeep Holla <sudeep.holla@arm.com>,
+	Cristian Marussi <cristian.marussi@arm.com>,
+	Chen Wang <unicorn_wang@outlook.com>,
+	Inochi Amaoto <inochiama@gmail.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Keguang Zhang <keguang.zhang@gmail.com>,
+	Taichi Sugaya <sugaya.taichi@socionext.com>,
+	Takao Orito <orito.takao@socionext.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Jacky Huang <ychuang3@nuvoton.com>,
+	Shan-Chun Hung <schung@nuvoton.com>,
+	Vladimir Zapolskiy <vz@mleia.com>,
+	Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Samuel Holland <samuel.holland@sifive.com>,
+	Yixun Lan <dlan@gentoo.org>,
+	Steen Hegelund <Steen.Hegelund@microchip.com>,
+	Daniel Machon <daniel.machon@microchip.com>,
+	UNGLinuxDriver@microchip.com, Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Michal Simek <michal.simek@amd.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>,
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+	Neal Gompa <neal@gompa.dev>,
+	Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Daniel Palmer <daniel@thingy.jp>,
+	Romain Perier <romain.perier@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Gregory Clement <gregory.clement@bootlin.com>,
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Andrea della Porta <andrea.porta@suse.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Sylwester Nawrocki <s.nawrocki@samsung.com>,
+	Chanwoo Choi <cw00.choi@samsung.com>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Qin Jian <qinjian@cqplus1.com>, Viresh Kumar <vireshk@kernel.org>,
+	Ulf Hansson <ulf.hansson@linaro.org>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Alex Helms <alexander.helms.jy@renesas.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Liviu Dudau <liviu.dudau@arm.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
+	linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+	arm-scmi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	sophgo@lists.linux.dev, linux-mips@vger.kernel.org,
+	imx@lists.linux.dev, linux-riscv@lists.infradead.org,
+	spacemit@lists.linux.dev, linux-stm32@st-md-mailman.stormreply.com,
+	patches@opensource.cirrus.com, linux-actions@lists.infradead.org,
+	asahi@lists.linux.dev, linux-mediatek@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev
+Subject: Re: [PATCH 051/114] clk: spacemit: ccu_pll: convert from
+ round_rate() to determine_rate()
+Message-ID: <20250825084135-GYC1096417@kernel.org>
+References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
+ <20250811-clk-for-stephen-round-rate-v1-51-b3bf97b038dc@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-51-b3bf97b038dc@redhat.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_014135_661689_509AC32C 
-X-CRM114-Status: GOOD (  14.01  )
+X-CRM114-CacheID: sfid-20250825_014141_565122_C2928D09 
+X-CRM114-Status: GOOD (  19.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,58 +145,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Xion Wang <xion.wang@mediatek.com>
+Hi Brian,
 
-When repeated calls to misc_register() or misc_deregister() on the
-same miscdevice could lead to kernel crashes or misc_list corruption due to
-multiple INIT_LIST_HEAD or list_del operations on the same list node.
+On 11:18 Mon 11 Aug     , Brian Masney via B4 Relay wrote:
+> From: Brian Masney <bmasney@redhat.com>
+> 
+> The round_rate() clk ops is deprecated, so migrate this driver from
+> round_rate() to determine_rate() using the Coccinelle semantic patch
+> on the cover letter of this series.
+> 
+> Signed-off-by: Brian Masney <bmasney@redhat.com>
 
-This patch improves the robustness of the misc device driver by preventing
-both double registration and double deregistration of miscdevice instances.
+Reviewed-by: Yixun Lan <dlan@kernel.org>
+> ---
+>  drivers/clk/spacemit/ccu_pll.c | 10 ++++++----
+>  1 file changed, 6 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/clk/spacemit/ccu_pll.c b/drivers/clk/spacemit/ccu_pll.c
+> index 45f540073a656c0edc341a903acc3f2405971fc9..d92f0dae65a490e9db52f25a538a518baa487ea8 100644
+> --- a/drivers/clk/spacemit/ccu_pll.c
+> +++ b/drivers/clk/spacemit/ccu_pll.c
+> @@ -125,12 +125,14 @@ static unsigned long ccu_pll_recalc_rate(struct clk_hw *hw,
+>  	return entry ? entry->rate : 0;
+>  }
+>  
+> -static long ccu_pll_round_rate(struct clk_hw *hw, unsigned long rate,
+> -			       unsigned long *prate)
+> +static int ccu_pll_determine_rate(struct clk_hw *hw,
+> +				  struct clk_rate_request *req)
+>  {
+>  	struct ccu_pll *pll = hw_to_ccu_pll(hw);
+>  
+> -	return ccu_pll_lookup_best_rate(pll, rate)->rate;
+> +	req->rate = ccu_pll_lookup_best_rate(pll, req->rate)->rate;
+> +
+> +	return 0;
+>  }
+>  
+>  static int ccu_pll_init(struct clk_hw *hw)
+> @@ -152,6 +154,6 @@ const struct clk_ops spacemit_ccu_pll_ops = {
+>  	.disable	= ccu_pll_disable,
+>  	.set_rate	= ccu_pll_set_rate,
+>  	.recalc_rate	= ccu_pll_recalc_rate,
+> -	.round_rate	= ccu_pll_round_rate,
+> +	.determine_rate = ccu_pll_determine_rate,
+>  	.is_enabled	= ccu_pll_is_enabled,
+>  };
+> 
+> -- 
+> 2.50.1
+> 
+> 
 
-Signed-off-by: Xion Wang <xion.wang@mediatek.com>
----
- drivers/char/misc.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/char/misc.c b/drivers/char/misc.c
-index 558302a64dd9..2f8666312966 100644
---- a/drivers/char/misc.c
-+++ b/drivers/char/misc.c
-@@ -210,6 +210,9 @@ int misc_register(struct miscdevice *misc)
- 	int err = 0;
- 	bool is_dynamic = (misc->minor == MISC_DYNAMIC_MINOR);
- 
-+	if (WARN_ON(misc->this_device))
-+		return -EEXIST;
-+
- 	INIT_LIST_HEAD(&misc->list);
- 
- 	mutex_lock(&misc_mtx);
-@@ -251,6 +254,7 @@ int misc_register(struct miscdevice *misc)
- 			misc->minor = MISC_DYNAMIC_MINOR;
- 		}
- 		err = PTR_ERR(misc->this_device);
-+		misc->this_device = NULL;
- 		goto out;
- 	}
- 
-@@ -275,12 +279,13 @@ EXPORT_SYMBOL(misc_register);
- 
- void misc_deregister(struct miscdevice *misc)
- {
--	if (WARN_ON(list_empty(&misc->list)))
-+	if (WARN_ON(!misc->this_device))
- 		return;
- 
- 	mutex_lock(&misc_mtx);
- 	list_del(&misc->list);
- 	device_destroy(&misc_class, MKDEV(MISC_MAJOR, misc->minor));
-+	misc->this_device = NULL;
- 	misc_minor_free(misc->minor);
- 	mutex_unlock(&misc_mtx);
- }
 -- 
-2.45.2
-
+Yixun Lan (dlan)
 
