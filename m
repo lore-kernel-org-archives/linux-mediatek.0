@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC3F4CA0FEE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Aug 2025 17:00:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29CEBCA0FE7
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Aug 2025 17:00:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
 	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
 	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yNYKVB7ejZHvag9mlt4vBKdDNtWCCkBY3PhbjTGPdRk=; b=OPv82RBIp/Q5/QJ1JAolgZGwUn
-	BT/Zu3JKi9/vDSDOMMICQX4qipeUxrjF714uE4+VSs3fcIDd8ddoLTyQTxWYAtNSv9eL6lbFmo8xs
-	Y2XZTuDMXJvX6/LX74VOSVFJjnvJkEegolowu+gplVsJeICf1GtpLj389eG9CxkI8Yhb6MAKAQC0C
-	MRQ0+pImBV62GY0Wv9c80+mgP0dwqGkjOKrDAemYHCx4YLGHRFi3jKVcBTAwawU2PwlZkhGhJxTGh
-	Cy0tT/xUG+Nv26ZMGiXmrP9dZNykSRRLR9HIOB80/N0WXvk1Mw5mrmlNjc4lPbYqHdG04ALttHhav
-	FsHtyi3Q==;
+	bh=MXpFBvl/G9TdM58J/HqLeuWhK7n8weJPpEkm2tmgU/s=; b=hmGGGHmZGfEMeCwAZBMSqp9ZBd
+	vApdIbDxwQ54RjVL9CxHxdS0euKSELSGceVLv0NZEmLQDYxBIudsnTY7zHhL9SJZPTa0Qts3Pj4UJ
+	BzQBaUuTUKnReBcAJoc/xiSBIkKMk+71T6hhm1HpYhPxOn0OSAKgTQq/vjGx5ScTjgG54n87dIUoQ
+	ETkq1yGJRh4zbat4IAOVv1J8UKfwhvY7PBtX6jbgXvUaxov0o0YBIrTkCc/hkoyLtYoZaZuur6xhG
+	glorN0ovHPmR/kOV+xC0MU700nKgisvYXi0fhhBqj0JgwyrCV8q7OsWJSK+OT910lKC5OgSDlQkY4
+	MWhw+ApA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqaYm-00000008kNb-3LBo;
-	Mon, 25 Aug 2025 17:00:44 +0000
+	id 1uqaYn-00000008kOA-0eOp;
+	Mon, 25 Aug 2025 17:00:45 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqZfL-00000008bsJ-2ffX;
-	Mon, 25 Aug 2025 16:03:29 +0000
+	id 1uqZhL-00000008cA2-2dxG;
+	Mon, 25 Aug 2025 16:05:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1756137806;
-	bh=yNYKVB7ejZHvag9mlt4vBKdDNtWCCkBY3PhbjTGPdRk=;
+	s=mail; t=1756137929;
+	bh=MXpFBvl/G9TdM58J/HqLeuWhK7n8weJPpEkm2tmgU/s=;
 	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=ThS3qUoaX7eSegoVgtUWcxMbZq7tWTHAX6xAiSMkJu4+yJFjx7OYHWS+8FWzCH9OQ
-	 YafPQfcpzdW2iRvTV43ZZOnjD2sSpXfwKTXEnzOhDvtt9VRfFaQxs/zPxK/5S9PqM8
-	 jl7GTA8FsemJ4NL3V1wEQCIcTo4ErT9Aunz6NJTm2lDRCJ/OOqn2Apv5DjtdywA7dN
-	 j/NUoXwrCm19r6Jvt4hssp3/GTJGLUbSF6R8BW5AxUS+fXSqoFxU2J7B2HWwmli9sv
-	 Y2VR1uGnongrkp5618EobR8+03VtVyiy0NIyoldlpiXzHW0+tQP0kC6gkqLQ4pop3z
-	 kffGlHDrJymjQ==
+	b=O3oy07lgJtUmddl3ObqfK0Dw2tOSJrtb1veMxs9gJqc7bsM0XH/3uuLH7p8NbyS28
+	 sOYokpgZqXpq8Ef5TLcv2wU2fJbnufKcoc8VQaI+c4G2+Uijnvj5lRVtMQWMN86vTK
+	 Ce/WkSB2SpjBqC/OQ75c3Pr3Upefjp1H4g0g1C7ns6xLBQgm0bWyb2G5UrzoKjsaKs
+	 ds2/C1Z35njmOiwLvV+HV5LjtyKXoDVcw4RiZ3TJA1VsgCqmlgWZ/slNlZUEAoF/Q/
+	 2taqVa7VlaMgP+o9Z67fi+AfkWgZy8RbxmetnKPghMOkNBEckyliDL3Zsrgw3732N1
+	 YEJyLZFWPlWLg==
 Received: from 2a01cb0892f2d600c8f85cf092d4af51.ipv6.abo.wanadoo.fr (2a01cb0892f2D600C8f85cf092d4AF51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: jmassot)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EFED117E08E3;
-	Mon, 25 Aug 2025 18:03:24 +0200 (CEST)
-Message-ID: <305df15f3fdc1b9b1b1d9b853a859cfd969733c7.camel@collabora.com>
-Subject: Re: [PATCH v2 5/6] dt-bindings: sound: Convert MT8183 DA7219 sound
- card bindings to YAML
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 218B317E053B;
+	Mon, 25 Aug 2025 18:05:28 +0200 (CEST)
+Message-ID: <57d67b983f527e9a202422dcc329622cceac6b89.camel@collabora.com>
+Subject: Re: [PATCH v2 6/6] ASoC: dt-binding: Convert MediaTek mt8183-mt6358
+ bindings to YAML
 From: Julien Massot <julien.massot@collabora.com>
 To: Rob Herring <robh@kernel.org>
 Cc: kernel@collabora.com, Michael Turquette <mturquette@baylibre.com>, 
@@ -62,19 +62,19 @@ Cc: kernel@collabora.com, Michael Turquette <mturquette@baylibre.com>,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	linux-mediatek@lists.infradead.org, linux-sound@vger.kernel.org, 
 	linux-gpio@vger.kernel.org
-Date: Mon, 25 Aug 2025 18:03:24 +0200
-In-Reply-To: <20250822144224.GA3745327-robh@kernel.org>
+Date: Mon, 25 Aug 2025 18:05:27 +0200
+In-Reply-To: <20250822144652.GA3763665-robh@kernel.org>
 References: <20250820-mtk-dtb-warnings-v2-0-cf4721e58f4e@collabora.com>
-	 <20250820-mtk-dtb-warnings-v2-5-cf4721e58f4e@collabora.com>
-	 <20250822144224.GA3745327-robh@kernel.org>
+	 <20250820-mtk-dtb-warnings-v2-6-cf4721e58f4e@collabora.com>
+	 <20250822144652.GA3763665-robh@kernel.org>
 Organization: Collabora Ltd.
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_090327_829515_38962866 
-X-CRM114-Status: GOOD (  17.40  )
+X-CRM114-CacheID: sfid-20250825_090531_850722_12033AD0 
+X-CRM114-Status: GOOD (  18.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,58 +89,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2025-08-22 at 09:42 -0500, Rob Herring wrote:
-> On Wed, Aug 20, 2025 at 03:44:56PM +0200, Julien Massot wrote:
-> > Convert the Device Tree binding for MT8183-based boards using the
-> > DA7219 headset codec and optional MAX98357, RT1015 or RT1015P speaker
-> > amplifiers from the legacy .txt format to YAML schema.
-> >=20
-> > This improves binding validation and removes DT schema warnings
-> > for boards using these audio components.
+On Fri, 2025-08-22 at 09:46 -0500, Rob Herring wrote:
+> On Wed, Aug 20, 2025 at 03:44:57PM +0200, Julien Massot wrote:
+> > Convert the existing text-based DT binding for MT8183 sound cards
+> > using
+> > MT6358 and various other codecs to a YAML schema.
+>=20
+> In the subject (on all the patches), avoid saying 'binding' twice and I=
+=20
+> prefer 'DT schema' over YAML. Lot's of things are YAML, but only one=20
+> thing is DT schema.
+
+Ok, I fixed all the commit messages and replaced 'YAML' by 'DT schema'.
+
+>=20
 > >=20
 > > Reviewed-by: AngeloGioacchino Del Regno
 > > <angelogioacchino.delregno@collabora.com>
 > > Signed-off-by: Julien Massot <julien.massot@collabora.com>
 > > ---
-> > =C2=A0.../bindings/sound/mediatek,mt8183_da7219.yaml=C2=A0=C2=A0=C2=A0=
-=C2=A0 | 49
+> > =C2=A0.../sound/mediatek,mt8183_mt6358_ts3a227.yaml=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0 | 59
 > > ++++++++++++++++++++++
-> > =C2=A0.../bindings/sound/mt8183-da7219-max98357.txt=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 | 21 ----------
-> > =C2=A02 files changed, 49 insertions(+), 21 deletions(-)
+> > =C2=A0.../sound/mt8183-mt6358-ts3a227-max98357.txt=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 | 25 ---------
+> > =C2=A02 files changed, 59 insertions(+), 25 deletions(-)
 > >=20
 > > diff --git
-> > a/Documentation/devicetree/bindings/sound/mediatek,mt8183_da7219.yaml
-> > b/Documentation/devicetree/bindings/sound/mediatek,mt8183_da7219.yaml
+> > a/Documentation/devicetree/bindings/sound/mediatek,mt8183_mt6358_ts3a2
+> > 27.yaml
+> > b/Documentation/devicetree/bindings/sound/mediatek,mt8183_mt6358_ts3a2
+> > 27.yaml
 > > new file mode 100644
 > > index
-> > 0000000000000000000000000000000000000000..b6fee3ff3af9a90820ee57efdf8e
-> > fb3f3d474804
+> > 0000000000000000000000000000000000000000..048fe62715d67d44daa08e75a63c
+> > 782238815689
 > > --- /dev/null
 > > +++
-> > b/Documentation/devicetree/bindings/sound/mediatek,mt8183_da7219.yaml
-> > @@ -0,0 +1,49 @@
+> > b/Documentation/devicetree/bindings/sound/mediatek,mt8183_mt6358_ts3a2
+> > 27.yaml
+> > @@ -0,0 +1,59 @@
 > > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
 > > +%YAML 1.2
 > > +---
-> > +$id: http://devicetree.org/schemas/sound/mediatek,mt8183_da7219.yaml#
+> > +$id:
+> > http://devicetree.org/schemas/sound/mediatek,mt8183_mt6358_ts3a227.yaml=
+#
 > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
 > > +
-> > +title: MediaTek MT8183 sound card with external codecs
+> > +title: MediaTek MT8183 sound card with MT6358, TS3A227, and
+> > MAX98357/RT1015 codecs
 > > +
 > > +maintainers:
-> > +=C2=A0 - Julien Massot <jmassot@collabora.com>
+> > +=C2=A0 - Julien Massot <julien.massot@collabora.com>
 > > +
 > > +description:
-> > +=C2=A0 Binding for MediaTek MT8183 SoC-based sound cards with DA7219 a=
-s
-> > headset codec,
+> > +=C2=A0 Binding for MediaTek MT8183 SoC-based sound cards using the MT6=
+358
+> > codec,
 >=20
-> Drop 'Binding for '. Otherwise,
+> Drop 'Binding for '.
 >=20
-Ack
-
+> Sure
 > Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+>=20
+> And thank you for jumping on all these Mediatek bindings.
+>=20
+> Rob
+No problem, Thanks for your time.
 
+Regards,
 Julien
 
