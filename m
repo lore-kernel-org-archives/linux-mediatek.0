@@ -4,55 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5CF1CA0EFA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Aug 2025 07:43:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8584DCA0EFA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Aug 2025 07:46:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ALvE+g5yody5i1C0PvIajCyD5iliYlZJvD5/MAYEAlk=; b=HP8i8mH6fuE71RkaZ1+powrh0C
-	lg2TSXvGm5mzIdwQ8CPx2HZKnZPi7sYuNEcQDjiFMi/5c4lGIAy8ce2PwhKe9amIioxirOIfWhbSy
-	8zbvgf3HMkfj+u2Cp3z/kl1Oy0C6Ae4dFDmtUI4DlDaAIQINQ3DMHceLJfxEuVVc2wo+Gt7stfPKM
-	NMVAFU88q/5UOt/LHMmLNSoRenRQ316q6mHOPGrL/8Pp/XefWsGGCYDy9X5mEOV7wwh+wnylQ0FPV
-	EaXgvkQKjKjVZQ9F6mxoSAs8nNTiz8Nbuw5wML7SWTJHbJ59WjKBkzdHUOvfoVNYiKTkG4N8WBVOe
-	Uc1BcTYQ==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=EBCt2Q7UPG1gb94eySNpswngsScU9SPLssaFJIdnOPY=; b=kKdrdmtA57Lz0E
+	m5quvENwkXg0lMEgUp6FpJMGlwN8LlN/s6SsFuie0X8JxN9Dl6Mo1eHli6FhoQwFx1pYp5CXWZcwo
+	4BbclKE8By9Razrgc90oX8UDIJbLsZahHHWN5dQNxqnS1iZCpdkHfqcP3BvCeqxOC9EhfQrIcKY3I
+	fzubz/zcRwpMmIw7oUqxb5NkNfj7toDLGzSwlyjgYVP3zPBnMK61uoE7Z5251/8VKXRjuAWA3AlNS
+	vpyBQcRTYEp0W9GyG2NTQwRgNm8iwYcn5Ln/prN6iJx7WpvRNgEm9BsueioKTAz/GaXV00JPXh7Q+
+	L4kQ4lKG4gMREVSulPjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqoL6-0000000AtHi-04yf;
-	Tue, 26 Aug 2025 07:43:32 +0000
+	id 1uqoNm-0000000AtfE-12ko;
+	Tue, 26 Aug 2025 07:46:18 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqoHM-0000000AsOB-1vc2;
+	id 1uqoHM-0000000AsO8-1Ro7;
 	Tue, 26 Aug 2025 07:39:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1756193978;
-	bh=RxFt5IVTUDQtMRnz+kIvAEi3r6lg/xIgb5vkotIBCak=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=JlRvaWF6aIZXqncQh3CJPV3C3H5m3WZfJcpGKgsXjNd1gu8WmqMicUqj00wMkpkAF
-	 1Z2TKtTGL7m+WGARPg07OglJ/MX2wGQLpOo8ieJXVHm3aRmCPGSyczEhtvpMguLAfg
-	 PPCD3XouAI0Nc4mGWNMlw2V/L0MjzeMQkb0okyA0HiMLs0UUuOsrMZV3JGGqo8YavG
-	 06WPCls+umGNsZDr2mAlHxXeMbJd2rpOACOlfIZ32xb5CbYoXwDFj6kE2bxzzI6kp4
-	 PHY5rDwgd5vZ0yvVRKeZyCznRY+HkhQrT5AINjb2z+z8neQ8ZUaZeLz6nQA2qRwpbo
-	 gf40/dW2tzW9w==
+	s=mail; t=1756193977;
+	bh=OXv6h16dfjmKpvPXbWekd18jZy8dArhzITkeeRAJORI=;
+	h=From:Subject:Date:To:Cc:From;
+	b=Vz2RvEQdkeXiWNn5E9pY+JTxBJN6tYnGg95IpWV4j0HsMPw6mF0YOYS9yOwm3ackm
+	 ieiSWSImeFuZ2A9xET7hXQVWco3je+9E5houg4d4tcW5AZL74CKtPAYCuw381zBLKZ
+	 uAm6Uppm8JkVY0pX/iDl3zYWNpaasr6MpkvkFHETliw3aciigP0b/LN5Udly1AowfO
+	 UxUA0cBwdxSAQpd0DiucRMPzVn+QEaCxyD9PJ/WwvRw8OcBeJJGz/c6dvp7dS8R0Ba
+	 sSywsbE5asDSHHIynRYB0HCedCONAGTQomIVBAsWqbzsBCDrOFet/Mgb8f/NNz111W
+	 nzMdfMt3zV+hw==
 Received: from 2a01cb0892f2d600c8f85cf092d4af51.ipv6.abo.wanadoo.fr (2a01cb0892F2D600C8F85cF092d4AF51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: jmassot)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id CF04217E0A28;
-	Tue, 26 Aug 2025 09:39:37 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 89E9417E0985;
+	Tue, 26 Aug 2025 09:39:36 +0200 (CEST)
 From: Julien Massot <julien.massot@collabora.com>
-Date: Tue, 26 Aug 2025 09:39:34 +0200
-Subject: [PATCH v3 1/6] dt-bindings: clock: mediatek: Add power-domains
- property
+Subject: [PATCH v3 0/6] MediaTek devicetree/bindings warnings sanitization
+ second round
+Date: Tue, 26 Aug 2025 09:39:33 +0200
+Message-Id: <20250826-mtk-dtb-warnings-v3-0-20e89886a20e@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250826-mtk-dtb-warnings-v3-1-20e89886a20e@collabora.com>
-References: <20250826-mtk-dtb-warnings-v3-0-20e89886a20e@collabora.com>
-In-Reply-To: <20250826-mtk-dtb-warnings-v3-0-20e89886a20e@collabora.com>
+X-B4-Tracking: v=1; b=H4sIALVkrWgC/33NQQ7CIBCF4as0rMXAlErjynsYF0CHlljBQIOap
+ neXdmWMcfm/ZL6ZScLoMJFjNZOI2SUXfIl6VxEzKN8jdV1pAgwa1jJOb9OVdpOmDxW9832ivJG
+ dsIYzKyUpZ/eI1j038nwpPbg0hfjaPmS+rn+wzCmjB60EihoESH0yYRyVDlHtTbiRFczwgQD7g
+ UBBjBUSODatFfiNLMvyBvGL2zL5AAAA
+X-Change-ID: 20250801-mtk-dtb-warnings-157d4fc10f77
 To: kernel@collabora.com, Michael Turquette <mturquette@baylibre.com>, 
  Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>, 
  Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -72,9 +75,8 @@ Cc: linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
  linux-gpio@vger.kernel.org, Julien Massot <julien.massot@collabora.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250826_003940_649965_400688B1 
-X-CRM114-Status: UNSURE (   8.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250826_003940_618845_2ADB5CDD 
+X-CRM114-Status: GOOD (  15.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,52 +91,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mt8183-mfgcfg node uses a power domain in its device tree node.
-To prevent schema validation warnings, add the optional `power-domains`
-property to the binding schema for mediatek syscon clocks.
+This patch series continues the effort to address Device Tree validation
+warnings for MediaTek platforms, with a focus on MT8183. It follows the
+initial cleanup series by Angelo
+(https://www.spinics.net/lists/kernel/msg5780177.html).
 
-Fixes: 1781f2c46180 ("arm64: dts: mediatek: mt8183: Add power-domains properity to mfgcfg")
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+The patches in this set eliminate several of the remaining warnings by
+improving or converting DT bindings to DT schema, adding missing properties,
+and updating device tree files accordingly.
+
 Signed-off-by: Julien Massot <julien.massot@collabora.com>
 ---
- .../devicetree/bindings/clock/mediatek,syscon.yaml        | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+Changes in v3:
+- Mostly cosmetic updates.
+- Patch 1/6: fixed the commit reference in the 'Fixes' tag.
+- Patch 1/6: not mentioned in v2, but this patch changed quite a lot
+  since v1 after applying Angelo's suggestions, so I dropped Rob's
+  'Acked-by' tag.
+- Renamed commits from "YAML" to "DT schema", and avoided repetition
+  of "bindings".
+- Patch 2/6: switched to the generic node name "audio-controller".
+- Link to v2:
+  https://lore.kernel.org/r/20250820-mtk-dtb-warnings-v2-0-cf4721e58f4e@collabora.com
 
-diff --git a/Documentation/devicetree/bindings/clock/mediatek,syscon.yaml b/Documentation/devicetree/bindings/clock/mediatek,syscon.yaml
-index a86a64893c675ac134af609b3a49242565db6ad8..a52f90bfc9f92b52feb9f488db5550630ac55f0a 100644
---- a/Documentation/devicetree/bindings/clock/mediatek,syscon.yaml
-+++ b/Documentation/devicetree/bindings/clock/mediatek,syscon.yaml
-@@ -76,6 +76,9 @@ properties:
-           - const: mediatek,mt2701-vdecsys
-           - const: syscon
- 
-+  power-domains:
-+    maxItems: 1
-+
-   reg:
-     maxItems: 1
- 
-@@ -86,6 +89,18 @@ required:
-   - compatible
-   - '#clock-cells'
- 
-+if:
-+  properties:
-+    compatible:
-+      contains:
-+        const: mediatek,mt8183-mfgcfg
-+then:
-+  properties:
-+    power-domains: true
-+else:
-+  properties:
-+    power-domains: false
-+
- additionalProperties: false
- 
- examples:
+Merge strategy:
+- Patch 1/6 can be picked up independently.
+- Patch 2/6 is standalone.
+- Patch 3/6 depends on 2/6.
+- Patch 4/6 fixes the DTS node name as expected by 3/6.
+- Patches 5/6 and 6/6 are independent.
 
+Changes in v2:
+
+- Restrict power-domain usage to mediatek,mt8183-mfgcfg only
+- Add the MT8183 AFE binding before audiosys (it is referenced in the example)
+  and include the memory-region property
+- Rename binding files to align with the compatible name
+- Drop former patch 7/9 (already applied via the pinctrl tree)
+- Drop patches 8/9 and 9/9 until we decide how to represent R0 and R1 values
+
+---
+Julien Massot (6):
+      dt-bindings: clock: mediatek: Add power-domains property
+      ASoC: dt-binding: Convert mt8183-afe-pcm to dt-schema
+      dt-bindings: arm: mediatek: Support mt8183-audiosys variant
+      arm64: dts: mt8183: Rename nodes to match audiosys DT schema
+      dt-bindings: sound: Convert MT8183 DA7219 sound card to DT schema
+      ASoC: dt-binding: Convert MediaTek mt8183-mt6358 to DT schema
+
+ .../bindings/arm/mediatek/mediatek,audsys.yaml     |  16 +-
+ .../devicetree/bindings/clock/mediatek,syscon.yaml |  15 ++
+ .../bindings/sound/mediatek,mt8183-audio.yaml      | 228 +++++++++++++++++++++
+ .../bindings/sound/mediatek,mt8183_da7219.yaml     |  49 +++++
+ .../sound/mediatek,mt8183_mt6358_ts3a227.yaml      |  59 ++++++
+ .../devicetree/bindings/sound/mt8183-afe-pcm.txt   |  42 ----
+ .../bindings/sound/mt8183-da7219-max98357.txt      |  21 --
+ .../sound/mt8183-mt6358-ts3a227-max98357.txt       |  25 ---
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi           |   4 +-
+ 9 files changed, 368 insertions(+), 91 deletions(-)
+---
+base-commit: 9df95ca9b379cb29aa0f75c4ca86d7b2293d8bf9
+change-id: 20250801-mtk-dtb-warnings-157d4fc10f77
+
+Best regards,
 -- 
-2.50.1
+Julien Massot <julien.massot@collabora.com>
 
 
