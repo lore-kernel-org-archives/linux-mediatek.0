@@ -4,59 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 252F2CA0EE4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Aug 2025 05:47:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3201ACA0EFA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Aug 2025 06:54:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+jVeb8mmfHz+QG0u2318shOOAVPSgimn7YlIgvE1Sa4=; b=aYqZvqVJkIFQCwXNMSJOxlg1Ji
-	x/NQTpL+5f1zd+TFdJExQCqoVqG8404mSAoM9YNPRo7fORlWYxkUNMRQFbsLfz9i+T/gFWdSlT7Tq
-	RV6LvEk0bUudxJewelOP7vNV8+cLW8J6RED3cWNJ97Vp9nXNoFqFMMmh+546aPlFI5zqwDmNrUcIV
-	Syq2XvkaLK5rJzi4hazZiCa+w+7fYMZGS3lIIMUonSKPgpfMJTN85RkNaBO3+kUAnWE5WxaRRxjY1
-	TGtbAtUi6YjnVo7ZkYhrfu2Pwp5BbqzjeQe6V+XSWKb10QSb8CJL5jB8zUzDzuOKIpds2UYYeUn2d
-	7S8qy9Pw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=1em0vrPBXCDCO+JKx7CdRCabqWK3JCLYNCGTZdY4mVk=; b=4+UlFhhG6rLQYfTDlPrMPW9Eny
+	TgRWd8WOdZe6zTCv19mvFLmNs2lvMg5TLAmVaDlG5AdHJOTLTiwExVop7yXuUnCoedqt6jpKlyxjH
+	YViA0DHOf2L42Jnp6gtzVDb6nqYSMXyMW8aR4BNOgb1pVCQsSmIu/MsnTXAPheUp5nEDvqnG3ettN
+	GxuOmcLKqWJS+yzh5yl588GPuh4TiD8oD3MjoUbSMvGWDgiyHyaLCCwe2Cb5vmXy7O8krWwGlfk5Q
+	xzC+mZDybHUPW3hnvIGI9ac3Tuod0bzaTdSiEh6ac4xffp9fx3Bzis3VBWlwu+IotQ7FTI3ppjobZ
+	gP7RDfzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqmX3-0000000AcAy-3RQP;
-	Tue, 26 Aug 2025 05:47:45 +0000
-Received: from mx3.molgen.mpg.de ([141.14.17.11])
+	id 1uqnZV-0000000AlRO-2a63;
+	Tue, 26 Aug 2025 06:54:21 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqmUI-0000000Ac0L-28UR;
-	Tue, 26 Aug 2025 05:44:56 +0000
-Received: from [192.168.0.192] (ip5f5af7cb.dynamic.kabel-deutschland.de [95.90.247.203])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: pmenzel)
-	by mx.molgen.mpg.de (Postfix) with ESMTPSA id F403A6028826D;
-	Tue, 26 Aug 2025 07:44:37 +0200 (CEST)
-Message-ID: <bdd4c3f0-4ba4-4c86-b1b7-afe3c9834ae0@molgen.mpg.de>
-Date: Tue, 26 Aug 2025 07:44:37 +0200
+	id 1uqn5X-0000000Aggd-3BFk
+	for linux-mediatek@lists.infradead.org;
+	Tue, 26 Aug 2025 06:23:24 +0000
+X-UUID: 284a64ba824511f09eb0dd999d3936bf-20250825
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=1em0vrPBXCDCO+JKx7CdRCabqWK3JCLYNCGTZdY4mVk=;
+	b=NlWjIceOeQ+jCiAVaG+fa1RCBEAAUC/c8ksXbIhrHvAXQ3OsUhrxmqjXLQZIWAeeCR81MIjSfjY53T3/onJtU4ECmRy+AD/w+Dj31dddf3GvpYY5m9M1dR5xL1+kUoBUNSNsvh2ToY/HtnBWh3sdyJrQnXoqpfTPNdar5Gwh6QI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.3,REQID:6ef91278-3f9f-4301-b8e7-e8234b44b22c,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:f1326cf,CLOUDID:2e5a8320-786d-4870-a017-e7b4f3839b3f,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:-5,Content:0|15|50,EDM:-3,IP:
+	nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,L
+	ES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 3,DMD|SSN|SDN
+X-CID-BAS: 3,DMD|SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 284a64ba824511f09eb0dd999d3936bf-20250825
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 711813433; Mon, 25 Aug 2025 23:23:18 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Tue, 26 Aug 2025 14:23:16 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Tue, 26 Aug 2025 14:23:16 +0800
+From: <peter.wang@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>
+CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
+	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
+	<yi-fan.peng@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
+	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
+	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>, <sanjeev.y@mediatek.com>,
+	<bvanassche@acm.org>
+Subject: [PATCH v2 00/10] ufs: host: mediatek: Power Management and Stability Enhancements
+Date: Tue, 26 Aug 2025 14:22:14 +0800
+Message-ID: <20250826062314.3070425-1-peter.wang@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] Bluetooth: remove duplicate h4_recv_buf() in header
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-To: Calvin Owens <calvin@wbinvd.org>
-Cc: linux-kernel@vger.kernel.org, Marcel Holtmann <marcel@holtmann.org>,
- Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Sean Wang <sean.wang@mediatek.com>,
- Amitkumar Karwar <amitkumar.karwar@nxp.com>,
- Neeraj Kale <neeraj.sanjaykale@nxp.com>, linux-bluetooth@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <be8edf7f8ba8dea6c61272b02fb20a4ac7e1c5a5.1756179634.git.calvin@wbinvd.org>
- <e9bbe0bb-b70d-445b-a7ff-b0ab2eef6c6f@molgen.mpg.de>
-Content-Language: en-US
-In-Reply-To: <e9bbe0bb-b70d-445b-a7ff-b0ab2eef6c6f@molgen.mpg.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_224454_835515_E3309084 
-X-CRM114-Status: GOOD (  27.27  )
+X-CRM114-CacheID: sfid-20250825_232323_860528_F186D665 
+X-CRM114-Status: UNSURE (   6.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,396 +91,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-[Cc: Remove Johan’s bouncing address]
+From: Peter Wang <peter.wang@mediatek.com>
 
-Am 26.08.25 um 07:40 schrieb Paul Menzel:
-> Dear Calvin,
-> 
-> 
-> Thank you for your patch.
-> 
-> Am 26.08.25 um 06:11 schrieb Calvin Owens:
->> The "h4_recv.h" header contains a duplicate h4_recv_buf() that is nearly
->> but not quite identical to the h4_recv_buf() in hci_h4.c.
->>
->> This duplicated header was added in commit 07eb96a5a7b0 ("Bluetooth:
->> bpa10x: Use separate h4_recv_buf helper"). I wasn't able to find any
->> explanation for duplicating the code in the discussion:
->>
->>      https://lore.kernel.org/all/20180320181855.37297-1-marcel@holtmann.org/
->>      https://lore.kernel.org/all/20180324091954.73229-2-marcel@holtmann.org/
->>
->> Unfortunately, in the years since, several other drivers have come to
->> also rely on this duplicated function, probably by accident. This is, at
->> the very least, *extremely* confusing. It's also caused real issues when
->> it's become out-of-sync, see the following:
->>
->>      ef564119ba83 ("Bluetooth: hci_h4: Add support for ISO packets")
->>      61b27cdf025b ("Bluetooth: hci_h4: Add support for ISO packets in h4_recv.h")
->>
->> This is the full diff between the two implementations today:
->>
->>      --- orig.c
->>      +++ copy.c
->>      @@ -1,117 +1,100 @@
->>       {
->>      -    struct hci_uart *hu = hci_get_drvdata(hdev);
->>      -    u8 alignment = hu->alignment ? hu->alignment : 1;
->>      -
->>           /* Check for error from previous call */
->>           if (IS_ERR(skb))
->>               skb = NULL;
->>
->>           while (count) {
->>               int i, len;
->>
->>      -        /* remove padding bytes from buffer */
->>      -        for (; hu->padding && count > 0; hu->padding--) {
->>      -            count--;
->>      -            buffer++;
->>      -        }
->>      -        if (!count)
->>      -            break;
->>      -
->>               if (!skb) {
->>                   for (i = 0; i < pkts_count; i++) {
->>                       if (buffer[0] != (&pkts[i])->type)
->>                           continue;
->>
->>                       skb = bt_skb_alloc((&pkts[i])->maxlen,
->>                                  GFP_ATOMIC);
->>                       if (!skb)
->>                           return ERR_PTR(-ENOMEM);
->>
->>                       hci_skb_pkt_type(skb) = (&pkts[i])->type;
->>                       hci_skb_expect(skb) = (&pkts[i])->hlen;
->>                       break;
->>                   }
->>
->>                   /* Check for invalid packet type */
->>                   if (!skb)
->>                       return ERR_PTR(-EILSEQ);
->>
->>                   count -= 1;
->>                   buffer += 1;
->>               }
->>
->>               len = min_t(uint, hci_skb_expect(skb) - skb->len, count);
->>               skb_put_data(skb, buffer, len);
->>
->>               count -= len;
->>               buffer += len;
->>
->>               /* Check for partial packet */
->>               if (skb->len < hci_skb_expect(skb))
->>                   continue;
->>
->>               for (i = 0; i < pkts_count; i++) {
->>                   if (hci_skb_pkt_type(skb) == (&pkts[i])->type)
->>                       break;
->>               }
->>
->>               if (i >= pkts_count) {
->>                   kfree_skb(skb);
->>                   return ERR_PTR(-EILSEQ);
->>               }
->>
->>               if (skb->len == (&pkts[i])->hlen) {
->>                   u16 dlen;
->>
->>                   switch ((&pkts[i])->lsize) {
->>                   case 0:
->>                       /* No variable data length */
->>                       dlen = 0;
->>                       break;
->>                   case 1:
->>                       /* Single octet variable length */
->>                       dlen = skb->data[(&pkts[i])->loff];
->>                       hci_skb_expect(skb) += dlen;
->>
->>                       if (skb_tailroom(skb) < dlen) {
->>                           kfree_skb(skb);
->>                           return ERR_PTR(-EMSGSIZE);
->>                       }
->>                       break;
->>                   case 2:
->>                       /* Double octet variable length */
->>                       dlen = get_unaligned_le16(skb->data +
->>                                     (&pkts[i])->loff);
->>                       hci_skb_expect(skb) += dlen;
->>
->>                       if (skb_tailroom(skb) < dlen) {
->>                           kfree_skb(skb);
->>                           return ERR_PTR(-EMSGSIZE);
->>                       }
->>                       break;
->>                   default:
->>                       /* Unsupported variable length */
->>                       kfree_skb(skb);
->>                       return ERR_PTR(-EILSEQ);
->>                   }
->>
->>                   if (!dlen) {
->>      -                hu->padding = (skb->len + 1) % alignment;
->>      -                hu->padding = (alignment - hu->padding) % alignment;
->>      -
->>                       /* No more data, complete frame */
->>                       (&pkts[i])->recv(hdev, skb);
->>                       skb = NULL;
->>                   }
->>               } else {
->>      -            hu->padding = (skb->len + 1) % alignment;
->>      -            hu->padding = (alignment - hu->padding) % alignment;
->>      -
->>                   /* Complete frame */
->>                   (&pkts[i])->recv(hdev, skb);
->>                   skb = NULL;
->>               }
->>           }
->>
->>           return skb;
->>       }
->>      -EXPORT_SYMBOL_GPL(h4_recv_buf)
->>
->> As I read this: If alignment is one, and padding is zero, padding
->> remains zero throughout the loop. So it seems to me that the two
->> functions behave strictly identically in that case. All the duplicated
->> defines are also identical, as is the duplicated h4_recv_pkt structure
->> declaration.
->>
->> All four drivers which use the duplicated function use the default
->> alignment of one, and the default padding of zero. I therefore conclude
->> the duplicate function may be safely replaced with the core one.
->>
->> I raised this in an RFC a few months ago, and didn't get much interest:
->>
->>      https://lore.kernel.org/all/CABBYNZ+ONkYtq2fR-8PtL3X-vetvJ0BdP4MTw9cNpjLDzG3HUQ@mail.gmail.com/
->>
->> ...but I'm still wary I've missed something, and I'd really appreciate
->> more eyeballs on it.
->>
->> I tested this successfully on btnxpuart a few months ago, but
->> unfortunately I no longer have access to that hardware.
-> 
-> Great analysis. Thank you for your time writing this up.
-> 
->> Cc: Marcel Holtmann <marcel@holtmann.org>
->> Signed-off-by: Calvin Owens <calvin@wbinvd.org>
->> ---
->>   drivers/bluetooth/bpa10x.c    |   2 +-
->>   drivers/bluetooth/btmtksdio.c |   2 +-
->>   drivers/bluetooth/btmtkuart.c |   2 +-
->>   drivers/bluetooth/btnxpuart.c |   2 +-
->>   drivers/bluetooth/h4_recv.h   | 153 ----------------------------------
->>   5 files changed, 4 insertions(+), 157 deletions(-)
->>   delete mode 100644 drivers/bluetooth/h4_recv.h
->>
->> diff --git a/drivers/bluetooth/bpa10x.c b/drivers/bluetooth/bpa10x.c
->> index 8b43dfc755de..b7ba667a3d09 100644
->> --- a/drivers/bluetooth/bpa10x.c
->> +++ b/drivers/bluetooth/bpa10x.c
->> @@ -20,7 +20,7 @@
->>   #include <net/bluetooth/bluetooth.h>
->>   #include <net/bluetooth/hci_core.h>
->> -#include "h4_recv.h"
->> +#include "hci_uart.h"
->>   #define VERSION "0.11"
->> diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
->> index 4fc673640bfc..50abefba6d04 100644
->> --- a/drivers/bluetooth/btmtksdio.c
->> +++ b/drivers/bluetooth/btmtksdio.c
->> @@ -29,7 +29,7 @@
->>   #include <net/bluetooth/bluetooth.h>
->>   #include <net/bluetooth/hci_core.h>
->> -#include "h4_recv.h"
->> +#include "hci_uart.h"
->>   #include "btmtk.h"
->>   #define VERSION "0.1"
->> diff --git a/drivers/bluetooth/btmtkuart.c b/drivers/bluetooth/btmtkuart.c
->> index 76995cfcd534..d9b90ea2ad38 100644
->> --- a/drivers/bluetooth/btmtkuart.c
->> +++ b/drivers/bluetooth/btmtkuart.c
->> @@ -27,7 +27,7 @@
->>   #include <net/bluetooth/bluetooth.h>
->>   #include <net/bluetooth/hci_core.h>
->> -#include "h4_recv.h"
->> +#include "hci_uart.h"
->>   #include "btmtk.h"
->>   #define VERSION "0.2"
->> diff --git a/drivers/bluetooth/btnxpuart.c b/drivers/bluetooth/btnxpuart.c
->> index 76e7f857fb7d..d5153fed0518 100644
->> --- a/drivers/bluetooth/btnxpuart.c
->> +++ b/drivers/bluetooth/btnxpuart.c
->> @@ -24,7 +24,7 @@
->>   #include <net/bluetooth/bluetooth.h>
->>   #include <net/bluetooth/hci_core.h>
->> -#include "h4_recv.h"
->> +#include "hci_uart.h"
->>   #define MANUFACTURER_NXP        37
->> diff --git a/drivers/bluetooth/h4_recv.h b/drivers/bluetooth/h4_recv.h
->> deleted file mode 100644
->> index 28cf2d8c2d48..000000000000
->> --- a/drivers/bluetooth/h4_recv.h
->> +++ /dev/null
->> @@ -1,153 +0,0 @@
->> -/* SPDX-License-Identifier: GPL-2.0-or-later */
->> -/*
->> - *
->> - *  Generic Bluetooth HCI UART driver
->> - *
->> - *  Copyright (C) 2015-2018  Intel Corporation
->> - */
->> -
->> -#include <linux/unaligned.h>
->> -
->> -struct h4_recv_pkt {
->> -    u8  type;    /* Packet type */
->> -    u8  hlen;    /* Header length */
->> -    u8  loff;    /* Data length offset in header */
->> -    u8  lsize;    /* Data length field size */
->> -    u16 maxlen;    /* Max overall packet length */
->> -    int (*recv)(struct hci_dev *hdev, struct sk_buff *skb);
->> -};
->> -
->> -#define H4_RECV_ACL \
->> -    .type = HCI_ACLDATA_PKT, \
->> -    .hlen = HCI_ACL_HDR_SIZE, \
->> -    .loff = 2, \
->> -    .lsize = 2, \
->> -    .maxlen = HCI_MAX_FRAME_SIZE \
->> -
->> -#define H4_RECV_SCO \
->> -    .type = HCI_SCODATA_PKT, \
->> -    .hlen = HCI_SCO_HDR_SIZE, \
->> -    .loff = 2, \
->> -    .lsize = 1, \
->> -    .maxlen = HCI_MAX_SCO_SIZE
->> -
->> -#define H4_RECV_EVENT \
->> -    .type = HCI_EVENT_PKT, \
->> -    .hlen = HCI_EVENT_HDR_SIZE, \
->> -    .loff = 1, \
->> -    .lsize = 1, \
->> -    .maxlen = HCI_MAX_EVENT_SIZE
->> -
->> -#define H4_RECV_ISO \
->> -    .type = HCI_ISODATA_PKT, \
->> -    .hlen = HCI_ISO_HDR_SIZE, \
->> -    .loff = 2, \
->> -    .lsize = 2, \
->> -    .maxlen = HCI_MAX_FRAME_SIZE
->> -
->> -static inline struct sk_buff *h4_recv_buf(struct hci_dev *hdev,
->> -                      struct sk_buff *skb,
->> -                      const unsigned char *buffer,
->> -                      int count,
->> -                      const struct h4_recv_pkt *pkts,
->> -                      int pkts_count)
->> -{
->> -    /* Check for error from previous call */
->> -    if (IS_ERR(skb))
->> -        skb = NULL;
->> -
->> -    while (count) {
->> -        int i, len;
->> -
->> -        if (!skb) {
->> -            for (i = 0; i < pkts_count; i++) {
->> -                if (buffer[0] != (&pkts[i])->type)
->> -                    continue;
->> -
->> -                skb = bt_skb_alloc((&pkts[i])->maxlen,
->> -                           GFP_ATOMIC);
->> -                if (!skb)
->> -                    return ERR_PTR(-ENOMEM);
->> -
->> -                hci_skb_pkt_type(skb) = (&pkts[i])->type;
->> -                hci_skb_expect(skb) = (&pkts[i])->hlen;
->> -                break;
->> -            }
->> -
->> -            /* Check for invalid packet type */
->> -            if (!skb)
->> -                return ERR_PTR(-EILSEQ);
->> -
->> -            count -= 1;
->> -            buffer += 1;
->> -        }
->> -
->> -        len = min_t(uint, hci_skb_expect(skb) - skb->len, count);
->> -        skb_put_data(skb, buffer, len);
->> -
->> -        count -= len;
->> -        buffer += len;
->> -
->> -        /* Check for partial packet */
->> -        if (skb->len < hci_skb_expect(skb))
->> -            continue;
->> -
->> -        for (i = 0; i < pkts_count; i++) {
->> -            if (hci_skb_pkt_type(skb) == (&pkts[i])->type)
->> -                break;
->> -        }
->> -
->> -        if (i >= pkts_count) {
->> -            kfree_skb(skb);
->> -            return ERR_PTR(-EILSEQ);
->> -        }
->> -
->> -        if (skb->len == (&pkts[i])->hlen) {
->> -            u16 dlen;
->> -
->> -            switch ((&pkts[i])->lsize) {
->> -            case 0:
->> -                /* No variable data length */
->> -                dlen = 0;
->> -                break;
->> -            case 1:
->> -                /* Single octet variable length */
->> -                dlen = skb->data[(&pkts[i])->loff];
->> -                hci_skb_expect(skb) += dlen;
->> -
->> -                if (skb_tailroom(skb) < dlen) {
->> -                    kfree_skb(skb);
->> -                    return ERR_PTR(-EMSGSIZE);
->> -                }
->> -                break;
->> -            case 2:
->> -                /* Double octet variable length */
->> -                dlen = get_unaligned_le16(skb->data +
->> -                              (&pkts[i])->loff);
->> -                hci_skb_expect(skb) += dlen;
->> -
->> -                if (skb_tailroom(skb) < dlen) {
->> -                    kfree_skb(skb);
->> -                    return ERR_PTR(-EMSGSIZE);
->> -                }
->> -                break;
->> -            default:
->> -                /* Unsupported variable length */
->> -                kfree_skb(skb);
->> -                return ERR_PTR(-EILSEQ);
->> -            }
->> -
->> -            if (!dlen) {
->> -                /* No more data, complete frame */
->> -                (&pkts[i])->recv(hdev, skb);
->> -                skb = NULL;
->> -            }
->> -        } else {
->> -            /* Complete frame */
->> -            (&pkts[i])->recv(hdev, skb);
->> -            skb = NULL;
->> -        }
->> -    }
->> -
->> -    return skb;
->> -}
-> 
-> Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
-> 
-> 
-> Kind regards,
-> 
-> Paul
+These patches collectively enhance the UFS host driver's reliability,
+power management efficiency, and error recovery mechanisms on MediaTek
+platforms. They address critical issues and introduce optimizations
+that improve system stability and performance.
+
+Changes since v1:
+1. Export ufshcd_force_error_recovery instead use force_reset
+  ufs: host: mediatek: Enhance recovery on hibernation exit failure
+
+Peter Wang (7):
+  ufs: host: mediatek: Enhance recovery on hibernation exit failure
+  ufs: host: mediatek: Enhance recovery on resume failure
+  ufs: host: mediatek: Correct system PM flow
+  ufs: host: mediatek: Support UFS PHY runtime PM and correct sequence
+  ufs: host: mediatek: Disable auto-hibern8 during power mode changes
+  ufs: host: mediatek: Fix unbalanced IRQ enable issue
+  ufs: host: mediatek: Fix device power control
+
+Alice Chao (2):
+  ufs: host: mediatek: Correct resume flow for LPM and MTCMOS
+  ufs: host: mediatek: Fix adapt issue after PA_Init
+
+Sanjeev Y (1):
+  ufs: host: mediatek: Return error directly on idle wait timeout
+
+ drivers/ufs/core/ufshcd.c       |   3 +-
+ drivers/ufs/host/ufs-mediatek.c | 171 ++++++++++++++++++++++++++------
+ drivers/ufs/host/ufs-mediatek.h |   1 +
+ include/ufs/ufshcd.h            |   1 +
+ 4 files changed, 145 insertions(+), 31 deletions(-)
+
+-- 
+2.45.2
+
 
