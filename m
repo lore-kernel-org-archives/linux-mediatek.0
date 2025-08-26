@@ -4,68 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD375CA0FE7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Aug 2025 14:37:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41082CA0FF2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Aug 2025 16:08:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jkHS7KzC7a7ejpfgvPuV/t+CjfjC9KbZFBsMzO2XOcE=; b=k1Vgf/fxULlYgA5aTBeA3nlAyS
-	7NhnF+zaxxNrllU6YJNO+LXm3pFkVUVBuVuhLFr29Wq/OKKOlPdXEFiR7eSXS8/uxdMQPaUirpBGf
-	2sLLEvN7KkcIeAaOisQMIv55otQ8mGKtm2CWrE4jkaj0+9y1XEx/k+QyO1VsNddbB+N6eJVf6dgb8
-	bWU/QFclRzwZgt1AeiYAEjF4qkB0Vht+vhyZsbPmMTYl468wYzWqPH2qW42uszlHqYC0kL3mFr2J0
-	k2A15HZYs4AMQZSZjPwINzMjSSt/Hngu01DIwF5sR1sqaj+FniEI4BrvdXAWtGHO/ll/zpLtxZshX
-	v67v0qtQ==;
+	bh=Vluf0lRThdc/XPN/J3in6of1bo6pzNAGErsCGqniwT0=; b=TH4G3GYBtK5GqiClZY9wBviQ0e
+	N0JqGlw/6CnGt2iBfpGvJ5X70uE081Jz9/CWwqc+n8+13yZm95hTL1mpjChRClj4V7prgo6djwA40
+	2wsxy2A+Tjpt/g06FhlkV5GM1Aqqhj+zAkZsLsxN1OvM5vehipPQQN2edUzX6VmpxOzpIFd001Uax
+	cYaWQp9gs6++hMzkjFUstKFN+obaM27K8U+SxHmBdYOoImqz+ZUuTsRkCc4qESkcp3BvEEyDWvCUC
+	+ENKqd1Nwd29G24D45a1D4ov2+zrUqiZXyJ6mqRYlUUNfIKUS886QssjhRcebfVZJTXG+e5UmOLPG
+	0fR9MVjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqunn-0000000CHzc-3qSs;
-	Tue, 26 Aug 2025 14:37:35 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uqwDZ-0000000CagL-2qke;
+	Tue, 26 Aug 2025 16:08:17 +0000
+Received: from 003.mia.mailroute.net ([199.89.3.6])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uquFK-0000000CBay-1RF2;
-	Tue, 26 Aug 2025 14:01:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1756216916;
-	bh=1orjOVOBQPF16N4NkcngIDGSPWhXZVsgtixMp4piRVc=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=WIYB6cX4ZURN1Z8+3WvjWgaAcP0G0sSFewET80YNTMTNDEodE9YPbmacm013xGVwD
-	 Wu4dWex+I1eKg6q/s9SaiND/BAVXxSkTxBqwBcnXJRpAdJILEDCyzlSilLDAzc9k2r
-	 xmOauOKfgJDDPmTCFe0KBk5pf9ZCQyXtQ+LN8mpRvFdEvR7UEoh2Lha8yTpFcknaia
-	 k9MsO3PmYsLWPn9Db9PTEIEk/SNnrsfE0XpIVgtdP2P5g7S0MQLJuMUdn5Q72G+dqe
-	 MBLeoPsNf/77dqM7Wgsv0HSTw2Dg+DatxUsy5z0i3I2ou+xNlekwQB6blwfK3I5CUj
-	 naPVwQJ+Wam4A==
-Received: from 2a01cb0892f2d600c8f85cf092d4af51.ipv6.abo.wanadoo.fr (2a01cb0892f2d600c8f85cF092d4af51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
+	id 1uqvGF-0000000COHv-3Ekn
+	for linux-mediatek@lists.infradead.org;
+	Tue, 26 Aug 2025 15:07:00 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 003.mia.mailroute.net (Postfix) with ESMTP id 4cB9xG3S53zlgqy9;
+	Tue, 26 Aug 2025 15:06:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1756220815; x=1758812816; bh=Vluf0lRThdc/XPN/J3in6of1
+	bo6pzNAGErsCGqniwT0=; b=bQf77qhyeI0134ORqxWpuJBTSV3XFwdb1jcp5+Yk
+	D25WWJ5L2O+CJlgGTgX4+lmpC5NPir+4leGnKbbpwPDh5dqhb/+qUFaGlpmuLP3F
+	PymQL+GHk0g4FfPkj4uZaIlOydxAqoke4dDGc8plQFl3aK4Pbbc8AUCOLCn/Zjca
+	VT/GRYldJJtmW/WjPU0mcoGrvn6w4qH1K4Cm/fCpcg0U334LXCZT9i+2eSLLqyCl
+	xtWzQkXRKEh09vefL38gDSkJjHdMhMGRmIdpkwsube7m0+9654kVqbEVZkCT8kNz
+	JvMYY8ACpYtM3mj39dyztvJbm1h6wfGcTW5Bu+6/7Cgswg==
+X-Virus-Scanned: by MailRoute
+Received: from 003.mia.mailroute.net ([127.0.0.1])
+ by localhost (003.mia [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id 6i5KAFw-Wt05; Tue, 26 Aug 2025 15:06:55 +0000 (UTC)
+Received: from [172.20.6.188] (unknown [208.98.210.68])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: jmassot)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0E70C17E0C21;
-	Tue, 26 Aug 2025 16:01:56 +0200 (CEST)
-From: Julien Massot <julien.massot@collabora.com>
-Date: Tue, 26 Aug 2025 16:01:54 +0200
-Subject: [PATCH v2 3/3] arm64: dts: mediatek: mt8395-nio-12l: add support
- for blue and red LEDs
+	(Authenticated sender: bvanassche@acm.org)
+	by 003.mia.mailroute.net (Postfix) with ESMTPSA id 4cB9wn0GPFzlrnQ0;
+	Tue, 26 Aug 2025 15:06:31 +0000 (UTC)
+Message-ID: <ec57c49f-dc4d-49ef-a350-20b992d29487@acm.org>
+Date: Tue, 26 Aug 2025 08:06:25 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 01/10] ufs: host: mediatek: Enhance recovery on
+ hibernation exit failure
+To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
+ martin.petersen@oracle.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, jiajie.hao@mediatek.com,
+ yi-fan.peng@mediatek.com, qilin.tan@mediatek.com, lin.gui@mediatek.com,
+ tun-yu.yu@mediatek.com, eddie.huang@mediatek.com, naomi.chu@mediatek.com,
+ ed.tsai@mediatek.com, sanjeev.y@mediatek.com
+References: <20250826062314.3070425-1-peter.wang@mediatek.com>
+ <20250826062314.3070425-2-peter.wang@mediatek.com>
+Content-Language: en-US
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20250826062314.3070425-2-peter.wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250826-radxa-nio-12-l-gpio-v2-3-7f18fa3fbfc8@collabora.com>
-References: <20250826-radxa-nio-12-l-gpio-v2-0-7f18fa3fbfc8@collabora.com>
-In-Reply-To: <20250826-radxa-nio-12-l-gpio-v2-0-7f18fa3fbfc8@collabora.com>
-To: kernel@collabora.com, Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: linux-input@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- devicetree@vger.kernel.org, Julien Massot <julien.massot@collabora.com>
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250826_070158_571565_328DAA2B 
-X-CRM114-Status: GOOD (  10.93  )
+X-CRM114-CacheID: sfid-20250826_080659_914333_773C6951 
+X-CRM114-Status: UNSURE (   6.57  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,75 +91,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Radxa NIO 12L board has an RGB LED, of which only red and blue
-are controllable.
+On 8/25/25 11:22 PM, peter.wang@mediatek.com wrote:
+> This patch improves the recovery process when exiting hibernation
+> mode fails. It triggers the error handler and breaks the suspend
+> operation, ensuring that the system can recover from hibernation
+> errors more effectively. The error handling mechanism is activated
+> by setting 'force_reset' and scheduling the error handler work.
 
-Red and blue LEDs: no need to choose, both are enabled.
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Julien Massot <julien.massot@collabora.com>
----
- .../boot/dts/mediatek/mt8395-radxa-nio-12l.dts     | 31 ++++++++++++++++++++++
- 1 file changed, 31 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-index fd596e2298285361ad7c2fb828feec598d75a73e..12288ad4d2932b7f78c96c0efe366a046721f919 100644
---- a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-@@ -10,6 +10,7 @@
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/input/input.h>
- #include <dt-bindings/interrupt-controller/irq.h>
-+#include <dt-bindings/leds/common.h>
- #include <dt-bindings/pinctrl/mt8195-pinfunc.h>
- #include <dt-bindings/regulator/mediatek,mt6360-regulator.h>
- #include <dt-bindings/spmi/spmi.h>
-@@ -73,6 +74,28 @@ button-volume-up {
- 		};
- 	};
- 
-+	gpio-leds {
-+		compatible = "gpio-leds";
-+		pinctrl-0 = <&gpio_leds_pins>;
-+		pinctrl-names = "default";
-+
-+		/*
-+		 * This board has a RGB LED, of which only R and B
-+		 * are controllable.
-+		 */
-+		led-0 {
-+			label = "rgb-blue";
-+			color = <LED_COLOR_ID_BLUE>;
-+			gpios = <&pio 6 GPIO_ACTIVE_HIGH>;
-+		};
-+
-+		led-1 {
-+			label = "rgb-red";
-+			color = <LED_COLOR_ID_RED>;
-+			gpios = <&pio 7 GPIO_ACTIVE_HIGH>;
-+		};
-+	};
-+
- 	wifi_vreg: regulator-wifi-3v3-en {
- 		compatible = "regulator-fixed";
- 		regulator-name = "wifi_3v3_en";
-@@ -647,6 +670,14 @@ pins {
- 		};
- 	};
- 
-+	gpio_leds_pins: gpio-leds-pins {
-+		pins {
-+			pinmux = <PINMUX_GPIO6__FUNC_GPIO6>,
-+				 <PINMUX_GPIO7__FUNC_GPIO7>;
-+			output-low;
-+		};
-+	};
-+
- 	i2c2_pins: i2c2-pins {
- 		pins-bus {
- 			pinmux = <PINMUX_GPIO12__FUNC_SDA2>,
-
--- 
-2.50.1
-
+Reviewed-by: Bart Van Assche <bvanassche@acm.org>
 
