@@ -4,73 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 611B0CA0FE7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Aug 2025 20:05:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E122CA0FED
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Aug 2025 23:53:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q3/sHc/G1KRAp2QXxaZEGGMH4x6amZemWV2D+UnI2uM=; b=japwFSsRgxSxGbLOR16tj/Bjx7
-	9tFkjzPOTHdRkBkbBc9gu/ZtjN42Ei+9D1TkBHG6sIKP4+sEcTdTzG7/D+QYdeBY2zmCJ7f41CeHZ
-	D9H2UUxgBAAIaSUtajbeu87QLT5rwoASU8HCcmCeSdYRzXYc/YCnzFgTMPg7UYi+9z5vvkuauibK0
-	qQ2FWJg1CMTMBKZ0Sx8ol+8y6kWtsSpht05fPsEJTuOQJJ9ZSx7wnvooH4GT2gxGfZUwtaFubozZw
-	jgWnN2B4zLwg4Jpuv9RoYx3bjsdDnN7J2RIvV4PVDLAF9fV0IIbioVjvBegeYmPOuqlIITCTa67JB
-	PC0x9WAg==;
+	bh=gC3kPF5Rpbrzs3Rbm5UONjqNL8Sz4DQ+JHhjuF9xANI=; b=swsPpYtucCdk/K5eoqycfAXTt8
+	EkUhM1rmBm8HIFqlxPci1yw0zLnRfXSTTDZ3/9kxx1bwtKurGttkm26kQIK7cydaJkJBTvWb1Yew/
+	iQghyZeE45Sguq92XQRqmqnQxIASB92UgNR3Wm/GPvE73JzATVdzQhxUg2ynBWps6UllJaiQJnYOF
+	OuZwBLJDVW91lYRbX435sdmAEjZKFKVy04lHWbPAkd8aEMcsiJSHPyLOq5qB46wdGwxEF+whJhMCE
+	V2He9T0PiCdqiuawyO6g7M3M2YQKJm76jk6gwqhVyMm2/m14S8T0Ubx20Mg87sHxrf40CprGZeK5S
+	Dg2unvXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqzuw-0000000D4lE-1syG;
-	Tue, 26 Aug 2025 20:05:18 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1ur3Ts-0000000DNiZ-2ina;
+	Tue, 26 Aug 2025 23:53:36 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqznZ-0000000D3XH-05s3;
-	Tue, 26 Aug 2025 19:57:41 +0000
+	id 1ur3R9-0000000DNSh-1h7f;
+	Tue, 26 Aug 2025 23:50:47 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1B67660226;
-	Tue, 26 Aug 2025 19:57:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 893E8C4CEF1;
-	Tue, 26 Aug 2025 19:57:39 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 5C54A6022C;
+	Tue, 26 Aug 2025 23:50:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D91F3C4CEF1;
+	Tue, 26 Aug 2025 23:50:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756238259;
-	bh=PfGpNnSfzrRB5yk7v6MA0cOlYzyufLWVDl3AitbdL+U=;
+	s=k20201202; t=1756252245;
+	bh=07Ku4luLp6tCckZKvoGpBvBDQ0Ywwcemo2l4BS/xWs0=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=haM0ExZYVTBYYmBTE971s991OEWhOJlPyK/JTrK9+nRHHQ056CNNfeMX7p8bsAvWU
-	 Ww5A+PmsDPZpNN+9wmmN5sxOMr3WbF9KLsdexP4FNYNYtAbPe40kehVKiRwIXkRjAq
-	 pKUG/VsyWevXj7d9ZeZlPyBaOJe5cjzPrTVSHe+qEXpNVVseel+eyqqZE3CEkj7gxF
-	 AIOtoZbS523TGZmA+vvNSWMIGhohdBbygU3ZsM9uVK4qSHBWf1CU65V+5hKmbzpLNI
-	 O6OPZ1cf1yW8KG55Onq1xBhdzQcwrIn9/wCOhvwHtn52QNv0lvGcte8Vz4GzoxBZfh
-	 PuhFlfSzscjLw==
-Date: Tue, 26 Aug 2025 14:57:38 -0500
+	b=ku2eS2aLuk2BO85gltgp9fViBt3A7nXYGIzz3ko+3i02BU56tWHBUt7SqU2nURtEN
+	 XBBLjuym5594eRddN8//2A0hIq9YGE3uJyHGblP1kjOj68phQ1DzZczKcjxA+BYH7m
+	 beuxjpqZ1t3NkKzgfPTOjhOisGGViCwrEjzxf5/EchC01qkp/d/r0yRVVVq5e9D4ra
+	 9iyKZSacjOMQZjnsjMUDUS7FZcVzPkmSyZlv8uUTxMLQ55Ro7lB9BFk8KSd1dsWumX
+	 ZZ+S+nCkt7tGurJCOCifKfd1hsdFyeaBfVGIOUwIwszL5KLRmkt2m3Rz7ePoD+ElMf
+	 wfPZvM216LTww==
+Date: Tue, 26 Aug 2025 18:50:43 -0500
 From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Julien Massot <julien.massot@collabora.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	Eugen Hristev <eugen.hristev@linaro.org>,
-	Michael Turquette <mturquette@baylibre.com>, kernel@collabora.com,
-	Mark Brown <broonie@kernel.org>, Stephen Boyd <sboyd@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Julien Massot <jmassot@collabora.com>, linux-gpio@vger.kernel.org,
-	Enric Balletbo i Serra <eballetbo@kernel.org>,
-	Ikjoon Jang <ikjn@chromium.org>, Chen-Yu Tsai <wenst@chromium.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	linux-kernel@vger.kernel.org, Sean Wang <sean.wang@kernel.org>,
-	linux-sound@vger.kernel.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>,
+	linux-watchdog@vger.kernel.org,
+	Mathew McBride <matt@traverse.com.au>,
+	linux-arm-kernel@lists.infradead.org,
+	Michael Walle <mwalle@kernel.org>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
 	Liam Girdwood <lgirdwood@gmail.com>,
+	Nikita Travkin <nikita@trvn.ru>,
+	Guenter Roeck <groeck@chromium.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	linux-mediatek@lists.infradead.org,
-	Weiyi Lu <weiyi.lu@mediatek.com>
-Subject: Re: [PATCH v3 1/6] dt-bindings: clock: mediatek: Add power-domains
- property
-Message-ID: <175623822456.370694.11801087152503772115.robh@kernel.org>
-References: <20250826-mtk-dtb-warnings-v3-0-20e89886a20e@collabora.com>
- <20250826-mtk-dtb-warnings-v3-1-20e89886a20e@collabora.com>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jean Delvare <jdelvare@suse.com>,
+	Tim Harvey <tharvey@gateworks.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	Mark Brown <broonie@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Mathieu Poirier <mathieu.poirier@linaro.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	linux-sound@vger.kernel.org,
+	Cheng-Yi Chiang <cychiang@chromium.org>,
+	linux-hwmon@vger.kernel.org, Tzung-Bi Shih <tzungbi@kernel.org>,
+	Pengyu Luo <mitltlatltl@gmail.com>, linux-gpio@vger.kernel.org,
+	linux-remoteproc@vger.kernel.org,
+	Benson Leung <bleung@chromium.org>, Lee Jones <lee@kernel.org>,
+	linux-pwm@vger.kernel.org, Konrad Dybcio <konradybcio@kernel.org>,
+	Wim Van Sebroeck <wim@linux-watchdog.org>,
+	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org,
+	Bartosz Golaszewski <brgl@bgdev.pl>, linux-kernel@vger.kernel.org,
+	Bjorn Andersson <andersson@kernel.org>,
+	Tinghan Shen <tinghan.shen@mediatek.com>
+Subject: Re: [PATCH v3] dt-bindings: mfd: Move embedded controllers to own
+ directory
+Message-ID: <175625224288.764159.13881647192010727208.robh@kernel.org>
+References: <20250825081201.9775-2-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250826-mtk-dtb-warnings-v3-1-20e89886a20e@collabora.com>
+In-Reply-To: <20250825081201.9775-2-krzysztof.kozlowski@linaro.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,30 +99,70 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 26 Aug 2025 09:39:34 +0200, Julien Massot wrote:
-> The mt8183-mfgcfg node uses a power domain in its device tree node.
-> To prevent schema validation warnings, add the optional `power-domains`
-> property to the binding schema for mediatek syscon clocks.
+On Mon, 25 Aug 2025 10:12:02 +0200, Krzysztof Kozlowski wrote:
+> Move several embedded controller bindings (like ChromeOS EC, Gateworks
+> System Controller and Kontron sl28cpld Board Management) to new
+> subdirectory "embedded-controller" matching their purpose.
 > 
-> Fixes: 1781f2c46180 ("arm64: dts: mediatek: mt8183: Add power-domains properity to mfgcfg")
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Signed-off-by: Julien Massot <julien.massot@collabora.com>
+> An embedded controller (EC) is a discrete component that contains a
+> microcontroller (i.e. a small CPU running a small firmware without
+> operating system) mounted into a larger computer system running
+> a fully fledged operating system that needs to utilize the embedded
+> controller as part of its operation.
+> 
+> So far the EC bindings were split between "mfd" and "platform"
+> directory.  MFD name comes from Linux, not hardware, and "platform" is a
+> bit too generic.
+> 
+> Rename Gateworks GSC and Huawei Gaokun filenames to match compatible, as
+> preferred for bindings.
+> 
+> Acked-by: Michael Walle <mwalle@kernel.org> # for sl28cpld
+> Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 > ---
->  .../devicetree/bindings/clock/mediatek,syscon.yaml        | 15 +++++++++++++++
->  1 file changed, 15 insertions(+)
+> 
+> Lee,
+> Can you take it via MFD?
+> There is a patch on the lists touching kontron,sl28cpld.
+> 
+> Changes in v3:
+> 1. Move more files from "platform" directory.
+> 2. Grow commit msg, based on feedback from Linus.
+> 3. Add Rb (patch changed, though).
+> 
+> Changes in v2:
+> 1. Correct remaining paths in other schemas ($ref and descriptions).
+> 2. Add Ack.
+> 
+> Cc: Mathew McBride <matt@traverse.com.au>
+> ---
+>  .../{platform => embedded-controller}/acer,aspire1-ec.yaml  | 2 +-
+>  .../{mfd => embedded-controller}/google,cros-ec.yaml        | 2 +-
+>  .../gateworks-gsc.yaml => embedded-controller/gw,gsc.yaml}  | 2 +-
+>  .../huawei,gaokun3-ec.yaml}                                 | 2 +-
+>  .../{mfd => embedded-controller}/kontron,sl28cpld.yaml      | 2 +-
+>  .../lenovo,yoga-c630-ec.yaml                                | 2 +-
+>  .../microsoft,surface-sam.yaml                              | 2 +-
+>  .../devicetree/bindings/gpio/kontron,sl28cpld-gpio.yaml     | 2 +-
+>  .../devicetree/bindings/hwmon/kontron,sl28cpld-hwmon.yaml   | 2 +-
+>  .../interrupt-controller/kontron,sl28cpld-intc.yaml         | 2 +-
+>  .../devicetree/bindings/pwm/google,cros-ec-pwm.yaml         | 2 +-
+>  .../devicetree/bindings/pwm/kontron,sl28cpld-pwm.yaml       | 2 +-
+>  Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml   | 4 ++--
+>  .../devicetree/bindings/sound/google,cros-ec-codec.yaml     | 2 +-
+>  .../devicetree/bindings/watchdog/kontron,sl28cpld-wdt.yaml  | 2 +-
+>  MAINTAINERS                                                 | 6 +++---
+>  16 files changed, 19 insertions(+), 19 deletions(-)
+>  rename Documentation/devicetree/bindings/{platform => embedded-controller}/acer,aspire1-ec.yaml (94%)
+>  rename Documentation/devicetree/bindings/{mfd => embedded-controller}/google,cros-ec.yaml (99%)
+>  rename Documentation/devicetree/bindings/{mfd/gateworks-gsc.yaml => embedded-controller/gw,gsc.yaml} (98%)
+>  rename Documentation/devicetree/bindings/{platform/huawei,gaokun-ec.yaml => embedded-controller/huawei,gaokun3-ec.yaml} (97%)
+>  rename Documentation/devicetree/bindings/{mfd => embedded-controller}/kontron,sl28cpld.yaml (97%)
+>  rename Documentation/devicetree/bindings/{platform => embedded-controller}/lenovo,yoga-c630-ec.yaml (95%)
+>  rename Documentation/devicetree/bindings/{platform => embedded-controller}/microsoft,surface-sam.yaml (92%)
 > 
 
-
-Please add Acked-by/Reviewed-by tags when posting new versions. However,
-there's no need to repost patches *only* to add the tags. The upstream
-maintainer will do that for acks received on the version they apply.
-
-If a tag was not added on purpose, please state why and what changed.
-
-Missing tags:
-
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
-
-
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
 
