@@ -4,112 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22C03CA0FE7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Aug 2025 00:32:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BD18C8303F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Aug 2025 00:52:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XT4pOKw6nF6FL5OY1g3It/B3VzTyCW9u3yGY3nXUjRQ=; b=I7t8ZkVWzfddZHJ0TPnJ+QhPHU
-	3uFsduKq/iy7EabnxxCpy37UIazXJ29Bhk5sU5cFY9kwSAsQ0gS8BuSrkMKSOIVZ8jt7A5foaL5B1
-	LcLhVK+aicJbBqoMyNu088X+cxNeCvmD0ywpd5PWzXRF1MhUNiTeLZsomMWGK6Pw3zY7IHBEZnIax
-	gC8s4pOXQs4uwNlhoTzTjVh+T+BkWQAAbTuNPd0K1USU4fMlG2Zj398rbhZmj4azyYnaJetObE9jK
-	ZpTAcA1OiPpf1ClNZKifU5Izz7AhzdTdwx9jreSGlGNWyayB8WVUakpxrQALN/5AAo0CEfUP2Y59R
-	pgLks6sg==;
+	bh=xAEgL/s+4AyLw1xIsmMOQ9Y2qv8NFMBF/S+j10ZgIl8=; b=t74lYQjUOxMMf2CNdBKrsuPa+R
+	nxJA6/iPzNDMiAz9DFtJty8Hk7orbahympAn6dV1mwFi5LCSUYHCwUFLbOIC+yFryodD+kJ6mmFAd
+	BHKfd0t/nELGRwqOoXr3djoyGxth6b6+5a0p+K/L9/MltUNdVxkUM7SM/ronHAR/hiaTl7C4nc1eA
+	uCX6E/WK8/pYjBFl7yT4f+bJpGFUGwD/SHf65aifoKjPuLL40cc5khzg9SKN/gH4Jn4K+Ra2KqKM0
+	4JofUwVG1HjZxfCM/mv+5RozjrnPIsQAwuYRXTO5VMcosY4YgGi1UxM127z5B+Zmq+b0g4hNo5JOx
+	B2DZtPkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqhcI-0000000AD6X-20Eb;
-	Tue, 26 Aug 2025 00:32:50 +0000
-Received: from mailgw.kylinos.cn ([124.126.103.232])
+	id 1uqhve-0000000AEYE-3gzG;
+	Tue, 26 Aug 2025 00:52:50 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqhcF-0000000AD61-391g;
-	Tue, 26 Aug 2025 00:32:49 +0000
-X-UUID: 2d68e01a821411f0b29709d653e92f7d-20250826
-X-CID-CACHE: Type:Local,Time:202508260830+08,HitQuantity:2
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.45,REQID:7270a5f9-40e3-4977-a28e-c6ba5a72d0d7,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6493067,CLOUDID:73c0f838f0cb681a0e66fa356d1f9674,BulkI
-	D:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102,TC:nil,Content:0|52,EDM:
-	-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,
-	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 2d68e01a821411f0b29709d653e92f7d-20250826
-Received: from mail.kylinos.cn [(10.44.16.175)] by mailgw.kylinos.cn
-	(envelope-from <zhangzihuan@kylinos.cn>)
-	(Generic MTA)
-	with ESMTP id 1699495493; Tue, 26 Aug 2025 08:32:42 +0800
-Received: from mail.kylinos.cn (localhost [127.0.0.1])
-	by mail.kylinos.cn (NSMail) with SMTP id DEE60E008FA2;
-	Tue, 26 Aug 2025 08:32:40 +0800 (CST)
-X-ns-mid: postfix-68AD00A8-3459444
-Received: from [172.25.120.24] (unknown [172.25.120.24])
-	by mail.kylinos.cn (NSMail) with ESMTPA id 3F6F9E008FA2;
-	Tue, 26 Aug 2025 08:32:33 +0800 (CST)
-Message-ID: <e91bec22-3e7a-4092-b44b-6a8946e6dea4@kylinos.cn>
-Date: Tue, 26 Aug 2025 08:32:32 +0800
+	id 1uqhsx-0000000AEO2-0koJ;
+	Tue, 26 Aug 2025 00:50:03 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 33EA860275;
+	Tue, 26 Aug 2025 00:50:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CC85DC4CEED;
+	Tue, 26 Aug 2025 00:50:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1756169401;
+	bh=nDRA1Tds71oq7lboJgaRNpeXobXorqZWQAvxAvuigEM=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=OcoSPHfIUBQl1xIRHVsfjzVLMeBmlwrSw2M72DHtRntuR55A/fglMAL/P3jtCWzxQ
+	 Z2HsvCnspVf67NJfcoF1ez4WWwyZJHUYKK4gamEOKHp6JrJ2WDnCnXaSNTzyQw04w2
+	 XOn4ArDBxO/rndR26G+Dwum8jUnIJFu0+RBWM0llQyJf5G/0D0ZbX4xnDdE18UGeG9
+	 iwZqLMOUUWIuTuJ/FN0a4OTPLbKY5PdRdurORn15q49APCu5lfrfxht5fgtOm/WHbg
+	 vWoScC5/UvND+wSVyZQiLHbw1e72ZCnP720xt6r/By44hvBAdfb6mk4d1Q3i/EcncM
+	 lhUTrhKiFAY0A==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id EB1C0383BF70;
+	Tue, 26 Aug 2025 00:50:10 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1] cpufreq: use __free() for all cpufreq_cpu_get()
- references
-To: "Rafael J. Wysocki" <rafael@kernel.org>
-Cc: Viresh Kumar <viresh.kumar@linaro.org>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
- Sean Christopherson <seanjc@google.com>, Paolo Bonzini
- <pbonzini@redhat.com>, Thomas Gleixner <tglx@linutronix.de>,
- Ingo Molnar <mingo@redhat.com>, Borislav Petkov <bp@alien8.de>,
- Dave Hansen <dave.hansen@linux.intel.com>, Markus Mayer
- <mmayer@broadcom.com>, Florian Fainelli <florian.fainelli@broadcom.com>,
- Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>,
- Madhavan Srinivasan <maddy@linux.ibm.com>,
- Michael Ellerman <mpe@ellerman.id.au>, Krzysztof Kozlowski
- <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, Tvrtko Ursulin
- <tursulin@ursulin.net>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Daniel Lezcano <daniel.lezcano@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
- Eduardo Valentin <edubezval@gmail.com>, Keerthy <j-keerthy@ti.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- zhenglifeng <zhenglifeng1@huawei.com>, "H . Peter Anvin" <hpa@zytor.com>,
- Zhang Rui <rui.zhang@intel.com>, Len Brown <lenb@kernel.org>,
- Nicholas Piggin <npiggin@gmail.com>,
- Christophe Leroy <christophe.leroy@csgroup.eu>,
- Lukasz Luba <lukasz.luba@arm.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Beata Michalska <beata.michalska@arm.com>, Fabio Estevam
- <festevam@gmail.com>, Pavel Machek <pavel@kernel.org>,
- Sumit Gupta <sumitg@nvidia.com>,
- Prasanna Kumar T S M <ptsm@linux.microsoft.com>,
- Sudeep Holla <sudeep.holla@arm.com>, Yicong Yang <yangyicong@hisilicon.com>,
- linux-pm@vger.kernel.org, x86@kernel.org, kvm@vger.kernel.org,
- linux-acpi@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
- linux-samsung-soc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-tegra@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, imx@lists.linux.dev,
- linux-omap@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20250825092833.42441-1-zhangzihuan@kylinos.cn>
- <CAJZ5v0g7rJn=z5p4DuJJoPpZrR5ismYftpDWp5X=z74DqaGYBQ@mail.gmail.com>
-From: Zihuan Zhang <zhangzihuan@kylinos.cn>
-In-Reply-To: <CAJZ5v0g7rJn=z5p4DuJJoPpZrR5ismYftpDWp5X=z74DqaGYBQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_173248_086199_6C60C64A 
-X-CRM114-Status: GOOD (  17.74  )
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next v3 0/3] net: airoha: Add PPE support for RX wlan
+ offload
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <175616940975.3610531.11567535063308274967.git-patchwork-notify@kernel.org>
+Date: Tue, 26 Aug 2025 00:50:09 +0000
+References: <20250823-airoha-en7581-wlan-rx-offload-v3-0-f78600ec3ed8@kernel.org>
+In-Reply-To: <20250823-airoha-en7581-wlan-rx-offload-v3-0-f78600ec3ed8@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,54 +72,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hello:
 
-=E5=9C=A8 2025/8/25 22:13, Rafael J. Wysocki =E5=86=99=E9=81=93:
-> On Mon, Aug 25, 2025 at 11:29=E2=80=AFAM Zihuan Zhang <zhangzihuan@kyli=
-nos.cn> wrote:
->> This patch replaces all remaining uses of cpufreq_cpu_get() with
->> the __free(cpufreq_cpu_put) annotation.
->>
->> Motivation:
->> - Ensures automatic cleanup of policy references when they go out of s=
-cope,
->>    reducing the risk of forgetting to call cpufreq_cpu_put() on early =
-return
->>    or error paths.
->> - Brings the code in line with the latest kernel coding style and best
->>    practices for managing reference-counted objects.
->> - No functional changes are introduced; behavior remains the same,
->>    but reference counting is now safer and easier to maintain.
->>
->> Signed-off-by: Zihuan Zhang <zhangzihuan@kylinos.cn>
->> ---
->>   arch/arm64/kernel/topology.c                  |  9 +++----
->>   arch/x86/kvm/x86.c                            | 10 ++++----
->>   drivers/acpi/processor_thermal.c              | 13 ++++------
->>   drivers/cpufreq/brcmstb-avs-cpufreq.c         |  4 +---
->>   drivers/cpufreq/cppc_cpufreq.c                |  4 +---
->>   drivers/cpufreq/intel_pstate.c                |  3 +--
->>   drivers/cpufreq/longhaul.c                    |  3 +--
->>   drivers/cpufreq/mediatek-cpufreq.c            |  6 ++---
->>   drivers/cpufreq/powernv-cpufreq.c             |  6 ++---
->>   drivers/cpufreq/s5pv210-cpufreq.c             |  3 +--
->>   drivers/cpufreq/tegra186-cpufreq.c            |  3 +--
->>   drivers/devfreq/governor_passive.c            | 19 ++++-----------
->>   drivers/gpu/drm/i915/gt/intel_llc.c           |  3 +--
->>   drivers/macintosh/windfarm_cpufreq_clamp.c    |  4 +---
->>   drivers/powercap/dtpm_cpu.c                   | 24 ++++++-----------=
---
->>   drivers/thermal/imx_thermal.c                 |  7 ++----
->>   .../ti-soc-thermal/ti-thermal-common.c        |  5 +---
->>   kernel/power/energy_model.c                   |  7 ++----
->>   18 files changed, 40 insertions(+), 93 deletions(-)
-> This changes different pieces of code maintained by different people
-> and the changes are not interdependent AFAICS, so better send it as a
-> series of separate patches.
->
-> Thanks!
+This series was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-Thanks for the suggestion.
+On Sat, 23 Aug 2025 09:56:01 +0200 you wrote:
+> Introduce the missing bits to airoha ppe driver to offload traffic received
+> by the MT76 driver (wireless NIC) and forwarded by the Packet Processor
+> Engine (PPE) to the ethernet interface.
+> 
+> ---
+> Changes in v3:
+> - Fix compilation error when CONFIG_NET_AIROHA is not enabled
+> - Link to v2: https://lore.kernel.org/r/20250822-airoha-en7581-wlan-rx-offload-v2-0-8a76e1d3fec2@kernel.org
+> 
+> [...]
 
-I agree, splitting it into a series will make the review much clearer.
+Here is the summary with links:
+  - [net-next,v3,1/3] net: airoha: Rely on airoha_eth struct in airoha_ppe_flow_offload_cmd signature
+    https://git.kernel.org/netdev/net-next/c/524a43c3a0c1
+  - [net-next,v3,2/3] net: airoha: Add airoha_ppe_dev struct definition
+    https://git.kernel.org/netdev/net-next/c/f45fc18b6de0
+  - [net-next,v3,3/3] net: airoha: Introduce check_skb callback in ppe_dev ops
+    https://git.kernel.org/netdev/net-next/c/a7cc1aa151e3
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
