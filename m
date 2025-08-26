@@ -4,94 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B066CA0EFA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Aug 2025 05:16:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50F19CA0EE4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Aug 2025 05:43:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B1JIZerC9XYjkBh/CdzWClGmJGkTit8bSTofkNpBRWI=; b=kNQRN4TV98HUuhx0lIf/HG3uH9
-	Vz1HC29iB4Os4lhtIwnqRNuJqvS6ZiNLbMmJmuLRKHsvL69Xj5z9iSaR2mfklJFsx5d2sDFEI73Dj
-	l0OPhlaGD1dmXGAoq1KnQCf7vPgXFDxn33nZUrr4JvNSdvdCyjj9wAaFsHBo0NggChUB2mj9O/eyh
-	bHA9mIKs75EGPll1izzH7HmyqtW/dUiT0svZ/6btFu58Ina9DOj4+MgiynMqAb1re4NtYDEftEmQD
-	tsjuAt0LWnAILJNjfZI4LGWUajQ/QTgkmw6Q8IKpk8BYsmAaAlYABZmviVFU4TEOx45J8xoRr4cj5
-	46rcT5IA==;
+	bh=AR7pg9zxCRIYGHyNaZ/S0G9RhVSh2BkgbkiO0DZ+FN0=; b=HwiczT/og4u50sxx2vOCAJSd5y
+	f2eHfpAWCN2fmutp8DEx5gUIFzosgl4JmCvMpQQXgtDjTHCGEVGkYJc+6ROSMSM6P7X2X+ELrJJvz
+	pn/cmXjxjy/ZIWKq097r8Ex0XDVO5cbWdspzweX8Fci+PbNnBAPaDhpaAeBd+mzsU1Q0v+lhpTf4c
+	PYYhOo+mp/zGV4ZpapXtDxPbc7Op1mK8+avC6vt0ngn5OUwvFEWQ/zkkjlOiPm4EFL0S7kNG284zK
+	a67ccj9KKXL/FRVM9vPjFly7xd7Sj8BEVbbTDI1fZxtiUrOnpSJdnUIfZS1bjace9l/A95D9mTQUh
+	Wm1MCDbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqm3A-0000000AZd0-3RLw;
-	Tue, 26 Aug 2025 05:16:52 +0000
-Received: from mail-ua1-x92b.google.com ([2607:f8b0:4864:20::92b])
+	id 1uqmSg-0000000AbsI-20hD;
+	Tue, 26 Aug 2025 05:43:14 +0000
+Received: from mx3.molgen.mpg.de ([141.14.17.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqm37-0000000AZbb-2btf
-	for linux-mediatek@lists.infradead.org;
-	Tue, 26 Aug 2025 05:16:51 +0000
-Received: by mail-ua1-x92b.google.com with SMTP id a1e0cc1a2514c-8920c579f98so1399687241.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 25 Aug 2025 22:16:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1756185408; x=1756790208; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=B1JIZerC9XYjkBh/CdzWClGmJGkTit8bSTofkNpBRWI=;
-        b=jmNWTx/TWvl1Y1CaaZ42WJkNxodea0PFerFfkrLGV2GtXyHDomAYlrboto0YddI/9B
-         b2M1d70YZTN9dY7Jy6OXFbNHr7B6v+U9EO5v8RK3KBBwhZlAMXH3A5G02x07avb/qTAt
-         yVrZ7YSafilF8jsc3GffvU/iemnbNkI/5ApGA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756185408; x=1756790208;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=B1JIZerC9XYjkBh/CdzWClGmJGkTit8bSTofkNpBRWI=;
-        b=HlARVL0LYa8Vnqe4VCMzgh+PncDjmjRoEBAptxgxybHWQg4BBKzTojGR8wlcTUnE8F
-         HjArNa5GH8ODdRZJ/XlL6adghatwyjfcx8qf98z+dmgNUs5q+lepv/iCxNbqiHPYFnba
-         ZoU+WobY1Fgw+a4Gz3EOjDASDIzdV4E9IRpUSR/OpBJfaKdTF9UPtZW6FcJ4SnYbKmvQ
-         pDabqE447ZGGgeWMEmlDyg2/StUwctHTsNCILokKADQgWUrqFEZNidt6qERN+gCOeMas
-         YtnPE4T/Opayg9jSqXvwjO6m6TY6p9AjGOvUqdAjjtJ7t5i7168+7qV6FKtSIYgRSBUj
-         xKcg==
-X-Forwarded-Encrypted: i=1; AJvYcCU23eMoUyvuFIL51Pe9kHv1/fQJR35DyeeZCULrqXj/4oRpvG8iZWJlCmRGK6S9NY9gYhXK9QFHrGcd+zrpQg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyoS3iIIynTEA0uLoKlL6rYDSJQ2qIpCHdaSExW4jWlQr/m9I2y
-	z9/BR9w18L+uj93g8wW00kkWxCPkIQS8iq99z9DGHPufaHdSx968wWAo1t6nVGauJFckV4u76ql
-	nmnQ=
-X-Gm-Gg: ASbGncsrUzKo4SuVSZu2drneEfmP1EU4H4JFP/tsMpa5w/3QH5n3VHn0ZzhSQlNYc43
-	DvzafBqQEMWDqVJcDMzMzIpDIjN9M1dr7ggLWjBiR9sKcDPv5gPLenVUFTw5f3f6gKbVnCWFhNt
-	+mU6zuUT88+t76fgFC/AGNu1lY67GT1tyO/Mi98g25ho1CZvDQX7OgU7W17u966tgcq59RICjiR
-	XYiXdH3VPukjm6PNLVt6/ZQ9FhGkDjkh7+zowEfzKMab9IRzsW0DS37drD0dC5Ybar/I7lp52sU
-	pYLrs+QjtHurYFXyaCezfBDrgJaZEmX2smDqZgZBCnTI23QcyuOX3t4LCfh3+HxeoX4lyeOMjSD
-	L3mwQx9V/UrtN6yljl3QnQGb4zugo92OYnlwC7o/B/wBSvd5ui0jWxe9vaVxco+PRNEML
-X-Google-Smtp-Source: AGHT+IHv0v5Yof0gzfv8YalaIZhTH47vYIUZTtLRzcyXZRtpf7wOeEO3QQlgBhfuGP7QOaMDPhGunA==
-X-Received: by 2002:a05:6102:2ac6:b0:4f9:69a9:4ec4 with SMTP id ada2fe7eead31-51d0f2f13d4mr4709302137.26.1756185407732;
-        Mon, 25 Aug 2025 22:16:47 -0700 (PDT)
-Received: from mail-vs1-f44.google.com (mail-vs1-f44.google.com. [209.85.217.44])
-        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-5435bd348dasm130705e0c.13.2025.08.25.22.16.46
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 25 Aug 2025 22:16:47 -0700 (PDT)
-Received: by mail-vs1-f44.google.com with SMTP id ada2fe7eead31-52252e9e907so445583137.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 25 Aug 2025 22:16:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCUPZoirlt9PXlLtneseoB96t5MnEw9pVGl+8U/7uoHpapr78r9DSbtaPI8C/aTnNcF5dwjeob03MvLFaJu2Nw==@lists.infradead.org
-X-Received: by 2002:a05:6102:2b84:b0:4e9:9281:85aa with SMTP id
- ada2fe7eead31-51d0cde292cmr5071231137.1.1756185406133; Mon, 25 Aug 2025
- 22:16:46 -0700 (PDT)
+	id 1uqmPu-0000000Abc1-3Q8I;
+	Tue, 26 Aug 2025 05:40:25 +0000
+Received: from [192.168.0.192] (ip5f5af7cb.dynamic.kabel-deutschland.de [95.90.247.203])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: pmenzel)
+	by mx.molgen.mpg.de (Postfix) with ESMTPSA id 8DAC56028826D;
+	Tue, 26 Aug 2025 07:40:00 +0200 (CEST)
+Message-ID: <e9bbe0bb-b70d-445b-a7ff-b0ab2eef6c6f@molgen.mpg.de>
+Date: Tue, 26 Aug 2025 07:40:00 +0200
 MIME-Version: 1.0
-References: <20250825151111.3696404-1-wenst@chromium.org>
-In-Reply-To: <20250825151111.3696404-1-wenst@chromium.org>
-From: Fei Shao <fshao@chromium.org>
-Date: Tue, 26 Aug 2025 13:16:09 +0800
-X-Gmail-Original-Message-ID: <CAC=S1nhJpGD5ro+QiNTkDn90Nbw49jDQjVvwRT1XFQJbwA=z8A@mail.gmail.com>
-X-Gm-Features: Ac12FXxPVcynR36QGxsqlVXBYl9-P7WGDtVc3IOfN03AppRsLVWt_DvyhTCcM3g
-Message-ID: <CAC=S1nhJpGD5ro+QiNTkDn90Nbw49jDQjVvwRT1XFQJbwA=z8A@mail.gmail.com>
-Subject: Re: [PATCH v2] ASoC: mediatek: common: Switch to for_each_available_child_of_node_scoped()
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, linux-sound@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] Bluetooth: remove duplicate h4_recv_buf() in header
+To: Calvin Owens <calvin@wbinvd.org>
+Cc: linux-kernel@vger.kernel.org, Marcel Holtmann <marcel@holtmann.org>,
+ Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Sean Wang <sean.wang@mediatek.com>,
+ Amitkumar Karwar <amitkumar.karwar@nxp.com>,
+ Neeraj Kale <neeraj.sanjaykale@nxp.com>, linux-bluetooth@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ johan.hedberg@intel.com
+References: <be8edf7f8ba8dea6c61272b02fb20a4ac7e1c5a5.1756179634.git.calvin@wbinvd.org>
+Content-Language: en-US
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <be8edf7f8ba8dea6c61272b02fb20a4ac7e1c5a5.1756179634.git.calvin@wbinvd.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_221650_041473_86B1D352 
-X-CRM114-Status: GOOD (  13.74  )
+X-CRM114-CacheID: sfid-20250825_224023_173839_D7A19D02 
+X-CRM114-Status: GOOD (  36.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,25 +71,403 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 25, 2025 at 11:55=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.org> =
-wrote:
->
-> Using for_each_available_child_of_node_scoped() allows us to get rid of
-> of_node_put() calls from early returns or breaks in the loop. It also
-> fixes issues with missing of_node_put() calls.
->
-> Switch to for_each_available_child_of_node_scoped() in parse_dai_link_inf=
-o().
-> Also drop the braces around if blocks now that the inner block is just
-> one statement.
->
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> ---
-> Changes since v1:
-> - Dropped unused variable
-> ---
->  .../mediatek/common/mtk-soundcard-driver.c    | 19 +++++--------------
->  1 file changed, 5 insertions(+), 14 deletions(-)
+Dear Calvin,
 
-Reviewed-by: Fei Shao <fshao@chromium.org>
+
+Thank you for your patch.
+
+Am 26.08.25 um 06:11 schrieb Calvin Owens:
+> The "h4_recv.h" header contains a duplicate h4_recv_buf() that is nearly
+> but not quite identical to the h4_recv_buf() in hci_h4.c.
+> 
+> This duplicated header was added in commit 07eb96a5a7b0 ("Bluetooth:
+> bpa10x: Use separate h4_recv_buf helper"). I wasn't able to find any
+> explanation for duplicating the code in the discussion:
+> 
+>      https://lore.kernel.org/all/20180320181855.37297-1-marcel@holtmann.org/
+>      https://lore.kernel.org/all/20180324091954.73229-2-marcel@holtmann.org/
+> 
+> Unfortunately, in the years since, several other drivers have come to
+> also rely on this duplicated function, probably by accident. This is, at
+> the very least, *extremely* confusing. It's also caused real issues when
+> it's become out-of-sync, see the following:
+> 
+>      ef564119ba83 ("Bluetooth: hci_h4: Add support for ISO packets")
+>      61b27cdf025b ("Bluetooth: hci_h4: Add support for ISO packets in h4_recv.h")
+> 
+> This is the full diff between the two implementations today:
+> 
+>      --- orig.c
+>      +++ copy.c
+>      @@ -1,117 +1,100 @@
+>       {
+>      -	struct hci_uart *hu = hci_get_drvdata(hdev);
+>      -	u8 alignment = hu->alignment ? hu->alignment : 1;
+>      -
+>       	/* Check for error from previous call */
+>       	if (IS_ERR(skb))
+>       		skb = NULL;
+> 
+>       	while (count) {
+>       		int i, len;
+> 
+>      -		/* remove padding bytes from buffer */
+>      -		for (; hu->padding && count > 0; hu->padding--) {
+>      -			count--;
+>      -			buffer++;
+>      -		}
+>      -		if (!count)
+>      -			break;
+>      -
+>       		if (!skb) {
+>       			for (i = 0; i < pkts_count; i++) {
+>       				if (buffer[0] != (&pkts[i])->type)
+>       					continue;
+> 
+>       				skb = bt_skb_alloc((&pkts[i])->maxlen,
+>       						   GFP_ATOMIC);
+>       				if (!skb)
+>       					return ERR_PTR(-ENOMEM);
+> 
+>       				hci_skb_pkt_type(skb) = (&pkts[i])->type;
+>       				hci_skb_expect(skb) = (&pkts[i])->hlen;
+>       				break;
+>       			}
+> 
+>       			/* Check for invalid packet type */
+>       			if (!skb)
+>       				return ERR_PTR(-EILSEQ);
+> 
+>       			count -= 1;
+>       			buffer += 1;
+>       		}
+> 
+>       		len = min_t(uint, hci_skb_expect(skb) - skb->len, count);
+>       		skb_put_data(skb, buffer, len);
+> 
+>       		count -= len;
+>       		buffer += len;
+> 
+>       		/* Check for partial packet */
+>       		if (skb->len < hci_skb_expect(skb))
+>       			continue;
+> 
+>       		for (i = 0; i < pkts_count; i++) {
+>       			if (hci_skb_pkt_type(skb) == (&pkts[i])->type)
+>       				break;
+>       		}
+> 
+>       		if (i >= pkts_count) {
+>       			kfree_skb(skb);
+>       			return ERR_PTR(-EILSEQ);
+>       		}
+> 
+>       		if (skb->len == (&pkts[i])->hlen) {
+>       			u16 dlen;
+> 
+>       			switch ((&pkts[i])->lsize) {
+>       			case 0:
+>       				/* No variable data length */
+>       				dlen = 0;
+>       				break;
+>       			case 1:
+>       				/* Single octet variable length */
+>       				dlen = skb->data[(&pkts[i])->loff];
+>       				hci_skb_expect(skb) += dlen;
+> 
+>       				if (skb_tailroom(skb) < dlen) {
+>       					kfree_skb(skb);
+>       					return ERR_PTR(-EMSGSIZE);
+>       				}
+>       				break;
+>       			case 2:
+>       				/* Double octet variable length */
+>       				dlen = get_unaligned_le16(skb->data +
+>       							  (&pkts[i])->loff);
+>       				hci_skb_expect(skb) += dlen;
+> 
+>       				if (skb_tailroom(skb) < dlen) {
+>       					kfree_skb(skb);
+>       					return ERR_PTR(-EMSGSIZE);
+>       				}
+>       				break;
+>       			default:
+>       				/* Unsupported variable length */
+>       				kfree_skb(skb);
+>       				return ERR_PTR(-EILSEQ);
+>       			}
+> 
+>       			if (!dlen) {
+>      -				hu->padding = (skb->len + 1) % alignment;
+>      -				hu->padding = (alignment - hu->padding) % alignment;
+>      -
+>       				/* No more data, complete frame */
+>       				(&pkts[i])->recv(hdev, skb);
+>       				skb = NULL;
+>       			}
+>       		} else {
+>      -			hu->padding = (skb->len + 1) % alignment;
+>      -			hu->padding = (alignment - hu->padding) % alignment;
+>      -
+>       			/* Complete frame */
+>       			(&pkts[i])->recv(hdev, skb);
+>       			skb = NULL;
+>       		}
+>       	}
+> 
+>       	return skb;
+>       }
+>      -EXPORT_SYMBOL_GPL(h4_recv_buf)
+> 
+> As I read this: If alignment is one, and padding is zero, padding
+> remains zero throughout the loop. So it seems to me that the two
+> functions behave strictly identically in that case. All the duplicated
+> defines are also identical, as is the duplicated h4_recv_pkt structure
+> declaration.
+> 
+> All four drivers which use the duplicated function use the default
+> alignment of one, and the default padding of zero. I therefore conclude
+> the duplicate function may be safely replaced with the core one.
+> 
+> I raised this in an RFC a few months ago, and didn't get much interest:
+> 
+>      https://lore.kernel.org/all/CABBYNZ+ONkYtq2fR-8PtL3X-vetvJ0BdP4MTw9cNpjLDzG3HUQ@mail.gmail.com/
+> 
+> ...but I'm still wary I've missed something, and I'd really appreciate
+> more eyeballs on it.
+> 
+> I tested this successfully on btnxpuart a few months ago, but
+> unfortunately I no longer have access to that hardware.
+
+Great analysis. Thank you for your time writing this up.
+
+> Cc: Marcel Holtmann <marcel@holtmann.org>
+> Signed-off-by: Calvin Owens <calvin@wbinvd.org>
+> ---
+>   drivers/bluetooth/bpa10x.c    |   2 +-
+>   drivers/bluetooth/btmtksdio.c |   2 +-
+>   drivers/bluetooth/btmtkuart.c |   2 +-
+>   drivers/bluetooth/btnxpuart.c |   2 +-
+>   drivers/bluetooth/h4_recv.h   | 153 ----------------------------------
+>   5 files changed, 4 insertions(+), 157 deletions(-)
+>   delete mode 100644 drivers/bluetooth/h4_recv.h
+> 
+> diff --git a/drivers/bluetooth/bpa10x.c b/drivers/bluetooth/bpa10x.c
+> index 8b43dfc755de..b7ba667a3d09 100644
+> --- a/drivers/bluetooth/bpa10x.c
+> +++ b/drivers/bluetooth/bpa10x.c
+> @@ -20,7 +20,7 @@
+>   #include <net/bluetooth/bluetooth.h>
+>   #include <net/bluetooth/hci_core.h>
+>   
+> -#include "h4_recv.h"
+> +#include "hci_uart.h"
+>   
+>   #define VERSION "0.11"
+>   
+> diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
+> index 4fc673640bfc..50abefba6d04 100644
+> --- a/drivers/bluetooth/btmtksdio.c
+> +++ b/drivers/bluetooth/btmtksdio.c
+> @@ -29,7 +29,7 @@
+>   #include <net/bluetooth/bluetooth.h>
+>   #include <net/bluetooth/hci_core.h>
+>   
+> -#include "h4_recv.h"
+> +#include "hci_uart.h"
+>   #include "btmtk.h"
+>   
+>   #define VERSION "0.1"
+> diff --git a/drivers/bluetooth/btmtkuart.c b/drivers/bluetooth/btmtkuart.c
+> index 76995cfcd534..d9b90ea2ad38 100644
+> --- a/drivers/bluetooth/btmtkuart.c
+> +++ b/drivers/bluetooth/btmtkuart.c
+> @@ -27,7 +27,7 @@
+>   #include <net/bluetooth/bluetooth.h>
+>   #include <net/bluetooth/hci_core.h>
+>   
+> -#include "h4_recv.h"
+> +#include "hci_uart.h"
+>   #include "btmtk.h"
+>   
+>   #define VERSION "0.2"
+> diff --git a/drivers/bluetooth/btnxpuart.c b/drivers/bluetooth/btnxpuart.c
+> index 76e7f857fb7d..d5153fed0518 100644
+> --- a/drivers/bluetooth/btnxpuart.c
+> +++ b/drivers/bluetooth/btnxpuart.c
+> @@ -24,7 +24,7 @@
+>   #include <net/bluetooth/bluetooth.h>
+>   #include <net/bluetooth/hci_core.h>
+>   
+> -#include "h4_recv.h"
+> +#include "hci_uart.h"
+>   
+>   #define MANUFACTURER_NXP		37
+>   
+> diff --git a/drivers/bluetooth/h4_recv.h b/drivers/bluetooth/h4_recv.h
+> deleted file mode 100644
+> index 28cf2d8c2d48..000000000000
+> --- a/drivers/bluetooth/h4_recv.h
+> +++ /dev/null
+> @@ -1,153 +0,0 @@
+> -/* SPDX-License-Identifier: GPL-2.0-or-later */
+> -/*
+> - *
+> - *  Generic Bluetooth HCI UART driver
+> - *
+> - *  Copyright (C) 2015-2018  Intel Corporation
+> - */
+> -
+> -#include <linux/unaligned.h>
+> -
+> -struct h4_recv_pkt {
+> -	u8  type;	/* Packet type */
+> -	u8  hlen;	/* Header length */
+> -	u8  loff;	/* Data length offset in header */
+> -	u8  lsize;	/* Data length field size */
+> -	u16 maxlen;	/* Max overall packet length */
+> -	int (*recv)(struct hci_dev *hdev, struct sk_buff *skb);
+> -};
+> -
+> -#define H4_RECV_ACL \
+> -	.type = HCI_ACLDATA_PKT, \
+> -	.hlen = HCI_ACL_HDR_SIZE, \
+> -	.loff = 2, \
+> -	.lsize = 2, \
+> -	.maxlen = HCI_MAX_FRAME_SIZE \
+> -
+> -#define H4_RECV_SCO \
+> -	.type = HCI_SCODATA_PKT, \
+> -	.hlen = HCI_SCO_HDR_SIZE, \
+> -	.loff = 2, \
+> -	.lsize = 1, \
+> -	.maxlen = HCI_MAX_SCO_SIZE
+> -
+> -#define H4_RECV_EVENT \
+> -	.type = HCI_EVENT_PKT, \
+> -	.hlen = HCI_EVENT_HDR_SIZE, \
+> -	.loff = 1, \
+> -	.lsize = 1, \
+> -	.maxlen = HCI_MAX_EVENT_SIZE
+> -
+> -#define H4_RECV_ISO \
+> -	.type = HCI_ISODATA_PKT, \
+> -	.hlen = HCI_ISO_HDR_SIZE, \
+> -	.loff = 2, \
+> -	.lsize = 2, \
+> -	.maxlen = HCI_MAX_FRAME_SIZE
+> -
+> -static inline struct sk_buff *h4_recv_buf(struct hci_dev *hdev,
+> -					  struct sk_buff *skb,
+> -					  const unsigned char *buffer,
+> -					  int count,
+> -					  const struct h4_recv_pkt *pkts,
+> -					  int pkts_count)
+> -{
+> -	/* Check for error from previous call */
+> -	if (IS_ERR(skb))
+> -		skb = NULL;
+> -
+> -	while (count) {
+> -		int i, len;
+> -
+> -		if (!skb) {
+> -			for (i = 0; i < pkts_count; i++) {
+> -				if (buffer[0] != (&pkts[i])->type)
+> -					continue;
+> -
+> -				skb = bt_skb_alloc((&pkts[i])->maxlen,
+> -						   GFP_ATOMIC);
+> -				if (!skb)
+> -					return ERR_PTR(-ENOMEM);
+> -
+> -				hci_skb_pkt_type(skb) = (&pkts[i])->type;
+> -				hci_skb_expect(skb) = (&pkts[i])->hlen;
+> -				break;
+> -			}
+> -
+> -			/* Check for invalid packet type */
+> -			if (!skb)
+> -				return ERR_PTR(-EILSEQ);
+> -
+> -			count -= 1;
+> -			buffer += 1;
+> -		}
+> -
+> -		len = min_t(uint, hci_skb_expect(skb) - skb->len, count);
+> -		skb_put_data(skb, buffer, len);
+> -
+> -		count -= len;
+> -		buffer += len;
+> -
+> -		/* Check for partial packet */
+> -		if (skb->len < hci_skb_expect(skb))
+> -			continue;
+> -
+> -		for (i = 0; i < pkts_count; i++) {
+> -			if (hci_skb_pkt_type(skb) == (&pkts[i])->type)
+> -				break;
+> -		}
+> -
+> -		if (i >= pkts_count) {
+> -			kfree_skb(skb);
+> -			return ERR_PTR(-EILSEQ);
+> -		}
+> -
+> -		if (skb->len == (&pkts[i])->hlen) {
+> -			u16 dlen;
+> -
+> -			switch ((&pkts[i])->lsize) {
+> -			case 0:
+> -				/* No variable data length */
+> -				dlen = 0;
+> -				break;
+> -			case 1:
+> -				/* Single octet variable length */
+> -				dlen = skb->data[(&pkts[i])->loff];
+> -				hci_skb_expect(skb) += dlen;
+> -
+> -				if (skb_tailroom(skb) < dlen) {
+> -					kfree_skb(skb);
+> -					return ERR_PTR(-EMSGSIZE);
+> -				}
+> -				break;
+> -			case 2:
+> -				/* Double octet variable length */
+> -				dlen = get_unaligned_le16(skb->data +
+> -							  (&pkts[i])->loff);
+> -				hci_skb_expect(skb) += dlen;
+> -
+> -				if (skb_tailroom(skb) < dlen) {
+> -					kfree_skb(skb);
+> -					return ERR_PTR(-EMSGSIZE);
+> -				}
+> -				break;
+> -			default:
+> -				/* Unsupported variable length */
+> -				kfree_skb(skb);
+> -				return ERR_PTR(-EILSEQ);
+> -			}
+> -
+> -			if (!dlen) {
+> -				/* No more data, complete frame */
+> -				(&pkts[i])->recv(hdev, skb);
+> -				skb = NULL;
+> -			}
+> -		} else {
+> -			/* Complete frame */
+> -			(&pkts[i])->recv(hdev, skb);
+> -			skb = NULL;
+> -		}
+> -	}
+> -
+> -	return skb;
+> -}
+
+Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
+
+
+Kind regards,
+
+Paul
 
