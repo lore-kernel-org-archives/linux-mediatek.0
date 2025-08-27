@@ -4,112 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2EBDC8303F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Aug 2025 08:59:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78024CA0EFF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Aug 2025 11:07:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cm7jRPMBPf4sf2l068Yy96KaDTgweWGkolU8ivKz92s=; b=HmCAGEIox3QWSfSwT2646sx5Ra
-	O1Tdf+7CBGIsBWGiQXzfA6HqGkmjQiNt0tPiucwltlkq0zzUe6piMYtCLDHm/rWACvfit1Q2A7I2l
-	+1uutvuz51SkfJgQVMzuXRsmm3ThijN3KBE/QmMzyXZ2R8OvlAE3ksGr84oaeEA0xclO1QFR1XxDv
-	SPsGqYZbc/IwabEDVq0e5nCWjlNCKBAzpbf6EYNJs51DoTj6uhdFscILDN02OVeSl8j22+ukyxVan
-	2XvoSlTW41epQaSNnn8y8V2Lfy8OVlCVaf7zryHQcfOM1yg+Ez3QMBpHShydQ6rydU3dLeYB9p8Hr
-	CxNYCNZw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TgYviQ928N44tOhN8cqLF0bpgn7tKCcF4t8AwwoD1xM=; b=Tkgs/fsRkVTFJkSueuXKxnfRKv
+	JB/lb4zixvKWwrOjL1OaQGvgjB/lLifzCwk5lmT+htUBa6l9htkpSmivNvxH4zCqoJL5SJk483yKJ
+	4hk4MswyunUJXIP7I9oYB/QU2RgKzkIoeKUAPUtDpWouNr+gA2+/lB843HTNz9a6ESD1RIBuOej++
+	qIAC2IYwdD7Ehco6E8G1w3rZnqLbKRxI+wipxPtXfu6kNrBNWjibWsNvyRIqJuxAgpP2Ix9oOJx7h
+	f2hM7kC6dw0LVaUw6qQG6ZstCC3WqRibUJlY+1WBDS5DNi06gpf60szNf+KxlMkyGcrQgvMw2Q55Q
+	JyVjjX1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urC0C-0000000ElJR-38hM;
-	Wed, 27 Aug 2025 08:59:32 +0000
-Received: from mailgw.kylinos.cn ([124.126.103.232])
+	id 1urDzb-0000000F9jz-1qzM;
+	Wed, 27 Aug 2025 11:07:03 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urBwZ-0000000Ekfi-1mBe;
-	Wed, 27 Aug 2025 08:55:49 +0000
-X-UUID: 9b4b7a88832311f0b29709d653e92f7d-20250827
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.45,REQID:2338019c-bb8d-48a6-93ba-58ea29929953,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6493067,CLOUDID:b5736a825b981a30f067edd239e3633a,BulkI
-	D:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102,TC:nil,Content:0|52,EDM:
-	-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,
-	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 9b4b7a88832311f0b29709d653e92f7d-20250827
-Received: from mail.kylinos.cn [(10.44.16.175)] by mailgw.kylinos.cn
-	(envelope-from <zhangzihuan@kylinos.cn>)
-	(Generic MTA)
-	with ESMTP id 175818411; Wed, 27 Aug 2025 16:55:40 +0800
-Received: from mail.kylinos.cn (localhost [127.0.0.1])
-	by mail.kylinos.cn (NSMail) with SMTP id 97C48E008FAC;
-	Wed, 27 Aug 2025 16:55:39 +0800 (CST)
-X-ns-mid: postfix-68AEC80B-467347751
-Received: from [172.25.120.24] (unknown [172.25.120.24])
-	by mail.kylinos.cn (NSMail) with ESMTPA id 74564E008FA3;
-	Wed, 27 Aug 2025 16:55:21 +0800 (CST)
-Message-ID: <57016487-0fee-4821-9cd5-d6e5fe80a65d@kylinos.cn>
-Date: Wed, 27 Aug 2025 16:55:20 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 01/18] arm64: topology: Use __free(put_cpufreq_policy)
- for policy reference
-To: Ben Horgan <ben.horgan@arm.com>, "Rafael J . wysocki"
- <rafael@kernel.org>, Viresh Kumar <viresh.kumar@linaro.org>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
- Sean Christopherson <seanjc@google.com>, Paolo Bonzini
- <pbonzini@redhat.com>, Thomas Gleixner <tglx@linutronix.de>,
- Ingo Molnar <mingo@redhat.com>, Borislav Petkov <bp@alien8.de>,
- Dave Hansen <dave.hansen@linux.intel.com>, Markus Mayer
- <mmayer@broadcom.com>, Florian Fainelli <florian.fainelli@broadcom.com>,
- Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>,
- Madhavan Srinivasan <maddy@linux.ibm.com>,
- Michael Ellerman <mpe@ellerman.id.au>, Krzysztof Kozlowski
- <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, Tvrtko Ursulin
- <tursulin@ursulin.net>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Daniel Lezcano <daniel.lezcano@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
- Eduardo Valentin <edubezval@gmail.com>, Keerthy <j-keerthy@ti.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: zhenglifeng <zhenglifeng1@huawei.com>, "H . Peter Anvin" <hpa@zytor.com>,
- Zhang Rui <rui.zhang@intel.com>, Len Brown <lenb@kernel.org>,
- Nicholas Piggin <npiggin@gmail.com>,
- Christophe Leroy <christophe.leroy@csgroup.eu>,
- Lukasz Luba <lukasz.luba@arm.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Beata Michalska <beata.michalska@arm.com>, Fabio Estevam
- <festevam@gmail.com>, Pavel Machek <pavel@kernel.org>,
- Sumit Gupta <sumitg@nvidia.com>,
- Prasanna Kumar T S M <ptsm@linux.microsoft.com>,
- Sudeep Holla <sudeep.holla@arm.com>, Yicong Yang <yangyicong@hisilicon.com>,
- linux-pm@vger.kernel.org, x86@kernel.org, kvm@vger.kernel.org,
- linux-acpi@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
- linux-samsung-soc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-tegra@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, imx@lists.linux.dev,
- linux-omap@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20250827023202.10310-1-zhangzihuan@kylinos.cn>
- <20250827023202.10310-2-zhangzihuan@kylinos.cn>
- <70f4c2ce-1dbd-4596-af78-bca1cdbbb581@arm.com>
-From: Zihuan Zhang <zhangzihuan@kylinos.cn>
-In-Reply-To: <70f4c2ce-1dbd-4596-af78-bca1cdbbb581@arm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+	id 1urC4u-0000000EmCt-10HQ;
+	Wed, 27 Aug 2025 09:04:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1756285462;
+	bh=+RpJe2xt313pvzyWmm1FpG9QmaJsYu4M/l2cej6ESFQ=;
+	h=Subject:From:To:Date:In-Reply-To:References:From;
+	b=BYm4kJGYABV9d0yv5RsVER1mkHTkqzdDJMBn5MibYf4CqzzMMNTwJ2TDcKxkUSBpE
+	 Vv9//c8jVzXKNxCN1LWQVju6BWkiMIaxIwy+0NC5RWrCkW4QlwYNxxphTXOJ22ELsm
+	 fB1qs7gwU0S5ZLfQTaYx7fF+5z4wQ0sls8HvbEzDR51btkyoqKx45JaR3ka3D8clc5
+	 CU/5LCboWVyHEbRqUq/PShhhBEqBvL1vWi6xVtZAJK0JchhjyxR5+bt+3losqxisWm
+	 zQzOFhPL6e3DIrUz6u1TIZAQz9SvHFTmCEtntcw2PuRUtv1wVSoS7mpMNStrIadIB1
+	 oAlF6H3fE3ACg==
+Received: from 2a01cb0892f2d600c8f85cf092d4af51.ipv6.abo.wanadoo.fr (2a01cb0892F2D600C8F85cf092D4Af51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: jmassot)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7513D17E0676;
+	Wed, 27 Aug 2025 11:04:21 +0200 (CEST)
+Message-ID: <3e0d30b1d717c8788aa95eb045a034c18e33c88e.camel@collabora.com>
+Subject: Re: [PATCH v2 3/3] arm64: dts: mediatek: mt8395-nio-12l: add
+ support for blue and red LEDs
+From: Julien Massot <julien.massot@collabora.com>
+To: kernel@collabora.com, Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,  Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>,  Louis-Alexis Eyraud
+ <louisalexis.eyraud@collabora.com>, linux-input@vger.kernel.org,
+ linux-kernel@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, 	devicetree@vger.kernel.org
+Date: Wed, 27 Aug 2025 11:04:20 +0200
+In-Reply-To: <20250827-psychic-exclusive-be9758124693@thorsis.com>
+References: <20250826-radxa-nio-12-l-gpio-v2-0-7f18fa3fbfc8@collabora.com>
+	 <20250826-radxa-nio-12-l-gpio-v2-3-7f18fa3fbfc8@collabora.com>
+	 <20250827-psychic-exclusive-be9758124693@thorsis.com>
+Organization: Collabora Ltd.
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250827_015547_767894_6DEE4CF0 
-X-CRM114-Status: GOOD (  19.77  )
+X-CRM114-CacheID: sfid-20250827_020424_433672_2835AE02 
+X-CRM114-Status: GOOD (  20.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,75 +82,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi Alexander,
 
-=E5=9C=A8 2025/8/27 16:30, Ben Horgan =E5=86=99=E9=81=93:
-> Hi Zihuan,
->
-> On 8/27/25 03:31, Zihuan Zhang wrote:
->> Replace the manual cpufreq_cpu_put() with __free(put_cpufreq_policy)
->> annotation for policy references. This reduces the risk of reference
->> counting mistakes and aligns the code with the latest kernel style.
->>
->> No functional change intended.
->>
->> Signed-off-by: Zihuan Zhang <zhangzihuan@kylinos.cn>
->> ---
->>   arch/arm64/kernel/topology.c | 9 +++------
->>   1 file changed, 3 insertions(+), 6 deletions(-)
->>
->> diff --git a/arch/arm64/kernel/topology.c b/arch/arm64/kernel/topology=
-.c
->> index 5d07ee85bdae..e3cb6d54f35b 100644
->> --- a/arch/arm64/kernel/topology.c
->> +++ b/arch/arm64/kernel/topology.c
->> @@ -307,17 +307,16 @@ int arch_freq_get_on_cpu(int cpu)
->>   		 */
->>   		if (!housekeeping_cpu(cpu, HK_TYPE_TICK) ||
->>   		    time_is_before_jiffies(last_update + msecs_to_jiffies(AMU_SAMP=
-LE_EXP_MS))) {
->> -			struct cpufreq_policy *policy =3D cpufreq_cpu_get(cpu);
->> +			struct cpufreq_policy *policy __free(put_cpufreq_policy);
-> Based on the guidance, in include/linux/cleanup.h, I would expect the
-> assignment to be done on this line.
->
-> "...the recommendation is to always define and assign variables in one
->   * statement and not group variable definitions at the top of the
->   * function when __free() is used."
+On Wed, 2025-08-27 at 09:40 +0200, Alexander Dahl wrote:
+> Hello Julien,
+>=20
+> Am Tue, Aug 26, 2025 at 04:01:54PM +0200 schrieb Julien Massot:
+> > The Radxa NIO 12L board has an RGB LED, of which only red and blue
+> > are controllable.
+> >=20
+> > Red and blue LEDs: no need to choose, both are enabled.
+> >=20
+> > Reviewed-by: AngeloGioacchino Del Regno
+> > <angelogioacchino.delregno@collabora.com>
+> > Signed-off-by: Julien Massot <julien.massot@collabora.com>
+> > ---
+> > =C2=A0.../boot/dts/mediatek/mt8395-radxa-nio-12l.dts=C2=A0=C2=A0=C2=A0=
+=C2=A0 | 31
+> > ++++++++++++++++++++++
+> > =C2=A01 file changed, 31 insertions(+)
+> >=20
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
+> > b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
+> > index
+> > fd596e2298285361ad7c2fb828feec598d75a73e..12288ad4d2932b7f78c96c0efe36
+> > 6a046721f919 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
+> > @@ -10,6 +10,7 @@
+> > =C2=A0#include <dt-bindings/gpio/gpio.h>
+> > =C2=A0#include <dt-bindings/input/input.h>
+> > =C2=A0#include <dt-bindings/interrupt-controller/irq.h>
+> > +#include <dt-bindings/leds/common.h>
+> > =C2=A0#include <dt-bindings/pinctrl/mt8195-pinfunc.h>
+> > =C2=A0#include <dt-bindings/regulator/mediatek,mt6360-regulator.h>
+> > =C2=A0#include <dt-bindings/spmi/spmi.h>
+> > @@ -73,6 +74,28 @@ button-volume-up {
+> > =C2=A0		};
+> > =C2=A0	};
+> > =C2=A0
+> > +	gpio-leds {
+> > +		compatible =3D "gpio-leds";
+> > +		pinctrl-0 =3D <&gpio_leds_pins>;
+> > +		pinctrl-names =3D "default";
+> > +
+> > +		/*
+> > +		 * This board has a RGB LED, of which only R and B
+> > +		 * are controllable.
+> > +		 */
+> > +		led-0 {
+> > +			label =3D "rgb-blue";
+> > +			color =3D <LED_COLOR_ID_BLUE>;
+> > +			gpios =3D <&pio 6 GPIO_ACTIVE_HIGH>;
+> > +		};
+> > +
+> > +		led-1 {
+> > +			label =3D "rgb-red";
+> > +			color =3D <LED_COLOR_ID_RED>;
+> > +			gpios =3D <&pio 7 GPIO_ACTIVE_HIGH>;
+> > +		};
+>=20
+> The label property is deprecated, and if I'm not mistaken not
+> recommended for new boards.=C2=A0 Do you have a reason to set it?
+> If so, it might be worth adding in the commit message.
 
+No, I just wasn=E2=80=99t aware of the deprecation, but I can now see
+it in the common LED binding.
+I=E2=80=99ll wait a bit for any other potential reviews and then resend
+the patch without the label. The LED will then appear as 'blue'
+instead of 'rgb-blue' in sysfs.
 
-The reason I split the assignment into multiple lines is because=20
-scripts/checkpatch.pl gave a warning about the line being too long.
-
-But if you think a single-line assignment is better, I will modify it=20
-accordingly.
-
->>   			int ref_cpu;
->>  =20
->> +			policy =3D cpufreq_cpu_get(cpu);
->>   			if (!policy)
->>   				return -EINVAL;
->>  =20
->>   			if (!cpumask_intersects(policy->related_cpus,
->> -						housekeeping_cpumask(HK_TYPE_TICK))) {
->> -				cpufreq_cpu_put(policy);
->> +						housekeeping_cpumask(HK_TYPE_TICK)))
->>   				return -EOPNOTSUPP;
->> -			}
->>  =20
->>   			for_each_cpu_wrap(ref_cpu, policy->cpus, cpu + 1) {
->>   				if (ref_cpu =3D=3D start_cpu) {
->> @@ -329,8 +328,6 @@ int arch_freq_get_on_cpu(int cpu)
->>   					break;
->>   			}
->>  =20
->> -			cpufreq_cpu_put(policy);
->> -
->>   			if (ref_cpu >=3D nr_cpu_ids)
->>   				/* No alternative to pull info from */
->>   				return -EAGAIN;
-> Thanks,
->
-> Ben
->
+Regards,
+Julien
 
