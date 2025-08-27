@@ -4,70 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78024CA0EFF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Aug 2025 11:07:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A3DFCA0FFC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Aug 2025 11:07:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TgYviQ928N44tOhN8cqLF0bpgn7tKCcF4t8AwwoD1xM=; b=Tkgs/fsRkVTFJkSueuXKxnfRKv
-	JB/lb4zixvKWwrOjL1OaQGvgjB/lLifzCwk5lmT+htUBa6l9htkpSmivNvxH4zCqoJL5SJk483yKJ
-	4hk4MswyunUJXIP7I9oYB/QU2RgKzkIoeKUAPUtDpWouNr+gA2+/lB843HTNz9a6ESD1RIBuOej++
-	qIAC2IYwdD7Ehco6E8G1w3rZnqLbKRxI+wipxPtXfu6kNrBNWjibWsNvyRIqJuxAgpP2Ix9oOJx7h
-	f2hM7kC6dw0LVaUw6qQG6ZstCC3WqRibUJlY+1WBDS5DNi06gpf60szNf+KxlMkyGcrQgvMw2Q55Q
-	JyVjjX1g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=C/GiYtVT6cqX6QUZSaJsKPKD/rdfU281D1XLmmUxVLc=; b=qtnbcjfGkthZ8dyTaq6at4lkh7
+	gtsEbKo1dYqwVW0hx/9ISN+X9wPadZP119EY3TTA/9UZMVktwvzHM8tg7zHk25MRDak/k+vYCIJB6
+	ZYiRLe0Fn6tf2cAUbiQX4HfAE0XSr+Ja16CAuM4rx0ntKyqLuvdBpYc6A6znuAF2frRuPDgM4fjSe
+	EUMev6FU6OEUf2YEj8C6/k9EbtZ/QtE8LNkmWR9GLYnKo/OnLW8R7X0aeY6LZPH6c6rAuaBZVMajR
+	RFCIjTLr/+WUTgSbunqk7DBT/uDKtBxZoz4gMB8Ol6/jqnRCs0HouJfH4WwY81rtH9ccG1UiWUeB6
+	qO24EI9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urDzb-0000000F9jz-1qzM;
-	Wed, 27 Aug 2025 11:07:03 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urC4u-0000000EmCt-10HQ;
-	Wed, 27 Aug 2025 09:04:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1756285462;
-	bh=+RpJe2xt313pvzyWmm1FpG9QmaJsYu4M/l2cej6ESFQ=;
-	h=Subject:From:To:Date:In-Reply-To:References:From;
-	b=BYm4kJGYABV9d0yv5RsVER1mkHTkqzdDJMBn5MibYf4CqzzMMNTwJ2TDcKxkUSBpE
-	 Vv9//c8jVzXKNxCN1LWQVju6BWkiMIaxIwy+0NC5RWrCkW4QlwYNxxphTXOJ22ELsm
-	 fB1qs7gwU0S5ZLfQTaYx7fF+5z4wQ0sls8HvbEzDR51btkyoqKx45JaR3ka3D8clc5
-	 CU/5LCboWVyHEbRqUq/PShhhBEqBvL1vWi6xVtZAJK0JchhjyxR5+bt+3losqxisWm
-	 zQzOFhPL6e3DIrUz6u1TIZAQz9SvHFTmCEtntcw2PuRUtv1wVSoS7mpMNStrIadIB1
-	 oAlF6H3fE3ACg==
-Received: from 2a01cb0892f2d600c8f85cf092d4af51.ipv6.abo.wanadoo.fr (2a01cb0892F2D600C8F85cf092D4Af51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: jmassot)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7513D17E0676;
-	Wed, 27 Aug 2025 11:04:21 +0200 (CEST)
-Message-ID: <3e0d30b1d717c8788aa95eb045a034c18e33c88e.camel@collabora.com>
-Subject: Re: [PATCH v2 3/3] arm64: dts: mediatek: mt8395-nio-12l: add
- support for blue and red LEDs
-From: Julien Massot <julien.massot@collabora.com>
-To: kernel@collabora.com, Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>,  Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>,  Louis-Alexis Eyraud
- <louisalexis.eyraud@collabora.com>, linux-input@vger.kernel.org,
- linux-kernel@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, 	devicetree@vger.kernel.org
-Date: Wed, 27 Aug 2025 11:04:20 +0200
-In-Reply-To: <20250827-psychic-exclusive-be9758124693@thorsis.com>
-References: <20250826-radxa-nio-12-l-gpio-v2-0-7f18fa3fbfc8@collabora.com>
-	 <20250826-radxa-nio-12-l-gpio-v2-3-7f18fa3fbfc8@collabora.com>
-	 <20250827-psychic-exclusive-be9758124693@thorsis.com>
-Organization: Collabora Ltd.
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
+	id 1urDzk-0000000F9sU-1x90;
+	Wed, 27 Aug 2025 11:07:12 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1urCCu-0000000Enl3-2ezc;
+	Wed, 27 Aug 2025 09:12:42 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 27EF4153B;
+	Wed, 27 Aug 2025 02:12:31 -0700 (PDT)
+Received: from [10.1.196.46] (e134344.arm.com [10.1.196.46])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 5C3023F738;
+	Wed, 27 Aug 2025 02:12:30 -0700 (PDT)
+Message-ID: <e7e9d8f5-9a4b-4efa-9634-7443ca7af2a6@arm.com>
+Date: Wed, 27 Aug 2025 10:12:28 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 01/18] arm64: topology: Use __free(put_cpufreq_policy)
+ for policy reference
+To: Zihuan Zhang <zhangzihuan@kylinos.cn>,
+ "Rafael J . wysocki" <rafael@kernel.org>,
+ Viresh Kumar <viresh.kumar@linaro.org>,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
+ Sean Christopherson <seanjc@google.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, Thomas Gleixner <tglx@linutronix.de>,
+ Ingo Molnar <mingo@redhat.com>, Borislav Petkov <bp@alien8.de>,
+ Dave Hansen <dave.hansen@linux.intel.com>, Markus Mayer
+ <mmayer@broadcom.com>, Florian Fainelli <florian.fainelli@broadcom.com>,
+ Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>,
+ Madhavan Srinivasan <maddy@linux.ibm.com>,
+ Michael Ellerman <mpe@ellerman.id.au>, Krzysztof Kozlowski
+ <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ Chanwoo Choi <cw00.choi@samsung.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, Tvrtko Ursulin
+ <tursulin@ursulin.net>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>, Daniel Lezcano <daniel.lezcano@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
+ Eduardo Valentin <edubezval@gmail.com>, Keerthy <j-keerthy@ti.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: zhenglifeng <zhenglifeng1@huawei.com>, "H . Peter Anvin" <hpa@zytor.com>,
+ Zhang Rui <rui.zhang@intel.com>, Len Brown <lenb@kernel.org>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Christophe Leroy <christophe.leroy@csgroup.eu>,
+ Lukasz Luba <lukasz.luba@arm.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Beata Michalska <beata.michalska@arm.com>, Fabio Estevam
+ <festevam@gmail.com>, Pavel Machek <pavel@kernel.org>,
+ Sumit Gupta <sumitg@nvidia.com>,
+ Prasanna Kumar T S M <ptsm@linux.microsoft.com>,
+ Sudeep Holla <sudeep.holla@arm.com>, Yicong Yang <yangyicong@hisilicon.com>,
+ linux-pm@vger.kernel.org, x86@kernel.org, kvm@vger.kernel.org,
+ linux-acpi@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
+ linux-samsung-soc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-tegra@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org, imx@lists.linux.dev,
+ linux-omap@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20250827023202.10310-1-zhangzihuan@kylinos.cn>
+ <20250827023202.10310-2-zhangzihuan@kylinos.cn>
+ <70f4c2ce-1dbd-4596-af78-bca1cdbbb581@arm.com>
+ <57016487-0fee-4821-9cd5-d6e5fe80a65d@kylinos.cn>
+From: Ben Horgan <ben.horgan@arm.com>
+Content-Language: en-US
+In-Reply-To: <57016487-0fee-4821-9cd5-d6e5fe80a65d@kylinos.cn>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250827_020424_433672_2835AE02 
-X-CRM114-Status: GOOD (  20.38  )
+X-CRM114-CacheID: sfid-20250827_021240_775054_05AAB9DC 
+X-CRM114-Status: GOOD (  20.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,76 +109,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Alexander,
+Hi Zihuan,
 
-On Wed, 2025-08-27 at 09:40 +0200, Alexander Dahl wrote:
-> Hello Julien,
->=20
-> Am Tue, Aug 26, 2025 at 04:01:54PM +0200 schrieb Julien Massot:
-> > The Radxa NIO 12L board has an RGB LED, of which only red and blue
-> > are controllable.
-> >=20
-> > Red and blue LEDs: no need to choose, both are enabled.
-> >=20
-> > Reviewed-by: AngeloGioacchino Del Regno
-> > <angelogioacchino.delregno@collabora.com>
-> > Signed-off-by: Julien Massot <julien.massot@collabora.com>
-> > ---
-> > =C2=A0.../boot/dts/mediatek/mt8395-radxa-nio-12l.dts=C2=A0=C2=A0=C2=A0=
-=C2=A0 | 31
-> > ++++++++++++++++++++++
-> > =C2=A01 file changed, 31 insertions(+)
-> >=20
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-> > b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-> > index
-> > fd596e2298285361ad7c2fb828feec598d75a73e..12288ad4d2932b7f78c96c0efe36
-> > 6a046721f919 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-> > @@ -10,6 +10,7 @@
-> > =C2=A0#include <dt-bindings/gpio/gpio.h>
-> > =C2=A0#include <dt-bindings/input/input.h>
-> > =C2=A0#include <dt-bindings/interrupt-controller/irq.h>
-> > +#include <dt-bindings/leds/common.h>
-> > =C2=A0#include <dt-bindings/pinctrl/mt8195-pinfunc.h>
-> > =C2=A0#include <dt-bindings/regulator/mediatek,mt6360-regulator.h>
-> > =C2=A0#include <dt-bindings/spmi/spmi.h>
-> > @@ -73,6 +74,28 @@ button-volume-up {
-> > =C2=A0		};
-> > =C2=A0	};
-> > =C2=A0
-> > +	gpio-leds {
-> > +		compatible =3D "gpio-leds";
-> > +		pinctrl-0 =3D <&gpio_leds_pins>;
-> > +		pinctrl-names =3D "default";
-> > +
-> > +		/*
-> > +		 * This board has a RGB LED, of which only R and B
-> > +		 * are controllable.
-> > +		 */
-> > +		led-0 {
-> > +			label =3D "rgb-blue";
-> > +			color =3D <LED_COLOR_ID_BLUE>;
-> > +			gpios =3D <&pio 6 GPIO_ACTIVE_HIGH>;
-> > +		};
-> > +
-> > +		led-1 {
-> > +			label =3D "rgb-red";
-> > +			color =3D <LED_COLOR_ID_RED>;
-> > +			gpios =3D <&pio 7 GPIO_ACTIVE_HIGH>;
-> > +		};
->=20
-> The label property is deprecated, and if I'm not mistaken not
-> recommended for new boards.=C2=A0 Do you have a reason to set it?
-> If so, it might be worth adding in the commit message.
+On 8/27/25 09:55, Zihuan Zhang wrote:
+> Hi,
+> 
+> 在 2025/8/27 16:30, Ben Horgan 写道:
+>> Hi Zihuan,
+>>
+>> On 8/27/25 03:31, Zihuan Zhang wrote:
+>>> Replace the manual cpufreq_cpu_put() with __free(put_cpufreq_policy)
+>>> annotation for policy references. This reduces the risk of reference
+>>> counting mistakes and aligns the code with the latest kernel style.
+>>>
+>>> No functional change intended.
+>>>
+>>> Signed-off-by: Zihuan Zhang <zhangzihuan@kylinos.cn>
+>>> ---
+>>>   arch/arm64/kernel/topology.c | 9 +++------
+>>>   1 file changed, 3 insertions(+), 6 deletions(-)
+>>>
+>>> diff --git a/arch/arm64/kernel/topology.c b/arch/arm64/kernel/topology.c
+>>> index 5d07ee85bdae..e3cb6d54f35b 100644
+>>> --- a/arch/arm64/kernel/topology.c
+>>> +++ b/arch/arm64/kernel/topology.c
+>>> @@ -307,17 +307,16 @@ int arch_freq_get_on_cpu(int cpu)
+>>>            */
+>>>           if (!housekeeping_cpu(cpu, HK_TYPE_TICK) ||
+>>>               time_is_before_jiffies(last_update +
+>>> msecs_to_jiffies(AMU_SAMPLE_EXP_MS))) {
+>>> -            struct cpufreq_policy *policy = cpufreq_cpu_get(cpu);
+>>> +            struct cpufreq_policy *policy __free(put_cpufreq_policy);
+>> Based on the guidance, in include/linux/cleanup.h, I would expect the
+>> assignment to be done on this line.
+>>
+>> "...the recommendation is to always define and assign variables in one
+>>   * statement and not group variable definitions at the top of the
+>>   * function when __free() is used."
+> 
+> 
+> The reason I split the assignment into multiple lines is because
+> scripts/checkpatch.pl gave a warning about the line being too long.
+> 
+> But if you think a single-line assignment is better, I will modify it
+> accordingly.
 
-No, I just wasn=E2=80=99t aware of the deprecation, but I can now see
-it in the common LED binding.
-I=E2=80=99ll wait a bit for any other potential reviews and then resend
-the patch without the label. The LED will then appear as 'blue'
-instead of 'rgb-blue' in sysfs.
+My preference, for what it's worth, would be to keep it one statement
+and split the line after the =.
 
-Regards,
-Julien
+> 
+>>>               int ref_cpu;
+>>>   +            policy = cpufreq_cpu_get(cpu);
+>>>               if (!policy)
+>>>                   return -EINVAL;
+>>>                 if (!cpumask_intersects(policy->related_cpus,
+>>> -                        housekeeping_cpumask(HK_TYPE_TICK))) {
+>>> -                cpufreq_cpu_put(policy);
+>>> +                        housekeeping_cpumask(HK_TYPE_TICK)))
+>>>                   return -EOPNOTSUPP;
+>>> -            }
+>>>                 for_each_cpu_wrap(ref_cpu, policy->cpus, cpu + 1) {
+>>>                   if (ref_cpu == start_cpu) {
+>>> @@ -329,8 +328,6 @@ int arch_freq_get_on_cpu(int cpu)
+>>>                       break;
+>>>               }
+>>>   -            cpufreq_cpu_put(policy);
+>>> -
+>>>               if (ref_cpu >= nr_cpu_ids)
+>>>                   /* No alternative to pull info from */
+>>>                   return -EAGAIN;
+>> Thanks,
+>>
+>> Ben
+>>
+
+Thanks,
+
+Ben
+
 
