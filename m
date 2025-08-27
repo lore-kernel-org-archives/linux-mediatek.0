@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07E58CA0FED
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79581CA0FF2
 	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Aug 2025 02:36:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,44 +12,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9ZjdTtqvCys+15DqtY1sBkwk8yAVD21YKWdYeFE/oxs=; b=HDQO5IJ1os6esBLV44fLgM4Wd9
-	Bqyca+uCiqM00glOYiRZwXP0EWZXiv2+PHB9bZ8oilE+VhR8oj+eeRMUNSBgg6hp51uwvTeeqapjA
-	dQV1twGbG3AsqRKvWq4xNEobmQ6CUcsprrpfJNLp7RWeX9wGp6X4vsomCGReTo2O48qZ21p1fGV4m
-	U3zXAZLVD8USWw4e3d2gUPlFBC9ycdYnbO2tWRJ5mfYfcRojSEhFkIZXcyjCTA+sGaZX5IeDN6PwK
-	XffU7Z2uguxAextWZJl96Ed/Zf98ACQPYWy/4FYImjYY4jBTnN9SKAkFtrKaCQudPF1NacDaL5ZPE
-	PO74Lvnw==;
+	bh=qI/pWWHn+Cmm3IAiINzaDgZFPYfZ84bYukFfz5gPc70=; b=g6yfToPAzI0qQuHpbRJH/OZczg
+	/JHj1zHpU4lhH0CymEoVNZcsSdcZvn/zVoyWvU8i8m1/VRW3oijf3Wa2Y/gIgiwJauizJTkCzzPpI
+	MiFtxlnij8yHbVYdeh5tTdaZFUTOcCGodfmI+JMIq2cGJxL3nYojmEYqwrmgOVb0ZDLcKSjww6zPb
+	Zam+LCVNf5Cd0NR68oputmubfr1rh6ywm2kzx+0r4vbuzXXpfHegReVXG2noKj9ABA8Hj1+j7B3E3
+	qtB5BrPNG/BZ5ciL57WVGCBLIVdJ5qYIn1vPUwGGBbZ2uaNgg7fYUDKn13UTBTr/fy+Ob/GGbrdd6
+	FvpJ6eIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ur61e-0000000DiNX-068v;
+	id 1ur61e-0000000DiNy-1pqx;
 	Wed, 27 Aug 2025 02:36:38 +0000
 Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ur5z9-0000000Dhg9-37Zp;
-	Wed, 27 Aug 2025 02:34:05 +0000
-X-UUID: 47777c0282ee11f0b29709d653e92f7d-20250827
+	id 1ur5zC-0000000Dhgd-3D2S;
+	Wed, 27 Aug 2025 02:34:09 +0000
+X-UUID: 494816fe82ee11f0b29709d653e92f7d-20250827
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.45,REQID:199cecf5-7f01-4d90-bcfb-9944cd47b8c1,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6493067,CLOUDID:f092454a1cef70d4b47ef8bf1194cbca,BulkI
-	D:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|850,TC:nil,Content:0|50,EDM:-3
+X-CID-O-INFO: VERSION:1.1.45,REQID:17f27ccf-aa3b-47ba-9229-8fb68e226aa1,IP:0,U
+	RL:0,TC:0,Content:26,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:26
+X-CID-META: VersionHash:6493067,CLOUDID:f2398c8c5a1aca92091435c050f04d6d,BulkI
+	D:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|850,TC:nil,Content:4|50,EDM:-3
 	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
 	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 47777c0282ee11f0b29709d653e92f7d-20250827
+X-UUID: 494816fe82ee11f0b29709d653e92f7d-20250827
 Received: from mail.kylinos.cn [(10.44.16.175)] by mailgw.kylinos.cn
 	(envelope-from <zhangzihuan@kylinos.cn>)
 	(Generic MTA)
-	with ESMTP id 2138779548; Wed, 27 Aug 2025 10:33:56 +0800
+	with ESMTP id 586798460; Wed, 27 Aug 2025 10:33:59 +0800
 Received: from mail.kylinos.cn (localhost [127.0.0.1])
-	by mail.kylinos.cn (NSMail) with SMTP id BBC82E008FAB;
-	Wed, 27 Aug 2025 10:33:52 +0800 (CST)
-X-ns-mid: postfix-68AE6E90-537935210
+	by mail.kylinos.cn (NSMail) with SMTP id B78F2E008FAB;
+	Wed, 27 Aug 2025 10:33:58 +0800 (CST)
+X-ns-mid: postfix-68AE6E96-41491213
 Received: from localhost.localdomain (unknown [172.25.120.24])
-	by mail.kylinos.cn (NSMail) with ESMTPA id 4A0FFE008FAF;
-	Wed, 27 Aug 2025 10:33:47 +0800 (CST)
+	by mail.kylinos.cn (NSMail) with ESMTPA id C4296E008FAC;
+	Wed, 27 Aug 2025 10:33:52 +0800 (CST)
 From: Zihuan Zhang <zhangzihuan@kylinos.cn>
 To: "Rafael J . wysocki" <rafael@kernel.org>,
 	Viresh Kumar <viresh.kumar@linaro.org>,
@@ -116,17 +116,17 @@ Cc: zhenglifeng <zhenglifeng1@huawei.com>,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Zihuan Zhang <zhangzihuan@kylinos.cn>
-Subject: [PATCH v2 06/18] cpufreq: intel_pstate: Use __free(put_cpufreq_policy) for policy reference
-Date: Wed, 27 Aug 2025 10:31:50 +0800
-Message-Id: <20250827023202.10310-7-zhangzihuan@kylinos.cn>
+Subject: [PATCH v2 07/18] cpufreq: longhaul: Use __free(put_cpufreq_policy) for policy reference
+Date: Wed, 27 Aug 2025 10:31:51 +0800
+Message-Id: <20250827023202.10310-8-zhangzihuan@kylinos.cn>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20250827023202.10310-1-zhangzihuan@kylinos.cn>
 References: <20250827023202.10310-1-zhangzihuan@kylinos.cn>
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250826_193404_080102_03E51566 
-X-CRM114-Status: GOOD (  12.59  )
+X-CRM114-CacheID: sfid-20250826_193407_110648_60744BAE 
+X-CRM114-Status: GOOD (  13.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -149,36 +149,31 @@ No functional change intended.
 
 Signed-off-by: Zihuan Zhang <zhangzihuan@kylinos.cn>
 ---
- drivers/cpufreq/intel_pstate.c | 3 +--
+ drivers/cpufreq/longhaul.c | 3 +--
  1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/cpufreq/intel_pstate.c b/drivers/cpufreq/intel_pstat=
-e.c
-index f366d35c5840..4e7e2990e9a6 100644
---- a/drivers/cpufreq/intel_pstate.c
-+++ b/drivers/cpufreq/intel_pstate.c
-@@ -1698,19 +1698,18 @@ static ssize_t store_no_turbo(struct kobject *a, =
-struct kobj_attribute *b,
- static void update_qos_request(enum freq_qos_req_type type)
+diff --git a/drivers/cpufreq/longhaul.c b/drivers/cpufreq/longhaul.c
+index ba0e08c8486a..ae5596919671 100644
+--- a/drivers/cpufreq/longhaul.c
++++ b/drivers/cpufreq/longhaul.c
+@@ -950,7 +950,7 @@ static int __init longhaul_init(void)
+=20
+ static void __exit longhaul_exit(void)
  {
- 	struct freq_qos_request *req;
--	struct cpufreq_policy *policy;
+-	struct cpufreq_policy *policy =3D cpufreq_cpu_get(0);
++	struct cpufreq_policy *policy __free(put_cpufreq_policy) =3D cpufreq_cp=
+u_get(0);
  	int i;
 =20
- 	for_each_possible_cpu(i) {
- 		struct cpudata *cpu =3D all_cpu_data[i];
- 		unsigned int freq, perf_pct;
-+		struct cpufreq_policy *policy __free(put_cpufreq_policy);
+ 	for (i =3D 0; i < numscales; i++) {
+@@ -968,7 +968,6 @@ static void __exit longhaul_exit(void)
+ 		}
+ 	}
 =20
- 		policy =3D cpufreq_cpu_get(i);
- 		if (!policy)
- 			continue;
-=20
- 		req =3D policy->driver_data;
--		cpufreq_cpu_put(policy);
-=20
- 		if (!req)
- 			continue;
+-	cpufreq_cpu_put(policy);
+ 	cpufreq_unregister_driver(&longhaul_driver);
+ 	kfree(longhaul_table);
+ }
 --=20
 2.25.1
 
