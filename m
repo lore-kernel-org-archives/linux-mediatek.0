@@ -4,100 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC89ACA0FFB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Aug 2025 15:49:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBD43CA0EFF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Aug 2025 15:49:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Z3y4v46ZF7X8g5ThZrHBlGjNn21i+MtQxtbp82F3kG8=; b=hTqojENT1YKgeKjolJtLqodu6U
-	aNNPevt9eBg4D/h9GXT1gcnmRsGHVsTWizePl5UKtbbar21qqc3ry5TsW2IjwAdQG9D7HpuVdM7t7
-	A4lLf1ysJFwPkbxd8HpEzMaioxyev7zX6UNtGftc9umxhnxIACTdbB+7hpnVjGlRpvlZIChBXfIoT
-	hj4cIB4FMazOFzzZIlDYNjz+UhFf3DJYK2455Iv+fD1Z9uEdumvKtuH5LrLxOQhXn8M2+w1L2Xo52
-	xEz1Mhv3j71OJqEDbMv/U4DI0IBrzA4RIgoyLFQ1z4wvb/UvRqKG9ZpHT6Yx97QT7cV5p1ZR8O/y/
-	3EpZ9yVw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=o7gN4HCOTOSu/tvDBFJRQihVvFALYFD44QL2+D+TcO4=; b=2WruBUtW46plHTQS/YQdIAUli5
+	Ml0y3Z/jStQankbh2fGA3Fl5TsdCOONdR1ZKmte2LyFR9/PtSVOYz2nD549fC5n9+KnQJN1somiqd
+	EdmhyA4LOJVoPz64KYY95ObiLON6FzlOje9xbSOYk4E+MVPMbcsOON8zt1XAcXl5avEGO+RN2lAcM
+	DlwsvoRRQtZNcszSlWfPY7AyefOvZ3BBx89m7bkluFm/zuXhur/mlSCy5cdUgZ65KWRtRmlTqpPR/
+	vVJyQEmUmtRX2MkgpxaJHV0dk8hdqdPx0DUDAWJLqIXE2UopXGO4upfEZvSCKpTtgPecU2qAa5Gu4
+	QSyGO5nQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urIOd-0000000FyDu-3Hi7;
-	Wed, 27 Aug 2025 15:49:11 +0000
-Received: from mail-qk1-x729.google.com ([2607:f8b0:4864:20::729])
+	id 1urIOj-0000000FyNf-1efs;
+	Wed, 27 Aug 2025 15:49:17 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urEOj-0000000FHLO-2geU
-	for linux-mediatek@lists.infradead.org;
-	Wed, 27 Aug 2025 11:33:04 +0000
-Received: by mail-qk1-x729.google.com with SMTP id af79cd13be357-7f84c17078fso26521085a.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 27 Aug 2025 04:33:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar.org; s=google; t=1756294380; x=1756899180; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Z3y4v46ZF7X8g5ThZrHBlGjNn21i+MtQxtbp82F3kG8=;
-        b=GkE7Dpsl4vr1hDlHn/niIKUvJaFnqcP/G6axC1q3Ww/enhpiZ+h12Zg8Wx3jBBRp3m
-         LcvRo6dJyXyL5wro25msKbddDPBfwHt9/wRY3NN1PMWDVYO6Q920lrvFI2hvTxwDfFyQ
-         +TBhY4qffTiDQsmjB64TLm0RVUwqkD8POG7dPe42B7YkG3plYqiEZqO6Bsg4Y9gmnRY2
-         wXunvoTKXbY9Y0Te4cOPADuNi4Zj2kepQmp8oLOvxanDxV9Ll0kSaTahZiR57g5BmiBR
-         VduRV7aw3K8erB8SVkzONyJLqSDKw2Rh2aM/OX2U9sa+vUWGibpjv04Gj+nDLqr226IB
-         MCxw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756294380; x=1756899180;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Z3y4v46ZF7X8g5ThZrHBlGjNn21i+MtQxtbp82F3kG8=;
-        b=hMELpYla7Am4gaje8Oxc0JiT2ntfquAxwrqseMvJOnRet0blJ8xKnjFUHt87Bd8eH7
-         +f2wInRwk3s0msEWYyxDP8qRQ4efTfWZZVzGEj10vCf1LSKZNnlt64thwr7qBavbzhT2
-         neug8jz698rFQhehihc/paBRctdve4pthEkyJ/C644FX1c/cWYseGy80JC2KHI/I9z1d
-         8+R6XogIXXYZ3vzpD/OhpnNoBcguMnWOGJhuuFtCd++/ZqqXdhU0Y5Yw4c9cAJ6+zp+4
-         S0MF+dysKAb0WYeQhw3qRH3kyFZAGGBZK8FIxM6r64s5mDGlF2dUywIqFN3x9/P0x0bY
-         NJOg==
-X-Forwarded-Encrypted: i=1; AJvYcCVpbU/goatK7nq2diCdvBMXMFAT0aXmR/Wb3GReo+hNajtVvV6WIbDPwijo0LzuaK9CAFFgokexK6VjdThocw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwQfYcfeZxBJBt8I6YCJJOcm5iGGStwvYjr9TLr23Gz1OcfTbGt
-	ZlZkjMVaSoynZkzIy6xS8hvui8c/DW1OBz0Sjj0lkvAT68KYaFqPSzTcO/8OeIe8K0IfDuc/Ota
-	D61i0045ceBwMguAg3CLSmZRBpzPAF0BOTxPNTaisYw==
-X-Gm-Gg: ASbGncuT6u2SjQ2p5BeAET1Eo/ppEik5ivMQUuFh1J36p5GBOVPDaiNLCOXWXBO2Iqa
-	PeXaW5MmbfeyeqllJFuAzqy8hxX2GpE8hfNhFscTRAM/4WQfFhUlrGnPwI9QPf4kNSu5GjyI0Lo
-	vgwVJFgoOU9r2wmMW5653ryABBc283BD29HO/RQmk57NhlwucBZaCZOUz9YtIosMdGZrrVYvOvp
-	5PdCRHm1QaEF3S0
-X-Google-Smtp-Source: AGHT+IGmmuxWMn1RQng0MqU7LfWDmGXD9wRFwAweLJvIB7bsSHwPntqlQ+JKaDysNEyaOvC876Q504deR3IuVc5pgao=
-X-Received: by 2002:a05:620a:2804:b0:7e8:1718:daf4 with SMTP id
- af79cd13be357-7ea10fc7a07mr2104471485a.16.1756294379779; Wed, 27 Aug 2025
- 04:32:59 -0700 (PDT)
+	id 1urEVk-0000000FInX-2CBs;
+	Wed, 27 Aug 2025 11:40:17 +0000
+X-UUID: 9787ad56833a11f09f706fa2197c6ceb-20250827
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=o7gN4HCOTOSu/tvDBFJRQihVvFALYFD44QL2+D+TcO4=;
+	b=GveORJjfWs4y6DB6c90SMymEJ/HZ/ar7sExzfUh2huQwtHPtu2pKd1MwFrRLnJc/zWteKco1hQZ2tvh9n9CJJAigwtlKCwXS5LHL99qvylGqeGOfkSqRkc/syu4kYH5jzDC7KqQHiLwdx68Ccgf6lYomSF5KYlyINyxIB0TApwI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.3,REQID:14b74497-8970-4fdd-ad7e-40f330e8dd5a,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:f1326cf,CLOUDID:0a2fab6d-c2f4-47a6-876f-59a53e9ecc6e,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:-5,Content:0|15|50,EDM:
+	-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,
+	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 9787ad56833a11f09f706fa2197c6ceb-20250827
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1298965569; Wed, 27 Aug 2025 04:40:12 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Wed, 27 Aug 2025 19:40:07 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Wed, 27 Aug 2025 19:40:07 +0800
+From: Jason-JH Lin <jason-jh.lin@mediatek.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Jassi Brar <jassisinghbrar@gmail.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>
+Subject: [PATCH v7 02/20] mailbox: mtk-cmdq: Refine DMA address handling for the command buffer
+Date: Wed, 27 Aug 2025 19:37:34 +0800
+Message-ID: <20250827114006.3310175-3-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20250827114006.3310175-1-jason-jh.lin@mediatek.com>
+References: <20250827114006.3310175-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
-References: <20250822-mtk-post-blend-color-pipeline-v1-0-a9446d4aca82@collabora.com>
- <20250822-mtk-post-blend-color-pipeline-v1-1-a9446d4aca82@collabora.com> <DCD62EFHFCEB.XEOPUPKZQ5XW@redhat.com>
-In-Reply-To: <DCD62EFHFCEB.XEOPUPKZQ5XW@redhat.com>
-From: Daniel Stone <daniel@fooishbar.org>
-Date: Wed, 27 Aug 2025 12:32:48 +0100
-X-Gm-Features: Ac12FXz3D5zUTg3Df1XjwtCpaINdk3SCVFUs0YESiGpt04Vrw7Xa6CeoI-p4LK4
-Message-ID: <CAPj87rMDvaj28+h9fHkH+bZYH43N-dS_XHu9eomDphjXmPqArA@mail.gmail.com>
-Subject: Re: [PATCH RFC 1/5] drm: Support post-blend color pipeline API
-To: Sebastian Wick <sebastian.wick@redhat.com>
-Cc: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Alex Hung <alex.hung@amd.com>, 
-	wayland-devel@lists.freedesktop.org, harry.wentland@amd.com, leo.liu@amd.com, 
-	ville.syrjala@linux.intel.com, pekka.paalanen@collabora.com, 
-	contact@emersion.fr, mwen@igalia.com, jadahl@redhat.com, 
-	shashank.sharma@amd.com, agoins@nvidia.com, joshua@froggi.es, 
-	mdaenzer@redhat.com, aleixpol@kde.org, xaver.hugl@gmail.com, 
-	victoria@system76.com, uma.shankar@intel.com, quic_naseer@quicinc.com, 
-	quic_cbraga@quicinc.com, quic_abhinavk@quicinc.com, marcan@marcan.st, 
-	Liviu.Dudau@arm.com, sashamcintosh@google.com, 
-	chaitanya.kumar.borah@intel.com, louis.chauvet@bootlin.com, mcanal@igalia.com, 
-	kernel@collabora.com, daniels@collabora.com, dri-devel@lists.freedesktop.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, Simona Vetter <simona.vetter@ffwll.ch>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250827_043301_708348_217BA7D3 
-X-CRM114-Status: GOOD (  20.14  )
+X-CRM114-CacheID: sfid-20250827_044016_576994_B11C3FAB 
+X-CRM114-Status: GOOD (  21.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,65 +84,163 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Moudy Ho <moudy.ho@mediatek.com>, Xiandong Wang <xiandong.wang@mediatek.com>, Jason-JH Lin <jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Nicolas Dufresne <nicolas@ndufresne.ca>, Project_Global_Chrome_Upstream_Group@mediatek.com, Paul-PL Chen <paul-pl.chen@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Sirius Wang <sirius.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hey,
+GCE can only fetch the command buffer address from a 32-bit register.
+Some SoCs support a 35-bit command buffer address for GCE, which
+requires a right shift of 3 bits before setting the address into
+the 32-bit register. A comment has been added to the header of
+cmdq_get_shift_pa() to explain this requirement.
 
-On Wed, 27 Aug 2025 at 12:17, Sebastian Wick <sebastian.wick@redhat.com> wr=
-ote:
-> On Fri Aug 22, 2025 at 8:36 PM CEST, N=C3=ADcolas F. R. A. Prado wrote:
-> > Introduce support for a post-blend color pipeline API analogous to the
-> > pre-blend color pipeline API. While the pre-blend color pipeline was
-> > configured through a COLOR_PIPELINE property attached to a drm_plane,
-> > the post-blend color pipeline is configured through a COLOR_PIPELINE
-> > property on the drm_crtc.
-> >
-> > Since colorops can now be attached to either a drm_plane or a drm_crtc,
-> > rework the helpers to account for both cases.
-> >
-> > Also introduce a new cap, DRM_CLIENT_CAP_POST_BLEND_COLOR_PIPELINE, to
-> > enable support for post-blend color pipelines, and prevent the now
-> > legacy GAMMA_LUT, DEGAMMA_LUT, GAMMA_LUT_SIZE and CTM properties from
-> > being exposed.
->
-> Please note that you'll also have to deprecate the semi-standard
-> Broadcast RGB property. It serves two purposes at once: it changes the
-> values between the color range (similar to COLOR_RANGE but at the other
-> end) and informats the sink of the range as well.
->
-> So the post blending color pipeline will need something like an inverse
-> COLOR_RANGE op.
->
-> We will also need a new connector property where user space can select
-> the color range, which does not change the pixel values, and only
-> exposes options that can be achieved (default sink behavior, full range
-> infoframe, limited range infoframe).
+To prevent the GCE command buffer address from being DMA mapped beyond
+its supported bit range, the DMA bit mask for the device is set during
+initialization.
 
-As a note to others, the follow-up is on the 'pixel_encoding' property
-thread here:
-https://lore.kernel.org/all/DCD5VIFRKFB9.1KHIZI3ASID2I@redhat.com/
+Additionally, to ensure the correct shift is applied when setting or
+reading the register that stores the GCE command buffer address,
+new APIs, cmdq_reg_shift_addr() and cmdq_reg_revert_addr(), have been
+introduced for consistent operations on this register.
 
-I think we should keep discussion of those properties there. :)
+The variable type for the command buffer address has been standardized
+to dma_addr_t to prevent handling issues caused by type mismatches.
 
-Also strongly related is the proposal to add range/encoding properties
-to writeback connectors; analagous to the inbound properties:
-https://lore.kernel.org/all/20250813170542.331206-1-robert.mader@collabora.=
-com/
+Fixes: 0858fde496f8 ("mailbox: cmdq: variablize address shift in platform")
+Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
+---
+ drivers/mailbox/mtk-cmdq-mailbox.c       | 43 ++++++++++++++++--------
+ include/linux/mailbox/mtk-cmdq-mailbox.h | 10 ++++++
+ 2 files changed, 39 insertions(+), 14 deletions(-)
 
-I've talked myself around into thinking that the writeback-connector
-property is better than trying to use colorops to do the transform. On
-the hardware I've seen, whilst the CRTC output pipeline does have
-colour-transform properties, the final yard of the encoding (YUV/RGB,
-full/limited range, primaries, etc) is in fact a per-connector
-property, so I think it makes more sense there, as that allows
-usecases like RGB display output whilst streaming to YUV writeback so
-you can push it directly into an encoder without an intermediate
-RGB->YUV conversion step. But again, I think conversation about that
-would be better on that thread rather than here.
+diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+index 532929916e99..a60486cbb533 100644
+--- a/drivers/mailbox/mtk-cmdq-mailbox.c
++++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+@@ -92,6 +92,16 @@ struct gce_plat {
+ 	u32 gce_num;
+ };
+ 
++static inline u32 cmdq_reg_shift_addr(dma_addr_t addr, const struct gce_plat *pdata)
++{
++	return (addr >> pdata->shift);
++}
++
++static inline dma_addr_t cmdq_reg_revert_addr(u32 addr, const struct gce_plat *pdata)
++{
++	return ((dma_addr_t)addr << pdata->shift);
++}
++
+ u8 cmdq_get_shift_pa(struct mbox_chan *chan)
+ {
+ 	struct cmdq *cmdq = container_of(chan->mbox, struct cmdq, mbox);
+@@ -188,13 +198,12 @@ static void cmdq_task_insert_into_thread(struct cmdq_task *task)
+ 	struct cmdq_task *prev_task = list_last_entry(
+ 			&thread->task_busy_list, typeof(*task), list_entry);
+ 	u64 *prev_task_base = prev_task->pkt->va_base;
++	u32 shift_addr = cmdq_reg_shift_addr(task->pa_base, task->cmdq->pdata);
+ 
+ 	/* let previous task jump to this task */
+ 	dma_sync_single_for_cpu(dev, prev_task->pa_base,
+ 				prev_task->pkt->cmd_buf_size, DMA_TO_DEVICE);
+-	prev_task_base[CMDQ_NUM_CMD(prev_task->pkt) - 1] =
+-		(u64)CMDQ_JUMP_BY_PA << 32 |
+-		(task->pa_base >> task->cmdq->pdata->shift);
++	prev_task_base[CMDQ_NUM_CMD(prev_task->pkt) - 1] = (u64)CMDQ_JUMP_BY_PA << 32 | shift_addr;
+ 	dma_sync_single_for_device(dev, prev_task->pa_base,
+ 				   prev_task->pkt->cmd_buf_size, DMA_TO_DEVICE);
+ 
+@@ -237,7 +246,8 @@ static void cmdq_thread_irq_handler(struct cmdq *cmdq,
+ 				    struct cmdq_thread *thread)
+ {
+ 	struct cmdq_task *task, *tmp, *curr_task = NULL;
+-	u32 curr_pa, irq_flag, task_end_pa;
++	u32 irq_flag, shift_addr;
++	dma_addr_t curr_pa, task_end_pa;
+ 	bool err;
+ 
+ 	irq_flag = readl(thread->base + CMDQ_THR_IRQ_STATUS);
+@@ -259,7 +269,8 @@ static void cmdq_thread_irq_handler(struct cmdq *cmdq,
+ 	else
+ 		return;
+ 
+-	curr_pa = readl(thread->base + CMDQ_THR_CURR_ADDR) << cmdq->pdata->shift;
++	shift_addr = readl(thread->base + CMDQ_THR_CURR_ADDR);
++	curr_pa = cmdq_reg_revert_addr(shift_addr, cmdq->pdata);
+ 
+ 	list_for_each_entry_safe(task, tmp, &thread->task_busy_list,
+ 				 list_entry) {
+@@ -378,7 +389,8 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
+ 	struct cmdq_thread *thread = (struct cmdq_thread *)chan->con_priv;
+ 	struct cmdq *cmdq = dev_get_drvdata(chan->mbox->dev);
+ 	struct cmdq_task *task;
+-	unsigned long curr_pa, end_pa;
++	u32 shift_addr;
++	dma_addr_t curr_pa, end_pa;
+ 	int ret;
+ 
+ 	/* Client should not flush new tasks if suspended. */
+@@ -409,20 +421,20 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
+ 		 */
+ 		WARN_ON(cmdq_thread_reset(cmdq, thread) < 0);
+ 
+-		writel(task->pa_base >> cmdq->pdata->shift,
+-		       thread->base + CMDQ_THR_CURR_ADDR);
+-		writel((task->pa_base + pkt->cmd_buf_size) >> cmdq->pdata->shift,
+-		       thread->base + CMDQ_THR_END_ADDR);
++		shift_addr = cmdq_reg_shift_addr(task->pa_base, cmdq->pdata);
++		writel(shift_addr, thread->base + CMDQ_THR_CURR_ADDR);
++		shift_addr = cmdq_reg_shift_addr(task->pa_base + pkt->cmd_buf_size, cmdq->pdata);
++		writel(shift_addr, thread->base + CMDQ_THR_END_ADDR);
+ 
+ 		writel(thread->priority, thread->base + CMDQ_THR_PRIORITY);
+ 		writel(CMDQ_THR_IRQ_EN, thread->base + CMDQ_THR_IRQ_ENABLE);
+ 		writel(CMDQ_THR_ENABLED, thread->base + CMDQ_THR_ENABLE_TASK);
+ 	} else {
+ 		WARN_ON(cmdq_thread_suspend(cmdq, thread) < 0);
+-		curr_pa = readl(thread->base + CMDQ_THR_CURR_ADDR) <<
+-			cmdq->pdata->shift;
+-		end_pa = readl(thread->base + CMDQ_THR_END_ADDR) <<
+-			cmdq->pdata->shift;
++		shift_addr = readl(thread->base + CMDQ_THR_CURR_ADDR);
++		curr_pa = cmdq_reg_revert_addr(shift_addr, cmdq->pdata);
++		shift_addr = readl(thread->base + CMDQ_THR_END_ADDR);
++		end_pa = cmdq_reg_revert_addr(shift_addr, cmdq->pdata);
+ 		/* check boundary */
+ 		if (curr_pa == end_pa - CMDQ_INST_SIZE ||
+ 		    curr_pa == end_pa) {
+@@ -656,6 +668,9 @@ static int cmdq_probe(struct platform_device *pdev)
+ 	if (err)
+ 		return err;
+ 
++	dma_set_coherent_mask(dev,
++			      DMA_BIT_MASK(sizeof(u32) * BITS_PER_BYTE + cmdq->pdata->shift));
++
+ 	cmdq->mbox.dev = dev;
+ 	cmdq->mbox.chans = devm_kcalloc(dev, cmdq->pdata->thread_nr,
+ 					sizeof(*cmdq->mbox.chans), GFP_KERNEL);
+diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
+index 4c1a91b07de3..e1555e06e7e5 100644
+--- a/include/linux/mailbox/mtk-cmdq-mailbox.h
++++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
+@@ -77,6 +77,16 @@ struct cmdq_pkt {
+ 	size_t			buf_size; /* real buffer size */
+ };
+ 
++/**
++ * cmdq_get_shift_pa() - get the shift bits of physical address
++ * @chan: mailbox channel
++ *
++ * GCE can only fetch the command buffer address from a 32-bit register.
++ * Some SOCs support more than 32-bit command buffer address for GCE, which
++ * requires some shift bits to make the address fit into the 32-bit register.
++ *
++ * Return: the shift bits of physical address
++ */
+ u8 cmdq_get_shift_pa(struct mbox_chan *chan);
+ 
+ #endif /* __MTK_CMDQ_MAILBOX_H__ */
+-- 
+2.43.0
 
-Thanks!
-
-Cheers,
-Daniel
 
