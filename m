@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71129CA0FED
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Aug 2025 02:36:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C27ECA0FFE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Aug 2025 02:36:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cQFcyDClp2Xojl5zD8SW20AjYM8jrhwNxSOfu4PzWw0=; b=RaNea0ODk4FbIIgxhv8Q6CGRr4
-	adMGs4QNZ6XlrcEjxG1Ffe1HHkBoXREyFe1AhaAuvx9G2K5DAJa/cQpyG86tcBSPCcYRgU08/L00U
-	MzK001img3SoHBAmxGvE6G7/zFXDhUQCTbYzqlhDMfvS2vV8bdaL+T/uk1Wr5IhFR7CjB2a7+kI5b
-	JGvg7EzhuC16+wlI7WiDhTnwQhCR6usSlaxvI2v7DDJXGGSxuh++z7XeR+ikEPaVYkUMKpImza9yZ
-	WCB06iSgFgsQkppUUte7WcX4ozjeZlAS5xQsMi4M7n+1DwbZ/wmmmpPzSkc1uRqIdekDaDJEaJlJU
-	nscp6MDA==;
+	bh=QMR6JEvBGaPocJ9nGGSECK6k0MgjDl2ctzZmWMWzxVg=; b=nIzW7otG+S4vcJZD92PLz5MVh0
+	BaoJg7OwbHNuuLX2M8OqzJ6qj0jLwakc2mJC9SNIDoIPmEiKmej+c4yLIAkm+tWpAI6o6+c5DKOXz
+	aKfFuUDuELMOwiZIfnaYb8A+s6zWBA4gEGG+h5gJEHK22wH5+0cKCSSt50Zftj2QxLSPoBFb2Q64X
+	OV1z/zIcNxPuIgye+yN8nY44W76jXT4RRWDsB07+w9keTOyPF61pt75PUMbzAeweL2pYhl33ZgzUc
+	D5ojACpcswuUD/WubuBwBWGi+uQ4N+kHp+EfF4W58Kb+xIpseuhLY0MPDBPQvU8ZuMgknijZzJS18
+	/ePYyO7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ur61g-0000000DiPz-0HBN;
-	Wed, 27 Aug 2025 02:36:40 +0000
+	id 1ur61h-0000000DiS0-0EDo;
+	Wed, 27 Aug 2025 02:36:41 +0000
 Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ur5za-0000000Dhpp-3i67;
-	Wed, 27 Aug 2025 02:34:32 +0000
-X-UUID: 576dcd6482ee11f0b29709d653e92f7d-20250827
+	id 1ur5zq-0000000Dhuw-3EjT;
+	Wed, 27 Aug 2025 02:34:48 +0000
+X-UUID: 60e6774282ee11f0b29709d653e92f7d-20250827
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.45,REQID:18f8ffd4-d9a9-4408-aab5-c35097565dc8,IP:0,U
-	RL:0,TC:0,Content:32,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:32
-X-CID-META: VersionHash:6493067,CLOUDID:2dbac917d42042bb9e9a6bb17c01f6f1,BulkI
-	D:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|850,TC:nil,Content:4|50,EDM:-3
+X-CID-O-INFO: VERSION:1.1.45,REQID:1915f481-bedc-4d91-af15-505a74d14b94,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6493067,CLOUDID:51706333029b611e5b79c72fb179c529,BulkI
+	D:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|850,TC:nil,Content:0|50,EDM:-3
 	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
 	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 576dcd6482ee11f0b29709d653e92f7d-20250827
+X-UUID: 60e6774282ee11f0b29709d653e92f7d-20250827
 Received: from mail.kylinos.cn [(10.44.16.175)] by mailgw.kylinos.cn
 	(envelope-from <zhangzihuan@kylinos.cn>)
 	(Generic MTA)
-	with ESMTP id 2130677979; Wed, 27 Aug 2025 10:34:22 +0800
+	with ESMTP id 2025348349; Wed, 27 Aug 2025 10:34:38 +0800
 Received: from mail.kylinos.cn (localhost [127.0.0.1])
-	by mail.kylinos.cn (NSMail) with SMTP id 790E8E008FAC;
-	Wed, 27 Aug 2025 10:34:22 +0800 (CST)
-X-ns-mid: postfix-68AE6EAD-937581218
+	by mail.kylinos.cn (NSMail) with SMTP id 624CFE008FAE;
+	Wed, 27 Aug 2025 10:34:38 +0800 (CST)
+X-ns-mid: postfix-68AE6EBE-218835221
 Received: from localhost.localdomain (unknown [172.25.120.24])
-	by mail.kylinos.cn (NSMail) with ESMTPA id B441EE008FAC;
-	Wed, 27 Aug 2025 10:34:16 +0800 (CST)
+	by mail.kylinos.cn (NSMail) with ESMTPA id E7FCBE008FAF;
+	Wed, 27 Aug 2025 10:34:27 +0800 (CST)
 From: Zihuan Zhang <zhangzihuan@kylinos.cn>
 To: "Rafael J . wysocki" <rafael@kernel.org>,
 	Viresh Kumar <viresh.kumar@linaro.org>,
@@ -116,17 +116,17 @@ Cc: zhenglifeng <zhenglifeng1@huawei.com>,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Zihuan Zhang <zhangzihuan@kylinos.cn>
-Subject: [PATCH v2 11/18] cpufreq: tegra186: Use __free(put_cpufreq_policy) for policy reference
-Date: Wed, 27 Aug 2025 10:31:55 +0800
-Message-Id: <20250827023202.10310-12-zhangzihuan@kylinos.cn>
+Subject: [PATCH v2 13/18] drm/i915: Use __free(put_cpufreq_policy) for policy reference
+Date: Wed, 27 Aug 2025 10:31:57 +0800
+Message-Id: <20250827023202.10310-14-zhangzihuan@kylinos.cn>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20250827023202.10310-1-zhangzihuan@kylinos.cn>
 References: <20250827023202.10310-1-zhangzihuan@kylinos.cn>
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250826_193431_240578_76D49DCD 
-X-CRM114-Status: GOOD (  12.47  )
+X-CRM114-CacheID: sfid-20250826_193447_104748_CB39B5B7 
+X-CRM114-Status: GOOD (  13.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -149,33 +149,30 @@ No functional change intended.
 
 Signed-off-by: Zihuan Zhang <zhangzihuan@kylinos.cn>
 ---
- drivers/cpufreq/tegra186-cpufreq.c | 3 +--
+ drivers/gpu/drm/i915/gt/intel_llc.c | 3 +--
  1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/cpufreq/tegra186-cpufreq.c b/drivers/cpufreq/tegra18=
-6-cpufreq.c
-index cbabb726c664..4d71e262a729 100644
---- a/drivers/cpufreq/tegra186-cpufreq.c
-+++ b/drivers/cpufreq/tegra186-cpufreq.c
-@@ -105,7 +105,7 @@ static unsigned int tegra186_cpufreq_get(unsigned int=
- cpu)
+diff --git a/drivers/gpu/drm/i915/gt/intel_llc.c b/drivers/gpu/drm/i915/g=
+t/intel_llc.c
+index 1d19c073ba2e..53cef2ab133d 100644
+--- a/drivers/gpu/drm/i915/gt/intel_llc.c
++++ b/drivers/gpu/drm/i915/gt/intel_llc.c
+@@ -29,13 +29,12 @@ static struct intel_gt *llc_to_gt(struct intel_llc *l=
+lc)
+=20
+ static unsigned int cpu_max_MHz(void)
  {
- 	struct tegra186_cpufreq_data *data =3D cpufreq_get_driver_data();
- 	struct tegra186_cpufreq_cluster *cluster;
 -	struct cpufreq_policy *policy;
 +	struct cpufreq_policy *policy __free(put_cpufreq_policy);
- 	unsigned int edvd_offset, cluster_id;
- 	u32 ndiv;
+ 	unsigned int max_khz;
 =20
-@@ -117,7 +117,6 @@ static unsigned int tegra186_cpufreq_get(unsigned int=
- cpu)
- 	ndiv =3D readl(data->regs + edvd_offset) & EDVD_CORE_VOLT_FREQ_F_MASK;
- 	cluster_id =3D data->cpus[policy->cpu].bpmp_cluster_id;
- 	cluster =3D &data->clusters[cluster_id];
--	cpufreq_cpu_put(policy);
-=20
- 	return (cluster->ref_clk_khz * ndiv) / cluster->div;
- }
+ 	policy =3D cpufreq_cpu_get(0);
+ 	if (policy) {
+ 		max_khz =3D policy->cpuinfo.max_freq;
+-		cpufreq_cpu_put(policy);
+ 	} else {
+ 		/*
+ 		 * Default to measured freq if none found, PCU will ensure we
 --=20
 2.25.1
 
