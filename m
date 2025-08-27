@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79581CA0FF2
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E62E6CA0FF9
 	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Aug 2025 02:36:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,44 +12,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qI/pWWHn+Cmm3IAiINzaDgZFPYfZ84bYukFfz5gPc70=; b=g6yfToPAzI0qQuHpbRJH/OZczg
-	/JHj1zHpU4lhH0CymEoVNZcsSdcZvn/zVoyWvU8i8m1/VRW3oijf3Wa2Y/gIgiwJauizJTkCzzPpI
-	MiFtxlnij8yHbVYdeh5tTdaZFUTOcCGodfmI+JMIq2cGJxL3nYojmEYqwrmgOVb0ZDLcKSjww6zPb
-	Zam+LCVNf5Cd0NR68oputmubfr1rh6ywm2kzx+0r4vbuzXXpfHegReVXG2noKj9ABA8Hj1+j7B3E3
-	qtB5BrPNG/BZ5ciL57WVGCBLIVdJ5qYIn1vPUwGGBbZ2uaNgg7fYUDKn13UTBTr/fy+Ob/GGbrdd6
-	FvpJ6eIw==;
+	bh=2PhEY5vz9WbP3IVhv6hxI4wdJLsCjKGrO5CPEBmjKVs=; b=v116J/vacl6mYqf26KEekwz2+I
+	Gj38RUrM00SfDnTNeeWIzA/FYI0B7/5oBmCL2CtQS9WcwLtx3jbBpnWrU4oSVl3k11DTu/tawEX3j
+	3iA6a6q4XYG+8INuU57cdtKlqC336LQd+TqXWVtOFiWncJg0KRbNYAEtSeHwiN5MGi84ehx84MrsY
+	/7t/3y9Ji6v2sZNOH5OFPQtrHWaoOH4OgPiX8DCW2n3ivXm17KF4idA8Kaci4Mh4+iytQJItmansq
+	fSmTrT3K+UmpuPJgFiRrhSLifetZwuPUkxLdspDjHNon5M+M5azbNo4KbAfNoJsMaTMO2GxANfhKH
+	cd9MeM6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ur61e-0000000DiNy-1pqx;
-	Wed, 27 Aug 2025 02:36:38 +0000
+	id 1ur61f-0000000DiOS-06rx;
+	Wed, 27 Aug 2025 02:36:39 +0000
 Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ur5zC-0000000Dhgd-3D2S;
-	Wed, 27 Aug 2025 02:34:09 +0000
-X-UUID: 494816fe82ee11f0b29709d653e92f7d-20250827
+	id 1ur5zI-0000000Dhjm-3826;
+	Wed, 27 Aug 2025 02:34:14 +0000
+X-UUID: 4cba262482ee11f0b29709d653e92f7d-20250827
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.45,REQID:17f27ccf-aa3b-47ba-9229-8fb68e226aa1,IP:0,U
+X-CID-O-INFO: VERSION:1.1.45,REQID:8c4a9b0a-7fa5-4323-a2fa-f8947f898138,IP:0,U
 	RL:0,TC:0,Content:26,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
 	:release,TS:26
-X-CID-META: VersionHash:6493067,CLOUDID:f2398c8c5a1aca92091435c050f04d6d,BulkI
+X-CID-META: VersionHash:6493067,CLOUDID:da8ba8d81ee2ef9aab28dbb7c0b96569,BulkI
 	D:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|850,TC:nil,Content:4|50,EDM:-3
 	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
 	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 494816fe82ee11f0b29709d653e92f7d-20250827
+X-UUID: 4cba262482ee11f0b29709d653e92f7d-20250827
 Received: from mail.kylinos.cn [(10.44.16.175)] by mailgw.kylinos.cn
 	(envelope-from <zhangzihuan@kylinos.cn>)
 	(Generic MTA)
-	with ESMTP id 586798460; Wed, 27 Aug 2025 10:33:59 +0800
+	with ESMTP id 1623617400; Wed, 27 Aug 2025 10:34:04 +0800
 Received: from mail.kylinos.cn (localhost [127.0.0.1])
-	by mail.kylinos.cn (NSMail) with SMTP id B78F2E008FAB;
-	Wed, 27 Aug 2025 10:33:58 +0800 (CST)
-X-ns-mid: postfix-68AE6E96-41491213
+	by mail.kylinos.cn (NSMail) with SMTP id 75C21E008FAB;
+	Wed, 27 Aug 2025 10:34:04 +0800 (CST)
+X-ns-mid: postfix-68AE6E9C-117426214
 Received: from localhost.localdomain (unknown [172.25.120.24])
-	by mail.kylinos.cn (NSMail) with ESMTPA id C4296E008FAC;
-	Wed, 27 Aug 2025 10:33:52 +0800 (CST)
+	by mail.kylinos.cn (NSMail) with ESMTPA id BFF27E008FAE;
+	Wed, 27 Aug 2025 10:33:58 +0800 (CST)
 From: Zihuan Zhang <zhangzihuan@kylinos.cn>
 To: "Rafael J . wysocki" <rafael@kernel.org>,
 	Viresh Kumar <viresh.kumar@linaro.org>,
@@ -116,17 +116,17 @@ Cc: zhenglifeng <zhenglifeng1@huawei.com>,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Zihuan Zhang <zhangzihuan@kylinos.cn>
-Subject: [PATCH v2 07/18] cpufreq: longhaul: Use __free(put_cpufreq_policy) for policy reference
-Date: Wed, 27 Aug 2025 10:31:51 +0800
-Message-Id: <20250827023202.10310-8-zhangzihuan@kylinos.cn>
+Subject: [PATCH v2 08/18] cpufreq: mediatek: Use __free(put_cpufreq_policy) for policy reference
+Date: Wed, 27 Aug 2025 10:31:52 +0800
+Message-Id: <20250827023202.10310-9-zhangzihuan@kylinos.cn>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20250827023202.10310-1-zhangzihuan@kylinos.cn>
 References: <20250827023202.10310-1-zhangzihuan@kylinos.cn>
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250826_193407_110648_60744BAE 
-X-CRM114-Status: GOOD (  13.66  )
+X-CRM114-CacheID: sfid-20250826_193413_076660_56C6E92B 
+X-CRM114-Status: GOOD (  12.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -149,31 +149,38 @@ No functional change intended.
 
 Signed-off-by: Zihuan Zhang <zhangzihuan@kylinos.cn>
 ---
- drivers/cpufreq/longhaul.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/cpufreq/mediatek-cpufreq.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/cpufreq/longhaul.c b/drivers/cpufreq/longhaul.c
-index ba0e08c8486a..ae5596919671 100644
---- a/drivers/cpufreq/longhaul.c
-+++ b/drivers/cpufreq/longhaul.c
-@@ -950,7 +950,7 @@ static int __init longhaul_init(void)
+diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediate=
+k-cpufreq.c
+index f3f02c4b6888..1fae060e16d9 100644
+--- a/drivers/cpufreq/mediatek-cpufreq.c
++++ b/drivers/cpufreq/mediatek-cpufreq.c
+@@ -320,7 +320,7 @@ static int mtk_cpufreq_opp_notifier(struct notifier_b=
+lock *nb,
+ 	struct dev_pm_opp *new_opp;
+ 	struct mtk_cpu_dvfs_info *info;
+ 	unsigned long freq, volt;
+-	struct cpufreq_policy *policy;
++	struct cpufreq_policy *policy __free(put_cpufreq_policy);
+ 	int ret =3D 0;
 =20
- static void __exit longhaul_exit(void)
- {
--	struct cpufreq_policy *policy =3D cpufreq_cpu_get(0);
-+	struct cpufreq_policy *policy __free(put_cpufreq_policy) =3D cpufreq_cp=
-u_get(0);
- 	int i;
+ 	info =3D container_of(nb, struct mtk_cpu_dvfs_info, opp_nb);
+@@ -354,11 +354,9 @@ static int mtk_cpufreq_opp_notifier(struct notifier_=
+block *nb,
 =20
- 	for (i =3D 0; i < numscales; i++) {
-@@ -968,7 +968,6 @@ static void __exit longhaul_exit(void)
+ 			dev_pm_opp_put(new_opp);
+ 			policy =3D cpufreq_cpu_get(info->opp_cpu);
+-			if (policy) {
++			if (policy)
+ 				cpufreq_driver_target(policy, freq / 1000,
+ 						      CPUFREQ_RELATION_L);
+-				cpufreq_cpu_put(policy);
+-			}
  		}
  	}
 =20
--	cpufreq_cpu_put(policy);
- 	cpufreq_unregister_driver(&longhaul_driver);
- 	kfree(longhaul_table);
- }
 --=20
 2.25.1
 
