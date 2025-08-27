@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7654CCA0FED
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 791C2CA0FFC
 	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Aug 2025 00:23:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,87 +12,87 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=coI2WbZxINU7lzeYxnfoWTr2sAMMNa2PgUU+5RmzHvA=; b=wBR2USrJ8/3DcfzB6PA0tt5ZSb
-	iOCbq09dFr75jjlu1NmZP+LBrWJYLcoSVJedvTvcALv59tUlomZmWKV3ExPGxkueRW/5yXZKUiOLC
-	E/vPV7wQfsGLPVKPgndMONbQQvTScBvfUIe1vTip7xxbU2i73qGNhkdU0/6O3b5vDl8VTZaGFl5J7
-	F7dZA9hkkoFh4d3wnaTn8NLrrW6qDFb6NdBkEGPyS90q2zMtzSop6tjdUFi5pVAwnyuzV8mrKqkxk
-	IgrHZPoTjBtmro96m6Rrl2lew8MPVa3+wvKB7l60Cti6l+Vjuz9vDEU3xD/Ryji0QQsaDC8LR7IeF
-	bq8YePtw==;
+	bh=LcrLZoaMuieBwoDNhdy1YKKEPmtaqIZQcasiCx3hw8M=; b=1c4dKO8WcdL/1SOyl7C/8WMLla
+	T/Dk8VjcahesPxPpdakOGra0SH9iaPnBYnpcrAEAyIrG8dguZ3dT4qzfJKKDtjmSW3yN4IF4zS/W4
+	7qWgRbvcno4zy5q+bq7WAxTU/BnqXzJ7EoiopX0nBNVFsN0evE0QMV2Ne/OJdXH++J2RjzJNzttbq
+	xXNFX6kVQp5dvBIzI10Cv4kqxvtBMXFjYUCy/t6erAAqOku0C715o2Sg8Ql2JQ1YdJAh58n1+MYTv
+	MVMW8d7MCATahewOndW8yp0KfjRfdS1w7VJQaDwpSEEwVmVAAKko8XnEXewAV2QWm6+mm2pXPRAxX
+	aIWVV9VQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urQQX-0000000HLdC-01oZ;
-	Thu, 28 Aug 2025 00:23:41 +0000
+	id 1urQQY-0000000HLeL-14th;
+	Thu, 28 Aug 2025 00:23:42 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urOcR-0000000H66R-3um2
+	id 1urOdK-0000000H6Cv-0GxE
 	for linux-mediatek@bombadil.infradead.org;
-	Wed, 27 Aug 2025 22:27:52 +0000
+	Wed, 27 Aug 2025 22:28:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=coI2WbZxINU7lzeYxnfoWTr2sAMMNa2PgUU+5RmzHvA=; b=OJDCZbkmdtBi12I4g82bIeu4md
-	XG11xVqKJUdtVsJagNbCobDYGvRht1Fk+MAcHayoQmgb8tICnlyKwWUBh8uZBOEd2KiX9nzvJpH8i
-	hoKBaIOvNl+JhTqVuMLK/0mgkjU1ONkkmDrnyI/eMYituQoOSHw9I89Jq543gqZakUKf5BLtnBImT
-	sP3uI9+N7ug/Sm7ZKfsjMGfLJowQcpTQb0sm3NU55/hAdektn1tA2vJzxVuSm4PdtE4aZ+9+Tys2o
-	Xqn/YhOKYuyItB8PpczqpWjoS+FIPiM4urEScJZY0ojpk7ta4cozaFqITkvMpW3yDMH2GVzWB5jrB
-	+vwXf1xg==;
+	bh=LcrLZoaMuieBwoDNhdy1YKKEPmtaqIZQcasiCx3hw8M=; b=ImiERv4pXHsT49NZGg4L8gV5Pa
+	5Ed41l+oOEhCC5uqP3aG9hkHewLW32X+Z/7WWg6F5Cs2wQLzkOwnKu3l7HEWXMFAKZh+hFYrYTrmI
+	9Xk9Di7df0rkeKhiNrJ7WKSGS+ceeM+XgzjYSb59nCMJo5zsc+bCw0ZMGt0Z5H/y0TU76xzbtU8qN
+	Gg/YxVm7HWc2thuHzLBSZk+78PaQVsRcWf9Zw+srzFiJR3b4UxRWOvns8WYbKR3pADMdonTJ5CCdD
+	GNjVmdh2Zqk9b+2ypc2QVM/QFriMxh60OKZKP494cB5f0RBV9l6p1Dd4CHRpcZH8DMaeNBcxFfk4Q
+	EM6fEnqw==;
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urOc6-00000002WZG-18Su
+	id 1urOdA-00000002Wc0-0gbf
 	for linux-mediatek@lists.infradead.org;
-	Wed, 27 Aug 2025 22:27:33 +0000
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 57RGgH9S029088
-	for <linux-mediatek@lists.infradead.org>; Wed, 27 Aug 2025 22:27:25 GMT
+	Wed, 27 Aug 2025 22:28:44 +0000
+Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 57REuWbb001842
+	for <linux-mediatek@lists.infradead.org>; Wed, 27 Aug 2025 22:28:34 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
 	cc:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to; s=qcppdkim1; bh=coI2WbZxINU7lzeYxnfoWTr2
-	sAMMNa2PgUU+5RmzHvA=; b=N3nSP7Gc5TMt+IIn+qZ9uGuYzVafaBp1ac2JStUp
-	K7rRbNrItFfkrE4pn3NSwfK3EJKU+G54f3mtlHj6FVmTiyk34UhAcW763bLSlDn6
-	lE8nZPvaSrrbDD1z8NV8GMsE+EejI9+PUuTSSHiKEagz9bQN6sfvpB5/sPOKcU3B
-	hixfH4Wr/PN3um5++i/3CX9NXOAeLZ9SXBULzqfYPbTbm7cJ0YT0lWqwC5hM7lYu
-	l1sOWd/H9mcZguQFv0ANnTeWef+C8qNF9wb0KmfE+GAKuhHp+eDVTrDi1PKjuj3Y
-	LyVxJjOjvzkfxEw8ajNN66YMc9YGBbuSSUh3zv0iLcgaEQ==
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com [209.85.160.198])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 48q5ume8nj-1
+	:references:subject:to; s=qcppdkim1; bh=LcrLZoaMuieBwoDNhdy1YKKE
+	PmtaqIZQcasiCx3hw8M=; b=ksBOx0FaLwkdk0t38aj7T0xGmpchr04zFiJSkZgZ
+	Ba64KDw1scqklvR5h9sPhUMIU5Lm2ULbS+dB0sk27byD5zxz1LdT8vRZaUw1mIEL
+	xh0i2qoc9SiowpsxDWLGj59eU9BUKYNTd+Lt+SZ/9us8XpkdePkPbROX9L0c1Nis
+	xuzdRsy97JbgBGv09uGR8V2gtRSajQOd+AstxEjUOr+Q/Lp78EBk7+sbA+6J7rxg
+	ssnXa5MEdmfrn2nI2mdVDxwzLzHHqhlfufrgyew42L4gAJrqTf9p2WsvRy8xNAKa
+	HZ7JFU2mS/Vczvql0G9Re9yqBmoUE7SgnNjvTTRqpyeYxg==
+Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com [209.85.160.197])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 48t47b944n-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Wed, 27 Aug 2025 22:27:25 +0000 (GMT)
-Received: by mail-qt1-f198.google.com with SMTP id d75a77b69052e-4b1098f6142so6353781cf.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 27 Aug 2025 15:27:25 -0700 (PDT)
+	for <linux-mediatek@lists.infradead.org>; Wed, 27 Aug 2025 22:28:34 +0000 (GMT)
+Received: by mail-qt1-f197.google.com with SMTP id d75a77b69052e-4b109be41a1so13386741cf.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 27 Aug 2025 15:28:33 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756333644; x=1756938444;
+        d=1e100.net; s=20230601; t=1756333713; x=1756938513;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=coI2WbZxINU7lzeYxnfoWTr2sAMMNa2PgUU+5RmzHvA=;
-        b=DKYDB5Z9IOj9uj4u5J59zgpsNNhyEGRdJPrPgJET4cGFHUQpz3dxTrO6bQycW/90Pb
-         BTtjfKrmhUfnYW61VVMmzsHd7cTD+HKIeBHvJQlicAeFujsa1mlFwLTigSY6FOdjBiPI
-         X5dNBhlSt9FmuUOrXH851wisomLv3XvLQVRDihGdnMq/hcz0TNEBv+q5lUNp1Ctatxxi
-         6l6RWUK53oNDPgoSoR7UkUndVph7fmOUkl4AMy6TZxtP8/MItXiUDP4HZEyz7QOp0iFA
-         CB66VnA7da4GDrIivgJyBT+ne5+V8JtvgYFLbj9IEu4yPNlogXrFTgx3kskL+5tW+mMa
-         ymWQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXFHTH5voQDrmgga/IUD+bZGIW9en6peRgnED4K9IALe081D8D1cyiewxQ6+uuSJn8s7KNbDfmEeVzZXJY3nA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyXSY3c2dkgHsC7bYyGB1fMTMVLzPmZTHjQnpias6GgXSBj2kRE
-	pLhi5IpK3OyoBOGfrO2npKX4yn6PCK5PMjo+8w+KabcuF3CHTrjLMaQgvrYU/+O8ap8LyE/qjxm
-	Wm3qljORE7RWrpIGbo2r/yVYotZH6yrssUkk+d6zcQVpm/9nqmiGh5DySg/afGQ5q0mzow/rxsU
-	8=
-X-Gm-Gg: ASbGnctaEl+IIhFWZ8KjLHFiKjA8WroxCsnmEdDfUUUl3s/211DCiufnuk5xCd1YRuB
-	E/6SoAZjMEN4P9Y6sA5qoX4T89WXhuYYjLAi/stasM0N2hQ+pwsWxHmvs44y2JaEpO3h1+6KMLM
-	g1Zg9Ns0TRLq7KxyJjXSq0vik0WW8WgkYrJBby05iGJP2xwSvXfzm3fSLd8w2eFX0lykzK+AQfy
-	u3dqcI80aewjRl7ATdj+me9fNnsbfiLiyO72rCub5mZpMWNyZBhCguEnx5HvkbeiP/7KZZ7A71K
-	g7bhS3Q0ZRwstWDavS9Elng0DVkQV85gW7SpaRMs1xOM5jPPBWTgxnCD5Ca4KbOUXpDgYJENDUl
-	FM7N3ucBrR1QbxrniBQony0gnXV9DxUjhizJo8hnQ5tdweeMhIPDx
-X-Received: by 2002:a05:622a:4c8e:b0:4b0:8f6e:d70a with SMTP id d75a77b69052e-4b2de073d4amr102607481cf.22.1756333644084;
-        Wed, 27 Aug 2025 15:27:24 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGfGaJaSCsOEz0+c7R0GpHgMKXCo1cAu/f4pCkJRC2KgnMVotYeSkSM/eNVsc6qfr/OnO8xNw==
-X-Received: by 2002:a05:622a:4c8e:b0:4b0:8f6e:d70a with SMTP id d75a77b69052e-4b2de073d4amr102606571cf.22.1756333643552;
-        Wed, 27 Aug 2025 15:27:23 -0700 (PDT)
+        bh=LcrLZoaMuieBwoDNhdy1YKKEPmtaqIZQcasiCx3hw8M=;
+        b=S8Z5W5wEknRhTtJTAd7tRXgu1zYIpMVBzeBD9CGuJ+3b0hwcFpuhSYoKdeSSM1U8bI
+         AoZewInB0ErGj1olnlJXVR05R4QjHzUsngMW2kPv+zdouy5Sxy/9WlBOmrdE4uTD8pN5
+         xc+DEUQyfLmecyq6YBtUQIYjhMjoZT7hbNWxTCoReyeMlHcH+0kirfOUXkgRq4SVUFq/
+         85CM0FhmCXDsHYM3Lq03WysjEtoWDNjhu+d7jC36boK7QBdG6gagNm2MuuU+bGS8R72c
+         rYhZXDhHH3+y+issDWBItKwu06IQ5lbL53MJs+K7vPvbPmZYMw+NVtTG/IRA5CukdtQU
+         TdLg==
+X-Forwarded-Encrypted: i=1; AJvYcCUWg7f01emISRgewcYrDSVpWgmpmD9ZBB9suJRCl2CpSq8/vTrfwtvvpT+/5Hv51SHTjOwMeUtEsNaEtrZEag==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxJKyhG8AtL8Jiq/gmh77zPY4945Es4k0+zWUCU57Yv1NWZ6Ys9
+	YO2Hn88VKvJ5IegbpTfDZSCxQ6TWyOVpBFr6IMdMCC9bQH+ZG45/NXns5STMx6Ui5kE0W2BAx+M
+	zWjz+kFgwiOiWYKkboWsDuwgk1cIMiWB7sDjOOwY8pdo7gAyQ4WyHmPIzHTS0wqMH6IX7YXeQtw
+	k=
+X-Gm-Gg: ASbGnctWPxDNQao7/1/CGcmfZvA9tB6LKOEJQb6ambu6hAwaJ/d5wbI2lO+GLmJjFjd
+	DdOLAfG1Scht3g9NnZ9fevGysDGp4hGUhFmOH71s45T6B8o5GKdsLnl8QUxNzF7521Iqg5XgRmM
+	q+RsXt/flkewkvDSGOHim03Qjni1HHQbXGJcUupxlSwdvvPD5RHU0ar2VhRbVAOAZMX0AXC9Q9J
+	z0Q9ta+NgXqHJInpy+82wF1hE4yjMzyAhz8l0OV+egzKNyHx8WW2U1MIiUBoGWNIKxiI03T2ZLk
+	gkYf7m/ZypAIxkNKi1GTsyvW4FlPP+VYApNRbwEMV/OrSYDjt0JnhA1pIrCZhSlaZWFa0DwBnM5
+	JBVfHEhBKd/cgFGjjfwxOfuqZXPV5oIkVCakFLOOCk1lJq1fCQqKo
+X-Received: by 2002:a05:622a:cd:b0:4b2:dfc5:fbee with SMTP id d75a77b69052e-4b2dfc5fdb1mr105541721cf.32.1756333712523;
+        Wed, 27 Aug 2025 15:28:32 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF5nmdIbVBTqmW1BSWH9OY/lezBX2PorYOAsLp+HwXKOdiRgVyGEp2e8fxZ/9eVS1zmC9A+GQ==
+X-Received: by 2002:a05:622a:cd:b0:4b2:dfc5:fbee with SMTP id d75a77b69052e-4b2dfc5fdb1mr105541351cf.32.1756333712052;
+        Wed, 27 Aug 2025 15:28:32 -0700 (PDT)
 Received: from umbar.lan (2001-14ba-a0c3-3a00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a0c3:3a00:264b:feff:fe8b:be8a])
-        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-336818f1d41sm14139131fa.51.2025.08.27.15.27.20
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-55f35c13debsm2882288e87.57.2025.08.27.15.28.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 27 Aug 2025 15:27:21 -0700 (PDT)
-Date: Thu, 28 Aug 2025 01:27:19 +0300
+        Wed, 27 Aug 2025 15:28:31 -0700 (PDT)
+Date: Thu, 28 Aug 2025 01:28:27 +0300
 From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 To: Maxime Ripard <mripard@kernel.org>
 Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
@@ -152,39 +152,39 @@ Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
         linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
         freedreno@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
         linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org
-Subject: Re: [PATCH 03/39] drm/atomic: Convert
- drm_atomic_get_connector_state() to use new connector state
-Message-ID: <hab6s4wyauqiej5ankh3gppdqkm2ymlevhrnklfe76kqjmmjqy@fptmzxpqv5av>
+Subject: Re: [PATCH 04/39] drm/atomic: Remove unused
+ drm_atomic_get_existing_connector_state()
+Message-ID: <a3hwkno4nemddbmaz6dayd24rmqcr3zxujrvsspnulrivntxjz@o3tm6o4mc6nt>
 References: <20250825-drm-no-more-existing-state-v1-0-f08ccd9f85c9@kernel.org>
- <20250825-drm-no-more-existing-state-v1-3-f08ccd9f85c9@kernel.org>
+ <20250825-drm-no-more-existing-state-v1-4-f08ccd9f85c9@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250825-drm-no-more-existing-state-v1-3-f08ccd9f85c9@kernel.org>
-X-Authority-Analysis: v=2.4 cv=VtIjA/2n c=1 sm=1 tr=0 ts=68af864d cx=c_pps
- a=mPf7EqFMSY9/WdsSgAYMbA==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
- a=2OwXVqhp2XgA:10 a=VwQbUJbxAAAA:8 a=wpE8WlYdICmIRzy2dDcA:9 a=CjuIK1q_8ugA:10
- a=dawVfQjAaf238kedN5IG:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODIzMDAzMiBTYWx0ZWRfXzXH6Ci1Dyjc4
- BmC3SdlVvgAwp7GO/VylYrhpmTx6939oMMJ5QGGUTCn7tTgF2i51JOO2xbNqUlixEPVa3Fg0rGm
- +xCsWs3RBQFF8Tp5jTuLsCePyIKPgPQ9zA2Mz8ODp7BfGF+jSPK+ZbA6lFYd6BwBWIUkCTUBYkp
- PAZF4YuSPG15ARDQKmQibLRh/BcYNe9uSS25J59Ald1tHZDcBt8dS8z8zNZ5qJVX3wpYjFsRfsZ
- 6TLle39sB7Z5eSAAHOeIYM4zIZbNi2G+MuCk8433bn4JWDjBvx3g1wIyuzAQReawinu5p/Nkgar
- 6SfpiYfqV04xalcUqV/8ogfMKLKWs03BsDwA9Uvpa4E0O6NG9q7Dl+Swn8lZGOk1pQI77iqo1N9
- 7WbdbENs
-X-Proofpoint-GUID: Hf2MezlhwCtV5TY6XdbM6tTwei1ja04f
-X-Proofpoint-ORIG-GUID: Hf2MezlhwCtV5TY6XdbM6tTwei1ja04f
+In-Reply-To: <20250825-drm-no-more-existing-state-v1-4-f08ccd9f85c9@kernel.org>
+X-Proofpoint-GUID: WWF3gYcOOGCH_djjWc2MBBAXgwGi0-QG
+X-Authority-Analysis: v=2.4 cv=CYoI5Krl c=1 sm=1 tr=0 ts=68af8692 cx=c_pps
+ a=EVbN6Ke/fEF3bsl7X48z0g==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
+ a=2OwXVqhp2XgA:10 a=VwQbUJbxAAAA:8 a=EUspDBNiAAAA:8 a=ROUmOPvenB7E6LXmrzQA:9
+ a=CjuIK1q_8ugA:10 a=a_PwQJl-kcHnX1M80qC6:22
+X-Proofpoint-ORIG-GUID: WWF3gYcOOGCH_djjWc2MBBAXgwGi0-QG
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODI3MDEyOCBTYWx0ZWRfXzZf7MhRXULjB
+ Tj/eBKt3a/2BMC8c1D38k5Dio8Lb4vQ+lm1Kf+zGstuTTfbvhn7U7KbI+URpmiO0k4Rkq8GmLwZ
+ /YHQkeDa/PFSdRpQRASYg5bYLgIoktV/qCA8PIzOUS+5Jrj447YeHR4ftbNzyuJLQvSnkrWdUaU
+ Dq9ykQesQpWQh+5rtmT9zETj1s5Hodk9GAEbJe0Bw3HaGKT3iFXtyvsyXM8j+9nC2TpmZyHNnYv
+ pwxkXAxHPM080AMzYKdRQhQc52deSDFTTRCsGrBemXosyzFDeQfeAYRCWJi4z4sMtwfj7Ee3bCg
+ 82jS7jOf1PR9otON4CvGOI5VaLV8dITRXWJbdw2Dwb2mVM/k5kMLCOiTwq1b1nJj7uWWW0/fsBv
+ aT/XwPGZ
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
  definitions=2025-08-27_04,2025-08-26_01,2025-03-28_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1015 phishscore=0 priorityscore=1501 impostorscore=0 bulkscore=0
- suspectscore=0 malwarescore=0 adultscore=0 spamscore=0 classifier=typeunknown
- authscore=0 authtc= authcc= route=outbound adjust=0 reason=mlx scancount=1
- engine=8.19.0-2507300000 definitions=main-2508230032
+ malwarescore=0 bulkscore=0 adultscore=0 clxscore=1015 phishscore=0
+ priorityscore=1501 impostorscore=0 suspectscore=0 spamscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.19.0-2507300000 definitions=main-2508270128
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250827_232731_163458_606A65B0 
-X-CRM114-Status: GOOD (  25.54  )
+X-CRM114-CacheID: sfid-20250827_232837_117318_C8DF2F05 
+X-CRM114-Status: GOOD (  15.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -199,46 +199,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 25, 2025 at 03:43:08PM +0200, Maxime Ripard wrote:
-> The drm_atomic_get_connector_state() function calls the deprecated
-> drm_atomic_get_existing_connector_state() helper to get find if a
-> connector state had already been allocated and was part of the given
-> drm_atomic_state.
-> 
-> At the point in time where drm_atomic_get_connector_state() can be
-> called (ie, during atomic_check), the existing state is the new state
-> and drm_atomic_get_existing_connector_state() can thus be replaced by
-> drm_atomic_get_new_connector_state().
+On Mon, Aug 25, 2025 at 03:43:09PM +0200, Maxime Ripard wrote:
+> The drm_atomic_get_existing_connector_state() function is deprecated and
+> isn't used anymore, so let's remove it.
 > 
 > Signed-off-by: Maxime Ripard <mripard@kernel.org>
 > ---
->  drivers/gpu/drm/drm_atomic.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  include/drm/drm_atomic.h | 23 -----------------------
+>  1 file changed, 23 deletions(-)
 > 
-> diff --git a/drivers/gpu/drm/drm_atomic.c b/drivers/gpu/drm/drm_atomic.c
-> index 660b081ff5d8c39061cebfb5ea122ac1e51677ad..30b7ec05a1af07075e40cd2822ecfd67df004ba2 100644
-> --- a/drivers/gpu/drm/drm_atomic.c
-> +++ b/drivers/gpu/drm/drm_atomic.c
-> @@ -1128,11 +1128,11 @@ drm_atomic_get_connector_state(struct drm_atomic_state *state,
->  	struct drm_mode_config *config = &connector->dev->mode_config;
->  	struct drm_connector_state *connector_state;
->  
->  	WARN_ON(!state->acquire_ctx);
->  
-> -	connector_state = drm_atomic_get_existing_connector_state(state, connector);
-> +	connector_state = drm_atomic_get_new_connector_state(state, connector);
 
-I'd say, drop patches 1-2 and use this function directly as is now.
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 
->  	if (connector_state)
->  		return connector_state;
->  
->  	ret = drm_modeset_lock(&config->connection_mutex, state->acquire_ctx);
->  	if (ret)
-> 
-> -- 
-> 2.50.1
-> 
 
 -- 
 With best wishes
