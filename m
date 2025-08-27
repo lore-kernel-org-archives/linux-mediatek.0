@@ -4,86 +4,172 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E122CA0FED
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Aug 2025 23:53:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A78E4CA0FF2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Aug 2025 01:53:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gC3kPF5Rpbrzs3Rbm5UONjqNL8Sz4DQ+JHhjuF9xANI=; b=swsPpYtucCdk/K5eoqycfAXTt8
-	EkUhM1rmBm8HIFqlxPci1yw0zLnRfXSTTDZ3/9kxx1bwtKurGttkm26kQIK7cydaJkJBTvWb1Yew/
-	iQghyZeE45Sguq92XQRqmqnQxIASB92UgNR3Wm/GPvE73JzATVdzQhxUg2ynBWps6UllJaiQJnYOF
-	OuZwBLJDVW91lYRbX435sdmAEjZKFKVy04lHWbPAkd8aEMcsiJSHPyLOq5qB46wdGwxEF+whJhMCE
-	V2He9T0PiCdqiuawyO6g7M3M2YQKJm76jk6gwqhVyMm2/m14S8T0Ubx20Mg87sHxrf40CprGZeK5S
-	Dg2unvXQ==;
+	bh=0laXQCaNkR8BdkTEIAIjvxkPU6e+xAcI3sMZOZG++40=; b=RwVit7ggrodnIsZ01dY7j4v4C/
+	Jak8vYTEYvjhhkkwnq/VFV5DgdfaKZ7YPIDPnNHYfLgLt2+vjQeaX+DR0855WeJzb93uiz96uhf0I
+	DJPN0Fb2P3Jbn2KuEfs6/XFdzW/xM5IN0okhSVV2DbMJeYBRQDSKABudG4M0owO/a74JrSVNhcOY0
+	pN8bW2viIIre7roiQ5jFyJ1KbS2DaveqW703AcJGyfMnIoD+n2Sa3oIugySbDMhtVbnMyE9alhZZw
+	I5EjVaD/ZnAZHGCfwug5OZvMauzMQsPvYvICXsA39hC5ZTD9KzOo+OeycWZG/YXC6WvHh24Sg3II5
+	M8Xsv8kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ur3Ts-0000000DNiZ-2ina;
-	Tue, 26 Aug 2025 23:53:36 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1ur5Lo-0000000Daqy-0sR5;
+	Wed, 27 Aug 2025 01:53:24 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ur3R9-0000000DNSh-1h7f;
-	Tue, 26 Aug 2025 23:50:47 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5C54A6022C;
-	Tue, 26 Aug 2025 23:50:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D91F3C4CEF1;
-	Tue, 26 Aug 2025 23:50:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756252245;
-	bh=07Ku4luLp6tCckZKvoGpBvBDQ0Ywwcemo2l4BS/xWs0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ku2eS2aLuk2BO85gltgp9fViBt3A7nXYGIzz3ko+3i02BU56tWHBUt7SqU2nURtEN
-	 XBBLjuym5594eRddN8//2A0hIq9YGE3uJyHGblP1kjOj68phQ1DzZczKcjxA+BYH7m
-	 beuxjpqZ1t3NkKzgfPTOjhOisGGViCwrEjzxf5/EchC01qkp/d/r0yRVVVq5e9D4ra
-	 9iyKZSacjOMQZjnsjMUDUS7FZcVzPkmSyZlv8uUTxMLQ55Ro7lB9BFk8KSd1dsWumX
-	 ZZ+S+nCkt7tGurJCOCifKfd1hsdFyeaBfVGIOUwIwszL5KLRmkt2m3Rz7ePoD+ElMf
-	 wfPZvM216LTww==
-Date: Tue, 26 Aug 2025 18:50:43 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Linus Walleij <linus.walleij@linaro.org>,
-	linux-watchdog@vger.kernel.org,
-	Mathew McBride <matt@traverse.com.au>,
-	linux-arm-kernel@lists.infradead.org,
-	Michael Walle <mwalle@kernel.org>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Nikita Travkin <nikita@trvn.ru>,
-	Guenter Roeck <groeck@chromium.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	linux-mediatek@lists.infradead.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jean Delvare <jdelvare@suse.com>,
-	Tim Harvey <tharvey@gateworks.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Thomas Gleixner <tglx@linutronix.de>,
-	Mark Brown <broonie@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Mathieu Poirier <mathieu.poirier@linaro.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	linux-sound@vger.kernel.org,
-	Cheng-Yi Chiang <cychiang@chromium.org>,
-	linux-hwmon@vger.kernel.org, Tzung-Bi Shih <tzungbi@kernel.org>,
-	Pengyu Luo <mitltlatltl@gmail.com>, linux-gpio@vger.kernel.org,
-	linux-remoteproc@vger.kernel.org,
-	Benson Leung <bleung@chromium.org>, Lee Jones <lee@kernel.org>,
-	linux-pwm@vger.kernel.org, Konrad Dybcio <konradybcio@kernel.org>,
-	Wim Van Sebroeck <wim@linux-watchdog.org>,
-	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org,
-	Bartosz Golaszewski <brgl@bgdev.pl>, linux-kernel@vger.kernel.org,
-	Bjorn Andersson <andersson@kernel.org>,
-	Tinghan Shen <tinghan.shen@mediatek.com>
-Subject: Re: [PATCH v3] dt-bindings: mfd: Move embedded controllers to own
- directory
-Message-ID: <175625224288.764159.13881647192010727208.robh@kernel.org>
-References: <20250825081201.9775-2-krzysztof.kozlowski@linaro.org>
+	id 1ur5JK-0000000Daeo-2DqM
+	for linux-mediatek@lists.infradead.org;
+	Wed, 27 Aug 2025 01:50:51 +0000
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 57QKEkYU011679
+	for <linux-mediatek@lists.infradead.org>; Wed, 27 Aug 2025 01:50:50 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to; s=qcppdkim1; bh=0laXQCaNkR8BdkTEIAIjvxkP
+	U6e+xAcI3sMZOZG++40=; b=RtohOwq/mGWF5aMn8hEPDpMx/rZR9xAALF19Kgyn
+	ABnotCfpABau8JwSOXOICFi9m0+JYeo5KRmxM7/PZXvfAVZ+xkORF/VXDwTNR3Ph
+	HPx+mTISivbCf4otlZINmlEZaKzFvdI6E4ajQHq9yVGAUfZo4nLChDdFD8U1iaE4
+	IS1qmtCDKjKe0bte0kvKERccexJ6lHl808lZOQbURByejcjFT3WTBN/nsM8JSd+g
+	k1B3AWzsQK6lbv1D9bzTVgUEmdbFOgAkV//+43Xv1+qkGLvzB6NM7Z7dZU1NecZ0
+	guNgLQYiFnm+R6mcteg49ubo9IpFgtLwxmbQpqJPkNbHbw==
+Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com [209.85.160.198])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 48q5umb2qy-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Wed, 27 Aug 2025 01:50:49 +0000 (GMT)
+Received: by mail-qt1-f198.google.com with SMTP id d75a77b69052e-4b109bc103bso140681161cf.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 26 Aug 2025 18:50:49 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1756259448; x=1756864248;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=0laXQCaNkR8BdkTEIAIjvxkPU6e+xAcI3sMZOZG++40=;
+        b=tKQ15RV102ljmkAXsM3Z6/Us2AX3i+qornN9FCBXlYbhpla0iiVNjVZWaI1pOA/NCF
+         rSKVIEAc7zhcdf3QLQq8s6cPknSH0uSspgS+450LhZnYuvDGZQsLpFKM+g2XhLyXHgzF
+         NqAuT40D17KVLgyhEnRGutExH6uBb1gWOmCMIMdAhZJOH0rKflwc5sntRKZX4XJIbDI0
+         5yz2P2y3Dswb76KL4FILjndtV+ZOP+PA5nohOafmGgkZGd4MXdr0Irk4IrAUiAB4jahP
+         CRcTMmzh0ZIxpEPGt0DxCdxb7jIBR25ZwDM/qUhO1Uf4G92ldqNn2ge2tLeI6aW5IFXr
+         9vGg==
+X-Forwarded-Encrypted: i=1; AJvYcCXt3wyIcQJ+KPnlTLba3Gcpn0CWXS51p2UHva6SDKSoGkSuQk/l1p/bfGImdZ81XGTGScKibw65u+frNXCW1Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywm4oktld5uMfBzNdJqH8yk/XX6mbmG1xuKpU27FrxEjPcaFnNj
+	CG9OLK18rMU2+XsZtJzvqyQA6Aa/Elx8qjeRnMeEJn6wlqlt2hzeIt0jXVGGIVWZt5Wn3j0oOfS
+	Ma+a3DXIsuWss0BKzYQyT/mEvg06re/XmtjciMBszAI7SDesT7Sf20sT1ZfVxxEu8ksgivcE1+G
+	w=
+X-Gm-Gg: ASbGncs91mpYrZJNKcFN0NAgqhC6WSs/zU2lrBP2+Gc7Glivx8KEbaksBh+33IMoI+L
+	M8mHpgfKvIu1Uqza8Y5zFRy8rGCYokHR8DRm2PB3x4ls/zrRKq9y8q6MyLZzUbmSXWB4BJ/+82J
+	dSVur2Mn4lGqMw35BjSRfZfNjHOk9GAXZ4fus6x0PsB2GutWWaxhLMtIZmygOwa84nQ05ESf7KW
+	riHJ3QuC0hgnPWer+5LCoJQB2XXDBaUsRgT0Y7eVp5MG6Tqxo+YmWrsBsNj1EkRp+Q694RbShtQ
+	E+m5Gk1En0L323bEF04sk35YA+bhtufJCyxd/Q7rGAfhTJEPHkG2pgMKDSnVvq+WGnyN1mw31Hx
+	2E8IBg9TEdnUdm6kN1lSO9L3xB6K9xI3A4MGkodq8aabEJUO8USFp
+X-Received: by 2002:ac8:5e12:0:b0:4ae:6b72:2ae2 with SMTP id d75a77b69052e-4b2aaacef55mr186156701cf.40.1756259447989;
+        Tue, 26 Aug 2025 18:50:47 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGMxKJaOrtRDBj0yHJf7PhiEmF+htiaol/DYqvG4rG8Xn2tdgOPzsKsBrI5J0XgVP0gDX2TkA==
+X-Received: by 2002:ac8:5e12:0:b0:4ae:6b72:2ae2 with SMTP id d75a77b69052e-4b2aaacef55mr186156351cf.40.1756259447377;
+        Tue, 26 Aug 2025 18:50:47 -0700 (PDT)
+Received: from umbar.lan (2001-14ba-a0c3-3a00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a0c3:3a00:264b:feff:fe8b:be8a])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-55f4b46d050sm989200e87.150.2025.08.26.18.50.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 26 Aug 2025 18:50:46 -0700 (PDT)
+Date: Wed, 27 Aug 2025 04:50:44 +0300
+From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+        Thomas Zimmermann <tzimmermann@suse.de>,
+        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+        Louis Chauvet <louis.chauvet@bootlin.com>,
+        Haneen Mohammed <hamohammed.sa@gmail.com>,
+        Melissa Wen <melissa.srw@gmail.com>, Jyri Sarha <jyri.sarha@iki.fi>,
+        Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+        Paul Cercueil <paul@crapouillou.net>,
+        Liviu Dudau <liviu.dudau@arm.com>,
+        Russell King <linux@armlinux.org.uk>,
+        Manikandan Muralidharan <manikandan.m@microchip.com>,
+        Dharma Balasubiramani <dharma.b@microchip.com>,
+        Nicolas Ferre <nicolas.ferre@microchip.com>,
+        Alexandre Belloni <alexandre.belloni@bootlin.com>,
+        Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+        Inki Dae <inki.dae@samsung.com>,
+        Seung-Woo Kim <sw0312.kim@samsung.com>,
+        Kyungmin Park <kyungmin.park@samsung.com>,
+        Krzysztof Kozlowski <krzk@kernel.org>,
+        Alim Akhtar <alim.akhtar@samsung.com>, Liu Ying <victor.liu@nxp.com>,
+        Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+        Pengutronix Kernel Team <kernel@pengutronix.de>,
+        Fabio Estevam <festevam@gmail.com>,
+        Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>,
+        Lucas Stach <l.stach@pengutronix.de>,
+        Philipp Zabel <p.zabel@pengutronix.de>,
+        Anitha Chrisanthus <anitha.chrisanthus@intel.com>,
+        Edmund Dea <edmund.j.dea@intel.com>,
+        Paul Kocialkowski <paulk@sys-base.io>,
+        Sui Jingfeng <suijingfeng@loongson.cn>,
+        Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Rob Clark <robin.clark@oss.qualcomm.com>,
+        Dmitry Baryshkov <lumag@kernel.org>,
+        Abhinav Kumar <abhinav.kumar@linux.dev>,
+        Jessica Zhang <jessica.zhang@oss.qualcomm.com>,
+        Sean Paul <sean@poorly.run>,
+        Marijn Suijten <marijn.suijten@somainline.org>,
+        Sandy Huang <hjc@rock-chips.com>,
+        Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
+        Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>,
+        Jernej Skrabec <jernej.skrabec@gmail.com>,
+        Samuel Holland <samuel@sholland.org>,
+        Thierry Reding <thierry.reding@gmail.com>,
+        Mikko Perttunen <mperttunen@nvidia.com>,
+        Jonathan Hunter <jonathanh@nvidia.com>,
+        Hans de Goede <hansg@kernel.org>,
+        Dave Stevenson <dave.stevenson@raspberrypi.com>,
+        =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>,
+        Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
+        dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+        linux-mips@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+        linux-samsung-soc@vger.kernel.org, imx@lists.linux.dev,
+        linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+        freedreno@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+        linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org
+Subject: Re: [PATCH 26/39] drm/msm/mdp5: Switch to
+ drm_atomic_get_new_crtc_state()
+Message-ID: <dc2sfo6edj4w3qiwldoglaanbi2h7mmev7x4pklwbl7x6x6rah@kjyc52pv2xqy>
+References: <20250825-drm-no-more-existing-state-v1-0-f08ccd9f85c9@kernel.org>
+ <20250825-drm-no-more-existing-state-v1-26-f08ccd9f85c9@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250825081201.9775-2-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20250825-drm-no-more-existing-state-v1-26-f08ccd9f85c9@kernel.org>
+X-Authority-Analysis: v=2.4 cv=VtIjA/2n c=1 sm=1 tr=0 ts=68ae6479 cx=c_pps
+ a=mPf7EqFMSY9/WdsSgAYMbA==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
+ a=2OwXVqhp2XgA:10 a=VwQbUJbxAAAA:8 a=EUspDBNiAAAA:8 a=viL_tbrIvFpnGUkEXy0A:9
+ a=CjuIK1q_8ugA:10 a=dawVfQjAaf238kedN5IG:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODIzMDAzMiBTYWx0ZWRfX40vGHOk4DTd/
+ hEIha3Dofh+k6tR+FeIlYAfxFUKa3+gfNT884uUjAVeKlUhqmpU8WmtLOKKrTeY62LidXxStyoF
+ 3A1f/n1CnQv+xoouZKzJj1vxjvsihfTLKc12CchtJ5Q1u7thjlZupxygR+EAv6YjS0WweA/t9V6
+ tV/ka6kn1jJPGBPj4uSB4COofhiZ8HKOXK1k37CcuxcCGzc4B/GH+CGGCrvK+sMmJk2VBJc0zeh
+ yeqgTfYgvvS/DHtOisUtAE4ZFg0ok7IBmq4NKOZsR8+4DQv0Ut/jfjaA/hQSVDTE14kWKc2kOsY
+ ZsVHHI+/ZLTLxixSJ3BiEwAOLhG1GKvSMdCX+wsGll2ioHNiuy3ZZKKkoNjbjlxWscBgCLmmduf
+ WeslNSgh
+X-Proofpoint-GUID: oDb3NkdUqqh63O7cOPnsz4wqWERnK3FG
+X-Proofpoint-ORIG-GUID: oDb3NkdUqqh63O7cOPnsz4wqWERnK3FG
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-08-26_02,2025-08-26_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1015 phishscore=0 priorityscore=1501 impostorscore=0 bulkscore=0
+ suspectscore=0 malwarescore=0 adultscore=0 spamscore=0 classifier=typeunknown
+ authscore=0 authtc= authcc= route=outbound adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2507300000 definitions=main-2508230032
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250826_185050_590275_FE45510B 
+X-CRM114-Status: GOOD (  18.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,71 +184,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Mon, 25 Aug 2025 10:12:02 +0200, Krzysztof Kozlowski wrote:
-> Move several embedded controller bindings (like ChromeOS EC, Gateworks
-> System Controller and Kontron sl28cpld Board Management) to new
-> subdirectory "embedded-controller" matching their purpose.
+On Mon, Aug 25, 2025 at 03:43:31PM +0200, Maxime Ripard wrote:
+> The msm atomic_check implementation uses the deprecated
+> drm_atomic_get_existing_crtc_state() helper.
 > 
-> An embedded controller (EC) is a discrete component that contains a
-> microcontroller (i.e. a small CPU running a small firmware without
-> operating system) mounted into a larger computer system running
-> a fully fledged operating system that needs to utilize the embedded
-> controller as part of its operation.
+> This hook is called as part of the global atomic_check, thus before the
+> states are swapped. The existing state thus points to the new state, and
+> we can use drm_atomic_get_new_crtc_state() instead.
 > 
-> So far the EC bindings were split between "mfd" and "platform"
-> directory.  MFD name comes from Linux, not hardware, and "platform" is a
-> bit too generic.
-> 
-> Rename Gateworks GSC and Huawei Gaokun filenames to match compatible, as
-> preferred for bindings.
-> 
-> Acked-by: Michael Walle <mwalle@kernel.org> # for sl28cpld
-> Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Signed-off-by: Maxime Ripard <mripard@kernel.org>
 > ---
-> 
-> Lee,
-> Can you take it via MFD?
-> There is a patch on the lists touching kontron,sl28cpld.
-> 
-> Changes in v3:
-> 1. Move more files from "platform" directory.
-> 2. Grow commit msg, based on feedback from Linus.
-> 3. Add Rb (patch changed, though).
-> 
-> Changes in v2:
-> 1. Correct remaining paths in other schemas ($ref and descriptions).
-> 2. Add Ack.
-> 
-> Cc: Mathew McBride <matt@traverse.com.au>
-> ---
->  .../{platform => embedded-controller}/acer,aspire1-ec.yaml  | 2 +-
->  .../{mfd => embedded-controller}/google,cros-ec.yaml        | 2 +-
->  .../gateworks-gsc.yaml => embedded-controller/gw,gsc.yaml}  | 2 +-
->  .../huawei,gaokun3-ec.yaml}                                 | 2 +-
->  .../{mfd => embedded-controller}/kontron,sl28cpld.yaml      | 2 +-
->  .../lenovo,yoga-c630-ec.yaml                                | 2 +-
->  .../microsoft,surface-sam.yaml                              | 2 +-
->  .../devicetree/bindings/gpio/kontron,sl28cpld-gpio.yaml     | 2 +-
->  .../devicetree/bindings/hwmon/kontron,sl28cpld-hwmon.yaml   | 2 +-
->  .../interrupt-controller/kontron,sl28cpld-intc.yaml         | 2 +-
->  .../devicetree/bindings/pwm/google,cros-ec-pwm.yaml         | 2 +-
->  .../devicetree/bindings/pwm/kontron,sl28cpld-pwm.yaml       | 2 +-
->  Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml   | 4 ++--
->  .../devicetree/bindings/sound/google,cros-ec-codec.yaml     | 2 +-
->  .../devicetree/bindings/watchdog/kontron,sl28cpld-wdt.yaml  | 2 +-
->  MAINTAINERS                                                 | 6 +++---
->  16 files changed, 19 insertions(+), 19 deletions(-)
->  rename Documentation/devicetree/bindings/{platform => embedded-controller}/acer,aspire1-ec.yaml (94%)
->  rename Documentation/devicetree/bindings/{mfd => embedded-controller}/google,cros-ec.yaml (99%)
->  rename Documentation/devicetree/bindings/{mfd/gateworks-gsc.yaml => embedded-controller/gw,gsc.yaml} (98%)
->  rename Documentation/devicetree/bindings/{platform/huawei,gaokun-ec.yaml => embedded-controller/huawei,gaokun3-ec.yaml} (97%)
->  rename Documentation/devicetree/bindings/{mfd => embedded-controller}/kontron,sl28cpld.yaml (97%)
->  rename Documentation/devicetree/bindings/{platform => embedded-controller}/lenovo,yoga-c630-ec.yaml (95%)
->  rename Documentation/devicetree/bindings/{platform => embedded-controller}/microsoft,surface-sam.yaml (92%)
+>  drivers/gpu/drm/msm/disp/mdp5/mdp5_plane.c | 7 +++----
+>  1 file changed, 3 insertions(+), 4 deletions(-)
 > 
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 
+To merge through drm-misc-next:
+
+Acked-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+
+
+-- 
+With best wishes
+Dmitry
 
