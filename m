@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30D31CA0EFF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83694CA0FF9
 	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Aug 2025 05:29:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,44 +12,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=r1e5nYt3ar8Yu621b+DjVlNiN0X5TuPTPu8nEAHX5QY=; b=mNmKUNolVRAqwobbYtaHONQvhB
-	LYzQi2NyL6/1nVx8rcqWK7tKAGI5Og4oq3+adQpBywu9n5B+DPnbLPyFleNvvL/2bgwWXls4HBwQH
-	pdlpPOEaT8HzAFBD9WgpZOdAPY6k3f6Q/wMU93TtKnE0Sxt8fbpsV44Wk0YIYGqr44W/yVjsFQy7I
-	XdSSKsZgl3u8u8wBouN8ZOxlv8H1zewaF4qDMsrtK0Z0JvT48AicYfw3xM4duCsw66XvHoUo0ZwPG
-	O+BwPW1FdI5cyCWANTJ6CSMkpfEogQL4y4uIT8KRDUm16LGdjaT+hdyX/HiEsI/h/wYujiFqvJLaV
-	omC22xXA==;
+	bh=mEIBt4dKgAoPpoDgU4KAb4OKY8yR6hmIEsU4pGWqdyc=; b=JhCT1ZGLjyBse9AFDTurvHKdtU
+	TyLxY1HMzuVaKKDCEtM6T3jUEB1d9narxyYE6ApzUmqNkuIE6rNhATIYrjwkfRcJ6sxIetrWA+J7S
+	33HaZdMANTEDAZrDXIjhLOyRH4XNBrS9eK4R1sLosO86hsvhbcEMvWmA+edz5okHuAXeqjId21S8D
+	DZrNuEbBMBUQ8DQ0ax842j5dBiqjKdQFB82P7ojWx828b5S3mN2QlQPMuXsCEQtrFyuzg+HD5Wve2
+	kwLeFGrTgPrYwxqAWC/+keeqVWqcSdoqw4qFZ2jdlqYO6PuVl3nD1HhidQTk0Ym3UDTXjM0+p8Zi0
+	CA2zXNOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ur8iz-0000000E7wC-2wR7;
-	Wed, 27 Aug 2025 05:29:33 +0000
+	id 1ur8j0-0000000E7wJ-00YN;
+	Wed, 27 Aug 2025 05:29:34 +0000
 Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ur8IL-0000000E3fO-42g5;
-	Wed, 27 Aug 2025 05:02:03 +0000
-X-UUID: f377f4c8830211f0b29709d653e92f7d-20250827
+	id 1ur8IL-0000000E3fY-42JC;
+	Wed, 27 Aug 2025 05:02:04 +0000
+X-UUID: f395f838830211f0b29709d653e92f7d-20250827
+X-CID-CACHE: Type:Local,Time:202508271301+08,HitQuantity:1
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.45,REQID:8d2871f9-503a-4a8b-9516-be2d9fa83402,IP:0,U
+X-CID-O-INFO: VERSION:1.1.45,REQID:b8ec0292-963c-495e-9991-c376340f3f9e,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:6493067,CLOUDID:595e82fc7a31806bd42030698e9453e5,BulkI
+X-CID-META: VersionHash:6493067,CLOUDID:80cb6ac02342e1dbc78a57acf95a60bb,BulkI
 	D:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|850,TC:nil,Content:0|50,EDM:-3
 	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
 	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: f377f4c8830211f0b29709d653e92f7d-20250827
+X-UUID: f395f838830211f0b29709d653e92f7d-20250827
 Received: from mail.kylinos.cn [(10.44.16.175)] by mailgw.kylinos.cn
 	(envelope-from <zhangzihuan@kylinos.cn>)
 	(Generic MTA)
-	with ESMTP id 753935936; Wed, 27 Aug 2025 13:01:54 +0800
+	with ESMTP id 1659259221; Wed, 27 Aug 2025 13:01:54 +0800
 Received: from mail.kylinos.cn (localhost [127.0.0.1])
-	by mail.kylinos.cn (NSMail) with SMTP id 9B898E008FB3;
-	Wed, 27 Aug 2025 10:35:06 +0800 (CST)
-X-ns-mid: postfix-68AE6EDA-170480226
-Received: from localhost.localdomain (unknown [172.25.120.24])
-	by mail.kylinos.cn (NSMail) with ESMTPA id F2CB3E008FB2;
+	by mail.kylinos.cn (NSMail) with SMTP id F0130E008FB1;
 	Wed, 27 Aug 2025 10:35:00 +0800 (CST)
+X-ns-mid: postfix-68AE6ED4-748503225
+Received: from localhost.localdomain (unknown [172.25.120.24])
+	by mail.kylinos.cn (NSMail) with ESMTPA id 7A7D0E008FB0;
+	Wed, 27 Aug 2025 10:34:55 +0800 (CST)
 From: Zihuan Zhang <zhangzihuan@kylinos.cn>
 To: "Rafael J . wysocki" <rafael@kernel.org>,
 	Viresh Kumar <viresh.kumar@linaro.org>,
@@ -116,17 +117,17 @@ Cc: zhenglifeng <zhenglifeng1@huawei.com>,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Zihuan Zhang <zhangzihuan@kylinos.cn>
-Subject: [PATCH v2 18/18] PM: EM: Use __free(put_cpufreq_policy) for policy reference
-Date: Wed, 27 Aug 2025 10:32:02 +0800
-Message-Id: <20250827023202.10310-19-zhangzihuan@kylinos.cn>
+Subject: [PATCH v2 17/18] thermal/drivers/ti-soc-thermal:  Use __free(put_cpufreq_policy) for policy reference
+Date: Wed, 27 Aug 2025 10:32:01 +0800
+Message-Id: <20250827023202.10310-18-zhangzihuan@kylinos.cn>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20250827023202.10310-1-zhangzihuan@kylinos.cn>
 References: <20250827023202.10310-1-zhangzihuan@kylinos.cn>
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250826_220202_302251_79F28483 
-X-CRM114-Status: GOOD (  13.96  )
+X-CRM114-CacheID: sfid-20250826_220202_302304_9B3F48A3 
+X-CRM114-Status: GOOD (  13.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -149,50 +150,66 @@ No functional change intended.
 
 Signed-off-by: Zihuan Zhang <zhangzihuan@kylinos.cn>
 ---
- kernel/power/energy_model.c | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
+ drivers/thermal/ti-soc-thermal/ti-thermal-common.c | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
 
-diff --git a/kernel/power/energy_model.c b/kernel/power/energy_model.c
-index ea7995a25780..4f91112c10bd 100644
---- a/kernel/power/energy_model.c
-+++ b/kernel/power/energy_model.c
-@@ -451,7 +451,7 @@ static void
- em_cpufreq_update_efficiencies(struct device *dev, struct em_perf_state =
-*table)
- {
- 	struct em_perf_domain *pd =3D dev->em_pd;
+diff --git a/drivers/thermal/ti-soc-thermal/ti-thermal-common.c b/drivers=
+/thermal/ti-soc-thermal/ti-thermal-common.c
+index 0cf0826b805a..c0db27670974 100644
+--- a/drivers/thermal/ti-soc-thermal/ti-thermal-common.c
++++ b/drivers/thermal/ti-soc-thermal/ti-thermal-common.c
+@@ -27,7 +27,6 @@
+=20
+ /* common data structures */
+ struct ti_thermal_data {
 -	struct cpufreq_policy *policy;
+ 	struct thermal_zone_device *ti_thermal;
+ 	struct thermal_zone_device *pcb_tz;
+ 	struct thermal_cooling_device *cool_dev;
+@@ -218,6 +217,7 @@ int ti_thermal_register_cpu_cooling(struct ti_bandgap=
+ *bgp, int id)
+ {
+ 	struct ti_thermal_data *data;
+ 	struct device_node *np =3D bgp->dev->of_node;
 +	struct cpufreq_policy *policy __free(put_cpufreq_policy);
- 	int found =3D 0;
- 	int i, cpu;
 =20
-@@ -479,8 +479,6 @@ em_cpufreq_update_efficiencies(struct device *dev, st=
-ruct em_perf_state *table)
- 			found++;
+ 	/*
+ 	 * We are assuming here that if one deploys the zone
+@@ -234,8 +234,8 @@ int ti_thermal_register_cpu_cooling(struct ti_bandgap=
+ *bgp, int id)
+ 	if (!data)
+ 		return -EINVAL;
+=20
+-	data->policy =3D cpufreq_cpu_get(0);
+-	if (!data->policy) {
++	policy =3D cpufreq_cpu_get(0);
++	if (!policy) {
+ 		pr_debug("%s: CPUFreq policy not found\n", __func__);
+ 		return -EPROBE_DEFER;
  	}
+@@ -246,7 +246,6 @@ int ti_thermal_register_cpu_cooling(struct ti_bandgap=
+ *bgp, int id)
+ 		int ret =3D PTR_ERR(data->cool_dev);
+ 		dev_err(bgp->dev, "Failed to register cpu cooling device %d\n",
+ 			ret);
+-		cpufreq_cpu_put(data->policy);
 =20
--	cpufreq_cpu_put(policy);
--
- 	if (!found)
- 		return;
+ 		return ret;
+ 	}
+@@ -261,11 +260,8 @@ int ti_thermal_unregister_cpu_cooling(struct ti_band=
+gap *bgp, int id)
 =20
-@@ -787,7 +785,7 @@ static void em_check_capacity_update(void)
+ 	data =3D ti_bandgap_get_sensor_data(bgp, id);
 =20
- 	/* Check if CPUs capacity has changed than update EM */
- 	for_each_possible_cpu(cpu) {
--		struct cpufreq_policy *policy;
-+		struct cpufreq_policy *policy __free(put_cpufreq_policy);
- 		struct em_perf_domain *pd;
- 		struct device *dev;
+-	if (!IS_ERR_OR_NULL(data)) {
++	if (!IS_ERR_OR_NULL(data))
+ 		cpufreq_cooling_unregister(data->cool_dev);
+-		if (data->policy)
+-			cpufreq_cpu_put(data->policy);
+-	}
 =20
-@@ -801,7 +799,6 @@ static void em_check_capacity_update(void)
- 					      msecs_to_jiffies(1000));
- 			break;
- 		}
--		cpufreq_cpu_put(policy);
-=20
- 		dev =3D get_cpu_device(cpu);
- 		pd =3D em_pd_get(dev);
+ 	return 0;
+ }
 --=20
 2.25.1
 
