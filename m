@@ -4,110 +4,174 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B15CCA0FFB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Aug 2025 19:15:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 620E6CA0FED
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Aug 2025 19:37:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Message-ID:References:In-Reply-To:Subject:CC:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/Oe8mL8TjjkGnR2jG5Rxs9VLauseuU6oqwYerqQXRro=; b=TRMNqD9B5zX1bDVFjT/7yjLcOX
-	0bB8tyTibkCvEF5XHnDrCXqBWUPHaTmKMofvqpLg6vbQWp2ZZS7Gef+u6SZIkcvWyRaQiJxZI+TSK
-	fFDd9bWvWHCvP4s+aDFutZ64+sRxs/wBSzxbuAy09/gQLJy93EmG5AuxOu4HvFyOHvtyXgTbPyPN8
-	q/kbvF7105pGjJ1u7ux44S1laU5NHPwAF8UKnkBlHBWw4TUVRLxxhgfz0sgzkJfJzX3rlUTsLwiGZ
-	aEMXKKog/pimpUyqKB4/2HnmzYeF3vyl9NUVcNRETnL/SexqlIFcuiYI/o7C0aUev/0VDk9IBw59U
-	4hLMIdmw==;
+	bh=9pryiKbesf4KLCmykOzJgOnqNMnr4CU7A7f1EXmgKk4=; b=hmyG5XZeapk8rveuRtF++NYVbA
+	DSsz5xOx2/IQPfx/t8Xh4pAs4Itw1GXZnxtbQ3HAq1UdTHnW37Ahh6OGFygjKnhUCDgAzDQdceC4X
+	2U6PzTtcCzFECrvkuCHG/GN9C6TZD2+bHJbBjIdrgcRY8kpKvmHSBWx2rN9PtibXjOnqe/Zc0yqDJ
+	JyXZjKRlVC1szOiAUjqxNOncuRYaJ/VGBYd34BVdX/K0BvwkKXwTaYdBJ1kTkOCJWhnKTajhU2ri4
+	1kZO5XqycZTDjYxQnO1A9dUVz674FAadZhB9Y3LabFt+3lROzomK2aXwBq+GoC1lUktYwWgI5Tw46
+	5Jrk6rnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urLc5-0000000GZVo-1em1;
-	Wed, 27 Aug 2025 19:15:17 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1urLxm-0000000GdDM-42hB;
+	Wed, 27 Aug 2025 19:37:42 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urJII-0000000GDGS-2Okr
+	id 1urK8l-0000000GLFO-3Lvc
 	for linux-mediatek@lists.infradead.org;
-	Wed, 27 Aug 2025 16:46:44 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-55f469ad067so85157e87.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 27 Aug 2025 09:46:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1756313200; x=1756918000; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=/Oe8mL8TjjkGnR2jG5Rxs9VLauseuU6oqwYerqQXRro=;
-        b=TUP0t8Y3oQ0YpICiFeXB7Ac8CnKUCt3KjonqFtL7zq1EY8XIhJVJ2v0awG3lJvA/rt
-         R1xDLCJYM516fObvCJsV5ojrP9R9JkY1z/PqePuopqYHuSjuL9GlESH+xRHb1V+CERUz
-         Py/IpgexMAzGA0h4dXNUYde5ffO7Ww/U3gi0rK1rjZ4/QRPbi+t/zC2PdCE7E2tVcrk6
-         e3MkeZzNncfDK1zNpMZvyURKrVRIYPiVZVSpaAlqN/T80hXFFOy8rQZ2V1iIXnBI3BKr
-         DJh2OWCNPzk83TCb7GmAshcGJ0cKWuXkz224Xkmpij7FbMQYpRghgSVzAyfXqxCsVkWl
-         hcSw==
+	Wed, 27 Aug 2025 17:40:57 +0000
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 57RGGZ9Y027487
+	for <linux-mediatek@lists.infradead.org>; Wed, 27 Aug 2025 17:40:55 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	9pryiKbesf4KLCmykOzJgOnqNMnr4CU7A7f1EXmgKk4=; b=aYQoa5Tqtc2tN8AL
+	iq3IQTavdCc6+N80wDp9/1ryQ6rtURE8hJYJ1JEf8GeMDt8Z57Ye+hrSjWGiS71g
+	dhTRly7ADDiCbZ+3yuhupKzFgyym6AZwAcOPdPXs4ELX8pirZMJET9j7BYqPdz6F
+	ZDY3xCJRWorp+AKCGAuCK09e4laJy4I4REdEF1KxFyiaKUObIG+jnZSoOJ8hsS/P
+	20/Lf4vNVU0EKTh1RpsR1NuG7UbcbDM0y4LlPFN3ItahZrHzGcEe80H5Dqu1duk/
+	fYwIxae0xwk6pCPszhHTrzdgVA9KKBlKZFlMQ3qfiDI1b8OwiDD7D9G8+1hGmZRi
+	jBWi7Q==
+Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com [209.85.222.198])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 48se16vgk8-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Wed, 27 Aug 2025 17:40:55 +0000 (GMT)
+Received: by mail-qk1-f198.google.com with SMTP id af79cd13be357-7e8704c5867so52195585a.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 27 Aug 2025 10:40:55 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756313200; x=1756918000;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=/Oe8mL8TjjkGnR2jG5Rxs9VLauseuU6oqwYerqQXRro=;
-        b=Oyl4eSCK0jsiZvektWa0pfMMC2J5T/xx4uazkpRaq3stFE+bQ/nAeP7fQ9fHkoD6E6
-         jiA62ooyXWHr3weE3xF5MeWewf+3LLcSlnpNSAThmQ+9b1WZKrl79laWV4w7fSXH2cV6
-         ZfSw5Sy34HLc2MU1kXzX+rU61FUoTp7IM4+NwQD02VAeDDyr7UlyfpXQVHNFkKf/gK/o
-         6Hc6RwGL2+3a5UVavoY6gH3fVZiyqxBNf/TpV8oP+xYpy7xF6WPVL77hprOyZe7/bEL9
-         zG8gFuze24atoJYimnc71GNtQctTmbcRHi2bl673GrgGUDQRAXrJsecKSOjPrAIB1A8k
-         LhIQ==
-X-Forwarded-Encrypted: i=1; AJvYcCV5UQcwZKAwGzJYdgSf4pdJ3/ar6noTXL7Q00ftFb6PLajBV2g52Vl0QsGkGCWZOm2OaEBDGSrM95nNHYrCZA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywo1VyDK70xnc4QpFV2749qJHi7fdgkULM3f/iNlUR9YFqzvhsO
-	lQTXHiSjPVX/vrXW5ApuIF6KnElMBqdwzkPDKV36In5HHsLXGSTtneVEbFkq5yysHvgmoORcFSi
-	AqzZLC4aH0RPg1lgB79tz+SnZIJ8Hq0zeKlbr81JnKQ==
-X-Gm-Gg: ASbGncttNSfcC5cPEYtwr6u0Z6yscz9GNrSWA34QXciGDxKTnY8NBFH2iL/PWxX/EQ+
-	ZIk2yLwqP5AmgMY4ftuQHCKjMzjlh+v68nGhQ5r+Ab0PfIc41IInifBjLTLhY/+pRPzDn9xcooC
-	TiU3+hjRVzkTARqRPtnXAnRjSo6ksmOGs0M88k6qOuwlxr15FxRb/T5LcdBZUOKJY7Zk6aLEGe5
-	t0lZy+/13iMLbXix7mAlrimx690NmX4I78SkYpL/GF0sXPCwA==
-X-Google-Smtp-Source: AGHT+IH2vScJrK3ld667OkWoypLYcKly6TqnbjFjPvpTB4KCLVEthUMwQrvNGz6iiIbdkdd5rCAEnq3AM7MI6KeEyo4=
-X-Received: by 2002:a05:6512:138c:b0:553:2969:1d6d with SMTP id
- 2adb3069b0e04-55f4f4c6a98mr2026962e87.13.1756313200214; Wed, 27 Aug 2025
- 09:46:40 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1756316454; x=1756921254;
+        h=content-transfer-encoding:mime-version:message-id:references
+         :in-reply-to:user-agent:subject:cc:to:from:date:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=9pryiKbesf4KLCmykOzJgOnqNMnr4CU7A7f1EXmgKk4=;
+        b=AcuCChvtURgt6Cyr09D3zHIwo7Qe1qQwmu9kVusJEWNfzLOBIfrM8mvQ8TERFMBjK2
+         xNJVUODV/3H6CpnTmen2O8QWIdzgwITp9TiJeGs+n983tjZS/zWb6CW6Pg0mzBKTF1wl
+         evFmL6sqG+GYqTd0KM7pU8L23YdAuck73zdQn5ZjLPuJgdGLbbbdh3vaC+S75sEaISKz
+         zM9et2+sD8wd4VR48e2QSSR2ZqrywI6agI86aSMIrCKOkiQzC/1Ra5SkTSVtpBQKzxaS
+         s/d2MedOA2xjTIkj9sacOugg/qrl0MriEllKR0DgkLS2HMe1QDJHHF/rwn/buBz0EuwK
+         Kepg==
+X-Forwarded-Encrypted: i=1; AJvYcCVHCuln8zfxnW8VKifIqkuBtdroQZLQoYlx6ThpRDdQcSp2OCTTLWrTmXqce+L38C7An+jA5e12xaCstOxZcQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxVrFbiB1poDPfAbCIcbwEcYwU8oxUKitROfjbNN1Ed1Q6IDm+H
+	N9fb9yFKS21U8PLaAtMUG0tOufUMMXy4HuIFjbihEGtivrmLrdLsAukKIwrU9EJA3XDDNGMJI76
+	TX8LZjcMKoovaUiYHbc5ZsPTEkHQxuED/t36fgb5I2y1jtpbsuzXqATyC/ISWMZ/86C0LIZ1PND
+	c=
+X-Gm-Gg: ASbGncstZ1GFM0E7MoPpXmp0mzauYuIuFmxlHWa5R/BONyVopE4qHYW4yrWPSioBYtD
+	lXKLNCDa2ySKpIxIi77wEWR350ZS/4TPXlOPpqDVM+TV0gpKe3z5pbWnULPOCtvE43XB9JnJw/D
+	ICt3WWrNKnZi+a587NXh6x3hy+n7VY5C8x9vgIHGY9BCgTXVMf7WRYpx316ZrPtnTDJSMonzjko
+	6l+tGG36UgxCCViPjCXPUOTLeXas6yl/cig2NEKdFsu8FQOXhPJollpD2y1LBQA8prRQJ4MMyho
+	G6uR4iOKljE4a6uifY+mtHz6/k0+7bRHPCaUNMG4KcYSSvc4KUf+uJrTh+fONv+IhVKlrOLALLF
+	MsGK3yFw7mYLpAp2f9PJOqw==
+X-Received: by 2002:a05:6214:27c1:b0:70b:5320:d416 with SMTP id 6a1803df08f44-70d970cd29fmr238271666d6.14.1756316453918;
+        Wed, 27 Aug 2025 10:40:53 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGhCi0u3Z5H0bwldj3p8+1IvfpKHSh571vUpFu3K1OKrspl//SOwGcmP4Yk4ANptZX5dCndsg==
+X-Received: by 2002:a05:6214:27c1:b0:70b:5320:d416 with SMTP id 6a1803df08f44-70d970cd29fmr238270536d6.14.1756316452731;
+        Wed, 27 Aug 2025 10:40:52 -0700 (PDT)
+Received: from ehlo.thunderbird.net (85-76-46-56-nat.elisa-mobile.fi. [85.76.46.56])
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-3365e5aa917sm28124531fa.41.2025.08.27.10.40.49
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 27 Aug 2025 10:40:50 -0700 (PDT)
+Date: Wed, 27 Aug 2025 20:40:47 +0300
+From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+To: Maxime Ripard <mripard@kernel.org>,
+        Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+        Thomas Zimmermann <tzimmermann@suse.de>,
+        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+        Louis Chauvet <louis.chauvet@bootlin.com>,
+        Haneen Mohammed <hamohammed.sa@gmail.com>,
+        Melissa Wen <melissa.srw@gmail.com>, Jyri Sarha <jyri.sarha@iki.fi>,
+        Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+        Paul Cercueil <paul@crapouillou.net>,
+        Liviu Dudau <liviu.dudau@arm.com>,
+        Russell King <linux@armlinux.org.uk>,
+        Manikandan Muralidharan <manikandan.m@microchip.com>,
+        Dharma Balasubiramani <dharma.b@microchip.com>,
+        Nicolas Ferre <nicolas.ferre@microchip.com>,
+        Alexandre Belloni <alexandre.belloni@bootlin.com>,
+        Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+        Inki Dae <inki.dae@samsung.com>,
+        Seung-Woo Kim <sw0312.kim@samsung.com>,
+        Kyungmin Park <kyungmin.park@samsung.com>,
+        Krzysztof Kozlowski <krzk@kernel.org>,
+        Alim Akhtar <alim.akhtar@samsung.com>, Liu Ying <victor.liu@nxp.com>,
+        Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+        Pengutronix Kernel Team <kernel@pengutronix.de>,
+        Fabio Estevam <festevam@gmail.com>,
+        Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>,
+        Lucas Stach <l.stach@pengutronix.de>,
+        Philipp Zabel <p.zabel@pengutronix.de>,
+        Anitha Chrisanthus <anitha.chrisanthus@intel.com>,
+        Edmund Dea <edmund.j.dea@intel.com>,
+        Paul Kocialkowski <paulk@sys-base.io>,
+        Sui Jingfeng <suijingfeng@loongson.cn>,
+        Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Rob Clark <robin.clark@oss.qualcomm.com>,
+        Dmitry Baryshkov <lumag@kernel.org>,
+        Abhinav Kumar <abhinav.kumar@linux.dev>,
+        Jessica Zhang <jessica.zhang@oss.qualcomm.com>,
+        Sean Paul <sean@poorly.run>,
+        Marijn Suijten <marijn.suijten@somainline.org>,
+        Sandy Huang <hjc@rock-chips.com>,
+        =?ISO-8859-1?Q?Heiko_St=FCbner?= <heiko@sntech.de>,
+        Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>,
+        Jernej Skrabec <jernej.skrabec@gmail.com>,
+        Samuel Holland <samuel@sholland.org>,
+        Thierry Reding <thierry.reding@gmail.com>,
+        Mikko Perttunen <mperttunen@nvidia.com>,
+        Jonathan Hunter <jonathanh@nvidia.com>,
+        Hans de Goede <hansg@kernel.org>,
+        Dave Stevenson <dave.stevenson@raspberrypi.com>,
+        =?ISO-8859-1?Q?Ma=EDra_Canal?= <mcanal@igalia.com>,
+        Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
+CC: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+        linux-mips@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+        linux-samsung-soc@vger.kernel.org, imx@lists.linux.dev,
+        linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+        freedreno@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+        linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_01/39=5D_drm/atomic=3A_Make_drm=5Fatomic?=
+ =?US-ASCII?Q?=5Fget=5Fconnector=5Fstate=28=29_early_return_consistent?=
+User-Agent: Thunderbird for Android
+In-Reply-To: <20250825-drm-no-more-existing-state-v1-1-f08ccd9f85c9@kernel.org>
+References: <20250825-drm-no-more-existing-state-v1-0-f08ccd9f85c9@kernel.org> <20250825-drm-no-more-existing-state-v1-1-f08ccd9f85c9@kernel.org>
+Message-ID: <BBD9E72B-B1B6-4072-A465-68204879684C@oss.qualcomm.com>
 MIME-Version: 1.0
-References: <20250815-pinctrl-gpio-pinfuncs-v5-0-955de9fd91db@linaro.org>
- <CACRpkdaDGmdhaik+1saRv7Ts4myQ+tg1aQqGU3xQyT7ma8dJFw@mail.gmail.com>
- <CAHp75VephepLq61HrVy=PX2oKUQd5NK2qS-vOC5h_NR65td3Uw@mail.gmail.com>
- <CACRpkda4soRCLF5=W=6R4wnwT3pjk743j022XfJxjTTQzuarAA@mail.gmail.com>
- <534ad082-08fa-42c0-9c24-f0c11af7d5b2@sirena.org.uk> <CAMRc=Mdn0_yPXyYq4sbvH4P9-h71vEc4arLPBfSk1PiEFaB7jQ@mail.gmail.com>
- <1804d9dc-8814-47d4-af88-c819c3f17bc0@sirena.org.uk>
-In-Reply-To: <1804d9dc-8814-47d4-af88-c819c3f17bc0@sirena.org.uk>
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Wed, 27 Aug 2025 18:46:28 +0200
-X-Gm-Features: Ac12FXzUBjVjZcm1OFCa8B8Pt22rGMmSNEEFj8GwunzU7aycJyqw28vaNlWwNSA
-Message-ID: <CAMRc=MdKgqa+vjhHvD2+Tjw5NwBtFv-0aUivi5UuEQd+n4KxmA@mail.gmail.com>
-Subject: Re: [PATCH v5 00/15] pinctrl: introduce the concept of a GPIO pin
- function category
-To: Mark Brown <broonie@kernel.org>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Andy Shevchenko <andy.shevchenko@gmail.com>, 
-	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>, 
-	Alexey Klimov <alexey.klimov@linaro.org>, Lorenzo Bianconi <lorenzo@kernel.org>, 
-	Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Paul Cercueil <paul@crapouillou.net>, Kees Cook <kees@kernel.org>, 
-	Andy Shevchenko <andy@kernel.org>, Andrew Morton <akpm@linux-foundation.org>, 
-	David Hildenbrand <david@redhat.com>, Lorenzo Stoakes <lorenzo.stoakes@oracle.com>, 
-	"Liam R. Howlett" <Liam.Howlett@oracle.com>, Vlastimil Babka <vbabka@suse.cz>, 
-	Mike Rapoport <rppt@kernel.org>, Suren Baghdasaryan <surenb@google.com>, Michal Hocko <mhocko@suse.com>, 
-	Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, 
-	Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, NXP S32 Linux Team <s32@nxp.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Tony Lindgren <tony@atomide.com>, 
-	Haojian Zhuang <haojian.zhuang@linaro.org>, Geert Uytterhoeven <geert+renesas@glider.be>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Danilo Krummrich <dakr@kernel.org>, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
-	linux-hardening@vger.kernel.org, linux-mm@kvack.org, imx@lists.linux.dev, 
-	linux-omap@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, Chen-Yu Tsai <wenst@chromium.org>, 
-	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain;
+ charset=utf-8
 Content-Transfer-Encoding: quoted-printable
+X-Proofpoint-GUID: kOrWcCVaieQjy37DCvLm4R0RQUAoB67G
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODI2MDEyMCBTYWx0ZWRfX5PSpBHW6FDB3
+ WcQ8zkp+pLmrM10YcNxG6Bvmp3zA/jjrjEU+Jjsd075rdovWpH95MIiQ/rZx/qg9mggQw3Eqvp9
+ d+JMwFAVeM1dEigN/1GFFSoe0QWV4JWWH6YszYucktMx3kyZrnKX5m2BRjNLqaMrNKm6v1OUCkc
+ JbvzimkRnF/1VmSOPGykRu8KQ7E18A0DeEQgoSC5vA+4y8pMtXICVDCOjnBtPGPRwir8blEsXvV
+ 7PReVnuyy90JUlI1/qiANKsogOWJgRkxDnl9lBNNVZS+d3O0vQHFuAQba1qwCtxwOCZpQZZdcIH
+ thZe/wU6ahRyEqZwifGQp9Vsc5Dzk5lG1x7DGNlVZ0wCak0x2ETqy5Uk+vOO9mWRTsXc4+vhUrW
+ nm7whhut
+X-Proofpoint-ORIG-GUID: kOrWcCVaieQjy37DCvLm4R0RQUAoB67G
+X-Authority-Analysis: v=2.4 cv=CNYqXQrD c=1 sm=1 tr=0 ts=68af4327 cx=c_pps
+ a=qKBjSQ1v91RyAK45QCPf5w==:117 a=ntis2/2Y3p1p47GkerkPQg==:17
+ a=IkcTkHD0fZMA:10 a=2OwXVqhp2XgA:10 a=puQWGBksFvoA:10 a=VwQbUJbxAAAA:8
+ a=V78A4Cvkybgf4icwE48A:9 a=QEXdDO2ut3YA:10 a=NFOGd7dJGGMPyQGDc5-O:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-08-27_04,2025-08-26_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1015 impostorscore=0 priorityscore=1501 adultscore=0 spamscore=0
+ phishscore=0 suspectscore=0 bulkscore=0 malwarescore=0 classifier=typeunknown
+ authscore=0 authtc= authcc= route=outbound adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2507300000 definitions=main-2508260120
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250827_094642_615063_E892DCC0 
-X-CRM114-Status: GOOD (  17.20  )
+X-CRM114-CacheID: sfid-20250827_104055_849714_F2B2AA30 
+X-CRM114-Status: GOOD (  15.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,28 +186,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 27, 2025 at 12:22=E2=80=AFPM Mark Brown <broonie@kernel.org> wr=
-ote:
+On 25 August 2025 16=2E43=2E06 EEST, Maxime Ripard <mripard@kernel=2Eorg> w=
+rote:
+>The drm_atomic_get_connector_state() tries to lookup if a connector
+>state was already allocated in the global state to return early if it
+>was the case=2E drm_atomic_get_plane_state() and
+>drm_atomic_get_crtc_state() behave similarly=2E
 >
-> On Tue, Aug 26, 2025 at 08:19:37PM +0200, Bartosz Golaszewski wrote:
-> > On Wed, Aug 20, 2025 at 8:41=E2=80=AFPM Mark Brown <broonie@kernel.org>=
- wrote:
-> > > On Wed, Aug 20, 2025 at 09:12:49AM +0200, Linus Walleij wrote:
+>However, and unlike the other two, drm_atomic_get_connector_state() will
+>do that lookup after having called drm_modeset_lock(), when the others
+>will do it before=2E
 >
-> > > > The qualcomm 32bit platforms fail in next anyway so I dropped the p=
-atches
-> > > > for now.
+>Let's move the early return before the lock to make it consistent=2E
 >
-> > > FWIW the i.MX8MP also seems to have been broken by this:
+>Signed-off-by: Maxime Ripard <mripard@kernel=2Eorg>
+>---
+> drivers/gpu/drm/drm_atomic=2Ec | 6 +++---
+> 1 file changed, 3 insertions(+), 3 deletions(-)
 >
-> > I can't test it unfortunately - would you mind sharing some info on
-> > what's failing exactly?
->
-> I've just got the log I linked above.
+>diff --git a/drivers/gpu/drm/drm_atomic=2Ec b/drivers/gpu/drm/drm_atomic=
+=2Ec
+>index cd15cf52f0c9144711da5879da57884674aea9e4=2E=2Efe21f154e0fa030f85fb3=
+d6d35e2684adcf36e26 100644
+>--- a/drivers/gpu/drm/drm_atomic=2Ec
+>+++ b/drivers/gpu/drm/drm_atomic=2Ec
+>@@ -1128,10 +1128,13 @@ drm_atomic_get_connector_state(struct drm_atomic_=
+state *state,
+> 	struct drm_mode_config *config =3D &connector->dev->mode_config;
+> 	struct drm_connector_state *connector_state;
+>=20
+> 	WARN_ON(!state->acquire_ctx);
+>=20
+>+	if (state->connectors[index]=2Estate)
+>+		return state->connectors[index]=2Estate;
 
-So, I've been looking at this bisect email and clicking the links to
-LAVA jobs and I can't find anything. Does it fail to build? Fail at
-run-time? I'm not sure how to read this.
+Unlike other DRM objects, connectors are dynamic=2E There is no guarantee =
+that at this point this array entry exists and it's valid=2E You might be t=
+ampering with the unallocated memory=2E
 
-Bart
+>+
+> 	ret =3D drm_modeset_lock(&config->connection_mutex, state->acquire_ctx)=
+;
+> 	if (ret)
+> 		return ERR_PTR(ret);
+>=20
+> 	index =3D drm_connector_index(connector);
+>@@ -1150,13 +1153,10 @@ drm_atomic_get_connector_state(struct drm_atomic_=
+state *state,
+> 		       sizeof(*state->connectors) * (alloc - state->num_connector));
+>=20
+> 		state->num_connector =3D alloc;
+> 	}
+>=20
+>-	if (state->connectors[index]=2Estate)
+>-		return state->connectors[index]=2Estate;
+>-
+> 	connector_state =3D connector->funcs->atomic_duplicate_state(connector)=
+;
+> 	if (!connector_state)
+> 		return ERR_PTR(-ENOMEM);
+>=20
+> 	drm_connector_get(connector);
+>
+
+
+With best wishes=20
+Dmitry
 
