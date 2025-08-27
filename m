@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AED9ECA0FFF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Aug 2025 02:36:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5AB1CA0FF0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Aug 2025 02:36:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bvtIcgWTejnZkvurOZhd9nfgr+/i44WYhiNAWHhzzuQ=; b=g6Qo9aYeBbsCst2ywQlUmKA8S3
-	HUEpsLPwfUCLe7j+wL1NutlZiPAzsgb2nbshukk3DyJD+B+0tsrBgITwx3+cRNg0DX5EfUeSSlBhU
-	5wr8FqZSF0l2eePQ4mg0J7SrksYXOph1/BWp0HuRMUNk7UfFe7ucsZI0cEYYRjIFR4XZe0rxFL+vC
-	uetsBDB8Kamyl97jjbt8LK6ZC1L2plkH4NEg2j9gCzC2TWfgE5WTLSSSouMzWOUMksaA3kg5wqX//
-	WwJCNiV2VhRWO9kLtKjpYlCF59gfvGPmGDnsETDPAJVyAfmVlZzqL8y1StOnzYGNukpesWuSTOB+L
-	NKmktkTg==;
+	bh=QaFGF4VzD+E37SvTTU+gusc4i+ilgdaFh7Yj5tWWfYE=; b=ng68Hqv7QysE3/jC9ragY1E28G
+	H6FK+ZLWyiqOCoCrkhBXzl4GQ5qndkmC3Kmea1V+hmUU4QNskeHVQa9wrp4qCaOH9zN+guECB0xDX
+	K7djFBrigbWmCrzDj8M+glhCuk4yPIvhzBgDqwnvX/MvQRbZP5AiIsv1O0HeoggPnUta7XJaReUVW
+	r2YASDLWuWMU10m8Uei3V8X8zDG+8WvtvZKXwpEP35IBUe2ibdlp+vv+CUSNKHGb6b7UvGxYNGqYM
+	JgrLR9SraRpVIQS5sUcmt4dEPZoX1cjnZ3glfVf+n4qCMWbieEvl5V9TvmJLi3/EOjvFk2sGPrsOO
+	e5xdaRyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ur61h-0000000DiT4-2lM1;
-	Wed, 27 Aug 2025 02:36:41 +0000
+	id 1ur61g-0000000DiR4-26vO;
+	Wed, 27 Aug 2025 02:36:40 +0000
 Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ur5zt-0000000Dhw7-3Ckg;
-	Wed, 27 Aug 2025 02:34:51 +0000
-X-UUID: 64b28ba482ee11f0b29709d653e92f7d-20250827
+	id 1ur5zd-0000000Dhqd-39vw;
+	Wed, 27 Aug 2025 02:34:35 +0000
+X-UUID: 5abbd61482ee11f0b29709d653e92f7d-20250827
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.45,REQID:52727bdc-ad32-429b-8d99-7f62fc37f714,IP:0,U
-	RL:0,TC:0,Content:0,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:6493067,CLOUDID:a9bf6dc1b0f5efbb346cf6c5f383c995,BulkI
-	D:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|850,TC:nil,Content:0|50,EDM:1,
-	IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:
-	0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.1.45,REQID:8564305a-8abc-4629-99ad-b3d7d3369df9,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6493067,CLOUDID:433d3d754bf22cd382d78454512c3772,BulkI
+	D:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|850,TC:nil,Content:0|50,EDM:-3
+	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
+	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 64b28ba482ee11f0b29709d653e92f7d-20250827
+X-UUID: 5abbd61482ee11f0b29709d653e92f7d-20250827
 Received: from mail.kylinos.cn [(10.44.16.175)] by mailgw.kylinos.cn
 	(envelope-from <zhangzihuan@kylinos.cn>)
 	(Generic MTA)
-	with ESMTP id 1643766455; Wed, 27 Aug 2025 10:34:45 +0800
+	with ESMTP id 668903300; Wed, 27 Aug 2025 10:34:28 +0800
 Received: from mail.kylinos.cn (localhost [127.0.0.1])
-	by mail.kylinos.cn (NSMail) with SMTP id E063AE008FAB;
-	Wed, 27 Aug 2025 10:34:43 +0800 (CST)
-X-ns-mid: postfix-68AE6EC3-738925222
+	by mail.kylinos.cn (NSMail) with SMTP id CED22E008FAC;
+	Wed, 27 Aug 2025 10:34:27 +0800 (CST)
+X-ns-mid: postfix-68AE6EB3-644502219
 Received: from localhost.localdomain (unknown [172.25.120.24])
-	by mail.kylinos.cn (NSMail) with ESMTPA id 6F1FDE008FB0;
-	Wed, 27 Aug 2025 10:34:38 +0800 (CST)
+	by mail.kylinos.cn (NSMail) with ESMTPA id 36833E008FAE;
+	Wed, 27 Aug 2025 10:34:22 +0800 (CST)
 From: Zihuan Zhang <zhangzihuan@kylinos.cn>
 To: "Rafael J . wysocki" <rafael@kernel.org>,
 	Viresh Kumar <viresh.kumar@linaro.org>,
@@ -116,17 +116,17 @@ Cc: zhenglifeng <zhenglifeng1@huawei.com>,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Zihuan Zhang <zhangzihuan@kylinos.cn>
-Subject: [PATCH v2 14/18] cpufreq: powerpc: macintosh: Use __free(put_cpufreq_policy) for policy reference
-Date: Wed, 27 Aug 2025 10:31:58 +0800
-Message-Id: <20250827023202.10310-15-zhangzihuan@kylinos.cn>
+Subject: [PATCH v2 12/18] PM / devfreq: Use __free(put_cpufreq_policy) for policy reference
+Date: Wed, 27 Aug 2025 10:31:56 +0800
+Message-Id: <20250827023202.10310-13-zhangzihuan@kylinos.cn>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20250827023202.10310-1-zhangzihuan@kylinos.cn>
 References: <20250827023202.10310-1-zhangzihuan@kylinos.cn>
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250826_193450_149707_0A43BBC0 
-X-CRM114-Status: GOOD (  13.63  )
+X-CRM114-CacheID: sfid-20250826_193434_101796_3E5404B0 
+X-CRM114-Status: GOOD (  14.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -149,33 +149,118 @@ No functional change intended.
 
 Signed-off-by: Zihuan Zhang <zhangzihuan@kylinos.cn>
 ---
- drivers/macintosh/windfarm_cpufreq_clamp.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ drivers/devfreq/governor_passive.c | 19 +++++--------------
+ 1 file changed, 5 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/macintosh/windfarm_cpufreq_clamp.c b/drivers/macinto=
-sh/windfarm_cpufreq_clamp.c
-index 28d18ef22bbb..f05e2167481f 100644
---- a/drivers/macintosh/windfarm_cpufreq_clamp.c
-+++ b/drivers/macintosh/windfarm_cpufreq_clamp.c
-@@ -62,7 +62,7 @@ static const struct wf_control_ops clamp_ops =3D {
-=20
- static int __init wf_cpufreq_clamp_init(void)
- {
+diff --git a/drivers/devfreq/governor_passive.c b/drivers/devfreq/governo=
+r_passive.c
+index 953cf9a1e9f7..99597c921e38 100644
+--- a/drivers/devfreq/governor_passive.c
++++ b/drivers/devfreq/governor_passive.c
+@@ -80,13 +80,13 @@ static int get_target_freq_with_cpufreq(struct devfre=
+q *devfreq,
+ 	struct devfreq_passive_data *p_data =3D
+ 				(struct devfreq_passive_data *)devfreq->data;
+ 	struct devfreq_cpu_data *parent_cpu_data;
 -	struct cpufreq_policy *policy;
-+	struct cpufreq_policy *policy __free(put_cpufreq_policy);
- 	struct wf_control *clamp;
- 	struct device *dev;
- 	int ret;
-@@ -79,8 +79,6 @@ static int __init wf_cpufreq_clamp_init(void)
- 	ret =3D freq_qos_add_request(&policy->constraints, &qos_req, FREQ_QOS_M=
-AX,
- 				   max_freq);
+ 	unsigned long cpu, cpu_cur, cpu_min, cpu_max, cpu_percent;
+ 	unsigned long dev_min, dev_max;
+ 	unsigned long freq =3D 0;
+ 	int ret =3D 0;
 =20
+ 	for_each_online_cpu(cpu) {
++		struct cpufreq_policy *policy __free(put_cpufreq_policy);
+ 		policy =3D cpufreq_cpu_get(cpu);
+ 		if (!policy) {
+ 			ret =3D -EINVAL;
+@@ -94,10 +94,8 @@ static int get_target_freq_with_cpufreq(struct devfreq=
+ *devfreq,
+ 		}
+=20
+ 		parent_cpu_data =3D get_parent_cpu_data(p_data, policy);
+-		if (!parent_cpu_data) {
+-			cpufreq_cpu_put(policy);
++		if (!parent_cpu_data)
+ 			continue;
+-		}
+=20
+ 		/* Get target freq via required opps */
+ 		cpu_cur =3D parent_cpu_data->cur_freq * HZ_PER_KHZ;
+@@ -106,7 +104,6 @@ static int get_target_freq_with_cpufreq(struct devfre=
+q *devfreq,
+ 					devfreq->opp_table, &cpu_cur);
+ 		if (freq) {
+ 			*target_freq =3D max(freq, *target_freq);
+-			cpufreq_cpu_put(policy);
+ 			continue;
+ 		}
+=20
+@@ -121,7 +118,6 @@ static int get_target_freq_with_cpufreq(struct devfre=
+q *devfreq,
+ 		freq =3D dev_min + mult_frac(dev_max - dev_min, cpu_percent, 100);
+=20
+ 		*target_freq =3D max(freq, *target_freq);
+-		cpufreq_cpu_put(policy);
+ 	}
+=20
+ 	return ret;
+@@ -256,7 +252,6 @@ static int cpufreq_passive_register_notifier(struct d=
+evfreq *devfreq)
+ 	struct device *dev =3D devfreq->dev.parent;
+ 	struct opp_table *opp_table =3D NULL;
+ 	struct devfreq_cpu_data *parent_cpu_data;
+-	struct cpufreq_policy *policy;
+ 	struct device *cpu_dev;
+ 	unsigned int cpu;
+ 	int ret;
+@@ -273,6 +268,7 @@ static int cpufreq_passive_register_notifier(struct d=
+evfreq *devfreq)
+ 	}
+=20
+ 	for_each_possible_cpu(cpu) {
++		struct cpufreq_policy *policy __free(put_cpufreq_policy);
+ 		policy =3D cpufreq_cpu_get(cpu);
+ 		if (!policy) {
+ 			ret =3D -EPROBE_DEFER;
+@@ -280,16 +276,14 @@ static int cpufreq_passive_register_notifier(struct=
+ devfreq *devfreq)
+ 		}
+=20
+ 		parent_cpu_data =3D get_parent_cpu_data(p_data, policy);
+-		if (parent_cpu_data) {
+-			cpufreq_cpu_put(policy);
++		if (parent_cpu_data)
+ 			continue;
+-		}
+=20
+ 		parent_cpu_data =3D kzalloc(sizeof(*parent_cpu_data),
+ 						GFP_KERNEL);
+ 		if (!parent_cpu_data) {
+ 			ret =3D -ENOMEM;
+-			goto err_put_policy;
++			goto err;
+ 		}
+=20
+ 		cpu_dev =3D get_cpu_device(cpu);
+@@ -314,7 +308,6 @@ static int cpufreq_passive_register_notifier(struct d=
+evfreq *devfreq)
+ 		parent_cpu_data->max_freq =3D policy->cpuinfo.max_freq;
+=20
+ 		list_add_tail(&parent_cpu_data->node, &p_data->cpu_data_list);
+-		cpufreq_cpu_put(policy);
+ 	}
+=20
+ 	mutex_lock(&devfreq->lock);
+@@ -327,8 +320,6 @@ static int cpufreq_passive_register_notifier(struct d=
+evfreq *devfreq)
+=20
+ err_free_cpu_data:
+ 	kfree(parent_cpu_data);
+-err_put_policy:
 -	cpufreq_cpu_put(policy);
--
- 	if (ret < 0) {
- 		pr_err("%s: Failed to add freq constraint (%d)\n", __func__,
- 		       ret);
+ err:
+=20
+ 	return ret;
 --=20
 2.25.1
 
