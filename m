@@ -4,80 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45739CA0EFF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Aug 2025 08:04:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE590CA0EFF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Aug 2025 08:36:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=IUzS1FlJJem1zWHteh/brshjzgj4HQ9TMqISmQwh+sQ=; b=aAnpgZMtH7fLlYkdn5XSKhBty0
-	l1FD9D4CmGTbCqIrDF/GD1FxfAyejj/x02qchq26r9sSP8qSFp+HTlBXwBl7hgAqBUDAI3qEz3RR+
-	teIRuK1HX5tzkmF5tDC9K4kRoyApDl+bE8u/aZSB+8ij2HWCxKxLUubq8nHpLN9yzojEB22lJgbj3
-	0c/RPE6mHYzwLeNg+N+mqhCg6WkZRVx8unilrKmiBxRJdjAguvuSxlPntPILhHAjTtCl6ZSzJxSnu
-	Pizj/hy2AEp4v+n/2SC4f9zxmFhoSMDCprzJH6xKKAwbO+e1EtxvB2YmDJS4pOrXJQ3LIM8DhT+f9
-	COuINkwA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=q7a/R+VZmXSIzhpPDuRUAzAep8Wo5GHk+KF9g2Pqybk=; b=s1qTJwygH4EXdX1vyeeApFDRzr
+	IhbiV6I0Ao8sc4WvZGTu65qrYjraB1aIv3U1k6gqTaoznLYx+ioKa3HSD+4RSkZEsBy8d4GttZsGY
+	cMnpV0oSGIXYzLzUoxGHTCbPPnU1s2DyUC6b6+dffJ5ij1QMMDd/mUzoRciLHPE7dLmNv+/HrKKXG
+	d6Eh7abl5VkpyRxgGfdFhsdSeHemGryJlpcrK6jbPOSfgY35Bgn4uDYm/zlWgUE7OzTOkpJ7Pd2bC
+	KL6619laVYoCSQTVM5yH0AKSto44EafphcT2+hw8dffdB55gMdN3nG9lqnSBnUOHvxToBoPAsNLJ2
+	qEoEOYtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urB8j-0000000EZfO-3dPx;
-	Wed, 27 Aug 2025 08:04:17 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urB61-0000000EYwT-1BpG;
-	Wed, 27 Aug 2025 08:01:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender:
-	Reply-To:Content-ID:Content-Description:In-Reply-To:References;
-	bh=IUzS1FlJJem1zWHteh/brshjzgj4HQ9TMqISmQwh+sQ=; b=MAdWts2B9DV2xN5PIpDeOEaIBW
-	TPUwEP7zuYn/983CgYAdneCV43vGmPIgeVNNFRrh38w4Qf2/5bSbVA8ORbVtfJ8GGiLbTqdnTL3YI
-	9aoJQMebMGuRdhnMvAs2lQ34uJOy8v1RzViTi+UA0eXtsASo8ykTs+KMqvjjnNRFLUHhlAwmx+lkc
-	I4lJvw/zqOgCw2w9nS5BGxYhjn1cccLIGoolftSXu68BGG5PEYSsW70rmp/qq44kL+DIATJblh6ns
-	kjyPwDVyyTbqxsDASKbH8+hzP0WZHgPKKiFhMzWWPIELzS4UwPrcDaZZELnzy21EwuLrHeFRPgwzA
-	LDG6xkkA==;
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urB5w-00000002NhI-2ILP;
-	Wed, 27 Aug 2025 08:01:26 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E1FBF419D4;
-	Wed, 27 Aug 2025 08:01:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 39BD2C19423;
-	Wed, 27 Aug 2025 08:01:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756281680;
-	bh=Nw7JExH/BxnTMttSxUeig+mm8bvREsbFmHsG7msCRWU=;
-	h=From:Date:Subject:To:Cc:From;
-	b=fUWbZQf6BTh45TtW9SnQDPvRvz1ZrsIj0ybgAJZg/94MJJIyoH5VUd8EhWV9IrXrL
-	 8tfTk9AQAOfuW3D2ehGFWMmcYTB/HLHihB6ycrOpasAnuZ3sMPCu6ucS790oEy0Oma
-	 Gs8PWt/U37CqW0g8ih4br4TayvqbiziZOwAJUFkt47fnelHbwKShovqG2PnmKZ6mrA
-	 NxbRfElpaDvVaYMlPyk3VJyvD4xay7pbOVbcRS+QqykSHsuPUlANEjG+HLUJBBU0Ea
-	 D1jZ3eLlCdorc5hnr5WpkBPdPHwTTGPyvoafDmpNE+DGyefi9Syaa5QfGIrILi0mr5
-	 f9zHBnae9AjxA==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Wed, 27 Aug 2025 10:01:02 +0200
-Subject: [PATCH mt76] wifi: mt76: mt7996: Export MLO AP capabilities to
- mac80211
+	id 1urBdb-0000000Eh54-1Vfg;
+	Wed, 27 Aug 2025 08:36:11 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1urBY1-0000000Eg0x-2kne;
+	Wed, 27 Aug 2025 08:30:27 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 21F941515;
+	Wed, 27 Aug 2025 01:30:16 -0700 (PDT)
+Received: from [10.1.196.46] (e134344.arm.com [10.1.196.46])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 31FA33F694;
+	Wed, 27 Aug 2025 01:30:15 -0700 (PDT)
+Message-ID: <70f4c2ce-1dbd-4596-af78-bca1cdbbb581@arm.com>
+Date: Wed, 27 Aug 2025 09:30:13 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250827-mt7996-mlo-ap-capa-v1-1-b5cfbcafa25f@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAD27rmgC/x3MSwqAMAwA0atI1gZqUateRVykNWrAT2lFBPHuF
- pdvMfNA5CAcocseCHxJlGNPKPIM3EL7zChjMmilK9Vog9tp2rbGbT2QPDryhKRK66zhprQVpNA
- HnuT+p/3wvh+oqyF0ZAAAAA==
-X-Change-ID: 20250827-mt7996-mlo-ap-capa-a04bcb7e84b5
-To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 01/18] arm64: topology: Use __free(put_cpufreq_policy)
+ for policy reference
+To: Zihuan Zhang <zhangzihuan@kylinos.cn>,
+ "Rafael J . wysocki" <rafael@kernel.org>,
+ Viresh Kumar <viresh.kumar@linaro.org>,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
+ Sean Christopherson <seanjc@google.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, Thomas Gleixner <tglx@linutronix.de>,
+ Ingo Molnar <mingo@redhat.com>, Borislav Petkov <bp@alien8.de>,
+ Dave Hansen <dave.hansen@linux.intel.com>, Markus Mayer
+ <mmayer@broadcom.com>, Florian Fainelli <florian.fainelli@broadcom.com>,
+ Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>,
+ Madhavan Srinivasan <maddy@linux.ibm.com>,
+ Michael Ellerman <mpe@ellerman.id.au>, Krzysztof Kozlowski
+ <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ Chanwoo Choi <cw00.choi@samsung.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, Tvrtko Ursulin
+ <tursulin@ursulin.net>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>, Daniel Lezcano <daniel.lezcano@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
+ Eduardo Valentin <edubezval@gmail.com>, Keerthy <j-keerthy@ti.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+Cc: zhenglifeng <zhenglifeng1@huawei.com>, "H . Peter Anvin" <hpa@zytor.com>,
+ Zhang Rui <rui.zhang@intel.com>, Len Brown <lenb@kernel.org>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Christophe Leroy <christophe.leroy@csgroup.eu>,
+ Lukasz Luba <lukasz.luba@arm.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Beata Michalska <beata.michalska@arm.com>, Fabio Estevam
+ <festevam@gmail.com>, Pavel Machek <pavel@kernel.org>,
+ Sumit Gupta <sumitg@nvidia.com>,
+ Prasanna Kumar T S M <ptsm@linux.microsoft.com>,
+ Sudeep Holla <sudeep.holla@arm.com>, Yicong Yang <yangyicong@hisilicon.com>,
+ linux-pm@vger.kernel.org, x86@kernel.org, kvm@vger.kernel.org,
+ linux-acpi@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
+ linux-samsung-soc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-tegra@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org, imx@lists.linux.dev,
+ linux-omap@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20250827023202.10310-1-zhangzihuan@kylinos.cn>
+ <20250827023202.10310-2-zhangzihuan@kylinos.cn>
+From: Ben Horgan <ben.horgan@arm.com>
+Content-Language: en-US
+In-Reply-To: <20250827023202.10310-2-zhangzihuan@kylinos.cn>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250827_090125_295172_410C77CE 
-X-CRM114-Status: UNSURE (   9.31  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250827_013025_778039_CF27CE33 
+X-CRM114-Status: GOOD (  19.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,66 +107,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Shayne Chen <shayne.chen@mediatek.com>
+Hi Zihuan,
 
-Report MT7996 MLO AP capabilities to mac80211 stack.
+On 8/27/25 03:31, Zihuan Zhang wrote:
+> Replace the manual cpufreq_cpu_put() with __free(put_cpufreq_policy)
+> annotation for policy references. This reduces the risk of reference
+> counting mistakes and aligns the code with the latest kernel style.
+> 
+> No functional change intended.
+> 
+> Signed-off-by: Zihuan Zhang <zhangzihuan@kylinos.cn>
+> ---
+>  arch/arm64/kernel/topology.c | 9 +++------
+>  1 file changed, 3 insertions(+), 6 deletions(-)
+> 
+> diff --git a/arch/arm64/kernel/topology.c b/arch/arm64/kernel/topology.c
+> index 5d07ee85bdae..e3cb6d54f35b 100644
+> --- a/arch/arm64/kernel/topology.c
+> +++ b/arch/arm64/kernel/topology.c
+> @@ -307,17 +307,16 @@ int arch_freq_get_on_cpu(int cpu)
+>  		 */
+>  		if (!housekeeping_cpu(cpu, HK_TYPE_TICK) ||
+>  		    time_is_before_jiffies(last_update + msecs_to_jiffies(AMU_SAMPLE_EXP_MS))) {
+> -			struct cpufreq_policy *policy = cpufreq_cpu_get(cpu);
+> +			struct cpufreq_policy *policy __free(put_cpufreq_policy);
+Based on the guidance, in include/linux/cleanup.h, I would expect the
+assignment to be done on this line.
 
-Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
-Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/wireless/mediatek/mt76/mt7996/init.c | 23 ++++++++++++++++++++++-
- 1 file changed, 22 insertions(+), 1 deletion(-)
+"...the recommendation is to always define and assign variables in one
+ * statement and not group variable definitions at the top of the
+ * function when __free() is used."
+>  			int ref_cpu;
+>  
+> +			policy = cpufreq_cpu_get(cpu);
+>  			if (!policy)
+>  				return -EINVAL;
+>  
+>  			if (!cpumask_intersects(policy->related_cpus,
+> -						housekeeping_cpumask(HK_TYPE_TICK))) {
+> -				cpufreq_cpu_put(policy);
+> +						housekeeping_cpumask(HK_TYPE_TICK)))
+>  				return -EOPNOTSUPP;
+> -			}
+>  
+>  			for_each_cpu_wrap(ref_cpu, policy->cpus, cpu + 1) {
+>  				if (ref_cpu == start_cpu) {
+> @@ -329,8 +328,6 @@ int arch_freq_get_on_cpu(int cpu)
+>  					break;
+>  			}
+>  
+> -			cpufreq_cpu_put(policy);
+> -
+>  			if (ref_cpu >= nr_cpu_ids)
+>  				/* No alternative to pull info from */
+>  				return -EAGAIN;
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-index a9599c286328eb2b1ff24504109d25a9d916e044..29e0cf966bcac5ab805b927fd73b7a23d15877ec 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-@@ -63,6 +63,24 @@ static const struct ieee80211_iface_combination if_comb = {
- 	.beacon_int_min_gcd = 100,
- };
- 
-+static const u8 if_types_ext_capa_ap[] = {
-+	[0] = WLAN_EXT_CAPA1_EXT_CHANNEL_SWITCHING,
-+	[2] = WLAN_EXT_CAPA3_MULTI_BSSID_SUPPORT,
-+	[7] = WLAN_EXT_CAPA8_OPMODE_NOTIF,
-+};
-+
-+static const struct wiphy_iftype_ext_capab iftypes_ext_capa[] = {
-+	{
-+		.iftype = NL80211_IFTYPE_AP,
-+		.extended_capabilities = if_types_ext_capa_ap,
-+		.extended_capabilities_mask = if_types_ext_capa_ap,
-+		.extended_capabilities_len = sizeof(if_types_ext_capa_ap),
-+		.mld_capa_and_ops =
-+			FIELD_PREP_CONST(IEEE80211_MLD_CAP_OP_MAX_SIMUL_LINKS,
-+					 MT7996_MAX_RADIOS - 1),
-+	},
-+};
-+
- static ssize_t mt7996_thermal_temp_show(struct device *dev,
- 					struct device_attribute *attr,
- 					char *buf)
-@@ -463,8 +481,11 @@ mt7996_init_wiphy(struct ieee80211_hw *hw, struct mtk_wed_device *wed)
- 	wiphy->radio = dev->radios;
- 
- 	wiphy->reg_notifier = mt7996_regd_notifier;
--	wiphy->flags |= WIPHY_FLAG_HAS_CHANNEL_SWITCH;
-+	wiphy->flags |= WIPHY_FLAG_HAS_CHANNEL_SWITCH |
-+			WIPHY_FLAG_SUPPORTS_MLO;
- 	wiphy->mbssid_max_interfaces = 16;
-+	wiphy->iftype_ext_capab = iftypes_ext_capa;
-+	wiphy->num_iftype_ext_capab = ARRAY_SIZE(iftypes_ext_capa);
- 
- 	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_BSS_COLOR);
- 	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_VHT_IBSS);
+Thanks,
 
----
-base-commit: a7cc1aa151e3a9c0314b995f06102f7763d3bd71
-change-id: 20250827-mt7996-mlo-ap-capa-a04bcb7e84b5
-
-Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+Ben
 
 
