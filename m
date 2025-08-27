@@ -4,78 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E788AC8303F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Aug 2025 04:48:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50C5FC8303F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Aug 2025 05:29:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=t0Ryzl+bhnvnUoIRkn4L1iphGVUHu2m+u71p5zhRsXY=; b=nbjzKDEln4kAvgFSkc+SKvdn3C
-	odKRaAtLv19q3Pp2Q2FARQFFjPd9kqY8/GD1fsG7iM7r5/R+gtmFiEVv1HUwn5+BUuEYsIHTmNLpi
-	4O8x+lVinX64hSc8sKyGYVpE/nMAB4lffJZGLqrdOnMHSZW6vSQXFOR7eOj3oA9YNZAsIVcJRXMiJ
-	ALPErt8HUbUcsv4gHWQ5G/5vRqEHSEE6CqDhIt0ilXtY1kYNSKsEH75tpQmlPgI2BGVGcdURbGAKW
-	WI+79cphiNSrw93M1yBrxxRb6soZGBcNHDeatHh7hJ9Ss0rrnkL1cf+ZTl7gdVQLwRaqrlEDS+f1k
-	lYaDN24w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pAyMWgexEz6ELtLyIl6a7V43YZz8wxxYEW9iDs3FLrU=; b=PEXmePg83qtiQ39JpVuCTKcGGC
+	sjM1PpEG39o7EpmY4y/g+PShcVi88uHWKHgH+upHAw/OA6LGK/kvpQc19HYJQ6KONbeZktwmjMm94
+	gWM76RkGzJ1xfOhF+VpjrCRAD3gpJfq4AiytFWKG2D09sQSJzRL1hnKWQ7K7eZkJzVcypPPKMMKU6
+	sXuDiTKFGXxawWBaYq9/xHf1ZYaIr2AWq3FFbAyhbhPnxhu6zIOXQsdr9CdWCpeOh5B6lAYLQaY8v
+	u5BIEikgMEcJHX3L+gsa0EGyZo98bTzlervlF8jrOIU9U05BCHfYTCONxUUS3aH6rYEIV9VxWPtXg
+	0TfFjJWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ur84u-0000000E0ob-3f0n;
-	Wed, 27 Aug 2025 04:48:08 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ur8j0-0000000E7wW-1Mde;
+	Wed, 27 Aug 2025 05:29:34 +0000
+Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ur84s-0000000E0mI-19SN;
-	Wed, 27 Aug 2025 04:48:07 +0000
-X-UUID: 01b4bb54830111f09f706fa2197c6ceb-20250826
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=t0Ryzl+bhnvnUoIRkn4L1iphGVUHu2m+u71p5zhRsXY=;
-	b=D6Sqfv4eUCtPkOCaUFV+JqT0HnJJSWmXadix2JeSAk0T0Joih+J9DIcgib8bQMngOmsAYxlxtJMDH8QeJyeNL/aWU5lt0b3CEydpTiq9MQqr/f9RnoC5zUiGoGc9O8JY3rU5IEzmwvewTLsXBeOmyBXwX4a5l6/u+PFFHgmQ0Cs=;
+	id 1ur8IL-0000000E3fL-496y;
+	Wed, 27 Aug 2025 05:02:05 +0000
+X-UUID: f37f2f18830211f0b29709d653e92f7d-20250827
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.3,REQID:edc035a6-8c41-43c0-8c46-df6da3951beb,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:f1326cf,CLOUDID:7b38917a-966c-41bd-96b5-7d0b3c22e782,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:-5,Content:0|15|50,EDM:-3,IP:
-	nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,L
-	ES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-O-INFO: VERSION:1.1.45,REQID:1c415ba0-fb13-418e-8a8d-f939331ccbe2,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:6493067,CLOUDID:7871a2c7ca51f2bc02737c897857e02d,BulkI
+	D:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|850,TC:nil,Content:0|50,EDM:-3
+	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
+	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 01b4bb54830111f09f706fa2197c6ceb-20250826
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <skylake.huang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2065072341; Tue, 26 Aug 2025 21:47:59 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Wed, 27 Aug 2025 12:47:56 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Wed, 27 Aug 2025 12:47:56 +0800
-From: Sky Huang <SkyLake.Huang@mediatek.com>
-To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>, "David S. Miller"
-	<davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
-	<kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Daniel Golle
-	<daniel@makrotopia.org>, Qingfang Deng <dqfext@gmail.com>, SkyLake Huang
-	<SkyLake.Huang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	<linux-kernel@vger.kernel.org>, <netdev@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: Sky Huang <skylake.huang@mediatek.com>
-Subject: [PATCH net-next 1/1] net: phy: mtk-2p5ge: Add LED support for MT7988
-Date: Wed, 27 Aug 2025 12:47:55 +0800
-Message-ID: <20250827044755.3256991-1-SkyLake.Huang@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+X-UUID: f37f2f18830211f0b29709d653e92f7d-20250827
+Received: from mail.kylinos.cn [(10.44.16.175)] by mailgw.kylinos.cn
+	(envelope-from <zhangzihuan@kylinos.cn>)
+	(Generic MTA)
+	with ESMTP id 208371796; Wed, 27 Aug 2025 13:01:54 +0800
+Received: from mail.kylinos.cn (localhost [127.0.0.1])
+	by mail.kylinos.cn (NSMail) with SMTP id C320CE008FAB;
+	Wed, 27 Aug 2025 10:34:49 +0800 (CST)
+X-ns-mid: postfix-68AE6EC9-204746223
+Received: from localhost.localdomain (unknown [172.25.120.24])
+	by mail.kylinos.cn (NSMail) with ESMTPA id ECEDDE008FAC;
+	Wed, 27 Aug 2025 10:34:43 +0800 (CST)
+From: Zihuan Zhang <zhangzihuan@kylinos.cn>
+To: "Rafael J . wysocki" <rafael@kernel.org>,
+	Viresh Kumar <viresh.kumar@linaro.org>,
+	Catalin Marinas <catalin.marinas@arm.com>,
+	Will Deacon <will@kernel.org>,
+	Sean Christopherson <seanjc@google.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	Ingo Molnar <mingo@redhat.com>,
+	Borislav Petkov <bp@alien8.de>,
+	Dave Hansen <dave.hansen@linux.intel.com>,
+	Markus Mayer <mmayer@broadcom.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>,
+	Madhavan Srinivasan <maddy@linux.ibm.com>,
+	Michael Ellerman <mpe@ellerman.id.au>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	MyungJoo Ham <myungjoo.ham@samsung.com>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	Chanwoo Choi <cw00.choi@samsung.com>,
+	Jani Nikula <jani.nikula@linux.intel.com>,
+	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+	Rodrigo Vivi <rodrigo.vivi@intel.com>,
+	Tvrtko Ursulin <tursulin@ursulin.net>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Daniel Lezcano <daniel.lezcano@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Eduardo Valentin <edubezval@gmail.com>,
+	Keerthy <j-keerthy@ti.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: zhenglifeng <zhenglifeng1@huawei.com>,
+	"H . Peter Anvin" <hpa@zytor.com>,
+	Zhang Rui <rui.zhang@intel.com>,
+	Len Brown <lenb@kernel.org>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Christophe Leroy <christophe.leroy@csgroup.eu>,
+	Lukasz Luba <lukasz.luba@arm.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Beata Michalska <beata.michalska@arm.com>,
+	Fabio Estevam <festevam@gmail.com>,
+	Pavel Machek <pavel@kernel.org>,
+	Sumit Gupta <sumitg@nvidia.com>,
+	Prasanna Kumar T S M <ptsm@linux.microsoft.com>,
+	Sudeep Holla <sudeep.holla@arm.com>,
+	Yicong Yang <yangyicong@hisilicon.com>,
+	linux-pm@vger.kernel.org,
+	x86@kernel.org,
+	kvm@vger.kernel.org,
+	linux-acpi@vger.kernel.org,
+	linuxppc-dev@lists.ozlabs.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-tegra@vger.kernel.org,
+	intel-gfx@lists.freedesktop.org,
+	dri-devel@lists.freedesktop.org,
+	imx@lists.linux.dev,
+	linux-omap@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Zihuan Zhang <zhangzihuan@kylinos.cn>
+Subject: [PATCH v2 15/18] powercap: dtpm_cpu: Use __free(put_cpufreq_policy) for policy reference
+Date: Wed, 27 Aug 2025 10:31:59 +0800
+Message-Id: <20250827023202.10310-16-zhangzihuan@kylinos.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20250827023202.10310-1-zhangzihuan@kylinos.cn>
+References: <20250827023202.10310-1-zhangzihuan@kylinos.cn>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250826_214806_327076_828F0999 
-X-CRM114-Status: GOOD (  16.50  )
+X-CRM114-CacheID: sfid-20250826_220202_361127_2F569507 
+X-CRM114-Status: GOOD (  14.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,160 +141,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sky Huang <skylake.huang@mediatek.com>
+Replace the manual cpufreq_cpu_put() with __free(put_cpufreq_policy)
+annotation for policy references. This reduces the risk of reference
+counting mistakes and aligns the code with the latest kernel style.
 
-Add LED support for MT7988's built-in 2.5Gphy. LED hardware has almost
-the same design with MT7981's/MT7988's built-in GbE. So hook the same
-helper function here.
+No functional change intended.
 
-Before mtk_phy_leds_state_init(), set correct default values of LED0
-and LED1.
-
-Signed-off-by: Sky Huang <skylake.huang@mediatek.com>
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+Signed-off-by: Zihuan Zhang <zhangzihuan@kylinos.cn>
 ---
- drivers/net/phy/mediatek/mtk-2p5ge.c | 104 +++++++++++++++++++++++++--
- 1 file changed, 98 insertions(+), 6 deletions(-)
+ drivers/powercap/dtpm_cpu.c | 24 +++++++-----------------
+ 1 file changed, 7 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/net/phy/mediatek/mtk-2p5ge.c b/drivers/net/phy/mediatek/mtk-2p5ge.c
-index e147eab523ef..de8a41a1841d 100644
---- a/drivers/net/phy/mediatek/mtk-2p5ge.c
-+++ b/drivers/net/phy/mediatek/mtk-2p5ge.c
-@@ -249,8 +249,80 @@ static int mt798x_2p5ge_phy_get_rate_matching(struct phy_device *phydev,
- 	return RATE_MATCH_PAUSE;
- }
- 
-+static const unsigned long supported_triggers =
-+	BIT(TRIGGER_NETDEV_FULL_DUPLEX) |
-+	BIT(TRIGGER_NETDEV_LINK)        |
-+	BIT(TRIGGER_NETDEV_LINK_10)     |
-+	BIT(TRIGGER_NETDEV_LINK_100)    |
-+	BIT(TRIGGER_NETDEV_LINK_1000)   |
-+	BIT(TRIGGER_NETDEV_LINK_2500)   |
-+	BIT(TRIGGER_NETDEV_RX)          |
-+	BIT(TRIGGER_NETDEV_TX);
-+
-+static int mt798x_2p5ge_phy_led_blink_set(struct phy_device *phydev, u8 index,
-+					  unsigned long *delay_on,
-+					  unsigned long *delay_off)
-+{
-+	bool blinking = false;
-+	int err = 0;
-+
-+	err = mtk_phy_led_num_dly_cfg(index, delay_on, delay_off, &blinking);
-+	if (err < 0)
-+		return err;
-+
-+	err = mtk_phy_hw_led_blink_set(phydev, index, blinking);
-+	if (err)
-+		return err;
-+
-+	if (blinking)
-+		mtk_phy_hw_led_on_set(phydev, index, MTK_2P5GPHY_LED_ON_MASK,
-+				      false);
-+
-+	return 0;
-+}
-+
-+static int mt798x_2p5ge_phy_led_brightness_set(struct phy_device *phydev,
-+					       u8 index,
-+					       enum led_brightness value)
-+{
-+	int err;
-+
-+	err = mtk_phy_hw_led_blink_set(phydev, index, false);
-+	if (err)
-+		return err;
-+
-+	return mtk_phy_hw_led_on_set(phydev, index, MTK_2P5GPHY_LED_ON_MASK,
-+				     (value != LED_OFF));
-+}
-+
-+static int mt798x_2p5ge_phy_led_hw_is_supported(struct phy_device *phydev,
-+						u8 index, unsigned long rules)
-+{
-+	return mtk_phy_led_hw_is_supported(phydev, index, rules,
-+					   supported_triggers);
-+}
-+
-+static int mt798x_2p5ge_phy_led_hw_control_get(struct phy_device *phydev,
-+					       u8 index, unsigned long *rules)
-+{
-+	return mtk_phy_led_hw_ctrl_get(phydev, index, rules,
-+				       MTK_2P5GPHY_LED_ON_SET,
-+				       MTK_2P5GPHY_LED_RX_BLINK_SET,
-+				       MTK_2P5GPHY_LED_TX_BLINK_SET);
-+};
-+
-+static int mt798x_2p5ge_phy_led_hw_control_set(struct phy_device *phydev,
-+					       u8 index, unsigned long rules)
-+{
-+	return mtk_phy_led_hw_ctrl_set(phydev, index, rules,
-+				       MTK_2P5GPHY_LED_ON_SET,
-+				       MTK_2P5GPHY_LED_RX_BLINK_SET,
-+				       MTK_2P5GPHY_LED_TX_BLINK_SET);
-+};
-+
- static int mt798x_2p5ge_phy_probe(struct phy_device *phydev)
+diff --git a/drivers/powercap/dtpm_cpu.c b/drivers/powercap/dtpm_cpu.c
+index 99390ec1481f..65117569d0f3 100644
+--- a/drivers/powercap/dtpm_cpu.c
++++ b/drivers/powercap/dtpm_cpu.c
+@@ -144,19 +144,16 @@ static int update_pd_power_uw(struct dtpm *dtpm)
+ static void pd_release(struct dtpm *dtpm)
  {
-+	struct mtk_socphy_priv *priv;
- 	struct pinctrl *pinctrl;
- 	int ret;
- 
-@@ -273,19 +345,34 @@ static int mt798x_2p5ge_phy_probe(struct phy_device *phydev)
- 	if (ret < 0)
- 		return ret;
- 
--	/* Setup LED */
-+	/* Setup LED. On default, LED0 is on/off when link is up/down. As for
-+	 * LED1, it blinks as tx/rx transmission takes place.
-+	 */
- 	phy_set_bits_mmd(phydev, MDIO_MMD_VEND2, MTK_PHY_LED0_ON_CTRL,
--			 MTK_PHY_LED_ON_POLARITY | MTK_PHY_LED_ON_LINK10 |
--			 MTK_PHY_LED_ON_LINK100 | MTK_PHY_LED_ON_LINK1000 |
--			 MTK_PHY_LED_ON_LINK2500);
--	phy_set_bits_mmd(phydev, MDIO_MMD_VEND2, MTK_PHY_LED1_ON_CTRL,
--			 MTK_PHY_LED_ON_FDX | MTK_PHY_LED_ON_HDX);
-+			 MTK_PHY_LED_ON_POLARITY | MTK_2P5GPHY_LED_ON_SET);
-+	phy_clear_bits_mmd(phydev, MDIO_MMD_VEND2, MTK_PHY_LED0_BLINK_CTRL,
-+			   MTK_2P5GPHY_LED_TX_BLINK_SET |
-+			   MTK_2P5GPHY_LED_RX_BLINK_SET);
-+	phy_clear_bits_mmd(phydev, MDIO_MMD_VEND2, MTK_PHY_LED1_ON_CTRL,
-+			   MTK_PHY_LED_ON_FDX | MTK_PHY_LED_ON_HDX |
-+			   MTK_2P5GPHY_LED_ON_SET);
-+	phy_set_bits_mmd(phydev, MDIO_MMD_VEND2, MTK_PHY_LED1_BLINK_CTRL,
-+			 MTK_2P5GPHY_LED_TX_BLINK_SET |
-+			 MTK_2P5GPHY_LED_RX_BLINK_SET);
- 
- 	/* Switch pinctrl after setting polarity to avoid bogus blinking */
- 	pinctrl = devm_pinctrl_get_select(&phydev->mdio.dev, "i2p5gbe-led");
- 	if (IS_ERR(pinctrl))
- 		dev_err(&phydev->mdio.dev, "Fail to set LED pins!\n");
- 
-+	priv = devm_kzalloc(&phydev->mdio.dev, sizeof(struct mtk_socphy_priv),
-+			    GFP_KERNEL);
-+	if (!priv)
-+		return -ENOMEM;
-+	phydev->priv = priv;
-+
-+	mtk_phy_leds_state_init(phydev);
-+
- 	return 0;
+ 	struct dtpm_cpu *dtpm_cpu =3D to_dtpm_cpu(dtpm);
+-	struct cpufreq_policy *policy;
++	struct cpufreq_policy *policy __free(put_cpufreq_policy);
+=20
+ 	if (freq_qos_request_active(&dtpm_cpu->qos_req))
+ 		freq_qos_remove_request(&dtpm_cpu->qos_req);
+=20
+ 	policy =3D cpufreq_cpu_get(dtpm_cpu->cpu);
+-	if (policy) {
++	if (policy)
+ 		for_each_cpu(dtpm_cpu->cpu, policy->related_cpus)
+ 			per_cpu(dtpm_per_cpu, dtpm_cpu->cpu) =3D NULL;
+=20
+-		cpufreq_cpu_put(policy);
+-	}
+-
+ 	kfree(dtpm_cpu);
  }
- 
-@@ -303,6 +390,11 @@ static struct phy_driver mtk_2p5gephy_driver[] = {
- 		.resume = genphy_resume,
- 		.read_page = mtk_phy_read_page,
- 		.write_page = mtk_phy_write_page,
-+		.led_blink_set = mt798x_2p5ge_phy_led_blink_set,
-+		.led_brightness_set = mt798x_2p5ge_phy_led_brightness_set,
-+		.led_hw_is_supported = mt798x_2p5ge_phy_led_hw_is_supported,
-+		.led_hw_control_get = mt798x_2p5ge_phy_led_hw_control_get,
-+		.led_hw_control_set = mt798x_2p5ge_phy_led_hw_control_set,
- 	},
- };
- 
--- 
-2.45.2
+=20
+@@ -192,7 +189,7 @@ static int cpuhp_dtpm_cpu_online(unsigned int cpu)
+ static int __dtpm_cpu_setup(int cpu, struct dtpm *parent)
+ {
+ 	struct dtpm_cpu *dtpm_cpu;
+-	struct cpufreq_policy *policy;
++	struct cpufreq_policy *policy __free(put_cpufreq_policy);
+ 	struct em_perf_state *table;
+ 	struct em_perf_domain *pd;
+ 	char name[CPUFREQ_NAME_LEN];
+@@ -207,16 +204,12 @@ static int __dtpm_cpu_setup(int cpu, struct dtpm *p=
+arent)
+ 		return 0;
+=20
+ 	pd =3D em_cpu_get(cpu);
+-	if (!pd || em_is_artificial(pd)) {
+-		ret =3D -EINVAL;
+-		goto release_policy;
+-	}
++	if (!pd || em_is_artificial(pd))
++		return -EINVAL;
+=20
+ 	dtpm_cpu =3D kzalloc(sizeof(*dtpm_cpu), GFP_KERNEL);
+-	if (!dtpm_cpu) {
+-		ret =3D -ENOMEM;
+-		goto release_policy;
+-	}
++	if (!dtpm_cpu)
++		return -ENOMEM;
+=20
+ 	dtpm_init(&dtpm_cpu->dtpm, &dtpm_ops);
+ 	dtpm_cpu->cpu =3D cpu;
+@@ -239,7 +232,6 @@ static int __dtpm_cpu_setup(int cpu, struct dtpm *par=
+ent)
+ 	if (ret < 0)
+ 		goto out_dtpm_unregister;
+=20
+-	cpufreq_cpu_put(policy);
+ 	return 0;
+=20
+ out_dtpm_unregister:
+@@ -251,8 +243,6 @@ static int __dtpm_cpu_setup(int cpu, struct dtpm *par=
+ent)
+ 		per_cpu(dtpm_per_cpu, cpu) =3D NULL;
+ 	kfree(dtpm_cpu);
+=20
+-release_policy:
+-	cpufreq_cpu_put(policy);
+ 	return ret;
+ }
+=20
+--=20
+2.25.1
 
 
