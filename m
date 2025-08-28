@@ -4,69 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04896CA0FF2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Aug 2025 06:34:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78A40CA0FF2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Aug 2025 08:08:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ULhWCMRnfloXSUOUb5D++K1tzuZ3+YXJYVeiwkdjmeI=; b=XZrDCjqIW3vsu8h9hQqTuAKo38
-	273vbTfEvCUSKnXz0H59svNBls7DGqf6CQr2XdI3/UsXMKbv02s6J/927HdRp4yxBnHxjqdP9zHf6
-	gjFUBU+WDi7cvo3wbwYCEQ+Thm6dwz965fSFZ9cUO5m0Exomy+mbOErE2+UNDjqYD+hIKrIoeiPVc
-	s8R7AM+lIbjDmYzF8wqdJx/y9Kh2O3IatNKvMQrPj9XGoPWQYWfDoCE/oM+4GgjY+9lhupE3okw6e
-	PNek6C8I/Q++fXBaW8QOQy5Ug4Ep0zzQJDswODKXpELPfPiAzAD7S7Ji0PV8kXqXTs00TRj8pYSdX
-	qIpS48rg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=vUvp0ttX3lOxjdOrvZsKvJKNpHHNusfF6naBdS8j1E8=; b=KKdO5mEWbt1clLJmkHBTXrz2cT
+	yhgLfr/CXoYxC8crCcLihhTP+fb72ip942PQeXozvTdU27Py224RT2fc7Kf+Jchan7vRwg0B33VaR
+	SKC9e+Dwlzs7x6J/Zuk43DvMbayhq29GHXf206pPHydOhWOPwZ7d6L38W5KeenWig0Wtk8KqbXdAZ
+	00U7u+0zpCNMoiqSVvj3Rq9Q3LchabRs8RVk1ttiTkbTECnnSadtze70BXMW5mlClesNg3gA/GKOn
+	4UMSTMhC6dFOD2l2oXjwtpZdzk22CiWrP3TeeaVBq83NQM2UqVPdSCs5WVAu3M8wB3+Gu8pOgFE0Q
+	kwy8uk+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urWD3-00000000Rlb-3dYW;
-	Thu, 28 Aug 2025 06:34:09 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1urXgY-00000000jLO-3BfR;
+	Thu, 28 Aug 2025 08:08:42 +0000
+Received: from mail.fundixo.pl ([57.128.173.14])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urWD0-00000000Rjx-24bb;
-	Thu, 28 Aug 2025 06:34:08 +0000
-X-UUID: f935ad1683d811f09f706fa2197c6ceb-20250827
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=ULhWCMRnfloXSUOUb5D++K1tzuZ3+YXJYVeiwkdjmeI=;
-	b=f6JqcjoN6QKY3SrBy1St1yNmmlv8yJpC8apS75UVln/BaoZ2EKqBgYv0j6k1NA4opNEDt/HwCVagFd3+vsZ/38RrVJvWX16rdNtzuqR2OxTqO7oWuVjAcB0H5qJA0f38TCHmqqAD9KucZD5NxMDgn5CGkjoUmFziV1fp6JsBBuY=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.3,REQID:b635c7f4-93f7-4afe-a5ea-a8815b2c4e6a,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:f1326cf,CLOUDID:0d78b26d-c2f4-47a6-876f-59a53e9ecc6e,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:-5,Content:0|15|50,EDM:-3,IP:
-	nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,L
-	ES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: f935ad1683d811f09f706fa2197c6ceb-20250827
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
-	(envelope-from <paul-pl.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 880576825; Wed, 27 Aug 2025 23:33:56 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Thu, 28 Aug 2025 14:33:53 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Thu, 28 Aug 2025 14:33:53 +0800
-From: Paul Chen <paul-pl.chen@mediatek.com>
-To: <robh@kernel.org>, <krzk+dt@kernel.org>, <conor+dt@kernel.org>,
-	<chunkuang.hu@kernel.org>, <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 01/19] dt-bindings: arm: mediatek: mmsys: add compatible for MT8196
-Date: Thu, 28 Aug 2025 14:31:52 +0800
-Message-ID: <20250828063327.3475747-1-paul-pl.chen@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1urXRs-00000000gbF-282u
+	for linux-mediatek@lists.infradead.org;
+	Thu, 28 Aug 2025 07:53:33 +0000
+Received: by mail.fundixo.pl (Postfix, from userid 1002)
+	id E8DDD4F259; Thu, 28 Aug 2025 09:47:10 +0200 (CEST)
+Received: by mail.fundixo.pl for <linux-mediatek@lists.infradead.org>; Thu, 28 Aug 2025 07:45:55 GMT
+Message-ID: <20250828084500-0.1.hb.3y3mc.0.8k3ckmcn6e@CyberCitadel.pl>
+Date: Thu, 28 Aug 2025 07:45:55 GMT
+From: "Marek Kucharski" <marek.kucharski@fundixo.pl>
+To: <linux-mediatek@lists.infradead.org>
+Subject: =?UTF-8?Q?Prosz=C4=99_o_kontakt?=
+X-Mailer: mail.CyberCitadel.pl
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250827_233406_553140_306C6A3D 
-X-CRM114-Status: GOOD (  10.08  )
+X-CRM114-CacheID: sfid-20250828_005332_686768_733A9494 
+X-CRM114-Status: UNSURE (   0.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,57 +54,22 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, xiandong.wang@mediatek.com, jason-jh.lin@mediatek.com, singo.chang@mediatek.com, treapking@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, paul-pl.chen@mediatek.com, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, nancy.lin@mediatek.com, linux-mediatek@lists.infradead.org, sunny.shen@mediatek.com, p.zabel@pengutronix.de, sirius.wang@mediatek.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Nancy Lin <nancy.lin@mediatek.com>
+Dzie=C5=84 dobry,
 
-In previous SoCs, a single HW pipeline was an independent mmsys,
-which included the OVL module, PQ module, and display interface
-module.
+Czy jest mo=C5=BCliwo=C5=9B=C4=87 nawi=C4=85zania wsp=C3=B3=C5=82pracy z =
+Pa=C5=84stwem?
 
-In the 8196, to increase the flexibility of pipeline connection
-and control, the OVL module on a single HW pipeline was separated
-into two mmsys, namely ovlsys0 and ovlsys1. The PQ module was also
-separated into a dispsys0, and the display interface module was
-separated into a dispsys1. Additionally, display power-related
-settings are controlled through vdiso-ao.
+Z ch=C4=99ci=C4=85 porozmawiam z osob=C4=85 zajmuj=C4=85c=C4=85 si=C4=99 =
+dzia=C5=82aniami zwi=C4=85zanymi ze sprzeda=C5=BC=C4=85.
 
-For example:
-The primary path and external path of the display both use
-ovlsys0 -> dispsys0 -> dispsys1, forming a pipeline.
+Pomagamy skutecznie pozyskiwa=C4=87 nowych klient=C3=B3w.
 
-The third path of the display uses ovlsys1 -> dispsys0 -> dispsys1,
-forming another pipeline.
+Zapraszam do kontaktu.
 
-Therefore, the 8196 needs to add 5 compatible string to support
-mmsys for MT8196.
 
-Signed-off-by: Nancy Lin <nancy.lin@mediatek.com>
-Signed-off-by: Paul-pl Chen <paul-pl.chen@mediatek.com>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
- .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml     | 5 +++++
- 1 file changed, 5 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-index 3f4262e93c78..5f244a8f6a47 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-@@ -39,6 +39,11 @@ properties:
-               - mediatek,mt8195-vdosys1
-               - mediatek,mt8195-vppsys0
-               - mediatek,mt8195-vppsys1
-+              - mediatek,mt8196-dispsys0
-+              - mediatek,mt8196-dispsys1
-+              - mediatek,mt8196-ovlsys0
-+              - mediatek,mt8196-ovlsys1
-+              - mediatek,mt8196-vdisp-ao
-               - mediatek,mt8365-mmsys
-           - const: syscon
- 
--- 
-2.45.2
-
+Pozdrawiam
+Marek Kucharski
 
