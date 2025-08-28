@@ -4,79 +4,162 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD4E7CA0FF7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Aug 2025 17:25:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFD90CA0EED
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Aug 2025 17:26:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=m2xtex3FijByy/xNVP17j+I3+wkiVmNm0DOFRB7Mm1g=; b=G1a0sO8Hj4UHUkjXv+vCiCH2Cl
-	GLXdniGJixfjouKc4FfG5ZjkztuaLmkR2N1CcTb/wooU0FzKV3B4aQ608DnCnOU8UA+iJuSfrd9ww
-	5PBPMZwW3dWhGELIFKSOLFPJOUoCL/I7piuxPiRD3jLKLlC3AZp0rAOwb8ldx6dKQBbfaLmBfFvMS
-	tG1i0XiGY3vQVZOLk2h2sPjorbBQTimXeo+xWM9Nl9GK6LKO9Jb9sEXYU8oHPNSqEwvd1LBM8gBac
-	QpFk1cowjyHAkvkYy/T2o1xeVazzy4EiI2EpGLKSQUbBNPryPtlIordJJlaQbvKRyYK+6hvNClEpg
-	HxKQteTg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DMJ4Kl0ooCBxizCYvK8E5v//mnvFUeza0TU6bVPmF2k=; b=dkdTC2tKZ4jGsYQe0iUk9QSEBM
+	owvzkaiEp0y7UIvvarHbauKQllPgC4IHW0ox2Uf2Krop/w2ZDhkraS8OgbBqsaYtWWr0ClXPJGo9w
+	Q9ayYUxSGFk/HEYZH1dWmcZBwa8iVZIOiqIAJ/cbFheOpRc8zhNHRtKDft3EZSvYrzESUXY6jHPQS
+	V+GhV8Jpzc/t4tzRrzeZefIbQ//g5zRxh5YSzbVA7nf4KCKcYsx2qvGwMWrFkLwdTF6KxvkzYhgMA
+	T5ScMLV3wzUdqJMQAkcv3GvqylCK0tp6WQnTWKSi8cIsy6KiD5YrFzwZfdzS3yp3vJEAN8N0q8ONs
+	es+m1ZVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urgNa-00000002SIh-0A8I;
-	Thu, 28 Aug 2025 17:25:42 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1urgNt-00000002Shw-2Pww;
+	Thu, 28 Aug 2025 17:26:01 +0000
+Received: from mail-bn8nam12on2061a.outbound.protection.outlook.com ([2a01:111:f403:2418::61a] helo=NAM12-BN8-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urbvK-00000001afL-3uZ1
-	for linux-mediatek@lists.infradead.org;
-	Thu, 28 Aug 2025 12:40:16 +0000
-X-UUID: 21ad1f94840c11f09f706fa2197c6ceb-20250828
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=m2xtex3FijByy/xNVP17j+I3+wkiVmNm0DOFRB7Mm1g=;
-	b=Yfe+R8izLOnhmeWYWdqXd6EOjADnas9jd8/SJRhrD+VXMu64lpcUzbB1Sej9J+fE5eDpybBVj0RZl6Mgkg8AhCqNUEkSNnzVSOIt49bKfjQEouUcfN6/oiUQLQKrFnCK95c12ABWd+pVYliQZ8lS7FtMPB4kSxoeGGiIzo0tEnU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.3,REQID:0f1fa4e7-367c-4dd1-a411-33e0412bd198,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:f1326cf,CLOUDID:c470b9a8-24df-464e-9c88-e53ab7cf7153,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:-5,Content:0|15|50,EDM:-3,IP:
-	nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,L
-	ES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 21ad1f94840c11f09f706fa2197c6ceb-20250828
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
-	(envelope-from <quan.zhou@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 602764406; Thu, 28 Aug 2025 05:40:08 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Thu, 28 Aug 2025 20:40:05 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Thu, 28 Aug 2025 20:40:04 +0800
-From: Quan Zhou <quan.zhou@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
-CC: Sean Wang <sean.wang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
-	Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
-	Leon Yen <Leon.Yen@mediatek.com>, Ming Yen Hsieh
-	<mingyen.hsieh@mediatek.com>, Allan Wang <allan.wang@mediatek.com>, KM Lin
-	<km.lin@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Shengxi Xu
-	<shengxi.xu@mediatek.com>, Eric-SY Chang <Eric-SY.Chang@mediatek.com>, CH Yeh
-	<ch.yeh@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, linux-wireless
-	<linux-wireless@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Quan Zhou <quan.zhou@mediatek.com>
-Subject: [patch] wifi: mt76: mt7921: Add 160MHz beamformee capability for mt7922 device
-Date: Thu, 28 Aug 2025 20:39:42 +0800
-Message-ID: <ae637afaffed387018fdc43709470ef65898ff0b.1756383627.git.quan.zhou@mediatek.com>
-X-Mailer: git-send-email 2.46.0
+	id 1urc6i-00000001cjF-1MAU;
+	Thu, 28 Aug 2025 12:52:01 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=uP8gSuEFGmfnIU6Xyl+s/3OLKwee/hgM70EC/4042SsHNmy1BV8cr0x9Gav4ucaqMU87jY3imlbW+n/BZ02SBhDOFiNTgYN5IYDl3vYFRLZRffiyxqBn6wNlW9LSGwoXsGxpHN4pshtMwsfdifDTmUz+KbiiscKlvkIN6HWaf4DuCPD6X3MasIUX3OlgwBU85eZTWtpHxcF6MFQOlKbcDzhJXToqVLrKOJANKYa1tvV7Nli+BiVy1EdYQwvW+Jxu1VZQktR4TdN2J9mSYENWs2IuATdFE0TylVfOEyjGu2+ZQ7mwsPXwZ1C3ptBAOK/GjKQZI02QypzK/Yf/U267uA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=DMJ4Kl0ooCBxizCYvK8E5v//mnvFUeza0TU6bVPmF2k=;
+ b=Z3+OAGrLmhF+sfse105Ukv8nyOkQPIRBRuittOGEHSGAZhisFWCL/6MXYiES+Ve28vaEBrDgvCYqgu7rohRLjKbfnhcYYKwNuXSphZYnckeBuJX2NcyvQ9jPBnkzlZlrSgsT1VPv2SQfzIUb8kIgX371Eq793ehoXdKRCCILZcMOVrI+xU0h/dnNgHu9FK1gJ0gD2maYOpIWX9vd+xEzrb19m6SZXcBlZTbWN/ZCQr9xciPAT7EnrN2pISfmSrZMXQxeqWPLfHDNwznSRXoVjOfa+9jASMs5g7/SWOdjbIzo7ImN9kqjgV75Qdbtgi2ohalwyvsZmeEqLM3mVKH4fw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=DMJ4Kl0ooCBxizCYvK8E5v//mnvFUeza0TU6bVPmF2k=;
+ b=trUqhWdTwygKlk8B0QHizFS71/2INpBu3HFcoijn9AERpCaImNn0Q+O3m9nVj1Y2F53oEwLGGMrcbw/9Ee/2rbtQOt8ZMskImlB1yvI8WIiuaVjp+r02Tx6X9aIYcMGZPJDmwNn2IrElwn4EEZgp1UF0SXtvXw66Awdm5Pgr4XiNDkWQCSeuZd20TnS1tvnI8o1vClWbIdLa9ucvfjwieidHXgHRE2fJeMYO+8wryk+V+DtoSbQpNKhP/cKGA7P2k/6Xn7U/oiUP5Lf7PN/+Em5JTY4fEOvAezS2DHgu3MtY3eFJ6hxNDhDe+dCeYZRidlfW4L8u0Ruu//TA6PRWzg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from CH3PR12MB8659.namprd12.prod.outlook.com (2603:10b6:610:17c::13)
+ by DM6PR12MB4369.namprd12.prod.outlook.com (2603:10b6:5:2a1::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9052.19; Thu, 28 Aug
+ 2025 12:51:51 +0000
+Received: from CH3PR12MB8659.namprd12.prod.outlook.com
+ ([fe80::6eb6:7d37:7b4b:1732]) by CH3PR12MB8659.namprd12.prod.outlook.com
+ ([fe80::6eb6:7d37:7b4b:1732%4]) with mapi id 15.20.9073.010; Thu, 28 Aug 2025
+ 12:51:51 +0000
+Date: Thu, 28 Aug 2025 09:51:49 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Nicolin Chen <nicolinc@nvidia.com>
+Cc: Ethan Zhao <etzhao1900@gmail.com>, robin.murphy@arm.com,
+	joro@8bytes.org, bhelgaas@google.com, will@kernel.org,
+	robin.clark@oss.qualcomm.com, yong.wu@mediatek.com,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	thierry.reding@gmail.com, vdumpa@nvidia.com, jonathanh@nvidia.com,
+	rafael@kernel.org, lenb@kernel.org, kevin.tian@intel.com,
+	yi.l.liu@intel.com, baolu.lu@linux.intel.com,
+	linux-arm-kernel@lists.infradead.org, iommu@lists.linux.dev,
+	linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org,
+	linux-acpi@vger.kernel.org, linux-pci@vger.kernel.org,
+	patches@lists.linux.dev, pjaroszynski@nvidia.com, vsethi@nvidia.com,
+	helgaas@kernel.org
+Subject: Re: [PATCH v3 5/5] pci: Suspend iommu function prior to resetting a
+ device
+Message-ID: <20250828125149.GD7333@nvidia.com>
+References: <cover.1754952762.git.nicolinc@nvidia.com>
+ <3749cd6a1430ac36d1af1fadaa4d90ceffef9c62.1754952762.git.nicolinc@nvidia.com>
+ <550635db-00ce-410e-add0-77c1a75adb11@gmail.com>
+ <aKTzq6SLGB22Xq5b@Asurada-Nvidia>
+ <20250821130741.GL802098@nvidia.com>
+ <aKgPr3mUcIsd1iuT@Asurada-Nvidia>
+ <20250822140821.GE1311579@nvidia.com>
+ <aKi8EqEp1DKG+h38@Asurada-Nvidia>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <aKi8EqEp1DKG+h38@Asurada-Nvidia>
+X-ClientProxiedBy: YT4PR01CA0330.CANPRD01.PROD.OUTLOOK.COM
+ (2603:10b6:b01:10a::17) To CH3PR12MB8659.namprd12.prod.outlook.com
+ (2603:10b6:610:17c::13)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CH3PR12MB8659:EE_|DM6PR12MB4369:EE_
+X-MS-Office365-Filtering-Correlation-Id: 09b36ca2-ceba-4050-302f-08dde631a862
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|376014|7416014;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?v2xtB7lc3M2wHestbaJbTkgpH+GnOlGN2Drbiryyhf83Xi3cBzcQqgKh6yiD?=
+ =?us-ascii?Q?up2blkNKgWLq2G+vOFIAPVonk3BEjST0WbLcksVHKNbob8ez6LWuMKDMEDp4?=
+ =?us-ascii?Q?ZhJkIgG3c8bZ4nZIdJ7H5GJIDCUwKG8jGzjOX7DdmMvjKNUrbFHfOQMfBMBu?=
+ =?us-ascii?Q?Cr1HLZ7C+VOIJZg53f11dpjZAZU9Gz0UtkkQAm6cP1W7LvvT1hESY+dGt/0m?=
+ =?us-ascii?Q?XKLjSliDtHjSqAzrsailerIM9C220y2NtNGFQ74fxtjpRyfkwz7hH7W9ceEw?=
+ =?us-ascii?Q?I6SZP2/ap1/Cc8hYZk7zJv079ksH96hFQewHRyd4WRpJw2aI0rIRvb9BITl0?=
+ =?us-ascii?Q?02hJZf+1W6qYT/8+f0xIXnMyuqDh1Ixm2dUTk/0O/aHTBc0EtlMvJl9aQyt6?=
+ =?us-ascii?Q?Zc3HnMncc9HLuWHq04WeTrZnU+nenxvjmf9YvlyiySVqPmD5v9PvCxXCYkuU?=
+ =?us-ascii?Q?Vamthi7m1YvK55t47ypFq6WsAtLWY6Q1spo3yxB5SwG8xaf+Zjcimt6RjZQk?=
+ =?us-ascii?Q?bt1V6674C9PfjWIp6ZF3KsMhhHODKJc2fxYuLLKN2hMh6BX+J8YX59Zt4RNN?=
+ =?us-ascii?Q?jf37wE6BD3NfAOpnKrGRe567jMvb+V1nb++rTowXjnpynQbuft7PsX1noILu?=
+ =?us-ascii?Q?0CZ/hBbthoTWH31311RaAB5xPGTsRiDnL2OCo1mmsyTlWLr4WNbiKPd4xyam?=
+ =?us-ascii?Q?UpA7hl86U9Mhn3Wg7JuofExqksR2UDrDoHPXFVLO2R74VO8QGAbLiR0GABPh?=
+ =?us-ascii?Q?goBVlCHszBJKmNEv4eijiubQKf6FZF4RK1rz8IWuh8ojDfvkFlYcu0VGKWPU?=
+ =?us-ascii?Q?UoPRp0bbubPMeGdUFzuIuMim9uO2pQTFAU2lSbGATJI74CgaLGW7kbKvN2eM?=
+ =?us-ascii?Q?96bdavoc9EWSN5KA5hBHGWzPedTtrl3UXsRgH5E34PwHjY2gkS9si3fTz8Qy?=
+ =?us-ascii?Q?RwPWB8OzCi5VKxQwk3Z9tlv1CVPPZPSQbxdr868DqU3pARGIXYn9bAItEbKP?=
+ =?us-ascii?Q?03JGj3b4mSYpv4H9+NVGOfZBWMv9iWcTSjdWJK4uyP2YZQqWH+novYg7nZyp?=
+ =?us-ascii?Q?Sm+rAUDfYH8OmI2ykcIC1/7OFv3H46vahAQGJgespZvt7Ya2jj4UNt8WgFNU?=
+ =?us-ascii?Q?0rfoGXcuVCUM1wDfWseSMk9c9mAQzq4ZDMxYMn3vzNJeGWoO+74v6fx7KflB?=
+ =?us-ascii?Q?E71N/H6S929ZVFaifARnJTh0XL2N+UtYEzkCz6InU08frCqGzDWPaoI76+r9?=
+ =?us-ascii?Q?x0c0JB6FpL66mrg/pjyYFae4J9ayFT4Hw3nnlkQs6cwn6h/cXJ8XohtClS8w?=
+ =?us-ascii?Q?VloGnf87EHkUtcrstHywVwvoy2t5lDkUjpgNNtt8MMszVnPMGudwI1TWCBdR?=
+ =?us-ascii?Q?LXNZpM55dA+xLv7AbxIEjMzvGNY8iVmGpzWmFyBg6lJ1Ygbicf2Qrh3ALBbm?=
+ =?us-ascii?Q?6DnBnxpS1y4=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH3PR12MB8659.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(376014)(7416014);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?t82/JyT9hpuFJxoIG9sVTwFZiLbXMY2yC0vvHWdN42eQKfHiMyLf4TY+cr3d?=
+ =?us-ascii?Q?hLBdTBptFeRgfqpRc/deYlbDZ9jNTAKF2kp33hgqGYRcvT0jfDpAtovyLQyK?=
+ =?us-ascii?Q?NpYw8zK/QqSx7/+J04e+T9FCS8CH0thdbeg0xaU/9BspCEh/fV8IhTKoYSfu?=
+ =?us-ascii?Q?dxdDSOjG8aEP3VVyY8QUKzCuxwhEuLISUExT8AZT3uDuWfyGDGTvghj/iMqF?=
+ =?us-ascii?Q?bV540vooaTaaoPYQvgDQ/LYyGp7dSyb4csh3AJulTA6OYIf5/fEIcwxSacNj?=
+ =?us-ascii?Q?OyooPO8XrQrMbW15iz29x0DFHHlB1PjuPksixOIY7vNVzcQPssgq2LAW4ydk?=
+ =?us-ascii?Q?ihYLIzFN1A0oBYk3jBUWUShFPHWcvhwGVIcXYA8W/xekotuheKaxxpZfR02q?=
+ =?us-ascii?Q?1Hga4W5tU5Ye4wLrGNG9061HqIXZ40sRztTYir23BL1CaKeIH3iyxYcUTzn2?=
+ =?us-ascii?Q?tkjDRMiiqaVESSeftYSJ3Hu82FbqYxoNw18ShfYXwjIofz6TJGZ/aK1uU3Tf?=
+ =?us-ascii?Q?8z322jJz1VPW4P1ltiZNFBJaACGMgi7+e+RQEfLf7vP2dMFZORq4+HRg1TbB?=
+ =?us-ascii?Q?z54uk/D3zhcXDpTXXx/XMcotFZjjXFj8IfhgJ5IlvyfMuQ/Ta3ozQznbDOMk?=
+ =?us-ascii?Q?7xXfroUN9IT5E754OyafxpdXUn+4LB8dCvrKJgdxgEB2VXxcpvVMFVnKIKIy?=
+ =?us-ascii?Q?6aPhDYVosciPJU4DdokyTp0Gj3DcZzli9cWA+U/rVyhzg1r+lpJ+ISfgRDwz?=
+ =?us-ascii?Q?DcQzpSUAjCoo/JFHopxf84NwYfHrxuQ/j5rBD7CGMcGOrASx+Q3FIVvLnF4i?=
+ =?us-ascii?Q?SqYx5Zmc/3YrEizQCpNXe7gMNixdwSbRwpHU8niZW3Jwz6KeY1N5rRnA832B?=
+ =?us-ascii?Q?dfqECyimMYcs+EBKqrLToqFztCV2inXqaN0tOSHlN0iXnz1qTQWpeGBw2otn?=
+ =?us-ascii?Q?HZaQ5QuoNNqWKlooMcNWjkpS6t+q7vOLc+k4QFQaU8CbmysNfJISq2qTFzBg?=
+ =?us-ascii?Q?tnlnH1xoDpcMq7uRt+P7Z2Gdo4gFp6Z2p36OxxxEKQi29j+EiO1Rju6nCBuZ?=
+ =?us-ascii?Q?TmDXx3v50AceiZ9yu003E9k6QlwlL6YonjPF9NXJj9bG0Dl3xBYrb5vzU9Wv?=
+ =?us-ascii?Q?iIZVGJohjERtcdcD8fNSZA8TYzaiqkZpAwNqSunWm27DRGnS0pkH0EsZ4jqh?=
+ =?us-ascii?Q?727kQ1W2SUqjYVWjg33buiIOU1FOOkWgrhPlbzAUGa/vnOXRbB8EKRb7bWXH?=
+ =?us-ascii?Q?BiVyvcQO6pAdTUXEMCUV1nt4H8uyZwqrEgXjsIMfubW4Jcvurmr4g1KsTdDN?=
+ =?us-ascii?Q?TvCXiuxCsLRvkdzD466BngNXSoBi4X9qprACkq5fqpQXhS1PFEIYLtVjumy8?=
+ =?us-ascii?Q?z7Z7mE0kXHTsmnHhHxutyVYN/+dbAJ7zH98nN5Nb/85iuAA+hrHu83jpFrYn?=
+ =?us-ascii?Q?PoOFFUjJF7xi8Z9tfkWF5PYJXI4yAAyCO5ZVKu+gAOKI/G+BVr8pN42YlQyu?=
+ =?us-ascii?Q?G9uTDXeEJQlByfatLg+bnibEpHXrg4Zur40kJLuwYyizqDZZUuQtuwu7eDgs?=
+ =?us-ascii?Q?+VvMiQ6f3K8Tf9iOSZU=3D?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 09b36ca2-ceba-4050-302f-08dde631a862
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB8659.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Aug 2025 12:51:51.3122
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: WSy3j956Gw+6LmJ3rqhkiqdb7nqlD10qDzf41KoloQg4jUxOIqdLNAiag1jrYZ3R
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR12MB4369
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250828_054015_007833_3E7F0F62 
-X-CRM114-Status: UNSURE (   8.04  )
+X-CRM114-CacheID: sfid-20250828_055200_362318_423EDC6D 
+X-CRM114-Status: UNSURE (   9.62  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,34 +175,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable 160MHz beamformee support on mt7922 by updating HE capability
-element configuration. Previously, only 160MHz channel width was set,
-but beamformee for 160MHz was not properly advertised. This patch
-adds BEAMFORMEE_MAX_STS_ABOVE_80MHZ_4 capability to allow devices
-to utilize 160MHz BW for beamforming.
+On Fri, Aug 22, 2025 at 11:50:58AM -0700, Nicolin Chen wrote:
 
-Tested by connecting to 160MHz-bandwidth beamforming AP and verified
-HE capability.
+> It feels like we need a no-fail re-attach operation, or at least an
+> unlikely-to-fail one. I recall years ago we tried a can_attach op
+> to test the compatibility but it didn't get merged. Maybe we'd need
+> it so that a concurrent attach can test compatibility, allowing the
+> re-attach in iommu_dev_reset_done() to more likely succeed.
 
-Signed-off-by: Quan Zhou <quan.zhou@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt7921/main.c | 2 ++
- 1 file changed, 2 insertions(+)
+This is probably the cleanest option to split these things
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index 40954e64c7fc..8818fb1916ad 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -135,6 +135,8 @@ mt7921_init_he_caps(struct mt792x_phy *phy, enum nl80211_band band,
- 			if (is_mt7922(phy->mt76->dev)) {
- 				he_cap_elem->phy_cap_info[0] |=
- 					IEEE80211_HE_PHY_CAP0_CHANNEL_WIDTH_SET_160MHZ_IN_5G;
-+				he_cap_elem->phy_cap_info[4] |=
-+					IEEE80211_HE_PHY_CAP4_BEAMFORMEE_MAX_STS_ABOVE_80MHZ_4;
- 				he_cap_elem->phy_cap_info[8] |=
- 					IEEE80211_HE_PHY_CAP8_20MHZ_IN_160MHZ_HE_PPDU |
- 					IEEE80211_HE_PHY_CAP8_80MHZ_IN_160MHZ_HE_PPDU;
--- 
-2.46.0
-
+Jason
 
