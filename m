@@ -4,79 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38911CA0EED
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Aug 2025 19:04:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DADCBC8303F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Aug 2025 19:04:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JThKrLTPuFVwzCwJhKd4fJmIEtCxHnGrNzSYzGU4KrU=; b=bmaFukxR6ZN7wv0pUxo5RP11Xz
-	AOb5Ieo0S4Z2s/9b++VDQDsa+lpAmdsF1ygPgAoR0YXXY3nL9uSSXeo2yweA0ifH5L7rk56ZkWbCn
-	Jo75Jr+Z5j5suW4US2ac8lc8AOsbOTJB7JJew0Vdt5MQoMSCtjEhyIBAyF5M1sG9qRA6vI8eH14Q8
-	9E3HzXRcAc0ir4+1EGny4Jys+XqmkhanRglNZDF0Xpa/dkNQPTVSZT7pMk2hWSUpzjskRSTItgtA5
-	39+oggj68lodwTbA7om0paRyOoYTHSfeOlNG6G7/Q7gbZ5DapEqj7Xy8VgcGfJk9Us5XOZEz6w7TD
-	VLSJ84Jg==;
+	bh=jAO2WeXDFkbtwkjKyd1xrqU98u0EGyjojmTyXcAuE7w=; b=sI0QvOXRzmzjdlloejC2LcxBvi
+	ATLHpEX0vbK9tFFQJR81aFFLFiWSPfUO8zt2KydqgbznXvMyTPAZ2NQDfz/Rbw9I3dekw9tglw4qM
+	ugm9eLJyt1+tVkcuPM2zr9ZnPwY8zbwZwwWcUn4AQqZI5A0pY9+UgexY98kizKth//l8rC81dfTkk
+	MCXIq0i2F1q+DUNJC+2m2gSJheEfXZKVqB+Pl8J9Sqzo6vpX5WHszyS/yhQyL5fx0/FKZJRLofViv
+	pzUng4RylD7oIBE2u44KIIfjL5b93ZTsDoJRFO4BcIgKuLMD6n46zvrt9h+EBqV2iGKxcFHwwQoj4
+	Z+04wybw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urhvM-00000002vPL-1mhT;
-	Thu, 28 Aug 2025 19:04:40 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1urhvX-00000002vTp-0L2z;
+	Thu, 28 Aug 2025 19:04:51 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urf3L-00000002BSN-0PT3
+	id 1urf3O-00000002BV6-3vv1
 	for linux-mediatek@lists.infradead.org;
-	Thu, 28 Aug 2025 16:00:44 +0000
-Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-45a1b05ac1eso6096975e9.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 28 Aug 2025 09:00:42 -0700 (PDT)
+	Thu, 28 Aug 2025 16:00:48 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-45b65469a5bso10329445e9.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 28 Aug 2025 09:00:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1756396841; x=1757001641; darn=lists.infradead.org;
+        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1756396845; x=1757001645; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=JThKrLTPuFVwzCwJhKd4fJmIEtCxHnGrNzSYzGU4KrU=;
-        b=2wV7IXT7FAx1HUv02HX1kCw8/zo/0t3YfYrTT63F0ngMojdudtRmzjmCUitzk4vxEX
-         cCRaFpsp+3p79+qDOVl3pe9xCrBomoU1V5Z4UbzbnwYLo2gSFidIfpxaiu0wnZMUtzp1
-         CmN7Oyb6N7BExA0D+2z5OHDKicudQwSKGa3qoQ9YOV2Kad2jI0iczfZBfNwGElW3TEg9
-         NYkRq1nWkFpTmoJYxjpUvXV8MP+ohCQ55WcEqXE/X+eFSGzYr9tS8vBbDx0c5Yh3FaqZ
-         f35UgSEwJbNkubN2Of8axp/HZeFfurDmIyjzCEMZ+wA0QgxHEqX9i2Ekq34HCfKSzQLI
-         +5mg==
+        bh=jAO2WeXDFkbtwkjKyd1xrqU98u0EGyjojmTyXcAuE7w=;
+        b=lnYckaq9SdvvUdizwmKYzLJ2XDDRosMyDfLD3Mg0SBizxqlk2oj2BLm8dLcSIUQth3
+         bLaIqtW1Y1jQBi6t3M82RP48qhPURsJ/TgTESKAiIsR5gxmzjQ0zf+XNw8wXBfvM6Txv
+         SBRxhtsnXcymJ8lc/zjxumwvb0/0T35bbHG11x7vcN/daLizOCPz6tv/8fd0j7PNLA3G
+         nswEqfebqYfYJ2ESLrraLd98fh7FioPpVr8MB+Zj2rLoJ2sbgvU0rER8d5NXWLXQ4jND
+         WDCBHqpijpv6SLAuG8zHj0uJ+CX5iRpKTk6jpKxqd/hoLJfZPV3S3ivZ6bP6AwS5S0v7
+         uDiw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756396841; x=1757001641;
+        d=1e100.net; s=20230601; t=1756396845; x=1757001645;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=JThKrLTPuFVwzCwJhKd4fJmIEtCxHnGrNzSYzGU4KrU=;
-        b=NPJYD6gwZpHtQDreXZSr023x4ENnGV4T0sv7j1SFLtIFL7zbCX0p/DFtRYHz7We4bF
-         NzEuLu7TC6qZmbQ7xsc1952La0MTz7Z6M2TUXpeueio0QZ0rk3f9+xjjuola9hGw7jCm
-         Yc5npjGb6LWnfUvH9AH/odRGc7FAOLE6UHoQdAjuL41xML5h0aCe/8AV6vEEEpxf9rjk
-         Axq+xMARapBi1LD2gxAV2d8BATRS8Xt/ulTDsQHr/a69edxzbTZe+StDUD0hZIm1Bhio
-         8mFF4K11xIBgTlAzd3fDpdVAiZyeE+bpt4ROnygtaA9R7eDZ67qR/oI0lRPste66pDbP
-         z3vA==
-X-Forwarded-Encrypted: i=1; AJvYcCWJc67DjXKd7a78Aod6emHWGX2z8FUfpRMXmu9zHMczcuaYDJzuTWWujBb77ucrDQYPhBbhUFEkya99wrRh5g==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzn4BOHBdsCLYYq0OzLZcin2T3tofF3Z4YQBsvsr537Fc4uIsNr
-	0Fg80ZWPOqkcjDnNExhDPZSPz2kUDEV3x/yxOkQhL9ki82qwPtMqT1tjpvU5LtYTaIs=
-X-Gm-Gg: ASbGncvngU5KQY+iBKEKpAwednzjq1KI3C4cfdT+JfKTbAPGLRS5phZMgflEHJJnaqz
-	c+XQBrRotc2uFIjbX1ezQ/bUkRWwRzgQPvh/o4uuTLg1l8HT2kEGWyGAn6OsdK17qbKaoH8v3Oo
-	JEW/c8pcKVIWT0GpCL4gj1OAt43mwPHN3V3iWoGN6CmZDNyM9VUGD4hQZ66lyIfcolFwofCXW7b
-	yA9Z5F1IbaBkR7JWQbn57mXUJ2dbTlYTzWfmRN+nLJD8ud0Ps4vW/erfLvvNb6rPRD+VpyUobe2
-	/U29pfMDl1A/ZrIFMnap9lG2kgbSZ/kbU8yD1TZcsGkBOOPM3hDydawZ/FZH8oaXCP/DZc2+r8X
-	9+zU2jWBRuUb99han4A==
-X-Google-Smtp-Source: AGHT+IGBclbNO8WGRtJ0uIJ0ka2pGvDxULNrTlJVFv33q7V9H1vL8p1aMqaTfJLA+km5WeyuNutw9Q==
-X-Received: by 2002:a05:600c:548d:b0:45b:6f48:9deb with SMTP id 5b1f17b1804b1-45b75858134mr40479305e9.28.1756396841346;
-        Thu, 28 Aug 2025 09:00:41 -0700 (PDT)
+        bh=jAO2WeXDFkbtwkjKyd1xrqU98u0EGyjojmTyXcAuE7w=;
+        b=VmB2dnuHEt+iFKqCd0vqlKHDf4W70snI3/d8tLxZcZBStw397D3DB/OHOiVp6ZC44/
+         pBAaDnNrUU9mIraYhbkFxQUylCuKQQimWMHKEdhe5b/qGVr1QDu63nNfgCTyZfRKwEW/
+         +WufiYl0k6yJaSIaNHgJ/4RoCN3nAaQpdaGJR4LLxNpbKy9p5njAO/GTw19Z8g1VtpKb
+         4WUm/PXaT9QW63kEcMvT9zN5yUy8VILlA1K9U1gef7INSL7FqVaHpneRub1/0efHJtD9
+         0InNhPuK3qPXDvP6ft3/B4Bkh9aP5VHGBugQ4BZG/l+AreozwB9SOpS3AJ9g/k83uhzL
+         vnFA==
+X-Forwarded-Encrypted: i=1; AJvYcCXxLJc3+ChEDZ2sNQa5lvdibWVikEX/96dj3yhkMr71Uu6OOITsWi2iLIs0KdG3tu3TsiChLk0zBFkrJEby6Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwuU0eyIXiogy6xKpsl/viiMWeMMWP0HdmkTFDVvLJ6bdoEWKMV
+	55jO66w9r2U20jgaDDOl75qXUIdS9XPl68W3bVBpoVGQFWPeUe2y8emSlJQenVQexYM=
+X-Gm-Gg: ASbGncvNb25TZFwg4DbDDqPwqIOSUtEVCAkMAuUqQVEslIJdMgCE9jsLU7xutE+x1XV
+	rzJGrqAM8loZIdSNHRH0g6u1DCsu8xh8Las8zQYVcX38kn503otPwSn6jWBhbXiit0ruMIo6VvO
+	Bd2hwxlHQM7uZrHE84CTGTh9BwqeGGh4h0v4NeDYLrZ4co2JFvchgc0vxwsfc3H15z4AuXqet0I
+	FeT3fg0RUbkUhCdKgp8KNq1nEZF56Lp6kFiyzY5FRqrxOtiT+oppJt/2Xf252w+m/RkqpmKucBE
+	Htu6pQg80cA7bwTeox8Piy3wi7F0/3FXxcHboYHTB4v5ClyAE5hFgpRnjYlIpTfI0p9XamVVQiv
+	kOQ+b79cKS2LuHyWT2w==
+X-Google-Smtp-Source: AGHT+IH9eqAsu0mBkmZO1sLp4iQB82doTTOSGeYtxhUeFPIbPn5xY/WnY8KAWmQi9Jdt7MPymPYo1A==
+X-Received: by 2002:a05:600c:4f05:b0:45b:5f5e:f1e4 with SMTP id 5b1f17b1804b1-45b648111dfmr100878215e9.27.1756396845191;
+        Thu, 28 Aug 2025 09:00:45 -0700 (PDT)
 Received: from [127.0.1.1] ([2a01:cb1d:dc:7e00:4933:4d7c:cf69:9502])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45b6f0c6fe5sm80211675e9.5.2025.08.28.09.00.39
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45b6f0c6fe5sm80211675e9.5.2025.08.28.09.00.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 28 Aug 2025 09:00:40 -0700 (PDT)
+        Thu, 28 Aug 2025 09:00:44 -0700 (PDT)
 From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Thu, 28 Aug 2025 18:00:21 +0200
-Subject: [PATCH v6 13/15] pinctrl: qcom: add infrastructure for marking pin
- functions as GPIOs
+Date: Thu, 28 Aug 2025 18:00:23 +0200
+Subject: [PATCH v6 15/15] pinctrl: qcom: make the pinmuxing strict
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250828-pinctrl-gpio-pinfuncs-v6-13-c9abb6bdb689@linaro.org>
+Message-Id: <20250828-pinctrl-gpio-pinfuncs-v6-15-c9abb6bdb689@linaro.org>
 References: <20250828-pinctrl-gpio-pinfuncs-v6-0-c9abb6bdb689@linaro.org>
 In-Reply-To: <20250828-pinctrl-gpio-pinfuncs-v6-0-c9abb6bdb689@linaro.org>
 To: Linus Walleij <linus.walleij@linaro.org>, 
@@ -112,26 +111,26 @@ Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
  Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, 
  Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1755;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1142;
  i=bartosz.golaszewski@linaro.org; h=from:subject:message-id;
- bh=1TtCXH0c1SnNyHC+v6gZsytFHMfkLN/q6H3Fm9nBNlI=;
- b=owEBbQKS/ZANAwAKARGnLqAUcddyAcsmYgBosH0PIg19tb8c/EzOw0dn2/vV0Q2+khf5QKTgm
- oMVFo9hzQuJAjMEAAEKAB0WIQQWnetsC8PEYBPSx58Rpy6gFHHXcgUCaLB9DwAKCRARpy6gFHHX
- cmqpEACqff+3ib93FI87PuYM4exeofWP28ytmolqFv/JNDSfQlXfjFmYnRfKPTFyBA76ttfOjLm
- ASMPBrH6jm+gDbBK71pqHYmPLR2F3+VbGeBrBP4P+U4KIOoMivjWw3M4zYZw2pqshTxIuzIk8hp
- p7MU2ac3Y9n23iveKbzSAK+EoAmSxL2lQ15yc/7o8ph4+/jCy3aXmdAepBlD2zhWYVn/xEtcAcp
- XMTxIoIzyILFd7r5Z0RbiaGuyI1mT29BWNgpFIRDw954gCvFOYWUrbn2o/Lkg+Qctpz2A4FUeXI
- Diiu3zoutBbFXtO89+FSOyzdmqfSLbrt7rVfKtvvSp1/OoGcglsdJ9T5oWoGjckBb4Zc0Sbj1+U
- /4oXbRes08VCGwU5d0qXt2c2lxgrVlVnKODYUiEPU9qJkPSIX7Q9PAUOzdF6wmMNQBs3xWUDxDv
- PydivI+3iUC103HTAmcWHpervRU6SelZmt3njPpmXzohKb9EzGDwrif+F+FXALOTHaZUARsDhtf
- HPf1uVDdCvVnnIPhwwMrx5l+4F1B21FUAmCe4o6k2r6BZp5mZGL2FBpb+ZIiABfcTzIwxLGjOvn
- 04jBAAR9bb5jV1pFoCEljbH/f0c2ullfdb+vvcTGt2JrOg45VcIDDclxo+6Iw2aCGRgUNKNCbPg
- KlIxSfNF/oUQW7Q==
+ bh=M6AAfE1ZYIqFZsBoDZ4O1bJllvK/6bMXFJ6Zryc+i/E=;
+ b=owEBbQKS/ZANAwAKARGnLqAUcddyAcsmYgBosH0PX+ObgCFGCgqoUrUjW902keUOxgLE8EUsB
+ XcES2lA2qmJAjMEAAEKAB0WIQQWnetsC8PEYBPSx58Rpy6gFHHXcgUCaLB9DwAKCRARpy6gFHHX
+ ctL5D/9vpjY2JraOKI6xQLDzt9TXljIFuNDozQLvzOHyC9MgvKOWbsLqyOrunHPfrNqqKOFBK3T
+ KwmfdS1uCAhkPVJFu9+QIjoLLd5p693JFSuHkObJvgCet04MNbRQLB5JHqL6iuH+bu9MyubXgwJ
+ krZwBmRMnrDWPenruj6k4hAA2ihAQlUx9GOdKpiLfvYH8b6RAkHtDQPWjO21WqCLg4XFku4EESO
+ 5IruyaJkV3MTpbYIobh2C/a6mUW8SqezSSh1LG4Bd1XobET0b8+hWmght65TmOvonC+GLe5r2Wh
+ pLFBhM0QRVLHeqtJgYx4uIqUU9M0k9AXIOR9238ttf3Ct3ldZ9ZfTONb3jNBXOp9939T7h4ZLpx
+ SUaPlc2TzAFEbRUJNonPEbxaaa0+qbqTjF9ltT5tZC1Mlqr8pyzA1YH8BN9wyrbK4N6qH1ty3MJ
+ 6emE/yXMZFLsGd8hOSA+egnDYIO5BK1s91hpGWU/ZY/fadrMn6UtPYHf85JlfFzmhIlsS9nHjfY
+ oLMcdYawGwDD/MdG1Dt9y2yWY+0T4iNxJoUqYKmpisWrARyHw/iR5VjqJFS50k88+CJMB1H36z0
+ letY3JTa4NNIETPLbq0dvyWaZmnqCNmCzEgKPyWyC7sxmk66PTtyQoJj32nMAH62uZVZ+A6DZeE
+ zit65McHjdrqSGA==
 X-Developer-Key: i=bartosz.golaszewski@linaro.org; a=openpgp;
  fpr=169DEB6C0BC3C46013D2C79F11A72EA01471D772
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250828_090043_133462_08A57813 
-X-CRM114-Status: GOOD (  11.85  )
+X-CRM114-CacheID: sfid-20250828_090047_011011_CD968800 
+X-CRM114-Status: GOOD (  11.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,44 +147,30 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 
-Add a helper macro that wraps PINCTRL_GPIO_PINFUNCTION() for pinctrl-msm
-pin functions and assign the .function_is_gpio() callback in pinmux_ops.
+The strict flag in struct pinmux_ops disallows the usage of the same pin
+as a GPIO and for another function. Without it, a rouge user-space
+process with enough privileges (or even a buggy driver) can request a
+used pin as GPIO and drive it, potentially confusing devices or even
+crashing the system. Set it globally for all pinctrl-msm users.
 
 Reviewed-by: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
 Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 ---
  drivers/pinctrl/qcom/pinctrl-msm.c | 1 +
- drivers/pinctrl/qcom/pinctrl-msm.h | 5 +++++
- 2 files changed, 6 insertions(+)
+ 1 file changed, 1 insertion(+)
 
 diff --git a/drivers/pinctrl/qcom/pinctrl-msm.c b/drivers/pinctrl/qcom/pinctrl-msm.c
-index 96e40c2342bdedb8857629e503897f171a80e579..a5f69464827119dfe2a7781b558094b283fca215 100644
+index a5f69464827119dfe2a7781b558094b283fca215..1751d838ce95d6138c824b90098f74891dec7656 100644
 --- a/drivers/pinctrl/qcom/pinctrl-msm.c
 +++ b/drivers/pinctrl/qcom/pinctrl-msm.c
-@@ -265,6 +265,7 @@ static const struct pinmux_ops msm_pinmux_ops = {
- 	.get_functions_count	= pinmux_generic_get_function_count,
- 	.get_function_name	= pinmux_generic_get_function_name,
- 	.get_function_groups	= pinmux_generic_get_function_groups,
-+	.function_is_gpio	= pinmux_generic_function_is_gpio,
+@@ -268,6 +268,7 @@ static const struct pinmux_ops msm_pinmux_ops = {
+ 	.function_is_gpio	= pinmux_generic_function_is_gpio,
  	.gpio_request_enable	= msm_pinmux_request_gpio,
  	.set_mux		= msm_pinmux_set_mux,
++	.strict			= true,
  };
-diff --git a/drivers/pinctrl/qcom/pinctrl-msm.h b/drivers/pinctrl/qcom/pinctrl-msm.h
-index d7dc0947bb161868c8f433dc2536719b8afc8bd8..4625fa5320a95a4d24e3a0c98a249e4f163dd4c7 100644
---- a/drivers/pinctrl/qcom/pinctrl-msm.h
-+++ b/drivers/pinctrl/qcom/pinctrl-msm.h
-@@ -29,6 +29,11 @@ struct pinctrl_pin_desc;
- 					fname##_groups,		\
- 					ARRAY_SIZE(fname##_groups))
  
-+#define MSM_GPIO_PIN_FUNCTION(fname)				\
-+	[msm_mux_##fname] = PINCTRL_GPIO_PINFUNCTION(#fname,	\
-+					fname##_groups,		\
-+					ARRAY_SIZE(fname##_groups))
-+
- #define QCA_PIN_FUNCTION(fname)					\
- 	[qca_mux_##fname] = PINCTRL_PINFUNCTION(#fname,		\
- 					fname##_groups,		\
+ static int msm_config_reg(struct msm_pinctrl *pctrl,
 
 -- 
 2.48.1
