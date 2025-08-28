@@ -4,45 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78A40CA0FF2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Aug 2025 08:08:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF268CA0FF2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Aug 2025 08:33:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=vUvp0ttX3lOxjdOrvZsKvJKNpHHNusfF6naBdS8j1E8=; b=KKdO5mEWbt1clLJmkHBTXrz2cT
-	yhgLfr/CXoYxC8crCcLihhTP+fb72ip942PQeXozvTdU27Py224RT2fc7Kf+Jchan7vRwg0B33VaR
-	SKC9e+Dwlzs7x6J/Zuk43DvMbayhq29GHXf206pPHydOhWOPwZ7d6L38W5KeenWig0Wtk8KqbXdAZ
-	00U7u+0zpCNMoiqSVvj3Rq9Q3LchabRs8RVk1ttiTkbTECnnSadtze70BXMW5mlClesNg3gA/GKOn
-	4UMSTMhC6dFOD2l2oXjwtpZdzk22CiWrP3TeeaVBq83NQM2UqVPdSCs5WVAu3M8wB3+Gu8pOgFE0Q
-	kwy8uk+A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7MEB3reeoCo//TjYPHqgcu+yww7iH8Q7pEV+Z7L2QC0=; b=MrBZr/S2RM82jumTqSPe2WMvjh
+	zlddadQ0AMLlkTShv0u9Cstgw/IP61ZpJVEUoqBOvSS2TSsqRDXV7wJ79GRrXQ5Icto32VQK0O1Ds
+	c3N/322uo0FMkKZUMds0zi9rI05z5mIvw0l8yfXPVbyrknMtMXSayWxcTyBeRmfjqUbiIaSbCMGJV
+	g7nbv+Pew+DzYgtT0l1mGuNXpHrLxLYvlulVJOhzhhzOAwXNA6Y29qRBdO6a5Jn9GORFZhL52sgTR
+	Q9HafkKE1PxdO4VxBGbpPbTqDxz+TQkFp1sttrkQ+3cgmBemS+FjrVBn+Wxm5rvFhtE3SD7eJjZXN
+	OmklRW1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urXgY-00000000jLO-3BfR;
-	Thu, 28 Aug 2025 08:08:42 +0000
-Received: from mail.fundixo.pl ([57.128.173.14])
+	id 1urY4p-00000000oQp-2eGP;
+	Thu, 28 Aug 2025 08:33:47 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urXRs-00000000gbF-282u
-	for linux-mediatek@lists.infradead.org;
-	Thu, 28 Aug 2025 07:53:33 +0000
-Received: by mail.fundixo.pl (Postfix, from userid 1002)
-	id E8DDD4F259; Thu, 28 Aug 2025 09:47:10 +0200 (CEST)
-Received: by mail.fundixo.pl for <linux-mediatek@lists.infradead.org>; Thu, 28 Aug 2025 07:45:55 GMT
-Message-ID: <20250828084500-0.1.hb.3y3mc.0.8k3ckmcn6e@CyberCitadel.pl>
-Date: Thu, 28 Aug 2025 07:45:55 GMT
-From: "Marek Kucharski" <marek.kucharski@fundixo.pl>
-To: <linux-mediatek@lists.infradead.org>
-Subject: =?UTF-8?Q?Prosz=C4=99_o_kontakt?=
-X-Mailer: mail.CyberCitadel.pl
+	id 1urXh1-00000000jPR-2EOv;
+	Thu, 28 Aug 2025 08:09:12 +0000
+X-UUID: 44e7cae883e611f09eb0dd999d3936bf-20250828
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=7MEB3reeoCo//TjYPHqgcu+yww7iH8Q7pEV+Z7L2QC0=;
+	b=c4wa5Lqw9Iii0U3Sc+x/uh6TDUzRlO9jOwP8j0vthsE0qQ/0oDWbJLlD/wgCQyzag33jycKdn1gxlc4MFk8YIl7XzFF+DXmcOwwYSuJ7T6exALOYuccPfNEfZ8yJUFdqW6e4c1MKKRP+73etg4GkEb6hqsHGEz++VkLbIUha6PY=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.3,REQID:d5184b69-4f7d-4f9c-be8b-930c8a580417,IP:0,UR
+	L:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:25
+X-CID-META: VersionHash:f1326cf,CLOUDID:0b0b9920-786d-4870-a017-e7b4f3839b3f,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:-5,Content:0|15|50,EDM:
+	-3,IP:nil,URL:97|99|83|106|11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,CO
+	L:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 44e7cae883e611f09eb0dd999d3936bf-20250828
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
+	(envelope-from <paul-pl.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1971620588; Thu, 28 Aug 2025 01:09:07 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Thu, 28 Aug 2025 16:09:03 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Thu, 28 Aug 2025 16:09:03 +0800
+From: Paul Chen <paul-pl.chen@mediatek.com>
+To: <robh@kernel.org>, <krzk+dt@kernel.org>, <conor+dt@kernel.org>,
+	<chunkuang.hu@kernel.org>, <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v4 04/19] dt-bindings: display: mediatek: add BLENDER yaml for MT8196
+Date: Thu, 28 Aug 2025 16:06:59 +0800
+Message-ID: <20250828080855.3502514-5-paul-pl.chen@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20250828080855.3502514-1-paul-pl.chen@mediatek.com>
+References: <20250828080855.3502514-1-paul-pl.chen@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250828_005332_686768_733A9494 
-X-CRM114-Status: UNSURE (   0.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250828_010911_587402_E95E4D95 
+X-CRM114-Status: GOOD (  12.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -54,22 +80,78 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, xiandong.wang@mediatek.com, jason-jh.lin@mediatek.com, singo.chang@mediatek.com, treapking@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, paul-pl.chen@mediatek.com, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, nancy.lin@mediatek.com, linux-mediatek@lists.infradead.org, sunny.shen@mediatek.com, p.zabel@pengutronix.de, sirius.wang@mediatek.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dzie=C5=84 dobry,
+From: Paul-pl Chen <paul-pl.chen@mediatek.com>
 
-Czy jest mo=C5=BCliwo=C5=9B=C4=87 nawi=C4=85zania wsp=C3=B3=C5=82pracy z =
-Pa=C5=84stwem?
+Add mediatek,blender.yaml to support BLENDER for MT8196.
+MediaTek display overlap blender, namely OVL_BLENDER or BLENDER,
+executes the alpha blending function for overlapping layers
+from different sources.
 
-Z ch=C4=99ci=C4=85 porozmawiam z osob=C4=85 zajmuj=C4=85c=C4=85 si=C4=99 =
-dzia=C5=82aniami zwi=C4=85zanymi ze sprzeda=C5=BC=C4=85.
+Signed-off-by: Paul-pl Chen <paul-pl.chen@mediatek.com>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ .../display/mediatek/mediatek,blender.yaml    | 47 +++++++++++++++++++
+ 1 file changed, 47 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,blender.yaml
 
-Pomagamy skutecznie pozyskiwa=C4=87 nowych klient=C3=B3w.
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,blender.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,blender.yaml
+new file mode 100644
+index 000000000000..4b85f6ac40a2
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,blender.yaml
+@@ -0,0 +1,47 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/mediatek/mediatek,blender.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek Display Overlap Blender
++
++maintainers:
++  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
++  - Philipp Zabel <p.zabel@pengutronix.de>
++
++description:
++  MediaTek display overlap blender, namely OVL_BLENDER or BLENDER,
++  executes the alpha blending function for overlapping layers
++  from different sources. This is the primary function of the
++  overlapping system.
++
++properties:
++  compatible:
++    const: mediatek,mt8196-blender
++
++  reg:
++    maxItems: 1
++
++  clocks:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - clocks
++
++additionalProperties: false
++
++examples:
++  - |
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        blender0: blender@328d0000 {
++            compatible = "mediatek,mt8196-blender";
++            reg = <0 0x328d0000 0 0x1000>;
++            clocks = <&ovlsys_config_clk 29>;
++        };
++    };
+-- 
+2.45.2
 
-Zapraszam do kontaktu.
-
-
-Pozdrawiam
-Marek Kucharski
 
