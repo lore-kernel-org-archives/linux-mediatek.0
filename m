@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCA3ACA0EED
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Aug 2025 09:01:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C05FCA0EED
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Aug 2025 09:07:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iBmqpY6tE/5ikFaZx5+coINmSyxtZJXaiouD5K2cw+s=; b=cm2hPwp8VvgZrRSs75hC077rYD
-	+APuHF2CfyaVQAiOj978KSQvJvqrib31Xjyjj1h72GAErEjJaT+kLcqiprBE5ey/UGVe3ZdEtBRQF
-	WdkF0QTZRXhoroN1rTQ/ILkeupW97GckEgKy/lBCDbGRvPP0JST7GOImjxq0D58eLHdzjTMZQJhS1
-	ircqO1f+cgSVZKIlAs0pIpq66aMtCit8mHvWaja93+kargHs6Sr+cSL9m+lqtmacd5fsl2+a7DEzn
-	/vsL8+oxPmLLBI1Uvqg4AhnaxZ0yGK+j20l6V7VNqaDI1J8jXuIrBF05c5ef03ir4X3v4Cxela8Ms
-	2udooRJw==;
+	bh=ReZvEftY9OCzW7Dm6xWBCAsBP3wLpjVjsHSQsCNwqs8=; b=g9y0/zBGyPsixeVP2E9aH242Ft
+	OgdGoFFBqY0+Utik7J4wIL893b12SXxNRvGnVK1tj0/msElLu5AzKWT7ohwh451fbeczkJW/Evtfa
+	pD66oio0FwgtJJ67Cv8SPEcLF6hjnJOWIweDZQbwx0ujlahyZ3ahOEbC+gIgujhhGp8pQesH21mvG
+	8izhRx9oAC80mfzAA0HxTJ7JYIcEHkDHP/1bjJ/Bqgw6PpBgHV01EHjv2KGkNCv6fekLcdB7nYouH
+	AMFjQ/ITr5x0V3KWQ35CCTl9PN3hHPFe7X8RD6tLFheVJ49DgXmkWgPSlONuGIHdAOdT9W8AwOFTe
+	1Z96XYVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urYVm-00000000trq-35ym;
-	Thu, 28 Aug 2025 09:01:38 +0000
+	id 1urYbC-00000000ueY-0Ijz;
+	Thu, 28 Aug 2025 09:07:14 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urXh6-00000000jRT-1XC6;
-	Thu, 28 Aug 2025 08:09:18 +0000
-X-UUID: 4562987283e611f09f706fa2197c6ceb-20250828
+	id 1urXh7-00000000jTN-2tso;
+	Thu, 28 Aug 2025 08:09:19 +0000
+X-UUID: 450b1da483e611f09f706fa2197c6ceb-20250828
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=iBmqpY6tE/5ikFaZx5+coINmSyxtZJXaiouD5K2cw+s=;
-	b=AFzNDAA8wnIggMn7Z0yb6gEwKSj8AjD5B1L6BxP2pwzJSxLmnHbJLBCa0OUfpJX0lwJLrnVph+zXXHrG2ninDI4t94zt7NdUVIXorklvJn9ND8QUSianeuh5bWw9kZxg2Q+YbTGOmakHImZKF100pESimme0rTtqCGwJRK1uOcE=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ReZvEftY9OCzW7Dm6xWBCAsBP3wLpjVjsHSQsCNwqs8=;
+	b=Dx7Qk6uN6A9+5AmiRtot0855v6rdTDJp1ZS9gr2KT6pQNAytn84VV9AFtHPLaoWweiaQnfgzvbGcDxWcbh+me6sgWiRAPgdcpWctdeQXU0CHJM5+G+ZpSECIhzQZ92FcjqbhrbzGgYX6qqhqu5lcVfEMIS6wxB/JN0mJcSAJEo8=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.3,REQID:9c535b08-04c1-4fae-98e7-1afa9f06ee64,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:f1326cf,CLOUDID:7a9bb36d-c2f4-47a6-876f-59a53e9ecc6e,B
+X-CID-O-INFO: VERSION:1.3.3,REQID:5a2729d7-2b28-43ea-96d0-2e78be10e3ba,IP:0,UR
+	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:-5
+X-CID-META: VersionHash:f1326cf,CLOUDID:35719d7a-966c-41bd-96b5-7d0b3c22e782,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:-5,Content:0|15|50,EDM:
 	-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,
 	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -42,24 +42,24 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 4562987283e611f09f706fa2197c6ceb-20250828
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+X-UUID: 450b1da483e611f09f706fa2197c6ceb-20250828
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
 	(envelope-from <paul-pl.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 877244127; Thu, 28 Aug 2025 01:09:07 -0700
+	with ESMTP id 1208347384; Thu, 28 Aug 2025 01:09:07 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Thu, 28 Aug 2025 16:09:04 +0800
+ 15.2.1258.39; Thu, 28 Aug 2025 16:09:03 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Thu, 28 Aug 2025 16:09:04 +0800
+ 15.2.1258.39 via Frontend Transport; Thu, 28 Aug 2025 16:09:03 +0800
 From: Paul Chen <paul-pl.chen@mediatek.com>
 To: <robh@kernel.org>, <krzk+dt@kernel.org>, <conor+dt@kernel.org>,
 	<chunkuang.hu@kernel.org>, <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v4 08/19] soc: mediatek: mutex: Reused the switch case for SOF ID
-Date: Thu, 28 Aug 2025 16:07:03 +0800
-Message-ID: <20250828080855.3502514-9-paul-pl.chen@mediatek.com>
+Subject: [PATCH v4 06/19] soc: mediatek: Add runtime PM and top clocks and async controls for MMSYS
+Date: Thu, 28 Aug 2025 16:07:01 +0800
+Message-ID: <20250828080855.3502514-7-paul-pl.chen@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20250828080855.3502514-1-paul-pl.chen@mediatek.com>
 References: <20250828080855.3502514-1-paul-pl.chen@mediatek.com>
@@ -67,8 +67,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250828_010916_432632_7DED6CB9 
-X-CRM114-Status: GOOD (  11.71  )
+X-CRM114-CacheID: sfid-20250828_010917_766979_267423F0 
+X-CRM114-Status: GOOD (  20.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,165 +84,287 @@ Cc: devicetree@vger.kernel.org, xiandong.wang@mediatek.com, jason-jh.lin@mediate
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Paul-pl Chen <paul-pl.chen@mediatek.com>
+From: Nancy Lin <nancy.lin@mediatek.com>
 
-Reused the switch case for SOF IDs.
+- Add initialization of top clocks and async clocks for each MMSYS.
+- Add PM runtime control and new functions to manage these clocks.
+- Add functions to set these clocks according to the default
+  configuration of the corresponding MMSYS.
 
+Signed-off-by: Nancy Lin <nancy.lin@mediatek.com>
 Signed-off-by: Paul-pl Chen <paul-pl.chen@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-mutex.c | 115 ++++++++++++++++---------------
- 1 file changed, 60 insertions(+), 55 deletions(-)
+ drivers/soc/mediatek/mtk-mmsys.c       | 152 ++++++++++++++++++++++++-
+ drivers/soc/mediatek/mtk-mmsys.h       |  18 +++
+ include/linux/soc/mediatek/mtk-mmsys.h |   8 ++
+ 3 files changed, 177 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
-index 38179e8cd98f..1e5df5aa0bd5 100644
---- a/drivers/soc/mediatek/mtk-mutex.c
-+++ b/drivers/soc/mediatek/mtk-mutex.c
-@@ -887,53 +887,61 @@ void mtk_mutex_unprepare(struct mtk_mutex *mutex)
- }
- EXPORT_SYMBOL_GPL(mtk_mutex_unprepare);
+diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+index bb4639ca0b8c..f448cc09ce19 100644
+--- a/drivers/soc/mediatek/mtk-mmsys.c
++++ b/drivers/soc/mediatek/mtk-mmsys.c
+@@ -4,12 +4,15 @@
+  * Author: James Liao <jamesjj.liao@mediatek.com>
+  */
  
--void mtk_mutex_add_comp(struct mtk_mutex *mutex,
--			enum mtk_ddp_comp_id id)
-+static int mtk_mutex_get_output_comp_sof(enum mtk_ddp_comp_id id)
- {
--	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
--						 mutex[mutex->id]);
--	unsigned int reg;
--	unsigned int sof_id, mod_id;
--	unsigned int offset;
--
--	WARN_ON(&mtx->mutex[mutex->id] != mutex);
--
- 	switch (id) {
- 	case DDP_COMPONENT_DSI0:
--		sof_id = MUTEX_SOF_DSI0;
--		break;
-+		return MUTEX_SOF_DSI0;
- 	case DDP_COMPONENT_DSI1:
--		sof_id = MUTEX_SOF_DSI0;
--		break;
-+		return MUTEX_SOF_DSI1;
- 	case DDP_COMPONENT_DSI2:
--		sof_id = MUTEX_SOF_DSI2;
--		break;
-+		return MUTEX_SOF_DSI2;
- 	case DDP_COMPONENT_DSI3:
--		sof_id = MUTEX_SOF_DSI3;
--		break;
-+		return MUTEX_SOF_DSI3;
- 	case DDP_COMPONENT_DPI0:
--		sof_id = MUTEX_SOF_DPI0;
--		break;
-+		return MUTEX_SOF_DPI0;
- 	case DDP_COMPONENT_DPI1:
--		sof_id = MUTEX_SOF_DPI1;
--		break;
-+		return MUTEX_SOF_DPI1;
- 	case DDP_COMPONENT_DP_INTF0:
--		sof_id = MUTEX_SOF_DP_INTF0;
--		break;
-+		return MUTEX_SOF_DP_INTF0;
- 	case DDP_COMPONENT_DP_INTF1:
--		sof_id = MUTEX_SOF_DP_INTF1;
--		break;
-+		return MUTEX_SOF_DP_INTF1;
- 	default:
--		offset = DISP_REG_MUTEX_MOD(mtx, mtx->data->mutex_mod[id], mutex->id);
--		mod_id = mtx->data->mutex_mod[id] % 32;
--		reg = readl_relaxed(mtx->regs + offset);
--		reg |= BIT(mod_id);
--		writel_relaxed(reg, mtx->regs + offset);
-+		break;
++#include <linux/bitfield.h>
++#include <linux/clk.h>
+ #include <linux/delay.h>
+ #include <linux/device.h>
+ #include <linux/io.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+ #include <linux/platform_device.h>
++#include <linux/pm_runtime.h>
+ #include <linux/reset-controller.h>
+ #include <linux/soc/mediatek/mtk-mmsys.h>
+ 
+@@ -158,6 +161,9 @@ struct mtk_mmsys {
+ 	spinlock_t lock; /* protects mmsys_sw_rst_b reg */
+ 	struct reset_controller_dev rcdev;
+ 	struct cmdq_client_reg cmdq_base;
++	struct clk **async_clk;
++	int num_async_clk;
++	struct clk **top_clk;
+ };
+ 
+ static void mtk_mmsys_update_bits(struct mtk_mmsys *mmsys, u32 offset, u32 mask, u32 val,
+@@ -180,6 +186,101 @@ static void mtk_mmsys_update_bits(struct mtk_mmsys *mmsys, u32 offset, u32 mask,
+ 	writel_relaxed(tmp, mmsys->regs + offset);
+ }
+ 
++int mtk_mmsys_top_clk_enable(struct device *dev)
++{
++	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
++	int ret, i;
++
++	if (!mmsys->data->num_top_clk)
++		return 0;
++
++	for (i = 0; i < mmsys->data->num_top_clk; i++)
++		ret = clk_prepare_enable(mmsys->top_clk[i]);
++	return ret;
++}
++EXPORT_SYMBOL_GPL(mtk_mmsys_top_clk_enable);
++
++void mtk_mmsys_top_clk_disable(struct device *dev)
++{
++	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
++	int i;
++
++	for (i = 0; i < mmsys->data->num_top_clk; i++)
++		clk_disable_unprepare(mmsys->top_clk[i]);
++}
++EXPORT_SYMBOL_GPL(mtk_mmsys_top_clk_disable);
++
++int mtk_mmsys_ddp_clk_enable(struct device *dev, enum mtk_ddp_comp_id comp_id)
++{
++	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
++	const struct mtk_mmsys_async_info *async = mmsys->data->async_info;
++
++	int i;
++
++	if (!mmsys->data->num_async_info)
++		return 0;
++
++	for (i = 0; i < mmsys->data->num_async_info; i++)
++		if (comp_id == async[i].comp_id)
++			return clk_prepare_enable(mmsys->async_clk[async[i].index]);
++	return 0;
++}
++EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_clk_enable);
++
++void mtk_mmsys_ddp_clk_disable(struct device *dev, enum mtk_ddp_comp_id comp_id)
++{
++	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
++	const struct mtk_mmsys_async_info *async = mmsys->data->async_info;
++	int i;
++
++	if (!mmsys->data->num_async_info)
++		return;
++
++	for (i = 0; i < mmsys->data->num_async_info; i++)
++		if (comp_id == async[i].comp_id)
++			clk_disable_unprepare(mmsys->async_clk[async[i].index]);
++}
++EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_clk_disable);
++
++void mtk_mmsys_ddp_config(struct device *dev, enum mtk_ddp_comp_id comp_id,
++			  int width, int height, struct cmdq_pkt *cmdq_pkt)
++{
++	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
++	const struct mtk_mmsys_async_info *async = mmsys->data->async_info;
++	int i;
++	u32 val;
++
++	if (!mmsys->data->num_async_info)
++		return;
++
++	for (i = 0; i < mmsys->data->num_async_info; i++)
++		if (comp_id == async[i].comp_id)
++			break;
++
++	if (i == mmsys->data->num_async_info)
++		return;
++
++	val = FIELD_PREP(GENMASK(31, 16), height);
++	val |= FIELD_PREP(GENMASK(15, 0), width);
++	mtk_mmsys_update_bits(mmsys, async[i].offset, async[i].mask, val, cmdq_pkt);
++}
++EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_config);
++
++void mtk_mmsys_default_config(struct device *dev)
++{
++	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
++	const struct mtk_mmsys_default *def_config = mmsys->data->def_config;
++	int i;
++
++	if (!mmsys->data->num_def_config)
++		return;
++
++	for (i = 0; i < mmsys->data->num_def_config; i++)
++		mtk_mmsys_update_bits(mmsys, def_config[i].offset, def_config[i].mask,
++				      def_config[i].val, NULL);
++}
++EXPORT_SYMBOL_GPL(mtk_mmsys_default_config);
++
+ void mtk_mmsys_ddp_connect(struct device *dev,
+ 			   enum mtk_ddp_comp_id cur,
+ 			   enum mtk_ddp_comp_id next)
+@@ -390,7 +491,7 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
+ 	struct platform_device *clks;
+ 	struct platform_device *drm;
+ 	struct mtk_mmsys *mmsys;
+-	int ret;
++	int ret, i;
+ 
+ 	mmsys = devm_kzalloc(dev, sizeof(*mmsys), GFP_KERNEL);
+ 	if (!mmsys)
+@@ -432,6 +533,49 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
+ 		return PTR_ERR(clks);
+ 	mmsys->clks_pdev = clks;
+ 
++	if (mmsys->data->num_top_clk) {
++		struct device_node *node;
++
++		node = of_get_child_by_name(dev->of_node, "top");
++		if (!node) {
++			dev_err(&pdev->dev, "Couldn't find top node\n");
++			return -EINVAL;
++		}
++
++		mmsys->top_clk = devm_kmalloc_array(dev, mmsys->data->num_top_clk,
++						    sizeof(*mmsys->top_clk), GFP_KERNEL);
++		if (!mmsys->top_clk)
++			return -ENOMEM;
++
++		for (i = 0; i < mmsys->data->num_top_clk; i++) {
++			mmsys->top_clk[i] = of_clk_get(node, i);
++			if (IS_ERR(mmsys->top_clk[i]))
++				return PTR_ERR(mmsys->top_clk[i]);
++		}
 +	}
 +
-+	return -EINVAL;
-+}
++	if (mmsys->data->num_async_info) {
++		struct device_node *node;
 +
-+void mtk_mutex_add_comp(struct mtk_mutex *mutex,
-+			enum mtk_ddp_comp_id id)
-+{
-+	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
-+						 mutex[mutex->id]);
-+	unsigned int reg;
-+	unsigned int sof_id, mod_id;
-+	unsigned int offset;
-+	int sof_id = mtk_mutex_get_output_comp_sof(id);
-+
-+	WARN_ON(&mtx->mutex[mutex->id] != mutex);
-+
-+	if (sof_id < 0) {
-+		if (mtx->data->mutex_mod[id] < 32) {
-+			offset = DISP_REG_MUTEX_MOD(mtx->data->mutex_mod_reg,
-+						    mutex->id);
-+			reg = readl_relaxed(mtx->regs + offset);
-+			reg |= 1 << mtx->data->mutex_mod[id];
-+			writel_relaxed(reg, mtx->regs + offset);
-+		} else {
-+			offset = DISP_REG_MUTEX_MOD2(mutex->id);
-+			reg = readl_relaxed(mtx->regs + offset);
-+			reg |= 1 << (mtx->data->mutex_mod[id] - 32);
-+			writel_relaxed(reg, mtx->regs + offset);
++		node = of_get_child_by_name(dev->of_node, "async");
++		if (!node) {
++			dev_err(&pdev->dev, "Couldn't find async node\n");
++			return -EINVAL;
 +		}
- 		return;
- 	}
- 
--	writel_relaxed(mtx->data->mutex_sof[sof_id],
--		       mtx->regs +
-+	writel_relaxed(mtx->data->mutex_sof[sof_id], mtx->regs +
- 		       DISP_REG_MUTEX_SOF(mtx->data->mutex_sof_reg, mutex->id));
- }
- EXPORT_SYMBOL_GPL(mtk_mutex_add_comp);
-@@ -946,31 +954,28 @@ void mtk_mutex_remove_comp(struct mtk_mutex *mutex,
- 	unsigned int reg;
- 	unsigned int mod_id;
- 	unsigned int offset;
--
-+	int sof_id = mtk_mutex_get_output_comp_sof(id);
- 	WARN_ON(&mtx->mutex[mutex->id] != mutex);
- 
--	switch (id) {
--	case DDP_COMPONENT_DSI0:
--	case DDP_COMPONENT_DSI1:
--	case DDP_COMPONENT_DSI2:
--	case DDP_COMPONENT_DSI3:
--	case DDP_COMPONENT_DPI0:
--	case DDP_COMPONENT_DPI1:
--	case DDP_COMPONENT_DP_INTF0:
--	case DDP_COMPONENT_DP_INTF1:
--		writel_relaxed(MUTEX_SOF_SINGLE_MODE,
--			       mtx->regs +
--			       DISP_REG_MUTEX_SOF(mtx->data->mutex_sof_reg,
--						  mutex->id));
--		break;
--	default:
--		offset = DISP_REG_MUTEX_MOD(mtx, mtx->data->mutex_mod[id], mutex->id);
--		mod_id = mtx->data->mutex_mod[id] % 32;
--		reg = readl_relaxed(mtx->regs + offset);
--		reg &= ~BIT(mod_id);
--		writel_relaxed(reg, mtx->regs + offset);
--		break;
-+	if (sof_id < 0) {
-+		if (mtx->data->mutex_mod[id] < 32) {
-+			offset = DISP_REG_MUTEX_MOD(mtx->data->mutex_mod_reg,
-+						    mutex->id);
-+			reg = readl_relaxed(mtx->regs + offset);
-+			reg &= ~(1 << mtx->data->mutex_mod[id]);
-+			writel_relaxed(reg, mtx->regs + offset);
-+		} else {
-+			offset = DISP_REG_MUTEX_MOD2(mutex->id);
-+			reg = readl_relaxed(mtx->regs + offset);
-+			reg &= ~(1 << (mtx->data->mutex_mod[id] - 32));
-+			writel_relaxed(reg, mtx->regs + offset);
-+		}
-+		return;
- 	}
 +
-+	writel_relaxed(MUTEX_SOF_SINGLE_MODE,
-+		       mtx->regs + DISP_REG_MUTEX_SOF(mtx->data->mutex_sof_reg,
-+		       mutex->id));
- }
- EXPORT_SYMBOL_GPL(mtk_mutex_remove_comp);
++		mmsys->async_clk = devm_kmalloc_array(dev, mmsys->data->num_async_info,
++						      sizeof(*mmsys->async_clk), GFP_KERNEL);
++		if (!mmsys->async_clk)
++			return -ENOMEM;
++		mmsys->num_async_clk = mmsys->data->num_async_info;
++
++		for (i = 0; i < mmsys->num_async_clk; i++) {
++			mmsys->async_clk[i] = of_clk_get(node, i);
++			if (IS_ERR(mmsys->async_clk[i]))
++				return PTR_ERR(mmsys->async_clk[i]);
++		}
++	}
++
+ 	if (mmsys->data->is_vppsys)
+ 		goto out_probe_done;
  
+@@ -443,6 +587,9 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
+ 	}
+ 	mmsys->drm_pdev = drm;
+ 
++	if (of_property_present(dev->of_node, "power-domains"))
++		pm_runtime_enable(dev);
++
+ out_probe_done:
+ 	return 0;
+ }
+@@ -453,6 +600,9 @@ static void mtk_mmsys_remove(struct platform_device *pdev)
+ 
+ 	platform_device_unregister(mmsys->drm_pdev);
+ 	platform_device_unregister(mmsys->clks_pdev);
++
++	if (of_property_present(pdev->dev.of_node, "power-domains"))
++		pm_runtime_disable(&pdev->dev);
+ }
+ 
+ static const struct of_device_id of_match_mtk_mmsys[] = {
+diff --git a/drivers/soc/mediatek/mtk-mmsys.h b/drivers/soc/mediatek/mtk-mmsys.h
+index fe628d5f5198..bbc03ef5b025 100644
+--- a/drivers/soc/mediatek/mtk-mmsys.h
++++ b/drivers/soc/mediatek/mtk-mmsys.h
+@@ -102,6 +102,19 @@ struct mtk_mmsys_routes {
+ 	u32 val;
+ };
+ 
++struct mtk_mmsys_async_info {
++	u32 comp_id;
++	u32 index;
++	u32 offset;
++	u32 mask;
++};
++
++struct mtk_mmsys_default {
++	u32 offset;
++	u32 val;
++	u32 mask;
++};
++
+ /**
+  * struct mtk_mmsys_driver_data - Settings of the mmsys
+  * @clk_driver: Clock driver name that the mmsys is using
+@@ -139,6 +152,11 @@ struct mtk_mmsys_driver_data {
+ 	const u32 num_resets;
+ 	const bool is_vppsys;
+ 	const u8 vsync_len;
++	const struct mtk_mmsys_async_info *async_info;
++	const unsigned int num_async_info;
++	const struct mtk_mmsys_default *def_config;
++	const unsigned int num_def_config;
++	const unsigned int num_top_clk;
+ };
+ 
+ /*
+diff --git a/include/linux/soc/mediatek/mtk-mmsys.h b/include/linux/soc/mediatek/mtk-mmsys.h
+index 4885b065b849..f50f626e1840 100644
+--- a/include/linux/soc/mediatek/mtk-mmsys.h
++++ b/include/linux/soc/mediatek/mtk-mmsys.h
+@@ -84,6 +84,14 @@ enum mtk_ddp_comp_id {
+ 	DDP_COMPONENT_ID_MAX,
+ };
+ 
++int mtk_mmsys_top_clk_enable(struct device *dev);
++void mtk_mmsys_top_clk_disable(struct device *dev);
++int mtk_mmsys_ddp_clk_enable(struct device *dev, enum mtk_ddp_comp_id comp_id);
++void mtk_mmsys_ddp_clk_disable(struct device *dev, enum mtk_ddp_comp_id comp_id);
++void mtk_mmsys_ddp_config(struct device *dev, enum mtk_ddp_comp_id comp_id,
++			  int width, int height, struct cmdq_pkt *cmdq_pkt);
++void mtk_mmsys_default_config(struct device *dev);
++
+ void mtk_mmsys_ddp_connect(struct device *dev,
+ 			   enum mtk_ddp_comp_id cur,
+ 			   enum mtk_ddp_comp_id next);
 -- 
 2.45.2
 
