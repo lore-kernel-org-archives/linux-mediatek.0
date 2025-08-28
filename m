@@ -4,62 +4,156 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F83ACA0EED
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Aug 2025 17:28:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0EEFCA0EED
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Aug 2025 17:29:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IMfFJAwU0DnS1iBcSbnX8FJ6onnBSlL8pj8G5ywWAUI=; b=lYsPwIC8e6rRuX5MGgSte2lhuL
-	QHWg+uUX+QaokN16v6UM0HMELcfE+tHZ/TTHypH8O1MKXK980XULveu//66/MXq7uRQoK5IV5NNZb
-	slAOH4ymunpBsGHwtD4sQ9pWkdreQL+df8sePg8Av6k3P37ny9AWy9qjJemMbK2/KLGkwKzVw7rKD
-	qEqV5BpcieooskLMxnyGRkwK2OFVnfdOOUHbd+aTvuPNuB0e8OMVxNDiFeS9HtkfhXqlEckml3v3E
-	lLhw+ln3U9AhkM1BQbU23NyHKsfcTcj66FX5V5gZi/YW1CVvoJzB08Nsvq1Wkys4EQqxrBzGJ20Ju
-	+YuIcQrw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=b/15TLv9zzuNxe7/fx6McdV+ZXtXTckksQgFN8JCIc4=; b=W2TrYjMZ4P7iIX6mzo9j1tr4jt
+	QdCar0wTCyt/Bqiyt+gZAzQsCnT1IPcElr/ctQSOGo9ETZ9FuzqBbnEhF3139NHIEx8OytYwdqWVv
+	axu+bvQshMfrtM1OXe09OedyHF/iZjjz0Quvm6zU5FBBP3HaP5GRB6skiRoAq8ijqnn0JGtJq2YES
+	JFZYgfq22vKy2QPIgIgr2otrQ0w6PsBySwiTMxbmfHqOVX+oIqTG9elV8I+KKQqb2726X23bHH6lg
+	Y+/0KZvh7G8iIDrLKHYL33MNWLWCu+G158t8Fj/LGd8MPsciNKol2isOrv6NxaAEqGnvWAAvzj5aB
+	7z7fl/0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urgQ4-00000002Vav-1ot7;
-	Thu, 28 Aug 2025 17:28:16 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1urgR2-00000002Wkg-195l;
+	Thu, 28 Aug 2025 17:29:16 +0000
+Received: from mail-mw2nam12on20627.outbound.protection.outlook.com ([2a01:111:f403:200a::627] helo=NAM12-MW2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urdaP-00000001uhq-1mtj
-	for linux-mediatek@lists.infradead.org;
-	Thu, 28 Aug 2025 14:26:46 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2FB7A4085E;
-	Thu, 28 Aug 2025 14:26:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 74F6AC4CEED;
-	Thu, 28 Aug 2025 14:26:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756391205;
-	bh=OgX2g1VbwOW3A/1+b5scV4T2jr/8zC7Zzky6etYrcv4=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=aHrNGTMaTGob9tj9cRYan5PlGmiK7c94wZV665v4S6Iftfjt3+XWdaYcJmN6OIfoL
-	 OIOw+9FouyrcEVNVPjRt2H4tZTs4B/DllMrkQ9x1XwYGN1cslg+511hgE/GwvZ0wrf
-	 iqBDxrwtgreuOJB9XybZzvXjemhOl7JILve2tMco8BR5UxfppxrZHy53IHlpAc5Ukh
-	 Dt4IMYIAsXWE3noY5UWAUe9CEq4Ez8MopM4DeRxc34OO77F6rf+0WEC93PzP8S0LAs
-	 Cg9V/k2K4WfI0CD+z3BZwKZ7Y5xt4QhKiSsZ8GrnU1VTi2JY4Es+Q3Z05kBkjtF1Or
-	 xz3G0AmYNTRug==
-From: Mark Brown <broonie@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>
-Cc: Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- linux-sound@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-In-Reply-To: <20250825151111.3696404-1-wenst@chromium.org>
-References: <20250825151111.3696404-1-wenst@chromium.org>
-Subject: Re: [PATCH v2] ASoC: mediatek: common: Switch to
- for_each_available_child_of_node_scoped()
-Message-Id: <175639120317.325624.3705402613246984996.b4-ty@kernel.org>
-Date: Thu, 28 Aug 2025 16:26:43 +0200
+	id 1ureFF-000000023Gx-2S4w;
+	Thu, 28 Aug 2025 15:08:58 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=oNCJVQxUSKNq4tabxsNWNaRMP/pfU5scCzB1d8ZbVKxI5QTdo0/gAKZ72IFOyDIYfDUbqxEHvYrPGSxvVvsW7WXyHYhXrQWLCY9p1WJ/zHmwoTCL2X1goO4hhIrE04gtevJueHbvVoB78UOUt731ABX+LEGRGXdcIs/Bav/QYsA8WwTNhixExJz0T04pgTMJv9RZ72cGebNY0hRNSOihtonwSlKite6zWsta8nuMH9HOExLkq4h/DsB6z+pFtfl44dFUlzsLedrqRklw+8hvE2JhHpJ/Ib6EYDFv8pcULoBUThdb3t0G2bq2fGQGt0umIj7hxmDh9tKDm3OSYbEvHA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=b/15TLv9zzuNxe7/fx6McdV+ZXtXTckksQgFN8JCIc4=;
+ b=dGUFAQNLRVuj3ECa/rdCtmPekxdu1682nX5K3ivGmJkLssH9VPLZJ+bHy7yrLpIKOBCwcJJ4/VbrYuiCNce54m1hXAeFA23iEp25s0U4DKHZueTaLnQuz8zhBnWS1UMivNo61KGldnKc1hfspg23mx0DI5pR3wQbzMK7ZXbcG/WpILEqMQ5h1XUKO5G3kwAHGGbRDMxWdfj9Mgz6BxQoO4oa18x9EMDkFD73u/eMG+3x7W4YsUPnDCMqr+E+hmP4Y8CK+fbOXxOJP7C0tuNdWH4RofJyvT59aAMAyR3lwMDHthjMkTgkwRyX3npIIQBLiD1AQf/9rcttA6k1Ft3x6Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.161) smtp.rcpttodomain=lists.linux.dev smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=b/15TLv9zzuNxe7/fx6McdV+ZXtXTckksQgFN8JCIc4=;
+ b=j0ctJCbn2gyjguogGApv1vCeMlgFDp3X3ic2BEIWDBSUVza7lNtP4MqiTMVjPZSrAiJZ72Ulzgz7tFX6PIxKT5qqG5o9S4FbW29qkfqnoh54dip8ADot5vdxbT1Biv3e8Mfud0W6XMw7aocvceCA9oTV3NkkiloBg9FKGKfXCfJWZKU3sFVtqVGdGCUV94Jslpa+37VOx1za5Xwsty4WmLKGYsQTE/Qw2ZKRvGydtoasSkV9LH8QOKhe3jalLMP7fcjjqQI2eGpLZ5YHZ55u9fYFVJgHG7ENrm0KKKZImwyFtABAf4kV1xO8GB8pgXrBFoNohptDFwbvXHFSF8WrQg==
+Received: from PH7P220CA0064.NAMP220.PROD.OUTLOOK.COM (2603:10b6:510:32c::8)
+ by DS7PR12MB5838.namprd12.prod.outlook.com (2603:10b6:8:79::17) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9073.13; Thu, 28 Aug
+ 2025 15:08:42 +0000
+Received: from SJ1PEPF000026CA.namprd04.prod.outlook.com
+ (2603:10b6:510:32c:cafe::cc) by PH7P220CA0064.outlook.office365.com
+ (2603:10b6:510:32c::8) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9073.18 via Frontend Transport; Thu,
+ 28 Aug 2025 15:08:41 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
+ smtp.mailfrom=nvidia.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.161) by
+ SJ1PEPF000026CA.mail.protection.outlook.com (10.167.244.107) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9073.11 via Frontend Transport; Thu, 28 Aug 2025 15:08:39 +0000
+Received: from rnnvmail203.nvidia.com (10.129.68.9) by mail.nvidia.com
+ (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Thu, 28 Aug
+ 2025 08:08:17 -0700
+Received: from rnnvmail203.nvidia.com (10.129.68.9) by rnnvmail203.nvidia.com
+ (10.129.68.9) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Thu, 28 Aug
+ 2025 08:08:16 -0700
+Received: from Asurada-Nvidia (10.127.8.14) by mail.nvidia.com (10.129.68.9)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14 via Frontend
+ Transport; Thu, 28 Aug 2025 08:08:14 -0700
+Date: Thu, 28 Aug 2025 08:08:13 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
+CC: Ethan Zhao <etzhao1900@gmail.com>, <robin.murphy@arm.com>,
+	<joro@8bytes.org>, <bhelgaas@google.com>, <will@kernel.org>,
+	<robin.clark@oss.qualcomm.com>, <yong.wu@mediatek.com>,
+	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
+	<thierry.reding@gmail.com>, <vdumpa@nvidia.com>, <jonathanh@nvidia.com>,
+	<rafael@kernel.org>, <lenb@kernel.org>, <kevin.tian@intel.com>,
+	<yi.l.liu@intel.com>, <baolu.lu@linux.intel.com>,
+	<linux-arm-kernel@lists.infradead.org>, <iommu@lists.linux.dev>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-tegra@vger.kernel.org>,
+	<linux-acpi@vger.kernel.org>, <linux-pci@vger.kernel.org>,
+	<patches@lists.linux.dev>, <pjaroszynski@nvidia.com>, <vsethi@nvidia.com>,
+	<helgaas@kernel.org>
+Subject: Re: [PATCH v3 5/5] pci: Suspend iommu function prior to resetting a
+ device
+Message-ID: <aLBw3UTAX6F0IOCf@Asurada-Nvidia>
+References: <cover.1754952762.git.nicolinc@nvidia.com>
+ <3749cd6a1430ac36d1af1fadaa4d90ceffef9c62.1754952762.git.nicolinc@nvidia.com>
+ <550635db-00ce-410e-add0-77c1a75adb11@gmail.com>
+ <aKTzq6SLGB22Xq5b@Asurada-Nvidia>
+ <20250821130741.GL802098@nvidia.com>
+ <aKgPr3mUcIsd1iuT@Asurada-Nvidia>
+ <20250822140821.GE1311579@nvidia.com>
+ <aKi8EqEp1DKG+h38@Asurada-Nvidia>
+ <20250828125149.GD7333@nvidia.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.15-dev-a9b2a
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20250828125149.GD7333@nvidia.com>
+X-NV-OnPremToCloud: ExternallySecured
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SJ1PEPF000026CA:EE_|DS7PR12MB5838:EE_
+X-MS-Office365-Filtering-Correlation-Id: 6876a271-1d93-4db5-450e-08dde644c53c
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|82310400026|1800799024|7416014|376014|36860700013;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?Ftz9oIhoxyiiE8b4f5blMj7yMYMLfJjAw//2AGpG9smkaW9PGZ4HD2jhuHw3?=
+ =?us-ascii?Q?dldCfZrxffrgUiIQNHM1mF3VPUlsLlPHs3Xifv8PT02r/TYRqj6mEBskVPPa?=
+ =?us-ascii?Q?+bhZDcOw3vPXvNldBy+aoSTxCnF7ceUeuLOurgwzDHHQk2F8QYORpNNpja4n?=
+ =?us-ascii?Q?3yZn0cG8THGpRGnd3+eZMsqaUSW6bhI8lojtBaIgSuseEk2KAL3Fv35Fh7oG?=
+ =?us-ascii?Q?o8Ktxy3MY3/bELl8syTZr+odTO6eHR1Kr/LJ9wV/oRDyLBsU3FRtYl2iyUMH?=
+ =?us-ascii?Q?cx+6d+OQEXROz2BgrCKhi0T1W1PWlrl+821/m7wC/PhGEonR6C0xnWnrEKNg?=
+ =?us-ascii?Q?hEO8pF4cneH7ptw6xXHRsOF9rOcNgTfN9QmN9iphPoX0IHmn8M9kTKq3SZix?=
+ =?us-ascii?Q?zmaEpKkpmgU2mHqHZM+jVFgvju0+MLYnqGxbY0pTXDmI/r63MovXN3DrhsIO?=
+ =?us-ascii?Q?rpuNWl/uJyB/3s3qbVx+QBM1MjJTjZKmUpkZ5pugQPB6S2Uw4T+JPTndDc+m?=
+ =?us-ascii?Q?imWjMXN+Hul3ENwYt42pzoQPnDoeus5S/d6pVGsU5DCzU7xcDG2B+ONyxv3e?=
+ =?us-ascii?Q?80+trG6kSp209GDncVPZRbl0hbXUyeb18ZbZ3KBhDs5XOhyumRJQim0IUAg2?=
+ =?us-ascii?Q?CCprfvWKygwgxZwl+CsRhNOR/sY9e7XI7vMxe2T7TUoUOl5PTaqzJTYCKR8f?=
+ =?us-ascii?Q?ifD1Fbl6GKwxXz7EpIRhlRaVihW9nKkYJT4b0zYkh0HqixrLWLM9W6LZ7b5D?=
+ =?us-ascii?Q?3bqCGDbJuJ9RVblurgLkV0BO2gmIDrkll3NZGz1fmbJzI/kblS1ZmWdxVJnI?=
+ =?us-ascii?Q?zz2VPJJdRQ+xjIgYk9YdZRhv8uXK5CQhSomdI0MBvq5FaqotDtREIi5VzGvl?=
+ =?us-ascii?Q?qftV/eiuN5haOxQ+I3+OLiQZx9H9TdlgrSHiMWzqwu+Oe7dv1dEs/Pcmdvlu?=
+ =?us-ascii?Q?DejpWJaWAWzbP5bALdO06unPUmQmsNCejrCK0WfobnPjyNHJ4xIJ2PWSrk6P?=
+ =?us-ascii?Q?grDqQQR75wGqsD+gcQoe4zybOMGEKspD/Wbxh9935Gm89Og6EOue5i5REDVj?=
+ =?us-ascii?Q?ud/TUlQmkuoieOSPHVnkSim8CrBulEi5vL4wO3IjkB5+BYoJL/N2bW6F+GtX?=
+ =?us-ascii?Q?xprCoWtPu4ww1GhDP8zP4uS0roo2tLCg/5hHjfV3gjWQ9oUV+G8AdkH9LEZo?=
+ =?us-ascii?Q?zC1Ze4YPRM4KtQKWNlmqIXG0BS6NsDduFGGuRPKKM8NP6slPnHGr+oLrCgp/?=
+ =?us-ascii?Q?GECol9npPhKw3Dyi2wsklZ0jXqkyAtC8Q7HGjy/G4TZZpfEuta45zkII2kui?=
+ =?us-ascii?Q?q+Qtq/cPhmW7escwhK0grhj3/G6D0yI02DzO0Pj51ltrSK6Hcz/FwAAPmieH?=
+ =?us-ascii?Q?XNnH0twkXCwr7/kovMymWRetkpRo84EnvK3BEXeoo5mW8dJXRGqnKwgfbnyA?=
+ =?us-ascii?Q?CYqf+ueWW6tyutzvqFEFknyAAD1nIxo2GHK//UD/ZCSirIlR5eI5S4Aw2gJu?=
+ =?us-ascii?Q?KqZQmNkSZno99ZgGBaoU9Zq2GEoUctpKQ+qp?=
+X-Forefront-Antispam-Report: CIP:216.228.117.161;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc6edge2.nvidia.com;CAT:NONE;SFS:(13230040)(82310400026)(1800799024)(7416014)(376014)(36860700013);DIR:OUT;SFP:1101;
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Aug 2025 15:08:39.6464
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6876a271-1d93-4db5-450e-08dde644c53c
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.117.161];Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: SJ1PEPF000026CA.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR12MB5838
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250828_072645_493589_37664D0D 
-X-CRM114-Status: GOOD (  12.25  )
+X-CRM114-CacheID: sfid-20250828_080857_622781_DFD159B5 
+X-CRM114-Status: GOOD (  14.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,43 +168,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 25 Aug 2025 23:11:09 +0800, Chen-Yu Tsai wrote:
-> Using for_each_available_child_of_node_scoped() allows us to get rid of
-> of_node_put() calls from early returns or breaks in the loop. It also
-> fixes issues with missing of_node_put() calls.
+On Thu, Aug 28, 2025 at 09:51:49AM -0300, Jason Gunthorpe wrote:
+> On Fri, Aug 22, 2025 at 11:50:58AM -0700, Nicolin Chen wrote:
 > 
-> Switch to for_each_available_child_of_node_scoped() in parse_dai_link_info().
-> Also drop the braces around if blocks now that the inner block is just
-> one statement.
+> > It feels like we need a no-fail re-attach operation, or at least an
+> > unlikely-to-fail one. I recall years ago we tried a can_attach op
+> > to test the compatibility but it didn't get merged. Maybe we'd need
+> > it so that a concurrent attach can test compatibility, allowing the
+> > re-attach in iommu_dev_reset_done() to more likely succeed.
 > 
-> [...]
+> This is probably the cleanest option to split these things
 
-Applied to
+Yea, that could avoid failing a concurrent attach_dev during FLR
+unless the dryrun fails, helping non-SRIOV cases too.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+So, next version could have some new preparatory patches:
+ - Pass in old domain to attach_dev
+ - Add a can_attach_dev op
 
-Thanks!
-
-[1/1] ASoC: mediatek: common: Switch to for_each_available_child_of_node_scoped()
-      commit: b088b6189a4066b97cef459afd312fd168a76dea
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+Thanks
+Nicolin
 
