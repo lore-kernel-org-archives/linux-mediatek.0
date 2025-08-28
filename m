@@ -4,79 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22888CA0EED
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Aug 2025 18:57:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA788CA0FF7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Aug 2025 19:03:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AxPihWEE9okM75l8p7+ohG5rL5D7+pdcAJ7iXomcZQ8=; b=HdE0hQhseePLrTDkpq+o2fUaVg
-	3Ikur4sevezVL2oQJMSCHW5ET/L1mtqky+XLjsFzYboisEB8aFQFK78nzrDPxPfokItP4bk9k+E16
-	TxOA0vTibMvRH6Rf9fN3WpQjjaWxaEzJfn4dwMgeP3ienxTerUUMVHB7zHSobi9dIy4c0S/H9ZSDZ
-	LFr4LiYIOnN+eB4K93Rli/uxnHepSRSvWY1VguqFiKXUKYvqSS849d2dUGi4WQxVdrCXdcoAi4Y6C
-	DbfKnA9C+2dqZfOJ8HpDPFfgR8LAw1rqDGJz+YkUOYHGdsj25zksVLMF0DA7SYUNyHzLlD7WG+Z4c
-	+bByCPyw==;
+	bh=jR/UQSU1rnoJqXet1GHMjYE6RZmBJb0DIB3rVaGeplw=; b=N9wlRI6xy/LGeFJ400M+ys9TP6
+	b0xdRp3GtRk2hvmFDacM2uKxO55bfAZW/eKg9/3TXXAQa6Rl3eHW0voMAwTmRu8AV5DTr25IEL+ba
+	PYlSO7wyyS2wJj0knxxOFKhxFW5La2Pg09ZwbafgeMuoiZDbNuqiFutLds/AeqfUjReYx5fr6J9OX
+	sF6jHnk4Sqn4LPyeNGHVVXv7X6NdrD7yoixjXfNVFKYDjYDCUwMQKKEa4xDyTve6WIGSj5UoCBYTG
+	cSjZzspO0Uuksm2QoWYcCiXFoecTXYKNHYD56fTGZkAD5OlyTkAAAlm8V3db5W/+yDX1aE5ImpTOI
+	zRJM0E4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urhoZ-00000002t1n-3WCs;
-	Thu, 28 Aug 2025 18:57:39 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1urhu1-00000002ugz-0Jgv;
+	Thu, 28 Aug 2025 19:03:17 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urf34-00000002BHZ-2iLB
+	id 1urf38-00000002BJw-1PTn
 	for linux-mediatek@lists.infradead.org;
-	Thu, 28 Aug 2025 16:00:27 +0000
-Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-45a1b0cbbbaso9703915e9.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 28 Aug 2025 09:00:26 -0700 (PDT)
+	Thu, 28 Aug 2025 16:00:31 +0000
+Received: by mail-wr1-x432.google.com with SMTP id ffacd0b85a97d-3c79f0a604aso713547f8f.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 28 Aug 2025 09:00:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1756396825; x=1757001625; darn=lists.infradead.org;
+        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1756396829; x=1757001629; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=AxPihWEE9okM75l8p7+ohG5rL5D7+pdcAJ7iXomcZQ8=;
-        b=20GZC3ba2B0WMoKDDH9cRKiJMUI+bWIexKFMf7NoFid1p/LxkmMTcvF71PTIwASwTb
-         q2Ip64h+kZ5Saiq3rJLAzXbu7dz9D4g7Sg2s2AEg3+kMWLs+uRZI0U6QnyEZgnsX/BSt
-         VYLp0K3fw7p15A1F8VstCA7WiieFQo/LeVa7gsa2G/m5KfqGhy9062F+ZMdEnPhY5PxT
-         4P3AP+XIpFAEIhNbYIEb+xbWT2W27BYc501lobn1Bdw7MuZOeKo4HXZHsOlJcXCL2VJU
-         NUfIyaxqIypR5GU930B4MontHAC8PEuzJkXrUjft7HAG2kgXj5IMDW+A/I9/ceW4P99j
-         Kp1A==
+        bh=jR/UQSU1rnoJqXet1GHMjYE6RZmBJb0DIB3rVaGeplw=;
+        b=O8E2lrUFQhP341u3SRorLNQAasH5vByqDo0x+u9GLg72Tq7tqy9gmWN/5DKknEZBhN
+         E6hI0Q9xVcw7bNIK0okb4w3GkRGxwceN49bz7/Pb7FzMHnwUYy/l/iWZt+PwnumVw3RZ
+         T8dxShjaJLVGrydHDeEP4o/FQMd70Jr0Q5vQnyEYKxSmzlLb9gZxDDYZA9xbSCIKHkA2
+         rNpP9PGtlblu30oan+neE4dNyAi47p9LWfF/rA5AQ1OzMsz0aRh0Xt0qwJxd94eQ+A5W
+         bas36s2Yx/AVpc7bKBp3YajEf6op5qsbuSpG9BrzYi5DAtA1iwVpnjYVCLQ0Qk8ZDKV3
+         ebkQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756396825; x=1757001625;
+        d=1e100.net; s=20230601; t=1756396829; x=1757001629;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=AxPihWEE9okM75l8p7+ohG5rL5D7+pdcAJ7iXomcZQ8=;
-        b=YqigWnmEDU/MM5lF3JcjwJ4MJF+5bpTgXoa4pVSk+Ter9S14rr58BC9UmXaElMKR+4
-         /oK9dNfHZ9IzAuV7qxlMW6yDhMniTS6NWzWjIwDDv9hWm7fDqbUmc+hO9n3o8gpzGuyj
-         UAs6cY87S33tFeP1ct+2XWBrv25mUyIGbeZZ2KZAF+d5dtvgO2NLjZRgF0lIeKmMd76K
-         +CBeFuyQWtR222PcLEIW/Bj/rKt7fLPT1dcFuzyjBc8F8N5dvRMkwi/+ewJbSesUCT1V
-         QJ+SjOwFcNo4UhH5RNxY84GU6uy3K/ChwmKGiPloJrxkCnv+W67D0cPYVIDM1aZtDbhJ
-         2e0A==
-X-Forwarded-Encrypted: i=1; AJvYcCUD0/Rd26RgkXTIJFwzm/ShP50oS4yZD0DvI3MJkLj8m89b1KK+iV1znlPbsgki53OW5VGQYDNeAEGAwNB1Mw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy2WO74hFec02bvnUyRPXrwAEO2ADU7KgEYz0JGxC5w2HgSa5do
-	EMRW1I/zr3wO/c/Bt7WmcCLG6DQussC2hapwVmYR+hVkumqk68NLgr8tuCCH+gnnU9A=
-X-Gm-Gg: ASbGncuxMUeZXJGBnT1AeskJRXpI/+flsqPxCbqRd2kWggj6QQINEgw3e5o40QSk5/X
-	ga+1bRbSc7jX8T98+A1slGl8mTRkeZNQhL7Dt3Lgg5auSIyi6LL0zIvrFxihmt6TsB8I9joHkea
-	xY0JHcey/FgrA+BiXKnwZFpKcNZTMAJ7G+/TQ1SqZSsuD+bxB/2EhiRe0G5jT1cHODDnvkIdQ4V
-	sCY2kEneJsjHu3Dq6RhaeLXkcJZ1x90sFVfOh32uaKinZDBHboOKJGpgA3jhKTQehyKFdujDhjw
-	h/mfH6cdxQfHwli+QXQz+l0aMZuG8cqKcfOuHf+qjQcxi8BOGl9A6FFK6G8i7Dx4WkxDDtqCUqF
-	vk0lu6JYmi1ilz3a1/m9u/O8Q6rgL
-X-Google-Smtp-Source: AGHT+IGRMyHayDmkLGW7+TAO1iROYIwKh5FOICjdfcZ0105VGTYnJRy0SkhUfojn9IN8Mk3CuNpnVQ==
-X-Received: by 2002:a05:600c:35c4:b0:45b:7bba:c7b1 with SMTP id 5b1f17b1804b1-45b7bbacbc1mr17635415e9.32.1756396824905;
-        Thu, 28 Aug 2025 09:00:24 -0700 (PDT)
+        bh=jR/UQSU1rnoJqXet1GHMjYE6RZmBJb0DIB3rVaGeplw=;
+        b=VUJl+Dy1MpUd4+wQ1P+35P+WY223MWtk2Nn0szTGGNBslbZZGsxZP5YaQunfpeO0Ab
+         kSXKBoJy42IMDxI4D5KoKAUufgxwDml2cftpJ6DM8d1+7eEEbkxNVArs13pxAOHeI44F
+         fW+zFI+2km8ngtyLYxac6lnEqhcZ/SCJURVfejVtCetXKZTK720szWH9F5clHeZrSekv
+         FxDFAC9EqbUwPdRbAWKLX7BK1OzYyGXqPLwUmXMeIW+83YfHJKIQk+4taRqBd7wWanFY
+         tdfxKhzJomzWZ+FArpTmc5gfEhuNhZkJoIJx/43CKZeIw+sqi3L1sDAwHErE9hgbPpN8
+         C/gw==
+X-Forwarded-Encrypted: i=1; AJvYcCVZfYg5QBu5IaUEXRIIzZEOVrofQZL8Q/dt70TPLlNsMp4kd/EYviDbWW6siCL7kcPTk7KONKZQXcoqKN3JVw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwB09MfOft7omgBbpkOZle4++pMKt08dFUHUcZlkVITypYQi7PD
+	T5mH1O+9g3DODkXQpf3GrGO1815hByylZs6rs9RBiN1M4AX28/7kxnnc6Ty+gBIaxZ0=
+X-Gm-Gg: ASbGncu6bQ/hRNV9M5DFbz28JZEN4CD13VHVvq6PY+OVAZM5Ypug33d/hYcDxWVyqkK
+	DwYO7dVf8ulUNAOFsYr2eKz1VUEDMdD4acI9RSQS8eIezZxdSJbhBryWVEZ48WvBqDe4Adp8xyp
+	j0FDgnA9yLN/F8IwvDZNQn1P+1YpgUGZWR4qcM36VUUYHJQe/fOENxbSj38SHnUJWQEmdUZWkEw
+	N/d9Csletab52yapkFzzYUJNQqLU3iXphWEWIXbhG9/RyPowUVUy355s6AElGOxjg0x6Hsfq5xU
+	FX2MXTdjCRLOzytI3HHb51husxJ6/Uykix0SNuTYlABR25QWJY5dxFX9kcQdr0CnJNE8f05DcPF
+	1taCoHzblh6hgWK2sWQ==
+X-Google-Smtp-Source: AGHT+IHpa7seq9vvwG4pSrNyoWglcHVRKIa3k9MGizj9olBncMjomjsG4dZCZ0gf35TjhrILqQH5rw==
+X-Received: by 2002:a05:6000:4029:b0:3c3:806c:b82f with SMTP id ffacd0b85a97d-3c5dd0ecf8amr20776060f8f.58.1756396828557;
+        Thu, 28 Aug 2025 09:00:28 -0700 (PDT)
 Received: from [127.0.1.1] ([2a01:cb1d:dc:7e00:4933:4d7c:cf69:9502])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45b6f0c6fe5sm80211675e9.5.2025.08.28.09.00.23
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45b6f0c6fe5sm80211675e9.5.2025.08.28.09.00.26
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 28 Aug 2025 09:00:24 -0700 (PDT)
+        Thu, 28 Aug 2025 09:00:28 -0700 (PDT)
 From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Thu, 28 Aug 2025 18:00:12 +0200
-Subject: [PATCH v6 04/15] pinctrl: mediatek: mt7988: use
- PINCTRL_PIN_FUNCTION()
+Date: Thu, 28 Aug 2025 18:00:14 +0200
+Subject: [PATCH v6 06/15] pinctrl: imx: don't access the pin function radix
+ tree directly
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250828-pinctrl-gpio-pinfuncs-v6-4-c9abb6bdb689@linaro.org>
+Message-Id: <20250828-pinctrl-gpio-pinfuncs-v6-6-c9abb6bdb689@linaro.org>
 References: <20250828-pinctrl-gpio-pinfuncs-v6-0-c9abb6bdb689@linaro.org>
 In-Reply-To: <20250828-pinctrl-gpio-pinfuncs-v6-0-c9abb6bdb689@linaro.org>
 To: Linus Walleij <linus.walleij@linaro.org>, 
@@ -109,29 +109,28 @@ Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
  linux-hardening@vger.kernel.org, linux-mm@kvack.org, imx@lists.linux.dev, 
  linux-omap@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
- Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, 
- Chen-Yu Tsai <wenst@chromium.org>
+ Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2921;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3140;
  i=bartosz.golaszewski@linaro.org; h=from:subject:message-id;
- bh=79i9CgDBpTwy0KAMS4vozziB177zSWYhoWrySFXqKM4=;
- b=owEBbQKS/ZANAwAKARGnLqAUcddyAcsmYgBosH0Nb2Lfmw6OgPTm+UKi/evxFaUCjOaMgc4KJ
- G/Jl7qtg3uJAjMEAAEKAB0WIQQWnetsC8PEYBPSx58Rpy6gFHHXcgUCaLB9DQAKCRARpy6gFHHX
- cmd1D/9O9r1DDeMjfZpJc7L4WQYFg4NpL4bsKIEQD/4HTfJtY0F0AbCzTUVX8wvtO6G7Oz7Ckl1
- JGsGL2ePPaPSOhC4u0K4c6e8AGfOLuS65Aup1ZPjk9dByafrLUoaeoI1SM2rk0Ff93R5dCbWAhV
- O+zwBzL4wpnwF6q8j7vEmnrERbfUK4DJyPUYU8dEMlQpCvM2xq3vX+6M9aRECpcDSDIgjXsJaiC
- 3SEQGGSpuSWLH4vgWbPAhYTv2uA//5mK/J93r57YZIjbfUe7EN+xvbqFhkUX8sFPTTQ1K5nSV3I
- 1xJamJF6MUu1lz6b7z/ZIRwkLcp9NWTEKBcIA5UbweTZFziTMjOdWQ+wncqGqm/jw3vitwXbUp/
- DaSwfS6lcv7zefvLHYddAx3HLAixXjkS/XVFAC9VZW2ZtNpqJXBMl8S9+hfVpwXFc3OlVI+764g
- v9EF9SWddtxMvleCD6Cw2vOD0URS5JtaEfX8/draXvRAklHRp8xnNS6tXVnx/pQWNt/SKMcxHfi
- EuioUyf3YE+ywH7kBFazoYHGSt5+i0XaiWxZPkvXjk1A/9V/nJyroGXDVvC6IJKNSYJSkbmxsm5
- 6AQHNTKZD1aoqjMJa0hcJdLtcBCZCHyZup13Wvn6cJC7D3MAy+LWRbAi9MJMBS4G00bSg2oJCqw
- 6ccAd8cQ8L3Zydg==
+ bh=64CEOM/GWFRZVaWr+uKwrz1KsAW3NNZpIdWvwWCf200=;
+ b=owEBbQKS/ZANAwAKARGnLqAUcddyAcsmYgBosH0NaAPsNFFrpH1CGMcLygHSJdcPneCN6Unyj
+ uWMtG9dPUOJAjMEAAEKAB0WIQQWnetsC8PEYBPSx58Rpy6gFHHXcgUCaLB9DQAKCRARpy6gFHHX
+ csz2D/9MgJP+ectOeSj5tPh3IRoQSIVu4AU0U2BIk9qLJsstYn5YRISv7Lr58AGRakRZh0m8/iL
+ nNYJSQ98/gglKMupuS/yKusX9iGKVWnw8cqQtR2qBPGmRcImx2/9e7HLfz7CCVT/iDAjPPeMjUg
+ YyeBqbeDoAKR72CednspSFx12VxQ7Ja4n65O2y2fjtejtwiGFuNvud6b8+pa/eKxHeIkigHEh5/
+ T71+1u33HaK5IxJVGK5qUbh7pJm+lSgmHzuPOJN9R8CcQO6lPBSWP9VXM63VfHNUfkyoPokJSyz
+ Sxf/B6Qkyzd49YG3csk8gtZiCCKGeJeBgbEt5oY7bbuS4sOICYGYc42MEa1akallSWRvGv6LRxt
+ VSBbX2tu/t5fI8EdOgROdf0H+VFhKPpz5Nytk6raLEJDU0dwyqO+Gnj8gGhHxOb8i3xBVJAN3+e
+ oE6PlAYq1yoX/GSVH5H4ADkWHVGM922imRvR15JI7TpVxnLWaGZ0chIV87cWv3rtvcLtI5mW2Fr
+ B+7CeIdbYV9gHFjqLi6dmVbK4CJXBZS8z/5DqhmeKNRvDwYkxvZBUfHoz6MdXw3oLpMfA7kO2Ar
+ g9WkATffjdMY9P7gz7AyeDLdWVlb4LSx5uyzu3rOuNrmxYeEg//XgZ5loqLh0eTb8Oth0yRUqaa
+ tb3/62Fap1QUnSg==
 X-Developer-Key: i=bartosz.golaszewski@linaro.org; a=openpgp;
  fpr=169DEB6C0BC3C46013D2C79F11A72EA01471D772
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250828_090026_695670_2BBDF820 
-X-CRM114-Status: GOOD (  10.85  )
+X-CRM114-CacheID: sfid-20250828_090030_407214_D3285241 
+X-CRM114-Status: GOOD (  19.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,68 +147,99 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 
-We have a dedicated initializer macro for defining pin functions for
-mediatek drivers so use it here.
+The radix tree containing pin function descriptors should not be
+accessed directly by drivers. There are dedicated functions for it. I
+suppose this driver does it so that the memory containing the function
+description is not duplicated but we're going to address that shortly so
+convert it to using generic pinctrl APIs.
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 ---
- drivers/pinctrl/mediatek/pinctrl-mt7988.c | 42 ++++++++++++-------------------
- 1 file changed, 16 insertions(+), 26 deletions(-)
+ drivers/pinctrl/freescale/pinctrl-imx.c | 39 +++++++++++++++------------------
+ 1 file changed, 18 insertions(+), 21 deletions(-)
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7988.c b/drivers/pinctrl/mediatek/pinctrl-mt7988.c
-index 68b4097792b88356babe4368db7d0f60194e7309..55c8674d8d66f12d2f2246c215056d4e51296a9b 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt7988.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt7988.c
-@@ -1465,32 +1465,22 @@ static const char * const mt7988_usb_groups[] = {
- };
+diff --git a/drivers/pinctrl/freescale/pinctrl-imx.c b/drivers/pinctrl/freescale/pinctrl-imx.c
+index 18de31328540458b7f7e8e2e539a39d61829deb9..3d626d8c9ae9ebd5f7eb76216924c46b34233749 100644
+--- a/drivers/pinctrl/freescale/pinctrl-imx.c
++++ b/drivers/pinctrl/freescale/pinctrl-imx.c
+@@ -580,33 +580,38 @@ static int imx_pinctrl_parse_functions(struct device_node *np,
+ 				       u32 index)
+ {
+ 	struct pinctrl_dev *pctl = ipctl->pctl;
+-	struct function_desc *func;
++	struct pinfunction *func;
+ 	struct group_desc *grp;
+ 	const char **group_names;
++	int ret;
+ 	u32 i;
  
- static const struct function_desc mt7988_functions[] = {
--	{ { "audio", mt7988_audio_groups, ARRAY_SIZE(mt7988_audio_groups) },
--	  NULL },
--	{ { "jtag", mt7988_jtag_groups, ARRAY_SIZE(mt7988_jtag_groups) },
--	  NULL },
--	{ { "int_usxgmii", mt7988_int_usxgmii_groups,
--	    ARRAY_SIZE(mt7988_int_usxgmii_groups) },
--	  NULL },
--	{ { "pwm", mt7988_pwm_groups, ARRAY_SIZE(mt7988_pwm_groups) }, NULL },
--	{ { "dfd", mt7988_dfd_groups, ARRAY_SIZE(mt7988_dfd_groups) }, NULL },
--	{ { "i2c", mt7988_i2c_groups, ARRAY_SIZE(mt7988_i2c_groups) }, NULL },
--	{ { "eth", mt7988_ethernet_groups, ARRAY_SIZE(mt7988_ethernet_groups) },
--	  NULL },
--	{ { "pcie", mt7988_pcie_groups, ARRAY_SIZE(mt7988_pcie_groups) },
--	  NULL },
--	{ { "pmic", mt7988_pmic_groups, ARRAY_SIZE(mt7988_pmic_groups) },
--	  NULL },
--	{ { "watchdog", mt7988_wdt_groups, ARRAY_SIZE(mt7988_wdt_groups) },
--	  NULL },
--	{ { "spi", mt7988_spi_groups, ARRAY_SIZE(mt7988_spi_groups) }, NULL },
--	{ { "flash", mt7988_flash_groups, ARRAY_SIZE(mt7988_flash_groups) },
--	  NULL },
--	{ { "uart", mt7988_uart_groups, ARRAY_SIZE(mt7988_uart_groups) },
--	  NULL },
--	{ { "udi", mt7988_udi_groups, ARRAY_SIZE(mt7988_udi_groups) }, NULL },
--	{ { "usb", mt7988_usb_groups, ARRAY_SIZE(mt7988_usb_groups) }, NULL },
--	{ { "led", mt7988_led_groups, ARRAY_SIZE(mt7988_led_groups) }, NULL },
-+	PINCTRL_PIN_FUNCTION("audio", mt7988_audio),
-+	PINCTRL_PIN_FUNCTION("jtag", mt7988_jtag),
-+	PINCTRL_PIN_FUNCTION("int_usxgmii", mt7988_int_usxgmii),
-+	PINCTRL_PIN_FUNCTION("pwm", mt7988_pwm),
-+	PINCTRL_PIN_FUNCTION("dfd", mt7988_dfd),
-+	PINCTRL_PIN_FUNCTION("i2c", mt7988_i2c),
-+	PINCTRL_PIN_FUNCTION("eth", mt7988_ethernet),
-+	PINCTRL_PIN_FUNCTION("pcie", mt7988_pcie),
-+	PINCTRL_PIN_FUNCTION("pmic", mt7988_pmic),
-+	PINCTRL_PIN_FUNCTION("watchdog", mt7988_wdt),
-+	PINCTRL_PIN_FUNCTION("spi", mt7988_spi),
-+	PINCTRL_PIN_FUNCTION("flash", mt7988_flash),
-+	PINCTRL_PIN_FUNCTION("uart", mt7988_uart),
-+	PINCTRL_PIN_FUNCTION("udi", mt7988_udi),
-+	PINCTRL_PIN_FUNCTION("usb", mt7988_usb),
-+	PINCTRL_PIN_FUNCTION("led", mt7988_led),
- };
+ 	dev_dbg(pctl->dev, "parse function(%d): %pOFn\n", index, np);
  
- static const struct mtk_eint_hw mt7988_eint_hw = {
+-	func = pinmux_generic_get_function(pctl, index);
++	func = devm_kzalloc(ipctl->dev, sizeof(*func), GFP_KERNEL);
+ 	if (!func)
+-		return -EINVAL;
++		return -ENOMEM;
+ 
+ 	/* Initialise function */
+-	func->func.name = np->name;
+-	func->func.ngroups = of_get_child_count(np);
+-	if (func->func.ngroups == 0) {
++	func->name = np->name;
++	func->ngroups = of_get_child_count(np);
++	if (func->ngroups == 0) {
+ 		dev_info(ipctl->dev, "no groups defined in %pOF\n", np);
+ 		return -EINVAL;
+ 	}
+ 
+-	group_names = devm_kcalloc(ipctl->dev, func->func.ngroups,
+-				   sizeof(*func->func.groups), GFP_KERNEL);
++	group_names = devm_kcalloc(ipctl->dev, func->ngroups,
++				   sizeof(*func->groups), GFP_KERNEL);
+ 	if (!group_names)
+ 		return -ENOMEM;
+ 	i = 0;
+ 	for_each_child_of_node_scoped(np, child)
+ 		group_names[i++] = child->name;
+-	func->func.groups = group_names;
++	func->groups = group_names;
++
++	ret = pinmux_generic_add_pinfunction(pctl, func, NULL);
++	if (ret < 0)
++		return ret;
+ 
+ 	i = 0;
+ 	for_each_child_of_node_scoped(np, child) {
+@@ -615,6 +620,10 @@ static int imx_pinctrl_parse_functions(struct device_node *np,
+ 			return -ENOMEM;
+ 
+ 		mutex_lock(&ipctl->mutex);
++		/*
++		 * FIXME: This should use pinctrl_generic_add_group() and not
++		 * access the private radix tree directly.
++		 */
+ 		radix_tree_insert(&pctl->pin_group_tree,
+ 				  ipctl->group_index++, grp);
+ 		mutex_unlock(&ipctl->mutex);
+@@ -669,18 +678,6 @@ static int imx_pinctrl_probe_dt(struct platform_device *pdev,
+ 		}
+ 	}
+ 
+-	for (i = 0; i < nfuncs; i++) {
+-		struct function_desc *function;
+-
+-		function = devm_kzalloc(&pdev->dev, sizeof(*function),
+-					GFP_KERNEL);
+-		if (!function)
+-			return -ENOMEM;
+-
+-		mutex_lock(&ipctl->mutex);
+-		radix_tree_insert(&pctl->pin_function_tree, i, function);
+-		mutex_unlock(&ipctl->mutex);
+-	}
+ 	pctl->num_functions = nfuncs;
+ 
+ 	ipctl->group_index = 0;
 
 -- 
 2.48.1
