@@ -4,113 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C052CA0EED
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Aug 2025 02:34:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F22EBCA0FF2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Aug 2025 06:27:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dqLsXv2XpWWEpQrxrT6S6Kl2zparFOPKVK8ZyEs6XGE=; b=YbGl1kYB/4hSqPXigQFbOz+SN6
-	G/ZLXjUClOmmhV8GvvOaacEVy1uvbeY+ftBhDLmUZfHA9V4Jz5JIucirHwIy9oSU5Hvg9gCtG4M1k
-	wjsiVK8S5d0cRhTXowcxAE6tW+T86AFUR180DzM94Ri6nkQyMYBigPCwpcM0UGzkmmASKbKnM01Fn
-	fT47RXlKZ7OK9gk0V59Osq8mG3u7YSSoFX3JleikpX5n6BTND8BaDvtZgL8/hePEZpkuyWE9G3ik0
-	IcIafDUbByJRKZiGGHu9mo9B5swGnTMZrbuWl9ttNpz1PyrHSQEGkwa9YruQpk6B/oBvVBOhn7WUA
-	xvWzzT2g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rw1P48Rw9airUIZAlX8WPmdMSK7aVKwW+bhgC+9irms=; b=q4qGf0mwA9Iqq7/qrlbPCayEA+
+	aOIHtSWt4TfkfDFh+S/CkxhUkFlUS6dJnaBZl/8/nM+ZK2RJNVsUMjlJdCuH/Y4TqOPiOJgTQJQgl
+	jPxxVaKTNfhBYLYs2AEyCFuI9uiyaSzmOjgYFYTriyOPSPvkumZnYeKc2WyFvDpiuNFrnTJK3y6wp
+	Rp7stD9eQBLWlGTln6X7ysv3KxEH0Aw3venSAT2u6AEjb/dH74a6s9bKb/XtVIubWMrflGTkkNVhG
+	rcxYZh8lM4ug3ALjpUhhNLtLMdnL/dhsKJEyl4eSciLmMN0a6oUJM3bZo6psjmYt9byfobBxo+PNJ
+	SQ/TTPjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urSSb-000000001VW-2SpZ;
-	Thu, 28 Aug 2025 02:33:57 +0000
-Received: from mailgw.kylinos.cn ([124.126.103.232])
+	id 1urW6F-00000000QqN-2Xlx;
+	Thu, 28 Aug 2025 06:27:07 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urSRr-000000001P6-2qH4;
-	Thu, 28 Aug 2025 02:33:13 +0000
-X-UUID: 5053b84483b711f0b29709d653e92f7d-20250828
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.45,REQID:9e7721f3-4def-4494-ae6b-e8e5dd0438e3,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6493067,CLOUDID:ab9379ea25ec926fdd1c492817d92794,BulkI
-	D:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102,TC:nil,Content:0|52,EDM:
-	-3,IP:nil,URL:99|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA
-	:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: 5053b84483b711f0b29709d653e92f7d-20250828
-Received: from mail.kylinos.cn [(10.44.16.175)] by mailgw.kylinos.cn
-	(envelope-from <zhangzihuan@kylinos.cn>)
-	(Generic MTA)
-	with ESMTP id 1305374640; Thu, 28 Aug 2025 10:32:59 +0800
-Received: from mail.kylinos.cn (localhost [127.0.0.1])
-	by mail.kylinos.cn (NSMail) with SMTP id 5ABE6E008FAE;
-	Thu, 28 Aug 2025 10:32:59 +0800 (CST)
-X-ns-mid: postfix-68AFBFDB-172902359
-Received: from [172.25.120.24] (unknown [172.25.120.24])
-	by mail.kylinos.cn (NSMail) with ESMTPA id ADF7BE008FAB;
-	Thu, 28 Aug 2025 10:32:47 +0800 (CST)
-Message-ID: <6f6c1e35-101d-4ef1-ac6e-5db337ccdd84@kylinos.cn>
-Date: Thu, 28 Aug 2025 10:32:46 +0800
+	id 1urW6D-00000000Qpd-0Ffm
+	for linux-mediatek@lists.infradead.org;
+	Thu, 28 Aug 2025 06:27:06 +0000
+Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-afcb7a8dd3dso2151966b.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 27 Aug 2025 23:27:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1756362423; x=1756967223; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=rw1P48Rw9airUIZAlX8WPmdMSK7aVKwW+bhgC+9irms=;
+        b=kCEtY/Jx0Eus+i5o/qlSyv+2QPUatVTlTZ0TGB2QFadZqJ+Ivy0vLoGavvA9C+xN0h
+         ruO/HP6jChozxlD2ZlxtH6uMieVjIhnZValZOh0YncrbA6tsg5w49RNO4lLAVk+nYr7Y
+         OQMVAFXK3gENxYmPjhS+F8I7+/H0wjLxqRKJIzUVpGOMNOp+/eQZ4XHv+l+46P2THhsk
+         ksj3KiMHBUWy4HZ324iI0iM0ytonKKrZEnk/li7qkS+ag+/Sa5XoXdZZrbpzMs/C/Cb3
+         vSzn8H4I56aQKE6DyX5UCH/MRxYzmdkLkYbLoT7++JJOMySL2Wi2hCAQwuxIVEmz/4hY
+         Z+4Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1756362423; x=1756967223;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=rw1P48Rw9airUIZAlX8WPmdMSK7aVKwW+bhgC+9irms=;
+        b=Q1w2O88KP/UDVeySy4YVTXMD6QcPB9Q6uVYoqVcempz0v7jJACUqOlv7Xgq4LL9u9p
+         AB15n4kJoMgrzLs9Yyv125iBdnkUNLDTwY661/EuPoNGXtlO8/+n8JdqWpCRLdr3o3KC
+         a3C+R7/gnJwvQzAKE0TH/PDMjtkZ+e89XJbAShYGexQEU0q9tYEGiGRw77FLqUygMda+
+         MDlKAgN/+bH4B43Xn4EF3idhAkGiDVAbMC7W/DFdzDLkjnbqty3BxcrKZV/FY1bZWWhv
+         kNJDRCDaIfuWv8AV1KbNWSRmaI6RdzXH0DLrRw1A27uC2S41qdfNovSfA61tYDA40gBh
+         /fWQ==
+X-Forwarded-Encrypted: i=1; AJvYcCU2pBgVik8jHVmLdfwLe3Gazq4D7aZ+NnkOrHv53Wrti+5kX9tMQGZLMJxVPT+LZ15TYJfR81gJmKoyBAaHJQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YysK49CkosRMK8o5a2bFQmcq15HvEsn5SSh6s2UCC5CaVggUJls
+	Fv5+1AsczXcCfjxjRp4BIURo3aE4W4Zcc064vlrKVZluYFidSfwx/rFc/bWlpY4qUEcxBJiIp0t
+	f77BBG4N0VmooMqwlNkVb/QqO5qXkHTM=
+X-Gm-Gg: ASbGncvYXaLDmqoCrD8NIMhzg8h29qek9E4ytPLlC4sEl19FcZ9I2aNlNzF1WRXHJ2W
+	ey3+YsHcpv9rlwc8vFhuDJMihGl0jX75tF3TMP8t02V/gZUIaTXDK9IQ8wxbbN1Vy37vEXVGGaT
+	242nZA+kjhZz8qOQgLR1B76QSnHMdl6VbG9M1Bs1RB7xEojnvV06hAHfM/kPMTXblB9/TGUH7nL
+	2BXkd16FP0nynTi
+X-Google-Smtp-Source: AGHT+IHllcdWIIyE/tgfPoEMaupjgVRkzKVjdIUnd/uLbIt7Xuq/3mz/DvL95F4OMvojqNdXHzV5gHpDUDZi1keN1KE=
+X-Received: by 2002:a17:907:7f8e:b0:af9:5a60:3319 with SMTP id
+ a640c23a62f3a-afe2902ee2bmr2188427166b.19.1756362422867; Wed, 27 Aug 2025
+ 23:27:02 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 01/18] arm64: topology: Use __free(put_cpufreq_policy)
- for policy reference
-To: Sudeep Holla <sudeep.holla@arm.com>, Ben Horgan <ben.horgan@arm.com>
-Cc: "Rafael J . wysocki" <rafael@kernel.org>,
- Viresh Kumar <viresh.kumar@linaro.org>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
- Sean Christopherson <seanjc@google.com>, Paolo Bonzini
- <pbonzini@redhat.com>, Thomas Gleixner <tglx@linutronix.de>,
- Ingo Molnar <mingo@redhat.com>, Borislav Petkov <bp@alien8.de>,
- Dave Hansen <dave.hansen@linux.intel.com>, Markus Mayer
- <mmayer@broadcom.com>, Florian Fainelli <florian.fainelli@broadcom.com>,
- Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>,
- Madhavan Srinivasan <maddy@linux.ibm.com>,
- Michael Ellerman <mpe@ellerman.id.au>, Krzysztof Kozlowski
- <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, Tvrtko Ursulin
- <tursulin@ursulin.net>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Daniel Lezcano <daniel.lezcano@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
- Eduardo Valentin <edubezval@gmail.com>, Keerthy <j-keerthy@ti.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- zhenglifeng <zhenglifeng1@huawei.com>, "H . Peter Anvin" <hpa@zytor.com>,
- Zhang Rui <rui.zhang@intel.com>, Len Brown <lenb@kernel.org>,
- Nicholas Piggin <npiggin@gmail.com>,
- Christophe Leroy <christophe.leroy@csgroup.eu>,
- Lukasz Luba <lukasz.luba@arm.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Beata Michalska <beata.michalska@arm.com>, Fabio Estevam
- <festevam@gmail.com>, Pavel Machek <pavel@kernel.org>,
- Sumit Gupta <sumitg@nvidia.com>,
- Prasanna Kumar T S M <ptsm@linux.microsoft.com>,
- Yicong Yang <yangyicong@hisilicon.com>, linux-pm@vger.kernel.org,
- x86@kernel.org, kvm@vger.kernel.org, linux-acpi@vger.kernel.org,
- linuxppc-dev@lists.ozlabs.org, linux-samsung-soc@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-tegra@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- imx@lists.linux.dev, linux-omap@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20250827023202.10310-1-zhangzihuan@kylinos.cn>
- <20250827023202.10310-2-zhangzihuan@kylinos.cn>
- <70f4c2ce-1dbd-4596-af78-bca1cdbbb581@arm.com>
- <1756341899099493.57.seg@mailgw.kylinos.cn>
-From: Zihuan Zhang <zhangzihuan@kylinos.cn>
-In-Reply-To: <1756341899099493.57.seg@mailgw.kylinos.cn>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+References: <20250825150948.2998-1-chunkuang.hu@kernel.org>
+In-Reply-To: <20250825150948.2998-1-chunkuang.hu@kernel.org>
+From: Dave Airlie <airlied@gmail.com>
+Date: Thu, 28 Aug 2025 16:26:50 +1000
+X-Gm-Features: Ac12FXzArv6j2S3_biYutaI-lCZofq_ZLCSqVSZm8jbnf5oqhY51MlmSIypDoP0
+Message-ID: <CAPM=9txPBARP_60P1M=9SF6HzPWkaj2gDN=J0wCAO2PvjwUWug@mail.gmail.com>
+Subject: Re: [GIT PULL] mediatek drm fixes - 20250825
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, Jason-JH Lin <jason-jh.lin@mediatek.com>, 
+	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, Ma Ke <make24@iscas.ac.cn>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250827_193312_008978_D6438B49 
-X-CRM114-Status: GOOD (  17.40  )
+X-CRM114-CacheID: sfid-20250827_232705_100253_8F3A6CA6 
+X-CRM114-Status: UNSURE (   8.16  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,59 +95,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+> Louis-Alexis Eyraud (2):
+>       drm/mediatek: dsi: Fix DSI host and panel bridge pre-enable order
+>       drm/mediatek: mtk_hdmi: Fix inverted parameters in some regmap_update_bits calls
 
-=E5=9C=A8 2025/8/27 17:17, Sudeep Holla =E5=86=99=E9=81=93:
-> On Wed, Aug 27, 2025 at 09:30:13AM +0100, Ben Horgan wrote:
->> Hi Zihuan,
->>
->> On 8/27/25 03:31, Zihuan Zhang wrote:
->>> Replace the manual cpufreq_cpu_put() with __free(put_cpufreq_policy)
->>> annotation for policy references. This reduces the risk of reference
->>> counting mistakes and aligns the code with the latest kernel style.
->>>
->>> No functional change intended.
->>>
->>> Signed-off-by: Zihuan Zhang <zhangzihuan@kylinos.cn>
->>> ---
->>>   arch/arm64/kernel/topology.c | 9 +++------
->>>   1 file changed, 3 insertions(+), 6 deletions(-)
->>>
->>> diff --git a/arch/arm64/kernel/topology.c b/arch/arm64/kernel/topolog=
-y.c
->>> index 5d07ee85bdae..e3cb6d54f35b 100644
->>> --- a/arch/arm64/kernel/topology.c
->>> +++ b/arch/arm64/kernel/topology.c
->>> @@ -307,17 +307,16 @@ int arch_freq_get_on_cpu(int cpu)
->>>   		 */
->>>   		if (!housekeeping_cpu(cpu, HK_TYPE_TICK) ||
->>>   		    time_is_before_jiffies(last_update + msecs_to_jiffies(AMU_SAM=
-PLE_EXP_MS))) {
->>> -			struct cpufreq_policy *policy =3D cpufreq_cpu_get(cpu);
->>> +			struct cpufreq_policy *policy __free(put_cpufreq_policy);
->> Based on the guidance, in include/linux/cleanup.h, I would expect the
->> assignment to be done on this line.
->>
->> "...the recommendation is to always define and assign variables in one
->>   * statement and not group variable definitions at the top of the
->>   * function when __free() is used."
->>
-> Agreed. I did something similar recently and there was a code path wher=
-e
-> variable wasn't initialised and ended up with freeing unassigned pointe=
-r.
-> So it is more than just a recommendation sometimes.
+Hey,
+
+^^^ this patch is missing a S-o-b line from the committer, please fix.
+
+Thanks,
+Dave.
+
 >
-Thanks a lot for your suggestions.
-
-We are also considering introducing a WITH_CPUFREQ_POLICY wrapper to=20
-encapsulate the cpufreq_cpu_get/put usage, so that the release order=20
-won=E2=80=99t be accidentally changed.
-
-Link:=20
-https://lore.kernel.org/all/874d821e-8ea3-40ac-921b-c19bb380a456@kylinos.=
-cn/
-
-Do you have any suggestions or preferences on this direction?
-
-
+> Ma Ke (1):
+>       drm/mediatek: Fix device/node reference count leaks in mtk_drm_get_all_drm_priv
+>
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 21 ++++++++++++++-------
+>  drivers/gpu/drm/mediatek/mtk_dsi.c     |  6 ++++++
+>  drivers/gpu/drm/mediatek/mtk_hdmi.c    |  8 ++++----
+>  drivers/gpu/drm/mediatek/mtk_plane.c   |  3 ++-
+>  4 files changed, 26 insertions(+), 12 deletions(-)
 
