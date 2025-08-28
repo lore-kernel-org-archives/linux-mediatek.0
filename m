@@ -4,157 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56387CA0EED
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Aug 2025 01:10:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85056CA0EED
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Aug 2025 01:10:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0XgMkENTR3L73wyAV+uXRRvm5qmOP1DhbV717XUFyRQ=; b=GlRHKlV79+PD7XR0sRNlQcAAqq
-	bPpcBDvFSjDDhYAbvdCVSBkp5XzDI0gpmnpc+81hYrXWmSSM7e5y7k+d0ujNIzKDNzzFeJtuIQ39h
-	piySssyVf9Z79/lB21Tt7OjHgMwmR2cSeqUKheRsyTkAXb3jTlSi5CvrjxdM/SvnY8yDe0HLZaeHw
-	GNJRAdBnugzyhBaNhnbZdpJVSHIBQzX+6BHJiCt4u95VuKsd6bQk4juT7MY3LlnI+7MoHuvzK7cgZ
-	CbI69VYcgX0cuYXsg4MFwMWXsl7jEEr7GET3EP7LuWKf11nU4eSR6MvQaxGkRQDC1iABeVRn4tBf0
-	PbX2BkNg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:
+	Subject:Cc:To:Message-Id:Date:Content-Type:Content-Transfer-Encoding:
+	Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zh4gg928dw0RcQqkQ+B/Q+DIbmhDWNYxBITUkGAsJBQ=; b=IRctcbzR5ZBMl+yB2UwgStzZ+f
+	Mu75Xs1C1ohzYZvjN+YOAB7ZfIAWfahIyXEigcIyWogZPzb6Rd2GWNfrxOVkXpDj0xdGFUAiYPYH6
+	3HXsbx9k9IkGZPTrOvCUISm8GiR2O2tEmc3WloLit7jFGsFlmuMMGDR1ZTuxNXdhxizS0cSkLNafb
+	F24ydWTBszhxf0SAkqmgyDz7m/ZYaoEorrwTiSblNjfsbkk+/RHkmftkE5Bv7g+NP2VQxGrINhhSx
+	ZOemn0zamkXnUF2ENtl6SM0Egy86RvcWAVGklJwxpE2EFLdlXKGVXfXceMw6e6eIPVZ81FzY0fjDQ
+	pbyYpySg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urndS-00000003xUR-22nR;
-	Fri, 29 Aug 2025 01:10:34 +0000
-Received: from mail-mw2nam12on20607.outbound.protection.outlook.com ([2a01:111:f403:200a::607] helo=NAM12-MW2-obe.outbound.protection.outlook.com)
+	id 1urndV-00000003xWw-0ycy;
+	Fri, 29 Aug 2025 01:10:37 +0000
+Received: from sendmail.purelymail.com ([34.202.193.197])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uriPA-000000032u1-3nNs;
-	Thu, 28 Aug 2025 19:35:30 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=t9OWX3nWOEybonKoVbiT86kw+E7+SYHk10VRm9cbA5DzZu3IGid49YUzcF+fSso+DfFDVLIi/ClFQK18VB6HVeOGLHnIRcgJqvH0LlZu7gyw1vvJabukeGFzlcbOIDDqElnQlSvL2pyQXsTLPx9poON4z3Rlb0djh9vXRYy4zh2JdvPOHYhAcY4Wc0YxkNmVxq3ADmG555P8qusa8SoPKQJTAeWsKFMbxec1pih3xWoQBXhpBD6VxkX4KamomBGJrDuflmWxieNkoyenZQcG+Gxk3ogNi9PR5U1SlnYHy90SrGnq3cws8dGw+VRzjnTlod4bZLdghyOGkbhx6QA3oA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=0XgMkENTR3L73wyAV+uXRRvm5qmOP1DhbV717XUFyRQ=;
- b=ZuztEisGnpe3nleZbKooQQIjc69pUHihdpNog7SMFwO16cGC8lTOR/gCQBJn7HEYF/H6ClMFNf8sknlFQoQKcenEmIWPQVJWIa2zeQCpI2bIY4vjU86ZY3c1JldMXMLD5U2ssl2lEMgNjvMaMH/4lGaCED8zlOLasbKPbXTwPcZQUNvnTwHoByFzNn6UKSo4heH0ODgANGrETKkMvayxN1KdUEwdsYsPyXdi1cQdCtGVryHlLVJjqMArWpco4Dq/7SYgkPid8FT58z23YnPkob5v5wTC1jLJdrOrQ041uf0zB5b39iQmQhvIi5vN+HMrwq7LDRTadYOrxIrG6+DaNQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.161) smtp.rcpttodomain=lists.linux.dev smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0XgMkENTR3L73wyAV+uXRRvm5qmOP1DhbV717XUFyRQ=;
- b=Drtc/X9M0x3sl85D1j3q3L3pfca8Xm/td8slz8tY/SfIZi7BfnimXTLHW/EGrQvwoT8WgoHDfj3CDnRps8klxbO2hYzAJFWUBGO2c6N14ypJ8lq8gV/GVLUtYYELZpDr/qGdJUL4LipNufNniI7rbrABPCthXmc6KruXuOhU0q7rE7A2nvqBMfSDX8sdk3vnsNwa7hQjQbvi5eL7VKNUqpDKsu7klk60S++33/ic3tc23IFP66+DbxUGhP3pHGRkrrmtGBPfxJTgm38KUGn5aHM+fs1hoYLUpCfxQ06Gbd0DjMOz/xFlT5Sp7QUNM2GX7zj62xF4sTniWhqMxY23yA==
-Received: from CH2PR17CA0030.namprd17.prod.outlook.com (2603:10b6:610:53::40)
- by SA3PR12MB7950.namprd12.prod.outlook.com (2603:10b6:806:31c::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9073.13; Thu, 28 Aug
- 2025 19:35:17 +0000
-Received: from CH2PEPF0000013D.namprd02.prod.outlook.com
- (2603:10b6:610:53:cafe::5a) by CH2PR17CA0030.outlook.office365.com
- (2603:10b6:610:53::40) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9052.21 via Frontend Transport; Thu,
- 28 Aug 2025 19:35:16 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.161) by
- CH2PEPF0000013D.mail.protection.outlook.com (10.167.244.69) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9052.8 via Frontend Transport; Thu, 28 Aug 2025 19:35:16 +0000
-Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
- (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Thu, 28 Aug
- 2025 12:35:03 -0700
-Received: from rnnvmail205.nvidia.com (10.129.68.10) by rnnvmail201.nvidia.com
- (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Thu, 28 Aug
- 2025 12:35:03 -0700
-Received: from Asurada-Nvidia (10.127.8.14) by mail.nvidia.com (10.129.68.10)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14 via Frontend
- Transport; Thu, 28 Aug 2025 12:35:01 -0700
-Date: Thu, 28 Aug 2025 12:35:00 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-CC: Ethan Zhao <etzhao1900@gmail.com>, <robin.murphy@arm.com>,
-	<joro@8bytes.org>, <bhelgaas@google.com>, <will@kernel.org>,
-	<robin.clark@oss.qualcomm.com>, <yong.wu@mediatek.com>,
-	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
-	<thierry.reding@gmail.com>, <vdumpa@nvidia.com>, <jonathanh@nvidia.com>,
-	<rafael@kernel.org>, <lenb@kernel.org>, <kevin.tian@intel.com>,
-	<yi.l.liu@intel.com>, <baolu.lu@linux.intel.com>,
-	<linux-arm-kernel@lists.infradead.org>, <iommu@lists.linux.dev>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-tegra@vger.kernel.org>,
-	<linux-acpi@vger.kernel.org>, <linux-pci@vger.kernel.org>,
-	<patches@lists.linux.dev>, <pjaroszynski@nvidia.com>, <vsethi@nvidia.com>,
-	<helgaas@kernel.org>
-Subject: Re: [PATCH v3 5/5] pci: Suspend iommu function prior to resetting a
- device
-Message-ID: <aLCvZOm11EAvrpx9@Asurada-Nvidia>
-References: <3749cd6a1430ac36d1af1fadaa4d90ceffef9c62.1754952762.git.nicolinc@nvidia.com>
- <550635db-00ce-410e-add0-77c1a75adb11@gmail.com>
- <aKTzq6SLGB22Xq5b@Asurada-Nvidia>
- <20250821130741.GL802098@nvidia.com>
- <aKgPr3mUcIsd1iuT@Asurada-Nvidia>
- <20250822140821.GE1311579@nvidia.com>
- <aKi8EqEp1DKG+h38@Asurada-Nvidia>
- <20250828125149.GD7333@nvidia.com>
- <aLBw3UTAX6F0IOCf@Asurada-Nvidia>
- <20250828184608.GF7333@nvidia.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20250828184608.GF7333@nvidia.com>
-X-NV-OnPremToCloud: ExternallySecured
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH2PEPF0000013D:EE_|SA3PR12MB7950:EE_
-X-MS-Office365-Filtering-Correlation-Id: d826f1b6-8c1a-47a5-9cde-08dde66a044b
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|36860700013|376014|7416014|82310400026|1800799024;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?OQiiDQjtGvO3tPwOgl97upHNXlwinnf6ipSL91H2MjjTgqjKc6e09UMw7YFD?=
- =?us-ascii?Q?mzhPUcGo0tEq7qp73+5QGPBXcmt14mz6Z5vNHO6n83UO7RzKyf7mFAaAZ18F?=
- =?us-ascii?Q?Uib8+0TuuadJx6FJ/2V8Qw90sUz1A1/1XqPwlTq2L0tacWyAATOR2EiRxA12?=
- =?us-ascii?Q?MTUT/Vext2rutI3hLdoGSCyHUe7Q4AiTuHb4jRWfrWU3b51JVLkDQNsRZxME?=
- =?us-ascii?Q?/YkJzYJQBDJnJ9sXQmEhIv0tdPbEqp/qmQTtG1HzqIiKUySxYBoGLrgEVza1?=
- =?us-ascii?Q?yb9HwXVqa2wmoscDmbhlmjQRVXhBK8aiwLFGAB2/uIXQr5dRBq1ZFf/LKO2+?=
- =?us-ascii?Q?XTZeRURfbHffCbB3Y7fjDcoKchDCKVubcWf/5HNI+blLQk5bka0ggNcUa2uD?=
- =?us-ascii?Q?tC74fXaBzj5UWxuzwx4VI2vlADJiOmgPE0fewu288TLExvx+8eBdWhqtU282?=
- =?us-ascii?Q?T0V0XIVDLDFmuIChbYi/idGMkYkVs4lKTHNr2mBcUhmXpfXlJGdUKCEvm/II?=
- =?us-ascii?Q?bW2RKQCwP220ZFFbJucljmuTGRXGcpNs48HmMpBDcPTgQgZHNKKOEf4Bte+7?=
- =?us-ascii?Q?0z3eFD1hxijadvhZfhwJzlEvito6EthT5WmfaMB5DZwuhORYd1issvu3HjFB?=
- =?us-ascii?Q?IanDdHz1ETXx5KVK3HaYNwVE313ZtwuF+LRWTlM8uDbl+7ilacFBc8+xsIZK?=
- =?us-ascii?Q?wFaWp2/ZmGxNxSS2iNQQSUnocIlstN9ddxHlEuiV/8fIpfOlZErrL3SDYpus?=
- =?us-ascii?Q?xY0SsflxI1QWQURDmueWRySDrV+crCGIXoI5RZjX+mJjxO2a/WiuqGqyA+IF?=
- =?us-ascii?Q?NW7PAfwEQTMYAmEXM5nYoWVqaqSK+Qz+dz/Cq05sjGFwSA0hhOMUYwuzG2kO?=
- =?us-ascii?Q?MccpcH06LGeoZLzUN+QbetImWEJq0x/soAPi1viKIr2JQX8FAGJ3y5ErbzeU?=
- =?us-ascii?Q?55L9QdH0D1MA5SV+sDJRlUB4SfytDElTFxKv/LgIHVnFUYcncIb3u6ZL58bu?=
- =?us-ascii?Q?igl4O81gpYaSX2D9n7Yw0UprQjCSD3a9u4H7vwFdJW8gW45VWkqOgbp7KUgD?=
- =?us-ascii?Q?mmrJ01Y6XqQ7km4L916GbTW2CWGyKDTbxdR6EC/tPaCQeRYFPtGVdre4UMc2?=
- =?us-ascii?Q?g5rPdmh4zlaKpzDLADn+XyJpi9x1f4K3z3o8RaMB3VNeo00mKhLSUkS8ySrt?=
- =?us-ascii?Q?qnBnED/OquG8U1vPrG1/X87hTubH8/zOrcnQWljonWyfa/QwsDAEk2vfXCaf?=
- =?us-ascii?Q?gu/2S6IapV+MdUqhkW21WjXVbvMxW2P0+X62sk5bwAmttNi1YpD3XQzPpPAH?=
- =?us-ascii?Q?KKs5I3APqx5iFvYHIlZgWDkrdjquJUS0dWUehNuXht7bnGLBO4dOSIqidtxE?=
- =?us-ascii?Q?JA7+4VfCfJV1wsW0FwCzkLdnVICzbbIGzr8vptPXTioMTx/pZzC+Da3guwGg?=
- =?us-ascii?Q?MntshWPsi/CWOcAOUw6EFAm8TM3d/fNfTnIYHnBX/GQz0GWVQwLeUs2Tweiw?=
- =?us-ascii?Q?plupT82O3BVNWGZvzh19twOrNWrIbVTGiD/z?=
-X-Forefront-Antispam-Report: CIP:216.228.117.161;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc6edge2.nvidia.com;CAT:NONE;SFS:(13230040)(36860700013)(376014)(7416014)(82310400026)(1800799024);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Aug 2025 19:35:16.7969
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: d826f1b6-8c1a-47a5-9cde-08dde66a044b
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.117.161];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: CH2PEPF0000013D.namprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA3PR12MB7950
+	id 1uritL-0000000387l-13gR
+	for linux-mediatek@lists.infradead.org;
+	Thu, 28 Aug 2025 20:06:40 +0000
+DKIM-Signature: a=rsa-sha256; b=owmaGhNgfaOD+znx/GojLIb2t38ZD4Jrl1iYxrYo6B4VOkxVOFhOEi2oNv/m5+yW0lF+EFo0TPpX4Dd6FXITgreGaiI4YED3URfoCsWXgJIj8A44OSMG+RM+DKNhOlaTsNlycsYNxF2Z7SiV0zs3Anhw+610gir2iyFKo2zASmCC1s8pRHV9E8tQUvFqfNLGej99GLBac1nJJ3GHeLuanuAx75JhlT31ounVZQ+kJNPlxJwx/tZGMTqdlrhfZG3L/P312jy6vpYonIx2v8CEs57KmC4X/jpCeNcuJ0TFRbaTeuLi3XLWWp+W3lMcNSEOhEt0GR3iRXYGZSXGRk1Gsg==; s=purelymail1; d=purelymail.com; v=1; bh=u9TsNJz5Cli+hy1QKsrKbomaP8wVYfx+FZl2Clzk1tg=; h=Feedback-ID:Received:Date:To:Subject:From;
+Feedback-ID: 68247:10037:null:purelymail
+X-Pm-Original-To: linux-mediatek@lists.infradead.org
+Received: by smtp.purelymail.com (Purelymail SMTP) with ESMTPSA id 1961342606;
+          (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384);
+          Thu, 28 Aug 2025 20:06:27 +0000 (UTC)
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Date: Thu, 28 Aug 2025 22:06:25 +0200
+Message-Id: <DCEBXZ0J8PYY.1D1SFSURUN457@mentallysanemainliners.org>
+To: "Arseniy Velikanov" <me@adomerle.pw>
+Cc: <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-phy@lists.infradead.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <~postmarketos/upstreaming@lists.sr.ht>
+Subject: Re: [PATCH v1 2/2] phy: mediatek: tphy: Add software role switching
+From: "Igor Belwon" <igor.belwon@mentallysanemainliners.org>
+X-Mailer: aerc 0.20.1-0-g2ecb8770224a-dirty
+References: <20250814234825.810-1-me@adomerle.pw>
+ <20250814234825.810-2-me@adomerle.pw>
+In-Reply-To: <20250814234825.810-2-me@adomerle.pw>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250828_123528_955417_AA9FE810 
-X-CRM114-Status: GOOD (  21.28  )
+X-CRM114-CacheID: sfid-20250828_130639_362051_9926A3F6 
+X-CRM114-Status: GOOD (  24.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -169,36 +66,289 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 28, 2025 at 03:46:08PM -0300, Jason Gunthorpe wrote:
-> On Thu, Aug 28, 2025 at 08:08:13AM -0700, Nicolin Chen wrote:
-> > On Thu, Aug 28, 2025 at 09:51:49AM -0300, Jason Gunthorpe wrote:
-> > > On Fri, Aug 22, 2025 at 11:50:58AM -0700, Nicolin Chen wrote:
-> > > 
-> > > > It feels like we need a no-fail re-attach operation, or at least an
-> > > > unlikely-to-fail one. I recall years ago we tried a can_attach op
-> > > > to test the compatibility but it didn't get merged. Maybe we'd need
-> > > > it so that a concurrent attach can test compatibility, allowing the
-> > > > re-attach in iommu_dev_reset_done() to more likely succeed.
-> > > 
-> > > This is probably the cleanest option to split these things
-> > 
-> > Yea, that could avoid failing a concurrent attach_dev during FLR
-> > unless the dryrun fails, helping non-SRIOV cases too.
-> > 
-> > So, next version could have some new preparatory patches:
-> >  - Pass in old domain to attach_dev
-> >  - Add a can_attach_dev op
-> 
-> I wouldn't make this more complicated, just focus on the signal device
-> case here then we move on from there
-> 
-> Just adding can_attach_dev is big series on its own
+Hi Arseniy,
 
-OK. I suppose a concurrent attach on a single device will be rare,
-so failing it won't impact that much and thus can be a Part-1.
+On Fri Aug 15, 2025 at 1:48 AM CEST, Arseniy Velikanov wrote:
+> MediaTek USB T-PHY has broken role switching on (likely) all mobile SoCs.
+> Known affected socs are: MT6735, MT6757, MT6761, MT6765, MT6768, MT6771,
+> MT6785, MT6789.
+>
+> The downstream kernel manually controls the PHY mode by writing
+> "test mode" FORCE regs. Setting all these regs fixes device/host modes, b=
+ut
+> breaks dual-role functionality. As a workaround we use workqueue that
+> periodically checks the USB role and changes the PHY mode accordingly.
+>
+> To address this issue only on affected SoCs, we introduce a new
+> device-tree property `mediatek,software-role-switch`. This ensures
+> the workaround is applied only to broken hardware while leaving unaffecte=
+d
+> devices (like Chromebooks) untouched.
+>
+> Signed-off-by: Arseniy Velikanov <me@adomerle.pw>
+> ---
+>  drivers/phy/mediatek/phy-mtk-tphy.c | 148 ++++++++++++++++++++++++++++
+>  1 file changed, 148 insertions(+)
+>
+> diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/p=
+hy-mtk-tphy.c
+> index f6504e0ecd1a..472859ec929c 100644
+> --- a/drivers/phy/mediatek/phy-mtk-tphy.c
+> +++ b/drivers/phy/mediatek/phy-mtk-tphy.c
+> @@ -18,6 +18,9 @@
+>  #include <linux/phy/phy.h>
+>  #include <linux/platform_device.h>
+>  #include <linux/regmap.h>
+> +#include <linux/usb/role.h>
+> +#include <linux/usb/otg.h>
+> +#include <linux/workqueue.h>
+> =20
+>  #include "phy-mtk-io.h"
+> =20
+> @@ -111,11 +114,18 @@
+> =20
+>  #define U3P_U2PHYDTM1		0x06C
+>  #define P2C_RG_UART_EN			BIT(16)
+> +#define P2C_FORCE_IDPULLUP	BIT(8)
+>  #define P2C_FORCE_IDDIG		BIT(9)
+> +#define P2C_FORCE_AVALID	BIT(10)
+> +#define P2C_FORCE_SESSEND	BIT(12)
+> +#define P2C_FORCE_VBUSVALID	BIT(13)
+> +
+>  #define P2C_RG_VBUSVALID		BIT(5)
+>  #define P2C_RG_SESSEND			BIT(4)
+> +#define P2C_RG_BVALID			BIT(3)
+>  #define P2C_RG_AVALID			BIT(2)
+>  #define P2C_RG_IDDIG			BIT(1)
+> +#define P2C_RG_IDPULLUP			BIT(0)
+> =20
+>  #define U3P_U2PHYBC12C		0x080
+>  #define P2C_RG_CHGDT_EN		BIT(0)
+> @@ -317,6 +327,8 @@ struct mtk_phy_instance {
+>  		struct u3phy_banks u3_banks;
+>  	};
+>  	struct clk_bulk_data clks[TPHY_CLKS_CNT];
+> +	struct delayed_work dr_work;
+> +	struct usb_role_switch *role_switch;
+>  	u32 index;
+>  	u32 type;
+>  	struct regmap *type_sw;
+> @@ -326,14 +338,17 @@ struct mtk_phy_instance {
+>  	u32 efuse_intr;
+>  	u32 efuse_tx_imp;
+>  	u32 efuse_rx_imp;
+> +	int current_role;
+>  	int eye_src;
+>  	int eye_vrt;
+>  	int eye_term;
+>  	int intr;
+>  	int discth;
+>  	int pre_emphasis;
+> +	int sw_get_retries;
+>  	bool bc12_en;
+>  	bool type_force_mode;
+> +	bool software_role_switch;
+>  };
+> =20
+>  struct mtk_tphy {
+> @@ -818,12 +833,118 @@ static void u2_phy_pll_26m_set(struct mtk_tphy *tp=
+hy,
+>  			 P2R_RG_U2PLL_FRA_EN | P2R_RG_U2PLL_REFCLK_SEL);
+>  }
+> =20
+> +static void u2_phy_instance_role_set(struct mtk_phy_instance *instance,
+> +				     int role)
+> +{
+> +	struct u2phy_banks *u2_banks =3D &instance->u2_banks;
+> +	void __iomem *com =3D u2_banks->com;
+> +
+> +	instance->current_role =3D role;
+> +
+> +	/* end session before role switch */
+> +	mtk_phy_set_bits(com + U3P_U2PHYDTM1, P2C_RG_SESSEND);
+> +	mdelay(5);
+> +	mtk_phy_clear_bits(com + U3P_U2PHYDTM1, P2C_RG_SESSEND);
+> +
+> +	switch (role) {
+> +	case USB_ROLE_DEVICE:
+> +		dev_dbg(&instance->phy->dev, "set device role\n");
+> +		mtk_phy_set_bits(com + U3P_U2PHYDTM1, P2C_RG_IDDIG);
+> +		break;
+> +	case USB_ROLE_HOST:
+> +		dev_dbg(&instance->phy->dev, "set host role\n");
+> +		mtk_phy_clear_bits(com + U3P_U2PHYDTM1, P2C_RG_IDDIG);
+> +		break;
+> +	default:
+> +		break;
+> +	}
+> +}
+> +
+> +static void u2_phy_role_switch_work(struct work_struct *work)
+> +{
+> +	struct mtk_phy_instance *instance =3D
+> +		container_of(work, struct mtk_phy_instance, dr_work.work);
+> +	int role;
+> +
+> +	if (IS_ERR_OR_NULL(instance->role_switch))
+> +		instance->role_switch =3D usb_role_switch_get(&instance->phy->dev);
+> +
+> +	if (IS_ERR_OR_NULL(instance->role_switch)) {
+> +		if (instance->sw_get_retries >=3D 10) {
+> +			dev_warn(&instance->phy->dev, "failed to get role switch\n");
+> +			return;
+> +		}
+> +
+> +		instance->sw_get_retries +=3D 1;
+> +		schedule_delayed_work(&instance->dr_work, msecs_to_jiffies(500));
+> +	}
+> +
+> +	role =3D usb_role_switch_get_role(instance->role_switch);
+> +
+> +	if (instance->current_role =3D=3D role)
+> +		goto reschedule_work;
+> +
+> +	u2_phy_instance_role_set(instance, role);
+> +
+> +reschedule_work:
+> +	schedule_delayed_work(&instance->dr_work, msecs_to_jiffies(100));
+> +}
+> +
+> +static int u2_phy_software_role_switch_init(struct mtk_phy_instance *ins=
+tance)
+> +{
+> +	struct fwnode_handle *ep, *remote_ep, *usb_fwnode;
+> +	struct device *usb_dev;
+> +	int mode;
+> +
+> +	instance->sw_get_retries =3D 0;
+> +
+> +	ep =3D fwnode_graph_get_endpoint_by_id(dev_fwnode(&instance->phy->dev),
+> +					     0,
+> +					     0,
+> +					     FWNODE_GRAPH_ENDPOINT_NEXT);
+> +	if (!ep)
+> +		return -ENODEV;
+> +
+> +	remote_ep =3D fwnode_graph_get_remote_endpoint(ep);
+> +	fwnode_handle_put(ep);
+> +	if (!remote_ep)
+> +		return -ENODEV;
+> +
+> +	usb_fwnode =3D fwnode_graph_get_port_parent(remote_ep);
+> +	fwnode_handle_put(remote_ep);
+> +
+> +	if (!usb_fwnode)
+> +		return -ENODEV;
+> +
+> +	usb_dev =3D bus_find_device_by_fwnode(&platform_bus_type, usb_fwnode);
+> +	fwnode_handle_put(usb_fwnode);
+> +	if (!usb_dev)
+> +		return -ENODEV;
+> +
+> +	mode =3D usb_get_role_switch_default_mode(usb_dev);
+> +	if (mode =3D=3D USB_DR_MODE_HOST)
+> +		u2_phy_instance_role_set(instance, USB_ROLE_HOST);
+> +	else
+> +		u2_phy_instance_role_set(instance, USB_ROLE_DEVICE);
+> +
+> +	INIT_DELAYED_WORK(&instance->dr_work, u2_phy_role_switch_work);
+> +
+> +	return 0;
+> +}
+> +
+>  static void u2_phy_instance_init(struct mtk_tphy *tphy,
+>  	struct mtk_phy_instance *instance)
+>  {
+>  	struct u2phy_banks *u2_banks =3D &instance->u2_banks;
+>  	void __iomem *com =3D u2_banks->com;
+>  	u32 index =3D instance->index;
+> +	int ret;
+> +
+> +	if (instance->software_role_switch) {
+> +		ret =3D u2_phy_software_role_switch_init(instance);
+> +		if (ret)
+> +			dev_warn(&instance->phy->dev, "failed to initialize role switching\n"=
+);
+> +	}
+> =20
+>  	/* switch to USB function, and enable usb pll */
+>  	mtk_phy_clear_bits(com + U3P_U2PHYDTM0, P2C_FORCE_UART_EN | P2C_FORCE_S=
+USPENDM);
+> @@ -883,6 +1004,18 @@ static void u2_phy_instance_power_on(struct mtk_tph=
+y *tphy,
+> =20
+>  		mtk_phy_set_bits(com + U3P_U2PHYDTM0, P2C_RG_SUSPENDM | P2C_FORCE_SUSP=
+ENDM);
+>  	}
+> +
+> +	if (instance->software_role_switch) {
+> +		/* Set FORCE modes for manual role switching */
+> +		mtk_phy_set_bits(com + U3P_U2PHYDTM1, P2C_FORCE_IDPULLUP
+> +			| P2C_FORCE_IDDIG | P2C_FORCE_AVALID | P2C_FORCE_VBUSVALID
+> +			| P2C_FORCE_SESSEND);
+> +		mtk_phy_set_bits(com + U3P_U2PHYDTM1, P2C_RG_IDPULLUP | P2C_RG_BVALID)=
+;
+> +
+> +		if (!instance->role_switch)
+> +			schedule_delayed_work(&instance->dr_work, msecs_to_jiffies(100));
+> +	}
+> +
+>  	dev_dbg(tphy->dev, "%s(%d)\n", __func__, index);
+>  }
+> =20
+> @@ -906,6 +1039,9 @@ static void u2_phy_instance_power_off(struct mtk_tph=
+y *tphy,
+>  		mtk_phy_clear_bits(com + U3D_U2PHYDCR0, P2C_RG_SIF_U2PLL_FORCE_ON);
+>  	}
+> =20
+> +	if (instance->role_switch)
+> +		cancel_delayed_work_sync(&instance->dr_work);
+> +
+>  	dev_dbg(tphy->dev, "%s(%d)\n", __func__, index);
+>  }
+> =20
+> @@ -940,6 +1076,9 @@ static void u2_phy_instance_set_mode(struct mtk_tphy=
+ *tphy,
+>  		tmp &=3D ~P2C_RG_IDDIG;
+>  		break;
+>  	case PHY_MODE_USB_OTG:
+> +		/* We are managing role in workqueue */
+> +		if (instance->software_role_switch)
+> +			return;
+>  		tmp &=3D ~(P2C_FORCE_IDDIG | P2C_RG_IDDIG);
+>  		break;
+>  	default:
+> @@ -1129,6 +1268,11 @@ static void phy_parse_property(struct mtk_tphy *tp=
+hy,
+>  	if (instance->type =3D=3D PHY_TYPE_USB3)
+>  		instance->type_force_mode =3D device_property_read_bool(dev, "mediatek=
+,force-mode");
+> =20
+> +	instance->software_role_switch =3D
+> +		device_property_read_bool(dev, "mediatek,software-role-switch");
+> +	if (instance->software_role_switch)
+> +		dev_info(dev, "software role switch enabled\n");
+> +
+>  	if (instance->type !=3D PHY_TYPE_USB2)
+>  		return;
+> =20
+> @@ -1618,6 +1762,10 @@ static int mtk_tphy_probe(struct platform_device *=
+pdev)
+>  		struct phy *phy;
+>  		int retval;
+> =20
+> +		/* filter non-phy nodes (e.g. graphs) */
+> +		if (!of_find_property(child_np, "reg", NULL))
+> +			continue;
+> +
+>  		instance =3D devm_kzalloc(dev, sizeof(*instance), GFP_KERNEL);
+>  		if (!instance)
+>  			return -ENOMEM;
 
-Then, for part-2, we will do can_attach_dev and support SRIOV.
+This patch made USB role-switching work on the MT6878 SoC. As such:
 
-Thanks
-Nicolin
+Tested-by: Igor Belwon <igor.belwon@mentallysanemainliners.org>
+
+Kind regards,
+Igor
 
