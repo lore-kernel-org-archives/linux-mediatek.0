@@ -4,89 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BF63CA0EED
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Aug 2025 23:53:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD199CA0EED
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Aug 2025 00:11:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iikKpnY3clq6EDEGi8c+zEbaWXwCHdwKnDixFM/DWwM=; b=OrHLIdyhLb/JIfbftddvpWuZxe
-	rFdVje/cuBAjQvtgTrSViLG5SjJNp4tFCOiN47yvlIzpiHezKatIZYcwqfkjywZnjNNMo67Gt9/HJ
-	DRYCxhuhNChna0whGyWzByxcwkIny3fSygHC36WFKXcQNcptLj7ra1wvQUx2Q8a7hoVa8TcKd+iPN
-	JWf1SK9b6ryErF8nPv/n85YF+8ZcXaShD3XbcWKuTlRD+/7h0ju7ALzQGp7DY4h3sCgLJ19oaoVhD
-	DbUE7j2geWo8FKP+MwOLUgkM4uTdRsMKFWkmN/uYV4BIDa0gTXz5pdAet6Sjfkflv32CyHMc6UPkj
-	jxFfxsJA==;
+	bh=7RThAvhW47ClaFk0Ppc2YL382QqxIANC1JHDPuD3DOk=; b=Qm5/Ilg2MWkk6cObZgfImwzXl1
+	bqRfKqRvvJ5Z3FPnXLULbeIopl4cm0TkwxVTQ638WqtL9QJM9+uZh4Lh4YhObcVVlDqUWRzodtplc
+	2BexcZA0VswOw/pPSl3gM7WCoM6Jy0x4u/pgYIVKCcVjcvNKxcf5s5RmPwgZvDDZd69w0CwuJR9Mv
+	zUwbStkp/iQxTyDVX5H775VlG8N93vB2thubcDfn0lyeBcaofzD+0yqDTfSoFsxlRBf4ENcCxNUL7
+	MRm4m3q1A7TRbvdxl21dy0wWhvUS6o7e1+Yldm/BoOT1HBnSy1vQr1LD6LjiJn9Na/+ZypcRoUriE
+	BoM5yDOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urmQV-00000003je6-06R9;
-	Thu, 28 Aug 2025 23:53:07 +0000
+	id 1urmiC-00000003pDw-20Ps;
+	Fri, 29 Aug 2025 00:11:24 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urmNm-00000003jKX-3vMh;
-	Thu, 28 Aug 2025 23:50:18 +0000
+	id 1urmXW-00000003lD5-1UdS;
+	Fri, 29 Aug 2025 00:00:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:Date:
+	Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:Content-Type:
 	Sender:Reply-To:Content-ID:Content-Description;
-	bh=iikKpnY3clq6EDEGi8c+zEbaWXwCHdwKnDixFM/DWwM=; b=RBefDwPV6BPZxdPvzv6rIxD5DP
-	xCpFJEU3fM7ZOnrt/6acYYG27Ec3lddPLCG4m0L1LOlt60Bz8ryM5iwWWzsKoyOUr6ayyx9d1f3g3
-	rnW9WmZQLdaCVqmKTyc3eJB7WKPj+r8oISYkdZZQyhLlsju2HgB308/yxmzBcw04ENFS0Qefd021b
-	VCPfjhiBuFWUBOolNgi2IkhfoBYf/Kf6TqvIcQzXt9+TAETJMikEHUv7dV83BEA/alnUfjPJtW/Cw
-	CelCfuxXRDuLhjpQzu15457zgLIcJf9PmS/Ib4DVCIK4A9uXdDOhX8Ork+efK3R5ZVcV8hGeiBUTK
-	pLEJ/h+g==;
+	bh=7RThAvhW47ClaFk0Ppc2YL382QqxIANC1JHDPuD3DOk=; b=NuNu5kyS5aoYYc8dj18PI3ZEOO
+	B//oSaVOH9V16ngRpM0RbZX4gXEwsA5VHqXu6FYK+EtBrXEapplBE3pKdT+0moIwEXCaj62DBxZ3N
+	9UUAX94uOSno+UY3yPnyhH30wtZesiVA4TyJjeaD7cwngbbi79/xWbTG6PHe3GxRUUC/KfJjLfVLR
+	xMQsjmLj/x27a5wShQic+gPGpKG78qxvKfXUn55SEMsvNETT/XggnLolb9XmBiIif+bH3qz7KGR/h
+	v9fCA2rvKx7NXQSZIcMhkgOs20Zs3BJAEkHvJjB6nTHGrFPO/GDkY27EonnmdhlQy+0e7wJGvT370
+	/Xkf3W9w==;
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urmNj-00000002ySd-2GRN;
-	Thu, 28 Aug 2025 23:50:17 +0000
+	id 1urmXS-00000002ymC-40Lw;
+	Fri, 29 Aug 2025 00:00:21 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3A58044E4B;
-	Thu, 28 Aug 2025 23:50:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1A9E6C4CEEB;
-	Thu, 28 Aug 2025 23:50:14 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 9E2B1451C7;
+	Fri, 29 Aug 2025 00:00:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7D15AC4CEF4;
+	Fri, 29 Aug 2025 00:00:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756425014;
-	bh=zsWCFAyMsxiaMzTEC3Gr3yuzGPTx6B+vy48OAuN/rqM=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=lUM2trqD6QlWxEbRGcHnWfAT2Dw6TF/vTGWJnBm3Lnj48ttau7a9jzrHNOqTDhcjd
-	 z0sB8EwOiczyD7iNgthyhi+Omu58xYralkqysW54YfQUTMuDqO0gi4j3uDXLV7e9mQ
-	 FbKlQ3XrVF/6gGwwfiZ644bMQa8Oic2wG/g1Tli3VZN7dnZo8Gu//4PtFB4tKfKJQp
-	 GZmG92gVtfuLoaQ61eXYr1rAjQyOuOlM1DjxMw7CWiyTciFXlf1Jxu7lP/0h0TJPKQ
-	 EVtNBY9OIA/EIuO9l5ZsrmiXSoyeQID06KOCFP8BQj6VWd3urFpHeywTWuGvXNF6pa
-	 10ECT7tdBeZSw==
-Received: by mail-pj1-f42.google.com with SMTP id 98e67ed59e1d1-323267872f3so1421996a91.1;
-        Thu, 28 Aug 2025 16:50:14 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCW6kZL5TdMYVtPdB47b1YWia7wBW+ei3D/2L3DQ1GYeTA5CIVjGmjrITV64FB/gLJ1b4TfxiO/I70ezyDMsXkY=@lists.infradead.org, AJvYcCWMIsX2gOsOvcOQj05T9SvtSW5WGcyS0dLbVrWkKtEbuMGf5T8oBqmitP1etZVkPcI34LK60Wdtk7FwB/xdu9tr@lists.infradead.org
-X-Gm-Message-State: AOJu0YzBbRJFOrdpH2PseXHIHTjAMvBI9QNZy64ZP7wnSIC4lQlYyE0t
-	y+9PbLEYfEVsFlHztVxGYRaI39ThdsBP5iSyoKkute+qn0yB/Gu1wMGqGDmPcNWkqUwAFaiRCZo
-	xDTZ1CWc/id/avW/RFcfv4eJsjdJ+Ag==
-X-Google-Smtp-Source: AGHT+IEyPrn2mauZsphfR5LkJf3knFAASu6dleEuuWgWtdTpwoFH8h3V5JmRW8ZSNdzaXyzRk8Y/2ADMz9Ym8II8Udk=
-X-Received: by 2002:a17:90b:384c:b0:325:57fc:87ce with SMTP id
- 98e67ed59e1d1-32557fc89damr26677996a91.9.1756425013709; Thu, 28 Aug 2025
- 16:50:13 -0700 (PDT)
+	s=k20201202; t=1756425617;
+	bh=wGToxozqbazFFH0LvF7E6rK1PxvN4J76FMletJpx26k=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=AzJF0nHA6QWTQ+fqIlN0wvNV1pY0RW5bxF9OiSU5btQOxErb0yHcb57uALHw9nEGe
+	 N/wRGgjaYG8E04rd9biTI8BqVXIe6GI5fu/rG+9IyhluAI0ZOn5JCgiMhu62lI+gXg
+	 d3H0cs6M99dniymI1+aHiwHOqdHL6Hn3RhOpNnUS06AJlwVBSRW2LX4d4QmrK2pnSa
+	 xfMRefwbUFatM9SASZ8kL2g75tiOjrGPlaKR7s6K8aevel7KQNw0ICeP1qTESS9pvb
+	 ZWbCinfGjR26uARQfE7I8TpY9rWOpHPWYohQMnnnG5o8rVsdKQRIcfmGWKFEDyYlTQ
+	 M/6qli/V58UCw==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id ADD74383BF75;
+	Fri, 29 Aug 2025 00:00:25 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-References: <20250722092722.425-1-johan@kernel.org> <aK7VCJ9yOKntjgKX@hovoldconsulting.com>
-In-Reply-To: <aK7VCJ9yOKntjgKX@hovoldconsulting.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Fri, 29 Aug 2025 07:51:23 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_-CijzQqrRUf_=cQbTUSybN3GT46q0vx1139mmZub_OfQ@mail.gmail.com>
-X-Gm-Features: Ac12FXy2kPL9Itx_6-_TK8BzHuWR2wBjPXyw4so4ACn3LaV_swD9vLFI7S9ZLJk
-Message-ID: <CAAOTY_-CijzQqrRUf_=cQbTUSybN3GT46q0vx1139mmZub_OfQ@mail.gmail.com>
-Subject: Re: [PATCH] drm/mediatek: fix device leaks at bind
-To: Johan Hovold <johan@kernel.org>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, stable@vger.kernel.org, 
-	"Nancy.Lin" <nancy.lin@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next 1/1] net: phy: mtk-2p5ge: Add LED support for
+ MT7988
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <175642562424.1653564.8322178452241904171.git-patchwork-notify@kernel.org>
+Date: Fri, 29 Aug 2025 00:00:24 +0000
+References: <20250827044755.3256991-1-SkyLake.Huang@mediatek.com>
+In-Reply-To: <20250827044755.3256991-1-SkyLake.Huang@mediatek.com>
+To: Sky Huang <skylake.huang@mediatek.com>
+Cc: andrew@lunn.ch, hkallweit1@gmail.com, linux@armlinux.org.uk,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ daniel@makrotopia.org, dqfext@gmail.com, SkyLake.Huang@mediatek.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250829_005015_925536_3F7FC0F2 
-X-CRM114-Status: GOOD (  11.15  )
+X-CRM114-CacheID: sfid-20250829_010019_209461_7BC37CFA 
+X-CRM114-Status: UNSURE (   8.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,37 +93,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Johan:
+Hello:
 
-Johan Hovold <johan@kernel.org> =E6=96=BC 2025=E5=B9=B48=E6=9C=8827=E6=97=
-=A5 =E9=80=B1=E4=B8=89 =E4=B8=8B=E5=8D=885:51=E5=AF=AB=E9=81=93=EF=BC=9A
->
-> On Tue, Jul 22, 2025 at 11:27:22AM +0200, Johan Hovold wrote:
-> > Make sure to drop the references to the sibling platform devices and
-> > their child drm devices taken by of_find_device_by_node() and
-> > device_find_child() when initialising the driver data during bind().
-> >
-> > Fixes: 1ef7ed48356c ("drm/mediatek: Modify mediatek-drm for mt8195 mult=
-i mmsys support")
-> > Cc: stable@vger.kernel.org    # 6.4
-> > Cc: Nancy.Lin <nancy.lin@mediatek.com>
-> > Signed-off-by: Johan Hovold <johan@kernel.org>
->
-> Can this one be picked up?
+This patch was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-Ma Ke has sent a similar patch [1] before you. And that patch fix more thin=
-gs.
-I've already pick up the final version [2].
+On Wed, 27 Aug 2025 12:47:55 +0800 you wrote:
+> From: Sky Huang <skylake.huang@mediatek.com>
+> 
+> Add LED support for MT7988's built-in 2.5Gphy. LED hardware has almost
+> the same design with MT7981's/MT7988's built-in GbE. So hook the same
+> helper function here.
+> 
+> Before mtk_phy_leds_state_init(), set correct default values of LED0
+> and LED1.
+> 
+> [...]
 
-[1] https://patchwork.kernel.org/project/dri-devel/patch/20250718033226.339=
-0054-1-make24@iscas.ac.cn/
-[2] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
-commit/?h=3Dmediatek-drm-fixes-20250825&id=3D1f403699c40f0806a707a9a6eed3b8=
-904224021a
+Here is the summary with links:
+  - [net-next,1/1] net: phy: mtk-2p5ge: Add LED support for MT7988
+    https://git.kernel.org/netdev/net-next/c/5e3aae2d3271
 
-Regards,
-Chun-Kuang.
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
->
-> Johan
+
 
