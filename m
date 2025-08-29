@@ -4,126 +4,170 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6F9ACA0FF6
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Aug 2025 02:24:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F996CA0EED
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Aug 2025 03:39:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xSJYI1LfDx6b3t05B7hgsla/NYnXns8LJkuupJRByMs=; b=ra1PCC428N71M0cjqiJ9YcP6a9
-	ksDYw9kO6fdF7Nf8Q/mv+fNxjt1eohfzrDRzzLYxStXRshzTXOYc1nvR3MVv+PGSMrM2IADxmMfWR
-	kb58TW38GfU7MttcpPZ3kUkZiV7sgcOSVjFe7KZ9EM5wKOtp8AT/mKj2M7eEWJYMd6ZOXo4ss0sQ9
-	Lxj4ILcqwPCblVTXMtNrWDqluxnUvP4NU72mqFNsTKfcgbuqbSRvxFhsx8HwSodbdKGxIE5B1gBfN
-	t9dj1fLotv7jaVHi1bkyLohC1ouxyZ4GYgeMPa6hCiKX/jNAu+GclowRMol2/93gYjz0AVMcJyI8Z
-	i49y62Sg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MySjf1dNQ+QFblxbzgcBLucxms+md0OmiOz5lWF0b/w=; b=PSzyLtCa/tMDpEpxv1qA5+9xGO
+	0tzij63yOGOGOmxcZRmbhKPi1dWFRHluVj74750NJXFAL5wRBsDQQBcXAMXwFCfUQIxogh7O7BS85
+	svNNWG4zIFgekj00ClaahW3gb/zKR0B4DMd5dzJHT1CxxhFvqXNJ2GZ6Y/R8+5dQ7fvtAX1buc+VX
+	xCOjf6y2Y2MMIBwXz1JmxXgPlXKbF5EagW3tjmvplXrVG7XLNL06LcdwIu+Yx6cqKgjZGyxiJ1iIm
+	Jvzumcf4QVj95nzhhBGeXmVJg9QsCUr4UatmcoOC1EicYYTghCmL19vWUOH88QL6aHgYdRZm/6bJF
+	Y16Il5fQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uromd-0000000470M-0xUz;
-	Fri, 29 Aug 2025 02:24:07 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1urpxA-00000004Euj-2Xt5;
+	Fri, 29 Aug 2025 03:39:04 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urnd3-00000003xKO-1eHK;
-	Fri, 29 Aug 2025 01:10:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=xSJYI1LfDx6b3t05B7hgsla/NYnXns8LJkuupJRByMs=; b=dr59jDDfCh6had24ia6f3vK4sy
-	zCWafZl7UO3Jh5fRwoGpa7pN4qv0uq743q7kU5AGTAPDv1P0OpH6rkrnXk4uprizhux3b1J+IU7Rf
-	uNaOzEZGF7qOyxkxLwyXK2SuF94g2BZMHJLLWekUuQquTbcspJiazA9JdO7sbJSqS2YtnVNxSlfhU
-	LQiwQTY1onI8nzspxxuSsRL8dnUcOJEDzDKUXFCq+ZOUpurqsVBwdSFRUYOJuBSFytgUsbOeNMjiw
-	DQOtYRq/HznMnOYKK0tCmqZH+rldukF1ybGj36PkmVdeXrw6Z9Gra5cukUZkbm7C6qpsp9ugrcVaL
-	vdKaumug==;
-Received: from mailgw.kylinos.cn ([124.126.103.232])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urncl-000000030og-0q9a;
-	Fri, 29 Aug 2025 01:09:57 +0000
-X-UUID: d185feaa847411f0b29709d653e92f7d-20250829
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.45,REQID:1b41a914-a619-485b-bf0b-20ce62405244,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6493067,CLOUDID:e92f79993f0338ccf10768968df3fbd8,BulkI
-	D:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102,TC:nil,Content:0|52,EDM:
-	-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,
-	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: d185feaa847411f0b29709d653e92f7d-20250829
-Received: from mail.kylinos.cn [(10.44.16.175)] by mailgw.kylinos.cn
-	(envelope-from <zhangzihuan@kylinos.cn>)
-	(Generic MTA)
-	with ESMTP id 459095461; Fri, 29 Aug 2025 09:09:31 +0800
-Received: from mail.kylinos.cn (localhost [127.0.0.1])
-	by mail.kylinos.cn (NSMail) with SMTP id 048F7E008FA4;
-	Fri, 29 Aug 2025 09:09:31 +0800 (CST)
-X-ns-mid: postfix-68B0FDCA-85694742
-Received: from [172.25.120.24] (unknown [172.25.120.24])
-	by mail.kylinos.cn (NSMail) with ESMTPA id 37FF9E008FA2;
-	Fri, 29 Aug 2025 09:09:19 +0800 (CST)
-Message-ID: <6174bcc8-30f5-479b-bac6-f42eb1232b4d@kylinos.cn>
-Date: Fri, 29 Aug 2025 09:09:18 +0800
+	id 1urnHZ-00000003uyD-3uVF
+	for linux-mediatek@lists.infradead.org;
+	Fri, 29 Aug 2025 00:47:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1756428476;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=MySjf1dNQ+QFblxbzgcBLucxms+md0OmiOz5lWF0b/w=;
+	b=X2bqI+iKL80FamtJ+SqLchWE8oDnBbJGpqe3P6/SbNALyHg6tcA8Kz6ev3u4oDkLE0foX3
+	9aZr54el4jmA5afqZmBwY/0JVkKg+qQzqFiXoe1G5hVIRUatjykw960UAgOhyl5HrpFFoL
+	jKumBaLzq7GgQyFjjcBcbAAxNcry5iY=
+Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
+ [209.85.222.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-214-hPpT94flMQmfDdQCaU4P0A-1; Thu, 28 Aug 2025 20:47:55 -0400
+X-MC-Unique: hPpT94flMQmfDdQCaU4P0A-1
+X-Mimecast-MFC-AGG-ID: hPpT94flMQmfDdQCaU4P0A_1756428474
+Received: by mail-qk1-f200.google.com with SMTP id af79cd13be357-7e88f379fafso527057285a.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 28 Aug 2025 17:47:54 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1756428474; x=1757033274;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=MySjf1dNQ+QFblxbzgcBLucxms+md0OmiOz5lWF0b/w=;
+        b=OV0bXiEhg8GeoxQpe1D4Zkpq0nru/Sqq3XKG/LBO37NkGWKxb1So0cyFUAT+zGFcn2
+         U9Rfc5KfAtYaXshEVOcMsXudWnOfKewCzU+CEG/HDZ6yb19wVB73nMYlwLZ2qU3PFOSp
+         MTTAdMWXIUoBSmP2ixfSOMkgzMlApoBoFftmgmA4MGM+cU9QZWVXdvS+blpP8xQK3LT2
+         CKBSLxSLi4A/cGvXSCy8/3/FfTC6CtO3waYcc0qgrLHcZ0mBi1LhxtNymiCz/ikxNhOT
+         7N29wSYcn57RdVQGvW+WFpEEZDqbCmZwIUHNAbO4VS4F+zXZrRuCGtEADT6BBvP7XghS
+         Cjpw==
+X-Forwarded-Encrypted: i=1; AJvYcCWByD7ePUWZfyjMRq4k1tAaJYLUyYg081S+OyMn+IQyO8YiLFDn+YSYAJM20jtFfZM3X/xmyVc/qput3iqSOQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx0OOwNeQA/4TQqNX5dgZcLPNh8/wzdfajlpk+vjSk6CTYXNx4u
+	jlVJvrJ16iFa3c1DGIh8PTGg99PfK//GWLQc86dxVIWBK1yrNoapH/HXjzCK8Hnp4FCU45gUt+O
+	+VIzfDW3hmGgrOXTeYBnvQbjaoYfYdwmaW3y6ENcTKKqmvPJ3ZAsvN4Jf3zH+sPsC5BlMVePnOw
+	==
+X-Gm-Gg: ASbGncvAqqneh9VxcJAk3ENxtafQQn27YRDx81wI63J20CPP72q4Z7YRU3acT3lwFWF
+	VeItsRK3SnIJVb3JG8FVnYZMMp27r+TU4y9W/5qrJABhqwD/qpQSwTwmRatROtwazeg6/uvQjQU
+	WdpmCJwygPrH6a3l8kfsS8q0XptVnc9kY8pnKgovtQRX9bCiVsJOaWdi4jHZp+FGom3aKgflJwi
+	xvDvC8+xq0KA9QqmzUTm3VmpQAjQ2Lhm9dKT7sw6d25ts9PqZVLAMYcK0EiFFAL6W1MIYHu/X8P
+	MEujQokWuLXGEvKJt3qoinPSVhJ2VMtO/eo9OG3u9hMxvh0/avhYj9RJGc3e93u/MjiiURtnvXK
+	EYbnVcGkoLvlT03eLby8=
+X-Received: by 2002:a05:620a:408a:b0:7f3:caf0:8412 with SMTP id af79cd13be357-7f3caf08452mr1587632685a.46.1756428474339;
+        Thu, 28 Aug 2025 17:47:54 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEjCgf4If/yLnG9xLRPpSvaRiEUxzvfevF39cHGHA+NM0Oih06WQG6xkNf8xHsAsX5EmFe8lQ==
+X-Received: by 2002:a05:620a:408a:b0:7f3:caf0:8412 with SMTP id af79cd13be357-7f3caf08452mr1587627285a.46.1756428473789;
+        Thu, 28 Aug 2025 17:47:53 -0700 (PDT)
+Received: from x1 (c-73-183-52-120.hsd1.pa.comcast.net. [73.183.52.120])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-7fc14754ee8sm80548485a.32.2025.08.28.17.47.48
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 28 Aug 2025 17:47:53 -0700 (PDT)
+Date: Thu, 28 Aug 2025 20:47:47 -0400
+From: Brian Masney <bmasney@redhat.com>
+To: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Sudeep Holla <sudeep.holla@arm.com>,
+	Cristian Marussi <cristian.marussi@arm.com>,
+	Chen Wang <unicorn_wang@outlook.com>,
+	Inochi Amaoto <inochiama@gmail.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Keguang Zhang <keguang.zhang@gmail.com>,
+	Taichi Sugaya <sugaya.taichi@socionext.com>,
+	Takao Orito <orito.takao@socionext.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Jacky Huang <ychuang3@nuvoton.com>,
+	Shan-Chun Hung <schung@nuvoton.com>,
+	Vladimir Zapolskiy <vz@mleia.com>,
+	Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Samuel Holland <samuel.holland@sifive.com>,
+	Yixun Lan <dlan@gentoo.org>,
+	Steen Hegelund <Steen.Hegelund@microchip.com>,
+	Daniel Machon <daniel.machon@microchip.com>,
+	UNGLinuxDriver@microchip.com, Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Michal Simek <michal.simek@amd.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>,
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+	Neal Gompa <neal@gompa.dev>,
+	Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Daniel Palmer <daniel@thingy.jp>,
+	Romain Perier <romain.perier@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Gregory Clement <gregory.clement@bootlin.com>,
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Andrea della Porta <andrea.porta@suse.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Sylwester Nawrocki <s.nawrocki@samsung.com>,
+	Chanwoo Choi <cw00.choi@samsung.com>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Qin Jian <qinjian@cqplus1.com>, Viresh Kumar <vireshk@kernel.org>,
+	Ulf Hansson <ulf.hansson@linaro.org>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Alex Helms <alexander.helms.jy@renesas.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Liviu Dudau <liviu.dudau@arm.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>
+Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+	arm-scmi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	sophgo@lists.linux.dev, linux-mips@vger.kernel.org,
+	imx@lists.linux.dev, linux-riscv@lists.infradead.org,
+	spacemit@lists.linux.dev, linux-stm32@st-md-mailman.stormreply.com,
+	patches@opensource.cirrus.com, linux-actions@lists.infradead.org,
+	asahi@lists.linux.dev, linux-mediatek@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev
+Subject: Re: [PATCH 000/114] clk: convert drivers from deprecated
+ round_rate() to determine_rate()
+Message-ID: <aLD4s0sGEaQKD9PQ@x1>
+References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 03/18] ACPI: processor: thermal: Use
- __free(put_cpufreq_policy) for policy reference
-To: "Rafael J. Wysocki" <rafael@kernel.org>
-Cc: Viresh Kumar <viresh.kumar@linaro.org>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
- Sean Christopherson <seanjc@google.com>, Paolo Bonzini
- <pbonzini@redhat.com>, Thomas Gleixner <tglx@linutronix.de>,
- Ingo Molnar <mingo@redhat.com>, Borislav Petkov <bp@alien8.de>,
- Dave Hansen <dave.hansen@linux.intel.com>, Markus Mayer
- <mmayer@broadcom.com>, Florian Fainelli <florian.fainelli@broadcom.com>,
- Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>,
- Madhavan Srinivasan <maddy@linux.ibm.com>,
- Michael Ellerman <mpe@ellerman.id.au>, Krzysztof Kozlowski
- <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, Tvrtko Ursulin
- <tursulin@ursulin.net>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Daniel Lezcano <daniel.lezcano@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
- Eduardo Valentin <edubezval@gmail.com>, Keerthy <j-keerthy@ti.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- zhenglifeng <zhenglifeng1@huawei.com>, "H . Peter Anvin" <hpa@zytor.com>,
- Zhang Rui <rui.zhang@intel.com>, Len Brown <lenb@kernel.org>,
- Nicholas Piggin <npiggin@gmail.com>,
- Christophe Leroy <christophe.leroy@csgroup.eu>,
- Lukasz Luba <lukasz.luba@arm.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Beata Michalska <beata.michalska@arm.com>, Fabio Estevam
- <festevam@gmail.com>, Pavel Machek <pavel@kernel.org>,
- Sumit Gupta <sumitg@nvidia.com>,
- Prasanna Kumar T S M <ptsm@linux.microsoft.com>,
- Sudeep Holla <sudeep.holla@arm.com>, Yicong Yang <yangyicong@hisilicon.com>,
- linux-pm@vger.kernel.org, x86@kernel.org, kvm@vger.kernel.org,
- linux-acpi@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
- linux-samsung-soc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-tegra@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, imx@lists.linux.dev,
- linux-omap@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20250827023202.10310-1-zhangzihuan@kylinos.cn>
- <20250827023202.10310-4-zhangzihuan@kylinos.cn>
- <CAJZ5v0jA7HjNc6VQWdjuwLnmd751kV01NXC4v8Pyn8h-r70BzQ@mail.gmail.com>
-From: Zihuan Zhang <zhangzihuan@kylinos.cn>
-In-Reply-To: <CAJZ5v0jA7HjNc6VQWdjuwLnmd751kV01NXC4v8Pyn8h-r70BzQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
+User-Agent: Mutt/2.2.14 (2025-02-20)
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: tiFhNynqVKV2KvM0sz_ZINmzgwyGO9cml1ylLYxk6hc_1756428474
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250829_020955_118357_182ADD02 
-X-CRM114-Status: GOOD (  27.32  )
+X-CRM114-CacheID: sfid-20250828_174758_053762_CEBB449E 
+X-CRM114-Status: GOOD (  13.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,121 +182,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, Aug 11, 2025 at 11:17:52AM -0400, Brian Masney wrote:
+> The round_rate() clk ops is deprecated in the clk framework in favor
+> of the determine_rate() clk ops, so let's go ahead and convert the
+> various clk drivers using the Coccinelle semantic patch posted below.
+> I did a few minor cosmetic cleanups of the code in a few cases.
 
-=E5=9C=A8 2025/8/28 17:40, Rafael J. Wysocki =E5=86=99=E9=81=93:
-> On Wed, Aug 27, 2025 at 4:33=E2=80=AFAM Zihuan Zhang <zhangzihuan@kylin=
-os.cn> wrote:
->> Replace the manual cpufreq_cpu_put() with __free(put_cpufreq_policy)
->> annotation for policy references. This reduces the risk of reference
->> counting mistakes and aligns the code with the latest kernel style.
->>
->> No functional change intended.
->>
->> Signed-off-by: Zihuan Zhang <zhangzihuan@kylinos.cn>
->> ---
->>   drivers/acpi/processor_thermal.c | 12 +++---------
->>   1 file changed, 3 insertions(+), 9 deletions(-)
->>
->> diff --git a/drivers/acpi/processor_thermal.c b/drivers/acpi/processor=
-_thermal.c
->> index 1219adb11ab9..f99ed0812934 100644
->> --- a/drivers/acpi/processor_thermal.c
->> +++ b/drivers/acpi/processor_thermal.c
->> @@ -64,17 +64,13 @@ static int phys_package_first_cpu(int cpu)
->>
->>   static int cpu_has_cpufreq(unsigned int cpu)
->>   {
->> -       struct cpufreq_policy *policy;
->> +       struct cpufreq_policy *policy __free(put_cpufreq_policy);
->>
->>          if (!acpi_processor_cpufreq_init)
->>                  return 0;
->>
->>          policy =3D cpufreq_cpu_get(cpu);
->> -       if (policy) {
->> -               cpufreq_cpu_put(policy);
->> -               return 1;
->> -       }
->> -       return 0;
->> +       return !!policy;
-> If you want to make this change, please also change the return type of
-> the function to bool.
-Thanks for pointing this out.
->>   }
->>
->>   static int cpufreq_get_max_state(unsigned int cpu)
->> @@ -95,7 +91,7 @@ static int cpufreq_get_cur_state(unsigned int cpu)
->>
->>   static int cpufreq_set_cur_state(unsigned int cpu, int state)
->>   {
->> -       struct cpufreq_policy *policy;
->> +       struct cpufreq_policy *policy __free(put_cpufreq_policy);
-> This isn't correct AFAICS at least formally because the scope of the
-> variable is the whole function, so it won't get out of scope at the
-> point where you want cpufreq_cpu_put() to be called.
->
-> The policy variable should be defined in the block following the "for"
-> loop (and actually all of the local variables except for "i" can be
-> defined there).
+I posted a v2 patch series with 8 patches from this series that needed a
+v2 to:
 
+https://lore.kernel.org/linux-clk/20250828-clk-round-rate-v2-v1-0-b97ec8ba6cc4@redhat.com/T/
 
-Sorry for the mistake =E2=80=94 I did this correctly in other places, but=
- forgot=20
-here.
+Sorry I didn't put PATCH v2 in the subject. I noticed as soon as it
+started to send.
 
-> Or better still, please move that block to a separate function
-> containing all of the requisite local variable definitions and call
-> that function for each online CPU.
+In summary, it fixes one merge conflict introduced in linux-next, remove
+one case of &*, fix a comment, and removes unnecessary space after a
+cast on 5 patches.
 
+There are currently 7 patches from this series that's currently in
+linux-next (renesas, spacemit, samsung). 
 
- =C2=A0In fact, I have realized that we cannot always use __free for clea=
-nup=20
-directly.
+The relevant remaining 99 patches from this series waiting to be merged
+can be grabbed with this command:
 
-The issue is that the release only happens at the end of the variable=E2=80=
-=99s=20
-lifetime, while in some cases we want to drop the reference immediately=20
-after use.
+b4 am --add-link \
+	--cherry-pick 1-37,39-47,52-63,65-67,69-89,91-91,94-94,96-96,100-112,114-114 \
+	20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com
 
-To address this, I=E2=80=99m considering introducing a helper macro in=20
-include/linux/cpufreq.h that would make this more explicit and allow=20
-safe cleanup at the right point.
+There's no dependencies with the other series.
 
+Brian
 
-Before moving forward, I=E2=80=99d like to hear your opinion on this appr=
-oach:
-
-#define WITH_CPUFREQ_POLICY(cpu) \
-for(struct cpufreq_policy *policy __free(put_cpufreq_policy) =3D \
-     cpufreq_cpu_get(cpu);;)
-
-
-Then we can use it for all code :
-
-	WITH_CPUFREQ_POLICY(cpu) {
-			if(!policy)
-				return XXX; // error handing
-		=09
-			//code use policy here
-		} // equal origin 'cpufreq_cpu_put' here
-         ;;
-        //left code
-
->>          struct acpi_processor *pr;
->>          unsigned long max_freq;
->>          int i, ret;
->> @@ -127,8 +123,6 @@ static int cpufreq_set_cur_state(unsigned int cpu,=
- int state)
->>                  max_freq =3D (policy->cpuinfo.max_freq *
->>                              (100 - reduction_step(i) * cpufreq_therma=
-l_reduction_pctg)) / 100;
->>
->> -               cpufreq_cpu_put(policy);
->> -
->>                  ret =3D freq_qos_update_request(&pr->thermal_req, max=
-_freq);
->>                  if (ret < 0) {
->>                          pr_warn("Failed to update thermal freq constr=
-aint: CPU%d (%d)\n",
->> --
 
