@@ -4,105 +4,134 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08FE8C8303F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Aug 2025 05:53:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DBA0C8303F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Aug 2025 06:01:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SVM2NB/+Q5TwegaC+cQ6efQn2fgkr/tPokgrfCaQZxo=; b=rOL8o++mBNLbonHDUbSYlCXb3d
-	N8K/pGCmjp6eUL2goOTtpkcAPa6DtgHyihLruyMhW6/OEm3vFM0jKJPIvHFhPPLpiNEzHyr+/K6Ep
-	ev5lW0yH19ySiA0Zxl6Axo6lAC8c6T1MwycbYr+E4dH/DqMVUrRtzgZDvP6D43t+TRKSFDGzU/xXE
-	Zg2QtEWIX8juHqZA9bJO58Dbk+2BC/6KTxROFwFeYrrEljfPCZ/L6iQUJdKMMWrL3Mob0FqLgguk3
-	TYLWMzL4A6b2ccd9lHTmwVbzNQy2p5XaGCQn55aU7cohKUlvhgTlgCBW87QDY42Cs4ldJQfrOMFfH
-	RocE/5qg==;
+	bh=Csp0y2UiuYBIoSGq3QglK9zewj1/hbg1F372AFvl94U=; b=4ngWGr6jYHv4pZUJEuvhbjDPYp
+	lruJ8BQ6dS9H0oOJcd8ZsDrqE/6LerZ4SQazb72vWzZfujsf+JUQJ+3LzoPzpxZA0Vc1dEOm8OXsz
+	6Zfr68kS7sK6E6UksC3uLuJe8wU0dEiQdFsluOQnPbb7Djfem1rJmMpSo4bI8KzIm3bEOyd6W3CoD
+	5BSudKKORZMkuqZF2UsKVMd0S3ryZ320dFAHX928KJcqgeud4Snv2zRxHWWsaJU1vrX1hPyVwKylU
+	4N98ZYbcGiC08bnqKXpnCiogDmXjbUjbwEXcp0Nh93q0JqtVcogkkLWI7GcWs5oLos81BkBptVzfy
+	pPTDi62w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urs3H-00000004XuR-2J6Y;
-	Fri, 29 Aug 2025 05:53:31 +0000
-Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
+	id 1ursBN-00000004Zw0-1FLx;
+	Fri, 29 Aug 2025 06:01:53 +0000
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urrxY-00000004XN3-0KFb
+	id 1urs9M-00000004Zek-3xNt
 	for linux-mediatek@lists.infradead.org;
-	Fri, 29 Aug 2025 05:47:37 +0000
-Received: by mail-pj1-x102d.google.com with SMTP id 98e67ed59e1d1-327705d0a9bso1585970a91.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 28 Aug 2025 22:47:35 -0700 (PDT)
+	Fri, 29 Aug 2025 05:59:50 +0000
+Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-77201f3d389so1886705b3a.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 28 Aug 2025 22:59:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1756446455; x=1757051255; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1756447188; x=1757051988; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=SVM2NB/+Q5TwegaC+cQ6efQn2fgkr/tPokgrfCaQZxo=;
-        b=ln/Lle5vWmcBTBxvjq65wnw2L9W01MNvpvnSwriqEzwMnI3mFZVpBD62tsKLY/4BQr
-         VPbcbIJKA6p9LCIUK6hdi/x5HCwuECAykcX2HwzLr/nFoSUAGqvf0O/LwoQy+wefBZIs
-         OxifSMboHt4r/RwaKRz8dSbrARxXss12RA7DIhX/Sf4af8wpo8xdEu1BqYmttLQvpwa5
-         n0S279z6eklUIrAdM7uJghfOx85Z7Ilf/EdaNtbjv+FmMtZ73EnaOG2YM7Uv+rUMLD3G
-         aCUGHPoV4mFEcUXJHrcYFQj1XA/KkzFiO/ewAFDkY6hNoNpO4R8ELOHPDAOZufzNQBUL
-         udMg==
+        bh=Csp0y2UiuYBIoSGq3QglK9zewj1/hbg1F372AFvl94U=;
+        b=mUKyBdZnihG+GqRi2n9Xj8iLlN5GyrLWqPL+LONpw3WtBJ08YggqLQ+f/cAkGqLhZN
+         i9HdKoXU8nq56v8tykpdg+lUHUGwCzYSFL/42i2AyQsuYqMfRiED6h1yUS4ZziL7DdmT
+         5lPd9y6GTCsvA+kS+ggmJ9XnVMX8va9CnjJ8+pClRrUlXQ4HeyMN2JlE1x1mOSvgAZww
+         OkauEnOPUG40svXP8frwp2CFqKClts0jgzI6TLG6VqAFkzJUKgGOqW76ujS+GNErFScY
+         U4BPScng9RLvCdp7YwFriiPWqWPv9VNmZUPIo8qJ7lYG6FhufW6BDCVKCOiIHoVEJy6j
+         MCfA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756446455; x=1757051255;
+        d=1e100.net; s=20230601; t=1756447188; x=1757051988;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=SVM2NB/+Q5TwegaC+cQ6efQn2fgkr/tPokgrfCaQZxo=;
-        b=RxuT99r8sHdacEen3jSD8myBcHks6KHKvmlLvYlGUCLHCBHWut0vGVK92MsFCOMGqE
-         48FOcEQJrEbjCIRqEFuPmf86Q3WXTJeaDIivR0E5QAXXYTyAqDadaLOXRzlx2+vCX6R7
-         elRMjC2VbLbBpKh5hSnSlZXUTYszd/2SEW0JNPbWeub9meBUW3PuwLPDHtbuuyinqq0S
-         946+25jGD2zABcR9YJUttSOWbvqqF9YZQllMYRnc04VuiO3N+AuW2gTYNVVNqkeDonO9
-         IaYO7ZgB5lJAxKOClqUFypnF2SfstCTHU571T5nXKRG6OFFU3M7Ai16YFtXxMN/ndaL3
-         tykQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVbQeoRoYmwJrLrmuco8xDNoxUxUnH9jE7E9HzGQxgtmfVBLMqONpEUkEqpEs+8Rtr+9e8DFMbcq5tFrXQxrw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx2M9uSBrd6/KDZ+I5qMzLtotwvwextfiaMkfLgp0asMi03S0Dw
-	lKpXJgoERQWvlIE4NxikBUDy95TYlE1fc039mnlTQRHnc2r3IZjMSG0V/6He1pUWNEA=
-X-Gm-Gg: ASbGnctGZ3xnM59Qow9UrYagPpfH8+7tmQX5/F9tf7F8ZEvkCpqYKM0p6+3HQLZ6LLo
-	qVqaiBRFSzC+F3LB/ovOV0UPFizgUlCMb6JKgwyZO6IQ8Wq+k2jdXjQaOnEFgk07pyGbic1BRC2
-	lGRTZpYH1Ezdzj14oJQZZTy7Kkmyw1bADkUrL4t5/NXiRrSBf/+UJa8ZtX7PI+28HWao9ca4yi+
-	+xJCDfCbtZicQiE0edb/HqbnV4lmtyhpP7k3wfnp6vQbLHBvr2AVRVUN4MecMo/1gbDcLaIfoeo
-	0X3rmCjHIr+SHqhUxL3j6uXT/KCTCsr1QjE9aQemID+0Pjy1J30qxZus8IpqJtM/pFuhCCK2Xo+
-	yO3tDN+gVSSGO7K28kw80VeKbMtOCU257OP4=
-X-Google-Smtp-Source: AGHT+IFGFRX8jr8klOJHgeApacbbUnrvb94Dt+QaaXsozbhIjGsZDvjH/LL4aUVoWgpbErAkB6CKrg==
-X-Received: by 2002:a17:90b:3c0e:b0:327:dce5:f635 with SMTP id 98e67ed59e1d1-327dce5f897mr3153327a91.25.1756446454625;
-        Thu, 28 Aug 2025 22:47:34 -0700 (PDT)
+        bh=Csp0y2UiuYBIoSGq3QglK9zewj1/hbg1F372AFvl94U=;
+        b=ioItEmu+ZjsURiPCFlp4QkCahYlQvnrF17mhMAFNEsZIZ9VI/bKI/HBGpzWdAdNLQG
+         QdoBZJlnIZYE82Do9w0m/tijqsPYCEsC/d+xy42MPA6cch7BmJtAp7so2ZVdhAT/J8jF
+         bMmRxEXY1xXEvx0rxpKZ+PEjwW84aJc+StxduTkU0ID1NNaABjihTuoazFa8k7hHscg6
+         HlyLqTI967lmfAppWuxtK78+DfNZOKiM8sypHRXHwE5zRXILo98+b9XSLDO7wW542Om1
+         1cizZkQsxK8rcXYpY0SFjeuIgWae34GUOL2SZzsPeuCaiMZbw6Q8I5zFQO/2youecI6B
+         em1A==
+X-Forwarded-Encrypted: i=1; AJvYcCUanqZMXIMfUOvFv3qJEAuzikFgKKMDL2GG6H2RzOkr8MUja+J0xyxPAWGDMTYm5Tp5TRKGEEpDLmvTbqR6Fw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz/SebIDvi8qL394g0jsiOjkCugiD3lsSmwhoZhmV6/DNduZ9jS
+	ifERUAcR1lHBoFdlee2XiNZrxK6tsxWz/ILtWHJ3v+zcDTCpLgXyesuTuUFSbGYu3z8=
+X-Gm-Gg: ASbGncuFRchO7rgP8XujBDM85G8HyULI2CY8wnkkrix4ErWHDWTCOG884Y8HqQu27oR
+	Ysudo+KQ6aE/J+WzEvvgk0KpNiSMI/diBO/BMviFi97k815eMyc4zGkKJBJtCnZpLIMFEyzD59x
+	tXvIhftkF2+dkoiHPfrk5MyRrTHawqjMFxg6tGYVF6Cqegrvexp6bHzrfGnMy6gJ3ivqM1qelUK
+	Aw3h/JMI2vOiZcpHeuhWxZJvT/IqQuP9Ta0KJwbjyA7G3Yp+kT0zd0VANQnjsapNlEwSFFhk5LT
+	oBSo1rorLuJYAdtCT5T4IN8eTuKHRWQ3P99OO+SaBZgkjuTau5s/6ZL+BnPT63SH7K3Wgej9dI6
+	iieWvXcqIHppAx4pqjZ0T8TxBUph0o1OKSOQ=
+X-Google-Smtp-Source: AGHT+IFsar3WOaSA9RKNM7TPFf9gG0iXTxdUF2CW8raU1SyelgEQswrlDbapLb2rA7PUFkb3M17NCQ==
+X-Received: by 2002:a05:6a00:10d5:b0:772:2850:783d with SMTP id d2e1a72fcca58-772285079c4mr3285667b3a.22.1756447188084;
+        Thu, 28 Aug 2025 22:59:48 -0700 (PDT)
 Received: from localhost ([122.172.87.165])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-327d93547f4sm1536101a91.11.2025.08.28.22.47.33
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7722a2b14c1sm1263485b3a.31.2025.08.28.22.59.45
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 28 Aug 2025 22:47:33 -0700 (PDT)
-Date: Fri, 29 Aug 2025 11:17:31 +0530
+        Thu, 28 Aug 2025 22:59:47 -0700 (PDT)
+Date: Fri, 29 Aug 2025 11:29:44 +0530
 From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: "myungjoo.ham@samsung.com" <myungjoo.ham@samsung.com>,
-	"kyungmin.park@samsung.com" <kyungmin.park@samsung.com>,
-	"cw00.choi@samsung.com" <cw00.choi@samsung.com>,
-	Chun-Jen Tseng =?utf-8?B?KOabvuS/iuS7gSk=?= <Chun-Jen.Tseng@mediatek.com>,
-	"rafael@kernel.org" <rafael@kernel.org>,
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+To: Zihuan Zhang <zhangzihuan@kylinos.cn>
+Cc: "Rafael J . wysocki" <rafael@kernel.org>,
+	Catalin Marinas <catalin.marinas@arm.com>,
+	Will Deacon <will@kernel.org>,
+	Sean Christopherson <seanjc@google.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	Ingo Molnar <mingo@redhat.com>, Borislav Petkov <bp@alien8.de>,
+	Dave Hansen <dave.hansen@linux.intel.com>,
+	Markus Mayer <mmayer@broadcom.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>,
+	Madhavan Srinivasan <maddy@linux.ibm.com>,
+	Michael Ellerman <mpe@ellerman.id.au>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	MyungJoo Ham <myungjoo.ham@samsung.com>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	Chanwoo Choi <cw00.choi@samsung.com>,
+	Jani Nikula <jani.nikula@linux.intel.com>,
+	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+	Rodrigo Vivi <rodrigo.vivi@intel.com>,
+	Tvrtko Ursulin <tursulin@ursulin.net>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Daniel Lezcano <daniel.lezcano@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Eduardo Valentin <edubezval@gmail.com>, Keerthy <j-keerthy@ti.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH v3 1/3] cpufreq: mediatek: using global lock avoid race
- condition
-Message-ID: <20250829054731.utl6pmgan6sg4mfn@vireshk-i7>
-References: <20250219054209.erwfp7sgzchaiuds@vireshk-i7>
- <e8337c5eee0cadb797bacf26b00f1ca303c5147f.camel@mediatek.com>
- <20250321045624.mwm2mnkqeow5uids@vireshk-i7>
- <2a73b5ca35692c8ffa68c9ff0df73e24a592967d.camel@mediatek.com>
- <20250321060148.adhxjexpnm4dkpnt@vireshk-i7>
- <e1c2c12bace22d1803d16ecbfb32129518d87157.camel@mediatek.com>
- <20250324054333.sgwwksawnybx3lp4@vireshk-i7>
- <06356a55cdb3c34dfc716349d1967f95655b0ab2.camel@mediatek.com>
- <20250416080517.feansrkpycsynk6t@vireshk-i7>
- <CAGXv+5FyR8bt16nLvS0V=_YRWM6G7V0OOpxctA+_4hVnnCjDtg@mail.gmail.com>
+	zhenglifeng <zhenglifeng1@huawei.com>,
+	"H . Peter Anvin" <hpa@zytor.com>, Zhang Rui <rui.zhang@intel.com>,
+	Len Brown <lenb@kernel.org>, Nicholas Piggin <npiggin@gmail.com>,
+	Christophe Leroy <christophe.leroy@csgroup.eu>,
+	Lukasz Luba <lukasz.luba@arm.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Beata Michalska <beata.michalska@arm.com>,
+	Fabio Estevam <festevam@gmail.com>, Pavel Machek <pavel@kernel.org>,
+	Sumit Gupta <sumitg@nvidia.com>,
+	Prasanna Kumar T S M <ptsm@linux.microsoft.com>,
+	Sudeep Holla <sudeep.holla@arm.com>,
+	Yicong Yang <yangyicong@hisilicon.com>, linux-pm@vger.kernel.org,
+	x86@kernel.org, kvm@vger.kernel.org, linux-acpi@vger.kernel.org,
+	linuxppc-dev@lists.ozlabs.org, linux-samsung-soc@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-tegra@vger.kernel.org,
+	intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+	imx@lists.linux.dev, linux-omap@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 04/18] cpufreq: brcmstb-avs-cpufreq: Use
+ __free(put_cpufreq_policy) for policy reference
+Message-ID: <20250829055944.ragfnh62q2cuew3e@vireshk-i7>
+References: <20250827023202.10310-1-zhangzihuan@kylinos.cn>
+ <20250827023202.10310-5-zhangzihuan@kylinos.cn>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <CAGXv+5FyR8bt16nLvS0V=_YRWM6G7V0OOpxctA+_4hVnnCjDtg@mail.gmail.com>
+In-Reply-To: <20250827023202.10310-5-zhangzihuan@kylinos.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250828_224736_124610_212261CA 
-X-CRM114-Status: GOOD (  19.46  )
+X-CRM114-CacheID: sfid-20250828_225948_986539_5F0AF0F4 
+X-CRM114-Status: GOOD (  13.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,33 +146,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 28-08-25, 15:26, Chen-Yu Tsai wrote:
-> Maybe a different set of eyes will help. I talked to Chun-Jen offline,
-> and I'll try to explain what I understand.
+On 27-08-25, 10:31, Zihuan Zhang wrote:
+> Replace the manual cpufreq_cpu_put() with __free(put_cpufreq_policy)
+> annotation for policy references. This reduces the risk of reference
+> counting mistakes and aligns the code with the latest kernel style.
 > 
-> First of all, the issue lies not in cpufreq, but in the CCI devfreq,
-> and how the passive devfreq governor is linked to cpufreq.
+> No functional change intended.
 > 
-> The CCI hardware unit on the MT8186 is sensitive to frequency changes.
-> If the performance level of the CCI unit is much lower than either
-> of the CPU clusters, it  will hard hang the whole system. So the CCI
-> devfreq must always take into account the performance level of both
-> clusters, or in other words the settings of both cpufreq policies.
-> 
-> Since the cpufreq policies only serialize with themselves, it is possible
-> for one policy to change and trigger a devfreq update, and when the
-> CCI devfreq driver is doing its calculations, the other policy changes
-> and causes a big deviation from the assumed performance levels, leaving the
-> CCI into a non-matching performance level and causing a system hang.
-> 
-> So I think we need to handle CPUFREQ_PRECHANGE events for the frequency
-> increase direction, as well as enlarging the devfreq mutex to cover
-> the CPU frequency tracking bits in the passive governor.
-> 
-> I hope that makes sense.
+> Signed-off-by: Zihuan Zhang <zhangzihuan@kylinos.cn>
+> ---
+>  drivers/cpufreq/brcmstb-avs-cpufreq.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
 
-If some sort of serialization is required in the CCI driver, then a
-lock must be present there to prevent the issues.
+Applied. Thanks.
 
 -- 
 viresh
