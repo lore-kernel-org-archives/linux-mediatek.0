@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B235CA0FF0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Aug 2025 06:19:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A865CA0EED
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Aug 2025 06:31:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fyIWN60k8dYCbXXXMxmihVbQlVwII/BvZdY4wtkRha8=; b=PxeRCrozAgdi4P2H2sHzqGduP5
-	4Pj97KtrT78cKUVszJm6ltmFX5kTbzjJvjmkDR9L2EVQV8ZgWIZnGzAhobgw0b+mNEliAryyGkD+c
-	D4qVcviVvszAMCxz+iV3SapuMqZXCHbXYg1mASg6hCEyCa5DXYFSOA/00061DZ+dtpgUFbtB7L75u
-	YwvepNRfSda9EE3D573GJ2QX4m/qgsjVPMA8rYNPv9WNnx6R1yqkDdFKXF58bnaNMk3OtJKkRW0BK
-	/nbOjF+ZzZddPD7NhoNorNIpVkqo05fsklrBwGIHhICvPqHMKYDIZyyRotyGV4ZWEC68PTxD4SiKu
-	YcGuY43g==;
+	bh=CokGLX1/yeX4DJMWAz1LmKt9I3G7o4FsQeoqSBuvVPY=; b=t5shmAL8E6umR17KlpgHrmHcIi
+	xjKwp1Aq2bNIN84G+d1vwNVyKVFeyiKBR7hCYpG+UvmTH5fUm0qaUUOz8W6H3Sggf9r7+bNIzPTsW
+	mO4VTUhBy4qaiPB+VEonFCJ/VLXxLKg2BAAiZ/nnCZXEwkVtJCr5PXH5EjN5ccA/pLTkwvjWIFnGc
+	sgwGwI5PDSAXJZzHC3HvZyoh+xhGbOmUL3y/lj5ncMdqXXwrXdJVuZPxQlfA9Z4mBUuRGlu1qk0aU
+	BLDF0YzW1HGz8C6tIhzxlN4laTxOwEEzyipsJusiN1Fi1QoEBo2eJ9+sYOY22xusIviCafYCahPtw
+	18IvdNJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ursS5-00000004ccg-27MH;
-	Fri, 29 Aug 2025 06:19:09 +0000
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+	id 1ursdu-00000004eAV-42MT;
+	Fri, 29 Aug 2025 06:31:22 +0000
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ursRE-00000004cSz-11zd
+	id 1urscV-00000004duS-0yCF
 	for linux-mediatek@lists.infradead.org;
-	Fri, 29 Aug 2025 06:18:18 +0000
-Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-7720b23a49fso1980933b3a.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 28 Aug 2025 23:18:16 -0700 (PDT)
+	Fri, 29 Aug 2025 06:29:56 +0000
+Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-2445826fd9dso21220355ad.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 28 Aug 2025 23:29:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1756448295; x=1757053095; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1756448994; x=1757053794; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=fyIWN60k8dYCbXXXMxmihVbQlVwII/BvZdY4wtkRha8=;
-        b=EdGp4sCDFaZJ5yBnYUr3ej+a4PcE2NV3GHeFU/+ifz534ZWZ8R1HVNpmCqmP/OBv6j
-         Z5NU3wo7jSEDwKndotOdu468QVLBUS6oPyff9q2jO49zxav0hK/ebpNBAsgdv4+od8qW
-         dnxscu5pBqqjGc5AdCNpLmMyaWRiz9axBfGfXdt4fPRfxGjQKdpVhxSJHSOwjrfgtGep
-         yiv2ONNjDiV96LxDppvveF2ZXU+HQIVFYdLrUHM3hi/c8WAsy48ZTpAk0oPsumoTKs0D
-         CYgDtH20jpRtMWo2FQRadYwlqZrx6tbFj56gOu25LaWVrfpYr7Xz7Zhr0wIAv/zvDDmI
-         1vWw==
+        bh=CokGLX1/yeX4DJMWAz1LmKt9I3G7o4FsQeoqSBuvVPY=;
+        b=njFt9pLdqsxIa2RKGsBwZneuxlyHVsJgv5DRf8Om4D4lukQdbxIap8ZqmrzsYvrnXw
+         mm/8XqGQRZesctIeSLJ9PNMlz8iuRgdJ/kkfJulCNAWvs3czlteq1os74c1ijkn10LuL
+         x3R2/XkTEw6EdqbhjD3JUzwIjkaS3RYgUxVKUAfeISh5agU7xyeYs4kzImmFA6Jz4vwY
+         EqlUI4aWKvpoBbUY4aTDkcD/dIJx5G1BnNdvJSe71rMEI25VtCkj8NqXu4ATa7Qi86AX
+         JHHrbNdQnWEybq5SVeSVUBhiT7SzTGYLmjlsRNkcX5Aax+qmCWtw1XIbzGhbX5sPCnsi
+         na8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756448295; x=1757053095;
+        d=1e100.net; s=20230601; t=1756448994; x=1757053794;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=fyIWN60k8dYCbXXXMxmihVbQlVwII/BvZdY4wtkRha8=;
-        b=khAGQZwwsCuUiAUCRdD6U47FJ6w02ax2NC02sllFGjK3ifiE74fmups0bfiuxozWTf
-         3jFVI1SABG2XyhsdCKyKFibhBF+6OYTY2nof2ffkiJbJrq1aiQpCSaL1NmOky4Z/ZIko
-         kHK8vuxa6foYr7d8I0cJVCg8FLPkaXc2eAeQLHvQUoje4SuQiv/iYy/o9CI2JsVZ1KBk
-         P58zcTYZzRZ667q+jxGzelBcl3QWonIojNB7tbasX2Z/FdwseOmcNTv9+iWbPqQIaqSY
-         b6KTIx7/P4ArUyavxfC9M9DN2oKtjam9p44t0NGsu8llWlzzuntL9ASGdWFx8VRrTuAo
-         gyig==
-X-Forwarded-Encrypted: i=1; AJvYcCXYzM2tLw8W4UCAhcxFXtR7Gz3JjQo0kKDxjSyWDvcqJHJGLy2nDC+5B6lTyooUiSGSVT+Y1fwRrR0DGYeWdw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx4ck/SfmuejRYGheoKndfNM1kDPRLtnTTRubOpX/aFCuE2BFxt
-	scAvX2IZKz1W16pFWau657J2Irsf917VuLfkrraM0VVBcgqdQib6AOsMfC/m3LC9LZ0=
-X-Gm-Gg: ASbGncsY1lxqvOxIBCxSIQn02Ok5NzSu2R+VmzyBETduEwKlPfyQDQ2qZAoTlKqkxoF
-	Xo8yk+dtRdeRKkje3XohDvkW2SpL0VvVhweDkX5fz5dK8c3FX/d6hy+KJgeuiTtzfxEffRHRLJF
-	H3LwZA0TquAOIbAiXhfeEglFYTgD8TimPanIrRETeC0+x9PyipW6CNNs6nwqYvBQK2Ob9OsKL4O
-	I7nlb2MyfOV9TkZMK+ImnV7mV1FnwGaPcFuydH6oM86htFguy+oWSo0Mi4CoN/DVNYmoYEGJPWq
-	Eq/U1GqCmm1GlCDdgA9vwsyI3pfGFjlg1B+I5acj/A85T8g3yo4hXZrQgbpiOT5UReeHRIkHDI2
-	ynAtlFnr+OIyJbMqj8MieeSa5jhSCzblT4O8=
-X-Google-Smtp-Source: AGHT+IEdwrBA8fEPouruiBjmjO1y+VLHrsJ6SO97Twxy5LbO1fb87iKCtpWKSDsewOGX8ikCQhJ2gQ==
-X-Received: by 2002:a05:6a00:3907:b0:749:472:d3a7 with SMTP id d2e1a72fcca58-7702faaf2acmr35042659b3a.18.1756448295215;
-        Thu, 28 Aug 2025 23:18:15 -0700 (PDT)
+        bh=CokGLX1/yeX4DJMWAz1LmKt9I3G7o4FsQeoqSBuvVPY=;
+        b=ZFjTzcIv/4a5gsYZi2lwjiwZKHpgdfaoMtX8zXK18AZDrI8dUCSCP1tJXQoPVQTx4k
+         OZF/FThmGmi+jIWVM0BPF2/t53ZGwXWn8uzrFluQ4vRGrJ89N+rg7MZMxNb9+sNGRzTZ
+         51+/VTtLkA6kMb2Z0MLcanXlemm+wCer8gIwkvprHzabCfS8OOW6Esm6vFvgaotQI9pl
+         CdvGGhOh+MaEYUylROCgWnlOT+3RMMLRwmWJH80m3I2RmY56ch6Zdlqoz6mQhIQ5+Skj
+         nEaSgKcehn5w40tGeYgMqpqv2S553gzTDhE75sKDDS4byhZm8QnrwYfmdX0/7mQE2L98
+         ZGYw==
+X-Forwarded-Encrypted: i=1; AJvYcCWibn46Q1Q8dj12PbALVBrdNx26duwOuD/wjf0DHBjvMvfkrBZSOOvuBhS3kKpy78/dCq1yh7XENn+t/lOTeQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzrdZw6cwoy8vcT+6YPkISUHp8JvXwOi3FalP/Vv/Do0BZJa45T
+	cjCwg3GIBbHuF59mwT+Aw/kERK2XVRXNVFoo/0IwRxaLvkeUrzcwnUN+86GF1OcvgPg=
+X-Gm-Gg: ASbGncv03HB97DpZ/xYUUvC/JUqaN+hxqlJUWOhxXbgroyzi+t1f7KETWxFYWQEQY1n
+	Md9KcP92b8gpyZJZgVYP6Pbo4xhwxYK7VFrzBSCZc1kziFjfH64vPaFWByW5qAIckK4N/llS5qq
+	Q+Di96wpN8cIhvSeIhw1XOBvDvUgD6/mHbgvAO3DmSR5So7R1BCFKQY+aQXxVWE5rOShj0JJp7v
+	scwRuf2S9dmRWwgRrdO0GgkNHIcO8aHzY65Ct+2Xw7Z8tfSyCbz6S2Q6UO9E/DJjBwvuouZxn/W
+	nNHz6ux4TSHKvqU+qGdZNnWy0m8cqrdWqqXK/ylc38kjCx1YxXs26Cp01CJPEClm9suRtn97m/q
+	KGbwtMu7YRQE+iRZSLtpDSOg6
+X-Google-Smtp-Source: AGHT+IFbX3s0aoe3pqEivfWfaakWxvchfFFbfgXfyIlcOqslqMMZIBk7FeaK/V2UaSwtVV106XuK4Q==
+X-Received: by 2002:a17:902:ec89:b0:245:fa00:6e25 with SMTP id d9443c01a7336-2462ef1ea0bmr386065885ad.28.1756448994426;
+        Thu, 28 Aug 2025 23:29:54 -0700 (PDT)
 Received: from localhost ([122.172.87.165])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7722a4e1b21sm1307488b3a.69.2025.08.28.23.18.14
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-24903705be3sm14571325ad.18.2025.08.28.23.29.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 28 Aug 2025 23:18:14 -0700 (PDT)
-Date: Fri, 29 Aug 2025 11:48:12 +0530
+        Thu, 28 Aug 2025 23:29:53 -0700 (PDT)
+Date: Fri, 29 Aug 2025 11:59:51 +0530
 From: Viresh Kumar <viresh.kumar@linaro.org>
 To: Zihuan Zhang <zhangzihuan@kylinos.cn>
 Cc: "Rafael J . wysocki" <rafael@kernel.org>,
@@ -120,18 +120,18 @@ Cc: "Rafael J . wysocki" <rafael@kernel.org>,
 	intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
 	imx@lists.linux.dev, linux-omap@vger.kernel.org,
 	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 08/18] cpufreq: mediatek: Use
+Subject: Re: [PATCH v2 11/18] cpufreq: tegra186: Use
  __free(put_cpufreq_policy) for policy reference
-Message-ID: <20250829061812.fziokvashujzbtth@vireshk-i7>
+Message-ID: <20250829062951.ximauv2so442q4gv@vireshk-i7>
 References: <20250827023202.10310-1-zhangzihuan@kylinos.cn>
- <20250827023202.10310-9-zhangzihuan@kylinos.cn>
+ <20250827023202.10310-12-zhangzihuan@kylinos.cn>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250827023202.10310-9-zhangzihuan@kylinos.cn>
+In-Reply-To: <20250827023202.10310-12-zhangzihuan@kylinos.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250828_231816_298397_1A53BEB9 
-X-CRM114-Status: GOOD (  20.71  )
+X-CRM114-CacheID: sfid-20250828_232955_278053_2CAB505E 
+X-CRM114-Status: GOOD (  20.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -155,60 +155,51 @@ On 27-08-25, 10:31, Zihuan Zhang wrote:
 > 
 > Signed-off-by: Zihuan Zhang <zhangzihuan@kylinos.cn>
 > ---
->  drivers/cpufreq/mediatek-cpufreq.c | 6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
+>  drivers/cpufreq/tegra186-cpufreq.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 > 
-> diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-> index f3f02c4b6888..1fae060e16d9 100644
-> --- a/drivers/cpufreq/mediatek-cpufreq.c
-> +++ b/drivers/cpufreq/mediatek-cpufreq.c
-> @@ -320,7 +320,7 @@ static int mtk_cpufreq_opp_notifier(struct notifier_block *nb,
->  	struct dev_pm_opp *new_opp;
->  	struct mtk_cpu_dvfs_info *info;
->  	unsigned long freq, volt;
+> diff --git a/drivers/cpufreq/tegra186-cpufreq.c b/drivers/cpufreq/tegra186-cpufreq.c
+> index cbabb726c664..4d71e262a729 100644
+> --- a/drivers/cpufreq/tegra186-cpufreq.c
+> +++ b/drivers/cpufreq/tegra186-cpufreq.c
+> @@ -105,7 +105,7 @@ static unsigned int tegra186_cpufreq_get(unsigned int cpu)
+>  {
+>  	struct tegra186_cpufreq_data *data = cpufreq_get_driver_data();
+>  	struct tegra186_cpufreq_cluster *cluster;
 > -	struct cpufreq_policy *policy;
 > +	struct cpufreq_policy *policy __free(put_cpufreq_policy);
->  	int ret = 0;
+>  	unsigned int edvd_offset, cluster_id;
+>  	u32 ndiv;
 >  
->  	info = container_of(nb, struct mtk_cpu_dvfs_info, opp_nb);
-> @@ -354,11 +354,9 @@ static int mtk_cpufreq_opp_notifier(struct notifier_block *nb,
+> @@ -117,7 +117,6 @@ static unsigned int tegra186_cpufreq_get(unsigned int cpu)
+>  	ndiv = readl(data->regs + edvd_offset) & EDVD_CORE_VOLT_FREQ_F_MASK;
+>  	cluster_id = data->cpus[policy->cpu].bpmp_cluster_id;
+>  	cluster = &data->clusters[cluster_id];
+> -	cpufreq_cpu_put(policy);
 >  
->  			dev_pm_opp_put(new_opp);
->  			policy = cpufreq_cpu_get(info->opp_cpu);
-> -			if (policy) {
-> +			if (policy)
->  				cpufreq_driver_target(policy, freq / 1000,
->  						      CPUFREQ_RELATION_L);
-> -				cpufreq_cpu_put(policy);
-> -			}
->  		}
->  	}
+>  	return (cluster->ref_clk_khz * ndiv) / cluster->div;
 
 Merged with:
 
-diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-index 1fae060e16d9..fae062a6431f 100644
---- a/drivers/cpufreq/mediatek-cpufreq.c
-+++ b/drivers/cpufreq/mediatek-cpufreq.c
-@@ -320,7 +320,6 @@ static int mtk_cpufreq_opp_notifier(struct notifier_block *nb,
-        struct dev_pm_opp *new_opp;
-        struct mtk_cpu_dvfs_info *info;
-        unsigned long freq, volt;
+diff --git a/drivers/cpufreq/tegra186-cpufreq.c b/drivers/cpufreq/tegra186-cpufreq.c
+index 4d71e262a729..4270686fc3e3 100644
+--- a/drivers/cpufreq/tegra186-cpufreq.c
++++ b/drivers/cpufreq/tegra186-cpufreq.c
+@@ -103,13 +103,12 @@ static int tegra186_cpufreq_set_target(struct cpufreq_policy *policy,
+ 
+ static unsigned int tegra186_cpufreq_get(unsigned int cpu)
+ {
++       struct cpufreq_policy *policy __free(put_cpufreq_policy) = cpufreq_cpu_get(cpu);
+        struct tegra186_cpufreq_data *data = cpufreq_get_driver_data();
+        struct tegra186_cpufreq_cluster *cluster;
 -       struct cpufreq_policy *policy __free(put_cpufreq_policy);
-        int ret = 0;
-
-        info = container_of(nb, struct mtk_cpu_dvfs_info, opp_nb);
-@@ -353,7 +352,9 @@ static int mtk_cpufreq_opp_notifier(struct notifier_block *nb,
-                        }
-
-                        dev_pm_opp_put(new_opp);
--                       policy = cpufreq_cpu_get(info->opp_cpu);
-+
-+                       struct cpufreq_policy *policy __free(put_cpufreq_policy)
-+                               = cpufreq_cpu_get(info->opp_cpu);
-                        if (policy)
-                                cpufreq_driver_target(policy, freq / 1000,
-                                                      CPUFREQ_RELATION_L);
+        unsigned int edvd_offset, cluster_id;
+        u32 ndiv;
+ 
+-       policy = cpufreq_cpu_get(cpu);
+        if (!policy)
+                return 0;
+ 
 
 -- 
 viresh
