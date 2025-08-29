@@ -4,68 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D160C8303F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Aug 2025 08:21:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1801CA0FF9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Aug 2025 10:11:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k55FMI1+I3YofT/NFGFbUAEdT0oLWBjHI6fE4D4wyEQ=; b=uZBEN7PHTKGUrOhg4L3/xQNaR/
-	OGHm8fSYC828Iasurn/cWQTJGd/yYipvl9L7lAFqGuux2dS3WVqr/fB3kFakgLxE1CzuYpJzzTsQq
-	RfDLW3bFmymhYsJ7P9GJB8nVjfm0GczTG+hreH+VwKYApGIBJQvacNnmO3pH36oJZq7z/UdmwV1IC
-	k7R+ChaDrQAkwsPYbRtDuSe/7YmSZSQV8ALXGuebvL+o+VzskVSc0wbsWPE5va9moMCYM2G7eX7ee
-	p8TX5FUYzBPynAI+4dpz8gML7x8P6fc0nhTDv0hW8maLYHQaesgABSuYJF9eTaU3bXckjgHtisO15
-	pw8wYoFA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=PvrGb7QTqbbgE5jM+HH0zZnE557nyu74f/SKnHNKGm0=; b=j/fRbpEu7JYA4Gug49+yw+LdSF
+	kLGQvDjlR+vPTtss0fkosfBwI7U24HDTIsC3cD8R+sAqKDC/8Y2KnkO8hRYoTwPXhGe6WyYH4mqpv
+	ySx+kaMC0UY6+hzv4zjWHshJDHXLecqKMIPgGtpIFGq5U+sb8r7ObCzV/MIDTCJifRDC3bVoY7fRh
+	6Yiwy99/7laemEuKmM0iWOxVGgmllkm7RPsXMDTnXIv3pVaHsa1C8dyoTQM5HqUuhafyAB5w83naU
+	cVKbCvf8zrZRP5syvCIYz8nXlaZUqDluKhdBvdtPioBNdd7uPmcpjZs7dP9j4ADnbhuCoXMsb5UC/
+	IN3gkOAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uruMl-00000004wnL-1uVi;
-	Fri, 29 Aug 2025 08:21:47 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1urw4u-00000005Gwc-1VYq;
+	Fri, 29 Aug 2025 10:11:28 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urtvX-00000004prV-2XV4;
-	Fri, 29 Aug 2025 07:53:39 +0000
+	id 1urv38-000000054pa-2o7c;
+	Fri, 29 Aug 2025 09:05:34 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 0E72060051;
-	Fri, 29 Aug 2025 07:53:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B7C5FC4CEF0;
-	Fri, 29 Aug 2025 07:53:38 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id B9DE36013D;
+	Fri, 29 Aug 2025 09:05:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6E453C4CEF0;
+	Fri, 29 Aug 2025 09:05:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756454018;
-	bh=lGnjYgv5elXMwfPyxfMjkMn1zViVKrlNZ159H/ar7Us=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KGOt9k6JGUZm/s/BiB2row7YwILB1Wv9QyejLhNWD2L1ohpPgQtX52KGXrGK1Trd1
-	 C+WV3xgYVoOVvrGKjrDxxZ9DXMIkAu9wg5pc/QWoZImosfpFINNXIfEHNb6MV4XxsL
-	 i3Jyh6T+vdnEi26V2a1CQlNksFjbyCgzEybK7NydCv2Rx+TIIf/7jmqAUV0IsG9aX4
-	 DvejgTIDG3gV8I+89DKvFjUK4wZpQkcdhWOiNKs1H+riOkIzIUr47oY6TFWjYPvn2P
-	 jBzvaMohNV0D3/pWSGgdSgNpBScQbXwcZWfPMpzV/xrKX9/RXAPIkp6KoeZe6p29oR
-	 h1Ka89zJ+O5PA==
+	s=k20201202; t=1756458333;
+	bh=b+WF2J+qrsGcj8cAU4xgyNrWdpj0Vz5yotbWDF7MJQg=;
+	h=From:To:Cc:Subject:Date:From;
+	b=fBN6Le+Yb27NYeFRI19Y7gZGNyEtfoOuSZzaNR2cmjGTnaKutu/HJD8nCm6/GsVUa
+	 rR9O3eUga4N7eRJfjlBsLuCtqQ5MPN6bj/ITh73AWYxeK4yWWJR49rN6uERc2APZ9q
+	 3dfWYSY77GOtTqsw/+vR2DftiEpoNrAXzAZbtwtKOyCcFtbbbLag7k94imaopEsLkw
+	 wIcc/EBMeC2wL/F+XH9Ykp7KC0qknZ4Ax3Od18tnE026uz5++x46UJ2s00DmulsTCh
+	 5N3xLbdo6D76GPqs/MWUlH6FdoO8no2n4FeIA7A2apktDSKw/Sq91EKztrmZW6Xr9q
+	 BU7wZddFlmYSw==
 Received: from johan by xi.lan with local (Exim 4.98.2)
 	(envelope-from <johan@kernel.org>)
-	id 1urtvL-000000000g6-3mNQ;
-	Fri, 29 Aug 2025 09:53:27 +0200
-Date: Fri, 29 Aug 2025 09:53:27 +0200
+	id 1urv2x-000000005WD-04un;
+	Fri, 29 Aug 2025 11:05:23 +0200
 From: Johan Hovold <johan@kernel.org>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>
+Cc: David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org, "Nancy.Lin" <nancy.lin@mediatek.com>
-Subject: Re: [PATCH] drm/mediatek: fix device leaks at bind
-Message-ID: <aLFcd1ZLr0HUm-CM@hovoldconsulting.com>
-References: <20250722092722.425-1-johan@kernel.org>
- <aK7VCJ9yOKntjgKX@hovoldconsulting.com>
- <CAAOTY_-CijzQqrRUf_=cQbTUSybN3GT46q0vx1139mmZub_OfQ@mail.gmail.com>
- <aLFbcznLUutbMo6r@hovoldconsulting.com>
+	Ma Ke <make24@iscas.ac.cn>,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Johan Hovold <johan@kernel.org>
+Subject: [PATCH 0/2] drm/mediatek: fix potential OF node use-after-free
+Date: Fri, 29 Aug 2025 11:03:43 +0200
+Message-ID: <20250829090345.21075-1-johan@kernel.org>
+X-Mailer: git-send-email 2.49.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <aLFbcznLUutbMo6r@hovoldconsulting.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,36 +78,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 29, 2025 at 09:49:07AM +0200, Johan Hovold wrote:
-> On Fri, Aug 29, 2025 at 07:51:23AM +0800, Chun-Kuang Hu wrote:
-> > Johan Hovold <johan@kernel.org> 於 2025年8月27日 週三 下午5:51寫道：
-> 
-> > > On Tue, Jul 22, 2025 at 11:27:22AM +0200, Johan Hovold wrote:
-> > > > Make sure to drop the references to the sibling platform devices and
-> > > > their child drm devices taken by of_find_device_by_node() and
-> > > > device_find_child() when initialising the driver data during bind().
-> > > >
-> > > > Fixes: 1ef7ed48356c ("drm/mediatek: Modify mediatek-drm for mt8195 multi mmsys support")
-> > > > Cc: stable@vger.kernel.org    # 6.4
-> > > > Cc: Nancy.Lin <nancy.lin@mediatek.com>
-> > > > Signed-off-by: Johan Hovold <johan@kernel.org>
-> > >
-> > > Can this one be picked up?
-> > 
-> > Ma Ke has sent a similar patch [1] before you. And that patch fix more things.
-> > I've already pick up the final version [2].
-> > 
-> > [1] https://patchwork.kernel.org/project/dri-devel/patch/20250718033226.3390054-1-make24@iscas.ac.cn/
-> > [2] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/commit/?h=mediatek-drm-fixes-20250825&id=1f403699c40f0806a707a9a6eed3b8904224021a
-> 
-> I'm afraid that patch is completely broken and introduces a potential
-> use-after-free by adding a bogus decrement of the OF node refcount.
-> 
-> I suggest you drop that one and pick up mine instead which is correct
-> and cleaner.
+A recent change (included in the drm pull request for 6.17-rc4) fixed a
+device reference leak but also introduced a potential OF node
+use-after-free.
 
-I see now that that patch was included in a drm pull request for rc4.
-I'll send an incremental fix instead.
+This series fixes the new OF node reference imbalance and drops the
+unnecessary gotos introduced by the broken fix, effectively reverting
+that change in favour of the minimal fix I had previously posted here:
+
+	https://lore.kernel.org/lkml/20250722092722.425-1-johan@kernel.org/
+
+These should go into 6.17 which (soon) has the broken fix, which was
+also marked for stable backport.
 
 Johan
+
+
+Johan Hovold (2):
+  drm/mediatek: fix potential OF node use-after-free
+  drm/mediatek: clean up driver data initialisation
+
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 23 +++++++++--------------
+ 1 file changed, 9 insertions(+), 14 deletions(-)
+
+-- 
+2.49.1
+
 
