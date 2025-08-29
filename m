@@ -4,97 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCBEACA0FF0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 30 Aug 2025 00:51:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39222CA0FF9
+	for <linux-mediatek@archiver.kernel.org>; Sat, 30 Aug 2025 00:52:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kl6d10w6L+voPUIbqz5lKfKgoVVU5L6N4qXlZsyy0AQ=; b=ip9TJU3FUrmt99iXQItmfdWoE8
-	cqaT/Dy0HgJDDUDpP5Zr98hljQ7Dv03WoGAjfeBkjtBHhmD9eC/WzWlbAbsIaSjvIWqZk3gRz/wbW
-	lNdYWV9P2nAzVKoPLp5aKppwKylki/2LK1TBLhjfb3J967xE9QSRuGt3i0fKLtkTlMQUhzJGaQMik
-	8izR7Wjs9viFdXVAky70znUylBEIgO2PeF+jh09mp8WJdmM2K563d0u252OhWqJLJT8VdOy6hxdyE
-	WDohwTZbKA4+VDk/OLotM8J0LkE9nSYw8PhMk+wa7+XCOoG46z9I82t9L9vfpiwbhPCpgg7In1ReL
-	KHVrK34w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Tgxw4cSuVxHYY0msso0oUheIwOTYPybF1krh91UOD7c=; b=GyuJbwq8hbPBNM8TxHvcXkXVp0
+	/ZO6a5CHXJjdTRhlos2+gm9voilu/uOTrHG9Rm/Fw6kGZjk2QO1gyRjkyyKkF8NH4OA9oE0b55ko4
+	vxfM1UEKdBmwYjRe/ZtVEGAiWB9kE5Kk1gu72jnKacXirgvRUFFvzMOgb9gufdAIzNC4nV0g9lTxH
+	+9VXogdQKDvaDb4TiV1oMRSdQ09kzr7/qboMo9/d6DxmyhcGGFpL3temGTlWmo2Lv+zNDubn/sft8
+	xknif7hM1npiP1w7IGxufiUtKA6vBh2TYOm1B0xB/7gCs2kbY05FRFUc+BicCS16dR7NdcfGcMTXX
+	wrP4E0Iw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1us9oB-00000007C2M-2YLf;
-	Sat, 30 Aug 2025 00:51:07 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1us9oz-00000007DBx-3JJS;
+	Sat, 30 Aug 2025 00:51:57 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1us4UG-00000006j61-34bl;
-	Fri, 29 Aug 2025 19:10:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Type:References:
-	In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=kl6d10w6L+voPUIbqz5lKfKgoVVU5L6N4qXlZsyy0AQ=; b=mb3CBqgaow0HB7pc/UTDRRMEm4
-	J+ov+XPbJtH0j9pZviBXIku0vHWRMfBVm0XAbhzse1D8ByTcVKgqOm8GGn57Sb96m63XI4tgQ/fox
-	j7/4kyxB4lXSipKi+iGiIr+GyaeZ3U7CRN3IP9d6r4mHzhmKKTH1jL9BtsvhjnXjgUNry5FZEAKY6
-	GDwKbj/iVd/ZP+dSoiDX29ohbAumOd5Gm2rKpu8t0fcegNDuqMsxswqDEKMs3KNGwtLMSwicGfqkx
-	wK37i7ePASmvijRmGoLgsjpZmUI5MYSkt5Gb3Z5xV9Fz1rb2wchsyHmvhudFjqHIt3no/dUdnhcvl
-	ZPnrwxKg==;
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1us4UC-00000003GyY-0wXs;
-	Fri, 29 Aug 2025 19:10:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1756494605;
-	bh=Q+AcFxvc+cKD4SL5CebZ1eyR69BMUGAX0QDN5BxNH+k=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=YasgUokDabnyjQu4DNTKjBZij4zlgTghHy/3q+Bf0N3eJkchTkndmMwQO40kcmVpW
-	 gv+JPqKj2FOK3j4HBNCrAdDMvLlbekdoG277JuglYXN6bkllgTIwVVHJQs4d8A/3Y5
-	 1ZsycwxntR+vARdIQSjcgUaR1pYDxrslQTOkXn1sE0hwdsqXPVaADIGHYPSDa1v28g
-	 xoUFMt6NDPJbEaw2XzcSpsnfQZcDIKV+0UDj6x/4qulY48EhMVcLAmDFsPOhHMFAJV
-	 X9lkb3NZc4Cc2yabkDBvrfLYliB/U03/g3x8z+QB33OBpYWfyMhQU/HuTG/G2NDc2v
-	 IjS9gMx7PRlkQ==
-Received: from [IPv6:2606:6d00:11:5a76::5ac] (unknown [IPv6:2606:6d00:11:5a76::5ac])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5B1EA17E03B0;
-	Fri, 29 Aug 2025 21:10:04 +0200 (CEST)
-Message-ID: <c751e015c0a9fb2ab6514a45952e01424cfbb0cb.camel@collabora.com>
-Subject: Re: [PATCH v2] media: mediatek: encoder: Fix uninitialized scalar
- variable issue
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Irui Wang <irui.wang@mediatek.com>, Hans Verkuil
- <hverkuil-cisco@xs4all.nl>,  Mauro Carvalho Chehab	 <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
-	angelogioacchino.delregno@collabora.com, Qianfeng Rong
- <rongqianfeng@vivo.com>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com, 
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Yunfei Dong <yunfei.dong@mediatek.com>, Longfei Wang
- <longfei.wang@mediatek.com>
-Date: Fri, 29 Aug 2025 15:10:02 -0400
-In-Reply-To: <20250716071450.8214-1-irui.wang@mediatek.com>
-References: <20250716071450.8214-1-irui.wang@mediatek.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-cv7tl1/bONC+kDTO+fSZ"
-User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
+	id 1us7Yt-00000006wTb-0hKh;
+	Fri, 29 Aug 2025 22:27:12 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 1DFD740933;
+	Fri, 29 Aug 2025 22:27:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9CAF9C4CEF0;
+	Fri, 29 Aug 2025 22:27:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1756506430;
+	bh=tNB5HFmWWfIYIDsG4opMaCX9wTee7IZcalG5TFvQ+J8=;
+	h=From:Date:Subject:To:Cc:From;
+	b=dPmKgKfPLHCtlJIyOlT3PnWoga8MHPmxG0GOwx1ADVbp4+xKrpTgs7Tv5ly80uF+V
+	 ojfouIhTxhFZOPrUkgxMJJ0UKiO2jplmIxYTieMbcZDs0FNA+6C8eJLTWyjRv2CoRs
+	 bv+d4RjTXYMbBjSqTbeQSLYCm+fSz+i2I4AO1aV5NVj+3lMqOEyFVU3g4iPqJRnW1f
+	 eSOaKdy2MJA2jb7YK2x1GYPoneKlAd2cDh6uYUXFct9bYhEbl+KurSfw1wiVx4PvDV
+	 uspSnOy5aoa6wt/9fXnKEwUpp1Ai6CRI2UDJwIz7pDd/B6MEzK3VexqoFGlCuE1dfd
+	 uN7mRQMlujnVw==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Sat, 30 Aug 2025 00:26:47 +0200
+Subject: [PATCH mt76] wifi: mt76: mt7996: Check phy before init msta_link
+ in mt7996_mac_sta_add_links()
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250830-mt7996_mac_sta_add_links-fix-v1-1-4219fb8755ee@kernel.org>
+X-B4-Tracking: v=1; b=H4sIACYpsmgC/x3MTQqDMBBA4avIrBtIjD9Nr1IkDGbUoTUtmSCCe
+ HeDy+8t3gFCiUngVR2QaGPhXywwjwrGBeNMikMx1Lpu9dNqtebeuc6vOHrJ6DEE/+X4ETXxrtC
+ ZBq2bTGcRyuKfqOR7/x7O8wKQ+zhzbgAAAA==
+X-Change-ID: 20250830-mt7996_mac_sta_add_links-fix-a914a39f163a
+To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Bo Jiao <Bo.Jiao@mediatek.com>, Peter Chiu <chui-hao.chiu@mediatek.com>
+Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250829_201008_951220_3CADAD39 
-X-CRM114-Status: GOOD (  18.79  )
+X-CRM114-CacheID: sfid-20250829_152711_228238_3DD77EAD 
+X-CRM114-Status: UNSURE (   8.80  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,109 +79,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+In order to avoid a possible NULL pointer dereference in
+mt7996_mac_sta_init_link routine, move the phy pointer check before
+running mt7996_mac_sta_init_link() in mt7996_mac_sta_add_links routine.
 
---=-cv7tl1/bONC+kDTO+fSZ
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Fixes: dd82a9e02c054 ("wifi: mt76: mt7996: Rely on mt7996_sta_link in sta_add/sta_remove callbacks")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/wireless/mediatek/mt76/mt7996/main.c | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
 
-Le mercredi 16 juillet 2025 =C3=A0 15:14 +0800, Irui Wang a =C3=A9crit=C2=
-=A0:
-> UNINIT checker finds some instances of variables that are used
-> without being initialized, for example using the uninitialized
-> value enc_result.is_key_frm can result in unpredictable behavior,
-> so initialize these variables after declaring.
->=20
-> Fixes: 4e855a6efa54 ("[media] vcodec: mediatek: Add Mediatek V4L2 Video
-> Encoder Driver")
->=20
-> Signed-off-by: Irui Wang <irui.wang@mediatek.com>
-> ---
-> v2:
-> =C2=A0- Add Fixes tag, update commit message
-> =C2=A0- Remove unnecessary memset
-> =C2=A0- Move memset to before the first usage
-> ---
-> =C2=A0.../media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c=C2=A0=
-=C2=A0 | 4 +++-
-> =C2=A01 file changed, 3 insertions(+), 1 deletion(-)
->=20
-> diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_en=
-c.c
-> b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
-> index a01dc25a7699..3065f3e66336 100644
-> --- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
-> +++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
-> @@ -865,7 +865,7 @@ static void vb2ops_venc_buf_queue(struct vb2_buffer *=
-vb)
-> =C2=A0static int vb2ops_venc_start_streaming(struct vb2_queue *q, unsigne=
-d int
-> count)
-> =C2=A0{
-> =C2=A0	struct mtk_vcodec_enc_ctx *ctx =3D vb2_get_drv_priv(q);
-> -	struct venc_enc_param param;
-> +	struct venc_enc_param param =3D { 0 };
-> =C2=A0	int ret;
-> =C2=A0	int i;
-> =C2=A0
-> @@ -1036,6 +1036,7 @@ static int mtk_venc_encode_header(void *priv)
-> =C2=A0			=C2=A0 ctx->id, dst_buf->vb2_buf.index, bs_buf.va,
-> =C2=A0			=C2=A0 (u64)bs_buf.dma_addr, bs_buf.size);
-> =C2=A0
-> +	memset(&enc_result, 0, sizeof(enc_result));
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+index 7f3a117c52bd3438b6bb41a068bbf11658dfba42..0aa90a447156b6e11adc5e0602d3a7b8d3d1057a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+@@ -1069,16 +1069,17 @@ mt7996_mac_sta_add_links(struct mt7996_dev *dev, struct ieee80211_vif *vif,
+ 			goto error_unlink;
+ 		}
+ 
+-		err = mt7996_mac_sta_init_link(dev, link_conf, link_sta, link,
+-					       link_id);
+-		if (err)
+-			goto error_unlink;
+-
+ 		mphy = mt76_vif_link_phy(&link->mt76);
+ 		if (!mphy) {
+ 			err = -EINVAL;
+ 			goto error_unlink;
+ 		}
++
++		err = mt7996_mac_sta_init_link(dev, link_conf, link_sta, link,
++					       link_id);
++		if (err)
++			goto error_unlink;
++
+ 		mphy->num_sta++;
+ 	}
+ 
 
-Please, apply review comment to all occurrence, so same here.
+---
+base-commit: 035ba65d13516fa2afa78203ba3ef54fd70584af
+change-id: 20250830-mt7996_mac_sta_add_links-fix-a914a39f163a
 
-> =C2=A0	ret =3D venc_if_encode(ctx,
-> =C2=A0			VENC_START_OPT_ENCODE_SEQUENCE_HEADER,
-> =C2=A0			NULL, &bs_buf, &enc_result);
-> @@ -1185,6 +1186,7 @@ static void mtk_venc_worker(struct work_struct *wor=
-k)
-> =C2=A0			=C2=A0 (u64)frm_buf.fb_addr[1].dma_addr,
-> frm_buf.fb_addr[1].size,
-> =C2=A0			=C2=A0 (u64)frm_buf.fb_addr[2].dma_addr,
-> frm_buf.fb_addr[2].size);
-> =C2=A0
-> +	memset(&enc_result, 0, sizeof(enc_result));
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
-Same here.
-
-> =C2=A0	ret =3D venc_if_encode(ctx, VENC_START_OPT_ENCODE_FRAME,
-> =C2=A0			=C2=A0=C2=A0=C2=A0=C2=A0 &frm_buf, &bs_buf, &enc_result);
-> =C2=A0
->=20
-
-
-Would be nice to coordinate with Qianfeng Rong <rongqianfeng@vivo.com> [0],=
- he
-ported the entire driver to this initialization method, which is clearly th=
-e way
-to go.
-
-- Patch 1 will port the driver to {} stack init
-- Patch 2 will add missing initializes
-
-Consistency is key for this type of things since developer usually follow t=
-he
-surrounding style.
-
-regards
-Nicolas
-
-[0] https://patchwork.linuxtv.org/project/linux-media/patch/20250803135514.=
-118892-1-rongqianfeng@vivo.com/
-
---=-cv7tl1/bONC+kDTO+fSZ
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaLH7CgAKCRDZQZRRKWBy
-9Ni6AQD6gGYxu9XOmQQ3UK+h2mLjSoTZYmEQMfxFoQ77Ey3ZdgD/d5hKXUH6bW7F
-2AW+T/lVh51L5ZbMDsulmlK9xS3RuA0=
-=x0bX
------END PGP SIGNATURE-----
-
---=-cv7tl1/bONC+kDTO+fSZ--
 
