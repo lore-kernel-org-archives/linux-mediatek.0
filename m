@@ -4,71 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1930DCA0FF7
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Aug 2025 10:20:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD55CCA0FF7
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Aug 2025 10:23:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=336PQw3uXU0Znvz55zA6oLPN4hF7V2cSCNRDMtsX4HE=; b=TkG3gVOwj5kPMhiT7wdbwolOfr
-	qR+ujYaAfaB7+V2X1KcyD6+SUkEhoZ7dDaJL9AhCXSkIj6hTgBDTKlQVD2rYIYOz51LZHdcNj+44l
-	wbiqRaVBxzxzg4CvShLJnbieKTnUNjswimq7FJCDJ1lADtPRxIhMv+QKADEe/hNzvHnE7PHsI6/N3
-	EpZ/XTP20VrpXpfuiOVmx1djfOCYJWQ+HippCwuRqgSefgZNeYl2Pb6Ns3v+RWp+L3xVvNt07Jrwn
-	bidEQxBBQzZy0IucnfnDRYJ/xObSk6sWj4Vqj/M2bcqcvwHblUTpstQiIactmHqIUoAZrdHTX8sts
-	U5c42VOw==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gJ0fGW8LBFDyCYyGl0z+4IhGB806t2gObXrk4IGCHXQ=; b=syOR+PQN6QCGzLoBH7jFneAPEq
+	P9P2Csq5scS+6nmpnZ8V3qTjVbu2xvmMF0BFZZiF63rRTdtvYfcALRDsl6EVCV2DQzQw2oY67WvCA
+	HepKO+kYaUJSs1gZXJvn5mcHhChtITYs4hsQdNeZVBLoSrfpkaOzltVGXgJvGgM5xp5zsG9ZNWPcG
+	6BXWql3nwXHYY27cp59GT3P9SluZ4sm+ThKe+WZmVTTknFnVwVTCO9Obb2ktld4vT0Rc/Vlkuh0IM
+	eEp3vIwEtcyoGTeKB9+8FKtBNken/5r3hrqYjp0UtZoGIdKW8XolqRlwdA1MxM3HfWnMyx4uVGNUH
+	2AvHIWtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urwE2-00000005J2j-1AIx;
-	Fri, 29 Aug 2025 10:20:54 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1urwGo-00000005JOM-1pyl;
+	Fri, 29 Aug 2025 10:23:46 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urvEm-000000056rK-0tIk;
-	Fri, 29 Aug 2025 09:17:37 +0000
-X-UUID: fd91819284b811f09eb0dd999d3936bf-20250829
+	id 1urvEp-000000056sT-0hZI;
+	Fri, 29 Aug 2025 09:17:40 +0000
+X-UUID: fdc8a52884b811f09f706fa2197c6ceb-20250829
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=336PQw3uXU0Znvz55zA6oLPN4hF7V2cSCNRDMtsX4HE=;
-	b=sYlbdGooXVEnJzNKjh5LXZjQUkeWJNSTFxfHzje2cwgR8vwblCj8hlKReDqtM0CCIttIeqSNbzUsg7B9aUfaX7zyT7fluccozABLU8wCekZ/t9dKk9IeU+AD0AX1dgtcQdxdemzneyFxjeWchc++md6pLADtWT5aaAZoV0qwuZo=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=gJ0fGW8LBFDyCYyGl0z+4IhGB806t2gObXrk4IGCHXQ=;
+	b=fFa2JM+kuvyWdCo8RZn/Zalnc6hhneVr5jLDpVU16RFt3M44Og6hXWBU9s2VMsBBuF9chpgCWhf5FZMnkGAHlu1fHFn/3qVENoKEx86Zi5L2Y2NgRUWgk56oH3v+dtOqMfsZDjvBdcMb3Plh4YraYDGjEAx5J9evsh2iZjxPbfw=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.3,REQID:7566eb8c-918b-4c5d-bb00-8be57f06c7e2,IP:0,UR
+X-CID-O-INFO: VERSION:1.3.3,REQID:dcc327c9-7f01-40bb-a428-358ab0fb2e53,IP:0,UR
 	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
 	elease,TS:0
-X-CID-META: VersionHash:f1326cf,CLOUDID:9d37fe6b-8443-424b-b119-dc42e68239b0,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:-5,Content:0|15|50,EDM:-3,IP:
-	nil,URL:99|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:
-	0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-META: VersionHash:f1326cf,CLOUDID:a237fe6b-8443-424b-b119-dc42e68239b0,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:-5,Content:0|15|50,EDM:
+	-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,
+	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_ULS,TF_CID_SPAM_SNR
+X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: fd91819284b811f09eb0dd999d3936bf-20250829
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+X-UUID: fdc8a52884b811f09f706fa2197c6ceb-20250829
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
 	(envelope-from <jason-jh.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 429509075; Fri, 29 Aug 2025 02:17:31 -0700
+	with ESMTP id 946897322; Fri, 29 Aug 2025 02:17:31 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Fri, 29 Aug 2025 17:17:27 +0800
+ 15.2.1258.39; Fri, 29 Aug 2025 17:17:28 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Fri, 29 Aug 2025 17:17:27 +0800
+ 15.2.1258.39 via Frontend Transport; Fri, 29 Aug 2025 17:17:28 +0800
 From: Jason-JH Lin <jason-jh.lin@mediatek.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
 	<angelogioacchino.delregno@collabora.com>, Jassi Brar
 	<jassisinghbrar@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>
-Subject: [PATCH v2 0/3] Fix sleeping function called from invalid context
-Date: Fri, 29 Aug 2025 17:15:57 +0800
-Message-ID: <20250829091727.3745415-1-jason-jh.lin@mediatek.com>
+Subject: [PATCH v2 3/3] media: platform: mtk-mdp3: Add pm_runtime support for GCE power control
+Date: Fri, 29 Aug 2025 17:16:00 +0800
+Message-ID: <20250829091727.3745415-4-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20250829091727.3745415-1-jason-jh.lin@mediatek.com>
+References: <20250829091727.3745415-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250829_021736_258382_ED9B3785 
-X-CRM114-Status: GOOD (  10.72  )
+X-CRM114-CacheID: sfid-20250829_021739_211507_311621E6 
+X-CRM114-Status: GOOD (  12.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,35 +86,53 @@ Cc: Simona Vetter <simona@ffwll.ch>, Xiandong Wang <xiandong.wang@mediatek.com>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-We found that there is a spin_lock_irqsave protection in msg_submit()
-of mailbox.c and it is in the atomic context.
-So when the mailbox controller driver calls pm_runtime_get_sync() in
-mbox_chan_ops->send_data(), it will get this BUG report.
-"BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:1164"
+Call pm_runtime_resume_and_get() before accessing GCE hardware in
+mbox_send_message(), and invoke pm_runtime_put_autosuspend() in the
+cmdq callback to release the PM reference and start autosuspend for
+GCE. This ensures correct power management for the GCE device.
 
-Additionally, pm_runtime_put_autosuspend() should be invoked from the
-GCE IRQ handler to ensure the hardware has actually completed its work.
-
-To resolve these issues, remove the pm_runtime calls from
-cmdq_mbox_send_data() and delegate power management responsibilities
-to the client driver.
+Fixes: 8afe816b0c99 ("mailbox: mtk-cmdq-mailbox: Implement Runtime PM with autosuspend")
+Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
 ---
-Changes in v2:
-- Move pm_runtmie APIs from cmdq driver to client drivers.
-- Move pm_runtime_put_autosuspend to GCE irq callback function.
-- Link to v1: https://lore.kernel.org/r/20240614040133.24967-1-jason-jh.lin@mediatek.com
----
-Jason-JH Lin (3):
-  mailbox: mtk-cmdq: Remove pm_runtime APIs from cmdq_mbox_send_data()
-  drm/mediatek: Add pm_runtime support for GCE power control
-  media: platform: mtk-mdp3: Add pm_runtime support for GCE power
-    control
-
- drivers/gpu/drm/mediatek/mtk_crtc.c                  |  7 +++++++
- drivers/mailbox/mtk-cmdq-mailbox.c                   | 12 +-----------
  drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c | 11 +++++++++++
- 3 files changed, 19 insertions(+), 11 deletions(-)
+ 1 file changed, 11 insertions(+)
 
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+index e5ccf673e152..bb7a895318af 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+@@ -6,6 +6,7 @@
+ 
+ #include <linux/mailbox_controller.h>
+ #include <linux/platform_device.h>
++#include <linux/pm_runtime.h>
+ #include "mtk-mdp3-cfg.h"
+ #include "mtk-mdp3-cmdq.h"
+ #include "mtk-mdp3-comp.h"
+@@ -521,6 +522,9 @@ static void mdp_handle_cmdq_callback(struct mbox_client *cl, void *mssg)
+ 	mdp = cmd->mdp;
+ 	dev = &mdp->pdev->dev;
+ 
++	pm_runtime_mark_last_busy(mdp->cmdq_clt[cmd->pp_idx]->chan->mbox->dev);
++	pm_runtime_put_autosuspend(mdp->cmdq_clt[cmd->pp_idx]->chan->mbox->dev);
++
+ 	INIT_WORK(&cmd->auto_release_work, mdp_auto_release_work);
+ 	if (!queue_work(mdp->clock_wq, &cmd->auto_release_work)) {
+ 		struct mtk_mutex *mutex;
+@@ -702,6 +706,13 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
+ 					   cmd[i]->pkt.pa_base, cmd[i]->pkt.cmd_buf_size,
+ 					   DMA_TO_DEVICE);
+ 
++		ret = pm_runtime_resume_and_get(mdp->cmdq_clt[i]->chan->mbox->dev);
++		if (ret < 0) {
++			dev_err(dev, "pm_runtime_resume_and_get fail: %d!\n", ret);
++			i = pp_used;
++			goto err_clock_off;
++		}
++
+ 		ret = mbox_send_message(mdp->cmdq_clt[i]->chan, &cmd[i]->pkt);
+ 		if (ret < 0) {
+ 			dev_err(dev, "mbox send message fail %d!\n", ret);
 -- 
 2.43.0
 
