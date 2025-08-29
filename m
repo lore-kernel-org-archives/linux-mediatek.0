@@ -4,112 +4,134 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 525B7C8303F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B235CA0FF0
 	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Aug 2025 06:19:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8HCTDrHxfwONv+PDSCyIll/7ZsxpzmMTV34GPNv2o/w=; b=H34Zx9hK5ypLFZoo24xOaOt6VJ
-	R0Z8nwF5oFoCNeREePqojSw+D76I6rX0jZ/Xcp5sImaH027jErBTEV+IhHeudrLACu9AQie0zOlyo
-	alZIzH4R1FWf9DQTMSDwpyGzndeBIzZ7eUo8KodqIBlvADJHOtMd3t8uLIAQf41kF/ZC9Ybdl/RST
-	icJBc2vt9uZZ/hbSNRN9RAuVVvM2eVN0jJydKG4JrWdAUMb5PjgkRmPXGnZ6poazYEPDhBk08OqUL
-	NW4LJU8UcolNqt78uruamWqXTcsz/1JWx4uzE/g5EbNPLouQ7Ontr4FKJpoIfy/lBMisWTQVR7vRQ
-	icemPQTA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fyIWN60k8dYCbXXXMxmihVbQlVwII/BvZdY4wtkRha8=; b=PxeRCrozAgdi4P2H2sHzqGduP5
+	4Pj97KtrT78cKUVszJm6ltmFX5kTbzjJvjmkDR9L2EVQV8ZgWIZnGzAhobgw0b+mNEliAryyGkD+c
+	D4qVcviVvszAMCxz+iV3SapuMqZXCHbXYg1mASg6hCEyCa5DXYFSOA/00061DZ+dtpgUFbtB7L75u
+	YwvepNRfSda9EE3D573GJ2QX4m/qgsjVPMA8rYNPv9WNnx6R1yqkDdFKXF58bnaNMk3OtJKkRW0BK
+	/nbOjF+ZzZddPD7NhoNorNIpVkqo05fsklrBwGIHhICvPqHMKYDIZyyRotyGV4ZWEC68PTxD4SiKu
+	YcGuY43g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ursS5-00000004ccR-0jIy;
+	id 1ursS5-00000004ccg-27MH;
 	Fri, 29 Aug 2025 06:19:09 +0000
-Received: from mailgw.kylinos.cn ([124.126.103.232])
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ursPi-00000004cEI-118C;
-	Fri, 29 Aug 2025 06:16:44 +0000
-X-UUID: b4981456849f11f0b29709d653e92f7d-20250829
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.45,REQID:4562b407-0d22-4bd7-b550-549a5b454ad4,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6493067,CLOUDID:728fd2f8bd30c29a50b4fa87f607012a,BulkI
-	D:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102,TC:nil,Content:0|52,EDM:
-	-3,IP:nil,URL:99|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA
-	:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: b4981456849f11f0b29709d653e92f7d-20250829
-Received: from mail.kylinos.cn [(10.44.16.175)] by mailgw.kylinos.cn
-	(envelope-from <zhangzihuan@kylinos.cn>)
-	(Generic MTA)
-	with ESMTP id 1960720636; Fri, 29 Aug 2025 14:16:31 +0800
-Received: from mail.kylinos.cn (localhost [127.0.0.1])
-	by mail.kylinos.cn (NSMail) with SMTP id D3167E008FA4;
-	Fri, 29 Aug 2025 14:16:30 +0800 (CST)
-X-ns-mid: postfix-68B145BE-679736167
-Received: from [172.25.120.24] (unknown [172.25.120.24])
-	by mail.kylinos.cn (NSMail) with ESMTPA id D1D0AE008FA4;
-	Fri, 29 Aug 2025 14:16:16 +0800 (CST)
-Message-ID: <4bd55a08-62bb-46c4-bfb6-a3375ce37e79@kylinos.cn>
-Date: Fri, 29 Aug 2025 14:16:15 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 04/18] cpufreq: brcmstb-avs-cpufreq: Use
- __free(put_cpufreq_policy) for policy reference
-To: Viresh Kumar <viresh.kumar@linaro.org>
+	id 1ursRE-00000004cSz-11zd
+	for linux-mediatek@lists.infradead.org;
+	Fri, 29 Aug 2025 06:18:18 +0000
+Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-7720b23a49fso1980933b3a.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 28 Aug 2025 23:18:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1756448295; x=1757053095; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=fyIWN60k8dYCbXXXMxmihVbQlVwII/BvZdY4wtkRha8=;
+        b=EdGp4sCDFaZJ5yBnYUr3ej+a4PcE2NV3GHeFU/+ifz534ZWZ8R1HVNpmCqmP/OBv6j
+         Z5NU3wo7jSEDwKndotOdu468QVLBUS6oPyff9q2jO49zxav0hK/ebpNBAsgdv4+od8qW
+         dnxscu5pBqqjGc5AdCNpLmMyaWRiz9axBfGfXdt4fPRfxGjQKdpVhxSJHSOwjrfgtGep
+         yiv2ONNjDiV96LxDppvveF2ZXU+HQIVFYdLrUHM3hi/c8WAsy48ZTpAk0oPsumoTKs0D
+         CYgDtH20jpRtMWo2FQRadYwlqZrx6tbFj56gOu25LaWVrfpYr7Xz7Zhr0wIAv/zvDDmI
+         1vWw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1756448295; x=1757053095;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=fyIWN60k8dYCbXXXMxmihVbQlVwII/BvZdY4wtkRha8=;
+        b=khAGQZwwsCuUiAUCRdD6U47FJ6w02ax2NC02sllFGjK3ifiE74fmups0bfiuxozWTf
+         3jFVI1SABG2XyhsdCKyKFibhBF+6OYTY2nof2ffkiJbJrq1aiQpCSaL1NmOky4Z/ZIko
+         kHK8vuxa6foYr7d8I0cJVCg8FLPkaXc2eAeQLHvQUoje4SuQiv/iYy/o9CI2JsVZ1KBk
+         P58zcTYZzRZ667q+jxGzelBcl3QWonIojNB7tbasX2Z/FdwseOmcNTv9+iWbPqQIaqSY
+         b6KTIx7/P4ArUyavxfC9M9DN2oKtjam9p44t0NGsu8llWlzzuntL9ASGdWFx8VRrTuAo
+         gyig==
+X-Forwarded-Encrypted: i=1; AJvYcCXYzM2tLw8W4UCAhcxFXtR7Gz3JjQo0kKDxjSyWDvcqJHJGLy2nDC+5B6lTyooUiSGSVT+Y1fwRrR0DGYeWdw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx4ck/SfmuejRYGheoKndfNM1kDPRLtnTTRubOpX/aFCuE2BFxt
+	scAvX2IZKz1W16pFWau657J2Irsf917VuLfkrraM0VVBcgqdQib6AOsMfC/m3LC9LZ0=
+X-Gm-Gg: ASbGncsY1lxqvOxIBCxSIQn02Ok5NzSu2R+VmzyBETduEwKlPfyQDQ2qZAoTlKqkxoF
+	Xo8yk+dtRdeRKkje3XohDvkW2SpL0VvVhweDkX5fz5dK8c3FX/d6hy+KJgeuiTtzfxEffRHRLJF
+	H3LwZA0TquAOIbAiXhfeEglFYTgD8TimPanIrRETeC0+x9PyipW6CNNs6nwqYvBQK2Ob9OsKL4O
+	I7nlb2MyfOV9TkZMK+ImnV7mV1FnwGaPcFuydH6oM86htFguy+oWSo0Mi4CoN/DVNYmoYEGJPWq
+	Eq/U1GqCmm1GlCDdgA9vwsyI3pfGFjlg1B+I5acj/A85T8g3yo4hXZrQgbpiOT5UReeHRIkHDI2
+	ynAtlFnr+OIyJbMqj8MieeSa5jhSCzblT4O8=
+X-Google-Smtp-Source: AGHT+IEdwrBA8fEPouruiBjmjO1y+VLHrsJ6SO97Twxy5LbO1fb87iKCtpWKSDsewOGX8ikCQhJ2gQ==
+X-Received: by 2002:a05:6a00:3907:b0:749:472:d3a7 with SMTP id d2e1a72fcca58-7702faaf2acmr35042659b3a.18.1756448295215;
+        Thu, 28 Aug 2025 23:18:15 -0700 (PDT)
+Received: from localhost ([122.172.87.165])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7722a4e1b21sm1307488b3a.69.2025.08.28.23.18.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 28 Aug 2025 23:18:14 -0700 (PDT)
+Date: Fri, 29 Aug 2025 11:48:12 +0530
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: Zihuan Zhang <zhangzihuan@kylinos.cn>
 Cc: "Rafael J . wysocki" <rafael@kernel.org>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
- Sean Christopherson <seanjc@google.com>, Paolo Bonzini
- <pbonzini@redhat.com>, Thomas Gleixner <tglx@linutronix.de>,
- Ingo Molnar <mingo@redhat.com>, Borislav Petkov <bp@alien8.de>,
- Dave Hansen <dave.hansen@linux.intel.com>, Markus Mayer
- <mmayer@broadcom.com>, Florian Fainelli <florian.fainelli@broadcom.com>,
- Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>,
- Madhavan Srinivasan <maddy@linux.ibm.com>,
- Michael Ellerman <mpe@ellerman.id.au>, Krzysztof Kozlowski
- <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, Tvrtko Ursulin
- <tursulin@ursulin.net>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Daniel Lezcano <daniel.lezcano@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
- Eduardo Valentin <edubezval@gmail.com>, Keerthy <j-keerthy@ti.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- zhenglifeng <zhenglifeng1@huawei.com>, "H . Peter Anvin" <hpa@zytor.com>,
- Zhang Rui <rui.zhang@intel.com>, Len Brown <lenb@kernel.org>,
- Nicholas Piggin <npiggin@gmail.com>,
- Christophe Leroy <christophe.leroy@csgroup.eu>,
- Lukasz Luba <lukasz.luba@arm.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Beata Michalska <beata.michalska@arm.com>, Fabio Estevam
- <festevam@gmail.com>, Pavel Machek <pavel@kernel.org>,
- Sumit Gupta <sumitg@nvidia.com>,
- Prasanna Kumar T S M <ptsm@linux.microsoft.com>,
- Sudeep Holla <sudeep.holla@arm.com>, Yicong Yang <yangyicong@hisilicon.com>,
- linux-pm@vger.kernel.org, x86@kernel.org, kvm@vger.kernel.org,
- linux-acpi@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
- linux-samsung-soc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-tegra@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, imx@lists.linux.dev,
- linux-omap@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
+	Catalin Marinas <catalin.marinas@arm.com>,
+	Will Deacon <will@kernel.org>,
+	Sean Christopherson <seanjc@google.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	Ingo Molnar <mingo@redhat.com>, Borislav Petkov <bp@alien8.de>,
+	Dave Hansen <dave.hansen@linux.intel.com>,
+	Markus Mayer <mmayer@broadcom.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>,
+	Madhavan Srinivasan <maddy@linux.ibm.com>,
+	Michael Ellerman <mpe@ellerman.id.au>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	MyungJoo Ham <myungjoo.ham@samsung.com>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	Chanwoo Choi <cw00.choi@samsung.com>,
+	Jani Nikula <jani.nikula@linux.intel.com>,
+	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+	Rodrigo Vivi <rodrigo.vivi@intel.com>,
+	Tvrtko Ursulin <tursulin@ursulin.net>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Daniel Lezcano <daniel.lezcano@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Eduardo Valentin <edubezval@gmail.com>, Keerthy <j-keerthy@ti.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	zhenglifeng <zhenglifeng1@huawei.com>,
+	"H . Peter Anvin" <hpa@zytor.com>, Zhang Rui <rui.zhang@intel.com>,
+	Len Brown <lenb@kernel.org>, Nicholas Piggin <npiggin@gmail.com>,
+	Christophe Leroy <christophe.leroy@csgroup.eu>,
+	Lukasz Luba <lukasz.luba@arm.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Beata Michalska <beata.michalska@arm.com>,
+	Fabio Estevam <festevam@gmail.com>, Pavel Machek <pavel@kernel.org>,
+	Sumit Gupta <sumitg@nvidia.com>,
+	Prasanna Kumar T S M <ptsm@linux.microsoft.com>,
+	Sudeep Holla <sudeep.holla@arm.com>,
+	Yicong Yang <yangyicong@hisilicon.com>, linux-pm@vger.kernel.org,
+	x86@kernel.org, kvm@vger.kernel.org, linux-acpi@vger.kernel.org,
+	linuxppc-dev@lists.ozlabs.org, linux-samsung-soc@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-tegra@vger.kernel.org,
+	intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+	imx@lists.linux.dev, linux-omap@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 08/18] cpufreq: mediatek: Use
+ __free(put_cpufreq_policy) for policy reference
+Message-ID: <20250829061812.fziokvashujzbtth@vireshk-i7>
 References: <20250827023202.10310-1-zhangzihuan@kylinos.cn>
- <20250827023202.10310-5-zhangzihuan@kylinos.cn>
- <20250829055944.ragfnh62q2cuew3e@vireshk-i7>
-From: Zihuan Zhang <zhangzihuan@kylinos.cn>
-In-Reply-To: <20250829055944.ragfnh62q2cuew3e@vireshk-i7>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+ <20250827023202.10310-9-zhangzihuan@kylinos.cn>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250827023202.10310-9-zhangzihuan@kylinos.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250828_231642_583721_BD81A4FB 
-X-CRM114-Status: GOOD (  13.31  )
+X-CRM114-CacheID: sfid-20250828_231816_298397_1A53BEB9 
+X-CRM114-Status: GOOD (  20.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,36 +146,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 27-08-25, 10:31, Zihuan Zhang wrote:
+> Replace the manual cpufreq_cpu_put() with __free(put_cpufreq_policy)
+> annotation for policy references. This reduces the risk of reference
+> counting mistakes and aligns the code with the latest kernel style.
+> 
+> No functional change intended.
+> 
+> Signed-off-by: Zihuan Zhang <zhangzihuan@kylinos.cn>
+> ---
+>  drivers/cpufreq/mediatek-cpufreq.c | 6 ++----
+>  1 file changed, 2 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
+> index f3f02c4b6888..1fae060e16d9 100644
+> --- a/drivers/cpufreq/mediatek-cpufreq.c
+> +++ b/drivers/cpufreq/mediatek-cpufreq.c
+> @@ -320,7 +320,7 @@ static int mtk_cpufreq_opp_notifier(struct notifier_block *nb,
+>  	struct dev_pm_opp *new_opp;
+>  	struct mtk_cpu_dvfs_info *info;
+>  	unsigned long freq, volt;
+> -	struct cpufreq_policy *policy;
+> +	struct cpufreq_policy *policy __free(put_cpufreq_policy);
+>  	int ret = 0;
+>  
+>  	info = container_of(nb, struct mtk_cpu_dvfs_info, opp_nb);
+> @@ -354,11 +354,9 @@ static int mtk_cpufreq_opp_notifier(struct notifier_block *nb,
+>  
+>  			dev_pm_opp_put(new_opp);
+>  			policy = cpufreq_cpu_get(info->opp_cpu);
+> -			if (policy) {
+> +			if (policy)
+>  				cpufreq_driver_target(policy, freq / 1000,
+>  						      CPUFREQ_RELATION_L);
+> -				cpufreq_cpu_put(policy);
+> -			}
+>  		}
+>  	}
 
-=E5=9C=A8 2025/8/29 13:59, Viresh Kumar =E5=86=99=E9=81=93:
-> On 27-08-25, 10:31, Zihuan Zhang wrote:
->> Replace the manual cpufreq_cpu_put() with __free(put_cpufreq_policy)
->> annotation for policy references. This reduces the risk of reference
->> counting mistakes and aligns the code with the latest kernel style.
->>
->> No functional change intended.
->>
->> Signed-off-by: Zihuan Zhang <zhangzihuan@kylinos.cn>
->> ---
->>   drivers/cpufreq/brcmstb-avs-cpufreq.c | 4 +---
->>   1 file changed, 1 insertion(+), 3 deletions(-)
-> Applied. Thanks.
->
+Merged with:
 
-Thanks for applying the patch!
+diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
+index 1fae060e16d9..fae062a6431f 100644
+--- a/drivers/cpufreq/mediatek-cpufreq.c
++++ b/drivers/cpufreq/mediatek-cpufreq.c
+@@ -320,7 +320,6 @@ static int mtk_cpufreq_opp_notifier(struct notifier_block *nb,
+        struct dev_pm_opp *new_opp;
+        struct mtk_cpu_dvfs_info *info;
+        unsigned long freq, volt;
+-       struct cpufreq_policy *policy __free(put_cpufreq_policy);
+        int ret = 0;
 
-I=E2=80=99ve been thinking further =E2=80=94 instead of using __free dire=
-ctly, maybe we=20
-could introduce a small macro wrapper around it to make the release=20
-scope more controllable and consistent.
+        info = container_of(nb, struct mtk_cpu_dvfs_info, opp_nb);
+@@ -353,7 +352,9 @@ static int mtk_cpufreq_opp_notifier(struct notifier_block *nb,
+                        }
 
-Link:=20
-https://lore.kernel.org/all/6174bcc8-30f5-479b-bac6-f42eb1232b4d@kylinos.=
-cn/
+                        dev_pm_opp_put(new_opp);
+-                       policy = cpufreq_cpu_get(info->opp_cpu);
++
++                       struct cpufreq_policy *policy __free(put_cpufreq_policy)
++                               = cpufreq_cpu_get(info->opp_cpu);
+                        if (policy)
+                                cpufreq_driver_target(policy, freq / 1000,
+                                                      CPUFREQ_RELATION_L);
 
-Do you think this would be a better approach, or should we just stick=20
-with the current use of __free?
-
-
-
+-- 
+viresh
 
