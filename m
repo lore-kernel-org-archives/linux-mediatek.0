@@ -4,56 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C03E6C8303F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Aug 2025 06:35:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 177D6CA0EED
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Aug 2025 06:35:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8ZzAvToNc5C7Qmk/HhJFYqcIJyoBPbpHC+15DNoKpHM=; b=L2cJhFi+MkoINOfReT8JzJXaRJ
-	6WEssy7n/yvDaN7bm3Mo2rV2UsNUoaEHgIcuGOAInmbTwdaQv4sHF29uq7ekwjhyiE/b/QfN4aTZk
-	n/mDvWis0Aft6zvZFlCCHcEesSIYS4QEGUKvmrVPvBehu0Em4FAMXzENm1SLsYSpPS4NAFSTObdlJ
-	ek+gaKnvq7Yt4sAQQLtC8LP0ty0tReAqLwDBoVyyXi56j9z7PLQbL1p9oC2LngLZtm48AAM0Rao21
-	MuM3/y77SAYJkPS2VMgGwpbgEAXpc5TXMsttnDYniMlFnV7kzNVlSTxb346eIh1QBnLiI/iGMdX0r
-	53n94FBA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Kst+61R8WKCK7sqJxMvcA3ZByeIORdO40H2gwXSWcj8=; b=qbnRuL+IMn4iIe/M0BGjuR6qM7
+	4Sejg1CueajYxe8fJFW5Q+WCebxrOeGvBAuR7XoY6o80vqe+ll4xPFL3VmYLWiR/60HEM1IGQUPT9
+	7DSpIRnWvwu7pW1OMcNdtTTwWO9W5WfshKnTsoNafwM5A9yVgVECvbs5UfsQi9icGuPTK3HzSJxZt
+	O34aZBCv5NogWPTKcKxO1Os3kDh69uS/Q4HJ60zJxjdMa8tbWUAspt9pPGlesF8n4kmd2QuKM4I5Y
+	VPg++H/CbYPxq4KoWIiYBzGfDqLdeuNpa/awbKWdsSPKXkxkTB9u3VhpOIfZ5r3EZUq+Ek921ULvM
+	BGqOYYag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urshc-00000004ekp-3lKw;
-	Fri, 29 Aug 2025 06:35:12 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1urshd-00000004eky-0tPG;
+	Fri, 29 Aug 2025 06:35:13 +0000
+Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urser-00000004eMG-3DkS;
-	Fri, 29 Aug 2025 06:32:22 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2F6B64170E;
-	Fri, 29 Aug 2025 06:32:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 68D48C4CEF0;
-	Fri, 29 Aug 2025 06:32:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756449141;
-	bh=lZ0QTag0VjlOQOxSce3jMyppu0ATtFUwrlYgNcJo/x0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Ead6Kr+0+piLg9YfVifMhyiEpWCpjYQwKm5BrNkbVVEhEtUxHhdAY3TZdPVPMcPho
-	 X3MQDNIkatnzRTNeLcZGs0m8ip2ORZAsk+iB5f9gNgs9Q3Kr7pXUqAwlL/fhzdjlf0
-	 5JpoRNg74ZvzDfAj19KNjv+NyjqWhN2ttfNmJN6aGpaRinfwpW0CW1TFc2bOvqAeiZ
-	 x+X3MEjEruyfBzhwk9aOZJcYANhUWu4Atdkg3VSVbMKA73GlPZulTS1m8pd/XuZZFO
-	 L6mqlEbt2gJG/NF5ilq0yfdbTjGFrpREaByt43g///9jPr93TLluHDTMvEZDCtOu8k
-	 Fz+dHR4x+QKQQ==
-Date: Fri, 29 Aug 2025 08:32:18 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Paul Chen <paul-pl.chen@mediatek.com>
-Subject: Re: [PATCH v4 00/19] Add MediaTek SoC DRM support for MT8196
-Message-ID: <20250829-curious-indigo-worm-b7e7ad@kuoka>
-References: <20250828080855.3502514-1-paul-pl.chen@mediatek.com>
+	id 1ursf1-00000004eOD-2tBJ;
+	Fri, 29 Aug 2025 06:32:34 +0000
+X-UUID: ecb2216884a111f0b29709d653e92f7d-20250829
+X-CID-CACHE: Type:Local,Time:202508291416+08,HitQuantity:2
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.45,REQID:bc5c578d-29f2-4d5e-8a48-f352afb9ad98,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6493067,CLOUDID:363845aa8f825743d29eadcc6fd84d5d,BulkI
+	D:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102,TC:nil,Content:0|52,EDM:
+	-3,IP:nil,URL:99|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA
+	:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: ecb2216884a111f0b29709d653e92f7d-20250829
+Received: from mail.kylinos.cn [(10.44.16.175)] by mailgw.kylinos.cn
+	(envelope-from <zhangzihuan@kylinos.cn>)
+	(Generic MTA)
+	with ESMTP id 616214303; Fri, 29 Aug 2025 14:32:24 +0800
+Received: from mail.kylinos.cn (localhost [127.0.0.1])
+	by mail.kylinos.cn (NSMail) with SMTP id DFAA2E008FA6;
+	Fri, 29 Aug 2025 14:32:23 +0800 (CST)
+X-ns-mid: postfix-68B14976-48111815
+Received: from [172.25.120.24] (unknown [172.25.120.24])
+	by mail.kylinos.cn (NSMail) with ESMTPA id 0777CE008FA4;
+	Fri, 29 Aug 2025 14:32:16 +0800 (CST)
+Message-ID: <5601fe46-6574-4a9b-8fd5-cab4af8dd390@kylinos.cn>
+Date: Fri, 29 Aug 2025 14:32:16 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20250828080855.3502514-1-paul-pl.chen@mediatek.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 04/18] cpufreq: brcmstb-avs-cpufreq: Use
+ __free(put_cpufreq_policy) for policy reference
+To: Viresh Kumar <viresh.kumar@linaro.org>
+Cc: "Rafael J . wysocki" <rafael@kernel.org>,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
+ Sean Christopherson <seanjc@google.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, Thomas Gleixner <tglx@linutronix.de>,
+ Ingo Molnar <mingo@redhat.com>, Borislav Petkov <bp@alien8.de>,
+ Dave Hansen <dave.hansen@linux.intel.com>, Markus Mayer
+ <mmayer@broadcom.com>, Florian Fainelli <florian.fainelli@broadcom.com>,
+ Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>,
+ Madhavan Srinivasan <maddy@linux.ibm.com>,
+ Michael Ellerman <mpe@ellerman.id.au>, Krzysztof Kozlowski
+ <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ Chanwoo Choi <cw00.choi@samsung.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, Tvrtko Ursulin
+ <tursulin@ursulin.net>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>, Daniel Lezcano <daniel.lezcano@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
+ Eduardo Valentin <edubezval@gmail.com>, Keerthy <j-keerthy@ti.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ zhenglifeng <zhenglifeng1@huawei.com>, "H . Peter Anvin" <hpa@zytor.com>,
+ Zhang Rui <rui.zhang@intel.com>, Len Brown <lenb@kernel.org>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Christophe Leroy <christophe.leroy@csgroup.eu>,
+ Lukasz Luba <lukasz.luba@arm.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Beata Michalska <beata.michalska@arm.com>, Fabio Estevam
+ <festevam@gmail.com>, Pavel Machek <pavel@kernel.org>,
+ Sumit Gupta <sumitg@nvidia.com>,
+ Prasanna Kumar T S M <ptsm@linux.microsoft.com>,
+ Sudeep Holla <sudeep.holla@arm.com>, Yicong Yang <yangyicong@hisilicon.com>,
+ linux-pm@vger.kernel.org, x86@kernel.org, kvm@vger.kernel.org,
+ linux-acpi@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
+ linux-samsung-soc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-tegra@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org, imx@lists.linux.dev,
+ linux-omap@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20250827023202.10310-1-zhangzihuan@kylinos.cn>
+ <20250827023202.10310-5-zhangzihuan@kylinos.cn>
+ <20250829055944.ragfnh62q2cuew3e@vireshk-i7>
+ <4bd55a08-62bb-46c4-bfb6-a3375ce37e79@kylinos.cn>
+ <20250829062624.jalqqsigs7hanf7i@vireshk-i7>
+From: Zihuan Zhang <zhangzihuan@kylinos.cn>
+In-Reply-To: <20250829062624.jalqqsigs7hanf7i@vireshk-i7>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250828_233221_827983_63497758 
-X-CRM114-Status: GOOD (  11.50  )
+X-CRM114-CacheID: sfid-20250828_233232_057766_ED9FC604 
+X-CRM114-Status: GOOD (  10.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,42 +124,31 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, xiandong.wang@mediatek.com, chunkuang.hu@kernel.org, jason-jh.lin@mediatek.com, singo.chang@mediatek.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, treapking@chromium.org, devicetree@vger.kernel.org, nancy.lin@mediatek.com, linux-mediatek@lists.infradead.org, sunny.shen@mediatek.com, p.zabel@pengutronix.de, sirius.wang@mediatek.com, matthias.bgg@gmail.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 28, 2025 at 04:06:55PM +0800, Paul Chen wrote:
-> From: Paul-pl Chen <paul-pl.chen@mediatek.com>
-> 
-> Changes in v4:
-> - [PATCH v4 11/19]
->   Add New commit to refactor the naming of OVL Fornat.
-> - [PATCH v4 12/19]
->   Refactor ovl_blend_mode fucntion
-> - [PATCH v4 13/19]
->   Move mtk_ovl_get_blend_mode to this commit to align with driver.
-> - [PATCH v4 14/19]
->   Remove the unused paramter cmdq
->   Remove the reapet of pitch setting
-> - [PATCH v4 15/19]
->   Remove the unused paramter cmdq
->   Remove the useless parametrt of func():mtk_disp_blender_config
-> - [PATCH v4 16/19] 
->   Simplified the driiver code to improve readability 
-> - [PATCH v4 17/19]
->   Refine mtk_ovlsys_adaptor_layer_config's layer config checking. 
->   Refine mtk_ovlsys_adaptor_config's logic
->   Fix func()'s mtk_ovlsys_adaptor_stop settting
->   Refine mtk_ovlsys_adaptor_clk_enbale to repaet NULL checking
-> - [PATCH v4 18/19]
->   Fix the system report's syntext error
+
+=E5=9C=A8 2025/8/29 14:26, Viresh Kumar =E5=86=99=E9=81=93:
+> On 29-08-25, 14:16, Zihuan Zhang wrote:
+>> Thanks for applying the patch!
+>>
+>> I=E2=80=99ve been thinking further =E2=80=94 instead of using __free d=
+irectly, maybe we
+>> could introduce a small macro wrapper around it to make the release sc=
+ope
+>> more controllable and consistent.
+>>
+>> Link:
+>> https://lore.kernel.org/all/6174bcc8-30f5-479b-bac6-f42eb1232b4d@kylin=
+os.cn/
+>>
+>> Do you think this would be a better approach, or should we just stick =
+with
+>> the current use of __free?
+> Lets keep it simple for now and use __free directly. And keep this
+> similar with other parts of the kernel.
 
 
-Where are lore links to previous versions?
-
-Why aren't you using b4?
-
-Best regards,
-Krzysztof
+Got it. Thanks!
 
 
