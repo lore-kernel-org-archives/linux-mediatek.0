@@ -4,65 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5656DCA1000
-	for <linux-mediatek@archiver.kernel.org>; Sat, 30 Aug 2025 17:47:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F438CA0EFF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 30 Aug 2025 18:40:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=nrVrXcIV1xnh8psffPMKeIjdtAN0BTmtBgvYjgncv4Q=; b=J35WdGL2b2jbmR5p4YXNIhsuT5
-	aMQsU8BBx/1JBr5uvjgkvXOP6ptOzc3Nn7jtsTI3KDCnZG5kHFTRl5xf3ZRGZ/ql2EZGmwhsZtCLl
-	QFuxgRmKjzph2UWjixwinDdExZFyX6tY95eeHV1eNOtEm4PVRckZ9IwbtF5LL9khnHV8RhrmIbFAT
-	vpw+WKJ5m1KLVSAbe9pnMMvjacKvmznh4kPSsBNynGs3s6XcusU5MLlPCqqFfRRpjzNuyli4JMZ6W
-	+/WVxR/XlaQ0A4+wfMsj5bDBc4ogPeaWaWJhRKYuGcfl3RetoZlhEpBTaCwVfQTrd/BJIVy/ahZYI
-	Xoz+ilHA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:
+	To:From:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=E2sh7PkU99v95gXhyMFBk9zs8wQA9SBmo0ZEWgF1/ao=; b=AIV+gWC7heYA91
+	uYz7w6HobefhCShaKhNdSo3tIOOH/VqBoM+5qSAUJhqK9YV6ABql6LNWFbXlwHyVdjDYHi1fkz3t+
+	MAah+/AQFvPOLf3Hr7lA2/GTrYVhXuzlWlyRO1tEMr2KrRsXKDKmWSKEYMDhhEbCTrvtEr0dTSS1w
+	J2eNCS7xhFThnJh5CFhtyBcMQLb35gNWva9SNynaQtQTBApbDFecQOmupSSfMG35XMbesRUZOxO9D
+	zW0JZwsv8m18t3rjCO+IqfKqhoAfDT2rXEgtN5QGqYCjGrsw6tNNiCybcvDrUFffUVd6aaCovjHhR
+	9x0XBYy+myzNnaIzx4vA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1usPgD-00000008GCw-2x41;
-	Sat, 30 Aug 2025 17:47:57 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1usQUt-00000008JBa-3yl5;
+	Sat, 30 Aug 2025 18:40:19 +0000
+Received: from mail.saluslaboris.com ([170.231.171.166])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1usP8Z-00000008DBY-3hGb;
-	Sat, 30 Aug 2025 17:13:12 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6CDE44418A;
-	Sat, 30 Aug 2025 17:13:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ECAC8C4CEEB;
-	Sat, 30 Aug 2025 17:13:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756573991;
-	bh=nRpClAVmKhPM4s+plqvugvMv46C4EG57OiMmEMzwUH8=;
-	h=From:Date:Subject:To:Cc:From;
-	b=qF3Lim3CWUypANIPoraJu0T/iGf+K/Iqp9/M9juuCaZ1DVaomWRLAvPeL+VMJt/HQ
-	 kmqW8ZLN0bIBdA6lxqgP1RlYo1qJ9EeIQxT/LCZoiEssa8MEM/ofUTlQWXfsuWdNuM
-	 4xyFf1Isv6+n3SP6iZSLuaE0OYrM+BDTtdQc4C9tBx7sYBf1Tzwmafjmn76lNNUCez
-	 LWGc2RyZLmzzYJ1+sahL1/bi0PLuDXXa1U2+c3k/I/5aWp0RlvqE7NVjBJgOF9BMse
-	 o2TozfvGWvaeODIjiO+rEimjItEpFZmf4WJfILOl8RpQ9cN3o09qk8RwalSyQ4ZgDO
-	 8pjsXati3lPpQ==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Sat, 30 Aug 2025 19:12:50 +0200
-Subject: [PATCH mt76] wifi: mt76: mt7996: Set EML capabilities for AP
- interface
+	id 1usQUr-00000008JB3-1Pp3
+	for linux-mediatek@lists.infradead.org;
+	Sat, 30 Aug 2025 18:40:18 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by mail.saluslaboris.com (Postfix) with ESMTP id 70EB4DD0AFB9
+	for <linux-mediatek@lists.infradead.org>; Sat, 30 Aug 2025 13:30:49 -0500 (-05)
+Received: from mail.saluslaboris.com ([127.0.0.1])
+ by localhost (mail.saluslaboris.com [127.0.0.1]) (amavis, port 10032)
+ with ESMTP id Cycy8n2DHHC1 for <linux-mediatek@lists.infradead.org>;
+ Sat, 30 Aug 2025 13:30:49 -0500 (-05)
+Received: from localhost (localhost [127.0.0.1])
+	by mail.saluslaboris.com (Postfix) with ESMTP id 621E2DD12AA4
+	for <linux-mediatek@lists.infradead.org>; Sat, 30 Aug 2025 13:26:48 -0500 (-05)
+X-Virus-Scanned: amavis at saluslaboris.com
+Received: from mail.saluslaboris.com ([127.0.0.1])
+ by localhost (mail.saluslaboris.com [127.0.0.1]) (amavis, port 10026)
+ with ESMTP id VZlheObNZpGc for <linux-mediatek@lists.infradead.org>;
+ Sat, 30 Aug 2025 13:26:48 -0500 (-05)
+Received: from [45.138.16.152] (unknown [45.138.16.152])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.saluslaboris.com (Postfix) with ESMTPSA id F2D7EDD141B0
+	for <linux-mediatek@lists.infradead.org>; Sat, 30 Aug 2025 13:21:16 -0500 (-05)
+From: edwin.herrera@saluslaboris.com
+To: linux-mediatek@lists.infradead.org
+Subject: xls
+Date: 30 Aug 2025 11:21:16 -0700
+Message-ID: <20250830112116.295706C801BBEC4C@saluslaboris.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250830-mt7996_ap_eml_capa-v1-1-ef69c97c6adc@kernel.org>
-X-B4-Tracking: v=1; b=H4sIABExs2gC/x3MTQqAIBBA4avErBNMsbKrRMhUUw30IxoRRHdPW
- n6L9x6IFJgiNNkDgS6OfOwJRZ7BsOA+k+AxGZRURtZaiu2srC0dekfb6gb0KLTCWlvq0U4GUug
- DTXz/07Z73w9ddaq3ZAAAAA==
-X-Change-ID: 20250830-mt7996_ap_eml_capa-32a839eba9f5
-To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250830_101311_948893_9C0B14FD 
-X-CRM114-Status: UNSURE (   7.53  )
+X-CRM114-CacheID: sfid-20250830_114017_511289_38C14A00 
+X-CRM114-Status: UNSURE (  -0.29  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,35 +72,27 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: info.superenalotto@gmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Report EML capabilities to hostapd for AP interface.
+Wir freuen uns, Ihnen mitteilen zu k=C3=B6nnen, dass Sie zu den=20
+Gewinnern der j=C3=BCngsten SuperEnalotto-Ziehung in Zusammenarbeit=20
+mit Lotto24, EuroMillions und Powerball geh=C3=B6ren. Sie haben einen=20
+einmaligen Gewinn von =E2=82=AC3.850.000  in der zweiten Gewinnklasse=20
+gewonnen. Um Ihren Gewinn abzuwickeln, senden Sie uns bitte=20
+folgende Informationen per E-Mail:
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/wireless/mediatek/mt76/mt7996/init.c | 1 +
- 1 file changed, 1 insertion(+)
+Vollst=C3=A4ndiger Name: Land: Wohnadresse: Alter: Geschlecht: Beruf:=20
+Handynummer: WhatsApp-Nummer.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-index 29e0cf966bcac5ab805b927fd73b7a23d15877ec..5af78760dbeaf3aa3d123e6438ff27c52d00ed51 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-@@ -75,6 +75,7 @@ static const struct wiphy_iftype_ext_capab iftypes_ext_capa[] = {
- 		.extended_capabilities = if_types_ext_capa_ap,
- 		.extended_capabilities_mask = if_types_ext_capa_ap,
- 		.extended_capabilities_len = sizeof(if_types_ext_capa_ap),
-+		.eml_capabilities = IEEE80211_EML_CAP_EMLSR_SUPP,
- 		.mld_capa_and_ops =
- 			FIELD_PREP_CONST(IEEE80211_MLD_CAP_OP_MAX_SIMUL_LINKS,
- 					 MT7996_MAX_RADIOS - 1),
+Im Namen der Online-Lotterieabteilungen SuperEnalotto,=20
+EuroMillions und Powerball gratulieren wir Ihnen herzlich zu=20
+Ihrem Gewinn.
 
----
-base-commit: 035ba65d13516fa2afa78203ba3ef54fd70584af
-change-id: 20250830-mt7996_ap_eml_capa-32a839eba9f5
+Mit freundlichen Gr=C3=BC=C3=9Fen
 
-Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
-
+Frau Katherine Federico
+Leiterin Online-Zahlungen / Validierungsmanagerin
+Code-Nachricht: 737GHS98
 
