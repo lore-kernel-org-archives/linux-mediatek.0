@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61A41CA0FFF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 30 Aug 2025 15:59:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6265BCA0FFF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 30 Aug 2025 16:02:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=v+iz3NNNgT+vCfHMZV6XaBvyrOJ/bGdYFwfAgtgHmtk=; b=y/7Q8Mp4OnnZpcKGfhePtqfzDC
-	lp1DeS/HvkqqDKcYHxCh+0kAvKSwrMM5RtPU5JWOE+SUxF64tJl1Emsm2OWDrzgHgnJvDCI/BIobC
-	0tLwKIt+u32b1kmyeRNg2PS65dzEf8/6afvGhWInFvQI9mh0Au6xRnkgkLtzawGZqg/lLY6+EPRCI
-	CjgGPGOSCaRUJtgtU/OK6Kc5P+BvRLjDvSOi2GJHADHBYeg9AW+qlCtzHBtwCpw3dXhIphonFgfWK
-	VTSJmT4xEQeCOW1WdT+n24PtM2P72ZUGYaylWjIRrdVnyAQVJXStMryynw7LrJFkpET7qxkJswu4G
-	W7LAV94w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ssTjYS4cgpkLD2sPRaJMxvs20hwoURlH9DCGDYuUmmw=; b=rBQUgERVs2Oncnk4l5zHXDkDoU
+	Z2OPtnriOQhffNpKkFTAvVbi7oCh4zNGR3+WvrbSkR6SYLieqYttNfdqjSo6tZjuHc5+UIjLfS8Qi
+	ON6zqt0uZMPNvpUU9bTvO88qONz+EqKrpnFIdaR4YVBnJ2lifTmNLNlMOi8Nan4fmDJYOl+mrte3Q
+	69mVZ4MtMM5XubLqKaZ4EN2firC8+dNXn6rQYdGKNF4fOAUm5Im6PT7NbVzTQ7tj/obOFh0jTDrvP
+	q4WDf21sQz4XAbzAXAIeF9d9vh5sk41nCcyn6FTxVfV5v4jz9ym9XMsIGSRseighNeiYObGSIbmxt
+	4jng/Sqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1usNzg-0000000861E-189v;
-	Sat, 30 Aug 2025 15:59:56 +0000
+	id 1usO2P-000000086JH-1R6j;
+	Sat, 30 Aug 2025 16:02:45 +0000
 Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1usNwu-000000085QR-46E5;
-	Sat, 30 Aug 2025 15:57:06 +0000
+	id 1usNww-000000085Qi-3bXo;
+	Sat, 30 Aug 2025 15:57:08 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.98.2)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1usNwg-000000007pm-1X2x;
-	Sat, 30 Aug 2025 15:56:50 +0000
-Date: Sat, 30 Aug 2025 16:56:46 +0100
+	id 1usNwq-000000007q1-1HU3;
+	Sat, 30 Aug 2025 15:57:00 +0000
+Date: Sat, 30 Aug 2025 16:56:56 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: "Rafael J. Wysocki" <rafael@kernel.org>,
 	Daniel Lezcano <daniel.lezcano@linaro.org>,
@@ -49,16 +49,17 @@ To: "Rafael J. Wysocki" <rafael@kernel.org>,
 	linux-stable@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
 Cc: Chad Monroe <chad.monroe@adtran.com>
-Subject: [PATCH linux-stable 6.12 0/3] thermal/drivers/mediatek/lvts: pick
- fixes into 6.12 stable tree
-Message-ID: <cover.1756568900.git.daniel@makrotopia.org>
+Subject: [PATCH linux-stable 6.12 1/3] thermal/drivers/mediatek/lvts_thermal:
+ Change lvts commands array to static const
+Message-ID: <aa993c1f03ad73680879c04ab7fbe72aa04ce9db.1756568900.git.daniel@makrotopia.org>
+References: <cover.1756568900.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <cover.1756568900.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250830_085705_014395_5A130FEB 
-X-CRM114-Status: UNSURE (   7.86  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250830_085706_900224_5A3AB201 
+X-CRM114-Status: GOOD (  12.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,25 +74,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Temperature readings on the MT7988 are severely abnormal and inaccurate
-on some devices when using the default commands.
-Patches to fix this have been posted and merged for Linux 6.17, however,
-missing a Fixes:-tag they have not been picked into the Linux 6.12 stable
-tree which already comes with the driver support for MT7988 and hence
-suffers from this problem.
-All 3 commits apply cleanly on top of linux-6.12.y, so cherry-pick them
-now, adding the appropriate Fixes:-tag.
+From: Mason Chang <mason-cw.chang@mediatek.com>
 
-Mason Chang (3):
-  thermal/drivers/mediatek/lvts_thermal: Change lvts commands array to
-    static const
-  thermal/drivers/mediatek/lvts_thermal: Add lvts commands and their
-    sizes to driver data
-  thermal/drivers/mediatek/lvts_thermal: Add mt7988 lvts commands
+[ Upstream commit c5d5a72c01f7faabe7cc0fd63942c18372101daf ]
 
- drivers/thermal/mediatek/lvts_thermal.c | 74 ++++++++++++++++++++-----
- 1 file changed, 61 insertions(+), 13 deletions(-)
+Change the LVTS commands array to static const in preparation for
+adding different commands.
 
+Fixes: 585e92e6a79f ("thermal/drivers/mediatek/lvts_thermal: Add mt7988 support")
+Signed-off-by: Mason Chang <mason-cw.chang@mediatek.com>
+Link: https://lore.kernel.org/r/20250526102659.30225-2-mason-cw.chang@mediatek.com
+Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ drivers/thermal/mediatek/lvts_thermal.c | 29 +++++++++++++------------
+ 1 file changed, 15 insertions(+), 14 deletions(-)
+
+diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+index ae063d1bc95f..c24b76bcd18a 100644
+--- a/drivers/thermal/mediatek/lvts_thermal.c
++++ b/drivers/thermal/mediatek/lvts_thermal.c
+@@ -92,6 +92,17 @@
+ 
+ #define LVTS_MINIMUM_THRESHOLD		20000
+ 
++static const u32 default_conn_cmds[] = { 0xC103FFFF, 0xC502FF55 };
++/*
++ * Write device mask: 0xC1030000
++ */
++static const u32 default_init_cmds[] = {
++	0xC1030E01, 0xC1030CFC, 0xC1030A8C, 0xC103098D, 0xC10308F1,
++	0xC10307A6, 0xC10306B8, 0xC1030500, 0xC1030420, 0xC1030300,
++	0xC1030030, 0xC10300F6, 0xC1030050, 0xC1030060, 0xC10300AC,
++	0xC10300FC, 0xC103009D, 0xC10300F1, 0xC10300E1
++};
++
+ static int golden_temp = LVTS_GOLDEN_TEMP_DEFAULT;
+ static int golden_temp_offset;
+ 
+@@ -880,7 +891,7 @@ static void lvts_ctrl_monitor_enable(struct device *dev, struct lvts_ctrl *lvts_
+  * each write in the configuration register must be separated by a
+  * delay of 2 us.
+  */
+-static void lvts_write_config(struct lvts_ctrl *lvts_ctrl, u32 *cmds, int nr_cmds)
++static void lvts_write_config(struct lvts_ctrl *lvts_ctrl, const u32 *cmds, int nr_cmds)
+ {
+ 	int i;
+ 
+@@ -963,9 +974,9 @@ static int lvts_ctrl_set_enable(struct lvts_ctrl *lvts_ctrl, int enable)
+ 
+ static int lvts_ctrl_connect(struct device *dev, struct lvts_ctrl *lvts_ctrl)
+ {
+-	u32 id, cmds[] = { 0xC103FFFF, 0xC502FF55 };
++	u32 id;
+ 
+-	lvts_write_config(lvts_ctrl, cmds, ARRAY_SIZE(cmds));
++	lvts_write_config(lvts_ctrl, default_conn_cmds, ARRAY_SIZE(default_conn_cmds));
+ 
+ 	/*
+ 	 * LVTS_ID : Get ID and status of the thermal controller
+@@ -984,17 +995,7 @@ static int lvts_ctrl_connect(struct device *dev, struct lvts_ctrl *lvts_ctrl)
+ 
+ static int lvts_ctrl_initialize(struct device *dev, struct lvts_ctrl *lvts_ctrl)
+ {
+-	/*
+-	 * Write device mask: 0xC1030000
+-	 */
+-	u32 cmds[] = {
+-		0xC1030E01, 0xC1030CFC, 0xC1030A8C, 0xC103098D, 0xC10308F1,
+-		0xC10307A6, 0xC10306B8, 0xC1030500, 0xC1030420, 0xC1030300,
+-		0xC1030030, 0xC10300F6, 0xC1030050, 0xC1030060, 0xC10300AC,
+-		0xC10300FC, 0xC103009D, 0xC10300F1, 0xC10300E1
+-	};
+-
+-	lvts_write_config(lvts_ctrl, cmds, ARRAY_SIZE(cmds));
++	lvts_write_config(lvts_ctrl, default_init_cmds, ARRAY_SIZE(default_init_cmds));
+ 
+ 	return 0;
+ }
 -- 
 2.51.0
 
