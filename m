@@ -4,62 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67154CA0FFF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 30 Aug 2025 16:08:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5656DCA1000
+	for <linux-mediatek@archiver.kernel.org>; Sat, 30 Aug 2025 17:47:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iOrzH5OiDnzJ5fgm+d4y4DBcXG3ILwFtZGKb+lW0h1U=; b=YZv50uumrS1W6GgSZduXln4d+L
-	Q+7UTnDUkZZmdOKLQMK4pFcEcz5hypZ7h7ShxGIaP1OxkoL1Z2QWyPt/T6uWnx5xknuIve9GjncI8
-	/obdqcQNpk/zpFVMA6CeSglnbN18RWh9J3E/xmPmywAiClcaMAQRlRNgupJRcKxwZrBgq7WrbW2ED
-	3RMCkLMbBX0Le9gOjH7Pt82wTaPbXU5NdSyiMygmZfpPQNqxKfg2RdkdaiT2pbIMKC4C29yD9ZHlY
-	G4ghz6yqTIuw72haBZEeTkEN6omD9TL/WQltI6r9aBPhzhlNS5J/7zPOwCJ6VM3Qw9ETDJTenU7km
-	LINfqeIA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=nrVrXcIV1xnh8psffPMKeIjdtAN0BTmtBgvYjgncv4Q=; b=J35WdGL2b2jbmR5p4YXNIhsuT5
+	aMQsU8BBx/1JBr5uvjgkvXOP6ptOzc3Nn7jtsTI3KDCnZG5kHFTRl5xf3ZRGZ/ql2EZGmwhsZtCLl
+	QFuxgRmKjzph2UWjixwinDdExZFyX6tY95eeHV1eNOtEm4PVRckZ9IwbtF5LL9khnHV8RhrmIbFAT
+	vpw+WKJ5m1KLVSAbe9pnMMvjacKvmznh4kPSsBNynGs3s6XcusU5MLlPCqqFfRRpjzNuyli4JMZ6W
+	+/WVxR/XlaQ0A4+wfMsj5bDBc4ogPeaWaWJhRKYuGcfl3RetoZlhEpBTaCwVfQTrd/BJIVy/ahZYI
+	Xoz+ilHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1usO7r-000000086t0-2RJ5;
-	Sat, 30 Aug 2025 16:08:23 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1usPgD-00000008GCw-2x41;
+	Sat, 30 Aug 2025 17:47:57 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1usNxF-000000085UB-2Yf1;
-	Sat, 30 Aug 2025 15:57:26 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.98.2)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1usNxA-000000007rf-2P6a;
-	Sat, 30 Aug 2025 15:57:20 +0000
-Date: Sat, 30 Aug 2025 16:57:17 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: "Rafael J. Wysocki" <rafael@kernel.org>,
-	Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Mason Chang <mason-cw.chang@mediatek.com>,
-	Arnd Bergmann <arnd@arndb.de>,
-	Frank Wunderlich <frank-w@public-files.de>,
-	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-stable@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Chad Monroe <chad.monroe@adtran.com>
-Subject: [PATCH linux-stable 6.12 3/3] thermal/drivers/mediatek/lvts_thermal:
- Add mt7988 lvts commands
-Message-ID: <253c49132453481a74fa3ef59f0b85a51bc9d4c6.1756568900.git.daniel@makrotopia.org>
-References: <cover.1756568900.git.daniel@makrotopia.org>
+	id 1usP8Z-00000008DBY-3hGb;
+	Sat, 30 Aug 2025 17:13:12 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 6CDE44418A;
+	Sat, 30 Aug 2025 17:13:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ECAC8C4CEEB;
+	Sat, 30 Aug 2025 17:13:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1756573991;
+	bh=nRpClAVmKhPM4s+plqvugvMv46C4EG57OiMmEMzwUH8=;
+	h=From:Date:Subject:To:Cc:From;
+	b=qF3Lim3CWUypANIPoraJu0T/iGf+K/Iqp9/M9juuCaZ1DVaomWRLAvPeL+VMJt/HQ
+	 kmqW8ZLN0bIBdA6lxqgP1RlYo1qJ9EeIQxT/LCZoiEssa8MEM/ofUTlQWXfsuWdNuM
+	 4xyFf1Isv6+n3SP6iZSLuaE0OYrM+BDTtdQc4C9tBx7sYBf1Tzwmafjmn76lNNUCez
+	 LWGc2RyZLmzzYJ1+sahL1/bi0PLuDXXa1U2+c3k/I/5aWp0RlvqE7NVjBJgOF9BMse
+	 o2TozfvGWvaeODIjiO+rEimjItEpFZmf4WJfILOl8RpQ9cN3o09qk8RwalSyQ4ZgDO
+	 8pjsXati3lPpQ==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Sat, 30 Aug 2025 19:12:50 +0200
+Subject: [PATCH mt76] wifi: mt76: mt7996: Set EML capabilities for AP
+ interface
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1756568900.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250830-mt7996_ap_eml_capa-v1-1-ef69c97c6adc@kernel.org>
+X-B4-Tracking: v=1; b=H4sIABExs2gC/x3MTQqAIBBA4avErBNMsbKrRMhUUw30IxoRRHdPW
+ n6L9x6IFJgiNNkDgS6OfOwJRZ7BsOA+k+AxGZRURtZaiu2srC0dekfb6gb0KLTCWlvq0U4GUug
+ DTXz/07Z73w9ddaq3ZAAAAA==
+X-Change-ID: 20250830-mt7996_ap_eml_capa-32a839eba9f5
+To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250830_085725_651572_8F19034C 
-X-CRM114-Status: GOOD (  11.71  )
+X-CRM114-CacheID: sfid-20250830_101311_948893_9C0B14FD 
+X-CRM114-Status: UNSURE (   7.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,64 +78,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Mason Chang <mason-cw.chang@mediatek.com>
+Report EML capabilities to hostapd for AP interface.
 
-[ Upstream commit 685a755089f95b7e205c0202567d9a647f9de096 ]
-
-These commands are necessary to avoid severely abnormal and inaccurate
-temperature readings that are caused by using the default commands.
-
-Fixes: 585e92e6a79f ("thermal/drivers/mediatek/lvts_thermal: Add mt7988 support")
-Signed-off-by: Mason Chang <mason-cw.chang@mediatek.com>
-Link: https://lore.kernel.org/r/20250526102659.30225-4-mason-cw.chang@mediatek.com
-Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/thermal/mediatek/lvts_thermal.c | 16 ++++++++++++----
- 1 file changed, 12 insertions(+), 4 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7996/init.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-index 239476152bab..017191b9f864 100644
---- a/drivers/thermal/mediatek/lvts_thermal.c
-+++ b/drivers/thermal/mediatek/lvts_thermal.c
-@@ -1421,6 +1421,8 @@ static int lvts_resume(struct device *dev)
- }
- 
- static const u32 default_conn_cmds[] = { 0xC103FFFF, 0xC502FF55 };
-+static const u32 mt7988_conn_cmds[] = { 0xC103FFFF, 0xC502FC55 };
-+
- /*
-  * Write device mask: 0xC1030000
-  */
-@@ -1431,6 +1433,12 @@ static const u32 default_init_cmds[] = {
- 	0xC10300FC, 0xC103009D, 0xC10300F1, 0xC10300E1
- };
- 
-+static const u32 mt7988_init_cmds[] = {
-+	0xC1030300, 0xC1030420, 0xC1030500, 0xC10307A6, 0xC1030CFC,
-+	0xC1030A8C, 0xC103098D, 0xC10308F1, 0xC1030B04, 0xC1030E01,
-+	0xC10306B8
-+};
-+
- /*
-  * The MT8186 calibration data is stored as packed 3-byte little-endian
-  * values using a weird layout that makes sense only when viewed as a 32-bit
-@@ -1725,11 +1733,11 @@ static const struct lvts_ctrl_data mt8195_lvts_ap_data_ctrl[] = {
- 
- static const struct lvts_data mt7988_lvts_ap_data = {
- 	.lvts_ctrl	= mt7988_lvts_ap_data_ctrl,
--	.conn_cmd	= default_conn_cmds,
--	.init_cmd	= default_init_cmds,
-+	.conn_cmd	= mt7988_conn_cmds,
-+	.init_cmd	= mt7988_init_cmds,
- 	.num_lvts_ctrl	= ARRAY_SIZE(mt7988_lvts_ap_data_ctrl),
--	.num_conn_cmd	= ARRAY_SIZE(default_conn_cmds),
--	.num_init_cmd	= ARRAY_SIZE(default_init_cmds),
-+	.num_conn_cmd	= ARRAY_SIZE(mt7988_conn_cmds),
-+	.num_init_cmd	= ARRAY_SIZE(mt7988_init_cmds),
- 	.temp_factor	= LVTS_COEFF_A_MT7988,
- 	.temp_offset	= LVTS_COEFF_B_MT7988,
- 	.gt_calib_bit_offset = 24,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+index 29e0cf966bcac5ab805b927fd73b7a23d15877ec..5af78760dbeaf3aa3d123e6438ff27c52d00ed51 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+@@ -75,6 +75,7 @@ static const struct wiphy_iftype_ext_capab iftypes_ext_capa[] = {
+ 		.extended_capabilities = if_types_ext_capa_ap,
+ 		.extended_capabilities_mask = if_types_ext_capa_ap,
+ 		.extended_capabilities_len = sizeof(if_types_ext_capa_ap),
++		.eml_capabilities = IEEE80211_EML_CAP_EMLSR_SUPP,
+ 		.mld_capa_and_ops =
+ 			FIELD_PREP_CONST(IEEE80211_MLD_CAP_OP_MAX_SIMUL_LINKS,
+ 					 MT7996_MAX_RADIOS - 1),
+
+---
+base-commit: 035ba65d13516fa2afa78203ba3ef54fd70584af
+change-id: 20250830-mt7996_ap_eml_capa-32a839eba9f5
+
+Best regards,
 -- 
-2.51.0
+Lorenzo Bianconi <lorenzo@kernel.org>
+
 
