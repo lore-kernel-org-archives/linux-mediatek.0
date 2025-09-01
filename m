@@ -4,65 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FA12CA0FF0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Sep 2025 16:50:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F6E6CA0FFF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Sep 2025 16:50:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=CSO+u6WiagkrKtAEkpJcnuCVcBafAXuUDC4b/MEmU/E=; b=TTeXo+Y+02YKXB1GOBMYf+6ATU
-	qIxTQN/SoATNuAh73jUfb0/m3OsV9hNMWfxuvMhGebg2PvlFhfkwsa0eqsIt+ugM18697MSbnKCVO
-	jBAXHTZmt6Uya+e5Ohde68bX7B7+NHM/AKSwHJsU0ZGLhitYz9aE8PDof54PwY851XMfx/LRSKgFs
-	lCdegZmx1ai4hEKPt0+uRSyGgpuxBuf4wxhYli2g2DpnOB/HXaO42LUCbnvHw84f48Z+VdrHq4Wva
-	YZCVpPawdGLr6usInlMwzU0n+F2wTKUSP6pVVwX/FsxOC6HbDzmik/1EEgEqJZK1H14qJnR6AKX5c
-	HYy/6pXg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/ApJifxHePLgmXB9tTWAWedH0XfL5fOO8paxsOA3xkw=; b=Zw8n57NRxxJdRaiF9TB6u2USdV
+	TdJ528CoPIQJCos0he4FkXpI/R7RYt4y1NMWvG6zgpmoi1DgRqiW/ZzjrGFaxrZj2bDkszvkw6gIV
+	I8/keklx9FoeOmyxn67b5wPEFZynNOyUBcYHykOAYzvFyEVLDFMTS2kueBUGVJP7z/yMElEI+Zq5O
+	WIU/+abTsCM0JoKWoIuC4kjRlFBy4zyBTokcJ7nTmWd35WVD6ODDqQwmzIctT0RQTFDY7JnJR92MA
+	st7sASCUmquF5wuMHV8YztC0FoOedXRM71kl7t3dac6tsjLL70/T0tssq8wyvLEZu9twY1O0E9xft
+	CewnDoeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ut7jD-0000000DLGK-2Oyq;
-	Mon, 01 Sep 2025 16:49:59 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1ut7jK-0000000DLR1-167i;
+	Mon, 01 Sep 2025 16:50:06 +0000
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ut4BM-0000000CcHF-2WN1;
-	Mon, 01 Sep 2025 13:02:49 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id D5CA2423C3;
-	Mon,  1 Sep 2025 13:02:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 380E6C4CEF0;
-	Mon,  1 Sep 2025 13:02:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756731766;
-	bh=SjG+q9Jk6pllyjgr9OYtJrRLi5STYvgdqR2S+b1zO+0=;
-	h=From:Date:Subject:To:Cc:From;
-	b=DwGvLLvzpQqLjo3gR3m5TDfTg4XQCb40KNA46dhNRiWDUjPVakCI8Idd2IAMyH4lr
-	 xfsuH8MruAkq/g6vgph+DIU+jkrrdM9a2zQ/z7bGe+uO0079KK9dZ6fODhFyq0Pp0c
-	 PRpREL481cHrL/UjYaPf2a4I3199ANNu/fCntQGUR7xenhus91CWtLxB/K5IN9xbTw
-	 HgyP9frTIbjvGpPU1S4Ctyaka/CydZCtFdeKpQW4v6R5nR/P5jpFBOh2H9wKlvY8jc
-	 qODCpb0fvPgXwQzIf/biK0syYvYqAMJ0pM3+irbmkivhrsE+ohULZ1bwGBVIzUkOi/
-	 vnDjVanoryfoA==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Mon, 01 Sep 2025 15:02:33 +0200
-Subject: [PATCH mt76] wifi: mt76: mt7996: Enable MLO support for client
- interfaces
+	id 1ut4Sv-0000000CfQo-1Qoj
+	for linux-mediatek@lists.infradead.org;
+	Mon, 01 Sep 2025 13:20:58 +0000
+Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-55f6f434c96so2186169e87.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 01 Sep 2025 06:20:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1756732855; x=1757337655; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=/ApJifxHePLgmXB9tTWAWedH0XfL5fOO8paxsOA3xkw=;
+        b=qWAcovFt2a4GqwdKyfgsDpYEikwoNyoM/48O/UJp5CsArox92+5gExe09ZmWQbpBFY
+         dEsj/w/jnDVc0O5PUnxU4mFvRvi8nlqczgj8XVh4MoY8oVSJHaYTTtqcYx++P87uKfb/
+         qda9LZeRF3mZVQPTOH5bbc/ylXv5h9MBByHw1Ljv+egZ/LEmrioC4mCdg2dfvEHwJT4e
+         mlE3l/GMTC3+ZjvOHzivtneT9If2IocYdUv2y7tUK0eWCRyk6Jpt+OFF+ekxoNsbOXKU
+         YctRPdScAIwtTaghLX0hH3RS+DNCgdwIAJHdITzeOLOPMw9n7W+XRFMrWXMkYk+stnec
+         egag==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1756732855; x=1757337655;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=/ApJifxHePLgmXB9tTWAWedH0XfL5fOO8paxsOA3xkw=;
+        b=aQDtcg2Df2qS6MZUfkIpAMW2L8QTLij0PNPoRaZD06rRSniUIRLSbFjVlOqFeOPZrO
+         4+SMfnWEcnm9PSQyHg+HA2o8BMiwtolVJ0dn+zcFcIkrzlZcaxyJFPLrbGv4mZTQs0i8
+         m4cqOZx0jXGoCIqA9YRVY+9qOZ0aMoYSAXChMtnUDHu4TObUnHhDHP6Kg1T/QHwgs9y7
+         x0sQ3ff9wEd87T8HYdz5sgfBttkgK2OsypBlztrGm+ua0UXv4Vqx2g3EnMyY2d/6/SRa
+         /LAFMTTi3zbUmfiMtjwqKXc9wlQTTfH+5F8DVZlL80JfRc9dzVNVoCy4d6FHeiyrPTeV
+         olHQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUW0ELwGY8KdrTF76ThCMqDiC/YXmBYzVs09a51W4iRzqgfutFnVLV2LTyGq2rMAgmZHg2kLILpPhF+rzg5cA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzl9abTqVDMGP6JFhodd3YDxubG3YcPUFWhe9HJlj9OZ/3OgDu4
+	nX5Sh0lDKwxLm+ivH8X2MQl7kRo0EbOIQaexBwMUw5qqJkG1b++q9JAQGNSXFlIILs1NQ+vvQND
+	PwYCDL+9xCDuW+edejGCR1zset76SFaYvkCLAVf7oZQ==
+X-Gm-Gg: ASbGnctfITst9zxGqFF0dR2j9oXNYsTxmL+Dxx9n+Q0nUGNt62LUvMV4QPrs4goNdDi
+	VG+LcA0WBH1WOlePXgcp+nQlsIXoIHKWLvk29o6sfc4PN86swswj4rpHEtP74uOUyJ0Ij/siG4j
+	Fk+Nggk2NJyvF2RAicnZ8IvIWqQ9UX1DOsu+VWeMaUSFQonuHNfqorthK73b5IyIfekodmPgiV9
+	wKpeaHrhIAoktWE1TqGxu5jRUWm1u4eu1R1MI4=
+X-Google-Smtp-Source: AGHT+IH912XrSXzjBk2qT9512Zc2BnDvh2hCyUh1tIL/e/b5XAWzm9U6VOUb2k8kMnjWcaLf9C4w4UWLuNtsABXzYyY=
+X-Received: by 2002:a05:6512:2513:b0:55f:4016:ad2b with SMTP id
+ 2adb3069b0e04-55f708eae52mr2361617e87.30.1756732855435; Mon, 01 Sep 2025
+ 06:20:55 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250901-mt7996-enable-mlo-client-v1-1-50c46317325d@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAGiZtWgC/x3MQQqEMAxA0atI1gZMh1bjVcSFo1EDtUorIoh3n
- zLLt/j/gSRRJUFbPBDl0qR7yKCygHEdwiKoUzaYytiqMYzbWTM7lDB8veDmdxy9SjiRiMk66/h
- jCHJ+RJn1/q+7/n1/VJiuD2oAAAA=
-X-Change-ID: 20250829-mt7996-enable-mlo-client-119156569321
-To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+References: <20250828-pinctrl-gpio-pinfuncs-v6-0-c9abb6bdb689@linaro.org>
+ <20250828-pinctrl-gpio-pinfuncs-v6-6-c9abb6bdb689@linaro.org> <61bad868-d976-4f49-805c-8d14d4d8b3e4@sirena.org.uk>
+In-Reply-To: <61bad868-d976-4f49-805c-8d14d4d8b3e4@sirena.org.uk>
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+Date: Mon, 1 Sep 2025 15:20:44 +0200
+X-Gm-Features: Ac12FXxw4k3UY5TBARAefSnKyhMDuDCBaUNs2qyNKYW8yrbkHP8etuyQPhIAuGM
+Message-ID: <CAMRc=MfB_3e0sjCpV+XaKcKvit7Opk5LczH2wsxO=RftrAabjg@mail.gmail.com>
+Subject: Re: [PATCH v6 06/15] pinctrl: imx: don't access the pin function
+ radix tree directly
+To: Mark Brown <broonie@kernel.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Bjorn Andersson <andersson@kernel.org>, 
+	Konrad Dybcio <konradybcio@kernel.org>, Alexey Klimov <alexey.klimov@linaro.org>, 
+	Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Paul Cercueil <paul@crapouillou.net>, Kees Cook <kees@kernel.org>, 
+	Andy Shevchenko <andy@kernel.org>, Andrew Morton <akpm@linux-foundation.org>, 
+	David Hildenbrand <david@redhat.com>, Lorenzo Stoakes <lorenzo.stoakes@oracle.com>, 
+	"Liam R. Howlett" <Liam.Howlett@oracle.com>, Vlastimil Babka <vbabka@suse.cz>, 
+	Mike Rapoport <rppt@kernel.org>, Suren Baghdasaryan <surenb@google.com>, Michal Hocko <mhocko@suse.com>, 
+	Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, 
+	Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, NXP S32 Linux Team <s32@nxp.com>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Tony Lindgren <tony@atomide.com>, 
+	Haojian Zhuang <haojian.zhuang@linaro.org>, Geert Uytterhoeven <geert+renesas@glider.be>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Danilo Krummrich <dakr@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mips@vger.kernel.org, linux-hardening@vger.kernel.org, 
+	linux-mm@kvack.org, imx@lists.linux.dev, linux-omap@vger.kernel.org, 
+	linux-renesas-soc@vger.kernel.org, 
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250901_060248_688182_8B290189 
-X-CRM114-Status: GOOD (  16.78  )
+X-CRM114-CacheID: sfid-20250901_062057_381216_9E2D122C 
+X-CRM114-Status: GOOD (  19.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,239 +118,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Report MT7996 MLO STA capabilities to mac80211 stack.
+On Mon, Sep 1, 2025 at 2:07=E2=80=AFPM Mark Brown <broonie@kernel.org> wrot=
+e:
+>
+> On Thu, Aug 28, 2025 at 06:00:14PM +0200, Bartosz Golaszewski wrote:
+> > From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+> >
+> > The radix tree containing pin function descriptors should not be
+> > accessed directly by drivers. There are dedicated functions for it. I
+> > suppose this driver does it so that the memory containing the function
+> > description is not duplicated but we're going to address that shortly s=
+o
+> > convert it to using generic pinctrl APIs.
+>
+> This is still failing for me:
+>
+> [    0.628221] Unable to handle kernel NULL pointer dereference at virtua=
+l address 0000000000000000
+> [    0.636506] Mem abort info:
+>
+> ...
+>
+> [    0.801855]  __pi_strcmp+0x20/0x140 (P)
+> [    0.805704]  pinmux_generic_add_pinfunction+0x28/0xe0
+> [    0.810777]  imx_pinctrl_parse_functions.isra.0+0xf8/0x4a0
+> [    0.816289]  imx_pinctrl_probe+0x404/0x520
+>
+> Full log:
+>
+>    https://lava.sirena.org.uk/scheduler/job/1758025#L704
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/wireless/mediatek/mt76/mac80211.c    | 52 ++++++++++++++++++++++++
- drivers/net/wireless/mediatek/mt76/mt76.h        |  1 +
- drivers/net/wireless/mediatek/mt76/mt7925/main.c | 52 +-----------------------
- drivers/net/wireless/mediatek/mt76/mt7996/init.c |  8 ++++
- drivers/net/wireless/mediatek/mt76/mt7996/main.c | 32 ++++++++++++---
- 5 files changed, 88 insertions(+), 57 deletions(-)
+That's not a lot of info but it fails in strcmp() which - I suppose -
+is the one in pinmux_func_name_to_selector(). Any chance you could
+check what the value of np->name is in imx_pinctrl_parse_functions()?
+Is it NULL for some reason?
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
-index 3afe4c4cd7bbec5d317be4155f232eec7d41b62e..903e5a4251a47f92e2f647c84ade5eff06b24eba 100644
---- a/drivers/net/wireless/mediatek/mt76/mac80211.c
-+++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
-@@ -2019,3 +2019,55 @@ void mt76_vif_cleanup(struct mt76_dev *dev, struct ieee80211_vif *vif)
- 		mt76_abort_roc(mvif->roc_phy);
- }
- EXPORT_SYMBOL_GPL(mt76_vif_cleanup);
-+
-+u16 mt76_select_links(struct ieee80211_vif *vif, int max_active_links)
-+{
-+	unsigned long usable_links = ieee80211_vif_usable_links(vif);
-+	struct  {
-+		u8 link_id;
-+		enum nl80211_band band;
-+	} data[IEEE80211_MLD_MAX_NUM_LINKS];
-+	unsigned int link_id;
-+	int i, n_data = 0;
-+	u16 sel_links = 0;
-+
-+	if (!ieee80211_vif_is_mld(vif))
-+		return 0;
-+
-+	if (vif->active_links == usable_links)
-+		return vif->active_links;
-+
-+	rcu_read_lock();
-+	for_each_set_bit(link_id, &usable_links, IEEE80211_MLD_MAX_NUM_LINKS) {
-+		struct ieee80211_bss_conf *link_conf;
-+
-+		link_conf = rcu_dereference(vif->link_conf[link_id]);
-+		if (WARN_ON_ONCE(!link_conf))
-+			continue;
-+
-+		data[n_data].link_id = link_id;
-+		data[n_data].band = link_conf->chanreq.oper.chan->band;
-+		n_data++;
-+	}
-+	rcu_read_unlock();
-+
-+	for (i = 0; i < n_data; i++) {
-+		int j;
-+
-+		if (!(BIT(data[i].link_id) & vif->active_links))
-+			continue;
-+
-+		sel_links = BIT(data[i].link_id);
-+		for (j = 0; j < n_data; j++) {
-+			if (data[i].band != data[j].band) {
-+				sel_links |= BIT(data[j].link_id);
-+				if (hweight16(sel_links) == max_active_links)
-+					break;
-+			}
-+		}
-+		break;
-+	}
-+
-+	return sel_links;
-+}
-+EXPORT_SYMBOL_GPL(mt76_select_links);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 8dd5c29fb75b5c0c879350f3af15b71f12630a96..d518a5441418bce5ae477e7f15dde56b6cb5b87d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -1871,6 +1871,7 @@ mt76_vif_init(struct ieee80211_vif *vif, struct mt76_vif_data *mvif)
- }
- 
- void mt76_vif_cleanup(struct mt76_dev *dev, struct ieee80211_vif *vif);
-+u16 mt76_select_links(struct ieee80211_vif *vif, int max_active_links);
- 
- static inline struct mt76_vif_link *
- mt76_vif_link(struct mt76_dev *dev, struct ieee80211_vif *vif, int link_id)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-index 47abf5f0486076a77b949a6d59b2eddba4b186ce..f9ab24b05327c57f0b094a552d3bc598f9a74dc1 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-@@ -988,56 +988,6 @@ int mt7925_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- }
- EXPORT_SYMBOL_GPL(mt7925_mac_sta_add);
- 
--static u16
--mt7925_mac_select_links(struct mt76_dev *mdev, struct ieee80211_vif *vif)
--{
--	unsigned long usable_links = ieee80211_vif_usable_links(vif);
--	struct  {
--		u8 link_id;
--		enum nl80211_band band;
--	} data[IEEE80211_MLD_MAX_NUM_LINKS];
--	u8 link_id, i, j, n_data = 0;
--	u16 sel_links = 0;
--
--	if (!ieee80211_vif_is_mld(vif))
--		return 0;
--
--	if (vif->active_links == usable_links)
--		return vif->active_links;
--
--	rcu_read_lock();
--	for_each_set_bit(link_id, &usable_links, IEEE80211_MLD_MAX_NUM_LINKS) {
--		struct ieee80211_bss_conf *link_conf =
--			rcu_dereference(vif->link_conf[link_id]);
--
--		if (WARN_ON_ONCE(!link_conf))
--			continue;
--
--		data[n_data].link_id = link_id;
--		data[n_data].band = link_conf->chanreq.oper.chan->band;
--		n_data++;
--	}
--	rcu_read_unlock();
--
--	for (i = 0; i < n_data; i++) {
--		if (!(BIT(data[i].link_id) & vif->active_links))
--			continue;
--
--		sel_links = BIT(data[i].link_id);
--
--		for (j = 0; j < n_data; j++) {
--			if (data[i].band != data[j].band) {
--				sel_links |= BIT(data[j].link_id);
--				break;
--			}
--		}
--
--		break;
--	}
--
--	return sel_links;
--}
--
- static void
- mt7925_mac_set_links(struct mt76_dev *mdev, struct ieee80211_vif *vif)
- {
-@@ -1048,7 +998,7 @@ mt7925_mac_set_links(struct mt76_dev *mdev, struct ieee80211_vif *vif)
- 	struct cfg80211_chan_def *chandef = &link_conf->chanreq.oper;
- 	enum nl80211_band band = chandef->chan->band, secondary_band;
- 
--	u16 sel_links = mt7925_mac_select_links(mdev, vif);
-+	u16 sel_links = mt76_select_links(vif, 2);
- 	u8 secondary_link_id = __ffs(~BIT(mvif->deflink_id) & sel_links);
- 
- 	if (!ieee80211_vif_is_mld(vif) || hweight16(sel_links) < 2)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-index 29e0cf966bcac5ab805b927fd73b7a23d15877ec..428b431b2910a06b7f3daded9cea1bbe1427fbb7 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-@@ -78,6 +78,14 @@ static const struct wiphy_iftype_ext_capab iftypes_ext_capa[] = {
- 		.mld_capa_and_ops =
- 			FIELD_PREP_CONST(IEEE80211_MLD_CAP_OP_MAX_SIMUL_LINKS,
- 					 MT7996_MAX_RADIOS - 1),
-+	}, {
-+		.iftype = NL80211_IFTYPE_STATION,
-+		.extended_capabilities = if_types_ext_capa_ap,
-+		.extended_capabilities_mask = if_types_ext_capa_ap,
-+		.extended_capabilities_len = sizeof(if_types_ext_capa_ap),
-+		.mld_capa_and_ops =
-+			FIELD_PREP_CONST(IEEE80211_MLD_CAP_OP_MAX_SIMUL_LINKS,
-+					 MT7996_MAX_RADIOS - 1),
- 	},
- };
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-index 7f3a117c52bd3438b6bb41a068bbf11658dfba42..341ed090d2b85bac3ad99035a8649c9bdbd78424 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-@@ -1212,6 +1212,24 @@ mt7996_mac_sta_remove(struct mt7996_dev *dev, struct ieee80211_vif *vif,
- 	mutex_unlock(&dev->mt76.mutex);
- }
- 
-+static void
-+mt7996_set_active_links(struct ieee80211_vif *vif)
-+{
-+	u16 active_links;
-+
-+	if (vif->type != NL80211_IFTYPE_STATION)
-+		return;
-+
-+	if (!ieee80211_vif_is_mld(vif))
-+		return;
-+
-+	active_links = mt76_select_links(vif, MT7996_MAX_RADIOS);
-+	if (hweight16(active_links) < 2)
-+		return;
-+
-+	ieee80211_set_active_links_async(vif, active_links);
-+}
-+
- static int
- mt7996_sta_state(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 		 struct ieee80211_sta *sta, enum ieee80211_sta_state old_state,
-@@ -1229,16 +1247,18 @@ mt7996_sta_state(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 		mt7996_mac_sta_remove(dev, vif, sta);
- 
- 	if (old_state == IEEE80211_STA_AUTH &&
--	    new_state == IEEE80211_STA_ASSOC)
-+	    new_state == IEEE80211_STA_ASSOC) {
-+		mt7996_set_active_links(vif);
- 		ev = MT76_STA_EVENT_ASSOC;
--	else if (old_state == IEEE80211_STA_ASSOC &&
--		 new_state == IEEE80211_STA_AUTHORIZED)
-+	} else if (old_state == IEEE80211_STA_ASSOC &&
-+		   new_state == IEEE80211_STA_AUTHORIZED) {
- 		ev = MT76_STA_EVENT_AUTHORIZE;
--	else if (old_state == IEEE80211_STA_ASSOC &&
--		 new_state == IEEE80211_STA_AUTH)
-+	} else if (old_state == IEEE80211_STA_ASSOC &&
-+		   new_state == IEEE80211_STA_AUTH) {
- 		ev = MT76_STA_EVENT_DISASSOC;
--	else
-+	} else {
- 		return 0;
-+	}
- 
- 	return mt7996_mac_sta_event(dev, vif, sta, ev);
- }
-
----
-base-commit: 035ba65d13516fa2afa78203ba3ef54fd70584af
-change-id: 20250829-mt7996-enable-mlo-client-119156569321
-
-Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
-
+Bart
 
