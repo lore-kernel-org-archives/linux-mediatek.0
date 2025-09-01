@@ -4,77 +4,146 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14929CA0FF0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Sep 2025 08:01:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8D38CA0FFD
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Sep 2025 08:40:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=nkCIubutJycJl/A+gBZ1Ci2tKUm1/PnTAAjLguTK4SE=; b=IZjUf6DK8HO1Wl1jFqaCMRYui5
-	z8yefCily+w/j6TQA9udZaFI1Ohv4DyOish6C9L3lYzhnOWAfYGLDh8YSBu58Xt7VZ7hucq0Qdome
-	AHqiarcinINkeLOzAlQuwsA8B7TSyZRxE08ZDcdKAs3tjPZVitIJfCSFS4SUhEEAlyyEtJpFKXT7L
-	Vfby+LQd/O6m/FzS3Y9vD4a3E5UXdB4uHRdmypSru8Ejydfiw5Eu7hZ20KnoMR2XFP4YQQjiLvDZD
-	ojE7/Lh7DEFm+IYb46dec0fcaNRcK7jnPTSHg0gf3ApWob+13AKca7hWKmuAIxeZJIlLmBdtRSb13
-	i6XRXN8A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Cc:To:Subject:
+	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vIDbvw0dQVZGx06wUE3YhwCSQsoehVltdwHmuGJe+Vo=; b=BqndIAxPmjmtAQVtP1lei2RkW7
+	kIA7KsR8HBuYNdSlWMzSmqRq/3BXCZGxyWu7SM1Jymv4BthFsp0Kpel3Ddo3pn35arzLGuqTQrxXq
+	NSB4dVLWmoD4LOcDMawkLny7ECBqLML01XF4QdSrStLxXjWytsvpy7scQa/z3rOvEhOXk9yNM+Em9
+	xWIpkthkQJq3bNtEsxNv+7LRQux1IfnMg54fuKFkAZyVmQ7va4YsXMkHXdmHw8zYpm2DakOKneiI9
+	haTuOn9GNnCjNYvew+YYFp8X09rBnHTuqBYdQKzavXim11MfZEmw1x7sBlp9gBRKFzteHLn6bXWzh
+	GS+01Pnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uszTo-0000000BVrg-49Sz;
-	Mon, 01 Sep 2025 08:01:32 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ut05b-0000000BcBM-1TUU;
+	Mon, 01 Sep 2025 08:40:35 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1usz1P-0000000BRfm-1RB2
+	id 1uszm9-0000000BYjz-37yr
 	for linux-mediatek@lists.infradead.org;
-	Mon, 01 Sep 2025 07:32:12 +0000
-X-UUID: c159aee4870511f09eb0dd999d3936bf-20250901
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=nkCIubutJycJl/A+gBZ1Ci2tKUm1/PnTAAjLguTK4SE=;
-	b=kJZFpHwNSL1B5/QKD2OtlYbTAQtZm4xNtPleXxIZQZKiAIoXtTOBF3HpVm+La74sV2H8Vsoc/PykDuVG4Whhoz7LoV5+wTpsl0RHnIiVB0Ctntgs73njffVgpqeu11ihTEuhySPkzQ0KttVqh3vV2c7tsTdWmsQghbekKDcJfR0=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.3,REQID:e020e4ea-3e7d-4e2b-a842-e63f214cf793,IP:0,UR
-	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-25
-X-CID-META: VersionHash:f1326cf,CLOUDID:85764d84-5317-4626-9d82-238d715c253f,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:-5,Content:0|15|50,EDM:-3,IP:
-	nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,L
-	ES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: c159aee4870511f09eb0dd999d3936bf-20250901
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
-	(envelope-from <mingyen.hsieh@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1344032670; Mon, 01 Sep 2025 00:32:03 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Mon, 1 Sep 2025 15:32:01 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Mon, 1 Sep 2025 15:32:01 +0800
-From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
-	<Leon.Yen@mediatek.com>, <Michael.Lo@mediatek.com>,
-	<allan.wang@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
-	<km.lin@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
-	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Jack Kao <jack.kao@mediatek.com>, Ming
- Yen Hsieh <mingyen.hsieh@mediatek.com>
-Subject: [PATCH] wifi: mt76: mt7925: add pci restore for hibernate
-Date: Mon, 1 Sep 2025 15:32:00 +0800
-Message-ID: <20250901073200.230033-1-mingyen.hsieh@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	Mon, 01 Sep 2025 08:20:31 +0000
+Received: by mail-wr1-x435.google.com with SMTP id ffacd0b85a97d-3ce772ce0dbso2642983f8f.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 01 Sep 2025 01:20:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1756714827; x=1757319627; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:organization:autocrypt
+         :content-language:references:cc:to:subject:reply-to:from:user-agent
+         :mime-version:date:message-id:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=vIDbvw0dQVZGx06wUE3YhwCSQsoehVltdwHmuGJe+Vo=;
+        b=BFpqNC0rWRHed0AzPoU7a/lmryt2EDKykX2kcX4nKslb9Wv0lkxKfWD4h0md1VXXLu
+         0SnvmMtaL6gjpusGgEqe2sidtR3/0kdqZjXRbrjBm8lrHCI673ivSSjL3T/LW1MnEpOV
+         k61bvrPWbCaJm4taenW/rbZ1++IN/ngbA3JC9buntoZ45NjJlRd1CVXIlDm9GPjklR3t
+         LlWpYfoLvyMn3DshtSl8uxfVjogFtKfC5wwm+cas722CruUFEZ8BXvOMosD9I5NHlRX6
+         sld7iBpwnSEbL/AYfMBYuV/dIiku2XL/I1AA7ybdpqfWafhmqka1380rfESSFBzkJBgg
+         o/Ug==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1756714827; x=1757319627;
+        h=content-transfer-encoding:in-reply-to:organization:autocrypt
+         :content-language:references:cc:to:subject:reply-to:from:user-agent
+         :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=vIDbvw0dQVZGx06wUE3YhwCSQsoehVltdwHmuGJe+Vo=;
+        b=ncjZcMOMPuLMMKzWIFiJdn+RLcNgWC705oOWg8uibJnn55ZJORrKfmGg/4dHP1gtXT
+         RGNlzuGWgicG6vGFtuQroMmCsXb3XIKcdko9eb+17oq8dUuVAwj+sgi2HrdvdTtGHL0Q
+         XheJjfoeIONzUILIMJ3Ot9aDp7hzrXc24YctshfHGdiP3SwIM3+vWFKnMH77k1ErNcZU
+         vzzejCD8UPLdzh7wnwBbJ6Mvgf630ypLhVOAc3Z8a5t2OacNfT0D4yhWe0hi8TrgSx29
+         2p+vgf0Cy0qN4u07KySILwEO7T2BdHsjIsITDZydb2ZBX6/veWCbVkoP4CDQsTY3pD2m
+         Zd/A==
+X-Forwarded-Encrypted: i=1; AJvYcCVrozkFhUXPHAZIQ/Sv1ZLRnm76sGyS8xch3UpeIbiF2osM3zLUU/Bk0b7jwiKo9ljxFYj5qaENyDCBKK80pg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw+5dModImdKihr6pSdHm/G4hSnMgaLNtmZgTQndk9hiOc45PB9
+	bLcmRMWTlHLsimuhEB7kEGOpCCrlxq9cRHz68iJbDCImpAfqALHEVNuT0FAla4noQ0Y=
+X-Gm-Gg: ASbGncu4PfQdF31zzFWPBWDXk/XAoVaT56hS40nCN+AxoEXO3U6hIgUl2/v6UzwuOjA
+	kGzkiraXrgxgY99WWLrB9cPXicSd8CZ0bG1uJ02Avf8khjdt/OXhjPwiEJQEfUZmxKOob75SOHF
+	3/19y5Ad5+tDhxln9RuW0rjwgZsrDA/MinS/odLybBNfHz6f7ejpHONWz5P+BOrI7qJSAgHRVLr
+	W5GlVgxjlMmfzv/O5hqfbbjXPx6GUGO/duQvBjBwIuW4zlkLt/9gTPrhNxceNusZkeWQj1N6nIZ
+	BdWPMH/SvOHr4iq38wX/Mlal1hstP2i+SCF9/91bc6gCqbESVZ7DcD0RttHIMXnXb5C+fIZt/5+
+	n1+2LBIKfFMGJpPm+xxu7onUSXoHxc0i/6Ropv+s24VnLVE4ggISu6A83LSIsraWDaBRXb2Jp8x
+	og9i/ndkU=
+X-Google-Smtp-Source: AGHT+IGJECIIAmi+nv+q6Nvy1Sm8F6AtGZk4avjvD5iwXIfWzvYFQu4NlHq9yjXiW+lQZxu/bSQpRg==
+X-Received: by 2002:a05:6000:200b:b0:3ca:4b59:2715 with SMTP id ffacd0b85a97d-3d1dcf56456mr5038229f8f.20.1756714827333;
+        Mon, 01 Sep 2025 01:20:27 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:3d9:2080:881c:7d0e:ad0a:d9a? ([2a01:e0a:3d9:2080:881c:7d0e:ad0a:d9a])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45b7e68c83asm154115295e9.20.2025.09.01.01.20.25
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 01 Sep 2025 01:20:26 -0700 (PDT)
+Message-ID: <fcd4161d-45ad-4915-a6a4-5819eeaff98d@linaro.org>
+Date: Mon, 1 Sep 2025 10:20:25 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+From: Neil Armstrong <neil.armstrong@linaro.org>
+Subject: Re: [PATCH v6 00/15] pinctrl: introduce the concept of a GPIO pin
+ function category
+To: Bartosz Golaszewski <brgl@bgdev.pl>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konradybcio@kernel.org>,
+ Alexey Klimov <alexey.klimov@linaro.org>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Paul Cercueil <paul@crapouillou.net>, Kees Cook <kees@kernel.org>,
+ Andy Shevchenko <andy@kernel.org>, Andrew Morton
+ <akpm@linux-foundation.org>, David Hildenbrand <david@redhat.com>,
+ Lorenzo Stoakes <lorenzo.stoakes@oracle.com>,
+ "Liam R. Howlett" <Liam.Howlett@oracle.com>, Vlastimil Babka
+ <vbabka@suse.cz>, Mike Rapoport <rppt@kernel.org>,
+ Suren Baghdasaryan <surenb@google.com>, Michal Hocko <mhocko@suse.com>,
+ Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>,
+ Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ NXP S32 Linux Team <s32@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Tony Lindgren <tony@atomide.com>, Haojian Zhuang
+ <haojian.zhuang@linaro.org>, Geert Uytterhoeven <geert+renesas@glider.be>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Danilo Krummrich <dakr@kernel.org>,
+ Mark Brown <broonie@kernel.org>
+Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
+ linux-hardening@vger.kernel.org, linux-mm@kvack.org, imx@lists.linux.dev,
+ linux-omap@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+ Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
+ Chen-Yu Tsai <wenst@chromium.org>,
+ Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+References: <20250828-pinctrl-gpio-pinfuncs-v6-0-c9abb6bdb689@linaro.org>
+Content-Language: en-US, fr
+Autocrypt: addr=neil.armstrong@linaro.org; keydata=
+ xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
+ GTjuhvbleoQ5Cxjr+v+1ARGCH46MxFP5DwauzPekwJUD5QKZlaw/bURTLmS2id5wWi3lqVH4
+ BVF2WzvGyyeV1o4RTCYDnZ9VLLylJ9bneEaIs/7cjCEbipGGFlfIML3sfqnIvMAxIMZrvcl9
+ qPV2k+KQ7q+aXavU5W+yLNn7QtXUB530Zlk/d2ETgzQ5FLYYnUDAaRl+8JUTjc0CNOTpCeik
+ 80TZcE6f8M76Xa6yU8VcNko94Ck7iB4vj70q76P/J7kt98hklrr85/3NU3oti3nrIHmHABEB
+ AAHNKk5laWwgQXJtc3Ryb25nIDxuZWlsLmFybXN0cm9uZ0BsaW5hcm8ub3JnPsLAkQQTAQoA
+ OwIbIwULCQgHAwUVCgkICwUWAgMBAAIeAQIXgBYhBInsPQWERiF0UPIoSBaat7Gkz/iuBQJk
+ Q5wSAhkBAAoJEBaat7Gkz/iuyhMIANiD94qDtUTJRfEW6GwXmtKWwl/mvqQtaTtZID2dos04
+ YqBbshiJbejgVJjy+HODcNUIKBB3PSLaln4ltdsV73SBcwUNdzebfKspAQunCM22Mn6FBIxQ
+ GizsMLcP/0FX4en9NaKGfK6ZdKK6kN1GR9YffMJd2P08EO8mHowmSRe/ExAODhAs9W7XXExw
+ UNCY4pVJyRPpEhv373vvff60bHxc1k/FF9WaPscMt7hlkbFLUs85kHtQAmr8pV5Hy9ezsSRa
+ GzJmiVclkPc2BY592IGBXRDQ38urXeM4nfhhvqA50b/nAEXc6FzqgXqDkEIwR66/Gbp0t3+r
+ yQzpKRyQif3OwE0ETVkGzwEIALyKDN/OGURaHBVzwjgYq+ZtifvekdrSNl8TIDH8g1xicBYp
+ QTbPn6bbSZbdvfeQPNCcD4/EhXZuhQXMcoJsQQQnO4vwVULmPGgtGf8PVc7dxKOeta+qUh6+
+ SRh3vIcAUFHDT3f/Zdspz+e2E0hPV2hiSvICLk11qO6cyJE13zeNFoeY3ggrKY+IzbFomIZY
+ 4yG6xI99NIPEVE9lNBXBKIlewIyVlkOaYvJWSV+p5gdJXOvScNN1epm5YHmf9aE2ZjnqZGoM
+ Mtsyw18YoX9BqMFInxqYQQ3j/HpVgTSvmo5ea5qQDDUaCsaTf8UeDcwYOtgI8iL4oHcsGtUX
+ oUk33HEAEQEAAcLAXwQYAQIACQUCTVkGzwIbDAAKCRAWmrexpM/4rrXiB/sGbkQ6itMrAIfn
+ M7IbRuiSZS1unlySUVYu3SD6YBYnNi3G5EpbwfBNuT3H8//rVvtOFK4OD8cRYkxXRQmTvqa3
+ 3eDIHu/zr1HMKErm+2SD6PO9umRef8V82o2oaCLvf4WeIssFjwB0b6a12opuRP7yo3E3gTCS
+ KmbUuLv1CtxKQF+fUV1cVaTPMyT25Od+RC1K+iOR0F54oUJvJeq7fUzbn/KdlhA8XPGzwGRy
+ 4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJC3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTT
+ QbM0WUIBIcGmq38+OgUsMYu4NzLu7uZFAcmp6h8g
+Organization: Linaro
+In-Reply-To: <20250828-pinctrl-gpio-pinfuncs-v6-0-c9abb6bdb689@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250901_003211_402690_E8C1816A 
-X-CRM114-Status: GOOD (  12.50  )
+X-CRM114-CacheID: sfid-20250901_012029_792694_11236451 
+X-CRM114-Status: GOOD (  39.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,81 +155,212 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: Neil Armstrong <neil.armstrong@linaro.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jack Kao <jack.kao@mediatek.com>
+On 28/08/2025 18:00, Bartosz Golaszewski wrote:
+> Problem: when pinctrl core binds pins to a consumer device and the
+> pinmux ops of the underlying driver are marked as strict, the pin in
+> question can no longer be requested as a GPIO using the GPIO descriptor
+> API. It will result in the following error:
+> 
+> [    5.095688] sc8280xp-tlmm f100000.pinctrl: pin GPIO_25 already requested by regulator-edp-3p3; cannot claim for f100000.pinctrl:570
+> [    5.107822] sc8280xp-tlmm f100000.pinctrl: error -EINVAL: pin-25 (f100000.pinctrl:570)
+> 
+> This typically makes sense except when the pins are muxed to a function
+> that actually says "GPIO". Of course, the function name is just a string
+> so it has no meaning to the pinctrl subsystem.
+> 
+> We have many Qualcomm SoCs (and I can imagine it's a common pattern in
+> other platforms as well) where we mux a pin to "gpio" function using the
+> `pinctrl-X` property in order to configure bias or drive-strength and
+> then access it using the gpiod API. This makes it impossible to mark the
+> pin controller module as "strict".
+> 
+> This series proposes to introduce a concept of a sub-category of
+> pinfunctions: GPIO functions where the above is not true and the pin
+> muxed as a GPIO can still be accessed via the GPIO consumer API even for
+> strict pinmuxers.
+> 
+> To that end: we first clean up the drivers that use struct function_desc
+> and make them use the smaller struct pinfunction instead - which is the
+> correct structure for drivers to describe their pin functions with. We
+> also rework pinmux core to not duplicate memory used to store the
+> pinfunctions unless they're allocated dynamically.
+> 
+> First: provide the kmemdup_const() helper which only duplicates memory
+> if it's not in the .rodata section. Then rework all pinctrl drivers that
+> instantiate objects of type struct function_desc as they should only be
+> created by pinmux core. Next constify the return value of the accessor
+> used to expose these structures to users and finally convert the
+> pinfunction object within struct function_desc to a pointer and use
+> kmemdup_const() to assign it. With this done proceed to add
+> infrastructure for the GPIO pin function category and use it in Qualcomm
+> drivers. At the very end: make the Qualcomm pinmuxer strict.
+> 
+> Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+> ---
+> Changes in v6:
+> - Select GENERIC_PINMUX_FUNCTIONS when using generic pinmux helpers in
+>    qcom pinctrl drivers to fix build on ARM 32-bit platforms
+> - Assume that a pin can be requested in pin_request() if it has no
+>    mux_setting assigned
+> - Also check if a function is a GPIO for pins within GPIO ranges
+> - Fix an issue with the imx pinctrl driver where the conversion patch
+>    confused the function and pin group radix trees
+> - Add a FIXME to the imx driver mentioning the need to switch to the
+>    provided helpers for accessing the group radix tree
+> - Link to v5: https://lore.kernel.org/r/20250815-pinctrl-gpio-pinfuncs-v5-0-955de9fd91db@linaro.org
+> 
+> Changes in v5:
+> - Fix a potential NULL-pointer dereference in
+>    pinmux_can_be_used_for_gpio()
+> - Use PINCTRL_PINFUNCTION() in pinctrl-airoha
+> - Link to v4: https://lore.kernel.org/r/20250812-pinctrl-gpio-pinfuncs-v4-0-bb3906c55e64@linaro.org
+> 
+> Changes in v4:
+> - Update the GPIO pin function definitions to include the new qcom
+>    driver (milos)
+> - Provide devm_kmemdup_const() instead of a non-managed kmemdup_const()
+>    as a way to avoid casting out the 'const' modifier when passing the
+>    const pointer to devm_add_action_or_reset()
+> - Use devm_krealloc_array() where applicable instead of devm_krealloc()
+> - Fix typos
+> - Fix kerneldocs
+> - Improve commit messages
+> - Small tweaks as pointed out by Andy
+> - Rebased on top of v6.17-rc1
+> - Link to v3: https://lore.kernel.org/r/20250724-pinctrl-gpio-pinfuncs-v3-0-af4db9302de4@linaro.org
+> 
+> Changes in v3:
+> - Add more patches in front: convert pinctrl drivers to stop defining
+>    their own struct function_desc objects and make pinmux core not
+>    duplicate .rodata memory in which struct pinfunction objects are
+>    stored.
+> - Add a patch constifying pinmux_generic_get_function().
+> - Drop patches that were applied upstream.
+> - Link to v2: https://lore.kernel.org/r/20250709-pinctrl-gpio-pinfuncs-v2-0-b6135149c0d9@linaro.org
+> 
+> Changes in v2:
+> - Extend the series with providing pinmux_generic_add_pinfunction(),
+>    using it in several drivers and converting pinctrl-msm to using
+>    generic pinmux helpers
+> - Add a generic function_is_gpio() callback for pinmux_ops
+> - Convert all qualcomm drivers to using the new GPIO pin category so
+>    that we can actually enable the strict flag
+> - Link to v1: https://lore.kernel.org/r/20250702-pinctrl-gpio-pinfuncs-v1-0-ed2bd0f9468d@linaro.org
+> 
+> ---
+> Bartosz Golaszewski (15):
+>        devres: provide devm_kmemdup_const()
+>        pinctrl: ingenic: use struct pinfunction instead of struct function_desc
+>        pinctrl: airoha: replace struct function_desc with struct pinfunction
+>        pinctrl: mediatek: mt7988: use PINCTRL_PIN_FUNCTION()
+>        pinctrl: mediatek: moore: replace struct function_desc with struct pinfunction
+>        pinctrl: imx: don't access the pin function radix tree directly
+>        pinctrl: keembay: release allocated memory in detach path
+>        pinctrl: keembay: use a dedicated structure for the pinfunction description
+>        pinctrl: constify pinmux_generic_get_function()
+>        pinctrl: make struct pinfunction a pointer in struct function_desc
+>        pinctrl: qcom: use generic pin function helpers
+>        pinctrl: allow to mark pin functions as requestable GPIOs
+>        pinctrl: qcom: add infrastructure for marking pin functions as GPIOs
+>        pinctrl: qcom: mark the `gpio` and `egpio` pins function as non-strict functions
+>        pinctrl: qcom: make the pinmuxing strict
+> 
+>   drivers/base/devres.c                            | 21 ++++++++
+>   drivers/pinctrl/freescale/pinctrl-imx.c          | 43 +++++++--------
+>   drivers/pinctrl/mediatek/pinctrl-airoha.c        | 19 +++----
+>   drivers/pinctrl/mediatek/pinctrl-moore.c         | 10 ++--
+>   drivers/pinctrl/mediatek/pinctrl-moore.h         |  7 +--
+>   drivers/pinctrl/mediatek/pinctrl-mt7622.c        |  2 +-
+>   drivers/pinctrl/mediatek/pinctrl-mt7623.c        |  2 +-
+>   drivers/pinctrl/mediatek/pinctrl-mt7629.c        |  2 +-
+>   drivers/pinctrl/mediatek/pinctrl-mt7981.c        |  2 +-
+>   drivers/pinctrl/mediatek/pinctrl-mt7986.c        |  2 +-
+>   drivers/pinctrl/mediatek/pinctrl-mt7988.c        | 44 ++++++---------
+>   drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h |  2 +-
+>   drivers/pinctrl/pinctrl-equilibrium.c            |  2 +-
+>   drivers/pinctrl/pinctrl-ingenic.c                | 49 ++++++++---------
+>   drivers/pinctrl/pinctrl-keembay.c                | 26 +++++----
+>   drivers/pinctrl/pinctrl-single.c                 |  4 +-
+>   drivers/pinctrl/pinmux.c                         | 68 ++++++++++++++++++++----
+>   drivers/pinctrl/pinmux.h                         |  9 ++--
+>   drivers/pinctrl/qcom/Kconfig                     |  1 +
+>   drivers/pinctrl/qcom/pinctrl-ipq5018.c           |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-ipq5332.c           |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-ipq5424.c           |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-ipq6018.c           |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-ipq8074.c           |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-ipq9574.c           |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-mdm9607.c           |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-mdm9615.c           |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-milos.c             |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-msm.c               | 45 ++++++----------
+>   drivers/pinctrl/qcom/pinctrl-msm.h               |  5 ++
+>   drivers/pinctrl/qcom/pinctrl-msm8226.c           |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-msm8660.c           |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-msm8909.c           |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-msm8916.c           |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-msm8917.c           |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-msm8953.c           |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-msm8960.c           |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-msm8976.c           |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-msm8994.c           |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-msm8996.c           |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-msm8998.c           |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-msm8x74.c           |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-qcm2290.c           |  4 +-
+>   drivers/pinctrl/qcom/pinctrl-qcs404.c            |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-qcs615.c            |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-qcs8300.c           |  4 +-
+>   drivers/pinctrl/qcom/pinctrl-qdu1000.c           |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-sa8775p.c           |  4 +-
+>   drivers/pinctrl/qcom/pinctrl-sar2130p.c          |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-sc7180.c            |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-sc7280.c            |  4 +-
+>   drivers/pinctrl/qcom/pinctrl-sc8180x.c           |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-sc8280xp.c          |  4 +-
+>   drivers/pinctrl/qcom/pinctrl-sdm660.c            |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-sdm670.c            |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-sdm845.c            |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-sdx55.c             |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-sdx65.c             |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-sdx75.c             |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-sm4450.c            |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-sm6115.c            |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-sm6125.c            |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-sm6350.c            |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-sm6375.c            |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-sm7150.c            |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-sm8150.c            |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-sm8250.c            |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-sm8350.c            |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-sm8450.c            |  4 +-
+>   drivers/pinctrl/qcom/pinctrl-sm8550.c            |  2 +-
+>   drivers/pinctrl/qcom/pinctrl-sm8650.c            |  4 +-
+>   drivers/pinctrl/qcom/pinctrl-sm8750.c            |  4 +-
+>   drivers/pinctrl/qcom/pinctrl-x1e80100.c          |  2 +-
+>   drivers/pinctrl/renesas/pinctrl-rza1.c           |  2 +-
+>   drivers/pinctrl/renesas/pinctrl-rza2.c           |  2 +-
+>   drivers/pinctrl/renesas/pinctrl-rzg2l.c          |  2 +-
+>   drivers/pinctrl/renesas/pinctrl-rzv2m.c          |  2 +-
+>   include/linux/device/devres.h                    |  2 +
+>   include/linux/pinctrl/pinctrl.h                  | 14 +++++
+>   include/linux/pinctrl/pinmux.h                   |  2 +
+>   80 files changed, 287 insertions(+), 224 deletions(-)
+> ---
+> base-commit: 1b237f190eb3d36f52dffe07a40b5eb210280e00
+> change-id: 20250701-pinctrl-gpio-pinfuncs-de82bd9aac43
+> 
+> Best regards,
 
-Due to hibernation causing a power off and power on,
-this modification adds mt7925_pci_restore callback function for kernel.
-When hibernation resumes, it calls mt7925_pci_restore to reset the device,
-allowing it to return to the state it was in before the power off.
+Tested on a bunch on qcom boards, no issues observed, regression of v5 no longers appears.
 
-Signed-off-by: Jack Kao <jack.kao@mediatek.com>
-Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
----
- .../net/wireless/mediatek/mt76/mt7925/pci.c   | 26 ++++++++++++++++---
- 1 file changed, 23 insertions(+), 3 deletions(-)
+Tested-by: Neil Armstrong <neil.armstrong@linaro.org>
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-index 387d56893ecb..b5a6eaa6c11a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-@@ -541,7 +541,7 @@ static int mt7925_pci_suspend(struct device *device)
- 	return err;
- }
- 
--static int mt7925_pci_resume(struct device *device)
-+static int _mt7925_pci_resume(struct device *device, bool restore)
- {
- 	struct pci_dev *pdev = to_pci_dev(device);
- 	struct mt76_dev *mdev = pci_get_drvdata(pdev);
-@@ -581,6 +581,9 @@ static int mt7925_pci_resume(struct device *device)
- 	napi_schedule(&mdev->tx_napi);
- 	local_bh_enable();
- 
-+	if (restore)
-+		goto failed;
-+
- 	mt76_connac_mcu_set_hif_suspend(mdev, false, false);
- 	ret = wait_event_timeout(dev->wait,
- 				 dev->hif_resumed, 3 * HZ);
-@@ -597,7 +600,7 @@ static int mt7925_pci_resume(struct device *device)
- failed:
- 	pm->suspended = false;
- 
--	if (err < 0)
-+	if (err < 0 || restore)
- 		mt792x_reset(&dev->mt76);
- 
- 	return err;
-@@ -608,7 +611,24 @@ static void mt7925_pci_shutdown(struct pci_dev *pdev)
- 	mt7925_pci_remove(pdev);
- }
- 
--static DEFINE_SIMPLE_DEV_PM_OPS(mt7925_pm_ops, mt7925_pci_suspend, mt7925_pci_resume);
-+static int mt7925_pci_resume(struct device *device)
-+{
-+	return _mt7925_pci_resume(device, false);
-+}
-+
-+static int mt7925_pci_restore(struct device *device)
-+{
-+	return _mt7925_pci_resume(device, true);
-+}
-+
-+static const struct dev_pm_ops mt7925_pm_ops = {
-+	.suspend = pm_sleep_ptr(mt7925_pci_suspend),
-+	.resume  = pm_sleep_ptr(mt7925_pci_resume),
-+	.freeze = pm_sleep_ptr(mt7925_pci_suspend),
-+	.thaw = pm_sleep_ptr(mt7925_pci_resume),
-+	.poweroff = pm_sleep_ptr(mt7925_pci_suspend),
-+	.restore = pm_sleep_ptr(mt7925_pci_restore),
-+};
- 
- static struct pci_driver mt7925_pci_driver = {
- 	.name		= KBUILD_MODNAME,
--- 
-2.34.1
+Probably only applies on patches 1, 9, 10, 11, 12, 13, 14, & 15
 
+Neil
 
