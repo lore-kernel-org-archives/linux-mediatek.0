@@ -4,95 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FA42CA1000
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Sep 2025 17:53:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABD41CA1002
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Sep 2025 23:19:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eDBs7h7WrM7l69Eva8SJd0Cr/dn27ADGm+SkuMR5gmc=; b=r+9j40dBv9adEMvXKcbOHJLiKt
-	NPY3FBh/sKc8GS3SuScDBoKBgBXzTXZuQO2Q1cBE3m8j0jQQHf+TdrZMvE98hK4sIEvQkMAKPs5mq
-	GCOSczPM1gKEq3NJRpwobO7EucUWct0DJ8xIgq1pW9YdU4elzKYNevgLTuiJ/ci2AfHJdtURHnmRT
-	awFIT20d6LBG9CSnpC3fxNOmUq4rc5sshMJB8cKrCooCyHXpDDqcPxxyU2UHLbtbGA0YFm6KW7Z1q
-	RC+lWIvLyEsr2OYizVw+8nwx/OtOvVlDc87qXSZPoAHnWbJ5MuTC7WLN6wMdXYa3PcEtQw0ljYDj3
-	qWrbOnew==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=m+J+n2NOKFg9L9/ZyjhMxEskn4FU3wfPmyt3s0CRQh4=; b=Ptmol0B8vSz0uX
+	CRyW2VEngKaVx8UCdXSBnmzLwsCJwb9N9NvpkE8IaWOhlHfH2ymF9oWCEqEQ/Ap4XHkVWQM5+PpzM
+	awvcGP5FNQUxUXT/GZBsE1WKE7BvWSzRVjNBP0U2hKGqVXLotCDXHbNDAZVcLdUVZsfiEARJ6zUFR
+	IsYOwUWi3xqcbnC6Hl8ytm1HRVNAYaIT2doWPI1HPpLFfXzy9VCyh+R8ULciOGUwwzX34Alha6xE1
+	a6uxCBh1g/WmxhWCQpHKtakAscOZTxKq2sb/2dXMggFCIv0k8fYKfIdw225Cq7cimT8DGiN6UxrzF
+	iwiZhvVyb7QtBpk5aGuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ut8io-0000000DVOv-44FF;
-	Mon, 01 Sep 2025 17:53:38 +0000
+	id 1utDnk-0000000EJ3v-1ApN;
+	Mon, 01 Sep 2025 23:19:04 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ut5fF-0000000CrBt-1lKD;
-	Mon, 01 Sep 2025 14:37:45 +0000
+	id 1utBbb-0000000DtFm-0sFx;
+	Mon, 01 Sep 2025 20:58:23 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 939CA60010;
-	Mon,  1 Sep 2025 14:37:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 91158C4CEF0;
-	Mon,  1 Sep 2025 14:37:36 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 67D1C600BB;
+	Mon,  1 Sep 2025 20:58:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BC79CC4CEF0;
+	Mon,  1 Sep 2025 20:58:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756737464;
-	bh=gIvp8Vp/E1swy4wyBXx3jb2SoCxt+LuCiS4lw6AuyVU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=DJgb866OavVlQXKjEcSDRgX01RL+TgYXMilYRhox1DG2A4pbmL/EMuUOSPQkhKm9y
-	 ZvbgzuWzlkHcKChIVmdcfSamTbXnIcObi8vEvl5/9muDCgJpxid02CByyOsACIh1yU
-	 OKX98+D8HARzpuduhCAuxsNQWh5qbLNOOQS83t6frONv3iLVNfsFrehXLjwvOHBqVS
-	 gJYuwaea4P7AtESKCzphgnRjeu3/3j4HbVoPTYqH34hpPGEiqkEowrs9BdVtPLHybV
-	 TE95H7tVbki8s9jUEg4vMUHVN4eZ+ZaHfW6KZvrIPhItfOg2iPgxsvk5RylWjzgxwD
-	 tuJt2jvYGPKOQ==
-Date: Mon, 1 Sep 2025 15:37:33 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: Linus Walleij <linus.walleij@linaro.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konradybcio@kernel.org>,
-	Alexey Klimov <alexey.klimov@linaro.org>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Sean Wang <sean.wang@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Paul Cercueil <paul@crapouillou.net>, Kees Cook <kees@kernel.org>,
-	Andy Shevchenko <andy@kernel.org>,
-	Andrew Morton <akpm@linux-foundation.org>,
-	David Hildenbrand <david@redhat.com>,
-	Lorenzo Stoakes <lorenzo.stoakes@oracle.com>,
-	"Liam R. Howlett" <Liam.Howlett@oracle.com>,
-	Vlastimil Babka <vbabka@suse.cz>, Mike Rapoport <rppt@kernel.org>,
-	Suren Baghdasaryan <surenb@google.com>,
-	Michal Hocko <mhocko@suse.com>, Dong Aisheng <aisheng.dong@nxp.com>,
-	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
-	Jacky Bai <ping.bai@nxp.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	NXP S32 Linux Team <s32@nxp.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Tony Lindgren <tony@atomide.com>,
-	Haojian Zhuang <haojian.zhuang@linaro.org>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Danilo Krummrich <dakr@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
-	linux-hardening@vger.kernel.org, linux-mm@kvack.org,
-	imx@lists.linux.dev, linux-omap@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-Subject: Re: [PATCH v6 06/15] pinctrl: imx: don't access the pin function
- radix tree directly
-Message-ID: <4a633387-08a9-43c8-81d7-488e7222aeda@sirena.org.uk>
-References: <20250828-pinctrl-gpio-pinfuncs-v6-0-c9abb6bdb689@linaro.org>
- <20250828-pinctrl-gpio-pinfuncs-v6-6-c9abb6bdb689@linaro.org>
- <61bad868-d976-4f49-805c-8d14d4d8b3e4@sirena.org.uk>
- <CAMRc=MfB_3e0sjCpV+XaKcKvit7Opk5LczH2wsxO=RftrAabjg@mail.gmail.com>
+	s=k20201202; t=1756760302;
+	bh=wF92u9Joc2AuDrhH1zBbRWs4j5eARuYiRn0/M2503aE=;
+	h=From:Subject:Date:To:Cc:From;
+	b=B3zVbZU3MKwDl7Y3iQaH8GnuotGg66HQ2TWvAII1euSxhIS2UTKy+izgk/TvdsnJ0
+	 r+wmB91YJOPXmsKqPyncFHwSkcbbRGzFaqbX6YwLUZtqg431i9kXGkpWUs3KLH0jcm
+	 AdC8rbCqB+pXpLEIsvjjnjoLCarh0yaked3n4Lsmxp1J8wB0VNeEgp9c2+S50lcd70
+	 pAc9UKsA/UG6iUUi+Pwnh3WsZz84lP1R31OIihWyW4+3NpO3ls8BY7WIh89vyDsRrr
+	 O3cAmUpyTjMx16R0J8k95Og7TSsiznUURNSURj4/SzS2H93tJi0jOOlko8G+q3KIn8
+	 r83dbnFqvEi+w==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH mt76 v2 00/14] wifi: mt76: mt7996: Decouple RRO logic from
+ WED support
+Date: Mon, 01 Sep 2025 22:57:56 +0200
+Message-Id: <20250901-mt7996-rro-rework-v2-0-1f95086b51d1@kernel.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="j8LdXSlZH7SdW4XI"
-Content-Disposition: inline
-In-Reply-To: <CAMRc=MfB_3e0sjCpV+XaKcKvit7Opk5LczH2wsxO=RftrAabjg@mail.gmail.com>
-X-Cookie: Auction:
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIANQItmgC/32NQQ6CMBBFr0Jm7ZjSILSuvIdhQdopNCglU1I1p
+ He3cgCX7yX//R0isacI12oHpuSjD0sBearATMMyEnpbGKSQF6Fkjc+t07pF5oBMr8AzykYLQyS
+ csArKbmVy/n00733hycct8Oe4SPXP/qulGgW2RjVdN1jdanebiRd6nAOP0OecvwhPAf6zAAAA
+X-Change-ID: 20250821-mt7996-rro-rework-2490cee0f0d8
+To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Sujuan Chen <sujuan.chen@mediatek.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Rex Lu <rex.lu@mediatek.com>, 
+ Benjamin Lin <benjamin-jw.lin@mediatek.com>
+X-Mailer: b4 0.14.2
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,36 +77,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Decouple RRO logic (v3.0 and v3.1) from WED support in MT7996 driver in
+order to reuse it when WED module is not available.
+Introduce WED offload support for MT7992 chipset in MT7996 driver.
 
---j8LdXSlZH7SdW4XI
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+---
+Changes in v2:
+- Fix SER when Wireless Ethernet Dispatcher (WED) is disabled
+- Rebase on top of mt76 main branch
+- Link to v1: https://lore.kernel.org/r/20250821-mt7996-rro-rework-v1-0-6c8477ad969f@kernel.org
 
-On Mon, Sep 01, 2025 at 03:20:44PM +0200, Bartosz Golaszewski wrote:
+---
+Lorenzo Bianconi (6):
+      wifi: mt76: Add reset_idx to reset_q mt76_queue_ops signature.
+      wifi: mt76: Remove q->ndesc check in mt76_dma_rx_fill()
+      wifi: mt76: mt7996: Fix tx-queues initialization for second phy on mt7996
+      wifi: mt76: mt7996: Fix RX packets configuration for primary WED device
+      wifi: mt76: Add rx_queue_init callback
+      wifi: mt76: Add mt76_dma_get_rxdmad_c_buf utility routione
 
-> That's not a lot of info but it fails in strcmp() which - I suppose -
-> is the one in pinmux_func_name_to_selector(). Any chance you could
-> check what the value of np->name is in imx_pinctrl_parse_functions()?
-> Is it NULL for some reason?
+Rex Lu (8):
+      wifi: mt76: Differentiate between RRO data and RRO MSDU queues
+      wifi: mt76: mt7996: Initial DMA configuration for MT7992 WED support
+      wifi: mt76: mt7996: Enable HW RRO for MT7992 chipset
+      wifi: mt76: mt7996: Introduce the capability to reset MT7992 WED device
+      wifi: mt76: mt7996: Enable WED for MT7992 chipset
+      wifi: mt76: mt7996: Introduce RRO MSDU callbacks
+      wifi: mt76: mt7996: Decouple RRO logic from WED support
+      wifi: mt76: mt7996: Add SW path for HW-RRO v3.1
 
-[    0.628245] imx8mp-pinctrl 30330000.pinctrl: np->name pinctrl
+ drivers/net/wireless/mediatek/mt76/dma.c           | 215 +++++++++---
+ drivers/net/wireless/mediatek/mt76/dma.h           |  47 ++-
+ drivers/net/wireless/mediatek/mt76/mt76.h          |  54 ++-
+ drivers/net/wireless/mediatek/mt76/mt7915/dma.c    |   4 +-
+ drivers/net/wireless/mediatek/mt76/mt792x_dma.c    |   6 +-
+ drivers/net/wireless/mediatek/mt76/mt7996/dma.c    | 326 ++++++++++++++----
+ drivers/net/wireless/mediatek/mt76/mt7996/init.c   | 310 ++++++++++++-----
+ drivers/net/wireless/mediatek/mt76/mt7996/mac.c    | 367 ++++++++++++++++++++-
+ drivers/net/wireless/mediatek/mt76/mt7996/main.c   |  19 +-
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c    |   4 +-
+ drivers/net/wireless/mediatek/mt76/mt7996/mmio.c   |  89 +++--
+ drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h |  91 ++++-
+ drivers/net/wireless/mediatek/mt76/mt7996/pci.c    |   3 +-
+ drivers/net/wireless/mediatek/mt76/mt7996/regs.h   |  32 +-
+ drivers/net/wireless/mediatek/mt76/wed.c           |   8 +-
+ 15 files changed, 1306 insertions(+), 269 deletions(-)
+---
+base-commit: 533a336bdd8154e69439c5f157fdc69a448942a3
+change-id: 20250821-mt7996-rro-rework-2490cee0f0d8
 
-https://lava.sirena.org.uk/scheduler/job/1758947#L705
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
---j8LdXSlZH7SdW4XI
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmi1r60ACgkQJNaLcl1U
-h9BW/wf/VkjCjvE+ktBljc+ZJ9dT0UQZrXYUDHUyuCETxomTnFA+SILt5aJ5bGe/
-iD8AWBpbbDsJH4vnF0ozS/kwuILQKFDettcRtaH7dIBsn/izkOQipQk8GdpbQ8WM
-hWYcC4httv6HQ2rMJMgKMjRxy7L5L6xf+VRzgPc8X+0GfzYeCig6jLv6tX80PLkO
-kOxJn1iP3VVHkXsDCw2fENaiXRuUOaSlrbwkkvBihKNbrM0499j/uQ4hwqAT8bTa
-9ubBJhS8X9FGO12dl2qkEJPtjal2M0Vf4H4PoJilobNInq/WByIDsQANxJC8XDhG
-4/h5vZiPNAzd8Qj8VQAkfeNquySq2Q==
-=Lt5F
------END PGP SIGNATURE-----
-
---j8LdXSlZH7SdW4XI--
 
