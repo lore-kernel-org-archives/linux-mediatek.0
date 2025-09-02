@@ -4,83 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B27ECA1007
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Sep 2025 19:12:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25EEFCA1005
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Sep 2025 19:12:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eU5M79LjKC4+cwkd5Ag8mxW8khc38EXWtzBPf6N3YXM=; b=G80eNZ/y1OIUR//98VB55TdGeu
-	V49sTNIrpal2m9upFgKBgtAsHcBqpcJax3udXgnLbQiCY/k+Q4mPukIlktUPBrTBbU9Ygyx4252hK
-	dIqH5iJCSHYLw0aOLHMXFg4pGQVkDmJKUvxooVEBXLkJJIJ5ZtlInsf45gTJP1uYU4ijkYhFbjzit
-	chgUAL1pAg8yysR6IlROYCDuSjMCQHULOibWXkLKo73SKwX/Cm3eQOEMrIn3SZE/se9enPMkL4XIY
-	ggfjldM5imvwkVv/YaOiW/lPqM8mLvvN793pZ3O0ccVoU7C83CRM80oBqhYYrxvfybbgJoYe//fMp
-	zdNGDMPA==;
+	bh=eGnUT6FgCyMwUMrN5WxQNTGRhMGZl0QVyrFIAhmCYRY=; b=KCntAH6x/Ip4VL1DmeBGyrbQxa
+	GgwBlMtdzpg9XvaNjuDBzbdj+j665mkgChcViUVSF5Jpm8eB736MGx9hyRN/K+du/UbbdP7BifpUj
+	4+AuIJjG2U1iROWgZ32gboIF/MJgTgzYKec/+oPg42uor9FRDb98OXD8oWtERt82MoubkoQNcbbEM
+	VGvLtNBi+UzMqxHFnxMexP82gciZVOi6hCFch5Rmi71c4gZBAHnkEXLKtcnr73y0/TG++2LFYMad3
+	R9IiQl9vcmbLzGDDNHha+PgPc+TfFSa8bShG5xgye/SViFLOw34TF2U1sfC6tsF2C/qsim2nLWeTv
+	rlzIlMMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utWR7-00000001eOe-0fir;
+	id 1utWR7-00000001eQ0-2z9n;
 	Tue, 02 Sep 2025 19:12:57 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utSgY-00000000bwt-3Aq5;
-	Tue, 02 Sep 2025 15:12:38 +0000
+	id 1utSoW-00000000e8Y-4AeC;
+	Tue, 02 Sep 2025 15:20:53 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 310196020C;
-	Tue,  2 Sep 2025 15:12:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DB76CC4CEED;
-	Tue,  2 Sep 2025 15:12:26 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 2B4EA6020C;
+	Tue,  2 Sep 2025 15:20:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 991B9C4CEED;
+	Tue,  2 Sep 2025 15:20:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756825957;
-	bh=Qm0MENDGoBpJreb7usssnkk4Erhkc9mDyI1kYmenU/k=;
+	s=k20201202; t=1756826451;
+	bh=PgnpS+OJ+OH80B0RKl39e2pHarXjAdJZp7WT5DCSVcU=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=fha+upITUjR1W0/UPbGo5pqDEYYHq2VFch/hzfP45Cc4DUFZMu/U1HZBKmEZDtzCu
-	 iBDx0UtAvG1Se/1xc+9eCfwZyjV/3B8QlHOzcSsDpxMRslOobnPh84NMMkD/x0Dv/g
-	 xRaeCkokcz/HiStL81OWybnmfeke8xbUFORD+3qh2QF881mhkN4aMXU+IZJA96/1Sp
-	 GT7K7ZaoP9kdQDHPvQM6s9ZrnoBcNhmkS02rGDVOVe7xI1V4vOYoP+D+XPHVNyGzze
-	 eB8+jAUjKEOBQZvHIRChGOBN8u5j/+qtdlLin+slLI13vbKI95OGhjjit3j4/QyXxt
-	 xBDYlmqE/1jCA==
-Message-ID: <1034c70a-da67-4914-b23c-8d006b7611bf@kernel.org>
-Date: Tue, 2 Sep 2025 17:12:24 +0200
+	b=Q2Rup3PTliTol+0fzWRBDpCRhts7KHhL2QASNisikZ4XIMfu3INaRFmqz2v7TwpAd
+	 e8JEhL6HcgifGBcBHa2mz8+8dj3exN59qmN9HEPNCwqojBqXBs8ZvlC+Rj0vsWi/Eg
+	 a68NQBn0ql05cXZu+ayVXgnt/twOLZDM5JHr960wRqLeDSu1wvMNn+eVBCQaz+B1wq
+	 C0MF814H1j8X/HLTzo2vBDTD1ojE0M+e4RGPCYefs9cfk77EkOwBnk25uOeNVk7u8N
+	 z6T1Jq5uFg/FAZA9p0XoFHz4DLCzPDSlWSUlCh47zJsSGOLREUIXImF3KRNsNWvBAo
+	 64uoXcVgwHAEA==
+Message-ID: <63e43445-ef5f-49b2-85c1-f85d95426d5d@kernel.org>
+Date: Tue, 2 Sep 2025 17:20:41 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 12/16] pinctrl: qcom: use generic pin function helpers
-To: Andy Shevchenko <andriy.shevchenko@intel.com>,
- Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: Linus Walleij <linus.walleij@linaro.org>,
- Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konradybcio@kernel.org>,
- Alexey Klimov <alexey.klimov@linaro.org>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>,
+Subject: Re: (subset) [PATCH v2] dt-bindings: mfd: Move embedded controllers
+ to own directory
+To: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Benson Leung <bleung@chromium.org>,
+ Guenter Roeck <groeck@chromium.org>, Tim Harvey <tharvey@gateworks.com>,
+ Michael Walle <mwalle@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
+ Bartosz Golaszewski <brgl@bgdev.pl>, Jean Delvare <jdelvare@suse.com>,
+ Thomas Gleixner <tglx@linutronix.de>, =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?=
+ <ukleinek@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
+ Mathieu Poirier <mathieu.poirier@linaro.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Paul Cercueil <paul@crapouillou.net>, Kees Cook <kees@kernel.org>,
- Andy Shevchenko <andy@kernel.org>, Andrew Morton
- <akpm@linux-foundation.org>, David Hildenbrand <david@redhat.com>,
- Lorenzo Stoakes <lorenzo.stoakes@oracle.com>,
- "Liam R. Howlett" <Liam.Howlett@oracle.com>, Vlastimil Babka
- <vbabka@suse.cz>, Mike Rapoport <rppt@kernel.org>,
- Suren Baghdasaryan <surenb@google.com>, Michal Hocko <mhocko@suse.com>,
- Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>,
- Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- NXP S32 Linux Team <s32@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
- Tony Lindgren <tony@atomide.com>, Haojian Zhuang
- <haojian.zhuang@linaro.org>, Geert Uytterhoeven <geert+renesas@glider.be>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "Rafael J. Wysocki" <rafael@kernel.org>, Danilo Krummrich <dakr@kernel.org>,
- Neil Armstrong <neil.armstrong@linaro.org>, Mark Brown <broonie@kernel.org>,
- linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
- linux-hardening@vger.kernel.org, linux-mm@kvack.org, imx@lists.linux.dev,
- linux-omap@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
- Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
- Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-References: <20250902-pinctrl-gpio-pinfuncs-v7-0-bb091daedc52@linaro.org>
- <20250902-pinctrl-gpio-pinfuncs-v7-12-bb091daedc52@linaro.org>
- <aLbt2euqYQM5xXuZ@smile.fi.intel.com>
+ Cheng-Yi Chiang <cychiang@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Wim Van Sebroeck <wim@linux-watchdog.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Tinghan Shen <tinghan.shen@mediatek.com>, devicetree@vger.kernel.org,
+ chrome-platform@lists.linux.dev, linux-kernel@vger.kernel.org,
+ linux-gpio@vger.kernel.org, linux-hwmon@vger.kernel.org,
+ linux-pwm@vger.kernel.org, linux-remoteproc@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-sound@vger.kernel.org, linux-watchdog@vger.kernel.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Mathew McBride <matt@traverse.com.au>
+References: <20250822075712.27314-2-krzysztof.kozlowski@linaro.org>
+ <175682479961.2401991.17056649550187344851.b4-ty@kernel.org>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -126,7 +117,7 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <aLbt2euqYQM5xXuZ@smile.fi.intel.com>
+In-Reply-To: <175682479961.2401991.17056649550187344851.b4-ty@kernel.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -143,31 +134,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 02/09/2025 15:15, Andy Shevchenko wrote:
-> On Tue, Sep 02, 2025 at 01:59:21PM +0200, Bartosz Golaszewski wrote:
->>
->> With the pinmux core no longer duplicating memory used to store the
->> struct pinfunction objects in .rodata, we can now use the existing
->> infrastructure for storing and looking up pin functions in qualcomm
->> drivers. Remove hand-crafted callbacks.
+On 02/09/2025 16:53, Lee Jones wrote:
+>> [...]
 > 
-> ...
+> Applied, thanks!
 > 
->> +	for (i = 0; i < soc_data->nfunctions; i++) {
->> +		func = &soc_data->functions[i];
->> +
->> +		ret = pinmux_generic_add_pinfunction(pctrl->pctrl, func, NULL);
->> +		if (ret < 0)
-> 
-> Why not simply
-> 
-> 		if (ret)
+> [1/1] dt-bindings: mfd: Move embedded controllers to own directory
+>       commit: 152afab28f7659a4292c9f7d3324eaeb49a55b8b
 
 
-Because existing code is as readable? This is just some serious
-nitpicking which is not actually helping at all at v7.
+There was a v3 here:
+
+https://lore.kernel.org/r/20250825081201.9775-2-krzysztof.kozlowski@linaro.org/
 
 Best regards,
 Krzysztof
-
 
