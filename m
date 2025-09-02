@@ -4,51 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BC09CA100E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Sep 2025 00:44:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCD2FCA1010
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Sep 2025 00:44:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Fpv1SoLY/N77JkIb142ZPgXdcdlyIxxhftHl3vgHLBI=; b=eIyNxL/Do01fHMrtSo3tzQ9VfK
-	8/Q12Sno6HGrDvu8gQWBmRER/cGqCPDS9dLqD+YNjWVYO7Zcqr5xfZS+l7rVxXHvjuwUskvNqsvc5
-	dXIVxg/4aDrJHiJV4uh7t1w3MR6VyVvxqysAtTp3tSik1hEb7Yb9wuT8BLie/y91dWom7CP/fnKf7
-	O7X69eP6/MQqroG90TMA+gz6NVA8n1xG6U2lUpurJnf8oibhWzcfLJBg1sS559TXkUlOT+dLHtqj5
-	ACC9p1wc5k2yY1sDyqLUo7372VMP8lMc6z1/cQXVloapR6Lbaz3294Y1Xye2Td8GLmZVxgFdayZd3
-	H/V0te3g==;
+	bh=BIsHGNsiK2Z/JJXBblLyh2Okd4D4xRnnzFvPUQb5L3k=; b=mOh6JgAcBkjvE2m9/Q6yeuod4w
+	uAWWQh+L8lQDmsbK0cwYM/hmXCUHJXJB4UnLfH4LlPE91jvlg1y18XOk0LnyY+XZXaYeP1Dj2n55D
+	uowY6hPY4OILe2MFPa/LU1NI9ewDTsibcpVrtJddjNuaZg5pCT4UPwqn2FzOgi33n0yDT7XIUhbIG
+	MC7S0ibFje6ana21j1cXsN/VlgVtV+LIteyhm3gvqk8UVdLI8cnd1BQ7AeAdnkXJKG5YUo6DuysS9
+	G4Dipp//97nMw781WO26Ly/vdOhEH7gvPS581ireEqDngcEGGWWiKR1wmXz/ZI36JuKlW8l3EKPFt
+	CfeDoNWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utbc1-00000002ovC-1WXz;
-	Wed, 03 Sep 2025 00:44:33 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1utbc4-00000002oz2-0HrT;
+	Wed, 03 Sep 2025 00:44:36 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utWWD-00000001gYl-2iFq;
-	Tue, 02 Sep 2025 19:18:13 +0000
+	id 1utWWT-00000001gd6-31vo;
+	Tue, 02 Sep 2025 19:18:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=BIsHGNsiK2Z/JJXBblLyh2Okd4D4xRnnzFvPUQb5L3k=; b=mweNoniuwBJ8TJMcZ/HBNUdqCL
+	/zsCyfyO+jR6QfGSb0Eyb3ETCiDNQxd7uzuVD9U2AkJYG4zYIHkE2hACfXNg2N6vC918raNuaPrAa
+	0f/7M2SQSAMLqTrXTzfxiGu5Tdom4dm2uyXZdE9T2tLsRULn9l8nzOH1c/klKIq2VVRBXOJoD0AuC
+	9wTMD7bqdC6rxmxT+sYLS89FyKtbhQ73j2cid+e+FlEfTWxME82j1T+oVJIivHf5x1gHQtZGcy1+8
+	EBHfLcM41FVk4da/OeN/Tj3rQdsvEEF6Y5urj+v9SX1BTnU2kxEm5N8mVMct42wyYsypRtK11ASJ7
+	pKP0ikvA==;
+Received: from sea.source.kernel.org ([172.234.252.31])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1utWWP-000000043Fq-1Q1Z;
+	Tue, 02 Sep 2025 19:18:28 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1856660055;
-	Tue,  2 Sep 2025 19:18:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6C8F9C4CEED;
-	Tue,  2 Sep 2025 19:18:12 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 8DCA740B3A;
+	Tue,  2 Sep 2025 19:18:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1768DC4CEED;
+	Tue,  2 Sep 2025 19:18:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756840692;
-	bh=W6N68IbV0jiwtH3MAFqH+TY6TjH35pe5n2zoPQK40aQ=;
+	s=k20201202; t=1756840695;
+	bh=k1s+njTPjCd5rbLQdcWTH0bKYzRVPZIFCmHz60CudLQ=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=YPfCNIwKSDkFa9efurEB/QOjR9o1R/iJY/6BVw6HIl3L3kPzSPrakKFiHiCB9nV8Z
-	 gxPsemPx0URdT1FXgYlGMFJHw62UyBzPXICItQmI8c5S1RHwN8NIm554pecFRyjdoa
-	 yA17w/87IpKqIae4Z80HjwkmIQ4NyE19/xZhVnY0c+lkFJZhmMiiofIBrDrvAj0u9e
-	 pCpPDDrYPKJvKQS9TLC/fUna8KtHfZEJryaNWbdeJdMHpZzgHZDJjpHSB0ECQo4zRA
-	 5AMka1F1sbSAUxr5nPWSRgT9bZTZSv11xVHfaivbZWD8/VZheBUH5Ue0BF7L8dIeUb
-	 s6HbMWu4vLONw==
+	b=itB+trEt5DViG5SnOs7hwgWZSqXonSb3VeaYMyWTtt169z4MGqo/eSKfnRN0CoLfW
+	 aE0KmgZkjnDd3yC3hlTdB6Ir2EoyXj/e75fnmJdv3D2a22XOuYxxxIfyGOG2mI25ub
+	 2lN4Fg8Li4bWvj9us9Zz93cC4Ylf1queq7UuUdU8XDw0D1wG+tz+r4iRViRwaG7b2R
+	 lTfQxSIR5MczW03wyCX4v7zmK1+s3JZ1l/kbrQwzqflD/89QXueDRs5bunXIO2wcVc
+	 NYIeEhyl9LD221ISCkM2mtSjpQUpAzl764r835HFY7JiZQLWStTRH5LKVRfz/0Mul+
+	 r76dvEp+e1bKg==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Tue, 02 Sep 2025 21:17:52 +0200
-Subject: [PATCH mt76 v3 02/15] wifi: mt76: Remove q->ndesc check in
- mt76_dma_rx_fill()
+Date: Tue, 02 Sep 2025 21:17:53 +0200
+Subject: [PATCH mt76 v3 03/15] wifi: mt76: Differentiate between RRO data
+ and RRO MSDU queues
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250902-mt7996-rro-rework-v3-2-8f813890959e@kernel.org>
+Message-Id: <20250902-mt7996-rro-rework-v3-3-8f813890959e@kernel.org>
 References: <20250902-mt7996-rro-rework-v3-0-8f813890959e@kernel.org>
 In-Reply-To: <20250902-mt7996-rro-rework-v3-0-8f813890959e@kernel.org>
 To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
@@ -58,8 +72,12 @@ To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>,
  Sujuan Chen <sujuan.chen@mediatek.com>, 
  Lorenzo Bianconi <lorenzo@kernel.org>
 Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org
+ linux-mediatek@lists.infradead.org, Rex Lu <rex.lu@mediatek.com>, 
+ Benjamin Lin <benjamin-jw.lin@mediatek.com>
 X-Mailer: b4 0.14.2
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250902_201826_148368_83F92EEE 
+X-CRM114-Status: GOOD (  11.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,28 +92,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Remove q->ndesc check in mt76_dma_rx_fill routine since this is already
-done in mt76_dma_rx_fill_buf().
+From: Rex Lu <rex.lu@mediatek.com>
 
+This is a preliminary patch to enable WED support for MT7992 Kite
+chipset supported by MT7996 driver.
+
+Co-developed-by: Sujuan Chen <sujuan.chen@mediatek.com>
+Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
+Co-developed-by: Benjamin Lin <benjamin-jw.lin@mediatek.com>
+Signed-off-by: Benjamin Lin <benjamin-jw.lin@mediatek.com>
+Signed-off-by: Rex Lu <rex.lu@mediatek.com>
+Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/dma.c | 3 ---
- 1 file changed, 3 deletions(-)
+ drivers/net/wireless/mediatek/mt76/dma.c  |  2 +-
+ drivers/net/wireless/mediatek/mt76/mt76.h | 13 ++++++++++---
+ 2 files changed, 11 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireless/mediatek/mt76/dma.c
-index 25c26ff8c8e24352f2bb31c6e185e628a56f609b..18c2a2de59897d038392a00ed5fb5a0de188ac95 100644
+index 18c2a2de59897d038392a00ed5fb5a0de188ac95..68b1dd1dbbe0e2b4850e02ee70253b5e248c69bf 100644
 --- a/drivers/net/wireless/mediatek/mt76/dma.c
 +++ b/drivers/net/wireless/mediatek/mt76/dma.c
-@@ -671,9 +671,6 @@ int mt76_dma_rx_fill(struct mt76_dev *dev, struct mt76_queue *q,
- {
- 	int frames;
+@@ -477,7 +477,7 @@ mt76_dma_dequeue(struct mt76_dev *dev, struct mt76_queue *q, bool flush,
+ 	if (!q->queued)
+ 		return NULL;
  
--	if (!q->ndesc)
--		return 0;
--
- 	spin_lock_bh(&q->lock);
- 	frames = mt76_dma_rx_fill_buf(dev, q, allow_direct);
- 	spin_unlock_bh(&q->lock);
+-	if (mt76_queue_is_wed_rro_data(q))
++	if (mt76_queue_is_wed_rro_data(q) || mt76_queue_is_wed_rro_msdu_pg(q))
+ 		return NULL;
+ 
+ 	if (!mt76_queue_is_wed_rro_ind(q)) {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 314221fec512c99cc15b942b7ef7ccecfd1d987e..58d8aa213bb7bf7d1bab0926eca23303d8a733a7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -1785,8 +1785,14 @@ static inline bool mt76_queue_is_wed_rro_ind(struct mt76_queue *q)
+ static inline bool mt76_queue_is_wed_rro_data(struct mt76_queue *q)
+ {
+ 	return mt76_queue_is_wed_rro(q) &&
+-	       (FIELD_GET(MT_QFLAG_WED_TYPE, q->flags) == MT76_WED_RRO_Q_DATA ||
+-		FIELD_GET(MT_QFLAG_WED_TYPE, q->flags) == MT76_WED_RRO_Q_MSDU_PG);
++	       FIELD_GET(MT_QFLAG_WED_TYPE, q->flags) == MT76_WED_RRO_Q_DATA;
++}
++
++static inline bool mt76_queue_is_wed_rro_msdu_pg(struct mt76_queue *q)
++{
++	return mt76_queue_is_wed_rro(q) &&
++	       FIELD_GET(MT_QFLAG_WED_TYPE, q->flags) ==
++	       MT76_WED_RRO_Q_MSDU_PG;
+ }
+ 
+ static inline bool mt76_queue_is_wed_rx(struct mt76_queue *q)
+@@ -1795,7 +1801,8 @@ static inline bool mt76_queue_is_wed_rx(struct mt76_queue *q)
+ 		return false;
+ 
+ 	return FIELD_GET(MT_QFLAG_WED_TYPE, q->flags) == MT76_WED_Q_RX ||
+-	       mt76_queue_is_wed_rro_ind(q) || mt76_queue_is_wed_rro_data(q);
++	       mt76_queue_is_wed_rro_ind(q) || mt76_queue_is_wed_rro_data(q) ||
++	       mt76_queue_is_wed_rro_msdu_pg(q);
+ 
+ }
+ 
 
 -- 
 2.50.1
