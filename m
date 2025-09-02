@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BD75CA100D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Sep 2025 19:11:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CE2FCA1005
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Sep 2025 19:12:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hRQ10qRNRmzAf6GZKpqv2GmmEnSMmDjPlw/asGr06Ss=; b=MB8Kdv1JM3qVeqUJGuterPE6Ks
-	fmSakbmDViAwJehw6MGiCkb5xVuH0U64Qe00kbP39gNWDokwlWSoNk4zRRUTyyTJS+QcdNIZBiepW
-	wQ5aUqX+x9BBNEPgtKCkgVQgOn1dYrWm6cPYHkiM7W42nkP2Z3TdwT/5W83T/A8flZdzdQ3Dr8IA8
-	ZDSuNaV6vCfHwF48joN5LhDMCYoBRcbTo/XhPPYeq44vo9xRUSxO4l+OS76DdqAvP7OfPqEswu16k
-	u92vBVlfq6DzeNK/YHf8nT6yJJkVHp6rNk9F6ni6cPXY4h8lREqvDtcfX107zUtAMavaU+ZhVp8il
-	0ptibwWA==;
+	bh=/WF7aEQnm0jLfAjvjTd4aQ7WUKxi91KNM+dqsY4Waks=; b=kyUmDpkuSgxNZdBwpZlm1BcyDR
+	8nS7sInxqkhTLCtXVD3vjOOHSxVuqYqFPO8MkMHyi6R+tyVlIguIfPMkYrHgEqZ75Y4ZInYd9a3IP
+	Mlj4mnkMaMihDdFtMOhR7Gjl/TPwUxP0nrVmmIje28AtIVdlgRLaYH1U44kh7uBu3Y58PsPxLi2rE
+	x7xVzE0xlCzRmPzpOUZrdwOZZZP5Z4uAKr4L+488/cCuSKgJa3cVUYPT7iD6D1ajvKaM89dblhShG
+	6Uuw0WcprKXUDPGOJ2YvkqVP/67+46Jo5OYd58mn27/zRh8tYA5bMNLJYtJeeSe8aZwoTZWcUqZcQ
+	x10nVqPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utWPy-00000001cjy-3xKC;
-	Tue, 02 Sep 2025 19:11:46 +0000
-Received: from mgamail.intel.com ([198.175.65.15])
+	id 1utWQe-00000001dgM-3EYU;
+	Tue, 02 Sep 2025 19:12:28 +0000
+Received: from mgamail.intel.com ([198.175.65.9])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utRPB-00000000ADy-2t1n;
-	Tue, 02 Sep 2025 13:50:39 +0000
+	id 1utS9y-00000000PZB-13W7;
+	Tue, 02 Sep 2025 14:38:59 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1756821037; x=1788357037;
+  t=1756823938; x=1788359938;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:content-transfer-encoding:in-reply-to;
-  bh=pxx41/VBJwEQCpU5u+vMOlc6AdRXauTq/XBO/2b9BuM=;
-  b=A8MSM3zko1l90dWbdTL5yeeYBsP0E0tovi964SFSc9mL22+FV/Ub9kJp
-   IigKKeTXXVwzwDUZoecUrqOgZ20CsRpnAUdWFAkBrfpl/z81y8Zgmr6cj
-   bnAGNQJZvz+usEHPTKbw6r7AgzpP+yIB0clSDxTm9oEJjLKDnIMFjcoai
-   xJlngDiOMbbkeQyM4+VFXT4jUaeVXF4b4XOsCojp40teo0PSwM5sofIBV
-   QHJI+U/e+WmjLdZOom5v3RN80X5nlLKSKDHNvIeFmPN1l3MN4Vfhp2yt9
-   lvsdEaov6f9518WJuLlHM+UTZEPnOSn3kFPml1Ldew37nBxdYU2OQthgD
-   w==;
-X-CSE-ConnectionGUID: S9y4f8m9RE+pqwuCGEh8zQ==
-X-CSE-MsgGUID: xjqJyrUnTYeT5Lpi/Bq4Qw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11541"; a="62738137"
-X-IronPort-AV: E=Sophos;i="6.18,230,1751266800"; 
-   d="scan'208";a="62738137"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
-  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Sep 2025 06:50:37 -0700
-X-CSE-ConnectionGUID: ZHIE/dHOSB+FAZRCRRCs4Q==
-X-CSE-MsgGUID: 2IiLBKTERdG7VU87j86+iA==
+  bh=ZYIXrBHD4yIy6w4Vca2iFtAhmSRGyH8KSR03FUXVhpM=;
+  b=bZ/fnb1ccBvlyDETzNrmMszbX1UjqldGM9QuCYekpTOsVdynsdDoy2Y1
+   /IcQivNv3U8WBA1lwa3DIHoG0GzLnGn2M2ldL4ly2t6PkCdXuYOJwvPYy
+   /bdm2XABvogi6pJlZCFuQoAOOD+4hDwIqVCzPe0g1faUBK+N+eoTKg/py
+   u3yzth18A86eht0Tjblp5WMnRXeXlJgWN7b3Eykse9JJt+0mOeULPquNq
+   PyUwvUDiBeehqrF7/DwHuAhEJCfA3xY3nWS+yiGfg/k5tSXQhVn9kYXIm
+   vaeAu9A+n+VUEuXjYclvHjEltU2xKCBPlCgbTWQ8ghP9JB18DmXZoSjvw
+   A==;
+X-CSE-ConnectionGUID: SMgX9vWsT/Oq/Zs+krGegQ==
+X-CSE-MsgGUID: oSMLBLFnRMysSn1AyqRnTQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11531"; a="81685669"
+X-IronPort-AV: E=Sophos;i="6.17,312,1747724400"; 
+   d="scan'208";a="81685669"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Sep 2025 07:38:57 -0700
+X-CSE-ConnectionGUID: kELmzdc/Ro+s1d7reAqBKA==
+X-CSE-MsgGUID: V+D0bl4QSJiRO98p+FkBCw==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.18,230,1751266800"; 
-   d="scan'208";a="176590815"
+   d="scan'208";a="175657994"
 Received: from smile.fi.intel.com ([10.237.72.52])
-  by orviesa005.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Sep 2025 06:50:25 -0700
+  by orviesa004.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Sep 2025 07:38:47 -0700
 Received: from andy by smile.fi.intel.com with local (Exim 4.98.2)
 	(envelope-from <andriy.shevchenko@intel.com>)
-	id 1utROu-0000000AhyY-2NM3;
-	Tue, 02 Sep 2025 16:50:20 +0300
-Date: Tue, 2 Sep 2025 16:50:20 +0300
+	id 1utS9j-0000000AiZa-008W;
+	Tue, 02 Sep 2025 17:38:43 +0300
+Date: Tue, 2 Sep 2025 17:38:42 +0300
 From: Andy Shevchenko <andriy.shevchenko@intel.com>
 To: Bartosz Golaszewski <brgl@bgdev.pl>
 Cc: Linus Walleij <linus.walleij@linaro.org>,
@@ -97,24 +97,21 @@ Cc: Linus Walleij <linus.walleij@linaro.org>,
 	imx@lists.linux.dev, linux-omap@vger.kernel.org,
 	linux-renesas-soc@vger.kernel.org,
 	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
-	stable@vger.kernel.org
-Subject: Re: [PATCH v7 01/16] pinctrl: check the return value of
- pinmux_ops::get_function_name()
-Message-ID: <aLb2HH5zgxdbDiPo@smile.fi.intel.com>
+	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+Subject: Re: [PATCH v7 16/16] pinctrl: qcom: make the pinmuxing strict
+Message-ID: <aLcBcjvMbrxoDYoC@smile.fi.intel.com>
 References: <20250902-pinctrl-gpio-pinfuncs-v7-0-bb091daedc52@linaro.org>
- <20250902-pinctrl-gpio-pinfuncs-v7-1-bb091daedc52@linaro.org>
- <aLbrz5DYS5Yxx_UE@smile.fi.intel.com>
- <CAMRc=Mfx5czDM=vfEYhFtVO3MviYaW4wKBYjGZ9ZnMbr-+T4mg@mail.gmail.com>
+ <20250902-pinctrl-gpio-pinfuncs-v7-16-bb091daedc52@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAMRc=Mfx5czDM=vfEYhFtVO3MviYaW4wKBYjGZ9ZnMbr-+T4mg@mail.gmail.com>
+In-Reply-To: <20250902-pinctrl-gpio-pinfuncs-v7-16-bb091daedc52@linaro.org>
 Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
  krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250902_065037_801197_57C2B67A 
-X-CRM114-Status: GOOD (  25.98  )
+X-CRM114-CacheID: sfid-20250902_073858_335856_5ED29C5B 
+X-CRM114-Status: GOOD (  11.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,66 +126,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 02, 2025 at 03:29:31PM +0200, Bartosz Golaszewski wrote:
-> On Tue, Sep 2, 2025 at 3:06â€¯PM Andy Shevchenko
-> <andriy.shevchenko@intel.com> wrote:
-> > On Tue, Sep 02, 2025 at 01:59:10PM +0200, Bartosz Golaszewski wrote:
-> > >
-> > > While the API contract in docs doesn't specify it explicitly,
-> >
-> > So, why not to amend the doc at the same time?
+On Tue, Sep 02, 2025 at 01:59:25PM +0200, Bartosz Golaszewski wrote:
+> From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 > 
-> Because this series is already big as is. That would be another commit
-> that can be separate.
+> The strict flag in struct pinmux_ops disallows the usage of the same pin
+> as a GPIO and for another function. Without it, a rouge user-space
+> process with enough privileges (or even a buggy driver) can request a
+> used pin as GPIO and drive it, potentially confusing devices or even
+> crashing the system. Set it globally for all pinctrl-msm users.
 
-I meant _in the same_ patch.
-
-> > > the generic implementation of the get_function_name() callback from struct
-> > > pinmux_ops - pinmux_generic_get_function_name() - can fail and return
-> > > NULL. This is already checked in pinmux_check_ops() so add a similar
-> > > check in pinmux_func_name_to_selector() instead of passing the returned
-> > > pointer right down to strcmp() where the NULL can get dereferenced. This
-> > > is normal operation when adding new pinfunctions.
-
-> > Fixes?
-> 
-> This has always been like that.
-> 
-> > Reported?
-> 
-> I mean, technically Mark Brown reported my previous patch failing but
-> I don't think we do this if we're still within the same series just
-> another iteration?
-> 
-> > Closes?
-> 
-> Ditto.
-
-I meant that this fixes a potential issue disregard to your series, right?
-
-...
-
-> > >       while (selector < nfuncs) {
-> > >               const char *fname = ops->get_function_name(pctldev, selector);
-> > >
-> > > -             if (!strcmp(function, fname))
-> > > +             if (fname && !strcmp(function, fname))
-> > >                       return selector;
-> >
-> > I would slightly refactor this:
-> >
-> >                 const char *fname;
-> >
-> >                 fname = ops->get_function_name(pctldev, selector);
-> >                 if (fname && !strcmp(function, fname))
-> >                         return selector;
-> >
-> > >               selector++;
-> >
-> 
-> You can do this in a subsequent patch, I prefer a smaller diff personally.
-
-Sure.
+How does this keep (or allow) I²C generic recovery mechanism to work?
 
 -- 
 With Best Regards,
