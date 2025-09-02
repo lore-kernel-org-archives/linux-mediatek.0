@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 131C0CA100F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Sep 2025 00:44:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BC09CA100E
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Sep 2025 00:44:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=65sfH/ad84nrJwQJ1pdXZCCcEwu4ZVnR+CKSuX7QrWI=; b=s/wR+49pKn0324w2N/8Bg6QMvi
-	I79xO9w8wO9VSqozMx0vV+J3OD10kDSHy6TPNUY/7zGkee8OlQfDOTpMONwgEpevJheLgtasoStgg
-	DAp6/6ovl7PBD5+G435iY//mictS95X6e9nOWk0tBbaN16VyNp3pnQg3gC2nBtS9z05n66JIqtyEE
-	+kGVGNqfajKLz59rzc5zdiRSWsvg/IZBvhipiLi07eaTD5ZM+/xJNKe9Uwo2eUms178NvJpWTA3CL
-	YTMBvdTgp7tkvoRjjWGVs99x1yQ+q5pSL3qSdgV/F/TKQE8IqlIMAUvvZFejrGcGG0ytcjOhFFV3y
-	gzquUfxQ==;
+	bh=Fpv1SoLY/N77JkIb142ZPgXdcdlyIxxhftHl3vgHLBI=; b=eIyNxL/Do01fHMrtSo3tzQ9VfK
+	8/Q12Sno6HGrDvu8gQWBmRER/cGqCPDS9dLqD+YNjWVYO7Zcqr5xfZS+l7rVxXHvjuwUskvNqsvc5
+	dXIVxg/4aDrJHiJV4uh7t1w3MR6VyVvxqysAtTp3tSik1hEb7Yb9wuT8BLie/y91dWom7CP/fnKf7
+	O7X69eP6/MQqroG90TMA+gz6NVA8n1xG6U2lUpurJnf8oibhWzcfLJBg1sS559TXkUlOT+dLHtqj5
+	ACC9p1wc5k2yY1sDyqLUo7372VMP8lMc6z1/cQXVloapR6Lbaz3294Y1Xye2Td8GLmZVxgFdayZd3
+	H/V0te3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utbc2-00000002owF-0xwJ;
-	Wed, 03 Sep 2025 00:44:34 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1utbc1-00000002ovC-1WXz;
+	Wed, 03 Sep 2025 00:44:33 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utWWJ-00000001gaE-1jC1;
-	Tue, 02 Sep 2025 19:18:19 +0000
+	id 1utWWD-00000001gYl-2iFq;
+	Tue, 02 Sep 2025 19:18:13 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 686BB60007;
-	Tue,  2 Sep 2025 19:18:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BCE36C4CEED;
-	Tue,  2 Sep 2025 19:18:17 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 1856660055;
+	Tue,  2 Sep 2025 19:18:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6C8F9C4CEED;
+	Tue,  2 Sep 2025 19:18:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756840698;
-	bh=jtgRLf0FRRSizIapqgfH1YFeyTX28uqo02yIy46q7Po=;
+	s=k20201202; t=1756840692;
+	bh=W6N68IbV0jiwtH3MAFqH+TY6TjH35pe5n2zoPQK40aQ=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=nuxYmlWGRH7w9WvT0rhVg9y8/iR0d2ac2YOcCxERdFEjgSVol5JNMoHznQSBrtsvJ
-	 bkeoQIYadceH9fKZGdOvW5KdVd2cu/4k7xH24NLX+yKi/hJd14VTbBbQBA57z5kSTl
-	 SepTnIoLL5NJOzwAEghxbledxFHN7cNLvZ//El0wnFwX9yYtfDnim7D5/wW0d5BJEz
-	 274kYdmN0ohhrFbMNsZAT72P+cQXltDPTotIz2sYhxFhaZPjW2/9UHESYJHN3BdoMn
-	 Pd2an0k39kTzP9cvsPZaLgn5Hn7vJ3k+dbkwymqT4n8DWp2BNsCvHkR4d5e4gRZZjO
-	 /Yte6+8xvSnQw==
+	b=YPfCNIwKSDkFa9efurEB/QOjR9o1R/iJY/6BVw6HIl3L3kPzSPrakKFiHiCB9nV8Z
+	 gxPsemPx0URdT1FXgYlGMFJHw62UyBzPXICItQmI8c5S1RHwN8NIm554pecFRyjdoa
+	 yA17w/87IpKqIae4Z80HjwkmIQ4NyE19/xZhVnY0c+lkFJZhmMiiofIBrDrvAj0u9e
+	 pCpPDDrYPKJvKQS9TLC/fUna8KtHfZEJryaNWbdeJdMHpZzgHZDJjpHSB0ECQo4zRA
+	 5AMka1F1sbSAUxr5nPWSRgT9bZTZSv11xVHfaivbZWD8/VZheBUH5Ue0BF7L8dIeUb
+	 s6HbMWu4vLONw==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Tue, 02 Sep 2025 21:17:54 +0200
-Subject: [PATCH mt76 v3 04/15] wifi: mt76: Do not always enable NAPIs for
- WED RRO queues
+Date: Tue, 02 Sep 2025 21:17:52 +0200
+Subject: [PATCH mt76 v3 02/15] wifi: mt76: Remove q->ndesc check in
+ mt76_dma_rx_fill()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250902-mt7996-rro-rework-v3-4-8f813890959e@kernel.org>
+Message-Id: <20250902-mt7996-rro-rework-v3-2-8f813890959e@kernel.org>
 References: <20250902-mt7996-rro-rework-v3-0-8f813890959e@kernel.org>
 In-Reply-To: <20250902-mt7996-rro-rework-v3-0-8f813890959e@kernel.org>
 To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
@@ -74,28 +74,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Do not initialize NAPIs for WED RRO queues if WED is active.
+Remove q->ndesc check in mt76_dma_rx_fill routine since this is already
+done in mt76_dma_rx_fill_buf().
 
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/dma.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/net/wireless/mediatek/mt76/dma.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireless/mediatek/mt76/dma.c
-index 68b1dd1dbbe0e2b4850e02ee70253b5e248c69bf..f882b4e10858a233a5422ede80d79c21965136e9 100644
+index 25c26ff8c8e24352f2bb31c6e185e628a56f609b..18c2a2de59897d038392a00ed5fb5a0de188ac95 100644
 --- a/drivers/net/wireless/mediatek/mt76/dma.c
 +++ b/drivers/net/wireless/mediatek/mt76/dma.c
-@@ -967,6 +967,10 @@ mt76_dma_init(struct mt76_dev *dev,
- 	init_completion(&dev->mmio.wed_reset_complete);
+@@ -671,9 +671,6 @@ int mt76_dma_rx_fill(struct mt76_dev *dev, struct mt76_queue *q,
+ {
+ 	int frames;
  
- 	mt76_for_each_q_rx(dev, i) {
-+		if (mtk_wed_device_active(&dev->mmio.wed) &&
-+		    mt76_queue_is_wed_rro(&dev->q_rx[i]))
-+			continue;
-+
- 		netif_napi_add(dev->napi_dev, &dev->napi[i], poll);
- 		mt76_dma_rx_fill_buf(dev, &dev->q_rx[i], false);
- 		napi_enable(&dev->napi[i]);
+-	if (!q->ndesc)
+-		return 0;
+-
+ 	spin_lock_bh(&q->lock);
+ 	frames = mt76_dma_rx_fill_buf(dev, q, allow_direct);
+ 	spin_unlock_bh(&q->lock);
 
 -- 
 2.50.1
