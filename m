@@ -4,50 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0560CA100E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Sep 2025 00:44:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 060E7CA1011
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Sep 2025 00:44:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6URo8niGMKARuPcsUCTDXFgaK8xd8lSeSzhNHpfQFaQ=; b=S/bNBBvU+m7YaqHwDacbgU6aJg
-	oH1WjvQ6opDm2ufM7obWTJGB5jHCTtJSQiLJ4zBOxmirzGjzjtZHf0mFA40/VS+5qmvBRrossscZS
-	6RP8FzgdceU++NVLIZSCRbMwXvg5RsGgPIPsdc+Tds8iYj7/5+xfgtwTFZDb6V8SwPlWM/MlgdAhz
-	yxqciBsOjtPq6W4nygbR/9QLA6fbRIodAEeKlrygC6vopwqbHOdOO8XgG7GQz90ZY5660IvRRrQrr
-	ADYAwaNOY8dqc9Gg4aDbtzQAsos4CZuBedxQiJMTOxwBTk51bvhn9aHZrVRhbfzyBgJQGIlB29VE4
-	keQf0Zyw==;
+	bh=R/OOMMnGRa0UXdpVnw4kyErz+/pXJcwYvTUnm/qmSyM=; b=Ueqtnc1r1PXNnSzkhUuI13E4zc
+	yPFXUvo9JzwUFtL1RLxc25q+WZjaZ5aKExLinGAPZt06j5sEmqH7PlfnkBTfT0TarXGYyGArixHYq
+	RIQtM9pelzmYI4GeogyeLqWJuKpEpuZwi3X2SgCn85DrhnPC4P8lCXwWYCGojELosGtP6xxjA5Fls
+	xwpEF7Q4sV/MNsx7ZvuPRFPWVnQPqiQTKmFOUS13+Pz2JIkoicHA9t3BDWPYaHKN6NmrZAkXpKjx7
+	ZNGLZMiu9ZzGbexUiS9ISNI7hrnphQAXyFlUIRl3+t5sJ9Tr35JRJF1elQ8PJBvc5TYuikmM4pDD8
+	vH4y7Vdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utbc9-00000002p8p-47k1;
-	Wed, 03 Sep 2025 00:44:41 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1utbcB-00000002pAX-0Pi2;
+	Wed, 03 Sep 2025 00:44:43 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utWWd-00000001gg0-348G;
-	Tue, 02 Sep 2025 19:18:39 +0000
+	id 1utWWf-00000001ggF-0TVE;
+	Tue, 02 Sep 2025 19:18:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=R/OOMMnGRa0UXdpVnw4kyErz+/pXJcwYvTUnm/qmSyM=; b=EXQmBlkQp4i/BKlOhNOHCfcLNT
+	0LmNTzCQBvtgzQf2CnVVG1jDFClz0LL69jmChQzzT9YpgyeoLGPPHQi9NJbjdmYkoKw58mkGUvJJ6
+	xPFr2sGFVMqg3Fwm2rrMbw7UNEJrPJyRjAFcNyQ1GmCo4amaWn32imW3V1JsjQJExJfEWVNJJc5a4
+	L4H3fejqkr5UNkhgVvZKxjYZPw9fEQ7piufB9Q51NtT/NKUDw2H/D2WF1DhHlZO3liKtf58t8ioHG
+	QFpL6NilTsHTpBAn4KzahR6AC3CiwfnzjHArrRYJzJAaeWTQcTTpY8/FY9S+oD3CM6IdQZeK/HEYU
+	hEfVBj1g==;
+Received: from sea.source.kernel.org ([172.234.252.31])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1utWWW-000000043H2-1rb2;
+	Tue, 02 Sep 2025 19:18:38 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 2C15B60055;
-	Tue,  2 Sep 2025 19:18:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 823BCC4CEED;
-	Tue,  2 Sep 2025 19:18:38 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 1C19340549;
+	Tue,  2 Sep 2025 19:18:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9C144C4CEED;
+	Tue,  2 Sep 2025 19:18:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756840718;
-	bh=znKJ9nC54lsSWItEe6JUCBFCQm719fqJmv5yai3fHu8=;
+	s=k20201202; t=1756840711;
+	bh=MFLQY/3DGbD2c7bfFL0UAO+xBUCRpSIBXkqsHYgalMg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=BuCEWh7K+uWf4/IuSQvzoVzMBmFMjspRxEWaEwqOsNN4o5Dml9U/HOPpKbojYGJLa
-	 roqRbds8WXDuhF77yzZcUmIrfOQhDc+JaxQ7UoRx48Sy6f95JjvNgdep8w70J37v2L
-	 QKAlpm9QmY3Ev72b5YrQEpw8aK6cdVAe6+9N9azyn2bXtJw+ht2EfjXQP5iCU3DQKj
-	 JdvwhpMdr/nU1eRuur121NHJEKNIkV0tnchH7fcWrFaqC1jBufs1kVn6z+IHQJ0T7M
-	 ShyEGfBvb/lWG1hnYtGS/Pk1kBGfETKkS3eFVJT8sR2TRS58chPWZsCOVLWvH7m/HY
-	 FEGY149+b/oVg==
+	b=cT33Y4td/U+q9z8KfGp7ejLVtlQ3GF+JT/JPonNoCs++TpyQZ2T4+El/zxnAOrDNE
+	 lHjPfpIfsH5kiV3KYQc6ghvWsKBAaehQrbKA0HL3NliFWTT/5UEes1XZjB0QflN5F9
+	 xAKV2163+7qsf5d2wUXTBfCSNa+FEmF/HFiOX5XwJd2PJo1jJsw5sTit+zQBc/UktU
+	 veXrpzV/bqw8O1ZtaaO67WAO8k+7w14boPhb7XZBCwRBM3o9Mu6hRd6uFvJOtjVW0V
+	 w7mPLoCjr4NbolJVZM/k8wJLuu2K2ANbVcz6MmJx+5QrtXiVD5SKEBVdWjQGeg8JVz
+	 5N1o0K9dy1GHA==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Tue, 02 Sep 2025 21:18:02 +0200
-Subject: [PATCH mt76 v3 12/15] wifi: mt76: Add rx_queue_init callback
+Date: Tue, 02 Sep 2025 21:17:59 +0200
+Subject: [PATCH mt76 v3 09/15] wifi: mt76: mt7996: Fix RX packets
+ configuration for primary WED device
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250902-mt7996-rro-rework-v3-12-8f813890959e@kernel.org>
+Message-Id: <20250902-mt7996-rro-rework-v3-9-8f813890959e@kernel.org>
 References: <20250902-mt7996-rro-rework-v3-0-8f813890959e@kernel.org>
 In-Reply-To: <20250902-mt7996-rro-rework-v3-0-8f813890959e@kernel.org>
 To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
@@ -57,8 +72,11 @@ To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>,
  Sujuan Chen <sujuan.chen@mediatek.com>, 
  Lorenzo Bianconi <lorenzo@kernel.org>
 Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Rex Lu <rex.lu@mediatek.com>
+ linux-mediatek@lists.infradead.org
 X-Mailer: b4 0.14.2
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250902_201832_848071_74FB8BA9 
+X-CRM114-Status: GOOD (  11.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,78 +91,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce rx_queue_init DMA callback. This is a preliminary patch to
-configure RRO RX queues and decouple RRO logic from WED support.
+In order to properly set the number of rx packets for primary WED device
+if hif device is available, move hif pointer initialization before
+running mt7996_mmio_wed_init routine.
 
-Co-developed-by: Rex Lu <rex.lu@mediatek.com>
-Signed-off-by: Rex Lu <rex.lu@mediatek.com>
+Fixes: 83eafc9251d6d ("wifi: mt76: mt7996: add wed tx support")
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/dma.c  | 14 +++++++++++---
- drivers/net/wireless/mediatek/mt76/mt76.h |  4 ++++
- 2 files changed, 15 insertions(+), 3 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7996/pci.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireless/mediatek/mt76/dma.c
-index b8bb8cdfb69bd6aa8102bff474d8a25a881fb29d..081a3f5d387864ad596fec93542797038eed26f1 100644
---- a/drivers/net/wireless/mediatek/mt76/dma.c
-+++ b/drivers/net/wireless/mediatek/mt76/dma.c
-@@ -937,6 +937,15 @@ int mt76_dma_rx_poll(struct napi_struct *napi, int budget)
- }
- EXPORT_SYMBOL_GPL(mt76_dma_rx_poll);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/pci.c b/drivers/net/wireless/mediatek/mt76/mt7996/pci.c
+index 19e99bc1c6c4157fb3c2c1b9ee70ed00a6e28a73..f5ce50056ee94e2915fd189419905acc8cebd853 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/pci.c
+@@ -137,6 +137,7 @@ static int mt7996_pci_probe(struct pci_dev *pdev,
+ 	mdev = &dev->mt76;
+ 	mt7996_wfsys_reset(dev);
+ 	hif2 = mt7996_pci_init_hif2(pdev);
++	dev->hif2 = hif2;
  
-+static void
-+mt76_dma_rx_queue_init(struct mt76_dev *dev, enum mt76_rxq_id qid,
-+		       int (*poll)(struct napi_struct *napi, int budget))
-+{
-+	netif_napi_add(dev->napi_dev, &dev->napi[qid], poll);
-+	mt76_dma_rx_fill_buf(dev, &dev->q_rx[qid], false);
-+	napi_enable(&dev->napi[qid]);
-+}
-+
- static int
- mt76_dma_init(struct mt76_dev *dev,
- 	      int (*poll)(struct napi_struct *napi, int budget))
-@@ -973,9 +982,7 @@ mt76_dma_init(struct mt76_dev *dev,
- 		    mt76_queue_is_wed_rro(&dev->q_rx[i]))
- 			continue;
+ 	ret = mt7996_mmio_wed_init(dev, pdev, false, &irq);
+ 	if (ret < 0)
+@@ -161,7 +162,6 @@ static int mt7996_pci_probe(struct pci_dev *pdev,
  
--		netif_napi_add(dev->napi_dev, &dev->napi[i], poll);
--		mt76_dma_rx_fill_buf(dev, &dev->q_rx[i], false);
--		napi_enable(&dev->napi[i]);
-+		mt76_dma_rx_queue_init(dev, i, poll);
- 	}
+ 	if (hif2) {
+ 		hif2_dev = container_of(hif2->dev, struct pci_dev, dev);
+-		dev->hif2 = hif2;
  
- 	return 0;
-@@ -988,6 +995,7 @@ static const struct mt76_queue_ops mt76_dma_ops = {
- 	.tx_queue_skb_raw = mt76_dma_tx_queue_skb_raw,
- 	.tx_queue_skb = mt76_dma_tx_queue_skb,
- 	.tx_cleanup = mt76_dma_tx_cleanup,
-+	.rx_queue_init = mt76_dma_rx_queue_init,
- 	.rx_cleanup = mt76_dma_rx_cleanup,
- 	.rx_reset = mt76_dma_rx_reset,
- 	.kick = mt76_dma_kick_queue,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 60a3f13ac99125f66f3af406a2a37c25b257a762..8dcf593a0151310648043b5ac7528570c61aea0b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -286,6 +286,9 @@ struct mt76_queue_ops {
- 	void (*tx_cleanup)(struct mt76_dev *dev, struct mt76_queue *q,
- 			   bool flush);
- 
-+	void (*rx_queue_init)(struct mt76_dev *dev, enum mt76_rxq_id qid,
-+			      int (*poll)(struct napi_struct *napi, int budget));
-+
- 	void (*rx_cleanup)(struct mt76_dev *dev, struct mt76_queue *q);
- 
- 	void (*kick)(struct mt76_dev *dev, struct mt76_queue *q);
-@@ -1221,6 +1224,7 @@ static inline int mt76_wed_dma_setup(struct mt76_dev *dev, struct mt76_queue *q,
- #define mt76_tx_queue_skb(dev, ...)	(dev)->mt76.queue_ops->tx_queue_skb(&((dev)->mphy), __VA_ARGS__)
- #define mt76_queue_rx_reset(dev, ...)	(dev)->mt76.queue_ops->rx_reset(&((dev)->mt76), __VA_ARGS__)
- #define mt76_queue_tx_cleanup(dev, ...)	(dev)->mt76.queue_ops->tx_cleanup(&((dev)->mt76), __VA_ARGS__)
-+#define mt76_queue_rx_init(dev, ...)	(dev)->mt76.queue_ops->rx_queue_init(&((dev)->mt76), __VA_ARGS__)
- #define mt76_queue_rx_cleanup(dev, ...)	(dev)->mt76.queue_ops->rx_cleanup(&((dev)->mt76), __VA_ARGS__)
- #define mt76_queue_kick(dev, ...)	(dev)->mt76.queue_ops->kick(&((dev)->mt76), __VA_ARGS__)
- #define mt76_queue_reset(dev, ...)	(dev)->mt76.queue_ops->reset_q(&((dev)->mt76), __VA_ARGS__)
+ 		ret = mt7996_mmio_wed_init(dev, hif2_dev, true, &hif2_irq);
+ 		if (ret < 0)
 
 -- 
 2.50.1
