@@ -4,76 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8F3ECA1009
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Sep 2025 21:45:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16639CA100E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Sep 2025 21:45:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HY/P1wmmQ5CXIAhE0M3q1QG3EUDBLGeGAVW5/TOHSa0=; b=waojCn7n2ncq1hQFrbTaXCH7vB
-	+a076r8dil55cdGGlfDAejo0NpbOXUYaW63+VLJuFC8IDMOmbsa85nP6XVQPFBOLvZOqc+4e1WkSv
-	vYjGFOpGoHDadjNFw+CMpE6LYC415JK0oPGNMIqgSm3QdPxEgTGaqJf+80bTMsSKZeOhQ7C9M47Ra
-	Swh+9apJywEtcTcgeJJh75EXReg/eHs03JiMC5HvXnr2q9NiWRLBBQGsGV5jmtrVHhnf6UyTCbyHJ
-	DDWiWlU6umCnT2da2d/scdMkSBWLWGkGcFxr+Rpgywk9sjfxWmNpXl1AZD9gXD+P6zCdMkjGvHPOT
-	LAfa2QQQ==;
+	bh=Qq79ok73NgzUNSPN3ElH84ehBnROIulXyA0yyA4cddE=; b=Hzw13s4GH8dv94RGq4zyJpn8oN
+	rirR83AvovY72SQ1aq3vZJ3aZ0yG0FoxGwuG1aVK2/ZrPDGJpROl7ultKtoXkQgnuYwhYX9z5ud+H
+	5BBUfYTSFInlA2w+AeI5y6JuxS+/feAToI4s/c1Lg1OIo9ty/nMYtWL2yjwvddOlfSB0e6ogH9VUc
+	pmsl9E7HFrYyOyUkuSHocgqns58EbezLfBeTYwM1oI94or4tCAcdEXAFGCYPkKSH4paMaJaz5ugX4
+	Kr7xdfdy+VnwMwnAQMsvWOMiI3unCk0VSDVPlFrJa+oYyDOyzF/8UrdNj3+ED9z+PjwGSrDwQab0U
+	idam2nkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utYos-00000002EFU-1jzW;
-	Tue, 02 Sep 2025 21:45:38 +0000
-Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
+	id 1utYp7-00000002EY8-1IeI;
+	Tue, 02 Sep 2025 21:45:53 +0000
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utV15-00000001EvF-3X1U
+	id 1utV93-00000001GmI-2DLm
 	for linux-mediatek@lists.infradead.org;
-	Tue, 02 Sep 2025 17:42:00 +0000
-Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-55f687fd3bdso5653305e87.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 02 Sep 2025 10:41:59 -0700 (PDT)
+	Tue, 02 Sep 2025 17:50:15 +0000
+Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-55f7c0fb972so2542330e87.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 02 Sep 2025 10:50:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1756834918; x=1757439718; darn=lists.infradead.org;
+        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1756835412; x=1757440212; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=HY/P1wmmQ5CXIAhE0M3q1QG3EUDBLGeGAVW5/TOHSa0=;
-        b=2cy5RgDRjWyQG/gAVthA4yZM3N7PiEl+lsmAsRU/MW7KJ79IY4Y+87fpXQtR2ZXj0F
-         xoh2h073Y9nF33wHbWZlIWFz/NOpx5YQieqcd4OjFXxu2su2g5R3l6KdcZzd1p8A2xDP
-         yuc3y2g0hgaDkdEhW+6uJ7iDzFZUtob3qzWgw7GBKS6qWv1gNdQDXWFe0w+o1unme/8H
-         uujPvb04rBD3w1QpIfSoiSaysLFhZUTWGVPyVTzzdfx+00IKbRHAcPIvHIWpwyg3hTDI
-         GZpE8RtF6N5o63Xc2sPWjEp28VsLJ3nbx4fJFEMIjTcGscVa+Lc6tKZwCpa/eL7VH4g8
-         Q5NQ==
+        bh=Qq79ok73NgzUNSPN3ElH84ehBnROIulXyA0yyA4cddE=;
+        b=bz9Vu4gQaxLWhNfXi7RN4eZv0CiNpElVD+5pPPE2ZhNnK+HXFO6UHpo2AUDFyuy+y+
+         W4CGxdqZx2sTc41lokiFD0Ny0bsy4iV0rtBHqCBIaftFeS8n0EjKQJ89Y0PcLI2UE4tc
+         lrEVoFPlSV377ZBolPlhwB7JKwDKYlE/fcoT76RR/jqoxQFTVoGuqM9eV21gjLUjvEdl
+         EJdU343aQvRbpIhwrw1oh+SuCZyPaQTdLlv9eLrKYFbQJnHW1jXpv8iF9BjmFq/oje8t
+         53KzjqkYPN+91MYrsK057d0eDrC112Ty0ya1NWxs4duA3UwRpuoso/VJdHHjLVLToula
+         IDPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756834918; x=1757439718;
+        d=1e100.net; s=20230601; t=1756835412; x=1757440212;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=HY/P1wmmQ5CXIAhE0M3q1QG3EUDBLGeGAVW5/TOHSa0=;
-        b=BjZT18JmBEkOJzkqBioLnbkPbTqWUgf0+vydreiaSEUWwkgKrpKVf/tBzdiHmvIvEp
-         BCicTm6oa9+zvvewYIoc9dafZFniFIhYTzLuA6wLGRSm75ftXx6xzMul1oAEEnAX1ugJ
-         0Chp6uQ4ojr1NF5LL5UC25L3l7KqAXFbN5a8jCJ0WvkEdXLj/tsF2ZRgoBPx6kx5I+8N
-         58PhtJvzqvzzY0MSJZulqbAVFRQu0oEV328fiLSDxtBdD1Uh0ZeFXSOWTGhK4WFTgQbt
-         JQ5drl0DNHOQhg6a3VLUg6YvCCWtfC/CZf2ut5oHLEFZuWUxuHy0aSLg1789+UWvKv1n
-         yPlw==
-X-Forwarded-Encrypted: i=1; AJvYcCVNsHjHRU6QKfQnqFuJnHMQQBSa6HUUIMStqBlpPU5+ld0ZE1QDxQRrq9PCFfcspk32BCGDfr8JHQDIuwtiIQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yys2C8YulsmDXCkKqOzkeFaozFHdZeACqMoqvpp6QLM/O3AnOhJ
-	H3nTu62T00OrLO6z6chB9LArUIeoMh7rNyn1XO9jHqC7nMKZjdDyM8mhPOYNQjekAqgKfnaVJVh
-	I3hzwg7cdno2qIB9oMRWOu9HIHEg+Hc267prb8DCWlA==
-X-Gm-Gg: ASbGnct460XbUxaBiFF/5vd3lqiY6pvCM3f9aKkwxeGOjBXtxjDIjXcH5msJC1UlOPi
-	c4k0tEWUER4a6BdkZDnE8WtD2+jqvz9OMEnnwjC8uoLAwQfK6Lg6usQ8+cUuChH3PVIXXXDldzf
-	CR2bgSKLfMxTmTWFRLQVXD3Ii1jICxzZEQOxudlv/EWA/pw8woO38w1wHX2OSIzHc0Og3oJ2ZVT
-	Fmh4b1yySmKAJH1yJIL6IT/JD/277La7shaStQMa4oENcI2jA==
-X-Google-Smtp-Source: AGHT+IEj8d7P3cFn9WHSMlcQJco2rutroHWRWEZV/BsdBzW10JlelDxpX/d5bcqoiRzS4+dxD5+bg22V2Ltijnn3kOg=
-X-Received: by 2002:a05:6512:61d5:20b0:55f:727d:408c with SMTP id
- 2adb3069b0e04-55f727d46c3mr3142298e87.50.1756834918139; Tue, 02 Sep 2025
- 10:41:58 -0700 (PDT)
+        bh=Qq79ok73NgzUNSPN3ElH84ehBnROIulXyA0yyA4cddE=;
+        b=UFmM+RLc9jOGzWr/E6K7G+iJHNxRRDV6aklfn1gwFaUX3W7ncG0vDE2drEC2GFqLBT
+         KgTucbvZvNlSuNf6jluaG0yTUZR2+svc16tP7K3UuKlWfVvQR6jxcRYpklb/DNLurTzG
+         WKcR0g7O+8PY4k3ifFm2JBy6LYcRN3lgIe4rF3P9TfVn4l0T9ndYylQsJrP4Bakj3jLz
+         2Onj2EuHR45GyKbe/1reTV8FCqJFc6wNWDOJDvBBJSVKckUalFCJZujVtmV0PEEDm7TS
+         KzVCkoYxtHRt1lV9C19yyKe6o1y1x/ixYgprNH54Uo+W7win6SFI8P09L97Ng5Od4DKt
+         dWwQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVojTvjX6TVPvg3BbG09eBwMxaeJVdj8HiRWwN9O1NEoYGTsPOCnrbbqLqnrcKCioBRvW0Zd0MuskgoX8gSeg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxPr9XN98XqL1VEvFrFW6I/PIfLyA4M8PTh4ktZFICLEub0nEwU
+	1AeQW2D7DcCdF9EGGmwjkGToHwOjCemVQbnpLWMkN8/O+35LVCD0qQVmxSC4a88/urM3VzAWOy4
+	1aqR9zqJxBgKKfSOHIte4tZJgOVf0Mhr6YpaqSahlBw==
+X-Gm-Gg: ASbGncuEwUJKRwq6Qhc2xXjHXFsBmNDYaQ2rRWnp1bESAYsVKlsUDtb7s08Wqh8IQbI
+	HOEtG/yhIvFyrWOZho4uf9noMnF9LUU+ewryare6ogHpqHQ/byaI240KdULiK16ZdDOhEHB75Jj
+	yuRTD0fRJkFbEMngo7WDA+bIBvguzhXn4wNO9Y+R2R0q6UZaAIUDfZh9kON3k6bKVcjixT0tq0u
+	as0ypio/4F2Wqe7OjOvPdsud3AiZQ0n2fraH6uO5bgsAUWfOQ==
+X-Google-Smtp-Source: AGHT+IHWxMY/UX5pahdxyPomER2R5wCG7WJNOYIC76WLDnRgZXryLWeY1Ce628zgGwqGftmJqN1QawcJ1KuqTk6lVI8=
+X-Received: by 2002:a05:6512:3b12:b0:55f:4f99:f3c9 with SMTP id
+ 2adb3069b0e04-55f708ec830mr4334057e87.32.1756835411674; Tue, 02 Sep 2025
+ 10:50:11 -0700 (PDT)
 MIME-Version: 1.0
 References: <20250902-pinctrl-gpio-pinfuncs-v7-0-bb091daedc52@linaro.org>
- <20250902-pinctrl-gpio-pinfuncs-v7-16-bb091daedc52@linaro.org> <aLcBcjvMbrxoDYoC@smile.fi.intel.com>
-In-Reply-To: <aLcBcjvMbrxoDYoC@smile.fi.intel.com>
+ <20250902-pinctrl-gpio-pinfuncs-v7-13-bb091daedc52@linaro.org> <aLb_pOG-yc-CHoiY@smile.fi.intel.com>
+In-Reply-To: <aLb_pOG-yc-CHoiY@smile.fi.intel.com>
 From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Tue, 2 Sep 2025 19:41:47 +0200
-X-Gm-Features: Ac12FXz-Ict8QGMZawDnah9byaE6SYSj17yQF92en6o4smsRWpZmv8sya_ULoRc
-Message-ID: <CAMRc=MfcFMgkNqWNZV5o0NxkAvxBTjC3vv56Cr98n0R2CkxuPw@mail.gmail.com>
-Subject: Re: [PATCH v7 16/16] pinctrl: qcom: make the pinmuxing strict
+Date: Tue, 2 Sep 2025 19:50:00 +0200
+X-Gm-Features: Ac12FXzmJRg8_mGsvbk9kTYEAk6i5wfrx-8rp8gdl4L5LHxLn-6rA1BsDeyDmdo
+Message-ID: <CAMRc=Mc-NEFawz11Lr5JGStoe=PU7b91E-MVB3xkdBr_JoiStQ@mail.gmail.com>
+Subject: Re: [PATCH v7 13/16] pinctrl: allow to mark pin functions as
+ requestable GPIOs
 To: Andy Shevchenko <andriy.shevchenko@intel.com>
 Cc: Linus Walleij <linus.walleij@linaro.org>, Bjorn Andersson <andersson@kernel.org>, 
 	Konrad Dybcio <konradybcio@kernel.org>, Alexey Klimov <alexey.klimov@linaro.org>, 
@@ -98,13 +99,12 @@ Cc: Linus Walleij <linus.walleij@linaro.org>, Bjorn Andersson <andersson@kernel.
 	linux-mips@vger.kernel.org, linux-hardening@vger.kernel.org, 
 	linux-mm@kvack.org, imx@lists.linux.dev, linux-omap@vger.kernel.org, 
 	linux-renesas-soc@vger.kernel.org, 
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, 
-	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250902_104159_879556_C0291A0C 
-X-CRM114-Status: GOOD (  15.27  )
+X-CRM114-CacheID: sfid-20250902_105013_567749_81E601E3 
+X-CRM114-Status: GOOD (  30.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,25 +119,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 2, 2025 at 4:38=E2=80=AFPM Andy Shevchenko
+On Tue, Sep 2, 2025 at 4:31=E2=80=AFPM Andy Shevchenko
 <andriy.shevchenko@intel.com> wrote:
 >
-> On Tue, Sep 02, 2025 at 01:59:25PM +0200, Bartosz Golaszewski wrote:
-> > From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+> On Tue, Sep 02, 2025 at 01:59:22PM +0200, Bartosz Golaszewski wrote:
 > >
-> > The strict flag in struct pinmux_ops disallows the usage of the same pi=
-n
-> > as a GPIO and for another function. Without it, a rouge user-space
-> > process with enough privileges (or even a buggy driver) can request a
-> > used pin as GPIO and drive it, potentially confusing devices or even
-> > crashing the system. Set it globally for all pinctrl-msm users.
+> > The name of the pin function has no real meaning to pinctrl core and is
+> > there only for human readability of device properties. Some pins are
+> > muxed as GPIOs but for "strict" pinmuxers it's impossible to request
+> > them as GPIOs if they're bound to a devide - even if their function nam=
+e
+> > explicitly says "gpio". Add a new field to struct pinfunction that
+> > allows to pass additional flags to pinctrl core.
 >
-> How does this keep (or allow) I=E6=B6=8E generic recovery mechanism to wo=
-rk?
+> Which I disagree with. The pin control _knows_ about itself. If one needs
+> to request a pin as GPIO it can be done differently (perhaps with a new,
+> special callback or with the existing ones, I need to dive to this).
+
+What? Why? Makes no sense, there already is a function for requesting
+a pin as GPIO, it's called pinctrl_gpio_request(). And it's affected
+by this series because otherwise we fail as explained in the cover
+letter.
+
+> On a brief view this can be done in the same way as valid_mask in GPIO,
+> actually this is exactly what should be (re-)used in my opinion here.
 >
 
-What even is the "generic recovery mechanism"? That's the first time
-I'm hearing this name.
+Except that the valid_mask is very unclear and IMO it's much cleaner
+to have a flag for that.
+
+> > While we could go with
+> > a boolean "is_gpio" field, a flags field is more future-proof.
+>
+> This sentence is probably extra in the commit message and can be omitted.
+>
+> > If the PINFUNCTION_FLAG_GPIO is set for a given function, the pin muxed
+> > to it can be requested as GPIO even on strict pin controllers.
+>
+> So. this changes the contract between pin control (mux) core and drivers.
+
+Yes, that's allowed in the kernel. The current contract is wrong and
+the reason why we can for instance confuse debug UARTs by requesting
+its pins as GPIOs from user-space whereas a strict pinmuxer will not
+allow it. But to convert pinmuxers to "strict" we need to change the
+behavior.
+
+> Why? How is it supposed to work on the really strict controllers, please?
+>
+
+Like what I explained several times? You have pins used by a device.
+User-space comes around and requests them and fiddles with them and
+now the state of your device is undefined/broken. With a strict
+pinmuxer user-space will fail to request the pins muxed to a non-GPIO
+function.
+
+> > Add a new callback to struct pinmux_ops - function_is_gpio() - that all=
+ows
+> > pinmux core to inspect a function and see if it's a GPIO one. Provide a
+> > generic implementation of this callback.
 
 Bartosz
 
