@@ -4,133 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 383E4CA1007
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Sep 2025 21:43:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21755CA1005
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Sep 2025 21:44:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B7uae2n06rSYI5IcLTSg8p1le2edkOnWy0mpbOpJX2w=; b=WFeAOHEn5trG+9WqFKSGUpyZyD
-	r020TjP3XAH8/b7ozwHrWhls7AfFrZZaohnXhXBko/MAid5VSX75tHY40OKe0GBFLE4J0juYgN1Lg
-	xnQT/p65Nq67mM1RfcEWalDsSdrqY9HGkaaQsK86ZX7ix85U02cbrT85m9znbYTd0ucWs5wTKuA8s
-	OG5nv8aepvy0u7xtKCt322UfQIyXacO/a++omyGHfqDzHaffQg26TpwzGQlAZ5qRLNj0ho9YTJjJS
-	jjTpRH+PM6/yBcfkW2t+CaYLiEVR9vFOU23XwMKJsgCzC3GeK0A8ulV17RR5oDeLEQH9ojIV2Mu51
-	w428ByZw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gkt6jh8He1kXHojoNOHUR+RVSUvV3fJpjiiQf61S0dw=; b=xOQUI7B6z/KXrsF182c1oFFq3B
+	EtPdUglyxiLgY5Q46GWh3132LEmgxHXCjX76AOwEM5/gGrOKhEJIfiZkJAMIf2VvTuIS9LZM6rDAj
+	LgtSuUbpa7Cca0dk6IkLK3brBHHv0RjX5fGQJ5yFntbGjIoMvnkm3lkUEqVDt9o7yVlpKjENuv6yO
+	zPKmDZd1Lcyhe7ifF1XRLuuo3fiT+7t1n4libQaK00z88g5Jdz/Z5Nr4mZRyNPFg74/f/3nPRSZME
+	uy58HDs4+1Ll3ifB4Ghj6oUHYUr8yJt420ns4VG1FQY37GzQ1LsuxeWXOu9MUt8oiONCnugqzr3Pg
+	OvNGCQ8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utYmY-00000002BI1-0D1k;
-	Tue, 02 Sep 2025 21:43:14 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1utYnH-00000002CDX-1npD;
+	Tue, 02 Sep 2025 21:43:59 +0000
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utT5j-00000000if1-004L;
-	Tue, 02 Sep 2025 15:38:39 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 466B26021C;
-	Tue,  2 Sep 2025 15:38:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B9DD3C4CEED;
-	Tue,  2 Sep 2025 15:38:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756827517;
-	bh=v+DuYfBUiGbE23dCrrZocBSYiEeU9i6PmQBrfDGbt+c=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Zh70MZgOxvxIxj6UMkzT706dj4grAuw+KArw+LrHivUyAmevwHRbmzsy8tdhtqckQ
-	 ctnQW14LrxH7lpGTWRcPysIxgPyheRuMy9Tnoya1qMd019iqz8ogyz/ZzskmCsRTY4
-	 F6vO7VOs9YxEPQ4KZXd48LQZlpVHk12uvjES7uMNnLSDH8kOAWc5bmmaMvxzgl8PYT
-	 QFuBANh8pcFrndFTx8KlSmz3GDHmSM2T49B2D/EK+RnKYtzD4IBBt8MHQCCaSTZdMa
-	 hyyllZ2BaEg7ss7qp0XMJFqiosZEUGgYOmQQXbvtOguQ5wDzIV/4TdwKF//sOzHuI/
-	 Cne8GehwJZyYw==
-Message-ID: <5c9f8c2e-6785-4464-b2cf-f8a6aeec42ea@kernel.org>
-Date: Tue, 2 Sep 2025 17:38:24 +0200
+	id 1utTAj-00000000kLc-1gWc
+	for linux-mediatek@lists.infradead.org;
+	Tue, 02 Sep 2025 15:43:50 +0000
+Received: by mail-pl1-x633.google.com with SMTP id d9443c01a7336-2489acda3bbso44550585ad.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 02 Sep 2025 08:43:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=wbinvd.org; s=wbinvd; t=1756827828; x=1757432628; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=gkt6jh8He1kXHojoNOHUR+RVSUvV3fJpjiiQf61S0dw=;
+        b=COOME/h4RvMQ8JhijuUuWIXRKItyrg0KdL1B6K+NFu7ft7Z8vvSD+hnWFNplKf2oyd
+         LepChkUtTt2DPlI/U7g0EG1nKtFJF8PokdRX/ers5NCI7gWOxzCWFKX6CkerOX5ZPlEx
+         1YYkQt4IHmCJT5+/btWMP7lQqCHd/JfUw7BdX7SYP28krkpaUDO/iaFiTmxybBy9v0zB
+         URJKOpxFQk9WSbOcQdMtwpHj843crFxHnKZHYXOXcC3qU+qeBsb1NZ7Hpo7NIkSNeakY
+         HB3p9cWfVxgxiwR7dZSTBeeeuttnVm4H9lqydS1SHnFqnXDcMsz24zBq2rAfT+ziKTLE
+         l+Pg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1756827828; x=1757432628;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=gkt6jh8He1kXHojoNOHUR+RVSUvV3fJpjiiQf61S0dw=;
+        b=FJW6HbV1R3Y8s1coDOZkHwKFiGKlcWzwxZhsytaUUQb9D3sjc6XdkQqGPceTNvVXDK
+         3UgiigOZtoSgYWiIq2oPS2Jhwb3DntwAP5xAlyWQnF+n+24AqkyZA+npSobDeVs2ohk7
+         PNdWmnMcYSRgMoQJWvgs9dOpSo+wlR8DyxMHQ5o028WgkHIlapatwJfs2k8A09Q8m8Qj
+         pDoLy+jf/HglEO+dk0Dnvwj3TqGcoaLCVPKCuDMB2Nkc141vWaz+lJL8jcwHuOba5OKD
+         ZtOEkrr99BhhV3LfYRUGKeQrUrhnwwg+qHyEfCxX1c2YwTXKeMC1MWvZ7yFm26eHgjxz
+         3iOg==
+X-Forwarded-Encrypted: i=1; AJvYcCUx+6usekMvqFyq5qMTHyiXRgKlqYPINUqDxFABM0J1wQ9oNYpczAMNAqPgXGk1qFeo60fSOaNx4OF3FUIMdQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwmK96Td7M5ZDgjOZMh4oj8YpFkemlyTBbbqt0Aguyo5qX94oga
+	E+2/ZdhtrapCiYS2OXxgweQygm0Sb1ACecFXWde8jSF5dmUTO2JEMIFAd1PL8YUotsM=
+X-Gm-Gg: ASbGncusL2CfSXHpXILvyR4xFs9jIqaV9oGpilsOHxZskbAtiskRvm4tMs7zDI16uoK
+	OgbEY4u0wT+Om28SJ76JbSqqK5Q3alI5vZK8COwcKWsJZpAfGda3kUFEQq13eOwvciG6IxZiUVq
+	7pYu9Nrqf0+VwBCMg1zjDDTKVOL+Qm45xul9RmnqWMpi+pYKQbqWw21EZmgw1nNKpm3DiEh0eN6
+	72So0W0imqLs6Caet7EL6/Nubt+TMuVvlc/S4gdis01yHio1jUKj9U2pjkdRcqtbIhar9MLfobb
+	z9328pU8ZSETUQan+U/8+iCeWCefk8Bb5gG2V08mLmDwQI2A+G1/WgXugkQHNF8jKv9ompLidwL
+	sQ2EYnrP2nvyy1Dr1iSs2ddC49IIe6vJjjo0RVjtW0jNjIQ==
+X-Google-Smtp-Source: AGHT+IGlZIJUkPm51/UzPGDsdAct3krCic7IzLREXEY9/oW76ewvmB7K7S3GcX3yQJ4WmturI/w3dQ==
+X-Received: by 2002:a17:903:186:b0:248:6d1a:430f with SMTP id d9443c01a7336-24944a173famr145263995ad.25.1756827828044;
+        Tue, 02 Sep 2025 08:43:48 -0700 (PDT)
+Received: from mozart.vkv.me ([192.184.167.117])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3278f881f21sm9364227a91.2.2025.09.02.08.43.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 02 Sep 2025 08:43:47 -0700 (PDT)
+Date: Tue, 2 Sep 2025 08:43:44 -0700
+From: Calvin Owens <calvin@wbinvd.org>
+To: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
+Cc: Paul Menzel <pmenzel@molgen.mpg.de>, linux-kernel@vger.kernel.org,
+	linux-bluetooth@vger.kernel.org,
+	Luiz Augusto von Dentz <luiz.von.dentz@intel.com>,
+	oe-kbuild-all@lists.linux.dev,
+	Marcel Holtmann <marcel@holtmann.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	linux-mediatek@lists.infradead.org, naresh.kamboju@linaro.org
+Subject: [PATCH v2] Bluetooth: Fix build after header cleanup
+Message-ID: <aLcQsE3x9o4BzXxp@mozart.vkv.me>
+References: <202508300413.OnIedvRh-lkp@intel.com>
+ <b78a4255d17adbb74140aa23f89cb7653af96c75.1756513671.git.calvin@wbinvd.org>
+ <84fd4012-966b-4983-b015-ffce06509b5e@molgen.mpg.de>
+ <aLNRvzXE4O9dKZoN@mozart.vkv.me>
+ <CABBYNZJBDgQHwmx82H2XJ-LCeOsxc77PPo6NA4zzT0dt7Uxddw@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 12/16] pinctrl: qcom: use generic pin function helpers
-To: Andy Shevchenko <andriy.shevchenko@intel.com>
-Cc: Bartosz Golaszewski <brgl@bgdev.pl>,
- Linus Walleij <linus.walleij@linaro.org>,
- Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konradybcio@kernel.org>,
- Alexey Klimov <alexey.klimov@linaro.org>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Paul Cercueil <paul@crapouillou.net>, Kees Cook <kees@kernel.org>,
- Andy Shevchenko <andy@kernel.org>, Andrew Morton
- <akpm@linux-foundation.org>, David Hildenbrand <david@redhat.com>,
- Lorenzo Stoakes <lorenzo.stoakes@oracle.com>,
- "Liam R. Howlett" <Liam.Howlett@oracle.com>, Vlastimil Babka
- <vbabka@suse.cz>, Mike Rapoport <rppt@kernel.org>,
- Suren Baghdasaryan <surenb@google.com>, Michal Hocko <mhocko@suse.com>,
- Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>,
- Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- NXP S32 Linux Team <s32@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
- Tony Lindgren <tony@atomide.com>, Haojian Zhuang
- <haojian.zhuang@linaro.org>, Geert Uytterhoeven <geert+renesas@glider.be>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "Rafael J. Wysocki" <rafael@kernel.org>, Danilo Krummrich <dakr@kernel.org>,
- Neil Armstrong <neil.armstrong@linaro.org>, Mark Brown <broonie@kernel.org>,
- linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
- linux-hardening@vger.kernel.org, linux-mm@kvack.org, imx@lists.linux.dev,
- linux-omap@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
- Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
- Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-References: <20250902-pinctrl-gpio-pinfuncs-v7-0-bb091daedc52@linaro.org>
- <20250902-pinctrl-gpio-pinfuncs-v7-12-bb091daedc52@linaro.org>
- <aLbt2euqYQM5xXuZ@smile.fi.intel.com>
- <1034c70a-da67-4914-b23c-8d006b7611bf@kernel.org>
- <aLcM58IEH8hGYLnx@smile.fi.intel.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <aLcM58IEH8hGYLnx@smile.fi.intel.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <CABBYNZJBDgQHwmx82H2XJ-LCeOsxc77PPo6NA4zzT0dt7Uxddw@mail.gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250902_084349_440262_CBA7B72D 
+X-CRM114-Status: GOOD (  13.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -145,40 +106,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 02/09/2025 17:27, Andy Shevchenko wrote:
-> On Tue, Sep 02, 2025 at 05:12:24PM +0200, Krzysztof Kozlowski wrote:
->> On 02/09/2025 15:15, Andy Shevchenko wrote:
->>> On Tue, Sep 02, 2025 at 01:59:21PM +0200, Bartosz Golaszewski wrote:
-> 
-> ...
-> 
->>>> +	for (i = 0; i < soc_data->nfunctions; i++) {
->>>> +		func = &soc_data->functions[i];
->>>> +
->>>> +		ret = pinmux_generic_add_pinfunction(pctrl->pctrl, func, NULL);
->>>> +		if (ret < 0)
->>>
->>> Why not simply
->>>
->>> 		if (ret)
->>
->> Because existing code is as readable?
-> 
-> I don't agree on this. And Bart explained why. So, it's an API requirement
-> after all.
+Some Kconfig dependencies are needed after my recent cleanup, since
+the core code has its own option.
 
-If pinmux_generic_add_pinfunction() was returning 0 or error code, which
-I assume you thought this function is doing, then your suggestion was
-nitpicking and existing code would be readable. Requesting (ret) for
-such case is really not helping.
+Since btmtksdio does not actually call h4_recv_buf(), move the
+definitions it uses outside the BT_HCIUART_H4 gate in hci_uart.h to
+avoid adding a dependency for btmtksdio.
 
-If, as it turns out if you looked at the code,
-pinmux_generic_add_pinfunction() returns non-error for success, your
-comment was even wrong.
+The rest I touched (bpa10x, btmtkuart, and btnxpuart) do really call
+h4_recv_buf(), so the dependency is required, add it for them.
 
-So either you are nitpicking which is not helpful or you are finding
-fake issues which is counter productive.
+Fixes: 74bcec450eea ("Bluetooth: remove duplicate h4_recv_buf() in header")
+Reported-by: kernel test robot <lkp@intel.com>
+Closes: https://lore.kernel.org/oe-kbuild-all/202508300413.OnIedvRh-lkp@intel.com/
+Signed-off-by: Calvin Owens <calvin@wbinvd.org>
+---
+ drivers/bluetooth/Kconfig    | 6 ++++++
+ drivers/bluetooth/hci_uart.h | 8 ++++----
+ 2 files changed, 10 insertions(+), 4 deletions(-)
 
-Best regards,
-Krzysztof
+diff --git a/drivers/bluetooth/Kconfig b/drivers/bluetooth/Kconfig
+index 4ab32abf0f48..7df69ccb6600 100644
+--- a/drivers/bluetooth/Kconfig
++++ b/drivers/bluetooth/Kconfig
+@@ -312,7 +312,9 @@ config BT_HCIBCM4377
+ 
+ config BT_HCIBPA10X
+ 	tristate "HCI BPA10x USB driver"
++	depends on BT_HCIUART
+ 	depends on USB
++	select BT_HCIUART_H4
+ 	help
+ 	  Bluetooth HCI BPA10x USB driver.
+ 	  This driver provides support for the Digianswer BPA 100/105 Bluetooth
+@@ -437,8 +439,10 @@ config BT_MTKSDIO
+ 
+ config BT_MTKUART
+ 	tristate "MediaTek HCI UART driver"
++	depends on BT_HCIUART
+ 	depends on SERIAL_DEV_BUS
+ 	depends on USB || !BT_HCIBTUSB_MTK
++	select BT_HCIUART_H4
+ 	select BT_MTK
+ 	help
+ 	  MediaTek Bluetooth HCI UART driver.
+@@ -483,7 +487,9 @@ config BT_VIRTIO
+ 
+ config BT_NXPUART
+ 	tristate "NXP protocol support"
++	depends on BT_HCIUART
+ 	depends on SERIAL_DEV_BUS
++	select BT_HCIUART_H4
+ 	select CRC32
+ 	select CRC8
+ 	help
+diff --git a/drivers/bluetooth/hci_uart.h b/drivers/bluetooth/hci_uart.h
+index 5ea5dd80e297..cbbe79b241ce 100644
+--- a/drivers/bluetooth/hci_uart.h
++++ b/drivers/bluetooth/hci_uart.h
+@@ -121,10 +121,6 @@ void hci_uart_set_flow_control(struct hci_uart *hu, bool enable);
+ void hci_uart_set_speeds(struct hci_uart *hu, unsigned int init_speed,
+ 			 unsigned int oper_speed);
+ 
+-#ifdef CONFIG_BT_HCIUART_H4
+-int h4_init(void);
+-int h4_deinit(void);
+-
+ struct h4_recv_pkt {
+ 	u8  type;	/* Packet type */
+ 	u8  hlen;	/* Header length */
+@@ -162,6 +158,10 @@ struct h4_recv_pkt {
+ 	.lsize = 2, \
+ 	.maxlen = HCI_MAX_FRAME_SIZE \
+ 
++#ifdef CONFIG_BT_HCIUART_H4
++int h4_init(void);
++int h4_deinit(void);
++
+ struct sk_buff *h4_recv_buf(struct hci_dev *hdev, struct sk_buff *skb,
+ 			    const unsigned char *buffer, int count,
+ 			    const struct h4_recv_pkt *pkts, int pkts_count);
+-- 
+2.47.2
+
 
