@@ -4,54 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F1A3CA1005
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Sep 2025 15:39:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB209CA100E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Sep 2025 19:09:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WYJ19TsFV+2Qqe9FAZF07Fv9E8KGb0hwWGVoVvOLLcg=; b=hIlvxQXGLCAS9J0W7d4lt8gWIi
-	YBljblmLaaWmd1h/Rub5jpQyknmgvtFerAuqsDHrJCzg67a5/RAnUnZl1v5tEKCNvd2Il3fIAY3F8
-	3fMvZ7JY4zbtp452eAkxh1rPB1pdVXgkhH2ekMp7aEqFksA3IGnS1bjkmI5Gz1b5M/tjnmUMz6ePV
-	B/5JbY/5ME5RsnvF3699vuGKlhgy5lf1zAfisKujw9tO0Q+NJibahiLqyt+D7XOUtaCd8nnbVkNY2
-	x95l2UfpiFRboHa1IKJeHWIzbj2QaIZWsa34oJvtctW9kvxN8XObgEHYp+qaxZLku+QibH/B+7vzO
-	6j942jbw==;
+	bh=dBbW/Af9JyOq7fC+BYgb7Nc2xudAl0q/Zwi8i5ytUFk=; b=GyC1MR7gPQthYV8WMNDBvcOPd7
+	aLmOGsbdjywPO9cQDddqtHr9P6auJlhW2fs+H1txHvYBBNTWLOJbJ6GzmSL5k/lHQ397zLAbYKIjo
+	HDfO4TH/VLJzt7L2ZYs42ms6ILjKoPqbqj2u5+eZAtC1+Mt41wLkILqhphkpQhCczQN00ct2/loRX
+	P4sCKYm2UaKufMHWH5ESEf6B4X+ypFFcT+km8WwPlutPCUJ6cMIDiRpi8/EehO7raB0ol6YfhvoNb
+	nGsjCNAWa7IBr3So7gtpOZuGCpzoGRf1tDV0dIOY0dz28+TFbXuGfOAP7qYaS2wLHjt6UOiA9h6rP
+	Rt48lnbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utT6U-00000000iu6-03bm;
-	Tue, 02 Sep 2025 15:39:26 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1utWNW-00000001Z33-1nEY;
+	Tue, 02 Sep 2025 19:09:14 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utPhD-0000000H5C7-0xPd;
-	Tue, 02 Sep 2025 12:01:11 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9D21941862;
-	Tue,  2 Sep 2025 12:01:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D9911C4CEF4;
-	Tue,  2 Sep 2025 12:01:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1756814464;
-	bh=WYJ19TsFV+2Qqe9FAZF07Fv9E8KGb0hwWGVoVvOLLcg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=D6dxhHirthDmmOONEd0DoBqRC7rq8jKelt97VFAbd0Er4DlNAtdmyBdRGOIe6SZ07
-	 9UoUAnsnafz4GEokavFcEW5M/7Qpu8MO418TDzZD9XhJ3aNjeb8yOunwlnVBtB5dsd
-	 L00zQm2Y6Hw8sZZ+IhYHpdx0/YycZ6QPKhGzKvCY=
-Date: Tue, 2 Sep 2025 14:01:01 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Subject: Re: [PATCH linux-stable 6.12 0/3] thermal/drivers/mediatek/lvts:
- pick fixes into 6.12 stable tree
-Message-ID: <2025090239-gondola-exes-8e13@gregkh>
-References: <cover.1756568900.git.daniel@makrotopia.org>
+	id 1utQaF-0000000HTNS-0bb0;
+	Tue, 02 Sep 2025 12:58:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1756817877;
+	bh=PU4Bzgg+nJ15hff/4hvbjW8eUcg1SWaXB9umh0D23so=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=PGgDN+h1bZerGMRc1RYUUG48WwEewrEM9Bnz6867eTgQr1oT1hufzWJIFxM62vz1k
+	 NS1yLgW3taeEsty5lRDeNwoZUkvRIu/OZ+QDR6140UfEtJt/ZAMeLc2pUMwKI/tjPt
+	 HtTaftwpdmdscoCCzsUkxbt6Ul7sWC3OKUOjGSP0KZXjnFnhQtQ0h26Z/lLU+YAM6x
+	 KeDvVq0QZi02QGo9BEMGysevY/yp9wTmowGi8fzw6ahby/ieIiytl74tztvQxw8H1I
+	 Bp3csuNvWGzO35xfuqB/xkGBwab1jHeYq+vmZnQs/phoGb9sbk3hnIDMuAL2g+Yf5k
+	 L+XrYDbfx87KA==
+Received: from [IPv6:2606:6d00:11:5a76::5ac] (unknown [IPv6:2606:6d00:11:5a76::5ac])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9FBD317E129F;
+	Tue,  2 Sep 2025 14:57:55 +0200 (CEST)
+Message-ID: <005438a1d81a1d02d6c8659bd951ff65d3f39d85.camel@collabora.com>
+Subject: Re: [PATCH v2] media: mediatek: encoder: Fix uninitialized scalar
+ variable issue
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Irui Wang =?UTF-8?Q?=28=E7=8E=8B=E7=91=9E=29?= <Irui.Wang@mediatek.com>,
+  "rongqianfeng@vivo.com"	 <rongqianfeng@vivo.com>, "matthias.bgg@gmail.com"
+ <matthias.bgg@gmail.com>,  "mchehab@kernel.org"	 <mchehab@kernel.org>,
+ AngeloGioacchino Del Regno	 <angelogioacchino.delregno@collabora.com>,
+ "hverkuil-cisco@xs4all.nl"	 <hverkuil-cisco@xs4all.nl>
+Cc: "linux-arm-kernel@lists.infradead.org"
+	 <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org"
+	 <linux-kernel@vger.kernel.org>, "linux-media@vger.kernel.org"
+	 <linux-media@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
+	 <linux-mediatek@lists.infradead.org>, Longfei Wang
+ =?UTF-8?Q?=28=E7=8E=8B=E9=BE=99=E9=A3=9E=29?=
+	 <Longfei.Wang@mediatek.com>, Project_Global_Chrome_Upstream_Group
+	 <Project_Global_Chrome_Upstream_Group@mediatek.com>, Yunfei Dong
+ =?UTF-8?Q?=28=E8=91=A3=E4=BA=91=E9=A3=9E=29?=
+	 <Yunfei.Dong@mediatek.com>
+Date: Tue, 02 Sep 2025 08:57:54 -0400
+In-Reply-To: <dbfac6888a2c77c302265df2f90bf4aec8bed686.camel@mediatek.com>
+References: <20250716071450.8214-1-irui.wang@mediatek.com>
+		 <c751e015c0a9fb2ab6514a45952e01424cfbb0cb.camel@collabora.com>
+	 <dbfac6888a2c77c302265df2f90bf4aec8bed686.camel@mediatek.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-F1/z1Y8k8JEbWKEC/4LA"
+User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1756568900.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250902_050107_283782_1FA97AF6 
-X-CRM114-Status: GOOD (  12.09  )
+X-CRM114-CacheID: sfid-20250902_055759_330363_7AC9BA73 
+X-CRM114-Status: GOOD (  29.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,25 +99,141 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mason Chang <mason-cw.chang@mediatek.com>, linux-stable@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>, =?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>, "Rafael J. Wysocki" <rafael@kernel.org>, linux-pm@vger.kernel.org, Daniel Lezcano <daniel.lezcano@linaro.org>, linux-kernel@vger.kernel.org, Chad Monroe <chad.monroe@adtran.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Aug 30, 2025 at 04:56:46PM +0100, Daniel Golle wrote:
-> Temperature readings on the MT7988 are severely abnormal and inaccurate
-> on some devices when using the default commands.
-> Patches to fix this have been posted and merged for Linux 6.17, however,
-> missing a Fixes:-tag they have not been picked into the Linux 6.12 stable
-> tree which already comes with the driver support for MT7988 and hence
-> suffers from this problem.
-> All 3 commits apply cleanly on top of linux-6.12.y, so cherry-pick them
-> now, adding the appropriate Fixes:-tag.
 
-They also need to go to 6.16.y as if you upgraded you would have a
-regression :(
+--=-F1/z1Y8k8JEbWKEC/4LA
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-I'll go queue them up there now as well.
+Le lundi 01 septembre 2025 =C3=A0 02:37 +0000, Irui Wang (=E7=8E=8B=E7=91=
+=9E) a =C3=A9crit=C2=A0:
+> Dear Nicolas,
+>=20
+> Thanks for your comments.
+>=20
+> On Fri, 2025-08-29 at 15:10 -0400, Nicolas Dufresne wrote:
+> > Le mercredi 16 juillet 2025 =C3=A0 15:14 +0800, Irui Wang a =C3=A9crit =
+:
+> > > UNINIT checker finds some instances of variables that are used
+> > > without being initialized, for example using the uninitialized
+> > > value enc_result.is_key_frm can result in unpredictable behavior,
+> > > so initialize these variables after declaring.
+> > >=20
+> > > Fixes: 4e855a6efa54 ("[media] vcodec: mediatek: Add Mediatek V4L2
+> > > Video
+> > > Encoder Driver")
+> > >=20
+> > > Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+> > > ---
+> > > v2:
+> > > =C2=A0- Add Fixes tag, update commit message
+> > > =C2=A0- Remove unnecessary memset
+> > > =C2=A0- Move memset to before the first usage
+> > > ---
+> > > =C2=A0.../media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c=C2=
+=A0=C2=A0 | 4
+> > > +++-
+> > > =C2=A01 file changed, 3 insertions(+), 1 deletion(-)
+> > >=20
+> > > diff --git
+> > > a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
+> > > b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
+> > > index a01dc25a7699..3065f3e66336 100644
+> > > ---
+> > > a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
+> > > +++
+> > > b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
+> > > @@ -865,7 +865,7 @@ static void vb2ops_venc_buf_queue(struct
+> > > vb2_buffer *vb)
+> > > =C2=A0static int vb2ops_venc_start_streaming(struct vb2_queue *q,
+> > > unsigned int
+> > > count)
+> > > =C2=A0{
+> > > =C2=A0	struct mtk_vcodec_enc_ctx *ctx =3D vb2_get_drv_priv(q);
+> > > -	struct venc_enc_param param;
+> > > +	struct venc_enc_param param =3D { 0 };
+> > > =C2=A0	int ret;
+> > > =C2=A0	int i;
+> > > =C2=A0
+> > > @@ -1036,6 +1036,7 @@ static int mtk_venc_encode_header(void *priv)
+> > > =C2=A0			=C2=A0 ctx->id, dst_buf->vb2_buf.index, bs_buf.va,
+> > > =C2=A0			=C2=A0 (u64)bs_buf.dma_addr, bs_buf.size);
+> > > =C2=A0
+> > > +	memset(&enc_result, 0, sizeof(enc_result));
+> >=20
+> > Please, apply review comment to all occurrence, so same here.
+> >=20
+> > > =C2=A0	ret =3D venc_if_encode(ctx,
+> > > =C2=A0			VENC_START_OPT_ENCODE_SEQUENCE_HEADER,
+> > > =C2=A0			NULL, &bs_buf, &enc_result);
+> > > @@ -1185,6 +1186,7 @@ static void mtk_venc_worker(struct
+> > > work_struct *work)
+> > > =C2=A0			=C2=A0 (u64)frm_buf.fb_addr[1].dma_addr,
+> > > frm_buf.fb_addr[1].size,
+> > > =C2=A0			=C2=A0 (u64)frm_buf.fb_addr[2].dma_addr,
+> > > frm_buf.fb_addr[2].size);
+> > > =C2=A0
+> > > +	memset(&enc_result, 0, sizeof(enc_result));
+> >=20
+> > Same here.
+> >=20
+> > > =C2=A0	ret =3D venc_if_encode(ctx, VENC_START_OPT_ENCODE_FRAME,
+> > > =C2=A0			=C2=A0=C2=A0=C2=A0=C2=A0 &frm_buf, &bs_buf, &enc_result);
+> > > =C2=A0
+> > >=20
+> >=20
+> >=20
+> > Would be nice to coordinate with Qianfeng Rong <rongqianfeng@vivo.com
+> > > [0], he
+> > ported the entire driver to this initialization method, which is
+> > clearly the way
+> > to go.
+> >=20
+> > - Patch 1 will port the driver to {} stack init
+> > - Patch 2 will add missing initializes
+> >=20
+> > Consistency is key for this type of things since developer usually
+> > follow the
+> > surrounding style.
+>=20
+> I have learned Qianfeng's patch and comments. I understand what you
+> mean is change my patch coding style to Qianfeng's, modify 'memset' to
+> '{}' for initialization, and amend Qianfeng's patch as patch-2, then
+> send this two patches together.
 
-thanks,
-greg k-h
+Correct, and I don't mind who do that work, I'd like to see the code kept
+consistant. And I do agree memset() are error prone.
+
+cheers,
+Nicolas
+
+>=20
+> If I misunderstood your opinion, please correct me, thank you very
+> much.
+>=20
+> Best Regards
+> >=20
+> > regards
+> > Nicolas
+> >=20
+> > [0]=20
+> > https://patchwork.linuxtv.org/project/linux-media/patch/20250803135514.=
+118892-1-rongqianfeng@vivo.com/
+
+--=-F1/z1Y8k8JEbWKEC/4LA
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaLbp0gAKCRDZQZRRKWBy
+9AMIAP4l3zEJdQyeftn4RgftFIHQz0eEqpSztnAbK553WME3KgEAzYyheCs4BblM
+WmNV6SRGwHH6Q1/P7PRqOpIuIa1QNwc=
+=V/iG
+-----END PGP SIGNATURE-----
+
+--=-F1/z1Y8k8JEbWKEC/4LA--
 
