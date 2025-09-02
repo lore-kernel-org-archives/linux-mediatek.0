@@ -4,87 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46BE1CA1005
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Sep 2025 19:13:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12DE6CA1007
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Sep 2025 21:42:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=45D3H8+xv+cJQOWaurVBdJjz0km7uhmNmdRtwG5A/1w=; b=u9iv83PYfjo4BYdE3xLfM2LSFR
-	huUGsz9P8Z1IovGubCrOSmN5S4HAroQeNgTn7iTKIHPecPfwQ3MIPQDj45ZSdPxs9nNkoArhCA1/X
-	8JOJtHDiTCu0H1F8o9ScFh0YGNU4Y1izcniejJob5oh86jcO4lsbcYhG1SpUs4WXZzI1Gh6zEQy1E
-	u9ZLDjOcH8aZBzig6bB7TsnxIfxkH+8cvHYwWmRn6jHmFSbUdAelZrGS3ih/5awJ5Xb3EzCfZw7qV
-	QEOklS3IYFHSZm0PLFDHRHg92OwnvlhMI2p1ZdPzzPJJQbQlfNstKfAvZ9ojiEWA/ozNnXG00txnw
-	lwvN3hiw==;
+	bh=t6qJ4Krbe8Eig8u7HuRNaH82OJCGzRpxUAzmtO7ZEgM=; b=ZJgv+iZ693tFc+qzNsqAK6VCzS
+	nHfyV0A3n0n/gJOlixjGbdaX3QLtyiHWEN6C7qxZn6XitJrpw8UvnStx6/fd27AHJaFZ4yb7xj97w
+	HtNQ17FxJCgBZ85KEm6TwRUz6rGgepBoPdKB7FKEr7pkrCriCG96EmwqP3JtxqD01Z+9Z5DxsSgRp
+	off1hx3e9qi2ABfPEOFp6PZjQdUUqOUOx1BBH2Ssl2tdaNZD6nSBj2bbhCxxqt/FsnOJxUgueM0SM
+	hz9+1n8p25ZMs/QdNHAAmnQlazGFFSYP6/2UPL7G0NYbwey6KsuIL3CeOc6tk4cUft2C4TmKkbhIR
+	2zKpPbGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utWRA-00000001eT7-0FGh;
-	Tue, 02 Sep 2025 19:13:00 +0000
-Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
+	id 1utYm3-00000002AVM-1lCE;
+	Tue, 02 Sep 2025 21:42:43 +0000
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utSwq-00000000gDx-3kzY
+	id 1utRar-00000000ERl-0cMe
 	for linux-mediatek@lists.infradead.org;
-	Tue, 02 Sep 2025 15:29:30 +0000
-Received: by mail-lj1-x234.google.com with SMTP id 38308e7fff4ca-3369d3513faso48818881fa.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 02 Sep 2025 08:29:28 -0700 (PDT)
+	Tue, 02 Sep 2025 14:02:42 +0000
+Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-55f753ec672so3195056e87.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 02 Sep 2025 07:02:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1756826966; x=1757431766; darn=lists.infradead.org;
+        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1756821759; x=1757426559; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=45D3H8+xv+cJQOWaurVBdJjz0km7uhmNmdRtwG5A/1w=;
-        b=SK6bBVGvjuKcZEQCleRE9wn3+h6LvtnE8F7MQ+ms8a2S17niJ7dvfkPhaYf6N5Rgmu
-         keUzmYIuS0oqupGeJJ7ZeJEq2KgvBh0Y9Zk6WXLeCv/HBVrTg9A4x36henRyO8joAfUF
-         waTFnhL0IXp2SkfI+XkcBqUTYvP2S+yEutm7gLTkRg5JHUjXmAxN4nd2GlI26kB46V2v
-         64Wn6xPiPlmjWC0HRXMdQNkC7Xq9doE1algAT+ryNOTwDWGlI64dsu7j13glnA94OG/h
-         rzplV2qnG9dZQH6Ke55VmPwIYCCfJGb/cqN8R673QuAYmqnZclHcCBc+o++lv+ol1rkR
-         8xbQ==
+        bh=t6qJ4Krbe8Eig8u7HuRNaH82OJCGzRpxUAzmtO7ZEgM=;
+        b=xAPtQ0rqZiTddIaqxyILysAHw2JM274OJCHM9RTQBaRZPVyQv+rCMvSM1LZWzVaC8n
+         BffVpp9Ho7PClBn3nXivExRB5fmaV8NU/Gk54bYSYie2s28uq5YMn7GpvQ4X1EOAPBxW
+         VqgWWRi/h/qNrt0raFTVvsZ7PG33tf8/kvSgb7bCpUH4/YAFa9oK4VqTWvIaiE9/liAV
+         9LklbAySXRuJmcOjmyNPkYEe29ZOYYQlTBV/8P5aYTvDdRu3a8dzd4XJwvuJRYXMNW9z
+         hFL9oKlnKOg4BpIiCFM9tpDrnwLgmmPaOMnwkQiO68SW2m7O0GMJKjHSLKHC3wu22oKo
+         qiHQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756826966; x=1757431766;
+        d=1e100.net; s=20230601; t=1756821759; x=1757426559;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=45D3H8+xv+cJQOWaurVBdJjz0km7uhmNmdRtwG5A/1w=;
-        b=YhqxmVQK99c5wGNV4l/6yf4UvPOJY1UxWO7t56CI2tn0Zz4LBJ3oXADSGAx/b74dff
-         U9n7dyajkVq6V4SrQAOUTAi4kvmr8ZdcHhNREraQossTliGL+cd9d4/CZ0z83RqYcBYE
-         isese2/K6EI0hpGFeJRPePQEQL/JDuyytlnracI6Sg532pF0u81aPf55U1wxunP3SbYm
-         HfBK0y4B0+cmxDfst+j/8pzlu5oMW7uBoax2bhe4DxYpyg1pfPy8fGpc/RNhkhrYELkr
-         gNfmmPqowhRVrW7Q2cTkklyXsKPcrgqFeJiKqojMYtyn0h6MXKofH+6Czij556haoVKn
-         botQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXC9K9C47L/w7mceu5SXjI2ZZa4puJyI8UfRrKp1zbzqymtACrJH6fu4hc0edAKWMhBH/cjjN6KzSsH/bz1eg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyD/uMCu5lXqwZDC6wsCuDfcH0UylO/wsX5pfYPhWdllLpB1ait
-	GqeRnOTf9k7r21zLBjGzlzVjyh/WbH9tl7M+z2vq0xCUEMbUcC13nvZF9hDU1fZ+PNqn4z+JMyc
-	S7DZJqhg7UteCSwioVrp50cJTVZ6ZSSM=
-X-Gm-Gg: ASbGnctvn5TBu94k47nzgPYz3oFh0EjTBxGFEVWVBHbwwsy7/vQoWfw67Df2cmAUAm5
-	0A2Mpm019+aryahNAxlOBGwEEqM/ST1hO/naDqbbh2hd9ad63b1dCUbuKED0C2UojynZuid8h5g
-	7Tce27bJVO4Xsm2xlUrH1fZwlVeEeEmL32CA86ogrkpngdpWKHxje2nTgX2AYSuxyaord6gxogQ
-	IKwkBfrdP9AG6hjFZGCxlGanHcN5Cxm4WRmM9mJHHqRzQ==
-X-Google-Smtp-Source: AGHT+IHJ+ifO3wbwufUVcTFDMp7vzAFqN/JcOC4u8JhOqaNrPYiCiSR9o2M3s+tthdJTnwxOiQhxQf4CM1nG6ewI/aE=
-X-Received: by 2002:a05:651c:551:b0:336:e22d:804a with SMTP id
- 38308e7fff4ca-336e22da0cdmr26270971fa.17.1756826966207; Tue, 02 Sep 2025
- 08:29:26 -0700 (PDT)
+        bh=t6qJ4Krbe8Eig8u7HuRNaH82OJCGzRpxUAzmtO7ZEgM=;
+        b=LLHCikiW/BgMnfaSSDVf/zglMUJBF0fR3QEpf3kaDp56kNF1dg3MapOv6pBd8sLDzl
+         Qs14C3qP3j+O+AAOf0FLyy7xwolKWWkgtIoFojc6CJaH41qYzcWUTaHzWTaaTYY6BH4G
+         83kEdKW0GgJielCSuiLKxpEHs9eZfq+OUVvoU79SISe62q+mxSJI/Y7Vv0Z5jnkbfHD1
+         rN1t6UlirmCBoWZzyDDal/ZYZtY37B6T8zSMy53/qcOTH+JAP95mXVWV0lZIXbmgKFln
+         /gUvC9/4lx6LkUnn5OehOawfBMwx4soDqpjVev6R8NoF1aMDHxENrtlZn6E7ivRMEtbd
+         PqJg==
+X-Forwarded-Encrypted: i=1; AJvYcCVLg2hdbgjoMEVLCGAKcQ4C15Fo+HXco2lKy8LLB0e8LvxVu9Q6EaGIaX3UnjhePDs9JKkPVC72ELfnvBRRNg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx4aBGsjgHDBBVBWC6k1XcW0sre6dHIgJthlHu6eqlS5o+qRSQT
+	eZdHBXLAJ82L4CnRCk/zX9CM0K7JgMDFQCzgeTbZAx2P9tbcgVj8IhrUjfogXIS4U/OTkRQpobO
+	86Yx8+wN8+EztBvQRGUDPccb6q5xpi1lhL2VyNk+8zw==
+X-Gm-Gg: ASbGnctBhkjMOtp8Dcv1qhmzOjz8zXcCW/U9IdwI8e/7al6rZ3XPIdi2JzUQYpjcIGN
+	i2iIuzhBY7l+p1JCHrp4vUg1UP4AQiaULlHRwUfB/AP90HDeJs9NPAEVmkdIAB+KpChfOKeadey
+	3RKxI8OAWS0HOYZ0gmvpPExm9cC1BYfY23o3l1s42ykvlALofUwR0/9HwI5rCACXnNnNmbEi2B0
+	pB+NHSh80eYEU2wSuHq3ctNb5RLZUJFrZ1ElXUpA6I5ue4K8g==
+X-Google-Smtp-Source: AGHT+IF0XxTo4Eof/cAnsUmsXyl7FaRgZjHqhfNse8z4FzsrSjUbnY+JobcnARjelIxZIYceGk+U5xWeRaOHkRoNgZc=
+X-Received: by 2002:a05:6512:1289:b0:55f:3f25:f03d with SMTP id
+ 2adb3069b0e04-55f708dbc89mr4083265e87.32.1756821758848; Tue, 02 Sep 2025
+ 07:02:38 -0700 (PDT)
 MIME-Version: 1.0
-References: <202508300413.OnIedvRh-lkp@intel.com> <b78a4255d17adbb74140aa23f89cb7653af96c75.1756513671.git.calvin@wbinvd.org>
- <84fd4012-966b-4983-b015-ffce06509b5e@molgen.mpg.de> <aLNRvzXE4O9dKZoN@mozart.vkv.me>
-In-Reply-To: <aLNRvzXE4O9dKZoN@mozart.vkv.me>
-From: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
-Date: Tue, 2 Sep 2025 11:29:13 -0400
-X-Gm-Features: Ac12FXxpABT60qjwT9pgH_IdUsZUdnJMAR-u1w75YMCcYqqH0yYBL57h5ICrG1c
-Message-ID: <CABBYNZJBDgQHwmx82H2XJ-LCeOsxc77PPo6NA4zzT0dt7Uxddw@mail.gmail.com>
-Subject: Re: [PATCH] Bluetooth: btmtksdio: Fix build after header cleanup
-To: Calvin Owens <calvin@wbinvd.org>
-Cc: Paul Menzel <pmenzel@molgen.mpg.de>, linux-kernel@vger.kernel.org, 
-	linux-bluetooth@vger.kernel.org, 
-	Luiz Augusto von Dentz <luiz.von.dentz@intel.com>, oe-kbuild-all@lists.linux.dev, 
-	Marcel Holtmann <marcel@holtmann.org>, Sean Wang <sean.wang@mediatek.com>, 
-	linux-mediatek@lists.infradead.org
+References: <20250902-pinctrl-gpio-pinfuncs-v7-0-bb091daedc52@linaro.org>
+ <20250902-pinctrl-gpio-pinfuncs-v7-1-bb091daedc52@linaro.org>
+ <aLbrz5DYS5Yxx_UE@smile.fi.intel.com> <CAMRc=Mfx5czDM=vfEYhFtVO3MviYaW4wKBYjGZ9ZnMbr-+T4mg@mail.gmail.com>
+ <aLb2HH5zgxdbDiPo@smile.fi.intel.com>
+In-Reply-To: <aLb2HH5zgxdbDiPo@smile.fi.intel.com>
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+Date: Tue, 2 Sep 2025 16:02:27 +0200
+X-Gm-Features: Ac12FXzmmMVa4i5hYh_JJ6GZvRRv05y-_-Nk_APJiumjkhCqONHKECafTZ1ySu4
+Message-ID: <CAMRc=Mdp2djgGbgu_uwLSkrtRPomAU=6-SRdzCdSbrHWzS2c2A@mail.gmail.com>
+Subject: Re: [PATCH v7 01/16] pinctrl: check the return value of pinmux_ops::get_function_name()
+To: Andy Shevchenko <andriy.shevchenko@intel.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Bjorn Andersson <andersson@kernel.org>, 
+	Konrad Dybcio <konradybcio@kernel.org>, Alexey Klimov <alexey.klimov@linaro.org>, 
+	Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Paul Cercueil <paul@crapouillou.net>, Kees Cook <kees@kernel.org>, 
+	Andy Shevchenko <andy@kernel.org>, Andrew Morton <akpm@linux-foundation.org>, 
+	David Hildenbrand <david@redhat.com>, Lorenzo Stoakes <lorenzo.stoakes@oracle.com>, 
+	"Liam R. Howlett" <Liam.Howlett@oracle.com>, Vlastimil Babka <vbabka@suse.cz>, 
+	Mike Rapoport <rppt@kernel.org>, Suren Baghdasaryan <surenb@google.com>, Michal Hocko <mhocko@suse.com>, 
+	Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, 
+	Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, NXP S32 Linux Team <s32@nxp.com>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Tony Lindgren <tony@atomide.com>, 
+	Haojian Zhuang <haojian.zhuang@linaro.org>, Geert Uytterhoeven <geert+renesas@glider.be>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Danilo Krummrich <dakr@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Mark Brown <broonie@kernel.org>, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mips@vger.kernel.org, linux-hardening@vger.kernel.org, 
+	linux-mm@kvack.org, imx@lists.linux.dev, linux-omap@vger.kernel.org, 
+	linux-renesas-soc@vger.kernel.org, 
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, stable@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250902_082928_935064_FB8C7FBA 
-X-CRM114-Status: GOOD (  39.53  )
+X-CRM114-CacheID: sfid-20250902_070241_191353_40C09558 
+X-CRM114-Status: GOOD (  25.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,171 +120,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Calvin,
-
-On Sat, Aug 30, 2025 at 3:32=E2=80=AFPM Calvin Owens <calvin@wbinvd.org> wr=
-ote:
+On Tue, Sep 2, 2025 at 3:50=E2=80=AFPM Andy Shevchenko
+<andriy.shevchenko@intel.com> wrote:
 >
-> On Saturday 08/30 at 07:11 +0200, Paul Menzel wrote:
-> > Dear Calvin,
-> >
-> >
-> > Thank you for your patch, and addressing the regression right away.
-> >
-> > Am 30.08.25 um 02:50 schrieb Calvin Owens:
-> > > Syzbot found a randconfig which fails after my recent patch:
+> On Tue, Sep 02, 2025 at 03:29:31PM +0200, Bartosz Golaszewski wrote:
+> > On Tue, Sep 2, 2025 at 3:06=E2=80=AFPM Andy Shevchenko
+> > <andriy.shevchenko@intel.com> wrote:
+> > > On Tue, Sep 02, 2025 at 01:59:10PM +0200, Bartosz Golaszewski wrote:
+> > > >
+> > > > While the API contract in docs doesn't specify it explicitly,
 > > >
-> > >      drivers/bluetooth/btmtksdio.c:442:33: error: array type has inco=
-mplete element type =E2=80=98struct h4_recv_pkt=E2=80=99
-> > >        442 | static const struct h4_recv_pkt mtk_recv_pkts[] =3D {
-> > >            |                                 ^~~~~~~~~~~~~
-> > >      drivers/bluetooth/btmtksdio.c:443:11: error: =E2=80=98H4_RECV_AC=
-L=E2=80=99 undeclared here (not in a function)
-> > >        443 |         { H4_RECV_ACL,      .recv =3D btmtksdio_recv_acl=
- },
-> > >            |           ^~~~~~~~~~~
-> > >      drivers/bluetooth/btmtksdio.c:444:11: error: =E2=80=98H4_RECV_SC=
-O=E2=80=99 undeclared here (not in a function)
-> > >        444 |         { H4_RECV_SCO,      .recv =3D hci_recv_frame },
-> > >            |           ^~~~~~~~~~~
-> > >      drivers/bluetooth/btmtksdio.c:445:11: error: =E2=80=98H4_RECV_EV=
-ENT=E2=80=99 undeclared here (not in a function)
-> > >        445 |         { H4_RECV_EVENT,    .recv =3D btmtksdio_recv_eve=
-nt },
-> > >
-> > > ...because we can have BT_MTKSDIO=3Dy with BT_HCIUART_H4=3Dn, and the
-> > > definitions used here are gated on BT_HCIUART_H4 in hci_uart.h.
+> > > So, why not to amend the doc at the same time?
 > >
-> > The drivers below seem to be affected:
+> > Because this series is already big as is. That would be another commit
+> > that can be separate.
+>
+> I meant _in the same_ patch.
+>
+> > > > the generic implementation of the get_function_name() callback from=
+ struct
+> > > > pinmux_ops - pinmux_generic_get_function_name() - can fail and retu=
+rn
+> > > > NULL. This is already checked in pinmux_check_ops() so add a simila=
+r
+> > > > check in pinmux_func_name_to_selector() instead of passing the retu=
+rned
+> > > > pointer right down to strcmp() where the NULL can get dereferenced.=
+ This
+> > > > is normal operation when adding new pinfunctions.
+>
+> > > Fixes?
 > >
-> >     drivers/bluetooth/bpa10x.c:     { H4_RECV_EVENT,   .recv =3D
-> > hci_recv_frame },
-> >     drivers/bluetooth/btmtksdio.c:  { H4_RECV_EVENT,    .recv =3D
-> > btmtksdio_recv_event },
-> >     drivers/bluetooth/btmtkuart.c:  { H4_RECV_EVENT,    .recv =3D
-> > btmtkuart_recv_event },
-> >     drivers/bluetooth/btnxpuart.c:  { H4_RECV_EVENT,        .recv =3D
-> > hci_recv_frame },
+> > This has always been like that.
 > >
-> > > I think the simplest way to fix this is to remove the gate on the
-> > > definitions in hci_uart.h. Since the constants are macros, there's no
-> > > runtime cost to doing so, and nothing seems to rely on their absence =
-in
-> > > the BT_HCIUART_H4=3Dn case.
+> > > Reported?
 > >
-> > Looking at the implementation, it looks like they only work with the H4
-> > protocol? So maybe, that should be denoted in the Kconfig files?
+> > I mean, technically Mark Brown reported my previous patch failing but
+> > I don't think we do this if we're still within the same series just
+> > another iteration?
+> >
+> > > Closes?
+> >
+> > Ditto.
 >
-> Thanks for looking Paul.
->
-> Yes, my fix will cause a link error with other randconfigs, which my
-> 'make randconfig drivers/bluetooth/' test loop missed after I made the
-> function prototype always defined, whoops.
->
-> We do need the dependencies here, as you note. The btmtksdio case syzbot
-> found is the odd one out because it only uses the constants, and doesn't
-> call h4_recv_buf().
->
-> Hopefully this gets it all:
->
-> -----8<-----
-> From: Calvin Owens <calvin@wbinvd.org>
-> Subject: [PATCH v2] Bluetooth: Fix build after header cleanup
->
-> Some Kconfig dependencies are needed after my recent cleanup, since
-> the core code has its own option.
->
-> Since btmtksdio does not actually call h4_recv_buf(), move the
-> definitions it uses outside the BT_HCIUART_H4 gate in hci_uart.h to
-> avoid adding a dependency for btmtksdio.
->
-> The rest I touched (bpa10x, btmtkuart, and btnxpuart) do really call
-> h4_recv_buf(), so the dependency is required, add it for them.
->
-> Fixes: 74bcec450eea ("Bluetooth: remove duplicate h4_recv_buf() in header=
-")
-> Reported-by: kernel test robot <lkp@intel.com>
-> Closes: https://lore.kernel.org/oe-kbuild-all/202508300413.OnIedvRh-lkp@i=
-ntel.com/
-> Signed-off-by: Calvin Owens <calvin@wbinvd.org>
-> ---
->  drivers/bluetooth/Kconfig    | 6 ++++++
->  drivers/bluetooth/hci_uart.h | 8 ++++----
->  2 files changed, 10 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/bluetooth/Kconfig b/drivers/bluetooth/Kconfig
-> index 4ab32abf0f48..7df69ccb6600 100644
-> --- a/drivers/bluetooth/Kconfig
-> +++ b/drivers/bluetooth/Kconfig
-> @@ -312,7 +312,9 @@ config BT_HCIBCM4377
->
->  config BT_HCIBPA10X
->         tristate "HCI BPA10x USB driver"
-> +       depends on BT_HCIUART
->         depends on USB
-> +       select BT_HCIUART_H4
->         help
->           Bluetooth HCI BPA10x USB driver.
->           This driver provides support for the Digianswer BPA 100/105 Blu=
-etooth
-> @@ -437,8 +439,10 @@ config BT_MTKSDIO
->
->  config BT_MTKUART
->         tristate "MediaTek HCI UART driver"
-> +       depends on BT_HCIUART
->         depends on SERIAL_DEV_BUS
->         depends on USB || !BT_HCIBTUSB_MTK
-> +       select BT_HCIUART_H4
->         select BT_MTK
->         help
->           MediaTek Bluetooth HCI UART driver.
-> @@ -483,7 +487,9 @@ config BT_VIRTIO
->
->  config BT_NXPUART
->         tristate "NXP protocol support"
-> +       depends on BT_HCIUART
->         depends on SERIAL_DEV_BUS
-> +       select BT_HCIUART_H4
->         select CRC32
->         select CRC8
->         help
-> diff --git a/drivers/bluetooth/hci_uart.h b/drivers/bluetooth/hci_uart.h
-> index 5ea5dd80e297..cbbe79b241ce 100644
-> --- a/drivers/bluetooth/hci_uart.h
-> +++ b/drivers/bluetooth/hci_uart.h
-> @@ -121,10 +121,6 @@ void hci_uart_set_flow_control(struct hci_uart *hu, =
-bool enable);
->  void hci_uart_set_speeds(struct hci_uart *hu, unsigned int init_speed,
->                          unsigned int oper_speed);
->
-> -#ifdef CONFIG_BT_HCIUART_H4
-> -int h4_init(void);
-> -int h4_deinit(void);
-> -
->  struct h4_recv_pkt {
->         u8  type;       /* Packet type */
->         u8  hlen;       /* Header length */
-> @@ -162,6 +158,10 @@ struct h4_recv_pkt {
->         .lsize =3D 2, \
->         .maxlen =3D HCI_MAX_FRAME_SIZE \
->
-> +#ifdef CONFIG_BT_HCIUART_H4
-> +int h4_init(void);
-> +int h4_deinit(void);
-> +
->  struct sk_buff *h4_recv_buf(struct hci_dev *hdev, struct sk_buff *skb,
->                             const unsigned char *buffer, int count,
->                             const struct h4_recv_pkt *pkts, int pkts_coun=
-t);
-> --
-> 2.47.2
-
-Please send a v2 then otherwise this is no pickup by the likes of CI
-and patchwork.
-
+> I meant that this fixes a potential issue disregard to your series, right=
+?
 >
 
+No, as long as the imx driver keeps putting stuff into the pin
+function radix tree directly, this cannot happen. The issue was
+triggered by the discrepancy between the number of added selectors and
+the hardcoded number of functions (we started at 0 which was not in
+the radix tree and crashed before we got to 1).
 
---=20
-Luiz Augusto von Dentz
+Bart
 
