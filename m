@@ -4,79 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDC46CA0FFE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Sep 2025 15:08:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CDBECA0FFE
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Sep 2025 15:11:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FaCre2GzdHbdQSV0ImBvBUo9sM3J8CdQV8vbp4R8HMY=; b=g3Dpyn4LQoocv/6FnMhmb2YSFQ
-	3sin1CRTkUpyTBt1FJNuLfmdHVDBVMLiHQG7kJh/pOM1hvoCX+q0D1ME4LzBQNJTQ4RJ7QyFpwPab
-	xrfMtwKbEZ4zyQdqdoMWkV/8VTts1wXKH1E16s9QVKT2J7uLwQS9BTmBKxQC7EwgSfNMozISdV/zj
-	PsZn5IHngLE0llAxp8OKsk/wHxnVudmz5HWEOeZUAvnwarQaXJOoByov/G78sykddPEIr6nCpUix3
-	IDX9hM+VY8Hb+UdYnds0WTeJF+vLG6x04vE3+erSIkhHmyUkSE/Ro3xyk1dVEjBoz3ObfkX/6hsSI
-	EIXudJ4g==;
+	bh=G3eeGmPeTtaROvFQiYnK7dZg5f0Y1UOsb0zEkFq0B7A=; b=jRT3RIkUmZzsIOTMmA2aBHJ3oR
+	CnSvJm9N7+kHgMJWtN2MjjwUFvSf711ITfnn5Ue7W++3WWFZnBbU4gTkhaw2giQU9HoPJyT0qjqjV
+	21yKhGTIhPmatREgsoKlsknDOv68t26GHVxcTwIWcfDlaXziJtnrKmjyUNOgkJEeKIZScl1EQKQdD
+	w7RuX3kfrcL4dl1Pvei/ixoodGDsicivkVKU9f4bCc5LbG/EBJjf2FQO1MS/DnfMOFTrINf01CI6m
+	NycH6XSEAh/7ExZ8+U1MFIES5mAJdjFD+nxI/KYAiWS7sgCRBYneGc+bPgzWj5l8TZ8kCGtX4+rd5
+	OeVSZsqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utScy-00000000avL-3dFa;
-	Tue, 02 Sep 2025 15:08:56 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1utSff-00000000bdM-1pyi;
+	Tue, 02 Sep 2025 15:11:43 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utPfg-0000000H4Pn-1rzY
+	id 1utPfi-0000000H4R8-0Ves
 	for linux-mediatek@lists.infradead.org;
-	Tue, 02 Sep 2025 11:59:33 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-45b88bff3ebso15216315e9.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 02 Sep 2025 04:59:32 -0700 (PDT)
+	Tue, 02 Sep 2025 11:59:35 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-45b79ec2fbeso35721255e9.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 02 Sep 2025 04:59:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1756814371; x=1757419171; darn=lists.infradead.org;
+        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1756814373; x=1757419173; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=FaCre2GzdHbdQSV0ImBvBUo9sM3J8CdQV8vbp4R8HMY=;
-        b=nFa5f0BISi66fnPntHcdMjstnS/nfO1IYU1AlOfoTeq6HsH+sL3qIHt4SVy3gIKv2H
-         WjE0io2ITf05f+BxKxeJFo2T7SK0mNg0Ohjy52sMaT8J9xU/u8hpFjyM6uDrhn54DB6f
-         SG3LsrzAV7lKx3oEAmcg8Ahi9pMPaZzq8MZr48vWU8LS5NDC5nLCZfN6CctI30clPS0T
-         bZ0Qk4aEoLmP7i9S0k1eAj2wssYicPLZUWBvnZ+A3YVpQgnhLQhJjZXCirCVN//rmQ8F
-         pfcD5q7Xz7pa3qOMzXSQWFQ5+JSv6tGKUnSd5dVrghVoAB+i+Ogf6cVF+8m+axaxsAx6
-         Bgvg==
+        bh=G3eeGmPeTtaROvFQiYnK7dZg5f0Y1UOsb0zEkFq0B7A=;
+        b=rldMTvEKiGckf8wEu1LL0X3LVzqME2APTuFKwfe9xHgfw/nkLR271p1MB4TJD7h350
+         h6rijvyH10He59oAU1PrxBPb49wxRWwvk6vHFrKGKie7Wo8vPtiDgDEJXVPjxEASUjsd
+         Vv7OU+2lrPYmj/vWLrcBBGZJqgwrERvam5m4FPOnPKheOkYh5kKYkE7CuGmfkPxJWH88
+         OfmdO2WpG3AK2T5t0ohwpR0n1d/b74taxGucRAIALgM9muFAMitVVvgRSE+xkYNzITgj
+         7cFESBxFcJs4fillFOGEWB+w63I0S60aJE/7lfwC0eXmvLdPRwmWAsviqb16WWeRTxEs
+         YU/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756814371; x=1757419171;
+        d=1e100.net; s=20230601; t=1756814373; x=1757419173;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=FaCre2GzdHbdQSV0ImBvBUo9sM3J8CdQV8vbp4R8HMY=;
-        b=d5SW7xWw7l4tsWx3HuyGTCVOKYo8g5Ul1h8Cda3vJlOgqS1xMZNO2g161pCXdfETA9
-         UTLlkLHDa0tPnGEj0wzJSB5hOjmWwITW3cT09zyzWYbxzA6XCfIhs/Gc8KzR/HqGiev6
-         TW9iVWw2RwRHNdtdiem+LV04rmo8Nz4h7S3dM5kY026fiXo1+YjlJDkVu1Wt+tLnoYaS
-         SqC0SQgVeea/2YZ+CVh6sBrHa0hc98avYRNtBsKX5vgfEg/QdPHUJHWchkcy3xm0xfh/
-         v+304i69szw+gEQhbnSqcQr6l7pW4sYpkIXDBrKtSzaIf7tWZpHtKtNq92les69SXCFK
-         s8eA==
-X-Forwarded-Encrypted: i=1; AJvYcCVF4jvHopK7WcK+Gj68k5YuZGYYL/1mpo7+DVRXFkH9Fd2TWJlyaYGCL3MAX3RVUv/qlRxhwANeGo99/jIl1w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YynbFW7on5vMw6A1+wtXb3lvuDvXM0OUYUcE/BvwG8JqMwDRPWV
-	sOuiQwWJ+9Zl5UqZZQPMKQbLCznhx1+nom5fpOTnpK3SMupzcsINBPZ219m8MI3YGzE=
-X-Gm-Gg: ASbGnctJBUx6lZIexaGXOMtwhKpHvo+R/TPARZscaP3XPwLRqZw7koiJBs+PSggFZAq
-	12kirq9Sr32RoWd0ejukromhcFGZFc0zG1TVl2yUQZiy9Ylp0bOetEgrNfiRn/Mjkplx26Gmh8N
-	oZMv839FJK10yxQ2kyTr4wJYstwcfeG4mn+S/PP1oXGzPZAgp6e1MX6YIisxEpiAw6JwGM6INp8
-	ndJr8L9Deli9B0aJsmlcd/b0RkedtLe2e+Z/jiTSgVLSpxhboJPizx4KJPTsGwlzRf6RoyFxLsR
-	PWWygL8wbIpzAqOOzxyOm+4EKs8ZSCtmlG+DlnpnHGRqW6gPS3+apA/4d4jKzl4GSvrKUyAgkoC
-	Q2smdmjkpf2pWkVlI
-X-Google-Smtp-Source: AGHT+IEly0vxxEclpdvYe6RqlF5Qq+Fgr46eky8ZTTtYsSRx7+N3oq1XDfjPTJar+7PHSisK+6uKbg==
-X-Received: by 2002:a05:600c:8b42:b0:45b:7e86:7378 with SMTP id 5b1f17b1804b1-45b8558be6emr82490175e9.34.1756814370975;
-        Tue, 02 Sep 2025 04:59:30 -0700 (PDT)
+        bh=G3eeGmPeTtaROvFQiYnK7dZg5f0Y1UOsb0zEkFq0B7A=;
+        b=lfrvmxsK0pTcccaqF9JxgRSmwKBUjhNJIJyl8cJSWDWEIVuzVjH+tnHTf6s699f7Qb
+         qQbjxeHPmc6VwbFNVDxgPUKyMfHmY+rrYvdDycSNwR7n20Z9zpg5E69MpEqbp2B52785
+         nctCbMEqXpzfS0y/0b76BFogzSGMD4qwWEGMf9QxNXMsVzexNooQSMtWj/D+5IGNBy+p
+         Dunsbiymv4zwfi+qIv1J+DqSoIyPhIUJdSnTQZ1n7Kae8Hxb3GFxPmT1XpXtCwLR5WL9
+         rS6NeRiJcuVPgP0++OvMuAbB3zpNz4Kn8JyZ5/dHAfBXt7P9Snmh7LZpsriupsG17yIA
+         B9vw==
+X-Forwarded-Encrypted: i=1; AJvYcCWrRLjd/gpZqbVaiTt5xxTrX2rdLJV3yIdTzHDUir9Dpd+dPXRur6sxiXonOG+UqwkVxXoZiaJK8IOKt8p9ZA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxDYv89Jl04yeNdjqGWdFeb3odgpj51ReEkj6HDdKOUsx7rKMqF
+	n0szc1GQgDZhzgtfqsnulbctTMRuWWTN8r4jzeQvIawwOzCx8CSXpFV5yZO0D6nPpik=
+X-Gm-Gg: ASbGncu6k3leILfKCu4w9iwtNhynsrrms50dUAMVIvaCFYLBhs+c1ar9wIaGkGmC+6j
+	nve9KYqBrdwAVKH3ppnBliKv8qA8maWeTR+YgzmEM2dlrehpoi2CH4NAJRWsLnMgAILval+2u3i
+	VtOYHI6VF1O1V6oajb6dlwL+BgmXTBCZEWuCuIFWNZGgkCauvNrxJTR0an2NbX8RbTzY7QkbBdY
+	XJAzTPG2LBJgixqSYqhjwYs8sBnmx80ajenBziVMg9GCwnWTPWdzU//cmyj5VLYbnlKR1/Yja6N
+	hv7n2i+srFxyna86YUw6GJhM0eQOLFCOESUgfm+J5UMb3AGG347DkmYvnTKavppu6OVOw7U6VUj
+	xHaJ+8HYfI4wmGrl/42INPKzecjc=
+X-Google-Smtp-Source: AGHT+IEYts8jM0hPDNk3lR54JtI9fXY+q3XD1cCncBSU1T/7vcK/5dU1iwGu8Rzh1q6sfcr++Z7kQg==
+X-Received: by 2002:a05:600c:138c:b0:45b:75f0:2d66 with SMTP id 5b1f17b1804b1-45b8553da82mr85384005e9.4.1756814372615;
+        Tue, 02 Sep 2025 04:59:32 -0700 (PDT)
 Received: from [127.0.1.1] ([2a01:cb1d:dc:7e00:3327:447f:34e9:44f7])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45b9c234b24sm10224195e9.16.2025.09.02.04.59.29
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45b9c234b24sm10224195e9.16.2025.09.02.04.59.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 02 Sep 2025 04:59:30 -0700 (PDT)
+        Tue, 02 Sep 2025 04:59:32 -0700 (PDT)
 From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Tue, 02 Sep 2025 13:59:16 +0200
-Subject: [PATCH v7 07/16] pinctrl: imx: don't access the pin function radix
- tree directly
+Date: Tue, 02 Sep 2025 13:59:17 +0200
+Subject: [PATCH v7 08/16] pinctrl: keembay: release allocated memory in
+ detach path
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250902-pinctrl-gpio-pinfuncs-v7-7-bb091daedc52@linaro.org>
+Message-Id: <20250902-pinctrl-gpio-pinfuncs-v7-8-bb091daedc52@linaro.org>
 References: <20250902-pinctrl-gpio-pinfuncs-v7-0-bb091daedc52@linaro.org>
 In-Reply-To: <20250902-pinctrl-gpio-pinfuncs-v7-0-bb091daedc52@linaro.org>
 To: Linus Walleij <linus.walleij@linaro.org>, 
@@ -111,26 +111,26 @@ Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-omap@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
  Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3263;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1922;
  i=bartosz.golaszewski@linaro.org; h=from:subject:message-id;
- bh=UHL45bU3ycpBbK/9v0T/s+H5JbIm9uq6QUqV6dCnaD4=;
- b=owEBbQKS/ZANAwAKARGnLqAUcddyAcsmYgBottwTg2jeHg7MNqyFVpB53OT3hBDpMLMqtzNww
- Mda9A73U02JAjMEAAEKAB0WIQQWnetsC8PEYBPSx58Rpy6gFHHXcgUCaLbcEwAKCRARpy6gFHHX
- chIjD/9z/2COMvLdzt0sZZcC2v2YMaEH7j/ovLMC4xkic7o5czvRo1n7/S6B6mXDm90zT8g9iqO
- sKmPGq1jec9ahZ/sG7AjV6HIK9GMa6Jm/RZJWIakFs9QpzxgwQmqzQ4XG1z/zSW8jp5CD5tqC7K
- tYF18u3wvifVH3S9+DbzsNBWeifEDHRCxQ3pVUz/u1q8gk8FmjiUeRFXLOj1T4ibMLkU2jsD2ZV
- CAksogKfbUZoxCPgosTITDGYDwe3BROXhrBlm7OV1ZQsgJKkBwQgTSG18KV/KJuWLirWxPj/Tjk
- 4ey1rb0m9dbIpYGtOoGuGXeaZYsejj1HciGAjPItW63hafjF8OFhYALR6ujBpAxC+xDXy6eVTTy
- NNfK6tvT/ZVzY1SiVxzkyYDg+q8ntrQu/x4CF7rc35jomHHsLis0VGtkedibJ2aMszPzSO2U+Gp
- 5zzmGNkKITiSdLPojpJQZj0laaPjQi+t4ehqxXw6r6ViTzAk12e+QMSWPYJbypz4HMmPxYLqHek
- qPCtTOGtwHdg7eqSe3upVSYpcTwVZPBYORfF6Wo7oPN33vEhKtL/UZxCOFjUD4maqIH3MpD8Snr
- nfGpdqkEfAAOQrs64YvtHt6UTCTkOCcy3/CxRO/fDciQ30/X5DgLQ5ZT/FoySFzYiKZNiA+++6S
- z+eUAM19e+0hQxw==
+ bh=ybe6mZ39mB+QhhV+IKLIazviltUgUh6yCI8QoqBhqhA=;
+ b=owEBbQKS/ZANAwAKARGnLqAUcddyAcsmYgBottwTMr8wKhS9jqc/gyJqLYlDuhik2dzTYA2mT
+ 1itmg9TI66JAjMEAAEKAB0WIQQWnetsC8PEYBPSx58Rpy6gFHHXcgUCaLbcEwAKCRARpy6gFHHX
+ cjI6D/47zG6CNa/8DApAwhxFDdmwXkTD9kK50B7xrkEpT1/JM58uqZdt8oD+hS1swsxXhRof0r4
+ 2n2Ji8TbCs8P2yCD2PbLf15A8uHM5PHZenScMw/EEAYyqe71x1+dtfd/0WPRmc70ZooKL2QWiAi
+ WmY3xrhUzFT/mTiHSJ+Sl6fEv9P+P0aF1MaWbgDZ4jowuRSP9MOSc95l5y5xr0kfP1E16kxoCnq
+ 4ZHO+I9jSj8nAOC4p7vv2C8xPjIX4qljGd6Fxei7GyLJCsWCO1bVOuiBPOeuAHr5xFaE4ZRovYb
+ F9lyE8LGGsGKHyJ/L69Bodanim6+VN85c4fQ2AcR89293cvQpDixNSz8mrBUiT+HmVE0IzxSLNy
+ Sgp2dWrAe3TRtptr7mqR4lPuk61imcA5RCUU0I3oaXxd9hP+JLUTmSlMfA6LoTNWbSYRVC+4xDw
+ Qo5pgteE310JQKtU6rQnNHGW+2O3jcyFn9mbGQuTqMr+vKyahvM7UyhEDX8ZW74zY27DSaD749J
+ rGlm9BHlu4j2jQqztmo2Nn3sGXWBkw3q97eaE04xHGEZGWDzNSCFZD5lsOKMyFl1RzjaBRQfm3w
+ 5Vg4CQMYP/j/60BEEqNgzTd4ZzduOt28Z44HTEo2+ZFoduSKvvGzmVen+sRIF7N6c4O1baavetE
+ suzeoiwgo1tLJVA==
 X-Developer-Key: i=bartosz.golaszewski@linaro.org; a=openpgp;
  fpr=169DEB6C0BC3C46013D2C79F11A72EA01471D772
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250902_045932_540043_F01A794C 
-X-CRM114-Status: GOOD (  19.94  )
+X-CRM114-CacheID: sfid-20250902_045934_169673_BEC93BF8 
+X-CRM114-Status: GOOD (  15.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -147,102 +147,48 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 
-The radix tree containing pin function descriptors should not be
-accessed directly by drivers. There are dedicated functions for it. I
-suppose this driver does it so that the memory containing the function
-description is not duplicated but we're going to address that shortly so
-convert it to using generic pinctrl APIs.
+Unlike all the other allocations in this driver, the memory for storing
+the pin function descriptions allocated with kcalloc() and later resized
+with krealloc() is never freed. Use devres like elsewhere to handle
+that. While at it - replace krealloc() with more suitable
+devm_krealloc_array().
+
+Note: the logic in this module is pretty convoluted and could probably
+use some revisiting, we should probably be able to calculate the exact
+amount of memory needed in advance or even skip the allocation
+altogether and just add each function to the radix tree separately.
 
 Tested-by: Neil Armstrong <neil.armstrong@linaro.org>
 Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 ---
- drivers/pinctrl/freescale/pinctrl-imx.c | 41 +++++++++++++++------------------
- 1 file changed, 18 insertions(+), 23 deletions(-)
+ drivers/pinctrl/pinctrl-keembay.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/pinctrl/freescale/pinctrl-imx.c b/drivers/pinctrl/freescale/pinctrl-imx.c
-index 18de31328540458b7f7e8e2e539a39d61829deb9..c5b17c5ecfb5ee7856bc499de218c288099f334b 100644
---- a/drivers/pinctrl/freescale/pinctrl-imx.c
-+++ b/drivers/pinctrl/freescale/pinctrl-imx.c
-@@ -580,33 +580,38 @@ static int imx_pinctrl_parse_functions(struct device_node *np,
- 				       u32 index)
- {
- 	struct pinctrl_dev *pctl = ipctl->pctl;
--	struct function_desc *func;
-+	struct pinfunction *func;
- 	struct group_desc *grp;
- 	const char **group_names;
-+	int ret;
- 	u32 i;
- 
- 	dev_dbg(pctl->dev, "parse function(%d): %pOFn\n", index, np);
- 
--	func = pinmux_generic_get_function(pctl, index);
-+	func = devm_kzalloc(ipctl->dev, sizeof(*func), GFP_KERNEL);
- 	if (!func)
--		return -EINVAL;
-+		return -ENOMEM;
- 
- 	/* Initialise function */
--	func->func.name = np->name;
--	func->func.ngroups = of_get_child_count(np);
--	if (func->func.ngroups == 0) {
-+	func->name = np->name;
-+	func->ngroups = of_get_child_count(np);
-+	if (func->ngroups == 0) {
- 		dev_info(ipctl->dev, "no groups defined in %pOF\n", np);
- 		return -EINVAL;
- 	}
- 
--	group_names = devm_kcalloc(ipctl->dev, func->func.ngroups,
--				   sizeof(*func->func.groups), GFP_KERNEL);
-+	group_names = devm_kcalloc(ipctl->dev, func->ngroups,
-+				   sizeof(*func->groups), GFP_KERNEL);
- 	if (!group_names)
+diff --git a/drivers/pinctrl/pinctrl-keembay.c b/drivers/pinctrl/pinctrl-keembay.c
+index 60cf017498b32a9f36a1f8608e372951c2b8f12a..6aefcbc31309995ec1e235416b40aab3e4a073a9 100644
+--- a/drivers/pinctrl/pinctrl-keembay.c
++++ b/drivers/pinctrl/pinctrl-keembay.c
+@@ -1603,7 +1603,8 @@ static int keembay_build_functions(struct keembay_pinctrl *kpc)
+ 	 * being part of 8 (hw maximum) globally unique muxes.
+ 	 */
+ 	kpc->nfuncs = 0;
+-	keembay_funcs = kcalloc(kpc->npins * 8, sizeof(*keembay_funcs), GFP_KERNEL);
++	keembay_funcs = devm_kcalloc(kpc->dev, kpc->npins * 8,
++				     sizeof(*keembay_funcs), GFP_KERNEL);
+ 	if (!keembay_funcs)
  		return -ENOMEM;
- 	i = 0;
- 	for_each_child_of_node_scoped(np, child)
- 		group_names[i++] = child->name;
--	func->func.groups = group_names;
-+	func->groups = group_names;
-+
-+	ret = pinmux_generic_add_pinfunction(pctl, func, NULL);
-+	if (ret < 0)
-+		return ret;
  
- 	i = 0;
- 	for_each_child_of_node_scoped(np, child) {
-@@ -615,6 +620,10 @@ static int imx_pinctrl_parse_functions(struct device_node *np,
- 			return -ENOMEM;
- 
- 		mutex_lock(&ipctl->mutex);
-+		/*
-+		 * FIXME: This should use pinctrl_generic_add_group() and not
-+		 * access the private radix tree directly.
-+		 */
- 		radix_tree_insert(&pctl->pin_group_tree,
- 				  ipctl->group_index++, grp);
- 		mutex_unlock(&ipctl->mutex);
-@@ -669,20 +678,6 @@ static int imx_pinctrl_probe_dt(struct platform_device *pdev,
- 		}
+@@ -1634,7 +1635,9 @@ static int keembay_build_functions(struct keembay_pinctrl *kpc)
  	}
  
--	for (i = 0; i < nfuncs; i++) {
--		struct function_desc *function;
--
--		function = devm_kzalloc(&pdev->dev, sizeof(*function),
--					GFP_KERNEL);
--		if (!function)
--			return -ENOMEM;
--
--		mutex_lock(&ipctl->mutex);
--		radix_tree_insert(&pctl->pin_function_tree, i, function);
--		mutex_unlock(&ipctl->mutex);
--	}
--	pctl->num_functions = nfuncs;
--
- 	ipctl->group_index = 0;
- 	if (flat_funcs) {
- 		pctl->num_groups = of_get_child_count(np);
+ 	/* Reallocate memory based on actual number of functions */
+-	new_funcs = krealloc(keembay_funcs, kpc->nfuncs * sizeof(*new_funcs), GFP_KERNEL);
++	new_funcs = devm_krealloc_array(kpc->dev, keembay_funcs,
++					kpc->nfuncs, sizeof(*new_funcs),
++					GFP_KERNEL);
+ 	if (!new_funcs) {
+ 		kfree(keembay_funcs);
+ 		return -ENOMEM;
 
 -- 
 2.48.1
