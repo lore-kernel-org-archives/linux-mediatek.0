@@ -4,62 +4,210 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46527CA100C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Sep 2025 00:52:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68532CA1002
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Sep 2025 01:45:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AyP44jSqEN1VOfpuJAJ+bUIxzo6UM+K+/bpPi657LD4=; b=TbqqI2g296NoG+HmOz3Kkyn6cu
-	IVrlWfDoX9a78mZ5LBf4m76p/lzZeqB3JSNQSlp+h68xW4rDXPan7bU6MUWntzkPCkS74coNI2rfX
-	7VXt+hvNjm7Qxn8dNp072Zweg2znnRbs1eSZ5W+P3XKfh4oIY+SsX+Tam3QktlJFIv61mqER2fUQm
-	YIP054rGZoCx/NzhALp2Lxtl6lALxYX/45/SmE3qFDqknFRWX6QDx7OrPiQL3/apnnB6riqsmB3R8
-	cpIcsZLZnfdOI32ANgn2x12TYbI1OHX67wFdStP9UBKtUnbWHJjJLhH2qm3UwFWOtNA7lOHgYg9G4
-	lVdU+h0w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=75hacSY3z7pYiu2JuJDWy3DupipC9zwELwhYZoNpwT4=; b=xDPb5KAwXVnWZY16/Gpl8mj4Mj
+	miKVxTg3sczetMbygv+6Hg8QieYQgZPClztZolNobwDQIVS3/nv+dhX6ViV2sIo76BtSN4LA3s5Ie
+	o2SPa4X9PLxyd3ixd/Na8TfnZE44XfTUlInwQrQQfuvYciY3+7wxFaQ/UyVuegG3cDVO4rCo40Kac
+	8X9t1WRX2GpNCNkBpX7XhxTsv96SIVAIW7LYaAIhzIFig91LRkAqb+HKqLPSoW33rzjDUdB55CvkJ
+	5pFkbXHHqMDaVCm8DVTxci6W+wQMyD1huOdUsHP7eloab338Z4pFpEukg21y3k5uOFLpd7hXUA0KL
+	vk+T3Dog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utFGQ-0000000EYjk-2PrX;
-	Tue, 02 Sep 2025 00:52:46 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1utG5i-0000000EkIp-0UzL;
+	Tue, 02 Sep 2025 01:45:46 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utBc6-0000000DtQY-3Su2;
-	Mon, 01 Sep 2025 20:58:54 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 23665600BB;
-	Mon,  1 Sep 2025 20:58:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7809FC4CEF0;
-	Mon,  1 Sep 2025 20:58:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756760333;
-	bh=GKGnZqnAsDrxctqLT2iibvMfR3HDHyGeBZd2bm5SILg=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=jznuhBX1dkOJpt1F9xGlyccwVtg3gdpEo4DMREP0vZeMDJQaqJn836NoNWQRwLztG
-	 fzCPRUrrHQnKmdnwGCBf5uhrDRsS6j47emqY7cgBtcBJ7WZde6ren1/xVvex3Ibx6x
-	 Rn7K02AOrwXSBQK4B7QZ0ruxxVl1gfcW9+DrHjPoYxkXztQGZG1q0O30VWQ5joVG/2
-	 nXSLNo8MdTEjsCWDgloomJO/EsER+rokduDWF8Iee+PBmOKvfiJ1jJNG/kv8U7w02d
-	 KVF/gNiStJZ/ePPXTrl5vLfMJAjYr3Uf37F15seqGzOK2TfCI8F75Y7EKaySXVaCxu
-	 Kf0SnEu750xhw==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Mon, 01 Sep 2025 22:58:08 +0200
-Subject: [PATCH mt76 v2 12/14] wifi: mt76: mt7996: Decouple RRO logic from
- WED support
-MIME-Version: 1.0
+	id 1utG30-0000000Ejtj-28O1;
+	Tue, 02 Sep 2025 01:42:59 +0000
+X-UUID: 233c23b0879e11f09eb0dd999d3936bf-20250901
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=75hacSY3z7pYiu2JuJDWy3DupipC9zwELwhYZoNpwT4=;
+	b=BkvtiDFFAH8BQV8TufhbMfLwAaGPYqUYR8SdEp3C+q/Nx4tqzkyMSBVeBI0oXmKNwIJaMtTXCn/wjbar2K0D7PEXoodlPQNZg5Z9V3GNd2tJRWoDQ0/gOnMusNO2WONM3weB/YEQdsRgWKST4qeYCKjpbDeeGaL3yF+nUse+wVk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.3,REQID:6fc580ce-372c-441f-a4e4-38b29a39b4f4,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:f1326cf,CLOUDID:79a8d6f7-ebfe-43c9-88c9-80cb93f22ca4,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111,TC:-5,Conten
+	t:0|15|50,EDM:-3,IP:nil,URL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:
+	0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 233c23b0879e11f09eb0dd999d3936bf-20250901
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <xion.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1190352100; Mon, 01 Sep 2025 18:42:51 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Tue, 2 Sep 2025 09:42:48 +0800
+Received: from TYPPR03CU001.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Tue, 2 Sep 2025 09:42:48 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=VLVmdCgDlJ61FxcmZ8sY7ggE5jBCmT6OTwcQRFlgwwbNa3HkvDXDSFY9pdhSLEyiuMa15g7Y6h3KlZQeLOZ+cLB2KK7287MMu4+thAd/vRRyPUZKjn2AelphDqi1eRKB5IVLA/+HHCZfJWy58gfficM4b0OPh3diyeSDX7KPIuEPuWRxfF8Y9QRTPq3B+RzOIeaidBJW0hwl+8xXUPl0OZmPn8qM0Yu/EePTqQH3m8rw6Q8oYPk2B4jEX1cztKLpBXmH/U4w0B0zKoE1LRtxN3J0pvDgcBc4JIO4BXf4Pwtnj8T6HDQBCalWrVihdByHdof9xxs0CjI4Czfho9lbTA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=75hacSY3z7pYiu2JuJDWy3DupipC9zwELwhYZoNpwT4=;
+ b=MHF9mfLFSHfpPY4nIBwRgYHvY15K2QE/aC6x2kXSnPBsTLd51cs/L3urQWZ0KggoP7PTroBW6NbTa/6sQ96I0Gf/fHFZX1DjwdfDHuWTnIE0TWGIt4ZhS4EVVGBf3Kf5mYeAKxz/+gnR9We2qYljC7kMIvVnrgyp7kVSC6aCM4Z2bCATQDUBGS/xTlbP/99omkhPii7KRzIYJlBKVYL+NeDldASVgeb6LPdBipavDHg44q2LK/owbgVrfHwPkpFxh1NegdXOneuPSkxK3iFjihXgtUoZOaJJBTKOXblDzSRHHmwijdlXymuocJsMdIY2He/fr20g2o5Vw27TR4ZVlw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=75hacSY3z7pYiu2JuJDWy3DupipC9zwELwhYZoNpwT4=;
+ b=ZQorFSy2wJOVoleiHAISLd2koQbeURu4IJjm7777Qp8g0zx2oOsvKvpEET0aSN/it+K06ySTLL30TzxX+wiG9kn+FcAigI40GbDFf241+3Cf9eJptFsIwAaic+5xCXJC1zl69rU1Ub9A8igaWsQ0KKO+8/SxIHrk8+mVXo1INLI=
+Received: from SEZPR03MB8122.apcprd03.prod.outlook.com (2603:1096:101:183::7)
+ by JH0PR03MB7729.apcprd03.prod.outlook.com (2603:1096:990:12::6) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9073.27; Tue, 2 Sep
+ 2025 01:42:45 +0000
+Received: from SEZPR03MB8122.apcprd03.prod.outlook.com
+ ([fe80::e130:f417:b0bb:f2b7]) by SEZPR03MB8122.apcprd03.prod.outlook.com
+ ([fe80::e130:f417:b0bb:f2b7%7]) with mapi id 15.20.9073.026; Tue, 2 Sep 2025
+ 01:42:45 +0000
+From: =?utf-8?B?WGlvbiBXYW5nICjnjovpkasp?= <Xion.Wang@mediatek.com>
+To: "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>
+CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	wsd_upstream <wsd_upstream@mediatek.com>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>,
+	=?utf-8?B?SHVhZGlhbiBMaXUgKOWImOWNjuWFuCk=?= <huadian.liu@mediatek.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "arnd@arndb.de"
+	<arnd@arndb.de>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH 1/1] misc: Prevent double registration and deregistration
+ of miscdevice
+Thread-Topic: [PATCH 1/1] misc: Prevent double registration and deregistration
+ of miscdevice
+Thread-Index: AQHcFZwQOZEhJSUEf0OpnbqCU1Sn+bRz0oaAgABtc4CAAER0gIAAEBwAgAAsAICAABn3gIAAC08AgApGAYA=
+Date: Tue, 2 Sep 2025 01:42:44 +0000
+Message-ID: <836023cd8131e4fa63dc027a8fd6e47ec3d589ee.camel@mediatek.com>
+References: <20250825084556.10358-1-xion.wang@mediatek.com>
+	 <20250825084556.10358-2-xion.wang@mediatek.com>
+	 <2025082533-ranked-simply-4b63@gregkh>
+	 <d3d0fc0e19f939c093e6df1ff08ce23be71636a3.camel@mediatek.com>
+	 <2025082638-parlor-retreat-56ff@gregkh>
+	 <1ffa28bf6e3dcde83a6a6a5dde163596c4db639d.camel@mediatek.com>
+	 <2025082631-hypnotist-snazzy-147a@gregkh>
+	 <d3a780c367478868319064c27e0b41c69d4cc722.camel@mediatek.com>
+	 <2025082646-regalia-glass-951d@gregkh>
+In-Reply-To: <2025082646-regalia-glass-951d@gregkh>
+Accept-Language: zh-CN, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SEZPR03MB8122:EE_|JH0PR03MB7729:EE_
+x-ms-office365-filtering-correlation-id: 171be5fd-68fb-4b24-cdfc-08dde9c203ae
+x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|376014|366016|1800799024|38070700018|7053199007;
+x-microsoft-antispam-message-info: =?utf-8?B?TjI2SmZRUFB1Q0FqOHlPc1l0VkhVbElubUx1ejgwd1NOb2YxaWljOG40ODlB?=
+ =?utf-8?B?b1d4elgwVGhJWk13TXRiQm9LMmxqRnE1MjF3ZDBDUldsVjU2dHlOZXJWdDJO?=
+ =?utf-8?B?SU0wRlZYRFdqcHUrZjhqOElSUUNUM1VodC9CaThpcUJ1NTRiaXFsT0tQbGhS?=
+ =?utf-8?B?MHprQ1R6U1NXcXg5VUMxWkt3Z1ZsYjg2UEUrSVZSVWNKSk9KUGV4QTR3MjR5?=
+ =?utf-8?B?V0tNdm1wWXAzNVFPQm1ENnBJcnVzVnA1dzJGTWJjNzNkT1pzMThhRitFNUFx?=
+ =?utf-8?B?WnNLNDZ0bCtnMzNtdFk1YW9VR0lQR2ZBNVpNZG5EQmVtT1hhZjFNK2RWaXQ5?=
+ =?utf-8?B?dlBaVEU0T1RXa0ZWdmRXd2FpcFNqa3lHK0o4RE9La2xwYmEwa01SLy80cFZi?=
+ =?utf-8?B?RTF3Mkk2K1lFQzYxSjhPWjk0Z215Z1JETmJhV0RPMC9YRDRiUHJNZlRDY2h3?=
+ =?utf-8?B?OEErd0pLOEYxdG1QVnQrVDJ6RHUyRzdKR083OXZieDg2d1ZJOWFPZUxTYlgz?=
+ =?utf-8?B?WEQzWGp2d3o0Q3gyM3MrSUQ4MHlGMGtsUmJOY3o4dHZROURydkdZVmlEbGFP?=
+ =?utf-8?B?SlFycEZBdG9iaVFRWWNBa0tGeHY4RmR3Szd4RXdJTHlPZWRkRkxRcndvVEhD?=
+ =?utf-8?B?enFzNytQVDdnbW1kUUc2VXJsTmdLbzluVHYvWDBZUUFXRyswU1hJQXpuVmcy?=
+ =?utf-8?B?elpNaG5BRGdUNnJEVEZCWFAzMGMxOThTUDQ4Mmg2bmRGenhKUEhnL2ZseEph?=
+ =?utf-8?B?QkpHNHBEYloxLytoMHhJbzUwU1hLZVhiMWNmdjUyVjZaY0djYWlTTHdzNGdk?=
+ =?utf-8?B?UkttanJweFZ6SzZIVGpyTU1mYVVLUEN6ZVE5Q2NydGpvTUlEeEdGd0NXYzl5?=
+ =?utf-8?B?MDNpVXNUVDVNSUtoMWFrQVQ4Nkg3S3RjWk5DdnBOc21tTTQ4NVJ4Zy9ldXR2?=
+ =?utf-8?B?NURVVENmdy96d0Y2RERldzVkSXhQYVEyaDQ3KzlkMWhrKzhHSWsvTmsvNWlF?=
+ =?utf-8?B?SUtybFlyN2M2Z2c4MG9oYUFRcDVqSkE3Z1JDVVpieC9QY0JwaFVtWno2K0h0?=
+ =?utf-8?B?S2dKVXM2L0tUTUQram5SRDc3VlFtaXUvZlVxOUNFcWhiUVByMWhLam0yYXN5?=
+ =?utf-8?B?YUNWNVZMV1JZR1FRVWdkTjh3RXFnUStJSUtjdVY0RStHc2N5cTZLQnVCUE94?=
+ =?utf-8?B?QWlQaVZHM2FQclkybDNFZDlCeVNoc1Ryb3JNSWw0aUtGbHMrUUFucDdma3lK?=
+ =?utf-8?B?Sm5EZTc3bzJrVkhveWRKUmFHVTRQSWg5RHIxbVFVbGtIUTZrTUduN3pJQ2FF?=
+ =?utf-8?B?cFdWT2o5cll0ZG5hekVBU0hQTjVQVkZOWUNmK3dxeXVyQjdNZlBiWFdxNkY3?=
+ =?utf-8?B?UUlCZjlUVXQxRS9wek5XWW1mbk9nN1dieXQwWm9ISVAwNWNHdktMSlREWmIw?=
+ =?utf-8?B?MWc1WDNKWTZZa1JoSFdaU2Y3eHJEZG9lS1VHMFZWNXBWZTYweTdiRkhCVnJy?=
+ =?utf-8?B?NTllZGFCQnpMUkR6VmYyZWl6UWprNm9rNkxWWEhDYzNjYlJHMlZSR1ZoM2E2?=
+ =?utf-8?B?cGNQM29Kc0dEOVQ0a09PdUxsMXBMYnU0OFVMNlNwVWNjMmtoZlRnNlo3VDY1?=
+ =?utf-8?B?Ky92ZW91RExEZUFQMCtKUkxoVjhwWExrbk45TkxCTWRqckkzSmgzY3d1OE1R?=
+ =?utf-8?B?dEl0N25YamxINmVaMFR1V3FqYUtyZ0hzZS9jc240Z1p3VCsrZmptcUwra1B5?=
+ =?utf-8?B?NjMzS2N0MGFwRktDMEdzbTZjbUdFNHhFZkljTzNBTnNaNHRaSHVHdWI2Yk8w?=
+ =?utf-8?B?Uk0ySzkwWStLZVZxSEtSK2dmZDhSdmlOeTFVQ1lhZk9ydGVQaFVYTWxsSUJW?=
+ =?utf-8?B?Wmo0dXFRNzZxTktUVUhVY2JqZ2ZiWEJFMkt1NjBicTRUYjZFajRqbE42Tmpq?=
+ =?utf-8?Q?HUng6K4lAroISEAirHP68QixI4UVtG0Q?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR03MB8122.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(366016)(1800799024)(38070700018)(7053199007);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?cTBzTnVCMG5ZL1ZXN3I4c3lSZTBzdFNvK0tlcnZjNVFoUnN6Qm82S2NJSWhp?=
+ =?utf-8?B?Tk9Ta3V2cDVrVFBhVmdOU0p3bTZHbHUxQU5qdW5SOEE3djlJSHVnY3orcWd2?=
+ =?utf-8?B?MlRSd3lER09aRCtxOGR1NXd3dTBaMUd2WG5sTWRCL1ZZaER2ZVJSaDJ6NWNN?=
+ =?utf-8?B?SmVsUHdrN0FkUkYxZ0NzYjQ3WThZZlZnRDV1eXFPdmdPQUY0d1I2ZzEwRkFr?=
+ =?utf-8?B?YW1xNnBVbm1uVWE3dzZWeHgxUVVFQU5BWmNqckpPa3dKT0g4WlhNZEdUeUhL?=
+ =?utf-8?B?VGdEd0gwcEFXSnF6bnl1V05NSnFteXFrQTQ2dmRlU1BFQlZiSmNMb3p1UER2?=
+ =?utf-8?B?L2VTbllBUFhGK1NsR2ZWbnd1d2xPM0o4aTZDT3BMcFcvSGVKWHdXOGZkR1VF?=
+ =?utf-8?B?dHBmUFZDcThTL2lIdGhXUDk3ZGM4WFp5cmY0ekhhSktxYXdNK1VBS3dJbHlY?=
+ =?utf-8?B?dXNHRWJRWXlnSGt1R0pYaDhWd1JrdGd2UWdUK3JvNy9Qa05VaEIvbGM1U3Ax?=
+ =?utf-8?B?ZHlTMk9WSHJneng0YnM0Y0QxY0hsU05KR1dHVzQvSVJLQ05qZWRSb1ZZNGhZ?=
+ =?utf-8?B?cGVUOUNhbXNNUWt3TFFGWkJVQkVsTTAyOWIweU9xVjJLUkZUVlEwN2JNRitZ?=
+ =?utf-8?B?c1pjb1ovelgzY05qZVV0MloyZk5qL3pQbVBrcjNXeDZYWkpYZEkvczRzR3o0?=
+ =?utf-8?B?VHJlb2M2MHA3NkE5ZEVPamtXT0NJUUo5cEtYTS9VNzdBY3NVR0NNL1I2Ykxv?=
+ =?utf-8?B?RnYwWnFMeXVZMCtoLzdRRzNXRUVlVlFDZ2UzYmN2aHZQZG9RUGFlYUVZdjZE?=
+ =?utf-8?B?WStHRTZ6Z1A0c2pmT1RIMEcrYkdqVENYODU3aVFYYVFXajBoZ085WXdIUkYx?=
+ =?utf-8?B?TDhmSEJMUVY4QnFqajlXNENtODRhKzlQYTZjdk1NdTI5aUhnYldDeEJYWkM2?=
+ =?utf-8?B?di8rS2VQSDhwbUFHL2s0dXJlaGpXZzRrTzdONDU2bHhXblhrS0w0QitsSHNC?=
+ =?utf-8?B?WUpETERIVWdYRm45WWpMK2duZ3I2R1psYmlLSmVuZVNtMFI4SFZ6SDI0eHpC?=
+ =?utf-8?B?Q1pXSXczYkZNeHIwRjhNbjUyMDBqaXNYeXFlaDhvdkdLSFQ2aE5kcGtoWTd2?=
+ =?utf-8?B?TEFaMTJ0NzZRT1ZIS0xFVjdubXJpbGhQMk9tWWRFQ2xZd1phUnRmWkhTeUZW?=
+ =?utf-8?B?Ui9xdm9UOTR2cG1aTy9nWU9rVEVtcFpNVXRGZW9pMGl1dGNLY1hGdFlEUzNi?=
+ =?utf-8?B?ZTJHZCs3dUJHc000Q0R3anp5MUZMSWlLZFlKb3JqeEQ2Mmp5TE9OTTV5M3Fa?=
+ =?utf-8?B?Q090ald4ZzRxWkxQQ0JOVG9UTm5vVUtlWWZmcTJQbU9qVlFMNmk3ZEY1dWlw?=
+ =?utf-8?B?Nkd3SlVoVHRFRmJ5M2g1Wm9sd2QyZU9oZjIzWENUcGt4UkwrUVU0NVBKb2tJ?=
+ =?utf-8?B?ZDJ4bENOMUUyVmUrM0RDOFViY3k4YUZEa3NCSko5SEtaUzhsYU44d2FrNm1h?=
+ =?utf-8?B?dHVEa2dneUFPbEtVQUFhUHA2VVkrYnBFak9CNFJCeEpmSEFGWXNXUG9aTnds?=
+ =?utf-8?B?VHlMdnRLc2lBSk1rM3UreHVMOHd5ZVRHM0N4VUVMZk9wUll4RFZ1cWI3MnZF?=
+ =?utf-8?B?Vkl0VndxUzNYMTAvS1B6QVBwRml5ZmFBV3lieS9lZGtIZklQbW1KWXdYb21E?=
+ =?utf-8?B?cEhFTXV6SEFOSjBaYmkzcDlBdlNOaVV0YzFsdG5RUVFDMmpFcVhLV3RHZGIz?=
+ =?utf-8?B?aVpEWEIrVDZpWHlSZzdkTjBBcEw4bXQ4dzlzRTFtV3RmeXowUlFlRlRxWnZS?=
+ =?utf-8?B?SzRLMExoYVNnYWtZSlVYYmJQekxzV0ZsSkJxS0NWTnhXYTAxS3JHQnZHUVcy?=
+ =?utf-8?B?SlJkQXNRT2cwM3dDdXVOZys4bjcvRHpRbUo2S25GUWs4d3pCME5UcnZxbUs2?=
+ =?utf-8?B?ZlJlbU0vTVByMFFEaVJKa1VKbDZURnJ2Skl2cUR2UVdTN3N1SnR1QUZncFQ1?=
+ =?utf-8?B?Zml6UkdjU0pKWUVFZW9QSG1GNXN4eDgzL1EwSk5GMjk0ajR1QTFtMUREMjZF?=
+ =?utf-8?B?bk14djZ1NGF4ZzU4WnZ5MlhpSk55eW5DTjl1dmppNnVXTFBVV0FyVmtPdFoy?=
+ =?utf-8?B?VDd6bUFPOS9pbWpvTDltTFlHWlM5VS80TjN5UVdnSjE3aVpCN21KQjJTRzZV?=
+ =?utf-8?B?K3c9PQ==?=
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250901-mt7996-rro-rework-v2-12-1f95086b51d1@kernel.org>
-References: <20250901-mt7996-rro-rework-v2-0-1f95086b51d1@kernel.org>
-In-Reply-To: <20250901-mt7996-rro-rework-v2-0-1f95086b51d1@kernel.org>
-To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Sujuan Chen <sujuan.chen@mediatek.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Rex Lu <rex.lu@mediatek.com>
-X-Mailer: b4 0.14.2
+Content-ID: <229E42D37DD51C4485556503DECE0A23@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SEZPR03MB8122.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 171be5fd-68fb-4b24-cdfc-08dde9c203ae
+X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Sep 2025 01:42:45.0984
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 6pIUWtc1FoNBD5ENnt8lPjYSlMy8MhIUW2QfbYX8ub+m8b0Gz3wKDm1KU5ffgJnndD4sNBFjN+ZftRCvSNHlNA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: JH0PR03MB7729
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250901_184258_564792_F26C4B80 
+X-CRM114-Status: GOOD (  32.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,557 +222,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Rex Lu <rex.lu@mediatek.com>
-
-Decouple RRO logic from WED support in MT7996 driver in order to reuse
-it when WED module is not available.
-
-Signed-off-by: Rex Lu <rex.lu@mediatek.com>
-Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/wireless/mediatek/mt76/dma.c           | 54 ++++++++++++----
- drivers/net/wireless/mediatek/mt76/dma.h           |  7 ++-
- drivers/net/wireless/mediatek/mt76/mt76.h          | 10 +--
- drivers/net/wireless/mediatek/mt76/mt7996/dma.c    | 73 ++++++++++++++++------
- drivers/net/wireless/mediatek/mt76/mt7996/init.c   | 60 +++++++++---------
- drivers/net/wireless/mediatek/mt76/mt7996/mac.c    | 14 ++---
- drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h |  2 -
- drivers/net/wireless/mediatek/mt76/mt7996/regs.h   |  1 +
- 8 files changed, 140 insertions(+), 81 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireless/mediatek/mt76/dma.c
-index 081a3f5d387864ad596fec93542797038eed26f1..fc30a8ea54ca6f736fd911de4ad471558e6c9577 100644
---- a/drivers/net/wireless/mediatek/mt76/dma.c
-+++ b/drivers/net/wireless/mediatek/mt76/dma.c
-@@ -224,9 +224,9 @@ mt76_dma_add_rx_buf(struct mt76_dev *dev, struct mt76_queue *q,
- {
- 	struct mt76_queue_entry *entry = &q->entry[q->head];
- 	struct mt76_txwi_cache *txwi = NULL;
-+	u32 buf1 = 0, ctrl, info = 0;
- 	struct mt76_desc *desc;
- 	int idx = q->head;
--	u32 buf1 = 0, ctrl;
- 	int rx_token;
- 
- 	if (mt76_queue_is_wed_rro_ind(q)) {
-@@ -243,7 +243,7 @@ mt76_dma_add_rx_buf(struct mt76_dev *dev, struct mt76_queue *q,
- 	buf1 = FIELD_PREP(MT_DMA_CTL_SDP0_H, buf->addr >> 32);
- #endif
- 
--	if (mt76_queue_is_wed_rx(q)) {
-+	if (mt76_queue_is_wed_rx(q) || mt76_queue_is_wed_rro_data(q)) {
- 		txwi = mt76_get_rxwi(dev);
- 		if (!txwi)
- 			return -ENOMEM;
-@@ -260,10 +260,22 @@ mt76_dma_add_rx_buf(struct mt76_dev *dev, struct mt76_queue *q,
- 		txwi->qid = q - dev->q_rx;
- 	}
- 
-+	if (mt76_queue_is_wed_rro_msdu_pg(q) &&
-+	    dev->drv->rx_rro_add_msdu_page) {
-+		if (dev->drv->rx_rro_add_msdu_page(dev, q, buf->addr, data))
-+			return -ENOMEM;
-+	}
-+
-+	if (q->flags & MT_QFLAG_WED_RRO_EN) {
-+		info |= FIELD_PREP(MT_DMA_MAGIC_MASK, q->magic_cnt);
-+		if ((q->head + 1) == q->ndesc)
-+			q->magic_cnt = (q->magic_cnt + 1) % MT_DMA_MAGIC_CNT;
-+	}
-+
- 	WRITE_ONCE(desc->buf0, cpu_to_le32(buf->addr));
- 	WRITE_ONCE(desc->buf1, cpu_to_le32(buf1));
- 	WRITE_ONCE(desc->ctrl, cpu_to_le32(ctrl));
--	WRITE_ONCE(desc->info, 0);
-+	WRITE_ONCE(desc->info, cpu_to_le32(info));
- 
- done:
- 	entry->dma_addr[0] = buf->addr;
-@@ -424,7 +436,7 @@ mt76_dma_get_buf(struct mt76_dev *dev, struct mt76_queue *q, int idx,
- 	u32 ctrl, desc_info, buf1;
- 	void *buf = e->buf;
- 
--	if (mt76_queue_is_wed_rro_ind(q))
-+	if (mt76_queue_is_wed_rro(q))
- 		goto done;
- 
- 	ctrl = le32_to_cpu(READ_ONCE(desc->ctrl));
-@@ -480,15 +492,27 @@ mt76_dma_dequeue(struct mt76_dev *dev, struct mt76_queue *q, bool flush,
- 		return NULL;
- 
- 	if (mt76_queue_is_wed_rro_data(q) || mt76_queue_is_wed_rro_msdu_pg(q))
--		return NULL;
-+		goto done;
- 
--	if (!mt76_queue_is_wed_rro_ind(q)) {
-+	if (mt76_queue_is_wed_rro_ind(q)) {
-+		struct mt76_wed_rro_ind *cmd;
-+
-+		if (flush)
-+			goto done;
-+
-+		cmd = q->entry[idx].buf;
-+		if (cmd->magic_cnt != q->magic_cnt)
-+			return NULL;
-+
-+		if (q->tail == q->ndesc - 1)
-+			q->magic_cnt = (q->magic_cnt + 1) % MT_DMA_WED_IND_CMD_CNT;
-+	} else {
- 		if (flush)
- 			q->desc[idx].ctrl |= cpu_to_le32(MT_DMA_CTL_DMA_DONE);
- 		else if (!(q->desc[idx].ctrl & cpu_to_le32(MT_DMA_CTL_DMA_DONE)))
- 			return NULL;
- 	}
--
-+done:
- 	q->tail = (q->tail + 1) % q->ndesc;
- 	q->queued--;
- 
-@@ -837,8 +861,9 @@ mt76_dma_rx_process(struct mt76_dev *dev, struct mt76_queue *q, int budget)
- 	bool allow_direct = !mt76_queue_is_wed_rx(q);
- 	bool more;
- 
--	if (IS_ENABLED(CONFIG_NET_MEDIATEK_SOC_WED) &&
--	    mt76_queue_is_wed_tx_free(q)) {
-+	if ((q->flags & MT_QFLAG_WED_RRO_EN) ||
-+	    (IS_ENABLED(CONFIG_NET_MEDIATEK_SOC_WED) &&
-+	     mt76_queue_is_wed_tx_free(q))) {
- 		dma_idx = Q_READ(q, dma_idx);
- 		check_ddone = true;
- 	}
-@@ -860,6 +885,14 @@ mt76_dma_rx_process(struct mt76_dev *dev, struct mt76_queue *q, int budget)
- 		if (!data)
- 			break;
- 
-+		if (mt76_queue_is_wed_rro_ind(q) && dev->drv->rx_rro_ind_process)
-+			dev->drv->rx_rro_ind_process(dev, data);
-+
-+		if (mt76_queue_is_wed_rro(q)) {
-+			done++;
-+			continue;
-+		}
-+
- 		if (drop)
- 			goto free_frag;
- 
-@@ -978,8 +1011,7 @@ mt76_dma_init(struct mt76_dev *dev,
- 	init_completion(&dev->mmio.wed_reset_complete);
- 
- 	mt76_for_each_q_rx(dev, i) {
--		if (mtk_wed_device_active(&dev->mmio.wed) &&
--		    mt76_queue_is_wed_rro(&dev->q_rx[i]))
-+		if (mt76_queue_is_wed_rro(&dev->q_rx[i]))
- 			continue;
- 
- 		mt76_dma_rx_queue_init(dev, i, poll);
-diff --git a/drivers/net/wireless/mediatek/mt76/dma.h b/drivers/net/wireless/mediatek/mt76/dma.h
-index 320d2cbbbd4559db146139a50e579b9b57282557..f53c2136858043d0f208d9d21304fae2058ac70f 100644
---- a/drivers/net/wireless/mediatek/mt76/dma.h
-+++ b/drivers/net/wireless/mediatek/mt76/dma.h
-@@ -31,7 +31,12 @@
- #define MT_DMA_CTL_PN_CHK_FAIL		BIT(13)
- #define MT_DMA_CTL_VER_MASK		BIT(7)
- 
--#define MT_DMA_RRO_EN		BIT(13)
-+#define MT_DMA_SDP0			GENMASK(15, 0)
-+#define MT_DMA_TOKEN_ID			GENMASK(31, 16)
-+#define MT_DMA_MAGIC_MASK		GENMASK(31, 28)
-+#define MT_DMA_RRO_EN			BIT(13)
-+
-+#define MT_DMA_MAGIC_CNT		16
- 
- #define MT_DMA_WED_IND_CMD_CNT		8
- #define MT_DMA_WED_IND_REASON		GENMASK(15, 12)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 8dcf593a0151310648043b5ac7528570c61aea0b..39e4641ae2cc5287a2c8c838c729bc7e85b68b9a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -232,6 +232,7 @@ struct mt76_queue {
- 
- 	u8 buf_offset;
- 	u16 flags;
-+	u8 magic_cnt;
- 
- 	struct mtk_wed_device *wed;
- 	u32 wed_regs;
-@@ -1807,13 +1808,8 @@ static inline bool mt76_queue_is_wed_rro_msdu_pg(struct mt76_queue *q)
- 
- static inline bool mt76_queue_is_wed_rx(struct mt76_queue *q)
- {
--	if (!(q->flags & MT_QFLAG_WED))
--		return false;
--
--	return FIELD_GET(MT_QFLAG_WED_TYPE, q->flags) == MT76_WED_Q_RX ||
--	       mt76_queue_is_wed_rro_ind(q) || mt76_queue_is_wed_rro_data(q) ||
--	       mt76_queue_is_wed_rro_msdu_pg(q);
--
-+	return (q->flags & MT_QFLAG_WED) &&
-+	       FIELD_GET(MT_QFLAG_WED_TYPE, q->flags) == MT76_WED_Q_RX;
- }
- 
- struct mt76_txwi_cache *
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/dma.c b/drivers/net/wireless/mediatek/mt76/mt7996/dma.c
-index 2412767bfaa7e26cdce45b482fb56dea2add8280..9663029fa087c05d743db13ebf6b2e1383723b1c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/dma.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/dma.c
-@@ -325,7 +325,7 @@ void mt7996_dma_start(struct mt7996_dev *dev, bool reset, bool wed_reset)
- 	}
- 
- 	if (mt7996_band_valid(dev, MT_BAND2))
--		irq_mask |= MT_INT_BAND2_RX_DONE;
-+		irq_mask |= MT_INT_BAND2_RX_DONE | MT_INT_TX_RX_DONE_EXT;
- 
- 	if (mtk_wed_device_active(wed) && wed_reset) {
- 		u32 wed_irq_mask = irq_mask;
-@@ -482,7 +482,6 @@ static void mt7996_dma_enable(struct mt7996_dev *dev, bool reset)
- 	mt7996_dma_start(dev, reset, true);
- }
- 
--#ifdef CONFIG_NET_MEDIATEK_SOC_WED
- int mt7996_dma_rro_init(struct mt7996_dev *dev)
- {
- 	struct mt76_dev *mdev = &dev->mt76;
-@@ -491,7 +490,9 @@ int mt7996_dma_rro_init(struct mt7996_dev *dev)
- 
- 	/* ind cmd */
- 	mdev->q_rx[MT_RXQ_RRO_IND].flags = MT_WED_RRO_Q_IND;
--	mdev->q_rx[MT_RXQ_RRO_IND].wed = &mdev->mmio.wed;
-+	if (mtk_wed_device_active(&mdev->mmio.wed) &&
-+	    mtk_wed_get_rx_capa(&mdev->mmio.wed))
-+		mdev->q_rx[MT_RXQ_RRO_IND].wed = &mdev->mmio.wed;
- 	ret = mt76_queue_alloc(dev, &mdev->q_rx[MT_RXQ_RRO_IND],
- 			       MT_RXQ_ID(MT_RXQ_RRO_IND),
- 			       MT7996_RX_RING_SIZE,
-@@ -502,7 +503,9 @@ int mt7996_dma_rro_init(struct mt7996_dev *dev)
- 	/* rx msdu page queue for band0 */
- 	mdev->q_rx[MT_RXQ_MSDU_PAGE_BAND0].flags =
- 		MT_WED_RRO_Q_MSDU_PG(0) | MT_QFLAG_WED_RRO_EN;
--	mdev->q_rx[MT_RXQ_MSDU_PAGE_BAND0].wed = &mdev->mmio.wed;
-+	if (mtk_wed_device_active(&mdev->mmio.wed) &&
-+	    mtk_wed_get_rx_capa(&mdev->mmio.wed))
-+		mdev->q_rx[MT_RXQ_MSDU_PAGE_BAND0].wed = &mdev->mmio.wed;
- 	ret = mt76_queue_alloc(dev, &mdev->q_rx[MT_RXQ_MSDU_PAGE_BAND0],
- 			       MT_RXQ_ID(MT_RXQ_MSDU_PAGE_BAND0),
- 			       MT7996_RX_RING_SIZE,
-@@ -515,7 +518,9 @@ int mt7996_dma_rro_init(struct mt7996_dev *dev)
- 		/* rx msdu page queue for band1 */
- 		mdev->q_rx[MT_RXQ_MSDU_PAGE_BAND1].flags =
- 			MT_WED_RRO_Q_MSDU_PG(1) | MT_QFLAG_WED_RRO_EN;
--		mdev->q_rx[MT_RXQ_MSDU_PAGE_BAND1].wed = &mdev->mmio.wed;
-+		if (mtk_wed_device_active(&mdev->mmio.wed) &&
-+		    mtk_wed_get_rx_capa(&mdev->mmio.wed))
-+			mdev->q_rx[MT_RXQ_MSDU_PAGE_BAND1].wed = &mdev->mmio.wed;
- 		ret = mt76_queue_alloc(dev, &mdev->q_rx[MT_RXQ_MSDU_PAGE_BAND1],
- 				       MT_RXQ_ID(MT_RXQ_MSDU_PAGE_BAND1),
- 				       MT7996_RX_RING_SIZE,
-@@ -529,7 +534,9 @@ int mt7996_dma_rro_init(struct mt7996_dev *dev)
- 		/* rx msdu page queue for band2 */
- 		mdev->q_rx[MT_RXQ_MSDU_PAGE_BAND2].flags =
- 			MT_WED_RRO_Q_MSDU_PG(2) | MT_QFLAG_WED_RRO_EN;
--		mdev->q_rx[MT_RXQ_MSDU_PAGE_BAND2].wed = &mdev->mmio.wed;
-+		if (mtk_wed_device_active(&mdev->mmio.wed) &&
-+		    mtk_wed_get_rx_capa(&mdev->mmio.wed))
-+			mdev->q_rx[MT_RXQ_MSDU_PAGE_BAND2].wed = &mdev->mmio.wed;
- 		ret = mt76_queue_alloc(dev, &mdev->q_rx[MT_RXQ_MSDU_PAGE_BAND2],
- 				       MT_RXQ_ID(MT_RXQ_MSDU_PAGE_BAND2),
- 				       MT7996_RX_RING_SIZE,
-@@ -539,15 +546,35 @@ int mt7996_dma_rro_init(struct mt7996_dev *dev)
- 			return ret;
- 	}
- 
--	irq_mask = mdev->mmio.irqmask | MT_INT_RRO_RX_DONE |
--		   MT_INT_TX_DONE_BAND2;
--	mt76_wr(dev, MT_INT_MASK_CSR, irq_mask);
--	mtk_wed_device_start_hw_rro(&mdev->mmio.wed, irq_mask, false);
--	mt7996_irq_enable(dev, irq_mask);
-+	if (mtk_wed_device_active(&mdev->mmio.wed)) {
-+		irq_mask = mdev->mmio.irqmask |
-+			   MT_INT_TX_DONE_BAND2;
-+
-+		mt76_wr(dev, MT_INT_MASK_CSR, irq_mask);
-+		mtk_wed_device_start_hw_rro(&mdev->mmio.wed, irq_mask, false);
-+		mt7996_irq_enable(dev, irq_mask);
-+	} else {
-+		if (is_mt7996(&dev->mt76)) {
-+			mt76_queue_rx_init(dev, MT_RXQ_MSDU_PAGE_BAND1,
-+					   mt76_dma_rx_poll);
-+			mt76_queue_rx_init(dev, MT_RXQ_MSDU_PAGE_BAND2,
-+					   mt76_dma_rx_poll);
-+			mt76_queue_rx_init(dev, MT_RXQ_RRO_BAND2,
-+					   mt76_dma_rx_poll);
-+		} else {
-+			mt76_queue_rx_init(dev, MT_RXQ_RRO_BAND1,
-+					   mt76_dma_rx_poll);
-+		}
-+
-+		mt76_queue_rx_init(dev, MT_RXQ_RRO_BAND0, mt76_dma_rx_poll);
-+		mt76_queue_rx_init(dev, MT_RXQ_RRO_IND, mt76_dma_rx_poll);
-+		mt76_queue_rx_init(dev, MT_RXQ_MSDU_PAGE_BAND0,
-+				   mt76_dma_rx_poll);
-+		mt7996_irq_enable(dev, MT_INT_RRO_RX_DONE);
-+	}
- 
- 	return 0;
- }
--#endif /* CONFIG_NET_MEDIATEK_SOC_WED */
- 
- int mt7996_dma_init(struct mt7996_dev *dev)
- {
-@@ -738,12 +765,12 @@ int mt7996_dma_init(struct mt7996_dev *dev)
- 		}
- 	}
- 
--	if (mtk_wed_device_active(wed) && mtk_wed_get_rx_capa(wed) &&
--	    dev->has_rro) {
-+	if (dev->has_rro) {
- 		/* rx rro data queue for band0 */
- 		dev->mt76.q_rx[MT_RXQ_RRO_BAND0].flags =
- 			MT_WED_RRO_Q_DATA(0) | MT_QFLAG_WED_RRO_EN;
--		dev->mt76.q_rx[MT_RXQ_RRO_BAND0].wed = wed;
-+		if (mtk_wed_device_active(wed) && mtk_wed_get_rx_capa(wed))
-+			dev->mt76.q_rx[MT_RXQ_RRO_BAND0].wed = wed;
- 		ret = mt76_queue_alloc(dev, &dev->mt76.q_rx[MT_RXQ_RRO_BAND0],
- 				       MT_RXQ_ID(MT_RXQ_RRO_BAND0),
- 				       MT7996_RX_RING_SIZE,
-@@ -755,7 +782,9 @@ int mt7996_dma_init(struct mt7996_dev *dev)
- 		if (is_mt7992(&dev->mt76)) {
- 			dev->mt76.q_rx[MT_RXQ_RRO_BAND1].flags =
- 				MT_WED_RRO_Q_DATA(1) | MT_QFLAG_WED_RRO_EN;
--			dev->mt76.q_rx[MT_RXQ_RRO_BAND1].wed = wed;
-+			if (mtk_wed_device_active(wed) &&
-+			    mtk_wed_get_rx_capa(wed))
-+				dev->mt76.q_rx[MT_RXQ_RRO_BAND1].wed = wed;
- 			ret = mt76_queue_alloc(dev,
- 					       &dev->mt76.q_rx[MT_RXQ_RRO_BAND1],
- 					       MT_RXQ_ID(MT_RXQ_RRO_BAND1),
-@@ -765,9 +794,11 @@ int mt7996_dma_init(struct mt7996_dev *dev)
- 			if (ret)
- 				return ret;
- 		} else {
--			/* tx free notify event from WA for band0 */
--			dev->mt76.q_rx[MT_RXQ_TXFREE_BAND0].flags = MT_WED_Q_TXFREE;
--			dev->mt76.q_rx[MT_RXQ_TXFREE_BAND0].wed = wed;
-+			if (mtk_wed_device_active(wed)) {
-+				/* tx free notify event from WA for band0 */
-+				dev->mt76.q_rx[MT_RXQ_TXFREE_BAND0].flags = MT_WED_Q_TXFREE;
-+				dev->mt76.q_rx[MT_RXQ_TXFREE_BAND0].wed = wed;
-+			}
- 
- 			ret = mt76_queue_alloc(dev,
- 					       &dev->mt76.q_rx[MT_RXQ_TXFREE_BAND0],
-@@ -783,7 +814,9 @@ int mt7996_dma_init(struct mt7996_dev *dev)
- 			/* rx rro data queue for band2 */
- 			dev->mt76.q_rx[MT_RXQ_RRO_BAND2].flags =
- 				MT_WED_RRO_Q_DATA(1) | MT_QFLAG_WED_RRO_EN;
--			dev->mt76.q_rx[MT_RXQ_RRO_BAND2].wed = wed;
-+			if (mtk_wed_device_active(wed) &&
-+			    mtk_wed_get_rx_capa(wed))
-+				dev->mt76.q_rx[MT_RXQ_RRO_BAND2].wed = wed;
- 			ret = mt76_queue_alloc(dev, &dev->mt76.q_rx[MT_RXQ_RRO_BAND2],
- 					       MT_RXQ_ID(MT_RXQ_RRO_BAND2),
- 					       MT7996_RX_RING_SIZE,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-index 89907add122196f0016a295da49af4a911d9cf23..7a21b5843f49de9ad06a153d3900ab066cf5ef70 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-@@ -766,7 +766,6 @@ void mt7996_wfsys_reset(struct mt7996_dev *dev)
- 
- void mt7996_rro_hw_init(struct mt7996_dev *dev)
- {
--#ifdef CONFIG_NET_MEDIATEK_SOC_WED
- 	struct mtk_wed_device *wed = &dev->mt76.mmio.wed;
- 	u32 reg = MT_RRO_ADDR_ELEM_SEG_ADDR0;
- 	int i;
-@@ -809,18 +808,28 @@ void mt7996_rro_hw_init(struct mt7996_dev *dev)
- 		mt76_wr(dev, MT_RRO_ADDR_ARRAY_BASE1,
- 			MT_RRO_ADDR_ARRAY_ELEM_ADDR_SEG_MODE);
- 	}
--	wed->wlan.ind_cmd.win_size = ffs(MT7996_RRO_WINDOW_MAX_LEN) - 6;
--	if (is_mt7996(&dev->mt76))
--		wed->wlan.ind_cmd.particular_sid = MT7996_RRO_MAX_SESSION;
--	else
--		wed->wlan.ind_cmd.particular_sid = 1;
--	wed->wlan.ind_cmd.particular_se_phys = dev->wed_rro.session.phy_addr;
--	wed->wlan.ind_cmd.se_group_nums = MT7996_RRO_ADDR_ELEM_LEN;
--	wed->wlan.ind_cmd.ack_sn_addr = MT_RRO_ACK_SN_CTRL;
- 
--	mt76_wr(dev, MT_RRO_IND_CMD_SIGNATURE_BASE0, 0x15010e00);
--	mt76_set(dev, MT_RRO_IND_CMD_SIGNATURE_BASE1,
--		 MT_RRO_IND_CMD_SIGNATURE_BASE1_EN);
-+#ifdef CONFIG_NET_MEDIATEK_SOC_WED
-+	if (mtk_wed_device_active(wed) && mtk_wed_get_rx_capa(wed)) {
-+		wed->wlan.ind_cmd.win_size = ffs(MT7996_RRO_WINDOW_MAX_LEN) - 6;
-+		if (is_mt7996(&dev->mt76))
-+			wed->wlan.ind_cmd.particular_sid = MT7996_RRO_MAX_SESSION;
-+		else
-+			wed->wlan.ind_cmd.particular_sid = 1;
-+		wed->wlan.ind_cmd.particular_se_phys = dev->wed_rro.session.phy_addr;
-+		wed->wlan.ind_cmd.se_group_nums = MT7996_RRO_ADDR_ELEM_LEN;
-+		wed->wlan.ind_cmd.ack_sn_addr = MT_RRO_ACK_SN_CTRL;
-+	}
-+#endif /* CONFIG_NET_MEDIATEK_SOC_WED */
-+
-+	if (mtk_wed_device_active(wed) && mtk_wed_get_rx_capa(wed)) {
-+		mt76_wr(dev, MT_RRO_IND_CMD_SIGNATURE_BASE0, 0x15010e00);
-+		mt76_set(dev, MT_RRO_IND_CMD_SIGNATURE_BASE1,
-+			 MT_RRO_IND_CMD_SIGNATURE_BASE1_EN);
-+	} else {
-+		mt76_wr(dev, MT_RRO_IND_CMD_SIGNATURE_BASE0, 0);
-+		mt76_wr(dev, MT_RRO_IND_CMD_SIGNATURE_BASE1, 0);
-+	}
- 
- 	/* particular session configure */
- 	/* use max session idx + 1 as particular session id */
-@@ -850,13 +859,10 @@ void mt7996_rro_hw_init(struct mt7996_dev *dev)
- 	/* interrupt enable */
- 	mt76_wr(dev, MT_RRO_HOST_INT_ENA,
- 		MT_RRO_HOST_INT_ENA_HOST_RRO_DONE_ENA);
--#endif
- }
- 
- static int mt7996_wed_rro_init(struct mt7996_dev *dev)
- {
--#ifdef CONFIG_NET_MEDIATEK_SOC_WED
--	struct mtk_wed_device *wed = &dev->mt76.mmio.wed;
- 	struct mt7996_wed_rro_addr *addr;
- 	void *ptr;
- 	int i;
-@@ -864,9 +870,6 @@ static int mt7996_wed_rro_init(struct mt7996_dev *dev)
- 	if (!dev->has_rro)
- 		return 0;
- 
--	if (!mtk_wed_device_active(wed))
--		return 0;
--
- 	for (i = 0; i < ARRAY_SIZE(dev->wed_rro.ba_bitmap); i++) {
- 		ptr = dmam_alloc_coherent(dev->mt76.dma_dev,
- 					  MT7996_RRO_BA_BITMAP_CR_SIZE,
-@@ -898,8 +901,15 @@ static int mt7996_wed_rro_init(struct mt7996_dev *dev)
- 			addr++;
- 		}
- 
--		wed->wlan.ind_cmd.addr_elem_phys[i] =
--			dev->wed_rro.addr_elem[i].phy_addr;
-+#ifdef CONFIG_NET_MEDIATEK_SOC_WED
-+		if (mtk_wed_device_active(&dev->mt76.mmio.wed) &&
-+		    mtk_wed_get_rx_capa(&dev->mt76.mmio.wed)) {
-+			struct mtk_wed_device *wed = &dev->mt76.mmio.wed;
-+
-+			wed->wlan.ind_cmd.addr_elem_phys[i] =
-+				dev->wed_rro.addr_elem[i].phy_addr;
-+		}
-+#endif /* CONFIG_NET_MEDIATEK_SOC_WED */
- 	}
- 
- 	for (i = 0; i < ARRAY_SIZE(dev->wed_rro.msdu_pg); i++) {
-@@ -933,22 +943,15 @@ static int mt7996_wed_rro_init(struct mt7996_dev *dev)
- 	mt7996_rro_hw_init(dev);
- 
- 	return mt7996_dma_rro_init(dev);
--#else
--	return 0;
--#endif
- }
- 
- static void mt7996_wed_rro_free(struct mt7996_dev *dev)
- {
--#ifdef CONFIG_NET_MEDIATEK_SOC_WED
- 	int i;
- 
- 	if (!dev->has_rro)
- 		return;
- 
--	if (!mtk_wed_device_active(&dev->mt76.mmio.wed))
--		return;
--
- 	for (i = 0; i < ARRAY_SIZE(dev->wed_rro.ba_bitmap); i++) {
- 		if (!dev->wed_rro.ba_bitmap[i].ptr)
- 			continue;
-@@ -988,12 +991,10 @@ static void mt7996_wed_rro_free(struct mt7996_dev *dev)
- 			   sizeof(struct mt7996_wed_rro_addr),
- 			   dev->wed_rro.session.ptr,
- 			   dev->wed_rro.session.phy_addr);
--#endif
- }
- 
- static void mt7996_wed_rro_work(struct work_struct *work)
- {
--#ifdef CONFIG_NET_MEDIATEK_SOC_WED
- 	struct mt7996_dev *dev;
- 	LIST_HEAD(list);
- 
-@@ -1036,7 +1037,6 @@ static void mt7996_wed_rro_work(struct work_struct *work)
- out:
- 		kfree(e);
- 	}
--#endif
- }
- 
- static int mt7996_variant_type_init(struct mt7996_dev *dev)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-index 29a6d62301106a81fb9b006b6f05f677f87568df..b6046756c2dbc7558e1352ee5a78326eaf23cb3f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-@@ -2187,7 +2187,6 @@ mt7996_mac_restart(struct mt7996_dev *dev)
- 
- 	if (mtk_wed_device_active(&dev->mt76.mmio.wed) && dev->has_rro) {
- 		u32 wed_irq_mask = dev->mt76.mmio.irqmask |
--				   MT_INT_RRO_RX_DONE |
- 				   MT_INT_TX_DONE_BAND2;
- 
- 		mt7996_rro_hw_init(dev);
-@@ -2414,19 +2413,14 @@ void mt7996_mac_reset_work(struct work_struct *work)
- 	/* enable DMA Tx/Tx and interrupt */
- 	mt7996_dma_start(dev, false, false);
- 
-+	if (!is_mt7996(&dev->mt76) && dev->has_rro)
-+		mt76_wr(dev, MT_RRO_3_0_EMU_CONF, MT_RRO_3_0_EMU_CONF_EN_MASK);
-+
- 	if (mtk_wed_device_active(&dev->mt76.mmio.wed)) {
--		u32 wed_irq_mask = MT_INT_RRO_RX_DONE | MT_INT_TX_DONE_BAND2 |
-+		u32 wed_irq_mask = MT_INT_TX_DONE_BAND2 |
- 				   dev->mt76.mmio.irqmask;
- 
--		if (mtk_wed_get_rx_capa(&dev->mt76.mmio.wed))
--			wed_irq_mask &= ~MT_INT_RX_DONE_RRO_IND;
--
- 		mt76_wr(dev, MT_INT_MASK_CSR, wed_irq_mask);
--
--		if (is_mt7992(&dev->mt76) && dev->has_rro)
--			mt76_wr(dev, MT_RRO_3_0_EMU_CONF,
--				MT_RRO_3_0_EMU_CONF_EN_MASK);
--
- 		mtk_wed_device_start_hw_rro(&dev->mt76.mmio.wed, wed_irq_mask,
- 					    true);
- 		mt7996_irq_enable(dev, wed_irq_mask);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-index 0908ebcf65268e0eae862fad9f3c5d48493a78c7..a20416acbdb6c24a1c676fff15db56cd82b3445c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-@@ -858,8 +858,6 @@ u32 mt7996_wed_init_buf(void *ptr, dma_addr_t phys, int token_id);
- int mt7996_mtk_init_debugfs(struct mt7996_phy *phy, struct dentry *dir);
- #endif
- 
--#ifdef CONFIG_NET_MEDIATEK_SOC_WED
- int mt7996_dma_rro_init(struct mt7996_dev *dev);
--#endif /* CONFIG_NET_MEDIATEK_SOC_WED */
- 
- #endif
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/regs.h b/drivers/net/wireless/mediatek/mt76/mt7996/regs.h
-index d239fa3f375f5e86f9cf650fda713a4e1e4b2f96..9ca1490c2cf3a8acf753703f42547e1fe4f7d81c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/regs.h
-@@ -572,6 +572,7 @@ enum offs_rev {
- #define MT_INT_RRO_RX_DONE			(MT_INT_RX(MT_RXQ_RRO_BAND0) |		\
- 						 MT_INT_RX(MT_RXQ_RRO_BAND1) |		\
- 						 MT_INT_RX(MT_RXQ_RRO_BAND2) |		\
-+						 MT_INT_RX(MT_RXQ_RRO_IND) |		\
- 						 MT_INT_RX(MT_RXQ_MSDU_PAGE_BAND0) |	\
- 						 MT_INT_RX(MT_RXQ_MSDU_PAGE_BAND1) |	\
- 						 MT_INT_RX(MT_RXQ_MSDU_PAGE_BAND2))
-
--- 
-2.50.1
-
+T24gVHVlLCAyMDI1LTA4LTI2IGF0IDE0OjU0ICswMjAwLCBncmVna2hAbGludXhmb3VuZGF0aW9u
+Lm9yZyB3cm90ZToNCj4gRXh0ZXJuYWwgZW1haWwgOiBQbGVhc2UgZG8gbm90IGNsaWNrIGxpbmtz
+IG9yIG9wZW4gYXR0YWNobWVudHMgdW50aWwNCj4geW91IGhhdmUgdmVyaWZpZWQgdGhlIHNlbmRl
+ciBvciB0aGUgY29udGVudC4NCj4gDQo+IA0KPiBPbiBUdWUsIEF1ZyAyNiwgMjAyNSBhdCAxMjow
+OTowMVBNICswMDAwLCBYaW9uIFdhbmcgKOeOi+mRqykgd3JvdGU6DQo+ID4gT24gVHVlLCAyMDI1
+LTA4LTI2IGF0IDEyOjQwICswMjAwLCBncmVna2hAbGludXhmb3VuZGF0aW9uLm9yZw0KPiA+IHdy
+b3RlOg0KPiA+ID4gRXh0ZXJuYWwgZW1haWwgOiBQbGVhc2UgZG8gbm90IGNsaWNrIGxpbmtzIG9y
+IG9wZW4gYXR0YWNobWVudHMNCj4gPiA+IHVudGlsDQo+ID4gPiB5b3UgaGF2ZSB2ZXJpZmllZCB0
+aGUgc2VuZGVyIG9yIHRoZSBjb250ZW50Lg0KPiA+ID4gDQo+ID4gPiANCj4gPiA+IE9uIFR1ZSwg
+QXVnIDI2LCAyMDI1IGF0IDA3OjU4OjQ3QU0gKzAwMDAsIFhpb24gV2FuZyAo546L6ZGrKSB3cm90
+ZToNCj4gPiA+ID4gPiBBZ2FpbiwgdGhpcyBzaG91bGRuJ3QgYmUgc29tZXRoaW5nIHRoYXQgYW55
+IGRyaXZlciBzaG91bGQgaGl0DQo+ID4gPiA+ID4gYXMNCj4gPiA+ID4gPiB0aGlzDQo+ID4gPiA+
+ID4gdXNhZ2UgaXMgbm90IGluIHRoZSBrZXJuZWwgdHJlZSB0aGF0IEkgY2FuIHNlZS4gIEF0dGVt
+cHRpbmcNCj4gPiA+ID4gPiB0bw0KPiA+ID4gPiA+IHJlLXJlZ2lzdGVyIGEgZGV2aWNlIG11bHRp
+cGxlIHRpbWVzIGlzIG5vcm1hbGx5IG5ldmVyIGEgZ29vZA0KPiA+ID4gPiA+IGlkZWEuDQo+ID4g
+PiA+IA0KPiA+ID4gPiBUaGFuayB5b3UgZm9yIHlvdXIgY29tbWVudHMuDQo+ID4gPiA+IA0KPiA+
+ID4gPiBJIGFtIG5vdCB0aGUgb3duZXIgb2YgdGhlIFdpRmkgZHJpdmVyIGFuZCBkbyBub3QgaGF2
+ZSBmdWxsDQo+ID4gPiA+IGRldGFpbHMNCj4gPiA+ID4gb2YNCj4gPiA+ID4gaXRzIGludGVybmFs
+IGxvZ2ljLiBIb3dldmVyLCBkdXJpbmcgaW50ZXJuYWwgaW50ZWdyYXRpb24gYW5kDQo+ID4gPiA+
+IHN0cmVzcw0KPiA+ID4gPiB0ZXN0aW5nLCB3ZSBvYnNlcnZlZCBhbiBpc3N1ZSB3aGVyZSByZXBl
+YXRlZCByZWdpc3RyYXRpb24gYW5kDQo+ID4gPiA+IGRlcmVnaXN0cmF0aW9uIG9mIGEgbWlzYyBk
+ZXZpY2UgYnkgdGhlIFdpRmkgbW9kdWxlIGxlZCB0bw0KPiA+ID4gPiBjb3JydXB0aW9uIG9mDQo+
+ID4gPiA+IHRoZSBtaXNjX2xpc3QuIFdoaWxlIEkgY2Fubm90IHByb3ZpZGUgdGhlIGV4YWN0IHJl
+YXNvbmluZw0KPiA+ID4gPiBiZWhpbmQNCj4gPiA+ID4gdGhlDQo+ID4gPiA+IFdpRmkgZHJpdmVy
+J3MgZGVzaWduLCBJIHdhbnRlZCB0byByZXBvcnQgdGhlIHByb2JsZW0gYW5kIHNoYXJlDQo+ID4g
+PiA+IG91cg0KPiA+ID4gPiBmaW5kaW5ncyB3aXRoIHRoZSBjb21tdW5pdHkgaW4gY2FzZSBzaW1p
+bGFyIHBhdHRlcm5zIGV4aXN0DQo+ID4gPiA+IGVsc2V3aGVyZSwNCj4gPiA+ID4gaW5jbHVkaW5n
+IGluIHZlbmRvciBvciBvdXQtb2YtdHJlZSBkcml2ZXJzLg0KPiA+ID4gDQo+ID4gPiBXZSBkbyBu
+b3QgImhhcmRlbiIgb3VyIGludGVybmFsIGFwaXMgZm9yIGV4dGVybmFsIGRyaXZlcnMsIHdlIGZp
+eA0KPiA+ID4gZHJpdmVycyB0byBub3QgZG8gZm9vbGlzaCB0aGluZ3MgOikNCj4gPiA+IA0KPiA+
+ID4gUGxlYXNlIGZpeCB5b3VyIG91dC1vZi10cmVlIGNvZGUsIGl0IHNob3VsZCBub3QgYmUgZXZl
+biB0b3VjaGluZw0KPiA+ID4gdGhlDQo+ID4gPiBtaXNjZGV2IGFwaSwgYXMgdGhhdCBpcyBub3Qg
+c29tZXRoaW5nIGEgd2lmaSBkcml2ZXIgc2hvdWxkIGJlDQo+ID4gPiBpbnRlcmFjdGluZyB3aXRo
+LiAgUGxlYXNlIHVzZSB0aGUgY29ycmVjdCBvbmUgaW5zdGVhZCwgYW5kIHRoZW4NCj4gPiA+IHlv
+dQ0KPiA+ID4gd2lsbA0KPiA+ID4gbm90IGhhdmUgdGhpcyB0eXBlIG9mIGlzc3VlLg0KPiA+IA0K
+PiA+IFRoYW5rIHlvdSBmb3IgeW91ciBmZWVkYmFjay4NCj4gPiANCj4gPiBJIGFncmVlIHRoYXQg
+dGhlIGtlcm5lbCBzaG91bGQgbm90IGJlIGhhcmRlbmVkIGZvciBvdXQtb2YtdHJlZQ0KPiA+IGRy
+aXZlcnMNCj4gPiBtaXN1c2luZyBpbnRlcm5hbCBBUElzLiBXZSB3aWxsIHVwZGF0ZSBvdXIgaW50
+ZXJuYWwgY29kZSB0byBmb2xsb3cNCj4gPiBiZXN0DQo+ID4gcHJhY3RpY2VzIGFuZCBhdm9pZCBp
+bXByb3BlciB1c2Ugb2YgdGhlIG1pc2NkZXZpY2UgQVBJLg0KPiA+IA0KPiA+IE9uIGEgcmVsYXRl
+ZCBub3RlLCB0aGUgY3VycmVudCAnV0FSTl9PTihsaXN0X2VtcHR5KCZtaXNjLT5saXN0KSknDQo+
+ID4gY2hlY2sNCj4gPiBpbiBtaXNjX2RlcmVnaXN0ZXIoKSBkb2VzIG5vdCBjYXRjaCBhbnkgcHJh
+Y3RpY2FsIGVycm9yIGNvbmRpdGlvbnM6DQo+ID4gDQo+ID4gRm9yIHN0YXRpY2FsbHkgYWxsb2Nh
+dGVkIG1pc2NkZXZpY2Ugc3RydWN0cywgdGhlIGxpc3QgcG9pbnRlcnMgYXJlDQo+ID4gemVyby1p
+bml0aWFsaXplZCwgc28gbGlzdF9lbXB0eSgpIHdpbGwgcmV0dXJuIGZhbHNlLCBub3QgdHJ1ZS4N
+Cj4gPiBBZnRlciBsaXN0X2RlbCgpLCB0aGUgcG9pbnRlcnMgYXJlIHNldCB0byBMSVNUX1BPSVNP
+TjEvMiwgc28NCj4gPiByZXBlYXRlZA0KPiA+IGRlcmVnaXN0cmF0aW9uIGFsc28gZmFpbHMgdG8g
+dHJpZ2dlciB0aGUgY2hlY2suDQo+ID4gDQo+ID4gU2luY2UgdGhpcyBjb25kaXRpb24gZG9lcyBu
+b3QgcHJvdGVjdCBpbi10cmVlIGRyaXZlcnMgb3IgY2F0Y2ggcmVhbA0KPiA+IGVycm9ycywgd291
+bGQgaXQgYmUgcmVhc29uYWJsZSB0byByZW1vdmUgaXQ/DQo+IA0KPiBZZXMsIGlmIGl0IGNhbiBu
+ZXZlciBiZSBoaXQsIHdlIHNob3VsZCByZW1vdmUgaXQuDQo+IA0KPiA+IEkgY2FuIHN1Ym1pdCBh
+IHBhdGNoIGlmIHRoZSBjb21tdW5pdHkgYWdyZWVzLg0KPiANCj4gVGhhdCB3b3VsZCBiZSBncmVh
+dCwgdGhhbmsgeW91IQ0KPiANCg0KSGksDQoNClRoYW5rIHlvdSBmb3IgeW91ciBwcmV2aW91cyBm
+ZWVkYmFjay4NCg0KQXMgc3VnZ2VzdGVkLCBJIGhhdmUgc3VibWl0dGVkIGEgbmV3IHBhdGNoIHRv
+IHJlbW92ZSB0aGUgaW5lZmZlY3RpdmUNCldBUk5fT04oKSBjaGVjayBpbiBtaXNjX2RlcmVnaXN0
+ZXIoKSBpbiBhIHNlcGFyYXRlIGVtYWlsIHRocmVhZDoNCg0KCQ0KaHR0cHM6Ly9sb3JlLmtlcm5l
+bC5vcmcvbGttbC8yMDI1MDgyNzAyNDIwMS4yMTQwNy0xLXhpb24ud2FuZ0BtZWRpYXRlay5jb20v
+VC8jdA0KCVtQQVRDSCAxLzFdIG1pc2M6IHJlbW92ZSBpbmVmZmVjdGl2ZSBXQVJOX09OKCkgY2hl
+Y2sgZnJvbQ0KbWlzY19kZXJlZ2lzdGVyKCkNCg0KUGxlYXNlIGxldCBtZSBrbm93IGlmIHlvdSBo
+YXZlIGFueSBjb21tZW50cy4NCg0KVGhhbmtzLA0KWGlvbiBXYW5nDQo=
 
