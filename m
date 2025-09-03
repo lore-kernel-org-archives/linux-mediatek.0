@@ -4,80 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAD0FCA1007
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Sep 2025 02:46:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FDE5CA1007
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Sep 2025 04:11:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0YjiRTNpFTLAgxYMRCBcrk+ks9DsXcJPfnZbK8oPeEo=; b=oYZX27jnK9skhUoIaYYM9GwErn
-	zLl5mhtHdOTYSaLZsL2fuhHeRQr71nxyRpiOCx/Wua8EFEisU+Znc+sqTOaGOc8wTbjE0J9CoepPx
-	cGwni5PxDegwFsiueBmipZxf5XIl6RNzCoiSyiMq6Y253hnWQiqgj/uh0j4j4+o1TC6z7EOGeQKCB
-	wprabbm8mLP8ZGN6O1Kbk3XqDW/sgnXL8W4b3PmNdSMUE/EwXl0YukgyEia3cgeZ07rOFJm/kLXy1
-	UySTIIvQXeuc+QUbuVSWDhjRoUkaMtALlzHrL5IhD5bN54+pVyYsQKB/nS0nAz7OUle33JzuiYJlf
-	s8N45okA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EOpIoZ+QJ3yKu2lp11f+X+mDcgCMYdWaEANVtuakPuE=; b=OS6p+pO2rjHm8MLhb6M4EX7exw
+	C5uxr9EzRsDfr9nAbe+CXR38ks8gpMlKk9eew4y/usqgPgGCi+CDrv4ioRphT9UIsVheLDObTReBB
+	oG3IWRSIUMNmuTUScL/GC6Lcj227Wngvhr3J6RP+U7eqd3Ivn3fbd2E0MnfWJXwxH3UzUrE9Yu+oK
+	JQab9LsnrvjzsqhmHGNkH/lRaMIZsuifQuBf0YMcQFh+s4ID+prN48weohv+AibNSU/HwYANYyOBk
+	rPAzURGCSLwNNYbRmbtYYDXmT+sc0QbyrToQxoJvQ9IsD/5HoQq0cMbeM2Z/83P6QFcFzK4k4upnv
+	x024H9cQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utdWM-00000003L8E-3TJL;
-	Wed, 03 Sep 2025 02:46:50 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1uteq2-00000003lvC-2TlL;
+	Wed, 03 Sep 2025 04:11:14 +0000
+Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utdWG-00000003Kxe-0zPX
+	id 1uteq0-00000003ltY-1G00
 	for linux-mediatek@lists.infradead.org;
-	Wed, 03 Sep 2025 02:46:46 +0000
-X-UUID: 3678bff6887011f09eb0dd999d3936bf-20250902
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=0YjiRTNpFTLAgxYMRCBcrk+ks9DsXcJPfnZbK8oPeEo=;
-	b=GBTUa1RCe5Zet4hs6IMe+wyuspfvjzrS34l7qmw1j1mEe7Sl0tKMMOLRN6GqEB37JW0b1YhP8G+ttZEyvF54tcPiV88xv4fAoIyCeM1A3DrpeBWPvj4R/C8DCOtN9kqXGWWKytkzsbY/zKYk/zAy1sfb9qYWQYXIeZAHfKiNxHs=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.3,REQID:cde394c7-1c36-4f04-a41a-8c58dea3cb74,IP:0,UR
-	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-25
-X-CID-META: VersionHash:f1326cf,CLOUDID:4247e7a8-24df-464e-9c88-e53ab7cf7153,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:-5,Content:0|15|50,EDM:
-	-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,
-	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 3,DMD|SSN|SDN
-X-CID-BAS: 3,DMD|SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 3678bff6887011f09eb0dd999d3936bf-20250902
-Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw02.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 339777521; Tue, 02 Sep 2025 19:46:38 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Wed, 3 Sep 2025 10:46:33 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Wed, 3 Sep 2025 10:46:33 +0800
-From: <peter.wang@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>
-CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
-	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
-	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
-	<yi-fan.peng@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
-	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
-	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>, <sanjeev.y@mediatek.com>,
-	<bvanassche@acm.org>
-Subject: [PATCH v3 05/10] ufs: host: mediatek: Support UFS PHY runtime PM and correct sequence
-Date: Wed, 3 Sep 2025 10:44:41 +0800
-Message-ID: <20250903024631.496693-6-peter.wang@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20250903024631.496693-1-peter.wang@mediatek.com>
-References: <20250903024631.496693-1-peter.wang@mediatek.com>
+	Wed, 03 Sep 2025 04:11:13 +0000
+Received: by mail-lj1-x234.google.com with SMTP id 38308e7fff4ca-336d84b58edso29622541fa.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 02 Sep 2025 21:11:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1756872670; x=1757477470; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=EOpIoZ+QJ3yKu2lp11f+X+mDcgCMYdWaEANVtuakPuE=;
+        b=EAdkD12S5XdSPu+Ombl8llgxrtWkIoC13ii0oUNcBm3I96SmHFK0OK69xv7Fo8esW9
+         LGx6X+t0LBfnHnQjbXR3cCbEVtO+vSX4pTsToDjB63srAt86Jn7tcLZ4V6vVRfgRfr8T
+         V4+pAuQGPv8w2UhRlWVmclsN/C4ntMJBOpWyg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1756872670; x=1757477470;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=EOpIoZ+QJ3yKu2lp11f+X+mDcgCMYdWaEANVtuakPuE=;
+        b=KDD+H2M9IedIlJ+tpnuEYYnYA01fAuuhplm8IQUPDZw5t5HdDMjGU7d3IoX+iAQwjF
+         wM7DCoLadYNrn6/6bOzfg23p62P4V7cLUr+BlodAUpxq5YEhwZouiXOqVaGw2yvD10UH
+         ++87CDqVIctJygvPvXr/NtdYuyWg+B+IhPKqnRUEegzSeaHexPXIV7Eu/V2bOyYFDpk3
+         xIfnFaJGnk9VClf6s/dgqq5PFYngXop74eZyhwOKlb2vw3czL4jhw6Z4jpH483pCYOAK
+         2gZxUBUG0ffkEX1F8xZzw60R8DilKUWNy8AafvoLNyfzvgMsAogwAfuJZ25jLzn9w4Qd
+         d51A==
+X-Forwarded-Encrypted: i=1; AJvYcCWQ8xslw9IHdKNgtl7OpmI0fr1hqJ63HWoekPdpmlmouBZMjdFKlKeI/romWxspktkadYypN5prvS/OSR6Mhw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwzdhtUFIsL7EUgHO6xFOO9KVqLDZmzg3QaRZNgZAIl6cwqahpq
+	iBox+a5Xwak1zweQTKk2LL5zqZ3JQUWbP+WF9jrbo98oPWjjJnA1nljA1IYH6tyRL6cUkL93LbR
+	TTn2/JvzIITMXlho7VnDTjo3vg/RVGRdFSqyO5jmd
+X-Gm-Gg: ASbGnctoxcfW9XyXxIyqDAfF9uZ9gTmYP2VX5cvmCnHklZTR40ZiI7gJz9vkZd/miIO
+	Gr8ITu+xN+Co7XH3MnBldDzmUKBDBd2iyG0vow5njChudMrKF4U4XxbMnrmxJAfK8No9nBbSltG
+	mMlxr0YzBeL35LsQCPoNBC2CTJDPLEXTjiNXLfsLq/OB/qwQ3/yH//+PkqzQlm09Oa20qErELwa
+	4y6MTgLu5n9VrLizmaLDm2TxJoCb1xw+sUblQ==
+X-Google-Smtp-Source: AGHT+IETiwoqu3jA0q9QRK+CqDCEcgW+ZXk2qygZizGlpal3JlGHcBuz5NWXPRG3Osy7OAGRM6Ng6di200B3S6sTE44=
+X-Received: by 2002:a05:651c:3246:10b0:335:40e6:d051 with SMTP id
+ 38308e7fff4ca-336cb0dfa15mr33548211fa.44.1756872669828; Tue, 02 Sep 2025
+ 21:11:09 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+References: <20250722171152.58923-2-robh@kernel.org> <5d7557f0-841b-45ea-901c-5b595ac8bde3@collabora.com>
+ <CAL_JsqJaC47zFY7zvTVFum9oMiV87dgo49a9e3HW1T5_vQtAzA@mail.gmail.com>
+In-Reply-To: <CAL_JsqJaC47zFY7zvTVFum9oMiV87dgo49a9e3HW1T5_vQtAzA@mail.gmail.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Wed, 3 Sep 2025 12:10:58 +0800
+X-Gm-Features: Ac12FXwYb9oV3zYXJk8hHuf8yXRCNfDIMSMGlmD1yfi_WJphj9A2DKWKSeZdpBg
+Message-ID: <CAGXv+5FWTUkjWCyFhnryq2nB9NN3wQjKeOYf-NReYjMDXmgiuw@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8183: Fix out of range pull values
+To: Rob Herring <robh@kernel.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo i Serra <eballetbo@kernel.org>, 
+	Ben Ho <Ben.Ho@mediatek.com>, Fabien Parent <fparent@baylibre.com>, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250902_194644_308908_1BE9AD55 
-X-CRM114-Status: GOOD (  19.67  )
+X-CRM114-CacheID: sfid-20250902_211112_331228_8987AFB4 
+X-CRM114-Status: GOOD (  24.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,135 +97,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Wang <peter.wang@mediatek.com>
+On Wed, Sep 3, 2025 at 9:53=E2=80=AFAM Rob Herring <robh@kernel.org> wrote:
+>
+> On Wed, Jul 23, 2025 at 3:16=E2=80=AFAM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+> >
+> > Il 22/07/25 19:11, Rob Herring (Arm) ha scritto:
+> > > A value of 10 is not valid for "mediatek,pull-down-adv" and
+> > > "mediatek,pull-up-adv" properties which have defined values of 0-3. I=
+t
+> > > appears the "10" was written as a binary value. The driver only looks=
+ at
+> > > the lowest 2 bits, so the value "10" decimal works out the same as if
+> > > "2" was used.
+> > >
+> > > Fixes: cd894e274b74 ("arm64: dts: mt8183: Add krane-sku176 board")
+> > > Fixes: 19b6403f1e2a ("arm64: dts: mt8183: add mt8183 pumpkin board")
+> > > Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+> > > ---
+> > > This is just a few of the warnings related to mt8183-pinctrl... Media=
+tek
+> > > is #1 for DT warnings on arm64. And by #1, I mean worst. :( It would =
+be
+> > > nice to see some progress on fixing them. Otherwise, seeing new Media=
+tek
+> > > bindings rather than fixing the existing stuff makes me grumpy.
+> > >
+> >
+> > Thanks for this fix.
+> >
+> > You're absolutely right about this, let me check what I can do (and if =
+I can get
+> > some colleague(s) of mine to look at that while I'm away in August).
+> >
+> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+>
+> Is this going to get applied and into linux-next sometime soon? Only
+> been like 6 weeks...
 
-Add support for UFS PHY runtime power management by probing the
-PHY device and enabling its runtime PM. Ensure the correct sequence
-of operations during suspend and resume:
-PHY suspend -> UFS suspend -> UFS resume -> PHY resume.
-Improve power management efficiency and system stability with this
-enhancement.
-
-Signed-off-by: Peter Wang <peter.wang@mediatek.com>
----
- drivers/ufs/host/ufs-mediatek.c | 53 +++++++++++++++++++++++++++++----
- drivers/ufs/host/ufs-mediatek.h |  1 +
- 2 files changed, 48 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index a47713a047c1..5d2de4fc370b 100644
---- a/drivers/ufs/host/ufs-mediatek.c
-+++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -2243,10 +2243,12 @@ static const struct ufs_hba_variant_ops ufs_hba_mtk_vops = {
- static int ufs_mtk_probe(struct platform_device *pdev)
- {
- 	int err;
--	struct device *dev = &pdev->dev;
--	struct device_node *reset_node;
--	struct platform_device *reset_pdev;
-+	struct device *dev = &pdev->dev, *phy_dev = NULL;
-+	struct device_node *reset_node, *phy_node = NULL;
-+	struct platform_device *reset_pdev, *phy_pdev = NULL;
- 	struct device_link *link;
-+	struct ufs_hba *hba;
-+	struct ufs_mtk_host *host;
- 
- 	reset_node = of_find_compatible_node(NULL, NULL,
- 					     "ti,syscon-reset");
-@@ -2273,13 +2275,44 @@ static int ufs_mtk_probe(struct platform_device *pdev)
- 	}
- 
- skip_reset:
-+	/* find phy node */
-+	phy_node = of_parse_phandle(dev->of_node, "phys", 0);
-+
-+	if (phy_node) {
-+		phy_pdev = of_find_device_by_node(phy_node);
-+		if (!phy_pdev)
-+			goto skip_phy;
-+		phy_dev = &phy_pdev->dev;
-+
-+		pm_runtime_set_active(phy_dev);
-+		pm_runtime_enable(phy_dev);
-+		pm_runtime_get_sync(phy_dev);
-+
-+		put_device(phy_dev);
-+		dev_info(dev, "phys node found\n");
-+	} else {
-+		dev_notice(dev, "phys node not found\n");
-+	}
-+
-+skip_phy:
- 	/* perform generic probe */
- 	err = ufshcd_pltfrm_init(pdev, &ufs_hba_mtk_vops);
--
--out:
--	if (err)
-+	if (err) {
- 		dev_err(dev, "probe failed %d\n", err);
-+		goto out;
-+	}
-+
-+	hba = platform_get_drvdata(pdev);
-+	if (!hba)
-+		goto out;
-+
-+	if (phy_node && phy_dev) {
-+		host = ufshcd_get_variant(hba);
-+		host->phy_dev = phy_dev;
-+	}
- 
-+out:
-+	of_node_put(phy_node);
- 	of_node_put(reset_node);
- 	return err;
- }
-@@ -2343,6 +2376,7 @@ static int ufs_mtk_system_resume(struct device *dev)
- static int ufs_mtk_runtime_suspend(struct device *dev)
- {
- 	struct ufs_hba *hba = dev_get_drvdata(dev);
-+	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
- 	struct arm_smccc_res res;
- 	int ret = 0;
- 
-@@ -2355,17 +2389,24 @@ static int ufs_mtk_runtime_suspend(struct device *dev)
- 	if (ufs_mtk_is_rtff_mtcmos(hba))
- 		ufs_mtk_mtcmos_ctrl(false, res);
- 
-+	if (host->phy_dev)
-+		pm_runtime_put_sync(host->phy_dev);
-+
- 	return 0;
- }
- 
- static int ufs_mtk_runtime_resume(struct device *dev)
- {
- 	struct ufs_hba *hba = dev_get_drvdata(dev);
-+	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
- 	struct arm_smccc_res res;
- 
- 	if (ufs_mtk_is_rtff_mtcmos(hba))
- 		ufs_mtk_mtcmos_ctrl(true, res);
- 
-+	if (host->phy_dev)
-+		pm_runtime_get_sync(host->phy_dev);
-+
- 	ufs_mtk_dev_vreg_set_lpm(hba, false);
- 
- 	return ufshcd_runtime_resume(dev);
-diff --git a/drivers/ufs/host/ufs-mediatek.h b/drivers/ufs/host/ufs-mediatek.h
-index e46dc5fa209d..dfbf78bd8664 100644
---- a/drivers/ufs/host/ufs-mediatek.h
-+++ b/drivers/ufs/host/ufs-mediatek.h
-@@ -193,6 +193,7 @@ struct ufs_mtk_host {
- 	bool is_mcq_intr_enabled;
- 	int mcq_nr_intr;
- 	struct ufs_mtk_mcq_intr_info mcq_intr_info[UFSHCD_MAX_Q_NR];
-+	struct device *phy_dev;
- };
- 
- /* MTK delay of autosuspend: 500 ms */
--- 
-2.45.2
-
+AFAIK Angelo is on vacation but should be back shortly in September.
 
