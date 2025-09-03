@@ -4,76 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABD4ECA1010
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Sep 2025 02:10:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F8C7CA1017
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Sep 2025 02:11:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c+ZgGU/Y7ymCGJS4a8iBSCEwRU68y0Cdd3gwtYGpdv4=; b=p5Ay0h8ggIqUtGiNUWzCSk4Bj5
-	gAj5a5iZlu18uAyewPfsa5hurYMADOP9IB1OObgX2y3+udfe6ZZC+7DZ18KPoBM/kPc6Farh0MdUp
-	akPFYywGu1F3Z1xHIRYhOtAO6eybaHo9AdgKbadouUa+oU6mGtW68+zmbeVhEEKrjbbZeeCE6w5Iv
-	kAOxLwi2CGdgHeDJt5xf4Cp6gDLREHTx06X1e51KWQXxrT8TmHubR8b0j0z4uq1XD5vCny09px3eR
-	vK4zSxHPI6ASlMgYe1UMQsVwJIWnjm5iVWGnvNtOqHh+Pi2r7sp/E3/QfKaiV1bR2Pwoz8AQ4gl9e
-	o/1mFSZQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=o7SdCGQ3OtPL4C8i+CiT/i+Gun3C1uxaqDOYUaITvFM=; b=DrEgDAqi0aNdJrszSo0ZC0nbLi
+	Z63/FkVMXHQv3nabgs68EUvpzAD9ypuKDsTnoBevJs5IQ/5BxAUBz142PR6INI7du1Of0+nVUaQmO
+	+01USmsxE2OZHX7KbrWZQaSoOhqDsAg4mN2irD/ecTo6vwK0+3GWlAlM1YqZ+1iABEluzDC6yruLO
+	jj0C0kmkUwOy5d+B801h2AaTb6EyThq6NJn40IcPJxkk2RC8trfHJQygRKQ+kwO+NWIjIOx5SD/sx
+	rQN9xpN+q6bTJbCOTzjkt6YgPiUajKQ0RFmwXi8jsMr7cWNX1jw0zGA/SZ0/m8NQfzo4Ak4deoh5z
+	6UUXXeyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utzQT-00000008E00-1DUE;
-	Thu, 04 Sep 2025 02:10:13 +0000
-Received: from aposti.net ([185.119.170.32])
+	id 1utzRI-00000008Fo9-1e9U;
+	Thu, 04 Sep 2025 02:11:04 +0000
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utt25-00000007RW4-1y71;
-	Wed, 03 Sep 2025 19:20:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
-	s=mail; t=1756927235;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=c+ZgGU/Y7ymCGJS4a8iBSCEwRU68y0Cdd3gwtYGpdv4=;
-	b=Z0xvlH/ECfsC59swm4ATc7moQPplDnhXIzmBF4X35r6pJmnBDDeoU1Ie5Ab1yxhe+1ln8W
-	GcUQb2ZLGdW9NnPudS1kvJ3oXxwi39axE8bJQYRDLCQpq4QuYcwKIMP6MOFv74jzcnlQqN
-	tMc5uO4lOOAAr/7RBg88uyXzuq33+zQ=
-Message-ID: <f19aa842d210bf4cd3d7abf03ea7323f9e52df75.camel@crapouillou.net>
-Subject: Re: [PATCH 024/114] clk: ingenic: x1000-cgu: convert from
- round_rate() to determine_rate()
-From: Paul Cercueil <paul@crapouillou.net>
-To: bmasney@redhat.com, Michael Turquette <mturquette@baylibre.com>, Stephen
- Boyd <sboyd@kernel.org>
-Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	arm-scmi@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	sophgo@lists.linux.dev, linux-mips@vger.kernel.org, imx@lists.linux.dev, 
-	linux-riscv@lists.infradead.org, spacemit@lists.linux.dev, 
-	linux-stm32@st-md-mailman.stormreply.com, patches@opensource.cirrus.com, 
-	linux-actions@lists.infradead.org, asahi@lists.linux.dev, 
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
-	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev
-Date: Wed, 03 Sep 2025 21:20:32 +0200
-In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-24-b3bf97b038dc@redhat.com>
-References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
-	 <20250811-clk-for-stephen-round-rate-v1-24-b3bf97b038dc@redhat.com>
-Autocrypt: addr=paul@crapouillou.net; prefer-encrypt=mutual;
- keydata=mQENBF0KhcEBCADkfmrzdTOp/gFOMQX0QwKE2WgeCJiHPWkpEuPH81/HB2dpjPZNW03ZM
- LQfECbbaEkdbN4YnPfXgcc1uBe5mwOAPV1MBlaZcEt4M67iYQwSNrP7maPS3IaQJ18ES8JJ5Uf5Uz
- FZaUawgH+oipYGW+v31cX6L3k+dGsPRM0Pyo0sQt52fsopNPZ9iag0iY7dGNuKenaEqkYNjwEgTtN
- z8dt6s3hMpHIKZFL3OhAGi88wF/21isv0zkF4J0wlf9gYUTEEY3Eulx80PTVqGIcHZzfavlWIdzhe
- +rxHTDGVwseR2Y1WjgFGQ2F+vXetAB8NEeygXee+i9nY5qt9c07m8mzjABEBAAG0JFBhdWwgQ2VyY
- 3VlaWwgPHBhdWxAY3JhcG91aWxsb3UubmV0PokBTgQTAQoAOBYhBNdHYd8OeCBwpMuVxnPua9InSr
- 1BBQJdCoXBAhsDBQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJEHPua9InSr1BgvIH/0kLyrI3V0f
- 33a6D3BJwc1grbygPVYGuC5l5eMnAI+rDmLR19E2yvibRpgUc87NmPEQPpbbtAZt8On/2WZoE5OIP
- dlId/AHNpdgAtGXo0ZX4LGeVPjxjdkbrKVHxbcdcnY+zzaFglpbVSvp76pxqgVg8PgxkAAeeJV+ET
- 4t0823Gz2HzCL/6JZhvKAEtHVulOWoBh368SYdolp1TSfORWmHzvQiCCCA+j0cMkYVGzIQzEQhX7U
- rf9N/nhU5/SGLFEi9DcBfXoGzhyQyLXflhJtKm3XGB1K/pPulbKaPcKAl6rIDWPuFpHkSbmZ9r4KF
- lBwgAhlGy6nqP7O3u7q23hRU=
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+	id 1utwNh-00000007qR0-3khm;
+	Wed, 03 Sep 2025 22:55:11 +0000
+Received: by mail-pl1-x62c.google.com with SMTP id d9443c01a7336-24a9cc916b3so5093545ad.0;
+        Wed, 03 Sep 2025 15:55:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1756940109; x=1757544909; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:from:to:cc:subject:date:message-id:reply-to;
+        bh=o7SdCGQ3OtPL4C8i+CiT/i+Gun3C1uxaqDOYUaITvFM=;
+        b=H8TZJ+ygEdRK51QY+YkGOFMfGSdsryx9YeLeGIUQj3Mjt3R2rw4A4fIOei7U2dLoCD
+         8OXSAOgj2zynrqnaIp6vZCg8jIbu/o/6b04tSSiw4XU0GOuZepMrOycTsYzbgDMCucKQ
+         sQmVyED+PbPUwptnCCK8NhT15MegOQrRp421Bbm1ODbfu3F/oXQXUKRUFPjPPhpQf0xk
+         1DMdyf0DKsnCkCKfM7HPJ5HBFTUHCZVRc274IIQdPqvuCep0v9zElPuzZVY/1OTll7mY
+         vMHwRvHc32ImkpTsH71vUrnQeLHrYZ5Xh69iTl/Z68FsnoqvnyO8T/s8SE5vnBgmoU3Z
+         UW1g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1756940109; x=1757544909;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=o7SdCGQ3OtPL4C8i+CiT/i+Gun3C1uxaqDOYUaITvFM=;
+        b=Pj9oH1DKO/6nTKSO7dBSSP4XV4ApH8C+c3B0K1wzmdoLKL99izl9Mulw6+w/lt98QH
+         5yTBiuDy5ASZSKO//JGXLYR/mT5HTk9ny7JKabXbA752KNyze1tvJlTAhh7Yl5xDu3E9
+         Z0XT6awDH2H3g/b+afqPOVmWjIMdPbOKLB0yAsWb9CzGrkJgedcYaFzTALkxMGazAjbt
+         WBe7fYpp3NUEK3ObkR1iaa4r1rXA0RkkO36jZVmQhcQBG5/ZBF5EF2Hi5sDvZavkNOV5
+         138pI2pDUXySOyUSyuEi8UbfsNWwo0lYhZwfRolfYrGSLz2sSwXeRk/j+lytAUZlGiGU
+         Bzag==
+X-Forwarded-Encrypted: i=1; AJvYcCURqZYj5UJG4ovg91+FZ768u64KtAKmOFu1zdJZL7oMnP+iYhHxNF3bEntnOtXc7ohBHgr3IgAbT1oihaXari4w@lists.infradead.org, AJvYcCVwx9QoFK8W2geoj5gTS/V1mAMxJuzguD0+a3PJCnhi25h4DqWfpkwnxMnVvrY8U1gVhDF2CO2RZ+JnjpI1mC4=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwLNXuH8WzkbBEZUHGL2W3DBdskS2ihpUAELWRDPNlUNys7eWpL
+	UO+llbYzcd/kh3wE/VTPliRbaqRxyJcVVIA4zHHFIFMK1xLUhbAgDn7A
+X-Gm-Gg: ASbGncs24PpvIPEwRtCMqEXZ6dNxNCcCaFpTTRhWs6FmLkCglBHOt7mqMR30YB3XH0r
+	Zejg+nQs2SCgdl6Cmg/eqWcS6C3cDDs3N+Z8dHdj/YN9F5r0f6T/+ebkfSHLwisOIKgAAbcW/cX
+	gdAq9C6m6PaO61Gu7edeHkncjGsUz3/E6EFlkxLop+/6xMBfHICUMS2a/084vpeSpj82dXmtDEa
+	UJusk45sPuXE81y54gL92JV1y+438LxgokuwW60udcfXckP1P0BasZxdJmo9ClF5JElmGMgawdI
+	m/KQS9I+MUewDWDsdjzrWXOwizYGhUaDRgUTVw36M0lZzz1MRD/v3hTztt0wlZ8i8yKGHIVPQOi
+	GHydNsj60fua4J3uhH01yVpWJ3nFvsTgHt1BdNHK0tD9JAUQgduwdGJTajyy5BZqNvv7aPeI9Nl
+	evNgyQ4b8Cpg==
+X-Google-Smtp-Source: AGHT+IEhFktIMvpmJbrvjWFLTT5A3+FgRNJriwkj5RePnhU8700uH0+euhIJE/haVIpx1TPUCmOLqw==
+X-Received: by 2002:a17:902:e848:b0:246:a90e:9179 with SMTP id d9443c01a7336-24944ab7df2mr226213595ad.28.1756940108651;
+        Wed, 03 Sep 2025 15:55:08 -0700 (PDT)
+Received: from localhost (185.3.125.34.bc.googleusercontent.com. [34.125.3.185])
+        by smtp.gmail.com with UTF8SMTPSA id d9443c01a7336-24a92f897d8sm131162215ad.24.2025.09.03.15.55.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 03 Sep 2025 15:55:08 -0700 (PDT)
+From: Chia-I Wu <olvaffe@gmail.com>
+To: Boris Brezillon <boris.brezillon@collabora.com>,
+	Steven Price <steven.price@arm.com>,
+	Liviu Dudau <liviu.dudau@arm.com>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [RFC PATCH 0/2] drm/panthor: initial mt8196 support
+Date: Wed,  3 Sep 2025 15:55:02 -0700
+Message-ID: <20250903225504.542268-1-olvaffe@gmail.com>
+X-Mailer: git-send-email 2.51.0.338.gd7d06c2dae-goog
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250903_122037_672439_B9B8E006 
-X-CRM114-Status: GOOD (  13.07  )
+X-CRM114-CacheID: sfid-20250903_155509_940656_F21C3F33 
+X-CRM114-Status: GOOD (  13.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,70 +109,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le lundi 11 ao=C3=BBt 2025 =C3=A0 11:18 -0400, Brian Masney via B4 Relay a
-=C3=A9crit=C2=A0:
-> From: Brian Masney <bmasney@redhat.com>
->=20
-> The round_rate() clk ops is deprecated, so migrate this driver from
-> round_rate() to determine_rate() using the Coccinelle semantic patch
-> on the cover letter of this series.
->=20
-> Signed-off-by: Brian Masney <bmasney@redhat.com>
+MediaTek MT8196 has Mali-G925-Immortalis, for which panthor gained
+support recently. But the soc also requires custom ASN hash to be
+enabled. This series introduces panthor_soc_data for per-soc data and
+uses it to enable custom ASN hash on MT8196.
 
-Reviewed-by: Paul Cercueil <paul@crapouillou.net>
+The clk/regulator provider on MT8196 is GPUEB, whose driver[1] needs to
+be cleaned up and upstreamed separately.
 
-Cheers,
--Paul
+This initial support also lacks support for some hw configs. On some
+configs, panthor is expected to query a mask from efuse to mask out
+unavailable shader cores from ptdev->gpu_info.shader_present. This
+requires extending panthor_soc_data with a callback to read the mask.
 
-> ---
-> =C2=A0drivers/clk/ingenic/x1000-cgu.c | 19 ++++++++++---------
-> =C2=A01 file changed, 10 insertions(+), 9 deletions(-)
->=20
-> diff --git a/drivers/clk/ingenic/x1000-cgu.c
-> b/drivers/clk/ingenic/x1000-cgu.c
-> index
-> feb03eed4fe8c8f617ef98254a522d72d452ac17..d80886caf393309a0c908c06fb5
-> aa8b59aced127 100644
-> --- a/drivers/clk/ingenic/x1000-cgu.c
-> +++ b/drivers/clk/ingenic/x1000-cgu.c
-> @@ -84,16 +84,17 @@ static unsigned long
-> x1000_otg_phy_recalc_rate(struct clk_hw *hw,
-> =C2=A0	return parent_rate;
-> =C2=A0}
-> =C2=A0
-> -static long x1000_otg_phy_round_rate(struct clk_hw *hw, unsigned
-> long req_rate,
-> -				=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 unsigned long *parent_rate)
-> +static int x1000_otg_phy_determine_rate(struct clk_hw *hw,
-> +					struct clk_rate_request
-> *req)
-> =C2=A0{
-> -	if (req_rate < 18000000)
-> -		return 12000000;
-> -
-> -	if (req_rate < 36000000)
-> -		return 24000000;
-> +	if (req->rate < 18000000)
-> +		req->rate =3D 12000000;
-> +	else if (req->rate < 36000000)
-> +		req->rate =3D 24000000;
-> +	else
-> +		req->rate =3D 48000000;
-> =C2=A0
-> -	return 48000000;
-> +	return 0;
-> =C2=A0}
-> =C2=A0
-> =C2=A0static int x1000_otg_phy_set_rate(struct clk_hw *hw, unsigned long
-> req_rate,
-> @@ -161,7 +162,7 @@ static int x1000_usb_phy_is_enabled(struct clk_hw
-> *hw)
-> =C2=A0
-> =C2=A0static const struct clk_ops x1000_otg_phy_ops =3D {
-> =C2=A0	.recalc_rate =3D x1000_otg_phy_recalc_rate,
-> -	.round_rate =3D x1000_otg_phy_round_rate,
-> +	.determine_rate =3D x1000_otg_phy_determine_rate,
-> =C2=A0	.set_rate =3D x1000_otg_phy_set_rate,
-> =C2=A0
-> =C2=A0	.enable		=3D x1000_usb_phy_enable,
+This is an RFC because the dependent drivers are not ready yet. But I
+would like to gather opinions on having panthor_soc_data for
+soc-specific data and having CONFIG_DRM_PANTHOR_SOC_MT8196 for
+soc-specific code.
+
+[1] https://gitlab.freedesktop.org/olv/kernel/-/commit/170d5fc90f817dc90bde54b32872c59cf5c77779
+
+Chia-I Wu (2):
+  dt-bindings: gpu: mali-valhall-csf: add MediaTek MT8196 compatible
+  drm/panthor: add initial mt8196 support
+
+ .../bindings/gpu/arm,mali-valhall-csf.yaml    |  1 +
+ drivers/gpu/drm/panthor/Kconfig               |  6 +++++
+ drivers/gpu/drm/panthor/Makefile              |  2 ++
+ drivers/gpu/drm/panthor/panthor_device.c      |  2 ++
+ drivers/gpu/drm/panthor/panthor_device.h      |  4 +++
+ drivers/gpu/drm/panthor/panthor_drv.c         |  4 +++
+ drivers/gpu/drm/panthor/panthor_gpu.c         | 26 ++++++++++++++++++-
+ drivers/gpu/drm/panthor/panthor_regs.h        |  4 +++
+ drivers/gpu/drm/panthor/panthor_soc.h         | 26 +++++++++++++++++++
+ drivers/gpu/drm/panthor/panthor_soc_mt8196.c  |  9 +++++++
+ 10 files changed, 83 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/gpu/drm/panthor/panthor_soc.h
+ create mode 100644 drivers/gpu/drm/panthor/panthor_soc_mt8196.c
+
+-- 
+2.51.0.338.gd7d06c2dae-goog
+
 
