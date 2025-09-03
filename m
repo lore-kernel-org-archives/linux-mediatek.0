@@ -4,121 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B3CBCA0FF2
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Sep 2025 11:48:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09548CA1009
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Sep 2025 11:56:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UpoJObt3fXHmnCgApXAd+PJkE0iJXu1bG38S0G7zckA=; b=ThZ5kF50UKv2q/1hrMRdFlODCQ
-	/7ESYAEUGspYAHBKqQ81FHSZiFgag8yGaDJm2gjEcxdzk7pn604ScdU3kUcMZCVlmsmZEmJiTEygL
-	mQq4UDHFi5E/vlkJuAOuYaST8Wer40yBbXHc/EJHX8UlZMepsnBfsj4jbxql1MK4RwxpBF4i1OgXv
-	Hy/Zg0Z2QKIenAeqGr4J4ndzXZZ5/MKuJNsjyIUQ3gOnUh0erAz0bGjfw2Dcdl3Avht2BCyNGsTzQ
-	NQ+Y7o3nh4JCENKgvlhMZMj+1C6j6XyzgnlqnwBH4v8zXwzM4vzuH9/rPBxNLMKtd/BI/FnZ+98kf
-	9hzOEefg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+DICLpeLEk5QfxI0uLHQeTK/2wiRnzmCNbLnrX8FqT8=; b=atULJEyqZtA0hPSu/COWro786O
+	Ciw4xdzVwrBbU24eKrrLS0ostr4Wq9tjMfnJ+iNKJJvQ54jA41yhWCrPY6gWYRlmKCfkxToGt/KFT
+	QPAz5QbtsG28DNfCthFN+CQHNz4nnskxrUyEmIDsdFIaYy6lAmUETGQA9p8AbeXw5ElI4ia91QOBy
+	4gS+8qjAsONJhGx9U1Fwc0MNNNxL2UXAvoEB1JcPL38i4RpankYS0VyavM8hjdS13RXqsYceoxdvH
+	nNEQPVh+G8cKhQaO7yI6UMDDA+mW+yy44mdmnaj3UtZmmbe7xizvbsvw0CU17W86MZis77NYxWFaa
+	8EiEaleA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utlyQ-00000006GeY-1Vku;
-	Wed, 03 Sep 2025 11:48:22 +0000
-Received: from mgamail.intel.com ([198.175.65.12])
+	id 1utm6U-00000006IWH-2noc;
+	Wed, 03 Sep 2025 11:56:42 +0000
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utkt2-000000067Rs-2VnO;
-	Wed, 03 Sep 2025 10:38:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1756895924; x=1788431924;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=GCTF1UYtOSCeRAlhubdQAJ7qhlBqyZpfpnhA1MMIZJE=;
-  b=aoIeSVfgjxBHaBK/rH7eeDtjQn6Q93RiB9ABmLVlCPmjCKXUIIPqN/nV
-   KM0cssTP95HMkBWKzLY0/l3d8NRTnpcK4PWYron/+JrhboKVkBl4U3S13
-   Bh5pybcx0vaY35wVOE8ZSR9zcTmuu0lWla6FXzgj2yW3A871RzNYklG+s
-   H6Wx/gRMJ2u06zDiAGYIDycA0GJ4+I49tlpOw8m68CWbTRw1S4FJDiAl1
-   WR4uza9hQ6vvJnArbqe30TMsnQqJIvR1ViQWKsDWHtb2oW+AsD9Qwz3C+
-   F8G8jGU51Sa5bgwGByzQnnOOdHZt4KSMXnrBor9D/06I8fGrJSaACIqMA
-   w==;
-X-CSE-ConnectionGUID: Ors3eccARVC0EZZbjhmDMQ==
-X-CSE-MsgGUID: vHbF1tytT8KLR/1r665UIA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11541"; a="70632578"
-X-IronPort-AV: E=Sophos;i="6.18,233,1751266800"; 
-   d="scan'208";a="70632578"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
-  by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Sep 2025 03:38:43 -0700
-X-CSE-ConnectionGUID: gcUgIZtvSDO2dFM95UNdfw==
-X-CSE-MsgGUID: hQkiLlfsRpSs+9G/ykDw9A==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.18,233,1751266800"; 
-   d="scan'208";a="202430131"
-Received: from smile.fi.intel.com ([10.237.72.52])
-  by orviesa002.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Sep 2025 03:38:33 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.98.2)
-	(envelope-from <andriy.shevchenko@intel.com>)
-	id 1utksl-0000000AxU5-0dpr;
-	Wed, 03 Sep 2025 13:38:27 +0300
-Date: Wed, 3 Sep 2025 13:38:26 +0300
-From: Andy Shevchenko <andriy.shevchenko@intel.com>
-To: Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: Andy Shevchenko <andy.shevchenko@gmail.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konradybcio@kernel.org>,
-	Alexey Klimov <alexey.klimov@linaro.org>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Sean Wang <sean.wang@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Paul Cercueil <paul@crapouillou.net>, Kees Cook <kees@kernel.org>,
-	Andy Shevchenko <andy@kernel.org>,
-	Andrew Morton <akpm@linux-foundation.org>,
-	David Hildenbrand <david@redhat.com>,
-	Lorenzo Stoakes <lorenzo.stoakes@oracle.com>,
-	"Liam R. Howlett" <Liam.Howlett@oracle.com>,
-	Vlastimil Babka <vbabka@suse.cz>, Mike Rapoport <rppt@kernel.org>,
-	Suren Baghdasaryan <surenb@google.com>,
-	Michal Hocko <mhocko@suse.com>, Dong Aisheng <aisheng.dong@nxp.com>,
-	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
-	Jacky Bai <ping.bai@nxp.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	NXP S32 Linux Team <s32@nxp.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Tony Lindgren <tony@atomide.com>,
-	Haojian Zhuang <haojian.zhuang@linaro.org>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Danilo Krummrich <dakr@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Mark Brown <broonie@kernel.org>, linux-gpio@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
-	linux-hardening@vger.kernel.org, linux-mm@kvack.org,
-	imx@lists.linux.dev, linux-omap@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
-	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-Subject: Re: [PATCH v7 16/16] pinctrl: qcom: make the pinmuxing strict
-Message-ID: <aLgaoivmBUgoeO6B@smile.fi.intel.com>
+	id 1utkwD-000000067kM-2o35
+	for linux-mediatek@lists.infradead.org;
+	Wed, 03 Sep 2025 10:42:03 +0000
+Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-55f76454f69so3366707e87.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 03 Sep 2025 03:42:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1756896120; x=1757500920; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=+DICLpeLEk5QfxI0uLHQeTK/2wiRnzmCNbLnrX8FqT8=;
+        b=p+XORQPH36TrgLMWDVbrwsen8BB+w5xuA/wtxafIc9d+scSRXqNNP4ENq8jb7Ttofh
+         OL3nXm8vbUFbvRq52BmZJ++09XXGgLcEQGCUB84l+wAzLgoyIYi4txtLa3WCpOSuQyDp
+         J6xuD8mjZXCz1KFschKg4CN4SUPPtDKr8jxD48IjXB+5jYcvOLDirR66+o52ZuLRqiU+
+         1DHb0nR16I/zx42QMbsJS27lxAWhkaSxmiSI+6uC1kimQLZeCtohFXb00TKYBx+C7f5x
+         G6CLMo3/f1X+16EXzReCRXVm76VjJEAcuIFB38NQLMIg5sO6W32mEdxw2HwsitIDHqk3
+         mTWw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1756896120; x=1757500920;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=+DICLpeLEk5QfxI0uLHQeTK/2wiRnzmCNbLnrX8FqT8=;
+        b=IZfAxA58+nOojlfycOWe8yfFVp69Nm8Z6CkwJZaFzxyFBG2Wp1Glman3cOntMAWG88
+         pcgi8486PXddmmSf4AeCmM2jD24kU23ghOdkYRSXPAYDvv1Xbd3kT3vGEJCqUjAK7+hV
+         RSNUKadLJ481hNerI8yuoySR4O9qecM4YWBZRYd0vAG24RquBgpkleSo1YET9DEVrUjN
+         IeVp7uaUNJxxPCTC8yYfC3o3w9HCo8o9EhTKf+HKMfDVMVvd2Jti+8xkiXAiwF9ZsC+r
+         QwxvWosOYQXK1hKwcok8EvwvaIBrwUHW/iQp1OMxzqt0jmBavMYedARmSpwL37GjvUxR
+         9KYw==
+X-Forwarded-Encrypted: i=1; AJvYcCW4ch6h8PETP/38hRR4GmrigaEuewLMJtNKFN9kT+t7l0kUVCXFSZMjh+7elZmm6kTSii8yltyTx5hWqqvhqw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyqZqjPLPP6FL3uMhv+3Tt7GBQtUVclBXnnRAJ2X5slQ1u5et4l
+	rNxenMp82Q0nMW3I5Sxik9Ccrxv+maRxmoSlg+Em44XfGexXUiapOxCU22VNMaFs3/qYFOE0wVo
+	JtV6n2xjg64O7Q1bNqHCiVLEU6gfDhYyUV9F6o0I7oA==
+X-Gm-Gg: ASbGncud73T9mdEGVQqX6Q9M7YE6LgygUGlMlddBgKycNa6RA2Rf22/+aAwTdXGSdYd
+	DXvaZsReF9yi1VxC2ITFt9GOs+ixEyFbGe/Y7BoYo95JqmLWGagfvc7EM9tZpg6PnKtmKgrLUEK
+	Un4/QR0go/02bRuRpzdXdavqXOys4gyIzgWrUmusocbSUlqWD28TvyK9T4AXYYJxyFgbqkFdrNX
+	5MDMZ6QS6SOiTfv6NnJ6OxINNZEObv3aJBOPWQ=
+X-Google-Smtp-Source: AGHT+IG+m7ivvcbSy5vEIztmUhS+t7hNv39lHZt0A7pC6ogTKWUtHExG+a5EtFY7oJjunqJek5PQQ93pvgc0Giy7D2Q=
+X-Received: by 2002:a05:6512:2447:b0:55f:6adb:b847 with SMTP id
+ 2adb3069b0e04-55f708b1b9cmr3479644e87.13.1756896119817; Wed, 03 Sep 2025
+ 03:41:59 -0700 (PDT)
+MIME-Version: 1.0
 References: <20250902-pinctrl-gpio-pinfuncs-v7-0-bb091daedc52@linaro.org>
  <20250902-pinctrl-gpio-pinfuncs-v7-16-bb091daedc52@linaro.org>
- <aLcBcjvMbrxoDYoC@smile.fi.intel.com>
- <CAMRc=MfcFMgkNqWNZV5o0NxkAvxBTjC3vv56Cr98n0R2CkxuPw@mail.gmail.com>
+ <aLcBcjvMbrxoDYoC@smile.fi.intel.com> <CAMRc=MfcFMgkNqWNZV5o0NxkAvxBTjC3vv56Cr98n0R2CkxuPw@mail.gmail.com>
  <CAHp75VcgaqnDrPH27wxfgyK6zz4RAKJQB0r7G2vbTONTxkEzTw@mail.gmail.com>
  <CAMRc=MfhhX2NJ0fhhX8u+7=sdyUy0G27n7caGf9=TpHxUDJVxg@mail.gmail.com>
- <aLgW7J-j4nn0u8uo@smile.fi.intel.com>
- <CAMRc=MdA21fwnamymG6YhqBjKDso_nJs_4xefPNONQNfEcPHXA@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAMRc=MdA21fwnamymG6YhqBjKDso_nJs_4xefPNONQNfEcPHXA@mail.gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
+ <aLgW7J-j4nn0u8uo@smile.fi.intel.com> <CAMRc=MdA21fwnamymG6YhqBjKDso_nJs_4xefPNONQNfEcPHXA@mail.gmail.com>
+ <aLgaoivmBUgoeO6B@smile.fi.intel.com>
+In-Reply-To: <aLgaoivmBUgoeO6B@smile.fi.intel.com>
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+Date: Wed, 3 Sep 2025 12:41:48 +0200
+X-Gm-Features: Ac12FXzqWEtt2S2TE9mSxpi98I-TDCIBZvSibEo9i2pyKL48Vs1B0BzDGCeR2o4
+Message-ID: <CAMRc=Me84OX=UEmAXxmwE8oOH=1UBsyHe-7XmU0c8a2gG9JnCA@mail.gmail.com>
+Subject: Re: [PATCH v7 16/16] pinctrl: qcom: make the pinmuxing strict
+To: Andy Shevchenko <andriy.shevchenko@intel.com>
+Cc: Andy Shevchenko <andy.shevchenko@gmail.com>, Linus Walleij <linus.walleij@linaro.org>, 
+	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>, 
+	Alexey Klimov <alexey.klimov@linaro.org>, Lorenzo Bianconi <lorenzo@kernel.org>, 
+	Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Paul Cercueil <paul@crapouillou.net>, Kees Cook <kees@kernel.org>, 
+	Andy Shevchenko <andy@kernel.org>, Andrew Morton <akpm@linux-foundation.org>, 
+	David Hildenbrand <david@redhat.com>, Lorenzo Stoakes <lorenzo.stoakes@oracle.com>, 
+	"Liam R. Howlett" <Liam.Howlett@oracle.com>, Vlastimil Babka <vbabka@suse.cz>, 
+	Mike Rapoport <rppt@kernel.org>, Suren Baghdasaryan <surenb@google.com>, Michal Hocko <mhocko@suse.com>, 
+	Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, 
+	Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, NXP S32 Linux Team <s32@nxp.com>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Tony Lindgren <tony@atomide.com>, 
+	Haojian Zhuang <haojian.zhuang@linaro.org>, Geert Uytterhoeven <geert+renesas@glider.be>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Danilo Krummrich <dakr@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Mark Brown <broonie@kernel.org>, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mips@vger.kernel.org, linux-hardening@vger.kernel.org, 
+	linux-mm@kvack.org, imx@lists.linux.dev, linux-omap@vger.kernel.org, 
+	linux-renesas-soc@vger.kernel.org, 
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, 
+	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250903_033844_675944_4CCF3897 
-X-CRM114-Status: GOOD (  24.91  )
+X-CRM114-CacheID: sfid-20250903_034201_712688_E50A025A 
+X-CRM114-Status: GOOD (  24.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,41 +124,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 03, 2025 at 12:34:00PM +0200, Bartosz Golaszewski wrote:
-> On Wed, Sep 3, 2025 at 12:22 PM Andy Shevchenko
-> <andriy.shevchenko@intel.com> wrote:
-> > On Wed, Sep 03, 2025 at 09:33:34AM +0200, Bartosz Golaszewski wrote:
-> > > On Tue, Sep 2, 2025 at 10:46 PM Andy Shevchenko
-> > > <andy.shevchenko@gmail.com> wrote:
-> > > > On Tue, Sep 2, 2025 at 8:42 PM Bartosz Golaszewski <brgl@bgdev.pl> wrote:
-> > > > > On Tue, Sep 2, 2025 at 4:38 PM Andy Shevchenko
-> > > > > <andriy.shevchenko@intel.com> wrote:
-> > > > > > On Tue, Sep 02, 2025 at 01:59:25PM +0200, Bartosz Golaszewski wrote:
-
-...
-
-> > > > > > > The strict flag in struct pinmux_ops disallows the usage of the same pin
-> > > > > > > as a GPIO and for another function. Without it, a rouge user-space
-> > > > > > > process with enough privileges (or even a buggy driver) can request a
-> > > > > > > used pin as GPIO and drive it, potentially confusing devices or even
-> > > > > > > crashing the system. Set it globally for all pinctrl-msm users.
-> > > > > >
-> > > > > > How does this keep (or allow) I²C generic recovery mechanism to work?
+On Wed, Sep 3, 2025 at 12:38=E2=80=AFPM Andy Shevchenko
+<andriy.shevchenko@intel.com> wrote:
+>
+> On Wed, Sep 03, 2025 at 12:34:00PM +0200, Bartosz Golaszewski wrote:
+> > On Wed, Sep 3, 2025 at 12:22=E2=80=AFPM Andy Shevchenko
+> > <andriy.shevchenko@intel.com> wrote:
+> > > On Wed, Sep 03, 2025 at 09:33:34AM +0200, Bartosz Golaszewski wrote:
+> > > > On Tue, Sep 2, 2025 at 10:46=E2=80=AFPM Andy Shevchenko
+> > > > <andy.shevchenko@gmail.com> wrote:
+> > > > > On Tue, Sep 2, 2025 at 8:42=E2=80=AFPM Bartosz Golaszewski <brgl@=
+bgdev.pl> wrote:
+> > > > > > On Tue, Sep 2, 2025 at 4:38=E2=80=AFPM Andy Shevchenko
+> > > > > > <andriy.shevchenko@intel.com> wrote:
+> > > > > > > On Tue, Sep 02, 2025 at 01:59:25PM +0200, Bartosz Golaszewski=
+ wrote:
+>
+> ...
+>
+> > > > > > > > The strict flag in struct pinmux_ops disallows the usage of=
+ the same pin
+> > > > > > > > as a GPIO and for another function. Without it, a rouge use=
+r-space
+> > > > > > > > process with enough privileges (or even a buggy driver) can=
+ request a
+> > > > > > > > used pin as GPIO and drive it, potentially confusing device=
+s or even
+> > > > > > > > crashing the system. Set it globally for all pinctrl-msm us=
+ers.
+> > > > > > >
+> > > > > > > How does this keep (or allow) I=C2=B2C generic recovery mecha=
+nism to work?
+> > > >
+> > > > Anyway, what is your point? I don't think it has any impact on this=
+.
 > > >
-> > > Anyway, what is your point? I don't think it has any impact on this.
+> > > If we have a group of pins that are marked as I=C2=B2C, and we want t=
+o use recovery
+> > > via GPIOs, would it be still possible to request as GPIO when control=
+ler driver
+> > > is in the strict mode?
 > >
-> > If we have a group of pins that are marked as I²C, and we want to use recovery
-> > via GPIOs, would it be still possible to request as GPIO when controller driver
-> > is in the strict mode?
-> 
-> Yes, if you mark that function as a "GPIO" function in the pin
-> controller driver.
+> > Yes, if you mark that function as a "GPIO" function in the pin
+> > controller driver.
+>
+> How would it prevent from requesting from user space?
+>
 
-How would it prevent from requesting from user space?
+It wouldn't, we don't discriminate between user-space and in-kernel
+GPIO users. A function either is a GPIO or isn't. Can you point me to
+the driver you're thinking about or is this a purely speculative
+question?
 
--- 
-With Best Regards,
-Andy Shevchenko
-
-
+Bartosz
 
