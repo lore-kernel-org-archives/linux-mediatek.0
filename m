@@ -4,85 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C6B6CA1012
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Sep 2025 23:15:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABD4ECA1010
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Sep 2025 02:10:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
 	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
 	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zUd3hbPutfTlDAjUwHIkED1FOMMH63fasP77ATNMKWI=; b=u9jj+kbMdMQh5BaK/wiXIRc1r0
-	Dtgq7JCRHu6MkWZe32o3jJqcsZvv1uTCNj+TL0ELZVwMzO5Gf1kukzYTpkUKdppaA1AioyrJJNmOV
-	kTu2iBIFOaEN1RviwPvonWMl7JbEI5gJ82YNieIT8pydlk2iZ212Hkf+3wVLDmzF2ggZxj3hvZ49t
-	/D0DcM65O9lpag5KgQnaU56ahKVeTviof1pa5jMAoHlC3a1FzJnSQpRhcX4mBBTRJ9AAtPGgIYS0Q
-	Uj6l6mtPSrc6JsSADRVUmLVwHXdiINuxiqmDByZDPZiBZwpwdRJTtpZ3MMWBmyInXkp3TLO/TcMK9
-	aJa5eeWg==;
+	bh=c+ZgGU/Y7ymCGJS4a8iBSCEwRU68y0Cdd3gwtYGpdv4=; b=p5Ay0h8ggIqUtGiNUWzCSk4Bj5
+	gAj5a5iZlu18uAyewPfsa5hurYMADOP9IB1OObgX2y3+udfe6ZZC+7DZ18KPoBM/kPc6Farh0MdUp
+	akPFYywGu1F3Z1xHIRYhOtAO6eybaHo9AdgKbadouUa+oU6mGtW68+zmbeVhEEKrjbbZeeCE6w5Iv
+	kAOxLwi2CGdgHeDJt5xf4Cp6gDLREHTx06X1e51KWQXxrT8TmHubR8b0j0z4uq1XD5vCny09px3eR
+	vK4zSxHPI6ASlMgYe1UMQsVwJIWnjm5iVWGnvNtOqHh+Pi2r7sp/E3/QfKaiV1bR2Pwoz8AQ4gl9e
+	o/1mFSZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utwh5-00000007t1U-3bIY;
-	Wed, 03 Sep 2025 23:15:12 +0000
+	id 1utzQT-00000008E00-1DUE;
+	Thu, 04 Sep 2025 02:10:13 +0000
 Received: from aposti.net ([185.119.170.32])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utszs-00000007Qn5-2IBE;
-	Wed, 03 Sep 2025 19:18:21 +0000
+	id 1utt25-00000007RW4-1y71;
+	Wed, 03 Sep 2025 19:20:38 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
-	s=mail; t=1756927095;
+	s=mail; t=1756927235;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=zUd3hbPutfTlDAjUwHIkED1FOMMH63fasP77ATNMKWI=;
-	b=M013U4MaToItOZxUrRJlNgf3goruACFm3i1msJg9jS7+HrTxirIsbgBywDk0B5jKoJZNHe
-	5GoEutO36JaVJOooUiUSeVBruDzW1fnbZkbLEJf2t0JycvE4miuhDdGhJAyVfZ57ChqOga
-	N/tyTnB51UGdvYdyVgUUSZcxz127gLI=
-Message-ID: <9387ed0a6d4e4c77ffd0f7aee55eaa1ff6ecd22e.camel@crapouillou.net>
-Subject: Re: [PATCH 022/114] clk: ingenic: cgu: convert from round_rate() to
- determine_rate()
+	bh=c+ZgGU/Y7ymCGJS4a8iBSCEwRU68y0Cdd3gwtYGpdv4=;
+	b=Z0xvlH/ECfsC59swm4ATc7moQPplDnhXIzmBF4X35r6pJmnBDDeoU1Ie5Ab1yxhe+1ln8W
+	GcUQb2ZLGdW9NnPudS1kvJ3oXxwi39axE8bJQYRDLCQpq4QuYcwKIMP6MOFv74jzcnlQqN
+	tMc5uO4lOOAAr/7RBg88uyXzuq33+zQ=
+Message-ID: <f19aa842d210bf4cd3d7abf03ea7323f9e52df75.camel@crapouillou.net>
+Subject: Re: [PATCH 024/114] clk: ingenic: x1000-cgu: convert from
+ round_rate() to determine_rate()
 From: Paul Cercueil <paul@crapouillou.net>
 To: bmasney@redhat.com, Michael Turquette <mturquette@baylibre.com>, Stephen
- Boyd <sboyd@kernel.org>, Sudeep Holla <sudeep.holla@arm.com>, Cristian
- Marussi	 <cristian.marussi@arm.com>, Chen Wang <unicorn_wang@outlook.com>,
- Inochi Amaoto	 <inochiama@gmail.com>, Nicolas Ferre
- <nicolas.ferre@microchip.com>,  Alexandre Belloni
- <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>,
- Keguang Zhang	 <keguang.zhang@gmail.com>, Taichi Sugaya
- <sugaya.taichi@socionext.com>,  Takao Orito <orito.takao@socionext.com>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer	 <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,  Fabio Estevam
- <festevam@gmail.com>, Jacky Huang <ychuang3@nuvoton.com>, Shan-Chun Hung
- <schung@nuvoton.com>,  Vladimir Zapolskiy	 <vz@mleia.com>, Piotr
- Wojtaszczyk <piotr.wojtaszczyk@timesys.com>, Paul Walmsley
- <paul.walmsley@sifive.com>, Samuel Holland <samuel.holland@sifive.com>,
- Yixun Lan	 <dlan@gentoo.org>, Steen Hegelund
- <Steen.Hegelund@microchip.com>, Daniel Machon	
- <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, Orson Zhai	
- <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan
- Zhang <zhang.lyra@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue	 <alexandre.torgue@foss.st.com>, Michal Simek
- <michal.simek@amd.com>, Maxime Ripard <mripard@kernel.org>, Andreas
- =?ISO-8859-1?Q?F=E4rber?= <afaerber@suse.de>,  Manivannan Sadhasivam	
- <mani@kernel.org>, Sven Peter <sven@kernel.org>, Janne Grunau
- <j@jannau.net>,  Alyssa Rosenzweig <alyssa@rosenzweig.io>, Neal Gompa
- <neal@gompa.dev>, Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>,  Ray Jui
- <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, Broadcom
- internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Max
- Filippov <jcmvbkbc@gmail.com>, Matthias Brugger	 <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno	 <angelogioacchino.delregno@collabora.com>,
- Daniel Palmer <daniel@thingy.jp>,  Romain Perier <romain.perier@gmail.com>,
- Andrew Lunn <andrew@lunn.ch>, Gregory Clement	
- <gregory.clement@bootlin.com>, Sebastian Hesselbarth	
- <sebastian.hesselbarth@gmail.com>, Bjorn Andersson <andersson@kernel.org>, 
- Geert Uytterhoeven <geert+renesas@glider.be>, Heiko Stuebner
- <heiko@sntech.de>, Andrea della Porta <andrea.porta@suse.com>,  Krzysztof
- Kozlowski	 <krzk@kernel.org>, Sylwester Nawrocki <s.nawrocki@samsung.com>,
- Chanwoo Choi	 <cw00.choi@samsung.com>, Alim Akhtar
- <alim.akhtar@samsung.com>, Qin Jian	 <qinjian@cqplus1.com>, Viresh Kumar
- <vireshk@kernel.org>, Ulf Hansson	 <ulf.hansson@linaro.org>, Luca Ceresoli
- <luca.ceresoli@bootlin.com>, Alex Helms	 <alexander.helms.jy@renesas.com>,
- Linus Walleij <linus.walleij@linaro.org>,  Liviu Dudau
- <liviu.dudau@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, Nobuhiro
- Iwamatsu	 <nobuhiro1.iwamatsu@toshiba.co.jp>
+ Boyd <sboyd@kernel.org>
 Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	arm-scmi@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	sophgo@lists.linux.dev, linux-mips@vger.kernel.org, imx@lists.linux.dev, 
@@ -92,10 +51,10 @@ Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
 	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
 	linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev
-Date: Wed, 03 Sep 2025 21:18:09 +0200
-In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-22-b3bf97b038dc@redhat.com>
+Date: Wed, 03 Sep 2025 21:20:32 +0200
+In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-24-b3bf97b038dc@redhat.com>
 References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
-	 <20250811-clk-for-stephen-round-rate-v1-22-b3bf97b038dc@redhat.com>
+	 <20250811-clk-for-stephen-round-rate-v1-24-b3bf97b038dc@redhat.com>
 Autocrypt: addr=paul@crapouillou.net; prefer-encrypt=mutual;
  keydata=mQENBF0KhcEBCADkfmrzdTOp/gFOMQX0QwKE2WgeCJiHPWkpEuPH81/HB2dpjPZNW03ZM
  LQfECbbaEkdbN4YnPfXgcc1uBe5mwOAPV1MBlaZcEt4M67iYQwSNrP7maPS3IaQJ18ES8JJ5Uf5Uz
@@ -113,8 +72,8 @@ Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250903_121820_758715_4A9E4379 
-X-CRM114-Status: GOOD (  16.26  )
+X-CRM114-CacheID: sfid-20250903_122037_672439_B9B8E006 
+X-CRM114-Status: GOOD (  13.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,8 +87,6 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
-
-Hi Brian,
 
 Le lundi 11 ao=C3=BBt 2025 =C3=A0 11:18 -0400, Brian Masney via B4 Relay a
 =C3=A9crit=C2=A0:
@@ -147,48 +104,54 @@ Cheers,
 -Paul
 
 > ---
-> =C2=A0drivers/clk/ingenic/cgu.c | 12 +++++++-----
-> =C2=A01 file changed, 7 insertions(+), 5 deletions(-)
+> =C2=A0drivers/clk/ingenic/x1000-cgu.c | 19 ++++++++++---------
+> =C2=A01 file changed, 10 insertions(+), 9 deletions(-)
 >=20
-> diff --git a/drivers/clk/ingenic/cgu.c b/drivers/clk/ingenic/cgu.c
+> diff --git a/drivers/clk/ingenic/x1000-cgu.c
+> b/drivers/clk/ingenic/x1000-cgu.c
 > index
-> 0c9c8344ad1103b13337a26e14b0d5d5c340d705..91e7ac0cc3342e3552acb9d2ec0
-> 0865a5234ad4f 100644
-> --- a/drivers/clk/ingenic/cgu.c
-> +++ b/drivers/clk/ingenic/cgu.c
-> @@ -174,14 +174,16 @@ ingenic_pll_calc(const struct
-> ingenic_cgu_clk_info *clk_info,
-> =C2=A0		n * od);
+> feb03eed4fe8c8f617ef98254a522d72d452ac17..d80886caf393309a0c908c06fb5
+> aa8b59aced127 100644
+> --- a/drivers/clk/ingenic/x1000-cgu.c
+> +++ b/drivers/clk/ingenic/x1000-cgu.c
+> @@ -84,16 +84,17 @@ static unsigned long
+> x1000_otg_phy_recalc_rate(struct clk_hw *hw,
+> =C2=A0	return parent_rate;
 > =C2=A0}
 > =C2=A0
-> -static long
-> -ingenic_pll_round_rate(struct clk_hw *hw, unsigned long req_rate,
-> -		=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 unsigned long *prate)
-> +static int ingenic_pll_determine_rate(struct clk_hw *hw,
-> +				=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct clk_rate_request *req)
+> -static long x1000_otg_phy_round_rate(struct clk_hw *hw, unsigned
+> long req_rate,
+> -				=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 unsigned long *parent_rate)
+> +static int x1000_otg_phy_determine_rate(struct clk_hw *hw,
+> +					struct clk_rate_request
+> *req)
 > =C2=A0{
-> =C2=A0	struct ingenic_clk *ingenic_clk =3D to_ingenic_clk(hw);
-> =C2=A0	const struct ingenic_cgu_clk_info *clk_info =3D
-> to_clk_info(ingenic_clk);
+> -	if (req_rate < 18000000)
+> -		return 12000000;
+> -
+> -	if (req_rate < 36000000)
+> -		return 24000000;
+> +	if (req->rate < 18000000)
+> +		req->rate =3D 12000000;
+> +	else if (req->rate < 36000000)
+> +		req->rate =3D 24000000;
+> +	else
+> +		req->rate =3D 48000000;
 > =C2=A0
-> -	return ingenic_pll_calc(clk_info, req_rate, *prate, NULL,
-> NULL, NULL);
-> +	req->rate =3D ingenic_pll_calc(clk_info, req->rate, req-
-> >best_parent_rate,
-> +				=C2=A0=C2=A0=C2=A0=C2=A0 NULL, NULL, NULL);
-> +
+> -	return 48000000;
 > +	return 0;
 > =C2=A0}
 > =C2=A0
-> =C2=A0static inline int ingenic_pll_check_stable(struct ingenic_cgu *cgu,
-> @@ -317,7 +319,7 @@ static int ingenic_pll_is_enabled(struct clk_hw
+> =C2=A0static int x1000_otg_phy_set_rate(struct clk_hw *hw, unsigned long
+> req_rate,
+> @@ -161,7 +162,7 @@ static int x1000_usb_phy_is_enabled(struct clk_hw
 > *hw)
 > =C2=A0
-> =C2=A0static const struct clk_ops ingenic_pll_ops =3D {
-> =C2=A0	.recalc_rate =3D ingenic_pll_recalc_rate,
-> -	.round_rate =3D ingenic_pll_round_rate,
-> +	.determine_rate =3D ingenic_pll_determine_rate,
-> =C2=A0	.set_rate =3D ingenic_pll_set_rate,
+> =C2=A0static const struct clk_ops x1000_otg_phy_ops =3D {
+> =C2=A0	.recalc_rate =3D x1000_otg_phy_recalc_rate,
+> -	.round_rate =3D x1000_otg_phy_round_rate,
+> +	.determine_rate =3D x1000_otg_phy_determine_rate,
+> =C2=A0	.set_rate =3D x1000_otg_phy_set_rate,
 > =C2=A0
-> =C2=A0	.enable =3D ingenic_pll_enable,
+> =C2=A0	.enable		=3D x1000_usb_phy_enable,
 
