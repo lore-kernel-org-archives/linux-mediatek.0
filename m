@@ -4,88 +4,119 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03916CA0FF2
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Sep 2025 08:25:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62627CA1009
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Sep 2025 11:17:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IK5YoDRQ4t81y/D2uNEJ8djqA/NjXOv6ASwvdW3BTQ4=; b=ijP07kL/daHID8mdowjle7JMMH
-	BwukoKNgsQwlrmcHW9uKbw04rLu2nNkq3qEGe5I7/moDl6ZogsBYDVHeT1FgBgUcois/LNxwEdy5p
-	Qm/Bv/cMGfP5jDB9WrjFAUz72ucI1owGqKXVj/1J2aIi0xdEwVFdDVEmijJVMOsXRtw5hGMx3WoTh
-	1ShSG7GvjNHBmmW6H8Z7YcWpxwXEJ+L0VO70oVgoxOt2F+RpR/4x98+BYLwYee7zlNHI3w7Tfxqrf
-	UBUz33EFej+jPeXucgdsedYRnxJAuMCuqdoSzmggLqJSF17XPNfPj8gAoig+ZD3XjoRwP3gQ6T+cM
-	/Cj0DspQ==;
+	bh=T31GhvMgDcDqa/8wxluLN+dNwm4mTxHX2BFlOQeV59E=; b=tQYCxokgcLFTARO5lV/yQJzJME
+	HRUrgOTKctgJQ4jgoXk/i1N8nhoTAPmWvvjPrxer+W3GV5U0c2z6jnkiaDie72RghL+Z8vbSZxSrC
+	3KkEggJ1wbUXYsjUtDBBBpxYkYvjP7nbdQEgjHDvCvGZXeilzxfq/V0f91CcJq4cWV7E85n4AnhBE
+	SWiRujkXV5SIFck2hGYqIfLorUVvaF3+IlTAAU3qkcCPmUbVmMXs8+Ir9mFlJA2DQ1TZ6bXRAQMIF
+	gnn9md2dgaXS/Fh7E9So/OmqWCAGOUWMldkEsk9NAJzcRH427AE/GPeBlkeiSu4XDfG97AnryMqCx
+	VbGby8Rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utio8-00000005Xop-2w6J;
-	Wed, 03 Sep 2025 08:25:32 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1utlUs-00000006D8d-3xzW;
+	Wed, 03 Sep 2025 11:17:50 +0000
+Received: from mgamail.intel.com ([192.198.163.15])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uti5a-00000005BRl-2HbM;
-	Wed, 03 Sep 2025 07:39:30 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id F2A0360233;
-	Wed,  3 Sep 2025 07:39:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6EA52C4CEF0;
-	Wed,  3 Sep 2025 07:39:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756885169;
-	bh=nabVaKDp95bXX1pjLpK4nzWf1nseMWBruv5tgZaJBoA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qoDk0nl6DGMhrsb9Zero2GRf3mxlO2Zkmtca2Z/KeKD/A+oBDZ96dYcBPT94dwlkU
-	 f0DLzIj/ZwhCrb5B4tPNd/VVQsfYxVSV2/QOOMs9cLSO9APl7W8P7vIBAVhCCtvHGN
-	 Wtzw48LeMkWre+8zpgwv+Li+KmKBA5Y9dXQUwTFoIo9DK79zaqWKJYA9eeL0JZADFS
-	 qD9EiS0+jbqaNpPL+mO71C0U1WpdfN7z2meHxEAo+95mgjgwwldX3TLfUrljS59Nku
-	 X8Zz7gNiYLjBFpa/8drEj34cjLfh0bA/7FZxXieklmnEs9cQou/+e+pY9sOk2PlsS3
-	 SwaRwN9OWsD2w==
-Date: Wed, 3 Sep 2025 08:39:20 +0100
-From: Lee Jones <lee@kernel.org>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Benson Leung <bleung@chromium.org>,
-	Guenter Roeck <groeck@chromium.org>,
-	Tim Harvey <tharvey@gateworks.com>,
-	Michael Walle <mwalle@kernel.org>,
+	id 1utkdf-000000065Ng-44HY;
+	Wed, 03 Sep 2025 10:22:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1756894972; x=1788430972;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=hEddkyRBq0eYhs86EpYDI0PR1kM06ibMXa7C70wF0A8=;
+  b=HggVaUDs6B5f0jjwnfhFSe8/Ze/5LEgjauNQ/5TUJY30DB18cimKRVkT
+   +aNsLVgdW55iJaeiH7gtEgadiG+IjSN3n6xz20M2CsssdMiQ0/aLUtxlc
+   vCgaGi1TB7AbGvlg6SgwfpuANKZ9vf3lKfLI1k8V6BsWuiC+kv095E8sM
+   OZE3t4WV4l13e4hwEWIuf4Q+dVawdt66nXtB5qSekXcp5xPM5iX+QLm96
+   2DjXdKqLpo/pKvvgwFGszxCfBbhoaMEKEfjafZYOW9AEgzkvYZwBDfXy5
+   h97+mgrGnUqBdI38YP63yiC4Fl8T1uGjmG1zPyi6o60nqR/5is3wICIE3
+   g==;
+X-CSE-ConnectionGUID: Odia2/aFTpuG0+Qricx9Bg==
+X-CSE-MsgGUID: l2xcyZZeS6GpueNME6T+OQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11541"; a="59318114"
+X-IronPort-AV: E=Sophos;i="6.18,233,1751266800"; 
+   d="scan'208";a="59318114"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Sep 2025 03:22:50 -0700
+X-CSE-ConnectionGUID: YTo0WasPQBSP1GD2jJB+Ig==
+X-CSE-MsgGUID: 5tCXY7/9Tha1Hp4Y6DZptQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.18,233,1751266800"; 
+   d="scan'208";a="195180921"
+Received: from smile.fi.intel.com ([10.237.72.52])
+  by fmviesa002.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Sep 2025 03:22:40 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.98.2)
+	(envelope-from <andriy.shevchenko@intel.com>)
+	id 1utkdQ-0000000AxFa-1l46;
+	Wed, 03 Sep 2025 13:22:36 +0300
+Date: Wed, 3 Sep 2025 13:22:36 +0300
+From: Andy Shevchenko <andriy.shevchenko@intel.com>
+To: Bartosz Golaszewski <brgl@bgdev.pl>
+Cc: Andy Shevchenko <andy.shevchenko@gmail.com>,
 	Linus Walleij <linus.walleij@linaro.org>,
-	Bartosz Golaszewski <brgl@bgdev.pl>,
-	Jean Delvare <jdelvare@suse.com>,
-	Thomas Gleixner <tglx@linutronix.de>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
 	Bjorn Andersson <andersson@kernel.org>,
-	Mathieu Poirier <mathieu.poirier@linaro.org>,
+	Konrad Dybcio <konradybcio@kernel.org>,
+	Alexey Klimov <alexey.klimov@linaro.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Sean Wang <sean.wang@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Cheng-Yi Chiang <cychiang@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Wim Van Sebroeck <wim@linux-watchdog.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Tinghan Shen <tinghan.shen@mediatek.com>,
-	devicetree@vger.kernel.org, chrome-platform@lists.linux.dev,
-	linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org,
-	linux-hwmon@vger.kernel.org, linux-pwm@vger.kernel.org,
-	linux-remoteproc@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-sound@vger.kernel.org,
-	linux-watchdog@vger.kernel.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Mathew McBride <matt@traverse.com.au>
-Subject: Re: (subset) [PATCH v2] dt-bindings: mfd: Move embedded controllers
- to own directory
-Message-ID: <20250903073920.GA2163762@google.com>
-References: <20250822075712.27314-2-krzysztof.kozlowski@linaro.org>
- <175682479961.2401991.17056649550187344851.b4-ty@kernel.org>
- <63e43445-ef5f-49b2-85c1-f85d95426d5d@kernel.org>
+	Paul Cercueil <paul@crapouillou.net>, Kees Cook <kees@kernel.org>,
+	Andy Shevchenko <andy@kernel.org>,
+	Andrew Morton <akpm@linux-foundation.org>,
+	David Hildenbrand <david@redhat.com>,
+	Lorenzo Stoakes <lorenzo.stoakes@oracle.com>,
+	"Liam R. Howlett" <Liam.Howlett@oracle.com>,
+	Vlastimil Babka <vbabka@suse.cz>, Mike Rapoport <rppt@kernel.org>,
+	Suren Baghdasaryan <surenb@google.com>,
+	Michal Hocko <mhocko@suse.com>, Dong Aisheng <aisheng.dong@nxp.com>,
+	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
+	Jacky Bai <ping.bai@nxp.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	NXP S32 Linux Team <s32@nxp.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Tony Lindgren <tony@atomide.com>,
+	Haojian Zhuang <haojian.zhuang@linaro.org>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Danilo Krummrich <dakr@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Mark Brown <broonie@kernel.org>, linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
+	linux-hardening@vger.kernel.org, linux-mm@kvack.org,
+	imx@lists.linux.dev, linux-omap@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
+	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+Subject: Re: [PATCH v7 16/16] pinctrl: qcom: make the pinmuxing strict
+Message-ID: <aLgW7J-j4nn0u8uo@smile.fi.intel.com>
+References: <20250902-pinctrl-gpio-pinfuncs-v7-0-bb091daedc52@linaro.org>
+ <20250902-pinctrl-gpio-pinfuncs-v7-16-bb091daedc52@linaro.org>
+ <aLcBcjvMbrxoDYoC@smile.fi.intel.com>
+ <CAMRc=MfcFMgkNqWNZV5o0NxkAvxBTjC3vv56Cr98n0R2CkxuPw@mail.gmail.com>
+ <CAHp75VcgaqnDrPH27wxfgyK6zz4RAKJQB0r7G2vbTONTxkEzTw@mail.gmail.com>
+ <CAMRc=MfhhX2NJ0fhhX8u+7=sdyUy0G27n7caGf9=TpHxUDJVxg@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <63e43445-ef5f-49b2-85c1-f85d95426d5d@kernel.org>
+In-Reply-To: <CAMRc=MfhhX2NJ0fhhX8u+7=sdyUy0G27n7caGf9=TpHxUDJVxg@mail.gmail.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250903_032252_019514_BA31E234 
+X-CRM114-Status: GOOD (  21.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,23 +131,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 02 Sep 2025, Krzysztof Kozlowski wrote:
+On Wed, Sep 03, 2025 at 09:33:34AM +0200, Bartosz Golaszewski wrote:
+> On Tue, Sep 2, 2025 at 10:46 PM Andy Shevchenko
+> <andy.shevchenko@gmail.com> wrote:
+> > On Tue, Sep 2, 2025 at 8:42 PM Bartosz Golaszewski <brgl@bgdev.pl> wrote:
+> > > On Tue, Sep 2, 2025 at 4:38 PM Andy Shevchenko
+> > > <andriy.shevchenko@intel.com> wrote:
+> > > > On Tue, Sep 02, 2025 at 01:59:25PM +0200, Bartosz Golaszewski wrote:
 
-> On 02/09/2025 16:53, Lee Jones wrote:
-> >> [...]
-> > 
-> > Applied, thanks!
-> > 
-> > [1/1] dt-bindings: mfd: Move embedded controllers to own directory
-> >       commit: 152afab28f7659a4292c9f7d3324eaeb49a55b8b
-> 
-> 
-> There was a v3 here:
-> 
-> https://lore.kernel.org/r/20250825081201.9775-2-krzysztof.kozlowski@linaro.org/
+...
 
-Drop this, applied that!
+> > > > > The strict flag in struct pinmux_ops disallows the usage of the same pin
+> > > > > as a GPIO and for another function. Without it, a rouge user-space
+> > > > > process with enough privileges (or even a buggy driver) can request a
+> > > > > used pin as GPIO and drive it, potentially confusing devices or even
+> > > > > crashing the system. Set it globally for all pinctrl-msm users.
+> > > >
+> > > > How does this keep (or allow) I²C generic recovery mechanism to work?
+> 
+> Anyway, what is your point? I don't think it has any impact on this.
+
+If we have a group of pins that are marked as I²C, and we want to use recovery
+via GPIOs, would it be still possible to request as GPIO when controller driver
+is in the strict mode?
 
 -- 
-Lee Jones [李琼斯]
+With Best Regards,
+Andy Shevchenko
+
+
 
