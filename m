@@ -4,85 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FDE5CA1007
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Sep 2025 04:11:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81CECCA0FF2
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Sep 2025 08:03:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EOpIoZ+QJ3yKu2lp11f+X+mDcgCMYdWaEANVtuakPuE=; b=OS6p+pO2rjHm8MLhb6M4EX7exw
-	C5uxr9EzRsDfr9nAbe+CXR38ks8gpMlKk9eew4y/usqgPgGCi+CDrv4ioRphT9UIsVheLDObTReBB
-	oG3IWRSIUMNmuTUScL/GC6Lcj227Wngvhr3J6RP+U7eqd3Ivn3fbd2E0MnfWJXwxH3UzUrE9Yu+oK
-	JQab9LsnrvjzsqhmHGNkH/lRaMIZsuifQuBf0YMcQFh+s4ID+prN48weohv+AibNSU/HwYANYyOBk
-	rPAzURGCSLwNNYbRmbtYYDXmT+sc0QbyrToQxoJvQ9IsD/5HoQq0cMbeM2Z/83P6QFcFzK4k4upnv
-	x024H9cQ==;
+	bh=YNYvzh/kc3+s5XJiH2jNySFaGPSj6mlg48FZqtmCTZw=; b=Ac5kCUs8MjtpPlvhYHge4F9/n1
+	/8DhCplGuuyPGgBnndFiePtzC3kO7J2lIlXCxaXY0lHRfcTw5koBU3+0KxGjn2H1+6XmbxIq/ZWyn
+	uQBm1smvaj9DVYcjTr+unSpoHqqXqfyeDNSmColv10afpDCc8oRzWMhrhwBxa7iUSISsPNxNWx0l5
+	eVYC9v8T3xKSpWjj1rJ6lObIfjZc74iODjRY7DBqeSsyfSkT/BVtVqJus9C2jaxx1y1o3CE1CTsyY
+	r4ZScfk4bJn0jgWzZp0T6ihV3mDZa+G4ZJrhofqmQlEzSgzbYtKBRHYsio1AITAJgigLAI6GJN31B
+	8NYTKW5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uteq2-00000003lvC-2TlL;
-	Wed, 03 Sep 2025 04:11:14 +0000
-Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
+	id 1utiSa-00000005NLn-0ZNi;
+	Wed, 03 Sep 2025 08:03:16 +0000
+Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uteq0-00000003ltY-1G00
+	id 1uti04-000000058Xz-1NAO
 	for linux-mediatek@lists.infradead.org;
-	Wed, 03 Sep 2025 04:11:13 +0000
-Received: by mail-lj1-x234.google.com with SMTP id 38308e7fff4ca-336d84b58edso29622541fa.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 02 Sep 2025 21:11:11 -0700 (PDT)
+	Wed, 03 Sep 2025 07:33:50 +0000
+Received: by mail-lj1-x22f.google.com with SMTP id 38308e7fff4ca-336e16f4729so23691801fa.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 03 Sep 2025 00:33:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1756872670; x=1757477470; darn=lists.infradead.org;
+        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1756884826; x=1757489626; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=EOpIoZ+QJ3yKu2lp11f+X+mDcgCMYdWaEANVtuakPuE=;
-        b=EAdkD12S5XdSPu+Ombl8llgxrtWkIoC13ii0oUNcBm3I96SmHFK0OK69xv7Fo8esW9
-         LGx6X+t0LBfnHnQjbXR3cCbEVtO+vSX4pTsToDjB63srAt86Jn7tcLZ4V6vVRfgRfr8T
-         V4+pAuQGPv8w2UhRlWVmclsN/C4ntMJBOpWyg=
+        bh=YNYvzh/kc3+s5XJiH2jNySFaGPSj6mlg48FZqtmCTZw=;
+        b=to/mP2IqkPaLzuyWnJid4pdOwfvSWPQialH98vnEHCwFh1L1sY0ZuOqHhHxycS1PW3
+         P4YwQq/+X6SR9rs5GQKSHuJYM7A5uIlEbUBtZ6i+AEVbr6nWR9gfmNW8UH8eJ2ueJd4v
+         3w1mUnzD1QGov5qBItHknOhNdt/BmPCiVWKP7m+0267awnECDBaq5V2t20wS/ac0LekG
+         qJYMu/KPdEJw3ht3+Ks/CjwsNFMiLxbXH7YPI2mmbnvYmsx1aZXvWPgQ4PpeaOUKAQKP
+         ZHidbEF4UkWAfjJGhtEC40jIrQSxQZjexMXfE9ggKUqD5I0uyQLH5GKHeBlukpCFmv9T
+         pY2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756872670; x=1757477470;
+        d=1e100.net; s=20230601; t=1756884826; x=1757489626;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=EOpIoZ+QJ3yKu2lp11f+X+mDcgCMYdWaEANVtuakPuE=;
-        b=KDD+H2M9IedIlJ+tpnuEYYnYA01fAuuhplm8IQUPDZw5t5HdDMjGU7d3IoX+iAQwjF
-         wM7DCoLadYNrn6/6bOzfg23p62P4V7cLUr+BlodAUpxq5YEhwZouiXOqVaGw2yvD10UH
-         ++87CDqVIctJygvPvXr/NtdYuyWg+B+IhPKqnRUEegzSeaHexPXIV7Eu/V2bOyYFDpk3
-         xIfnFaJGnk9VClf6s/dgqq5PFYngXop74eZyhwOKlb2vw3czL4jhw6Z4jpH483pCYOAK
-         2gZxUBUG0ffkEX1F8xZzw60R8DilKUWNy8AafvoLNyfzvgMsAogwAfuJZ25jLzn9w4Qd
-         d51A==
-X-Forwarded-Encrypted: i=1; AJvYcCWQ8xslw9IHdKNgtl7OpmI0fr1hqJ63HWoekPdpmlmouBZMjdFKlKeI/romWxspktkadYypN5prvS/OSR6Mhw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwzdhtUFIsL7EUgHO6xFOO9KVqLDZmzg3QaRZNgZAIl6cwqahpq
-	iBox+a5Xwak1zweQTKk2LL5zqZ3JQUWbP+WF9jrbo98oPWjjJnA1nljA1IYH6tyRL6cUkL93LbR
-	TTn2/JvzIITMXlho7VnDTjo3vg/RVGRdFSqyO5jmd
-X-Gm-Gg: ASbGnctoxcfW9XyXxIyqDAfF9uZ9gTmYP2VX5cvmCnHklZTR40ZiI7gJz9vkZd/miIO
-	Gr8ITu+xN+Co7XH3MnBldDzmUKBDBd2iyG0vow5njChudMrKF4U4XxbMnrmxJAfK8No9nBbSltG
-	mMlxr0YzBeL35LsQCPoNBC2CTJDPLEXTjiNXLfsLq/OB/qwQ3/yH//+PkqzQlm09Oa20qErELwa
-	4y6MTgLu5n9VrLizmaLDm2TxJoCb1xw+sUblQ==
-X-Google-Smtp-Source: AGHT+IETiwoqu3jA0q9QRK+CqDCEcgW+ZXk2qygZizGlpal3JlGHcBuz5NWXPRG3Osy7OAGRM6Ng6di200B3S6sTE44=
-X-Received: by 2002:a05:651c:3246:10b0:335:40e6:d051 with SMTP id
- 38308e7fff4ca-336cb0dfa15mr33548211fa.44.1756872669828; Tue, 02 Sep 2025
- 21:11:09 -0700 (PDT)
+        bh=YNYvzh/kc3+s5XJiH2jNySFaGPSj6mlg48FZqtmCTZw=;
+        b=dVWEh4pNQmzIfB8V8vC59AGIz5YhWZp+Cn8ZAD6SOT+zPfMevZf9pAwllXizxKsZt+
+         SQpWvcKiDjYgUUU8Epu+B4DhknUdTo2BC0dhZfL1r9vAk1A8YpGbgVajLayXV7nO83Wd
+         jCesz/VxlUWa+mbtjXllioLA50pqY+Sz4qQn0rwOas/Hr2Ds6fReeiNmQxPENyfrWvFB
+         rJuSO0V5l2/JhyzWYaOQVL+arxoK3nNfuiVFaCwpsNIeNf+URxcS1ykXPc5TfIJAQnLh
+         VJh6cHvDhvpXUBY0H+vfue42J0aeL0F0RhvsyaU0EBTZJLwpxHDs8CRNP/zRjjtoy/f1
+         LZSA==
+X-Forwarded-Encrypted: i=1; AJvYcCUrOtevLHk8Iv79OiBShikrU6uT2nBA1/EyRh9uQptS+yusy+SC5NOFMx9VUi+LXm6dJcAgyU4f3YuC2KiyRw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxgM5aqgQKo/3TTVOzFy/CxrcPp+A6fng7PFD4NFzEcbB9jxQOg
+	94ew9zU97Jho+oDQ0GX9S6oAvxnFyj1RTwAyTFLvjyq7B+j/gJdaPMs5Tcm/tyVqd7q5l4yalXB
+	fLnAM/PiwbF1oOjEn0rv15UoY+mk1yfjRDce1jlnrqg==
+X-Gm-Gg: ASbGncvRz7+wN1CSFZGNYS82lBPFeTfzh4LiNoH/1YP58GY6dmOUVHyn/WeC3CbQW3Y
+	wTF0fQ1rLj9GW//+TgVj9XSXyEEyKj1yCu9sN8QL/oCMhHYQcSehHZKqyzUEW+yxG8IViXzw1U6
+	faydG+ZJK9sGXHjHgKqitmQyG8/fytwnQ4IDDax4cZUritQfFxiNHMtcaab2z8LVubeI7gEI3js
+	mee9rsOq3QEXxd/EJvpqYDG5aFB3okzFigVKPYtGB7NbtEUfg==
+X-Google-Smtp-Source: AGHT+IHQMDojBvXdcYFr83Du1enPEHK0Ti//rRC94x6rK+6MbJgsPNbFLU1zOeSW5BOM5GJv9hHYWvwxYnse2nh/rU8=
+X-Received: by 2002:a2e:a58a:0:b0:337:9e3b:895f with SMTP id
+ 38308e7fff4ca-3379e3b9b47mr24730131fa.0.1756884826262; Wed, 03 Sep 2025
+ 00:33:46 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250722171152.58923-2-robh@kernel.org> <5d7557f0-841b-45ea-901c-5b595ac8bde3@collabora.com>
- <CAL_JsqJaC47zFY7zvTVFum9oMiV87dgo49a9e3HW1T5_vQtAzA@mail.gmail.com>
-In-Reply-To: <CAL_JsqJaC47zFY7zvTVFum9oMiV87dgo49a9e3HW1T5_vQtAzA@mail.gmail.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 3 Sep 2025 12:10:58 +0800
-X-Gm-Features: Ac12FXwYb9oV3zYXJk8hHuf8yXRCNfDIMSMGlmD1yfi_WJphj9A2DKWKSeZdpBg
-Message-ID: <CAGXv+5FWTUkjWCyFhnryq2nB9NN3wQjKeOYf-NReYjMDXmgiuw@mail.gmail.com>
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8183: Fix out of range pull values
-To: Rob Herring <robh@kernel.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo i Serra <eballetbo@kernel.org>, 
-	Ben Ho <Ben.Ho@mediatek.com>, Fabien Parent <fparent@baylibre.com>, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
+References: <20250902-pinctrl-gpio-pinfuncs-v7-0-bb091daedc52@linaro.org>
+ <20250902-pinctrl-gpio-pinfuncs-v7-16-bb091daedc52@linaro.org>
+ <aLcBcjvMbrxoDYoC@smile.fi.intel.com> <CAMRc=MfcFMgkNqWNZV5o0NxkAvxBTjC3vv56Cr98n0R2CkxuPw@mail.gmail.com>
+ <CAHp75VcgaqnDrPH27wxfgyK6zz4RAKJQB0r7G2vbTONTxkEzTw@mail.gmail.com>
+In-Reply-To: <CAHp75VcgaqnDrPH27wxfgyK6zz4RAKJQB0r7G2vbTONTxkEzTw@mail.gmail.com>
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+Date: Wed, 3 Sep 2025 09:33:34 +0200
+X-Gm-Features: Ac12FXwfTFesdkv2AsVGJLh1I6xBKdxxPYffotwRnf3CookQp3k-WXkxYMLzaTo
+Message-ID: <CAMRc=MfhhX2NJ0fhhX8u+7=sdyUy0G27n7caGf9=TpHxUDJVxg@mail.gmail.com>
+Subject: Re: [PATCH v7 16/16] pinctrl: qcom: make the pinmuxing strict
+To: Andy Shevchenko <andy.shevchenko@gmail.com>
+Cc: Andy Shevchenko <andriy.shevchenko@intel.com>, Linus Walleij <linus.walleij@linaro.org>, 
+	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>, 
+	Alexey Klimov <alexey.klimov@linaro.org>, Lorenzo Bianconi <lorenzo@kernel.org>, 
+	Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Paul Cercueil <paul@crapouillou.net>, Kees Cook <kees@kernel.org>, 
+	Andy Shevchenko <andy@kernel.org>, Andrew Morton <akpm@linux-foundation.org>, 
+	David Hildenbrand <david@redhat.com>, Lorenzo Stoakes <lorenzo.stoakes@oracle.com>, 
+	"Liam R. Howlett" <Liam.Howlett@oracle.com>, Vlastimil Babka <vbabka@suse.cz>, 
+	Mike Rapoport <rppt@kernel.org>, Suren Baghdasaryan <surenb@google.com>, Michal Hocko <mhocko@suse.com>, 
+	Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, 
+	Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, NXP S32 Linux Team <s32@nxp.com>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Tony Lindgren <tony@atomide.com>, 
+	Haojian Zhuang <haojian.zhuang@linaro.org>, Geert Uytterhoeven <geert+renesas@glider.be>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Danilo Krummrich <dakr@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Mark Brown <broonie@kernel.org>, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mips@vger.kernel.org, linux-hardening@vger.kernel.org, 
+	linux-mm@kvack.org, imx@lists.linux.dev, linux-omap@vger.kernel.org, 
+	linux-renesas-soc@vger.kernel.org, 
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, 
+	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250902_211112_331228_8987AFB4 
-X-CRM114-Status: GOOD (  24.72  )
+X-CRM114-CacheID: sfid-20250903_003348_565043_4B0263C7 
+X-CRM114-Status: GOOD (  19.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,44 +121,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 3, 2025 at 9:53=E2=80=AFAM Rob Herring <robh@kernel.org> wrote:
+On Tue, Sep 2, 2025 at 10:46=E2=80=AFPM Andy Shevchenko
+<andy.shevchenko@gmail.com> wrote:
 >
-> On Wed, Jul 23, 2025 at 3:16=E2=80=AFAM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
+> On Tue, Sep 2, 2025 at 8:42=E2=80=AFPM Bartosz Golaszewski <brgl@bgdev.pl=
+> wrote:
 > >
-> > Il 22/07/25 19:11, Rob Herring (Arm) ha scritto:
-> > > A value of 10 is not valid for "mediatek,pull-down-adv" and
-> > > "mediatek,pull-up-adv" properties which have defined values of 0-3. I=
-t
-> > > appears the "10" was written as a binary value. The driver only looks=
- at
-> > > the lowest 2 bits, so the value "10" decimal works out the same as if
-> > > "2" was used.
+> > On Tue, Sep 2, 2025 at 4:38=E2=80=AFPM Andy Shevchenko
+> > <andriy.shevchenko@intel.com> wrote:
 > > >
-> > > Fixes: cd894e274b74 ("arm64: dts: mt8183: Add krane-sku176 board")
-> > > Fixes: 19b6403f1e2a ("arm64: dts: mt8183: add mt8183 pumpkin board")
-> > > Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
-> > > ---
-> > > This is just a few of the warnings related to mt8183-pinctrl... Media=
-tek
-> > > is #1 for DT warnings on arm64. And by #1, I mean worst. :( It would =
-be
-> > > nice to see some progress on fixing them. Otherwise, seeing new Media=
-tek
-> > > bindings rather than fixing the existing stuff makes me grumpy.
+> > > On Tue, Sep 02, 2025 at 01:59:25PM +0200, Bartosz Golaszewski wrote:
+> > > > From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+> > > >
+> > > > The strict flag in struct pinmux_ops disallows the usage of the sam=
+e pin
+> > > > as a GPIO and for another function. Without it, a rouge user-space
+> > > > process with enough privileges (or even a buggy driver) can request=
+ a
+> > > > used pin as GPIO and drive it, potentially confusing devices or eve=
+n
+> > > > crashing the system. Set it globally for all pinctrl-msm users.
 > > >
+> > > How does this keep (or allow) I=E6=B6=8E generic recovery mechanism t=
+o work?
 > >
-> > Thanks for this fix.
-> >
-> > You're absolutely right about this, let me check what I can do (and if =
-I can get
-> > some colleague(s) of mine to look at that while I'm away in August).
-> >
-> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
+> > What even is the "generic recovery mechanism"? That's the first time
+> > I'm hearing this name.
 >
-> Is this going to get applied and into linux-next sometime soon? Only
-> been like 6 weeks...
+> "I=C2=B2C generic recovery mechanism" (I dunno why you put away the I=C2=
+=B2C keyword).
+>
 
-AFAIK Angelo is on vacation but should be back shortly in September.
+For some reason it was displayed like that[1] in my client. I see it's
+correct in lore though.
+
+Anyway, what is your point? I don't think it has any impact on this.
+
+Bartosz
+
+[1] https://postimg.cc/7GFtxzzR
 
