@@ -4,108 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8F50CA1009
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Sep 2025 08:03:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03916CA0FF2
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Sep 2025 08:25:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=x+a63vXZQbYfBRMYForQk38b20jSe1QhqlF3QJeCGYE=; b=tLuAl7et4g1pKQmupZR5pzFJxB
-	ZlFtKt9XBXsbMBwBWCthbUn1H0Ew5qUHSWWPGkwcMaoUsmNKdDOzS8zFz50TjEsxKyj4o8aOHHp1Z
-	nxHo5bT/sD5HUNKbByVGZeIofZtB3Cefkq0501trgHzeyVrAzbgR6yQZMSMLOOclHuqBG7rX2V04w
-	086dBOLaleFUxSio3qCegTDacb3B8Mn4dZvjj/AGD8Yf6tP+zO5KkKhYOo58dBy2ylsarOnvm7IWQ
-	5C/bpf639A05GkWmAKZ86RSykrlbKSNSqQ2VpmvRNRGYPHN6bhDGN6Qq9PMhTaZAy7OMrnMk70GNf
-	Y7VMiOVw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IK5YoDRQ4t81y/D2uNEJ8djqA/NjXOv6ASwvdW3BTQ4=; b=ijP07kL/daHID8mdowjle7JMMH
+	BwukoKNgsQwlrmcHW9uKbw04rLu2nNkq3qEGe5I7/moDl6ZogsBYDVHeT1FgBgUcois/LNxwEdy5p
+	Qm/Bv/cMGfP5jDB9WrjFAUz72ucI1owGqKXVj/1J2aIi0xdEwVFdDVEmijJVMOsXRtw5hGMx3WoTh
+	1ShSG7GvjNHBmmW6H8Z7YcWpxwXEJ+L0VO70oVgoxOt2F+RpR/4x98+BYLwYee7zlNHI3w7Tfxqrf
+	UBUz33EFej+jPeXucgdsedYRnxJAuMCuqdoSzmggLqJSF17XPNfPj8gAoig+ZD3XjoRwP3gQ6T+cM
+	/Cj0DspQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utiSb-00000005NM7-0EtK;
-	Wed, 03 Sep 2025 08:03:17 +0000
-Received: from mail-vs1-f53.google.com ([209.85.217.53])
+	id 1utio8-00000005Xop-2w6J;
+	Wed, 03 Sep 2025 08:25:32 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uti19-0000000590s-3122;
-	Wed, 03 Sep 2025 07:34:57 +0000
-Received: by mail-vs1-f53.google.com with SMTP id ada2fe7eead31-5299769c79cso3040233137.3;
-        Wed, 03 Sep 2025 00:34:55 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756884894; x=1757489694;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=x+a63vXZQbYfBRMYForQk38b20jSe1QhqlF3QJeCGYE=;
-        b=gng13eDuO7lrnEzEqFRwJalOzGAKK66fGZsEDC0qIDb1oHUy4rq8elPhJEXEHkJSi/
-         fL0PbI0eeYpOxug457Paa60vNb7CMnGJlC9Cpfg64PGnB10teJyldOmuLbJXfVygP/Uc
-         ZP3zERDnElnz/GD1H8vZ3uW2ZahzZ9UVJyYy0RqQGqnA4UuLfocS2Cc+mZiAZk7ZKiJp
-         a6pSKsGUbi7KKbWAZ5MQagnZ9rmgQWovnFIw/biBydWa9yYqxajFXlvx3UQvFxNHCB+Q
-         LXixypwH8aScEd0VdpFj+minuk/upbHcAd/2eCDh+4TU4yqbJNE3aYJBsDkmPXdDyHsS
-         0uog==
-X-Forwarded-Encrypted: i=1; AJvYcCVaF1HEVtU++S97B+w3iauqOlo8dw9LmjKxtI39aC8WC41CbPQZhpjFnhy2WEKAtaOvJy1b1AcC/8yQV+vHrhkl@lists.infradead.org, AJvYcCWUN6KjG+sBcNyjkIAu9vL28NC4Gb1c3BWMSlPvoPQ9KUzSj18lMrEVFdyKmqMczmhNYGe6FT8ylY720yvE79k=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwuFM1985NNws8vGOqGiP4Cf9kxJjgc5fDuIflah2ajmQyjMK8G
-	Ts2iTBxgKJL3Z+qfaeBKDw3rpfaS1Ygy68baNY0VArqhVxxtG3jpZqsEiofd18bq
-X-Gm-Gg: ASbGncsIMHr5hTHWliUfHGnoZgv36tifV4vx1CHnmXpgWFG1MUMUwzmkGxLtTmnMBXZ
-	nyMhOZeZFW/4RH2ytuMY68XL2Dk9vBCLYylHDzWwAM7X7//pRtbDDPCj3j/SSZNjjGHu4FHHO6T
-	JfHqZ4B8QZwSMrkPGhBoCEk25vni4dY0RCpxuKdQ9Ids2jbZ5vCXBrvpyqLcrpOMVLh81pDYX+k
-	BiQxSYcBaPmhm3Zxp5UHCxEQg3vN15NW6o41dTuq3TLo0kcgYk71Kn5Fp43vT7o9Qzie6Txyx6Z
-	5KkG/nhSyQGW/f8LcPbbwIpPJyCXMm6dmrv6OaWpDhtH7RnNWhxUlOYTO4DSwskenipr7xbzKBM
-	AR6/5lmjNHKbjFiQ0qGQHu1Vazf2tD8tMrexRAS7kq/7I+qdPiaNYVndfhiG4WFrk5s+NrxQ=
-X-Google-Smtp-Source: AGHT+IFjNwq1UOzlE33K+y+7pbu3fSIpd3PI3n3K8ZGeAp2V9qNeY6BmkJqkHQMkSq2C8QNLn4rzdQ==
-X-Received: by 2002:a05:6102:4b8a:b0:4e6:d94f:c197 with SMTP id ada2fe7eead31-52b1bf3bf2dmr5232060137.23.1756884894418;
-        Wed, 03 Sep 2025 00:34:54 -0700 (PDT)
-Received: from mail-vs1-f45.google.com (mail-vs1-f45.google.com. [209.85.217.45])
-        by smtp.gmail.com with ESMTPSA id a1e0cc1a2514c-899d7986b82sm1104143241.17.2025.09.03.00.34.54
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 03 Sep 2025 00:34:54 -0700 (PDT)
-Received: by mail-vs1-f45.google.com with SMTP id ada2fe7eead31-5309a577e86so860691137.0;
-        Wed, 03 Sep 2025 00:34:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCVBiUzxV1sCB3ZTZjLboytjoVHmpUglVl6XEQcVtRmjgFh5lWRGFxXt8z1wAiEE0ifq2sKqkOD710SNSktV3Fg=@lists.infradead.org, AJvYcCVSEDAvhK+FbpR3+PFhLEQl6lG+M55J4gxG3qakjXADt0AU27L6kTTPDBCGacd+X81WmyyC96vZsWoxpbj8oj95@lists.infradead.org
-X-Received: by 2002:a05:6102:3581:b0:524:5266:f74c with SMTP id
- ada2fe7eead31-52b1c8811fdmr4486002137.31.1756884894118; Wed, 03 Sep 2025
- 00:34:54 -0700 (PDT)
+	id 1uti5a-00000005BRl-2HbM;
+	Wed, 03 Sep 2025 07:39:30 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id F2A0360233;
+	Wed,  3 Sep 2025 07:39:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6EA52C4CEF0;
+	Wed,  3 Sep 2025 07:39:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1756885169;
+	bh=nabVaKDp95bXX1pjLpK4nzWf1nseMWBruv5tgZaJBoA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=qoDk0nl6DGMhrsb9Zero2GRf3mxlO2Zkmtca2Z/KeKD/A+oBDZ96dYcBPT94dwlkU
+	 f0DLzIj/ZwhCrb5B4tPNd/VVQsfYxVSV2/QOOMs9cLSO9APl7W8P7vIBAVhCCtvHGN
+	 Wtzw48LeMkWre+8zpgwv+Li+KmKBA5Y9dXQUwTFoIo9DK79zaqWKJYA9eeL0JZADFS
+	 qD9EiS0+jbqaNpPL+mO71C0U1WpdfN7z2meHxEAo+95mgjgwwldX3TLfUrljS59Nku
+	 X8Zz7gNiYLjBFpa/8drEj34cjLfh0bA/7FZxXieklmnEs9cQou/+e+pY9sOk2PlsS3
+	 SwaRwN9OWsD2w==
+Date: Wed, 3 Sep 2025 08:39:20 +0100
+From: Lee Jones <lee@kernel.org>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Benson Leung <bleung@chromium.org>,
+	Guenter Roeck <groeck@chromium.org>,
+	Tim Harvey <tharvey@gateworks.com>,
+	Michael Walle <mwalle@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Bartosz Golaszewski <brgl@bgdev.pl>,
+	Jean Delvare <jdelvare@suse.com>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Mathieu Poirier <mathieu.poirier@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Cheng-Yi Chiang <cychiang@chromium.org>,
+	Tzung-Bi Shih <tzungbi@kernel.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Wim Van Sebroeck <wim@linux-watchdog.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Tinghan Shen <tinghan.shen@mediatek.com>,
+	devicetree@vger.kernel.org, chrome-platform@lists.linux.dev,
+	linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org,
+	linux-hwmon@vger.kernel.org, linux-pwm@vger.kernel.org,
+	linux-remoteproc@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-sound@vger.kernel.org,
+	linux-watchdog@vger.kernel.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Mathew McBride <matt@traverse.com.au>
+Subject: Re: (subset) [PATCH v2] dt-bindings: mfd: Move embedded controllers
+ to own directory
+Message-ID: <20250903073920.GA2163762@google.com>
+References: <20250822075712.27314-2-krzysztof.kozlowski@linaro.org>
+ <175682479961.2401991.17056649550187344851.b4-ty@kernel.org>
+ <63e43445-ef5f-49b2-85c1-f85d95426d5d@kernel.org>
 MIME-Version: 1.0
-References: <20250902-pinctrl-gpio-pinfuncs-v7-0-bb091daedc52@linaro.org>
- <20250902-pinctrl-gpio-pinfuncs-v7-16-bb091daedc52@linaro.org>
- <aLcBcjvMbrxoDYoC@smile.fi.intel.com> <CAMRc=MfcFMgkNqWNZV5o0NxkAvxBTjC3vv56Cr98n0R2CkxuPw@mail.gmail.com>
- <CAHp75VcgaqnDrPH27wxfgyK6zz4RAKJQB0r7G2vbTONTxkEzTw@mail.gmail.com>
-In-Reply-To: <CAHp75VcgaqnDrPH27wxfgyK6zz4RAKJQB0r7G2vbTONTxkEzTw@mail.gmail.com>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Wed, 3 Sep 2025 09:34:42 +0200
-X-Gmail-Original-Message-ID: <CAMuHMdUd1PeUbdkmrhaFstknwP2x=03m24gacJBJgEeCDf7toQ@mail.gmail.com>
-X-Gm-Features: Ac12FXyh8sb0bID330gK0HQPUvNSBJ0mn18x9ggidNhkopon3DqspiWAPKYplC8
-Message-ID: <CAMuHMdUd1PeUbdkmrhaFstknwP2x=03m24gacJBJgEeCDf7toQ@mail.gmail.com>
-Subject: Re: [PATCH v7 16/16] pinctrl: qcom: make the pinmuxing strict
-To: Andy Shevchenko <andy.shevchenko@gmail.com>
-Cc: Bartosz Golaszewski <brgl@bgdev.pl>, Andy Shevchenko <andriy.shevchenko@intel.com>, 
-	Linus Walleij <linus.walleij@linaro.org>, Bjorn Andersson <andersson@kernel.org>, 
-	Konrad Dybcio <konradybcio@kernel.org>, Alexey Klimov <alexey.klimov@linaro.org>, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Paul Cercueil <paul@crapouillou.net>, Kees Cook <kees@kernel.org>, 
-	Andy Shevchenko <andy@kernel.org>, Andrew Morton <akpm@linux-foundation.org>, 
-	David Hildenbrand <david@redhat.com>, Lorenzo Stoakes <lorenzo.stoakes@oracle.com>, 
-	"Liam R. Howlett" <Liam.Howlett@oracle.com>, Vlastimil Babka <vbabka@suse.cz>, 
-	Mike Rapoport <rppt@kernel.org>, Suren Baghdasaryan <surenb@google.com>, Michal Hocko <mhocko@suse.com>, 
-	Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, 
-	Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, NXP S32 Linux Team <s32@nxp.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Tony Lindgren <tony@atomide.com>, 
-	Haojian Zhuang <haojian.zhuang@linaro.org>, Geert Uytterhoeven <geert+renesas@glider.be>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Danilo Krummrich <dakr@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Mark Brown <broonie@kernel.org>, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mips@vger.kernel.org, linux-hardening@vger.kernel.org, 
-	linux-mm@kvack.org, imx@lists.linux.dev, linux-omap@vger.kernel.org, 
-	linux-renesas-soc@vger.kernel.org, 
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, 
-	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250903_003455_755597_8C32943C 
-X-CRM114-Status: GOOD (  20.87  )
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <63e43445-ef5f-49b2-85c1-f85d95426d5d@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,45 +100,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
+On Tue, 02 Sep 2025, Krzysztof Kozlowski wrote:
 
-On Tue, 2 Sept 2025 at 22:46, Andy Shevchenko <andy.shevchenko@gmail.com> w=
-rote:
-> On Tue, Sep 2, 2025 at 8:42=E2=80=AFPM Bartosz Golaszewski <brgl@bgdev.pl=
-> wrote:
-> > On Tue, Sep 2, 2025 at 4:38=E2=80=AFPM Andy Shevchenko
-> > <andriy.shevchenko@intel.com> wrote:
-> > > How does this keep (or allow) I=E6=B6=8E generic recovery mechanism t=
-o work?
-> >
-> > What even is the "generic recovery mechanism"? That's the first time
-> > I'm hearing this name.
->
-> "I=C2=B2C generic recovery mechanism" (I dunno why you put away the I=C2=
-=B2C keyword).
+> On 02/09/2025 16:53, Lee Jones wrote:
+> >> [...]
+> > 
+> > Applied, thanks!
+> > 
+> > [1/1] dt-bindings: mfd: Move embedded controllers to own directory
+> >       commit: 152afab28f7659a4292c9f7d3324eaeb49a55b8b
+> 
+> 
+> There was a v3 here:
+> 
+> https://lore.kernel.org/r/20250825081201.9775-2-krzysztof.kozlowski@linaro.org/
 
-Your original email had:
+Drop this, applied that!
 
-    Content-Type: text/plain; charset=3Diso-8859-1
-
-Bartosz' has:
-
-    Content-Type: text/plain; charset=3D"UTF-8"
-
-Note that the Gmail web interface does show me the Kanji character
-instead of the intended "=C2=B2C".
-
-Gr{oetje,eeting}s,
-
-                        Geert
-
---=20
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
-.org
-
-In personal conversations with technical people, I call myself a hacker. Bu=
-t
-when I'm talking to journalists I just say "programmer" or something like t=
-hat.
-                                -- Linus Torvalds
+-- 
+Lee Jones [李琼斯]
 
