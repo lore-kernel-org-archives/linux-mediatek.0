@@ -4,65 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E3CACA1015
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 110CFCA1013
 	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Sep 2025 20:56:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Rv6sJyqYaLxawlDxQF8WKA2KAKHCz6viPgD1O22Zu70=; b=t8gzFH8xCz9RddjO647RvCfBfg
-	CYLrSMCessItNJ7uocmtWP31Ewxz8Gr+FK43E72pWW8a8wQtc0sCd/jljfckHiNGrqp0FQZ4quACf
-	a/Orw9sk0PMwjZiwBenPpwnR2sdyyVvsmwcAofP7jw6DlQcrpvzCPNOyVlTYoW9cUKx2xHR0Doelb
-	z3NXn1+jzs3n0rSQLa8QNjD0ZNphi2a8oe+jXX5R+xPu66ToK9+gsw067BmgbEpHS/k42xutLU04A
-	xJocTkDpRJo4w7/iav6GNC7jQUDvUA6TvMxxcIi0sCKYidKZD5ghyC/5XHQEh2LBlyebBPSb01mP4
-	bICbaPrw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=andwmpKrCJmWqbe3js2pBT19a3YYMZomvjRde22VNvE=; b=FClCjfgrCBRfYz
+	BrJ5rQbqTjF264D3xkpAWsS3FmevU+Oyk1b2HwNj2Dv5EFOy43Ot6+meLLmG6PoydgKY2YmtdDDy0
+	3iV5ivYbkOfivG8BzSdkU3qD+ZDVhmt36Yrkq+l0VJJQoHrrlPtHikjchMWpt0qll8WSWaZp+fUfR
+	01tfwIwU15vSzca/Un1HGXXwNk82VeZsK10yhsY+aCcUJOvVfFL/bkchhY+nKpNliVnUZ9k10/QZ9
+	dUf+sqVjBH9v9uqAj1ZdXa861Wg//pgPUJ5eK64hFycK/buWo0VTvH3o3L/ZTnm6/LcScM6ox3b6t
+	nQc9atMX47pMHrwlfaMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuGzy-0000000EPaY-2I4g;
-	Thu, 04 Sep 2025 20:56:02 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1uuGzz-0000000EPbL-226N;
+	Thu, 04 Sep 2025 20:56:03 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuCqZ-0000000Cwmt-3n5H
-	for linux-mediatek@lists.infradead.org;
-	Thu, 04 Sep 2025 16:30:05 +0000
+	id 1uuCyY-0000000D0Bq-1yMB;
+	Thu, 04 Sep 2025 16:38:18 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3794C448BC;
-	Thu,  4 Sep 2025 16:30:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 140D6C4CEF0;
-	Thu,  4 Sep 2025 16:30:03 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id E1DCB60247;
+	Thu,  4 Sep 2025 16:38:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 430D4C4CEF0;
+	Thu,  4 Sep 2025 16:38:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1757003403;
-	bh=Zuvvt/kT0BpDisJoUGyAuUxPhBEm/+bVuMXkanyohao=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=ZS7Oi+gDz4ErMUUJMmlrAvyj+bj3iYWjwNzmcKBos/EMbHykQrfCe7tiLOOjAxnvz
-	 V5m4aNZJxTfz5MDan+JWBm8FEyjwBzHpAXRm4WPrSPUPTMMAWxlCWtj93r5nSeZCER
-	 qQSY7aZSMXUvBLZDeOIRWH78wgWcNasZrcTgLVRAJ0RklDR5RXNR9gmrXwMlmn5vPG
-	 EEzmXvYTJEzEc7Uy9jNAhNds86OJ9ZXGenxMGehqe+MJAukblTiE+NIfn9FT36Fh+B
-	 HwvsXXsCTy6oG+Y1jiES+VoZPeVCW0lxsaJSzFw9kQg6MTXs8eYId+wf4Kduq7ve2D
-	 twNsMB43S3Jbw==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 70CBE383BF69;
-	Thu,  4 Sep 2025 16:30:08 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	s=k20201202; t=1757003897;
+	bh=ChX4cPagxHty/nC/yRxRrePEVJPTduypsP1Q5ifYM7Y=;
+	h=From:Subject:Date:To:Cc:From;
+	b=BITsbOMIAwbcvehEwnuLF/fetUdeLkMwFX7QHiXTTQ4r+fgBFgUIXQsvXMTcHmQIE
+	 vnddshjNs1AjPvUqrN62kC3EPdyOQ+/b2Vqt45F/c1anaTzLYjCKvgQxjvBmS8PEKL
+	 EQ31dUYUEpDatFSa83RYya5cVOpSAq3kPIlokeh8Egs1CpVEkpq8NFwhvxRA1wQvU1
+	 WKq7/7Wwv/wnwY+9nTB3Ir6XTsJCm+k3qpEuG76xU5Kznhj0ziKren5m0zNp6DLNCc
+	 fVOFgtDndk5iOdSEMHaxQVPkKFAX0/Oluxj+FAlpabwoZPAjsapR01KxQR37isavve
+	 2/1h4E3eMXUPQ==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH mt76 v4 00/15] wifi: mt76: mt7996: Decouple RRO logic from
+ WED support
+Date: Thu, 04 Sep 2025 18:37:54 +0200
+Message-Id: <20250904-mt7996-rro-rework-v4-0-2cd91e7229d6@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH v3] Bluetooth: Fix build after header cleanup
-From: patchwork-bot+bluetooth@kernel.org
-Message-Id: <175700340725.1874432.7709997190612844259.git-patchwork-notify@kernel.org>
-Date: Thu, 04 Sep 2025 16:30:07 +0000
-References: <aLhLTiIMRnjHfvOn@mozart.vkv.me>
-In-Reply-To: <aLhLTiIMRnjHfvOn@mozart.vkv.me>
-To: Calvin Owens <calvin@wbinvd.org>
-Cc: luiz.dentz@gmail.com, pmenzel@molgen.mpg.de, linux-kernel@vger.kernel.org,
- linux-bluetooth@vger.kernel.org, luiz.von.dentz@intel.com,
- oe-kbuild-all@lists.linux.dev, marcel@holtmann.org, sean.wang@mediatek.com,
- linux-mediatek@lists.infradead.org, naresh.kamboju@linaro.org
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250904_093003_971240_9D77ACED 
-X-CRM114-Status: UNSURE (   8.74  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAGLAuWgC/33NTQ6CMBCG4auYrq1py1/HlfcwLhCm0KDUTEnVE
+ O5uYaNG4vKdZJ5vZB7Jomf7zcgIg/XW9THS7YZVbdk3yG0dmymhMqGV5NehAMg5keOEd0cdVym
+ IClEYUWsW/26Exj4W83iK3Vo/OHouE0HO139akFzwvNJpUZQ15GAOHVKPl52jhs1cUG8CxCqhI
+ iENxIn8nMla/hDJJ6HWiCQS2miZaBCQAX4R0zS9ABi3+Eg5AQAA
+X-Change-ID: 20250821-mt7996-rro-rework-2490cee0f0d8
+To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Sujuan Chen <sujuan.chen@mediatek.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Rex Lu <rex.lu@mediatek.com>, 
+ Benjamin Lin <benjamin-jw.lin@mediatek.com>
+X-Mailer: b4 0.14.2
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,29 +78,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Decouple RRO logic (v3.0 and v3.1) from WED support in MT7996 driver in
+order to reuse it when WED module is not available.
+Introduce WED offload support for MT7992 chipset in MT7996 driver.
 
-This patch was applied to bluetooth/bluetooth-next.git (master)
-by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
+---
+Changes in v4:
+- Do not use bitmap for DMA descriptos data.
+- Link to v3: https://lore.kernel.org/r/20250902-mt7996-rro-rework-v3-0-8f813890959e@kernel.org
 
-On Wed, 3 Sep 2025 07:06:06 -0700 you wrote:
-> Some Kconfig dependencies are needed after my recent cleanup, since
-> the core code has its own option.
-> 
-> Since btmtksdio does not actually call h4_recv_buf(), move the
-> definitions it uses outside the BT_HCIUART_H4 gate in hci_uart.h to
-> avoid adding a dependency for btmtksdio.
-> 
-> [...]
+Changes in v3:
+- Fix compilation warnings
+- Rebase on top of mt76 main branch
+- Split patch 4/14
+- Link to v2: https://lore.kernel.org/r/20250901-mt7996-rro-rework-v2-0-1f95086b51d1@kernel.org
 
-Here is the summary with links:
-  - [v3] Bluetooth: Fix build after header cleanup
-    https://git.kernel.org/bluetooth/bluetooth-next/c/006c974955d0
+Changes in v2:
+- Fix SER when Wireless Ethernet Dispatcher (WED) is disabled
+- Rebase on top of mt76 main branch
+- Link to v1: https://lore.kernel.org/r/20250821-mt7996-rro-rework-v1-0-6c8477ad969f@kernel.org
 
-You are awesome, thank you!
+---
+Lorenzo Bianconi (7):
+      wifi: mt76: Add reset_idx to reset_q mt76_queue_ops signature.
+      wifi: mt76: Remove q->ndesc check in mt76_dma_rx_fill()
+      wifi: mt76: Do not always enable NAPIs for WED RRO queues
+      wifi: mt76: mt7996: Fix tx-queues initialization for second phy on mt7996
+      wifi: mt76: mt7996: Fix RX packets configuration for primary WED device
+      wifi: mt76: Add rx_queue_init callback
+      wifi: mt76: Add mt76_dma_get_rxdmad_c_buf utility routione
+
+Rex Lu (8):
+      wifi: mt76: Differentiate between RRO data and RRO MSDU queues
+      wifi: mt76: mt7996: Initial DMA configuration for MT7992 WED support
+      wifi: mt76: mt7996: Enable HW RRO for MT7992 chipset
+      wifi: mt76: mt7996: Introduce the capability to reset MT7992 WED device
+      wifi: mt76: mt7996: Enable WED for MT7992 chipset
+      wifi: mt76: mt7996: Introduce RRO MSDU callbacks
+      wifi: mt76: mt7996: Decouple RRO logic from WED support
+      wifi: mt76: mt7996: Add SW path for HW-RRO v3.1
+
+ drivers/net/wireless/mediatek/mt76/dma.c           | 226 ++++++++++---
+ drivers/net/wireless/mediatek/mt76/dma.h           |  29 +-
+ drivers/net/wireless/mediatek/mt76/mt76.h          |  54 ++-
+ drivers/net/wireless/mediatek/mt76/mt7915/dma.c    |   4 +-
+ drivers/net/wireless/mediatek/mt76/mt792x_dma.c    |   6 +-
+ drivers/net/wireless/mediatek/mt76/mt7996/dma.c    | 326 ++++++++++++++----
+ drivers/net/wireless/mediatek/mt76/mt7996/init.c   | 310 ++++++++++++-----
+ drivers/net/wireless/mediatek/mt76/mt7996/mac.c    | 365 ++++++++++++++++++++-
+ drivers/net/wireless/mediatek/mt76/mt7996/main.c   |  19 +-
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c    |   4 +-
+ drivers/net/wireless/mediatek/mt76/mt7996/mmio.c   |  89 +++--
+ drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h |  91 ++++-
+ drivers/net/wireless/mediatek/mt76/mt7996/pci.c    |   3 +-
+ drivers/net/wireless/mediatek/mt76/mt7996/regs.h   |  32 +-
+ drivers/net/wireless/mediatek/mt76/wed.c           |   8 +-
+ 15 files changed, 1297 insertions(+), 269 deletions(-)
+---
+base-commit: bf71ee05e8ceaa086233d6db2557442c153ba05e
+change-id: 20250821-mt7996-rro-rework-2490cee0f0d8
+
+Best regards,
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
