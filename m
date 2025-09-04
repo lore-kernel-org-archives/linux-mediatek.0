@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27EDFCA1012
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Sep 2025 06:32:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 452DBCA1012
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Sep 2025 06:35:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=scGC82lmtFfVt/+rH55JPxyeN4hMWcRWm/ClysXmIqg=; b=JWXpqM3JpYQTwkpB94m4wlH3hz
-	FOo33PayplOQcVPP15U5uMeXPfoO8TeiLtRcLs+K4dhGMyqD+Gx+w8qg2YfbnNIaRvrRGEecLDCMA
-	QigM6TUo53Z6JxHmh1/+AXYjcNHkaxZCyyOD0R7ON/a8BSEJ+fr1IvwVOM9whTbHB582A1JFdUuzo
-	NU4Zn0gCWkXpIPvkZS1OlsLZhp/MGQHAXuTid5E/RE/nrrbTbQg65YS1OZgf3Id0jwANaVPpce8UC
-	OefG2Rx8d3hJ00lMCWgHjSLmNTMI2ZtXzFcmh1nZiDexX8Xzw0neEXYf7qV97u9tm6RT1cZKw3pMT
-	hmY2KnFA==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YpGOZ6R4tA8s0gpQCC9ncHlNVuO9zib3S9+/vzed/sQ=; b=qxAiNUyfErzpDaUGQDlDPDGnoJ
+	MzTldUdla7ldHGmOSWaJlFzGbwckbcqvO2tySfH5K4G16y6mbfjAsXtkFjmT3lWpmGfb6EiDRbDYX
+	VAORSaa6pR/Pu/Y7A7dD4G9t1X/OThKaMqte6LYuqVbenl4dGP1dkIrlbX0G4UrDLJbX7D4/2J7cm
+	6JGH2piHqGb8rMHtSH5LzN8viGilqnIs4dOMV0pDqscumXbm4De4RWjDa9WhnvFa7bei17uamseMQ
+	fZQkxkoqsbn/6ub7Y9QYObNmmMJeJdTantugTRB69fxkhrviErUMIF/ek80U1yMkqRL/3zufV9vup
+	zNwMkgEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uu3Wi-00000009YIv-2roE;
-	Thu, 04 Sep 2025 06:32:56 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1uu3ZS-00000009Z7k-1l7g;
+	Thu, 04 Sep 2025 06:35:46 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uu3Wh-00000009YIW-0EOZ;
-	Thu, 04 Sep 2025 06:32:56 +0000
-X-UUID: fa93a390895811f09eb0dd999d3936bf-20250903
+	id 1uu3Ws-00000009YLD-1bSk;
+	Thu, 04 Sep 2025 06:33:07 +0000
+X-UUID: 01f25136895911f09f706fa2197c6ceb-20250903
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=scGC82lmtFfVt/+rH55JPxyeN4hMWcRWm/ClysXmIqg=;
-	b=vC9OUcFIELgZmfP35+gD+sc0hXPuAf0l1q5sd/cW7qA2GJ3uArlO7bNHdI85TGcuAFIzFKPxg3eGKVF+mDUJ7ql5Dl1H4MeH6naWNIHxujQ/LkIPZylUpfqygmqYnJOuGkHkCA8XVaIqfupAI/gQCHdq8LGZtAQk5Awna6cMfXA=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=YpGOZ6R4tA8s0gpQCC9ncHlNVuO9zib3S9+/vzed/sQ=;
+	b=GOSZfhB1S2vrhO3TVkB5u8O6D6D0wbzm+W0DiDCmZ5/gLQkd5+Bigkoi8ii2Z/WaaT3G/LW1eOw3BCIc2/R24leLa6AIvdmiGnno2XnQKW7sQfOFM7Pmk4ElFWOqGE70gh+uoBy7lLcp2W9nlXrOyX6y4pkTmNKgHdjqkNSy4c4=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.3,REQID:603eb469-2a14-42c7-8594-262142007096,IP:0,UR
+X-CID-O-INFO: VERSION:1.3.3,REQID:78afee3b-4d87-466f-83a9-a26d2dac08ec,IP:0,UR
 	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
 	elease,TS:0
-X-CID-META: VersionHash:f1326cf,CLOUDID:0134306c-8443-424b-b119-dc42e68239b0,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:-5,Content:0|15|50,EDM:-3,IP:
-	nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,L
-	ES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-META: VersionHash:f1326cf,CLOUDID:9334306c-8443-424b-b119-dc42e68239b0,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:-5,Content:0|15|50,EDM:
+	-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,
+	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 3,DMD|SSN|SDN
 X-CID-BAS: 3,DMD|SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: fa93a390895811f09eb0dd999d3936bf-20250903
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+X-UUID: 01f25136895911f09f706fa2197c6ceb-20250903
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
 	(envelope-from <xion.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1652226577; Wed, 03 Sep 2025 23:32:50 -0700
+	with ESMTP id 887598291; Wed, 03 Sep 2025 23:33:02 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Thu, 4 Sep 2025 14:32:45 +0800
+ 15.2.1258.39; Thu, 4 Sep 2025 14:32:58 +0800
 Received: from mbjsdccf07.gcn.mediatek.inc (10.15.20.246) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Thu, 4 Sep 2025 14:32:42 +0800
+ 15.2.1258.39 via Frontend Transport; Thu, 4 Sep 2025 14:32:52 +0800
 From: <xion.wang@mediatek.com>
 To: Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman
 	<gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>,
@@ -62,17 +62,19 @@ To: Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman
 CC: <wsd_upstream@mediatek.com>, <huadian.liu@mediatek.com>, Xion Wang
 	<xion.wang@mediatek.com>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH 0/1] char: Use list_del_init() in misc_deregister()
-Date: Thu, 4 Sep 2025 14:37:03 +0800
-Message-ID: <20250904063714.28925-1-xion.wang@mediatek.com>
+Subject: [PATCH 1/1] char: Use list_del_init() in misc_deregister() to reinitialize list pointer
+Date: Thu, 4 Sep 2025 14:37:04 +0800
+Message-ID: <20250904063714.28925-2-xion.wang@mediatek.com>
 X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20250904063714.28925-1-xion.wang@mediatek.com>
+References: <20250904063714.28925-1-xion.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250903_233255_105914_12559449 
-X-CRM114-Status: GOOD (  13.98  )
+X-CRM114-CacheID: sfid-20250903_233306_422559_77F307DE 
+X-CRM114-Status: GOOD (  15.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,34 +91,39 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Xion Wang <xion.wang@mediatek.com>
 
-Hi all,
-
-This patch updates the misc_deregister() function to use list_del_init()
-instead of list_del() when removing the device from the list.
-While list_del() poisons the list pointers to catch invalid usage,
-it does not reset the list head. 
-If misc_deregister() is called more than once on the same device, 
-list_empty() will not return true and list_del() may be called again,
+Currently, misc_deregister() uses list_del() to remove the device
+from the list. After list_del(), the list pointers are set to 
+LIST_POISON1 and LIST_POISON2, which may help catch use-after-free bugs,
+but does not reset the list head.
+If misc_deregister() is called more than once on the same device,
+list_empty() will not return true, and list_del() may be called again,
 leading to undefined behavior.
 
-By switching to list_del_init(), we ensure the list head is reinitialized,
-making the code more robust against double deregistration and
-allowing safe usage of list_empty() after deregistration.
+Replace list_del() with list_del_init() to reinitialize the list head
+after deletion. This makes the code more robust against double
+deregistration and allows safe usage of list_empty() on the miscdevice
+after deregistration.
 
 Fixes: b329becfc78b1 ("char: add WARN_ON() in misc_deregister()")
 
-Let me know if you have any questions or suggestions.
-
-Thanks,
-Xion Wang
-
-Xion Wang (1):
-  char: Use list_del_init() in misc_deregister() to reinitialize list
-    pointer
-
+Signed-off-by: Xion Wang <xion.wang@mediatek.com>
+---
  drivers/char/misc.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/drivers/char/misc.c b/drivers/char/misc.c
+index 558302a64dd9..b5d44b08ad7b 100644
+--- a/drivers/char/misc.c
++++ b/drivers/char/misc.c
+@@ -279,7 +279,7 @@ void misc_deregister(struct miscdevice *misc)
+ 		return;
+ 
+ 	mutex_lock(&misc_mtx);
+-	list_del(&misc->list);
++	list_del_init(&misc->list);
+ 	device_destroy(&misc_class, MKDEV(MISC_MAJOR, misc->minor));
+ 	misc_minor_free(misc->minor);
+ 	mutex_unlock(&misc_mtx);
 -- 
 2.45.2
 
