@@ -4,62 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E8FDCAC582
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Sep 2025 20:56:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45131CA101F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Sep 2025 02:23:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Fpv1SoLY/N77JkIb142ZPgXdcdlyIxxhftHl3vgHLBI=; b=zOVQwKgZTw8yFcIG01LQhXaiQm
-	Mf9wyN6NunoU3mFOSdf3dDhNbrFBsOZ8PaJtF4NdOe73DquaZS91/fcbmZb35Re5HalUmLpRtcar7
-	Hyk1VmkEp4P5P8QsSm2W707uhjMz10c89CJxHyx2mdoAQGz9jMcyTAufhNnhSleIeA1ttVuX1wSID
-	oh69wkKxg8H3J5J8hTQ6H5+D5ICKVnMa/8GOvbbAIw1L+yUsE2aI3kNwudRwHyy/qAFIF7s2u6DXq
-	le3uHv2uqWbeCk3Un/POZKr2yUhqfDCe8TY9ryQjqQI3doeyhv7un5qHG2CNe4/PYD1HlAcDz8kre
-	FG0lnbMQ==;
+	bh=Zz0GiMYb44SvgwnTpnJ1WiT4G0dl9xf04AReEOrfC2g=; b=33M6hlo9rCujmMGjwFxIyYtogJ
+	huEbU+h46NusRjwwmauFthZ3FDL+eTERHAucevepZ7zUIgTCJKapsICU1EIH3MEO0Ljs6So/gSrn7
+	sln0zrMj+82BPh2H7KnJfn7goJXkM3wAABXx15B7bArzWRnIgGyUMAYqQWUhSz8qVKTqcm+zVTgi5
+	1goPkyK5lU/zs5XWpqiZ6n3eThMJVHk0njbjRPGMQhw7suMOW5ZqZk3kG5WZatH8ZD/876XHtuKbQ
+	UedFx4L4KSaV3LLJB6cdqwdUeoDgm/+zbYkxjtUTFQI61aG1GwBDFW2CrU6UEZfTkn4uZFnrT40fl
+	PK3YcWxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuH00-0000000EPcB-0k6H;
-	Thu, 04 Sep 2025 20:56:04 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uuM6O-0000000G5PR-2xvb;
+	Fri, 05 Sep 2025 02:23:00 +0000
+Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuCyd-0000000D0CS-3stV;
-	Thu, 04 Sep 2025 16:38:23 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5A7FA60247;
-	Thu,  4 Sep 2025 16:38:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B2D22C4CEF0;
-	Thu,  4 Sep 2025 16:38:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1757003903;
-	bh=W6N68IbV0jiwtH3MAFqH+TY6TjH35pe5n2zoPQK40aQ=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=gE9RSFVXYTyMFHQJ0RSW6u7hHNfokidemYDegKmlp5QjvT0AMrfY/4YYh6D8D8vU0
-	 /raqehO76RgY0pgwrL3cIbYt4DTt98PcmtR7o2TI3JBUyfKSyicMMm7xcI7W3dc0Qn
-	 lEm/Ixjg4Sk7OlqhSC6oV2+yWMQ3ThklFAnXq8qK1GhA1klwGH48MlhFd2KZNFvzT7
-	 YdO2a0sZKuwA5BB/lCL4+jmFtUoUGkS8aMSR1tIab0TEuIaLHYomrDLWArbS3NYxuD
-	 CuZ3qWJ7tGMqYgqo2Zxme521koxLXaTSTgE0hQOduhR1WceXZsuMkqM1LeluQlS4iW
-	 1gYOS2GaTvAvg==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Thu, 04 Sep 2025 18:37:56 +0200
-Subject: [PATCH mt76 v4 02/15] wifi: mt76: Remove q->ndesc check in
- mt76_dma_rx_fill()
+	id 1uuJ2N-0000000F2K1-37mw;
+	Thu, 04 Sep 2025 23:06:40 +0000
+Received: by mail-yw1-x112e.google.com with SMTP id 00721157ae682-71d605c6501so16851167b3.3;
+        Thu, 04 Sep 2025 16:06:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1757027198; x=1757631998; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Zz0GiMYb44SvgwnTpnJ1WiT4G0dl9xf04AReEOrfC2g=;
+        b=SBwvcFDIACLx7OgMcorv43PJbcMh7C6OaNg4JbITH/x0R2UbfkOsADoaD8dCBH4+Vc
+         S3jAN257BhPii9Tbc503lQrDYn/F+ty/dOcOgZstAtjxjvvmHI+4ff8+FW9Ee6YbAdOd
+         45VQGCtBQrHRrOgLYYc8m1985Y74EhRLUxDwLg2HHcuvzVP2jdbjYSPJCPYT14R8jwvH
+         K8312bn9McjgDvZGKNfPo7ZsEA/KcJ36VMeNfBD+TEheL6oWj+s3kY2QpFGYSszJQl0d
+         3YCwrg76PbQMqpCXJ0jZtjf8sKNhJQP1lfUYV9niZLvg6H+LJfXFc08DW6WqxOQnzPAN
+         3Zaw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1757027198; x=1757631998;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Zz0GiMYb44SvgwnTpnJ1WiT4G0dl9xf04AReEOrfC2g=;
+        b=nkW+oXSYjNynTbs1FdFeUuCJ1X10aHvtAjZz5KAGFPWRzrK4xRHBmu+iljjPrliOA0
+         fYlUTrt7U+/i3WMpQRf8KnDWxDb+2jDVQH4ndMl0tDU6TkgPL0vel8XcJ0sc9H4AVARk
+         tAoNYJx1wsm/Pk8WWrYCpnqmPMVaSe7C5WBaPUGCi8+KL/RgBavSd3Xzvd2E1TdQAV7z
+         cRlAjbK+UVJVnS95N81pzHAtOP0bbZ2rEqjuicAxLdQ6i+g4+244wP48AVoLZsMdjDYg
+         HCsnqz4sZXP+A0Zx5Fxe6b/tyRu6FgZHN7XkrD3QriVT1MajMTf7K5NTy0AOCXk47Hss
+         oCOA==
+X-Forwarded-Encrypted: i=1; AJvYcCVYnEYEnD8UuFmtRZuXeEmljesS0TTk9DAn5227MAaJtsk6PXFgWWnrDK6ziJ7ve+tKa5qZ3OWMXQSBNRYhJJXh@lists.infradead.org, AJvYcCXFRpx4yWfXvX+7ZEs0NfZBoWYFH3uTDMPxqjtuDmqagDvxBjjfv+DTrZP0h+Idy3ntrOAXwDDFR0oYaTrD9Yw=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx16tdOihXJXK6GOPIraNCudXRh2pAlQeeUo96oCR5E5zMYMX3D
+	QFJghPy1EmWNH8mwFhYHL1y1qWDCfqWMw64OvgATPAXxJwSBaLYM3IF90NsKUi4znOdiOOrnZav
+	n0dpYUcAJdMXO4EDvNLE8k2jy5mnBybEBFrGwNhI=
+X-Gm-Gg: ASbGncu0s/GaWVljGGrDS5O45a3qQBV+qVTVqnP6zTt/PsXEX7E5v3uc0zT6735yW0V
+	MVQdGyi4ISPPodQMZ7gKx4+WNv1pfEnDyl2/rDC1PSmcnY/LdPEmuGoyXFm8Y+mEpD13ozlJX5H
+	zc4k3bGyiuXoTq2PHlMGkil0sPmZ/ruBCLrx9fcR5dlrdwBCHkU8uDFNUcO1+h3xu9TB6aFhKlh
+	Hl0XjXnNVjBvffMwaUmb6J/o+XsUsBYO+hb0GDT95INvig3Uv4Ki45JRT6j1J69HyNKobuluUFG
+	GxO0XjswoJp12tSp7w==
+X-Google-Smtp-Source: AGHT+IH/UOPapUe67ml8mQg2G5ZORmPRUqKua+tHRBkgLjhGsyEaV9W6C1STKBiXSzNdaKZDJ9D9LdHr4bJeBLGW/a0=
+X-Received: by 2002:a05:690c:dcd:b0:721:5b31:54ce with SMTP id
+ 00721157ae682-722764fe1e2mr215403527b3.31.1757027198220; Thu, 04 Sep 2025
+ 16:06:38 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250904-mt7996-rro-rework-v4-2-2cd91e7229d6@kernel.org>
-References: <20250904-mt7996-rro-rework-v4-0-2cd91e7229d6@kernel.org>
-In-Reply-To: <20250904-mt7996-rro-rework-v4-0-2cd91e7229d6@kernel.org>
-To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Sujuan Chen <sujuan.chen@mediatek.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org
-X-Mailer: b4 0.14.2
+References: <20250903225504.542268-1-olvaffe@gmail.com> <20250903225504.542268-3-olvaffe@gmail.com>
+ <20250904080239.779b5e24@fedora>
+In-Reply-To: <20250904080239.779b5e24@fedora>
+From: Chia-I Wu <olvaffe@gmail.com>
+Date: Thu, 4 Sep 2025 16:06:26 -0700
+X-Gm-Features: Ac12FXzcL3-czZFvhjU2Mujq6i9ZrXWDYBfA8bIrDPlQ3iKdmOHkCSCvjxw7aN8
+Message-ID: <CAPaKu7RdpEtwqDHrjt4HJOJVYeRjUa38Sk70=6dD9WmXYtf_jw@mail.gmail.com>
+Subject: Re: [RFC PATCH 2/2] drm/panthor: add initial mt8196 support
+To: Boris Brezillon <boris.brezillon@collabora.com>
+Cc: Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250904_160639_780737_56B42BBA 
+X-CRM114-Status: GOOD (  16.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,30 +103,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Remove q->ndesc check in mt76_dma_rx_fill routine since this is already
-done in mt76_dma_rx_fill_buf().
+On Wed, Sep 3, 2025 at 11:02=E2=80=AFPM Boris Brezillon
+<boris.brezillon@collabora.com> wrote:
+>
+> On Wed,  3 Sep 2025 15:55:04 -0700
+> Chia-I Wu <olvaffe@gmail.com> wrote:
+>
+> > diff --git a/drivers/gpu/drm/panthor/Makefile b/drivers/gpu/drm/panthor=
+/Makefile
+> > index 02db21748c125..75e92c461304b 100644
+> > --- a/drivers/gpu/drm/panthor/Makefile
+> > +++ b/drivers/gpu/drm/panthor/Makefile
+> > @@ -12,4 +12,6 @@ panthor-y :=3D \
+> >       panthor_mmu.o \
+> >       panthor_sched.o
+> >
+> > +panthor-$(CONFIG_DRM_PANTHOR_SOC_MT8196) +=3D panthor_soc_mt8196.o
+>
+> Based on the stuff you describe (ASN hash, core mask read from an nvmem
+> cell, extra clks/regulators?), I don't think we need per-soc source
+> files and per-soc config options. If it becomes too HW specific (no
+> abstraction to make it SoC-agnostic), we can reconsider the per-SoC
+> file approach, but I believe it can all live in panthor_drv.c for now.
+That's about right except no extra clk/regulator is needed.
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/wireless/mediatek/mt76/dma.c | 3 ---
- 1 file changed, 3 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireless/mediatek/mt76/dma.c
-index 25c26ff8c8e24352f2bb31c6e185e628a56f609b..18c2a2de59897d038392a00ed5fb5a0de188ac95 100644
---- a/drivers/net/wireless/mediatek/mt76/dma.c
-+++ b/drivers/net/wireless/mediatek/mt76/dma.c
-@@ -671,9 +671,6 @@ int mt76_dma_rx_fill(struct mt76_dev *dev, struct mt76_queue *q,
- {
- 	int frames;
- 
--	if (!q->ndesc)
--		return 0;
--
- 	spin_lock_bh(&q->lock);
- 	frames = mt76_dma_rx_fill_buf(dev, q, allow_direct);
- 	spin_unlock_bh(&q->lock);
-
--- 
-2.50.1
-
+gpueb on mt8196 is yet another mcu running on its own fw.  It can
+provide clk/regulator to panthor and no change is needed from panthor.
+But it can also do dvfs autonomously, in which case panthor needs to
+be modified to make clk/regulator/devfreq optional.  I think the
+latter is where Nicolas Frattaroli is going and requires more invasive
+integration.
 
