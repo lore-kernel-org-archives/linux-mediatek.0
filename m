@@ -4,72 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02DEECA1015
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Sep 2025 12:56:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6ECC9CA1002
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Sep 2025 16:24:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/TtV5w9SklmHnKG5J7AZb+JOmSQbgWRInJV7KaTISYs=; b=BaKrsxjrk8pmLpz1xg4tvuTPp6
-	1oKxctqeoZ7NSuX+QV3VL/mmMaH97i0rqDhucfEcaiXaM5xq/Dl9depAVSyYyblpzjZaMg6JS03Pg
-	8i9KVw3EurVdM3jSm9fybA0k0QEJ9Zu360ELyqHQIvBUTwmak4Us+GBsYaEFUMTo9E9JVLeRq0AHw
-	PttR7jp+x0bpDD/nr3I3qKU86OGdZSPFNXERxUZv9oZ9Wcm4LTrEF9CWj/92GfWND65sXgpe3Vseu
-	FDT6Iwh5LgLPnwWMbfv1N4PwE+9xR8p/kJEceoHhW4evgJKO/N3IczwqZ6RQ1VQUrU8cT3m+kKnIP
-	BBdAtyqQ==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=yodm8a39j4w35ZB3zyvGXXORr9oUDxAP3eddF5wzbJ4=; b=aYS3iZj9ASEtpvDY5EfUr0RlX+
+	Y3nkpIhHLfHGMvxcy7pyda+NpnQSwXbCKwNe40kNFwgri3WPdVD0CQKLpM8m2sKT/oMrZDrqQwxWT
+	f9k1jd7uFREdFOiWgWfFZ/0YHgh3eZHMZ2AXRZi7N6NfUpFJm0p5kTmHCvV2iZQtO7M/wPz/uEtHl
+	eI/yn1xRbEhuOecg4sXUDySN5iPy8IdfARLnKtscHZHXXza/tJpYSMIL0RVX9XN+jqtVOuvyLp+8C
+	GRCrkRG3T8Y75eYE5RSMshc/19OrmvMBDJLZyIKYoc7hNG5ZMKOnzaADoYsno3sVvn+OVWdcf3eCj
+	fuAE8Mlg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uu9Vp-0000000Bhlb-29Wj;
-	Thu, 04 Sep 2025 12:56:25 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uuCl1-0000000CqJX-2x9t;
+	Thu, 04 Sep 2025 16:24:19 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uu810-0000000BAx1-1B1r;
-	Thu, 04 Sep 2025 11:20:31 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1756984821; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=Nji4AYju6G0mt3NzQJwL2Rr2cAdxJ+LjeENAFu3XCnU0r+NC5+mUFVDPL+3NPdQ7chGfwt3ArL3AFc6NMksLdIf5DAdQvJT+u02aTrnnwU1gooxeHhWot0KoiRW8EJoPgZtJecjQC4CXjIZEnJUF8BUx0+W0ghXNXrlXsNIxQvw=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1756984821; h=Content-Type:Content-Transfer-Encoding:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To:Cc; 
-	bh=/TtV5w9SklmHnKG5J7AZb+JOmSQbgWRInJV7KaTISYs=; 
-	b=JRu/0NgFyGoAU63KwvB1aeN+YRnONpizSn53j9oE1FwQsrVXIb67C72fYSroXUNAV29AppNQRuhp7iusYddtQ1EqwOMU4u7HK0YGgauUMf2anG1PIW/TsRxiOQgvotaJGZVHOgMdBenKGX+zWnhgjuK9hGdxRZKdJWja0F9W5sM=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1756984821;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To:Cc;
-	bh=/TtV5w9SklmHnKG5J7AZb+JOmSQbgWRInJV7KaTISYs=;
-	b=MagfS2PSOiTr18ZnP+oxdKhZ067YCtKThK4WRuvcx6s3kSqzQRkt3a1qR98VYRu6
-	2H2MmEnvNuU+5HIi7O6nXyH7fCUlE8xTYPOQGQ08W+ZBiP5iOGCBmoJnH77kuHr0ipr
-	mII6diVyPGXSdzlhhP3AH7tlZh0o/hK6jaqL3MHU=
-Received: by mx.zohomail.com with SMTPS id 1756984818875807.4425046459023;
-	Thu, 4 Sep 2025 04:20:18 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Boris Brezillon <boris.brezillon@collabora.com>,
- Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Chia-I Wu <olvaffe@gmail.com>
-Subject: Re: [RFC PATCH 0/2] drm/panthor: initial mt8196 support
-Date: Thu, 04 Sep 2025 13:20:12 +0200
-Message-ID: <5820885.GXAFRqVoOG@workhorse>
-In-Reply-To: <20250903225504.542268-1-olvaffe@gmail.com>
-References: <20250903225504.542268-1-olvaffe@gmail.com>
+	id 1uu8Q0-0000000BKkx-15QY
+	for linux-mediatek@lists.infradead.org;
+	Thu, 04 Sep 2025 11:46:21 +0000
+X-UUID: c3d267ca898411f09eb0dd999d3936bf-20250904
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=yodm8a39j4w35ZB3zyvGXXORr9oUDxAP3eddF5wzbJ4=;
+	b=pNxz98lRV3XT7xUnlSzG6kY5bVv5QBXkJiT8/JLp1MlX1JGerh5r/8jeu7/Tc1gqauR1eSbG0v5N4PAqYBCDZv+ubXSXM0aspp8lCaMmWXxbX4MsmeT3XLm0aKhdZ2JUdCKJJUXu6PCesGh2Y0nJfPuowaPm9JtUNzt1RnTj1Oo=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.3,REQID:589d3d07-4ce8-44e9-b7e7-0da31c298429,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:f1326cf,CLOUDID:d0fff1f7-ebfe-43c9-88c9-80cb93f22ca4,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:-5,Content:0|15|50,EDM:-3,IP:
+	nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,L
+	ES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: c3d267ca898411f09eb0dd999d3936bf-20250904
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <chris.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 150196529; Thu, 04 Sep 2025 04:46:16 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Thu, 4 Sep 2025 19:46:11 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Thu, 4 Sep 2025 19:46:11 +0800
+From: Chris Lu <chris.lu@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Jiande Lu <jiande.lu@mediatek.com>,
+	Will Lee <will-cy.Lee@mediatek.com>, SS Wu <ss.wu@mediatek.com>, Steve Lee
+	<steve.lee@mediatek.com>, linux-bluetooth <linux-bluetooth@vger.kernel.org>,
+	linux-kernel <linux-kernel@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
+Subject: [PATCH v1] Bluetooth: btusb: Add new VID/PID 13d3/3633 for MT7922
+Date: Thu, 4 Sep 2025 19:46:11 +0800
+Message-ID: <20250904114611.762004-1-chris.lu@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250904_042030_374891_1F3A1ED4 
-X-CRM114-Status: GOOD (  26.42  )
+X-CRM114-CacheID: sfid-20250904_044620_310103_D703EBDA 
+X-CRM114-Status: GOOD (  10.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,85 +87,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Add VID 13d3 & PID 3633 for MediaTek MT7922 USB Bluetooth chip.
 
-On Thursday, 4 September 2025 00:55:02 Central European Summer Time Chia-I Wu wrote:
-> MediaTek MT8196 has Mali-G925-Immortalis, for which panthor gained
-> support recently. But the soc also requires custom ASN hash to be
-> enabled. This series introduces panthor_soc_data for per-soc data and
-> uses it to enable custom ASN hash on MT8196.
-> 
-> The clk/regulator provider on MT8196 is GPUEB, whose driver[1] needs to
-> be cleaned up and upstreamed separately.
+The information in /sys/kernel/debug/usb/devices about the Bluetooth
+device is listed as the below.
 
-I'm currently working on this, I'm at a functional 800 LoC driver vs the
-more than 30k LoC of the downstream... thing. I intend to send it in as
-an RFC once the clock stuff lands, and I get some responses wrt to
-figuring out what's still missing from linux-next aside from the DT to
-get basic boot working so that I don't send in something that I
-accidentally shredded during a rebase without noticing.
+T:  Bus=06 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
+D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
+P:  Vendor=13d3 ProdID=3633 Rev= 1.00
+S:  Manufacturer=MediaTek Inc.
+S:  Product=Wireless_Device
+S:  SerialNumber=000000000
+C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
+A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
+I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
+E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
+E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
+E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
+I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
+E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
+E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
 
-Cleaning up the downstream driver is a fool's errand, it's like 6?
-separate drivers, with lots of global state (and no locking), without
-using the common clock framework, and relying on abusing -supply DT
-properties to force a certain probe order to make all the race
-conditions it would otherwise have turn out fine. A lot of it is
-code that seems dead, or wrappers wrapping wrappers that have nothing
-to do with how the hardware actually works.
+Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+---
+ drivers/bluetooth/btusb.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-My solution adds a small mailbox driver for the GPUEB, and also adds
-a new module that lives in the panthor tree and registers itself with
-panthor's devfreq stuff to be a "devfreq provider". The motivation
-for making it devfreq instead of a clock+regulator provider is that
-the GPUEB seems to have several quite devfreq-like parts to it that
-I am not yet using, namely setting a job completion target time and
-several methods of limiting performance.
-
-As it stands it can set the OPP, but boosting above 1.43 GHz does
-not seem to stick. The boosting stuff may be done by the four or
-five other ways it has to set some frequency target.
-
-I'm hoping I can send this in maybe next week or the week after. If
-things remain blocked by then it'll be compile-tested in its current
-form only and lack some clock stuff.
-
-Kind regards,
-Nicolas Frattaroli
-
-> 
-> This initial support also lacks support for some hw configs. On some
-> configs, panthor is expected to query a mask from efuse to mask out
-> unavailable shader cores from ptdev->gpu_info.shader_present. This
-> requires extending panthor_soc_data with a callback to read the mask.
-> 
-> This is an RFC because the dependent drivers are not ready yet. But I
-> would like to gather opinions on having panthor_soc_data for
-> soc-specific data and having CONFIG_DRM_PANTHOR_SOC_MT8196 for
-> soc-specific code.
-> 
-> [1] https://gitlab.freedesktop.org/olv/kernel/-/commit/170d5fc90f817dc90bde54b32872c59cf5c77779
-> 
-> Chia-I Wu (2):
->   dt-bindings: gpu: mali-valhall-csf: add MediaTek MT8196 compatible
->   drm/panthor: add initial mt8196 support
-> 
->  .../bindings/gpu/arm,mali-valhall-csf.yaml    |  1 +
->  drivers/gpu/drm/panthor/Kconfig               |  6 +++++
->  drivers/gpu/drm/panthor/Makefile              |  2 ++
->  drivers/gpu/drm/panthor/panthor_device.c      |  2 ++
->  drivers/gpu/drm/panthor/panthor_device.h      |  4 +++
->  drivers/gpu/drm/panthor/panthor_drv.c         |  4 +++
->  drivers/gpu/drm/panthor/panthor_gpu.c         | 26 ++++++++++++++++++-
->  drivers/gpu/drm/panthor/panthor_regs.h        |  4 +++
->  drivers/gpu/drm/panthor/panthor_soc.h         | 26 +++++++++++++++++++
->  drivers/gpu/drm/panthor/panthor_soc_mt8196.c  |  9 +++++++
->  10 files changed, 83 insertions(+), 1 deletion(-)
->  create mode 100644 drivers/gpu/drm/panthor/panthor_soc.h
->  create mode 100644 drivers/gpu/drm/panthor/panthor_soc_mt8196.c
-> 
-> 
-
-
-
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 505efc4872c3..86797adf4c63 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -701,6 +701,8 @@ static const struct usb_device_id quirks_table[] = {
+ 						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x13d3, 0x3615), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x13d3, 0x3633), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x35f5, 0x7922), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH },
+ 
+-- 
+2.45.2
 
 
