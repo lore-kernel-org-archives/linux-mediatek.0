@@ -4,101 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED355CA1010
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Sep 2025 02:11:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BB21CA1010
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Sep 2025 03:07:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
-	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PERM9NW9/epjauAQ647nr1Bnq/1hfYwv4hqg012Ys6w=; b=MTRSMbxa8ND4dPbt4js3Ea1QLL
-	VwtdHIN6XT9cQQBKoAeoLZFS8EoPL6Ab0kQjVO8YeKG7tRUJDceZoCQ5b26K7KXjUsR7T2DNKVLOP
-	KcWXlyd/yprG/3DaKAe9dUfzW1ODp80/50S4Ffq+eAl1RyvJ/SHQduIbFJKFcP5dK8wTkLIb/fwAo
-	0D0lo4rrcoHmGCUEqQW16YZw28rF5eFBlPdpnDKF96MebFtxlBwK/K7E7GPbcoQIpCBQRMVbYJqBr
-	O+uEU0sN9QV9hnxMwyiKzne7GcjfI2k2x98FQbascsX/RIlToNJOTxh5OoBdANKzgIL/P7q+sKpvM
-	u1U3uKog==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=okSpbGRNQHl94Vdt5qEtnYNS5g6mAk9sswS0dUQeqVE=; b=nfb0NBvSu0ymcPXgFka8W+1/wm
+	N9w9R4EeKu/xQ7yB6rUG+mX+YukYdxhumzt8WeFf5TireVZ3lduq7kCzAyQdk2bsG+qcmCKV3tyyi
+	fcUAhZ8AVI/jbQ9lA5Yqu2W6Csk40dJXbT0Riv8XEsfmtGXa9vrkGcnOdJYrP2Cfve/pWKon0J9Pm
+	wZHlm2e3F6PTecDKDP4SbBQrqtlArKTCG/05lxWsAVVgUtJinKYOUxsD7voY8CSRA41mFbo3BHMbe
+	QK1ONSalw4FkS7PtdEOxDWCgPepf89ELTm7Jka0kxm8YFlaWj7wMxMTfTOUuUnDUL+ojtA09JqNNC
+	9vD9SDZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utzRJ-00000008Fs0-3pUx;
-	Thu, 04 Sep 2025 02:11:05 +0000
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+	id 1uu0Jf-00000008Zox-1Pk3;
+	Thu, 04 Sep 2025 03:07:15 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utwNi-00000007qRE-1fgu;
-	Wed, 03 Sep 2025 22:55:11 +0000
-Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-24c7848519bso4623935ad.1;
-        Wed, 03 Sep 2025 15:55:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1756940110; x=1757544910; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=PERM9NW9/epjauAQ647nr1Bnq/1hfYwv4hqg012Ys6w=;
-        b=Ta0pdnxUkicU47uzT3z1gJSddF4rnS+vw0RUEqxRNg5t3jA7NLx9z629ycgstslSBC
-         L8DZ3lGMw+JYzwp1+8N9KNFoCfX4i68yeZ8G8/GnQLEVwjsHYpTPwSxf5UiPoOkI4j6o
-         q/qX1xEJiQ3oAwJ6SRDXgFwApDDbVpxQk+xYgcV6Djnp18TLhLQNFu65+dl2IgSu31V8
-         Na6L/ifMQa9innFMpxYNNDGhGgxaCVqDAva9iYouhGwkUF0NT54EwqEpOwqLJLFlhdl1
-         iTH5UWuwdqXjepcR2b4/vNmHyonF/ofMEOa/A5rruvOy2H8vfY0Hd0R0OTFRfXSbCGtB
-         a1/w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756940110; x=1757544910;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=PERM9NW9/epjauAQ647nr1Bnq/1hfYwv4hqg012Ys6w=;
-        b=PVfFN9PoKzBveVWS16JPQ3ZMdlbCQ7UC6Bgp6HwpMmEL5Pl7tYjZ+2TWGSpastNwzV
-         /T3ZNuVX/X2RwNPP4IFNAUxKX0NURjFFEUH1m+fBPk9nunLY0G9gWpcCgnCXojVKHFsT
-         OdHA48sY71Tkb2OsNiP54C3DdtKJETmmSLGkfY6ybMRQopZ0uRMBXe2oBZEsU3d2lokx
-         K85MRPwnxczf/zmr0ypjhxj3LxcPCD99hxtSeiP+PrcH37dEPV3XFSbeDD++ol80rgLD
-         YIAleq/XjtvqMzijmCkOUQyUSMvJ2jSwFZnt/PpSPbfEne4OmJ1BUpp5EmCJFWjxORIO
-         5MCg==
-X-Forwarded-Encrypted: i=1; AJvYcCWNONn86jjncYwbgvlXOk+jY+1JekAq3NY3nb/w1WIPNY+D1gjI40og//yWyTnZxNlFwAhPImMx8LWR76Y5YLD1@lists.infradead.org, AJvYcCWhJmiiqlvWWMWAKOu54qpVkmCoE7ECOn90CWdpHb73hy9Wpp5CpdStfRVqE+Zb9w0ELZMiQcLn8QFeUBHJZPc=@lists.infradead.org
-X-Gm-Message-State: AOJu0YyEWFwmceMKIfi9Btijlmvbht7vIAIILysnm7DITfTrD3aLXHPo
-	iY+SNpP+eOEd+k9at9jKnu9oHorYQnLVCOd0WWArpwYogZgNEoEj0Ns6
-X-Gm-Gg: ASbGnctaPfKnU0Q/NJxkw1QqsuDH6qVrs2pR/GPyNUdY1P3m9MdTA6SXUhGq3+dloIU
-	rItKTUV4afyuwOwMctgrLP5ogI4u/xafWJbV3WoBQwUzY4a4RjSI+Kiz3iiEmNuCEEWZ6kRJzKR
-	TAJDd5eRiDLWB0dYEhYAJiWGZ5qYhFaU1caVZ11RGA2bVz1uqy0/tYTZxdVxkZZGWFUVwbdthL1
-	uC2efALf6ZzP6BxqAdK72MmZgGi01xWh5kb2Ue9LS5AtJH/pnPtBE+9H2/YQGX75dGJqf0A2VDT
-	R8z/kfuHcQLd9O7NSTz1xUvoT1b8Jkwebf7dtX1/GPjd16A/fQWlwsMqEB7+1UYfHo6wb4eB6SF
-	2t85b6vxbGSD5jl8bFUkvNNVITF+zY1q6MdgujgmE5aFgT7U5JgXhvMryx4SI32YX+/oS04ngpE
-	Ip3yfUf9hatpriHC/lnd5B
-X-Google-Smtp-Source: AGHT+IEsF/meH81c94jigsHRiHn2Bi2s+9U2J/0U2y+3EgRD50sJHl+AM1/5H0vpGBx0GalxnBVwlg==
-X-Received: by 2002:a17:903:38c7:b0:246:2b29:71c7 with SMTP id d9443c01a7336-2494490485bmr220520735ad.25.1756940109605;
-        Wed, 03 Sep 2025 15:55:09 -0700 (PDT)
-Received: from localhost (185.3.125.34.bc.googleusercontent.com. [34.125.3.185])
-        by smtp.gmail.com with UTF8SMTPSA id d9443c01a7336-24c9c2b1288sm25505435ad.106.2025.09.03.15.55.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 Sep 2025 15:55:09 -0700 (PDT)
-From: Chia-I Wu <olvaffe@gmail.com>
-To: Boris Brezillon <boris.brezillon@collabora.com>,
-	Steven Price <steven.price@arm.com>,
-	Liviu Dudau <liviu.dudau@arm.com>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	dri-devel@lists.freedesktop.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [RFC PATCH 1/2] dt-bindings: gpu: mali-valhall-csf: add MediaTek MT8196 compatible
-Date: Wed,  3 Sep 2025 15:55:03 -0700
-Message-ID: <20250903225504.542268-2-olvaffe@gmail.com>
-X-Mailer: git-send-email 2.51.0.338.gd7d06c2dae-goog
-In-Reply-To: <20250903225504.542268-1-olvaffe@gmail.com>
-References: <20250903225504.542268-1-olvaffe@gmail.com>
+	id 1uu0Jc-00000008Zlp-1u9b
+	for linux-mediatek@lists.infradead.org;
+	Thu, 04 Sep 2025 03:07:13 +0000
+X-UUID: 3de08f68893c11f09eb0dd999d3936bf-20250903
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=okSpbGRNQHl94Vdt5qEtnYNS5g6mAk9sswS0dUQeqVE=;
+	b=Xzo2t1m//jSEaC+35dLaskKV8VGEu30WWxRbCRij1/3RClYJW/O6iThYE2Q/XMse2B/5HzuxClHDC4jj3uKii407cJZzkVjlzKSTQg4MYyxh5o2qZzHXNCEcCz2g6RnhwhFRNjUxR8cbJuuD9/ICzz+iV4SBVhvNY8gVMgifzaQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.3,REQID:46a5296e-dcc3-4052-a473-4078503f43e5,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:f1326cf,CLOUDID:09286a84-5317-4626-9d82-238d715c253f,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:-5,Content:0|15|50,EDM:
+	-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,
+	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 3de08f68893c11f09eb0dd999d3936bf-20250903
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
+	(envelope-from <mingyen.hsieh@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1069655716; Wed, 03 Sep 2025 20:07:07 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Thu, 4 Sep 2025 11:07:03 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Thu, 4 Sep 2025 11:07:03 +0800
+From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
+	<Leon.Yen@mediatek.com>, <Michael.Lo@mediatek.com>,
+	<allan.wang@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
+	<km.lin@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
+	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, Ming Yen Hsieh
+	<mingyen.hsieh@mediatek.com>
+Subject: [PATCH 2/4] wifi: mt76: mt7925: prevent NULL vif dereference in mt7925_mac_write_txwi
+Date: Thu, 4 Sep 2025 11:06:47 +0800
+Message-ID: <20250904030649.655436-3-mingyen.hsieh@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20250904030649.655436-1-mingyen.hsieh@mediatek.com>
+References: <20250904030649.655436-1-mingyen.hsieh@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250903_155510_434606_561406BA 
-X-CRM114-Status: GOOD (  10.18  )
+X-CRM114-CacheID: sfid-20250903_200712_502220_B4EC5FEA 
+X-CRM114-Status: GOOD (  10.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,27 +91,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MediaTek MT8196 has Mali-G925-Immortalis, which can be supported by
-panthor.
+From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 
-Signed-off-by: Chia-I Wu <olvaffe@gmail.com>
+Check for a NULL `vif` before accessing `ieee80211_vif_is_mld(vif)` to
+avoid a potential kernel panic in scenarios where `vif` might not be
+initialized.
+
+Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 ---
- Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/net/wireless/mediatek/mt76/mt7925/mac.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml
-index a5b4e00217587..7ad5a3ffc5f5c 100644
---- a/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml
-+++ b/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml
-@@ -18,6 +18,7 @@ properties:
-     oneOf:
-       - items:
-           - enum:
-+              - mediatek,mt8196-mali
-               - rockchip,rk3588-mali
-           - const: arm,mali-valhall-csf   # Mali Valhall GPU model/revision is fully discoverable
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
+index 463288a1dcc7..122aa6e9070a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
+@@ -803,8 +803,8 @@ mt7925_mac_write_txwi(struct mt76_dev *dev, __le32 *txwi,
+ 	txwi[5] = cpu_to_le32(val);
  
+ 	val = MT_TXD6_DAS | FIELD_PREP(MT_TXD6_MSDU_CNT, 1);
+-	if (!ieee80211_vif_is_mld(vif) ||
+-	    (q_idx >= MT_LMAC_ALTX0 && q_idx <= MT_LMAC_BCN0))
++	if (vif && (!ieee80211_vif_is_mld(vif) ||
++	    (q_idx >= MT_LMAC_ALTX0 && q_idx <= MT_LMAC_BCN0)))
+ 		val |= MT_TXD6_DIS_MAT;
+ 	txwi[6] = cpu_to_le32(val);
+ 	txwi[7] = 0;
 -- 
-2.51.0.338.gd7d06c2dae-goog
+2.34.1
 
 
