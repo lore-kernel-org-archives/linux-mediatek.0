@@ -4,93 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93B75CA101C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Sep 2025 06:44:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 187FFCA1013
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Sep 2025 08:25:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IglsR+oUgnc5OGxBKrJvs30oGCTNsAedJE467XKBqjg=; b=dT/ZUlcC35LS9P
-	wP44sjZXbclNEAmn+KIx+9aoqu6fBhrfrLtDpiaOaHyYzt6GfDcsssQUYRqZ7ZbF0I4evXB7ollY9
-	1qj3btQPD0pCaXGlpAdI9dNXqKf0Ezw4pg97nL3v7/xWjLTOG9PaYShEH10FJjwq7Z9dUj/PZQvtp
-	WhQhMhPBVYsYbaVv7qLlLsgyB1DWIAt09WMT9doDNL0ZpYMWGa5hf6MMHis1kn9m295pRAgBHX+W+
-	D7a51SGW4lByJveBN8ypA7wonld4sWaVK08Ozsn7G6zAZs6YTq1/Gq9sVPKwdzXK3kNl/dy90tEPr
-	wgUO2ubzxX6x2fTnbxdg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=tvUe9bk3P9laRwdg5hlzaH+TGA88Jse6i/MxwlL5CuE=; b=DyYHp+UxGSPvrY
+	2hNZoUFsGqRKe7txZAQWUFG3Vez23mn0j8YjazUSQ3ZD8T0Ii4JN48DbUc1/xm8eFkYym6Azgl0PX
+	pmQWCXHSM2xegTaIL4fKN8qEL8UKMr+XExUpqnoDQ6YvBvnQNEhdIE763SjxCHe8AXRYj5qbuHZh+
+	R98W2b97Pw87cUn6foqkuMf5Bl1mZPI9QnxqNIb8LyvqnsmfGbsAEKC2LSKK2YzuSlb7tt6fycPIZ
+	aQwL9dHYs3WCfbFhvEZvru7iHJQgCgJui4pF+V5JgKEe1eFLgKEDIurXxgV1hdKPmFJrUEi5uW31s
+	OovWDhwOHQ2+N+rAoGfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uu3hc-00000009cPU-1TXc;
-	Thu, 04 Sep 2025 06:44:12 +0000
-Received: from mail-qk1-x72f.google.com ([2607:f8b0:4864:20::72f])
+	id 1uu5He-0000000ADZO-2ni9;
+	Thu, 04 Sep 2025 08:25:30 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uu3dh-00000009atZ-1JWK
-	for linux-mediatek@lists.infradead.org;
-	Thu, 04 Sep 2025 06:40:10 +0000
-Received: by mail-qk1-x72f.google.com with SMTP id af79cd13be357-80e2c527010so31053385a.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 03 Sep 2025 23:40:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1756968008; x=1757572808; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=IglsR+oUgnc5OGxBKrJvs30oGCTNsAedJE467XKBqjg=;
-        b=IG+tKjgqsoAG9wm3TeH+i9amRoXMVVrmpe8gPCBBwui725V4yeP9Nl/ZIJ6bTVgYtL
-         FGqdb0WBoJKTtlm0feRrPKZka4mBGxtvxTQPVQCh0kzsE5/5yBFuLvIQdqEn13tMfgK8
-         lgcjh4fJ3ZxWdSnChpuq6FIwHGliD2FTJIbbA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756968008; x=1757572808;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=IglsR+oUgnc5OGxBKrJvs30oGCTNsAedJE467XKBqjg=;
-        b=LpNv8iLNCxo73MdJvOPpyUC13o6be4+T0zlk27IbWsFrl7BCZXWADU9VbL9E6d4e4a
-         7l/dgCbEVo0cQFwKw15p5Ezh/VxmHs2zDYMdhi4WnNZd8fsZ/mDtbFdixINTvJ9ZJAse
-         4dhxwG6IaU9E92DYdSL/cCPPz/zoqPu8VJVFoxbJCL68WVzFX0cQgMVplt+2/Md4WxkC
-         kAz9ia3QZcrrC6O93gCcjQE6Jhh3LaMvz0ui9+/PYrMcAICsy+rASznnuRwspIK0Btd2
-         CUstNjXE4aFlBdCBlxuhh1a3YDpSIVlgsa+x7BT8FoAR7RW7CR9ZhlF3CNe3sccxvJ2X
-         Getw==
-X-Forwarded-Encrypted: i=1; AJvYcCWS84ocpiB30GYWPuiNK8nJIbb/omywCUX0mgCbwFWfdjjLYialGAGUmJ3NZ6la1ooLigsbLmyV5wPbfWq/GQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwM8M6ueq+RWKVfy1cOAPEshRD2ywUOZR8F2D7VS4/ec5P64rtE
-	5AH4PiTTsPnsi6UatbhcXBT8WGU4XyqQtHXZzbU/caV9UcpsvJGESpVj7yK5vuxm+yJGegYaMkp
-	DmE6HMA==
-X-Gm-Gg: ASbGncuSro966+8LazT5fQm1r8C021PtQvGVL22F0Tmeh9SNRVG0/XlXmKDrCtijo/j
-	03GOIINpRKJBU7NBWWLtneCqOu5S+JXshiD+XmdtoJamyeddRmsa3iANm02nYodurjMkLv3JB2D
-	4bybcuVAzWrnrWr4nga88NnCsBdDWdlITPEqLfYiLk4/c5BIOH3ZYxBoaB1nHe1eCrho1Ep9ko/
-	xdFBmJRZRY3kh7dTDLe1LmLMHtEMkVcaHCHqgkGYXNIMuy9E4Ntf/AVEjZp15bb3/+x99xEfuWH
-	ob/CURPqLJo+Ey4/+QdWssQDH6LyMszxFB1GDQifPS37fnWLMmnJOZSper/CNWiGKzc0Ff/dubm
-	CnYDfrbdcRwpykftpKG3uukgVhlwktjJHXiCpV+yPKet/LPXY+cvTzAjbSlXs6Q==
-X-Google-Smtp-Source: AGHT+IH2AEv3YqIS7+AUsbGnGATuXNfrKVe3KGkjRwsmj+IoTIyFDE9v1mILYbqLDLnMW+ff1xWYNw==
-X-Received: by 2002:a05:620a:1790:b0:80d:88b8:e670 with SMTP id af79cd13be357-80d88b8e6a4mr335180185a.34.1756968007578;
-        Wed, 03 Sep 2025 23:40:07 -0700 (PDT)
-Received: from mail-qt1-f175.google.com (mail-qt1-f175.google.com. [209.85.160.175])
-        by smtp.gmail.com with ESMTPSA id d75a77b69052e-4b48f7a37c6sm24475671cf.47.2025.09.03.23.40.06
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 03 Sep 2025 23:40:06 -0700 (PDT)
-Received: by mail-qt1-f175.google.com with SMTP id d75a77b69052e-4b48fc1d998so150891cf.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 03 Sep 2025 23:40:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCWX1rpsbc0XSmqUkpHpTIzxcaccCHv8dAFbhkzBac+LmC7jiJJK0h8j47U60Rlhch1TGPUYAe0LjhEXqReppQ==@lists.infradead.org
-X-Received: by 2002:ac8:7c56:0:b0:4b4:9863:5d76 with SMTP id
- d75a77b69052e-4b5d909e59dmr2246271cf.8.1756968006022; Wed, 03 Sep 2025
- 23:40:06 -0700 (PDT)
+	id 1uu4qH-0000000A2k5-2yd6;
+	Thu, 04 Sep 2025 07:57:14 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 0C17442B1D;
+	Thu,  4 Sep 2025 07:57:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 88FD7C4CEF0;
+	Thu,  4 Sep 2025 07:57:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1756972632;
+	bh=PrHRyzcSKzKMyEeBhSvkydnyJ262xjKrBuA8xcLVjq8=;
+	h=From:Subject:Date:To:Cc:From;
+	b=UPne19rhYUcLZyR6q5sKNVyxPvwYs7xivNv7T+ELHs7UfCy51CAldtOxdRGxYUKEX
+	 viFwu7fFUO5iufbUXQqwTgffDQ014izUNdufRZhFmx9AF0OFIe0v70IuvV3CqPAlPm
+	 0WErKPbiJqi1BmZyKcohz+818odTr6VsaPvl2E3pVwerfY5amS33O45CmpXKAbCcfY
+	 zldI0LKkj31/5xbcM9CX6c6Qmkua7xP8WgHS7Sdok/HXmxo4jY8qAeC6/yjZOi0Zb5
+	 hu4b1x7M9U4KHowGqXWyuTBLOedifg4vWmLMJfZQ5hQkoKozMKfnPcdfqKIcCovgpN
+	 p7plIUK6ItpZQ==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH mt76 0/4] wifi: mt76: Some more MLO fixes for MT7996 driver
+Date: Thu, 04 Sep 2025 09:56:38 +0200
+Message-Id: <20250904-mt7996-mlo-more-fixes-v1-0-89d8fed67f20@kernel.org>
 MIME-Version: 1.0
-References: <20250820075405.1041838-1-wenst@chromium.org> <CAC=S1njQ5z2Ezz2OXDJ6Pk_9EEPgG3gu=Os7uFv6Lmdq0X77og@mail.gmail.com>
- <CAGXv+5GgGs5LEGJV4fpUpxOXC=_Fvo3CA4S10zZGxes9C2HrEQ@mail.gmail.com>
-In-Reply-To: <CAGXv+5GgGs5LEGJV4fpUpxOXC=_Fvo3CA4S10zZGxes9C2HrEQ@mail.gmail.com>
-From: Tomasz Figa <tfiga@chromium.org>
-Date: Thu, 4 Sep 2025 15:39:48 +0900
-X-Gmail-Original-Message-ID: <CAAFQd5B=0Zyyi2yJ5xD41LDBVYvAWoLu-oM_2XQORWgTDWo3uA@mail.gmail.com>
-X-Gm-Features: Ac12FXywePb9g-RtWrinDg2p3M3RDgvhb_q591PKRsUpniRhwiiIjF_U8raEZa4
-Message-ID: <CAAFQd5B=0Zyyi2yJ5xD41LDBVYvAWoLu-oM_2XQORWgTDWo3uA@mail.gmail.com>
-Subject: Re: [PATCH v2] media: mediatek: vcodec: Use spinlock for context list
- protection lock
-To: Chen-Yu Tsai <wenst@chromium.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIADZGuWgC/x3LQQqAIBBA0avErBuwgVK7SrSQGmsgMzQiiO6et
+ Hx8/gOZk3CGvnog8SVZ4l7Q1BVMq9sXRpmLgRS1yirCcGprOwxbxBATo5ebM2oyqjHkvO4Yyns
+ k/kNZh/F9P5y9gnBnAAAA
+X-Change-ID: 20250902-mt7996-mlo-more-fixes-7280182af76e
+To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Bo Jiao <Bo.Jiao@mediatek.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>, 
+ Benjamin Lin <benjamin-jw.lin@mediatek.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250903_234009_375409_684E08C9 
-X-CRM114-Status: GOOD (  16.94  )
+X-CRM114-CacheID: sfid-20250904_005713_772754_CFE4B7A9 
+X-CRM114-Status: UNSURE (   6.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,44 +76,31 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Yunfei Dong <yunfei.dong@mediatek.com>, linux-kernel@vger.kernel.org, Hans Verkuil <hverkuil@xs4all.nl>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 4, 2025 at 3:18=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.org> wr=
-ote:
->
-> Ping?
->
-> On Wed, Aug 20, 2025 at 6:37=E2=80=AFPM Fei Shao <fshao@chromium.org> wro=
-te:
-> >
-> > On Wed, Aug 20, 2025 at 3:54=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.or=
-g> wrote:
-> > >
-> > > Previously a mutex was added to protect the encoder and decoder conte=
-xt
-> > > lists from unexpected changes originating from the SCP IP block, caus=
-ing
-> > > the context pointer to go invalid, resulting in a NULL pointer
-> > > dereference in the IPI handler.
-> > >
-> > > Turns out on the MT8173, the VPU IPI handler is called from hard IRQ
-> > > context. This causes a big warning from the scheduler. This was first
-> > > reported downstream on the ChromeOS kernels, but is also reproducible
-> > > on mainline using Fluster with the FFmpeg v4l2m2m decoders. Even thou=
-gh
-> > > the actual capture format is not supported, the affected code paths
-> > > are triggered.
-> > >
->
-> We really should get this in as this triggers a very large and scary
-> warning every time the encoder or decoder is used.
+Add some missing fixes for MLO in MT7996 driver.
 
-Just to clarify, it does actually cause BUG_ON() panics, so if the
-original change is already present in a stable kernel, this fix should
-be merged to stable as well.
+---
+Benjamin Lin (1):
+      wifi: mt76: mt7996: Temporarily disable EPCS
 
-Best,
-Tomasz
+Lorenzo Bianconi (1):
+      wifi: mt76: mt7996: Add all active links to poll list in mt7996_mac_tx_free()
+
+Shayne Chen (2):
+      wifi: mt76: mt7996: Fix mt7996_reverse_frag0_hdr_trans for MLO
+      wifi: mt76: mt7996: Implement MLD address translation for EAPOL
+
+ drivers/net/wireless/mediatek/mt76/mt7996/init.c |  1 -
+ drivers/net/wireless/mediatek/mt76/mt7996/mac.c  | 62 ++++++++++++++++++++++--
+ 2 files changed, 57 insertions(+), 6 deletions(-)
+---
+base-commit: 12cce7624371dc68245356ae390bde93f84aed3a
+change-id: 20250902-mt7996-mlo-more-fixes-7280182af76e
+
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
+
 
