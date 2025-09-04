@@ -4,79 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E462CA1012
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Sep 2025 06:19:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27EDFCA1012
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Sep 2025 06:32:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7CQBkphJcdYBghhb0rqPa4FTq1gxFu4hiwbVOVVdraE=; b=uGajcmTvNcCEdU
-	pJdJwd97apd6F6JEv4AbQ2eNpNsfRs/mWL4SaU3/F+gNQGfzZAWnf622QYvdPJg26jenuwTDKOKwm
-	X0S7HEAynaw6l/x+Pm2yKOfQTmNjal7U/PfkfdOWeZafGae5QHi4tMXfl5mlTP+6XTCkovwVU7fGk
-	wX83O08SXLKZHbsDA7OpRRwm2ibmkddZDVQIM1+V0t7496ZGoIzBCvahhrfGQsB3ZDyPN8BI6qLyA
-	6Yuz3aiqYKTgNIArT18kt3Xpk2bktBrFuMZS3HgCglAV5F6Plui97mOsCaijyR50Tt0eJyWsHgbKi
-	6RPsjyZq/A6KX58A68hA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=scGC82lmtFfVt/+rH55JPxyeN4hMWcRWm/ClysXmIqg=; b=JWXpqM3JpYQTwkpB94m4wlH3hz
+	FOo33PayplOQcVPP15U5uMeXPfoO8TeiLtRcLs+K4dhGMyqD+Gx+w8qg2YfbnNIaRvrRGEecLDCMA
+	QigM6TUo53Z6JxHmh1/+AXYjcNHkaxZCyyOD0R7ON/a8BSEJ+fr1IvwVOM9whTbHB582A1JFdUuzo
+	NU4Zn0gCWkXpIPvkZS1OlsLZhp/MGQHAXuTid5E/RE/nrrbTbQg65YS1OZgf3Id0jwANaVPpce8UC
+	OefG2Rx8d3hJ00lMCWgHjSLmNTMI2ZtXzFcmh1nZiDexX8Xzw0neEXYf7qV97u9tm6RT1cZKw3pMT
+	hmY2KnFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uu3Jo-00000009TzE-1dik;
-	Thu, 04 Sep 2025 06:19:36 +0000
-Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
+	id 1uu3Wi-00000009YIv-2roE;
+	Thu, 04 Sep 2025 06:32:56 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uu3JA-00000009Tip-3bfG
-	for linux-mediatek@lists.infradead.org;
-	Thu, 04 Sep 2025 06:18:58 +0000
-Received: by mail-lj1-x232.google.com with SMTP id 38308e7fff4ca-336bbcebca9so4953061fa.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 03 Sep 2025 23:18:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1756966735; x=1757571535; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=7CQBkphJcdYBghhb0rqPa4FTq1gxFu4hiwbVOVVdraE=;
-        b=LbBkmUOAw8E43DRIPPSrGAl89H0JByTmy6cptWvXvgkWwVUjcpUupCgMa3Z9DgPOQd
-         kRfYb5IZqQiwaga4WqEBqHXh3QnLz0tVwrN5UCeTan80dyeA7FPD22Y+aXumx3ih0kuL
-         U7u1pP1PkG+ybuFDsK+CK5yB8T+sj4kkJMvXc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756966735; x=1757571535;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=7CQBkphJcdYBghhb0rqPa4FTq1gxFu4hiwbVOVVdraE=;
-        b=oYT6Ra0ChSbFm70EJNWNyPMQF7AU2b65M++O9V/shKBv3isZLEe6715VAy0wZYnCP3
-         /y7azmx9x7+KaMxHdUfmSBeaklgDNtsIon7ChOF4Ec9yt6Fv4pCD50ifZeiAgzlW3J6f
-         RgczNOV0G8WWub7fNLMV8fJOgDXUhzA1UHjd8Qdse9REfHPbZUxUHiNdqUNop+akuaFd
-         lT9YlCWvRbhQxVHPPuD5I+p7Vo1o1osjRI0IabtHu2OIfkTCDNE2zjr6PpGiQXtZEMLm
-         gGNULTO2Z2KFryzGaVcmzIBQA9TUPw0M+SPpRROcgHKCNCpjJhcGp7QLwecyBCQz8AAs
-         KHGA==
-X-Forwarded-Encrypted: i=1; AJvYcCUg/hQ6FhoT2v3e52dSmYE4W7Op7IjczCLbHVVaCOmcIPiz5SaxSmvwAKgJxPzQyq2+9vaMuuGzogWS+0ZlkA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzKeqkcoVSDArN1VTY/11VvqUn8MWhTOXHIHel/3ss9WN3Wwxu9
-	ktUpL6iNmYAIvlUPZvxSRwcOOY6kQD1FZYQNs0Y/hyumAjByO86Nf4qS2SOgJHMQFVSF7NQLdlx
-	c78B/37q6IVs966IekWXpZu7RycYIsO/V0m2O4YLV
-X-Gm-Gg: ASbGncssUaFA6QY05XfbCSH5+JFs6LAt0AbVjzSahQBiGW+xz2FUtZYcpEshf4BAWM7
-	G7Tmq3XxV88CtYf3upBc3jZzgmvWU6sxD7dlwpqQzmpPQJtiSWxbFUx67oNzMIDe7JsimvMNjeh
-	Q1S4wgBefqdootTuK0NgHKJxvmEo0nQIa77DeO6M5oMwXnTDPS4ZBAF2GMAI2AwbzRp7/6L8IOk
-	TsQXz96hAvHXMuc4dDfMrA9pNtY0Q49sVzd83Gs3cXljg8fLNxvc/up1y4=
-X-Google-Smtp-Source: AGHT+IFmpIgZJkgG1TcnUjMeEXxa3OW2u+0iRL2YEUKOrf2DSwzSi6u1IDGdInKUk3OLck6UIHWPn37d12I2FT8Uhls=
-X-Received: by 2002:a2e:a991:0:b0:337:e585:8082 with SMTP id
- 38308e7fff4ca-337e585814emr40485291fa.22.1756966734673; Wed, 03 Sep 2025
- 23:18:54 -0700 (PDT)
+	id 1uu3Wh-00000009YIW-0EOZ;
+	Thu, 04 Sep 2025 06:32:56 +0000
+X-UUID: fa93a390895811f09eb0dd999d3936bf-20250903
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=scGC82lmtFfVt/+rH55JPxyeN4hMWcRWm/ClysXmIqg=;
+	b=vC9OUcFIELgZmfP35+gD+sc0hXPuAf0l1q5sd/cW7qA2GJ3uArlO7bNHdI85TGcuAFIzFKPxg3eGKVF+mDUJ7ql5Dl1H4MeH6naWNIHxujQ/LkIPZylUpfqygmqYnJOuGkHkCA8XVaIqfupAI/gQCHdq8LGZtAQk5Awna6cMfXA=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.3,REQID:603eb469-2a14-42c7-8594-262142007096,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:f1326cf,CLOUDID:0134306c-8443-424b-b119-dc42e68239b0,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:-5,Content:0|15|50,EDM:-3,IP:
+	nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,L
+	ES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 3,DMD|SSN|SDN
+X-CID-BAS: 3,DMD|SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: fa93a390895811f09eb0dd999d3936bf-20250903
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <xion.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1652226577; Wed, 03 Sep 2025 23:32:50 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Thu, 4 Sep 2025 14:32:45 +0800
+Received: from mbjsdccf07.gcn.mediatek.inc (10.15.20.246) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Thu, 4 Sep 2025 14:32:42 +0800
+From: <xion.wang@mediatek.com>
+To: Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman
+	<gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Akinobu
+ Mita <akinobu.mita@gmail.com>, Andrew Morton <akpm@linux-foundation.org>
+CC: <wsd_upstream@mediatek.com>, <huadian.liu@mediatek.com>, Xion Wang
+	<xion.wang@mediatek.com>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH 0/1] char: Use list_del_init() in misc_deregister()
+Date: Thu, 4 Sep 2025 14:37:03 +0800
+Message-ID: <20250904063714.28925-1-xion.wang@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-References: <20250820075405.1041838-1-wenst@chromium.org> <CAC=S1njQ5z2Ezz2OXDJ6Pk_9EEPgG3gu=Os7uFv6Lmdq0X77og@mail.gmail.com>
-In-Reply-To: <CAC=S1njQ5z2Ezz2OXDJ6Pk_9EEPgG3gu=Os7uFv6Lmdq0X77og@mail.gmail.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 4 Sep 2025 14:18:43 +0800
-X-Gm-Features: Ac12FXyJUlQIqk0i4ipdL_cOK9k6d650IYlqwO_gxbw4GTZ_J2T6UQ6kDktMWOs
-Message-ID: <CAGXv+5GgGs5LEGJV4fpUpxOXC=_Fvo3CA4S10zZGxes9C2HrEQ@mail.gmail.com>
-Subject: Re: [PATCH v2] media: mediatek: vcodec: Use spinlock for context list
- protection lock
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250903_231856_930883_C0E493D6 
-X-CRM114-Status: GOOD (  20.45  )
+X-CRM114-CacheID: sfid-20250903_233255_105914_12559449 
+X-CRM114-Status: GOOD (  13.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,61 +84,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Yunfei Dong <yunfei.dong@mediatek.com>, linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Ping?
+From: Xion Wang <xion.wang@mediatek.com>
 
-On Wed, Aug 20, 2025 at 6:37=E2=80=AFPM Fei Shao <fshao@chromium.org> wrote=
-:
->
-> On Wed, Aug 20, 2025 at 3:54=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.org>=
- wrote:
-> >
-> > Previously a mutex was added to protect the encoder and decoder context
-> > lists from unexpected changes originating from the SCP IP block, causin=
-g
-> > the context pointer to go invalid, resulting in a NULL pointer
-> > dereference in the IPI handler.
-> >
-> > Turns out on the MT8173, the VPU IPI handler is called from hard IRQ
-> > context. This causes a big warning from the scheduler. This was first
-> > reported downstream on the ChromeOS kernels, but is also reproducible
-> > on mainline using Fluster with the FFmpeg v4l2m2m decoders. Even though
-> > the actual capture format is not supported, the affected code paths
-> > are triggered.
-> >
+Hi all,
 
-We really should get this in as this triggers a very large and scary
-warning every time the encoder or decoder is used.
+This patch updates the misc_deregister() function to use list_del_init()
+instead of list_del() when removing the device from the list.
+While list_del() poisons the list pointers to catch invalid usage,
+it does not reset the list head. 
+If misc_deregister() is called more than once on the same device, 
+list_empty() will not return true and list_del() may be called again,
+leading to undefined behavior.
 
+By switching to list_del_init(), we ensure the list head is reinitialized,
+making the code more robust against double deregistration and
+allowing safe usage of list_empty() after deregistration.
 
-ChenYu
+Fixes: b329becfc78b1 ("char: add WARN_ON() in misc_deregister()")
 
-> > Since this lock just protects the context list and operations on it are
-> > very fast, it should be OK to switch to a spinlock.
-> >
-> > Fixes: 6467cda18c9f ("media: mediatek: vcodec: adding lock to protect d=
-ecoder context list")
-> > Fixes: afaaf3a0f647 ("media: mediatek: vcodec: adding lock to protect e=
-ncoder context list")
-> > Cc: Yunfei Dong <yunfei.dong@mediatek.com>
-> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> > ---
-> > Changes since v1:
-> > - Switched to _irqsave / _irqrestore variants even in helper only calle=
-d
-> >   by IRQ handler (Tomasz)
-> >
-> >  .../mediatek/vcodec/common/mtk_vcodec_fw_vpu.c       | 10 ++++++----
-> >  .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c     | 12 +++++++-----
-> >  .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h     |  2 +-
-> >  .../platform/mediatek/vcodec/decoder/vdec_vpu_if.c   |  5 +++--
-> >  .../mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c     | 12 +++++++-----
-> >  .../mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h     |  2 +-
-> >  .../platform/mediatek/vcodec/encoder/venc_vpu_if.c   |  5 +++--
-> >  7 files changed, 28 insertions(+), 20 deletions(-)
->
-> Reviewed-by: Fei Shao <fshao@chromium.org>
+Let me know if you have any questions or suggestions.
+
+Thanks,
+Xion Wang
+
+Xion Wang (1):
+  char: Use list_del_init() in misc_deregister() to reinitialize list
+    pointer
+
+ drivers/char/misc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+-- 
+2.45.2
+
 
