@@ -4,71 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 455A4CA1015
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Sep 2025 06:05:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E462CA1012
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Sep 2025 06:19:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=It85YCyY0Z6V3OSHiMm2GKafJoABnoz9EzMpSHJC0Lo=; b=2rr8ZN1vbHkZyjGAKBNVUoDGRo
-	mudxxg8wzy2u4VVK+jjlW77yvxxUtVUJlGoNSfhVi2RyPsSRdPTF0PWHih4U8budX5mLsrNasHJR5
-	DTDT/nbb1vIa7zcD8rdfSQSXvlQhk7l/LLJIVGpFGNMuM4LZK12+h/AdmqcyWZ4qZgh+vlb63P6uN
-	rYisV1OkgTaej4kUiBFOxhkrMm1Tn6Sc/igiC6wnMwMM4mcM6Jiykh+ArbqmWEkTEFrf+BXBvxUoQ
-	cwc+9dzZAyg8l2DIqM3GStqIuCjSyicfcQd70Pxwu7rk8s2tXcxmo2YU8A3uaZ0skc5ZJ6W0lSg3m
-	ywZkDvpg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=7CQBkphJcdYBghhb0rqPa4FTq1gxFu4hiwbVOVVdraE=; b=uGajcmTvNcCEdU
+	pJdJwd97apd6F6JEv4AbQ2eNpNsfRs/mWL4SaU3/F+gNQGfzZAWnf622QYvdPJg26jenuwTDKOKwm
+	X0S7HEAynaw6l/x+Pm2yKOfQTmNjal7U/PfkfdOWeZafGae5QHi4tMXfl5mlTP+6XTCkovwVU7fGk
+	wX83O08SXLKZHbsDA7OpRRwm2ibmkddZDVQIM1+V0t7496ZGoIzBCvahhrfGQsB3ZDyPN8BI6qLyA
+	6Yuz3aiqYKTgNIArT18kt3Xpk2bktBrFuMZS3HgCglAV5F6Plui97mOsCaijyR50Tt0eJyWsHgbKi
+	6RPsjyZq/A6KX58A68hA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uu36F-00000009PMw-3bUW;
-	Thu, 04 Sep 2025 06:05:35 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uu3Jo-00000009TzE-1dik;
+	Thu, 04 Sep 2025 06:19:36 +0000
+Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uu33V-00000009OV9-3Qhf;
-	Thu, 04 Sep 2025 06:02:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1756965763;
-	bh=090gkLICbGM7TNk6kExYlvvMe+p36xr/EilWtJfF52g=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=YbFApHCMtpPV7aWtDBimSagK7GUlxOLsVOhn2efk4y6D7WTKDqaDKNVh2Qw5HJa49
-	 YT9K5uzYEUyhQS4tVDJXDUPkez3c6hNvH38OH/cZNvjSnvu7ia4Ij18GA5LV6Nq6aV
-	 dkR5BklGOP+AfqjjFFrWhxfvzfXqo76Pd/BqUJsAJtyPWxrIv0x2N1PJvUHzlOrleY
-	 wn/HCFCbSnr/lLPiHhxWv/EvkVBbjTFRlzLfvnUDjmh3oNbYKqXK9g1nFX8YYFBd8I
-	 L2b6AYtvTLSQAsH+Kj07nc0Q6XsBsZR+CrMse/+ajzchGiixuDRRdt6isiKPzCRsTG
-	 nTvYqllWSba2A==
-Received: from fedora (unknown [IPv6:2a01:e0a:2c:6930:d919:a6e:5ea1:8a9f])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bbrezillon)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A221A17E0EB8;
-	Thu,  4 Sep 2025 08:02:42 +0200 (CEST)
-Date: Thu, 4 Sep 2025 08:02:39 +0200
-From: Boris Brezillon <boris.brezillon@collabora.com>
-To: Chia-I Wu <olvaffe@gmail.com>
-Cc: Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Maarten
- Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
- <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, Rob Herring
- <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [RFC PATCH 2/2] drm/panthor: add initial mt8196 support
-Message-ID: <20250904080239.779b5e24@fedora>
-In-Reply-To: <20250903225504.542268-3-olvaffe@gmail.com>
-References: <20250903225504.542268-1-olvaffe@gmail.com>
-	<20250903225504.542268-3-olvaffe@gmail.com>
-Organization: Collabora
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
+	id 1uu3JA-00000009Tip-3bfG
+	for linux-mediatek@lists.infradead.org;
+	Thu, 04 Sep 2025 06:18:58 +0000
+Received: by mail-lj1-x232.google.com with SMTP id 38308e7fff4ca-336bbcebca9so4953061fa.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 03 Sep 2025 23:18:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1756966735; x=1757571535; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=7CQBkphJcdYBghhb0rqPa4FTq1gxFu4hiwbVOVVdraE=;
+        b=LbBkmUOAw8E43DRIPPSrGAl89H0JByTmy6cptWvXvgkWwVUjcpUupCgMa3Z9DgPOQd
+         kRfYb5IZqQiwaga4WqEBqHXh3QnLz0tVwrN5UCeTan80dyeA7FPD22Y+aXumx3ih0kuL
+         U7u1pP1PkG+ybuFDsK+CK5yB8T+sj4kkJMvXc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1756966735; x=1757571535;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=7CQBkphJcdYBghhb0rqPa4FTq1gxFu4hiwbVOVVdraE=;
+        b=oYT6Ra0ChSbFm70EJNWNyPMQF7AU2b65M++O9V/shKBv3isZLEe6715VAy0wZYnCP3
+         /y7azmx9x7+KaMxHdUfmSBeaklgDNtsIon7ChOF4Ec9yt6Fv4pCD50ifZeiAgzlW3J6f
+         RgczNOV0G8WWub7fNLMV8fJOgDXUhzA1UHjd8Qdse9REfHPbZUxUHiNdqUNop+akuaFd
+         lT9YlCWvRbhQxVHPPuD5I+p7Vo1o1osjRI0IabtHu2OIfkTCDNE2zjr6PpGiQXtZEMLm
+         gGNULTO2Z2KFryzGaVcmzIBQA9TUPw0M+SPpRROcgHKCNCpjJhcGp7QLwecyBCQz8AAs
+         KHGA==
+X-Forwarded-Encrypted: i=1; AJvYcCUg/hQ6FhoT2v3e52dSmYE4W7Op7IjczCLbHVVaCOmcIPiz5SaxSmvwAKgJxPzQyq2+9vaMuuGzogWS+0ZlkA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzKeqkcoVSDArN1VTY/11VvqUn8MWhTOXHIHel/3ss9WN3Wwxu9
+	ktUpL6iNmYAIvlUPZvxSRwcOOY6kQD1FZYQNs0Y/hyumAjByO86Nf4qS2SOgJHMQFVSF7NQLdlx
+	c78B/37q6IVs966IekWXpZu7RycYIsO/V0m2O4YLV
+X-Gm-Gg: ASbGncssUaFA6QY05XfbCSH5+JFs6LAt0AbVjzSahQBiGW+xz2FUtZYcpEshf4BAWM7
+	G7Tmq3XxV88CtYf3upBc3jZzgmvWU6sxD7dlwpqQzmpPQJtiSWxbFUx67oNzMIDe7JsimvMNjeh
+	Q1S4wgBefqdootTuK0NgHKJxvmEo0nQIa77DeO6M5oMwXnTDPS4ZBAF2GMAI2AwbzRp7/6L8IOk
+	TsQXz96hAvHXMuc4dDfMrA9pNtY0Q49sVzd83Gs3cXljg8fLNxvc/up1y4=
+X-Google-Smtp-Source: AGHT+IFmpIgZJkgG1TcnUjMeEXxa3OW2u+0iRL2YEUKOrf2DSwzSi6u1IDGdInKUk3OLck6UIHWPn37d12I2FT8Uhls=
+X-Received: by 2002:a2e:a991:0:b0:337:e585:8082 with SMTP id
+ 38308e7fff4ca-337e585814emr40485291fa.22.1756966734673; Wed, 03 Sep 2025
+ 23:18:54 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+References: <20250820075405.1041838-1-wenst@chromium.org> <CAC=S1njQ5z2Ezz2OXDJ6Pk_9EEPgG3gu=Os7uFv6Lmdq0X77og@mail.gmail.com>
+In-Reply-To: <CAC=S1njQ5z2Ezz2OXDJ6Pk_9EEPgG3gu=Os7uFv6Lmdq0X77og@mail.gmail.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 4 Sep 2025 14:18:43 +0800
+X-Gm-Features: Ac12FXyJUlQIqk0i4ipdL_cOK9k6d650IYlqwO_gxbw4GTZ_J2T6UQ6kDktMWOs
+Message-ID: <CAGXv+5GgGs5LEGJV4fpUpxOXC=_Fvo3CA4S10zZGxes9C2HrEQ@mail.gmail.com>
+Subject: Re: [PATCH v2] media: mediatek: vcodec: Use spinlock for context list
+ protection lock
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250903_230246_022372_002D397E 
-X-CRM114-Status: GOOD (  12.60  )
+X-CRM114-CacheID: sfid-20250903_231856_930883_C0E493D6 
+X-CRM114-Status: GOOD (  20.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,25 +88,61 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Yunfei Dong <yunfei.dong@mediatek.com>, linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed,  3 Sep 2025 15:55:04 -0700
-Chia-I Wu <olvaffe@gmail.com> wrote:
+Ping?
 
-> diff --git a/drivers/gpu/drm/panthor/Makefile b/drivers/gpu/drm/panthor/Makefile
-> index 02db21748c125..75e92c461304b 100644
-> --- a/drivers/gpu/drm/panthor/Makefile
-> +++ b/drivers/gpu/drm/panthor/Makefile
-> @@ -12,4 +12,6 @@ panthor-y := \
->  	panthor_mmu.o \
->  	panthor_sched.o
->  
-> +panthor-$(CONFIG_DRM_PANTHOR_SOC_MT8196) += panthor_soc_mt8196.o
+On Wed, Aug 20, 2025 at 6:37=E2=80=AFPM Fei Shao <fshao@chromium.org> wrote=
+:
+>
+> On Wed, Aug 20, 2025 at 3:54=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.org>=
+ wrote:
+> >
+> > Previously a mutex was added to protect the encoder and decoder context
+> > lists from unexpected changes originating from the SCP IP block, causin=
+g
+> > the context pointer to go invalid, resulting in a NULL pointer
+> > dereference in the IPI handler.
+> >
+> > Turns out on the MT8173, the VPU IPI handler is called from hard IRQ
+> > context. This causes a big warning from the scheduler. This was first
+> > reported downstream on the ChromeOS kernels, but is also reproducible
+> > on mainline using Fluster with the FFmpeg v4l2m2m decoders. Even though
+> > the actual capture format is not supported, the affected code paths
+> > are triggered.
+> >
 
-Based on the stuff you describe (ASN hash, core mask read from an nvmem
-cell, extra clks/regulators?), I don't think we need per-soc source
-files and per-soc config options. If it becomes too HW specific (no
-abstraction to make it SoC-agnostic), we can reconsider the per-SoC
-file approach, but I believe it can all live in panthor_drv.c for now.
+We really should get this in as this triggers a very large and scary
+warning every time the encoder or decoder is used.
+
+
+ChenYu
+
+> > Since this lock just protects the context list and operations on it are
+> > very fast, it should be OK to switch to a spinlock.
+> >
+> > Fixes: 6467cda18c9f ("media: mediatek: vcodec: adding lock to protect d=
+ecoder context list")
+> > Fixes: afaaf3a0f647 ("media: mediatek: vcodec: adding lock to protect e=
+ncoder context list")
+> > Cc: Yunfei Dong <yunfei.dong@mediatek.com>
+> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> > ---
+> > Changes since v1:
+> > - Switched to _irqsave / _irqrestore variants even in helper only calle=
+d
+> >   by IRQ handler (Tomasz)
+> >
+> >  .../mediatek/vcodec/common/mtk_vcodec_fw_vpu.c       | 10 ++++++----
+> >  .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c     | 12 +++++++-----
+> >  .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h     |  2 +-
+> >  .../platform/mediatek/vcodec/decoder/vdec_vpu_if.c   |  5 +++--
+> >  .../mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c     | 12 +++++++-----
+> >  .../mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h     |  2 +-
+> >  .../platform/mediatek/vcodec/encoder/venc_vpu_if.c   |  5 +++--
+> >  7 files changed, 28 insertions(+), 20 deletions(-)
+>
+> Reviewed-by: Fei Shao <fshao@chromium.org>
 
