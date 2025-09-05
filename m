@@ -4,57 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE396CA0FED
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Sep 2025 15:20:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7442ACA0FED
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Sep 2025 15:56:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=s1+ZRgZ8NFWXGjG74F/7TbrdsNHWGEdENKKfbf9kS00=; b=xKWtS2C1upn3IL
-	9eR6U7bQ3H8ORVtBwrTsMov5RZ4UmnCvM1WX4ejhJH9NvbLeWjNX1CSANr/6z21dvfZ1m7oumZpxB
-	mE/y/cK0fIgyjl4bqf6yVE0o1dtb9JEX2U5L2cmYp3d9c2AwYtbQQQdcKSiTETyWkllLjlSAiZZTV
-	h03Okj85F77ndc3PVw5VxuKUiEIFLJt3/NdHOBMCq6utIQdicTo++GeZwg0i8uoftW/YNSPkeD52Z
-	x7ay/yIyC4jj1K3BVn1NWi8yc16TUr0nI91uXJJgOjEqGXmd+31xiQju/YhacgDZhBmG+bbuOyR3f
-	U01kwRx+3j5Bc3l4VMYA==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=W1H0+tH8aowTcmCbj+ABXp44J9R1eCjrHPG/cYgc/+Y=; b=wb7PgZwyHtEY0rC40+Jdab37xG
+	vtDv4NhZWsrT8ZGOiSCM2ZjcRhIXZiVkgL+6G44WftC4LjSc62xg/2I8L8CG5ap2uWrkPIBYmwrOd
+	mFQsngVGUoqVUazoM5OJU1LkryHUOKhsPvd1HY69JX3JXdsqXaEqqWZPKYVPrEsLjzaEeaqRt7COY
+	LtfVxDy3IZvzArE8tF4xQZOOXfdF5yxsfT3lbls+a3DHV7X8TrKKphwAKQuUyno0l+UM+d5zI5REt
+	PLG/bIxj9ULrozDtpsSKEMQI527zh6wnNGL2BBNtq4qw9WLi13GqMjWAoqGDkZuNHa60RWSCNQ3K6
+	zx9dJxpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuYEt-00000002hR3-158a;
-	Fri, 05 Sep 2025 15:20:35 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uuYnK-00000002vH2-0s9w;
+	Fri, 05 Sep 2025 15:56:10 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuUzA-00000001UiC-1kZg;
-	Fri, 05 Sep 2025 11:52:11 +0000
+	id 1uuUzA-00000001UjD-3q0P;
+	Fri, 05 Sep 2025 11:52:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1757073124;
-	bh=dST/8xVStC32ekP6gB7vITv41T5xV6Hei4eA5fX+3yk=;
-	h=From:Subject:Date:To:Cc:From;
-	b=KoNu/PZBVwQxyJw4U588Dtr1MZVIUtmtJ0zC3OZg2rcIFGvpNpdECWp7wcJgYpP9k
-	 e2Pd8w1XmR//tjpTp+D8wHXDsB/ox+1DfSB1VJm01fgXWxdS30Cfaz7SXIZcjoU8/a
-	 dlD3vb/uPlMB+pL0/eFx5ocaDodu0Z0VzRR4jOC8a7J76x62xAC220tmVssnkqC4NE
-	 UwAgInY549BINS5QjwXywrc7GdGqkCXrHBSNhCXR64TofvGvpwqHA2loICcu1K2RDQ
-	 YMYb2rOxGmHqECW3b7bKlno5gKINxEBOp0o/6rRaFBa8BM434PCAQTeY6lpSse2Osl
-	 9Egf+jiNiGQaA==
+	s=mail; t=1757073127;
+	bh=zIcPzz4+ZUV4cxLri5m6RzjiaeHPYd2Q0gnoN2653mA=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=n/5wTmOJizcJeU4glq9D89n5nNLNFkbZpRFaDOEH34cQ50NB3U7c1CU0/O7JwaNTA
+	 3Tt+eCqbDpu5MR4mScsm9u8LtOv5L/G/8INm66hPFwxrp18SuBwA+BdeNhx2bIKJRo
+	 VV1EIuzzgtiQ6xmiHuutnDmFJ1TcHf7G1N9MBe+E0+qfRTB9tMNRo8uXIez0Mg0Slz
+	 0SUKxGqewoDknKev/GpFeDBSW2fsPpKhadKKBn0YIO/wRqhkc78QPzA9jiGd0ue0T9
+	 LGgxDyuSfyMbaHCd/k0Amvp0oE8PtmATzKMD7Wfm26Vjr5AyJNV/2Y+1Q4fwTvcWrx
+	 J1JXqIApbA5VQ==
 Received: from localhost-live.home (2a01cb0892F2D600c8F85cf092D4Af51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: jmassot)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 25A8417E0100;
-	Fri,  5 Sep 2025 13:52:04 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8FE6017E12BA;
+	Fri,  5 Sep 2025 13:52:06 +0200 (CEST)
 From: Julien Massot <julien.massot@collabora.com>
-Subject: [PATCH v3 0/3] Radxa NIO 12L: Add GPIO keys and LED support
-Date: Fri, 05 Sep 2025 13:51:57 +0200
-Message-Id: <20250905-radxa-nio-12-l-gpio-v3-0-40f11377fb55@collabora.com>
+Date: Fri, 05 Sep 2025 13:52:00 +0200
+Subject: [PATCH v3 3/3] arm64: dts: mediatek: mt8395-nio-12l: add support
+ for blue and red LEDs
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAN3OumgC/33NSwrCMBCA4auUrB1JJo0GV95DXKR5tIHalERCp
- eTupl0Jirv5B+ablSQbvU3k0qwk2uyTD1MNfmiIHtTUW/CmNkGKgkrKICqzKJh8AIYwQj/XSbQ
- OqdQoOOekXs7ROr/s6u1ee/DpGeJrf5LZtv3vZQYUDJUtdVIY1PKqwziqLkR11OFBNjPjh4On3
- w5W5+yYdIq7zn07pZQ3mAz0zwIBAAA=
-X-Change-ID: 20250801-radxa-nio-12-l-gpio-54f208c25333
+Message-Id: <20250905-radxa-nio-12-l-gpio-v3-3-40f11377fb55@collabora.com>
+References: <20250905-radxa-nio-12-l-gpio-v3-0-40f11377fb55@collabora.com>
+In-Reply-To: <20250905-radxa-nio-12-l-gpio-v3-0-40f11377fb55@collabora.com>
 To: kernel@collabora.com, Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
@@ -66,8 +64,8 @@ Cc: linux-input@vger.kernel.org, linux-kernel@vger.kernel.org,
  devicetree@vger.kernel.org, Julien Massot <julien.massot@collabora.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250905_045208_615120_BF09764E 
-X-CRM114-Status: GOOD (  10.38  )
+X-CRM114-CacheID: sfid-20250905_045209_100195_FE80C440 
+X-CRM114-Status: GOOD (  11.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,41 +80,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patchset adds support for the GPIO-connected red and blue LEDs,
-as well as the various hardware buttons present on the Radxa NIO 12L
-board.
+The Radxa NIO 12L board has an RGB LED, of which only red and blue
+are controllable.
 
-It also includes a fix for the missing release (key-up) interrupt
-handling for PMIC-managed GPIO keys.
+Red and blue LEDs: no need to choose, both are enabled.
 
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Julien Massot <julien.massot@collabora.com>
 ---
-Changes in v3:
-Patch 3/3: drop the deprecated LEDs label property
-- Link to v2: https://lore.kernel.org/r/20250826-radxa-nio-12-l-gpio-v2-0-7f18fa3fbfc8@collabora.com
+ .../boot/dts/mediatek/mt8395-radxa-nio-12l.dts     | 29 ++++++++++++++++++++++
+ 1 file changed, 29 insertions(+)
 
-Changes in v2:
-PATCH 1/3
-- Add Fixes tag
-- Drop Angelo's Reviewed-By since I'm now introducing the
-'key_release_irq' member that was missing in v1.
-- Link to v1: https://lore.kernel.org/r/20250801-radxa-nio-12-l-gpio-v1-0-d0840f85d2c8@collabora.com
+diff --git a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
+index fd596e2298285361ad7c2fb828feec598d75a73e..0ea36e7c960fc0b2607833d743c5e2e806864600 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
+@@ -10,6 +10,7 @@
+ #include <dt-bindings/gpio/gpio.h>
+ #include <dt-bindings/input/input.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
++#include <dt-bindings/leds/common.h>
+ #include <dt-bindings/pinctrl/mt8195-pinfunc.h>
+ #include <dt-bindings/regulator/mediatek,mt6360-regulator.h>
+ #include <dt-bindings/spmi/spmi.h>
+@@ -73,6 +74,26 @@ button-volume-up {
+ 		};
+ 	};
+ 
++	gpio-leds {
++		compatible = "gpio-leds";
++		pinctrl-0 = <&gpio_leds_pins>;
++		pinctrl-names = "default";
++
++		/*
++		 * This board has a RGB LED, of which only R and B
++		 * are controllable.
++		 */
++		rgb-blue {
++			color = <LED_COLOR_ID_BLUE>;
++			gpios = <&pio 6 GPIO_ACTIVE_HIGH>;
++		};
++
++		led-1 {
++			color = <LED_COLOR_ID_RED>;
++			gpios = <&pio 7 GPIO_ACTIVE_HIGH>;
++		};
++	};
++
+ 	wifi_vreg: regulator-wifi-3v3-en {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "wifi_3v3_en";
+@@ -647,6 +668,14 @@ pins {
+ 		};
+ 	};
+ 
++	gpio_leds_pins: gpio-leds-pins {
++		pins {
++			pinmux = <PINMUX_GPIO6__FUNC_GPIO6>,
++				 <PINMUX_GPIO7__FUNC_GPIO7>;
++			output-low;
++		};
++	};
++
+ 	i2c2_pins: i2c2-pins {
+ 		pins-bus {
+ 			pinmux = <PINMUX_GPIO12__FUNC_SDA2>,
 
----
-Julien Massot (3):
-      Input: mtk-pmic-keys - MT6359 has a specific release irq
-      arm64: dts: mediatek: mt8395-nio-12l: add PMIC and GPIO keys support
-      arm64: dts: mediatek: mt8395-nio-12l: add support for blue and red LEDs
-
- .../boot/dts/mediatek/mt8395-radxa-nio-12l.dts     | 65 ++++++++++++++++++++++
- drivers/input/keyboard/mtk-pmic-keys.c             |  5 +-
- 2 files changed, 69 insertions(+), 1 deletion(-)
----
-base-commit: 6c68f4c0a147c025ae0b25fab688c7c47964a02f
-change-id: 20250801-radxa-nio-12-l-gpio-54f208c25333
-
-Best regards,
 -- 
-Julien Massot <julien.massot@collabora.com>
+2.51.0
 
 
