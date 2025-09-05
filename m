@@ -4,68 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7442ACA0FED
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Sep 2025 15:56:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71D98CA1010
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Sep 2025 16:44:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W1H0+tH8aowTcmCbj+ABXp44J9R1eCjrHPG/cYgc/+Y=; b=wb7PgZwyHtEY0rC40+Jdab37xG
-	vtDv4NhZWsrT8ZGOiSCM2ZjcRhIXZiVkgL+6G44WftC4LjSc62xg/2I8L8CG5ap2uWrkPIBYmwrOd
-	mFQsngVGUoqVUazoM5OJU1LkryHUOKhsPvd1HY69JX3JXdsqXaEqqWZPKYVPrEsLjzaEeaqRt7COY
-	LtfVxDy3IZvzArE8tF4xQZOOXfdF5yxsfT3lbls+a3DHV7X8TrKKphwAKQuUyno0l+UM+d5zI5REt
-	PLG/bIxj9ULrozDtpsSKEMQI527zh6wnNGL2BBNtq4qw9WLi13GqMjWAoqGDkZuNHa60RWSCNQ3K6
-	zx9dJxpA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=aTPbuqTFGPpcvTZTvr3E+08PU5bGC+EZtPBLGAy0lLA=; b=y0ufHgU/vg7VQ1o2i44VBg58UH
+	F4S/6RYyb8gqWmnp7yq6GF2WTQvBNeZQFh03bFDXpwBSEnrdidPuk5NYL5DYmuTpDABv8WesngTQ3
+	hSqLw00ZzVWgiVrhP7nSQBXssZsHN4nzGwRo8LIf295ToJaLcBtPys4bIbGNhasOVu3iX6qTEqYik
+	HP4JgA5H810AfHDlmnBDzA1tPQ++WJZZ1L9JrktLqa2ndm6cHrbD1gArbKqltL28xGuT4afKkpitI
+	p/TcSYLyiQve6cS3ge72yNe/uNAEkuBJqFmAaoVvrIbzu7rT07THMS0DuiuTokdbRAeB2DYPea5VO
+	brA9zFSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuYnK-00000002vH2-0s9w;
-	Fri, 05 Sep 2025 15:56:10 +0000
+	id 1uuZYU-00000003CTZ-0td2;
+	Fri, 05 Sep 2025 16:44:54 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuUzA-00000001UjD-3q0P;
-	Fri, 05 Sep 2025 11:52:10 +0000
+	id 1uuWNW-00000001wJK-2yph;
+	Fri, 05 Sep 2025 13:21:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1757073127;
-	bh=zIcPzz4+ZUV4cxLri5m6RzjiaeHPYd2Q0gnoN2653mA=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=n/5wTmOJizcJeU4glq9D89n5nNLNFkbZpRFaDOEH34cQ50NB3U7c1CU0/O7JwaNTA
-	 3Tt+eCqbDpu5MR4mScsm9u8LtOv5L/G/8INm66hPFwxrp18SuBwA+BdeNhx2bIKJRo
-	 VV1EIuzzgtiQ6xmiHuutnDmFJ1TcHf7G1N9MBe+E0+qfRTB9tMNRo8uXIez0Mg0Slz
-	 0SUKxGqewoDknKev/GpFeDBSW2fsPpKhadKKBn0YIO/wRqhkc78QPzA9jiGd0ue0T9
-	 LGgxDyuSfyMbaHCd/k0Amvp0oE8PtmATzKMD7Wfm26Vjr5AyJNV/2Y+1Q4fwTvcWrx
-	 J1JXqIApbA5VQ==
-Received: from localhost-live.home (2a01cb0892F2D600c8F85cf092D4Af51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
+	s=mail; t=1757078480;
+	bh=5LzAHgCUGNowNZG8+zWWeAtPEjv3HfW+vL/OBN9utHY=;
+	h=From:Date:Subject:To:Cc:From;
+	b=PpaRUePreKEpkpL6JsC0+yrr9JQmvmZAOm5EU2habrc+2slwPpcYIwLj3JKBwil2s
+	 V0PAiuQRybZeZULK7jN8px3xw7IMcS2c1DrDH1oBo4EVJR4fxtxgogrXfA2dTRpaL6
+	 u41DAmTJx6PeXvRpXTGTOVgvYJB/2+MYhhNrpqKuUMa0MlFQEYg/n/h2+wREtUwvhN
+	 VhOlGeBXti6T29O6uiBcOIakEPNYbQOTp/+IpW4nrBq9VuU8dAgQJotXgwom4lsSuA
+	 XjZWNTaUBPtNm6UAhSPv1jsZDqSjuSQkBYw7IoPEBDHXSfTcCLX7wnWG/NzIUF7P5l
+	 ffI50ZCV8BFlg==
+Received: from localhost-live.home (2a01cb0892F2D600c8f85cF092d4AF51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: jmassot)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8FE6017E12BA;
-	Fri,  5 Sep 2025 13:52:06 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DB0FF17E0B85;
+	Fri,  5 Sep 2025 15:21:19 +0200 (CEST)
 From: Julien Massot <julien.massot@collabora.com>
-Date: Fri, 05 Sep 2025 13:52:00 +0200
-Subject: [PATCH v3 3/3] arm64: dts: mediatek: mt8395-nio-12l: add support
- for blue and red LEDs
+Date: Fri, 05 Sep 2025 15:21:19 +0200
+Subject: [PATCH] arm64: dts: mediatek: mt8395-nio-12l: Enable UFS
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250905-radxa-nio-12-l-gpio-v3-3-40f11377fb55@collabora.com>
-References: <20250905-radxa-nio-12-l-gpio-v3-0-40f11377fb55@collabora.com>
-In-Reply-To: <20250905-radxa-nio-12-l-gpio-v3-0-40f11377fb55@collabora.com>
-To: kernel@collabora.com, Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+Message-Id: <20250905-radxa-nio-12l-ufs-v1-1-e2468bfd2c69@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAM7jumgC/x3MTQqAIBBA4avIrBtQ6ce6SrQwG2sgNJQiiO6et
+ PwW7z2QKTFlGMQDiS7OHEOBqgS4zYaVkJdi0FI3spcNJrvcFgNHVHrH02d0RnXWtLWfaw2lOxJ
+ 5vv/nOL3vB3UglfJjAAAA
+X-Change-ID: 20250905-radxa-nio-12l-ufs-c817a864fb42
+To: kernel@collabora.com, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: linux-input@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- devicetree@vger.kernel.org, Julien Massot <julien.massot@collabora.com>
+ Julien Massot <julien.massot@collabora.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250905_045209_100195_FE80C440 
-X-CRM114-Status: GOOD (  11.03  )
+X-CRM114-CacheID: sfid-20250905_062122_909000_1DB8CC64 
+X-CRM114-Status: UNSURE (   9.39  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,73 +81,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Radxa NIO 12L board has an RGB LED, of which only red and blue
-are controllable.
+UFS is the primary storage for the Radxa NIO 12L. Enable it
+now that the ufshci and ufsphy nodes are available in the
+common mt8195 dtsi.
 
-Red and blue LEDs: no need to choose, both are enabled.
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Julien Massot <julien.massot@collabora.com>
 ---
- .../boot/dts/mediatek/mt8395-radxa-nio-12l.dts     | 29 ++++++++++++++++++++++
- 1 file changed, 29 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-index fd596e2298285361ad7c2fb828feec598d75a73e..0ea36e7c960fc0b2607833d743c5e2e806864600 100644
+index 329c60cc6a6be0b4be8c0b8bb033b32d35302804..4cbd78c126f6b56f1833d220f7a7fbc7e4320cbb 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
 +++ b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-@@ -10,6 +10,7 @@
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/input/input.h>
- #include <dt-bindings/interrupt-controller/irq.h>
-+#include <dt-bindings/leds/common.h>
- #include <dt-bindings/pinctrl/mt8195-pinfunc.h>
- #include <dt-bindings/regulator/mediatek,mt6360-regulator.h>
- #include <dt-bindings/spmi/spmi.h>
-@@ -73,6 +74,26 @@ button-volume-up {
- 		};
- 	};
+@@ -990,6 +990,16 @@ &uart1 {
+ 	status = "okay";
+ };
  
-+	gpio-leds {
-+		compatible = "gpio-leds";
-+		pinctrl-0 = <&gpio_leds_pins>;
-+		pinctrl-names = "default";
++&ufshci {
++	vcc-supply = <&mt6359_vemc_1_ldo_reg>;
++	vccq2-supply = <&mt6359_vufs_ldo_reg>;
++	status = "okay";
++};
 +
-+		/*
-+		 * This board has a RGB LED, of which only R and B
-+		 * are controllable.
-+		 */
-+		rgb-blue {
-+			color = <LED_COLOR_ID_BLUE>;
-+			gpios = <&pio 6 GPIO_ACTIVE_HIGH>;
-+		};
++&ufsphy {
++	status = "okay";
++};
 +
-+		led-1 {
-+			color = <LED_COLOR_ID_RED>;
-+			gpios = <&pio 7 GPIO_ACTIVE_HIGH>;
-+		};
-+	};
-+
- 	wifi_vreg: regulator-wifi-3v3-en {
- 		compatible = "regulator-fixed";
- 		regulator-name = "wifi_3v3_en";
-@@ -647,6 +668,14 @@ pins {
- 		};
- 	};
- 
-+	gpio_leds_pins: gpio-leds-pins {
-+		pins {
-+			pinmux = <PINMUX_GPIO6__FUNC_GPIO6>,
-+				 <PINMUX_GPIO7__FUNC_GPIO7>;
-+			output-low;
-+		};
-+	};
-+
- 	i2c2_pins: i2c2-pins {
- 		pins-bus {
- 			pinmux = <PINMUX_GPIO12__FUNC_SDA2>,
+ &ssusb0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&usb3_port0_pins>;
 
+---
+base-commit: 6c68f4c0a147c025ae0b25fab688c7c47964a02f
+change-id: 20250905-radxa-nio-12l-ufs-c817a864fb42
+
+Best regards,
 -- 
-2.51.0
+Julien Massot <julien.massot@collabora.com>
 
 
