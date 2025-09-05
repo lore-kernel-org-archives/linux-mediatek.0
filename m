@@ -4,86 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2CFCCA0FED
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Sep 2025 14:28:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5EC0CA1013
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Sep 2025 14:32:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3vZ3W53+NBzM1/YoocDMpt9TAql3h7i1DOTAYBcde+k=; b=aeNBNNoe0zdE9EVNTKqS+fcXwI
-	dPLa5+zzT3Q4kCQ6KihPzsTRaJHEHtLeYoaIMjV3z11Kyvikjq7YwnBOA8MXsL/MOWsLPJePjBVpy
-	Z/rvvtsIRqeTp5+D2Qq9ocIqwQn1Q645dAIt4Hr/5ze4OsSTflIGFWyMDnxjmUP5ZvZELYgSm2fgi
-	sKT777dbfZJy/P4ie3ok53brPxacb7WvryIlgDl/TUbsow2K6t8P8ewzRqUVcTq6R/MYD2DiLO88k
-	kIR3hcba5+1QuYKk23mbB+w8Qgo2J6kAyONDX1/R6vymoLRo+VKXFmWiUo9c6q4Tjh8PRTc6fhBj3
-	HQAs29bQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=iHlvgHZaFwCkf7ITU9EaNlOvR0Pl/LuLj+JB04prPxg=; b=I9mNemLi3sw9w0
+	diyZ0Ce+ooujcANEIZBO8QDBfnuBxfP9tPG3aOghe0vlPMa5BVx+46CG2EK9srr6LVnJEOj13zXM3
+	9Xk7vVhTsVDyU4Ap1iI3CN6QmrvAJvAjYgBO0BL5+m79vlRy9YN6BnQ9H+Zo89LgTUXPkCEnGGjSR
+	FC8wgPRLdZ0MNYtgObFlSkqUKluA6ti1jFZm264sguviQKNfYwVngmqVLnZpV8otSw1vPfWcRVmzJ
+	f2zGMz3uoVGxocA+rZ02qGhRKkcoueaKn3OJuYc6inmCxrmloQHV5uulTVqtl6qjzUtZsakVwN0iD
+	jX/+S6Co+WmuxXxpnUDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuXQp-00000002HtA-2p9M;
-	Fri, 05 Sep 2025 14:28:51 +0000
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	id 1uuXUe-00000002JYA-00Z2;
+	Fri, 05 Sep 2025 14:32:48 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuSCU-00000000WIR-0TCj
-	for linux-mediatek@lists.infradead.org;
-	Fri, 05 Sep 2025 08:53:43 +0000
-Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-55f6186cc17so1812087e87.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 05 Sep 2025 01:53:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1757062420; x=1757667220; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=3vZ3W53+NBzM1/YoocDMpt9TAql3h7i1DOTAYBcde+k=;
-        b=JvlZ6D+oITR5r25FyPbTwECWwMX9YmKPl0wGnu5KzgPuc4amA0CbEqVgD14rmZ5Q7k
-         +Vj347rgabODyGOxnYIQGg08kH46n/1sxpvE2y/EH3GvxgvbPTZSu3WG8rNRdB9KEkWR
-         KADpLqef2DkWKPF6REu3YJKEzyZ4eY2e/N8sk=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757062420; x=1757667220;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=3vZ3W53+NBzM1/YoocDMpt9TAql3h7i1DOTAYBcde+k=;
-        b=Vrtz4hkWOHge5t0fIS6iD0UgbedZ+VPc1ECrgTxZJwHmBTMqVye7y7nWIkX4FLqPMg
-         9h4nlTJbZrQA7ZiX7VKgFhYnxYCyKWy6pyEKI2Ye0FBut2DFmGFfVkw8HqnFGpE6hAPi
-         dTqQFt6iJ9uC5luP5PukKMZjtfKEO6DLBNwZnsrkgyEbJWcrakZV8FVMsILrB1l6aSnR
-         pdoPq3X4bOv70f4cClTLxt0k4QdxrW7xU52Ctwhnl1xXLv/jubbQUjio/+0PSJuofZH/
-         fvsgmTWdqEcVWdPdVpODXfgjBn+mOiekD7Z1hA5M4HvPL9qIfV5vS0MyA2K5bZhD0d6x
-         Z1Nw==
-X-Forwarded-Encrypted: i=1; AJvYcCWlKyNJl1f8T8+cH2AYyz0s7JLjRD1UeJ4oPXsS1tQo52L1k3dixXoMycadv/sioI0HdzfsIwhEMc+WVL/MZg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzAEXzIDDcWK7l+qT+4CxDktB8IMtMr3ClvZTiKi/6R3GLgaiIq
-	Lg0sPUWCFMYhxGypu7UfIhSW1Epaob2FM8iaU02qeSoeWNDYWYN+sASa1kwk3MPXSXCn12uLo6C
-	gzl+PHofpbXp+CpAxGHkCLpcGcXkECwLNvnfp1PQR
-X-Gm-Gg: ASbGncvcUlxwBw/S8kXGU/lL/4NynZMdd625bvJ05VZCzjYPNLCMsr/YjRLU5PEqZo8
-	8u6K/df0VajcoWQGshtSg+EaJp3UK+nj0uHkS9U07updp14YBTnujyV3db7EIkOD9Ri0J3Lddjh
-	kd0dEw1G0vHZJIaLVMj/fXBkyvignDimqRHlt5o8KNMyXVyuVy0svolgPywlaGIjpvueax/stqg
-	od/arI1UDhX5HXg4ToYjhzF4VmPtCP09RCyUg==
-X-Google-Smtp-Source: AGHT+IEjHV/T1RYYsuzHLdjnxHEKIYfNZ8/LU3RE2sLPGxb+l+/MTplgH0fgFpzDm7aF6IX2eRbQMv8bMFW6xshxSss=
-X-Received: by 2002:a05:6512:3b10:b0:561:70f1:e3ec with SMTP id
- 2adb3069b0e04-56170f1e54amr557993e87.30.1757062420258; Fri, 05 Sep 2025
- 01:53:40 -0700 (PDT)
+	id 1uuSXI-00000000fD9-1Gq3;
+	Fri, 05 Sep 2025 09:15:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1757063710;
+	bh=33A/I19euiFo7KyPkCzzuu4tf57r3cMykqNriw0KQWI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=KssQjEZDH9qu/sgjacMKg0Zz3UxIzN6z1Hvhb5Fo9k5JDDWuD+TrfyEPCYWFKEmrJ
+	 btk2pincIPdba6Wn/25wln5tco96FJM/f8dTQZffE8QGDFfxp2jrbVcO9wDEHh+gqk
+	 yTHEibEWSqqAPD2ntAHoude1EL3UdPjp4aOO41aCWzfU7L4HQ+B28rK9JNjat3vt5X
+	 X8JwwuxuQvV/D6NYUiKcCgLYKHSKpmZ6PEZS5gFA1HOVradnMsZ4MVTCj1A99pD6ev
+	 Z0BaaOfxx0ZcWJGwfUiWiEzuiyeijBEqH4pkRhGqr57Snx/5Yp8jY3sHCcZQ0zh+xR
+	 k4w/eCvUdARjA==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DC6EC17E0523;
+	Fri,  5 Sep 2025 11:15:09 +0200 (CEST)
+Message-ID: <9aa961d0-8138-4363-a606-30d879638a5b@collabora.com>
+Date: Fri, 5 Sep 2025 11:15:09 +0200
 MIME-Version: 1.0
-References: <20250829091913.131528-1-laura.nao@collabora.com>
- <20250829091913.131528-20-laura.nao@collabora.com> <0e6592b7-6f6d-4291-992c-ff321c920381@collabora.com>
-In-Reply-To: <0e6592b7-6f6d-4291-992c-ff321c920381@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 5 Sep 2025 16:53:29 +0800
-X-Gm-Features: Ac12FXznPHud9uxEoezJCyg2AXmAKQakPZkEkl_DvIt-_2nZkd2YLz6bIWoFjWA
-Message-ID: <CAGXv+5GFaudGqm4C9CY-_spiXcyWk7OvWHTdkehsyrV4sO1Ndw@mail.gmail.com>
-Subject: Re: [PATCH v5 19/27] clk: mediatek: Add MT8196 mdpsys clock support
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Laura Nao <laura.nao@collabora.com>, mturquette@baylibre.com, sboyd@kernel.org, 
-	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
-	matthias.bgg@gmail.com, p.zabel@pengutronix.de, richardcochran@gmail.com, 
-	guangjie.song@mediatek.com, linux-clk@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	netdev@vger.kernel.org, kernel@collabora.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 0/3] Fix sleeping function called from invalid context
+To: Jason-JH Lin <jason-jh.lin@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Jassi Brar <jassisinghbrar@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>
+References: <20250829091727.3745415-1-jason-jh.lin@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250829091727.3745415-1-jason-jh.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250905_015342_150769_C561E9E2 
-X-CRM114-Status: GOOD (  30.51  )
+X-CRM114-CacheID: sfid-20250905_021512_501058_D1DC23DA 
+X-CRM114-Status: GOOD (  12.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,211 +72,32 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Simona Vetter <simona@ffwll.ch>, Xiandong Wang <xiandong.wang@mediatek.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Zhenxing Qin <zhenxing.qin@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Paul-PL Chen <paul-pl.chen@mediatek.com>, Xavier Chang <xavier.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, Sirius Wang <sirius.wang@mediatek.com>, Jarried Lin <jarried.lin@mediatek.com>, David Airlie <airlied@gmail.com>, Chen-yu Tsai <wenst@chromium.org>, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 5, 2025 at 4:39=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 29/08/25 11:19, Laura Nao ha scritto:
-> > Add support for the MT8196 mdpsys clock controller, which provides cloc=
-k
-> > gate control for MDP.
-> >
-> > Signed-off-by: Laura Nao <laura.nao@collabora.com>
-> > ---
-> >   drivers/clk/mediatek/Kconfig             |   7 +
-> >   drivers/clk/mediatek/Makefile            |   1 +
-> >   drivers/clk/mediatek/clk-mt8196-mdpsys.c | 186 ++++++++++++++++++++++=
-+
-> >   3 files changed, 194 insertions(+)
-> >   create mode 100644 drivers/clk/mediatek/clk-mt8196-mdpsys.c
-> >
-> > diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfi=
-g
-> > index 8e5cdae80748..68ac08cf8e82 100644
-> > --- a/drivers/clk/mediatek/Kconfig
-> > +++ b/drivers/clk/mediatek/Kconfig
-> > @@ -1024,6 +1024,13 @@ config COMMON_CLK_MT8196_MCUSYS
-> >       help
-> >         This driver supports MediaTek MT8196 mcusys clocks.
-> >
-> > +config COMMON_CLK_MT8196_MDPSYS
-> > +     tristate "Clock driver for MediaTek MT8196 mdpsys"
-> > +     depends on COMMON_CLK_MT8196
-> > +     default COMMON_CLK_MT8196
-> > +     help
-> > +       This driver supports MediaTek MT8196 mdpsys clocks.
-> > +
-> >   config COMMON_CLK_MT8196_PEXTPSYS
-> >       tristate "Clock driver for MediaTek MT8196 pextpsys"
-> >       depends on COMMON_CLK_MT8196
-> > diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makef=
-ile
-> > index 46358623c3e5..d2d8bc43e45b 100644
-> > --- a/drivers/clk/mediatek/Makefile
-> > +++ b/drivers/clk/mediatek/Makefile
-> > @@ -155,6 +155,7 @@ obj-$(CONFIG_COMMON_CLK_MT8196) +=3D clk-mt8196-apm=
-ixedsys.o clk-mt8196-topckgen.o
-> >                                  clk-mt8196-peri_ao.o
-> >   obj-$(CONFIG_COMMON_CLK_MT8196_IMP_IIC_WRAP) +=3D clk-mt8196-imp_iic_=
-wrap.o
-> >   obj-$(CONFIG_COMMON_CLK_MT8196_MCUSYS) +=3D clk-mt8196-mcu.o
-> > +obj-$(CONFIG_COMMON_CLK_MT8196_MDPSYS) +=3D clk-mt8196-mdpsys.o
-> >   obj-$(CONFIG_COMMON_CLK_MT8196_PEXTPSYS) +=3D clk-mt8196-pextp.o
-> >   obj-$(CONFIG_COMMON_CLK_MT8196_UFSSYS) +=3D clk-mt8196-ufs_ao.o
-> >   obj-$(CONFIG_COMMON_CLK_MT8365) +=3D clk-mt8365-apmixedsys.o clk-mt83=
-65.o
-> > diff --git a/drivers/clk/mediatek/clk-mt8196-mdpsys.c b/drivers/clk/med=
-iatek/clk-mt8196-mdpsys.c
-> > new file mode 100644
-> > index 000000000000..a46b1627f1f3
-> > --- /dev/null
-> > +++ b/drivers/clk/mediatek/clk-mt8196-mdpsys.c
-> > @@ -0,0 +1,186 @@
-> > +// SPDX-License-Identifier: GPL-2.0-only
-> > +/*
-> > + * Copyright (c) 2025 MediaTek Inc.
-> > + *                    Guangjie Song <guangjie.song@mediatek.com>
-> > + * Copyright (c) 2025 Collabora Ltd.
-> > + *                    Laura Nao <laura.nao@collabora.com>
-> > + */
-> > +#include <dt-bindings/clock/mediatek,mt8196-clock.h>
-> > +
-> > +#include <linux/clk-provider.h>
-> > +#include <linux/module.h>
-> > +#include <linux/of_device.h>
-> > +#include <linux/platform_device.h>
-> > +
-> > +#include "clk-gate.h"
-> > +#include "clk-mtk.h"
-> > +
-> > +static const struct mtk_gate_regs mdp0_cg_regs =3D {
-> > +     .set_ofs =3D 0x104,
-> > +     .clr_ofs =3D 0x108,
-> > +     .sta_ofs =3D 0x100,
-> > +};
-> > +
-> > +static const struct mtk_gate_regs mdp1_cg_regs =3D {
-> > +     .set_ofs =3D 0x114,
-> > +     .clr_ofs =3D 0x118,
-> > +     .sta_ofs =3D 0x110,
-> > +};
-> > +
-> > +static const struct mtk_gate_regs mdp2_cg_regs =3D {
-> > +     .set_ofs =3D 0x124,
-> > +     .clr_ofs =3D 0x128,
-> > +     .sta_ofs =3D 0x120,
-> > +};
-> > +
-> > +#define GATE_MDP0(_id, _name, _parent, _shift) {     \
-> > +             .id =3D _id,                              \
-> > +             .name =3D _name,                          \
-> > +             .parent_name =3D _parent,                 \
-> > +             .regs =3D &mdp0_cg_regs,                  \
-> > +             .shift =3D _shift,                        \
-> > +             .flags =3D CLK_OPS_PARENT_ENABLE,         \
->
-> Why would MDP0 and MDP2 be different, as in why would MDP1 be so special =
-to not
-> need CLK_OPS_PARENT_ENABLE while the others do?
->
-> Either they all do, or they all don't.
->
-> I guess they all don't, but I'm not sure how you tested that at all, sinc=
-e the
-> only way to test this is downstream (and upstream will very likely be dif=
-ferent
-> from that).
->
-> Even though I think they don't need that - please add back CLK_OPS_PARENT=
-_ENABLE
-> to GATE_MDP1 to be safe, as in (all) MediaTek SoCs the multimedia subsyst=
-em is
-> kinda separate from the rest.
+Il 29/08/25 11:15, Jason-JH Lin ha scritto:
+> We found that there is a spin_lock_irqsave protection in msg_submit()
+> of mailbox.c and it is in the atomic context.
+> So when the mailbox controller driver calls pm_runtime_get_sync() in
+> mbox_chan_ops->send_data(), it will get this BUG report.
+> "BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:1164"
+> 
+> Additionally, pm_runtime_put_autosuspend() should be invoked from the
+> GCE IRQ handler to ensure the hardware has actually completed its work.
+> 
+> To resolve these issues, remove the pm_runtime calls from
+> cmdq_mbox_send_data() and delegate power management responsibilities
+> to the client driver.
+> ---
+> Changes in v2:
+> - Move pm_runtmie APIs from cmdq driver to client drivers.
+> - Move pm_runtime_put_autosuspend to GCE irq callback function.
+> - Link to v1: https://lore.kernel.org/r/20240614040133.24967-1-jason-jh.lin@mediatek.com
 
-That kind of doesn't fly since the parent of mdp_f26m is clk26m, not the
-mdp clock. So either this block doesn't need a clock for register access
-or this clock is going to be broken.
+For the entire series:
 
-This is why I raised the question about the validity of the flag in the
-first place.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-> +       GATE_MDP1(CLK_MDP_F26M, "mdp_f26m", "clk26m", 27),
 
-> Once MT8196 MDP support is upstreamed, we will be able to run a number of=
- tests
-> to evaluate whether this flag is really needed or not.
->
-> After all, if it turns out we can remove it, it's going to be a 3 lines p=
-atch,
-> not a big deal.
-
-That also works. Though IMO it makes the error harder to notice.
-
-ChenYu
-
-> > +             .ops =3D &mtk_clk_gate_ops_setclr,        \
-> > +     }
-> > +
-> > +#define GATE_MDP1(_id, _name, _parent, _shift) {     \
-> > +             .id =3D _id,                              \
-> > +             .name =3D _name,                          \
-> > +             .parent_name =3D _parent,                 \
-> > +             .regs =3D &mdp1_cg_regs,                  \
-> > +             .shift =3D _shift,                        \
-> > +             .ops =3D &mtk_clk_gate_ops_setclr,        \
-> > +     }
-> > +
-> > +#define GATE_MDP2(_id, _name, _parent, _shift) {     \
-> > +             .id =3D _id,                              \
-> > +             .name =3D _name,                          \
-> > +             .parent_name =3D _parent,                 \
-> > +             .regs =3D &mdp2_cg_regs,                  \
-> > +             .shift =3D _shift,                        \
-> > +             .flags =3D CLK_OPS_PARENT_ENABLE,         \
-> > +             .ops =3D &mtk_clk_gate_ops_setclr,        \
-> > +     }
-> > +
->
-> ..snip..
->
-> > +
-> > +static const struct mtk_clk_desc mdp_mcd =3D {
-> > +     .clks =3D mdp_clks,
-> > +     .num_clks =3D ARRAY_SIZE(mdp_clks),
-> > +     .need_runtime_pm =3D true,
-> > +};
-> > +
-> > +static const struct of_device_id of_match_clk_mt8196_mdpsys[] =3D {
-> > +     { .compatible =3D "mediatek,mt8196-mdpsys1", .data =3D &mdp1_mcd =
-},
-> > +     { .compatible =3D "mediatek,mt8196-mdpsys0", .data =3D &mdp_mcd }=
-,
->
-> 0 comes before 1, swap those entries please.
->
-> After applying the proposed fixes
->
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
->
-> > +     { /* sentinel */ }
-> > +};
-> > +MODULE_DEVICE_TABLE(of, of_match_clk_mt8196_mdpsys);
-> > +
-> > +static struct platform_driver clk_mt8196_mdpsys_drv =3D {
-> > +     .probe =3D mtk_clk_simple_probe,
-> > +     .remove =3D mtk_clk_simple_remove,
-> > +     .driver =3D {
-> > +             .name =3D "clk-mt8196-mdpsys",
-> > +             .of_match_table =3D of_match_clk_mt8196_mdpsys,
-> > +     },
-> > +};
-> > +module_platform_driver(clk_mt8196_mdpsys_drv);
-> > +
-> > +MODULE_DESCRIPTION("MediaTek MT8196 Multimedia Data Path clocks driver=
-");
-> > +MODULE_LICENSE("GPL");
->
 
