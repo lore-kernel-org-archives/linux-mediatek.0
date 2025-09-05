@@ -4,78 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C72ACA1013
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Sep 2025 10:33:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2CFCCA0FED
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Sep 2025 14:28:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=S8l7G2EepH8XkBBdvC2ecofLBYVddp2ctHowG/kpVt8=; b=1U9vrbRq1C/VJ/p058Xp9U9Zxe
-	ur0psBR9EbGZo5Arr2cN2OIbfd6KcLJMgz0AmwdLDT5Q4R4Q8gjT8XRRuCoegsurx+q6UcGt1a5bW
-	4buDsXQyFDzF+Jf3Axa2BnC5bb0QumAo+XeURileydFIyLGhqQl80cDbBMTWiFEfM6DAIXQgQNYR7
-	FXd9RDh3cTSt3BaNUxFeUYC+4U+DkIHNurJ5Rzq0soytNRE52c8oh1fQOGXpcC2l7jptIFYl2l7cN
-	yxcDCtUPmxTV3FsjtSOCIM+JFPZg+pyvCIhqiDhl8q2EhJa7RDWeKyvTx1z4xzf12ZAua2OAuBp2F
-	ZutOJe/A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3vZ3W53+NBzM1/YoocDMpt9TAql3h7i1DOTAYBcde+k=; b=aeNBNNoe0zdE9EVNTKqS+fcXwI
+	dPLa5+zzT3Q4kCQ6KihPzsTRaJHEHtLeYoaIMjV3z11Kyvikjq7YwnBOA8MXsL/MOWsLPJePjBVpy
+	Z/rvvtsIRqeTp5+D2Qq9ocIqwQn1Q645dAIt4Hr/5ze4OsSTflIGFWyMDnxjmUP5ZvZELYgSm2fgi
+	sKT777dbfZJy/P4ie3ok53brPxacb7WvryIlgDl/TUbsow2K6t8P8ewzRqUVcTq6R/MYD2DiLO88k
+	kIR3hcba5+1QuYKk23mbB+w8Qgo2J6kAyONDX1/R6vymoLRo+VKXFmWiUo9c6q4Tjh8PRTc6fhBj3
+	HQAs29bQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuTlJ-000000015UT-1K5Z;
-	Fri, 05 Sep 2025 10:33:45 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1uuXQp-00000002HtA-2p9M;
+	Fri, 05 Sep 2025 14:28:51 +0000
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuS3n-00000000Sjq-0G2x;
-	Fri, 05 Sep 2025 08:44:44 +0000
-X-UUID: 8f0ca0ea8a3411f09f706fa2197c6ceb-20250905
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=S8l7G2EepH8XkBBdvC2ecofLBYVddp2ctHowG/kpVt8=;
-	b=lQbNGBaUvqfAFqj0PgRdoSz2VsrnlJRlyu9tAhwyKRYFrkQRKIp8dpvobrpLVvtJA61KEHhMI0j8mU5BIJmeqJA83FfRcsdf0t38o1f8+YKTDlvSASGc+KiXXim8r87h4qE/qRL56WQw+KqyTDhVHUnTt1dNIx4Vo3y3uXx/bjs=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.3,REQID:6d63ffe5-7056-4776-a6d4-32f48968e9c6,IP:0,UR
-	L:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:25
-X-CID-META: VersionHash:f1326cf,CLOUDID:373400a9-24df-464e-9c88-e53ab7cf7153,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:-5,Content:0|15|50,EDM:-3,IP:
-	nil,URL:11|97|99|83|106|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OS
-	I:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 8f0ca0ea8a3411f09f706fa2197c6ceb-20250905
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <ot_zhangchao.zhang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 203631056; Fri, 05 Sep 2025 01:44:39 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Fri, 5 Sep 2025 16:44:34 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Fri, 5 Sep 2025 16:44:33 +0800
-From: Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>
-To: Marcel Holtmann <marcel@holtmann.org>, Luiz Von Dentz
-	<luiz.dentz@gmail.com>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
-	<krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
-CC: Sean Wang <sean.wang@mediatek.com>, Jiande Lu <jiande.lu@mediatek.com>,
-	Deren Wu <deren.Wu@mediatek.com>, Chris Lu <chris.lu@mediatek.com>, Hao Qin
-	<Hao.qin@mediatek.com>, linux-bluetooth <linux-bluetooth@vger.kernel.org>,
-	linux-kernel <linux-kernel@vger.kernel.org>, linux-arm-kernel
-	<linux-arm-kernel@lists.infradead.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, devicetree
-	<devicetree@vger.kernel.org>, Zhangchao Zhang
-	<ot_zhangchao.zhang@mediatek.com>
-Subject: [PATCH v7] dt-bindings: net: mediatek,mt7925-bluetooth.yaml
-Date: Fri, 5 Sep 2025 16:44:33 +0800
-Message-ID: <20250905084433.26999-1-ot_zhangchao.zhang@mediatek.com>
-X-Mailer: git-send-email 2.46.0
+	id 1uuSCU-00000000WIR-0TCj
+	for linux-mediatek@lists.infradead.org;
+	Fri, 05 Sep 2025 08:53:43 +0000
+Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-55f6186cc17so1812087e87.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 05 Sep 2025 01:53:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1757062420; x=1757667220; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=3vZ3W53+NBzM1/YoocDMpt9TAql3h7i1DOTAYBcde+k=;
+        b=JvlZ6D+oITR5r25FyPbTwECWwMX9YmKPl0wGnu5KzgPuc4amA0CbEqVgD14rmZ5Q7k
+         +Vj347rgabODyGOxnYIQGg08kH46n/1sxpvE2y/EH3GvxgvbPTZSu3WG8rNRdB9KEkWR
+         KADpLqef2DkWKPF6REu3YJKEzyZ4eY2e/N8sk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1757062420; x=1757667220;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=3vZ3W53+NBzM1/YoocDMpt9TAql3h7i1DOTAYBcde+k=;
+        b=Vrtz4hkWOHge5t0fIS6iD0UgbedZ+VPc1ECrgTxZJwHmBTMqVye7y7nWIkX4FLqPMg
+         9h4nlTJbZrQA7ZiX7VKgFhYnxYCyKWy6pyEKI2Ye0FBut2DFmGFfVkw8HqnFGpE6hAPi
+         dTqQFt6iJ9uC5luP5PukKMZjtfKEO6DLBNwZnsrkgyEbJWcrakZV8FVMsILrB1l6aSnR
+         pdoPq3X4bOv70f4cClTLxt0k4QdxrW7xU52Ctwhnl1xXLv/jubbQUjio/+0PSJuofZH/
+         fvsgmTWdqEcVWdPdVpODXfgjBn+mOiekD7Z1hA5M4HvPL9qIfV5vS0MyA2K5bZhD0d6x
+         Z1Nw==
+X-Forwarded-Encrypted: i=1; AJvYcCWlKyNJl1f8T8+cH2AYyz0s7JLjRD1UeJ4oPXsS1tQo52L1k3dixXoMycadv/sioI0HdzfsIwhEMc+WVL/MZg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzAEXzIDDcWK7l+qT+4CxDktB8IMtMr3ClvZTiKi/6R3GLgaiIq
+	Lg0sPUWCFMYhxGypu7UfIhSW1Epaob2FM8iaU02qeSoeWNDYWYN+sASa1kwk3MPXSXCn12uLo6C
+	gzl+PHofpbXp+CpAxGHkCLpcGcXkECwLNvnfp1PQR
+X-Gm-Gg: ASbGncvcUlxwBw/S8kXGU/lL/4NynZMdd625bvJ05VZCzjYPNLCMsr/YjRLU5PEqZo8
+	8u6K/df0VajcoWQGshtSg+EaJp3UK+nj0uHkS9U07updp14YBTnujyV3db7EIkOD9Ri0J3Lddjh
+	kd0dEw1G0vHZJIaLVMj/fXBkyvignDimqRHlt5o8KNMyXVyuVy0svolgPywlaGIjpvueax/stqg
+	od/arI1UDhX5HXg4ToYjhzF4VmPtCP09RCyUg==
+X-Google-Smtp-Source: AGHT+IEjHV/T1RYYsuzHLdjnxHEKIYfNZ8/LU3RE2sLPGxb+l+/MTplgH0fgFpzDm7aF6IX2eRbQMv8bMFW6xshxSss=
+X-Received: by 2002:a05:6512:3b10:b0:561:70f1:e3ec with SMTP id
+ 2adb3069b0e04-56170f1e54amr557993e87.30.1757062420258; Fri, 05 Sep 2025
+ 01:53:40 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+References: <20250829091913.131528-1-laura.nao@collabora.com>
+ <20250829091913.131528-20-laura.nao@collabora.com> <0e6592b7-6f6d-4291-992c-ff321c920381@collabora.com>
+In-Reply-To: <0e6592b7-6f6d-4291-992c-ff321c920381@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Fri, 5 Sep 2025 16:53:29 +0800
+X-Gm-Features: Ac12FXznPHud9uxEoezJCyg2AXmAKQakPZkEkl_DvIt-_2nZkd2YLz6bIWoFjWA
+Message-ID: <CAGXv+5GFaudGqm4C9CY-_spiXcyWk7OvWHTdkehsyrV4sO1Ndw@mail.gmail.com>
+Subject: Re: [PATCH v5 19/27] clk: mediatek: Add MT8196 mdpsys clock support
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Laura Nao <laura.nao@collabora.com>, mturquette@baylibre.com, sboyd@kernel.org, 
+	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
+	matthias.bgg@gmail.com, p.zabel@pengutronix.de, richardcochran@gmail.com, 
+	guangjie.song@mediatek.com, linux-clk@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	netdev@vger.kernel.org, kernel@collabora.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250905_014443_101106_84F90C64 
-X-CRM114-Status: GOOD (  16.89  )
+X-CRM114-CacheID: sfid-20250905_015342_150769_C561E9E2 
+X-CRM114-Status: GOOD (  30.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,88 +98,208 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Reset BT via BT_KILL_1V2_L hardware pin.
+On Fri, Sep 5, 2025 at 4:39=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Il 29/08/25 11:19, Laura Nao ha scritto:
+> > Add support for the MT8196 mdpsys clock controller, which provides cloc=
+k
+> > gate control for MDP.
+> >
+> > Signed-off-by: Laura Nao <laura.nao@collabora.com>
+> > ---
+> >   drivers/clk/mediatek/Kconfig             |   7 +
+> >   drivers/clk/mediatek/Makefile            |   1 +
+> >   drivers/clk/mediatek/clk-mt8196-mdpsys.c | 186 ++++++++++++++++++++++=
++
+> >   3 files changed, 194 insertions(+)
+> >   create mode 100644 drivers/clk/mediatek/clk-mt8196-mdpsys.c
+> >
+> > diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfi=
+g
+> > index 8e5cdae80748..68ac08cf8e82 100644
+> > --- a/drivers/clk/mediatek/Kconfig
+> > +++ b/drivers/clk/mediatek/Kconfig
+> > @@ -1024,6 +1024,13 @@ config COMMON_CLK_MT8196_MCUSYS
+> >       help
+> >         This driver supports MediaTek MT8196 mcusys clocks.
+> >
+> > +config COMMON_CLK_MT8196_MDPSYS
+> > +     tristate "Clock driver for MediaTek MT8196 mdpsys"
+> > +     depends on COMMON_CLK_MT8196
+> > +     default COMMON_CLK_MT8196
+> > +     help
+> > +       This driver supports MediaTek MT8196 mdpsys clocks.
+> > +
+> >   config COMMON_CLK_MT8196_PEXTPSYS
+> >       tristate "Clock driver for MediaTek MT8196 pextpsys"
+> >       depends on COMMON_CLK_MT8196
+> > diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makef=
+ile
+> > index 46358623c3e5..d2d8bc43e45b 100644
+> > --- a/drivers/clk/mediatek/Makefile
+> > +++ b/drivers/clk/mediatek/Makefile
+> > @@ -155,6 +155,7 @@ obj-$(CONFIG_COMMON_CLK_MT8196) +=3D clk-mt8196-apm=
+ixedsys.o clk-mt8196-topckgen.o
+> >                                  clk-mt8196-peri_ao.o
+> >   obj-$(CONFIG_COMMON_CLK_MT8196_IMP_IIC_WRAP) +=3D clk-mt8196-imp_iic_=
+wrap.o
+> >   obj-$(CONFIG_COMMON_CLK_MT8196_MCUSYS) +=3D clk-mt8196-mcu.o
+> > +obj-$(CONFIG_COMMON_CLK_MT8196_MDPSYS) +=3D clk-mt8196-mdpsys.o
+> >   obj-$(CONFIG_COMMON_CLK_MT8196_PEXTPSYS) +=3D clk-mt8196-pextp.o
+> >   obj-$(CONFIG_COMMON_CLK_MT8196_UFSSYS) +=3D clk-mt8196-ufs_ao.o
+> >   obj-$(CONFIG_COMMON_CLK_MT8365) +=3D clk-mt8365-apmixedsys.o clk-mt83=
+65.o
+> > diff --git a/drivers/clk/mediatek/clk-mt8196-mdpsys.c b/drivers/clk/med=
+iatek/clk-mt8196-mdpsys.c
+> > new file mode 100644
+> > index 000000000000..a46b1627f1f3
+> > --- /dev/null
+> > +++ b/drivers/clk/mediatek/clk-mt8196-mdpsys.c
+> > @@ -0,0 +1,186 @@
+> > +// SPDX-License-Identifier: GPL-2.0-only
+> > +/*
+> > + * Copyright (c) 2025 MediaTek Inc.
+> > + *                    Guangjie Song <guangjie.song@mediatek.com>
+> > + * Copyright (c) 2025 Collabora Ltd.
+> > + *                    Laura Nao <laura.nao@collabora.com>
+> > + */
+> > +#include <dt-bindings/clock/mediatek,mt8196-clock.h>
+> > +
+> > +#include <linux/clk-provider.h>
+> > +#include <linux/module.h>
+> > +#include <linux/of_device.h>
+> > +#include <linux/platform_device.h>
+> > +
+> > +#include "clk-gate.h"
+> > +#include "clk-mtk.h"
+> > +
+> > +static const struct mtk_gate_regs mdp0_cg_regs =3D {
+> > +     .set_ofs =3D 0x104,
+> > +     .clr_ofs =3D 0x108,
+> > +     .sta_ofs =3D 0x100,
+> > +};
+> > +
+> > +static const struct mtk_gate_regs mdp1_cg_regs =3D {
+> > +     .set_ofs =3D 0x114,
+> > +     .clr_ofs =3D 0x118,
+> > +     .sta_ofs =3D 0x110,
+> > +};
+> > +
+> > +static const struct mtk_gate_regs mdp2_cg_regs =3D {
+> > +     .set_ofs =3D 0x124,
+> > +     .clr_ofs =3D 0x128,
+> > +     .sta_ofs =3D 0x120,
+> > +};
+> > +
+> > +#define GATE_MDP0(_id, _name, _parent, _shift) {     \
+> > +             .id =3D _id,                              \
+> > +             .name =3D _name,                          \
+> > +             .parent_name =3D _parent,                 \
+> > +             .regs =3D &mdp0_cg_regs,                  \
+> > +             .shift =3D _shift,                        \
+> > +             .flags =3D CLK_OPS_PARENT_ENABLE,         \
+>
+> Why would MDP0 and MDP2 be different, as in why would MDP1 be so special =
+to not
+> need CLK_OPS_PARENT_ENABLE while the others do?
+>
+> Either they all do, or they all don't.
+>
+> I guess they all don't, but I'm not sure how you tested that at all, sinc=
+e the
+> only way to test this is downstream (and upstream will very likely be dif=
+ferent
+> from that).
+>
+> Even though I think they don't need that - please add back CLK_OPS_PARENT=
+_ENABLE
+> to GATE_MDP1 to be safe, as in (all) MediaTek SoCs the multimedia subsyst=
+em is
+> kinda separate from the rest.
 
-On the M.2 standard hardware pin interface, the MTK chip
-has a pin called BT_KILL_1V2_L or W_DISABLE#2, it uses
-function-level device reset (FLDR) to reset Bluetooth.
-When it is pulled low, it can external shut down the BT
-function, it is defined as 5 on the MT7925 chip, and is
-defined as 248 on the device tree pio controller.
+That kind of doesn't fly since the parent of mdp_f26m is clk26m, not the
+mdp clock. So either this block doesn't need a clock for register access
+or this clock is going to be broken.
 
-Signed-off-by: Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>
----
- .../bluetooth/mediatek,mt7925-bluetooth.yaml  | 47 +++++++++++++++++++
- MAINTAINERS                                   |  1 +
- 2 files changed, 48 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7925-bluetooth.yaml
+This is why I raised the question about the validity of the flag in the
+first place.
 
-diff --git a/Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7925-bluetooth.yaml b/Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7925-bluetooth.yaml
-new file mode 100644
-index 000000000000..dd24312735e0
---- /dev/null
-+++ b/Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7925-bluetooth.yaml
-@@ -0,0 +1,47 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/net/bluetooth/mediatek,mt7925-bluetooth.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Bluetooth mediatek use BT_KILL_1V2_L hardware pin to reset BT
-+
-+maintainers:
-+  - Sean Wang <sean.wang@mediatek.com>
-+
-+description:
-+  MT7925 modules provides hardware pin called W_DISABLE#2 to reset Bluetotoh,
-+  two methods are used to reset Bluetooth. When an exception occurs, resetting
-+  Bluetooth by hardware pin is more stable than resetting Bluetooth by software.
-+
-+allOf:
-+  - $ref: bluetooth-controller.yaml#
-+
-+properties:
-+  compatible:
-+    enum:
-+      - mediatek,mt7925-bluetooth
-+
-+  reset-gpios:
-+    maxItems: 1
-+    description:
-+      This pin can is used to externally reset BT function. When pull low,
-+      the Bluetooth and USB interface will be also disabled. After 100ms,
-+      it is pulled high to 3.3V to re_enable the device and trigger the
-+      next probe. This is typically used on M.2 key E modules.
-+
-+required:
-+  - compatible
-+  - reset-gpios
-+
-+unevaluatedProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/gpio/gpio.h>
-+
-+    bluetooth {
-+      compatible = "mediatek,mt7925-bluetooth";
-+      #gpio-cells = <2>;
-+      reset-gpios = <&pio 248 GPIO_ACTIVE_LOW>;
-+    };
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 5959513a7359..d104a5821f20 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -14676,6 +14676,7 @@ L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
- S:	Maintained
- F:	Documentation/devicetree/bindings/net/bluetooth/mediatek,bluetooth.txt
- F:	Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7921s-bluetooth.yaml
-+F:	Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7925-bluetooth.yaml
- F:	drivers/bluetooth/btmtkuart.c
- 
- MEDIATEK BOARD LEVEL SHUTDOWN DRIVERS
--- 
-2.45.2
+> +       GATE_MDP1(CLK_MDP_F26M, "mdp_f26m", "clk26m", 27),
 
+> Once MT8196 MDP support is upstreamed, we will be able to run a number of=
+ tests
+> to evaluate whether this flag is really needed or not.
+>
+> After all, if it turns out we can remove it, it's going to be a 3 lines p=
+atch,
+> not a big deal.
+
+That also works. Though IMO it makes the error harder to notice.
+
+ChenYu
+
+> > +             .ops =3D &mtk_clk_gate_ops_setclr,        \
+> > +     }
+> > +
+> > +#define GATE_MDP1(_id, _name, _parent, _shift) {     \
+> > +             .id =3D _id,                              \
+> > +             .name =3D _name,                          \
+> > +             .parent_name =3D _parent,                 \
+> > +             .regs =3D &mdp1_cg_regs,                  \
+> > +             .shift =3D _shift,                        \
+> > +             .ops =3D &mtk_clk_gate_ops_setclr,        \
+> > +     }
+> > +
+> > +#define GATE_MDP2(_id, _name, _parent, _shift) {     \
+> > +             .id =3D _id,                              \
+> > +             .name =3D _name,                          \
+> > +             .parent_name =3D _parent,                 \
+> > +             .regs =3D &mdp2_cg_regs,                  \
+> > +             .shift =3D _shift,                        \
+> > +             .flags =3D CLK_OPS_PARENT_ENABLE,         \
+> > +             .ops =3D &mtk_clk_gate_ops_setclr,        \
+> > +     }
+> > +
+>
+> ..snip..
+>
+> > +
+> > +static const struct mtk_clk_desc mdp_mcd =3D {
+> > +     .clks =3D mdp_clks,
+> > +     .num_clks =3D ARRAY_SIZE(mdp_clks),
+> > +     .need_runtime_pm =3D true,
+> > +};
+> > +
+> > +static const struct of_device_id of_match_clk_mt8196_mdpsys[] =3D {
+> > +     { .compatible =3D "mediatek,mt8196-mdpsys1", .data =3D &mdp1_mcd =
+},
+> > +     { .compatible =3D "mediatek,mt8196-mdpsys0", .data =3D &mdp_mcd }=
+,
+>
+> 0 comes before 1, swap those entries please.
+>
+> After applying the proposed fixes
+>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+>
+> > +     { /* sentinel */ }
+> > +};
+> > +MODULE_DEVICE_TABLE(of, of_match_clk_mt8196_mdpsys);
+> > +
+> > +static struct platform_driver clk_mt8196_mdpsys_drv =3D {
+> > +     .probe =3D mtk_clk_simple_probe,
+> > +     .remove =3D mtk_clk_simple_remove,
+> > +     .driver =3D {
+> > +             .name =3D "clk-mt8196-mdpsys",
+> > +             .of_match_table =3D of_match_clk_mt8196_mdpsys,
+> > +     },
+> > +};
+> > +module_platform_driver(clk_mt8196_mdpsys_drv);
+> > +
+> > +MODULE_DESCRIPTION("MediaTek MT8196 Multimedia Data Path clocks driver=
+");
+> > +MODULE_LICENSE("GPL");
+>
 
