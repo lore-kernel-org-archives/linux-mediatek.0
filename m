@@ -4,86 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF28CCA0FED
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Sep 2025 09:23:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51146CA1015
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Sep 2025 09:26:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3J4+g2V4sWrtHtemeApia0D1CwSCabpiECH2Gc7jqHs=; b=LxEAZLG9xrhn81iTKuF5X5e+Uv
-	1xwIETbTin0kHLBYkEMvHYLOru5W5uMH/ejGHsjEQDSTg99dGbRrpPwJZxg3uhQOLqKeNMdOOqsFv
-	QSlNaAIzMTwVZrZHoNnJ52C0gQfieW0JxCwIaiCbbLJhPpuBzPelFkdovLFr3rAExn4Yim+lTX4rY
-	jqGdGYJLS3UW5DpDviO9Oqx+s3D3p4+skOPJlq1VkUZza8JAkiMBMeTkKWE2I6KYdnaoWSYEhpyEk
-	+oPigTL639CeE0em7Tw9M148yHhX8jJX5chXBpwkt+rGz5FI3gKLXH9fJqBqETh5QV9ZBcD7W3EqI
-	KcapNeng==;
+	bh=HyPlNd55CkHvdkXUPw7m6CaGKtqeaO4UdJmxjPWlG3E=; b=tF7FmkDjKvxaJ2m8R6hiExu4yc
+	OEdBnIDIzYye7nNfQLeQ8Ho1G6cOhA+5swlT7CWy6W9HZoI4YEMsLFUVDIL1syzN+CXV6n4MPzmov
+	Pd12/U1OkwMtOZ3rdDcZdVYDwZ9u/pujPu13AKU4oU4JnFPD0Ohwmf5hlbeLkDzgRfgaLB4kJTlHb
+	ECLCb0n8Wa6a4a6hN9aUNdKWmcm8PD1SJOmjMlTesH2V3mqJ0dWBWa0Y5100MxSPmJJdB9GcOWKCq
+	g+VIeNVP4gSOmRjCSxifpO276MKE2mvvmYK2KJG1hqAqNTo2wTcDg1a+c0f4I8tPF3ko4l0whS4nI
+	+bn9csjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuSfX-00000000ieR-3y3D;
-	Fri, 05 Sep 2025 09:23:43 +0000
-Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
+	id 1uuSiO-00000000jip-2Lhr;
+	Fri, 05 Sep 2025 09:26:40 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuRR6-00000000EHT-3bq8
-	for linux-mediatek@lists.infradead.org;
-	Fri, 05 Sep 2025 08:04:45 +0000
-Received: by mail-lj1-x22f.google.com with SMTP id 38308e7fff4ca-336b071e806so16880551fa.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 05 Sep 2025 01:04:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1757059483; x=1757664283; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=3J4+g2V4sWrtHtemeApia0D1CwSCabpiECH2Gc7jqHs=;
-        b=S30xlrtoQ0vKwUthWUbn1F2DGWMqy+xbKoIXbL7/TsgdpK6aMFfHKtL1Q/y2dheRyU
-         7p1Hlnv91Hnl8YUzTWmfu7itcvOSs1mOItxzNnhLgcY1g/bG8xM7MvR/6PDRx0OFLNjh
-         1My2gTfMPCtUNXGoTDiM5PGA+H6HlwW1S7kIY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757059483; x=1757664283;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=3J4+g2V4sWrtHtemeApia0D1CwSCabpiECH2Gc7jqHs=;
-        b=d/7D9d+IkH/tsxlqBihpfd4FLxFpm+rEK2vK2cxe3GBvrSELW6Yuewm1rIjFb+s0ny
-         Q/DlZO/MLeMxzL0HJU9/aQAQ2vj1b1B9pI/Tpg+7LBiIlFPCxEkoeMLqp4BE1FJ377Zo
-         v3++XksxVfarCKJnLxJwv4h+HmbsX531mZqPXCrksTy1Pp8QHnVJgt0DJe2H4bd74kSN
-         +b4o/1txMgpNsRH5D+5HGshqDTfnWkyENgdxiSOt6n6IxieTOaIfbP3TwO0xrOZf23TT
-         o6gGIXiMrSjwSg4q5OCqXIf0zP0MEhuqgVGFuKaAHdN8Wrr9kCeX8S0HH0CEd3bxIuxD
-         cGQQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXTBZftk8UEXs56Kh4bynUQE3pL/PvsmfUG+R8WpzGD5R8wJsInUHJXqiHo/13/mI88065Mr59Okyd3fny/6Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxBGgzG74/seO29WE3kEQn+b16wPaazhCYhE103RstSoCj1YBDj
-	LLqccabaqODqWQLHTp3BAjF7AGoveA5udVG1i7cjwbDNiY274xLhkyW4GddyxTacrdSPk7c8/um
-	R3dyEmhb7aoaoxQY0KEqbOc1/KWCQrtsMUbtecddb
-X-Gm-Gg: ASbGnctjic0LAv1UBCGXemu2QKQfdNboPlPL39HaBAD8EIiDcGCdLK67y9wiLUS6oAT
-	a0WmOGwx+iYFO5BI/OBWtWAlCLaU01GsFE/696+VXlLRWi/IfTW05H789mGIxKW6v/YtyGwpqhh
-	T4R9NqBuIldlSzSQhrjxb9wLdvfjMibbFhjfEq2j5QNqJpkYk5a8AcwJTM2tQmSr+Wh/pOjG4ip
-	PV/vsuyH3AgIDaGtU2Qc8XDA9PKYasNThf2ETgOQA2qeBfC
-X-Google-Smtp-Source: AGHT+IFYc+QgjrNQcnNX0OlLPGUtYQKqYiLrIJbM/loEuXaaE2NFn67DssV7d5/BEdo89ntnizvXLq3xRVbqrk9nj5U=
-X-Received: by 2002:a05:651c:2106:b0:336:e176:cd3c with SMTP id
- 38308e7fff4ca-336e176d479mr52475301fa.38.1757059483084; Fri, 05 Sep 2025
- 01:04:43 -0700 (PDT)
+	id 1uuRY4-00000000GZ8-15PW;
+	Fri, 05 Sep 2025 08:11:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1757059914;
+	bh=UIitS/BrAV5TC2kzay8yvqoEA1Xou313F2oKC/IdHNs=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Cou6lLEcxEINkpQGfimSKKIWWcAbo+MdxXQjYZFPNNR2yIAlRw8uyMHj4oWSylfiN
+	 28Pn9kh9sOM4k5PVEtEa7zx5p7NgEAImXzEplalngZKZuHAeS8jaPeeG6NrxMj2fJk
+	 CzuIrGyAxM5Izl1GrzQoctTgWFQCaGU6JFjd1WaBJvX2d+NI5/ptpaOQemXGLGbVUt
+	 smiqE15JQ+xrl+PDad4IWGoYdXS15vco7rK8mtto8oSTjj0YaI9QsAj6QNFdAZpA8f
+	 vATYKCAkU+G6Xz6HRV84OFT1Iqs64MFkA802+usc8pAI+O2HPnq+p3xNMCUFNc+LIm
+	 bFpry9LDd9K5g==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5D5FB17E12B9;
+	Fri,  5 Sep 2025 10:11:53 +0200 (CEST)
+Message-ID: <2c681013-ca03-4f0f-8fe9-44475a97dfef@collabora.com>
+Date: Fri, 5 Sep 2025 10:11:52 +0200
 MIME-Version: 1.0
-References: <20250829091913.131528-1-laura.nao@collabora.com> <20250829091913.131528-20-laura.nao@collabora.com>
-In-Reply-To: <20250829091913.131528-20-laura.nao@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 5 Sep 2025 16:04:32 +0800
-X-Gm-Features: Ac12FXyKW6bhjZsI-yGgtsh7BXxxyLqh5BQG4iFyVSU7pOJ_sKap2vxzQ5qbqlw
-Message-ID: <CAGXv+5F0pWn5+iE+3pgpZ+GMoXDV-eoEx4zKTfsmV5cpa-WC5Q@mail.gmail.com>
-Subject: Re: [PATCH v5 19/27] clk: mediatek: Add MT8196 mdpsys clock support
-To: Laura Nao <laura.nao@collabora.com>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, robh@kernel.org, 
-	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com, p.zabel@pengutronix.de, 
-	richardcochran@gmail.com, guangjie.song@mediatek.com, 
-	linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
-	kernel@collabora.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 14/27] clk: mediatek: Add MT8196 peripheral clock
+ support
+To: Chen-Yu Tsai <wenst@chromium.org>, Laura Nao <laura.nao@collabora.com>
+Cc: mturquette@baylibre.com, sboyd@kernel.org, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
+ p.zabel@pengutronix.de, richardcochran@gmail.com,
+ guangjie.song@mediatek.com, linux-clk@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org, kernel@collabora.com
+References: <20250829091913.131528-1-laura.nao@collabora.com>
+ <20250829091913.131528-15-laura.nao@collabora.com>
+ <CAGXv+5Fj9Hwmk2y_bZhGX0EUEY42tm3t0nTrjtV-sYhD_B-xVg@mail.gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <CAGXv+5Fj9Hwmk2y_bZhGX0EUEY42tm3t0nTrjtV-sYhD_B-xVg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250905_010444_899438_7AFF10AE 
-X-CRM114-Status: GOOD (  10.12  )
+X-CRM114-CacheID: sfid-20250905_011156_474818_2C99BF52 
+X-CRM114-Status: GOOD (  11.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,25 +82,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 29, 2025 at 5:21=E2=80=AFPM Laura Nao <laura.nao@collabora.com>=
- wrote:
->
-> Add support for the MT8196 mdpsys clock controller, which provides clock
-> gate control for MDP.
->
-> Signed-off-by: Laura Nao <laura.nao@collabora.com>
+Il 05/09/25 07:05, Chen-Yu Tsai ha scritto:
+> On Fri, Aug 29, 2025 at 5:21 PM Laura Nao <laura.nao@collabora.com> wrote:
+>>
+>> Add support for the MT8196 peripheral clock controller, which provides
+>> clock gate control for dma/flashif/msdc/pwm/spi/uart.
+>>
+>> Signed-off-by: Laura Nao <laura.nao@collabora.com>
+> 
+> Not sure why CLK_OPS_PARENT_ENABLE was removed, but it does seem like the
+> right thing to do, since this block is always on and doesn't require a
+> clock to be enabled before accessing the registers.
+> 
+> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org> # CLK_OPS_PARENT_ENABLE change
+> 
+> Note that I did not go through the bit definitions. I assume the other
+> Collabora folks did a good job of reviewing those.
 
-IMO removing CLK_OPS_PARENT_ENABLE is the right thing to do.
+Yes, I did :-)
 
-However if the hardware ends up does having a requirement that _some_
-clock be enabled before touching the registers, then I think the
-MTK clock library needs to be refactored, so that a register access
-clock can be tied to the regmap. That might also require some work
-on the syscon API.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Whether the hardware needs such a clock or not, we would need some input
-from MediaTek. There's nothing in the datasheet on this.
-
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org> # CLK_OPS_PARENT_ENABLE remo=
-val
+Cheers,
+Angelo
 
