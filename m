@@ -4,55 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4060ECA1013
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Sep 2025 14:35:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0DA8CA1010
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Sep 2025 14:35:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xJDFnVvMBGp0ssnHfwN1wWO5gqMs/oZsQPyIp11iV0U=; b=mn8r697HwFjH0PXLKxrPXbLyDd
-	fIReDqjwgdVASUkE7BjY4qr2EdExUlJUdYh5+GRD9OmRXUG2ExLGyiAW6naFQnjPZf8NFwMPfQzJU
-	bSLgJN7W31X16ZAb3tE5wzd/wufSgoBPUEElWBZy0rx3ac3sVLrcDbWYjBUJNucO13FeeHfuXLXNw
-	NuEC7wWs4bMbXlBNmqnwPAetWs9emrsY25yQQmWIqWuoC5hyh0b5VZ896yZ2k/ArnqjDTVfrXrDPx
-	cXDqfa63eXXSqwp6KigjpHbCs9bfBM8pkMb5wp5S/hSKHl/qYnglNvZw83OV8wMIRhiA9UR2KaRN4
-	Rd7EpJ6w==;
+	bh=mG1dwW8e+KHt5M47urUQVsE3NGGmomoS29HjaU5lJmw=; b=Xrxzq/qnjVL9iCjkSmTw3li9mO
+	BrQrrgdzgghwWZ9GG5+tjZBMkkV+74MNJtvsfNTFQGwNf33AXfNQRbUvMksCgdXY9vTIEYdlMuMd1
+	yc+9E+RDRIBkLBjS1SMIzPzK0cixwtiwyar/I//QdnoFvMoSaVgYCvg9v4VFkUMSeIdnY/pn1qeo3
+	y1yO7Ui+J1xrxT9BNL80RYHBEQG5H4vj7wmu6BW2mLwixbNdshjP9FOvN6rYNDYe0frJsvIgCMeh5
+	6/ppf9oW5HNEGuggwf7MZodQ1LwBxWRqst8gerbkyD5UZUg2ErpY0jfPEx327UYsSvIUdnyn9Uhy0
+	CesrKAHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuXXX-00000002NZH-3pAG;
-	Fri, 05 Sep 2025 14:35:47 +0000
+	id 1uuXXa-00000002NcA-2tQj;
+	Fri, 05 Sep 2025 14:35:50 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuTbx-0000000124c-0eRM;
-	Fri, 05 Sep 2025 10:24:06 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1757067830; cv=none; 
+	id 1uuTc0-0000000126a-1F2c;
+	Fri, 05 Sep 2025 10:24:09 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1757067836; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=hkH1JYAHlf6zYePcwkDs61WrJEaI2U8t/sNwWsVY11sa6gvljLXFKRyq23txh7Y0Yv/uK19wlrT3e4SXgdCBDWXxCGU2f/oJATnXFjxrS1Xyh56URnRI0fPrXndq6Tjl8qjX+VBIhDeUp5bM1Ci0OK9TjEX3DZ5WB30W1mUPVlw=
+	b=ATg3h1zfv3/jS6zXhkHRoPD3g9DIqIS+2eN2G4Jo5dnkbCpTKlN97xxnoMyqm+4VEEpq8uKQ4WNKloi2BB983gMCvWM4lTZJ/sSsB3MwL950b0VxSTCrNMRVZutQD0vA2bYko24KR/29ciL0w7IH54uP3eZWncEGMZU6BgGpsnU=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1757067830; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=xJDFnVvMBGp0ssnHfwN1wWO5gqMs/oZsQPyIp11iV0U=; 
-	b=oHxzZdt1XRFdsUMU9mwdgeHf/jr+YHjl9c1yoeJhH+tc2SygADI4O/gLUbezcJx/4RVn3lZiQr1206srArcmv1rbc1ptKdtZPqI1aabaJNbwK+63CtNPKpYv2MW1qIdseCmoIZuA+DsbGfpOyEGX52kh7FAuB+SL7+qcKW5byHg=
+	t=1757067836; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=mG1dwW8e+KHt5M47urUQVsE3NGGmomoS29HjaU5lJmw=; 
+	b=SoCr2YzRUQWKK3GYq4uMzKPrwztceuMJHaOjBv8SSvqMZHU/VyoxwMCEpEtO62onwgNhocPbEU5f1UyXobly7dnv4RxSk49+euG4EXYuXJkjd6bX3URLE69dLEXrHSACDEwG+BXoalm36VHTp5yR1Zh4xDuP0HXWEoKBcDTIWRk=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1757067830;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1757067836;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=xJDFnVvMBGp0ssnHfwN1wWO5gqMs/oZsQPyIp11iV0U=;
-	b=g3iqPgC0yF5eeVlbjETcewPUummZO+BM/mR5xuxysw/iJzhR3Nwxq4zw7SVT78kb
-	SEqjPanpnv74k+zqvlst6WUHmNUjdT2b0kHoX29/2dt6rOSdoiFAaT9RyxU5Xo+CA/D
-	nqSkQnfZird48/prsZJb/VBo245LgQdYiapYjiI0=
-Received: by mx.zohomail.com with SMTPS id 1757067828625770.7656618316871;
-	Fri, 5 Sep 2025 03:23:48 -0700 (PDT)
+	bh=mG1dwW8e+KHt5M47urUQVsE3NGGmomoS29HjaU5lJmw=;
+	b=cpZi6IsOGzsNtksRZR7kgEozkeRs1S/z6eupPnXQ7jCjm8Molu0n31MS0CujbVAH
+	JEx+Lwi2KkSDkymGRZ4yS/shYv/yhDUBx4EpLgsqpbIOjb4CEgxAxXSD907vhyBjlCN
+	TonGngEYG+70JBlUgPfYDMAJ055NKA04HXLjDQKU=
+Received: by mx.zohomail.com with SMTPS id 175706783425443.237791990502046;
+	Fri, 5 Sep 2025 03:23:54 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Fri, 05 Sep 2025 12:22:58 +0200
-Subject: [PATCH RFC 02/10] dt-bindings: devfreq: add mt8196-gpufreq binding
+Date: Fri, 05 Sep 2025 12:22:59 +0200
+Subject: [PATCH RFC 03/10] dt-bindings: sram: Add compatible for
+ mediatek,mt8196-gpufreq-sram
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250905-mt8196-gpufreq-v1-2-7b6c2d6be221@collabora.com>
+Message-Id: <20250905-mt8196-gpufreq-v1-3-7b6c2d6be221@collabora.com>
 References: <20250905-mt8196-gpufreq-v1-0-7b6c2d6be221@collabora.com>
 In-Reply-To: <20250905-mt8196-gpufreq-v1-0-7b6c2d6be221@collabora.com>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
@@ -76,8 +77,9 @@ Cc: Chia-I Wu <olvaffe@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>,
  Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250905_032405_261073_7C0A875F 
-X-CRM114-Status: GOOD (  14.06  )
+X-CRM114-CacheID: sfid-20250905_032408_397670_D501CA11 
+X-CRM114-Status: UNSURE (   9.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,150 +94,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On the MediaTek MT8196 SoC, the GPU has its power and frequency
-dynamically controlled by an embedded special-purpose MCU. This MCU is
-in charge of powering up the GPU silicon. It also provides us with a
-list of available OPPs at runtime, and is fully in control of all the
-regulator and clock fiddling it takes to reach a certain level of
-performance. It's also in charge of enforcing limits on power draw or
-temperature.
+This compatible is used for an SRAM section that's shared between the
+MT8196's application processor cores and the embedded GPUEB MCU that
+controls the GPU frequency.
 
-Add a binding for this device in the devfreq subdirectory, where it
-seems to fit in best considering its tasks.
-
-The functions of many of the mailbox channels are unknown. This is not
-the fault of this binding's author; we've never received adequate
-documentation for this hardware, and the downstream code does not make
-use of them in a way that'd reveal their purpose. They are kept in the
-binding as the binding should be complete.
+Through this SRAM section, things about the GPU frequency controller
+like the OPP table can be read.
 
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- .../bindings/devfreq/mediatek,mt8196-gpufreq.yaml  | 116 +++++++++++++++++++++
- 1 file changed, 116 insertions(+)
+ Documentation/devicetree/bindings/sram/sram.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/devfreq/mediatek,mt8196-gpufreq.yaml b/Documentation/devicetree/bindings/devfreq/mediatek,mt8196-gpufreq.yaml
-new file mode 100644
-index 0000000000000000000000000000000000000000..1fe43c9fc94bb603b1fb77e9a97a27e92fea1ae8
---- /dev/null
-+++ b/Documentation/devicetree/bindings/devfreq/mediatek,mt8196-gpufreq.yaml
-@@ -0,0 +1,116 @@
-+# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/devfreq/mediatek,mt8196-gpufreq.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek MFlexGraphics Performance Controller
-+
-+maintainers:
-+  - Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-+
-+properties:
-+  $nodename:
-+    pattern: '^performance-controller@[a-f0-9]+$'
-+
-+  compatible:
-+    enum:
-+      - mediatek,mt8196-gpufreq
-+
-+  reg:
-+    items:
-+      - description: GPR memory area
-+      - description: RPC memory area
-+      - description: SoC variant ID register
-+
-+  reg-names:
-+    items:
-+      - const: gpr
-+      - const: rpc
-+      - const: e2_id
-+
-+  clocks:
-+    items:
-+      - description: main clock of the embedded controller (EB)
-+      - description: core PLL
-+      - description: stack 0 PLL
-+      - description: stack 1 PLL
-+
-+  clock-names:
-+    items:
-+      - const: eb
-+      - const: mfgpll
-+      - const: mfgpll_sc0
-+      - const: mfgpll_sc1
-+
-+  mboxes:
-+    items:
-+      - description: FastDVFS events
-+      - description: frequency control
-+      - description: sleep control
-+      - description: timer control
-+      - description: frequency hopping control
-+      - description: hardware voter control
-+      - description: gpumpu (some type of memory control, unknown)
-+      - description: FastDVFS control
-+      - description: Unknown
-+      - description: Unknown
-+      - description: Unknown, but likely controls some boosting behaviour
-+      - description: Unknown
-+
-+  mbox-names:
-+    items:
-+      - const: fast_dvfs_event
-+      - const: gpufreq
-+      - const: sleep
-+      - const: timer
-+      - const: fhctl
-+      - const: ccf
-+      - const: gpumpu
-+      - const: fast_dvfs
-+      - const: ipir_c_met
-+      - const: ipis_c_met
-+      - const: brisket
-+      - const: ppb
-+
-+  shmem:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description: phandle to the shared memory region of the GPUEB MCU
-+
-+required:
-+  - compatible
-+  - reg
-+  - reg-names
-+  - clocks
-+  - clock-names
-+  - mboxes
-+  - mbox-names
-+  - shmem
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mediatek,mt8196-clock.h>
-+
-+    gpufreq: performance-controller@4b09fd00 {
-+        compatible = "mediatek,mt8196-gpufreq";
-+        reg = <0x4b09fd00 0x80>,
-+              <0x4b800000 0x1000>,
-+              <0x4b860128 0x4>;
-+        reg-names = "gpr", "rpc", "e2_id";
-+        clocks = <&topckgen CLK_TOP_MFG_EB>,
-+                 <&mfgpll CLK_MFG_AO_MFGPLL>,
-+                 <&mfgpll_sc0 CLK_MFGSC0_AO_MFGPLL_SC0>,
-+                 <&mfgpll_sc1 CLK_MFGSC1_AO_MFGPLL_SC1>;
-+        clock-names = "eb", "mfgpll", "mfgpll_sc0",
-+                      "mfgpll_sc1";
-+        mboxes = <&gpueb_mbox 0>, <&gpueb_mbox 1>, <&gpueb_mbox 2>,
-+                 <&gpueb_mbox 3>, <&gpueb_mbox 4>, <&gpueb_mbox 5>,
-+                 <&gpueb_mbox 6>, <&gpueb_mbox 7>, <&gpueb_mbox 8>,
-+                 <&gpueb_mbox 9>, <&gpueb_mbox 10>, <&gpueb_mbox 11>;
-+        mbox-names = "fast_dvfs_event", "gpufreq", "sleep", "timer", "fhctl",
-+                     "ccf", "gpumpu", "fast_dvfs", "ipir_c_met", "ipis_c_met",
-+                     "brisket", "ppb";
-+        shmem = <&gpufreq_shmem>;
-+    };
+diff --git a/Documentation/devicetree/bindings/sram/sram.yaml b/Documentation/devicetree/bindings/sram/sram.yaml
+index 7c1337e159f2371401ae99313375656fff014ed4..6ba0dd6a66def11f56a1d5276d7397b655bff11e 100644
+--- a/Documentation/devicetree/bindings/sram/sram.yaml
++++ b/Documentation/devicetree/bindings/sram/sram.yaml
+@@ -89,6 +89,7 @@ patternProperties:
+             - arm,juno-scp-shmem
+             - arm,scmi-shmem
+             - arm,scp-shmem
++            - mediatek,mt8196-gpufreq-sram
+             - renesas,smp-sram
+             - rockchip,rk3066-smp-sram
+             - samsung,exynos4210-sysram
 
 -- 
 2.51.0
