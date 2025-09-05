@@ -4,69 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71D98CA1010
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Sep 2025 16:44:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24BBCCA1017
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Sep 2025 19:27:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=aTPbuqTFGPpcvTZTvr3E+08PU5bGC+EZtPBLGAy0lLA=; b=y0ufHgU/vg7VQ1o2i44VBg58UH
-	F4S/6RYyb8gqWmnp7yq6GF2WTQvBNeZQFh03bFDXpwBSEnrdidPuk5NYL5DYmuTpDABv8WesngTQ3
-	hSqLw00ZzVWgiVrhP7nSQBXssZsHN4nzGwRo8LIf295ToJaLcBtPys4bIbGNhasOVu3iX6qTEqYik
-	HP4JgA5H810AfHDlmnBDzA1tPQ++WJZZ1L9JrktLqa2ndm6cHrbD1gArbKqltL28xGuT4afKkpitI
-	p/TcSYLyiQve6cS3ge72yNe/uNAEkuBJqFmAaoVvrIbzu7rT07THMS0DuiuTokdbRAeB2DYPea5VO
-	brA9zFSw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gwsaUsiPTz6C0FNobEgQ77nTd1Kw9HiUyiggzzyF+Pg=; b=5D+H+OjLLWtuPaSRD7BH2v/SvP
+	8xAXiZHDMDUMS71k4MdV0/i0+YH9eFwvZ9C6gRyn9cgdKsUYYU+8/juIC+1BHVHdnvs5tF/dXfhiX
+	rXyzE4hoBQRwInTLtx+18baxkrvAv4Dwa5TWnuT6IbqVyq2NhxAJWwzwaMrnqbixiY3JobQBf2eml
+	QT4nlp05XfS0+KPCoW2MCq84dfhUc4U4EQ+z3MTBxhLrIEPM/8sPjaEX+JAfemeCeWcrA2O3l3Qf4
+	Ue8EuwpJPa4mSasFw1073kpzxEmmKrpq9HmWnzC5iVPMIQznOmBfEtkEQ9IhlOXvFuV0BSi0zLRFv
+	O8PH7XYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuZYU-00000003CTZ-0td2;
-	Fri, 05 Sep 2025 16:44:54 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uuc5K-000000047F2-1fGA;
+	Fri, 05 Sep 2025 19:26:58 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuWNW-00000001wJK-2yph;
-	Fri, 05 Sep 2025 13:21:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1757078480;
-	bh=5LzAHgCUGNowNZG8+zWWeAtPEjv3HfW+vL/OBN9utHY=;
-	h=From:Date:Subject:To:Cc:From;
-	b=PpaRUePreKEpkpL6JsC0+yrr9JQmvmZAOm5EU2habrc+2slwPpcYIwLj3JKBwil2s
-	 V0PAiuQRybZeZULK7jN8px3xw7IMcS2c1DrDH1oBo4EVJR4fxtxgogrXfA2dTRpaL6
-	 u41DAmTJx6PeXvRpXTGTOVgvYJB/2+MYhhNrpqKuUMa0MlFQEYg/n/h2+wREtUwvhN
-	 VhOlGeBXti6T29O6uiBcOIakEPNYbQOTp/+IpW4nrBq9VuU8dAgQJotXgwom4lsSuA
-	 XjZWNTaUBPtNm6UAhSPv1jsZDqSjuSQkBYw7IoPEBDHXSfTcCLX7wnWG/NzIUF7P5l
-	 ffI50ZCV8BFlg==
-Received: from localhost-live.home (2a01cb0892F2D600c8f85cF092d4AF51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: jmassot)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id DB0FF17E0B85;
-	Fri,  5 Sep 2025 15:21:19 +0200 (CEST)
-From: Julien Massot <julien.massot@collabora.com>
-Date: Fri, 05 Sep 2025 15:21:19 +0200
-Subject: [PATCH] arm64: dts: mediatek: mt8395-nio-12l: Enable UFS
-MIME-Version: 1.0
+	id 1uuXxr-00000002Zrb-0SfX;
+	Fri, 05 Sep 2025 15:02:59 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 694CC602B2;
+	Fri,  5 Sep 2025 15:02:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E0750C4CEF1;
+	Fri,  5 Sep 2025 15:02:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1757084578;
+	bh=fXAlkg6U4rjB2T88uzlB0xsdi6LWa2QU3tBer2f0tLE=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=nrXh5JC8NNluI3p5jaLqySzGJpmeKgwV9Zu67Olq4VBiL2OHhcKZp17i1qxOAByjZ
+	 IZ4BCOyAB4ZZgxu5fMVQ+gBrLQb/M77HHt6Pfvdmmbrb0gC5kFv2DggICl9HnpqV02
+	 iVXgMMfQUTS64BpH9F8/DUQ0kpxwpbRoVVZsdjWg3YbcIJmoiqRkfxX56L+OSBGI8w
+	 MNd7Gk13vdIAKKNRRKjk8kHQ5BkwPmP6Fzka3zSdZjAnlil3fc0Y7eeGv9JKI3sGys
+	 Jx6VoHtvtf3rU5cudLlcScxlSJT+J4E1IOSyA/AjtvsJypal4QQDn9r61B6dFx9KXV
+	 8T6H4OovQB4+g==
+Date: Fri, 05 Sep 2025 10:02:57 -0500
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250905-radxa-nio-12l-ufs-v1-1-e2468bfd2c69@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAM7jumgC/x3MTQqAIBBA4avIrBtQ6ce6SrQwG2sgNJQiiO6et
- PwW7z2QKTFlGMQDiS7OHEOBqgS4zYaVkJdi0FI3spcNJrvcFgNHVHrH02d0RnXWtLWfaw2lOxJ
- 5vv/nOL3vB3UglfJjAAAA
-X-Change-ID: 20250905-radxa-nio-12l-ufs-c817a864fb42
-To: kernel@collabora.com, Rob Herring <robh@kernel.org>, 
+Content-Transfer-Encoding: 8bit
+MIME-Version: 1.0
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Chris Lu <chris.lu@mediatek.com>, 
+ linux-mediatek <linux-mediatek@lists.infradead.org>, 
  Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Julien Massot <julien.massot@collabora.com>
-X-Mailer: b4 0.14.2
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250905_062122_909000_1DB8CC64 
-X-CRM114-Status: UNSURE (   9.39  )
-X-CRM114-Notice: Please train this message.
+ Sean Wang <sean.wang@mediatek.com>, Marcel Holtmann <marcel@holtmann.org>, 
+ Jiande Lu <jiande.lu@mediatek.com>, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+ linux-bluetooth <linux-bluetooth@vger.kernel.org>, 
+ linux-kernel <linux-kernel@vger.kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Hao Qin <Hao.qin@mediatek.com>, 
+ Luiz Von Dentz <luiz.dentz@gmail.com>, 
+ devicetree <devicetree@vger.kernel.org>, Deren Wu <deren.Wu@mediatek.com>
+To: Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>
+In-Reply-To: <20250905084433.26999-1-ot_zhangchao.zhang@mediatek.com>
+References: <20250905084433.26999-1-ot_zhangchao.zhang@mediatek.com>
+Message-Id: <175708448180.930634.147702031291534747.robh@kernel.org>
+Subject: Re: [PATCH v7] dt-bindings: net: mediatek,mt7925-bluetooth.yaml
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,43 +76,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-UFS is the primary storage for the Radxa NIO 12L. Enable it
-now that the ufshci and ufsphy nodes are available in the
-common mt8195 dtsi.
 
-Signed-off-by: Julien Massot <julien.massot@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+On Fri, 05 Sep 2025 16:44:33 +0800, Zhangchao Zhang wrote:
+> Reset BT via BT_KILL_1V2_L hardware pin.
+> 
+> On the M.2 standard hardware pin interface, the MTK chip
+> has a pin called BT_KILL_1V2_L or W_DISABLE#2, it uses
+> function-level device reset (FLDR) to reset Bluetooth.
+> When it is pulled low, it can external shut down the BT
+> function, it is defined as 5 on the MT7925 chip, and is
+> defined as 248 on the device tree pio controller.
+> 
+> Signed-off-by: Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>
+> ---
+>  .../bluetooth/mediatek,mt7925-bluetooth.yaml  | 47 +++++++++++++++++++
+>  MAINTAINERS                                   |  1 +
+>  2 files changed, 48 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7925-bluetooth.yaml
+> 
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-index 329c60cc6a6be0b4be8c0b8bb033b32d35302804..4cbd78c126f6b56f1833d220f7a7fbc7e4320cbb 100644
---- a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-@@ -990,6 +990,16 @@ &uart1 {
- 	status = "okay";
- };
- 
-+&ufshci {
-+	vcc-supply = <&mt6359_vemc_1_ldo_reg>;
-+	vccq2-supply = <&mt6359_vufs_ldo_reg>;
-+	status = "okay";
-+};
-+
-+&ufsphy {
-+	status = "okay";
-+};
-+
- &ssusb0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&usb3_port0_pins>;
+My bot found errors running 'make dt_binding_check' on your patch:
 
----
-base-commit: 6c68f4c0a147c025ae0b25fab688c7c47964a02f
-change-id: 20250905-radxa-nio-12l-ufs-c817a864fb42
+yamllint warnings/errors:
 
-Best regards,
--- 
-Julien Massot <julien.massot@collabora.com>
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7925-bluetooth.example.dtb: bluetooth (mediatek,mt7925-bluetooth): Unevaluated properties are not allowed ('#gpio-cells' was unexpected)
+	from schema $id: http://devicetree.org/schemas/net/bluetooth/mediatek,mt7925-bluetooth.yaml#
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250905084433.26999-1-ot_zhangchao.zhang@mediatek.com
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
 
 
