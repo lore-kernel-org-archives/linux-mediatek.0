@@ -4,80 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C394BCA0FED
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Sep 2025 10:27:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5162DCA1013
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Sep 2025 10:33:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1JWIJLQsE75ESNF5yeSXNHEgKBXuHoOPiFdqBHhk0NE=; b=Z0rM3oRg0O5XpvWKqD8PtyzhZT
-	mWOf7lCd3kYJPJnDWZv4RM7PKZgvvvK0r3NjKEKVY7ePyBJGJA8PmW8dhrTf0Jc+oQKagsU0oQQMr
-	Kwg0uchNCzpKjKZj3HA5DWvoHEiJEm0oVKP1zB/0wuZWPYDmzaHsMZU2c6t1A9CaDJa3rQ0i9LwJ9
-	SfTftrCbtK+6Tc1VDUKV7M9CLRYO673z1fMJz1q3QbaI8xdo5n09vrJEBvVJkicTmW0hr9d6e36bO
-	4nosIlf1E34JGUdsvmXR5qUuoa5Yr3PzLAPvolLK/evZ0E5StH18w0O6pT1hi878uzdyd02LmBRBJ
-	b2xN1Pdg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LgPpbGP1TxQkC8nJgZ2RDZuI1hJsMqayQrMZpP70/Us=; b=eST0oK5ta48i1M8eamqyYQ69nY
+	VmGP8kuQ3kNYwl3V3LjVxkswzIxt9z/HOpqlzyQg//kqQqf/mw3Ml5/5DNDD+XMur7Wn+6+An79fH
+	mu7IsbD0MaB5pXDXbjTqfnYRVHV045H716KvNvocFMWNVjiSd76mSFwrJtvnWkVTAAy7XVMNkgipX
+	rY4OpdPe0JN3Bi2+z3g76ykk8OZD2Nx/yzscXEiqjEQTXV4vBmcrtw/n9NZUjYV64KWoeEPXrMSt3
+	TJGebhqqKbUCUenFVjkUvZeamgnsWR86DgUrZBeM2UCiKT2+/VWfb8Qxz7V6kfhymhvPyrlu9zPNR
+	wTxPTM3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuTfT-000000013b2-4BSL;
-	Fri, 05 Sep 2025 10:27:44 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1uuTl6-000000015PD-47uZ;
+	Fri, 05 Sep 2025 10:33:32 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuS0v-00000000RZ8-0Aa9;
-	Fri, 05 Sep 2025 08:41:46 +0000
-X-UUID: 24d747348a3411f09eb0dd999d3936bf-20250905
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=1JWIJLQsE75ESNF5yeSXNHEgKBXuHoOPiFdqBHhk0NE=;
-	b=aDMa5Gcc8qZ4aGySC3ly6P+r6ClqH8GnrC0QstgvztU8LLQK+H7+59N4qFwIn5yNrD66e6j9swgZWly4WZ4f6sssrG+aA99K+8L3RFvzsa3okS/nRScYzBav8/cUYidVHXVroxKv8G5XhZjUZ3RrbVcg++naZy2yt9v9a+5I7/k=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.3,REQID:9f6201a6-4d07-4469-b06d-c6947b0790ec,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:f1326cf,CLOUDID:411a7884-5317-4626-9d82-238d715c253f,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:-5,Content:0|15|50,EDM:
-	-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,
-	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 24d747348a3411f09eb0dd999d3936bf-20250905
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
-	(envelope-from <ot_zhangchao.zhang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1425987763; Fri, 05 Sep 2025 01:41:40 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Fri, 5 Sep 2025 16:41:35 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Fri, 5 Sep 2025 16:41:34 +0800
-From: Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>
-To: Marcel Holtmann <marcel@holtmann.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk@kernel.org>, Luiz Von
- Dentz <luiz.dentz@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Jiande Lu <jiande.lu@mediatek.com>,
-	Deren Wu <deren.Wu@mediatek.com>, Chris Lu <chris.lu@mediatek.com>, Hao Qin
-	<Hao.qin@mediatek.com>, linux-bluetooth <linux-bluetooth@vger.kernel.org>,
-	linux-kernel <linux-kernel@vger.kernel.org>, linux-arm-kernel
-	<linux-arm-kernel@lists.infradead.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Zhangchao Zhang
-	<ot_zhangchao.zhang@mediatek.com>
-Subject: [PATCH v7 1/1] Bluetooth: mediatek: add gpio pin to reset bt
-Date: Fri, 5 Sep 2025 16:40:59 +0800
-Message-ID: <20250905084059.26959-2-ot_zhangchao.zhang@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20250905084059.26959-1-ot_zhangchao.zhang@mediatek.com>
-References: <20250905084059.26959-1-ot_zhangchao.zhang@mediatek.com>
+	id 1uuS2u-00000000SJg-01mY;
+	Fri, 05 Sep 2025 08:43:48 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 1E96E6027B;
+	Fri,  5 Sep 2025 08:43:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 92F77C4CEF1;
+	Fri,  5 Sep 2025 08:43:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1757061826;
+	bh=oEwTWadZNkJA3jji4rn9QqpCSfJM+iGAZQK5tLETGYY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Wm5LhzqFKLlDiWm86N6Qv5ZBplEUa/ExXAJaHqbEeIkcSWBVQVg2Mjr9u6XkejaLH
+	 /zwCqptHSQAYqM3d00UGf7jRLB8a9PZJReoLI62nu5W3wSnWFfB53QRe2YbtnMbkvQ
+	 3viNVr4hZJA2t5ePmZm7vN6Kapy3fkEaBwOkEMCyCYayPys/mINcom2rXYj/pzTnja
+	 LtYB1PCgMKAeY7sKXSYxtGbHmPtLmZg4pjbiyqeBnF4LlNaHE3JOgOWF0wkmxdE37X
+	 GxAuyW2pxftWtd69lNlUrfACsvo0qr0yEoArdQcKLft/SYOlCVt3YPbUCh5TMWz3bp
+	 /Bnqes8RUqiUQ==
+Message-ID: <a7589659-0352-4d47-a3cf-f2433cc512ec@kernel.org>
+Date: Fri, 5 Sep 2025 10:43:41 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250905_014145_079884_DB925558 
-X-CRM114-Status: GOOD (  13.25  )
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 1/1] Bluetooth: mediatek: add gpio pin to reset bt
+To: Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>,
+ Marcel Holtmann <marcel@holtmann.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Luiz Von Dentz <luiz.dentz@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Sean Wang <sean.wang@mediatek.com>, Jiande Lu <jiande.lu@mediatek.com>,
+ Deren Wu <deren.Wu@mediatek.com>, Chris Lu <chris.lu@mediatek.com>,
+ Hao Qin <Hao.qin@mediatek.com>,
+ linux-bluetooth <linux-bluetooth@vger.kernel.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>
+References: <20250905084059.26959-1-ot_zhangchao.zhang@mediatek.com>
+ <20250905084059.26959-2-ot_zhangchao.zhang@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <20250905084059.26959-2-ot_zhangchao.zhang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,79 +122,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Makes the platform Bluetooth to be reset by hardware pin,
-it provides two methods to do it for mediatek controller,
-and it has been tested locally many times and can reset normally.
+On 05/09/2025 10:40, Zhangchao Zhang wrote:
+> Makes the platform Bluetooth to be reset by hardware pin,
+> it provides two methods to do it for mediatek controller,
+> and it has been tested locally many times and can reset normally.
+> 
+> When an exception occurs, resetting Bluetooth by hardware pin
+> is more stable than resetting Bluetooth by software.
+> If the corresponding pin is not found in dts,
+> bluetooth can also be reset successfully.
+> 
+> Co-developed: Hao Qin <hao.qin@mediatek.com>
+> Co-developed: Chris Lu <chris.lu@mediatek.com>
+> Co-developed: Jiande Lu <jiande.lu@mediatek.com>
+> Signed-off-by: Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>
+> ---
+>  drivers/bluetooth/btmtk.c | 32 ++++++++++++++++++++++++++++++++
+>  1 file changed, 32 insertions(+)
+> 
+> diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+> index 4390fd571dbd..29d6a93f255d 100644
+> --- a/drivers/bluetooth/btmtk.c
+> +++ b/drivers/bluetooth/btmtk.c
+> @@ -6,6 +6,8 @@
+>  #include <linux/firmware.h>
+>  #include <linux/usb.h>
+>  #include <linux/iopoll.h>
+> +#include <linux/gpio/consumer.h>
+> +#include <linux/of.h>
+>  #include <linux/unaligned.h>
+>  
+>  #include <net/bluetooth/bluetooth.h>
+> @@ -359,11 +361,41 @@ int btmtk_set_bdaddr(struct hci_dev *hdev, const bdaddr_t *bdaddr)
+>  }
+>  EXPORT_SYMBOL_GPL(btmtk_set_bdaddr);
+>  
+> +static int btmtk_hw_gpio_reset(struct hci_dev *hdev, struct btmtk_data *reset_work)
+> +{
+> +	struct gpio_desc *reset_gpio;
+> +
+> +	/* Find device node*/
+> +	hdev->dev.of_node = of_find_compatible_node(NULL, NULL, "mediatek,mt7925-bluetooth");
 
-When an exception occurs, resetting Bluetooth by hardware pin
-is more stable than resetting Bluetooth by software.
-If the corresponding pin is not found in dts,
-bluetooth can also be reset successfully.
+Nothing improved.
 
-Co-developed: Hao Qin <hao.qin@mediatek.com>
-Co-developed: Chris Lu <chris.lu@mediatek.com>
-Co-developed: Jiande Lu <jiande.lu@mediatek.com>
-Signed-off-by: Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>
----
- drivers/bluetooth/btmtk.c | 32 ++++++++++++++++++++++++++++++++
- 1 file changed, 32 insertions(+)
+You just keep ignoring comments.
 
-diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-index 4390fd571dbd..29d6a93f255d 100644
---- a/drivers/bluetooth/btmtk.c
-+++ b/drivers/bluetooth/btmtk.c
-@@ -6,6 +6,8 @@
- #include <linux/firmware.h>
- #include <linux/usb.h>
- #include <linux/iopoll.h>
-+#include <linux/gpio/consumer.h>
-+#include <linux/of.h>
- #include <linux/unaligned.h>
- 
- #include <net/bluetooth/bluetooth.h>
-@@ -359,11 +361,41 @@ int btmtk_set_bdaddr(struct hci_dev *hdev, const bdaddr_t *bdaddr)
- }
- EXPORT_SYMBOL_GPL(btmtk_set_bdaddr);
- 
-+static int btmtk_hw_gpio_reset(struct hci_dev *hdev, struct btmtk_data *reset_work)
-+{
-+	struct gpio_desc *reset_gpio;
-+
-+	/* Find device node*/
-+	hdev->dev.of_node = of_find_compatible_node(NULL, NULL, "mediatek,mt7925-bluetooth");
-+	reset_gpio = gpiod_get_optional(hdev->dev.of_node, "reset", GPIOD_OUT_HIGH);
-+	if (IS_ERR(reset_gpio))
-+		return PTR_ERR(reset_gpio);
-+
-+	if (!reset_gpio)
-+		return -ENODEV;
-+
-+	if (test_and_set_bit(BTMTK_HW_RESET_ACTIVE, &reset_work->flags)) {
-+		bt_dev_err(hdev, "last reset failed? Not resetting again");
-+		gpiod_put(reset_gpio);
-+		return -EBUSY;
-+	}
-+	gpiod_set_value_cansleep(reset_gpio, 0);
-+	msleep(100);
-+	gpiod_set_value_cansleep(reset_gpio, 1);
-+	gpiod_put(reset_gpio);
-+	return 0;
-+}
-+
- void btmtk_reset_sync(struct hci_dev *hdev)
- {
- 	struct btmtk_data *reset_work = hci_get_priv(hdev);
- 	int err;
- 
-+	/* Try hardware GPIO reset*/
-+	err = btmtk_hw_gpio_reset(hdev, reset_work);
-+	if (!err)
-+		return;
-+	/* Otherwise, do software reset */
- 	hci_dev_lock(hdev);
- 
- 	err = hci_cmd_sync_queue(hdev, reset_work->reset_sync, NULL, NULL);
--- 
-2.45.2
+NAK
 
+Best regards,
+Krzysztof
 
