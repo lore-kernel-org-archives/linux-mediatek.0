@@ -4,89 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7005CA1002
-	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Sep 2025 16:59:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B983CA1012
+	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Sep 2025 17:58:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gEnwrOV3MXxfnmmoGy1WCr0zVelqqHdj4W6eSVNaxZs=; b=vQZr+G0Pm4CyDfl2jINOmjak04
-	qWmYFdBBPUOQ6rH/rLYEx2JBUrLaWP25L/K5d8o/aBryDTxrgnuWvKMkrX+YeYpHJwKuHGPLs9WwS
-	lz2w5aJE/hqrPoHI25jYlekfrlBP1+H3Un9Cvq++5AlgC48GUvjVv29DjHNrvBjYATNZAYDeO3aZs
-	omBh7B8R8uGshq1Cob9b22+T06RcFTBTNBB0hNkyRU/lvoBbiYHFewV1ssIXpIrjRW8BDua6GPxIg
-	RGYDsBzcnPTb2HR/crY2EnYjJdAmAc9qlQn8T46C0Pwlb2DIe8MMOALbks4OikFPMpfnEBmk3oG4D
-	0RQCTjIQ==;
+	bh=IP7rUBaz1mvKnSQijXZkfLhmJRgyKEeoaWImepnoHPM=; b=l+AXOUW7VM6gR1LInJK4s4G6IY
+	HFMd/NzCvr2fnLpsLXD9kve9S5v8qnku0hpdxLAzl3qg3LHuC2BZ3u9D3z09Mm3XDcLCqKebHC3fp
+	JvE1ubTDZ75jIFfb1Mnozs++yR/S/T2FcmuCyviPY2gRTOnOjeIPN9uzGVUmLd26FQjkKBdmRCjky
+	75OmEBlfERU1eczdqTd4mygbiis4VidjdWk1DxWKIgyjTqN6Fl/YA/uxWAzkWqw0y0d/yyagTSsoq
+	X5sieFKFjjhCCGRU0XJDPFuBHVKTrLeRp8JKGQGKBfqX8Pc/mM0tnGTL1FJbkc698/5MYre/8vb0S
+	6Po+2nsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuwFj-00000008ABi-2DPf;
-	Sat, 06 Sep 2025 16:59:03 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	id 1uuxB7-00000008EQH-3d37;
+	Sat, 06 Sep 2025 17:58:21 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuvjK-000000086ql-3qZB;
-	Sat, 06 Sep 2025 16:25:36 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-24cdbeca71eso16883255ad.2;
-        Sat, 06 Sep 2025 09:25:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1757175934; x=1757780734; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=gEnwrOV3MXxfnmmoGy1WCr0zVelqqHdj4W6eSVNaxZs=;
-        b=nKQ90sHxsveghVUfGPJ5vABC5X0iZrdf63BL7YXj7Xxrmdt5wthSXSDmq2uoe9SsZj
-         gN0QjHj4t9HCvX7NhE5pS2Am0PcRf5tmMyFOQzSaMe4mmGsQbKd+26Z7LWWQp/T+t5AK
-         gTxHtv7veTigsR2Ax2bJTj1MIDqefMllQLt+Tteu0cqJa1SqwZiMi/XCh1pWoKkcUpEh
-         GqmOBsTRVILaqet/7xcz9wL9e9Qb3r15q+GM4GFG2oUVl4C6nESFamZOZT6SciLSTI5B
-         H7+wR7IQZV6BU5yKOMctPs/rKn9Eyl0f0BOVDDv4izENqO32z4m3lriyydRV43TKc8JS
-         3Ubg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757175934; x=1757780734;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=gEnwrOV3MXxfnmmoGy1WCr0zVelqqHdj4W6eSVNaxZs=;
-        b=evs4Yabm6QspvXEldjRIaTTvjo1LKYofTOJ8w/5vdM9WOPBfGmsEe9U+6Vi1cu8NLI
-         KOj52DVGREIT/vx99oEZkLYODm3N8euQOvbqf8XIjdoUAhG2tMzq85IG8PupPpm6lZPX
-         anBwH/jYsr93fVhqp/HwtKdWPi5WBqCR3VneYgSMMk2SdQbSRqilEZ6nYGwJTonXw9Q2
-         b9F8bqT8mRb2iQqNh328FbiEvKshMhrDWKwU6TEowweDQYOvVU4M160jx2cFRV/2etVp
-         Xil9+QisAS4OXuVc5a3+GfgXEP7qLWDzY8luQVoBStQ/VP0xNAAhozaeMFn1mkVSzi+D
-         ++Mg==
-X-Forwarded-Encrypted: i=1; AJvYcCUlid3KQMWqwOG7K04hDEYhCje3xhNP6tJlnfUfcTSHZjAFD7wXHzDGyc+sLUUY38Dl0XFYzSQqUTyp2q4/9fZF@lists.infradead.org, AJvYcCWIS4y5g1eW1mZlxaG1WUMRl2DB0XncNmRPDYXTdvZONlzrzd9/1z+ktrCFIw83G3yqXT8K+02k7mFI+cmUkAQ=@lists.infradead.org
-X-Gm-Message-State: AOJu0YxZdyjmSPAGrUC+5vi6oi2mdZoUGxGLKyEWp+nYEooS/6b8+O39
-	3IjW6Vtr6ZwT3ZusNY4F/CahV1VUEQt+nZKx3DBifm+60NNf+WhtLRNc
-X-Gm-Gg: ASbGncuxCPxYPCwVDrSf7oprfF8G8HZGCpGBQq7QKXxEx2NzDchG4BId0jn5FlvQslT
-	d1czeAQACd2Wo3pjxhp+tHP9eJimqTF8lL6NSkt8yXQnO8SAnq+ozvUB3hsewAfWFJuWY7Yv2d3
-	x3lclzGmJAffKKirX4lKgdwxwBsqC0+LaJZvtgDGGFNKK1ebz4NXJM/8gEgwUjvjObkueTySyxH
-	chvc9PZUDqoVTryUiObsfyUxWuI4dqGd72I9GIU7y5JTbACzQma6tEhYuyeNQwP3px6fS3CB9ls
-	/fHfhjdRCgHM0OXarfTk7lc6VEwXOsoQsXR+G0baJ1692xOZBSIFtzTGLm4u0YdMWtexTuJ3Zeb
-	QlfAIBpHP1DXVq46vQepM4WWHb1IlgZrIt0c+FIdczJ3k
-X-Google-Smtp-Source: AGHT+IGUGHGUXwC+KGN4jPZ3eUoPjDhKK1q5TM0NAklHLJQagkflBBhklqliToGCEeYKq03hd3Y0tA==
-X-Received: by 2002:a17:903:2b05:b0:24c:a617:1185 with SMTP id d9443c01a7336-25170c477e7mr36953315ad.29.1757175933847;
-        Sat, 06 Sep 2025 09:25:33 -0700 (PDT)
-Received: from google.com ([2620:15c:9d:2:e08d:5959:e7ec:1beb])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-24ccfc7f988sm67193645ad.144.2025.09.06.09.25.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 06 Sep 2025 09:25:33 -0700 (PDT)
-Date: Sat, 6 Sep 2025 09:25:30 -0700
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: Julien Massot <julien.massot@collabora.com>
-Cc: kernel@collabora.com, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, linux-input@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH v3 1/3] Input: mtk-pmic-keys - MT6359 has a specific
- release irq
-Message-ID: <odrofximcdjjwwowzlpheug5t4pwx5gylfyzr6mqcb5gz3vtud@c2hcoac3svyx>
-References: <20250905-radxa-nio-12-l-gpio-v3-0-40f11377fb55@collabora.com>
- <20250905-radxa-nio-12-l-gpio-v3-1-40f11377fb55@collabora.com>
+	id 1uux8A-00000008EDm-0N9i;
+	Sat, 06 Sep 2025 17:55:19 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1757181295; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=WNxEioriaEs/u+KCseNI2dB68EOHRgf0F+l9UmkTxpaMjOTaqo7u92cu+ELDxOq6VauP91oW2ZnCuFdGdIQG226W+TRDWmCwA6K1lZfffMI7N5jNd0xsoKMeTVR1IK7VMxAMZB0evgvqsPZF3Nuz8Jix1RWyYjfVfQelO0JUG6g=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1757181295; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=IP7rUBaz1mvKnSQijXZkfLhmJRgyKEeoaWImepnoHPM=; 
+	b=mM+byTotFb+OP9BafKuB5zHSQdFPMwb3RQYFI8+0FJmDjAyweLe7SNCFmWy+36m5UCxNSlRPRyu0GAm8QbEmAmilnIpWvS5mwtSI5Vs3PEYrSxv5JBfOOaVstU2l2TGJaQBFEzZvZOkP023kXkSiEAzAJ3ZZKPwVhvEWRN0EGdc=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1757181295;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=IP7rUBaz1mvKnSQijXZkfLhmJRgyKEeoaWImepnoHPM=;
+	b=Vo8En1fHBjlORqqr4nwH2t1Ko4oGKDiIZXye5dpPTJTXQ0z0uomJitKJBaxlGxz0
+	Hyf/qh7Sf5IUbhGDXsb0Bl7OJakZbjMGKA4FFAayKBvo3sM8/nDtjSqFD7NHQPPAjTa
+	lnvN1396nqMaHKXIkhA6srQFSndnyRG4BHZ+RY68=
+Received: by mx.zohomail.com with SMTPS id 1757181293913862.8978758635274;
+	Sat, 6 Sep 2025 10:54:53 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Rob Herring <robh@kernel.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ Chanwoo Choi <cw00.choi@samsung.com>, Jassi Brar <jassisinghbrar@gmail.com>,
+ Kees Cook <kees@kernel.org>, "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ Chia-I Wu <olvaffe@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>,
+ kernel@collabora.com, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-pm@vger.kernel.org, linux-hardening@vger.kernel.org
+Subject: Re: [PATCH RFC 01/10] dt-bindings: gpu: mali-valhall-csf: add
+ mediatek,mt8196-mali variant
+Date: Sat, 06 Sep 2025 19:54:46 +0200
+Message-ID: <13801600.O9o76ZdvQC@workhorse>
+In-Reply-To: <20250905232657.GA1497794-robh@kernel.org>
+References: <20250905-mt8196-gpufreq-v1-0-7b6c2d6be221@collabora.com>
+ <20250905-mt8196-gpufreq-v1-1-7b6c2d6be221@collabora.com>
+ <20250905232657.GA1497794-robh@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250905-radxa-nio-12-l-gpio-v3-1-40f11377fb55@collabora.com>
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="utf-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250906_092534_976238_B27E43D5 
-X-CRM114-Status: GOOD (  12.48  )
+X-CRM114-CacheID: sfid-20250906_105518_157540_5F29FD22 
+X-CRM114-Status: GOOD (  28.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,24 +93,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 05, 2025 at 01:51:58PM +0200, Julien Massot wrote:
-> Support for MT6359 PMIC keys has been added recently.
-> However, the key release event is not properly handled:
-> only key press events are generated, leaving key states
-> stuck in "pressed".
-> 
-> This patch ensures that both key press and key release events
-> are properly emitted by handling the release logic correctly.
-> 
-> Introduce a 'key_release_irq' member to the 'mtk_pmic_regs',
-> to identify the devices that have a separate irq for the
-> release event.
-> 
-> Fixes: bc25e6bf032e ("Input: mtk-pmic-keys - add support for MT6359 PMIC keys")
-> Signed-off-by: Julien Massot <julien.massot@collabora.com>
+Hi Rob,
 
-Applied, thank you.
+On Saturday, 6 September 2025 01:26:57 Central European Summer Time Rob Herring wrote:
+> On Fri, Sep 05, 2025 at 12:22:57PM +0200, Nicolas Frattaroli wrote:
+> > The Mali-based GPU on the MediaTek MT8196 SoC is shackled to its concept
+> > of "MFlexGraphics", which in this iteration includes an embedded MCU
+> > that needs to be poked to power on the GPU, and is in charge of
+> > controlling all the clocks and regulators.
+> > 
+> > In return, it lets us omit the OPP tables from the device tree, as those
+> > can now be enumerated at runtime from the MCU.
+> > 
+> > Add the mediatek,mt8196-mali compatible, and a performance-controller
+> > property which points to a node representing such setups. It's required
+> > on mt8196 devices.
+> > 
+> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> > ---
+> >  .../bindings/gpu/arm,mali-valhall-csf.yaml         | 36 +++++++++++++++++++++-
+> >  1 file changed, 35 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml
+> > index a5b4e00217587c5d1f889094e2fff7b76e6148eb..6df802e900b744d226395c29f8d87fb6d3282d26 100644
+> > --- a/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml
+> > +++ b/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml
+> > @@ -19,6 +19,7 @@ properties:
+> >        - items:
+> >            - enum:
+> >                - rockchip,rk3588-mali
+> > +              - mediatek,mt8196-mali
+> >            - const: arm,mali-valhall-csf   # Mali Valhall GPU model/revision is fully discoverable
+> >  
+> >    reg:
+> > @@ -53,6 +54,13 @@ properties:
+> >    opp-table:
+> >      type: object
+> >  
+> > +  performance-controller:
+> > +    $ref: /schemas/types.yaml#/definitions/phandle
+> > +    description:
+> > +      A phandle of a device that controls this GPU's power and frequency,
+> > +      if any. If present, this is usually in the form of some specialised
+> > +      embedded MCU.
+> 
+> We already abuse power-domains binding with both power and performance. 
+> There's a performance-domain binding too, but only used on one platform 
+> for CPUs (Mediatek too IIRC). Or perhaps you could just point to an 
+> empty OPP table. I don't think you have anything new here, so don't 
+> invent something new.
 
--- 
-Dmitry
+Oops, yeah, I forgot about performance-domain already existing. I agree
+that it looks like a good fit; iirc I initially disregarded it because
+I thought it was an actual heterogenous core cpufreq-y thing I'd be
+overloading with new meaning, but I see now that this is not so, and
+aside from mediatek, Apple appears to be the only user.
+
+Thanks for the fast review.
+
+Kind regards,
+Nicolas Frattaroli
+
+> 
+> Rob
+> 
+
+
+
+
 
