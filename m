@@ -4,81 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B983CA1012
-	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Sep 2025 17:58:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBA6DCA1002
+	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Sep 2025 22:22:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IP7rUBaz1mvKnSQijXZkfLhmJRgyKEeoaWImepnoHPM=; b=l+AXOUW7VM6gR1LInJK4s4G6IY
-	HFMd/NzCvr2fnLpsLXD9kve9S5v8qnku0hpdxLAzl3qg3LHuC2BZ3u9D3z09Mm3XDcLCqKebHC3fp
-	JvE1ubTDZ75jIFfb1Mnozs++yR/S/T2FcmuCyviPY2gRTOnOjeIPN9uzGVUmLd26FQjkKBdmRCjky
-	75OmEBlfERU1eczdqTd4mygbiis4VidjdWk1DxWKIgyjTqN6Fl/YA/uxWAzkWqw0y0d/yyagTSsoq
-	X5sieFKFjjhCCGRU0XJDPFuBHVKTrLeRp8JKGQGKBfqX8Pc/mM0tnGTL1FJbkc698/5MYre/8vb0S
-	6Po+2nsw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=h4Id+FF5G7L/WRAYGMf/Z4zMGstEk+5riYZDe/qxmKo=; b=ORilCSDLDnSVWTrHKIW+0pPM6U
+	WmwgxcN6rxLl09eSwDwBomx+4KCjteRv0++eAJOfBNxZWNhn/N+JuGHZSQr6Z1WMYLFOKNWFYKKy/
+	3lq4BZspKZmJ4VUPwVbgoiqAYd5/oT204qHamDlO2s2peWdqhg0glo8cZOdw4F683tUXipHZTXwx+
+	c6Q2G9w6xmtPylvvVYx13tNk74I+rj9nkUbv3D2Um5tl5Gk5UGU86cTPOFxrZhbP0ALnRmCiPAmXi
+	RehiCMaYTFb1jA0moSHZXeTThGElXaFJFffFIFhzfTl/f5Ci9sJiLXskMOSgsgeWAOPVXcHdlQkgD
+	WAjnc2Jg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuxB7-00000008EQH-3d37;
-	Sat, 06 Sep 2025 17:58:21 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uv1Ia-00000008a4S-2BSX;
+	Sat, 06 Sep 2025 22:22:20 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uux8A-00000008EDm-0N9i;
-	Sat, 06 Sep 2025 17:55:19 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1757181295; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=WNxEioriaEs/u+KCseNI2dB68EOHRgf0F+l9UmkTxpaMjOTaqo7u92cu+ELDxOq6VauP91oW2ZnCuFdGdIQG226W+TRDWmCwA6K1lZfffMI7N5jNd0xsoKMeTVR1IK7VMxAMZB0evgvqsPZF3Nuz8Jix1RWyYjfVfQelO0JUG6g=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1757181295; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=IP7rUBaz1mvKnSQijXZkfLhmJRgyKEeoaWImepnoHPM=; 
-	b=mM+byTotFb+OP9BafKuB5zHSQdFPMwb3RQYFI8+0FJmDjAyweLe7SNCFmWy+36m5UCxNSlRPRyu0GAm8QbEmAmilnIpWvS5mwtSI5Vs3PEYrSxv5JBfOOaVstU2l2TGJaQBFEzZvZOkP023kXkSiEAzAJ3ZZKPwVhvEWRN0EGdc=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1757181295;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=IP7rUBaz1mvKnSQijXZkfLhmJRgyKEeoaWImepnoHPM=;
-	b=Vo8En1fHBjlORqqr4nwH2t1Ko4oGKDiIZXye5dpPTJTXQ0z0uomJitKJBaxlGxz0
-	Hyf/qh7Sf5IUbhGDXsb0Bl7OJakZbjMGKA4FFAayKBvo3sM8/nDtjSqFD7NHQPPAjTa
-	lnvN1396nqMaHKXIkhA6srQFSndnyRG4BHZ+RY68=
-Received: by mx.zohomail.com with SMTPS id 1757181293913862.8978758635274;
-	Sat, 6 Sep 2025 10:54:53 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Rob Herring <robh@kernel.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>, Jassi Brar <jassisinghbrar@gmail.com>,
- Kees Cook <kees@kernel.org>, "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- Chia-I Wu <olvaffe@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>,
- kernel@collabora.com, dri-devel@lists.freedesktop.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-pm@vger.kernel.org, linux-hardening@vger.kernel.org
-Subject: Re: [PATCH RFC 01/10] dt-bindings: gpu: mali-valhall-csf: add
- mediatek,mt8196-mali variant
-Date: Sat, 06 Sep 2025 19:54:46 +0200
-Message-ID: <13801600.O9o76ZdvQC@workhorse>
-In-Reply-To: <20250905232657.GA1497794-robh@kernel.org>
-References: <20250905-mt8196-gpufreq-v1-0-7b6c2d6be221@collabora.com>
- <20250905-mt8196-gpufreq-v1-1-7b6c2d6be221@collabora.com>
- <20250905232657.GA1497794-robh@kernel.org>
+	id 1uv0id-00000008WXP-3MLt;
+	Sat, 06 Sep 2025 21:45:12 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id C10C445247;
+	Sat,  6 Sep 2025 21:45:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7860AC4CEF8;
+	Sat,  6 Sep 2025 21:45:10 +0000 (UTC)
+Received: by venus (Postfix, from userid 1000)
+	id C88E1180B26; Sat, 06 Sep 2025 23:45:07 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Sebastian Reichel <sre@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Waqar Hameed <waqar.hameed@axis.com>
+Cc: kernel@axis.com, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <pndzfcekt8w.a.out@axis.com>
+References: <pndzfcekt8w.a.out@axis.com>
+Subject: Re: [PATCH v2] power: supply: Remove error prints for
+ devm_add_action_or_reset()
+Message-Id: <175719510781.45380.7018471850966283088.b4-ty@collabora.com>
+Date: Sat, 06 Sep 2025 23:45:07 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
 Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250906_105518_157540_5F29FD22 
-X-CRM114-Status: GOOD (  28.23  )
+X-CRM114-CacheID: sfid-20250906_144511_870423_44141E15 
+X-CRM114-Status: UNSURE (   8.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,72 +68,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rob,
 
-On Saturday, 6 September 2025 01:26:57 Central European Summer Time Rob Herring wrote:
-> On Fri, Sep 05, 2025 at 12:22:57PM +0200, Nicolas Frattaroli wrote:
-> > The Mali-based GPU on the MediaTek MT8196 SoC is shackled to its concept
-> > of "MFlexGraphics", which in this iteration includes an embedded MCU
-> > that needs to be poked to power on the GPU, and is in charge of
-> > controlling all the clocks and regulators.
-> > 
-> > In return, it lets us omit the OPP tables from the device tree, as those
-> > can now be enumerated at runtime from the MCU.
-> > 
-> > Add the mediatek,mt8196-mali compatible, and a performance-controller
-> > property which points to a node representing such setups. It's required
-> > on mt8196 devices.
-> > 
-> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > ---
-> >  .../bindings/gpu/arm,mali-valhall-csf.yaml         | 36 +++++++++++++++++++++-
-> >  1 file changed, 35 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml
-> > index a5b4e00217587c5d1f889094e2fff7b76e6148eb..6df802e900b744d226395c29f8d87fb6d3282d26 100644
-> > --- a/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml
-> > +++ b/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml
-> > @@ -19,6 +19,7 @@ properties:
-> >        - items:
-> >            - enum:
-> >                - rockchip,rk3588-mali
-> > +              - mediatek,mt8196-mali
-> >            - const: arm,mali-valhall-csf   # Mali Valhall GPU model/revision is fully discoverable
-> >  
-> >    reg:
-> > @@ -53,6 +54,13 @@ properties:
-> >    opp-table:
-> >      type: object
-> >  
-> > +  performance-controller:
-> > +    $ref: /schemas/types.yaml#/definitions/phandle
-> > +    description:
-> > +      A phandle of a device that controls this GPU's power and frequency,
-> > +      if any. If present, this is usually in the form of some specialised
-> > +      embedded MCU.
+On Tue, 05 Aug 2025 11:33:35 +0200, Waqar Hameed wrote:
+> When `devm_add_action_or_reset()` fails, it is due to a failed memory
+> allocation and will thus return `-ENOMEM`. `dev_err_probe()` doesn't do
+> anything when error is `-ENOMEM`. Therefore, remove the useless call to
+> `dev_err_probe()` when `devm_add_action_or_reset()` fails, and just
+> return the value instead.
 > 
-> We already abuse power-domains binding with both power and performance. 
-> There's a performance-domain binding too, but only used on one platform 
-> for CPUs (Mediatek too IIRC). Or perhaps you could just point to an 
-> empty OPP table. I don't think you have anything new here, so don't 
-> invent something new.
-
-Oops, yeah, I forgot about performance-domain already existing. I agree
-that it looks like a good fit; iirc I initially disregarded it because
-I thought it was an actual heterogenous core cpufreq-y thing I'd be
-overloading with new meaning, but I see now that this is not so, and
-aside from mediatek, Apple appears to be the only user.
-
-Thanks for the fast review.
-
-Kind regards,
-Nicolas Frattaroli
-
 > 
-> Rob
-> 
+> [...]
 
+Applied, thanks!
 
+[1/1] power: supply: Remove error prints for devm_add_action_or_reset()
+      commit: 32f350d58544e2529dc8798275684e97f0a2df6f
 
+Best regards,
+-- 
+Sebastian Reichel <sebastian.reichel@collabora.com>
 
 
