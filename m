@@ -4,77 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8230ECA1002
-	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Sep 2025 08:27:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A5BACA1012
+	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Sep 2025 11:08:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=fmDWsVkai/q4C56ASj6lcem4C4j2R2eauit2Llq4efY=; b=ZQLMithIxicdIXQGRP6MHKQG5+
-	FOcjXqdfo1A6ZL8juPkB8ujT9lymbh2fCvOyyR7D7dtB6xT1xoz/5bI3pZHOkYNSYw58oeKcc8cc6
-	ZvXSRCj4lI9LWvYbHzCvkRG9ROEaNGoDAkTN1ZvbQliYAJkFGh/viK6y9uKgTXE1hrlQZoK+4wjQ5
-	KrLYpf1vqtmiZtGlPr9lCUgoEixc8ZCiVOjVGN2bJ4ucUUzxJ3b/5/nSj0nRPj84R3DmjVUNe2hDP
-	SHGqAfih4cr4u1LsEbm1caG5YrG/Ce87j81xYxP3EUw3OM0breSkOhUID3PDrF+qsHT6v6sk5Kt75
-	gLiQvL0g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=u+EAM0XQQoLVEORwNHeMrdT+RATLgROribnJQCWjWOk=; b=l8LFzZ3CdK873J/2bov/CI/ABj
+	z5NmP3pMnV8olGg44cL0Mn5ajz94C/e11aCITK7Q5+E1W7m0Wghy6R/rvGC4bvJGYr6M0g+JohINT
+	qD7LeSH7KacpKdDFKRzBoHDHZRiyaBiIfA89ME/NieAcl/IjGAuSs8lP6z8WoDXDtsdmctes+TEm9
+	Hw0PUEyoIkBPdFaOewJCNpztepqAxMHscGAmJrrkAx0kVsl39I5cSF8y28Kg2X9c2L16vHAmcZtcb
+	D85aDuwf+bIQPNvkEVWVdPEop9kEBrGnHOsuS/aSagGR+PXq3C5Hjq6bZjyvVXbJLrOwqHshsWDcs
+	mFMjz9Bw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuoGY-00000007Cu7-0FXC;
-	Sat, 06 Sep 2025 08:27:22 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1uuqmj-00000007cMo-1Azj;
+	Sat, 06 Sep 2025 11:08:45 +0000
+Received: from mgamail.intel.com ([192.198.163.16])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuoGV-00000007Ctj-2Y9g;
-	Sat, 06 Sep 2025 08:27:20 +0000
-X-UUID: 4ac592ee8afb11f09f706fa2197c6ceb-20250906
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=fmDWsVkai/q4C56ASj6lcem4C4j2R2eauit2Llq4efY=;
-	b=qNVXZvC05+n+ENbmO7iJj2TCfzlLDLclUMA98jAN7EIgo/AxMPRMow4jl/Xjw2AEBoBAdBRxrdrOuCzPUHAXNL+uxaRUxeRyANnyBTZOQOWyvFjSoxXYIwNc8cX3WxtQUpCw19qjO4mQQODenC7kcEq6khvpGebdOkYMdbcWiRA=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.3,REQID:fe7295f9-00a1-497a-a04c-494ad9af2525,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:f1326cf,CLOUDID:3f0807a9-24df-464e-9c88-e53ab7cf7153,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:-5,Content:0|15|50,EDM:-3,IP:
-	nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,L
-	ES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 4ac592ee8afb11f09f706fa2197c6ceb-20250906
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
-	(envelope-from <leilk.liu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 966508441; Sat, 06 Sep 2025 01:27:14 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Sat, 6 Sep 2025 16:27:11 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Sat, 6 Sep 2025 16:27:10 +0800
-From: Leilk Liu <leilk.liu@mediatek.com>
-To: Andi Shyti <andi.shyti@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: Qii Wang <qii.wang@mediatek.com>, Wolfram Sang <wsa@kernel.org>, "Liguo
- Zhang" <liguo.zhang@mediatek.com>, <linux-i2c@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Leilk.Liu
-	<leilk.liu@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>
-Subject: [PATCH v2] i2c: mediatek: fix potential incorrect use of I2C_MASTER_WRRD
-Date: Sat, 6 Sep 2025 16:24:06 +0800
-Message-ID: <20250906082652.16864-1-leilk.liu@mediatek.com>
-X-Mailer: git-send-email 2.46.0
+	id 1uuqjq-00000007bsc-0zhC;
+	Sat, 06 Sep 2025 11:05:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1757156746; x=1788692746;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=qMYBvVdJ1HSlHVvYz/hS01oKPmqpmnjHlzwp0s/H3Mk=;
+  b=T6Ki+ZCnSvS8o3eXPJ1wuNx9lEwDWVz5GJPmorBH3zulQo8/+7u+h+zY
+   BM2Sfts3Q8Q+KJQw6OTeo++U9inE88XtQthPAarq3xWwGX431/g8jj+L7
+   i63a3PhCHOyZ1MSCw5SFAK9wQizhrkl2hnHV8xNHmgFeoJX5ZjiD/srl2
+   ASlbRnwDdGKJRNdWr3ctO74my9oLJhkdgBLuy38kFN8fUShXW5dScDar7
+   clmnxunP85/m3OrhCGPp3+PVAw3kG0dPXBFvBOTYXHKksbXk2OVOyrygm
+   Tfz8BgnkMpGBD4snTJOX8NnGwR1HKFeehbw8R+sD0aRdi45VJ7kc0uPe6
+   w==;
+X-CSE-ConnectionGUID: dIhbGkB2SeaLAwgE9SCGsA==
+X-CSE-MsgGUID: ZUFjnsOeRHarAaOgeZFx+w==
+X-IronPort-AV: E=McAfee;i="6800,10657,11544"; a="47058314"
+X-IronPort-AV: E=Sophos;i="6.18,244,1751266800"; 
+   d="scan'208";a="47058314"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Sep 2025 04:05:31 -0700
+X-CSE-ConnectionGUID: nGcxIybSS1qxAhsECIbVLQ==
+X-CSE-MsgGUID: /xIRjD2aS3+C7ekmIsiaOQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.18,244,1751266800"; 
+   d="scan'208";a="196028943"
+Received: from lkp-server01.sh.intel.com (HELO 114d98da2b6c) ([10.239.97.150])
+  by fmviesa002.fm.intel.com with ESMTP; 06 Sep 2025 04:05:27 -0700
+Received: from kbuild by 114d98da2b6c with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1uuqjV-0001NR-1N;
+	Sat, 06 Sep 2025 11:05:25 +0000
+Date: Sat, 6 Sep 2025 19:04:58 +0800
+From: kernel test robot <lkp@intel.com>
+To: Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>,
+	Marcel Holtmann <marcel@holtmann.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Luiz Von Dentz <luiz.dentz@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	Sean Wang <sean.wang@mediatek.com>,
+	Jiande Lu <jiande.lu@mediatek.com>,
+	Deren Wu <deren.Wu@mediatek.com>, Chris Lu <chris.lu@mediatek.com>,
+	Hao Qin <Hao.qin@mediatek.com>,
+	linux-bluetooth <linux-bluetooth@vger.kernel.org>,
+	linux-kernel <linux-kernel@vger.kernel.org>,
+	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>,
+	Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>
+Subject: Re: [PATCH v7 1/1] Bluetooth: mediatek: add gpio pin to reset bt
+Message-ID: <202509061837.tyzBvcs9-lkp@intel.com>
+References: <20250905084059.26959-2-ot_zhangchao.zhang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250905084059.26959-2-ot_zhangchao.zhang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250906_012719_672603_0024C188 
-X-CRM114-Status: GOOD (  15.82  )
+X-CRM114-CacheID: sfid-20250906_040546_288029_B65EC130 
+X-CRM114-Status: GOOD (  12.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,81 +99,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Leilk.Liu" <leilk.liu@mediatek.com>
+Hi Zhangchao,
 
-The old IC does not support the I2C_MASTER_WRRD (write-then-read)
-function, but the current code’s handling of i2c->auto_restart may
-potentially lead to entering the I2C_MASTER_WRRD software flow,
-resulting in unexpected bugs.
+kernel test robot noticed the following build errors:
 
-Instead of repurposing the auto_restart flag, add a separate flag
-to signal I2C_MASTER_WRRD operations.
+[auto build test ERROR on bluetooth/master]
+[also build test ERROR on bluetooth-next/master linus/master v6.17-rc4 next-20250905]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-Also fix handling of msgs. If the operation (i2c->op) is
-I2C_MASTER_WRRD, then the msgs pointer is incremented by 2.
-For all other operations, msgs is simply incremented by 1.
+url:    https://github.com/intel-lab-lkp/linux/commits/Zhangchao-Zhang/Bluetooth-mediatek-add-gpio-pin-to-reset-bt/20250905-164341
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/bluetooth/bluetooth.git master
+patch link:    https://lore.kernel.org/r/20250905084059.26959-2-ot_zhangchao.zhang%40mediatek.com
+patch subject: [PATCH v7 1/1] Bluetooth: mediatek: add gpio pin to reset bt
+config: x86_64-buildonly-randconfig-001-20250906 (https://download.01.org/0day-ci/archive/20250906/202509061837.tyzBvcs9-lkp@intel.com/config)
+compiler: clang version 20.1.8 (https://github.com/llvm/llvm-project 87f0227cb60147a26a1eeb4fb06e3b505e9c7261)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250906/202509061837.tyzBvcs9-lkp@intel.com/reproduce)
 
-Fixes: b2ed11e224a2 ("I2C: mediatek: Add driver for MediaTek MT8173 I2C controller")
-Signed-off-by: Leilk.Liu <leilk.liu@mediatek.com>
-Suggested-by: Chen-Yu Tsai <wenst@chromium.org>
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
----
-Changes in v2:
- - modify the commit which introduce this issue.
----
- drivers/i2c/busses/i2c-mt65xx.c | 17 ++++++++++-------
- 1 file changed, 10 insertions(+), 7 deletions(-)
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202509061837.tyzBvcs9-lkp@intel.com/
 
-diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-index ab456c3717db..dee40704825c 100644
---- a/drivers/i2c/busses/i2c-mt65xx.c
-+++ b/drivers/i2c/busses/i2c-mt65xx.c
-@@ -1243,6 +1243,7 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
- {
- 	int ret;
- 	int left_num = num;
-+	bool write_then_read_en = false;
- 	struct mtk_i2c *i2c = i2c_get_adapdata(adap);
- 
- 	ret = clk_bulk_enable(I2C_MT65XX_CLK_MAX, i2c->clocks);
-@@ -1256,6 +1257,7 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
- 		if (!(msgs[0].flags & I2C_M_RD) && (msgs[1].flags & I2C_M_RD) &&
- 		    msgs[0].addr == msgs[1].addr) {
- 			i2c->auto_restart = 0;
-+			write_then_read_en = true;
- 		}
- 	}
- 
-@@ -1280,12 +1282,10 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
- 		else
- 			i2c->op = I2C_MASTER_WR;
- 
--		if (!i2c->auto_restart) {
--			if (num > 1) {
--				/* combined two messages into one transaction */
--				i2c->op = I2C_MASTER_WRRD;
--				left_num--;
--			}
-+		if (write_then_read_en) {
-+			/* combined two messages into one transaction */
-+			i2c->op = I2C_MASTER_WRRD;
-+			left_num--;
- 		}
- 
- 		/* always use DMA mode. */
-@@ -1293,7 +1293,10 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
- 		if (ret < 0)
- 			goto err_exit;
- 
--		msgs++;
-+		if (i2c->op == I2C_MASTER_WRRD)
-+			msgs += 2;
-+		else
-+			msgs++;
- 	}
- 	/* the return value is number of executed messages */
- 	ret = num;
+All errors (new ones prefixed by >>):
+
+>> drivers/bluetooth/btmtk.c:370:34: error: incompatible pointer types passing 'struct device_node *' to parameter of type 'struct device *' [-Werror,-Wincompatible-pointer-types]
+     370 |         reset_gpio = gpiod_get_optional(hdev->dev.of_node, "reset", GPIOD_OUT_HIGH);
+         |                                         ^~~~~~~~~~~~~~~~~
+   include/linux/gpio/consumer.h:72:66: note: passing argument to parameter 'dev' here
+      72 | struct gpio_desc *__must_check gpiod_get_optional(struct device *dev,
+         |                                                                  ^
+   1 error generated.
+
+
+vim +370 drivers/bluetooth/btmtk.c
+
+   363	
+   364	static int btmtk_hw_gpio_reset(struct hci_dev *hdev, struct btmtk_data *reset_work)
+   365	{
+   366		struct gpio_desc *reset_gpio;
+   367	
+   368		/* Find device node*/
+   369		hdev->dev.of_node = of_find_compatible_node(NULL, NULL, "mediatek,mt7925-bluetooth");
+ > 370		reset_gpio = gpiod_get_optional(hdev->dev.of_node, "reset", GPIOD_OUT_HIGH);
+   371		if (IS_ERR(reset_gpio))
+   372			return PTR_ERR(reset_gpio);
+   373	
+   374		if (!reset_gpio)
+   375			return -ENODEV;
+   376	
+   377		if (test_and_set_bit(BTMTK_HW_RESET_ACTIVE, &reset_work->flags)) {
+   378			bt_dev_err(hdev, "last reset failed? Not resetting again");
+   379			gpiod_put(reset_gpio);
+   380			return -EBUSY;
+   381		}
+   382		gpiod_set_value_cansleep(reset_gpio, 0);
+   383		msleep(100);
+   384		gpiod_set_value_cansleep(reset_gpio, 1);
+   385		gpiod_put(reset_gpio);
+   386		return 0;
+   387	}
+   388	
+
 -- 
-2.46.0
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
