@@ -4,75 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53A70CAC583
-	for <linux-mediatek@archiver.kernel.org>; Sun,  7 Sep 2025 01:37:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70A7DCA1017
+	for <linux-mediatek@archiver.kernel.org>; Sun,  7 Sep 2025 09:36:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=T8PZoTFdcE9zyvzVpjQCoxqrcqxVo1RB0SBT1ExD8z0=; b=qQfgCXZ0sCyIdypWK6OQflFdtR
-	1zIJCWCcm70rokYnsPssyzl6NEv4WGJi/dZhs7sD91x97ioUbcVjVYXqFI1Wi7lUSGMlW7yoOl04t
-	6NG+EQW145YKaccGKfbTusxjcuYnfLmCkYBSnlogqkuK2175JAt9VbjiTFs8V+coUrgS6wHpQKWx5
-	KcF5O8MesZXulvSWZ2JaAQGV0Ck5xGJ8MJ9PuMjbmOPh1SOh2mNx8/ON+bm+LMBQUtHZqIh8n0YpB
-	wzGmCNOdNbzwObssQYTzMRetuS5PuBtN79E+nQGutEK8PpWvM+FFpKFLOspmYgLtgFFwtEVhdcNJ6
-	gN0h3Ljg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=tBu1bs4aRFXXM2hwyueRO+bUFFMnZxfxSLLqElKyz0E=; b=zdpjCZXx6QLVsWVz13dcVl1s2i
+	D/wHiC27iNZFOTCjtSfsy8rb/DnREUyXH5q4XSNu38aoq0TnTfXPeowGfgoW7tysua/labGF1KKaZ
+	hDdOQeerI+zy1w7DTh16EIxCy5l3xfFdnotiAMmV+xIEBc2FgsxmQvJryMePtaHSl/a3vcs9iaAMK
+	Ra1sa6kvws36POmeTFUAIBi7mUguOSjrIuGqaxqGFHcGb9a3AlYV1Dav5rVd4dgjlp3WadjtNY9ez
+	3i58BmF7imKA1fsqNBX7V/yH38HPYjID5qgEBBCBxaZ/W5AMWk3E5M/+06x5iCmAuOA6SDC9GYr49
+	YyUVj6fA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uv4Lk-00000008mFs-3W2o;
-	Sun, 07 Sep 2025 01:37:48 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uvBoj-0000000ARZB-3ULw;
+	Sun, 07 Sep 2025 09:36:13 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uv4Iy-00000008lTl-323Y;
-	Sun, 07 Sep 2025 01:34:57 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9C9C144E81;
-	Sun,  7 Sep 2025 01:34:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 72691C4CEF9;
-	Sun,  7 Sep 2025 01:34:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1757208895;
-	bh=YvrMVck9GuxvJbknpdd53Wuad3w7da3ygVsD0daNaFU=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=txGJve11Mwh7eufsDkQ6YhkkhUh94pIrBGtVPdAnzbntW7hbiIXW4e8lPUKfm/P4t
-	 Ml4xYGAuWZVSAUUylGknI1s46OjUfeZOuamp7JzzDncBM34j/kLEJiwrDI7LwNbQeJ
-	 1XBKGX0Omk9dGHrd+i92FDg/DqysEHCnGK+Qy4sqQ2wkJLLeQMmMQQOksYilVqKn2J
-	 9OCNaJvKGaFYlJh9QuLngXCZ4zI6Jmif1VNlqsSnzAB2CemiVXVfZ2aqOPR0AJ3mhI
-	 0EBxBw0U6QTOUxWywc1vfid0FLjiZ7+sHg5KwWTO36jVcUjKmrMaDQoBnSsDZixuX9
-	 sXaXf2Pipopug==
-Received: by mail-oa1-f44.google.com with SMTP id 586e51a60fabf-30cce534a91so1419059fac.0;
-        Sat, 06 Sep 2025 18:34:55 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCVgKeM6mCPi+CFuEMkbGnwuzTHI2x241q2LivdZF7CxKjwiPMag9WtGwuMO4EQJDtmcdQzwzChABLhsAXuHa+8=@lists.infradead.org, AJvYcCXHDWOZ0+655G5SQ875PgPSTciIMz1i7LQIvXXOKRlyjjvN+hPfa93/nTPxWF5Z65vOwgr3qeSJLsrxWRdB2pah@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy6rPaZ9X/tV0oJj5im37KLnpBhUFJq0PeJ+quORi/DDb/y1V7l
-	Zc/VOZaeuWYET1Bc5lHm1IHjrJtZA590kWZKqfT6hE99XbTioxHoQkuaBd201mPcam3W2PU9S2l
-	QdlWbQPIM5GFXqxwmnw5ENMY5QWFYADU=
-X-Google-Smtp-Source: AGHT+IGVjcrk3nT2danIlz7M5YYs7s1I1c3e4MPWm1eVrv+/cRM7jUsuwRVAQ3f8OvC5Mf7Lx0jfXbVvOb81naROdro=
-X-Received: by 2002:a05:6808:3095:b0:439:af0a:dc9e with SMTP id
- 5614622812f47-43b29bed1e4mr1448155b6e.12.1757208894866; Sat, 06 Sep 2025
- 18:34:54 -0700 (PDT)
+	id 1uvBoh-0000000ARVF-0o76;
+	Sun, 07 Sep 2025 09:36:13 +0000
+X-UUID: 12a45a528bce11f09f706fa2197c6ceb-20250907
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=tBu1bs4aRFXXM2hwyueRO+bUFFMnZxfxSLLqElKyz0E=;
+	b=uni4au8DUwwhf1STbU8f9ZWOZAor2fRvhQuGLjnGQbvCTATzNRmXoZzNoO8X+/YwljlhmHzaaUXd+NQILT0Cl01u7wh5UFNbQ1JlbpBWY5q03eUU4MH2w1b+6gHHGH1+9DDGdaO9Lv4NfnWMECaqcpJwEX4Vx1d1Izta1H7REWQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.3,REQID:076387be-7ac7-4719-b10c-814b8178fb48,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:f1326cf,CLOUDID:e1420ca9-24df-464e-9c88-e53ab7cf7153,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:-5,Content:0|15|50,EDM:-3,IP:
+	nil,URL:99|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:
+	0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_ULS,TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 12a45a528bce11f09f706fa2197c6ceb-20250907
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <irui.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 692609872; Sun, 07 Sep 2025 02:36:04 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Sun, 7 Sep 2025 17:36:00 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Sun, 7 Sep 2025 17:35:58 +0800
+From: Irui Wang <irui.wang@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <nicolas.dufresne@collabora.com>,
+	Tiffany Lin <tiffany.lin@mediatek.com>, Yunfei Dong
+	<yunfei.dong@mediatek.com>, Qianfeng Rong <rongqianfeng@vivo.com>
+CC: Maoguang Meng <maoguang.meng@mediatek.com>, Longfei Wang
+	<longfei.wang@mediatek.com>, Irui Wang <irui.wang@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-media@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v3 0/2] initialize vcodec scalar variable
+Date: Sun, 7 Sep 2025 17:35:55 +0800
+Message-ID: <20250907093557.8008-1-irui.wang@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-References: <20250903121452.387023-1-liaoyuanhong@vivo.com>
-In-Reply-To: <20250903121452.387023-1-liaoyuanhong@vivo.com>
-From: Chanwoo Choi <chanwoo@kernel.org>
-Date: Sun, 7 Sep 2025 10:34:16 +0900
-X-Gmail-Original-Message-ID: <CAGTfZH2ch56uca-x7TLTYu3Q0q-j+1nCsSOjUV0R7XQ3XLQ7CA@mail.gmail.com>
-X-Gm-Features: Ac12FXycPiT7p52rG1BVVS6XsIIvHEkvuEPHCNNS6J9fihNz-L7KMPQrOiCUex0
-Message-ID: <CAGTfZH2ch56uca-x7TLTYu3Q0q-j+1nCsSOjUV0R7XQ3XLQ7CA@mail.gmail.com>
-Subject: Re: [PATCH] PM / devfreq: mtk-cci: avoid redundant conditions
-To: Liao Yuanhong <liaoyuanhong@vivo.com>
-Cc: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, 
-	Chanwoo Choi <cw00.choi@samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	"open list:DEVICE FREQUENCY (DEVFREQ)" <linux-pm@vger.kernel.org>, 
-	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250906_183456_800565_CA6126E5 
-X-CRM114-Status: GOOD (  16.04  )
+X-CRM114-CacheID: sfid-20250907_023611_239580_3A359F35 
+X-CRM114-Status: UNSURE (   9.34  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,52 +91,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Initialize vcodec structures:
+patch 1 add missing initialization to fix the encoder's UNINIT checker
+issue.
 
-Applied it.
+patch 2 converts memset() to = { } for other vcodec structures.
 
-Thanks.
+Changes in v3:
+ - Converts memset() to = { }
+ - Combined with Qianfeng's patch as v3
+ - Link to v2: https://patchwork.linuxtv.org/project/linux-media/patch/20250715081547.18076-1-irui.wang@mediatek.com/
+ - Link to Qianfeng's v1: https://patchwork.linuxtv.org/project/linux-media/patch/20250803135514.118892-1-rongqianfeng@vivo.com/
 
-On Wed, Sep 3, 2025 at 9:15=E2=80=AFPM Liao Yuanhong <liaoyuanhong@vivo.com=
-> wrote:
->
-> While 'if (i <=3D 0) ... else if (i > 0) ...' is technically equivalent t=
-o
-> 'if (i <=3D 0) ... else ...', the latter is vastly easier to read because
-> it avoids writing out a condition that is unnecessary. Let's drop such
-> unnecessary conditions.
->
-> Signed-off-by: Liao Yuanhong <liaoyuanhong@vivo.com>
-> ---
->  drivers/devfreq/mtk-cci-devfreq.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/devfreq/mtk-cci-devfreq.c b/drivers/devfreq/mtk-cci-=
-devfreq.c
-> index 22fe9e631f8a..693c59c8037a 100644
-> --- a/drivers/devfreq/mtk-cci-devfreq.c
-> +++ b/drivers/devfreq/mtk-cci-devfreq.c
-> @@ -86,7 +86,7 @@ static int mtk_ccifreq_set_voltage(struct mtk_ccifreq_d=
-rv *drv, int new_voltage)
->                                                       soc_data->sram_max_=
-volt);
->                                 return ret;
->                         }
-> -               } else if (pre_voltage > new_voltage) {
-> +               } else {
->                         voltage =3D max(new_voltage,
->                                       pre_vsram - soc_data->max_volt_shif=
-t);
->                         ret =3D regulator_set_voltage(drv->proc_reg, volt=
-age,
-> --
-> 2.34.1
->
->
+Changes in v2:
+ - Add Fixes tag, update commit message
+ - Remove unnecessary memset
+ - Move memset to before the first usage
 
 
---=20
-Best Regards,
-Chanwoo Choi
-Samsung Electronics
+Irui Wang (1):
+  media: mediatek: encoder: Fix uninitialized scalar variable issue
+
+Qianfeng Rong (1):
+  media: mediatek: vcodec: use = { } instead of memset()
+
+ .../mediatek/vcodec/decoder/vdec/vdec_vp9_if.c    |  3 +--
+ .../mediatek/vcodec/decoder/vdec_vpu_if.c         | 12 ++++--------
+ .../mediatek/vcodec/encoder/mtk_vcodec_enc.c      | 12 +++++-------
+ .../mediatek/vcodec/encoder/venc_vpu_if.c         | 15 +++++----------
+ 4 files changed, 15 insertions(+), 27 deletions(-)
+
+-- 
+2.45.2
+
 
