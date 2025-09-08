@@ -4,42 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1707CAC582
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 02:28:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDDC2CAC583
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 02:28:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=07LtSeWo/AmLZHtl6LX+u3Mr0O3ybeIZifoEkYMgMgM=; b=nmqRsta7aw18nPkysF+RhkB8ln
-	h/ZKGvbO9arhiDXUrGNI8OB+fWS2iyaGlhHdKKo5RA/iAhETThu8KczTck38/o+k8P4OrjnctaJU7
-	3SXfGxcTFYLH5CFEu2w47pEfEyOz/TXPvrFOg0VLlujqNUY2mVkoCzasO8U49fDVPKNF/Y+CAl4FA
-	0CG/xAO3dlEOP8fc3J6mC6sZd4USVlxLaibbIXdaeQJSzXI2asQyZV0rXzI1cV7OxE+0SMj/xBY78
-	VdFW/SOyAVvCS1HFg8Usp+3MKHcW9bfQRSbKsKAJAgsDPMvDsa2puBkXRepX5i8snhak8WzJbHAlX
-	fWUAhtLw==;
+	bh=srx4MAFwGWE7Nwzpo2SsNjXaK3mzSAkkPEoW4/Hw/ic=; b=fN9HGYSSYwSJnEWRKk2P0MGS57
+	Tp1NYldhh9ESVtNRNZZJBr6zTQr4RbnvtWvSnSOCzitvT6TFhzMXmNOEtzarQBdmApQierJAFdFRd
+	qrUbMIqk4kqa5sN63pnFononeYKfML0wkAbUVNpKBY2V/203EyDsXTab5oZ50dvfF6PhlbIsJasAI
+	kwejPdm1kmhf/v78iyXzrLE8vVXWnaOxPlYhXmy8gPqw+BwWdfxm8w5aZt9gv3VrUgtvhZmlYWZAE
+	v0eHW6GxJQcpstAdmCFuBr6HdCV3yf9gDpp735sKFt9+NfhGcJP+nzYmJTFZP6eMcFQ8Kntin9FW3
+	mHJtiKPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvo67-00000003hPi-3mqX;
-	Tue, 09 Sep 2025 02:28:43 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1uvo6A-00000003hUD-1xC3;
+	Tue, 09 Sep 2025 02:28:46 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvhBq-00000001mEP-3kO9;
-	Mon, 08 Sep 2025 19:06:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=07LtSeWo/AmLZHtl6LX+u3Mr0O3ybeIZifoEkYMgMgM=; b=KClgd9bhUawW8/SwsL/AD4WJe8
-	mMGpaecMywwKaJtk1DDS8s+hN2JLX2eStBVdYpymdA0NS7wP3vSmeJoGLFyoz7hwCL9joAkJQkY6Q
-	MUBHr89CzbDUc8m/E0fKYpPC45i3/W6zumMPEPO7RrxSQ0wlyv4ywyxTU4BrGQw/VfLM=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1uvhBj-007i1L-4F; Mon, 08 Sep 2025 21:06:03 +0200
-Date: Mon, 8 Sep 2025 21:06:03 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Christian Marangi <ansuelsmth@gmail.com>
+	id 1uvhKJ-00000001ow9-3VX0;
+	Mon, 08 Sep 2025 19:14:56 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-3da9ad0c1f4so3341470f8f.3;
+        Mon, 08 Sep 2025 12:14:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1757358894; x=1757963694; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=srx4MAFwGWE7Nwzpo2SsNjXaK3mzSAkkPEoW4/Hw/ic=;
+        b=e/ISC6lQMXEWCLcg0dcM/VNCBNXsIWqJlxypTJs9qL55ySqJoFZzMSvroE/U7G/bjE
+         kDB2Ouj8PjOrsUUswY0vDUgZIj77fxLdpc4S4cK76tgTWnAXPt62zHrTRhuNlQJkLAXD
+         YkCcbfLBMvtFbwU0aYkC3N6sufzSYRArjpsMPHDq5eYnuOZtzBVk1diSF5JsYfP3D8zZ
+         SRs2xfwZplOwIUK0tSQMSJoLsGNxEdACFl8AriHZksXholXsIxDlFyr6dHyJhHeRqv5w
+         c5Gq7asA4YsahseOdtdEdEPOQN9WMXMwL04F+ijEuZvFlVvMOzj7Z8OwSUqQ9+gppgrq
+         JC0A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1757358894; x=1757963694;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=srx4MAFwGWE7Nwzpo2SsNjXaK3mzSAkkPEoW4/Hw/ic=;
+        b=lE8fpYD5FYRPGBCc6iwV1XtqVrcjY3Vw2Ymzeqs1tmEPhHY1IuL/mMQS79CHpABs3y
+         k0zMZPTud2sIn4/UmpF0HAGUEVXyoRiD5QqruYBVkvtgH1qSK576+poYccLTmhgi94b6
+         ePkkFbU7JT1msyj7z5WdZAen7Dzi8LtH/fHaF4KThMZbL1mUV8KI1DjER4RN+sC07emI
+         lgSRujZC8pWFk6RI02LLdf9Zr+FcSECFmcloZATU8XvYy87zj77wDXtObz5+5jQOk+Gn
+         6DwMmsrQ2idtMn581ySNjAj3uPuQ510yNoL+Uo3Adk77GU1l4c+zUcfMJMSD75Neb08o
+         uq2g==
+X-Forwarded-Encrypted: i=1; AJvYcCVsMBkmbFGaJgA6m4dej+2xzDHMMeDuww0wya/kr+IdnFSiE+z5T4gJH1RCpZk02s7qe/pcYl/GqiLkWVZMLNw=@lists.infradead.org, AJvYcCWwgOI0uVcP4KVlBsmtMPVo2hZCOcxr7L1kAAncR1rMgeQA5ZY4jmExckP9V5nSfUa4o0kMoGQO5Rx/NXxzmxkH@lists.infradead.org
+X-Gm-Message-State: AOJu0YyxeM6/iCw5DpPRPyS1MV8XvEp73E1JuwRZWZUwiR24tXU2Kfc9
+	MPyY9a0DfBShVPLZFPgG7uKKYirbxhdgjSloYwoJDzeqTF80/FU9yO5RMOhhnQ==
+X-Gm-Gg: ASbGncuNA2bsJEaTWlQTwTKiVyWZvVS28xpfeA/AZYoVB1rwM7Bkw8oNUEpVvmKqfnw
+	c0gfh2MW7afv2vAwJLgMT+KwT937hJMJJPuPktAtk6nlnptchNPZwDX+kBwAm0kUuPluYtm8pLx
+	vPgdp1QSqRpyOfNoCAsSQMtMEd+WyjccmC66fYpPMBbHMB5fS/nk22wAqk8PmAEgFjidjCeK+8k
+	89NCxyty7Y49KOb3GpwyJkdkVfU1seTGsxrmsLC2WYkynYpNYXZWgFDUmReb4z51y1lH+E5j9ib
+	WCSjJeA7Nma+rjMjM9VBk8P8Yizju3MZUT1scXn7DwAt46+279pBbKgz3Ci5uYoKFaw12ToVci+
+	mBtMtRbwGosVy6KtTqOlsdLtd75rpCcZjlCDqEVGnVouqCwv4LntFg3OyenAHq+RjTv9Z5KlO49
+	a2AitO
+X-Google-Smtp-Source: AGHT+IFziGLQzNAImKhYRQ8IDTrD1/2WSj934yaWV0EXCVxUAxpFR9rChLUkdsHXYck7WZfp1SktZA==
+X-Received: by 2002:a05:6000:2389:b0:3c9:f4a3:f145 with SMTP id ffacd0b85a97d-3e64355556bmr7434762f8f.27.1757358893920;
+        Mon, 08 Sep 2025 12:14:53 -0700 (PDT)
+Received: from Ansuel-XPS. (host-95-249-236-54.retail.telecomitalia.it. [95.249.236.54])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45dd2304e16sm202559135e9.7.2025.09.08.12.14.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 08 Sep 2025 12:14:53 -0700 (PDT)
+Message-ID: <68bf2b2d.050a0220.7d5a6.b11c@mx.google.com>
+X-Google-Original-Message-ID: <aL8rKX72YDo7iU_V@Ansuel-XPS.>
+Date: Mon, 8 Sep 2025 21:14:49 +0200
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Andrew Lunn <andrew@lunn.ch>
 Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>,
 	Linus Walleij <linus.walleij@linaro.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
@@ -49,17 +82,17 @@ Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	stable@vger.kernel.org
 Subject: Re: [PATCH] pinctrl: airoha: fix wrong MDIO function bitmaks
-Message-ID: <d1bc3887-5b88-4fb9-8f89-4b520427ccdc@lunn.ch>
 References: <20250908113723.31559-1-ansuelsmth@gmail.com>
  <583981f9-b2ed-45fe-a327-4fd8218dc23e@lunn.ch>
  <68bf16e5.df0a0220.2e182c.b822@mx.google.com>
+ <d1bc3887-5b88-4fb9-8f89-4b520427ccdc@lunn.ch>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <68bf16e5.df0a0220.2e182c.b822@mx.google.com>
+In-Reply-To: <d1bc3887-5b88-4fb9-8f89-4b520427ccdc@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250908_120610_934236_4C70E48F 
-X-CRM114-Status: GOOD (  16.74  )
+X-CRM114-CacheID: sfid-20250908_121455_872399_8F047BFC 
+X-CRM114-Status: GOOD (  22.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,25 +107,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 08, 2025 at 07:48:17PM +0200, Christian Marangi wrote:
-> On Mon, Sep 08, 2025 at 06:54:15PM +0200, Andrew Lunn wrote:
-> > On Mon, Sep 08, 2025 at 01:37:19PM +0200, Christian Marangi wrote:
-> > > With further testing with an attached Aeonsemi it was discovered that
-> > > the pinctrl MDIO function applied the wrong bitmask. The error was
-> > > probably caused by the confusing documentation related to these bits.
+On Mon, Sep 08, 2025 at 09:06:03PM +0200, Andrew Lunn wrote:
+> On Mon, Sep 08, 2025 at 07:48:17PM +0200, Christian Marangi wrote:
+> > On Mon, Sep 08, 2025 at 06:54:15PM +0200, Andrew Lunn wrote:
+> > > On Mon, Sep 08, 2025 at 01:37:19PM +0200, Christian Marangi wrote:
+> > > > With further testing with an attached Aeonsemi it was discovered that
+> > > > the pinctrl MDIO function applied the wrong bitmask. The error was
+> > > > probably caused by the confusing documentation related to these bits.
+> > > > 
+> > > > Inspecting what the bootloader actually configure, the SGMII_MDIO_MODE
+> > > > is never actually set but instead it's set force enable to the 2 GPIO
+> > > > (gpio 1-2) for MDC and MDIO pin.
 > > > 
-> > > Inspecting what the bootloader actually configure, the SGMII_MDIO_MODE
-> > > is never actually set but instead it's set force enable to the 2 GPIO
-> > > (gpio 1-2) for MDC and MDIO pin.
+> > > Is the MDIO bus implemented using the GPIO bitbanging driver?
+> > > 
 > > 
-> > Is the MDIO bus implemented using the GPIO bitbanging driver?
-> > 
+> > No it does use the MDIO bus integrated in the MT7530 Switch. It's just
+> > that the MDIO pin can be muxed as GPIO usage.
 > 
-> No it does use the MDIO bus integrated in the MT7530 Switch. It's just
-> that the MDIO pin can be muxed as GPIO usage.
+> Then i do not understand this patch. Why configure the pinmux for GPIO
+> when you want it connected to the MDIO bus device?
+>
 
-Then i do not understand this patch. Why configure the pinmux for GPIO
-when you want it connected to the MDIO bus device?
+The usage of GPIO might be confusing but this is just to instruct the
+SoC to not mess with those 2 PIN and as Benjamin reported it's also an
+Errata of 7581. The FORCE_GPIO_EN doesn't set them as GPIO function
+(that is configured by a different register) but it's really to actually
+""enable"" those lines.
 
-     Andrew
+Normally the SoC should autodetect this by HW but it seems AN7581 have
+problem with this and require this workaround to force enable the 2 pin.
+
+-- 
+	Ansuel
 
