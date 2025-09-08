@@ -4,94 +4,170 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08439CAC586
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Sep 2025 13:10:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 019A0CAC581
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Sep 2025 17:08:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=I9rZ3d8EMRlGLHfWRe9wMpV16pDXMhWX5ESo3BO7/WA=; b=b7oSmriIkGewSJcbGNjFMUQ+sO
-	Bl5veQ/+Wf2o46skdbrRjjkjxym1R15BEnah42EDt8/U+/XFg3hKR8QyegPgYH8nKw/WnY1fCm5ma
-	9GJsF8nwuJ//VTwWeFtRtt106cChxdhjB8ECX3Zr4NRxsCU4Yaw5OlBBqAFXjWyjGLUn/ClikXlHr
-	s9TDbCzW2w6gZZqUw6aYVEb/8BSis/RV91XGHsVjJVCiUE4QHizrJ/nun143BCobNBukHA66WybIm
-	HVy83xQqYamZ94ckAO88uLD4cpMotPaUzKqDQXAEnE7KAfhTnH2dWuHYYleL2eeFv9JBaohTFWm5I
-	19thoIFQ==;
+	bh=k3AverxdiG8MfOCtqosHciLapPnidCqPzbRCv52paz0=; b=KQ6GF67zY+cm3hnYWiuSxGx4yC
+	ZGHoopqzffyZbES4FkBpzemgZUM0cjiDPWi61lxbvpPsrlsfrxqUU8ZJyXn6JtDwvoWEDyMmHPeGd
+	NMBCTTrHHUi1hWGqJ77TgjMNr6kajH6b94cRXJf85GgnoDZh52S8bQ2dZKsThjkH2XeH4A6pwVflD
+	aFwS1omZifa2klinPgbjAemWohG875zLJyTWCyXWcsoALmwCGnnLm5TQtcL4MBkbIt6HJbxoZFvxb
+	gYsu8NUuu6CGZmAxoUfF8i/M9NwZ7lV9BfjcS8TW9piOySdcIJXATliAtp8LiU8ORbXoGnR/L3zWB
+	fv3ROORA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvbda-0000000HHOa-0YIg;
-	Mon, 08 Sep 2025 13:10:26 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1uvfLY-000000010TD-3v6k;
+	Mon, 08 Sep 2025 17:08:05 +0000
+Received: from mail-northeuropeazlp170120005.outbound.protection.outlook.com ([2a01:111:f403:c200::5] helo=DUZPR83CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvadM-0000000Gsvj-2o31;
-	Mon, 08 Sep 2025 12:06:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Type:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender
-	:Reply-To:Content-ID:Content-Description;
-	bh=I9rZ3d8EMRlGLHfWRe9wMpV16pDXMhWX5ESo3BO7/WA=; b=aV/IGQwoS/ShpVMNbduRv0E4RZ
-	Knqto7kfHTdbLfvJYV8DZTmic7WbkO/naocLblBkkpDRifO+ODhLnIRjoMG2MFBdrkFfHKlA/iRJi
-	GYoot5Srho8NjrM/ywSUrq8o7SLLcZki0AWuOGsd3eUcy5M5GTD6aUCMa6LXeHQC7RY+Bz79fzrrS
-	r+LWJAEmyp9sHrbUumIHd2hJq3qqt8nSZQ9yEI2rqmxDzUfn0aiOngdHGwjhFcbmZf9irtZaZVZ7E
-	ZG8+9Dw0SUxt4VZb2ODNwF4Nh5G8vTt+4ysj51knkM15MtGm25cdjDOgQFDYIUUeuMstteat+0Uew
-	g44iYrYA==;
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
-	by casper.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvadA-00000006tNs-0qz9;
-	Mon, 08 Sep 2025 12:06:06 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1757333114; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=Fwi8FJOl6mvelR+XqWpeg0MkcWyKjt9sal7ACIe4cUfDfR0xjaWqAwhNsyPa+9hf4Y8CghW1tV5Et2Rm0ZpwEZ++juzARRJw5ohVeHcdjMnOVdbQhN6mIOf9yKgKeO9WmYqXkB+0Z1AXPuM1OF6H0YYSQtVrxGDEG/wvnYYCajI=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1757333114; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=I9rZ3d8EMRlGLHfWRe9wMpV16pDXMhWX5ESo3BO7/WA=; 
-	b=WnXggBoOh0ucK1WGPTro59OrVuZ1/qvF3oGDjLmTp2x6wA36/fDCUgisKK/53HB4SB7Z1gQ8gO3h5UGHYVPGT+uXRBRPjM7ii5prDJ7bdTP5lv1VCZsQsymxxhEavmGrv27w/16JJIE3I+Uc1lVBjff7wJTdasqIfcPi0+LlxYE=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1757333114;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=I9rZ3d8EMRlGLHfWRe9wMpV16pDXMhWX5ESo3BO7/WA=;
-	b=enOSjJUicizZ4eADZz53gBldVW80SHGJER79glDLzB0j4qALuUS6nrUge64Wk1LM
-	AihHTD1HaAHt7sAhTG4UKcDXDICMq3Ze2goYEIXgvfZc+P9LLIp988DQ2620fFg13lO
-	SbYM3SG8vCnkLF4VKrBdBSiq0dTPiYcsYWSThr08=
-Received: by mx.zohomail.com with SMTPS id 1757333112565883.1464946521103;
-	Mon, 8 Sep 2025 05:05:12 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Boris Brezillon <boris.brezillon@collabora.com>,
- Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
+	id 1uvajL-0000000GvaK-1DzQ;
+	Mon, 08 Sep 2025 12:12:20 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=xd19w3nNt2NfhPuIlRH0pMSNQr/EBf+Rn0VajIWAEAy0GRhNjvDv9BeH8KYHwYMrE428X+BCabQwq5VS06uqm3Nwm/nDTzCZ4AmEQAO0rBPUbjQZsuJ3IwU1QCs9JvFSFxCldfVFKTnigQbXgcQQFk0EkT1KDQ/ISp0qcOv2ilCAdWDKLHib78rFQadDyWQLCia03uRQAONmcjuCdpPGpRPIL+vNGjJe8bMxa7VtrGS6Bv+P5Ts/xhV4GOuw6OGXqWRKUiJ461EakCwYUsP0aR2+h8coBWnPz4OnbY8KEVAkwbo0zEPJ3XRXFgYdbDwxclUy+8vhmV00omINM/JjAg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=k3AverxdiG8MfOCtqosHciLapPnidCqPzbRCv52paz0=;
+ b=OANmn357SavlYZrCZWXFcrGzCtXv/gHlbnVHh2uH9UoQCFLq5MNAFZ+jgu3Iewz5zMhXWczFJO1c8SH3A7NpZHKGxIC+ccSVHR455JZczk6+11q/gElLXai1RlDKylRmg5Nou4vlj2SoYvSe8NdIQFKWch7+af3pfjv0KXQA44800DCdFKPcbvBGupQqyu7bLNRlIL+3UYkT3nr0lyTmlDpZovgCFtMoO3wVEvlv8qM0MY9/9vpYf3kg0gIAFkYXuFuSJM9SyqDRcxaVs0U9zUKyazPXyHmF0CGZO64UXBFhOd+azRUGyuW718wGRsoFRvokCKssxG/teCWzWpS+7w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=genexis.eu;
+ dkim=pass header.d=genexis.eu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=genexis.eu;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=k3AverxdiG8MfOCtqosHciLapPnidCqPzbRCv52paz0=;
+ b=r6ErgcKqiybE3LYbQeLAnIiDw10U+Uf/C4vMugimMxo3AlqJEk6EauO4WSM9Mhrhg+k1H/04eDLKCAaCgqaI27PzgSRvWPManW5h+aSeCic6ck7umDfI1vSduMeQ/r6QBY4ObBQ3+Pvrhh/qvWZgkoWckQJXsIbl9Jwg6VX+thkHwcmj61XYIBJSAUFYMcziCX0o3PeF7YBrltE8wahz2iAHP9e3X1IhZrs7EiEY77z4OBmNA9EUfMscLFNh1u7OHWl5fBS/WOeVw1zfYFmc9H2alQtIMHhrhXTB48w6P9pVDmeiL0A9QqOS9q2u2UAfFfHOL72VxL/XWiLPjy8IsA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=genexis.eu;
+Received: from DU4PR08MB11149.eurprd08.prod.outlook.com (2603:10a6:10:576::21)
+ by DB4PR08MB8006.eurprd08.prod.outlook.com (2603:10a6:10:38e::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9094.19; Mon, 8 Sep
+ 2025 12:12:10 +0000
+Received: from DU4PR08MB11149.eurprd08.prod.outlook.com
+ ([fe80::8b3b:ee06:2f0b:a94d]) by DU4PR08MB11149.eurprd08.prod.outlook.com
+ ([fe80::8b3b:ee06:2f0b:a94d%3]) with mapi id 15.20.9073.026; Mon, 8 Sep 2025
+ 12:12:09 +0000
+Message-ID: <081b9cb6-f5c6-434a-bd14-c043db752cda@genexis.eu>
+Date: Mon, 8 Sep 2025 14:12:08 +0200
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] pinctrl: airoha: fix wrong MDIO function bitmaks
+To: Christian Marangi <ansuelsmth@gmail.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>, Jassi Brar <jassisinghbrar@gmail.com>,
- Kees Cook <kees@kernel.org>, "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Chia-I Wu <olvaffe@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>,
- kernel@collabora.com, dri-devel@lists.freedesktop.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-pm@vger.kernel.org, linux-hardening@vger.kernel.org
-Subject: Re: [PATCH RFC 05/10] mailbox: add MediaTek GPUEB IPI mailbox
-Date: Mon, 08 Sep 2025 14:05:05 +0200
-Message-ID: <7865698.EvYhyI6sBW@workhorse>
-In-Reply-To: <27159dc0-96f1-4d99-bf5e-cda0f9c7d307@collabora.com>
-References: <20250905-mt8196-gpufreq-v1-0-7b6c2d6be221@collabora.com>
- <20250905-mt8196-gpufreq-v1-5-7b6c2d6be221@collabora.com>
- <27159dc0-96f1-4d99-bf5e-cda0f9c7d307@collabora.com>
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: stable@vger.kernel.org
+References: <20250908113723.31559-1-ansuelsmth@gmail.com>
+Content-Language: en-US
+From: Benjamin Larsson <benjamin.larsson@genexis.eu>
+In-Reply-To: <20250908113723.31559-1-ansuelsmth@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: GVZP280CA0089.SWEP280.PROD.OUTLOOK.COM
+ (2603:10a6:150:275::9) To DU4PR08MB11149.eurprd08.prod.outlook.com
+ (2603:10a6:10:576::21)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="utf-8"
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DU4PR08MB11149:EE_|DB4PR08MB8006:EE_
+X-MS-Office365-Filtering-Correlation-Id: 7cf8cac7-3383-4a07-f829-08ddeed0ef88
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|10070799003|366016|1800799024|7416014|376014|921020;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?b21oN0lTMGdjQzVweEpuZXQ2SGxOTzV1L1ZkbWhhY2dpNG50RTFVTEtxa1ha?=
+ =?utf-8?B?NGtxZkIzQlhIOXI0VVlrMCtDYUVWQjY2MVFnNlprUVJLSG1aMUw3TWIrTHNk?=
+ =?utf-8?B?aVR5VWY3TGNTWHd5aWlzb3VPZjFTVVM5Y1pDREd2bDFCaFFxVFFlS2IzZitN?=
+ =?utf-8?B?c1Y0emRWQzdKYWQyMk1tcHFzU0RETHdqTFhuTEZDU3BRZlFuUms1Rkw5UXV3?=
+ =?utf-8?B?bGxzMTAxcm10cnhsNXVieFk0NXFZV2dPVXFKUzMyc1NPWFFPZkFCb24xS1BD?=
+ =?utf-8?B?WlVlc2oxbUtCSTh1TTMzdXFVWDRUU2M1Q3hIanpvcUd4eG0wQm9RNkFtYmpy?=
+ =?utf-8?B?cUxZcTlNZUZ4emNPbGllOVRLTVpRTXh3OTV0elVHU1BVdDRIUHZiL0x0NGw0?=
+ =?utf-8?B?M0hFZVhPNitvVkxac1poaXcrZ1h5K3RKYkJDdzFzL0M0RnFUUFI3WkRZUDFQ?=
+ =?utf-8?B?dDdiNTZCRzJUbUxJYlJYSU5aalVuVEp1ZnF3cEwxMSs0R00zYUJPMGJuWkxF?=
+ =?utf-8?B?L21ZT3kvbUl1a3ZsTlRlU2ZwTUllUTQxM2pIeGNodTVYWTBMbmFudTFPSFBY?=
+ =?utf-8?B?OXVhY3dRWEp3UEo0TjdZUGtIOUNJdXBJUjVXWk9oYzJPMlZKVHB0cU9OV3E0?=
+ =?utf-8?B?MVM5L2VXWExZVm93MVFwSHMvZUttK3FUcWZUaVh0MGRKeW5adGp3NEk5RnBI?=
+ =?utf-8?B?NVhBL3JxQVUxV0hSbVpqSUtRdWoyK2RPU3hzVEZ3aGZnN01qand5Mk5jL3o3?=
+ =?utf-8?B?UFVma3RscSswVHd6aVRaS041QUFTaFVvdnYvaXJESWhuc2hwekoxbXM5cVRj?=
+ =?utf-8?B?UU1IbU45WStSL21GSFE3NFJQbmVPeFR2ZzhjZXdsOWJrRTY0d2oyV0NGRlkr?=
+ =?utf-8?B?OFc2cU1FRDRHMzhVc3JkeVNKeVErYm1ZTlh2NjA0M0Ntd2FxdldVbW1acFlp?=
+ =?utf-8?B?Tm1QRkVsdDY4MmV6RHNwUWVXSUt3Qy9uSnd2a2pHUmRlZ1hoSUJxWVg4NStl?=
+ =?utf-8?B?VVRxbzg3MXZjZWhFV3lKVkRvOEJsdXlrRVI3Tks4eDlJTkFMc0tPOHRub1ll?=
+ =?utf-8?B?a29rY2J4MnhkVWRjQ3Zhd2xrNFo2eHNCNFZiRW13VUlzdDREYktxZW43S2N5?=
+ =?utf-8?B?eGtmdU82NEdjZERaWVozRE5kWnVBRGE2d2FrSFhLUHZvVnhZZ0VpNnYvSENF?=
+ =?utf-8?B?dTIzdm5NQlBrNk1GeWJWc250a3oyZytjS0RjRlBHdU5OcklUaER6SlJtakMy?=
+ =?utf-8?B?ZVduQ2k4NmpqWDRObE1EdmJPZW5xRFBnbmhwZ25BV1grWjFSOXNTUHFzT3Bk?=
+ =?utf-8?B?WkZyQTcrQVYzLzlBb1prNVBnRFVBWk1pb3dZY00rUmhWcFFqTVRPbno3QTNZ?=
+ =?utf-8?B?dnZhcEwrZUJ4cnQ2MmlhSHluOXJhdUlMT01WMDlLL21EbjJ3amNyL0dMUDFj?=
+ =?utf-8?B?ZU13S3VadlFTVXRMQThzb3pWa1lsS2hxLzJaOFJsdE5pTmVmUVYvbjJJZlJU?=
+ =?utf-8?B?WHhHanBORHJhOUIrZTlJUW1mOU1Hem05WVR5eE1na2h4VWVubkFvRjhBbm5v?=
+ =?utf-8?B?RlJMbDNFZWsxektlM05OVGFJUmJJcHBsLzkwNkVPeVh2eDFEdTdjOGVETXJo?=
+ =?utf-8?B?UEh3VlV1cDEvaFNPT3FBeWdwWHpHbDZTZzdBYUdVNUVpVXY3ZTNIRTZZTHdP?=
+ =?utf-8?B?bkxtOG12Q04ySWhmSnAwVUNteHpoT1FiVlZMakNOTS9uYWRQQUFyMjhRbExJ?=
+ =?utf-8?B?QmpUbXhOMkRhcjFnZTVmQnNZaUF6ZXNld2c0cE93MC9YdTh4NkdCN2lwVGgw?=
+ =?utf-8?B?WXl2RGNuR01pL04zWngvQjRpK0ZiZG5YbWVCSHR6a201UXBXK3BBN2wwakM4?=
+ =?utf-8?B?V2xFTmdXL2VFNys3OC9nVXEwVkhFTzhUNTZnemZwQU16TDlqc214MWJLN2NS?=
+ =?utf-8?B?czFEdmtYVThTczQwWFA0eTZIZ2FHc09pSlUwaEcyaEZNZ1lxMytsaEFXUG0v?=
+ =?utf-8?B?aU43MnpNanBRPT0=?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU4PR08MB11149.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(10070799003)(366016)(1800799024)(7416014)(376014)(921020);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?aWJ1ZitqUUdZTUpKUy9FNUliODh3bGZ5OCtyQWxQL0F5b2FmUFh0MGlQdjBD?=
+ =?utf-8?B?dVpwa3o3b083WHFpWFJkbFdYeHFYZC9PTzlEeWlkSGtMd1NVZXFQcVVpdXlR?=
+ =?utf-8?B?a3NLQnNyYlMyU2pnR2dUdGhMTjJhVjdLZzJvWWtDSDk4NE1yOEZ4REFNd0Z6?=
+ =?utf-8?B?MFZLZyt0ZUlCMEcyWkVsaWVhLzlPejR4NzJTOWlRdE1VbEhYZFpFUDM0R3Nk?=
+ =?utf-8?B?WkFxelVUZXdUUEhHN20rWUFaSFVKUjNCRXo0bFdURGx4UVhEUTFSNVpKUkoz?=
+ =?utf-8?B?T3B2d3JpS3BGL08xQVJUUFlBTVlWS2ZJYmVvVmFpNE9YNkh2K1pMbTB6TzZq?=
+ =?utf-8?B?WmMvazVvMTVxT3p6K3ozNnNuRVRnc1JBRnpYcWdTUmo0dHRXc0M3U01RVVhw?=
+ =?utf-8?B?a1ZDNERuS09JMEU1WEsra1JtZjhES0IvZE9hUjE4YUhaTlpMVzFaZkczMVdn?=
+ =?utf-8?B?aUV2azcrT3Y2NzRNVEQ1UGdXU01DVFdqK1lnOGxQcHpwTzJnWERpM2E4Vnl4?=
+ =?utf-8?B?NG9MbjhMcFgxRmlTeFdZOGFqNGdVdnRtZ0M4UE1tSG1qZFBBR3RPOUgxblNs?=
+ =?utf-8?B?NzErZnFoVFg5d251RFlZZm1XaTZNNzErWnZMZFBYU3NuNWg3aHZoSXdUVll5?=
+ =?utf-8?B?MVYvQkFmck5BV2kyN2FZeXY1TEVpbURSc2lUYW5pUmYxWXNibnNSNjVsdWZC?=
+ =?utf-8?B?ZUYzeHN6Z0JBV3FHZkVSck9ybUg0Uk5QQUlFcG54T056MzlkS0M3ZVUydnRS?=
+ =?utf-8?B?OEo2S3FTTUY3L1lid2ZVeXRlVzRXWkYyTmU5NHh1YjZaODJTcDlIVFNHbTNP?=
+ =?utf-8?B?SjFNYnpaWGM1YkxmdVIxVFlmUEZjaVAway9iKzhCSkUyL01ZZTJpeWYxN0Vu?=
+ =?utf-8?B?RklMZW90Ry85WTUvR0hPeHpBeHdDWS9RWE12QWlTMEw4cFdqanF3aXVIbUYy?=
+ =?utf-8?B?TnFUQWZtWkQ5YXRMZk80UFRGVHN0bkVObGFjMnI1a0JUNTVRWWRVRlk2ZUky?=
+ =?utf-8?B?b2gwamphajdMcGZuRktXK1IyUnRmZXJXcG82OHdRNDIwQTFMTkF4QVlsV093?=
+ =?utf-8?B?ZmNLV3pidElaZTVTR0k2cXpVL20yWmdhbWM3QjFZZG5GSnRxdHRxbnRoSzZ0?=
+ =?utf-8?B?QTRLb1ZFTzM5aTU4TWhOc2xhc1A3b3pSSmp4NDFoL0hyMU94ZnhVUE9va1N6?=
+ =?utf-8?B?b0pWRUpIeHJHMFRFRmhDeUp0WUkwNUR0dHgxQmgrYmpKMFZwRkFSUTFxTzhP?=
+ =?utf-8?B?aHlDTDZEbjdreDB4R2Q2cUsyT2FpV2NXVGJBcmR4RWRTUXN6U2gybkkrNlJ4?=
+ =?utf-8?B?Y29EeExJRU1DbTloLzhuRCs5Y0crUnVaU21OZkJqNU9nWFVic1pKRys0MXVp?=
+ =?utf-8?B?dHRzejdqVDk1OWx6MEx5aEo3amN1VlgrWUhkM2k2N2dYZUJtZjZBMHc2c0hM?=
+ =?utf-8?B?aFEySUNDT0kwUEplZERCc09zMVBoRWtjZHdZZkRXbHRBWmpidmJxMCtGMWR3?=
+ =?utf-8?B?aElxQ1RNc2dFUGZickZjYkIwUGJtSkllYTJqd2RHUklJREQxNGJyREN0VzA0?=
+ =?utf-8?B?aWdSdDJmK1Bid1l5UFFxMWZ6cWFrcGJyWUhBeHpaQVk1WXJoU3VYcWFmeGJa?=
+ =?utf-8?B?NVFEV1J3SjJxLzRIdm10RCsydFRMdUNuZjh2cjYvMkNuWU52MVdxOW4rUDhM?=
+ =?utf-8?B?eDY5RHZ3RU9XMlEvQkpUaWxORTdXNEtSME41b3Z2Ymt4ZitzOHhhL2tXM0pU?=
+ =?utf-8?B?ZlJNd011YTlEdWFka1dmMEdVZUFxTUFveUQzN0hicnVlQk9tc2tnK2hQMmtD?=
+ =?utf-8?B?SmszTjl1SWJMaytlUmlvQ1JocGorUmpUVnh6ekhEYXBZRFQxWE5NUVpSaGk1?=
+ =?utf-8?B?d295SEV2U2Q4M1JzSEc2dGM1VG05T2h0azVNU3RVSGI0SWsvUUg3bC82MTlz?=
+ =?utf-8?B?R0Y0a0UwYnhuUXFwRk9qeTV3VTJxWkpiQkRtYmZZSm1UOWtqN2h1eDQ5Y0xz?=
+ =?utf-8?B?WVg5NVNSR0E3OXVIYW1EUEE3MmgvdHFNNDNMUUI5dGRybS9RZ2JHeTN0SGhW?=
+ =?utf-8?B?UkdET1FkVk1GRTZpVWdndE9KcnhWM2RTVmR2b2l5WTZUamQ0RjhLVzBFY3NU?=
+ =?utf-8?B?S043Q3Y3WFVzUW9ZTmZYdDdyZ1oxbEoxQ2VtTE1KVFBEd0M4ak1zeDd6VGZP?=
+ =?utf-8?B?a3E3WkVHOEdWTCtFZXB4VXRORlZpTjhvbk5NdWdJemZoUGQ4SVdsL3Y0Unpw?=
+ =?utf-8?B?VmVjWk80cGhsbUl0WDBqOU5LdXpBPT0=?=
+X-OriginatorOrg: genexis.eu
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7cf8cac7-3383-4a07-f829-08ddeed0ef88
+X-MS-Exchange-CrossTenant-AuthSource: DU4PR08MB11149.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Sep 2025 12:12:09.7717
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: cecVJ1f7KOjUI2GNsDnnODIVA3UObbGLCDICFHh41KTSd5RBSTtZczKu2GnmV/Kn65F+qch/qT/7tI+elTw/8/ehC/YozKvJ1LIiQU4X/MY=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB4PR08MB8006
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250908_130556_630576_DC7FB3CE 
-X-CRM114-Status: GOOD (  27.35  )
+X-CRM114-CacheID: sfid-20250908_051219_360048_53D1F086 
+X-CRM114-Status: GOOD (  12.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,103 +182,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Monday, 8 September 2025 12:06:01 Central European Summer Time AngeloGioacchino Del Regno wrote:
-> Il 05/09/25 12:23, Nicolas Frattaroli ha scritto:
-> > The MT8196 SoC uses an embedded MCU to control frequencies and power of
-> > the GPU. This controller is referred to as "GPUEB".
-> > 
-> > It communicates to the application processor, among other ways, through
-> > a mailbox.
-> > 
-> > The mailbox exposes one interrupt, which appears to only be fired when a
-> > response is received, rather than a transaction is completed. For us,
-> > this means we unfortunately need to poll for txdone.
-> > 
-> > The mailbox also requires the EB clock to be on when touching any of the
-> > mailbox registers.
-> > 
-> > Add a simple driver for it based on the common mailbox framework.
-> > 
-> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> 
-> Only a few nits in this, check below.
-> 
-> [...]
-> > +
-> > +static int mtk_gpueb_mbox_send_data(struct mbox_chan *chan, void *data)
-> > +{
-> > +	struct mtk_gpueb_mbox *ebm = dev_get_drvdata(chan->mbox->dev);
-> > +	unsigned int *num = chan->con_priv;
-> > +	int i;
-> 
-> int i, j;
-> 
-> > +	u32 *values = data;
-> > +
-> > +	if (*num >= ebm->v->num_channels)
-> > +		return -ECHRNG;
-> > +
-> > +	if (!ebm->v->channels[*num].no_response &&
-> > +	    atomic_read(&ebm->rx_status[*num]))
-> > +		return -EBUSY;
-> > +
-> > +	writel(BIT(*num), ebm->mbox_ctl + MBOX_CTL_IRQ_CLR);
-> > +
-> > +	/*
-> > +	 * We don't want any fancy nonsense, just write the 32-bit values in
-> > +	 * order. memcpy_toio/__iowrite32_copy don't work here, because fancy.
-> > +	 */
-> > +	for (i = 0; i < ebm->v->channels[*num].tx_len; i += 4) {
-> 
-> Just use an additional `j` index, so that you can avoid division.
-
-The `/ 4` division here is equivalent to a `>> 2` which comes free with
-almost every instruction on arm64, I don't think having two separate
-indices makes the code any clearer? Unless I misunderstand how you'd
-want me to use j here.
-
-Like this?
-
-  j = 0;
-  for (i = 0; i < ebm->v->channels[*num].tx_len; i += 4) {
-    writel(values[j++], ebm->mbox_mmio + ebm->v->channels[*num].tx_offset + i);
-  }
-
-This makes the relationship between the values index and i less clear. (And
-in my rendition, assumes the reader knows how postincrement works, but I
-think assuming people know C is fine.)
-
-> [...]
+On 2025-09-08 13:37, Christian Marangi wrote:
+> With further testing with an attached Aeonsemi it was discovered that
+> the pinctrl MDIO function applied the wrong bitmask. The error was
+> probably caused by the confusing documentation related to these bits.
 >
-> > +
-> > +	ebm->clk = devm_clk_get_enabled(ebm->dev, NULL);
-> > +	if (IS_ERR(ebm->clk))
-> > +		return dev_err_probe(ebm->dev, PTR_ERR(ebm->clk),
-> > +				     "Failed to get 'eb' clock\n");
-> > +
-> > +	ebm->mbox_mmio = devm_platform_ioremap_resource_byname(pdev, "mbox");
-> 
-> I'd say that "chan" and "ctl" are more descriptive as resource names, but then,
-> do we really need to search by name?
+> Inspecting what the bootloader actually configure, the SGMII_MDIO_MODE
+> is never actually set but instead it's set force enable to the 2 GPIO
+> (gpio 1-2) for MDC and MDIO pin.
+>
+> Applying this configuration permits correct functionality of any
+> externally attached PHY.
 
-In the binding, it was proposed to change "mbox" to something like "data",
-which is fine by me, and to drop the "mbox" prefix of "ctl".
 
-> 
-> Doing that by index is also an option, as you can write the MMIO names and their
-> full description in the bindings instead.
+Hi, the hardware design guide mentions that gpio1 and gpio2 has some 
+limitations when the mdio function is used and there is a chip errata 
+for the 7581 that also mentions mdio. This indicates that the SoC has 
+issues with mdio function to pin routing.
 
-Yeah in the driver I think I'll switch to doing indices until some second
-compatible forces us to actually rely on names because it adds a bunch of
-other ranges.
+During my testing it seemed like the gpio1 and gpio2 pins where bridged 
+to the mdc/mdio pins (they are not the same). When setting force enable 
+on gpio1/gpio2 the bridging stopped and the pins seemed to return to the 
+gpio1/2 function. Without the force enable set my guess is that the 
+bridged gpio pins pull-up or pull-down is enough to interfere with mdio 
+bus signal integrity causing the external phy issues.
 
-> [...]
+Thus ACK from me to this change.
 
-thanks for the feedback, assume that anything I didn't directly respond
-to will be fixed in the next revision.
+MvH
 
-Kind regards,
-Nicolas Frattaroli
-
+Benjamin Larsson
 
 
