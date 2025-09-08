@@ -4,77 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C1C5CAC588
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Sep 2025 12:05:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12F91CAC586
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Sep 2025 12:06:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GGgXI1Ho6z29hf45Zyx4NpZm9qgAHIRHiRtnsBXIV+s=; b=slXyOv9eTNLITlOvQJ0BO6Fx9h
-	s5bZQtE54E4w+4hGeCoC9XVUsjseVd3pMqmejPtp7pwWtWwmWCoXDXyCxQ68q0jImoJSA2H+OP2zE
-	6MHPISLXQp6lpKD+5CqaKggv5tZjnWm9x0HzD4p6LyrYmQKNvopaCqJaXzNRmRhEGY6alhHFZSF86
-	18bQyi2uRLYV5dsJsuPk9gA6f8GwKaeIi62HToRMhtYkh+73ERObiZqhGHfXeh2lxmJ0NztFx4RDy
-	9TMs0bJxucxiO4LQlc8hjj1apD30CirFPZL7BXJTgdoNDhTTSntgHJCLHIunz1kxWmKZm80NQjZTa
-	eqRxYMSQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=GXLcNSM3ychZCxZIN4Cp4NC04/o4PrChSZkGJhWTGXk=; b=Kjbo38LFIL56RKaihZ4JtUAX/O
+	lFnoUZVDjNIgJCi4+wLhwegNQhPU0iiKp+4KZKA0KXMwNoS7FRDN7YC2VvrtJijFIlWJBan4a33u5
+	8s5KvYzwPp9ApfNV3A8WogsyLTQOrzXRzpvaWRYwWN7HwWsW0xCGSsckhgBHhSmf8CPZT2sRM/and
+	u3ivAshvcrNqXpAh5IYcqqPqc9VCZDHx+6VWIg+YTOyTkmi0pVeCwfjk+8P4VRLvOegi/AoyMke4e
+	pGk0WZP7qTw0ccqK58SkCxrMAlkc7L1QS1NJTL+QEak/9FdaHrrASEUUJpdY1kz0cuKB3U62oh3qa
+	2z/S2C7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvacG-0000000GrCV-26pk;
-	Mon, 08 Sep 2025 12:05:00 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uvadh-0000000GtJj-0D4g;
+	Mon, 08 Sep 2025 12:06:29 +0000
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvYlB-0000000GFqz-0T5n;
-	Mon, 08 Sep 2025 10:06:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1757325963;
-	bh=RZ6ERkolVtqdo+HQOO/D6aEOMFArKRn06pluiLPKJv8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=MrD0nV35k8OfUXt9xIDA3TfmGywuqtDuU+oW+xmBErO5QqTaNoAs1z+OeftLufYLG
-	 KvhqgeD+PFJrHLFcCYdhqF2qS50Sweh5knLGyNEkTXMMstOAE5KQOul5JNkkMQVpNV
-	 HCwsRYt/yqvrChLJuaYHC4971nPbaUyz5PVRJ+YcXiwuYDO2GmIZbBJG/yYFJu/POP
-	 mkR6M0jN7k3Dn3PHPUidKif8ElNWJYRLWD69XO/lPnAy7/3yYO0OxCRAwzqf/NnCUj
-	 tPgNp4su79YvZrDj6GV+e5Prcrd0CHvwMQLjF5UF9tbHwtnypA+rWirhf+QzT0vSWD
-	 nrDlPUH5HD1TQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0BF6817E0E20;
-	Mon,  8 Sep 2025 12:06:02 +0200 (CEST)
-Message-ID: <27159dc0-96f1-4d99-bf5e-cda0f9c7d307@collabora.com>
-Date: Mon, 8 Sep 2025 12:06:01 +0200
+	id 1uva8p-0000000GhCb-3mkM;
+	Mon, 08 Sep 2025 11:34:37 +0000
+Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-45cb5e5e71eso21172245e9.2;
+        Mon, 08 Sep 2025 04:34:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1757331274; x=1757936074; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=GXLcNSM3ychZCxZIN4Cp4NC04/o4PrChSZkGJhWTGXk=;
+        b=aD2X+7H3p1wc9yFx/ph31Jbc+IIANHJ2ELueckeIg41zs+q5QRXVu2rJM1iDQp4DOo
+         TuOb/UX72G3JJEQsup+KG2AFSCgCdrJggWiPko3OGblOUOlGueHXa1kdgsoVbeZyHmBz
+         23+D/3md+JUF44fIITgn9XDOEPCu2/2zOOG85YMHvNMq94jkHidEi8oTJ23O2uMQ+pR0
+         Wa5FAM/HNeCesqm5+nsfCwSKlUWkQfbMGdKh8laxlRHxZhdaBhVlhX5zYi0/I52MUvQG
+         0EdKFWX7/oI+bHOBPEqNIBK/krMLL9XnFUyO2o1V8TUOj6JfKZJrvUOSOw8WyFd+ecgr
+         t9iQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1757331274; x=1757936074;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=GXLcNSM3ychZCxZIN4Cp4NC04/o4PrChSZkGJhWTGXk=;
+        b=LpTIglphf0dBeeLtpkJ/Vvy2qO68qG3K+IPs6Zp+vJjHVtPhjfZhUcNEvS/dVNVv56
+         HXRTgAuGz2TAHigu00pkYyiqKOVVgBe2QxBm5pV/653wujfqllbGqvBuRqxPAQ2gOdOq
+         x5sWhNN98s94EymD8vlIb04fyOSeK2hA4IkPWnNCAQdy1FsZMSiKBKI+BGbZv4AQSthf
+         I3f9T8EQVS1VCUP2l58ScWI4FSpPWOjS6qirQi/vC2O3AL2ublq+2ZRaJhTUHzxF3UGR
+         cl9GwHDPhyEwZfJRm/96hCAKU0dvaJsO+4mXiJDyyrgJ/+lN2fTfJTfQa0186KJOWciL
+         3llg==
+X-Forwarded-Encrypted: i=1; AJvYcCUFaRpDXXItnDmSJ4kmv05ncxNe+vaHu6LufaL4W5GNhf5UOhpiM2L/liZJPc22ya0lmEpZx39Hw4gvjonEL0c=@lists.infradead.org, AJvYcCUlLuQX8l/7btDwqCbwSEcalK8pvOPWk0Dlld8I3F86Ng7dwTUjtPgmkUTcLJahzbhN+c7hUhnh3T++pMnqbUuE@lists.infradead.org
+X-Gm-Message-State: AOJu0YyZfkGRNaIk/niEwB07Aog+BrXyqGOKikVqD+wclTxqfp0XMvLZ
+	8HsefjEZjnv+xHmBl36HwxikHgdCJ1RUGCzKgUGkOrYWZc3kfwV4Vtmn
+X-Gm-Gg: ASbGncu8VaRbgjFA/cKc9u+TsLdvyLet9yHt7pA6rFC89u8wT8uz8ZBYAj47vQJ2fBh
+	rkYA4pFFO40fa0/quKW9KRC6Pj5F+O1iA20nCJc2XSiZvUbQ2VPqdlWnDHHYvm5Sfco3t4QJ4kd
+	FYBupvpnJQPgxvcfU5PScItyekNWSo/V28A7TYD4yZ0HrHwlbcAn0wcoUQMW7Yng322tGtUFPUA
+	Nj1rwQG4/eX2MhSi4H8BE7g4M27cQDwEAR7/Ks9wyDQc7/kAHuZZgTNDBbmOjsNCkVhbJNZKBgt
+	SvwgDj2LrkZqfgeZbibBLLdNtFor+5lcDcDiVkjfWCFrOwKyCa0q2wHH38HluGuDSbdnz6YVcI9
+	RmV1jllhgvDPs8fAySmqwgh4jEVUnH1gJ1zQeOG9pxfj8XY/RQnMtFF+KYx81bosAnWoG6p+7Eh
+	03gVwe/A==
+X-Google-Smtp-Source: AGHT+IE65v8+Ze9QoGiKEzVRs4PA/d6RSnFM8u9pykGyKL2SGyoWipwe/h1BnWw8QIYeMI70RMST6A==
+X-Received: by 2002:a05:600c:4708:b0:45b:7782:b4a3 with SMTP id 5b1f17b1804b1-45ddde8289amr62827505e9.14.1757331273790;
+        Mon, 08 Sep 2025 04:34:33 -0700 (PDT)
+Received: from Ansuel-XPS24 (host-95-249-236-54.retail.telecomitalia.it. [95.249.236.54])
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-45de18f4824sm84683505e9.10.2025.09.08.04.34.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 08 Sep 2025 04:34:33 -0700 (PDT)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Sean Wang <sean.wang@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Benjamin Larsson <benjamin.larsson@genexis.eu>,
+	linux-mediatek@lists.infradead.org,
+	linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Cc: Christian Marangi <ansuelsmth@gmail.com>,
+	stable@vger.kernel.org
+Subject: [PATCH] pinctrl: airoha: fix wrong PHY LED mux value for LED1 GPIO46
+Date: Mon,  8 Sep 2025 13:34:24 +0200
+Message-ID: <20250908113425.31002-1-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC 05/10] mailbox: add MediaTek GPUEB IPI mailbox
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>, Jassi Brar <jassisinghbrar@gmail.com>,
- Kees Cook <kees@kernel.org>, "Gustavo A. R. Silva" <gustavoars@kernel.org>
-Cc: Chia-I Wu <olvaffe@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>,
- kernel@collabora.com, dri-devel@lists.freedesktop.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-pm@vger.kernel.org, linux-hardening@vger.kernel.org
-References: <20250905-mt8196-gpufreq-v1-0-7b6c2d6be221@collabora.com>
- <20250905-mt8196-gpufreq-v1-5-7b6c2d6be221@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250905-mt8196-gpufreq-v1-5-7b6c2d6be221@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250908_030605_474940_BA2D899D 
-X-CRM114-Status: GOOD (  48.30  )
+X-CRM114-CacheID: sfid-20250908_043435_940399_48D9803E 
+X-CRM114-Status: GOOD (  13.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,466 +104,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 05/09/25 12:23, Nicolas Frattaroli ha scritto:
-> The MT8196 SoC uses an embedded MCU to control frequencies and power of
-> the GPU. This controller is referred to as "GPUEB".
-> 
-> It communicates to the application processor, among other ways, through
-> a mailbox.
-> 
-> The mailbox exposes one interrupt, which appears to only be fired when a
-> response is received, rather than a transaction is completed. For us,
-> this means we unfortunately need to poll for txdone.
-> 
-> The mailbox also requires the EB clock to be on when touching any of the
-> mailbox registers.
-> 
-> Add a simple driver for it based on the common mailbox framework.
-> 
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+In all the MUX value for LED1 GPIO46 there is a Copy-Paste error where
+the MUX value is set to LED0_MODE_MASK instead of LED1_MODE_MASK.
 
-Only a few nits in this, check below.
+This wasn't notice as there were no board that made use of the
+secondary PHY LED but looking at the internal Documentation the actual
+value should be LED1_MODE_MASK similar to the other GPIO entry.
 
-> ---
->   drivers/mailbox/Kconfig             |  10 ++
->   drivers/mailbox/Makefile            |   2 +
->   drivers/mailbox/mtk-gpueb-mailbox.c | 330 ++++++++++++++++++++++++++++++++++++
->   3 files changed, 342 insertions(+)
-> 
-> diff --git a/drivers/mailbox/Kconfig b/drivers/mailbox/Kconfig
-> index 02432d4a5ccd46a16156a09c7f277fb03e4013f5..2016defda1fabb5c0fcc8078f84a52d4e4e00167 100644
-> --- a/drivers/mailbox/Kconfig
-> +++ b/drivers/mailbox/Kconfig
-> @@ -294,6 +294,16 @@ config MTK_CMDQ_MBOX
->   	  critical time limitation, such as updating display configuration
->   	  during the vblank.
->   
-> +config MTK_GPUEB_MBOX
-> +	tristate "MediaTek GPUEB Mailbox Support"
-> +	depends on ARCH_MEDIATEK || COMPILE_TEST
-> +	help
-> +	  The MediaTek GPUEB mailbox is used to communicate with the embedded
-> +	  controller in charge of GPU frequency and power management on some
-> +	  MediaTek SoCs, such as the MT8196.
-> +	  Say Y or m here if you want to support the MT8196 SoC in your kernel
-> +	  build.
-> +
->   config ZYNQMP_IPI_MBOX
->   	tristate "Xilinx ZynqMP IPI Mailbox"
->   	depends on ARCH_ZYNQMP && OF
-> diff --git a/drivers/mailbox/Makefile b/drivers/mailbox/Makefile
-> index 98a68f838486eed117d24296138bf59fda3f92e4..564d06e71313e6d1972e4a6036e1e78c8c7ec450 100644
-> --- a/drivers/mailbox/Makefile
-> +++ b/drivers/mailbox/Makefile
-> @@ -63,6 +63,8 @@ obj-$(CONFIG_MTK_ADSP_MBOX)	+= mtk-adsp-mailbox.o
->   
->   obj-$(CONFIG_MTK_CMDQ_MBOX)	+= mtk-cmdq-mailbox.o
->   
-> +obj-$(CONFIG_MTK_GPUEB_MBOX)	+= mtk-gpueb-mailbox.o
-> +
->   obj-$(CONFIG_ZYNQMP_IPI_MBOX)	+= zynqmp-ipi-mailbox.o
->   
->   obj-$(CONFIG_SUN6I_MSGBOX)	+= sun6i-msgbox.o
-> diff --git a/drivers/mailbox/mtk-gpueb-mailbox.c b/drivers/mailbox/mtk-gpueb-mailbox.c
-> new file mode 100644
-> index 0000000000000000000000000000000000000000..0236fb358136e434a09a21ef293fe949ced94123
-> --- /dev/null
-> +++ b/drivers/mailbox/mtk-gpueb-mailbox.c
-> @@ -0,0 +1,330 @@
-> +// SPDX-License-Identifier: GPL-2.0-only
-> +/*
-> + * MediaTek GPUEB mailbox driver for SoCs such as the MT8196
-> + *
-> + * Copyright (C) 2025, Collabora Ltd.
-> + *
-> + * Developers harmed in the making of this driver:
+Fix the wrong value to apply the correct MUX configuration.
 
-lol
+Cc: stable@vger.kernel.org
+Fixes: 1c8ace2d0725 ("pinctrl: airoha: Add support for EN7581 SoC")
+Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+---
+ drivers/pinctrl/mediatek/pinctrl-airoha.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-> + *  - Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> + */
-> +
-> +#include <linux/atomic.h>
-> +#include <linux/clk.h>
-> +#include <linux/device.h>
-> +#include <linux/interrupt.h>
-> +#include <linux/io.h>
-> +#include <linux/iopoll.h>
-> +#include <linux/mailbox_controller.h>
-> +#include <linux/module.h>
-> +#include <linux/of.h>
-> +#include <linux/platform_device.h>
-> +
-> +#define MBOX_CTL_TX_STS 0x0000
-> +#define MBOX_CTL_IRQ_SET 0x0004
-> +#define MBOX_CTL_IRQ_CLR 0x0074
-> +#define MBOX_CTL_RX_STS 0x0078
-> +
-> +#define MBOX_FULL BIT(0) /* i.e. we've received data */
-> +#define MBOX_CLOGGED BIT(1) /* i.e. the channel is shutdown */
-> +
-> +struct mtk_gpueb_mbox {
-> +	struct device *dev;
-> +	struct clk *clk;
-> +	void __iomem *mbox_mmio;
-> +	void __iomem *mbox_ctl;
-> +	void **rx_buf;
-> +	atomic_t *rx_status;
-> +	struct mbox_controller mbox;
-> +	unsigned int *chn;
-> +	int irq;
-> +	const struct mtk_gpueb_mbox_variant *v;
-> +};
-> +
-> +struct mtk_gpueb_mbox_ch {
-> +	const char *name;
-> +	const int num;
-
-8 bits are enough for `num`....
-
-> +	const unsigned int tx_offset;
-
-You don't need more than 16 bits for the tx/rx offset, do you?
-
-> +	const unsigned int tx_len;
-
-...and I'm sure that it's unrealistic to think that we could ever see any future
-gpueb mailbox with tx/rx len that is more than 255 bytes, so you don't need more
-than 8 bits for the length.
-
-> +	const unsigned int rx_offset;
-> +	const unsigned int rx_len;
-> +	const bool no_response;
-> +};
-> +
-> +struct mtk_gpueb_mbox_variant {
-> +	unsigned int num_channels;
-> +	const struct mtk_gpueb_mbox_ch channels[] __counted_by(num_channels);
-> +};
-> +
-> +/**
-> + * mtk_gpueb_mbox_read_rx - read RX buffer from MMIO into ebm's RX buffer
-> + * @ebm: pointer to &struct mtk_gpueb_mbox instance
-> + * @channel: number of channel to read
-> + */
-> +static void mtk_gpueb_mbox_read_rx(struct mtk_gpueb_mbox *ebm,
-> +				   unsigned int channel)
-> +{
-> +	const struct mtk_gpueb_mbox_ch *ch;
-
-Just initialize it during declaration, it's shorter.
-
-> +
-> +	ch = &ebm->v->channels[channel];
-> +
-> +	memcpy_fromio(ebm->rx_buf[channel], ebm->mbox_mmio + ch->rx_offset,
-> +		      ch->rx_len);
-
-Please use a single line, 89 columns is fine :-)
-
-> +
-> +}
-> +
-> +static irqreturn_t mtk_gpueb_mbox_isr(int irq, void *data)
-> +{
-> +	struct mtk_gpueb_mbox *ebm = data;
-> +	u32 rx_handled = 0;
-> +	u32 rx_sts;
-> +	int i;
-> +
-> +	rx_sts = readl(ebm->mbox_ctl + MBOX_CTL_RX_STS);
-> +
-> +	for (i = 0; i < ebm->v->num_channels; i++) {
-> +		if (rx_sts & BIT(i)) {
-> +			if (!atomic_cmpxchg(&ebm->rx_status[i], 0,
-> +					    MBOX_FULL | MBOX_CLOGGED))
-> +				rx_handled |= BIT(i);
-> +		}
-> +	}
-> +
-> +	writel(rx_handled, ebm->mbox_ctl + MBOX_CTL_IRQ_CLR);
-> +
-> +	if (!(rx_sts ^ rx_handled))
-> +		return IRQ_WAKE_THREAD;
-> +
-> +	dev_warn_ratelimited(ebm->dev, "spurious interrupts on 0x%04X\n",
-> +			     rx_sts ^ rx_handled);
-> +	return IRQ_NONE;
-> +}
-> +
-> +static irqreturn_t mtk_gpueb_mbox_thread(int irq, void *data)
-> +{
-> +	struct mtk_gpueb_mbox *ebm = data;
-> +	irqreturn_t ret = IRQ_NONE;
-> +	int status;
-> +	int i;
-> +
-> +	for (i = 0; i < ebm->v->num_channels; i++) {
-> +		status = atomic_cmpxchg(&ebm->rx_status[i],
-> +					MBOX_FULL | MBOX_CLOGGED, MBOX_FULL);
-> +		if (status == (MBOX_FULL | MBOX_CLOGGED)) {
-> +			mtk_gpueb_mbox_read_rx(ebm, i);
-> +			mbox_chan_received_data(&ebm->mbox.chans[i],
-> +						ebm->rx_buf[i]);
-> +			/* FIXME: When does MBOX_FULL get cleared? Here? */
-> +			atomic_set(&ebm->rx_status[i], 0);
-
-I say that you're right and it has to get cleared here.
-You got (and handled) the message, so the info in the mbox is not needed anymore.
-
-> +			ret = IRQ_HANDLED;
-> +		}
-> +	}
-> +
-> +	return ret;
-> +}
-> +
-> +static int mtk_gpueb_mbox_send_data(struct mbox_chan *chan, void *data)
-> +{
-> +	struct mtk_gpueb_mbox *ebm = dev_get_drvdata(chan->mbox->dev);
-> +	unsigned int *num = chan->con_priv;
-> +	int i;
-
-int i, j;
-
-> +	u32 *values = data;
-> +
-> +	if (*num >= ebm->v->num_channels)
-> +		return -ECHRNG;
-> +
-> +	if (!ebm->v->channels[*num].no_response &&
-> +	    atomic_read(&ebm->rx_status[*num]))
-> +		return -EBUSY;
-> +
-> +	writel(BIT(*num), ebm->mbox_ctl + MBOX_CTL_IRQ_CLR);
-> +
-> +	/*
-> +	 * We don't want any fancy nonsense, just write the 32-bit values in
-> +	 * order. memcpy_toio/__iowrite32_copy don't work here, because fancy.
-> +	 */
-> +	for (i = 0; i < ebm->v->channels[*num].tx_len; i += 4) {
-
-Just use an additional `j` index, so that you can avoid division.
-
-> +		writel(values[i / 4],
-> +		       ebm->mbox_mmio + ebm->v->channels[*num].tx_offset + i);
-> +	}
-> +
-> +	writel(BIT(*num), ebm->mbox_ctl + MBOX_CTL_IRQ_SET);
-> +
-> +	return 0;
-> +}
-> +
-> +static int mtk_gpueb_mbox_startup(struct mbox_chan *chan)
-> +{
-> +	struct mtk_gpueb_mbox *ebm = dev_get_drvdata(chan->mbox->dev);
-> +	unsigned int *num = chan->con_priv;
-> +
-> +	if (*num >= ebm->v->num_channels)
-> +		return -ECHRNG;
-> +
-> +	atomic_set(&ebm->rx_status[*num], 0);
-> +
-> +	return 0;
-> +}
-> +
-> +static void mtk_gpueb_mbox_shutdown(struct mbox_chan *chan)
-> +{
-> +	struct mtk_gpueb_mbox *ebm = dev_get_drvdata(chan->mbox->dev);
-> +	unsigned int *num = chan->con_priv;
-> +
-> +	atomic_set(&ebm->rx_status[*num], MBOX_CLOGGED);
-> +}
-> +
-> +static bool mtk_gpueb_mbox_last_tx_done(struct mbox_chan *chan)
-> +{
-> +	struct mtk_gpueb_mbox *ebm = dev_get_drvdata(chan->mbox->dev);
-> +	unsigned int *num = chan->con_priv;
-> +
-> +	return !(readl(ebm->mbox_ctl + MBOX_CTL_TX_STS) & BIT(*num));
-> +}
-> +
-> +const struct mbox_chan_ops mtk_gpueb_mbox_ops = {
-> +	.send_data = mtk_gpueb_mbox_send_data,
-> +	.startup = mtk_gpueb_mbox_startup,
-> +	.shutdown = mtk_gpueb_mbox_shutdown,
-> +	.last_tx_done = mtk_gpueb_mbox_last_tx_done,
-> +};
-> +
-> +static struct mbox_chan *
-> +mtk_gpueb_mbox_of_xlate(struct mbox_controller *mbox,
-> +			const struct of_phandle_args *sp)
-> +{
-> +	struct mtk_gpueb_mbox *ebm = dev_get_drvdata(mbox->dev);
-> +
-> +	if (!sp->args_count)
-> +		return ERR_PTR(-EINVAL);
-> +
-> +	if (sp->args[0] >= ebm->v->num_channels)
-> +		return ERR_PTR(-ECHRNG);
-> +
-> +	return &mbox->chans[sp->args[0]];
-> +}
-> +
-> +static int mtk_gpueb_mbox_probe(struct platform_device *pdev)
-> +{
-> +	struct mtk_gpueb_mbox *ebm;
-> +	unsigned int rx_buf_sz;
-> +	void *buf;
-> +	unsigned int i;
-> +	int ret;
-> +
-> +	ebm = devm_kzalloc(&pdev->dev, sizeof(*ebm), GFP_KERNEL);
-> +	if (!ebm)
-> +		return -ENOMEM;
-> +
-> +	ebm->dev = &pdev->dev;
-> +	ebm->v = of_device_get_match_data(ebm->dev);
-> +
-> +	dev_set_drvdata(ebm->dev, ebm);
-
-My preference is to set drvdata after all of the paths that can fail (or anyway
-before anything that uses it), but it's your own choice.
-
-> +
-> +	ebm->clk = devm_clk_get_enabled(ebm->dev, NULL);
-> +	if (IS_ERR(ebm->clk))
-> +		return dev_err_probe(ebm->dev, PTR_ERR(ebm->clk),
-> +				     "Failed to get 'eb' clock\n");
-> +
-> +	ebm->mbox_mmio = devm_platform_ioremap_resource_byname(pdev, "mbox");
-
-I'd say that "chan" and "ctl" are more descriptive as resource names, but then,
-do we really need to search by name?
-
-Doing that by index is also an option, as you can write the MMIO names and their
-full description in the bindings instead.
-
-> +	if (IS_ERR(ebm->mbox_mmio))
-> +		return dev_err_probe(ebm->dev, PTR_ERR(ebm->mbox_mmio),
-> +				     "Couldn't map mailbox registers\n");
-> +
-> +	ebm->mbox_ctl = devm_platform_ioremap_resource_byname(pdev, "mbox_ctl");
-> +	if (IS_ERR(ebm->mbox_ctl))
-> +		return dev_err_probe(
-> +			ebm->dev, PTR_ERR(ebm->mbox_ctl),
-> +			"Couldn't map mailbox control registers\n");
-> +
-> +	rx_buf_sz = (ebm->v->channels[ebm->v->num_channels - 1].rx_offset +
-> +		     ebm->v->channels[ebm->v->num_channels - 1].rx_len);
-> +
-> +	buf = devm_kzalloc(ebm->dev, rx_buf_sz, GFP_KERNEL);
-> +	if (!buf)
-> +		return -ENOMEM;
-> +
-> +	ebm->rx_buf = devm_kmalloc_array(ebm->dev, ebm->v->num_channels,
-> +					 sizeof(*ebm->rx_buf), GFP_KERNEL);
-> +	if (!ebm->rx_buf)
-> +		return -ENOMEM;
-> +
-> +	ebm->mbox.chans = devm_kcalloc(ebm->dev, ebm->v->num_channels,
-> +				       sizeof(struct mbox_chan), GFP_KERNEL);
-> +	if (!ebm->mbox.chans)
-> +		return -ENOMEM;
-> +
-> +	ebm->rx_status = devm_kcalloc(ebm->dev, ebm->v->num_channels,
-> +				      sizeof(atomic_t), GFP_KERNEL);
-> +	if (!ebm->rx_status)
-> +		return -ENOMEM;
-> +
-> +	ebm->chn = devm_kcalloc(ebm->dev, ebm->v->num_channels,
-> +				sizeof(*ebm->chn), GFP_KERNEL);
-
-Two things:
-  1. You missed error checking, oops!
-  2. chn is fully initialized later, you can devm_kmalloc_array() here instead,
-     so that you can avoid double initialization (you don't need zeroing).
-
-> +
-> +	for (i = 0; i < ebm->v->num_channels; i++) {
-> +		ebm->rx_buf[i] = buf + ebm->v->channels[i].rx_offset;
-> +		spin_lock_init(&ebm->mbox.chans[i].lock);
-> +		/* the things you do to avoid explicit casting void* */
-> +		ebm->chn[i] = i;
-> +		ebm->mbox.chans[i].con_priv = &ebm->chn[i];
-> +		atomic_set(&ebm->rx_status[i], MBOX_CLOGGED);
-> +	}
-> +
-> +	ebm->mbox.dev = ebm->dev;
-> +	ebm->mbox.num_chans = ebm->v->num_channels;
-> +	ebm->mbox.txdone_poll = true;
-> +	ebm->mbox.txpoll_period = 0; /* minimum hrtimer interval */
-> +	ebm->mbox.of_xlate = mtk_gpueb_mbox_of_xlate;
-> +	ebm->mbox.ops = &mtk_gpueb_mbox_ops;
-> +
-> +	ebm->irq = platform_get_irq(pdev, 0);
-> +	if (ebm->irq < 0)
-> +		return ebm->irq;
-
-Please move the platform_get_irq() up a bit, before all those expensive memory
-allocations - if it fails, at least it fails faster in that case.
-
-> +
-> +	ret = devm_request_threaded_irq(ebm->dev, ebm->irq, mtk_gpueb_mbox_isr,
-> +					mtk_gpueb_mbox_thread, 0, NULL, ebm);
-> +	if (ret)
-> +		return dev_err_probe(ebm->dev, ret, "failed to request IRQ\n");
-> +
-> +	ret = devm_mbox_controller_register(ebm->dev, &ebm->mbox);
-
-error check
-
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct mtk_gpueb_mbox_variant mtk_gpueb_mbox_mt8196 = {
-> +	.num_channels = 12,
-> +	.channels = {
-> +		{ "fast_dvfs_event", 0, 0x0000, 16, 0x00e0, 16, false },
-> +		{ "gpufreq",         1, 0x0010, 32, 0x00f0, 32, false },
-> +		{ "sleep",           2, 0x0030, 12, 0x0110,  4, true  },
-> +		{ "timer",           3, 0x003c, 24, 0x0114,  4, false },
-> +		{ "fhctl",           4, 0x0054, 36, 0x0118,  4, false },
-> +		{ "ccf",             5, 0x0078, 16, 0x011c, 16, false },
-> +		{ "gpumpu",          6, 0x0088, 24, 0x012c,  4, false },
-> +		{ "fast_dvfs",       7, 0x00a0, 24, 0x0130, 24, false },
-> +		{ "ipir_c_met",      8, 0x00b8,  4, 0x0148, 16, false },
-> +		{ "ipis_c_met",      9, 0x00bc, 16, 0x0158,  4, false },
-> +		{ "brisket",        10, 0x00cc, 16, 0x015c, 16, false },
-> +		{ "ppb",            11, 0x00dc,  4, 0x016c,  4, false },
-> +	},
-> +};
-> +
-> +static const struct of_device_id mtk_gpueb_mbox_of_ids[] = {
-> +	{ .compatible = "mediatek,mt8196-gpueb-mbox",
-> +	  .data = &mtk_gpueb_mbox_mt8196 },
-
-single line please
-
-> +	{ /* Sentinel */ }
-> +};
-> +MODULE_DEVICE_TABLE(of, mtk_gpueb_mbox_of_ids);
-> +
-> +static struct platform_driver mtk_gpueb_mbox_drv = {
-> +	.probe = mtk_gpueb_mbox_probe,
-> +	.driver = {
-> +		.name = "mtk-gpueb-mbox",
-> +		.of_match_table = mtk_gpueb_mbox_of_ids,
-> +	}
-> +};
-> +module_platform_driver(mtk_gpueb_mbox_drv);
-> +
-> +MODULE_AUTHOR("Nicolas Frattaroli <nicolas.frattaroli@collabora.com>");
-> +MODULE_DESCRIPTION("MediaTek GPUEB mailbox driver for SoCs such as the MT8196");
-
-Just "MediaTek GPUEB Mailbox driver" is fine - there are other SoCs that can make
-use of this driver (whether you're implementing support for those in this moment
-is not important), and the others are very-very-very-very similar to how it's done
-in 8196.
-
-> +MODULE_LICENSE("GPL");
-> 
-
+diff --git a/drivers/pinctrl/mediatek/pinctrl-airoha.c b/drivers/pinctrl/mediatek/pinctrl-airoha.c
+index 5d84a778683d..f7f8fd2f35fc 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-airoha.c
++++ b/drivers/pinctrl/mediatek/pinctrl-airoha.c
+@@ -1752,8 +1752,8 @@ static const struct airoha_pinctrl_func_group phy1_led1_func_group[] = {
+ 		.regmap[0] = {
+ 			AIROHA_FUNC_MUX,
+ 			REG_GPIO_2ND_I2C_MODE,
+-			GPIO_LAN3_LED0_MODE_MASK,
+-			GPIO_LAN3_LED0_MODE_MASK
++			GPIO_LAN3_LED1_MODE_MASK,
++			GPIO_LAN3_LED1_MODE_MASK
+ 		},
+ 		.regmap[1] = {
+ 			AIROHA_FUNC_MUX,
+@@ -1816,8 +1816,8 @@ static const struct airoha_pinctrl_func_group phy2_led1_func_group[] = {
+ 		.regmap[0] = {
+ 			AIROHA_FUNC_MUX,
+ 			REG_GPIO_2ND_I2C_MODE,
+-			GPIO_LAN3_LED0_MODE_MASK,
+-			GPIO_LAN3_LED0_MODE_MASK
++			GPIO_LAN3_LED1_MODE_MASK,
++			GPIO_LAN3_LED1_MODE_MASK
+ 		},
+ 		.regmap[1] = {
+ 			AIROHA_FUNC_MUX,
+@@ -1880,8 +1880,8 @@ static const struct airoha_pinctrl_func_group phy3_led1_func_group[] = {
+ 		.regmap[0] = {
+ 			AIROHA_FUNC_MUX,
+ 			REG_GPIO_2ND_I2C_MODE,
+-			GPIO_LAN3_LED0_MODE_MASK,
+-			GPIO_LAN3_LED0_MODE_MASK
++			GPIO_LAN3_LED1_MODE_MASK,
++			GPIO_LAN3_LED1_MODE_MASK
+ 		},
+ 		.regmap[1] = {
+ 			AIROHA_FUNC_MUX,
+@@ -1944,8 +1944,8 @@ static const struct airoha_pinctrl_func_group phy4_led1_func_group[] = {
+ 		.regmap[0] = {
+ 			AIROHA_FUNC_MUX,
+ 			REG_GPIO_2ND_I2C_MODE,
+-			GPIO_LAN3_LED0_MODE_MASK,
+-			GPIO_LAN3_LED0_MODE_MASK
++			GPIO_LAN3_LED1_MODE_MASK,
++			GPIO_LAN3_LED1_MODE_MASK
+ 		},
+ 		.regmap[1] = {
+ 			AIROHA_FUNC_MUX,
+-- 
+2.51.0
 
 
