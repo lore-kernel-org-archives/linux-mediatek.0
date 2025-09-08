@@ -4,98 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C983CAC58C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 06:51:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBDC8CAC587
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 06:52:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Subject:Cc:To:
-	From:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nD7GjWaRllncs0vWRluquCxxcL1VUrY8PY0Pyck9z94=; b=Z3qBvQNfgdGxkGrFjtY0hLbSGZ
-	93tSg3BabFGzeBFH93ncoYtsHlZMRPfkDIjNSDt/L50v/DvLPPGZM9TIZ0LUKCjPfi/ym9YkE1lt/
-	Id3ownh9udgMF/ni0+nK85MroMBTNlJFVKIZDyHnzlRXIeUzYoeE6StYXHNAjQ9nHjcyQ1zyujOe9
-	2KMOB3avTrO9qX4KN4qqubKHyqH6DGmJ9RCXVmpWzFHugDE7ezbMt3rYl0RCll/QRgGqXHQqE3R07
-	2gyvtPfzi9bzyBusRbgs6yMWTI8KEo6z+7Ksl29bmNbWhdO0rXJ70GO82lng2lGOSxFtW0cAsHoqG
-	toUQ25mQ==;
+	bh=aVXzVq32Zt8oCZmWKuHiiNxSxXQc050w2CwYCQkOBhI=; b=skWuzYvoAqIY8bIoNjKNf26TAZ
+	aEmYdykIbVimMVgJdgJ1+uan5EJ5L+EewvtBxNVQ6beB2BPzSQ2Z/gTRXG4bvZey4xu7hJLMPnQ9E
+	GwaBCe2yDxmPCejsm6eGGVqavxChmMzJ17NQcSjDQHPpSpKQJNOqXgOvlz1KocY6MiIuR1h/PSiOl
+	SS1FYty7BurZGkffl8djq1vLDwBobdxIn6szhxKREYZFnRoWoODXLLJtDcEfafqlr992j5eUDxtdy
+	WvbLIitjcYeWgduHEek8cB6cMY7A2tx9xxi/K8futLHiIfUgeaxAnvw3wmzmt+nMKnnoUqthU6VeN
+	un30xGlg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvsC0-00000004pf2-2Goq;
-	Tue, 09 Sep 2025 06:51:04 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1uvsD7-00000004r65-3SOj;
+	Tue, 09 Sep 2025 06:52:13 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvj35-00000002Mn5-23aF;
-	Mon, 08 Sep 2025 21:05:16 +0000
-Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-45b9c35bc0aso42884385e9.2;
-        Mon, 08 Sep 2025 14:05:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1757365514; x=1757970314; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:subject:cc:to:from:date:message-id:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=nD7GjWaRllncs0vWRluquCxxcL1VUrY8PY0Pyck9z94=;
-        b=PHTB1xSsMt0KInqLbFNU3pnoaEgHutOlb2UngJrTmxocew7KXWZ2NU14ZvSTQct2Hf
-         WiaS7QFavAaQvUqynbwFFLnBH/7Jh0AcP8YswUFPW1/n1+m7A9uQbKbTWA4MBATKWfAr
-         SeAWCQWxZGJbmWAMSVd4Uvey9BQNICdRTfBAWcyZhuwQXz3Nz2/v7e8grtcwOmYUqHa6
-         llbdA5J331NkyyhUz+Wf7ptDVc+dmEheWV3ty6Rhlp0eaDfO3h21gKMCsdWjCIdL4a7d
-         SyD3c+NkzoFFvTWrZNkTgoWAGCEY2RGh54m4aNF9pK4ULA0gRjdv9F784zgbBSNYlMhJ
-         lOvg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757365514; x=1757970314;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:subject:cc:to:from:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=nD7GjWaRllncs0vWRluquCxxcL1VUrY8PY0Pyck9z94=;
-        b=vsHKWaZLQbh2MjtVdsQRDISw0D67sEU6VvoMKFAWw3a1Cl2YtAbbh1hZjeVg0QLvmp
-         0aRuODidfRSTyObSwt9MUv2gh64NXUpk8v5stWOaauwkwkh9PPf66MNzBET3Uj/Q5uRt
-         SD60vp5J+4otaM99FUClHZa+D3SuhxEP7NPg+cVgvpd2xCBpsGzdYXF7I/A25JYIQd0g
-         IAjTlxgpCBJaYrQCYBECWbuPrRaWFXyxJ3ueejeqBaqNdkNnQh+wfpyOuUQxw8J8+l6S
-         VsFCMwj0n87bRdmGK8JHKz/c8sWO5XTmNCm0uCYXQ/eRHn14stEy4GHKzMuIXgbwvYRv
-         SrwQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUTG7f5o9mZtVDzEz4XFSILruAKYc2/gIYpuTtNgrAMLYmKmk9UgHqGxCtvobH6HQYRxwk5E+u/y/wFapYRW14=@lists.infradead.org, AJvYcCUZvylwbQUoJLuq+wF5aXXb8FDhNsASatfcWMgLhuYxwGse9tj0i0KvubjNb2C0ACoNrYhh2smTrJYtsrWiwxD7@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz2Jw+0afHOWYDoAJWKJRVA2spRRlTcWjVn6xsNW3SJvkfRLArq
-	FxSldlkil5DfK+a2Z+warpvz2+UTYsYNNC6Xu8977AEOXpx95AQsjDhK
-X-Gm-Gg: ASbGncuBr4OfTBB7Msr0G8NZ4hqpALQNTWYyBOqpLsSf3AAxydX/NN2Sim/HGOWoQ0R
-	plhh6TcAlEuR4spDIytPrHFv73druimrVjnzvRwuVCqaTsz7U/4RlWS2AywRlSWh+AdTVq328/t
-	/Dmoa1yXYhSfAE20Nkzvtt1Gf9873gnWXS+gYqvFsvXmfg2CsTOxm+k1YpMhUjdj5VnN8g29Mil
-	pqGIPCiWSbDxl5kWI+OMwsi6JdonLrSatgXpaGLa1VrqYIX6IaQP4ABdByXW/xgeAhNc5NHzvmo
-	P7U+cdnDRUyYTc+WD7bUny6ms8OXjvf9zx/GlKZjYdrgB7HcTB39w7tHamCntxAiL7ru149xAud
-	8Z6qjQrLGBQSZ1rk2DQW+lAaiLvJt5Kh5aKsMtWqCikcFp1nnYGsKuj+ASbGFBXCHcgkpbQ==
-X-Google-Smtp-Source: AGHT+IEjhWtTt2FqPYcZpCHMHRur4SWcQlNaJiusM1qV0CrfIn2kd8oGgSYbE1m3LqTOp3T97igKcQ==
-X-Received: by 2002:a05:600c:5248:b0:45b:6b57:5308 with SMTP id 5b1f17b1804b1-45de078401dmr81273885e9.7.1757365513615;
-        Mon, 08 Sep 2025 14:05:13 -0700 (PDT)
-Received: from Ansuel-XPS. (host-95-249-236-54.retail.telecomitalia.it. [95.249.236.54])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45dda202112sm160712185e9.5.2025.09.08.14.05.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 08 Sep 2025 14:05:13 -0700 (PDT)
-Message-ID: <68bf4509.050a0220.345893.9bb4@mx.google.com>
-X-Google-Original-Message-ID: <aL9FA7MiwUBFilRV@Ansuel-XPS.>
-Date: Mon, 8 Sep 2025 23:05:07 +0200
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Andrew Lunn <andrew@lunn.ch>, Lorenzo Bianconi <lorenzo@kernel.org>,
-	Sean Wang <sean.wang@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Benjamin Larsson <benjamin.larsson@genexis.eu>,
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	stable@vger.kernel.org
-Subject: Re: [PATCH] pinctrl: airoha: fix wrong MDIO function bitmaks
-References: <20250908113723.31559-1-ansuelsmth@gmail.com>
- <583981f9-b2ed-45fe-a327-4fd8218dc23e@lunn.ch>
- <68bf16e5.df0a0220.2e182c.b822@mx.google.com>
- <d1bc3887-5b88-4fb9-8f89-4b520427ccdc@lunn.ch>
- <68bf2b2d.050a0220.7d5a6.b11c@mx.google.com>
- <CACRpkdYuT0x3JSFWHMF5thH0UyNF1Cse+W9joE12yQ0iAAXjuw@mail.gmail.com>
+	id 1uvkAp-00000002gVI-13l3;
+	Mon, 08 Sep 2025 22:17:20 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 44127438A6;
+	Mon,  8 Sep 2025 22:17:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B1FB7C4CEF1;
+	Mon,  8 Sep 2025 22:17:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1757369838;
+	bh=yH92uhvD40IJiQljLDeAcC7HN4DLj9MU91AIC0wuXmY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Avz78ey87oevm4M2gMpO+1tOn0ld7UkfYqxtJy9ed6faDlUdFsykj5Kr9XVw8mVSO
+	 syCuPLQJB7N94+2uAKkRuD/y+tYQkaBwQ4hXwNQ9L0JAqvwUWnZAS9oDv79cZ5c/Jv
+	 +srzb6S9yBh64stcaGUA+QE3NyBwnl50OQIg0T0KAbgkrUmiG5GBLeogNC7GHLLVRY
+	 IhdPh/+lwx7M80rzjGYUQVMR/B7cK/9OHnh82gkYCXDhZcU1OxYSnUV8zSdqlGBLmD
+	 Bu70SCcANS8ft+GJHT1IP0u1w0T+6FkmQLZWIg4xlbsXGFKnvXyf3y93xb0UdUP4s2
+	 Pbt0/DApi0/hg==
+Date: Tue, 9 Sep 2025 00:17:14 +0200
+From: Andi Shyti <andi.shyti@kernel.org>
+To: Leilk Liu <leilk.liu@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Qii Wang <qii.wang@mediatek.com>, Wolfram Sang <wsa@kernel.org>, 
+	Liguo Zhang <liguo.zhang@mediatek.com>, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com, Chen-Yu Tsai <wenst@chromium.org>
+Subject: Re: [PATCH v2] i2c: mediatek: fix potential incorrect use of
+ I2C_MASTER_WRRD
+Message-ID: <zddsit53dwqo27buoxaolgpzvvvd6uvwcyzughv7qfvwg64ces@yrlrur5dkf45>
+References: <20250906082652.16864-1-leilk.liu@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CACRpkdYuT0x3JSFWHMF5thH0UyNF1Cse+W9joE12yQ0iAAXjuw@mail.gmail.com>
+In-Reply-To: <20250906082652.16864-1-leilk.liu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250908_140515_525939_BCB4F698 
-X-CRM114-Status: GOOD (  17.87  )
+X-CRM114-CacheID: sfid-20250908_151719_310562_3F54AE5F 
+X-CRM114-Status: GOOD (  18.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,24 +74,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 08, 2025 at 11:03:31PM +0200, Linus Walleij wrote:
-> On Mon, Sep 8, 2025 at 9:14 PM Christian Marangi <ansuelsmth@gmail.com> wrote:
-> 
-> > The usage of GPIO might be confusing but this is just to instruct the
-> > SoC to not mess with those 2 PIN and as Benjamin reported it's also an
-> > Errata of 7581. The FORCE_GPIO_EN doesn't set them as GPIO function
-> > (that is configured by a different register) but it's really to actually
-> > ""enable"" those lines.
-> >
-> > Normally the SoC should autodetect this by HW but it seems AN7581 have
-> > problem with this and require this workaround to force enable the 2 pin.
-> 
-> In reply to Andrews comment I copied the two above paragraphs into the
-> commit message in the applied patch.
-> 
+Hi Leilk,
 
-Thanks for handling this and adding the extra info, I was about to send v2.
+> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+> index ab456c3717db..dee40704825c 100644
+> --- a/drivers/i2c/busses/i2c-mt65xx.c
+> +++ b/drivers/i2c/busses/i2c-mt65xx.c
+> @@ -1243,6 +1243,7 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
+>  {
+>  	int ret;
+>  	int left_num = num;
+> +	bool write_then_read_en = false;
+>  	struct mtk_i2c *i2c = i2c_get_adapdata(adap);
+>  
+>  	ret = clk_bulk_enable(I2C_MT65XX_CLK_MAX, i2c->clocks);
+> @@ -1256,6 +1257,7 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
+>  		if (!(msgs[0].flags & I2C_M_RD) && (msgs[1].flags & I2C_M_RD) &&
+>  		    msgs[0].addr == msgs[1].addr) {
+>  			i2c->auto_restart = 0;
+> +			write_then_read_en = true;
+>  		}
+>  	}
+>  
+> @@ -1280,12 +1282,10 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
+>  		else
+>  			i2c->op = I2C_MASTER_WR;
+>  
+> -		if (!i2c->auto_restart) {
+> -			if (num > 1) {
+> -				/* combined two messages into one transaction */
+> -				i2c->op = I2C_MASTER_WRRD;
+> -				left_num--;
+> -			}
+> +		if (write_then_read_en) {
+> +			/* combined two messages into one transaction */
+> +			i2c->op = I2C_MASTER_WRRD;
 
--- 
-	Ansuel
+i2c doesn't change for the whole loop so that it can be set only
+once outside the loop instead of setting it everytime.
+
+Something like this:
+
+	if (i2c->op == I2C_MASTER_WRRD)
+		left_num--;
+	else if (msgs->flags & I2C_M_RD)
+		...
+	else
+
+looks cleaner to me and we save the extra flag. Am I missing
+anything?
+
+Andi
+
+> +			left_num--;
+>  		}
+>  
+>  		/* always use DMA mode. */
+> @@ -1293,7 +1293,10 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
+>  		if (ret < 0)
+>  			goto err_exit;
+>  
+> -		msgs++;
+> +		if (i2c->op == I2C_MASTER_WRRD)
+> +			msgs += 2;
+> +		else
+> +			msgs++;
+>  	}
+>  	/* the return value is number of executed messages */
+>  	ret = num;
+> -- 
+> 2.46.0
+> 
 
