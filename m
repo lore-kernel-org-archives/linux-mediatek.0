@@ -4,45 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50F4ECA1016
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C87E2CAC581
 	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 02:28:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UDZ2trEpHX9ZwFFeD8Ehoa4jKYVxOfctmESHuWQJR1Y=; b=j7csbSWcjYBZn1wmJZmA4emq/i
-	kW+5Qo3X5SYgGUPi0yeuuIgzsZ+bpvGJ3ojJXk9o4zJvrWJDyOh0VXV1cG49yV74hN/gyMlp1ffvK
-	Ksn7JZYGOnr6+3XTqrRmNr3B+10++tQbXk+p7WQRfQqLK/TTsrgKeCqfHNdWSn+DHjdyFQxecrDzq
-	CFr+SR1Z+S3TBeJgPpEYzHbzgHJZYqmJpKva84MsE0HHqZH9qaEDK/JHUE1W0q8f/8jD56r539GdC
-	CG5X7MtsZ5RllwP7VqaHBR/iXpajokq7lMWAJN5oTZfLfGMGAPiLR+NQyQ31N3CnakKv7W9xlbscx
-	NXAe/HBw==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=82DQuFCXh8YO2rtBkOqPySEJ+o6VhkmuvailxMJ7KeA=; b=KFQIiRZGNgCB9r
+	ov6WYIi9+n3U7SnBUsw0opjiheCRZp3iGOHlhj5gkq4DTishdnqZH/yJhj9Rf44gHl+AJOORf4jLK
+	TuoiXW66lcBDnwsUUd2k8+GyFB8N5icGpdURbIxOFog2Sl/mUkdBuNxRvCsWtQqImsEJj7ngyjHjR
+	mtH+VFAi6M88tYfFIGUOoCQd+IFdbgzUjX40cnXGSFjrHS0YdQ95yIVrZGVuGfR8aNlq3pqkb0xXr
+	okEUw0/Is6IwVTYgCMIm5bTf9VF4V36YeEYDHKAMbK+QrwYzrgi2Oc2YPMEjFFFnUXkyZ9snZnyY+
+	Z38qI5CAYbSJQaC7C+Kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvo6E-00000003hce-0jE7;
+	id 1uvo6E-00000003hds-36wr;
 	Tue, 09 Sep 2025 02:28:50 +0000
 Received: from sendmail.purelymail.com ([34.202.193.197])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvhNv-00000001q0Y-2Shu
+	id 1uvhNx-00000001q1T-1B5u
 	for linux-mediatek@lists.infradead.org;
-	Mon, 08 Sep 2025 19:18:40 +0000
+	Mon, 08 Sep 2025 19:18:42 +0000
 Authentication-Results: purelymail.com; auth=pass
-DKIM-Signature: a=rsa-sha256; b=GkuWSbhVXHil6qIMMVjeb4t5gL7UJ7Yi4LzVMs5TQLBluMeuudRFY1o9X3oxzkxw+2XThPtfuccv7WFGQQcS8mqq8NH68LTfNaAb9FxtKOsOm2Q95oduqqC6DPQdjV6DJWvUGZCi9BhdheZsfDEbPW4/1qpFxvmJM0ey09+ELw3jC5v4fFzrl7HirltiyKwb2l1RL4XfLGA2ab3l4Xxx2NBOSMusZb3SWlK2tCl7SQa6Zbw+HvmiRyA0rz3g2OokGryIbBajAVeOeLIw6g+ZFCQK6A+nRTPX3mfUd1BU1Ywb7FlFxqhIdyG8fXK3uUDvyWT5SWPfbJ4wuyzYZaJ5lQ==; s=purelymail2; d=purelymail.com; v=1; bh=69wZ5GHrPC28zn0t4afWJoHx8q9PR+vnYPu2VWKajxo=; h=Feedback-ID:Received:From:Date:Subject:To;
+DKIM-Signature: a=rsa-sha256; b=Tnu7FzlNRrvAkepIltGvjpu9EdsiMA10UkZXaZVXkcnFa1peLRj3E8wl6ynPkTwOwMxQEQSt7xTF+kh0S40yBzp5lJ/He13/W07ehhlM7oD5YrpbYqsSp4/gaVGa/4bBsnk5ODMI+3c2/OyI+Yq2MC9FiwbNfpAoYLOPr98MAj0ijI3Z9x25zkgg7YVn7F55kZHVOlUfQL86k9K0qWS5Vr02VvFjle7t0EHmSTjsvh4O0Dk9mwqK1xVE9lkEd5JgFllDbV9+uf/stStJkuebRcPYoXUZiyhVgyp/jHiOGwYawBbn68O53kZFbbtmH219JW8BczfN/dwfeaFnsul7sQ==; s=purelymail2; d=purelymail.com; v=1; bh=9F2TNgdH1pNDHLwB0pIr1YxFZjkobiXp5n7/OLvFJn0=; h=Feedback-ID:Received:From:Subject:Date:To;
 Feedback-ID: 68247:10037:null:purelymail
 X-Pm-Original-To: linux-mediatek@lists.infradead.org
 Received: by smtp.purelymail.com (Purelymail SMTP) with ESMTPSA id 292196779;
           (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384);
-          Mon, 08 Sep 2025 19:18:14 +0000 (UTC)
+          Mon, 08 Sep 2025 19:18:08 +0000 (UTC)
 From: Igor Belwon <igor.belwon@mentallysanemainliners.org>
-Date: Mon, 08 Sep 2025 21:17:57 +0200
-Subject: [PATCH 3/4] pinctrl: mediatek: Add debounce times for MT6878
+Subject: [PATCH 0/4] Add support for mt6878 pinctrl
+Date: Mon, 08 Sep 2025 21:17:54 +0200
+Message-Id: <20250908-mt6878-pinctrl-support-v1-0-3fb78c8ab4e8@mentallysanemainliners.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250908-mt6878-pinctrl-support-v1-3-3fb78c8ab4e8@mentallysanemainliners.org>
-References: <20250908-mt6878-pinctrl-support-v1-0-3fb78c8ab4e8@mentallysanemainliners.org>
-In-Reply-To: <20250908-mt6878-pinctrl-support-v1-0-3fb78c8ab4e8@mentallysanemainliners.org>
+X-B4-Tracking: v=1; b=H4sIAOIrv2gC/x3MywqEMAxA0V+RrA004qP6KzILH1EDM7WkHRHEf
+ 7e4PIt7LwiswgG67ALlQ4LsLoHyDKZtcCujzMlQmKIyrbH4i7VtLHpxU9Qvhr/3u0YcaCZqqDS
+ 8jJBir7zI+Y77z30/5GtqiWgAAAA=
+X-Change-ID: 20250908-mt6878-pinctrl-support-a1d117140efb
 To: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>, 
  Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, 
@@ -54,16 +56,17 @@ Cc: linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
  linux-mediatek@lists.infradead.org, 
  Igor Belwon <igor.belwon@mentallysanemainliners.org>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1757359086; l=1463;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1757359086; l=1603;
  i=igor.belwon@mentallysanemainliners.org; s=20250908;
- h=from:subject:message-id; bh=69wZ5GHrPC28zn0t4afWJoHx8q9PR+vnYPu2VWKajxo=;
- b=DdLiMNyKJkAG5VtyMqqRyNaNB2fQY33/0dbJMn98gXZidxqgMaWMM6c02MQBPL8pcqhuIk6XU
- iG1FN2hUtMSD5YJm/3HnNCCKKeAYejNjD37oKJS8NKmftXIB42Y0Y+z
+ h=from:subject:message-id; bh=9F2TNgdH1pNDHLwB0pIr1YxFZjkobiXp5n7/OLvFJn0=;
+ b=wI4YdYlwNvX69+y3MzJHzF6UO6pNEeWKFAjvc+aSn8WWJDIMJQsllOvMaB2EBg5KV3E3rULTy
+ L1mHuP3micEDVGsrwXEWOIfrNFSLazxHtZeK84LMp02aFUXnREqFYo8
 X-Developer-Key: i=igor.belwon@mentallysanemainliners.org; a=ed25519;
  pk=t9Kz6B3jEwJD7YAKcp8XftfEz7SUSlGbrsfFlbrrFwA=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250908_121839_707697_B998678B 
-X-CRM114-Status: GOOD (  10.16  )
+X-CRM114-CacheID: sfid-20250908_121841_398309_2EBDBB28 
+X-CRM114-Status: UNSURE (   9.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,43 +81,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT6878 uses different debounce times than other SoCs. Add them to the
-EINT driver.
+Hi all,
+
+This patchset adds support for the pin controller found in the MediaTek
+MT6878 SoC. This SoC has 9 pinctrl groups, and 4 EINT controller
+instances.
+
+This SoC also uses the new "eh" bit for controlling i2c driving, support
+for which is also added here.
+
+Kind regards,
+Igor
+
+Signed-off-by: Igor Belwon <igor.belwon@mentallysanemainliners.org>
 ---
- drivers/pinctrl/mediatek/mtk-eint.c | 5 +++++
- drivers/pinctrl/mediatek/mtk-eint.h | 1 +
- 2 files changed, 6 insertions(+)
+Igor Belwon (4):
+      dt-bindings: pinctrl: mediatek: Document MT6878 pin controller bindings
+      pinctrl: mediatek: Add support for eh bit
+      pinctrl: mediatek: Add debounce times for MT6878
+      pinctrl: mediatek: Add support for MT6878 pinctrl
 
-diff --git a/drivers/pinctrl/mediatek/mtk-eint.c b/drivers/pinctrl/mediatek/mtk-eint.c
-index 9f175c73613f84b47c0160947f32da7aca7d5a18..c8c5097c11c4d14eb41bdd7f9cb93b4a5756d2b2 100644
---- a/drivers/pinctrl/mediatek/mtk-eint.c
-+++ b/drivers/pinctrl/mediatek/mtk-eint.c
-@@ -66,6 +66,11 @@ const unsigned int debounce_time_mt6795[] = {
- };
- EXPORT_SYMBOL_GPL(debounce_time_mt6795);
- 
-+const unsigned int debounce_time_mt6878[] = {
-+	156, 313, 625, 1250, 20000, 40000, 80000, 160000, 320000, 640000, 0
-+};
-+EXPORT_SYMBOL_GPL(debounce_time_mt6878);
-+
- static void __iomem *mtk_eint_get_offset(struct mtk_eint *eint,
- 					 unsigned int eint_num,
- 					 unsigned int offset)
-diff --git a/drivers/pinctrl/mediatek/mtk-eint.h b/drivers/pinctrl/mediatek/mtk-eint.h
-index fc31a4c0c77bf28b106943e9292d0dcc425c4922..3cdd6f6310cd0da5aa74623c5f1dbe8f8495d689 100644
---- a/drivers/pinctrl/mediatek/mtk-eint.h
-+++ b/drivers/pinctrl/mediatek/mtk-eint.h
-@@ -52,6 +52,7 @@ struct mtk_eint_pin {
- extern const unsigned int debounce_time_mt2701[];
- extern const unsigned int debounce_time_mt6765[];
- extern const unsigned int debounce_time_mt6795[];
-+extern const unsigned int debounce_time_mt6878[];
- 
- struct mtk_eint;
- 
+ .../bindings/pinctrl/mediatek,mt6878-pinctrl.yaml  |  209 ++
+ drivers/pinctrl/mediatek/Kconfig                   |   10 +
+ drivers/pinctrl/mediatek/Makefile                  |    1 +
+ drivers/pinctrl/mediatek/mtk-eint.c                |    5 +
+ drivers/pinctrl/mediatek/mtk-eint.h                |    1 +
+ drivers/pinctrl/mediatek/pinctrl-mt6878.c          | 1559 ++++++++++++++
+ drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c   |   60 +
+ drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h   |   24 +
+ drivers/pinctrl/mediatek/pinctrl-mtk-mt6878.h      | 2248 ++++++++++++++++++++
+ drivers/pinctrl/mediatek/pinctrl-paris.c           |   30 +-
+ include/dt-bindings/pinctrl/mt6878-pinfunc.h       | 1201 +++++++++++
+ 11 files changed, 5342 insertions(+), 6 deletions(-)
+---
+base-commit: 64074b8d93abdc35ae90e38ab5135f0b13ccdf68
+change-id: 20250908-mt6878-pinctrl-support-a1d117140efb
 
+Best regards,
 -- 
-2.51.0
+Igor Belwon <igor.belwon@mentallysanemainliners.org>
 
 
