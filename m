@@ -4,79 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA85ECAC582
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Sep 2025 17:08:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA48ACA1016
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Sep 2025 17:09:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3qT/ocmbs1vEK4d1d0DEwOVs07LOQ8krH9Q+t8Vd3Oc=; b=SWuNetZ8AG0Djxnx8+0saQ0N6k
-	1PFEOavPSHgomQ3wjJw4wVZijYDNAVxrX7AcDMHFlAOWYFro5R6uYuQK2pOTVWNSo0oamCCy5T1ak
-	cl2gCPiFz2tzTpTJyAm4gKznNI72u2SLw9M+bfTS0en3l97MRaXGqR45/InK7tv9LiFEXld7DyL2n
-	+q8jK2QBFRiE6fPsGtE7IYjWLaYFpF0yTAMT1zvvoh8/4FP/+Q+kwatmzLlEa5G8Cuec2zaWQBC1F
-	mmA68iUAFe/VgnvKT4MsVKx5dtg68DH1pG1IgQxJmY8dsENBclS99SPumL5CYW6WVQyfd32UDHgCD
-	NAXU1gRA==;
+	bh=tF31xmJcbc0qseWIsNrqZ2L4YD6Ay+rKlY4qBWnaoK0=; b=2Ly6AgPaSD9FoyN0hqDNDw6i8N
+	L0Rps1P7yBeLtWJ84+SeRAtlMHpijwHU3mZb7ACPe1wKysLCJgVnH6zQFTl8xD4wVSToF1Osv3I3j
+	gieT4fW/U6YiqX6+zrdwJ+1WJ/z6AFV0JrM4hKgZbVSy0N4cmCchedcGT4CjceuDEP6Im8Bh22mDT
+	N4ZOW0nIGVG6Hl9df0frOObjZ3gCTozD0AxLMWEKLsoKNe8iMMn33/wC7IHxjG3P2/bpZRw7SLfUT
+	qbxrJ1XQFxDzSnqfIkD0qUzDgfl5pW3gR+gteay4tE/gWkdFlAzEP0bdIzWFhwBLV5T5i8+SESj3J
+	1cZAHLgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvfLk-000000010mX-3Nqb;
-	Mon, 08 Sep 2025 17:08:16 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uvfNE-0000000132z-3n8U;
+	Mon, 08 Sep 2025 17:09:48 +0000
+Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvb4O-0000000H2sE-1Fbp;
-	Mon, 08 Sep 2025 12:34:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1757334842;
-	bh=C5fSnNKxeY3RHoKZlxT9QiIlEbKodP31EJG0RmKqlQE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=K0tO+RKvONw47Vb6DcOEq59vOaCyXmscg2CA4ZtFGWOr+kOsn4z5I6Y/5nye3nj5x
-	 LIQkCsADIKbTfKmWxugl7PUUoE9k9GjU9lG1U/TNHHiQyEpODpCLEtTWaC8t08F2mA
-	 NnY19Wqro/E/f0txJMaaq/7V795XW556Rj5x9EMcQBbPeczz/5llghCZkN3fKWwKpS
-	 wjyc2NZCzrswtqgj+5E4Ez+IyKbPzRI7BMpLdHC29gq5MkPbzDAEHq/CYCtltk/kJB
-	 4MWA28eIrhWlADVINLGFtj3ZOwWeuLeaVQL+j+0AZ2aJMPiO/uQiIIH63uvoWvsRHY
-	 sW/q6swCEb7zA==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8847717E0199;
-	Mon,  8 Sep 2025 14:34:01 +0200 (CEST)
-Message-ID: <c03e55a0-0d82-4e07-86cc-9738066df45b@collabora.com>
-Date: Mon, 8 Sep 2025 14:34:00 +0200
+	id 1uvbVg-0000000HEJl-2Sga
+	for linux-mediatek@lists.infradead.org;
+	Mon, 08 Sep 2025 13:02:18 +0000
+Received: by mail-lj1-x22b.google.com with SMTP id 38308e7fff4ca-336d2b0ea8dso33658451fa.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 08 Sep 2025 06:02:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1757336535; x=1757941335; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=tF31xmJcbc0qseWIsNrqZ2L4YD6Ay+rKlY4qBWnaoK0=;
+        b=K4PaeHAMctpiAF0fYM5mb8DRoyehqcd4ugl2rl/fvk3WLSPRIUNola6bMYT095Rl1K
+         16vVD1Q98REac7bUtSYBWYuUwqKZbxK9ZK2wejRU1uLr5DKqARf2MvZR01yTjq7l6IV8
+         PYhuMC9SKDlZez3HYBdXyRewERGgOfkPZpfsdz3Es91+KYcvkpPVAxiaXIwDRl8ubZ/6
+         PieufsXpn1nkm/g/sgE0Hdn68aIoH2lsnTMs8dwuxsFrzP+Bk8RBVJnKOEJelmGrNpE6
+         HIYBjEwXuKmEdBZeV5VKyO/nR9xQLrUAAisq+Bzinm0ffo5E6okLS0Xu9d8MDI0UL64P
+         8IhQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1757336535; x=1757941335;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=tF31xmJcbc0qseWIsNrqZ2L4YD6Ay+rKlY4qBWnaoK0=;
+        b=B8RYzrmpnCMwtCLa0vVSTOwd7e4f8OculdVh6yXd7wdXdKx+pgmFtNYYUGHgemhsW0
+         GIovjmwGGZKmR9PhHgU11kZYcSyKT4BNHHM953c7LlQmeZfUjx+DjsEBRhR5Dn/9JkAh
+         msWR1R3MV0rPqs/DFg0w1A5IyCnM+EwWMkg9GdxgOKyXPCdMrfgBImANUIBTyAxwrYIH
+         +sirdiG+XnTWBBgrWotN4xYPxWnUIwhn/wvn3s7nJWnDUKpjWvBnk+gdCeoHs6NS6Rsx
+         kj/8vrTlvtJ2xna8dSULeaUS6pxyatD5pDvcOFpVF0eZQmt/xL9rTPYxIDjPSU/7d7Cl
+         O43g==
+X-Forwarded-Encrypted: i=1; AJvYcCU8ht+5PNWP31oW41Z6FYBXikAhXCOWQ2escVDjRTaG+UXEi1oxrCjdF5TsO0kW/RuPdjHkcAtzeyEkLA8Gjg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YygKmKVjz+p1vnT/OKZzquty9rMm75nZ7LbcLF2jtmc2Y2taAwc
+	xMjFeps1IxOn/wNy2xAqFV8z5rBKNyJa9b3706uJ+tcq89mdcd5lDYUk4yAtIHIN7Ax4O8x7omw
+	N90MFZFicWj4WgSDfUVaj1zaM2n8F42BR9w1tdEE9nA==
+X-Gm-Gg: ASbGncs6e/S2tOoCooEqEWdaVrYEtQXPCosHf6vgXPH8CLTBdHUvvsHTsPSGtsDpsAS
+	uI7wZxCeypVU1LcDawSOJtbocKAoVfIoKZC8IgmM5R6DKSU2r5Y1GVTp2bUMmitCFD7wVxFof0Q
+	wo69VIW391uX9crRuK+HJ3sBFOWSF7Yj1aQ0sG6ptKTF/P/xhtUYvluOPMu5slssu76c7lWzhWK
+	paRIyvIQpsHKP2d5A==
+X-Google-Smtp-Source: AGHT+IEDQrNGIVJ+srnhccYYtb5VT5e/nczDh/a0UTBab1jQ6lcNoipDjpuZsUUuvBbVHlbzfGsEUZMyzV5z27NtBG4=
+X-Received: by 2002:a05:651c:b0b:b0:337:88c9:4e00 with SMTP id
+ 38308e7fff4ca-33b4d6e156cmr26649511fa.18.1757336534706; Mon, 08 Sep 2025
+ 06:02:14 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC 05/10] mailbox: add MediaTek GPUEB IPI mailbox
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>, Jassi Brar <jassisinghbrar@gmail.com>,
- Kees Cook <kees@kernel.org>, "Gustavo A. R. Silva" <gustavoars@kernel.org>
-Cc: Chia-I Wu <olvaffe@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>,
- kernel@collabora.com, dri-devel@lists.freedesktop.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-pm@vger.kernel.org, linux-hardening@vger.kernel.org
-References: <20250905-mt8196-gpufreq-v1-0-7b6c2d6be221@collabora.com>
- <20250905-mt8196-gpufreq-v1-5-7b6c2d6be221@collabora.com>
- <27159dc0-96f1-4d99-bf5e-cda0f9c7d307@collabora.com>
- <7865698.EvYhyI6sBW@workhorse>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <7865698.EvYhyI6sBW@workhorse>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20250908113425.31002-1-ansuelsmth@gmail.com>
+In-Reply-To: <20250908113425.31002-1-ansuelsmth@gmail.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Mon, 8 Sep 2025 15:02:03 +0200
+X-Gm-Features: Ac12FXwmkJnm8MDVmgkMoi1FgB_EyiAfRHJw-rYt80JRUULYhM8CUT2H32uFUK4
+Message-ID: <CACRpkdZJtHU_pne=48UDBgpfM-9FnJsC8sfN6c4zV4KmDWs4Pg@mail.gmail.com>
+Subject: Re: [PATCH] pinctrl: airoha: fix wrong PHY LED mux value for LED1 GPIO46
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Benjamin Larsson <benjamin.larsson@genexis.eu>, linux-mediatek@lists.infradead.org, 
+	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, stable@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250908_053404_507240_A3AAEA66 
-X-CRM114-Status: GOOD (  28.00  )
+X-CRM114-CacheID: sfid-20250908_060216_629818_0124DDDE 
+X-CRM114-Status: GOOD (  12.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,113 +99,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/09/25 14:05, Nicolas Frattaroli ha scritto:
-> On Monday, 8 September 2025 12:06:01 Central European Summer Time AngeloGioacchino Del Regno wrote:
->> Il 05/09/25 12:23, Nicolas Frattaroli ha scritto:
->>> The MT8196 SoC uses an embedded MCU to control frequencies and power of
->>> the GPU. This controller is referred to as "GPUEB".
->>>
->>> It communicates to the application processor, among other ways, through
->>> a mailbox.
->>>
->>> The mailbox exposes one interrupt, which appears to only be fired when a
->>> response is received, rather than a transaction is completed. For us,
->>> this means we unfortunately need to poll for txdone.
->>>
->>> The mailbox also requires the EB clock to be on when touching any of the
->>> mailbox registers.
->>>
->>> Add a simple driver for it based on the common mailbox framework.
->>>
->>> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
->>
->> Only a few nits in this, check below.
->>
->> [...]
->>> +
->>> +static int mtk_gpueb_mbox_send_data(struct mbox_chan *chan, void *data)
->>> +{
->>> +	struct mtk_gpueb_mbox *ebm = dev_get_drvdata(chan->mbox->dev);
->>> +	unsigned int *num = chan->con_priv;
->>> +	int i;
->>
->> int i, j;
->>
->>> +	u32 *values = data;
->>> +
->>> +	if (*num >= ebm->v->num_channels)
->>> +		return -ECHRNG;
->>> +
->>> +	if (!ebm->v->channels[*num].no_response &&
->>> +	    atomic_read(&ebm->rx_status[*num]))
->>> +		return -EBUSY;
->>> +
->>> +	writel(BIT(*num), ebm->mbox_ctl + MBOX_CTL_IRQ_CLR);
->>> +
->>> +	/*
->>> +	 * We don't want any fancy nonsense, just write the 32-bit values in
->>> +	 * order. memcpy_toio/__iowrite32_copy don't work here, because fancy.
->>> +	 */
->>> +	for (i = 0; i < ebm->v->channels[*num].tx_len; i += 4) {
->>
->> Just use an additional `j` index, so that you can avoid division.
-> 
-> The `/ 4` division here is equivalent to a `>> 2` which comes free with
-> almost every instruction on arm64, I don't think having two separate
-> indices makes the code any clearer?
+On Mon, Sep 8, 2025 at 1:34=E2=80=AFPM Christian Marangi <ansuelsmth@gmail.=
+com> wrote:
 
-> Unless I misunderstand how you'd
-> want me to use j here.
-> 
-> Like this?
-> 
->    j = 0;
->    for (i = 0; i < ebm->v->channels[*num].tx_len; i += 4) {
->      writel(values[j++], ebm->mbox_mmio + ebm->v->channels[*num].tx_offset + i);
->    }
-> 
-> This makes the relationship between the values index and i less clear. (And
-> in my rendition, assumes the reader knows how postincrement works, but I
-> think assuming people know C is fine.)
+> In all the MUX value for LED1 GPIO46 there is a Copy-Paste error where
+> the MUX value is set to LED0_MODE_MASK instead of LED1_MODE_MASK.
+>
+> This wasn't notice as there were no board that made use of the
+> secondary PHY LED but looking at the internal Documentation the actual
+> value should be LED1_MODE_MASK similar to the other GPIO entry.
+>
+> Fix the wrong value to apply the correct MUX configuration.
+>
+> Cc: stable@vger.kernel.org
+> Fixes: 1c8ace2d0725 ("pinctrl: airoha: Add support for EN7581 SoC")
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 
-I guess assuming people know that compilers will auto-optimize that is okay then.
+Patch applied for fixes.
 
-> 
->> [...]
->>
->>> +
->>> +	ebm->clk = devm_clk_get_enabled(ebm->dev, NULL);
->>> +	if (IS_ERR(ebm->clk))
->>> +		return dev_err_probe(ebm->dev, PTR_ERR(ebm->clk),
->>> +				     "Failed to get 'eb' clock\n");
->>> +
->>> +	ebm->mbox_mmio = devm_platform_ioremap_resource_byname(pdev, "mbox");
->>
->> I'd say that "chan" and "ctl" are more descriptive as resource names, but then,
->> do we really need to search by name?
-> 
-> In the binding, it was proposed to change "mbox" to something like "data",
-> which is fine by me, and to drop the "mbox" prefix of "ctl".
-> 
-
-Heh, didn't see that comment. data and ctl are also fine for me, go with those :-)
-
->>
->> Doing that by index is also an option, as you can write the MMIO names and their
->> full description in the bindings instead.
-> 
-> Yeah in the driver I think I'll switch to doing indices until some second
-> compatible forces us to actually rely on names because it adds a bunch of
-> other ranges.
-> 
->> [...]
-> 
-> thanks for the feedback, assume that anything I didn't directly respond
-> to will be fixed in the next revision.
-
-Perfect.
-
-Cheers,
-Angelo
-
+Yours,
+Linus Walleij
 
