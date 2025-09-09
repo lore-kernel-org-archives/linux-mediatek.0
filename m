@@ -4,95 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A262ECAC587
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 16:02:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D99AACAC58E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 16:42:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nWetMrUNt21ovOSJ7w/e/6SZ7KelhnhHlCJJrx1T5yg=; b=j+8Bqob+7Nn+jWzPT6EuBw2y60
-	hIPadaigWHKql0xdwsB4qbNwEwEiUCkgrPyHnKDZrLUk4ARqaWoUdIeeP6WWoKwVwvNITDByuvlGG
-	Hnvtf2lH8oOqIoU2OCGIiXQSM+ikJ0eZ+b/SihbBSbdokj3aNjs0YFgsCmEwABJRgEeyvhVAgPkN5
-	xrgqRMjATAeYLZguqrh/BwBLv0avkPwnaeKC8uz5AlbDv2ahRyoVlX040s7N+J3Xe7LO8v/rpQQQk
-	FJsWg0EvwKG7AclC+1nRh8yRrZbpuC2lDIjB0tN2EqFKuUkGxjebBdCsxA2Gden/zEBMM/XEJWwnP
-	+7cMNc8g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=nfuysb1r/89+ZrV1E85qpQuYbpPmf4DR4+ysy9HhnX0=; b=1cdlcx6zziPeRt
+	gDb2+OdqvR/NOUryw+eGboTw2BkaZ7hX69OEHczmyqq19XtC25M6xUBWwpLmxsZL1SEeJlQr/PClh
+	qiGZILfJ67WuE/sSl6ZEymGjyqsj9Go+fy+kxsGPE1AamAuI2yondOyNvVuckv4A5pF6Z/9Q6CTA/
+	FNfISCcVfF5j1ocHco9VyH/Ow042/QPAG5lqlHbOADpYBt493aiETcolnbtPeUntEMVj9M7EAsz/7
+	6aAB3yThpiMKN2leOM0mgkSAG4M4jRwxaiF2LBck01s7XXyv8m8Jpr1oRSGHnQ4lEptu6th70P4Pq
+	dpqAybV2V7nRwkFvtn7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uw0nr-00000008OCi-1gn3;
-	Tue, 09 Sep 2025 16:02:43 +0000
-Received: from mgamail.intel.com ([192.198.163.8])
+	id 1uw1Q8-00000008age-20Nd;
+	Tue, 09 Sep 2025 16:42:16 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvyfG-00000007Uhh-3ikN;
-	Tue, 09 Sep 2025 13:45:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1757425543; x=1788961543;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=cuvp1jqzP0KmBIeFPlYIHdueAMSWUkXNMbTb2SDREqQ=;
-  b=UonzozE+plb8Cdd4HIY75ymdSUXVW4NlJt2uN5xOC/5YGjBCWFoFv/1f
-   lFmmP80YSMsI6Xz0FyRVcnepwxnu8TxjVjDfEXYwo8SR2Oc3BDs01hy0Z
-   Hk8Ugx4/vaRjvovXvV8PeUJbrtxqLvawUzMsOdHZI21B+Gu0YB4LUUm1b
-   xIc14e+4nxXzUjJsqmpCUSPlCi4J/PhSMdodeqRMtY3fOhnsVeRW53Pe4
-   Cgo+V0SeFJ4Mrl1PaKk1mpH7nguZZ6NGupXBeDZScJix8tDkp4kA8OIY1
-   3t3NcYqDhW8WIzNjucmsqHN3EGKURnrtpqBrgp3lpnSQawnYPbK4YxKU7
-   A==;
-X-CSE-ConnectionGUID: 1je0Mm8BQJyKXYsM0fzzmQ==
-X-CSE-MsgGUID: K8Dy0YV/ROafaNPd93OvHA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11548"; a="77320978"
-X-IronPort-AV: E=Sophos;i="6.18,251,1751266800"; 
-   d="scan'208";a="77320978"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
-  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Sep 2025 06:45:40 -0700
-X-CSE-ConnectionGUID: YelEPzAPTVimIapPXZjDQA==
-X-CSE-MsgGUID: DSSZAarXTPmifkvXgS2MQw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.18,251,1751266800"; 
-   d="scan'208";a="177436591"
-Received: from smile.fi.intel.com ([10.237.72.51])
-  by fmviesa005.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Sep 2025 06:45:35 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.98.2)
-	(envelope-from <andriy.shevchenko@intel.com>)
-	id 1uvyf5-00000001S9X-2kkM;
-	Tue, 09 Sep 2025 16:45:31 +0300
-Date: Tue, 9 Sep 2025 16:45:31 +0300
-From: Andy Shevchenko <andriy.shevchenko@intel.com>
-To: Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: Linus Walleij <linus.walleij@linaro.org>,
-	Keguang Zhang <keguang.zhang@gmail.com>,
-	Alban Bedel <albeu@free.fr>, Doug Berger <opendmb@gmail.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Samuel Holland <samuel.holland@sifive.com>,
-	Yixun Lan <dlan@gentoo.org>, Andy Shevchenko <andy@kernel.org>,
-	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-mips@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
-	spacemit@lists.linux.dev,
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-Subject: Re: [PATCH 13/15] gpio: sodaville: use new generic GPIO chip API
-Message-ID: <aMAve1MbONmKVjjg@smile.fi.intel.com>
-References: <20250909-gpio-mmio-gpio-conv-part4-v1-0-9f723dc3524a@linaro.org>
- <20250909-gpio-mmio-gpio-conv-part4-v1-13-9f723dc3524a@linaro.org>
- <aMAP9hAWars0T83r@smile.fi.intel.com>
- <CAMRc=MeLTGq8Qu2aT43tkt3vaYCSaJPJPLmaUQ1SAyD_OgVr_g@mail.gmail.com>
- <aMAn4MM_Fs8q8qwj@smile.fi.intel.com>
- <CAMRc=Mdr4oW2d7XZ90rRr_fKC7WToz72v=_kW-s8=Urd0g8k3g@mail.gmail.com>
+	id 1uvuui-000000065s2-1fwT;
+	Tue, 09 Sep 2025 09:45:25 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 7E9D741749;
+	Tue,  9 Sep 2025 09:45:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D8B2CC4CEF4;
+	Tue,  9 Sep 2025 09:45:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1757411123;
+	bh=6Ia94TRSZA8SsqhhVryqysgdQbFx10IztQi8lM9eEWY=;
+	h=From:Subject:Date:To:Cc:From;
+	b=NjKhMMDYd72PhQgDOxt8i8Ro/KBVVDDBON28EkMgi4bndcvon6TjRPk7e2a3HD6Cp
+	 UXvygD+ZWGOU4z+QrHMRbp8QS3s9SJeaJv/uqaYLyCGVuuUeKJvf3E0vsrYIyhHsFK
+	 EZv4PdYAif1g+bmIk+CGVzm4cfyJZPiUHOdGEin33SsrO77GKvLHqh+iwZy7ozli5k
+	 1YnnwAvb0RTpzPqcFWhrRuIBuvpbVt6tx+z0bW1yMM8ksafyZKdWhSWQlDDCuPvlQ7
+	 Q7rrGh8kZVPS6sgxAOu9tpqlJvt5DDuOIaEZ8kL85x3SpYS7K6qZxFXP1V4GdE/rtE
+	 8kY74Bxy0F+og==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH mt76 v5 00/16] wifi: mt76: mt7996: Decouple RRO logic from
+ WED support
+Date: Tue, 09 Sep 2025 11:45:08 +0200
+Message-Id: <20250909-mt7996-rro-rework-v5-0-7d66f6eb7795@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAMRc=Mdr4oW2d7XZ90rRr_fKC7WToz72v=_kW-s8=Urd0g8k3g@mail.gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIACT3v2gC/33NQQrCMBCF4atI1kaSaZpmXHkPcaHNRIPayFSqI
+ r27sRsrFpf/wHzvKVriSK1Yzp6CqYttTE2Ocj4T9WHb7ElGn1uAglI50PJ8rRCtZE6S6Zb4KMG
+ gqolUUN6J/HdhCvE+mOtN7kNsr4kfw0Sn39d/WqelkrZ2pqq2Hi2G1ZG4odMi8V68uQ4+BKpJA
+ jKhA+YJuyu11z9EMSZgiigy4YLThUOFJdIPYcaEmSJMJqD2qKkCQG+/iL7vX0/n7/R8AQAA
+X-Change-ID: 20250821-mt7996-rro-rework-2490cee0f0d8
+To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Sujuan Chen <sujuan.chen@mediatek.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>, Bo Jiao <Bo.Jiao@mediatek.com>
+Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Rex Lu <rex.lu@mediatek.com>, 
+ Benjamin Lin <benjamin-jw.lin@mediatek.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250909_064542_941355_29B91281 
-X-CRM114-Status: GOOD (  29.99  )
+X-CRM114-CacheID: sfid-20250909_024524_519901_8EDD2D3C 
+X-CRM114-Status: GOOD (  10.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,87 +81,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 09, 2025 at 08:24:23AM -0500, Bartosz Golaszewski wrote:
-> On Tue, 9 Sep 2025 15:13:04 +0200, Andy Shevchenko
-> <andriy.shevchenko@intel.com> said:
-> > On Tue, Sep 09, 2025 at 01:35:04PM +0200, Bartosz Golaszewski wrote:
-> >> On Tue, Sep 9, 2025 at 1:31 PM Andy Shevchenko
-> >> <andriy.shevchenko@intel.com> wrote:
-> >> > On Tue, Sep 09, 2025 at 11:15:40AM +0200, Bartosz Golaszewski wrote:
+Decouple RRO logic (v3.0 and v3.1) from WED support in MT7996 driver in
+order to reuse it when WED module is not available.
+Introduce WED offload support for MT7992 chipset in MT7996 driver.
 
-...
+---
+Changes in v5:
+- Fix more bitmap usage in DMA descriptos data.
+- Fix compilation warning.
+- Link to v4: https://lore.kernel.org/r/20250904-mt7996-rro-rework-v4-0-2cd91e7229d6@kernel.org
 
-> >> > > +     config = (typeof(config)){
-> >> >
-> >> > This looks unusual. Why can't properly formed compound literal be used as in
-> >> > many other places in the kernel?
-> >>
-> >> It is correct C
-> >
-> > If it compiles, it doesn't mean it's correct C, it might be non-standard.
-> > Have you checked with the standard (note, I read that part in the past,
-> > but I may forgot the details, so I don't know the answer to this)?
-> 
-> It's a GNU extension alright
+Changes in v4:
+- Do not use bitmap for DMA descriptos data.
+- Link to v3: https://lore.kernel.org/r/20250902-mt7996-rro-rework-v3-0-8f813890959e@kernel.org
 
-clang, I suppose, also okay with this?
+Changes in v3:
+- Fix compilation warnings
+- Rebase on top of mt76 main branch
+- Split patch 4/14
+- Link to v2: https://lore.kernel.org/r/20250901-mt7996-rro-rework-v2-0-1f95086b51d1@kernel.org
 
-> but it's supported in the kernel as it evaluates
-> to a simple cast.
+Changes in v2:
+- Fix SER when Wireless Ethernet Dispatcher (WED) is disabled
+- Rebase on top of mt76 main branch
+- Link to v1: https://lore.kernel.org/r/20250821-mt7996-rro-rework-v1-0-6c8477ad969f@kernel.org
 
-There is no cast. And that's make a big difference to what the code tries to do.
+---
+Lorenzo Bianconi (8):
+      wifi: mt76: Add reset_idx to reset_q mt76_queue_ops signature.
+      wifi: mt76: Remove q->ndesc check in mt76_dma_rx_fill()
+      wifi: mt76: Do not always enable NAPIs for WED RRO queues
+      wifi: mt76: mt7996: Fix tx-queues initialization for second phy on mt7996
+      wifi: mt76: mt7996: Fix RX packets configuration for primary WED device
+      wifi: mt76: mt7996: Convert mt7996_wed_rro_addr to LE
+      wifi: mt76: Add rx_queue_init callback
+      wifi: mt76: Add mt76_dma_get_rxdmad_c_buf utility routione
 
-> >> and checkpatch doesn't raise any warnings.
-> >
-> > checkpatch is far from being useful in the questions like this.
-> > It false positively complains for for_each*() macros all over
-> > the kernel, for example.
-> >
-> >> It's the
-> >> same kind of argument as between kmalloc(sizeof(struct foo)) vs
-> >> kmalloc(sizeof(f)).
-> >
-> > Maybe, but it introduces a new style while all other cases use the other,
-> > _established_ style. So we have a precedent and the form the code is written
-> > in is against the de facto usage of the compound literals.
-> 
-> It may not be *very* common but it's hardly new style:
+Rex Lu (8):
+      wifi: mt76: Differentiate between RRO data and RRO MSDU queues
+      wifi: mt76: mt7996: Initial DMA configuration for MT7992 WED support
+      wifi: mt76: mt7996: Enable HW RRO for MT7992 chipset
+      wifi: mt76: mt7996: Introduce the capability to reset MT7992 WED device
+      wifi: mt76: mt7996: Enable WED for MT7992 chipset
+      wifi: mt76: mt7996: Introduce RRO MSDU callbacks
+      wifi: mt76: mt7996: Decouple RRO logic from WED support
+      wifi: mt76: mt7996: Add SW path for HW-RRO v3.1
 
-I think your statement is incorrect see below why.
+ drivers/net/wireless/mediatek/mt76/dma.c           | 226 +++++++++---
+ drivers/net/wireless/mediatek/mt76/dma.h           |  29 +-
+ drivers/net/wireless/mediatek/mt76/mt76.h          |  54 ++-
+ drivers/net/wireless/mediatek/mt76/mt7915/dma.c    |   4 +-
+ drivers/net/wireless/mediatek/mt76/mt792x_dma.c    |   6 +-
+ drivers/net/wireless/mediatek/mt76/mt7996/dma.c    | 326 +++++++++++++----
+ drivers/net/wireless/mediatek/mt76/mt7996/init.c   | 318 ++++++++++++-----
+ drivers/net/wireless/mediatek/mt76/mt7996/mac.c    | 387 ++++++++++++++++++++-
+ drivers/net/wireless/mediatek/mt76/mt7996/main.c   |  17 +-
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c    |   4 +-
+ drivers/net/wireless/mediatek/mt76/mt7996/mmio.c   |  89 +++--
+ drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h |  89 ++++-
+ drivers/net/wireless/mediatek/mt76/mt7996/pci.c    |   3 +-
+ drivers/net/wireless/mediatek/mt76/mt7996/regs.h   |  32 +-
+ drivers/net/wireless/mediatek/mt76/wed.c           |   8 +-
+ 15 files changed, 1315 insertions(+), 277 deletions(-)
+---
+base-commit: 29806c11aec7a552fa351867efa1337cc4ad1fe9
+change-id: 20250821-mt7996-rro-rework-2490cee0f0d8
 
-> $ git grep -P "\(typeof\(.*\)\) ?\{" | wc
->     108     529    7315
-
-Not correct. The correct output will be closer to
-
-$ git grep -l -P "\(typeof\(.*\)\) ?\{" | wc -l
-15
-
-And if you looked at the output carefully, you see the bug in the RE you used.
-
-So, even closer will be this one:
-
-$ git grep -l -P "=[[:space:]]+\(typeof\(.*\)\) ?\{" | wc -l
-7
-
-2 out of which are related to libeth, effectively makes this 6.
-
-No, this is completely non-standard and unusual thing in the kernel.
-
-> >> I guess it's personal taste but I like this version better.
-> >
-> > In kernel we also try to be consistent. This add inconsistency. Am I wrong?
-> >
-> >> > > +             .dev = &pdev->dev,
-> >> > > +             .sz = 4,
-> >> > > +             .dat = sd->gpio_pub_base + GPINR,
-> >> > > +             .set = sd->gpio_pub_base + GPOUTR,
-> >> > > +             .dirout = sd->gpio_pub_base + GPOER,
-> >> > > +     };
-
+Best regards,
 -- 
-With Best Regards,
-Andy Shevchenko
-
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
