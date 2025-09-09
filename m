@@ -4,109 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92EB2CA0FED
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 15:45:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1F3ECAC58C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 15:50:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To
+	:From:Subject:Message-Id:Date:Content-Type:Content-Transfer-Encoding:
+	Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H6eCnKOXIsJYGPMWl3D4Jhjj+0Ieti5SchV9n8g8z8A=; b=MwWL1TMGDCsrGvx+gKfieCMqQP
-	Of9HGgeUK9mmgkqVBknmOx3NVOsXrq4LCQd/NKZ4ScnFesMEaZDEop8gJbEUOuwYDEeqsJFo+stD4
-	tMDuMmUHUU9DP8VoZvAvf2Mg/npXEDeDkoby33qTbBIS0lZBicNlJue/ZsAYBvuWjHmB+IlBM7zNb
-	tA9Y/f+u7j2Byea8P2wXoFjW/vuFfphViYkcf8b7vPjaNXQhWvvP8UwyBzGGhe8+yDmY8ctZHnbI/
-	q4T2Jv9AUC5BSfvXjvwB2O3+wkyrWHQ2LXtd7Gt/v7zAYZvPso4ysTriNt7zW9CAREyJVBdNUNAyi
-	MLSYMhvg==;
+	bh=zh5sY06tAQIi2285XtWukLXdwjEX7/VCKB/pF8NtVww=; b=dN2Cl7oEs1bkTum+WFALobdGjq
+	//nXss9ggfhrI4ui/yiL54PQ18i1TBKFN/GWBbLWrCORjrv3hVlHYUM24pfcMS6q7HoBMMqm22moy
+	DuCo4e91KHLAoNEMex/MP16NzzvkTejFxZ1mAqZU4jnQ6EFAyiEnTqLpWHExcgdHRhjz/flVw3wa7
+	Lp4FoAh5qQdeJ2Kd1HgpSckAOegLaQBL4XEcLqAhEdcCuwlYz9AC82SjPZygQyKv8z6a7j7Da5JhK
+	5ONK2D8/bGNSZB2A+KJNZOSnPoAqxIbnmsGZHGRhYqWZKdyuoxHvVAhG6e6ZB9PoYItofTpTtG3Wy
+	NlhyiO8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uw0XW-00000008FXr-3mpW;
-	Tue, 09 Sep 2025 15:45:51 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uw0cP-00000008K76-22g0;
+	Tue, 09 Sep 2025 15:50:54 +0000
+Received: from sendmail.purelymail.com ([34.202.193.197])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvwd7-00000006mOr-0kDM
-	for linux-mediatek@bombadil.infradead.org;
-	Tue, 09 Sep 2025 11:35:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=H6eCnKOXIsJYGPMWl3D4Jhjj+0Ieti5SchV9n8g8z8A=; b=laTKQcnGMuOgeQYxOlxfPgZRz2
-	0Vl6E4379a305dCq3OV1v2k8CVPAdys4dpv4YXffFcNRgZo+uYP9361kzZ1zZfKRDcQRYGNNWlBXw
-	SLFTwYmfDxj+7gzAJyk179HiiTr5ktrzK4jFZDbRduDEnmtXpzC5XhO4fyKCNqBGgWuK/p4l1v3BR
-	O1U/pLwthHiGHIsDWNHtvggwJBJiF7fPp9hbkYt+fMo/Ba3IhU6ty2XXAxTfqIG4AWr431SUdc9Vc
-	GIVi8LTKqsuZaQR1RricZsMHb/6gzgMZ0U+mAqJQ2thGRDE3PCSpjS8ed6Ne20KBpNMdf9/svs4MZ
-	cAmPkseg==;
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvwd4-00000005K1q-15YK
+	id 1uvxFI-000000070E8-0pFG
 	for linux-mediatek@lists.infradead.org;
-	Tue, 09 Sep 2025 11:35:20 +0000
-Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-55f6bb0a364so5849580e87.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 09 Sep 2025 04:35:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1757417716; x=1758022516; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=H6eCnKOXIsJYGPMWl3D4Jhjj+0Ieti5SchV9n8g8z8A=;
-        b=irm4VK2loLiDOIXxKob0Yf5+2D9iGpC2tV2v8j5KJev1yQqnO9UfPuFUJvcULUNx9i
-         sk/XmpX8ew8Uu0Vq8nD5Es5D6kZWwnhnwbBLJaaJQwVjZTbJezZ3SXKglVLSfaiaqnlm
-         hQkB2dAd9EhYdwuekI01bNW21VSR7T83MVn8b9Bz77gpyQbKzTfRAx6yCe/6MN3GG0if
-         55lL1mZlnKBufRLDK9gGleDU6Dm+bA38u9LGO3VPBmtWRkyXElLTuvfOvEQap67TKvWB
-         PI4HOep1I1K1X61PbGD1AVewOiDKbwkzlNSgYM4QQsj3PQd11SdqHkINBRWbtJs6J4M6
-         ii1A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757417716; x=1758022516;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=H6eCnKOXIsJYGPMWl3D4Jhjj+0Ieti5SchV9n8g8z8A=;
-        b=bghE4LS0fzLa5vUZUh11tgx+VhjebNiJvzSRhH6l8f4rpiSmDzhyA9j0yPoSmUjEkT
-         sV1HwM1hO7VjyoPMYx7p6bPlSpmrRkgoN1QyB+nYwDG5cG8SuK3JgAw5SmJav0SNbWI4
-         udeFUgxtf6ZTlja+vgCB0q1zLaQxigRJbplH4kP8jgfI9sSJCprlo76XWJAiMXmXh8RM
-         2RJ7eomQO543bwkOPnz4nuXIc9wLOLGI9i57QlTmuaqJGDP3rBTjA9Nln3APbxWup/LK
-         ecj2STnfNdp1N2GULTm7+kIdsgSQbp2KnBC6xkaiozHm2nhBcUiKhckjpd6rjPR001iM
-         pLnQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUSaCBXMnjh5yVm7I9Tq+YpJxRy4V29gOsPFk3DV90ShwDEbJhjVya9PGuTBqlpIfb3oF90kXjKCEuYWvW49Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz8IQ1JH9/141vL7i439h9X7oVB9bJ+4jai04W0xZ7ozOOza+Cv
-	aHLQ/kfvTX1DzJevyf9Cqt+t1eDCPceI/S6SN7/DNICkKNHBmnbWLhTwsvStKAyLZPCkynuXIGM
-	BHHPX6Xq/97peiHl8NC9KqP58bsvOYgIYIITmteZJTQ==
-X-Gm-Gg: ASbGncusZpNQCjN/QLZYP2xQB4gsz/fYwKIt8IvI4GRePpaRENKoqRlvxohMstoDMV4
-	P5U+Qg4mKxjFG8rZEnnC5zPuvDbRARmI2Lwx6EYOqr1i/lS+dQgUjVt5h2IkGqgUDAagAy7S+17
-	9yvidviCUlJA0R3epcX3XKAutNBxp8g2e/1fIFbaQqVxp0ukKJHPByM5uvyOBkfpWUCPXZoFlOp
-	heIFge2HS4iCtmBabkbroDmp6+UjdgE6q39tIOO1FlFwu8Z/Q==
-X-Google-Smtp-Source: AGHT+IHWd+/2o3jpP5pFKotnmfcWTA0FpdlTJ7xwTNOp9WJ3bLpmlAirprq1zjBteK7SqJBfI4YYAjx9R2Xs8MJv8vM=
-X-Received: by 2002:a05:6512:639a:10b0:568:4ae7:8371 with SMTP id
- 2adb3069b0e04-5684ae7fda5mr659891e87.4.1757417715746; Tue, 09 Sep 2025
- 04:35:15 -0700 (PDT)
-MIME-Version: 1.0
-References: <20250909-gpio-mmio-gpio-conv-part4-v1-0-9f723dc3524a@linaro.org>
- <20250909-gpio-mmio-gpio-conv-part4-v1-13-9f723dc3524a@linaro.org> <aMAP9hAWars0T83r@smile.fi.intel.com>
-In-Reply-To: <aMAP9hAWars0T83r@smile.fi.intel.com>
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Tue, 9 Sep 2025 13:35:04 +0200
-X-Gm-Features: Ac12FXwO2LcDkWGWZohqu8ChVnTISfR-cQj8e5EdoM33wEcP1qEQLJ7mzcbrqVk
-Message-ID: <CAMRc=MeLTGq8Qu2aT43tkt3vaYCSaJPJPLmaUQ1SAyD_OgVr_g@mail.gmail.com>
-Subject: Re: [PATCH 13/15] gpio: sodaville: use new generic GPIO chip API
-To: Andy Shevchenko <andriy.shevchenko@intel.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Keguang Zhang <keguang.zhang@gmail.com>, 
-	Alban Bedel <albeu@free.fr>, Doug Berger <opendmb@gmail.com>, 
-	Florian Fainelli <florian.fainelli@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Paul Walmsley <paul.walmsley@sifive.com>, Samuel Holland <samuel.holland@sifive.com>, 
-	Yixun Lan <dlan@gentoo.org>, Andy Shevchenko <andy@kernel.org>, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-riscv@lists.infradead.org, spacemit@lists.linux.dev, 
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
+	Tue, 09 Sep 2025 12:14:49 +0000
+Authentication-Results: purelymail.com; auth=pass
+DKIM-Signature: a=rsa-sha256; b=j8qY2/7a8ePIxrqZQXvrBmH0RKrjQLpb5akUZKSCAGk4EvB2bmcXG21rNMv52eQrtguTCUVHjyeQLMhjpcNqCU84f2G/+z4nlfLW2GW0qVAIwCzUS3/FLMuEIe3JG2MYmAMZaoiz6ztxfmVXcWmFrmn48S9fSwCF3+ZV6eNzYyk9a13n2GdR5d9Amz8DjJnMWfSv71o3w6agMPE5bsrC4ohM5ALnASOaQs5LmOKfgDs6+/OxidJvnD65EoM5LaUx/S8pnqbRND7urnx/PmzS+PgQC2+eh9ZEcrHdwdz/WMbNWh9lraIyUFcGvAdSkLbOXEOolZ3s+MfP7LfUPoblhQ==; s=purelymail2; d=purelymail.com; v=1; bh=IsdM/3F1Q6gkhhBr0tu3r8LDY45Dp22k/hV+pt0fo2M=; h=Feedback-ID:Received:Date:Subject:From:To;
+Feedback-ID: 68247:10037:null:purelymail
+X-Pm-Original-To: linux-mediatek@lists.infradead.org
+Received: by smtp.purelymail.com (Purelymail SMTP) with ESMTPSA id -824743633;
+          (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384);
+          Tue, 09 Sep 2025 12:14:11 +0000 (UTC)
+Mime-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Date: Tue, 09 Sep 2025 14:14:08 +0200
+Message-Id: <DCO9EWX469HR.2R09YSL967MSV@mentallysanemainliners.org>
+Subject: Re: [PATCH 1/4] dt-bindings: pinctrl: mediatek: Document MT6878 pin
+ controller bindings
+From: "Igor Belwon" <igor.belwon@mentallysanemainliners.org>
+To: "Krzysztof Kozlowski" <krzk@kernel.org>, "Igor Belwon"
+ <igor.belwon@mentallysanemainliners.org>
+Cc: "Linus Walleij" <linus.walleij@linaro.org>, "Rob Herring"
+ <robh@kernel.org>, "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor
+ Dooley" <conor+dt@kernel.org>, "Matthias Brugger" <matthias.bgg@gmail.com>,
+ "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
+ "Sean Wang" <sean.wang@kernel.org>, <linux-gpio@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+X-Mailer: aerc 0.21.0-0-g5549850facc2
+References: <20250908-mt6878-pinctrl-support-v1-0-3fb78c8ab4e8@mentallysanemainliners.org> <20250908-mt6878-pinctrl-support-v1-1-3fb78c8ab4e8@mentallysanemainliners.org> <20250909-mellow-eminent-duck-4c4619@kuoka>
+In-Reply-To: <20250909-mellow-eminent-duck-4c4619@kuoka>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250909_123518_470704_DAF0784A 
-X-CRM114-Status: GOOD (  13.26  )
+X-CRM114-CacheID: sfid-20250909_051448_366121_7A2A714C 
+X-CRM114-Status: GOOD (  21.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,35 +72,294 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 9, 2025 at 1:31=E2=80=AFPM Andy Shevchenko
-<andriy.shevchenko@intel.com> wrote:
+On Tue Sep 9, 2025 at 9:37 AM CEST, Krzysztof Kozlowski wrote:
+> On Mon, Sep 08, 2025 at 09:17:55PM +0200, Igor Belwon wrote:
+>> Add device-tree bindings for the pin controller and the EINT controller
+>> found in the MediaTek MT6878 SoC.
+>>=20
+>> Signed-off-by: Igor Belwon <igor.belwon@mentallysanemainliners.org>
+>> ---
+>>  .../bindings/pinctrl/mediatek,mt6878-pinctrl.yaml  |  209 ++++
+>>  include/dt-bindings/pinctrl/mt6878-pinfunc.h       | 1201 +++++++++++++=
++++++++
+>>  2 files changed, 1410 insertions(+)
+>>=20
+>> diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6878-p=
+inctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6878-pin=
+ctrl.yaml
+>> new file mode 100644
+>> index 0000000000000000000000000000000000000000..ecd24ab23a0c41810828ddb8=
+827ab39c4cd3d2fc
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6878-pinctrl.=
+yaml
+>> @@ -0,0 +1,209 @@
+>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+>> +%YAML 1.2
+>> +---
+>> +$id: http://devicetree.org/schemas/pinctrl/mediatek,mt6878-pinctrl.yaml=
+#
+>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>> +
+>> +title: MediaTek MT6878 Pin Controller
+>> +
+>> +maintainers:
+>> +  - Igor Belwon <igor.belwon@mentallysanemainliners.org>
+>> +
+>> +description:
+>> +  The MediaTek MT6878 Pin controller is used to control SoC pins.
+>> +
+>> +properties:
+>> +  compatible:
+>> +    const: mediatek,mt6878-pinctrl
+>> +
+>> +  reg:
+>> +    items:
+>> +      - description: pin controller base
+>> +      - description: bl group IO
+>> +      - description: bm group IO
+>> +      - description: br group IO
+>> +      - description: bl1 group IO
+>> +      - description: br1 group IO
+>> +      - description: lm group IO
+>> +      - description: lt group IO
+>> +      - description: rm group IO
+>> +      - description: rt group IO
+>> +      - description: EINT controller E block
+>> +      - description: EINT controller S block
+>> +      - description: EINT controller W block
+>> +      - description: EINT controller C block
+>> +
+>> +  reg-names:
+>> +    items:
+>> +      - const: base
+>> +      - const: bl
+>> +      - const: bm
+>> +      - const: br
+>> +      - const: bl1
+>> +      - const: br1
+>> +      - const: lm
+>> +      - const: lt
+>> +      - const: rm
+>> +      - const: rt
+>> +      - const: eint-e
+>> +      - const: eint-s
+>> +      - const: eint-w
+>> +      - const: eint-c
+>> +
+>> +  gpio-controller: true
+>> +
+>> +  '#gpio-cells':
+>> +    description:
+>> +      Number of cells in GPIO specifier. Since the generic GPIO binding=
+ is used,
+>> +      the amount of cells must be specified as 2. See the below mention=
+ed gpio
+>> +      binding representation for description of particular cells.
+>> +    const: 2
+>> +
+>> +  gpio-ranges:
+>> +    maxItems: 1
+>> +
+>> +  gpio-line-names: true
 >
-> On Tue, Sep 09, 2025 at 11:15:40AM +0200, Bartosz Golaszewski wrote:
-> >
-> > Convert the driver to using the new generic GPIO chip interfaces from
-> > linux/gpio/generic.h.
->
-> ...
->
-> > +     config =3D (typeof(config)){
->
-> This looks unusual. Why can't properly formed compound literal be used as=
- in
-> many other places in the kernel?
+> How many GPIOs do you have? No limit?
 >
 
-It is correct C and checkpatch doesn't raise any warnings. It's the
-same kind of argument as between kmalloc(sizeof(struct foo)) vs
-kmalloc(sizeof(f)).
+How shall I limit the GPIOs?
+The maximum amount that this SoC supports is 216, looking into
+dt-bindings for pinctrl, I haven't seen a SoC that limits them in
+bindings. Maybe I missed it though...
 
-I guess it's personal taste but I like this version better.
+>> +
+>> +  interrupts:
+>> +    description: The interrupt outputs to sysirq
+>> +    maxItems: 1
+>> +
+>> +  interrupt-controller: true
+>> +
+>> +  '#interrupt-cells':
+>> +    const: 2
+>> +
+>> +# PIN CONFIGURATION NODES
+>> +patternProperties:
+>> +  '-pins$':
+>> +    type: object
+>> +    additionalProperties: false
+>> +
+>> +    patternProperties:
+>> +      '^pins':
+>> +        type: object
+>> +        allOf:
+>> +          - $ref: /schemas/pinctrl/pincfg-node.yaml
+>> +          - $ref: /schemas/pinctrl/pinmux-node.yaml
+>> +        description:
+>> +          A pinctrl node should contain at least one subnodes represent=
+ing the
+>> +          pinctrl groups available on the machine. Each subnode will li=
+st the
+>> +          pins it needs, and how they should be configured, with regard=
+ to muxer
+>> +          configuration, pullups, drive strength, input enable/disable =
+and input
+>> +          schmitt.
+>> +
+>> +        properties:
+>> +          pinmux:
+>> +            description:
+>> +              Integer array, represents gpio pin number and mux setting=
+.
+>> +              Supported pin number and mux are defined as macros in
+>> +              arch/arm64/boot/dts/mediatek/mt8196-pinfunc.h for this So=
+C.
+>> +
+>> +          drive-strength:
+>> +            enum: [2, 4, 6, 8, 10, 12, 14, 16]
+>> +
+>> +          drive-strength-microamp:
+>> +            enum: [125, 250, 500, 1000]
+>> +
+>> +          bias-pull-down:
+>> +            oneOf:
+>> +              - type: boolean
+>> +              - enum: [75000, 5000]
+>> +                description: Pull down RSEL type resistance values (in =
+ohms)
+>> +            description:
+>> +              For normal pull down type there is no need to specify a r=
+esistance
+>> +              value, hence this can be specified as a boolean property.
+>> +              For RSEL pull down type a resistance value (in ohms) can =
+be added.
+>> +
+>> +          bias-pull-up:
+>> +            oneOf:
+>> +              - type: boolean
+>> +              - enum: [10000, 5000, 4000, 3000]
+>> +                description: Pull up RSEL type resistance values (in oh=
+ms)
+>> +            description:
+>> +              For normal pull up type there is no need to specify a res=
+istance
+>> +              value, hence this can be specified as a boolean property.
+>> +              For RSEL pull up type a resistance value (in ohms) can be=
+ added.
+>> +
+>> +          bias-disable: true
+>> +
+>> +          output-high: true
+>> +
+>> +          output-low: true
+>> +
+>> +          input-enable: true
+>> +
+>> +          input-disable: true
+>> +
+>> +          input-schmitt-enable: true
+>> +
+>> +          input-schmitt-disable: true
+>> +
+>> +        required:
+>> +          - pinmux
+>> +
+>> +        additionalProperties: false
+>> +
+>> +required:
+>> +  - compatible
+>> +  - reg
+>> +  - interrupts
+>> +  - interrupt-controller
+>> +  - '#interrupt-cells'
+>> +  - gpio-controller
+>> +  - '#gpio-cells'
+>> +  - gpio-ranges
+>> +
+>> +additionalProperties: false
+>> +
+>> +examples:
+>> +  - |
+>> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+>> +    #include <dt-bindings/pinctrl/mt65xx.h>
+>
+> Why including mt65xx?
+>
+>> +    #define PINMUX_GPIO0__FUNC_GPIO0 (MTK_PIN_NO(0) | 0)
+>
+> I don't understand why do you need it? Didn't you have header for that?
+> Or you prepared for header removal (see my further comment), but then it
+> is just confusing.
+>
 
-Bartosz
+Will use the new header in V2.
 
-> > +             .dev =3D &pdev->dev,
-> > +             .sz =3D 4,
-> > +             .dat =3D sd->gpio_pub_base + GPINR,
-> > +             .set =3D sd->gpio_pub_base + GPOUTR,
-> > +             .dirout =3D sd->gpio_pub_base + GPOER,
-> > +     };
+>> +    #define PINMUX_GPIO99__FUNC_SCL0 (MTK_PIN_NO(99) | 1)
+>> +    #define PINMUX_GPIO100__FUNC_SDA0 (MTK_PIN_NO(100) | 1)
+>> +
+>> +    pio: pinctrl@10005000 {
+>> +        compatible =3D "mediatek,mt6878-pinctrl";
+>> +        reg =3D <0x10005000 0x1000>,
+>> +              <0x11d10000 0x1000>,
+>> +              <0x11d30000 0x1000>,
+>> +              <0x11d40000 0x1000>,
+>> +              <0x11d50000 0x1000>,
+>> +              <0x11d60000 0x1000>,
+>> +              <0x11e20000 0x1000>,
+>> +              <0x11e30000 0x1000>,
+>> +              <0x11eb0000 0x1000>,
+>> +              <0x11ec0000 0x1000>,
+>> +              <0x11ce0000 0x1000>,
+>> +              <0x11de0000 0x1000>,
+>> +              <0x11e60000 0x1000>,
+>> +              <0x1c01e000 0x1000>;
+>> +        reg-names =3D "base", "bl", "bm", "br", "bl1", "br1",
+>> +                    "lm", "lt", "rm", "rt", "eint-e", "eint-s",
+>> +                    "eint-w", "eint-c";
+>> +        gpio-controller;
+>> +        #gpio-cells =3D <2>;
+>> +        gpio-ranges =3D <&pio 0 0 220>;
+>> +        interrupt-controller;
+>> +        interrupts =3D <GIC_SPI 239 IRQ_TYPE_LEVEL_HIGH 0>;
+>> +        #interrupt-cells =3D <2>;
+>> +
+>> +        gpio-pins {
+>> +            pins {
+>> +                pinmux =3D <PINMUX_GPIO0__FUNC_GPIO0>;
+>> +                bias-pull-up =3D <4000>;
+>> +                drive-strength =3D <6>;
+>> +            };
+>> +        };
+>> +
+>> +        i2c0-pins {
+>> +            pins-bus {
+>> +                pinmux =3D <PINMUX_GPIO99__FUNC_SCL0>,
+>> +                         <PINMUX_GPIO100__FUNC_SDA0>;
+>> +                bias-pull-down =3D <75000>;
+>> +                drive-strength-microamp =3D <1000>;
+>> +            };
+>> +        };
+>> +    };
+>> diff --git a/include/dt-bindings/pinctrl/mt6878-pinfunc.h b/include/dt-b=
+indings/pinctrl/mt6878-pinfunc.h
+>> new file mode 100644
+>> index 0000000000000000000000000000000000000000..4e8e475a74549b513ac7075a=
+c2ef0fe6f7f1d097
+>> --- /dev/null
+>> +++ b/include/dt-bindings/pinctrl/mt6878-pinfunc.h
+>
+> This is now in DTS.
+
+Will move over in V2.
+
+>
+>> @@ -0,0 +1,1201 @@
+>> +/* SPDX-License-Identifier: GPL-2.0 */
+>
+> Otherwise wrong license and wrong filename (vendor prefix, filename
+> matching binding).
+>
+> Best regards,
+> Krzysztof
+
+Thanks,
+Igor
 
