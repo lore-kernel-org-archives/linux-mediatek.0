@@ -4,91 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2D90CAC582
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 17:16:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A0BECAC58C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 17:20:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TILxIKRVPQJpP12ksT+ILWqU44FoU6j0tUzdymfZ1Tw=; b=GPOJLQFEIR5WSXgkxQ6eBqHKN/
-	SltBrut95wqgIuZ793YChotYNYPJa22F6cHVFfBQM7xEuVcdeh/mmqz3Pg+h82WNcIowwXovhMVWX
-	D0sJk/0CueSX/Y7dcNsgousImKdog2QUVgIfxTI1xttilKi215qgHbUDFE+Psic99vu/debVsR7QJ
-	S3I4uc/rwyAXXgUF04ugQrgVlBNzVs8oXUC7nlvejh7f04OWHT6uuoFPctYKkgfrIGLcIF6WumjHE
-	SO/NLtRyvIst+weROIPy58yYu9ZIL3p54Pm5sHA2KISKhrsY0IUe+qEALm9oeE6eBEUT5ck8M4G9E
-	XmN+eACA==;
+	bh=KuUSi/wMj/deuFTckhCe0po1wpou4UMuleZXZpAya2o=; b=AGaJ3ZQ2sYAd4Wbky6VeVbS71L
+	JiozLUiRmmjdv6/v1gRY3p44NTUEWLzbsoN1l/6QTOih2crXiDqXIcnsr11lj+5wV1hMbI9tdFFG7
+	k47MbAoST7h4h4wrDf4loou7zcLxwRdbUbZXK6NF7xXBLmlDwtRoYNSDIHN0OXjmtvAevdWI+sVmA
+	6+VJNuz7gpx00DpnzujllRmgzKqG6koUf5FlQLrwphPZBTwMq+ckVGzvlevcZUPxpvKxKXgL+bGJi
+	8PommbJVYWFhdaSZRZECyB4a1nVk80avGIklPjWGRXLAsvTnIX1LrKj9ZKx2E7m7N4lcpgktIQt9J
+	hFyx016A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uw1wl-00000008p3W-0Cm9;
-	Tue, 09 Sep 2025 17:15:59 +0000
-Received: from mgamail.intel.com ([198.175.65.18])
+	id 1uw20d-00000008vL4-3sk3;
+	Tue, 09 Sep 2025 17:20:00 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvwZ7-00000006kg4-3mDW;
-	Tue, 09 Sep 2025 11:31:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1757417474; x=1788953474;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=rz+1WJdCMk4bw7MZU/uL3ew/4Ysn6aikcYLa1uqNyjk=;
-  b=a/q9vFW6FNsV4oaDRY9/kIPxOG++MWKmZk+gmCvASy6VETbGLEWqBVuF
-   W7tWS3x3V2/Uima/JFMn3hpksIKTL0zpSrFbLVX28LxRRRCViP8ykY1et
-   nr2tmzeCqrqJy6jBJ2yBZ1EZIXxKq2GAQAAy7Md+MHv/DfMhLqcLlOUsb
-   nhtC3xmgdzaY9lsf+p5djIM7oMD3W+toEo+PjbsXtUDMzmFR6draYiekj
-   K/sgMQ1vppX3znmW2ao2tH9vKOWraapqdqBPyuha4ND5tb12xiwYLzHp2
-   wHV774dJ2GL/vNJ8RQuNUJO7qGZ9ctZ0eURw2i+P5oowDY0kAHtxTX48n
-   A==;
-X-CSE-ConnectionGUID: g97xOJYgRdemMmctxA/N0A==
-X-CSE-MsgGUID: 4gxGXlgKR7yTTe3pifOetw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11531"; a="59762844"
-X-IronPort-AV: E=Sophos;i="6.17,312,1747724400"; 
-   d="scan'208";a="59762844"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
-  by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Sep 2025 04:31:11 -0700
-X-CSE-ConnectionGUID: kETrlqaUS7SDcC66+bpzQA==
-X-CSE-MsgGUID: d1Tczp/ZSi+Sia6+hUP0FQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.18,251,1751266800"; 
-   d="scan'208";a="172980605"
-Received: from smile.fi.intel.com ([10.237.72.51])
-  by fmviesa006.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Sep 2025 04:31:05 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.98.2)
-	(envelope-from <andriy.shevchenko@intel.com>)
-	id 1uvwYw-00000001QM0-1JWn;
-	Tue, 09 Sep 2025 14:31:02 +0300
-Date: Tue, 9 Sep 2025 14:31:02 +0300
-From: Andy Shevchenko <andriy.shevchenko@intel.com>
-To: Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: Linus Walleij <linus.walleij@linaro.org>,
-	Keguang Zhang <keguang.zhang@gmail.com>,
-	Alban Bedel <albeu@free.fr>, Doug Berger <opendmb@gmail.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	id 1uvyfQ-00000007Uly-408L
+	for linux-mediatek@lists.infradead.org;
+	Tue, 09 Sep 2025 13:45:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1757425551;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=KuUSi/wMj/deuFTckhCe0po1wpou4UMuleZXZpAya2o=;
+	b=ZA8mATe8MEWGDAT7FgOEJfCfCxhJ/hpbd1yBqxg1wPv/Eyvsik24cUU/BZh0U+Ma6NGOWi
+	eMrtAhhWqM7svqydPaub90hJZaxrE93/JqDrjdbZMSgT1B94Q+JeyrmFHDSghZO1qLcnXe
+	8jqvkKZjvkuJpvz8lLRJyJZWigF/WzE=
+Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
+ [209.85.219.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-171-mrlRl5a_NSyX2uzHaeclig-1; Tue, 09 Sep 2025 09:45:50 -0400
+X-MC-Unique: mrlRl5a_NSyX2uzHaeclig-1
+X-Mimecast-MFC-AGG-ID: mrlRl5a_NSyX2uzHaeclig_1757425550
+Received: by mail-qv1-f72.google.com with SMTP id 6a1803df08f44-72e83eb8cafso89846146d6.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 09 Sep 2025 06:45:50 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1757425550; x=1758030350;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=KuUSi/wMj/deuFTckhCe0po1wpou4UMuleZXZpAya2o=;
+        b=oAXNLTMDYC1/6PqRBM2vc/JXb0xTC2gDgxdx0WdF5D4tH6wt0HQfDgk/SsxEoQhyhW
+         BHBrXxuecPm5XB7hCwQGaXtRnYqJkJmjmRWK75tJ8oxehDhv/B7uGYiyTDV0nJi4Gzck
+         oEoqbwNC8moUttr45+Tfe9RouyFsrJ7PgSKU3OpLgWpyzYoXlS+Z8Z9LvZjO/WmJDjZX
+         6jIDRnalHoKaFg23nEo06zP930byfdUkAZL0/Kp2ahxvB2B28tn9OC0/kxdHUaIiVQhs
+         XbII/Q3ZtRNHkKm6WzHSraXlXJEr/g6WEtRkTBI1vRTSCDHsvSpPgsL7QSVEWSJcaYL8
+         mEQw==
+X-Forwarded-Encrypted: i=1; AJvYcCVANs9/m9NOQrQVSgmw3jLcygdAfgYKEe++OpH/lf7oR9C1Be//2jT5sqyB7cJsi5whkuQrnfHeum5LD9T6sQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw+iMtWz32g7gRsL5U0NgDw86nVtEoTUuSJ2YvlxZuOEaFeB16p
+	zKCJDWjBMSgLUBXJ0TrgfXoSvBdb1ConxliY55ZbYaDwCPYEUClGCG8m+fkT37C4GnEiZq5BJOb
+	JCQoydHu+q+hOUmNCsbgWrjE3tOxBf+PWuQ+XEUwtcq9uIEHskWshuRTKrrOOtV/XFv51GCNRsQ
+	==
+X-Gm-Gg: ASbGncurHSx7q6mtWGG99QJ1mHMH7KUKOb5et1RNvO5j2j0ivjf8gd74DNONm0zreoO
+	041Ta8jHb0bbhosbMo7PKNY0s0lw+SozCvJRfDfQL9sffLv0k5F0kB/jOdRCxjjP+y6gRgEQ17G
+	3wfjt3IuQ6U4NlWaCoQ5+JEUFcpc/zM37uN0y/AYTfXQ++AdTrCiuKeRR4mjRBJEM27yKFsYnPS
+	8iA3dmGIpFrz0IVXcVEenDSn1tSEBqEUfs03GdIn9sq9DTmQu2AZ1S+GaAZ0wSMIBWGcTkTg+zQ
+	mTja+roTeL3tp/tiZcojeoyhLwx6M/k3hzvRca56QpJFAbxvj6+xCELykrs+YkDcSJ9Odp7dW0n
+	qQY3cce5cPNsRZ9DdbtE=
+X-Received: by 2002:a05:6214:624:b0:70e:3e:6304 with SMTP id 6a1803df08f44-739435cc42bmr94854056d6.65.1757425549578;
+        Tue, 09 Sep 2025 06:45:49 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEmp4FTmcXOP7+RMzS1+U7HWsbh9sfiIsI3KOLWl/uwcWgSrIp6/82zb9nfnJx9VJ/Da/CuPA==
+X-Received: by 2002:a05:6214:624:b0:70e:3e:6304 with SMTP id 6a1803df08f44-739435cc42bmr94853596d6.65.1757425548985;
+        Tue, 09 Sep 2025 06:45:48 -0700 (PDT)
+Received: from x1 (c-73-183-52-120.hsd1.pa.comcast.net. [73.183.52.120])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-720b4665fcbsm138866926d6.37.2025.09.09.06.45.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 09 Sep 2025 06:45:48 -0700 (PDT)
+Date: Tue, 9 Sep 2025 09:45:46 -0400
+From: Brian Masney <bmasney@redhat.com>
+To: Vinod Koul <vkoul@kernel.org>
+Cc: Kishon Vijay Abraham I <kishon@kernel.org>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Samuel Holland <samuel.holland@sifive.com>,
-	Yixun Lan <dlan@gentoo.org>, Andy Shevchenko <andy@kernel.org>,
-	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-mips@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
-	spacemit@lists.linux.dev,
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-Subject: Re: [PATCH 13/15] gpio: sodaville: use new generic GPIO chip API
-Message-ID: <aMAP9hAWars0T83r@smile.fi.intel.com>
-References: <20250909-gpio-mmio-gpio-conv-part4-v1-0-9f723dc3524a@linaro.org>
- <20250909-gpio-mmio-gpio-conv-part4-v1-13-9f723dc3524a@linaro.org>
+	Heiko Stuebner <heiko@sntech.de>, linux-phy@lists.infradead.org,
+	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2 2/9] phy: mediatek: phy-mtk-hdmi-mt2701: convert from
+ round_rate() to determine_rate()
+Message-ID: <aMAvinQ4nn38E7tx@x1>
+References: <20250810-phy-clk-round-rate-v2-0-9162470bb9f2@redhat.com>
+ <20250810-phy-clk-round-rate-v2-2-9162470bb9f2@redhat.com>
+ <aKX35U4jX55W3W61@vaman>
+ <aKYFh5YI9j-MHKH4@x1>
 MIME-Version: 1.0
+In-Reply-To: <aKYFh5YI9j-MHKH4@x1>
+User-Agent: Mutt/2.2.14 (2025-02-20)
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: JczBkNmLGqtBZ3vd39dhtyYurNnvawhpJfujF8QEYOA_1757425550
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250909-gpio-mmio-gpio-conv-part4-v1-13-9f723dc3524a@linaro.org>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250909_043113_975970_1D72F223 
-X-CRM114-Status: UNSURE (   9.81  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250909_064553_069977_0102DFED 
+X-CRM114-Status: GOOD (  32.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,28 +122,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 09, 2025 at 11:15:40AM +0200, Bartosz Golaszewski wrote:
+Hi Vinod,
+
+On Wed, Aug 20, 2025 at 01:27:35PM -0400, Brian Masney wrote:
+> On Wed, Aug 20, 2025 at 09:59:25PM +0530, Vinod Koul wrote:
+> > On 10-08-25, 18:45, Brian Masney wrote:
+> > > The round_rate() clk ops is deprecated, so migrate this driver from
+> > > round_rate() to determine_rate() using the Coccinelle semantic patch
+> > > on the cover letter of this series.
+> > > 
+> > > Signed-off-by: Brian Masney <bmasney@redhat.com>
+> > > ---
+> > >  drivers/phy/mediatek/phy-mtk-hdmi-mt2701.c | 8 ++++----
+> > >  1 file changed, 4 insertions(+), 4 deletions(-)
+> > > 
+> > > diff --git a/drivers/phy/mediatek/phy-mtk-hdmi-mt2701.c b/drivers/phy/mediatek/phy-mtk-hdmi-mt2701.c
+> > > index e51b2d13eab473dddace48c75c2a8d73c8c65635..b0b6497e7eedcb6867541b573d22156ded29a4d5 100644
+> > > --- a/drivers/phy/mediatek/phy-mtk-hdmi-mt2701.c
+> > > +++ b/drivers/phy/mediatek/phy-mtk-hdmi-mt2701.c
+> > > @@ -90,10 +90,10 @@ static void mtk_hdmi_pll_unprepare(struct clk_hw *hw)
+> > >  	usleep_range(80, 100);
+> > >  }
+> > >  
+> > > -static long mtk_hdmi_pll_round_rate(struct clk_hw *hw, unsigned long rate,
+> > > -				    unsigned long *parent_rate)
+> > > +static int mtk_hdmi_pll_determine_rate(struct clk_hw *hw,
+> > > +				       struct clk_rate_request *req)
+> > >  {
+> > > -	return rate;
+> > > +	return 0;
+> > 
+> > This does not sound correct to me? should this not check the requested
+> > rate?
 > 
-> Convert the driver to using the new generic GPIO chip interfaces from
-> linux/gpio/generic.h.
+> I can't speak as to whether or not this specific driver should have a
+> rate check here. I've seen in some other drivers where the specific
+> frequencies are managed in firmware, and Linux just passes on the rate
+> request as is.
+> 
+> Some other phy drivers (most notably drivers/gpu/drm/msm/dsi/phy/) only
+> makes sure that the requested rate is within a min/max range. Assuming
+> I read this driver's set_rate() correctly, it looks like the min/max
+> range may be 64-192 MHz. I'm not sure to be honest.
+> 
+> This change keeps the existing behavior of the driver as it is today,
+> and just migrates off an old API.
 
-...
+I'm just checking to see if you have any questions about this series,
+and plan to merge it for v6.18. I'm hoping that in v6.19 to remove this
+old API from the clk core once all of the other subsystems outside of
+drivers/clk/ have been updated.
 
-> +	config = (typeof(config)){
+As I mentioned previously: This change keeps the existing behavior of
+the driver as it is today, and just migrates off an old API. I don't
+have access to this hardware, or technical details about what should
+be here.
 
-This looks unusual. Why can't properly formed compound literal be used as in
-many other places in the kernel?
-
-> +		.dev = &pdev->dev,
-> +		.sz = 4,
-> +		.dat = sd->gpio_pub_base + GPINR,
-> +		.set = sd->gpio_pub_base + GPOUTR,
-> +		.dirout = sd->gpio_pub_base + GPOER,
-> +	};
-
--- 
-With Best Regards,
-Andy Shevchenko
-
+Brian
 
 
