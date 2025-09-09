@@ -4,100 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F002CAC58C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 16:02:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC1E9CAC587
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 16:02:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:References:MIME-Version:
-	In-Reply-To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HhvoYavio6XW9UGp4dKzH+wlvXL0CQx3DgO+74W6ths=; b=Oyue0aR/Zhs/NqY0KiXEXKJzAc
-	VlkMpg+HnVUw5EaUL3rPX6qrZ+hJ342c3Ru1MEP0x3Nm7U8elLrrKnzA00FCSRX9J39Zohdr3skoc
-	9CAxdECcQehbHuyL+J+/+hsJsl3pfCxRM/+HzYijm7vvlYjCmzXJPRlC/M4nFCeo01DptEIUfLgx9
-	hJlTUOq3ChUfKhVO96S1V1HFflvV6jv8KmRIT3dd0W4hI3GSNZniEuo9z/1jgH+V6vH2xwfLGQkbf
-	86dcmzKh5X36NNoipFPWKvLuaMGl1869keAghUYg0fE8xOw7XLmz6UEaomIVMH+8s3DOUbBfxG2XF
-	aJmnB9pw==;
+	bh=Fe2CylzU02/cCqzp45eY392Cx75sRoZT1uPdLFqj/ic=; b=EafR+JcXsuqigCk1CMVw0Of/1N
+	AYpbL7xJBGAzbuKGzSRN0OkXVtG25aJo+6EntWka84cNCVfBxWq0oPF0CqIl+Z8XEdP8v8N5yRbYj
+	CJZ/y+YjFr9XJP1RT8mg5VoqishgD51zl7c4UOpsFt6KilS3Q3T70Anwo4iw7jExerf+qU+NqWXZe
+	gJ15qE3iVkBHPKPi79OC2ZBDSOIOfFWUvbwduiYU38iXoAx9HQBZD5tNSqWzS/RXz6S3PAI8BP15Z
+	lCzYrcUHKnyza9tWKmOfW8fP6iO3MDpr7UDwTmhlJ1gsX8oPmmVafH1wW7OWfqxYXq1fRdjmJXVC2
+	ToWZqKsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uw0ni-00000008NvO-1NaM;
+	id 1uw0ni-00000008NwR-3cIs;
 	Tue, 09 Sep 2025 16:02:34 +0000
-Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvyKh-00000007M0X-0TaC
-	for linux-mediatek@lists.infradead.org;
-	Tue, 09 Sep 2025 13:24:29 +0000
-Received: by mail-lj1-x234.google.com with SMTP id 38308e7fff4ca-336d3e4df3eso44287131fa.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 09 Sep 2025 06:24:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1757424265; x=1758029065; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:references
-         :mime-version:in-reply-to:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=HhvoYavio6XW9UGp4dKzH+wlvXL0CQx3DgO+74W6ths=;
-        b=GQrb03GkAt4JwD5Dp7AbgHKpFXOW2pja9QCWMP6vuIrm7NWHQU8Rwpfe/F49fZ+d0b
-         GjHlfoTTtbUv+5PkTkGl6M6/vskL6a0vbdQA2KYgaXphpUN669+xQ/HEXGyq366FF7h6
-         9ZgxeV6/7G94pXdi+XEPC941F7XMPd1IprXz642+QIDN8XEEjdEQ0dz5StPQwBDotxuS
-         MAK5g9dT+RfJckrHlUtvB+qFXHawIJ7qXSfhUe0Oxj4GrNUQTxj4W9/U9MTvN/i5Y3Cc
-         F+qxJ5MyMOt3f2klrrWHXlHOIcFOYpMJXImwg4Fk9nyqtJOfnxrgtheaLCD8giC5QzZj
-         ttgA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757424265; x=1758029065;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:references
-         :mime-version:in-reply-to:from:x-gm-message-state:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=HhvoYavio6XW9UGp4dKzH+wlvXL0CQx3DgO+74W6ths=;
-        b=rMeDVQC+D2IP/1JkY/1naaoyMTXuFKGHOHkG6btNZMKMv5XS0XMh/rhKYCzmyiH9Tz
-         v+sXsPgVyQSsq/vfa7q6LQeBwr8/yokojut2dli0/GpN6AcY1Jw5XFVxV+Ou62w25J8l
-         3N+B8JlXleAYO/ItbuiYyYseILw+3luZvcD6u3S9GEoXx4gxsON5ACCkEPpMpp4I+m/k
-         97R9eXAhwsmLOjpeAQyDUz3UOu54s4FpYpdH448wRjj6PcD2Tp/sKlkiViY+JmIL00DY
-         m1Q9dctCX2hsFNzF4PlfR6f+5xTD0RcIBGR9M2uPvPYpjXQJ3h3cAKzq6YaMawlfTkcM
-         Ovbw==
-X-Forwarded-Encrypted: i=1; AJvYcCX3tfq0viQp01leehTrCay2f26WzsAGJSxWP2E564oZdW5C7fXzjIxktdLaKzNCyD7dDFhx98TDbF04Gi7VTw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyvEGNx+ZB/eYdsMdYoXkB3FBdaRqNPu8vdzzXgCmlIjDuGaDAn
-	WzULYfZsgsF/3Rt7ArRkAyJ6sg27bwCkzUnCOq9b1J24GwIAoIhreow7UfVdn6XYH8QkXq3GvVp
-	V5Yb8JSZYRhxRdqq452tBfIvK5QpqCWIXHRAD2lbPLA==
-X-Gm-Gg: ASbGnctLg65dFV6VL1ZIAes6xZlRBb6L+0cORgZVIRGTV3TqPq5MW1p07T13U+KinRI
-	9kSD8bYnqThCJ9aEK9r0L86U2X4gwflE85SMWP1+olV4aAfS5OYQNU6U2zw58G4nTjcis3pOY4z
-	byTlJKjhQRJh+SqXyTWmHI/P/I6FsiFqTNTnluenlMH3Me823xXeq9vhHKbR0jueXY3RhwNXLfI
-	Hx/NXKqEDNbSTFoVJgy8O1dDSjlYAL4vIqy5TQ=
-X-Google-Smtp-Source: AGHT+IGqxpMTWwovk8l5WQ5dYhWUYy4ZcII/K/jrdWFPYe7kT1CZQHo3Y8LCGp8PKQqEA3qrGlITiYRoPcmLayU54qE=
-X-Received: by 2002:a05:651c:b12:b0:336:dd88:69e0 with SMTP id
- 38308e7fff4ca-33b57c39f8cmr32465971fa.29.1757424264537; Tue, 09 Sep 2025
- 06:24:24 -0700 (PDT)
-Received: from 969154062570 named unknown by gmailapi.google.com with
- HTTPREST; Tue, 9 Sep 2025 08:24:23 -0500
-Received: from 969154062570 named unknown by gmailapi.google.com with
- HTTPREST; Tue, 9 Sep 2025 08:24:23 -0500
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-In-Reply-To: <aMAn4MM_Fs8q8qwj@smile.fi.intel.com>
+	id 1uvyQ4-00000007OHi-1j59;
+	Tue, 09 Sep 2025 13:30:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=Fe2CylzU02/cCqzp45eY392Cx75sRoZT1uPdLFqj/ic=; b=zkfV0cigs49B1J2Jk+T6gofH75
+	J6/mR1g7h+Dea28BHMKBrCr8qZnGhmnRH/PwlyuouXbiiFDTuxQNn3jBtpYYawsM+fjxHzE6Yt1C7
+	QJF84Wykf45iP9//1cf2BBXxeweV6K5vLWrg4nYzinB9Pjt6ncMDsA/tel3NB4TEV8k5tf+6oq5FP
+	RCJtDZ0mcfZlWh4hUaXCWcZ1/Ja1i/d0/Ygcw5Jsd9tLGJK9hA3NYCs+IChO9TCRfim1jErkwt+2H
+	ROU1IDownhQKl8jx9sE+YoCUdIr71sZ9ZGfYOGZodFZCZ6zAyn+e+3RqyNt1xUY1S5lyWITPPFEqc
+	BlA4XhwQ==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:51586)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.98.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1uvyPh-000000008CU-0SyU;
+	Tue, 09 Sep 2025 14:29:37 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1uvyPZ-000000000RX-0dBo;
+	Tue, 09 Sep 2025 14:29:29 +0100
+Date: Tue, 9 Sep 2025 14:29:29 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Srinivas Kandagatla <srini@kernel.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>, Simon Horman <horms@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [net-next PATCH v16 06/10] net: dsa: Add Airoha AN8855 5-Port
+ Gigabit DSA Switch driver
+Message-ID: <aMAruQYXL7m8upS1@shell.armlinux.org.uk>
+References: <20250909004343.18790-1-ansuelsmth@gmail.com>
+ <20250909004343.18790-7-ansuelsmth@gmail.com>
+ <aL_uqX90oP_3hbK6@shell.armlinux.org.uk>
+ <68c00db1.050a0220.7d5a6.50b8@mx.google.com>
 MIME-Version: 1.0
-References: <20250909-gpio-mmio-gpio-conv-part4-v1-0-9f723dc3524a@linaro.org>
- <20250909-gpio-mmio-gpio-conv-part4-v1-13-9f723dc3524a@linaro.org>
- <aMAP9hAWars0T83r@smile.fi.intel.com> <CAMRc=MeLTGq8Qu2aT43tkt3vaYCSaJPJPLmaUQ1SAyD_OgVr_g@mail.gmail.com>
- <aMAn4MM_Fs8q8qwj@smile.fi.intel.com>
-Date: Tue, 9 Sep 2025 08:24:23 -0500
-X-Gm-Features: Ac12FXwbBQSlPLH49oae8yjyXj1ugyDMbkjsHTtBWh1WBSZW49QTty0I4jg5ioo
-Message-ID: <CAMRc=Mdr4oW2d7XZ90rRr_fKC7WToz72v=_kW-s8=Urd0g8k3g@mail.gmail.com>
-Subject: Re: [PATCH 13/15] gpio: sodaville: use new generic GPIO chip API
-To: Andy Shevchenko <andriy.shevchenko@intel.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Keguang Zhang <keguang.zhang@gmail.com>, 
-	Alban Bedel <albeu@free.fr>, Doug Berger <opendmb@gmail.com>, 
-	Florian Fainelli <florian.fainelli@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Paul Walmsley <paul.walmsley@sifive.com>, Samuel Holland <samuel.holland@sifive.com>, 
-	Yixun Lan <dlan@gentoo.org>, Andy Shevchenko <andy@kernel.org>, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-riscv@lists.infradead.org, spacemit@lists.linux.dev, 
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <68c00db1.050a0220.7d5a6.50b8@mx.google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250909_062427_156162_EC8419C7 
-X-CRM114-Status: GOOD (  21.66  )
+X-CRM114-CacheID: sfid-20250909_063000_451231_91BB4429 
+X-CRM114-Status: GOOD (  19.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,71 +98,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 9 Sep 2025 15:13:04 +0200, Andy Shevchenko
-<andriy.shevchenko@intel.com> said:
-> On Tue, Sep 09, 2025 at 01:35:04PM +0200, Bartosz Golaszewski wrote:
->> On Tue, Sep 9, 2025 at 1:31=E2=80=AFPM Andy Shevchenko
->> <andriy.shevchenko@intel.com> wrote:
->> > On Tue, Sep 09, 2025 at 11:15:40AM +0200, Bartosz Golaszewski wrote:
->
-> ...
->
->> > > +     config =3D (typeof(config)){
->> >
->> > This looks unusual. Why can't properly formed compound literal be used=
- as in
->> > many other places in the kernel?
->>
->> It is correct C
->
-> If it compiles, it doesn't mean it's correct C, it might be non-standard.
-> Have you checked with the standard (note, I read that part in the past,
-> but I may forgot the details, so I don't know the answer to this)?
->
+On Tue, Sep 09, 2025 at 01:21:18PM +0200, Christian Marangi wrote:
+> On Tue, Sep 09, 2025 at 10:08:57AM +0100, Russell King (Oracle) wrote:
+> > On Tue, Sep 09, 2025 at 02:43:37AM +0200, Christian Marangi wrote:
+> > > +static void an8855_phylink_get_caps(struct dsa_switch *ds, int port,
+> > > +				    struct phylink_config *config)
+> > > +{
+> > > +	struct an8855_priv *priv = ds->priv;
+> > > +	u32 reg;
+> > > +	int ret;
+> > > +
+> > > +	switch (port) {
+> > > +	case 0:
+> > > +	case 1:
+> > > +	case 2:
+> > > +	case 3:
+> > > +	case 4:
+> > > +		__set_bit(PHY_INTERFACE_MODE_GMII,
+> > > +			  config->supported_interfaces);
+> > > +		__set_bit(PHY_INTERFACE_MODE_INTERNAL,
+> > > +			  config->supported_interfaces);
+> > > +		break;
+> > > +	case 5:
+> > > +		phy_interface_set_rgmii(config->supported_interfaces);
+> > > +		__set_bit(PHY_INTERFACE_MODE_SGMII,
+> > > +			  config->supported_interfaces);
+> > > +		__set_bit(PHY_INTERFACE_MODE_2500BASEX,
+> > > +			  config->supported_interfaces);
+> > > +		break;
+> > > +	}
+> > > +
+> > > +	config->mac_capabilities = MAC_ASYM_PAUSE | MAC_SYM_PAUSE |
+> > > +				   MAC_10 | MAC_100 | MAC_1000FD | MAC_2500FD;
+> > > +
+> > > +	ret = regmap_read(priv->regmap, AN8855_CKGCR, &reg);
+> > > +	if (ret)
+> > > +		dev_err(ds->dev, "failed to read EEE LPI timer\n");
+> > > +
+> > > +	config->lpi_capabilities = MAC_100FD | MAC_1000FD;
+> > > +	/* Global LPI TXIDLE Threshold, default 60ms (unit 2us) */
+> > > +	config->lpi_timer_default = FIELD_GET(AN8855_LPI_TXIDLE_THD_MASK, reg) *
+> > > +				    AN8855_TX_LPI_UNIT;
+> > 
+> > You're not filling in config->lpi_interfaces, which means phylink won't
+> > LPI won't be functional.
+> > 
+> 
+> Thanks for pointing this out, I notice lpi_interfaces is also not set on
+> other DSA driver that were converted to the new EEE handling, for
+> example mt7530.
+> 
+> I assume EEE is also half broken there and the required change wasn't
+> notice at times?
 
-It's a GNU extension alright but it's supported in the kernel as it evaluat=
-es
-to a simple cast.
+Without checking (sorry, I'm busy, so I'm not going to), I have no
+idea. What I can say is that phylink won't call the enable/disable
+tx_lpi methods unless it is managing the EEE state, and to do that
+it needs _all_ the LPI properties to be correctly populated.
 
->> and checkpatch doesn't raise any warnings.
->
-> checkpatch is far from being useful in the questions like this.
-> It false positively complains for for_each*() macros all over
-> the kernel, for example.
->
->> It's the
->> same kind of argument as between kmalloc(sizeof(struct foo)) vs
->> kmalloc(sizeof(f)).
->
-> Maybe, but it introduces a new style while all other cases use the other,
-> _established_ style. So we have a precedent and the form the code is writ=
-ten
-> in is against the de facto usage of the compound literals.
->
+A lot of other switches (e.g. Marvell DSA) doesn't need that level
+of management.
 
-It may not be *very* common but it's hardly new style:
-
-$ git grep -P "\(typeof\(.*\)\) ?\{" | wc
-    108     529    7315
-
-Bart
-
->> I guess it's personal taste but I like this version better.
->
-> In kernel we also try to be consistent. This add inconsistency. Am I wron=
-g?
->
->> > > +             .dev =3D &pdev->dev,
->> > > +             .sz =3D 4,
->> > > +             .dat =3D sd->gpio_pub_base + GPINR,
->> > > +             .set =3D sd->gpio_pub_base + GPOUTR,
->> > > +             .dirout =3D sd->gpio_pub_base + GPOER,
->> > > +     };
->
-> --
-> With Best Regards,
-> Andy Shevchenko
->
->
->
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
