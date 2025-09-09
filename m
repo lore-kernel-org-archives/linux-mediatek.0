@@ -4,66 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2734BCAC58C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73E4ECAC58F
 	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 17:14:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zftH1OFDMW2jW27I963MhGeDeriTV1wGejbhpnPTHcs=; b=wxlOL1YXGdIq+f8mwNzVM1OOUn
-	+03GynbKBWtKtkaFJWhDdKQdldHXxs5czA5DSpR2chaHSG6gxFNK+YMIxHrRc2O8CZPdPpUZvcdw6
-	b+Z0r6hatqF0330Mbd8xq/j0nsKDRPmVefrhHt0SX9c21aV2BW3+ltrbBsdc2jdUVqOTqke6gjMP9
-	USDX6FjEwcDatWrY4sNhZsgsTlKsWikb2mhDxWoJc5PaKJdhvGRTumNqZHfw9R0Yf67N0ILmC6oRP
-	fVI+zV3HvkDRh+WzrYFI6SUJXfudDUABysAfTFnLg1dzDeTWt3iWapA4foJ6OZJ6DXQNL6Osi+zEt
-	t2cvXygg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ns1iYfCvSFkNCYkJVAc6Nm7Vk7F7RTBVyV1AXzsFkVE=; b=MNktltHRWlCaYnOF1czKfX3yHO
+	HwKsikNW+z7Yz64zx0GkaOL810FRwA19liDWIUmG8yNhHOd5V58NWukDVGJff0eo25ZdqKkXn2s9e
+	SY6FwsWN4m1WCovSvEyinya+GRa9W3DWGsFC3MV4uu6Ancv5Fr749ObmgsDRgw1OgSjB8dV+FFLMV
+	cKRNlxAqIJXRr1IX5CSKFrzp7pwsdPcWh74FU+G27Hs8gbmYwiARMD6a7tZj6/gEHz4cuUgYwLfLq
+	q6ttjsuLjEh0Yq22YKBdi3fBhO1Le2g7z1cq+f2p8eEbi7B/yuFNcqRVYDnHRhtTzIgEIkjahFp0D
+	EX3F8NUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uw1v9-00000008md7-1cWw;
-	Tue, 09 Sep 2025 17:14:19 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uw1vA-00000008mec-0dBu;
+	Tue, 09 Sep 2025 17:14:20 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvvnX-00000006TcP-1YNX;
-	Tue, 09 Sep 2025 10:42:04 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 10D4F43F59;
-	Tue,  9 Sep 2025 10:42:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 129D3C4CEF4;
-	Tue,  9 Sep 2025 10:42:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1757414522;
-	bh=ZjvOrSWVcVf5YAynr8zKeTMjoU2jc4ng9s5RPK12NbA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=McfoQ4gDFpUfqvvhW8JCPU0Bouf+Ecc5S6c8dckZKyY4c93J2zLEBGGPZ9yGoDqKE
-	 vs98zwJ4COzBUGJeEPzWquI0PKQ5nDm8VJGCFjDma0+3b/RVPGPhGijdgYZVnFfD1z
-	 uT8q70OB34x6Hvrpw7bsZzPBYjnsqIuXaN1lUvSdESIusdwOLULICBk5c8riNhB4n6
-	 9ygtRErF5j0YtL6ssCAulrrqcHEHc8tK3aJFfb6ciJHQFWutMTV70Gw/4PgUAc+XEk
-	 c1uDjgXyLOtMeKhALfDs5C1ZgVJ4B++KLdoBpO5loJe5J2zaZJxz6Re5atOi+WIXLK
-	 o9KfNg2k1SBcg==
-Date: Tue, 9 Sep 2025 12:41:57 +0200
-From: Andi Shyti <andi.shyti@kernel.org>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Leilk Liu <leilk.liu@mediatek.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Qii Wang <qii.wang@mediatek.com>, Wolfram Sang <wsa@kernel.org>, 
-	Liguo Zhang <liguo.zhang@mediatek.com>, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v2] i2c: mediatek: fix potential incorrect use of
- I2C_MASTER_WRRD
-Message-ID: <c3d57np3hns3yoklgkbpc2ivx7jrd5qwz76wcwxhnef3ermdve@3ejfxfwg3acq>
-References: <20250906082652.16864-1-leilk.liu@mediatek.com>
- <zddsit53dwqo27buoxaolgpzvvvd6uvwcyzughv7qfvwg64ces@yrlrur5dkf45>
- <CAGXv+5HZcZ8uVZQbT83QnWd1M6p7fXvKU-0gOfc794BxqOmw1g@mail.gmail.com>
+	id 1uvw6L-00000006Zct-16ly
+	for linux-mediatek@bombadil.infradead.org;
+	Tue, 09 Sep 2025 11:01:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=Ns1iYfCvSFkNCYkJVAc6Nm7Vk7F7RTBVyV1AXzsFkVE=; b=mr0HpLE9Dv6YrZc1t9zxFz+NLh
+	5k1W3V12PIt5jxcvmmxbxMN7UZJpMXLhOqbeeYMDTqOvKejQRqCBg8ssCMXxEQV9AZ0oOalfswU6r
+	Iij3M1sGH1TrQXvQv4DfuWpVoT34/TPvFR1dcYh54r9HwHkhLtD7/1uVScnFfVX7g7isxJF/D0+jF
+	ENl86h0NPVTeHz5YiUqGgAnZlify3Vd4GqEa/eF9NU+grNFb2rr+d4U5JzC4dzTY1Vkoi5SJO+R1E
+	jTdIINp5FJ1+I5+HAwbI1dq1iWkaoofZj8hm5IuqA2FFg7hB5scIZ5IroKDE1/MybwF5jE7uhg4KB
+	M7KqICvQ==;
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uvw6I-00000005Hva-0MWN
+	for linux-mediatek@lists.infradead.org;
+	Tue, 09 Sep 2025 11:01:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1757415683;
+	bh=GwLe3BWnVqoVmWve5L+P+wWFpq3U3m3OTRVEQk0trjc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=mp5GhEvgZuEF3MugtGPGTuNn/LPQmca9FT/kdi/z7f7jYK29uvogXsR42ZluToyvE
+	 fWMd1+EKts0Dss/bl6Cc+7q4+VqF2KwEgq0VqJgyq85NsXlElaH1o/Rw2kzXRYA3SJ
+	 ZtaQd0G6EArh6iM3G+hQMxXmg7Rl1O0ik9aD9QQYAHD+vavJ58Owi0rL9w7HfEwtz1
+	 MCGJB4QWApkvHqKvBulH1jhSCSsucHhIOMV0ONF5PYSirY6Pr3IvyAJCydXvlgZMHe
+	 WNsbBVVDaM13xAM43jqcl4rQ6rLctInNjc5tKvv4eY2nz8eqQVbSbYaCmtfavZsMsU
+	 H2DKmW38WioWg==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D538117E0C96;
+	Tue,  9 Sep 2025 13:01:22 +0200 (CEST)
+Message-ID: <e0200aac-570b-420e-ab16-e543e85997e4@collabora.com>
+Date: Tue, 9 Sep 2025 13:01:22 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAGXv+5HZcZ8uVZQbT83QnWd1M6p7fXvKU-0gOfc794BxqOmw1g@mail.gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/2] soc: mediatek: mtk-svs: fix device leaks on mt8192
+ probe failure
+To: Johan Hovold <johan@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Roger Lu <roger.lu@mediatek.com>, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20250909095651.5530-1-johan@kernel.org>
+ <20250909095651.5530-3-johan@kernel.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250909095651.5530-3-johan@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250909_034203_454866_E2A95768 
-X-CRM114-Status: GOOD (  28.51  )
+X-CRM114-CacheID: sfid-20250909_120126_384922_EE8AC386 
+X-CRM114-Status: UNSURE (   6.05  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,82 +93,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 09, 2025 at 11:50:15AM +0800, Chen-Yu Tsai wrote:
-> On Tue, Sep 9, 2025 at 6:17 AM Andi Shyti <andi.shyti@kernel.org> wrote:
-> > > diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-> > > index ab456c3717db..dee40704825c 100644
-> > > --- a/drivers/i2c/busses/i2c-mt65xx.c
-> > > +++ b/drivers/i2c/busses/i2c-mt65xx.c
-> > > @@ -1243,6 +1243,7 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
-> > >  {
-> > >       int ret;
-> > >       int left_num = num;
-> > > +     bool write_then_read_en = false;
-> > >       struct mtk_i2c *i2c = i2c_get_adapdata(adap);
-> > >
-> > >       ret = clk_bulk_enable(I2C_MT65XX_CLK_MAX, i2c->clocks);
-> > > @@ -1256,6 +1257,7 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
-> > >               if (!(msgs[0].flags & I2C_M_RD) && (msgs[1].flags & I2C_M_RD) &&
-> > >                   msgs[0].addr == msgs[1].addr) {
-> > >                       i2c->auto_restart = 0;
-> > > +                     write_then_read_en = true;
-> > >               }
-> > >       }
-> > >
-> > > @@ -1280,12 +1282,10 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
-> > >               else
-> > >                       i2c->op = I2C_MASTER_WR;
-> > >
-> > > -             if (!i2c->auto_restart) {
-> > > -                     if (num > 1) {
-> > > -                             /* combined two messages into one transaction */
-> > > -                             i2c->op = I2C_MASTER_WRRD;
-> > > -                             left_num--;
-> > > -                     }
-> > > +             if (write_then_read_en) {
-> > > +                     /* combined two messages into one transaction */
-> > > +                     i2c->op = I2C_MASTER_WRRD;
-> >
-> > i2c doesn't change for the whole loop so that it can be set only
-> > once outside the loop instead of setting it everytime.
-> >
-> > Something like this:
-> >
-> >         if (i2c->op == I2C_MASTER_WRRD)
-> >                 left_num--;
-> >         else if (msgs->flags & I2C_M_RD)
-> >                 ...
-> >         else
-> >
-> > looks cleaner to me and we save the extra flag. Am I missing
-> > anything?
+Il 09/09/25 11:56, Johan Hovold ha scritto:
+> Make sure to drop the references taken by of_find_device_by_node() when
+> looking up the thermal sensor and opp devices during probe on probe
+> failure (e.g. probe deferral) and on driver unbind.
 > 
-> It looks correct to me, though I think it requires a comment explaining
-> that "in the WRRD case there are only two messages that get processed
-> together, and the while loop doesn't actually iterate", and reference
-> the block where the WRRD op is set.
-> 
-> Otherwise someone is going to look at this snippet and think there's
-> some corner case where all messages (# of messages > 2) get handled
-> using the WRRD op.
+> Fixes: 0bbb09b2af9d ("soc: mediatek: SVS: add mt8192 SVS GPU driver")
+> Cc: Roger Lu <roger.lu@mediatek.com>
+> Signed-off-by: Johan Hovold <johan@kernel.org>
 
-Agree, indeed I wanted to write it somewhere that a comment would
-have been nice.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-I'd appreciate a comment even with the boolean flag. I think
-boolean flags are often a forced solution and we always need to
-describe their need.
 
-> So maybe it looks cleaner, but it requires more context to understand.
-> Whereas in the original patch, the extra variable sort of gives that
-> context. In this case I prefer the context being more visible, since
-> the original corner case this issue fixes is also from missing context
-> and assumptions.
-
-I think both solutions are clear in a different way. Anyway, I'm
-not very strong on this comment, I just see that from a code
-perspective looks nicer. If you guys insist, then I will let this
-go as it is.
-
-Andi
 
