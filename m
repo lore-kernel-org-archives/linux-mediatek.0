@@ -4,84 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6938CCAC587
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 06:57:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D3EFCAC589
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 06:58:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eua2YAPyWNoI872YUJ3VdyRPkVf1aMyuVYL342nj/u8=; b=NeH5jh59OwjG5cfoXz3Ao7piOB
-	0C+1EHA4YP0/pi1hhGAAom6zyQzf2jL+Ghof9M3hUciferMdPOkJVAImHJgRxoIubNHvQmu8L8Bfs
-	VHv4xwku6iM3n1PVYTw5d+SKMyAe167TYr1VLZmH8LtOGvCaz9PAB33ll2hl8408rlHGGsGidmPBj
-	xuWNZ4WXP7vIy5RdwYbz7hDO/ic5lRaEwYDMMueoKvjkM6ArxtLFe9+RdR/I6WHrD5ZgecE+HiScG
-	Z1LBz6LpUwxOcLwG9KV6nrU0aHNTi0Gpn5/foDMh5/TnNxgzG+MK/2xwyXxoSjhe2eXIU0pkw1aJO
-	QAHLssIw==;
+	bh=ghFyZUGdZ7mO0wqQ4/RAL3CXKOgBO+Pq9aSKHM71k80=; b=mA6PBpUxh4G3DT0VNEPQt+CIds
+	4ZJ60i0n9bfLVf/iT6ui3g1z6Qju5rPw6dYPw3msPGBVH4Qq9bj39nOTU5d3y5mKZ/rrXVA9tcPYO
+	I+FqmiOfP4+OO/2vmEqjkK7b+y/nZJeL7d0UOP4yo+dKDwnQtz7fEevcpDl0ASyxKuqR0rRPVCKO/
+	VCveYfC+X5DvORRkJT+WiI8wlIlAEa41znS70XO7HDZfGvBJb+bvIOgmNAvAbIwFvD30gQLWW8Gdl
+	o59VrlrAyPbyRczwyPnVNS23sGMGixYPMc0hINxTmTqKluLdxeQN9vUfx0eenclg+GfpGo3OuVwRM
+	nzzDM5hw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvsIQ-00000004xj1-2o62;
-	Tue, 09 Sep 2025 06:57:42 +0000
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	id 1uvsJ4-00000004yUC-1JH6;
+	Tue, 09 Sep 2025 06:58:22 +0000
+Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvpNF-000000043PU-2YPN
+	id 1uvqY4-00000004Lql-2dI4
 	for linux-mediatek@lists.infradead.org;
-	Tue, 09 Sep 2025 03:50:30 +0000
-Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-55f6017004dso5364993e87.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 08 Sep 2025 20:50:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1757389827; x=1757994627; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=eua2YAPyWNoI872YUJ3VdyRPkVf1aMyuVYL342nj/u8=;
-        b=IGeGVPcWHYGgtKdkIK9zMt/d3rBc5W8r+7K1NPXvUABSt+MSSR1UGzKfmL6CVpjJnG
-         eyrgCdgjip2/dktKUY3suXeAbMWgOlFcpnyCMgZ9Ufh7v1KnNz1V1GdUGlWm3BG1+Daw
-         OJQJsyRURHc6eNLC8YzrIjePa3vrLYICZtzb8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757389827; x=1757994627;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=eua2YAPyWNoI872YUJ3VdyRPkVf1aMyuVYL342nj/u8=;
-        b=rdyuPNHSZxqV0z6u59E2LetbEQzhhVgRz0fyEh9C8sImfXIEH3SUObYLGZD3L2zHq+
-         WOgo+CurImketfq0XYf7iz220KLJ11ZtYQFqYyvYbtfc1lFc4bKNVeEdGLM/CXeGVRoE
-         GX8HhA1gTJPyI3zs9OGJ1PCh2q5VGMEzLQN4FAN6pmrC7w+Y/+r1+ja7eOfsQqfqzFlI
-         xKvXoSRwowz0xzuYmUNKOVTLU+vdFiOr0mmPC4qb08rwxUvP8XWwQ/G82tGF7VMpX1Fu
-         xEPBvt4v0lyn5vcqMzCiSGiNRcxxd85dfjCIXSXZB+jHBNN3/y0tw3Xf9Li8NmRsRT8L
-         AjIw==
-X-Forwarded-Encrypted: i=1; AJvYcCWQvTlTkjna1I08KU8wpr42griIvOx59rMcdDrA0RVAQ2J68ga6SgFH0d+wFQmzV24nvB0NkzpaQW5xlplWCQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyYe3gTzMVhtn7HCYPdzGKHTxNWMG4Dp6waoATN1Ctqwq1V/P/+
-	ivj33e4rdMqQ4QJRfVIobkaA3nZ9gGuZaI+OyUCSghbOkATHM8fdPawaQGA3Ly6+h5lL6ITJLNU
-	PY7XuZyk/El0mV7XwtRgMaLeg5kd2d1eU+mq2T5dz
-X-Gm-Gg: ASbGncsGrsAE9BOGFXje0TvhG+nkHF5kUNKKfpkKTgRUX2GfjnJQsDbSl+qpvm3T0ef
-	7DT7YMgtjeuF75BJWUlnIpqUbX1vK508IyYYLFlfXI4r2UIBkR2pu7N9E6rxoUp8dmYjM7/dEej
-	7WJvzbDFqemqy6Z0+MnnvmvwC0fz5dp8PTrJOoR7Ih/u+5cE+z26g5hI4K0Ec5uHRzaM+Hm/Xj7
-	t476LJwRHCo/wzFjOx6Ru/zkgPJ0mzIr1/NA9lUBD9BVsOt
-X-Google-Smtp-Source: AGHT+IGj8MbtzCVC3eleE1z+3A7HLn2+wwQE3Dbn34sAVj1F0T1xg3I1Y5OtFtL3Vq/iIqiBfRs27XObu4ME5Ad0K9g=
-X-Received: by 2002:a05:651c:e10:b0:335:2d39:efe8 with SMTP id
- 38308e7fff4ca-33b5840d79bmr17650591fa.44.1757389827313; Mon, 08 Sep 2025
- 20:50:27 -0700 (PDT)
+	Tue, 09 Sep 2025 05:05:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
+	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=ghFyZUGdZ7mO0wqQ4/RAL3CXKOgBO+Pq9aSKHM71k80=; b=hdhFDgmKyMhYNyU7ekjmjMl7c8
+	wmH6MibDUk8mCcbYvnIZCp4rG+clm186+LS8QwEd3pg5R4L6y99rb+oqLAXgbT6kB505Cb3dk/fzV
+	VXIHfODhkQfqIBCkJvHZkuWQeyhp8vUXrGN9LcWkcCHh5peKQGvfyDDBon2l/3UagMJ4=;
+Received: from p5b206816.dip0.t-ipconnect.de ([91.32.104.22] helo=nf.local)
+	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.96)
+	(envelope-from <nbd@nbd.name>)
+	id 1uvqXu-004Dp8-0Z;
+	Tue, 09 Sep 2025 07:05:34 +0200
+Message-ID: <71c03b80-6ea8-4393-9210-c50a6ac73323@nbd.name>
+Date: Tue, 9 Sep 2025 07:05:33 +0200
 MIME-Version: 1.0
-References: <20250906082652.16864-1-leilk.liu@mediatek.com> <zddsit53dwqo27buoxaolgpzvvvd6uvwcyzughv7qfvwg64ces@yrlrur5dkf45>
-In-Reply-To: <zddsit53dwqo27buoxaolgpzvvvd6uvwcyzughv7qfvwg64ces@yrlrur5dkf45>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 9 Sep 2025 11:50:15 +0800
-X-Gm-Features: Ac12FXwAUz9S8d-8r_TaFcUSUGZ-l28LM65axRib-fNazk4pPZoYccYUgggaCpc
-Message-ID: <CAGXv+5HZcZ8uVZQbT83QnWd1M6p7fXvKU-0gOfc794BxqOmw1g@mail.gmail.com>
-Subject: Re: [PATCH v2] i2c: mediatek: fix potential incorrect use of I2C_MASTER_WRRD
-To: Andi Shyti <andi.shyti@kernel.org>
-Cc: Leilk Liu <leilk.liu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Qii Wang <qii.wang@mediatek.com>, 
-	Wolfram Sang <wsa@kernel.org>, Liguo Zhang <liguo.zhang@mediatek.com>, linux-i2c@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 4/4] wifi: mt76: connac: synchronize token_count access in
+ mt76_connac_skip_fw_pmctrl
+To: =?UTF-8?B?TWluZ3llbiBIc2llaCAo6Kyd5piO6Ku6KQ==?=
+ <Mingyen.Hsieh@mediatek.com>, "lorenzo@kernel.org" <lorenzo@kernel.org>
+Cc: =?UTF-8?B?QWxsYW4gV2FuZyAo546L5a625YGJKQ==?= <Allan.Wang@mediatek.com>,
+ =?UTF-8?B?RXJpYy1TWSBDaGFuZyAo5by15pu45rqQKQ==?=
+ <Eric-SY.Chang@mediatek.com>, =?UTF-8?B?RGVyZW4gV3UgKOatpuW+t+S7gSk=?=
+ <Deren.Wu@mediatek.com>, Ryder Lee <Ryder.Lee@mediatek.com>,
+ =?UTF-8?B?UXVhbiBaaG91ICjlkajlhagp?= <Quan.Zhou@mediatek.com>,
+ =?UTF-8?B?TWljaGFlbCBMbyAo576F55Kn56ugKQ==?= <Michael.Lo@mediatek.com>,
+ =?UTF-8?B?U2hheW5lIENoZW4gKOmZs+i7kuS4nik=?= <Shayne.Chen@mediatek.com>,
+ Sean Wang <Sean.Wang@mediatek.com>, =?UTF-8?B?TGVvbiBZZW4gKOmhj+iJr+WEkik=?=
+ <Leon.Yen@mediatek.com>, =?UTF-8?B?S00gTGluICjmnpfmmIbmsJEp?=
+ <km.lin@mediatek.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>
+References: <20250904030649.655436-1-mingyen.hsieh@mediatek.com>
+ <20250904030649.655436-5-mingyen.hsieh@mediatek.com>
+ <bafba000-2488-4382-ae0c-df6195b83019@nbd.name>
+ <61ad7900d5909359d8c1907b6c80db921c0da612.camel@mediatek.com>
+Content-Language: en-US
+From: Felix Fietkau <nbd@nbd.name>
+Autocrypt: addr=nbd@nbd.name; keydata=
+ xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
+ ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
+ Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
+ AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
+ vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
+ wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
+ TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
+ l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
+ dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
+ HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
+ VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
+ CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
+ VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
+ Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
+ DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
+ wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
+ f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
+ aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
+ FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
+ TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
+ GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
+ cL98efvrjdstUfTCP2pfetyN
+In-Reply-To: <61ad7900d5909359d8c1907b6c80db921c0da612.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250908_205029_686685_E06AA9BE 
-X-CRM114-Status: GOOD (  23.43  )
+X-CRM114-CacheID: sfid-20250908_220544_743223_9F1B9F5E 
+X-CRM114-Status: UNSURE (   6.67  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,103 +112,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 9, 2025 at 6:17=E2=80=AFAM Andi Shyti <andi.shyti@kernel.org> w=
-rote:
->
-> Hi Leilk,
->
-> > diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-m=
-t65xx.c
-> > index ab456c3717db..dee40704825c 100644
-> > --- a/drivers/i2c/busses/i2c-mt65xx.c
-> > +++ b/drivers/i2c/busses/i2c-mt65xx.c
-> > @@ -1243,6 +1243,7 @@ static int mtk_i2c_transfer(struct i2c_adapter *a=
-dap,
-> >  {
-> >       int ret;
-> >       int left_num =3D num;
-> > +     bool write_then_read_en =3D false;
-> >       struct mtk_i2c *i2c =3D i2c_get_adapdata(adap);
-> >
-> >       ret =3D clk_bulk_enable(I2C_MT65XX_CLK_MAX, i2c->clocks);
-> > @@ -1256,6 +1257,7 @@ static int mtk_i2c_transfer(struct i2c_adapter *a=
-dap,
-> >               if (!(msgs[0].flags & I2C_M_RD) && (msgs[1].flags & I2C_M=
-_RD) &&
-> >                   msgs[0].addr =3D=3D msgs[1].addr) {
-> >                       i2c->auto_restart =3D 0;
-> > +                     write_then_read_en =3D true;
-> >               }
-> >       }
-> >
-> > @@ -1280,12 +1282,10 @@ static int mtk_i2c_transfer(struct i2c_adapter =
-*adap,
-> >               else
-> >                       i2c->op =3D I2C_MASTER_WR;
-> >
-> > -             if (!i2c->auto_restart) {
-> > -                     if (num > 1) {
-> > -                             /* combined two messages into one transac=
-tion */
-> > -                             i2c->op =3D I2C_MASTER_WRRD;
-> > -                             left_num--;
-> > -                     }
-> > +             if (write_then_read_en) {
-> > +                     /* combined two messages into one transaction */
-> > +                     i2c->op =3D I2C_MASTER_WRRD;
->
-> i2c doesn't change for the whole loop so that it can be set only
-> once outside the loop instead of setting it everytime.
->
-> Something like this:
->
->         if (i2c->op =3D=3D I2C_MASTER_WRRD)
->                 left_num--;
->         else if (msgs->flags & I2C_M_RD)
->                 ...
->         else
->
-> looks cleaner to me and we save the extra flag. Am I missing
-> anything?
+On 05.09.25 04:14, Mingyen Hsieh (謝明諺) wrote:
+> I haven't seen a real race so far, but during my observation, I noticed
+> that some functions using token_count are protected by a lock. That's
+> why i added the protection in this patch. These are just my thoughts,
+> and maybe i might have missed something-perhaps the protection isn't
+> needed here.
 
-It looks correct to me, though I think it requires a comment explaining
-that "in the WRRD case there are only two messages that get processed
-together, and the while loop doesn't actually iterate", and reference
-the block where the WRRD op is set.
+In that case, I don't think that this patch adds any extra race 
+protection. Other places that take dev->token_lock typically either 
+write a token related variable or interact with the idr as well and need 
+locking because of that.
 
-Otherwise someone is going to look at this snippet and think there's
-some corner case where all messages (# of messages > 2) get handled
-using the WRRD op.
+Thanks,
 
-So maybe it looks cleaner, but it requires more context to understand.
-Whereas in the original patch, the extra variable sort of gives that
-context. In this case I prefer the context being more visible, since
-the original corner case this issue fixes is also from missing context
-and assumptions.
-
-
-ChenYu
-
-> Andi
->
-> > +                     left_num--;
-> >               }
-> >
-> >               /* always use DMA mode. */
-> > @@ -1293,7 +1293,10 @@ static int mtk_i2c_transfer(struct i2c_adapter *=
-adap,
-> >               if (ret < 0)
-> >                       goto err_exit;
-> >
-> > -             msgs++;
-> > +             if (i2c->op =3D=3D I2C_MASTER_WRRD)
-> > +                     msgs +=3D 2;
-> > +             else
-> > +                     msgs++;
-> >       }
-> >       /* the return value is number of executed messages */
-> >       ret =3D num;
-> > --
-> > 2.46.0
-> >
+- Felix
 
