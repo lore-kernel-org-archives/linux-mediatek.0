@@ -4,84 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6BF2CAC587
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 16:02:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A40CCAC594
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 16:02:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SQzA72vB5rb+Qyx2YAgEg4fc6nWWy+sWKxhpGJjN6j0=; b=ovIYqwO7vjINMXEs3fR8sz9CQM
-	5HDzF0CNsHABMDBiCGWlKyaXbBG6T038EPNBoNJ171j5xU6ic2NA89RY0ipUMcmIc4wd+lEIQ7enS
-	l4LwitEHt0cby6RHU/G/Hh+T+ozqJsGWhm63XvUZUaF05qUlAyrUT0IGVi94vB+ItFDPJUVyG43R1
-	I2bbVxq/Gw0VLgAAf5CMyiLbhMUcj81oGV4/EracnK+M9ENUa8NKuagFo4tfbstEYH4GJrP9lUqzT
-	WEXZAZymLhCrZKmt3eHWwnD+EXWjdmIzng6BP+YRyfH9JpC7tkOo8JgGdFun0XlJspkYJ8LKhRPLo
-	wVgov2/Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Bs6PSVWsZetmovjDd8/UQOAALgqwhMIdtJCi5l1e3lk=; b=MD5Pk06Wb0vDRz
+	2u9iwxHm58tz7NuQBjTWvg5y/+YtY475EBWJeuXQx3cdgOWNKtW3OE21in8gyonKJ1w3KgtZTv4H/
+	O1kaYVI4NDn/uGMxG6lTcgkXmz+TAoVHeooN9oG7x1TFfbSFNaMAnXst3YVxjmX0IIUTxbVBhbmfZ
+	hLAna1lZd9O3GzlgCzGpbSjcQ0iIqCCwygarzlWhY75/CafMZWiR5gCtG1JKZCbo+zFcwHPF5JC5Z
+	EeanIkiXJ6JhduRNKlsxT3cX+QNYby0Wo6Zfda+Lqm/RBnGwCEziVr1nYWcVVS48jXbsS4T7G2AEY
+	5654QlBm6RVQ1KMDJL9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uw0nS-00000008NX6-3axy;
-	Tue, 09 Sep 2025 16:02:18 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1uw0nT-00000008NYa-2waG;
+	Tue, 09 Sep 2025 16:02:19 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvxm3-00000007B8c-0wLY;
-	Tue, 09 Sep 2025 12:48:40 +0000
-Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-3e7428c4cbdso1655816f8f.0;
-        Tue, 09 Sep 2025 05:48:39 -0700 (PDT)
+	id 1uvxtC-00000007DVB-46Ak;
+	Tue, 09 Sep 2025 12:56:04 +0000
+Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-3da9ad0c1f4so3913540f8f.3;
+        Tue, 09 Sep 2025 05:56:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1757422117; x=1758026917; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1757422561; x=1758027361; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:to:subject:user-agent:mime-version:date
-         :message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=SQzA72vB5rb+Qyx2YAgEg4fc6nWWy+sWKxhpGJjN6j0=;
-        b=ZQMELkQZXnC4P8ebIvK1QFAutZfRTea1uXcYdONBwA82roAFWaNGwG5kJ0YSseX7Gm
-         VCMRNLSehME8YWy4XqtfTrkME5vlQJR2cZCJqkLbcH1/isJv2LmRCC8+P/DnYQqce19x
-         5xy/rvC8q/nt1vBvIhQ4NVInqEygp+LXj/ql97OyppS53FW3+FnndA6E23s0h7h3iVpU
-         wl0J9daouc3NRdG0Ngvuw+EhNnRjIxA+cYFAYBhfgHypFuYlpHOIiNV1wwUzASAqeYSH
-         unavT4vDSsx0Wu/42o/HnOPm2Y/uZMzerM7+6DzysYcI594se9Ogck5o+9HvKWakPsGV
-         P4Qg==
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=Bs6PSVWsZetmovjDd8/UQOAALgqwhMIdtJCi5l1e3lk=;
+        b=celC/T7XGGhKOrM4lOQ+34/EaOoH0H+bRiq9DVlz61jn7fekZnRl/FXEvcZ9N/1dkj
+         VM+tHrU+DG/dg/+h4XgHDf3+/fnZKDBpuyCrjLeVZsT5Zmxgh7HYbMOw353/uFjo+o6T
+         lewA4aiLuwpOXtXpIlWSKrO57s3Z1kFbmmgWhxnxFMlUGY0WeRJU03lj81waekcyyU7j
+         XLZUMll+sFkPJbe2UO2d8iOPJ1a5Cp/zrivbMGHZx7aH0SvKk/HWdn5/ohsZV/id6DfZ
+         G1HvpLeLaLiyF3abIIDsvHPEtP+yjiqsTc7xJRc2XdMmfagr8A4yu1WoNsaI2jwUiyt8
+         9Y/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757422117; x=1758026917;
+        d=1e100.net; s=20230601; t=1757422561; x=1758027361;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:to:subject:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=SQzA72vB5rb+Qyx2YAgEg4fc6nWWy+sWKxhpGJjN6j0=;
-        b=gagmmHVr8mEQCRyVkbAn8l+fvWMkDa8R+2fi4Ny/M7GQNOf/qiqVHBg8nLvG5aEqky
-         29bta2xuii+p7ZlpwPlFPEVlqmY/O/Gv0ttFqK6jTHYgx/ZPKoiL84EBvgleqHskHud5
-         T0qjeF7MsaMbZBQ/rKvbOW/zJHDcUjFwPJ84fN2RMv552PSX/PsZs9GqvbJYwXe+btM2
-         LhMoh4ZY13PNGxhWeUFQztzDSD/yBie+Zl1AiWT+j2qfu0tjr1rq/qOn41iTohJgs73c
-         +HdE8e7qn/qMcguUVEfrU7jYRc7KqNOB/XD4xWRa+yff9aTUcnvUnK9pZzF4JcXmm+X4
-         K5tQ==
-X-Forwarded-Encrypted: i=1; AJvYcCU4LIyv82ovUV7sieWPK3qohvqqoKjMy7xryL3TbFUXz7h3HIltrNglfLntk0ZRHnj+pmpIi13Jpm/pfHdLOEZj@lists.infradead.org, AJvYcCVxNOCFinokK1L1KHQPELLxqwjCvwpaEkQX+FVa0VtKMVLYpfqtRrQy6VWG9W4oS5GmRdBKbZlEmv71RQqhjvQ=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzOELFQ0N8z2ZJ+rEF1b01izCmWiAIJ+adDQR6ZeH5wq2hMXnqa
-	tNkWL3r+aDQiUtXQCSLnzf2S+NIzLOxpRM4g9kDuQOiTeqEBUl7UO7wuPKTaqA==
-X-Gm-Gg: ASbGncsesCwhg8PfcvYfwi4uskg1EnjPpiG5862+NbdIy95S8XWH/gXwRRKlkDUbLzN
-	ZUeBnhrXXMCF1pkOrSm1deEyb6vhQs1HhqqWelK/sdHP9lesyQ6iraauNt6GOswWCZ4n/vu2ZlF
-	wiqLxLCd3x555zYkOki7gR3VcW8BsTzAfWkiTHIHDwKefRtsYQd4kaxHjXb9UQ45Ht24NaK85or
-	dd11jiaIn1+Nr0raluv/zhikH2321BisXQ606/eQoihKPl6ddCVllIiEPcGt6xV//Tm5X9SGDbS
-	ZxVvk/RzYylVTj9gMmtXmSw81cdo91u9F8W21qpCdeNJn50CaVYhGVX3mMmTlzP+W8buPKjoMqA
-	VwBWZo5VrWoXFUM7pBARkPpVUWyym/YVKJ6n6x+mWhQ==
-X-Google-Smtp-Source: AGHT+IFnpIPMqhgwAmc24Yjj3C6LPW1OFkzAg5gcGHa9lijQlbcwkpw/dFtSXTnJD8l3anSqWnsPkQ==
-X-Received: by 2002:a05:6000:2f81:b0:3de:78c8:1218 with SMTP id ffacd0b85a97d-3e6356751ecmr10315792f8f.30.1757422117298;
-        Tue, 09 Sep 2025 05:48:37 -0700 (PDT)
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Bs6PSVWsZetmovjDd8/UQOAALgqwhMIdtJCi5l1e3lk=;
+        b=RSaMgoVTT639C7bbUH10QeNgaiZV10d8S9ZnUKUYudznRxfSVHmmJsyLDjLo2AmkCz
+         YNUPGK1VScx9q4xpi9jTurqB4OPcxLQN8vZBQJiVrFonPle1GkVuT7utVEyIYdfKX/Lo
+         cf+95cqaHk/Ps4TFnpCwTESCo1+DDwvlO4HubtbD2k1Ri5oKDxDZqUeA0NtgLKYTw5Uf
+         eOlb0v1e5qFRLouwf6yzFs+mzY4OV9opHzmcgSju7v96rOncdE4gD9O6DtWpEvSFWn2K
+         r2bGssD/A1r7jbSrMR98eepXdq63CW0QBlFmoZnuFw6R4L6vqB/McrXerR+ZGZw0WKdn
+         5D+w==
+X-Forwarded-Encrypted: i=1; AJvYcCUT61XYwelBmRSoU/KNxbEfdMVCrIkVZbC63xrrUpPYlsgkqTpR+r8OEqBB75AvBJIMiIAYAotXbQpAujWFuko=@lists.infradead.org, AJvYcCUeT+xkkPvdmQYqhxAxlfdvnZXqmoZCOs/7wyIlruKYQZ/IUqS0UQbZmnhceJo8F2Q2loKaIpmqiWX2Ywr6YobE@lists.infradead.org
+X-Gm-Message-State: AOJu0YzADY9Ck7YZCEjrW6OvhCW4qUspQfTZlCuLCEXo192KXPZcqh6/
+	sklREkGdz5fK6SUem0DM3AymoeiPLPNCcZZWFuxlH66VyYKrgeU5IHK9
+X-Gm-Gg: ASbGncum5BV0jkrhXBNLmtJu7yiTwD1voWswWEntdUpzIcq7EDNO7UVs5CNa8eVlZDL
+	iGbAKL1f6uersWPe0btSZAtdnxPw1Wx4Ogt1GBxKx0RsK/dWdd5kvt+5/tAF4Jw8R//axIae0YF
+	PcsrjAUdspfukLE68m3DLS8Hry/sx2qhHWZ7DzQtwSTbxdu+TV0Ax3KlcECaw2ohyLTCjYgj4rS
+	HJvYG8OUxSBmOUa188P+I6C+y8A8igjEdmRteoEddHBsceOFOYnoy01Nb5sbzRS8wen+wOzm5s/
+	UTgYJfGfYaRFiLHKqM5ZHc+pLe3pyhduY9Y3184RMAqT7O3b53UbnEDKr2M5mckAQjXiyHl/0MW
+	UUqUKivWtgdma8S+r0h9IbSPOj7IvTgY=
+X-Google-Smtp-Source: AGHT+IHWoxi8ul5BBsyoKDm8D0Ls7ROcCv3GjqOTzlR0eW/G4T6hIVWnLPePdLCCK8/yFYt8oIKJrg==
+X-Received: by 2002:a05:6000:40c9:b0:3e5:4ad:2b38 with SMTP id ffacd0b85a97d-3e642309230mr8046948f8f.9.1757422560962;
+        Tue, 09 Sep 2025 05:56:00 -0700 (PDT)
 Received: from [192.168.2.177] ([91.116.220.47])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3e7521be57esm2557253f8f.2.2025.09.09.05.48.35
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3e7521ca2ddsm2628865f8f.23.2025.09.09.05.55.57
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 09 Sep 2025 05:48:36 -0700 (PDT)
-Message-ID: <1f4cdb18-39bc-4c30-bf6c-29b4f70641ec@gmail.com>
-Date: Tue, 9 Sep 2025 14:48:34 +0200
+        Tue, 09 Sep 2025 05:55:59 -0700 (PDT)
+Message-ID: <ee677e0d-b63f-412c-8dbf-c3623ca70407@gmail.com>
+Date: Tue, 9 Sep 2025 14:55:55 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 1/1] arm64: dts: mediatek: add thermal sensor support
- on mt7981
-To: Aleksander Jan Bajkowski <olek2@wp.pl>, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org,
- angelogioacchino.delregno@collabora.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20250907111742.23195-1-olek2@wp.pl>
- <20250907111742.23195-2-olek2@wp.pl>
+Subject: Re: [PATCH v9 00/13] further mt7988 devicetree work
+To: Frank Wunderlich <linux@fw-web.de>,
+ MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ Chanwoo Choi <cw00.choi@samsung.com>, Georgi Djakov <djakov@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Johnson Wang <johnson.wang@mediatek.com>, =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?=
+ <arinc.unal@arinc9.com>, Landen Chao <Landen.Chao@mediatek.com>,
+ DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
+ Daniel Golle <daniel@makrotopia.org>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Felix Fietkau <nbd@nbd.name>
+References: <20250709111147.11843-1-linux@fw-web.de>
 Content-Language: en-US, ca-ES, es-ES
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
@@ -127,12 +135,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20250907111742.23195-2-olek2@wp.pl>
+In-Reply-To: <20250709111147.11843-1-linux@fw-web.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250909_054839_268102_DDAF5CB3 
-X-CRM114-Status: GOOD (  14.94  )
+X-CRM114-CacheID: sfid-20250909_055603_025895_7E103ACB 
+X-CRM114-Status: GOOD (  30.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -144,78 +152,150 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, linux-pm@vger.kernel.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Queued patches 7 - 13
 
+Thanks!
 
-On 07/09/2025 13:15, Aleksander Jan Bajkowski wrote:
-> The temperature sensor in the MT7981 is same as in the MT7986.
+On 09/07/2025 13:09, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> Signed-off-by: Aleksander Jan Bajkowski <olek2@wp.pl>
-
-Queued, thanks.
-Matthias
-
-> ---
->   arch/arm64/boot/dts/mediatek/mt7981b.dtsi | 31 ++++++++++++++++++++++-
->   1 file changed, 30 insertions(+), 1 deletion(-)
+> This series continues mt7988 devicetree work
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-> index 5cbea9cd411f..277c11247c13 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-> @@ -76,7 +76,7 @@ watchdog: watchdog@1001c000 {
->   			#reset-cells = <1>;
->   		};
->   
-> -		clock-controller@1001e000 {
-> +		apmixedsys: clock-controller@1001e000 {
->   			compatible = "mediatek,mt7981-apmixedsys";
->   			reg = <0 0x1001e000 0 0x1000>;
->   			#clock-cells = <1>;
-> @@ -184,6 +184,31 @@ spi@1100b000 {
->   			status = "disabled";
->   		};
->   
-> +		thermal@1100c800 {
-> +			compatible = "mediatek,mt7981-thermal",
-> +				     "mediatek,mt7986-thermal";
-> +			reg = <0 0x1100c800 0 0x800>;
-> +			interrupts = <GIC_SPI 138 IRQ_TYPE_LEVEL_HIGH>;
-> +			clocks = <&infracfg CLK_INFRA_THERM_CK>,
-> +				 <&infracfg CLK_INFRA_ADC_26M_CK>;
-> +			clock-names = "therm", "auxadc";
-> +			nvmem-cells = <&thermal_calibration>;
-> +			nvmem-cell-names = "calibration-data";
-> +			#thermal-sensor-cells = <1>;
-> +			mediatek,auxadc = <&auxadc>;
-> +			mediatek,apmixedsys = <&apmixedsys>;
-> +		};
-> +
-> +		auxadc: adc@1100d000 {
-> +			compatible = "mediatek,mt7981-auxadc",
-> +				     "mediatek,mt7986-auxadc";
-> +			reg = <0 0x1100d000 0 0x1000>;
-> +			clocks = <&infracfg CLK_INFRA_ADC_26M_CK>;
-> +			clock-names = "main";
-> +			#io-channel-cells = <1>;
-> +			status = "disabled";
-> +		};
-> +
->   		pio: pinctrl@11d00000 {
->   			compatible = "mediatek,mt7981-pinctrl";
->   			reg = <0 0x11d00000 0 0x1000>,
-> @@ -211,6 +236,10 @@ efuse@11f20000 {
->   			reg = <0 0x11f20000 0 0x1000>;
->   			#address-cells = <1>;
->   			#size-cells = <1>;
-> +
-> +			thermal_calibration: thermal-calib@274 {
-> +				reg = <0x274 0xc>;
-> +			};
->   		};
->   
->   		clock-controller@15000000 {
+> - Extend cpu frequency scaling with CCI
+> - GPIO leds
+> - Basic network-support (ethernet controller + builtin switch + SFP Cages)
+> 
+> depencies (i hope this list is complete and latest patches/series linked):
+> 
+> support interrupt-names is optional again as i re-added the reserved IRQs
+> (they are not unusable as i thought and can allow features in future)
+> https://patchwork.kernel.org/project/netdevbpf/patch/20250619132125.78368-2-linux@fw-web.de/
+> 
+> needs change in mtk ethernet driver for the sram to be read from separate node:
+> https://patchwork.kernel.org/project/netdevbpf/patch/c2b9242229d06af4e468204bcf42daa1535c3a72.1751461762.git.daniel@makrotopia.org/
+> 
+> for SFP-Function (macs currently disabled):
+> 
+> PCS clearance which is a 1.5 year discussion currently ongoing
+> 
+> Daniel asked netdev for a way 2 go:
+> https://lore.kernel.org/netdev/aEwfME3dYisQtdCj@pidgin.makrotopia.org/
+> 
+> e.g. something like this (one of):
+> * https://patchwork.kernel.org/project/netdevbpf/patch/20250610233134.3588011-4-sean.anderson@linux.dev/ (v6)
+> * https://patchwork.kernel.org/project/netdevbpf/patch/20250511201250.3789083-4-ansuelsmth@gmail.com/ (v4)
+> * https://patchwork.kernel.org/project/netdevbpf/patch/ba4e359584a6b3bc4b3470822c42186d5b0856f9.1721910728.git.daniel@makrotopia.org/
+> 
+> full usxgmii driver:
+> https://patchwork.kernel.org/project/netdevbpf/patch/07845ec900ba41ff992875dce12c622277592c32.1702352117.git.daniel@makrotopia.org/
+> 
+> first PCS-discussion is here:
+> https://patchwork.kernel.org/project/netdevbpf/patch/8aa905080bdb6760875d62cb3b2b41258837f80e.1702352117.git.daniel@makrotopia.org/
+> some more here:
+> https://lore.kernel.org/netdev/20250511201250.3789083-4-ansuelsmth@gmail.com/
+> 
+> and then dts nodes for sgmiisys+usxgmii+2g5 firmware
+> 
+> when above depencies are solved the mac1/2 can be enabled and 2.5G phy/SFP slots will work.
+> 
+> changes:
+> v9:
+> - dropped patches already applied (cci,gpio-leds,unused pins)
+> - added patches to add RSS IRQs, IRQ-names and sram-node for mt7986
+>    note: mt7981 does not have a ethernet node yet
+> - set minItems for Filogic (MT798x) IRQs/Names to 8
+>    needed to update MT7986 binding example because of this
+> - add sram:false to non-Filogic SoCs
+> 
+> v8:
+> - splitted binding into irq-count and irq-names and updated description
+> - fixed typo in mt7621 section "interrupt-namess"
+> - splitted binding changes into fixes (mac) and additions (sram)
+> - dropped change of reg (simple count to description)
+> - change ethernet register size to 0x40000
+> 
+> v7:
+> - fixed rebasing error while splitting dt-binding patch
+> 
+> v6:
+> binding:
+> - split out the interrupt-names into separate patch
+> - update irq(name) min count to 4
+> - move interrupt-names up
+> - add sram-property
+> - drop second reg entry and minitems as there is only 1 item left
+> 
+> dts:
+> - fix whitespace-errors for pdma irqs (spaces vs. tabs)
+> - move sram from eth reg to own sram node (needs CONFIG_SRAM)
+> 
+> v5:
+> - add reserved irqs and change names
+> - update binding for 8 irqs with different names (rx,tx => fe1+fe2, rx-ringX => pdmaX)
+>    (dropped Robs RB due to this change again, sorry)
+> 
+> v4:
+>    net-binding:
+>      - allow interrupt names and increase max interrupts to 6 because of RSS/LRO interrupts
+>        (dropped Robs RB due to this change)
+> 
+>    dts-patches:
+>    - add interrupts for RSS/LRO and interrupt-names for ethernet node
+>    - eth-reg and clock whitespace-fix
+>    - comment for fixed-link on gmac0
+>    - drop phy-mode properties as suggested by andrew
+>    - drop phy-connection-type on 2g5 board
+>    - reorder some properties
+>    - update 2g5 phy node
+>      - unit-name dec instead of hex to match reg property
+>      - move compatible before reg
+>      - drop phy-mode
+> 
+> v3:
+>    - dropped patches already applied (SPI+thermal)
+>    - added soc specific cci compatible (new binding patch + changed dts)
+>    - enable 2g5 phy because driver is now merged
+>    - add patch for cleaning up unnecessary pins
+>    - add patch for gpio-leds
+>    - add patch for adding ethernet aliases
+> 
+> v2:
+>    - change reg to list of items in eth binding
+>    - changed mt7530 binding:
+>      - unevaluatedProperties=false
+>      - mediatek,pio subproperty
+>      - from patternProperty to property
+>    - board specific properties like led function and labels moved to bpi-r4 dtsi
+> 
+> Frank Wunderlich (13):
+>    dt-bindings: net: mediatek,net: update mac subnode pattern for mt7988
+>    dt-bindings: net: mediatek,net: allow up to 8 IRQs
+>    dt-bindings: net: mediatek,net: allow irq names
+>    dt-bindings: net: mediatek,net: add sram property
+>    dt-bindings: net: dsa: mediatek,mt7530: add dsa-port definition for
+>      mt7988
+>    dt-bindings: net: dsa: mediatek,mt7530: add internal mdio bus
+>    arm64: dts: mediatek: mt7986: add sram node
+>    arm64: dts: mediatek: mt7986: add interrupts for RSS and interrupt
+>      names
+>    arm64: dts: mediatek: mt7988: add basic ethernet-nodes
+>    arm64: dts: mediatek: mt7988: add switch node
+>    arm64: dts: mediatek: mt7988a-bpi-r4: add aliases for ethernet
+>    arm64: dts: mediatek: mt7988a-bpi-r4: add sfp cages and link to gmac
+>    arm64: dts: mediatek: mt7988a-bpi-r4: configure switch phys and leds
+> 
+>   .../bindings/net/dsa/mediatek,mt7530.yaml     |  24 +-
+>   .../devicetree/bindings/net/mediatek,net.yaml |  64 +++-
+>   arch/arm64/boot/dts/mediatek/mt7986a.dtsi     |  20 +-
+>   .../mediatek/mt7988a-bananapi-bpi-r4-2g5.dts  |  11 +
+>   .../dts/mediatek/mt7988a-bananapi-bpi-r4.dts  |  19 ++
+>   .../dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi |  86 ++++++
+>   arch/arm64/boot/dts/mediatek/mt7988a.dtsi     | 285 +++++++++++++++++-
+>   7 files changed, 497 insertions(+), 12 deletions(-)
+> 
 
 
