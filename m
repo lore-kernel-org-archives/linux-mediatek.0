@@ -4,74 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1CA3CA0FED
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 16:02:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A262ECAC587
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 16:02:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e83lrEIW3avB4qsniP1YuOsrntuQ181h3kAMmQsmlNw=; b=bGznKRe0JKjwjGQzgfqlDWOPg5
-	oOSqgdslnmFiGYpb7ORdraVRWtBFtsi/vokBobx9eZ3kngtLLJ+Feftosy/1IB8Fc0Zvmp4yQzCbY
-	cCS5oHeWv/cuHhHQcQLkuJZ9QsV9zoGPCWutF/yw7FnkNnq2mivqRmyySOMvrtnyDjEwlqG74rmfC
-	M5vqqB6bhWHwp9rnsStskEq50bMxSorcEwP7WBiHvYiLQquShyj87a6haC2oyKb3R+vls7t+szM1D
-	sJWtmkmrYVThRIFuFKk36RfwfjxrWw74kpkHjjqHe62u8VXp2Awl1ybr/kY8CDanbXLmgUHTVFRqX
-	QEGEWfMQ==;
+	bh=nWetMrUNt21ovOSJ7w/e/6SZ7KelhnhHlCJJrx1T5yg=; b=j+8Bqob+7Nn+jWzPT6EuBw2y60
+	hIPadaigWHKql0xdwsB4qbNwEwEiUCkgrPyHnKDZrLUk4ARqaWoUdIeeP6WWoKwVwvNITDByuvlGG
+	Hnvtf2lH8oOqIoU2OCGIiXQSM+ikJ0eZ+b/SihbBSbdokj3aNjs0YFgsCmEwABJRgEeyvhVAgPkN5
+	xrgqRMjATAeYLZguqrh/BwBLv0avkPwnaeKC8uz5AlbDv2ahRyoVlX040s7N+J3Xe7LO8v/rpQQQk
+	FJsWg0EvwKG7AclC+1nRh8yRrZbpuC2lDIjB0tN2EqFKuUkGxjebBdCsxA2Gden/zEBMM/XEJWwnP
+	+7cMNc8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uw0np-00000008O9R-3epf;
-	Tue, 09 Sep 2025 16:02:41 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uw0nr-00000008OCi-1gn3;
+	Tue, 09 Sep 2025 16:02:43 +0000
+Received: from mgamail.intel.com ([192.198.163.8])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvyX6-00000007RGY-173E;
-	Tue, 09 Sep 2025 13:37:17 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id EF5C0407C0;
-	Tue,  9 Sep 2025 13:37:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ABEE4C4CEF4;
-	Tue,  9 Sep 2025 13:37:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1757425035;
-	bh=31mOWd8+i/1YkiYaOgcvUkmjuR7GoBD5Ed0MeKEuOFo=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=BXVF3yf9YngGzwiQotWaE4Rx6byZFIleDiFn32GZnBJJycd+usgkvBcEjrfraU96O
-	 OLTqsYuQ/7Ml956/i1KRFTRDv3ny65maB8g2Qe9iG1w94gWkJpNT2tofdbPoe2tXH7
-	 opsMO0H97xnzvR7WoO7CbjNuFHu4L7lYCDl0vQEf4fIFRrRX5pXgXj6qyMEvJi35rf
-	 DF9JVkUOLuzzd4k1pKuBWFVkqfOQpB4frNdfuxprHgWoaLw3EH4vIWgZC9Vp9SjlhZ
-	 PV/YJisDuvITkYhqnPjVVPk0BAnO3xPs8gzW5kLJnw74J8pKUJwjCAajxeYcZSXdz0
-	 HpfFO1hkpa2pg==
-Date: Tue, 09 Sep 2025 08:37:15 -0500
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1uvyfG-00000007Uhh-3ikN;
+	Tue, 09 Sep 2025 13:45:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1757425543; x=1788961543;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=cuvp1jqzP0KmBIeFPlYIHdueAMSWUkXNMbTb2SDREqQ=;
+  b=UonzozE+plb8Cdd4HIY75ymdSUXVW4NlJt2uN5xOC/5YGjBCWFoFv/1f
+   lFmmP80YSMsI6Xz0FyRVcnepwxnu8TxjVjDfEXYwo8SR2Oc3BDs01hy0Z
+   Hk8Ugx4/vaRjvovXvV8PeUJbrtxqLvawUzMsOdHZI21B+Gu0YB4LUUm1b
+   xIc14e+4nxXzUjJsqmpCUSPlCi4J/PhSMdodeqRMtY3fOhnsVeRW53Pe4
+   Cgo+V0SeFJ4Mrl1PaKk1mpH7nguZZ6NGupXBeDZScJix8tDkp4kA8OIY1
+   3t3NcYqDhW8WIzNjucmsqHN3EGKURnrtpqBrgp3lpnSQawnYPbK4YxKU7
+   A==;
+X-CSE-ConnectionGUID: 1je0Mm8BQJyKXYsM0fzzmQ==
+X-CSE-MsgGUID: K8Dy0YV/ROafaNPd93OvHA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11548"; a="77320978"
+X-IronPort-AV: E=Sophos;i="6.18,251,1751266800"; 
+   d="scan'208";a="77320978"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Sep 2025 06:45:40 -0700
+X-CSE-ConnectionGUID: YelEPzAPTVimIapPXZjDQA==
+X-CSE-MsgGUID: DSSZAarXTPmifkvXgS2MQw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.18,251,1751266800"; 
+   d="scan'208";a="177436591"
+Received: from smile.fi.intel.com ([10.237.72.51])
+  by fmviesa005.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Sep 2025 06:45:35 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.98.2)
+	(envelope-from <andriy.shevchenko@intel.com>)
+	id 1uvyf5-00000001S9X-2kkM;
+	Tue, 09 Sep 2025 16:45:31 +0300
+Date: Tue, 9 Sep 2025 16:45:31 +0300
+From: Andy Shevchenko <andriy.shevchenko@intel.com>
+To: Bartosz Golaszewski <brgl@bgdev.pl>
+Cc: Linus Walleij <linus.walleij@linaro.org>,
+	Keguang Zhang <keguang.zhang@gmail.com>,
+	Alban Bedel <albeu@free.fr>, Doug Berger <opendmb@gmail.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Samuel Holland <samuel.holland@sifive.com>,
+	Yixun Lan <dlan@gentoo.org>, Andy Shevchenko <andy@kernel.org>,
+	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-mips@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
+	spacemit@lists.linux.dev,
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+Subject: Re: [PATCH 13/15] gpio: sodaville: use new generic GPIO chip API
+Message-ID: <aMAve1MbONmKVjjg@smile.fi.intel.com>
+References: <20250909-gpio-mmio-gpio-conv-part4-v1-0-9f723dc3524a@linaro.org>
+ <20250909-gpio-mmio-gpio-conv-part4-v1-13-9f723dc3524a@linaro.org>
+ <aMAP9hAWars0T83r@smile.fi.intel.com>
+ <CAMRc=MeLTGq8Qu2aT43tkt3vaYCSaJPJPLmaUQ1SAyD_OgVr_g@mail.gmail.com>
+ <aMAn4MM_Fs8q8qwj@smile.fi.intel.com>
+ <CAMRc=Mdr4oW2d7XZ90rRr_fKC7WToz72v=_kW-s8=Urd0g8k3g@mail.gmail.com>
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, 
- Russell King <linux@armlinux.org.uk>, 
- "Chester A. Unal" <chester.a.unal@arinc9.com>, devicetree@vger.kernel.org, 
- Sean Wang <sean.wang@mediatek.com>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Srinivas Kandagatla <srini@kernel.org>, linux-mediatek@lists.infradead.org, 
- "David S. Miller" <davem@davemloft.net>, 
- Heiner Kallweit <hkallweit1@gmail.com>, Simon Horman <horms@kernel.org>, 
- Paolo Abeni <pabeni@redhat.com>, Eric Dumazet <edumazet@google.com>, 
- DENG Qingfang <dqfext@gmail.com>, linux-arm-kernel@lists.infradead.org, 
- netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, 
- Lee Jones <lee@kernel.org>, linux-kernel@vger.kernel.org, 
- Vladimir Oltean <olteanv@gmail.com>, Jakub Kicinski <kuba@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Christian Marangi <ansuelsmth@gmail.com>
-In-Reply-To: <20250909004343.18790-5-ansuelsmth@gmail.com>
-References: <20250909004343.18790-1-ansuelsmth@gmail.com>
- <20250909004343.18790-5-ansuelsmth@gmail.com>
-Message-Id: <175742464480.3063209.323009363144312411.robh@kernel.org>
-Subject: Re: [net-next PATCH v16 04/10] dt-bindings: mfd: Document support
- for Airoha AN8855 Switch SoC
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAMRc=Mdr4oW2d7XZ90rRr_fKC7WToz72v=_kW-s8=Urd0g8k3g@mail.gmail.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250909_063716_341089_91539DAF 
-X-CRM114-Status: GOOD (  13.17  )
+X-CRM114-CacheID: sfid-20250909_064542_941355_29B91281 
+X-CRM114-Status: GOOD (  29.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,51 +107,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, Sep 09, 2025 at 08:24:23AM -0500, Bartosz Golaszewski wrote:
+> On Tue, 9 Sep 2025 15:13:04 +0200, Andy Shevchenko
+> <andriy.shevchenko@intel.com> said:
+> > On Tue, Sep 09, 2025 at 01:35:04PM +0200, Bartosz Golaszewski wrote:
+> >> On Tue, Sep 9, 2025 at 1:31 PM Andy Shevchenko
+> >> <andriy.shevchenko@intel.com> wrote:
+> >> > On Tue, Sep 09, 2025 at 11:15:40AM +0200, Bartosz Golaszewski wrote:
 
-On Tue, 09 Sep 2025 02:43:35 +0200, Christian Marangi wrote:
-> Document support for Airoha AN8855 Switch SoC. This SoC expose various
-> peripherals like an Ethernet Switch, a NVMEM provider and Ethernet PHYs.
+...
+
+> >> > > +     config = (typeof(config)){
+> >> >
+> >> > This looks unusual. Why can't properly formed compound literal be used as in
+> >> > many other places in the kernel?
+> >>
+> >> It is correct C
+> >
+> > If it compiles, it doesn't mean it's correct C, it might be non-standard.
+> > Have you checked with the standard (note, I read that part in the past,
+> > but I may forgot the details, so I don't know the answer to this)?
 > 
-> It does also support i2c and timers but those are not currently
-> supported/used.
+> It's a GNU extension alright
+
+clang, I suppose, also okay with this?
+
+> but it's supported in the kernel as it evaluates
+> to a simple cast.
+
+There is no cast. And that's make a big difference to what the code tries to do.
+
+> >> and checkpatch doesn't raise any warnings.
+> >
+> > checkpatch is far from being useful in the questions like this.
+> > It false positively complains for for_each*() macros all over
+> > the kernel, for example.
+> >
+> >> It's the
+> >> same kind of argument as between kmalloc(sizeof(struct foo)) vs
+> >> kmalloc(sizeof(f)).
+> >
+> > Maybe, but it introduces a new style while all other cases use the other,
+> > _established_ style. So we have a precedent and the form the code is written
+> > in is against the de facto usage of the compound literals.
 > 
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> ---
->  .../bindings/mfd/airoha,an8855.yaml           | 175 ++++++++++++++++++
->  1 file changed, 175 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mfd/airoha,an8855.yaml
-> 
+> It may not be *very* common but it's hardly new style:
 
-My bot found errors running 'make dt_binding_check' on your patch:
+I think your statement is incorrect see below why.
 
-yamllint warnings/errors:
+> $ git grep -P "\(typeof\(.*\)\) ?\{" | wc
+>     108     529    7315
 
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/mfd/airoha,an8855.yaml:
-	Error in referenced schema matching $id: http://devicetree.org/schemas/net/airoha,an8855-mdio.yaml
-	Tried these paths (check schema $id if path is wrong):
-	/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/net/airoha,an8855-mdio.yaml
-	/usr/local/lib/python3.13/dist-packages/dtschema/schemas/net/airoha,an8855-mdio.yaml
+Not correct. The correct output will be closer to
 
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/mfd/airoha,an8855.example.dtb: soc@1 (airoha,an8855): mdio: {'compatible': ['airoha,an8855-mdio'], '#address-cells': 1, '#size-cells': 0, 'ethernet-phy@1': {'compatible': ['ethernet-phy-idc0ff.0410', 'ethernet-phy-ieee802.3-c22'], 'reg': [[1]], 'nvmem-cells': [[3], [4], [5], [6]], 'nvmem-cell-names': ['tx_a', 'tx_b', 'tx_c', 'tx_d'], 'phandle': 1}, 'ethernet-phy@2': {'compatible': ['ethernet-phy-idc0ff.0410', 'ethernet-phy-ieee802.3-c22'], 'reg': [[2]], 'nvmem-cells': [[7], [8], [9], [10]], 'nvmem-cell-names': ['tx_a', 'tx_b', 'tx_c', 'tx_d'], 'phandle': 2}} should not be valid under {'description': "Can't find referenced schema: http://devicetree.org/schemas/net/airoha,an8855-mdio.yaml#"}
-	from schema $id: http://devicetree.org/schemas/mfd/airoha,an8855.yaml#
-Documentation/devicetree/bindings/mfd/airoha,an8855.example.dtb: /example-0/mdio/soc@1/mdio: failed to match any schema with compatible: ['airoha,an8855-mdio']
+$ git grep -l -P "\(typeof\(.*\)\) ?\{" | wc -l
+15
 
-doc reference errors (make refcheckdocs):
+And if you looked at the output carefully, you see the bug in the RE you used.
 
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250909004343.18790-5-ansuelsmth@gmail.com
+So, even closer will be this one:
 
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
+$ git grep -l -P "=[[:space:]]+\(typeof\(.*\)\) ?\{" | wc -l
+7
 
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
+2 out of which are related to libeth, effectively makes this 6.
 
-pip3 install dtschema --upgrade
+No, this is completely non-standard and unusual thing in the kernel.
 
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
+> >> I guess it's personal taste but I like this version better.
+> >
+> > In kernel we also try to be consistent. This add inconsistency. Am I wrong?
+> >
+> >> > > +             .dev = &pdev->dev,
+> >> > > +             .sz = 4,
+> >> > > +             .dat = sd->gpio_pub_base + GPINR,
+> >> > > +             .set = sd->gpio_pub_base + GPOUTR,
+> >> > > +             .dirout = sd->gpio_pub_base + GPOER,
+> >> > > +     };
+
+-- 
+With Best Regards,
+Andy Shevchenko
+
 
 
