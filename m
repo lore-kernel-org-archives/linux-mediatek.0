@@ -4,66 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2ADFBCA0FED
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 10:01:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C705CA0FED
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 10:34:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=y3pmDaVJYIZQhrRHJmz8GcRjusYo6oodT5OSlpTQ0+I=; b=qb8wQoYztgVn6CvK/jIh4BiPyc
-	0ydJegLiNel/QSCYAiin20Xn5CBxCDcmtWxFKZoiSaB6IfmwO8RozEzN0KOIcZKTnUzgfJhtVG54e
-	5nYbbFaWD8660WExEbdD8MrBQicg6kid6RfucrmOY+YeILUHX0quvBACb+n81CV8/n0YkzJWFh5eN
-	fcRzEdsXpCQ6HXB8oGYKGtXzbgF2cA7fEqJamg516SUlzRrep2aDAwOgRDApcvlwag0lChWrsNCrP
-	vjQ/MGrAnsAv3Th9iuBc9rtfJjlEX6uQwSd1uesFRU7xi1Z8nohFBy9xDvXTK09E3H2QBKaXtIrxJ
-	GL5AMU/g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=W5yCldw9Ui0PQdaUryQ7+dVXsj2JWAh+weDkVvcZLVM=; b=vCaFOZcsvGibPcRLSWojErYck7
+	OY+KTo/dbCj+b2gwf3nyXAkQjfxUGzehAIF36hIIPelIBIhOPX39JO0/hINd3iro5qqhiRD24XrSY
+	gMV7qVTW5jJVnD28s167cMH9lvDs8ir+UQSCR3s6nFzRJhB4pnXTn4DAJFn8VIKz9ibGUly9RsHfj
+	5Z6DbEzCw14dG6z34XvqIgSM6WTuHK5XJI4yj4IdyHOfNXflVDSRQ6bvgrdcGjFx2rNXqNHDmadUR
+	3Azediemw02dtdOoqLsw+9SM1CJl4fmsnWMw/WE8ZT9R+Gna4QC8CO7lFvHymbLQOwfXvkAoBP97a
+	FG2buolw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvv9x-00000006DBh-0A7r;
-	Tue, 09 Sep 2025 10:01:09 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uvvg3-00000006QvC-0Vp2;
+	Tue, 09 Sep 2025 10:34:19 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvtbh-00000005XRG-1NFH;
-	Tue, 09 Sep 2025 08:21:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1757406099;
-	bh=7AQEL1juqiawy45ZAxf91ih8HpQwBQAic9ZRFlIoxl4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=MaYx0+cmECTn5E5dKoUWkeKcNUYqqPiKDQfu24dcvZsPCZ1UcssOmUmT/QAZ1YRwV
-	 jrzScuI8kkfbjieeJzOQGslqETCfZyZCvSQ1caBYYpFnMoi8hmdG9s9FUorXSaUa5v
-	 Iun5swZ4xNJyyeXHjL65RwnF3ShNEKZmhgvmMlI7jd3iCKOcxGrAvHObgvbSm7+7OL
-	 2VuDMIURF0/2Sq9YPgJAs6G/QVZkJiAiHZY3l1hFifMpjrs51FjrA1Lk1HDvXnKkih
-	 7HhGsL40vhR7F+zlAfOyDBhh5iStpF4XLhSbeBXvx1IyUwjnAzuv7eX3JfO02GyI1g
-	 1oUERFUeyXsvQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 53A7117E0100;
-	Tue,  9 Sep 2025 10:21:39 +0200 (CEST)
-Message-ID: <32d498e7-0774-48d5-80c4-35ede039692e@collabora.com>
-Date: Tue, 9 Sep 2025 10:21:39 +0200
+	id 1uvuM7-00000005pVy-11Zs;
+	Tue, 09 Sep 2025 09:09:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=W5yCldw9Ui0PQdaUryQ7+dVXsj2JWAh+weDkVvcZLVM=; b=Lneve32F7PjadMleGWG34WGj6d
+	VnT/OKOi/tMc+rXvp5mD1Ff9J5b9lK9TQnfudYPDmao6s68OS37tEK9qZTxsOpDiphIHxZ2GPD930
+	j7Fr+D+VOsdEQUxC5dTOt8ZyiJPRtgiR61Yps7a8pn4+qocE8D91wLbOYeWdw7CoTNmvChiZrjht8
+	x7VAMoi7i1ABsLOtxD0mU5LSTEqdf8dy/s5V9xnyf1R+hzhaL/5h9vwj1Y0XO2uBdD0VNhJ7CqZzc
+	TmQX78staw+O8AMvMqWmCYwhx+xMJPFJCxyPdS0laLJ7JUCaM8EsGDIWbrjzi9l7eyWr9/RB8jNB6
+	oLBzX/1w==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:37982)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.98.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1uvuLb-000000007vX-2AJK;
+	Tue, 09 Sep 2025 10:09:07 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1uvuLS-000000000Gl-1UJ2;
+	Tue, 09 Sep 2025 10:08:58 +0100
+Date: Tue, 9 Sep 2025 10:08:57 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Srinivas Kandagatla <srini@kernel.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>, Simon Horman <horms@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [net-next PATCH v16 06/10] net: dsa: Add Airoha AN8855 5-Port
+ Gigabit DSA Switch driver
+Message-ID: <aL_uqX90oP_3hbK6@shell.armlinux.org.uk>
+References: <20250909004343.18790-1-ansuelsmth@gmail.com>
+ <20250909004343.18790-7-ansuelsmth@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] power: supply: Use devm_mutex_init()
-To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
- =?UTF-8?Q?Pali_Roh=C3=A1r?= <pali@kernel.org>,
- Sebastian Reichel <sre@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org,
- linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <2280ca741ef36fe9ed26b8079b91a8e5dfd669fc.1757360105.git.christophe.jaillet@wanadoo.fr>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <2280ca741ef36fe9ed26b8079b91a8e5dfd669fc.1757360105.git.christophe.jaillet@wanadoo.fr>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250909004343.18790-7-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250909_012141_628508_54EEB0B9 
-X-CRM114-Status: UNSURE (   7.64  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250909_020939_586826_520AB95E 
+X-CRM114-Status: GOOD (  12.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,26 +96,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/09/25 21:35, Christophe JAILLET ha scritto:
-> Use devm_mutex_init() instead of hand-writing it.
-> 
-> This saves some LoC, improves readability and saves some space in the
-> generated .o file.
-> 
-> As an example:
-> Before:
-> ======
->     text	   data	    bss	    dec	    hex	filename
->    35803	   9352	    384	  45539	   b1e3	drivers/power/supply/rt9467-charger.o
-> 
-> After:
-> =====
->     text	   data	    bss	    dec	    hex	filename
->    34792	   9008	    384	  44184	   ac98	drivers/power/supply/rt9467-charger.o
-> 
-> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+On Tue, Sep 09, 2025 at 02:43:37AM +0200, Christian Marangi wrote:
+> +static void an8855_phylink_get_caps(struct dsa_switch *ds, int port,
+> +				    struct phylink_config *config)
+> +{
+> +	struct an8855_priv *priv = ds->priv;
+> +	u32 reg;
+> +	int ret;
+> +
+> +	switch (port) {
+> +	case 0:
+> +	case 1:
+> +	case 2:
+> +	case 3:
+> +	case 4:
+> +		__set_bit(PHY_INTERFACE_MODE_GMII,
+> +			  config->supported_interfaces);
+> +		__set_bit(PHY_INTERFACE_MODE_INTERNAL,
+> +			  config->supported_interfaces);
+> +		break;
+> +	case 5:
+> +		phy_interface_set_rgmii(config->supported_interfaces);
+> +		__set_bit(PHY_INTERFACE_MODE_SGMII,
+> +			  config->supported_interfaces);
+> +		__set_bit(PHY_INTERFACE_MODE_2500BASEX,
+> +			  config->supported_interfaces);
+> +		break;
+> +	}
+> +
+> +	config->mac_capabilities = MAC_ASYM_PAUSE | MAC_SYM_PAUSE |
+> +				   MAC_10 | MAC_100 | MAC_1000FD | MAC_2500FD;
+> +
+> +	ret = regmap_read(priv->regmap, AN8855_CKGCR, &reg);
+> +	if (ret)
+> +		dev_err(ds->dev, "failed to read EEE LPI timer\n");
+> +
+> +	config->lpi_capabilities = MAC_100FD | MAC_1000FD;
+> +	/* Global LPI TXIDLE Threshold, default 60ms (unit 2us) */
+> +	config->lpi_timer_default = FIELD_GET(AN8855_LPI_TXIDLE_THD_MASK, reg) *
+> +				    AN8855_TX_LPI_UNIT;
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+You're not filling in config->lpi_interfaces, which means phylink won't
+LPI won't be functional.
 
-
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
