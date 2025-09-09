@@ -4,32 +4,32 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 104EDCAC58C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 17:26:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9D24CAC58C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 17:26:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=qGB+nU4m9lqFfopPttuM4IAbnJ+brTGbjifmpLmp4iA=; b=K6e1/j8PBzSQzPhxXb1cvibK2e
-	dFtGc5iuEDQfyllODN/86FonPC9uJ0UAOb6DlSPy7Nil3jNjnm5Pp/6U4/9sazL514lXVJwBymUf9
-	sLNRUJlQTpd3cdo8uyqQqWSpU3AH9keGVJRf8RbZc2SrC+AbPVF0l9A6CAJnS7/UkxKv9kK5XaZr9
-	VMrvXXunDTXyk3syStBSD5iioUDf92efHETbDRwrZeQRTcYlAoqRrWdWWWQCUPSUqEdHLHP+0w2k2
-	VYZWKaR1QrJY53fwnhohuG7vfFh8Mf7YD4C8YHSwXtbSYz3FkXweyoVBMOZLD6tllr6sl3EiYapZG
-	ZMmAv5Yw==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7CdXBxLfeSeEKKV5QRp8WvHDyyie1Z/8hf/6V3gTEfY=; b=G6yZeyAMWWD2v501DzKNaLqOOB
+	AGfrAVuwkFh4uyeZABwo9q57/Q6T0uicBpaa/D/2vaHxGxFhS+AQSCFgdUIx6ga3eQjlzwiP60EwT
+	XflO0G8WZbzsDVZefxBYQ0jn91QsKfkRaX1f/7nDVUcQKeYBNWe+QAiRmaSlCj277xCi0sDUGN4fC
+	9DY2PHR7Ebf8mUEKwlhymd0GAIEo3VRsrv2HY/x6kzdYyXHRa54ZXfDQvtnWZEUQJIysnk+n1MQM4
+	Kh01Ky5OuNdk20zM1ILyUO/YjS+d29uCzK802KJJp/uJgEYG4PUtPPVTrhiuH5CWM35WzjNS4hhgO
+	L5pT0TCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uw26P-000000094hY-1RTw;
-	Tue, 09 Sep 2025 17:25:57 +0000
+	id 1uw26R-000000094mC-21sg;
+	Tue, 09 Sep 2025 17:25:59 +0000
 Received: from mail.grinn-global.com ([77.55.128.204])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uw1FW-00000008X9D-2pjp;
+	id 1uw1FW-00000008XB6-3FBE;
 	Tue, 09 Sep 2025 16:31:20 +0000
 X-Virus-Scanned: by amavisd-new using ClamAV (10)
 Received: from mateusz.int.grinn-global.com (f90-187.icpnet.pl [46.228.90.187])
-	by server220076.nazwa.pl (Postfix) with ESMTP id BDE451BC2C3;
-	Tue, 09 Sep 2025 18:31:10 +0200 (CEST)
+	by server220076.nazwa.pl (Postfix) with ESMTP id 0D7F61BCB25;
+	Tue, 09 Sep 2025 18:31:16 +0200 (CEST)
 From: Mateusz Koza <mateusz.koza@grinn-global.com>
 To: angelogioacchino.delregno@collabora.com,
 	robh@kernel.org
@@ -43,19 +43,22 @@ Cc: krzk+dt@kernel.org,
 	marcin.czarnecki@grinn-global.com,
 	b.bilas@grinn-global.com,
 	mateusz.koza@grinn-global.com,
-	andrew@lunn.ch
-Subject: [PATCH v5 0/4] Add support for Grinn GenioSBC-510/700 boards
-Date: Tue,  9 Sep 2025 18:30:46 +0200
-Message-ID: <20250909163052.446723-1-mateusz.koza@grinn-global.com>
+	andrew@lunn.ch,
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: [PATCH v5 2/4] dt-bindings: arm: mediatek: Add grinn,genio-700-sbc
+Date: Tue,  9 Sep 2025 18:30:48 +0200
+Message-ID: <20250909163052.446723-3-mateusz.koza@grinn-global.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250909163052.446723-1-mateusz.koza@grinn-global.com>
+References: <20250909163052.446723-1-mateusz.koza@grinn-global.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-NA-AI-Spam-Probability: 0.47
+X-NA-AI-Spam-Probability: 0.45
 X-NA-AI-Is-Spam: no
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250909_093118_884708_BEBA8ABA 
-X-CRM114-Status: GOOD (  11.31  )
+X-CRM114-CacheID: sfid-20250909_093118_980328_F9DDA594 
+X-CRM114-Status: UNSURE (   8.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,67 +73,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch series adds support for Grinn GenioSBC-510 and GenioSBC-700
-boards based on MediaTek MT8370 and MT8390 SoCs, respectively. It
-includes device tree files for both boards, updates to the device tree
-bindings, and necessary modifications to the Makefile.
+Add device tree bindings support for the Grinn GenioSBC-700, a
+single-board computer based on the MediaTek Genio 700 SoC.
 
-As far as I know, <angelogioacchino.delregno@collabora.com> has access
-to the schematics for these boards, as we've shared them under NDA with
-Collabora.
+More details about the hardware:
+- https://grinn-global.com/products/grinn-geniosom-700
+- https://grinn-global.com/products/grinn-genioboard-edge-ai-sbc
 
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 Signed-off-by: Mateusz Koza <mateusz.koza@grinn-global.com>
 ---
-v2:	Fixed the subject prefixes,
-	Fixed alignment in dts files,
-	Added missing SPDX-License-Identifier,
-	Fixed the ordering in dt-bindings,
-	Dropped redundant info from commit messages,
-	Run checkpatch.pl on the patchset and fixed the issues,
-	as suggested by Krzysztof Kozlowski <krzk@kernel.org>.
+ Documentation/devicetree/bindings/arm/mediatek.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-v3:	Changed eth phy-mode to 'rgmii-id',
-	Changed eth mediatek,tx-delay-ps to 30,
-	as suggested by Andrew Lunn <andrew@lunn.ch>.
-
-v4:	Removed the nodes that are not present in upstream,
-	as suggested by Louis-Alexis <angelogioacchino.delregno@collabora.com>.
-
-	Added default pinctrl to ssusb0,
-	Enabled the scp_cluster node,
-	as suggested by Bartosz Biłas <b.bilas@grinn-global.com>.
-
-v5:	Did NOT move the chasis-type - Error: Properties must precede subnodes,
-	Swapped underscores to commas in regulator names,
-	Reordered properties (generic -> vendor -> status),
-	Dropped the firmware property from the scp_c0 node,
-	Added interrupts-extended to the pmic node,
-	Dropped the mt6359key handle,
-	Added blank spaces before the memory nodes,
-	as suggested by AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> 
----
-
-Bartosz Bilas (1):
-  arm64: dts: mediatek: mt8370-grinn-genio-510-sbc: Add Grinn
-    GenioSBC-510
-
-Mateusz Koza (3):
-  arm64: dts: mediatek: mt8390-genio-700-evk: Add Grinn GenioSBC-700
-  dt-bindings: arm: mediatek: Add grinn,genio-700-sbc
-  dt-bindings: arm: mediatek: Add grinn,genio-510-sbc
-
- .../devicetree/bindings/arm/mediatek.yaml     |   2 +
- arch/arm64/boot/dts/mediatek/Makefile         |   2 +
- .../mediatek/mt8370-grinn-genio-510-sbc.dts   |  20 +
- .../mediatek/mt8390-grinn-genio-700-sbc.dts   |  20 +
- .../dts/mediatek/mt8390-grinn-genio-sbc.dtsi  | 538 ++++++++++++++++++
- .../dts/mediatek/mt8390-grinn-genio-som.dtsi  | 210 +++++++
- 6 files changed, 792 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8370-grinn-genio-510-sbc.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-700-sbc.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-sbc.dtsi
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-som.dtsi
-
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+index 19ed9448c9c2..448241939a75 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+@@ -436,6 +436,7 @@ properties:
+           - const: mediatek,mt8188
+       - items:
+           - enum:
++              - grinn,genio-700-sbc
+               - mediatek,mt8390-evk
+           - const: mediatek,mt8390
+           - const: mediatek,mt8188
 -- 
 2.43.0
 
