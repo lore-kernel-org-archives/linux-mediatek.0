@@ -4,62 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBDC8CAC587
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 06:52:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 255BBCA0FED
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 06:54:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aVXzVq32Zt8oCZmWKuHiiNxSxXQc050w2CwYCQkOBhI=; b=skWuzYvoAqIY8bIoNjKNf26TAZ
-	aEmYdykIbVimMVgJdgJ1+uan5EJ5L+EewvtBxNVQ6beB2BPzSQ2Z/gTRXG4bvZey4xu7hJLMPnQ9E
-	GwaBCe2yDxmPCejsm6eGGVqavxChmMzJ17NQcSjDQHPpSpKQJNOqXgOvlz1KocY6MiIuR1h/PSiOl
-	SS1FYty7BurZGkffl8djq1vLDwBobdxIn6szhxKREYZFnRoWoODXLLJtDcEfafqlr992j5eUDxtdy
-	WvbLIitjcYeWgduHEek8cB6cMY7A2tx9xxi/K8futLHiIfUgeaxAnvw3wmzmt+nMKnnoUqthU6VeN
-	un30xGlg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5ctlRA2i6anPwTb1Lpq1ckuR1ieUigIdEqpTs08/aoY=; b=m7SZPUMNTsUWkPOMlyrGtAK0ou
+	dGdQpn+X4/p2nipul5E0h3ks55SlJKb1pDkLp8JsEKx1ldDmo/j25Jv8OLJhJegnvzZNRzQL0guU7
+	8Q9mfIKzzwHikgW7OCnuacUp3TZe7KyQM0bWmczRs3WME3VCaqlJgsq8P7p9DJONn1CC1Jy+DRsH7
+	vUhwxDf5NllJ2lOuKbvbmzChaRa0Zj4lcFesm0c3dL8k+/ybbs1l9Ha2CKIZcj26J871H/TD5UIpZ
+	MCpSB2aT/Gqv3a+HigKpENRvQPGg0jKObsaXSFf0+mj2YkVuTXQghvBcVlV8HxXH4/X4fmpjZl6bZ
+	RfKjtRSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvsD7-00000004r65-3SOj;
-	Tue, 09 Sep 2025 06:52:13 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uvsEo-00000004tC0-2PkZ;
+	Tue, 09 Sep 2025 06:53:58 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvkAp-00000002gVI-13l3;
-	Mon, 08 Sep 2025 22:17:20 +0000
+	id 1uvm5L-00000003CWr-2hu9;
+	Tue, 09 Sep 2025 00:19:47 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 44127438A6;
-	Mon,  8 Sep 2025 22:17:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B1FB7C4CEF1;
-	Mon,  8 Sep 2025 22:17:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1757369838;
-	bh=yH92uhvD40IJiQljLDeAcC7HN4DLj9MU91AIC0wuXmY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Avz78ey87oevm4M2gMpO+1tOn0ld7UkfYqxtJy9ed6faDlUdFsykj5Kr9XVw8mVSO
-	 syCuPLQJB7N94+2uAKkRuD/y+tYQkaBwQ4hXwNQ9L0JAqvwUWnZAS9oDv79cZ5c/Jv
-	 +srzb6S9yBh64stcaGUA+QE3NyBwnl50OQIg0T0KAbgkrUmiG5GBLeogNC7GHLLVRY
-	 IhdPh/+lwx7M80rzjGYUQVMR/B7cK/9OHnh82gkYCXDhZcU1OxYSnUV8zSdqlGBLmD
-	 Bu70SCcANS8ft+GJHT1IP0u1w0T+6FkmQLZWIg4xlbsXGFKnvXyf3y93xb0UdUP4s2
-	 Pbt0/DApi0/hg==
-Date: Tue, 9 Sep 2025 00:17:14 +0200
-From: Andi Shyti <andi.shyti@kernel.org>
-To: Leilk Liu <leilk.liu@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Qii Wang <qii.wang@mediatek.com>, Wolfram Sang <wsa@kernel.org>, 
-	Liguo Zhang <liguo.zhang@mediatek.com>, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com, Chen-Yu Tsai <wenst@chromium.org>
-Subject: Re: [PATCH v2] i2c: mediatek: fix potential incorrect use of
- I2C_MASTER_WRRD
-Message-ID: <zddsit53dwqo27buoxaolgpzvvvd6uvwcyzughv7qfvwg64ces@yrlrur5dkf45>
-References: <20250906082652.16864-1-leilk.liu@mediatek.com>
+	by tor.source.kernel.org (Postfix) with ESMTP id B599960140;
+	Tue,  9 Sep 2025 00:19:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 45D2CC4CEF1;
+	Tue,  9 Sep 2025 00:19:46 +0000 (UTC)
+Received: by venus (Postfix, from userid 1000)
+	id 3AEE318081B; Tue, 09 Sep 2025 02:19:44 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: =?utf-8?q?Pali_Roh=C3=A1r?= <pali@kernel.org>, 
+ Sebastian Reichel <sre@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Cc: linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org, 
+ linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <2280ca741ef36fe9ed26b8079b91a8e5dfd669fc.1757360105.git.christophe.jaillet@wanadoo.fr>
+References: <2280ca741ef36fe9ed26b8079b91a8e5dfd669fc.1757360105.git.christophe.jaillet@wanadoo.fr>
+Subject: Re: [PATCH] power: supply: Use devm_mutex_init()
+Message-Id: <175737718422.13878.10547263868458184966.b4-ty@collabora.com>
+Date: Tue, 09 Sep 2025 02:19:44 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250906082652.16864-1-leilk.liu@mediatek.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250908_151719_310562_3F54AE5F 
-X-CRM114-Status: GOOD (  18.90  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.14.2
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,75 +65,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Leilk,
 
-> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-> index ab456c3717db..dee40704825c 100644
-> --- a/drivers/i2c/busses/i2c-mt65xx.c
-> +++ b/drivers/i2c/busses/i2c-mt65xx.c
-> @@ -1243,6 +1243,7 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
->  {
->  	int ret;
->  	int left_num = num;
-> +	bool write_then_read_en = false;
->  	struct mtk_i2c *i2c = i2c_get_adapdata(adap);
->  
->  	ret = clk_bulk_enable(I2C_MT65XX_CLK_MAX, i2c->clocks);
-> @@ -1256,6 +1257,7 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
->  		if (!(msgs[0].flags & I2C_M_RD) && (msgs[1].flags & I2C_M_RD) &&
->  		    msgs[0].addr == msgs[1].addr) {
->  			i2c->auto_restart = 0;
-> +			write_then_read_en = true;
->  		}
->  	}
->  
-> @@ -1280,12 +1282,10 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
->  		else
->  			i2c->op = I2C_MASTER_WR;
->  
-> -		if (!i2c->auto_restart) {
-> -			if (num > 1) {
-> -				/* combined two messages into one transaction */
-> -				i2c->op = I2C_MASTER_WRRD;
-> -				left_num--;
-> -			}
-> +		if (write_then_read_en) {
-> +			/* combined two messages into one transaction */
-> +			i2c->op = I2C_MASTER_WRRD;
-
-i2c doesn't change for the whole loop so that it can be set only
-once outside the loop instead of setting it everytime.
-
-Something like this:
-
-	if (i2c->op == I2C_MASTER_WRRD)
-		left_num--;
-	else if (msgs->flags & I2C_M_RD)
-		...
-	else
-
-looks cleaner to me and we save the extra flag. Am I missing
-anything?
-
-Andi
-
-> +			left_num--;
->  		}
->  
->  		/* always use DMA mode. */
-> @@ -1293,7 +1293,10 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
->  		if (ret < 0)
->  			goto err_exit;
->  
-> -		msgs++;
-> +		if (i2c->op == I2C_MASTER_WRRD)
-> +			msgs += 2;
-> +		else
-> +			msgs++;
->  	}
->  	/* the return value is number of executed messages */
->  	ret = num;
-> -- 
-> 2.46.0
+On Mon, 08 Sep 2025 21:35:28 +0200, Christophe JAILLET wrote:
+> Use devm_mutex_init() instead of hand-writing it.
 > 
+> This saves some LoC, improves readability and saves some space in the
+> generated .o file.
+> 
+> As an example:
+> Before:
+> ======
+>    text	   data	    bss	    dec	    hex	filename
+>   35803	   9352	    384	  45539	   b1e3	drivers/power/supply/rt9467-charger.o
+> 
+> [...]
+
+Applied, thanks!
+
+[1/1] power: supply: Use devm_mutex_init()
+      commit: 7d715345a86941b9e6c8e520b40078692baed4a4
+
+Best regards,
+-- 
+Sebastian Reichel <sebastian.reichel@collabora.com>
+
 
