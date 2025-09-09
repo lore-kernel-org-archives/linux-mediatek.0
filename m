@@ -4,84 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FEC4CAC58C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 16:02:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F781CAC58E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 16:02:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nbcerATz7q19yBkJf35/2/GZ8hE2xuowfEYu+de9/0Y=; b=JBLgZNxpx92B/MjA6kauAd5lWz
-	xJ+bf+1F43xljUfwjz+/YB4MqucJGD4cyEakUawYMkU7jZ2o/vItdFW2+XP0ACWeu5oUn4xXBwDDe
-	IxOfrHs4/NHxUvQLhmcIzek7msaZYqfz38p8nMdDyCyiUTPDpm/tBpDb9lAjBfdjIK/VIsALy2e3U
-	iFntl491M/7ao+8sqPSvs0YKFb3GGHXdU69chqxqYjzWuGIKYOts5SZ7HbqbdJaPQQ907wJ3ya6Me
-	kiBbDHdIAaEBEdHYFivoPrQnU2i4KT40kw+yrRArbd6Kt0WenNDS5FR/d1SVGxR73zdTIBmIYZkYN
-	YKloKBhg==;
+	bh=9rFL+r1YKn0vpD5aAkD3QIB0bodgwk/WBTAvgFy59FM=; b=s3k7G1hNUP5nAEG6YziwlT3dp8
+	DXvhs/j4hDcovN7vlqfp/Zcw4U70+N5n0R/nxYfmno34nKTvSH1+mZoUBv3Dm1EtGixOsd+X8WcdM
+	+jKJTWGKC9gAKuc3SSzVQ1aElp0Z3LXh4lRB5qgea+Y6ceSHTCYSQq6dqvTuKzFgxcLVDWB7hQ5bT
+	DBs7mM/gD4PGiLAIPDjRQEm0Zov8Cr/huJl5BZiYCzoftBFn9xfFCdiKY1WYhNzPfu8X4QQI1jX0N
+	oHkvVh+feV0j2HBaFvxn7W3vZKRVRwjPaTw60R8z64jqymrMIY+zSqzPLL8NXZ9ZgF7aQK5oCBgoz
+	6uzZT+RA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uw0nP-00000008NSh-4AHp;
-	Tue, 09 Sep 2025 16:02:16 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1uw0nR-00000008NV4-269n;
+	Tue, 09 Sep 2025 16:02:17 +0000
+Received: from mail-wr1-f47.google.com ([209.85.221.47])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvxah-0000000779I-1e2T;
-	Tue, 09 Sep 2025 12:36:56 +0000
-Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-45dd7b15a64so36820315e9.0;
-        Tue, 09 Sep 2025 05:36:54 -0700 (PDT)
+	id 1uvxhk-000000079cg-48r7;
+	Tue, 09 Sep 2025 12:44:14 +0000
+Received: by mail-wr1-f47.google.com with SMTP id ffacd0b85a97d-3e014bf8ec1so3787814f8f.1;
+        Tue, 09 Sep 2025 05:44:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1757421413; x=1758026213; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1757421851; x=1758026651; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=nbcerATz7q19yBkJf35/2/GZ8hE2xuowfEYu+de9/0Y=;
-        b=MlRnVp0fPP08KHGMJ4fMWedTqUaf5Y9eSSw59iM4+5Erj5ghSDCNGww5zVxnOED2o8
-         3+0VymiRXGyXOnm/GKSCG4/W4KDyQdnAFG5oir7rMTdw34t1KvadkUTuVjwAACd4L/L6
-         9hsEWorBQr5yDO0bP2bI0JQf+uJKXmg6bu10TsUNIG9yuEvzOsE4L8YDC1LL9WOBeY61
-         yZFNgFPmEt1xq+Zj8LkyEWeoLdw0A+WFgjD3KrY83zUBV5U04+UIK6FB1XoggzaC0Xy/
-         jjeDxPGEAtxwGVzNCfc1wwHI6ByCsUjS7zZD+Tn+ohLfIxwA69tiEuUN5POI0MudW9Jl
-         BrOA==
+        bh=9rFL+r1YKn0vpD5aAkD3QIB0bodgwk/WBTAvgFy59FM=;
+        b=c9RUCCb93IEaFbYLRXnxPmQrgykcSJm5RSMRGV3OEfLwEeQAhJYvoeqrMbg7JVObbQ
+         vhT2Y23ON2tnBti/2j/xC2/FvckFkuE89Gm2SKqgCoOxNU6p46OVjdHnNKl4qI9I5KNj
+         kEZ0P20s+9blctph45i83Kx1f5R2zFgwoAYJJkJmpQK5AEDpZ+PL8vQpC/3/Ufz8fsOz
+         ctcgPt31CphfPMXx/G2G8aAuo7MjqKZPWY0pWpDvVYO8aDREjWLQxb9//Erev8U+4Kn7
+         8rwE7ujFAMoYJ/ZSFtfc8qXkv79dOSpECmZVk40Eiir383UeK1YbMshjkhXmR9cn5l5P
+         lb0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757421413; x=1758026213;
+        d=1e100.net; s=20230601; t=1757421851; x=1758026651;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=nbcerATz7q19yBkJf35/2/GZ8hE2xuowfEYu+de9/0Y=;
-        b=Khh5HE3yTQccAk+egSqs5JP6tI4jzwmDgzAlcHwMHN7777SK7D8KwLss6yCFLFcYe1
-         YN62iJGKXgSxfRnZ7qZClr9YkQLv+tZ7gRxnjEPzMdK7LKTrq9H03Zim//Ct2IuOfQ62
-         z5dnsb7yDF4czhmUEoDu5277bDaWVNf0JT2kAMBt2nXoTjLcvlyDertWQ9g9ye4e86oq
-         +4vTv+cp/YuFb2ItPjVkEY6e/yGDCJUbAB43Dib6tEukMcUNZggmhiRVNSaP3reUzcQx
-         QZLkE4Jfl+U6l10jh7CHl0h6vP7uGRP6ImE0o6L9PfG9A01KEVHgO1wjuBrz+M6RGf57
-         kWiA==
-X-Forwarded-Encrypted: i=1; AJvYcCUV4qQYv5b3vSRXDJfgzNOWFEJqZP5J5XFosPgKMfOa3FXwwcaPLkZwj8K0xrvcR42huDaA1L0n6uGcbA+MUK0W@lists.infradead.org, AJvYcCUlWstNdLfT9MYvatKIMDfqh+n0U7UybRj7vqecue9o/MOWDhgK+PT8Jrks3OURnwxqr3xbfAvAyf7CvJeA0GA=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yyy91caeGEX8qnAZIUSIk4AwqAcR/eF2HjdG7xbr54LG8t/pPTZ
-	UQwsUHHFNrX4TNMwWZRq9j6Ro3GLHQLTWPQUjnVZ3tBAi925l8rV7YqgU9Astw==
-X-Gm-Gg: ASbGncv7HwsCjeCm58cSOn/5SMLpDg95B4DwomLnT+pfmK7QkrqhkC2MJQntk96s8XQ
-	zBl6VUXzr1B+DrBYvY88+A0USiqtcVHCKJIaaUhKlFDdmp5Terp5gP38KMpUmMNsJb1cCndB2Ax
-	XdowaISh1Zas62O5BHM54GcAXNhcMXaBmc1PK/aMc5dXURhqui8pUCCWrtnTYOcTRNzmHD8JiSW
-	0nmkXuzJuAQFFwvi453xn28jUi5KLSCBiXGXa5Q/LSxYrsoQZ0vxWcHI63VrsvdR1FNrPv6Nepr
-	uKPTx/dEIqXIGDLcAK9wW9YSJgrvrDrVueqLszS/D3uF9doDF9qQPczBjbU8ekv+t8w1VUTqIAH
-	RyZCgQT/e8wD2QyYEYuFAY5MB5StvemYkvgEan/1TKQ==
-X-Google-Smtp-Source: AGHT+IEOrICf6dJFeY0zHSniT8Jtaqtd61QsV62lKDpe6ZR0vlPJtkX7CquNyOygzd7DL/QMim2koA==
-X-Received: by 2002:a05:600c:458f:b0:45d:98be:eea6 with SMTP id 5b1f17b1804b1-45dde1a8350mr113312805e9.3.1757421413379;
-        Tue, 09 Sep 2025 05:36:53 -0700 (PDT)
+        bh=9rFL+r1YKn0vpD5aAkD3QIB0bodgwk/WBTAvgFy59FM=;
+        b=UaaXczhybqZiwFvVmZJDjCusjorovRBe01BmTeT+3J1NqgBOeBaU+8YzhphNFKV/Nx
+         Ne/cwzK1Eq7pM0I4Zn2+IXMt55EIuaFzHgPRiNDTHcliQqA45DbmMhh2bOxzBCEnyVbF
+         kSR2btuoCNs07re2T3f3MpgAtmrwIRjrO5DeVpD48mUlyPgO7Xsi59JKFvmVE5LWLFfP
+         BM/1PZdRj/iEJfQtwz7magw6tNCJyQp1dkrZeaqKX3SDvVXCnbgwjkoLpQZJooRdEqSa
+         2Fy/fqxnm6NDKyfE7Awpki59ZuTIpTub9tb3LfUiHgX4t+WcnfoiZ4pW4CmAVtdH/hXS
+         56kg==
+X-Forwarded-Encrypted: i=1; AJvYcCX+52athyDYjbwgp8qUKBjLvQvSnsuNofJVlpaJX8lu0EHBx+ylWtpGWyMjZWpt3i3PErCfxV1XRdoroXTsO2nU@lists.infradead.org, AJvYcCXbgoRqcixveGth7dhC/c26y8dnuICZtefsfNWNBG0EokkaGReSgT8q0gvXbfeKwNCQVoHhfn2XPu7OU5KyiUA=@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywnn6kBFvVTF/cdwSuZg3vDLZ+gvn8FsXrK28FcI3QGB/6dYujx
+	XxSxTAEtgYg6j11Q+Q3Lr8E7mtczq944ekAE9cHZBIQAXF0C5GP5o1Uf+OG5TQ==
+X-Gm-Gg: ASbGncsLjgGBtUULw4zRS8VMjygttb5C6ENSoq6I/yHS3zu5K+ZcdixWrxam6+TjwmD
+	3lCQ2boLXjnyGjJxLaC0fEwsKvGAM2pYNj2x/HzW0IXwHXn+qchdLhTrbT0pj6FTUDUo+c2uHkp
+	6yQaxmg9ykk1g8oP22eyYH0thdRIAAWW6sf4HF6QJHKY/1gFh4lbCJwnVvjGAh+92TrDL7jCyrP
+	PHnpdoD7OfQjt1i30WLKWIFN2YUuHrvVDAV8iFo+8tEpDP8dQ/dXUxPnTWL5GTQxP9i73/VtprY
+	VLETBc4oSutmpH8Dk66JvHntUJ+rLW8b9l3UxM67p4q5v1aEeXWRv97ofOXZPJEAChO8Ydy03ic
+	7PooSkJp8dR3gX9uSdHnF9+st4ywiV9I=
+X-Google-Smtp-Source: AGHT+IECKaIItMJhCB5fQPHsblBR/qDAMst2rQYDXJkJFXWQA4pISJ09+ACkbU0uH4JhyolNWy5pkg==
+X-Received: by 2002:a5d:5d05:0:b0:3e1:da2f:af23 with SMTP id ffacd0b85a97d-3e636d8fb4fmr8567851f8f.9.1757421850822;
+        Tue, 09 Sep 2025 05:44:10 -0700 (PDT)
 Received: from [192.168.2.177] ([91.116.220.47])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45dd0350e80sm233690705e9.22.2025.09.09.05.36.51
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3e752238820sm2534337f8f.35.2025.09.09.05.44.09
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 09 Sep 2025 05:36:52 -0700 (PDT)
-Message-ID: <a908a354-8835-4e28-ac06-ec6075ba011c@gmail.com>
-Date: Tue, 9 Sep 2025 14:36:49 +0200
+        Tue, 09 Sep 2025 05:44:09 -0700 (PDT)
+Message-ID: <4d6fcd11-a724-44ec-a183-cd1afe959bed@gmail.com>
+Date: Tue, 9 Sep 2025 14:44:06 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8195: Remove suspend-breaking
- reset from pcie0
-To: Guoqing Jiang <guoqing.jiang@canonical.com>, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, jianjun.wang@mediatek.com,
- tinghan.shen@mediatek.com
-Cc: macpaul.lin@mediatek.com, devicetree@vger.kernel.org,
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8395-nio-12l: Enable UFS
+To: Julien Massot <julien.massot@collabora.com>, kernel@collabora.com,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20250721095959.57703-1-guoqing.jiang@canonical.com>
+References: <20250905-radxa-nio-12l-ufs-v1-1-e2468bfd2c69@collabora.com>
 Content-Language: en-US, ca-ES, es-ES
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
@@ -127,12 +126,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20250721095959.57703-1-guoqing.jiang@canonical.com>
+In-Reply-To: <20250905-radxa-nio-12l-ufs-v1-1-e2468bfd2c69@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250909_053655_436835_EBAACE56 
-X-CRM114-Status: GOOD (  14.46  )
+X-CRM114-CacheID: sfid-20250909_054413_051818_14311728 
+X-CRM114-Status: GOOD (  14.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -147,42 +146,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 21/07/2025 11:59, Guoqing Jiang wrote:
-> When test suspend resume with 6.8 based kernel, system can't resume
-> and I got below error which can be also reproduced with 6.16 rc6+
-> kernel.
-> 
-> mtk-pcie-gen3 112f0000.pcie: PCIe link down, current LTSSM state: detect.quiet (0x0)
-> mtk-pcie-gen3 112f0000.pcie: PM: dpm_run_callback(): genpd_resume_noirq returns -110
-> mtk-pcie-gen3 112f0000.pcie: PM: failed to resume noirq: error -110
-> 
-> After investigation, looks pcie0 has the same problem as pcie1 as
-> decribed in commit 3d7fdd8e38aa ("arm64: dts: mediatek: mt8195:
-> Remove suspend-breaking reset from pcie1").
-> 
-> Fixes: ecc0af6a3fe6 ("arm64: dts: mt8195: Add pcie and pcie phy nodes")
-> Signed-off-by: Guoqing Jiang <guoqing.jiang@canonical.com>
 
-Queued, thanks!
+
+On 05/09/2025 15:21, Julien Massot wrote:
+> UFS is the primary storage for the Radxa NIO 12L. Enable it
+> now that the ufshci and ufsphy nodes are available in the
+> common mt8195 dtsi.
+> 
+> Signed-off-by: Julien Massot <julien.massot@collabora.com>
+
+Queued, thanks.
+
 Matthias
 
 > ---
->   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 3 ---
->   1 file changed, 3 deletions(-)
+>   arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts | 10 ++++++++++
+>   1 file changed, 10 insertions(+)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> index dd065b1bf94a..50cf01452208 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> @@ -1563,9 +1563,6 @@ pcie0: pcie@112f0000 {
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
+> index 329c60cc6a6be0b4be8c0b8bb033b32d35302804..4cbd78c126f6b56f1833d220f7a7fbc7e4320cbb 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
+> @@ -990,6 +990,16 @@ &uart1 {
+>   	status = "okay";
+>   };
 >   
->   			power-domains = <&spm MT8195_POWER_DOMAIN_PCIE_MAC_P0>;
->   
-> -			resets = <&infracfg_ao MT8195_INFRA_RST2_PCIE_P0_SWRST>;
-> -			reset-names = "mac";
-> -
->   			#interrupt-cells = <1>;
->   			interrupt-map-mask = <0 0 0 7>;
->   			interrupt-map = <0 0 0 1 &pcie_intc0 0>,
+> +&ufshci {
+> +	vcc-supply = <&mt6359_vemc_1_ldo_reg>;
+> +	vccq2-supply = <&mt6359_vufs_ldo_reg>;
+> +	status = "okay";
+> +};
+> +
+> +&ufsphy {
+> +	status = "okay";
+> +};
+> +
+>   &ssusb0 {
+>   	pinctrl-names = "default";
+>   	pinctrl-0 = <&usb3_port0_pins>;
+> 
+> ---
+> base-commit: 6c68f4c0a147c025ae0b25fab688c7c47964a02f
+> change-id: 20250905-radxa-nio-12l-ufs-c817a864fb42
+> 
+> Best regards,
 
 
