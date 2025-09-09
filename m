@@ -4,69 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D99AACAC58E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 16:42:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE0FDCAC583
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 16:42:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=nfuysb1r/89+ZrV1E85qpQuYbpPmf4DR4+ysy9HhnX0=; b=1cdlcx6zziPeRt
-	gDb2+OdqvR/NOUryw+eGboTw2BkaZ7hX69OEHczmyqq19XtC25M6xUBWwpLmxsZL1SEeJlQr/PClh
-	qiGZILfJ67WuE/sSl6ZEymGjyqsj9Go+fy+kxsGPE1AamAuI2yondOyNvVuckv4A5pF6Z/9Q6CTA/
-	FNfISCcVfF5j1ocHco9VyH/Ow042/QPAG5lqlHbOADpYBt493aiETcolnbtPeUntEMVj9M7EAsz/7
-	6aAB3yThpiMKN2leOM0mgkSAG4M4jRwxaiF2LBck01s7XXyv8m8Jpr1oRSGHnQ4lEptu6th70P4Pq
-	dpqAybV2V7nRwkFvtn7Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2ZbpXEUxbf5i4kX1LWSahhezFSeJsNj0DV486apUphg=; b=OQNpbCjRle8io+jheSZMuevGJe
+	sPr1fvnT8AIc238VXMN58LJRZdYLHiJYYbuKSzxw3SlDNHAmijku9Gmncb25bnbY9YdqoMUCDjYNg
+	zKV2Eyv5ZZKKnuc78RS0eNxCSrJASUWcjcXTARd/4eE5e8ymQWzmwFLFL9nJSUpEYi9IFsJMP2Vld
+	cotsG3VN60YcAQk7+hMMBnTHAJO/VAoGj6VwLYHHcuFnqNJYeRpAvZ3MmbUmmL+x2CVcmkU9QlgY7
+	haHwYQcNsSfi2YfSotmcJXxGTee+wNm298Z6ZrSqceUJFwOpy+yZmDO5IHZfTGm357dzHC3Dd60vJ
+	Rzg58wug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uw1Q8-00000008age-20Nd;
-	Tue, 09 Sep 2025 16:42:16 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1uw1Q5-00000008ab0-3tML;
+	Tue, 09 Sep 2025 16:42:13 +0000
+Received: from woodpecker.gentoo.org ([140.211.166.183] helo=smtp.gentoo.org)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvuui-000000065s2-1fwT;
-	Tue, 09 Sep 2025 09:45:25 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7E9D741749;
-	Tue,  9 Sep 2025 09:45:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D8B2CC4CEF4;
-	Tue,  9 Sep 2025 09:45:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1757411123;
-	bh=6Ia94TRSZA8SsqhhVryqysgdQbFx10IztQi8lM9eEWY=;
-	h=From:Subject:Date:To:Cc:From;
-	b=NjKhMMDYd72PhQgDOxt8i8Ro/KBVVDDBON28EkMgi4bndcvon6TjRPk7e2a3HD6Cp
-	 UXvygD+ZWGOU4z+QrHMRbp8QS3s9SJeaJv/uqaYLyCGVuuUeKJvf3E0vsrYIyhHsFK
-	 EZv4PdYAif1g+bmIk+CGVzm4cfyJZPiUHOdGEin33SsrO77GKvLHqh+iwZy7ozli5k
-	 1YnnwAvb0RTpzPqcFWhrRuIBuvpbVt6tx+z0bW1yMM8ksafyZKdWhSWQlDDCuPvlQ7
-	 Q7rrGh8kZVPS6sgxAOu9tpqlJvt5DDuOIaEZ8kL85x3SpYS7K6qZxFXP1V4GdE/rtE
-	 8kY74Bxy0F+og==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Subject: [PATCH mt76 v5 00/16] wifi: mt76: mt7996: Decouple RRO logic from
- WED support
-Date: Tue, 09 Sep 2025 11:45:08 +0200
-Message-Id: <20250909-mt7996-rro-rework-v5-0-7d66f6eb7795@kernel.org>
+	id 1uvupa-0000000637G-2KFi;
+	Tue, 09 Sep 2025 09:40:10 +0000
+Received: from localhost (unknown [116.232.18.168])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: dlan)
+	by smtp.gentoo.org (Postfix) with ESMTPSA id DECA3340EC3;
+	Tue, 09 Sep 2025 09:40:03 +0000 (UTC)
+Date: Tue, 9 Sep 2025 17:39:58 +0800
+From: Yixun Lan <dlan@gentoo.org>
+To: Bartosz Golaszewski <brgl@bgdev.pl>
+Cc: Linus Walleij <linus.walleij@linaro.org>,
+	Keguang Zhang <keguang.zhang@gmail.com>,
+	Alban Bedel <albeu@free.fr>, Doug Berger <opendmb@gmail.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Samuel Holland <samuel.holland@sifive.com>,
+	Andy Shevchenko <andy@kernel.org>, linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
+	spacemit@lists.linux.dev,
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+Subject: Re: [PATCH 12/15] gpio: spacemit-k1: use new generic GPIO chip API
+Message-ID: <20250909093958-GYA1207638@gentoo.org>
+References: <20250909-gpio-mmio-gpio-conv-part4-v1-0-9f723dc3524a@linaro.org>
+ <20250909-gpio-mmio-gpio-conv-part4-v1-12-9f723dc3524a@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIACT3v2gC/33NQQrCMBCF4atI1kaSaZpmXHkPcaHNRIPayFSqI
- r27sRsrFpf/wHzvKVriSK1Yzp6CqYttTE2Ocj4T9WHb7ElGn1uAglI50PJ8rRCtZE6S6Zb4KMG
- gqolUUN6J/HdhCvE+mOtN7kNsr4kfw0Sn39d/WqelkrZ2pqq2Hi2G1ZG4odMi8V68uQ4+BKpJA
- jKhA+YJuyu11z9EMSZgiigy4YLThUOFJdIPYcaEmSJMJqD2qKkCQG+/iL7vX0/n7/R8AQAA
-X-Change-ID: 20250821-mt7996-rro-rework-2490cee0f0d8
-To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Sujuan Chen <sujuan.chen@mediatek.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>, Bo Jiao <Bo.Jiao@mediatek.com>
-Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Rex Lu <rex.lu@mediatek.com>, 
- Benjamin Lin <benjamin-jw.lin@mediatek.com>
-X-Mailer: b4 0.14.2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250909-gpio-mmio-gpio-conv-part4-v1-12-9f723dc3524a@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250909_024524_519901_8EDD2D3C 
-X-CRM114-Status: GOOD (  10.20  )
+X-CRM114-CacheID: sfid-20250909_024006_990903_DE38DCA8 
+X-CRM114-Status: GOOD (  21.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,74 +76,116 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Decouple RRO logic (v3.0 and v3.1) from WED support in MT7996 driver in
-order to reuse it when WED module is not available.
-Introduce WED offload support for MT7992 chipset in MT7996 driver.
 
----
-Changes in v5:
-- Fix more bitmap usage in DMA descriptos data.
-- Fix compilation warning.
-- Link to v4: https://lore.kernel.org/r/20250904-mt7996-rro-rework-v4-0-2cd91e7229d6@kernel.org
+On 11:15 Tue 09 Sep     , Bartosz Golaszewski wrote:
+> From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+> 
+> Convert the driver to using the new generic GPIO chip interfaces from
+> linux/gpio/generic.h.
+> 
+> Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+Thanks for converting this
 
-Changes in v4:
-- Do not use bitmap for DMA descriptos data.
-- Link to v3: https://lore.kernel.org/r/20250902-mt7996-rro-rework-v3-0-8f813890959e@kernel.org
+Reviewed-by: Yixun Lan <dlan@gentoo.org>
 
-Changes in v3:
-- Fix compilation warnings
-- Rebase on top of mt76 main branch
-- Split patch 4/14
-- Link to v2: https://lore.kernel.org/r/20250901-mt7996-rro-rework-v2-0-1f95086b51d1@kernel.org
+> ---
+>  drivers/gpio/gpio-spacemit-k1.c | 28 ++++++++++++++++++++--------
+>  1 file changed, 20 insertions(+), 8 deletions(-)
+> 
+> diff --git a/drivers/gpio/gpio-spacemit-k1.c b/drivers/gpio/gpio-spacemit-k1.c
+> index 3cc75c701ec40194e602b80d3f96f23204ce3b4d..9e57f43d3d13ad28fcd3327ecdc3f359691a44c9 100644
+> --- a/drivers/gpio/gpio-spacemit-k1.c
+> +++ b/drivers/gpio/gpio-spacemit-k1.c
+> @@ -6,6 +6,7 @@
+>  
+>  #include <linux/clk.h>
+>  #include <linux/gpio/driver.h>
+> +#include <linux/gpio/generic.h>
+>  #include <linux/init.h>
+>  #include <linux/interrupt.h>
+>  #include <linux/io.h>
+> @@ -38,7 +39,7 @@
+>  struct spacemit_gpio;
+>  
+>  struct spacemit_gpio_bank {
+> -	struct gpio_chip gc;
+> +	struct gpio_generic_chip chip;
+>  	struct spacemit_gpio *sg;
+>  	void __iomem *base;
+>  	u32 irq_mask;
+> @@ -72,7 +73,7 @@ static irqreturn_t spacemit_gpio_irq_handler(int irq, void *dev_id)
+>  		return IRQ_NONE;
+>  
+>  	for_each_set_bit(n, &pending, BITS_PER_LONG)
+> -		handle_nested_irq(irq_find_mapping(gb->gc.irq.domain, n));
+> +		handle_nested_irq(irq_find_mapping(gb->chip.gc.irq.domain, n));
+>  
+>  	return IRQ_HANDLED;
+>  }
+> @@ -143,7 +144,7 @@ static void spacemit_gpio_irq_print_chip(struct irq_data *data, struct seq_file
+>  {
+>  	struct spacemit_gpio_bank *gb = irq_data_get_irq_chip_data(data);
+>  
+> -	seq_printf(p, "%s-%d", dev_name(gb->gc.parent), spacemit_gpio_bank_index(gb));
+> +	seq_printf(p, "%s-%d", dev_name(gb->chip.gc.parent), spacemit_gpio_bank_index(gb));
+>  }
+>  
+>  static struct irq_chip spacemit_gpio_chip = {
+> @@ -165,7 +166,7 @@ static bool spacemit_of_node_instance_match(struct gpio_chip *gc, unsigned int i
+>  	if (i >= SPACEMIT_NR_BANKS)
+>  		return false;
+>  
+> -	return (gc == &sg->sgb[i].gc);
+> +	return (gc == &sg->sgb[i].chip.gc);
+>  }
+>  
+>  static int spacemit_gpio_add_bank(struct spacemit_gpio *sg,
+> @@ -173,7 +174,8 @@ static int spacemit_gpio_add_bank(struct spacemit_gpio *sg,
+>  				  int index, int irq)
+>  {
+>  	struct spacemit_gpio_bank *gb = &sg->sgb[index];
+> -	struct gpio_chip *gc = &gb->gc;
+> +	struct gpio_generic_chip_config config;
+> +	struct gpio_chip *gc = &gb->chip.gc;
+>  	struct device *dev = sg->dev;
+>  	struct gpio_irq_chip *girq;
+>  	void __iomem *dat, *set, *clr, *dirin, *dirout;
+> @@ -187,9 +189,19 @@ static int spacemit_gpio_add_bank(struct spacemit_gpio *sg,
+>  	dirin	= gb->base + SPACEMIT_GCDR;
+>  	dirout	= gb->base + SPACEMIT_GSDR;
+>  
+> +	config = (typeof(config)){
+> +		.dev = dev,
+> +		.sz = 4,
+> +		.dat = dat,
+> +		.set = set,
+> +		.clr = clr,
+> +		.dirout = dirout,
+> +		.dirin = dirin,
+> +		.flags = BGPIOF_UNREADABLE_REG_SET | BGPIOF_UNREADABLE_REG_DIR,
+> +	};
+> +
+>  	/* This registers 32 GPIO lines per bank */
+> -	ret = bgpio_init(gc, dev, 4, dat, set, clr, dirout, dirin,
+> -			 BGPIOF_UNREADABLE_REG_SET | BGPIOF_UNREADABLE_REG_DIR);
+> +	ret = gpio_generic_chip_init(&gb->chip, &config);
+>  	if (ret)
+>  		return dev_err_probe(dev, ret, "failed to init gpio chip\n");
+>  
+> @@ -221,7 +233,7 @@ static int spacemit_gpio_add_bank(struct spacemit_gpio *sg,
+>  	ret = devm_request_threaded_irq(dev, irq, NULL,
+>  					spacemit_gpio_irq_handler,
+>  					IRQF_ONESHOT | IRQF_SHARED,
+> -					gb->gc.label, gb);
+> +					gb->chip.gc.label, gb);
+>  	if (ret < 0)
+>  		return dev_err_probe(dev, ret, "failed to register IRQ\n");
+>  
+> 
+> -- 
+> 2.48.1
+> 
 
-Changes in v2:
-- Fix SER when Wireless Ethernet Dispatcher (WED) is disabled
-- Rebase on top of mt76 main branch
-- Link to v1: https://lore.kernel.org/r/20250821-mt7996-rro-rework-v1-0-6c8477ad969f@kernel.org
-
----
-Lorenzo Bianconi (8):
-      wifi: mt76: Add reset_idx to reset_q mt76_queue_ops signature.
-      wifi: mt76: Remove q->ndesc check in mt76_dma_rx_fill()
-      wifi: mt76: Do not always enable NAPIs for WED RRO queues
-      wifi: mt76: mt7996: Fix tx-queues initialization for second phy on mt7996
-      wifi: mt76: mt7996: Fix RX packets configuration for primary WED device
-      wifi: mt76: mt7996: Convert mt7996_wed_rro_addr to LE
-      wifi: mt76: Add rx_queue_init callback
-      wifi: mt76: Add mt76_dma_get_rxdmad_c_buf utility routione
-
-Rex Lu (8):
-      wifi: mt76: Differentiate between RRO data and RRO MSDU queues
-      wifi: mt76: mt7996: Initial DMA configuration for MT7992 WED support
-      wifi: mt76: mt7996: Enable HW RRO for MT7992 chipset
-      wifi: mt76: mt7996: Introduce the capability to reset MT7992 WED device
-      wifi: mt76: mt7996: Enable WED for MT7992 chipset
-      wifi: mt76: mt7996: Introduce RRO MSDU callbacks
-      wifi: mt76: mt7996: Decouple RRO logic from WED support
-      wifi: mt76: mt7996: Add SW path for HW-RRO v3.1
-
- drivers/net/wireless/mediatek/mt76/dma.c           | 226 +++++++++---
- drivers/net/wireless/mediatek/mt76/dma.h           |  29 +-
- drivers/net/wireless/mediatek/mt76/mt76.h          |  54 ++-
- drivers/net/wireless/mediatek/mt76/mt7915/dma.c    |   4 +-
- drivers/net/wireless/mediatek/mt76/mt792x_dma.c    |   6 +-
- drivers/net/wireless/mediatek/mt76/mt7996/dma.c    | 326 +++++++++++++----
- drivers/net/wireless/mediatek/mt76/mt7996/init.c   | 318 ++++++++++++-----
- drivers/net/wireless/mediatek/mt76/mt7996/mac.c    | 387 ++++++++++++++++++++-
- drivers/net/wireless/mediatek/mt76/mt7996/main.c   |  17 +-
- drivers/net/wireless/mediatek/mt76/mt7996/mcu.c    |   4 +-
- drivers/net/wireless/mediatek/mt76/mt7996/mmio.c   |  89 +++--
- drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h |  89 ++++-
- drivers/net/wireless/mediatek/mt76/mt7996/pci.c    |   3 +-
- drivers/net/wireless/mediatek/mt76/mt7996/regs.h   |  32 +-
- drivers/net/wireless/mediatek/mt76/wed.c           |   8 +-
- 15 files changed, 1315 insertions(+), 277 deletions(-)
----
-base-commit: 29806c11aec7a552fa351867efa1337cc4ad1fe9
-change-id: 20250821-mt7996-rro-rework-2490cee0f0d8
-
-Best regards,
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
-
+Yixun Lan (dlan)
 
