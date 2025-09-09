@@ -4,83 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F781CAC58E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 16:02:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1140CA0FED
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 16:02:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9rFL+r1YKn0vpD5aAkD3QIB0bodgwk/WBTAvgFy59FM=; b=s3k7G1hNUP5nAEG6YziwlT3dp8
-	DXvhs/j4hDcovN7vlqfp/Zcw4U70+N5n0R/nxYfmno34nKTvSH1+mZoUBv3Dm1EtGixOsd+X8WcdM
-	+jKJTWGKC9gAKuc3SSzVQ1aElp0Z3LXh4lRB5qgea+Y6ceSHTCYSQq6dqvTuKzFgxcLVDWB7hQ5bT
-	DBs7mM/gD4PGiLAIPDjRQEm0Zov8Cr/huJl5BZiYCzoftBFn9xfFCdiKY1WYhNzPfu8X4QQI1jX0N
-	oHkvVh+feV0j2HBaFvxn7W3vZKRVRwjPaTw60R8z64jqymrMIY+zSqzPLL8NXZ9ZgF7aQK5oCBgoz
-	6uzZT+RA==;
+	bh=ta3EUM01m/eAOgCWnf2NHrrKHrpoLJFvsTPitvIsZAw=; b=47pesk6Uuet85+J11KZtPT/t+A
+	RuTobU/ibk4k47AuFCLguN6LpkE7m5UpQSdstCFHPFCKtI8S8bX6d8RSKiuVMiwQi4BnHVeh7eyTo
+	WNtAekKIjf4qh2PFCohQys/1nR4H5IF8K0Ek8UU7uSzEBywrKMuTbd2gZAAH25SqxbUoVDmSqLIx6
+	OzDGfbduxMTd0YqhzJd3LXzsL67FQ8lOWVlTS/vXMFnxBlpAUJrHA1BzIQM0LlP9R5mxczp18WYqs
+	AOww0xWgMixQyDNkE6vVKYF+HPdrBR8nTSAWa2+ayuO3pPgHH/WPAb0x9grMhmyG9gjkTbtYzAdQ+
+	y/EEW0ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uw0nR-00000008NV4-269n;
-	Tue, 09 Sep 2025 16:02:17 +0000
-Received: from mail-wr1-f47.google.com ([209.85.221.47])
+	id 1uw0nQ-00000008NTf-3ITe;
+	Tue, 09 Sep 2025 16:02:16 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvxhk-000000079cg-48r7;
-	Tue, 09 Sep 2025 12:44:14 +0000
-Received: by mail-wr1-f47.google.com with SMTP id ffacd0b85a97d-3e014bf8ec1so3787814f8f.1;
-        Tue, 09 Sep 2025 05:44:12 -0700 (PDT)
+	id 1uvxgB-000000079C2-1CC9;
+	Tue, 09 Sep 2025 12:42:36 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-45b9853e630so51665155e9.0;
+        Tue, 09 Sep 2025 05:42:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1757421851; x=1758026651; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1757421754; x=1758026554; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=9rFL+r1YKn0vpD5aAkD3QIB0bodgwk/WBTAvgFy59FM=;
-        b=c9RUCCb93IEaFbYLRXnxPmQrgykcSJm5RSMRGV3OEfLwEeQAhJYvoeqrMbg7JVObbQ
-         vhT2Y23ON2tnBti/2j/xC2/FvckFkuE89Gm2SKqgCoOxNU6p46OVjdHnNKl4qI9I5KNj
-         kEZ0P20s+9blctph45i83Kx1f5R2zFgwoAYJJkJmpQK5AEDpZ+PL8vQpC/3/Ufz8fsOz
-         ctcgPt31CphfPMXx/G2G8aAuo7MjqKZPWY0pWpDvVYO8aDREjWLQxb9//Erev8U+4Kn7
-         8rwE7ujFAMoYJ/ZSFtfc8qXkv79dOSpECmZVk40Eiir383UeK1YbMshjkhXmR9cn5l5P
-         lb0g==
+        bh=ta3EUM01m/eAOgCWnf2NHrrKHrpoLJFvsTPitvIsZAw=;
+        b=NXrJWSQHjB6h0cClQ/vVxdTKq0RRZuVx+JFQ8xvzfo+faAXj8/C7j5hUdzfLfyCq38
+         nTyubziK8Wvr70HQclk3Wr3t1ZIy+c76WIAJQXV9R93r/rhu+vcIrVGj+SMn0GHawUuI
+         llOIkXKdylcqpPEe8D6mwwzjCSa+EtyrYlAzMClR2xJnRBsya3JcWxDLLtmoDhqhLvJt
+         jNjEaI8WzVmAAxX3aHWNzE3ofAfqtqYSQo5ekr+ygLZDdKCFmRyyfI5H/nUEqjBdjBCW
+         sjh/9i2p4fsLrLRfX9t3tEDfFnA5XPPE/T12VgD5cdsLv4Kl/Rpcgho3dxkv3s8/x2dy
+         tt4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757421851; x=1758026651;
+        d=1e100.net; s=20230601; t=1757421754; x=1758026554;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=9rFL+r1YKn0vpD5aAkD3QIB0bodgwk/WBTAvgFy59FM=;
-        b=UaaXczhybqZiwFvVmZJDjCusjorovRBe01BmTeT+3J1NqgBOeBaU+8YzhphNFKV/Nx
-         Ne/cwzK1Eq7pM0I4Zn2+IXMt55EIuaFzHgPRiNDTHcliQqA45DbmMhh2bOxzBCEnyVbF
-         kSR2btuoCNs07re2T3f3MpgAtmrwIRjrO5DeVpD48mUlyPgO7Xsi59JKFvmVE5LWLFfP
-         BM/1PZdRj/iEJfQtwz7magw6tNCJyQp1dkrZeaqKX3SDvVXCnbgwjkoLpQZJooRdEqSa
-         2Fy/fqxnm6NDKyfE7Awpki59ZuTIpTub9tb3LfUiHgX4t+WcnfoiZ4pW4CmAVtdH/hXS
-         56kg==
-X-Forwarded-Encrypted: i=1; AJvYcCX+52athyDYjbwgp8qUKBjLvQvSnsuNofJVlpaJX8lu0EHBx+ylWtpGWyMjZWpt3i3PErCfxV1XRdoroXTsO2nU@lists.infradead.org, AJvYcCXbgoRqcixveGth7dhC/c26y8dnuICZtefsfNWNBG0EokkaGReSgT8q0gvXbfeKwNCQVoHhfn2XPu7OU5KyiUA=@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywnn6kBFvVTF/cdwSuZg3vDLZ+gvn8FsXrK28FcI3QGB/6dYujx
-	XxSxTAEtgYg6j11Q+Q3Lr8E7mtczq944ekAE9cHZBIQAXF0C5GP5o1Uf+OG5TQ==
-X-Gm-Gg: ASbGncsLjgGBtUULw4zRS8VMjygttb5C6ENSoq6I/yHS3zu5K+ZcdixWrxam6+TjwmD
-	3lCQ2boLXjnyGjJxLaC0fEwsKvGAM2pYNj2x/HzW0IXwHXn+qchdLhTrbT0pj6FTUDUo+c2uHkp
-	6yQaxmg9ykk1g8oP22eyYH0thdRIAAWW6sf4HF6QJHKY/1gFh4lbCJwnVvjGAh+92TrDL7jCyrP
-	PHnpdoD7OfQjt1i30WLKWIFN2YUuHrvVDAV8iFo+8tEpDP8dQ/dXUxPnTWL5GTQxP9i73/VtprY
-	VLETBc4oSutmpH8Dk66JvHntUJ+rLW8b9l3UxM67p4q5v1aEeXWRv97ofOXZPJEAChO8Ydy03ic
-	7PooSkJp8dR3gX9uSdHnF9+st4ywiV9I=
-X-Google-Smtp-Source: AGHT+IECKaIItMJhCB5fQPHsblBR/qDAMst2rQYDXJkJFXWQA4pISJ09+ACkbU0uH4JhyolNWy5pkg==
-X-Received: by 2002:a5d:5d05:0:b0:3e1:da2f:af23 with SMTP id ffacd0b85a97d-3e636d8fb4fmr8567851f8f.9.1757421850822;
-        Tue, 09 Sep 2025 05:44:10 -0700 (PDT)
+        bh=ta3EUM01m/eAOgCWnf2NHrrKHrpoLJFvsTPitvIsZAw=;
+        b=eRPMdohIC4GcogZdA6S3eSrHCaKw04k95ZAhuGgPPN3jtMs33AgSLEkmUM933qCgQz
+         n7//3QyZ4Ryo4E9C8A9Vso8ZMBcrL5kLFxGkLJxfweOvZTifhrgoETHijtEe2vF49I8B
+         5l65fJPyA9lXtFYRGFJ2xhB8hTP/155/2n6uO3SXR08MnxEYInsKHjdy2XfhV2QSXcqe
+         z2OxsWEPB74LjZhFuT7bPmOdTuDL99dioIFKHPYWD0HLDkTgBuhaWSu/r2QhIZ8hP6eo
+         LVVCFqvr88cQfnFXQJckIQlXi9JVvY0Uz3hrliVPRCf06IJmB5jKkYgXppZ9t0KeoMi+
+         gxKA==
+X-Forwarded-Encrypted: i=1; AJvYcCUfhUKFpkJEjXQJSLlejdGnaR03Kb8RGVw5LUtV2rTscxKkRZX6QLyRYFcm6yhpAJXnUiJkoGwMeqrPunQCgDxW@lists.infradead.org, AJvYcCX/eOUvk7qKzXKEoTwHEKN6vr/lhjGVUr94g886yyg4tMjior4S3NMFYZCwxcS9CJxEqHyS5c8jdq4pdyYgC3o=@lists.infradead.org
+X-Gm-Message-State: AOJu0YxpLqwvaBuX8doEnCVaFLrVeHln9t8pBZLcUTGK4uMEDBdfIzLW
+	/Z9SECApuI7VfBakaWyJJXFYzciG8tNIoFXcDpFr3KUSwPnzitWDfCCw
+X-Gm-Gg: ASbGncvLz25EOSTLqwe3AGrunHfcsoqbVsSXrg7JY8jDdTL698jkocn299E6Zb45BGg
+	MSGbKABUYZM1S/y3C/FIBE7IUNBL8di+J/axxSiv4kdboDiJwEfQwFZQYLOAId4hJ4WovhBsvKX
+	KaQM/T7SNJQKaIfOoHzGZgZuB4pu7KrADeAcSYM7t4l+9Dsu6OLASn0FRZuKIJAPsgVonTIygdY
+	EGX8hI5j423wXPqYTezVeWkCgIbFF14U092Z+Lty4YceASz/kdYFBJphtjOdxdiPC6WTxaOT4Wr
+	zGobgTzzgN6FkD5DdAAW9/9CthiJRAX5JkYQAf/f9NOIJ2FPbPNJfYG9hiuadacaPvvZwRBaNXz
+	fahPQKiEQLSO3+eo6SEPsBkzO8s03cjA=
+X-Google-Smtp-Source: AGHT+IHBpTWa7xLry1DQShkG2VjwU6d1KMOwuADDc+USaf5j5yCi5UAaJHezkFGjLHMYSUaS4DUFJw==
+X-Received: by 2002:a05:600c:1987:b0:458:b01c:8f with SMTP id 5b1f17b1804b1-45ddde8a55cmr127384335e9.8.1757421753414;
+        Tue, 09 Sep 2025 05:42:33 -0700 (PDT)
 Received: from [192.168.2.177] ([91.116.220.47])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3e752238820sm2534337f8f.35.2025.09.09.05.44.09
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45ddf1765e8sm147703695e9.22.2025.09.09.05.42.30
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 09 Sep 2025 05:44:09 -0700 (PDT)
-Message-ID: <4d6fcd11-a724-44ec-a183-cd1afe959bed@gmail.com>
-Date: Tue, 9 Sep 2025 14:44:06 +0200
+        Tue, 09 Sep 2025 05:42:32 -0700 (PDT)
+Message-ID: <f6402ac5-114f-415f-ad79-4f523c601126@gmail.com>
+Date: Tue, 9 Sep 2025 14:42:28 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8395-nio-12l: Enable UFS
-To: Julien Massot <julien.massot@collabora.com>, kernel@collabora.com,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8183: Fix out of range pull
+ values
+To: "Rob Herring (Arm)" <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Enric Balletbo i Serra <eballetbo@kernel.org>, Ben Ho <Ben.Ho@mediatek.com>,
+ Fabien Parent <fparent@baylibre.com>
 Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20250905-radxa-nio-12l-ufs-v1-1-e2468bfd2c69@collabora.com>
+References: <20250722171152.58923-2-robh@kernel.org>
 Content-Language: en-US, ca-ES, es-ES
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
@@ -126,12 +129,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20250905-radxa-nio-12l-ufs-v1-1-e2468bfd2c69@collabora.com>
+In-Reply-To: <20250722171152.58923-2-robh@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250909_054413_051818_14311728 
-X-CRM114-Status: GOOD (  14.61  )
+X-CRM114-CacheID: sfid-20250909_054235_334530_9AB09152 
+X-CRM114-Status: GOOD (  18.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,47 +151,152 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 05/09/2025 15:21, Julien Massot wrote:
-> UFS is the primary storage for the Radxa NIO 12L. Enable it
-> now that the ufshci and ufsphy nodes are available in the
-> common mt8195 dtsi.
+On 22/07/2025 19:11, Rob Herring (Arm) wrote:
+> A value of 10 is not valid for "mediatek,pull-down-adv" and
+> "mediatek,pull-up-adv" properties which have defined values of 0-3. It
+> appears the "10" was written as a binary value. The driver only looks at
+> the lowest 2 bits, so the value "10" decimal works out the same as if
+> "2" was used.
 > 
-> Signed-off-by: Julien Massot <julien.massot@collabora.com>
+> Fixes: cd894e274b74 ("arm64: dts: mt8183: Add krane-sku176 board")
+> Fixes: 19b6403f1e2a ("arm64: dts: mt8183: add mt8183 pumpkin board")
+> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
 
-Queued, thanks.
+Queued, thanks
 
 Matthias
 
 > ---
->   arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts | 10 ++++++++++
->   1 file changed, 10 insertions(+)
+> This is just a few of the warnings related to mt8183-pinctrl... Mediatek
+> is #1 for DT warnings on arm64. And by #1, I mean worst. :( It would be
+> nice to see some progress on fixing them. Otherwise, seeing new Mediatek
+> bindings rather than fixing the existing stuff makes me grumpy.
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-> index 329c60cc6a6be0b4be8c0b8bb033b32d35302804..4cbd78c126f6b56f1833d220f7a7fbc7e4320cbb 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-> @@ -990,6 +990,16 @@ &uart1 {
->   	status = "okay";
->   };
+>   arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi  | 14 +++++++-------
+>   arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts | 14 +++++++-------
+>   2 files changed, 14 insertions(+), 14 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> index 400c61d11035..fff93e26eb76 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> @@ -580,7 +580,7 @@ pins-cmd-dat {
+>   		pins-clk {
+>   			pinmux = <PINMUX_GPIO124__FUNC_MSDC0_CLK>;
+>   			drive-strength = <MTK_DRIVE_14mA>;
+> -			mediatek,pull-down-adv = <10>;
+> +			mediatek,pull-down-adv = <2>;
+>   		};
 >   
-> +&ufshci {
-> +	vcc-supply = <&mt6359_vemc_1_ldo_reg>;
-> +	vccq2-supply = <&mt6359_vufs_ldo_reg>;
-> +	status = "okay";
-> +};
-> +
-> +&ufsphy {
-> +	status = "okay";
-> +};
-> +
->   &ssusb0 {
->   	pinctrl-names = "default";
->   	pinctrl-0 = <&usb3_port0_pins>;
-> 
-> ---
-> base-commit: 6c68f4c0a147c025ae0b25fab688c7c47964a02f
-> change-id: 20250905-radxa-nio-12l-ufs-c817a864fb42
-> 
-> Best regards,
+>   		pins-rst {
+> @@ -609,13 +609,13 @@ pins-cmd-dat {
+>   		pins-clk {
+>   			pinmux = <PINMUX_GPIO124__FUNC_MSDC0_CLK>;
+>   			drive-strength = <MTK_DRIVE_14mA>;
+> -			mediatek,pull-down-adv = <10>;
+> +			mediatek,pull-down-adv = <2>;
+>   		};
+>   
+>   		pins-ds {
+>   			pinmux = <PINMUX_GPIO131__FUNC_MSDC0_DSL>;
+>   			drive-strength = <MTK_DRIVE_14mA>;
+> -			mediatek,pull-down-adv = <10>;
+> +			mediatek,pull-down-adv = <2>;
+>   		};
+>   
+>   		pins-rst {
+> @@ -633,13 +633,13 @@ pins-cmd-dat {
+>   				 <PINMUX_GPIO33__FUNC_MSDC1_DAT2>,
+>   				 <PINMUX_GPIO30__FUNC_MSDC1_DAT3>;
+>   			input-enable;
+> -			mediatek,pull-up-adv = <10>;
+> +			mediatek,pull-up-adv = <2>;
+>   		};
+>   
+>   		pins-clk {
+>   			pinmux = <PINMUX_GPIO29__FUNC_MSDC1_CLK>;
+>   			input-enable;
+> -			mediatek,pull-down-adv = <10>;
+> +			mediatek,pull-down-adv = <2>;
+>   		};
+>   	};
+>   
+> @@ -652,13 +652,13 @@ pins-cmd-dat {
+>   				 <PINMUX_GPIO30__FUNC_MSDC1_DAT3>;
+>   			drive-strength = <6>;
+>   			input-enable;
+> -			mediatek,pull-up-adv = <10>;
+> +			mediatek,pull-up-adv = <2>;
+>   		};
+>   
+>   		pins-clk {
+>   			pinmux = <PINMUX_GPIO29__FUNC_MSDC1_CLK>;
+>   			drive-strength = <8>;
+> -			mediatek,pull-down-adv = <10>;
+> +			mediatek,pull-down-adv = <2>;
+>   			input-enable;
+>   		};
+>   	};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts b/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
+> index dbdee604edab..7c3010889ae7 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
+> @@ -324,7 +324,7 @@ pins_cmd_dat {
+>   		pins_clk {
+>   			pinmux = <PINMUX_GPIO124__FUNC_MSDC0_CLK>;
+>   			drive-strength = <MTK_DRIVE_14mA>;
+> -			mediatek,pull-down-adv = <10>;
+> +			mediatek,pull-down-adv = <2>;
+>   		};
+>   
+>   		pins_rst {
+> @@ -353,13 +353,13 @@ pins_cmd_dat {
+>   		pins_clk {
+>   			pinmux = <PINMUX_GPIO124__FUNC_MSDC0_CLK>;
+>   			drive-strength = <MTK_DRIVE_14mA>;
+> -			mediatek,pull-down-adv = <10>;
+> +			mediatek,pull-down-adv = <2>;
+>   		};
+>   
+>   		pins_ds {
+>   			pinmux = <PINMUX_GPIO131__FUNC_MSDC0_DSL>;
+>   			drive-strength = <MTK_DRIVE_14mA>;
+> -			mediatek,pull-down-adv = <10>;
+> +			mediatek,pull-down-adv = <2>;
+>   		};
+>   
+>   		pins_rst {
+> @@ -377,13 +377,13 @@ pins_cmd_dat {
+>   				 <PINMUX_GPIO33__FUNC_MSDC1_DAT2>,
+>   				 <PINMUX_GPIO30__FUNC_MSDC1_DAT3>;
+>   			input-enable;
+> -			mediatek,pull-up-adv = <10>;
+> +			mediatek,pull-up-adv = <2>;
+>   		};
+>   
+>   		pins_clk {
+>   			pinmux = <PINMUX_GPIO29__FUNC_MSDC1_CLK>;
+>   			input-enable;
+> -			mediatek,pull-down-adv = <10>;
+> +			mediatek,pull-down-adv = <2>;
+>   		};
+>   
+>   		pins_pmu {
+> @@ -401,13 +401,13 @@ pins_cmd_dat {
+>   				 <PINMUX_GPIO30__FUNC_MSDC1_DAT3>;
+>   			drive-strength = <6>;
+>   			input-enable;
+> -			mediatek,pull-up-adv = <10>;
+> +			mediatek,pull-up-adv = <2>;
+>   		};
+>   
+>   		pins_clk {
+>   			pinmux = <PINMUX_GPIO29__FUNC_MSDC1_CLK>;
+>   			drive-strength = <8>;
+> -			mediatek,pull-down-adv = <10>;
+> +			mediatek,pull-down-adv = <2>;
+>   			input-enable;
+>   		};
+>   	};
 
 
