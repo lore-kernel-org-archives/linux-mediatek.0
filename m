@@ -4,83 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B98E7CAC58C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 17:20:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DD3ECA0FED
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 17:22:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vwHR1FgOXXSSp2VsIjgAXKNRhzqoSYPvwttSy5YEpHg=; b=JX1QBPsAAwT2YS8rUCiNZLCaWK
-	XlziSPuePVRGB8LfV7j8yMc6OMQPmITSpOHqesCiV5Dtf9xmdWPSw7uOpe/iPA2P/CiHVlnvfWbpW
-	Ja28VQFUv3YX0zUNL0fMwnAj86WtSkpDhXKtQrsbUCg/PeHlRX6xdS+DQyV1Pjp0xVl2A4r/kpP1z
-	p5pb1uJScJyjHezvKRaEPjcE/1GZJkR9i/F5WvOvfMs2uoDjUllmbV/hC5u2cugpIqW372f5nEvZV
-	r1LWIu6qYm60mi6UmLTPKGxC0mFRqwsgWpicCc+pLbS9Qak8s+EgzmdvC8u5zs6uvr3EIgNjOQbo8
-	GIdwhDGw==;
+	bh=HhszSRQXIU5hyXmbHS1r8ihhw943QEplSsfQYmIy1lw=; b=LdoztUT6uxxPy/P+yrob7Dce7i
+	W5r4avC67DpvWQLhDSUqQuTFNW8iKvf5GqtoWJUsM2NutDofXPqI3MjsyGNP7iFXY0MIl8L26PhbL
+	H2vSmruIksb+jB+KykdSb08tIC+DxGIEDgTXA2abjVD5ZPJ3SjkIB13NF67ni+RH5btlVonAabAc/
+	dMf9+ClJ2gYV3iAB3Z3pm+4tB5Ehqbww26fXCyTmnGQzX+Yp6o824w7iY7BGVgJvLclh3PrYkUbwn
+	Rk187apx94ydX0vPiBXmk6u7PFeri5CcD0fxN8P++pdLy+4++4ikdV47DXQZ2aDl+ETJGx2TpAy0N
+	apzLR9Tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uw21K-00000008wcw-37Tk;
-	Tue, 09 Sep 2025 17:20:42 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1uw234-00000008zQA-0w1m;
+	Tue, 09 Sep 2025 17:22:30 +0000
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvyyo-00000007cCQ-3mhL
+	id 1uw04l-0000000801W-0h8w
 	for linux-mediatek@lists.infradead.org;
-	Tue, 09 Sep 2025 14:05:56 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-567fb8be044so823649e87.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 09 Sep 2025 07:05:54 -0700 (PDT)
+	Tue, 09 Sep 2025 15:16:08 +0000
+Received: by mail-ed1-x529.google.com with SMTP id 4fb4d7f45d1cf-6263d0e4b94so6641919a12.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 09 Sep 2025 08:16:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1757426753; x=1758031553; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1757430965; x=1758035765; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=vwHR1FgOXXSSp2VsIjgAXKNRhzqoSYPvwttSy5YEpHg=;
-        b=fOrHRiSUspGy9QjTldyAq1tt7jzEeEjMcduRuS3czL3ujn0QL5UZdrCISBBdzGu5a3
-         X2rNw7bTQJ6ri+ybopFOs7nayUC0srAT20Q8La7wKVfuFYRCuhgyL9zYjIKW/beo32xO
-         lvTkOm/iaCyMBL2NiIu68+OQF2uSekVmJrL8iW2Hc2FBh9FhaZdM7D4B5FQvwdSPQGJ4
-         JnZ7XPijkwft2Zj5Zl3ZccLHDRVttz62LcGI5ThhN65NrnuvDi5PQWTatqkBMSOjkxdj
-         NsiERdZvKNS2FNxfxeWY6t9lpjXAhksLY+8qsFKbNgQbgPOk8YCc2q+yFgL5rZhizB7q
-         FqDg==
+        bh=HhszSRQXIU5hyXmbHS1r8ihhw943QEplSsfQYmIy1lw=;
+        b=dTXkonhGBey2WoNS6BmzvpABED+KulAoytTDZ0R959mQiS+sBkb2n7PbcGSn+vnrkf
+         Ybjs9WuN1DYrcn7wfReoB+r+UMm0A3LA+bQddydTrcgipWfRKzrI7e5rcG8gP5RSQTq5
+         ZX9afgXumBVeZbxZjZ6MoQmfCqwBUJYUCNoGnsZhDdqUa0ve58AyH8Myjm/wS/HJcKUl
+         WE2sUXs4e2kmLfvasBgTu4urFgb83oX9snbqwa7uKCYPfqRFWKurOwj6vhZyEYEi8M9V
+         Vr0+EuqYWjYX8zo9RSBmFwUkxL3N8hoyjaiXe/Pc2/1JB37lKLoH7UYStxDVFQV9ImG5
+         TofQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757426753; x=1758031553;
+        d=1e100.net; s=20230601; t=1757430965; x=1758035765;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=vwHR1FgOXXSSp2VsIjgAXKNRhzqoSYPvwttSy5YEpHg=;
-        b=rM1ztIc0adtksGRUUJCa8L7jGOp0lf3N7HpnCzFW73iy3j9FJZbkSqduC1vXdOHrWV
-         M/V49mpObYIbvck+PfnoJDY7sHGCToIh71dzYdCcDMMOT1oVfw9uugvRH+JOHb9VvPw5
-         lrFEd0HAFFLv86yrSC9HX20bLJzmyywRvovLlfOZ/WF15+6zVUuJ3HFxxkiTJhpq5mxf
-         L0+z2+BVXp6aeViuwj29ZrNO6iNr3JhlRdqOST0vzozI87ydmDEMO5+SQ3yhD7p70WMY
-         VWni9sB93S/ct0lI2XL41FdI0960XqlxpPI68xMOkN6JclmE2MrcwvxMvIy060WPvS+Y
-         U55w==
-X-Forwarded-Encrypted: i=1; AJvYcCUwgrghreYtz/hwta1OgXC2Rwt19byhcRnKeqNQfrnPB3fiXVhip1BBIO00BoRfYb3H8Ute3sLTuTv0/G2gig==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyKYRh5d2YGKXX1sfp8nzqMLgz3d5Avr1dsy2FM14ERQXO39WRK
-	5LRu3/da8aWBPoOzT07U2pvIEfp1rHB6ykYuZLU6WdpV5OKPtvHYJjcdME4XGzQ9WxcEDGBPltz
-	cN8qOoPD6R+ktmyVf7u39NZK1Bbx0t/HNtHTlToWcBA==
-X-Gm-Gg: ASbGncukAk5t4mZQTRjg3S8Qss6VtqCjrr+s8Dsd6Pi9QUOwlur5PiG+bOkFg8n7FdS
-	EhKxJb6xhTUimdnuv6ih/WNPL4n0lkQSL065MpWkXPtYzmjked/fMNNSLd+G3+dZwoEOuX6IyoO
-	sWZ+a0kkMGPxsr4C+nhrkpaH7WEirCE3PwrFsG0XlkbXDRHRgvttBKypKrJm3o/vJGOxZdU3iQw
-	CB4Q4W43P2nvE3wqJ3qYu78Qd0fcMHXwbOt+FE=
-X-Google-Smtp-Source: AGHT+IHxbtPyFzNpPyeaiiBaisDmRYDyXY5HX06QQvzN7rQqg4ycDBS5H9rZi94hP+dpGNYd7MLd29QcT4mULfuZ6+0=
-X-Received: by 2002:a05:6512:108a:b0:55f:4db1:e450 with SMTP id
- 2adb3069b0e04-56260e3b836mr3230997e87.22.1757426753065; Tue, 09 Sep 2025
- 07:05:53 -0700 (PDT)
+        bh=HhszSRQXIU5hyXmbHS1r8ihhw943QEplSsfQYmIy1lw=;
+        b=LGUk4/k6O+NjQCz+6zhFFo1cfI+8M+QdK8DaxdMZ23vrsUL3RbaxKg9aq/kJSmB7TK
+         vZm2rl5+ld/CLPXbAKetWib4v5fNLs1V5brczLsXH+XmNzXtse6UW516pPa5d+LSjH9k
+         4mDp7w3RO7QtNjYB7anlTlVu06aEc00qk7SL0d3YxujUQLgdTFHutuJqS8Wus6E+uAxF
+         Jhog2Vlrund2Qs/s2koHGox6IUuJ//laISG4KjP59MEb1Lh3NHMTETUDybbT4pDg4N9o
+         7OCDL+33UcitocViqACS108A/yH5rW3Isc2A0B9HXvX1GxkwiRaBg3MvnDgRy04RbgK4
+         AnhQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVIQwtSMxKBCLnjPtOzEqwCdfJgMA75u8FVjH4OzYcJTazGc2RjtJAfLuN9t1Zx1AwC7zK4Pk4cxjSxfowKiQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxOuLsF4qv2cE71zpCgGI5vCowZm4/rCJP7IVYJ3KarfVoFQm1w
+	ObTgKnVY9Nr7pHgCyX24SgFFMt71Y8TSkDFrjbh5iRgfNZm6NnR+P0RUpNAJGObJ4XhsS/pAjxZ
+	cMazj6RLG4RqyX+etsgY7ZzSwI23Bp/Y=
+X-Gm-Gg: ASbGncudfwl75z7/HZoEcfRhWSm5S0K6EmKYboEULhP5zX2RH0dzzPv8U41aSU965PE
+	3iujtk22JjjAfq05g1CQkYbQxaihtPTW/sQBu0wdmjUfiPDI8iIiucthPvJihiBhWnRVPMuemw/
+	2GvRTnf4m4Vwl7gsQIkyVaeH9zS2ISpH3puuRNAkBu9N8KU/Fu1s8wgby37v21VFh25tNcPCwqh
+	DSUlyMoWw==
+X-Google-Smtp-Source: AGHT+IGeaHcV2kH627FcZIyd8vYLnu/2Up2e6b2i9sBG/bmosVjOp6dqHGnQ87UTIB1WpGArwM97TNlubL6NJn+jj/k=
+X-Received: by 2002:a17:907:7e8c:b0:b04:39af:bee9 with SMTP id
+ a640c23a62f3a-b04b1003707mr1194942566b.0.1757430964857; Tue, 09 Sep 2025
+ 08:16:04 -0700 (PDT)
 MIME-Version: 1.0
 References: <20250909-gpio-mmio-gpio-conv-part4-v1-0-9f723dc3524a@linaro.org>
  <20250909-gpio-mmio-gpio-conv-part4-v1-13-9f723dc3524a@linaro.org>
  <aMAP9hAWars0T83r@smile.fi.intel.com> <CAMRc=MeLTGq8Qu2aT43tkt3vaYCSaJPJPLmaUQ1SAyD_OgVr_g@mail.gmail.com>
  <aMAn4MM_Fs8q8qwj@smile.fi.intel.com> <CAMRc=Mdr4oW2d7XZ90rRr_fKC7WToz72v=_kW-s8=Urd0g8k3g@mail.gmail.com>
  <aMAve1MbONmKVjjg@smile.fi.intel.com> <aMAv3STeZUdSQ14p@smile.fi.intel.com>
- <CAMRc=MeA87p0QAzq_3MACQM90MhN0eRccr7u-VzcfyP8b90AaQ@mail.gmail.com> <aMAzZAbNwrRTgFi-@smile.fi.intel.com>
-In-Reply-To: <aMAzZAbNwrRTgFi-@smile.fi.intel.com>
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Tue, 9 Sep 2025 16:05:41 +0200
-X-Gm-Features: Ac12FXw1RLq4MdeG1hkRFaIkCvacYp3h7kbqz23NMJgO5kiwlT10dViDUNZvzbs
-Message-ID: <CAMRc=Mfn7atHTqKc9nMTQ19ZserqeNi3skb-QhG3CVdEhmr0gg@mail.gmail.com>
+ <CAMRc=MeA87p0QAzq_3MACQM90MhN0eRccr7u-VzcfyP8b90AaQ@mail.gmail.com>
+ <aMAzZAbNwrRTgFi-@smile.fi.intel.com> <CAMRc=Mfn7atHTqKc9nMTQ19ZserqeNi3skb-QhG3CVdEhmr0gg@mail.gmail.com>
+In-Reply-To: <CAMRc=Mfn7atHTqKc9nMTQ19ZserqeNi3skb-QhG3CVdEhmr0gg@mail.gmail.com>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Tue, 9 Sep 2025 18:15:28 +0300
+X-Gm-Features: Ac12FXySsG8IXlocwCfN3VG6y5KLpIc0a90AoYqlSY-xU72GOTjlNCZIc8n9fs0
+Message-ID: <CAHp75VdDAJO3+NPp29GnqL=C5m7tdWbyYvNFax=Dh+dG49YAnA@mail.gmail.com>
 Subject: Re: [PATCH 13/15] gpio: sodaville: use new generic GPIO chip API
-To: Andy Shevchenko <andriy.shevchenko@intel.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Keguang Zhang <keguang.zhang@gmail.com>, 
-	Alban Bedel <albeu@free.fr>, Doug Berger <opendmb@gmail.com>, 
+To: Bartosz Golaszewski <brgl@bgdev.pl>
+Cc: Andy Shevchenko <andriy.shevchenko@intel.com>, Linus Walleij <linus.walleij@linaro.org>, 
+	Keguang Zhang <keguang.zhang@gmail.com>, Alban Bedel <albeu@free.fr>, Doug Berger <opendmb@gmail.com>, 
 	Florian Fainelli <florian.fainelli@broadcom.com>, 
 	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -94,8 +95,8 @@ Cc: Linus Walleij <linus.walleij@linaro.org>, Keguang Zhang <keguang.zhang@gmail
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250909_070555_013090_EF026493 
-X-CRM114-Status: GOOD (  16.09  )
+X-CRM114-CacheID: sfid-20250909_081607_202527_CAA13EC7 
+X-CRM114-Status: GOOD (  21.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,39 +111,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 9, 2025 at 4:02=E2=80=AFPM Andy Shevchenko
-<andriy.shevchenko@intel.com> wrote:
->
-> On Tue, Sep 09, 2025 at 03:56:41PM +0200, Bartosz Golaszewski wrote:
-> > On Tue, Sep 9, 2025 at 3:47=E2=80=AFPM Andy Shevchenko
-> > <andriy.shevchenko@intel.com> wrote:
+On Tue, Sep 9, 2025 at 5:05=E2=80=AFPM Bartosz Golaszewski <brgl@bgdev.pl> =
+wrote:
+> On Tue, Sep 9, 2025 at 4:02=E2=80=AFPM Andy Shevchenko
+> <andriy.shevchenko@intel.com> wrote:
+> > On Tue, Sep 09, 2025 at 03:56:41PM +0200, Bartosz Golaszewski wrote:
+> > > On Tue, Sep 9, 2025 at 3:47=E2=80=AFPM Andy Shevchenko
+> > > <andriy.shevchenko@intel.com> wrote:
+
+...
+
+> > > > TBH, I think those 6 all made the same mistake, i.e. thinking of th=
+e compound
+> > > > literal as a cast. Which is not!
 > > >
-> > > TBH, I think those 6 all made the same mistake, i.e. thinking of the =
-compound
-> > > literal as a cast. Which is not!
+> > > What do you suggest?
 > >
-> > What do you suggest?
+> > Write it in less odd way :-)
+> >
+> > foo =3D (struct bar) { ... };
 >
-> Write it in less odd way :-)
+> I don't get your reasoning. typeof() itself is well established in the
+> kernel and doesn't
 >
-> foo =3D (struct bar) { ... };
-
-I don't get your reasoning. typeof() itself is well established in the
-kernel and doesn't
-
-foo =3D (struct bar){ ... };
-
-evaluate to the same thing as
-
-foo =3D (typeof(foo)){ ... };
-
-? Isn't it still the same compound literal?
-
-Bartosz
-
+> foo =3D (struct bar){ ... };
 >
-> > And are we not allowed to use C99 features now anyway?
+> evaluate to the same thing as
 >
-> It's fine, it's not about the C standard number.
+> foo =3D (typeof(foo)){ ... };
 >
+> ? Isn't it still the same compound literal?
+
+It makes it so, but typeof() usually is used for casts and not for
+compound literals. That's (usage typeof() for compound literals) what
+I am against in this case.
+
+> > > And are we not allowed to use C99 features now anyway?
+> >
+> > It's fine, it's not about the C standard number.
+
+
+--=20
+With Best Regards,
+Andy Shevchenko
 
