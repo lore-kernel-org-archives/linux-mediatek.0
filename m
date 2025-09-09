@@ -4,83 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 040ECCA0FED
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 16:42:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23928CAC583
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 17:14:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Y9Q/SBeaavLyqr+XPkX2WQCCkix4ESkAOHpRDrEhCu8=; b=NpbroA2ZR4+V6G4Iq0Pl0gvsW5
-	LLfdfMHaPUbG/b2bbsdrwAGSEDmug5KrwGAugiWMkvcCcEKKkz1RJa/iicSLsJUs76VjtMcrLXxX5
-	LklNOg231AKuR8Ws49r6P2GfWHzcHGC3BrGZRsEFoVb12ZexEEsyKjq35ZcKsvxwQzdopd6XuNc3y
-	1O4Su9Cr9SBb5CkNMW2n9qeWZ+VdXV95MxtqPUG/g/hkisAnoiBJqYP226//qHnqOJeabRJ8mU+PV
-	/oQVY4wshAcpyGm8tLrYCgOO2xme0TfUwVhgbVFRrNiRMMRYos4T3iC7gAbwsXaF2gqxdSKRN+vmo
-	GnmPblmw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=pHTBtamIAofD7j0yEV6xAkvLmMl2NOMHSGLm3F2dxcQ=; b=TPl88TcjmiGlrlCF4jO/e+TdlA
+	Hy6YutSIIX8SDonpCWUfO6bzy0d03TKk7SRlYNljaxWMcL0Ydp8Nwa/Sy0GwtuZxKQEWSzy9M38eU
+	rb50ITjdDA2R1WB3V0OOslOx/5uXspWcRKaXL/h3zcLrm5E++HAEVUkCPJFqWTwXV7LWajndpIpU4
+	Zixlb5rmiGEmkZTnMR0Hmfz3d8WiZ5ynno3Bv6IX7nUHQ98SL+SFzr5k4FA5yxlWWg1k103uQ3RMz
+	6DAy9Gza94Yd59+QFGcmSZ0Et3I+W//BorotugMwutIbYWJ9dflcmUnjknxFcLhWniJJ7loAVjlsz
+	eu2hS5Sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uw1QJ-00000008b4s-2j4U;
-	Tue, 09 Sep 2025 16:42:27 +0000
-Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
+	id 1uw1v9-00000008mdj-2hdZ;
+	Tue, 09 Sep 2025 17:14:19 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvv6s-00000006Bb4-3oFv
-	for linux-mediatek@lists.infradead.org;
-	Tue, 09 Sep 2025 09:58:00 +0000
-Received: by mail-lj1-x233.google.com with SMTP id 38308e7fff4ca-337e1ce5dd1so40883251fa.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 09 Sep 2025 02:57:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1757411877; x=1758016677; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Y9Q/SBeaavLyqr+XPkX2WQCCkix4ESkAOHpRDrEhCu8=;
-        b=l+sV6SwNvVExMOn8slSlN6mfyalWD73VK8D6sIk707+tFSJrJJKmJj97ynOir2uOdq
-         8/x5aRfbbaWqG/JtI6XLLDEKmNkbY5s8k8qj5hbUQ5VVdzo34yiPYz73/f8ATFaCoKmz
-         QBu3PNdDcKXRZCRaR+Pi8dtAv30NQrf8EPhB0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757411877; x=1758016677;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Y9Q/SBeaavLyqr+XPkX2WQCCkix4ESkAOHpRDrEhCu8=;
-        b=FnTs3Q21WEhowK0VSKao/EsS6QIdpQGj3kgNeUEQLzuNIY//S1lHn5ymM3wj2DdY6O
-         sfZcq9T+rNKGokmhXfKBuoqX10z875D4k44L1ZuFW5eWxfPpphIjWBPpmhNgGsk/7H6M
-         ylQ8E5f/r3NxkvVpgA3nA77A2Lg8Es1DDIirOlv5/IlZ/oXhPa/QWJ/oww1SsCV2VOZE
-         4gyMQtdqOTwTm6yhF2rp+z/aCXxoVQkQ+NL3XJ9KnXvGfAMn3KTKgtydV09HjzrPe6lK
-         rhAoktz0b0ijHaUC8dylNl8/nAsi7ozYfVn4n6gJl4lxanvUEepdmw/bO+Spq/Tfxyxz
-         UWkA==
-X-Forwarded-Encrypted: i=1; AJvYcCXwk8jzv+/6PidPGbhIxgH7wv4n8bzYh5zUcGCRHBQzMMXiQuOHi0RJExsVyMN1qYYSQE2Rjr/LMn9cGn6ZxA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy4SZHLXNx2bPzdv839fFpXIw4Gv3tdlsmJWvB8P3VYmozqCo3C
-	b6gYZL3746Xr6IftdwmjzIL6o2nTgGP8VBECHf+NpNWbNhHbh8wfSXY5UghBQBCNbEABOosqpwa
-	OOZ8web+YF3KM2VfVkiIWZECXZKnNGtVvtAtPJMcj
-X-Gm-Gg: ASbGncs82k798czSwSDoprm/zq6Jwgf2c3hc/DKpK3MIFO6yiZBRMyh+eDG5cJVclGd
-	lybvINKyXhA2anWF+wS0jjQsP5m+1m3jxnECYlXwKjvP64WyL5Qh89+x943niBFQvKYkbt0+cFH
-	3wrr93DaPzUvYE7I+fANVjgyCruonVkAVGZ7YdIxrLOWp0YiE6N0tiJkMYa0u7msqAgJJRtSLGI
-	Jgf0ewWZQUsQPIKjMaG/8wLKuX3wVv3vujsEu8svLobSRtT
-X-Google-Smtp-Source: AGHT+IHtBPyRAgJpbhrMNhQvYhuKCwVHTEcLjpAEXVvG2Qe+VaW+WbYg4882F6R1NtG5see0MuJ+hLu/7q6vsaofizo=
-X-Received: by 2002:a05:651c:50f:b0:336:e05c:e3d4 with SMTP id
- 38308e7fff4ca-33b5e8f6aedmr36499581fa.23.1757411877143; Tue, 09 Sep 2025
- 02:57:57 -0700 (PDT)
+	id 1uvvs4-00000006V1r-2vY0;
+	Tue, 09 Sep 2025 10:46:46 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 14D1A4442B;
+	Tue,  9 Sep 2025 10:46:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9147DC4CEF4;
+	Tue,  9 Sep 2025 10:46:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1757414803;
+	bh=yWrhc412alWgxx6Om8MS4lFSCSiz7aS8X262Zvx9aeA=;
+	h=From:To:Cc:Subject:Date:From;
+	b=KWIANRDGKOXB9ngieV26KAdfpdlYXvgcH5bTFwhbA8LRTyWDg1H6tiy9K++ltVln4
+	 vR1YgOMNbs8Kwvjmbjt9YeIKDZLYpmskusNzpmaTzTSLYbNCT3LytG/vOkzbEpUMbl
+	 VQuSu4uLa9TsGX4Xw4U6iu2wxXWQ3xVykQPQqA7/winwFL+AATZNZ2qa9NPgc2UwIw
+	 olaSvilNUYdxoZ5nkJmEaI4F+9oM6GauaPKeObdVjuksuqnrEQ8o9tqbUDj4KIoS2Y
+	 wDqW0G7l5xFdHQMO4jt+A1Aa0uvCxV1jyT/peWGQbdg6d4bKhAgDfabsiN8UB5w68o
+	 HaM5NOx5JZFMA==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: nbd@nbd.name,
+	ryder.lee@mediatek.com
+Cc: shayne.chen@mediatek.com,
+	sean.wang@mediatek.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-wireless@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	lorenzo@kernel.org
+Subject: [PATCH mt76] wifi: mt76: Convert mt76_wed_rro_ind to LE
+Date: Tue,  9 Sep 2025 12:46:37 +0200
+Message-ID: <301d5f2982ddb729c876fb65f9ac2443ce3f5ff1.1757414621.git.lorenzo@kernel.org>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-References: <20250909073819.25295-1-johan@kernel.org>
-In-Reply-To: <20250909073819.25295-1-johan@kernel.org>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 9 Sep 2025 17:57:45 +0800
-X-Gm-Features: Ac12FXySeIcZbJr55CfFDecjeH7ZG6WTjgfFt9EkkcubagtMiSJ1iQX0YbRtXW8
-Message-ID: <CAGXv+5EcnLJHG_50mYb2YB0_q1XOztF84c9tAJJfKZxSCWuUCQ@mail.gmail.com>
-Subject: Re: [PATCH] cpufreq: mediatek: fix device leak on probe failure
-To: Johan Hovold <johan@kernel.org>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>, Viresh Kumar <viresh.kumar@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-pm@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	Jia-Wei Chang <jia-wei.chang@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250909_025758_991857_97BF57D8 
-X-CRM114-Status: GOOD (  17.20  )
+X-CRM114-CacheID: sfid-20250909_034644_775083_9DFD4649 
+X-CRM114-Status: GOOD (  15.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,74 +75,159 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 9, 2025 at 5:40=E2=80=AFPM Johan Hovold <johan@kernel.org> wrot=
-e:
->
-> Make sure to drop the reference to the cci device taken by
-> of_find_device_by_node() on probe failure (e.g. probe deferral).
->
-> Fixes: 0daa47325bae ("cpufreq: mediatek: Link CCI device to CPU")
-> Cc: Jia-Wei Chang <jia-wei.chang@mediatek.com>
-> Cc: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> Signed-off-by: Johan Hovold <johan@kernel.org>
-> ---
->  drivers/cpufreq/mediatek-cpufreq.c | 14 +++++++++++---
->  1 file changed, 11 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediate=
-k-cpufreq.c
-> index f3f02c4b6888..21537a05785d 100644
-> --- a/drivers/cpufreq/mediatek-cpufreq.c
-> +++ b/drivers/cpufreq/mediatek-cpufreq.c
-> @@ -404,9 +404,11 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvf=
-s_info *info, int cpu)
->         }
->
->         info->cpu_clk =3D clk_get(cpu_dev, "cpu");
-> -       if (IS_ERR(info->cpu_clk))
-> -               return dev_err_probe(cpu_dev, PTR_ERR(info->cpu_clk),
-> -                                    "cpu%d: failed to get cpu clk\n", cp=
-u);
-> +       if (IS_ERR(info->cpu_clk)) {
-> +               ret =3D PTR_ERR(info->cpu_clk);
-> +               dev_err_probe(cpu_dev, ret, "cpu%d: failed to get cpu clk=
-\n", cpu);
-> +               goto out_put_cci_dev;
-> +       }
->
->         info->inter_clk =3D clk_get(cpu_dev, "intermediate");
->         if (IS_ERR(info->inter_clk)) {
-> @@ -552,6 +554,10 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvf=
-s_info *info, int cpu)
->  out_free_mux_clock:
->         clk_put(info->cpu_clk);
->
-> +out_put_cci_dev:
-> +       if (info->soc_data->ccifreq_supported)
-> +               put_device(info->cci_dev);
+Do not use bitmask in mt76_wed_rro_ind DMA descriptor in order to not
+break endianness.
+This patch is based on the following series:
+https://lore.kernel.org/linux-wireless/20250909-mt7996-rro-rework-v5-0-7d66f6eb7795@kernel.org/T/#m8b488004d69036cd3672b9eeca8005a937ec0313
 
-put_device() has a check for NULL, so the if isn't really needed.
+Fixes: 950d0abb5cd94 ("wifi: mt76: mt7996: add wed rx support")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/wireless/mediatek/mt76/dma.c      |  9 ++++++--
+ drivers/net/wireless/mediatek/mt76/mt76.h     | 17 ++++++++-------
+ .../net/wireless/mediatek/mt76/mt7996/mac.c   | 21 ++++++++++++-------
+ 3 files changed, 29 insertions(+), 18 deletions(-)
 
-Either way,
+diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireless/mediatek/mt76/dma.c
+index 5dc093b21838..1fa7de1d2c45 100644
+--- a/drivers/net/wireless/mediatek/mt76/dma.c
++++ b/drivers/net/wireless/mediatek/mt76/dma.c
+@@ -194,6 +194,8 @@ mt76_dma_queue_magic_cnt_init(struct mt76_dev *dev, struct mt76_queue *q)
+ 	q->magic_cnt = 0;
+ 	if (mt76_queue_is_wed_rro_ind(q)) {
+ 		struct mt76_wed_rro_desc *rro_desc;
++		u32 data1 = FIELD_PREP(RRO_IND_DATA1_MAGIC_CNT_MASK,
++				       MT_DMA_WED_IND_CMD_CNT - 1);
+ 		int i;
+ 
+ 		rro_desc = (struct mt76_wed_rro_desc *)q->desc;
+@@ -201,7 +203,7 @@ mt76_dma_queue_magic_cnt_init(struct mt76_dev *dev, struct mt76_queue *q)
+ 			struct mt76_wed_rro_ind *cmd;
+ 
+ 			cmd = (struct mt76_wed_rro_ind *)&rro_desc[i];
+-			cmd->magic_cnt = MT_DMA_WED_IND_CMD_CNT - 1;
++			cmd->data1 = cpu_to_le32(data1);
+ 		}
+ 	} else if (mt76_queue_is_wed_rro_rxdmad_c(q)) {
+ 		struct mt76_rro_rxdmad_c *dmad = (void *)q->desc;
+@@ -582,12 +584,15 @@ mt76_dma_dequeue(struct mt76_dev *dev, struct mt76_queue *q, bool flush,
+ 
+ 	if (mt76_queue_is_wed_rro_ind(q)) {
+ 		struct mt76_wed_rro_ind *cmd;
++		u8 magic_cnt;
+ 
+ 		if (flush)
+ 			goto done;
+ 
+ 		cmd = q->entry[idx].buf;
+-		if (cmd->magic_cnt != q->magic_cnt)
++		magic_cnt = FIELD_GET(RRO_IND_DATA1_MAGIC_CNT_MASK,
++				      le32_to_cpu(cmd->data1));
++		if (magic_cnt != q->magic_cnt)
+ 			return NULL;
+ 
+ 		if (q->tail == q->ndesc - 1)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index a78d663ee91d..eede0c0fe2b9 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -415,15 +415,16 @@ struct mt76_txq {
+ 	bool aggr;
+ };
+ 
++/* data0 */
++#define RRO_IND_DATA0_IND_REASON_MASK	GENMASK(31, 28)
++#define RRO_IND_DATA0_START_SEQ_MASK	GENMASK(27, 16)
++#define RRO_IND_DATA0_SEQ_ID_MASK	GENMASK(11, 0)
++/* data1 */
++#define RRO_IND_DATA1_MAGIC_CNT_MASK	GENMASK(31, 29)
++#define RRO_IND_DATA1_IND_COUNT_MASK	GENMASK(12, 0)
+ struct mt76_wed_rro_ind {
+-	u32 se_id	: 12;
+-	u32 rsv		: 4;
+-	u32 start_sn	: 12;
+-	u32 ind_reason	: 4;
+-	u32 ind_cnt	: 13;
+-	u32 win_sz	: 3;
+-	u32 rsv2	: 13;
+-	u32 magic_cnt	: 3;
++	__le32 data0;
++	__le32 data1;
+ };
+ 
+ struct mt76_txwi_cache {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+index ed10e45b21a4..5b43678e6556 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+@@ -1822,11 +1822,17 @@ void mt7996_rro_rx_process(struct mt76_dev *mdev, void *data)
+ {
+ 	struct mt7996_dev *dev = container_of(mdev, struct mt7996_dev, mt76);
+ 	struct mt76_wed_rro_ind *cmd = (struct mt76_wed_rro_ind *)data;
++	u32 cmd_data0 = le32_to_cpu(cmd->data0);
++	u32 cmd_data1 = le32_to_cpu(cmd->data1);
++	u8 ind_reason = FIELD_GET(RRO_IND_DATA0_IND_REASON_MASK, cmd_data0);
++	u16 start_seq = FIELD_GET(RRO_IND_DATA0_START_SEQ_MASK, cmd_data0);
++	u16 seq_id = FIELD_GET(RRO_IND_DATA0_SEQ_ID_MASK, cmd_data0);
++	u16 ind_count = FIELD_GET(RRO_IND_DATA1_IND_COUNT_MASK, cmd_data1);
+ 	struct mt7996_msdu_page_info *pinfo = NULL;
+ 	struct mt7996_msdu_page *p = NULL;
+ 	int i, seq_num = 0;
+ 
+-	for (i = 0; i < cmd->ind_cnt; i++) {
++	for (i = 0; i < ind_count; i++) {
+ 		struct mt7996_wed_rro_addr *e;
+ 		struct mt76_rx_status *status;
+ 		struct mt7996_rro_hif *rxd;
+@@ -1841,8 +1847,8 @@ void mt7996_rro_rx_process(struct mt76_dev *mdev, void *data)
+ 		void *buf;
+ 		bool ls;
+ 
+-		seq_num = FIELD_GET(MT996_RRO_SN_MASK, cmd->start_sn + i);
+-		e = mt7996_rro_addr_elem_get(dev, cmd->se_id, seq_num);
++		seq_num = FIELD_GET(MT996_RRO_SN_MASK, start_seq + i);
++		e = mt7996_rro_addr_elem_get(dev, seq_id, seq_num);
+ 		data = le32_to_cpu(e->data);
+ 		signature = FIELD_GET(WED_RRO_ADDR_SIGNATURE_MASK, data);
+ 		if (signature != (seq_num / MT7996_RRO_WINDOW_MAX_LEN)) {
+@@ -1930,7 +1936,7 @@ void mt7996_rro_rx_process(struct mt76_dev *mdev, void *data)
+ 			skb_mark_for_recycle(skb);
+ 			__skb_put(skb, len);
+ 
+-			if (cmd->ind_reason == 1 || cmd->ind_reason == 2) {
++			if (ind_reason == 1 || ind_reason == 2) {
+ 				dev_kfree_skb(skb);
+ 				goto next_page;
+ 			}
+@@ -1941,7 +1947,7 @@ void mt7996_rro_rx_process(struct mt76_dev *mdev, void *data)
+ 			}
+ 
+ 			status = (struct mt76_rx_status *)skb->cb;
+-			if (cmd->se_id != MT7996_RRO_MAX_SESSION)
++			if (seq_id != MT7996_RRO_MAX_SESSION)
+ 				status->aggr = true;
+ 
+ 			mt7996_queue_rx_skb(mdev, qid, skb, &info);
+@@ -1965,7 +1971,7 @@ void mt7996_rro_rx_process(struct mt76_dev *mdev, void *data)
+ 		if ((i + 1) % 4 == 0)
+ 			mt76_wr(dev, MT_RRO_ACK_SN_CTRL,
+ 				FIELD_PREP(MT_RRO_ACK_SN_CTRL_SESSION_MASK,
+-					   cmd->se_id) |
++					   seq_id) |
+ 				FIELD_PREP(MT_RRO_ACK_SN_CTRL_SN_MASK,
+ 					   seq_num));
+ 		if (p) {
+@@ -1977,8 +1983,7 @@ void mt7996_rro_rx_process(struct mt76_dev *mdev, void *data)
+ 	/* Update ack_seq_num for remaining addr_elem */
+ 	if (i % 4)
+ 		mt76_wr(dev, MT_RRO_ACK_SN_CTRL,
+-			FIELD_PREP(MT_RRO_ACK_SN_CTRL_SESSION_MASK,
+-				   cmd->se_id) |
++			FIELD_PREP(MT_RRO_ACK_SN_CTRL_SESSION_MASK, seq_id) |
+ 			FIELD_PREP(MT_RRO_ACK_SN_CTRL_SN_MASK, seq_num));
+ }
+ 
+-- 
+2.51.0
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-
-> +
->         return ret;
->  }
->
-> @@ -569,6 +575,8 @@ static void mtk_cpu_dvfs_info_release(struct mtk_cpu_=
-dvfs_info *info)
->         clk_put(info->inter_clk);
->         dev_pm_opp_of_cpumask_remove_table(&info->cpus);
->         dev_pm_opp_unregister_notifier(info->cpu_dev, &info->opp_nb);
-> +       if (info->soc_data->ccifreq_supported)
-> +               put_device(info->cci_dev);
->  }
->
->  static int mtk_cpufreq_init(struct cpufreq_policy *policy)
-> --
-> 2.49.1
->
->
 
