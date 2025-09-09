@@ -4,89 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AF72CAC587
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 06:58:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7EE7CA0FED
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 06:58:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:To:
+	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YI1lEa2m79R1su/rEIpWAFyrO+Jezkd3/oRpZDuRj5I=; b=SHM+Wp3ApfimW6IY9Ax1penlGk
-	BSuwTWnI0mAY6F5CuHaT/0bEmf7MPuT1Z57Js7VS8EpEla5PLklqjZORvhiOpoE/bkBPGGKawP8y4
-	cjvEXwJpAkq0xFJW8HoaMrN335UjtSVNqhhf+5/eYaLUOXTX5+M53iD/K/dl7jqZlhWL2px6jR7PE
-	O7YnpTl8w3KmHkmt52BTKOhKPXpme9qNFQM5nefUMB590RARxeSjCWQAPSZFeYnNIpLKBihPJWEOt
-	WJ4InzVZ7fTVFin5SD3X470TJYMsg4kYzo9uTtYTXQFQ9vXuym//r5+YBPTt4/4lW//O3Kn/zRjtW
-	b66jc5mg==;
+	bh=100TeeKX0bEkdWOoovysiylW3wpHrYpCJTVbsOOCqqQ=; b=cbjf4Pyblk+9WQLI96d0kvhAD3
+	tDrhsX+DJ+Cf8TTn0zlJwTySTszfCEcJWh6RHASJ68q3IHKvhEtaVPB2a+uzmja+R27fQeIiCLHCr
+	yO/hf/Tu9mrZX/6oeMXX2nrJEX2g+1NmQ4JNsXmYXlKYX8XEufw+K2nePMc0elsUhIhkO/tJUMH9k
+	3ruecsA8Yc3y5P/pbZ38IwQgBIxpbkuIxpDAIDCUVA5owQLhxYU4ac08fCq7CdaKfv5poogkSyEtr
+	hG8T0GKa49bGiS4PFl5CQrw5w3H/8aVx35zy9/5h59R9XAoMESTLTllCCdbfUPjCppdZfJjhE0Eep
+	tQ0LSLIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvsJB-00000004ydm-3avR;
-	Tue, 09 Sep 2025 06:58:29 +0000
-Received: from nbd.name ([46.4.11.11])
+	id 1uvsJT-00000004z0o-0KiE;
+	Tue, 09 Sep 2025 06:58:47 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvqhR-00000004Nyv-0zAs
-	for linux-mediatek@lists.infradead.org;
-	Tue, 09 Sep 2025 05:15:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
-	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
-	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=YI1lEa2m79R1su/rEIpWAFyrO+Jezkd3/oRpZDuRj5I=; b=aOBMaUepJhS809k1fkV1TvIkz3
-	hv/b5KNKIldk1O0E7tHLgLCCjz1A4ECEJbU70y+UGav+EQBVgtpeikPfGS7Z+ysEi6oNUU+U6m+zQ
-	koUHhtZ3ejC07JXMozHVNAJT8GSIHbwAmsWO36YayCqFE+Kzu9wfWUl2BFB/mZC92YFc=;
-Received: from p5b206816.dip0.t-ipconnect.de ([91.32.104.22] helo=nf.local)
-	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-	(Exim 4.96)
-	(envelope-from <nbd@nbd.name>)
-	id 1uvqhJ-004E0x-1l;
-	Tue, 09 Sep 2025 07:15:17 +0200
-Message-ID: <c64c1a73-17b4-43e1-9188-03a2ce3ec8b1@nbd.name>
-Date: Tue, 9 Sep 2025 07:15:16 +0200
+	id 1uvqzo-00000004Ryv-0MOo;
+	Tue, 09 Sep 2025 05:34:25 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 1CFB944465;
+	Tue,  9 Sep 2025 05:34:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DC1E7C4CEF4;
+	Tue,  9 Sep 2025 05:34:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1757396063;
+	bh=7L3Kwcvnd7kUCdkPXU70YXj1QbDevHKc2/sNeOjfBiA=;
+	h=From:To:In-Reply-To:References:Subject:Date:From;
+	b=iq7wjSgHT19iuUUhClv6rXJU8O9nWpBt6pRiTw38JoT7CuSYjBRk3tTNeh/j7kQhm
+	 s/hy82cdglOlaZ2eYRZCQTGxzyCM96Adx2cOQrTE1Nsx/Doo9f0/BbpAllh+hBfa0H
+	 JbklCqFNgTag/HcJCj6Yb/o78MV3h2s+xUgL5LJWYuu0dtx+J4pe9kJW9P6JbaTDBF
+	 zDcTJtTMci1CElTFLhzSorVf7RkTNGRQYc+rZ4EK3ZzjmfDFGvG3NS0OukvbJ37SFb
+	 az6LZAo7BD7nsJ547/Zfy5TnoxUezKzN0o3iCnccr7070NUeW5MVkIeBeRLavdmFUk
+	 TmPbvAtJ0+58A==
+From: Srinivas Kandagatla <srini@kernel.org>
+To: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Vladimir Oltean <olteanv@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>, 
+ Russell King <linux@armlinux.org.uk>, 
+ "Chester A. Unal" <chester.a.unal@arinc9.com>, 
+ Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
+ Sean Wang <sean.wang@mediatek.com>, Simon Horman <horms@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ netdev@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, Christian Marangi <ansuelsmth@gmail.com>
+In-Reply-To: <20250909004343.18790-1-ansuelsmth@gmail.com>
+References: <20250909004343.18790-1-ansuelsmth@gmail.com>
+Subject: Re: (subset) [net-next PATCH v16 00/10] net: dsa: Add Airoha
+ AN8855 support
+Message-Id: <175739605846.61348.16310568813041047278.b4-ty@kernel.org>
+Date: Tue, 09 Sep 2025 06:34:18 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/4] wifi: mt76: mt792x: protect state->cc_* counters with
- cc_lock
-To: Mingyen Hsieh <mingyen.hsieh@mediatek.com>, lorenzo@kernel.org
-Cc: deren.wu@mediatek.com, Sean.Wang@mediatek.com, Leon.Yen@mediatek.com,
- Michael.Lo@mediatek.com, allan.wang@mediatek.com,
- Eric-SY.Chang@mediatek.com, km.lin@mediatek.com, Quan.Zhou@mediatek.com,
- Ryder.Lee@mediatek.com, Shayne.Chen@mediatek.com,
- linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20250904030649.655436-1-mingyen.hsieh@mediatek.com>
- <20250904030649.655436-2-mingyen.hsieh@mediatek.com>
-Content-Language: en-US
-From: Felix Fietkau <nbd@nbd.name>
-Autocrypt: addr=nbd@nbd.name; keydata=
- xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
- ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
- Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
- AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
- vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
- wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
- TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
- l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
- dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
- HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
- VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
- CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
- VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
- Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
- DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
- wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
- f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
- aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
- FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
- TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
- GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
- cL98efvrjdstUfTCP2pfetyN
-In-Reply-To: <20250904030649.655436-2-mingyen.hsieh@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250908_221527_062993_3A587448 
-X-CRM114-Status: UNSURE (   4.98  )
+X-CRM114-CacheID: sfid-20250908_223424_151077_1D9A186F 
+X-CRM114-Status: UNSURE (   9.00  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -102,18 +85,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 04.09.25 05:06, Mingyen Hsieh wrote:
-> From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
-> 
-> The updates to state->cc_* (cc_busy, cc_tx, etc.) lack synchronization,
-> risking race conditions and inconsistent statistics.
-> 
-> Add cc_lock protection to ensure atomic updates.
-> 
-> Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 
-I don't see any race conditions here. Those counters are only updated 
-and accessed with dev->mutex held.
+On Tue, 09 Sep 2025 02:43:31 +0200, Christian Marangi wrote:
+> This series add the initial support for the Airoha AN8855 Switch.
+> 
+> It's a 5 port Gigabit Switch with SGMII/HSGMII upstream port.
+> 
+> This is starting to get in the wild and there are already some router
+> having this switch chip.
+> 
+> [...]
 
-- Felix
+Applied, thanks!
+
+[01/10] dt-bindings: nvmem: Document support for Airoha AN8855 Switch EFUSE
+        commit: 04b74f665961599e807b24af28099a29d691b18c
+[05/10] nvmem: an8855: Add support for Airoha AN8855 Switch EFUSE
+        commit: 1c633b4b15aafbc8ffb2458b236d204c835cff39
+
+Best regards,
+-- 
+Srinivas Kandagatla <srini@kernel.org>
+
 
