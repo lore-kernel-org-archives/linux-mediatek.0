@@ -4,64 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE0FDCAC583
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 16:42:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E462CCAC58F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 16:42:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2ZbpXEUxbf5i4kX1LWSahhezFSeJsNj0DV486apUphg=; b=OQNpbCjRle8io+jheSZMuevGJe
-	sPr1fvnT8AIc238VXMN58LJRZdYLHiJYYbuKSzxw3SlDNHAmijku9Gmncb25bnbY9YdqoMUCDjYNg
-	zKV2Eyv5ZZKKnuc78RS0eNxCSrJASUWcjcXTARd/4eE5e8ymQWzmwFLFL9nJSUpEYi9IFsJMP2Vld
-	cotsG3VN60YcAQk7+hMMBnTHAJO/VAoGj6VwLYHHcuFnqNJYeRpAvZ3MmbUmmL+x2CVcmkU9QlgY7
-	haHwYQcNsSfi2YfSotmcJXxGTee+wNm298Z6ZrSqceUJFwOpy+yZmDO5IHZfTGm357dzHC3Dd60vJ
-	Rzg58wug==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fTss655vhxdUft2ofzsRdjSj+jZ1Aem/pV1rlcBeKqE=; b=yMIi0dz1Ggu0JdV8T1q4D79S/L
+	kVg5EQDYu1J4r422veZ0fm1YmfTdnVnOo9/Iv0tsEIufx9tXJXdKQ5TC5HgPMWDHOOo/Pbbhp13Y0
+	1tHIMDFdbKWzmxBulQIT3p+Zkyq6pydb0NTK2rNv2274IjJteMJpJNBQexXH5iFDPF6auDI86QeZw
+	0fl7mBY8dRrOjWP0/kwqWPTzPqpwElg3XNJv2r6zOnbhIoZ96lbY9QV/XliEivTIb4JFOh5wh82Rg
+	4HrzOa+W1c8z1wiR0RoUhS1vlchTiWaFPHG9DEzR4C4Y05gacaUbh/03o5SQKJKAbVS++gJdz3LQ9
+	XAhjlvKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uw1Q5-00000008ab0-3tML;
-	Tue, 09 Sep 2025 16:42:13 +0000
-Received: from woodpecker.gentoo.org ([140.211.166.183] helo=smtp.gentoo.org)
+	id 1uw1Q9-00000008aiH-0vhq;
+	Tue, 09 Sep 2025 16:42:17 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvupa-0000000637G-2KFi;
-	Tue, 09 Sep 2025 09:40:10 +0000
-Received: from localhost (unknown [116.232.18.168])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: dlan)
-	by smtp.gentoo.org (Postfix) with ESMTPSA id DECA3340EC3;
-	Tue, 09 Sep 2025 09:40:03 +0000 (UTC)
-Date: Tue, 9 Sep 2025 17:39:58 +0800
-From: Yixun Lan <dlan@gentoo.org>
-To: Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: Linus Walleij <linus.walleij@linaro.org>,
-	Keguang Zhang <keguang.zhang@gmail.com>,
-	Alban Bedel <albeu@free.fr>, Doug Berger <opendmb@gmail.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Samuel Holland <samuel.holland@sifive.com>,
-	Andy Shevchenko <andy@kernel.org>, linux-gpio@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
-	spacemit@lists.linux.dev,
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-Subject: Re: [PATCH 12/15] gpio: spacemit-k1: use new generic GPIO chip API
-Message-ID: <20250909093958-GYA1207638@gentoo.org>
-References: <20250909-gpio-mmio-gpio-conv-part4-v1-0-9f723dc3524a@linaro.org>
- <20250909-gpio-mmio-gpio-conv-part4-v1-12-9f723dc3524a@linaro.org>
+	id 1uvuul-000000065uJ-3Fry;
+	Tue, 09 Sep 2025 09:45:27 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id B89D7601DF;
+	Tue,  9 Sep 2025 09:45:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0FF24C4CEF4;
+	Tue,  9 Sep 2025 09:45:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1757411126;
+	bh=63qO3dU+DU3qNsm6kcv0ikjPrEMUL7pdCA8pX5Re53o=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=f0v7+EcCLyBaauKkw7dxQ0iFiYn4xW/U2v1VQq/KO1BjzP7YvYkb2yU4UdD03um0o
+	 wZxUg/aDVD1evBs6sHeg+HnR4Q5gRCEekInU0MobjevLrI6KmDjOnhGv7ATSAthjJh
+	 n1x6cmEMLBMJR9bz5QdyKOIgWyV5b77Db4+dxNAdIiAo49pjekCt0mOC4I3YynFkP/
+	 Y6n0Dt0AbZGebGsdGsm4ocR2DeKFXjA4pEB/R2IP6OuPw92ja6Um4xgguDoemNXF0v
+	 ekTRUUiNIG7tEmmopSpJP59JQiBjhOgijSKXtdjIAe8yLP6tMR+Kfu+zSkn1PQLX9I
+	 Y7tIsw85w98+Q==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Tue, 09 Sep 2025 11:45:09 +0200
+Subject: [PATCH mt76 v5 01/16] wifi: mt76: Add reset_idx to reset_q
+ mt76_queue_ops signature.
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250909-gpio-mmio-gpio-conv-part4-v1-12-9f723dc3524a@linaro.org>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250909_024006_990903_DE38DCA8 
-X-CRM114-Status: GOOD (  21.07  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250909-mt7996-rro-rework-v5-1-7d66f6eb7795@kernel.org>
+References: <20250909-mt7996-rro-rework-v5-0-7d66f6eb7795@kernel.org>
+In-Reply-To: <20250909-mt7996-rro-rework-v5-0-7d66f6eb7795@kernel.org>
+To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Sujuan Chen <sujuan.chen@mediatek.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>, Bo Jiao <Bo.Jiao@mediatek.com>
+Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Rex Lu <rex.lu@mediatek.com>, 
+ Benjamin Lin <benjamin-jw.lin@mediatek.com>
+X-Mailer: b4 0.14.2
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,116 +75,203 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Remove __mt76_dma_queue_reset routine and use mt76_dma_queue_reset
+directly instead in mt76_queue_ops struct.
+This is a preliminary patch to enable WED support for MT7992 Kite
+chipset supported by MT7996 driver.
 
-On 11:15 Tue 09 Sep     , Bartosz Golaszewski wrote:
-> From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-> 
-> Convert the driver to using the new generic GPIO chip interfaces from
-> linux/gpio/generic.h.
-> 
-> Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-Thanks for converting this
+Co-developed-by: Rex Lu <rex.lu@mediatek.com>
+Signed-off-by: Rex Lu <rex.lu@mediatek.com>
+Co-developed-by: Sujuan Chen <sujuan.chen@mediatek.com>
+Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
+Co-developed-by: Benjamin Lin <benjamin-jw.lin@mediatek.com>
+Signed-off-by: Benjamin Lin <benjamin-jw.lin@mediatek.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/wireless/mediatek/mt76/dma.c        | 11 +++--------
+ drivers/net/wireless/mediatek/mt76/dma.h        |  7 +++----
+ drivers/net/wireless/mediatek/mt76/mt76.h       |  3 ++-
+ drivers/net/wireless/mediatek/mt76/mt7915/dma.c |  4 ++--
+ drivers/net/wireless/mediatek/mt76/mt792x_dma.c |  6 +++---
+ drivers/net/wireless/mediatek/mt76/mt7996/dma.c |  4 ++--
+ drivers/net/wireless/mediatek/mt76/wed.c        |  8 ++++----
+ 7 files changed, 19 insertions(+), 24 deletions(-)
 
-Reviewed-by: Yixun Lan <dlan@gentoo.org>
-
-> ---
->  drivers/gpio/gpio-spacemit-k1.c | 28 ++++++++++++++++++++--------
->  1 file changed, 20 insertions(+), 8 deletions(-)
-> 
-> diff --git a/drivers/gpio/gpio-spacemit-k1.c b/drivers/gpio/gpio-spacemit-k1.c
-> index 3cc75c701ec40194e602b80d3f96f23204ce3b4d..9e57f43d3d13ad28fcd3327ecdc3f359691a44c9 100644
-> --- a/drivers/gpio/gpio-spacemit-k1.c
-> +++ b/drivers/gpio/gpio-spacemit-k1.c
-> @@ -6,6 +6,7 @@
->  
->  #include <linux/clk.h>
->  #include <linux/gpio/driver.h>
-> +#include <linux/gpio/generic.h>
->  #include <linux/init.h>
->  #include <linux/interrupt.h>
->  #include <linux/io.h>
-> @@ -38,7 +39,7 @@
->  struct spacemit_gpio;
->  
->  struct spacemit_gpio_bank {
-> -	struct gpio_chip gc;
-> +	struct gpio_generic_chip chip;
->  	struct spacemit_gpio *sg;
->  	void __iomem *base;
->  	u32 irq_mask;
-> @@ -72,7 +73,7 @@ static irqreturn_t spacemit_gpio_irq_handler(int irq, void *dev_id)
->  		return IRQ_NONE;
->  
->  	for_each_set_bit(n, &pending, BITS_PER_LONG)
-> -		handle_nested_irq(irq_find_mapping(gb->gc.irq.domain, n));
-> +		handle_nested_irq(irq_find_mapping(gb->chip.gc.irq.domain, n));
->  
->  	return IRQ_HANDLED;
->  }
-> @@ -143,7 +144,7 @@ static void spacemit_gpio_irq_print_chip(struct irq_data *data, struct seq_file
->  {
->  	struct spacemit_gpio_bank *gb = irq_data_get_irq_chip_data(data);
->  
-> -	seq_printf(p, "%s-%d", dev_name(gb->gc.parent), spacemit_gpio_bank_index(gb));
-> +	seq_printf(p, "%s-%d", dev_name(gb->chip.gc.parent), spacemit_gpio_bank_index(gb));
->  }
->  
->  static struct irq_chip spacemit_gpio_chip = {
-> @@ -165,7 +166,7 @@ static bool spacemit_of_node_instance_match(struct gpio_chip *gc, unsigned int i
->  	if (i >= SPACEMIT_NR_BANKS)
->  		return false;
->  
-> -	return (gc == &sg->sgb[i].gc);
-> +	return (gc == &sg->sgb[i].chip.gc);
->  }
->  
->  static int spacemit_gpio_add_bank(struct spacemit_gpio *sg,
-> @@ -173,7 +174,8 @@ static int spacemit_gpio_add_bank(struct spacemit_gpio *sg,
->  				  int index, int irq)
->  {
->  	struct spacemit_gpio_bank *gb = &sg->sgb[index];
-> -	struct gpio_chip *gc = &gb->gc;
-> +	struct gpio_generic_chip_config config;
-> +	struct gpio_chip *gc = &gb->chip.gc;
->  	struct device *dev = sg->dev;
->  	struct gpio_irq_chip *girq;
->  	void __iomem *dat, *set, *clr, *dirin, *dirout;
-> @@ -187,9 +189,19 @@ static int spacemit_gpio_add_bank(struct spacemit_gpio *sg,
->  	dirin	= gb->base + SPACEMIT_GCDR;
->  	dirout	= gb->base + SPACEMIT_GSDR;
->  
-> +	config = (typeof(config)){
-> +		.dev = dev,
-> +		.sz = 4,
-> +		.dat = dat,
-> +		.set = set,
-> +		.clr = clr,
-> +		.dirout = dirout,
-> +		.dirin = dirin,
-> +		.flags = BGPIOF_UNREADABLE_REG_SET | BGPIOF_UNREADABLE_REG_DIR,
-> +	};
-> +
->  	/* This registers 32 GPIO lines per bank */
-> -	ret = bgpio_init(gc, dev, 4, dat, set, clr, dirout, dirin,
-> -			 BGPIOF_UNREADABLE_REG_SET | BGPIOF_UNREADABLE_REG_DIR);
-> +	ret = gpio_generic_chip_init(&gb->chip, &config);
->  	if (ret)
->  		return dev_err_probe(dev, ret, "failed to init gpio chip\n");
->  
-> @@ -221,7 +233,7 @@ static int spacemit_gpio_add_bank(struct spacemit_gpio *sg,
->  	ret = devm_request_threaded_irq(dev, irq, NULL,
->  					spacemit_gpio_irq_handler,
->  					IRQF_ONESHOT | IRQF_SHARED,
-> -					gb->gc.label, gb);
-> +					gb->chip.gc.label, gb);
->  	if (ret < 0)
->  		return dev_err_probe(dev, ret, "failed to register IRQ\n");
->  
-> 
-> -- 
-> 2.48.1
-> 
+diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireless/mediatek/mt76/dma.c
+index 87f531297f8513b0caee2d034184ddd8fa3b6a21..25c26ff8c8e24352f2bb31c6e185e628a56f609b 100644
+--- a/drivers/net/wireless/mediatek/mt76/dma.c
++++ b/drivers/net/wireless/mediatek/mt76/dma.c
+@@ -197,8 +197,8 @@ mt76_dma_sync_idx(struct mt76_dev *dev, struct mt76_queue *q)
+ 	q->tail = q->head;
+ }
+ 
+-void __mt76_dma_queue_reset(struct mt76_dev *dev, struct mt76_queue *q,
+-			    bool reset_idx)
++void mt76_dma_queue_reset(struct mt76_dev *dev, struct mt76_queue *q,
++			  bool reset_idx)
+ {
+ 	if (!q || !q->ndesc)
+ 		return;
+@@ -218,11 +218,6 @@ void __mt76_dma_queue_reset(struct mt76_dev *dev, struct mt76_queue *q,
+ 	mt76_dma_sync_idx(dev, q);
+ }
+ 
+-void mt76_dma_queue_reset(struct mt76_dev *dev, struct mt76_queue *q)
+-{
+-	__mt76_dma_queue_reset(dev, q, true);
+-}
+-
+ static int
+ mt76_dma_add_rx_buf(struct mt76_dev *dev, struct mt76_queue *q,
+ 		    struct mt76_queue_buf *buf, void *data)
+@@ -740,7 +735,7 @@ mt76_dma_alloc_queue(struct mt76_dev *dev, struct mt76_queue *q,
+ 			return 0;
+ 	}
+ 
+-	mt76_dma_queue_reset(dev, q);
++	mt76_dma_queue_reset(dev, q, true);
+ 
+ 	return 0;
+ }
+diff --git a/drivers/net/wireless/mediatek/mt76/dma.h b/drivers/net/wireless/mediatek/mt76/dma.h
+index e3ddc7a837579c0835a704ab8944099d276c6222..320d2cbbbd4559db146139a50e579b9b57282557 100644
+--- a/drivers/net/wireless/mediatek/mt76/dma.h
++++ b/drivers/net/wireless/mediatek/mt76/dma.h
+@@ -81,14 +81,13 @@ void mt76_dma_attach(struct mt76_dev *dev);
+ void mt76_dma_cleanup(struct mt76_dev *dev);
+ int mt76_dma_rx_fill(struct mt76_dev *dev, struct mt76_queue *q,
+ 		     bool allow_direct);
+-void __mt76_dma_queue_reset(struct mt76_dev *dev, struct mt76_queue *q,
+-			    bool reset_idx);
+-void mt76_dma_queue_reset(struct mt76_dev *dev, struct mt76_queue *q);
++void mt76_dma_queue_reset(struct mt76_dev *dev, struct mt76_queue *q,
++			  bool reset_idx);
+ 
+ static inline void
+ mt76_dma_reset_tx_queue(struct mt76_dev *dev, struct mt76_queue *q)
+ {
+-	dev->queue_ops->reset_q(dev, q);
++	dev->queue_ops->reset_q(dev, q, true);
+ 	if (mtk_wed_device_active(&dev->mmio.wed))
+ 		mt76_wed_dma_setup(dev, q, true);
+ }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index d518a5441418bce5ae477e7f15dde56b6cb5b87d..314221fec512c99cc15b942b7ef7ccecfd1d987e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -290,7 +290,8 @@ struct mt76_queue_ops {
+ 
+ 	void (*kick)(struct mt76_dev *dev, struct mt76_queue *q);
+ 
+-	void (*reset_q)(struct mt76_dev *dev, struct mt76_queue *q);
++	void (*reset_q)(struct mt76_dev *dev, struct mt76_queue *q,
++			bool reset_idx);
+ };
+ 
+ enum mt76_phy_type {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/dma.c b/drivers/net/wireless/mediatek/mt76/mt7915/dma.c
+index 0c62272fe7d03552c8c260b3971a62fb143895c1..009ef713f437983a0676ed5d4d951a9efcb305e8 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/dma.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/dma.c
+@@ -624,13 +624,13 @@ int mt7915_dma_reset(struct mt7915_dev *dev, bool force)
+ 	}
+ 
+ 	for (i = 0; i < __MT_MCUQ_MAX; i++)
+-		mt76_queue_reset(dev, dev->mt76.q_mcu[i]);
++		mt76_queue_reset(dev, dev->mt76.q_mcu[i], true);
+ 
+ 	mt76_for_each_q_rx(&dev->mt76, i) {
+ 		if (mt76_queue_is_wed_tx_free(&dev->mt76.q_rx[i]))
+ 			continue;
+ 
+-		mt76_queue_reset(dev, &dev->mt76.q_rx[i]);
++		mt76_queue_reset(dev, &dev->mt76.q_rx[i], true);
+ 	}
+ 
+ 	mt76_tx_status_check(&dev->mt76, true);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_dma.c b/drivers/net/wireless/mediatek/mt76/mt792x_dma.c
+index 6f9db782338e6e405de49dd07fefae1a1de09f93..69217ce911307b3408a56d0a210b39ac3bc75e8c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x_dma.c
++++ b/drivers/net/wireless/mediatek/mt76/mt792x_dma.c
+@@ -181,13 +181,13 @@ mt792x_dma_reset(struct mt792x_dev *dev, bool force)
+ 
+ 	/* reset hw queues */
+ 	for (i = 0; i < __MT_TXQ_MAX; i++)
+-		mt76_queue_reset(dev, dev->mphy.q_tx[i]);
++		mt76_queue_reset(dev, dev->mphy.q_tx[i], true);
+ 
+ 	for (i = 0; i < __MT_MCUQ_MAX; i++)
+-		mt76_queue_reset(dev, dev->mt76.q_mcu[i]);
++		mt76_queue_reset(dev, dev->mt76.q_mcu[i], true);
+ 
+ 	mt76_for_each_q_rx(&dev->mt76, i)
+-		mt76_queue_reset(dev, &dev->mt76.q_rx[i]);
++		mt76_queue_reset(dev, &dev->mt76.q_rx[i], true);
+ 
+ 	mt76_tx_status_check(&dev->mt76, true);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/dma.c b/drivers/net/wireless/mediatek/mt76/mt7996/dma.c
+index c8bef0b2a14445224689efb4c0fee6c80387a7fa..c77e619070d34ddbf281a5d90c6c96cbd1bb2283 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/dma.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/dma.c
+@@ -775,7 +775,7 @@ void mt7996_dma_reset(struct mt7996_dev *dev, bool force)
+ 	}
+ 
+ 	for (i = 0; i < __MT_MCUQ_MAX; i++)
+-		mt76_queue_reset(dev, dev->mt76.q_mcu[i]);
++		mt76_queue_reset(dev, dev->mt76.q_mcu[i], true);
+ 
+ 	mt76_for_each_q_rx(&dev->mt76, i) {
+ 		if (mtk_wed_device_active(&dev->mt76.mmio.wed))
+@@ -783,7 +783,7 @@ void mt7996_dma_reset(struct mt7996_dev *dev, bool force)
+ 			    mt76_queue_is_wed_tx_free(&dev->mt76.q_rx[i]))
+ 				continue;
+ 
+-		mt76_queue_reset(dev, &dev->mt76.q_rx[i]);
++		mt76_queue_reset(dev, &dev->mt76.q_rx[i], true);
+ 	}
+ 
+ 	mt76_tx_status_check(&dev->mt76, true);
+diff --git a/drivers/net/wireless/mediatek/mt76/wed.c b/drivers/net/wireless/mediatek/mt76/wed.c
+index 63f69e152b1cbb5bc0170a44976be1c7c52f21dc..907a8e43e72ad1f2a68d097c4a06df4506c4b039 100644
+--- a/drivers/net/wireless/mediatek/mt76/wed.c
++++ b/drivers/net/wireless/mediatek/mt76/wed.c
+@@ -118,7 +118,7 @@ int mt76_wed_dma_setup(struct mt76_dev *dev, struct mt76_queue *q, bool reset)
+ 	case MT76_WED_Q_TXFREE:
+ 		/* WED txfree queue needs ring to be initialized before setup */
+ 		q->flags = 0;
+-		mt76_dma_queue_reset(dev, q);
++		mt76_dma_queue_reset(dev, q, true);
+ 		mt76_dma_rx_fill(dev, q, false);
+ 
+ 		ret = mtk_wed_device_txfree_ring_setup(q->wed, q->regs);
+@@ -133,21 +133,21 @@ int mt76_wed_dma_setup(struct mt76_dev *dev, struct mt76_queue *q, bool reset)
+ 		break;
+ 	case MT76_WED_RRO_Q_DATA:
+ 		q->flags &= ~MT_QFLAG_WED;
+-		__mt76_dma_queue_reset(dev, q, false);
++		mt76_dma_queue_reset(dev, q, false);
+ 		mtk_wed_device_rro_rx_ring_setup(q->wed, ring, q->regs);
+ 		q->head = q->ndesc - 1;
+ 		q->queued = q->head;
+ 		break;
+ 	case MT76_WED_RRO_Q_MSDU_PG:
+ 		q->flags &= ~MT_QFLAG_WED;
+-		__mt76_dma_queue_reset(dev, q, false);
++		mt76_dma_queue_reset(dev, q, false);
+ 		mtk_wed_device_msdu_pg_rx_ring_setup(q->wed, ring, q->regs);
+ 		q->head = q->ndesc - 1;
+ 		q->queued = q->head;
+ 		break;
+ 	case MT76_WED_RRO_Q_IND:
+ 		q->flags &= ~MT_QFLAG_WED;
+-		mt76_dma_queue_reset(dev, q);
++		mt76_dma_queue_reset(dev, q, true);
+ 		mt76_dma_rx_fill(dev, q, false);
+ 		mtk_wed_device_ind_rx_ring_setup(q->wed, q->regs);
+ 		break;
 
 -- 
-Yixun Lan (dlan)
+2.51.0
+
 
