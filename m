@@ -4,97 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DACBCAC583
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 17:20:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BFE2CAC582
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 17:20:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RqxBp5GqUYy1vuvyW4xHhGZiROziN1Tf6UuwRZIay/o=; b=YGKc7TaQe2M0j9SnvIk9vqEF0f
-	4PK1iIQBmnTHYCSbl0GsLUooNHha0fC/3BLyJBRNBbqH1/01QYIYMIz2qWcWF0CwlaIWPC+VE634R
-	PkxX0bfOvExjTe6+/lnVenOM4FPxB2fjkoTJkNZI5a9pFGQmzKDAqzBd5QUaDmGiq3X+n86F33Ox4
-	4VXxgfjcd8ZvM9EvfbOcS83GiqiwtRXV8n6utQBVJdASOn49wZM+6i95RZl5ihQj9eNgTzPDgWgeQ
-	G7gP0ozN7Li0S5tq9OviwlcVX/OXf2lx0cKZ4GgFluxR2WTVhqvCz6xS5BafyvLzH5ZXTfvyvRVno
-	TtN+pZTg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WHJeyQoxrfPmUkZrw+WhWWyRIvgBswo4VP/FGQPO7jw=; b=raQjhG2na4qqerJX1EtNWv6g/M
+	JyA2vsT6hVRL1azehN+JRatN1J8DvZyKLH850xq4RWO41XCJV8uYV7AM+I7lOSLGtMxUtr7oYAhfI
+	K2BNZjhgTitJFhwqp6DSCyzeG1cZUNI8Agu9bU5Y6Vem+92xax+w/hRGipXW/DoTkt5TR8DKaBTO0
+	yI/TUy2SFMUUY8dNtX9sAwBJn1dhSOFhCeLnvYpgmrBdRYUqb4QkSms/PP92XcAos8xn5t0EaIb7f
+	gwGT+ZyGOkn64wKibbdAdthqE7lalasaS196YwCAq162lMYqd8oTQcZoOTUOIteyUDJOf0MXFWeOX
+	QoipHLqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uw20r-00000008vjP-1Gwg;
-	Tue, 09 Sep 2025 17:20:13 +0000
-Received: from mgamail.intel.com ([198.175.65.11])
+	id 1uw20t-00000008voA-2NyA;
+	Tue, 09 Sep 2025 17:20:15 +0000
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvypc-00000007YZw-2CNu;
-	Tue, 09 Sep 2025 13:56:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1757426185; x=1788962185;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=g/QqtRMuBql/lAp+Wpk1UAHBNS5otc0roGKqOnIPLHk=;
-  b=Bd6brfpgte5USq04G7FKZeMq7ZNLex4b8+9D3MQOwTdNEw1Ln0adlycr
-   oMAtN1YSDQbDy9FGLP+g6Z74QB4iSI5/u6aGWTTUDNzvy511W/V+tw4tc
-   x7m2lv5fSJr/voSDsN1wrDwJEbIxl7NXYdslSLP9nCtWDgmZW30zDc9pP
-   U08dY1EaJISWWZZu8N7PfLzXrl3OedUxq0xn0ScfP8edguGpPP11+p7C4
-   VflN9fbtCiaS1oN/MZP23ezVyp/+dQKw7pUDxvWrLtMEX5du3C3tTefIb
-   AWCbLe8t2a4h+0nJ6hwykkshhmx4vEjf4IFr+Egw0p+weCFbbl+k9gllU
-   A==;
-X-CSE-ConnectionGUID: 1BXFm5xRQnOg6LDboHm2Xg==
-X-CSE-MsgGUID: M8Pt/czLRoy+AcnbYNw3Fg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11548"; a="69964137"
-X-IronPort-AV: E=Sophos;i="6.18,251,1751266800"; 
-   d="scan'208";a="69964137"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
-  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Sep 2025 06:56:21 -0700
-X-CSE-ConnectionGUID: ks5yNBpNSuKS3BFnVbhH5w==
-X-CSE-MsgGUID: P7SuEn8mRlSdRZ+kBu7loA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.18,251,1751266800"; 
-   d="scan'208";a="172963735"
-Received: from smile.fi.intel.com ([10.237.72.51])
-  by orviesa007.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Sep 2025 06:56:16 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.98.2)
-	(envelope-from <andriy.shevchenko@intel.com>)
-	id 1uvypQ-00000001UyO-2aQ3;
-	Tue, 09 Sep 2025 16:56:12 +0300
-Date: Tue, 9 Sep 2025 16:56:12 +0300
-From: Andy Shevchenko <andriy.shevchenko@intel.com>
-To: Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: Linus Walleij <linus.walleij@linaro.org>,
-	Keguang Zhang <keguang.zhang@gmail.com>,
-	Alban Bedel <albeu@free.fr>, Doug Berger <opendmb@gmail.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Samuel Holland <samuel.holland@sifive.com>,
-	Yixun Lan <dlan@gentoo.org>, Andy Shevchenko <andy@kernel.org>,
-	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-mips@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
-	spacemit@lists.linux.dev,
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-Subject: Re: [PATCH 13/15] gpio: sodaville: use new generic GPIO chip API
-Message-ID: <aMAx_EwwBteiI9K6@smile.fi.intel.com>
+	id 1uvyq7-00000007YfI-1sXn
+	for linux-mediatek@lists.infradead.org;
+	Tue, 09 Sep 2025 13:56:57 +0000
+Received: by mail-lf1-x130.google.com with SMTP id 2adb3069b0e04-55f7cd8ec2cso7029582e87.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 09 Sep 2025 06:56:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1757426214; x=1758031014; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=WHJeyQoxrfPmUkZrw+WhWWyRIvgBswo4VP/FGQPO7jw=;
+        b=Sp8d2xwmKwr3jVr5l9GXWmWjIi2tquewIqa+ZdWdW4Fylf7gKvhpj+hFX43xSvACv1
+         cxvMXotkw9Nm8EW2KGfoscZsjYtWyRPQmMzW0z5BM3EpoUWmIDCbVTcwtixKPryiAtOv
+         W041K98FfQyU0wCbje7kF7xU37YcXbx+rBXNION5MndJARMAd2Z3BHcn4vzODJb1o30t
+         W83oOjRrxccGo+b+z6agsUAAkOJmiZQhBmGyKYZYHFQasanA3wQJPG87YaNzlKda0axL
+         gy8x3++EYVVBlyZKBn4SP+7w1CIMIDpFkOjdvkwO7xDRszuqDyddS2T1Wgj8+PQ/Qk2w
+         mY5A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1757426214; x=1758031014;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=WHJeyQoxrfPmUkZrw+WhWWyRIvgBswo4VP/FGQPO7jw=;
+        b=EVutt3/+ALLkxtceRk0nG2VZiip+b1QWHpPKrP4jhKCxG1WhH2raR7eCuMvf1KI+Fh
+         z4y3y6jllJxW6uaZdI/XmUwWyae0Pcng7sLMLYpAFNgqKv+TnP4adhdsjKw44eXoZlAP
+         iKZPOJaAiRXghf3AXD7PyUX5rWKE0pX7tRfX595N6iJDFy1kUWHxAcG/52Ol7laLSBxE
+         X0iqK0cE+8vfxCZKxmzI8badUYrwwmNn0uS2GvQ0f1j6i53f9L7Caz69wiQ0gwlXKIO+
+         tUEtojs2p2eWXSW0yRf3yA5SI6Il20znyvy+istGilBpexmrTtaO6D8cg49fUarHSF9C
+         BVhA==
+X-Forwarded-Encrypted: i=1; AJvYcCX9hNSiyGCnaeOKhoK5sca7br5Hheafjtzfi21N47Co1s4okrCYRmOIT0Vea5jgalR2qgjU39hWWr6VtOX5sg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxl1BKcDB9Z9gNfPqEiht6H2EflHjXk1QWBDAQgPOm16fMW0hgf
+	as5123quldqJA4iLKvSutqKTE8lcZTU1M1XqEJSdluBUIF8qhh46mn8FTzR0eEiqcMu0WFfzmaY
+	QUXvKK40rlpWBhL4BWZy7e03QuPi43eQy6P3t62veww==
+X-Gm-Gg: ASbGnctqxpUWjVrbDpKBL3wuUwk+0TccBFSGclIZazNbQu75DOJn6aPhN2Hjb3P3WvL
+	A+sOrq60k9c7p69tVTpebfLQ50ZPv6BjUnIOah6ukNQQQcQLzgnhC6m2U3PIjaafLyTLSk7Up5I
+	lhiAJ2irHgeRkObfGRZxrf/Mt9Q298YUWByTg+LPf6QcxNXocQXxalUzvXk8wy+4yyR8KOzRhL2
+	TrLdVqcy0gRiQYXG5OVdahSwD2xE8JfNCiyrnIBvuSH2HomPQ==
+X-Google-Smtp-Source: AGHT+IHBxkyJPoP3osXnpgBU6pdsryw/ot72GCgtbXz1ukCkdeMh24NQ6AJOJ87AcYe5pD0xcM8OlZUSXTQKermPfKE=
+X-Received: by 2002:a05:6512:b8a:b0:561:9635:5af5 with SMTP id
+ 2adb3069b0e04-562619d971fmr3883543e87.48.1757426213571; Tue, 09 Sep 2025
+ 06:56:53 -0700 (PDT)
+MIME-Version: 1.0
 References: <20250909-gpio-mmio-gpio-conv-part4-v1-0-9f723dc3524a@linaro.org>
  <20250909-gpio-mmio-gpio-conv-part4-v1-13-9f723dc3524a@linaro.org>
- <aMAP9hAWars0T83r@smile.fi.intel.com>
- <CAMRc=MeLTGq8Qu2aT43tkt3vaYCSaJPJPLmaUQ1SAyD_OgVr_g@mail.gmail.com>
- <aMAn4MM_Fs8q8qwj@smile.fi.intel.com>
- <CAMRc=Mdr4oW2d7XZ90rRr_fKC7WToz72v=_kW-s8=Urd0g8k3g@mail.gmail.com>
- <aMAve1MbONmKVjjg@smile.fi.intel.com>
- <aMAv3STeZUdSQ14p@smile.fi.intel.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
+ <aMAP9hAWars0T83r@smile.fi.intel.com> <CAMRc=MeLTGq8Qu2aT43tkt3vaYCSaJPJPLmaUQ1SAyD_OgVr_g@mail.gmail.com>
+ <aMAn4MM_Fs8q8qwj@smile.fi.intel.com> <CAMRc=Mdr4oW2d7XZ90rRr_fKC7WToz72v=_kW-s8=Urd0g8k3g@mail.gmail.com>
+ <aMAve1MbONmKVjjg@smile.fi.intel.com> <aMAv3STeZUdSQ14p@smile.fi.intel.com>
 In-Reply-To: <aMAv3STeZUdSQ14p@smile.fi.intel.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+Date: Tue, 9 Sep 2025 15:56:41 +0200
+X-Gm-Features: Ac12FXw-xJdDcWBTzEH08jjeniZk8zNeWwiQ6jDsDwHAH3I_S_ZPt9IHyI66KLg
+Message-ID: <CAMRc=MeA87p0QAzq_3MACQM90MhN0eRccr7u-VzcfyP8b90AaQ@mail.gmail.com>
+Subject: Re: [PATCH 13/15] gpio: sodaville: use new generic GPIO chip API
+To: Andy Shevchenko <andriy.shevchenko@intel.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Keguang Zhang <keguang.zhang@gmail.com>, 
+	Alban Bedel <albeu@free.fr>, Doug Berger <opendmb@gmail.com>, 
+	Florian Fainelli <florian.fainelli@broadcom.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Paul Walmsley <paul.walmsley@sifive.com>, Samuel Holland <samuel.holland@sifive.com>, 
+	Yixun Lan <dlan@gentoo.org>, Andy Shevchenko <andy@kernel.org>, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-riscv@lists.infradead.org, spacemit@lists.linux.dev, 
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250909_065624_601175_B11A51D6 
-X-CRM114-Status: GOOD (  35.55  )
+X-CRM114-CacheID: sfid-20250909_065656_123054_A39A5B52 
+X-CRM114-Status: UNSURE (   8.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,98 +110,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 09, 2025 at 04:47:09PM +0300, Andy Shevchenko wrote:
-> On Tue, Sep 09, 2025 at 04:45:31PM +0300, Andy Shevchenko wrote:
-> > On Tue, Sep 09, 2025 at 08:24:23AM -0500, Bartosz Golaszewski wrote:
-> > > On Tue, 9 Sep 2025 15:13:04 +0200, Andy Shevchenko
-> > > <andriy.shevchenko@intel.com> said:
-> > > > On Tue, Sep 09, 2025 at 01:35:04PM +0200, Bartosz Golaszewski wrote:
-> > > >> On Tue, Sep 9, 2025 at 1:31 PM Andy Shevchenko
-> > > >> <andriy.shevchenko@intel.com> wrote:
-> > > >> > On Tue, Sep 09, 2025 at 11:15:40AM +0200, Bartosz Golaszewski wrote:
-
-...
-
-> > > >> > > +     config = (typeof(config)){
-> > > >> >
-> > > >> > This looks unusual. Why can't properly formed compound literal be used as in
-> > > >> > many other places in the kernel?
-> > > >>
-> > > >> It is correct C
-> > > >
-> > > > If it compiles, it doesn't mean it's correct C, it might be non-standard.
-> > > > Have you checked with the standard (note, I read that part in the past,
-> > > > but I may forgot the details, so I don't know the answer to this)?
-> > > 
-> > > It's a GNU extension alright
-> > 
-> > clang, I suppose, also okay with this?
-> > 
-> > > but it's supported in the kernel as it evaluates
-> > > to a simple cast.
-> > 
-> > There is no cast. And that's make a big difference to what the code tries to do.
-> > 
-> > > >> and checkpatch doesn't raise any warnings.
-> > > >
-> > > > checkpatch is far from being useful in the questions like this.
-> > > > It false positively complains for for_each*() macros all over
-> > > > the kernel, for example.
-> > > >
-> > > >> It's the
-> > > >> same kind of argument as between kmalloc(sizeof(struct foo)) vs
-> > > >> kmalloc(sizeof(f)).
-> > > >
-> > > > Maybe, but it introduces a new style while all other cases use the other,
-> > > > _established_ style. So we have a precedent and the form the code is written
-> > > > in is against the de facto usage of the compound literals.
-> > > 
-> > > It may not be *very* common but it's hardly new style:
-> > 
-> > I think your statement is incorrect see below why.
-> > 
-> > > $ git grep -P "\(typeof\(.*\)\) ?\{" | wc
-> > >     108     529    7315
-> > 
-> > Not correct. The correct output will be closer to
-> > 
-> > $ git grep -l -P "\(typeof\(.*\)\) ?\{" | wc -l
-> > 15
-> > 
-> > And if you looked at the output carefully, you see the bug in the RE you used.
-> > 
-> > So, even closer will be this one:
-> > 
-> > $ git grep -l -P "=[[:space:]]+\(typeof\(.*\)\) ?\{" | wc -l
-> > 7
-> > 
-> > 2 out of which are related to libeth, effectively makes this 6.
-
-And for of fullness the picture:
-$ git grep -l -P "=[[:space:]]+\(struct [^[:space:]]*\) ?\{" | wc -l
-501
-
-So, it's 1:100 ratio.
-
-> TBH, I think those 6 all made the same mistake, i.e. thinking of the compound
+On Tue, Sep 9, 2025 at 3:47=E2=80=AFPM Andy Shevchenko
+<andriy.shevchenko@intel.com> wrote:
+>
+> TBH, I think those 6 all made the same mistake, i.e. thinking of the comp=
+ound
 > literal as a cast. Which is not!
-> 
-> > No, this is completely non-standard and unusual thing in the kernel.
-> > 
-> > > >> I guess it's personal taste but I like this version better.
-> > > >
-> > > > In kernel we also try to be consistent. This add inconsistency. Am I wrong?
-> > > >
-> > > >> > > +             .dev = &pdev->dev,
-> > > >> > > +             .sz = 4,
-> > > >> > > +             .dat = sd->gpio_pub_base + GPINR,
-> > > >> > > +             .set = sd->gpio_pub_base + GPOUTR,
-> > > >> > > +             .dirout = sd->gpio_pub_base + GPOER,
-> > > >> > > +     };
+>
 
--- 
-With Best Regards,
-Andy Shevchenko
+What do you suggest?
 
+And are we not allowed to use C99 features now anyway?
 
+Bartosz
 
