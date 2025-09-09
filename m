@@ -4,68 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15D41CA0FED
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 15:42:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C24CCA0FED
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 15:44:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hJess6RuQMSWhPSA8IlgB6KKuFZN08U6M1XLsNn6ak0=; b=wX7i5vpqx9ipNrKab5VtNzMi9F
-	CQjv050miC/xsmuew4m/gs2+iF/f+lIheLKLuGshk+vzz17vUsTYJ/IvFxojmKj1oAwV2WbMjwd8c
-	6trGdWyc6TRimTC/R36k112RHzi/CIKVnnnnYI7jIyzt+aMBdRfdGNai+qsju3zqxsVoukXcewX94
-	HdVZScgzlo6gC2rB6Qgkgq0ZMdH/H43nJvJH9zsGpFtwv6F73YA2n+4XKGyjZWIXvtiXhOZVFKDLZ
-	zoaOhfrr98jIrkFNMWm7PcvclrG94zumKM5ZxxgEeu+iIDJ+k7/1Zs5NDd4thoTvKQ1zclBLNdxB7
-	Qs5+qOHQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CK/2IOeJIqNd2zpLdnAnzcmL52wprfxzpcul7E2EVVM=; b=b+g5yCvhW4Gm3msQt/sKc5tNsX
+	4eXQzD/RNOQDZbxSc0H6qjMlf0naonzspQdgMh6iahwgShAAsbjBK2/2qbQzDtRez/2UMTPHywRYw
+	ipLjWlVC191hkRd/Sb7jOvj03SePgYr9JHJE7ovwxifLtGQN/a84eP/dya0ErlK/cVhuzB627SII2
+	kQKKeM6k/wPnMXnbNsEaU/u8f53MkOP/jXuihfkMXP0offtwQJ0z1jNh/BGHagGxPBH2C+U12Dl8O
+	VrvKWqmGk80Rxg54XuyuxJphBplN1gMprGu0EkzyZTK2DC1Lr8TJKxq1t4fLM9oweKP37eTe0nK8t
+	EJnpUIFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uw0Tt-00000008CGq-461l;
-	Tue, 09 Sep 2025 15:42:06 +0000
+	id 1uw0WM-00000008F2P-0RyD;
+	Tue, 09 Sep 2025 15:44:38 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvvCf-00000006EJy-11r8
-	for linux-mediatek@lists.infradead.org;
-	Tue, 09 Sep 2025 10:03:57 +0000
+	id 1uvwWw-00000006jw3-0iFD;
+	Tue, 09 Sep 2025 11:28:58 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 88E4D601BA;
-	Tue,  9 Sep 2025 10:03:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 31718C4CEF4;
-	Tue,  9 Sep 2025 10:03:56 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 909976022C;
+	Tue,  9 Sep 2025 11:28:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D8ECCC4CEF7;
+	Tue,  9 Sep 2025 11:28:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1757412236;
-	bh=MX1yEKtU1XlkDkySNWFMl83sKLvqqiq1wh9vWRpHFI4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=IcNGCFiGtCBdlK6h3ILvTV3+IPmzjlaTRMi9z9G1FxFYljC0M7EBZ5EmsWrmiGzp/
-	 gVMFc2QKLoySwHA70lazg0F30+jLHbFTn+WcYnAEF9eG2ETDjGzxLIjS4K6rw2c9mz
-	 2D3bGFHNjV1s57QvgcFtygPVer631Myaiuo7jQkZ3/6LxtdFWK+YrQcV/NHjIWy38H
-	 Dp4jp2uruQtJSsxQNOLAGj3TjDCw6/AdL+t68/59DknoP7AhnKnTIGNIa98YDReGXU
-	 o3BvpcNq6EerKPwmuQIloDBc5Nh8JnQIYXuBq1tBpg1hwwu+9AGk7lXlbeIP0LH4Ed
-	 BOh4I1W6SjGvA==
-Received: from johan by xi.lan with local (Exim 4.98.2)
-	(envelope-from <johan@kernel.org>)
-	id 1uvvCc-000000001ZX-0dx4;
-	Tue, 09 Sep 2025 12:03:54 +0200
-Date: Tue, 9 Sep 2025 12:03:54 +0200
-From: Johan Hovold <johan@kernel.org>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>,
-	Viresh Kumar <viresh.kumar@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Jia-Wei Chang <jia-wei.chang@mediatek.com>,
-	Rex-BC Chen <rex-bc.chen@mediatek.com>
-Subject: Re: [PATCH] cpufreq: mediatek: fix device leak on probe failure
-Message-ID: <aL_7ituSjf5a0p_U@hovoldconsulting.com>
-References: <20250909073819.25295-1-johan@kernel.org>
- <CAGXv+5EcnLJHG_50mYb2YB0_q1XOztF84c9tAJJfKZxSCWuUCQ@mail.gmail.com>
+	s=k20201202; t=1757417337;
+	bh=Egw7h0VZpXs5tgL5vzoN8ns5makVBNBrNokzbdRQY4s=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=dmodOF5CRBsUowJYyvBF7Rl5d0dMoS4w9lQosU6NaAmAnlUkAPLqP7CTgn+R1IkQm
+	 Y4jH4wDOD/q97SKkqakLlH5lgCZt70GqyHm0A0XRH6mC0zbIcChzR7rdNZxH+Qy7Ky
+	 HZ6ZfUvLg7rG3CSR2+AaX+R0dH+vNCWPC6IWMti+62S+46xVrCafM2Ou1Sjb2m6FGk
+	 LBc9j0/mVT2OWzCca0YS6FuLtOAFlEL/UV+invbrWccRwAO7boygmZ2fwT06ClsZug
+	 QxYxA5Pfx/W1TfNav+xCyobizXYfMtSMYMvVEbKF8zCsl70KwtXad3VipKEUb3z+vC
+	 IeH1qSVLT8eWw==
+From: Maxime Ripard <mripard@kernel.org>
+Date: Tue, 09 Sep 2025 13:27:43 +0200
+Subject: [PATCH v3 24/39] drm/mediatek: Switch to
+ drm_atomic_get_new_crtc_state()
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAGXv+5EcnLJHG_50mYb2YB0_q1XOztF84c9tAJJfKZxSCWuUCQ@mail.gmail.com>
+Message-Id: <20250909-drm-no-more-existing-state-v3-24-1c7a7d960c33@kernel.org>
+References: <20250909-drm-no-more-existing-state-v3-0-1c7a7d960c33@kernel.org>
+In-Reply-To: <20250909-drm-no-more-existing-state-v3-0-1c7a7d960c33@kernel.org>
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>
+Cc: dri-devel@lists.freedesktop.org, Maxime Ripard <mripard@kernel.org>, 
+ =?utf-8?q?Ville_Syrj=C3=A4l=C3=A4?= <ville.syrjala@linux.intel.com>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1747; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=Egw7h0VZpXs5tgL5vzoN8ns5makVBNBrNokzbdRQY4s=;
+ b=owGbwMvMwCmsHn9OcpHtvjLG02pJDBkH+HUqU3i/bM45HMOb3/izYaNgp5Mx61n3h3Z/GhPld
+ v2673m1YyoLgzAng6yYIssTmbDTy9sXVznYr/wBM4eVCWQIAxenAExEL4Sx4YLQmvt+bz9w9Zoc
+ Svwvd28OQ1Jv4as9/6ebrtaoiIn6df3Mh7tTlLhzdHmLFobM3j3nNGPDqtWnn7t5rHzM1fKb94B
+ A9Ql7gWuGd7+6ebnXBz86P3P+rtdOf07w+U9Id9kkU8zrlOUMAA==
+X-Developer-Key: i=mripard@kernel.org; a=openpgp;
+ fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,31 +85,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 09, 2025 at 05:57:45PM +0800, Chen-Yu Tsai wrote:
-> On Tue, Sep 9, 2025 at 5:40 PM Johan Hovold <johan@kernel.org> wrote:
-> >
-> > Make sure to drop the reference to the cci device taken by
-> > of_find_device_by_node() on probe failure (e.g. probe deferral).
+The mediatek atomic_check implementation uses the deprecated
+drm_atomic_get_existing_crtc_state() helper.
 
-> > @@ -552,6 +554,10 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
-> >  out_free_mux_clock:
-> >         clk_put(info->cpu_clk);
-> >
-> > +out_put_cci_dev:
-> > +       if (info->soc_data->ccifreq_supported)
-> > +               put_device(info->cci_dev);
-> 
-> put_device() has a check for NULL, so the if isn't really needed.
+This hook is called as part of the global atomic_check, thus before the
+states are swapped. The existing state thus points to the new state, and
+we can use drm_atomic_get_new_crtc_state() instead.
 
-I know, but this follows the pattern currently used by the driver (e.g.
-for regulator_put()) and avoids relying on the caller having cleared the
-info struct.
+Reviewed-by: Ville Syrjälä <ville.syrjala@linux.intel.com>
+Signed-off-by: Maxime Ripard <mripard@kernel.org>
+---
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+To: Philipp Zabel <p.zabel@pengutronix.de>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: dri-devel@lists.freedesktop.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+---
+ drivers/gpu/drm/mediatek/mtk_plane.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-> Either way,
-> 
-> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+diff --git a/drivers/gpu/drm/mediatek/mtk_plane.c b/drivers/gpu/drm/mediatek/mtk_plane.c
+index cbc4f37da8ba81ff9c8b3b58f66363837ffc21ec..d4486a63a6e01f02b6777522440dee8e39d51bf1 100644
+--- a/drivers/gpu/drm/mediatek/mtk_plane.c
++++ b/drivers/gpu/drm/mediatek/mtk_plane.c
+@@ -120,11 +120,12 @@ static int mtk_plane_atomic_async_check(struct drm_plane *plane,
+ 	ret = mtk_crtc_plane_check(new_plane_state->crtc, plane,
+ 				   to_mtk_plane_state(new_plane_state));
+ 	if (ret)
+ 		return ret;
+ 
+-	crtc_state = drm_atomic_get_existing_crtc_state(state, new_plane_state->crtc);
++	crtc_state = drm_atomic_get_new_crtc_state(state,
++						   new_plane_state->crtc);
+ 
+ 	return drm_atomic_helper_check_plane_state(plane->state, crtc_state,
+ 						   DRM_PLANE_NO_SCALING,
+ 						   DRM_PLANE_NO_SCALING,
+ 						   true, true);
 
-Thanks for reviewing.
+-- 
+2.50.1
 
-Johan
 
