@@ -4,84 +4,119 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C705CA0FED
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 10:34:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28BFECA0FED
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 11:11:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W5yCldw9Ui0PQdaUryQ7+dVXsj2JWAh+weDkVvcZLVM=; b=vCaFOZcsvGibPcRLSWojErYck7
-	OY+KTo/dbCj+b2gwf3nyXAkQjfxUGzehAIF36hIIPelIBIhOPX39JO0/hINd3iro5qqhiRD24XrSY
-	gMV7qVTW5jJVnD28s167cMH9lvDs8ir+UQSCR3s6nFzRJhB4pnXTn4DAJFn8VIKz9ibGUly9RsHfj
-	5Z6DbEzCw14dG6z34XvqIgSM6WTuHK5XJI4yj4IdyHOfNXflVDSRQ6bvgrdcGjFx2rNXqNHDmadUR
-	3Azediemw02dtdOoqLsw+9SM1CJl4fmsnWMw/WE8ZT9R+Gna4QC8CO7lFvHymbLQOwfXvkAoBP97a
-	FG2buolw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=tP+ETbVnBSQFrRZK3WwBGuGE5HSVEMwxjNtKrFEHY8A=; b=E2MlNHY46DA+aS
+	KRKiAtYW3SOwaSMGKwJaWRHNBOtU8jHl/6AdW0Hjdiug5PWBwitkvtzggc6IRYT4jd+6QcDbPrM6Q
+	s2R0GVleMhxR5YX3rtbzAFk4LOkkrK/Sy9fbKX6zdop04eYf1sTebysxvHtQhFi+V1SS/xKSgbf+D
+	zJpbvFr1BKfxSzosoRtvFWYxWU0sycMtCsVFnYC+IxsHSVFqiAl+DIZ5xJpabbnDj41qXkt3Ptxhj
+	J3ZRqu6WZgCRkSWlrkfNnxQYMp7fKbCn5rT/kbqF42t6cgrN9WhtSDV9uI3EWDaDIbWQxttVOiTEn
+	wjojvRSXI6T/tT+eFLAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvvg3-00000006QvC-0Vp2;
-	Tue, 09 Sep 2025 10:34:19 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1uvwGN-00000006dAF-0Ucj;
+	Tue, 09 Sep 2025 11:11:51 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvuM7-00000005pVy-11Zs;
-	Tue, 09 Sep 2025 09:09:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=W5yCldw9Ui0PQdaUryQ7+dVXsj2JWAh+weDkVvcZLVM=; b=Lneve32F7PjadMleGWG34WGj6d
-	VnT/OKOi/tMc+rXvp5mD1Ff9J5b9lK9TQnfudYPDmao6s68OS37tEK9qZTxsOpDiphIHxZ2GPD930
-	j7Fr+D+VOsdEQUxC5dTOt8ZyiJPRtgiR61Yps7a8pn4+qocE8D91wLbOYeWdw7CoTNmvChiZrjht8
-	x7VAMoi7i1ABsLOtxD0mU5LSTEqdf8dy/s5V9xnyf1R+hzhaL/5h9vwj1Y0XO2uBdD0VNhJ7CqZzc
-	TmQX78staw+O8AMvMqWmCYwhx+xMJPFJCxyPdS0laLJ7JUCaM8EsGDIWbrjzi9l7eyWr9/RB8jNB6
-	oLBzX/1w==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:37982)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.98.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1uvuLb-000000007vX-2AJK;
-	Tue, 09 Sep 2025 10:09:07 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1uvuLS-000000000Gl-1UJ2;
-	Tue, 09 Sep 2025 10:08:58 +0100
-Date: Tue, 9 Sep 2025 10:08:57 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Srinivas Kandagatla <srini@kernel.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	"Chester A. Unal" <chester.a.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>, Simon Horman <horms@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [net-next PATCH v16 06/10] net: dsa: Add Airoha AN8855 5-Port
- Gigabit DSA Switch driver
-Message-ID: <aL_uqX90oP_3hbK6@shell.armlinux.org.uk>
-References: <20250909004343.18790-1-ansuelsmth@gmail.com>
- <20250909004343.18790-7-ansuelsmth@gmail.com>
+	id 1uvuRz-00000005sS7-3u5R
+	for linux-mediatek@lists.infradead.org;
+	Tue, 09 Sep 2025 09:15:45 +0000
+Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-3df3be0e098so2920047f8f.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 09 Sep 2025 02:15:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1757409342; x=1758014142; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=tP+ETbVnBSQFrRZK3WwBGuGE5HSVEMwxjNtKrFEHY8A=;
+        b=3gN64pIU9j4FG/3ghgbTdhqM+1325M83+0T2TUBRut/X8I3t7W6DZbQowS1LGy1qvJ
+         T9yUSfNWL3jd9drNTovMh46aXSOPN58ruVTXbnJMeH/hqEeaIFRc2h3MsbEv7SR8fVgz
+         7SvZAnRE5W2RXNEu3B0I2RNs/JhEv9FoCS6asfS4ZNbs2z4oTVuhynlIVI6meG4yVhIF
+         B2DhRgZ/9iof0oH1kSAPGFFwlJMQlOtVrnRacXr8gVFbeyU5v9fgg17zXrRlqMyiarOK
+         9kLB++aiHuOXiNeYHx+5SjutHv0rGd1rEOtflNoxyNhO9OEUtI+jS6odZwsJoT1Nha/V
+         tGuw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1757409342; x=1758014142;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=tP+ETbVnBSQFrRZK3WwBGuGE5HSVEMwxjNtKrFEHY8A=;
+        b=v0Kh1uJfeTh96SezIPm1KK7Nz3GDEiqER8uln9TM0XLTjUbMgD9ibTlqvfLkaXfiSb
+         qb1m3Z9qohnX2wnvs0jAZl8rBU5K8iWDmdFs3K+tBzyqb3e/z7mFkpXEoFy4RMKiVLrB
+         MJIMtzFyevJ1rH2BYTKZpWk3afYwtt55kJdTlw7FuaL3WgxSqq5eBrivkrLx0dz19CPp
+         H0E4rnzdWJSaIlMT7LACTFVxSZ2JVjKHlMTRYzs/zJY5KRjGQ51EI2CuDPA9hz6qzb0+
+         IeA+kvXIT3NweCAxyw7oYKccuUNHCb53fbjwZPwhyaBscICQLDN9+Eo/HZqdxQQBRJwz
+         gQ5A==
+X-Forwarded-Encrypted: i=1; AJvYcCWrgLsK3B9McSSS2harYMytRYNEyCYww69FWB0yiFOkSbaLlpisF3R0PJuIaLTaRJ2MiIcba1e/+Zt3xhVVeg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz2owxfdTRy9dxCWq8XTHeueTzlEaT+3S+jptQy+Eub8odeWCEt
+	16ySDrBrpKQVNTPBjiibdDXjAMuQoKNHOaA9yr17wfnJ6xA+pHecbXX6zGHHdpoijAM=
+X-Gm-Gg: ASbGncsdp9UA5E8Q9iG01YZyGD1eIZAQN1FRM38JjJHhY+uSDLYyPGJXhlmlvyxcmu3
+	uPZzHKhGOQda5iHTwQbgvCr4lRmpmi1mqcI/EgzQv9Pe4lurWG0xN5Y7zl49f451RcoH36BtEXe
+	7oGhlQr/R4FXcI+bZvrPH27aygTlE9gKJiys3SdY3swOD1pcgu3HPwsKzmOJQwSJiNK8MR7jTHI
+	b37JGBpx0/TfCZzYUTIhUVGJWL0Fb1hWcrthZ8wN9WSKhpUa1PQ0rSh4SuLW0OScfgsY4LLd10e
+	5XQtxHvpU55n8uYDo0yqncnf+bGCitnWYGhir1TLGmhgmhGgv4Mnf+/cKSO4K7vnVKA1Cdu2jdU
+	TALu0i68FtoQfIrXzMg==
+X-Google-Smtp-Source: AGHT+IFxM+HICQsKhDaBX2Rk22xBRkSqIHTShzXPmAQzNiNBdQoOhni1m43entJS3MAB8D5d0TZglQ==
+X-Received: by 2002:a05:6000:3106:b0:3e6:116a:8fed with SMTP id ffacd0b85a97d-3e64bde97a5mr9793821f8f.45.1757409341378;
+        Tue, 09 Sep 2025 02:15:41 -0700 (PDT)
+Received: from [127.0.1.1] ([2a01:cb1d:dc:7e00:c1ee:7be9:3ebb:6cc0])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3e7521c9caasm1900039f8f.19.2025.09.09.02.15.39
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 09 Sep 2025 02:15:40 -0700 (PDT)
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+Subject: [PATCH 00/15] gpio: replace legacy bgpio_init() with its
+ modernized alternative - part 4
+Date: Tue, 09 Sep 2025 11:15:27 +0200
+Message-Id: <20250909-gpio-mmio-gpio-conv-part4-v1-0-9f723dc3524a@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250909004343.18790-7-ansuelsmth@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAC/wv2gC/x2MywqAIBBFf0Vm3YCKIfUr0cJqsln4QCOC6N+TN
+ od7Fvc8UKkwVRjFA4UurpxiE9UJWA8XPSFvzUFL3ctBGvSZE4bQ8K81xQuzK6fBntRurV6c1Qb
+ aPxfa+f7b0/y+HxskalRrAAAA
+X-Change-ID: 20250904-gpio-mmio-gpio-conv-part4-5e1f772ba724
+To: Linus Walleij <linus.walleij@linaro.org>, 
+ Bartosz Golaszewski <brgl@bgdev.pl>, 
+ Keguang Zhang <keguang.zhang@gmail.com>, Alban Bedel <albeu@free.fr>, 
+ Doug Berger <opendmb@gmail.com>, 
+ Florian Fainelli <florian.fainelli@broadcom.com>, 
+ Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Paul Walmsley <paul.walmsley@sifive.com>, 
+ Samuel Holland <samuel.holland@sifive.com>, Yixun Lan <dlan@gentoo.org>, 
+ Andy Shevchenko <andy@kernel.org>
+Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-mips@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org, 
+ spacemit@lists.linux.dev, 
+ Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2606;
+ i=bartosz.golaszewski@linaro.org; h=from:subject:message-id;
+ bh=sVPlOFYsePlUlVyNjlOXy8QPDA01db/Wvcm9y2+eUf8=;
+ b=owEBbQKS/ZANAwAKARGnLqAUcddyAcsmYgBov/Ays28j7tkwm0rJbaeX4j6Qex2lOj/LqMAOK
+ 1PDzm34psOJAjMEAAEKAB0WIQQWnetsC8PEYBPSx58Rpy6gFHHXcgUCaL/wMgAKCRARpy6gFHHX
+ ciEyD/4rjlTpLHFFOAETzbM8BZ7x3WlTsL5ofRL45hTWSkD3Bsd0OZjcixkAe0OHW2e3zFw2szF
+ KeXpnt2sCS7J2vacxQtg0jH2fWZAf5bZ+OoGUTAieReshYzmxRi1YJFUgIrAX33d2SDzSvQrZvR
+ VCG+aKnwtsgLIS3bpQ1AqNCIuxAy4Ry9lCAY3GF9UpNsbYioHxmLpykb53ferurCzD0dP9d2FfA
+ qniXI92yE/VlFaWTo+gqGjUntxHg8iOH4ZhmUCDpE+Jd4zHfEBtw+OfWRmZkRnTp79FeNdacHx5
+ p6k4r4XWU7dQ7BVOwC7MAvwAE8H7OI0viWBqD/6NVLyk6JNskJqsOwu8e94Ddt2gGDw0ARDpeD+
+ I7mJlpyD/qmL48+7obrP2XRtew+5bs1uUUL9Agv17b6I59tLZFIO+8lix4XEyj9/Fg2w8cNkyZY
+ c24JWXw0s0j+0JaiJKzZ5d6j7Bt4uYvxV2CCUoJ7bN1qi60NyHcPYrP2AwQ8sZKU1xtPedwTG+O
+ KxwLrf9Cweg0/cRvkk6QQ82ss5f+Y7QsEwe7HuuKRKPRU9azoXk5BTPKu4ym9w5yjZDgjO+RreU
+ OYdfHdNscHAHrLf43/UNtW2sSEmvItWokNn8tfM/e/oZXWUa6NjPf7lUXt62Wdv9ck60Df/2/bM
+ oqEJP5tTEFOaNGA==
+X-Developer-Key: i=bartosz.golaszewski@linaro.org; a=openpgp;
+ fpr=169DEB6C0BC3C46013D2C79F11A72EA01471D772
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250909_020939_586826_520AB95E 
-X-CRM114-Status: GOOD (  12.05  )
+X-CRM114-CacheID: sfid-20250909_021544_086713_E78F0425 
+X-CRM114-Status: GOOD (  11.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,50 +131,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 09, 2025 at 02:43:37AM +0200, Christian Marangi wrote:
-> +static void an8855_phylink_get_caps(struct dsa_switch *ds, int port,
-> +				    struct phylink_config *config)
-> +{
-> +	struct an8855_priv *priv = ds->priv;
-> +	u32 reg;
-> +	int ret;
-> +
-> +	switch (port) {
-> +	case 0:
-> +	case 1:
-> +	case 2:
-> +	case 3:
-> +	case 4:
-> +		__set_bit(PHY_INTERFACE_MODE_GMII,
-> +			  config->supported_interfaces);
-> +		__set_bit(PHY_INTERFACE_MODE_INTERNAL,
-> +			  config->supported_interfaces);
-> +		break;
-> +	case 5:
-> +		phy_interface_set_rgmii(config->supported_interfaces);
-> +		__set_bit(PHY_INTERFACE_MODE_SGMII,
-> +			  config->supported_interfaces);
-> +		__set_bit(PHY_INTERFACE_MODE_2500BASEX,
-> +			  config->supported_interfaces);
-> +		break;
-> +	}
-> +
-> +	config->mac_capabilities = MAC_ASYM_PAUSE | MAC_SYM_PAUSE |
-> +				   MAC_10 | MAC_100 | MAC_1000FD | MAC_2500FD;
-> +
-> +	ret = regmap_read(priv->regmap, AN8855_CKGCR, &reg);
-> +	if (ret)
-> +		dev_err(ds->dev, "failed to read EEE LPI timer\n");
-> +
-> +	config->lpi_capabilities = MAC_100FD | MAC_1000FD;
-> +	/* Global LPI TXIDLE Threshold, default 60ms (unit 2us) */
-> +	config->lpi_timer_default = FIELD_GET(AN8855_LPI_TXIDLE_THD_MASK, reg) *
-> +				    AN8855_TX_LPI_UNIT;
+Here's the final part of the generic GPIO chip conversions. Once all the
+existing users are switched to the new API, the final patch in the
+series removes bgpio_init(), moves the gpio-mmio fields out of struct
+gpio_chip and into struct gpio_generic_chip and adjusts gpio-mmio.c to
+the new situation.
 
-You're not filling in config->lpi_interfaces, which means phylink won't
-LPI won't be functional.
+Down the line we could probably improve gpio-mmio.c by using lock guards
+and replacing the - now obsolete - "bgpio" prefix with "gpio_generic" or
+something similar but this series is already big as is so I'm leaving
+that for the future.
 
+Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+---
+Bartosz Golaszewski (15):
+      gpio: loongson1: allow building the module with COMPILE_TEST enabled
+      gpio: loongson1: use new generic GPIO chip API
+      gpio: hlwd: use new generic GPIO chip API
+      gpio: ath79: use new generic GPIO chip API
+      gpio: ath79: use the generic GPIO chip lock for IRQ handling
+      gpio: xgene-sb: use generic GPIO chip register read and write APIs
+      gpio: brcmstb: use new generic GPIO chip API
+      gpio: mt7621: use new generic GPIO chip API
+      gpio: mt7621: use the generic GPIO chip lock for IRQ handling
+      gpio: menz127: use new generic GPIO chip API
+      gpio: sifive: use new generic GPIO chip API
+      gpio: spacemit-k1: use new generic GPIO chip API
+      gpio: sodaville: use new generic GPIO chip API
+      gpio: mmio: use new generic GPIO chip API
+      gpio: move gpio-mmio-specific fields out of struct gpio_chip
+
+ drivers/gpio/Kconfig            |   2 +-
+ drivers/gpio/TODO               |   5 -
+ drivers/gpio/gpio-ath79.c       |  88 +++++-----
+ drivers/gpio/gpio-brcmstb.c     | 112 +++++++------
+ drivers/gpio/gpio-hlwd.c        | 105 ++++++------
+ drivers/gpio/gpio-loongson1.c   |  40 +++--
+ drivers/gpio/gpio-menz127.c     |  31 ++--
+ drivers/gpio/gpio-mlxbf2.c      |   2 +-
+ drivers/gpio/gpio-mmio.c        | 350 +++++++++++++++++++++-------------------
+ drivers/gpio/gpio-mpc8xxx.c     |   5 +-
+ drivers/gpio/gpio-mt7621.c      |  80 ++++-----
+ drivers/gpio/gpio-sifive.c      |  73 +++++----
+ drivers/gpio/gpio-sodaville.c   |  20 ++-
+ drivers/gpio/gpio-spacemit-k1.c |  28 +++-
+ drivers/gpio/gpio-xgene-sb.c    |   5 +-
+ include/linux/gpio/driver.h     |  44 -----
+ include/linux/gpio/generic.h    |  67 +++++---
+ 17 files changed, 548 insertions(+), 509 deletions(-)
+---
+base-commit: 65dd046ef55861190ecde44c6d9fcde54b9fb77d
+change-id: 20250904-gpio-mmio-gpio-conv-part4-5e1f772ba724
+
+Best regards,
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+
 
