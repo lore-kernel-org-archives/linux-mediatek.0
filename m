@@ -4,63 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23928CAC583
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2734BCAC58C
 	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 17:14:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=pHTBtamIAofD7j0yEV6xAkvLmMl2NOMHSGLm3F2dxcQ=; b=TPl88TcjmiGlrlCF4jO/e+TdlA
-	Hy6YutSIIX8SDonpCWUfO6bzy0d03TKk7SRlYNljaxWMcL0Ydp8Nwa/Sy0GwtuZxKQEWSzy9M38eU
-	rb50ITjdDA2R1WB3V0OOslOx/5uXspWcRKaXL/h3zcLrm5E++HAEVUkCPJFqWTwXV7LWajndpIpU4
-	Zixlb5rmiGEmkZTnMR0Hmfz3d8WiZ5ynno3Bv6IX7nUHQ98SL+SFzr5k4FA5yxlWWg1k103uQ3RMz
-	6DAy9Gza94Yd59+QFGcmSZ0Et3I+W//BorotugMwutIbYWJ9dflcmUnjknxFcLhWniJJ7loAVjlsz
-	eu2hS5Sg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zftH1OFDMW2jW27I963MhGeDeriTV1wGejbhpnPTHcs=; b=wxlOL1YXGdIq+f8mwNzVM1OOUn
+	+03GynbKBWtKtkaFJWhDdKQdldHXxs5czA5DSpR2chaHSG6gxFNK+YMIxHrRc2O8CZPdPpUZvcdw6
+	b+Z0r6hatqF0330Mbd8xq/j0nsKDRPmVefrhHt0SX9c21aV2BW3+ltrbBsdc2jdUVqOTqke6gjMP9
+	USDX6FjEwcDatWrY4sNhZsgsTlKsWikb2mhDxWoJc5PaKJdhvGRTumNqZHfw9R0Yf67N0ILmC6oRP
+	fVI+zV3HvkDRh+WzrYFI6SUJXfudDUABysAfTFnLg1dzDeTWt3iWapA4foJ6OZJ6DXQNL6Osi+zEt
+	t2cvXygg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uw1v9-00000008mdj-2hdZ;
+	id 1uw1v9-00000008md7-1cWw;
 	Tue, 09 Sep 2025 17:14:19 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvvs4-00000006V1r-2vY0;
-	Tue, 09 Sep 2025 10:46:46 +0000
+	id 1uvvnX-00000006TcP-1YNX;
+	Tue, 09 Sep 2025 10:42:04 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 14D1A4442B;
-	Tue,  9 Sep 2025 10:46:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9147DC4CEF4;
-	Tue,  9 Sep 2025 10:46:43 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 10D4F43F59;
+	Tue,  9 Sep 2025 10:42:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 129D3C4CEF4;
+	Tue,  9 Sep 2025 10:42:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1757414803;
-	bh=yWrhc412alWgxx6Om8MS4lFSCSiz7aS8X262Zvx9aeA=;
-	h=From:To:Cc:Subject:Date:From;
-	b=KWIANRDGKOXB9ngieV26KAdfpdlYXvgcH5bTFwhbA8LRTyWDg1H6tiy9K++ltVln4
-	 vR1YgOMNbs8Kwvjmbjt9YeIKDZLYpmskusNzpmaTzTSLYbNCT3LytG/vOkzbEpUMbl
-	 VQuSu4uLa9TsGX4Xw4U6iu2wxXWQ3xVykQPQqA7/winwFL+AATZNZ2qa9NPgc2UwIw
-	 olaSvilNUYdxoZ5nkJmEaI4F+9oM6GauaPKeObdVjuksuqnrEQ8o9tqbUDj4KIoS2Y
-	 wDqW0G7l5xFdHQMO4jt+A1Aa0uvCxV1jyT/peWGQbdg6d4bKhAgDfabsiN8UB5w68o
-	 HaM5NOx5JZFMA==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: nbd@nbd.name,
-	ryder.lee@mediatek.com
-Cc: shayne.chen@mediatek.com,
-	sean.wang@mediatek.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-wireless@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	lorenzo@kernel.org
-Subject: [PATCH mt76] wifi: mt76: Convert mt76_wed_rro_ind to LE
-Date: Tue,  9 Sep 2025 12:46:37 +0200
-Message-ID: <301d5f2982ddb729c876fb65f9ac2443ce3f5ff1.1757414621.git.lorenzo@kernel.org>
-X-Mailer: git-send-email 2.51.0
+	s=k20201202; t=1757414522;
+	bh=ZjvOrSWVcVf5YAynr8zKeTMjoU2jc4ng9s5RPK12NbA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=McfoQ4gDFpUfqvvhW8JCPU0Bouf+Ecc5S6c8dckZKyY4c93J2zLEBGGPZ9yGoDqKE
+	 vs98zwJ4COzBUGJeEPzWquI0PKQ5nDm8VJGCFjDma0+3b/RVPGPhGijdgYZVnFfD1z
+	 uT8q70OB34x6Hvrpw7bsZzPBYjnsqIuXaN1lUvSdESIusdwOLULICBk5c8riNhB4n6
+	 9ygtRErF5j0YtL6ssCAulrrqcHEHc8tK3aJFfb6ciJHQFWutMTV70Gw/4PgUAc+XEk
+	 c1uDjgXyLOtMeKhALfDs5C1ZgVJ4B++KLdoBpO5loJe5J2zaZJxz6Re5atOi+WIXLK
+	 o9KfNg2k1SBcg==
+Date: Tue, 9 Sep 2025 12:41:57 +0200
+From: Andi Shyti <andi.shyti@kernel.org>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Leilk Liu <leilk.liu@mediatek.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Qii Wang <qii.wang@mediatek.com>, Wolfram Sang <wsa@kernel.org>, 
+	Liguo Zhang <liguo.zhang@mediatek.com>, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v2] i2c: mediatek: fix potential incorrect use of
+ I2C_MASTER_WRRD
+Message-ID: <c3d57np3hns3yoklgkbpc2ivx7jrd5qwz76wcwxhnef3ermdve@3ejfxfwg3acq>
+References: <20250906082652.16864-1-leilk.liu@mediatek.com>
+ <zddsit53dwqo27buoxaolgpzvvvd6uvwcyzughv7qfvwg64ces@yrlrur5dkf45>
+ <CAGXv+5HZcZ8uVZQbT83QnWd1M6p7fXvKU-0gOfc794BxqOmw1g@mail.gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAGXv+5HZcZ8uVZQbT83QnWd1M6p7fXvKU-0gOfc794BxqOmw1g@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250909_034644_775083_9DFD4649 
-X-CRM114-Status: GOOD (  15.02  )
+X-CRM114-CacheID: sfid-20250909_034203_454866_E2A95768 
+X-CRM114-Status: GOOD (  28.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,159 +78,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Do not use bitmask in mt76_wed_rro_ind DMA descriptor in order to not
-break endianness.
-This patch is based on the following series:
-https://lore.kernel.org/linux-wireless/20250909-mt7996-rro-rework-v5-0-7d66f6eb7795@kernel.org/T/#m8b488004d69036cd3672b9eeca8005a937ec0313
+On Tue, Sep 09, 2025 at 11:50:15AM +0800, Chen-Yu Tsai wrote:
+> On Tue, Sep 9, 2025 at 6:17 AM Andi Shyti <andi.shyti@kernel.org> wrote:
+> > > diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+> > > index ab456c3717db..dee40704825c 100644
+> > > --- a/drivers/i2c/busses/i2c-mt65xx.c
+> > > +++ b/drivers/i2c/busses/i2c-mt65xx.c
+> > > @@ -1243,6 +1243,7 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
+> > >  {
+> > >       int ret;
+> > >       int left_num = num;
+> > > +     bool write_then_read_en = false;
+> > >       struct mtk_i2c *i2c = i2c_get_adapdata(adap);
+> > >
+> > >       ret = clk_bulk_enable(I2C_MT65XX_CLK_MAX, i2c->clocks);
+> > > @@ -1256,6 +1257,7 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
+> > >               if (!(msgs[0].flags & I2C_M_RD) && (msgs[1].flags & I2C_M_RD) &&
+> > >                   msgs[0].addr == msgs[1].addr) {
+> > >                       i2c->auto_restart = 0;
+> > > +                     write_then_read_en = true;
+> > >               }
+> > >       }
+> > >
+> > > @@ -1280,12 +1282,10 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
+> > >               else
+> > >                       i2c->op = I2C_MASTER_WR;
+> > >
+> > > -             if (!i2c->auto_restart) {
+> > > -                     if (num > 1) {
+> > > -                             /* combined two messages into one transaction */
+> > > -                             i2c->op = I2C_MASTER_WRRD;
+> > > -                             left_num--;
+> > > -                     }
+> > > +             if (write_then_read_en) {
+> > > +                     /* combined two messages into one transaction */
+> > > +                     i2c->op = I2C_MASTER_WRRD;
+> >
+> > i2c doesn't change for the whole loop so that it can be set only
+> > once outside the loop instead of setting it everytime.
+> >
+> > Something like this:
+> >
+> >         if (i2c->op == I2C_MASTER_WRRD)
+> >                 left_num--;
+> >         else if (msgs->flags & I2C_M_RD)
+> >                 ...
+> >         else
+> >
+> > looks cleaner to me and we save the extra flag. Am I missing
+> > anything?
+> 
+> It looks correct to me, though I think it requires a comment explaining
+> that "in the WRRD case there are only two messages that get processed
+> together, and the while loop doesn't actually iterate", and reference
+> the block where the WRRD op is set.
+> 
+> Otherwise someone is going to look at this snippet and think there's
+> some corner case where all messages (# of messages > 2) get handled
+> using the WRRD op.
 
-Fixes: 950d0abb5cd94 ("wifi: mt76: mt7996: add wed rx support")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/wireless/mediatek/mt76/dma.c      |  9 ++++++--
- drivers/net/wireless/mediatek/mt76/mt76.h     | 17 ++++++++-------
- .../net/wireless/mediatek/mt76/mt7996/mac.c   | 21 ++++++++++++-------
- 3 files changed, 29 insertions(+), 18 deletions(-)
+Agree, indeed I wanted to write it somewhere that a comment would
+have been nice.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireless/mediatek/mt76/dma.c
-index 5dc093b21838..1fa7de1d2c45 100644
---- a/drivers/net/wireless/mediatek/mt76/dma.c
-+++ b/drivers/net/wireless/mediatek/mt76/dma.c
-@@ -194,6 +194,8 @@ mt76_dma_queue_magic_cnt_init(struct mt76_dev *dev, struct mt76_queue *q)
- 	q->magic_cnt = 0;
- 	if (mt76_queue_is_wed_rro_ind(q)) {
- 		struct mt76_wed_rro_desc *rro_desc;
-+		u32 data1 = FIELD_PREP(RRO_IND_DATA1_MAGIC_CNT_MASK,
-+				       MT_DMA_WED_IND_CMD_CNT - 1);
- 		int i;
- 
- 		rro_desc = (struct mt76_wed_rro_desc *)q->desc;
-@@ -201,7 +203,7 @@ mt76_dma_queue_magic_cnt_init(struct mt76_dev *dev, struct mt76_queue *q)
- 			struct mt76_wed_rro_ind *cmd;
- 
- 			cmd = (struct mt76_wed_rro_ind *)&rro_desc[i];
--			cmd->magic_cnt = MT_DMA_WED_IND_CMD_CNT - 1;
-+			cmd->data1 = cpu_to_le32(data1);
- 		}
- 	} else if (mt76_queue_is_wed_rro_rxdmad_c(q)) {
- 		struct mt76_rro_rxdmad_c *dmad = (void *)q->desc;
-@@ -582,12 +584,15 @@ mt76_dma_dequeue(struct mt76_dev *dev, struct mt76_queue *q, bool flush,
- 
- 	if (mt76_queue_is_wed_rro_ind(q)) {
- 		struct mt76_wed_rro_ind *cmd;
-+		u8 magic_cnt;
- 
- 		if (flush)
- 			goto done;
- 
- 		cmd = q->entry[idx].buf;
--		if (cmd->magic_cnt != q->magic_cnt)
-+		magic_cnt = FIELD_GET(RRO_IND_DATA1_MAGIC_CNT_MASK,
-+				      le32_to_cpu(cmd->data1));
-+		if (magic_cnt != q->magic_cnt)
- 			return NULL;
- 
- 		if (q->tail == q->ndesc - 1)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index a78d663ee91d..eede0c0fe2b9 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -415,15 +415,16 @@ struct mt76_txq {
- 	bool aggr;
- };
- 
-+/* data0 */
-+#define RRO_IND_DATA0_IND_REASON_MASK	GENMASK(31, 28)
-+#define RRO_IND_DATA0_START_SEQ_MASK	GENMASK(27, 16)
-+#define RRO_IND_DATA0_SEQ_ID_MASK	GENMASK(11, 0)
-+/* data1 */
-+#define RRO_IND_DATA1_MAGIC_CNT_MASK	GENMASK(31, 29)
-+#define RRO_IND_DATA1_IND_COUNT_MASK	GENMASK(12, 0)
- struct mt76_wed_rro_ind {
--	u32 se_id	: 12;
--	u32 rsv		: 4;
--	u32 start_sn	: 12;
--	u32 ind_reason	: 4;
--	u32 ind_cnt	: 13;
--	u32 win_sz	: 3;
--	u32 rsv2	: 13;
--	u32 magic_cnt	: 3;
-+	__le32 data0;
-+	__le32 data1;
- };
- 
- struct mt76_txwi_cache {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-index ed10e45b21a4..5b43678e6556 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-@@ -1822,11 +1822,17 @@ void mt7996_rro_rx_process(struct mt76_dev *mdev, void *data)
- {
- 	struct mt7996_dev *dev = container_of(mdev, struct mt7996_dev, mt76);
- 	struct mt76_wed_rro_ind *cmd = (struct mt76_wed_rro_ind *)data;
-+	u32 cmd_data0 = le32_to_cpu(cmd->data0);
-+	u32 cmd_data1 = le32_to_cpu(cmd->data1);
-+	u8 ind_reason = FIELD_GET(RRO_IND_DATA0_IND_REASON_MASK, cmd_data0);
-+	u16 start_seq = FIELD_GET(RRO_IND_DATA0_START_SEQ_MASK, cmd_data0);
-+	u16 seq_id = FIELD_GET(RRO_IND_DATA0_SEQ_ID_MASK, cmd_data0);
-+	u16 ind_count = FIELD_GET(RRO_IND_DATA1_IND_COUNT_MASK, cmd_data1);
- 	struct mt7996_msdu_page_info *pinfo = NULL;
- 	struct mt7996_msdu_page *p = NULL;
- 	int i, seq_num = 0;
- 
--	for (i = 0; i < cmd->ind_cnt; i++) {
-+	for (i = 0; i < ind_count; i++) {
- 		struct mt7996_wed_rro_addr *e;
- 		struct mt76_rx_status *status;
- 		struct mt7996_rro_hif *rxd;
-@@ -1841,8 +1847,8 @@ void mt7996_rro_rx_process(struct mt76_dev *mdev, void *data)
- 		void *buf;
- 		bool ls;
- 
--		seq_num = FIELD_GET(MT996_RRO_SN_MASK, cmd->start_sn + i);
--		e = mt7996_rro_addr_elem_get(dev, cmd->se_id, seq_num);
-+		seq_num = FIELD_GET(MT996_RRO_SN_MASK, start_seq + i);
-+		e = mt7996_rro_addr_elem_get(dev, seq_id, seq_num);
- 		data = le32_to_cpu(e->data);
- 		signature = FIELD_GET(WED_RRO_ADDR_SIGNATURE_MASK, data);
- 		if (signature != (seq_num / MT7996_RRO_WINDOW_MAX_LEN)) {
-@@ -1930,7 +1936,7 @@ void mt7996_rro_rx_process(struct mt76_dev *mdev, void *data)
- 			skb_mark_for_recycle(skb);
- 			__skb_put(skb, len);
- 
--			if (cmd->ind_reason == 1 || cmd->ind_reason == 2) {
-+			if (ind_reason == 1 || ind_reason == 2) {
- 				dev_kfree_skb(skb);
- 				goto next_page;
- 			}
-@@ -1941,7 +1947,7 @@ void mt7996_rro_rx_process(struct mt76_dev *mdev, void *data)
- 			}
- 
- 			status = (struct mt76_rx_status *)skb->cb;
--			if (cmd->se_id != MT7996_RRO_MAX_SESSION)
-+			if (seq_id != MT7996_RRO_MAX_SESSION)
- 				status->aggr = true;
- 
- 			mt7996_queue_rx_skb(mdev, qid, skb, &info);
-@@ -1965,7 +1971,7 @@ void mt7996_rro_rx_process(struct mt76_dev *mdev, void *data)
- 		if ((i + 1) % 4 == 0)
- 			mt76_wr(dev, MT_RRO_ACK_SN_CTRL,
- 				FIELD_PREP(MT_RRO_ACK_SN_CTRL_SESSION_MASK,
--					   cmd->se_id) |
-+					   seq_id) |
- 				FIELD_PREP(MT_RRO_ACK_SN_CTRL_SN_MASK,
- 					   seq_num));
- 		if (p) {
-@@ -1977,8 +1983,7 @@ void mt7996_rro_rx_process(struct mt76_dev *mdev, void *data)
- 	/* Update ack_seq_num for remaining addr_elem */
- 	if (i % 4)
- 		mt76_wr(dev, MT_RRO_ACK_SN_CTRL,
--			FIELD_PREP(MT_RRO_ACK_SN_CTRL_SESSION_MASK,
--				   cmd->se_id) |
-+			FIELD_PREP(MT_RRO_ACK_SN_CTRL_SESSION_MASK, seq_id) |
- 			FIELD_PREP(MT_RRO_ACK_SN_CTRL_SN_MASK, seq_num));
- }
- 
--- 
-2.51.0
+I'd appreciate a comment even with the boolean flag. I think
+boolean flags are often a forced solution and we always need to
+describe their need.
 
+> So maybe it looks cleaner, but it requires more context to understand.
+> Whereas in the original patch, the extra variable sort of gives that
+> context. In this case I prefer the context being more visible, since
+> the original corner case this issue fixes is also from missing context
+> and assumptions.
+
+I think both solutions are clear in a different way. Anyway, I'm
+not very strong on this comment, I just see that from a code
+perspective looks nicer. If you guys insist, then I will let this
+go as it is.
+
+Andi
 
