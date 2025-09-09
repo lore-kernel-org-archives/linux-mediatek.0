@@ -4,68 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D3EFCAC589
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 06:58:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AF72CAC587
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 06:58:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ghFyZUGdZ7mO0wqQ4/RAL3CXKOgBO+Pq9aSKHM71k80=; b=mA6PBpUxh4G3DT0VNEPQt+CIds
-	4ZJ60i0n9bfLVf/iT6ui3g1z6Qju5rPw6dYPw3msPGBVH4Qq9bj39nOTU5d3y5mKZ/rrXVA9tcPYO
-	I+FqmiOfP4+OO/2vmEqjkK7b+y/nZJeL7d0UOP4yo+dKDwnQtz7fEevcpDl0ASyxKuqR0rRPVCKO/
-	VCveYfC+X5DvORRkJT+WiI8wlIlAEa41znS70XO7HDZfGvBJb+bvIOgmNAvAbIwFvD30gQLWW8Gdl
-	o59VrlrAyPbyRczwyPnVNS23sGMGixYPMc0hINxTmTqKluLdxeQN9vUfx0eenclg+GfpGo3OuVwRM
-	nzzDM5hw==;
+	bh=YI1lEa2m79R1su/rEIpWAFyrO+Jezkd3/oRpZDuRj5I=; b=SHM+Wp3ApfimW6IY9Ax1penlGk
+	BSuwTWnI0mAY6F5CuHaT/0bEmf7MPuT1Z57Js7VS8EpEla5PLklqjZORvhiOpoE/bkBPGGKawP8y4
+	cjvEXwJpAkq0xFJW8HoaMrN335UjtSVNqhhf+5/eYaLUOXTX5+M53iD/K/dl7jqZlhWL2px6jR7PE
+	O7YnpTl8w3KmHkmt52BTKOhKPXpme9qNFQM5nefUMB590RARxeSjCWQAPSZFeYnNIpLKBihPJWEOt
+	WJ4InzVZ7fTVFin5SD3X470TJYMsg4kYzo9uTtYTXQFQ9vXuym//r5+YBPTt4/4lW//O3Kn/zRjtW
+	b66jc5mg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvsJ4-00000004yUC-1JH6;
-	Tue, 09 Sep 2025 06:58:22 +0000
+	id 1uvsJB-00000004ydm-3avR;
+	Tue, 09 Sep 2025 06:58:29 +0000
 Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvqY4-00000004Lql-2dI4
+	id 1uvqhR-00000004Nyv-0zAs
 	for linux-mediatek@lists.infradead.org;
-	Tue, 09 Sep 2025 05:05:45 +0000
+	Tue, 09 Sep 2025 05:15:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
 	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
 	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=ghFyZUGdZ7mO0wqQ4/RAL3CXKOgBO+Pq9aSKHM71k80=; b=hdhFDgmKyMhYNyU7ekjmjMl7c8
-	wmH6MibDUk8mCcbYvnIZCp4rG+clm186+LS8QwEd3pg5R4L6y99rb+oqLAXgbT6kB505Cb3dk/fzV
-	VXIHfODhkQfqIBCkJvHZkuWQeyhp8vUXrGN9LcWkcCHh5peKQGvfyDDBon2l/3UagMJ4=;
+	bh=YI1lEa2m79R1su/rEIpWAFyrO+Jezkd3/oRpZDuRj5I=; b=aOBMaUepJhS809k1fkV1TvIkz3
+	hv/b5KNKIldk1O0E7tHLgLCCjz1A4ECEJbU70y+UGav+EQBVgtpeikPfGS7Z+ysEi6oNUU+U6m+zQ
+	koUHhtZ3ejC07JXMozHVNAJT8GSIHbwAmsWO36YayCqFE+Kzu9wfWUl2BFB/mZC92YFc=;
 Received: from p5b206816.dip0.t-ipconnect.de ([91.32.104.22] helo=nf.local)
 	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
 	(Exim 4.96)
 	(envelope-from <nbd@nbd.name>)
-	id 1uvqXu-004Dp8-0Z;
-	Tue, 09 Sep 2025 07:05:34 +0200
-Message-ID: <71c03b80-6ea8-4393-9210-c50a6ac73323@nbd.name>
-Date: Tue, 9 Sep 2025 07:05:33 +0200
+	id 1uvqhJ-004E0x-1l;
+	Tue, 09 Sep 2025 07:15:17 +0200
+Message-ID: <c64c1a73-17b4-43e1-9188-03a2ce3ec8b1@nbd.name>
+Date: Tue, 9 Sep 2025 07:15:16 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/4] wifi: mt76: connac: synchronize token_count access in
- mt76_connac_skip_fw_pmctrl
-To: =?UTF-8?B?TWluZ3llbiBIc2llaCAo6Kyd5piO6Ku6KQ==?=
- <Mingyen.Hsieh@mediatek.com>, "lorenzo@kernel.org" <lorenzo@kernel.org>
-Cc: =?UTF-8?B?QWxsYW4gV2FuZyAo546L5a625YGJKQ==?= <Allan.Wang@mediatek.com>,
- =?UTF-8?B?RXJpYy1TWSBDaGFuZyAo5by15pu45rqQKQ==?=
- <Eric-SY.Chang@mediatek.com>, =?UTF-8?B?RGVyZW4gV3UgKOatpuW+t+S7gSk=?=
- <Deren.Wu@mediatek.com>, Ryder Lee <Ryder.Lee@mediatek.com>,
- =?UTF-8?B?UXVhbiBaaG91ICjlkajlhagp?= <Quan.Zhou@mediatek.com>,
- =?UTF-8?B?TWljaGFlbCBMbyAo576F55Kn56ugKQ==?= <Michael.Lo@mediatek.com>,
- =?UTF-8?B?U2hheW5lIENoZW4gKOmZs+i7kuS4nik=?= <Shayne.Chen@mediatek.com>,
- Sean Wang <Sean.Wang@mediatek.com>, =?UTF-8?B?TGVvbiBZZW4gKOmhj+iJr+WEkik=?=
- <Leon.Yen@mediatek.com>, =?UTF-8?B?S00gTGluICjmnpfmmIbmsJEp?=
- <km.lin@mediatek.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>
+Subject: Re: [PATCH 1/4] wifi: mt76: mt792x: protect state->cc_* counters with
+ cc_lock
+To: Mingyen Hsieh <mingyen.hsieh@mediatek.com>, lorenzo@kernel.org
+Cc: deren.wu@mediatek.com, Sean.Wang@mediatek.com, Leon.Yen@mediatek.com,
+ Michael.Lo@mediatek.com, allan.wang@mediatek.com,
+ Eric-SY.Chang@mediatek.com, km.lin@mediatek.com, Quan.Zhou@mediatek.com,
+ Ryder.Lee@mediatek.com, Shayne.Chen@mediatek.com,
+ linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
 References: <20250904030649.655436-1-mingyen.hsieh@mediatek.com>
- <20250904030649.655436-5-mingyen.hsieh@mediatek.com>
- <bafba000-2488-4382-ae0c-df6195b83019@nbd.name>
- <61ad7900d5909359d8c1907b6c80db921c0da612.camel@mediatek.com>
+ <20250904030649.655436-2-mingyen.hsieh@mediatek.com>
 Content-Language: en-US
 From: Felix Fietkau <nbd@nbd.name>
 Autocrypt: addr=nbd@nbd.name; keydata=
@@ -91,12 +81,12 @@ Autocrypt: addr=nbd@nbd.name; keydata=
  TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
  GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
  cL98efvrjdstUfTCP2pfetyN
-In-Reply-To: <61ad7900d5909359d8c1907b6c80db921c0da612.camel@mediatek.com>
+In-Reply-To: <20250904030649.655436-2-mingyen.hsieh@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250908_220544_743223_9F1B9F5E 
-X-CRM114-Status: UNSURE (   6.67  )
+X-CRM114-CacheID: sfid-20250908_221527_062993_3A587448 
+X-CRM114-Status: UNSURE (   4.98  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -112,19 +102,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 05.09.25 04:14, Mingyen Hsieh (謝明諺) wrote:
-> I haven't seen a real race so far, but during my observation, I noticed
-> that some functions using token_count are protected by a lock. That's
-> why i added the protection in this patch. These are just my thoughts,
-> and maybe i might have missed something-perhaps the protection isn't
-> needed here.
+On 04.09.25 05:06, Mingyen Hsieh wrote:
+> From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+> 
+> The updates to state->cc_* (cc_busy, cc_tx, etc.) lack synchronization,
+> risking race conditions and inconsistent statistics.
+> 
+> Add cc_lock protection to ensure atomic updates.
+> 
+> Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 
-In that case, I don't think that this patch adds any extra race 
-protection. Other places that take dev->token_lock typically either 
-write a token related variable or interact with the idr as well and need 
-locking because of that.
-
-Thanks,
+I don't see any race conditions here. Those counters are only updated 
+and accessed with dev->mutex held.
 
 - Felix
 
