@@ -4,86 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC1E9CAC587
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 16:02:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1CA3CA0FED
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Sep 2025 16:02:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Fe2CylzU02/cCqzp45eY392Cx75sRoZT1uPdLFqj/ic=; b=EafR+JcXsuqigCk1CMVw0Of/1N
-	AYpbL7xJBGAzbuKGzSRN0OkXVtG25aJo+6EntWka84cNCVfBxWq0oPF0CqIl+Z8XEdP8v8N5yRbYj
-	CJZ/y+YjFr9XJP1RT8mg5VoqishgD51zl7c4UOpsFt6KilS3Q3T70Anwo4iw7jExerf+qU+NqWXZe
-	gJ15qE3iVkBHPKPi79OC2ZBDSOIOfFWUvbwduiYU38iXoAx9HQBZD5tNSqWzS/RXz6S3PAI8BP15Z
-	lCzYrcUHKnyza9tWKmOfW8fP6iO3MDpr7UDwTmhlJ1gsX8oPmmVafH1wW7OWfqxYXq1fRdjmJXVC2
-	ToWZqKsg==;
+	bh=e83lrEIW3avB4qsniP1YuOsrntuQ181h3kAMmQsmlNw=; b=bGznKRe0JKjwjGQzgfqlDWOPg5
+	oOSqgdslnmFiGYpb7ORdraVRWtBFtsi/vokBobx9eZ3kngtLLJ+Feftosy/1IB8Fc0Zvmp4yQzCbY
+	cCS5oHeWv/cuHhHQcQLkuJZ9QsV9zoGPCWutF/yw7FnkNnq2mivqRmyySOMvrtnyDjEwlqG74rmfC
+	M5vqqB6bhWHwp9rnsStskEq50bMxSorcEwP7WBiHvYiLQquShyj87a6haC2oyKb3R+vls7t+szM1D
+	sJWtmkmrYVThRIFuFKk36RfwfjxrWw74kpkHjjqHe62u8VXp2Awl1ybr/kY8CDanbXLmgUHTVFRqX
+	QEGEWfMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uw0ni-00000008NwR-3cIs;
-	Tue, 09 Sep 2025 16:02:34 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1uw0np-00000008O9R-3epf;
+	Tue, 09 Sep 2025 16:02:41 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvyQ4-00000007OHi-1j59;
-	Tue, 09 Sep 2025 13:30:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=Fe2CylzU02/cCqzp45eY392Cx75sRoZT1uPdLFqj/ic=; b=zkfV0cigs49B1J2Jk+T6gofH75
-	J6/mR1g7h+Dea28BHMKBrCr8qZnGhmnRH/PwlyuouXbiiFDTuxQNn3jBtpYYawsM+fjxHzE6Yt1C7
-	QJF84Wykf45iP9//1cf2BBXxeweV6K5vLWrg4nYzinB9Pjt6ncMDsA/tel3NB4TEV8k5tf+6oq5FP
-	RCJtDZ0mcfZlWh4hUaXCWcZ1/Ja1i/d0/Ygcw5Jsd9tLGJK9hA3NYCs+IChO9TCRfim1jErkwt+2H
-	ROU1IDownhQKl8jx9sE+YoCUdIr71sZ9ZGfYOGZodFZCZ6zAyn+e+3RqyNt1xUY1S5lyWITPPFEqc
-	BlA4XhwQ==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:51586)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.98.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1uvyPh-000000008CU-0SyU;
-	Tue, 09 Sep 2025 14:29:37 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1uvyPZ-000000000RX-0dBo;
-	Tue, 09 Sep 2025 14:29:29 +0100
-Date: Tue, 9 Sep 2025 14:29:29 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Srinivas Kandagatla <srini@kernel.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	"Chester A. Unal" <chester.a.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>, Simon Horman <horms@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [net-next PATCH v16 06/10] net: dsa: Add Airoha AN8855 5-Port
- Gigabit DSA Switch driver
-Message-ID: <aMAruQYXL7m8upS1@shell.armlinux.org.uk>
-References: <20250909004343.18790-1-ansuelsmth@gmail.com>
- <20250909004343.18790-7-ansuelsmth@gmail.com>
- <aL_uqX90oP_3hbK6@shell.armlinux.org.uk>
- <68c00db1.050a0220.7d5a6.50b8@mx.google.com>
+	id 1uvyX6-00000007RGY-173E;
+	Tue, 09 Sep 2025 13:37:17 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id EF5C0407C0;
+	Tue,  9 Sep 2025 13:37:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ABEE4C4CEF4;
+	Tue,  9 Sep 2025 13:37:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1757425035;
+	bh=31mOWd8+i/1YkiYaOgcvUkmjuR7GoBD5Ed0MeKEuOFo=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=BXVF3yf9YngGzwiQotWaE4Rx6byZFIleDiFn32GZnBJJycd+usgkvBcEjrfraU96O
+	 OLTqsYuQ/7Ml956/i1KRFTRDv3ny65maB8g2Qe9iG1w94gWkJpNT2tofdbPoe2tXH7
+	 opsMO0H97xnzvR7WoO7CbjNuFHu4L7lYCDl0vQEf4fIFRrRX5pXgXj6qyMEvJi35rf
+	 DF9JVkUOLuzzd4k1pKuBWFVkqfOQpB4frNdfuxprHgWoaLw3EH4vIWgZC9Vp9SjlhZ
+	 PV/YJisDuvITkYhqnPjVVPk0BAnO3xPs8gzW5kLJnw74J8pKUJwjCAajxeYcZSXdz0
+	 HpfFO1hkpa2pg==
+Date: Tue, 09 Sep 2025 08:37:15 -0500
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <68c00db1.050a0220.7d5a6.50b8@mx.google.com>
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ Russell King <linux@armlinux.org.uk>, 
+ "Chester A. Unal" <chester.a.unal@arinc9.com>, devicetree@vger.kernel.org, 
+ Sean Wang <sean.wang@mediatek.com>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Srinivas Kandagatla <srini@kernel.org>, linux-mediatek@lists.infradead.org, 
+ "David S. Miller" <davem@davemloft.net>, 
+ Heiner Kallweit <hkallweit1@gmail.com>, Simon Horman <horms@kernel.org>, 
+ Paolo Abeni <pabeni@redhat.com>, Eric Dumazet <edumazet@google.com>, 
+ DENG Qingfang <dqfext@gmail.com>, linux-arm-kernel@lists.infradead.org, 
+ netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, 
+ Lee Jones <lee@kernel.org>, linux-kernel@vger.kernel.org, 
+ Vladimir Oltean <olteanv@gmail.com>, Jakub Kicinski <kuba@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: Christian Marangi <ansuelsmth@gmail.com>
+In-Reply-To: <20250909004343.18790-5-ansuelsmth@gmail.com>
+References: <20250909004343.18790-1-ansuelsmth@gmail.com>
+ <20250909004343.18790-5-ansuelsmth@gmail.com>
+Message-Id: <175742464480.3063209.323009363144312411.robh@kernel.org>
+Subject: Re: [net-next PATCH v16 04/10] dt-bindings: mfd: Document support
+ for Airoha AN8855 Switch SoC
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250909_063000_451231_91BB4429 
-X-CRM114-Status: GOOD (  19.61  )
+X-CRM114-CacheID: sfid-20250909_063716_341089_91539DAF 
+X-CRM114-Status: GOOD (  13.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,68 +86,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 09, 2025 at 01:21:18PM +0200, Christian Marangi wrote:
-> On Tue, Sep 09, 2025 at 10:08:57AM +0100, Russell King (Oracle) wrote:
-> > On Tue, Sep 09, 2025 at 02:43:37AM +0200, Christian Marangi wrote:
-> > > +static void an8855_phylink_get_caps(struct dsa_switch *ds, int port,
-> > > +				    struct phylink_config *config)
-> > > +{
-> > > +	struct an8855_priv *priv = ds->priv;
-> > > +	u32 reg;
-> > > +	int ret;
-> > > +
-> > > +	switch (port) {
-> > > +	case 0:
-> > > +	case 1:
-> > > +	case 2:
-> > > +	case 3:
-> > > +	case 4:
-> > > +		__set_bit(PHY_INTERFACE_MODE_GMII,
-> > > +			  config->supported_interfaces);
-> > > +		__set_bit(PHY_INTERFACE_MODE_INTERNAL,
-> > > +			  config->supported_interfaces);
-> > > +		break;
-> > > +	case 5:
-> > > +		phy_interface_set_rgmii(config->supported_interfaces);
-> > > +		__set_bit(PHY_INTERFACE_MODE_SGMII,
-> > > +			  config->supported_interfaces);
-> > > +		__set_bit(PHY_INTERFACE_MODE_2500BASEX,
-> > > +			  config->supported_interfaces);
-> > > +		break;
-> > > +	}
-> > > +
-> > > +	config->mac_capabilities = MAC_ASYM_PAUSE | MAC_SYM_PAUSE |
-> > > +				   MAC_10 | MAC_100 | MAC_1000FD | MAC_2500FD;
-> > > +
-> > > +	ret = regmap_read(priv->regmap, AN8855_CKGCR, &reg);
-> > > +	if (ret)
-> > > +		dev_err(ds->dev, "failed to read EEE LPI timer\n");
-> > > +
-> > > +	config->lpi_capabilities = MAC_100FD | MAC_1000FD;
-> > > +	/* Global LPI TXIDLE Threshold, default 60ms (unit 2us) */
-> > > +	config->lpi_timer_default = FIELD_GET(AN8855_LPI_TXIDLE_THD_MASK, reg) *
-> > > +				    AN8855_TX_LPI_UNIT;
-> > 
-> > You're not filling in config->lpi_interfaces, which means phylink won't
-> > LPI won't be functional.
-> > 
+
+On Tue, 09 Sep 2025 02:43:35 +0200, Christian Marangi wrote:
+> Document support for Airoha AN8855 Switch SoC. This SoC expose various
+> peripherals like an Ethernet Switch, a NVMEM provider and Ethernet PHYs.
 > 
-> Thanks for pointing this out, I notice lpi_interfaces is also not set on
-> other DSA driver that were converted to the new EEE handling, for
-> example mt7530.
+> It does also support i2c and timers but those are not currently
+> supported/used.
 > 
-> I assume EEE is also half broken there and the required change wasn't
-> notice at times?
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> ---
+>  .../bindings/mfd/airoha,an8855.yaml           | 175 ++++++++++++++++++
+>  1 file changed, 175 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/mfd/airoha,an8855.yaml
+> 
 
-Without checking (sorry, I'm busy, so I'm not going to), I have no
-idea. What I can say is that phylink won't call the enable/disable
-tx_lpi methods unless it is managing the EEE state, and to do that
-it needs _all_ the LPI properties to be correctly populated.
+My bot found errors running 'make dt_binding_check' on your patch:
 
-A lot of other switches (e.g. Marvell DSA) doesn't need that level
-of management.
+yamllint warnings/errors:
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/mfd/airoha,an8855.yaml:
+	Error in referenced schema matching $id: http://devicetree.org/schemas/net/airoha,an8855-mdio.yaml
+	Tried these paths (check schema $id if path is wrong):
+	/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/net/airoha,an8855-mdio.yaml
+	/usr/local/lib/python3.13/dist-packages/dtschema/schemas/net/airoha,an8855-mdio.yaml
+
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/mfd/airoha,an8855.example.dtb: soc@1 (airoha,an8855): mdio: {'compatible': ['airoha,an8855-mdio'], '#address-cells': 1, '#size-cells': 0, 'ethernet-phy@1': {'compatible': ['ethernet-phy-idc0ff.0410', 'ethernet-phy-ieee802.3-c22'], 'reg': [[1]], 'nvmem-cells': [[3], [4], [5], [6]], 'nvmem-cell-names': ['tx_a', 'tx_b', 'tx_c', 'tx_d'], 'phandle': 1}, 'ethernet-phy@2': {'compatible': ['ethernet-phy-idc0ff.0410', 'ethernet-phy-ieee802.3-c22'], 'reg': [[2]], 'nvmem-cells': [[7], [8], [9], [10]], 'nvmem-cell-names': ['tx_a', 'tx_b', 'tx_c', 'tx_d'], 'phandle': 2}} should not be valid under {'description': "Can't find referenced schema: http://devicetree.org/schemas/net/airoha,an8855-mdio.yaml#"}
+	from schema $id: http://devicetree.org/schemas/mfd/airoha,an8855.yaml#
+Documentation/devicetree/bindings/mfd/airoha,an8855.example.dtb: /example-0/mdio/soc@1/mdio: failed to match any schema with compatible: ['airoha,an8855-mdio']
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250909004343.18790-5-ansuelsmth@gmail.com
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
+
 
