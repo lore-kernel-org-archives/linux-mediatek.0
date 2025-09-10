@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7CE8CA101F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Sep 2025 15:46:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29EC5CA101F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Sep 2025 15:52:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JMzN9b3t7BMjqu1J5pi1n04VolEUQbl9H1P61fZolSo=; b=KV8YFof5kYH6vX2FLS43ZKL8ef
-	nAqzSoIukM6xwyxAJ+AiMej3ApDWTJXXshvKy0Kv+6lTAHb1C0LnFj2i1Dd8pGv8cROQrgy+Zmd+Y
-	44ssMnqGQ6a/N7TYXMbSGjk+0/k5FzhrSV9naMAM+EfQcP0u6lr+Bgg2nXJ5buZoYG9NqYSPUCFZy
-	fMH+6zRjhxBiYsOWYYb4MEkEk9EkhwozH6iLT6k3VRkrYnuARo9M+lvCpDj2bSOajznYi/+33jZbG
-	55nriXaXQZyAly/c39KtLZNWmhpC+jyhbexxw1b9UiIzprIiR/qV9Wj3P0oxG3DvvvuWvABIIfC2L
-	OLAYjqYw==;
+	bh=mipfafpKe4+epi8rhd9VJ21QHidqNimDzrKTJaqkwGE=; b=Rp8bENEhAIJmn4cX+OAvm/y9tK
+	haBHK4NolQLTKUOyMVkRHnqImdjrqvwH4Nh6OtmuHtVa5nnB5WMUoD2y9VAje1HvmHZnKbyqPcYRM
+	eQWxBce5u4VBtTzHZAS4Lps9Ko66/xvFZxoVPazhXNFGRJjbZ1eC1zjLZb7vU7KYc4pP29dVN8+gA
+	LINhgeECTfD6NzkPdznFDnOMpwtauauBNXu9x+fwQsW4zxYqvRArjT59EHnj1M7nn2BcZlQiwl8wd
+	8SgFrRN4pqMtEW6874A92FydL8PwtPbtB1cjkKvcs7zO2ww899VpMOi4RnBnKpOGzjWILYKq+Rk+j
+	UyIxJA0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwN1a-0000000FDiI-26mP;
-	Wed, 10 Sep 2025 15:46:22 +0000
+	id 1uwN75-0000000FGKD-1ODn;
+	Wed, 10 Sep 2025 15:52:03 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwN1X-0000000FDgA-2eaL;
-	Wed, 10 Sep 2025 15:46:20 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1757519131; cv=none; 
+	id 1uwN72-0000000FGIj-1eky;
+	Wed, 10 Sep 2025 15:52:01 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1757519478; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=L0DtszCRN5Y/m3JI1gxskLdlVgkiG9AHgQ1cUm66JTQs9bIzujOba5h9a+93kAc3Nc9BoXUIvkYdNguw0XTFQ1tCnFN5vYyWlKNaEirDhoKz5kd7+jvDa7jb7O8lqdqVAJmEd6awy2OOcL4/JTvR4rf54nq6bDsV2zASuEPfB6w=
+	b=i/p8AVc1BSekWX4Lt0Dw6EglB1upCj+tY/DuxcJdAKelj/805ap6QjnB2sy6CU4hs8AQVtSC9XTJeXT2YWaC7/kF1ukjvjy5E+FhYu0Il5ux3IKxX1sgRBDS+D6M5jDA2si7QOLHVHSPCN4UdV9LXVoI6LbJcSuxlppaxNOeszw=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1757519131; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=JMzN9b3t7BMjqu1J5pi1n04VolEUQbl9H1P61fZolSo=; 
-	b=Pb5kKl3POTswMjdStNOQmfYie4X5OhEiBgBUJMwa3oknUGsYJse83TFYp4E/wG2CbsdSbmk45arOOMNyYW4OwzoorFCib4tAS4otfTs/uerkzCLDsugxQKO1T2JNciWT3L6i/boNFe/FgyVcfWKlD3DfbJ1Wf4O0ikNWUEkOH9w=
+	t=1757519478; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=mipfafpKe4+epi8rhd9VJ21QHidqNimDzrKTJaqkwGE=; 
+	b=SrfTp56rOukd1bPhU1vdDrOhe0AzS34sHk3Wu6wsqq7DFO/XQW6X7KXa3fB8iRIkjWyASiJSAQGg1M758xjUfqxM5usDXjSzVMJswWElqXp8oNLPHXEg0Ah/NfkInNB9acaEK3lbp0mPlC9XirzHHrZcVOU7lTr3a7ZB5mkayL0=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=ariel.dalessandro@collabora.com;
 	dmarc=pass header.from=<ariel.dalessandro@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1757519131;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1757519478;
 	s=zohomail; d=collabora.com; i=ariel.dalessandro@collabora.com;
 	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=JMzN9b3t7BMjqu1J5pi1n04VolEUQbl9H1P61fZolSo=;
-	b=HLkKXw8jkxJmG84iLQYxQkVyHTUDdgNYWke2yhJi70hDiNQhL1kQI4MsQzKf77SN
-	KyX99n3Hauig9vtMgyWJxwc1ahMWks4Ld4jZ9gbyBiP9QiAdazZaR2uJLGQ1G3B376X
-	DZhIWZPtyviCLrJ+ncLHe9qWAt9Ewu0dRdrcdQAA=
-Received: by mx.zohomail.com with SMTPS id 1757519128121467.87872040448076;
-	Wed, 10 Sep 2025 08:45:28 -0700 (PDT)
-Message-ID: <f6b9158b-4e73-4a5f-95b5-bacb6ea2e185@collabora.com>
-Date: Wed, 10 Sep 2025 12:45:12 -0300
+	bh=mipfafpKe4+epi8rhd9VJ21QHidqNimDzrKTJaqkwGE=;
+	b=H0jHV6yuSzKnuEQQ6ZummRHbYzEC6s23vy+gecAvVk4q+zdPaRfXyUsiDW45SgiY
+	YQoq8ZVhkDgBo3pDR4uCWRhKZC3ONXuWa2MffuAMX8ndEqU98xYfQaHFgQmGUNybAW9
+	Tr64L2Mc48Djjk/cg1JvyPmmiTsPJrhpkwtRkfyU=
+Received: by mx.zohomail.com with SMTPS id 1757519475232994.3231024073066;
+	Wed, 10 Sep 2025 08:51:15 -0700 (PDT)
+Message-ID: <742b8fe9-bbff-4f36-ab81-33772aed2d6e@collabora.com>
+Date: Wed, 10 Sep 2025 12:51:00 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 07/14] dt-bindings: display: mediatek,ufoe: Add
- mediatek,gce-client-reg property
-To: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [PATCH v1 13/14] dt-bindings: input/touchscreen: Convert MELFAS
+ MIP4 Touchscreen to YAML
+To: Rob Herring <robh@kernel.org>
 Cc: airlied@gmail.com, amergnat@baylibre.com, andrew+netdev@lunn.ch,
  andrew-ct.chen@mediatek.com, angelogioacchino.delregno@collabora.com,
  broonie@kernel.org, chunkuang.hu@kernel.org, ck.hu@mediatek.com,
@@ -64,29 +64,26 @@ Cc: airlied@gmail.com, amergnat@baylibre.com, andrew+netdev@lunn.ch,
  linus.walleij@linaro.org, louisalexis.eyraud@collabora.com,
  maarten.lankhorst@linux.intel.com, matthias.bgg@gmail.com,
  mchehab@kernel.org, minghsiu.tsai@mediatek.com, mripard@kernel.org,
- p.zabel@pengutronix.de, pabeni@redhat.com, robh@kernel.org,
- sean.wang@kernel.org, simona@ffwll.ch, support.opensource@diasemi.com,
- tiffany.lin@mediatek.com, tzimmermann@suse.de, yunfei.dong@mediatek.com,
- devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
- linux-gpio@vger.kernel.org, linux-input@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-sound@vger.kernel.org,
- netdev@vger.kernel.org
+ p.zabel@pengutronix.de, pabeni@redhat.com, sean.wang@kernel.org,
+ simona@ffwll.ch, support.opensource@diasemi.com, tiffany.lin@mediatek.com,
+ tzimmermann@suse.de, yunfei.dong@mediatek.com, devicetree@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-clk@vger.kernel.org, linux-gpio@vger.kernel.org,
+ linux-input@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-sound@vger.kernel.org, netdev@vger.kernel.org
 References: <20250820171302.324142-1-ariel.dalessandro@collabora.com>
- <20250820171302.324142-8-ariel.dalessandro@collabora.com>
- <20250821-wandering-vermilion-pigeon-b8c9f0@kuoka>
- <28049fe0-0ae7-4b40-9f95-1513e317547f@collabora.com>
- <a37db87d-c3b1-4ce4-bec0-4f496dc209b5@kernel.org>
+ <20250820171302.324142-14-ariel.dalessandro@collabora.com>
+ <20250822155257.GA3865729-robh@kernel.org>
 Content-Language: en-US
 From: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-In-Reply-To: <a37db87d-c3b1-4ce4-bec0-4f496dc209b5@kernel.org>
+In-Reply-To: <20250822155257.GA3865729-robh@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250910_084619_723675_553A857B 
-X-CRM114-Status: GOOD (  20.84  )
+X-CRM114-CacheID: sfid-20250910_085200_487722_D1A5DD95 
+X-CRM114-Status: GOOD (  11.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,73 +98,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Krzysztof,
+Rob,
 
-On 9/10/25 11:21 AM, Krzysztof Kozlowski wrote:
-> On 10/09/2025 16:04, Ariel D'Alessandro wrote:
->> Krzysztof,
+On 8/22/25 12:52 PM, Rob Herring wrote:
+> On Wed, Aug 20, 2025 at 02:13:01PM -0300, Ariel D'Alessandro wrote:
+>> Convert the existing text-based DT bindings for MELFAS MIP4 Touchscreen
+>> controller to a YAML schema.
 >>
->> On 8/21/25 3:50 AM, Krzysztof Kozlowski wrote:
->>> On Wed, Aug 20, 2025 at 02:12:55PM -0300, Ariel D'Alessandro wrote:
->>>> Current, the DT bindings for Mediatek UFOe (Unified Frame Optimization
->>>> engine) is missing the mediatek,gce-client-reg property. Add it and
->>>
->>> Why is it missing? If the binding is complete, it cannot be missing...
+>> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+>> ---
+>>   .../input/touchscreen/melfas,mip4_ts.yaml     | 55 +++++++++++++++++++
+>>   .../input/touchscreen/melfas_mip4.txt         | 20 -------
+>>   2 files changed, 55 insertions(+), 20 deletions(-)
+>>   create mode 100644 Documentation/devicetree/bindings/input/touchscreen/melfas,mip4_ts.yaml
+>>   delete mode 100644 Documentation/devicetree/bindings/input/touchscreen/melfas_mip4.txt
 >>
->> Due to the following error:
->>
->> $ make -j$(nproc) CHECK_DTBS=y mediatek/mt8173-elm.dtb
->>     SCHEMA  Documentation/devicetree/bindings/processed-schema.json
->>     DTC [C] arch/arm64/boot/dts/mediatek/mt8173-elm.dtb
->> [...]
->> arch/arm64/boot/dts/mediatek/mt8173-elm.dtb: ufoe@1401a000
->> (mediatek,mt8173-disp-ufoe): 'mediatek,gce-client-reg' does not match
->> any of the regexes: '^pinctrl-[0-9]+$'
->> 	from schema $id:
->> http://devicetree.org/schemas/display/mediatek/mediatek,ufoe.yaml#
+>> diff --git a/Documentation/devicetree/bindings/input/touchscreen/melfas,mip4_ts.yaml b/Documentation/devicetree/bindings/input/touchscreen/melfas,mip4_ts.yaml
+>> new file mode 100644
+>> index 0000000000000..170fd4212467e
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/input/touchscreen/melfas,mip4_ts.yaml
+>> @@ -0,0 +1,55 @@
+>> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+>> +%YAML 1.2
+>> +---
+>> +$id: http://devicetree.org/schemas/input/touchscreen/melfas,mip4_ts.yaml#
+>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>> +
+>> +title: MELFAS MIP4 Touchscreen
+>> +
+>> +maintainers:
+>> +  - Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+>> +
+>> +properties:
+>> +  compatible:
+>> +    const: "melfas,mip4_ts"
 > 
-> So there are users of it? Then please explain that.
+> Drop quotes. With that,
+> 
+> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
-Ack. Will fix in v2. Thanks.
-
-> 
->>
->>>
->>>> update the example as well.
->>>>
->>>> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
->>>> ---
->>>>    .../bindings/display/mediatek/mediatek,ufoe.yaml      | 11 +++++++++++
->>>>    1 file changed, 11 insertions(+)
->>>>
->>>> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml
->>>> index 61a5e22effbf2..ecb4c0359fec3 100644
->>>> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml
->>>> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml
->>>> @@ -64,6 +64,14 @@ properties:
->>>>          - port@0
->>>>          - port@1
->>>>    
->>>> +  mediatek,gce-client-reg:
->>>> +    description: The register of client driver can be configured by gce with
->>>> +      4 arguments defined in this property, such as phandle of gce, subsys id,
->>>> +      register offset and size. Each GCE subsys id is mapping to a client
->>>
->>> Don't explain what DT syntax is. We all know, so that's completely
->>> redundant description. Explain the purpose. Explain Arguments with sechema - items.
->>
->> Although I agree with your suggestions, this is exactly how the rest of
->> the Mediatek DT bindings describe this node. This patch is based on the
->> other +20 files, which describe the node in the same way.
-> 
-> 
-> Last time I tried to fix something for Mediatek display I got
-> condescending and useless review from Collabora, so I won't be bothering
-> with fixing these bindings to make your job easier. I don't care, you
-> can thank someone inside. Therefore other poor bindings are not a valid
-> excuse for this patch not being correct.
-
-I see. Will rework this properly in v2.
+Ack.
 
 Thanks,
 
