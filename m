@@ -4,67 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14325CAC58C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Sep 2025 07:40:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D220CA101F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Sep 2025 08:20:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oLn38j9MqxH3f8ZhXoB68NoE0lV+FvJsDUgGypMTzX8=; b=klAGfNE+gINSJE9ZxNNiyvtZhl
-	ZWmdquHJP1lzJEtml8jmDtw3y5oH4AaQAPYRbqQXBKjb3AAqGrT/sRb6MfKN+PXAhkH2pKD/zTHaQ
-	G13agK5TKRV6ZKKgtz3FEtQzvs08Qcl8qUDhwW05sB8yY4EDBezq6Ro6vU1wLqRTYHN4kCbT+u8DF
-	s6BFQU6D5JTOOlNYH8Ryn1FigP+UquCyaU1OuZH8MJqadv4WRLwnmmnVmYBAVnZ+4Z8nolw4dB4OP
-	dE6BmLaFNgcyIw80LBEE0Al5Uvfs/HMGZYicDP1t9F0Y5Euvgpie0SBx6Q+e7ZTATwYpZ/mHQBOhi
-	SGHInkyw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/L/ZiHIMyXmxKkiSLCWK4pWAdvwcf6C/7sfjkt+r2Zs=; b=Rd1JiFmaY+paKQrbmrkxQbutv9
+	3NtCEV7K9Zkm1YzZi32OuEi3lA2Pt+YxvE5LOWjiR2RxT61xODKRWo+lrm5pvEK6OqqN94vpbwqzO
+	V4eTpMM0pwiYGr8daa593hOZUTQvxIVkyBlnlvbEHbbGz8WLrEScHp/PmtGb5tFcUSzdlXr0kofmb
+	ZSmzx9lDHmygkSsB2eoQFMZHEwr5rK4Q6pRgker2yE0HxBD+SFOLJdkfLG3BIC6dQn/DZWkl2rhzs
+	HuZICVCOlwfciTWPW3s/U4+65o5DPCESvQFEVPs0kywFuKBM2KOYrxB4cKPCojxKY+x0VpWjstsiZ
+	fZJedx6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwFRb-0000000CcsI-3Dea;
-	Wed, 10 Sep 2025 07:40:43 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uwG42-0000000Cs4U-0KAm;
+	Wed, 10 Sep 2025 08:20:26 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwFRU-0000000Ccla-0kcT;
-	Wed, 10 Sep 2025 07:40:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1757490032;
-	bh=sbTKr6Sv0EFGEa95dRZO+2Ih9nmW5u7BxTNwSFogEQM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=pbYcgpW8xbv2Kj9bHUM5TRVzh6xO5raDjot9Yn3xvJfLGLkRCBq8B9nEMROV/y7Qu
-	 rvk17Qbq+OwkzkVBT+DQcTurGCbxPJlx3gGfQ/ImkXK+eh/i9hdb3f1ZrkhfGYg1Ux
-	 MDcoYNp7AxfdT964wGgEZh/H0v8HsOt2/U3+wkozvQHlWaLAde/naI87kd9fdDw9lD
-	 RSwXS5tyvr/NCiG95Q30a63L5aPOJP/q2R2gnL5TYIUNOMQRtpKyIfezXlFzM7oit/
-	 rKKtkdaVWt/CMukAC6lb4iw6yxbUChiOg4DvFJyKdA76EuFUZxLAWyic0HWYHnvsUn
-	 +x0+HMoHV1VUg==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 78F8F17E0125;
-	Wed, 10 Sep 2025 09:40:31 +0200 (CEST)
-Message-ID: <5685f861-9791-48ca-8f94-fde0a4533048@collabora.com>
-Date: Wed, 10 Sep 2025 09:40:30 +0200
+	id 1uwG3z-0000000Cs3e-0vkr
+	for linux-mediatek@lists.infradead.org;
+	Wed, 10 Sep 2025 08:20:24 +0000
+Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-b0419ea6241so70733066b.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 10 Sep 2025 01:20:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1757492421; x=1758097221; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=/L/ZiHIMyXmxKkiSLCWK4pWAdvwcf6C/7sfjkt+r2Zs=;
+        b=k7QDAykrqpEZ+kuWThsDvjjlqLDEvtl3pfgdH7GB0/89gH3Ey75EeTRUecl8Yo2hT7
+         AHEt2EHCU5ctdBy3WNFBXpmHHcHIdyQ9IvdI7h8huqY7ptePG0UV0yeOWtkdSBR6hJDO
+         UMfaH53UY4BQbzMHVlYzjEiF8SQgkP/xp8uBvetG/WyChggrIYMz1YH4QZoWYWYNlYnP
+         cxgUtR0JYpn1kcLuNC28bTwwzKd1mQuhNo9mxlLwtPilHsUct5VPGRtdoFuJ7TfHt0IO
+         lQmnV/5K+cOC49m9XADfLpyhOjO90RUQQ7UV7oEzByyydUrV/BfqYYLMdE6URQ4YwHUD
+         HJ/A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1757492421; x=1758097221;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=/L/ZiHIMyXmxKkiSLCWK4pWAdvwcf6C/7sfjkt+r2Zs=;
+        b=xJ7ROCFqYgM13XYEg405qn+/l4anRYS1dMaK5BItGYPblIy0XHPKsDpUXEQGRnjayI
+         PGq2bOe1SfairDQDSbuVaoKUwDxE9BdnulvdY3iao8aYK4NSIIlTaURgXjyGKW2QsIXE
+         fEGx3ETZDGlWirRdzqVvAFmhFF9C5Pk68JNiurgQi/m6m8mZYUSVsYeOgYqJzBQiy7zn
+         3A2u83AsBCbXztMCQcnC6DxvNx1GXOWCbftgs86uyYbS5q4rggQf4LHydp7aFgM8mTT/
+         V7XyvqHlbKDbIlNtxJQy2/IPhPHg0bHcyKrHEfaKxcVYuVf2BrIKeREcJGZ8rY/49SUg
+         GODw==
+X-Forwarded-Encrypted: i=1; AJvYcCU2WAkBhO4vGHRVCOHc/Pg8KFluxWLw9XEj4uQynFbgX1tYQTc9/WedJkVgzuaNJEtUiNuEIUV8Lg7UOxfPyw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwWmE4QnfEVtjMnKYCl112SxKRuOl1Evl03ApKuiWO14cWml6pd
+	hd4TstnvF2vbYnv8JsRnxvanLREkhup9ixrKWkd4+/DzJD+QbfIQlWx3
+X-Gm-Gg: ASbGncvJErdSUKiDBVspp0RYlZo5wH3dUKtkfmhzmr4GCmQVIw+7OOnu+ofrEf1TOjP
+	O/+8zL646Djg86K0LzSIcYORoMpEwtsRRQERkHbo8IkSF4M5QWAWe1uz/ksit1maX7lXivrRvVo
+	v2ZA7ncgl0ZwzwFFaAg2rPsSnXhHtw5B1Gn1jF8/5+6FG31PMNeXPjau1XJwNnaD3mFuPIArGQM
+	IoTF25NU3CdXomp95mqOpyB9J2+rrOcObB5PECTbGeKMCG9OKwpUVQormAeZdjFS4U00HU0DIUW
+	rHJEKuoHwmflFFTJwoqsGZN1kLR8xY263zToRuPVWjfoOWmC0pnonkgK/J7EvA7w5ohFMVhocUa
+	P6WOBqWEgKLKgxyfxVq6TmMFqxQ==
+X-Google-Smtp-Source: AGHT+IEZ6Y8m9czCHfXyGir/VeA90+bvrcMtK66llF0DDBp7AdUVUAE+7FZ2p8xLZJOlSOvaso7zZw==
+X-Received: by 2002:a17:907:9718:b0:afe:b131:1820 with SMTP id a640c23a62f3a-b04b155985emr758644266b.6.1757492420788;
+        Wed, 10 Sep 2025 01:20:20 -0700 (PDT)
+Received: from skbuf ([2a02:2f04:d005:3b00:6669:35e7:fc93:9b1c])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b07833ffa91sm122826066b.91.2025.09.10.01.20.18
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 10 Sep 2025 01:20:20 -0700 (PDT)
+Date: Wed, 10 Sep 2025 11:20:17 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Srinivas Kandagatla <srini@kernel.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>, Simon Horman <horms@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [net-next PATCH v16 10/10] net: dsa: tag_mtk: add comments about
+ Airoha usage of this TAG
+Message-ID: <20250910082017.hjlq3664xvg5qjub@skbuf>
+References: <20250909004343.18790-1-ansuelsmth@gmail.com>
+ <20250909004343.18790-1-ansuelsmth@gmail.com>
+ <20250909004343.18790-11-ansuelsmth@gmail.com>
+ <20250909004343.18790-11-ansuelsmth@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 1/4] arm64: dts: mediatek: mt8390-genio-700-evk: Add
- Grinn GenioSBC-700
-To: Mateusz Koza <mateusz.koza@grinn-global.com>, robh@kernel.org
-Cc: krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- marcin.czarnecki@grinn-global.com, b.bilas@grinn-global.com, andrew@lunn.ch
-References: <20250909163052.446723-1-mateusz.koza@grinn-global.com>
- <20250909163052.446723-2-mateusz.koza@grinn-global.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250909163052.446723-2-mateusz.koza@grinn-global.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250909004343.18790-11-ansuelsmth@gmail.com>
+ <20250909004343.18790-11-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250910_004036_395365_FFBAE163 
-X-CRM114-Status: UNSURE (   7.58  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250910_012023_274287_DCB58176 
+X-CRM114-Status: GOOD (  20.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,20 +119,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 09/09/25 18:30, Mateusz Koza ha scritto:
-> Add support for Grinn GenioSBC-700. The Grinn GenioSBC-700 is a
-> single-board computer based on the MediaTek Genio 700 SoC. Its device
-> tree is split into separate SoM (.dtsi) and SBC (.dtsi) files, which are
-> combined in the SoC-specific .dts file.
+On Tue, Sep 09, 2025 at 02:43:41AM +0200, Christian Marangi wrote:
+> Add comments about difference between Airoha AN8855 and Mediatek tag
+> bitmap.
 > 
-> More details about the hardware:
-> - https://grinn-global.com/products/grinn-geniosom-700
-> - https://grinn-global.com/products/grinn-genioboard-edge-ai-sbc
+> Airoha AN88555 doesn't support controlling SA learning and Leaky VLAN
+
+Is there an extra 5 in AN88555?
+
+> from tag. Although these bits are not used (and even not defined for
+> Leaky VLAN), it's worth to add comments for these difference to prevent
+> any kind of regression in the future if ever these bits will be used.
 > 
-> Reviewed-by: Andrew Lunn <andrew@lunn.ch>
-> Signed-off-by: Mateusz Koza <mateusz.koza@grinn-global.com>
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> ---
+>  net/dsa/tag_mtk.c | 3 +++
+>  1 file changed, 3 insertions(+)
+> 
+> diff --git a/net/dsa/tag_mtk.c b/net/dsa/tag_mtk.c
+> index b670e3c53e91..ac3f956abe39 100644
+> --- a/net/dsa/tag_mtk.c
+> +++ b/net/dsa/tag_mtk.c
+> @@ -18,6 +18,9 @@
+>  #define MTK_HDR_XMIT_TAGGED_TPID_88A8	2
+>  #define MTK_HDR_RECV_SOURCE_PORT_MASK	GENMASK(2, 0)
+>  #define MTK_HDR_XMIT_DP_BIT_MASK	GENMASK(5, 0)
+> +/* AN8855 doesn't support SA_DIS and Leaky VLAN
+> + * control in tag as these bits doesn't exist.
+> + */
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+I think it would be good to present the AN8855 tag using a different
+string, so that libpcap knows it shouldn't decode these bits. The code
+can be reused for now.
 
+>  #define MTK_HDR_XMIT_SA_DIS		BIT(6)
+>  
+>  static struct sk_buff *mtk_tag_xmit(struct sk_buff *skb,
+> -- 
+> 2.51.0
+> 
 
 
