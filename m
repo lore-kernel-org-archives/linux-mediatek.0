@@ -4,78 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DA5BCA0FED
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Sep 2025 07:13:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D6B7CAC58C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Sep 2025 07:13:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4UqewswoTYBEIcsMbZDgouz4c+DgJ88e6nymWd2RnwE=; b=yIf0dIBQvzXljv2TtOust96xUx
-	F0i8ynxVXF1QlGaNmfSOibieJOV69rCs+Klyun5LC+1qApLpSrJ/t2k7QltshdGraoDBHSGYQ1vmV
-	hhZbJe4SyjH1KTBnM8bO3ujfZoLGuVPdk2diHwo7nXKzW+WBWt+T34+GFB0sjbwILdN2WLZbAr+N0
-	/+J0WQ4eHbwG0WnKv5AFln6CmK5JquoyuIGmCe6dpbjL3rJ2laZetH6fdsWvCSlGezWs8zJsOev8D
-	Vrj1AmNcF5f9+ihwp5KtKYR6lvyOt5Em+fo2mVhHYRfgWaiYXR/2t23qyZCoQkiJDEkldi87lLSNw
-	wftLPg1g==;
+	bh=BzNPyHa0jkPlsSLca9eNkS1K/hrYwY5/Vqpdrab2tXM=; b=JHmmdQiYtUnAVA0+dAdaxeZB0A
+	92AsFSHhpbA2VDkdONkVdJJgKO/kUXTXzeWZ1UolSXEsCsfNZt8yzKhNjEMBJstCh/oSp5NvXLZB4
+	S0C1pQ3vG+DbsSFpDvlaLtkIkMGs4aV7eH9BroZgyMSv3hv++9MHzCu+QOtioVkbxCr2yDQqJpH1p
+	zyXfK37x5Yq3DgyfYvZinpgdPx8lXTQjUysSbtOA23ZWTRppw+cayyHngBQGvIfrDhb4Q0fqC6y96
+	GmsaGNN+FHd+aDErgqcZinfNxewmzZNPtbJwrA5iTQ4kQqq9sbz6u/mQYalmRsgfRuIbv4YgAWNMw
+	p4TElqLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwF11-0000000CRcS-0TNH;
-	Wed, 10 Sep 2025 07:13:15 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1uwF1C-0000000CRu9-2qXS;
+	Wed, 10 Sep 2025 07:13:26 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwF0o-0000000CREc-029u
+	id 1uwF0u-0000000CRRB-3myZ
+	for linux-mediatek@bombadil.infradead.org;
+	Wed, 10 Sep 2025 07:13:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=BzNPyHa0jkPlsSLca9eNkS1K/hrYwY5/Vqpdrab2tXM=; b=oyjSJ/Ztox/stw3ucJ3ds0AzWL
+	bspUXCxzmaPrBlXRsqv0fm4WOlrCSQb9VP305vme6TrFmYDOhXMNwJ/sYXydDpwPolU6O39NoKFRY
+	JJmc5n8u7WqLYYnA+Irzh+KFEOaXJ2u4ASXvjhjnzaigYQIlsGR271/A4hLpyumXRHD3CbwgidysF
+	ra0tzCP/oSMiPct2TSfbMkeA/tT+j3SKWNX4nzCweD2wxaAR/2B3vwwOphcAlhozdl1DRa03OvceK
+	LF5VUoF3vRspbG43gyyblFSPTbKJ3HWmAxjN3hCEjLa+QJ1t/e+uaFLHGBXrGnF9tHeHTPPmEZy80
+	7ndwdXbw==;
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uwF0p-00000005kHJ-1pVc
 	for linux-mediatek@lists.infradead.org;
-	Wed, 10 Sep 2025 07:13:06 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-45de60d39b7so20816115e9.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 10 Sep 2025 00:13:01 -0700 (PDT)
+	Wed, 10 Sep 2025 07:13:07 +0000
+Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-3c46686d1e6so4153846f8f.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 10 Sep 2025 00:13:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1757488380; x=1758093180; darn=lists.infradead.org;
+        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1757488382; x=1758093182; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=4UqewswoTYBEIcsMbZDgouz4c+DgJ88e6nymWd2RnwE=;
-        b=QDZ+q7HOH6II/FwjiuQic+6Bx9GBEbhztCJsNtBvBQ5QnnUEhlrn6xgWVpM/slo0sh
-         1BYikP7uGWNfGInYAt7V0pbVilkuNheFwB7P1c+Sl3hITpUjWxuM0AmukwMzt4LrL+zm
-         LB20swRXy856xufU9f5C/4BwEUAyan+5aIpAWUPp15h/IFRjyriOQ7CYgFl8Zgaaig3s
-         iVh10+gCUEHY3r/aKAD526suTKkpO8uSI77KlBb8stivYquCVNArGxDqUBx7J+6Ve7HR
-         mVN5C87WvAzoKx37Q4ti5yzy8WMiPkBjMp3l2PsaX5Xt0lahMPjjHKr0xS5zr/iRSzHv
-         rgQw==
+        bh=BzNPyHa0jkPlsSLca9eNkS1K/hrYwY5/Vqpdrab2tXM=;
+        b=PikZ3PWuwHot9Nl5Pwz8MzRn8kYx8LtQLCVUYMw6kqkYmVj11sPYXuG2/+JNTg31OE
+         BkiYPSgZ4Xf0lyA4KigTJGlyZV1zP6Lz/80alYym0BxRnnWthXx6fn5CP62AZgHZ57fk
+         A0BdMgqjO7KU5yGR7HN9Q91kmjGBkHgXpIC5Qly1fT0MXo0otNu3alaZkb6dpNZ21tDO
+         E4ShWO2WbaOQQFLpgxnn+55VEmHWMJqJdO2neMSb/PuB5oOcilSyOR8xqReDnGpgX4PF
+         n45K/xuB6nYwl8oDlE0GWi3d081vsuafCy8y0FAqWGPO2etUDjKoU095BjIyxoqjHzMt
+         AIsw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757488380; x=1758093180;
+        d=1e100.net; s=20230601; t=1757488382; x=1758093182;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=4UqewswoTYBEIcsMbZDgouz4c+DgJ88e6nymWd2RnwE=;
-        b=O0rsvCmDVl8sRuZ2zZB+zG4JL/249g8/n4UmXHYXLp2IRrX8VUO6mhkuoOd7W5xjmf
-         2CQghcSJVW4UdFatRamBJRs85JdXMDayEFj5zEPaiUEB+z6E7kDCy3qmS4R6wVqIXcRv
-         KLMNzZaq84awjOkywbiNgBKzfq4ILqHguIHNRGYt5MR/AvMLlUe54oZUueZbiRwDMKQd
-         FX1P8yyyX7jnKVsSi5UUHGu/eIvP6mJE2/O7u/b5ubqehqnvS+NIrUhBHaN+clC6nQqU
-         LK2NpvrmAIyRmnXr5Ekx69wn9mdc28zWQxTNhAdNR7amSeIxj0JVyP3GBRyMXx6jTmrF
-         DDSQ==
-X-Forwarded-Encrypted: i=1; AJvYcCV13km5SAv32BCFmauYO27+9vS0libtgOzJloTmTDNLnmchVtQi/oaC+vlaqsJUrvPFUyZm+WQ+7yyyyxtIzg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy89ZLm8rOxESlxgi9LesDzGoJ9BR/YzhwMaT3uUuwfn5SoBUTr
-	8wD1dpnU3JAL6RbeKRhG2Mi9qHcTb3WSuqIYrJ7D7QJMUEUs0d2cHXfum6qzsspE5ME=
-X-Gm-Gg: ASbGncuoyocoScrBSz+iqPdeiRena773YakBqBl3LbYjE3c1nO91ImoFlZmbRxbDDRF
-	iCW7rHDnSFJARlSeGyQGQ5+Yth3ZF86Qeb1bgWhRz31EdQ0Sgqgeq6L7xtETmsMZrgog9NmchVP
-	Bn3OkzfUg7QqRUnoQZaF+T8mckiryWOBwe7WzGsoGohJo67FwKIgVHJjEtkhsVHhscfdMGZyU45
-	7rwRTNDRKpQpLhtQv57IKWhzhgHblqKgTMkEyzUqo4vV17AJhL/XKIjdCMbcNfinLS39XnOGIUh
-	FOlIyGN20w8oxuHMI6sRJGhRhdgkYoZudfSNY0hvRpWKV4Edd8yf0XiClTxziWwi4LFsChXArup
-	PuLktO9LNhiP1E7px
-X-Google-Smtp-Source: AGHT+IHM/EcqsUNxHTRDkv3Ro2FU5tTwnI8xZ82Dg6C6xAUM9mtRb1fnf1sXNkjM+VFNWYNXfmhjXA==
-X-Received: by 2002:a05:600c:46d0:b0:45d:d96e:6176 with SMTP id 5b1f17b1804b1-45ddded62d8mr122670245e9.25.1757488379615;
-        Wed, 10 Sep 2025 00:12:59 -0700 (PDT)
+        bh=BzNPyHa0jkPlsSLca9eNkS1K/hrYwY5/Vqpdrab2tXM=;
+        b=kl2CuqcUE6AaUcf+clQM2q4LlPRfatf1fUWWNNOUKNRQcBDIPraip2/5gmwyU5jwKq
+         f3Rnl1pJvC+WeWGoSINN3AwY1EZ9W/x1nS8h+C2MxQR+5BNGPAQwZyElLgArSO5vspUB
+         m7WYAUiC2AaJaMvn3/Ym0/oeuydK0l+wrZLQYiy7dk1LTJxVIiNf1jt4Um+73hD0Qh1y
+         irvO2P7LZEVHyc1deCfIg4z+rDqk7aIuBq/HSxBwu1v+kHJj47Go8sJlqzSGSKt/Tra5
+         YSm1uKKpTkHQQWNxt00OSKyPOVZE38nFX3l9K1JUyaIC3DP4pF/kl7rvgAEGJzq6KLe5
+         RCoA==
+X-Forwarded-Encrypted: i=1; AJvYcCV06VPmg3NtomjYBnZU63M/I3jz7F7eIGySQcsd8jx5FlgpyOJuHhRt1+XbfpqKFvaAvc7zd8LipviyeieT/A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwJbkK283r1PvUIZ31xDpXSvNqWnSRjxceqHrphv5YqDfHtqMky
+	TKw92ZD6WOitoRWw0c0dMdcrp/MecjKjRFh6YvoqVr99flA0zgvm2YDhXU9a6iE5naM=
+X-Gm-Gg: ASbGncvrj3Vl7DotST2xrvhyBO+7e1vOKs0oTnieL5tlyC5CJvF1AS0jGYeXl3cS9XD
+	jMEo/xCtrR2h2qwMhlI618FfsBxen799pBBmH4iqERVRokg6EJjIHI2Z+o3tGHmP9fE2RlAOA6t
+	Oe5lbIY1y5oUpuDTaDiqKql7oR2id0GorTuA6b/r5UMNQOz+qdsTrW74YdSBHeufCAPvKZyyaQA
+	+tGx8jZ0EHpUgaNkD8AFOvXAbgVAyEgdZ+P4PL4gbNj5gbh8VCoth4sP01EqH071ocszekzNMb2
+	ClOSVXdkPHRf2y7B1gOl21rsCk5Tj/oCJAk4XO03MuJbBcdVtuwfv0+rTwALhZzwxnQEjJ3LMRf
+	Ifn+fdcUa2XdpWS82
+X-Google-Smtp-Source: AGHT+IH6hj6uL/adzcwKrLLe4SA0GP0maj4DqTWBN5z6e8LLiMSPzaBwq9uelePGdX1azVmM5KUbVg==
+X-Received: by 2002:a05:6000:2f81:b0:3dc:2136:7523 with SMTP id ffacd0b85a97d-3e629f21c5dmr11589105f8f.0.1757488381592;
+        Wed, 10 Sep 2025 00:13:01 -0700 (PDT)
 Received: from [127.0.1.1] ([2a01:cb1d:dc:7e00:3936:709a:82c4:3e38])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45df81d20d2sm16357035e9.8.2025.09.10.00.12.57
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45df81d20d2sm16357035e9.8.2025.09.10.00.12.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 10 Sep 2025 00:12:58 -0700 (PDT)
+        Wed, 10 Sep 2025 00:13:00 -0700 (PDT)
 From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Wed, 10 Sep 2025 09:12:40 +0200
-Subject: [PATCH v2 04/15] gpio: ath79: use new generic GPIO chip API
+Date: Wed, 10 Sep 2025 09:12:41 +0200
+Subject: [PATCH v2 05/15] gpio: ath79: use the generic GPIO chip lock for
+ IRQ handling
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250910-gpio-mmio-gpio-conv-part4-v2-4-f3d1a4c57124@linaro.org>
+Message-Id: <20250910-gpio-mmio-gpio-conv-part4-v2-5-f3d1a4c57124@linaro.org>
 References: <20250910-gpio-mmio-gpio-conv-part4-v2-0-f3d1a4c57124@linaro.org>
 In-Reply-To: <20250910-gpio-mmio-gpio-conv-part4-v2-0-f3d1a4c57124@linaro.org>
 To: Linus Walleij <linus.walleij@linaro.org>, 
@@ -95,26 +111,26 @@ Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
  spacemit@lists.linux.dev, 
  Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4614;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5449;
  i=bartosz.golaszewski@linaro.org; h=from:subject:message-id;
- bh=wGzsLYe28KPZB1pzrH+XgxKm5KCqfN9J0bmBOYG+Gco=;
- b=owEBbQKS/ZANAwAKARGnLqAUcddyAcsmYgBowSTtTmv5xyvHuwcosTc3gy9UW+bEpZ2dbIBYT
- Hnhg3cEry2JAjMEAAEKAB0WIQQWnetsC8PEYBPSx58Rpy6gFHHXcgUCaMEk7QAKCRARpy6gFHHX
- cucUD/9omit0rOIo7nBUQp1NY+g0m23ZYDVTkrv8PDFLBqip9QIN/E0Spw9mgMF8EFWu2Abra3A
- kgdXX56x/EVzo9LbQIESlljovTDZm7Kaad+0tYhXkLavji5TvvbVKE4gGIEEnWgCjHsuDpotfkt
- 7EFf5Ivegc5pt84kcej+0R9OyLEm4p2jSYuCJ5Rpb02LInCEsYKmFB3R21MdNMk0awkxQ1FMVNm
- hF/CTynqUlN9oSrMDHE1X7Q/aoqRa3q+tzz2xdoIaozvpYW7UxeHSVYb33VoCUpGRgKkxqGZ6CP
- GKyiYuOBY+sbyf3vytebxAEYEj3fREBnHdkwLz8kFxybTumob3zF34bsvwdYMEAGYBqUEw5C5RV
- UFH1zeKrl8v7nzA6ZCTccLXIfQ6WIwZcRd3oopG5T0DCvnSf8hJS8dKVFdcjyjXJDjtBVKfVPAi
- zGOrbFBfjKJRd57SJaF7NrggN/dQEQDD+qEz/qwmG9tc7K74RRz3Oqu26LsTsnWOob4Ui2LYzG3
- +vpBkmrptSnD+UFq9Kq723eYPGASKDYy4xDNeyqN93oRYUajGSY3+gEIyyC44G0Zi9cET4kMax0
- rJhd1rC8QMyTxVq6dxlrTwJ4S85Ps6elhTCItk2in8SfWBDNoeVORRP4fawfgjCy5B+5ShyIjAu
- Keme0RB5lGm0H1w==
+ bh=bcHa6lqKQlw7+hlZUmJRaNL+C5C3+oP8WjaKrSR1XW4=;
+ b=owEBbQKS/ZANAwAKARGnLqAUcddyAcsmYgBowSTt+hUw+YSEHliKosRX9vqPf9bG62Dyu8TzD
+ yDJbauawyWJAjMEAAEKAB0WIQQWnetsC8PEYBPSx58Rpy6gFHHXcgUCaMEk7QAKCRARpy6gFHHX
+ cgjbD/9evJ0NuXZ91q3iNSwAVaZeenZlTP+DRb8KXEVzA2NnFZkT8ryykyinuTQapB3BEeeZGR3
+ qxtXZA/6Aa4pDEelgXa3R5Slud4ALMe3DBM2spLa9bMNR8bEc+SkzdweAWVg/5/HuIQlCRvjrzp
+ 1W+XtLhnlMW90K6N9Vo7rfBPUFPDHdkAtTU0zU+qkQ4zruXg3namoxd3duYVJukP0PHgF24QdAU
+ sUIGaZkYHl/kZmbqBezIwHIU9zUYkc27WL7u7NHH6gaSyHYtfoJ86ZfpeZHailkQI2Hg5t1ekWU
+ FEgLpZlBHffK7Oz+Wbfy5ZaOzxfGz/bAVBv/IpWxF/enn41DCxojgDhZaHMMopQuZ4m58poNP5b
+ bWxCKbkNkwmgAZqEPQUlBfwbx9A2hNsURzqbTZsQLJl90GJVMBc+UsgapW8778L1eSjrlvBUw09
+ uS6iEOz10vOAEnW5CVSnDkHqzfQzLQGAl0T+Nq/U+Q8Irt89ovsJB8H9IuoZUtY2bISv5Y88Ggo
+ MAiLkIze3BVts7D6rhT4QJ98299QoJZWiIzzBaOej0VZwhe6ybHA1JnYn2Fk8j6ZCxq/k1K3mPs
+ ptZnktOpsHmeKaArfUTO6Vgs4M735+b1qARrHUwJr0JPIjP3dyooIOyZqfxNk9l39E44JYFp4D+
+ 6kAWi8aO6delpRg==
 X-Developer-Key: i=bartosz.golaszewski@linaro.org; a=openpgp;
  fpr=169DEB6C0BC3C46013D2C79F11A72EA01471D772
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250910_001302_205477_C9A27BF3 
-X-CRM114-Status: GOOD (  17.51  )
+X-CRM114-CacheID: sfid-20250910_081303_944014_081B6A1E 
+X-CRM114-Status: GOOD (  17.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,128 +147,158 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 
-Convert the driver to using the new generic GPIO chip interfaces from
-linux/gpio/generic.h.
+This driver uses its own raw spinlock in interrupt routines while the
+generic GPIO chip callbacks use a separate one. This is, of course, racy
+so use the fact that the lock in generic GPIO chip is also a raw
+spinlock and convert the interrupt handling functions in this module to
+using the provided generic GPIO chip locking API.
 
 Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 ---
- drivers/gpio/gpio-ath79.c | 39 ++++++++++++++++++++++++---------------
- 1 file changed, 24 insertions(+), 15 deletions(-)
+ drivers/gpio/gpio-ath79.c | 51 ++++++++++++++++++-----------------------------
+ 1 file changed, 19 insertions(+), 32 deletions(-)
 
 diff --git a/drivers/gpio/gpio-ath79.c b/drivers/gpio/gpio-ath79.c
-index de4cc12e5e0399abcef61a89c8c91a1b203d20fb..8879f23f1871ed323513082f4d2ebb2c40544cde 100644
+index 8879f23f1871ed323513082f4d2ebb2c40544cde..2ad9f6ac66362fba8cdab152a2b2c782dddf427c 100644
 --- a/drivers/gpio/gpio-ath79.c
 +++ b/drivers/gpio/gpio-ath79.c
-@@ -10,6 +10,7 @@
- 
- #include <linux/device.h>
- #include <linux/gpio/driver.h>
-+#include <linux/gpio/generic.h>
- #include <linux/interrupt.h>
- #include <linux/irq.h>
- #include <linux/mod_devicetable.h>
-@@ -28,7 +29,7 @@
- #define AR71XX_GPIO_REG_INT_MASK	0x24
- 
+@@ -31,7 +31,6 @@
  struct ath79_gpio_ctrl {
--	struct gpio_chip gc;
-+	struct gpio_generic_chip chip;
+ 	struct gpio_generic_chip chip;
  	void __iomem *base;
- 	raw_spinlock_t lock;
+-	raw_spinlock_t lock;
  	unsigned long both_edges;
-@@ -37,8 +38,9 @@ struct ath79_gpio_ctrl {
- static struct ath79_gpio_ctrl *irq_data_to_ath79_gpio(struct irq_data *data)
+ };
+ 
+@@ -72,23 +71,22 @@ static void ath79_gpio_irq_unmask(struct irq_data *data)
  {
- 	struct gpio_chip *gc = irq_data_get_irq_chip_data(data);
-+	struct gpio_generic_chip *gen_gc = to_gpio_generic_chip(gc);
- 
--	return container_of(gc, struct ath79_gpio_ctrl, gc);
-+	return container_of(gen_gc, struct ath79_gpio_ctrl, chip);
- }
- 
- static u32 ath79_gpio_read(struct ath79_gpio_ctrl *ctrl, unsigned reg)
-@@ -72,7 +74,7 @@ static void ath79_gpio_irq_unmask(struct irq_data *data)
+ 	struct ath79_gpio_ctrl *ctrl = irq_data_to_ath79_gpio(data);
  	u32 mask = BIT(irqd_to_hwirq(data));
- 	unsigned long flags;
+-	unsigned long flags;
  
--	gpiochip_enable_irq(&ctrl->gc, irqd_to_hwirq(data));
-+	gpiochip_enable_irq(&ctrl->chip.gc, irqd_to_hwirq(data));
- 	raw_spin_lock_irqsave(&ctrl->lock, flags);
+ 	gpiochip_enable_irq(&ctrl->chip.gc, irqd_to_hwirq(data));
+-	raw_spin_lock_irqsave(&ctrl->lock, flags);
++
++	guard(gpio_generic_lock_irqsave)(&ctrl->chip);
++
  	ath79_gpio_update_bits(ctrl, AR71XX_GPIO_REG_INT_MASK, mask, mask);
- 	raw_spin_unlock_irqrestore(&ctrl->lock, flags);
-@@ -87,7 +89,7 @@ static void ath79_gpio_irq_mask(struct irq_data *data)
- 	raw_spin_lock_irqsave(&ctrl->lock, flags);
- 	ath79_gpio_update_bits(ctrl, AR71XX_GPIO_REG_INT_MASK, mask, 0);
- 	raw_spin_unlock_irqrestore(&ctrl->lock, flags);
--	gpiochip_disable_irq(&ctrl->gc, irqd_to_hwirq(data));
-+	gpiochip_disable_irq(&ctrl->chip.gc, irqd_to_hwirq(data));
+-	raw_spin_unlock_irqrestore(&ctrl->lock, flags);
  }
  
- static void ath79_gpio_irq_enable(struct irq_data *data)
-@@ -187,8 +189,9 @@ static void ath79_gpio_irq_handler(struct irq_desc *desc)
+ static void ath79_gpio_irq_mask(struct irq_data *data)
  {
- 	struct gpio_chip *gc = irq_desc_get_handler_data(desc);
- 	struct irq_chip *irqchip = irq_desc_get_chip(desc);
-+	struct gpio_generic_chip *gen_gc = to_gpio_generic_chip(gc);
+ 	struct ath79_gpio_ctrl *ctrl = irq_data_to_ath79_gpio(data);
+ 	u32 mask = BIT(irqd_to_hwirq(data));
+-	unsigned long flags;
+ 
+-	raw_spin_lock_irqsave(&ctrl->lock, flags);
+-	ath79_gpio_update_bits(ctrl, AR71XX_GPIO_REG_INT_MASK, mask, 0);
+-	raw_spin_unlock_irqrestore(&ctrl->lock, flags);
++	scoped_guard(gpio_generic_lock_irqsave, &ctrl->chip)
++		ath79_gpio_update_bits(ctrl, AR71XX_GPIO_REG_INT_MASK, mask, 0);
++
+ 	gpiochip_disable_irq(&ctrl->chip.gc, irqd_to_hwirq(data));
+ }
+ 
+@@ -96,24 +94,20 @@ static void ath79_gpio_irq_enable(struct irq_data *data)
+ {
+ 	struct ath79_gpio_ctrl *ctrl = irq_data_to_ath79_gpio(data);
+ 	u32 mask = BIT(irqd_to_hwirq(data));
+-	unsigned long flags;
+ 
+-	raw_spin_lock_irqsave(&ctrl->lock, flags);
++	guard(gpio_generic_lock_irqsave)(&ctrl->chip);
+ 	ath79_gpio_update_bits(ctrl, AR71XX_GPIO_REG_INT_ENABLE, mask, mask);
+ 	ath79_gpio_update_bits(ctrl, AR71XX_GPIO_REG_INT_MASK, mask, mask);
+-	raw_spin_unlock_irqrestore(&ctrl->lock, flags);
+ }
+ 
+ static void ath79_gpio_irq_disable(struct irq_data *data)
+ {
+ 	struct ath79_gpio_ctrl *ctrl = irq_data_to_ath79_gpio(data);
+ 	u32 mask = BIT(irqd_to_hwirq(data));
+-	unsigned long flags;
+ 
+-	raw_spin_lock_irqsave(&ctrl->lock, flags);
++	guard(gpio_generic_lock_irqsave)(&ctrl->chip);
+ 	ath79_gpio_update_bits(ctrl, AR71XX_GPIO_REG_INT_MASK, mask, 0);
+ 	ath79_gpio_update_bits(ctrl, AR71XX_GPIO_REG_INT_ENABLE, mask, 0);
+-	raw_spin_unlock_irqrestore(&ctrl->lock, flags);
+ }
+ 
+ static int ath79_gpio_irq_set_type(struct irq_data *data,
+@@ -122,7 +116,6 @@ static int ath79_gpio_irq_set_type(struct irq_data *data,
+ 	struct ath79_gpio_ctrl *ctrl = irq_data_to_ath79_gpio(data);
+ 	u32 mask = BIT(irqd_to_hwirq(data));
+ 	u32 type = 0, polarity = 0;
+-	unsigned long flags;
+ 	bool disabled;
+ 
+ 	switch (flow_type) {
+@@ -144,7 +137,7 @@ static int ath79_gpio_irq_set_type(struct irq_data *data,
+ 		return -EINVAL;
+ 	}
+ 
+-	raw_spin_lock_irqsave(&ctrl->lock, flags);
++	guard(gpio_generic_lock_irqsave)(&ctrl->chip);
+ 
+ 	if (flow_type == IRQ_TYPE_EDGE_BOTH) {
+ 		ctrl->both_edges |= mask;
+@@ -169,8 +162,6 @@ static int ath79_gpio_irq_set_type(struct irq_data *data,
+ 		ath79_gpio_update_bits(
+ 			ctrl, AR71XX_GPIO_REG_INT_ENABLE, mask, mask);
+ 
+-	raw_spin_unlock_irqrestore(&ctrl->lock, flags);
+-
+ 	return 0;
+ }
+ 
+@@ -192,26 +183,24 @@ static void ath79_gpio_irq_handler(struct irq_desc *desc)
+ 	struct gpio_generic_chip *gen_gc = to_gpio_generic_chip(gc);
  	struct ath79_gpio_ctrl *ctrl =
--		container_of(gc, struct ath79_gpio_ctrl, gc);
-+		container_of(gen_gc, struct ath79_gpio_ctrl, chip);
- 	unsigned long flags, pending;
+ 		container_of(gen_gc, struct ath79_gpio_ctrl, chip);
+-	unsigned long flags, pending;
++	unsigned long pending;
  	u32 both_edges, state;
  	int irq;
-@@ -224,6 +227,7 @@ MODULE_DEVICE_TABLE(of, ath79_gpio_of_match);
  
- static int ath79_gpio_probe(struct platform_device *pdev)
- {
-+	struct gpio_generic_chip_config config;
- 	struct device *dev = &pdev->dev;
- 	struct ath79_gpio_ctrl *ctrl;
- 	struct gpio_irq_chip *girq;
-@@ -253,21 +257,26 @@ static int ath79_gpio_probe(struct platform_device *pdev)
+ 	chained_irq_enter(irqchip, desc);
+ 
+-	raw_spin_lock_irqsave(&ctrl->lock, flags);
++	scoped_guard(gpio_generic_lock_irqsave, &ctrl->chip) {
++		pending = ath79_gpio_read(ctrl, AR71XX_GPIO_REG_INT_PENDING);
+ 
+-	pending = ath79_gpio_read(ctrl, AR71XX_GPIO_REG_INT_PENDING);
+-
+-	/* Update the polarity of the both edges irqs */
+-	both_edges = ctrl->both_edges & pending;
+-	if (both_edges) {
+-		state = ath79_gpio_read(ctrl, AR71XX_GPIO_REG_IN);
+-		ath79_gpio_update_bits(ctrl, AR71XX_GPIO_REG_INT_POLARITY,
+-				both_edges, ~state);
++		/* Update the polarity of the both edges irqs */
++		both_edges = ctrl->both_edges & pending;
++		if (both_edges) {
++			state = ath79_gpio_read(ctrl, AR71XX_GPIO_REG_IN);
++			ath79_gpio_update_bits(ctrl, AR71XX_GPIO_REG_INT_POLARITY,
++					       both_edges, ~state);
++		}
+ 	}
+ 
+-	raw_spin_unlock_irqrestore(&ctrl->lock, flags);
+-
+ 	for_each_set_bit(irq, &pending, gc->ngpio)
+ 		generic_handle_domain_irq(gc->irq.domain, irq);
+ 
+@@ -256,8 +245,6 @@ static int ath79_gpio_probe(struct platform_device *pdev)
+ 	if (IS_ERR(ctrl->base))
  		return PTR_ERR(ctrl->base);
  
- 	raw_spin_lock_init(&ctrl->lock);
--	err = bgpio_init(&ctrl->gc, dev, 4,
--			ctrl->base + AR71XX_GPIO_REG_IN,
--			ctrl->base + AR71XX_GPIO_REG_SET,
--			ctrl->base + AR71XX_GPIO_REG_CLEAR,
--			oe_inverted ? NULL : ctrl->base + AR71XX_GPIO_REG_OE,
--			oe_inverted ? ctrl->base + AR71XX_GPIO_REG_OE : NULL,
--			0);
-+
-+	config = (struct gpio_generic_chip_config) {
-+		.dev = dev,
-+		.sz = 4,
-+		.dat = ctrl->base + AR71XX_GPIO_REG_IN,
-+		.set = ctrl->base + AR71XX_GPIO_REG_SET,
-+		.clr = ctrl->base + AR71XX_GPIO_REG_CLEAR,
-+		.dirout = oe_inverted ? NULL : ctrl->base + AR71XX_GPIO_REG_OE,
-+		.dirin = oe_inverted ? ctrl->base + AR71XX_GPIO_REG_OE : NULL,
-+	};
-+
-+	err = gpio_generic_chip_init(&ctrl->chip, &config);
- 	if (err) {
--		dev_err(dev, "bgpio_init failed\n");
-+		dev_err(dev, "failed to initialize generic GPIO chip\n");
- 		return err;
- 	}
- 
- 	/* Optional interrupt setup */
- 	if (device_property_read_bool(dev, "interrupt-controller")) {
--		girq = &ctrl->gc.irq;
-+		girq = &ctrl->chip.gc.irq;
- 		gpio_irq_chip_set_chip(girq, &ath79_gpio_irqchip);
- 		girq->parent_handler = ath79_gpio_irq_handler;
- 		girq->num_parents = 1;
-@@ -280,7 +289,7 @@ static int ath79_gpio_probe(struct platform_device *pdev)
- 		girq->handler = handle_simple_irq;
- 	}
- 
--	return devm_gpiochip_add_data(dev, &ctrl->gc, ctrl);
-+	return devm_gpiochip_add_data(dev, &ctrl->chip.gc, ctrl);
- }
- 
- static struct platform_driver ath79_gpio_driver = {
+-	raw_spin_lock_init(&ctrl->lock);
+-
+ 	config = (struct gpio_generic_chip_config) {
+ 		.dev = dev,
+ 		.sz = 4,
 
 -- 
 2.48.1
