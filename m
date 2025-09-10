@@ -4,55 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4574CA101F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Sep 2025 14:05:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A74CCA0FED
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Sep 2025 14:21:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QEeqIWIF/AD2zfk8ywdiI9kgEblpq8FH1YjniWeVCN4=; b=Yz1NRP7jcwhL5wEPVNbfykVzhy
-	mWkqiVmHTTuuJxQ+8Wt2/N2PB2NplDOl5yFpWSBl0SkKW6cdQOaqCKOytBBKJcmG4jazZYM/gJI/O
-	VzgZKdZRm7VWrL30l0P0wg8OkgPkdQTsnq0248BMOzXpWVeeKjNLHk6/L+nYAp7f1Y7MM05XGqG72
-	0HR98wueZbUektMo5DCCZYTViqJ4sQgdq9N8+5MtbDuqYt2IQzsAAb/aiktGxr6Cjw0Nhq4NAWOQf
-	So8imgM9ofNhxE9yHiB7SIBpCKlKwfDoxm/ZwHohNC5OHqof8/Re4AzNZJijV/Xm7rUgP4P9TpAC2
-	bZhjmocA==;
+	bh=XwBgLfixjDuNwTKS4UzocFQ5BU/s2wJfYq6IghReujc=; b=UoPHLM8vK1ccIKGKAxwwEadcSk
+	8FtL+FQMUAlEl8YJ5hRm7Xu5FtNd+zsqAAx0Cb7i1njsyXCZT9+qzIda/MFRHdiUFDTFJXDWC8hRM
+	Zbn8fLHuywKZKqe9cGcnsAaXKsxBV13Mvi90BJNEYULcRYEeci4rl6A35x8mnw/x0s14Ak6AxshJC
+	1Ug9aASqrXQvrsGlZp3OZk+7FIyXfJcDcsXVy0TKpegZFi2SS7ghOJX/err4Z0B1t0b8deHBOdxoB
+	kkNgOp5eJ6gkWBJgH8whlbicGcLRDWOuyLABGGbZCsQxqy7+Jr9X0z1mcUC6JGVj//7/G6RXsy1FL
+	SVsj6piQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwLSJ-0000000Ea3M-2ZON;
-	Wed, 10 Sep 2025 14:05:51 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uwLhY-0000000EfXT-3Apo;
+	Wed, 10 Sep 2025 14:21:36 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwLSH-0000000Ea0t-0UjC;
-	Wed, 10 Sep 2025 14:05:50 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1757513088; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=VEkyJDxuAQfVsvKhIxBruPEvS+E+Faq6lkb8StCuTHDG4il/MJXRcIahNdDe1K9l5asGM6fNcHpp2dATLpTDdixJydv1Eav7Ciq7KRQ57d64AIcR9G9MzobjDNJWa735TFRzENggkAWdoogP0hXnRRQvmnhic10HgfMoJOI0qqw=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1757513088; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=QEeqIWIF/AD2zfk8ywdiI9kgEblpq8FH1YjniWeVCN4=; 
-	b=P9BxtulcIUGD/6FoPkulfuuR84JV4Ri/6txauWEhPar814ZnGKTiquSh/essihNHEQbflrG4B1II2xYvbvqlCLvtwTc27q7uJsa6RzH4frCk8k+iYr2hMphCwl+2BMJFaXmesNFLrkU20dt2cWy9mIGCBaIpcPsipJH3cRPNWPM=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=ariel.dalessandro@collabora.com;
-	dmarc=pass header.from=<ariel.dalessandro@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1757513088;
-	s=zohomail; d=collabora.com; i=ariel.dalessandro@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=QEeqIWIF/AD2zfk8ywdiI9kgEblpq8FH1YjniWeVCN4=;
-	b=IHYKNoZY4zf4ISQCHWYEleElg0zyYX0fAY3flK0zslYU4qZregRMacfv+qxcfwpQ
-	1x+1iaYapTxzAjxF38sg0OhTVRo1GLDfKW55tsC3QwJKNIhZiomEvEjFNt5Ia3ldCpT
-	ecLwFY4c1qFjQXhURNFG3nBQQ/aFvg2+LOYp7AEA=
-Received: by mx.zohomail.com with SMTPS id 1757513084822538.2895524618148;
-	Wed, 10 Sep 2025 07:04:44 -0700 (PDT)
-Message-ID: <28049fe0-0ae7-4b40-9f95-1513e317547f@collabora.com>
-Date: Wed, 10 Sep 2025 11:04:29 -0300
+	id 1uwLhX-0000000EfW9-05XU;
+	Wed, 10 Sep 2025 14:21:35 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 0A1DA601AB;
+	Wed, 10 Sep 2025 14:21:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A610CC4CEEB;
+	Wed, 10 Sep 2025 14:21:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1757514093;
+	bh=wlwwpmCHOkMFq8CRg6C3epU/9mVJzj7n97KyC/xLjSM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=KWjtR1fKTnq1Zpnr1v3nujpytOtS2zSXRxEATD6htva1LA/eBAryUmMSKs0M0xGaS
+	 VRg76BTlwurInrXhKzJqMVRn+fRPUVE9r6oC9E8BAz7VRDtaaDBOnze8vzD5rrCR1f
+	 usEq/Pvcyd8nshiN7dOTBrtY2+JKH9pIsVBgKMTutiV+TmJgUoRSMH8+HNFPNr+h5X
+	 MOQnwGMmyI37lEkjeishIGV6cZwp6wQvmTTD8g35ZcgsFnCeHTptjSGupSQstBY4Hv
+	 u6bzDbyDNNex0oc61S44MyxQIL7riVXR5FgMXSwS5gtqNELzbGf0Bf1GgkM5bfIMWA
+	 AF5+NNjzLBdWQ==
+Message-ID: <a37db87d-c3b1-4ce4-bec0-4f496dc209b5@kernel.org>
+Date: Wed, 10 Sep 2025 16:21:21 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v1 07/14] dt-bindings: display: mediatek,ufoe: Add
  mediatek,gce-client-reg property
-To: Krzysztof Kozlowski <krzk@kernel.org>
+To: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
 Cc: airlied@gmail.com, amergnat@baylibre.com, andrew+netdev@lunn.ch,
  andrew-ct.chen@mediatek.com, angelogioacchino.delregno@collabora.com,
  broonie@kernel.org, chunkuang.hu@kernel.org, ck.hu@mediatek.com,
@@ -76,15 +71,55 @@ Cc: airlied@gmail.com, amergnat@baylibre.com, andrew+netdev@lunn.ch,
 References: <20250820171302.324142-1-ariel.dalessandro@collabora.com>
  <20250820171302.324142-8-ariel.dalessandro@collabora.com>
  <20250821-wandering-vermilion-pigeon-b8c9f0@kuoka>
+ <28049fe0-0ae7-4b40-9f95-1513e317547f@collabora.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
-From: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-In-Reply-To: <20250821-wandering-vermilion-pigeon-b8c9f0@kuoka>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <28049fe0-0ae7-4b40-9f95-1513e317547f@collabora.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-ZohoMailClient: External
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250910_070549_191029_9290FD07 
-X-CRM114-Status: GOOD (  16.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,63 +134,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Krzysztof,
-
-On 8/21/25 3:50 AM, Krzysztof Kozlowski wrote:
-> On Wed, Aug 20, 2025 at 02:12:55PM -0300, Ariel D'Alessandro wrote:
->> Current, the DT bindings for Mediatek UFOe (Unified Frame Optimization
->> engine) is missing the mediatek,gce-client-reg property. Add it and
+On 10/09/2025 16:04, Ariel D'Alessandro wrote:
+> Krzysztof,
 > 
-> Why is it missing? If the binding is complete, it cannot be missing...
-
-Due to the following error:
-
-$ make -j$(nproc) CHECK_DTBS=y mediatek/mt8173-elm.dtb
-   SCHEMA  Documentation/devicetree/bindings/processed-schema.json
-   DTC [C] arch/arm64/boot/dts/mediatek/mt8173-elm.dtb
-[...]
-arch/arm64/boot/dts/mediatek/mt8173-elm.dtb: ufoe@1401a000 
-(mediatek,mt8173-disp-ufoe): 'mediatek,gce-client-reg' does not match 
-any of the regexes: '^pinctrl-[0-9]+$'
-	from schema $id: 
-http://devicetree.org/schemas/display/mediatek/mediatek,ufoe.yaml#
-
-> 
->> update the example as well.
+> On 8/21/25 3:50 AM, Krzysztof Kozlowski wrote:
+>> On Wed, Aug 20, 2025 at 02:12:55PM -0300, Ariel D'Alessandro wrote:
+>>> Current, the DT bindings for Mediatek UFOe (Unified Frame Optimization
+>>> engine) is missing the mediatek,gce-client-reg property. Add it and
 >>
->> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
->> ---
->>   .../bindings/display/mediatek/mediatek,ufoe.yaml      | 11 +++++++++++
->>   1 file changed, 11 insertions(+)
->>
->> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml
->> index 61a5e22effbf2..ecb4c0359fec3 100644
->> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml
->> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml
->> @@ -64,6 +64,14 @@ properties:
->>         - port@0
->>         - port@1
->>   
->> +  mediatek,gce-client-reg:
->> +    description: The register of client driver can be configured by gce with
->> +      4 arguments defined in this property, such as phandle of gce, subsys id,
->> +      register offset and size. Each GCE subsys id is mapping to a client
+>> Why is it missing? If the binding is complete, it cannot be missing...
 > 
-> Don't explain what DT syntax is. We all know, so that's completely
-> redundant description. Explain the purpose. Explain Arguments with sechema - items.
+> Due to the following error:
+> 
+> $ make -j$(nproc) CHECK_DTBS=y mediatek/mt8173-elm.dtb
+>    SCHEMA  Documentation/devicetree/bindings/processed-schema.json
+>    DTC [C] arch/arm64/boot/dts/mediatek/mt8173-elm.dtb
+> [...]
+> arch/arm64/boot/dts/mediatek/mt8173-elm.dtb: ufoe@1401a000 
+> (mediatek,mt8173-disp-ufoe): 'mediatek,gce-client-reg' does not match 
+> any of the regexes: '^pinctrl-[0-9]+$'
+> 	from schema $id: 
+> http://devicetree.org/schemas/display/mediatek/mediatek,ufoe.yaml#
 
-Although I agree with your suggestions, this is exactly how the rest of 
-the Mediatek DT bindings describe this node. This patch is based on the 
-other +20 files, which describe the node in the same way.
+So there are users of it? Then please explain that.
 
-Regards,
+> 
+>>
+>>> update the example as well.
+>>>
+>>> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+>>> ---
+>>>   .../bindings/display/mediatek/mediatek,ufoe.yaml      | 11 +++++++++++
+>>>   1 file changed, 11 insertions(+)
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml
+>>> index 61a5e22effbf2..ecb4c0359fec3 100644
+>>> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml
+>>> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml
+>>> @@ -64,6 +64,14 @@ properties:
+>>>         - port@0
+>>>         - port@1
+>>>   
+>>> +  mediatek,gce-client-reg:
+>>> +    description: The register of client driver can be configured by gce with
+>>> +      4 arguments defined in this property, such as phandle of gce, subsys id,
+>>> +      register offset and size. Each GCE subsys id is mapping to a client
+>>
+>> Don't explain what DT syntax is. We all know, so that's completely
+>> redundant description. Explain the purpose. Explain Arguments with sechema - items.
+> 
+> Although I agree with your suggestions, this is exactly how the rest of 
+> the Mediatek DT bindings describe this node. This patch is based on the 
+> other +20 files, which describe the node in the same way.
 
--- 
-Ariel D'Alessandro
-Software Engineer
 
-Collabora Ltd.
-Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK 
-Registered in England & Wales, no. 5513718
+Last time I tried to fix something for Mediatek display I got
+condescending and useless review from Collabora, so I won't be bothering
+with fixing these bindings to make your job easier. I don't care, you
+can thank someone inside. Therefore other poor bindings are not a valid
+excuse for this patch not being correct.
 
+Best regards,
+Krzysztof
 
