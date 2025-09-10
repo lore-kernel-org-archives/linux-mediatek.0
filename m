@@ -4,104 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F90CCA0FED
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Sep 2025 09:48:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 846BFCA0FED
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Sep 2025 09:51:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fvWzS942sl9K7TdJhE3IIiPtyTBcuDx5QSL2bbxUBbU=; b=Bjx713Elqtyohy2fTDDZ0aFn8a
-	QJJuQ0ue5N991Na1FHtieQi3c6NF/pjq5MNIGDx/oIgrgyLWtF2ROfl/AKGwyJ+c8ORUUAUoJ2ELJ
-	VDVlZZJxJhqrleoNOsjAyoSImG3AHLp6qk0IbQ2yXZ3pgNJAc4ei+q5YD+vMtIa7vtn1vWVvtjzfq
-	iXpM9O6/UPE5dosqZDIAVXW6igoDrhykXeu4f3iH5ThW4ducHG1UX4GeycDWEgfoBgqI4bo9FepkS
-	nSw3JfHIy/YO6jUL7UFi2rtXbOj2AgIvGBHTmpctprPFLtxRuGwCIxFRT+1Cm9dhkFqCGoD60MNN2
-	yoFj+toA==;
+	bh=yF3m+xrb66tGLD1czy4Qjuv4VCW7GVZeyDlZf7NaKWY=; b=hExCeIS9LCyPweytYZM2ZezytS
+	thjBuTlO9fSWT08HVrVNQqumttF9ia4AnjyWSyLKsLTRYqVaPDM11eqhFdbDHgYWDA6dcuwHN9UgC
+	uXct6mDkCsD390NWEWoycLI/UnLoKQSpimpTJMK/c7/LtD9D8lkaWiQl9zFLiPA+hTQsBV5kZWnro
+	H1paFoP/rNRd3ygh0srUdHr7Y7eJ7s6F0dqcdlrRZzU/5BtpqP6joXQp+ZTknu89o7yMdeN5ttdP3
+	m95UKZrdnj7jcA24eNnafeTHjoX+zcDD3jHdXGhKKgScvj1kTKmGYQ4/FtnHTck5UlqNH7ps2zYY6
+	ttzJ332Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwHR8-0000000DKtZ-3VzS;
-	Wed, 10 Sep 2025 09:48:22 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uwHUQ-0000000DM2f-2ns6;
+	Wed, 10 Sep 2025 09:51:46 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwHR7-0000000DKs4-0L37;
-	Wed, 10 Sep 2025 09:48:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=fvWzS942sl9K7TdJhE3IIiPtyTBcuDx5QSL2bbxUBbU=; b=cTmbZnWOpEuU243Pzi4bOthD4l
-	e9wxwJQRfa8humxwp/Mg7Y9xks/TWT0/KmpTdMrnq8JYPaYFswD+JlftE+EXnH3hn/8q3hfyTxOo/
-	wYgKSD3VXwXSaCfM7JT7ebYDv54OJMV23NlahxGxBG2C2zPmmGfg53Vl0ElxZfcr7EMYiHY8XQSg9
-	k8WupMVSHpiCAaW3An0iDCM2JHrppUbLYWTh9i12dOI9f6XRuTg+WN9zNcZ5au1w9tiJLZAh1VDAB
-	jydZeKW93Rzeao/O1fDUl6dUk8LHZJZXyq+i5ESaFwYw0hTUodMQjCpyImsB39FnQgyZgd5RW/WL7
-	ZmdglyvQ==;
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwHR3-00000005opF-1iSE;
-	Wed, 10 Sep 2025 09:48:19 +0000
-Received: by mail-wr1-x435.google.com with SMTP id ffacd0b85a97d-3e537dc30c7so4972721f8f.3;
-        Wed, 10 Sep 2025 02:48:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1757497695; x=1758102495; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=fvWzS942sl9K7TdJhE3IIiPtyTBcuDx5QSL2bbxUBbU=;
-        b=FZgc2su8VtUAw8Z9e0y+JljafE06iDu0SXPCbTZ4+4VzhJKtkFtoENLrlcQcpLejkz
-         AuQD0JeojnSFcrfbQ4diTFS3n3Qj1LDzjfnEToY8Ksb8AzXxP+QNpb9lSARXNtMw9U3n
-         SjSElHjJSD5PdRHizrwdstMQc327lG0IyyYY/kPWaixVqzO6KLk+Wm9oew1up7sNOVvm
-         GRBNMrlsi91k038mMMftkzzButCA6DVuG+ZZsF8F6eufLeP8AssR1bMlTOuRc/uBvbxS
-         t2bt52BErn3pxnzht+yagEao6Zcb+U7nBEwmETkP94MvDu5S7eCs1rkTo4K3ItRaQBkV
-         hJyg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757497695; x=1758102495;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=fvWzS942sl9K7TdJhE3IIiPtyTBcuDx5QSL2bbxUBbU=;
-        b=VgCo23AuZs1fW8NzrLZSrrNcM7wSrva4HETkK1a17D1CrFkMdGn3Qvq5gywSwjS2do
-         ZmjwaD4YumQv2fEQ9+hEtCt/O6rizjN2Yku2chUYkUrhCnpXmzfAGCY8M3o3buESBnf5
-         ljVqeBx29sOI6VX0rwmD+bw/S9yUOy33Py15PW2O4rohjOXbFP/bKs/F147sZdtH20Tf
-         JQ28r1Af5wYFHQ9h2+AR0tID639W9w1yXpzaT7K8bBcazCnhry69Lbq6xXb3usCaGkzG
-         1qDuzsRHuvpXQbwvw9icxay0O423m2MgFXTnUpXvN6PzsPYHonGxUsdJAzgPBrODXjVV
-         ccvQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUdJaqEYes67iWy5V4JEFSKt9gO6Pp3vjxtzmprpr/Q6vRa80N93mefPpVvyGOeLRrMHWjIeaz+xpzYcgH92YE=@lists.infradead.org, AJvYcCWTWGLX56PRs5p9rUi71egTYI+TlH7F0MjoQcTbEcJ/uuhVwPmts0K7aDDmYASzYgemdqqe0mfCFa0Gbwdc+mGh@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywa6oEcxFAj8LsmS11E4MJccZ6h2X8YL9DLd27F/zrHXV5l93oS
-	ujUpKqWrkGGnFRPUIEgaFspx1GIngq8huFUGFW1PkeCaFZKA3BeIhF1D
-X-Gm-Gg: ASbGnctll2S+enj6jLMy/CYjhzjWg27jJVoDNiqmwS3SCKw7E9a943sGN9hsCS2flZn
-	RZM26eJdubjfL4bBnFxZS9NkB+GtHsu7IO16VZlgNBwPBA/Q7VAhL5c688lkix65OacKp81g/br
-	FG8MLBluvhCr2KsgWYzzVYaOGQQT0yvIgqfG4vSuz/gOhddwm9eyi7Av1TWSu4VeYVtsaf4exqy
-	hWu0wRjN2N1qj3p6FgBEgQHIMqv3WgsYfihWtB0EdcDw7t07LVb0EPuadOUKCsFTe9rZq1R8YdX
-	ogqYqfDhDttWrOdyJL/mi1wtDbioU0MZJAlX2lea9FNhOY8dew+b0aaG1Md+AS57lc5dBUa7+gZ
-	Ehjdiv5K0pfNjecLUtVTqITi3TJy+gqDVWYEEiI1fpr5xUaQXAzo7DZ4Zswis4Bt1oPXoGDYF
-X-Google-Smtp-Source: AGHT+IGE36lJKKNg+ppA7YOvf2X4FE/fbTStcAqoVMnOyK3dvNvS9vqCBo0pUphTN7bH8X2XtqXmcQ==
-X-Received: by 2002:a05:6000:3103:b0:3d7:618b:2939 with SMTP id ffacd0b85a97d-3e643ff59a9mr14353030f8f.38.1757497694801;
-        Wed, 10 Sep 2025 02:48:14 -0700 (PDT)
-Received: from [192.168.0.24] (static-39-127-60-95.ipcom.comunitel.net. [95.60.127.39])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45df82247basm21584115e9.18.2025.09.10.02.48.12
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 10 Sep 2025 02:48:13 -0700 (PDT)
-Message-ID: <6b781d80-a991-44de-b066-390914af1e0d@gmail.com>
-Date: Wed, 10 Sep 2025 11:48:09 +0200
+	id 1uwHUN-0000000DM1Q-3VNB
+	for linux-mediatek@lists.infradead.org;
+	Wed, 10 Sep 2025 09:51:45 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 8572E43440;
+	Wed, 10 Sep 2025 09:51:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5EBD6C4CEF0;
+	Wed, 10 Sep 2025 09:51:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1757497903;
+	bh=V3TH6teKuqGP+qaeHsXMAY/wkqGVW8w7CJZ/OeEeDtY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=cmijofgfP5d2trBwIYZJEIDR0QkzVce3qQBKWiaWJnvLFrcDfZ+q3t7PjfvpOnqrG
+	 jFbqHROFZ+ID75LZKWFFb+F/AA0R8vgwgl/4mnU/xCWSQ9pc5JlnjeOmCbgsfdRvZ0
+	 hhRSWNklxLj1gwgBP/sPnIWRJ0Ni8By6OJC7xZzCVXceEU1fNhjvtWuRd+N7peOq6r
+	 kXSdBPQ8/ecIbYkilgejPlULwdWZcocKMmT/BRr2SsI9QmnYkz3xFiIRUA1Z1yF4NX
+	 XJejuOvuJmDL3m63aOh3nQB1BpC+3RPGz+u8rp0CPXpUEw4ZUKTcns97Dp0bY8agnv
+	 BZ6o+5qhPlQyw==
+Message-ID: <b12ed3b1-fc61-4db8-a504-9adeb168dd7c@kernel.org>
+Date: Wed, 10 Sep 2025 11:51:40 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 3/3] arm64: dts: mediatek: mt8395-nio-12l: add support
- for blue and red LEDs
-To: Julien Massot <julien.massot@collabora.com>, kernel@collabora.com,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: linux-input@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org
-References: <20250905-radxa-nio-12-l-gpio-v3-0-40f11377fb55@collabora.com>
- <20250905-radxa-nio-12-l-gpio-v3-3-40f11377fb55@collabora.com>
+Subject: Re: [PATCH 0/2] soc: mediatek: mtk-svs: fix device leaks on probe
+ failure
+To: Johan Hovold <johan@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Roger Lu <roger.lu@mediatek.com>, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20250909095651.5530-1-johan@kernel.org>
 Content-Language: en-US, ca-ES, es-ES
-From: Matthias Brugger <matthias.bgg@gmail.com>
+From: Matthias Brugger <matthias.bgg@kernel.org>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  xsFNBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
  fL3eT7ZsYV5nur7zctmJ+vbszoOASXUpfq8M+S5hU2w7sBaVk5rpH9yW8CUWz2+ZpQXPJcFa
@@ -145,12 +98,13 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20250905-radxa-nio-12-l-gpio-v3-3-40f11377fb55@collabora.com>
+In-Reply-To: <20250909095651.5530-1-johan@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250910_104817_572513_BADCD19F 
-X-CRM114-Status: GOOD (  15.05  )
+X-CRM114-CacheID: sfid-20250910_025143_917901_414721E6 
+X-CRM114-Status: UNSURE (   8.01  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -167,77 +121,24 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 05/09/2025 13:52, Julien Massot wrote:
-> The Radxa NIO 12L board has an RGB LED, of which only red and blue
-> are controllable.
+On 09/09/2025 11:56, Johan Hovold wrote:
+> This series fixes mostly benign device leaks in case the svs driver
+> probe defers (or is ever unbound), but which should be fixed if only to
+> reduce the risk of such bugs being reproduced in places where it matter
+> more.
 > 
-> Red and blue LEDs: no need to choose, both are enabled.
+
+Series queued, thanks!
+
+> Johan
 > 
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Signed-off-by: Julien Massot <julien.massot@collabora.com>
-> ---
->   .../boot/dts/mediatek/mt8395-radxa-nio-12l.dts     | 29 ++++++++++++++++++++++
->   1 file changed, 29 insertions(+)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-> index fd596e2298285361ad7c2fb828feec598d75a73e..0ea36e7c960fc0b2607833d743c5e2e806864600 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-> @@ -10,6 +10,7 @@
->   #include <dt-bindings/gpio/gpio.h>
->   #include <dt-bindings/input/input.h>
->   #include <dt-bindings/interrupt-controller/irq.h>
-> +#include <dt-bindings/leds/common.h>
->   #include <dt-bindings/pinctrl/mt8195-pinfunc.h>
->   #include <dt-bindings/regulator/mediatek,mt6360-regulator.h>
->   #include <dt-bindings/spmi/spmi.h>
-> @@ -73,6 +74,26 @@ button-volume-up {
->   		};
->   	};
->   
-> +	gpio-leds {
-> +		compatible = "gpio-leds";
-> +		pinctrl-0 = <&gpio_leds_pins>;
-> +		pinctrl-names = "default";
-> +
-> +		/*
-> +		 * This board has a RGB LED, of which only R and B
-> +		 * are controllable.
-> +		 */
-> +		rgb-blue {
-
-Please fix the DT warnings and submit again.
-
-Matthias
-
-> +			color = <LED_COLOR_ID_BLUE>;
-> +			gpios = <&pio 6 GPIO_ACTIVE_HIGH>;
-> +		};
-> +
-> +		led-1 {
-> +			color = <LED_COLOR_ID_RED>;
-> +			gpios = <&pio 7 GPIO_ACTIVE_HIGH>;
-> +		};
-> +	};
-> +
->   	wifi_vreg: regulator-wifi-3v3-en {
->   		compatible = "regulator-fixed";
->   		regulator-name = "wifi_3v3_en";
-> @@ -647,6 +668,14 @@ pins {
->   		};
->   	};
->   
-> +	gpio_leds_pins: gpio-leds-pins {
-> +		pins {
-> +			pinmux = <PINMUX_GPIO6__FUNC_GPIO6>,
-> +				 <PINMUX_GPIO7__FUNC_GPIO7>;
-> +			output-low;
-> +		};
-> +	};
-> +
->   	i2c2_pins: i2c2-pins {
->   		pins-bus {
->   			pinmux = <PINMUX_GPIO12__FUNC_SDA2>,
+> Johan Hovold (2):
+>    soc: mediatek: mtk-svs: fix device leaks on mt8183 probe failure
+>    soc: mediatek: mtk-svs: fix device leaks on mt8192 probe failure
+> 
+>   drivers/soc/mediatek/mtk-svs.c | 23 +++++++++++++++++++++++
+>   1 file changed, 23 insertions(+)
 > 
 
 
