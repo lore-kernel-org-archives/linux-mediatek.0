@@ -4,84 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 065BACA101F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Sep 2025 09:52:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12776CA101F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Sep 2025 09:58:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Fkwu36sIqKlccEWXHkKiOjIdmvv3IpUTfWruAp8yJD4=; b=PS55Yg1hrlGEvY3r25VQ1MS5o+
-	0bsMfmUO8iyMn+tDHtCGBdaGwmXo200xKK5Pxe0Leub3K0bHMJ/HUMEghQCFhMvZau0UjmNSi+zlW
-	VlQuLTT7FAYMvq2ixsVKnIKCKDG5V93qXU6KCIYRMB7EVrWr1HQrHNvpxpb0srr1RyPt2lmnWu62s
-	W2fTlTbF5kTvzSHynpGsL8O49l+LkPSkz2uuy3ugSHI28U6EKE4AoypV8TfFDDq2zpddyg3WED5Ni
-	JnizghrVhO0B5UnfR8D3ND0pAv4aZn8lhdLEJ1GzXIjj60H/SyUlf6OFsLwyut2x1VNBY2tB7SaZy
-	8Sst1sgg==;
+	bh=RuMGDqPp6O3zCh9ckBElvKfHIEjOAq1YTWVPBtWfgPU=; b=mjKwpqesiACARIhg2DRiFtgCZs
+	E1edlCpzMk0nv8oPAMxoEd5nyv+Xs5C1eN2UAHDbs24WL/JzIYwVrUN3ndc2vkTeDCt504gEpJfo+
+	HWkUwLWxvKR+Wum7AXkDX6PZVo2sdRil0MYP5L8Hj4Xo5/x4L5W8obJuiGGJRiZCiO2lQENMSnLhp
+	w4vUyMljZq3OA1AlLP0LRGtFcsJWJUFyd3gywp0/Q7g1dKJ6n2OLDfCklTyXkIU2gvGLYeENvml+u
+	G/0SxtrDzN91fkVhq7bZ/3AiPVtv0a4HKhAORK8Lw+werMhV1ydDTnxjRAAwgcHNfiar/8MQtjAmv
+	AQBq7iIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwHUu-0000000DMFk-0z2I;
-	Wed, 10 Sep 2025 09:52:16 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1uwHaV-0000000DO9c-1RIF;
+	Wed, 10 Sep 2025 09:58:03 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwHUr-0000000DMEP-1UIG;
-	Wed, 10 Sep 2025 09:52:14 +0000
-Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-45de287cc11so2529775e9.1;
-        Wed, 10 Sep 2025 02:52:12 -0700 (PDT)
+	id 1uwHaT-0000000DO8A-0dCu;
+	Wed, 10 Sep 2025 09:58:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=RuMGDqPp6O3zCh9ckBElvKfHIEjOAq1YTWVPBtWfgPU=; b=Sz+aXMFgrxv4ZKCMVPONf8AgHQ
+	Q9VmbCIu1liiMGFKIGObjhR4hEm5w5Ub2D4kZbr0zbh+ER4Lj9eHJVOB5FL3+D6TT9d8XpnGONAyK
+	bdTMTB2bG8y9RhlyN9mEqM+hjXC7+UBz0KfoXLfaVRLuJO5/MFwQc4T314iqIQSwRfwkdrohPyGsL
+	k82HVpJRyjnViwC7MANOo32T488TBEH0Mw2x9b8FKjFDkys5+aasl0TLxAh7jI+1y9yuT+c5JSebM
+	hVbwfsBQY63J41JWLQQBGzcaTMYyaovcTNIWhvWlQ6zZggkbjmmz+cVE4IxX+99C9q9QIxkaItZfK
+	h1b4v+Og==;
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uwHaQ-00000005oyL-0JpK;
+	Wed, 10 Sep 2025 09:57:59 +0000
+Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-45df0cde41bso11062725e9.3;
+        Wed, 10 Sep 2025 02:57:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1757497931; x=1758102731; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1757498276; x=1758103076; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=Fkwu36sIqKlccEWXHkKiOjIdmvv3IpUTfWruAp8yJD4=;
-        b=AAWXPWex8T56lfAYMxV+F1WwGrEqzghHb0dYNzTAEP9cwAwdvkDrLN5H+dzJ9OkShu
-         K3st8A/Juy7wLDAV7zcHCC9Sr5AeIXGnvp+UWpgxADs2KmLyWD/x+Q+UP9Fx4mrY84PK
-         EIbLHGP30/XEJYHY73r1iDlmBckKGKEqK4oRz+Wlz+2xFbV7stHFb93NoJ2ajF7fUwR/
-         0vHuNMm3z7XD8AuPNnHeN3FbbZwWKec87/o/VpWwFvY+ffzSOd4qmfQV4EE6OKKpoTjs
-         9/tY/uOkRgszaDzo0s8yIZHHNAxbz72BoK9z4WwiMwMacngXHrxc4SEyMSWFpylfP5cC
-         vPFg==
+        bh=RuMGDqPp6O3zCh9ckBElvKfHIEjOAq1YTWVPBtWfgPU=;
+        b=MucQiBc2UefQW8Hljx7d9bzEBwTQ9ANu3QwI+UB7Vba33QAnHcb613UGDJp3w/93e/
+         9e51eEHE7IfgNJRQeDysZTK1n+auY0sPeHoLqq7lDNxCFa7+sCJqcOfRJ8WVZgyblJbc
+         wD1kG8Ju10v+yHHIzP3LbkiyFIryB5HxyC5kNk8FuiWrd9avWoAF9YjiZuM6Kdm7btWQ
+         3FtGJpvrUKsPEd/m9tI17uE/t21ZZqhBlHG268JajzEeHP3eh5GYQr/opCDCmzUGM3HP
+         ReXulHYt52zuFIUJlT5C/zKbMb8Dylgit/QSz/no6hl8iK+Y5A5M//e2Z+5POHRQVWFm
+         FJbw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757497931; x=1758102731;
+        d=1e100.net; s=20230601; t=1757498276; x=1758103076;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Fkwu36sIqKlccEWXHkKiOjIdmvv3IpUTfWruAp8yJD4=;
-        b=XTjqISRDSFq7xewX81G3pfGQq9SkM9PVk/2FUudKTPu1YUu07Hzq5yNp3e9Q1sXR6x
-         +8ZY5us2qyqv4UVb0vhwHdrfpUjrhCG/wTGhfnRUF6hj692uCC0xSAWONOgGRF5QGehx
-         tNpvVLMg6W2QeUbrQkMX/UXhjzNyjOt+quPqG9Tao0mPejkvsvxBYM1soHQFz00ojZBo
-         YQH1cDhBQUVZQ1dNAzWAzKjyhTK6l7ojmW0AO83ZJn7U2hEpb1cwckTrFKdWO3TDZbcu
-         21/tRalLVCugYQ3AyA3d+p6OZ2bCIOuOD12bjCffHVKAhC6E1LlsV+FEf9geldIaViF1
-         HZvQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVdvaVbiLIDZAFomS0/OOuUfGwm9OiKzrPepcG63Vt3xlcJhWRrwwrGh3EQQnepK4/AR5v+Uln8I2GCNEtSlgo=@lists.infradead.org, AJvYcCVtYnE3IkRSdcLM/wJYOUxtvCv+pnOAFo2Wgp7OvkFNfXguDh8xPAs1bczthjEaHGdRUKb0AyN0DmgK+koaHWX4@lists.infradead.org
-X-Gm-Message-State: AOJu0YxTi0fP2HyGgkeu21D1LPqyXjPR+M0AexrMMbZyTpc+pRExBloH
-	RRl5tWXxfThvZIssaSEAh0GoC7OPIfavE2YxEN9v6TaO+aw6fHMGvtek
-X-Gm-Gg: ASbGnctbFJbIDKxWdMfudf7Rn63ymMgZzbiyEV5PzmtkawDPFmk4mTqpv1t68PQ0yRA
-	dTN4Uu3GOxMwqPp5o92+t9MjtCnlbiXRxxOVNXcqlE/jgPQi230Nesr7sdDL3JRZ3pO5XhhrOlQ
-	8s3WdVp0fMNMl4/CiHle5GfTFThx7BdgcLLMnOdTC9Kx26NOw+yXg2S6pwtGm6r2G6QJPQPJ+Xn
-	F24IniU6vjs7Jxoyen+H29eTUweWJZNDVPE6n95Pzy/VgYWlxe7KUVXk/F66kElqHnmV3Rez6n4
-	axfs4UQhdrjYJhZxHSMoF11zYbja0cBmTXfMTuLIxOhmwGJR+lLCx6kno2RLaJ1wTKVUPekfe59
-	9RmLIUydHCNDrxiY611NuCVHXD4k8YJpeYljNi9HMv8dDPWtZUVRykARfUGj9lA04b1/vh4974r
-	AwkOu09Dw=
-X-Google-Smtp-Source: AGHT+IHm66PjMPCOgJddrhyW/UFJ502yp0yYCzeOV7xdKQ14Xo/bl1MIKxHU3kUumA8xFUXACR4S1Q==
-X-Received: by 2002:a5d:64e6:0:b0:3e1:ca94:3199 with SMTP id ffacd0b85a97d-3e629b44341mr14421484f8f.14.1757497931132;
-        Wed, 10 Sep 2025 02:52:11 -0700 (PDT)
+        bh=RuMGDqPp6O3zCh9ckBElvKfHIEjOAq1YTWVPBtWfgPU=;
+        b=UHW/qc9v8Z9R7Wg9XIHddntGLOFfSHjkNSV1tR4SYWqyP8Zyl2pDZo/LJxQRdqHvh7
+         jOTznmSoKd0OlL0HQpnltAL/EUzW4ACIKWGqj6oq5qItDNu4ZjT0ZQWAu4EiGYHHB8Wd
+         GMWNnaI2Q7svLHQ6VnIiHKDvbMzpM0U6XdKBHvkC6+7YUflAz6aX3bmAm/aVhaCowdrO
+         fc4Ass6A2xza2fLUvAMrCsdSwL2uzjR9bh0ipU6YDbcBmrG8XBlUJ16e8/h3O2RaEJX7
+         wY5HGp9x2plarJxCV63SX3K6L5u1Y9h8hSW84IVE9y9dSUMRZ0L7VQWQu5S1mRr9z3R6
+         YJ9A==
+X-Forwarded-Encrypted: i=1; AJvYcCWT3ZPk/+BTsZOfGOdi6QGqH5d88pmyyycuiqtU5J1VtBenvmUV4A3qIF3g9LxQ+ej/tVMvDPn1RZUodpdytEsU@lists.infradead.org, AJvYcCWmp2iD3/fBxIqbI1TpqFec2pcJnQM7TRtc3mZ/Bia+VOOyFEc3vR/04brdhmFSdQu5VXTm8+f7QUu2tl5FDsk=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzrtjzwbrWIF33AUACkuiiZ8IdmB359UlUn4662veepN8i9VIa1
+	L9wkzIywG9EQAx0rkRkY2e5DRNE6q+Ok83xpHWBHrDPBlUWvXVpR+lDOF2lzDw==
+X-Gm-Gg: ASbGncsBbbhWfYDjK9zixPiBP4TbBjredp+E0hHbKh1DT8rTPi6ybwC8ltlGTD2CW8J
+	g4SgCDRrV/pkr5YKEZ+f173lYLXxWakKua1dzAzgOi7nU425SADWiNAsW0Kkue8HkY1YeYPcujT
+	h/3NW6nfqk6czLdouJluQm1mFZhxhDDTB4CVgYxHMnGqXoLOP7fMRsTNWfdLwdZy69Oxz9+dCNp
+	Q/0LXeSe1hM3AYELk4SRwCwKd/WIL5VzgasVoC0OWmxwIEH4H9AYD5vkN3XXNen/tK4Bk7xtq1A
+	4AQ1RY9s5C5/2D3Enn9+aqVrSJIrQpbyqWEmQIBFsiVv4L6gzBumSOZKHPPUUTL/VXPEi+VKvml
+	jW0xFc5cbUxIjF6iwtFh4Ma4rAMjLErznJh1p2pvzM7jj1PU7z9Qv/8U4dkv3W4NvlA7tHUmm
+X-Google-Smtp-Source: AGHT+IHJ4FVPPNV1CM9DnA1ftJB0zBlFiNItUpKglY2ydIcyhI27JlokKmL712d7YlJVv+f+5ztplQ==
+X-Received: by 2002:a05:600c:468a:b0:43c:ec4c:25b4 with SMTP id 5b1f17b1804b1-45ddde8bc12mr145262075e9.10.1757498276066;
+        Wed, 10 Sep 2025 02:57:56 -0700 (PDT)
 Received: from [192.168.0.24] (static-39-127-60-95.ipcom.comunitel.net. [95.60.127.39])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3e752238760sm6091362f8f.34.2025.09.10.02.52.09
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45df81e4563sm22201295e9.7.2025.09.10.02.57.54
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 10 Sep 2025 02:52:10 -0700 (PDT)
-Message-ID: <0730bb06-46fe-4451-af50-fe79daa44f28@gmail.com>
-Date: Wed, 10 Sep 2025 11:52:06 +0200
+        Wed, 10 Sep 2025 02:57:54 -0700 (PDT)
+Message-ID: <661a6938-859e-412b-ba28-dc6e56c39cf9@gmail.com>
+Date: Wed, 10 Sep 2025 11:57:53 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 0/4] Add support for Grinn GenioSBC-510/700 boards
-To: Mateusz Koza <mateusz.koza@grinn-global.com>,
- angelogioacchino.delregno@collabora.com, robh@kernel.org
-Cc: krzk+dt@kernel.org, conor+dt@kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, marcin.czarnecki@grinn-global.com,
- b.bilas@grinn-global.com, andrew@lunn.ch
-References: <20250908130620.2309399-1-mateusz.koza@grinn-global.com>
+Subject: Re: [PATCH] remoteproc: mediatek: Use
+ for_each_available_child_of_node_scoped()
+To: Fei Shao <fshao@chromium.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Bjorn Andersson <andersson@kernel.org>,
+ Mathieu Poirier <mathieu.poirier@linaro.org>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-remoteproc@vger.kernel.org
+References: <20250908044348.2402981-1-fshao@chromium.org>
 Content-Language: en-US, ca-ES, es-ES
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
@@ -127,12 +141,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20250908130620.2309399-1-mateusz.koza@grinn-global.com>
+In-Reply-To: <20250908044348.2402981-1-fshao@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250910_025213_423938_CDBC1D1C 
-X-CRM114-Status: GOOD (  16.60  )
+X-CRM114-CacheID: sfid-20250910_105758_292173_DCE19FA3 
+X-CRM114-Status: GOOD (  14.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -147,62 +161,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Patch 2 and 4 queued, thanks
 
-Matthias
 
-On 08/09/2025 15:05, Mateusz Koza wrote:
-> This patch series adds support for Grinn GenioSBC-510 and GenioSBC-700
-> boards based on MediaTek MT8370 and MT8390 SoCs, respectively. It
-> includes device tree files for both boards, updates to the device tree
-> bindings, and necessary modifications to the Makefile.
+On 08/09/2025 06:43, Fei Shao wrote:
+> Use scoped for_each_available_child_of_node_scoped() to remove manual
+> of_node_put() calls from early returns.
 > 
-> As far as I know, <angelogioacchino.delregno@collabora.com> has access
-> to the schematics for these boards, as we've shared them under NDA with
-> Collabora.
-> 
-> Signed-off-by: Mateusz Koza <mateusz.koza@grinn-global.com>
-> ---
-> v2:	Fixed the subject prefixes,
-> 	Fixed alignment in dts files,
-> 	Added missing SPDX-License-Identifier,
-> 	Fixed the ordering in dt-bindings,
-> 	Dropped redundant info from commit messages,
-> 	Run checkpatch.pl on the patchset and fixed the issues,
-> 	as suggested by Krzysztof Kozlowski <krzk@kernel.org>.
-> 
-> v3:	Changed eth phy-mode to 'rgmii-id',
-> 	Changed eth mediatek,tx-delay-ps to 30,
-> 	as suggested by Andrew Lunn <andrew@lunn.ch>.
-> 
-> v4:	Removed the nodes that are not present in upstream,
-> 	as suggested by Louis-Alexis <angelogioacchino.delregno@collabora.com>.
-> 
-> 	Added default pinctrl to ssusb0,
-> 	Enabled the scp_cluster node,
-> 	as suggested by Bartosz Biłas <b.bilas@grinn-global.com>.
+> Signed-off-by: Fei Shao <fshao@chromium.org>
+
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+
 > ---
 > 
-> Bartosz Bilas (1):
->    arm64: dts: mediatek: mt8370-grinn-genio-510-sbc: Add Grinn
->      GenioSBC-510
+>   drivers/remoteproc/mtk_scp.c | 7 +------
+>   1 file changed, 1 insertion(+), 6 deletions(-)
 > 
-> Mateusz Koza (3):
->    arm64: dts: mediatek: mt8390-genio-700-evk: Add Grinn GenioSBC-700
->    dt-bindings: arm: mediatek: Add grinn,genio-700-sbc
->    dt-bindings: arm: mediatek: Add grinn,genio-510-sbc
-> 
->   .../devicetree/bindings/arm/mediatek.yaml     |   2 +
->   arch/arm64/boot/dts/mediatek/Makefile         |   2 +
->   .../mediatek/mt8370-grinn-genio-510-sbc.dts   |  19 +
->   .../mediatek/mt8390-grinn-genio-700-sbc.dts   |  19 +
->   .../dts/mediatek/mt8390-grinn-genio-sbc.dtsi  | 538 ++++++++++++++++++
->   .../dts/mediatek/mt8390-grinn-genio-som.dtsi  | 209 +++++++
->   6 files changed, 789 insertions(+)
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8370-grinn-genio-510-sbc.dts
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-700-sbc.dts
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-sbc.dtsi
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-som.dtsi
-> 
+> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+> index 8206a1766481..b123698feb52 100644
+> --- a/drivers/remoteproc/mtk_scp.c
+> +++ b/drivers/remoteproc/mtk_scp.c
+> @@ -1234,7 +1234,6 @@ static int scp_add_multi_core(struct platform_device *pdev,
+>   	struct device *dev = &pdev->dev;
+>   	struct device_node *np = dev_of_node(dev);
+>   	struct platform_device *cpdev;
+> -	struct device_node *child;
+>   	struct list_head *scp_list = &scp_cluster->mtk_scp_list;
+>   	const struct mtk_scp_of_data **cluster_of_data;
+>   	struct mtk_scp *scp, *temp;
+> @@ -1243,11 +1242,10 @@ static int scp_add_multi_core(struct platform_device *pdev,
+>   
+>   	cluster_of_data = (const struct mtk_scp_of_data **)of_device_get_match_data(dev);
+>   
+> -	for_each_available_child_of_node(np, child) {
+> +	for_each_available_child_of_node_scoped(np, child) {
+>   		if (!cluster_of_data[core_id]) {
+>   			ret = -EINVAL;
+>   			dev_err(dev, "Not support core %d\n", core_id);
+> -			of_node_put(child);
+>   			goto init_fail;
+>   		}
+>   
+> @@ -1255,7 +1253,6 @@ static int scp_add_multi_core(struct platform_device *pdev,
+>   		if (!cpdev) {
+>   			ret = -ENODEV;
+>   			dev_err(dev, "Not found platform device for core %d\n", core_id);
+> -			of_node_put(child);
+>   			goto init_fail;
+>   		}
+>   
+> @@ -1264,14 +1261,12 @@ static int scp_add_multi_core(struct platform_device *pdev,
+>   		if (IS_ERR(scp)) {
+>   			ret = PTR_ERR(scp);
+>   			dev_err(dev, "Failed to initialize core %d rproc\n", core_id);
+> -			of_node_put(child);
+>   			goto init_fail;
+>   		}
+>   
+>   		ret = rproc_add(scp->rproc);
+>   		if (ret) {
+>   			dev_err(dev, "Failed to add rproc of core %d\n", core_id);
+> -			of_node_put(child);
+>   			scp_free(scp);
+>   			goto init_fail;
+>   		}
 
 
