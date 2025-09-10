@@ -4,57 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 846BFCA0FED
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Sep 2025 09:51:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 065BACA101F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Sep 2025 09:52:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yF3m+xrb66tGLD1czy4Qjuv4VCW7GVZeyDlZf7NaKWY=; b=hExCeIS9LCyPweytYZM2ZezytS
-	thjBuTlO9fSWT08HVrVNQqumttF9ia4AnjyWSyLKsLTRYqVaPDM11eqhFdbDHgYWDA6dcuwHN9UgC
-	uXct6mDkCsD390NWEWoycLI/UnLoKQSpimpTJMK/c7/LtD9D8lkaWiQl9zFLiPA+hTQsBV5kZWnro
-	H1paFoP/rNRd3ygh0srUdHr7Y7eJ7s6F0dqcdlrRZzU/5BtpqP6joXQp+ZTknu89o7yMdeN5ttdP3
-	m95UKZrdnj7jcA24eNnafeTHjoX+zcDD3jHdXGhKKgScvj1kTKmGYQ4/FtnHTck5UlqNH7ps2zYY6
-	ttzJ332Q==;
+	bh=Fkwu36sIqKlccEWXHkKiOjIdmvv3IpUTfWruAp8yJD4=; b=PS55Yg1hrlGEvY3r25VQ1MS5o+
+	0bsMfmUO8iyMn+tDHtCGBdaGwmXo200xKK5Pxe0Leub3K0bHMJ/HUMEghQCFhMvZau0UjmNSi+zlW
+	VlQuLTT7FAYMvq2ixsVKnIKCKDG5V93qXU6KCIYRMB7EVrWr1HQrHNvpxpb0srr1RyPt2lmnWu62s
+	W2fTlTbF5kTvzSHynpGsL8O49l+LkPSkz2uuy3ugSHI28U6EKE4AoypV8TfFDDq2zpddyg3WED5Ni
+	JnizghrVhO0B5UnfR8D3ND0pAv4aZn8lhdLEJ1GzXIjj60H/SyUlf6OFsLwyut2x1VNBY2tB7SaZy
+	8Sst1sgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwHUQ-0000000DM2f-2ns6;
-	Wed, 10 Sep 2025 09:51:46 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1uwHUu-0000000DMFk-0z2I;
+	Wed, 10 Sep 2025 09:52:16 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwHUN-0000000DM1Q-3VNB
-	for linux-mediatek@lists.infradead.org;
-	Wed, 10 Sep 2025 09:51:45 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8572E43440;
-	Wed, 10 Sep 2025 09:51:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5EBD6C4CEF0;
-	Wed, 10 Sep 2025 09:51:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1757497903;
-	bh=V3TH6teKuqGP+qaeHsXMAY/wkqGVW8w7CJZ/OeEeDtY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=cmijofgfP5d2trBwIYZJEIDR0QkzVce3qQBKWiaWJnvLFrcDfZ+q3t7PjfvpOnqrG
-	 jFbqHROFZ+ID75LZKWFFb+F/AA0R8vgwgl/4mnU/xCWSQ9pc5JlnjeOmCbgsfdRvZ0
-	 hhRSWNklxLj1gwgBP/sPnIWRJ0Ni8By6OJC7xZzCVXceEU1fNhjvtWuRd+N7peOq6r
-	 kXSdBPQ8/ecIbYkilgejPlULwdWZcocKMmT/BRr2SsI9QmnYkz3xFiIRUA1Z1yF4NX
-	 XJejuOvuJmDL3m63aOh3nQB1BpC+3RPGz+u8rp0CPXpUEw4ZUKTcns97Dp0bY8agnv
-	 BZ6o+5qhPlQyw==
-Message-ID: <b12ed3b1-fc61-4db8-a504-9adeb168dd7c@kernel.org>
-Date: Wed, 10 Sep 2025 11:51:40 +0200
+	id 1uwHUr-0000000DMEP-1UIG;
+	Wed, 10 Sep 2025 09:52:14 +0000
+Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-45de287cc11so2529775e9.1;
+        Wed, 10 Sep 2025 02:52:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1757497931; x=1758102731; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=Fkwu36sIqKlccEWXHkKiOjIdmvv3IpUTfWruAp8yJD4=;
+        b=AAWXPWex8T56lfAYMxV+F1WwGrEqzghHb0dYNzTAEP9cwAwdvkDrLN5H+dzJ9OkShu
+         K3st8A/Juy7wLDAV7zcHCC9Sr5AeIXGnvp+UWpgxADs2KmLyWD/x+Q+UP9Fx4mrY84PK
+         EIbLHGP30/XEJYHY73r1iDlmBckKGKEqK4oRz+Wlz+2xFbV7stHFb93NoJ2ajF7fUwR/
+         0vHuNMm3z7XD8AuPNnHeN3FbbZwWKec87/o/VpWwFvY+ffzSOd4qmfQV4EE6OKKpoTjs
+         9/tY/uOkRgszaDzo0s8yIZHHNAxbz72BoK9z4WwiMwMacngXHrxc4SEyMSWFpylfP5cC
+         vPFg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1757497931; x=1758102731;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Fkwu36sIqKlccEWXHkKiOjIdmvv3IpUTfWruAp8yJD4=;
+        b=XTjqISRDSFq7xewX81G3pfGQq9SkM9PVk/2FUudKTPu1YUu07Hzq5yNp3e9Q1sXR6x
+         +8ZY5us2qyqv4UVb0vhwHdrfpUjrhCG/wTGhfnRUF6hj692uCC0xSAWONOgGRF5QGehx
+         tNpvVLMg6W2QeUbrQkMX/UXhjzNyjOt+quPqG9Tao0mPejkvsvxBYM1soHQFz00ojZBo
+         YQH1cDhBQUVZQ1dNAzWAzKjyhTK6l7ojmW0AO83ZJn7U2hEpb1cwckTrFKdWO3TDZbcu
+         21/tRalLVCugYQ3AyA3d+p6OZ2bCIOuOD12bjCffHVKAhC6E1LlsV+FEf9geldIaViF1
+         HZvQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVdvaVbiLIDZAFomS0/OOuUfGwm9OiKzrPepcG63Vt3xlcJhWRrwwrGh3EQQnepK4/AR5v+Uln8I2GCNEtSlgo=@lists.infradead.org, AJvYcCVtYnE3IkRSdcLM/wJYOUxtvCv+pnOAFo2Wgp7OvkFNfXguDh8xPAs1bczthjEaHGdRUKb0AyN0DmgK+koaHWX4@lists.infradead.org
+X-Gm-Message-State: AOJu0YxTi0fP2HyGgkeu21D1LPqyXjPR+M0AexrMMbZyTpc+pRExBloH
+	RRl5tWXxfThvZIssaSEAh0GoC7OPIfavE2YxEN9v6TaO+aw6fHMGvtek
+X-Gm-Gg: ASbGnctbFJbIDKxWdMfudf7Rn63ymMgZzbiyEV5PzmtkawDPFmk4mTqpv1t68PQ0yRA
+	dTN4Uu3GOxMwqPp5o92+t9MjtCnlbiXRxxOVNXcqlE/jgPQi230Nesr7sdDL3JRZ3pO5XhhrOlQ
+	8s3WdVp0fMNMl4/CiHle5GfTFThx7BdgcLLMnOdTC9Kx26NOw+yXg2S6pwtGm6r2G6QJPQPJ+Xn
+	F24IniU6vjs7Jxoyen+H29eTUweWJZNDVPE6n95Pzy/VgYWlxe7KUVXk/F66kElqHnmV3Rez6n4
+	axfs4UQhdrjYJhZxHSMoF11zYbja0cBmTXfMTuLIxOhmwGJR+lLCx6kno2RLaJ1wTKVUPekfe59
+	9RmLIUydHCNDrxiY611NuCVHXD4k8YJpeYljNi9HMv8dDPWtZUVRykARfUGj9lA04b1/vh4974r
+	AwkOu09Dw=
+X-Google-Smtp-Source: AGHT+IHm66PjMPCOgJddrhyW/UFJ502yp0yYCzeOV7xdKQ14Xo/bl1MIKxHU3kUumA8xFUXACR4S1Q==
+X-Received: by 2002:a5d:64e6:0:b0:3e1:ca94:3199 with SMTP id ffacd0b85a97d-3e629b44341mr14421484f8f.14.1757497931132;
+        Wed, 10 Sep 2025 02:52:11 -0700 (PDT)
+Received: from [192.168.0.24] (static-39-127-60-95.ipcom.comunitel.net. [95.60.127.39])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3e752238760sm6091362f8f.34.2025.09.10.02.52.09
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 10 Sep 2025 02:52:10 -0700 (PDT)
+Message-ID: <0730bb06-46fe-4451-af50-fe79daa44f28@gmail.com>
+Date: Wed, 10 Sep 2025 11:52:06 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/2] soc: mediatek: mtk-svs: fix device leaks on probe
- failure
-To: Johan Hovold <johan@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Roger Lu <roger.lu@mediatek.com>, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20250909095651.5530-1-johan@kernel.org>
+Subject: Re: [PATCH v4 0/4] Add support for Grinn GenioSBC-510/700 boards
+To: Mateusz Koza <mateusz.koza@grinn-global.com>,
+ angelogioacchino.delregno@collabora.com, robh@kernel.org
+Cc: krzk+dt@kernel.org, conor+dt@kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, marcin.czarnecki@grinn-global.com,
+ b.bilas@grinn-global.com, andrew@lunn.ch
+References: <20250908130620.2309399-1-mateusz.koza@grinn-global.com>
 Content-Language: en-US, ca-ES, es-ES
-From: Matthias Brugger <matthias.bgg@kernel.org>
+From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  xsFNBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
  fL3eT7ZsYV5nur7zctmJ+vbszoOASXUpfq8M+S5hU2w7sBaVk5rpH9yW8CUWz2+ZpQXPJcFa
@@ -98,13 +127,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20250909095651.5530-1-johan@kernel.org>
+In-Reply-To: <20250908130620.2309399-1-mateusz.koza@grinn-global.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250910_025143_917901_414721E6 
-X-CRM114-Status: UNSURE (   8.01  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250910_025213_423938_CDBC1D1C 
+X-CRM114-Status: GOOD (  16.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,26 +147,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Patch 2 and 4 queued, thanks
 
+Matthias
 
-On 09/09/2025 11:56, Johan Hovold wrote:
-> This series fixes mostly benign device leaks in case the svs driver
-> probe defers (or is ever unbound), but which should be fixed if only to
-> reduce the risk of such bugs being reproduced in places where it matter
-> more.
+On 08/09/2025 15:05, Mateusz Koza wrote:
+> This patch series adds support for Grinn GenioSBC-510 and GenioSBC-700
+> boards based on MediaTek MT8370 and MT8390 SoCs, respectively. It
+> includes device tree files for both boards, updates to the device tree
+> bindings, and necessary modifications to the Makefile.
 > 
-
-Series queued, thanks!
-
-> Johan
+> As far as I know, <angelogioacchino.delregno@collabora.com> has access
+> to the schematics for these boards, as we've shared them under NDA with
+> Collabora.
 > 
+> Signed-off-by: Mateusz Koza <mateusz.koza@grinn-global.com>
+> ---
+> v2:	Fixed the subject prefixes,
+> 	Fixed alignment in dts files,
+> 	Added missing SPDX-License-Identifier,
+> 	Fixed the ordering in dt-bindings,
+> 	Dropped redundant info from commit messages,
+> 	Run checkpatch.pl on the patchset and fixed the issues,
+> 	as suggested by Krzysztof Kozlowski <krzk@kernel.org>.
 > 
-> Johan Hovold (2):
->    soc: mediatek: mtk-svs: fix device leaks on mt8183 probe failure
->    soc: mediatek: mtk-svs: fix device leaks on mt8192 probe failure
+> v3:	Changed eth phy-mode to 'rgmii-id',
+> 	Changed eth mediatek,tx-delay-ps to 30,
+> 	as suggested by Andrew Lunn <andrew@lunn.ch>.
 > 
->   drivers/soc/mediatek/mtk-svs.c | 23 +++++++++++++++++++++++
->   1 file changed, 23 insertions(+)
+> v4:	Removed the nodes that are not present in upstream,
+> 	as suggested by Louis-Alexis <angelogioacchino.delregno@collabora.com>.
+> 
+> 	Added default pinctrl to ssusb0,
+> 	Enabled the scp_cluster node,
+> 	as suggested by Bartosz Biłas <b.bilas@grinn-global.com>.
+> ---
+> 
+> Bartosz Bilas (1):
+>    arm64: dts: mediatek: mt8370-grinn-genio-510-sbc: Add Grinn
+>      GenioSBC-510
+> 
+> Mateusz Koza (3):
+>    arm64: dts: mediatek: mt8390-genio-700-evk: Add Grinn GenioSBC-700
+>    dt-bindings: arm: mediatek: Add grinn,genio-700-sbc
+>    dt-bindings: arm: mediatek: Add grinn,genio-510-sbc
+> 
+>   .../devicetree/bindings/arm/mediatek.yaml     |   2 +
+>   arch/arm64/boot/dts/mediatek/Makefile         |   2 +
+>   .../mediatek/mt8370-grinn-genio-510-sbc.dts   |  19 +
+>   .../mediatek/mt8390-grinn-genio-700-sbc.dts   |  19 +
+>   .../dts/mediatek/mt8390-grinn-genio-sbc.dtsi  | 538 ++++++++++++++++++
+>   .../dts/mediatek/mt8390-grinn-genio-som.dtsi  | 209 +++++++
+>   6 files changed, 789 insertions(+)
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8370-grinn-genio-510-sbc.dts
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-700-sbc.dts
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-sbc.dtsi
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-som.dtsi
 > 
 
 
