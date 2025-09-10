@@ -4,79 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBA3DCA0FED
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Sep 2025 07:13:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AE74CA0FED
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Sep 2025 07:13:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xHR8kEAINHQx8cEJdNb56gXGfX3p65LuAbViPfkkq1g=; b=hfYRu1+dAUt4XPCOimZukQNVPO
-	wM5OfT+e77I+aLFY/Oxh1s+018pVJwAWozj+elsMORdngu7xLMGfidiAB4de1OB/biyA00wRqwwlM
-	u0tENESnieVqeIs9P+ffxe9e7MxZJjHu5PR+dkOoGIg+Jwm8itk0Nepb5s//JIFa8ur80tJ3mdi76
-	xlttl2bVMGUTt4sZJBZxRrYqYH/mllOhmqKoguxj+EkrLj7HeS3NKJqrqjYC9NOOSyhwapBCddqfF
-	cp8peioF7bWfLqmG5+tv6RCHwcI8CO89XcVpzA0QJ846NQO0KbFm779DYT1RGd1cIeoxeSy2swcvb
-	CVZid2Hg==;
+	bh=NplkbxcOuSv0sFTn0nVn4XecH51jDagN9K/FkQXgFyQ=; b=jt95/j4Bs8FtE1ILMtnAisIS8d
+	USVAaVMZpY38a3gfK3RMUvbWwT8Kf7vTXiTpbssChnvy9bsFBKn4rJSYbDPOtBFVZm0G5sZPKekhv
+	pcnvs9UmAu3/+RYaENTIfZWbjqO1R8o93Du6Ji1JIQNcq8R62jw6UQ2g7wgPFihpKWjadQDIbZR3g
+	LaqpZwIqazjG19rgXJ2g5hYARGsxx/TDzWSCLo/4ffpKfsKgKpEPbT3ezOSyxhzvnFJ3UV+ao9mZW
+	Aw10APZGhsVQ4jPVVPqwOwRztXVxtPyjzgb91MexVDV9uJLgI89ATiCTEiLQOugDOfeKbDtTCgrbh
+	6V7bqIUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwF1H-0000000CRzw-1cun;
-	Wed, 10 Sep 2025 07:13:31 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1uwF1M-0000000CS7I-1u5T;
+	Wed, 10 Sep 2025 07:13:36 +0000
+Received: from mail-wr1-f45.google.com ([209.85.221.45])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwF0s-0000000CRMJ-2Puu
+	id 1uwF0w-0000000CRSj-2a08
 	for linux-mediatek@lists.infradead.org;
-	Wed, 10 Sep 2025 07:13:10 +0000
-Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-45cb6180b60so40755735e9.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 10 Sep 2025 00:13:05 -0700 (PDT)
+	Wed, 10 Sep 2025 07:13:14 +0000
+Received: by mail-wr1-f45.google.com with SMTP id ffacd0b85a97d-3e7512c8669so1145575f8f.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 10 Sep 2025 00:13:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1757488384; x=1758093184; darn=lists.infradead.org;
+        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1757488388; x=1758093188; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=xHR8kEAINHQx8cEJdNb56gXGfX3p65LuAbViPfkkq1g=;
-        b=16QCSthO9GnBFjZeVlfTa3Ib8EHuNzMTn5CczRxrNnBgylbWF85UnFjiGrXYVk1og9
-         Ce4KVbLwlJIGbAnGN+hqDVDk9pkodCyMpyepNVlbQCzV10zCyn9zP9HBZvNzhVkLq+Ci
-         5gTUwB7M2ORLosw3+dAR9XuHvUEHuoHoZeRVZU56cCh9gVQn0LYzohJNRXqLpBEWO/4B
-         Nfexw5UZJZzZsMdhx+cYhz314BsDZQGy79T7AhNe14n6q7At0TbKPWPd6IrgTE8kHLix
-         ck3DP1Kqluj5WJYot6cKDDa7mlEa9WZ5mBuDLfEmJ2RNEQyxYup5SEv20sUwIbnFBkBD
-         vTdg==
+        bh=NplkbxcOuSv0sFTn0nVn4XecH51jDagN9K/FkQXgFyQ=;
+        b=EFb0TVh64r+zGtm/3nZWcL1lBbssR+2rHaD02GMpD+G8KsEwKK3SF1kN4PD2ONljZk
+         IA47ue+AjwBh6lF4GZ0zyfLz8oMtJdES3dvYyz/wRiV12MAsRAE1QY8yMpsprpK9fHMP
+         07lgTzVj81yA+NPP2YtyxTmnJMQ++EALqQPwy9gUF2COBhxEQ/9Xb5RHdplj4yxQwWrz
+         HyMv4NzWk1oFuNfdJgd0UvHjLVW0Puy2JMXPtApDbp+MKkdnlLH5tqeOrUVCoaD3p139
+         5+2+7D61fMrX0k4SwijS3MI1B2936inmuWfQVe9X9Mu08gxCnl8E85YfRl3JZ51Ujl6C
+         fU8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757488384; x=1758093184;
+        d=1e100.net; s=20230601; t=1757488388; x=1758093188;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=xHR8kEAINHQx8cEJdNb56gXGfX3p65LuAbViPfkkq1g=;
-        b=lsknO1MtVnaLZRqBBkXcvTfBm8LuN/ZkwoebB3cFH4q6sv4dFKoQwYNXQ6BiUmtCPl
-         qGdWBh5hrwWGKsPR6UsUEnQmIiuhInTZM5mJiquX6rENgof6q2jQokbDtMQob+uAqVsj
-         NdbXKDrOfV8LPigsVtKGpOIbPLEcnOIe2rk8jE3d/+fHhYZi3Ncf8Y7px2lw9mDJ9gB6
-         ZKchn+H1xKb0j8jiH5/bRzyvXBK0zYUeAeL/mtnwe2epsvgncRIXnCfiLdXvIXBM1ssJ
-         3E6EHwDyjd6MGvY0g9821NSN1C1ihCJ1tvrkR78D524G0Lod51raoUctx3M9k9b4hHco
-         2Dvw==
-X-Forwarded-Encrypted: i=1; AJvYcCU6e2/dj4KAO0Kn67X4OrReta025D9NWZCcFfEQaGyJps2kq7ngGVua6cFkShQDLEF4y+FmCGIe1nx/vXfCdA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx/oMMgqH3fb0yFf1CRHtNrTLeuGv5txSuwiOjCM4nSIrmj3ryH
-	EcFP/V0WW0wWDkpm+MusnR4BPLBGh/khSoP62X3exZryFNuMrJSdF79wbjGDuWsYksU=
-X-Gm-Gg: ASbGnctTSx7G2tChYo6yaXwqjJBDF4E179laBKGm1+S6/hsbcvd0yQul0ALYtHOweIK
-	PLiZEV82pYqkRNDEqTKrcarOTxgfWD1IsW61jjjoXm2q2snsYve/eO2vZEDEbZVwJUBVwDUnihL
-	MIxwFF7zpsefX402GGHs4xD8gtM2wwM5OIAy9AsCIosiRl269z7ngA87TqgNzCuZKWJUOMFsQ/O
-	gthMyjbwv1k2VQIQqujm5mxRYBgPXAo9dtvF51ffxAhlYmpuamgpR1QPXAKs3D+CDEgZ5WBbJey
-	mPTkzyYUEuyJpYsseiRJRt89GQbgWzfZq1AasI/2kPmlasYXwmuOZgOcmxwh1c5rmc+XLrBNZS9
-	Kjw7F/jOvgQyCOI+ZGtKDVFybTTw=
-X-Google-Smtp-Source: AGHT+IFSdci3CHq8VqUJcbVpnmzo+2lQEmXOuKmC8RRv+wtgm3NDfrNeLIsCyZlc4vVFVDxHItzjfQ==
-X-Received: by 2002:a05:600c:c4ab:b0:45d:d505:a1c3 with SMTP id 5b1f17b1804b1-45dddef8c61mr118822845e9.37.1757488383998;
-        Wed, 10 Sep 2025 00:13:03 -0700 (PDT)
+        bh=NplkbxcOuSv0sFTn0nVn4XecH51jDagN9K/FkQXgFyQ=;
+        b=XCL4Lp3Q5Qioq+XM8owrpfyavvKg9OfEvZ++8cwt2nSvSza/LaLn/HUbEsuLVXxdo1
+         6iTii3mzXNxLpIZ02nni69/TrdchDkgcLN0Yvo0Atr70vOBPwxdUuaRusVf1YHWPuu/P
+         nAPrvWRYGQNLEvi8h5J+bBCh22oyTmNHKRSoH45D72I/YVFCXhUDPgT0RPnZP68eJf+3
+         kG38lejCftfyrAoxypFa7Tq/KNo5ieHe8dHo5GrsO1KKCqQWY/y5mKY+Pji9zWZKRn/g
+         U8+QPbSCspGptSfztCzPxc/hlZXEeJzYmaXEVfSIwVBSnwYhqlvZm9RL0QE1IRsrDgJX
+         qjvg==
+X-Forwarded-Encrypted: i=1; AJvYcCU0rydABUpgoRz18n9fG/5oYliDWmyVZTSVQoQW2p32VzNSzrD3GNqfZeTR+a8IFjoCYNkwle22P3CPttkzSg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwvHX25N3uVlxV2T8WaGZk0c4kSyNCjmKCJlEhDmlRSko3PPdni
+	Ai2L5/JBsfxgaTEIhHZ7Gw9JurXv+kBimFHLhuZQXBC5VZptN/uaQrcezjU+7BA8c2I=
+X-Gm-Gg: ASbGncuRPXxVN9ZBUvRPOD64HqkuzM6vBS4fmJnTD9pnwkrsR4vupshyKl53iZ+iImh
+	6F1DNUf5c5WkrCukLyCS7dvllPHvG6uGls3r3Zo4QbNxKzkOMsr2bfkGfirB5F5GjmF4vn5N3xe
+	tAZBqMwoPYwYu7RYscOj9FnFyqDCp4W/EaCJeXyr6eFwVmbgfEjNsEwQw2iylZXAFRjC4s3ZtUw
+	NYf04SAS7QXXQ9G7wXwPFOWR+EdyuZK9JpQZ6E/osDajFRUQTohdCn0kMvUHKE5aUVS+R2YEe7r
+	iPsQ5JHBxYK5HOTedZbZjNt4Ri4/pCab5g8Fchju+LIaA0PTlDlhEWm+137ID+T68sNRtyR0pKb
+	wo/anvoTMCkozeC2o2sHSx3UsxQPKmy2S02t3Ew==
+X-Google-Smtp-Source: AGHT+IHcvhZZzP4TZN8dDM2cz7gIErp9PBji/Vm3N8fCFTA9CGkIGjusChs87EXSmOouxgrha6RBMg==
+X-Received: by 2002:a05:6000:3101:b0:3e3:59cc:65ba with SMTP id ffacd0b85a97d-3e64374208dmr5090711f8f.50.1757488387704;
+        Wed, 10 Sep 2025 00:13:07 -0700 (PDT)
 Received: from [127.0.1.1] ([2a01:cb1d:dc:7e00:3936:709a:82c4:3e38])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45df81d20d2sm16357035e9.8.2025.09.10.00.13.01
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45df81d20d2sm16357035e9.8.2025.09.10.00.13.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 10 Sep 2025 00:13:02 -0700 (PDT)
+        Wed, 10 Sep 2025 00:13:06 -0700 (PDT)
 From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Wed, 10 Sep 2025 09:12:42 +0200
-Subject: [PATCH v2 06/15] gpio: xgene-sb: use generic GPIO chip register
- read and write APIs
+Date: Wed, 10 Sep 2025 09:12:44 +0200
+Subject: [PATCH v2 08/15] gpio: mt7621: use new generic GPIO chip API
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250910-gpio-mmio-gpio-conv-part4-v2-6-f3d1a4c57124@linaro.org>
+Message-Id: <20250910-gpio-mmio-gpio-conv-part4-v2-8-f3d1a4c57124@linaro.org>
 References: <20250910-gpio-mmio-gpio-conv-part4-v2-0-f3d1a4c57124@linaro.org>
 In-Reply-To: <20250910-gpio-mmio-gpio-conv-part4-v2-0-f3d1a4c57124@linaro.org>
 To: Linus Walleij <linus.walleij@linaro.org>, 
@@ -96,26 +95,26 @@ Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
  spacemit@lists.linux.dev, 
  Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1238;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4781;
  i=bartosz.golaszewski@linaro.org; h=from:subject:message-id;
- bh=We0X7xb7ACmLY+lbQa1fcNw6pP25NDN5z92R8VM93TU=;
- b=owEBbQKS/ZANAwAKARGnLqAUcddyAcsmYgBowSTtTDj4oNGwDRR7+qL+H0qpz1nceYdGpGDPH
- ia1yPhYhmCJAjMEAAEKAB0WIQQWnetsC8PEYBPSx58Rpy6gFHHXcgUCaMEk7QAKCRARpy6gFHHX
- cltID/9Ctub5VaMhx1Y9F7RnCwKevVF+bxKd+hpiZxi/K5bnOELNFhQC9MrYe3Jo/xgNtSOubP+
- e6d48QqOuSuIV5d++/Pwni9yyHDsRzqCfGPA2sfV/Bab6KBoWxhzDFn7s3lGqcOecV05i8onc8w
- wFCuxdoJ2i+LvKp0salt7xPfvkjgcIgKGzQmTopLYLKahtb4dC4nWif9HBKqL3RiNU2dkpEQiAI
- ippQcDB6/0i6YRrnVZAEtqpMgKaPwyRaKiOa0VdiVA+ZmDw7GrC1p+27jgEkErOCxYboKXTW5Ae
- gKTqLhDKSVO7c8IKGCdbIQxYiJEsGZCrYFuLA0pAogyydqwf/ZrcVP6UgJSOttmdPXlWCEfaWHy
- cLBcQnSi7cTCuPVS9mvSF6h4umNbP3tpRfb6pOfp7l0RY4i9BJsC6WTDRDQ/vHekGy86Kwi6Esq
- IzhKLr3OO4wfaano0EJJ5Gs84UnV4nMnYW9Nts1TM7oIybmuoDUgWV2QyuT4HcBQmTL6/b7FDyw
- 82BVH/fdSFI2eKKOB3z+/AkHtl9+TcngTVS3xIAQWvL6HdAmpBuy2zbPJ7GMd0eV+meic7kYxxF
- 1/MoGJeiOoVwFVOK5uGV2GtBCFo8xz97rQ3SKuV2hyxM9CExMXw9JCmDOBulmxf8+Vd8Afmotk7
- 5UhY14It5j5GHJw==
+ bh=sm2OibAFBIz+8HL11qXL3Wby/ipKKdaG0xSU+4Tx1Ws=;
+ b=owEBbQKS/ZANAwAKARGnLqAUcddyAcsmYgBowSTuMKok5DESPFbhymqYsolQEfeTgC5P2l4ck
+ 1ZZifwJvnSJAjMEAAEKAB0WIQQWnetsC8PEYBPSx58Rpy6gFHHXcgUCaMEk7gAKCRARpy6gFHHX
+ ckp4EACxMivANhAd7XZ3l9scDS+B5YYyLmSQ3Ny+BN657qboxkz35tdtCqo9RM2p4vwJoj4F58n
+ rjt9YIZ8WE8dMVbEfz3YWyz2izu1kYq5xHXgyIZll+ttlgAkxUJMWsuOBlNE/mEv8eqfcVyE9kB
+ fhGVUoTUQXe2kClwurlIT/uqlyREzW7/hE/AmyHfiJlKDOqTSymNVLaciZ1m628rEw3f3mkY6x3
+ 1VN/jTKqn0fwwlzZos29x0Jjyfc1cnUDSugp+Uc15e9NHBZ8057+Tqkyj5rulMP7p/pBDGXQfKr
+ E3xP1G5ACUTJrVHiWsG60aO8/ouvgevz7upK4Sjv5n2qXzPBDaUUUVY9ntkMfsDBb5aTP1KXKev
+ SE8ZtNSNtnUncL/Fo/N//pBIkDpXL/pSZJZvi4YAeO8SaOwCBnOdJlP53HJ7L83zzuNpBUjEW/i
+ ksoRPc05p8Mymr1HGMs4h4dnZg6ZPQ7HCxgcHCK6ciFupdOexJxm49Lf73Pum5dSOOYzlkP3gM8
+ 5gUvz/9RvDf5rIDYx7tCSpJC+y7e48f8iuJnObLNJPVt9uQtnS8fDEF0Ol7dfs/dvCRKjERzjOZ
+ SK7mIZEGfXac9o9DC5lg3H2DAUewgoXaHy9WqzS6wO39syN8uA85mWEaWEZGA2YQP+7a9pIumwe
+ 1hvajsW11qzliiQ==
 X-Developer-Key: i=bartosz.golaszewski@linaro.org; a=openpgp;
  fpr=169DEB6C0BC3C46013D2C79F11A72EA01471D772
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250910_001306_708415_A2A7719F 
-X-CRM114-Status: GOOD (  13.41  )
+X-CRM114-CacheID: sfid-20250910_001310_860246_DAEFC319 
+X-CRM114-Status: GOOD (  18.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,38 +131,156 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 
-The conversion to using the modernized generic GPIO chip API was
-incomplete without also converting the direct calls to write/read_reg()
-callbacks. Use the provided wrappers from linux/gpio/generic.h.
+Convert the driver to using the new generic GPIO chip interfaces from
+linux/gpio/generic.h.
 
-Fixes: 38d98a822c14 ("gpio: xgene-sb: use new generic GPIO chip API")
 Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 ---
- drivers/gpio/gpio-xgene-sb.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ drivers/gpio/gpio-mt7621.c | 51 +++++++++++++++++++++++++++++-----------------
+ 1 file changed, 32 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/gpio/gpio-xgene-sb.c b/drivers/gpio/gpio-xgene-sb.c
-index c559a89aadf7a77bd9cce7e5a7d4a2b241307812..62545e358b6c4b1cab25e1135cb24ccc3e955078 100644
---- a/drivers/gpio/gpio-xgene-sb.c
-+++ b/drivers/gpio/gpio-xgene-sb.c
-@@ -63,14 +63,15 @@ struct xgene_gpio_sb {
- static void xgene_gpio_set_bit(struct gpio_chip *gc,
- 				void __iomem *reg, u32 gpio, int val)
- {
-+	struct gpio_generic_chip *chip = to_gpio_generic_chip(gc);
- 	u32 data;
+diff --git a/drivers/gpio/gpio-mt7621.c b/drivers/gpio/gpio-mt7621.c
+index 93facbebb80efadbdd3fb4500e0db14936287f1a..e56812a1721151c8f3b32b5093aee5c74bb798bc 100644
+--- a/drivers/gpio/gpio-mt7621.c
++++ b/drivers/gpio/gpio-mt7621.c
+@@ -6,6 +6,7 @@
  
--	data = gc->read_reg(reg);
-+	data = gpio_generic_read_reg(chip, reg);
- 	if (val)
- 		data |= GPIO_MASK(gpio);
- 	else
- 		data &= ~GPIO_MASK(gpio);
--	gc->write_reg(reg, data);
-+	gpio_generic_write_reg(chip, reg, data);
+ #include <linux/err.h>
+ #include <linux/gpio/driver.h>
++#include <linux/gpio/generic.h>
+ #include <linux/interrupt.h>
+ #include <linux/io.h>
+ #include <linux/module.h>
+@@ -30,7 +31,7 @@
+ 
+ struct mtk_gc {
+ 	struct irq_chip irq_chip;
+-	struct gpio_chip chip;
++	struct gpio_generic_chip chip;
+ 	spinlock_t lock;
+ 	int bank;
+ 	u32 rising;
+@@ -59,27 +60,29 @@ struct mtk {
+ static inline struct mtk_gc *
+ to_mediatek_gpio(struct gpio_chip *chip)
+ {
+-	return container_of(chip, struct mtk_gc, chip);
++	struct gpio_generic_chip *gen_gc = to_gpio_generic_chip(chip);
++
++	return container_of(gen_gc, struct mtk_gc, chip);
  }
  
- static int xgene_gpio_sb_irq_set_type(struct irq_data *d, unsigned int type)
+ static inline void
+ mtk_gpio_w32(struct mtk_gc *rg, u32 offset, u32 val)
+ {
+-	struct gpio_chip *gc = &rg->chip;
++	struct gpio_chip *gc = &rg->chip.gc;
+ 	struct mtk *mtk = gpiochip_get_data(gc);
+ 
+ 	offset = (rg->bank * GPIO_BANK_STRIDE) + offset;
+-	gc->write_reg(mtk->base + offset, val);
++	gpio_generic_write_reg(&rg->chip, mtk->base + offset, val);
+ }
+ 
+ static inline u32
+ mtk_gpio_r32(struct mtk_gc *rg, u32 offset)
+ {
+-	struct gpio_chip *gc = &rg->chip;
++	struct gpio_chip *gc = &rg->chip.gc;
+ 	struct mtk *mtk = gpiochip_get_data(gc);
+ 
+ 	offset = (rg->bank * GPIO_BANK_STRIDE) + offset;
+-	return gc->read_reg(mtk->base + offset);
++	return gpio_generic_read_reg(&rg->chip, mtk->base + offset);
+ }
+ 
+ static irqreturn_t
+@@ -220,6 +223,7 @@ static const struct irq_chip mt7621_irq_chip = {
+ static int
+ mediatek_gpio_bank_probe(struct device *dev, int bank)
+ {
++	struct gpio_generic_chip_config config;
+ 	struct mtk *mtk = dev_get_drvdata(dev);
+ 	struct mtk_gc *rg;
+ 	void __iomem *dat, *set, *ctrl, *diro;
+@@ -236,21 +240,30 @@ mediatek_gpio_bank_probe(struct device *dev, int bank)
+ 	ctrl = mtk->base + GPIO_REG_DCLR + (rg->bank * GPIO_BANK_STRIDE);
+ 	diro = mtk->base + GPIO_REG_CTRL + (rg->bank * GPIO_BANK_STRIDE);
+ 
+-	ret = bgpio_init(&rg->chip, dev, 4, dat, set, ctrl, diro, NULL,
+-			 BGPIOF_NO_SET_ON_INPUT);
++	config = (struct gpio_generic_chip_config) {
++		.dev = dev,
++		.sz = 4,
++		.dat = dat,
++		.set = set,
++		.clr = ctrl,
++		.dirout = diro,
++		.flags = BGPIOF_NO_SET_ON_INPUT,
++	};
++
++	ret = gpio_generic_chip_init(&rg->chip, &config);
+ 	if (ret) {
+-		dev_err(dev, "bgpio_init() failed\n");
++		dev_err(dev, "failed to initialize generic GPIO chip\n");
+ 		return ret;
+ 	}
+ 
+-	rg->chip.of_gpio_n_cells = 2;
+-	rg->chip.of_xlate = mediatek_gpio_xlate;
+-	rg->chip.label = devm_kasprintf(dev, GFP_KERNEL, "%s-bank%d",
++	rg->chip.gc.of_gpio_n_cells = 2;
++	rg->chip.gc.of_xlate = mediatek_gpio_xlate;
++	rg->chip.gc.label = devm_kasprintf(dev, GFP_KERNEL, "%s-bank%d",
+ 					dev_name(dev), bank);
+-	if (!rg->chip.label)
++	if (!rg->chip.gc.label)
+ 		return -ENOMEM;
+ 
+-	rg->chip.offset = bank * MTK_BANK_WIDTH;
++	rg->chip.gc.offset = bank * MTK_BANK_WIDTH;
+ 
+ 	if (mtk->gpio_irq) {
+ 		struct gpio_irq_chip *girq;
+@@ -261,7 +274,7 @@ mediatek_gpio_bank_probe(struct device *dev, int bank)
+ 		 */
+ 		ret = devm_request_irq(dev, mtk->gpio_irq,
+ 				       mediatek_gpio_irq_handler, IRQF_SHARED,
+-				       rg->chip.label, &rg->chip);
++				       rg->chip.gc.label, &rg->chip.gc);
+ 
+ 		if (ret) {
+ 			dev_err(dev, "Error requesting IRQ %d: %d\n",
+@@ -269,7 +282,7 @@ mediatek_gpio_bank_probe(struct device *dev, int bank)
+ 			return ret;
+ 		}
+ 
+-		girq = &rg->chip.irq;
++		girq = &rg->chip.gc.irq;
+ 		gpio_irq_chip_set_chip(girq, &mt7621_irq_chip);
+ 		/* This will let us handle the parent IRQ in the driver */
+ 		girq->parent_handler = NULL;
+@@ -279,17 +292,17 @@ mediatek_gpio_bank_probe(struct device *dev, int bank)
+ 		girq->handler = handle_simple_irq;
+ 	}
+ 
+-	ret = devm_gpiochip_add_data(dev, &rg->chip, mtk);
++	ret = devm_gpiochip_add_data(dev, &rg->chip.gc, mtk);
+ 	if (ret < 0) {
+ 		dev_err(dev, "Could not register gpio %d, ret=%d\n",
+-			rg->chip.ngpio, ret);
++			rg->chip.gc.ngpio, ret);
+ 		return ret;
+ 	}
+ 
+ 	/* set polarity to low for all gpios */
+ 	mtk_gpio_w32(rg, GPIO_REG_POL, 0);
+ 
+-	dev_info(dev, "registering %d gpios\n", rg->chip.ngpio);
++	dev_info(dev, "registering %d gpios\n", rg->chip.gc.ngpio);
+ 
+ 	return 0;
+ }
 
 -- 
 2.48.1
