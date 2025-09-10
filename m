@@ -4,60 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 834EBCA101F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Sep 2025 23:18:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D08DCAC58E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Sep 2025 23:29:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=uaQ7TD8pMvzG92lNgKcMbONAOYfj9YFkjjiBuMiWYag=; b=Tgf4jYLR+eBqGC2uenSAKNUWvp
-	qsRbzWGjfPB/F1qouhxGNhpL9Al+/WQ+k/pAQuoicIuzhoIy/S2tzhbZTpUzKRHTlc0txmIKkr2Mr
-	u/SgLa5Q7pbUcFD++UzaYNO6MQ07VPrVTNWTsWROLJtSRMazG7Qi+OMKTk4nW72niu5ft427pXA/o
-	msObXEot8vTba/4ybkGd6xiEi9CRE1I+c7wTFVSwWXpVJsBfoirLQGdUHfWUjhm66FmjzRMUCFR79
-	5xmdS2T2j5VP1+oKd24XmGpMTGjKl2atAfa+s4SxpuJTEbENvql56DuvoU++1Pp7KUeEOFxsBdszz
-	Bd8jv27g==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Cm+XcZVdExWAkf67mJrRQ1egxi6MvWD1BFDRBKszsSc=; b=Yusv0iNugCOAG4ng+IMzo1F1FO
+	yePTETY+5hLYPODAlev0+1QlRXB9bVHXg4MNZW1xyC5u9660mTH4xF5iJI0sa9fF3ewMl7CjBymCC
+	sbSKdmuOq5YHgaT7IeDJUoEsjC8DG+Ur/QNbmoMZgh8Fuw+NVyOiVJzeDx3UEfD6FG9LWlzOwK10l
+	h1bJtGlQk97dFRhO0cXUssxZ8e+hso9F3rCUykqneSGZQHdQB/9ZZYb/A2gRYpHNcbxLvDUrXJrYk
+	nYPk48Di3DMnTageCS+NfTxZOGUwILIK9/7em3OzDAvvL/9/h0nTy0/MD7UQUuyesU1mSSWQ14d67
+	cAV6tMeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwU4y-0000000HGfE-0zJG;
-	Wed, 10 Sep 2025 23:18:20 +0000
+	id 1uwUFz-0000000HIqw-1Gfn;
+	Wed, 10 Sep 2025 23:29:43 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwU4v-0000000HGeK-3eSo
+	id 1uwUFw-0000000HIpO-2Bed
 	for linux-mediatek@lists.infradead.org;
-	Wed, 10 Sep 2025 23:18:19 +0000
+	Wed, 10 Sep 2025 23:29:41 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id CBE1344134;
-	Wed, 10 Sep 2025 23:18:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 940E6C4CEEB;
-	Wed, 10 Sep 2025 23:18:15 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 8EDEC43E89
+	for <linux-mediatek@lists.infradead.org>; Wed, 10 Sep 2025 23:29:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 65611C4CEFB
+	for <linux-mediatek@lists.infradead.org>; Wed, 10 Sep 2025 23:29:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1757546296;
-	bh=N5qouKpM2Ppup08aA4wGO8T0cYYdFaA7krwQNVXFOa8=;
-	h=From:To:Subject:Date:From;
-	b=R8wkdR/xZqh9h8dQ8OgrLd0hxHhROQR6+U5hZQqQSLN1wDUPcvHoVDrOyJ+w/K04b
-	 cdX4KJFdDFBZpML1QclyFjHwdc0PiXTtnlLbbkvrOMmg7zke1HRCovttpQFS+WKz4N
-	 UBr9gasCrMM0FPDJJvLFDdTLL38B1abv4y/rvJ/VuRhPvmP4bbX4IJ1PyE6QyIK1rr
-	 RHXIHDFmQjfyC2spXkMx2cUFAHZzmx9dxD1hC5UjEJNS8QBPJKKgCMvG78g7KtC2c+
-	 4o77Z9f3ySgPEqov8qkL0Qyeuvk06XwvzsTb0AwFVOPhY2RT64MZKf1B5xL8PE0v9V
-	 8Kj+xU+v6IfCA==
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-To: David Airlie <airlied@linux.ie>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	Johan Hovold <johan@kernel.org>
-Subject: [GIT PULL] mediatek drm fixes - 20250910
-Date: Wed, 10 Sep 2025 23:18:13 +0000
-Message-Id: <20250910231813.3526-1-chunkuang.hu@kernel.org>
-X-Mailer: git-send-email 2.34.1
+	s=k20201202; t=1757546979;
+	bh=giqX8D1e03WEb190csFinToB6mmpK+SueWukzwTLrtw=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=UuWj9VRPzw1PvbSaCVy7gV5XIu21brGl+BUVHFYgg27kHS3pblH2z9FZm0Zjxv25q
+	 vM6pT5R7jh5OKkI2NzxgMyQx5Fv8tw3d/fDKigI8SHueZNQxBPhV/8lB1uJ3ajTG9s
+	 xUvNcX9o7L4/f1V7B0FTzSx33FWb6to8itCzKX1wbdB4WAu7Kpl/1brpLB1O/G3tDn
+	 TxiZM+HCqDW8zkFyLasBq+7lhQXG5SZiejGqiHT2kol1gyw9+pY3SzmoJ0bhzIwZT0
+	 0XZFkApfr8uVDYBu9rbQ39gXBGSk8G3BnLFiRb/55HfKgaFrdWxUE1VeN1tzfFAXpY
+	 4lPsVBhr+WVCA==
+Received: by mail-ej1-f42.google.com with SMTP id a640c23a62f3a-b04abcc1356so17578566b.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 10 Sep 2025 16:29:39 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCWDDpqQ0FmHwcFjQz13DyIi358byz5ZJ/lYksfV+Vggal4J9YFJPDcMbkMpbkuQlnrLn6/cRHaBymoPN0kxPg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzd7CMP1tXQPbTnhJbxkm6vCSVBw7SA7wz8lWfBwRiR0q/lGcMK
+	YhW0MO5h9i5BfDYFsblm9CfJ5UocAQxcRtc9E0aitamu4/mxbR4WaKAa0Usfaa/D1f4DVa3wZ9c
+	J9QuUyDJxF/iZZIV74zP5i3m73+o8nQM=
+X-Google-Smtp-Source: AGHT+IGlGgx50+D2ydI5vBqV6/W+PuaO1JZSUd97+Jrqkz/eIi6Qj2v1ae31SM3Fqif/p17XncOr6qKwTf/VY8KBwGc=
+X-Received: by 2002:a17:907:808:b0:afe:bdcb:9e62 with SMTP id
+ a640c23a62f3a-b04b16c4a55mr1764621066b.33.1757546977956; Wed, 10 Sep 2025
+ 16:29:37 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20250905084059.26959-1-ot_zhangchao.zhang@mediatek.com>
+ <20250905084059.26959-2-ot_zhangchao.zhang@mediatek.com> <a7589659-0352-4d47-a3cf-f2433cc512ec@kernel.org>
+In-Reply-To: <a7589659-0352-4d47-a3cf-f2433cc512ec@kernel.org>
+From: Sean Wang <sean.wang@kernel.org>
+Date: Wed, 10 Sep 2025 18:29:24 -0500
+X-Gmail-Original-Message-ID: <CAGp9Lzrp-cfn_GiLrHCU629wEAxWy=egOMrRh6thYbymu+QXjA@mail.gmail.com>
+X-Gm-Features: Ac12FXyyVN5Jiq60xJ95u5ez5XUlTPRrkZuzl25f4dRSg1MxKAtg591tBXMalW4
+Message-ID: <CAGp9Lzrp-cfn_GiLrHCU629wEAxWy=egOMrRh6thYbymu+QXjA@mail.gmail.com>
+Subject: Re: [PATCH v7 1/1] Bluetooth: mediatek: add gpio pin to reset bt
+To: Krzysztof Kozlowski <krzk@kernel.org>, Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>
+Cc: Marcel Holtmann <marcel@holtmann.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Luiz Von Dentz <luiz.dentz@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Sean Wang <sean.wang@mediatek.com>, Jiande Lu <jiande.lu@mediatek.com>, 
+	Deren Wu <deren.Wu@mediatek.com>, Chris Lu <chris.lu@mediatek.com>, 
+	Hao Qin <Hao.qin@mediatek.com>, linux-bluetooth <linux-bluetooth@vger.kernel.org>, 
+	linux-kernel <linux-kernel@vger.kernel.org>, 
+	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+	linux-mediatek <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250910_161817_929990_70550494 
-X-CRM114-Status: UNSURE (   5.30  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250910_162940_603589_671F131B 
+X-CRM114-Status: GOOD (  26.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,36 +91,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Dave & Daniel:
+Hi Krzysztof,
 
-This includes:
-1. fix potential OF node use-after-free
+Sorry again for the confusion. I believe Zhangchao is still new to the
+upstream process, and we=E2=80=99ll work together to improve this. Since th=
+is
+series has become a bit hard to follow, would you agree that it might
+be better for us to restart with a clean patch that addresses the
+review comments? A clean version would make it easier for reviewers to
+focus on the current issues without being distracted by earlier
+mistakes.
 
-Regards,
-Chun-Kuang.
+Hi Zhangchao,
 
-The following changes since commit c34414883f773412964404d77cd2fea04c6f7d60:
+Please note that both btusb.c (with DT and ACPI) and btmtksdio.c (with
+DT) already support reset_gpio. Our goal should be to benefit from
+these existing mechanisms while ensuring that this patch does not
+introduce any regressions. If the current mechanisms do not fully meet
+your requirements, it=E2=80=99s important to clearly explain why, so we can
+adapt the existing framework rather than creating a separate one.
 
-  drm/mediatek: mtk_hdmi: Fix inverted parameters in some regmap_update_bits calls (2025-08-28 23:15:41 +0000)
+And please remember to carefully respect and respond to reviewer
+feedback, reviewers volunteer their time and experience to help us
+keep the subsystem clean and consistent. It=E2=80=99s a valuable opportunit=
+y
+for us to learn and to ensure smoother integration.
 
-are available in the Git repository at:
+                          Sean
 
-  https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git tags/mediatek-drm-fixes-20250910
-
-for you to fetch changes up to 9ba2556cef1df746fad4d691c8290e235b23c7d1:
-
-  drm/mediatek: clean up driver data initialisation (2025-09-10 12:52:59 +0000)
-
-----------------------------------------------------------------
-Mediatek DRM Fixes - 20250910
-
-1. fix potential OF node use-after-free
-
-----------------------------------------------------------------
-Johan Hovold (2):
-      drm/mediatek: fix potential OF node use-after-free
-      drm/mediatek: clean up driver data initialisation
-
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 23 +++++++++--------------
- 1 file changed, 9 insertions(+), 14 deletions(-)
+On Fri, Sep 5, 2025 at 3:44=E2=80=AFAM Krzysztof Kozlowski <krzk@kernel.org=
+> wrote:
+>
+> On 05/09/2025 10:40, Zhangchao Zhang wrote:
+> > Makes the platform Bluetooth to be reset by hardware pin,
+> > it provides two methods to do it for mediatek controller,
+> > and it has been tested locally many times and can reset normally.
+> >
+> > When an exception occurs, resetting Bluetooth by hardware pin
+> > is more stable than resetting Bluetooth by software.
+> > If the corresponding pin is not found in dts,
+> > bluetooth can also be reset successfully.
+> >
+> > Co-developed: Hao Qin <hao.qin@mediatek.com>
+> > Co-developed: Chris Lu <chris.lu@mediatek.com>
+> > Co-developed: Jiande Lu <jiande.lu@mediatek.com>
+> > Signed-off-by: Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>
+> > ---
+> >  drivers/bluetooth/btmtk.c | 32 ++++++++++++++++++++++++++++++++
+> >  1 file changed, 32 insertions(+)
+> >
+> > diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+> > index 4390fd571dbd..29d6a93f255d 100644
+> > --- a/drivers/bluetooth/btmtk.c
+> > +++ b/drivers/bluetooth/btmtk.c
+> > @@ -6,6 +6,8 @@
+> >  #include <linux/firmware.h>
+> >  #include <linux/usb.h>
+> >  #include <linux/iopoll.h>
+> > +#include <linux/gpio/consumer.h>
+> > +#include <linux/of.h>
+> >  #include <linux/unaligned.h>
+> >
+> >  #include <net/bluetooth/bluetooth.h>
+> > @@ -359,11 +361,41 @@ int btmtk_set_bdaddr(struct hci_dev *hdev, const =
+bdaddr_t *bdaddr)
+> >  }
+> >  EXPORT_SYMBOL_GPL(btmtk_set_bdaddr);
+> >
+> > +static int btmtk_hw_gpio_reset(struct hci_dev *hdev, struct btmtk_data=
+ *reset_work)
+> > +{
+> > +     struct gpio_desc *reset_gpio;
+> > +
+> > +     /* Find device node*/
+> > +     hdev->dev.of_node =3D of_find_compatible_node(NULL, NULL, "mediat=
+ek,mt7925-bluetooth");
+>
+> Nothing improved.
+>
+> You just keep ignoring comments.
+>
+> NAK
+>
+> Best regards,
+> Krzysztof
+>
 
