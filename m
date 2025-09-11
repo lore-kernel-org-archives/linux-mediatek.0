@@ -4,45 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B390CA1016
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Sep 2025 07:59:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49C40CA1016
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Sep 2025 08:02:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=vUvp0ttX3lOxjdOrvZsKvJKNpHHNusfF6naBdS8j1E8=; b=X2Zgz+RVe6ROOue1IJvGa2fjbk
-	Y1CZnqQnwFCjYOMUx0ciLHW4WOEmuVojAQ9FGQHXDDBZFFOnaq3+uirdwVx6VpN+G53EDr+btMAoc
-	sk52K3Gl1AikGTCWBuWRYXIngx3QVZgtvbIZnZ5QIk0mBpsx9huyI75akiXTtr5DwYnUxvtw5FDN9
-	YRDEWCK0aYd1JGpbFqvQ0jURelzEztpwrwzHqLnYEt8P0Iw7ZoGcw0FTM4+rNsCtIeElKt2B60s/I
-	qaTm236jPbyqkTe42ojPRxTiPPU8fFE38jyGPswelTXutwmZxG6DVpjX8P3RfsasG/40QtmSESCGK
-	xhyKYWaQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=h7s7cIpoWzooi6KCel1K/BhJC4KE4day4yCyTcRcgmQ=; b=iBsVWi9Pau1QRvZkU0lQ85fTO8
+	8laxvhTOH6KwziczSmyNSrxvlyF4ZsKzIJr1X+F6ZX/g04RNpfadagW5UKGvjay0H/FuvzV7VfJPN
+	RvdUOqDYVOz2TTJ/fjOCgxfvC9eUQ/fZl4/FSQZmUr8Fp3PC8c7n43Yo26g9KPOxC/Kv1yF6miRPM
+	J7q4LdtbhjidCl6+Y8Y0JGMREaj4/ODsm4oDbDvrTbgc6aGUtjI8l83YrAdlHYv2pUG6VmpT/JewW
+	8E0qT12VbGF0f/kiwgKxzw40NN+XRei9K5w2ajVRkGQTHA8FUYTGOMf4pegXzeQCqVmc49QnrzkhI
+	CoebQKWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwcD2-00000001fjq-3U9F;
-	Thu, 11 Sep 2025 07:59:12 +0000
-Received: from mail.fundixo.pl ([57.128.173.14])
+	id 1uwcGN-00000001hUp-2HlP;
+	Thu, 11 Sep 2025 08:02:39 +0000
+Received: from mgamail.intel.com ([192.198.163.18])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwcD0-00000001fgE-2uE7
-	for linux-mediatek@lists.infradead.org;
-	Thu, 11 Sep 2025 07:59:12 +0000
-Received: by mail.fundixo.pl (Postfix, from userid 1002)
-	id 2472048C2E; Thu, 11 Sep 2025 09:51:26 +0200 (CEST)
-Received: by mail.fundixo.pl for <linux-mediatek@lists.infradead.org>; Thu, 11 Sep 2025 07:51:14 GMT
-Message-ID: <20250911084500-0.1.hl.459yu.0.hlo2pyehkk@CyberCitadel.pl>
-Date: Thu, 11 Sep 2025 07:51:14 GMT
-From: "Marek Kucharski" <marek.kucharski@fundixo.pl>
-To: <linux-mediatek@lists.infradead.org>
-Subject: =?UTF-8?Q?Prosz=C4=99_o_kontakt?=
-X-Mailer: mail.CyberCitadel.pl
+	id 1uwcGK-00000001hSi-1Yf5;
+	Thu, 11 Sep 2025 08:02:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1757577756; x=1789113756;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=kdicIERSEGS6CGqV+GThuXvTSIsMgiNJoEUEEMAQ7JM=;
+  b=cjmKTtturTBd1u1rRoNqqkPHnT+f1CuyYm3OnFnQ64Lg9c8b0d3xfzQN
+   RlcfdwX3WmeRnJmBuHBVBHdzHT4qUypp0wD1AnYyA1LpIc1xs/4YrkDj6
+   IwltMsrN49XIPqyMB5YfGYIRmB4Q0aphRf0LDIm79G6kWJGoNaWUNluf1
+   SJlzLMpsKz1lCPwbF4V4mXt6L7c/U+yqsOr+X1YVeaRxkZYq+g7/ihy+/
+   fDToy2PVp0jKkJ0Xuy8bnIxm2QrtZfPDpyUV9BHwMMiUlxnX+9IaRD/Xq
+   x8UVrxnJdJ6YzgIMmMnXzM7cFGIVXrT2Y37K4AKIXGbvJ3LZgQVCOpOE5
+   Q==;
+X-CSE-ConnectionGUID: umL3eZeQRDyat69o4z+giw==
+X-CSE-MsgGUID: zzO25s1ORQWy0WkJSNh6Zw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11549"; a="59130645"
+X-IronPort-AV: E=Sophos;i="6.18,256,1751266800"; 
+   d="scan'208";a="59130645"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Sep 2025 01:02:36 -0700
+X-CSE-ConnectionGUID: HSAt/B/2T7CyoKV4/Fpp1g==
+X-CSE-MsgGUID: KD+qII/XTDGOjnGuMB8DWg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.18,256,1751266800"; 
+   d="scan'208";a="172805532"
+Received: from smile.fi.intel.com ([10.237.72.51])
+  by orviesa006.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Sep 2025 01:02:30 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.98.2)
+	(envelope-from <andriy.shevchenko@intel.com>)
+	id 1uwcGA-000000022ZP-12Gk;
+	Thu, 11 Sep 2025 11:02:26 +0300
+Date: Thu, 11 Sep 2025 11:02:26 +0300
+From: Andy Shevchenko <andriy.shevchenko@intel.com>
+To: Bartosz Golaszewski <brgl@bgdev.pl>
+Cc: Doug Berger <opendmb@gmail.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Keguang Zhang <keguang.zhang@gmail.com>,
+	Alban Bedel <albeu@free.fr>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Samuel Holland <samuel.holland@sifive.com>,
+	Yixun Lan <dlan@gentoo.org>, Andy Shevchenko <andy@kernel.org>,
+	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-mips@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
+	spacemit@lists.linux.dev,
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+Subject: Re: [PATCH v2 07/15] gpio: brcmstb: use new generic GPIO chip API
+Message-ID: <aMKCEjwDUFH4OZAf@smile.fi.intel.com>
+References: <20250910-gpio-mmio-gpio-conv-part4-v2-0-f3d1a4c57124@linaro.org>
+ <20250910-gpio-mmio-gpio-conv-part4-v2-7-f3d1a4c57124@linaro.org>
+ <e0941449-7a62-4bbb-8790-616f393f2cc8@gmail.com>
+ <CAMRc=MfZ5ss8Gd_TTPV8EYSv04ENp_C26b3=wukO+UTy_boXUA@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAMRc=MfZ5ss8Gd_TTPV8EYSv04ENp_C26b3=wukO+UTy_boXUA@mail.gmail.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250911_005910_867906_35BFE736 
-X-CRM114-Status: UNSURE (   0.65  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250911_010236_418856_39089ECD 
+X-CRM114-Status: GOOD (  12.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -57,19 +106,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dzie=C5=84 dobry,
+On Thu, Sep 11, 2025 at 09:56:28AM +0200, Bartosz Golaszewski wrote:
+> On Thu, Sep 11, 2025 at 2:11 AM Doug Berger <opendmb@gmail.com> wrote:
 
-Czy jest mo=C5=BCliwo=C5=9B=C4=87 nawi=C4=85zania wsp=C3=B3=C5=82pracy z =
-Pa=C5=84stwem?
+...
 
-Z ch=C4=99ci=C4=85 porozmawiam z osob=C4=85 zajmuj=C4=85c=C4=85 si=C4=99 =
-dzia=C5=82aniami zwi=C4=85zanymi ze sprzeda=C5=BC=C4=85.
+> > I'm just curious about the longer term plans for the member accesses. Is
+> > there an intent to have helpers for things like?:
+> > chip.gc.offset
+> > chip.gc.ngpio
+> 
+> I don't think so. It would require an enormous effort and these fields
+> in struct gpio_chip are pretty stable so there's no real reason for
+> it.
 
-Pomagamy skutecznie pozyskiwa=C4=87 nowych klient=C3=B3w.
+What I would like to see in TODO is to "make struct gpio_chip const" when
+passing to the gpiochip_add_*().
 
-Zapraszam do kontaktu.
+-- 
+With Best Regards,
+Andy Shevchenko
 
 
-Pozdrawiam
-Marek Kucharski
 
