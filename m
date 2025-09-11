@@ -4,94 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49C40CA1016
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Sep 2025 08:02:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F377CA1016
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Sep 2025 08:44:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=h7s7cIpoWzooi6KCel1K/BhJC4KE4day4yCyTcRcgmQ=; b=iBsVWi9Pau1QRvZkU0lQ85fTO8
-	8laxvhTOH6KwziczSmyNSrxvlyF4ZsKzIJr1X+F6ZX/g04RNpfadagW5UKGvjay0H/FuvzV7VfJPN
-	RvdUOqDYVOz2TTJ/fjOCgxfvC9eUQ/fZl4/FSQZmUr8Fp3PC8c7n43Yo26g9KPOxC/Kv1yF6miRPM
-	J7q4LdtbhjidCl6+Y8Y0JGMREaj4/ODsm4oDbDvrTbgc6aGUtjI8l83YrAdlHYv2pUG6VmpT/JewW
-	8E0qT12VbGF0f/kiwgKxzw40NN+XRei9K5w2ajVRkGQTHA8FUYTGOMf4pegXzeQCqVmc49QnrzkhI
-	CoebQKWg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RuBL8uqFp6SRqtjWGK32//PnPpBAxLJ8lgwayga7/Cw=; b=r8zB68/szufPAlhpHqsJT+XXIe
+	ehA/jtf7H/WVpFRfDn7KwcPnJKRbp3t44HfY4OG9AGxhCymtrgvzg7qNa/ICLzGPVFlO069mQyjk3
+	iqYwhEGDoN2Qkf6gTQpQRP8AmQxS5fwr2dTFs21GwlgCzoFtmD1TDV6DMt60X3Jbo+LAMv/WsgQpf
+	NqJsJKHVvdcwWbnTyxVCiVPeyOovO39QwkZ9dPA0NGNsW4AkYmf3CxqICLbR7l2FAcJjG0fyecDrs
+	CjykUGKEAXPILxURz15igPRQ/W/pziXq8y6VohQ0DnQ38Gf40si1InoAKlTkKYc754cjo9XJCWhyx
+	8nF9XFNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwcGN-00000001hUp-2HlP;
-	Thu, 11 Sep 2025 08:02:39 +0000
-Received: from mgamail.intel.com ([192.198.163.18])
+	id 1uwcuo-00000001tRm-44Mg;
+	Thu, 11 Sep 2025 08:44:26 +0000
+Received: from mail-ua1-x92f.google.com ([2607:f8b0:4864:20::92f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwcGK-00000001hSi-1Yf5;
-	Thu, 11 Sep 2025 08:02:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1757577756; x=1789113756;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=kdicIERSEGS6CGqV+GThuXvTSIsMgiNJoEUEEMAQ7JM=;
-  b=cjmKTtturTBd1u1rRoNqqkPHnT+f1CuyYm3OnFnQ64Lg9c8b0d3xfzQN
-   RlcfdwX3WmeRnJmBuHBVBHdzHT4qUypp0wD1AnYyA1LpIc1xs/4YrkDj6
-   IwltMsrN49XIPqyMB5YfGYIRmB4Q0aphRf0LDIm79G6kWJGoNaWUNluf1
-   SJlzLMpsKz1lCPwbF4V4mXt6L7c/U+yqsOr+X1YVeaRxkZYq+g7/ihy+/
-   fDToy2PVp0jKkJ0Xuy8bnIxm2QrtZfPDpyUV9BHwMMiUlxnX+9IaRD/Xq
-   x8UVrxnJdJ6YzgIMmMnXzM7cFGIVXrT2Y37K4AKIXGbvJ3LZgQVCOpOE5
-   Q==;
-X-CSE-ConnectionGUID: umL3eZeQRDyat69o4z+giw==
-X-CSE-MsgGUID: zzO25s1ORQWy0WkJSNh6Zw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11549"; a="59130645"
-X-IronPort-AV: E=Sophos;i="6.18,256,1751266800"; 
-   d="scan'208";a="59130645"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
-  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Sep 2025 01:02:36 -0700
-X-CSE-ConnectionGUID: HSAt/B/2T7CyoKV4/Fpp1g==
-X-CSE-MsgGUID: KD+qII/XTDGOjnGuMB8DWg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.18,256,1751266800"; 
-   d="scan'208";a="172805532"
-Received: from smile.fi.intel.com ([10.237.72.51])
-  by orviesa006.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Sep 2025 01:02:30 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.98.2)
-	(envelope-from <andriy.shevchenko@intel.com>)
-	id 1uwcGA-000000022ZP-12Gk;
-	Thu, 11 Sep 2025 11:02:26 +0300
-Date: Thu, 11 Sep 2025 11:02:26 +0300
-From: Andy Shevchenko <andriy.shevchenko@intel.com>
-To: Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: Doug Berger <opendmb@gmail.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Keguang Zhang <keguang.zhang@gmail.com>,
-	Alban Bedel <albeu@free.fr>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Samuel Holland <samuel.holland@sifive.com>,
-	Yixun Lan <dlan@gentoo.org>, Andy Shevchenko <andy@kernel.org>,
-	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-mips@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
-	spacemit@lists.linux.dev,
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-Subject: Re: [PATCH v2 07/15] gpio: brcmstb: use new generic GPIO chip API
-Message-ID: <aMKCEjwDUFH4OZAf@smile.fi.intel.com>
-References: <20250910-gpio-mmio-gpio-conv-part4-v2-0-f3d1a4c57124@linaro.org>
- <20250910-gpio-mmio-gpio-conv-part4-v2-7-f3d1a4c57124@linaro.org>
- <e0941449-7a62-4bbb-8790-616f393f2cc8@gmail.com>
- <CAMRc=MfZ5ss8Gd_TTPV8EYSv04ENp_C26b3=wukO+UTy_boXUA@mail.gmail.com>
+	id 1uwcum-00000001tQd-1Fur
+	for linux-mediatek@lists.infradead.org;
+	Thu, 11 Sep 2025 08:44:25 +0000
+Received: by mail-ua1-x92f.google.com with SMTP id a1e0cc1a2514c-8902ee514deso330471241.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 11 Sep 2025 01:44:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1757580263; x=1758185063; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=RuBL8uqFp6SRqtjWGK32//PnPpBAxLJ8lgwayga7/Cw=;
+        b=NLDTesvhtPNEkVMia/h+x6Oha1rr7TdrFWesV0BdVUEg/0SU0nfN68C2Epss8/faYC
+         UMspWwjnMqvKBWEs1JNDdpYR5VvqM0Y1UZ906nwM2Fl5sUeOg9k+Mz0v8W8D1iE62C2O
+         XFVAFbQq2+/pId0n6C6fbQ0trf1WhX0LNYot4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1757580263; x=1758185063;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=RuBL8uqFp6SRqtjWGK32//PnPpBAxLJ8lgwayga7/Cw=;
+        b=enDvlza+jHHmgG1dWaMoyqtDmFekKUB39SmlM078DyKDON0giqhchlufXHwm0lBD6+
+         39c2Va/1xf7hceq9mYfw9G8ANk7IvqKAE30w4o4PQDDqHCLeZDCrNfmLojqKobo6Narh
+         fhB/HZQ0cqDsavhTZoqMWsHzZ3EoY3tTeZunwd+0L+rSIAGPdYKRbwW0b0QF7N9iVqdv
+         4Ut/1/bUKQW8jrEy7mgJKUUiWCVwVMeqkLVrVJdX6E886JCMs0Q/KTpla9qfUkwYNLab
+         aiR9a/g5Z7c1c16G3ArHjJMRf0Pic58M7x7oehc7MfX200pKC8wFoeUm1R+5t+I/E78j
+         6Adw==
+X-Forwarded-Encrypted: i=1; AJvYcCXV1K5nLV1zemGn4zoxL1jaQAv8w+RO1O5ZFegU42d89288yxZYMlqm47Ocq7FHJiO9KUiz6LXeP+K4bIU4NQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxmhhmM/oOy8V4ueqVaQtw1pohrdt/3lwgdMGsN7cMfBXD/+pqs
+	QwUFa1lSzEGBLP8pY6ORWrGT/1yUYXTIOM4vnjuzG7FPU2+VP/RpuKFm/Q1Pseoa79hQ4obQq6+
+	Pl/o=
+X-Gm-Gg: ASbGncvEMkjFnDC70VZFBN9vbh5iY4H2XavaX2T9hvPf6Ov7ubbuBaein8kplA25rFQ
+	8cbmCDPVi8IHWRkKIT/hanmT3Pk64Eu3eSeiYr2llMQeDy0l05uA0st17J1sZotTpQU1GB1DMGo
+	/xc9wjZa7mtuzb2B9W+VLV3iyvIseRqVSGaJjywFKoRD/QVnb1XzBp9K1NGysaYRVxQP6w12VhM
+	6gBBz+//5P8cFMbWrsHM9WCIauRoynmBq+7OmWvHfiImjLoZo+G3mpASS97+tprYNrkJHdp2u4f
+	1puCn8vgIS/Idhy9jL8bL/JlmgUZf7jLT2TIMfTny2X974RQ5iMfs9qThBorfzZlsIrTo7tZMhd
+	ngPtRI7W9tzBf+hDGh6Qv6zsWvLLsnWjwguHaea3qdkavwJcGfXtW0NgbCQ==
+X-Google-Smtp-Source: AGHT+IHm10D8dUAwbPLicr3RCvE1iUk7BibaJDXovt3/nzvYAH8zkWY3CFegb1v/og06LGuLG0GvhA==
+X-Received: by 2002:a05:6102:4451:b0:535:2921:ff3c with SMTP id ada2fe7eead31-5520e392631mr617096137.17.1757580262764;
+        Thu, 11 Sep 2025 01:44:22 -0700 (PDT)
+Received: from mail-ua1-f44.google.com (mail-ua1-f44.google.com. [209.85.222.44])
+        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-54a0d424df1sm154655e0c.27.2025.09.11.01.44.21
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 11 Sep 2025 01:44:21 -0700 (PDT)
+Received: by mail-ua1-f44.google.com with SMTP id a1e0cc1a2514c-8960a3fb405so1222094241.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 11 Sep 2025 01:44:21 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCUz9VktofPgdsh80NKTC/jVXqWuy1MP8oaW6CwjAlLhrHBzEsG+CEUJLeaUIiDIrXq2WwQ9zXlzw9YP8DvdVg==@lists.infradead.org
+X-Received: by 2002:a05:6102:5086:b0:4e2:a235:24d1 with SMTP id
+ ada2fe7eead31-552065728bcmr950644137.4.1757580261120; Thu, 11 Sep 2025
+ 01:44:21 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAMRc=MfZ5ss8Gd_TTPV8EYSv04ENp_C26b3=wukO+UTy_boXUA@mail.gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
+References: <20250908044348.2402981-1-fshao@chromium.org> <20250910115508.0000785e@huawei.com>
+In-Reply-To: <20250910115508.0000785e@huawei.com>
+From: Fei Shao <fshao@chromium.org>
+Date: Thu, 11 Sep 2025 16:43:45 +0800
+X-Gmail-Original-Message-ID: <CAC=S1nhDRQFVBDydTq=fmC=jz8e941aPwzg+cY1ZQDqWppx+fQ@mail.gmail.com>
+X-Gm-Features: AS18NWDats_rTOk_H5DcYgtjHSlZm8cS5lY_RPdvAh5_wYx68w1LGLEaew8wQCg
+Message-ID: <CAC=S1nhDRQFVBDydTq=fmC=jz8e941aPwzg+cY1ZQDqWppx+fQ@mail.gmail.com>
+Subject: Re: [PATCH] remoteproc: mediatek: Use for_each_available_child_of_node_scoped()
+To: Jonathan Cameron <jonathan.cameron@huawei.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Bjorn Andersson <andersson@kernel.org>, 
+	Mathieu Poirier <mathieu.poirier@linaro.org>, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-remoteproc@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250911_010236_418856_39089ECD 
-X-CRM114-Status: GOOD (  12.75  )
+X-CRM114-CacheID: sfid-20250911_014424_338062_E2258E1D 
+X-CRM114-Status: GOOD (  13.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,26 +108,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 11, 2025 at 09:56:28AM +0200, Bartosz Golaszewski wrote:
-> On Thu, Sep 11, 2025 at 2:11 AM Doug Berger <opendmb@gmail.com> wrote:
+On Wed, Sep 10, 2025 at 6:55=E2=80=AFPM Jonathan Cameron
+<jonathan.cameron@huawei.com> wrote:
+>
+> On Mon,  8 Sep 2025 12:43:25 +0800
+> Fei Shao <fshao@chromium.org> wrote:
+>
+> > Use scoped for_each_available_child_of_node_scoped() to remove manual
+> > of_node_put() calls from early returns.
+>
+> There aren't any early returns here.
+>
+> This runs into some of the stuff that cleanup.h docs suggest we shouldn't
+> do which is combining gotos and __free() magic.
+> I think this case is actually fine despite that but in general worth
+> thinking about the code structure and whether that can be avoided.
+>
+> One option would be to factor out the loop into another function then use
+> and error return from that to call the stuff under the init_free label.
 
-...
+Fair point, I can send a v2 with that.
 
-> > I'm just curious about the longer term plans for the member accesses. Is
-> > there an intent to have helpers for things like?:
-> > chip.gc.offset
-> > chip.gc.ngpio
-> 
-> I don't think so. It would require an enormous effort and these fields
-> in struct gpio_chip are pretty stable so there's no real reason for
-> it.
+Thanks,
+Fei
 
-What I would like to see in TODO is to "make struct gpio_chip const" when
-passing to the gpiochip_add_*().
-
--- 
-With Best Regards,
-Andy Shevchenko
-
-
+>
+> Jonathan
+>
 
