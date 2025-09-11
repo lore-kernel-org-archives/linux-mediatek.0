@@ -4,103 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB46BCAC58E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Sep 2025 19:50:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5313DCAC587
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Sep 2025 22:16:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TJeew9YIVoP09p3LirTxwS5JzCuSaF7BlgkulwqqjZw=; b=Niurnq9mJcDbKMRf5HJygoPDF5
-	z07S4bXHSLTRHHvW2mpqJLwCYlxbzFSTZCbF6xmoZzu+PQzapqt0otOF6uUi0X5fiZrH7JKU2Biqa
-	t9nT9RbdT8kvi39p9XTOhrsHiYC6TgKPpbgQLJvtkstteKxXxIPTmZXCjlizfcB97ksTX3CwskV7K
-	t8zDySz1omKoLbn/AsWqTQG95G2SnnLNBIMe7cu3vmQQt7fl4vXXnoxzMBUljqfWZQ6BVCxcejfFe
-	hN7H7QRtDoEIfdNwJNkzAWFCnAWomVsN5RWtNjK9CGavI6oYb0GYNSwS9FYwyEzg+RXpQc9n+0ftx
-	nR+SpMVg==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=pJGbQvKOank3p6da5RP7YzMSzAjqQT4QAALgpjG02Ys=; b=ELj3Oi2qUxsUTDt8gtaLqjb581
+	PgU0WLFVSlCvyFVvEdu8uVmQzi5Cfm9DkfSify9dpS5OOOgp/gMOQ7b149h7upnYFOtqaQ6CUTate
+	rLGKxdgC/YdjtmHTUWBX8RniItQPQY1TwEk9H1pQT6RUJMdT3QE/EPDCpCdDw7oEixKqWQMyQe3As
+	kfw6+xD2gsrIK7HQcVoKx7PyWSPA7RVOLL6K0c7mRGSHxTqbPfKTX0Ac+1x9E8mELYN/1JZTGC/pi
+	UoT+8BgYft4vTXW/Ckp+XTnND3vGIrg/M8uh1CVKG1E4hfSq3QfVH4Qg6ktf/U2A1zEArw/jA1+i+
+	7OMPXaGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwnJh-000000054w2-08qT;
-	Thu, 11 Sep 2025 19:50:49 +0000
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+	id 1uwpak-00000005eyN-2ipH;
+	Thu, 11 Sep 2025 22:16:34 +0000
+Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwnJc-000000054tD-31wL
+	id 1uwpah-00000005ex9-0K3n
 	for linux-mediatek@lists.infradead.org;
-	Thu, 11 Sep 2025 19:50:47 +0000
-Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-24456ce0b96so13745195ad.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 11 Sep 2025 12:50:44 -0700 (PDT)
+	Thu, 11 Sep 2025 22:16:33 +0000
+Received: by mail-pg1-x52c.google.com with SMTP id 41be03b00d2f7-b47052620a6so1605569a12.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 11 Sep 2025 15:16:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1757620244; x=1758225044; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=TJeew9YIVoP09p3LirTxwS5JzCuSaF7BlgkulwqqjZw=;
-        b=VEgn7UxBuWQUaIcV+zvCRxJ9gD9zWWXkpuQn9qEVMh1QthqrzMiEUSjdK1V9Nvvfdo
-         t5lTJu6Ql7fuQKgOZ5GwNHsi/P3sCkNidmUXPe7jAyBStUuU+KbFhwTVab4B8ihVjZ5o
-         7lCsICLwvH3XKpOuEApC6PUkMi4M6/zy5bK7yBUz0bdx8v4qRVu6gH9NHOQSbUc1Fpll
-         Zm81h/Z17Q/uPpNKF1t8A8PtJPTF8XGvuYEmHUshCFjgpqKoihozA4ssOHirPs/UlNO6
-         ZCh/vxo+LXjEx1jRrsW0gDSlRqwHNbYUtq2CNLkJoWH7OxbmQTeShpagYen9QGA/j5xb
-         IyVg==
+        d=gmail.com; s=20230601; t=1757628990; x=1758233790; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=pJGbQvKOank3p6da5RP7YzMSzAjqQT4QAALgpjG02Ys=;
+        b=ibJQmbFD2cV4Q5eHzZPDPmNIbbanTMp8kWdSmDhWbmzcmfmI8LZJaSoxZqmsgFKPjN
+         Or6naBKyRYy9jIG0EhcE6YqGRiF8MGoyXvvGmg/9OhWlvRBaRGqp6d2IR1w8Nrye+U2U
+         3frnU0xYx4Xns/9ajvU+tSOFTPNp9Av0l9y295+JO65o0VNZG+BDjVuZCTkWepUv8EGC
+         1oxos4gYi1JbCTEiwT7r738JqvIRP4Lsj5NptY9fMHXnDDUDC6Yj0PSkp2IiCehuMDIN
+         F/zt/PzNxsc+FwR2p0GLprJX5FWYWZrEFNF8rdI9o6E7KQFX9nSEbXDXk42QswhJ9MU+
+         6iBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757620244; x=1758225044;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=TJeew9YIVoP09p3LirTxwS5JzCuSaF7BlgkulwqqjZw=;
-        b=GXKlJF/4rZxnIbIGsaLM97ntm8jJvQff9pY0DeL55MDGSuqjSkx6S//+l5FMwss2rK
-         JUIzsMZ/H/5A4Fx9rLfdCssZa4sTzc7mUC182GU9zqrxHP7ITDNvCVvgPY+0yxKoY605
-         YeTHsZXCA8a6Qw8du1TZaM0OgDW+fIuTZn1p9yXZUMOrDEjAlBvPuPuIq9xDGzXvGOlT
-         RieXXM20/JjlML/OyY1RT0NoyMdkJb9jvhXwf0UNVVicf7w6B5DFH8nvFAY7eBGY9x+F
-         hlOCDqwLBINLrFTXWBTzpAhibdooKMtwANh3HDosG2lpEJ5RRzmyi2Y9oeP4dz+fLT+r
-         6aCQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXmGlvTpMlbUoG2vD1yaXd6SKKXaD7vff8mqaXJ2iY9orESeGU+klPA9YtQre04NuFZYDhf8H813JRIauMO5Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YypkWhl2i7t/gaWSslXh3txCuf1OsY7snnc/ceeaxDXShCSM7wH
-	OMzv6QNyi2C0pOLNhAdExX8KXaIv79LfnI1Il98xEkoDMvNNNmxYjYh2
-X-Gm-Gg: ASbGncsvmLpftCF3AYHhzLdyKP8jIqSGrJn14+Y45dCNgVn8kJSwDA3Tib5/0aONvdm
-	i8NPcYQaSvFG11lNFVo13/YO3BSxQx4awn6mngf9ScIQiBwjWLKn7Ix6K0y/4yQD9PmEkGRJdNE
-	3zQznfEi33L0KQ/DiK1Kqh5VeJhPopCAQjj0YwCYnYfD41LxdtLDmA4dy9sKrDVQ1NhkPQhPdb5
-	gyKVmnzylCBE/C7cblXJnbB6lrvYOIS63Cb7OKF3wDYV6ps/S8G9u3AY26CdCF7tWhzh35Ik4Cn
-	sasUrepgWHCRs7QYRGYRt0kMWkh0WC4fhcUXvyKPXmJMW4zkdmjJ/tmeMfnhVopulVPDBq/acUl
-	NQL8yWSyP5qcYvEofRNHti8DyQOZPSLtRDHZiXkLv/i/BHdmF
-X-Google-Smtp-Source: AGHT+IGM3HY9cYe0k8sf5GxMMVgG9l2ykvqk4n7ayiGGr2GhLio6Ij8ygJsJDwHZ88T4ZvBeMdpxjA==
-X-Received: by 2002:a17:902:d506:b0:25c:9084:4172 with SMTP id d9443c01a7336-25c908466d3mr25755745ad.14.1757620243626;
-        Thu, 11 Sep 2025 12:50:43 -0700 (PDT)
-Received: from [10.69.47.143] ([192.19.223.252])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-25c36cc53bcsm26957775ad.28.2025.09.11.12.50.41
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 11 Sep 2025 12:50:43 -0700 (PDT)
-Message-ID: <cfe7bc19-763f-4e92-b1ae-355c661bcc19@gmail.com>
-Date: Thu, 11 Sep 2025 12:50:47 -0700
+        d=1e100.net; s=20230601; t=1757628990; x=1758233790;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=pJGbQvKOank3p6da5RP7YzMSzAjqQT4QAALgpjG02Ys=;
+        b=R7+IY/kdNQ/9M3jsJZqXZ3jaAvuv5s0Nxw11JyuXmHbeCwU7IqvH0BaizoG2nlv5LL
+         CeZ5aQHEXLQu9QKxCAzqmbaHQspAq6HZLax5/ZJ9BY51WEiTvAbyoGk/YpFSf7+LuE6E
+         V1KE9Rkq7E9di+d897JCWlsouTop18hFdiIHFpii6NnnKhQnw6IpGJbMJ0hevOSoqRDr
+         KuH9y04iTxryV5EvXkkFsmC5Vzacwt5SEb+jcMrpezVL+w81RFn1ZtZWq3JpWjG49mrW
+         0QQpRMpHSF0AcLlurr9k+Pe8vimN/3npSBTeprOicqDZxHO+Ov2MPU4q+csdUzzAsrms
+         Z8Zg==
+X-Forwarded-Encrypted: i=1; AJvYcCVoFdcz0SYO/csBMkm3FHvwdZvgQaiYxiCYYrvJYkbxTCIApyUXv4vDxXLn5w8lrHRuCRsOmCer3ibKJzZWJA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyDdAll2j2xKVV69SnTi68j+ZXhB6mRYDeFLq1+N9H4xa0yJEYq
+	1ZgJ1xGpYWWXyu+IHreyeH7anedqmXfhZpUVj47N4I41xKbdiQv7oKwq
+X-Gm-Gg: ASbGncuMKvNoZJpVFVNSKFHyTbv15uke7jg8xruCjDktmd/syNclCuaH6D2u/+jyFcS
+	tBDytDJH9YkXF5k0TX/TOUEQLY9zg6UQO4xTICu6xBp4Y1a5ZhYWM5Nf9H/FHWjvr4yddaMNGWw
+	PtNyO7nyLckOlfSWoJlxK0bNq/XH1Sov8d74hTRwe2ZRztJYGGyDWVj5TNYQJHeep79E/PSXxV5
+	+C8lBrjBriS/o0kobZemUO9qNeT4tMAEAoqFlhF/O4fIr8KEkJuEgtLvnxvcrQK1qMrUxUEwyO6
+	Tv71N2JVNZKKvgcPmi1vIriLvyILqME1YVm0Yn6e1aGQuFXX+Z5eAEy6CKL8VAbLhstd12e3+Yi
+	v6A6ZAfdb7XnB4fZzlStx12KQ4LrDoMgv1paYLp9I/aUoqPiIjzdQes8jwCukTut+/9XsvVY=
+X-Google-Smtp-Source: AGHT+IHiZ0i/fqjHfxLIg5y5A42HChRZzH9Wsg1ARyoCs3aMcn6FX+kE2ZCfPOxdtSDNrlPgVgR80w==
+X-Received: by 2002:a17:90b:250b:b0:32d:dfb5:36d8 with SMTP id 98e67ed59e1d1-32ddfb54564mr1649322a91.8.1757628989675;
+        Thu, 11 Sep 2025 15:16:29 -0700 (PDT)
+Received: from archlinux ([2601:644:8200:ac2f::9ec])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-32dd9509002sm3333995a91.0.2025.09.11.15.16.28
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 11 Sep 2025 15:16:29 -0700 (PDT)
+From: Rosen Penev <rosenp@gmail.com>
+To: linux-wireless@vger.kernel.org
+Cc: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCH] wifi: mt76: mt76_eeprom_override to int
+Date: Thu, 11 Sep 2025 15:16:19 -0700
+Message-ID: <20250911221619.16035-1-rosenp@gmail.com>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 07/15] gpio: brcmstb: use new generic GPIO chip API
-To: Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: Linus Walleij <linus.walleij@linaro.org>,
- Keguang Zhang <keguang.zhang@gmail.com>, Alban Bedel <albeu@free.fr>,
- Florian Fainelli <florian.fainelli@broadcom.com>,
- Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Paul Walmsley <paul.walmsley@sifive.com>,
- Samuel Holland <samuel.holland@sifive.com>, Yixun Lan <dlan@gentoo.org>,
- Andy Shevchenko <andy@kernel.org>, linux-gpio@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-riscv@lists.infradead.org, spacemit@lists.linux.dev,
- Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-References: <20250910-gpio-mmio-gpio-conv-part4-v2-0-f3d1a4c57124@linaro.org>
- <20250910-gpio-mmio-gpio-conv-part4-v2-7-f3d1a4c57124@linaro.org>
- <e0941449-7a62-4bbb-8790-616f393f2cc8@gmail.com>
- <CAMRc=MfZ5ss8Gd_TTPV8EYSv04ENp_C26b3=wukO+UTy_boXUA@mail.gmail.com>
-Content-Language: en-US
-From: Doug Berger <opendmb@gmail.com>
-In-Reply-To: <CAMRc=MfZ5ss8Gd_TTPV8EYSv04ENp_C26b3=wukO+UTy_boXUA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250911_125044_762750_9C19423C 
-X-CRM114-Status: GOOD (  13.83  )
+X-CRM114-CacheID: sfid-20250911_151631_130289_AD22AD3B 
+X-CRM114-Status: GOOD (  16.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,36 +103,241 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/11/2025 12:56 AM, Bartosz Golaszewski wrote:
-> On Thu, Sep 11, 2025 at 2:11 AM Doug Berger <opendmb@gmail.com> wrote:
->>
->>>
->>> @@ -700,7 +707,8 @@ static int brcmstb_gpio_probe(struct platform_device *pdev)
->>>                 * be retained from S5 cold boot
->>>                 */
->>>                need_wakeup_event |= !!__brcmstb_gpio_get_active_irqs(bank);
->>> -             gc->write_reg(reg_base + GIO_MASK(bank->id), 0);
->>> +             gpio_generic_write_reg(&bank->chip,
->>> +                                    reg_base + GIO_MASK(bank->id), 0);
->>>
->>>                err = gpiochip_add_data(gc, bank);
->>>                if (err) {
->>>
->> I suppose I'm OK with all of this, but I'm just curious about the longer
->> term plans for the member accesses. Is there an intent to have helpers
->> for things like?:
->> chip.gc.offset
->> chip.gc.ngpio
-> 
-> I don't think so. It would require an enormous effort and these fields
-> in struct gpio_chip are pretty stable so there's no real reason for
-> it.
-> 
-> Bart
-Ok, so assuming struct gpio_chip is sticking around long term that makes 
-sense to me.
+mt76_eeprom_override has of_get_mac_address, which can return
+-EPROBE_DEFER if the nvmem driver gets loaded after mt76 for some
+reason.
 
-Thanks!
+Make sure this gets passed to probe so that nvmem mac overrides always
+work.
 
-Acked-by: Doug Berger <opendmb@gmail.com>
+Signed-off-by: Rosen Penev <rosenp@gmail.com>
+---
+ drivers/net/wireless/mediatek/mt76/eeprom.c        | 9 +++++++--
+ drivers/net/wireless/mediatek/mt76/mt76.h          | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt7603/eeprom.c | 3 +--
+ drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c | 4 +---
+ drivers/net/wireless/mediatek/mt76/mt7615/init.c   | 5 ++++-
+ drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c | 6 +++++-
+ drivers/net/wireless/mediatek/mt76/mt76x2/eeprom.c | 4 +++-
+ drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c | 4 +---
+ drivers/net/wireless/mediatek/mt76/mt7915/init.c   | 4 +++-
+ drivers/net/wireless/mediatek/mt76/mt7921/init.c   | 4 +++-
+ drivers/net/wireless/mediatek/mt76/mt7925/init.c   | 4 +++-
+ drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c | 3 +--
+ drivers/net/wireless/mediatek/mt76/mt7996/init.c   | 4 +++-
+ 13 files changed, 36 insertions(+), 20 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/eeprom.c b/drivers/net/wireless/mediatek/mt76/eeprom.c
+index 443517d06c9f..a987c5e4eff6 100644
+--- a/drivers/net/wireless/mediatek/mt76/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/eeprom.c
+@@ -163,13 +163,16 @@ static int mt76_get_of_eeprom(struct mt76_dev *dev, void *eep, int len)
+ 	return mt76_get_of_data_from_nvmem(dev, eep, "eeprom", len);
+ }
+ 
+-void
++int
+ mt76_eeprom_override(struct mt76_phy *phy)
+ {
+ 	struct mt76_dev *dev = phy->dev;
+ 	struct device_node *np = dev->dev->of_node;
++	int err;
+ 
+-	of_get_mac_address(np, phy->macaddr);
++	err = of_get_mac_address(np, phy->macaddr);
++	if (err == -EPROBE_DEFER)
++		return err;
+ 
+ 	if (!is_valid_ether_addr(phy->macaddr)) {
+ 		eth_random_addr(phy->macaddr);
+@@ -177,6 +180,8 @@ mt76_eeprom_override(struct mt76_phy *phy)
+ 			 "Invalid MAC address, using random address %pM\n",
+ 			 phy->macaddr);
+ 	}
++
++	return 0;
+ }
+ EXPORT_SYMBOL_GPL(mt76_eeprom_override);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 127637454c82..47c143e6a79a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -1268,7 +1268,7 @@ void mt76_seq_puts_array(struct seq_file *file, const char *str,
+ 			 s8 *val, int len);
+ 
+ int mt76_eeprom_init(struct mt76_dev *dev, int len);
+-void mt76_eeprom_override(struct mt76_phy *phy);
++int mt76_eeprom_override(struct mt76_phy *phy);
+ int mt76_get_of_data_from_mtd(struct mt76_dev *dev, void *eep, int offset, int len);
+ int mt76_get_of_data_from_nvmem(struct mt76_dev *dev, void *eep,
+ 				const char *cell_name, int len);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7603/eeprom.c
+index f5a6b03bc61d..88382b537a33 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7603/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7603/eeprom.c
+@@ -182,7 +182,6 @@ int mt7603_eeprom_init(struct mt7603_dev *dev)
+ 		dev->mphy.antenna_mask = 1;
+ 
+ 	dev->mphy.chainmask = dev->mphy.antenna_mask;
+-	mt76_eeprom_override(&dev->mphy);
+ 
+-	return 0;
++	return mt76_eeprom_override(&dev->mphy);
+ }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c
+index ccedea7e8a50..d4bc7e11e772 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c
+@@ -351,8 +351,6 @@ int mt7615_eeprom_init(struct mt7615_dev *dev, u32 addr)
+ 	memcpy(dev->mphy.macaddr, dev->mt76.eeprom.data + MT_EE_MAC_ADDR,
+ 	       ETH_ALEN);
+ 
+-	mt76_eeprom_override(&dev->mphy);
+-
+-	return 0;
++	return mt76_eeprom_override(&dev->mphy);
+ }
+ EXPORT_SYMBOL_GPL(mt7615_eeprom_init);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/init.c b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
+index aae80005a3c1..3e7af3e58736 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
+@@ -570,7 +570,10 @@ int mt7615_register_ext_phy(struct mt7615_dev *dev)
+ 	       ETH_ALEN);
+ 	mphy->macaddr[0] |= 2;
+ 	mphy->macaddr[0] ^= BIT(7);
+-	mt76_eeprom_override(mphy);
++
++	ret = mt76_eeprom_override(mphy);
++	if (ret)
++		return ret;
+ 
+ 	/* second phy can only handle 5 GHz */
+ 	mphy->cap.has_5ghz = true;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
+index 4de45a56812d..d4506b8b46fa 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
+@@ -332,7 +332,11 @@ int mt76x0_eeprom_init(struct mt76x02_dev *dev)
+ 
+ 	memcpy(dev->mphy.macaddr, (u8 *)dev->mt76.eeprom.data + MT_EE_MAC_ADDR,
+ 	       ETH_ALEN);
+-	mt76_eeprom_override(&dev->mphy);
++
++	err = mt76_eeprom_override(&dev->mphy);
++	if (err)
++		return err;
++
+ 	mt76x02_mac_setaddr(dev, dev->mphy.macaddr);
+ 
+ 	mt76x0_set_chip_cap(dev);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt76x2/eeprom.c
+index 156b16c17b2b..221805deb42f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2/eeprom.c
+@@ -499,7 +499,9 @@ int mt76x2_eeprom_init(struct mt76x02_dev *dev)
+ 
+ 	mt76x02_eeprom_parse_hw_cap(dev);
+ 	mt76x2_eeprom_get_macaddr(dev);
+-	mt76_eeprom_override(&dev->mphy);
++	ret = mt76_eeprom_override(&dev->mphy);
++	if (ret)
++		return ret;
+ 	dev->mphy.macaddr[0] &= ~BIT(1);
+ 
+ 	return 0;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
+index c0f3402d30bb..38dfd5de365c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
+@@ -284,9 +284,7 @@ int mt7915_eeprom_init(struct mt7915_dev *dev)
+ 	memcpy(dev->mphy.macaddr, dev->mt76.eeprom.data + MT_EE_MAC_ADDR,
+ 	       ETH_ALEN);
+ 
+-	mt76_eeprom_override(&dev->mphy);
+-
+-	return 0;
++	return mt76_eeprom_override(&dev->mphy);
+ }
+ 
+ int mt7915_eeprom_get_target_power(struct mt7915_dev *dev,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+index 3e30ca5155d2..5ea8b46e092e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+@@ -702,7 +702,9 @@ mt7915_register_ext_phy(struct mt7915_dev *dev, struct mt7915_phy *phy)
+ 		mphy->macaddr[0] |= 2;
+ 		mphy->macaddr[0] ^= BIT(7);
+ 	}
+-	mt76_eeprom_override(mphy);
++	ret = mt76_eeprom_override(mphy);
++	if (ret)
++		return ret;
+ 
+ 	/* init wiphy according to mphy and phy */
+ 	mt7915_init_wiphy(phy);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+index 14e17dc90256..b9098a7331b1 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+@@ -189,7 +189,9 @@ static int __mt7921_init_hardware(struct mt792x_dev *dev)
+ 	if (ret)
+ 		goto out;
+ 
+-	mt76_eeprom_override(&dev->mphy);
++	ret = mt76_eeprom_override(&dev->mphy);
++	if (ret)
++		goto out;
+ 
+ 	ret = mt7921_mcu_set_eeprom(dev);
+ 	if (ret)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/init.c b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
+index 4249bad83c93..d7d5afe365ed 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
+@@ -249,7 +249,9 @@ static int __mt7925_init_hardware(struct mt792x_dev *dev)
+ 	if (ret)
+ 		goto out;
+ 
+-	mt76_eeprom_override(&dev->mphy);
++	ret = mt76_eeprom_override(&dev->mphy);
++	if (ret)
++		goto out;
+ 
+ 	ret = mt7925_mcu_set_eeprom(dev);
+ 	if (ret)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c
+index 87c6192b6384..da3231c9aa11 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c
+@@ -334,9 +334,8 @@ int mt7996_eeprom_init(struct mt7996_dev *dev)
+ 		return ret;
+ 
+ 	memcpy(dev->mphy.macaddr, dev->mt76.eeprom.data + MT_EE_MAC_ADDR, ETH_ALEN);
+-	mt76_eeprom_override(&dev->mphy);
+ 
+-	return 0;
++	return mt76_eeprom_override(&dev->mphy);
+ }
+ 
+ int mt7996_eeprom_get_target_power(struct mt7996_dev *dev,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+index a9599c286328..0537475573ad 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+@@ -667,7 +667,9 @@ static int mt7996_register_phy(struct mt7996_dev *dev, enum mt76_band_id band)
+ 		if (band == MT_BAND2)
+ 			mphy->macaddr[0] ^= BIT(6);
+ 	}
+-	mt76_eeprom_override(mphy);
++	ret = mt76_eeprom_override(mphy);
++	if (ret)
++		goto error;
+ 
+ 	/* init wiphy according to mphy and phy */
+ 	mt7996_init_wiphy_band(mphy->hw, phy);
+-- 
+2.51.0
+
 
