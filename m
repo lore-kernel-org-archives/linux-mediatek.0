@@ -4,79 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 849DBCA1016
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Sep 2025 07:38:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C29EECAC592
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Sep 2025 07:56:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jUK8rXo2J6tdIuNkdbMKBrXU6Rird8FTI89p+KzSTdU=; b=FUf2BXUkjFUSX1L+uR0DUYrvoK
-	bAJCoMkCWgDUa4R4XfpQI4vbDBHHU9fYr6J5S3o2wIiWYKd8nJJwaNTssNZcq4r4xrkxiw6OrTglO
-	imSyHrtc+IZlBcECWNodGn4YYxBnaNPOy59n5BpRBPeq8ujNKi6FdHSCxJs27f397FuTvy3lTp1OB
-	Ha7n0x8VvW9rXeBNkftUJO1eEH33tTp4pS7OFGDHds04MTou52hK5jY/dmrosPMUyVQHZI2GgGCfE
-	dof7djfRZAp79mk1bk0u7k943grNCF+5ULGQa6GOpoYaa0shHq64yY6THg0zxR30HjJjJeyISejMs
-	YAlT6GYw==;
+	bh=Bep7Xid77Fho0BbSmSLtdgFH7ZgtGYRYV4JpO6GqPMo=; b=uSSi5WWx1RJ4AEAuVXkbJxKl4Z
+	L+N+2tfcQqIj82lcvWEsnVlyUiYeWV3TbhAjNn437O7pbMn5gnPksATSsq2WDkIpamSxVHnzK6Nqk
+	4kNILlPFC9JTGD/OvdpO8xpr+FLFnQHJtIckxsMK1ooo+ESzN73zzKgDieQXO+OG4fizDnp8R9Xo6
+	lKR9K1yleA0jfrjiXQbGQELvltP2mIrBspqAv5QqnKkeIxRER+zu/1QvMvAECnijOZPG3W1SHrzl0
+	/xfHteRGhsXP4MjBwjfRjX8vd8bGdj2Z5G5P4poqfWfNyVDXb4YUGSZiRfbY5Bn3YAVAVsGJBycGg
+	oWsLS2SA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwbt1-00000001Xoz-1AQj;
-	Thu, 11 Sep 2025 07:38:31 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1uwcAe-00000001dxk-2FIt;
+	Thu, 11 Sep 2025 07:56:44 +0000
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwbsx-00000001XmV-20sz
+	id 1uwcAc-00000001dvn-2ljP
 	for linux-mediatek@lists.infradead.org;
-	Thu, 11 Sep 2025 07:38:29 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-55f6b0049fbso441337e87.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 11 Sep 2025 00:38:26 -0700 (PDT)
+	Thu, 11 Sep 2025 07:56:43 +0000
+Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-56088927dcbso463950e87.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 11 Sep 2025 00:56:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1757576305; x=1758181105; darn=lists.infradead.org;
+        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1757577401; x=1758182201; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=jUK8rXo2J6tdIuNkdbMKBrXU6Rird8FTI89p+KzSTdU=;
-        b=W4shUZxtZ7WJQ3C1jj/eNuDU7Np3X77r/sqUgNNuCnZo6z9y6mouWj7iO7PDUJKuys
-         R2Wtx4Ilk15ymee4Apt4JxhS9yJySKYfpu8DGcAoNRVIUUAe2ob9JbhvvB6YC9RojM+R
-         kNjyVHTsrMaZ0rrPLhRkdqxlP5bJ02sZqQQ7MbtjnlPR0/TgT4tzzsDh4hWonyHlHVcf
-         QxRsAGjgXym80lFcWXyNFer182qzWr06ZLGPggFE8og4huytMUeE9e9mj5ZNy9esCfDa
-         6n1xIiLebLFZi6QcvQJ2UVhhNcFFYrlUqG4ba+hhkFWqBTdGFZnlRBEQ2XJBN3AceGT0
-         kXrA==
+        bh=Bep7Xid77Fho0BbSmSLtdgFH7ZgtGYRYV4JpO6GqPMo=;
+        b=qBq8T5GDwgLhlPcZ1nVKXFo+M7OlVFB7rb27r2PqfKo8zNhne7sPA4CcrOb2l1uN9C
+         UpekQBze864DJWQ6TXPJTMzzueNQrxTjDeX7uaPdqFgZpVa52kLlu+F4VSsPeDZ89Hgj
+         tECMwaF7Kz3ZeutpKaOFk6fNYi/eAoJPvbcU15vVSs3dcZjGmSCbdO0IyOLgAjCbPtJi
+         8LyBL0DwT4p/0/X6rzo07bqKQHJEH/LjuRiEeA4lVLfZY4C1uWK9tKgBeVczroh1fTmv
+         DZO9gOGaK9EUDXQfW1nbwOtM2T3lnTZq/83vUf4rhC641C6AfmS9cTaodL9aszqnl9lw
+         lOoA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757576305; x=1758181105;
+        d=1e100.net; s=20230601; t=1757577401; x=1758182201;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=jUK8rXo2J6tdIuNkdbMKBrXU6Rird8FTI89p+KzSTdU=;
-        b=M47K4LnzLDOzYvnDbV8eQhKLG6TJ2MmK3I7J7rEcfQ/7azuIhdYLR0aa1A5sTDel2o
-         Z3Yu6YPxEuAi7z8TxpCcC8n4poocsAZ7PyZbLbZRWTjdnLhztuKr+yySRdspg3FgFD+Y
-         5A9Fa2b23p48dQVFGxWwE/gDGONGUI/hO9A5hy2EFzXmOUA7rPAgwIooyW1EZy1b+i3X
-         W4HB0Jkv6YsWgVn9OxHwZTzf7vo443DcyvBOy61+cFOXx5LQqMXW3fiOJFf8a4Sk97PL
-         172u28oAJl9cLkuG3Dw4aSJ+wBK4DtcyetdAClVeEmKbwjkvfXus4VOlIrZ/qCId9MTr
-         2/JQ==
-X-Forwarded-Encrypted: i=1; AJvYcCW0EZh1IQcVSlZObQfiN2/dwG4oKgBVdD7hG2AqZKaKsN4QVYdfxG9q6rFHQW28AiNJBoZFYAdRArsouAAEaA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywlly0TbXxPH60OeYvHbKNAquvpMEy7jWprEi62M1Hy04ZTjuhd
-	7of7f/5GjBpGKcbygprjbqlSUYLurYKhLm+2sXIo8l4VMz77oqr3IjhmvmIPnCGhNcfQX7Gl6Vd
-	nPdzdcedQCgjeWAZAM48LzvmOkXSDzg6r+jfcYXqZuQ==
-X-Gm-Gg: ASbGncsMm4UuV3HU0u1nzOeiGV+BXMwXHf/7eOSehYh5trybK+6ZEQEPftd+FEsEoIV
-	OssviIdFAtajz1I1nodrL/S5jqQ0qI3WKP8SToyW6wY5xk5+/iRviq8ns1a8mv7iyuWwLqFnx8A
-	rhd9uPGVzXPgL4IQBz22KDwWuObFtumH5f0v8UsNL0sX+7ylad0+wvME+evuqRohV0BdI2toM9d
-	HxB8ab4xhplikdLPsTb+61k3OQREXP6olhvTeg=
-X-Google-Smtp-Source: AGHT+IGFKCUUrJkt+A6v+xuc1LQXhwUm4KpMBhnA0hSfXgMQG+z+UHy3svEwymKETUJXd9ilc9E5haoHU8vK2eJzapg=
-X-Received: by 2002:a05:6512:b17:b0:55f:498f:f08e with SMTP id
- 2adb3069b0e04-562614ff71emr7447870e87.24.1757576305171; Thu, 11 Sep 2025
- 00:38:25 -0700 (PDT)
+        bh=Bep7Xid77Fho0BbSmSLtdgFH7ZgtGYRYV4JpO6GqPMo=;
+        b=uqQe6tYIyjKKekl7AJ8ZnO4nIUBcuXMfb08O2PvyIljiushH/Sx56OV1lJEnASLYnT
+         vuQYMA7A5GWBl1r1BV07hdNYPC45KHfYEWs70eIJtysOXfOXE8uJuPXmxFBEBQP7ezGc
+         bwg9vDJhrWIbFenWj8ZNCFrBd/kmapTVgVh1RZlG/4xy2mqAMq+t2bjEqpQzVXx/ZXT7
+         2zoFVq6KU+GPtdgSaQX3KR/lzNyMB9fzycDXauPe8espceAHWLYL/+x0WF9uEhEwJ4Yh
+         nR4knisMMMpIeF2ZyL7lJYeGRP06PHo10RBa3zQuAoEIMTP8x6aToej5rb+RvIMWL7wm
+         Ba8w==
+X-Forwarded-Encrypted: i=1; AJvYcCUjS5DAWqFTnVjjA5nr/B5C7OQtJY4PCKf9jj8AmEw1yikR7QE6EkmZR/absJKTu5qn9xPpD+81jVP9B2vtpQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyg+21s54CokA2+LEGuekoyGPNw9BLOO4ELqyWa1WNr9KBcBMvI
+	0Ri1MExlq/+tkQ2CtrJJ/G42y46tInU9h7PvINk/RZ5CuFGPbibQek0L0muGTqNTYeibr1zfYq/
+	la8PNjF6Z3A2C7nIvgcp0sbyQ7jJpZKy01gYa5yBzVg==
+X-Gm-Gg: ASbGncs8TQVOJHrkkPsqH9ZnVPEPb45+F9XXYLkDiqq6xQz2VwDcR+P8foYJy82WyiA
+	8B+urSTvEqOBj2oYWb8pkhFFIe2vVoFJPK7eTLz2F2ZfYpcq1KdUqQ2Tp4qs1RDg2RyxW1jnRuF
+	KYUqUBU+aq4p4dsN4DvFNlTF+5W4k7Nstpf3AJJxnzS+nm5H3bqPJ6Hls5x4B9Wi9d1eyGjejjV
+	77KtZYOhaFecPJrlGapxNBMD4FyH/WWdo56LZA=
+X-Google-Smtp-Source: AGHT+IFSDgCLPJndg4TOxS4/+K2sQKL3XaKKbJwpYxrHeNncRVK3PIq5fLt3S1TrCjsBx8V+oC1pdTue83tyCk/M6OM=
+X-Received: by 2002:a05:6512:3e23:b0:568:25d0:f843 with SMTP id
+ 2adb3069b0e04-56825d1df24mr3328322e87.4.1757577400507; Thu, 11 Sep 2025
+ 00:56:40 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250910-gpio-mmio-gpio-conv-part4-v2-0-f3d1a4c57124@linaro.org> <CACRpkdb=J+hiC5cu+g0Z-gqzpG8PgX01CXc4P98FfSSAf7PZEA@mail.gmail.com>
-In-Reply-To: <CACRpkdb=J+hiC5cu+g0Z-gqzpG8PgX01CXc4P98FfSSAf7PZEA@mail.gmail.com>
+References: <20250910-gpio-mmio-gpio-conv-part4-v2-0-f3d1a4c57124@linaro.org>
+ <20250910-gpio-mmio-gpio-conv-part4-v2-7-f3d1a4c57124@linaro.org> <e0941449-7a62-4bbb-8790-616f393f2cc8@gmail.com>
+In-Reply-To: <e0941449-7a62-4bbb-8790-616f393f2cc8@gmail.com>
 From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Thu, 11 Sep 2025 09:38:12 +0200
-X-Gm-Features: Ac12FXwiBbcmTD8LlFccmOHZdwwoOfYFi61pHLgjut8Pxa8sFHcycGYwle9xiUk
-Message-ID: <CAMRc=McbadZx1yK1jGeyUnXAFZgfA8YpLwacmqC0eMonS-c-9A@mail.gmail.com>
-Subject: Re: [PATCH v2 00/15] gpio: replace legacy bgpio_init() with its
- modernized alternative - part 4
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Keguang Zhang <keguang.zhang@gmail.com>, Alban Bedel <albeu@free.fr>, 
-	Doug Berger <opendmb@gmail.com>, Florian Fainelli <florian.fainelli@broadcom.com>, 
+Date: Thu, 11 Sep 2025 09:56:28 +0200
+X-Gm-Features: Ac12FXzR1a5xkbJIh_yEzUr3Ha0h6_elTIUATVbDxWcMjvS8AEDuwvbJ1IToPQE
+Message-ID: <CAMRc=MfZ5ss8Gd_TTPV8EYSv04ENp_C26b3=wukO+UTy_boXUA@mail.gmail.com>
+Subject: Re: [PATCH v2 07/15] gpio: brcmstb: use new generic GPIO chip API
+To: Doug Berger <opendmb@gmail.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Keguang Zhang <keguang.zhang@gmail.com>, 
+	Alban Bedel <albeu@free.fr>, Florian Fainelli <florian.fainelli@broadcom.com>, 
 	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, 
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
@@ -89,8 +89,8 @@ Cc: Keguang Zhang <keguang.zhang@gmail.com>, Alban Bedel <albeu@free.fr>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250911_003827_646534_56C43D1A 
-X-CRM114-Status: GOOD (  23.30  )
+X-CRM114-CacheID: sfid-20250911_005642_715596_B16AFEF3 
+X-CRM114-Status: GOOD (  12.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,53 +105,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 10, 2025 at 11:32=E2=80=AFPM Linus Walleij <linus.walleij@linar=
-o.org> wrote:
+On Thu, Sep 11, 2025 at 2:11=E2=80=AFAM Doug Berger <opendmb@gmail.com> wro=
+te:
 >
-> On Wed, Sep 10, 2025 at 9:12=E2=80=AFAM Bartosz Golaszewski <brgl@bgdev.p=
-l> wrote:
->
-> > Here's the final part of the generic GPIO chip conversions. Once all th=
-e
-> > existing users are switched to the new API, the final patch in the
-> > series removes bgpio_init(), moves the gpio-mmio fields out of struct
-> > gpio_chip and into struct gpio_generic_chip and adjusts gpio-mmio.c to
-> > the new situation.
 > >
-> > Down the line we could probably improve gpio-mmio.c by using lock guard=
-s
-> > and replacing the - now obsolete - "bgpio" prefix with "gpio_generic" o=
-r
-> > something similar but this series is already big as is so I'm leaving
-> > that for the future.
+> > @@ -700,7 +707,8 @@ static int brcmstb_gpio_probe(struct platform_devic=
+e *pdev)
+> >                * be retained from S5 cold boot
+> >                */
+> >               need_wakeup_event |=3D !!__brcmstb_gpio_get_active_irqs(b=
+ank);
+> > -             gc->write_reg(reg_base + GIO_MASK(bank->id), 0);
+> > +             gpio_generic_write_reg(&bank->chip,
+> > +                                    reg_base + GIO_MASK(bank->id), 0);
 > >
-> > Tested in qemu on vexpress-a9.
+> >               err =3D gpiochip_add_data(gc, bank);
+> >               if (err) {
 > >
-> > Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
->
-> The patch set is a beauty, hands down.
-> Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
->
-> I especially like where you caught local spinlocks being
-> (ab)used instead of the generic irqchip ones.
->
-> I don't know about merging patch 15/15 into just the GPIO
-> tree, that can make things fail in other subsystems depending
-> on merge order into Torvalds tree or linux-next if your tree is
-> merged first.
->
-> I would merge the first 14 and keep the last for the later part
-> of the merge window when all other trees with conversions
-> are merged.
->
-> (You probably already thought of this.)
->
-> Yours,
-> Linus Walleij
+> I suppose I'm OK with all of this, but I'm just curious about the longer
+> term plans for the member accesses. Is there an intent to have helpers
+> for things like?:
+> chip.gc.offset
+> chip.gc.ngpio
 
-I already have both pinctrl and mfd changes in my tree from Lee's and
-your immutable branches. I pushed this into gpio/devel and it built
-just fine.
+I don't think so. It would require an enormous effort and these fields
+in struct gpio_chip are pretty stable so there's no real reason for
+it.
 
 Bart
 
