@@ -4,111 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8354ECAC587
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Sep 2025 15:16:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB46BCAC58E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Sep 2025 19:50:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5GbnEMgGDcefdIhwqbOGABlaP4C+kCbcjuGMBFPW0FU=; b=wqfTsySpsHmLogm8aROV5FuNUU
-	GgGvDfw4dlFbGW2RKup956XzQPf7jSWeKQShobb1jLMqplKs5bpSC3udZLevfrZEMrTtIhDbn4t6l
-	xrG3NntX5cXVtZHU5J/a2XFMVJBPFsjT684hl/xviTG6TGaKkSTrDYATo8QqcaG8Gzd7T0ZbJ+5+7
-	J02gZcEY3aQcNiPht/z2IJqTfHDv6q8sxFdFMqstt/Fcy0jMU1u5wOik98MCKjIg+y8VGJCM/sQTn
-	t/OVbCreMbTuPHnhrw2d60gvlQiR23ZrSGtuGxKkWc6x0gGXDBkuLF1FNQVrgElJqOS1vjhhqZODF
-	btn17atw==;
+	bh=TJeew9YIVoP09p3LirTxwS5JzCuSaF7BlgkulwqqjZw=; b=Niurnq9mJcDbKMRf5HJygoPDF5
+	z07S4bXHSLTRHHvW2mpqJLwCYlxbzFSTZCbF6xmoZzu+PQzapqt0otOF6uUi0X5fiZrH7JKU2Biqa
+	t9nT9RbdT8kvi39p9XTOhrsHiYC6TgKPpbgQLJvtkstteKxXxIPTmZXCjlizfcB97ksTX3CwskV7K
+	t8zDySz1omKoLbn/AsWqTQG95G2SnnLNBIMe7cu3vmQQt7fl4vXXnoxzMBUljqfWZQ6BVCxcejfFe
+	hN7H7QRtDoEIfdNwJNkzAWFCnAWomVsN5RWtNjK9CGavI6oYb0GYNSwS9FYwyEzg+RXpQc9n+0ftx
+	nR+SpMVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwj1j-00000003ome-2OqN;
-	Thu, 11 Sep 2025 15:15:59 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uwnJh-000000054w2-08qT;
+	Thu, 11 Sep 2025 19:50:49 +0000
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwj1g-00000003okC-2vek;
-	Thu, 11 Sep 2025 15:15:57 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1757603713; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=XdFivKCZ1zSV2DL8A2apCZSVhyGEctH5ibbsN5jnFp92ih8VPPHUt1cYWhfClmon7J3wdT8XMj835fnw3QSHdTqDIxOx9aCzGLYJA3MrC1PM35mhAw9g4XRSaMvjWn0Ebda4XdnOLXWLtITXwA+ZSUO3MG9s0cd845vDoG9CAYo=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1757603713; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=5GbnEMgGDcefdIhwqbOGABlaP4C+kCbcjuGMBFPW0FU=; 
-	b=AJrDS76FnZIW0jLOYXGptiWpzTsBY+npeA8L7BwDefMBU9NbrNHLq5zshxQ6M9UrIsvXqA9LyHtkTCul0qwIFQh2RuSjtHZnC0VBqs5hohXvNancIOHVZC2uroKOXNJxEcmbfsCm1bodh69SN+uOvAnD+aTfYV6zKMe8pJ4GNiI=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=ariel.dalessandro@collabora.com;
-	dmarc=pass header.from=<ariel.dalessandro@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1757603713;
-	s=zohomail; d=collabora.com; i=ariel.dalessandro@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=5GbnEMgGDcefdIhwqbOGABlaP4C+kCbcjuGMBFPW0FU=;
-	b=H9jOcS9Sf+b45wYgJY5wui9mLzHAFv/8dEF8qzkXIwmkNeLdBo+3737VQFbvZ329
-	cmuyy3V5VCxxklt+8rkDs/4GE0lvqHaocm3GFfgriUVQNIxO+SuJiePrxoKtuMAXu3C
-	ptx0CFAAXKTJtBC4k5JxeWR+Itv5KV3s+U4F5ous=
-Received: by mx.zohomail.com with SMTPS id 1757603711035627.8749849505076;
-	Thu, 11 Sep 2025 08:15:11 -0700 (PDT)
-From: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-To: airlied@gmail.com,
-	amergnat@baylibre.com,
-	andrew+netdev@lunn.ch,
-	andrew-ct.chen@mediatek.com,
-	angelogioacchino.delregno@collabora.com,
-	ariel.dalessandro@collabora.com,
-	broonie@kernel.org,
-	chunkuang.hu@kernel.org,
-	conor+dt@kernel.org,
-	davem@davemloft.net,
-	dmitry.torokhov@gmail.com,
-	edumazet@google.com,
-	flora.fu@mediatek.com,
-	heiko@sntech.de,
-	houlong.wei@mediatek.com,
-	jeesw@melfas.com,
-	kernel@collabora.com,
-	krzk+dt@kernel.org,
-	kuba@kernel.org,
-	lgirdwood@gmail.com,
-	linus.walleij@linaro.org,
-	louisalexis.eyraud@collabora.com,
-	luiz.dentz@gmail.com,
-	maarten.lankhorst@linux.intel.com,
-	marcel@holtmann.org,
-	matthias.bgg@gmail.com,
-	mchehab@kernel.org,
-	minghsiu.tsai@mediatek.com,
-	mripard@kernel.org,
-	p.zabel@pengutronix.de,
-	pabeni@redhat.com,
-	robh@kernel.org,
-	sean.wang@kernel.org,
-	simona@ffwll.ch,
-	support.opensource@diasemi.com,
-	tiffany.lin@mediatek.com,
-	tzimmermann@suse.de,
-	yunfei.dong@mediatek.com
-Cc: devicetree@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-bluetooth@vger.kernel.org,
-	linux-gpio@vger.kernel.org,
-	linux-input@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-media@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-sound@vger.kernel.org,
-	netdev@vger.kernel.org
-Subject: [PATCH v2 12/12] dt-bindings: input: Convert MELFAS MIP4 Touchscreen to DT schema
-Date: Thu, 11 Sep 2025 12:10:01 -0300
-Message-ID: <20250911151001.108744-13-ariel.dalessandro@collabora.com>
-X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20250911151001.108744-1-ariel.dalessandro@collabora.com>
-References: <20250911151001.108744-1-ariel.dalessandro@collabora.com>
+	id 1uwnJc-000000054tD-31wL
+	for linux-mediatek@lists.infradead.org;
+	Thu, 11 Sep 2025 19:50:47 +0000
+Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-24456ce0b96so13745195ad.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 11 Sep 2025 12:50:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1757620244; x=1758225044; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=TJeew9YIVoP09p3LirTxwS5JzCuSaF7BlgkulwqqjZw=;
+        b=VEgn7UxBuWQUaIcV+zvCRxJ9gD9zWWXkpuQn9qEVMh1QthqrzMiEUSjdK1V9Nvvfdo
+         t5lTJu6Ql7fuQKgOZ5GwNHsi/P3sCkNidmUXPe7jAyBStUuU+KbFhwTVab4B8ihVjZ5o
+         7lCsICLwvH3XKpOuEApC6PUkMi4M6/zy5bK7yBUz0bdx8v4qRVu6gH9NHOQSbUc1Fpll
+         Zm81h/Z17Q/uPpNKF1t8A8PtJPTF8XGvuYEmHUshCFjgpqKoihozA4ssOHirPs/UlNO6
+         ZCh/vxo+LXjEx1jRrsW0gDSlRqwHNbYUtq2CNLkJoWH7OxbmQTeShpagYen9QGA/j5xb
+         IyVg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1757620244; x=1758225044;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=TJeew9YIVoP09p3LirTxwS5JzCuSaF7BlgkulwqqjZw=;
+        b=GXKlJF/4rZxnIbIGsaLM97ntm8jJvQff9pY0DeL55MDGSuqjSkx6S//+l5FMwss2rK
+         JUIzsMZ/H/5A4Fx9rLfdCssZa4sTzc7mUC182GU9zqrxHP7ITDNvCVvgPY+0yxKoY605
+         YeTHsZXCA8a6Qw8du1TZaM0OgDW+fIuTZn1p9yXZUMOrDEjAlBvPuPuIq9xDGzXvGOlT
+         RieXXM20/JjlML/OyY1RT0NoyMdkJb9jvhXwf0UNVVicf7w6B5DFH8nvFAY7eBGY9x+F
+         hlOCDqwLBINLrFTXWBTzpAhibdooKMtwANh3HDosG2lpEJ5RRzmyi2Y9oeP4dz+fLT+r
+         6aCQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXmGlvTpMlbUoG2vD1yaXd6SKKXaD7vff8mqaXJ2iY9orESeGU+klPA9YtQre04NuFZYDhf8H813JRIauMO5Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YypkWhl2i7t/gaWSslXh3txCuf1OsY7snnc/ceeaxDXShCSM7wH
+	OMzv6QNyi2C0pOLNhAdExX8KXaIv79LfnI1Il98xEkoDMvNNNmxYjYh2
+X-Gm-Gg: ASbGncsvmLpftCF3AYHhzLdyKP8jIqSGrJn14+Y45dCNgVn8kJSwDA3Tib5/0aONvdm
+	i8NPcYQaSvFG11lNFVo13/YO3BSxQx4awn6mngf9ScIQiBwjWLKn7Ix6K0y/4yQD9PmEkGRJdNE
+	3zQznfEi33L0KQ/DiK1Kqh5VeJhPopCAQjj0YwCYnYfD41LxdtLDmA4dy9sKrDVQ1NhkPQhPdb5
+	gyKVmnzylCBE/C7cblXJnbB6lrvYOIS63Cb7OKF3wDYV6ps/S8G9u3AY26CdCF7tWhzh35Ik4Cn
+	sasUrepgWHCRs7QYRGYRt0kMWkh0WC4fhcUXvyKPXmJMW4zkdmjJ/tmeMfnhVopulVPDBq/acUl
+	NQL8yWSyP5qcYvEofRNHti8DyQOZPSLtRDHZiXkLv/i/BHdmF
+X-Google-Smtp-Source: AGHT+IGM3HY9cYe0k8sf5GxMMVgG9l2ykvqk4n7ayiGGr2GhLio6Ij8ygJsJDwHZ88T4ZvBeMdpxjA==
+X-Received: by 2002:a17:902:d506:b0:25c:9084:4172 with SMTP id d9443c01a7336-25c908466d3mr25755745ad.14.1757620243626;
+        Thu, 11 Sep 2025 12:50:43 -0700 (PDT)
+Received: from [10.69.47.143] ([192.19.223.252])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-25c36cc53bcsm26957775ad.28.2025.09.11.12.50.41
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 11 Sep 2025 12:50:43 -0700 (PDT)
+Message-ID: <cfe7bc19-763f-4e92-b1ae-355c661bcc19@gmail.com>
+Date: Thu, 11 Sep 2025 12:50:47 -0700
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 07/15] gpio: brcmstb: use new generic GPIO chip API
+To: Bartosz Golaszewski <brgl@bgdev.pl>
+Cc: Linus Walleij <linus.walleij@linaro.org>,
+ Keguang Zhang <keguang.zhang@gmail.com>, Alban Bedel <albeu@free.fr>,
+ Florian Fainelli <florian.fainelli@broadcom.com>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ Samuel Holland <samuel.holland@sifive.com>, Yixun Lan <dlan@gentoo.org>,
+ Andy Shevchenko <andy@kernel.org>, linux-gpio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-riscv@lists.infradead.org, spacemit@lists.linux.dev,
+ Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+References: <20250910-gpio-mmio-gpio-conv-part4-v2-0-f3d1a4c57124@linaro.org>
+ <20250910-gpio-mmio-gpio-conv-part4-v2-7-f3d1a4c57124@linaro.org>
+ <e0941449-7a62-4bbb-8790-616f393f2cc8@gmail.com>
+ <CAMRc=MfZ5ss8Gd_TTPV8EYSv04ENp_C26b3=wukO+UTy_boXUA@mail.gmail.com>
+Content-Language: en-US
+From: Doug Berger <opendmb@gmail.com>
+In-Reply-To: <CAMRc=MfZ5ss8Gd_TTPV8EYSv04ENp_C26b3=wukO+UTy_boXUA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250911_081556_790052_6E8F1B9A 
-X-CRM114-Status: GOOD (  13.59  )
+X-CRM114-CacheID: sfid-20250911_125044_762750_9C19423C 
+X-CRM114-Status: GOOD (  13.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,107 +115,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert the existing text-based DT bindings for MELFAS MIP4 Touchscreen
-controller to a DT schema.
+On 9/11/2025 12:56 AM, Bartosz Golaszewski wrote:
+> On Thu, Sep 11, 2025 at 2:11 AM Doug Berger <opendmb@gmail.com> wrote:
+>>
+>>>
+>>> @@ -700,7 +707,8 @@ static int brcmstb_gpio_probe(struct platform_device *pdev)
+>>>                 * be retained from S5 cold boot
+>>>                 */
+>>>                need_wakeup_event |= !!__brcmstb_gpio_get_active_irqs(bank);
+>>> -             gc->write_reg(reg_base + GIO_MASK(bank->id), 0);
+>>> +             gpio_generic_write_reg(&bank->chip,
+>>> +                                    reg_base + GIO_MASK(bank->id), 0);
+>>>
+>>>                err = gpiochip_add_data(gc, bank);
+>>>                if (err) {
+>>>
+>> I suppose I'm OK with all of this, but I'm just curious about the longer
+>> term plans for the member accesses. Is there an intent to have helpers
+>> for things like?:
+>> chip.gc.offset
+>> chip.gc.ngpio
+> 
+> I don't think so. It would require an enormous effort and these fields
+> in struct gpio_chip are pretty stable so there's no real reason for
+> it.
+> 
+> Bart
+Ok, so assuming struct gpio_chip is sticking around long term that makes 
+sense to me.
 
-Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
----
- .../input/touchscreen/melfas,mip4_ts.yaml     | 56 +++++++++++++++++++
- .../input/touchscreen/melfas_mip4.txt         | 20 -------
- 2 files changed, 56 insertions(+), 20 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/input/touchscreen/melfas,mip4_ts.yaml
- delete mode 100644 Documentation/devicetree/bindings/input/touchscreen/melfas_mip4.txt
+Thanks!
 
-diff --git a/Documentation/devicetree/bindings/input/touchscreen/melfas,mip4_ts.yaml b/Documentation/devicetree/bindings/input/touchscreen/melfas,mip4_ts.yaml
-new file mode 100644
-index 0000000000000..314be65c56caa
---- /dev/null
-+++ b/Documentation/devicetree/bindings/input/touchscreen/melfas,mip4_ts.yaml
-@@ -0,0 +1,56 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/input/touchscreen/melfas,mip4_ts.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MELFAS MIP4 Touchscreen
-+
-+maintainers:
-+  - Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-+
-+properties:
-+  compatible:
-+    const: melfas,mip4_ts
-+
-+  reg:
-+    description: I2C address of the chip (0x48 or 0x34)
-+    maxItems: 1
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  ce-gpios:
-+    description:
-+      GPIO connected to the CE (chip enable) pin of the chip (active high)
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/gpio/gpio.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+
-+    i2c {
-+        #address-cells = <1>;
-+        #size-cells = <0>;
-+
-+        touchscreen@34 {
-+            compatible = "melfas,mip4_ts";
-+            reg = <0x34>;
-+
-+            interrupts-extended = <&tlmm 13 IRQ_TYPE_EDGE_FALLING>;
-+            ce-gpios = <&tlmm 12 GPIO_ACTIVE_HIGH>;
-+
-+            pinctrl-0 = <&touchscreen_default>;
-+            pinctrl-names = "default";
-+        };
-+    };
-+
-+...
-diff --git a/Documentation/devicetree/bindings/input/touchscreen/melfas_mip4.txt b/Documentation/devicetree/bindings/input/touchscreen/melfas_mip4.txt
-deleted file mode 100644
-index b2ab5498e5190..0000000000000
---- a/Documentation/devicetree/bindings/input/touchscreen/melfas_mip4.txt
-+++ /dev/null
-@@ -1,20 +0,0 @@
--* MELFAS MIP4 Touchscreen
--
--Required properties:
--- compatible: must be "melfas,mip4_ts"
--- reg: I2C slave address of the chip (0x48 or 0x34)
--- interrupts: interrupt to which the chip is connected
--
--Optional properties:
--- ce-gpios: GPIO connected to the CE (chip enable) pin of the chip
--
--Example:
--	i2c@00000000 {
--		touchscreen: melfas_mip4@48 {
--			compatible = "melfas,mip4_ts";
--			reg = <0x48>;
--			interrupt-parent = <&gpio>;
--			interrupts = <0 IRQ_TYPE_EDGE_FALLING>;
--			ce-gpios = <&gpio 0 GPIO_ACTIVE_HIGH>;
--		};
--	};
--- 
-2.50.1
-
+Acked-by: Doug Berger <opendmb@gmail.com>
 
