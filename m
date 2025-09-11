@@ -4,116 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C114CAC583
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Sep 2025 06:08:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 849DBCA1016
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Sep 2025 07:38:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Jdno1FwrJRhrejSz0gh6T9rkA9/pFew4MXIzhf7cO94=; b=ZWyajZ5ahtSKpjiipKfL9HFjyv
-	ufNfErUsfGCMhepMgYmH5ey3eGPnyuHSEe80ipJebOBPQnhic0GU119Jk+3CELLQOTO58nIiBap52
-	A2JhbsFqLxvs6iBZKbTXv54lemEubUh075SjnWNv3nG4HwjqNIuC5+A5VJauhrgzsNphap/MTWUXQ
-	uKFZOJ+ptw4ITEWfI4yePGhSJgi2yHtd8b205Eyez3RjgN5Vu7wQlRBay/tUOGOMM4Pa3JeKjHHJq
-	3NWQnSSu3ORvEaX2BvSX/eHt6txV/wXNrEXj/xrPJUnk3fiLILLNhDlUfEmr6jlQ4/s3b55tTwMJh
-	R9SHgRRA==;
+	bh=jUK8rXo2J6tdIuNkdbMKBrXU6Rird8FTI89p+KzSTdU=; b=FUf2BXUkjFUSX1L+uR0DUYrvoK
+	bAJCoMkCWgDUa4R4XfpQI4vbDBHHU9fYr6J5S3o2wIiWYKd8nJJwaNTssNZcq4r4xrkxiw6OrTglO
+	imSyHrtc+IZlBcECWNodGn4YYxBnaNPOy59n5BpRBPeq8ujNKi6FdHSCxJs27f397FuTvy3lTp1OB
+	Ha7n0x8VvW9rXeBNkftUJO1eEH33tTp4pS7OFGDHds04MTou52hK5jY/dmrosPMUyVQHZI2GgGCfE
+	dof7djfRZAp79mk1bk0u7k943grNCF+5ULGQa6GOpoYaa0shHq64yY6THg0zxR30HjJjJeyISejMs
+	YAlT6GYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwaTQ-000000019E4-0QX5;
-	Thu, 11 Sep 2025 06:08:00 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uwbt1-00000001Xoz-1AQj;
+	Thu, 11 Sep 2025 07:38:31 +0000
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwaTN-000000019DA-2QMJ;
-	Thu, 11 Sep 2025 06:07:58 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1C7C143B03;
-	Thu, 11 Sep 2025 06:07:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9E184C4CEF1;
-	Thu, 11 Sep 2025 06:07:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1757570877;
-	bh=231mElAF275+Xy84TFjozLG6O+OvmlKY8XpeW81PPiE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=SSLeu6V/qUzjE9+Q+VLT3/O1D3FqmeboDYJjLm8v3IINxiuKd0MtObD1uRXtwN7Xg
-	 z0nT2eScldr67f5nZkvLOTVw5FVE9zAOJg2PCOhzIvrphnoBwr35QFKLwuFswhDnvl
-	 I99BlEEFSYyL1GtyHYAAa9OFWacNuFNW5wgnc8cM93nXWv9TbCtGcqHwB818R9YGj6
-	 qUWgn+c2jkAGdsSjoccDLIVf/dKK4Vmbz/cG7sjW1ThuizRPqpwjGezk7lG5Y1/IFx
-	 COl0ksJpJxIaAjV348dbmeJUF0Zi0RP8s9TMcOgMfMecFAxmevLlYsoE1L4Cfp1iVe
-	 ZoLAZ+XfiabQA==
-Message-ID: <0760036f-db69-487c-94b9-a6e405dee0e8@kernel.org>
-Date: Thu, 11 Sep 2025 08:07:51 +0200
+	id 1uwbsx-00000001XmV-20sz
+	for linux-mediatek@lists.infradead.org;
+	Thu, 11 Sep 2025 07:38:29 +0000
+Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-55f6b0049fbso441337e87.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 11 Sep 2025 00:38:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1757576305; x=1758181105; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=jUK8rXo2J6tdIuNkdbMKBrXU6Rird8FTI89p+KzSTdU=;
+        b=W4shUZxtZ7WJQ3C1jj/eNuDU7Np3X77r/sqUgNNuCnZo6z9y6mouWj7iO7PDUJKuys
+         R2Wtx4Ilk15ymee4Apt4JxhS9yJySKYfpu8DGcAoNRVIUUAe2ob9JbhvvB6YC9RojM+R
+         kNjyVHTsrMaZ0rrPLhRkdqxlP5bJ02sZqQQ7MbtjnlPR0/TgT4tzzsDh4hWonyHlHVcf
+         QxRsAGjgXym80lFcWXyNFer182qzWr06ZLGPggFE8og4huytMUeE9e9mj5ZNy9esCfDa
+         6n1xIiLebLFZi6QcvQJ2UVhhNcFFYrlUqG4ba+hhkFWqBTdGFZnlRBEQ2XJBN3AceGT0
+         kXrA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1757576305; x=1758181105;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=jUK8rXo2J6tdIuNkdbMKBrXU6Rird8FTI89p+KzSTdU=;
+        b=M47K4LnzLDOzYvnDbV8eQhKLG6TJ2MmK3I7J7rEcfQ/7azuIhdYLR0aa1A5sTDel2o
+         Z3Yu6YPxEuAi7z8TxpCcC8n4poocsAZ7PyZbLbZRWTjdnLhztuKr+yySRdspg3FgFD+Y
+         5A9Fa2b23p48dQVFGxWwE/gDGONGUI/hO9A5hy2EFzXmOUA7rPAgwIooyW1EZy1b+i3X
+         W4HB0Jkv6YsWgVn9OxHwZTzf7vo443DcyvBOy61+cFOXx5LQqMXW3fiOJFf8a4Sk97PL
+         172u28oAJl9cLkuG3Dw4aSJ+wBK4DtcyetdAClVeEmKbwjkvfXus4VOlIrZ/qCId9MTr
+         2/JQ==
+X-Forwarded-Encrypted: i=1; AJvYcCW0EZh1IQcVSlZObQfiN2/dwG4oKgBVdD7hG2AqZKaKsN4QVYdfxG9q6rFHQW28AiNJBoZFYAdRArsouAAEaA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywlly0TbXxPH60OeYvHbKNAquvpMEy7jWprEi62M1Hy04ZTjuhd
+	7of7f/5GjBpGKcbygprjbqlSUYLurYKhLm+2sXIo8l4VMz77oqr3IjhmvmIPnCGhNcfQX7Gl6Vd
+	nPdzdcedQCgjeWAZAM48LzvmOkXSDzg6r+jfcYXqZuQ==
+X-Gm-Gg: ASbGncsMm4UuV3HU0u1nzOeiGV+BXMwXHf/7eOSehYh5trybK+6ZEQEPftd+FEsEoIV
+	OssviIdFAtajz1I1nodrL/S5jqQ0qI3WKP8SToyW6wY5xk5+/iRviq8ns1a8mv7iyuWwLqFnx8A
+	rhd9uPGVzXPgL4IQBz22KDwWuObFtumH5f0v8UsNL0sX+7ylad0+wvME+evuqRohV0BdI2toM9d
+	HxB8ab4xhplikdLPsTb+61k3OQREXP6olhvTeg=
+X-Google-Smtp-Source: AGHT+IGFKCUUrJkt+A6v+xuc1LQXhwUm4KpMBhnA0hSfXgMQG+z+UHy3svEwymKETUJXd9ilc9E5haoHU8vK2eJzapg=
+X-Received: by 2002:a05:6512:b17:b0:55f:498f:f08e with SMTP id
+ 2adb3069b0e04-562614ff71emr7447870e87.24.1757576305171; Thu, 11 Sep 2025
+ 00:38:25 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 1/1] Bluetooth: mediatek: add gpio pin to reset bt
-To: Sean Wang <sean.wang@kernel.org>,
- Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>
-Cc: Marcel Holtmann <marcel@holtmann.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Luiz Von Dentz <luiz.dentz@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Sean Wang <sean.wang@mediatek.com>, Jiande Lu <jiande.lu@mediatek.com>,
- Deren Wu <deren.Wu@mediatek.com>, Chris Lu <chris.lu@mediatek.com>,
- Hao Qin <Hao.qin@mediatek.com>,
- linux-bluetooth <linux-bluetooth@vger.kernel.org>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- linux-mediatek <linux-mediatek@lists.infradead.org>
-References: <20250905084059.26959-1-ot_zhangchao.zhang@mediatek.com>
- <20250905084059.26959-2-ot_zhangchao.zhang@mediatek.com>
- <a7589659-0352-4d47-a3cf-f2433cc512ec@kernel.org>
- <CAGp9Lzrp-cfn_GiLrHCU629wEAxWy=egOMrRh6thYbymu+QXjA@mail.gmail.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
- cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
- JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
- gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
- J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
- NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
- BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
- vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
- Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
- TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
- S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
- FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJoF1BKBQkWlnSaAAoJEBuTQ307
- QWKbHukP/3t4tRp/bvDnxJfmNdNVn0gv9ep3L39IntPalBFwRKytqeQkzAju0whYWg+R/rwp
- +r2I1Fzwt7+PTjsnMFlh1AZxGDmP5MFkzVsMnfX1lGiXhYSOMP97XL6R1QSXxaWOpGNCDaUl
- ajorB0lJDcC0q3xAdwzRConxYVhlgmTrRiD8oLlSCD5baEAt5Zw17UTNDnDGmZQKR0fqLpWy
- 786Lm5OScb7DjEgcA2PRm17st4UQ1kF0rQHokVaotxRM74PPDB8bCsunlghJl1DRK9s1aSuN
- hL1Pv9VD8b4dFNvCo7b4hfAANPU67W40AaaGZ3UAfmw+1MYyo4QuAZGKzaP2ukbdCD/DYnqi
- tJy88XqWtyb4UQWKNoQqGKzlYXdKsldYqrLHGoMvj1UN9XcRtXHST/IaLn72o7j7/h/Ac5EL
- 8lSUVIG4TYn59NyxxAXa07Wi6zjVL1U11fTnFmE29ALYQEXKBI3KUO1A3p4sQWzU7uRmbuxn
- naUmm8RbpMcOfa9JjlXCLmQ5IP7Rr5tYZUCkZz08LIfF8UMXwH7OOEX87Y++EkAB+pzKZNNd
- hwoXulTAgjSy+OiaLtuCys9VdXLZ3Zy314azaCU3BoWgaMV0eAW/+gprWMXQM1lrlzvwlD/k
- whyy9wGf0AEPpLssLVt9VVxNjo6BIkt6d1pMg6mHsUEVzsFNBFVDXDQBEADNkrQYSREUL4D3
- Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
- MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
- OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
- GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
- 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
- YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
- 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
- BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
- JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
- 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
- YpsFAmgXUF8FCRaWWyoACgkQG5NDfTtBYptO0w//dlXJs5/42hAXKsk+PDg3wyEFb4NpyA1v
- qmx7SfAzk9Hf6lWwU1O6AbqNMbh6PjEwadKUk1m04S7EjdQLsj/MBSgoQtCT3MDmWUUtHZd5
- RYIPnPq3WVB47GtuO6/u375tsxhtf7vt95QSYJwCB+ZUgo4T+FV4hquZ4AsRkbgavtIzQisg
- Dgv76tnEv3YHV8Jn9mi/Bu0FURF+5kpdMfgo1sq6RXNQ//TVf8yFgRtTUdXxW/qHjlYURrm2
- H4kutobVEIxiyu6m05q3e9eZB/TaMMNVORx+1kM3j7f0rwtEYUFzY1ygQfpcMDPl7pRYoJjB
- dSsm0ZuzDaCwaxg2t8hqQJBzJCezTOIkjHUsWAK+tEbU4Z4SnNpCyM3fBqsgYdJxjyC/tWVT
- AQ18NRLtPw7tK1rdcwCl0GFQHwSwk5pDpz1NH40e6lU+NcXSeiqkDDRkHlftKPV/dV+lQXiu
- jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
- zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
- XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <CAGp9Lzrp-cfn_GiLrHCU629wEAxWy=egOMrRh6thYbymu+QXjA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+References: <20250910-gpio-mmio-gpio-conv-part4-v2-0-f3d1a4c57124@linaro.org> <CACRpkdb=J+hiC5cu+g0Z-gqzpG8PgX01CXc4P98FfSSAf7PZEA@mail.gmail.com>
+In-Reply-To: <CACRpkdb=J+hiC5cu+g0Z-gqzpG8PgX01CXc4P98FfSSAf7PZEA@mail.gmail.com>
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+Date: Thu, 11 Sep 2025 09:38:12 +0200
+X-Gm-Features: Ac12FXwiBbcmTD8LlFccmOHZdwwoOfYFi61pHLgjut8Pxa8sFHcycGYwle9xiUk
+Message-ID: <CAMRc=McbadZx1yK1jGeyUnXAFZgfA8YpLwacmqC0eMonS-c-9A@mail.gmail.com>
+Subject: Re: [PATCH v2 00/15] gpio: replace legacy bgpio_init() with its
+ modernized alternative - part 4
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: Keguang Zhang <keguang.zhang@gmail.com>, Alban Bedel <albeu@free.fr>, 
+	Doug Berger <opendmb@gmail.com>, Florian Fainelli <florian.fainelli@broadcom.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Paul Walmsley <paul.walmsley@sifive.com>, Samuel Holland <samuel.holland@sifive.com>, 
+	Yixun Lan <dlan@gentoo.org>, Andy Shevchenko <andy@kernel.org>, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-riscv@lists.infradead.org, spacemit@lists.linux.dev, 
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250910_230757_658528_FBBAE3A0 
-X-CRM114-Status: GOOD (  11.36  )
+X-CRM114-CacheID: sfid-20250911_003827_646534_56C43D1A 
+X-CRM114-Status: GOOD (  23.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,28 +105,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/09/2025 01:29, Sean Wang wrote:
-> Hi Krzysztof,
-> 
-> Sorry again for the confusion. I believe Zhangchao is still new to the
-> upstream process, and we’ll work together to improve this. Since this
-> series has become a bit hard to follow, would you agree that it might
-> be better for us to restart with a clean patch that addresses the
-> review comments? A clean version would make it easier for reviewers to
-> focus on the current issues without being distracted by earlier
-> mistakes.
+On Wed, Sep 10, 2025 at 11:32=E2=80=AFPM Linus Walleij <linus.walleij@linar=
+o.org> wrote:
+>
+> On Wed, Sep 10, 2025 at 9:12=E2=80=AFAM Bartosz Golaszewski <brgl@bgdev.p=
+l> wrote:
+>
+> > Here's the final part of the generic GPIO chip conversions. Once all th=
+e
+> > existing users are switched to the new API, the final patch in the
+> > series removes bgpio_init(), moves the gpio-mmio fields out of struct
+> > gpio_chip and into struct gpio_generic_chip and adjusts gpio-mmio.c to
+> > the new situation.
+> >
+> > Down the line we could probably improve gpio-mmio.c by using lock guard=
+s
+> > and replacing the - now obsolete - "bgpio" prefix with "gpio_generic" o=
+r
+> > something similar but this series is already big as is so I'm leaving
+> > that for the future.
+> >
+> > Tested in qemu on vexpress-a9.
+> >
+> > Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+>
+> The patch set is a beauty, hands down.
+> Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+>
+> I especially like where you caught local spinlocks being
+> (ab)used instead of the generic irqchip ones.
+>
+> I don't know about merging patch 15/15 into just the GPIO
+> tree, that can make things fail in other subsystems depending
+> on merge order into Torvalds tree or linux-next if your tree is
+> merged first.
+>
+> I would merge the first 14 and keep the last for the later part
+> of the merge window when all other trees with conversions
+> are merged.
+>
+> (You probably already thought of this.)
+>
+> Yours,
+> Linus Walleij
 
-No. If you cannot send v7 of patchset as real patchset, sending again v1
-won't change anything.
+I already have both pinctrl and mfd changes in my tree from Lee's and
+your immutable branches. I pushed this into gpio/devel and it built
+just fine.
 
-For seven versions contributor did not bother to respond to feedback and
-did not care to read submitting patches how this process looks like.
-
-Effect is this totally broken v7.
-
-This patch introduces undocumented ABI which kernel tools, if used, also
-point out.
-
-Best regards,
-Krzysztof
+Bart
 
