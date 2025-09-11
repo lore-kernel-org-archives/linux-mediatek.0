@@ -4,82 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60317CAC583
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Sep 2025 05:23:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C114CAC583
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Sep 2025 06:08:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SD8nn1i7Yhdi7+TnIzuBsyz3lWTKZHkEomf2hy/RkVM=; b=BXJi3a2LcShB129elHo2DsLzOA
-	oZgcQCz38J2aVe1wjJaVINgXjoTIpRdKkkXnINbFVylculNYe2HCHn72ebHw1J1uNMMr+nmrOOJvK
-	bMDEy3sfDVcNqO5WgVfgtJ+8CZY26biGDEIrRhevbAaBywGKk8tMRVaVCRWl6iT+phzqv2lJBmkof
-	TjKV9Ff3rdstBEs13SBclQVHANyArEJOr4GeKoMriUbx+uBbqFTYgvOylHfyOecH/Vzy7MUpY9YxK
-	Wre6AfPDkjpZLSSyexRhaCA/he11Gg8JVAeBf8+4PJxepYUptsRJ8LgzzMB2MAX+bqFeY4A6lms81
-	NwafdkdQ==;
+	bh=Jdno1FwrJRhrejSz0gh6T9rkA9/pFew4MXIzhf7cO94=; b=ZWyajZ5ahtSKpjiipKfL9HFjyv
+	ufNfErUsfGCMhepMgYmH5ey3eGPnyuHSEe80ipJebOBPQnhic0GU119Jk+3CELLQOTO58nIiBap52
+	A2JhbsFqLxvs6iBZKbTXv54lemEubUh075SjnWNv3nG4HwjqNIuC5+A5VJauhrgzsNphap/MTWUXQ
+	uKFZOJ+ptw4ITEWfI4yePGhSJgi2yHtd8b205Eyez3RjgN5Vu7wQlRBay/tUOGOMM4Pa3JeKjHHJq
+	3NWQnSSu3ORvEaX2BvSX/eHt6txV/wXNrEXj/xrPJUnk3fiLILLNhDlUfEmr6jlQ4/s3b55tTwMJh
+	R9SHgRRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwZmT-00000000zlY-3qJZ;
-	Thu, 11 Sep 2025 05:23:37 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1uwaTQ-000000019E4-0QX5;
+	Thu, 11 Sep 2025 06:08:00 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwZmQ-00000000zi7-2ppf
-	for linux-mediatek@lists.infradead.org;
-	Thu, 11 Sep 2025 05:23:36 +0000
-Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-55f7c0fb972so273490e87.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 10 Sep 2025 22:23:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1757568212; x=1758173012; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=SD8nn1i7Yhdi7+TnIzuBsyz3lWTKZHkEomf2hy/RkVM=;
-        b=i2Cq+kNB2adOaB9thl02H6lZvA9KWSB7x3qfce4eXMbid8WYhsoNWNca0Ud2o1jBHF
-         cRzjU8cK7H6JKQ/0t48kkRQ4vJfT8dAFdcqX8iRNg8mx6avYWNZUKhinTbU6nHVDK9J1
-         t3ljayscWmrRje3mU5ywbslnXc65michZuEYc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757568212; x=1758173012;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=SD8nn1i7Yhdi7+TnIzuBsyz3lWTKZHkEomf2hy/RkVM=;
-        b=f7MyUWlX2hlDiRyTU/VsxA3LGRV27FiRZQj05niqmUmJS5gDfYtnlW810IUVVT7l0M
-         RrtPANlvnNA7lR4RvMBuHAVqjTtCrh/NQW3GA6Hy7z9D5TSu7FrAm7ZEY2s40pw86w0Q
-         +UwP7hB/XEZxlp7aG74WIBB35cO2/xylLyg//qyjcJtARA7UFR+ab9xYhErh2S3YXoug
-         UZ2IcWnZ/IBssK1dH5AgmSQQUWOvyRnvmeJ0nZoulxjkaFrKtleXqVSQ54k2roKzlK73
-         kW28iT6eQAfLfu/by5GvT8AC08Mkd50LoXnto1GQsB0eTLFQPvLhlqsFwruFZShi3aTd
-         dM5A==
-X-Forwarded-Encrypted: i=1; AJvYcCWHBWsXxBvMN+e8rmEqmExoGIYnirrYlE0H1AeFFUdakWF/nIGKPlZWHgZb4IloelRDm9Ke6XthJB9vLg6HlQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzlGVTl9kYywxSs4MEws+fplSBEXsxdqb3LwcfD2pasbhgftIK3
-	NhyOSjeILq6pf9+szoQngG/5CqFUFSeYqRnnIAzUXPiZ7jN2E+tqP6JkwpiWLpC9ve0Vqmaql4S
-	k92Wtn/AT+Tq9OlkME5aVAgQYSiiwR0MEB1XYWCIrTkxzupNx2wul1w==
-X-Gm-Gg: ASbGncsAObkzPYJwsB7v+GJalxQ8axkGFUgUKuHc5MFZsKny16N+qSSFLMVrM6cMUCX
-	pfPhJ1Yc0/hEou65thnQJGA4/lekiHIC4wgTozARPjH8VcSmkB1kPwSlAJGMGLlcZRfZ1IWOyLI
-	6QKn1L5BwgnyljNn9p7B42KErBCfWL2lZ/xyNqgzUxm1JP6ipLALfr0lqUgJ+XyXuNn3mo2ZKnf
-	FtBvUiMoLle1cc5pBBmi1eFBJyPiDB94uTw8uMV8yslkk55
-X-Google-Smtp-Source: AGHT+IHsFO2dCnG3xagTwvzbaLyKjSsIEhuxrfLgoWTOpuWAQAOR7jHFD/yhONhTl/D9cmXdDuX5rvWYbwhJsjrUtPo=
-X-Received: by 2002:a05:6512:3512:b0:563:2efc:dea7 with SMTP id
- 2adb3069b0e04-5632efce08fmr4010317e87.34.1757568212192; Wed, 10 Sep 2025
- 22:23:32 -0700 (PDT)
+	id 1uwaTN-000000019DA-2QMJ;
+	Thu, 11 Sep 2025 06:07:58 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 1C7C143B03;
+	Thu, 11 Sep 2025 06:07:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9E184C4CEF1;
+	Thu, 11 Sep 2025 06:07:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1757570877;
+	bh=231mElAF275+Xy84TFjozLG6O+OvmlKY8XpeW81PPiE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=SSLeu6V/qUzjE9+Q+VLT3/O1D3FqmeboDYJjLm8v3IINxiuKd0MtObD1uRXtwN7Xg
+	 z0nT2eScldr67f5nZkvLOTVw5FVE9zAOJg2PCOhzIvrphnoBwr35QFKLwuFswhDnvl
+	 I99BlEEFSYyL1GtyHYAAa9OFWacNuFNW5wgnc8cM93nXWv9TbCtGcqHwB818R9YGj6
+	 qUWgn+c2jkAGdsSjoccDLIVf/dKK4Vmbz/cG7sjW1ThuizRPqpwjGezk7lG5Y1/IFx
+	 COl0ksJpJxIaAjV348dbmeJUF0Zi0RP8s9TMcOgMfMecFAxmevLlYsoE1L4Cfp1iVe
+	 ZoLAZ+XfiabQA==
+Message-ID: <0760036f-db69-487c-94b9-a6e405dee0e8@kernel.org>
+Date: Thu, 11 Sep 2025 08:07:51 +0200
 MIME-Version: 1.0
-References: <46756067-ca2f-4053-b9e9-bc6e66170b21@gmail.com>
-In-Reply-To: <46756067-ca2f-4053-b9e9-bc6e66170b21@gmail.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 11 Sep 2025 13:23:21 +0800
-X-Gm-Features: Ac12FXxOIWG_n6zS7cykVQ7wuyEIUs7mj_P9ko2kp2L5pATmRwMSO2clSnhg8Mw
-Message-ID: <CAGXv+5F=uPnzrpDtPXc2ipwp5AhiEwGdxhuhPtjwWhAxWJMc_Q@mail.gmail.com>
-Subject: Re: [GIT PULL] MediaTek ARM64 DTS updates for v6.18
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: arm-soc <arm@kernel.org>, SoC Team <soc@kernel.org>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 1/1] Bluetooth: mediatek: add gpio pin to reset bt
+To: Sean Wang <sean.wang@kernel.org>,
+ Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>
+Cc: Marcel Holtmann <marcel@holtmann.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Luiz Von Dentz <luiz.dentz@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Sean Wang <sean.wang@mediatek.com>, Jiande Lu <jiande.lu@mediatek.com>,
+ Deren Wu <deren.Wu@mediatek.com>, Chris Lu <chris.lu@mediatek.com>,
+ Hao Qin <Hao.qin@mediatek.com>,
+ linux-bluetooth <linux-bluetooth@vger.kernel.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>
+References: <20250905084059.26959-1-ot_zhangchao.zhang@mediatek.com>
+ <20250905084059.26959-2-ot_zhangchao.zhang@mediatek.com>
+ <a7589659-0352-4d47-a3cf-f2433cc512ec@kernel.org>
+ <CAGp9Lzrp-cfn_GiLrHCU629wEAxWy=egOMrRh6thYbymu+QXjA@mail.gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <CAGp9Lzrp-cfn_GiLrHCU629wEAxWy=egOMrRh6thYbymu+QXjA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250910_222334_758830_C4AF5416 
-X-CRM114-Status: GOOD (  19.08  )
+X-CRM114-CacheID: sfid-20250910_230757_658528_FBBAE3A0 
+X-CRM114-Status: GOOD (  11.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,113 +128,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On 11/09/2025 01:29, Sean Wang wrote:
+> Hi Krzysztof,
+> 
+> Sorry again for the confusion. I believe Zhangchao is still new to the
+> upstream process, and we’ll work together to improve this. Since this
+> series has become a bit hard to follow, would you agree that it might
+> be better for us to restart with a clean patch that addresses the
+> review comments? A clean version would make it easier for reviewers to
+> focus on the current issues without being distracted by earlier
+> mistakes.
 
-On Wed, Sep 10, 2025 at 11:04=E2=80=AFPM Matthias Brugger
-<matthias.bgg@gmail.com> wrote:
->
-> Hi Arnd,
->
-> can you please have a look on the following patches.
->
-> Thanks a lot,
-> Matthias
+No. If you cannot send v7 of patchset as real patchset, sending again v1
+won't change anything.
 
-I still have some patches outstanding for some time. Could you perhaps
-take them as well?
+For seven versions contributor did not bother to respond to feedback and
+did not care to read submitting patches how this process looks like.
 
-[PATCH v2 2/2] arm64: dts: mediatek: mt8188: Change efuse fallback
-compatible to mt8186
-https://lore.kernel.org/all/20250610063431.2955757-3-wenst@chromium.org/
+Effect is this totally broken v7.
 
-[PATCH] arm64: dts: mediatek: mt8186-tentacruel: Fix touchscreen model
-https://lore.kernel.org/all/20250812090135.3310374-1-wenst@chromium.org/
+This patch introduces undocumented ABI which kernel tools, if used, also
+point out.
 
-[PATCH v2] arm64: dts: mediatek: mt8188-geralt: Enable first SCP core
-https://lore.kernel.org/all/20250814092510.211672-1-wenst@chromium.org/
-
-
-Thanks
-ChenYu
-
-> ---
-> The following changes since commit 8f5ae30d69d7543eee0d70083daf4de8fe15d5=
-85:
->
->    Linux 6.17-rc1 (2025-08-10 19:41:16 +0300)
->
-> are available in the Git repository at:
->
->    https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git/
-> tags/v6.17-next-dts64
->
-> for you to fetch changes up to 12a565af705542c4380e95f4e3a505a2c25ad754:
->
->    dt-bindings: arm: mediatek: Add grinn,genio-510-sbc (2025-09-10 11:51:=
-16 +0200)
->
-> ----------------------------------------------------------------
-> mt7988 (bpi r4):
-> * enable network
->
-> mt7986:
-> * add dedicated sram node
-> * add interrupts for RSS to ethernet
->
-> mt7981:
-> * add thermal sensor and auxadc nodes
->
-> mt8395 (NIO 12L):
-> * enable UFS
-> * add gpio keys to the PMIC
->
-> mt8195:
-> * drop reset for PCIe device
->
-> ----------------------------------------------------------------
-> Aleksander Jan Bajkowski (1):
->        arm64: dts: mediatek: add thermal sensor support on mt7981
->
-> Frank Wunderlich (7):
->        arm64: dts: mediatek: mt7986: add sram node
->        arm64: dts: mediatek: mt7986: add interrupts for RSS and interrupt=
- names
->        arm64: dts: mediatek: mt7988: add basic ethernet-nodes
->        arm64: dts: mediatek: mt7988: add switch node
->        arm64: dts: mediatek: mt7988a-bpi-r4: add aliases for ethernet
->        arm64: dts: mediatek: mt7988a-bpi-r4: add sfp cages and link to gm=
-ac
->        arm64: dts: mediatek: mt7988a-bpi-r4: configure switch phys and le=
-ds
->
-> Guoqing Jiang (1):
->        arm64: dts: mediatek: mt8195: Remove suspend-breaking reset from p=
-cie0
->
-> Julien Massot (2):
->        arm64: dts: mediatek: mt8395-nio-12l: Enable UFS
->        arm64: dts: mediatek: mt8395-nio-12l: add PMIC and GPIO keys suppo=
-rt
->
-> Mateusz Koza (2):
->        dt-bindings: arm: mediatek: Add grinn,genio-700-sbc
->        dt-bindings: arm: mediatek: Add grinn,genio-510-sbc
->
-> Rob Herring (Arm) (1):
->        arm64: dts: mediatek: mt8183: Fix out of range pull values
->
->   .../devicetree/bindings/arm/mediatek.yaml          |   2 +
->   arch/arm64/boot/dts/mediatek/mt7981b.dtsi          |  31 ++-
->   arch/arm64/boot/dts/mediatek/mt7986a.dtsi          |  20 +-
->   .../dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts   |  11 +
->   .../boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts  |  19 ++
->   .../boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi |  86 +++++++
->   arch/arm64/boot/dts/mediatek/mt7988a.dtsi          | 285 ++++++++++++++=
-++++++-
->   arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi     |  14 +-
->   arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts    |  14 +-
->   arch/arm64/boot/dts/mediatek/mt8195.dtsi           |   3 -
->   .../boot/dts/mediatek/mt8395-radxa-nio-12l.dts     |  46 ++++
->   11 files changed, 508 insertions(+), 23 deletions(-)
->
+Best regards,
+Krzysztof
 
