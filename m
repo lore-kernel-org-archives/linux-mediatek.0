@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60708CAC587
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Sep 2025 15:14:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 868F5CAC58E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Sep 2025 15:15:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VH6ASb7dEHoVDmge1CjvK1Tae8KqarrCY5hGcEulndI=; b=2m1u7JMaw4P6BIrQynIj6IpJZg
-	fBlUcRaSSz6t+P0n217i5Hx3GN2/D0nL/51RMsr6lqnnBgEVBBr/Zo64GUiddWr3aep0Gbr5vacFg
-	7/OfEm1Ppip0qy2gZWxYkc0ja9OtZsRVGlR+T3fndttcMlqhHahW8X0G+B+zoia7+JjUm4pj7JkzL
-	Ap0i5Iw8kwvSyAhc0TRDqmA0hRyy0M8iMXNeQ0mmo1iJyeT7sDd9nDlVsQMdKGW164wL8n9NFk1ku
-	0nuc/tsZUFyzVRooN2NBTiDkW1191XIM1Lw9Vkma5MqpZ+ajZF5yFbQ4f1JCOoojcyn5OcbUDE9iI
-	lbJnPSiw==;
+	bh=U2cYAc7TRbA/3mF29NaHDGo0+OsEf9lfl8V9ifaEr3c=; b=H4Ipp9S54+GagdxuiAJtBj4QOE
+	FFtkJ5dnRKkh3UwuMjo7Zz9qCgR6g8LDJiBvs/QMNmraig24Ser3OyVhgN91KOR0VUgj+0ClvhG47
+	lZ9gaz050BlwJC2zInAL9VQPU6O10N4m2d+r5ics8GhPA+BCN4NAvl8OLcJOX5Xceu5+vlzuZ0zcf
+	o7XRFJCQCDor2cEvPv8vt9BMYdsI1/9LDirS3+0WdaiUO3Xmj/8ijY/fyRjLW56/ovWES8ZIDd+ES
+	iIs3TIepYdudOkylKupyKTop1JyC5sw0GpsXdwPhfdd/3ZuWvuy61+97d/gLK4nGYDrrLE8O7vXFS
+	Fh3b7WzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwj0W-00000003oD0-2Jz1;
-	Thu, 11 Sep 2025 15:14:44 +0000
+	id 1uwj0q-00000003oJF-3ITv;
+	Thu, 11 Sep 2025 15:15:04 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwj0U-00000003oBP-21c5;
-	Thu, 11 Sep 2025 15:14:43 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1757603643; cv=none; 
+	id 1uwj0n-00000003oI8-2WUb;
+	Thu, 11 Sep 2025 15:15:03 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1757603659; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=AVoCU/PJcCEYBt4qBmY/I4YUr6pHwoaMdr2+KGTLsiKsJd72+aZfSViYVIROgfBvgvBXCA8X5ahjFlJDYFjBpe5vI7H77kI1HOsrw90ytVaQun4APCe4VcOOOzdXqg4oQpkAp8SgFg2qFhGlW+TxJQfudWsDXvVX2ZYvLHoMdSA=
+	b=ADY5IxfDhznvAFte4Sh2ahTKVPLIh3SWk/A+VK/j5VrmXYbkfN354w17OALz8EAbd0A1IFBo6pOS0hg5tQ+YDTXnsVyXQKHravDb0X5fkd0O0frh8vL0jYc9lClDH3G+zbCS2KXWEFHutJuO0TuyulRdQmPzQkjv7CM52lOB+r0=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1757603643; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=VH6ASb7dEHoVDmge1CjvK1Tae8KqarrCY5hGcEulndI=; 
-	b=TONhYzCGDVkCr479ihnTB5uGCPXNGMgmv3FXVWgOFMsyCHHXxvJGrSHmd/i6z+epmQi4AZL+A31mi9XRbpt7nObG/w30KNDRoWd8Wb+JKew/9bJa69jol9UayfTjucpr1wFFeHpBYMlZx/vO9QbEtpoOAZBGisebeqEwEwFEPqE=
+	t=1757603659; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=U2cYAc7TRbA/3mF29NaHDGo0+OsEf9lfl8V9ifaEr3c=; 
+	b=hzLm38qKhYmC2Ni+sMX69v6qULV91EKb158cuDnFPrDgXvldIBVZNMu3+f2xeatOU/1aHSZ2Vis16k2c5GNO3DsYNRkYSOvehwLu71JjoHtCJWoJo/6S3SKCSUOVrTC8wg3aBd9uZmrI4sX65ET/Wvq3ANlpFnzD8sOYhF/TWHM=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=ariel.dalessandro@collabora.com;
 	dmarc=pass header.from=<ariel.dalessandro@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1757603643;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1757603659;
 	s=zohomail; d=collabora.com; i=ariel.dalessandro@collabora.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=VH6ASb7dEHoVDmge1CjvK1Tae8KqarrCY5hGcEulndI=;
-	b=KxIMPkrMcEhbrdvZxxLOONgl5lSAlQE/JOTwyvByAf2CkGjnrE+GVcv6l30HOkWi
-	m20+0m2ApFMCxV8QZ7pTlbe1eOdDDvDFcZqIaOUs2QodYmIA/7lPMZOBurKQaIUlJ1W
-	7CPPeiFqx/M/a+dOfVljQlLbQ/y9p0XiZ7K1oNwA=
-Received: by mx.zohomail.com with SMTPS id 1757603641019616.9099842509937;
-	Thu, 11 Sep 2025 08:14:01 -0700 (PDT)
+	bh=U2cYAc7TRbA/3mF29NaHDGo0+OsEf9lfl8V9ifaEr3c=;
+	b=hNzPgjTGHpMMITx3KOL7Fz1pBNIDr7UDiadLmVSxGJMCuFxSqYYJUrLHsBzFGaTm
+	m+nRldrpisOE428v2F8kATXnzoRESCdArKZ3xjxYNBn++0AUFE2uazu1e6LmLxZdl1V
+	RjeWCrtu2RXDNu3AJHpcDM5vMjFS/DoTKfzQ7IY4=
+Received: by mx.zohomail.com with SMTPS id 1757603656617184.5256423904582;
+	Thu, 11 Sep 2025 08:14:16 -0700 (PDT)
 From: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
 To: airlied@gmail.com,
 	amergnat@baylibre.com,
@@ -97,9 +97,9 @@ Cc: devicetree@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-sound@vger.kernel.org,
 	netdev@vger.kernel.org
-Subject: [PATCH v2 07/12] arm64: dts: mediatek: mt8173: Fix mt8173-pinctrl node names
-Date: Thu, 11 Sep 2025 12:09:56 -0300
-Message-ID: <20250911151001.108744-8-ariel.dalessandro@collabora.com>
+Subject: [PATCH v2 08/12] dt-bindings: pinctrl: mt65xx: Allow gpio-line-names
+Date: Thu, 11 Sep 2025 12:09:57 -0300
+Message-ID: <20250911151001.108744-9-ariel.dalessandro@collabora.com>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20250911151001.108744-1-ariel.dalessandro@collabora.com>
 References: <20250911151001.108744-1-ariel.dalessandro@collabora.com>
@@ -107,8 +107,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250911_081442_547130_C3B9207F 
-X-CRM114-Status: UNSURE (   9.54  )
+X-CRM114-CacheID: sfid-20250911_081501_690444_5ACC5F0F 
+X-CRM114-Status: UNSURE (   7.37  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -124,285 +124,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-According to the mediatek,mt8173-pinctrl device tree binding schema, the
-pinctrl node names should match pattern 'pins$'. Fix this.
+Current, the DT bindings for MediaTek's MT65xx Pin controller is missing
+the gpio-line-names property, add it to the associated schema.
 
 Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
 ---
- .../boot/dts/mediatek/mt8173-elm-hana.dtsi    |  2 +-
- arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi  | 26 +++++++++----------
- arch/arm64/boot/dts/mediatek/mt8173-evb.dts   | 14 +++++-----
- arch/arm64/boot/dts/mediatek/mt8173.dtsi      | 14 +++++-----
- 4 files changed, 28 insertions(+), 28 deletions(-)
+ .../devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml    | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi
-index dfc5c2f0ddefd..7d665cedf8a44 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi
-@@ -80,7 +80,7 @@ pins2 {
- 		};
- 	};
+diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml
+index b9680b896f12f..aa71398cf522f 100644
+--- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml
++++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml
+@@ -43,6 +43,8 @@ properties:
+       the amount of cells must be specified as 2. See the below mentioned gpio
+       binding representation for description of particular cells.
  
--	mmc1_pins_default: mmc1default {
-+	mmc1_pins_default: mmc1_default_pins {
- 		pins_wp {
- 			pinmux = <MT8173_PIN_42_DSI_TE__FUNC_GPIO42>;
- 			input-enable;
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-index 8d1f40077a5e5..f52a9906f6a65 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-@@ -601,7 +601,7 @@ &pio {
- 			  "SOC_I2C4_1V8_SDA_400K",
- 			  "SOC_I2C4_1V8_SCL_400K";
- 
--	aud_i2s2: aud_i2s2 {
-+	aud_i2s2: aud_i2s2_pins {
- 		pins1 {
- 			pinmux = <MT8173_PIN_128_I2S0_LRCK__FUNC_I2S1_WS>,
- 				 <MT8173_PIN_129_I2S0_BCK__FUNC_I2S1_BCK>,
-@@ -654,14 +654,14 @@ pins1 {
- 		};
- 	};
- 
--	i2c1_pins_a: i2c1 {
-+	i2c1_pins_a: i2c1_pins {
- 		da9211_pins {
- 			pinmux = <MT8173_PIN_15_EINT15__FUNC_GPIO15>;
- 			bias-pull-up;
- 		};
- 	};
- 
--	mmc0_pins_default: mmc0default {
-+	mmc0_pins_default: mmc0_default_pins {
- 		pins_cmd_dat {
- 			pinmux = <MT8173_PIN_57_MSDC0_DAT0__FUNC_MSDC0_DAT0>,
- 				 <MT8173_PIN_58_MSDC0_DAT1__FUNC_MSDC0_DAT1>,
-@@ -686,7 +686,7 @@ pins_rst {
- 		};
- 	};
- 
--	mmc1_pins_default: mmc1default {
-+	mmc1_pins_default: mmc1_default_pins {
- 		pins_cmd_dat {
- 			pinmux = <MT8173_PIN_73_MSDC1_DAT0__FUNC_MSDC1_DAT0>,
- 				 <MT8173_PIN_74_MSDC1_DAT1__FUNC_MSDC1_DAT1>,
-@@ -710,7 +710,7 @@ pins_insert {
- 		};
- 	};
- 
--	mmc3_pins_default: mmc3default {
-+	mmc3_pins_default: mmc3_default_pins {
- 		pins_dat {
- 			pinmux = <MT8173_PIN_22_MSDC3_DAT0__FUNC_MSDC3_DAT0>,
- 				 <MT8173_PIN_23_MSDC3_DAT1__FUNC_MSDC3_DAT1>,
-@@ -735,7 +735,7 @@ pins_clk {
- 		};
- 	};
- 
--	mmc0_pins_uhs: mmc0 {
-+	mmc0_pins_uhs: mmc0_uhs_pins {
- 		pins_cmd_dat {
- 			pinmux = <MT8173_PIN_57_MSDC0_DAT0__FUNC_MSDC0_DAT0>,
- 				 <MT8173_PIN_58_MSDC0_DAT1__FUNC_MSDC0_DAT1>,
-@@ -769,7 +769,7 @@ pins_rst {
- 		};
- 	};
- 
--	mmc1_pins_uhs: mmc1 {
-+	mmc1_pins_uhs: mmc1_uhs_pins {
- 		pins_cmd_dat {
- 			pinmux = <MT8173_PIN_73_MSDC1_DAT0__FUNC_MSDC1_DAT0>,
- 				 <MT8173_PIN_74_MSDC1_DAT1__FUNC_MSDC1_DAT1>,
-@@ -788,7 +788,7 @@ pins_clk {
- 		};
- 	};
- 
--	mmc3_pins_uhs: mmc3 {
-+	mmc3_pins_uhs: mmc3_uhs_pins {
- 		pins_dat {
- 			pinmux = <MT8173_PIN_22_MSDC3_DAT0__FUNC_MSDC3_DAT0>,
- 				 <MT8173_PIN_23_MSDC3_DAT1__FUNC_MSDC3_DAT1>,
-@@ -813,7 +813,7 @@ pins_clk {
- 		};
- 	};
- 
--	nor_gpio1_pins: nor {
-+	nor_gpio1_pins: nor_pins {
- 		pins1 {
- 			pinmux = <MT8173_PIN_6_EINT6__FUNC_SFCS0>,
- 				 <MT8173_PIN_7_EINT7__FUNC_SFHOLD>,
-@@ -863,7 +863,7 @@ pins1 {
- 		};
- 	};
- 
--	rt5650_irq: rt5650_irq {
-+	rt5650_irq: rt5650_irq_pins {
- 		pins1 {
- 			pinmux = <MT8173_PIN_3_EINT3__FUNC_GPIO3>;
- 			bias-pull-down;
-@@ -877,7 +877,7 @@ pins1 {
- 		};
- 	};
- 
--	spi_pins_a: spi1 {
-+	spi_pins_a: spi1_pins {
- 		pins1 {
- 			pinmux = <MT8173_PIN_0_EINT0__FUNC_GPIO0>;
- 			bias-pull-up;
-@@ -892,7 +892,7 @@ pins_spi {
- 		};
- 	};
- 
--	trackpad_irq: trackpad_irq {
-+	trackpad_irq: trackpad_irq_pins {
- 		pins1 {
- 			pinmux = <MT8173_PIN_117_URXD3__FUNC_GPIO117>;
- 			input-enable;
-@@ -900,7 +900,7 @@ pins1 {
- 		};
- 	};
- 
--	usb_pins: usb {
-+	usb_pins: usb_pins {
- 		pins1 {
- 			pinmux = <MT8173_PIN_101_MSDC2_DAT1__FUNC_GPIO101>;
- 			output-high;
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-index 9fffed0ef4bff..f28110c331c71 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-@@ -179,7 +179,7 @@ pins1 {
- 		};
- 	};
- 
--	mmc0_pins_default: mmc0default {
-+	mmc0_pins_default: mmc0_default_pins {
- 		pins_cmd_dat {
- 			pinmux = <MT8173_PIN_57_MSDC0_DAT0__FUNC_MSDC0_DAT0>,
- 				 <MT8173_PIN_58_MSDC0_DAT1__FUNC_MSDC0_DAT1>,
-@@ -205,7 +205,7 @@ pins_rst {
- 		};
- 	};
- 
--	mmc1_pins_default: mmc1default {
-+	mmc1_pins_default: mmc1_default_pins {
- 		pins_cmd_dat {
- 			pinmux = <MT8173_PIN_73_MSDC1_DAT0__FUNC_MSDC1_DAT0>,
- 				 <MT8173_PIN_74_MSDC1_DAT1__FUNC_MSDC1_DAT1>,
-@@ -229,7 +229,7 @@ pins_insert {
- 		};
- 	};
- 
--	mmc0_pins_uhs: mmc0 {
-+	mmc0_pins_uhs: mmc0_uhs_pins {
- 		pins_cmd_dat {
- 			pinmux = <MT8173_PIN_57_MSDC0_DAT0__FUNC_MSDC0_DAT0>,
- 				 <MT8173_PIN_58_MSDC0_DAT1__FUNC_MSDC0_DAT1>,
-@@ -257,7 +257,7 @@ pins_rst {
- 		};
- 	};
- 
--	mmc1_pins_uhs: mmc1 {
-+	mmc1_pins_uhs: mmc1_uhs_pins {
- 		pins_cmd_dat {
- 			pinmux = <MT8173_PIN_73_MSDC1_DAT0__FUNC_MSDC1_DAT0>,
- 				 <MT8173_PIN_74_MSDC1_DAT1__FUNC_MSDC1_DAT1>,
-@@ -276,14 +276,14 @@ pins_clk {
- 		};
- 	};
- 
--	usb_id_pins_float: usb_iddig_pull_up {
-+	usb_id_pins_float: usb_iddig_pull_up_pins {
- 		pins_iddig {
- 			pinmux = <MT8173_PIN_16_IDDIG__FUNC_IDDIG>;
- 			bias-pull-up;
- 		};
- 	};
- 
--	usb_id_pins_ground: usb_iddig_pull_down {
-+	usb_id_pins_ground: usb_iddig_pull_down_pins {
- 		pins_iddig {
- 			pinmux = <MT8173_PIN_16_IDDIG__FUNC_IDDIG>;
- 			bias-pull-down;
-@@ -474,7 +474,7 @@ mt6397_vibr_reg: ldo_vibr {
- };
- 
- &pio {
--	spi_pins_a: spi0 {
-+	spi_pins_a: spi0_pins {
- 		pins_spi {
- 			pinmux = <MT8173_PIN_69_SPI_CK__FUNC_SPI_CK_0_>,
- 				<MT8173_PIN_70_SPI_MI__FUNC_SPI_MI_0_>,
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 122a57c3780b6..7e522bb8963a0 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -391,7 +391,7 @@ pio: pinctrl@1000b000 {
- 				     <GIC_SPI 146 IRQ_TYPE_LEVEL_HIGH>,
- 				     <GIC_SPI 147 IRQ_TYPE_LEVEL_HIGH>;
- 
--			hdmi_pin: xxx {
-+			hdmi_pin: hdmi_pins {
- 
- 				/*hdmi htplg pin*/
- 				pins1 {
-@@ -401,7 +401,7 @@ pins1 {
- 				};
- 			};
- 
--			i2c0_pins_a: i2c0 {
-+			i2c0_pins_a: i2c0_pins {
- 				pins1 {
- 					pinmux = <MT8173_PIN_45_SDA0__FUNC_SDA0>,
- 						 <MT8173_PIN_46_SCL0__FUNC_SCL0>;
-@@ -409,7 +409,7 @@ pins1 {
- 				};
- 			};
- 
--			i2c1_pins_a: i2c1 {
-+			i2c1_pins_a: i2c1_pins {
- 				pins1 {
- 					pinmux = <MT8173_PIN_125_SDA1__FUNC_SDA1>,
- 						 <MT8173_PIN_126_SCL1__FUNC_SCL1>;
-@@ -417,7 +417,7 @@ pins1 {
- 				};
- 			};
- 
--			i2c2_pins_a: i2c2 {
-+			i2c2_pins_a: i2c2_pins  {
- 				pins1 {
- 					pinmux = <MT8173_PIN_43_SDA2__FUNC_SDA2>,
- 						 <MT8173_PIN_44_SCL2__FUNC_SCL2>;
-@@ -425,7 +425,7 @@ pins1 {
- 				};
- 			};
- 
--			i2c3_pins_a: i2c3 {
-+			i2c3_pins_a: i2c3_pins  {
- 				pins1 {
- 					pinmux = <MT8173_PIN_106_SDA3__FUNC_SDA3>,
- 						 <MT8173_PIN_107_SCL3__FUNC_SCL3>;
-@@ -433,7 +433,7 @@ pins1 {
- 				};
- 			};
- 
--			i2c4_pins_a: i2c4 {
-+			i2c4_pins_a: i2c4_pins  {
- 				pins1 {
- 					pinmux = <MT8173_PIN_133_SDA4__FUNC_SDA4>,
- 						 <MT8173_PIN_134_SCL4__FUNC_SCL4>;
-@@ -441,7 +441,7 @@ pins1 {
- 				};
- 			};
- 
--			i2c6_pins_a: i2c6 {
-+			i2c6_pins_a: i2c6_pins  {
- 				pins1 {
- 					pinmux = <MT8173_PIN_100_MSDC2_DAT0__FUNC_SDA5>,
- 						 <MT8173_PIN_101_MSDC2_DAT1__FUNC_SCL5>;
++  gpio-line-names: true
++
+   mediatek,pctl-regmap:
+     $ref: /schemas/types.yaml#/definitions/phandle-array
+     items:
 -- 
 2.50.1
 
