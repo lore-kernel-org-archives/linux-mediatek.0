@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 161EDCAC58F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 14:21:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76A0BCAC58F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 14:21:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4cur4X75SOX+L9Hbv3cU7NjYIOtP0WJSnDy9zZzynTY=; b=U7t5KjcyAtsO8S
-	mXLoCHe7/z+SPd8nNYezG/mWQ2OKlfGm7dF1+hwMFB7yTt5k4oQuUgInG8K872tJekTi77kM6kuml
-	+09v33qxpDpd6wno+inP9k7D2b8zN2jP6sHkiSZ67vbkbtszo+pfl/K5EiWYzrJlOGo0WDNxICL/v
-	/DxKAt2Gt2pMmuZFmi0fro1Ii+poWaWvyb5UwQWu+n3t6BLTu+FPTBCEcLmyq2iZMrTmU1PtCaSyu
-	xO28YgmeluExZscCCRgfyikM7+Fk1vC30OKKQ4liIppaK9xWxu5Yc4MGJLVHJ952FdqUadH5OC5tD
-	fO9eaXy4BwcDrrf406uw==;
+	List-Owner; bh=Mh847jTVsdHp5PSiZloNgRx7N4mwQX3rcBfkpvW4srE=; b=mTaM4wJkYV77rz
+	udhbK106S9f9tIrbUOoVKvUzJ4NE4mJgKxdT68e9QC7cFU9NfoT7l4PtuJM5fLdzaZx/1Qla3CAnG
+	1tugpVWanEvYsp8rpx8CKRdsczSspfn4D03J/ffk75eYPCzNf7KlWtkf7EzK2lOkQShif91Qu5hKB
+	Ab0uQ10F0fqI/iJqCS6a1wGBiy6xdKSJdXJWoP4oCPDewHrLI6E2Zcfmj+XymP2uuxy2WKkOcX6Gc
+	q7DSoUC+6NKz56PD0h3BXSlpXdqCu+lct9WIF6fltpMxEJCc4LU0Cnh2Ivu+1zGnI764esMKD2uN5
+	AId6hYMKTZh+KY6/Ks9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ux4e7-00000009phI-16Ir;
-	Fri, 12 Sep 2025 14:21:03 +0000
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+	id 1ux4eJ-00000009poh-36Oa;
+	Fri, 12 Sep 2025 14:21:15 +0000
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ux4e5-00000009pf1-2WCP
+	id 1ux4eG-00000009plr-1XXI
 	for linux-mediatek@lists.infradead.org;
-	Fri, 12 Sep 2025 14:21:02 +0000
-Received: by mail-wr1-x435.google.com with SMTP id ffacd0b85a97d-3df726ecff3so1152314f8f.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 12 Sep 2025 07:21:01 -0700 (PDT)
+	Fri, 12 Sep 2025 14:21:14 +0000
+Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-45dcff2f313so14258285e9.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 12 Sep 2025 07:21:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1757686860; x=1758291660; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1757686870; x=1758291670; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=4cur4X75SOX+L9Hbv3cU7NjYIOtP0WJSnDy9zZzynTY=;
-        b=ZvLrIH3guaMYDp/JKBI4q7X2ICIGUyt4zptILWlZw/sDWycA3cKSf55qx5PTaGT5Ct
-         Y1Kjb8fS0mn9JS71Sg0b1AePpnnXz49tA5CXOa97XL+ShB9PHB51NlHONCuQ4qhYsqMd
-         JVpqqafS+fHn3iTYJPoDCG0sN+bAfkag1bws6Fpk2YnefNTVGc0bE43qr9ERiFpeUbjc
-         7g40QesWYGmoAhr8/k6gLmZSgFecWNSgvsTa0i7TXswaEayCfWoikq/DKPs1va/33I3i
-         quU4kb44nzH7a9wrIrQlvezobr8C02gaG+gqDD6rAUdruc0vtS64IJZT9Fe+ZaHZDBIL
-         4EQA==
+        bh=Mh847jTVsdHp5PSiZloNgRx7N4mwQX3rcBfkpvW4srE=;
+        b=duZv5GYt2pJCLkIfdCv3YN0paDKPBR1p27NweNhF+ANQxHyosw5qifDHnSrP+2yAsD
+         S3xSz8E1fILosWtknXpz97u/Kw9WJpuAiCUyrVpfNQWl3gb94yv00fXlwYHg4gy84Xo6
+         8ORfCjZeI4xDNt5FUPYEhzJNMsbmhAGLT8/vylVFLft6/uNI5+96/AL0dE4O66xnP3nF
+         QFoSR0amAkA1rXRCLP7D4eSTUA+kI7IeNtPG4IyLm3faE2VbOiUHGKQdN7pQEqsyP1YG
+         589SlYh7xz1eTeagyqkjIs0JZ8wWNqbOoyEd0eVx5JM+qsLDI7WywcU06HVDM2jwm4ZA
+         X8EQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757686860; x=1758291660;
+        d=1e100.net; s=20230601; t=1757686870; x=1758291670;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=4cur4X75SOX+L9Hbv3cU7NjYIOtP0WJSnDy9zZzynTY=;
-        b=lToLl4XnBO/DBy9YwpqT5+PBhjmcpeXlhJwhXRiFfmk2IlmBMn8MuvCRWBaRSrfsZZ
-         9efc3wt8YMIsVpzT+UM1gwXf9fLh5MpNZ46r7JrgpkGwHHTTTlQXWYV1V2hInKZfel+H
-         39CNw4GqQBIdyltqSheFkJILsVQdvJr7Wy3wlyn6vVHn8DusnMC+oGfp2P0F0uFt/prW
-         X8RHdwrF/pf8qXFaT1DQEyRDAUgBB7OlEYyjxBy/KfGbIFv1HMr/SN2wCkUtIMU5JvfN
-         yb7DyAIxcWOgAiHjkw8G1jgrKYSfoQ2enKQhCF2Crbv1k81o3VRrfi4iKpMnoYtcqKzj
-         U52A==
-X-Forwarded-Encrypted: i=1; AJvYcCUQL4VP10Ke35Okg5WFbGGW7JLbBD2A2rrrqohaZgy4YxeL+YFlrcT3n0tU5Kx7EMd4EzXvKF/c/juP49ru8A==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy1dYfSPgy0kM+5mQVRW6MdJ0xld8Em8nggaXG68P9K/1hZ6916
-	zGxJaft9Ylk+8qufM4q/dbXr0LpViv73K1u7RlVgetzfeb7EKrHsUrqu
-X-Gm-Gg: ASbGncsJFWQsJteW3WgMt2M+Gj2AJPHOhLtQHkBZYLtKSZWm0fL7+n+ATJNfslikntO
-	HEeoVkKX4q7DwtLF/uVT3RSamwhAPgAHaE73oosd73GEn3daimzWxBVgbabz4fa6oVsEYbuhzSx
-	R8l7RSI7doWmn3sOZ1g1MeKRbQ6uvcFD5SRq5i8wt9wxluOryVVtEeAjHa8fgITMQi1uKY4VWD0
-	VcRw/7zCJ+px8Xs4ziDqjhba698yXuvffZPAFXWORDcqWThjaax7OH904uxXfITNNn+nL7V0bHI
-	wnzzqtUlYyQVEcK9d5jEUh4oAW4D1R0iLPpbxwr2YBZz2q3H4wuM07ICjQdjpvYzWZIaS3XbHsT
-	FWhWk3lrhyNczH9aYG9I/CyRxtv/za2ykHDi1MSSqI0gKCaX4WGHO
-X-Google-Smtp-Source: AGHT+IETnSVaOaRKN/Bmr4IDnznOAwChZ2qQ4ywH5VxUBMfTXYJEq367ON+ECBnG0YBYE/RxZE/ipA==
-X-Received: by 2002:a05:6000:2012:b0:3e7:441e:c9e1 with SMTP id ffacd0b85a97d-3e765793127mr2932126f8f.18.1757686859589;
-        Fri, 12 Sep 2025 07:20:59 -0700 (PDT)
+        bh=Mh847jTVsdHp5PSiZloNgRx7N4mwQX3rcBfkpvW4srE=;
+        b=u1t5uO0AfdNQQ0XzAS51cQ2J8TqYKJ5l5FOIS1WkUd5oZDtuzkECMn8QaesIH5/owR
+         LzXoB3zwBFZBT/kIgo6SUgDjd6EJxw35OmvQlNO5UbPiqfZLu0t4/ehfxEfvSl+DXBSu
+         dgpFN7+coYD2VYN63YNLJgB5afiJg/0ljEH7w3K6jZmB/mD1m/Hmvb+4avWSFBO5gavF
+         DQoplvpioaVhyCLlei38CKyCfcw9eEUic8mdhBbIKpS62km0PABwglE/78YYeZZBJyNg
+         Bzu+jzBVJK/68UiXE7Vza7B3SBknqeSSmhF+CnnsgEKfiTYqNijQe07BebwPbPXo2iKJ
+         DAOg==
+X-Forwarded-Encrypted: i=1; AJvYcCVSwr5gT80WfokHgIfN4p9HGEDTyq26dMz96VCk3tQ9aP8ovmhgba/Och9dVd7bmS4A3wKFgMnpFiwFFOk1BA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yygh1VEtLzmrN0fCAtelmDdklCxOJbmAYYymJWjLSPK4zWeMNvN
+	/yP+x3Hltrfh49GQNiS3rzIQLbSx2ara0hxNnbSRweden/eCH6Mt67g3
+X-Gm-Gg: ASbGncsHXzK+yoMkxiBhjKfOvMgkEEfhvCd1nioeDGDCVRHIvLIANX4rlQWPeruCLit
+	InSanm/FxbctDwD2ogKwt/rMZog0wpmaAjqVOuM75iOKwXoOBpm8v3kkGCBxHjNRJewpCXXgOGZ
+	p4ClkFLrEjK2Pc+8euq1HmUdw38PEoOfMIjjHjHHpyMuNEaUITaTgGHs5LqKkiFcJ8D2iIPG8tt
+	UVK8RCN4yD56G8UpXbpLAGDyIaKP5GPR9UwmpGSGTc2PZ8s7XaxbY9jv9liCgwM3TqNfrMxsDDx
+	KVF9itXBbHYmNm5tHHjjNHHqCBGPtAITma4DmUW0yssA3kijZPugdgzV3NrwjOi74WfzJZsXws2
+	kRmiLe4jCRmeqE+yWPII1gRdE2kCw2zPwLuy0JmZixF8xonlizCrh
+X-Google-Smtp-Source: AGHT+IEgVeXeyJbbLWzjxvD2c17xr/vxYAjjhHQO52g1Vm4B1ScelvqGjTFjTPOjVLrbuAtUqgjPzg==
+X-Received: by 2002:a05:600c:4453:b0:45d:d356:c358 with SMTP id 5b1f17b1804b1-45f211db372mr39596505e9.16.1757686870181;
+        Fri, 12 Sep 2025 07:21:10 -0700 (PDT)
 Received: from [192.168.2.177] ([91.116.220.47])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3e7607cd415sm6697435f8f.30.2025.09.12.07.20.55
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3e760787080sm6943265f8f.20.2025.09.12.07.21.06
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 12 Sep 2025 07:20:58 -0700 (PDT)
-Message-ID: <cda40929-12d7-4206-a4d9-3a74314c6b2e@gmail.com>
-Date: Fri, 12 Sep 2025 16:13:30 +0200
+        Fri, 12 Sep 2025 07:21:09 -0700 (PDT)
+Message-ID: <cbbdf567-7039-40cd-8e76-5e0d05354af1@gmail.com>
+Date: Fri, 12 Sep 2025 16:18:22 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 25/38] arm64: dts: mediatek: mt7986a-bpi-r3: Set
- interrupt-parent to mdio switch
+Subject: Re: [PATCH 29/38] arm64: dts: mediatek: mt8183: Fix pinctrl node
+ names
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  linux-mediatek@lists.infradead.org, robh@kernel.org
 References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com>
- <20250724083914.61351-26-angelogioacchino.delregno@collabora.com>
+ <20250724083914.61351-30-angelogioacchino.delregno@collabora.com>
 Content-Language: en-US, ca-ES, es-ES
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
@@ -125,12 +125,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20250724083914.61351-26-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250724083914.61351-30-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250912_072101_674632_DC26225B 
-X-CRM114-Status: GOOD (  13.74  )
+X-CRM114-CacheID: sfid-20250912_072112_562309_A7BBA123 
+X-CRM114-Status: GOOD (  12.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -149,35 +149,575 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 24/07/2025 10:39, AngeloGioacchino Del Regno wrote:
-> Being this an interrupt controller, the binding forbids to use
-> interrupts-extended and wants an `interrupts` property instead.
-> 
-> Since this interrupt controller's parent is on the GPIO controller
-> set it as interrupt-parent and change interrupts-extended to just
-> interrupts to silence a dtbs_check warning.
+> Fix the pinctrl node names to adhere to the bindings, as the main
+> pin node is supposed to be named like "uart0-pins" and the pinmux
+> node named like "pins-bus".
 > 
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 Applied, thanks
 
 > ---
->   arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
+>   .../mediatek/mt8183-kukui-audio-da7219.dtsi   |  4 +-
+>   .../mediatek/mt8183-kukui-audio-ts3a227e.dtsi |  2 +-
+>   .../dts/mediatek/mt8183-kukui-jacuzzi.dtsi    | 22 +++---
+>   .../dts/mediatek/mt8183-kukui-kakadu.dtsi     | 16 ++--
+>   .../dts/mediatek/mt8183-kukui-kodama.dtsi     | 12 +--
+>   .../boot/dts/mediatek/mt8183-kukui-krane.dtsi | 12 +--
+>   .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 78 +++++++++----------
+>   7 files changed, 73 insertions(+), 73 deletions(-)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-> index 6d2762866a1a..e7654dc9a1c9 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-> @@ -200,8 +200,9 @@ switch: switch@31 {
->   		compatible = "mediatek,mt7531";
->   		reg = <31>;
->   		interrupt-controller;
-> +		interrupt-parent = <&pio>;
-> +		interrupts = <66 IRQ_TYPE_LEVEL_HIGH>;
->   		#interrupt-cells = <1>;
-> -		interrupts-extended = <&pio 66 IRQ_TYPE_LEVEL_HIGH>;
->   		reset-gpios = <&pio 5 GPIO_ACTIVE_HIGH>;
->   	};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219.dtsi
+> index 586eee79c73c..f69ffcb9792a 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219.dtsi
+> @@ -39,8 +39,8 @@ da7219_aad {
 >   };
+>   
+>   &pio {
+> -	da7219_pins: da7219_pins {
+> -		pins1 {
+> +	da7219_pins: da7219-pins {
+> +		pins-intn {
+>   			pinmux = <PINMUX_GPIO165__FUNC_GPIO165>;
+>   			input-enable;
+>   			bias-pull-up;
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-ts3a227e.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-ts3a227e.dtsi
+> index 548e22c194a2..c4aedf8cbfcd 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-ts3a227e.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-ts3a227e.dtsi
+> @@ -17,7 +17,7 @@ ts3a227e: ts3a227e@3b {
+>   };
+>   
+>   &pio {
+> -	ts3a227e_pins: ts3a227e_pins {
+> +	ts3a227e_pins: ts3a227e-pins {
+>   		pins1 {
+>   			pinmux = <PINMUX_GPIO157__FUNC_GPIO157>;
+>   			input-enable;
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
+> index 80888bd4ad82..f2afca63c75a 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
+> @@ -395,14 +395,14 @@ &pio {
+>   		"",
+>   		"";
+>   
+> -	pp1000_mipibrdg_en: pp1000-mipibrdg-en {
+> +	pp1000_mipibrdg_en: pp1000-mipibrdg-en-pins {
+>   		pins1 {
+>   			pinmux = <PINMUX_GPIO54__FUNC_GPIO54>;
+>   			output-low;
+>   		};
+>   	};
+>   
+> -	pp1800_mipibrdg_en: pp1800-mipibrdg-en {
+> +	pp1800_mipibrdg_en: pp1800-mipibrdg-en-pins {
+>   		pins1 {
+>   			pinmux = <PINMUX_GPIO36__FUNC_GPIO36>;
+>   			output-low;
+> @@ -410,20 +410,20 @@ pins1 {
+>   	};
+>   
+>   	pp3300_panel_pins: pp3300-panel-pins {
+> -		panel_3v3_enable: panel-3v3-enable {
+> +		panel_3v3_enable: pins-panel-en {
+>   			pinmux = <PINMUX_GPIO35__FUNC_GPIO35>;
+>   			output-low;
+>   		};
+>   	};
+>   
+> -	ppvarp_lcd_en: ppvarp-lcd-en {
+> +	ppvarp_lcd_en: ppvarp-lcd-en-pins {
+>   		pins1 {
+>   			pinmux = <PINMUX_GPIO66__FUNC_GPIO66>;
+>   			output-low;
+>   		};
+>   	};
+>   
+> -	ppvarn_lcd_en: ppvarn-lcd-en {
+> +	ppvarn_lcd_en: ppvarn-lcd-en-pins {
+>   		pins1 {
+>   			pinmux = <PINMUX_GPIO166__FUNC_GPIO166>;
+>   			output-low;
+> @@ -444,27 +444,27 @@ pins2 {
+>   	};
+>   
+>   	touchscreen_pins: touchscreen-pins {
+> -		touch-int-odl {
+> +		pins-intn {
+>   			pinmux = <PINMUX_GPIO155__FUNC_GPIO155>;
+>   			input-enable;
+>   			bias-pull-up;
+>   		};
+>   
+> -		touch-rst-l {
+> +		pins-rst {
+>   			pinmux = <PINMUX_GPIO156__FUNC_GPIO156>;
+>   			output-high;
+>   		};
+>   	};
+>   
+>   	trackpad_pins: trackpad-pins {
+> -		trackpad-int {
+> +		pins-intn {
+>   			pinmux = <PINMUX_GPIO7__FUNC_GPIO7>;
+>   			input-enable;
+>   			bias-disable; /* pulled externally */
+>   		};
+>   	};
+>   
+> -	pp3300_mipibrdg_en: pp3300-mipibrdg-en {
+> +	pp3300_mipibrdg_en: pp3300-mipibrdg-en-pins {
+>   		pins1 {
+>   			pinmux = <PINMUX_GPIO37__FUNC_GPIO37>;
+>   			output-low;
+> @@ -472,13 +472,13 @@ pins1 {
+>   	};
+>   
+>   	volume_button_pins: volume-button-pins {
+> -		voldn-btn-odl {
+> +		pins-voldn {
+>   			pinmux = <PINMUX_GPIO6__FUNC_GPIO6>;
+>   			input-enable;
+>   			bias-pull-up;
+>   		};
+>   
+> -		volup-btn-odl {
+> +		pins-volup {
+>   			pinmux = <PINMUX_GPIO5__FUNC_GPIO5>;
+>   			input-enable;
+>   			bias-pull-up;
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
+> index ff02f63bac29..472d4987615a 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
+> @@ -304,35 +304,35 @@ &pio {
+>   		"",
+>   		"";
+>   
+> -	ppvarp_lcd_en: ppvarp-lcd-en {
+> +	ppvarp_lcd_en: ppvarp-lcd-en-pins {
+>   		pins1 {
+>   			pinmux = <PINMUX_GPIO66__FUNC_GPIO66>;
+>   			output-low;
+>   		};
+>   	};
+>   
+> -	ppvarn_lcd_en: ppvarn-lcd-en {
+> +	ppvarn_lcd_en: ppvarn-lcd-en-pins {
+>   		pins1 {
+>   			pinmux = <PINMUX_GPIO166__FUNC_GPIO166>;
+>   			output-low;
+>   		};
+>   	};
+>   
+> -	pp1800_lcd_en: pp1800-lcd-en {
+> +	pp1800_lcd_en: pp1800-lcd-en-pins {
+>   		pins1 {
+>   			pinmux = <PINMUX_GPIO36__FUNC_GPIO36>;
+>   			output-low;
+>   		};
+>   	};
+>   
+> -	open_touch: open_touch {
+> -		irq_pin {
+> +	open_touch: opentouch-pins {
+> +		pins-intn {
+>   			pinmux = <PINMUX_GPIO155__FUNC_GPIO155>;
+>   			input-enable;
+>   			bias-pull-up;
+>   		};
+>   
+> -		rst_pin {
+> +		pins-rst {
+>   			pinmux = <PINMUX_GPIO156__FUNC_GPIO156>;
+>   
+>   			/*
+> @@ -349,8 +349,8 @@ rst_pin {
+>   		};
+>   	};
+>   
+> -	pen_eject: peneject {
+> -		pen_eject {
+> +	pen_eject: pen-pins {
+> +		pins-eject {
+>   			pinmux = <PINMUX_GPIO6__FUNC_GPIO6>;
+>   			input-enable;
+>   			/* External pull-up. */
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
+> index da6e767b4cee..1b21e3958061 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
+> @@ -292,35 +292,35 @@ &pio {
+>   		"",
+>   		"";
+>   
+> -	ppvarp_lcd_en: ppvarp-lcd-en {
+> +	ppvarp_lcd_en: ppvarp-lcd-en-pins {
+>   		pins1 {
+>   			pinmux = <PINMUX_GPIO66__FUNC_GPIO66>;
+>   			output-low;
+>   		};
+>   	};
+>   
+> -	ppvarn_lcd_en: ppvarn-lcd-en {
+> +	ppvarn_lcd_en: ppvarn-lcd-en-pins {
+>   		pins1 {
+>   			pinmux = <PINMUX_GPIO166__FUNC_GPIO166>;
+>   			output-low;
+>   		};
+>   	};
+>   
+> -	pp1800_lcd_en: pp1800-lcd-en {
+> +	pp1800_lcd_en: pp1800-lcd-en-pins {
+>   		pins1 {
+>   			pinmux = <PINMUX_GPIO36__FUNC_GPIO36>;
+>   			output-low;
+>   		};
+>   	};
+>   
+> -	touch_default: touchdefault {
+> -		pin_irq {
+> +	touch_default: touch-pins {
+> +		pins-intn {
+>   			pinmux = <PINMUX_GPIO155__FUNC_GPIO155>;
+>   			input-enable;
+>   			bias-pull-up;
+>   		};
+>   
+> -		touch_pin_reset: pin_reset {
+> +		touch_pin_reset: pins-rst {
+>   			pinmux = <PINMUX_GPIO156__FUNC_GPIO156>;
+>   
+>   			/*
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
+> index 8b56b8564ed7..a85c73b43195 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
+> @@ -296,35 +296,35 @@ &pio {
+>   		"",
+>   		"";
+>   
+> -	ppvarp_lcd_en: ppvarp-lcd-en {
+> +	ppvarp_lcd_en: ppvarp-lcd-en-pins {
+>   		pins1 {
+>   			pinmux = <PINMUX_GPIO66__FUNC_GPIO66>;
+>   			output-low;
+>   		};
+>   	};
+>   
+> -	ppvarn_lcd_en: ppvarn-lcd-en {
+> +	ppvarn_lcd_en: ppvarn-lcd-en-pins {
+>   		pins1 {
+>   			pinmux = <PINMUX_GPIO166__FUNC_GPIO166>;
+>   			output-low;
+>   		};
+>   	};
+>   
+> -	pp1800_lcd_en: pp1800-lcd-en {
+> +	pp1800_lcd_en: pp1800-lcd-en-pins {
+>   		pins1 {
+>   			pinmux = <PINMUX_GPIO36__FUNC_GPIO36>;
+>   			output-low;
+>   		};
+>   	};
+>   
+> -	open_touch: open_touch {
+> -		irq_pin {
+> +	open_touch: opentouch-pins {
+> +		pins-intn {
+>   			pinmux = <PINMUX_GPIO155__FUNC_GPIO155>;
+>   			input-enable;
+>   			bias-pull-up;
+>   		};
+>   
+> -		rst_pin {
+> +		pins-rst {
+>   			pinmux = <PINMUX_GPIO156__FUNC_GPIO156>;
+>   
+>   			/*
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> index 400c61d11035..8f3a0e85b4ed 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> @@ -435,7 +435,7 @@ &mt6358_vsram_gpu_reg {
+>   };
+>   
+>   &pio {
+> -	aud_pins_default: audiopins {
+> +	aud_pins_default: audio-pins {
+>   		pins-bus {
+>   			pinmux = <PINMUX_GPIO97__FUNC_I2S2_MCK>,
+>   				<PINMUX_GPIO98__FUNC_I2S2_BCK>,
+> @@ -457,7 +457,7 @@ pins-bus {
+>   		};
+>   	};
+>   
+> -	aud_pins_tdm_out_on: audiotdmouton {
+> +	aud_pins_tdm_out_on: audio-tdmout-on-pins {
+>   		pins-bus {
+>   			pinmux = <PINMUX_GPIO169__FUNC_TDM_BCK_2ND>,
+>   				<PINMUX_GPIO170__FUNC_TDM_LRCK_2ND>,
+> @@ -469,7 +469,7 @@ pins-bus {
+>   		};
+>   	};
+>   
+> -	aud_pins_tdm_out_off: audiotdmoutoff {
+> +	aud_pins_tdm_out_off: audio-tdmout-off-pins {
+>   		pins-bus {
+>   			pinmux = <PINMUX_GPIO169__FUNC_GPIO169>,
+>   				<PINMUX_GPIO170__FUNC_GPIO170>,
+> @@ -490,22 +490,22 @@ pins-bt-en {
+>   		};
+>   	};
+>   
+> -	ec_ap_int_odl: ec-ap-int-odl {
+> -		pins1 {
+> +	ec_ap_int_odl: ec-ap-int-odl-pins {
+> +		pins-intn {
+>   			pinmux = <PINMUX_GPIO151__FUNC_GPIO151>;
+>   			input-enable;
+>   			bias-pull-up;
+>   		};
+>   	};
+>   
+> -	h1_int_od_l: h1-int-od-l {
+> -		pins1 {
+> +	h1_int_od_l: h1-int-od-l-pins {
+> +		pins-intn {
+>   			pinmux = <PINMUX_GPIO153__FUNC_GPIO153>;
+>   			input-enable;
+>   		};
+>   	};
+>   
+> -	i2c0_pins: i2c0 {
+> +	i2c0_pins: i2c0-pins {
+>   		pins-bus {
+>   			pinmux = <PINMUX_GPIO82__FUNC_SDA0>,
+>   				 <PINMUX_GPIO83__FUNC_SCL0>;
+> @@ -513,7 +513,7 @@ pins-bus {
+>   		};
+>   	};
+>   
+> -	i2c1_pins: i2c1 {
+> +	i2c1_pins: i2c1-pins {
+>   		pins-bus {
+>   			pinmux = <PINMUX_GPIO81__FUNC_SDA1>,
+>   				 <PINMUX_GPIO84__FUNC_SCL1>;
+> @@ -521,7 +521,7 @@ pins-bus {
+>   		};
+>   	};
+>   
+> -	i2c2_pins: i2c2 {
+> +	i2c2_pins: i2c2-pins {
+>   		pins-bus {
+>   			pinmux = <PINMUX_GPIO103__FUNC_SCL2>,
+>   				 <PINMUX_GPIO104__FUNC_SDA2>;
+> @@ -529,7 +529,7 @@ pins-bus {
+>   		};
+>   	};
+>   
+> -	i2c3_pins: i2c3 {
+> +	i2c3_pins: i2c3-pins {
+>   		pins-bus {
+>   			pinmux = <PINMUX_GPIO50__FUNC_SCL3>,
+>   				 <PINMUX_GPIO51__FUNC_SDA3>;
+> @@ -537,7 +537,7 @@ pins-bus {
+>   		};
+>   	};
+>   
+> -	i2c4_pins: i2c4 {
+> +	i2c4_pins: i2c4-pins {
+>   		pins-bus {
+>   			pinmux = <PINMUX_GPIO105__FUNC_SCL4>,
+>   				 <PINMUX_GPIO106__FUNC_SDA4>;
+> @@ -545,7 +545,7 @@ pins-bus {
+>   		};
+>   	};
+>   
+> -	i2c5_pins: i2c5 {
+> +	i2c5_pins: i2c5-pins {
+>   		pins-bus {
+>   			pinmux = <PINMUX_GPIO48__FUNC_SCL5>,
+>   				 <PINMUX_GPIO49__FUNC_SDA5>;
+> @@ -553,7 +553,7 @@ pins-bus {
+>   		};
+>   	};
+>   
+> -	i2c6_pins: i2c6 {
+> +	i2c6_pins: i2c6-pins {
+>   		pins-bus {
+>   			pinmux = <PINMUX_GPIO11__FUNC_SCL6>,
+>   				 <PINMUX_GPIO12__FUNC_SDA6>;
+> @@ -561,7 +561,7 @@ pins-bus {
+>   		};
+>   	};
+>   
+> -	mmc0_pins_default: mmc0-pins-default {
+> +	mmc0_pins_default: mmc0-default-pins {
+>   		pins-cmd-dat {
+>   			pinmux = <PINMUX_GPIO123__FUNC_MSDC0_DAT0>,
+>   				 <PINMUX_GPIO128__FUNC_MSDC0_DAT1>,
+> @@ -625,7 +625,7 @@ pins-rst {
+>   		};
+>   	};
+>   
+> -	mmc1_pins_default: mmc1-pins-default {
+> +	mmc1_pins_default: mmc1-default-pins {
+>   		pins-cmd-dat {
+>   			pinmux = <PINMUX_GPIO31__FUNC_MSDC1_CMD>,
+>   				 <PINMUX_GPIO32__FUNC_MSDC1_DAT0>,
+> @@ -643,7 +643,7 @@ pins-clk {
+>   		};
+>   	};
+>   
+> -	mmc1_pins_uhs: mmc1-pins-uhs {
+> +	mmc1_pins_uhs: mmc1-uhs-pins {
+>   		pins-cmd-dat {
+>   			pinmux = <PINMUX_GPIO31__FUNC_MSDC1_CMD>,
+>   				 <PINMUX_GPIO32__FUNC_MSDC1_DAT0>,
+> @@ -663,15 +663,15 @@ pins-clk {
+>   		};
+>   	};
+>   
+> -	panel_pins_default: panel-pins-default {
+> -		panel-reset {
+> +	panel_pins_default: panel-pins {
+> +		pins-panel-reset {
+>   			pinmux = <PINMUX_GPIO45__FUNC_GPIO45>;
+>   			output-low;
+>   			bias-pull-up;
+>   		};
+>   	};
+>   
+> -	pwm0_pin_default: pwm0-pin-default {
+> +	pwm0_pin_default: pwm0-pins {
+>   		pins1 {
+>   			pinmux = <PINMUX_GPIO176__FUNC_GPIO176>;
+>   			output-high;
+> @@ -682,15 +682,15 @@ pins2 {
+>   		};
+>   	};
+>   
+> -	scp_pins: scp {
+> +	scp_pins: scp-pins {
+>   		pins-scp-uart {
+>   			pinmux = <PINMUX_GPIO110__FUNC_TP_URXD1_AO>,
+>   				 <PINMUX_GPIO112__FUNC_TP_UTXD1_AO>;
+>   		};
+>   	};
+>   
+> -	spi0_pins: spi0 {
+> -		pins-spi {
+> +	spi0_pins: spi0-pins {
+> +		pins-bus {
+>   			pinmux = <PINMUX_GPIO85__FUNC_SPI0_MI>,
+>   				 <PINMUX_GPIO86__FUNC_GPIO86>,
+>   				 <PINMUX_GPIO87__FUNC_SPI0_MO>,
+> @@ -699,8 +699,8 @@ pins-spi {
+>   		};
+>   	};
+>   
+> -	spi1_pins: spi1 {
+> -		pins-spi {
+> +	spi1_pins: spi1-pins {
+> +		pins-bus {
+>   			pinmux = <PINMUX_GPIO161__FUNC_SPI1_A_MI>,
+>   				 <PINMUX_GPIO162__FUNC_SPI1_A_CSB>,
+>   				 <PINMUX_GPIO163__FUNC_SPI1_A_MO>,
+> @@ -709,21 +709,21 @@ pins-spi {
+>   		};
+>   	};
+>   
+> -	spi2_pins: spi2 {
+> -		pins-spi {
+> +	spi2_pins: spi2-pins {
+> +		pins-bus {
+>   			pinmux = <PINMUX_GPIO0__FUNC_SPI2_CSB>,
+>   				 <PINMUX_GPIO1__FUNC_SPI2_MO>,
+>   				 <PINMUX_GPIO2__FUNC_SPI2_CLK>;
+>   			bias-disable;
+>   		};
+> -		pins-spi-mi {
+> +		pins-miso {
+>   			pinmux = <PINMUX_GPIO94__FUNC_SPI2_MI>;
+>   			mediatek,pull-down-adv = <00>;
+>   		};
+>   	};
+>   
+> -	spi3_pins: spi3 {
+> -		pins-spi {
+> +	spi3_pins: spi3-pins {
+> +		pins-bus {
+>   			pinmux = <PINMUX_GPIO21__FUNC_SPI3_MI>,
+>   				 <PINMUX_GPIO22__FUNC_SPI3_CSB>,
+>   				 <PINMUX_GPIO23__FUNC_SPI3_MO>,
+> @@ -732,8 +732,8 @@ pins-spi {
+>   		};
+>   	};
+>   
+> -	spi4_pins: spi4 {
+> -		pins-spi {
+> +	spi4_pins: spi4-pins {
+> +		pins-bus {
+>   			pinmux = <PINMUX_GPIO17__FUNC_SPI4_MI>,
+>   				 <PINMUX_GPIO18__FUNC_SPI4_CSB>,
+>   				 <PINMUX_GPIO19__FUNC_SPI4_MO>,
+> @@ -742,8 +742,8 @@ pins-spi {
+>   		};
+>   	};
+>   
+> -	spi5_pins: spi5 {
+> -		pins-spi {
+> +	spi5_pins: spi5-pins {
+> +		pins-bus {
+>   			pinmux = <PINMUX_GPIO13__FUNC_SPI5_MI>,
+>   				 <PINMUX_GPIO14__FUNC_SPI5_CSB>,
+>   				 <PINMUX_GPIO15__FUNC_SPI5_MO>,
+> @@ -752,7 +752,7 @@ pins-spi {
+>   		};
+>   	};
+>   
+> -	uart0_pins_default: uart0-pins-default {
+> +	uart0_pins_default: uart0-pins {
+>   		pins-rx {
+>   			pinmux = <PINMUX_GPIO95__FUNC_URXD0>;
+>   			input-enable;
+> @@ -763,7 +763,7 @@ pins-tx {
+>   		};
+>   	};
+>   
+> -	uart1_pins_default: uart1-pins-default {
+> +	uart1_pins_default: uart1-pins {
+>   		pins-rx {
+>   			pinmux = <PINMUX_GPIO121__FUNC_URXD1>;
+>   			input-enable;
+> @@ -781,7 +781,7 @@ pins-cts {
+>   		};
+>   	};
+>   
+> -	uart1_pins_sleep: uart1-pins-sleep {
+> +	uart1_pins_sleep: uart1-sleep-pins {
+>   		pins-rx {
+>   			pinmux = <PINMUX_GPIO121__FUNC_GPIO121>;
+>   			input-enable;
+> @@ -799,14 +799,14 @@ pins-cts {
+>   		};
+>   	};
+>   
+> -	wifi_pins_pwrseq: wifi-pins-pwrseq {
+> +	wifi_pins_pwrseq: wifi-pwr-pins {
+>   		pins-wifi-enable {
+>   			pinmux = <PINMUX_GPIO119__FUNC_GPIO119>;
+>   			output-low;
+>   		};
+>   	};
+>   
+> -	wifi_pins_wakeup: wifi-pins-wakeup {
+> +	wifi_pins_wakeup: wifi-wake-pins {
+>   		pins-wifi-wakeup {
+>   			pinmux = <PINMUX_GPIO113__FUNC_GPIO113>;
+>   			input-enable;
 
 
