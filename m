@@ -4,95 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26C6FCA101F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 22:11:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F82CCAC582
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 22:38:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PKCZT/K4e4byUQqhyOs9c8fQ3Jbf6/69LbbDKjwZwLE=; b=gEoH1oVPt6szedQPl0lVcUpuIQ
-	TYmMjnpChKA+0DuTj1VbtGAGCnn69RibJYT6A8XY514LdUKkc7+ga8uDF9zcSU+zh4JP0VDVCziDr
-	Nmx02t/ZBccppmfHshls+v2l8jXMCGNAXevebUDkQg38KUC5b9h6Dbg26VH2pyIYeN4HUsvVvEM2L
-	VzeXZRQxf7JjBEwpH+oTFkVfNYDOoKjyEOFA4iMFStdcx+Jggl0nRpxVkPxbgTo7XNvTMVbmuijUM
-	HOBoCqNFiCwDgnG4e8GfIrCjyRpBMowh95F4GoduZWvSpaS7IaD0AoY3kIPYalcCNfZ6RmhCfd7O7
-	5/ke9cGA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cQ4bZQVeZUAVpc+yTRE9o/ba8s956lk7mtrAzur0D1g=; b=r4oKlVonESd9lWMUohYsSMG6np
+	MVPzK7Qx9NrwgaMtX0crFHmGurVUJuFFJzUqyp7uLv2K0fqduEFZ+d56Y5Fsr8YI6bBt4YQN2qG8T
+	94zanlJmXSrxkpZnRjHxoNloG4YmBvaOcWxwHDbGR8Jvce7qDzWkN+r0fgFxHyv8ThVZoo1a4wkmv
+	c6iBCwtDxBiXMnWVxMXUllcWS7dhk/NwkqxTtFHV2psvTykUL386RmLOsCUfFIUfBzZ0Mik8huNjB
+	QBIY/ZniwCNlHJJWgQX6VjwkvOG3RKDlWXSzj2sIrP4uUrZQ88EbHkmZfMFVumG2cfi3cISmzu/YG
+	QvHfUCYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uxBzH-0000000BmdY-2FvJ;
-	Fri, 12 Sep 2025 22:11:23 +0000
-Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
+	id 1uxCOz-0000000BtAW-2eWW;
+	Fri, 12 Sep 2025 22:37:57 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uxBzF-0000000BmcY-43x3
-	for linux-mediatek@lists.infradead.org;
-	Fri, 12 Sep 2025 22:11:23 +0000
-Received: by mail-yb1-xb35.google.com with SMTP id 3f1490d57ef6-ea0297e9cd4so1547376276.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 12 Sep 2025 15:11:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1757715081; x=1758319881; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=PKCZT/K4e4byUQqhyOs9c8fQ3Jbf6/69LbbDKjwZwLE=;
-        b=ZCUfiN+HFqvwX+TaPxMBVhCPfLUrf3/CS/HXyueDYsuMDJ4VDb52q3xupnI7paMf+o
-         +9qJoUlQmM9dpQnwj0O1/fIW1yyc8Z8z9OU/bxSFaGbPlXxqF6uijB8fvzL8gFThh3/r
-         mM1dqLdl5XwtFh6zpc2dpe7KCx6d7mwhR0H2gOdSAfivA4mu03/9R6QhBfVkC1sAShq0
-         WKI0V1uDgP7msIHVhx9uljhYab3EW+peNKN8BAJ6QS1NuJmZnU2K8ptmukAouZCCIb6u
-         9dqC9ggfuQ9bapbUIEVQT71mQdFE+Z871kL06HtvuwRjgXkMuAwnSWwGJprScXICoi8x
-         8+uQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757715081; x=1758319881;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=PKCZT/K4e4byUQqhyOs9c8fQ3Jbf6/69LbbDKjwZwLE=;
-        b=AFWsrUXhZc7YXqg4TBwttWSUNBmXW4yLhhsRDbzhHe0P0UXF92cTmLo3Ot7HLZAN0N
-         5JOEy59dEPTVwKjbElIRYI4ZfbctnfCII9rWyaCvSmYuLJ7nKyK28A4jGNfWJqT2K6bj
-         6FI0CCiFl3fbiR/d651uGbZ6ChOeBxMXxti1LYzbPD7hhU47TvpGxSOa4MdOZPBGu55t
-         cC7XSouDhVFe6CuBxfNVxx8FAAUK0EWg2hIMJcbeVUYPojaJeaivvgQFjwLCDf9l0u4g
-         FNijFm5qC/AU+YL6DY/bcsvDnJ+LyLrhe/YdbSIPPxTCv9k8+plGToY9LvntDIenyRVx
-         tYbg==
-X-Forwarded-Encrypted: i=1; AJvYcCWl0NOexbkZR35zqCz3TwoR/KJmgF3iqfDKUqETqHxstk3RL+8cF/x8gBgG+Q2j9Tx4yb6Zg3lABjmzw9iP0g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyQzPwG/mFg+W6W/2PDtVtt/u+zqvw6G5gZj5mUtlkxE4YT+Lcd
-	W3GmabHoNrrGVHFouCyLJdsGGOsMl4H42gOBbpXu8BhXM+4cwq9rKtjGLtBHZ6ksMaPdE2h8vUk
-	P/1jq7mg/d7WRY4wTatjgps+tgftTwE4=
-X-Gm-Gg: ASbGncvOynPjifIJOjGVzx1d/q5wKpoSf00iXveBsCzFxwUhcHvXfO0TNEnFqtF45zU
-	OGamZHewU17zcCOJTu/11HVUTFKMRYe1jZa80NV0hTEpwkKwBiKfshKUZUzVsd1oQ4y8PlcVLQQ
-	LqEghYBVga1U25LEG9WHhuKulL381tA5YwNaLbuO5BlvDYnsnr944Zk26pWQKijv8wjkOU1Fie0
-	TAbrB5UudDDtcVMudFDXg11xgF77hKS+V6zzhLH2uE4awBwLO62pOM6S3YXU/pTj29coyW9
-X-Google-Smtp-Source: AGHT+IHvIYQO4e+EnIIRJTQWJn4b+DyuGOUZd4hIxE3/1w0g4hnoPddMFEkakoXj6yfAPLr17VsI/RA83QQAwziujdk=
-X-Received: by 2002:a05:690c:4c09:b0:723:bd6c:4f2a with SMTP id
- 00721157ae682-730625cd9f7mr37664467b3.7.1757715080775; Fri, 12 Sep 2025
- 15:11:20 -0700 (PDT)
+	id 1uxCOw-0000000Bt9G-0nOB;
+	Fri, 12 Sep 2025 22:37:55 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 6B716423C5;
+	Fri, 12 Sep 2025 22:37:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2214AC4CEF1;
+	Fri, 12 Sep 2025 22:37:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1757716673;
+	bh=B9UWbZGKGjcmdpBpJTHq4Bvu86HEtGMURBUQlAh+wng=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=TrVcwliJdziWcvEcLi0TVBaYRU0cqz+P0LkYP18PS4V8it1ba7cZ92zsa5Y3dzWLc
+	 YrEuOyNwShq0RR+1+3s/CzKz/FvAj8Dg2ILyM9zKHc+GxAcTbJRbF9zrHAxYtHAtWS
+	 nowrg87C3Mhu7Ma9MVTSiKPANaSzfmKeaaI+jiwqqKI/eFzfgCVIsx0GyGgRpB5mC/
+	 E1FV/bHUfiM/xWBXFUvAkeBLYpdn5iD18PAOpqzc3WdYh8uHA0QJpTs+ikEAG/Jg8A
+	 LroectmFESH23Jvjk8Jl5nAs0sIu7GliX4k4LL9XE6Kb1IBSFNtgZdkeRG9oO5IQJw
+	 v2hGeBjsKFJvA==
+Date: Fri, 12 Sep 2025 17:37:52 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+Cc: luiz.dentz@gmail.com, kuba@kernel.org, airlied@gmail.com,
+	mripard@kernel.org, angelogioacchino.delregno@collabora.com,
+	linux-arm-kernel@lists.infradead.org,
+	maarten.lankhorst@linux.intel.com, tiffany.lin@mediatek.com,
+	houlong.wei@mediatek.com, minghsiu.tsai@mediatek.com,
+	lgirdwood@gmail.com, louisalexis.eyraud@collabora.com,
+	linus.walleij@linaro.org, devicetree@vger.kernel.org,
+	linux-input@vger.kernel.org, yunfei.dong@mediatek.com,
+	edumazet@google.com, linux-bluetooth@vger.kernel.org,
+	tzimmermann@suse.de, broonie@kernel.org, andrew+netdev@lunn.ch,
+	kernel@collabora.com, chunkuang.hu@kernel.org,
+	amergnat@baylibre.com, conor+dt@kernel.org, matthias.bgg@gmail.com,
+	support.opensource@diasemi.com, linux-rockchip@lists.infradead.org,
+	davem@davemloft.net, andrew-ct.chen@mediatek.com,
+	krzk+dt@kernel.org, p.zabel@pengutronix.de, sean.wang@kernel.org,
+	linux-kernel@vger.kernel.org, simona@ffwll.ch,
+	linux-mediatek@lists.infradead.org, marcel@holtmann.org,
+	dmitry.torokhov@gmail.com, dri-devel@lists.freedesktop.org,
+	pabeni@redhat.com, jeesw@melfas.com, mchehab@kernel.org,
+	linux-media@vger.kernel.org, flora.fu@mediatek.com,
+	linux-gpio@vger.kernel.org, heiko@sntech.de,
+	linux-sound@vger.kernel.org, netdev@vger.kernel.org
+Subject: Re: [PATCH v2 05/12] dt-bindings: display: mediatek,od: Add
+ mediatek,gce-client-reg property
+Message-ID: <175771595983.1528737.3645378655142592974.robh@kernel.org>
+References: <20250911151001.108744-1-ariel.dalessandro@collabora.com>
+ <20250911151001.108744-6-ariel.dalessandro@collabora.com>
 MIME-Version: 1.0
-References: <20250912-mt8196-gpufreq-v2-0-779a8a3729d9@collabora.com> <20250912-mt8196-gpufreq-v2-5-779a8a3729d9@collabora.com>
-In-Reply-To: <20250912-mt8196-gpufreq-v2-5-779a8a3729d9@collabora.com>
-From: Chia-I Wu <olvaffe@gmail.com>
-Date: Fri, 12 Sep 2025 15:11:10 -0700
-X-Gm-Features: Ac12FXxS_5OX767ts7gHLmsyJJeyNECHrzeeo_cAOYq8vugrFis3NtJYNr5wYEs
-Message-ID: <CAPaKu7Q+KAzEtKBWy8KO2Kp+H4y-Mqo34uo=jgH1_iooaDq3hA@mail.gmail.com>
-Subject: Re: [PATCH v2 05/10] mailbox: add MediaTek GPUEB IPI mailbox
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Boris Brezillon <boris.brezillon@collabora.com>, Steven Price <steven.price@arm.com>, 
-	Liviu Dudau <liviu.dudau@arm.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, 
-	Kyungmin Park <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, 
-	Jassi Brar <jassisinghbrar@gmail.com>, Kees Cook <kees@kernel.org>, 
-	"Gustavo A. R. Silva" <gustavoars@kernel.org>, Chen-Yu Tsai <wenst@chromium.org>, kernel@collabora.com, 
-	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, 
-	linux-hardening@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250911151001.108744-6-ariel.dalessandro@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250912_151122_015606_6D7C084F 
-X-CRM114-Status: GOOD (  16.18  )
+X-CRM114-CacheID: sfid-20250912_153754_252713_90961C24 
+X-CRM114-Status: GOOD (  12.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,94 +92,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 12, 2025 at 11:38=E2=80=AFAM Nicolas Frattaroli
-<nicolas.frattaroli@collabora.com> wrote:
-<snipped>
-> +static irqreturn_t mtk_gpueb_mbox_thread(int irq, void *data)
-> +{
-> +       struct mtk_gpueb_mbox_chan *ch =3D data;
-> +       int status;
-> +
-> +       status =3D atomic_cmpxchg(&ch->rx_status,
-> +                               MBOX_FULL | MBOX_CLOGGED, MBOX_FULL);
-> +       if (status =3D=3D (MBOX_FULL | MBOX_CLOGGED)) {
-> +               mtk_gpueb_mbox_read_rx(ch);
-> +               writel(BIT(ch->num), ch->ebm->mbox_ctl + MBOX_CTL_IRQ_CLR=
-);
-> +               mbox_chan_received_data(&ch->ebm->mbox.chans[ch->num],
-> +                                       ch->rx_buf);
-Given what other drivers do, and how mtk_mfg consumes the data, we should
 
-  char buf[MAX_OF_RX_LEN]; //  MAX_OF_RX_LEN is 32; we can also
-allocate it during probe
-  mtk_gpueb_mbox_read_rx(ch);
-  mbox_chan_received_data(..., buf);
+On Thu, 11 Sep 2025 12:09:54 -0300, Ariel D'Alessandro wrote:
+> Currently, users of Mediatek OD (display overdrive) DT bindings set
+> mediatek,gce-client-reg node property, which is missing from the DT schema.
+> 
+> For example, device tree arch/arm64/boot/dts/mediatek/mt8173.dtsi is
+> causing the following dtb check error:
+> 
+> ```
+> $ make CHECK_DTBS=y mediatek/mt8173-elm.dtb
+>    SCHEMA  Documentation/devicetree/bindings/processed-schema.json
+>    DTC [C] arch/arm64/boot/dts/mediatek/mt8173-elm.dtb
+> [...]
+> arch/arm64/boot/dts/mediatek/mt8173-elm.dtb: od@14023000
+> (mediatek,mt8173-disp-od): 'mediatek,gce-client-reg' does not match
+> any of the regexes: '^pinctrl-[0-9]+$'
+> ```
+> 
+> This commit adds the missing node property in the DT schema and updates the
+> example as well.
+> 
+> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+> ---
+>  .../bindings/display/mediatek/mediatek,od.yaml     | 14 ++++++++++++++
+>  1 file changed, 14 insertions(+)
+> 
 
-mtx_mfg makes a copy eventually anyway. We don't need to maintain any
-extra copy.
+I fixed up the commit msg with Krzysztof's comments and applied both 
+display patches. Thanks!
 
-Then we might not need rx_status.
-
-> +               atomic_set(&ch->rx_status, 0);
-> +               return IRQ_HANDLED;
-> +       }
-> +
-> +       return IRQ_NONE;
-> +}
-> +
-> +static int mtk_gpueb_mbox_send_data(struct mbox_chan *chan, void *data)
-> +{
-> +       struct mtk_gpueb_mbox_chan *ch =3D chan->con_priv;
-> +       int i;
-> +       u32 *values =3D data;
-> +
-> +       if (atomic_read(&ch->rx_status))
-> +               return -EBUSY;
-> +
-> +       /*
-> +        * We don't want any fancy nonsense, just write the 32-bit values=
- in
-> +        * order. memcpy_toio/__iowrite32_copy don't work here, because f=
-ancy.
-> +        */
-> +       for (i =3D 0; i < ch->c->tx_len; i +=3D 4)
-> +               writel(values[i / 4], ch->ebm->mbox_mmio + ch->c->tx_offs=
-et + i);
-> +
-> +       writel(BIT(ch->num), ch->ebm->mbox_ctl + MBOX_CTL_IRQ_SET);
-> +
-> +       return 0;
-> +}
-> +
-> +static int mtk_gpueb_mbox_startup(struct mbox_chan *chan)
-> +{
-> +       struct mtk_gpueb_mbox_chan *ch =3D chan->con_priv;
-> +       int ret;
-> +
-> +       atomic_set(&ch->rx_status, 0);
-> +
-> +       ret =3D clk_enable(ch->ebm->clk);
-> +       if (ret) {
-> +               dev_err(ch->ebm->dev, "Failed to enable EB clock: %pe\n",
-> +                       ERR_PTR(ret));
-> +               goto err_clog;
-> +       }
-> +
-> +       writel(BIT(ch->num), ch->ebm->mbox_ctl + MBOX_CTL_IRQ_CLR);
-> +
-> +       ret =3D devm_request_threaded_irq(ch->ebm->dev, ch->ebm->irq, mtk=
-_gpueb_mbox_isr,
-> +                                       mtk_gpueb_mbox_thread, IRQF_SHARE=
-D | IRQF_ONESHOT,
-> +                                       ch->full_name, ch);
-I don't think this warrants a per-channel irq thread.
-
-mbox_chan_received_data is atomic. I think wecan start simple with
-just a devm_request_irq for all channels. mtk_gpueb_mbox_isr can
-
-  read bits from MBOX_CTL_RX_STS
-  for each bit set:
-    read data from rx
-    mbox_chan_received_data
-  write bits to MBOX_CTL_IRQ_CLR
+Rob
 
