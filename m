@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C6FCCAC58F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 14:20:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AA73CAC58F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 14:20:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ehDN8c0/F5eZ831IVZll96+NWY7i1QcRKUtRMZjXuP0=; b=YJenefy6GbM7e5
-	vxXgPUYKy05nDlbIO0IHYdLmezB5d8T8Ux0d9BhwYi2rFA/jbSlXPnk6oWABrNSkPMRzE05lYfl10
-	+s94wOUGvvtP/t14MxfvyNjpjd2yPqt5qafzvDo/Ridvt45J226fYlAiq0mpvpH0iHQuuvDFFUqS/
-	kGF+aQSJa+y+d08AGiqNID84C/LZlSVWDJ43tU7VngcvbAaY1w21XpFJ5WnfboJf+4KLY5NaNauKm
-	+fnHSiJOtMK6aN3hTcWX9SCqtDNIC/qwckJe4E4Qk2tnIG39qJcmOzLJYwRrkkqyU1in8fD2otp45
-	pfu1kkvJyHm8+jSjabjQ==;
+	List-Owner; bh=tdtO58sGe5Xc/wBa6IQvluyE3D0fIIRJts8BH3BBGAI=; b=B3ZvHexQEgZG44
+	RGMv8Axm4O9D4ci/H8AJqNtQbfQTnXqL86D/ZDpV3U6xQ4Gm7hhWIigJqlZN6wSYRhRLG+ax+9dZN
+	Ti6KVHyAuP9oafNxTLjXst4LkKniJr3Cz3tuSKIYy+xKNo0+pFYfUk2NaFJsETPDcGeir768tLtmm
+	Q38VF36wsC8fs+WiC5EVempWAwNill+7giIP/fZMPyzP5E3Y1v7xYM0g7ok7OSwZxI06qQ4SlYmhV
+	YIxLakl5maIhlrw+y26ldaHceD2hryYDo/Bml7qSlPKZr4UWrEXBhi87JOvPV+c9FjA1//Jgh/7Uh
+	FnoZDX8/sQOl25OEPfhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ux4dY-00000009pK2-1Eb1;
-	Fri, 12 Sep 2025 14:20:28 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1ux4di-00000009pST-2Byj;
+	Fri, 12 Sep 2025 14:20:38 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ux4dW-00000009pHC-0CnD
+	id 1ux4de-00000009pNo-2NjU
 	for linux-mediatek@lists.infradead.org;
-	Fri, 12 Sep 2025 14:20:27 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-45df656889cso13514955e9.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 12 Sep 2025 07:20:25 -0700 (PDT)
+	Fri, 12 Sep 2025 14:20:36 +0000
+Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-45e03730f83so9377405e9.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 12 Sep 2025 07:20:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1757686824; x=1758291624; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1757686833; x=1758291633; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=ehDN8c0/F5eZ831IVZll96+NWY7i1QcRKUtRMZjXuP0=;
-        b=hjRwr+qzMqmY4wGzy7aK21A8OffdPKy7QW6lnhR6O0VZhqeq2IzJKqFqwxFdUzLADF
-         jlAmRmeuoSxj5aUUBLdROQTGHTGvvdtk12aaNSdv7ag06Tjir1gAKf3oPlsbF00EBzug
-         yoiCLleIOZXM3ryvjqoHp12Stm68yKj647vpFSyAUGJi50oGpu8WhNbKb3mwMeAyGIPj
-         5c/LxPC5I2cIWJ7us15H1crSBBLkFDU1a8hyuWWPA/lS2da2xjd/PWE0mZn/AtSXUbYz
-         b8RLvPKstv1fpJQMesvSLxtifVHfRGBvlvP8gpcJCj0aVirPlHw3rXMWwt13j+7ZNdNh
-         rjoQ==
+        bh=tdtO58sGe5Xc/wBa6IQvluyE3D0fIIRJts8BH3BBGAI=;
+        b=SVsMxM3Sht1UoEbh9x95S8CwTUlRRclg+45x/oOwx06Aq23ydNnclTaOAt0h4Aw5KB
+         oh5RihCLJFPJTGrXgTQ+AeFAnZ/TpZqpjZo4aL41pmFwkXqEUOnNPABoUZVNzJJoFycx
+         8izH798oVXNf6ZgbZt0ChtVFU6qZapEHi39Cf3J9vWEhA9gRXZVGPSf9urasz7JkiZf9
+         KMGfX8KQp43qsYRFhbLhDfQ6aoBgWPGOgD39tvBfOtAOH9w0XfJSUh8/1Ekq1i4PHCcB
+         1RjrERcnfwtlun+SPUSZRjQBzSzs+sRH1g9BBHbksKMgsQGf9NLIFJaU1pZNiybUnCWy
+         KUaA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757686824; x=1758291624;
+        d=1e100.net; s=20230601; t=1757686833; x=1758291633;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ehDN8c0/F5eZ831IVZll96+NWY7i1QcRKUtRMZjXuP0=;
-        b=NgBlnnOTbDPV8CS0D4Kjosrs1NGpqTRqAd1FxJpeE7sG5G1d7Jxf9QqlHW8gZ8gICi
-         11uE8pJRuneWsiQYPwJihtu/dpFQrb28UncQLfDEFfdWOgcEdhuQ8wD/FI+LEk9FU4oc
-         A+r9jazPWRHWg655sAwrLfSV+OAj1xGw8iS5nSzU8i4MDT56T83FmCV4XHcyhrzbtExV
-         fvgKxTSL75Dqj6pMasTFZaiBN8BZvRMVrhInDucnPeM0UuoqpWwzFNapwJgGUjl9us7Z
-         jBY//sRlD5dYuw4XKk+IfOuClzO6hs5bM7b8ElIadxHrhfmqRSydXVDhmoGUkdbeDX2U
-         CMVA==
-X-Forwarded-Encrypted: i=1; AJvYcCWrvTdnEPL83cXO5e3Au5t2wehz9cZTaIGPRaD9rj/JsDX0QkRwdCQZ53LnLFx4ZJ1TFXNuFGAfJkgemOjllA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywr2eBPGt9OtAdcc0lNBUfx7lDY0neDaIhFWzvGzO7GEpgs+RrH
-	lzsayRRK4lziU7GspVUdl2TujFr51B6RKOo4OzyGZH4iwWKDIOpm4HGi
-X-Gm-Gg: ASbGncsUZ8RrFLpZzOTFvG8mr+/qvSvJzwKHW9hYamtZGf4jW42Qe1a9ekPmrvROB29
-	AnQL6p1Nchhq1WjMZq6fdNzsfXAERpuKhRqfR2E9kWShCn91Cvsnm8yUvJjqNx/u0RGT+mGPIZ2
-	QkEnFB+ye19BM4limoRvhb160wSRWQS7MtAMKtqTm3Ge+WwmvKOQgK62W1JNtJYzZcAVdyF/83X
-	qtxRmygK4Lo8GmowHNOWyfvi+w92kI+cOa3GxQybJCSR7aGDFtfMo89c27hSjFT/ONPOzmRsY1q
-	LaL+ZrbIdZOPG4X15/u1GMi0w5fuVilQKzFRnQGV3ElZTdGvzEv0HsqHz21/6h9kkWaL1LaaKa7
-	3ImaCUgPVJLeWYk1WV7ex8VQ5uMaflZM=
-X-Google-Smtp-Source: AGHT+IHtSSdiDkUB898paY6KoQvNDE3OgBxVTaH21P4AnZRGobWI8BJOt5uErOIC2i3WhKinxdthWA==
-X-Received: by 2002:a05:600c:4585:b0:45c:8e6d:a45f with SMTP id 5b1f17b1804b1-45f211caa28mr37824695e9.5.1757686823899;
-        Fri, 12 Sep 2025 07:20:23 -0700 (PDT)
+        bh=tdtO58sGe5Xc/wBa6IQvluyE3D0fIIRJts8BH3BBGAI=;
+        b=dYUy/DVuu6RwCX8hOMKJ7iSFuXsyorWFSSSpVmJJiG7S8lSKG96sbjH4mryt8zKmG6
+         yFd8ZEMRJM6D0d9JLfXcDPoSedNuHai3pntk1PTx0WJ5JY0USAvmdJSLLef73lXHM796
+         xau0vzD2boBCUt5yCuA4XLgQPDJuqCZ1DMKOa4sANAsOm+SgUOIl71g0oUMBHR0vCJba
+         vWcTabiuHzWPwACucPflLfEVfyhxjyIp135ppF0M4uGjiiq1yNiH7i56hjP3SKHBZDam
+         2i9TWImVsk9HUaHTUyOecTse28PzXc903Yg7e+6TEwfT74yarEoELP8w73EXNjgokdU9
+         +Ghw==
+X-Forwarded-Encrypted: i=1; AJvYcCVTuTk/cV4hGqNuMURwgxSQFDmHOvXMyVX/HVRTvXBqI5Vy25lkprBIikTmRCzMbvWWqslhUqQB0smGkR2MsA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyroniGq7jwKDASaJL7ScJZuNEKmWGABG430kEeHVHbOkwLubhx
+	CUPqMWtkND2Rg7Jq+f8Q0S4enPYx7YLMLkAmh9gRW1dx0GeNkl4ixvgyLQhw8/VD
+X-Gm-Gg: ASbGncs69dj7OS4XPHPBXsGDwmIQ+mnj4255vMix/7jrkfRVxkVZeUjMYG4TYRtwGm0
+	5NuVsaVb1R5BtyEICpgueBRYRnjWbLiYnioeJ/0xQS4kVoRH5GHl0/p3YfnTca+F/ZrQZwObCHH
+	U8helEMnAYBG3nRHY5my3rpmxQQpFvqMm88O/41MYXjR/4YOLM+Jejtm7VrGcfszqTJz/HsTdW3
+	v7CXgb7kvRpYBudZin/btlsiRNqC24MtzdIw8LP+Yz1A0eXHlxLM9m/sAGlG1trGtqO0WD2qLUs
+	GTqOxbyqEYzeLiYOO8ae0try/OKqICJMffVSYtm3Fh2rUrQf8irea9Uq8DHxXosSh0GauCXS8rs
+	rMMOeB6uDTlfSMEchnogQqbNRA1biUow/jijSuVMbDg==
+X-Google-Smtp-Source: AGHT+IFyYXkkR4g3z3IADJ2sI1GciXV959gj5Co89s2pEoz3DeE+MIgrxhl6XFjG4+ecyKdiYbDvCw==
+X-Received: by 2002:a05:600c:4454:b0:45b:97d9:4127 with SMTP id 5b1f17b1804b1-45f211e53femr32589265e9.1.1757686832393;
+        Fri, 12 Sep 2025 07:20:32 -0700 (PDT)
 Received: from [192.168.2.177] ([91.116.220.47])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45e03729c76sm64384065e9.6.2025.09.12.07.20.19
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45e03729c76sm64384065e9.6.2025.09.12.07.20.28
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 12 Sep 2025 07:20:21 -0700 (PDT)
-Message-ID: <e06e9568-1129-4262-83a9-ab652101831a@gmail.com>
-Date: Fri, 12 Sep 2025 16:12:40 +0200
+        Fri, 12 Sep 2025 07:20:31 -0700 (PDT)
+Message-ID: <947b1c19-e218-4478-bb9e-8b6174815f05@gmail.com>
+Date: Fri, 12 Sep 2025 16:12:55 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 22/38] arm64: dts: mediatek: Fix node name for SYSIRQ
- controller on all SoCs
+Subject: Re: [PATCH 23/38] arm64: dts: mediatek: mt7986a: Fix PCI-Express
+ T-PHY node address
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  linux-mediatek@lists.infradead.org, robh@kernel.org
 References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com>
- <20250724083914.61351-23-angelogioacchino.delregno@collabora.com>
+ <20250724083914.61351-24-angelogioacchino.delregno@collabora.com>
 Content-Language: en-US, ca-ES, es-ES
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
@@ -125,12 +125,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20250724083914.61351-23-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250724083914.61351-24-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250912_072026_128883_34DA8A97 
-X-CRM114-Status: GOOD (  13.24  )
+X-CRM114-CacheID: sfid-20250912_072034_655144_A51D16D8 
+X-CRM114-Status: GOOD (  15.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -149,75 +149,50 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 24/07/2025 10:38, AngeloGioacchino Del Regno wrote:
-> The sysirq has "intpol-controller" as node name, but being this an
-> interrupt controller, it needs to be named "interrupt-controller"
-> as per what the bindings (correctly) expect.
+> The PCIe TPHY is under the soc bus, which provides MMIO, and all
+> nodes under that must use the bus, otherwise those would clearly
+> be out of place.
 > 
-> This commit brings no functional changes, but fixes a dtbs_check
-> warning.
+> Add ranges to the PCIe tphy and assign the address to the main
+> node to silence a dtbs_check warning, and fix the children to
+> use the MMIO range of t-phy.
 > 
+> Fixes: 963c3b0c47ec ("arm64: dts: mediatek: fix t-phy unit name")
+> Fixes: 918aed7abd2d ("arm64: dts: mt7986: add pcie related device nodes")
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 Applied, thanks
 
 > ---
->   arch/arm64/boot/dts/mediatek/mt6755.dtsi | 2 +-
->   arch/arm64/boot/dts/mediatek/mt6779.dtsi | 2 +-
->   arch/arm64/boot/dts/mediatek/mt6795.dtsi | 2 +-
->   arch/arm64/boot/dts/mediatek/mt6797.dtsi | 2 +-
->   4 files changed, 4 insertions(+), 4 deletions(-)
+>   arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 12 ++++++------
+>   1 file changed, 6 insertions(+), 6 deletions(-)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt6755.dtsi b/arch/arm64/boot/dts/mediatek/mt6755.dtsi
-> index b55d3fac9bd4..8da5c0a56a02 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt6755.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt6755.dtsi
-> @@ -98,7 +98,7 @@ timer {
->   			     (GIC_CPU_MASK_SIMPLE(8) | IRQ_TYPE_LEVEL_LOW)>;
->   	};
->   
-> -	sysirq: intpol-controller@10200620 {
-> +	sysirq: interrupt-controller@10200620 {
->   		compatible = "mediatek,mt6755-sysirq",
->   			     "mediatek,mt6577-sysirq";
->   		interrupt-controller;
-> diff --git a/arch/arm64/boot/dts/mediatek/mt6779.dtsi b/arch/arm64/boot/dts/mediatek/mt6779.dtsi
-> index 5c579e88e749..70f3375916e8 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt6779.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt6779.dtsi
-> @@ -138,7 +138,7 @@ ppi_cluster1: interrupt-partition-1 {
->   
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> index 559990dcd1d1..3211905b6f86 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> @@ -428,16 +428,16 @@ pcie_intc: interrupt-controller {
+>   			};
 >   		};
 >   
-> -		sysirq: intpol-controller@c53a650 {
-> +		sysirq: interrupt-controller@c53a650 {
->   			compatible = "mediatek,mt6779-sysirq",
->   				     "mediatek,mt6577-sysirq";
->   			interrupt-controller;
-> diff --git a/arch/arm64/boot/dts/mediatek/mt6795.dtsi b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-> index 38f65aad2802..58833e5135c8 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-> @@ -404,7 +404,7 @@ pwrap: pwrap@1000d000 {
->   			clock-names = "spi", "wrap";
->   		};
+> -		pcie_phy: t-phy {
+> +		pcie_phy: t-phy@11c00000 {
+>   			compatible = "mediatek,mt7986-tphy",
+>   				     "mediatek,generic-tphy-v2";
+> -			ranges;
+> -			#address-cells = <2>;
+> -			#size-cells = <2>;
+> +			ranges = <0 0 0x11c00000 0x20000>;
+> +			#address-cells = <1>;
+> +			#size-cells = <1>;
+>   			status = "disabled";
 >   
-> -		sysirq: intpol-controller@10200620 {
-> +		sysirq: interrupt-controller@10200620 {
->   			compatible = "mediatek,mt6795-sysirq",
->   				     "mediatek,mt6577-sysirq";
->   			interrupt-controller;
-> diff --git a/arch/arm64/boot/dts/mediatek/mt6797.dtsi b/arch/arm64/boot/dts/mediatek/mt6797.dtsi
-> index f2d93bf6a055..8ac98a378fd6 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt6797.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt6797.dtsi
-> @@ -228,7 +228,7 @@ apmixedsys: apmixed@1000c000 {
->   		#clock-cells = <1>;
->   	};
->   
-> -	sysirq: intpol-controller@10200620 {
-> +	sysirq: interrupt-controller@10200620 {
->   		compatible = "mediatek,mt6797-sysirq",
->   			     "mediatek,mt6577-sysirq";
->   		interrupt-controller;
+> -			pcie_port: pcie-phy@11c00000 {
+> -				reg = <0 0x11c00000 0 0x20000>;
+> +			pcie_port: pcie-phy@0 {
+> +				reg = <0 0x20000>;
+>   				clocks = <&clk40m>;
+>   				clock-names = "ref";
+>   				#phy-cells = <1>;
 
 
