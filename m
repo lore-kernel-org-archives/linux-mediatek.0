@@ -4,68 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 612C8CAC593
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 08:57:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38613CA101F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 09:00:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=y/J7XLbz8NegWtic5LkF+n+Z4Y9heXSbG1y59WwsLwI=; b=Rt0g6Do8XEx1ggrOARYUraK2wF
-	bfIJEnY8RpJS0J2F04tcgaN3jbE8IQ9o4IJnk3Vz2bCNyJrJe1vI2hMpomG8Mncwu/o6JoYSXvjT4
-	yKLY6w2qu1ORCXdrIbOgkHgpy6yrqrFk8vid/9Rjea9LaF+33ENOiuQ4H/C3yZXrzF9jsbYY+PfBF
-	N/w+Y3BskHUqU5uAgCSgb0qyLr/suZc9LeaTpV4szSXLrFz7OBcmOwcirerciyBoVqt8XjE77AT7f
-	kkHInCw/N0x6ZvCCK8oVD1lcWnak2jeBTsijTfyKD9M9WWAWsw6dUAJDIztjlXqvtWDVsPh1Qj8Ot
-	e1QQf8UQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:To:From:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=v//ZO7Fl0VrsoZ+fuIdX0v+wUwZ+SZn6ZSwxJ5M8XCo=; b=QXLwK15K3haPzx
+	+WW0+1msZaoNz57KQNgjGn+IQzLPqCKRL1RJsZ6GLM4RMk3E0QGwdDOmdsPlCDZYFvYFystfYrCSm
+	oi2sM0DeRFTRoarxkmRzCG1UTeQACqJzVgLgGeEqfOPCpKRyU112+fRSFB/6zK4oLbpLwZi7DJ5uK
+	72EM29mhHRQv1SW9mhy+SEf9V/Eu/p3HMNadpLbe1ux1rFWiNwfxW5o7OGH8Ti0ARsNT7wwZgNbWk
+	xn2dD0bS/CltTmtdv7J7xeF0cmZMkq5kQjJR8T0NEHQi8r9nLS+qpDSPQwerHxhPZDp76U2eeQm98
+	6krn9FbG9KDtXkmTAQNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwzb4-0000000849T-3et4;
-	Fri, 12 Sep 2025 08:57:34 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uwzeD-000000086gt-1qpi;
+	Fri, 12 Sep 2025 09:00:49 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwzb1-0000000845A-20vF;
-	Fri, 12 Sep 2025 08:57:32 +0000
+	id 1uwzeA-000000086ei-3s7d;
+	Fri, 12 Sep 2025 09:00:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1757667449;
-	bh=ZIYDSt04Y1IRNtggUK5RxE83YKlG/z5W58KhYO8o8as=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=dx8eZ1GRFH4rmvamm7zkNfQA8c7ZbEL7CoKMHnb1FM1odU3jGAQcvvDU6LvK/yavb
-	 QESmSjQ81cxHGMLDBY+He03WwTsn8/GFbH+kdkpeopTRFB1tJbLZMuHvt4EecCkaEn
-	 zyBd29qeDnJS/nSkBt33ltxhFBt1blYmQrmgG6mmMLtFMvnbZ13geDBf//Cl3SebBc
-	 +gr/UneA+XwL7n/qMMm4GnxjH29WnMLE2rY5gAVwqUQdKpEve3WF6YFXPeT3TwDyEC
-	 EnwBu8c3aPtv8ou5BN4b6A0B5K3fJztjXilvoXyQTJuIppH8JxMNn4T9YlBLy2vo/p
-	 10BmOVnNGem+w==
+	s=mail; t=1757667644;
+	bh=I8lnMndXG8pdCIl26nEFltqvWn8FNn3OcwqWnXiwNbY=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=e3NUhl7PV7etZf6rkduBXP9LFytOiLRWRVHpQQi34pLQH2vmBc4DiFZqBhkEoahk+
+	 5lqCt82nU8wxCLKpQoITHdJ8Z0JsAUN8gOiCPGkt/3l4KRabrWgd5GMXOYQR7MNjEN
+	 w8GljBH0yMYh7X4ylpEAJ7M3LR9VBwXXRQIkre1CLWp79yxx662xYoLeF+NA97Tx9n
+	 BwwzxDPf26QjC+A4fKFR3wlu0CKWesFtQY6iOeUPiM6YJbLuMgtk36+zTtoNy9JK3J
+	 z2oi2V/9DNedgWdar2swblhT1SWvuu35nFikjvuz8hxt/bUi712fqQesF/nE5n4J3I
+	 4es+30UGJcTSA==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EB18D17E127C;
-	Fri, 12 Sep 2025 10:57:28 +0200 (CEST)
-Message-ID: <9bb0fb8f-220c-4edb-9896-cc36f669624a@collabora.com>
-Date: Fri, 12 Sep 2025 10:57:28 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 43F6A17E07EE;
+	Fri, 12 Sep 2025 11:00:42 +0200 (CEST)
+Message-ID: <56380fe5-8358-4341-9478-ba4ce52daeed@collabora.com>
+Date: Fri, 12 Sep 2025 11:00:41 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [GIT PULL] MediaTek ARM64 DTS updates for v6.18
-To: Matthias Brugger <matthias.bgg@gmail.com>,
- Chen-Yu Tsai <wenst@chromium.org>
-Cc: arm-soc <arm@kernel.org>, SoC Team <soc@kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>
-References: <46756067-ca2f-4053-b9e9-bc6e66170b21@gmail.com>
- <CAGXv+5F=uPnzrpDtPXc2ipwp5AhiEwGdxhuhPtjwWhAxWJMc_Q@mail.gmail.com>
- <6037201a-a13f-4a3d-9377-3f9f91e78773@gmail.com>
+Subject: Re: [PATCH 14/38] dt-bindings: media: mediatek,mt8195-jpeg: Allow
+ range number in node address
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>,
+ linux-mediatek@lists.infradead.org, robh@kernel.org
+References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com>
+ <20250724083914.61351-15-angelogioacchino.delregno@collabora.com>
+ <70ae6787-ee0b-43a0-851e-1fb6c82f6c31@kernel.org>
+ <72934f23-08eb-4214-a946-7aa7a432352e@collabora.com>
 Content-Language: en-US
-In-Reply-To: <6037201a-a13f-4a3d-9377-3f9f91e78773@gmail.com>
+In-Reply-To: <72934f23-08eb-4214-a946-7aa7a432352e@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250912_015731_689765_2BA7A1EC 
-X-CRM114-Status: GOOD (  15.90  )
+X-CRM114-CacheID: sfid-20250912_020047_150913_F825148A 
+X-CRM114-Status: GOOD (  11.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,135 +74,42 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: daniel.lezcano@linaro.org, mwalle@kernel.org, devicetree@vger.kernel.org, linus.walleij@linaro.org, linux-remoteproc@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, olivia.wen@mediatek.com, shane.chien@mediatek.com, linux-gpio@vger.kernel.org, linux-phy@lists.infradead.org, airlied@gmail.com, simona@ffwll.ch, herbert@gondor.apana.org.au, jassisinghbrar@gmail.com, jiaxin.yu@mediatek.com, andy.teng@mediatek.com, chunfeng.yun@mediatek.com, jieyy.yang@mediatek.com, chunkuang.hu@kernel.org, conor+dt@kernel.org, jitao.shi@mediatek.com, p.zabel@pengutronix.de, arnd@arndb.de, kishon@kernel.org, kyrie.wu@mediatek.corp-partner.google.com, maarten.lankhorst@linux.intel.com, tinghan.shen@mediatek.com, mripard@kernel.org, ck.hu@mediatek.com, broonie@kernel.org, eugen.hristev@linaro.org, houlong.wei@mediatek.com, matthias.bgg@gmail.com, tglx@linutronix.de, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, granquet@baylibre.com, sam.shih@mediatek.com, mathieu.poirier@linaro.org, fparent@baylibre.com, andersson@kernel.org, sean.wang@kernel.org, linux-sound@vger.kernel.org, lgirdwood@gmail.com, vkoul@kernel.org, linux-crypto@vger.kernel.org, tzimmermann@suse.de, atenart@kernel.org, krzk+dt@kernel.org, linux-media@vger.kernel.org, davem@davemloft.net
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 12/09/25 09:11, Matthias Brugger ha scritto:
-> 
-> 
-> On 11/09/2025 07:23, Chen-Yu Tsai wrote:
->> Hi,
->>
->> On Wed, Sep 10, 2025 at 11:04 PM Matthias Brugger
->> <matthias.bgg@gmail.com> wrote:
+Il 04/08/25 11:02, AngeloGioacchino Del Regno ha scritto:
+> Il 24/07/25 11:14, Krzysztof Kozlowski ha scritto:
+>> On 24/07/2025 10:38, AngeloGioacchino Del Regno wrote:
+>>> The dual and triple core jpeg encoder and decoder (respectively)
+>>> on MT8195 are far apart: the only way to have this to make sense
+>>> is to split those in multiple address ranges in device trees as
+>>> one big range would overlap with other IP in at least the MT8195
+>>> SoC.
 >>>
->>> Hi Arnd,
->>>
->>> can you please have a look on the following patches.
->>>
->>> Thanks a lot,
->>> Matthias
+>>> Change both the jpegdec and jpegenc bindings to allow specifying
+>>> children nodes such as "jpegdec@0,10000", "jpegdec@1,0" or for
+>>> encoder "jpegenc@0,0", "jpegenc@1,0" to resolve dtbs_check issues.
 >>
->> I still have some patches outstanding for some time. Could you perhaps
->> take them as well?
 >>
->> [PATCH v2 2/2] arm64: dts: mediatek: mt8188: Change efuse fallback
->> compatible to mt8186
->> https://lore.kernel.org/all/20250610063431.2955757-3-wenst@chromium.org/
-> 
-> Queued now for a possible 2nd pull request.
-> 
+>> This should not be needed for standard MMIO/simple-bus nodes. I think
+>> DTS is wrong here.
 >>
->> [PATCH] arm64: dts: mediatek: mt8186-tentacruel: Fix touchscreen model
->> https://lore.kernel.org/all/20250812090135.3310374-1-wenst@chromium.org/
-> 
-> Queued now for a possible 2nd pull request.
-> 
->>
->> [PATCH v2] arm64: dts: mediatek: mt8188-geralt: Enable first SCP core
->> https://lore.kernel.org/all/20250814092510.211672-1-wenst@chromium.org/
+>> Which cases really need the ','?
 >>
 > 
-> Queued now for a possible 2nd pull request.
+> All of the multi-core JPEG enc/decoders on MT8195 (and newer).
+> 
+> The DT changes are included in the same series as this commit; check:
+> 
+> 20250724083914.61351-35-angelogioacchino.delregno@collabora.com
+> 
+> Cheers,
+> Angelo
 > 
 
-Matthias, since you're managing this pull - can you please grab the patches that
-are relevant to our trees from my sanitization series?
+Any further comments on this?
 
-https://patchwork.kernel.org/project/linux-mediatek/cover/20250724083914.61351-1-angelogioacchino.delregno@collabora.com/
-
-Thanks,
+Regards,
 Angelo
-
-> Thanks for the heads up!
-> Matthias
-> 
->>
->> Thanks
->> ChenYu
->>
->>> ---
->>> The following changes since commit 8f5ae30d69d7543eee0d70083daf4de8fe15d585:
->>>
->>>     Linux 6.17-rc1 (2025-08-10 19:41:16 +0300)
->>>
->>> are available in the Git repository at:
->>>
->>>     https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git/
->>> tags/v6.17-next-dts64
->>>
->>> for you to fetch changes up to 12a565af705542c4380e95f4e3a505a2c25ad754:
->>>
->>>     dt-bindings: arm: mediatek: Add grinn,genio-510-sbc (2025-09-10 11:51:16 +0200)
->>>
->>> ----------------------------------------------------------------
->>> mt7988 (bpi r4):
->>> * enable network
->>>
->>> mt7986:
->>> * add dedicated sram node
->>> * add interrupts for RSS to ethernet
->>>
->>> mt7981:
->>> * add thermal sensor and auxadc nodes
->>>
->>> mt8395 (NIO 12L):
->>> * enable UFS
->>> * add gpio keys to the PMIC
->>>
->>> mt8195:
->>> * drop reset for PCIe device
->>>
->>> ----------------------------------------------------------------
->>> Aleksander Jan Bajkowski (1):
->>>         arm64: dts: mediatek: add thermal sensor support on mt7981
->>>
->>> Frank Wunderlich (7):
->>>         arm64: dts: mediatek: mt7986: add sram node
->>>         arm64: dts: mediatek: mt7986: add interrupts for RSS and interrupt names
->>>         arm64: dts: mediatek: mt7988: add basic ethernet-nodes
->>>         arm64: dts: mediatek: mt7988: add switch node
->>>         arm64: dts: mediatek: mt7988a-bpi-r4: add aliases for ethernet
->>>         arm64: dts: mediatek: mt7988a-bpi-r4: add sfp cages and link to gmac
->>>         arm64: dts: mediatek: mt7988a-bpi-r4: configure switch phys and leds
->>>
->>> Guoqing Jiang (1):
->>>         arm64: dts: mediatek: mt8195: Remove suspend-breaking reset from pcie0
->>>
->>> Julien Massot (2):
->>>         arm64: dts: mediatek: mt8395-nio-12l: Enable UFS
->>>         arm64: dts: mediatek: mt8395-nio-12l: add PMIC and GPIO keys support
->>>
->>> Mateusz Koza (2):
->>>         dt-bindings: arm: mediatek: Add grinn,genio-700-sbc
->>>         dt-bindings: arm: mediatek: Add grinn,genio-510-sbc
->>>
->>> Rob Herring (Arm) (1):
->>>         arm64: dts: mediatek: mt8183: Fix out of range pull values
->>>
->>>    .../devicetree/bindings/arm/mediatek.yaml          |   2 +
->>>    arch/arm64/boot/dts/mediatek/mt7981b.dtsi          |  31 ++-
->>>    arch/arm64/boot/dts/mediatek/mt7986a.dtsi          |  20 +-
->>>    .../dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts   |  11 +
->>>    .../boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts  |  19 ++
->>>    .../boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi |  86 +++++++
->>>    arch/arm64/boot/dts/mediatek/mt7988a.dtsi          | 285 ++++++++++++++++++++-
->>>    arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi     |  14 +-
->>>    arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts    |  14 +-
->>>    arch/arm64/boot/dts/mediatek/mt8195.dtsi           |   3 -
->>>    .../boot/dts/mediatek/mt8395-radxa-nio-12l.dts     |  46 ++++
->>>    11 files changed, 508 insertions(+), 23 deletions(-)
->>>
-> 
-
 
