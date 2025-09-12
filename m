@@ -4,69 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41AAECAC582
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 10:34:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BF66CAC582
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 10:59:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rbqu4n81KzamcThcRywHsDjS9trOOJjD7KTgJXGtAio=; b=NJXtoSj53QrCtz4C7BLh4tJabx
-	kc0lV5azArI29+ahFU9I/GxoxaJcSKxH42zSVrUfri68N5fuWq53SnHF541Q6yyzGmRaf0dAFZQce
-	ZoihciLYN09/ZIkAEjdaDBJbUL1kfiYQzikSLXHZ2TVP6B+ysyG3q+roJ70raCYwZYB31m9f8pPpl
-	Kg27H4KoKsjRShM7mE+80kx2A8Fh3DGpQwtbdnK6Uyeb1LirAd5B0XFEUdFcUKhO9ysBjipHsWoYQ
-	M2E17lRb+G+xL2bWZiBz03i8sWCs4GirlBCf2tbJwAzjfVxChPiDkfpxwauzVKoP+KaQAaGArt0aH
-	SU2IHnVQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Kuus9WkOzKNAJUiWF7HiS3jmu57cJ6ZFPn774V4O+ow=; b=frO/H0PUu1yyPIMmJwW/iZrqSS
+	ZjdLh9sRbOsUrpEuV8DvNn5ZCiaj+PY7FXYGu+A9VSCp2fywlR6uMjCNqqz6fodzHSI6cKGb4bttS
+	zUJK1Kz5pYWymkV8DrALdRFvwnmRkx7LAYEyQNIvO+UMMxCkYFAGzSUgr8qiDi7jsmTVeXCr5TYxj
+	Imtm3XkTBeZSqksmVjdlfhqDmrUNYO3I847g9E0HBz3ZiE/00xmubf0cE7uj+6+8uGUX9A3oRht3P
+	LQMA9CK30+JmDOMA6KoXc6ppCZyBdnun4yfd1yIhUid8N0AWxw4UO+F/MioMGHOV27gS2BtwlALHf
+	wIBwyM7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ux16V-00000008cOy-3W9P;
-	Fri, 12 Sep 2025 10:34:07 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1ux1V8-00000008jXP-3Zj4;
+	Fri, 12 Sep 2025 10:59:34 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ux16S-00000008cOE-1fXr;
-	Fri, 12 Sep 2025 10:34:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1757673241;
-	bh=QgKjxkDzKwdzkdZ+k5tgrFzCVfPE4wx/5Fk3qBq3Es0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=iedFEqcrTD7NUF7aBaMkuRkKUWDB9EwDQl6kY6ZTJC4nCdcI1k30SxJomNu16auQw
-	 sI8ch94UvJRMrBTsl6CbWaKwCORt8EKPPRJGZGYZiRq08nIQ66Qh2AtqqxfSINEW+L
-	 I3BGs+ZUrThT5rUvjpU2hzMihFWm1iwU0iIDyGEkkEvnz/U0eP1n/LylfHqA21i4wR
-	 S+HujM2DVtwS2m1i797kP3QoSImzNa/N1lJ8aPYo/bxer7LNp0l8kInt9rjhv8pOVl
-	 AUjBjXx4icCm1QaQwgftDld1+oNOLajS1mj9U8XCYIodcyXvpLvzwvILxTmekMs1d9
-	 vFD8lCiExtSIQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7C6BE17E0F88;
-	Fri, 12 Sep 2025 12:34:01 +0200 (CEST)
-Message-ID: <67dafd8e-42cc-4107-b5ab-5793aae310d1@collabora.com>
-Date: Fri, 12 Sep 2025 12:34:01 +0200
+	id 1ux1V6-00000008jVz-0kJ9;
+	Fri, 12 Sep 2025 10:59:33 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1757674755; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=E6/1DG8WrAY75UakpxDmhKbrxrf5zSJePUut+IxSO+QVSKzsML34iXZUQ+m6j/eVTrvCFj6qQEW5YAHN7KzZO+pWwC4mWyAMqmcmMWIDVnIzGMr1uQbOTaV+Ll3+Q9rDxSL8pwhM5k94opYrSrqz2rJeWCLcBdpfzCL/Y0jWYW4=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1757674755; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Kuus9WkOzKNAJUiWF7HiS3jmu57cJ6ZFPn774V4O+ow=; 
+	b=iq/hdzpBi45qBfvpZCSjt23TIPcWqzk6lLBl2cl47gTDQmN1OY5U9p5+JhmGVWAVxTJR3CjwuDhF3SCVqc4oRS0VRvB83AWEotDBJx83ggIGJ3shRjaMY2wxVDo5M2XRO9/OcZSSz/AzsZ5E1zETkf1/nDLa4Ry3C/vBqmNx5zo=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1757674755;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=Kuus9WkOzKNAJUiWF7HiS3jmu57cJ6ZFPn774V4O+ow=;
+	b=SWunbdIXnqksvknSPQ7Nd6CbWlKumM8UkQDE4huCokATci7Xqgmnrgr2bh8qeVpo
+	5AEy0PZdAf+P6SqEUe8wwOIwIJ0A7NgjJQdBxpK6JfYL1uPkgG8XY3foIpajmQX9OMD
+	SiCN+OrL+hLNarfJw4pJU7XnV7tC+PElz4LQfPJk=
+Received: by mx.zohomail.com with SMTPS id 175767475236216.54884001202231;
+	Fri, 12 Sep 2025 03:59:12 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Chia-I Wu <olvaffe@gmail.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ Chanwoo Choi <cw00.choi@samsung.com>, Jassi Brar <jassisinghbrar@gmail.com>,
+ Kees Cook <kees@kernel.org>, "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ Chen-Yu Tsai <wenst@chromium.org>, kernel@collabora.com,
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
+ linux-hardening@vger.kernel.org
+Subject: Re: [PATCH RFC 05/10] mailbox: add MediaTek GPUEB IPI mailbox
+Date: Fri, 12 Sep 2025 12:59:03 +0200
+Message-ID: <4506669.X9hSmTKtgW@workhorse>
+In-Reply-To: <CAPaKu7RUx6KHyvdvrfX3u-7Lk=Wa3nmTh6-tD3CbReNAwNtgoQ@mail.gmail.com>
+References: <20250905-mt8196-gpufreq-v1-0-7b6c2d6be221@collabora.com>
+ <20250905-mt8196-gpufreq-v1-5-7b6c2d6be221@collabora.com>
+ <CAPaKu7RUx6KHyvdvrfX3u-7Lk=Wa3nmTh6-tD3CbReNAwNtgoQ@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] remoteproc: mtk_scp: Construct FW path if firmware-name
- not present
-To: Matthias Brugger <matthias.bgg@gmail.com>,
- linux-remoteproc@vger.kernel.org
-Cc: arnd@arndb.de, andersson@kernel.org, mathieu.poirier@linaro.org,
- wenst@chromium.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel@collabora.com
-References: <20250911140043.190801-1-angelogioacchino.delregno@collabora.com>
- <6f60bb97-86fc-4cda-a373-a991547bbd77@gmail.com>
- <9fafe6a4-e30b-4ea8-a85c-2e66ebd34040@collabora.com>
- <748d6a49-3ee0-45af-bee3-fb40b98f94c4@gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <748d6a49-3ee0-45af-bee3-fb40b98f94c4@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250912_033404_804490_98F76542 
-X-CRM114-Status: GOOD (  57.47  )
+X-CRM114-CacheID: sfid-20250912_035932_283170_F97C733F 
+X-CRM114-Status: GOOD (  58.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,315 +93,542 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 12/09/25 11:51, Matthias Brugger ha scritto:
-> 
-> 
-> On 12/09/2025 10:45, AngeloGioacchino Del Regno wrote:
->> Il 12/09/25 09:01, Matthias Brugger ha scritto:
->>>
->>>
->>> On 11/09/2025 16:00, AngeloGioacchino Del Regno wrote:
->>>> After a reply on the mailing lists [1] it emerged that the DT
->>>> property "firmware-name" should not be relied on because of
->>>> possible issues with firmware versions.
->>>> For MediaTek SCP, there has never been any firmware version vs
->>>> driver version desync issue but, regardless, the firmwares are
->>>> always using the same name and they're always located in a path
->>>> with a specific pattern.
->>>>
->>>> Instead of unconditionally always relying on the firmware-name
->>>> devicetree property to get a path to the SCP FW file, drivers
->>>> should construct a name based on what firmware it knows and
->>>> what hardware it is running on.
->>>>
->>>> In order to do that, add a `scp_get_default_fw_path()` function
->>>> that constructs the path and filename based on two of the infos
->>>> that the driver can get:
->>>>   1. The compatible string with the highest priority (so, the
->>>>      first one at index 0); and
->>>>   2. The type of SCP HW - single-core or multi-core.
->>>>
->>>> This means that the default firmware path is generated as:
->>>>   - Single core SCP: mediatek/(soc_model)/scp.img
->>>>     for example:     mediatek/mt8183/scp.img;
->>>>
->>>>   - Multi core SCP:  mediatek/(soc_model)/scp_c(core_number).img
->>>>     for example:     mediatek/mt8188/scp_c0.img for Core 0, and
->>>>                      mediatek/mt8188/scp_c1.img for Core 1.
->>>>
->>>
->>> As we inventing a naming scheme here: if we decide that signle core FW is calle 
->>> scp_c0.img we can get rid of some code.
->>>
->>
->> Ohey!
->>
->> No, well, we're not inventing a naming scheme... if you check in linux-firmware
->> and in the current devicetrees, you'll see that the path adheres to what I wrote.
->>
-> 
-> Well I'm not able to find any *spc_c* firmware :)
-> Actually mt8188 has scp.img as the only file.
->
+On Friday, 12 September 2025 06:48:17 Central European Summer Time Chia-I W=
+u wrote:
+> On Fri, Sep 5, 2025 at 3:24=E2=80=AFAM Nicolas Frattaroli
+> <nicolas.frattaroli@collabora.com> wrote:
+> >
+> > The MT8196 SoC uses an embedded MCU to control frequencies and power of
+> > the GPU. This controller is referred to as "GPUEB".
+> >
+> > It communicates to the application processor, among other ways, through
+> > a mailbox.
+> >
+> > The mailbox exposes one interrupt, which appears to only be fired when a
+> > response is received, rather than a transaction is completed. For us,
+> > this means we unfortunately need to poll for txdone.
+> >
+> > The mailbox also requires the EB clock to be on when touching any of the
+> > mailbox registers.
+> >
+> > Add a simple driver for it based on the common mailbox framework.
+> >
+> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> > ---
+> >  drivers/mailbox/Kconfig             |  10 ++
+> >  drivers/mailbox/Makefile            |   2 +
+> >  drivers/mailbox/mtk-gpueb-mailbox.c | 330 ++++++++++++++++++++++++++++=
+++++++++
+> >  3 files changed, 342 insertions(+)
+> >
+> > diff --git a/drivers/mailbox/Kconfig b/drivers/mailbox/Kconfig
+> > index 02432d4a5ccd46a16156a09c7f277fb03e4013f5..2016defda1fabb5c0fcc807=
+8f84a52d4e4e00167 100644
+> > --- a/drivers/mailbox/Kconfig
+> > +++ b/drivers/mailbox/Kconfig
+> > @@ -294,6 +294,16 @@ config MTK_CMDQ_MBOX
+> >           critical time limitation, such as updating display configurat=
+ion
+> >           during the vblank.
+> >
+> > +config MTK_GPUEB_MBOX
+> > +       tristate "MediaTek GPUEB Mailbox Support"
+> > +       depends on ARCH_MEDIATEK || COMPILE_TEST
+> > +       help
+> > +         The MediaTek GPUEB mailbox is used to communicate with the em=
+bedded
+> > +         controller in charge of GPU frequency and power management on=
+ some
+> > +         MediaTek SoCs, such as the MT8196.
+> > +         Say Y or m here if you want to support the MT8196 SoC in your=
+ kernel
+> > +         build.
+> > +
+> >  config ZYNQMP_IPI_MBOX
+> >         tristate "Xilinx ZynqMP IPI Mailbox"
+> >         depends on ARCH_ZYNQMP && OF
+> > diff --git a/drivers/mailbox/Makefile b/drivers/mailbox/Makefile
+> > index 98a68f838486eed117d24296138bf59fda3f92e4..564d06e71313e6d1972e4a6=
+036e1e78c8c7ec450 100644
+> > --- a/drivers/mailbox/Makefile
+> > +++ b/drivers/mailbox/Makefile
+> > @@ -63,6 +63,8 @@ obj-$(CONFIG_MTK_ADSP_MBOX)   +=3D mtk-adsp-mailbox.o
+> >
+> >  obj-$(CONFIG_MTK_CMDQ_MBOX)    +=3D mtk-cmdq-mailbox.o
+> >
+> > +obj-$(CONFIG_MTK_GPUEB_MBOX)   +=3D mtk-gpueb-mailbox.o
+> > +
+> >  obj-$(CONFIG_ZYNQMP_IPI_MBOX)  +=3D zynqmp-ipi-mailbox.o
+> >
+> >  obj-$(CONFIG_SUN6I_MSGBOX)     +=3D sun6i-msgbox.o
+> > diff --git a/drivers/mailbox/mtk-gpueb-mailbox.c b/drivers/mailbox/mtk-=
+gpueb-mailbox.c
+> > new file mode 100644
+> > index 0000000000000000000000000000000000000000..0236fb358136e434a09a21e=
+f293fe949ced94123
+> > --- /dev/null
+> > +++ b/drivers/mailbox/mtk-gpueb-mailbox.c
+> > @@ -0,0 +1,330 @@
+> > +// SPDX-License-Identifier: GPL-2.0-only
+> > +/*
+> > + * MediaTek GPUEB mailbox driver for SoCs such as the MT8196
+> > + *
+> > + * Copyright (C) 2025, Collabora Ltd.
+> > + *
+> > + * Developers harmed in the making of this driver:
+> > + *  - Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> > + */
+> > +
+> > +#include <linux/atomic.h>
+> > +#include <linux/clk.h>
+> > +#include <linux/device.h>
+> > +#include <linux/interrupt.h>
+> > +#include <linux/io.h>
+> > +#include <linux/iopoll.h>
+> > +#include <linux/mailbox_controller.h>
+> > +#include <linux/module.h>
+> > +#include <linux/of.h>
+> > +#include <linux/platform_device.h>
+> > +
+> > +#define MBOX_CTL_TX_STS 0x0000
+> > +#define MBOX_CTL_IRQ_SET 0x0004
+> > +#define MBOX_CTL_IRQ_CLR 0x0074
+> > +#define MBOX_CTL_RX_STS 0x0078
+> > +
+> > +#define MBOX_FULL BIT(0) /* i.e. we've received data */
+> > +#define MBOX_CLOGGED BIT(1) /* i.e. the channel is shutdown */
+> > +
+> > +struct mtk_gpueb_mbox {
+> > +       struct device *dev;
+> > +       struct clk *clk;
+> > +       void __iomem *mbox_mmio;
+> > +       void __iomem *mbox_ctl;
+> > +       void **rx_buf;
+> > +       atomic_t *rx_status;
+> > +       struct mbox_controller mbox;
+> > +       unsigned int *chn;
+> > +       int irq;
+> > +       const struct mtk_gpueb_mbox_variant *v;
+> > +};
+> > +
+> > +struct mtk_gpueb_mbox_ch {
+> > +       const char *name;
+> > +       const int num;
+> > +       const unsigned int tx_offset;
+> > +       const unsigned int tx_len;
+> > +       const unsigned int rx_offset;
+> > +       const unsigned int rx_len;
+> > +       const bool no_response;
+> > +};
+> > +
+> > +struct mtk_gpueb_mbox_variant {
+> > +       unsigned int num_channels;
+> > +       const struct mtk_gpueb_mbox_ch channels[] __counted_by(num_chan=
+nels);
+> > +};
+> > +
+> > +/**
+> > + * mtk_gpueb_mbox_read_rx - read RX buffer from MMIO into ebm's RX buf=
+fer
+> > + * @ebm: pointer to &struct mtk_gpueb_mbox instance
+> > + * @channel: number of channel to read
+> > + */
+> > +static void mtk_gpueb_mbox_read_rx(struct mtk_gpueb_mbox *ebm,
+> > +                                  unsigned int channel)
+> > +{
+> > +       const struct mtk_gpueb_mbox_ch *ch;
+> > +
+> > +       ch =3D &ebm->v->channels[channel];
+> > +
+> > +       memcpy_fromio(ebm->rx_buf[channel], ebm->mbox_mmio + ch->rx_off=
+set,
+> > +                     ch->rx_len);
+> > +
+> > +}
+> > +
+> > +static irqreturn_t mtk_gpueb_mbox_isr(int irq, void *data)
+> > +{
+> > +       struct mtk_gpueb_mbox *ebm =3D data;
+> > +       u32 rx_handled =3D 0;
+> > +       u32 rx_sts;
+> > +       int i;
+> > +
+> > +       rx_sts =3D readl(ebm->mbox_ctl + MBOX_CTL_RX_STS);
+> > +
+> > +       for (i =3D 0; i < ebm->v->num_channels; i++) {
+> > +               if (rx_sts & BIT(i)) {
+> > +                       if (!atomic_cmpxchg(&ebm->rx_status[i], 0,
+> > +                                           MBOX_FULL | MBOX_CLOGGED))
+> > +                               rx_handled |=3D BIT(i);
+> > +               }
+> > +       }
+> We can loop over bits that are set in rx_sts, if we expect that only a
+> few bits are set most of the time.
 
-Yeah I was talking about the single-core ones, not the multicore ones, my bad for
-not clarifying :-)
+Could you elaborate on your preferred approach? num_channels will be
+smaller than the bit width of rx_sts. I could loop from __fls down to
+0 checking for (!rx_sts ^ rx_handled) for an early exit, but I'm not
+sure if this microoptimisation is what you meant or if that even makes
+much sense instruction cost wise.
 
->> As in - all of the single core SCP always had the firmware in path
->> mediatek/mtXXXX/scp.img - and the dual core SCP has two firmwares.
->>
->> The dual core one is a bit special in that the two cores are *almost* (but not
->> fully) independent from each other (not entirely relevant to this discussion tho)
->> and can load one firmware per core.
->>
->> In short - in upstream, the only naming that we're inventing is the multicore SCP,
->> but we're simply keeping the same name for the singlecore ones.
->>
->> Even for multicore, I'm not really inventing that out of the blue - MediaTek are
->> using that naming in downstream, so I'm just copying that.
->>
-> 
-> Which is no guarantee to be a good way to go ;)
-> 
+Alternatively, I could loop from __fss to num_channels.
 
-Of course it's no guarantee.
+Is there some commonly used hyper-optimised "loop over set bits" macro
+that I'm unfamiliar with?
 
-> Anyway I think the actual naming scheme just makes us add code for no buy-in. For 
-> me it would make more sense to fix the firmware naming in linux-firmware then 
-> "working around" that in kernel code.
-> 
+> > +
+> > +       writel(rx_handled, ebm->mbox_ctl + MBOX_CTL_IRQ_CLR);
+> > +
+> > +       if (!(rx_sts ^ rx_handled))
+> "rx_sts =3D=3D rx_handled" should be more direct.
 
-I'm not convinced yet. We'd be sparing just two lines of code (or 3?), which is
-not a big deal really...
+Good point, will change.
 
->> Btw... I really don't want to change the single core FW name to "scp_c0.img"
->> because my plan is to get this merged and then cleanup the devicetrees for all
->> MTK machines to *remove* the firmware-name property from the SCP node(s).
->>
-> 
-> OK, but that's independent. We could keep symlink in linux-firmware for backward 
-> compability, if needed (delta linux-firmware maintainer gets mad).
-> 
+> > +               return IRQ_WAKE_THREAD;
+> > +
+> > +       dev_warn_ratelimited(ebm->dev, "spurious interrupts on 0x%04X\n=
+",
+> > +                            rx_sts ^ rx_handled);
+> > +       return IRQ_NONE;
+> It seems a bit too punishing when there are spurious interrupts. I
+> wonder if we should warn, but return IRQ_WAKE_THREAD as long as
+> rx_handled !=3D 0.
+>=20
+> Also, if another interrupt can fire before mtk_gpueb_mbox_thread runs,
+> that's data dropping rather than spurious interrupts.
+>=20
 
-If we do that, then yes that would be 100% needed to retain backwards compatibility
-with the old devicetrees, unless we add even more code to this driver to check if
-the firmware exists and, if not, check if the old name exists and, if not, fail.
+Yeah, I agree that this is bad. As wens pointed out, my IRQ clearing
+earlier would most certainly open us up to losing data. I'll
+definitely look into changing this; iirc the current code resulted
+from me being unsure whether partially handled IRQs should still
+be counted as a handled IRQ or not.
 
-Also, why should we make the linux-firmware maintainer get mad? :-)
+> > +}
+> > +
+> > +static irqreturn_t mtk_gpueb_mbox_thread(int irq, void *data)
+> > +{
+> > +       struct mtk_gpueb_mbox *ebm =3D data;
+> > +       irqreturn_t ret =3D IRQ_NONE;
+> > +       int status;
+> > +       int i;
+> > +
+> > +       for (i =3D 0; i < ebm->v->num_channels; i++) {
+> > +               status =3D atomic_cmpxchg(&ebm->rx_status[i],
+> > +                                       MBOX_FULL | MBOX_CLOGGED, MBOX_=
+=46ULL);
+> > +               if (status =3D=3D (MBOX_FULL | MBOX_CLOGGED)) {
+> We could also save rx_handled from mtk_gpueb_mbox_isr and loop over
+> bits that are set.  If we do that, ebm->rx_status[i] is guaranteed to
+> be MBOX_FULL | MBOX_CLOGGED.
+>=20
 
->> firmware-name support in this driver is retained only for retrocompatibility
->> with old DTs (and perhaps "very special" devices needing "very special" firmwares,
->> of which none exist right now and hopefully we'll never see anything like that in
->> the future).
->>
->>>> Note that the generated firmware path is being used only if the
->>>> "firmware-name" devicetree property is not present in the SCP
->>>> node or in the SCP Core node(s).
->>>>
->>>> [1 - Reply regarding firmware-name property]
->>>> Link: https://lore.kernel.org/all/7e8718b0-df78-44a6- 
->>>> a102-89529d6abcce@app.fastmail.com/
->>>> Signed-off-by: AngeloGioacchino Del Regno 
->>>> <angelogioacchino.delregno@collabora.com>
->>>> ---
->>>>   drivers/remoteproc/mtk_scp.c | 64 ++++++++++++++++++++++++++++++++----
->>>>   1 file changed, 58 insertions(+), 6 deletions(-)
->>>>
->>>> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
->>>> index 8206a1766481..80fcb4b053b3 100644
->>>> --- a/drivers/remoteproc/mtk_scp.c
->>>> +++ b/drivers/remoteproc/mtk_scp.c
->>>> @@ -16,6 +16,7 @@
->>>>   #include <linux/remoteproc.h>
->>>>   #include <linux/remoteproc/mtk_scp.h>
->>>>   #include <linux/rpmsg/mtk_rpmsg.h>
->>>> +#include <linux/string.h>
->>>>   #include "mtk_common.h"
->>>>   #include "remoteproc_internal.h"
->>>> @@ -1093,22 +1094,73 @@ static void scp_remove_rpmsg_subdev(struct mtk_scp *scp)
->>>>       }
->>>>   }
->>>> +/**
->>>> + * scp_get_default_fw_path() - Get default SCP firmware path
->>>> + * @dev:     SCP Device
->>>> + * @core_id: SCP Core number
->>>> + *
->>>> + * This function generates a path based on the following format:
->>>> + *     mediatek/(soc_model)/scp(_cX).img; for multi-core or
->>>> + *     mediatek/(soc_model)/scp.img for single core SCP HW
->>>> + *
->>>> + * Return: A devm allocated string containing the full path to
->>>> + *         a SCP firmware or an error pointer
->>>> + */
->>>> +static const char *scp_get_default_fw_path(struct device *dev, int core_id)
->>>> +{
->>>> +    struct device_node *np = core_id < 0 ? dev->of_node : dev->parent->of_node;
->>>> +    char scp_fw_file[7] = "scp_cX";
->>>
->>> We provide a string that we later overwrite. I'd prefer to have just the 
->>> reservation without any 'artificial' string in it.
->>>
->>
->> Yeah, this one is a leftover that I forgot to cleanup. I fully agree with you.
->>
->> Will change that in v2.
->>
->>>> +    const char *compatible, *soc;
->>>> +    int ret;
->>>> +
->>>> +    /* Use only the first compatible string */
->>>> +    ret = of_property_read_string_index(np, "compatible", 0, &compatible);
->>>> +    if (ret)
->>>> +        return ERR_PTR(ret);
->>>> +
->>>> +    /* If the compatible string's length is implausible bail out early */
->>>> +    if (strlen(compatible) < strlen("mediatek,mtXXXX-scp"))
->>>
->>> Seems like a double check of compatible. Why is dt-bindings for that not enough?
->>>
->>
->> It's more than that... (check below)
->>
->>>> +        return ERR_PTR(-EINVAL);
->>>> +
->>>> +    /* If the compatible string starts with "mediatek,mt" assume that it's ok */
->>>> +    if (!str_has_prefix(compatible, "mediatek,mt"))
->>>
->>> Same here.
->>>
->>
->> ....and it's because.... (check below)
->>
->>>> +        return ERR_PTR(-EINVAL);
->>>> +
->>>> +    if (core_id >= 0)
->>>> +        ret = snprintf(scp_fw_file, ARRAY_SIZE(scp_fw_file), "scp_c%1d", 
->>>> core_id);
->>>> +    else
->>>> +        ret = snprintf(scp_fw_file, ARRAY_SIZE(scp_fw_file), "scp");
->>>> +    if (ret <= 0)
->>>> +        return ERR_PTR(ret);
->>>> +
->>>> +    soc = &compatible[strlen("mediatek,")];
->>
-> 
-> Shouldn't we use strchr(compatible, ',') or similar here?
-> 
+Wouldn't storing rx_handled open us up to data races with unpleasant
+code to try and prevent them? As far as I understand, the ISR is allowed
+to fire again before the thread has completed. Having the rx_status bits
+as individual atomics gives us finer granularity than needing to protect
+the entire set of bits.
 
-The logic here is to get this optimized by the compiler: "mediatek," is a constant
-and the result of strlen is predefined (same for the other occurrence in the string
-length plausibility check up there).
+If there is some way to pass data from the ISR to the awoken thread
+directly as a per-invocation parameter rather than a squirreled away
+member of the driver private struct, then I agree doing it your way
+seems better.
 
-On the other hand, finding the pointer with strchr() means iterating.
+> > +                       mtk_gpueb_mbox_read_rx(ebm, i);
+> > +                       mbox_chan_received_data(&ebm->mbox.chans[i],
+> > +                                               ebm->rx_buf[i]);
+> It looks like we read the data and pass it on to the client
+> immediately. Does each channel need its own rx_buf?
+>=20
 
->> ...I'd otherwise anyway have to check here, as this is a pointer to the middle of
->> the compatible string, used below to extract "mtXXXX" (mt8195, mt1234 etc) from it.
->>
->> Sure I get your point about bindings - but IMO those multi-purpose checks make the
->> code robust, and will avoid exposure of random memory locations (and/or produce
->> undefined behavior) in the event that the compatible string is shorter than needed.
->>
->>>> +
->>>> +    return devm_kasprintf(dev, GFP_KERNEL, "mediatek/%.*s/%s.img",
->>>> +                  (int)strlen("mtXXXX"), soc, scp_fw_file);
-> 
-> I would have expected that there exists a function to extract a substring, but I 
-> didn't find any. Anyway, I think instead of hardcode the value we should search for 
-> '-' or use the remaining string as a whole. That would also fix the issue of a too 
-> short compatible string.
-> 
+Yeah, common mailbox framework does not do a copy here, it just passes
+the pointer. Which is good, because nobody likes copies, and it
+prevents the mailbox core from needing to know the size of received
+data.
 
-I thought about that, and tried it too: comes out with more lines of code than what
-you see here, and also gets trickier to read... especially when wanting to support
-"scp.img" and "scp_c0.img".
+So the individual rx_bufs are needed to prevent channel cross-talk.
 
-Unless you mean to change the path to "mediatek/(soc_name)/rest-of-compatible.img"
-as in "mediatek/mt8188/scp-dual-c0.img" (because we still have to append a core
-number text as the core 0 firmware cannot be loaded on core 1 and vice-versa), but
-even then.... honestly, I'm not sure how objectively better could that be compared
-to just hardcoding "scp" and "scp_c(core-number)"... just because either one or the
-other solution still implies doing similar checks (which might be more expensive?
-didn't write a poc for this idea, so not sure about that).
+> > +                       /* FIXME: When does MBOX_FULL get cleared? Here=
+? */
+> > +                       atomic_set(&ebm->rx_status[i], 0);
+> > +                       ret =3D IRQ_HANDLED;
+> > +               }
+> > +       }
+> > +
+> > +       return ret;
+> > +}
+> > +
+> > +static int mtk_gpueb_mbox_send_data(struct mbox_chan *chan, void *data)
+> > +{
+> > +       struct mtk_gpueb_mbox *ebm =3D dev_get_drvdata(chan->mbox->dev);
+> > +       unsigned int *num =3D chan->con_priv;
+> > +       int i;
+> > +       u32 *values =3D data;
+> > +
+> > +       if (*num >=3D ebm->v->num_channels)
+> > +               return -ECHRNG;
+> Can this ever happen? (I am not familiar with the mbox subsystem)
 
->>>> +}
->>>> +
->>>>   static struct mtk_scp *scp_rproc_init(struct platform_device *pdev,
->>>>                         struct mtk_scp_of_cluster *scp_cluster,
->>>> -                      const struct mtk_scp_of_data *of_data)
->>>> +                      const struct mtk_scp_of_data *of_data,
->>>> +                      int core_id)
->>>>   {
->>>>       struct device *dev = &pdev->dev;
->>>>       struct device_node *np = dev->of_node;
->>>>       struct mtk_scp *scp;
->>>>       struct rproc *rproc;
->>>>       struct resource *res;
->>>> -    const char *fw_name = "scp.img";
->>>> +    const char *fw_name;
->>>>       int ret, i;
->>>>       const struct mtk_scp_sizes_data *scp_sizes;
->>>>       ret = rproc_of_parse_firmware(dev, 0, &fw_name);
->>>> -    if (ret < 0 && ret != -EINVAL)
->>>> -        return ERR_PTR(ret);
->>>> +    if (ret) {
->>>> +        fw_name = scp_get_default_fw_path(dev, core_id);
->>>
->>> Wouldn't it make more sense to encapsulate the whole fw_name retrival in one 
->>> function, e.g. scp_get_fw_path.
->>>
->>
->> Sorry, not a fan of that, I don't see the actual benefit, as in, (imo) it doesn't
->> improve readability and it doesn't remove any duplication (as it's called only once
->> in one single place).
->>
->> But of course, I'm open to understand if I'm missing any point :-)
->>
-> 
-> My point would be to encapsulate the logic how to determine the fw_name in one 
-> function call. I think it improves readability because you look at the code and can 
-> say "OK here they somehow determine the fw_name" and only have to look into the 
-> function if you really care and skip over it otherwise.
-> 
+Only if someone with a pointer to chan modifies con_priv outside of
+what the mailbox driver set. It's an unlikely scenario, so I do think
+I can remove this check, but the downside is that if someone ever does
+manage to do this then the next line is a convenient read primitive.
 
-I don't have very strong opinions on that, and seeing one function call or two is
-not making me happy, nor sad. I did what you proposed in other occasions (and not
-in remoteproc) but then got suggestion to do otherwise, and that's the main reason
-why you see the code laid out like that and the reasoning I wrote.
+> > +
+> > +       if (!ebm->v->channels[*num].no_response &&
+> > +           atomic_read(&ebm->rx_status[*num]))
+> > +               return -EBUSY;
+> When no_response is true, rx_status is 0. We probably don't need to
+> check no_response.
 
-Finally, I'm open for whichever of the two solutions - it probably just boils
-down to maintainers' preference, in which case...
+Now that I'm thinking about it, I can probably get rid of no_response
+altogether. It was originally added because I conflated txdone with
+response received, and one particular command on the sleep channel,
+namely powering off the MFG, is unable to ever cause a response
+interrupt to fire.
 
-Mathieu or Bjorn: what do you prefer seeing here?
+Since we now poll for txdone anyway using the TX status register, I
+don't think this is needed at all anymore, so I'll try and get
+rid of it.
 
-Cheers,
-Angelo
+> > +
+> > +       writel(BIT(*num), ebm->mbox_ctl + MBOX_CTL_IRQ_CLR);
+> > +
+> > +       /*
+> > +        * We don't want any fancy nonsense, just write the 32-bit valu=
+es in
+> > +        * order. memcpy_toio/__iowrite32_copy don't work here, because=
+ fancy.
+> > +        */
+> > +       for (i =3D 0; i < ebm->v->channels[*num].tx_len; i +=3D 4) {
+> > +               writel(values[i / 4],
+> > +                      ebm->mbox_mmio + ebm->v->channels[*num].tx_offse=
+t + i);
+> > +       }
+> > +
+> > +       writel(BIT(*num), ebm->mbox_ctl + MBOX_CTL_IRQ_SET);
+> > +
+> > +       return 0;
+> > +}
+> > +
+> > +static int mtk_gpueb_mbox_startup(struct mbox_chan *chan)
+> > +{
+> > +       struct mtk_gpueb_mbox *ebm =3D dev_get_drvdata(chan->mbox->dev);
+> > +       unsigned int *num =3D chan->con_priv;
+> > +
+> > +       if (*num >=3D ebm->v->num_channels)
+> > +               return -ECHRNG;
+> > +
+> > +       atomic_set(&ebm->rx_status[*num], 0);
+> > +
+> > +       return 0;
+> > +}
+> > +
+> > +static void mtk_gpueb_mbox_shutdown(struct mbox_chan *chan)
+> > +{
+> > +       struct mtk_gpueb_mbox *ebm =3D dev_get_drvdata(chan->mbox->dev);
+> > +       unsigned int *num =3D chan->con_priv;
+> > +
+> > +       atomic_set(&ebm->rx_status[*num], MBOX_CLOGGED);
+> > +}
+> > +
+> > +static bool mtk_gpueb_mbox_last_tx_done(struct mbox_chan *chan)
+> > +{
+> > +       struct mtk_gpueb_mbox *ebm =3D dev_get_drvdata(chan->mbox->dev);
+> > +       unsigned int *num =3D chan->con_priv;
+> > +
+> > +       return !(readl(ebm->mbox_ctl + MBOX_CTL_TX_STS) & BIT(*num));
+> > +}
+> > +
+> > +const struct mbox_chan_ops mtk_gpueb_mbox_ops =3D {
+> > +       .send_data =3D mtk_gpueb_mbox_send_data,
+> > +       .startup =3D mtk_gpueb_mbox_startup,
+> > +       .shutdown =3D mtk_gpueb_mbox_shutdown,
+> > +       .last_tx_done =3D mtk_gpueb_mbox_last_tx_done,
+> > +};
+> > +
+> > +static struct mbox_chan *
+> > +mtk_gpueb_mbox_of_xlate(struct mbox_controller *mbox,
+> > +                       const struct of_phandle_args *sp)
+> > +{
+> > +       struct mtk_gpueb_mbox *ebm =3D dev_get_drvdata(mbox->dev);
+> > +
+> > +       if (!sp->args_count)
+> > +               return ERR_PTR(-EINVAL);
+> > +
+> > +       if (sp->args[0] >=3D ebm->v->num_channels)
+> > +               return ERR_PTR(-ECHRNG);
+> > +
+> > +       return &mbox->chans[sp->args[0]];
+> > +}
+> > +
+> > +static int mtk_gpueb_mbox_probe(struct platform_device *pdev)
+> > +{
+> > +       struct mtk_gpueb_mbox *ebm;
+> > +       unsigned int rx_buf_sz;
+> > +       void *buf;
+> > +       unsigned int i;
+> > +       int ret;
+> > +
+> > +       ebm =3D devm_kzalloc(&pdev->dev, sizeof(*ebm), GFP_KERNEL);
+> > +       if (!ebm)
+> > +               return -ENOMEM;
+> > +
+> > +       ebm->dev =3D &pdev->dev;
+> > +       ebm->v =3D of_device_get_match_data(ebm->dev);
+> > +
+> > +       dev_set_drvdata(ebm->dev, ebm);
+> > +
+> > +       ebm->clk =3D devm_clk_get_enabled(ebm->dev, NULL);
+> > +       if (IS_ERR(ebm->clk))
+> > +               return dev_err_probe(ebm->dev, PTR_ERR(ebm->clk),
+> > +                                    "Failed to get 'eb' clock\n");
+> > +
+> > +       ebm->mbox_mmio =3D devm_platform_ioremap_resource_byname(pdev, =
+"mbox");
+> > +       if (IS_ERR(ebm->mbox_mmio))
+> > +               return dev_err_probe(ebm->dev, PTR_ERR(ebm->mbox_mmio),
+> > +                                    "Couldn't map mailbox registers\n"=
+);
+> > +
+> > +       ebm->mbox_ctl =3D devm_platform_ioremap_resource_byname(pdev, "=
+mbox_ctl");
+> > +       if (IS_ERR(ebm->mbox_ctl))
+> > +               return dev_err_probe(
+> > +                       ebm->dev, PTR_ERR(ebm->mbox_ctl),
+> > +                       "Couldn't map mailbox control registers\n");
+> > +
+> > +       rx_buf_sz =3D (ebm->v->channels[ebm->v->num_channels - 1].rx_of=
+fset +
+> > +                    ebm->v->channels[ebm->v->num_channels - 1].rx_len);
+> rx is after tx in mmio. The first half of the space is wasted.
+>=20
+> We follow mtk_gpueb_mbox_read_rx by mbox_chan_received_data. It seems
+> we only need max of rx_len's.
 
->>>> +        if (IS_ERR(fw_name)) {
->>>> +            dev_err(dev, "Cannot get firmware path: %ld\n", PTR_ERR(fw_name));
->>>> +            return ERR_CAST(fw_name);
->>>> +        }
->>>> +    }
->>>>       rproc = devm_rproc_alloc(dev, np->name, &scp_ops, fw_name, sizeof(*scp));
->>>>       if (!rproc) {
->>>> @@ -1212,7 +1264,7 @@ static int scp_add_single_core(struct platform_device *pdev,
->>>>       struct mtk_scp *scp;
->>>>       int ret;
->>>> -    scp = scp_rproc_init(pdev, scp_cluster, of_device_get_match_data(dev));
->>>> +    scp = scp_rproc_init(pdev, scp_cluster, of_device_get_match_data(dev), -1);
->>>>       if (IS_ERR(scp))
->>>>           return PTR_ERR(scp);
->>>> @@ -1259,7 +1311,7 @@ static int scp_add_multi_core(struct platform_device *pdev,
->>>>               goto init_fail;
->>>>           }
->>>> -        scp = scp_rproc_init(cpdev, scp_cluster, cluster_of_data[core_id]);
->>>> +        scp = scp_rproc_init(cpdev, scp_cluster, cluster_of_data[core_id], 
->>>> core_id);
->>>>           put_device(&cpdev->dev);
->>>>           if (IS_ERR(scp)) {
->>>>               ret = PTR_ERR(scp);
->>>
->>
->>
-> 
+We do need the sum of all rx_len's but you're correct that the current code
+allocates too much memory. What I think it should do is
+
+last rx_offset + last rx_len - first rx_offset
+
+to get the total amount of MMIO occupied by RX.
+
+> > +
+> > +       buf =3D devm_kzalloc(ebm->dev, rx_buf_sz, GFP_KERNEL);
+> > +       if (!buf)
+> > +               return -ENOMEM;
+> > +
+> > +       ebm->rx_buf =3D devm_kmalloc_array(ebm->dev, ebm->v->num_channe=
+ls,
+> > +                                        sizeof(*ebm->rx_buf), GFP_KERN=
+EL);
+> > +       if (!ebm->rx_buf)
+> > +               return -ENOMEM;
+> > +
+> > +       ebm->mbox.chans =3D devm_kcalloc(ebm->dev, ebm->v->num_channels,
+> > +                                      sizeof(struct mbox_chan), GFP_KE=
+RNEL);
+> > +       if (!ebm->mbox.chans)
+> > +               return -ENOMEM;
+> > +
+> > +       ebm->rx_status =3D devm_kcalloc(ebm->dev, ebm->v->num_channels,
+> > +                                     sizeof(atomic_t), GFP_KERNEL);
+> > +       if (!ebm->rx_status)
+> > +               return -ENOMEM;
+> > +
+> > +       ebm->chn =3D devm_kcalloc(ebm->dev, ebm->v->num_channels,
+> > +                               sizeof(*ebm->chn), GFP_KERNEL);
+> > +
+> > +       for (i =3D 0; i < ebm->v->num_channels; i++) {
+> > +               ebm->rx_buf[i] =3D buf + ebm->v->channels[i].rx_offset;
+> > +               spin_lock_init(&ebm->mbox.chans[i].lock);
+> > +               /* the things you do to avoid explicit casting void* */
+> I actually prefer an inline helper that casts chan->con_priv to the
+> channel number. Another option is "chan - ebm->mox.chans".
+
+Hmmm, yeah. Though, I don't enjoy chan - ebm->mbox.chans because now we're
+in the woods regarding pointer arithmetics.
+
+I think the inline helper makes more sense, even if explicitly using a
+pointer as an integer gives me the heebie-jeebies.
+
+> > +               ebm->chn[i] =3D i;
+> > +               ebm->mbox.chans[i].con_priv =3D &ebm->chn[i];
+> > +               atomic_set(&ebm->rx_status[i], MBOX_CLOGGED);
+> > +       }
+> > +
+> > +       ebm->mbox.dev =3D ebm->dev;
+> > +       ebm->mbox.num_chans =3D ebm->v->num_channels;
+> > +       ebm->mbox.txdone_poll =3D true;
+> > +       ebm->mbox.txpoll_period =3D 0; /* minimum hrtimer interval */
+> > +       ebm->mbox.of_xlate =3D mtk_gpueb_mbox_of_xlate;
+> > +       ebm->mbox.ops =3D &mtk_gpueb_mbox_ops;
+> > +
+> > +       ebm->irq =3D platform_get_irq(pdev, 0);
+> > +       if (ebm->irq < 0)
+> > +               return ebm->irq;
+> > +
+> > +       ret =3D devm_request_threaded_irq(ebm->dev, ebm->irq, mtk_gpueb=
+_mbox_isr,
+> > +                                       mtk_gpueb_mbox_thread, 0, NULL,=
+ ebm);
+> > +       if (ret)
+> > +               return dev_err_probe(ebm->dev, ret, "failed to request =
+IRQ\n");
+> > +
+> > +       ret =3D devm_mbox_controller_register(ebm->dev, &ebm->mbox);
+> > +
+> > +       return 0;
+> > +}
+> > +
+> > +static const struct mtk_gpueb_mbox_variant mtk_gpueb_mbox_mt8196 =3D {
+> > +       .num_channels =3D 12,
+> > +       .channels =3D {
+> > +               { "fast_dvfs_event", 0, 0x0000, 16, 0x00e0, 16, false },
+> > +               { "gpufreq",         1, 0x0010, 32, 0x00f0, 32, false },
+> > +               { "sleep",           2, 0x0030, 12, 0x0110,  4, true  },
+> > +               { "timer",           3, 0x003c, 24, 0x0114,  4, false },
+> > +               { "fhctl",           4, 0x0054, 36, 0x0118,  4, false },
+> > +               { "ccf",             5, 0x0078, 16, 0x011c, 16, false },
+> > +               { "gpumpu",          6, 0x0088, 24, 0x012c,  4, false },
+> > +               { "fast_dvfs",       7, 0x00a0, 24, 0x0130, 24, false },
+> > +               { "ipir_c_met",      8, 0x00b8,  4, 0x0148, 16, false },
+> > +               { "ipis_c_met",      9, 0x00bc, 16, 0x0158,  4, false },
+> > +               { "brisket",        10, 0x00cc, 16, 0x015c, 16, false },
+> > +               { "ppb",            11, 0x00dc,  4, 0x016c,  4, false },
+> > +       },
+> > +};
+> > +
+> > +static const struct of_device_id mtk_gpueb_mbox_of_ids[] =3D {
+> > +       { .compatible =3D "mediatek,mt8196-gpueb-mbox",
+> > +         .data =3D &mtk_gpueb_mbox_mt8196 },
+> > +       { /* Sentinel */ }
+> > +};
+> > +MODULE_DEVICE_TABLE(of, mtk_gpueb_mbox_of_ids);
+> > +
+> > +static struct platform_driver mtk_gpueb_mbox_drv =3D {
+> > +       .probe =3D mtk_gpueb_mbox_probe,
+> > +       .driver =3D {
+> > +               .name =3D "mtk-gpueb-mbox",
+> > +               .of_match_table =3D mtk_gpueb_mbox_of_ids,
+> > +       }
+> > +};
+> > +module_platform_driver(mtk_gpueb_mbox_drv);
+> > +
+> > +MODULE_AUTHOR("Nicolas Frattaroli <nicolas.frattaroli@collabora.com>");
+> > +MODULE_DESCRIPTION("MediaTek GPUEB mailbox driver for SoCs such as the=
+ MT8196");
+> > +MODULE_LICENSE("GPL");
+> >
+> > --
+> > 2.51.0
+> >
+>=20
+
+Thank you for your review!
+
+Kind regards,
+Nicolas Frattaroli
+
 
 
