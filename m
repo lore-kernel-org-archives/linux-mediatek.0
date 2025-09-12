@@ -4,94 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2C3ACAC582
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 07:33:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6E73CAC582
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 08:11:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Kg3BU9cKfGHe7tGgdAiZsc5JB/dKxlDiQ/R4O8eZPV4=; b=t8VyK+t3B1/ttrvDISfkLfOHGp
-	dGVL2GAubAM0aWE9wGhorKlxkQYRV7oLHvj4svnPEIUhxAQOcj4RxZ+Kl9uSYTv97tiss/Cm1nYiZ
-	l5YB4aI9ldcVMkGMwfvafY24PXJ1RAwdMQ4lOykUb1Zb5bWA0pQSzwWMRwa8iHxg8o50R6PBt4sCZ
-	O5Ud+joZCJxZ4FukemVXIfMxrp2pLem4i1hPmvlmi+vTUEnO+j0r+jx5zcPP6N7ZyC1XzLO3xbBR7
-	GVvBusacEfqg4MVrBOYXHnQFEHXQfUztRY1kw0x+em06EqnGz0kd3CjAIup8KptNdHwm9ZVIqc2/H
-	uXaHRDnA==;
+	bh=qi53b0/XVvkDZfI/9OLUs4224IlgC1eci7qOWPSfG1k=; b=fBT5EwwnQhhdPMItJrJVUntN+W
+	8tBSMs8ehM37WZAuWWVgXSTNRGBXiQ4xKF3tg5TRKF7oUombnuyKd6IFQkBd8s2vwVpiDa66fp4dA
+	QfZthwYxE6c66c5qZR+ggbKH2fZUeLpPLD6yZF3t+daq7rSJVP9W8pbWBAiepuDLr58lzWti3Djdl
+	6/Hjg8U81RkTbIqBrVP/K0RJZzvx7+WB/XGvlKSkeyEZXB3TOIp10Romtj3nIAdWn5XKqCLBOuR7D
+	duwP/Go0FtJNKE+bwKGg8kSARHQsDP44sJY+j+cE3g3lp/8cZIo0jw5C6VI++G479U+1MT4UW5xDj
+	qmTwGnFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwyHg-00000007ffV-3HR4;
-	Fri, 12 Sep 2025 07:33:28 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1uwysi-00000007pXG-2T5Q;
+	Fri, 12 Sep 2025 08:11:44 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwyHe-00000007fe0-12YL
-	for linux-mediatek@lists.infradead.org;
-	Fri, 12 Sep 2025 07:33:27 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-55f753ec672so1757662e87.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 12 Sep 2025 00:33:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1757662404; x=1758267204; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Kg3BU9cKfGHe7tGgdAiZsc5JB/dKxlDiQ/R4O8eZPV4=;
-        b=XJEhRkZZHUTGWtpWeDW4/w5LKzuyb3SO0MvuwewMb9hA9qIXvD9oW+0DXUm/FfJX5o
-         /Q1bx7lJ6mhFjcWBlohgXM8GYt5B8IExLANyDtU+PZfFYUEb4szkXCETnF8KqJS30mol
-         yJxPTSyPxy+U1wJgnVgN/xYEP6qm97adVEsqfn8T+uXSyzIB6rOXxThPwpbJBLj3d4yR
-         +VZAYBebu8J/XamF30gBMHGvnBa0skPC434Oih+P5WA77YrJ1nFynXp4xaWRwqz1iZyi
-         cSykjEErKEfQes5nmAF6Wwv7HrEVQVc25nprSm4shuogygSje7qY8kWrM1jN5ajIaboa
-         ePIQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757662404; x=1758267204;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Kg3BU9cKfGHe7tGgdAiZsc5JB/dKxlDiQ/R4O8eZPV4=;
-        b=HkB+M1w3uZS8iH/ylNehvcaDt4YQLzIXIgBqW9msDTwOJXHLaZFWBWlZ8Ew5AjemdA
-         M0/EW8e+o3EGYZmx+HGgAhvTmHZ8wqv9Q1PBgCqmc6JmGPJriDLzIuapCooc4vgj8h2+
-         tzo6DnhTnFPEX5S0GaiRjRVh0GiRAlCAKSvESQLvHXOTD3u+OWY404Ogufudo9c0XR0h
-         p3b4weLB7RJHFfvdzkGJ/fNyXAIAaskmwSU7pPWtubX+j01vkKYx8UAlGtaAgVmWlKH5
-         A6+VF3YAk9TBdwSDRABuquutitD4gEXzGz9TvJqv9aV84n7qir1tgSJx5NcomCKw1oXw
-         Geew==
-X-Forwarded-Encrypted: i=1; AJvYcCUmOfHIl7vb/tjsIUA68Fq+ymPaDTuS5T2as6K8PeNGPqKrCKmf+0CtaI/bCsVnydr8/sebvt4H/64/bVEN/w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxIUpHcP/O+vO/IeMHYfhdBYxwJwr8FAtdjbuX5eg940JRxfkVE
-	Ue4vO9dyeYVNZeWgojCgd7nxe+N7yuZbvBbeITXGfWYmlZ0xo3aLSL+9HmviGr/z/IGt6o04IVo
-	zagoKBfxH1hYTUulxEEOKxDYYPd79lUDRO5XU0KXkxw==
-X-Gm-Gg: ASbGncujLoBcn7MJ8sK/xhHbw7BQdObmAh9qstoL1+z2f2GO1CTZtIgITaWOJWnRps8
-	Uf0FdHm8JAYqn3xNIdAe2OvgPVcLegHyQ6ZzBfyDSkD1N8an4K7Mx6b2Dk7oudZuQt0aHDNjVDm
-	yhCuM0RrNF7I1vLXVhHAhtLgzhJy/c7nzGQazXZzThvh7uFBVd5ajzr2cftcBXbnO5SDJOMp0he
-	xUIcux35VDPPsUCdQ==
-X-Google-Smtp-Source: AGHT+IFqJ3rG4VGz2N4HeDjhdE1zZXrIjMGRIFcSDQMQTPILLpM42VNVO1ib5uwXHA7KeYqbyezpYRqeKhIIV796t/0=
-X-Received: by 2002:a05:6512:3693:b0:569:a257:c6d6 with SMTP id
- 2adb3069b0e04-57050fe351amr473063e87.49.1757662403635; Fri, 12 Sep 2025
- 00:33:23 -0700 (PDT)
+	id 1uwyse-00000007pTD-427V;
+	Fri, 12 Sep 2025 08:11:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1757664698;
+	bh=g1qMzc3e+uE9kDGjJIWr5qdsOCwYUGNZ4YO3Ze9nZNg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Kk0pqkkai1y6Ye2S/urzT8HnM3XcCxjoIr19MnYl6Pm5tuj5ynyaJuk1qfuUZOWRJ
+	 tUVVpztwsLcBxka/xKcbLlWv/FQrQRxh8UF9s+MX4wlNMRdqpFDTnNl430uU/c7YQM
+	 QfEX6ntmA0GDv6vCDC4v8gBUIecEh0kOzjK4M7k8/Dy3pHzmJmsdX+UYDWJRrV+y3J
+	 7wLGwPHOwP0YvYOVZ8H93WL3LlMST9CzmlWLO95i6roeJ2B4rNQ21gjVM22h3Hc8QJ
+	 zxHajdk/dEl5X5BjoCfLVI6h9RTQxKhoL74kJtGCTVCB7oByCw8/X1iKcmqnWjvnNb
+	 gH76wZsWpqNrw==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id F078517E12BB;
+	Fri, 12 Sep 2025 10:11:36 +0200 (CEST)
+Message-ID: <990cc068-adc9-473a-b4c7-9113583cb83c@collabora.com>
+Date: Fri, 12 Sep 2025 10:11:36 +0200
 MIME-Version: 1.0
-References: <20250910-gpio-mmio-gpio-conv-part4-v2-0-f3d1a4c57124@linaro.org>
- <CACRpkdb=J+hiC5cu+g0Z-gqzpG8PgX01CXc4P98FfSSAf7PZEA@mail.gmail.com> <CAMRc=McbadZx1yK1jGeyUnXAFZgfA8YpLwacmqC0eMonS-c-9A@mail.gmail.com>
-In-Reply-To: <CAMRc=McbadZx1yK1jGeyUnXAFZgfA8YpLwacmqC0eMonS-c-9A@mail.gmail.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Fri, 12 Sep 2025 09:33:12 +0200
-X-Gm-Features: Ac12FXxWiwLmhQls14nNfaQvMLfIJjlBZAsZhTSA6_U4hnix-0Aq3t1bNNwFxXE
-Message-ID: <CACRpkdbSp6ScZrzUtdP0ojP10yOTsbnd33HqgEVdiSwPRomuAg@mail.gmail.com>
-Subject: Re: [PATCH v2 00/15] gpio: replace legacy bgpio_init() with its
- modernized alternative - part 4
-To: Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: Keguang Zhang <keguang.zhang@gmail.com>, Alban Bedel <albeu@free.fr>, 
-	Doug Berger <opendmb@gmail.com>, Florian Fainelli <florian.fainelli@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Paul Walmsley <paul.walmsley@sifive.com>, Samuel Holland <samuel.holland@sifive.com>, 
-	Yixun Lan <dlan@gentoo.org>, Andy Shevchenko <andy@kernel.org>, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-riscv@lists.infradead.org, spacemit@lists.linux.dev, 
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 09/12] dt-bindings: regulator: Convert Dialog DA9211
+ Regulators to DT schema
+To: Ariel D'Alessandro <ariel.dalessandro@collabora.com>, airlied@gmail.com,
+ amergnat@baylibre.com, andrew+netdev@lunn.ch, andrew-ct.chen@mediatek.com,
+ broonie@kernel.org, chunkuang.hu@kernel.org, conor+dt@kernel.org,
+ davem@davemloft.net, dmitry.torokhov@gmail.com, edumazet@google.com,
+ flora.fu@mediatek.com, heiko@sntech.de, houlong.wei@mediatek.com,
+ jeesw@melfas.com, kernel@collabora.com, krzk+dt@kernel.org, kuba@kernel.org,
+ lgirdwood@gmail.com, linus.walleij@linaro.org,
+ louisalexis.eyraud@collabora.com, luiz.dentz@gmail.com,
+ maarten.lankhorst@linux.intel.com, marcel@holtmann.org,
+ matthias.bgg@gmail.com, mchehab@kernel.org, minghsiu.tsai@mediatek.com,
+ mripard@kernel.org, p.zabel@pengutronix.de, pabeni@redhat.com,
+ robh@kernel.org, sean.wang@kernel.org, simona@ffwll.ch,
+ support.opensource@diasemi.com, tiffany.lin@mediatek.com,
+ tzimmermann@suse.de, yunfei.dong@mediatek.com
+Cc: devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-bluetooth@vger.kernel.org,
+ linux-gpio@vger.kernel.org, linux-input@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-sound@vger.kernel.org, netdev@vger.kernel.org
+References: <20250911151001.108744-1-ariel.dalessandro@collabora.com>
+ <20250911151001.108744-10-ariel.dalessandro@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250911151001.108744-10-ariel.dalessandro@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250912_003326_301630_0A559414 
-X-CRM114-Status: GOOD (  13.27  )
+X-CRM114-CacheID: sfid-20250912_011141_159351_26FAD999 
+X-CRM114-Status: GOOD (  14.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,27 +93,143 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 11, 2025 at 9:38=E2=80=AFAM Bartosz Golaszewski <brgl@bgdev.pl>=
- wrote:
-> On Wed, Sep 10, 2025 at 11:32=E2=80=AFPM Linus Walleij <linus.walleij@lin=
-aro.org> wrote:
+Il 11/09/25 17:09, Ariel D'Alessandro ha scritto:
+> Convert the existing text-based DT bindings for Dialog Semiconductor DA9211
+> Voltage Regulators family to a DT schema. Examples are simplified, as these
+> are all equal.
+> 
+> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+> ---
+>   .../devicetree/bindings/regulator/da9211.txt  | 205 ------------------
+>   .../bindings/regulator/dlg,da9211.yaml        | 104 +++++++++
+>   2 files changed, 104 insertions(+), 205 deletions(-)
+>   delete mode 100644 Documentation/devicetree/bindings/regulator/da9211.txt
+>   create mode 100644 Documentation/devicetree/bindings/regulator/dlg,da9211.yaml
+> 
 
-> > I would merge the first 14 and keep the last for the later part
-> > of the merge window when all other trees with conversions
-> > are merged.
-> >
-> > (You probably already thought of this.)
-> >
-> > Yours,
-> > Linus Walleij
->
-> I already have both pinctrl and mfd changes in my tree from Lee's and
-> your immutable branches. I pushed this into gpio/devel and it built
-> just fine.
+..snip..
 
-Ah, excellent planning. Smarter than anything I'd be able to
-logisticize in my head!
+> diff --git a/Documentation/devicetree/bindings/regulator/dlg,da9211.yaml b/Documentation/devicetree/bindings/regulator/dlg,da9211.yaml
+> new file mode 100644
+> index 0000000000000..9d5e25bc3872c
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/regulator/dlg,da9211.yaml
+> @@ -0,0 +1,104 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/regulator/dlg,da9211.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title:
+> +  Dialog Semiconductor DA9211/DA9212/DA9213/DA9223/DA9214/DA9224/DA9215/DA9225
+> +  Voltage Regulator
 
-Yours,
-Linus Walleij
+Dialog Semiconductor DA9211-9215, DA9223-9225 Voltage Regulators
+
+Better? :-)
+
+> +
+> +maintainers:
+> +  - Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - dlg,da9211
+> +      - dlg,da9212
+> +      - dlg,da9213
+> +      - dlg,da9214
+> +      - dlg,da9215
+> +      - dlg,da9223
+> +      - dlg,da9224
+> +      - dlg,da9225
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  regulators:
+> +    type: object
+> +    additionalProperties: false
+> +    description:
+> +      List of regulators provided by the device
+> +
+> +    patternProperties:
+> +      "^BUCK([AB])$":
+> +        type: object
+> +        $ref: regulator.yaml#
+> +        unevaluatedProperties: false
+> +        description: |
+
+Please drop the vertical bar | from all descriptions
+
+after which,
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+> +          Properties for a single BUCK regulator
+> +
+> +        properties:
+> +          regulator-initial-mode:
+> +            items:
+> +              enum: [ 1, 2, 3 ]
+> +            description: |
+> +              Defined in include/dt-bindings/regulator/dlg,da9211-regulator.h
+> +
+> +          regulator-allowed-modes:
+> +            items:
+> +              enum: [ 1, 2, 3 ]
+> +            description: |
+> +              Defined in include/dt-bindings/regulator/dlg,da9211-regulator.h
+> +
+> +          enable-gpios:
+> +            maxItems: 1
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - regulators
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/regulator/dlg,da9211-regulator.h>
+> +
+> +    i2c {
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
+> +
+> +        regulator@68 {
+> +            compatible = "dlg,da9212";
+> +            reg = <0x68>;
+> +            interrupts = <3 27>;
+> +
+> +            regulators {
+> +                BUCKA {
+> +                    regulator-name = "VBUCKA";
+> +                    regulator-min-microvolt = < 300000>;
+> +                    regulator-max-microvolt = <1570000>;
+> +                    regulator-min-microamp = <2000000>;
+> +                    regulator-max-microamp = <5000000>;
+> +                    enable-gpios = <&gpio 27 0>;
+> +                };
+> +                BUCKB {
+> +                    regulator-name = "VBUCKB";
+> +                    regulator-min-microvolt = < 300000>;
+> +                    regulator-max-microvolt = <1570000>;
+> +                    regulator-min-microamp = <2000000>;
+> +                    regulator-max-microamp = <5000000>;
+> +                    enable-gpios = <&gpio 17 0>;
+> +                };
+> +            };
+> +        };
+> +    };
+> +
+> +...
+
 
