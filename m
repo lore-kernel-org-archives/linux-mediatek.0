@@ -4,243 +4,153 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 454F4CA101F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 09:49:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B97E5CAC582
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 09:52:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S3LbucmPw5s335YWhG8TSYaXlBUClMiqHk9+bvDVNf8=; b=SyHUdTO8TFefYHxTw0HLighNfC
-	F1VvpjJDFdaLLccguHjOBcioPMFCktOzk7h7CD9FOX2l4nqQoqcyKC62ZEeXlZhk2Pf2g70a2/Dpb
-	+Kll1UNR2+7xNEhFsgX/8IQ32IgC1zzuNg/CTSPScebrcrS87Mt3bRgiWxOZtW/JSd0dCQtAiClxh
-	h89AyOeWFtp58SDFHgU9qx7Bc077umluNHLK51zGNx96icex5+n/Ro15JSEGedZD2roSjwg4KQNtE
-	2ey6hl1LXpV1izdOhFKewYHFp6TF30E6rmX34CCct5z9zbqh1VrJkxnTIq0QOiomyCZnc3Gm5UY9h
-	6nH1Y6NA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mpHfD0y/k7EQ4L8qNlMkR36kG/8VWpplR8Qp6+wp9Q4=; b=EztAH2v7hTwwye0uQM+kRhNtm8
+	KGJhGTO0esGS2tZYNdnau9ygW+CeZy5EbCpuWxU3qZunqhVhePd7EjxT6mZtnHAbnHox7gVkHWLJT
+	EgtKR++VoaP9aI7yfKyHnjrEIFHYdEcWBnTPy/RCFx0BiX2OCBhtF4l4Pl3pm7Vwstez7frvoU2Ww
+	8B+zE0y/DdFlc8dfUUt7EmRgOU1Nqgr3wW64CdjX8jt4hpzJMEIFlXpcvubaa/olZZSEdXbTrOGuh
+	8M5eXCPhg1AJzgBDtZENFLlBZnP5MrLHny4Q3NfAxIJg74DmtEtp3w+165Coh8kaN1CVyeQqZnHyF
+	lVzoo4Eg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ux0PJ-00000008Nu4-441c;
-	Fri, 12 Sep 2025 09:49:29 +0000
+	id 1ux0Rx-00000008P63-3mTR;
+	Fri, 12 Sep 2025 09:52:13 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ux0PI-00000008NsB-0vr4;
-	Fri, 12 Sep 2025 09:49:28 +0000
+	id 1ux0Rw-00000008P4F-0ckj
+	for linux-mediatek@bombadil.infradead.org;
+	Fri, 12 Sep 2025 09:52:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
-	:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From:
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
 	Sender:Reply-To:Content-ID:Content-Description;
-	bh=S3LbucmPw5s335YWhG8TSYaXlBUClMiqHk9+bvDVNf8=; b=gorBFwdqW2uxieKu5z8UmHF3oh
-	SNWTgzVyPTbDZyHIr1pQLrCYWzWN7pcUIhxqsrXNXWd7/MOh0OygvATax4T6yN6ucZVgCkkJk6V8S
-	xvxgHeQMboO2l4KijkTjOsxDcgxyG+TCYfrGJDCnW3ve+QJMFm4CScIQN7wHlbxqZQzuKHEc1FFWx
-	hlvAv1kscQ7/rqmoCYmgCqeDG8+T7+dkWjBfkVjFU5MxJIVpTkeQwwLtgKr4J7/n3BpaAlY15/3BB
-	iHmwplkHA4Ul5ptCQDK0ck9AVQ3z6EITiR+ZjzuP85p8kXucHdreb0ipuSkY2UZI2uwgIZMUgkoWu
-	dSkbfojw==;
-Received: from mgamail.intel.com ([192.198.163.12])
+	bh=mpHfD0y/k7EQ4L8qNlMkR36kG/8VWpplR8Qp6+wp9Q4=; b=iQVIrr/b6+lasIRHd9WftOW/ER
+	qpr0ylDIli9s/vcoqm4cLFuJCSW7uoFdv/yXDtP2XmLtvgyjAHBNTK0BPIPLYqH8mSkZlcBvdqHac
+	qf9FPjpvgnUOBUTiW/neiWmQX+p5UH5iO69Yh8nH9FnBw14aAj9xMKOMzIYEFEo9PtI4JPst1/giT
+	QvVKczgR8LEt+uDR4GkTrxqJV7gY8XcK/eo1iRuqVrPtixVDha7RKlIJPHbO4jZce6k2yfYEYQkcF
+	qibKjhldtvvVmpT453srdF6D0BmGDjk2UeP+T0ddc6tYoywHK4/KOZwxZUVGmHcbRDPCFYOCozliN
+	4Ci4jFNg==;
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ux0PE-00000006JPn-1Tj7;
-	Fri, 12 Sep 2025 09:49:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1757670564; x=1789206564;
-  h=from:to:cc:subject:date:message-id:references:
-   in-reply-to:content-transfer-encoding:mime-version;
-  bh=HH59XwzLugIVfZTSarsP94cLPe35Ip8wQZP+K4wtHlo=;
-  b=OqOmRIv/Y6kDJNK8VjMWnYeGrnk9XCzCFLOcGdEWpL11+G0S9nPQrp6O
-   LSjBqUCotyd4wKWO0BIrdSvwe6531Hz3Pk7e/N2GYiHDa69Z02ahbSgtm
-   IzSPFqJJvSYEq2keQFCLWSeU17nPzAW/XEDLyiDUbPeDZrMIH2dYkQbLS
-   sgFQbsiYVcpzHiBi4sgTDLL7jEe4j0xbcmDZii3CyxnPSz6OsiC5xHZbj
-   YRVVxLlS98hEyG/bcwBjNW3cc4bVLrSTDsi0ko1OgDdLCOmJBg279bxtr
-   hILwUXJ9qiGih58ewR4j58cdVmjNbyo2EHPpYza7jqLjykRT3yny4N6Bk
-   Q==;
-X-CSE-ConnectionGUID: n4FyVmDmT1CD5SwNYlB7rw==
-X-CSE-MsgGUID: iG4XSwu4QdWPqQbgf/pFEQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11550"; a="63837385"
-X-IronPort-AV: E=Sophos;i="6.18,259,1751266800"; 
-   d="scan'208";a="63837385"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
-  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Sep 2025 02:49:18 -0700
-X-CSE-ConnectionGUID: PA1izaW7Sz2+xoM5EC7IvQ==
-X-CSE-MsgGUID: +DUnE2pMQi231Ngtwujq8g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.18,259,1751266800"; 
-   d="scan'208";a="174708484"
-Received: from orsmsx903.amr.corp.intel.com ([10.22.229.25])
-  by fmviesa010.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Sep 2025 02:49:17 -0700
-Received: from ORSMSX903.amr.corp.intel.com (10.22.229.25) by
- ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.17; Fri, 12 Sep 2025 02:49:16 -0700
-Received: from ORSEDG902.ED.cps.intel.com (10.7.248.12) by
- ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.17 via Frontend Transport; Fri, 12 Sep 2025 02:49:16 -0700
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com (40.107.94.56) by
- edgegateway.intel.com (134.134.137.112) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.17; Fri, 12 Sep 2025 02:49:16 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=CLjTJDt1IQbSZU+pz9/dugMiGeRBuvCP2EEbjtnUEuI6DdkEzmHCSrSb9q6lg1CgSoh8yQ70IuHJ5PNJt0zBEENsWqnc++hLVQvkCau4OBoZXkb6c7DRPZ1RfrxjQHht8tA2pWn1NuVfRYXDzjDZAkL11Usla9LKew8h4jDFt3Qi3fuPTuTqC25Upgb/0IwhhUW/QXDbv6XCQhDZnmX4m9StRDgXo3hR8ZKQnU9cEZFUx9Ugf4O46dfwI5clZv6+aG2/TEW/gRNQlW0Mdthd+dtwtT6/SEE0QvbYtwPycdGKHQPcn/+Bl4+dN7Wm4nwUCTAz3CgxwfudqY8iXZ1D7w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=S3LbucmPw5s335YWhG8TSYaXlBUClMiqHk9+bvDVNf8=;
- b=Ct3xOveArlx3NbYTF/WOOk1DGVPzh6UgMFUFWX/Tc79DpZSEe7MdXQcCqyK2ipEfCgRytoZHY/4K5e8cSstlJl73QoOq4X8dG5V5m1N4gUuHafa3kShAOsgesXbTUmiVG1CUyb+F6DVA8MQd+d/09FdhaVGcllpq/tkZoWA/S8pXAm8Ny1wio9bcrWZEj0soijvkhDolblb7KPPwA1eZ8UthL0UkYxnGwj9dc7BMKpiWmSPnZD8vVrTKz2+qBtmr4FsfaOKvouab1fkB6WMDTjvSnCw9K5awRGt/ajcecIOnxsi7nDDf8gkSaeuKV67d6+VY8F46AzVICXFZVYsixw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from BL1PR11MB5271.namprd11.prod.outlook.com (2603:10b6:208:31a::21)
- by SN7PR11MB7420.namprd11.prod.outlook.com (2603:10b6:806:328::20) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9094.22; Fri, 12 Sep
- 2025 09:49:13 +0000
-Received: from BL1PR11MB5271.namprd11.prod.outlook.com
- ([fe80::5616:a124:479a:5f2a]) by BL1PR11MB5271.namprd11.prod.outlook.com
- ([fe80::5616:a124:479a:5f2a%3]) with mapi id 15.20.9094.021; Fri, 12 Sep 2025
- 09:49:13 +0000
-From: "Tian, Kevin" <kevin.tian@intel.com>
-To: Nicolin Chen <nicolinc@nvidia.com>, "joro@8bytes.org" <joro@8bytes.org>,
-	"jgg@nvidia.com" <jgg@nvidia.com>, "bhelgaas@google.com"
-	<bhelgaas@google.com>
-CC: "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
-	"will@kernel.org" <will@kernel.org>, "robin.murphy@arm.com"
-	<robin.murphy@arm.com>, "sven@kernel.org" <sven@kernel.org>, "j@jannau.net"
-	<j@jannau.net>, "alyssa@rosenzweig.io" <alyssa@rosenzweig.io>,
-	"neal@gompa.dev" <neal@gompa.dev>, "robin.clark@oss.qualcomm.com"
-	<robin.clark@oss.qualcomm.com>, "m.szyprowski@samsung.com"
-	<m.szyprowski@samsung.com>, "krzk@kernel.org" <krzk@kernel.org>,
-	"alim.akhtar@samsung.com" <alim.akhtar@samsung.com>, "dwmw2@infradead.org"
-	<dwmw2@infradead.org>, "baolu.lu@linux.intel.com" <baolu.lu@linux.intel.com>,
-	"yong.wu@mediatek.com" <yong.wu@mediatek.com>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, "angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "tjeznach@rivosinc.com"
-	<tjeznach@rivosinc.com>, "paul.walmsley@sifive.com"
-	<paul.walmsley@sifive.com>, "palmer@dabbelt.com" <palmer@dabbelt.com>,
-	"aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>, "alex@ghiti.fr"
-	<alex@ghiti.fr>, "heiko@sntech.de" <heiko@sntech.de>,
-	"schnelle@linux.ibm.com" <schnelle@linux.ibm.com>, "mjrosato@linux.ibm.com"
-	<mjrosato@linux.ibm.com>, "gerald.schaefer@linux.ibm.com"
-	<gerald.schaefer@linux.ibm.com>, "orsonzhai@gmail.com" <orsonzhai@gmail.com>,
-	"baolin.wang@linux.alibaba.com" <baolin.wang@linux.alibaba.com>,
-	"zhang.lyra@gmail.com" <zhang.lyra@gmail.com>, "wens@csie.org"
-	<wens@csie.org>, "jernej.skrabec@gmail.com" <jernej.skrabec@gmail.com>,
-	"samuel@sholland.org" <samuel@sholland.org>, "jean-philippe@linaro.org"
-	<jean-philippe@linaro.org>, "rafael@kernel.org" <rafael@kernel.org>,
-	"lenb@kernel.org" <lenb@kernel.org>, "Liu, Yi L" <yi.l.liu@intel.com>,
-	"cwabbott0@gmail.com" <cwabbott0@gmail.com>, "quic_pbrahma@quicinc.com"
-	<quic_pbrahma@quicinc.com>, "iommu@lists.linux.dev" <iommu@lists.linux.dev>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"asahi@lists.linux.dev" <asahi@lists.linux.dev>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-arm-msm@vger.kernel.org"
-	<linux-arm-msm@vger.kernel.org>, "linux-samsung-soc@vger.kernel.org"
-	<linux-samsung-soc@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "linux-riscv@lists.infradead.org"
-	<linux-riscv@lists.infradead.org>, "linux-rockchip@lists.infradead.org"
-	<linux-rockchip@lists.infradead.org>, "linux-s390@vger.kernel.org"
-	<linux-s390@vger.kernel.org>, "linux-sunxi@lists.linux.dev"
-	<linux-sunxi@lists.linux.dev>, "linux-tegra@vger.kernel.org"
-	<linux-tegra@vger.kernel.org>, "virtualization@lists.linux.dev"
-	<virtualization@lists.linux.dev>, "linux-acpi@vger.kernel.org"
-	<linux-acpi@vger.kernel.org>, "linux-pci@vger.kernel.org"
-	<linux-pci@vger.kernel.org>, "patches@lists.linux.dev"
-	<patches@lists.linux.dev>, "Sethi, Vikram" <vsethi@nvidia.com>,
-	"helgaas@kernel.org" <helgaas@kernel.org>, "etzhao1900@gmail.com"
-	<etzhao1900@gmail.com>
-Subject: RE: [PATCH v4 6/7] iommu: Introduce iommu_dev_reset_prepare() and
- iommu_dev_reset_done()
-Thread-Topic: [PATCH v4 6/7] iommu: Introduce iommu_dev_reset_prepare() and
- iommu_dev_reset_done()
-Thread-Index: AQHcGs+kmRd6vX2VUUSIS9z2k1vHZLSPW/CA
-Date: Fri, 12 Sep 2025 09:49:13 +0000
-Message-ID: <BL1PR11MB5271BE949150D4C2B5EC589A8C08A@BL1PR11MB5271.namprd11.prod.outlook.com>
-References: <cover.1756682135.git.nicolinc@nvidia.com>
- <0f6021b500c74db33af8118210dd7a2b2fd31b3c.1756682135.git.nicolinc@nvidia.com>
-In-Reply-To: <0f6021b500c74db33af8118210dd7a2b2fd31b3c.1756682135.git.nicolinc@nvidia.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: BL1PR11MB5271:EE_|SN7PR11MB7420:EE_
-x-ms-office365-filtering-correlation-id: 32f8f0bd-455d-4c65-7bf6-08ddf1e1a17b
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|7416014|1800799024|366016|376014|38070700021;
-x-microsoft-antispam-message-info: =?us-ascii?Q?E+8XyKohKLugtT08kfmvO+uq2+uEk7DeBFJPEO43Aybt7UfO4tta36u9J3xe?=
- =?us-ascii?Q?fjD/xCWTm8489E++JMicVlxgvL5Q9ZXAXLB6zHhi7bJ1xv2UjWJ1tyOmda3l?=
- =?us-ascii?Q?trt7cJ88r42u5ahGWLPp3OhvqsDCBaqRKF15sO4ZRqhZZFX5iagHY/6qIkS3?=
- =?us-ascii?Q?9nZKIej+FXNmGvZ/+XZYlRsn93rOtd1C757ecoauWCN3LbP5+VPBX2woO5JU?=
- =?us-ascii?Q?xbCJ9QJSCW56dZ/VpIUA1Lc4nC8bEQUNA1VpG7+2qmV6MVXFAf6nLugsFJex?=
- =?us-ascii?Q?7Z978K+ZJwBRV1ojZkXMOK4UeCgjCUTAEklC6WcUlsg9DP6hbc/jguiN/+rM?=
- =?us-ascii?Q?SlAy+QJSmzNI39+VDNVm5uMDMIlVeL2gs2Dvl3Gk7ZjXIMiaR8jDNzmDwLvw?=
- =?us-ascii?Q?r7xv3qgw7BMS3wA4+dSPVIcQgO2nHrZgzkLljevgFwvbDefnt2u9sY0e4oPC?=
- =?us-ascii?Q?umAxNFoXOMSswTC6fWXOpzdnyZuRy6FjDCR2XJLsBE6FExioeATR+zFB+GML?=
- =?us-ascii?Q?yIObzuKY8/prcn1kLnbl5IJEZ+2tYbLH6lY0k+k+w5W/rIbTWiQX/waP1Xhj?=
- =?us-ascii?Q?LhAS/dUbIaoEynw1g86WdWalTa2u6sjrrZVQioO64c3qDGFzDg8t3pGsqZDb?=
- =?us-ascii?Q?uxYQJBvEBUjg5zMIDQrKwlex/sn+DTP/3hJ65JKcj9w3PydKxW251RV0BgD/?=
- =?us-ascii?Q?b9Bkj8RR4MpJAfz00szcoTTarZ5gqR5TGq6NpBw8xCv0I67MdH+1V48LiDVI?=
- =?us-ascii?Q?yigcd+U0ScryOvI5p5WCQi1DIUwvE6bqk9bKaaeikoLuTF6A0kbX0ijQqbNx?=
- =?us-ascii?Q?pIRl4sahQcKjbt9C83YSGngbSmf81QR7re+0a5wFcENvEaBTmQn3VqkFlOb4?=
- =?us-ascii?Q?dtkzzeiGVYU1aib0Qig3LdzR/CvH4/hk5Lw+sqar1TgPHxnri5Dki8sLbvAP?=
- =?us-ascii?Q?IzPi4ncdeRrMlZthsfJnvzcPtiH13XjATGYO48Erz9S3vIF/lSYJWQsqLDWI?=
- =?us-ascii?Q?hS0YzkAS951exYTkq4KRrUCwqbC7O87Rxoax925vV3R/+GQ134QaIwpZSds9?=
- =?us-ascii?Q?0Dx4foGEKBm5Hh7WkaH9BdXyQbcqkJlyOUHprXBucuhlznX8Zp8kd9DuoPZJ?=
- =?us-ascii?Q?mciVj+fe2vSVYU4OuIVklo69Kc7q/6lrSCOe3fAYYfM9xnY+YRpwfu+BA+KK?=
- =?us-ascii?Q?M1UxpPD1B0VdUXmJKQXyhpI2dmbSiv+Udl2oMPGjhZBJ/UPN8D6yulmoYMov?=
- =?us-ascii?Q?LOn11nSv8L0Ub/4O62vClDTrJIQhnLQQI3GZfXa0SP4+8Frozk9CrGDMPSus?=
- =?us-ascii?Q?sXS3vnN3RhdFq+KkxMgiiovbwJW6xGfqUqSb6+K1AXPB9G7UZromOMg6VhmC?=
- =?us-ascii?Q?fSTok7Tk1F5lGYxP/gaON6uQIiaCYfZtvLD6tGgQWX9ZjWvLKMfksTVb9F2j?=
- =?us-ascii?Q?tNqY9ZszOvI2Wcr4aEx1627HBCw8IqyGOfsWxWtZZEK95mvrahWdSA=3D=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BL1PR11MB5271.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(1800799024)(366016)(376014)(38070700021);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?eHeuMf5NaFH3LfOEi0E9oEW/DuUNhxhZaWHXTj4xSjpUWDJ5FoHZ+2Ghdskz?=
- =?us-ascii?Q?VPXhcvChVhPiCnO7UjacbwIgN8C9jgQ7kXGe3C9wZvH7gs0O2JmjllXML+si?=
- =?us-ascii?Q?vaGQGv6TyDEgFATpM7wht6IX8NCkJ9ju+A+gcveMWXPPMuMPuuC4KPR92/83?=
- =?us-ascii?Q?98ZitHARUwwiuBQpbPR7+mLx1/g8tz2kPHv3+dBfNpc4js209YikVpe7sHan?=
- =?us-ascii?Q?u3v6VdL4Un6/LNZ3UJA6asMAzSa365/X5i5167S9KWaVFQr3ha+iAdJTmCII?=
- =?us-ascii?Q?UjSfwkWT/t5VTHGipj3csNssn+k4hfpYaYjCh4q+sw5PrLq+sNykPB6ptk1c?=
- =?us-ascii?Q?gl+WN+eynA+oi/HoHSQJOF6ulQqQanSduQNk5pYV2qf1IkmnlixWeM85oTAj?=
- =?us-ascii?Q?5jDBz9zBPx/FndtpiLQoyAXJ/u43ZlrQ94gLVT3gYdXDCBiJ5WmRVqIxe91u?=
- =?us-ascii?Q?9W9jR+GtvGrRluSzIBGQpsnSG7QlUH+JKdazTiE/WRSrWHmTzErQqmYDd2D8?=
- =?us-ascii?Q?+tu454sCqHPYNMcDjCAYYeF9cnvjPJk1Fjm1GcOwhV5ZF52cgTkr91lDGRah?=
- =?us-ascii?Q?tQocWoWbpoNdk3sKuHqFhYstGtIQS1jzWcHGN0afYyjNTIr9lKib53fe4YYS?=
- =?us-ascii?Q?Y1pAoZGc0c1XC8pZcU/Ekcjlb4PlxN1a0bJ7qtig2O0bKwwtT9JWbXvVOzqG?=
- =?us-ascii?Q?fPMw/MhKWrznKSfOpMALyXEiLsWauHCc7W5jV6vwLvW3GrBTqleJNJ3Ibd9P?=
- =?us-ascii?Q?zZPgv0EGLIsHZa6sdS821qGcOX76z14qzbn/yLl2Xw3ywcoWrFzAPCiluFOU?=
- =?us-ascii?Q?g+GblwShmPLsamPRL6TwBiT0CDnGZ5y6j2bPNohcZ1ScbqwerUw4A1i54I34?=
- =?us-ascii?Q?dX0xcO5t73O8aqqk4VVQspZMzi8DJhTL4x1mYd6I355lnco2iANQmDFX/6kn?=
- =?us-ascii?Q?KbIgZOL6Kl4Rf6iDbfPXiXd8WGAf9mZ9I7KwNLmMNpSY7E6THrANeCtyum11?=
- =?us-ascii?Q?vSVIPBbsCCTdewdl29Ys5q1nW4BgG6nN/nACjbu/kLnj/nZunt7K4qwEscx5?=
- =?us-ascii?Q?tY2TAOaa6M+mFGI+y7J72s7eGpIENCy9xgFXv8F+tJn6VRxZYbyie2Z8Jp/l?=
- =?us-ascii?Q?tL7r5bhboeV2sPqwsPqKrpe6IDYo7jAP05XK5AG7W/p2tnW9H0tB6da4DHTj?=
- =?us-ascii?Q?8paZ/rCS9AN87cbDUrGV6ldmmRTsY3qaJeer+c/AsAvoXL9fTwafIGkebPzQ?=
- =?us-ascii?Q?pKfEYDBMhVx3UNJ2Lh1lY6B1DECiV1o0A8vFULJLF7pks9muPT2mUL3QdwZB?=
- =?us-ascii?Q?VI0t5fDSvDr5gF6GYyDUucl6w3L/u4/K5eed6pifSvEtAlRKmkIUBVkz4GFv?=
- =?us-ascii?Q?SIQQW1Z356eIk4BcexbPbFeSQkN4cuPCPpeREX7YfBXy1I5szpz7WYBqc6PL?=
- =?us-ascii?Q?jLyjQRFl11rw0rJavrRT+QVBqeK/Q6KebTBA5qmmyXrN3qH+IJQ02oYpfYTW?=
- =?us-ascii?Q?2y+ygYbfnfgiPrTSd/cXa+ixoR/4IR3uxr79r4Bwap7b47kiOPvsOi1/hNs7?=
- =?us-ascii?Q?1DaDgwYkRGj4DSEzYJKzmse0UZ6akw3EYcKodiYZ?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+	id 1ux0Rt-00000006Jc5-0C9V
+	for linux-mediatek@lists.infradead.org;
+	Fri, 12 Sep 2025 09:52:10 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-45deccb2c1eso12863295e9.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 12 Sep 2025 02:52:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1757670691; x=1758275491; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=mpHfD0y/k7EQ4L8qNlMkR36kG/8VWpplR8Qp6+wp9Q4=;
+        b=EsEF3sraYu4J6xvZrNq6VVdYGmzE7ZkO6nXPUDt94VrMk9nFhL12LrbpNV1/mW9gye
+         W1QdGYfeZ32KwOyDIq/i0kQiIxkDVwOMGB+4C8F2aQfNmoYHfQ7rS0oyufsdYhV1Gtix
+         8ATmYcqqx4VU6vvBvJPTqZ0M4u2jkLpHV0o+1HcCs0oGp5274PJ96k4skp03TpgRycJX
+         3NNI0jIs9GHOGMz/GDfYQNgHmvNHlfxY+EfV1NfsIiwXFWFECGS+LDWTjUS+953nqEJb
+         AA0QE66Mam8iSr6Te07ypGU4/oauFIY7J6FiuwpaUMPJSD+Ig2NCQAquI1JXcZdyOwR8
+         LAvg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1757670691; x=1758275491;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=mpHfD0y/k7EQ4L8qNlMkR36kG/8VWpplR8Qp6+wp9Q4=;
+        b=gnMQfwI8fkhPc2RSTCbJlRjfSQFkizIzFBlwRjRb3beCeP+rBrA5bxDmiuNBY7UAyi
+         XZbjgJnmifG0ABSApw6isVrYBcqpk+P0/+X3Ts1w1PCCMl/0xDFtxanna0228UDAtoY+
+         TFDQg/64sV64TvNkgVBbm0uST0FikGJ+kdY+vTSZMB+vaqGDIgDXPz8xewNnM5/ij9GP
+         gnRpqeOeunugZOnOVTKC5Q0ShkIPgnWhvHqp863XHmk92NsC0FG699xqgDtRlbQ5zRDj
+         M6nlmo9rnYR0NSUtD5FkSH6KsfZZG555oNPRv+e00Tnv/cwTlVabOAMF1J/Le9fCAjfi
+         gtgg==
+X-Forwarded-Encrypted: i=1; AJvYcCWlibNqg6cKzCbhQYi8T1TDDt+nANVPIQRB1cFCneofD2b4QhnUTh7Pf2NkMpJqA2VyFvw2j5gsN/xqpjozkQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyWke8uFxJnrOC2lkfUNFkEFKZQVkm7S8RECsgiCf1rgkR+jeIN
+	uFRhCixUH8311bcDAzeYkMZhW1DKU3SHPfkcXc/XyAkNwEI6rSjLdVFG
+X-Gm-Gg: ASbGnctLH0E0VVCOuumfP2xndzTIaLGxLQTYMMb5Nfmz9vZWQmiI2CxxqPEbidwkv90
+	6ruYa+xLDhEEuSqZUAY363zG4nq43RhQv9xV5FLAt/HA1ouvDu6aE/i16t12HRpEoKczeY5ACHa
+	B95wIybJhVU+gXErIManPSBgOqFpBOtUo5QX7Kj9FDdcEWBHbAPJ9JvJT3mKpWi+O3YmNtGb2G1
+	5wHTvHHtjRcz+DwhbNcZOqqm6Q4Y/TFSvB9DlaAWZ0d/49iKqWWNWJMkIhb/iu85w118brY4Trg
+	66w5BniPFaXFx39vSPMmVn5AjpJYIurz8cTFtvN8kVp110K3kGRVqRN9EfMDwanTDf8QyUv4FLc
+	rFVemacr/ijUg3r1klYqBCx1tO0pctg0kQWml2ZC/8g==
+X-Google-Smtp-Source: AGHT+IEPfrQ+CFb6oLC8kg4XbM3mRlwGUzo193ZQhuiCWDXCCVP561IfMvDCA4TmRoi+c0kYYXN6JA==
+X-Received: by 2002:a05:600c:83cf:b0:45b:43cc:e558 with SMTP id 5b1f17b1804b1-45f21207be1mr22680385e9.35.1757670690897;
+        Fri, 12 Sep 2025 02:51:30 -0700 (PDT)
+Received: from [192.168.2.177] ([91.116.220.47])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45e0157619fsm59474995e9.7.2025.09.12.02.51.29
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 12 Sep 2025 02:51:30 -0700 (PDT)
+Message-ID: <748d6a49-3ee0-45af-bee3-fb40b98f94c4@gmail.com>
+Date: Fri, 12 Sep 2025 11:51:28 +0200
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BL1PR11MB5271.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 32f8f0bd-455d-4c65-7bf6-08ddf1e1a17b
-X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Sep 2025 09:49:13.5036
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: GoK6vFC2RGvJGSF7IMaan6JE48+FCcW7iODz/G3gy+8hCjQKyhNky+MKbK6/I2c5sD4Q+je0QZO6lnD6Uq382Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR11MB7420
-X-OriginatorOrg: intel.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] remoteproc: mtk_scp: Construct FW path if firmware-name
+ not present
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-remoteproc@vger.kernel.org
+Cc: arnd@arndb.de, andersson@kernel.org, mathieu.poirier@linaro.org,
+ wenst@chromium.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ kernel@collabora.com
+References: <20250911140043.190801-1-angelogioacchino.delregno@collabora.com>
+ <6f60bb97-86fc-4cda-a373-a991547bbd77@gmail.com>
+ <9fafe6a4-e30b-4ea8-a85c-2e66ebd34040@collabora.com>
+Content-Language: en-US, ca-ES, es-ES
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Autocrypt: addr=matthias.bgg@gmail.com; keydata=
+ xsFNBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
+ fL3eT7ZsYV5nur7zctmJ+vbszoOASXUpfq8M+S5hU2w7sBaVk5rpH9yW8CUWz2+ZpQXPJcFa
+ OhLZuSKB1F5JcvLbETRjNzNU7B3TdS2+zkgQQdEyt7Ij2HXGLJ2w+yG2GuR9/iyCJRf10Okq
+ gTh//XESJZ8S6KlOWbLXRE+yfkKDXQx2Jr1XuVvM3zPqH5FMg8reRVFsQ+vI0b+OlyekT/Xe
+ 0Hwvqkev95GG6x7yseJwI+2ydDH6M5O7fPKFW5mzAdDE2g/K9B4e2tYK6/rA7Fq4cqiAw1+u
+ EgO44+eFgv082xtBez5WNkGn18vtw0LW3ESmKh19u6kEGoi0WZwslCNaGFrS4M7OH+aOJeqK
+ fx5dIv2CEbxc6xnHY7dwkcHikTA4QdbdFeUSuj4YhIZ+0QlDVtS1QEXyvZbZky7ur9rHkZvP
+ ZqlUsLJ2nOqsmahMTIQ8Mgx9SLEShWqD4kOF4zNfPJsgEMB49KbS2o9jxbGB+JKupjNddfxZ
+ HlH1KF8QwCMZEYaTNogrVazuEJzx6JdRpR3sFda/0x5qjTadwIW6Cl9tkqe2h391dOGX1eOA
+ 1ntn9O/39KqSrWNGvm+1raHK+Ev1yPtn0Wxn+0oy1tl67TxUjQARAQABzSlNYXR0aGlhcyBC
+ cnVnZ2VyIDxtYXR0aGlhcy5iZ2dAZ21haWwuY29tPsLBkgQTAQIAPAIbAwYLCQgHAwIGFQgC
+ CQoLBBYCAwECHgECF4AWIQTmuZIYwPLDJRwsOhfZFAuyVhMC8QUCWt3scQIZAQAKCRDZFAuy
+ VhMC8WzRD/4onkC+gCxG+dvui5SXCJ7bGLCu0xVtiGC673Kz5Aq3heITsERHBV0BqqctOEBy
+ ZozQQe2Hindu9lasOmwfH8+vfTK+2teCgWesoE3g3XKbrOCB4RSrQmXGC3JYx6rcvMlLV/Ch
+ YMRR3qv04BOchnjkGtvm9aZWH52/6XfChyh7XYndTe5F2bqeTjt+kF/ql+xMc4E6pniqIfkv
+ c0wsH4CkBHqoZl9w5e/b9MspTqsU9NszTEOFhy7p2CYw6JEa/vmzR6YDzGs8AihieIXDOfpT
+ DUr0YUlDrwDSrlm/2MjNIPTmSGHH94ScOqu/XmGW/0q1iar/Yr0leomUOeeEzCqQtunqShtE
+ 4Mn2uEixFL+9jiVtMjujr6mphznwpEqObPCZ3IcWqOFEz77rSL+oqFiEA03A2WBDlMm++Sve
+ 9jpkJBLosJRhAYmQ6ey6MFO6Krylw1LXcq5z1XQQavtFRgZoruHZ3XlhT5wcfLJtAqrtfCe0
+ aQ0kJW+4zj9/So0uxJDAtGuOpDYnmK26dgFN0tAhVuNInEVhtErtLJHeJzFKJzNyQ4GlCaLw
+ jKcwWcqDJcrx9R7LsCu4l2XpKiyxY6fO4O8DnSleVll9NPfAZFZvf8AIy3EQ8BokUsiuUYHz
+ wUo6pclk55PZRaAsHDX/fNr24uC6Eh5oNQ+v4Pax/gtyyc7BTQRd1TlIARAAm78mTny44Hwd
+ IYNK4ZQH6U5pxcJtU45LLBmSr4DK/7er9chpvJ5pgzCGuI25ceNTEg5FChYcgfNMKqwCAekk
+ V9Iegzi6UK448W1eOp8QeQDS6sHpLSOe8np6/zvmUvhiLokk7tZBhGz+Xs5qQmJPXcag7AMi
+ fuEcf88ZSpChmUB3WflJV2DpxF3sSon5Ew2i53umXLqdRIJEw1Zs2puDJaMqwP3wIyMdrfdI
+ H1ZBBJDIWV/53P52mKtYQ0Khje+/AolpKl96opi6o9VLGeqkpeqrKM2cb1bjo5Zmn4lXl6Nv
+ JRH/ZT68zBtOKUtwhSlOB2bE8IDonQZCOYo2w0opiAgyfpbij8uiI7siBE6bWx2fQpsmi4Jr
+ ZBmhDT6n/uYleGW0DRcZmE2UjeekPWUumN13jaVZuhThV65SnhU05chZT8vU1nATAwirMVeX
+ geZGLwxhscduk3nNb5VSsV95EM/KOtilrH69ZL6Xrnw88f6xaaGPdVyUigBTWc/fcWuw1+nk
+ GJDNqjfSvB7ie114R08Q28aYt8LCJRXYM1WuYloTcIhRSXUohGgHmh7usl469/Ra5CFaMhT3
+ yCVciuHdZh3u+x+O1sRcOhaFW3BkxKEy+ntxw8J7ZzhgFOgi2HGkOGgM9R03A6ywc0sPwbgk
+ gF7HCLirshP2U/qxWy3C8DkAEQEAAcLBdgQYAQgAIBYhBOa5khjA8sMlHCw6F9kUC7JWEwLx
+ BQJd1TlIAhsMAAoJENkUC7JWEwLxtdcP/jHJ9vI8adFi1HQoWUKCQbZdZ5ZJHayFKIzU9kZE
+ /FHzzzMDZYFgcCTs2kmUVyGloStXpZ0WtdCMMB31jBoQe5x9LtICHEip0irNXm80WsyPCEHU
+ 3wx91QkOmDJftm6T8+F3lqhlc3CwJGpoPY7AVlevzXNJfATZR0+Yh9NhON5Ww4AjsZntqQKx
+ E8rrieLRd+he57ZdRKtRRNGKZOS4wetNhodjfnjhr4Z25BAssD5q+x4uaO8ofGxTjOdrSnRh
+ vhzPCgmP7BKRUZA0wNvFxjboIw8rbTiOFGb1Ebrzuqrrr3WFuK4C1YAF4CyXUBL6Z1Lto//i
+ 44ziQUK9diAgfE/8GhXP0JlMwRUBlXNtErJgItR/XAuFwfO6BOI43P19YwEsuyQq+rubW2Wv
+ rWY2Bj2dXDAKUxS4TuLUf2v/b9Rct36ljzbNxeEWt+Yq4IOY6QHnE+w4xVAkfwjT+Vup8sCp
+ +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
+ 7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
+ a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
+In-Reply-To: <9fafe6a4-e30b-4ea8-a85c-2e66ebd34040@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250912_104924_938209_BCB724A4 
-X-CRM114-Status: GOOD (  20.57  )
+X-CRM114-CacheID: sfid-20250912_105209_208547_5C973884 
+X-CRM114-Status: GOOD (  44.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -255,79 +165,270 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> From: Nicolin Chen <nicolinc@nvidia.com>
-> Sent: Monday, September 1, 2025 7:32 AM
->=20
-> PCIe permits a device to ignore ATS invalidation TLPs, while processing a
-> reset. This creates a problem visible to the OS where an ATS invalidation
-> command will time out. E.g. an SVA domain will have no coordination with =
-a
-> reset event and can racily issue ATS invalidations to a resetting device.
->=20
-> The OS should do something to mitigate this as we do not want production
-> systems to be reporting critical ATS failures, especially in a hypervisor
-> environment. Broadly, OS could arrange to ignore the timeouts, block page
-> table mutations to prevent invalidations, or disable and block ATS.
->=20
-> The PCIe spec in sec 10.3.1 IMPLEMENTATION NOTE recommends to disable
-> and
-> block ATS before initiating a Function Level Reset. It also mentions that
-> other reset methods could have the same vulnerability as well.
->=20
-> Provide a callback from the PCI subsystem that will enclose the reset and
-> have the iommu core temporarily change all the attached domain to
-> BLOCKED.
-> After attaching a BLOCKED domain, IOMMU hardware would fence any
-> incoming
-> ATS queries. And IOMMU drivers should also synchronously stop issuing new
-> ATS invalidations and wait for all ATS invalidations to complete. This ca=
-n
-> avoid any ATS invaliation timeouts.
->=20
-> However, if there is a domain attachment/replacement happening during an
-> ongoing reset, ATS routines may be re-activated between the two function
-> calls. So, introduce a new pending_reset flag in group_device, and reject
-> any concurrent attach_dev/set_dev_pasid call during a reset for a concern
-> of compatibility failure.
->=20
-> There are two corner cases that won't work:
-> 1. Alias devices that share the same RID
->    Blocking one device also blocks the other alias devices that might not
->    want a reset. Given that it's very rare for an alias device to support
->    ATS, simply skip the blocking routine.
 
-it also applies to the devices in the same iommu group. While one device
-is being reset, all other devices in the group cannot change the domain.=20
-This needs to be documented in the attach uAPI.
 
->=20
-> 2. SRIOV devices that its PF is resetting while its VF isn't.
->    Both PF and VF should block RID and PASIDs. But, since VF is not aware
->    of the reset, it is difficult to block it and reject concurrent attach
->    calls, because it's not logically reasonable to reject a VF attachment
->    due to a resetting PF unless the VF is resetting too. To address this,
->    we won't be able to reject any concurrent attachment as simple as this
->    patch does; instead we will need two new compatibility testing ops for
->    attach_dev/set_dev_pasid to allowing caching a compatible attach. This
->    itself, however, would be a big series. So, for now, skip the blocking
->    routine for PF devices, and leave a note.
->=20
+On 12/09/2025 10:45, AngeloGioacchino Del Regno wrote:
+> Il 12/09/25 09:01, Matthias Brugger ha scritto:
+>>
+>>
+>> On 11/09/2025 16:00, AngeloGioacchino Del Regno wrote:
+>>> After a reply on the mailing lists [1] it emerged that the DT
+>>> property "firmware-name" should not be relied on because of
+>>> possible issues with firmware versions.
+>>> For MediaTek SCP, there has never been any firmware version vs
+>>> driver version desync issue but, regardless, the firmwares are
+>>> always using the same name and they're always located in a path
+>>> with a specific pattern.
+>>>
+>>> Instead of unconditionally always relying on the firmware-name
+>>> devicetree property to get a path to the SCP FW file, drivers
+>>> should construct a name based on what firmware it knows and
+>>> what hardware it is running on.
+>>>
+>>> In order to do that, add a `scp_get_default_fw_path()` function
+>>> that constructs the path and filename based on two of the infos
+>>> that the driver can get:
+>>>   1. The compatible string with the highest priority (so, the
+>>>      first one at index 0); and
+>>>   2. The type of SCP HW - single-core or multi-core.
+>>>
+>>> This means that the default firmware path is generated as:
+>>>   - Single core SCP: mediatek/(soc_model)/scp.img
+>>>     for example:     mediatek/mt8183/scp.img;
+>>>
+>>>   - Multi core SCP:  mediatek/(soc_model)/scp_c(core_number).img
+>>>     for example:     mediatek/mt8188/scp_c0.img for Core 0, and
+>>>                      mediatek/mt8188/scp_c1.img for Core 1.
+>>>
+>>
+>> As we inventing a naming scheme here: if we decide that signle core FW is 
+>> calle scp_c0.img we can get rid of some code.
+>>
+> 
+> Ohey!
+> 
+> No, well, we're not inventing a naming scheme... if you check in linux-firmware
+> and in the current devicetrees, you'll see that the path adheres to what I wrote.
+> 
 
-given it impacts uAPI:
+Well I'm not able to find any *spc_c* firmware :)
+Actually mt8188 has scp.img as the only file.
 
-  - now attach/replace can be done anytime
-  - with this series attach/replace is rejected when a device is being rese=
-t
-  - later with compat testing ops attach/replace can be done again at
-    any time
+> As in - all of the single core SCP always had the firmware in path
+> mediatek/mtXXXX/scp.img - and the dual core SCP has two firmwares.
+> 
+> The dual core one is a bit special in that the two cores are *almost* (but not
+> fully) independent from each other (not entirely relevant to this discussion tho)
+> and can load one firmware per core.
+> 
+> In short - in upstream, the only naming that we're inventing is the multicore SCP,
+> but we're simply keeping the same name for the singlecore ones.
+> 
+> Even for multicore, I'm not really inventing that out of the blue - MediaTek are
+> using that naming in downstream, so I'm just copying that.
+> 
 
-we should be cautious here, especially if this series goes into 6.18 (likel=
-y
-the next LTS version) the interim behavior change may last long. yes
-we discussed that no know usage would want to do attach/replace
-while a device is being reset, but I wonder whether we should instead=20
-wait for a full solution to avoid unnecessary uAPI change back-and-forth...
+Which is no guarantee to be a good way to go ;)
 
-Thanks
-Kevin
+Anyway I think the actual naming scheme just makes us add code for no buy-in. 
+For me it would make more sense to fix the firmware naming in linux-firmware 
+then "working around" that in kernel code.
+
+> Btw... I really don't want to change the single core FW name to "scp_c0.img"
+> because my plan is to get this merged and then cleanup the devicetrees for all
+> MTK machines to *remove* the firmware-name property from the SCP node(s).
+> 
+
+OK, but that's independent. We could keep symlink in linux-firmware for backward 
+compability, if needed (delta linux-firmware maintainer gets mad).
+
+> firmware-name support in this driver is retained only for retrocompatibility
+> with old DTs (and perhaps "very special" devices needing "very special" firmwares,
+> of which none exist right now and hopefully we'll never see anything like that in
+> the future).
+> 
+>>> Note that the generated firmware path is being used only if the
+>>> "firmware-name" devicetree property is not present in the SCP
+>>> node or in the SCP Core node(s).
+>>>
+>>> [1 - Reply regarding firmware-name property]
+>>> Link: https://lore.kernel.org/all/7e8718b0-df78-44a6- 
+>>> a102-89529d6abcce@app.fastmail.com/
+>>> Signed-off-by: AngeloGioacchino Del Regno 
+>>> <angelogioacchino.delregno@collabora.com>
+>>> ---
+>>>   drivers/remoteproc/mtk_scp.c | 64 ++++++++++++++++++++++++++++++++----
+>>>   1 file changed, 58 insertions(+), 6 deletions(-)
+>>>
+>>> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+>>> index 8206a1766481..80fcb4b053b3 100644
+>>> --- a/drivers/remoteproc/mtk_scp.c
+>>> +++ b/drivers/remoteproc/mtk_scp.c
+>>> @@ -16,6 +16,7 @@
+>>>   #include <linux/remoteproc.h>
+>>>   #include <linux/remoteproc/mtk_scp.h>
+>>>   #include <linux/rpmsg/mtk_rpmsg.h>
+>>> +#include <linux/string.h>
+>>>   #include "mtk_common.h"
+>>>   #include "remoteproc_internal.h"
+>>> @@ -1093,22 +1094,73 @@ static void scp_remove_rpmsg_subdev(struct mtk_scp *scp)
+>>>       }
+>>>   }
+>>> +/**
+>>> + * scp_get_default_fw_path() - Get default SCP firmware path
+>>> + * @dev:     SCP Device
+>>> + * @core_id: SCP Core number
+>>> + *
+>>> + * This function generates a path based on the following format:
+>>> + *     mediatek/(soc_model)/scp(_cX).img; for multi-core or
+>>> + *     mediatek/(soc_model)/scp.img for single core SCP HW
+>>> + *
+>>> + * Return: A devm allocated string containing the full path to
+>>> + *         a SCP firmware or an error pointer
+>>> + */
+>>> +static const char *scp_get_default_fw_path(struct device *dev, int core_id)
+>>> +{
+>>> +    struct device_node *np = core_id < 0 ? dev->of_node : dev->parent->of_node;
+>>> +    char scp_fw_file[7] = "scp_cX";
+>>
+>> We provide a string that we later overwrite. I'd prefer to have just the 
+>> reservation without any 'artificial' string in it.
+>>
+> 
+> Yeah, this one is a leftover that I forgot to cleanup. I fully agree with you.
+> 
+> Will change that in v2.
+> 
+>>> +    const char *compatible, *soc;
+>>> +    int ret;
+>>> +
+>>> +    /* Use only the first compatible string */
+>>> +    ret = of_property_read_string_index(np, "compatible", 0, &compatible);
+>>> +    if (ret)
+>>> +        return ERR_PTR(ret);
+>>> +
+>>> +    /* If the compatible string's length is implausible bail out early */
+>>> +    if (strlen(compatible) < strlen("mediatek,mtXXXX-scp"))
+>>
+>> Seems like a double check of compatible. Why is dt-bindings for that not enough?
+>>
+> 
+> It's more than that... (check below)
+> 
+>>> +        return ERR_PTR(-EINVAL);
+>>> +
+>>> +    /* If the compatible string starts with "mediatek,mt" assume that it's 
+>>> ok */
+>>> +    if (!str_has_prefix(compatible, "mediatek,mt"))
+>>
+>> Same here.
+>>
+> 
+> ....and it's because.... (check below)
+> 
+>>> +        return ERR_PTR(-EINVAL);
+>>> +
+>>> +    if (core_id >= 0)
+>>> +        ret = snprintf(scp_fw_file, ARRAY_SIZE(scp_fw_file), "scp_c%1d", 
+>>> core_id);
+>>> +    else
+>>> +        ret = snprintf(scp_fw_file, ARRAY_SIZE(scp_fw_file), "scp");
+>>> +    if (ret <= 0)
+>>> +        return ERR_PTR(ret);
+>>> +
+>>> +    soc = &compatible[strlen("mediatek,")];
+> 
+
+Shouldn't we use strchr(compatible, ',') or similar here?
+
+> ...I'd otherwise anyway have to check here, as this is a pointer to the middle of
+> the compatible string, used below to extract "mtXXXX" (mt8195, mt1234 etc) from it.
+> 
+> Sure I get your point about bindings - but IMO those multi-purpose checks make the
+> code robust, and will avoid exposure of random memory locations (and/or produce
+> undefined behavior) in the event that the compatible string is shorter than needed.
+> 
+>>> +
+>>> +    return devm_kasprintf(dev, GFP_KERNEL, "mediatek/%.*s/%s.img",
+>>> +                  (int)strlen("mtXXXX"), soc, scp_fw_file);
+
+I would have expected that there exists a function to extract a substring, but I 
+didn't find any. Anyway, I think instead of hardcode the value we should search 
+for '-' or use the remaining string as a whole. That would also fix the issue of 
+a too short compatible string.
+
+>>> +}
+>>> +
+>>>   static struct mtk_scp *scp_rproc_init(struct platform_device *pdev,
+>>>                         struct mtk_scp_of_cluster *scp_cluster,
+>>> -                      const struct mtk_scp_of_data *of_data)
+>>> +                      const struct mtk_scp_of_data *of_data,
+>>> +                      int core_id)
+>>>   {
+>>>       struct device *dev = &pdev->dev;
+>>>       struct device_node *np = dev->of_node;
+>>>       struct mtk_scp *scp;
+>>>       struct rproc *rproc;
+>>>       struct resource *res;
+>>> -    const char *fw_name = "scp.img";
+>>> +    const char *fw_name;
+>>>       int ret, i;
+>>>       const struct mtk_scp_sizes_data *scp_sizes;
+>>>       ret = rproc_of_parse_firmware(dev, 0, &fw_name);
+>>> -    if (ret < 0 && ret != -EINVAL)
+>>> -        return ERR_PTR(ret);
+>>> +    if (ret) {
+>>> +        fw_name = scp_get_default_fw_path(dev, core_id);
+>>
+>> Wouldn't it make more sense to encapsulate the whole fw_name retrival in one 
+>> function, e.g. scp_get_fw_path.
+>>
+> 
+> Sorry, not a fan of that, I don't see the actual benefit, as in, (imo) it doesn't
+> improve readability and it doesn't remove any duplication (as it's called only once
+> in one single place).
+> 
+> But of course, I'm open to understand if I'm missing any point :-)
+> 
+
+My point would be to encapsulate the logic how to determine the fw_name in one 
+function call. I think it improves readability because you look at the code and 
+can say "OK here they somehow determine the fw_name" and only have to look into 
+the function if you really care and skip over it otherwise.
+
+Regards,
+Matthias
+
+> Cheers,
+> Angelo
+> 
+>>> +        if (IS_ERR(fw_name)) {
+>>> +            dev_err(dev, "Cannot get firmware path: %ld\n", PTR_ERR(fw_name));
+>>> +            return ERR_CAST(fw_name);
+>>> +        }
+>>> +    }
+>>>       rproc = devm_rproc_alloc(dev, np->name, &scp_ops, fw_name, sizeof(*scp));
+>>>       if (!rproc) {
+>>> @@ -1212,7 +1264,7 @@ static int scp_add_single_core(struct platform_device 
+>>> *pdev,
+>>>       struct mtk_scp *scp;
+>>>       int ret;
+>>> -    scp = scp_rproc_init(pdev, scp_cluster, of_device_get_match_data(dev));
+>>> +    scp = scp_rproc_init(pdev, scp_cluster, of_device_get_match_data(dev), -1);
+>>>       if (IS_ERR(scp))
+>>>           return PTR_ERR(scp);
+>>> @@ -1259,7 +1311,7 @@ static int scp_add_multi_core(struct platform_device 
+>>> *pdev,
+>>>               goto init_fail;
+>>>           }
+>>> -        scp = scp_rproc_init(cpdev, scp_cluster, cluster_of_data[core_id]);
+>>> +        scp = scp_rproc_init(cpdev, scp_cluster, cluster_of_data[core_id], 
+>>> core_id);
+>>>           put_device(&cpdev->dev);
+>>>           if (IS_ERR(scp)) {
+>>>               ret = PTR_ERR(scp);
+>>
+> 
+> 
+
 
