@@ -4,67 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF0F6CA101F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 08:45:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 611C3CA101F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 08:49:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7ZOwAPGO79f5asS2OLUcdrzj/m2YUYRBVKyNsi78V1g=; b=doKFjS7ZoTOBM2A5k/1PAh3EkK
-	+5pHGzIjkDqhAQsfi/PmdgL22GCxRHG1BxL8krj17/MjzTRrLpCmRq2Zkmh1yKUmw2hs2InGu5+XB
-	Xh84dOYjPO0QuzR1UgegVNOx5Kb95uJa+hz/ywhB25E1xk3BIeSaZr9Ie9w61uHA9iG76eRuwTsdA
-	Tsb4t/U7jmm6BL+QCVdOflHc5l57JS7nj7HPLUtP8ccX7jiuKX4S/Rc2lammX/hjUq0Py3I4PdWcu
-	ae0e7c0jac/6JDmgMBg5od7eyf9ncu3CZVNyA2Ac5hAzUOLqUCg0/Blj5Q649JID7dgGI9gUeh7Hx
-	PxEJTKOQ==;
+	bh=VHgYFxyt/x0LvCQXJlMzwJ/JmEjfE3Gdv04Yg+b0WO8=; b=cDUD4aovTQzJA4n0HyKD/vKQKZ
+	NeLpRDi/XL4yEHDelqrT2LH09GIzNF4DrZsXD3iH0pa8f8KFbwCbwGfFwx54FW6o3Gk9FfQWFKAIe
+	gO9+kO9C3iWOxLsJFGLf4ZapKb/yklMaMmbN7nhNvhhPFyLe7LOPTi7nUVo6n5URn/A253a+YCg+q
+	Rn5vc18FGD+QAn9O+ekvM/KsYgrUs9cG6nbBCw67KLT+qpdkqJiKRpeXHS8sHMFxDRphOVrzUL+hh
+	rPXjOBcXk82gM9BgocFcwAy/iyo1nPWr4IXIBr6b38m2uTmCxb52fnQ7rd3goSqeM+BOrFhxUbUde
+	HNILgA7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwzPR-000000080AF-2mIl;
-	Fri, 12 Sep 2025 08:45:33 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uwzTR-000000081VU-2faC;
+	Fri, 12 Sep 2025 08:49:41 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwzPO-0000000808T-2x9J;
-	Fri, 12 Sep 2025 08:45:32 +0000
+	id 1uwzTO-000000081UK-3tpF;
+	Fri, 12 Sep 2025 08:49:40 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1757666728;
-	bh=++xvC23WhHonK4sqNZlcsGHCfTMQ0DzxYYwMOSCnYoU=;
+	s=mail; t=1757666976;
+	bh=t2CbprpuSHyhZVsAXOvVA2HQNj6MCqFKJW6RdhauD7A=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=edj1OScbrKjpPVqztmCVz9kh91znYHmnqwOnX4GXTDDv1rtZIK728AZjneSp3elzY
-	 Q7faCe9qJ2iiDgBK2Y8ie1+DtY0ffIDT82bLf4glmBgbN6B4YfNWivCtP5HyyYqO3p
-	 3XisioVSWwPoQAO3fPmGoexGmx9Pdi2yJf1JnTYw7uHIKrqwa5ZDkUO17yYxITw5fa
-	 0Tui/EJ8SPEeBpZ239R/oexYToNreeCKobYAq5jCftly1XQ8CdbDkzA9l0QCdUe5kk
-	 VzHljIsbAwGjt2YvnnVipRTIeWsQ7nwvL1QXdSgGqSl0XSI8FQdAITNLxaqKKR9pCE
-	 AMcHm6kBRF2og==
+	b=b9k6Y/jYHYRf1lBd3IVQs8MHuAF8Lp6WToReTrp1ENuOHC572Yy8h6K04o261v7Ua
+	 4yW19LAPpuImfWtnGkwQ0AI++cysclzDjM48otKS6QWxc3huIGYnfsD2EIhixgRlnB
+	 DASIixfeR12WRXjgbBInSPg9IQsTxZ3yVzg7gkK97V+olG00bTvwQxVTAQNjgQjLX8
+	 BuV3duQibBT6UOIh8+w26DohRm5Zwb+2dqew+bmZTDDDfA5DyuNbhJDKNQWRtzO5s7
+	 rixyPQa88tYz+a/WjvMPdPxtN1tP4M3Azs1f15mTHQRrIsynehoHJn87WgBxnP8tJx
+	 h179TIG0hlXKg==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0093717E04D6;
-	Fri, 12 Sep 2025 10:45:27 +0200 (CEST)
-Message-ID: <9fafe6a4-e30b-4ea8-a85c-2e66ebd34040@collabora.com>
-Date: Fri, 12 Sep 2025 10:45:27 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0E66317E05BE;
+	Fri, 12 Sep 2025 10:49:35 +0200 (CEST)
+Message-ID: <181e1668-6efc-4dce-91e4-7b535e17dd46@collabora.com>
+Date: Fri, 12 Sep 2025 10:49:34 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] remoteproc: mtk_scp: Construct FW path if firmware-name
- not present
-To: Matthias Brugger <matthias.bgg@gmail.com>,
- linux-remoteproc@vger.kernel.org
-Cc: arnd@arndb.de, andersson@kernel.org, mathieu.poirier@linaro.org,
- wenst@chromium.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel@collabora.com
-References: <20250911140043.190801-1-angelogioacchino.delregno@collabora.com>
- <6f60bb97-86fc-4cda-a373-a991547bbd77@gmail.com>
+Subject: Re: [PATCH v2 01/12] dt-bindings: media: Convert MediaTek mt8173-mdp
+ bindings to DT schema
+To: Chen-Yu Tsai <wenst@chromium.org>, Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Ariel D'Alessandro <ariel.dalessandro@collabora.com>, airlied@gmail.com,
+ amergnat@baylibre.com, andrew+netdev@lunn.ch, andrew-ct.chen@mediatek.com,
+ broonie@kernel.org, chunkuang.hu@kernel.org, conor+dt@kernel.org,
+ davem@davemloft.net, dmitry.torokhov@gmail.com, edumazet@google.com,
+ flora.fu@mediatek.com, heiko@sntech.de, houlong.wei@mediatek.com,
+ jeesw@melfas.com, kernel@collabora.com, krzk+dt@kernel.org, kuba@kernel.org,
+ lgirdwood@gmail.com, linus.walleij@linaro.org,
+ louisalexis.eyraud@collabora.com, luiz.dentz@gmail.com,
+ maarten.lankhorst@linux.intel.com, marcel@holtmann.org,
+ matthias.bgg@gmail.com, mchehab@kernel.org, minghsiu.tsai@mediatek.com,
+ mripard@kernel.org, p.zabel@pengutronix.de, pabeni@redhat.com,
+ robh@kernel.org, sean.wang@kernel.org, simona@ffwll.ch,
+ support.opensource@diasemi.com, tiffany.lin@mediatek.com,
+ tzimmermann@suse.de, yunfei.dong@mediatek.com, devicetree@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-bluetooth@vger.kernel.org, linux-gpio@vger.kernel.org,
+ linux-input@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org,
+ netdev@vger.kernel.org
+References: <20250911151001.108744-1-ariel.dalessandro@collabora.com>
+ <20250911151001.108744-2-ariel.dalessandro@collabora.com>
+ <20250912-alluring-turaco-of-conversion-dca193@kuoka>
+ <CAGXv+5GovP7NuG042AwfmtC-sPJMGuFAm6iZ0iqNZgU0VE+qmQ@mail.gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <6f60bb97-86fc-4cda-a373-a991547bbd77@gmail.com>
+In-Reply-To: <CAGXv+5GovP7NuG042AwfmtC-sPJMGuFAm6iZ0iqNZgU0VE+qmQ@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250912_014530_918927_A06D2171 
-X-CRM114-Status: GOOD (  40.67  )
+X-CRM114-CacheID: sfid-20250912_014939_114345_EAC8C38F 
+X-CRM114-Status: GOOD (  20.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,228 +96,187 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 12/09/25 09:01, Matthias Brugger ha scritto:
-> 
-> 
-> On 11/09/2025 16:00, AngeloGioacchino Del Regno wrote:
->> After a reply on the mailing lists [1] it emerged that the DT
->> property "firmware-name" should not be relied on because of
->> possible issues with firmware versions.
->> For MediaTek SCP, there has never been any firmware version vs
->> driver version desync issue but, regardless, the firmwares are
->> always using the same name and they're always located in a path
->> with a specific pattern.
+Il 12/09/25 10:27, Chen-Yu Tsai ha scritto:
+> On Fri, Sep 12, 2025 at 2:06 PM Krzysztof Kozlowski <krzk@kernel.org> wrote:
 >>
->> Instead of unconditionally always relying on the firmware-name
->> devicetree property to get a path to the SCP FW file, drivers
->> should construct a name based on what firmware it knows and
->> what hardware it is running on.
+>> On Thu, Sep 11, 2025 at 12:09:50PM -0300, Ariel D'Alessandro wrote:
+>>> Convert the existing text-based DT bindings for MediaTek MT8173 Media Data
+>>> Path to a DT schema.
+>>>
+>>> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+>>> ---
+>>>   .../bindings/media/mediatek,mt8173-mdp.yaml   | 169 ++++++++++++++++++
+>>>   .../bindings/media/mediatek-mdp.txt           |  95 ----------
+>>>   2 files changed, 169 insertions(+), 95 deletions(-)
+>>>   create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8173-mdp.yaml
+>>>   delete mode 100644 Documentation/devicetree/bindings/media/mediatek-mdp.txt
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8173-mdp.yaml b/Documentation/devicetree/bindings/media/mediatek,mt8173-mdp.yaml
+>>> new file mode 100644
+>>> index 0000000000000..8ca33a733c478
+>>> --- /dev/null
+>>> +++ b/Documentation/devicetree/bindings/media/mediatek,mt8173-mdp.yaml
+>>> @@ -0,0 +1,169 @@
+>>> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+>>> +%YAML 1.2
+>>> +---
+>>> +$id: http://devicetree.org/schemas/media/mediatek,mt8173-mdp.yaml#
+>>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>>> +
+>>> +title: MediaTek MT8173 Media Data Path
+>>> +
+>>> +maintainers:
+>>> +  - Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+>>> +
+>>> +description:
+>>> +  Media Data Path is used for scaling and color space conversion.
+>>> +
+>>> +properties:
+>>> +  compatible:
+>>> +    oneOf:
+>>> +      - enum:
+>>> +          - mediatek,mt8173-mdp-rdma
+>>> +          - mediatek,mt8173-mdp-rsz
+>>> +          - mediatek,mt8173-mdp-wdma
+>>> +          - mediatek,mt8173-mdp-wrot
 >>
->> In order to do that, add a `scp_get_default_fw_path()` function
->> that constructs the path and filename based on two of the infos
->> that the driver can get:
->>   1. The compatible string with the highest priority (so, the
->>      first one at index 0); and
->>   2. The type of SCP HW - single-core or multi-core.
+>> Why there is no mediatek,mt8173-mdp here? What does this compatible
+>> represent?
 >>
->> This means that the default firmware path is generated as:
->>   - Single core SCP: mediatek/(soc_model)/scp.img
->>     for example:     mediatek/mt8183/scp.img;
+>>> +      - items:
+>>> +          - const: mediatek,mt8173-mdp-rdma
 >>
->>   - Multi core SCP:  mediatek/(soc_model)/scp_c(core_number).img
->>     for example:     mediatek/mt8188/scp_c0.img for Core 0, and
->>                      mediatek/mt8188/scp_c1.img for Core 1.
+>> Still suspicious. Device cannot be simulatanously: compatible and not
+>> compatible. This is not a well known cat that has superposition of two
+>> states, whenenver you look the other way.
 >>
+>> Maybe the old binding was incorrect, maybe the in-tree DTS is incorrect.
+>> Whichever the reason, this must be investigated and documented, because
+>> by standard rules this is wrong. Each wrong code needs very clear
+>> explanations (and "someone did it" is not a good enough explanation).
 > 
-> As we inventing a naming scheme here: if we decide that signle core FW is calle 
-> scp_c0.img we can get rid of some code.
-> 
-
-Ohey!
-
-No, well, we're not inventing a naming scheme... if you check in linux-firmware
-and in the current devicetrees, you'll see that the path adheres to what I wrote.
-
-As in - all of the single core SCP always had the firmware in path
-mediatek/mtXXXX/scp.img - and the dual core SCP has two firmwares.
-
-The dual core one is a bit special in that the two cores are *almost* (but not
-fully) independent from each other (not entirely relevant to this discussion tho)
-and can load one firmware per core.
-
-In short - in upstream, the only naming that we're inventing is the multicore SCP,
-but we're simply keeping the same name for the singlecore ones.
-
-Even for multicore, I'm not really inventing that out of the blue - MediaTek are
-using that naming in downstream, so I'm just copying that.
-
-Btw... I really don't want to change the single core FW name to "scp_c0.img"
-because my plan is to get this merged and then cleanup the devicetrees for all
-MTK machines to *remove* the firmware-name property from the SCP node(s).
-
-firmware-name support in this driver is retained only for retrocompatibility
-with old DTs (and perhaps "very special" devices needing "very special" firmwares,
-of which none exist right now and hopefully we'll never see anything like that in
-the future).
-
->> Note that the generated firmware path is being used only if the
->> "firmware-name" devicetree property is not present in the SCP
->> node or in the SCP Core node(s).
->>
->> [1 - Reply regarding firmware-name property]
->> Link: https://lore.kernel.org/all/7e8718b0-df78-44a6- 
->> a102-89529d6abcce@app.fastmail.com/
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   drivers/remoteproc/mtk_scp.c | 64 ++++++++++++++++++++++++++++++++----
->>   1 file changed, 58 insertions(+), 6 deletions(-)
->>
->> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
->> index 8206a1766481..80fcb4b053b3 100644
->> --- a/drivers/remoteproc/mtk_scp.c
->> +++ b/drivers/remoteproc/mtk_scp.c
->> @@ -16,6 +16,7 @@
->>   #include <linux/remoteproc.h>
->>   #include <linux/remoteproc/mtk_scp.h>
->>   #include <linux/rpmsg/mtk_rpmsg.h>
->> +#include <linux/string.h>
->>   #include "mtk_common.h"
->>   #include "remoteproc_internal.h"
->> @@ -1093,22 +1094,73 @@ static void scp_remove_rpmsg_subdev(struct mtk_scp *scp)
->>       }
->>   }
->> +/**
->> + * scp_get_default_fw_path() - Get default SCP firmware path
->> + * @dev:     SCP Device
->> + * @core_id: SCP Core number
->> + *
->> + * This function generates a path based on the following format:
->> + *     mediatek/(soc_model)/scp(_cX).img; for multi-core or
->> + *     mediatek/(soc_model)/scp.img for single core SCP HW
->> + *
->> + * Return: A devm allocated string containing the full path to
->> + *         a SCP firmware or an error pointer
->> + */
->> +static const char *scp_get_default_fw_path(struct device *dev, int core_id)
->> +{
->> +    struct device_node *np = core_id < 0 ? dev->of_node : dev->parent->of_node;
->> +    char scp_fw_file[7] = "scp_cX";
-> 
-> We provide a string that we later overwrite. I'd prefer to have just the 
-> reservation without any 'artificial' string in it.
+> My guess is that "mediatek,mt8173-mdp" is meant to serve as a single
+> entry point for the implementation to bind the driver to. The MDP is
+> a Data Pipeline and there could be multiple instances of the same
+> IP block, as seen in the original example.
 > 
 
-Yeah, this one is a leftover that I forgot to cleanup. I fully agree with you.
-
-Will change that in v2.
-
->> +    const char *compatible, *soc;
->> +    int ret;
->> +
->> +    /* Use only the first compatible string */
->> +    ret = of_property_read_string_index(np, "compatible", 0, &compatible);
->> +    if (ret)
->> +        return ERR_PTR(ret);
->> +
->> +    /* If the compatible string's length is implausible bail out early */
->> +    if (strlen(compatible) < strlen("mediatek,mtXXXX-scp"))
-> 
-> Seems like a double check of compatible. Why is dt-bindings for that not enough?
-> 
-
-It's more than that... (check below)
-
->> +        return ERR_PTR(-EINVAL);
->> +
->> +    /* If the compatible string starts with "mediatek,mt" assume that it's ok */
->> +    if (!str_has_prefix(compatible, "mediatek,mt"))
-> 
-> Same here.
-> 
-
-....and it's because.... (check below)
-
->> +        return ERR_PTR(-EINVAL);
->> +
->> +    if (core_id >= 0)
->> +        ret = snprintf(scp_fw_file, ARRAY_SIZE(scp_fw_file), "scp_c%1d", core_id);
->> +    else
->> +        ret = snprintf(scp_fw_file, ARRAY_SIZE(scp_fw_file), "scp");
->> +    if (ret <= 0)
->> +        return ERR_PTR(ret);
->> +
->> +    soc = &compatible[strlen("mediatek,")];
-
-...I'd otherwise anyway have to check here, as this is a pointer to the middle of
-the compatible string, used below to extract "mtXXXX" (mt8195, mt1234 etc) from it.
-
-Sure I get your point about bindings - but IMO those multi-purpose checks make the
-code robust, and will avoid exposure of random memory locations (and/or produce
-undefined behavior) in the event that the compatible string is shorter than needed.
-
->> +
->> +    return devm_kasprintf(dev, GFP_KERNEL, "mediatek/%.*s/%s.img",
->> +                  (int)strlen("mtXXXX"), soc, scp_fw_file);
->> +}
->> +
->>   static struct mtk_scp *scp_rproc_init(struct platform_device *pdev,
->>                         struct mtk_scp_of_cluster *scp_cluster,
->> -                      const struct mtk_scp_of_data *of_data)
->> +                      const struct mtk_scp_of_data *of_data,
->> +                      int core_id)
->>   {
->>       struct device *dev = &pdev->dev;
->>       struct device_node *np = dev->of_node;
->>       struct mtk_scp *scp;
->>       struct rproc *rproc;
->>       struct resource *res;
->> -    const char *fw_name = "scp.img";
->> +    const char *fw_name;
->>       int ret, i;
->>       const struct mtk_scp_sizes_data *scp_sizes;
->>       ret = rproc_of_parse_firmware(dev, 0, &fw_name);
->> -    if (ret < 0 && ret != -EINVAL)
->> -        return ERR_PTR(ret);
->> +    if (ret) {
->> +        fw_name = scp_get_default_fw_path(dev, core_id);
-> 
-> Wouldn't it make more sense to encapsulate the whole fw_name retrival in one 
-> function, e.g. scp_get_fw_path.
-> 
-
-Sorry, not a fan of that, I don't see the actual benefit, as in, (imo) it doesn't
-improve readability and it doesn't remove any duplication (as it's called only once
-in one single place).
-
-But of course, I'm open to understand if I'm missing any point :-)
+Yeah your guess is right.
 
 Cheers,
 Angelo
 
->> +        if (IS_ERR(fw_name)) {
->> +            dev_err(dev, "Cannot get firmware path: %ld\n", PTR_ERR(fw_name));
->> +            return ERR_CAST(fw_name);
->> +        }
->> +    }
->>       rproc = devm_rproc_alloc(dev, np->name, &scp_ops, fw_name, sizeof(*scp));
->>       if (!rproc) {
->> @@ -1212,7 +1264,7 @@ static int scp_add_single_core(struct platform_device *pdev,
->>       struct mtk_scp *scp;
->>       int ret;
->> -    scp = scp_rproc_init(pdev, scp_cluster, of_device_get_match_data(dev));
->> +    scp = scp_rproc_init(pdev, scp_cluster, of_device_get_match_data(dev), -1);
->>       if (IS_ERR(scp))
->>           return PTR_ERR(scp);
->> @@ -1259,7 +1311,7 @@ static int scp_add_multi_core(struct platform_device *pdev,
->>               goto init_fail;
->>           }
->> -        scp = scp_rproc_init(cpdev, scp_cluster, cluster_of_data[core_id]);
->> +        scp = scp_rproc_init(cpdev, scp_cluster, cluster_of_data[core_id], 
->> core_id);
->>           put_device(&cpdev->dev);
->>           if (IS_ERR(scp)) {
->>               ret = PTR_ERR(scp);
+> The datasheet I have doesn't cover the "RDMA" block specifically, so
+> I can't say whether there is an actual difference between the two RDMA
+> blocks.
 > 
-
+> 
+> ChenYu
+> 
+>>> +          - const: mediatek,mt8173-mdp
+>>> +
+>>> +  reg:
+>>> +    maxItems: 1
+>>> +
+>>> +  clocks:
+>>> +    minItems: 1
+>>> +    maxItems: 2
+>>> +
+>>> +  power-domains:
+>>> +    maxItems: 1
+>>> +
+>>> +  iommus:
+>>> +    maxItems: 1
+>>> +
+>>> +  mediatek,vpu:
+>>> +    $ref: /schemas/types.yaml#/definitions/phandle
+>>> +    description:
+>>> +      phandle to Mediatek Video Processor Unit for HW Codec encode/decode and
+>>> +      image processing.
+>>> +
+>>> +required:
+>>> +  - compatible
+>>> +  - reg
+>>> +  - clocks
+>>> +  - power-domains
+>>> +
+>>> +allOf:
+>>> +  - if:
+>>> +      properties:
+>>> +        compatible:
+>>> +          contains:
+>>> +            const: mediatek,mt8173-mdp-rdma
+>>> +    then:
+>>> +      properties:
+>>> +        clocks:
+>>> +          items:
+>>> +            - description: Main clock
+>>> +            - description: Mutex clock
+>>> +    else:
+>>> +      properties:
+>>> +        clocks:
+>>> +          items:
+>>> +            - description: Main clock
+>>> +
+>>> +  - if:
+>>> +      properties:
+>>> +        compatible:
+>>> +          contains:
+>>> +            enum:
+>>> +              - mediatek,mt8173-mdp-rdma
+>>> +              - mediatek,mt8173-mdp-wdma
+>>> +              - mediatek,mt8173-mdp-wrot
+>>> +    then:
+>>> +      required:
+>>> +        - iommus
+>>> +
+>>> +  - if:
+>>> +      properties:
+>>> +        compatible:
+>>> +          contains:
+>>> +            const: mediatek,mt8173-mdp
+>>> +    then:
+>>> +      required:
+>>> +        - mediatek,vpu
+>>> +
+>>> +additionalProperties: false
+>>> +
+>>> +examples:
+>>> +  - |
+>>> +    #include <dt-bindings/clock/mt8173-clk.h>
+>>> +    #include <dt-bindings/memory/mt8173-larb-port.h>
+>>> +    #include <dt-bindings/power/mt8173-power.h>
+>>> +
+>>> +    soc {
+>>> +        #address-cells = <2>;
+>>> +        #size-cells = <2>;
+>>> +
+>>> +        mdp_rdma0: rdma@14001000 {
+>>> +            compatible = "mediatek,mt8173-mdp-rdma",
+>>> +                         "mediatek,mt8173-mdp";
+>>> +            reg = <0 0x14001000 0 0x1000>;
+>>> +            clocks = <&mmsys CLK_MM_MDP_RDMA0>,
+>>> +                     <&mmsys CLK_MM_MUTEX_32K>;
+>>> +            power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+>>> +            iommus = <&iommu M4U_PORT_MDP_RDMA0>;
+>>> +            mediatek,vpu = <&vpu>;
+>>> +        };
+>>> +
+>>> +        mdp_rdma1: rdma@14002000 {
+>>> +            compatible = "mediatek,mt8173-mdp-rdma";
+>>> +            reg = <0 0x14002000 0 0x1000>;
+>>> +            clocks = <&mmsys CLK_MM_MDP_RDMA1>,
+>>> +                     <&mmsys CLK_MM_MUTEX_32K>;
+>>> +            power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+>>> +            iommus = <&iommu M4U_PORT_MDP_RDMA1>;
+>>> +        };
+>>
+>> My previous comment applies.
+>>
+>> Keep one or two examples.
+>>
+>> Best regards,
+>> Krzysztof
+>>
 
 
