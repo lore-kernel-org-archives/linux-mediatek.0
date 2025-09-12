@@ -4,70 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D065CAC582
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 18:38:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C99ECAC592
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 18:38:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O8WVt9Ctmn2q0vEpVu4PvAu7OrnSPQKmq2jz3bFRmnY=; b=0OwfHMhNSfuCiDaYLln9aDpu7J
-	N31qT7hEEIKr0K3Y5uQ4bVJb/VSyV98G4R9h1asuTgbpqHRGs8x8UJNPC9UlWw9Vdi8vQs/B0v9Cq
-	VB3EumGQY2KtRRF6v0elu+oXBhJOB/8so8F/+ZiNJEypOtLLIHK/21Xr1iV+Cvygbc4Zzyxs/sE1g
-	P8Gpnm/Yt9psiTB2PwbycNyVFPiIa7IY3HuDn5aXDvcqzJPVs2Id5Vb/26IKsar1deDC8MV2k6EW9
-	bj22DhTRNyekyn4VVVfopZQdPhMufaKnyufPQZGlcLOv47DAT3SFNlV468MgIX4gNkzmiDjGVkiek
-	nf1izJnQ==;
+	bh=5o2cb+RS3e9vM6xcSLE475S0MGwfkgp0FUKoEaEDRlU=; b=NodlBAgiR0fnpzogs1biuQ3YPc
+	xEyY55cl49/lbuVezkjR7fcS5iPpnopBSRx+YNj1zPUOD65DMFLfvMHZPHHVkj/W98EhsgWeCN5pp
+	hDrclEMiUN9GdnvogKR9PSCCUS8pBeRo5V7p9MVc7/DQy+joGjhvchJxbQhQinmTwkQ8DhtuQYaD9
+	BPoqOBf46TSYVScN0UztUTy8MwuwKP9q2lfxoBT0h38iMI34wOUS+cinDqJXXFUBHLTs7ksETA62n
+	1xhjGZX2AarsmJUYchi+MsezZILtthIq5uyEsUGdsoqd1LsABEKbVdix7KXBWFCZC1QH+rQC+pY16
+	ums9/MMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ux8el-0000000B27l-3XYC;
-	Fri, 12 Sep 2025 18:37:59 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ux8ek-0000000B26w-1Jqm;
-	Fri, 12 Sep 2025 18:37:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=O8WVt9Ctmn2q0vEpVu4PvAu7OrnSPQKmq2jz3bFRmnY=; b=YoJptv5jzf81TGlUcwot8S5xK7
-	zQizFTo4Qw5Ezk05QAVCHhMVrhnG8KfMqDmZ2DNmmONAFIZAsuEErmwz9WZkTVOIYE86BbXZkw1Xy
-	i8/MVEqNDwe+EevYO+SnkJJiSbAH4HAuC1CLArlJ+XdHQczMHRtNXH01EnMgfx4zlcsKAqOEYQZmE
-	PqLC7MDUOeOBpFRO62ksC2eus1EKb1VK4a93uePGSndkhSrVLq5dZ0cFmkkTMV1CXgop+VCfTSNNA
-	B0KTsXFjkbJMetRB/Qc5llrFj/0+pN4rF4GsOADHzHZ56uwo3cpOtBs7BOQzPY/o6LEoYfJylNY+2
-	fv5LW3/Q==;
+	id 1ux8eo-0000000B29p-1bzg;
+	Fri, 12 Sep 2025 18:38:02 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ux8eh-00000006PMB-16l3;
-	Fri, 12 Sep 2025 18:37:57 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1757702254; cv=none; 
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1ux8em-0000000B28g-3Qwb;
+	Fri, 12 Sep 2025 18:38:02 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1757702268; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=nMlPsYpy2O8sEcroQQZEZB2sKLF7HSiNy8bY58RoZ1PGORvnrM+Q4n+80vKG6cj2AtW6WMAyLT0yDU/mPwrSW1Fww0kbNL3bevFRdcBKcnS3WutXjspb0OROZ1qsQpgHvnOsgsHTRTkvQUxLNT5l7zu7QXD8o1bLAmSpJFEiONo=
+	b=Jp3Yjg5LkIuQKesNw6/utyRuTv0nybYZ5coe0YBXK71r24f7rdxKMI682bA6vr3KvXX+dQThuadURLrH+aj8rCRnjgvSiQoRp6FWojTRpYsllyEj5AeK8XZtdlb0cBU1LUnNQH6uQlVv+K4wfnJoXnvVdFAb6/qRXHTys8hqQOE=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1757702254; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=O8WVt9Ctmn2q0vEpVu4PvAu7OrnSPQKmq2jz3bFRmnY=; 
-	b=feGg57ILtO1r890uqwsMAFPu7FWpIIBgqs2qrm7uRNzvdkjDuN3g2102FETPss5Zz1vZ4b3IsY8GBJKUOrXGl398hsaAnmsm5+rkW4GH2leQwV+Usidh3/IJ1+tMWoR6BzK0+OsKwFlhy3dImyADMDFWSTxGfSD5XvTTvMKmhEo=
+	t=1757702268; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=5o2cb+RS3e9vM6xcSLE475S0MGwfkgp0FUKoEaEDRlU=; 
+	b=BLDOvsVzVwwie42bi+SVmvubUZzQ7r4CGAALrVL8n59qjbN2tDUifPqEDmUDsdkV0Ey0u0tHpVLP75AGZXnsJdJyS/Ewc2jGN1k3gNr18OsUEN459NPetRMVCzl2QIgEAg5u5vyKonO34Z3JDFFc0jKv9j61lJcF0goaDXGXSEY=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1757702254;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1757702268;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=O8WVt9Ctmn2q0vEpVu4PvAu7OrnSPQKmq2jz3bFRmnY=;
-	b=IuzaXCrbeixNucRXQlr1GWvGgkjWhmvEIGSFxjrTvwfbEde7Yrg8lpjswtQ5ifuM
-	kf2gYL/EIjY6rkh5WLbij9F1pctgZvCwYqowX1q23sKAGwv3nJTGdAH9XkPJHdFat90
-	QEEy0Ekcjfe9MHOKdrZFpeJjRpt51CW0Tgrll0dk=
-Received: by mx.zohomail.com with SMTPS id 1757702252894215.80562166132404;
-	Fri, 12 Sep 2025 11:37:32 -0700 (PDT)
+	bh=5o2cb+RS3e9vM6xcSLE475S0MGwfkgp0FUKoEaEDRlU=;
+	b=dRLmfSxXaRzFWG65htj2aEJIZWuCyvok2GtdATgyx7cMuVqUsXZA1++mspb72y9B
+	gu2jp+Y3e98c6JtQliKmEnrHXojq7dDdFyNLZyX7ZBXAZztzCp5Y3vI4dJXitD6SLa8
+	4knxxAeunr03KcCpmsyLb5u0RWC1PZIysGXo1MmI=
+Received: by mx.zohomail.com with SMTPS id 1757702266927437.838415080814;
+	Fri, 12 Sep 2025 11:37:46 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Fri, 12 Sep 2025 20:37:00 +0200
-Subject: [PATCH v2 01/10] dt-bindings: gpu: mali-valhall-csf: add
- mediatek,mt8196-mali variant
+Date: Fri, 12 Sep 2025 20:37:02 +0200
+Subject: [PATCH v2 03/10] dt-bindings: sram: Add compatible for
+ mediatek,mt8196-gpufreq-sram
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250912-mt8196-gpufreq-v2-1-779a8a3729d9@collabora.com>
+Message-Id: <20250912-mt8196-gpufreq-v2-3-779a8a3729d9@collabora.com>
 References: <20250912-mt8196-gpufreq-v2-0-779a8a3729d9@collabora.com>
 In-Reply-To: <20250912-mt8196-gpufreq-v2-0-779a8a3729d9@collabora.com>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
@@ -91,8 +77,8 @@ Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
  Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250912_193755_530386_2BA8107A 
-X-CRM114-Status: GOOD (  12.49  )
+X-CRM114-CacheID: sfid-20250912_113800_921703_4CD7F9B5 
+X-CRM114-Status: GOOD (  10.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,94 +93,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Mali-based GPU on the MediaTek MT8196 SoC uses a separate MCU to
-control the power and frequency of the GPU.
+This compatible is used for an SRAM section that's shared between the
+MT8196's application processor cores and the embedded GPUEB MCU that
+controls the GPU frequency.
 
-It lets us omit the OPP tables from the device tree, as those can now be
-enumerated at runtime from the MCU.
+Through this SRAM section, things about the GPU frequency controller
+like the OPP table can be read.
 
-Add the mediatek,mt8196-mali compatible, and a performance-domains
-property which points to the MCU's device tree node in this case. It's
-required on mt8196 devices.
-
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- .../bindings/gpu/arm,mali-valhall-csf.yaml         | 32 +++++++++++++++++++++-
- 1 file changed, 31 insertions(+), 1 deletion(-)
+ Documentation/devicetree/bindings/sram/sram.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml
-index a5b4e00217587c5d1f889094e2fff7b76e6148eb..163b4457f7f25dcdd509c558558a73694521c96d 100644
---- a/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml
-+++ b/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml
-@@ -19,6 +19,7 @@ properties:
-       - items:
-           - enum:
-               - rockchip,rk3588-mali
-+              - mediatek,mt8196-mali
-           - const: arm,mali-valhall-csf   # Mali Valhall GPU model/revision is fully discoverable
- 
-   reg:
-@@ -53,6 +54,9 @@ properties:
-   opp-table:
-     type: object
- 
-+  performance-domains:
-+    maxItems: 1
-+
-   power-domains:
-     minItems: 1
-     maxItems: 5
-@@ -91,7 +95,6 @@ required:
-   - interrupts
-   - interrupt-names
-   - clocks
--  - mali-supply
- 
- additionalProperties: false
- 
-@@ -105,9 +108,24 @@ allOf:
-       properties:
-         clocks:
-           minItems: 3
-+        performance-domains: false
-         power-domains:
-           maxItems: 1
-         power-domain-names: false
-+      required:
-+        - mali-supply
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            const: mediatek,mt8196-mali
-+    then:
-+      properties:
-+        mali-supply: false
-+        sram-supply: false
-+        operating-points-v2: false
-+      required:
-+        - performance-domains
- 
- examples:
-   - |
-@@ -143,5 +161,17 @@ examples:
-             };
-         };
-     };
-+  - |
-+    gpu@48000000 {
-+        compatible = "mediatek,mt8196-mali", "arm,mali-valhall-csf";
-+        reg = <0x48000000 0x480000>;
-+        clocks = <&mfgpll 0>;
-+        clock-names = "core";
-+        interrupts = <GIC_SPI 606 IRQ_TYPE_LEVEL_HIGH 0>,
-+                     <GIC_SPI 605 IRQ_TYPE_LEVEL_HIGH 0>,
-+                     <GIC_SPI 604 IRQ_TYPE_LEVEL_HIGH 0>;
-+        interrupt-names = "job", "mmu", "gpu";
-+        performance-domains = <&gpufreq>;
-+    };
- 
- ...
+diff --git a/Documentation/devicetree/bindings/sram/sram.yaml b/Documentation/devicetree/bindings/sram/sram.yaml
+index 7c1337e159f2371401ae99313375656fff014ed4..6ba0dd6a66def11f56a1d5276d7397b655bff11e 100644
+--- a/Documentation/devicetree/bindings/sram/sram.yaml
++++ b/Documentation/devicetree/bindings/sram/sram.yaml
+@@ -89,6 +89,7 @@ patternProperties:
+             - arm,juno-scp-shmem
+             - arm,scmi-shmem
+             - arm,scp-shmem
++            - mediatek,mt8196-gpufreq-sram
+             - renesas,smp-sram
+             - rockchip,rk3066-smp-sram
+             - samsung,exynos4210-sysram
 
 -- 
 2.51.0
