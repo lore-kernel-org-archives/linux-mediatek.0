@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F531CAC58F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 14:23:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C733CAC58F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 14:23:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ek0TO7GNCfMGdZrn2a6dssI2HabH0ybImb9FG8faTKA=; b=F8pUEWR7JDg+aP
-	1S1Xk0sSR9fSbesKjuh9WDI+ooL+w5CLd6ovO550PRWj2nLLBDbLjJb2hpeuxML5hAGzefQ3k4CiW
-	PjhjWrtdt7bLzq62C/fm+IZXPMBDtLeK2yJBxuUO7x7eMBn5c5AHHnvhDU+qJaewAj2Z78QxTTO/b
-	nkjZfPAbJ4l0b8hOgsGWbGGdT1cDPKRTzrhEVoI0CX8b52Jc6ruOgklVSkIigoQoRepZ3kzawLkXU
-	kbJPsypr/Vng8JgbbuvXg/Dodtz4LaqPApagqgPpJmkaok34XH3AIe9wNxvaALcQ/LlYc0LcvXU8d
-	b+W36lRMkGxalQExNcyg==;
+	List-Owner; bh=1Ug4rvDJVrD/KFt1LWLn8j4wXGstlIATd7OgVTytDCs=; b=n8h8Ahff3w2BkO
+	/4SCBNjTc/tKWkRXOJYa/mndQUxk72TT7jJxUEdrrAJY4X1EG4HBKyPSWHwNNERW8GZZn6oFpFfbT
+	DwjHvehwhncliEm/C6mL7Jqwb4YI5MApEhTI9kYgj2s41isut+KJnPNxUONlCJgIZevnTsl2ZV2Q0
+	WMRyNrjpp6cRlgNlHZnL81RCsP4Uco2/RtLuVxuRDSj8KRUBhcdy8UXjrlmOHM1p/p1m2urcde8Ur
+	U6uXKCtghUM0Su6xJCXXy+v8sFpjfIZzxMQLxil5EJp0uqMWB+YMgbcysG5e9EXgQQkYuykYqAzLq
+	XZMnQ88ctTwKrZdzvr6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ux4g4-00000009qx5-37GC;
-	Fri, 12 Sep 2025 14:23:04 +0000
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+	id 1ux4gP-00000009r5G-1f2c;
+	Fri, 12 Sep 2025 14:23:25 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ux4g1-00000009qtQ-3Xia
+	id 1ux4gM-00000009r2v-45rn
 	for linux-mediatek@lists.infradead.org;
-	Fri, 12 Sep 2025 14:23:03 +0000
-Received: by mail-wr1-x434.google.com with SMTP id ffacd0b85a97d-3e77e917eefso554975f8f.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 12 Sep 2025 07:23:01 -0700 (PDT)
+	Fri, 12 Sep 2025 14:23:24 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-45de287cc11so17011955e9.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 12 Sep 2025 07:23:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1757686980; x=1758291780; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1757687001; x=1758291801; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=ek0TO7GNCfMGdZrn2a6dssI2HabH0ybImb9FG8faTKA=;
-        b=QQjbE/DGIYYzCprAhVcqjEnsf0sccnusGJFLCO5YPWo3Ji0MuAJTg+7XF2s2ODSmuw
-         x7mi85VyDYSP532TQhANUiN8S/P8gDqUPUQgBi8BW/ewjvoKNQWST/UUasApB2TrOsYd
-         BUtZgjYRDpl1zMG+KCy7T2HC7+JQJgBvCzJbAmyalFW6bYuomd2DA5n4h8n9aQJXMUPG
-         irqdVYbZZ7/r4OaFWvFUETTCNrUXN/DH3vFLzh0zGXzwYy1imIK0G6+DwsNSlWENQ4Pl
-         ZATLnGIYmsZWh9/o5mq6LVIDHQj+Ix/hlVKqDTh7rLkRDibBH7Pzm3q1Ie2uV/HA1gGp
-         q1Iw==
+        bh=1Ug4rvDJVrD/KFt1LWLn8j4wXGstlIATd7OgVTytDCs=;
+        b=l/qs77zk4FcLgIouMzTacbxnaGGPZry7aRTZcw3n+h9wP5W1w2fSRHkganhTqRWayT
+         VjPGOuUDhhxjmLqHtBeyQobDyz/dGVgdoWgotKBOorRybqJWANfqoeaiIBeJhimfxdVF
+         5KwI9d8t+m6eH9PGDYvcU74hEgz4946Tb04Kljx6YrHtU4sC1jSNAuuq2WSP8Rj4AnH1
+         lDJNtp979lCEA8tGwBN8kNXFPBjRZDe3EtFqcN8clOd/q9GxqmQiASwyDHYQb4RRF23L
+         n4vyUSWHKT8nPs2iYPZ1Akj7ZCyNU7vdOiT+I2zVfkVOOBg+0kRHCN72yHTkvxZ+/bHa
+         kpaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757686980; x=1758291780;
+        d=1e100.net; s=20230601; t=1757687001; x=1758291801;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ek0TO7GNCfMGdZrn2a6dssI2HabH0ybImb9FG8faTKA=;
-        b=bSDFLTL7BYEYvKyNGYgdyF7z/QtF8CvvUDhTAUVBVohFnQUVkepikfzUyQ5WpGXpwU
-         q26mUm1cnBwfV1OpLDrOH4PuClpLFkO4cYX+WgwH9dwq848DnhNZe3PlVC0oeBm84eDf
-         2Tl58yYD1Dpi2iHmBu5nf+ih5KEwiiTSKz5CUs4CJ7yIUMc6DzOXHgcS2Z9NOcCDaV91
-         Hkt5bIXasBES/m+dCv20UjACJO1L/daq2btKpdQDn4Ms2VB7Wce01Kr/xyDG3Q/ncQC/
-         Z15SMKijm5lRD4HEUq+9KFcoVls7BgIScfP29lPiOQjr0MTQVVU3MAYD8foKU2vUUxuU
-         CkOQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWI5ZCmgNYi7u0I3Fne1xyQccEExnOJynPbqlksyTXlqz6IHP6cUsskUr2NaPUZKNmwTRZm50KU13X9eCu9BQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxobJBUmLJTt98xCEMdpsHJLFITCa0z4EbjrCuprUNYDOo8el6Y
-	hN04KSnsjApZ1ASz0p3/Oh7wgzijuoM9QVaHz8K7rjxo2krdbDgx5C3SRbbB6QJP
-X-Gm-Gg: ASbGncu+DTRQzbBhzb6nEEVS040Zr7SWXjxxDiiLRxDNpbY2tWOwPYX2nUIRfJeJCOD
-	aFok49fxWrYZCuktpfqr9VxpIe9xv3jg/45MoG6p8riAetF/4CpZDnUwCJLI253xUGZiv+LIHYh
-	8BU1oKd0DOwvDYQdVDJLFEfs1uA002ORilB0zBPnx9Wm2vf6qs4H1/tsi4WgDin7k+IfPfod7xX
-	zwY0OxIU7dq71SSwCUxykqc0woRc/30W6K2W5ZNbjgni1e0ZuYU8tzjmTTuypNMvouQECts1Zzq
-	3ihsk/7lastqlJNsMN7IgpJuoX+iMd1C36zNqRw6clR0lSuYxDqKAauyuyq8i8lrEX8kqyb7vhR
-	MpzRpS6/JbK7uveMQIK5SqSgyvjgPwUM=
-X-Google-Smtp-Source: AGHT+IEyMrgn2AGObMNXrXfOyNSBeXONFdMwd2oXsFxZJiErmFGwTSul75U9TPJBys255/fSCwqlMQ==
-X-Received: by 2002:a05:6000:26cc:b0:3e0:34f4:3225 with SMTP id ffacd0b85a97d-3e765a09238mr3563649f8f.45.1757686979724;
-        Fri, 12 Sep 2025 07:22:59 -0700 (PDT)
+        bh=1Ug4rvDJVrD/KFt1LWLn8j4wXGstlIATd7OgVTytDCs=;
+        b=FbidYIzPa2mWaN0nn1E62sdh1VAer4jAA2v8CDTarFuCxwE+8H7PJRqgej9P97SYhs
+         yTdDoGAndz+K34hV+DXq7SFxTqMBzr6R9TllLs7OAhBIONdzWSvBp8wsiM8rqmvmN50l
+         L5W/XBc3hUq8Nd1tPUe+B/1P49U50SavmfppTA1+9o6/BDw9E+a2pD5MrqHMYFRswreI
+         WBbqG+I891xDjm666R7XiKbposzhALr0Is0ozOC5EnhT4SSHiRfUQJcnelbNpa2pLlNd
+         yXE8LmGOZPrwwuKKTkMEm5yZ4qgI7PLMM0PHWZW4feAIo2gw7/BE1Ycnw+jnZKAxIfIG
+         fcsw==
+X-Forwarded-Encrypted: i=1; AJvYcCV21iRzTRRzL93IXo6DCQRLg5RtX8k6VOiumtZ+Zp5RuMxfcf/o3dvsG6zjsEeQbBnwcSMp39X6TtTHpWCcYw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy55mVGOkvmI47sKfGNsIguzgdYwAbt0v24GP0xBHgQQ0bRJCrv
+	OVUQ2hjyAz9rVJHzM8JFIxoZ3r1tLwcujOAfEt6Xnz5Ksy+bOEZjfP8m
+X-Gm-Gg: ASbGnctYa8cgA6T9YaCRQvI4Risab3YpnFJCiLRwjXN0QdzPbq0ZjWNG9MYIhE562xS
+	BH42NE4hCyetbc+l1R4sS7+to+1KerJVlyYgMyLQ/Y73YEqgnwV6hSb+1NSComl7D8jx1p4H6AE
+	XcdzLkI1hAP9jZNGuPOpcBtjW8B8sumdNn4TdNScsx1oP+EiHP96EJkJ5hN92QJ30OMsSDU+Gjl
+	2t/rT9Ucr3xqzQout+4HppFdtKlIouznBIMB1Z/fmt+wD5PaUau0qCnbTfdECJkjv0WW3vq4DSt
+	kf0tj0MWISscxkZanWHqxL3PjxLCm1xbaUHx03abwXhqnv16jQ7tNbtckcSN0Snk5KcsPDpGmNc
+	+VnSwZ3y13mZU6nKgIQyQ9iMBe6UGOhWYvrsDooYAwg==
+X-Google-Smtp-Source: AGHT+IE5UXOItxjbn0zFICANNc5GuRpVNR7hiqiKPBU9+i1k2C8vaMc+CHm3lHcY/3oRsKpLL3Rr0Q==
+X-Received: by 2002:a05:600c:468a:b0:45d:5c71:769d with SMTP id 5b1f17b1804b1-45f2126253emr34464315e9.8.1757687000920;
+        Fri, 12 Sep 2025 07:23:20 -0700 (PDT)
 Received: from [192.168.2.177] ([91.116.220.47])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3e7607cd0a7sm6624214f8f.39.2025.09.12.07.22.55
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45e016b5a2esm67200825e9.13.2025.09.12.07.23.13
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 12 Sep 2025 07:22:58 -0700 (PDT)
-Message-ID: <2d711432-f6db-400d-b97c-135c839cf5f1@gmail.com>
-Date: Fri, 12 Sep 2025 16:22:53 +0200
+        Fri, 12 Sep 2025 07:23:18 -0700 (PDT)
+Message-ID: <30468c15-16bf-4c20-bef3-35d58b9a31b1@gmail.com>
+Date: Fri, 12 Sep 2025 16:23:11 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 36/38] arm64: dts: mediatek: mt8195-cherry: Add missing
- regulators to rt5682
+Subject: Re: [PATCH 37/38] arm64: dts: mediatek: mt8395-kontron-i1200: Fix
+ MT6360 regulator nodes
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  linux-mediatek@lists.infradead.org, robh@kernel.org
 References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com>
- <20250724083914.61351-37-angelogioacchino.delregno@collabora.com>
+ <20250724083914.61351-38-angelogioacchino.delregno@collabora.com>
 Content-Language: en-US, ca-ES, es-ES
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
@@ -125,12 +125,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20250724083914.61351-37-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250724083914.61351-38-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250912_072301_923643_6F2F1A10 
-X-CRM114-Status: GOOD (  12.73  )
+X-CRM114-CacheID: sfid-20250912_072323_075840_4438C1B1 
+X-CRM114-Status: GOOD (  13.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -149,34 +149,96 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 24/07/2025 10:39, AngeloGioacchino Del Regno wrote:
-> Add the missing DBVDD and LDO1-IN power supplies to the codec
-> node as both RT5682i and RT5682s require those.
+> All of the MT6360 regulator nodes were wrong and would not probe
+> because the regulator names are supposed to be lower case, but
+> they are upper case in this devicetree.
 > 
-> This commit only fixes a dtbs_check warning but doesn't produce
-> any functional changes because the VIO18 LDO is already powered
-> on because it's assigned as AVDD supply anyway.
+> Change all nodes to be lower case to get working regulators.
 > 
+> Fixes: 94aaf79a6af5 ("arm64: dts: mediatek: add Kontron 3.5"-SBC-i1200")
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 Applied, thanks
 
 > ---
->   arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi | 2 ++
->   1 file changed, 2 insertions(+)
+>   .../mediatek/mt8395-kontron-3-5-sbc-i1200.dts    | 16 ++++++++--------
+>   1 file changed, 8 insertions(+), 8 deletions(-)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> index d40f4c1b9766..b3761b80cac7 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> @@ -534,7 +534,9 @@ audio_codec: codec@1a {
->   		realtek,jd-src = <1>;
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts b/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts
+> index 4985b65925a9..d16f545cbbb2 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts
+> @@ -352,7 +352,7 @@ regulator {
+>   			LDO_VIN2-supply = <&vsys>;
+>   			LDO_VIN3-supply = <&vsys>;
 >   
->   		AVDD-supply = <&mt6359_vio18_ldo_reg>;
-> +		DBVDD-supply = <&mt6359_vio18_ldo_reg>;
->   		MICVDD-supply = <&pp3300_z2>;
-> +		LDO1-IN-supply = <&mt6359_vio18_ldo_reg>;
->   	};
->   };
+> -			mt6360_buck1: BUCK1 {
+> +			mt6360_buck1: buck1 {
+>   				regulator-name = "emi_vdd2";
+>   				regulator-min-microvolt = <600000>;
+>   				regulator-max-microvolt = <1800000>;
+> @@ -362,7 +362,7 @@ MT6360_OPMODE_LP
+>   				regulator-always-on;
+>   			};
 >   
+> -			mt6360_buck2: BUCK2 {
+> +			mt6360_buck2: buck2 {
+>   				regulator-name = "emi_vddq";
+>   				regulator-min-microvolt = <300000>;
+>   				regulator-max-microvolt = <1300000>;
+> @@ -372,7 +372,7 @@ MT6360_OPMODE_LP
+>   				regulator-always-on;
+>   			};
+>   
+> -			mt6360_ldo1: LDO1 {
+> +			mt6360_ldo1: ldo1 {
+>   				regulator-name = "mt6360_ldo1"; /* Test point */
+>   				regulator-min-microvolt = <1200000>;
+>   				regulator-max-microvolt = <3600000>;
+> @@ -380,7 +380,7 @@ mt6360_ldo1: LDO1 {
+>   							   MT6360_OPMODE_LP>;
+>   			};
+>   
+> -			mt6360_ldo2: LDO2 {
+> +			mt6360_ldo2: ldo2 {
+>   				regulator-name = "panel1_p1v8";
+>   				regulator-min-microvolt = <1800000>;
+>   				regulator-max-microvolt = <1800000>;
+> @@ -388,7 +388,7 @@ mt6360_ldo2: LDO2 {
+>   							   MT6360_OPMODE_LP>;
+>   			};
+>   
+> -			mt6360_ldo3: LDO3 {
+> +			mt6360_ldo3: ldo3 {
+>   				regulator-name = "vmc_pmu";
+>   				regulator-min-microvolt = <1800000>;
+>   				regulator-max-microvolt = <3300000>;
+> @@ -396,7 +396,7 @@ mt6360_ldo3: LDO3 {
+>   							   MT6360_OPMODE_LP>;
+>   			};
+>   
+> -			mt6360_ldo5: LDO5 {
+> +			mt6360_ldo5: ldo5 {
+>   				regulator-name = "vmch_pmu";
+>   				regulator-min-microvolt = <3300000>;
+>   				regulator-max-microvolt = <3300000>;
+> @@ -404,7 +404,7 @@ mt6360_ldo5: LDO5 {
+>   							   MT6360_OPMODE_LP>;
+>   			};
+>   
+> -			mt6360_ldo6: LDO6 {
+> +			mt6360_ldo6: ldo6 {
+>   				regulator-name = "mt6360_ldo6"; /* Test point */
+>   				regulator-min-microvolt = <500000>;
+>   				regulator-max-microvolt = <2100000>;
+> @@ -412,7 +412,7 @@ mt6360_ldo6: LDO6 {
+>   							   MT6360_OPMODE_LP>;
+>   			};
+>   
+> -			mt6360_ldo7: LDO7 {
+> +			mt6360_ldo7: ldo7 {
+>   				regulator-name = "emi_vmddr_en";
+>   				regulator-min-microvolt = <1800000>;
+>   				regulator-max-microvolt = <1800000>;
 
 
