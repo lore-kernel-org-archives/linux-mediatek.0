@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2B86CAC58F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 14:20:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 161EDCAC58F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 14:21:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lthXnEjSvsHbapckxRc04Ei+riXtEdUUKc9+Bt6m9I4=; b=CAwIoaTMM2iqVp
-	BEzTipBYfbOWi3NBQw4IgcPyMLzxzr0exobvvOgrosG1nByfCp2c+mAQJr78HJK2QWxRvC7Z0TjOi
-	AlTXHx8JYJJjOnF8b4gXT7rlWuuN4P7C3AS6cSODYdwKdwv6IRWZzPCCxK972RkhY1SFKla0Ixc5h
-	UIOtg4pwgHWaqv40uVQCtLXJdknHQ3Tdnki7t5wGwQ7zr50MuqjAJKfaugaSx7YS/ghxTjyNB9qSs
-	dxG1W368SVqXkh7qkzsghLdjJjvXTB+B/h6MAAl02HG+Dw3bpe62eVNU3Oz/o3aPZ6w0zU8a03sjx
-	ZG4kIe3NL6EHVRhLFpjg==;
+	List-Owner; bh=4cur4X75SOX+L9Hbv3cU7NjYIOtP0WJSnDy9zZzynTY=; b=U7t5KjcyAtsO8S
+	mXLoCHe7/z+SPd8nNYezG/mWQ2OKlfGm7dF1+hwMFB7yTt5k4oQuUgInG8K872tJekTi77kM6kuml
+	+09v33qxpDpd6wno+inP9k7D2b8zN2jP6sHkiSZ67vbkbtszo+pfl/K5EiWYzrJlOGo0WDNxICL/v
+	/DxKAt2Gt2pMmuZFmi0fro1Ii+poWaWvyb5UwQWu+n3t6BLTu+FPTBCEcLmyq2iZMrTmU1PtCaSyu
+	xO28YgmeluExZscCCRgfyikM7+Fk1vC30OKKQ4liIppaK9xWxu5Yc4MGJLVHJ952FdqUadH5OC5tD
+	fO9eaXy4BwcDrrf406uw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ux4dt-00000009pZK-0Gls;
-	Fri, 12 Sep 2025 14:20:49 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1ux4e7-00000009phI-16Ir;
+	Fri, 12 Sep 2025 14:21:03 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ux4dp-00000009pWO-28j7
+	id 1ux4e5-00000009pf1-2WCP
 	for linux-mediatek@lists.infradead.org;
-	Fri, 12 Sep 2025 14:20:47 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-45df0cde41bso15166275e9.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 12 Sep 2025 07:20:45 -0700 (PDT)
+	Fri, 12 Sep 2025 14:21:02 +0000
+Received: by mail-wr1-x435.google.com with SMTP id ffacd0b85a97d-3df726ecff3so1152314f8f.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 12 Sep 2025 07:21:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1757686844; x=1758291644; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1757686860; x=1758291660; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=lthXnEjSvsHbapckxRc04Ei+riXtEdUUKc9+Bt6m9I4=;
-        b=k0AhWqyaFOwvJ96+ChNVUACWkfZfkCt+pWvAaXyYMFPQJan0cg/9CY/a/rH8q19H7h
-         mBXmqX/iMSpepMYqDPNM0+0DmgDp0O6STv9afQ31F+lou7N+vfBY/xlZp15rqL9G0bSB
-         q/6K1GBq+A9XSeu53QlDj8oZdVQjChn+l6juw/QynfsB/i+BWH2T73esa2dC3QawPlSi
-         i69x9yPHxWkWMbkGaOsnuzs4p1stkxFA1E3x6ziJepyHK/14N+LvImQTYffvYNfjU5oW
-         lHvpcukrm8nMdtM9wdPUEl6vRPRlBbyN4hkRNB7xTlQD8ogbLiSCSWgV+lt2Zb6plP/C
-         jHSA==
+        bh=4cur4X75SOX+L9Hbv3cU7NjYIOtP0WJSnDy9zZzynTY=;
+        b=ZvLrIH3guaMYDp/JKBI4q7X2ICIGUyt4zptILWlZw/sDWycA3cKSf55qx5PTaGT5Ct
+         Y1Kjb8fS0mn9JS71Sg0b1AePpnnXz49tA5CXOa97XL+ShB9PHB51NlHONCuQ4qhYsqMd
+         JVpqqafS+fHn3iTYJPoDCG0sN+bAfkag1bws6Fpk2YnefNTVGc0bE43qr9ERiFpeUbjc
+         7g40QesWYGmoAhr8/k6gLmZSgFecWNSgvsTa0i7TXswaEayCfWoikq/DKPs1va/33I3i
+         quU4kb44nzH7a9wrIrQlvezobr8C02gaG+gqDD6rAUdruc0vtS64IJZT9Fe+ZaHZDBIL
+         4EQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757686844; x=1758291644;
+        d=1e100.net; s=20230601; t=1757686860; x=1758291660;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=lthXnEjSvsHbapckxRc04Ei+riXtEdUUKc9+Bt6m9I4=;
-        b=o0d8yCIUW6iSdUXyKtghVWZfh7/AWnzXLXgNIP9LB2cS1zedOyRa9P/CIMYNFbF5vs
-         ifzJBel/Zy42EXljSaxc8PTAun7pKad0Gazs70LrbXHVb/H5MD2Ex9GPCKk6B2aMYv5V
-         15TIyRDB8qaa3qe5gCHU7CVr+sDJmqiFBxqMAjC8YVuFPwKD3a0j8hnr1WIVrL1V1rDp
-         OqzDEfpk5oZm5zdVNcYgZCoUXSoDfOwFejz0TzrR6CFYY8Ne1zMj0Mxd1H0JFIJNb3/S
-         8S99GKsEhahwdKuerRxYCid+BFVcN3wIMyGbrBLOIxw7L+YQldp1ZPAXjC84NF3ry2gg
-         9lOQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUjuzbIVy4DOHdagb6pMSr2CjQMsW+cQ2+7e8YyFSwwEwNnWaEknx1JoE/mqydBhDvzLdUcrrf/6RxR6snkkg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz/iP+gUnIf9+SXT2WTCXBQZcNFmCsyHXvgPFt3gTp2Lt9L4xNw
-	heYmLFZ6YHq/5mA5AItYxXvFt79EX/xpMvdCVCxhz1vm4U3wUYvXmFeF
-X-Gm-Gg: ASbGncv5PMdoZbftLB0OxuLd2ERCAUhZ3TWrcJPkyu5TTSktgK4GpfgBJdFfGuuPLWd
-	hq0xVPQBcLCO6lckI8fCk8lLRy/qaOZhuGaYVnWiLPR0DvyjJaTWnKUEgzWIi7qJ9UKE/pZLFXE
-	WRcw5eqIZesx3JcW+0pEIgDS9Mt3l0Xg/I1JCFrTlG/sunKcOYZsw6gJVYFmaYLe0ZQHfP60gFQ
-	8lcw5UuW7ijdbUJ8F0NiFnx3bALCP2jQaCB58uVcggMOrwG9O/696t0jWCshrOEEvupJMS+74aF
-	1c6J/uAPCRg4dRjEVj2zCMUxbzhToUigKJ1hUykeZQx8rSiwZlxEDDPM85lM3v+wO5ibhaVGEjD
-	WavAEZcXLj4Jpsh0ssk4Sb2L42wW9qxfvO/M8mBwTkRl2zqxwqqld
-X-Google-Smtp-Source: AGHT+IFqrxlW5v3Vy46wYJ2sE/wtXVC2vb0Byrr7NgxSOjj9QTmCoTJsKTMUA+e1n+AH0Kve613Tyw==
-X-Received: by 2002:a05:600c:6b06:b0:43c:ec4c:25b4 with SMTP id 5b1f17b1804b1-45f211d0795mr28833695e9.10.1757686842371;
-        Fri, 12 Sep 2025 07:20:42 -0700 (PDT)
+        bh=4cur4X75SOX+L9Hbv3cU7NjYIOtP0WJSnDy9zZzynTY=;
+        b=lToLl4XnBO/DBy9YwpqT5+PBhjmcpeXlhJwhXRiFfmk2IlmBMn8MuvCRWBaRSrfsZZ
+         9efc3wt8YMIsVpzT+UM1gwXf9fLh5MpNZ46r7JrgpkGwHHTTTlQXWYV1V2hInKZfel+H
+         39CNw4GqQBIdyltqSheFkJILsVQdvJr7Wy3wlyn6vVHn8DusnMC+oGfp2P0F0uFt/prW
+         X8RHdwrF/pf8qXFaT1DQEyRDAUgBB7OlEYyjxBy/KfGbIFv1HMr/SN2wCkUtIMU5JvfN
+         yb7DyAIxcWOgAiHjkw8G1jgrKYSfoQ2enKQhCF2Crbv1k81o3VRrfi4iKpMnoYtcqKzj
+         U52A==
+X-Forwarded-Encrypted: i=1; AJvYcCUQL4VP10Ke35Okg5WFbGGW7JLbBD2A2rrrqohaZgy4YxeL+YFlrcT3n0tU5Kx7EMd4EzXvKF/c/juP49ru8A==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy1dYfSPgy0kM+5mQVRW6MdJ0xld8Em8nggaXG68P9K/1hZ6916
+	zGxJaft9Ylk+8qufM4q/dbXr0LpViv73K1u7RlVgetzfeb7EKrHsUrqu
+X-Gm-Gg: ASbGncsJFWQsJteW3WgMt2M+Gj2AJPHOhLtQHkBZYLtKSZWm0fL7+n+ATJNfslikntO
+	HEeoVkKX4q7DwtLF/uVT3RSamwhAPgAHaE73oosd73GEn3daimzWxBVgbabz4fa6oVsEYbuhzSx
+	R8l7RSI7doWmn3sOZ1g1MeKRbQ6uvcFD5SRq5i8wt9wxluOryVVtEeAjHa8fgITMQi1uKY4VWD0
+	VcRw/7zCJ+px8Xs4ziDqjhba698yXuvffZPAFXWORDcqWThjaax7OH904uxXfITNNn+nL7V0bHI
+	wnzzqtUlYyQVEcK9d5jEUh4oAW4D1R0iLPpbxwr2YBZz2q3H4wuM07ICjQdjpvYzWZIaS3XbHsT
+	FWhWk3lrhyNczH9aYG9I/CyRxtv/za2ykHDi1MSSqI0gKCaX4WGHO
+X-Google-Smtp-Source: AGHT+IETnSVaOaRKN/Bmr4IDnznOAwChZ2qQ4ywH5VxUBMfTXYJEq367ON+ECBnG0YBYE/RxZE/ipA==
+X-Received: by 2002:a05:6000:2012:b0:3e7:441e:c9e1 with SMTP id ffacd0b85a97d-3e765793127mr2932126f8f.18.1757686859589;
+        Fri, 12 Sep 2025 07:20:59 -0700 (PDT)
 Received: from [192.168.2.177] ([91.116.220.47])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45e037d7595sm63116405e9.24.2025.09.12.07.20.38
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3e7607cd415sm6697435f8f.30.2025.09.12.07.20.55
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 12 Sep 2025 07:20:41 -0700 (PDT)
-Message-ID: <3b3197b7-3e60-4a1a-b6bb-3a0a0ef1fdd4@gmail.com>
-Date: Fri, 12 Sep 2025 16:13:14 +0200
+        Fri, 12 Sep 2025 07:20:58 -0700 (PDT)
+Message-ID: <cda40929-12d7-4206-a4d9-3a74314c6b2e@gmail.com>
+Date: Fri, 12 Sep 2025 16:13:30 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 24/38] arm64: dts: mediatek: mt7986a-bpi-r3: Fix SFP I2C
- node names
+Subject: Re: [PATCH 25/38] arm64: dts: mediatek: mt7986a-bpi-r3: Set
+ interrupt-parent to mdio switch
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  linux-mediatek@lists.infradead.org, robh@kernel.org
 References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com>
- <20250724083914.61351-25-angelogioacchino.delregno@collabora.com>
+ <20250724083914.61351-26-angelogioacchino.delregno@collabora.com>
 Content-Language: en-US, ca-ES, es-ES
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
@@ -125,12 +125,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20250724083914.61351-25-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250724083914.61351-26-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250912_072045_592033_907736F7 
-X-CRM114-Status: GOOD (  13.56  )
+X-CRM114-CacheID: sfid-20250912_072101_674632_DC26225B 
+X-CRM114-Status: GOOD (  13.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -149,49 +149,35 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 24/07/2025 10:39, AngeloGioacchino Del Regno wrote:
-> The binding wants the node to be named "i2c-number", alternatively
-> "i2c@address", but those are named "i2c-gpio-number" instead.
+> Being this an interrupt controller, the binding forbids to use
+> interrupts-extended and wants an `interrupts` property instead.
 > 
-> Rename those to i2c-0, i2c-1 to adhere to the binding and suppress
-> dtbs_check warnings.
+> Since this interrupt controller's parent is on the GPIO controller
+> set it as interrupt-parent and change interrupts-extended to just
+> interrupts to silence a dtbs_check warning.
 > 
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 Applied, thanks
 
 > ---
->   arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts | 8 ++------
->   1 file changed, 2 insertions(+), 6 deletions(-)
+>   arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts | 3 ++-
+>   1 file changed, 2 insertions(+), 1 deletion(-)
 > 
 > diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-> index ed79ad1ae871..6d2762866a1a 100644
+> index 6d2762866a1a..e7654dc9a1c9 100644
 > --- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
 > +++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-> @@ -64,23 +64,19 @@ wps-key {
+> @@ -200,8 +200,9 @@ switch: switch@31 {
+>   		compatible = "mediatek,mt7531";
+>   		reg = <31>;
+>   		interrupt-controller;
+> +		interrupt-parent = <&pio>;
+> +		interrupts = <66 IRQ_TYPE_LEVEL_HIGH>;
+>   		#interrupt-cells = <1>;
+> -		interrupts-extended = <&pio 66 IRQ_TYPE_LEVEL_HIGH>;
+>   		reset-gpios = <&pio 5 GPIO_ACTIVE_HIGH>;
 >   	};
->   
->   	/* i2c of the left SFP cage (wan) */
-> -	i2c_sfp1: i2c-gpio-0 {
-> +	i2c_sfp1: i2c-0 {
->   		compatible = "i2c-gpio";
->   		sda-gpios = <&pio 16 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
->   		scl-gpios = <&pio 17 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
->   		i2c-gpio,delay-us = <2>;
-> -		#address-cells = <1>;
-> -		#size-cells = <0>;
->   	};
->   
->   	/* i2c of the right SFP cage (lan) */
-> -	i2c_sfp2: i2c-gpio-1 {
-> +	i2c_sfp2: i2c-1 {
->   		compatible = "i2c-gpio";
->   		sda-gpios = <&pio 18 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
->   		scl-gpios = <&pio 19 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
->   		i2c-gpio,delay-us = <2>;
-> -		#address-cells = <1>;
-> -		#size-cells = <0>;
->   	};
->   
->   	leds {
+>   };
 
 
