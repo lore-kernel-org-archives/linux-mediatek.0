@@ -4,81 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B347FCA101F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 12:21:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33858CAC58F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 13:23:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4mh9tztPGFQu/muha8+cTvQnHWHX3Iq1GCBr0/lImpA=; b=yUfz8LLXWFtFVvqpDLo+ipCJ10
-	XKZq4MZkVXyXovz5L1AcVJkL5ork7rzYDDxt9XjtZHTSCvmJe9jksBZEqwXGFzcar5xxTUF+7zURQ
-	mHcVcwq1zMb7vgAh3Oivxe0PPhNuQtvz+uqFSLVQJIvyPdkjkki1GEpHd2HjuIpZlnyOfgL5hciHR
-	2Psv7LRKOPIe+KLwWSbKWMyuNIWCOI5+8xAb5T3LcaT/RNK5TL22l5GM9neydY1gldEN9/AZM4PUb
-	bgnS8RuQwH3p/XbkX/xw/CSdIuO5N8cbiVukJ6kPpe7koH67a3lKskNWGMxxVlNPzNjH/pvApvSXE
-	e+xS7FuA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=z9JhdsdzeagtTqRzJzInyXH3iOusi8PLI4bXNjXfUtk=; b=PfZ+jdKVr9dYgH
+	DiiBkzwbmPd7mKSI4gdrmnzwI15OIvRWd6z8RNB7NjRgh0m2EfdajhxQvL6X3QCokagpzL6wc6dAk
+	gJTuz839FZvBWE+qnOcFD/nWbnNsvHZif0BOG5HoIFdhRuthwfLArmPY68RaZ6rmw0KHov6wLzWDs
+	iQzMFPssGpMD6AW91ZtQha22I7PKcXe342HF/NflMU3cXxMZG7hNCMlcDAPkYmZjX5i+vMqM6K377
+	jb7uHwAUsIESZ8fSDsfXTMLI252q/r3a9g3ARDWxGvPfEweMuxy4sWC+nLl1OVMMVW7/M056bRNCW
+	MPCo0px2KTBcooxql19Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ux2mc-00000009CIA-3WN4;
-	Fri, 12 Sep 2025 12:21:42 +0000
-Received: from mgamail.intel.com ([192.198.163.11])
+	id 1ux3k7-00000009X9y-41vl;
+	Fri, 12 Sep 2025 13:23:11 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ux2mZ-00000009CFL-2IUz;
-	Fri, 12 Sep 2025 12:21:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1757679699; x=1789215699;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=b5WHxd4xwn9rgvCSXcEEDbW+90LANpn1Bb2s22tI1ac=;
-  b=NHKGVgEgfVEIz2n7w8DlCsy2IEVut6YMdklapvp9HNNK6SX8pUwF0Q+i
-   MqPSUTG+12wt3T6mej/DHKMwsXvEjCY2sl8SuGbulxj9LcvY1WkOix8/B
-   0J4tyG6aGY7EWOT9GWlnwCAH5iIm//JZHUia/gttnCNhj6gEemlYl4MJw
-   YC+itvZjRLfFkIi5rGTQKHKWJ6FB68I/gLVvsvDofbfuW9XHKZwAvSpN4
-   pfhyI7EsLLthGIA22wMQC58vjFcQsfeprB0RJw/sHTcxpWVB6I9rzy8oO
-   x/lRWllhb2wQkUlk68G32/dkH3gBafT5+R4A1gBDZDpioqN4FXXk8nFJV
-   A==;
-X-CSE-ConnectionGUID: VzqROIRER0O5goPO6fR/Uw==
-X-CSE-MsgGUID: 1UqM0t5oRtKkRxVCgMxlBQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11550"; a="70647306"
-X-IronPort-AV: E=Sophos;i="6.18,259,1751266800"; 
-   d="scan'208";a="70647306"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
-  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Sep 2025 05:21:31 -0700
-X-CSE-ConnectionGUID: GEbi4FkfSrOFGVHD0mHSpQ==
-X-CSE-MsgGUID: TN0X/Ch1QVyqm85T/0E1MA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.18,259,1751266800"; 
-   d="scan'208";a="174396413"
-Received: from lkp-server02.sh.intel.com (HELO eb5fdfb2a9b7) ([10.239.97.151])
-  by fmviesa009.fm.intel.com with ESMTP; 12 Sep 2025 05:21:29 -0700
-Received: from kbuild by eb5fdfb2a9b7 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1ux2mM-00010m-2S;
-	Fri, 12 Sep 2025 12:21:26 +0000
-Date: Fri, 12 Sep 2025 20:21:09 +0800
-From: kernel test robot <lkp@intel.com>
-To: Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: oe-kbuild-all@lists.linux.dev, linux-wireless@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH mt76 5/5] wifi: mt76: mt7996: Add NPU offload support to
- MT7996 driver
-Message-ID: <202509122047.IrKGvn3P-lkp@intel.com>
-References: <20250910-mt76-npu-devel-v1-5-dbde4a37b9c0@kernel.org>
+	id 1ux3k4-00000009X8B-3C90;
+	Fri, 12 Sep 2025 13:23:10 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 1917A43D0E;
+	Fri, 12 Sep 2025 13:23:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4D6B4C4CEF1;
+	Fri, 12 Sep 2025 13:22:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1757683387;
+	bh=c9p9bPrxSi+sJWVsWiSYSAd6dX2DEW2af6xw4qih9Jw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=AvXyZIi8lDfAalXgF1WdETnPgZZ8RM/3fqPD7soAGpkwubprAipGOV6yOoTY3OHSk
+	 yLXY4Sb2YO/3+SqgiF7wj7VGLz9j0uKOmb/GGgy4yndBEsWYvpN5dZma3c60ozNQjC
+	 zG6jkUFWEpkmUpJsBq3cIF3+Hkmtat4QYo+4SuWmEgfIpTAhP/EdrRrE7+MW6ktgiP
+	 sfM2z8ccxdfOJDSOxatKj3UU3+RNd90XT8NCn4Pmwy2G9TD8BXnb2X5PFl8d+ef8oP
+	 MS/OfpRkXMSwF9yOSsOYwPTssnDsx74nkFfSmqUcMqNSlQrdT9mzuIu9ED/Is4y8wJ
+	 KD26QXnW1JVXw==
+Message-ID: <bcad01be-fd00-4789-ae83-b855e495fab9@kernel.org>
+Date: Fri, 12 Sep 2025 15:22:54 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250910-mt76-npu-devel-v1-5-dbde4a37b9c0@kernel.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 14/38] dt-bindings: media: mediatek,mt8195-jpeg: Allow
+ range number in node address
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-mediatek@lists.infradead.org, robh@kernel.org
+References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com>
+ <20250724083914.61351-15-angelogioacchino.delregno@collabora.com>
+ <70ae6787-ee0b-43a0-851e-1fb6c82f6c31@kernel.org>
+ <72934f23-08eb-4214-a946-7aa7a432352e@collabora.com>
+ <56380fe5-8358-4341-9478-ba4ce52daeed@collabora.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <56380fe5-8358-4341-9478-ba4ce52daeed@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250912_052139_627248_8949C3DD 
-X-CRM114-Status: GOOD (  11.84  )
+X-CRM114-CacheID: sfid-20250912_062308_835141_2F9ABBE5 
+X-CRM114-Status: UNSURE (   9.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,105 +117,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: daniel.lezcano@linaro.org, mwalle@kernel.org, devicetree@vger.kernel.org, linus.walleij@linaro.org, linux-remoteproc@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, olivia.wen@mediatek.com, shane.chien@mediatek.com, linux-gpio@vger.kernel.org, linux-phy@lists.infradead.org, airlied@gmail.com, simona@ffwll.ch, herbert@gondor.apana.org.au, jassisinghbrar@gmail.com, jiaxin.yu@mediatek.com, andy.teng@mediatek.com, chunfeng.yun@mediatek.com, jieyy.yang@mediatek.com, chunkuang.hu@kernel.org, conor+dt@kernel.org, jitao.shi@mediatek.com, p.zabel@pengutronix.de, arnd@arndb.de, kishon@kernel.org, kyrie.wu@mediatek.corp-partner.google.com, maarten.lankhorst@linux.intel.com, tinghan.shen@mediatek.com, mripard@kernel.org, ck.hu@mediatek.com, broonie@kernel.org, eugen.hristev@linaro.org, houlong.wei@mediatek.com, matthias.bgg@gmail.com, tglx@linutronix.de, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, granquet@baylibre.com, sam.shih@mediatek.com, mathieu.poirier@linaro.org, fparent@baylibre.com, andersson@kernel.org, sean.wang@kernel.org, linux-sound@vger.kernel.org, lgirdwood@gmail.com, vkoul@kernel.org, linux-crypto@vger.kernel.org, tzimmermann@suse.de, atenart@kernel.org, krzk+dt@kernel.org, linux-media@vger.kernel.org, davem@davemloft.net
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Lorenzo,
+On 12/09/2025 11:00, AngeloGioacchino Del Regno wrote:
+> Il 04/08/25 11:02, AngeloGioacchino Del Regno ha scritto:
+>> Il 24/07/25 11:14, Krzysztof Kozlowski ha scritto:
+>>> On 24/07/2025 10:38, AngeloGioacchino Del Regno wrote:
+>>>> The dual and triple core jpeg encoder and decoder (respectively)
+>>>> on MT8195 are far apart: the only way to have this to make sense
+>>>> is to split those in multiple address ranges in device trees as
+>>>> one big range would overlap with other IP in at least the MT8195
+>>>> SoC.
+>>>>
+>>>> Change both the jpegdec and jpegenc bindings to allow specifying
+>>>> children nodes such as "jpegdec@0,10000", "jpegdec@1,0" or for
+>>>> encoder "jpegenc@0,0", "jpegenc@1,0" to resolve dtbs_check issues.
+>>>
+>>>
+>>> This should not be needed for standard MMIO/simple-bus nodes. I think
+>>> DTS is wrong here.
+>>>
+>>> Which cases really need the ','?
+>>>
+>>
+>> All of the multi-core JPEG enc/decoders on MT8195 (and newer).
+>>
+>> The DT changes are included in the same series as this commit; check:
+>>
+>> 20250724083914.61351-35-angelogioacchino.delregno@collabora.com
+>>
+>> Cheers,
+>> Angelo
+>>
+> 
+> Any further comments on this?
 
-kernel test robot noticed the following build warnings:
-
-[auto build test WARNING on 8620dfbed395fc72f968dfd07f1b50eba352bae6]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Lorenzo-Bianconi/wifi-mt76-Move-Q_READ-Q_WRITE-definitions-in-dma-h/20250910-230350
-base:   8620dfbed395fc72f968dfd07f1b50eba352bae6
-patch link:    https://lore.kernel.org/r/20250910-mt76-npu-devel-v1-5-dbde4a37b9c0%40kernel.org
-patch subject: [PATCH mt76 5/5] wifi: mt76: mt7996: Add NPU offload support to MT7996 driver
-config: loongarch-allyesconfig (https://download.01.org/0day-ci/archive/20250912/202509122047.IrKGvn3P-lkp@intel.com/config)
-compiler: clang version 22.0.0git (https://github.com/llvm/llvm-project 21857ae337e0892a5522b6e7337899caa61de2a6)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250912/202509122047.IrKGvn3P-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202509122047.IrKGvn3P-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
-   In file included from <built-in>:3:
-   In file included from include/linux/compiler_types.h:171:
-   include/linux/compiler-clang.h:28:9: warning: '__SANITIZE_ADDRESS__' macro redefined [-Wmacro-redefined]
-      28 | #define __SANITIZE_ADDRESS__
-         |         ^
-   <built-in>:371:9: note: previous definition is here
-     371 | #define __SANITIZE_ADDRESS__ 1
-         |         ^
->> drivers/net/wireless/mediatek/mt76/mt7996/main.c:2261:2: warning: use of a '#elifdef' directive is a C23 extension [-Wc23-extensions]
-    2261 | #elifdef CONFIG_MT7996_NPU
-         |  ^
-   2 warnings generated.
+Well yeah, that's still wrong. These are simple MMIO, so comma is not
+correct. Rob already commented on this at v1 of Ariel's patchset. It was
+BTW the same device - mt8195 jpeg!
 
 
-vim +2261 drivers/net/wireless/mediatek/mt76/mt7996/main.c
-
-  2205	
-  2206	const struct ieee80211_ops mt7996_ops = {
-  2207		.add_chanctx = mt76_add_chanctx,
-  2208		.remove_chanctx = mt76_remove_chanctx,
-  2209		.change_chanctx = mt76_change_chanctx,
-  2210		.assign_vif_chanctx = mt76_assign_vif_chanctx,
-  2211		.unassign_vif_chanctx = mt76_unassign_vif_chanctx,
-  2212		.switch_vif_chanctx = mt76_switch_vif_chanctx,
-  2213		.tx = mt7996_tx,
-  2214		.start = mt7996_start,
-  2215		.stop = mt7996_stop,
-  2216		.add_interface = mt7996_add_interface,
-  2217		.remove_interface = mt7996_remove_interface,
-  2218		.config = mt7996_config,
-  2219		.conf_tx = mt7996_conf_tx,
-  2220		.configure_filter = mt7996_configure_filter,
-  2221		.vif_cfg_changed = mt7996_vif_cfg_changed,
-  2222		.link_info_changed = mt7996_link_info_changed,
-  2223		.sta_state = mt7996_sta_state,
-  2224		.sta_pre_rcu_remove = mt76_sta_pre_rcu_remove,
-  2225		.link_sta_rc_update = mt7996_link_sta_rc_update,
-  2226		.set_key = mt7996_set_key,
-  2227		.ampdu_action = mt7996_ampdu_action,
-  2228		.set_rts_threshold = mt7996_set_rts_threshold,
-  2229		.wake_tx_queue = mt76_wake_tx_queue,
-  2230		.hw_scan = mt76_hw_scan,
-  2231		.cancel_hw_scan = mt76_cancel_hw_scan,
-  2232		.remain_on_channel = mt76_remain_on_channel,
-  2233		.cancel_remain_on_channel = mt76_cancel_remain_on_channel,
-  2234		.release_buffered_frames = mt76_release_buffered_frames,
-  2235		.get_txpower = mt7996_get_txpower,
-  2236		.channel_switch_beacon = mt7996_channel_switch_beacon,
-  2237		.get_stats = mt7996_get_stats,
-  2238		.get_et_sset_count = mt7996_get_et_sset_count,
-  2239		.get_et_stats = mt7996_get_et_stats,
-  2240		.get_et_strings = mt7996_get_et_strings,
-  2241		.get_tsf = mt7996_get_tsf,
-  2242		.set_tsf = mt7996_set_tsf,
-  2243		.offset_tsf = mt7996_offset_tsf,
-  2244		.get_survey = mt76_get_survey,
-  2245		.get_antenna = mt76_get_antenna,
-  2246		.set_antenna = mt7996_set_antenna,
-  2247		.set_bitrate_mask = mt7996_set_bitrate_mask,
-  2248		.set_coverage_class = mt7996_set_coverage_class,
-  2249		.sta_statistics = mt7996_sta_statistics,
-  2250		.sta_set_4addr = mt7996_sta_set_4addr,
-  2251		.sta_set_decap_offload = mt7996_sta_set_decap_offload,
-  2252		.add_twt_setup = mt7996_mac_add_twt_setup,
-  2253		.twt_teardown_request = mt7996_twt_teardown_request,
-  2254	#ifdef CONFIG_MAC80211_DEBUGFS
-  2255		.sta_add_debugfs = mt7996_sta_add_debugfs,
-  2256	#endif
-  2257		.set_radar_background = mt7996_set_radar_background,
-  2258		.net_fill_forward_path = mt7996_net_fill_forward_path,
-  2259	#ifdef CONFIG_NET_MEDIATEK_SOC_WED
-  2260		.net_setup_tc = mt76_wed_net_setup_tc,
-> 2261	#elifdef CONFIG_MT7996_NPU
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Best regards,
+Krzysztof
 
