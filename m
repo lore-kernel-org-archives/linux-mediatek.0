@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 120A0CA101F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 12:09:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C84ECAC594
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 12:13:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=luNlPT2x65V+KjVmCaFP6TTppyN73fwYQbrYbkkLiGU=; b=CxkQ1QqlidTqHR
-	W4BP9T8dR66SMfg8ZXEe7xdyWz1m+CHlkBIe/pDWp0Qa5t+KJ14Twri75mynLLrptkU6w7rhJNh8P
-	Cgf3nxoalm2NZspPdhtw11Cqe7xeFHt/suOaY4xGmrJD1ZvnpEFbkkK4LixtzSputR4gDkiK5670E
-	yaTMhW4THVlvluTiO274ZotCvsz3Qf3LbymsUMIBY1cvRtZhgbXNPMsl6zpVuT/w0WTY0C3+S3Un4
-	e+ds1yZJMjb4iFA/9G6xQy/ODtDHJ/KhJ5VhLWQVr1R1MRf17YDjwH7Q1ueHkW+1MZmr9fG1wOVBA
-	zMnjTP2/gJIrE/NoRhZQ==;
+	List-Owner; bh=zkoQ9SJncJQR2k7owlGfYP7lnnJQnXwneqiBOWb0ci8=; b=NBefKWw2FJnNC7
+	PS/omWbYkx6WVD6PvJoVrdw1aDazsBtjS7rcDIwzsNmL/wo1i6dUYLepZoE/6smeQuApQcStZjFlQ
+	W5I3DqcTPVESE2GQ1+9doTQV2lMibk6F1c0qp0phgmgNLWHBfkG6T73V1nvziYXF0oF+E6eE+p/97
+	EXKDHGfLqsFBqqy1BCxvTgmB+8dOcNMz+JioQnq2RmM8DtWCiFaXUA/fQTuV+01aCDZLwFt9tjp+Q
+	HExezL0bRwUiAN2zleKcqzbIhsjdaK17wFXCTG2SZbr8T7xCPG5oa3bdicmkyfngmvptBW3SB5jbc
+	4gQkln31/Z+8T0k5al+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ux2af-000000097cC-0YPz;
-	Fri, 12 Sep 2025 12:09:21 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1ux2ey-000000099VI-1qY0;
+	Fri, 12 Sep 2025 12:13:48 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ux2ab-000000097XR-1bcS
+	id 1ux2er-000000099R8-0vuR
 	for linux-mediatek@lists.infradead.org;
-	Fri, 12 Sep 2025 12:09:19 +0000
-Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-45df7ca2955so8975725e9.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 12 Sep 2025 05:09:16 -0700 (PDT)
+	Fri, 12 Sep 2025 12:13:43 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-3e76766a172so527616f8f.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 12 Sep 2025 05:13:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1757678955; x=1758283755; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1757679219; x=1758284019; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=luNlPT2x65V+KjVmCaFP6TTppyN73fwYQbrYbkkLiGU=;
-        b=lcGIahOaJT54nWKWzDfty/Gn6ZA3xc3smTSPRWo4b4wH3ooZn4QcVWbm4YzN4xn/tI
-         +Bz2JoYt/qud4AAVIrB0jPitj44gduJqEHdz3Wnbp0KnxUJ6ZExiaauVHANChJl/PecW
-         KfeG9b5Ce7gBAFmu7fnKgOy95fgs9+sc4wS4nY9hFH2qofDSRBar56YolOqMQFs7bD1G
-         dP/fEuhWfTACtFkBbea0hjn3Vm2fjZqPyPRsUJDF+2cCAD3uuiRUAicgTCJdiPy6iOAP
-         PhfVX+f3OEhtbyQItyWVl2UdXqeNSnc3/gNdoJvYptH3rb319wMyQrb+STJH3P+vbtSp
-         pHVw==
+        bh=zkoQ9SJncJQR2k7owlGfYP7lnnJQnXwneqiBOWb0ci8=;
+        b=SEiVZpAmz0GcGllANO4ANKFZqTLwhQTtru5qTyRvRI0JktRJiBgflbAyLAFj8TRl4X
+         UciE3NuhqVXkBxJoyPiJqhm9NxjcZ3o+DaHLt9QhhI1Jg1kgxhHJos1A1s9Yzta6+WjV
+         sDpzlu7V+VXfnvo7D6OdJLS5KDQSYb47IDzyGvU9zZ9lTAVVDundARLi6fCMZm12tb56
+         U6OoX+WeER6yA4SUekNPrvmvGIJFFQMP4/2CxRYmsZ3C6RptOcFfqihcDU5y1XMO5rHD
+         TBqPMSR33GqATjdwemfz/x0+baVmEmwZWmRjtF0Qy8EtCZqPZGICJxDJX5ijoiCfVoS6
+         WUeQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757678955; x=1758283755;
+        d=1e100.net; s=20230601; t=1757679219; x=1758284019;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=luNlPT2x65V+KjVmCaFP6TTppyN73fwYQbrYbkkLiGU=;
-        b=k25yt19YwMZLKgVKEzGdYgXXh/sD6axr8b1wdohgVYIDFeJN8ikTI6vd/olI6G26b8
-         xdV2CGYR5xLtKfe0kd023ryAqE1I2xZg0lgdgpCW8FHSWozMbk33SrCo1iWEWA2TR/Qm
-         +eSJp1/Axued0GQTxnglG11xbvaNpqF9RFL3Q4iWguhox73wYABCKcdSRdTODNpgNdZo
-         u3UbHwupVuklGJ2JX+L6ZC8+htilHWIjzyfFfWWJKsaqSJe5AhznOliTIOP3kgsY44oK
-         ri/qKbtyQblSkLdP5LobfB5k9dG+y//5P+8V6xaZKKaHv7ebrZf3EU51pDpGWtr455al
-         X4jQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWyIj8CPlhjLsi2ptYbYzXDqUnyrO2PSpnL0FpCmmgrU8+wU9Kou7nL+4P147iBK8UvfcJsp+GxlFzCCrLZNQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwUbSBpXDgdIYwXLGtZ1ltbJ4QC+DFJNDiYg7ZcBc645Vlx0xYr
-	pzqWtCgYKwXQ16/NzeQo/qIRUCK8Vm5VSK4+wy8gWJb6FXDmVMkgYKBb
-X-Gm-Gg: ASbGncv/qEDvsQV7AaKSAMw8fXR9j0aQ23JULVIickutXVsYJwdbP94pQDEdaQI0whL
-	CZL5TEetpxeLNgdE2Gq9/FILeySc26RAMATuYetimGcm3/1em1Jpxy5dJcXIxwbMYV+Ppi8MIOn
-	mI1zRuQREY5fPun/rUIui9iVvwJMrPuwGKtdb2RmrX7UyF84Fi7OkXTHR84Enc0HpbO1lGgFwZK
-	Sis4Ir2M2+5chjfAXdMBKFHHYmUBmnNpa+PKiyD9vCTPgNh4AmjNwxh6ipzeqP46Lg7Ln09fNXT
-	EoDN772iiy/hfaZnlq+4hFXBh8Sdo7S75BKJ4Q8WqA811tUEJEtGXipfOT6k4ns9I61hkV4OTZ9
-	6youjGaoQZ83rvj8UflKKq/rFbAxQzCw=
-X-Google-Smtp-Source: AGHT+IEPx8/fQkGIVkJR+qz2UY7c6jEyUpO4Z9A3UsVNdqLYapE/RWg0OlQAjc/yFqkAVGNWgJ1CZQ==
-X-Received: by 2002:a05:600c:1c9d:b0:45b:6275:42cc with SMTP id 5b1f17b1804b1-45f211ffafbmr24614525e9.28.1757678955113;
-        Fri, 12 Sep 2025 05:09:15 -0700 (PDT)
+        bh=zkoQ9SJncJQR2k7owlGfYP7lnnJQnXwneqiBOWb0ci8=;
+        b=iz9G8GqwZosxELLdGu6cF5pV0/P6cRmnh3t9bt6CbY7KHbslBoAAYZwE5V1hg3ieE5
+         k9KwNmiEfR+znHPNM0LDtRELP58H9esAc1NpIu4IgTnvlMtISTyI4qCV0d+uqlyFlrhn
+         Rdlr9clnen58OQOTxbl31uqD9bv7LeX21PUQ5NydrQhCerFs0n7K0ZBXh4Uskjb48Wy8
+         xgRV6LE8eJ71B7pko6Jg1ASyAGf4aiThxG4KTKFLDonkcA+pJKeQS38joBWa1Xej04/3
+         pBdgLmJco7llaaAljG/S95sbaGI7VtVE+q/D6iyEK2YKGgrsquBK+kzB4c6njW+VefeZ
+         dcgg==
+X-Forwarded-Encrypted: i=1; AJvYcCUuwwzvIYbS8OPUql8Gd5sQ7J7l3SQmsgBZvB4ql00FDyWsP0JjJKyKwRpbsyKRo/QKhvJvVIx/qHSAgqHJVQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyq8RHPX5ZLrA+Rfa3gdGE5g5aCSoDt3q9fsfaArkhpXxfWDoLm
+	gR4gIVnQBxWTRyEhxGMqHPBpJi4U15BFbZSKf7tVFqpNHnbuTxye0gnI
+X-Gm-Gg: ASbGncs0GZT2HArg9YQK4bLdqRqp9CIFq6eD/EXVcRNzIpZEGc/SaVjNoZPTmlyhAe8
+	5+YVs6rPyZ+++qXRxZoJLQOjD0/8lnw36ondbG7Pwqj5j/EhDmqMIEuMmfb/wTqpA13CE/CLCEi
+	UwKJg3n8fS174DRO2oEPeglM38ThUFBgNSKwJ8ZKcj5UIuquWWmuhcpbCroEqc7JmB89D2rYs0d
+	XkJvs0t2im4b60bGHJRSn0A0sMmeDm8ud+rLNCWGGDFjfeXVGQs8C6L+cRvXdPd6v+aRiZamjub
+	BYViAOJOC1XJhcVuK/5TAouT7xLYF1iplU2qdnvCqF0tCdAeUtpxi7yfPGn4tHOHmmzrf3q1KL1
+	lwFQnzr9nJjPzRJhWSMkL8b50oJGdndL6dIDZm50CvcC3ZXLcItfL
+X-Google-Smtp-Source: AGHT+IGQEhQIRknYaP1YuGQvYnjZ0p0JV8FXvcoSvGq8FP5ylA0D/T0PXvLLFUR4FEgtbThEIjz1Fw==
+X-Received: by 2002:a05:6000:2689:b0:3e7:47f2:253 with SMTP id ffacd0b85a97d-3e765a14106mr2866757f8f.56.1757679219199;
+        Fri, 12 Sep 2025 05:13:39 -0700 (PDT)
 Received: from [192.168.2.177] ([91.116.220.47])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45e017c1455sm62768935e9.24.2025.09.12.05.09.12
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3e7607878c9sm6393277f8f.26.2025.09.12.05.13.36
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 12 Sep 2025 05:09:14 -0700 (PDT)
-Message-ID: <04e75c1a-7040-403a-84be-82ff2d9f2544@gmail.com>
-Date: Fri, 12 Sep 2025 14:09:10 +0200
+        Fri, 12 Sep 2025 05:13:38 -0700 (PDT)
+Message-ID: <b43e8ec7-06a3-447f-8694-278e6677733d@gmail.com>
+Date: Fri, 12 Sep 2025 14:13:35 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 04/38] ASoC: dt-bindings: mt8192-afe-pcm: Fix clocks and
- clock-names
+Subject: Re: [PATCH 06/38] dt-bindings: timer: mediatek: Add compatible for
+ MT6795 GP Timer
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  linux-mediatek@lists.infradead.org, robh@kernel.org
 References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com>
- <20250724083914.61351-5-angelogioacchino.delregno@collabora.com>
+ <20250724083914.61351-7-angelogioacchino.delregno@collabora.com>
 Content-Language: en-US, ca-ES, es-ES
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
@@ -125,12 +125,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20250724083914.61351-5-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250724083914.61351-7-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250912_050917_499147_0C9E8613 
-X-CRM114-Status: GOOD (  12.87  )
+X-CRM114-CacheID: sfid-20250912_051341_295396_F86CE348 
+X-CRM114-Status: GOOD (  11.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -149,144 +149,29 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 24/07/2025 10:38, AngeloGioacchino Del Regno wrote:
-> Both clocks and clock-names are missing (a lot of) entries: add
-> all the used audio clocks and their description and also fix the
-> example node.
-
-You forgot to fix the example node.
-
-Matthias
-
+> Add a compatible for the General Purpose Timer (GPT) found on the
+> MediaTek Helio X10 MT6795 SoC which is fully compatible with the
+> one found in MT6577.
 > 
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+
 > ---
->   .../bindings/sound/mt8192-afe-pcm.yaml        | 106 +++++++++++++++++-
->   1 file changed, 104 insertions(+), 2 deletions(-)
+>   Documentation/devicetree/bindings/timer/mediatek,timer.yaml | 1 +
+>   1 file changed, 1 insertion(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml b/Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml
-> index 8ddf49b0040d..96ee0a47360d 100644
-> --- a/Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml
-> +++ b/Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml
-> @@ -47,16 +47,118 @@ properties:
->         - description: AFE clock
->         - description: ADDA DAC clock
->         - description: ADDA DAC pre-distortion clock
-> -      - description: audio infra sys clock
-> -      - description: audio infra 26M clock
-> +      - description: ADDA ADC clock
-> +      - description: ADDA6 ADC clock
-> +      - description: Audio low-jitter 22.5792m clock
-> +      - description: Audio low-jitter 24.576m clock
-> +      - description: Audio PLL1 tuner clock
-> +      - description: Audio PLL2 tuner clock
-> +      - description: Audio Time-Division Multiplexing interface clock
-> +      - description: ADDA ADC Sine Generator clock
-> +      - description: audio Non-LE clock
-> +      - description: Audio DAC High-Resolution clock
-> +      - description: Audio High-Resolution ADC clock
-> +      - description: Audio High-Resolution ADC SineGen clock
-> +      - description: Audio ADDA6 High-Resolution ADC clock
-> +      - description: Tertiary ADDA DAC clock
-> +      - description: Tertiary ADDA DAC pre-distortion clock
-> +      - description: Tertiary ADDA DAC Sine Generator clock
-> +      - description: Tertiary ADDA DAC High-Resolution clock
-> +      - description: Audio infra sys clock
-> +      - description: Audio infra 26M clock
-> +      - description: Mux for audio clock
-> +      - description: Mux for audio internal bus clock
-> +      - description: Mux main divider by 4
-> +      - description: Primary audio mux
-> +      - description: Primary audio PLL
-> +      - description: Secondary audio mux
-> +      - description: Secondary audio PLL
-> +      - description: Primary audio en-generator clock
-> +      - description: Primary PLL divider by 4 for IEC
-> +      - description: Secondary audio en-generator clock
-> +      - description: Secondary PLL divider by 4 for IEC
-> +      - description: Mux selector for I2S port 0
-> +      - description: Mux selector for I2S port 1
-> +      - description: Mux selector for I2S port 2
-> +      - description: Mux selector for I2S port 3
-> +      - description: Mux selector for I2S port 4
-> +      - description: Mux selector for I2S port 5
-> +      - description: Mux selector for I2S port 6
-> +      - description: Mux selector for I2S port 7
-> +      - description: Mux selector for I2S port 8
-> +      - description: Mux selector for I2S port 9
-> +      - description: APLL1 and APLL2 divider for I2S port 0
-> +      - description: APLL1 and APLL2 divider for I2S port 1
-> +      - description: APLL1 and APLL2 divider for I2S port 2
-> +      - description: APLL1 and APLL2 divider for I2S port 3
-> +      - description: APLL1 and APLL2 divider for I2S port 4
-> +      - description: APLL1 and APLL2 divider for IEC
-> +      - description: APLL1 and APLL2 divider for I2S port 5
-> +      - description: APLL1 and APLL2 divider for I2S port 6
-> +      - description: APLL1 and APLL2 divider for I2S port 7
-> +      - description: APLL1 and APLL2 divider for I2S port 8
-> +      - description: APLL1 and APLL2 divider for I2S port 9
-> +      - description: Top mux for audio subsystem
-> +      - description: 26MHz clock for audio subsystem
->   
->     clock-names:
->       items:
->         - const: aud_afe_clk
->         - const: aud_dac_clk
->         - const: aud_dac_predis_clk
-> +      - const: aud_adc_clk
-> +      - const: aud_adda6_adc_clk
-> +      - const: aud_apll22m_clk
-> +      - const: aud_apll24m_clk
-> +      - const: aud_apll1_tuner_clk
-> +      - const: aud_apll2_tuner_clk
-> +      - const: aud_tdm_clk
-> +      - const: aud_tml_clk
-> +      - const: aud_nle
-> +      - const: aud_dac_hires_clk
-> +      - const: aud_adc_hires_clk
-> +      - const: aud_adc_hires_tml
-> +      - const: aud_adda6_adc_hires_clk
-> +      - const: aud_3rd_dac_clk
-> +      - const: aud_3rd_dac_predis_clk
-> +      - const: aud_3rd_dac_tml
-> +      - const: aud_3rd_dac_hires_clk
->         - const: aud_infra_clk
->         - const: aud_infra_26m_clk
-> +      - const: top_mux_audio
-> +      - const: top_mux_audio_int
-> +      - const: top_mainpll_d4_d4
-> +      - const: top_mux_aud_1
-> +      - const: top_apll1_ck
-> +      - const: top_mux_aud_2
-> +      - const: top_apll2_ck
-> +      - const: top_mux_aud_eng1
-> +      - const: top_apll1_d4
-> +      - const: top_mux_aud_eng2
-> +      - const: top_apll2_d4
-> +      - const: top_i2s0_m_sel
-> +      - const: top_i2s1_m_sel
-> +      - const: top_i2s2_m_sel
-> +      - const: top_i2s3_m_sel
-> +      - const: top_i2s4_m_sel
-> +      - const: top_i2s5_m_sel
-> +      - const: top_i2s6_m_sel
-> +      - const: top_i2s7_m_sel
-> +      - const: top_i2s8_m_sel
-> +      - const: top_i2s9_m_sel
-> +      - const: top_apll12_div0
-> +      - const: top_apll12_div1
-> +      - const: top_apll12_div2
-> +      - const: top_apll12_div3
-> +      - const: top_apll12_div4
-> +      - const: top_apll12_divb
-> +      - const: top_apll12_div5
-> +      - const: top_apll12_div6
-> +      - const: top_apll12_div7
-> +      - const: top_apll12_div8
-> +      - const: top_apll12_div9
-> +      - const: top_mux_audio_h
-> +      - const: top_clk26m_clk
->   
->   required:
->     - compatible
+> diff --git a/Documentation/devicetree/bindings/timer/mediatek,timer.yaml b/Documentation/devicetree/bindings/timer/mediatek,timer.yaml
+> index e3e38066c2cb..337580dc77d8 100644
+> --- a/Documentation/devicetree/bindings/timer/mediatek,timer.yaml
+> +++ b/Documentation/devicetree/bindings/timer/mediatek,timer.yaml
+> @@ -30,6 +30,7 @@ properties:
+>                 - mediatek,mt6580-timer
+>                 - mediatek,mt6582-timer
+>                 - mediatek,mt6589-timer
+> +              - mediatek,mt6795-timer
+>                 - mediatek,mt7623-timer
+>                 - mediatek,mt8127-timer
+>                 - mediatek,mt8135-timer
 
 
