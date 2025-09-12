@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8504CAC58F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 14:22:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20DFBCAC582
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 14:22:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zESS1ySkymLTPY0hw83hB8DWQtQJQL+KqOm/xeYktnM=; b=hYb4st+QTB0esZ
-	uuZf2IfgVLoBUv26YHZaL8UTW3+WN+RL9CcnfOz0n7uE15iJXlGLiiFsTGY0GxfqRIM1aifHccYtQ
-	i6ljGKn3VBHlM5UjWR++pmKfAoKzvY63XiosoZBge900Pqv9sX65Teb8t0yGPlopppTqumTD8K/ih
-	3tRMD17zhgcSVFMtwByt11ZvUimujOMw+x7M2XGB624Lnct1BLW50Ek4iyn1Cv/8BnyybgQ4KfhKB
-	/boTtrXxddVRu7nljhDsDPL9WS1WQQWfphcA5mIoTJBwUPQQpcHb3sOI9h4MTXdod+RLFG0NzNcxR
-	J3e4JUOJHYIswiBKNh8w==;
+	List-Owner; bh=VymCpN9fDyNm7QOg2yye26PyPlP5MnwUCjdKp/JISyg=; b=t6lcaAh27IbGvg
+	96x/zkPIYk0ER0MfzrvvIu1ekalU2ro8SKl46g+9miS0d3Bw73NEWfYkYOIlUXktjU3L0KpKb10Fy
+	5iwsGnbXdLPyu/VBf6VSNeCIShkAnjis7v5aZnyv6E23b30OtNiTR0hDuF7gMaeGpurZXcbo4c3+X
+	pasp2BoukMFiMAADDRe6s3/3bWtZOwmoaiFlv3Vg0U+L7MNJxUSRARNP8NCYDx0InlN8XodYfrGqk
+	HRPFNOyhAKFvRuMj9JB6L1d8EwBwUAr+TUVXEQBVA2ioM42pf0pDbiy6Dq5WRmxFKDGFmDabWF/oP
+	FnH/3aCPGuj3U12GjWvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ux4f3-00000009qMm-0MEa;
-	Fri, 12 Sep 2025 14:22:01 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1ux4fp-00000009qlI-0Wky;
+	Fri, 12 Sep 2025 14:22:49 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ux4ez-00000009qJ1-0ba5
+	id 1ux4fk-00000009qez-0SBF
 	for linux-mediatek@lists.infradead.org;
-	Fri, 12 Sep 2025 14:21:59 +0000
-Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-3d3ff4a4d6fso1560328f8f.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 12 Sep 2025 07:21:56 -0700 (PDT)
+	Fri, 12 Sep 2025 14:22:45 +0000
+Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-45df0cde41bso15182975e9.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 12 Sep 2025 07:22:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1757686915; x=1758291715; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1757686962; x=1758291762; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=zESS1ySkymLTPY0hw83hB8DWQtQJQL+KqOm/xeYktnM=;
-        b=TwEiACxIqGqpHJDJCnlki8meucQYfjnd6ixRE3WRSihDfa5LCpqedK2tXjD1viKgMz
-         JxZQHHiDrxVBUsGD4nmevYGSUtoJUuXvkD1iHmqSgHsxP46tIh3R4IkUgB3wBepx7pdV
-         lSuNK4/6rlHM7xNjVTACYP2NoD5SHeG03jeE7aTiZJQ8OlYsU70qAXjhirJ5dDXVjmrG
-         YqCO06/juQqqlyWvXC9MerMOf4BkPG2pHa6wmR7i6gpEvgjhZH0fNwc86kP7kxDO/Gij
-         v0NRlfC+k7aZaK1OUJ9/sWNyBKPuNtod6FziBqbbOy3IgepIbf0iYEZ7LpYjxg3xB5CH
-         TwaQ==
+        bh=VymCpN9fDyNm7QOg2yye26PyPlP5MnwUCjdKp/JISyg=;
+        b=GQQdH5IK8QM7zDcR3ka34kLFIAnFBLanG0Ii/zu6Hy87v1qV4VFUoOm4tSex69CUec
+         MQ7uCFGvowycdSqZ9RjVFNXG5et7nwUaJz5mFmz5DirloQMskWg2iMvQTb/X+q8SNx4j
+         sC0OuxdwJ7AEda5ChQcYIpp9wR5tK1Yx4PBfUCSohJq3mX1TPl01ejqYp2cDrXEuHLT9
+         eND1oilXUzsm8eoPaT2AyITAhVRNbbVaOUfP5f7TIzL0wopMxOF1J9uqudSMhBpzIlnu
+         5we6Z7Sg2fhGFp8ILeNvqBoAOCbZPJYK0hFsKhOx2WLekSK3evrO7rmzvNywBHfKVH2P
+         6u2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757686915; x=1758291715;
+        d=1e100.net; s=20230601; t=1757686962; x=1758291762;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=zESS1ySkymLTPY0hw83hB8DWQtQJQL+KqOm/xeYktnM=;
-        b=D4z7y/eTOb69eafNNiSS/73DGNAuJmf01xb5lpDOTbsydGNXtJF87Dpe8qq7Ef3gg8
-         cJAAYOBUKb4W20jy22b6M3Y7xVWBxZFnc/E2CQMWU2rT7d1vNPgHO9CSQajtc9aKjLlZ
-         4FxV2ZMlflhaP7t4xbJFIF08jFBnQlS2eS+p06MLbfX8eCI6OGl4gLaLi68cSSjY83yR
-         BpHvXtj0RxeS/r0E5PJCaFmwB7zZv/NGiN7PvfD8NwEQpWl17ly5NWhP3nocGr3HySgE
-         /goORN7/caFPcKE1kVuwzI2L/YsoSENpxj3uN9UQS0//6T8eL326k8FkXVTzcGK6w0VU
-         8ZgQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVnxHeMNJYE2nI6HlxrYYnfOO0qnigfR1Zd+ItglapVTGt4qO/XTfszRpEhg1KHGbpfjnCAW2HERDI6wwo4qg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzMg/wJchmYzQGeTdqaQx7GxqF70CaGNlJAFzfkMc9bVoRKUa0c
-	6lV5vHtZcbriD2Dfs7jxQXIvgWsi4q6ZnKbuO5EcRhdWgyzXh697ljYo
-X-Gm-Gg: ASbGncu+G8IqXZgt0fufP7OsEwhAabIBGVj0VQfszITndUK0o1O8QxS+Y+70JC8T0Ff
-	sqmJ/OY/TnpK942uKYr5AJ4jOGn+vrqJ3Z7VhypUuTpWm+qoS+y8WrvTA4zLPs0W91tApEEvs26
-	LTynEo+crZQaBO+ULLMDtCoTsaH/GTGXoIs4rJ1dgwE3OMBnAtELXMEu0mXJuibqeRBQsjyItf1
-	5zTkp5/2LOnQo5dq1v5uIy/dNzOJopzPzQbUkUg8tZEOFanHTKqircRjJFbeVnabD/CumUqNUW0
-	h8YCPRgOwHRQVMvgJPZ/oZlkwx8+dTYqmmSm3A/rMcQxl7b2uwq0mS9F57NIz0HJCjqaIltFSnx
-	N4rD204uPD9dFMkkd6I7K4McIQEqE8a2ST804hPn7ag==
-X-Google-Smtp-Source: AGHT+IH9tJVloCbXIz91BDgTphPMX9koCByRsNlQtJ6Ob3jZPlH+RpEgqZOqPbkwhlkvGUM18ooTpQ==
-X-Received: by 2002:a05:6000:40cb:b0:3da:d015:bf84 with SMTP id ffacd0b85a97d-3e7659cc7e2mr3361179f8f.25.1757686915029;
-        Fri, 12 Sep 2025 07:21:55 -0700 (PDT)
+        bh=VymCpN9fDyNm7QOg2yye26PyPlP5MnwUCjdKp/JISyg=;
+        b=oRVwXyYxfDK9NEXWEJggsPsSmcg60xQSpgZdPVTU/Pa0AmaA/UM1dkyKyEeeA2GRcL
+         nSucOzuXPpr7ZDi5MMKn5r8V6AbT3npzjcMUM0hlK3nsYVMtGN8cDECFXqa5DSQx7I81
+         qUmPMotLIY8btijnLJN5Z8HTxL/1Sd7FJk8+Ca4xGWWMnlHwbRH7iIZrfE9ncFPKQDiA
+         nbnfGC5VKM7mwtw9peKTCsedZZEnXSMgsXm7GS0wkMKTJXM/wgHN7DaGXhajuEn4bVJ4
+         sT8iEfIwxitSuaOvAfvdWlgEjFfxDUjszW2wx+BCHiMUy4r4L480fxERUKFq1g0UEHvo
+         dp6Q==
+X-Forwarded-Encrypted: i=1; AJvYcCWhwrRqcHNcsDevqzb/vbZ+DReiVIEAo3Pn0JDrKkN+QlSt7OF+4h+TdZnWzMn8IxuxT3MRmniL0eOayxJQFQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzL1MTAzcE/F0zxDPJkf1MjLkizIAtR3VPx6ebQUiJzi0raZe/y
+	d+99vogmQfekfqqZ0h+rxZ0IkZBP6VkCeJlPWhy56bUUICX6rC3Xe8P3
+X-Gm-Gg: ASbGncszElKge9b2r6xnWyPt2ZROqVkTx0ngPYBckVLRSMsOKHpKOxR0qUTFCBk0lii
+	BW36CoE+KfDkgnek7T1wr1UozfKrEkvsvqN+7qFTmkf3XoBxatPWOHXhB6PatFthqFATo786DGy
+	FgsEiMnJl/A/qi9u09z8OEGiOq6qtkX9ilW/IxUML+EOZpGn1/BKikbHVabQYeaBHifx5DmoIgS
+	ALDEEB25Eo+b3Qt6QTVLWluKk/PUTSc8+NC62024LWUCJ/L7GibeFKhVhQyJHstU4GOsbsa8wWb
+	3UDHrSAVJSnXLdVonHFDAY0FxLwly1GH0G3NotjMoCoemDLLu6On5hIpZOOw/cCJsyGPEWeXDwo
+	b2dWagvcq9EcDTPVGWEdsi7hAor7fbwE=
+X-Google-Smtp-Source: AGHT+IGS/ldf5VzaTVStAjlJrTC/ggG5z3uMdvDlNsP8I8AfAyjYBZwViC4ftI3Cml1zaAZD0YLmkg==
+X-Received: by 2002:a05:6000:2509:b0:3d9:70cc:6dd0 with SMTP id ffacd0b85a97d-3e765a05342mr3225811f8f.33.1757686962105;
+        Fri, 12 Sep 2025 07:22:42 -0700 (PDT)
 Received: from [192.168.2.177] ([91.116.220.47])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3e7607878c9sm6750010f8f.26.2025.09.12.07.21.50
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45e016b5a16sm67350635e9.12.2025.09.12.07.22.37
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 12 Sep 2025 07:21:54 -0700 (PDT)
-Message-ID: <78130188-62b4-4206-abd7-7d50157a6b76@gmail.com>
-Date: Fri, 12 Sep 2025 16:19:35 +0200
+        Fri, 12 Sep 2025 07:22:40 -0700 (PDT)
+Message-ID: <b28210f7-8154-406e-b2c5-70de85deffb7@gmail.com>
+Date: Fri, 12 Sep 2025 16:22:36 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 34/38] arm64: dts: mediatek: mt8195: Fix ranges for jpeg
- enc/decoder nodes
+Subject: Re: [PATCH 35/38] arm64: dts: mediatek: mt8195-cherry: Move
+ VBAT-supply to Tomato R1/R2
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  linux-mediatek@lists.infradead.org, robh@kernel.org
 References: <20250724083914.61351-1-angelogioacchino.delregno@collabora.com>
- <20250724083914.61351-35-angelogioacchino.delregno@collabora.com>
+ <20250724083914.61351-36-angelogioacchino.delregno@collabora.com>
 Content-Language: en-US, ca-ES, es-ES
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
@@ -125,12 +125,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20250724083914.61351-35-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250724083914.61351-36-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250912_072157_240414_4CCB88F4 
-X-CRM114-Status: GOOD (  14.80  )
+X-CRM114-CacheID: sfid-20250912_072244_179526_017278A7 
+X-CRM114-Status: GOOD (  13.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -149,113 +149,54 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 24/07/2025 10:39, AngeloGioacchino Del Regno wrote:
-> The jpeg decoder main node is under the soc bus but currently has
-> no ranges or reg specified, while the children do, and this is
-> wrong in multiple aspects.
-> 
-> The very same is also valid for the jpeg encoder node.
-> 
-> Rename the decoder and encoder nodes to "jpeg-decoder@1a040000"
-> and to "jpeg-encoder@1a030000" respectively, and change their
-> children to use the newly defined ranges.
+> Move the VBAT supply to mt8195-cherry-tomato-{r1,r2} as this power
+> supply is named like that only for the Realtek RT5682i codec.
 > 
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 Applied, thanks
 
 > ---
->   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 30 +++++++++++++-----------
->   1 file changed, 16 insertions(+), 14 deletions(-)
+>   arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts | 1 +
+>   arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts | 1 +
+>   arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi          | 1 -
+>   3 files changed, 2 insertions(+), 1 deletion(-)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> index dd065b1bf94a..35b10082bb89 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> @@ -3014,7 +3014,7 @@ venc: video-codec@1a020000 {
->   			#size-cells = <2>;
->   		};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
+> index a82d716f10d4..a50b4e8efaba 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
+> @@ -13,6 +13,7 @@ / {
+>   &audio_codec {
+>   	compatible = "realtek,rt5682i";
+>   	realtek,btndet-delay = <16>;
+> +	VBAT-supply = <&pp3300_z5>;
+>   };
 >   
-> -		jpgdec-master {
-> +		jpeg-decoder@1a040000 {
->   			compatible = "mediatek,mt8195-jpgdec";
->   			power-domains = <&spm MT8195_POWER_DOMAIN_VDEC1>;
->   			iommus = <&iommu_vdo M4U_PORT_L19_JPGDEC_WDMA0>,
-> @@ -3025,11 +3025,12 @@ jpgdec-master {
->   				 <&iommu_vdo M4U_PORT_L19_JPGDEC_BUFF_OFFSET0>;
->   			#address-cells = <2>;
->   			#size-cells = <2>;
-> -			ranges;
-> +			ranges = <0 0 0 0x1a040000 0 0x20000>,
-> +				 <1 0 0 0x1b040000 0 0x10000>;
+>   &sound {
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts
+> index 2d6522c144b7..a8657c0068d5 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts
+> @@ -13,6 +13,7 @@ / {
+>   &audio_codec {
+>   	compatible = "realtek,rt5682i";
+>   	realtek,btndet-delay = <16>;
+> +	VBAT-supply = <&pp3300_z5>;
+>   };
 >   
-> -			jpgdec@1a040000 {
-> +			jpgdec@0,0 {
->   				compatible = "mediatek,mt8195-jpgdec-hw";
-> -				reg = <0 0x1a040000 0 0x10000>;/* JPGDEC_C0 */
-> +				reg = <0 0 0 0x10000>;/* JPGDEC_C0 */
->   				iommus = <&iommu_vdo M4U_PORT_L19_JPGDEC_WDMA0>,
->   					 <&iommu_vdo M4U_PORT_L19_JPGDEC_BSDMA0>,
->   					 <&iommu_vdo M4U_PORT_L19_JPGDEC_WDMA1>,
-> @@ -3042,9 +3043,9 @@ jpgdec@1a040000 {
->   				power-domains = <&spm MT8195_POWER_DOMAIN_VDEC0>;
->   			};
+>   &pio_default {
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+> index e70599807bb1..d40f4c1b9766 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+> @@ -535,7 +535,6 @@ audio_codec: codec@1a {
 >   
-> -			jpgdec@1a050000 {
-> +			jpgdec@0,10000 {
->   				compatible = "mediatek,mt8195-jpgdec-hw";
-> -				reg = <0 0x1a050000 0 0x10000>;/* JPGDEC_C1 */
-> +				reg = <0 0 0x10000 0x10000>;/* JPGDEC_C1 */
->   				iommus = <&iommu_vdo M4U_PORT_L19_JPGDEC_WDMA0>,
->   					 <&iommu_vdo M4U_PORT_L19_JPGDEC_BSDMA0>,
->   					 <&iommu_vdo M4U_PORT_L19_JPGDEC_WDMA1>,
-> @@ -3057,9 +3058,9 @@ jpgdec@1a050000 {
->   				power-domains = <&spm MT8195_POWER_DOMAIN_VDEC1>;
->   			};
+>   		AVDD-supply = <&mt6359_vio18_ldo_reg>;
+>   		MICVDD-supply = <&pp3300_z2>;
+> -		VBAT-supply = <&pp3300_z5>;
+>   	};
+>   };
 >   
-> -			jpgdec@1b040000 {
-> +			jpgdec@1,0 {
->   				compatible = "mediatek,mt8195-jpgdec-hw";
-> -				reg = <0 0x1b040000 0 0x10000>;/* JPGDEC_C2 */
-> +				reg = <1 0 0 0x10000>;/* JPGDEC_C2 */
->   				iommus = <&iommu_vpp M4U_PORT_L20_JPGDEC_WDMA0>,
->   					 <&iommu_vpp M4U_PORT_L20_JPGDEC_BSDMA0>,
->   					 <&iommu_vpp M4U_PORT_L20_JPGDEC_WDMA1>,
-> @@ -3088,7 +3089,7 @@ vdosys0: syscon@1c01a000 {
->   		};
->   
->   
-> -		jpgenc-master {
-> +		jpeg-encoder@1a030000 {
->   			compatible = "mediatek,mt8195-jpgenc";
->   			power-domains = <&spm MT8195_POWER_DOMAIN_VENC_CORE1>;
->   			iommus = <&iommu_vpp M4U_PORT_L20_JPGENC_Y_RDMA>,
-> @@ -3097,11 +3098,12 @@ jpgenc-master {
->   					<&iommu_vpp M4U_PORT_L20_JPGENC_BSDMA>;
->   			#address-cells = <2>;
->   			#size-cells = <2>;
-> -			ranges;
-> +			ranges = <0 0 0 0x1a030000 0 0x10000>,
-> +				 <1 0 0 0x1b030000 0 0x10000>;
->   
-> -			jpgenc@1a030000 {
-> +			jpgenc@0,0 {
->   				compatible = "mediatek,mt8195-jpgenc-hw";
-> -				reg = <0 0x1a030000 0 0x10000>;
-> +				reg = <0 0 0 0x10000>;
->   				iommus = <&iommu_vdo M4U_PORT_L19_JPGENC_Y_RDMA>,
->   						<&iommu_vdo M4U_PORT_L19_JPGENC_C_RDMA>,
->   						<&iommu_vdo M4U_PORT_L19_JPGENC_Q_TABLE>,
-> @@ -3112,9 +3114,9 @@ jpgenc@1a030000 {
->   				power-domains = <&spm MT8195_POWER_DOMAIN_VENC>;
->   			};
->   
-> -			jpgenc@1b030000 {
-> +			jpgenc@1,0 {
->   				compatible = "mediatek,mt8195-jpgenc-hw";
-> -				reg = <0 0x1b030000 0 0x10000>;
-> +				reg = <1 0 0 0x10000>;
->   				iommus = <&iommu_vpp M4U_PORT_L20_JPGENC_Y_RDMA>,
->   						<&iommu_vpp M4U_PORT_L20_JPGENC_C_RDMA>,
->   						<&iommu_vpp M4U_PORT_L20_JPGENC_Q_TABLE>,
 
 
