@@ -4,96 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7968BCA101F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 22:54:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4859CA101F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Sep 2025 00:22:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
+	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H/ALLDcBZ6nZwBY7ZN6L7gT+4ClMkunGI751uMEjico=; b=bBePKg1gCrlBVfWgjYZsX0DhSZ
-	n65pvIs1m38ftqEWmT7nw6hrZd8ivJGRAZEgbWqCtofZcJbNgS0VRT5bSxjkczoTt9Eew7S2j0HXy
-	8kT9okRp3uLStY+YwN2HhrbPpmOGPbmx5sonpnRRS5VSK64V8znx5yOrTCZIzeKC1yz4wMgMzdGgF
-	XHeBj/vt3PeTjxXREKzdcH/iAnAbUAVEc0FmR7ViTB55cpprOy1nqUTMTaNJVPju0xr8LPX2w+mdT
-	cmCur4OGjkZBhBGb4f8VaIuGknGoc56JjQmGDWbsZ1kS4LWXsEygdjJXzBQfLVAukl2PdpRMddYV+
-	sRrbGfjg==;
+	bh=1c3CBG/NboBfPVJVTzHzXXMWP+/wIvK4O9TlNT+vRDg=; b=gssjTWVQDxatxpacbxY+yNTwQZ
+	REZKt3wds20oPwXQCg1Savbl2GxeGSiQ0faJyJWtH6AxLcE0NoGh7/7ogbp8iBGQXtxLFnEKuwboe
+	Gkq3S6QhcvVI1CnH21ByYRz+0GqtP18w4GQNGFV/CC82YfZfbC7URVwHXAaC7x6rmLS5JjXdsG4Nx
+	8KooNl/parfe5kgtMLxUekfvsDJnolC9CIYZ9X8HhV6nyTXh9jsbJfNICqp/OeUaa8Z77Oza9YAPJ
+	sW9yLv35pYQWSx576CTkohCBDW+i9ztbL4GxhzuCQveFtr6Bkx9tjcbEIHdqrdrQCs3zhOEPmg0tS
+	WtgvPCUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uxCeb-0000000Bxdj-0urY;
-	Fri, 12 Sep 2025 22:54:05 +0000
-Received: from mail-yx1-xb12b.google.com ([2607:f8b0:4864:20::b12b])
+	id 1uxE1k-0000000CHn6-1ClP;
+	Sat, 13 Sep 2025 00:22:04 +0000
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uxCeY-0000000BxcH-30dQ
+	id 1uxE1g-0000000CHku-42uy
 	for linux-mediatek@lists.infradead.org;
-	Fri, 12 Sep 2025 22:54:03 +0000
-Received: by mail-yx1-xb12b.google.com with SMTP id 956f58d0204a3-62bb2e28ba9so78938d50.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 12 Sep 2025 15:54:02 -0700 (PDT)
+	Sat, 13 Sep 2025 00:22:02 +0000
+Received: by mail-pl1-x633.google.com with SMTP id d9443c01a7336-2570bf6058aso32870155ad.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 12 Sep 2025 17:22:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1757717641; x=1758322441; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=H/ALLDcBZ6nZwBY7ZN6L7gT+4ClMkunGI751uMEjico=;
-        b=GvlGaV3EgZi9mNmw6W92x7+hDJuDUf5bDmj0cyZpj4FNH3AAAKWUeDuYlfG37XM+Bi
-         iAG1HVRKWOcnsMUqX2W/bVzoawqz61uIl1IyW5yDfJK/IFxQcQ09juXsaeh0BKtyq3+H
-         EY2Y7Fm/8+Ag2AKlzsYCEQR4mcL156kLfbPwFFkPucgWlGi+JMbfgoEmOVUVk8ZyKOzU
-         l59lMLvUjGmq6LrAzNUOZkh5suhUr9cvSI2q/pUterMwN6g5hpdktO0eo8jzkTxcbgF3
-         qzC/VuF+YabFzs+Ji2wP3De3ugrnm354w/ijACmO9nLlWbAxJZJe9+v5rguQsL5s0qk+
-         +p8Q==
+        d=gmail.com; s=20230601; t=1757722920; x=1758327720; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=1c3CBG/NboBfPVJVTzHzXXMWP+/wIvK4O9TlNT+vRDg=;
+        b=Rwd67cPi5GAuuxLMUY409Z+AC9K3fKqwFS8xa1NlWohKU2KR6DxdkTyDhHV2pMbaxg
+         TxLZWwEdk7IRYcOXeJ92cbqZ7bPFdRcKgZq/IjKGseIAmd3WQLGUjie6eDWLb/qOLmW2
+         mOkGq/3++TK4L2xvbPS6agJ1gMMGXFXqxonX+q8TzJAWijVZWhMG3Wnm/BxGizi5L8TS
+         DU22xeQV/2WpxOFRBacoNBiu+Y/kMC+T9w+z5F2IG5B6Sf0M7JS+imP0ocBr5Aa10ngd
+         D/njJpy+KiaO4jJtyFTzskcJ7z5XM7XyKldFvf/LTW3j8rflnJHadboAMkxI1x5rA4/0
+         LdeQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757717641; x=1758322441;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20230601; t=1757722920; x=1758327720;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=H/ALLDcBZ6nZwBY7ZN6L7gT+4ClMkunGI751uMEjico=;
-        b=OCB1w2xqt9n9PuJFBbq85DN/hstVeDMg1RZSWZs1drEHlsV7nTPiNrqXLnZCrdmUBp
-         nkDHpoK/IcmgaoiI6DUbHzEPkOKgktpa1yQzrft/3VOMiq+HBTFUkhivoZSoOJDZQaW+
-         jTRLQfXNOBQI2jBcLGDOe5Uqbt4VwAOAOmeHnvqU8JhA5Oql6dxPmNBsE3IEzvhbGRgj
-         pRl42qtPcwnbPey/EJXFQ6PijSe8poHToGnjtAvpRgoGAoFtaLRO/4WssHCBvueRYYiC
-         ThEjZ9o+HXgs48bkB41N20noeHd65LbUB+9PsIfVet8J0vSpEYjgnt77PlujvCKpKK1L
-         yiaA==
-X-Forwarded-Encrypted: i=1; AJvYcCWU4L4FgaRbTjXP19kbEwtGLe/hm9T+CMXGwsWvsJhB/dvJsG2wcvWyI0952wnU/jd9DFiIzgYABs4+QFc1yw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxlElZz6Q1IffDLyh2aUOa27DySV5i5VGrkVvAW7semC7vD8LxH
-	qckzZC6maIr1zNvaxtf95IJTsgO10uVGyluQAwXNtaJrw2aGd1OVxyFVVhVBLfMnu63+vGTmaIQ
-	O01Pl1Wp5ZMHu608mc/ofMs5eskIayn0=
-X-Gm-Gg: ASbGnctV0knmwIX76SyvA5do1zIxjpwM+alGEflroRxcH1N8V6f846dYhKnQ2UdZmv2
-	dXmzeZq4+7NMG9dreZWFW8MkQDZHc/PDHvT8AyJlC9rt+JXxpUEOAxvG6hEyN7TzXmkPsH1L3GE
-	5lxG6XRYETuS+3l27KGJj0QdXsw8gtXMk4MI+Ygrr8SjUa4Oh05rq4L9Smt2flmHjFlkRudIJaL
-	cvLL0kNGGXGuA/iZpp+njN6stFQwcZpOYw38xvDLelCmHmNQeUFRP4zMljaGwK9VNupoQ3wRHHE
-	j98UVRc=
-X-Google-Smtp-Source: AGHT+IGmrPKfHKqLuLVsedBSU1D7fMJ0SPSt1pUu9IK0SCtyHO6OiaCBaQyBDxty6OWXlqg3nf3oT3Kb2tAQnhUAUk8=
-X-Received: by 2002:a53:7101:0:b0:626:842f:818c with SMTP id
- 956f58d0204a3-6272297979cmr3570059d50.24.1757717641302; Fri, 12 Sep 2025
- 15:54:01 -0700 (PDT)
-MIME-Version: 1.0
-References: <20250912-mt8196-gpufreq-v2-0-779a8a3729d9@collabora.com> <20250912-mt8196-gpufreq-v2-9-779a8a3729d9@collabora.com>
-In-Reply-To: <20250912-mt8196-gpufreq-v2-9-779a8a3729d9@collabora.com>
+        bh=1c3CBG/NboBfPVJVTzHzXXMWP+/wIvK4O9TlNT+vRDg=;
+        b=B/lHxZKMbSRIRWs5/QETWq9IXVf8go0F47Ui962G6J5VcW/35FbWgIxQjtrQRy/Y/J
+         uCx1HAbHC6bE4G+El86kA9fYYvOYyiSqCSePdTidtIpWIp4D3Ok7fkDtZNNx4PJcyKS6
+         aEp/kl25qj5QFNJx9vBVbtV8CnXRpeya0pfp0q3p0k9DUwutzjyaocK9zZc1WW8Dao7q
+         nse+pfnwWEnPtKQUs4W6UHQLZSXs20FoGBQTwgoeAJxpm8fjwcOkFgxzXeV6c05b+Gk5
+         90mb59jLXci8xginkGX56ngqoVA9iGTcmJQBwA/trfeU5LYemVX7vkidskJnvgOLdSUJ
+         sQUQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVQ9indvyPIJZIKT14JlpCIUKpE7WdTluHFmC2VF1i4KwGNCiU1wThTZlqTORLsImSpOohinrQxifhmkcDENw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyCDGtfti8L/umARrwWq0iOTDY66lAp62SXTygOCz4pUES0umBD
+	FM5fie/ry952jgOHJeSegYjMpkrG7mx02d3DE6tvZqUNuM6S9T1tnIfe
+X-Gm-Gg: ASbGnctPLDzNw1P69jSsS9ltioRolH1kOkpxBNHzMlEYFK/0dx0rvcCMEbHyWzbjAaG
+	Jzj3Eqci6fzVxeAFvhKn6pFcK2L8V7CIU0BV4yLhNVqOMkv/kkmGtFfXK35wLDzYi8rgyfpdryU
+	u5FfcDCnaOHO6fEajl/io4oo6a+DLCmWGDbW5LBg5HsrcdROg43j6PazkWJR56Kfu6VhEzhd8WC
+	+7mInFizAOcRfUP7Kuf9wHnFxLb8ORftHZcBh+Pa3kur5IQGq7BKtHSK5W8hX2NiA9MJUMZBEQ0
+	aqyZc0R5Tp+e0bChSE0tG5HSoZU+uUKUfMVqQAVrUcNUtfoIt54t/sbWLTZZ+FNMZNlg+BpGODl
+	APfIWXp7+NYA2rQsKZkrIrWhmzxThxtsk8V63D/3E8XEUwR8L8K0SqrGQf0nkrVgRnNQh9LDkgF
+	nk1uxjIYck5Q==
+X-Google-Smtp-Source: AGHT+IF+nK5Fq9ofZfzYEh11WCYZrbZLJT0mADN5dCYbpAjIJMEjmIB/u1gmzzXb0gcqRVsJ1Y5rMg==
+X-Received: by 2002:a17:902:f78f:b0:248:79d4:93a9 with SMTP id d9443c01a7336-25d2713422dmr52089335ad.55.1757722920172;
+        Fri, 12 Sep 2025 17:22:00 -0700 (PDT)
+Received: from localhost (185.3.125.34.bc.googleusercontent.com. [34.125.3.185])
+        by smtp.gmail.com with UTF8SMTPSA id d9443c01a7336-25c37294b4fsm59866135ad.34.2025.09.12.17.21.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 12 Sep 2025 17:21:59 -0700 (PDT)
 From: Chia-I Wu <olvaffe@gmail.com>
-Date: Fri, 12 Sep 2025 15:53:50 -0700
-X-Gm-Features: AS18NWAVsbHM7asbGyyRZapaZP5ufrQUasUcMY0V45b2pm9dui9MQp5I0XZOq0k
-Message-ID: <CAPaKu7TEN++z8r68k_4-iCyMLMthqJBUX35pgXupAHPdfttrYg@mail.gmail.com>
-Subject: Re: [PATCH v2 09/10] drm/panthor: devfreq: add pluggable devfreq providers
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Boris Brezillon <boris.brezillon@collabora.com>, Steven Price <steven.price@arm.com>, 
-	Liviu Dudau <liviu.dudau@arm.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, 
-	Kyungmin Park <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, 
-	Jassi Brar <jassisinghbrar@gmail.com>, Kees Cook <kees@kernel.org>, 
-	"Gustavo A. R. Silva" <gustavoars@kernel.org>, Chen-Yu Tsai <wenst@chromium.org>, kernel@collabora.com, 
-	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, 
-	linux-hardening@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+To: Boris Brezillon <boris.brezillon@collabora.com>,
+	Steven Price <steven.price@arm.com>,
+	Liviu Dudau <liviu.dudau@arm.com>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v2 1/2] dt-bindings: gpu: mali-valhall-csf: add MediaTek MT8196 compatible
+Date: Fri, 12 Sep 2025 17:21:54 -0700
+Message-ID: <20250913002155.1163908-2-olvaffe@gmail.com>
+X-Mailer: git-send-email 2.51.0.384.g4c02a37b29-goog
+In-Reply-To: <20250913002155.1163908-1-olvaffe@gmail.com>
+References: <20250913002155.1163908-1-olvaffe@gmail.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250912_155402_764464_2E6C479B 
-X-CRM114-Status: GOOD (  19.45  )
+X-CRM114-CacheID: sfid-20250912_172200_997093_D8EAC491 
+X-CRM114-Status: UNSURE (   9.32  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,71 +115,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 12, 2025 at 11:38=E2=80=AFAM Nicolas Frattaroli
-<nicolas.frattaroli@collabora.com> wrote:
-<snipped>
-> diff --git a/drivers/gpu/drm/panthor/panthor_devfreq.h b/drivers/gpu/drm/=
-panthor/panthor_devfreq.h
-> index a891cb5fdc34636444f141e10f5d45828fc35b51..94c9768d5d038c4ba8516929e=
-db565a1f13443fb 100644
-> --- a/drivers/gpu/drm/panthor/panthor_devfreq.h
-> +++ b/drivers/gpu/drm/panthor/panthor_devfreq.h
-> @@ -8,6 +8,7 @@
->
->  struct devfreq;
->  struct thermal_cooling_device;
-> +struct platform_device;
->
->  struct panthor_device;
->
-> @@ -43,6 +44,19 @@ struct panthor_devfreq {
->         spinlock_t lock;
->  };
->
-> +struct panthor_devfreq_provider {
-> +       /** @dev: device pointer to the provider device */
-> +       struct device *dev;
-> +       /**
-> +        * @init: the provider's init callback that allocates a
-> +        * &struct panthor_devfreq, adds it to panthor, and adds a devfre=
-q
-> +        * device to panthor. Will be called during panthor's probe.
-> +        */
-> +       int (*init)(struct panthor_device *ptdev, struct device *dev);
-> +
-> +       struct list_head node;
-> +};
-On mt8196, we have performance-domains to replace several other
-properties: clocks, *-supply, power-domains, operating-points-v2.
-There are also quirks, such as GPU_SHADER_PRESENT should be masked by
-GF_REG_SHADER_PRESENT. It feels like that the scope of
-panthor_devfreq_provider is more broader, and at least the naming is
-not right.
+MediaTek MT8196 has Mali-G925-Immortalis GPU. panthor drm driver gained
+support for it recently.
 
-Another issue is I am not sure if we need to expose panthor_device
-internals to the provider. mtk_mfg accesses very few fields of
-panthor_device. It seems we can make the two less coupled.
+Signed-off-by: Chia-I Wu <olvaffe@gmail.com>
 
-I might change my view as mtk_mfg evolves and requires tigher
-integration with panthor. But as is, I might prefer for mtk_mfg to
-live under drivers/soc/mediatek and provide a header for panthor to
-use in soc-specific path.
+---
+v2: update commit message
+---
+ Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
+diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml
+index a5b4e00217587..7ad5a3ffc5f5c 100644
+--- a/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml
++++ b/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml
+@@ -18,6 +18,7 @@ properties:
+     oneOf:
+       - items:
+           - enum:
++              - mediatek,mt8196-mali
+               - rockchip,rk3588-mali
+           - const: arm,mali-valhall-csf   # Mali Valhall GPU model/revision is fully discoverable
+ 
+-- 
+2.51.0.384.g4c02a37b29-goog
 
-> +
->
->  int panthor_devfreq_init(struct panthor_device *ptdev);
->
-> @@ -57,4 +71,6 @@ int panthor_devfreq_get_dev_status(struct device *dev,
->
->  unsigned long panthor_devfreq_get_freq(struct panthor_device *ptdev);
->
-> +int panthor_devfreq_register_provider(struct panthor_devfreq_provider *p=
-rov);
-> +
->  #endif /* __PANTHOR_DEVFREQ_H__ */
->
-> --
-> 2.51.0
->
 
