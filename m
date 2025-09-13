@@ -4,71 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B334DCAC587
-	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Sep 2025 09:16:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D613BCAC587
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Sep 2025 13:01:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8DxKQ091HwOaGLA1waaDj5T5yX7qs4j5b4spJIWwBpc=; b=aMnSLxlDFwbyxRMdeqljJUDzsu
-	BCdBbFBoNaeR4FjZe63LUG4B15fwS2kz5wRvgmpHgpHkjmRUml+pVxKkqPFNg7YZ3JAXIhgUhs0ZS
-	MLZDecSwHgm3KpOMJHB3iDhpkfLHcLturRHT4Lr7PIW8LYhms+anDqz+g7yIqTlIwWmDsxFd1qA0K
-	Sz0PNo3hZq8RrqyNkyqbAxf3gELaU/nrlmOKh2clOryp+Y3GxHCK55BG3LO3b6oRgz4xXn/26gtJQ
-	KSGJoPv+aKpjRX/QN4KOi2g9357jwlu9IfYOA3kbI+Hf0+O+ZDap0VIemaBAFNycdnmVqcoVdkzXR
-	1CrqegIw==;
+	bh=/Mnmx2sgw4WEslCg4DD/AvZUrJvXuGMClCMNCsJPvEs=; b=GcNm571vIFlEo8LU7IKOLavMTD
+	P8fqCP6qp+muKtJTd2UjUpOy9Q29ukIhBGBwV2DZr6oD3ZNgY4kxiOFxw84K6RRpo6yQSBRV/0hqr
+	1qe5m6pUh4iZsLshbXDkmNY5aEPPc7emRc8rbWX8cjF5yB/8OBf/5mpJvH0qVNh0ywjc/iRZdqvJR
+	JehiZ4PZ+wNatFf2wZcw0kxFaAcuEEMXxHb7Ewfe2unP8GdVNPJGQvMadv7u0ryNQRuL+MbH+0GN8
+	BuRff1ryjTAvOSKL290G2fBipuoV/B2utnHKpZUJCnDiuswLA4coTm5HGiFVdEP00VVtn3JCK0m1b
+	o9rcDQOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uxMMf-0000000E3sS-2slJ;
-	Sat, 13 Sep 2025 09:16:13 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uxPsz-0000000EmzD-3Z5o;
+	Sat, 13 Sep 2025 13:01:49 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uxMMe-0000000E3rv-110Z;
-	Sat, 13 Sep 2025 09:16:12 +0000
+	id 1uxPsx-0000000Emxy-17Gh;
+	Sat, 13 Sep 2025 13:01:48 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 4B94D60219;
-	Sat, 13 Sep 2025 09:16:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EF665C4CEEB;
-	Sat, 13 Sep 2025 09:16:06 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 22D0942CBB;
+	Sat, 13 Sep 2025 13:01:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A1000C4CEEB;
+	Sat, 13 Sep 2025 13:01:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1757754971;
-	bh=tIdpl+E9qiPpRky8s9y/LrALOp3p9zK9giky241MagU=;
+	s=k20201202; t=1757768504;
+	bh=AomHbXjj2ZCUcLKxzCjlmTkzRv3ch6j47Nsf97s7m28=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ApP3lpejWn30G2bgA2ehbS3Ka26Z+JAlbpL80GW1VdmC2SuBpe5XIFWE5tUIpa8cX
-	 gRiD3eRMAft2Sq7jzXSv4PkzkeiR86yhl5bdPiyfMgr1Ae4bwZT09VTSKACagMfQe7
-	 6J4NIRmMVmzy321QEzvJL5fDRu0hT32gg/b8UzhQsdd9Nl8mz8XOkEVM2jsJGMMMXR
-	 om24bPxkm8kyhvA0xOVZKVXWt9cAjdLG1MuCQzuS+e6liSRuDfY47w9+TH2x4WC1f6
-	 KTkHCbGGsUVodAb4BM9hmGSX2osedxVL9d/CQksXy0aRBsP114fd7B1mDU7ALv8JDY
-	 fjolwuRHLU8cw==
-Date: Sat, 13 Sep 2025 10:16:04 +0100
+	b=b+NnwqsdjYqUUU5iDKDNJ1RiHTJ41S+3Q5XcrXwOvxElRasNhNUyyKz0q22WSbK24
+	 Iv9gkT9b9xl9pVbotzkof4Al5C1TtWA/zJrlymNERSHnY447cR/VRfac1D31t/WBCw
+	 lkpDKFRO4rZuYPCIK+IwL5DSMBBgvRSaEhd2tjDlXb2Eu1QTM1LbcNOMxi6n2ISqCi
+	 9KEA4/V+KEHgPDpRaU/FAhFE7YMpYwJ8mVKeqt0yjjadCUEguXponQbyqPn99Kqbla
+	 MeTXIG6jKyUr+OtDEB3CQ4jdTOXrWDRYPTr4tajuv7QT78p/rTgjVv7fhvHHI/VCYq
+	 X9j/XgJIxBfFg==
+Date: Sat, 13 Sep 2025 14:01:37 +0100
 From: Simon Horman <horms@kernel.org>
-To: "irving.ch.lin" <irving-ch.lin@mediatek.com>
-Cc: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ulf Hansson <ulf.hansson@linaro.org>,
-	Richard Cochran <richardcochran@gmail.com>,
-	Qiqi Wang <qiqi.wang@mediatek.com>, linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
-	netdev@vger.kernel.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	sirius.wang@mediatek.com, vince-wl.liu@mediatek.com,
-	jh.hsu@mediatek.com
-Subject: Re: [PATCH v2 4/4] pmdomain: mediatek: Add power domain driver for
- MT8189 SoC
-Message-ID: <20250913091604.GK224143@horms.kernel.org>
-References: <20250912120508.3180067-1-irving-ch.lin@mediatek.com>
- <20250912120508.3180067-5-irving-ch.lin@mediatek.com>
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [net-next PATCH v17 6/8] mfd: an8855: Add support for Airoha
+ AN8855 Switch MFD
+Message-ID: <20250913130137.GL224143@horms.kernel.org>
+References: <20250911133929.30874-1-ansuelsmth@gmail.com>
+ <20250911133929.30874-7-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250912120508.3180067-5-irving-ch.lin@mediatek.com>
+In-Reply-To: <20250911133929.30874-7-ansuelsmth@gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250913_060147_325148_D6BB81CA 
+X-CRM114-Status: GOOD (  15.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,74 +89,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 12, 2025 at 08:04:53PM +0800, irving.ch.lin wrote:
-> From: Irving-ch Lin <irving-ch.lin@mediatek.com>
+On Thu, Sep 11, 2025 at 03:39:21PM +0200, Christian Marangi wrote:
+> Add support for Airoha AN8855 Switch MFD that provide support for a DSA
+> switch and a NVMEM provider.
 > 
-> Introduce a new power domain (pmd) driver for the MediaTek mt8189 SoC.
-> This driver ports and refines the power domain framework, dividing
-> hardware blocks (CPU, GPU, peripherals, etc.) into independent power
-> domains for precise and energy-efficient power management.
+> Also make use of the mdio-regmap driver and register a regmap for each
+> internal PHY of the switch.
+> This is needed to handle the double usage of the PHYs as both PHY and
+> Switch accessor.
 > 
-> Signed-off-by: Irving-ch Lin <irving-ch.lin@mediatek.com>
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 
 ...
 
-> diff --git a/drivers/pmdomain/mediatek/mtk-scpsys.c b/drivers/pmdomain/mediatek/mtk-scpsys.c
+> diff --git a/drivers/mfd/airoha-an8855.c b/drivers/mfd/airoha-an8855.c
 
 ...
 
-> @@ -419,54 +848,145 @@ static void init_clks(struct platform_device *pdev, struct clk **clk)
->  		clk[i] = devm_clk_get(&pdev->dev, clk_names[i]);
->  }
->  
-> +static int init_subsys_clks(struct platform_device *pdev,
-> +			    const char *prefix, struct clk **clk)
+> +static int an855_mdio_register(struct device *dev, struct an8855_core_priv *priv)
 > +{
-> +	struct device_node *node = pdev->dev.of_node;
-> +	u32 prefix_len, sub_clk_cnt = 0;
-> +	struct property *prop;
-> +	const char *clk_name;
+> +	struct device_node *mdio_np;
+> +	int ret;
 > +
-> +	if (!node) {
-> +		dev_err(&pdev->dev, "Cannot find scpsys node: %ld\n",
-> +			PTR_ERR(node));
-> +		return PTR_ERR(node);
-
-Hi Irving-ch,
-
-Here node is NULL. So PTR_ERR(node) will be zero.
-This is probably not what you are after here.
-
-Flagged by Smatch
-
+> +	mdio_np = of_get_child_by_name(dev->of_node, "mdio");
+> +	if (!mdio_np)
+> +		return -ENODEV;
+> +
+> +	for_each_available_child_of_node_scoped(mdio_np, phy_np) {
+> +		ret = an8855_phy_register(dev, priv, phy_np);
+> +		if (ret)
+> +			break;
 > +	}
+
+Hi Christian,
+
+Maybe it cannot happen, but if the loop above iterates zero times,
+then ret will be used uninitialised below.
+
+Flagged by Smatch.
+
 > +
-> +	prefix_len = strlen(prefix);
-> +
-> +	of_property_for_each_string(node, "clock-names", prop, clk_name) {
-> +		if (!strncmp(clk_name, prefix, prefix_len) &&
-> +		    (strlen(clk_name) > prefix_len + 1) &&
-> +		    (clk_name[prefix_len] == '-')) {
-> +			if (sub_clk_cnt >= MAX_SUBSYS_CLKS) {
-> +				dev_err(&pdev->dev,
-> +					"subsys clk out of range %d\n",
-> +					sub_clk_cnt);
-> +				return -EINVAL;
-> +			}
-> +
-> +			clk[sub_clk_cnt] = devm_clk_get(&pdev->dev, clk_name);
-> +
-> +			if (IS_ERR(clk[sub_clk_cnt])) {
-> +				dev_err(&pdev->dev,
-> +					"Subsys clk get fail %ld\n",
-> +					PTR_ERR(clk[sub_clk_cnt]));
-> +				return PTR_ERR(clk[sub_clk_cnt]);
-> +			}
-> +			sub_clk_cnt++;
-> +		}
-> +	}
-> +
-> +	return sub_clk_cnt;
+> +	of_node_put(mdio_np);
+> +	return ret;
 > +}
 
 ...
