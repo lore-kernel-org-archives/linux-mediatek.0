@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1C1ECAC587
-	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Sep 2025 13:16:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEE13CAC594
+	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Sep 2025 13:18:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GRyK0dJ2ElndR7KAasp5HTKgzdQWkMCfJSQ5+TAGHAg=; b=yiWs8dsHvWgDGZlSE643c/Ey8j
-	3M7xt3PpCstNSOOD6zox2QcmlTr0ve743S4ZeMe4pnat9cDYxn6LFuAqT2kulaBB2a/5z2bSOKFe3
-	raa61WhW+4/yJcYbrMo+KsgZVLUchU5tazIr3k6j3+6JtFdDjIxETlhvStjuPU7c6rojmxFu6dCqk
-	wsQM93dewnGLFR3FfJo5QdxGPZzfPRZMImelSQQ3Ma7fUloZJclraNZcstmv80Resjbg6lLXyywRM
-	nXRWlsMN/ONk93xr/0ZvCS8alt32W1W83LGrGg6VW8+r/QOMIKx7HxQc0zSjZLI8fNgeFgeNZ+57g
-	gVa/mIFQ==;
+	bh=hTQkRP5O2du2BB6E+RjRhRD82dR/2wnstj1me/FXLbM=; b=GBneK62Tu0ORPko0mKgw8m8ErH
+	NFxo0QWL2R2sG2Np7Uf6bs+Lrs6TDzHwZLve2do9E+CCoo/BoDcUsxJ+BTXFT0s1/4nmfnooMWsdd
+	n7QENY+HUCRHLKU0i0GORVQLBvPv5FRBiQCCu5/ZibqphXaWnScTx+I/yYQt/fGfhlpU95MaoRRhe
+	AasF0zN1ruNs7gZKr8pQw0gM2C29Dc6BU2e6br9W+Ti7huZr416/vw5t+iU+bJm6uXeMkb+Te16lj
+	7EzkSKNAkNlT1igDFbjYV5E0qUyZVTA+kBmErs06XqcFY1Hn+OMNE/Z7IulAyel7UJzOkPSBe3OJX
+	tc7QXkDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uxmaU-00000001IkS-1D18;
-	Sun, 14 Sep 2025 13:16:14 +0000
+	id 1uxmd4-00000001JKa-08VX;
+	Sun, 14 Sep 2025 13:18:54 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uxmaS-00000001Ijm-0SXG;
-	Sun, 14 Sep 2025 13:16:12 +0000
+	id 1uxmd2-00000001JK7-1yhD;
+	Sun, 14 Sep 2025 13:18:52 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 354DA60191;
-	Sun, 14 Sep 2025 13:16:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 89984C4CEF0;
-	Sun, 14 Sep 2025 13:16:07 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id C62F66019D;
+	Sun, 14 Sep 2025 13:18:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2344CC4CEF0;
+	Sun, 14 Sep 2025 13:18:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1757855770;
-	bh=Qfy7zc1tXyunTXwjXB0ZZi9xv2Y5vexlpBPP06F4wrE=;
+	s=k20201202; t=1757855931;
+	bh=GYQGq8ZRUIg4jPb+ttgHqt1oRMoD7ap6I05Leawf6qc=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=prEH72YobiBueg4ccHs9oN4i7Xr/7EYzW91MR3BSgcqOPxH9K5emOLnsvwu8x39k5
-	 UClHj/X6dROo2n6V+5DTY9X/7xfOT0w565sfN4zpKKGZFcze0mgbUXZ8r0lpaG43Lx
-	 WhCItjCBmfQwakpFmA8zn4eiQtj3fCDcG+PAFipMBWd9fuDHBa7i9Y9Qtf74Y1DzNc
-	 tnRvI31fOyIDOx8JyOgsht1rtzibE+Pt24jbYvG659caY+lvIpd9AGoTrJYYOFQxmw
-	 CIzyg9YpnJYmYC/AnV9GPW6XbVtp2l9P2Qa3gI4B7/38dfkmJTIahQLZFA8+wnaQFt
-	 YUxABonb3UBtw==
-Message-ID: <535478d3-d1ed-4caa-ad15-64f99324f7d6@kernel.org>
-Date: Sun, 14 Sep 2025 15:16:05 +0200
+	b=Pt3L1W63ofLSiHwowu/Dq+jUchLoz6DOmofmYB9eY7v0+hOzDIQvmamz6tWUKQzH0
+	 gnsAwhKXEFlfpUW3YQf9t+Jdlo+FdweW/zc18NpHNdxg9G9AN5y0H0EQUMVaRZEt2H
+	 TuGFrSVebI5Z7dS+YKrbterEPB115f47JCN3h2DmtRUmA9B43UYehCzM4w4v8cfdA/
+	 ph+b4Q6kd2ZCKIXLFcvIumALeXm9MyiU6mlLbWNBxi70a6i6ufGkZm3NIBa7xChorJ
+	 bAqUpkccKy3WBnFS+RNmYHUzjG4YTcbD5tyexIj41+huCdzqWYNrn2Ij30PaF1yCVi
+	 ML+oS1rAeXKJg==
+Message-ID: <c67f60e5-2f3e-48ba-9e3d-97826c7ecae9@kernel.org>
+Date: Sun, 14 Sep 2025 15:18:46 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/4] ASoC: mediatek: Add support of VCP on Mediatek
- mt8196 SoC.
+Subject: Re: [PATCH v2 1/4] dt-bindings: remoteproc: Add VCP support for
+ mt8196
 To: Xiangzhi Tang <xiangzhi.tang@mediatek.com>,
  Bjorn Andersson <andersson@kernel.org>,
  Mathieu Poirier <mathieu.poirier@linaro.org>, Rob Herring <robh@kernel.org>,
@@ -58,6 +58,7 @@ Cc: linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
  linux-mediatek@lists.infradead.org, Jjian Zhou <Jjian.Zhou@mediatek.com>,
  Hailong Fan <Hailong.Fan@mediatek.com>
 References: <20250914122943.10412-1-xiangzhi.tang@mediatek.com>
+ <20250914122943.10412-2-xiangzhi.tang@mediatek.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -103,7 +104,7 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20250914122943.10412-1-xiangzhi.tang@mediatek.com>
+In-Reply-To: <20250914122943.10412-2-xiangzhi.tang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -121,25 +122,77 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 14/09/2025 14:29, Xiangzhi Tang wrote:
-> Add support MediaTek's Video Companion Processor(VCP) host driver to
-> control the MediaTek VCP Risc-V coprocessor.
+> Add the new binding document for MediaTek Video Companion
+> Processor(VCP) on MediaTek mt8196.
 > 
->> This series is based on linux-next, tag: next-20250912.
->>
->> Changes in v2:
->> - Refactor: split vcp driver patch to mult diff
->> - Fix reviewer's comments
+> Signed-off-by: Xiangzhi Tang <xiangzhi.tang@mediatek.com>
+> ---
+>  .../remoteproc/mediatek,mt8196-vcp.yaml       | 165 ++++++++++++++++++
+>  1 file changed, 165 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/remoteproc/mediatek,mt8196-vcp.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/remoteproc/mediatek,mt8196-vcp.yaml b/Documentation/devicetree/bindings/remoteproc/mediatek,mt8196-vcp.yaml
+> new file mode 100644
+> index 000000000000..71a55943843b
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/remoteproc/mediatek,mt8196-vcp.yaml
+> @@ -0,0 +1,165 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/remoteproc/mediatek,mt8196-vcp.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek Video Companion Processor (VCP)
+> +
+> +maintainers:
+> +  - Xiangzhi Tang <Xiangzhi.Tang@mediatek.com>
+> +
+> +description:
+> +  The MediaTek VCP enables the SoC control the MediaTek Video Companion Risc-V coprocessor.
 
-What exactly changed? That's too vague.
+You keep ignoring comments.
 
->> This series patches dependent on:
->> [1]
->> https://patchwork.kernel.org/project/linux-mediatek/patch/20250623120154.109429-2-angelogioacchino.delregno@collabora.com/
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - mediatek,mt8196-vcp
+> +
+> +  reg:
+> +    items:
+> +      - description: sram base
+> +      - description: cfg group IO
+> +      - description: cfg core group IO
+> +      - description: cfg sec group IO
+> +      - description: vcp rdy group IO
+> +
+> +  reg-names:
+> +    items:
+> +      - const: sram
 
-Why? This received clear feedback that needs changes, so why would you
-now send something based on obsolete patchset?
+Why would sram be the first, main address of this device? Not the
+address space responsible for configuring it?
 
+> +      - const: cfg
+> +      - const: cfg_core
+> +      - const: cfg_sec
+> +      - const: vcp_vlp_ao_rsvd7
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  mboxes:
+> +    maxItems: 5
+> +
+> +  mbox-names:
+> +    maxItems: 5
 
+Not much improved, more ignored comments and since the changelog is so
+vague I am afraid you just skimmed through the comments and you just
+ignored many of them.
+
+Implement entire feedback and provide detailed changelog.
 
 Best regards,
 Krzysztof
