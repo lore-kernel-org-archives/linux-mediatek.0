@@ -4,112 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2317CAC594
-	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Sep 2025 13:30:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E8CACAC594
+	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Sep 2025 14:54:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Jw+uVBIPrJy5sAl+f9uwBEmLNEDHd2Aj1tcf41d8LvY=; b=3o0e/0+DaZ5moPQnbGnnpaM5Zp
-	gA6j05HvvVKetcEilTe3NjOyRLwyr2cPgCcLA1m+7XMHp1mTaWzGwpdcx4MxVfdrj2duC79Daa5wM
-	htjGnwX/u9CvdpzCaOau8ewJcQJbFpszs/HSzTf0hiSomOSAsjkI+T+Hx28iI9OqeHhbpFZ/lhF3T
-	l/riFTN4A0N/XeNyV2zjkwgQkVXbScaMTcAEGFNGBYrUzV0va76+cBSK7wVeiX7TIwuekuVOCPPq0
-	I5I3KoaQe2++D6KSGZZUduBI3a0nQbn10JuFQUc43fZY13HB2SZr4S/mH5VI1kfAjM13SdSRsKg3A
-	pNwW4FAA==;
+	bh=+YXCU9hKaIzUAgqUhl6BCoydYmqtrHizvHMjDFu8a+Q=; b=I/w4j3wIWmDU4vMLH8C+Mkpbpx
+	Cs61GrQjO9AdxXQ2l4mPRC8NjOVztVucpYAHSf9s414hUev5g0+VuBITmEhHfJVznvzWQepP2+LWf
+	WehpduYwh5PrhxU18IHMTAranxKF4+UDZPFHtmRC8pU8nOZr78B+XY8m0jXo7NumGSJHFs1QsIQSd
+	Cdb+rAgn882sJogDzus6aPtuGTYXiAAbT1Q1wR4CuL9/QfQGuXGbyTsQz9XTzL8S2wn+H2uQ5hg4O
+	+9tFxNTCL19l2fHsDZXtvx4ahSVSZKqy71zl8VhZlJ220lMLu+PMtRDDwVLB7WgTbWjuV7RMIZQuh
+	ylnPXwiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uxmok-00000001LmI-0Nqn;
-	Sun, 14 Sep 2025 13:30:58 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uxo7s-00000001aPI-1ao9;
+	Sun, 14 Sep 2025 14:54:48 +0000
+Received: from sendmail.purelymail.com ([34.202.193.197])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uxmoh-00000001LlN-2nQ3;
-	Sun, 14 Sep 2025 13:30:56 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 867614066D;
-	Sun, 14 Sep 2025 13:30:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 163C1C4CEF0;
-	Sun, 14 Sep 2025 13:30:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1757856653;
-	bh=znUg6TmwCXJATYx0iPaI3iat1yH0r9iU0Zft+BHEagk=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=baqE8Tmw5jzjbX+OxiuIb1oUVXf+JLqFmB0EsxDO9KwDEJheOQ8Qb84WJlbmTq37f
-	 yOZBsWLQGi4Z4LValk/cUYvjPV4sO170/U0ASG+wy8RFhs2eKDjXeC5fXXinmBj7jq
-	 gnaAEX5bcarDtT3Gy3DtHosPmC1GuObCHhNNqxC4ba2VQkPUKBn31qtaIW3TiH6/dK
-	 wf+6+RqJJeUkBssb12DbPUTJHgmSv0xmaz1F0yfIlZv/JQLRqSNfhvQE03thEaEzls
-	 MI3vvl+ZLhLRYn6upjgqQU6JinUAS8hRL5znZu4MzBne2Tlvvth+5HT76QM149QJxp
-	 2Pjg9klzP9x+A==
-Message-ID: <4ef0e813-310d-4ca7-b946-32d7f436c20b@kernel.org>
-Date: Sun, 14 Sep 2025 15:30:48 +0200
+	id 1uxo7p-00000001aNd-1oaA
+	for linux-mediatek@lists.infradead.org;
+	Sun, 14 Sep 2025 14:54:46 +0000
+Authentication-Results: purelymail.com; auth=pass
+DKIM-Signature: a=rsa-sha256; b=tuK3V7VpvgeuZu7KFl/6V1aGa8dz5I/wWRq7YVMO57vMw/uzWtpOtHDFUT7fMDDoWUKjc3ohi/lN2Anzzbo26kHn4oen1V6By9aJ3+C0v5WvYGnOAgUMHqcKAnx/zXLLybWQVMUhn9f4U4ZJK2Waq9q9oJeCWUqag5T7hUiQolh9fR6InO/91dD7+vGMahzd29VQ7P7ivW8jhurd2VvsGokk3t92TeTW1TD7VTVE5oCkWaNX+snQ+7kdcng6swsEVpCulF/iFoW8OnmEojPPRN90/T0jD2WJtA792gvxdGBnReurPYo7u4Ul2y/GB3zp2aABZZe3iQ0D0naCz40jlQ==; s=purelymail3; d=purelymail.com; v=1; bh=Q7M1qPiBwZ81yv2zjfrhsqb0rQtSNwVod0HJ4zI5fms=; h=Feedback-ID:Received:From:Date:Subject:To;
+Feedback-ID: 68247:10037:null:purelymail
+X-Pm-Original-To: linux-mediatek@lists.infradead.org
+Received: by smtp.purelymail.com (Purelymail SMTP) with ESMTPSA id -1880024390;
+          (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384);
+          Sun, 14 Sep 2025 14:54:33 +0000 (UTC)
+From: Igor Belwon <igor.belwon@mentallysanemainliners.org>
+Date: Sun, 14 Sep 2025 16:52:00 +0200
+Subject: [PATCH v2 2/4] pinctrl: mediatek: Add debounce times for MT6878
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/4] remoterpoc: mediatek: vcp: Add ipi-mbox
- communication
-To: Xiangzhi Tang <xiangzhi.tang@mediatek.com>,
- Bjorn Andersson <andersson@kernel.org>,
- Mathieu Poirier <mathieu.poirier@linaro.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Jjian Zhou <Jjian.Zhou@mediatek.com>,
- Hailong Fan <Hailong.Fan@mediatek.com>
-References: <20250914122943.10412-1-xiangzhi.tang@mediatek.com>
- <20250914122943.10412-4-xiangzhi.tang@mediatek.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <20250914122943.10412-4-xiangzhi.tang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+Message-Id: <20250914-mt6878-pinctrl-support-v2-2-254731aa3fc2@mentallysanemainliners.org>
+References: <20250914-mt6878-pinctrl-support-v2-0-254731aa3fc2@mentallysanemainliners.org>
+In-Reply-To: <20250914-mt6878-pinctrl-support-v2-0-254731aa3fc2@mentallysanemainliners.org>
+To: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Sean Wang <sean.wang@kernel.org>
+Cc: linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Igor Belwon <igor.belwon@mentallysanemainliners.org>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1757861668; l=1534;
+ i=igor.belwon@mentallysanemainliners.org; s=20250908;
+ h=from:subject:message-id; bh=Q7M1qPiBwZ81yv2zjfrhsqb0rQtSNwVod0HJ4zI5fms=;
+ b=chyid+n/OiWfG6Xu5ENOh7AJqaaOJaZgKFZxpx5EbRdy5qhLCb2WiRdLnpEU5WNcQdRry5au8
+ cYpGEy279tbAfCNoPbwt9Rq5sKAJQinRXb0AHdIRAvUi0xExA2HixpM
+X-Developer-Key: i=igor.belwon@mentallysanemainliners.org; a=ed25519;
+ pk=t9Kz6B3jEwJD7YAKcp8XftfEz7SUSlGbrsfFlbrrFwA=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250914_063055_751782_96A8C6C2 
-X-CRM114-Status: GOOD (  12.59  )
+X-CRM114-CacheID: sfid-20250914_075445_549575_736F8420 
+X-CRM114-Status: UNSURE (   9.83  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,59 +79,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 14/09/2025 14:29, Xiangzhi Tang wrote:
->  
-> +/**
-> + * vcp_get_ipidev() - get a vcp ipi device struct to reference vcp ipi.
-> + *
-> + * @vcp: mtk_vcp_device structure from vcp_get().
-> + *
-> + **/
-> +struct mtk_ipi_device *vcp_get_ipidev(struct mtk_vcp_device *vcp)
-> +{
-> +	return vcp->ipi_dev;
-> +}
-> +EXPORT_SYMBOL_GPL(vcp_get_ipidev);
+MT6878 uses different debounce times than other SoCs. Add them to the
+EINT driver.
 
-NAK, there is no user of this.
+Signed-off-by: Igor Belwon <igor.belwon@mentallysanemainliners.org>
+---
+ drivers/pinctrl/mediatek/mtk-eint.c | 5 +++++
+ drivers/pinctrl/mediatek/mtk-eint.h | 1 +
+ 2 files changed, 6 insertions(+)
 
-I did not check the rest but I assume the same pattern in other places.
+diff --git a/drivers/pinctrl/mediatek/mtk-eint.c b/drivers/pinctrl/mediatek/mtk-eint.c
+index 9f175c73613f84b47c0160947f32da7aca7d5a18..c8c5097c11c4d14eb41bdd7f9cb93b4a5756d2b2 100644
+--- a/drivers/pinctrl/mediatek/mtk-eint.c
++++ b/drivers/pinctrl/mediatek/mtk-eint.c
+@@ -66,6 +66,11 @@ const unsigned int debounce_time_mt6795[] = {
+ };
+ EXPORT_SYMBOL_GPL(debounce_time_mt6795);
+ 
++const unsigned int debounce_time_mt6878[] = {
++	156, 313, 625, 1250, 20000, 40000, 80000, 160000, 320000, 640000, 0
++};
++EXPORT_SYMBOL_GPL(debounce_time_mt6878);
++
+ static void __iomem *mtk_eint_get_offset(struct mtk_eint *eint,
+ 					 unsigned int eint_num,
+ 					 unsigned int offset)
+diff --git a/drivers/pinctrl/mediatek/mtk-eint.h b/drivers/pinctrl/mediatek/mtk-eint.h
+index fc31a4c0c77bf28b106943e9292d0dcc425c4922..3cdd6f6310cd0da5aa74623c5f1dbe8f8495d689 100644
+--- a/drivers/pinctrl/mediatek/mtk-eint.h
++++ b/drivers/pinctrl/mediatek/mtk-eint.h
+@@ -52,6 +52,7 @@ struct mtk_eint_pin {
+ extern const unsigned int debounce_time_mt2701[];
+ extern const unsigned int debounce_time_mt6765[];
+ extern const unsigned int debounce_time_mt6795[];
++extern const unsigned int debounce_time_mt6878[];
+ 
+ struct mtk_eint;
+ 
 
-> +
->  static int mtk_vcp_start(struct rproc *rproc)
->  {
->  	struct mtk_vcp_device *vcp = (struct mtk_vcp_device *)rproc->priv;
->  	struct arm_smccc_res res;
-> +	int ret;
-> +
-> +	ret = vcp->ipi_ops->ipi_register(vcp->ipi_dev, IPI_IN_VCP_READY_0,
-> +					 (void *)vcp_A_ready_ipi_handler,
-> +					 vcp, &vcp->vcp_cluster->msg_vcp_ready0);
-> +	if (ret) {
-> +		dev_err(vcp->dev, "Failed to register IPI_IN_VCP_READY_0\n");
-> +		goto vcp0_ready_ipi_unregister;
-> +	}
-> +
-> +	ret = vcp->ipi_ops->ipi_register(vcp->ipi_dev, IPI_IN_VCP_READY_1,
-> +					 (void *)vcp_A_ready_ipi_handler,
-> +					 vcp, &vcp->vcp_cluster->msg_vcp_ready1);
-> +	if (ret) {
-> +		dev_err(vcp->dev, "Failed to register IPI_IN_VCP_READY_1\n");
-> +		goto vcp1_ready_ipi_unregister;
-> +	}
->  
->  	/* core 0 */
->  	arm_smccc_smc(MTK_SIP_TINYSYS_VCP_CONTROL,
-> @@ -82,7 +112,14 @@ static int mtk_vcp_start(struct rproc *rproc)
->  		dev_info(vcp->dev, "bootup successfully\n");
->  	}
->  
-> -	return 0;
-> +	return ret;
+-- 
+2.51.0
 
-This make sno sense, why are you doing this?
-
-
-Best regards,
-Krzysztof
 
