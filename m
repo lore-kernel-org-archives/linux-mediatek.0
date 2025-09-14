@@ -4,61 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEE13CAC594
-	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Sep 2025 13:18:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A01ECAC594
+	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Sep 2025 13:28:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hTQkRP5O2du2BB6E+RjRhRD82dR/2wnstj1me/FXLbM=; b=GBneK62Tu0ORPko0mKgw8m8ErH
-	NFxo0QWL2R2sG2Np7Uf6bs+Lrs6TDzHwZLve2do9E+CCoo/BoDcUsxJ+BTXFT0s1/4nmfnooMWsdd
-	n7QENY+HUCRHLKU0i0GORVQLBvPv5FRBiQCCu5/ZibqphXaWnScTx+I/yYQt/fGfhlpU95MaoRRhe
-	AasF0zN1ruNs7gZKr8pQw0gM2C29Dc6BU2e6br9W+Ti7huZr416/vw5t+iU+bJm6uXeMkb+Te16lj
-	7EzkSKNAkNlT1igDFbjYV5E0qUyZVTA+kBmErs06XqcFY1Hn+OMNE/Z7IulAyel7UJzOkPSBe3OJX
-	tc7QXkDQ==;
+	bh=/CmeOF+K9n+Yda4daR9X4YZ6S7fYQYndSWUv3kSKv0A=; b=jAa0ugZuJtpuhG/1imxuZgjuL7
+	tutTcZjiQvKRLCu5ydy4W1mq6EWHZqqGYNiHTdw6LsGjf7uiaxgGtIq16koaw2dcpTaslTdzSSteB
+	78vpxHeylAGAMRCx7WyJ9l+SdhGZ4NBj6TJniACEPhT/wqH5RaiFD8cFf8kDIAa8FvM3UCvPKr0S3
+	qI8dIPvaJxrPS6Won9nr9iL9EjQrnaZdPfhv9bksFrhzUn9YBABLXPpeKcaAJ/uB9iMhmsXW+6kla
+	y3AGkRvOlLKsGiDV8lT6OiRqFLDi0cI1j+G9ye9Sehy+52opFURVmh7ofSCLvElIKGeRlV9B53GWu
+	jVOV4wpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uxmd4-00000001JKa-08VX;
-	Sun, 14 Sep 2025 13:18:54 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uxmmX-00000001L75-0IPE;
+	Sun, 14 Sep 2025 13:28:41 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uxmd2-00000001JK7-1yhD;
-	Sun, 14 Sep 2025 13:18:52 +0000
+	id 1uxmmU-00000001L63-0BG4;
+	Sun, 14 Sep 2025 13:28:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id C62F66019D;
-	Sun, 14 Sep 2025 13:18:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2344CC4CEF0;
-	Sun, 14 Sep 2025 13:18:47 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 7C0AD40982;
+	Sun, 14 Sep 2025 13:28:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7AB6EC4CEF0;
+	Sun, 14 Sep 2025 13:28:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1757855931;
-	bh=GYQGq8ZRUIg4jPb+ttgHqt1oRMoD7ap6I05Leawf6qc=;
+	s=k20201202; t=1757856516;
+	bh=bi2EiYLS+A8f/w7jCWkTyo4nLGGJbpc175iFxjzkCG8=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Pt3L1W63ofLSiHwowu/Dq+jUchLoz6DOmofmYB9eY7v0+hOzDIQvmamz6tWUKQzH0
-	 gnsAwhKXEFlfpUW3YQf9t+Jdlo+FdweW/zc18NpHNdxg9G9AN5y0H0EQUMVaRZEt2H
-	 TuGFrSVebI5Z7dS+YKrbterEPB115f47JCN3h2DmtRUmA9B43UYehCzM4w4v8cfdA/
-	 ph+b4Q6kd2ZCKIXLFcvIumALeXm9MyiU6mlLbWNBxi70a6i6ufGkZm3NIBa7xChorJ
-	 bAqUpkccKy3WBnFS+RNmYHUzjG4YTcbD5tyexIj41+huCdzqWYNrn2Ij30PaF1yCVi
-	 ML+oS1rAeXKJg==
-Message-ID: <c67f60e5-2f3e-48ba-9e3d-97826c7ecae9@kernel.org>
-Date: Sun, 14 Sep 2025 15:18:46 +0200
+	b=gjjIl8rxHh/A+Rj5iCmVil4FvhlqvxqSjvzIrrX+iGIg5tLPjjBVIembnsVoZvzQp
+	 5be5fGB3/gB+x3bDN63Kka9CVZCQ6zJIc0m1Oyqu/79rd540xp8gPZM0GRF/XhN33K
+	 IBcBrWJ5f40VSBavkO4PuVHxXiSlQSthFe9ZWugpGn0VyifkWMXEh6ijxVx0nu1h3i
+	 +g/KsRkNBX3IeAX+sc6Br/XeFeE4GBTqrBwxipi/OcuN5sQ2ZaaaW2SzzuQJgGSzXu
+	 phUufiwv89X6n0xUsfTqzVCS+LEwnUiocUJaxjhoKDCqor6uE79NB2hxGHex5ljzRb
+	 VW59hY8cxFLYw==
+Message-ID: <8c298465-893a-4a18-9955-4769288ec010@kernel.org>
+Date: Sun, 14 Sep 2025 15:28:29 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/4] dt-bindings: remoteproc: Add VCP support for
- mt8196
+Subject: Re: [PATCH v2 2/4] remoterpoc: mediatek: vcp: Add vcp remoteproc
+ driver
 To: Xiangzhi Tang <xiangzhi.tang@mediatek.com>,
- Bjorn Andersson <andersson@kernel.org>,
- Mathieu Poirier <mathieu.poirier@linaro.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "irving.ch.lin" <irving-ch.lin@mediatek.com>,
+ =?UTF-8?B?VmluY2UtV0wgTGl1ICjlionmlofpvo0p?= <vince-wl.liu@mediatek.com>,
+ =?UTF-8?B?SmggSHN1ICjoqLHluIzlrZwp?= <jh.hsu@mediatek.com>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ =?UTF-8?B?U2lyaXVzIFdhbmcgKOeOi+eak+aYsSk=?= <sirius.wang@mediatek.com>
+Cc: Rob Herring <robh@kernel.org>,
+ Mathieu Poirier <mathieu.poirier@linaro.org>,
+ Bjorn Andersson <andersson@kernel.org>, linux-remoteproc@vger.kernel.org,
+ Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, Jjian Zhou <Jjian.Zhou@mediatek.com>,
  Hailong Fan <Hailong.Fan@mediatek.com>
 References: <20250914122943.10412-1-xiangzhi.tang@mediatek.com>
- <20250914122943.10412-2-xiangzhi.tang@mediatek.com>
+ <20250914122943.10412-3-xiangzhi.tang@mediatek.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -104,9 +111,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20250914122943.10412-2-xiangzhi.tang@mediatek.com>
+In-Reply-To: <20250914122943.10412-3-xiangzhi.tang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250914_062838_136928_D3B0B081 
+X-CRM114-Status: GOOD (  12.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,77 +132,112 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 14/09/2025 14:29, Xiangzhi Tang wrote:
-> Add the new binding document for MediaTek Video Companion
-> Processor(VCP) on MediaTek mt8196.
-> 
-> Signed-off-by: Xiangzhi Tang <xiangzhi.tang@mediatek.com>
-> ---
->  .../remoteproc/mediatek,mt8196-vcp.yaml       | 165 ++++++++++++++++++
->  1 file changed, 165 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/remoteproc/mediatek,mt8196-vcp.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/remoteproc/mediatek,mt8196-vcp.yaml b/Documentation/devicetree/bindings/remoteproc/mediatek,mt8196-vcp.yaml
-> new file mode 100644
-> index 000000000000..71a55943843b
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/remoteproc/mediatek,mt8196-vcp.yaml
-> @@ -0,0 +1,165 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/remoteproc/mediatek,mt8196-vcp.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
 > +
-> +title: MediaTek Video Companion Processor (VCP)
+> +static const struct rproc_ops mtk_vcp_ops = {
+> +	.load		= mtk_vcp_load,
+> +	.start		= mtk_vcp_start,
+> +	.stop		= mtk_vcp_stop,
+> +};
 > +
-> +maintainers:
-> +  - Xiangzhi Tang <Xiangzhi.Tang@mediatek.com>
+> +static int vcp_multi_core_init(struct platform_device *pdev,
+> +			       struct mtk_vcp_of_cluster *vcp_cluster,
+> +			       enum vcp_core_id core_id)
+> +{
+> +	int ret;
 > +
-> +description:
-> +  The MediaTek VCP enables the SoC control the MediaTek Video Companion Risc-V coprocessor.
+> +	ret = of_property_read_u32(pdev->dev.of_node, "mtk,vcp-core-twohart",
+> +				   &vcp_cluster->twohart[core_id]);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "failed to twohart property\n");
+> +		return ret;
+> +	}
+> +	ret = of_property_read_u32(pdev->dev.of_node, "mtk,core-sram-offset",
 
-You keep ignoring comments.
+Undocumented ABI, if you ever bothered to test your DTS you would see
+clear warning.
 
+> +				   &vcp_cluster->sram_offset[core_id]);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "failed to sram-offset property\n");
+> +		return ret;
+> +	}
 > +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - mediatek,mt8196-vcp
+> +	return ret;
+> +}
 > +
-> +  reg:
-> +    items:
-> +      - description: sram base
-> +      - description: cfg group IO
-> +      - description: cfg core group IO
-> +      - description: cfg sec group IO
-> +      - description: vcp rdy group IO
+> +static struct mtk_vcp_device *vcp_rproc_init(struct platform_device *pdev,
+> +					     struct mtk_vcp_of_cluster *vcp_cluster)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct device_node *np = dev_of_node(dev);
+> +	struct device_node *child;
+> +	struct platform_device *cpdev;
+> +	struct mtk_vcp_device *vcp;
+> +	struct rproc *rproc;
+> +	const struct mtk_vcp_of_data *vcp_of_data;
+> +	u32 core_id;
+> +	int ret;
 > +
-> +  reg-names:
-> +    items:
-> +      - const: sram
+> +	vcp_of_data = of_device_get_match_data(dev);
+> +	rproc = devm_rproc_alloc(dev, np->name, &mtk_vcp_ops,
+> +				 vcp_of_data->platdata.fw_name,
+> +				 sizeof(struct mtk_vcp_device));
+> +	if (!rproc) {
+> +		dev_err(dev, "unable to allocate remoteproc\n");
 
-Why would sram be the first, main address of this device? Not the
-address space responsible for configuring it?
+No, you never do this.
 
-> +      - const: cfg
-> +      - const: cfg_core
-> +      - const: cfg_sec
-> +      - const: vcp_vlp_ao_rsvd7
+> +		return ERR_PTR(-ENOMEM);
+> +	}
 > +
-> +  interrupts:
-> +    maxItems: 1
+> +	vcp  = rproc->priv;
+> +	vcp->rproc = rproc;
+> +	vcp->pdev = pdev;
+> +	vcp->dev = dev;
+> +	vcp->ops = &vcp_of_data->ops;
+> +	vcp->platdata = &vcp_of_data->platdata;
+> +	vcp->vcp_cluster = vcp_cluster;
 > +
-> +  mboxes:
-> +    maxItems: 5
+> +	rproc->auto_boot = vcp_of_data->platdata.auto_boot;
+> +	rproc->sysfs_read_only = vcp_of_data->platdata.sysfs_read_only;
+> +	mutex_init(&vcp->vcp_cluster->vcp_feature_mutex);
+> +	mutex_init(&vcp->vcp_cluster->vcp_pw_clk_mutex);
+> +	platform_set_drvdata(pdev, vcp);
 > +
-> +  mbox-names:
-> +    maxItems: 5
+> +	ret = vcp_reserve_memory_ioremap(vcp);
+> +	if (ret) {
+> +		dev_err(dev, "vcp_reserve_memory_ioremap failed ret = %d\n", ret);
+> +		return ERR_PTR(ret);
+> +	}
+> +
+> +	core_id = 0;
+> +	for_each_available_child_of_node(np, child) {
+> +		if (of_device_is_compatible(child, "mediatek,vcp-core")) {
+> +			cpdev = of_find_device_by_node(child);
+> +			if (!cpdev) {
+> +				ret = -ENODEV;
+> +				dev_err(dev, "Not found platform device for core\n");
 
-Not much improved, more ignored comments and since the changelog is so
-vague I am afraid you just skimmed through the comments and you just
-ignored many of them.
+1. That's probe path, so why are you using this old style? The syntax is
+return dev_err_probe and I am dissapointed that your internal review did
+not ask for that.
 
-Implement entire feedback and provide detailed changelog.
+2. You just leak here everywhere device.
+
+This patchset has trivial errors, which should be spotted easily by
+internal review. Plus your other patch ignored EXITING feedback, so what
+is even point of posting this if you are just going to ignore us?
+
+Please confirm that you received extensive internal review before
+posting this?
+
+Mediatek posts so many patches, I complained so many times about poor
+quality, things a bit improved two years ago and for a year the quality
+deteriorated and Mediatek posts poor code again. It's huge company with
+huge resources, so I do not understand why trivial bugs like this cannot
+be found inside first, to offload the community reviewers.
+
+NAK
 
 Best regards,
 Krzysztof
