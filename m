@@ -4,79 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31C29CAC597
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Sep 2025 11:00:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80B7ACAC597
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Sep 2025 12:10:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PU1UrHsYj15lKzwzTaouEr8OqAOGkZeEyY6ymtEfJL0=; b=dLEx/+byHH/Sa57hwIdXsWue5C
-	Q2e+LtDCYQrd5EjfLewmnO9uDSvufOiAl59V3uqazgrUPiMBuO4JlG5pn+pYyA4mPKazHt2t+xxiF
-	PHEfUa8quLTF7Rpypk4EW4px78LiFlnOS1OTiIZq1d8mmE5pXBkO+JP5oh6+XcUfvttc5vVJ98Eii
-	BF+l22hAWzbIY0EDFyHcFQGgygkLaZlXSmbzqFPnp4LYwZQtOwrGZzeAWiQPbkjVuqcyS2RF9gVLw
-	vzoKT3ObxtNPzSnJ1A4R/ON3xfhghnSOLMlq+5EkZTstEKq65tB3/KLqT7RC5mqhEPRcnzsaYM5VP
-	gcVJ08JQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=uXYipikAORq7rmSiXBAcddF/TDyI+Ck/jJ3ssPKAKWY=; b=U/lRXRRhTk5gX0pxubkWaL5dR6
+	pfeVjdGHBq0tcoAeHaOMz5JO0uEHhZClkF6VZ2b1/ssmr2YITtY0Ybjz6xfFM3bzYEr2vq1l+Hogl
+	BZRQ1LX3VvErBxPpNeNcHnt/Pk5PE9DMlT6zfTcmXovSU9S1lbxbmwZ8jO0TI34xa8Gb3OSY+pUxo
+	Vk//DvEGcI5P/yyE4g7t88ABfD6hvj+C3NkT5FJAXpkOLcsRISQsby8XfrxzXurAH9DOb37DpK65B
+	YerJy3UNCJSkJRAQwe3PLU1plkE2yoDH0SAadvfwz9ZSebfQfARlTv5hiIH1cBxAwMTCNyrjr17gJ
+	mTRptukQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uy6wM-00000003omy-3FVr;
-	Mon, 15 Sep 2025 11:00:10 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1uy82A-000000044lG-1urX;
+	Mon, 15 Sep 2025 12:10:14 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uy6wJ-00000003olA-3ZfG;
-	Mon, 15 Sep 2025 11:00:09 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2F50C4173D;
-	Mon, 15 Sep 2025 11:00:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B2497C4CEF7;
-	Mon, 15 Sep 2025 11:00:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1757934007;
-	bh=PerGZdKHuMGnY9aDIA1/uc0lypV/nccNhLa+jYy3h44=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=CKj7OZ+iabb40dJ6272w4HO91BTJ7gyrHEgVNYSCzys9bsDy8XfW1Hl6NXIc3fz1l
-	 9wq+oIghMgkNTzqc6xk04OIgvPgKUpOn+7rJcTlR+yqqYVV3jvbyzj/99IRJIwGkaN
-	 snmbbap/HvfDKyAGKTCXn0ncjPExex0PTx3EI/Q0CMT6//P5yXECHBYZIEavvlVyjd
-	 nDa1aWqX5kpsViJc8siV3AJ1O4waANIXmHXmrygu/Zajap/uqmROSSGIVsbIqHc4Fa
-	 76dAylXvHlOkpuBS/jk/904PqZ1FVwmrq7A1ElRIHDIOcoTsVl/VC38PD0nUJGDJvG
-	 65OAXMrzvpjZw==
-Date: Mon, 15 Sep 2025 12:00:00 +0100
-From: Simon Horman <horms@kernel.org>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	"Chester A. Unal" <chester.a.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	id 1uy828-000000044kl-0mni;
+	Mon, 15 Sep 2025 12:10:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=uXYipikAORq7rmSiXBAcddF/TDyI+Ck/jJ3ssPKAKWY=; b=IY5jgLbFVA/c0E6/l03Uz1V/i2
+	409PH3s0/9oQrEZVWdbNsSrrdQTa+LJdqa+U+TPh6Z1M2EXPPZsJBibQzaVhEu8NgDgvEIvtfSKcR
+	VyYyTML5/oeyxrFrcQ1xE+HTF34FIQQuAqpeVvffzmwizU5a0JXXxZbmKVNP28b7EDF4WL3ZozMCk
+	aVr2GopTBdIVe1a6ck9P/yhEV2T6RF7ND8vSveEp+QgBsTE5BMyBPdfw3lcmWQ2JMw3nM7G2KBFm2
+	zhl//liT+6lMLLSR4bm/gt46LHRMQ3QzjZZGQaCikSyHiGMDVI8XXuQ66xM9HQCy3OpOx7+f0bRwh
+	IpHxEUmg==;
+Received: from m16.mail.163.com ([117.135.210.5])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uy824-00000006yHu-1rLW;
+	Mon, 15 Sep 2025 12:10:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=uX
+	YipikAORq7rmSiXBAcddF/TDyI+Ck/jJ3ssPKAKWY=; b=EEBeOIh/Oflc6xA5cO
+	8ewa4chJ9vmkDiAP0WKltbkUE51T+ydUcJOSThGB7wYBC3BGFDNj3cmMSDBBI24M
+	K6YVLH18A0lDwF3Lk62/HSo6S16spdoIdjuY+AhMUJaQ3cJJhWS0MEXVRgJODkTO
+	N/KpT3GlRi7SB86gO4ylZNVW4=
+Received: from localhost.localdomain (unknown [])
+	by gzga-smtp-mtada-g0-3 (Coremail) with SMTP id _____wD3L8IEAshoNuutBQ--.65473S4;
+	Mon, 15 Sep 2025 20:09:41 +0800 (CST)
+From: Haoxiang Li <haoxiang_li2024@163.com>
+To: tiffany.lin@mediatek.com,
+	andrew-ct.chen@mediatek.com,
+	yunfei.dong@mediatek.com,
+	mchehab@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	haoxiang_li2024@163.com,
+	hverkuil@kernel.org,
+	tzungbi@kernel.org,
+	jiasheng@iscas.ac.cn
+Cc: linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [net-next PATCH v17 6/8] mfd: an8855: Add support for Airoha
- AN8855 Switch MFD
-Message-ID: <20250915110000.GS224143@horms.kernel.org>
-References: <20250911133929.30874-1-ansuelsmth@gmail.com>
- <20250911133929.30874-7-ansuelsmth@gmail.com>
- <20250913130137.GL224143@horms.kernel.org>
- <68c56bea.050a0220.a9dbf.b7c8@mx.google.com>
+	linux-mediatek@lists.infradead.org,
+	stable@vger.kernel.org
+Subject: [PATCH] media: mediatek: vcodec: Fix a reference leak in mtk_vcodec_fw_vpu_init()
+Date: Mon, 15 Sep 2025 20:09:38 +0800
+Message-Id: <20250915120938.177691-1-haoxiang_li2024@163.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <68c56bea.050a0220.a9dbf.b7c8@mx.google.com>
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: _____wD3L8IEAshoNuutBQ--.65473S4
+X-Coremail-Antispam: 1Uf129KBjvJXoW7Ww1rWr4DKw4rAFWUGFWfXwb_yoW8GF4Dpr
+	s3Ka42kFyUJw1qvw18Zw4Uuay5Cr1SgrW8Cw13Zw1a9rnxXFWIqr1jy3WIqFZ7JFyvka43
+	Xrnaga4fCF4Fvr7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0p_MKuUUUUUU=
+X-Originating-IP: [36.112.3.223]
+X-CM-SenderInfo: xkdr5xpdqjszblsqjki6rwjhhfrp/xtbBEAnJbmjIAYMTQwAAsM
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250915_040007_930874_FA336C3F 
-X-CRM114-Status: GOOD (  24.80  )
+X-CRM114-CacheID: sfid-20250915_131009_072273_ED6DA489 
+X-CRM114-Status: UNSURE (   9.83  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,73 +96,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Sep 13, 2025 at 03:04:40PM +0200, Christian Marangi wrote:
-> On Sat, Sep 13, 2025 at 02:01:37PM +0100, Simon Horman wrote:
-> > On Thu, Sep 11, 2025 at 03:39:21PM +0200, Christian Marangi wrote:
-> > > Add support for Airoha AN8855 Switch MFD that provide support for a DSA
-> > > switch and a NVMEM provider.
-> > > 
-> > > Also make use of the mdio-regmap driver and register a regmap for each
-> > > internal PHY of the switch.
-> > > This is needed to handle the double usage of the PHYs as both PHY and
-> > > Switch accessor.
-> > > 
-> > > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> > 
-> > ...
-> > 
-> > > diff --git a/drivers/mfd/airoha-an8855.c b/drivers/mfd/airoha-an8855.c
-> > 
-> > ...
-> > 
-> > > +static int an855_mdio_register(struct device *dev, struct an8855_core_priv *priv)
-> > > +{
-> > > +	struct device_node *mdio_np;
-> > > +	int ret;
-> > > +
-> > > +	mdio_np = of_get_child_by_name(dev->of_node, "mdio");
-> > > +	if (!mdio_np)
-> > > +		return -ENODEV;
-> > > +
-> > > +	for_each_available_child_of_node_scoped(mdio_np, phy_np) {
-> > > +		ret = an8855_phy_register(dev, priv, phy_np);
-> > > +		if (ret)
-> > > +			break;
-> > > +	}
-> > 
-> > Hi Christian,
-> > 
-> > Maybe it cannot happen, but if the loop above iterates zero times,
-> > then ret will be used uninitialised below.
-> > 
-> > Flagged by Smatch.
-> >
-> 
-> Do you have hint of how to run smatch on this? Is there a simple arg to
-> make to enable this?
+vpu_get_plat_device() increases the reference count of the returned
+platform device. However, when devm_kzalloc() fails, the reference
+is not released, causing a reference leak.
 
-Perhaps not so simple, but also not so difficult.
+Fix this by calling put_device() on fw_pdev->dev before returning
+on the error path.
 
-1. Checkout Smatch from and compile
+Fixes: e25a89f743b1 ("media: mtk-vcodec: potential dereference of null pointer")
+Cc: stable@vger.kernel.org
+Signed-off-by: Haoxiang Li <haoxiang_li2024@163.com>
+---
+ .../media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-   Smatch can be found in Git here:
-   https://github.com/error27/smatch/commits/master/
+diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
+index d7027d600208..1c94316f2d7d 100644
+--- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
++++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
+@@ -117,8 +117,10 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_vpu_init(void *priv, enum mtk_vcodec_fw_use
+ 		vpu_wdt_reg_handler(fw_pdev, mtk_vcodec_vpu_reset_enc_handler, priv, rst_id);
+ 
+ 	fw = devm_kzalloc(&plat_dev->dev, sizeof(*fw), GFP_KERNEL);
+-	if (!fw)
++	if (!fw) {
++		put_device(&fw_pdev->dev);
+ 		return ERR_PTR(-ENOMEM);
++	}
+ 	fw->type = VPU;
+ 	fw->ops = &mtk_vcodec_vpu_msg;
+ 	fw->pdev = fw_pdev;
+-- 
+2.25.1
 
-2. Prepare kernel
-
-   e.g. make allmodconfig
-
-3. Run Smatch
-
-   PATH="$PATH:.../smatch/bin" \
-   .../smatch/smatch_scripts/kchecker drivers/mfd/airoha-an8855.o
-   [ snip ]
-   drivers/mfd/airoha-an8855.c:439 an855_mdio_register() error: uninitialized symbol 'ret'.
-
-> Anyway yes it goes against schema but it's possible somehow to have a
-> very broken DT node with no phy in it.
-
-Understood, thanks.
-
-...
 
