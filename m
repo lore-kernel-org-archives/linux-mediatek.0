@@ -4,51 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1198CCAC598
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Sep 2025 10:40:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 914ACCAC597
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Sep 2025 10:40:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BVWWdaHQZD1GZEwaJHMAjd283K7L+qVAUwqsc04oUxU=; b=36E3If63Cew2pamUUQ2WTqhZy3
-	oNSIz5KooMSoxPdg0hWlvWgsLGRsIwD2Sf14FoUn0C/mOWRPzl+bN2ImA0Cz26Wh8VyUIuqIi4lyW
-	5CvmpYywEKcgQnAfIF1fVXCUt+bRw7K0Cr7AWpDF6lJx+6Lrq7aPO5N7VutrHn777FSvyX6mA23bo
-	cBDDtVsJmSAHRqSC2afjNf8cJgReaI9YoYN8DG8X/Bd/EnK4xzdQz+JaRTuks6mAkHd72TPRexgjp
-	hSCkM7IgAp/XDYWQpiIhhFP04T6B5FeCyNsxGwvTv2w+ay/veK515UNrvfBh0sfdXlbzPHRmudZRi
-	3m4yFEhQ==;
+	bh=e1VwtKEC2ucVYZQDTrMUe+OtzpvSytfrEX3m17OWJr0=; b=xMtfXboxPjnQ3s9iD6snh2KRMq
+	KKiKzjfDv2y+0QaJ4UttPDR+7eyGu48sLD27FISE/+obUuxVb6ooqMO+MgsYUy+O07ZpF4zzqv8Xt
+	jfth77cVCD9lCLrguHFsRbgDTWzzbZQuAlEVEyhLzJ3BQmmYVKgG8x+c+CpM3a4B3CQMc4Y5LGRpD
+	F4re4UrRXP+7VZ27GeLo5Bs2FLS174teBL3xMkmTG4TMHhU4eRuvTL5WpCGeRWwvepHmL91pQYPKi
+	e3bxjAPIUMm+50hQuvMau5qVB9jSQZtC+KEadLGc0xHllUXSaUt4LGnw7xRziUDi6VSS2hr0mmmcH
+	JFI/Lvuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uy6cx-00000003j4K-13E0;
-	Mon, 15 Sep 2025 10:40:07 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uy6d0-00000003j6p-3O26;
+	Mon, 15 Sep 2025 10:40:10 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uy6cs-00000003j2O-3cwm;
-	Mon, 15 Sep 2025 10:40:05 +0000
+	id 1uy6cx-00000003j3o-1VCJ;
+	Mon, 15 Sep 2025 10:40:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=e1VwtKEC2ucVYZQDTrMUe+OtzpvSytfrEX3m17OWJr0=; b=qsu4opfh2hqvsEfC9i1qfdfke8
+	psPbeK//8s5mr75ib1EiBio260IfktgAD6J/v5vc3KoDnwuChAGFXF2J/7aNTDEO4Rr3JwioFnG4u
+	J67js9opFuUqRyDsWUWYBQGE9mvyYG9YMP5L7Tekx5Euox/I9sVzAtpslS8m6tJ07pBTNZTCSNvk+
+	PuGibM09mI+xoUH5SBz62LVckWPxr165EMJgXXo+tJWU86qtLOcRV49qoEeLDi3eQn7nN0sB08eXA
+	/9DNRnpeBQlrs5RMD/P9e7yWPZDvYL9Xe7pQlCR1Dz7k1Jw8PdDmi8Lkvbpuu5/JCThpUuDb4acll
+	fplYu/rw==;
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uy6cu-00000006w17-2ZRn;
+	Mon, 15 Sep 2025 10:40:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1757932800;
-	bh=Fy7uV+xkKUqBG1sU/IFfs8aiKJMJZwNs+dD346+mO5E=;
+	s=mail; t=1757932802;
+	bh=G6EVvvNEzreTlsg/p16Kyhu0f2y/0NPsX+/zSolT7uY=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=dYbuRPRFty00+ZkInmrSFyikBi9+lWNWRUO6hIzykWy4TKhnA06qzfvj0RVmttS8t
-	 MlwK2KMSkTTqxN+avBqSltBR56NI5BHE4UCfplyNQCy9QMAPhF+6mpeLcIWumRyRkg
-	 wOYkfj+m44m9QRFY1IAiNggkN3oKCzpk9aPdxdxX4iASJe7Qo9ydMuN/6/gO7yKgFn
-	 i7AqTEs5Zi0T7l8VLs06Z1lxSWxWNDTbj/s05TI6DaBH8RU9tFNXMf0C1M3CVF3lsK
-	 4YmugPoPbpAra88iuqbWD4NhInwxpwrsVJWJrJwQvJ5C/I48mQFI1hubyhDNvd5o8A
-	 92Iw/50xpR7SQ==
+	b=k/zjAc72mAxKepfc3Mr5oy2O21Hmv9B0aglKIwhA+tcvE4b0cC75+N6BzHCIYA3XS
+	 dN5d0fVaE19xF2Mm+spmoE7zHtg0fLt1mh3dQ0uMk5478v6MsPV8zu3bCz8tqPm6mg
+	 pkwn6pqplc7CosKkjqAe9xeIIDa024Dh8PzC+cmf6UAQDgUcFx10w669UZ2VM4GNmi
+	 8XTJeECxzrNmNmHb10PEjPmC3zrYstGlqoj0jFW4vvHdlu26K3vnV1pCWlJfQu9uXb
+	 xmdeiBmAvtvfmmsPUJb5FlWcyp7Xto9tIPZPagE4DgtJopyvFnmNm0gLuecT/Ld8o6
+	 Rzss4TO5hOWrg==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id F0B4917E107A;
-	Mon, 15 Sep 2025 12:39:59 +0200 (CEST)
-Message-ID: <9d0c1fe8-07eb-444c-8bd5-867f1f366188@collabora.com>
-Date: Mon, 15 Sep 2025 12:39:59 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id CB6DB17E1091;
+	Mon, 15 Sep 2025 12:40:01 +0200 (CEST)
+Message-ID: <29861f71-82ab-4fe9-947c-45d9b6e4b1d8@collabora.com>
+Date: Mon, 15 Sep 2025 12:40:01 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 8/8] media: mediatek: encoder: Add MT8189 encoder
- compatible data
+Subject: Re: [PATCH v3 7/8] dt-bindings: media: Add MT8189
+ mediatek,vcodec-encoder
 To: Kyrie Wu <kyrie.wu@mediatek.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
  Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
  Yunfei Dong <yunfei.dong@mediatek.com>,
@@ -65,17 +79,18 @@ To: Kyrie Wu <kyrie.wu@mediatek.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
 Cc: Neil Armstrong <neil.armstrong@linaro.org>,
- Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>
+ Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 References: <20250915091958.31509-1-kyrie.wu@mediatek.com>
- <20250915091958.31509-9-kyrie.wu@mediatek.com>
+ <20250915091958.31509-8-kyrie.wu@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250915091958.31509-9-kyrie.wu@mediatek.com>
+In-Reply-To: <20250915091958.31509-8-kyrie.wu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250915_034003_064214_51D7E8A0 
-X-CRM114-Status: UNSURE (   6.23  )
+X-CRM114-CacheID: sfid-20250915_114004_838250_7AEB4424 
+X-CRM114-Status: UNSURE (   8.55  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,9 +107,16 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 15/09/25 11:19, Kyrie Wu ha scritto:
-> add compatible data to support MT8189 encoding.
+> Add MT8189 encoder compatible string to distinguish former ICs
+> MTK's. Compared with MT8196, the maximum resolution of MT8189
+> encoder is only 4K, and the fps is only 30, which cannot reach
+> the highest parameter of MT8196: level6.2, 8K@60fps.
+> Compared with MT8188, the level can only support 5.1, which is less
+> than 5.2 of MT8188. But the maximum bitrate is 100Mbps, which is twice
+> that of MT8188. And MT8189 could support NBM mode.
 > 
 > Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
