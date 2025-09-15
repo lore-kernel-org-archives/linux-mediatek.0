@@ -4,67 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 028E6CAC592
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Sep 2025 12:48:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05D95CAC597
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Sep 2025 12:53:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/ly3pZAnmAFnHnFkAC2qd/+Em0AEoF7hodNZyEgQ+Rs=; b=xnrhsucE8KdvZ4ayuTAuLJRCbL
-	CAPHcMEyFjNo+I5yDe/E6qTSmWXtXELAA+XzNzCXXtGASuvi1zqWHRuMDi/M34TZMM3CiX/HDqVtc
-	0tMD3UWPiBI3GOL6bQerKY10LhGPtNt1DuFC0MbE9g1LysGP/Jsk4ECYeyIUhzCWHKMs3axiDK0FF
-	sIyIdTgoQS9wRbtJK85zOh/45a3+jfoX1DNfq4fWaTUdEMZ7xmQINkI74IY7V2QvYpHN+TXy3ghQQ
-	ebO7SGvqWkgpuxWIyoGXJGB6AF2b+hLnZlQZajtXvGQKXHx25g34dyhtfmcHgREsZQRip0qO8bVsh
-	DYlAJr4g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=fmf0OIsGMiE8P3J1F3N/Fn2ucYiqGWZO/N1K1kd83tw=; b=xzqs3Xci/6PxRgondvK2gIsKkO
+	P46fIIptMSPYB9mKNvmPF6qflL6F92yZ7qFIrK24JlxuaLmj85HpPxpbi2uUMghmnMg1lx5/nSCyh
+	+5OzSZXi4Vl/HBrw9n6NqQ974jxEcN4bvbXpZm9FaFLpVKswXF4sQzgugGUZuHvmkx0RyyBue/8aN
+	C4rkA2zOp9UvsrhGX8WTcb7nSMlWBmOUCFV4Ine2Dxy9dMIuTwxZV6Wzxw4v8sP9jmxWwGJyYYe7k
+	mYVvr/jt0XQG9BGd5+x9igiHm5R4s2ll5nujsQVwTEl/Lh2/Z79BOBqg5chmKSOCTxp6l61J1dDuI
+	qpzvLVzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uy8dH-00000004Ci0-0rJu;
-	Mon, 15 Sep 2025 12:48:35 +0000
-Received: from sendmail.purelymail.com ([34.202.193.197])
+	id 1uy8i7-00000004DEa-0io6;
+	Mon, 15 Sep 2025 12:53:35 +0000
+Received: from m16.mail.163.com ([220.197.31.2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uy8dF-00000004Cgb-0Rbo
-	for linux-mediatek@lists.infradead.org;
-	Mon, 15 Sep 2025 12:48:34 +0000
-Authentication-Results: purelymail.com; auth=pass
-DKIM-Signature: a=rsa-sha256; b=w508YE6uho32x7yE7/EJBlz8koT3SVa2CC+66Zgn5IwpQmySNfUD2ZfJwbFBkxQM8/C6rdlzbZwO4os4rYCikmo9NK5VnEg7aTqIToCZavahpCkVbfsEgomtNbKeeyX49mKmj1V5lfd8C2XHtAk4olDP3/zkM+iBBBk/CieHxETjcRZgjP0ojIBpT9CTfa8Fl0LYABIqmHmBnVdRQZ9c5WU7Amvn5725/7hAbIYe75uiIMSJ2k7zeXMMqNW+T/dGXb9vYjG3abowl/xUmY9S7Bg4ycXL3KEB2pymwAr5xKvrN11a2Rm2V3WMViQaFWwk1Iu1FuRo/5N23ppWHlAV/Q==; s=purelymail3; d=purelymail.com; v=1; bh=irm5rOzkMCBKy8afw3JexKMiBbgIOkVmWCMIQ2l0hUY=; h=Feedback-ID:Received:From:Date:Subject:To;
-Feedback-ID: 68247:10037:null:purelymail
-X-Pm-Original-To: linux-mediatek@lists.infradead.org
-Received: by smtp.purelymail.com (Purelymail SMTP) with ESMTPSA id 1506483826;
-          (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384);
-          Mon, 15 Sep 2025 12:46:29 +0000 (UTC)
-From: Igor Belwon <igor.belwon@mentallysanemainliners.org>
-Date: Mon, 15 Sep 2025 14:46:23 +0200
-Subject: [PATCH v3 1/4] dt-bindings: pinctrl: mediatek: Document MT6878 pin
- controller bindings
+	id 1uy8i4-00000004DCz-0Cpo;
+	Mon, 15 Sep 2025 12:53:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=fm
+	f0OIsGMiE8P3J1F3N/Fn2ucYiqGWZO/N1K1kd83tw=; b=QQbqExzp1A7pb9QAsX
+	IpzD3pqilcPrF125S81aF2DegBmtDgZM+rCIkBlYjExAMpOt3Ky2GkedRs2Kq8s8
+	k76g0Ltwfdo9EiT4qlMaaFg+E4z+KTUzWJ/6gjr9Rc9pq0HBdL3Pjt1SeKuYEtIa
+	IK02Cowx4OULX2ALe26hu2nKw=
+Received: from localhost.localdomain (unknown [])
+	by gzsmtp1 (Coremail) with SMTP id PCgvCgCHOtEhDMhoJPeJCw--.8722S4;
+	Mon, 15 Sep 2025 20:52:51 +0800 (CST)
+From: Haoxiang Li <haoxiang_li2024@163.com>
+To: minghsiu.tsai@mediatek.com,
+	houlong.wei@mediatek.com,
+	andrew-ct.chen@mediatek.com,
+	mchehab@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	hverkuil@kernel.org,
+	eballetbo@kernel.org,
+	eizan@chromium.org
+Cc: linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Haoxiang Li <haoxiang_li2024@163.com>,
+	stable@vger.kernel.org
+Subject: [PATCH] media: mtk-mdp: Fix a reference leak in mtk_mdp_probe()
+Date: Mon, 15 Sep 2025 20:52:48 +0800
+Message-Id: <20250915125248.181608-1-haoxiang_li2024@163.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250915-mt6878-pinctrl-support-v3-1-593cc007d4cf@mentallysanemainliners.org>
-References: <20250915-mt6878-pinctrl-support-v3-0-593cc007d4cf@mentallysanemainliners.org>
-In-Reply-To: <20250915-mt6878-pinctrl-support-v3-0-593cc007d4cf@mentallysanemainliners.org>
-To: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Sean Wang <sean.wang@kernel.org>
-Cc: linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- Igor Belwon <igor.belwon@mentallysanemainliners.org>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1757940385; l=7159;
- i=igor.belwon@mentallysanemainliners.org; s=20250908;
- h=from:subject:message-id; bh=irm5rOzkMCBKy8afw3JexKMiBbgIOkVmWCMIQ2l0hUY=;
- b=kY5stO3TWCNOuMxLH3HOmWHosNYVTrd6ojPgwbhL4T3EnOKSMWAi11YFYNfSdBNc4j6tnRBwR
- saLN2TsUfLAC6fOtbKa39jJjOjYmxXQ4zXkQPqg/yU5KLOo9ckiVQIU
-X-Developer-Key: i=igor.belwon@mentallysanemainliners.org; a=ed25519;
- pk=t9Kz6B3jEwJD7YAKcp8XftfEz7SUSlGbrsfFlbrrFwA=
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: PCgvCgCHOtEhDMhoJPeJCw--.8722S4
+X-Coremail-Antispam: 1Uf129KBjvJXoW7Ww15tryfJry8Jr1UtrWfGrg_yoW8Wr1rpF
+	WDWayFkrWUuF4jgr4UGa1UZa45Aw1S9w48Wa1xAw4xu345WrWDJr10qFyIqrW8JF97Ca43
+	Jr1IqFWxuFWrZF7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0p_MKuUUUUUU=
+X-Originating-IP: [36.112.3.223]
+X-CM-SenderInfo: xkdr5xpdqjszblsqjki6rwjhhfrp/1tbiMwLJbmjIBhvCbwAAsG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250915_054833_217054_C6A7A647 
-X-CRM114-Status: GOOD (  14.18  )
+X-CRM114-CacheID: sfid-20250915_055332_405119_5FFE0EB3 
+X-CRM114-Status: UNSURE (   9.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,233 +82,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add device-tree bindings for the pin controller and the EINT controller
-found in the MediaTek MT6878 SoC.
+vpu_get_plat_device() increases the reference count of the returned
+platform device. Add platform_device_put() to prevent reference leak.
 
-Signed-off-by: Igor Belwon <igor.belwon@mentallysanemainliners.org>
+Fixes: ee18fc7b0b95 ("media: mtk-mdp: handle vpu_wdt_reg_handler() errors during probe")
+Cc: stable@vger.kernel.org
+Signed-off-by: Haoxiang Li <haoxiang_li2024@163.com>
 ---
- .../bindings/pinctrl/mediatek,mt6878-pinctrl.yaml  | 211 +++++++++++++++++++++
- 1 file changed, 211 insertions(+)
+ drivers/media/platform/mediatek/mdp/mtk_mdp_core.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6878-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6878-pinctrl.yaml
-new file mode 100644
-index 0000000000000000000000000000000000000000..8d44194a79389663de339a422dea7b68d8a060e2
---- /dev/null
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6878-pinctrl.yaml
-@@ -0,0 +1,211 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/pinctrl/mediatek,mt6878-pinctrl.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c b/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c
+index 80fdc6ff57e0..6aedb6033010 100644
+--- a/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c
++++ b/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c
+@@ -198,7 +198,7 @@ static int mtk_mdp_probe(struct platform_device *pdev)
+ 				  VPU_RST_MDP);
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "Failed to register reset handler\n");
+-		goto err_m2m_register;
++		goto err_vpu_get_dev;
+ 	}
+ 
+ 	platform_set_drvdata(pdev, mdp);
+@@ -206,7 +206,7 @@ static int mtk_mdp_probe(struct platform_device *pdev)
+ 	ret = vb2_dma_contig_set_max_seg_size(&pdev->dev, DMA_BIT_MASK(32));
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "Failed to set vb2 dma mag seg size\n");
+-		goto err_m2m_register;
++		goto err_vpu_get_dev;
+ 	}
+ 
+ 	pm_runtime_enable(dev);
+@@ -214,6 +214,9 @@ static int mtk_mdp_probe(struct platform_device *pdev)
+ 
+ 	return 0;
+ 
++err_vpu_get_dev:
++	platform_device_put(mdp->vpu_dev);
 +
-+title: MediaTek MT6878 Pin Controller
-+
-+maintainers:
-+  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+  - Igor Belwon <igor.belwon@mentallysanemainliners.org>
-+
-+description:
-+  The MediaTek MT6878 Pin controller is used to control SoC pins.
-+
-+properties:
-+  compatible:
-+    const: mediatek,mt6878-pinctrl
-+
-+  reg:
-+    items:
-+      - description: pin controller base
-+      - description: bl group IO
-+      - description: bm group IO
-+      - description: br group IO
-+      - description: bl1 group IO
-+      - description: br1 group IO
-+      - description: lm group IO
-+      - description: lt group IO
-+      - description: rm group IO
-+      - description: rt group IO
-+      - description: EINT controller E block
-+      - description: EINT controller S block
-+      - description: EINT controller W block
-+      - description: EINT controller C block
-+
-+  reg-names:
-+    items:
-+      - const: base
-+      - const: bl
-+      - const: bm
-+      - const: br
-+      - const: bl1
-+      - const: br1
-+      - const: lm
-+      - const: lt
-+      - const: rm
-+      - const: rt
-+      - const: eint-e
-+      - const: eint-s
-+      - const: eint-w
-+      - const: eint-c
-+
-+  gpio-controller: true
-+
-+  '#gpio-cells':
-+    description:
-+      Number of cells in GPIO specifier. Since the generic GPIO binding is used,
-+      the amount of cells must be specified as 2. See the below mentioned gpio
-+      binding representation for description of particular cells.
-+    const: 2
-+
-+  gpio-ranges:
-+    maxItems: 1
-+
-+  gpio-line-names:
-+    maxItems: 216
-+
-+  interrupts:
-+    description: The interrupt outputs to sysirq
-+    maxItems: 1
-+
-+  interrupt-controller: true
-+
-+  '#interrupt-cells':
-+    const: 2
-+
-+# PIN CONFIGURATION NODES
-+patternProperties:
-+  '-pins$':
-+    type: object
-+    additionalProperties: false
-+
-+    patternProperties:
-+      '^pins':
-+        type: object
-+        allOf:
-+          - $ref: /schemas/pinctrl/pincfg-node.yaml
-+          - $ref: /schemas/pinctrl/pinmux-node.yaml
-+        description:
-+          A pinctrl node should contain at least one subnodes representing the
-+          pinctrl groups available on the machine. Each subnode will list the
-+          pins it needs, and how they should be configured, with regard to muxer
-+          configuration, pullups, drive strength, input enable/disable and input
-+          schmitt.
-+
-+        properties:
-+          pinmux:
-+            description:
-+              Integer array, represents gpio pin number and mux setting.
-+              Supported pin number and mux are defined as macros in
-+              arch/arm64/boot/dts/mediatek/mt8196-pinfunc.h for this SoC.
-+
-+          drive-strength:
-+            enum: [2, 4, 6, 8, 10, 12, 14, 16]
-+
-+          drive-strength-microamp:
-+            enum: [125, 250, 500, 1000]
-+
-+          bias-pull-down:
-+            oneOf:
-+              - type: boolean
-+              - enum: [75000, 5000]
-+                description: Pull down RSEL type resistance values (in ohms)
-+            description:
-+              For normal pull down type there is no need to specify a resistance
-+              value, hence this can be specified as a boolean property.
-+              For RSEL pull down type a resistance value (in ohms) can be added.
-+
-+          bias-pull-up:
-+            oneOf:
-+              - type: boolean
-+              - enum: [10000, 5000, 4000, 3000]
-+                description: Pull up RSEL type resistance values (in ohms)
-+            description:
-+              For normal pull up type there is no need to specify a resistance
-+              value, hence this can be specified as a boolean property.
-+              For RSEL pull up type a resistance value (in ohms) can be added.
-+
-+          bias-disable: true
-+
-+          output-high: true
-+
-+          output-low: true
-+
-+          input-enable: true
-+
-+          input-disable: true
-+
-+          input-schmitt-enable: true
-+
-+          input-schmitt-disable: true
-+
-+        required:
-+          - pinmux
-+
-+        additionalProperties: false
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - interrupt-controller
-+  - '#interrupt-cells'
-+  - gpio-controller
-+  - '#gpio-cells'
-+  - gpio-ranges
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/pinctrl/mt65xx.h>
-+    #define PINMUX_GPIO0__FUNC_GPIO0 (MTK_PIN_NO(0) | 0)
-+    #define PINMUX_GPIO99__FUNC_SCL0 (MTK_PIN_NO(99) | 1)
-+    #define PINMUX_GPIO100__FUNC_SDA0 (MTK_PIN_NO(100) | 1)
-+
-+    pio: pinctrl@10005000 {
-+        compatible = "mediatek,mt6878-pinctrl";
-+        reg = <0x10005000 0x1000>,
-+              <0x11d10000 0x1000>,
-+              <0x11d30000 0x1000>,
-+              <0x11d40000 0x1000>,
-+              <0x11d50000 0x1000>,
-+              <0x11d60000 0x1000>,
-+              <0x11e20000 0x1000>,
-+              <0x11e30000 0x1000>,
-+              <0x11eb0000 0x1000>,
-+              <0x11ec0000 0x1000>,
-+              <0x11ce0000 0x1000>,
-+              <0x11de0000 0x1000>,
-+              <0x11e60000 0x1000>,
-+              <0x1c01e000 0x1000>;
-+        reg-names = "base", "bl", "bm", "br", "bl1", "br1",
-+                    "lm", "lt", "rm", "rt", "eint-e", "eint-s",
-+                    "eint-w", "eint-c";
-+        gpio-controller;
-+        #gpio-cells = <2>;
-+        gpio-ranges = <&pio 0 0 220>;
-+        interrupt-controller;
-+        interrupts = <GIC_SPI 239 IRQ_TYPE_LEVEL_HIGH 0>;
-+        #interrupt-cells = <2>;
-+
-+        gpio-pins {
-+            pins {
-+                pinmux = <PINMUX_GPIO0__FUNC_GPIO0>;
-+                bias-pull-up = <4000>;
-+                drive-strength = <6>;
-+            };
-+        };
-+
-+        i2c0-pins {
-+            pins-bus {
-+                pinmux = <PINMUX_GPIO99__FUNC_SCL0>,
-+                         <PINMUX_GPIO100__FUNC_SDA0>;
-+                bias-pull-down = <75000>;
-+                drive-strength-microamp = <1000>;
-+            };
-+        };
-+    };
-
+ err_m2m_register:
+ 	v4l2_device_unregister(&mdp->v4l2_dev);
+ 
 -- 
-2.51.0
+2.25.1
 
 
