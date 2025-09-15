@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FBA5CAC58E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Sep 2025 09:20:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2439CAC597
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Sep 2025 09:20:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q1VALCkX+Q4sYnGWxIe+ZAghMVa7gU7Vt2OwSX6cEms=; b=eI0nsb9vxIMTkHSE7vzWdJezYy
-	xnIz9Y3Dnfy/7CnCisjCACsQRld1HtGjEe7pdk0n9xD8eoCG7g5JlLXfBelsR+y/3cZxzo2Y28W/g
-	U6CQeUijwl2qi/aS0pT2WbUKUd0uxF7FYSWB6Avc0M9J6GaqtrnzMGiV1oYFLmFkWKrUqdzoT4x+t
-	Vs/VZxVrf+juiEVYfjcEhUN/fRbvcvauzvU1oEblL99cIN+TY3/CfEEV5BdQc7OP0l4NFmmb3VjXu
-	uocYJ4LBrK2L04cUqU1iL69iSCfoEhZzZ847swVI/jPXBLSoUmpO61ZFQtA+YQIqA2l5z/nylEbLL
-	f5YVTuVQ==;
+	bh=zyqlLL4Vw80sOJJabkxhdoZsgUoyRPEHyY3K1K7eKf0=; b=XjXBUCAKypGtxPSe/VDVgfbRHR
+	11GHOLKdeW9O2ooSi3zceFwkqLzLHI5AFX9araOKkq2KwUc+ZXHFGvQoZjXJTykn4mK/3HZibIBwK
+	fTDuZ0TNX0sgrgnO/hCsBiX79d7AyitrQ1cUsJkRLK7ggMJeMuZ126pE6bHYhsDFuFXe1zKc6ID6d
+	nI/YQ8BbZHGHDb3CqHBEyFUOWS4ZI66QcncJ9OzPlnclkU1y+s2k0izBtIZhTMDPkAyls36QLXBAy
+	QW8zniLKhh0G5SycI1bBSW5ynv2ifA9f2zJ9ln++mqAaXPW0hhX2zVmxAU0cEkJzPGaICikRQv3Vt
+	WL8xM1fw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uy5Ny-00000003R4D-0slW;
-	Mon, 15 Sep 2025 09:20:34 +0000
+	id 1uy5O3-00000003R9d-3MXN;
+	Mon, 15 Sep 2025 09:20:39 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uy5Nm-00000003Qnh-1GrX;
-	Mon, 15 Sep 2025 09:20:23 +0000
-X-UUID: 31bcaf0a921511f09eb0dd999d3936bf-20250915
+	id 1uy5Nn-00000003Qnh-2S9Q;
+	Mon, 15 Sep 2025 09:20:24 +0000
+X-UUID: 3299a6da921511f09eb0dd999d3936bf-20250915
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Q1VALCkX+Q4sYnGWxIe+ZAghMVa7gU7Vt2OwSX6cEms=;
-	b=YE7c/G1yl69cwoIXUJdlz24tUblZG70gWMnGdnizlkVIwSQZh7K76FspXxe2HrRaFV5MwXvJOIF+unSXc/eVEwV5jz5a+fRe+IwtyyjSi2B8ZnJ25tuPDbvvflq7dehS+bnflCGHEBWUJly3TCh6jIfKXnauyMys73tt7FAwGAo=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=zyqlLL4Vw80sOJJabkxhdoZsgUoyRPEHyY3K1K7eKf0=;
+	b=pK4eszfy7vWPfATfbjT2epnUWCJbx0k3InTLMzPDbmjmv48yFVxoT8U5q7z8BHfnfbD+geeRuN8OR3xRgDceB3dAij1OMlOtyxtWO+IxeVOAHKEcVCLmTKCOpF4K05+tvtKkQ8+IcKcMXs/n9OrTl1Z+yFOtYl+yqjH8Pti/eDE=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.4,REQID:0a84222e-7e3c-48a9-8a0d-9dca94c1cba1,IP:0,UR
-	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-25
-X-CID-META: VersionHash:1ca6b93,CLOUDID:51e1cc84-5317-4626-9d82-238d715c253f,B
+X-CID-O-INFO: VERSION:1.3.4,REQID:a62e7166-f5f7-4de2-a035-ebd5173cdc71,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:1ca6b93,CLOUDID:1dad4ff8-ebfe-43c9-88c9-80cb93f22ca4,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:-5,Content:0|15|50,EDM:
 	-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,
 	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -42,38 +42,38 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 31bcaf0a921511f09eb0dd999d3936bf-20250915
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
+X-UUID: 3299a6da921511f09eb0dd999d3936bf-20250915
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <kyrie.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 548601179; Mon, 15 Sep 2025 02:20:17 -0700
+	with ESMTP id 1366065390; Mon, 15 Sep 2025 02:20:18 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Mon, 15 Sep 2025 17:20:14 +0800
+ 15.2.1258.39; Mon, 15 Sep 2025 17:20:16 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Mon, 15 Sep 2025 17:20:13 +0800
+ 15.2.1258.39 via Frontend Transport; Mon, 15 Sep 2025 17:20:14 +0800
 From: Kyrie Wu <kyrie.wu@mediatek.com>
 To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
-	<andrew-ct.chen@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, Mauro
- Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+	<andrew-ct.chen@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, "Mauro
+ Carvalho Chehab" <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
 	<angelogioacchino.delregno@collabora.com>, Kyrie Wu <kyrie.wu@mediatek.com>,
 	Hans Verkuil <hverkuil@xs4all.nl>, Nicolas Dufresne
 	<nicolas.dufresne@collabora.com>, Christophe JAILLET
 	<christophe.jaillet@wanadoo.fr>, Sebastian Fricke
-	<sebastian.fricke@collabora.com>, Nathan Hebert <nhebert@chromium.org>, Arnd
- Bergmann <arnd@arndb.de>, Irui Wang <irui.wang@mediatek.com>, George Sun
+	<sebastian.fricke@collabora.com>, Nathan Hebert <nhebert@chromium.org>, "Arnd
+ Bergmann" <arnd@arndb.de>, Irui Wang <irui.wang@mediatek.com>, George Sun
 	<george.sun@mediatek.com>, <linux-media@vger.kernel.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
 CC: Neil Armstrong <neil.armstrong@linaro.org>, Andrzej Pietrasiewicz
 	<andrzejtp2010@gmail.com>
-Subject: [PATCH v3 5/8] media: mediatek: vcodec: fix vp9 4096x2176 fail for profile2
-Date: Mon, 15 Sep 2025 17:19:55 +0800
-Message-ID: <20250915091958.31509-6-kyrie.wu@mediatek.com>
+Subject: [PATCH v3 6/8] media: mediatek: vcodec: fix media device node number
+Date: Mon, 15 Sep 2025 17:19:56 +0800
+Message-ID: <20250915091958.31509-7-kyrie.wu@mediatek.com>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20250915091958.31509-1-kyrie.wu@mediatek.com>
 References: <20250915091958.31509-1-kyrie.wu@mediatek.com>
@@ -82,8 +82,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250915_022022_364149_A1AC2D95 
-X-CRM114-Status: GOOD (  12.99  )
+X-CRM114-CacheID: sfid-20250915_022023_630845_F924CC7C 
+X-CRM114-Status: GOOD (  10.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,34 +98,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The dram addr of vp9 decoder tile number, which use dram mode
-to set tile information, may reach to 36bits for 4096x2176.
-It needs to get the highest 4bit of tile buffer address to
-set tile buffer address.
+change media register device node number to a correct value
 
-Fixes: 5d418351ca8f1 ("media: mediatek: vcodec: support stateless VP9 decoding")
+Fixes: 41f03c673cb7b ("media: mediatek: vcodec: replace pr_* with dev_* for v4l2 debug message")
 
 Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
 ---
- .../mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c       | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ .../platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c      | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
-index 04197164fb82..416d8c0c04ce 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
-@@ -1140,7 +1140,10 @@ static int vdec_vp9_slice_setup_tile_buffer(struct vdec_vp9_slice_instance *inst
- 			tiles->size[i][j] = size;
- 			if (tiles->mi_rows[i]) {
- 				*tb++ = (size << 3) + ((offset << 3) & 0x7f);
--				*tb++ = pa & ~0xf;
-+				*tb = pa & ~0xf;
-+				if (IS_ENABLED(CONFIG_ARCH_DMA_ADDR_T_64BIT))
-+					*tb |= (pa >> 32) & 0xf;
-+				tb++;
- 				*tb++ = (pa << 3) & 0x7f;
- 				mi_row = (tiles->mi_rows[i] - 1) & 0x1ff;
- 				mi_col = (tiles->mi_cols[j] - 1) & 0x3f;
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
+index e7b6b108f4fb..bc0a66c26cda 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
+@@ -517,7 +517,8 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 			goto err_media_reg;
+ 		}
+ 
+-		dev_dbg(&pdev->dev, "media registered as /dev/media%d", vfd_dec->minor);
++		dev_dbg(&pdev->dev, "media registered as /dev/media%d",
++			dev->mdev_dec.devnode->minor);
+ 	}
+ 
+ 	mtk_vcodec_dbgfs_init(dev, false);
 -- 
 2.45.2
 
