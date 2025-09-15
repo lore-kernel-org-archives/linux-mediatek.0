@@ -4,84 +4,154 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3FE5CAC597
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Sep 2025 10:33:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4016BCAC597
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Sep 2025 10:35:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vSCWoI5iaE6b3tos+Q5TLIbQg7jTCcZUM5xS0i3KvMQ=; b=AnKLAZ2AUtCj1lLsJvnNsNz+Nh
-	QZoPYUiyKa4+gdViltfM+HGUhRgF+2MOL7cbZoLsmW674r0yWPJcApDQMFiHLHxWUELR43tAOIz8i
-	+1nls6qHR7MCHnphylUHktLowajOgIxkgOjdGybr/q3NUzkyhOfFNfFmAM0ewAaMWpN9UtCKOPDff
-	qd/pSTxt15EHn3UWiFftk0zY3EewU1Cr9y5z5bYT/yfFuEDOHohNtCE/2Z8RZBxKUTuqz/8swvYF2
-	H+QyvBJCe/3+fcuZJ32UAvKudyro6U6IgWB5TzM3lcVQtTeBl0YgDLGPM5smmqZ2H1Ts0ohlSG8UD
-	nhkV/qxw==;
+	bh=wyZ7R1j8ekVpPVWOeGovOVmplGZx5PoOUHolz+8mQ9A=; b=3ASoDyXk0pfoqjjP1FCr3w6A/V
+	MN99CT095mXegYJACcXYCP0+aqjJpmSxmI6DJjtou14fQmyj98uzmKKu1YpLaHfLmj74Dc2odxtN1
+	uoyCveBODtZa3WVQVZLm40itQ9XLKqH2ufDrNlUpiBnToa269kR0jJkEiCR2OXaQWI9cHGxx9aRky
+	s30NrbkYSTuTNYTVhA+5KOskG+p5WEA/D7/HzeQshZOd/OmzDpqRfXHAIf4x0V/jhUk4izVQk2vUn
+	ptHZomm486u6iI21LQX7TewTtDs7ENYpn/yIBZglfBXudhohglmSWfi+Z8HsbpmLnGSQYpR/5Uaeb
+	3SG8sWtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uy6WH-00000003f1X-3b4m;
-	Mon, 15 Sep 2025 10:33:13 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uy6YQ-00000003hNO-3Hxv;
+	Mon, 15 Sep 2025 10:35:26 +0000
+Received: from smtp-out1.suse.de ([2a07:de40:b251:101:10:150:64:1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uy6WF-00000003f00-2vgT;
-	Mon, 15 Sep 2025 10:33:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=vSCWoI5iaE6b3tos+Q5TLIbQg7jTCcZUM5xS0i3KvMQ=; b=nFPKowe7o5YuiPzDhttGPvEop6
-	2VhfpUKKDBM1MSdFgPPWVX/CDF2NVB25Yov90OSCM6mhAGjQrBnrYmS+ygGLjEOAk1nidObWQzb+N
-	AQUVdiQtJHSZSZCus0B6wXZ1vDBYNPMD6jemej0uDtdimgnM0vt6oWZsSB48ZlKlTqsiotcrRBAux
-	QXpelL1DvEdM7P3tGWBFEvleu/8a6kdUONjki2ABX7R2cKTmU6aIxWxN8tuFi1KBA8F5pbJDsEogn
-	VY3UciQlczWQOxoYDZYOcea2ZLHqwGHnPuljDFfDA6c3/pdRCX0dFEBfqE1XwKobOziLfpRDaX1s8
-	7uNd6Rhg==;
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uy6WC-00000006vV5-1v1q;
-	Mon, 15 Sep 2025 10:33:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1757932384;
-	bh=jBrXosrEm0ufxE9d6vgC0d6AOZqOTBjfpGs+BYCBuG4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=OjMAQCK/+gG+8jCO5AoowfuI++dUaRvWFld0urxeYgovi0jkDMe5Hkvib9GMsAoKB
-	 so1ns4TynJKzquBxFeLk+lGtZ/wj5YqsJMDLQlzbAw4n8Ksu5tAEBmnwghPdTHZ2OP
-	 OFp8Kpmgf3UaRNETufLr6u9k91pQVvvCCxiju/lEFiSae9B1TKBQsBAsKTlKaviL65
-	 24Rtmz0d9GAcsrMZDj6sCieAaQnU8nBf670lpSR2bo4itx3HxxyXhhV6e0xwMgxILt
-	 0AeHNx8nfeBGj9hpaLXRdM+xVX8TT6Hm3bR990osPafCN/VHxc997xHTHb02oADDZV
-	 whNUksv/BgHgA==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	id 1uy6YF-00000003h2N-1fWj
+	for linux-mediatek@lists.infradead.org;
+	Mon, 15 Sep 2025 10:35:18 +0000
+Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5E3AD17E107A;
-	Mon, 15 Sep 2025 12:33:03 +0200 (CEST)
-Message-ID: <db803bd3-4e7d-4aa2-bdd1-6e0b14812c03@collabora.com>
-Date: Mon, 15 Sep 2025 12:33:02 +0200
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 70A1633722;
+	Mon, 15 Sep 2025 10:35:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1757932511; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=wyZ7R1j8ekVpPVWOeGovOVmplGZx5PoOUHolz+8mQ9A=;
+	b=FPGp+DWnjZ8cpc2VUqQoiyB/9LNHZYKvuORtYnVfZ/XHaMFtXUVkqBJcO7rAv1RFBFx8Wt
+	WO9vXmdo3ndVCRkwybC/JRSx7vg7aRbraBqaSL3pYejnsPSAS3V9zbavON3zPYoiuoyHq6
+	t30gZa8OHDAhmOgPfFIgs/KdUCYtpH0=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1757932511;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=wyZ7R1j8ekVpPVWOeGovOVmplGZx5PoOUHolz+8mQ9A=;
+	b=jve2A0736Y5pKNdzRyUDlpuD78LkpAU4DSyrxIJjrTFvm/CDnns1c+0qAhYAGzGZhQpsjD
+	q17urp8vFAEgnsDA==
+Authentication-Results: smtp-out1.suse.de;
+	none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1757932511; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=wyZ7R1j8ekVpPVWOeGovOVmplGZx5PoOUHolz+8mQ9A=;
+	b=FPGp+DWnjZ8cpc2VUqQoiyB/9LNHZYKvuORtYnVfZ/XHaMFtXUVkqBJcO7rAv1RFBFx8Wt
+	WO9vXmdo3ndVCRkwybC/JRSx7vg7aRbraBqaSL3pYejnsPSAS3V9zbavON3zPYoiuoyHq6
+	t30gZa8OHDAhmOgPfFIgs/KdUCYtpH0=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1757932511;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=wyZ7R1j8ekVpPVWOeGovOVmplGZx5PoOUHolz+8mQ9A=;
+	b=jve2A0736Y5pKNdzRyUDlpuD78LkpAU4DSyrxIJjrTFvm/CDnns1c+0qAhYAGzGZhQpsjD
+	q17urp8vFAEgnsDA==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id D535D1368D;
+	Mon, 15 Sep 2025 10:35:10 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+	by imap1.dmz-prg2.suse.org with ESMTPSA
+	id WO5lMt7rx2hmEwAAD6G6ig
+	(envelope-from <tzimmermann@suse.de>); Mon, 15 Sep 2025 10:35:10 +0000
+Message-ID: <331c5105-481f-4776-943f-376b21ccc430@suse.de>
+Date: Mon, 15 Sep 2025 12:35:10 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 19/27] clk: mediatek: Add MT8196 mdpsys clock support
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Laura Nao <laura.nao@collabora.com>, mturquette@baylibre.com,
- sboyd@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, p.zabel@pengutronix.de, richardcochran@gmail.com,
- guangjie.song@mediatek.com, linux-clk@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org, kernel@collabora.com
-References: <20250829091913.131528-1-laura.nao@collabora.com>
- <20250829091913.131528-20-laura.nao@collabora.com>
- <0e6592b7-6f6d-4291-992c-ff321c920381@collabora.com>
- <CAGXv+5GFaudGqm4C9CY-_spiXcyWk7OvWHTdkehsyrV4sO1Ndw@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v6 00/25] drm/dumb-buffers: Fix and improve buffer-size
+ calculation
+To: simona@ffwll.ch, airlied@gmail.com, mripard@kernel.org,
+ maarten.lankhorst@linux.intel.com, geert@linux-m68k.org,
+ tomi.valkeinen@ideasonboard.com
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
+ imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org,
+ nouveau@lists.freedesktop.org, virtualization@lists.linux.dev,
+ spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
+ intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org
+References: <20250821081918.79786-1-tzimmermann@suse.de>
 Content-Language: en-US
-In-Reply-To: <CAGXv+5GFaudGqm4C9CY-_spiXcyWk7OvWHTdkehsyrV4sO1Ndw@mail.gmail.com>
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Autocrypt: addr=tzimmermann@suse.de; keydata=
+ xsBNBFs50uABCADEHPidWt974CaxBVbrIBwqcq/WURinJ3+2WlIrKWspiP83vfZKaXhFYsdg
+ XH47fDVbPPj+d6tQrw5lPQCyqjwrCPYnq3WlIBnGPJ4/jreTL6V+qfKRDlGLWFjZcsrPJGE0
+ BeB5BbqP5erN1qylK9i3gPoQjXGhpBpQYwRrEyQyjuvk+Ev0K1Jc5tVDeJAuau3TGNgah4Yc
+ hdHm3bkPjz9EErV85RwvImQ1dptvx6s7xzwXTgGAsaYZsL8WCwDaTuqFa1d1jjlaxg6+tZsB
+ 9GluwvIhSezPgnEmimZDkGnZRRSFiGP8yjqTjjWuf0bSj5rUnTGiyLyRZRNGcXmu6hjlABEB
+ AAHNJ1Rob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPsLAjgQTAQgAOAIb
+ AwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftODH
+ AAoJEGgNwR1TC3ojx1wH/0hKGWugiqDgLNXLRD/4TfHBEKmxIrmfu9Z5t7vwUKfwhFL6hqvo
+ lXPJJKQpQ2z8+X2vZm/slsLn7J1yjrOsoJhKABDi+3QWWSGkaGwRJAdPVVyJMfJRNNNIKwVb
+ U6B1BkX2XDKDGffF4TxlOpSQzdtNI/9gleOoUA8+jy8knnDYzjBNOZqLG2FuTdicBXblz0Mf
+ vg41gd9kCwYXDnD91rJU8tzylXv03E75NCaTxTM+FBXPmsAVYQ4GYhhgFt8S2UWMoaaABLDe
+ 7l5FdnLdDEcbmd8uLU2CaG4W2cLrUaI4jz2XbkcPQkqTQ3EB67hYkjiEE6Zy3ggOitiQGcqp
+ j//OwE0EWznS4AEIAMYmP4M/V+T5RY5at/g7rUdNsLhWv1APYrh9RQefODYHrNRHUE9eosYb
+ T6XMryR9hT8XlGOYRwKWwiQBoWSDiTMo/Xi29jUnn4BXfI2px2DTXwc22LKtLAgTRjP+qbU6
+ 3Y0xnQN29UGDbYgyyK51DW3H0If2a3JNsheAAK+Xc9baj0LGIc8T9uiEWHBnCH+RdhgATnWW
+ GKdDegUR5BkDfDg5O/FISymJBHx2Dyoklv5g4BzkgqTqwmaYzsl8UxZKvbaxq0zbehDda8lv
+ hFXodNFMAgTLJlLuDYOGLK2AwbrS3Sp0AEbkpdJBb44qVlGm5bApZouHeJ/+n+7r12+lqdsA
+ EQEAAcLAdgQYAQgAIAIbDBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftOH6AAoJEGgNwR1T
+ C3ojVSkIALpAPkIJPQoURPb1VWjh34l0HlglmYHvZszJWTXYwavHR8+k6Baa6H7ufXNQtThR
+ yIxJrQLW6rV5lm7TjhffEhxVCn37+cg0zZ3j7zIsSS0rx/aMwi6VhFJA5hfn3T0TtrijKP4A
+ SAQO9xD1Zk9/61JWk8OysuIh7MXkl0fxbRKWE93XeQBhIJHQfnc+YBLprdnxR446Sh8Wn/2D
+ Ya8cavuWf2zrB6cZurs048xe0UbSW5AOSo4V9M0jzYI4nZqTmPxYyXbm30Kvmz0rYVRaitYJ
+ 4kyYYMhuULvrJDMjZRvaNe52tkKAvMevcGdt38H4KSVXAylqyQOW5zvPc4/sq9c=
+In-Reply-To: <20250821081918.79786-1-tzimmermann@suse.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
+X-Spamd-Result: default: False [-2.80 / 50.00];
+	BAYES_HAM(-3.00)[100.00%];
+	SUSPICIOUS_RECIPS(1.50)[];
+	NEURAL_HAM_LONG(-1.00)[-1.000];
+	NEURAL_HAM_SHORT(-0.20)[-1.000];
+	MIME_GOOD(-0.10)[text/plain];
+	TO_MATCH_ENVRCPT_ALL(0.00)[];
+	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	FREEMAIL_TO(0.00)[ffwll.ch,gmail.com,kernel.org,linux.intel.com,linux-m68k.org,ideasonboard.com];
+	ARC_NA(0.00)[];
+	FUZZY_RATELIMITED(0.00)[rspamd.com];
+	MIME_TRACE(0.00)[0:+];
+	FREEMAIL_ENVRCPT(0.00)[gmail.com];
+	RCVD_TLS_ALL(0.00)[];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	FROM_EQ_ENVFROM(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[20];
+	RCVD_COUNT_TWO(0.00)[2];
+	MID_RHS_MATCH_FROM(0.00)[];
+	TO_DN_NONE(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[imap1.dmz-prg2.suse.org:helo,suse.de:mid]
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250915_113308_645070_86468D3F 
-X-CRM114-Status: GOOD (  21.78  )
+X-CRM114-CacheID: sfid-20250915_033515_718154_534E47D6 
+X-CRM114-Status: GOOD (  17.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,138 +166,115 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 05/09/25 10:53, Chen-Yu Tsai ha scritto:
-> On Fri, Sep 5, 2025 at 4:39 PM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> Il 29/08/25 11:19, Laura Nao ha scritto:
->>> Add support for the MT8196 mdpsys clock controller, which provides clock
->>> gate control for MDP.
->>>
->>> Signed-off-by: Laura Nao <laura.nao@collabora.com>
->>> ---
->>>    drivers/clk/mediatek/Kconfig             |   7 +
->>>    drivers/clk/mediatek/Makefile            |   1 +
->>>    drivers/clk/mediatek/clk-mt8196-mdpsys.c | 186 +++++++++++++++++++++++
->>>    3 files changed, 194 insertions(+)
->>>    create mode 100644 drivers/clk/mediatek/clk-mt8196-mdpsys.c
->>>
->>> diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
->>> index 8e5cdae80748..68ac08cf8e82 100644
->>> --- a/drivers/clk/mediatek/Kconfig
->>> +++ b/drivers/clk/mediatek/Kconfig
->>> @@ -1024,6 +1024,13 @@ config COMMON_CLK_MT8196_MCUSYS
->>>        help
->>>          This driver supports MediaTek MT8196 mcusys clocks.
->>>
->>> +config COMMON_CLK_MT8196_MDPSYS
->>> +     tristate "Clock driver for MediaTek MT8196 mdpsys"
->>> +     depends on COMMON_CLK_MT8196
->>> +     default COMMON_CLK_MT8196
->>> +     help
->>> +       This driver supports MediaTek MT8196 mdpsys clocks.
->>> +
->>>    config COMMON_CLK_MT8196_PEXTPSYS
->>>        tristate "Clock driver for MediaTek MT8196 pextpsys"
->>>        depends on COMMON_CLK_MT8196
->>> diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
->>> index 46358623c3e5..d2d8bc43e45b 100644
->>> --- a/drivers/clk/mediatek/Makefile
->>> +++ b/drivers/clk/mediatek/Makefile
->>> @@ -155,6 +155,7 @@ obj-$(CONFIG_COMMON_CLK_MT8196) += clk-mt8196-apmixedsys.o clk-mt8196-topckgen.o
->>>                                   clk-mt8196-peri_ao.o
->>>    obj-$(CONFIG_COMMON_CLK_MT8196_IMP_IIC_WRAP) += clk-mt8196-imp_iic_wrap.o
->>>    obj-$(CONFIG_COMMON_CLK_MT8196_MCUSYS) += clk-mt8196-mcu.o
->>> +obj-$(CONFIG_COMMON_CLK_MT8196_MDPSYS) += clk-mt8196-mdpsys.o
->>>    obj-$(CONFIG_COMMON_CLK_MT8196_PEXTPSYS) += clk-mt8196-pextp.o
->>>    obj-$(CONFIG_COMMON_CLK_MT8196_UFSSYS) += clk-mt8196-ufs_ao.o
->>>    obj-$(CONFIG_COMMON_CLK_MT8365) += clk-mt8365-apmixedsys.o clk-mt8365.o
->>> diff --git a/drivers/clk/mediatek/clk-mt8196-mdpsys.c b/drivers/clk/mediatek/clk-mt8196-mdpsys.c
->>> new file mode 100644
->>> index 000000000000..a46b1627f1f3
->>> --- /dev/null
->>> +++ b/drivers/clk/mediatek/clk-mt8196-mdpsys.c
->>> @@ -0,0 +1,186 @@
->>> +// SPDX-License-Identifier: GPL-2.0-only
->>> +/*
->>> + * Copyright (c) 2025 MediaTek Inc.
->>> + *                    Guangjie Song <guangjie.song@mediatek.com>
->>> + * Copyright (c) 2025 Collabora Ltd.
->>> + *                    Laura Nao <laura.nao@collabora.com>
->>> + */
->>> +#include <dt-bindings/clock/mediatek,mt8196-clock.h>
->>> +
->>> +#include <linux/clk-provider.h>
->>> +#include <linux/module.h>
->>> +#include <linux/of_device.h>
->>> +#include <linux/platform_device.h>
->>> +
->>> +#include "clk-gate.h"
->>> +#include "clk-mtk.h"
->>> +
->>> +static const struct mtk_gate_regs mdp0_cg_regs = {
->>> +     .set_ofs = 0x104,
->>> +     .clr_ofs = 0x108,
->>> +     .sta_ofs = 0x100,
->>> +};
->>> +
->>> +static const struct mtk_gate_regs mdp1_cg_regs = {
->>> +     .set_ofs = 0x114,
->>> +     .clr_ofs = 0x118,
->>> +     .sta_ofs = 0x110,
->>> +};
->>> +
->>> +static const struct mtk_gate_regs mdp2_cg_regs = {
->>> +     .set_ofs = 0x124,
->>> +     .clr_ofs = 0x128,
->>> +     .sta_ofs = 0x120,
->>> +};
->>> +
->>> +#define GATE_MDP0(_id, _name, _parent, _shift) {     \
->>> +             .id = _id,                              \
->>> +             .name = _name,                          \
->>> +             .parent_name = _parent,                 \
->>> +             .regs = &mdp0_cg_regs,                  \
->>> +             .shift = _shift,                        \
->>> +             .flags = CLK_OPS_PARENT_ENABLE,         \
->>
->> Why would MDP0 and MDP2 be different, as in why would MDP1 be so special to not
->> need CLK_OPS_PARENT_ENABLE while the others do?
->>
->> Either they all do, or they all don't.
->>
->> I guess they all don't, but I'm not sure how you tested that at all, since the
->> only way to test this is downstream (and upstream will very likely be different
->> from that).
->>
->> Even though I think they don't need that - please add back CLK_OPS_PARENT_ENABLE
->> to GATE_MDP1 to be safe, as in (all) MediaTek SoCs the multimedia subsystem is
->> kinda separate from the rest.
-> 
-> That kind of doesn't fly since the parent of mdp_f26m is clk26m, not the
-> mdp clock. So either this block doesn't need a clock for register access
-> or this clock is going to be broken.
-> 
-> This is why I raised the question about the validity of the flag in the
-> first place.
-> 
->> +       GATE_MDP1(CLK_MDP_F26M, "mdp_f26m", "clk26m", 27),
-> 
->> Once MT8196 MDP support is upstreamed, we will be able to run a number of tests
->> to evaluate whether this flag is really needed or not.
->>
->> After all, if it turns out we can remove it, it's going to be a 3 lines patch,
->> not a big deal.
-> 
-> That also works. Though IMO it makes the error harder to notice.
-> 
+FYI, I significant number of these patches got a review already. I 
+intent to merge these and then send out the others for each driver 
+individually.
 
-Okay, I understand your point.
+Am 21.08.25 um 10:17 schrieb Thomas Zimmermann:
+> Dumb-buffer pitch and size is specified by width, height, bits-per-pixel
+> plus various hardware-specific alignments. The calculation of these
+> values is inconsistent and duplicated among drivers. The results for
+> formats with bpp < 8 are sometimes incorrect.
+>
+> This series fixes this for most drivers. Default scanline pitch and
+> buffer size are now calculated with the existing 4CC helpers. There is
+> a new helper drm_mode_size_dumb() that calculates scanline pitch and
+> buffer size according to driver requirements.
+>
+> The series fixes the common GEM implementations for DMA, SHMEM and
+> VRAM. It further changes most implementations of dumb_create to use
+> the new helper. A small number of drivers has more complicated
+> calculations and will be updated by a later patches.
+>
+> v6:
+> - extend TODO item (Tomi)
+> - fix typos in documentation (Tomi)
+> v5:
+> - use check_mul_overflow() for overflow test (Tomi)
+> - imx: fix intermediate code (Tomi)
+> - rz-du: include dumb-buffers header
+> v4:
+> - improve UAPI documentation
+> - document bpp special cases
+> - use drm_warn_once()
+> - add TODO lists
+> - armada: fix pitch alignment
+> v3:
+> - document UAPI semantics
+> - fall back to bpp-based allocation for unknown color modes
+> - cleanups
+> v2:
+> - rewrite series
+> - convert many individual drivers besides the shared GEM helpers
+>
+> Thomas Zimmermann (25):
+>    drm/dumb-buffers: Sanitize output on errors
+>    drm/dumb-buffers: Provide helper to set pitch and size
+>    drm/gem-dma: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/gem-shmem: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/gem-vram: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/armada: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/exynos: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/gma500: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/hibmc: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/imx/ipuv3: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/loongson: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/mediatek: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/msm: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/nouveau: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/omapdrm: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/qxl: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/renesas/rcar-du: Compute dumb-buffer sizes with
+>      drm_mode_size_dumb()
+>    drm/renesas/rz-du: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/rockchip: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/tegra: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/virtio: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/vmwgfx: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/xe: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/xen: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/xlnx: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>
+>   Documentation/gpu/todo.rst                    |  37 ++++
+>   drivers/gpu/drm/armada/armada_gem.c           |  16 +-
+>   drivers/gpu/drm/drm_dumb_buffers.c            | 170 ++++++++++++++++--
+>   drivers/gpu/drm/drm_gem_dma_helper.c          |   7 +-
+>   drivers/gpu/drm/drm_gem_shmem_helper.c        |  16 +-
+>   drivers/gpu/drm/drm_gem_vram_helper.c         |  89 +++------
+>   drivers/gpu/drm/exynos/exynos_drm_gem.c       |   8 +-
+>   drivers/gpu/drm/gma500/gem.c                  |  21 +--
+>   .../gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c   |  25 ++-
+>   drivers/gpu/drm/imx/ipuv3/imx-drm-core.c      |  29 ++-
+>   drivers/gpu/drm/loongson/lsdc_gem.c           |  29 +--
+>   drivers/gpu/drm/mediatek/mtk_gem.c            |  13 +-
+>   drivers/gpu/drm/msm/msm_gem.c                 |  27 ++-
+>   drivers/gpu/drm/nouveau/nouveau_display.c     |   7 +-
+>   drivers/gpu/drm/omapdrm/omap_gem.c            |  15 +-
+>   drivers/gpu/drm/qxl/qxl_dumb.c                |  17 +-
+>   drivers/gpu/drm/renesas/rcar-du/rcar_du_kms.c |   7 +-
+>   drivers/gpu/drm/renesas/rz-du/rzg2l_du_kms.c  |   8 +-
+>   drivers/gpu/drm/rockchip/rockchip_drm_gem.c   |  12 +-
+>   drivers/gpu/drm/tegra/gem.c                   |   8 +-
+>   drivers/gpu/drm/virtio/virtgpu_gem.c          |  11 +-
+>   drivers/gpu/drm/vmwgfx/vmwgfx_surface.c       |  21 +--
+>   drivers/gpu/drm/xe/xe_bo.c                    |   8 +-
+>   drivers/gpu/drm/xen/xen_drm_front.c           |   7 +-
+>   drivers/gpu/drm/xlnx/zynqmp_kms.c             |   7 +-
+>   include/drm/drm_dumb_buffers.h                |  14 ++
+>   include/drm/drm_gem_vram_helper.h             |   6 -
+>   include/uapi/drm/drm_mode.h                   |  50 +++++-
+>   28 files changed, 457 insertions(+), 228 deletions(-)
+>   create mode 100644 include/drm/drm_dumb_buffers.h
+>
 
-Let's keep CLK_OPS_PARENT_ENABLE out of MDP1.
-
-Cheers,
-Angelo
+-- 
+--
+Thomas Zimmermann
+Graphics Driver Developer
+SUSE Software Solutions Germany GmbH
+Frankenstrasse 146, 90461 Nuernberg, Germany
+GF: Ivo Totev, Andrew Myers, Andrew McDonald, Boudien Moerman
+HRB 36809 (AG Nuernberg)
 
 
 
