@@ -4,80 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A158CAC592
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Sep 2025 17:18:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0C24CAC592
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Sep 2025 17:19:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kHO0prT8B/cvAz5K/3Flc1lkb/TA5mBubj4Z0ZR9/ZQ=; b=jeeDmQ2lMnHE85S6JR2gc3kUUc
-	z7K94G0KzPWY/bqvhyimeZNKpelQN3bo83ZL3T1aQ+TZLzEa4J1egqvccSXHHkMlazbD4RU6i0OwQ
-	f4/7gpXAEJd5c1YAnybMcj5Q4TiR0RRWz/YcSb6KnCK9a598rR3Ee3LaHRXyykiDoVpkHBZwNax3s
-	lBkVPBd3ve3c5jGqEedOgHCpem2fDF6I50FnHIfWiUgheJMekfIyJuUqDI7v9dpXisCdF/yD5t1Be
-	FSa0w0YYY1Rf5O6YxDmdHT3scD3LQi8++rzD22wVP9r2L1NDEBGzwi3VlMLswJ2QGzsw/6lgVsFDW
-	sL0NllXQ==;
+	bh=S2TcYXt8Ag6RzQrKrL1HEy/TDqYfzmTFebV6fjF1w74=; b=PWPk49Ff2EIFKww2Atvalby8ws
+	+4DSHKPgNKk42XhrhaodW8EdP9LqZGZrRKYHJPCQW90s9USktCOgcEC2y/QVIzOkq9haMPdxAB4hw
+	RHfHRxoWg7R5842o1n6vXWQTL1Xs2BsLFgh6N5ysgEhEnDSzmTIf1tDWPbiGPMcgS3JAUVyvjIAMK
+	c3anDGrkPQrR2LJBILdHPleli8KQFyYIVvqHqy+wU9PjaiiehipS48ZakLxqEBSw1oljhdq2xALp/
+	DKM+y2rgcM47tz1emB0C7xS+Ha+4hBnyOd3l93YoZO4UFaTWX86FQwlHFjKITCKXZhbYMCiBHh8Eq
+	Ae+xa1gA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uyCqc-00000005FMA-2h3I;
-	Mon, 15 Sep 2025 17:18:38 +0000
+	id 1uyCr5-00000005Fv0-2GcG;
+	Mon, 15 Sep 2025 17:19:07 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uyCqZ-00000005FKO-1Vd5;
-	Mon, 15 Sep 2025 17:18:37 +0000
+	id 1uyCqx-00000005Fmv-3QYl;
+	Mon, 15 Sep 2025 17:19:03 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id A415243833;
-	Mon, 15 Sep 2025 17:18:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5060DC4CEF1;
-	Mon, 15 Sep 2025 17:18:34 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 71DD04039D;
+	Mon, 15 Sep 2025 17:18:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 29D2FC4CEF1;
+	Mon, 15 Sep 2025 17:18:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1757956714;
-	bh=UudavyaBPyKCvnlpRZjR/WL6Gz4dsHuj/kJzrYrD31k=;
+	s=k20201202; t=1757956739;
+	bh=echBK1j+X18njnYEmIigVCWTPbyp+OCXowD7iTEllfs=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=F/JbTlRdHf2wuMS7PAQDX+cMcUt0Tl2t0XWZyhzi1eOyiISPk7RjJcnsIS0GIpi9V
-	 7SbXrx0cZaL37tKdyg/vcUqZJzqSXLzgTtNoPXknib9uGaINZ14kqTyI7w27Jd9lfE
-	 6D3ifCwLIr5z4r+BgcNvocGfn8dNx4/n/EYCi8Mze70UyAizPmCLXaCHML3w4Or7VH
-	 FunnWjeDz28vusWXMx/XEhCwqYuB21S/9Q0HK2V/W6cRl8dDYJpjZR2DN8/L5UEREY
-	 wgMm1OoRpOaQJd0B0pyOH+m2tJXI1okpo7J4dXt2uk7aqpPPk7lAJ+PaV8RA0gVQkg
-	 wtCjSaz/a2p3A==
-Date: Mon, 15 Sep 2025 12:18:33 -0500
+	b=IE48EwGK3IiFjChHMY8WDepEbhLCtNxnYU/5z69sMcEgP7bXPN0cqBnteEiF8K4wz
+	 BDuAS8CAefnVdeOjVD221KnpxDk/F0LjOH6qcKQWQJG47odmA0WmwHnSCVre/ZLl6L
+	 zVzS+g2T8rF+z/6cNHOBtIbOh8J+0KdUAvwDgAFChv7sM3e6KAmp2O8D1X/hkC2k6l
+	 aWTpA49ruDg8QSVkTHqFtiDRf0CjQK0eS2GsoHAD0SyLtQ0pxwhoMX6nTMlLWiuHmK
+	 oAKrC/RF+A0eeLwt/qbnL2I7MmyKjt0xGF8YNIIVcrl2hxWOfGG/6RIeiVz12BpOTh
+	 dEA+cAoc3xBLg==
+Date: Mon, 15 Sep 2025 12:18:58 -0500
 From: "Rob Herring (Arm)" <robh@kernel.org>
 To: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-Cc: angelogioacchino.delregno@collabora.com, netdev@vger.kernel.org,
-	broonie@kernel.org, flora.fu@mediatek.com, p.zabel@pengutronix.de,
-	linux-input@vger.kernel.org, devicetree@vger.kernel.org,
-	support.opensource@diasemi.com, edumazet@google.com,
-	krzk+dt@kernel.org, louisalexis.eyraud@collabora.com,
-	mchehab@kernel.org, matthias.bgg@gmail.com,
-	tiffany.lin@mediatek.com, linux-media@vger.kernel.org,
-	maarten.lankhorst@linux.intel.com, mripard@kernel.org,
-	chunkuang.hu@kernel.org, linux-gpio@vger.kernel.org,
-	linux-kernel@vger.kernel.org, airlied@gmail.com,
-	linus.walleij@linaro.org, pabeni@redhat.com, lgirdwood@gmail.com,
-	kuba@kernel.org, linux-sound@vger.kernel.org, tzimmermann@suse.de,
-	amergnat@baylibre.com, linux-rockchip@lists.infradead.org,
-	dri-devel@lists.freedesktop.org, andrew+netdev@lunn.ch,
-	conor+dt@kernel.org, dmitry.torokhov@gmail.com,
-	yunfei.dong@mediatek.com, linux-bluetooth@vger.kernel.org,
-	davem@davemloft.net, jeesw@melfas.com, heiko@sntech.de,
-	linux-arm-kernel@lists.infradead.org, minghsiu.tsai@mediatek.com,
-	sean.wang@kernel.org, houlong.wei@mediatek.com,
-	luiz.dentz@gmail.com, kernel@collabora.com,
-	linux-mediatek@lists.infradead.org, simona@ffwll.ch,
-	marcel@holtmann.org, andrew-ct.chen@mediatek.com
-Subject: Re: [PATCH v2 04/12] dt-bindings: ASoC: Convert MediaTek RT5650
- codecs bindings to DT schema
-Message-ID: <175795671272.2949182.4347956532845839846.robh@kernel.org>
+Cc: louisalexis.eyraud@collabora.com,
+	angelogioacchino.delregno@collabora.com,
+	support.opensource@diasemi.com, tzimmermann@suse.de,
+	sean.wang@kernel.org, maarten.lankhorst@linux.intel.com,
+	luiz.dentz@gmail.com, krzk+dt@kernel.org, kuba@kernel.org,
+	linux-bluetooth@vger.kernel.org, p.zabel@pengutronix.de,
+	jeesw@melfas.com, andrew+netdev@lunn.ch, houlong.wei@mediatek.com,
+	linux-rockchip@lists.infradead.org, mripard@kernel.org,
+	linux-input@vger.kernel.org, tiffany.lin@mediatek.com,
+	amergnat@baylibre.com, linus.walleij@linaro.org,
+	andrew-ct.chen@mediatek.com, marcel@holtmann.org,
+	lgirdwood@gmail.com, heiko@sntech.de, matthias.bgg@gmail.com,
+	dri-devel@lists.freedesktop.org, dmitry.torokhov@gmail.com,
+	airlied@gmail.com, linux-mediatek@lists.infradead.org,
+	chunkuang.hu@kernel.org, flora.fu@mediatek.com,
+	devicetree@vger.kernel.org, davem@davemloft.net,
+	linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
+	simona@ffwll.ch, netdev@vger.kernel.org, edumazet@google.com,
+	yunfei.dong@mediatek.com, linux-gpio@vger.kernel.org,
+	minghsiu.tsai@mediatek.com, linux-kernel@vger.kernel.org,
+	pabeni@redhat.com, broonie@kernel.org, mchehab@kernel.org,
+	conor+dt@kernel.org, linux-media@vger.kernel.org,
+	linux-sound@vger.kernel.org
+Subject: Re: [PATCH v2 08/12] dt-bindings: pinctrl: mt65xx: Allow
+ gpio-line-names
+Message-ID: <175795673768.2952954.14700429990661884718.robh@kernel.org>
 References: <20250911151001.108744-1-ariel.dalessandro@collabora.com>
- <20250911151001.108744-5-ariel.dalessandro@collabora.com>
+ <20250911151001.108744-9-ariel.dalessandro@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250911151001.108744-5-ariel.dalessandro@collabora.com>
+In-Reply-To: <20250911151001.108744-9-ariel.dalessandro@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250915_101835_410929_15E3D040 
-X-CRM114-Status: UNSURE (   8.80  )
+X-CRM114-CacheID: sfid-20250915_101902_045088_577B7873 
+X-CRM114-Status: UNSURE (   8.37  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,19 +95,16 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 11 Sep 2025 12:09:53 -0300, Ariel D'Alessandro wrote:
-> Convert the existing text-based DT bindings for Mediatek MT8173 RT5650
-> codecs to a DT schema.
+On Thu, 11 Sep 2025 12:09:57 -0300, Ariel D'Alessandro wrote:
+> Current, the DT bindings for MediaTek's MT65xx Pin controller is missing
+> the gpio-line-names property, add it to the associated schema.
 > 
 > Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
 > ---
->  .../sound/mediatek,mt8173-rt5650.yaml         | 73 +++++++++++++++++++
->  .../bindings/sound/mt8173-rt5650.txt          | 31 --------
->  2 files changed, 73 insertions(+), 31 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt8173-rt5650.yaml
->  delete mode 100644 Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
+>  .../devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml    | 2 ++
+>  1 file changed, 2 insertions(+)
 > 
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
 
