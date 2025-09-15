@@ -4,81 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B83F4CAC592
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Sep 2025 17:55:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FF43CAC592
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Sep 2025 20:19:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AP9z/nBXhZBgPQih2YdXAKjLgFzkdTp8MaQk5RGr6rk=; b=4co/Z0RZK0mlRTb6oVnbCRy5wv
-	Dh3YoxYQBhybJfImqGnOModppM60K+SGnjdb0yW6nqc3x4PWvGnVlkuH05lgsG8GV5RSVLQPeUzPD
-	NUKEA2RlMwrvB4ZttlvWEK1TXwBM+rMDbRI82mQG97UEVk4hJTZFV/w9yLsud5numdhMaziWbUN0f
-	a9FslLeT9hR5UQT/GPEl1c8I1bWYabAM3HzXdO6dhe/l8TJaYypzStOI0AkyHB2m47LSAsEmzQ7En
-	eY87XSmg80tXPcID3erhGpr8EFtZ9aSAsj5FBxIWFTfVwUSlhD4M4YdklLUIO0LvA1s2rR+9lzjrf
-	8FBGUJSw==;
+	bh=UrpmziZLfotMS5CEoKkLYKoC2t3idXqYLHnfrjpqSoM=; b=e1tRVlvPqVYFmGPVEJSLOFP/oS
+	RZxmfLCV6QFKLkysnycJcI+bsBQVMp6PnnQPcb7crL5PHwAGXw3forewXeJhR+3foqCL+zD+ETyC4
+	L8pH2pq2Zj84MVm/4EbeA965ExOx69MC0w146mMekk/gttcq9Ic2Ji9/HFmIW5gyRPLu9u8tnzYny
+	fapl6RVxnra+Q3MbH3/jPxdbLK2MwErqbkbVAQ3PBcpAjhsS3UyLNEoJZJ441L3Rr7qiL46SjbL1X
+	GpHYmfcgUGaf8UJdbfT/AommiVjeJgyqtWbsKKKBBIa3zhnlvDsToWzo+Wc8FF9Cx0NFvtT12VhRZ
+	jXcePDWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uyDPs-00000005Le9-3bHH;
-	Mon, 15 Sep 2025 17:55:04 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uyFfq-00000005bQN-4BGv;
+	Mon, 15 Sep 2025 20:19:42 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uyDPq-00000005Ld8-0Vad;
-	Mon, 15 Sep 2025 17:55:03 +0000
+	id 1uyFfp-00000005bQ7-0Br5;
+	Mon, 15 Sep 2025 20:19:41 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id BC9C041779;
-	Mon, 15 Sep 2025 17:55:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 562DAC4CEFB;
-	Mon, 15 Sep 2025 17:54:56 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 2A87C60227;
+	Mon, 15 Sep 2025 20:19:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 938B5C4CEF1;
+	Mon, 15 Sep 2025 20:19:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1757958901;
-	bh=p6i1OXOwL1SbFMy6RHcrUa5lkMegakp9xY05tYmaFnw=;
+	s=k20201202; t=1757967579;
+	bh=XdJ7z/q77YUFL/QosenW4NKVcYFIhAWClP3csrjOEHE=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=jom/24+EXhKUrEjPIycsMmgCYhmsBk1/WXxwQDO2r6+KPb+kDjeG8to3CCwvyqU/l
-	 oawXXgrHbTKOEYTYjVPgrJyCtjfq21/GjhscZsrXfDM4bMtSvzUQ58kdqXhYkaEspt
-	 Ny4iC9WtNufFJwcOxo518A1KT3kEYPnQzFoWgro6feQBLLfWND1LuAI1kIGvm+a0c6
-	 E8ycaLMCXRReKt2vOMMGFf5zGJSQan6rrQZbgVIFdzB/4bbbkoLF5+Q6qljSEdny0W
-	 jY5W1g7cN/dC0dhPI6/BkqxNRxPX8ESK+8pcBIjCifTi02o98uOSabpw5/AaEozXcx
-	 KgMv+VhBYMdYQ==
-Date: Mon, 15 Sep 2025 18:54:54 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Boris Brezillon <boris.brezillon@collabora.com>,
-	Steven Price <steven.price@arm.com>,
-	Liviu Dudau <liviu.dudau@arm.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+	b=EZqHnVo/0vRzL1QXtPlDyW6r5wT1/RXhbRcDV/QJDqD0XKxxh6MQ23H7OABUjt2mK
+	 Grlghu0fggLO5017FGMY4UIIxvlIlw2chH0Ewcql3s1kFY7kSsQF/Dok0LTC/Pn7Zf
+	 3sUgI+p7lztQaBlhl8AkNFbDPkkb0K81d14POIRd15kAeSGF1vrXFcIrZMs4mq9lC8
+	 EXdca9Wa7KqtgUoWWPR3OW8ms7veuUurvmEmkhaDlczzi35gKr1Auq82QGdyEWCW5y
+	 AL9iX3CsI1xr1ZxgQSD+eMF1SgbrDOh16/rSSIC/b67im/jRftRMPfjkeBERRhCUgl
+	 onhjUo0TpfT5Q==
+Date: Mon, 15 Sep 2025 15:19:38 -0500
+From: Rob Herring <robh@kernel.org>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Russell King <linux@armlinux.org.uk>, Jakub Kicinski <kuba@kernel.org>,
+	devicetree@vger.kernel.org, Paolo Abeni <pabeni@redhat.com>,
+	Daniel Golle <daniel@makrotopia.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	MyungJoo Ham <myungjoo.ham@samsung.com>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	Chanwoo Choi <cw00.choi@samsung.com>,
-	Jassi Brar <jassisinghbrar@gmail.com>, Kees Cook <kees@kernel.org>,
-	"Gustavo A. R. Silva" <gustavoars@kernel.org>,
-	Chia-I Wu <olvaffe@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>,
-	kernel@collabora.com, dri-devel@lists.freedesktop.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	Sean Wang <sean.wang@mediatek.com>,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Heiner Kallweit <hkallweit1@gmail.com>, netdev@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	DENG Qingfang <dqfext@gmail.com>, Lee Jones <lee@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Eric Dumazet <edumazet@google.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Simon Horman <horms@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
-	linux-hardening@vger.kernel.org
-Subject: Re: [PATCH v2 04/10] dt-bindings: mailbox: Add MT8196 GPUEB Mailbox
-Message-ID: <20250915-reviving-evasive-8ecd2d760ba8@spud>
-References: <20250912-mt8196-gpufreq-v2-0-779a8a3729d9@collabora.com>
- <20250912-mt8196-gpufreq-v2-4-779a8a3729d9@collabora.com>
+	Conor Dooley <conor+dt@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>
+Subject: Re: [net-next PATCH v18 3/8] dt-bindings: mfd: Document support for
+ Airoha AN8855 Switch SoC
+Message-ID: <20250915201938.GA3326233-robh@kernel.org>
+References: <20250915104545.1742-1-ansuelsmth@gmail.com>
+ <20250915104545.1742-4-ansuelsmth@gmail.com>
+ <175795551518.2905345.11331954231627495466.robh@kernel.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="DOVzGwk1KV7PIqCa"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250912-mt8196-gpufreq-v2-4-779a8a3729d9@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250915_105502_206532_A251D517 
-X-CRM114-Status: GOOD (  20.76  )
+In-Reply-To: <175795551518.2905345.11331954231627495466.robh@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,120 +86,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, Sep 15, 2025 at 12:01:47PM -0500, Rob Herring (Arm) wrote:
+> 
+> On Mon, 15 Sep 2025 12:45:39 +0200, Christian Marangi wrote:
+> > Document support for Airoha AN8855 Switch SoC. This SoC expose various
+> > peripherals like an Ethernet Switch, a NVMEM provider and Ethernet PHYs.
+> > 
+> > It does also support i2c and timers but those are not currently
+> > supported/used.
+> > 
+> > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> > ---
+> >  .../bindings/mfd/airoha,an8855.yaml           | 173 ++++++++++++++++++
+> >  1 file changed, 173 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/mfd/airoha,an8855.yaml
+> > 
+> 
+> My bot found errors running 'make dt_binding_check' on your patch:
+> 
+> yamllint warnings/errors:
+> 
+> dtschema/dtc warnings/errors:
+> /builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/mfd/airoha,an8855.yaml:
+> 	Error in referenced schema matching $id: http://devicetree.org/schemas/nvmem/airoha,an8855-efuse.yaml
+> 	Tried these paths (check schema $id if path is wrong):
+> 	/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/nvmem/airoha,an8855-efuse.yaml
+> 	/usr/local/lib/python3.13/dist-packages/dtschema/schemas/nvmem/airoha,an8855-efuse.yaml
+> 
+> /builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/mfd/airoha,an8855.example.dtb: soc@1 (airoha,an8855): efuse: {'compatible': ['airoha,an8855-efuse'], '#nvmem-cell-cells': 0, 'nvmem-layout': {'compatible': ['fixed-layout'], '#address-cells': 1, '#size-cells': 1, 'shift-sel-port0-tx-a@c': {'reg': [[12, 4]], 'phandle': 3}, 'shift-sel-port0-tx-b@10': {'reg': [[16, 4]], 'phandle': 4}, 'shift-sel-port0-tx-c@14': {'reg': [[20, 4]], 'phandle': 5}, 'shift-sel-port0-tx-d@18': {'reg': [[24, 4]], 'phandle': 6}, 'shift-sel-port1-tx-a@1c': {'reg': [[28, 4]], 'phandle': 7}, 'shift-sel-port1-tx-b@20': {'reg': [[32, 4]], 'phandle': 8}, 'shift-sel-port1-tx-c@24': {'reg': [[36, 4]], 'phandle': 9}, 'shift-sel-port1-tx-d@28': {'reg': [[40, 4]], 'phandle': 10}}} should not be valid under {'description': "Can't find referenced schema: http://devicetree.org/schemas/nvmem/airoha,an8855-efuse.yaml#"}
+> 	from schema $id: http://devicetree.org/schemas/mfd/airoha,an8855.yaml#
+> Documentation/devicetree/bindings/mfd/airoha,an8855.example.dtb: /example-0/mdio/soc@1/efuse: failed to match any schema with compatible: ['airoha,an8855-efuse']
 
---DOVzGwk1KV7PIqCa
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Why are we on v18 and still getting errors? I only review patches 
+without errors.
 
-On Fri, Sep 12, 2025 at 08:37:03PM +0200, Nicolas Frattaroli wrote:
-> The MediaTek MT8196 SoC includes an embedded MCU referred to as "GPUEB",
-> acting as glue logic to control power and frequency of the Mali GPU.
-> This MCU runs special-purpose firmware for this use, and the main
-> application processor communicates with it through a mailbox.
->=20
-> Add a binding that describes this mailbox.
->=20
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> ---
->  .../mailbox/mediatek,mt8196-gpueb-mbox.yaml        | 64 ++++++++++++++++=
-++++++
->  1 file changed, 64 insertions(+)
->=20
-> diff --git a/Documentation/devicetree/bindings/mailbox/mediatek,mt8196-gp=
-ueb-mbox.yaml b/Documentation/devicetree/bindings/mailbox/mediatek,mt8196-g=
-pueb-mbox.yaml
-> new file mode 100644
-> index 0000000000000000000000000000000000000000..56508f406fce88c7c1699aa67=
-b57394fc7b1c357
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/mailbox/mediatek,mt8196-gpueb-mbo=
-x.yaml
-> @@ -0,0 +1,64 @@
-> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/mailbox/mediatek,mt8196-gpueb-mbox.ya=
-ml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek MFlexGraphics GPUEB Mailbox Controller
-> +
-> +maintainers:
-> +  - Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - mediatek,mt8196-gpueb-mbox
-> +
-> +  reg:
-> +    items:
-> +      - description: mailbox data registers
-> +      - description: mailbox control registers
-> +
-> +  reg-names:
-> +    items:
-> +      - const: data
-> +      - const: ctl
-> +
-> +  clocks:
-> +    items:
-> +      - description: main clock of the GPUEB MCU
-> +
-> +  interrupts:
-> +    items:
-> +      - description: fires when a new message is received
-> +
-> +  "#mbox-cells":
-> +    const: 1
-> +    description:
-> +      The number of the mailbox channel.
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - reg-names
-> +  - clocks
-> +  - interrupts
-> +  - "#mbox-cells"
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/mediatek,mt8196-clock.h>
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/interrupt-controller/irq.h>
-> +
-> +    gpueb_mbox: mailbox@4b09fd80 {
-
-drop the label, but otherwise this binding looks okay to me.
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-
-> +        compatible =3D "mediatek,mt8196-gpueb-mbox";
-> +        reg =3D <0x4b09fd80 0x280>,
-> +              <0x4b170000 0x7c>;
-> +        reg-names =3D "data", "ctl";
-> +        clocks =3D <&topckgen CLK_TOP_MFG_EB>;
-> +        interrupts =3D <GIC_SPI 608 IRQ_TYPE_LEVEL_HIGH 0>;
-> +        #mbox-cells =3D <1>;
-> +    };
->=20
-> --=20
-> 2.51.0
->=20
-
---DOVzGwk1KV7PIqCa
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaMhS7gAKCRB4tDGHoIJi
-0lYlAP9XouEer/Fwt1f66kXxrg1+AQ0F+bPce66xOHq6v41wAgEA4pG93Zb9AFHi
-eAUYrGfpE1XzVi8+aUoob4gbAyOwvw0=
-=+tYL
------END PGP SIGNATURE-----
-
---DOVzGwk1KV7PIqCa--
+Rob
 
