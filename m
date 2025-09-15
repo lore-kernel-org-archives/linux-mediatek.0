@@ -4,62 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8755CAC59A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Sep 2025 13:07:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4609CCAC592
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Sep 2025 13:34:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LNmUk6ZhObM4LfmdP3/ziFxF5YJDbBe7swH2WnfOgpM=; b=Ok8nlx8mkkDAGuX3W0Raui+Ufg
-	qWj4LDhyYLdiW5Ky4ihWLFW0VjHm/katKaFLl9COAFBQFuvYCGZ0Z1rfLo8Y7ca6rkZfEvdQk+W48
-	woJ7KSFy43B9OUGr7Sv51Lc+J0zLCj+ZWPGiTNqn8Sk4WVrIq9LE7uCWIPhPjiN0QCwR9/sngTvzD
-	Dzx/nPOXdmZHvqEFMnzbpTlfeSiIui2haRKvkbZNy5YdGgHcoj5Zkiug2otQviw2xMHIOv/gbMUmn
-	3qebwPliDSuNYVKmL1XmsDx3hnjmZFbscmZz1bNgZmLGE8OaeAlQy4JQdDuXQ0NfBaTiUXw2T0kqe
-	W8noYqhg==;
+	bh=JXcBaV2RAfDhKm8EZS+sK4enClIyf2ne3a1dilgi9xY=; b=4cOX59SzycAQ32Z5yMl8pPgp1N
+	nLwEjpePcjf/SD73LusgbykkaOpkP7lFluX9VLup98sAU0piJMe1H6OCpO4xClDussuXKnXJPitKO
+	TQFPI64cyaASo+dA2aEsHjMqt+m5wIePiMEEmIDI09YDtQV43msBDdvXzFR96My4DcRQQnWLNsX3A
+	cY1ZuT2yTHGxbclyVaDlDDJb4O8m3UU4uJTVAxdwwsVGv6vgmopCm8m+F6IqdgD+a6gEETMV3Rt+1
+	ufxFqqKv+vq4bhBapZ3P3LMF1JK/pD7ATqx4HUVt4IUJ0naD+yH8BosWGNPngYZzJ9RZg4IqBkwhn
+	mBtpQ9aw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uy8vE-00000004Faw-3Uvd;
-	Mon, 15 Sep 2025 13:07:08 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1uy9Li-00000004LDw-2IcQ;
+	Mon, 15 Sep 2025 13:34:30 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uy8vB-00000004FZ1-3f7n;
-	Mon, 15 Sep 2025 13:07:07 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.98.2)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1uy8v2-000000005zY-3dY8;
-	Mon, 15 Sep 2025 13:06:56 +0000
-Date: Mon, 15 Sep 2025 14:06:53 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Jiri Slaby <jirislaby@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@baylibre.com>,
-	Yu Jiaoliang <yujiaoliang@vivo.com>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Changqi Hu <changqi.hu@mediatek.com>,
-	Sam Shih <sam.shih@mediatek.com>,
-	Steven Liu <steven.liu@mediatek.com>,
-	John Crispin <john@phrozen.org>, linux-kernel@vger.kernel.org,
-	linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 2/2] tty: serial: 8250_mtk: manage baud clock in runtime
- PM ops
-Message-ID: <4a199adc63de9159865a48b7ded2048d45712d91.1757941345.git.daniel@makrotopia.org>
-References: <2de07b0a6d51d5d3bf3e55cd03cf75adfc91ee7d.1757941345.git.daniel@makrotopia.org>
+	id 1uy9Lg-00000004LCf-0uoU;
+	Mon, 15 Sep 2025 13:34:29 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1757943252; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=VcDt09apkXkUPqUSPhPe0SRA9p6NfI7eRJdyWIzzMch+7gA70FlWYClpkVNNIDkCRiW8FjSk4Z4B0ESJYO6ee3Mlz/gkfx/iJWer9WbPVPEtVsJXiEcOoEjm7g2UC7Ot+rHWU+Fl0cau77lVf/DMf4j8OHIwf3C+ZHKk35G4tX4=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1757943252; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=JXcBaV2RAfDhKm8EZS+sK4enClIyf2ne3a1dilgi9xY=; 
+	b=TLTGdSYp4xC65jkTH8EN2lCbZa8kV7SXj7dnEKDproxSS9RjaoOppJIrePAdJmvnR7je8IyXb3JZZR8D6CA1Q0tB4xBalsHeEpAr4aeyiqmq5RabIjYC+ea5kgJd8cBYQhDku2sTVXW9FNPPms9YH4I+nIUxYMN8esoQEuGg1Zg=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1757943252;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=JXcBaV2RAfDhKm8EZS+sK4enClIyf2ne3a1dilgi9xY=;
+	b=JaPRdf93LIE/7iVb2KC2EHXu+4sEUuVS7aGz2C8x1og5DPXPLyjvMplIhLuE8pZ3
+	sQZuJgHphctSz/4SpJF+nPCqdjLwyZ+xH6or/X5vg//iZsA6ebKGVWP762yzDUtydcm
+	ruB1tsNh7YV1r7BrDX9IbzmU+/qmOAPgM+fOii0k=
+Received: by mx.zohomail.com with SMTPS id 1757943250997458.89106567723354;
+	Mon, 15 Sep 2025 06:34:10 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Boris Brezillon <boris.brezillon@collabora.com>,
+ Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ Chanwoo Choi <cw00.choi@samsung.com>, Jassi Brar <jassisinghbrar@gmail.com>,
+ Kees Cook <kees@kernel.org>, "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ Chia-I Wu <olvaffe@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-pm@vger.kernel.org, linux-hardening@vger.kernel.org
+Subject: Re: [PATCH v2 10/10] drm/panthor: add support for MediaTek MFlexGraphics
+Date: Mon, 15 Sep 2025 15:32:23 +0200
+Message-ID: <117198807.nniJfEyVGO@workhorse>
+In-Reply-To: <ae482072-c13f-4cb4-be26-50592b086fe6@collabora.com>
+References: <20250912-mt8196-gpufreq-v2-0-779a8a3729d9@collabora.com>
+ <20250912-mt8196-gpufreq-v2-10-779a8a3729d9@collabora.com>
+ <ae482072-c13f-4cb4-be26-50592b086fe6@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <2de07b0a6d51d5d3bf3e55cd03cf75adfc91ee7d.1757941345.git.daniel@makrotopia.org>
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="utf-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250915_060705_914476_7E69220E 
-X-CRM114-Status: UNSURE (   9.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250915_063428_304939_1F22AE4C 
+X-CRM114-Status: GOOD (  43.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,42 +92,134 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The baud clock is gated on some MediaTek SoCs and can be managed by
-runtime power management.
+On Monday, 15 September 2025 12:28:09 Central European Summer Time AngeloGioacchino Del Regno wrote:
+> Il 12/09/25 20:37, Nicolas Frattaroli ha scritto:
+> > MediaTek uses some glue logic to control frequency and power on some of
+> > their GPUs. This is best exposed as a devfreq driver, as it saves us
+> > from having to hardcode OPPs into the device tree, and can be extended
+> > with additional devfreq-y logic like more clever governors that use the
+> > hardware's GPUEB MCU to set frame time targets and power limits.
+> > 
+> > Add this driver to the panthor subdirectory. It needs to live here as it
+> > needs to call into panthor's devfreq layer, and panthor for its part
+> > also needs to call into this driver during probe to get a devfreq device
+> > registered. Solving the cyclical dependency by having mediatek_mfg live
+> > without knowledge of what a panthor is would require moving the devfreq
+> > provider stuff into a generic devfreq subsystem solution, which I didn't
+> > want to do.
+> > 
+> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> > ---
+> >   drivers/gpu/drm/panthor/Kconfig        |   13 +
+> >   drivers/gpu/drm/panthor/Makefile       |    2 +
+> >   drivers/gpu/drm/panthor/mediatek_mfg.c | 1053 ++++++++++++++++++++++++++++++++
+> >   3 files changed, 1068 insertions(+)
+> > 
+> [ ... snip ...]
+> > +static int mtk_mfg_eb_on(struct mtk_mfg *mfg)
+> > +{
+> > +	struct device *dev = &mfg->pdev->dev;
+> > +	u32 val;
+> > +	int ret;
+> > +
+> > +	/*
+> > +	 * If MFG is already on from e.g. the bootloader, we should skip doing
+> > +	 * the power-on sequence, as it wouldn't work without powering it off
+> > +	 * first.
+> > +	 */
+> > +	if ((readl(mfg->rpc + RPC_PWR_CON) & PWR_ACK_M) == PWR_ACK_M)
+> > +		return 0;
+> > +
+> > +	ret = readl_poll_timeout(mfg->rpc + RPC_GHPM_RO0_CON, val,
+> > +				 !(val & (GHPM_PWR_STATE_M | GHPM_STATE_M)),
+> > +				 GPUEB_POLL_US, GPUEB_TIMEOUT_US);
+> > +	if (ret) {
+> > +		dev_err(dev, "timed out waiting for EB to power on\n");
+> > +		return ret;
+> > +	}
+> > +
+> > +	mtk_mfg_update_reg_bits(mfg->rpc + mfg->ghpm_en_reg, GHPM_ENABLE_M,
+> > +				GHPM_ENABLE_M);
+> > +
+> > +	mtk_mfg_update_reg_bits(mfg->rpc + RPC_GHPM_CFG0_CON, GHPM_ON_SEQ_M, 0);
+> > +	mtk_mfg_update_reg_bits(mfg->rpc + RPC_GHPM_CFG0_CON, GHPM_ON_SEQ_M,
+> > +				GHPM_ON_SEQ_M);
+> > +
+> > +	mtk_mfg_update_reg_bits(mfg->rpc + mfg->ghpm_en_reg, GHPM_ENABLE_M, 0);
+> > +
+> > +
+> > +	ret = readl_poll_timeout(mfg->rpc + RPC_PWR_CON, val,
+> > +				 (val & PWR_ACK_M) == PWR_ACK_M,
+> > +				 GPUEB_POLL_US, GPUEB_TIMEOUT_US);
+> 
+> I wonder if you can check how much time does the GPUEB really take to poweron,
+> just so that we might be able to reduce delay_us here.
 
-Disable and unprepare the baud clock when suspending the UART, prepare
-and enable it again when resuming it.
+I already did, that's where the 50us value is from as far as I remember.
 
-Fixes: e32a83c70cf9 ("serial: 8250-mtk: modify mtk uart power and clock management")
-Suggested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
-v2: add this patch as suggested by AngeloGioacchino Del Regno in
-https://lore.kernel.org/all/8b1c1796-6de2-4526-9a29-d8649141b878@collabora.com/
+> 
+> > +	if (ret) {
+> > +		dev_err(dev, "timed out waiting for EB power ack, val = 0x%X\n",
+> > +			val);
+> > +		return ret;
+> > +	}
+> > +
+> > +	ret = readl_poll_timeout(mfg->gpr + GPR_LP_STATE, val,
+> > +				 (val == EB_ON_RESUME),
+> > +				 GPUEB_POLL_US, GPUEB_TIMEOUT_US);
+> 
+> Same here - and I think this one is more critical, as I can see this suspend/resume
+> control being used more extensively in the future.
+> 
+> Specifically, I'm wondering if we could add runtime PM ops that will request EB
+> suspend/resume - and also if doing so would make any sense.
+> 
+> I am guessing that the "suspend" LP_STATE stops the internal state machine, making
+> the EB MCU to either go in a low-power state or to anyway lower its power usage by
+> at least suspending the iterations.
 
- drivers/tty/serial/8250/8250_mtk.c | 2 ++
- 1 file changed, 2 insertions(+)
+I think I briefly fiddled with this but then it did nothing other than
+break everything. Is the current time it takes to resume a problem?
 
-diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
-index 9329ed1f759d..5875a7b9b4b1 100644
---- a/drivers/tty/serial/8250/8250_mtk.c
-+++ b/drivers/tty/serial/8250/8250_mtk.c
-@@ -435,6 +435,7 @@ static int __maybe_unused mtk8250_runtime_suspend(struct device *dev)
- 	while
- 		(serial_in(up, MTK_UART_DEBUG0));
- 
-+	clk_disable_unprepare(data->uart_clk);
- 	clk_disable_unprepare(data->bus_clk);
- 
- 	return 0;
-@@ -445,6 +446,7 @@ static int __maybe_unused mtk8250_runtime_resume(struct device *dev)
- 	struct mtk8250_data *data = dev_get_drvdata(dev);
- 
- 	clk_prepare_enable(data->bus_clk);
-+	clk_prepare_enable(data->uart_clk);
- 
- 	return 0;
- }
--- 
-2.51.0
+> 
+> Of course - here I mean that we could have
+> 1. System suspend ops that powers off the EB completely like you're doing here and
+> 2. Runtime PM op that may be called (very) aggressively
+> 
+> ...this would obviously not be feasible if the EB suspend/resume (without complete
+> poweron/off) takes too much time to actually happen.
+
+We probably don't want to aggressively suspend the thing doing DVFS
+while a workload is running, and if no workload is running, it
+already suspends. I can't really say how normal desktop usage will
+play out yet, but generally speaking I think it's a bit early to
+find a comfortable place on the transition latency vs power draw
+curve at this point.
+
+> [... snip ...]
+> > +static int mtk_mfg_init_shared_mem(struct mtk_mfg *mfg)
+> > +{
+> > [... snip ...]
+> > +
+> > +	dev_info(dev, "initialised mem at phys 0x%016llX\n", mfg->sram_phys);
+> 
+> I don't like exposing addresses in kmsg. Please just don't.
+
+It's a physical address. This is not a kernel pointer, but something
+that can be read from the DTS. But sure, I'll remove it I guess?
+
+> [... snip ...]
+> 
+> Cheers,
+> Angelo
+> 
+
+You can assume me not responding to a part of the feedback in this
+e-mail means I'll address it in the next revision of the patch
+series.
+
+Kind regards,
+Nicolas Frattaroli
+
+
 
