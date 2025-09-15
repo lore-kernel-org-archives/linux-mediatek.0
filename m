@@ -4,69 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C44EECA101F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Sep 2025 07:29:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D1CECAC58E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Sep 2025 07:33:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PVQnY6XPvZiTTyzyocltrSXRv7+9/Cwb/NOm/NT7nzQ=; b=YyG5bxifbNnppEMlMRuBU/V5JI
-	hDjFgge3ixC/z0yVRE3F01xmzpNcHwnShYy7wZoiADtm9JLUpG4ekTmO2hmmHVhBwj4YiAb1NCNCE
-	XfhQHycBZ+i1fmF9RfnoxoE/Vvjb0mmQLRjn00hLi5lHdX3zFRZRCorf9Rvsv3upunfrTeluAUv3K
-	2F3kj8BirYf3+XYNaEX6eK1fH/3udqgtqSqz7cuIssmW7EIrVE+EnyuCx5yuzrFKcVwU7BFft3Gpx
-	01mhc5nuscrLXIRR4VsgVn23Hm8guoaUHFLTrO75dTPLXIi2xUF8c68EjREXDPZDzcFtY0qYMyEHS
-	VN1nN9wQ==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zYiHZELFarw3PToNRADNwpDtZ4cHTMNtElA+diEGHz4=; b=Z05HQKR8eZTjuW9aInZd8zyh2f
+	O78zeQuGxjXoAAHrrnt1eb5cSNxcyeCafFZdkl3ZRVK/nw0FyJBCiQ0v8CIzxtlm80UO6SJs45om2
+	UXfbevKpVTn2tFoC42h5Hq7XVR8bESJ7ehnWmxcL1/nUOXEkZGUvGCeCKOJ6pMsKdFKlmlDt0l4U+
+	FgBNLynVMLFNtwVOFLpO4jqohsPoI1HPTBHyZQC6j9IvoHr2ys0fPYLzrlp0HAag7cBQ3crLEyZpK
+	noOkleBH3HAeN5BBWJ+XQbCu0uP6cgPr8PEQ6WU4TsgMAfA32l2poI3fteEctrikinef1BOunFUib
+	PftRI5iw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uy3e2-000000033da-3cSt;
-	Mon, 15 Sep 2025 07:29:02 +0000
+	id 1uy3ih-000000034Me-2vDE;
+	Mon, 15 Sep 2025 07:33:51 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uy3dz-000000033c9-1ssZ;
-	Mon, 15 Sep 2025 07:29:00 +0000
+	id 1uy3if-000000034LQ-1RlN;
+	Mon, 15 Sep 2025 07:33:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1757921337;
-	bh=GXEPazfaV4yHZLRavKhdyKStvO3E/DjBkytTjtx7oYc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=LfDSNl+VFT3HhTIWTMkRiyNe781kVDlIlyWFraoYz0tlEIfTvGX1/ULcCrKlXvOoh
-	 Ywjaz2qMjH24AyXSe5b8qNWWgwHLvVUKC7WYG52ku74vFv7CtdYLj1uLsT3KBD+AHe
-	 13xsGCqvephqcHESgMgHNU4Oie2mNy1bWPwfL9GTZKhE8FgwYyqoA34QzVbfsycetB
-	 0dumOr/X9ie8215pyMubkphHrfjASAzvEOHm8udMCXST6Dh9HPTuS4Hyv+p0NS2o6H
-	 r8eJuiZd3P/q1M5BAiJDssxFAcH6iY3al1w06QfezBf9zqtFQkuEDpwdMN3q7Q2Yz6
-	 sGf99VFaO+3Qg==
+	s=mail; t=1757921627;
+	bh=CvSpZpuhDtzZdxfbopkSom4BlyFhn0H99cY81Z+ClJ4=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=PpNo0Gm0NGeq8BUqPEaE3VEteESp1T51bYoPqaOnH7v0WlIn2RZNrOED5yoZLgRWS
+	 e1TFKJSQT5faQR8H3/9zZUn9MAypxIdcoqz4J+JPljcpa5IcQ9WOpYZTHYj9eIR6rk
+	 yvitPSU5wIU9kNIrlI9EMBUsCqbpmxp0BLsCyOOVcEpKkhe6Ay2wVB7sox7L+EpBx8
+	 jTsXFoH68PEU7dja1RyyC1g63aE+Po3RfQnADOAYE0hY/YXvfN1h/rmVxjtDE8Or7D
+	 bnavYcMIvsHSxO1+qdnHpvZ5A+kCIg5tEOlgQt+wLJoKkMagR9yj1fHSYC4v6idDJb
+	 wpCkaCbCfybyQ==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id F36D317E0AC3;
-	Mon, 15 Sep 2025 09:28:56 +0200 (CEST)
-Message-ID: <7bacf8ca-4ec4-4b06-b989-52e287a812d8@collabora.com>
-Date: Mon, 15 Sep 2025 09:28:56 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id CD81C17E0AC3;
+	Mon, 15 Sep 2025 09:33:46 +0200 (CEST)
+Message-ID: <8b1c1796-6de2-4526-9a29-d8649141b878@collabora.com>
+Date: Mon, 15 Sep 2025 09:33:46 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/4] dt-bindings: pinctrl: mediatek: Document MT6878
- pin controller bindings
-To: Igor Belwon <igor.belwon@mentallysanemainliners.org>,
- Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Sean Wang <sean.wang@kernel.org>
-Cc: linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20250914-mt6878-pinctrl-support-v2-0-254731aa3fc2@mentallysanemainliners.org>
- <20250914-mt6878-pinctrl-support-v2-1-254731aa3fc2@mentallysanemainliners.org>
+Subject: Re: [PATCH] tty: serial: 8250_mtk: enable baud clock
+To: Daniel Golle <daniel@makrotopia.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Jiri Slaby <jirislaby@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Yu Jiaoliang <yujiaoliang@vivo.com>,
+ =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
+ Changqi Hu <changqi.hu@mediatek.com>, Sam Shih <sam.shih@mediatek.com>,
+ Steven Liu <steven.liu@mediatek.com>, John Crispin <john@phrozen.org>,
+ linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <5d6acd2273e3c98a5cbc685ad94eff19c6b6d044.1757807642.git.daniel@makrotopia.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250914-mt6878-pinctrl-support-v2-1-254731aa3fc2@mentallysanemainliners.org>
+In-Reply-To: <5d6acd2273e3c98a5cbc685ad94eff19c6b6d044.1757807642.git.daniel@makrotopia.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250915_002859_643928_C84287E5 
-X-CRM114-Status: GOOD (  15.60  )
+X-CRM114-CacheID: sfid-20250915_003349_551032_F16CE3AE 
+X-CRM114-Status: GOOD (  19.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,92 +80,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 14/09/25 16:51, Igor Belwon ha scritto:
-> Add device-tree bindings for the pin controller and the EINT controller
-> found in the MediaTek MT6878 SoC.
+Il 14/09/25 01:59, Daniel Golle ha scritto:
+> Some MediaTek SoCs got a gated UART baud clock, which currently gets
+> disabled as the clk subsystem believes it would be unused. This results in
+> the uart freezing right after "clk: Disabling unused clocks" on those
+> platforms.
 > 
-> Signed-off-by: Igor Belwon <igor.belwon@mentallysanemainliners.org>
-> ---
->   .../bindings/pinctrl/mediatek,mt6878-pinctrl.yaml  | 210 +++++++++++++++++++++
->   1 file changed, 210 insertions(+)
+> To fix this request the "baud" clock as enabled to prevent disabling it
+> among with the unused clocks.
+> Runtime power management can probably also be restored to the state before
+> commit e32a83c70cf9 ("serial: 8250-mtk: modify mtk uart power and clock
+> management"), but that isn't strictly needed to fix the regression
+> introduced by that commit.
 > 
-> diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6878-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6878-pinctrl.yaml
-> new file mode 100644
-> index 0000000000000000000000000000000000000000..f320d286ad2155bc4aa449c195ddff3a8686204c
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6878-pinctrl.yaml
-> @@ -0,0 +1,210 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/pinctrl/mediatek,mt6878-pinctrl.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek MT6878 Pin Controller
-> +
-> +maintainers:
-> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> +  - Igor Belwon <igor.belwon@mentallysanemainliners.org>
-> +
-> +description:
-> +  The MediaTek MT6878 Pin controller is used to control SoC pins.
-> +
-> +properties:
-> +  compatible:
-> +    const: mediatek,mt6878-pinctrl
-> +
-> +  reg:
-> +    items:
-> +      - description: pin controller base
-> +      - description: bl group IO
-> +      - description: bm group IO
-> +      - description: br group IO
-> +      - description: bl1 group IO
-> +      - description: br1 group IO
-> +      - description: lm group IO
-> +      - description: lt group IO
-> +      - description: rm group IO
-> +      - description: rt group IO
-> +      - description: EINT controller E block
-> +      - description: EINT controller S block
-> +      - description: EINT controller W block
-> +      - description: EINT controller C block
-> +
-> +  reg-names:
-> +    items:
-> +      - const: base
-> +      - const: bl
-> +      - const: bm
-> +      - const: br
-> +      - const: bl1
-> +      - const: br1
-> +      - const: lm
-> +      - const: lt
-> +      - const: rm
-> +      - const: rt
-> +      - const: eint-e
-> +      - const: eint-s
-> +      - const: eint-w
-> +      - const: eint-c
-> +
-> +  gpio-controller: true
-> +
-> +  '#gpio-cells':
-> +    description:
-> +      Number of cells in GPIO specifier. Since the generic GPIO binding is used,
-> +      the amount of cells must be specified as 2. See the below mentioned gpio
-> +      binding representation for description of particular cells.
-> +    const: 2
-> +
-> +  gpio-ranges:
-> +    maxItems: 1
-> +
-> +  gpio-line-names: true
+> Fixes: e32a83c70cf9 ("serial: 8250-mtk: modify mtk uart power and clock management")
+> Suggested-by: Sam Shih <sam.shih@mediatek.com>
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
-Krzysztof asked you to restrict the maximum number of gpio-line-names if I
-remember correctly, you forgot to do so :-)
+Is there any particular reason why you didn't en/disable the uart_clk in
+runtime PM ops?
 
 Cheers,
 Angelo
+
+> ---
+>   drivers/tty/serial/8250/8250_mtk.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
+> index b44de2ed7413..9329ed1f759d 100644
+> --- a/drivers/tty/serial/8250/8250_mtk.c
+> +++ b/drivers/tty/serial/8250/8250_mtk.c
+> @@ -475,13 +475,13 @@ static int mtk8250_probe_of(struct platform_device *pdev, struct uart_port *p,
+>   	int dmacnt;
+>   #endif
+>   
+> -	data->uart_clk = devm_clk_get(&pdev->dev, "baud");
+> +	data->uart_clk = devm_clk_get_enabled(&pdev->dev, "baud");
+>   	if (IS_ERR(data->uart_clk)) {
+>   		/*
+>   		 * For compatibility with older device trees try unnamed
+>   		 * clk when no baud clk can be found.
+>   		 */
+> -		data->uart_clk = devm_clk_get(&pdev->dev, NULL);
+> +		data->uart_clk = devm_clk_get_enabled(&pdev->dev, NULL);
+>   		if (IS_ERR(data->uart_clk)) {
+>   			dev_warn(&pdev->dev, "Can't get uart clock\n");
+>   			return PTR_ERR(data->uart_clk);
+
 
 
