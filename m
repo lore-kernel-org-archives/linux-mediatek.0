@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47C86CAC599
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Sep 2025 10:40:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8317CAC598
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Sep 2025 10:40:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AX6geBpkAr8O0AIRV30OjkI208B43a99wZ/5ohwYabk=; b=ZfjNcsJjCQcEojuWNtjPVCAjP4
-	BupSC4ud2GL232I91BKcp1SAy/iAKJB0Ity8lWbtNvNjLuSZwCrWS5675iAR3pqCeAAoxIlZUo/NE
-	aGF/WHb8ry/0u9JBTQFgJETjYQGVIv0FVQnbRKtWRa7u3rLvrJBoqtQrKaYcpQlowX9N1vYXSTRBJ
-	z6rfK+h1uwn7+xUO8hYnM1BG/e4umdQGhaINpbqpZE4G/+IWUkge0keSuYaJrZdaZaQTyTGObf5rU
-	nKANsocrpi/kGmRiTgzC8SP+sQvtpzCqnJBGPgzj87cAGKQO7L7AndZCV3rwQZEkeIilwS0zeZC6i
-	0mmhgHVQ==;
+	bh=TXO05a3tbtvVOFCuHHunnofM/pGIQslOFGgwOkWai1c=; b=irnmwD20hpx+AWSivTo69jAk37
+	umLZul/vPBjv7YMhx2AiH5V4CkpV/vMONkcbfLEFWP5f9aHt2opGFUBUm8vxJcFl5CwVC1UUoGWBU
+	Es2FFDUhWYVviTeZIFoSzwlMaeFiUK4eyhIf2etw3MCp6wL2/SLNg04fMOUc33RP8iXh1qMm/Y+9k
+	QMkGNIpSLSuN3EuixuY2mrXR7Es3bwxIzAajSJQjkmxrccq/I/DXZxX3IIGUwmbgYH03BfH7Ws0o4
+	72efrPigmsdJoFfaHQiRJM2/MxxUUDeoqv5wAmsx2lRwJOuOuy7T9/TW+eN7FZ8rHL7j5Sj1txRvt
+	mA95lnzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uy6d1-00000003j7r-1bWW;
-	Mon, 15 Sep 2025 10:40:11 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uy6d8-00000003jDe-3fVd;
+	Mon, 15 Sep 2025 10:40:18 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uy6cw-00000003j3V-1zNz;
-	Mon, 15 Sep 2025 10:40:07 +0000
+	id 1uy6cz-00000003j53-3hxe;
+	Mon, 15 Sep 2025 10:40:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1757932804;
-	bh=OrTJg7ML8WF3jd++p1PbmIME638sKP8/rrTaWRexXFQ=;
+	s=mail; t=1757932807;
+	bh=YfkNuWF0UuUzo2fQZWy8bT5EoNrUHLsiRs9VwUk1PVk=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=n2Q/efzHkJGRLxmW/UaOdSLrbTUPUWThFLvuPvZGEzJ2eGVZt5GQGG46KcJwMXAP0
-	 KAVfdokKQSDwa0lC09Vrz93yG2kwUCpQZKR374PI9Bj8+N9Fo4ZMpCwIYwxV39txEv
-	 Nk1zm1K3b+apyMTdH7rEFbn9/zj+SnULkn1tFn9vHwVK1gDvXBM+5FAYubQzZIGKE/
-	 yV7hzHEmt5P2eLzoKiYZXoyE7pO+CW6VO1hlmVvHFQB07SqqdHXk2kv6vxnkhpJrik
-	 tvpSPnG8oaT4IUFNgbdtqu2q2yJZOQV/pQIXsPbqdfKNzijMBLQaEaGFXW8TuiPU2c
-	 ol5ppgNncVG0Q==
+	b=YzdGMv13sKiTswHck44V3ric1FZYkJiJTvgve65QXha4jYGt9hur1sohBLvRw0Q6d
+	 E7cPUW2OgwYuNcBeu07dxzDV2GaAOyfn/VRwFehODtrjSA+LV0NsPkkUS9DwbjEh/v
+	 E1S2on0kSEQoKTsfXC+wSE3Hi8YMX3vu6d0TgLtGQ2qy4v0HAE7ggUtCJNj0pn4plC
+	 H9wDqYtuYxodOe475HwPK5i9n/s8J8vCLufyWZ3G6agnp27ToTtojhhO9Cohwo/HI4
+	 mdBXhLWLU5Ehpskiw/GsyB7n9ZxMlWSAWh98uFSKhFl+StoPtK1K2YAZhVdjGBx0Hz
+	 27qVpPuLEgLhg==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9DD1E17E132A;
-	Mon, 15 Sep 2025 12:40:03 +0200 (CEST)
-Message-ID: <008072e1-2daa-4b88-a6c4-a7ff95532e89@collabora.com>
-Date: Mon, 15 Sep 2025 12:40:03 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DFB5517E124A;
+	Mon, 15 Sep 2025 12:40:06 +0200 (CEST)
+Message-ID: <dc4a1cc1-da1c-40d5-a873-ba041038de2a@collabora.com>
+Date: Mon, 15 Sep 2025 12:40:06 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 5/8] media: mediatek: vcodec: fix vp9 4096x2176 fail
- for profile2
+Subject: Re: [PATCH v3 2/8] media: mediatek: vcodec: add decoder compatible to
+ support MT8189
 To: Kyrie Wu <kyrie.wu@mediatek.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
  Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
  Yunfei Dong <yunfei.dong@mediatek.com>,
@@ -67,15 +67,15 @@ To: Kyrie Wu <kyrie.wu@mediatek.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
 Cc: Neil Armstrong <neil.armstrong@linaro.org>,
  Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>
 References: <20250915091958.31509-1-kyrie.wu@mediatek.com>
- <20250915091958.31509-6-kyrie.wu@mediatek.com>
+ <20250915091958.31509-3-kyrie.wu@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250915091958.31509-6-kyrie.wu@mediatek.com>
+In-Reply-To: <20250915091958.31509-3-kyrie.wu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250915_034006_680160_295271B7 
-X-CRM114-Status: UNSURE (   7.76  )
+X-CRM114-CacheID: sfid-20250915_034010_106520_257219A2 
+X-CRM114-Status: UNSURE (   6.72  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,12 +92,8 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 15/09/25 11:19, Kyrie Wu ha scritto:
-> The dram addr of vp9 decoder tile number, which use dram mode
-> to set tile information, may reach to 36bits for 4096x2176.
-> It needs to get the highest 4bit of tile buffer address to
-> set tile buffer address.
-> 
-> Fixes: 5d418351ca8f1 ("media: mediatek: vcodec: support stateless VP9 decoding")
+> MT8189 is pure single core architecture. Support its compatible and
+> use `mtk_vdec_single_core_pdata` to initialize platform data.
 > 
 > Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
 
