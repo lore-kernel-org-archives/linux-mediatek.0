@@ -4,69 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4617ECAC592
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Sep 2025 13:41:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05DD3CAC597
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Sep 2025 14:51:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=V58NCYvXX7hCGMS2LJLAazQt4Q9lkaf6RK8gM694Bj8=; b=xFWBUFrymoRWjX5BXdoymYAgzS
-	nIDto/RmT8KtNVKRcsarcwwtWzDNNzQkF9+Nst9HNMbpQ8OsqReSe4PinPTfHRe+sqcaG2T7k2f5H
-	9D7sHtaDxEAZHe/ZjWq/qavAhdgmsQ0YvkhcvhQjgI+idlBWUdMAshrFXvGaW5Un+RTjqbhmtJ8vg
-	A95NKC9wlQ6JYHGO8CjWzclblx6rEMAwIcf7D3BUHNekRKf8npfS8JshSwWOkdknZDLquMkBFGqk5
-	BWGSVWy+d9SXA0/LdBH6zlt03ILEANdnTo3DoNxehfD+nbFWEHzZqqu5Z1gSBtGVjCtb0c97lkb4Y
-	1ktA4JhA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CVWcMUBwTonwVJwV4Leu8sScYk8mJNeSPXPKUojHdfE=; b=KFSt047X4gx/gBHmSX6++Eo/GH
+	AtAEXYP5V6h6nPBYho3O1wSGijYA/SH3XI6PQjwiIOt01Cx5Jb84o1r6lAnzJ3ppat7/0272tXM4J
+	FXsp/mbMbBon8bdq5watrpVlRYrObG6GAwiSU6oqAN7si2V2FfGQ2HArxDCBjapfvbzSEjuJ28fHH
+	HyBlieSWFbTVLuCGasUzVB5ZJmug9Wtr7T5j+dFp/b7ssz/z6re8YwqD423CMABxkjNk/Hb2NtTpO
+	K65WESDglQv3P1z39ptzwdqzN0Bn24p2W3U8zIO1YzXGfcMYKzQZMTyhXDzkJnn9rujXfvT6PQJU7
+	j4eFJ+Zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uy9SW-00000004OZ4-25NQ;
-	Mon, 15 Sep 2025 13:41:32 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uyAXx-00000004mXu-3bFp;
+	Mon, 15 Sep 2025 14:51:13 +0000
+Received: from mgamail.intel.com ([192.198.163.19])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uy9ST-00000004OWe-194S;
-	Mon, 15 Sep 2025 13:41:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1757943687;
-	bh=yxThJFjgk/onijRWZOMaM2BSfI+4eRYM4Vqmsvjq89Y=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=YegZ2WtTwpGRE9vdewFKrn9fAnxENJApcYtpeJVlPUKl48EHfTejKzGcoy7IfKHSq
-	 gSqdusiaSUTXqrKFZjqLYqggi3vjuHiFSLI7HzuGfU5MvG+wXVN/3rLs7rGAhBQPoF
-	 EZw9Au7i5ZUsvh7S858i1ZUe6Vhj7EH8t6mlWNTVDhb0uL8zqwHu0bNWgCfGn0buX8
-	 xqy4XeBN5e6SPq6+ox7nx1pZCqb2vYg622Gx56IfQWSgdMqY12GEvlCKegyiQ1xqrU
-	 bs+UjakxTT/R1i76wEOet47SBBbtPicuhrxmwoFBXN7w29vPImDzBeHe/drIpnmo9Y
-	 7lJKke7oypQTQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7FB0317E107A;
-	Mon, 15 Sep 2025 15:41:26 +0200 (CEST)
-Message-ID: <bf054186-17fb-4ea4-9d07-488b6792a437@collabora.com>
-Date: Mon, 15 Sep 2025 15:41:25 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	id 1uyAXu-00000004mWt-2TT3;
+	Mon, 15 Sep 2025 14:51:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1757947871; x=1789483871;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=758/qyt7z8YWXOIxh7aGJyvNvH0k/7KRC3Hsiw66ubg=;
+  b=H4yyi3hZnyr7+uymfNJsh+ZUvW/ESRb5FGOk7vOuwO8UZ6+kjEGHiOxC
+   W1w2d3LfE2+cgKpQhMmTL0DSqF2CmDqIvBuaMN9vVCQv1yYEud72GYeSf
+   zgOGV/zMKUJCB/72zLRSgJqOmJb/XgJHZDaK2E7wUWTIRU23iq3DQv5ao
+   I2B7Gyr7brQ/WrfU6ljO8tN1b1wJuwCz11Ou21lEld2w5Sw7m9VgkJFSc
+   9l8kGYNRhbjxIUHqeKVuD420jvqVdcQ72jiwzVPPgQsB7rWwFKI0zytmy
+   Sa+uxWZdX5MxLfD9HlZR55IOGy5zM+4eQlb8VDxBSctmHD5utz8kR8Vn4
+   w==;
+X-CSE-ConnectionGUID: 1/r2zEf8Toet/rfTPTTOSw==
+X-CSE-MsgGUID: HNtP6qSwS/G0aUa02rTOcA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11554"; a="59247272"
+X-IronPort-AV: E=Sophos;i="6.18,266,1751266800"; 
+   d="scan'208";a="59247272"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+  by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Sep 2025 07:51:10 -0700
+X-CSE-ConnectionGUID: KR3YtAn8R/WMh/bTm5v1jw==
+X-CSE-MsgGUID: hlZp7rZTR8Gr20gFnhvUTA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.18,266,1751266800"; 
+   d="scan'208";a="178649539"
+Received: from smile.fi.intel.com ([10.237.72.51])
+  by orviesa003.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Sep 2025 07:51:06 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.98.2)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1uyAXl-00000003H8v-3fUX;
+	Mon, 15 Sep 2025 17:51:01 +0300
+Date: Mon, 15 Sep 2025 17:51:01 +0300
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Daniel Golle <daniel@makrotopia.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Jiri Slaby <jirislaby@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@baylibre.com>,
+	Yu Jiaoliang <yujiaoliang@vivo.com>,
+	Changqi Hu <changqi.hu@mediatek.com>,
+	Sam Shih <sam.shih@mediatek.com>,
+	Steven Liu <steven.liu@mediatek.com>,
+	John Crispin <john@phrozen.org>, linux-kernel@vger.kernel.org,
+	linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
 Subject: Re: [PATCH v2 1/2] tty: serial: 8250_mtk: enable baud clock
-To: Daniel Golle <daniel@makrotopia.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Jiri Slaby <jirislaby@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?=
- <u.kleine-koenig@baylibre.com>, Yu Jiaoliang <yujiaoliang@vivo.com>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Changqi Hu <changqi.hu@mediatek.com>, Sam Shih <sam.shih@mediatek.com>,
- Steven Liu <steven.liu@mediatek.com>, John Crispin <john@phrozen.org>,
- linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Message-ID: <aMgn1XXtgR20CSuI@smile.fi.intel.com>
 References: <2de07b0a6d51d5d3bf3e55cd03cf75adfc91ee7d.1757941345.git.daniel@makrotopia.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <2de07b0a6d51d5d3bf3e55cd03cf75adfc91ee7d.1757941345.git.daniel@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+ <bf054186-17fb-4ea4-9d07-488b6792a437@collabora.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <bf054186-17fb-4ea4-9d07-488b6792a437@collabora.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250915_064129_487090_2BFFDCB0 
-X-CRM114-Status: GOOD (  18.19  )
+X-CRM114-CacheID: sfid-20250915_075110_637240_150AF41E 
+X-CRM114-Status: UNSURE (   8.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,60 +100,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 15/09/25 15:06, Daniel Golle ha scritto:
-> Some MediaTek SoCs got a gated UART baud clock, which currently gets
-> disabled as the clk subsystem believes it would be unused. This results in
-> the uart freezing right after "clk: Disabling unused clocks" on those
-> platforms.
+On Mon, Sep 15, 2025 at 03:41:25PM +0200, AngeloGioacchino Del Regno wrote:
+> Il 15/09/25 15:06, Daniel Golle ha scritto:
+
+...
+
+> I've read both of the commits in this series and the code LGTM.
 > 
-> To fix this request the baud clock to be prepared and enabled during probe.
-> 
-> Fixes: e32a83c70cf9 ("serial: 8250-mtk: modify mtk uart power and clock management")
-> Suggested-by: Sam Shih <sam.shih@mediatek.com>
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> tty: serial: 8250_mtk: Enable baud clock and manage in runtime PM
 
-Thanks for caring about power management. However, this and the addition in PM ops
-should be a single commit. It's even using the same Fixes tag...! :-)
+"tty: " part is not needed.
 
-I've read both of the commits in this series and the code LGTM.
+> Please, squash the two commits, after which...
 
-
-tty: serial: 8250_mtk: Enable baud clock and manage in runtime PM
-
-Please, squash the two commits, after which...
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-Cheers,
-Angelo
-
-> ---
-> v2: no changes
-> 
->   drivers/tty/serial/8250/8250_mtk.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
-> index b44de2ed7413..9329ed1f759d 100644
-> --- a/drivers/tty/serial/8250/8250_mtk.c
-> +++ b/drivers/tty/serial/8250/8250_mtk.c
-> @@ -475,13 +475,13 @@ static int mtk8250_probe_of(struct platform_device *pdev, struct uart_port *p,
->   	int dmacnt;
->   #endif
->   
-> -	data->uart_clk = devm_clk_get(&pdev->dev, "baud");
-> +	data->uart_clk = devm_clk_get_enabled(&pdev->dev, "baud");
->   	if (IS_ERR(data->uart_clk)) {
->   		/*
->   		 * For compatibility with older device trees try unnamed
->   		 * clk when no baud clk can be found.
->   		 */
-> -		data->uart_clk = devm_clk_get(&pdev->dev, NULL);
-> +		data->uart_clk = devm_clk_get_enabled(&pdev->dev, NULL);
->   		if (IS_ERR(data->uart_clk)) {
->   			dev_warn(&pdev->dev, "Can't get uart clock\n");
->   			return PTR_ERR(data->uart_clk);
-
+-- 
+With Best Regards,
+Andy Shevchenko
 
 
 
