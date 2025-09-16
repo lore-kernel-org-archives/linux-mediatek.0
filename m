@@ -4,81 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 247D6CAC599
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Sep 2025 09:11:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D398CAC598
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Sep 2025 11:55:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KRPXZxJSBjsHPFbLQz/6kAFyVFuDb0rIVWEooQ0HKQE=; b=ihzxbHMtjj/bwSOxcb43R5JP/3
-	/Sc5ySEFu37KXttsZZLW5CMJPXwPqB1SBEtKia9vLBI32RQGZxKPhJwJDAa94bD/gnSwLoFsd++Li
-	crtGjA3HHHhKK0GvbfliOjPRoMPXEEqW6shFhYMNIy6GLLb3Aw9/+ED2VPVaHFRGIEaxcF7Djj6dS
-	2tZgv2oH4RCmnOigvnCclGJBb0yCXGLnE68yeseWvfOo20kpMq0KGbzL/rqowwGfvfvGZMeQh5kxu
-	ab6xwik/mpP55bQg5I7SVffXsXJDkpI3/ZcyWgISTxnvJrlYbZHCaxO76Bx/h4oQPW/MvXnALGZct
-	IOEF87Cw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9BnqEj9RHHv7quzPDQGpxHMHL8zNwveBfzJJlOw44Vo=; b=x4lYILG46J1h1b0YoUaC7rkLXX
+	6K0m0tU55g/8PG2yC5xrfSZeDJnasG/NK/ngEzxzcC0gD8uNU5tGyFBVC9xYfCuKRQoF3qj1a+o9h
+	Bh9r+3SJIp0ZZdozA2GAqsqu7by0jtR9Go9laUsJaF7TMwzJio3d/9ADshnP0WL/Db3tFRY+YT6oP
+	q2/DXTfHw63+Vtn2y4fVwGNfHpZkIzVtSI8ytUY/Gp3DVjTTl9Jodc5Db2PEaJec8lH3g6gwSkm1E
+	BNuP3wJSQggJyWukgmt7DhhHIjcPom4pZhOZjgjDHTaV/2TQic1HBczLFiSoLSPiCr/Y1x8L9jzoX
+	+rvsuWqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uyRip-00000007K2u-3XKU;
-	Tue, 16 Sep 2025 09:11:35 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uyUH4-00000007hxn-1PY6;
+	Tue, 16 Sep 2025 11:55:06 +0000
+Received: from wp530.webpack.hosteurope.de ([80.237.130.52])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uyRim-00000007K1O-36GT;
-	Tue, 16 Sep 2025 09:11:34 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1758013876; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=D8EjaGJtJwuhjPyTCJY1Ui2FU697WRN1Mlj23NVwVIC51V5MW/3YViERIMTSpTzeOJVls64TUv7/E84em55Aqr5j3onc95u3D/k+UAS3hS+kxZ1BPidhZlHR3B7MzxxfqAKaiyxqft3io7m4vKAdMtidsVy7UqHdSY7/HesfTMI=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1758013876; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=KRPXZxJSBjsHPFbLQz/6kAFyVFuDb0rIVWEooQ0HKQE=; 
-	b=XvvrDgQZw08gE/qffNmFDgkfrdzAKNaIgxJu7T3SqTHVVOEBf8pb5wK0HqtD5avLYMJPYvfkQgccx5Em6Bwo0hfc7lBotL7oQjjS8YZ4nZF62Gv4s3g12nOB+8x8bzY3ar1NalD0UBu4aHJKx/BW72zhDm2JNSrtWxUsiUHVHXo=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1758013876;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=KRPXZxJSBjsHPFbLQz/6kAFyVFuDb0rIVWEooQ0HKQE=;
-	b=QMtBzxKTdUCmPjvNodR30Ij/nfEYFpt8yxa3QqeyzdPvxvwVFPmYxIQyn30y/Zfr
-	WSwhj54B9ITSRJDiMC/pRZBKj+lOtZbVQhWT5tH2jjG5/QBwudpL/qPCN56dG6ybwzB
-	5Fw+6jwkvvD4xYDijph2+O0eiPlvyr3gEji5oXcw=
-Received: by mx.zohomail.com with SMTPS id 1758013874343122.59157949348514;
-	Tue, 16 Sep 2025 02:11:14 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Chia-I Wu <olvaffe@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>, Jassi Brar <jassisinghbrar@gmail.com>,
- Kees Cook <kees@kernel.org>, "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- Chen-Yu Tsai <wenst@chromium.org>, kernel@collabora.com,
- dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
- linux-hardening@vger.kernel.org
-Subject: Re: [PATCH v2 09/10] drm/panthor: devfreq: add pluggable devfreq providers
-Date: Tue, 16 Sep 2025 11:11:07 +0200
-Message-ID: <3595790.aeNJFYEL58@workhorse>
-In-Reply-To: <CAPaKu7QKUnTx-jRYfHEUJx_3bkgQ_=vEC=siTOigtQAnu4NxcQ@mail.gmail.com>
-References: <20250912-mt8196-gpufreq-v2-0-779a8a3729d9@collabora.com>
- <24083992.6Emhk5qWAg@workhorse>
- <CAPaKu7QKUnTx-jRYfHEUJx_3bkgQ_=vEC=siTOigtQAnu4NxcQ@mail.gmail.com>
+	id 1uyUH1-00000007hvy-25so
+	for linux-mediatek@lists.infradead.org;
+	Tue, 16 Sep 2025 11:55:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=leemhuis.info; s=he214686; h=Content-Transfer-Encoding:Content-Type:
+	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:From:
+	Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Content-ID:Content-Description:In-Reply-To:
+	References; bh=9BnqEj9RHHv7quzPDQGpxHMHL8zNwveBfzJJlOw44Vo=; t=1758023703;
+	x=1758455703; b=TqzbwRY5smnuKNe8AoZScY7JYI1g5ePBdWKkZ21y+VH/v1o6DogRn9NM/BqBc
+	y8lU6ONEQwH9M0AsfzS2nmDD5lVcoYyrNRO+jo/d7JhxXA6LfQjXOMFnHlgeBujr67fKULC+faG8h
+	BQxUbxN4+GSDn9Xp9oqIQsd+QkOO8575dPOoBJvx73HZfejOoac3XyyP7N9scoOeb79JQQ/Mus14k
+	/aIdtUYGlrUMcb1t5j8mQXgUZH068zETOuXcUeyf5BBttNpnn/uBCsJcYggIByFknqRRjbQXE6oaO
+	Vpk/gVM52uJwn0eOiOB40EOPYjnLn6lzeclK5wOAn6yXDv0vtg==;
+Received: from [2a02:8108:8984:1d00:a0cf:1912:4be:477f]; authenticated
+	by wp530.webpack.hosteurope.de running ExIM with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_128_GCM:128)
+	id 1uyUGt-001mgL-0H;
+	Tue, 16 Sep 2025 13:54:55 +0200
+Message-ID: <26bc2a33-2a45-468c-a3c1-6ef2ed414f44@leemhuis.info>
+Date: Tue, 16 Sep 2025 13:54:54 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [REGRESSION] 6.16 fae58d0155 prevents boot of google-tomato
+ (mt8195)
+To: ninelore <9l@9lo.re>, "stable@vger.kernel.org" <stable@vger.kernel.org>
+Cc: "regressions@lists.linux.dev" <regressions@lists.linux.dev>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
+References: <QwcOPAuQZfqo0I9EwUu4tVCuhXRvtfAgFZ7Hq896xRKosseOz3wvuKJFV1YLUTTTwMANMW6bZPUfLwXQPPgBFiYEzKUjMGZ5D56349pz4m8=@9lo.re>
+From: Thorsten Leemhuis <regressions@leemhuis.info>
+Content-Language: de-DE, en-US
+In-Reply-To: <QwcOPAuQZfqo0I9EwUu4tVCuhXRvtfAgFZ7Hq896xRKosseOz3wvuKJFV1YLUTTTwMANMW6bZPUfLwXQPPgBFiYEzKUjMGZ5D56349pz4m8=@9lo.re>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-bounce-key: webpack.hosteurope.de;regressions@leemhuis.info;1758023703;19e8f282;
+X-HE-SMSGID: 1uyUGt-001mgL-0H
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250916_021132_915236_29AFEE48 
-X-CRM114-Status: GOOD (  66.96  )
+X-CRM114-CacheID: sfid-20250916_045503_684275_BC3895C4 
+X-CRM114-Status: UNSURE (   6.57  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,195 +80,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tuesday, 16 September 2025 08:17:18 Central European Summer Time Chia-I =
-Wu wrote:
-> On Mon, Sep 15, 2025 at 6:34=E2=80=AFAM Nicolas Frattaroli
-> <nicolas.frattaroli@collabora.com> wrote:
-> >
-> > On Saturday, 13 September 2025 00:53:50 Central European Summer Time Ch=
-ia-I Wu wrote:
-> > > On Fri, Sep 12, 2025 at 11:38=E2=80=AFAM Nicolas Frattaroli
-> > > <nicolas.frattaroli@collabora.com> wrote:
-> > > <snipped>
-> > > > diff --git a/drivers/gpu/drm/panthor/panthor_devfreq.h b/drivers/gp=
-u/drm/panthor/panthor_devfreq.h
-> > > > index a891cb5fdc34636444f141e10f5d45828fc35b51..94c9768d5d038c4ba85=
-16929edb565a1f13443fb 100644
-> > > > --- a/drivers/gpu/drm/panthor/panthor_devfreq.h
-> > > > +++ b/drivers/gpu/drm/panthor/panthor_devfreq.h
-> > > > @@ -8,6 +8,7 @@
-> > > >
-> > > >  struct devfreq;
-> > > >  struct thermal_cooling_device;
-> > > > +struct platform_device;
-> > > >
-> > > >  struct panthor_device;
-> > > >
-> > > > @@ -43,6 +44,19 @@ struct panthor_devfreq {
-> > > >         spinlock_t lock;
-> > > >  };
-> > > >
-> > > > +struct panthor_devfreq_provider {
-> > > > +       /** @dev: device pointer to the provider device */
-> > > > +       struct device *dev;
-> > > > +       /**
-> > > > +        * @init: the provider's init callback that allocates a
-> > > > +        * &struct panthor_devfreq, adds it to panthor, and adds a =
-devfreq
-> > > > +        * device to panthor. Will be called during panthor's probe.
-> > > > +        */
-> > > > +       int (*init)(struct panthor_device *ptdev, struct device *de=
-v);
-> > > > +
-> > > > +       struct list_head node;
-> > > > +};
-> > > On mt8196, we have performance-domains to replace several other
-> > > properties: clocks, *-supply, power-domains, operating-points-v2.
-> > > There are also quirks, such as GPU_SHADER_PRESENT should be masked by
-> > > GF_REG_SHADER_PRESENT. It feels like that the scope of
-> > > panthor_devfreq_provider is more broader, and at least the naming is
-> > > not right.
-> >
-> > True, though I'm still not entirely sure whether mtk_mfg needs to do
-> > the GF_REG_SHADER_PRESENT thing. It's entirely possible this is just
-> > an efuse value the GPUEB reads and then puts in SRAM for us, and we
-> > could simply read this efuse cell ourselves. Among a list of questions
-> > about the hardware we're sending to MediaTek, whether this is an efuse
-> > cell and where it is placed is one of them.
-> >
-> > If it turns out to be the case that we can simply read an efuse in
-> > panthor in the other mt8196 integration code, then we can keep
-> > mtk_mfg basically entirely focused on the devfreq-y part. I'd really
-> > prefer this solution.
-> >
-> > However, assuming we can't go down this path either because this is
-> > not how the hardware works, or because MediaTek never replies, or
-> > because someone doesn't like reading efuses in panthor, I think
-> > generalising "devfreq_provider" to "performance_controller" or
-> > something like that would be a good move.
-> Yeah, let's see what MTK has to say on shader core mask.
->=20
-> Another thing is that panthor still requires a "core" clk. Is it also
-> required on mt8196?
+Lo!
 
-Nope, I'm planning on getting rid of it in v3.
+On 16.09.25 01:22, ninelore wrote:
+> 
+> starting with the bisected commit
+> fae58d0155a979a8c414bbc12db09dd4b2f910d0 ("[v2] drm/mediatek: Fix
+> device/node reference count leaks in mtk_drm_get_all_drm_priv") on
+> 6.16.y my chromebook codenamed google-tomato with the SoC MT8195
+> seems to hang while initializing drm. Kernel messages over serial
+> show CPU stalls some minutes later. I am attaching the full kernel
+> logs below.
+> 
+> This issue is present in 6.16.7, however not in v6.17-rc6
 
-> >
-> > In a way, the fused off core mask is part of the vague domain of
-> > "performance", and it'll also allow us to extend it with other
-> > things relevant to performance control in different vendor integration
-> > logic designs. I'm thinking memory bandwidth control and job scheduling
-> > preferences. E.g. if the interconnect tells us one core is spending a
-> > lot of time waiting on the interconnect, maybe because a different
-> > piece of the SoC that's active shares the same path on the
-> > interconnect, we could then communicate a scheduling preference for
-> > the other cores that have bandwidth headroom even if they are busier
-> > in compute. Maybe this doesn't make sense though because interconnect
-> > designs are fully switched these days or panthor's scheduler will
-> > already figure this out from job completion times.
-> >
-> > If any other SoC vendor or people working on hardware of those vendors
-> > want to chime in and say whether they've got any other uses for
-> > communicating more than just devfreq from glue logic to panthor, then
-> > this would be a great time to do it, so that we can get this interface
-> > right from the beginning.
-> >
-> > > Another issue is I am not sure if we need to expose panthor_device
-> > > internals to the provider. mtk_mfg accesses very few fields of
-> > > panthor_device. It seems we can make the two less coupled.
-> > >
-> > > I might change my view as mtk_mfg evolves and requires tigher
-> > > integration with panthor. But as is, I might prefer for mtk_mfg to
-> > > live under drivers/soc/mediatek and provide a header for panthor to
-> > > use in soc-specific path.
-> >
-> > I'm not very confident it's possible to cleanly decouple them without
-> > inventing a bunch of very panthor-and-mfg specific interfaces that
-> > masquerade as general solutions in the process. It'd also mean I'd
-> > have to duplicate all of `panthor_devfreq_get_dev_status` instead of
-> > just being able to reuse it, unless that is also exposed in said
-> > header file, which would need a better justification than "well there
-> > is one other user of it and we're trying to couple it more loosely".
-> >
-> > I know that it's almost independent, but unfortunately, even a tiny
-> > dependency between the two will mean that mediatek_mfg will need to
-> > know about panthor.
-> >
-> > Other things needed from panthor are the pdevfreq->gov_data, and
-> > the panthor struct device* itself, as well as stuff like "fast_rate"
-> > in the panthor_device struct.
-> >
-> > In the future, we may want to expand this driver with governors
-> > beyond SIMPLE_ONDEMAND, based on the job completion duration targets
-> > we can communicate to the GPUEB. That may either make the driver
-> > more tightly coupled or more loosely coupled, I don't really know
-> > yet.
-> >
-> > One advantage of looking to completely decouple them (though again,
-> > I doubt that's possible at the moment without questionable refactors)
-> > could be that we could also support panfrost devices that need this.
-> There is also tyr, although I don't follow its status.
->=20
-> I can see the concern over "very panthor-and-mfg specific interfaces
-> that masquerade as general solutions" or "questionable refactors". But
-> I also don't like, for example, how mtk_mfg_init_devfreq inits
-> panthor_devfreq manually. Beyond initialization, the remaining
-> coupling comes from that we need panthor to provide get_dev_status
-> callback for devfreq_dev_profile, and we need mtk_mfg to provide
-> target and get_cur_freq callbacks. That seems like something solvable
-> too.
+A problem caused by the upstream commit of the change you mentioned
+above was fixed for v6.17-rc6, see 4de37a48b6b58f ("drm/mediatek: fix
+potential OF node use-after-free") or
+https://lore.kernel.org/all/20250829090345.21075-2-johan@kernel.org/
 
-Yeah I agree, I think the panthor_devfreq initialisation should happen
-within panthor_devfreq. It's independent of registering the actual
-devfreq device.
+I wonder if that might fix your problem. It's currently scheduled to be
+included in the next 6.16.y release.
 
-I'll note that down as something I will refactor. Once that's done,
-I'll have a clearer picture of whether moving the driver out of
-panthor is feasible.
-
->=20
-> I really appreciate the work and I don't want to block it by vague
-> concerns. If others have no preference, we should start with what we
-> have.
-
-Thanks! Don't worry, this is in no rush to be merged, since mainline
-still doesn't have everything to boot on this platform, so we're not
-in a hurry to get GPU enablement done I don't think. The important
-part is getting this right in a way where panthor doesn't carry my
-technical debt for years to come, so I'm grateful for the reviews.
-
-Kind regards,
-Nicolas Frattaroli
-
-> >
-> > >
-> > >
-> > > > +
-> > > >
-> > > >  int panthor_devfreq_init(struct panthor_device *ptdev);
-> > > >
-> > > > @@ -57,4 +71,6 @@ int panthor_devfreq_get_dev_status(struct device =
-*dev,
-> > > >
-> > > >  unsigned long panthor_devfreq_get_freq(struct panthor_device *ptde=
-v);
-> > > >
-> > > > +int panthor_devfreq_register_provider(struct panthor_devfreq_provi=
-der *prov);
-> > > > +
-> > > >  #endif /* __PANTHOR_DEVFREQ_H__ */
-> > > >
-> > > > --
-> > > > 2.51.0
-> > > >
-> > >
-> >
-> >
-> >
-> >
->=20
-
-
-
-
+Ciao, Thorsten
 
