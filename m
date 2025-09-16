@@ -4,75 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3F94CAC599
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Sep 2025 08:16:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA57ECAC598
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Sep 2025 08:59:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=vKGd3v+/MNTZFBly663z0CRc24GoxcHKINEmL/tLaUE=; b=D1kL28GzuU2HjWyTvil/ECmJ00
-	/A9waT07TIBto3orGjt4TGe/oLiaDnnymwCXq6RJ968OsPXyQtt3eys7Rpl/KYTJ1a+Bw/CfVNftL
-	r1otCSLXCl0DfF9NE6kYVhyYnDAf4wH2UCV6TTdT68QXbFmT9OFi2UhdG69iH7wm1H6yCjKQjnTAf
-	0M/07OGdMT1x5QhijJFMFIh0N54Cw0R3cwho4IIJ+i+n/gYdpdtk6bC0V+l1vCipRkfDVBa+2JgTG
-	j0p++bY9UuXR601WjzEjFAZ6kgIusX8Jlgl/GAfaFOrnwhYf1GnwacnF3QQWta1PKDkqo3LN9FFG3
-	VpNcsv/w==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3DpbfjhNcYPny3opqvxM/G0alwk8XIxFrvBqhZGsL8g=; b=S2bzPegL0AKGmrEboB1ACOhtsN
+	SMsm3j7peuJFFkwkB+J1w+wDxCI5Gjt90BHt897ZcbYS3uNIurdPVqWugIgbiXLqGGw4/L06yo05f
+	b566hDREwOGjZZgmwzw4Ovsdqbyu1JV1yme8sEOQS68TDug8O0BO7EbBYwq6r8nHLVWbmYwhuW/zZ
+	xo1zMvoysJkeNr7IPvIYH9kw9eFfMcKTL734SS0xaj5BZAzEk10bvDYv+sXxBCSxI7DAfQSwsoRdh
+	0cWZuU6u5vCuEI7SzGYQ7DZCxF1J0+RrwJ7jK9DBzbWpzYPuQ9io7s3Cw6s0F+3AR7pUIxy6UB0gh
+	BC/jtGXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uyQrC-000000079Rv-21Kd;
-	Tue, 16 Sep 2025 08:16:10 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1uyRWf-00000007HbX-2PsF;
+	Tue, 16 Sep 2025 08:59:01 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uyQr8-000000079RP-0Nto;
-	Tue, 16 Sep 2025 08:16:09 +0000
-X-UUID: 60f6482e92d511f09eb0dd999d3936bf-20250916
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=vKGd3v+/MNTZFBly663z0CRc24GoxcHKINEmL/tLaUE=;
-	b=JvebwpEc9DQL1i5ZpV+gvhvFltmlSGOqe2iA0co1i35kJb7GgUT2nvDUZg6e9L/KVztFTviAt8L/ySeg20w6Rk/nYy3OkROwzOTqsHIoKt1DZJ45CvrX//8z9oumtIWIrtvx3xxORYGJKkaJe8f5myK001cFG8TdiM4GqLz4jTU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.4,REQID:7fc7debf-6d10-4061-9423-a3c40ef6cda0,IP:0,UR
-	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-25
-X-CID-META: VersionHash:1ca6b93,CLOUDID:a9085fa9-24df-464e-9c88-e53ab7cf7153,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:-5,Content:0|15|50,EDM:-3,IP:
-	nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,L
-	ES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 60f6482e92d511f09eb0dd999d3936bf-20250916
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <tim.kuo@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 172188675; Tue, 16 Sep 2025 01:16:00 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Tue, 16 Sep 2025 16:15:56 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Tue, 16 Sep 2025 16:15:56 +0800
-From: Tim Kuo <Tim.Kuo@mediatek.com>
-To: Mark Brown <broonie@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <linux-spi@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Steven Liu <Steven.Liu@mediatek.com>, Sky Huang <Skylake.Huang@mediatek.com>,
-	Tim Kuo <Tim.Kuo@mediatek.com>
-Subject: [PATCH] spi: mt65xx: add dual and quad mode for standard spi device
-Date: Tue, 16 Sep 2025 16:15:15 +0800
-Message-ID: <20250916081515.324130-1-Tim.Kuo@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1uyRWc-00000007HZP-0m6t;
+	Tue, 16 Sep 2025 08:58:59 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1758013129; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=DlGRx1sHBM1VjFZpqb9GzXR45EgfBj1Alpk5uB/oOv1djKJcxWenWpKpt7+ZoxNMKIVPa6UoHsBtZFzwsZf3MYlZfjPqY2x9L1/lQqwKrHr7j1nx5Og0UfTtIVAMO1hhW3nQVoFPcIN+1WGOYjq0yaqBdRJjOahhvTAGX5QrdgI=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1758013129; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=3DpbfjhNcYPny3opqvxM/G0alwk8XIxFrvBqhZGsL8g=; 
+	b=g3OfcSn+hvsE6ovT+pY8HmViqNxCJqrCgdfr0k0I01HhvyNUkJcN7UMEODto/NSjt4zmSbku1VPnw3qK7xljqItoTGVvu7aTq0PnFV3p2C7opzPFb9TlRWezRxoFj4mecuJWGP9m8okQCXNb9SQx87ilotwjcGW6cz+KXyhzkOs=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1758013129;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=3DpbfjhNcYPny3opqvxM/G0alwk8XIxFrvBqhZGsL8g=;
+	b=EKCJTAgEdkqU7Xe8Bg88E/fUzojbXLWOgtO1T9xuaGhnprD5noQ0A0/y2xKVzoXk
+	Qqfp0RzbwKZsu48yBY9cXoQ1uc+7Xc52tt4uA7hrvBmsL4uvnDPnTb0IIrMUs/Jwn+l
+	FAGYlOnUXncaxY9t0Y9Towffbv8lrrxU00c9ezEM=
+Received: by mx.zohomail.com with SMTPS id 1758013127114512.6864936718232;
+	Tue, 16 Sep 2025 01:58:47 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Conor Dooley <conor@kernel.org>, Chia-I Wu <olvaffe@gmail.com>
+Cc: Boris Brezillon <boris.brezillon@collabora.com>,
+ Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2 1/2] dt-bindings: gpu: mali-valhall-csf: add MediaTek MT8196
+ compatible
+Date: Tue, 16 Sep 2025 10:58:40 +0200
+Message-ID: <6418135.lOV4Wx5bFT@workhorse>
+In-Reply-To: <CAPaKu7TEjG3sWamy3k_YLig=208oXLPhMmbCvPOf96iEL0-uig@mail.gmail.com>
+References: <20250913002155.1163908-1-olvaffe@gmail.com>
+ <20250915-deodorize-proxy-b18e41fa8668@spud>
+ <CAPaKu7TEjG3sWamy3k_YLig=208oXLPhMmbCvPOf96iEL0-uig@mail.gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250916_011606_172412_9540C08B 
-X-CRM114-Status: GOOD (  13.51  )
+X-CRM114-CacheID: sfid-20250916_015858_294665_186F1A9D 
+X-CRM114-Status: GOOD (  19.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,76 +88,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Tim Kuo" <Tim.Kuo@mediatek.com>
+On Tuesday, 16 September 2025 06:21:10 Central European Summer Time Chia-I =
+Wu wrote:
+> On Mon, Sep 15, 2025 at 10:52=E2=80=AFAM Conor Dooley <conor@kernel.org> =
+wrote:
+> >
+> > On Mon, Sep 15, 2025 at 06:51:16PM +0100, Conor Dooley wrote:
+> > > Acked-by: Conor Dooley <conor.dooley@microchip.com>
+> >
+> > Hmm, actually there seems to be a more complete binding proposed here:
+> > https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250912=
+=2Dmt8196-gpufreq-v2-1-779a8a3729d9@collabora.com/
+> Right. I tried to add the compatible to the binding (this patch)
+> before adding it to the driver (next patch).
+>=20
+> If this patch is not a prerequisite for the driver change, I can drop
+> this. Or perhaps there is a better way?
+>=20
 
-Mediatek SPI hardware natively supports dual and quad modes, and these
-modes are already enabled for SPI flash devices under spi-mem framework
-in MTK SPI controller spi-mt65xx. However, other SPI devices, such as
-touch panels, are limited to single mode because spi-mt65xx lacks SPI
-mode argument parsing from SPI framework for these SPI devices outside
-spi-mem framework.
+Depends on what you want to do with the driver change; I could pull it
+into my patch series (I need it as a prerequisite now anyway, as v3
+will get rid of the clocks for MT8196 in the binding, which means it
+needs to have a flag for this in the soc_data struct you've added)
 
-This patch adds dual and quad mode support for these SPI devices by
-introducing a new API, mtk_spi_set_nbits, for SPI mode argument parsing.
+I think that would be the easiest solution so that we don't step on
+each other's toes, as long as you think the driver change is
+basically in its final form right now and does not need major
+revisions you'd still like to make yourself without having to
+coordinate submission through me.
 
-Signed-off-by: Tim Kuo <Tim.Kuo@mediatek.com>
----
- drivers/spi/spi-mt65xx.c | 33 ++++++++++++++++++++++++++++++---
- 1 file changed, 30 insertions(+), 3 deletions(-)
+Or, the most roundabout option: I split the bindings I submitted
+into a separate series, and then we can both declare them as deps
+for our driver changes. That might thoroughly confuse maintainers
+though. But then you can declare a dep on the bindings series and
+I can declare a dep on the bindings series and your patch.
 
-diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
-index 8a3c00c3af42..591740805740 100644
---- a/drivers/spi/spi-mt65xx.c
-+++ b/drivers/spi/spi-mt65xx.c
-@@ -563,6 +563,27 @@ static void mtk_spi_setup_packet(struct spi_controller *host)
- 	writel(reg_val, mdata->base + SPI_CFG1_REG);
- }
- 
-+inline u32 mtk_spi_set_nbit(u32 nbit)
-+{
-+	u32 ret = 0;
-+
-+	switch (nbit) {
-+	case SPI_NBITS_SINGLE:
-+		ret = 0x0;
-+		break;
-+	case SPI_NBITS_DUAL:
-+		ret = 0x1;
-+		break;
-+	case SPI_NBITS_QUAD:
-+		ret = 0x2;
-+		break;
-+	default:
-+		pr_info("unknown spi nbit mode, use single mode!");
-+		break;
-+	}
-+	return ret;
-+}
-+
- static void mtk_spi_enable_transfer(struct spi_controller *host)
- {
- 	u32 cmd;
-@@ -729,10 +750,16 @@ static int mtk_spi_transfer_one(struct spi_controller *host,
- 
- 	/* prepare xfer direction and duplex mode */
- 	if (mdata->dev_comp->ipm_design) {
--		if (!xfer->tx_buf || !xfer->rx_buf) {
-+		if (xfer->tx_buf && xfer->rx_buf) {
-+			reg_val &= ~SPI_CFG3_IPM_HALF_DUPLEX_EN;
-+		} else if (xfer->tx_buf) {
-+			reg_val |= SPI_CFG3_IPM_HALF_DUPLEX_EN;
-+			reg_val &= ~SPI_CFG3_IPM_HALF_DUPLEX_DIR;
-+			reg_val |= mtk_spi_set_nbit(xfer->tx_nbits);
-+		} else {
- 			reg_val |= SPI_CFG3_IPM_HALF_DUPLEX_EN;
--			if (xfer->rx_buf)
--				reg_val |= SPI_CFG3_IPM_HALF_DUPLEX_DIR;
-+			reg_val |= SPI_CFG3_IPM_HALF_DUPLEX_DIR;
-+			reg_val |= mtk_spi_set_nbit(xfer->rx_nbits);
- 		}
- 		writel(reg_val, mdata->base + SPI_CFG3_IPM_REG);
- 	}
--- 
-2.45.2
+Kind regards,
+Nicolas Frattaroli
+
 
 
