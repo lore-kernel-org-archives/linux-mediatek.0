@@ -4,97 +4,200 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA516CAC59B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Sep 2025 04:55:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0910BCAC599
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Sep 2025 06:01:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GBcjRbm3FVwYUlOZdbgLY3RSHrk0clAp1Nkb0I9SPZU=; b=ef8RMlloL1TNjAij1ekK52DUXv
-	DKrjbC4dxV7qKNQMvcBGoD5OIDc0U4W772ll81NKiJPzoU+WrBKCztSMd/KfP33pECTMbDAj3dUgT
-	klTkh6RCypaWUR7lNA/1y5SdOmBQ3xo6GDYf4kx01fTviCGcwXiNuKbrKwDf/Wsz1vfX45KaxjrNP
-	AX5yvEEbM1Gh2qvOaGHY2P6VRzSe+Gpx7vyVYHTgx+W3QbSRUN9wBM+qYWwXDL8yD6hqz6SXQJKjP
-	OU9YX+etcGkrEy05ajW76zvHTSBQqrnJ6s5yZPJ3bcxBNpMpKFgE0Uvs4Ojuj58L6/Zo1oLciDeT1
-	Mc03l7VQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ETJM2oP8WhluQs9e44QRp2uJWYNXSmjrLlhueTZH68I=; b=IMplioJvBsKAWm/SCQlmzh3Qs0
+	4ldBx+6jw9Zbhk6uKyuc0FbjdD6KzQ3GnvgpwhQnWvK94zNe70LQCZUGmhRJu0v2INglHWNNrF5FC
+	GAfVg6rBcqCpGbSJ05tgfcHIPtK5PKrSc2YED5QbhzNvpQOR5Iwsw+tGuoL1H2EpC0+mhElYwlqVC
+	gP9MszUTD//o43rvU3eLinuSf0Kz4bKKNtO8V0+jQw/1JF2gmLWCONMIjEao4SX+M+AzeR+yCuOCf
+	GxR4EVT8AJO5mAzTPDik/t2PeJxnO9aXytVy95tkyq0Zsz4BqgOJFFLjiSxeSlZhmWAzMTyUrkRtJ
+	LFJpTCyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uyNjG-00000006ksc-20Kt;
-	Tue, 16 Sep 2025 04:55:46 +0000
-Received: from mail-yb1-xb2b.google.com ([2607:f8b0:4864:20::b2b])
+	id 1uyOkf-00000006rox-2qOr;
+	Tue, 16 Sep 2025 06:01:17 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uyNjD-00000006koZ-3ZZR
-	for linux-mediatek@lists.infradead.org;
-	Tue, 16 Sep 2025 04:55:44 +0000
-Received: by mail-yb1-xb2b.google.com with SMTP id 3f1490d57ef6-e94d678e116so5158492276.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 15 Sep 2025 21:55:43 -0700 (PDT)
+	id 1uyOkc-00000006roF-25od;
+	Tue, 16 Sep 2025 06:01:15 +0000
+X-UUID: 8a48266a92c211f09f706fa2197c6ceb-20250915
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=ETJM2oP8WhluQs9e44QRp2uJWYNXSmjrLlhueTZH68I=;
+	b=KjYVbkXhTohkqUVeb+EPhir5ruHP6+EOwQOSyEqnokcMUD3Ton9smkn0+RhmojoqulxS+KoIi1z4jHijfo2avNd7liDMuAp9Ijrp1Y1tmswPwI9byra4CfFg+j2/7o54Da+6pG30HxjUeyqUycYBRNkk1Fc3rlZ++kJjuACOcs8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.4,REQID:42966919-0ee5-4f12-8115-b8002fae1e7c,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:1ca6b93,CLOUDID:9c2b58f8-ebfe-43c9-88c9-80cb93f22ca4,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111,TC:-5,Conten
+	t:0|15|50,EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:
+	0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 8a48266a92c211f09f706fa2197c6ceb-20250915
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <ck.hu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 697789923; Mon, 15 Sep 2025 23:01:08 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Tue, 16 Sep 2025 14:01:05 +0800
+Received: from OS8PR02CU002.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Tue, 16 Sep 2025 14:01:05 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Cu2uJJLXU+Kg3Y1mkszy5+0DLEp6hx0r6H5a9pTJqD0nBUHoD+iseHLG0OxhR9CkclFp/Ju4DkQZ8HhauLp81ilJ+bm4oVRN2xKZ8u8QBcgqXGJdw7XVEY4nWyOYXtcAhWhry2w94/ou4Kfj06sMNZ7MY1SEQ/tIV8sWBK57FIlN/shEXdoUK2+pPYphYEjGIvGk6zIwm5Z3OBlxWe9eR4l+2dAbnNjYsRowDUawqo0ESWUQ9TR4ki5Q6MiL1eXOlty1Re0ocgq+6kDgBKZQgN+G5Rg4IueLr+r4593UC0K2vToRqacctzUH6HaTSDdBMJ5oZIA6Dkc6ek+kdVaaQw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ETJM2oP8WhluQs9e44QRp2uJWYNXSmjrLlhueTZH68I=;
+ b=s5fa/0TXbI2XPBNF1/+pm+ya35/M//c01LPPp+atLbGkoSFxihpTfHYPL4VksUhy4FgiAdNYHCVuLiRp2Yb1RO3Nv7U5jAbgBcp8rc9NnAFYKjaz9u2GwZ1l75EI/LYPien8XE5NbzrvH85aDiiMbDEerks+OEFRenhmhXLQCKarglEdPD+pCNRx93hmrq1Xh1P9u8seVTwABr4oALaDZ31uhopglI/dezYCy/+S69SVI+/2qBE1SAv5r2DKg4gMVOHYpY1wKH441aQQBJ5dvk61ZQwiXNQEdeby6oQB6NnNB19tgbpmDYuphREa6w/tq/3rSYC+y0/8YeWu9AOTDA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1757998543; x=1758603343; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=GBcjRbm3FVwYUlOZdbgLY3RSHrk0clAp1Nkb0I9SPZU=;
-        b=FK4bsU/StSr6Y3rrjnZwWm6/YBmHadqd7SeIyCOlXM8NW36HCLC3WJc94yxsT7eQJN
-         URWHzKWzrr70csMiNfxKLc8bH4XOAlfva4w0auH8Gp0tMLh32tDjHRys1eOkh4lOtbAG
-         L15CbVJM2BFNXAoaSHX0xQNOIInqGsqpI7i5SFlLr2wY+7MBrIHftjvavhxVS6jlG6rQ
-         L81aBguYfthpHXWf7qtCXIalWrHyYG15j1dgw0YYF637v3D4AOtA3WJnDKV0LGDYIfbO
-         3ZQRjPVNarcpetINkvleO0SWstxeZXmJImIKxZswml8dbtnnoyJyFZQ+fej1l5Xc/44Y
-         KNvQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757998543; x=1758603343;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=GBcjRbm3FVwYUlOZdbgLY3RSHrk0clAp1Nkb0I9SPZU=;
-        b=XFar/lG0N6KuJM2gjXZ9DyvpDByCyqW0257eCKr13+/y9atRrn5cqlLFv5heMdTVm2
-         hUuzSCZneZlMESBxLmrbRNWo6gZ58d14JC0rIsrMi8w+QOvAxy6cAQLKchqAsWIKFyNI
-         cc8p5uzibyY06Ucl6/dFK8+EzHog3FhqX3tcb3ExipaeEFqzn+ICb8/g269sVPVQbnkN
-         UgusCHcwMVF2laHV2e5bN6wzuonCoWdx0R9BqdcSKaDAhHx/D5hDrQy8AUtj40sCPc4L
-         mVIEe1YP6njBA9PoVHjdQzqCUueeAJlV6BUI9+p7LTb9SMhS9ZKG23fhm8rTRmtzJXrf
-         g1Mg==
-X-Forwarded-Encrypted: i=1; AJvYcCUfoMqZ9Irydiu1bJbsnujtEIJy8CWRLO6mKXCiWoavwIA4EBOzwy/5beUQEB+ti/pgunWTB7Zh+8d6fE0BbQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzx6+ZEu//cMAfBf/COA/lW85vVp39ngV5wmzIl7pIt+I2IEfPR
-	MDzl18g24gEXL7f16yS+gJfA0S5hL7IKAGNx320ejD2VoUNQ6PN7+XfwYGivirEL1Hznx1Rdu+t
-	sEpcgB8BaONX7jEFbBP6DMYKIH441iBw=
-X-Gm-Gg: ASbGncv4iJX3kIIz7m5kL2KcO4gl5dtkQmgZwL1TaxksG6dmFTNDQgai6Zces93EQGN
-	Hdu36V7pbggon9zOe75rpgXvyXm2Z1lpZm0EQEn1/wfeuWNlo8qrC5H4w7VjdX0SxEHVhJJy4GQ
-	JnkXZFMSmpgkh4q4U6xL7H/RW2ltre7001mG8Snrg14+StrIuiy8OH7zDZHmmqN6QeN45fAg4Yp
-	lheuJ8eDlH1rAKFmV4z6x9bMDId942pjAsHIluHokYVG//bExmc4dRUiXznsA6fSbAxUUME
-X-Google-Smtp-Source: AGHT+IFXVrlkAw4hIUMkjDUsgYvyK7EgpmYsPWpx/dWgsCW+cokg9VHakZyQIrCx9AHlixfNXCZ76u+Wtg35mXq2D/U=
-X-Received: by 2002:a53:cb41:0:b0:612:891a:9ecc with SMTP id
- 956f58d0204a3-627202230a3mr10138013d50.9.1757998542602; Mon, 15 Sep 2025
- 21:55:42 -0700 (PDT)
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ETJM2oP8WhluQs9e44QRp2uJWYNXSmjrLlhueTZH68I=;
+ b=QVgDcNsLMCQi5yPCS1X4td/ZoxjURPdqeVxsIYXAkpNbdIGuIiB59HmloItXmglTywb0xeB+YbXVXKmFWFEAzA2hO6MDLNUYHKzHl5rdmKJsT1WE24mOY5/g9hCD3Np4KsZuyoS5uHYrGHt/xHY9J+NUJFI+7+7i0KUG+KzBo8I=
+Received: from TYZPR03MB6624.apcprd03.prod.outlook.com (2603:1096:400:1f4::13)
+ by KUZPR03MB9493.apcprd03.prod.outlook.com (2603:1096:d10:47::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9115.19; Tue, 16 Sep
+ 2025 06:00:58 +0000
+Received: from TYZPR03MB6624.apcprd03.prod.outlook.com
+ ([fe80::9ce6:1e85:c4a7:2a54]) by TYZPR03MB6624.apcprd03.prod.outlook.com
+ ([fe80::9ce6:1e85:c4a7:2a54%4]) with mapi id 15.20.9115.020; Tue, 16 Sep 2025
+ 06:00:58 +0000
+From: =?utf-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
+To: "robh@kernel.org" <robh@kernel.org>, "krzk+dt@kernel.org"
+	<krzk+dt@kernel.org>, =?utf-8?B?UGF1bC1wbCBDaGVuICjpmbPmn4/pnJYp?=
+	<Paul-pl.Chen@mediatek.com>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
+Subject: Re: [PATCH v4 08/19] soc: mediatek: mutex: Reused the switch case for
+ SOF ID
+Thread-Topic: [PATCH v4 08/19] soc: mediatek: mutex: Reused the switch case
+ for SOF ID
+Thread-Index: AQHcF/MeiDWJokViq06l/6dzzsYeSbSVbqOA
+Date: Tue, 16 Sep 2025 06:00:58 +0000
+Message-ID: <30b0fd500d65eacd669290c16c2ba6f79ccec6ee.camel@mediatek.com>
+References: <20250828080855.3502514-1-paul-pl.chen@mediatek.com>
+	 <20250828080855.3502514-9-paul-pl.chen@mediatek.com>
+In-Reply-To: <20250828080855.3502514-9-paul-pl.chen@mediatek.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+user-agent: Evolution 3.52.3-0ubuntu1 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR03MB6624:EE_|KUZPR03MB9493:EE_
+x-ms-office365-filtering-correlation-id: a1deffab-91f9-4059-db70-08ddf4e66818
+x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|366016|1800799024|42112799006|376014|7416014|38070700021;
+x-microsoft-antispam-message-info: =?utf-8?B?M0NTWW9FU2JyS1dQa1hMcEtCd0J0VHRoVnlZWi9RUlQyREVuakNaSS9RV1Az?=
+ =?utf-8?B?bEovOThXTXdLdmtxQkZZWWpHT2JZaldNaW9FaUh5STN1dWs2WktEWmhaRUJp?=
+ =?utf-8?B?Yy9sUFhmMmdUSCtIUWpiZ2N4YXluMy9pTURodW1uUkZzOTBnTk8zOEF6OEhj?=
+ =?utf-8?B?a3VzeEc1MW1vUytKMTAyOFpkUlRVSjZCL2JTK0xiSXFiQnlFcVgwd09YK3hv?=
+ =?utf-8?B?NUVlN2pTK1BoRElMaDdRTTgxNnhFQnN4SkxkQnJ6UmowMUVNUVkwR24yOTRw?=
+ =?utf-8?B?N3h2SlNiQ1dkZXRlbFVUOUlFdGk5eThHaEpkcTBXSTNPNlo1UTVyZE5EcDZW?=
+ =?utf-8?B?MmRnd2MwMUEyNXpyanVyTWk0Ukx5L1ZWR1F2bXR5UDJJcXhrQkpNRUNhcVV6?=
+ =?utf-8?B?cmd5WEozQ3dIMTlpaEhYSkhmYzhBYWpLZGJyMFRXdTBlSnZFdkJYTHhpdGxs?=
+ =?utf-8?B?QTltVFVLRW9TYy94V0J4bEthbyttdkpsNG9EMWphT04xUnVXbkJBdHpuK0wx?=
+ =?utf-8?B?TWRuVHp4VUVtd3RCT3FRNk54Q01GTDI2RVBscjgxa0JSM2J6NU54Z2pnSHFw?=
+ =?utf-8?B?Wmd6Z2RtYklPNnAwYk1EQXRibS9tUFp6TDY1a09wZWRDSGM2YnVqbmNqbE56?=
+ =?utf-8?B?Q0JyckZDbXZ0UHNGaEM0eWQzMUJlcGVlb0laL1Eva25UVGJVUHBLb1MxczJI?=
+ =?utf-8?B?UmpWVnY0ZldKdlhVL2YrbEdpd3NzWnhyK2JzNmlld2ZqcUpFbjJQWWc3Y1JF?=
+ =?utf-8?B?L2ZNN2Z6YkFpWXJDZFFIenVFb2c3NS9NNTZGLytXM1FaTlhvZHJPcWwzanNG?=
+ =?utf-8?B?ZGZoejZ1eGRQdExueGJYRHFQYUVzcVVZU01ERWVVdkNweFJPUGFhRFNSaUpr?=
+ =?utf-8?B?SkFQOXVsS0crL2g2cWlSTnd2SmVBbWpuRlNkOEo5a3lsa0ljNnhOdzN4aFZB?=
+ =?utf-8?B?VVNBajk4MkZ4ZkloWDd4eFFDVmdVMWlkRlcrNFJ6MllXSFVBeWx0YUVVdHJu?=
+ =?utf-8?B?QUZsUFBLeGVaWVNtdkNqa01NT1VqOVE5R3l2SmE2dWR1cGVrMlZjc2Q1ODh1?=
+ =?utf-8?B?cHV4MWV1OXRxWkd5VTNRVHBheHVKeEIxaExoZG1Yd052Z3BGWldRUGpKUng5?=
+ =?utf-8?B?WHBrbWZlZ0VDbUhBVVN2cVdQRUc3bFlQN3dVOWZNdEVxSENkWUQ2YXZ6c3JM?=
+ =?utf-8?B?MFpPTDhKZnRkMWFEZnNCRVRtNTBha1EyTEdDVElranpmVm13SmZpNUU4U1NB?=
+ =?utf-8?B?RjdoM0V4aXlGZGNyVkFXckpJb3ZnYllmamtvZWE1N2R5d1RjS2I3c3hqZnNO?=
+ =?utf-8?B?dkJ5bHN0Ti9RV3E5T1lhbi9uMU40dGdzQVA2M2R2S2xSbmNCVlJtWkNaZmJF?=
+ =?utf-8?B?L0xEcUVvWER2VlNNMU96SWVkUXl0ZUd5OVN5cm1NWmIzb2dXWE15TXJNQzJE?=
+ =?utf-8?B?Ukhjd3BvY0tMVVZMK2xuNTV5YnppUGZPUjNHTE92QytCZVNoZThNS2RUdEli?=
+ =?utf-8?B?QmNNRE5MYklFajU3Y0U1dmdGaGR6Z2xUbWxyYjlYRkFwbFRyb09jMDZ2N0ZL?=
+ =?utf-8?B?TVJQTnZRZE80TE9pbFJkaDFxdUpHZkFyOEtrelh4b2RTTG40RitKeG45R0NV?=
+ =?utf-8?B?RGhRQmFURlRROFp0ei9iLzEvRGtKQVIvWmRoREZsdlhGUUdQVXZUU1hneW1L?=
+ =?utf-8?B?SjVOa1VoaG5OTTZvL3lmeU9WZFhPV1ZKK1ZFWWtRTlB3T2xRTnoxalgwdmMz?=
+ =?utf-8?B?SEdCL3FaZnZieGZWcWVEVVFkOURPeENzaDlEanJjUnoydGhmY2h3aDNEY20v?=
+ =?utf-8?B?SVdjbkFqWmpSa0xEUTZvU0s4dzZ2QXY5R0I2bmFpWkZ2Yk5pVm5ra2NTT2JT?=
+ =?utf-8?B?ank4c0twbXViVjBwQ0tYWU50NkJkcWd5azFwMU1IQ09YZFlWdWlmbStDNWlV?=
+ =?utf-8?B?dGU1M3J2U08vc0pWVVRyWFhya042NXE3aGk2bWlLZHZHaDBNem1ZWlVwYnM2?=
+ =?utf-8?B?UWhIMnBySkVRPT0=?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB6624.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(42112799006)(376014)(7416014)(38070700021);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?R2ZzbGpoODZvNjh5R005MFJ3V0p1ZnBIRXR4VnVmMkp6R0F4ak5UV3BvcTVu?=
+ =?utf-8?B?djV2ZGdIRnlMV0RHVGFUdFE3cXpRc1FqWUtGK2Nkenp2MFlCY21OSFhTOVQ0?=
+ =?utf-8?B?WmpGQ0ZpSnlQdUhId3ZreEZOMmZ0czczSHZVeThrYXBKMGNHajlLSE1BdVkw?=
+ =?utf-8?B?dFdnREk4dHpVc1czT3lnSmJRYmZaUlRSNkN1QUptYXYvWWpJaHRSR3ArVlQ4?=
+ =?utf-8?B?eHdqZnpEU1p3d0krMkp2RGpxUHMxNUppR28wbVViY2dxM3lOSm1Vd2VPREZ3?=
+ =?utf-8?B?UTRxK0wrMDNkNi9xeloyUXcrQlhNdFRVS0hZNGVUdUxTSlora3FmQ1lDT0JJ?=
+ =?utf-8?B?bkhQSW8zSy9XRHFDdXlQK2RORkJDSVlKa005ZVBuMmtqYTB4YjAwL3ZFUXll?=
+ =?utf-8?B?emhEaW1iWjBrV1UxS1M0N1U4UnhCY3BEdW04bVRxd0JsRXo1VDJSMy82ZTZ1?=
+ =?utf-8?B?dzlQVGYyS2grc0RNaHVSUzc0YkNpOURVSEdwVEdKR2hsMkNWUWRYMWQzdjZ2?=
+ =?utf-8?B?dVFWTk9qYlF6bFNYWkNucy83UmdQY0RxNUs2bDRrZ0wxeE5DdDNpNlpnL3ky?=
+ =?utf-8?B?NDR6WGVsTUI1dkN3aFFtdm10TDFTbkVJZEdtYjUwODlOcytSYXB6eGtWL0Z5?=
+ =?utf-8?B?enBucW4zUmtVSzcwNExzU0ltRkhmNG50QnZjNmVENnljRXZaYWdJdUxMYWds?=
+ =?utf-8?B?TTZaQitXNHlzOHF2UWxFUmNNbTgrdDVZenVHd01XWCtoVUI4UUUza1Y2amZr?=
+ =?utf-8?B?b3BqUk1UdjIzZ2ZXc3dyalI4OWxoeDhJakp1UUNUejlseXJmaEtaL3B6RjVM?=
+ =?utf-8?B?bDVDMGlORlpBa2RKZlp1aWhCU2QzVGo5cjh0L1N3Q2RtSHdJMWVHaFI5RFlk?=
+ =?utf-8?B?RzdHb1hkaHRnQnFUSzRKUWNFZFRGQU1FSFl4WFE0NXB6STh3Vm4vaXIzc2FD?=
+ =?utf-8?B?Y040RjFLVzMyWDNKdm5ZMW0reDBucW9QbkhsVkUrcGsyYi9YZWs2MGh6aEN3?=
+ =?utf-8?B?YTVURzIyMnpwUU9jVVRZaldCYmp5VUlQVXpxQWNmeUU1N0JWbUZFbmtnUUNW?=
+ =?utf-8?B?MmpoVlNyQ0VoTXNIUDd1SnhrQytGTVRFUlAvcXQ0UkpYY2RlYUJqdGlxMlNw?=
+ =?utf-8?B?dTNubGIwWWtCY2c1UklJdDJjMkVldHBzODJmd0RxeTdXUnE1ZFFhdWFtMHZ5?=
+ =?utf-8?B?UkVPRTlYaGVaRCtta2E1SmIwR1lEMkZzb1Bsd0Zvc1dFWFp3d0NkNVR0ZGZ6?=
+ =?utf-8?B?QVllTU9CY1A1YWZlY3paVXFWb2lOdXZrb0hJRW15M3BEc1RkNFkyUXVxVXZB?=
+ =?utf-8?B?ZzcrWlptanhaZWViUnI0MVQ1YTl4M1NMK1dRV3U4S09zOHBNMG5zRFFSWVRa?=
+ =?utf-8?B?WXhCUDc2cVk5WDRUdk81bVJGdmh1eFJOdXhKZzA5WUQydFBCcWNuUzZVSjJ6?=
+ =?utf-8?B?Lzh5S3kva3Fzb1Bpa2VEWjFzaWYzT3ZrVysrTEJINWZnU1l5SjVTcis4NVBU?=
+ =?utf-8?B?eWVWblpQakQ3SzlPVVFkS1dweWR1bWVmdG5XcFJmaC9qcG9qMit4VjhqWU9W?=
+ =?utf-8?B?ajRmMGRZRXFvUXJSdDFoOVFBcDVJRkdnNkZjWElNZHRwTDRLcnRpbisrUzJZ?=
+ =?utf-8?B?WmFHZU8xby9pc0tIRnhIS0ZkT0twMkpyUXhpbHRLM2l3QXgrQVNvWWtINDR3?=
+ =?utf-8?B?bkE1ay9YUlorMFZBYjRvNCthRkZabXJGZnQxMHM2NHFsNVBGMmdKVERIaFow?=
+ =?utf-8?B?R05DQVdHaG4zemFqUVJuNy9nM0tBWVRpbjJMOFg5YUhwM2ZaOVRjVUpwUFFW?=
+ =?utf-8?B?alJlU2tOTW9XeHUvVkJWZmVWV2RqaFAzd0pFYTBoTVNWWGJ4b25xQWxrL0c3?=
+ =?utf-8?B?SUtBV3Z1RTd3RkFpaW1HTU40eXhWcGJYN1BCY2ZnNXRvVVhqSXI3cXZFQXpx?=
+ =?utf-8?B?RVNEZkZpdGtMSzdKS3I1ZGMydkxwZGJSSEhSWUJoUXhtemx2V0hheWNwUmJH?=
+ =?utf-8?B?UTR3VkpLNUF3Mklua2hrMHM1SjFIbkc5S1FRZVJuQm5vMkVaZUQ2amdlKzl6?=
+ =?utf-8?B?enZjamF6WnkvL2JwMS82QVJiZ2NtdXlpdzRDMW9CVnowb3Q2RmFYQkpCTkFn?=
+ =?utf-8?Q?XUyUefR0OVwlF2QlkEn8WkoWC?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <1A459F94B0376E44A71A033096A28654@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-References: <20250912-mt8196-gpufreq-v2-0-779a8a3729d9@collabora.com>
- <20250912-mt8196-gpufreq-v2-5-779a8a3729d9@collabora.com> <CAPaKu7Q+KAzEtKBWy8KO2Kp+H4y-Mqo34uo=jgH1_iooaDq3hA@mail.gmail.com>
- <8577914.T7Z3S40VBb@workhorse>
-In-Reply-To: <8577914.T7Z3S40VBb@workhorse>
-From: Chia-I Wu <olvaffe@gmail.com>
-Date: Mon, 15 Sep 2025 21:55:30 -0700
-X-Gm-Features: AS18NWCUMIgi23a5SaUlUvMdo-ihykJDXaO9mGCW6rE2ZLrI7uXsuBJkrMkP79E
-Message-ID: <CAPaKu7STDDp6D_fDGVfAKFrb5aWcxtwsT3nYtYDQQYCs7G9upA@mail.gmail.com>
-Subject: Re: [PATCH v2 05/10] mailbox: add MediaTek GPUEB IPI mailbox
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Boris Brezillon <boris.brezillon@collabora.com>, Steven Price <steven.price@arm.com>, 
-	Liviu Dudau <liviu.dudau@arm.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, 
-	Kyungmin Park <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, 
-	Jassi Brar <jassisinghbrar@gmail.com>, Kees Cook <kees@kernel.org>, 
-	"Gustavo A. R. Silva" <gustavoars@kernel.org>, Chen-Yu Tsai <wenst@chromium.org>, kernel@collabora.com, 
-	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, 
-	linux-hardening@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB6624.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a1deffab-91f9-4059-db70-08ddf4e66818
+X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Sep 2025 06:00:58.2503
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 9h+GzlgdBLdGbhnh5AszRlwxd5Ae5MCx7R319rTaQlNBMBe48phGEpgJO7/W762MWiS7nSYTA/ooYyrY2roR4g==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: KUZPR03MB9493
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250915_215543_910089_70D9686B 
-X-CRM114-Status: GOOD (  49.88  )
+X-CRM114-CacheID: sfid-20250915_230114_574118_8DE64A72 
+X-CRM114-Status: UNSURE (   9.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,169 +209,14 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, =?utf-8?B?WGlhbmRvbmcgV2FuZyAo546L5YWI5YasKQ==?= <Xiandong.Wang@mediatek.com>, =?utf-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>, =?utf-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, "treapking@chromium.org" <treapking@chromium.org>, =?utf-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, =?utf-8?B?U3VubnkgU2hlbiAo5rKI5aeN5aeNKQ==?= <Sunny.Shen@mediatek.com>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>, =?utf-8?B?U2lyaXVzIFdhbmcgKOeOi+eak+aYsSk=?= <Sirius.Wang@mediatek.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 15, 2025 at 6:34=E2=80=AFAM Nicolas Frattaroli
-<nicolas.frattaroli@collabora.com> wrote:
->
-> On Saturday, 13 September 2025 00:11:10 Central European Summer Time Chia=
--I Wu wrote:
-> > On Fri, Sep 12, 2025 at 11:38=E2=80=AFAM Nicolas Frattaroli
-> > <nicolas.frattaroli@collabora.com> wrote:
-> > <snipped>
-> > > +static irqreturn_t mtk_gpueb_mbox_thread(int irq, void *data)
-> > > +{
-> > > +       struct mtk_gpueb_mbox_chan *ch =3D data;
-> > > +       int status;
-> > > +
-> > > +       status =3D atomic_cmpxchg(&ch->rx_status,
-> > > +                               MBOX_FULL | MBOX_CLOGGED, MBOX_FULL);
-> > > +       if (status =3D=3D (MBOX_FULL | MBOX_CLOGGED)) {
-> > > +               mtk_gpueb_mbox_read_rx(ch);
-> > > +               writel(BIT(ch->num), ch->ebm->mbox_ctl + MBOX_CTL_IRQ=
-_CLR);
-> > > +               mbox_chan_received_data(&ch->ebm->mbox.chans[ch->num]=
-,
-> > > +                                       ch->rx_buf);
-> > Given what other drivers do, and how mtk_mfg consumes the data, we shou=
-ld
-> >
-> >   char buf[MAX_OF_RX_LEN]; //  MAX_OF_RX_LEN is 32; we can also
-> > allocate it during probe
-> >   mtk_gpueb_mbox_read_rx(ch);
-> >   mbox_chan_received_data(..., buf);
-> >
-> > mtx_mfg makes a copy eventually anyway.
->
-> We don't right now, at least not until after the callback returns.
-> So we need to have the copy in the mtk_mfg callback, not after the
-> completion. That's fine and I do want to do this as this is what
-> the mailbox framework seems to expect clients to do.
->
-> > We don't need to maintain any
-> > extra copy.
-> >
-> > Then we might not need rx_status.
->
-> We can probably get rid of it if we keep the per-channel
-> interrupt handler. Otherwise, we may still need clogged,
-> as we don't want to process interrupts on channels we have
-> no user for.
->
-> >
-> > > +               atomic_set(&ch->rx_status, 0);
-> > > +               return IRQ_HANDLED;
-> > > +       }
-> > > +
-> > > +       return IRQ_NONE;
-> > > +}
-> > > +
-> > > +static int mtk_gpueb_mbox_send_data(struct mbox_chan *chan, void *da=
-ta)
-> > > +{
-> > > +       struct mtk_gpueb_mbox_chan *ch =3D chan->con_priv;
-> > > +       int i;
-> > > +       u32 *values =3D data;
-> > > +
-> > > +       if (atomic_read(&ch->rx_status))
-> > > +               return -EBUSY;
-> > > +
-> > > +       /*
-> > > +        * We don't want any fancy nonsense, just write the 32-bit va=
-lues in
-> > > +        * order. memcpy_toio/__iowrite32_copy don't work here, becau=
-se fancy.
-> > > +        */
-> > > +       for (i =3D 0; i < ch->c->tx_len; i +=3D 4)
-> > > +               writel(values[i / 4], ch->ebm->mbox_mmio + ch->c->tx_=
-offset + i);
-> > > +
-> > > +       writel(BIT(ch->num), ch->ebm->mbox_ctl + MBOX_CTL_IRQ_SET);
-> > > +
-> > > +       return 0;
-> > > +}
-> > > +
-> > > +static int mtk_gpueb_mbox_startup(struct mbox_chan *chan)
-> > > +{
-> > > +       struct mtk_gpueb_mbox_chan *ch =3D chan->con_priv;
-> > > +       int ret;
-> > > +
-> > > +       atomic_set(&ch->rx_status, 0);
-> > > +
-> > > +       ret =3D clk_enable(ch->ebm->clk);
-> > > +       if (ret) {
-> > > +               dev_err(ch->ebm->dev, "Failed to enable EB clock: %pe=
-\n",
-> > > +                       ERR_PTR(ret));
-> > > +               goto err_clog;
-> > > +       }
-> > > +
-> > > +       writel(BIT(ch->num), ch->ebm->mbox_ctl + MBOX_CTL_IRQ_CLR);
-> > > +
-> > > +       ret =3D devm_request_threaded_irq(ch->ebm->dev, ch->ebm->irq,=
- mtk_gpueb_mbox_isr,
-> > > +                                       mtk_gpueb_mbox_thread, IRQF_S=
-HARED | IRQF_ONESHOT,
-> > > +                                       ch->full_name, ch);
-> > I don't think this warrants a per-channel irq thread.
-> >
-> > mbox_chan_received_data is atomic. I think wecan start simple with
-> > just a devm_request_irq for all channels. mtk_gpueb_mbox_isr can
-> >
-> >   read bits from MBOX_CTL_RX_STS
-> >   for each bit set:
-> >     read data from rx
-> >     mbox_chan_received_data
-> >   write bits to MBOX_CTL_IRQ_CLR
-> >
->
-> I don't like this approach. It brings us back to having to process
-> multiple channels per ISR, keep track of when the interrupt should
-> be enabled and disabled based on how many channels are in use, and
-> also is not in line with what e.g. omap-mailbox.c does.
->
-> Remember that `mbox_chan_received_data` synchronously calls the
-> mailbox client's rx_callback. In mediatek_mfg's case, this is
-> fairly small, though with the request to not make the rx buffer
-> persist beyond the rx_callback it will gain an additional memory
-> copy. But we can't guarantee that someone isn't going to put a
-> slow operation in the path. Sure, it's going to be atomic, but
-> waiting for a spinlock is atomic and not something an ISR would
-> enjoy. I don't think mailbox clients would expect that if they
-> take their time they'll stall the interrupt handler for every
-> other channel.
->
-> So we'd keep the interrupt disabled for all channels until the
-> client that received a message has processed it.
->
-> I can see myself getting rid of the handler and just having the
-> thread function as the bottom half, but I'd really like to keep
-> the one-IRQ-request-per-channel thing I've got going now as it
-> made the code a lot easier to reason about. However, doing this
-> would mean the interrupt is re-enabled after the generic upper
-> half, when all the business logic that needs to not run
-> concurrently for an individual channel is in the bottom half.
->
-> As far as I can tell, this would then mean we'd have to add
-> some concurrency exclusion mechanism to the bottom half.
->
-> Moving all the logic into the upper half handler function
-> would make that handler somewhat longer, and I don't know
-> if IRQF_ONESHOT masks the interrupt for all users of that
-> IRQ number or just for those with that dev_id. If it's per
-> dev_id, then I'm fine with moving stuff up there. But from
-> my reading of the core IRQ handling code, that does not
-> appear to be the case; one channel getting a reply would
-> mask *all* channels of the mailbox until the upper half is
-> completed, and if the upper half calls into a driver
-> callback synchronously, that may take a hot minute.
->
-> Put differently: Is there a problem with one thread per used
-> channel, or are we going off vibes here? The way it currently
-> works uses the shared interrupt to mark just that one channel
-> as busy with rx_status before letting the IRQ for all channels
-> be unmasked again, which seems ideal to me.
-No, one thread per used channel can work. I can't say I like it, but I
-also don't know the hw as well as you do.
+T24gVGh1LCAyMDI1LTA4LTI4IGF0IDE2OjA3ICswODAwLCBQYXVsIENoZW4gd3JvdGU6DQo+IEZy
+b206IFBhdWwtcGwgQ2hlbiA8cGF1bC1wbC5jaGVuQG1lZGlhdGVrLmNvbT4NCj4gDQo+IFJldXNl
+ZCB0aGUgc3dpdGNoIGNhc2UgZm9yIFNPRiBJRHMuDQoNClRoaXMgaW5mb3JtYXRpb24gaXMgcmVk
+dW5kYW50IGJlY2F1c2UgaXQgaXMgdGhlIHNhbWUgYXMgdGl0bGUuDQpUZWxsIHVzIFdIWSBuZWVk
+IHRoaXMgcGF0Y2guDQoNClJlZ2FyZHMsDQpDSw0KDQo+IA0KPiBTaWduZWQtb2ZmLWJ5OiBQYXVs
+LXBsIENoZW4gPHBhdWwtcGwuY2hlbkBtZWRpYXRlay5jb20+DQo+IC0tLQ0KPiAgDQoNCg==
 
