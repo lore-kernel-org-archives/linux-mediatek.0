@@ -4,73 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08CEBCAC59D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Sep 2025 15:02:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7828CCAC599
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Sep 2025 15:19:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6oC8JSEMej3kF4e/Mcw5qoRTo4gs8KiZjgmbDS5yCog=; b=Er42wYYt3NvC/r7sIPt4gQAWWC
-	Hh4BxIYO32hzaTIUijMxtdDx2yjrVTWh6FqKsgNfuS8nVlTDhX+nDV9mwHoV4Q4GfexYb+y+UuF9u
-	CVI/kitCDLSFAcoFhuQ+6uuGqyt6WMKrgVOLDhfsAzVGPj/PQUoVynZePhoMNrrbcXaghqwk4s4Ue
-	7wRvy01mOWYf98yhScVcNzVdHK5gt2TOVm87xhHUM/aljQTtNU+gylmnzFn9oX2sHVPsIkRZEQc97
-	/FdAHCkaV2AT4nSnmohbuPNRZ6MfbI7A4nsUXUoa7NdgeX8KANvjqJ6Cll1ncgRkzJVoBH3yRqw1I
-	YaR5jnTA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=PgO4PwLadj9q2O3/9gbKEAJWdcbfyZ77b9J6iL9iQew=; b=PCfMUy/c9ssWUPUnRosOSfp1wr
+	ivvVblqchcTWTIgMyLmyoZ00sTHH1WHp26yZgn037KKMgkShI7Vw2v41E9OX4qtaO8P4Ql2m4z95C
+	PlG5Ohg9bAbUKYsPHw6dM9eYUO+E/ecYQheLzui0YIRi5CTGgbTm/9JCoEOy+xg/KZefLs8o7zYL/
+	HOSgLBQie96nHdRFWsdtAl1Vx2F4NcmX1xP7JJRPuPP9oF0fidxK65teEjn8zb29aDKxBRwdZKTU7
+	cPl6EntqGoGIUF8GRPpCULYTc7FtefWaiRSHHKp/sLC1uoAlRlGTC168BwonLZUR84vNgR8e6yfth
+	ymSZs0Hw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uytgD-0000000CWF3-26nd;
-	Wed, 17 Sep 2025 15:02:45 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uytwN-0000000Ce4X-0fQ1;
+	Wed, 17 Sep 2025 15:19:27 +0000
+Received: from mail.simonwunderlich.de ([23.88.38.48])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uytgC-0000000CWDi-0dRc;
-	Wed, 17 Sep 2025 15:02:44 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id A49866023A;
-	Wed, 17 Sep 2025 15:02:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2DCF7C4CEF0;
-	Wed, 17 Sep 2025 15:02:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1758121361;
-	bh=DkAob/mYPV+ZNAEqdno0NyXMgOtH4pnIcMp+zpKJAxo=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=sPT4O+XvDEdrvk/c00OHoqwWJCwrh5WRxwW2tzfT6VyUHJdXBW/vpmYjndvYkUg9Q
-	 4Jj9Bu94e75coQqY0ZAY3DnhFg5EnUERYbd+Vaw8+dHEgY/SaTmvfFtvCWDker95nM
-	 s12OIAXMjopWutHC5B0Za8oNtIDlU7dyKOuKm5ZSCarfmgLIUyiIepAtgS0QXD3Ffc
-	 zs+brP/jrIpbtZnJtf8IuRs5IGUWOWNxBhmesgdnr/BBP+LjJ2EYVPOO49nNr5QV6L
-	 c2FZ4OI4wGqia7QEs/0k4oAvTRgJtumOc1CuOa9RiZ3b+U34Djc9Idi3hiLW4FfUxg
-	 1kQS/hbO4N+tQ==
-Date: Wed, 17 Sep 2025 10:02:40 -0500
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1uytwK-0000000Ce1P-1XUR;
+	Wed, 17 Sep 2025 15:19:25 +0000
+Received: from sven-desktop.home.narfation.org (p200300c5971bEfE00000000000000c00.dip0.t-ipconnect.de [IPv6:2003:c5:971b:efe0::c00])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.simonwunderlich.de (Postfix) with ESMTPSA id AF95AFA12C;
+	Wed, 17 Sep 2025 17:19:19 +0200 (CEST)
+From: "Sven Eckelmann (Plasma Cloud)" <se@simonwunderlich.de>
+Date: Wed, 17 Sep 2025 17:18:22 +0200
+Subject: [PATCH] wifi: mt76: Fix DTS power-limits on little endian systems
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Kyungmin Park <kyungmin.park@samsung.com>, 
- Jassi Brar <jassisinghbrar@gmail.com>, Kees Cook <kees@kernel.org>, 
- Chia-I Wu <olvaffe@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Thomas Zimmermann <tzimmermann@suse.de>, Conor Dooley <conor+dt@kernel.org>, 
- Chanwoo Choi <cw00.choi@samsung.com>, Simona Vetter <simona@ffwll.ch>, 
- linux-arm-kernel@lists.infradead.org, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- linux-pm@vger.kernel.org, dri-devel@lists.freedesktop.org, 
- Maxime Ripard <mripard@kernel.org>, Steven Price <steven.price@arm.com>, 
- David Airlie <airlied@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>, 
- MyungJoo Ham <myungjoo.ham@samsung.com>, kernel@collabora.com, 
- Boris Brezillon <boris.brezillon@collabora.com>, 
- linux-hardening@vger.kernel.org, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- devicetree@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- "Gustavo A. R. Silva" <gustavoars@kernel.org>, 
- Liviu Dudau <liviu.dudau@arm.com>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-In-Reply-To: <20250917-mt8196-gpufreq-v3-1-c4ede4b4399e@collabora.com>
-References: <20250917-mt8196-gpufreq-v3-0-c4ede4b4399e@collabora.com>
- <20250917-mt8196-gpufreq-v3-1-c4ede4b4399e@collabora.com>
-Message-Id: <175812136009.2068624.13991293282844294346.robh@kernel.org>
-Subject: Re: [PATCH v3 01/10] dt-bindings: gpu: mali-valhall-csf: add
- mediatek,mt8196-mali variant
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250917-fix-power-limits-v1-1-616e859a9881@simonwunderlich.de>
+X-B4-Tracking: v=1; b=H4sIAD3RymgC/x2M0QpAMBRAf0X32a2NZuZX5IG5uMVoE2r5d8vjq
+ XNOhECeKUCTRfB0ceDdJZB5Bnbp3UzIY2IoRKGEkRonfvDYb/K48sZnQGVJ6MGYsqolpOzwlJx
+ /2Xbv+wFkAL5+YgAAAA==
+X-Change-ID: 20250917-fix-power-limits-5ce07b993681
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, 
+ Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, 
+ Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ stable@vger.kernel.org, 
+ "Sven Eckelmann (Plasma Cloud)" <se@simonwunderlich.de>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4942; i=se@simonwunderlich.de;
+ h=from:subject:message-id; bh=ec3UcGcmns+1WED33m/nQgJBe8h/K7vnYvuHF6DPz3A=;
+ b=owGbwMvMwCXmy1+ufVnk62nG02pJDBmnLobVprIoe6yMlV3be/1Dd59l89vWxv7yudOeLuvsd
+ WoqDWnsKGVhEONikBVTZNlzJf/8Zva38p+nfTwKM4eVCWQIAxenAEzkARfD/3B++1MMO6NOlM8Q
+ O6fAHvLVKCckcaXHfY307MpdTn1ybYwMSwvv8Um4yXr8rTslfJSpsu9VXHt1nKTEkT3mOhdevp7
+ MDgA=
+X-Developer-Key: i=se@simonwunderlich.de; a=openpgp;
+ fpr=522D7163831C73A635D12FE5EC371482956781AF
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250917_081924_571084_3786A7E5 
+X-CRM114-Status: GOOD (  14.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,49 +78,138 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+The power-limits for ru and mcs and stored in the devicetree as bytewise
+array (often with sizes which are not a multiple of 4). These arrays have a
+prefix which defines for how many modes a line is applied. This prefix is
+also only a byte - but the code still tried to fix the endianness of this
+byte with a be32 operation. As result, loading was mostly failing or was
+sending completely unexpected values to the firmware.
 
-On Wed, 17 Sep 2025 14:22:32 +0200, Nicolas Frattaroli wrote:
-> The Mali-based GPU on the MediaTek MT8196 SoC uses a separate MCU to
-> control the power and frequency of the GPU.
-> 
-> It lets us omit the OPP tables from the device tree, as those can now be
-> enumerated at runtime from the MCU. It also means the mali GPU node
-> described in this binding does not have any clocks in this case, as all
-> clock control is delegated to the MCU.
-> 
-> Add the mediatek,mt8196-mali compatible, and a performance-domains
-> property which points to the MCU's device tree node in this case. It's
-> required on mt8196 devices.
-> 
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> ---
->  .../bindings/gpu/arm,mali-valhall-csf.yaml         | 32 ++++++++++++++++++++--
->  1 file changed, 30 insertions(+), 2 deletions(-)
-> 
+Since the other rates are also stored in the devicetree as bytewise arrays,
+just drop the u32 access + be32_to_cpu conversion and directly access them
+as bytes arrays.
 
-My bot found errors running 'make dt_binding_check' on your patch:
+Cc: stable@vger.kernel.org
+Fixes: 22b980badc0f ("mt76: add functions for parsing rate power limits from DT")
+Fixes: 273943f4abd4 ("wifi: mt76: Fix DTS power-limits on little endian systems")
+Signed-off-by: Sven Eckelmann (Plasma Cloud) <se@simonwunderlich.de>
+---
+ drivers/net/wireless/mediatek/mt76/eeprom.c | 37 +++++++++++++++++++----------
+ 1 file changed, 24 insertions(+), 13 deletions(-)
 
-yamllint warnings/errors:
+diff --git a/drivers/net/wireless/mediatek/mt76/eeprom.c b/drivers/net/wireless/mediatek/mt76/eeprom.c
+index a987c5e4eff6c6b0a014b4b069dc1259ffa82d31..6ce8e4af18fe53c10a0cb7290bf65962ce9cdde4 100644
+--- a/drivers/net/wireless/mediatek/mt76/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/eeprom.c
+@@ -253,6 +253,19 @@ mt76_get_of_array(struct device_node *np, char *name, size_t *len, int min)
+ 	return prop->value;
+ }
+ 
++static const s8 *
++mt76_get_of_array_s8(struct device_node *np, char *name, size_t *len, int min)
++{
++	struct property *prop = of_find_property(np, name, NULL);
++
++	if (!prop || !prop->value || prop->length < min)
++		return NULL;
++
++	*len = prop->length;
++
++	return prop->value;
++}
++
+ struct device_node *
+ mt76_find_channel_node(struct device_node *np, struct ieee80211_channel *chan)
+ {
+@@ -294,7 +307,7 @@ mt76_get_txs_delta(struct device_node *np, u8 nss)
+ }
+ 
+ static void
+-mt76_apply_array_limit(s8 *pwr, size_t pwr_len, const __be32 *data,
++mt76_apply_array_limit(s8 *pwr, size_t pwr_len, const s8 *data,
+ 		       s8 target_power, s8 nss_delta, s8 *max_power)
+ {
+ 	int i;
+@@ -303,15 +316,14 @@ mt76_apply_array_limit(s8 *pwr, size_t pwr_len, const __be32 *data,
+ 		return;
+ 
+ 	for (i = 0; i < pwr_len; i++) {
+-		pwr[i] = min_t(s8, target_power,
+-			       be32_to_cpu(data[i]) + nss_delta);
++		pwr[i] = min_t(s8, target_power, data[i] + nss_delta);
+ 		*max_power = max(*max_power, pwr[i]);
+ 	}
+ }
+ 
+ static void
+ mt76_apply_multi_array_limit(s8 *pwr, size_t pwr_len, s8 pwr_num,
+-			     const __be32 *data, size_t len, s8 target_power,
++			     const s8 *data, size_t len, s8 target_power,
+ 			     s8 nss_delta, s8 *max_power)
+ {
+ 	int i, cur;
+@@ -319,8 +331,7 @@ mt76_apply_multi_array_limit(s8 *pwr, size_t pwr_len, s8 pwr_num,
+ 	if (!data)
+ 		return;
+ 
+-	len /= 4;
+-	cur = be32_to_cpu(data[0]);
++	cur = data[0];
+ 	for (i = 0; i < pwr_num; i++) {
+ 		if (len < pwr_len + 1)
+ 			break;
+@@ -335,7 +346,7 @@ mt76_apply_multi_array_limit(s8 *pwr, size_t pwr_len, s8 pwr_num,
+ 		if (!len)
+ 			break;
+ 
+-		cur = be32_to_cpu(data[0]);
++		cur = data[0];
+ 	}
+ }
+ 
+@@ -346,7 +357,7 @@ s8 mt76_get_rate_power_limits(struct mt76_phy *phy,
+ {
+ 	struct mt76_dev *dev = phy->dev;
+ 	struct device_node *np;
+-	const __be32 *val;
++	const s8 *val;
+ 	char name[16];
+ 	u32 mcs_rates = dev->drv->mcs_rates;
+ 	u32 ru_rates = ARRAY_SIZE(dest->ru[0]);
+@@ -392,21 +403,21 @@ s8 mt76_get_rate_power_limits(struct mt76_phy *phy,
+ 
+ 	txs_delta = mt76_get_txs_delta(np, hweight16(phy->chainmask));
+ 
+-	val = mt76_get_of_array(np, "rates-cck", &len, ARRAY_SIZE(dest->cck));
++	val = mt76_get_of_array_s8(np, "rates-cck", &len, ARRAY_SIZE(dest->cck));
+ 	mt76_apply_array_limit(dest->cck, ARRAY_SIZE(dest->cck), val,
+ 			       target_power, txs_delta, &max_power);
+ 
+-	val = mt76_get_of_array(np, "rates-ofdm",
+-				&len, ARRAY_SIZE(dest->ofdm));
++	val = mt76_get_of_array_s8(np, "rates-ofdm",
++				   &len, ARRAY_SIZE(dest->ofdm));
+ 	mt76_apply_array_limit(dest->ofdm, ARRAY_SIZE(dest->ofdm), val,
+ 			       target_power, txs_delta, &max_power);
+ 
+-	val = mt76_get_of_array(np, "rates-mcs", &len, mcs_rates + 1);
++	val = mt76_get_of_array_s8(np, "rates-mcs", &len, mcs_rates + 1);
+ 	mt76_apply_multi_array_limit(dest->mcs[0], ARRAY_SIZE(dest->mcs[0]),
+ 				     ARRAY_SIZE(dest->mcs), val, len,
+ 				     target_power, txs_delta, &max_power);
+ 
+-	val = mt76_get_of_array(np, "rates-ru", &len, ru_rates + 1);
++	val = mt76_get_of_array_s8(np, "rates-ru", &len, ru_rates + 1);
+ 	mt76_apply_multi_array_limit(dest->ru[0], ARRAY_SIZE(dest->ru[0]),
+ 				     ARRAY_SIZE(dest->ru), val, len,
+ 				     target_power, txs_delta, &max_power);
 
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.example.dtb: gpu@48000000 (mediatek,mt8196-mali): 'clocks' is a required property
-	from schema $id: http://devicetree.org/schemas/gpu/arm,mali-valhall-csf.yaml#
+---
+base-commit: b36d55610215a976267197ddc914902c494705d7
+change-id: 20250917-fix-power-limits-5ce07b993681
 
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250917-mt8196-gpufreq-v3-1-c4ede4b4399e@collabora.com
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
+Best regards,
+-- 
+Sven Eckelmann (Plasma Cloud) <se@simonwunderlich.de>
 
 
