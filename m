@@ -4,106 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0E37CAC598
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Sep 2025 10:37:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BCAFCA0EE8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Sep 2025 10:43:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wsYcWLS54K1ej44Yjhz6yrulC2XJ3aJ+2KhXmhL8N/4=; b=erI+Xb7l/VUN0OgULUCaQjJSz1
-	2Yxk3+ELRnkGqMk9J/NGAphfYc0OG71x3RuVfKojZzqaNxJ8TytMUic5owLuupg0TyspA21FJ7Qwt
-	Ye4aDTpN+E72BYFxNYe7b4cjvWhpun1ZP6bmUdgXOFMWplLcyFKrvIFoUYIENi4SF5hE7M7Chl1UQ
-	1nABIqy5eKdzVgIO971RFk40oHOULyiqkuodJx6CUy+InK8LhnXTyxY8324rY3HqBeS1R9ApiJk2i
-	KwTRO1yApNPT50k9gP7bMCCjKBHxxBXIigSIc6sG1X/l+oHVvYGhgKjlx0briNa+QxrwwrHiGkOs9
-	+oR3dv5w==;
+	bh=3Yyh8Hkqs7GqsXIM+okxGaGUnlxOgHFmx9rSotm4MB8=; b=OfLeUH60eFkllR3SKxWQtwxLrq
+	mYqP31wLyKOkGz6yRUbQgsSiYar7v1H+hmcmR+iLjxL+Kqy63uWAC5MYP38ZU+jSLKbioxNitd6p5
+	JwG13jJ90y+avwdl8yAS36/2RJ5F7M60c9G6tG0Tqe8xgOCptH92xJpjhWb6zL7LqVEvRhUln3C0x
+	VXzPDZV/Dc7ohNcCdx0oe8rElUOh9USjutwiY3310H4so8o6vCT95fwSLC8yDf0+pggMY+yA7PXCz
+	YjW+qXRs5MG6IE54JMlBupl5oL6gW3CkhtkERHxUFLgW8C2eN1GdeH/C6Uam8uHPvAD0P/eiAJuWl
+	AD7hraLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uypXt-0000000B0gp-2Y3u;
-	Wed, 17 Sep 2025 10:37:53 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1uypdN-0000000B1dP-3A24;
+	Wed, 17 Sep 2025 10:43:33 +0000
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uypXr-0000000B0fV-2zYS
+	id 1uypdK-0000000B1cM-3B8Q
 	for linux-mediatek@lists.infradead.org;
-	Wed, 17 Sep 2025 10:37:53 +0000
-Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-45dd505ae02so8128535e9.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 17 Sep 2025 03:37:51 -0700 (PDT)
+	Wed, 17 Sep 2025 10:43:32 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-b046d1cd1fdso129468566b.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 17 Sep 2025 03:43:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1758105470; x=1758710270; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1758105809; x=1758710609; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=wsYcWLS54K1ej44Yjhz6yrulC2XJ3aJ+2KhXmhL8N/4=;
-        b=X2/gRBBC9+54MJyLh5EggalFlMBWvo9BVxGDawqIfw9fXdLWNO0ld4gTQjnSuAG7VD
-         2hZGpd0ssgvl5U3jCGxgj5nrfMgDp9NuGCxBSI9dWxBZh12ZtLko6suvkA8FmTH+8o9s
-         DrnSOe7FRoDTYaNLprRpcI+4rVJIgqBeUFIRnGY897VoP3nlWDxKrGA5HtfaGYYdcAl1
-         Q9zSWYX+EKWoDcNaXDPpIzMwbRc28H7ola3lWlMqxl8SJ+bA0+3ABb0fQcy9Gb28UzdE
-         Kh0no+bzWvMugiGWPe5cIclzlCyZu3riojm0rbEksPHOBNKvOXMExa9av8OrroAgjJ8f
-         eJTQ==
+        bh=3Yyh8Hkqs7GqsXIM+okxGaGUnlxOgHFmx9rSotm4MB8=;
+        b=jhw1PoeBza1b8+1CdUUhkCl8zf0ricbyVBEiYShek5PbblAhxnZldOKMSSku6W/jJO
+         IzMbmE54LLvSugkClGBe/XM2lARFSBTI724oPLUWhheECkwrZUzXDXRdZ/frTd4Z/xQ1
+         bFuXvypN0WMWX+RgbyTDzvVB4KmuWk55p5O4Nr7SsDVWs2PzFI3ki4MPB2ee7uz6YvxA
+         G2VcG2K6Jevh0TH8Kn+C6aIlY3tnMKjjLteSgiN5QLEEJf7+gNgoZUORuyzd1uTLqiWN
+         P/sSr3qrOxs0oISOHmv8VcLfwEJEPoubZuvx95hMhn9hFvmQMEA/7cnDcqUtXCWO2n1x
+         DNCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1758105470; x=1758710270;
+        d=1e100.net; s=20230601; t=1758105809; x=1758710609;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=wsYcWLS54K1ej44Yjhz6yrulC2XJ3aJ+2KhXmhL8N/4=;
-        b=CC6u4XUplyAPMbGO4zrN7jFVYwuOt7h16H5TEO6AWMOU3XwXa4NvfgkAIJdgO/wXjZ
-         m5JAsXSN6atpyB/scTElez3SALLJxrcX/ovJlrEInMm6zP1gW1ULdKGbjraCu1IBMUva
-         PESlWqMcY+Ylu7w7gQ9pdOM3JrxmqQ+ubJUlhFSX+ucJeWZQHufPaokzOQGK7etosJIP
-         oCaTt+PhH9jkJET1G5J6pSn0cBa9zoAeE+MAVJmypiVxFY0vw3ya7pRFhFuMIkqcEfXY
-         Xqe69UMKODx/RCMXUX2EDtwwwyG7zN2kMeuHUHgl9J72bVDm+Fkf4MM3woOEYYodg4U5
-         Fm+Q==
-X-Forwarded-Encrypted: i=1; AJvYcCVlPMpS7JEWUBkQUvQRoqH+2y3+d4EV8sPFeA+tnfWtPwvU+ViG9ro4zmK6uP22yObxkczixhW7Pj7mw+b0XQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxemGNLUg9z9adS4BkcdRuAMaSRx1Lyr4NkzyiOLdyYZLOD2xs/
-	3GSQ1mM2ft4/e2XxIjGUtHktyh/ds4/Wh5CdENl8LGvM2fVBjAe1Y5Fn
-X-Gm-Gg: ASbGncuxDses99EcJ5bOkWLCs/e1Nx2vKNqAhEbmHwVLdd6Fbh05tHPRfFSl1p1OS6R
-	fdCiH8AhljXlzx/DaFWQX2Z5oopasFDAeV5s9SlENjwpE4P+8ynJtL7i3id98CIbq+PpAEUhczT
-	4wunpsOVq7NsRPySBMM8zQZZlP5LX+cnjVyYeyUH7/MaV1bjT7EviW/kDQJDXH0GHnwlmXFvO/6
-	hRa/2KjyFjKHlAz9OaoilMu/uUHHj2NVkA8ZbtuefpbjOum8nhLFzsbOpihcvBD2vxnl/sO3pHY
-	bEby+JmjMXrAdUSO5y/sbt+OnQ6Lw6UXfzxRxwX9d6BNJKc4Eohd5ozx4/zMvG3JrByEh1LA64n
-	nFF3BIuQUBS3l42Q=
-X-Google-Smtp-Source: AGHT+IHmbRK/RR/f6CMsiKwgVCww0CbZLWw9FNcy1YCsTBab4ScCzhgCjBGfKDPKwCMgjbZt1yeo9Q==
-X-Received: by 2002:a05:600c:3d92:b0:45f:2919:5e8d with SMTP id 5b1f17b1804b1-46201cac25dmr7562685e9.1.1758105469624;
-        Wed, 17 Sep 2025 03:37:49 -0700 (PDT)
+        bh=3Yyh8Hkqs7GqsXIM+okxGaGUnlxOgHFmx9rSotm4MB8=;
+        b=vqsoO9bM2oU7TQPN4nfacRmgUQEJb9xp9lxu24931S1eRYA4cBoDzyrDt/Fbz2lcE3
+         pqUj5VkkqzpPz0pbCb9lurdiXfCQn6KwMxDV5ss2Z3aS1Q8Cb+oqvk9aaqk0yHw9ZCXy
+         3CgPXGfajF0rahLnM8+QcXDEGJc2+9Q5Bd+jCV5Yo+ymopF87CvFx+ntWVK069kCkChT
+         KBfXg/0x3sRuMepQ1dQSRfO3j6jJq8fS/46AdzgSPCdtVQ9VV1NrlOUI7rhl+9BnJQwo
+         saaH2LmgYmRdS/DGcAqACE+T/S8WU+p1bB5x2JL9Ie+7Qg7LYweze7o9kyHMrE0szfQo
+         UvcQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWhdoEytdOAQb1Eogv7eW4BS65TZHwLxreAi2OsIb+gwddXe0TmeyginxuMY+TJ085iYtRieBLvRKLvi4osuw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxAhYaixYfuTImi79IqNVYRf5DxJB7C6NG8NBHVg3d5Aqx6rhJo
+	r1bfLcAi8KoZrsMFQPcwTX9FLxeUwTYgB85/5iooHOZBXp9Iry0DZc3F
+X-Gm-Gg: ASbGncu91qJlMSqo8X9GU53CQ1hf/yfFu987qDmT6iOsSfJmGTuuom2QCZCguNOqu5h
+	D/zMZnJweoe/TArpUoRsF4hmQGbOREb/Yjr0OKn0HqsXGVSa54qhHUwP0qYGkRbNnTHuwIad4eI
+	ggX/3Xu/Ma6Iiv7il8dtX/BJpI9wo2CeNz3uw9kJ/LzVRy5U06OISSjwSaPLwlg63IXMOl1Tbf2
+	r5iDhz8TDYF9Mq/ZM5yxrVHoyiCt908oEYPXsGgUsTN4WVPSZaW6UQuZ8/Txt3DUzTIO2FjtDWx
+	cqY4DqUA+nb2vaj9jMGdOuwTaiWGXoVyIVEwxnY9YZxVwqlaoB53ncNAs4CC6oFo4AJ07/Opo8v
+	05sQzdbHOO7Nps3Q=
+X-Google-Smtp-Source: AGHT+IF0bGu8coGo8S13flYMunWY6PoCzFUDuD7l8SY41Vuc7seAVPH3vRAusBx3pRQ3RA9KkKbEpA==
+X-Received: by 2002:a17:907:7e93:b0:b04:669f:e70f with SMTP id a640c23a62f3a-b1bb7f2a4f5mr112464766b.2.1758105808719;
+        Wed, 17 Sep 2025 03:43:28 -0700 (PDT)
 Received: from skbuf ([2a02:2f04:d005:3b00:8bcc:b603:fee7:a273])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4613e93dd85sm34991125e9.22.2025.09.17.03.37.47
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b07c6110c27sm1132722066b.66.2025.09.17.03.43.26
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 17 Sep 2025 03:37:48 -0700 (PDT)
-Date: Wed, 17 Sep 2025 13:37:45 +0300
+        Wed, 17 Sep 2025 03:43:28 -0700 (PDT)
+Date: Wed, 17 Sep 2025 13:43:25 +0300
 From: Vladimir Oltean <olteanv@gmail.com>
 To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, Russell King <linux@armlinux.org.uk>,
-	Jakub Kicinski <kuba@kernel.org>, devicetree@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	"Chester A. Unal" <chester.a.unal@arinc9.com>,
-	Heiner Kallweit <hkallweit1@gmail.com>, netdev@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	DENG Qingfang <dqfext@gmail.com>, Lee Jones <lee@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Eric Dumazet <edumazet@google.com>,
-	"David S. Miller" <davem@davemloft.net>,
+Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Simon Horman <horms@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
 	Conor Dooley <conor+dt@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>
-Subject: Re: [net-next PATCH v18 3/8] dt-bindings: mfd: Document support for
- Airoha AN8855 Switch SoC
-Message-ID: <20250917103745.vhdsvrrv7z23qpnn@skbuf>
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Simon Horman <horms@kernel.org>,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [net-next PATCH v18 5/8] net: dsa: Add Airoha AN8855 5-Port
+ Gigabit DSA Switch driver
+Message-ID: <20250917104325.j5je2jtachee7thw@skbuf>
 References: <20250915104545.1742-1-ansuelsmth@gmail.com>
- <20250915104545.1742-4-ansuelsmth@gmail.com>
- <175795551518.2905345.11331954231627495466.robh@kernel.org>
- <20250915201938.GA3326233-robh@kernel.org>
- <68c8a6fd.050a0220.26bdf7.871a@mx.google.com>
+ <20250915104545.1742-6-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <68c8a6fd.050a0220.26bdf7.871a@mx.google.com>
+In-Reply-To: <20250915104545.1742-6-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250917_033751_793902_BBB19C09 
-X-CRM114-Status: GOOD (  28.64  )
+X-CRM114-CacheID: sfid-20250917_034330_845855_656664A1 
+X-CRM114-Status: GOOD (  17.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,60 +116,220 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 16, 2025 at 01:53:27AM +0200, Christian Marangi wrote:
-> On Mon, Sep 15, 2025 at 03:19:38PM -0500, Rob Herring wrote:
-> > On Mon, Sep 15, 2025 at 12:01:47PM -0500, Rob Herring (Arm) wrote:
-> > > 
-> > > On Mon, 15 Sep 2025 12:45:39 +0200, Christian Marangi wrote:
-> > > > Document support for Airoha AN8855 Switch SoC. This SoC expose various
-> > > > peripherals like an Ethernet Switch, a NVMEM provider and Ethernet PHYs.
-> > > > 
-> > > > It does also support i2c and timers but those are not currently
-> > > > supported/used.
-> > > > 
-> > > > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> > > > ---
-> > > >  .../bindings/mfd/airoha,an8855.yaml           | 173 ++++++++++++++++++
-> > > >  1 file changed, 173 insertions(+)
-> > > >  create mode 100644 Documentation/devicetree/bindings/mfd/airoha,an8855.yaml
-> > > > 
-> > > 
-> > > My bot found errors running 'make dt_binding_check' on your patch:
-> > > 
-> > > yamllint warnings/errors:
-> > > 
-> > > dtschema/dtc warnings/errors:
-> > > /builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/mfd/airoha,an8855.yaml:
-> > > 	Error in referenced schema matching $id: http://devicetree.org/schemas/nvmem/airoha,an8855-efuse.yaml
-> > > 	Tried these paths (check schema $id if path is wrong):
-> > > 	/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/nvmem/airoha,an8855-efuse.yaml
-> > > 	/usr/local/lib/python3.13/dist-packages/dtschema/schemas/nvmem/airoha,an8855-efuse.yaml
-> > > 
-> > > /builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/mfd/airoha,an8855.example.dtb: soc@1 (airoha,an8855): efuse: {'compatible': ['airoha,an8855-efuse'], '#nvmem-cell-cells': 0, 'nvmem-layout': {'compatible': ['fixed-layout'], '#address-cells': 1, '#size-cells': 1, 'shift-sel-port0-tx-a@c': {'reg': [[12, 4]], 'phandle': 3}, 'shift-sel-port0-tx-b@10': {'reg': [[16, 4]], 'phandle': 4}, 'shift-sel-port0-tx-c@14': {'reg': [[20, 4]], 'phandle': 5}, 'shift-sel-port0-tx-d@18': {'reg': [[24, 4]], 'phandle': 6}, 'shift-sel-port1-tx-a@1c': {'reg': [[28, 4]], 'phandle': 7}, 'shift-sel-port1-tx-b@20': {'reg': [[32, 4]], 'phandle': 8}, 'shift-sel-port1-tx-c@24': {'reg': [[36, 4]], 'phandle': 9}, 'shift-sel-port1-tx-d@28': {'reg': [[40, 4]], 'phandle': 10}}} should not be valid under {'description': "Can't find referenced schema: http://devicetree.org/schemas/nvmem/airoha,an8855-efuse.yaml#"}
-> > > 	from schema $id: http://devicetree.org/schemas/mfd/airoha,an8855.yaml#
-> > > Documentation/devicetree/bindings/mfd/airoha,an8855.example.dtb: /example-0/mdio/soc@1/efuse: failed to match any schema with compatible: ['airoha,an8855-efuse']
-> > 
-> > Why are we on v18 and still getting errors? I only review patches 
-> > without errors.
-> 
-> Hi Rob,
-> 
-> the problem is that the MFD driver and the schema patch subset of this
-> series has been picked separately and are now in linux-next.
+On Mon, Sep 15, 2025 at 12:45:41PM +0200, Christian Marangi wrote:
+> +static const struct an8855_mib_desc an8855_mib[] = {
+> +	MIB_DESC(1, AN8855_PORT_MIB_TX_DROP, "TxDrop"),
+> +	MIB_DESC(1, AN8855_PORT_MIB_TX_CRC_ERR, "TxCrcErr"),
+> +	MIB_DESC(1, AN8855_PORT_MIB_TX_COLLISION, "TxCollision"),
+> +	MIB_DESC(1, AN8855_PORT_MIB_TX_OVERSIZE_DROP, "TxOversizeDrop"),
+> +	MIB_DESC(2, AN8855_PORT_MIB_TX_BAD_PKT_BYTES, "TxBadPktBytes"),
+> +	MIB_DESC(1, AN8855_PORT_MIB_RX_DROP, "RxDrop"),
+> +	MIB_DESC(1, AN8855_PORT_MIB_RX_FILTERING, "RxFiltering"),
+> +	MIB_DESC(1, AN8855_PORT_MIB_RX_CRC_ERR, "RxCrcErr"),
+> +	MIB_DESC(1, AN8855_PORT_MIB_RX_CTRL_DROP, "RxCtrlDrop"),
+> +	MIB_DESC(1, AN8855_PORT_MIB_RX_INGRESS_DROP, "RxIngressDrop"),
+> +	MIB_DESC(1, AN8855_PORT_MIB_RX_ARL_DROP, "RxArlDrop"),
+> +	MIB_DESC(1, AN8855_PORT_MIB_FLOW_CONTROL_DROP, "FlowControlDrop"),
+> +	MIB_DESC(1, AN8855_PORT_MIB_WRED_DROP, "WredDrop"),
+> +	MIB_DESC(1, AN8855_PORT_MIB_MIRROR_DROP, "MirrorDrop"),
+> +	MIB_DESC(2, AN8855_PORT_MIB_RX_BAD_PKT_BYTES, "RxBadPktBytes"),
+> +	MIB_DESC(1, AN8855_PORT_MIB_RXS_FLOW_SAMPLING_PKT_DROP, "RxsFlowSamplingPktDrop"),
+> +	MIB_DESC(1, AN8855_PORT_MIB_RXS_FLOW_TOTAL_PKT_DROP, "RxsFlowTotalPktDrop"),
+> +	MIB_DESC(1, AN8855_PORT_MIB_PORT_CONTROL_DROP, "PortControlDrop"),
+> +};
+> +
+> +static int
+> +an8855_mib_init(struct an8855_priv *priv)
+> +{
+> +	int ret;
+> +
+> +	ret = regmap_write(priv->regmap, AN8855_MIB_CCR,
+> +			   AN8855_CCR_MIB_ENABLE);
+> +	if (ret)
+> +		return ret;
+> +
+> +	return regmap_write(priv->regmap, AN8855_MIB_CCR,
+> +			    AN8855_CCR_MIB_ACTIVATE);
+> +}
+> +
+> +static void an8855_get_strings(struct dsa_switch *ds, int port,
+> +			       u32 stringset, uint8_t *data)
+> +{
+> +	int i;
+> +
+> +	if (stringset != ETH_SS_STATS)
+> +		return;
+> +
+> +	for (i = 0; i < ARRAY_SIZE(an8855_mib); i++)
+> +		ethtool_puts(&data, an8855_mib[i].name);
 
-Link for MFD driver? I don't see the MFD driver in linux-next.
-https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/tree/drivers/mfd
+Same feedback as for yt921x. For new drivers we want in unstructured
+ethtool -S only those statistics which are not exposed through standard
+variants (to force the adoption of the new interfaces).
 
-> I tried to make the bot happy by using base-commit but it doesn't seem
-> to work. Any hint for this? 
-> 
-> The errors comes from the missing efuse schema.
-
-So the efuse schema is in the nvmem tree and this schema needs to go
-through the mfd tree.
-
-For v17, you used "base-commit: 04b74f665961599e807b24af28099a29d691b18c":
-https://lore.kernel.org/netdev/20250911133929.30874-4-ansuelsmth@gmail.com/
-I ran "git show", after fetching linux-next, where all trees should be
-included, and didn't find this commit. What does it represent?
+> +}
+> +
+> +static void an8855_read_port_stats(struct an8855_priv *priv, int port,
+> +				   u32 offset, u8 size, uint64_t *data)
+> +{
+> +	u32 val, reg = AN8855_PORT_MIB_COUNTER(port) + offset;
+> +
+> +	regmap_read(priv->regmap, reg, &val);
+> +	*data = val;
+> +
+> +	if (size == 2) {
+> +		regmap_read(priv->regmap, reg + 4, &val);
+> +		*data |= (u64)val << 32;
+> +	}
+> +}
+> +
+> +static void an8855_get_ethtool_stats(struct dsa_switch *ds, int port,
+> +				     uint64_t *data)
+> +{
+> +	struct an8855_priv *priv = ds->priv;
+> +	const struct an8855_mib_desc *mib;
+> +	int i;
+> +
+> +	for (i = 0; i < ARRAY_SIZE(an8855_mib); i++) {
+> +		mib = &an8855_mib[i];
+> +
+> +		an8855_read_port_stats(priv, port, mib->offset, mib->size,
+> +				       data + i);
+> +	}
+> +}
+> +
+> +static int an8855_get_sset_count(struct dsa_switch *ds, int port,
+> +				 int sset)
+> +{
+> +	if (sset != ETH_SS_STATS)
+> +		return 0;
+> +
+> +	return ARRAY_SIZE(an8855_mib);
+> +}
+> +
+> +static void an8855_get_eth_mac_stats(struct dsa_switch *ds, int port,
+> +				     struct ethtool_eth_mac_stats *mac_stats)
+> +{
+> +	struct an8855_priv *priv = ds->priv;
+> +
+> +	/* MIB counter doesn't provide a FramesTransmittedOK but instead
+> +	 * provide stats for Unicast, Broadcast and Multicast frames separately.
+> +	 * To simulate a global frame counter, read Unicast and addition Multicast
+> +	 * and Broadcast later
+> +	 */
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_UNICAST, 1,
+> +			       &mac_stats->FramesTransmittedOK);
+> +
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_SINGLE_COLLISION, 1,
+> +			       &mac_stats->SingleCollisionFrames);
+> +
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_MULTIPLE_COLLISION, 1,
+> +			       &mac_stats->MultipleCollisionFrames);
+> +
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_UNICAST, 1,
+> +			       &mac_stats->FramesReceivedOK);
+> +
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_BYTES, 2,
+> +			       &mac_stats->OctetsTransmittedOK);
+> +
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_ALIGN_ERR, 1,
+> +			       &mac_stats->AlignmentErrors);
+> +
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_DEFERRED, 1,
+> +			       &mac_stats->FramesWithDeferredXmissions);
+> +
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_LATE_COLLISION, 1,
+> +			       &mac_stats->LateCollisions);
+> +
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_EXCESSIVE_COLLISION, 1,
+> +			       &mac_stats->FramesAbortedDueToXSColls);
+> +
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_BYTES, 2,
+> +			       &mac_stats->OctetsReceivedOK);
+> +
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_MULTICAST, 1,
+> +			       &mac_stats->MulticastFramesXmittedOK);
+> +	mac_stats->FramesTransmittedOK += mac_stats->MulticastFramesXmittedOK;
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_BROADCAST, 1,
+> +			       &mac_stats->BroadcastFramesXmittedOK);
+> +	mac_stats->FramesTransmittedOK += mac_stats->BroadcastFramesXmittedOK;
+> +
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_MULTICAST, 1,
+> +			       &mac_stats->MulticastFramesReceivedOK);
+> +	mac_stats->FramesReceivedOK += mac_stats->MulticastFramesReceivedOK;
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_BROADCAST, 1,
+> +			       &mac_stats->BroadcastFramesReceivedOK);
+> +	mac_stats->FramesReceivedOK += mac_stats->BroadcastFramesReceivedOK;
+> +}
+> +
+> +static const struct ethtool_rmon_hist_range an8855_rmon_ranges[] = {
+> +	{ 0, 64 },
+> +	{ 65, 127 },
+> +	{ 128, 255 },
+> +	{ 256, 511 },
+> +	{ 512, 1023 },
+> +	{ 1024, 1518 },
+> +	{ 1519, AN8855_MAX_MTU },
+> +	{}
+> +};
+> +
+> +static void an8855_get_rmon_stats(struct dsa_switch *ds, int port,
+> +				  struct ethtool_rmon_stats *rmon_stats,
+> +				  const struct ethtool_rmon_hist_range **ranges)
+> +{
+> +	struct an8855_priv *priv = ds->priv;
+> +
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_UNDER_SIZE_ERR, 1,
+> +			       &rmon_stats->undersize_pkts);
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_OVER_SZ_ERR, 1,
+> +			       &rmon_stats->oversize_pkts);
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_FRAG_ERR, 1,
+> +			       &rmon_stats->fragments);
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_JABBER_ERR, 1,
+> +			       &rmon_stats->jabbers);
+> +
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_PKT_SZ_64, 1,
+> +			       &rmon_stats->hist[0]);
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_PKT_SZ_65_TO_127, 1,
+> +			       &rmon_stats->hist[1]);
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_PKT_SZ_128_TO_255, 1,
+> +			       &rmon_stats->hist[2]);
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_PKT_SZ_256_TO_511, 1,
+> +			       &rmon_stats->hist[3]);
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_PKT_SZ_512_TO_1023, 1,
+> +			       &rmon_stats->hist[4]);
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_PKT_SZ_1024_TO_1518, 1,
+> +			       &rmon_stats->hist[5]);
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_PKT_SZ_1519_TO_MAX, 1,
+> +			       &rmon_stats->hist[6]);
+> +
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_PKT_SZ_64, 1,
+> +			       &rmon_stats->hist_tx[0]);
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_PKT_SZ_65_TO_127, 1,
+> +			       &rmon_stats->hist_tx[1]);
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_PKT_SZ_128_TO_255, 1,
+> +			       &rmon_stats->hist_tx[2]);
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_PKT_SZ_256_TO_511, 1,
+> +			       &rmon_stats->hist_tx[3]);
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_PKT_SZ_512_TO_1023, 1,
+> +			       &rmon_stats->hist_tx[4]);
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_PKT_SZ_1024_TO_1518, 1,
+> +			       &rmon_stats->hist_tx[5]);
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_PKT_SZ_1519_TO_MAX, 1,
+> +			       &rmon_stats->hist_tx[6]);
+> +
+> +	*ranges = an8855_rmon_ranges;
+> +}
+> +
+> +static void an8855_get_eth_ctrl_stats(struct dsa_switch *ds, int port,
+> +				      struct ethtool_eth_ctrl_stats *ctrl_stats)
+> +{
+> +	struct an8855_priv *priv = ds->priv;
+> +
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_PAUSE, 1,
+> +			       &ctrl_stats->MACControlFramesTransmitted);
+> +
+> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_PAUSE, 1,
+> +			       &ctrl_stats->MACControlFramesReceived);
+> +}
 
