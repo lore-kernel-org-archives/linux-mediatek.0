@@ -4,66 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7828CCAC599
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Sep 2025 15:19:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55B82CAC5A0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Sep 2025 15:45:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=PgO4PwLadj9q2O3/9gbKEAJWdcbfyZ77b9J6iL9iQew=; b=PCfMUy/c9ssWUPUnRosOSfp1wr
-	ivvVblqchcTWTIgMyLmyoZ00sTHH1WHp26yZgn037KKMgkShI7Vw2v41E9OX4qtaO8P4Ql2m4z95C
-	PlG5Ohg9bAbUKYsPHw6dM9eYUO+E/ecYQheLzui0YIRi5CTGgbTm/9JCoEOy+xg/KZefLs8o7zYL/
-	HOSgLBQie96nHdRFWsdtAl1Vx2F4NcmX1xP7JJRPuPP9oF0fidxK65teEjn8zb29aDKxBRwdZKTU7
-	cPl6EntqGoGIUF8GRPpCULYTc7FtefWaiRSHHKp/sLC1uoAlRlGTC168BwonLZUR84vNgR8e6yfth
-	ymSZs0Hw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9NS+2TMW4a/gl2sgYIe2u6WUeHZdcfg3javQWIkrkKM=; b=Qi4ytWPUxakVCd4H+PefBUj0qr
+	uMwpG+uJTPR0Ra5c5pdmvjMmwCg9j5ykic12G4GmuZnOXDh0klu+Yytiz9Y/8A1saXLQ2bU3pSJuK
+	53Mvq4k4Jnxv4lRoCb/ys9i6dUQBhrgOlYCRQ6mwgRSGKIsY4sQLdcKSQn/DHdoxvGUkkAA1skW2p
+	38OS5DMivLCZHjXlpYBBCHyeXIjvtSzDfYJ+BP2SHcPgSg5Vh7Lf4mjqj+hXQpmx8kuJP1l5GQuzZ
+	i9cVukqgip0L/ICMcPY5+kFuE8oJ4SdvXEr5VMu84O6ZfGJbODeTtgVbIDvdS4P68Tv4eGHmYrYWH
+	bI4TRUFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uytwN-0000000Ce4X-0fQ1;
-	Wed, 17 Sep 2025 15:19:27 +0000
-Received: from mail.simonwunderlich.de ([23.88.38.48])
+	id 1uyuLR-0000000CqpU-3hdn;
+	Wed, 17 Sep 2025 15:45:21 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uytwK-0000000Ce1P-1XUR;
-	Wed, 17 Sep 2025 15:19:25 +0000
-Received: from sven-desktop.home.narfation.org (p200300c5971bEfE00000000000000c00.dip0.t-ipconnect.de [IPv6:2003:c5:971b:efe0::c00])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.simonwunderlich.de (Postfix) with ESMTPSA id AF95AFA12C;
-	Wed, 17 Sep 2025 17:19:19 +0200 (CEST)
-From: "Sven Eckelmann (Plasma Cloud)" <se@simonwunderlich.de>
-Date: Wed, 17 Sep 2025 17:18:22 +0200
-Subject: [PATCH] wifi: mt76: Fix DTS power-limits on little endian systems
+	id 1uyuLP-0000000Cqms-1iiJ;
+	Wed, 17 Sep 2025 15:45:20 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1758123894; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=WUDPUqRYYRpGM37VGj/cDz9tsmHSCH7z2usKWo4WfYTFqwOWSYE7WlmN9fw201sgDuk1auBBLGi62GkV8TtF9s7/PnDX8S6ddHutLFO7p7H5y7cjaE1HhneNt7w16P+Sd4TcRx3JasYFYSVV6hwqJplrgWuOn80/JuWTSDwnqzI=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1758123894; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=9NS+2TMW4a/gl2sgYIe2u6WUeHZdcfg3javQWIkrkKM=; 
+	b=Q6XxApfyDbvekZy13u7UvGapk6xX8cS6oImN9Th02x4R+gX1Q1wZHNYtfkECfuGe0NmayPJmOIc0rdqbj8Dh7BvWq4d6ogfOATfBaK78d8xQS+7fhNtWuh36VO1JhybMhio0M+BYxPH5T9RhmR8JEYQxv1hiowCmmlpYeq6dS+s=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1758123893;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=9NS+2TMW4a/gl2sgYIe2u6WUeHZdcfg3javQWIkrkKM=;
+	b=NejvthPT83l3L66HVbJc2UCAMq88GBLUvu9INaOe4bXmqYIkpMKH9YFvQVqBiCWe
+	JRSk21bXGQPYakduq5EBPTIVWkcYq1OEXEw4VS5S4stMkKfmsTehLdMEzDQvhkCUhWv
+	yYkmDj2SkWchceg9TOiUEGXU4Y46MszU/vabMa/M=
+Received: by mx.zohomail.com with SMTPS id 1758123892638662.0849377963553;
+	Wed, 17 Sep 2025 08:44:52 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ Chanwoo Choi <cw00.choi@samsung.com>, Jassi Brar <jassisinghbrar@gmail.com>,
+ Kees Cook <kees@kernel.org>, "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ Chia-I Wu <olvaffe@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>,
+ kernel@collabora.com, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-pm@vger.kernel.org, linux-hardening@vger.kernel.org,
+ Conor Dooley <conor.dooley@microchip.com>
+Subject: Re: [PATCH v3 00/10] MT8196 GPU Frequency/Power Control Support
+Date: Wed, 17 Sep 2025 17:44:43 +0200
+Message-ID: <2162077.CQOukoFCf9@workhorse>
+In-Reply-To: <CAPDyKFoi9KcsP5k84cSxuXNuMHmcf3a8emfOc6hMjGm_0FMk8w@mail.gmail.com>
+References: <20250917-mt8196-gpufreq-v3-0-c4ede4b4399e@collabora.com>
+ <CAPDyKFoi9KcsP5k84cSxuXNuMHmcf3a8emfOc6hMjGm_0FMk8w@mail.gmail.com>
 MIME-Version: 1.0
+Content-Transfer-Encoding: 7Bit
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250917-fix-power-limits-v1-1-616e859a9881@simonwunderlich.de>
-X-B4-Tracking: v=1; b=H4sIAD3RymgC/x2M0QpAMBRAf0X32a2NZuZX5IG5uMVoE2r5d8vjq
- XNOhECeKUCTRfB0ceDdJZB5Bnbp3UzIY2IoRKGEkRonfvDYb/K48sZnQGVJ6MGYsqolpOzwlJx
- /2Xbv+wFkAL5+YgAAAA==
-X-Change-ID: 20250917-fix-power-limits-5ce07b993681
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, 
- Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, 
- Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- stable@vger.kernel.org, 
- "Sven Eckelmann (Plasma Cloud)" <se@simonwunderlich.de>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4942; i=se@simonwunderlich.de;
- h=from:subject:message-id; bh=ec3UcGcmns+1WED33m/nQgJBe8h/K7vnYvuHF6DPz3A=;
- b=owGbwMvMwCXmy1+ufVnk62nG02pJDBmnLobVprIoe6yMlV3be/1Dd59l89vWxv7yudOeLuvsd
- WoqDWnsKGVhEONikBVTZNlzJf/8Zva38p+nfTwKM4eVCWQIAxenAEzkARfD/3B++1MMO6NOlM8Q
- O6fAHvLVKCckcaXHfY307MpdTn1ybYwMSwvv8Um4yXr8rTslfJSpsu9VXHt1nKTEkT3mOhdevp7
- MDgA=
-X-Developer-Key: i=se@simonwunderlich.de; a=openpgp;
- fpr=522D7163831C73A635D12FE5EC371482956781AF
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250917_081924_571084_3786A7E5 
-X-CRM114-Status: GOOD (  14.13  )
+X-CRM114-CacheID: sfid-20250917_084519_500871_213B8DFF 
+X-CRM114-Status: GOOD (  35.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,138 +93,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The power-limits for ru and mcs and stored in the devicetree as bytewise
-array (often with sizes which are not a multiple of 4). These arrays have a
-prefix which defines for how many modes a line is applied. This prefix is
-also only a byte - but the code still tried to fix the endianness of this
-byte with a be32 operation. As result, loading was mostly failing or was
-sending completely unexpected values to the firmware.
+On Wednesday, 17 September 2025 15:28:59 Central European Summer Time Ulf Hansson wrote:
+> On Wed, 17 Sept 2025 at 14:23, Nicolas Frattaroli
+> <nicolas.frattaroli@collabora.com> wrote:
+> >
+> > This series introduces two new drivers to accomplish controlling the
+> > frequency and power of the Mali GPU on MediaTek MT8196 SoCs.
+> >
+> > The reason why it's not as straightforward as with other SoCs is that
+> > the MT8196 has quite complex glue logic in order to squeeze the maximum
+> > amount of performance possible out of the silicon. There's an additional
+> > MCU running a specialised firmware, which communicates with the
+> > application processor through a mailbox and some SRAM, and is in charge
+> > of controlling the regulators, the PLL clocks, and the power gating of
+> > the GPU, all while also being in charge of any DVFS control.
+> >
+> > This set of drivers is enough to communicate desired OPP index limits to
+> > the aforementioned MCU, referred to as "GPUEB" from here on out. The
+> > GPUEB is still free to lower the effective frequency if the GPU has no
+> > jobs going on at all, even when a higher OPP is set. There's also
+> > several more powerful OPPs it seemingly refuses to apply. The downstream
+> > chromeos kernel also doesn't reach the frequencies of those OPPs, so we
+> > assume this is expected.
+> >
+> > The frequency control driver lives in panthor's subdirectory, as it
+> > needs to pass panthor some data. I've kept the tie-in parts generic
+> > enough however to not make this a complete hack; mediatek_mfg (the
+> > frequency control driver) registers itself as a "devfreq provider" with
+> > panthor, and panthor picks it up during its probe function (or defers if
+> > mediatek_mfg is not ready yet, after adding a device link first).
+> >
+> > It's now generic enough to where I'll ponder about moving the devfreq
+> > provider stuff into a header in include/, and moving mediatek_mfg into
+> > the drivers/soc/ subdirectory, but there were enough changes so far to
+> > warrant a v3 without a move or further struct renames added, so that I
+> > can get feedback on this approach.
+> >
+> > The mailbox driver is a fairly bog-standard common mailbox framework
+> > driver, just specific to the firmware that runs on the GPUEB.
+> 
+> I had a brief look at the series and it seems to me that the devfreq
+> thing here, may not be the perfect fit.
+> 
+> Rather than using a new binding  (#performance-domain-cells) to model
+> a performance domain provider using devfreq, I think it could be more
+> straightforward to model this using the common #power-domain-cells
+> binding instead. As a power-domain provider then, which would be
+> capable of scaling performance too. Both genpd and the OPP core
+> already support this, though via performance-states (as indexes).
+> 
+> In fact, this looks very similar to what we have implemented for the
+> Arm SCMI performance domain.
+> 
+> If you have a look at the below, I think it should give you an idea of
+> the pieces.
+> drivers/pmdomain/arm/scmi_perf_domain.c
+> drivers/firmware/arm_scmi/perf.c
+> Documentation/devicetree/bindings/firmware/arm,scmi.yaml (protocol@13
+> is the performance protocol).
+> 
+> That said, I don't have a strong opinion, but just wanted to share my
+> thoughts on your approach.
 
-Since the other rates are also stored in the devicetree as bytewise arrays,
-just drop the u32 access + be32_to_cpu conversion and directly access them
-as bytes arrays.
+Yeah, I found out about the pmdomain set_performance_state callback
+a few days ago. I've not looked into it much so far because not
+unlike a veterinarian on a cattle ranch, I was elbow-deep in v3's
+guts already and didn't want to pivot to something different before
+pushing it out, but I'll look into it more seriously now.
 
-Cc: stable@vger.kernel.org
-Fixes: 22b980badc0f ("mt76: add functions for parsing rate power limits from DT")
-Fixes: 273943f4abd4 ("wifi: mt76: Fix DTS power-limits on little endian systems")
-Signed-off-by: Sven Eckelmann (Plasma Cloud) <se@simonwunderlich.de>
----
- drivers/net/wireless/mediatek/mt76/eeprom.c | 37 +++++++++++++++++++----------
- 1 file changed, 24 insertions(+), 13 deletions(-)
+Even if it means I have to get rid of my fun array binary search
+and rely on the opp core to do its linear time linked list
+traversal. :'( (But moving OPP core to use XArrays instead is a
+concern for the future.)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/eeprom.c b/drivers/net/wireless/mediatek/mt76/eeprom.c
-index a987c5e4eff6c6b0a014b4b069dc1259ffa82d31..6ce8e4af18fe53c10a0cb7290bf65962ce9cdde4 100644
---- a/drivers/net/wireless/mediatek/mt76/eeprom.c
-+++ b/drivers/net/wireless/mediatek/mt76/eeprom.c
-@@ -253,6 +253,19 @@ mt76_get_of_array(struct device_node *np, char *name, size_t *len, int min)
- 	return prop->value;
- }
- 
-+static const s8 *
-+mt76_get_of_array_s8(struct device_node *np, char *name, size_t *len, int min)
-+{
-+	struct property *prop = of_find_property(np, name, NULL);
-+
-+	if (!prop || !prop->value || prop->length < min)
-+		return NULL;
-+
-+	*len = prop->length;
-+
-+	return prop->value;
-+}
-+
- struct device_node *
- mt76_find_channel_node(struct device_node *np, struct ieee80211_channel *chan)
- {
-@@ -294,7 +307,7 @@ mt76_get_txs_delta(struct device_node *np, u8 nss)
- }
- 
- static void
--mt76_apply_array_limit(s8 *pwr, size_t pwr_len, const __be32 *data,
-+mt76_apply_array_limit(s8 *pwr, size_t pwr_len, const s8 *data,
- 		       s8 target_power, s8 nss_delta, s8 *max_power)
- {
- 	int i;
-@@ -303,15 +316,14 @@ mt76_apply_array_limit(s8 *pwr, size_t pwr_len, const __be32 *data,
- 		return;
- 
- 	for (i = 0; i < pwr_len; i++) {
--		pwr[i] = min_t(s8, target_power,
--			       be32_to_cpu(data[i]) + nss_delta);
-+		pwr[i] = min_t(s8, target_power, data[i] + nss_delta);
- 		*max_power = max(*max_power, pwr[i]);
- 	}
- }
- 
- static void
- mt76_apply_multi_array_limit(s8 *pwr, size_t pwr_len, s8 pwr_num,
--			     const __be32 *data, size_t len, s8 target_power,
-+			     const s8 *data, size_t len, s8 target_power,
- 			     s8 nss_delta, s8 *max_power)
- {
- 	int i, cur;
-@@ -319,8 +331,7 @@ mt76_apply_multi_array_limit(s8 *pwr, size_t pwr_len, s8 pwr_num,
- 	if (!data)
- 		return;
- 
--	len /= 4;
--	cur = be32_to_cpu(data[0]);
-+	cur = data[0];
- 	for (i = 0; i < pwr_num; i++) {
- 		if (len < pwr_len + 1)
- 			break;
-@@ -335,7 +346,7 @@ mt76_apply_multi_array_limit(s8 *pwr, size_t pwr_len, s8 pwr_num,
- 		if (!len)
- 			break;
- 
--		cur = be32_to_cpu(data[0]);
-+		cur = data[0];
- 	}
- }
- 
-@@ -346,7 +357,7 @@ s8 mt76_get_rate_power_limits(struct mt76_phy *phy,
- {
- 	struct mt76_dev *dev = phy->dev;
- 	struct device_node *np;
--	const __be32 *val;
-+	const s8 *val;
- 	char name[16];
- 	u32 mcs_rates = dev->drv->mcs_rates;
- 	u32 ru_rates = ARRAY_SIZE(dest->ru[0]);
-@@ -392,21 +403,21 @@ s8 mt76_get_rate_power_limits(struct mt76_phy *phy,
- 
- 	txs_delta = mt76_get_txs_delta(np, hweight16(phy->chainmask));
- 
--	val = mt76_get_of_array(np, "rates-cck", &len, ARRAY_SIZE(dest->cck));
-+	val = mt76_get_of_array_s8(np, "rates-cck", &len, ARRAY_SIZE(dest->cck));
- 	mt76_apply_array_limit(dest->cck, ARRAY_SIZE(dest->cck), val,
- 			       target_power, txs_delta, &max_power);
- 
--	val = mt76_get_of_array(np, "rates-ofdm",
--				&len, ARRAY_SIZE(dest->ofdm));
-+	val = mt76_get_of_array_s8(np, "rates-ofdm",
-+				   &len, ARRAY_SIZE(dest->ofdm));
- 	mt76_apply_array_limit(dest->ofdm, ARRAY_SIZE(dest->ofdm), val,
- 			       target_power, txs_delta, &max_power);
- 
--	val = mt76_get_of_array(np, "rates-mcs", &len, mcs_rates + 1);
-+	val = mt76_get_of_array_s8(np, "rates-mcs", &len, mcs_rates + 1);
- 	mt76_apply_multi_array_limit(dest->mcs[0], ARRAY_SIZE(dest->mcs[0]),
- 				     ARRAY_SIZE(dest->mcs), val, len,
- 				     target_power, txs_delta, &max_power);
- 
--	val = mt76_get_of_array(np, "rates-ru", &len, ru_rates + 1);
-+	val = mt76_get_of_array_s8(np, "rates-ru", &len, ru_rates + 1);
- 	mt76_apply_multi_array_limit(dest->ru[0], ARRAY_SIZE(dest->ru[0]),
- 				     ARRAY_SIZE(dest->ru), val, len,
- 				     target_power, txs_delta, &max_power);
+I've also been avoiding it because I didn't know how much
+additional functionality we'll add later, but I've talked with
+Angelo about it an hour ago and he agrees that I should go down
+the pmdomain route for the current functionality.
 
----
-base-commit: b36d55610215a976267197ddc914902c494705d7
-change-id: 20250917-fix-power-limits-5ce07b993681
+Thank you for the hints!
 
-Best regards,
--- 
-Sven Eckelmann (Plasma Cloud) <se@simonwunderlich.de>
+Kind regards,
+Nicolas Frattaroli
+
+> 
+> [...]
+> 
+> Kind regards
+> Uffe
+> 
+
+
+
 
 
