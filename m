@@ -4,76 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14EA1CAC5A0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Sep 2025 14:47:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08CEBCAC59D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Sep 2025 15:02:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CK/2IOeJIqNd2zpLdnAnzcmL52wprfxzpcul7E2EVVM=; b=zArGXp530VDzc0oRDs3UKRynEF
-	GKFJhvusodNuQLYzy6vDJab2gmpMc2pFDdAdzDpToujE6tHdAjMtTtpJL2vFfpbDsGaMhjwSPCcx2
-	Z/Ohxj1NXPo8r16sTn02oz2I63SImFJlWMpzcIJdzmufuxzg9+sIGnT7kFH3pzcZ+QKSLPw88oXg5
-	ObdZwAaWOjfJnxZnVJuoUbf//QH1SEEx8jAm7KPV3tHaxlfXAAISTBGC5PIqnBylDwPEwpWJU3uqX
-	5miuM7f8ACkxyj6rUqJSxDq/k5HpXJLnkt+faMLCdBZvaATbZjOATX3Yvmxs7v3EWdIz1RQpZNwfR
-	G0l39thw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6oC8JSEMej3kF4e/Mcw5qoRTo4gs8KiZjgmbDS5yCog=; b=Er42wYYt3NvC/r7sIPt4gQAWWC
+	Hh4BxIYO32hzaTIUijMxtdDx2yjrVTWh6FqKsgNfuS8nVlTDhX+nDV9mwHoV4Q4GfexYb+y+UuF9u
+	CVI/kitCDLSFAcoFhuQ+6uuGqyt6WMKrgVOLDhfsAzVGPj/PQUoVynZePhoMNrrbcXaghqwk4s4Ue
+	7wRvy01mOWYf98yhScVcNzVdHK5gt2TOVm87xhHUM/aljQTtNU+gylmnzFn9oX2sHVPsIkRZEQc97
+	/FdAHCkaV2AT4nSnmohbuPNRZ6MfbI7A4nsUXUoa7NdgeX8KANvjqJ6Cll1ncgRkzJVoBH3yRqw1I
+	YaR5jnTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uytRJ-0000000CNCI-3pmP;
-	Wed, 17 Sep 2025 14:47:21 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uytgD-0000000CWF3-26nd;
+	Wed, 17 Sep 2025 15:02:45 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uytRH-0000000CN9W-0OTD;
-	Wed, 17 Sep 2025 14:47:20 +0000
+	id 1uytgC-0000000CWDi-0dRc;
+	Wed, 17 Sep 2025 15:02:44 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id B64A44395F;
-	Wed, 17 Sep 2025 14:47:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 42EB0C4CEE7;
-	Wed, 17 Sep 2025 14:47:18 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id A49866023A;
+	Wed, 17 Sep 2025 15:02:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2DCF7C4CEF0;
+	Wed, 17 Sep 2025 15:02:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1758120438;
-	bh=Egw7h0VZpXs5tgL5vzoN8ns5makVBNBrNokzbdRQY4s=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=XHrPCZzzo4arxdGq2Fjy72nPVL5xfvPaaqzN0GM9XCFPS1XF1q/qPng6ipmZIFOXJ
-	 qNfT/cKGzPPPGE/NXlHiFE6b/mUjjxASkcxTlHnQeUT5IQcnIB4RueZfvr01JyxWWK
-	 VNoPF7NzikQOPb5nZ6Dblo5DM206u92qFoXCNbWsglcNoaZ1RGoKygiQ1VsHzpNV0i
-	 01qvOcC06Y7N31oJKQ21RgjGVFZALorgLPYYPQ4s7alX//rbzMfJgAOdROCSPDngxY
-	 WxpdMd5vAA2kqSb5T4KNDU5XDy1z+8nVotsZO29Fh8k7UZp1x9zRijbtdZOKMF/mQD
-	 aFE2J54GQrRgA==
-From: Maxime Ripard <mripard@kernel.org>
-Date: Wed, 17 Sep 2025 16:46:05 +0200
-Subject: [PATCH v4 24/39] drm/mediatek: Switch to
- drm_atomic_get_new_crtc_state()
-MIME-Version: 1.0
+	s=k20201202; t=1758121361;
+	bh=DkAob/mYPV+ZNAEqdno0NyXMgOtH4pnIcMp+zpKJAxo=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=sPT4O+XvDEdrvk/c00OHoqwWJCwrh5WRxwW2tzfT6VyUHJdXBW/vpmYjndvYkUg9Q
+	 4Jj9Bu94e75coQqY0ZAY3DnhFg5EnUERYbd+Vaw8+dHEgY/SaTmvfFtvCWDker95nM
+	 s12OIAXMjopWutHC5B0Za8oNtIDlU7dyKOuKm5ZSCarfmgLIUyiIepAtgS0QXD3Ffc
+	 zs+brP/jrIpbtZnJtf8IuRs5IGUWOWNxBhmesgdnr/BBP+LjJ2EYVPOO49nNr5QV6L
+	 c2FZ4OI4wGqia7QEs/0k4oAvTRgJtumOc1CuOa9RiZ3b+U34Djc9Idi3hiLW4FfUxg
+	 1kQS/hbO4N+tQ==
+Date: Wed, 17 Sep 2025 10:02:40 -0500
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20250917-drm-no-more-existing-state-v4-24-5d4b9889c3c8@kernel.org>
-References: <20250917-drm-no-more-existing-state-v4-0-5d4b9889c3c8@kernel.org>
-In-Reply-To: <20250917-drm-no-more-existing-state-v4-0-5d4b9889c3c8@kernel.org>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>
-Cc: dri-devel@lists.freedesktop.org, Maxime Ripard <mripard@kernel.org>, 
- =?utf-8?q?Ville_Syrj=C3=A4l=C3=A4?= <ville.syrjala@linux.intel.com>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+MIME-Version: 1.0
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Kyungmin Park <kyungmin.park@samsung.com>, 
+ Jassi Brar <jassisinghbrar@gmail.com>, Kees Cook <kees@kernel.org>, 
+ Chia-I Wu <olvaffe@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1747; i=mripard@kernel.org;
- h=from:subject:message-id; bh=Egw7h0VZpXs5tgL5vzoN8ns5makVBNBrNokzbdRQY4s=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDBmnTq5MkZn7k78+Vt3t7aGQw5atncFrLylzJu0812dsP
- o3FR3Jhx1QWBmFOBlkxRZYnMmGnl7cvrnKwX/kDZg4rE8gQBi5OAZiIUgJjfalmUdL11omP80Pv
- 3BeNZ/Nd9Cfn96FJk3Pny8lGZRrxPZv76P5jNgXpTZPXWJw3UbfbzljF/Lnw6oo153p5NKznqxV
- E7D4yK8jF482d2QVLFxpc3nXj8DybVS0FaZp7bVcui5UMKeMDAA==
-X-Developer-Key: i=mripard@kernel.org; a=openpgp;
- fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250917_074719_180195_47403E2B 
-X-CRM114-Status: GOOD (  11.12  )
+ Thomas Zimmermann <tzimmermann@suse.de>, Conor Dooley <conor+dt@kernel.org>, 
+ Chanwoo Choi <cw00.choi@samsung.com>, Simona Vetter <simona@ffwll.ch>, 
+ linux-arm-kernel@lists.infradead.org, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ linux-pm@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+ Maxime Ripard <mripard@kernel.org>, Steven Price <steven.price@arm.com>, 
+ David Airlie <airlied@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>, 
+ MyungJoo Ham <myungjoo.ham@samsung.com>, kernel@collabora.com, 
+ Boris Brezillon <boris.brezillon@collabora.com>, 
+ linux-hardening@vger.kernel.org, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ devicetree@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>, 
+ Liviu Dudau <liviu.dudau@arm.com>
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+In-Reply-To: <20250917-mt8196-gpufreq-v3-1-c4ede4b4399e@collabora.com>
+References: <20250917-mt8196-gpufreq-v3-0-c4ede4b4399e@collabora.com>
+ <20250917-mt8196-gpufreq-v3-1-c4ede4b4399e@collabora.com>
+Message-Id: <175812136009.2068624.13991293282844294346.robh@kernel.org>
+Subject: Re: [PATCH v3 01/10] dt-bindings: gpu: mali-valhall-csf: add
+ mediatek,mt8196-mali variant
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,48 +85,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mediatek atomic_check implementation uses the deprecated
-drm_atomic_get_existing_crtc_state() helper.
 
-This hook is called as part of the global atomic_check, thus before the
-states are swapped. The existing state thus points to the new state, and
-we can use drm_atomic_get_new_crtc_state() instead.
+On Wed, 17 Sep 2025 14:22:32 +0200, Nicolas Frattaroli wrote:
+> The Mali-based GPU on the MediaTek MT8196 SoC uses a separate MCU to
+> control the power and frequency of the GPU.
+> 
+> It lets us omit the OPP tables from the device tree, as those can now be
+> enumerated at runtime from the MCU. It also means the mali GPU node
+> described in this binding does not have any clocks in this case, as all
+> clock control is delegated to the MCU.
+> 
+> Add the mediatek,mt8196-mali compatible, and a performance-domains
+> property which points to the MCU's device tree node in this case. It's
+> required on mt8196 devices.
+> 
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> ---
+>  .../bindings/gpu/arm,mali-valhall-csf.yaml         | 32 ++++++++++++++++++++--
+>  1 file changed, 30 insertions(+), 2 deletions(-)
+> 
 
-Reviewed-by: Ville Syrjälä <ville.syrjala@linux.intel.com>
-Signed-off-by: Maxime Ripard <mripard@kernel.org>
----
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-To: Philipp Zabel <p.zabel@pengutronix.de>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: dri-devel@lists.freedesktop.org
-Cc: linux-mediatek@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
----
- drivers/gpu/drm/mediatek/mtk_plane.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+My bot found errors running 'make dt_binding_check' on your patch:
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_plane.c b/drivers/gpu/drm/mediatek/mtk_plane.c
-index cbc4f37da8ba81ff9c8b3b58f66363837ffc21ec..d4486a63a6e01f02b6777522440dee8e39d51bf1 100644
---- a/drivers/gpu/drm/mediatek/mtk_plane.c
-+++ b/drivers/gpu/drm/mediatek/mtk_plane.c
-@@ -120,11 +120,12 @@ static int mtk_plane_atomic_async_check(struct drm_plane *plane,
- 	ret = mtk_crtc_plane_check(new_plane_state->crtc, plane,
- 				   to_mtk_plane_state(new_plane_state));
- 	if (ret)
- 		return ret;
- 
--	crtc_state = drm_atomic_get_existing_crtc_state(state, new_plane_state->crtc);
-+	crtc_state = drm_atomic_get_new_crtc_state(state,
-+						   new_plane_state->crtc);
- 
- 	return drm_atomic_helper_check_plane_state(plane->state, crtc_state,
- 						   DRM_PLANE_NO_SCALING,
- 						   DRM_PLANE_NO_SCALING,
- 						   true, true);
+yamllint warnings/errors:
 
--- 
-2.50.1
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.example.dtb: gpu@48000000 (mediatek,mt8196-mali): 'clocks' is a required property
+	from schema $id: http://devicetree.org/schemas/gpu/arm,mali-valhall-csf.yaml#
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250917-mt8196-gpufreq-v3-1-c4ede4b4399e@collabora.com
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
 
 
