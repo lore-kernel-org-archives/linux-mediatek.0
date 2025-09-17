@@ -4,104 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BCAFCA0EE8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Sep 2025 10:43:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73E71CAC59A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Sep 2025 11:54:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3Yyh8Hkqs7GqsXIM+okxGaGUnlxOgHFmx9rSotm4MB8=; b=OfLeUH60eFkllR3SKxWQtwxLrq
-	mYqP31wLyKOkGz6yRUbQgsSiYar7v1H+hmcmR+iLjxL+Kqy63uWAC5MYP38ZU+jSLKbioxNitd6p5
-	JwG13jJ90y+avwdl8yAS36/2RJ5F7M60c9G6tG0Tqe8xgOCptH92xJpjhWb6zL7LqVEvRhUln3C0x
-	VXzPDZV/Dc7ohNcCdx0oe8rElUOh9USjutwiY3310H4so8o6vCT95fwSLC8yDf0+pggMY+yA7PXCz
-	YjW+qXRs5MG6IE54JMlBupl5oL6gW3CkhtkERHxUFLgW8C2eN1GdeH/C6Uam8uHPvAD0P/eiAJuWl
-	AD7hraLQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bpWeEr6jhoPJjA92y7DF1fUa14367p9wo3V/fiqnMPk=; b=H0FdHuCBBmA6EIswkjCnm8D3Q9
+	nh5DfA2LBnQR9zRpxU1U+02PkWZIGyIXK3WGqdgA3DRB8kDHc69w46y43yO2DD0lQQvtX77ctPCz6
+	he1rG0GNJSQreQzoiibt4tGave+l3rNkkIGSaScLuFd4eTFjEUx7sT9EdP9cLCOFEyDnXIooFq73L
+	XmQVsO1fG6xjWYEHesAy8eIVRA7Kk95tnhgqVSI3FFTI5O/ckvIFdiRsQknVUc+fPyRB0nXNgMMIV
+	SnyaXDAAODwOYNI6U8RHw6PtSfF+4gEBoyJhrZcksNcsoq9tDN4GkKs8RAJlYRELAfK7brOXtgGmp
+	AVQoazxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uypdN-0000000B1dP-3A24;
-	Wed, 17 Sep 2025 10:43:33 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1uyqjc-0000000BCBq-4AAk;
+	Wed, 17 Sep 2025 11:54:04 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uypdK-0000000B1cM-3B8Q
-	for linux-mediatek@lists.infradead.org;
-	Wed, 17 Sep 2025 10:43:32 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-b046d1cd1fdso129468566b.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 17 Sep 2025 03:43:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1758105809; x=1758710609; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=3Yyh8Hkqs7GqsXIM+okxGaGUnlxOgHFmx9rSotm4MB8=;
-        b=jhw1PoeBza1b8+1CdUUhkCl8zf0ricbyVBEiYShek5PbblAhxnZldOKMSSku6W/jJO
-         IzMbmE54LLvSugkClGBe/XM2lARFSBTI724oPLUWhheECkwrZUzXDXRdZ/frTd4Z/xQ1
-         bFuXvypN0WMWX+RgbyTDzvVB4KmuWk55p5O4Nr7SsDVWs2PzFI3ki4MPB2ee7uz6YvxA
-         G2VcG2K6Jevh0TH8Kn+C6aIlY3tnMKjjLteSgiN5QLEEJf7+gNgoZUORuyzd1uTLqiWN
-         P/sSr3qrOxs0oISOHmv8VcLfwEJEPoubZuvx95hMhn9hFvmQMEA/7cnDcqUtXCWO2n1x
-         DNCw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1758105809; x=1758710609;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=3Yyh8Hkqs7GqsXIM+okxGaGUnlxOgHFmx9rSotm4MB8=;
-        b=vqsoO9bM2oU7TQPN4nfacRmgUQEJb9xp9lxu24931S1eRYA4cBoDzyrDt/Fbz2lcE3
-         pqUj5VkkqzpPz0pbCb9lurdiXfCQn6KwMxDV5ss2Z3aS1Q8Cb+oqvk9aaqk0yHw9ZCXy
-         3CgPXGfajF0rahLnM8+QcXDEGJc2+9Q5Bd+jCV5Yo+ymopF87CvFx+ntWVK069kCkChT
-         KBfXg/0x3sRuMepQ1dQSRfO3j6jJq8fS/46AdzgSPCdtVQ9VV1NrlOUI7rhl+9BnJQwo
-         saaH2LmgYmRdS/DGcAqACE+T/S8WU+p1bB5x2JL9Ie+7Qg7LYweze7o9kyHMrE0szfQo
-         UvcQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWhdoEytdOAQb1Eogv7eW4BS65TZHwLxreAi2OsIb+gwddXe0TmeyginxuMY+TJ085iYtRieBLvRKLvi4osuw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxAhYaixYfuTImi79IqNVYRf5DxJB7C6NG8NBHVg3d5Aqx6rhJo
-	r1bfLcAi8KoZrsMFQPcwTX9FLxeUwTYgB85/5iooHOZBXp9Iry0DZc3F
-X-Gm-Gg: ASbGncu91qJlMSqo8X9GU53CQ1hf/yfFu987qDmT6iOsSfJmGTuuom2QCZCguNOqu5h
-	D/zMZnJweoe/TArpUoRsF4hmQGbOREb/Yjr0OKn0HqsXGVSa54qhHUwP0qYGkRbNnTHuwIad4eI
-	ggX/3Xu/Ma6Iiv7il8dtX/BJpI9wo2CeNz3uw9kJ/LzVRy5U06OISSjwSaPLwlg63IXMOl1Tbf2
-	r5iDhz8TDYF9Mq/ZM5yxrVHoyiCt908oEYPXsGgUsTN4WVPSZaW6UQuZ8/Txt3DUzTIO2FjtDWx
-	cqY4DqUA+nb2vaj9jMGdOuwTaiWGXoVyIVEwxnY9YZxVwqlaoB53ncNAs4CC6oFo4AJ07/Opo8v
-	05sQzdbHOO7Nps3Q=
-X-Google-Smtp-Source: AGHT+IF0bGu8coGo8S13flYMunWY6PoCzFUDuD7l8SY41Vuc7seAVPH3vRAusBx3pRQ3RA9KkKbEpA==
-X-Received: by 2002:a17:907:7e93:b0:b04:669f:e70f with SMTP id a640c23a62f3a-b1bb7f2a4f5mr112464766b.2.1758105808719;
-        Wed, 17 Sep 2025 03:43:28 -0700 (PDT)
-Received: from skbuf ([2a02:2f04:d005:3b00:8bcc:b603:fee7:a273])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b07c6110c27sm1132722066b.66.2025.09.17.03.43.26
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 17 Sep 2025 03:43:28 -0700 (PDT)
-Date: Wed, 17 Sep 2025 13:43:25 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Simon Horman <horms@kernel.org>,
-	"Chester A. Unal" <chester.a.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [net-next PATCH v18 5/8] net: dsa: Add Airoha AN8855 5-Port
- Gigabit DSA Switch driver
-Message-ID: <20250917104325.j5je2jtachee7thw@skbuf>
-References: <20250915104545.1742-1-ansuelsmth@gmail.com>
- <20250915104545.1742-6-ansuelsmth@gmail.com>
+	id 1uyqjY-0000000BC9P-3FTa;
+	Wed, 17 Sep 2025 11:54:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1758110038;
+	bh=gi4OziqmeqkoXsQcp7NMfSD4b7MAu5D/AiyhtslgU+k=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=A77T/z21aH402bY6G6mCyLiy0Mc5p8WVI0s1d3ShvSei79Fh+v5o9xgdhp+tTQCP7
+	 pUW22EagPett90K0MFdM+hQ2ldlUMaI33pKF2BQrD1zVbRFNU/JSd5vhka8Kd2+RTy
+	 erxlmd4nN9xe3Yone+fjYsgcbt+SBmNQ7A+5aMQndk0ee/vjjsR2/2Z8s7bkEAWmMp
+	 6gXv0y4xJ2HyWPkoL0hyMmS2YXFtOBTw87+NAeAr0wPxtJF+S/p/j6P8e7YpIYsWos
+	 SfG4hoVADGpYhLIEys0UZQQufiROflCStuTDwKfnLyFN5Gar6x0fZJ71KlokRQU8if
+	 iSh0YeSp9uphQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B1FC217E0A49;
+	Wed, 17 Sep 2025 13:53:57 +0200 (CEST)
+Message-ID: <9d895847-9dd8-45e4-bc3f-a27e80371836@collabora.com>
+Date: Wed, 17 Sep 2025 13:53:57 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250915104545.1742-6-ansuelsmth@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/4] arm64: dts: mediatek: mt7622: add 'serial' cell to
+ efuse
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <18af6977cc34de75e64279141dee69dcbc81c420.1758063737.git.daniel@makrotopia.org>
+ <87179c9f-cc7f-446f-9e8d-c84bddb48660@collabora.com>
+ <aMqImGmz0uf_aTUR@pidgin.makrotopia.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <aMqImGmz0uf_aTUR@pidgin.makrotopia.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250917_034330_845855_656664A1 
-X-CRM114-Status: GOOD (  17.84  )
+X-CRM114-CacheID: sfid-20250917_045400_977587_5EB129BF 
+X-CRM114-Status: GOOD (  23.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,220 +80,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 15, 2025 at 12:45:41PM +0200, Christian Marangi wrote:
-> +static const struct an8855_mib_desc an8855_mib[] = {
-> +	MIB_DESC(1, AN8855_PORT_MIB_TX_DROP, "TxDrop"),
-> +	MIB_DESC(1, AN8855_PORT_MIB_TX_CRC_ERR, "TxCrcErr"),
-> +	MIB_DESC(1, AN8855_PORT_MIB_TX_COLLISION, "TxCollision"),
-> +	MIB_DESC(1, AN8855_PORT_MIB_TX_OVERSIZE_DROP, "TxOversizeDrop"),
-> +	MIB_DESC(2, AN8855_PORT_MIB_TX_BAD_PKT_BYTES, "TxBadPktBytes"),
-> +	MIB_DESC(1, AN8855_PORT_MIB_RX_DROP, "RxDrop"),
-> +	MIB_DESC(1, AN8855_PORT_MIB_RX_FILTERING, "RxFiltering"),
-> +	MIB_DESC(1, AN8855_PORT_MIB_RX_CRC_ERR, "RxCrcErr"),
-> +	MIB_DESC(1, AN8855_PORT_MIB_RX_CTRL_DROP, "RxCtrlDrop"),
-> +	MIB_DESC(1, AN8855_PORT_MIB_RX_INGRESS_DROP, "RxIngressDrop"),
-> +	MIB_DESC(1, AN8855_PORT_MIB_RX_ARL_DROP, "RxArlDrop"),
-> +	MIB_DESC(1, AN8855_PORT_MIB_FLOW_CONTROL_DROP, "FlowControlDrop"),
-> +	MIB_DESC(1, AN8855_PORT_MIB_WRED_DROP, "WredDrop"),
-> +	MIB_DESC(1, AN8855_PORT_MIB_MIRROR_DROP, "MirrorDrop"),
-> +	MIB_DESC(2, AN8855_PORT_MIB_RX_BAD_PKT_BYTES, "RxBadPktBytes"),
-> +	MIB_DESC(1, AN8855_PORT_MIB_RXS_FLOW_SAMPLING_PKT_DROP, "RxsFlowSamplingPktDrop"),
-> +	MIB_DESC(1, AN8855_PORT_MIB_RXS_FLOW_TOTAL_PKT_DROP, "RxsFlowTotalPktDrop"),
-> +	MIB_DESC(1, AN8855_PORT_MIB_PORT_CONTROL_DROP, "PortControlDrop"),
-> +};
-> +
-> +static int
-> +an8855_mib_init(struct an8855_priv *priv)
-> +{
-> +	int ret;
-> +
-> +	ret = regmap_write(priv->regmap, AN8855_MIB_CCR,
-> +			   AN8855_CCR_MIB_ENABLE);
-> +	if (ret)
-> +		return ret;
-> +
-> +	return regmap_write(priv->regmap, AN8855_MIB_CCR,
-> +			    AN8855_CCR_MIB_ACTIVATE);
-> +}
-> +
-> +static void an8855_get_strings(struct dsa_switch *ds, int port,
-> +			       u32 stringset, uint8_t *data)
-> +{
-> +	int i;
-> +
-> +	if (stringset != ETH_SS_STATS)
-> +		return;
-> +
-> +	for (i = 0; i < ARRAY_SIZE(an8855_mib); i++)
-> +		ethtool_puts(&data, an8855_mib[i].name);
+Il 17/09/25 12:08, Daniel Golle ha scritto:
+> On Wed, Sep 17, 2025 at 11:06:13AM +0200, AngeloGioacchino Del Regno wrote:
+>> Il 17/09/25 01:05, Daniel Golle ha scritto:
+>>> The efuse of the MediaTek MT7622 contains an 8-byte unique identifier.
+>>> Add a 'serial' cell covering those 8 bytes to the nvmem defininition of
+>>> the efuse to allow easy access from userspace, eg. to generate a
+>>> persistent random MAC address on boards like the BananaPi R64 which
+>>> doesn't have any factory-assigned addresses.
+>>
+>> Sorry, but I don't get why this is named "serial" and not "soc-uuid".
+>>
+>> Care to explain?
+> 
+> I don't have documentation covering the efuse content but only got this
+> information on an informal way:
+> 
+> https://forum.banana-pi.org/t/bpi-r3-serial-number/14556/10?u=dangowrt
+> 
+> Either name is fine with me, I thought of it as "serial number", but
+> obviously "soc-uuid" works fine, too.
+> I can change it to that and send v2 tonight.
+> 
 
-Same feedback as for yt921x. For new drivers we want in unstructured
-ethtool -S only those statistics which are not exposed through standard
-variants (to force the adoption of the new interfaces).
+Aaaaaah that's why "serial", okay - I got confused because the eFuses contain
+many "calibration data" entries, and that triggered me to think that it could
+be a "serial calibration data" entry.
 
-> +}
-> +
-> +static void an8855_read_port_stats(struct an8855_priv *priv, int port,
-> +				   u32 offset, u8 size, uint64_t *data)
-> +{
-> +	u32 val, reg = AN8855_PORT_MIB_COUNTER(port) + offset;
-> +
-> +	regmap_read(priv->regmap, reg, &val);
-> +	*data = val;
-> +
-> +	if (size == 2) {
-> +		regmap_read(priv->regmap, reg + 4, &val);
-> +		*data |= (u64)val << 32;
-> +	}
-> +}
-> +
-> +static void an8855_get_ethtool_stats(struct dsa_switch *ds, int port,
-> +				     uint64_t *data)
-> +{
-> +	struct an8855_priv *priv = ds->priv;
-> +	const struct an8855_mib_desc *mib;
-> +	int i;
-> +
-> +	for (i = 0; i < ARRAY_SIZE(an8855_mib); i++) {
-> +		mib = &an8855_mib[i];
-> +
-> +		an8855_read_port_stats(priv, port, mib->offset, mib->size,
-> +				       data + i);
-> +	}
-> +}
-> +
-> +static int an8855_get_sset_count(struct dsa_switch *ds, int port,
-> +				 int sset)
-> +{
-> +	if (sset != ETH_SS_STATS)
-> +		return 0;
-> +
-> +	return ARRAY_SIZE(an8855_mib);
-> +}
-> +
-> +static void an8855_get_eth_mac_stats(struct dsa_switch *ds, int port,
-> +				     struct ethtool_eth_mac_stats *mac_stats)
-> +{
-> +	struct an8855_priv *priv = ds->priv;
-> +
-> +	/* MIB counter doesn't provide a FramesTransmittedOK but instead
-> +	 * provide stats for Unicast, Broadcast and Multicast frames separately.
-> +	 * To simulate a global frame counter, read Unicast and addition Multicast
-> +	 * and Broadcast later
-> +	 */
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_UNICAST, 1,
-> +			       &mac_stats->FramesTransmittedOK);
-> +
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_SINGLE_COLLISION, 1,
-> +			       &mac_stats->SingleCollisionFrames);
-> +
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_MULTIPLE_COLLISION, 1,
-> +			       &mac_stats->MultipleCollisionFrames);
-> +
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_UNICAST, 1,
-> +			       &mac_stats->FramesReceivedOK);
-> +
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_BYTES, 2,
-> +			       &mac_stats->OctetsTransmittedOK);
-> +
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_ALIGN_ERR, 1,
-> +			       &mac_stats->AlignmentErrors);
-> +
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_DEFERRED, 1,
-> +			       &mac_stats->FramesWithDeferredXmissions);
-> +
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_LATE_COLLISION, 1,
-> +			       &mac_stats->LateCollisions);
-> +
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_EXCESSIVE_COLLISION, 1,
-> +			       &mac_stats->FramesAbortedDueToXSColls);
-> +
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_BYTES, 2,
-> +			       &mac_stats->OctetsReceivedOK);
-> +
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_MULTICAST, 1,
-> +			       &mac_stats->MulticastFramesXmittedOK);
-> +	mac_stats->FramesTransmittedOK += mac_stats->MulticastFramesXmittedOK;
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_BROADCAST, 1,
-> +			       &mac_stats->BroadcastFramesXmittedOK);
-> +	mac_stats->FramesTransmittedOK += mac_stats->BroadcastFramesXmittedOK;
-> +
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_MULTICAST, 1,
-> +			       &mac_stats->MulticastFramesReceivedOK);
-> +	mac_stats->FramesReceivedOK += mac_stats->MulticastFramesReceivedOK;
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_BROADCAST, 1,
-> +			       &mac_stats->BroadcastFramesReceivedOK);
-> +	mac_stats->FramesReceivedOK += mac_stats->BroadcastFramesReceivedOK;
-> +}
-> +
-> +static const struct ethtool_rmon_hist_range an8855_rmon_ranges[] = {
-> +	{ 0, 64 },
-> +	{ 65, 127 },
-> +	{ 128, 255 },
-> +	{ 256, 511 },
-> +	{ 512, 1023 },
-> +	{ 1024, 1518 },
-> +	{ 1519, AN8855_MAX_MTU },
-> +	{}
-> +};
-> +
-> +static void an8855_get_rmon_stats(struct dsa_switch *ds, int port,
-> +				  struct ethtool_rmon_stats *rmon_stats,
-> +				  const struct ethtool_rmon_hist_range **ranges)
-> +{
-> +	struct an8855_priv *priv = ds->priv;
-> +
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_UNDER_SIZE_ERR, 1,
-> +			       &rmon_stats->undersize_pkts);
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_OVER_SZ_ERR, 1,
-> +			       &rmon_stats->oversize_pkts);
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_FRAG_ERR, 1,
-> +			       &rmon_stats->fragments);
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_JABBER_ERR, 1,
-> +			       &rmon_stats->jabbers);
-> +
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_PKT_SZ_64, 1,
-> +			       &rmon_stats->hist[0]);
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_PKT_SZ_65_TO_127, 1,
-> +			       &rmon_stats->hist[1]);
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_PKT_SZ_128_TO_255, 1,
-> +			       &rmon_stats->hist[2]);
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_PKT_SZ_256_TO_511, 1,
-> +			       &rmon_stats->hist[3]);
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_PKT_SZ_512_TO_1023, 1,
-> +			       &rmon_stats->hist[4]);
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_PKT_SZ_1024_TO_1518, 1,
-> +			       &rmon_stats->hist[5]);
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_PKT_SZ_1519_TO_MAX, 1,
-> +			       &rmon_stats->hist[6]);
-> +
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_PKT_SZ_64, 1,
-> +			       &rmon_stats->hist_tx[0]);
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_PKT_SZ_65_TO_127, 1,
-> +			       &rmon_stats->hist_tx[1]);
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_PKT_SZ_128_TO_255, 1,
-> +			       &rmon_stats->hist_tx[2]);
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_PKT_SZ_256_TO_511, 1,
-> +			       &rmon_stats->hist_tx[3]);
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_PKT_SZ_512_TO_1023, 1,
-> +			       &rmon_stats->hist_tx[4]);
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_PKT_SZ_1024_TO_1518, 1,
-> +			       &rmon_stats->hist_tx[5]);
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_PKT_SZ_1519_TO_MAX, 1,
-> +			       &rmon_stats->hist_tx[6]);
-> +
-> +	*ranges = an8855_rmon_ranges;
-> +}
-> +
-> +static void an8855_get_eth_ctrl_stats(struct dsa_switch *ds, int port,
-> +				      struct ethtool_eth_ctrl_stats *ctrl_stats)
-> +{
-> +	struct an8855_priv *priv = ds->priv;
-> +
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_TX_PAUSE, 1,
-> +			       &ctrl_stats->MACControlFramesTransmitted);
-> +
-> +	an8855_read_port_stats(priv, port, AN8855_PORT_MIB_RX_PAUSE, 1,
-> +			       &ctrl_stats->MACControlFramesReceived);
-> +}
+After reading the commit description it became very clear that the initial
+impression was wrong, but then still, when reading the devicetree without having
+the description of the commit introducing that, it's easy to get confused again.
+
+In any case, well, it could be a serial number, or it could be a randomly generated
+UUID - but since we don't know, I think that calling this "serial-no" may actually
+be wrong anyway.
+
+We can escape this uncertainty though: a serial number is supposed to be unique,
+and it is used as an identifier (which identifies one, or multiple aspects, either
+an increasing number for chip number, or one that says the production date and
+chip number).
+
+Seeing it like this, calling it "soc-uuid" identifies this array as containing a
+number that uniquely identifies the chip, be it a serial number or a randomly
+generated number.
+
+In case you find out sure information that this is really a serial number (which
+doesn't really look right, it's too many bytes, but you never know) you can always
+come back later and add a comment in DT saying that it is just.. that.
+
+For now, let's go with soc-uuid :-)
+
+So please, change the name to soc-uuid on all four commits, after which, feel
+free to add my
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+to all four commits.
+
+Cheers,
+Angelo
 
