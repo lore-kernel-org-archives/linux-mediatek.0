@@ -4,77 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B898FCAC599
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Sep 2025 12:50:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C9A6CAC59A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Sep 2025 12:50:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Vab3WWmlOiu1j24wogCl8tlCj77FdZJzDsGeypgjGKI=; b=c/NuOlW/4zAOS5ERNqXWgwUnO4
-	nuQchrDMpiokJp+9cd4YNBOtBZ5fsRHXHDwR+8Hv+G0youAQrfMfULUMwd77OVt19+OZlyd7AYBnQ
-	pBoAcIOqidWFsVNYRoLA4k2rw/+9D9t9UdnDPMO1JfmqhczEubP/Quz+pyXMiQUoYPceybVBITQug
-	rv0RP9BLDkNUvUn+8gR+rhfeKj6G5yjGmYO4Y/+wn5aWqob0OiVos6tU6Th5pyXm0+L+Bq1FRQUTg
-	wgKO5N8vpSBisPjo8rxT3nc0g1cnp9LRRTWCrsk0GVuCaVP8cBWHrufewaTpLiQTB1prcpQZxpdmV
-	3KyQ744A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=s+ZQIRONRlVBZGAKVxU4jFjIIa6og9OPGv3LHbIuefQ=; b=h1pNonzu+SO2fVYYOFxws9sg7p
+	/ReQ40vmlV3YSQBYqqXOxR2JiV3tCozqX7IhaSToy5Q3T6ddnNFiRvvtoYlL+xpO5PPyXfXg91h+R
+	w2bkriMCzY2yqTD+gc6KdNb0lwweODUxqazr/vJnkAT7PfEaCI3h4yqq2oLbe0dAAYxUYb9PDAQY0
+	uw+YC0twOXGYfymBrOjh08aNm0SvFjAGx0Z8JvV7OSzbw/rwaZCWJHdi510kb4gosTA4mWMAUNtBa
+	NG+NpObVv3Fm0bQ33bySAVjw9W/ZzWxBYDFIDtUvCosraAftRfFkGzzraI63duWCyOqr0q96ndNJ1
+	B9h4Nr2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uyrbx-0000000BQfv-3sk2;
-	Wed, 17 Sep 2025 12:50:13 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uyrcQ-0000000BQu9-1SbO;
+	Wed, 17 Sep 2025 12:50:42 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uyrbv-0000000BQeG-31sJ;
-	Wed, 17 Sep 2025 12:50:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1758113409;
-	bh=Zzu47Spqkx9PBO3hTkWFHeC/kbz1j4gqkoIEVOrafyA=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=G5lj8mwgzYOBKZYPa16TeMLmQUonfUg5YrBUoPVrg1u+zpcWnBixbqS0A3wcteZC8
-	 +f9vEcVBBcOdwb8XhfXP07lARnpxRBKk+nCwEfUNt6lvMjXRbKn2TMP/ouU41jdp/w
-	 6Qm/t6yanrmwQYQfYFdBBrlTqtyEuckkxt4xwjClQXw+6UWyssj8czCufSj7ynhIwR
-	 8KnOs7UskI/UiQkPiIwOP6GnOY6t4JzXmqraLWuhyQMgkHoOteDxEpnMXYwJiSTV2d
-	 1JTi68Nm95/eE8tHh6YXbzhlDvdk/lWvkvPxotYnguOZ9RPk7/1gadXKh+7nOmGHAN
-	 F9f4M++sZDsFQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A0D3217E0A49;
-	Wed, 17 Sep 2025 14:50:08 +0200 (CEST)
-Message-ID: <69c4f96b-8f47-493f-a236-5338c34dc100@collabora.com>
-Date: Wed, 17 Sep 2025 14:50:08 +0200
+	id 1uyrcO-0000000BQt4-2jnO
+	for linux-mediatek@lists.infradead.org;
+	Wed, 17 Sep 2025 12:50:41 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 173FA4059B;
+	Wed, 17 Sep 2025 12:50:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EB641C4CEF0;
+	Wed, 17 Sep 2025 12:50:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1758113440;
+	bh=CfzR7xf3p3JWB1YNU5e6PTj7XFWB3rwhi6giwyqJNI8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=FkICFful8PIWq9X6GbDOJfnHsnu1ohpy57gcgqm97HzgmWj2KUKd5Ekpx6QM3+Azr
+	 /WJgBiD5/G43K51vkeeHg+WwiVvDdVVeyDOWAfZ+aDYPxBqxe24SccmuKi4e0n6sqC
+	 HB6P8gPYrz+dtCOieG27+8xpDFC9XmtWziZmlQu675bnkV32yYw4ESHDgg1lP0dmCi
+	 xUYqDTpD+yWIDrX8ywVBSYvoZFcx/IfBlBrKYY6DFT1geNvRcnn969Wby2aKMptiy0
+	 0YLOHutBDJvXBRUgXYEBW/nuCcQoQaOO4DZ+35O2qLZLSbkBMC94N0llEiow3cZEii
+	 A2xDhJ7HMRRjQ==
+Received: from johan by xi.lan with local (Exim 4.98.2)
+	(envelope-from <johan@kernel.org>)
+	id 1uyrcH-000000001ch-0uRx;
+	Wed, 17 Sep 2025 14:50:33 +0200
+Date: Wed, 17 Sep 2025 14:50:33 +0200
+From: Johan Hovold <johan@kernel.org>
+To: "Rafael J. Wysocki" <rafael@kernel.org>,
+	Viresh Kumar <viresh.kumar@linaro.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jia-Wei Chang <jia-wei.chang@mediatek.com>,
+	Rex-BC Chen <rex-bc.chen@mediatek.com>
+Subject: Re: [PATCH] cpufreq: mediatek: fix device leak on probe failure
+Message-ID: <aMqumfq6w3wJGgeL@hovoldconsulting.com>
+References: <20250909073819.25295-1-johan@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 05/10] mailbox: add MediaTek GPUEB IPI mailbox
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>, Jassi Brar <jassisinghbrar@gmail.com>,
- Kees Cook <kees@kernel.org>, "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- Chia-I Wu <olvaffe@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-pm@vger.kernel.org, linux-hardening@vger.kernel.org
-References: <20250917-mt8196-gpufreq-v3-0-c4ede4b4399e@collabora.com>
- <20250917-mt8196-gpufreq-v3-5-c4ede4b4399e@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250917-mt8196-gpufreq-v3-5-c4ede4b4399e@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250909073819.25295-1-johan@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250917_055011_916513_B03EDEB2 
-X-CRM114-Status: GOOD (  14.13  )
+X-CRM114-CacheID: sfid-20250917_055040_722872_9D01FA6D 
+X-CRM114-Status: UNSURE (   7.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,25 +81,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/09/25 14:22, Nicolas Frattaroli ha scritto:
-> The MT8196 SoC uses an embedded MCU to control frequencies and power of
-> the GPU. This controller is referred to as "GPUEB".
+On Tue, Sep 09, 2025 at 09:38:19AM +0200, Johan Hovold wrote:
+> Make sure to drop the reference to the cci device taken by
+> of_find_device_by_node() on probe failure (e.g. probe deferral).
 > 
-> It communicates to the application processor, among other ways, through
-> a mailbox.
-> 
-> The mailbox exposes one interrupt, which appears to only be fired when a
-> response is received, rather than a transaction is completed. For us,
-> this means we unfortunately need to poll for txdone.
-> 
-> The mailbox also requires the EB clock to be on when touching any of the
-> mailbox registers.
-> 
-> Add a simple driver for it based on the common mailbox framework.
-> 
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> Fixes: 0daa47325bae ("cpufreq: mediatek: Link CCI device to CPU")
+> Cc: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+> Cc: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> Signed-off-by: Johan Hovold <johan@kernel.org>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Can this one be picked up for 6.18?
 
-
+Johan
 
