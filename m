@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C00BCA0EE8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Sep 2025 05:27:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDE4ECA0EE8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Sep 2025 05:36:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=HMgtL162QOwSiO6++LT7qOF6Bth8iVh1uGDZ9Y6GD3s=; b=QnBJGqehhM6ThJDt7SpFbj4jK5
-	kMyEU78DqAN8QTcyTSng3KynFdUXZp2muQ517sEWUOFUzyG7vsactw/AHGF8pdoN50rnIKlOXH2LM
-	3l3SppBD8cy3IJ+Xi6Bn/GXfufmyShUKYiWA+/5f8H681iFaN187wjlCiSWqrlgVQwPR4K89tqX/t
-	Gth9Fa/EkbpdwtwMm5cRYUokxd55V/L9vbZU7EKMu4K3gg/ULErpLmLyL6626r4qFqvpcyL883z1p
-	w+sn4FABZFRvsUhxtObbXq1SjB0T26ugmZFNxYwOyYtO3MP0Aqs6uxSg86s5+1TPxaoIFrlmHfdWG
-	0ABpKMqA==;
+	bh=+YNkTiTzV3j5UuyT6fJEnMntl49hId1F5ICyVqvtR0U=; b=o5QmfTi1Vxrs6sewy68F8mIZmx
+	TxZ8UGmXJhbItwmwumBr18jC01mB0/9EO3PTG/8c7EWQfpeDRRAmWOxy8k76bxU8BMmiOBXb1fnLN
+	Hxlb0GlINTmJ6HzNx5xmzZ4gDUJca4Tai9HXmV0L2jP1d4NSf/hcS4/KTh+uwdWvfkn4xFRPH+ysB
+	ItypOwJM3O1h/vfqTyrUKhjYQ8IgnFdJHQvhVVXAzDebDWdBtYL1XM6pGgztYY8mvqgFQqszXjPDU
+	wnDmRR5PxLbf9vWUgEVsn1oUHIWcTcxahUP5D0Im4w8UDQE/KRA6nxcnTQyO+14YeK8W8w0Ujeqmv
+	0UkjYjWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uykgz-0000000AEOu-41Xi;
-	Wed, 17 Sep 2025 05:26:57 +0000
+	id 1uykqC-0000000AFWd-3xko;
+	Wed, 17 Sep 2025 05:36:28 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uykgx-0000000AEOD-121N
+	id 1uykqB-0000000AFWD-169b
 	for linux-mediatek@lists.infradead.org;
-	Wed, 17 Sep 2025 05:26:56 +0000
-X-UUID: e8407dca938611f09f706fa2197c6ceb-20250916
+	Wed, 17 Sep 2025 05:36:28 +0000
+X-UUID: 3dea3800938811f09f706fa2197c6ceb-20250916
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=HMgtL162QOwSiO6++LT7qOF6Bth8iVh1uGDZ9Y6GD3s=;
-	b=cnRhoa82J8kkquRLoSnlVKslSnnX/BtjEC5xkxPQuFKq5UGOjWCctQR1cEDPMKuwplZGQAyNZmVufNmuv7PrdK5zp8iTANZa0pAucZuI9xFDfX5CaH5Ze4XSfuKduaF3zEEn7iaS3wcJOJpA5bsmhPCoR6Xl8GcF8PTZGDFfLRs=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=+YNkTiTzV3j5UuyT6fJEnMntl49hId1F5ICyVqvtR0U=;
+	b=LEefuJXhp4/zCChcAjB4oXWuzakree1RysibgJf+tdpfp7V0sLnQhuvFM7XRKIbIx+0LNV4XJpYAVffzWEHk2qK8JMo/9K5us1/BB1/Qbq8cNh1DaC8wtfIGT1Pd7pAbAirNnIAybPkPKXQWMLqQ7PR4RkH9NyIR55mnMD62BIw=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.4,REQID:41b9256f-6e8b-49ec-958d-3441d426e691,IP:0,UR
+X-CID-O-INFO: VERSION:1.3.4,REQID:2455ba0f-e1b3-4d4f-a768-310b3afd9c5e,IP:0,UR
 	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
 	elease,TS:0
-X-CID-META: VersionHash:1ca6b93,CLOUDID:eacbdf84-5317-4626-9d82-238d715c253f,B
+X-CID-META: VersionHash:1ca6b93,CLOUDID:8818a46c-8443-424b-b119-dc42e68239b0,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836,TC:-5,Content:0|15|50,EDM:-3
 	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
 	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -43,18 +43,18 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: e8407dca938611f09f706fa2197c6ceb-20250916
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+X-UUID: 3dea3800938811f09f706fa2197c6ceb-20250916
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
 	(envelope-from <mingyen.hsieh@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 963777556; Tue, 16 Sep 2025 22:26:47 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+	with ESMTP id 778447192; Tue, 16 Sep 2025 22:36:21 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Wed, 17 Sep 2025 13:26:45 +0800
+ 15.2.1258.39; Wed, 17 Sep 2025 13:36:18 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Wed, 17 Sep 2025 13:26:45 +0800
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Wed, 17 Sep 2025 13:36:18 +0800
 From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
 To: <nbd@nbd.name>, <lorenzo@kernel.org>
 CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
@@ -62,19 +62,19 @@ CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
 	<allan.wang@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
 	<km.lin@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
 	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Jack Kao <jack.kao@mediatek.com>, Ming
- Yen Hsieh <mingyen.hsieh@mediatek.com>
-Subject: [PATCH] wifi: mt76: mt7925: cqm rssi low/high event notify
-Date: Wed, 17 Sep 2025 13:26:43 +0800
-Message-ID: <20250917052643.496211-1-mingyen.hsieh@mediatek.com>
+	<linux-mediatek@lists.infradead.org>, Jack Kao <jack.kao@mediatek.com>, "Ming
+ Yen Hsieh" <mingyen.hsieh@mediatek.com>
+Subject: [PATCH v2] wifi: mt76: mt7925: cqm rssi low/high event notify
+Date: Wed, 17 Sep 2025 13:36:17 +0800
+Message-ID: <20250917053617.497393-1-mingyen.hsieh@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250916_222655_303067_B3A60FB3 
-X-CRM114-Status: GOOD (  14.18  )
+X-CRM114-CacheID: sfid-20250916_223627_318083_86DF68E2 
+X-CRM114-Status: GOOD (  14.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,6 +99,8 @@ RSSI drops below a certain threshold
 
 Signed-off-by: Jack Kao <jack.kao@mediatek.com>
 Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+---
+v2: fix build err for parameter of mt7925_mcu_set_rssimonitor()
 ---
  .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  2 +
  .../net/wireless/mediatek/mt76/mt7925/main.c  |  6 ++
@@ -128,7 +130,7 @@ index b30245ce009a..fd1189e74920 100644
  	MCU_UNI_CMD_TESTMODE_CTRL = 0x46,
  	MCU_UNI_CMD_RRO = 0x57,
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-index eef9fae6a733..04b760e09777 100644
+index eef9fae6a733..8ba27bc6a1ac 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
 @@ -431,6 +431,9 @@ mt7925_add_interface(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
@@ -146,7 +148,7 @@ index eef9fae6a733..04b760e09777 100644
  				      link_conf, NULL);
  
 +	if (changed & BSS_CHANGED_CQM)
-+		mt7925_mcu_set_rssimonitor(dev, vif, info);
++		mt7925_mcu_set_rssimonitor(dev, vif);
 +
  	mt792x_mutex_release(dev);
  }
