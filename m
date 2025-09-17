@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25ED9CA0EE8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Sep 2025 10:10:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13AD3CA0EE8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Sep 2025 10:11:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OkQ5W8f0VgiP6PCTsWWJrbImt94RgIZfxXIr4G30wgQ=; b=jn0IjmnMyrt3zwfNyV6kn2FxPy
-	WSCcruf6JN0zyXyl779fwXQFbw4akdEffJRiFgJuGcy1pnsPiXaH0ODeFwILEF3XXaDY2ETjpDnnO
-	Y+ir8+Rt/ijLeaFS3x4PK2KlSi7nfQqSZ0S0pwguMK6sf5Jx7zEuqOIOS04Nuh5iB9FPoWP3OBwQt
-	4tNuzYkE+pl6TB3YzP354ADZugwBO1yrYZF8TmfxRRBb+DnWPMLlccuLXFcEyEKS48BiFXuMkLO+V
-	c/GhTYkifqTKcp8ktn3mlH5wHHW+KqKSBo+WzHRqH3OMZwiVjWNZFvVKgEOhS895+JdrmjzxZwGP9
-	OfI7dl5Q==;
+	bh=RFlgCXptLNgS0oUFv7P/jnH+n8Ia5ZxafQyZ/H5sxnA=; b=WjqsZpmdYpt93hf/jWm1yZkgpi
+	uEjBGf1aMZx+e6k6AgXE8Jui0ZJumlrbCtVjaBpsBO2OCmdwyCPZ/uItHPh7ShUxFmhqLBss1/EFR
+	w4xBTsYxsL2/3Llbec7r3dx3ZJUyLlgwvwP9YqlrBXJE0sMBG0Na0lHWdRXx76A+QmEftC88fq2/N
+	buiMDhOqQh1EywXZi3BI4GJxZZbO6O/NWAfHoTSMY3xY8m49jdJH+nHWM1+Y1SNZUojER7Fk5fAH7
+	oIaYvCdZUegCt0gF41CxYHZQNU42VtyO2MXc/Adu7wKoFzOY2ODSBemNTlrlDT8Qe5wWVk3Uz1s5L
+	tWL8O8qQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uyp7d-0000000Auwu-1WwO;
-	Wed, 17 Sep 2025 10:10:45 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1uyp8E-0000000AvC2-3Wtq;
+	Wed, 17 Sep 2025 10:11:22 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uyp7a-0000000Auw8-3Msz
+	id 1uyp8C-0000000Av9M-0dmd
 	for linux-mediatek@lists.infradead.org;
-	Wed, 17 Sep 2025 10:10:43 +0000
-Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-45de1532995so3983475e9.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 17 Sep 2025 03:10:42 -0700 (PDT)
+	Wed, 17 Sep 2025 10:11:21 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-45de185bf68so5730065e9.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 17 Sep 2025 03:11:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1758103841; x=1758708641; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1758103878; x=1758708678; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=OkQ5W8f0VgiP6PCTsWWJrbImt94RgIZfxXIr4G30wgQ=;
-        b=j7IysEYssHoQwXI4mLk+DrWL5IVD6BeGoq1oNyin/wi93sjSog8lQzFWiNOhgN8+Dg
-         eJ06VcqFF5s+E8sXRGmv5ZY3ONNM9rMBbAdJVrbvfzUabQL2BNtxxZR7GMnl0bffpijf
-         f6VDlRe9BpcqcKFRXKg8wdg7kcyCcx29fZj2ywAScVZQ+a3+C4VrXEbbKYpFTLk5QeNO
-         5H0iegPkDIDM7JHl+yClqYrEmx18pnMYRjzNmNxWhbpVdDcAIeviR63NH9t+cyuJTn22
-         jWtaYqIqcadKqjvUw6Su4Fz6MFH3M0Z1ljtzjTyaGn2T4QAZGSMOOHRujJ3aXiyAcxgf
-         Vm9A==
+        bh=RFlgCXptLNgS0oUFv7P/jnH+n8Ia5ZxafQyZ/H5sxnA=;
+        b=NG6z1QLbz1boEgGuDGxjajYrCllA9V6zdLW2Js+TDgUhTcYO4XUop4harVwwlS/fWn
+         y6S0tymTXCHRMi++gGydI0hgAUtZpLDk7Cj1wSqC/oc7ef3hWKeTSR7WHCvkY9PjgLTQ
+         Z3rQXAUt58vKnrZOjKTJof+2KMEJ5QbDDl/p2tmS+zCbLI/MuVLOVSqA57Gdm7RUBipi
+         pMAXblxi/kyrFtYfApU3ppFQqowL+fhy3E8067YvYiYZzD+hI62nBO5uZRhNtc0HXr5R
+         vsZXNDH1Z6saws1huF4ouqi2lg1AS9DClT5wnjmEERRVaTw8u7YVzCAz9vjCOrSy9QWN
+         HNoQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1758103841; x=1758708641;
+        d=1e100.net; s=20230601; t=1758103878; x=1758708678;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=OkQ5W8f0VgiP6PCTsWWJrbImt94RgIZfxXIr4G30wgQ=;
-        b=Tm8d72vDoTAI+BzJT/IfI/7jDxXc1LUqJ1P7a+xgWLkc+fIMf20TXrJ3GJn8Il9GeZ
-         /Vhv/tuJFTl72fPrCTfj9F1itXedqeZro9e81DuD8c1vvDNepeRlbdHVk2hb9YIH4dcR
-         lOk5pMHyDTDqPdWdiIaef5vDg2orHyNrJQpK9AgSifhs/IrRn7r1E7H3Gfr/j5AmuVBc
-         5MCgWuCBpCd1lrhPnbaxTxIZRFvs25dvrhiTSNFaOVH8o7WP3ZRRXxXCBvn7h83W8IYG
-         RDzP8Pkpcc6NNQyZSEjZJ+c1ffVegxAO1yriba8jsEcxqaW+6639QPKOX6i7isWcqKbn
-         gGKg==
-X-Forwarded-Encrypted: i=1; AJvYcCXFP8DapKtnr2G+OTsFqNNL//MlGEU0Jjl1HL8v/MBkFTPA8XI8BeUOZDajqRuWnp4AZb0jOOc/LWkWnSDHQA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz61C9lg1rytQZEZwIV4+Sx6DMvWSaYKyYNojdaBQ8hAtt8x4v/
-	KbgNDpwJOUbZaCMwTylNywpV1mkQSyu2MJ/5L/DdF/Nd+7H3wJRI5xK9
-X-Gm-Gg: ASbGncvfwQ26aa8KHYjZrBoMwdUjHDdBaaPQBcWLtAZs+bQC1WvmZnkGwKOJrmPzY5f
-	MXIps1dbOt/eNvg11FL5cVKlqbHnBhttnuKAH94sdCAzEEEUpsZc5PBcsfYirWikvVILNMLObq0
-	Tzk2CeglzPhQcq44dHsFZXWa4l+q8Urip+zjnNHtAKYzYq1SL2LOWA+1gad61PObqYNWcExtgmc
-	pryVyAl8TEFrSPuSIccxZvYC+OQ62DwlfTeQR/zTuhwgJzmISloqXB51UhkXDwZ8+CKMfLMElFz
-	bAeLdUDoJje8udwsjUyA8lVXy0SOF8FcRDijorQ2H9FhsItFaD5Fjt1KJZfdCS5JrYWn4Q5j55b
-	UJqQsig8goaK06/M=
-X-Google-Smtp-Source: AGHT+IEEatHJpLubzoy4lkQ0hIsi84UEkNPErsL1pNTYQeBGmM1JX4r+iiCRONDCh4wUnphpFnKYhQ==
-X-Received: by 2002:a05:600c:c16f:b0:45d:d57b:69bc with SMTP id 5b1f17b1804b1-462074c689amr8001385e9.8.1758103840619;
-        Wed, 17 Sep 2025 03:10:40 -0700 (PDT)
+        bh=RFlgCXptLNgS0oUFv7P/jnH+n8Ia5ZxafQyZ/H5sxnA=;
+        b=ijoTXYqaH5+Emn+Lez//9SYJGXQoIBs37diwVxuAxUY0cOSk6sHNX7036S6CZaA4LY
+         evILXsRSeGJ/sN3h2BB1owF86Xv5XoJFU+Ys4HI1jpWw8qstdYfnu8F+yNBYGVDjkl66
+         iA2UQm74jnQQNv3YjrXLRcssY2vkKde/bM/lQFOsvJCZJWmCFGGCwBLYODDV2RwSBQol
+         PSZ7EhxhE6qEYCTY2S5OIM//gAfSkNqPu002DKnWpXkv4GlNwf+jV95dnKxRx6dDH6XU
+         +648+rm3mNj0ftayLpFPbpHAyXF4KljrtfJ5OHo3Rj9TYACveWJyBfsE/B9hks2Df7rI
+         7Eow==
+X-Forwarded-Encrypted: i=1; AJvYcCVYpUWwtdk3Qa3BRnwXmJEJtruu7KlfubkcpDwVaoLxe2EvOQVHX9IgOLo/wuKMTIB2OMsNBWAbitYTDN5lpg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywi9eu+0alsC2sdAED/wunqTahBE0r1s5laDoQ9pJCF0aU026JC
+	R6GnQPGXnjEYswQcfMrzVAYePYnJLWfC9GbjSDbFiQmMMR+JrB+NokpN
+X-Gm-Gg: ASbGncsjpDsDqp/+N0Pd14fJlUXz5egS82oxWFE5hMJbYM5COkXVzwJkseXkEQcmByC
+	qUa87A6+cNE6+Y5Igfg2htc3Ci/2tvevdCzG8VP8mj0Hr9U0DLS+LtEzvK0v6NPghavTWIg8SqE
+	hNGfQwWimjuiekkLq312En18S59x1DJ58i7ENOMGdLPsdml5TIGwlYF5yw9nEtaYS6lA/AaQL1M
+	0S2zVrvAFCqus0Qbu84yq+Om9xkBwcKOdmjcBj1+odiWUgwswWD8NSosj/gMho05xxqcnPngHKz
+	qKp88mksTgMlVDUL++0cP0qBdrwna/govO5ZAGdiGVrBNrYXA+WPogMVYfruHwYJuT/yLOD8DKZ
+	eshzQo3w36sMNtb8=
+X-Google-Smtp-Source: AGHT+IEGAWHbOGCVA8E1ghCrTfok0wf8HrSSu83uqpK5rtG+yvptJ+uZiWuJFaorxUfrNpWZkT3p1g==
+X-Received: by 2002:a05:6000:400e:b0:3e9:e2cf:cda2 with SMTP id ffacd0b85a97d-3ecdfa5ad4fmr599670f8f.8.1758103878166;
+        Wed, 17 Sep 2025 03:11:18 -0700 (PDT)
 Received: from skbuf ([2a02:2f04:d005:3b00:8bcc:b603:fee7:a273])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45f325c3c29sm37511495e9.3.2025.09.17.03.10.33
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3ece0fba34dsm1092120f8f.9.2025.09.17.03.11.14
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 17 Sep 2025 03:10:34 -0700 (PDT)
-Date: Wed, 17 Sep 2025 13:10:31 +0300
+        Wed, 17 Sep 2025 03:11:15 -0700 (PDT)
+Date: Wed, 17 Sep 2025 13:11:12 +0300
 From: Vladimir Oltean <olteanv@gmail.com>
 To: Christian Marangi <ansuelsmth@gmail.com>
 Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
@@ -90,18 +90,19 @@ Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [net-next PATCH v18 0/8] net: dsa: Add Airoha AN8855 support
-Message-ID: <20250917101031.drg3qairsrinucbl@skbuf>
+Subject: Re: [net-next PATCH v18 6/8] mfd: an8855: Add support for Airoha
+ AN8855 Switch MFD
+Message-ID: <20250917101112.555jzhzlmpkhgmh5@skbuf>
 References: <20250915104545.1742-1-ansuelsmth@gmail.com>
- <20250917092807.uui2qwva2sqbe6sp@skbuf>
- <68ca8217.050a0220.81571.9fda@mx.google.com>
+ <20250915104545.1742-7-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <68ca8217.050a0220.81571.9fda@mx.google.com>
+In-Reply-To: <20250915104545.1742-7-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250917_031042_858294_B9FE6094 
-X-CRM114-Status: GOOD (  31.18  )
+X-CRM114-CacheID: sfid-20250917_031120_201169_CE80A1CF 
+X-CRM114-Status: UNSURE (   7.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,57 +117,9 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 17, 2025 at 11:40:36AM +0200, Christian Marangi wrote:
-> On Wed, Sep 17, 2025 at 12:28:07PM +0300, Vladimir Oltean wrote:
-> > On Mon, Sep 15, 2025 at 12:45:36PM +0200, Christian Marangi wrote:
-> > > It's conceptually similar to mediatek switch but register and bits
-> > > are different. And there is massive list of register for the PCS
-> > > configuration.
-> > > Saddly for that part we have absolutely NO documentation currently.
-> > 
-> > Please add in the next revision a more convincing argument for not
-> > reusing the mt7530 driver control flow. Regmap fields can abstract a
-> > lot, and the driver can select a completely different phylink_pcs for
-> > different hardware.
-> > 
-> > I don't see in the short change log included here any mentions related
-> > to the mt7530, but I'm not going to search the mailing lists since Nov
-> > 2024 for any previous discussions about this...
-> 
-> Ok will add additional info.
-> 
-> But In short the FDB and VLAN part are very different. The FDB logic to
-> dump entry add and remove is entirely different.
-> 
-> And the mt7530 itself is full of unrelated function (specific to the
-> first revision of the mt7530 switch) so I have to move lots of code
-> around.
-> 
-> If asked I can do it but I have to also introduce lots of extra change.
+On Mon, Sep 15, 2025 at 12:45:42PM +0200, Christian Marangi wrote:
+> +static int an855_regmap_phy_reset_page(struct an8855_core_priv *priv,
+> +				       int phy) __must_hold(&priv->bus->mdio_lock)
 
-Ok, it would be good if you could point to an ack from mt7530 people
-that they're ok with this choice and motivation.
-
-> > Do you know why it won't receive PTP over IP? It seems strange, given it
-> > receives other IP multicast (even unregistered). Is it a hardware or a
-> > software drop? What port counters increment? Does it drop PTP over IP
-> > only on local termination, or does it also fail to forward it? What
-> > about the packet makes the switch drop it?
-> > 
-> 
-> From what they said there isn't any support for 1588v2 (PTP) on the Switch other
-> than L2 (that I think they simply forward)
-> 
-> I can ask more info on the topic, will also check what counters
-> increment.
-
-"Don't support PTP over IP" can mean a lot of different things, but I
-don't expect "let's drop it" to be expected behaviour. Being a
-PTP-unaware switch (which doesn't timestamp event packets and doesn't
-participate in the protocol) is an entirely adequate and basic use case,
-and we aren't even requesting the switch anything other than to receive
-these packets during the selftest (no timestamping). But it doesn't seem
-to work, which is bizarre. We don't even know if the problem is specific
-to PTP or is more widespread. Maybe it has to do with the UDP ports 319
-and 320, maybe with the particular IP multicast groups...
+s/an855/an8855/ throughout this file.
 
