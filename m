@@ -4,69 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E44D0CAC59A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Sep 2025 12:08:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BD4BCAC59A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Sep 2025 12:18:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CdFfxxNFAPVCrQi/eEqnpPZtGLtw4f+fz6WYYOK5dHQ=; b=0HfjaHR2zZCvimf+UI8rEQBKIZ
-	M4ASxDxcBVrau2UPxD54wQPXv0d7XF7x7Lb+bxz0qpJQmFGUGC05RZNGcR2zRYpB1X4U6AvsxGYSb
-	tB3j05IeyFjn2Wh4H85w7b0igMeVFngWhOHOTCthlhRzf3mPrvt6bRXlz6oHpEnyK+9wpExV1Ha1I
-	HuKfp0MzNEU+VnWYHI/9TKbONrr9QnsTB2hQJTAPzMns12CeN4faLD39eKowveQbN+8FY8tNojpCg
-	1KtjFyktTDo6PPGfwSn6C8vj5C93vzfPiiG9j16oIlkYJJ9MP7uJqIbmLQEcx9RkiNp8O/UWuOxIA
-	Q2u2/AJw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QPPb+919LDTjk4rx5cWwPbu26/1B+8lxfpYUp1Eui3Y=; b=efKCslSrrz2xkq7mzndQNTjC2Q
+	m5pbD50uLx/j91TniBZUCHfw82PXALlFs7zrJgU6SBqjjdAa7JxRl0RzUrNtyYcTThS/kEz+mh4o7
+	dOR7Q0OY8iALMYcAeGCSQh6GF2X8vHN+D3l0qUyM0z41D//rADAXtZGpnU/Gx89OehPDCIk+ZdFra
+	mlFxFP0QL0SwaTpqTxk1zelzbNylxfwQ762pubTSKWZLqCQDgG2334JcQeeeZJuM9TvJmEW/WCxM+
+	5CE/VHVOVM8p/g/nnSFq+56dXVs1GuE9snBGwoEUeiZWyeDO99VWrzLxDSxbFwFTx7q7GT+N0b97d
+	VmM0lZvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzDRB-0000000HLG0-2asi;
-	Thu, 18 Sep 2025 12:08:33 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uzDaO-0000000HMcj-1MNo;
+	Thu, 18 Sep 2025 12:18:04 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzDR8-0000000HLCj-2Iy8;
-	Thu, 18 Sep 2025 12:08:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1758197308;
-	bh=P0vvBsCMPE9HUr2EnkPlQHcU36fhBR6Uw7Rhq/WgBSE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ktNmaoJkLqqALEoAaj1Cs2rF5wWQvvuG7tuopmXTSk1u61yapIkUYhFC3Hb5HlQYx
-	 m3f7fQjD1NnjfNbDEaBn2bf1Qgkpbf18m5114gmAW+04pih+QDfVGbuNkpZotnPyRy
-	 OIlT27AHjzEEIepJwi2ZH4duRoBaYi1TMo/+jRBK2igslBbzDmjhTMGr46rcdFPvfV
-	 TGO67YNI5YcwjVRMF1MzWv9VOmbn1pP442Emvsr3fWJ1GYirtcuta9R4ipSgkAdyHz
-	 mm8+Dfb7MiHPKyR2Q9q7cc/S63TAwa0/fiqRyPdXpW8R24wqmntAUrgvXL0qoiB0bB
-	 qZIZJtyz0WIYw==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9945A17E0DC2;
-	Thu, 18 Sep 2025 14:08:27 +0200 (CEST)
-Message-ID: <f2eded27-54cb-43a9-ab48-54cb9ecb45be@collabora.com>
-Date: Thu, 18 Sep 2025 14:08:27 +0200
+	id 1uzDaM-0000000HMbT-0n83;
+	Thu, 18 Sep 2025 12:18:03 +0000
+X-UUID: 834781ee948911f09eb0dd999d3936bf-20250918
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=QPPb+919LDTjk4rx5cWwPbu26/1B+8lxfpYUp1Eui3Y=;
+	b=NAICAlpkV4DdRQAQb63yGrCuFA0wH4OXbG3fhPvvgHCp/ep3fFyD2pA42KqeJhctdcdDWRqNFvURIQl25tCt/gKZQLsIs9+sK1CjXatmKHQHwsoxEPzMXAzpStsqb9LyiWFEjyTNiDkEot8sUBESJYVCMVuzETWbN/E7fwcTjPA=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.4,REQID:a8c6d84a-70dd-474c-8cd4-4826a5115589,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:1ca6b93,CLOUDID:cb9a1991-68e1-4022-b848-86f5c49a6751,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
+	0|15|50,EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,
+	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 834781ee948911f09eb0dd999d3936bf-20250918
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1038946716; Thu, 18 Sep 2025 05:17:58 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Thu, 18 Sep 2025 20:17:53 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Thu, 18 Sep 2025 20:17:53 +0800
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Sean Wang
+	<sean.wang@mediatek.com>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+	Ramax Lo <ramax.lo@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
+	Macpaul Lin <macpaul@gmail.com>, MediaTek Chromebook Upstream
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v4 3/4] arm64: dts: mediatek: add device-tree for Genio 1200 EVK UFS board
+Date: Thu, 18 Sep 2025 20:17:49 +0800
+Message-ID: <20250918121751.229554-3-macpaul.lin@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20250918121751.229554-1-macpaul.lin@mediatek.com>
+References: <20250918121751.229554-1-macpaul.lin@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] dt-bindings: timer: mediatek,timer: Add compatible for
- MT8189
-To: Zhanzhan Ge <zhanzhan.ge@mediatek.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Thomas Gleixner <tglx@linutronix.de>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com, sirius.wang@mediatek.com,
- vince-wl.liu@mediatek.com, jh.hsu@mediatek.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20250825033136.7705-1-zhanzhan.ge@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250825033136.7705-1-zhanzhan.ge@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250918_050830_774910_5A8093D8 
-X-CRM114-Status: GOOD (  11.67  )
+X-CRM114-CacheID: sfid-20250918_051802_241586_A623451D 
+X-CRM114-Status: GOOD (  15.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,32 +93,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 25/08/25 05:31, Zhanzhan Ge ha scritto:
-> Add the compatible for mt8189 timer to the binding.
-> 
-> Signed-off-by: Zhanzhan Ge <zhanzhan.ge@mediatek.com>
+Add a basic device-tree (mt8395-genio-1200-evk-ufs.dts) in order to be able
+to use UFS storage as the main storage on Genio 1200 EVK board.
 
+This board is the origin Genio 1200 EVK already mounted two main storages,
+one is eMMC, and the other is UFS. The system automatically prioritizes
+between eMMC and UFS via BROM detection, so user could not use both storage
+types simultaneously. As a result, mt8395-evk-ufs must be treated as a
+separate board.
+
+It use mt8395-genio-common.dtsi file to use common definitions.
+
+Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ arch/arm64/boot/dts/mediatek/Makefile         |  1 +
+ .../mediatek/mt8395-genio-1200-evk-ufs.dts    | 29 +++++++++++++++++++
+ 2 files changed, 30 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk-ufs.dts
 
-> ---
->   Documentation/devicetree/bindings/timer/mediatek,timer.yaml | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/timer/mediatek,timer.yaml b/Documentation/devicetree/bindings/timer/mediatek,timer.yaml
-> index e3e38066c2cb..5ceedc3a4f91 100644
-> --- a/Documentation/devicetree/bindings/timer/mediatek,timer.yaml
-> +++ b/Documentation/devicetree/bindings/timer/mediatek,timer.yaml
-> @@ -43,6 +43,7 @@ properties:
->                 - mediatek,mt8183-timer
->                 - mediatek,mt8186-timer
->                 - mediatek,mt8188-timer
-> +              - mediatek,mt8189-timer
->                 - mediatek,mt8192-timer
->                 - mediatek,mt8195-timer
->                 - mediatek,mt8196-timer
-> --
-> 2.45.2
-> 
+Changes for v2:
+ - Move root node at the beginning of the dts file according to review
+   suggestion. Thanks.
 
+Changes for v3:
+ - No change.
+
+Changes for v4:
+ - No change. Add Reviewed-by tag. Thanks!
+
+diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+index a4df4c21399e..86d568d57549 100644
+--- a/arch/arm64/boot/dts/mediatek/Makefile
++++ b/arch/arm64/boot/dts/mediatek/Makefile
+@@ -100,6 +100,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8195-evb.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8365-evk.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8370-genio-510-evk.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8395-genio-1200-evk.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt8395-genio-1200-evk-ufs.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8390-genio-700-evk.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8395-kontron-3-5-sbc-i1200.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8395-radxa-nio-12l.dtb
+diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk-ufs.dts b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk-ufs.dts
+new file mode 100644
+index 000000000000..e09a3ecd8773
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk-ufs.dts
+@@ -0,0 +1,29 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright (C) 2025 MediaTek Inc.
++ * Author: Ramax Lo <ramax.lo@mediatek.com>
++ *         Macpaul Lin <macpaul.lin@mediatek.com>
++ */
++/dts-v1/;
++
++#include "mt8395-genio-common.dtsi"
++
++/ {
++	model = "MediaTek Genio 1200 EVK-P1V2-UFS";
++	compatible = "mediatek,mt8395-evk-ufs", "mediatek,mt8395",
++		     "mediatek,mt8195";
++};
++
++&ufshci {
++	status = "okay";
++	vcc-supply = <&mt6359_vemc_1_ldo_reg>;
++	vccq2-supply = <&mt6359_vufs_ldo_reg>;
++};
++
++&ufsphy {
++	status = "okay";
++};
++
++&mmc0 {
++	status = "disabled";
++};
+-- 
+2.45.2
 
 
