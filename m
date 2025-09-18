@@ -4,82 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EE9DCAC5A8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Sep 2025 12:18:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1A8CCAC5A0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Sep 2025 12:23:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=C3KRvbRF8tl8jYvLmyzXwSX46v9GjR/AdhDGJaaQTs0=; b=k1Wz/iotiKgD5s1WZAkYpGmNR9
-	DN6csLAvr5kydg32GOWZ+r1GJ9TpTJPLzqviTlqMzWiTRmagGkzEhKBmLPURNAcLYeXJTXjo5tAjQ
-	egpH+rYqIMwlvbFgTInogrFCN/DTikxk7q3NGThGSPRq06D1XQEZGXaJIX39D/aoKALLTnJnrEbLg
-	xFv8Q3aLq1z0Crczutfi48Mu1B0boMjqplAaqctHCgurjIBE7CBxJ2VAUPp18UbeDRvzZUa78N196
-	Fcl4STs+SOld/ZGKnCadCye1M/egH19MLi+6dM5UUSBmznOdMTvuwaPCbIo8Znjz6wcWYSoIc4YbY
-	vS0EFj/A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=J8oe9XvHDnm2FWMpAdWBJmc/z4EhsPkQed7m2jR4/gU=; b=bOpu0KlcViDH0ytpkb8Hw1Z+j6
+	wxIPinuDwmgSqImResHciLJqPPaZ9ejSkrTbHPeJ7N75wKvw5sm76WP8yLKNA1J1hEfUSt5g3oZzX
+	ngUbesiMz9C6lkhBK9wuEhNuEkwREKDweBRzF8SRsJEUbyskiYrfLPIcQ0Wn/PXt0ZSwV6f7Gf7LA
+	Rr10P9IxOYHCYNMUkmyYk3Y9UfOooW/iCjOwKzeExs01czolD86YM/pd4cxy37/2ZKOIl5yTYxO4M
+	OoXwtMfnMkujdarUgKZvlqSz0roHifZWF/buQ7WmLBatcnFmVaokX6LzSVcZx9cZdIVfyJq1HL/R4
+	iQZUCbkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzDaS-0000000HMfq-1ZoS;
-	Thu, 18 Sep 2025 12:18:08 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1uzDfa-0000000HO1w-16V4;
+	Thu, 18 Sep 2025 12:23:26 +0000
+Received: from out-172.mta0.migadu.com ([2001:41d0:1004:224b::ac])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzDaM-0000000HMcB-3vJq;
-	Thu, 18 Sep 2025 12:18:04 +0000
-X-UUID: 82d00614948911f09f706fa2197c6ceb-20250918
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=C3KRvbRF8tl8jYvLmyzXwSX46v9GjR/AdhDGJaaQTs0=;
-	b=AYQb6a2QFf2TDOtGmLLCCqmn0YN1L8Pb4MWSZxdacI+8wS3+vJNaZtku3N955X5Wnsjke9dMlkDPGTPzosvekWmBAYwKRPfA1Bh/Lr2fSC9picKyzcRC52Dnm1Tsc2A8i1U5I26aoXHjv3techI3H7I3ck6imTQu2Ie/lj2aDVw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.4,REQID:989eb174-964b-4cf0-af39-d63edfd48858,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:1ca6b93,CLOUDID:a1c6b26c-8443-424b-b119-dc42e68239b0,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
-	0|15|50,EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,
-	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 82d00614948911f09f706fa2197c6ceb-20250918
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
-	(envelope-from <macpaul.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1423916174; Thu, 18 Sep 2025 05:17:57 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Thu, 18 Sep 2025 20:17:53 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Thu, 18 Sep 2025 20:17:53 +0800
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Sean Wang
-	<sean.wang@mediatek.com>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
-	Ramax Lo <ramax.lo@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
-	Macpaul Lin <macpaul@gmail.com>, MediaTek Chromebook Upstream
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Krzysztof Kozlowski
-	<krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v4 2/4] arm64: dts: mediatek: mt8395-genio-1200-evk: Move common parts to dtsi
-Date: Thu, 18 Sep 2025 20:17:48 +0800
-Message-ID: <20250918121751.229554-2-macpaul.lin@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20250918121751.229554-1-macpaul.lin@mediatek.com>
-References: <20250918121751.229554-1-macpaul.lin@mediatek.com>
+	id 1uzDfW-0000000HNzu-3w5l
+	for linux-mediatek@lists.infradead.org;
+	Thu, 18 Sep 2025 12:23:24 +0000
+X-Forwarded-Encrypted: i=1; AJvYcCWgQalOm/UwgzpggMZ46GPJPVlM5pbQE9bRnTN7bZT4byP0rS7/cruHDB5AfZ2OamwOJ4sNo/xTOEP9GICQ0g==@lists.infradead.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+	t=1758198200;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=J8oe9XvHDnm2FWMpAdWBJmc/z4EhsPkQed7m2jR4/gU=;
+	b=rjXU5f0v219bm1zZZgegFQaFi7WnIdK6mSlK7ZnqBPYbVvnirRJ1a0t4ZCKkG5zNRNcKGl
+	MQRLY+BX8vTE09OqbGmcV19J10SbdT08jjC+HGdXdzck8fQ8Z/UvPm3f8igrsR+1s5Gp4U
+	sL+nG1uerRH3uJuWCuEmvn3ktp/Gic8=
+X-Gm-Message-State: AOJu0Yxn3TOHhH5RLsOkntIiUFHvNDTas5Hv+O+FbB9FUkt/sVE8wBSK
+	WvBgncDc7GFDS1NN1GoFCdEsIpfaK6bN8d6lkSpPoj1RUYTQ2OOb0nhB7hexbHcfS9YQZquhL0D
+	zB3Se3JaTwK8bY+lmB7EpDNzSfnsKQk4=
+X-Google-Smtp-Source: AGHT+IGz03gXmFndFmZXYJ3YHSREnajcpjVVXEW6eIe1D1uvauHGkpGBSqDskaN/nzj9+/P0PUMV5wngYh67XvI4jAA=
+X-Received: by 2002:a05:6214:2aaf:b0:70d:6df4:1b21 with SMTP id
+ 6a1803df08f44-78ecf8e940amr56368016d6.62.1758198195042; Thu, 18 Sep 2025
+ 05:23:15 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+References: <20240830100438.3623486-1-usamaarif642@gmail.com>
+ <20240830100438.3623486-3-usamaarif642@gmail.com> <a7944523fcc3634607691c35311a5d59d1a3f8d4.camel@mediatek.com>
+ <434c092b-0f19-47bf-a5fa-ea5b4b36c35e@redhat.com>
+In-Reply-To: <434c092b-0f19-47bf-a5fa-ea5b4b36c35e@redhat.com>
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Lance Yang <lance.yang@linux.dev>
+Date: Thu, 18 Sep 2025 20:22:38 +0800
+X-Gmail-Original-Message-ID: <CABzRoyYWQMFTGYgfC7N=cWMnL_+5Y05=jrMhFjBf1aKOGxzq5g@mail.gmail.com>
+X-Gm-Features: AS18NWDbqrRo3FfsRakNQRuvHE-tDLRQdNj86jb0FFw9fBQ6yZ3X6shjFvDKfSg
+Message-ID: <CABzRoyYWQMFTGYgfC7N=cWMnL_+5Y05=jrMhFjBf1aKOGxzq5g@mail.gmail.com>
+Subject: Re: [PATCH v5 2/6] mm: remap unused subpages to shared zeropage when
+ splitting isolated thp
+To: David Hildenbrand <david@redhat.com>
+Cc: =?UTF-8?B?UXVuLXdlaSBMaW4gKOael+e+pOW0tCk=?= <Qun-wei.Lin@mediatek.com>, 
+	"catalin.marinas@arm.com" <catalin.marinas@arm.com>, "usamaarif642@gmail.com" <usamaarif642@gmail.com>, 
+	"linux-mm@kvack.org" <linux-mm@kvack.org>, "yuzhao@google.com" <yuzhao@google.com>, 
+	"akpm@linux-foundation.org" <akpm@linux-foundation.org>, "corbet@lwn.net" <corbet@lwn.net>, 
+	=?UTF-8?B?QW5kcmV3IFlhbmcgKOaliuaZuuW8tyk=?= <Andrew.Yang@mediatek.com>, 
+	"npache@redhat.com" <npache@redhat.com>, "rppt@kernel.org" <rppt@kernel.org>, 
+	"willy@infradead.org" <willy@infradead.org>, "kernel-team@meta.com" <kernel-team@meta.com>, 
+	"roman.gushchin@linux.dev" <roman.gushchin@linux.dev>, "hannes@cmpxchg.org" <hannes@cmpxchg.org>, 
+	"cerasuolodomenico@gmail.com" <cerasuolodomenico@gmail.com>, 
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "ryncsn@gmail.com" <ryncsn@gmail.com>, 
+	"surenb@google.com" <surenb@google.com>, "riel@surriel.com" <riel@surriel.com>, 
+	"shakeel.butt@linux.dev" <shakeel.butt@linux.dev>, 
+	=?UTF-8?B?Q2hpbndlbiBDaGFuZyAo5by16Yym5paHKQ==?= <chinwen.chang@mediatek.com>, 
+	"linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>, 
+	=?UTF-8?B?Q2FzcGVyIExpICjmnY7kuK3mpq4p?= <casper.li@mediatek.com>, 
+	"ryan.roberts@arm.com" <ryan.roberts@arm.com>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+	"baohua@kernel.org" <baohua@kernel.org>, "kaleshsingh@google.com" <kaleshsingh@google.com>, 
+	"zhais@google.com" <zhais@google.com>, 
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250918_051802_988964_C6822198 
-X-CRM114-Status: GOOD (  12.85  )
+X-CRM114-CacheID: sfid-20250918_052323_246956_98485AEE 
+X-CRM114-Status: GOOD (  40.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,1250 +99,329 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In preparation for introducing the Genio 1200 EVK UFS board support, split
-mt8395-genio-1200-evk.dts file in two to create mt8395-genio-common.dtsi
-file, containing common definitions for both boards.
+On Thu, Sep 18, 2025 at 5:21=E2=80=AFPM David Hildenbrand <david@redhat.com=
+> wrote:
+>
+> On 18.09.25 10:53, Qun-wei Lin (=E6=9E=97=E7=BE=A4=E5=B4=B4) wrote:
+> > On Fri, 2024-08-30 at 11:03 +0100, Usama Arif wrote:
+> >> From: Yu Zhao <yuzhao@google.com>
+> >>
+> >> Here being unused means containing only zeros and inaccessible to
+> >> userspace. When splitting an isolated thp under reclaim or migration,
+> >> the unused subpages can be mapped to the shared zeropage, hence
+> >> saving
+> >> memory. This is particularly helpful when the internal
+> >> fragmentation of a thp is high, i.e. it has many untouched subpages.
+> >>
+> >> This is also a prerequisite for THP low utilization shrinker which
+> >> will
+> >> be introduced in later patches, where underutilized THPs are split,
+> >> and
+> >> the zero-filled pages are freed saving memory.
+> >>
+> >> Signed-off-by: Yu Zhao <yuzhao@google.com>
+> >> Tested-by: Shuang Zhai <zhais@google.com>
+> >> Signed-off-by: Usama Arif <usamaarif642@gmail.com>
+> >> ---
+> >>   include/linux/rmap.h |  7 ++++-
+> >>   mm/huge_memory.c     |  8 ++---
+> >>   mm/migrate.c         | 72 ++++++++++++++++++++++++++++++++++++++----
+> >> --
+> >>   mm/migrate_device.c  |  4 +--
+> >>   4 files changed, 75 insertions(+), 16 deletions(-)
+> >>
+> >> diff --git a/include/linux/rmap.h b/include/linux/rmap.h
+> >> index 91b5935e8485..d5e93e44322e 100644
+> >> --- a/include/linux/rmap.h
+> >> +++ b/include/linux/rmap.h
+> >> @@ -745,7 +745,12 @@ int folio_mkclean(struct folio *);
+> >>   int pfn_mkclean_range(unsigned long pfn, unsigned long nr_pages,
+> >> pgoff_t pgoff,
+> >>                    struct vm_area_struct *vma);
+> >>
+> >> -void remove_migration_ptes(struct folio *src, struct folio *dst,
+> >> bool locked);
+> >> +enum rmp_flags {
+> >> +    RMP_LOCKED              =3D 1 << 0,
+> >> +    RMP_USE_SHARED_ZEROPAGE =3D 1 << 1,
+> >> +};
+> >> +
+> >> +void remove_migration_ptes(struct folio *src, struct folio *dst, int
+> >> flags);
+> >>
+> >>   /*
+> >>    * rmap_walk_control: To control rmap traversing for specific needs
+> >> diff --git a/mm/huge_memory.c b/mm/huge_memory.c
+> >> index 0c48806ccb9a..af60684e7c70 100644
+> >> --- a/mm/huge_memory.c
+> >> +++ b/mm/huge_memory.c
+> >> @@ -3020,7 +3020,7 @@ bool unmap_huge_pmd_locked(struct
+> >> vm_area_struct *vma, unsigned long addr,
+> >>      return false;
+> >>   }
+> >>
+> >> -static void remap_page(struct folio *folio, unsigned long nr)
+> >> +static void remap_page(struct folio *folio, unsigned long nr, int
+> >> flags)
+> >>   {
+> >>      int i =3D 0;
+> >>
+> >> @@ -3028,7 +3028,7 @@ static void remap_page(struct folio *folio,
+> >> unsigned long nr)
+> >>      if (!folio_test_anon(folio))
+> >>              return;
+> >>      for (;;) {
+> >> -            remove_migration_ptes(folio, folio, true);
+> >> +            remove_migration_ptes(folio, folio, RMP_LOCKED |
+> >> flags);
+> >>              i +=3D folio_nr_pages(folio);
+> >>              if (i >=3D nr)
+> >>                      break;
+> >> @@ -3240,7 +3240,7 @@ static void __split_huge_page(struct page
+> >> *page, struct list_head *list,
+> >>
+> >>      if (nr_dropped)
+> >>              shmem_uncharge(folio->mapping->host, nr_dropped);
+> >> -    remap_page(folio, nr);
+> >> +    remap_page(folio, nr, PageAnon(head) ?
+> >> RMP_USE_SHARED_ZEROPAGE : 0);
+> >>
+> >>      /*
+> >>       * set page to its compound_head when split to non order-0
+> >> pages, so
+> >> @@ -3542,7 +3542,7 @@ int split_huge_page_to_list_to_order(struct
+> >> page *page, struct list_head *list,
+> >>              if (mapping)
+> >>                      xas_unlock(&xas);
+> >>              local_irq_enable();
+> >> -            remap_page(folio, folio_nr_pages(folio));
+> >> +            remap_page(folio, folio_nr_pages(folio), 0);
+> >>              ret =3D -EAGAIN;
+> >>      }
+> >>
+> >> diff --git a/mm/migrate.c b/mm/migrate.c
+> >> index 6f9c62c746be..d039863e014b 100644
+> >> --- a/mm/migrate.c
+> >> +++ b/mm/migrate.c
+> >> @@ -204,13 +204,57 @@ bool isolate_folio_to_list(struct folio *folio,
+> >> struct list_head *list)
+> >>      return true;
+> >>   }
+> >>
+> >> +static bool try_to_map_unused_to_zeropage(struct
+> >> page_vma_mapped_walk *pvmw,
+> >> +                                      struct folio *folio,
+> >> +                                      unsigned long idx)
+> >> +{
+> >> +    struct page *page =3D folio_page(folio, idx);
+> >> +    bool contains_data;
+> >> +    pte_t newpte;
+> >> +    void *addr;
+> >> +
+> >> +    VM_BUG_ON_PAGE(PageCompound(page), page);
+> >> +    VM_BUG_ON_PAGE(!PageAnon(page), page);
+> >> +    VM_BUG_ON_PAGE(!PageLocked(page), page);
+> >> +    VM_BUG_ON_PAGE(pte_present(*pvmw->pte), page);
+> >> +
+> >> +    if (folio_test_mlocked(folio) || (pvmw->vma->vm_flags &
+> >> VM_LOCKED) ||
+> >> +        mm_forbids_zeropage(pvmw->vma->vm_mm))
+> >> +            return false;
+> >> +
+> >> +    /*
+> >> +     * The pmd entry mapping the old thp was flushed and the pte
+> >> mapping
+> >> +     * this subpage has been non present. If the subpage is only
+> >> zero-filled
+> >> +     * then map it to the shared zeropage.
+> >> +     */
+> >> +    addr =3D kmap_local_page(page);
+> >> +    contains_data =3D memchr_inv(addr, 0, PAGE_SIZE);
+> >> +    kunmap_local(addr);
+> >> +
+> >> +    if (contains_data)
+> >> +            return false;
+> >> +
+> >> +    newpte =3D pte_mkspecial(pfn_pte(my_zero_pfn(pvmw->address),
+> >> +                                    pvmw->vma->vm_page_prot));
+> >> +    set_pte_at(pvmw->vma->vm_mm, pvmw->address, pvmw->pte,
+> >> newpte);
+> >> +
+> >> +    dec_mm_counter(pvmw->vma->vm_mm, mm_counter(folio));
+> >> +    return true;
+> >> +}
+> >> +
+> >> +struct rmap_walk_arg {
+> >> +    struct folio *folio;
+> >> +    bool map_unused_to_zeropage;
+> >> +};
+> >> +
+> >>   /*
+> >>    * Restore a potential migration pte to a working pte entry
+> >>    */
+> >>   static bool remove_migration_pte(struct folio *folio,
+> >> -            struct vm_area_struct *vma, unsigned long addr, void
+> >> *old)
+> >> +            struct vm_area_struct *vma, unsigned long addr, void
+> >> *arg)
+> >>   {
+> >> -    DEFINE_FOLIO_VMA_WALK(pvmw, old, vma, addr, PVMW_SYNC |
+> >> PVMW_MIGRATION);
+> >> +    struct rmap_walk_arg *rmap_walk_arg =3D arg;
+> >> +    DEFINE_FOLIO_VMA_WALK(pvmw, rmap_walk_arg->folio, vma, addr,
+> >> PVMW_SYNC | PVMW_MIGRATION);
+> >>
+> >>      while (page_vma_mapped_walk(&pvmw)) {
+> >>              rmap_t rmap_flags =3D RMAP_NONE;
+> >> @@ -234,6 +278,9 @@ static bool remove_migration_pte(struct folio
+> >> *folio,
+> >>                      continue;
+> >>              }
+> >>   #endif
+> >> +            if (rmap_walk_arg->map_unused_to_zeropage &&
+> >> +                try_to_map_unused_to_zeropage(&pvmw, folio,
+> >> idx))
+> >> +                    continue;
+> >>
+> >>              folio_get(folio);
+> >>              pte =3D mk_pte(new, READ_ONCE(vma->vm_page_prot));
+> >> @@ -312,14 +359,21 @@ static bool remove_migration_pte(struct folio
+> >> *folio,
+> >>    * Get rid of all migration entries and replace them by
+> >>    * references to the indicated page.
+> >>    */
+> >> -void remove_migration_ptes(struct folio *src, struct folio *dst,
+> >> bool locked)
+> >> +void remove_migration_ptes(struct folio *src, struct folio *dst, int
+> >> flags)
+> >>   {
+> >> +    struct rmap_walk_arg rmap_walk_arg =3D {
+> >> +            .folio =3D src,
+> >> +            .map_unused_to_zeropage =3D flags &
+> >> RMP_USE_SHARED_ZEROPAGE,
+> >> +    };
+> >> +
+> >>      struct rmap_walk_control rwc =3D {
+> >>              .rmap_one =3D remove_migration_pte,
+> >> -            .arg =3D src,
+> >> +            .arg =3D &rmap_walk_arg,
+> >>      };
+> >>
+> >> -    if (locked)
+> >> +    VM_BUG_ON_FOLIO((flags & RMP_USE_SHARED_ZEROPAGE) && (src !=3D
+> >> dst), src);
+> >> +
+> >> +    if (flags & RMP_LOCKED)
+> >>              rmap_walk_locked(dst, &rwc);
+> >>      else
+> >>              rmap_walk(dst, &rwc);
+> >> @@ -934,7 +988,7 @@ static int writeout(struct address_space
+> >> *mapping, struct folio *folio)
+> >>       * At this point we know that the migration attempt cannot
+> >>       * be successful.
+> >>       */
+> >> -    remove_migration_ptes(folio, folio, false);
+> >> +    remove_migration_ptes(folio, folio, 0);
+> >>
+> >>      rc =3D mapping->a_ops->writepage(&folio->page, &wbc);
+> >>
+> >> @@ -1098,7 +1152,7 @@ static void migrate_folio_undo_src(struct folio
+> >> *src,
+> >>                                 struct list_head *ret)
+> >>   {
+> >>      if (page_was_mapped)
+> >> -            remove_migration_ptes(src, src, false);
+> >> +            remove_migration_ptes(src, src, 0);
+> >>      /* Drop an anon_vma reference if we took one */
+> >>      if (anon_vma)
+> >>              put_anon_vma(anon_vma);
+> >> @@ -1336,7 +1390,7 @@ static int migrate_folio_move(free_folio_t
+> >> put_new_folio, unsigned long private,
+> >>              lru_add_drain();
+> >>
+> >>      if (old_page_state & PAGE_WAS_MAPPED)
+> >> -            remove_migration_ptes(src, dst, false);
+> >> +            remove_migration_ptes(src, dst, 0);
+> >>
+> >>   out_unlock_both:
+> >>      folio_unlock(dst);
+> >> @@ -1474,7 +1528,7 @@ static int unmap_and_move_huge_page(new_folio_t
+> >> get_new_folio,
+> >>
+> >>      if (page_was_mapped)
+> >>              remove_migration_ptes(src,
+> >> -                    rc =3D=3D MIGRATEPAGE_SUCCESS ? dst : src,
+> >> false);
+> >> +                    rc =3D=3D MIGRATEPAGE_SUCCESS ? dst : src, 0);
+> >>
+> >>   unlock_put_anon:
+> >>      folio_unlock(dst);
+> >> diff --git a/mm/migrate_device.c b/mm/migrate_device.c
+> >> index 8d687de88a03..9cf26592ac93 100644
+> >> --- a/mm/migrate_device.c
+> >> +++ b/mm/migrate_device.c
+> >> @@ -424,7 +424,7 @@ static unsigned long
+> >> migrate_device_unmap(unsigned long *src_pfns,
+> >>                      continue;
+> >>
+> >>              folio =3D page_folio(page);
+> >> -            remove_migration_ptes(folio, folio, false);
+> >> +            remove_migration_ptes(folio, folio, 0);
+> >>
+> >>              src_pfns[i] =3D 0;
+> >>              folio_unlock(folio);
+> >> @@ -840,7 +840,7 @@ void migrate_device_finalize(unsigned long
+> >> *src_pfns,
+> >>                      dst =3D src;
+> >>              }
+> >>
+> >> -            remove_migration_ptes(src, dst, false);
+> >> +            remove_migration_ptes(src, dst, 0);
+> >>              folio_unlock(src);
+> >>
+> >>              if (folio_is_zone_device(src))
+> >
+> > Hi,
+> >
+> > This patch has been in the mainline for some time, but we recently
+> > discovered an issue when both mTHP and MTE (Memory Tagging Extension)
+> > are enabled.
+> >
+> > It seems that remapping to the same zeropage might causes MTE tag
+> > mismatches, since MTE tags are associated with physical addresses.
+>
+> Does this only trigger when the VMA has mte enabled? Maybe we'll have to
+> bail out if we detect that mte is enabled.
 
-Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../dts/mediatek/mt8395-genio-1200-evk.dts    | 1189 +----------------
- ...-1200-evk.dts => mt8395-genio-common.dtsi} |    4 -
- 2 files changed, 1 insertion(+), 1192 deletions(-)
- copy arch/arm64/boot/dts/mediatek/{mt8395-genio-1200-evk.dts => mt8395-genio-common.dtsi} (99%)
+It seems RISC-V also has a similar feature (RISCV_ISA_SUPM) that uses
+the same prctl(PR_{GET,SET}_TAGGED_ADDR_CTRL) API.
 
-Changes for v2:
- - Use git format-patch -C to generate a reviewable patch.
+config RISCV_ISA_SUPM
+        bool "Supm extension for userspace pointer masking"
+        depends on 64BIT
+        default y
+        help
+          Add support for pointer masking in userspace (Supm) when the
+          underlying hardware extension (Smnpm or Ssnpm) is detected at boo=
+t.
 
-Changes for v3:
- - No change.
+          If this option is disabled, userspace will be unable to use
+          the prctl(PR_{SET,GET}_TAGGED_ADDR_CTRL) API.
 
-Changes for v4:
- - No change. Add Reviewed-by tag. Thanks!
+I wonder if we should disable the THP shrinker for such architectures that
+define PR_SET_TAGGED_ADDR_CTRL (or PR_GET_TAGGED_ADDR_CTRL).
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-index cf8cd37f5708..68455f28c246 100644
---- a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-@@ -6,1197 +6,10 @@
-  */
- /dts-v1/;
- 
--#include "mt8195.dtsi"
--#include "mt6359.dtsi"
--#include <dt-bindings/gpio/gpio.h>
--#include <dt-bindings/input/input.h>
--#include <dt-bindings/interrupt-controller/irq.h>
--#include <dt-bindings/pinctrl/mt8195-pinfunc.h>
--#include <dt-bindings/regulator/mediatek,mt6360-regulator.h>
--#include <dt-bindings/spmi/spmi.h>
--#include <dt-bindings/usb/pd.h>
-+#include "mt8395-genio-common.dtsi"
- 
- / {
- 	model = "MediaTek Genio 1200 EVK-P1V2-EMMC";
- 	compatible = "mediatek,mt8395-evk", "mediatek,mt8395",
- 		     "mediatek,mt8195";
--
--	aliases {
--		serial0 = &uart0;
--		ethernet0 = &eth;
--	};
--
--	chosen {
--		stdout-path = "serial0:921600n8";
--	};
--
--	firmware {
--		optee {
--			compatible = "linaro,optee-tz";
--			method = "smc";
--		};
--	};
--
--	memory@40000000 {
--		device_type = "memory";
--		reg = <0 0x40000000 0x2 0x00000000>;
--	};
--
--	reserved-memory {
--		#address-cells = <2>;
--		#size-cells = <2>;
--		ranges;
--
--		/*
--		 * 12 MiB reserved for OP-TEE (BL32)
--		 * +-----------------------+ 0x43e0_0000
--		 * |      SHMEM 2MiB       |
--		 * +-----------------------+ 0x43c0_0000
--		 * |        | TA_RAM  8MiB |
--		 * + TZDRAM +--------------+ 0x4340_0000
--		 * |        | TEE_RAM 2MiB |
--		 * +-----------------------+ 0x4320_0000
--		 */
--		optee_reserved: optee@43200000 {
--			no-map;
--			reg = <0 0x43200000 0 0x00c00000>;
--		};
--
--		scp_mem: memory@50000000 {
--			compatible = "shared-dma-pool";
--			reg = <0 0x50000000 0 0x2900000>;
--			no-map;
--		};
--
--		vpu_mem: memory@53000000 {
--			compatible = "shared-dma-pool";
--			reg = <0 0x53000000 0 0x1400000>; /* 20 MB */
--		};
--
--		/* 2 MiB reserved for ARM Trusted Firmware (BL31) */
--		bl31_secmon_mem: memory@54600000 {
--			no-map;
--			reg = <0 0x54600000 0x0 0x200000>;
--		};
--
--		adsp_mem: memory@60000000 {
--			compatible = "shared-dma-pool";
--			reg = <0 0x60000000 0 0xf00000>;
--			no-map;
--		};
--
--		afe_dma_mem: memory@60f00000 {
--			compatible = "shared-dma-pool";
--			reg = <0 0x60f00000 0 0x100000>;
--			no-map;
--		};
--
--		adsp_dma_mem: memory@61000000 {
--			compatible = "shared-dma-pool";
--			reg = <0 0x61000000 0 0x100000>;
--			no-map;
--		};
--
--		apu_mem: memory@62000000 {
--			compatible = "shared-dma-pool";
--			reg = <0 0x62000000 0 0x1400000>; /* 20 MB */
--		};
--	};
--
--	backlight_lcm0: backlight-lcm0 {
--		compatible = "pwm-backlight";
--		brightness-levels = <0 1023>;
--		default-brightness-level = <576>;
--		num-interpolated-steps = <1023>;
--		pwms = <&disp_pwm0 0 500000>;
--	};
--
--	backlight_lcd1: backlight-lcd1 {
--		compatible = "pwm-backlight";
--		pwms = <&disp_pwm1 0 500000>;
--		enable-gpios = <&pio 46 GPIO_ACTIVE_HIGH>;
--		brightness-levels = <0 1023>;
--		num-interpolated-steps = <1023>;
--		default-brightness-level = <576>;
--		status = "disabled";
--	};
--
--	can_clk: can-clk {
--		compatible = "fixed-clock";
--		#clock-cells = <0>;
--		clock-frequency = <20000000>;
--		clock-output-names = "can-clk";
--	};
--
--	edp_panel_fixed_3v3: regulator-0 {
--		compatible = "regulator-fixed";
--		regulator-name = "edp_panel_3v3";
--		regulator-min-microvolt = <3300000>;
--		regulator-max-microvolt = <3300000>;
--		enable-active-high;
--		gpio = <&pio 6 GPIO_ACTIVE_HIGH>;
--		pinctrl-names = "default";
--		pinctrl-0 = <&edp_panel_3v3_en_pins>;
--	};
--
--	edp_panel_fixed_12v: regulator-1 {
--		compatible = "regulator-fixed";
--		regulator-name = "edp_backlight_12v";
--		regulator-min-microvolt = <12000000>;
--		regulator-max-microvolt = <12000000>;
--		enable-active-high;
--		gpio = <&pio 96 GPIO_ACTIVE_HIGH>;
--		pinctrl-names = "default";
--		pinctrl-0 = <&edp_panel_12v_en_pins>;
--	};
--
--	keys: gpio-keys {
--		compatible = "gpio-keys";
--
--		button-volume-up {
--			wakeup-source;
--			debounce-interval = <100>;
--			gpios = <&pio 106 GPIO_ACTIVE_LOW>;
--			label = "volume_up";
--			linux,code = <KEY_VOLUMEUP>;
--		};
--	};
--
--	lcm0_iovcc: regulator-vio18-lcm0 {
--		compatible = "regulator-fixed";
--		regulator-name = "vio18_lcm0";
--		enable-active-high;
--		gpio = <&pio 47 GPIO_ACTIVE_HIGH>;
--		pinctrl-names = "default";
--		pinctrl-0 = <&dsi0_vreg_en_pins>;
--		vin-supply = <&mt6360_ldo2>;
--	};
--
--	lcm0_vddp: regulator-vsys-lcm0 {
--		compatible = "regulator-fixed";
--		regulator-name = "vsys_lcm0";
--		regulator-always-on;
--		regulator-boot-on;
--		vin-supply = <&mt6360_ldo1>;
--	};
--
--	wifi_fixed_3v3: regulator-2 {
--		compatible = "regulator-fixed";
--		regulator-name = "wifi_3v3";
--		regulator-min-microvolt = <3300000>;
--		regulator-max-microvolt = <3300000>;
--		gpio = <&pio 135 GPIO_ACTIVE_HIGH>;
--		enable-active-high;
--		regulator-always-on;
--	};
--};
--
--&adsp {
--	memory-region = <&adsp_dma_mem>, <&adsp_mem>;
--	status = "okay";
--};
--
--&afe {
--	memory-region = <&afe_dma_mem>;
--	status = "okay";
--};
--
--&disp_pwm0 {
--	pinctrl-names = "default";
--	pinctrl-0 = <&disp_pwm0_pins>;
--	status = "okay";
--};
--
--&dither0_in {
--	remote-endpoint = <&gamma0_out>;
--};
--
--&dither0_out {
--	remote-endpoint = <&dsi0_in>;
--};
--
--&dmic_codec {
--	wakeup-delay-ms = <200>;
--};
--
--&dsi0 {
--	#address-cells = <1>;
--	#size-cells = <0>;
--	status = "okay";
--
--	panel@0 {
--		compatible = "startek,kd070fhfid078", "himax,hx8279";
--		reg = <0>;
--		backlight = <&backlight_lcm0>;
--		enable-gpios = <&pio 48 GPIO_ACTIVE_HIGH>;
--		reset-gpios = <&pio 108 GPIO_ACTIVE_HIGH>;
--		iovcc-supply = <&lcm0_iovcc>;
--		vdd-supply = <&lcm0_vddp>;
--		pinctrl-names = "default";
--		pinctrl-0 = <&panel_default_pins>;
--
--		port {
--			dsi_panel_in: endpoint {
--				remote-endpoint = <&dsi0_out>;
--			};
--		};
--	};
--
--	ports {
--		#address-cells = <1>;
--		#size-cells = <0>;
--
--		port@0 {
--			reg = <0>;
--			dsi0_in: endpoint {
--				remote-endpoint = <&dither0_out>;
--			};
--		};
--
--		port@1 {
--			reg = <1>;
--			dsi0_out: endpoint {
--				remote-endpoint = <&dsi_panel_in>;
--			};
--		};
--	};
--};
--
--&eth {
--	phy-mode ="rgmii-rxid";
--	phy-handle = <&eth_phy0>;
--	snps,reset-gpio = <&pio 93 GPIO_ACTIVE_HIGH>;
--	snps,reset-delays-us = <0 10000 10000>;
--	mediatek,tx-delay-ps = <2030>;
--	mediatek,mac-wol;
--	pinctrl-names = "default", "sleep";
--	pinctrl-0 = <&eth_default_pins>;
--	pinctrl-1 = <&eth_sleep_pins>;
--	status = "okay";
--
--	mdio {
--		compatible = "snps,dwmac-mdio";
--		#address-cells = <1>;
--		#size-cells = <0>;
--		eth_phy0: ethernet-phy@1 {
--			compatible = "ethernet-phy-id001c.c916";
--			reg = <0x1>;
--		};
--	};
--};
--
--&gamma0_out {
--	remote-endpoint = <&dither0_in>;
--};
--
--&gpu {
--	mali-supply = <&mt6315_7_vbuck1>;
--	status = "okay";
--};
--
--&i2c0 {
--	clock-frequency = <400000>;
--	pinctrl-0 = <&i2c0_pins>;
--	pinctrl-names = "default";
--	status = "okay";
--};
--
--&i2c1 {
--	clock-frequency = <400000>;
--	pinctrl-0 = <&i2c1_pins>;
--	pinctrl-names = "default";
--	status = "okay";
--
--	touchscreen@5d {
--		compatible = "goodix,gt9271";
--		reg = <0x5d>;
--		interrupts-extended = <&pio 132 IRQ_TYPE_EDGE_RISING>;
--		irq-gpios = <&pio 132 GPIO_ACTIVE_HIGH>;
--		reset-gpios = <&pio 133 GPIO_ACTIVE_HIGH>;
--		AVDD28-supply = <&mt6360_ldo1>;
--		pinctrl-names = "default";
--		pinctrl-0 = <&touch_pins>;
--	};
--};
--
--&i2c2 {
--	clock-frequency = <400000>;
--	pinctrl-0 = <&i2c2_pins>;
--	pinctrl-names = "default";
--	status = "okay";
--
--	typec-mux@48 {
--		compatible = "ite,it5205";
--		reg = <0x48>;
--		vcc-supply = <&mt6359_vibr_ldo_reg>;
--		mode-switch;
--		orientation-switch;
--		status = "okay";
--
--		port {
--			it5205_sbu_ep: endpoint {
--				remote-endpoint = <&mt6360_ssusb_sbu_ep>;
--			};
--		};
--	};
--};
--
--&i2c6 {
--	clock-frequency = <400000>;
--	pinctrl-0 = <&i2c6_pins>;
--	pinctrl-names = "default";
--	#address-cells = <1>;
--	#size-cells = <0>;
--	status = "okay";
--
--	mt6360: pmic@34 {
--		compatible = "mediatek,mt6360";
--		reg = <0x34>;
--		interrupt-parent = <&pio>;
--		interrupts = <128 IRQ_TYPE_EDGE_FALLING>;
--		interrupt-names = "IRQB";
--		interrupt-controller;
--		#interrupt-cells = <1>;
--		pinctrl-0 = <&mt6360_pins>;
--
--		charger {
--			compatible = "mediatek,mt6360-chg";
--			richtek,vinovp-microvolt = <14500000>;
--
--			otg_vbus_regulator: usb-otg-vbus-regulator {
--				regulator-name = "usb-otg-vbus";
--				regulator-min-microvolt = <4425000>;
--				regulator-max-microvolt = <5825000>;
--			};
--		};
--
--		regulator {
--			compatible = "mediatek,mt6360-regulator";
--			LDO_VIN3-supply = <&mt6360_buck2>;
--
--			mt6360_buck1: buck1 {
--				regulator-name = "emi_vdd2";
--				regulator-min-microvolt = <300000>;
--				regulator-max-microvolt = <1300000>;
--				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
--							   MT6360_OPMODE_LP
--							   MT6360_OPMODE_ULP>;
--				regulator-always-on;
--			};
--
--			mt6360_buck2: buck2 {
--				regulator-name = "emi_vddq";
--				regulator-min-microvolt = <300000>;
--				regulator-max-microvolt = <1300000>;
--				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
--							   MT6360_OPMODE_LP
--							   MT6360_OPMODE_ULP>;
--				regulator-always-on;
--			};
--
--			mt6360_ldo1: ldo1 {
--				regulator-name = "tp1_p3v0";
--				regulator-min-microvolt = <3300000>;
--				regulator-max-microvolt = <3300000>;
--				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
--							   MT6360_OPMODE_LP>;
--				regulator-always-on;
--			};
--
--			mt6360_ldo2: ldo2 {
--				regulator-name = "panel1_p1v8";
--				regulator-min-microvolt = <1800000>;
--				regulator-max-microvolt = <1800000>;
--				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
--							   MT6360_OPMODE_LP>;
--			};
--
--			mt6360_ldo3: ldo3 {
--				regulator-name = "vmc_pmu";
--				regulator-min-microvolt = <1200000>;
--				regulator-max-microvolt = <3600000>;
--				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
--							   MT6360_OPMODE_LP>;
--			};
--
--			mt6360_ldo5: ldo5 {
--				regulator-name = "vmch_pmu";
--				regulator-min-microvolt = <2700000>;
--				regulator-max-microvolt = <3600000>;
--				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
--							   MT6360_OPMODE_LP>;
--			};
--
--			/* This is a measure point, which name is mt6360_ldo1 on schematic */
--			mt6360_ldo6: ldo6 {
--				regulator-name = "mt6360_ldo1";
--				regulator-min-microvolt = <500000>;
--				regulator-max-microvolt = <2100000>;
--				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
--							   MT6360_OPMODE_LP>;
--			};
--
--			mt6360_ldo7: ldo7 {
--				regulator-name = "emi_vmddr_en";
--				regulator-min-microvolt = <500000>;
--				regulator-max-microvolt = <2100000>;
--				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
--							   MT6360_OPMODE_LP>;
--				regulator-always-on;
--			};
--		};
--
--		tcpc {
--			compatible = "mediatek,mt6360-tcpc";
--			interrupts-extended = <&pio 17 IRQ_TYPE_LEVEL_LOW>;
--			interrupt-names = "PD_IRQB";
--
--			connector {
--				compatible = "usb-c-connector";
--				label = "USB-C";
--				data-role = "dual";
--				op-sink-microwatt = <10000000>;
--				power-role = "dual";
--				try-power-role = "sink";
--
--				source-pdos = <PDO_FIXED(5000, 1000,
--							 PDO_FIXED_DUAL_ROLE |
--							 PDO_FIXED_DATA_SWAP)>;
--				sink-pdos = <PDO_FIXED(5000, 2000,
--						       PDO_FIXED_DUAL_ROLE |
--						       PDO_FIXED_DATA_SWAP)>;
--
--				pd-revision = /bits/ 8 <0x03 0x01 0x01 0x06>;
--
--				altmodes {
--					displayport {
--						svid = /bits/ 16 <0xff01>;
--						vdo = <0x00001c46>;
--					};
--				};
--
--				ports {
--					#address-cells = <1>;
--					#size-cells = <0>;
--
--					port@0 {
--						reg = <0>;
--						typec_con_hs: endpoint {
--							remote-endpoint = <&mtu3_hs0_role_sw>;
--						};
--					};
--
--					port@1 {
--						reg = <1>;
--						typec_con_ss: endpoint {
--							remote-endpoint = <&mtu3_ss0_role_sw>;
--						};
--					};
--
--					port@2 {
--						reg = <2>;
--						mt6360_ssusb_sbu_ep: endpoint {
--							remote-endpoint = <&it5205_sbu_ep>;
--						};
--					};
--				};
--			};
--		};
--	};
--};
--
--&mfg0 {
--	domain-supply = <&mt6315_7_vbuck1>;
--};
--
--&mfg1 {
--	domain-supply = <&mt6359_vsram_others_ldo_reg>;
--};
--
--&mipi_tx0 {
--	status = "okay";
--};
--
--&mmc0 {
--	status = "okay";
--	pinctrl-names = "default", "state_uhs";
--	pinctrl-0 = <&mmc0_default_pins>;
--	pinctrl-1 = <&mmc0_uhs_pins>;
--	bus-width = <8>;
--	max-frequency = <200000000>;
--	cap-mmc-highspeed;
--	mmc-hs200-1_8v;
--	mmc-hs400-1_8v;
--	cap-mmc-hw-reset;
--	no-sdio;
--	no-sd;
--	hs400-ds-delay = <0x14c11>;
--	vmmc-supply = <&mt6359_vemc_1_ldo_reg>;
--	vqmmc-supply = <&mt6359_vufs_ldo_reg>;
--	non-removable;
--};
--
--&mmc1 {
--	pinctrl-names = "default", "state_uhs";
--	pinctrl-0 = <&mmc1_default_pins>;
--	pinctrl-1 = <&mmc1_uhs_pins>;
--	bus-width = <4>;
--	max-frequency = <200000000>;
--	cap-sd-highspeed;
--	sd-uhs-sdr50;
--	sd-uhs-sdr104;
--	no-mmc;
--	no-sdio;
--	vmmc-supply = <&mt6360_ldo5>;
--	vqmmc-supply = <&mt6360_ldo3>;
--	status = "okay";
--	non-removable;
--};
--
--&mt6359_vaud18_ldo_reg {
--	regulator-always-on;
--};
--
--&mt6359_vbbck_ldo_reg {
--	regulator-always-on;
--};
--
--/* For USB Hub */
--&mt6359_vcamio_ldo_reg {
--	regulator-always-on;
--};
--
--&mt6359_vcn33_2_bt_ldo_reg {
--	regulator-min-microvolt = <3300000>;
--	regulator-max-microvolt = <3300000>;
--};
--
--&mt6359_vcore_buck_reg {
--	regulator-always-on;
--};
--
--&mt6359_vgpu11_buck_reg {
--	regulator-always-on;
--};
--
--&mt6359_vpu_buck_reg {
--	regulator-always-on;
--};
--
--&mt6359_vrf12_ldo_reg {
--	regulator-always-on;
--};
--
--/* for GPU SRAM */
--&mt6359_vsram_others_ldo_reg {
--	regulator-min-microvolt = <750000>;
--	regulator-max-microvolt = <750000>;
--};
--
--&mt6359codec {
--	mediatek,mic-type-0 = <1>; /* ACC */
--	mediatek,mic-type-1 = <3>; /* DCC */
--	mediatek,mic-type-2 = <1>; /* ACC */
--};
--
--&ovl0_in {
--	remote-endpoint = <&vdosys0_ep_main>;
--};
--
--&pcie0 {
--	pinctrl-names = "default", "idle";
--	pinctrl-0 = <&pcie0_default_pins>;
--	pinctrl-1 = <&pcie0_idle_pins>;
--	status = "okay";
--};
--
--&pcie1 {
--	pinctrl-names = "default";
--	pinctrl-0 = <&pcie1_default_pins>;
--	status = "disabled";
--};
--
--&pciephy {
--	status = "okay";
--};
--
--&pio {
--	audio_default_pins: audio-default-pins {
--		pins-cmd-dat {
--			pinmux = <PINMUX_GPIO61__FUNC_DMIC1_CLK>,
--				 <PINMUX_GPIO62__FUNC_DMIC1_DAT>,
--				 <PINMUX_GPIO65__FUNC_PCM_DO>,
--				 <PINMUX_GPIO66__FUNC_PCM_CLK>,
--				 <PINMUX_GPIO67__FUNC_PCM_DI>,
--				 <PINMUX_GPIO68__FUNC_PCM_SYNC>,
--				 <PINMUX_GPIO69__FUNC_AUD_CLK_MOSI>,
--				 <PINMUX_GPIO70__FUNC_AUD_SYNC_MOSI>,
--				 <PINMUX_GPIO71__FUNC_AUD_DAT_MOSI0>,
--				 <PINMUX_GPIO72__FUNC_AUD_DAT_MOSI1>,
--				 <PINMUX_GPIO73__FUNC_AUD_DAT_MISO0>,
--				 <PINMUX_GPIO74__FUNC_AUD_DAT_MISO1>,
--				 <PINMUX_GPIO75__FUNC_AUD_DAT_MISO2>;
--		};
--	};
--
--	disp_pwm1_default_pins: disp-pwm1-default-pins {
--		pins1 {
--			pinmux = <PINMUX_GPIO104__FUNC_DISP_PWM1>;
--		};
--	};
--
--	edp_panel_12v_en_pins: edp-panel-12v-en-pins {
--		pins1 {
--			pinmux = <PINMUX_GPIO96__FUNC_GPIO96>;
--			output-high;
--		};
--	};
--
--	edp_panel_3v3_en_pins: edp-panel-3v3-en-pins {
--		pins1 {
--			pinmux = <PINMUX_GPIO6__FUNC_GPIO6>;
--			output-high;
--		};
--	};
--
--	eth_default_pins: eth-default-pins {
--		pins-cc {
--			pinmux = <PINMUX_GPIO85__FUNC_GBE_TXC>,
--				 <PINMUX_GPIO86__FUNC_GBE_RXC>,
--				 <PINMUX_GPIO87__FUNC_GBE_RXDV>,
--				 <PINMUX_GPIO88__FUNC_GBE_TXEN>;
--			drive-strength = <8>;
--		};
--
--		pins-mdio {
--			pinmux = <PINMUX_GPIO89__FUNC_GBE_MDC>,
--				 <PINMUX_GPIO90__FUNC_GBE_MDIO>;
--			input-enable;
--		};
--
--		pins-power {
--			pinmux = <PINMUX_GPIO91__FUNC_GPIO91>,
--				 <PINMUX_GPIO92__FUNC_GPIO92>;
--			output-high;
--		};
--
--		pins-rxd {
--			pinmux = <PINMUX_GPIO81__FUNC_GBE_RXD3>,
--				 <PINMUX_GPIO82__FUNC_GBE_RXD2>,
--				 <PINMUX_GPIO83__FUNC_GBE_RXD1>,
--				 <PINMUX_GPIO84__FUNC_GBE_RXD0>;
--		};
--
--		pins-txd {
--			pinmux = <PINMUX_GPIO77__FUNC_GBE_TXD3>,
--				 <PINMUX_GPIO78__FUNC_GBE_TXD2>,
--				 <PINMUX_GPIO79__FUNC_GBE_TXD1>,
--				 <PINMUX_GPIO80__FUNC_GBE_TXD0>;
--			drive-strength = <8>;
--		};
--	};
--
--	eth_sleep_pins: eth-sleep-pins {
--		pins-cc {
--			pinmux = <PINMUX_GPIO85__FUNC_GPIO85>,
--				 <PINMUX_GPIO86__FUNC_GPIO86>,
--				 <PINMUX_GPIO87__FUNC_GPIO87>,
--				 <PINMUX_GPIO88__FUNC_GPIO88>;
--		};
--
--		pins-mdio {
--			pinmux = <PINMUX_GPIO89__FUNC_GPIO89>,
--				 <PINMUX_GPIO90__FUNC_GPIO90>;
--			input-disable;
--			bias-disable;
--		};
--
--		pins-rxd {
--			pinmux = <PINMUX_GPIO81__FUNC_GPIO81>,
--				 <PINMUX_GPIO82__FUNC_GPIO82>,
--				 <PINMUX_GPIO83__FUNC_GPIO83>,
--				 <PINMUX_GPIO84__FUNC_GPIO84>;
--		};
--
--		pins-txd {
--			pinmux = <PINMUX_GPIO77__FUNC_GPIO77>,
--				 <PINMUX_GPIO78__FUNC_GPIO78>,
--				 <PINMUX_GPIO79__FUNC_GPIO79>,
--				 <PINMUX_GPIO80__FUNC_GPIO80>;
--		};
--	};
--
--	gpio_key_pins: gpio-keys-pins {
--		pins {
--			pinmux = <PINMUX_GPIO106__FUNC_GPIO106>;
--			bias-pull-up;
--			input-enable;
--		};
--	};
--
--	i2c0_pins: i2c0-pins {
--		pins {
--			pinmux = <PINMUX_GPIO8__FUNC_SDA0>,
--				 <PINMUX_GPIO9__FUNC_SCL0>;
--			bias-pull-up = <MTK_PULL_SET_RSEL_111>;
--			drive-strength-microamp = <1000>;
--		};
--	};
--
--	i2c1_pins: i2c1-pins {
--		pins {
--			pinmux = <PINMUX_GPIO10__FUNC_SDA1>,
--				 <PINMUX_GPIO11__FUNC_SCL1>;
--			bias-pull-up = <MTK_PULL_SET_RSEL_111>;
--			drive-strength-microamp = <1000>;
--		};
--	};
--
--	i2c2_pins: i2c2-pins {
--		pins {
--			pinmux = <PINMUX_GPIO12__FUNC_SDA2>,
--				 <PINMUX_GPIO13__FUNC_SCL2>;
--			bias-pull-up = <MTK_PULL_SET_RSEL_111>;
--			drive-strength = <6>;
--		};
--	};
--
--	i2c6_pins: i2c6-pins {
--		pins {
--			pinmux = <PINMUX_GPIO25__FUNC_SDA6>,
--				 <PINMUX_GPIO26__FUNC_SCL6>;
--			bias-pull-up;
--		};
--	};
--
--	mmc0_default_pins: mmc0-default-pins {
--		pins-clk {
--			pinmux = <PINMUX_GPIO122__FUNC_MSDC0_CLK>;
--			drive-strength = <6>;
--			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
--		};
--
--		pins-cmd-dat {
--			pinmux = <PINMUX_GPIO126__FUNC_MSDC0_DAT0>,
--				 <PINMUX_GPIO125__FUNC_MSDC0_DAT1>,
--				 <PINMUX_GPIO124__FUNC_MSDC0_DAT2>,
--				 <PINMUX_GPIO123__FUNC_MSDC0_DAT3>,
--				 <PINMUX_GPIO119__FUNC_MSDC0_DAT4>,
--				 <PINMUX_GPIO118__FUNC_MSDC0_DAT5>,
--				 <PINMUX_GPIO117__FUNC_MSDC0_DAT6>,
--				 <PINMUX_GPIO116__FUNC_MSDC0_DAT7>,
--				 <PINMUX_GPIO121__FUNC_MSDC0_CMD>;
--			input-enable;
--			drive-strength = <6>;
--			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
--		};
--
--		pins-rst {
--			pinmux = <PINMUX_GPIO120__FUNC_MSDC0_RSTB>;
--			drive-strength = <6>;
--			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
--		};
--	};
--
--	mmc0_uhs_pins: mmc0-uhs-pins {
--		pins-clk {
--			pinmux = <PINMUX_GPIO122__FUNC_MSDC0_CLK>;
--			drive-strength = <8>;
--			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
--		};
--
--		pins-cmd-dat {
--			pinmux = <PINMUX_GPIO126__FUNC_MSDC0_DAT0>,
--				 <PINMUX_GPIO125__FUNC_MSDC0_DAT1>,
--				 <PINMUX_GPIO124__FUNC_MSDC0_DAT2>,
--				 <PINMUX_GPIO123__FUNC_MSDC0_DAT3>,
--				 <PINMUX_GPIO119__FUNC_MSDC0_DAT4>,
--				 <PINMUX_GPIO118__FUNC_MSDC0_DAT5>,
--				 <PINMUX_GPIO117__FUNC_MSDC0_DAT6>,
--				 <PINMUX_GPIO116__FUNC_MSDC0_DAT7>,
--				 <PINMUX_GPIO121__FUNC_MSDC0_CMD>;
--			input-enable;
--			drive-strength = <8>;
--			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
--		};
--
--		pins-ds {
--			pinmux = <PINMUX_GPIO127__FUNC_MSDC0_DSL>;
--			drive-strength = <8>;
--			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
--		};
--
--		pins-rst {
--			pinmux = <PINMUX_GPIO120__FUNC_MSDC0_RSTB>;
--			drive-strength = <8>;
--			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
--		};
--	};
--
--	mmc1_default_pins: mmc1-default-pins {
--		pins-clk {
--			pinmux = <PINMUX_GPIO111__FUNC_MSDC1_CLK>;
--			drive-strength = <8>;
--			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
--		};
--
--		pins-cmd-dat {
--			pinmux = <PINMUX_GPIO110__FUNC_MSDC1_CMD>,
--				 <PINMUX_GPIO112__FUNC_MSDC1_DAT0>,
--				 <PINMUX_GPIO113__FUNC_MSDC1_DAT1>,
--				 <PINMUX_GPIO114__FUNC_MSDC1_DAT2>,
--				 <PINMUX_GPIO115__FUNC_MSDC1_DAT3>;
--			input-enable;
--			drive-strength = <8>;
--			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
--		};
--	};
--
--	mmc1_uhs_pins: mmc1-uhs-pins {
--		pins-clk {
--			pinmux = <PINMUX_GPIO111__FUNC_MSDC1_CLK>;
--			drive-strength = <8>;
--			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
--		};
--
--		pins-cmd-dat {
--			pinmux = <PINMUX_GPIO110__FUNC_MSDC1_CMD>,
--				 <PINMUX_GPIO112__FUNC_MSDC1_DAT0>,
--				 <PINMUX_GPIO113__FUNC_MSDC1_DAT1>,
--				 <PINMUX_GPIO114__FUNC_MSDC1_DAT2>,
--				 <PINMUX_GPIO115__FUNC_MSDC1_DAT3>;
--			input-enable;
--			drive-strength = <8>;
--			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
--		};
--	};
--
--	mt6360_pins: mt6360-pins {
--		pins {
--			pinmux = <PINMUX_GPIO17__FUNC_GPIO17>,
--				 <PINMUX_GPIO128__FUNC_GPIO128>;
--			input-enable;
--			bias-pull-up;
--		};
--	};
--
--	dsi0_vreg_en_pins: dsi0-vreg-en-pins {
--		pins-pwr-en {
--			pinmux = <PINMUX_GPIO47__FUNC_GPIO47>;
--			output-low;
--		};
--	};
--
--	panel_default_pins: panel-default-pins {
--		pins-rst {
--			pinmux = <PINMUX_GPIO108__FUNC_GPIO108>;
--			output-high;
--		};
--
--		pins-en {
--			pinmux = <PINMUX_GPIO48__FUNC_GPIO48>;
--			output-low;
--		};
--	};
--
--	pcie0_default_pins: pcie0-default-pins {
--		pins {
--			pinmux = <PINMUX_GPIO19__FUNC_WAKEN>,
--				 <PINMUX_GPIO20__FUNC_PERSTN>,
--				 <PINMUX_GPIO21__FUNC_CLKREQN>;
--			bias-pull-up;
--		};
--	};
--
--	pcie0_idle_pins: pcie0-idle-pins {
--		pins {
--			pinmux = <PINMUX_GPIO20__FUNC_GPIO20>;
--			bias-disable;
--			output-low;
--		};
--	};
--
--	pcie1_default_pins: pcie1-default-pins {
--		pins {
--			pinmux = <PINMUX_GPIO22__FUNC_PERSTN_1>,
--				 <PINMUX_GPIO23__FUNC_CLKREQN_1>,
--				 <PINMUX_GPIO24__FUNC_WAKEN_1>;
--			bias-pull-up;
--		};
--	};
--
--	disp_pwm0_pins: disp-pwm0-pins {
--		pins-disp-pwm {
--			pinmux = <PINMUX_GPIO97__FUNC_DISP_PWM0>;
--		};
--	};
--
--	spi1_pins: spi1-pins {
--		pins {
--			pinmux = <PINMUX_GPIO136__FUNC_SPIM1_CSB>,
--				 <PINMUX_GPIO137__FUNC_SPIM1_CLK>,
--				 <PINMUX_GPIO138__FUNC_SPIM1_MO>,
--				 <PINMUX_GPIO139__FUNC_SPIM1_MI>;
--			bias-disable;
--		};
--	};
--
--	spi2_pins: spi-pins {
--		pins {
--			pinmux = <PINMUX_GPIO140__FUNC_SPIM2_CSB>,
--				 <PINMUX_GPIO141__FUNC_SPIM2_CLK>,
--				 <PINMUX_GPIO142__FUNC_SPIM2_MO>,
--				 <PINMUX_GPIO143__FUNC_SPIM2_MI>;
--			bias-disable;
--		};
--	};
--
--	touch_pins: touch-pins {
--		pins-irq {
--			pinmux = <PINMUX_GPIO132__FUNC_GPIO132>;
--			input-enable;
--			bias-disable;
--		};
--
--		pins-reset {
--			pinmux = <PINMUX_GPIO133__FUNC_GPIO133>;
--			output-high;
--		};
--	};
--
--	u3_p0_vbus: u3-p0-vbus-default-pins {
--		pins-vbus {
--			pinmux = <PINMUX_GPIO63__FUNC_VBUSVALID>;
--			input-enable;
--		};
--	};
--
--	uart0_pins: uart0-pins {
--		pins {
--			pinmux = <PINMUX_GPIO98__FUNC_UTXD0>,
--				 <PINMUX_GPIO99__FUNC_URXD0>;
--		};
--	};
--
--	uart1_pins: uart1-pins {
--		pins {
--			pinmux = <PINMUX_GPIO100__FUNC_URTS1>,
--				 <PINMUX_GPIO101__FUNC_UCTS1>,
--				 <PINMUX_GPIO102__FUNC_UTXD1>,
--				 <PINMUX_GPIO103__FUNC_URXD1>;
--		};
--	};
--};
--
--&pmic {
--	interrupts-extended = <&pio 222 IRQ_TYPE_LEVEL_HIGH>;
--
--	mt6359keys: keys {
--		compatible = "mediatek,mt6359-keys";
--		mediatek,long-press-mode = <1>;
--		power-off-time-sec = <0>;
--
--		power-key {
--			linux,keycodes = <KEY_POWER>;
--			wakeup-source;
--		};
--
--		home {
--			linux,keycodes = <KEY_HOME>;
--		};
--	};
--};
--
--&scp {
--	memory-region = <&scp_mem>;
--	firmware-name = "mediatek/mt8195/scp.img";
--	status = "okay";
--};
--
--&sound {
--	compatible = "mediatek,mt8195_mt6359";
--	model = "mt8395-evk";
--	pinctrl-names = "default";
--	pinctrl-0 = <&audio_default_pins>;
--	audio-routing =
--		"Headphone", "Headphone L",
--		"Headphone", "Headphone R";
--	mediatek,adsp = <&adsp>;
--	status = "okay";
--
--	headphone-dai-link {
--		link-name = "DL_SRC_BE";
--
--		codec {
--			sound-dai = <&pmic 0>;
--		};
--	};
--};
--
--&spi1 {
--	pinctrl-0 = <&spi1_pins>;
--	pinctrl-names = "default";
--	mediatek,pad-select = <0>;
--	#address-cells = <1>;
--	#size-cells = <0>;
--	status = "okay";
--	cs-gpios = <&pio 64 GPIO_ACTIVE_LOW>;
--
--	can0: can@0 {
--		compatible = "microchip,mcp2518fd";
--		reg = <0>;
--		clocks = <&can_clk>;
--		spi-max-frequency = <20000000>;
--		interrupts-extended = <&pio 16 IRQ_TYPE_LEVEL_LOW>;
--		vdd-supply = <&mt6359_vcn33_2_bt_ldo_reg>;
--		xceiver-supply = <&mt6359_vcn33_2_bt_ldo_reg>;
--	};
--};
--
--&spi2 {
--	pinctrl-0 = <&spi2_pins>;
--	pinctrl-names = "default";
--	mediatek,pad-select = <0>;
--	#address-cells = <1>;
--	#size-cells = <0>;
--	status = "okay";
--};
--
--&spmi {
--	#address-cells = <2>;
--	#size-cells = <0>;
--
--	mt6315_6: pmic@6 {
--		compatible = "mediatek,mt6315-regulator";
--		reg = <0x6 SPMI_USID>;
--
--		regulators {
--			mt6315_6_vbuck1: vbuck1 {
--				regulator-name = "Vbcpu";
--				regulator-min-microvolt = <300000>;
--				regulator-max-microvolt = <1193750>;
--				regulator-enable-ramp-delay = <256>;
--				regulator-allowed-modes = <0 1 2>;
--				regulator-always-on;
--			};
--		};
--	};
--
--	mt6315_7: pmic@7 {
--		compatible = "mediatek,mt6315-regulator";
--		reg = <0x7 SPMI_USID>;
--
--		regulators {
--			mt6315_7_vbuck1: vbuck1 {
--				regulator-name = "Vgpu";
--				regulator-min-microvolt = <546000>;
--				regulator-max-microvolt = <787000>;
--				regulator-enable-ramp-delay = <256>;
--				regulator-allowed-modes = <0 1 2>;
--			};
--		};
--	};
--};
--
--&u3phy0 {
--	status = "okay";
--};
--
--&u3phy1 {
--	status = "okay";
--
--	u3port1: usb-phy@700 {
--		mediatek,force-mode;
--	};
--};
--
--&u3phy2 {
--	status = "okay";
--};
--
--&u3phy3 {
--	status = "okay";
--};
--
--&uart0 {
--	pinctrl-0 = <&uart0_pins>;
--	pinctrl-names = "default";
--	status = "okay";
--};
--
--&uart1 {
--	pinctrl-0 = <&uart1_pins>;
--	pinctrl-names = "default";
--	status = "okay";
--};
--
--&ufsphy {
--	status = "disabled";
--};
--
--&ssusb0 {
--	dr_mode = "otg";
--	pinctrl-names = "default";
--	pinctrl-0 = <&u3_p0_vbus>;
--	usb-role-switch;
--	vusb33-supply = <&mt6359_vusb_ldo_reg>;
--	status = "okay";
--
--	ports {
--		#address-cells = <1>;
--		#size-cells = <0>;
--
--		port@0 {
--			reg = <0>;
--			mtu3_hs0_role_sw: endpoint {
--				remote-endpoint = <&typec_con_hs>;
--			};
--		};
--
--		port@1 {
--			reg = <1>;
--			mtu3_ss0_role_sw: endpoint {
--				remote-endpoint = <&typec_con_ss>;
--			};
--		};
--	};
--};
--
--&ssusb2 {
--	vusb33-supply = <&mt6359_vusb_ldo_reg>;
--	status = "okay";
--};
--
--&ssusb3 {
--	vusb33-supply = <&mt6359_vusb_ldo_reg>;
--	status = "okay";
--};
--
--&vdosys0 {
--	port {
--		#address-cells = <1>;
--		#size-cells = <0>;
--
--		vdosys0_ep_main: endpoint@0 {
--			reg = <0>;
--			remote-endpoint = <&ovl0_in>;
--		};
--	};
--};
--
--&xhci0 {
--	status = "okay";
--};
--
--&xhci1 {
--	vusb33-supply = <&mt6359_vusb_ldo_reg>;
--	status = "okay";
--};
--
--&xhci2 {
--	status = "okay";
--};
--
--&xhci3 {
--	status = "okay";
- };
-diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts b/arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi
-similarity index 99%
-copy from arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-copy to arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi
-index cf8cd37f5708..3b679626e8a1 100644
---- a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi
-@@ -17,10 +17,6 @@
- #include <dt-bindings/usb/pd.h>
- 
- / {
--	model = "MediaTek Genio 1200 EVK-P1V2-EMMC";
--	compatible = "mediatek,mt8395-evk", "mediatek,mt8395",
--		     "mediatek,mt8195";
--
- 	aliases {
- 		serial0 = &uart0;
- 		ethernet0 = &eth;
--- 
-2.45.2
+Cheers,
+Lance
 
+>
+> Also, I wonder how KSM and the shared zeropage works in general with
+> that, because I would expect similar issues when we de-duplicate memory?
+>
+> --
+> Cheers
+>
+> David / dhildenb
+>
+>
 
