@@ -4,175 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AC32CAC5A0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Sep 2025 12:35:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAB5CCAC59A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Sep 2025 14:02:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9fPOqRrWErRNXgx9jQhyKu8CTHDnoT1HNO+bn6HbkYs=; b=NiFHZLFM3eIrui3ZVj9OLgzi/4
-	OcGcPu2daMjkqkZ8G4taDUjxJF57z1z7MmTkwBVpnlNy729p/OLIfvv1G5zepZ5XQeVlBWxwX+9Jz
-	ul42wShiD0vgWE4f3P01Y4u+PjS0WSs80bXktAIx1z1IPirAo0SX5AL8yHyxG9/2wfKfYAgP7IXvh
-	O9QiSTM+gC7ThofSXI1QD9Ef41FAfx3DWz15eItUoG8LX1QGLWVsRFeVYp5kqliDHYv+B8ijs6xfc
-	cq255M8d1uWPrlNjCSSiD1BOkEC/cErolaYpP3wPg7UfaWlQpFaUqcGSlYRAnU2FHquQpvDY4f3tf
-	MQiKonnQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=D+h5guwEJBXYPr6x/4BoU3yk32WsocIYZRObOc2SD7E=; b=euOM7aLvb6dC+LniQ8qeX0JfF+
+	dTDo4ULMpcUA8asWMaff76MqMmLFEddQ5KO8RuhVWcPYo2INBpKaSb14/3tRWaDKWDgL6sP6YEMUX
+	5c8mu+pimASC7SxxwiKe+D6ITBBTANKjDXnPrlvf8EPixx5/zNQnksLZFqHlOewwE6vromaLF5twS
+	uQ47LaOs3Xw1ChVBAopFZHAeMgDOJD9FX7wlNqkXc6ZSGEPSLNUoiB7f4+jz9iPBr0HjB5jxZzgoF
+	VVMPv9R/rpoxSzR1supiyaiWOb6IQcyAlxTDkCy4xXj9Mkleirm/lgZq0Vw9hjqsKXsQ+tIrH8gAk
+	EzO4vQhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzDrY-0000000HQ3T-3wG0;
-	Thu, 18 Sep 2025 12:35:48 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1uzFD2-000000001WG-3LWG;
+	Thu, 18 Sep 2025 14:02:04 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzDrV-0000000HQ1g-0Fje
-	for linux-mediatek@lists.infradead.org;
-	Thu, 18 Sep 2025 12:35:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1758198944;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=9fPOqRrWErRNXgx9jQhyKu8CTHDnoT1HNO+bn6HbkYs=;
-	b=XwMTNc+vVky7TBeaTnTPHwf1HoUoudpGKeWnotJca6qsnOg9vdJuZXWU9JZFO85oNbFIdN
-	KAL1IqD2KHgWZRMuuEgNo5PGuVwOPXbT0foiBPgeJtxKKSTo7vRkzlx8urTH+JFsPGrUrj
-	u0Wr3Qq0yIjnz0ho4AdHfEVmutoWm54=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-646-FMQ86DDVN8KNrgfZ7Qby8A-1; Thu, 18 Sep 2025 08:35:43 -0400
-X-MC-Unique: FMQ86DDVN8KNrgfZ7Qby8A-1
-X-Mimecast-MFC-AGG-ID: FMQ86DDVN8KNrgfZ7Qby8A_1758198942
-Received: by mail-wr1-f69.google.com with SMTP id ffacd0b85a97d-3df07c967e9so430913f8f.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 18 Sep 2025 05:35:42 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1758198941; x=1758803741;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=9fPOqRrWErRNXgx9jQhyKu8CTHDnoT1HNO+bn6HbkYs=;
-        b=Vy5By+QAWKQh3mgdnSv88/aaMHPnNEOPWePFree+77qjgja9H58diz0VIUG4vXz/sk
-         rVK80md8Lds+jxCYP6+s2hR/Ecgk/4EWOzPk7J4dGrJTkb9n1suyErVy2nS+5PgRHMKC
-         BgZTVCjW/JF2UijIpke2+TrRuTS1TB9/hn+zV/XLakXM1Sx/IJv02nmqaxYDZVnRmbAu
-         bGXWAulb4LlmThCPludEM53fUJ1mKXsconfSxpqZ+MAflb2tNU3B6Eh8TbJZquEnO8XY
-         exfbq+/iUuOBBqpR+Zqj3IKRurTo7S7sVV1YGoDoZ1NPX/w/PngRyzjZ/ueFiMXxVUc9
-         8/EQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXYvBkmaqBHW6dThCSqe52FU/bieSSrr98h0+4GTIjFoUnrw+y1nuBtz9SkBdYXsOSJaxnwXjr8TIexrofO0w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzIO1H3kGF1bxv7E0xhF52GZ5I4FVQfV01A/RdS/7i0aDIjFL43
-	eAjiolGv0TS/r3q6IzKiRN7pRc3Rcqe+f3tQQtCnGFYu/UHtuZhUgnqjb4Prh+YbQosSlsOz4OC
-	fEn8iutl+elA4HKRGn6oi9orMh8bAlvbpPSf3r6RPaBLiv9xmVSBbaIui8yrjcRiXohpHT660CQ
-	==
-X-Gm-Gg: ASbGncsHYOgRZqofggBUEL7ngXphgeTPl8Ayti6WIy2CvB+alDayOL+4kZUq4BkM+b3
-	G37SIzkV6UuSZ1tfoXCw9iQtiTU6GWjq6ItCmxvnIhc0BIFoLGkckGxdxlzMfCtkNzNxFREk1kZ
-	AHD7CbNZDEXMBdw/7PZTEZQyyMFsZoAUU6EZjvzKURUDfz5oLH7EHKpAipl6EyhMiKmTOmhR9Ki
-	He1G9Vj9zApgIm6Qy30rkNJnzgmPyJi6qDbXg21F3ruhPb+zw5tC0DXPJuirq9UK6CuHATIQ2CN
-	BdJQQDV+5k0lGeG1mjVu56ARuXkjpe2GDr3zQ4akwwubHYxRZAS6UrIJFSvoXHkWXaQPTC9F0X2
-	Kxkz+1RWA5u7wcoNsuwXWHvF1y4o1PxrABkvfKbb1HlrIO2bkFO0RciJuX9b/aLe/h/Lq
-X-Received: by 2002:a05:600c:138f:b0:45b:9291:320d with SMTP id 5b1f17b1804b1-462074c5377mr59066205e9.31.1758198941466;
-        Thu, 18 Sep 2025 05:35:41 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGPaI9QmkViVyBCCFVaWi7mKUCW0KTXwDLc6aLw2Gmcx8zAIrUoT+gxaEdwZUyOavJWTU9zQg==
-X-Received: by 2002:a05:600c:138f:b0:45b:9291:320d with SMTP id 5b1f17b1804b1-462074c5377mr59065725e9.31.1758198940873;
-        Thu, 18 Sep 2025 05:35:40 -0700 (PDT)
-Received: from ?IPV6:2003:d8:2f07:dd00:ca9c:199e:d2b6:9099? (p200300d82f07dd00ca9c199ed2b69099.dip0.t-ipconnect.de. [2003:d8:2f07:dd00:ca9c:199e:d2b6:9099])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-464f64ad1b0sm46011235e9.21.2025.09.18.05.35.38
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 18 Sep 2025 05:35:39 -0700 (PDT)
-Message-ID: <ebedc478-7519-4e30-854e-f6616a7647b0@redhat.com>
-Date: Thu, 18 Sep 2025 14:35:32 +0200
+	id 1uzFCz-000000001V1-32ZU;
+	Thu, 18 Sep 2025 14:02:03 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1758204103; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=nYwqjkuaJd7z0MOkUp0DgfN53CXjxJ8VD6pq4qgAghNfmvnA3vgnX5pK17ASOg1fr82DmoBQiEwzoIcEOU0kMcH/IXTOc3x4mOmsA1BE4UWokJ5VwMw3JbW0UIGi57KnolqmBLNbrQF08F9nxwd01FMcbj6E2CAqV15MVEGLk+s=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1758204103; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=D+h5guwEJBXYPr6x/4BoU3yk32WsocIYZRObOc2SD7E=; 
+	b=Cu5B0fFQGxjhlexh70bmK9sj0JsAbY8IHD9Sn6ukiIq6IIBUQ85Y7OgndtebASrN5nnDV54v8AUXQIN3AwUH8rQQhSs12nsRNRvVSOr+hsO/WCgXWFyUGK+tUKLwuoRVNCCi35FZC0QANVXWBuJVQoja3ApO8EM2o7hXGv3cCVM=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1758204103;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=D+h5guwEJBXYPr6x/4BoU3yk32WsocIYZRObOc2SD7E=;
+	b=hAogMFSPwKq/tEvbgDxEAdbZWwp+FACMmjl1d2HM2d9ucBx6Nct3HTBzQRdCcPX3
+	Q14+J4hiqYfWRQ+3mZzqx1+2bVa9ts2cpR1a2MFl28notvkZLDxQ8Zk3A2H/iVa1V7j
+	vMYYWOob+ruYusn+fJBEnGV4TP2+rk+mU3Mntpco=
+Received: by mx.zohomail.com with SMTPS id 1758204100007491.1116048037495;
+	Thu, 18 Sep 2025 07:01:40 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ Chanwoo Choi <cw00.choi@samsung.com>, Jassi Brar <jassisinghbrar@gmail.com>,
+ Kees Cook <kees@kernel.org>, "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ Chia-I Wu <olvaffe@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>,
+ kernel@collabora.com, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-pm@vger.kernel.org, linux-hardening@vger.kernel.org
+Subject: Re: [PATCH v3 01/10] dt-bindings: gpu: mali-valhall-csf: add
+ mediatek,mt8196-mali variant
+Date: Thu, 18 Sep 2025 16:01:31 +0200
+Message-ID: <5749727.31r3eYUQgx@workhorse>
+In-Reply-To: <20250918-festive-chowchow-of-joy-5a51de@kuoka>
+References: <20250917-mt8196-gpufreq-v3-0-c4ede4b4399e@collabora.com>
+ <20250917-mt8196-gpufreq-v3-1-c4ede4b4399e@collabora.com>
+ <20250918-festive-chowchow-of-joy-5a51de@kuoka>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 2/6] mm: remap unused subpages to shared zeropage when
- splitting isolated thp
-To: Lance Yang <lance.yang@linux.dev>
-Cc: =?UTF-8?B?UXVuLXdlaSBMaW4gKOael+e+pOW0tCk=?= <Qun-wei.Lin@mediatek.com>,
- "catalin.marinas@arm.com" <catalin.marinas@arm.com>,
- "usamaarif642@gmail.com" <usamaarif642@gmail.com>,
- "linux-mm@kvack.org" <linux-mm@kvack.org>,
- "yuzhao@google.com" <yuzhao@google.com>,
- "akpm@linux-foundation.org" <akpm@linux-foundation.org>,
- "corbet@lwn.net" <corbet@lwn.net>,
- =?UTF-8?B?QW5kcmV3IFlhbmcgKOaliuaZuuW8tyk=?= <Andrew.Yang@mediatek.com>,
- "npache@redhat.com" <npache@redhat.com>, "rppt@kernel.org"
- <rppt@kernel.org>, "willy@infradead.org" <willy@infradead.org>,
- "kernel-team@meta.com" <kernel-team@meta.com>,
- "roman.gushchin@linux.dev" <roman.gushchin@linux.dev>,
- "hannes@cmpxchg.org" <hannes@cmpxchg.org>,
- "cerasuolodomenico@gmail.com" <cerasuolodomenico@gmail.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "ryncsn@gmail.com" <ryncsn@gmail.com>, "surenb@google.com"
- <surenb@google.com>, "riel@surriel.com" <riel@surriel.com>,
- "shakeel.butt@linux.dev" <shakeel.butt@linux.dev>,
- =?UTF-8?B?Q2hpbndlbiBDaGFuZyAo5by16Yym5paHKQ==?=
- <chinwen.chang@mediatek.com>,
- "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
- =?UTF-8?B?Q2FzcGVyIExpICjmnY7kuK3mpq4p?= <casper.li@mediatek.com>,
- "ryan.roberts@arm.com" <ryan.roberts@arm.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "baohua@kernel.org" <baohua@kernel.org>,
- "kaleshsingh@google.com" <kaleshsingh@google.com>,
- "zhais@google.com" <zhais@google.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-References: <20240830100438.3623486-1-usamaarif642@gmail.com>
- <20240830100438.3623486-3-usamaarif642@gmail.com>
- <a7944523fcc3634607691c35311a5d59d1a3f8d4.camel@mediatek.com>
- <434c092b-0f19-47bf-a5fa-ea5b4b36c35e@redhat.com>
- <CABzRoyYWQMFTGYgfC7N=cWMnL_+5Y05=jrMhFjBf1aKOGxzq5g@mail.gmail.com>
-From: David Hildenbrand <david@redhat.com>
-Autocrypt: addr=david@redhat.com; keydata=
- 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
- qIws/H2t
-In-Reply-To: <CABzRoyYWQMFTGYgfC7N=cWMnL_+5Y05=jrMhFjBf1aKOGxzq5g@mail.gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 33VFE0oYynNwy2wIRb99wFfOgQhZx3Pp1C4Tm6kP6zk_1758198942
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="utf-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250918_053545_250301_FF6DFC95 
-X-CRM114-Status: GOOD (  14.73  )
+X-CRM114-CacheID: sfid-20250918_070201_822121_3BFF542B 
+X-CRM114-Status: GOOD (  26.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -187,323 +94,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 18.09.25 14:22, Lance Yang wrote:
-> On Thu, Sep 18, 2025 at 5:21 PM David Hildenbrand <david@redhat.com> wrote:
->>
->> On 18.09.25 10:53, Qun-wei Lin (林群崴) wrote:
->>> On Fri, 2024-08-30 at 11:03 +0100, Usama Arif wrote:
->>>> From: Yu Zhao <yuzhao@google.com>
->>>>
->>>> Here being unused means containing only zeros and inaccessible to
->>>> userspace. When splitting an isolated thp under reclaim or migration,
->>>> the unused subpages can be mapped to the shared zeropage, hence
->>>> saving
->>>> memory. This is particularly helpful when the internal
->>>> fragmentation of a thp is high, i.e. it has many untouched subpages.
->>>>
->>>> This is also a prerequisite for THP low utilization shrinker which
->>>> will
->>>> be introduced in later patches, where underutilized THPs are split,
->>>> and
->>>> the zero-filled pages are freed saving memory.
->>>>
->>>> Signed-off-by: Yu Zhao <yuzhao@google.com>
->>>> Tested-by: Shuang Zhai <zhais@google.com>
->>>> Signed-off-by: Usama Arif <usamaarif642@gmail.com>
->>>> ---
->>>>    include/linux/rmap.h |  7 ++++-
->>>>    mm/huge_memory.c     |  8 ++---
->>>>    mm/migrate.c         | 72 ++++++++++++++++++++++++++++++++++++++----
->>>> --
->>>>    mm/migrate_device.c  |  4 +--
->>>>    4 files changed, 75 insertions(+), 16 deletions(-)
->>>>
->>>> diff --git a/include/linux/rmap.h b/include/linux/rmap.h
->>>> index 91b5935e8485..d5e93e44322e 100644
->>>> --- a/include/linux/rmap.h
->>>> +++ b/include/linux/rmap.h
->>>> @@ -745,7 +745,12 @@ int folio_mkclean(struct folio *);
->>>>    int pfn_mkclean_range(unsigned long pfn, unsigned long nr_pages,
->>>> pgoff_t pgoff,
->>>>                     struct vm_area_struct *vma);
->>>>
->>>> -void remove_migration_ptes(struct folio *src, struct folio *dst,
->>>> bool locked);
->>>> +enum rmp_flags {
->>>> +    RMP_LOCKED              = 1 << 0,
->>>> +    RMP_USE_SHARED_ZEROPAGE = 1 << 1,
->>>> +};
->>>> +
->>>> +void remove_migration_ptes(struct folio *src, struct folio *dst, int
->>>> flags);
->>>>
->>>>    /*
->>>>     * rmap_walk_control: To control rmap traversing for specific needs
->>>> diff --git a/mm/huge_memory.c b/mm/huge_memory.c
->>>> index 0c48806ccb9a..af60684e7c70 100644
->>>> --- a/mm/huge_memory.c
->>>> +++ b/mm/huge_memory.c
->>>> @@ -3020,7 +3020,7 @@ bool unmap_huge_pmd_locked(struct
->>>> vm_area_struct *vma, unsigned long addr,
->>>>       return false;
->>>>    }
->>>>
->>>> -static void remap_page(struct folio *folio, unsigned long nr)
->>>> +static void remap_page(struct folio *folio, unsigned long nr, int
->>>> flags)
->>>>    {
->>>>       int i = 0;
->>>>
->>>> @@ -3028,7 +3028,7 @@ static void remap_page(struct folio *folio,
->>>> unsigned long nr)
->>>>       if (!folio_test_anon(folio))
->>>>               return;
->>>>       for (;;) {
->>>> -            remove_migration_ptes(folio, folio, true);
->>>> +            remove_migration_ptes(folio, folio, RMP_LOCKED |
->>>> flags);
->>>>               i += folio_nr_pages(folio);
->>>>               if (i >= nr)
->>>>                       break;
->>>> @@ -3240,7 +3240,7 @@ static void __split_huge_page(struct page
->>>> *page, struct list_head *list,
->>>>
->>>>       if (nr_dropped)
->>>>               shmem_uncharge(folio->mapping->host, nr_dropped);
->>>> -    remap_page(folio, nr);
->>>> +    remap_page(folio, nr, PageAnon(head) ?
->>>> RMP_USE_SHARED_ZEROPAGE : 0);
->>>>
->>>>       /*
->>>>        * set page to its compound_head when split to non order-0
->>>> pages, so
->>>> @@ -3542,7 +3542,7 @@ int split_huge_page_to_list_to_order(struct
->>>> page *page, struct list_head *list,
->>>>               if (mapping)
->>>>                       xas_unlock(&xas);
->>>>               local_irq_enable();
->>>> -            remap_page(folio, folio_nr_pages(folio));
->>>> +            remap_page(folio, folio_nr_pages(folio), 0);
->>>>               ret = -EAGAIN;
->>>>       }
->>>>
->>>> diff --git a/mm/migrate.c b/mm/migrate.c
->>>> index 6f9c62c746be..d039863e014b 100644
->>>> --- a/mm/migrate.c
->>>> +++ b/mm/migrate.c
->>>> @@ -204,13 +204,57 @@ bool isolate_folio_to_list(struct folio *folio,
->>>> struct list_head *list)
->>>>       return true;
->>>>    }
->>>>
->>>> +static bool try_to_map_unused_to_zeropage(struct
->>>> page_vma_mapped_walk *pvmw,
->>>> +                                      struct folio *folio,
->>>> +                                      unsigned long idx)
->>>> +{
->>>> +    struct page *page = folio_page(folio, idx);
->>>> +    bool contains_data;
->>>> +    pte_t newpte;
->>>> +    void *addr;
->>>> +
->>>> +    VM_BUG_ON_PAGE(PageCompound(page), page);
->>>> +    VM_BUG_ON_PAGE(!PageAnon(page), page);
->>>> +    VM_BUG_ON_PAGE(!PageLocked(page), page);
->>>> +    VM_BUG_ON_PAGE(pte_present(*pvmw->pte), page);
->>>> +
->>>> +    if (folio_test_mlocked(folio) || (pvmw->vma->vm_flags &
->>>> VM_LOCKED) ||
->>>> +        mm_forbids_zeropage(pvmw->vma->vm_mm))
->>>> +            return false;
->>>> +
->>>> +    /*
->>>> +     * The pmd entry mapping the old thp was flushed and the pte
->>>> mapping
->>>> +     * this subpage has been non present. If the subpage is only
->>>> zero-filled
->>>> +     * then map it to the shared zeropage.
->>>> +     */
->>>> +    addr = kmap_local_page(page);
->>>> +    contains_data = memchr_inv(addr, 0, PAGE_SIZE);
->>>> +    kunmap_local(addr);
->>>> +
->>>> +    if (contains_data)
->>>> +            return false;
->>>> +
->>>> +    newpte = pte_mkspecial(pfn_pte(my_zero_pfn(pvmw->address),
->>>> +                                    pvmw->vma->vm_page_prot));
->>>> +    set_pte_at(pvmw->vma->vm_mm, pvmw->address, pvmw->pte,
->>>> newpte);
->>>> +
->>>> +    dec_mm_counter(pvmw->vma->vm_mm, mm_counter(folio));
->>>> +    return true;
->>>> +}
->>>> +
->>>> +struct rmap_walk_arg {
->>>> +    struct folio *folio;
->>>> +    bool map_unused_to_zeropage;
->>>> +};
->>>> +
->>>>    /*
->>>>     * Restore a potential migration pte to a working pte entry
->>>>     */
->>>>    static bool remove_migration_pte(struct folio *folio,
->>>> -            struct vm_area_struct *vma, unsigned long addr, void
->>>> *old)
->>>> +            struct vm_area_struct *vma, unsigned long addr, void
->>>> *arg)
->>>>    {
->>>> -    DEFINE_FOLIO_VMA_WALK(pvmw, old, vma, addr, PVMW_SYNC |
->>>> PVMW_MIGRATION);
->>>> +    struct rmap_walk_arg *rmap_walk_arg = arg;
->>>> +    DEFINE_FOLIO_VMA_WALK(pvmw, rmap_walk_arg->folio, vma, addr,
->>>> PVMW_SYNC | PVMW_MIGRATION);
->>>>
->>>>       while (page_vma_mapped_walk(&pvmw)) {
->>>>               rmap_t rmap_flags = RMAP_NONE;
->>>> @@ -234,6 +278,9 @@ static bool remove_migration_pte(struct folio
->>>> *folio,
->>>>                       continue;
->>>>               }
->>>>    #endif
->>>> +            if (rmap_walk_arg->map_unused_to_zeropage &&
->>>> +                try_to_map_unused_to_zeropage(&pvmw, folio,
->>>> idx))
->>>> +                    continue;
->>>>
->>>>               folio_get(folio);
->>>>               pte = mk_pte(new, READ_ONCE(vma->vm_page_prot));
->>>> @@ -312,14 +359,21 @@ static bool remove_migration_pte(struct folio
->>>> *folio,
->>>>     * Get rid of all migration entries and replace them by
->>>>     * references to the indicated page.
->>>>     */
->>>> -void remove_migration_ptes(struct folio *src, struct folio *dst,
->>>> bool locked)
->>>> +void remove_migration_ptes(struct folio *src, struct folio *dst, int
->>>> flags)
->>>>    {
->>>> +    struct rmap_walk_arg rmap_walk_arg = {
->>>> +            .folio = src,
->>>> +            .map_unused_to_zeropage = flags &
->>>> RMP_USE_SHARED_ZEROPAGE,
->>>> +    };
->>>> +
->>>>       struct rmap_walk_control rwc = {
->>>>               .rmap_one = remove_migration_pte,
->>>> -            .arg = src,
->>>> +            .arg = &rmap_walk_arg,
->>>>       };
->>>>
->>>> -    if (locked)
->>>> +    VM_BUG_ON_FOLIO((flags & RMP_USE_SHARED_ZEROPAGE) && (src !=
->>>> dst), src);
->>>> +
->>>> +    if (flags & RMP_LOCKED)
->>>>               rmap_walk_locked(dst, &rwc);
->>>>       else
->>>>               rmap_walk(dst, &rwc);
->>>> @@ -934,7 +988,7 @@ static int writeout(struct address_space
->>>> *mapping, struct folio *folio)
->>>>        * At this point we know that the migration attempt cannot
->>>>        * be successful.
->>>>        */
->>>> -    remove_migration_ptes(folio, folio, false);
->>>> +    remove_migration_ptes(folio, folio, 0);
->>>>
->>>>       rc = mapping->a_ops->writepage(&folio->page, &wbc);
->>>>
->>>> @@ -1098,7 +1152,7 @@ static void migrate_folio_undo_src(struct folio
->>>> *src,
->>>>                                  struct list_head *ret)
->>>>    {
->>>>       if (page_was_mapped)
->>>> -            remove_migration_ptes(src, src, false);
->>>> +            remove_migration_ptes(src, src, 0);
->>>>       /* Drop an anon_vma reference if we took one */
->>>>       if (anon_vma)
->>>>               put_anon_vma(anon_vma);
->>>> @@ -1336,7 +1390,7 @@ static int migrate_folio_move(free_folio_t
->>>> put_new_folio, unsigned long private,
->>>>               lru_add_drain();
->>>>
->>>>       if (old_page_state & PAGE_WAS_MAPPED)
->>>> -            remove_migration_ptes(src, dst, false);
->>>> +            remove_migration_ptes(src, dst, 0);
->>>>
->>>>    out_unlock_both:
->>>>       folio_unlock(dst);
->>>> @@ -1474,7 +1528,7 @@ static int unmap_and_move_huge_page(new_folio_t
->>>> get_new_folio,
->>>>
->>>>       if (page_was_mapped)
->>>>               remove_migration_ptes(src,
->>>> -                    rc == MIGRATEPAGE_SUCCESS ? dst : src,
->>>> false);
->>>> +                    rc == MIGRATEPAGE_SUCCESS ? dst : src, 0);
->>>>
->>>>    unlock_put_anon:
->>>>       folio_unlock(dst);
->>>> diff --git a/mm/migrate_device.c b/mm/migrate_device.c
->>>> index 8d687de88a03..9cf26592ac93 100644
->>>> --- a/mm/migrate_device.c
->>>> +++ b/mm/migrate_device.c
->>>> @@ -424,7 +424,7 @@ static unsigned long
->>>> migrate_device_unmap(unsigned long *src_pfns,
->>>>                       continue;
->>>>
->>>>               folio = page_folio(page);
->>>> -            remove_migration_ptes(folio, folio, false);
->>>> +            remove_migration_ptes(folio, folio, 0);
->>>>
->>>>               src_pfns[i] = 0;
->>>>               folio_unlock(folio);
->>>> @@ -840,7 +840,7 @@ void migrate_device_finalize(unsigned long
->>>> *src_pfns,
->>>>                       dst = src;
->>>>               }
->>>>
->>>> -            remove_migration_ptes(src, dst, false);
->>>> +            remove_migration_ptes(src, dst, 0);
->>>>               folio_unlock(src);
->>>>
->>>>               if (folio_is_zone_device(src))
->>>
->>> Hi,
->>>
->>> This patch has been in the mainline for some time, but we recently
->>> discovered an issue when both mTHP and MTE (Memory Tagging Extension)
->>> are enabled.
->>>
->>> It seems that remapping to the same zeropage might causes MTE tag
->>> mismatches, since MTE tags are associated with physical addresses.
->>
->> Does this only trigger when the VMA has mte enabled? Maybe we'll have to
->> bail out if we detect that mte is enabled.
+On Thursday, 18 September 2025 02:30:09 Central European Summer Time Krzysztof Kozlowski wrote:
+> On Wed, Sep 17, 2025 at 02:22:32PM +0200, Nicolas Frattaroli wrote:
+> > The Mali-based GPU on the MediaTek MT8196 SoC uses a separate MCU to
+> > control the power and frequency of the GPU.
+> > 
+> > It lets us omit the OPP tables from the device tree, as those can now be
+> > enumerated at runtime from the MCU. It also means the mali GPU node
+> > described in this binding does not have any clocks in this case, as all
+> > clock control is delegated to the MCU.
+> > 
+> > Add the mediatek,mt8196-mali compatible, and a performance-domains
+> > property which points to the MCU's device tree node in this case. It's
+> > required on mt8196 devices.
+> > 
+> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> > ---
+> >  .../bindings/gpu/arm,mali-valhall-csf.yaml         | 32 ++++++++++++++++++++--
+> >  1 file changed, 30 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml
+> > index 7ad5a3ffc5f5c753322eda9e74cc65de89d11c73..ccab2dd0ea852187e3ab75923e19739622b2b3b8 100644
+> > --- a/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml
+> > +++ b/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml
+> > @@ -38,7 +38,6 @@ properties:
+> >        - const: gpu
+> >  
+> >    clocks:
+> > -    minItems: 1
 > 
-> It seems RISC-V also has a similar feature (RISCV_ISA_SUPM) that uses
-> the same prctl(PR_{GET,SET}_TAGGED_ADDR_CTRL) API.
+> I don't understand why.
 > 
-> config RISCV_ISA_SUPM
->          bool "Supm extension for userspace pointer masking"
->          depends on 64BIT
->          default y
->          help
->            Add support for pointer masking in userspace (Supm) when the
->            underlying hardware extension (Smnpm or Ssnpm) is detected at boot.
+> Best regards,
+> Krzysztof
 > 
->            If this option is disabled, userspace will be unable to use
->            the prctl(PR_{SET,GET}_TAGGED_ADDR_CTRL) API.
 > 
-> I wonder if we should disable the THP shrinker for such architectures that
 
-I think where possible we really only want to identify problematic 
-(tagged) pages and skip them. And we should either look into fixing KSM 
-as well or finding out why KSM is not affected.
+I am executing a Convex hull algorithm on the 3D space of "dt-bindings
+maintainer opinions" to get a convex hull of acceptable dt-bindings
+choices where two different choices are functionally equivalent.
 
--- 
-Cheers
+With this additional opinion on the krzk axis, I now know that having
+the base properties accurate for the general case is not required if
+the per-compatible case sets the property to false anyway.
 
-David / dhildenb
+I hope no two opinions are collinear, as this would surely be my
+undoing.
+
+You get to pick which axis (X, Y, Z) you are. Right-hand rule, of
+course.
+
+Kind regards,
+Nicolas Frattaroli
+
 
 
