@@ -4,69 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA8F0CAC59A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Sep 2025 14:37:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1C92CA1013
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Sep 2025 15:00:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bMRXJ2DHsf49+ksodME+HxUJ2EZ72gQAXeb1aT9DBGw=; b=k7eKbrGTCOHdTTXnwpveSXdOX1
-	66vzi+n6h9NfFpzXPOZMYkGDIqlZuspKKW3QL5vo/fD4rCfm4iVIKZPiFRdDmuiM2fBoE2056j6rx
-	11Qthn/ro8pPdeeRPA1kJVLLaTlWSYckAxRNyXAu4zlohvpDAtQkHxIbBAldbXrB7VbjOFqhprtQf
-	D+lAz3D9lgrngbCFjgZfpz2hmYrGFXnnEUaJDc7IZ0UhPjf/yYzhvJkUWejTFzWa4EwGjgMLdLSo1
-	Qoxr8O7vcjUMtPyLlP3G3YP6oXxU/T/b3exYJnZrrVYa7XsTajl+H2AX9Lk31N8n2Sz3mJcVIdpkm
-	S3M1pIRA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hdr4uOOnB6Ld6MexssnR/sbhGEPg6ZLHZNx1sBzmouI=; b=OUzivxT/tfdrXDNksesmS1m3Ip
+	O14MHtSTbcQsPT4qbixHDnOHxzrqONDwrfJk5HhPif7j2qIY1YhajMh5ImQo7xZpSTrju3tq46atN
+	ieW64rx9oGkLPxvj4bDpyErfD5bQ5pOLfZ5E/U8IET5ZzI3gLxdTpSYF6iKpPc1sVnPJot/ntWPTb
+	wXLGBP3ozlITOd8t6J7FGVLkrYoKv+fZ80yxxfe2iH+5S2y5jW1h0j0rgO5m6kcTCgwtRVd8B21L0
+	UqwjptJmDIFbfsTYV6cnwQnHItrtP7EPoUtdspsxhtfqosJKSOLlf3BFSodk/FAPaE57yiUbXlige
+	AZ2vJqYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzFlQ-00000000AlY-1IUJ;
-	Thu, 18 Sep 2025 14:37:36 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uzG7q-00000000FVf-3kus;
+	Thu, 18 Sep 2025 15:00:46 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzFlN-00000000Ajs-1jiQ;
-	Thu, 18 Sep 2025 14:37:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1758206251;
-	bh=4hr9rb0pYa4kk0rjOBPob6luIbfpKkRsa9dhKhkV/gg=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=YCXsqEshUU3oC8vSADi0fwGu7/Qk89HQVbpwmQdk0UYTC4ezWdlIW7ygx8Rj4jDZw
-	 /QZMUXuIILEsTyIlC8a74n715k5infeKOhzHwOQEuKQgqSPCmTBZf8ug/X9VhdJ1oL
-	 bTgYV7iXzLRZeg8OgSTblUbiRkRdZk8mAQaJJg2iiwAofn6Bl/+GJMrkdGybUibqSe
-	 uwEU0e06NgcZQWtgk+XfIV+gG5r+Bf4BX2Y65PCvPQpsppuU7ArjCYUB2AICnGdQ1R
-	 krpaRKeV3CqVIwYk1S/D/okrEBDbl2hajRho8jeAfz8KP0xn1aYBaK5Q2XRAJxyI7P
-	 3GQFLD6IsO7/A==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C65D917E12C4;
-	Thu, 18 Sep 2025 16:37:30 +0200 (CEST)
-Message-ID: <71f50716-2f8b-432b-970c-9436fa181856@collabora.com>
-Date: Thu, 18 Sep 2025 16:37:30 +0200
+	id 1uzG7o-00000000FV8-1jgu;
+	Thu, 18 Sep 2025 15:00:45 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 9FE4743903;
+	Thu, 18 Sep 2025 15:00:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B7478C4CEE7;
+	Thu, 18 Sep 2025 15:00:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1758207643;
+	bh=UQJx9wcC3Y5/RVnetstb3CtyPqehRBaZAkfGjE1g9q0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=QnoPnP/woT7o9942piukwLLP+g/cYYfsmmqlQvljTgFvEBJ2vX9RsDBKgRRTyBOww
+	 5XCy7Lryd3KlSPKFYnhhT9s7aPrmBrYX5MM/F/MbIceaFUx8oi4ssesUgt9E02WzKq
+	 5WWKXz9PK8PGMmqNfvKx50rthdgA9ETgeeOalqhdkMnzfAz7YettyFAcZm4sGIGbMQ
+	 1L7YGT/6zCZEh7ypxAtEeHVnMgYAjAUfN/PEO2wRgEGMzg7DIh3ex0CfYs04HoJ5Z/
+	 b5zbON5cfzZC4TsUr3IBuDbqXOEeRFFcPNhxTB9Ql8QYk4KDnA0uSxr1oBbDHNsQEX
+	 uXtL1c5wX7tUA==
+Date: Thu, 18 Sep 2025 16:00:39 +0100
+From: Simon Horman <horms@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net-next] net: airoha: Fix PPE_IP_PROTO_CHK register
+ definitions
+Message-ID: <20250918150039.GW394836@horms.kernel.org>
+References: <20250918-ppe_ip_proto_chk_ipv4_mask-fix-v1-1-df36da1b954c@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] ASoC: mediatek: mt8365: Add check for devm_kcalloc() in
- mt8365_afe_suspend()
-To: Guangshuo Li <lgs201920130244@gmail.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Charles Keepax <ckeepax@opensource.cirrus.com>,
- Alexandre Mergnat <amergnat@baylibre.com>, linux-sound@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Cc: stable@vger.kernel.org
-References: <20250918140758.3583830-1-lgs201920130244@gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250918140758.3583830-1-lgs201920130244@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250918-ppe_ip_proto_chk_ipv4_mask-fix-v1-1-df36da1b954c@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250918_073733_610532_1F0EB894 
-X-CRM114-Status: GOOD (  17.06  )
+X-CRM114-CacheID: sfid-20250918_080044_469942_27C6157D 
+X-CRM114-Status: UNSURE (   8.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,53 +76,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 18/09/25 16:07, Guangshuo Li ha scritto:
-> devm_kcalloc() may fail. mt8365_afe_suspend() uses afe->reg_back_up
-> unconditionally after allocation and writes afe->reg_back_up[i], which
-> can lead to a NULL pointer dereference under low-memory conditions.
+On Thu, Sep 18, 2025 at 08:59:41AM +0200, Lorenzo Bianconi wrote:
+> Fix typo in PPE_IP_PROTO_CHK_IPV4_MASK and PPE_IP_PROTO_CHK_IPV6_MASK
+> register mask definitions. This is not a real problem since this
+> register is not actually used in the current codebase.
 > 
-> Add a NULL check and bail out with -ENOMEM, making sure to disable the
-> main clock via the existing error path to keep clock state balanced.
-> 
-> Fixes: e1991d102bc2 ("ASoC: mediatek: mt8365: Add the AFE driver support")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
-> ---
->   sound/soc/mediatek/mt8365/mt8365-afe-pcm.c | 18 +++++++++++-------
->   1 file changed, 11 insertions(+), 7 deletions(-)
-> 
-> diff --git a/sound/soc/mediatek/mt8365/mt8365-afe-pcm.c b/sound/soc/mediatek/mt8365/mt8365-afe-pcm.c
-> index 10793bbe9275..9f398d1249ce 100644
-> --- a/sound/soc/mediatek/mt8365/mt8365-afe-pcm.c
-> +++ b/sound/soc/mediatek/mt8365/mt8365-afe-pcm.c
-> @@ -1971,22 +1971,26 @@ static int mt8365_afe_suspend(struct device *dev)
->   {
->   	struct mtk_base_afe *afe = dev_get_drvdata(dev);
->   	struct regmap *regmap = afe->regmap;
-> -	int i;
-> +	int i, ret = 0;
->   
->   	mt8365_afe_enable_main_clk(afe);
->   
-> -	if (!afe->reg_back_up)
-> -		afe->reg_back_up =
-> -			devm_kcalloc(dev, afe->reg_back_up_list_num,
-> -				     sizeof(unsigned int), GFP_KERNEL);
-> +	if (!afe->reg_back_up) {
-> +		afe->reg_back_up = devm_kcalloc(dev, afe->reg_back_up_list_num,
-> +						sizeof(unsigned int), GFP_KERNEL);
+> Fixes: 00a7678310fe3 ("net: airoha: Introduce flowtable offload support")
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-Nothing else can fail, so using a label here is unnecessary.
-
-		if (!afe->reg_back_up) {
-			mt8365_afe_disable_main_clk(afe);
-			return -ENOMEM;
-		}
-
-This makes you able to avoid adding a `ret` variable, and also the goto.
-
-Cheers,
-Angelo
-
+Reviewed-by: Simon Horman <horms@kernel.org>
 
 
