@@ -4,61 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFBDDCA1013
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Sep 2025 17:05:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AD73CA1013
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Sep 2025 18:28:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bSfxh01A/9V8x+NQkrY16SwleAtQ6jhTOYLO4I06Grk=; b=3iltwBK+ehPe+SPJZ6AFhtCwiJ
-	a1rxijCuJz9KbCRWeZR4s4IifKrCr52QochK8oyhHhiCpcy+xv+OujZTSh4ZIaKn5EE+E6tXp0wQv
-	F8X3lr8L5+ZbEqX5kAhpeXnIHd3PPoYkcKzRxbJoE/1cXZQo6bEFjCmgj+k0fwGw7dmc2uKWZ4H2Y
-	W5vc1R7sIx/O1CFWNVv75wFKBgYCFBPlAPVABPuwWirZtbEBgSN3Zxjm2DFodz/mp17+m6m1tRTWA
-	y9dlddy0YIrh0TdQUGP/DlmhACPlqdT8ItwuHe0AgkvMybwvjzX4O22PdO8TLWBXpU4eJZVwcbKiv
-	c2Usy4pg==;
+	bh=iwswQpmRWGLt+ejDK+SWw07BlgHgpmGx67rytuETAxw=; b=dxfHpO/3zOXMvhlZN8qHtBTCj9
+	NxRElBvp1oHnoXixJQVTYxLLg8jGEF3oksuQKqJSqMzf6qku9+acPM42AVczOafzBDkPj+QmveK8U
+	G4iTnk/yksx1KOFIIk7GCeN3Z95twW7WWoSGDOCGdXSbJKSD9e5P65JHZZxm+GMvC3DP0Hi3pROhn
+	s0qqSU8bGojxgj23Mr4BctYThi5P1WVN0EgBlvKOPjC/J2Jzvbnclpq39Cs3PAWlL9s09xcRljSlO
+	a/Q3JDPTsp+DnJ7AECypPFqY00ujvFPcASdIdVAVWjDcWNzE/KcKEvy2JAD+Xdpv0aFm6iD0WTC5d
+	WVVKA3Jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzI47-00000000iXJ-0eXU;
-	Thu, 18 Sep 2025 17:05:03 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uzJMZ-00000000rp4-3Bh9;
+	Thu, 18 Sep 2025 18:28:11 +0000
+Received: from 003.mia.mailroute.net ([199.89.3.6])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzI46-00000000iX6-15n2;
-	Thu, 18 Sep 2025 17:05:02 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 8150060211;
-	Thu, 18 Sep 2025 17:05:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7B169C4CEE7;
-	Thu, 18 Sep 2025 17:04:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1758215101;
-	bh=a2wSSef3Du0dV802ZRWP0K1ebOZ2r80wa7XHm8uoFPY=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=diFY3vQavuiQRrhCNAu6iUYXj9I8H1JqETJeI/Akb9ajERj6Q65o/UpnlZsGB9rkF
-	 xcNbC1fXK1H9DtyoaQ8IlQah+TGK4dZJdBJ2SvU7Osr28nWZCyENuaODL9w3Dx3Q5a
-	 V1rPRNb67TiuJVEDDyxpFseFt8hrRtj5q+XiGsclBScvr3aHrS1w+egXswXLNwA5AI
-	 E7egT7+kNPmFotZGXGVuGLWJ4jCg/U3OCgS/FyGFsFhaMUm7N4xXRstHy9LRuaS3Bt
-	 sr2NkAIXGwo7VqkKOe2jeUVAJiW+amPjJqtmkfnqLX70CdkmuI+Y/em8M+pQrR1pme
-	 dgjuxyXaA1ITw==
-From: Mark Brown <broonie@kernel.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Tim Kuo <Tim.Kuo@mediatek.com>
-Cc: linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Steven Liu <Steven.Liu@mediatek.com>, 
- Sky Huang <Skylake.Huang@mediatek.com>
-In-Reply-To: <20250917055839.500615-1-Tim.Kuo@mediatek.com>
-References: <20250917055839.500615-1-Tim.Kuo@mediatek.com>
-Subject: Re: [PATCH v2] spi: mt65xx: add dual and quad mode for standard
- spi device
-Message-Id: <175821509922.138184.639016042104046849.b4-ty@kernel.org>
-Date: Thu, 18 Sep 2025 18:04:59 +0100
+	id 1uzJMX-00000000rof-2uGg
+	for linux-mediatek@lists.infradead.org;
+	Thu, 18 Sep 2025 18:28:10 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 003.mia.mailroute.net (Postfix) with ESMTP id 4cSPJm0p28zlsxDv;
+	Thu, 18 Sep 2025 18:28:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1758220085; x=1760812086; bh=iwswQpmRWGLt+ejDK+SWw07B
+	lgHgpmGx67rytuETAxw=; b=DUJE/h4VJ6WPGLjuIzQagHpEeZl4XJ1XRayzpZnN
+	txDg4OSk+onPQEBWAJv72a4U5UmLHbdOnKsHT2LKCoHWriVQjOGAKKmSLO7KWsxq
+	QH0EIVJl/7DttGETJRbmIzUKxAW+vJtLIFSUkjblGMgt02mDSEFNybbgkOmrtYI8
+	38FxGSuRtTm78IUdHhSMGmKXmxdy4Fr3Swcpg495MVflYE2vQFDSeb6K8KDKl8sc
+	iO9YXGZpsSoE4wne+WWJhcuq8bwR9zZ1cxZUoNC9hiSQa00cxngN1K+ryhpkoA6j
+	dZ/L8wguNtNZjuzbWc5eMPjMlUCtKLMU1OFvaekOa8KQ5w==
+X-Virus-Scanned: by MailRoute
+Received: from 003.mia.mailroute.net ([127.0.0.1])
+ by localhost (003.mia [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id WBI0XP9FFmBY; Thu, 18 Sep 2025 18:28:05 +0000 (UTC)
+Received: from [100.66.154.22] (unknown [104.135.204.82])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bvanassche@acm.org)
+	by 003.mia.mailroute.net (Postfix) with ESMTPSA id 4cSPJR5prpzltPtc;
+	Thu, 18 Sep 2025 18:27:50 +0000 (UTC)
+Message-ID: <80a31144-852f-4df5-802e-a8c5d04a298a@acm.org>
+Date: Thu, 18 Sep 2025 11:27:49 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 01/10] ufs: host: mediatek: Fix runtime suspend error
+ deadlock
+To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
+ martin.petersen@oracle.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, jiajie.hao@mediatek.com,
+ yi-fan.peng@mediatek.com, qilin.tan@mediatek.com, lin.gui@mediatek.com,
+ tun-yu.yu@mediatek.com, eddie.huang@mediatek.com, naomi.chu@mediatek.com,
+ ed.tsai@mediatek.com
+References: <20250918104000.208856-1-peter.wang@mediatek.com>
+ <20250918104000.208856-2-peter.wang@mediatek.com>
+Content-Language: en-US
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20250918104000.208856-2-peter.wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.15-dev-56183
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250918_112809_845149_132693AF 
+X-CRM114-Status: GOOD (  17.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,42 +90,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 17 Sep 2025 13:58:39 +0800, Tim Kuo wrote:
-> Mediatek SPI hardware natively supports dual and quad modes, and these
-> modes are already enabled for SPI flash devices under spi-mem framework
-> in MTK SPI controller spi-mt65xx. However, other SPI devices, such as
-> touch panels, are limited to single mode because spi-mt65xx lacks SPI
-> mode argument parsing from SPI framework for these SPI devices outside
-> spi-mem framework.
-> 
-> [...]
+On 9/18/25 3:36 AM, peter.wang@mediatek.com wrote:
+> Fix the deadlock issue during runtime suspend by checking
+> the error handler's progress. If the error handler is active,
+> break the runtime suspend process by returning -EAGAIN.
+> This approach prevents potential deadlocks when acquiring
+> runtime PM and enhances system stability.
 
-Applied to
+"enhances system stability" sounds like marketing language to me. Please
+provide a root-cause analysis and also explain why this change is only
+required for the MediaTek driver and not for any other UFS host drivers.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+> diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
+> index 758a393a9de1..b1797386668c 100644
+> --- a/drivers/ufs/host/ufs-mediatek.c
+> +++ b/drivers/ufs/host/ufs-mediatek.c
+> @@ -1746,9 +1746,15 @@ static int ufs_mtk_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op,
+>   	struct arm_smccc_res res;
+>   
+>   	if (status == PRE_CHANGE) {
+> -		if (ufshcd_is_auto_hibern8_supported(hba))
+> -			return ufs_mtk_auto_hibern8_disable(hba);
+> -		return 0;
+> +		if (!ufshcd_is_auto_hibern8_supported(hba))
+> +			return 0;
+> +		err = ufs_mtk_auto_hibern8_disable(hba);
+> +
+> +		/* May trigger EH work without exiting hibern8 error */
+> +		if (ufshcd_eh_in_progress(hba))
+> +			return -EAGAIN;
+> +		else
+> +			return err;
+>   	}
+>   
+>   	if (ufshcd_is_link_hibern8(hba)) {
 
-Thanks!
+How can ufs_mtk_suspend() be called while the error handler is in
+progress? ufshcd_err_handler() disables RPM before it sets the
+UFSHCD_EH_IN_PROGRESS flag.
 
-[1/1] spi: mt65xx: add dual and quad mode for standard spi device
-      commit: ab63e9910d2d3ea4b8e6c08812258a676defcb9c
+> diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
+> index ea0021f067c9..45e2ca65de90 100644
+> --- a/include/ufs/ufshcd.h
+> +++ b/include/ufs/ufshcd.h
+> @@ -97,6 +97,11 @@ enum uic_link_state {
+>   	UIC_LINK_BROKEN_STATE	= 3, /* Link is in broken state */
+>   };
+>   
+> +/* UFSHCD error handling flags */
+> +enum {
+> +	UFSHCD_EH_IN_PROGRESS = (1 << 0),
+> +};
+> +
+>   #define ufshcd_is_link_off(hba) ((hba)->uic_link_state == UIC_LINK_OFF_STATE)
+>   #define ufshcd_is_link_active(hba) ((hba)->uic_link_state == \
+>   				    UIC_LINK_ACTIVE_STATE)
+> @@ -129,6 +134,13 @@ enum uic_link_state {
+>   #define ufshcd_is_ufs_dev_deepsleep(h) \
+>   	((h)->curr_dev_pwr_mode == UFS_DEEPSLEEP_PWR_MODE)
+>   
+> +#define ufshcd_set_eh_in_progress(h) \
+> +	((h)->eh_flags |= UFSHCD_EH_IN_PROGRESS)
+> +#define ufshcd_eh_in_progress(h) \
+> +	((h)->eh_flags & UFSHCD_EH_IN_PROGRESS)
+> +#define ufshcd_clear_eh_in_progress(h) \
+> +	((h)->eh_flags &= ~UFSHCD_EH_IN_PROGRESS)
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+The UFSHCD_EH_IN_PROGRESS definition and also the
+ufshcd_set_eh_in_progress() and ufshcd_clear_eh_in_progress()
+definitions must remain in the UFS core private code. Please do not move
+these definitions into the include/ufs/ufshcd.h header file.
 
 Thanks,
-Mark
 
+Bart.
 
