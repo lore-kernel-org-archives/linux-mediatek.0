@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17BDACAC5AA
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 011E6CAC5AE
 	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Sep 2025 10:40:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,30 +12,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=toU0P22Jm/x0Gj0jIhwkoxtEoQOm15Pmx+DS4gZemx8=; b=KmxQeJtT14nXf1YrDx3YjO1kOA
-	AWYabzRJiO0tQC6InfcbB69UtsTcijDdKspE9oDRN84iaEg51U3KtNLUbLfYy5oYEWMiT+a14jJIZ
-	EoFQ7yGYcJ+tdpfDRDQScOAYcSBJJbLE23Ss5/TPilzx4Gu8hr+MZoyiN2hx61fl7e8vqDDDc5qAC
-	VAzlmARe18SK8SIdw/uAoFgX8qykOTYX8v+vQL9LutEYpoCkvaxQvFzXpWGHYWoCXywbA+QrlROa5
-	v6o8mUyO8BLzapiziR8IhIFRN4VUZVElCtp0Uhb3kXckdfd2H4/eZ4W7S56zcjD6KhHU/5emraBK3
-	KqBzP0Yg==;
+	bh=ndr++jp+26DFR/R5ApsAQ+s693GcWtCYReKXOnDLZQM=; b=hhjzSxtUKSytZnUNXAR46LYK/V
+	8Mz+wzx0ISIFRF44DOEadUW8EJMmIe6BBniCHo8nKn4HX64IOReTMOQD4dHYQcAvgYZ+NWE8MLnD+
+	+wGGGBdKt7agg1hiT3qEPcwp9uHjs2QDLlZdMhP0Fw+Fxvky/EawVUYxrsqGMcs/H+wkH7Y7ZTqFh
+	YbhVDNTlaEjBmeafb/3fHi45h4vsqGZP4aujAzVvdFvcWHN5jTiTVAGi62HYNuPzxT2zaQRFmlt9H
+	BOhXtYkBYwSJj3WxTAosW4qraOSQR4ozIHgRD4x+rqJDmFiWl47R4HBo7fDK735qW+jGtaMXlWQhG
+	gtXjtTtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzC3l-0000000H78t-0xaF;
-	Thu, 18 Sep 2025 10:40:17 +0000
+	id 1uzC3m-0000000H7AC-0C0y;
+	Thu, 18 Sep 2025 10:40:18 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzC3h-0000000H70g-1lGs
+	id 1uzC3i-0000000H75s-1PCW
 	for linux-mediatek@lists.infradead.org;
-	Thu, 18 Sep 2025 10:40:14 +0000
-X-UUID: d940e6e8947b11f09f706fa2197c6ceb-20250918
+	Thu, 18 Sep 2025 10:40:15 +0000
+X-UUID: da517ad4947b11f09f706fa2197c6ceb-20250918
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=toU0P22Jm/x0Gj0jIhwkoxtEoQOm15Pmx+DS4gZemx8=;
-	b=EEFmXq6G0IdzlczDtDEjTNm2KIwUVj1jaH64eAQT3+cKrNZg8GC8ETAXJ2zQUwy3UL7sZqUJjsUkCmMmhhRHa54zUYSMhXp1ibEr+rxNKTYYwx3OhP47+OGzi9qov32+eoPhs2miYuGuoT0E7kwIZYYBs5KxZaYTDbPcmSi4kIE=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ndr++jp+26DFR/R5ApsAQ+s693GcWtCYReKXOnDLZQM=;
+	b=lFUrvZNqscQypiiCJPuxWrFrJ8uU8C102qTdtexMrDgIuHnRKUkxYnZeGuga9tWnlnGFph4C8HAyxdFPUrNZif91PmnqDBxJkV6QUKeQmO8nYgaFat6m9B2A9X6SufYx4GxoinXN5Pnnh2JLoRZ8N1/XIs1Bv/g8o7BCQgHNBlU=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.4,REQID:6d109292-eb49-4abc-aa32-c1cefaa9756b,IP:0,UR
-	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-25
-X-CID-META: VersionHash:1ca6b93,CLOUDID:65c170f8-ebfe-43c9-88c9-80cb93f22ca4,B
+X-CID-O-INFO: VERSION:1.3.4,REQID:762a6014-2b99-47b9-bfc9-922f61e08476,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:1ca6b93,CLOUDID:64c170f8-ebfe-43c9-88c9-80cb93f22ca4,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
 	0|15|50,EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,
 	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -43,11 +43,11 @@ X-CID-BVR: 3,DMD|SSN|SDN
 X-CID-BAS: 3,DMD|SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: d940e6e8947b11f09f706fa2197c6ceb-20250918
+X-UUID: da517ad4947b11f09f706fa2197c6ceb-20250918
 Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
 	(envelope-from <peter.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 866559373; Thu, 18 Sep 2025 03:40:09 -0700
+	with ESMTP id 808409367; Thu, 18 Sep 2025 03:40:11 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
  MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
@@ -64,9 +64,9 @@ CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
 	<yi-fan.peng@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
 	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
 	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>, <bvanassche@acm.org>
-Subject: [PATCH v1 07/10] ufs: host: mediatek: Fix shutdown/suspend race condition
-Date: Thu, 18 Sep 2025 18:36:17 +0800
-Message-ID: <20250918104000.208856-8-peter.wang@mediatek.com>
+Subject: [PATCH v1 10/10] ufs: host: mediatek: Support new feature for MT6991
+Date: Thu, 18 Sep 2025 18:36:20 +0800
+Message-ID: <20250918104000.208856-11-peter.wang@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20250918104000.208856-1-peter.wang@mediatek.com>
 References: <20250918104000.208856-1-peter.wang@mediatek.com>
@@ -75,8 +75,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250918_034013_465396_C5081ED1 
-X-CRM114-Status: GOOD (  12.10  )
+X-CRM114-CacheID: sfid-20250918_034014_386651_1E978141 
+X-CRM114-Status: GOOD (  10.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,69 +91,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Wang <peter.wang@mediatek.com>
+From: Naomi Chu <naomi.chu@mediatek.com>
 
-Address a race condition between shutdown and suspend
-operations in the UFS Mediatek driver. Before entering
-suspend, check if a shutdown is in progress to prevent
-conflicts and ensure system stability.
+Add support for the MT6991 platform by enabling MRTT settings
+and random performance improvements. These enhancements aim
+to optimize performance and efficiency on the MT6991 hardware.
+
+Enable multi-Round Trip Time (MRTT) for improved data handling.
+Enable random performance improvement features to boost
+overall system responsiveness.
 
 Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+Signed-off-by: Naomi Chu <naomi.chu@mediatek.com>
+Reviewed-by: Peter Wang <peter.wang@mediatek.com>
 ---
- drivers/ufs/core/ufshcd-priv.h  | 5 -----
  drivers/ufs/host/ufs-mediatek.c | 6 ++++++
- include/ufs/ufshcd.h            | 5 +++++
- 3 files changed, 11 insertions(+), 5 deletions(-)
+ drivers/ufs/host/ufs-mediatek.h | 3 +++
+ 2 files changed, 9 insertions(+)
 
-diff --git a/drivers/ufs/core/ufshcd-priv.h b/drivers/ufs/core/ufshcd-priv.h
-index d0a2c963a27d..3ab50ece5abf 100644
---- a/drivers/ufs/core/ufshcd-priv.h
-+++ b/drivers/ufs/core/ufshcd-priv.h
-@@ -6,11 +6,6 @@
- #include <linux/pm_runtime.h>
- #include <ufs/ufshcd.h>
- 
--static inline bool ufshcd_is_user_access_allowed(struct ufs_hba *hba)
--{
--	return !hba->shutting_down;
--}
--
- void ufshcd_schedule_eh_work(struct ufs_hba *hba);
- 
- static inline bool ufshcd_keep_autobkops_enabled_except_suspend(
 diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index 18ce985970f3..c56c85b55ba4 100644
+index 0cc372e0ac75..f62f08cdfcbc 100644
 --- a/drivers/ufs/host/ufs-mediatek.c
 +++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -2433,6 +2433,12 @@ static int ufs_mtk_system_suspend(struct device *dev)
- 	struct arm_smccc_res res;
- 	int ret;
+@@ -289,6 +289,12 @@ static int ufs_mtk_hce_enable_notify(struct ufs_hba *hba,
+ 				0x453000, REG_UFS_MMIO_OPT_CTRL_0);
+ 		}
  
-+	/* Check if shutting down */
-+	if (!ufshcd_is_user_access_allowed(hba)) {
-+		ret = -EBUSY;
-+		goto out;
-+	}
-+
- 	ret = ufshcd_system_suspend(dev);
- 	if (ret)
- 		goto out;
-diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-index 109cbb36c02d..7df475ebd06d 100644
---- a/include/ufs/ufshcd.h
-+++ b/include/ufs/ufshcd.h
-@@ -1436,6 +1436,11 @@ static inline int ufshcd_disable_host_tx_lcc(struct ufs_hba *hba)
- 	return ufshcd_dme_set(hba, UIC_ARG_MIB(PA_LOCAL_TX_LCC_ENABLE), 0);
- }
++		if (host->ip_ver >= IP_VER_MT6991_A0) {
++			/* Enable multi-rtt */
++			ufshcd_rmwl(hba, MRTT_EN, MRTT_EN, REG_UFS_MMIO_OPT_CTRL_0);
++			/* Enable random performance improvement */
++			ufshcd_rmwl(hba, RDN_PFM_IMPV_DIS, 0, REG_UFS_MMIO_OPT_CTRL_0);
++		}
+ 	}
  
-+static inline bool ufshcd_is_user_access_allowed(struct ufs_hba *hba)
-+{
-+	return !hba->shutting_down;
-+}
-+
- void ufshcd_auto_hibern8_update(struct ufs_hba *hba, u32 ahit);
- void ufshcd_fixup_dev_quirks(struct ufs_hba *hba,
- 			     const struct ufs_dev_quirk *fixups);
+ 	return 0;
+diff --git a/drivers/ufs/host/ufs-mediatek.h b/drivers/ufs/host/ufs-mediatek.h
+index 32687dd12527..db9f21ef481c 100644
+--- a/drivers/ufs/host/ufs-mediatek.h
++++ b/drivers/ufs/host/ufs-mediatek.h
+@@ -23,6 +23,9 @@
+ #define MCQ_MULTI_INTR_EN       BIT(2)
+ #define MCQ_CMB_INTR_EN         BIT(3)
+ #define MCQ_AH8                 BIT(4)
++#define MON_EN                  BIT(5)
++#define MRTT_EN                 BIT(25)
++#define RDN_PFM_IMPV_DIS        BIT(28)
+ 
+ #define MCQ_INTR_EN_MSK         (MCQ_MULTI_INTR_EN | MCQ_CMB_INTR_EN)
+ 
 -- 
 2.45.2
 
