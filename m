@@ -4,83 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B35F0CAC59F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Sep 2025 00:45:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDE8CCAC597
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Sep 2025 07:00:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cIQLYp/OHA3Nxqr2cofyCtvzhHUN2c6iuEuWJCGj1Kc=; b=C50XmF1MqGoPaLk9qcVpZNbcgG
-	A1hfiNANIdMF2BNr7AZ5WCCKDJIw+Gtx8c6kus8wqDwGGglLCgS7axb9+pUqIBNnvHj9r/glxGgQL
-	/a4a7wWx7gh3GhPPlIYQXEOtqpyzEaBM3N/RQTPD3vgkgK4GCiOfEQCps+VgbZ5upIDIhHBMuUQlv
-	2O3tX0Bu30Sr+fgXagYLwt2hxALIk9Q5cjQAlgA6XezMdmYSRl1djDooRY32ZhvrtN/RYBp0D/bOq
-	zRep5YNWOf0hCBob2BgT/45gNJVGdUttr0KoP3/t/iohvLBtgH0UuBcQwbC/A3/C3Dip9LFTD/NnV
-	hApGQI6A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=TbHeSy+jX+aKGdzJ6PWKAT3NQckL7Kf5JvWuYvDZ0Fk=; b=XtWi5ndpGaxTc8cNtzowG4Uo4H
+	doDNsWEDPKoy8vQws9dngBsyIALXE9+vpYATJN8wJU2wo9nYWgQIqNr+lLpZPGboVcDWs/ciXS9HM
+	gWS0wYBrqYshx2WJb3YqZpTxVmIqc+i42njc5L/QUAi64reaN+cpAPv3nOL8W2pbjpExWzUbF3RgS
+	K6FW7M0gHKKb3rv+XcBmCFP33aV2OErjLo1yrEDn+q2uRiUREllHE63fMcxk5TdlMzNgoZqIiLyrt
+	g7GI2VtkyOcooFUvrid1xi4wzVZlwJZnVD1W3alqCzBvPJBLkjdc5BqrKFVE4HF2uC51o6Vfk+4/a
+	V3MGEEBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uz2mZ-0000000FryV-1gaM;
-	Thu, 18 Sep 2025 00:45:55 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uz8cd-0000000GUEH-2TGB;
+	Thu, 18 Sep 2025 07:00:03 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uz2mU-0000000Frqm-2g2I;
-	Thu, 18 Sep 2025 00:45:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1758156348;
-	bh=sqX5poYuBDuieqUSU013OH1LEJKefqNyHLAHWCY+yJw=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=XSJV6IB05RrqByozzoHqQHKp0Q6dZXA6RQlRx2GysJ7CiC+NuhaUEQ0kwaF834GIY
-	 67AQe1bV4OlH8WwYlZNUxngiN3MwpCH4h+FNdg1hQFAIxFybjOT8332Q19/4rNGh91
-	 ilSrZCE4liaTmH97TceN1kSyFSyEkL9uTZNHlVoecvqOPEN4AXUTLOZb3+4Uuef6kg
-	 hwMw5M9wZWUDVJqJOVfFEbarDmJVkPgYGGn3cQ6duv9FRaL4AzhCuubV2OwF45DVLt
-	 pBNyCJDDkVIHIcf1CmMP/PcJC+yPm2hEPlCtAJ099vEtP4UMUcCY4OmBw02NcUJhfk
-	 h8wbsEwl2sK6w==
-Received: from [127.0.1.1] (unknown [IPv6:2600:4041:5b1a:9400:62f0:406e:ac79:4a96])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 844C517E1389;
-	Thu, 18 Sep 2025 02:45:41 +0200 (CEST)
-From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Wed, 17 Sep 2025 20:43:29 -0400
-Subject: [PATCH RFC v2 20/20] drm/vkms: Set post-blend color pipeline
- driver cap
+	id 1uz8cb-0000000GUDX-3mq7;
+	Thu, 18 Sep 2025 07:00:01 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 49B3360010;
+	Thu, 18 Sep 2025 07:00:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4E1EDC4CEE7;
+	Thu, 18 Sep 2025 07:00:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1758178801;
+	bh=GYQQZBRFtvo1wyXj5F3TK1koEo9eY7xeSRvG8LEDgI0=;
+	h=From:Date:Subject:To:Cc:From;
+	b=d8grMfXRdRd3M9C9BtlejCL9yVW52ikV/pMYn+LBjuSxIFfD2fzW2IwFp57BMXb6y
+	 iCAGvdkM16oYI+dPYoIdEmUa6KBm3fNkvTrFQzrlteahCjfaWMXWKFonXhNfQuYFve
+	 p1ExhG2VOMbGyzYQaf+ltk6DzUsfHsS/2WNSCKC/1YnFdhh6Ajc2ezlZYrWjdnh8yo
+	 jrCzHi9wNGtcA/KHM+zk+GvbtuvSQBq+/9ZDS4LKKAJRCvHTim11/8arP4IEbd9GVi
+	 4peqAa/yJQxK7XbxhUoQPayr9L9xG6b5QBgx4VC6FkSZ0gq3f0uubq2DKyuCF/v8Th
+	 K3iNBia4v2Qwg==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Thu, 18 Sep 2025 08:59:41 +0200
+Subject: [PATCH net-next] net: airoha: Fix PPE_IP_PROTO_CHK register
+ definitions
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20250917-mtk-post-blend-color-pipeline-v2-20-ac4471b44758@collabora.com>
-References: <20250917-mtk-post-blend-color-pipeline-v2-0-ac4471b44758@collabora.com>
-In-Reply-To: <20250917-mtk-post-blend-color-pipeline-v2-0-ac4471b44758@collabora.com>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Haneen Mohammed <hamohammed.sa@gmail.com>, 
- Melissa Wen <melissa.srw@gmail.com>
-Cc: Alex Hung <alex.hung@amd.com>, wayland-devel@lists.freedesktop.org, 
- harry.wentland@amd.com, leo.liu@amd.com, ville.syrjala@linux.intel.com, 
- pekka.paalanen@collabora.com, contact@emersion.fr, mwen@igalia.com, 
- jadahl@redhat.com, sebastian.wick@redhat.com, shashank.sharma@amd.com, 
- agoins@nvidia.com, joshua@froggi.es, mdaenzer@redhat.com, aleixpol@kde.org, 
- xaver.hugl@gmail.com, victoria@system76.com, uma.shankar@intel.com, 
- quic_naseer@quicinc.com, quic_cbraga@quicinc.com, quic_abhinavk@quicinc.com, 
- marcan@marcan.st, Liviu.Dudau@arm.com, sashamcintosh@google.com, 
- chaitanya.kumar.borah@intel.com, louis.chauvet@bootlin.com, 
- mcanal@igalia.com, kernel@collabora.com, daniels@collabora.com, 
- leandro.ribeiro@collabora.com, dri-devel@lists.freedesktop.org, 
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
- Simona Vetter <simona.vetter@ffwll.ch>
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250918-ppe_ip_proto_chk_ipv4_mask-fix-v1-1-df36da1b954c@kernel.org>
+X-B4-Tracking: v=1; b=H4sIANyty2gC/x3N2wqDMBCE4VeRvTbgsU19FZEQ7bQuUrMkIoL47
+ l28/P6LmZMSIiNRl50UsXPisCrKPKNp9usXht9qqoqqLV6lNSJwLE5i2IKb5kWxN+7n02I+fBg
+ Az3pE6+3Dko5IhOb7oB+u6w9dDuLXcAAAAA==
+X-Change-ID: 20250918-ppe_ip_proto_chk_ipv4_mask-fix-eee73be5a868
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
 X-Mailer: b4 0.14.2
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250917_174550_848296_149D0269 
-X-CRM114-Status: GOOD (  10.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,30 +74,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Now that the driver implements post-blend color pipelines, set the
-driver cap so they can be used from userspace.
+Fix typo in PPE_IP_PROTO_CHK_IPV4_MASK and PPE_IP_PROTO_CHK_IPV6_MASK
+register mask definitions. This is not a real problem since this
+register is not actually used in the current codebase.
 
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Fixes: 00a7678310fe3 ("net: airoha: Introduce flowtable offload support")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/gpu/drm/vkms/vkms_drv.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/airoha/airoha_regs.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/vkms/vkms_drv.c b/drivers/gpu/drm/vkms/vkms_drv.c
-index e8472d9b6e3b2b5d6d497763288bf3dc6fde5987..4cc67a789d28288575235b7efc87bc5e45d668cc 100644
---- a/drivers/gpu/drm/vkms/vkms_drv.c
-+++ b/drivers/gpu/drm/vkms/vkms_drv.c
-@@ -80,7 +80,8 @@ static void vkms_atomic_commit_tail(struct drm_atomic_state *old_state)
- }
+diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/ethernet/airoha/airoha_regs.h
+index 150c85995cc1a71d2d7eac58b75f27c19d26e2b5..e1c15c20be8e13197de743d9b590dc80058560a5 100644
+--- a/drivers/net/ethernet/airoha/airoha_regs.h
++++ b/drivers/net/ethernet/airoha/airoha_regs.h
+@@ -237,8 +237,8 @@
+ #define PPE_FLOW_CFG_IP4_TCP_FRAG_MASK		BIT(6)
  
- static const struct drm_driver vkms_driver = {
--	.driver_features	= DRIVER_MODESET | DRIVER_ATOMIC | DRIVER_GEM,
-+	.driver_features	= DRIVER_MODESET | DRIVER_ATOMIC | DRIVER_GEM |
-+				  DRIVER_POST_BLEND_COLOR_PIPELINE,
- 	.fops			= &vkms_driver_fops,
- 	DRM_GEM_SHMEM_DRIVER_OPS,
- 	DRM_FBDEV_SHMEM_DRIVER_OPS,
+ #define REG_PPE_IP_PROTO_CHK(_n)		(((_n) ? PPE2_BASE : PPE1_BASE) + 0x208)
+-#define PPE_IP_PROTO_CHK_IPV4_MASK		GENMASK(15, 0)
+-#define PPE_IP_PROTO_CHK_IPV6_MASK		GENMASK(31, 16)
++#define PPE_IP_PROTO_CHK_IPV4_MASK		GENMASK(31, 16)
++#define PPE_IP_PROTO_CHK_IPV6_MASK		GENMASK(15, 0)
+ 
+ #define REG_PPE_TB_CFG(_n)			(((_n) ? PPE2_BASE : PPE1_BASE) + 0x21c)
+ #define PPE_SRAM_TB_NUM_ENTRY_MASK		GENMASK(26, 24)
 
+---
+base-commit: 11bbcfb7668c6f4d97260f7caaefea22678bc31e
+change-id: 20250918-ppe_ip_proto_chk_ipv4_mask-fix-eee73be5a868
+
+Best regards,
 -- 
-2.50.1
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
