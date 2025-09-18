@@ -4,79 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40516CAC59A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Sep 2025 10:40:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E522BCAC5A8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Sep 2025 11:26:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NWBeRQFRAHGhBtLzpD8SDHSTn9exvx8PF7SkxuX7uUQ=; b=UEJfK7QzYis0WVhF5sbNAa9chc
-	WEEGjwjrXANm4VLWl6cm3ysmw8Jjei5f3m/rs+0souDxu8iuxuslY9sR6i1+MaMl59ez4wiAwcAr6
-	kB8Z6xC8mLfB0dqndYcoveaise0hX2Z6oIUVxDYDPpyy1dYX0g1vhwztULFMvJkGDhoRhxML1mvg6
-	HgBM71GdU5FdrqtAJYVN9VFHja381Whj8lIzKCeISYQT9M3pgzuBhDbtQGrLPGrQABNjing+FOxWD
-	bujFkHOjMVfW4fFJfHXAnxXuffvNcn5n8wbEQuwvIvnorPW5WVxXCg0KZjvwuxTz80WavqIwoUARO
-	d7Z2D+oA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Q2xLGGV6x4k/jHiQxQ4AgKrjwHh5GaWwD98boBUpDGo=; b=x4Tfiu5gJYgd/4
+	IHwYKxOW/JYE0u8oMOVW/yGqwhpmgtfxi908IvK7rm8oXgFqxlDD/TD8XFe7XNvEscU9s+OEOw7EA
+	pA1lJRYTFran/6GDm5WCb73SVCEDSoIYrWMzgxOtxUobQj0AbJR788bfUu8SHkO/co6H8uRNsAFSn
+	qQeKsoVPXfLzPx3WTbUlaSe1nAdGEP+/Sy4FoGiTN6/HfKXmKqy/a3zo9n9o6RAtGi2ggGR4a0OTL
+	jp3emCPGiRKDC7aCyDgoau/tAvOSAWXhuvSVPlQPHIu5ignI1iSGI7eaQaoRrD+Tk3PowkornFhPX
+	R4wX4dXfiMMkOTTsLJjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzC3p-0000000H7E6-0RBC;
-	Thu, 18 Sep 2025 10:40:21 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1uzCm3-0000000HD2k-3HcO;
+	Thu, 18 Sep 2025 11:26:03 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzC3i-0000000H70g-2NXo
-	for linux-mediatek@lists.infradead.org;
-	Thu, 18 Sep 2025 10:40:15 +0000
-X-UUID: d99bdf26947b11f09f706fa2197c6ceb-20250918
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=NWBeRQFRAHGhBtLzpD8SDHSTn9exvx8PF7SkxuX7uUQ=;
-	b=ehVLr41b6eow3oTIaiMcK9YQ0MoadhdICBb7ZfAQKF48j5jbdnpa/mHGJ7+ZkVP7BOnJwTyVCbwEaArwPRgRu9mUi5nC3jVmFqhWu33O93YZ6VqY7uCd2LyeUnKvHVjbnrvLG2GhqsqaUKPzJWffR89AJRCU4LnqmVyWwZuJ1/8=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.4,REQID:5b5c1446-9370-46ec-af7d-d5c29e1189f0,IP:0,UR
-	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-25
-X-CID-META: VersionHash:1ca6b93,CLOUDID:67c170f8-ebfe-43c9-88c9-80cb93f22ca4,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
-	0|15|50,EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,
-	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 3,DMD|SSN|SDN
-X-CID-BAS: 3,DMD|SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: d99bdf26947b11f09f706fa2197c6ceb-20250918
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 410296838; Thu, 18 Sep 2025 03:40:10 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Thu, 18 Sep 2025 18:40:03 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Thu, 18 Sep 2025 18:40:03 +0800
-From: <peter.wang@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>
-CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
-	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
-	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
-	<yi-fan.peng@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
-	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
-	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>, <bvanassche@acm.org>
-Subject: [PATCH v1 08/10] ufs: host: mediatek: Remove duplicate function
-Date: Thu, 18 Sep 2025 18:36:18 +0800
-Message-ID: <20250918104000.208856-9-peter.wang@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20250918104000.208856-1-peter.wang@mediatek.com>
-References: <20250918104000.208856-1-peter.wang@mediatek.com>
+	id 1uzCm0-0000000HD1c-1hKJ;
+	Thu, 18 Sep 2025 11:26:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1758194757;
+	bh=Oiap5ri9qx0u1p7+O1mgP8sl6KQHs1DP8B50ceS+q0g=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=FZhAcqWU5e+LkAoukxYOBqTCHOb5EjvvLavJU1mWoe5KZT89kTeIGnRUtP2TEnAr5
+	 Xvq506cBFeY5jiepakxzIODaJa4W3lCc+v74ydqn55JmVaTK/uEbCm7Cn1c+P7T4NG
+	 sK//IcEObtEXCUOY4Ky0b6INN/YLC06VrmrldwcOtv0gPlzm5tlu+zBDxf6fPbPoBj
+	 ykNuq5wn+rl2Mf+dDX35HzobVQoFxPoHG/Xqk2BkW9T7/KXsAENu9J0Hr5Xu/F+yQN
+	 u+z8NDroEmdboajlt3sIMeRxWeNaCh1aTp8fJXfoAadynYO5WcHNvNsHS4pvTlXSOm
+	 MqQMZqAQZsV+A==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 28E1017E12C4;
+	Thu, 18 Sep 2025 13:25:57 +0200 (CEST)
+Message-ID: <c24901fd-fa64-45f6-a6f7-57f09afe9707@collabora.com>
+Date: Thu, 18 Sep 2025 13:25:56 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 03/19] dt-bindings: display: mediatek: add EXDMA yaml
+ for MT8196
+To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
+ "robh@kernel.org" <robh@kernel.org>, "krzk+dt@kernel.org"
+ <krzk+dt@kernel.org>, =?UTF-8?B?UGF1bC1wbCBDaGVuICjpmbPmn4/pnJYp?=
+ <Paul-pl.Chen@mediatek.com>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
+References: <20250828080855.3502514-1-paul-pl.chen@mediatek.com>
+ <20250828080855.3502514-4-paul-pl.chen@mediatek.com>
+ <89356c625715c984fcdca4e275df1a8747866909.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <89356c625715c984fcdca4e275df1a8747866909.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250918_034014_625013_2CD6B112 
-X-CRM114-Status: GOOD (  12.63  )
+X-CRM114-CacheID: sfid-20250918_042600_618861_E1ACCEEA 
+X-CRM114-Status: GOOD (  24.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,88 +76,238 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, =?UTF-8?B?WGlhbmRvbmcgV2FuZyAo546L5YWI5YasKQ==?= <Xiandong.Wang@mediatek.com>, =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>, =?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, "treapking@chromium.org" <treapking@chromium.org>, =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, =?UTF-8?B?U3VubnkgU2hlbiAo5rKI5aeN5aeNKQ==?= <Sunny.Shen@mediatek.com>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>, =?UTF-8?B?U2lyaXVzIFdhbmcgKOeOi+eak+aYsSk=?= <Sirius.Wang@mediatek.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Wang <peter.wang@mediatek.com>
+Il 18/09/25 09:01, CK Hu (胡俊光) ha scritto:
+> Hi, Rob and Krzysztof:
+> 
+> On Thu, 2025-08-28 at 16:06 +0800, Paul Chen wrote:
+>> From: Paul-pl Chen <paul-pl.chen@mediatek.com>
+>>
+>> Add mediatek,exdma.yaml to support EXDMA for MT8196.
+>> The MediaTek display overlap extended DMA engine, namely
+>> OVL_EXDMA or EXDMA, primarily functions as a DMA engine
+>> for reading data from DRAM with various DRAM footprints
+>> and data formats.
+>>
+>> Signed-off-by: Paul-pl Chen <paul-pl.chen@mediatek.com>
+>> ---
+>>   .../bindings/dma/mediatek,exdma.yaml          | 68 +++++++++++++++++++
+>>   1 file changed, 68 insertions(+)
+>>   create mode 100644 Documentation/devicetree/bindings/dma/mediatek,exdma.yaml
+>>
+>> diff --git a/Documentation/devicetree/bindings/dma/mediatek,exdma.yaml b/Documentation/devicetree/bindings/dma/mediatek,exdma.yaml
+>> new file mode 100644
+>> index 000000000000..eabf0cfc839e
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/dma/mediatek,exdma.yaml
+>> @@ -0,0 +1,68 @@
+>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+>> +%YAML 1.2
+>> +---
+>> +$id: https://urldefense.com/v3/__http://devicetree.org/schemas/dma/mediatek,exdma.yaml*__;Iw!!CTRNKA9wMg0ARbw!mjQH2qNKhXsl47d3xz2_Qmo7Wadq5-kD0GJaAVjh7XY8W3NgI_dDpBNinME7NVW1PKdO9IEUsObOTugjypqo5j8$
+>> +$schema: https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!mjQH2qNKhXsl47d3xz2_Qmo7Wadq5-kD0GJaAVjh7XY8W3NgI_dDpBNinME7NVW1PKdO9IEUsObOTugj3hMMPhU$
+>> +
+>> +title: MediaTek display overlap extended DMA engine
+>> +
+>> +maintainers:
+>> +  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
+>> +  - Philipp Zabel <p.zabel@pengutronix.de>
+>> +
+>> +description:
+>> +  The MediaTek display overlap extended DMA engine, namely OVL_EXDMA or EXDMA,
+>> +  primarily functions as a DMA engine for reading data from DRAM with various
+>> +  DRAM footprints and data formats. For input sources in certain color formats
+>> +  and color domains, OVL_EXDMA also includes a color transfer function
+>> +  to process pixels into a consistent color domain.
+>> +
+>> +properties:
+>> +  compatible:
+>> +    const: mediatek,mt8196-exdma
+>> +
+>> +  reg:
+>> +    maxItems: 1
+>> +
+>> +  clocks:
+>> +    maxItems: 1
+>> +
+>> +  power-domains:
+>> +    maxItems: 1
+>> +
+>> +  mediatek,larb:
+>> +    $ref: /schemas/types.yaml#/definitions/phandle
+>> +    description: |
+>> +      A phandle to the local arbiters node in the current SoCs.
+>> +      Refer to bindings/memory-controllers/mediatek,smi-larb.yaml.
+> 
+> In MT8196, the data path that EXDMA access DRAM data is shown below.
+> 
+> EXDMA (dma device) <-> LARB <-> SMMU (mmu device) <-> DRAM
+> 
+> In MT8195, the data path that OVL access DRAM data is shown below.
+> 
+> OVL (dma device) <-> LARB <-> IOMMU_VPP (mmu device) <-> DRAM
+> 
+> These two are similar, and LARB works like a bus.
+> 
+> In MT8195 device tree [1] (upstream), OVL has an iommus property pointing to IOMMU_VPP,
+> 
+> and IOMMU_VPP has a larbs property pointing to LARB
+> 
+>                  iommu_vpp: iommu@14018000 {
+> 
+>                           compatible = "mediatek,mt8195-iommu-vpp";
+> 
+>                           reg = <0 0x14018000 0 0x1000>;
+> 
+>                           mediatek,larbs = <&larb1 &larb3 &larb4 &larb6 &larb8
+> 
+>                                              &larb12 &larb14 &larb16 &larb18
+> 
+>                                              &larb20 &larb22 &larb23 &larb26
+> 
+>                                              &larb27>;
+> 
+>                           interrupts = <GIC_SPI 594 IRQ_TYPE_LEVEL_HIGH 0>;
+> 
+>                           clocks = <&vppsys0 CLK_VPP0_SMI_IOMMU>;
+> 
+>                           clock-names = "bclk";
+> 
+>                           #iommu-cells = <1>;
+> 
+>                           power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
+> 
+>                  };
+> 
+>                  display@14009000 {
+> 
+>                           compatible = "mediatek,mt8195-mdp3-ovl";
+> 
+>                           reg = <0 0x14009000 0 0x1000>;
+> 
+>                           interrupts = <GIC_SPI 586 IRQ_TYPE_LEVEL_HIGH 0>;
+> 
+>                           mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x9000 0x1000>;
+> 
+>                           clocks = <&vppsys0 CLK_VPP0_MDP_OVL>;
+> 
+>                           power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
+> 
+>                           iommus = <&iommu_vpp M4U_PORT_L4_MDP_OVL>;
+> 
+>                  };
+> 
+> In MT8196 [2] (this patch), EXDMA has an iommus property pointing to SMMU and a larbs property pointing to LARB.
+> 
+>                   mm_smmu: iommu@30800000 {
+> 
+>                           compatible = "mediatek,mt8196-mm-smmu", "arm,smmu-v3";
+> 
+>                           reg = <0 0x30800000 0 0x1e0000>;
+> 
+>                           interrupts = <GIC_SPI 477 IRQ_TYPE_EDGE_RISING 0>;
+> 
+>                           interrupt-names = "combined";
+> 
+>                           #iommu-cells = <1>;
+> 
+>                   };
+> 
+>                   disp_ovl0_exdma2: dma-controller@32850000 {
+> 
+>                           compatible = "mediatek,mt8196-exdma";
+> 
+>                           reg = <0 0x32850000 0 0x1000>;
+> 
+>                           clocks = <&ovlsys_config_clk CLK_OVL_EXDMA2_DISP>;
+> 
+>                           power-domains = <&hfrpsys MT8196_POWER_DOMAIN_OVL0_DORMANT>;
+> 
+>                           mediatek,larb = <&smi_larb0>;
+> 
+>                           iommus = <&mm_smmu 144>;
+> 
+>                           #dma-cells = <1>;
+> 
+>                   };
+> 
+> Both hardware data path is similar, but LARB is pointed by IOMMU device in MT8195 and LARB is pointed by DMA device in MT8196.
+> 
+> Should LARB be pointed by the same device (DMA device or IOMMU device)?
+> 
+> Or another way to describe these three device?
+> 
 
-Remove the duplicate ufs_mtk_us_to_ahit function in the UFS
-Mediatek driver and export the existing ufshcd_us_to_ahit
-function for shared use. This change reduces redundancy
-and maintains consistency across the codebase.
+Read dt-bindings/iommu/mediatek,iommu.yaml for a nice block diagram from Yong Wu:
+as explained, the Local Arbiters are arbitering multimedia IP block memory access
+between either IOMMU translation or EMI DMA.
 
-Signed-off-by: Peter Wang <peter.wang@mediatek.com>
----
- drivers/ufs/core/ufs-sysfs.c    |  3 ++-
- drivers/ufs/host/ufs-mediatek.c | 14 +-------------
- include/ufs/ufshcd.h            |  1 +
- 3 files changed, 4 insertions(+), 14 deletions(-)
+This means that the LARBs need knowledge of both the INPUT device (EXDMA) and of
+the possible diverting paths (SMI, or IOMMU).
 
-diff --git a/drivers/ufs/core/ufs-sysfs.c b/drivers/ufs/core/ufs-sysfs.c
-index 4bd7d491e3c5..0fb236ce7f4c 100644
---- a/drivers/ufs/core/ufs-sysfs.c
-+++ b/drivers/ufs/core/ufs-sysfs.c
-@@ -235,7 +235,7 @@ static int ufshcd_ahit_to_us(u32 ahit)
- }
- 
- /* Convert microseconds to Auto-Hibernate Idle Timer register value */
--static u32 ufshcd_us_to_ahit(unsigned int timer)
-+u32 ufshcd_us_to_ahit(unsigned int timer)
- {
- 	unsigned int scale;
- 
-@@ -245,6 +245,7 @@ static u32 ufshcd_us_to_ahit(unsigned int timer)
- 	return FIELD_PREP(UFSHCI_AHIBERN8_TIMER_MASK, timer) |
- 	       FIELD_PREP(UFSHCI_AHIBERN8_SCALE_MASK, scale);
- }
-+EXPORT_SYMBOL_GPL(ufshcd_us_to_ahit);
- 
- static int ufshcd_read_hci_reg(struct ufs_hba *hba, u32 *val, unsigned int reg)
- {
-diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index c56c85b55ba4..5aa42b8caa3b 100644
---- a/drivers/ufs/host/ufs-mediatek.c
-+++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -1109,18 +1109,6 @@ static void ufs_mtk_setup_clk_gating(struct ufs_hba *hba)
- 	}
- }
- 
--/* Convert microseconds to Auto-Hibernate Idle Timer register value */
--static u32 ufs_mtk_us_to_ahit(unsigned int timer)
--{
--	unsigned int scale;
--
--	for (scale = 0; timer > UFSHCI_AHIBERN8_TIMER_MASK; ++scale)
--		timer /= UFSHCI_AHIBERN8_SCALE_FACTOR;
--
--	return FIELD_PREP(UFSHCI_AHIBERN8_TIMER_MASK, timer) |
--	       FIELD_PREP(UFSHCI_AHIBERN8_SCALE_MASK, scale);
--}
--
- static void ufs_mtk_fix_ahit(struct ufs_hba *hba)
- {
- 	unsigned int us;
-@@ -1143,7 +1131,7 @@ static void ufs_mtk_fix_ahit(struct ufs_hba *hba)
- 			break;
- 		}
- 
--		hba->ahit = ufs_mtk_us_to_ahit(us);
-+		hba->ahit = ufshcd_us_to_ahit(us);
- 	}
- 
- 	ufs_mtk_setup_clk_gating(hba);
-diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-index 7df475ebd06d..27a88f0966ac 100644
---- a/include/ufs/ufshcd.h
-+++ b/include/ufs/ufshcd.h
-@@ -1502,5 +1502,6 @@ int ufshcd_update_ee_control(struct ufs_hba *hba, u16 *mask,
- void ufshcd_force_error_recovery(struct ufs_hba *hba);
- void ufshcd_pm_qos_update(struct ufs_hba *hba, bool on);
- void ufshcd_enable_intr(struct ufs_hba *hba, u32 intrs);
-+u32 ufshcd_us_to_ahit(unsigned int timer);
- 
- #endif /* End of Header */
--- 
-2.45.2
+What has been done in previous platforms is a borderline (but imo, acceptable for
+multiple reasons) almost-hack, done to avoid having a vendor property on each of
+the nodes and to avoid overcomplicating the actual code, as if the LARB is a child
+of IOMMU, it can get knowledge of the translation tables (and since LARBs come from
+SMI, those also have knowledge of SMI properties).
+
+For this reason, I agree with CK and I would also suggest to still go with LARBs
+assigned to IOMMU, as this eliminates all those vendor-specific properties from so
+many devicetree nodes, makes code simpler, and also works with PM (larbs need smi
+clocked/powered and iommu clocked/powered in order to work correctly), mimicking
+the same devicetree structure as the previous SoCs.
+
+Besides - as far as I know, hardware-wise the tree is very very similar anyway.
+
+Cheers,
+Angelo
+
+>   
+> 
+> [1] https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/tree/arch/arm64/boot/dts/mediatek/mt8195.dtsi?h=next-20250626
+> 
+> [2] https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/6253459/2/arch/arm64/boot/dts/mediatek/mt8196.dtsi#3127
+> 
+>   
+> 
+> Regards,
+> 
+> CK
+> 
+>> +
+>> +  iommus:
+>> +    maxItems: 1
+>> +
+>> +  '#dma-cells':
+>> +    const: 1
+>> +
+>> +required:
+>> +  - compatible
+>> +  - reg
+>> +  - clocks
+>> +  - power-domains
+>> +  - mediatek,larb
+>> +
+>> +additionalProperties: false
+>> +
+>> +examples:
+>> +  - |
+>> +    soc {
+>> +        #address-cells = <2>;
+>> +        #size-cells = <2>;
+>> +
+>> +        exdma: dma-controller@32850000 {
+>> +            compatible = "mediatek,mt8196-exdma";
+>> +            reg = <0 0x32850000 0 0x1000>;
+>> +            clocks = <&ovlsys_config_clk 13>;
+>> +            power-domains = <&hfrpsys 12>;
+>> +            iommus = <&mm_smmu 144>;
+>> +            #dma-cells = <1>;
+>> +        };
+>> +    };
+> 
 
 
