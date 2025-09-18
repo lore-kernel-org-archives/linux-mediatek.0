@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E522BCAC5A8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Sep 2025 11:26:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D74ECCAC59A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Sep 2025 11:37:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Q2xLGGV6x4k/jHiQxQ4AgKrjwHh5GaWwD98boBUpDGo=; b=x4Tfiu5gJYgd/4
-	IHwYKxOW/JYE0u8oMOVW/yGqwhpmgtfxi908IvK7rm8oXgFqxlDD/TD8XFe7XNvEscU9s+OEOw7EA
-	pA1lJRYTFran/6GDm5WCb73SVCEDSoIYrWMzgxOtxUobQj0AbJR788bfUu8SHkO/co6H8uRNsAFSn
-	qQeKsoVPXfLzPx3WTbUlaSe1nAdGEP+/Sy4FoGiTN6/HfKXmKqy/a3zo9n9o6RAtGi2ggGR4a0OTL
-	jp3emCPGiRKDC7aCyDgoau/tAvOSAWXhuvSVPlQPHIu5ignI1iSGI7eaQaoRrD+Tk3PowkornFhPX
-	R4wX4dXfiMMkOTTsLJjg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=62sFa6+r+yufK0w62YT8VZhAhdtvQALavIM3MYvS1VM=; b=CMHPRkePC+BLz5AekHv5W1KzoD
+	AJzSoARr1hRUl5RzPn5Et2sQh0Cr5b1tBIaw+gbjk/wcQJrZNbcI+rdqhzi4yVe5iiGdJehf2wS63
+	i8ZaoO8tc9yhTCoBpjfP2N2BB4di33niK1jv2mxVCzjVE1L3OeiXhKyZG0DjAotx2IEZUzJ8hUL1L
+	nA0QIgdLBzrrbvlik/jINJpHyJDDjbSYeRoVOsT0IQgLeB7553hOIWaB7xEeOTgdsv/V15rmB4SUG
+	vb9NWoiZX/4zPOTH8psiWrQZieKXbQCZmZ9q6IiSEawjsd31jet6H693Z8r7mZHNFemprZttlNb9v
+	Qzq8AE/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzCm3-0000000HD2k-3HcO;
-	Thu, 18 Sep 2025 11:26:03 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uzCxJ-0000000HEoJ-2hgQ;
+	Thu, 18 Sep 2025 11:37:41 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzCm0-0000000HD1c-1hKJ;
-	Thu, 18 Sep 2025 11:26:02 +0000
+	id 1uzCxG-0000000HEnX-0jDx;
+	Thu, 18 Sep 2025 11:37:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1758194757;
-	bh=Oiap5ri9qx0u1p7+O1mgP8sl6KQHs1DP8B50ceS+q0g=;
+	s=mail; t=1758195455;
+	bh=knOqDMmCuYGf36S0XJkfDDNgqTE1JBx5Dzln83jT4MQ=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=FZhAcqWU5e+LkAoukxYOBqTCHOb5EjvvLavJU1mWoe5KZT89kTeIGnRUtP2TEnAr5
-	 Xvq506cBFeY5jiepakxzIODaJa4W3lCc+v74ydqn55JmVaTK/uEbCm7Cn1c+P7T4NG
-	 sK//IcEObtEXCUOY4Ky0b6INN/YLC06VrmrldwcOtv0gPlzm5tlu+zBDxf6fPbPoBj
-	 ykNuq5wn+rl2Mf+dDX35HzobVQoFxPoHG/Xqk2BkW9T7/KXsAENu9J0Hr5Xu/F+yQN
-	 u+z8NDroEmdboajlt3sIMeRxWeNaCh1aTp8fJXfoAadynYO5WcHNvNsHS4pvTlXSOm
-	 MqQMZqAQZsV+A==
+	b=nXkpFoO6Jxar0bWX+EQ4QLJhk81Du0l8SBBjrEAJeXv5ryrQBJZA1hcimz0grfgiv
+	 +AmxfEmFyu6tuCK/TrTRWdBrBfrb2dRQ1qEZpM+Sj7DCfl7h4XkzA1unZDFvb2rCu8
+	 0nJN3Ce92B2MqSPDhU+Zjs+kRYH0gMO/h4lphzKexgfwo0BesSmtnmjEkB2SObR+No
+	 wm83pKSOrLeLad7DUJsv/+rJOdOsmOmHCMqMgJiJxRw4gFo+8L2HWzg+bpnoeTjlyn
+	 f28tlbN8VQqJCHQQKZU6U0g3sCQPb1JwBUvC4tQqPllmQAms/StwHsZ+SzJTtvdRyK
+	 n5uEKA7R527lA==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 28E1017E12C4;
-	Thu, 18 Sep 2025 13:25:57 +0200 (CEST)
-Message-ID: <c24901fd-fa64-45f6-a6f7-57f09afe9707@collabora.com>
-Date: Thu, 18 Sep 2025 13:25:56 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 512F617E00B0;
+	Thu, 18 Sep 2025 13:37:35 +0200 (CEST)
+Message-ID: <b32f4afd-5683-4eec-8da7-a21a9a4950c1@collabora.com>
+Date: Thu, 18 Sep 2025 13:37:34 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 03/19] dt-bindings: display: mediatek: add EXDMA yaml
- for MT8196
-To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
- "robh@kernel.org" <robh@kernel.org>, "krzk+dt@kernel.org"
- <krzk+dt@kernel.org>, =?UTF-8?B?UGF1bC1wbCBDaGVuICjpmbPmn4/pnJYp?=
- <Paul-pl.Chen@mediatek.com>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
-References: <20250828080855.3502514-1-paul-pl.chen@mediatek.com>
- <20250828080855.3502514-4-paul-pl.chen@mediatek.com>
- <89356c625715c984fcdca4e275df1a8747866909.camel@mediatek.com>
+Subject: Re: [RFC PATCH 0/8] Add mt8196 SMMU support
+To: Xueqi Zhang <xueqi.zhang@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
+ Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+ Joerg Roedel <joro@8bytes.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Ning li <ning.li@mediatek.com>, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org, iommu@lists.linux.dev
+References: <20250616025628.25454-1-xueqi.zhang@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <89356c625715c984fcdca4e275df1a8747866909.camel@mediatek.com>
+In-Reply-To: <20250616025628.25454-1-xueqi.zhang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250918_042600_618861_E1ACCEEA 
-X-CRM114-Status: GOOD (  24.46  )
+X-CRM114-CacheID: sfid-20250918_043738_369399_135F6A7F 
+X-CRM114-Status: GOOD (  12.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,238 +77,46 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, =?UTF-8?B?WGlhbmRvbmcgV2FuZyAo546L5YWI5YasKQ==?= <Xiandong.Wang@mediatek.com>, =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>, =?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, "treapking@chromium.org" <treapking@chromium.org>, =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, =?UTF-8?B?U3VubnkgU2hlbiAo5rKI5aeN5aeNKQ==?= <Sunny.Shen@mediatek.com>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>, =?UTF-8?B?U2lyaXVzIFdhbmcgKOeOi+eak+aYsSk=?= <Sirius.Wang@mediatek.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 18/09/25 09:01, CK Hu (胡俊光) ha scritto:
-> Hi, Rob and Krzysztof:
+Il 16/06/25 04:56, Xueqi Zhang ha scritto:
+> This patchset add mt8196 SMMU support.
+> 1. Mediatek SMMU interrupt is low level active rather than the
+> standard edge. Process Mediatek SMMU wrapper interrupt and dump
+> detailed information when a translation fault occurs.
+> 2. In some projects, Mediatek also have EL2 driver, so put the pm
+> operation in TFA(EL3), then all the kernel and EL2 could control
+> the pm. Thus implement rpm get/put function which send smc call to
+> TFA to get/put SMMU power.
 > 
-> On Thu, 2025-08-28 at 16:06 +0800, Paul Chen wrote:
->> From: Paul-pl Chen <paul-pl.chen@mediatek.com>
->>
->> Add mediatek,exdma.yaml to support EXDMA for MT8196.
->> The MediaTek display overlap extended DMA engine, namely
->> OVL_EXDMA or EXDMA, primarily functions as a DMA engine
->> for reading data from DRAM with various DRAM footprints
->> and data formats.
->>
->> Signed-off-by: Paul-pl Chen <paul-pl.chen@mediatek.com>
->> ---
->>   .../bindings/dma/mediatek,exdma.yaml          | 68 +++++++++++++++++++
->>   1 file changed, 68 insertions(+)
->>   create mode 100644 Documentation/devicetree/bindings/dma/mediatek,exdma.yaml
->>
->> diff --git a/Documentation/devicetree/bindings/dma/mediatek,exdma.yaml b/Documentation/devicetree/bindings/dma/mediatek,exdma.yaml
->> new file mode 100644
->> index 000000000000..eabf0cfc839e
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/dma/mediatek,exdma.yaml
->> @@ -0,0 +1,68 @@
->> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
->> +%YAML 1.2
->> +---
->> +$id: https://urldefense.com/v3/__http://devicetree.org/schemas/dma/mediatek,exdma.yaml*__;Iw!!CTRNKA9wMg0ARbw!mjQH2qNKhXsl47d3xz2_Qmo7Wadq5-kD0GJaAVjh7XY8W3NgI_dDpBNinME7NVW1PKdO9IEUsObOTugjypqo5j8$
->> +$schema: https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!mjQH2qNKhXsl47d3xz2_Qmo7Wadq5-kD0GJaAVjh7XY8W3NgI_dDpBNinME7NVW1PKdO9IEUsObOTugj3hMMPhU$
->> +
->> +title: MediaTek display overlap extended DMA engine
->> +
->> +maintainers:
->> +  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
->> +  - Philipp Zabel <p.zabel@pengutronix.de>
->> +
->> +description:
->> +  The MediaTek display overlap extended DMA engine, namely OVL_EXDMA or EXDMA,
->> +  primarily functions as a DMA engine for reading data from DRAM with various
->> +  DRAM footprints and data formats. For input sources in certain color formats
->> +  and color domains, OVL_EXDMA also includes a color transfer function
->> +  to process pixels into a consistent color domain.
->> +
->> +properties:
->> +  compatible:
->> +    const: mediatek,mt8196-exdma
->> +
->> +  reg:
->> +    maxItems: 1
->> +
->> +  clocks:
->> +    maxItems: 1
->> +
->> +  power-domains:
->> +    maxItems: 1
->> +
->> +  mediatek,larb:
->> +    $ref: /schemas/types.yaml#/definitions/phandle
->> +    description: |
->> +      A phandle to the local arbiters node in the current SoCs.
->> +      Refer to bindings/memory-controllers/mediatek,smi-larb.yaml.
+> Xueqi Zhang (8):
+>    dt-bindings: iommu: mediatek: Add mt8196 support
+>    iommu/arm-smmu-v3: Add SMMU implementation
+>    iommu/arm-smmu-v3: Add implementation for MT8196 MM SMMU
+>    iommu/arm-smmu-v3: Add implementation for MT8196 APU SMMU
+>    iommu/arm-smmu-v3: Add IRQ handle for smmu impl
+>    iommu/arm-smmu-v3: mediatek: Add wrapper handle for IRQ
+>    iommu/arm-smmu-v3: Invoke rpm operation before accessing the hw
+>    iommu/arm-smmu-v3: mediatek: Implement rpm get/put function
 > 
-> In MT8196, the data path that EXDMA access DRAM data is shown below.
-> 
-> EXDMA (dma device) <-> LARB <-> SMMU (mmu device) <-> DRAM
-> 
-> In MT8195, the data path that OVL access DRAM data is shown below.
-> 
-> OVL (dma device) <-> LARB <-> IOMMU_VPP (mmu device) <-> DRAM
-> 
-> These two are similar, and LARB works like a bus.
-> 
-> In MT8195 device tree [1] (upstream), OVL has an iommus property pointing to IOMMU_VPP,
-> 
-> and IOMMU_VPP has a larbs property pointing to LARB
-> 
->                  iommu_vpp: iommu@14018000 {
-> 
->                           compatible = "mediatek,mt8195-iommu-vpp";
-> 
->                           reg = <0 0x14018000 0 0x1000>;
-> 
->                           mediatek,larbs = <&larb1 &larb3 &larb4 &larb6 &larb8
-> 
->                                              &larb12 &larb14 &larb16 &larb18
-> 
->                                              &larb20 &larb22 &larb23 &larb26
-> 
->                                              &larb27>;
-> 
->                           interrupts = <GIC_SPI 594 IRQ_TYPE_LEVEL_HIGH 0>;
-> 
->                           clocks = <&vppsys0 CLK_VPP0_SMI_IOMMU>;
-> 
->                           clock-names = "bclk";
-> 
->                           #iommu-cells = <1>;
-> 
->                           power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
-> 
->                  };
-> 
->                  display@14009000 {
-> 
->                           compatible = "mediatek,mt8195-mdp3-ovl";
-> 
->                           reg = <0 0x14009000 0 0x1000>;
-> 
->                           interrupts = <GIC_SPI 586 IRQ_TYPE_LEVEL_HIGH 0>;
-> 
->                           mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x9000 0x1000>;
-> 
->                           clocks = <&vppsys0 CLK_VPP0_MDP_OVL>;
-> 
->                           power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
-> 
->                           iommus = <&iommu_vpp M4U_PORT_L4_MDP_OVL>;
-> 
->                  };
-> 
-> In MT8196 [2] (this patch), EXDMA has an iommus property pointing to SMMU and a larbs property pointing to LARB.
-> 
->                   mm_smmu: iommu@30800000 {
-> 
->                           compatible = "mediatek,mt8196-mm-smmu", "arm,smmu-v3";
-> 
->                           reg = <0 0x30800000 0 0x1e0000>;
-> 
->                           interrupts = <GIC_SPI 477 IRQ_TYPE_EDGE_RISING 0>;
-> 
->                           interrupt-names = "combined";
-> 
->                           #iommu-cells = <1>;
-> 
->                   };
-> 
->                   disp_ovl0_exdma2: dma-controller@32850000 {
-> 
->                           compatible = "mediatek,mt8196-exdma";
-> 
->                           reg = <0 0x32850000 0 0x1000>;
-> 
->                           clocks = <&ovlsys_config_clk CLK_OVL_EXDMA2_DISP>;
-> 
->                           power-domains = <&hfrpsys MT8196_POWER_DOMAIN_OVL0_DORMANT>;
-> 
->                           mediatek,larb = <&smi_larb0>;
-> 
->                           iommus = <&mm_smmu 144>;
-> 
->                           #dma-cells = <1>;
-> 
->                   };
-> 
-> Both hardware data path is similar, but LARB is pointed by IOMMU device in MT8195 and LARB is pointed by DMA device in MT8196.
-> 
-> Should LARB be pointed by the same device (DMA device or IOMMU device)?
-> 
-> Or another way to describe these three device?
+>   .../bindings/iommu/arm,smmu-v3.yaml           |  24 +-
+>   drivers/iommu/arm/Kconfig                     |   7 +
+>   drivers/iommu/arm/arm-smmu-v3/Makefile        |   3 +-
+>   .../iommu/arm/arm-smmu-v3/arm-smmu-v3-impl.c  |  16 +
+>   .../arm/arm-smmu-v3/arm-smmu-v3-mediatek.c    | 536 ++++++++++++++++++
+>   drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c   |  96 +++-
+>   drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.h   |  14 +
+>   7 files changed, 691 insertions(+), 5 deletions(-)
+>   create mode 100644 drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3-impl.c
+>   create mode 100644 drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3-mediatek.c
 > 
 
-Read dt-bindings/iommu/mediatek,iommu.yaml for a nice block diagram from Yong Wu:
-as explained, the Local Arbiters are arbitering multimedia IP block memory access
-between either IOMMU translation or EMI DMA.
+Xueqi, any followup on this series?
 
-This means that the LARBs need knowledge of both the INPUT device (EXDMA) and of
-the possible diverting paths (SMI, or IOMMU).
+All of the multimedia blocks (including display) become unusable without an IOMMU
+on MT8196, MT6991 and newer.
 
-What has been done in previous platforms is a borderline (but imo, acceptable for
-multiple reasons) almost-hack, done to avoid having a vendor property on each of
-the nodes and to avoid overcomplicating the actual code, as if the LARB is a child
-of IOMMU, it can get knowledge of the translation tables (and since LARBs come from
-SMI, those also have knowledge of SMI properties).
-
-For this reason, I agree with CK and I would also suggest to still go with LARBs
-assigned to IOMMU, as this eliminates all those vendor-specific properties from so
-many devicetree nodes, makes code simpler, and also works with PM (larbs need smi
-clocked/powered and iommu clocked/powered in order to work correctly), mimicking
-the same devicetree structure as the previous SoCs.
-
-Besides - as far as I know, hardware-wise the tree is very very similar anyway.
-
-Cheers,
+Regards,
 Angelo
-
->   
-> 
-> [1] https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/tree/arch/arm64/boot/dts/mediatek/mt8195.dtsi?h=next-20250626
-> 
-> [2] https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/6253459/2/arch/arm64/boot/dts/mediatek/mt8196.dtsi#3127
-> 
->   
-> 
-> Regards,
-> 
-> CK
-> 
->> +
->> +  iommus:
->> +    maxItems: 1
->> +
->> +  '#dma-cells':
->> +    const: 1
->> +
->> +required:
->> +  - compatible
->> +  - reg
->> +  - clocks
->> +  - power-domains
->> +  - mediatek,larb
->> +
->> +additionalProperties: false
->> +
->> +examples:
->> +  - |
->> +    soc {
->> +        #address-cells = <2>;
->> +        #size-cells = <2>;
->> +
->> +        exdma: dma-controller@32850000 {
->> +            compatible = "mediatek,mt8196-exdma";
->> +            reg = <0 0x32850000 0 0x1000>;
->> +            clocks = <&ovlsys_config_clk 13>;
->> +            power-domains = <&hfrpsys 12>;
->> +            iommus = <&mm_smmu 144>;
->> +            #dma-cells = <1>;
->> +        };
->> +    };
-> 
-
 
