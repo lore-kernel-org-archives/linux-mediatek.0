@@ -4,172 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F62FCAC59F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Sep 2025 08:56:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA8CFCAC597
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Sep 2025 10:40:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ys+G101/2VNEcYBTgkmJtmphcRsQ0v6yH5tJnnwQbEY=; b=uNYTkcV1LVjgIvHHz6GYF2NocI
-	T+YQ0oy0wH3ByOkHBFSxld2OMz+gQctfVZdX0KWvZI12JiBGG3CpMXmaNliJEKVLMpzCIqRISwb2i
-	u4lo7mjdzNc01DzUt5HEzFXnSuJFHslGZ1mBMNm2Eg+QuC+1XUulZFQ3oDxnPQRVh9/yff0epO+16
-	4cT3XF0r1fK2JKxuCATK7ERuvhpevWYcOjPTnzI4eJf0GiX3UDcJ7LyQFxliV1S9csEhOOaf4Mnzy
-	RgfcRvFJR3bqtA11X0G4t3/RGs82qh2eCONv9TzckqTe1vqgrikJolEEM1ObJQ6VuODt9p/nt6qBT
-	h8Uaf7DQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=89KtbKiNREmrdsQot1mJ4yJfL+mn0r1STI29XAdntf4=; b=2RcnoEtTshdUH5uoLogDoMJOYo
+	QpRmbwQSIaG6/1Aqbo3q1UzckNNaOwDqnbukz4bvmrgSwDZmTjjQWUnHjAl0EJOgqpKoSjkjyH8xl
+	ewNHNncT1XuoKOS2uSNdImTpSt9DxoDm+YuVWkBJtgWZc5rmweHXwgCnWPmivECg3NacMnMDrN+3N
+	iWBmPLPSJ63NoRZRT7vLX9i03Iq85RWMx3PipP6dRTkJOPinpSMoSUQdZBdY07I8bGHJrgjruMUG0
+	AATyBmCqcVtSwoGLFqBtMLXystFcIY9YXaBjCMu+ohVwoI4tXeC21VufOP0XwZE7V1RVoqLUwrlvN
+	8Yt40+UQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzARV-0000000GmBy-1xvV;
-	Thu, 18 Sep 2025 08:56:41 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1uzC3f-0000000H72o-2OG9;
+	Thu, 18 Sep 2025 10:40:11 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzARS-0000000GmAO-1jZL
+	id 1uzC3d-0000000H70g-3hYp
 	for linux-mediatek@lists.infradead.org;
-	Thu, 18 Sep 2025 08:56:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1758185797;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=ys+G101/2VNEcYBTgkmJtmphcRsQ0v6yH5tJnnwQbEY=;
-	b=TlFbs/LVAJCJBa56h5JhU4l5FCtDiEIPzMnMcf+1CdeAGWxjDv/qlAE/jpoCRi6BQFzlHM
-	iKXaYivKS4lDlbaOvo0rv1tt2GuJRyTpkExnYih1ZnzYa8jrMwAxKGWJgHQpT+VBM8uwez
-	4l8eEKFS3behRszSmDn3KY3aVPTyod4=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-586-l7dxXkmPPgS5mdRMx5M98g-1; Thu, 18 Sep 2025 04:56:36 -0400
-X-MC-Unique: l7dxXkmPPgS5mdRMx5M98g-1
-X-Mimecast-MFC-AGG-ID: l7dxXkmPPgS5mdRMx5M98g_1758185795
-Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-45f29eb22f8so3341545e9.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 18 Sep 2025 01:56:35 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1758185795; x=1758790595;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ys+G101/2VNEcYBTgkmJtmphcRsQ0v6yH5tJnnwQbEY=;
-        b=unkUo1e6TdXviyizSUmVYUG0FQxOxksbydN8pJj/D9yevvAm4H7dc6OWNotLtlmMEr
-         t9lrvu9OeUfCx0m22Ojxuk8+wlkyJbsAOFP+Uq2NA1si07SU/H4UP19ERO8yCuyAX4tD
-         mcSYt6UCQeBEeVjlUIrsrMWrPb+habcx7EL8rOWkmLzmPnKuhbK6XoVKlpr3xRHeHS1M
-         2xUv0t+tMe8M/uQpz3MNW0vjJUvcC+cnkFzWVkVuZ6W6eVfZAGMHT5GelzYb1JEUnE86
-         H01fjzLa+niqkTMNA9tJwnDc13xq9vIys9/FYLrvS2d6p9xPFUbAYHnz7jNwC7qqQP4X
-         RNGA==
-X-Forwarded-Encrypted: i=1; AJvYcCUJ2zPpVF6zaMFCmiFUwPbweCFGmUZujJUE6sXOrogfH4eQ7zihHYL2iCqFlnBmCl1ONaIrXtDiXeHBUhkNvA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxtbFuM41sG5BwWUddfiSbGTgh2aXdTaZAOxvfivHL08Mth/GPh
-	3oooZkpDOcAMnA+DEJBOYIpDFMXgQjzEj/CPOXSw+Mql2OXoYgZ4BdYReqQGjQVu2p6d1BhLZNg
-	22XM8vbol15ilUbiTJ3mFckFnLKAgaNzBRcnN4RVmo9v1lxcrWR0N58pQ3wKBftiHK5tIh8mJPA
-	==
-X-Gm-Gg: ASbGncu8BzFozmC0L2iE1xpMTODiBXyaVeJibO7OsGN7Gm9ApSr0kALEm3qMi6fhdJS
-	wJjRR+Ai9pHGu78TLPm4GBxh0wj3bC0zK4Wj1yUxwZDnKstrzSHrgv8sjr07jcySkw3fXcWj9I/
-	ClzTwviO3snNwK0v7QM4NZz3z3TpDCJh26zVvnzLMwpRC7UWfyGm8Ycu1p5uSHOXceiNYsoZP9l
-	wmbX+sqIwyAiyc0Z10C2moo/jIJwFYl0y+0z+BxSZsJHt44bt6/0jvMnK/wnBVxivvbZkCo7d8Q
-	qRav4z2EgwtKJGtyV7hnF96dZ8zz8f5mGCp0ilcOjMUm9OPJyh5LrbhFVQW3EMHp1w9IauneYjC
-	5cBGwvT8yJ/FazFq8o1fyPIzWJaWj+3cFDlfT6XFhu6mY8EbAZOfiCIZr7PUk65yZW5sP
-X-Received: by 2002:a05:600c:630d:b0:45f:2805:1d0 with SMTP id 5b1f17b1804b1-466643562b8mr8228485e9.34.1758185794752;
-        Thu, 18 Sep 2025 01:56:34 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHYmJ1Fr2McwHPbM5Z4NCFqgxWSrZ35khyH/9cWx85cuBipvAZGYhC9B54LeRlJJoQx6SMydg==
-X-Received: by 2002:a05:600c:630d:b0:45f:2805:1d0 with SMTP id 5b1f17b1804b1-466643562b8mr8228165e9.34.1758185794236;
-        Thu, 18 Sep 2025 01:56:34 -0700 (PDT)
-Received: from ?IPV6:2003:d8:2f07:dd00:ca9c:199e:d2b6:9099? (p200300d82f07dd00ca9c199ed2b69099.dip0.t-ipconnect.de. [2003:d8:2f07:dd00:ca9c:199e:d2b6:9099])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-464f64ad1b0sm33952995e9.21.2025.09.18.01.56.32
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 18 Sep 2025 01:56:33 -0700 (PDT)
-Message-ID: <434c092b-0f19-47bf-a5fa-ea5b4b36c35e@redhat.com>
-Date: Thu, 18 Sep 2025 10:56:31 +0200
+	Thu, 18 Sep 2025 10:40:11 +0000
+X-UUID: d6c4bc96947b11f09f706fa2197c6ceb-20250918
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=89KtbKiNREmrdsQot1mJ4yJfL+mn0r1STI29XAdntf4=;
+	b=G3vfInSD6oji6AqkB8yZR3XX5IAo62ynhx38g649DvTBLrLeWKHo9hSvyTBrFOXGsJnHTtuo4OMk3KO9ZKXes55nc8K7L365WFbUC40sR76vp2XHygI0gZf+FY2q2k9Z8zcWpQ0Y7EIbpw+vdJWXhdJVj5G6prShMSPbBGBZ3AI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.4,REQID:65c79b13-7469-4f09-b510-475c3ab2a4e6,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:1ca6b93,CLOUDID:ef28b26c-8443-424b-b119-dc42e68239b0,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,
+	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 3,DMD|SSN|SDN
+X-CID-BAS: 3,DMD|SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: d6c4bc96947b11f09f706fa2197c6ceb-20250918
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2030763173; Thu, 18 Sep 2025 03:40:05 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Thu, 18 Sep 2025 18:40:02 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Thu, 18 Sep 2025 18:40:02 +0800
+From: <peter.wang@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>
+CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
+	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
+	<yi-fan.peng@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
+	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
+	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>, <bvanassche@acm.org>
+Subject: [PATCH v1 00/10] Enhance UFS Mediatek Driver
+Date: Thu, 18 Sep 2025 18:36:10 +0800
+Message-ID: <20250918104000.208856-1-peter.wang@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 2/6] mm: remap unused subpages to shared zeropage when
- splitting isolated thp
-To: =?UTF-8?B?UXVuLXdlaSBMaW4gKOael+e+pOW0tCk=?= <Qun-wei.Lin@mediatek.com>,
- "catalin.marinas@arm.com" <catalin.marinas@arm.com>,
- "usamaarif642@gmail.com" <usamaarif642@gmail.com>,
- "linux-mm@kvack.org" <linux-mm@kvack.org>,
- "yuzhao@google.com" <yuzhao@google.com>,
- "akpm@linux-foundation.org" <akpm@linux-foundation.org>
-Cc: "corbet@lwn.net" <corbet@lwn.net>,
- =?UTF-8?B?QW5kcmV3IFlhbmcgKOaliuaZuuW8tyk=?= <Andrew.Yang@mediatek.com>,
- "npache@redhat.com" <npache@redhat.com>, "rppt@kernel.org"
- <rppt@kernel.org>, "willy@infradead.org" <willy@infradead.org>,
- "kernel-team@meta.com" <kernel-team@meta.com>,
- "roman.gushchin@linux.dev" <roman.gushchin@linux.dev>,
- "hannes@cmpxchg.org" <hannes@cmpxchg.org>,
- "cerasuolodomenico@gmail.com" <cerasuolodomenico@gmail.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "ryncsn@gmail.com" <ryncsn@gmail.com>, "surenb@google.com"
- <surenb@google.com>, "riel@surriel.com" <riel@surriel.com>,
- "shakeel.butt@linux.dev" <shakeel.butt@linux.dev>,
- =?UTF-8?B?Q2hpbndlbiBDaGFuZyAo5by16Yym5paHKQ==?=
- <chinwen.chang@mediatek.com>,
- "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
- =?UTF-8?B?Q2FzcGVyIExpICjmnY7kuK3mpq4p?= <casper.li@mediatek.com>,
- "ryan.roberts@arm.com" <ryan.roberts@arm.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "baohua@kernel.org" <baohua@kernel.org>,
- "kaleshsingh@google.com" <kaleshsingh@google.com>,
- "zhais@google.com" <zhais@google.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-References: <20240830100438.3623486-1-usamaarif642@gmail.com>
- <20240830100438.3623486-3-usamaarif642@gmail.com>
- <a7944523fcc3634607691c35311a5d59d1a3f8d4.camel@mediatek.com>
-From: David Hildenbrand <david@redhat.com>
-Autocrypt: addr=david@redhat.com; keydata=
- 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
- qIws/H2t
-In-Reply-To: <a7944523fcc3634607691c35311a5d59d1a3f8d4.camel@mediatek.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: oU1aYvbGyMZVMRNCJ9yOF6mTRc9voM_-P8eP6wn9kV8_1758185795
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250918_015638_600352_429F2962 
-X-CRM114-Status: GOOD (  18.87  )
+X-CRM114-CacheID: sfid-20250918_034009_932614_8564798D 
+X-CRM114-Status: UNSURE (   7.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -184,303 +90,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 18.09.25 10:53, Qun-wei Lin (林群崴) wrote:
-> On Fri, 2024-08-30 at 11:03 +0100, Usama Arif wrote:
->> From: Yu Zhao <yuzhao@google.com>
->>
->> Here being unused means containing only zeros and inaccessible to
->> userspace. When splitting an isolated thp under reclaim or migration,
->> the unused subpages can be mapped to the shared zeropage, hence
->> saving
->> memory. This is particularly helpful when the internal
->> fragmentation of a thp is high, i.e. it has many untouched subpages.
->>
->> This is also a prerequisite for THP low utilization shrinker which
->> will
->> be introduced in later patches, where underutilized THPs are split,
->> and
->> the zero-filled pages are freed saving memory.
->>
->> Signed-off-by: Yu Zhao <yuzhao@google.com>
->> Tested-by: Shuang Zhai <zhais@google.com>
->> Signed-off-by: Usama Arif <usamaarif642@gmail.com>
->> ---
->>   include/linux/rmap.h |  7 ++++-
->>   mm/huge_memory.c     |  8 ++---
->>   mm/migrate.c         | 72 ++++++++++++++++++++++++++++++++++++++----
->> --
->>   mm/migrate_device.c  |  4 +--
->>   4 files changed, 75 insertions(+), 16 deletions(-)
->>
->> diff --git a/include/linux/rmap.h b/include/linux/rmap.h
->> index 91b5935e8485..d5e93e44322e 100644
->> --- a/include/linux/rmap.h
->> +++ b/include/linux/rmap.h
->> @@ -745,7 +745,12 @@ int folio_mkclean(struct folio *);
->>   int pfn_mkclean_range(unsigned long pfn, unsigned long nr_pages,
->> pgoff_t pgoff,
->>   		      struct vm_area_struct *vma);
->>   
->> -void remove_migration_ptes(struct folio *src, struct folio *dst,
->> bool locked);
->> +enum rmp_flags {
->> +	RMP_LOCKED		= 1 << 0,
->> +	RMP_USE_SHARED_ZEROPAGE	= 1 << 1,
->> +};
->> +
->> +void remove_migration_ptes(struct folio *src, struct folio *dst, int
->> flags);
->>   
->>   /*
->>    * rmap_walk_control: To control rmap traversing for specific needs
->> diff --git a/mm/huge_memory.c b/mm/huge_memory.c
->> index 0c48806ccb9a..af60684e7c70 100644
->> --- a/mm/huge_memory.c
->> +++ b/mm/huge_memory.c
->> @@ -3020,7 +3020,7 @@ bool unmap_huge_pmd_locked(struct
->> vm_area_struct *vma, unsigned long addr,
->>   	return false;
->>   }
->>   
->> -static void remap_page(struct folio *folio, unsigned long nr)
->> +static void remap_page(struct folio *folio, unsigned long nr, int
->> flags)
->>   {
->>   	int i = 0;
->>   
->> @@ -3028,7 +3028,7 @@ static void remap_page(struct folio *folio,
->> unsigned long nr)
->>   	if (!folio_test_anon(folio))
->>   		return;
->>   	for (;;) {
->> -		remove_migration_ptes(folio, folio, true);
->> +		remove_migration_ptes(folio, folio, RMP_LOCKED |
->> flags);
->>   		i += folio_nr_pages(folio);
->>   		if (i >= nr)
->>   			break;
->> @@ -3240,7 +3240,7 @@ static void __split_huge_page(struct page
->> *page, struct list_head *list,
->>   
->>   	if (nr_dropped)
->>   		shmem_uncharge(folio->mapping->host, nr_dropped);
->> -	remap_page(folio, nr);
->> +	remap_page(folio, nr, PageAnon(head) ?
->> RMP_USE_SHARED_ZEROPAGE : 0);
->>   
->>   	/*
->>   	 * set page to its compound_head when split to non order-0
->> pages, so
->> @@ -3542,7 +3542,7 @@ int split_huge_page_to_list_to_order(struct
->> page *page, struct list_head *list,
->>   		if (mapping)
->>   			xas_unlock(&xas);
->>   		local_irq_enable();
->> -		remap_page(folio, folio_nr_pages(folio));
->> +		remap_page(folio, folio_nr_pages(folio), 0);
->>   		ret = -EAGAIN;
->>   	}
->>   
->> diff --git a/mm/migrate.c b/mm/migrate.c
->> index 6f9c62c746be..d039863e014b 100644
->> --- a/mm/migrate.c
->> +++ b/mm/migrate.c
->> @@ -204,13 +204,57 @@ bool isolate_folio_to_list(struct folio *folio,
->> struct list_head *list)
->>   	return true;
->>   }
->>   
->> +static bool try_to_map_unused_to_zeropage(struct
->> page_vma_mapped_walk *pvmw,
->> +					  struct folio *folio,
->> +					  unsigned long idx)
->> +{
->> +	struct page *page = folio_page(folio, idx);
->> +	bool contains_data;
->> +	pte_t newpte;
->> +	void *addr;
->> +
->> +	VM_BUG_ON_PAGE(PageCompound(page), page);
->> +	VM_BUG_ON_PAGE(!PageAnon(page), page);
->> +	VM_BUG_ON_PAGE(!PageLocked(page), page);
->> +	VM_BUG_ON_PAGE(pte_present(*pvmw->pte), page);
->> +
->> +	if (folio_test_mlocked(folio) || (pvmw->vma->vm_flags &
->> VM_LOCKED) ||
->> +	    mm_forbids_zeropage(pvmw->vma->vm_mm))
->> +		return false;
->> +
->> +	/*
->> +	 * The pmd entry mapping the old thp was flushed and the pte
->> mapping
->> +	 * this subpage has been non present. If the subpage is only
->> zero-filled
->> +	 * then map it to the shared zeropage.
->> +	 */
->> +	addr = kmap_local_page(page);
->> +	contains_data = memchr_inv(addr, 0, PAGE_SIZE);
->> +	kunmap_local(addr);
->> +
->> +	if (contains_data)
->> +		return false;
->> +
->> +	newpte = pte_mkspecial(pfn_pte(my_zero_pfn(pvmw->address),
->> +					pvmw->vma->vm_page_prot));
->> +	set_pte_at(pvmw->vma->vm_mm, pvmw->address, pvmw->pte,
->> newpte);
->> +
->> +	dec_mm_counter(pvmw->vma->vm_mm, mm_counter(folio));
->> +	return true;
->> +}
->> +
->> +struct rmap_walk_arg {
->> +	struct folio *folio;
->> +	bool map_unused_to_zeropage;
->> +};
->> +
->>   /*
->>    * Restore a potential migration pte to a working pte entry
->>    */
->>   static bool remove_migration_pte(struct folio *folio,
->> -		struct vm_area_struct *vma, unsigned long addr, void
->> *old)
->> +		struct vm_area_struct *vma, unsigned long addr, void
->> *arg)
->>   {
->> -	DEFINE_FOLIO_VMA_WALK(pvmw, old, vma, addr, PVMW_SYNC |
->> PVMW_MIGRATION);
->> +	struct rmap_walk_arg *rmap_walk_arg = arg;
->> +	DEFINE_FOLIO_VMA_WALK(pvmw, rmap_walk_arg->folio, vma, addr,
->> PVMW_SYNC | PVMW_MIGRATION);
->>   
->>   	while (page_vma_mapped_walk(&pvmw)) {
->>   		rmap_t rmap_flags = RMAP_NONE;
->> @@ -234,6 +278,9 @@ static bool remove_migration_pte(struct folio
->> *folio,
->>   			continue;
->>   		}
->>   #endif
->> +		if (rmap_walk_arg->map_unused_to_zeropage &&
->> +		    try_to_map_unused_to_zeropage(&pvmw, folio,
->> idx))
->> +			continue;
->>   
->>   		folio_get(folio);
->>   		pte = mk_pte(new, READ_ONCE(vma->vm_page_prot));
->> @@ -312,14 +359,21 @@ static bool remove_migration_pte(struct folio
->> *folio,
->>    * Get rid of all migration entries and replace them by
->>    * references to the indicated page.
->>    */
->> -void remove_migration_ptes(struct folio *src, struct folio *dst,
->> bool locked)
->> +void remove_migration_ptes(struct folio *src, struct folio *dst, int
->> flags)
->>   {
->> +	struct rmap_walk_arg rmap_walk_arg = {
->> +		.folio = src,
->> +		.map_unused_to_zeropage = flags &
->> RMP_USE_SHARED_ZEROPAGE,
->> +	};
->> +
->>   	struct rmap_walk_control rwc = {
->>   		.rmap_one = remove_migration_pte,
->> -		.arg = src,
->> +		.arg = &rmap_walk_arg,
->>   	};
->>   
->> -	if (locked)
->> +	VM_BUG_ON_FOLIO((flags & RMP_USE_SHARED_ZEROPAGE) && (src !=
->> dst), src);
->> +
->> +	if (flags & RMP_LOCKED)
->>   		rmap_walk_locked(dst, &rwc);
->>   	else
->>   		rmap_walk(dst, &rwc);
->> @@ -934,7 +988,7 @@ static int writeout(struct address_space
->> *mapping, struct folio *folio)
->>   	 * At this point we know that the migration attempt cannot
->>   	 * be successful.
->>   	 */
->> -	remove_migration_ptes(folio, folio, false);
->> +	remove_migration_ptes(folio, folio, 0);
->>   
->>   	rc = mapping->a_ops->writepage(&folio->page, &wbc);
->>   
->> @@ -1098,7 +1152,7 @@ static void migrate_folio_undo_src(struct folio
->> *src,
->>   				   struct list_head *ret)
->>   {
->>   	if (page_was_mapped)
->> -		remove_migration_ptes(src, src, false);
->> +		remove_migration_ptes(src, src, 0);
->>   	/* Drop an anon_vma reference if we took one */
->>   	if (anon_vma)
->>   		put_anon_vma(anon_vma);
->> @@ -1336,7 +1390,7 @@ static int migrate_folio_move(free_folio_t
->> put_new_folio, unsigned long private,
->>   		lru_add_drain();
->>   
->>   	if (old_page_state & PAGE_WAS_MAPPED)
->> -		remove_migration_ptes(src, dst, false);
->> +		remove_migration_ptes(src, dst, 0);
->>   
->>   out_unlock_both:
->>   	folio_unlock(dst);
->> @@ -1474,7 +1528,7 @@ static int unmap_and_move_huge_page(new_folio_t
->> get_new_folio,
->>   
->>   	if (page_was_mapped)
->>   		remove_migration_ptes(src,
->> -			rc == MIGRATEPAGE_SUCCESS ? dst : src,
->> false);
->> +			rc == MIGRATEPAGE_SUCCESS ? dst : src, 0);
->>   
->>   unlock_put_anon:
->>   	folio_unlock(dst);
->> diff --git a/mm/migrate_device.c b/mm/migrate_device.c
->> index 8d687de88a03..9cf26592ac93 100644
->> --- a/mm/migrate_device.c
->> +++ b/mm/migrate_device.c
->> @@ -424,7 +424,7 @@ static unsigned long
->> migrate_device_unmap(unsigned long *src_pfns,
->>   			continue;
->>   
->>   		folio = page_folio(page);
->> -		remove_migration_ptes(folio, folio, false);
->> +		remove_migration_ptes(folio, folio, 0);
->>   
->>   		src_pfns[i] = 0;
->>   		folio_unlock(folio);
->> @@ -840,7 +840,7 @@ void migrate_device_finalize(unsigned long
->> *src_pfns,
->>   			dst = src;
->>   		}
->>   
->> -		remove_migration_ptes(src, dst, false);
->> +		remove_migration_ptes(src, dst, 0);
->>   		folio_unlock(src);
->>   
->>   		if (folio_is_zone_device(src))
-> 
-> Hi,
-> 
-> This patch has been in the mainline for some time, but we recently
-> discovered an issue when both mTHP and MTE (Memory Tagging Extension)
-> are enabled.
-> 
-> It seems that remapping to the same zeropage might causes MTE tag
-> mismatches, since MTE tags are associated with physical addresses.
+From: Peter Wang <peter.wang@mediatek.com>
 
-Does this only trigger when the VMA has mte enabled? Maybe we'll have to 
-bail out if we detect that mte is enabled.
+Improves the UFS Mediatek driver by fixing runtime suspend
+deadlocks, correcting clock scaling with PM QoS, and adjusting
+power management flows. It addresses shutdown/suspend race 
+conditions, enables MCQ mode interrupts, and removes redundant
+functions. Support for new platforms is added with the 
+MMIO_OTSD_CTRL register, and MT6991 performance is optimized
+with MRTT and random improvements. These changes collectively 
+enhance driver performance, stability, and compatibility.
 
-Also, I wonder how KSM and the shared zeropage works in general with 
-that, because I would expect similar issues when we de-duplicate memory?
+Peter Wang (8):
+  ufs: host: mediatek: Fix runtime suspend error deadlock
+  ufs: host: mediatek: Correct clock scaling with PM QoS flow
+  ufs: host: mediatek: Adjust clock scaling for PM flow
+  ufs: host: mediatek: Handle clock scaling for high gear in PM flow
+  ufs: host: mediatek: Adjust sync length for FASTAUTO mode
+  ufs: host: mediatek: Fix shutdown/suspend race condition
+  ufs: host: mediatek: Remove duplicate function
+  ufs: host: mediatek: Add support for new platform with MMIO_OTSD_CTR
+
+Alice Chao (1):
+  ufs: host: mediatek: Enable interrupts for MCQ mode
+
+Naomi Chu (1):
+  ufs: host: mediatek: Support new feature for MT6991
+
+ drivers/ufs/core/ufs-sysfs.c    |   3 +-
+ drivers/ufs/core/ufshcd-priv.h  |   5 --
+ drivers/ufs/core/ufshcd.c       |  18 +----
+ drivers/ufs/host/ufs-mediatek.c | 134 ++++++++++++++++++++++++++------
+ drivers/ufs/host/ufs-mediatek.h |   7 ++
+ include/ufs/ufshcd.h            |  20 +++++
+ include/ufs/unipro.h            |   7 +-
+ 7 files changed, 150 insertions(+), 44 deletions(-)
 
 -- 
-Cheers
-
-David / dhildenb
+2.45.2
 
 
