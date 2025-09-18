@@ -4,79 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B54ACA1013
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Sep 2025 19:32:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60F0BCA1013
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Sep 2025 23:51:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B+iOGzdWX3z/rYlrk5yA0SAeuhbPHc3L1cNeSiXPCmY=; b=L22EhoyzAak9xJj1Cos9HcGxly
-	dHelAoxLtfzT0FSU5x9+0KzjCl7tmQMi6GLc91qYaj1BcHZgIrEc7q+UH6zXUDsp4pIaPolKBmskr
-	plg9rhqLkOo9DPQWzdW7M2xOMvCXQ60tTz6E+IksV93XmpJsczSdI3QyuRWgNR8J8W3ijyasusayy
-	Css8b/Dj2GA7DCftUrs8EB/tfd6EIEjnSMLvXbBC/4N4b2LcDJ/9b7LIT7iICgcXRzme2DWSCfGCq
-	wFAYhL+jPPon3EDyYEVe/RVnmp+DCtFjwyXKVKA89FRLoI6XMzwKbX2fkPRnCgiwzmQuAyjCpBgmc
-	cbjnK2/Q==;
+	bh=gfjSYheYrlVR0uqLfVkFYD26bK3rG/XlSeZtdEtGwIw=; b=UfAa7sJUKpMqIR5GHV7wq1g2yO
+	m6tv6/0oje6lmoLRfrkrIr2EIY6kH+a6qNG0N5xH2qKn8NbFBtL7r4Ro7KZaHChgv048OZJGRxbtg
+	PVtuFUkdr1c5qwxiDbBBnmgXWE6g/a6mVGEEUoXAlzHcLW3uIRjFnj7XM398708FXenPg8//bcTRP
+	yflDlL08C32z4lkhlxMW47Da2UXLz60VN3K/1QMvcKuFY9CsMhHV5Kn0OelNSc0EUTmXvwJWRbdAT
+	I/MFvtFu5YDAbSnZf1kAE56cBPgm8TVdI5rVGq+/Sw5vYNZMKPMuMHfLvULJyYHBDEyBar0QnoreA
+	r03VMJvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzKN1-00000000zlJ-3EHs;
-	Thu, 18 Sep 2025 19:32:43 +0000
-Received: from 003.mia.mailroute.net ([199.89.3.6])
+	id 1uzOOv-00000001St8-30Xt;
+	Thu, 18 Sep 2025 23:50:57 +0000
+Received: from mail-oa1-x2d.google.com ([2001:4860:4864:20::2d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzKMz-00000000zkN-35rn
+	id 1uzOOt-00000001SsP-3eQi
 	for linux-mediatek@lists.infradead.org;
-	Thu, 18 Sep 2025 19:32:42 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 003.mia.mailroute.net (Postfix) with ESMTP id 4cSQlD6N7hzlgqym;
-	Thu, 18 Sep 2025 19:32:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1758223958; x=1760815959; bh=B+iOGzdWX3z/rYlrk5yA0SAe
-	uhbPHc3L1cNeSiXPCmY=; b=O4SG3OTzWfS4geXjtxMgQoP/tyiiFw8bt2ARrEFF
-	jGAqnp+2dgojuesk4ibF62hFo60uXEs+YvWlQloGfbUKiK591c5pJT7TAwscdqt9
-	7taNP5YWFadb6Ck7vA4nvT5ypJhFBaekmcD57x0JD3+Yk0hFp245vttjSi3q4T0Y
-	6WOO54WPGdMRwgklgpKIETeGfu2yjhpC76HY5Yr20/eqO0nnecvi12atM64hOGJ+
-	A0H7EDKmeUzfNtMu/zwfsR4RF+Bq/XdRIHRRNHnN06HN0YomxswCblC4tSJzchC2
-	Pg8iZpzIsFwFRcTfW1jdsMjRHCJcq9YiWcnKhsBkCqQTeg==
-X-Virus-Scanned: by MailRoute
-Received: from 003.mia.mailroute.net ([127.0.0.1])
- by localhost (003.mia [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id TNb82r7mKlWP; Thu, 18 Sep 2025 19:32:38 +0000 (UTC)
-Received: from [100.66.154.22] (unknown [104.135.204.82])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 003.mia.mailroute.net (Postfix) with ESMTPSA id 4cSQkx1bJ8zlgqyN;
-	Thu, 18 Sep 2025 19:32:24 +0000 (UTC)
-Message-ID: <7a51c923-d311-46c4-b9db-5df807a091f2@acm.org>
-Date: Thu, 18 Sep 2025 12:32:23 -0700
+	Thu, 18 Sep 2025 23:50:56 +0000
+Received: by mail-oa1-x2d.google.com with SMTP id 586e51a60fabf-30ccec59b4bso1096360fac.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 18 Sep 2025 16:50:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1758239454; x=1758844254; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=gfjSYheYrlVR0uqLfVkFYD26bK3rG/XlSeZtdEtGwIw=;
+        b=eg3uFgQZ3t84aZl8ulL51SQLAS+yVnCfS9U5EWy6q9J9hmhi65Tu70B5Hu9GMlc+Ll
+         LmweggCazn9wDL9tMKaDl+qFf9BaH01+9XAxx+sfx30Gh1fvhw1qQIyi4eR9vOkV9/ml
+         lVkRZGV27y+o48MquXcJo+EP9C6G9tNFflZ4KDHzKQ/TD6+e+MsMlGFtYKcHocCpL4JS
+         eQqAYRPuwy6tfWsB+JbGek1wnukPykl040JY4xXLmH8FzjoV2CSm5j6CZT69bJ1hflrT
+         rjfa2bycDJ8P4zloyRA/TmSGYieIxGwfI1XS1dGHZ/lvEjmI0mJl48WrPxeHOsH3F9Yd
+         PTxw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1758239454; x=1758844254;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=gfjSYheYrlVR0uqLfVkFYD26bK3rG/XlSeZtdEtGwIw=;
+        b=C7DvuznmXnAPIkxKfLABD2f5Xs/uSnvFJ5sHwmNJBCXdQqlumLdNdM+8kfzVnjNxyk
+         X+GCMlsJNyR4y0UoRHN5sV00KVwFgsqSvWrWGJwFuR02rEVQWoDjnuSLudLqwiKfWZYB
+         9Q1VIaD27eeDbvneXbon9iYyN1CUyuJZvh37GPb1av6goNRrjC3EVf57YR1KaCcQEK3Z
+         uqqtFiBWTiLOIZdsFhfOFwFUBuC/3a5n5EO7J/eGKlAuNk8gbMx1xleH2j+W2esj/wN6
+         ESfVjk7LsaOSD2wsg/WQ9J3mEmYI+3aTQ0BWBSNvm5nAHdAg2MFXpUIljD3h2VP0IU0z
+         8INw==
+X-Forwarded-Encrypted: i=1; AJvYcCV4pNnWEr5Ra+iG0kCZU+D8nhuNlQ7U0E1huOEVctbn6eUeTVz4cPHMKK1zzc+6YgRu2V8j6S+Sa01Ak5WdMQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxoy/m4Xo+FrdguSA0xPA9UisL0cYxU0Sxo2tYPW2l6UbikTlA9
+	Di0gFR7XCIR2pXXx+SlGwzRZIA8i01u1CkuUQhbjWxOD70nHYPqUXeIugxP17PBSEwoN9qMElxG
+	uz4h/hYeA6b9zt5JfK7y2KyOIjDOfWus=
+X-Gm-Gg: ASbGncvb96NHtTGPtbqCTyNT2LSrPLfmXfEYIaNAdV9wPBqmsC+11utcEe/EzKYGT9G
+	/Tei2cKgJvYQT4svpkyJdMHJB4HZbWOleAoHHdJ9kI9IgWZSviIsms8kSxuyhV5K0vmIpJDrSui
+	mmRx5Zh/GcMF9CJMLDjo4CuJ4bVJRU9CDw8GVsJAyPjBBNRKfY/FJJY3FsOTejTZjvojU5iBQ1P
+	WYy2pcI5jggnUHJ7fO35u5MwYs=
+X-Google-Smtp-Source: AGHT+IFl61ezr6lGg9Y8huzd4lUuItQQFeCjeYkcbAulR0oeCohvd0FtJ04m812XYlXTYo+4qdyMj6+Phytv0CLbQXE=
+X-Received: by 2002:a05:6870:c151:b0:31d:8964:b4aa with SMTP id
+ 586e51a60fabf-33bb3ab9686mr861868fac.6.1758239454270; Thu, 18 Sep 2025
+ 16:50:54 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 10/10] ufs: host: mediatek: Support new feature for
- MT6991
-To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com,
- yi-fan.peng@mediatek.com, qilin.tan@mediatek.com, lin.gui@mediatek.com,
- tun-yu.yu@mediatek.com, eddie.huang@mediatek.com, naomi.chu@mediatek.com,
- ed.tsai@mediatek.com
-References: <20250918104000.208856-1-peter.wang@mediatek.com>
- <20250918104000.208856-11-peter.wang@mediatek.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20250918104000.208856-11-peter.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20250822021217.1598-1-jjian.zhou@mediatek.com> <20250822021217.1598-3-jjian.zhou@mediatek.com>
+In-Reply-To: <20250822021217.1598-3-jjian.zhou@mediatek.com>
+From: Jassi Brar <jassisinghbrar@gmail.com>
+Date: Thu, 18 Sep 2025 18:50:42 -0500
+X-Gm-Features: AS18NWC4m9av00lwavoKLMq8wYvsb2rbN1xJZakR6WVpJIjFSlMM8j-tfAib_HE
+Message-ID: <CABb+yY16DPJwVTHap4F6n5YJoOJzQLtqKiCQ-2MUm67pzF8uXg@mail.gmail.com>
+Subject: Re: [PATCH v5 2/2] mailbox: mediatek: Add mtk-vcp-mailbox driver
+To: Jjian Zhou <jjian.zhou@mediatek.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>, 
+	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250918_123241_854512_7E66C035 
-X-CRM114-Status: UNSURE (   4.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250918_165055_916313_D2973A5D 
+X-CRM114-Status: GOOD (  10.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,14 +99,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/18/25 3:36 AM, peter.wang@mediatek.com wrote:
-> Enable random performance improvement features to boost
-> overall system responsiveness.
+On Thu, Aug 21, 2025 at 9:12=E2=80=AFPM Jjian Zhou <jjian.zhou@mediatek.com=
+> wrote:
 
-I think that you meant "random I/O performance improvement" instead
-of "random performance improvement".
+.....
 
-Thanks,
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/slab.h>
+> +
+> +struct mtk_vcp_mbox_priv {
+Maybe 'mtk_vcp_mbox' is a more appropriate name ?
 
-Bart.
+> +       void __iomem *base;
+> +       struct device *dev;
+> +       struct mbox_controller mbox;
+> +       const struct mtk_vcp_mbox_cfg *cfg;
+> +       struct mtk_ipi_info ipi_recv;
+
+Maybe also have "struct mbox_chan chan[1]; " so that you don't have to
+allocate one during the probe.
+Also if you have  "struct mbox_controller mbox;" as the first member,
+you could simply typecast that to get this structure.
+Something like "struct mpfs_mbox" in mailbox-mpfs.c
+
+....
+> +
+> +static struct mbox_chan *mtk_vcp_mbox_xlate(struct mbox_controller *mbox=
+,
+> +                                           const struct of_phandle_args =
+*sp)
+> +{
+> +       if (sp->args_count)
+> +               return NULL;
+> +
+> +       return mbox->chans;
+
+return &mbox->chans[0]   seems better.
+
+thnx
 
