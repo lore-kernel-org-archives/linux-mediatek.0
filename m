@@ -4,213 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26711CAC59A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Sep 2025 08:12:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40840CAC5A5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Sep 2025 08:14:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2WXJwqKCGfU/rqB7PtU6dFcKPYf813i/f8+HuBJrHdA=; b=i/stw/dcFefEEsCNCMYFCcCtlS
-	r7GGDapIVgQFuWDGysxFdmmpK3GzVA5ZvlI5ntWpWwwKXMPmb8PyXNOK40l72u5aJDHWvEI8KX3hZ
-	Fm4/h7ShpffkUwlTAHxg2wRPrLfG7ogdQX+9ThLFBJL3pv7/Egehh4tZKe4PDp7q+9+FGmlF5auNG
-	JPV9ZF6+dwvi5iALlI8YK1/0WACunRdGsgZJQjmHlj6/npQn9ErOUEdJznRTkj8AEdpZPUiZtiybh
-	RIyV4qzvsVSjm4KLUGfRNTMOeAXdieIv3ikOsNE9g07zeKVeT3pJ8xWwUYffz4a2HTRu6BKKDkQ/g
-	2mMvjqnQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Dc53JcOzdrcUIu2iVuDKY0KAeJ//x1/I8rOfO8TAJ0E=; b=QJlzRVrs283yNhhG2VYKnIsdRL
+	J6QtZ5yQn+yP8K5NL9KKqUnJw9VzEl9+1woazCLciqyGdNXNBgrO/eEKev5IMKrRfzj3k0sXL02mA
+	IfAixQQOTMo7VN0Z8I+bZTFfjyzV/9K4RjdOfKZ6qySaSGovZ8YJQd6pmZmFUzsKoKPC4jT8AoS1M
+	fDVsgwzLfYxn7cMcQb4YoUqYskqoHgMhps5qR68O03kh1Jac7K8yEzXJfyB9y/839V++/T/6zulNn
+	4NlgrRZXJJcUxoP9FMLNLxRRSNK02DgGmAACFZj8nnFGdAGcwCcq9x2PXdlcqiHcbvkIDDV0Z1FyI
+	XovryGmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzWEj-00000002DGU-1R5B;
-	Fri, 19 Sep 2025 08:12:57 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1uzWGN-00000002DSw-1lcR;
+	Fri, 19 Sep 2025 08:14:39 +0000
+Received: from out-174.mta0.migadu.com ([2001:41d0:1004:224b::ae])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzWEg-00000002DFD-2Esq
+	id 1uzWGL-00000002DS6-1I5z
 	for linux-mediatek@lists.infradead.org;
-	Fri, 19 Sep 2025 08:12:55 +0000
-X-UUID: 6f170b02953011f0a52f393f94899d25-20250919
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=2WXJwqKCGfU/rqB7PtU6dFcKPYf813i/f8+HuBJrHdA=;
-	b=OfcFW8GibcrUA8XnuPWozEBCknpHua6TwzULEo38E9yETsetxPNM6wKvykPHQ+LrNUrByd/LJQ0YOSQ5g0eE6orNbaTZQcCOFDNzd9jBDOMn48tB14T9mhIS/RNOD+kf4OYYkPt/jd+sWuWW0HmPHepoP9G18Bx7UNA1db78ddc=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.4,REQID:ce6ba225-759d-4606-a728-fd0b0e2c2770,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:1ca6b93,CLOUDID:a31abb6c-8443-424b-b119-dc42e68239b0,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111|836|888|898,
-	TC:-5,Content:0|15|50,EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,
-	BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 6f170b02953011f0a52f393f94899d25-20250919
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1824043134; Fri, 19 Sep 2025 01:12:50 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Fri, 19 Sep 2025 16:12:47 +0800
-Received: from SG2PR04CU009.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Fri, 19 Sep 2025 16:12:47 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=fQXcAqoGEfUraupxZsFhiCqfXgS2/V7BxDVzrXTubquiAMTa0ckhIn6rVnx6HTEfhuCrL+1NCOfknvQLVQ3DYrkP+cgvilky0JbZDPnIFX1BtTRHUTTGIhlaiyt73NMoyFisEp9a3DZMiX9+YCRbDKWpgNdXFcquk4YbEFNbToffq2D5pGGg23E3u/gKHLLuQRmOTNq9z6DN5gWEsIUG6R7/XuQh92Nf+8wxzRM+w9Pt5SZ1vX2TukUi9I8FUDFodebMdKHZzZh/jXeBDvcOUutNiGKRLRiE1zFHkKuXO7lt/gI1nKDNF1+6+v8mg13uTfixcAopye3acfHa/ns0uw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=2WXJwqKCGfU/rqB7PtU6dFcKPYf813i/f8+HuBJrHdA=;
- b=i8CxTXOg3t1LT3LxlRKqZUcES+gJ3gZfDCCwFZakZnjuPnmRCTpoT2lZb2h0Q793vul55qv5A+FKh6qGlVbBc4lB1mRWHDQglQR2Put3yrOCo8CN1zfWJdXu8CAVocJYeWZXod71B+3aJoL62cPMqnXuK5DjkflZsDTB4ZNncpBDlYmLWBrJB2FgzqVsmnHzmwS7nCk7jinbiW4h3pZHfeEWJrN2O4LMWzcVwwZU/4ThamGyDMq7UlHKmPNH1XKnwSnOVZFEdLhrG7vwBp9aanetxFZkKOI/rln130CSsXP6qXIOWVOmKhewHE0fMheLIVRpBAV790LlnF7r+EQN3g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=2WXJwqKCGfU/rqB7PtU6dFcKPYf813i/f8+HuBJrHdA=;
- b=NZbWMnQ+s2wo0ixzoDp3VmMVdbdkUV27el6bMGxGwCRWnSTO6eKZHIuqvErBzFDCAv0NC9pc41rKfa2SYC1WRCYElu3sBlh4PmDDZ0bgrLWtLLmg6EvK6lO/hG/Ug4auzto5I4pra6kUWuI2XbJQF6wxVni0dEsFpb2gFha6PnA=
-Received: from PSAPR03MB5605.apcprd03.prod.outlook.com (2603:1096:301:66::6)
- by TYZPR03MB7996.apcprd03.prod.outlook.com (2603:1096:400:44c::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9137.13; Fri, 19 Sep
- 2025 08:12:45 +0000
-Received: from PSAPR03MB5605.apcprd03.prod.outlook.com
- ([fe80::3945:7dbc:62bd:c31c]) by PSAPR03MB5605.apcprd03.prod.outlook.com
- ([fe80::3945:7dbc:62bd:c31c%6]) with mapi id 15.20.9137.015; Fri, 19 Sep 2025
- 08:12:45 +0000
-From: =?utf-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>
-To: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
-	"bvanassche@acm.org" <bvanassche@acm.org>, "martin.petersen@oracle.com"
-	<martin.petersen@oracle.com>
-CC: =?utf-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
-	=?utf-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
-	=?utf-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
-	=?utf-8?B?RWQgVHNhaSAo6JSh5a6X6LuSKQ==?= <Ed.Tsai@mediatek.com>, wsd_upstream
-	<wsd_upstream@mediatek.com>, =?utf-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
-	<Chaotian.Jing@mediatek.com>, =?utf-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?=
-	<Chun-hung.Wu@mediatek.com>, =?utf-8?B?WWktZmFuIFBlbmcgKOW9ree+v+WHoSk=?=
-	<Yi-fan.Peng@mediatek.com>, =?utf-8?B?UWlsaW4gVGFuICjosK3pupLpup8p?=
-	<Qilin.Tan@mediatek.com>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>,
-	=?utf-8?B?SmlhamllIEhhbyAo6YOd5Yqg6IqCKQ==?= <jiajie.hao@mediatek.com>,
-	=?utf-8?B?TGluIEd1aSAo5qGC5p6XKQ==?= <Lin.Gui@mediatek.com>,
-	=?utf-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?= <Naomi.Chu@mediatek.com>,
-	=?utf-8?B?VHVuLXl1IFl1ICjmuLjmlabogb8p?= <Tun-yu.Yu@mediatek.com>
-Subject: Re: [PATCH v1 05/10] ufs: host: mediatek: Adjust sync length for
- FASTAUTO mode
-Thread-Topic: [PATCH v1 05/10] ufs: host: mediatek: Adjust sync length for
- FASTAUTO mode
-Thread-Index: AQHcKIizkmhDcDTILkKnaSAmJBYWOrSZU6SAgADVpAA=
-Date: Fri, 19 Sep 2025 08:12:45 +0000
-Message-ID: <3e86fcbaa7a2219d6421c17c1e52d0fc6f4163cc.camel@mediatek.com>
-References: <20250918104000.208856-1-peter.wang@mediatek.com>
-	 <20250918104000.208856-6-peter.wang@mediatek.com>
-	 <ff2243ed-3f7d-4746-80cc-b8f3f1b9e8b7@acm.org>
-In-Reply-To: <ff2243ed-3f7d-4746-80cc-b8f3f1b9e8b7@acm.org>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: PSAPR03MB5605:EE_|TYZPR03MB7996:EE_
-x-ms-office365-filtering-correlation-id: f6843f63-d7a6-445a-6509-08ddf754503c
-x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|376014|1800799024|366016|38070700021;
-x-microsoft-antispam-message-info: =?utf-8?B?bDZ2ak5QeEgwaWdwVHlWWDhzWnFWTWQzbVJxZDVjRnVHQjAzUmdackp5SnBC?=
- =?utf-8?B?bCszV0xPYTFiR0hFcG9kSlRTVnZVdHl4eFAwcWtoMTdLRGc4YithYVdlTURX?=
- =?utf-8?B?UkpGWnR6MXpOZWdzR0xGYmdoa25GWlNEWHRxelRHVjM2OUVqNHlSdDRPV1Bk?=
- =?utf-8?B?QzNFR3dSbHlXSjk0Rk1PUTBndmxBd3E5QThDbTJWQjdsVXI2SzN2bWdKdHJz?=
- =?utf-8?B?U3BBK0FqOG1Va29lMkV1ajZqaHpyWi9qeFdyY1ljNFI1KzROU3dUR3ZGanEz?=
- =?utf-8?B?aUM1WGhvdzVDWHlTcklTYWtncUZ3VVc0TW8vV2FpSU5LZTVPd2NYSnhZY3Vz?=
- =?utf-8?B?dXJuOVNlT2wwYk9rbm1Fck1VY1Fmd1pocitQaXhvb2NhU1plSlhoSk5qZFRw?=
- =?utf-8?B?OTNiRVM1aUxaOU9LMU9IRzVMdHNudXhyNzcrbkZFOWVyYkEwbVpCWVhmbkVD?=
- =?utf-8?B?TldwMG9UQ29EeHVRV2wvTjJYZ0dKN0ZWWHZXS3Z1aGxaWjVrVWZ3U2U2Vk9z?=
- =?utf-8?B?N3l0YmhmZDU3ZDdZbkI0a3NCWXpSTEdvWmJwbjhTeDNIY3dBcEdFV0RpelhK?=
- =?utf-8?B?N1JZd2gzazlSWWlRYTIwbTNMWWNGcUxKb3dXLytSN0NFMGRaSzRxMXBXcE5i?=
- =?utf-8?B?UDQxMkFnVm4wWkVyUTEwa2NYMHBNQ2M0bkgzM2RmNTJzaUVTd2hPTFExRFNh?=
- =?utf-8?B?RkdCSkVFU1NpWGhnLzg0MzhTNjFiS1dsSlk2QVl2NGZnRHJodWZEZHczTkIr?=
- =?utf-8?B?UDk0MUlhdDZvclUxUmRhM242ZGs4c21zU2x0MHN4YUNZRlNsUWd6K1lSZnR0?=
- =?utf-8?B?VWV6ZGdyQzc0SlNGQ2pEUEFlM0YwRTFLVWV3ajRUempiaENjVnF2WGVvTmFx?=
- =?utf-8?B?d3lkemdzU3c2NWV3RGoxZHFjandqTENXckhxb3BRNm5RMEpRVmxZbFdKTDJQ?=
- =?utf-8?B?VWgvSmQxbUtuM0NwbXBVWEZJMHRpYUVBaEhqRFc3b3VOTm8wRGVhMVpnNzla?=
- =?utf-8?B?NWlrZHBBUVE2Ty95TmwxUEd0NHQ2VENLQXJnODRQRktSbXNtNVRzSVcwZVFR?=
- =?utf-8?B?NmxTamtoa3l3UTZMRFA5OHFRaFRmclRlTWpYbjJFeFQwWkRMR2xESTE1Wk1U?=
- =?utf-8?B?U28ycTZ4K2FROFFZSzNiQWxISmgrdmZqOEVuL2lPd1RuMi9Sc0ZZR0FJRDh2?=
- =?utf-8?B?eExIWDR0YmM3TkdrN3NzeEsvd0FnRkw0djNVQjR4N2p6NEUwaHl2cTJmdStF?=
- =?utf-8?B?elloNkwzaUZBMVhPWEtOenNyY2IxNGoxc0JERFVwa3dxTFM3dnBURWg1RDBj?=
- =?utf-8?B?WU5pd0xxd0xLWERpRW5kQThacmZ2djdmcG90SkU3Zm5QdmFKN3IwNmRkQ0tv?=
- =?utf-8?B?eHIrcDR2aHIwNDhDbGRBWktaaCtsaGRyTzJRbVkyYWViM3hPb0t1NTdoT0hL?=
- =?utf-8?B?OUxjQTgvbkdZRDZwS253ZzkrcXB5bTQ4Nm55RVY1ajRjSUZPMk5Zb1VQQ2kv?=
- =?utf-8?B?TTVhQzZVV0lQK1VibnFZMHk4MVpGNW5NNHhvL013MXEyTzdsNTh6dWlxWSt1?=
- =?utf-8?B?aUxpNUo2bHBCeng2aDFzUDhiaVZoVi9FMllyYWtvbFQ0WUJEZlZXQTBXWnpU?=
- =?utf-8?B?UDBoSWJjTk1IdXovMzZaY2MydTFacTY5bFU5Ty9RYWJYdWJQZTN1YWswNi90?=
- =?utf-8?B?WlhiUzU3ZjNIbHpET3ZTM2tXL3ZaN09zUEtYUHNGL2VvSGRZQ0xEdStmWkU1?=
- =?utf-8?B?anZVNGR6QXNYMHV4cDdxaHpzVGxCUVJOUnl1UDNLMHg1YUw0ZFU0MG9qNFl2?=
- =?utf-8?B?QXZ1cHduaXBxcy9lVmtXVVB4ZmxqbDZGakhhMlNDUFh4UnBraUtiUUNOcCtW?=
- =?utf-8?B?MGdFVmQzM1V3RkF6WFNxWnFoM2E1T2loeCt1YVB4VHlIdnI0TWpNTW9GK3ZK?=
- =?utf-8?B?M3hYeFFidWhHbFRXdkMvVmYxbWtTNml2YnlxbFpVdWkrSTI4TVQ0N3I2L25W?=
- =?utf-8?B?dWg3Tk9JM0JnPT0=?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PSAPR03MB5605.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(1800799024)(366016)(38070700021);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?YjRuNndxMHFHME03cXVXeFNnMmZicDhOZnR6bGlvQ0JuK0hJZlUzVXdtendZ?=
- =?utf-8?B?ZVNYVk0yNzN3Rmx4Tk13d3NJbUh0MEtFb1E5RmVYNlN4Y1VaVTZhUnh5ZHNv?=
- =?utf-8?B?Mkg0ZnlvSDBNenNwTE9FdEZWZzJVbWJBcUZlTDM4TVYzOEcxVk9yR21tWVBi?=
- =?utf-8?B?NitKYU5QSERGSDRwV2psblNLa3MycWpEOUJ5ZGo0UkNnRm50RVpjbWdNUk1q?=
- =?utf-8?B?MXR5RUROdDg5RFhTd0pvT2dmZllmSCtYQzRrdHpBZjVvTkxpZlJCeWFLWUtM?=
- =?utf-8?B?K0Z0YnNNMVl0RzJKbmp6SFErMVJPb2VvSWVhVG9NSjdqMlgraTJyOXY5QlU2?=
- =?utf-8?B?U1IyeC9aRWFtN0NFZWoyMDAzN2xqM1dMOGNQemRaYUo0TDBKblRwdWVCeElH?=
- =?utf-8?B?N2o0NUVnelM1VGUwTWVINllmUEt3amF3NC9rd2hETDh2S3A1bXJpcGVpWjZk?=
- =?utf-8?B?b1pwTm1VeHhCWkJqazc1YzFwQXMzcE5wOG8zRjl5UERZdHFyTlg2bUxIU3Rp?=
- =?utf-8?B?ektpY01wUHQyendvSmRGalgzYTllbHBiSkV5VmF3YWpVdllYd3A4TXdIT3Qw?=
- =?utf-8?B?Rzc3U1hSUUJkcmtlOXE1UDFTMkJyWFRwcFlHWGt2UUFZdzQzQ2RJK2s0ZGFS?=
- =?utf-8?B?b2tic09ic0o1ZittMTJiUjVaUUVtQ3hrZmY3M2FzdlVyTS94TnVpMFN0MWph?=
- =?utf-8?B?TVdkVGJXTTdVMFhlQUxKb0szYlkzdEI4cGlYSi9ZeWFIeXNzb3V2WWtndUV1?=
- =?utf-8?B?VXdsOGMyTFJIUUxoQ3drMzhqZnpqUWpMU1BjbFcyNWZQeW5QQjlaUkJDaG9G?=
- =?utf-8?B?TUV2bzFsV1F3Q2RKdnIyWXBKV01vNDdmRU1wTFkySTBTbjFGOTBXRGQ5b0ha?=
- =?utf-8?B?NXdaaXRUY05SckROOW4xU294ZXJnRmlsNUcyb2ViVnFHeThuZW1hT2NySUFB?=
- =?utf-8?B?cEhheWxCaUJ4bTFZZG1ES2NHM3VwWm9YYk9CakRCUWR5eDdxTklvYlJxaUw3?=
- =?utf-8?B?U09KYzk2M29XVHBpUXZNSDBvWXlEQ2UvT0htYnVia2pwcHpUc0M2OCt2S0xO?=
- =?utf-8?B?L0lDUHJ5b1hTdkZpei9GUzdiTGJXVjh3MU9QaU5qQ3lHV0FhdTU0SzV5eDlD?=
- =?utf-8?B?bjBmQjUwUU5DZnp5c1ptcHZ1ejJvUFZNNDh6WXZVMStqQkFIN3A4ang5UVNJ?=
- =?utf-8?B?VloxallKWnJ1RCtYbXFTalI5UEFya2Z2d0IybFFqWGZHVDNPTFdwTmg4Y25N?=
- =?utf-8?B?UDV1eXhHN0wzYlBPeDZIZFlHZUVVQ2QyTTA4K3VHQWpGRk1pQkg1TjR6T1BB?=
- =?utf-8?B?ODFEb1RVWXRBUklVZFBLR0xjQWxpN0hnMUpPSXVLTzRveldsa2MyRHh3QlRv?=
- =?utf-8?B?QnZjdTREWTdONkd6S2x2SU1mcEFOUmhiRm10ZjNZOXhmOTI0bExBTDdPYUQy?=
- =?utf-8?B?dU1oNStjUVA0SHRyWk0yRzhhaEs0bkJxQ1pnVTBQbXFwSkRmZ0d0dGNJY3Iw?=
- =?utf-8?B?dXNHT0dnTTlPRGplME9vb3BIajJEemN5UEo2ZUU1a2pGN0FJRGNSZWVJejVL?=
- =?utf-8?B?MWlWNk5JcHZzRTlSMkVJWi9zQmdjd2pQVDdRWUdYd09kU0VIQTJkU0ZnUHFx?=
- =?utf-8?B?blFhMFdNTENBT2t4R3Q1Sm1mZ3JrM0wwZkNBdFVPLythMllQNit3NjJIcVZa?=
- =?utf-8?B?bUJLQWFSVEtJUFova0ZLOVdXM0VKcmxVZWp3c21SajVHenBUQ05aSmNqUnlP?=
- =?utf-8?B?blVSSzloVTJCVlpIbTdlbVhXTDNPcTNidkRhVzlTN1AvQ1Jsdk9jdnRTK1RO?=
- =?utf-8?B?NXl3bnU2OTd0eFNlajdFM29uU2RtcFU2TDU4TWtKN08xVUI4WHBrejVaeWxX?=
- =?utf-8?B?d0s4cm1pOHBYZkJReUlzMTNpWHRHQUw3ZWo3bFIxU3hNQUQya0NTMys2RFQ4?=
- =?utf-8?B?dFl5aHVmL0QvWC9XSkNkMzlZUTRlR1VJWGd4NStWamFvMmFkSUhZNzVuTlFh?=
- =?utf-8?B?cFRuQkxMMitnWm1odWJ6N1FkWkFmRnNGTDZLV1pkcCtHYXNadlRwSDhsTGNZ?=
- =?utf-8?B?UG5QTHMxbkp4TnFlNUtxYlB5SnhXQW1GK1FJc05PYlR0d2xOREdGZHQ3UXVC?=
- =?utf-8?B?WHY1ejFyQ21CYnFvZnIwdWVHS0M3UkxFT3NabDBQVllYRURqZ1JYbXN6WUcw?=
- =?utf-8?B?SFE9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <BD3B5CF79FC0104F8F477CE7F51F5F64@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+	Fri, 19 Sep 2025 08:14:38 +0000
+Message-ID: <4cf41cd5-e93a-412b-b209-4180bd2d4015@linux.dev>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+	t=1758269664;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Dc53JcOzdrcUIu2iVuDKY0KAeJ//x1/I8rOfO8TAJ0E=;
+	b=BmeGBByUETlTGTM2SzKN9sT+aElM0iDnr9NVCQ0Y4S5LyZS5qVFjUY0/ZQhQcjxmkujkwF
+	lcqoAIrEgGu+qx5juQO8M0lGpLChTPtWmm4PXKC8zXPXthowkvLtjPKwUnGPeV4fEL7kE5
+	GoVQEabwufMTPdzDfKN5emTG80lC0C8=
+Date: Fri, 19 Sep 2025 16:14:11 +0800
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: PSAPR03MB5605.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f6843f63-d7a6-445a-6509-08ddf754503c
-X-MS-Exchange-CrossTenant-originalarrivaltime: 19 Sep 2025 08:12:45.1416
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: sfxvoR3j3xl0DSBa1rgoNTm9f5s5nvaYcvCEdLBz4JkrY6QV1q6O/hG0Um9nBFL+kflaH+Ek3dcKH1TDLD1H+Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR03MB7996
+Subject: Re: [PATCH v5 2/6] mm: remap unused subpages to shared zeropage when
+ splitting isolated thp
+Content-Language: en-US
+To: David Hildenbrand <david@redhat.com>
+Cc: =?UTF-8?B?UXVuLXdlaSBMaW4gKOael+e+pOW0tCk=?= <Qun-wei.Lin@mediatek.com>,
+ "catalin.marinas@arm.com" <catalin.marinas@arm.com>,
+ "usamaarif642@gmail.com" <usamaarif642@gmail.com>,
+ "linux-mm@kvack.org" <linux-mm@kvack.org>,
+ "yuzhao@google.com" <yuzhao@google.com>,
+ "akpm@linux-foundation.org" <akpm@linux-foundation.org>,
+ "corbet@lwn.net" <corbet@lwn.net>,
+ =?UTF-8?B?QW5kcmV3IFlhbmcgKOaliuaZuuW8tyk=?= <Andrew.Yang@mediatek.com>,
+ "npache@redhat.com" <npache@redhat.com>, "rppt@kernel.org"
+ <rppt@kernel.org>, "willy@infradead.org" <willy@infradead.org>,
+ "kernel-team@meta.com" <kernel-team@meta.com>,
+ "roman.gushchin@linux.dev" <roman.gushchin@linux.dev>,
+ "hannes@cmpxchg.org" <hannes@cmpxchg.org>,
+ "cerasuolodomenico@gmail.com" <cerasuolodomenico@gmail.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "ryncsn@gmail.com" <ryncsn@gmail.com>, "surenb@google.com"
+ <surenb@google.com>, "riel@surriel.com" <riel@surriel.com>,
+ "shakeel.butt@linux.dev" <shakeel.butt@linux.dev>,
+ =?UTF-8?B?Q2hpbndlbiBDaGFuZyAo5by16Yym5paHKQ==?=
+ <chinwen.chang@mediatek.com>,
+ "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
+ =?UTF-8?B?Q2FzcGVyIExpICjmnY7kuK3mpq4p?= <casper.li@mediatek.com>,
+ "ryan.roberts@arm.com" <ryan.roberts@arm.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "baohua@kernel.org" <baohua@kernel.org>,
+ "kaleshsingh@google.com" <kaleshsingh@google.com>,
+ "zhais@google.com" <zhais@google.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+References: <20240830100438.3623486-1-usamaarif642@gmail.com>
+ <20240830100438.3623486-3-usamaarif642@gmail.com>
+ <a7944523fcc3634607691c35311a5d59d1a3f8d4.camel@mediatek.com>
+ <434c092b-0f19-47bf-a5fa-ea5b4b36c35e@redhat.com>
+ <CABzRoyYWQMFTGYgfC7N=cWMnL_+5Y05=jrMhFjBf1aKOGxzq5g@mail.gmail.com>
+ <ebedc478-7519-4e30-854e-f6616a7647b0@redhat.com>
+ <120445c8-7250-42e0-ad6a-978020c8fad3@linux.dev>
+ <9d2c3e3e-439d-4695-b7c9-21fa52f48ced@redhat.com>
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Lance Yang <lance.yang@linux.dev>
+In-Reply-To: <9d2c3e3e-439d-4695-b7c9-21fa52f48ced@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250919_011254_577027_9F38ADD5 
-X-CRM114-Status: GOOD (  13.08  )
+X-CRM114-CacheID: sfid-20250919_011437_487708_CF675042 
+X-CRM114-Status: GOOD (  28.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -225,21 +103,141 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCAyMDI1LTA5LTE4IGF0IDEyOjI4IC0wNzAwLCBCYXJ0IFZhbiBBc3NjaGUgd3JvdGU6
-DQo+IE9uIDkvMTgvMjUgMzozNiBBTSwgcGV0ZXIud2FuZ0BtZWRpYXRlay5jb23CoHdyb3RlOg0K
-PiA+IEBAIC0xNjAsNyArMTYzLDkgQEANCj4gPiDCoCAjZGVmaW5lIFBBX1BBQ1BGUkFNRUNPVU5U
-wqDCoCAweDE1QzANCj4gPiDCoCAjZGVmaW5lIFBBX1BBQ1BFUlJPUkNPVU5UwqDCoCAweDE1QzEN
-Cj4gPiDCoCAjZGVmaW5lIFBBX1BIWVRFU1RDT05UUk9MwqDCoCAweDE1QzINCj4gPiAtI2RlZmlu
-ZSBQQV9UWEhTQURBUFRUWVBFwqDCoMKgwqDCoMKgIDB4MTVENA0KPiA+ICsjZGVmaW5lIFBBX1RY
-SFNHNFNZTkNMRU5HVEjCoCAweDE1RDANCj4gPiArI2RlZmluZSBQQV9UWEhTQURBUFRUWVBFwqDC
-oMKgwqAgMHgxNUQ0DQo+ID4gKyNkZWZpbmUgUEFfVFhIU0c1U1lOQ0xFTkdUSMKgIDB4MTVENg0K
-PiA+IA0KPiA+IMKgIC8qIEFkcGF0IHR5cGUgZm9yIFBBX1RYSFNBREFQVFRZUEUgYXR0cmlidXRl
-ICovDQo+ID4gwqAgI2RlZmluZSBQQV9SRUZSRVNIX0FEQVBUwqDCoMKgwqDCoMKgIDB4MDANCj4g
-DQo+IFRoZSAiI2RlZmluZSBQQV9UWEhTQURBUFRUWVBFwqDCoCAweDE1RDQiIGxpbmUgc2hvdWxk
-bid0IGhhdmUgYmVlbg0KPiBjaGFuZ2VkLiBJdCBzZWVtcyBsaWtlIHRoaXMgcGF0Y2ggY2hhbmdl
-cyB0aGUgd2hpdGVzcGFjZSBiZWZvcmUgdGhlDQo+ICIweCI/DQo+IA0KPiBUaGFua3MsDQo+IA0K
-PiBCYXJ0Lg0KDQpIaSBCYXJ0LA0KDQpZZXMsIHRoZSBhbGlnbm1lbnQgd2FzIGRpZmZlcmVudCBm
-cm9tIHRoZSBvdGhlciBkZWZpbml0aW9ucywNCnNvIEkgY2hhbmdlZCB0aGUgc3BhY2VzIHRvIHRh
-YnMgZm9yIGNvbnNpc3RlbmN5LiANClRoZSBjb250ZW50IGl0c2VsZiB3YXMgbm90IG1vZGlmaWVk
-Lg0KDQpUaGFua3MuDQpQZXRlcg0KDQo=
+
+
+On 2025/9/19 15:55, David Hildenbrand wrote:
+>>> I think where possible we really only want to identify problematic
+>>> (tagged) pages and skip them. And we should either look into fixing KSM
+>>> as well or finding out why KSM is not affected.
+>>
+>> Yeah. Seems like we could introduce a new helper,
+>> folio_test_mte_tagged(struct
+>> folio *folio). By default, it would return false, and architectures like
+>> arm64
+>> can override it.
+> 
+> If we add a new helper it should instead express the semantics that we 
+> cannot deduplicate.
+
+Agreed.
+
+> 
+> For THP, I recall that only some pages might be tagged. So likely we 
+> want to check per page.
+
+Yes, a per-page check would be simpler.
+
+> 
+>>
+>> Looking at the code, the PG_mte_tagged flag is not set for regular THP.
+> 
+> I think it's supported for THP per page. Only for hugetlb we tag the 
+> whole thing through the head page instead of individual pages.
+
+Right. That's exactly what I meant.
+
+> 
+>> The MTE
+>> status actually comes from the VM_MTE flag in the VMA that maps it.
+>>
+> 
+> During the rmap walk we could check the VMA flag, but there would be no 
+> way to just stop the THP shrinker scanning this page early.
+> 
+>> static inline bool folio_test_hugetlb_mte_tagged(struct folio *folio)
+>> {
+>>     bool ret = test_bit(PG_mte_tagged, &folio->flags.f);
+>>
+>>     VM_WARN_ON_ONCE(!folio_test_hugetlb(folio));
+>>
+>>     /*
+>>      * If the folio is tagged, ensure ordering with a likely subsequent
+>>      * read of the tags.
+>>      */
+>>     if (ret)
+>>         smp_rmb();
+>>     return ret;
+>> }
+>>
+>> static inline bool page_mte_tagged(struct page *page)
+>> {
+>>     bool ret = test_bit(PG_mte_tagged, &page->flags.f);
+>>
+>>     VM_WARN_ON_ONCE(folio_test_hugetlb(page_folio(page)));
+>>
+>>     /*
+>>      * If the page is tagged, ensure ordering with a likely subsequent
+>>      * read of the tags.
+>>      */
+>>     if (ret)
+>>         smp_rmb();
+>>     return ret;
+>> }
+>>
+>> contpte_set_ptes()
+>>     __set_ptes()
+>>         __set_ptes_anysz()
+>>             __sync_cache_and_tags()
+>>                 mte_sync_tags()
+>>                     set_page_mte_tagged()
+>>
+>> Then, having the THP shrinker skip any folios that are identified as
+>> MTE-tagged.
+> 
+> Likely we should just do something like (maybe we want better naming)
+> 
+> #ifndef page_is_mergable
+> #define page_is_mergable(page) (true)
+> #endif
+
+
+Maybe something like page_is_optimizable()? Just a thought ;p
+
+> 
+> And for arm64 have it be
+> 
+> #define page_is_mergable(page) (!page_mte_tagged(page))
+> 
+> 
+> And then do
+> 
+> diff --git a/mm/huge_memory.c b/mm/huge_memory.c
+> index 1f0813b956436..1cac9093918d6 100644
+> --- a/mm/huge_memory.c
+> +++ b/mm/huge_memory.c
+> @@ -4251,7 +4251,8 @@ static bool thp_underused(struct folio *folio)
+> 
+>          for (i = 0; i < folio_nr_pages(folio); i++) {
+>                  kaddr = kmap_local_folio(folio, i * PAGE_SIZE);
+> -               if (!memchr_inv(kaddr, 0, PAGE_SIZE)) {
+> +               if (page_is_mergable(folio_page(folio, i)) &&
+> +                   !memchr_inv(kaddr, 0, PAGE_SIZE)) {
+>                          num_zero_pages++;
+>                          if (num_zero_pages > khugepaged_max_ptes_none) {
+>                                  kunmap_local(kaddr);
+> diff --git a/mm/migrate.c b/mm/migrate.c
+> index 946253c398072..476a9a9091bd3 100644
+> --- a/mm/migrate.c
+> +++ b/mm/migrate.c
+> @@ -306,6 +306,8 @@ static bool try_to_map_unused_to_zeropage(struct 
+> page_vma_mapped_walk *pvmw,
+> 
+>          if (PageCompound(page))
+>                  return false;
+> +       if (!page_is_mergable(page))
+> +               return false;
+>          VM_BUG_ON_PAGE(!PageAnon(page), page);
+>          VM_BUG_ON_PAGE(!PageLocked(page), page);
+>          VM_BUG_ON_PAGE(pte_present(ptep_get(pvmw->pte)), page);
+
+Looks good to me!
+
+> 
+> 
+> For KSM, similarly just bail out early. But still wondering if this is 
+> already checked
+> somehow for KSM.
+
++1 I'm looking for a machine to test it on.
+
 
