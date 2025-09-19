@@ -4,50 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CFDFCAC59A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Sep 2025 18:18:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0699CAC59A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Sep 2025 19:02:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=628/bCaqz6mQk7KC/EDxAwYEyuvGT6galZBj/iVU6TE=; b=ufxkBr8kvqlw+fTSGEkcsJxcpm
-	bJY0NUqrJZPYr1zy1D6z/j/sTAS2Orhptrcd+a7n8Fq9slu+nZyk9Wdi2kTRneA8HegFr9wOjLphE
-	lgmbufT3MoA7pfzCZ4QxeFyjF0OC0Xlx1BlKaWr6NsNetxLUOAk9wTs/xIHpsR30gsTpWWWelpn6T
-	l2XiBXBIBVAl4xgXzC1Q81/q/LIY7JbujSvI+l7Ky4BcHt8N9Ch/cvUdCF4trLTzb24Sgrhr8OdDA
-	U9evLp/beW7Wmy+w4u3G2fFUSNAuojPGk1GFKuZ7F1XJTouLDBS18Cs/oSFxcsZ86c5/mV5uCRXLx
-	ktMrU7aQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=srXz9Z4cJj2t72vaKDBPc8Jra6K2uLJkmaxWaZoZKCo=; b=FjmTetre32ZIQpo647EGsCl2zi
+	gPFkod74JXi1VbdPmBjDsi00KBfkIJ2bTfvG+ZZqguVEIMoZ18g1yJYzfwPdpsq+gmNuJETyAGAtu
+	oRMC6VWSqxpXCZ2rkwuG5EpCSrXlR2x6zGKK66JkYIYSyDe3RXisvcsGHNvtRLO8EAxzfj7646lGG
+	szhm4CNhkVuiWK5IxhwPuL+bmLvkZjgPxGs44fh81w1AKoJyrRQhZhci1kpjTfDnncBM9N4Etbgri
+	hV/6LRAfLaQExYeLjydeS7M2yNLmfIp+QpYLX6ZkFKH/NNwO+A/anI2KkK1bxtuqDjPPjI51xci8h
+	kgSvBvwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzfgs-00000003kLt-3AKw;
-	Fri, 19 Sep 2025 18:18:38 +0000
-Received: from mail.gentoo.org ([2001:470:ea4a:1:5054:ff:fec7:86e4] helo=smtp.gentoo.org)
+	id 1uzgNB-00000003qn2-3L6Z;
+	Fri, 19 Sep 2025 19:02:21 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzfgq-00000003kLW-3tmo
-	for linux-mediatek@lists.infradead.org;
-	Fri, 19 Sep 2025 18:18:38 +0000
-Received: from mop.sam.mop (2.8.3.0.0.0.0.0.0.0.0.0.0.0.0.0.a.5.c.d.c.d.9.1.0.b.8.0.1.0.0.2.ip6.arpa [IPv6:2001:8b0:19dc:dc5a::382])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sam)
-	by smtp.gentoo.org (Postfix) with ESMTPSA id A1DA8342053;
-	Fri, 19 Sep 2025 18:18:24 +0000 (UTC)
-From: Sam James <sam@gentoo.org>
-To: linux-mediatek@lists.infradead.org
-Cc: xiangzhedev@gmail.com, linux-firmware@kernel.org
-Subject: Regression in linux-firmware-20250917 for mt7921e driver
-Organization: Gentoo
-User-Agent: mu4e 1.12.12; emacs 31.0.50
-Date: Fri, 19 Sep 2025 19:18:21 +0100
-Message-ID: <87bjn6fgr6.fsf@gentoo.org>
+	id 1uzgN9-00000003qmT-1U5e;
+	Fri, 19 Sep 2025 19:02:21 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1758308534; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=cH26IUmfARHZ5DlOjLqJkt4BcKgTyMaw8aBcfi+wYGKunFM3yTMF4ZoSXy4tXORYws2aFWrJGTas51jLJrcEW7UX4gP1WKTynnTpUFJMopcqdrxcVQ4yoXgP2HFLxCqFoSRUDjQq/lrG3mq+z3jJIdMedjpjuip/G/IxYJz3WGU=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1758308534; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=srXz9Z4cJj2t72vaKDBPc8Jra6K2uLJkmaxWaZoZKCo=; 
+	b=AlIectYeirCZSjvdAEuhH9MPsbcqsC0iGW32eA2BlNvcVVw553j/0pEA8bHrHSoPF7qw21EIHz4v3ixnI+5xW/aUll4zUh5AZ9t3l+S4Ckc9DHw1UdaszLpjmPz6JW85UpFC9m6CQiz1iZi/r5as8s9457bf4ZI6bcvo/TjFuhs=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1758308534;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=srXz9Z4cJj2t72vaKDBPc8Jra6K2uLJkmaxWaZoZKCo=;
+	b=M8o8jMjCP5E/dushTSx4+AKMYmJ9cIaieQrGOZL/HiRUDSaIaoNwj98LIaaIcJ9G
+	9tO5HU9FOEaB/8MdbnOVcW0ZjVmB1gb++8Np/meByyS/gKct1DBVmHx6GRU+qldJluV
+	KPTOLE57YGY9C4/DN2g+DC4kn5ADWroyQgbEL91E=
+Received: by mx.zohomail.com with SMTPS id 1758308533233746.4562667171067;
+	Fri, 19 Sep 2025 12:02:13 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Chen-Yu Tsai <wenst@chromium.org>, linux-mediatek@lists.infradead.org,
+ Jassi Brar <jassisinghbrar@gmail.com>
+Cc: Jjian Zhou <jjian.zhou@mediatek.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v5 2/2] mailbox: mediatek: Add mtk-vcp-mailbox driver
+Date: Fri, 19 Sep 2025 21:02:08 +0200
+Message-ID: <5789241.GXAFRqVoOG@workhorse>
+In-Reply-To: <CABb+yY3N2=01yKJon25_6_vmihj09H=T9pLwzdGPrqY5h=hRFQ@mail.gmail.com>
+References: <20250822021217.1598-1-jjian.zhou@mediatek.com>
+ <CAGXv+5F-L2+4PGixx7OG2+vp2yXc_2885yMzqWtkQDwhxVAPxw@mail.gmail.com>
+ <CABb+yY3N2=01yKJon25_6_vmihj09H=T9pLwzdGPrqY5h=hRFQ@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250919_111836_989891_33280768 
-X-CRM114-Status: UNSURE (   4.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250919_120219_460218_A0271A9F 
+X-CRM114-Status: GOOD (  22.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,26 +83,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Friday, 19 September 2025 18:32:12 Central European Summer Time Jassi Br=
+ar wrote:
+> On Fri, Sep 19, 2025 at 3:31=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org>=
+ wrote:
+> >
+> > On Fri, Sep 19, 2025 at 7:50=E2=80=AFAM Jassi Brar <jassisinghbrar@gmai=
+l.com> wrote:
+> > >
+> > > On Thu, Aug 21, 2025 at 9:12=E2=80=AFPM Jjian Zhou <jjian.zhou@mediat=
+ek.com> wrote:
+> > >
+> > > .....
+> > >
+> > > > +#include <linux/module.h>
+> > > > +#include <linux/of.h>
+> > > > +#include <linux/platform_device.h>
+> > > > +#include <linux/slab.h>
+> > > > +
+> > > > +struct mtk_vcp_mbox_priv {
+> > > Maybe 'mtk_vcp_mbox' is a more appropriate name ?
+> > >
+> > > > +       void __iomem *base;
+> > > > +       struct device *dev;
+> > > > +       struct mbox_controller mbox;
+> > > > +       const struct mtk_vcp_mbox_cfg *cfg;
+> > > > +       struct mtk_ipi_info ipi_recv;
+> > >
+> > > Maybe also have "struct mbox_chan chan[1]; " so that you don't have to
+> > > allocate one during the probe.
+> >
+> > > Also if you have  "struct mbox_controller mbox;" as the first member,
+> > > you could simply typecast that to get this structure.
+> > > Something like "struct mpfs_mbox" in mailbox-mpfs.c
+> >
+> > I read somewhere that this way of subclassing is not recommended.
+> > Instead the base class should explicitly not be the first member.
+> > And then container_of() should be used.
+> >
+> > I don't remember where I read this though. But I think the explicit
+> > container_of() is easier for understanding the intent.
+> >
+> And how does container_of() work ? :)
+> typcasting the first member to its parent is the simplest form of contain=
+er_of.
+>=20
+> -j
+>=20
+>=20
 
-I'm forwarding a downstream report in Gentoo from
-https://bugs.gentoo.org/963106 which also came up in Arch at
-https://gitlab.archlinux.org/archlinux/packaging/packages/linux-firmware/-/issues/29
-and on the linux-firmware gitlab at
-https://gitlab.com/kernel-firmware/linux-firmware/-/merge_requests/684.
+Which is why it's completely equivalent and since code is supposed
+to communicate meaning to humans, container_of should be used.
 
-The user describes it on the Arch bug as:
-"""
-core/linux-firmware-mediatek@20250917-1 causes network to fail startup
-and dramatically slows down basically every operation in the kernel.
+"In this case if nobody ever reorders members you can avoid a
+preprocessor macro that will get optimised away" is pointless
+nitpicking. It's a strictly worse way to do the same thing.
 
-symptoms are a pegged kworker thread at 100% cpu util, shutdown being
-prevented, extremely slow commands like sudo, filesystem access. I
-suspect a interrupt storm of some sort.
-"""
+Why bikeshed the use of container_of of all things?
 
-And another mentions that removing the module w/ modprobe -r mt7921e hangs.
 
-thanks,
-sam
+
 
