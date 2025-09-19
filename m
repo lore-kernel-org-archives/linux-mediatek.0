@@ -4,139 +4,181 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F386FCAC59A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Sep 2025 12:51:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05D49CAC5A8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Sep 2025 13:09:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=P7EsUMYXHHc/Hj/nlWQya6DR1wNlm900zfb2R+Df6WY=; b=3LRbOS4oOfeeEKmAcKbRPUaiuN
-	pl8Lidxan5zO7p/HscGQG8jB+izwDh8IfW1h3ORFk2zyK1frVB5obSVLjkfndYEmo9CUAZWdw3ta2
-	75zop17NZnGoWAau7TqufRN6kSw7sraS4Vu1Pe4EJCcQBGLk+MdNBn5EQsdWljY6xw8X5gabdo8Un
-	zDtuYfncl20myXwuxYw9U2LQHp2fZmnN6QEpUNmXynVjnDUSZCguvNAz90RNSQ3Hv0jMfk0lcoYeE
-	64A3sC3w6MyDEp6ea0cMijbwfnui1CrLJ3vGpN85gqH5f/8v5EZd28XpJjgPZigYrRawemCKYx/Jc
-	tSLXSR5Q==;
+	bh=ovqkR0UKdR/sN2rMZ/4i3G3rJU0T3m7HOdabe1r5GkM=; b=f09mMUycx0JJkL/MCm+GOINL0M
+	hhLBRb7Lr6tq1elEg31dKvzP83p9M8LoN2Z8wjaWhZ1HnPbTuHmei4bbf+UonHmq7kXv4GgpUhv4I
+	46LdlaA2LScccqZe3XkejtGyN4ietSk5lhsxiF5RGiW/BFtda58FUCokKkezaY4Uboqtaeb12dz+K
+	56DLtcbcERxmiLqqt+DfeGZD9fTp3Y40Dy4cH2aPaLamAFIotMslNc12T889KUtP6hGa/CwhGlkct
+	jB0ZuQA1L9X8owDir/zGcDS1Az7bX0ZR8NhPJB4XCLc8CP0zimFBittTetbmCZZqBR0r+v/3g+8y7
+	yeex88DA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzaaI-00000002trF-0p37;
-	Fri, 19 Sep 2025 12:51:30 +0000
-Received: from smtpout-02.galae.net ([185.246.84.56])
+	id 1uzard-00000002wf3-1uST;
+	Fri, 19 Sep 2025 13:09:25 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzaaF-00000002tnu-0KFS;
-	Fri, 19 Sep 2025 12:51:28 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id 838151A0F14;
-	Fri, 19 Sep 2025 12:51:25 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 56419606A8;
-	Fri, 19 Sep 2025 12:51:25 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 20FCD102F177A;
-	Fri, 19 Sep 2025 14:51:19 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1758286283; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:content-language:in-reply-to:references:autocrypt;
-	bh=P7EsUMYXHHc/Hj/nlWQya6DR1wNlm900zfb2R+Df6WY=;
-	b=MQuzlCR27/ddSuxVyS5qY0kJULqCHs7jXv9yY400xPGYo8ha//NLBkWb4g4pgN749eZc0F
-	2Or0o9oqrLbhWSTi6WjHvOfhY1ahPUFM4RwKwZRuRa8tjYkdQOBNu+KihHkkwhhH+X4n2k
-	8TPntxqQtxpJBS8yszhyA7hxXH6bq0oSBHAEKJM9zhaR/0ULgTP6gkzz0By9S1t3bXkbOc
-	qmFg0dcbJi6IaxfJUahF9X4d4s9oczDyo1mHgNd6c+4eOhiJl6150A+zQFtnE0sOlELen6
-	bRC1qz3QJRffh5AvLwUR51pcQgrAq0JuzUxUI++T8PSs5AvlPVl8VUGHapMq9Q==
-Message-ID: <d31ed29f-742d-4a23-9049-12169cf83846@bootlin.com>
-Date: Fri, 19 Sep 2025 14:51:18 +0200
+	id 1uzarZ-00000002wdc-2E1x
+	for linux-mediatek@lists.infradead.org;
+	Fri, 19 Sep 2025 13:09:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1758287359;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=ovqkR0UKdR/sN2rMZ/4i3G3rJU0T3m7HOdabe1r5GkM=;
+	b=GLvHzBcnf0FZk+0oelgD1iPjAUez4FXW5V5NCkkrvV98RdAO7V8Kg752fEaruIfNMEMp4P
+	i+6OBJm7VyPbBn2XC0EVDpDGwhWRmeZDvhVAsG3JhS36YreJIRZ7C6OaViPARUMO+GqO6N
+	WXjRaaUsUMvriVjv7l4yju1XgsmPmPo=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-209-3WThvvDrMTeSGo2EpB_Srw-1; Fri, 19 Sep 2025 09:09:18 -0400
+X-MC-Unique: 3WThvvDrMTeSGo2EpB_Srw-1
+X-Mimecast-MFC-AGG-ID: 3WThvvDrMTeSGo2EpB_Srw_1758287357
+Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-4687ad5c341so6484035e9.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 19 Sep 2025 06:09:17 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1758287357; x=1758892157;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ovqkR0UKdR/sN2rMZ/4i3G3rJU0T3m7HOdabe1r5GkM=;
+        b=b0m8fWjzPdJ7cAIiZgpSpBH8nmP1nrmbzoa5/xU7bK18ttYfNPBhVcHFKjaCZV7EdT
+         HZeAhdxs6qGY0r3slQ0/rw8HYK48vDeEF62oHBaze1ftwM1gkFXpWlYtXfZBOYcHVuxK
+         mmLlddhEzXIMCzL1s9wjwzbge5YCO5LuWmFoBVyblgWG4XgeQziiQkxqfHOLrrqIgIhQ
+         ncnztGnEmJGRSSeTTIeSku1L1FfdZaCv5EBhZ7trMPfb3E0ecQV4lb1rKFVb/3/4wVxi
+         a+ZCeEIUzYG/YD+CuFlZvFZE71X16pS6z2qmw86yJi/RfBUPMB6JJ+0X8ZR7TO/UU6ue
+         Q4vw==
+X-Forwarded-Encrypted: i=1; AJvYcCXJMvarhwThKDifejyqpgcgKlSxv51iEBd5cCAvj6SNhxB3BRv3YVHMsqtzPxDANXvTMRL6oKydvfSyAu5b9w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyxMDjmMb0qf3Ha6WEhn7d1YqgAHEqzOSLvKEOjylFC0HjZEQYl
+	yoi1tDJw23UnW0ygeOKT4rcYIVMX1lzCUqeqTB/sWixz6YfOrjYkRbTED2pqYQIZVmrLSQruy0c
+	HEbQV3WsrnXkyuzOt1uq3DL6/HBnu6o7aLBxZENzWRer2zVgSQLYs/dzvkWO+e4HfljtTV3A7rw
+	==
+X-Gm-Gg: ASbGncvJgZZpf6aVT35+BwCnAwvfA+0esllOls+oIjpZuYv1qU5KnOjzKDFygOeuoRG
+	RtBlsLEKqzHkpH1a81jYuZYuEf0QwduCt6t6oH3KPW9jDjKTXHsotKESYN+gCat+NpNnPHdIudZ
+	+Y6lWcmODCFx7IKm8I6FL4P2j+AlPIqKB5WBEwx/A++iGveI74yLplj/Fx/ztRJf4pr/787+M5T
+	SZn5+omLQEtaCQ9pms68S2CQQiwVXTh7WnZwEVOif2rsrlU7KGVjugm0y369Jadn+1fYCb9Pec6
+	V1YtGv335fIKhlSA841NPwR3APrkiYH+3yhyBF8FGheamyy/f1HMohbw1Bu8XamIHdQoRUF9aOx
+	jfuNb4KHi1O/MhkdFdc9LqNEMfaNKB6pDqve/BwpRLPkAa9jMdDxYPHyxNmITi4LKU3xP
+X-Received: by 2002:a05:600c:4f52:b0:468:9798:2043 with SMTP id 5b1f17b1804b1-46961fce431mr17004695e9.26.1758287356790;
+        Fri, 19 Sep 2025 06:09:16 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG4GRr8aem06VfxNDntrn8WqDyw/HDHqGfVNfE4MfkYd1AhW83MBNY5XfwK4pa+JSgBQolhAA==
+X-Received: by 2002:a05:600c:4f52:b0:468:9798:2043 with SMTP id 5b1f17b1804b1-46961fce431mr17004045e9.26.1758287356216;
+        Fri, 19 Sep 2025 06:09:16 -0700 (PDT)
+Received: from ?IPV6:2003:d8:2f23:5600:727b:b2f6:94a1:a51b? (p200300d82f235600727bb2f694a1a51b.dip0.t-ipconnect.de. [2003:d8:2f23:5600:727b:b2f6:94a1:a51b])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3f1549285c9sm1179821f8f.52.2025.09.19.06.09.13
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 19 Sep 2025 06:09:15 -0700 (PDT)
+Message-ID: <ca2106a3-4bb2-4457-81af-301fd99fbef4@redhat.com>
+Date: Fri, 19 Sep 2025 15:09:13 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-From: Louis Chauvet <louis.chauvet@bootlin.com>
-Subject: Re: [PATCH RFC v2 12/20] drm/crtc: Track post-blend color pipeline
- client cap in drm_crtc_state
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Haneen Mohammed <hamohammed.sa@gmail.com>,
- Melissa Wen <melissa.srw@gmail.com>
-Cc: Alex Hung <alex.hung@amd.com>, wayland-devel@lists.freedesktop.org,
- harry.wentland@amd.com, leo.liu@amd.com, ville.syrjala@linux.intel.com,
- pekka.paalanen@collabora.com, contact@emersion.fr, mwen@igalia.com,
- jadahl@redhat.com, sebastian.wick@redhat.com, shashank.sharma@amd.com,
- agoins@nvidia.com, joshua@froggi.es, mdaenzer@redhat.com, aleixpol@kde.org,
- xaver.hugl@gmail.com, victoria@system76.com, uma.shankar@intel.com,
- quic_naseer@quicinc.com, quic_cbraga@quicinc.com, quic_abhinavk@quicinc.com,
- marcan@marcan.st, Liviu.Dudau@arm.com, sashamcintosh@google.com,
- chaitanya.kumar.borah@intel.com, mcanal@igalia.com, kernel@collabora.com,
- daniels@collabora.com, leandro.ribeiro@collabora.com,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Simona Vetter <simona.vetter@ffwll.ch>
-References: <20250917-mtk-post-blend-color-pipeline-v2-0-ac4471b44758@collabora.com>
- <20250917-mtk-post-blend-color-pipeline-v2-12-ac4471b44758@collabora.com>
-Content-Language: en-US, fr
-Autocrypt: addr=louis.chauvet@bootlin.com; keydata=
- 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
-In-Reply-To: <20250917-mtk-post-blend-color-pipeline-v2-12-ac4471b44758@collabora.com>
+Subject: Re: [PATCH v5 2/6] mm: remap unused subpages to shared zeropage when
+ splitting isolated thp
+To: Lance Yang <lance.yang@linux.dev>
+Cc: =?UTF-8?B?UXVuLXdlaSBMaW4gKOael+e+pOW0tCk=?= <Qun-wei.Lin@mediatek.com>,
+ "catalin.marinas@arm.com" <catalin.marinas@arm.com>,
+ "usamaarif642@gmail.com" <usamaarif642@gmail.com>,
+ "linux-mm@kvack.org" <linux-mm@kvack.org>,
+ "yuzhao@google.com" <yuzhao@google.com>,
+ "akpm@linux-foundation.org" <akpm@linux-foundation.org>,
+ "corbet@lwn.net" <corbet@lwn.net>,
+ =?UTF-8?B?QW5kcmV3IFlhbmcgKOaliuaZuuW8tyk=?= <Andrew.Yang@mediatek.com>,
+ "npache@redhat.com" <npache@redhat.com>, "rppt@kernel.org"
+ <rppt@kernel.org>, "willy@infradead.org" <willy@infradead.org>,
+ "kernel-team@meta.com" <kernel-team@meta.com>,
+ "roman.gushchin@linux.dev" <roman.gushchin@linux.dev>,
+ "hannes@cmpxchg.org" <hannes@cmpxchg.org>,
+ "cerasuolodomenico@gmail.com" <cerasuolodomenico@gmail.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "ryncsn@gmail.com" <ryncsn@gmail.com>, "surenb@google.com"
+ <surenb@google.com>, "riel@surriel.com" <riel@surriel.com>,
+ "shakeel.butt@linux.dev" <shakeel.butt@linux.dev>,
+ =?UTF-8?B?Q2hpbndlbiBDaGFuZyAo5by16Yym5paHKQ==?=
+ <chinwen.chang@mediatek.com>,
+ "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
+ =?UTF-8?B?Q2FzcGVyIExpICjmnY7kuK3mpq4p?= <casper.li@mediatek.com>,
+ "ryan.roberts@arm.com" <ryan.roberts@arm.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "baohua@kernel.org" <baohua@kernel.org>,
+ "kaleshsingh@google.com" <kaleshsingh@google.com>,
+ "zhais@google.com" <zhais@google.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+References: <20240830100438.3623486-1-usamaarif642@gmail.com>
+ <20240830100438.3623486-3-usamaarif642@gmail.com>
+ <a7944523fcc3634607691c35311a5d59d1a3f8d4.camel@mediatek.com>
+ <434c092b-0f19-47bf-a5fa-ea5b4b36c35e@redhat.com>
+ <CABzRoyYWQMFTGYgfC7N=cWMnL_+5Y05=jrMhFjBf1aKOGxzq5g@mail.gmail.com>
+ <ebedc478-7519-4e30-854e-f6616a7647b0@redhat.com>
+ <120445c8-7250-42e0-ad6a-978020c8fad3@linux.dev>
+ <9d2c3e3e-439d-4695-b7c9-21fa52f48ced@redhat.com>
+ <4cf41cd5-e93a-412b-b209-4180bd2d4015@linux.dev>
+ <dfb303b9-151b-49ec-b7ef-691c71bd5385@linux.dev>
+ <9395a9ca-d865-42d7-9ea1-8e693e4e38e0@linux.dev>
+From: David Hildenbrand <david@redhat.com>
+Autocrypt: addr=david@redhat.com; keydata=
+ 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
+ qIws/H2t
+In-Reply-To: <9395a9ca-d865-42d7-9ea1-8e693e4e38e0@linux.dev>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 1KCfHaBoAAzVIumd6nl6Cb3-KH-1BXIpmxl3ItTM-Es_1758287357
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250919_055127_262793_FB85A86C 
-X-CRM114-Status: GOOD (  15.41  )
+X-CRM114-CacheID: sfid-20250919_060921_723762_04774D51 
+X-CRM114-Status: GOOD (  23.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -151,62 +193,201 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-Le 18/09/2025 à 02:43, Nícolas F. R. A. Prado a écrit :
-> Some drivers, like VKMS, only have access to the drm_crtc_state but not
-> the drm_atomic_state during composition of the output framebuffer. Store
-> the state of the post-blend color pipeline client cap in the
-> drm_crtc_state so those drivers can decide whether to look at the color
-> pipeline or the legacy properties for the color management settings to
-> apply.
-
-Reviewed-by: Louis Chauvet <louis.chauvet@bootlin.com>
-
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> ---
->   drivers/gpu/drm/drm_atomic.c | 1 +
->   include/drm/drm_crtc.h       | 8 ++++++++
->   2 files changed, 9 insertions(+)
+On 19.09.25 14:19, Lance Yang wrote:
+> Hey David,
 > 
-> diff --git a/drivers/gpu/drm/drm_atomic.c b/drivers/gpu/drm/drm_atomic.c
-> index 6982c978dc530b838353ace60f748660c3b4524d..bbfa35c800240722785a6db440eb3d47ef9c8ed6 100644
-> --- a/drivers/gpu/drm/drm_atomic.c
-> +++ b/drivers/gpu/drm/drm_atomic.c
-> @@ -386,6 +386,7 @@ drm_atomic_get_crtc_state(struct drm_atomic_state *state,
->   	state->crtcs[index].new_state = crtc_state;
->   	state->crtcs[index].ptr = crtc;
->   	crtc_state->state = state;
-> +	crtc_state->color_pipeline_enabled = state->post_blend_color_pipeline;
->   
->   	drm_dbg_atomic(state->dev, "Added [CRTC:%d:%s] %p state to %p\n",
->   		       crtc->base.id, crtc->name, crtc_state, state);
-> diff --git a/include/drm/drm_crtc.h b/include/drm/drm_crtc.h
-> index df03637ca25abd45e96b5944229297f776fd046d..cb9eda6335e0d6728d99d67cc6916ad2d0e1d94e 100644
-> --- a/include/drm/drm_crtc.h
-> +++ b/include/drm/drm_crtc.h
-> @@ -282,6 +282,14 @@ struct drm_crtc_state {
->   	 */
->   	struct drm_colorop *color_pipeline;
->   
-> +	/**
-> +	 * @color_pipeline_enabled:
-> +	 *
-> +	 * Whether color management should be done based on the &color_pipeline
-> +	 * or the legacy color properties (&ctm, &gamma_lut and &degamma_lut).
-> +	 */
-> +	bool color_pipeline_enabled;
-> +
->   	/**
->   	 * @target_vblank:
->   	 *
+> I believe I've found the exact reason why KSM skips MTE-tagged pages ;p
 > 
+>>
+>>
+>> On 2025/9/19 16:14, Lance Yang wrote:
+>>>
+>>>
+>>> On 2025/9/19 15:55, David Hildenbrand wrote:
+>>>>>> I think where possible we really only want to identify problematic
+>>>>>> (tagged) pages and skip them. And we should either look into fixing
+>>>>>> KSM
+>>>>>> as well or finding out why KSM is not affected.
+>>>>>
+>>>>> Yeah. Seems like we could introduce a new helper,
+>>>>> folio_test_mte_tagged(struct
+>>>>> folio *folio). By default, it would return false, and architectures
+>>>>> like
+>>>>> arm64
+>>>>> can override it.
+>>>>
+>>>> If we add a new helper it should instead express the semantics that
+>>>> we cannot deduplicate.
+>>>
+>>> Agreed.
+>>>
+>>>>
+>>>> For THP, I recall that only some pages might be tagged. So likely we
+>>>> want to check per page.
+>>>
+>>> Yes, a per-page check would be simpler.
+>>>
+>>>>
+>>>>>
+>>>>> Looking at the code, the PG_mte_tagged flag is not set for regular THP.
+>>>>
+>>>> I think it's supported for THP per page. Only for hugetlb we tag the
+>>>> whole thing through the head page instead of individual pages.
+>>>
+>>> Right. That's exactly what I meant.
+>>>
+>>>>
+>>>>> The MTE
+>>>>> status actually comes from the VM_MTE flag in the VMA that maps it.
+>>>>>
+>>>>
+>>>> During the rmap walk we could check the VMA flag, but there would be
+>>>> no way to just stop the THP shrinker scanning this page early.
+>>>>
+>>>>> static inline bool folio_test_hugetlb_mte_tagged(struct folio *folio)
+>>>>> {
+>>>>>      bool ret = test_bit(PG_mte_tagged, &folio->flags.f);
+>>>>>
+>>>>>      VM_WARN_ON_ONCE(!folio_test_hugetlb(folio));
+>>>>>
+>>>>>      /*
+>>>>>       * If the folio is tagged, ensure ordering with a likely subsequent
+>>>>>       * read of the tags.
+>>>>>       */
+>>>>>      if (ret)
+>>>>>          smp_rmb();
+>>>>>      return ret;
+>>>>> }
+>>>>>
+>>>>> static inline bool page_mte_tagged(struct page *page)
+>>>>> {
+>>>>>      bool ret = test_bit(PG_mte_tagged, &page->flags.f);
+>>>>>
+>>>>>      VM_WARN_ON_ONCE(folio_test_hugetlb(page_folio(page)));
+>>>>>
+>>>>>      /*
+>>>>>       * If the page is tagged, ensure ordering with a likely subsequent
+>>>>>       * read of the tags.
+>>>>>       */
+>>>>>      if (ret)
+>>>>>          smp_rmb();
+>>>>>      return ret;
+>>>>> }
+>>>>>
+>>>>> contpte_set_ptes()
+>>>>>      __set_ptes()
+>>>>>          __set_ptes_anysz()
+>>>>>              __sync_cache_and_tags()
+>>>>>                  mte_sync_tags()
+>>>>>                      set_page_mte_tagged()
+>>>>>
+>>>>> Then, having the THP shrinker skip any folios that are identified as
+>>>>> MTE-tagged.
+>>>>
+>>>> Likely we should just do something like (maybe we want better naming)
+>>>>
+>>>> #ifndef page_is_mergable
+>>>> #define page_is_mergable(page) (true)
+>>>> #endif
+>>>
+>>>
+>>> Maybe something like page_is_optimizable()? Just a thought ;p
+>>>
+>>>>
+>>>> And for arm64 have it be
+>>>>
+>>>> #define page_is_mergable(page) (!page_mte_tagged(page))
+>>>>
+>>>>
+>>>> And then do
+>>>>
+>>>> diff --git a/mm/huge_memory.c b/mm/huge_memory.c
+>>>> index 1f0813b956436..1cac9093918d6 100644
+>>>> --- a/mm/huge_memory.c
+>>>> +++ b/mm/huge_memory.c
+>>>> @@ -4251,7 +4251,8 @@ static bool thp_underused(struct folio *folio)
+>>>>
+>>>>           for (i = 0; i < folio_nr_pages(folio); i++) {
+>>>>                   kaddr = kmap_local_folio(folio, i * PAGE_SIZE);
+>>>> -               if (!memchr_inv(kaddr, 0, PAGE_SIZE)) {
+>>>> +               if (page_is_mergable(folio_page(folio, i)) &&
+>>>> +                   !memchr_inv(kaddr, 0, PAGE_SIZE)) {
+>>>>                           num_zero_pages++;
+>>>>                           if (num_zero_pages >
+>>>> khugepaged_max_ptes_none) {
+>>>>                                   kunmap_local(kaddr);
+>>>> diff --git a/mm/migrate.c b/mm/migrate.c
+>>>> index 946253c398072..476a9a9091bd3 100644
+>>>> --- a/mm/migrate.c
+>>>> +++ b/mm/migrate.c
+>>>> @@ -306,6 +306,8 @@ static bool try_to_map_unused_to_zeropage(struct
+>>>> page_vma_mapped_walk *pvmw,
+>>>>
+>>>>           if (PageCompound(page))
+>>>>                   return false;
+>>>> +       if (!page_is_mergable(page))
+>>>> +               return false;
+>>>>           VM_BUG_ON_PAGE(!PageAnon(page), page);
+>>>>           VM_BUG_ON_PAGE(!PageLocked(page), page);
+>>>>           VM_BUG_ON_PAGE(pte_present(ptep_get(pvmw->pte)), page);
+>>>
+>>> Looks good to me!
+>>>
+>>>>
+>>>>
+>>>> For KSM, similarly just bail out early. But still wondering if this
+>>>> is already checked
+>>>> somehow for KSM.
+>>>
+>>> +1 I'm looking for a machine to test it on.
+>>
+>> Interestingly, it seems KSM is already skipping MTE-tagged pages. My test,
+>> running on a v6.8.0 kernel inside QEMU (with MTE enabled), shows no merging
+>> activity for those pages ...
+> 
+> KSM's call to pages_identical() ultimately leads to memcmp_pages(). The
+> arm64 implementation of memcmp_pages() in arch/arm64/kernel/mte.c contains
+> a specific check that prevents merging in this case.
+> 
+> try_to_merge_one_page()
+> 	-> pages_identical()
+> 		-> !memcmp_pages() Fails!
+> 		-> replace_page()
+> 
+> 
+> int memcmp_pages(struct page *page1, struct page *page2)
+> {
+> 	char *addr1, *addr2;
+> 	int ret;
+> 
+> 	addr1 = page_address(page1);
+> 	addr2 = page_address(page2);
+> 	ret = memcmp(addr1, addr2, PAGE_SIZE);
+> 
+> 	if (!system_supports_mte() || ret)
+> 		return ret;
+> 
+> 	/*
+> 	 * If the page content is identical but at least one of the pages is
+> 	 * tagged, return non-zero to avoid KSM merging. If only one of the
+> 	 * pages is tagged, __set_ptes() may zero or change the tags of the
+> 	 * other page via mte_sync_tags().
+> 	 */
+> 	if (page_mte_tagged(page1) || page_mte_tagged(page2))
+> 		return addr1 != addr2;
+> 
+> 	return ret;
+> }
+> 
+> IIUC, if either page is MTE-tagged, memcmp_pages() intentionally returns
+> a non-zero value, which in turn causes pages_identical() to return false.
+
+Cool, so we should likely just use that then in the shrinker code. Can 
+you send a fix?
 
 -- 
---
-Louis Chauvet, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+Cheers
 
+David / dhildenb
 
 
