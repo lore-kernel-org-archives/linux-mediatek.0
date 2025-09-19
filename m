@@ -4,71 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0699CAC59A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Sep 2025 19:02:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA285CAC59A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Sep 2025 20:57:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=srXz9Z4cJj2t72vaKDBPc8Jra6K2uLJkmaxWaZoZKCo=; b=FjmTetre32ZIQpo647EGsCl2zi
-	gPFkod74JXi1VbdPmBjDsi00KBfkIJ2bTfvG+ZZqguVEIMoZ18g1yJYzfwPdpsq+gmNuJETyAGAtu
-	oRMC6VWSqxpXCZ2rkwuG5EpCSrXlR2x6zGKK66JkYIYSyDe3RXisvcsGHNvtRLO8EAxzfj7646lGG
-	szhm4CNhkVuiWK5IxhwPuL+bmLvkZjgPxGs44fh81w1AKoJyrRQhZhci1kpjTfDnncBM9N4Etbgri
-	hV/6LRAfLaQExYeLjydeS7M2yNLmfIp+QpYLX6ZkFKH/NNwO+A/anI2KkK1bxtuqDjPPjI51xci8h
-	kgSvBvwQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=o9ku7JZxIEtLSd3q0U+dBteb+15Ur+wK9Hg4iSg4GiQ=; b=l3yHra5DfYajrW58cO4w7xzq8c
+	fV1DkM7W1FJvJnOd0IExu7CBxdYgKBDsAKGU7XEgETKZkbWZoV7W1pUrgpx9Wn/LDkQzuxEtSL8GL
+	QCTR+cg7yWU/U4+uOeoBxWZC9gKfPGCxf/lbVWRwH/msHKKDzoqlHfG/Wqgu1J9z6RCeC3E6KSJ3v
+	jJB+uDHcYM+1QkVh/KCmJ4Ghp44jkZBFFcQiKU5jNQT8AALM9D3QS2Ng6VCvW0QYVaCdeHx7mStWe
+	YzVnCedBcVQ899NnS+9pYSVaiNxLp/+tkHNtg32FYXDhFG9tgNuEcrqaaa63ND/cf7y2qFE3NCQgB
+	49qkczHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzgNB-00000003qn2-3L6Z;
-	Fri, 19 Sep 2025 19:02:21 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uziAk-000000041mc-37MT;
+	Fri, 19 Sep 2025 20:57:38 +0000
+Received: from 003.mia.mailroute.net ([199.89.3.6])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzgN9-00000003qmT-1U5e;
-	Fri, 19 Sep 2025 19:02:21 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1758308534; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=cH26IUmfARHZ5DlOjLqJkt4BcKgTyMaw8aBcfi+wYGKunFM3yTMF4ZoSXy4tXORYws2aFWrJGTas51jLJrcEW7UX4gP1WKTynnTpUFJMopcqdrxcVQ4yoXgP2HFLxCqFoSRUDjQq/lrG3mq+z3jJIdMedjpjuip/G/IxYJz3WGU=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1758308534; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=srXz9Z4cJj2t72vaKDBPc8Jra6K2uLJkmaxWaZoZKCo=; 
-	b=AlIectYeirCZSjvdAEuhH9MPsbcqsC0iGW32eA2BlNvcVVw553j/0pEA8bHrHSoPF7qw21EIHz4v3ixnI+5xW/aUll4zUh5AZ9t3l+S4Ckc9DHw1UdaszLpjmPz6JW85UpFC9m6CQiz1iZi/r5as8s9457bf4ZI6bcvo/TjFuhs=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1758308534;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=srXz9Z4cJj2t72vaKDBPc8Jra6K2uLJkmaxWaZoZKCo=;
-	b=M8o8jMjCP5E/dushTSx4+AKMYmJ9cIaieQrGOZL/HiRUDSaIaoNwj98LIaaIcJ9G
-	9tO5HU9FOEaB/8MdbnOVcW0ZjVmB1gb++8Np/meByyS/gKct1DBVmHx6GRU+qldJluV
-	KPTOLE57YGY9C4/DN2g+DC4kn5ADWroyQgbEL91E=
-Received: by mx.zohomail.com with SMTPS id 1758308533233746.4562667171067;
-	Fri, 19 Sep 2025 12:02:13 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Chen-Yu Tsai <wenst@chromium.org>, linux-mediatek@lists.infradead.org,
- Jassi Brar <jassisinghbrar@gmail.com>
-Cc: Jjian Zhou <jjian.zhou@mediatek.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v5 2/2] mailbox: mediatek: Add mtk-vcp-mailbox driver
-Date: Fri, 19 Sep 2025 21:02:08 +0200
-Message-ID: <5789241.GXAFRqVoOG@workhorse>
-In-Reply-To: <CABb+yY3N2=01yKJon25_6_vmihj09H=T9pLwzdGPrqY5h=hRFQ@mail.gmail.com>
-References: <20250822021217.1598-1-jjian.zhou@mediatek.com>
- <CAGXv+5F-L2+4PGixx7OG2+vp2yXc_2885yMzqWtkQDwhxVAPxw@mail.gmail.com>
- <CABb+yY3N2=01yKJon25_6_vmihj09H=T9pLwzdGPrqY5h=hRFQ@mail.gmail.com>
+	id 1uziAi-000000041m8-2pTQ
+	for linux-mediatek@lists.infradead.org;
+	Fri, 19 Sep 2025 20:57:38 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 003.mia.mailroute.net (Postfix) with ESMTP id 4cT4Zl2Mtczlmm7p;
+	Fri, 19 Sep 2025 20:57:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1758315452; x=1760907453; bh=o9ku7JZxIEtLSd3q0U+dBteb
+	+15Ur+wK9Hg4iSg4GiQ=; b=pebarhp07tHaXV7iah8FS+Dphi+FoWMxJvjTpYd6
+	nEuyDmjDkZ6Q/sEedBsooJ6ynVliwSTuME+I8jMv+XohIiVUT7g7s+VQCnitjAEt
+	OKcy1TfWmPCtl8lJ1Xho7vyJkSGZ+rs2sngYLo2GjPsggZkcZas9awQQww6MKCRf
+	SRI7+WkKIfeYaE6szqeEvq3NypFJcjI75HmsSyFLoUcuVvE2kCJtJt0pbdktS9cU
+	BHtGfVzmeYFvwf326T3/gpTRpzjEcHTxx6mlKE7leRaOcT0KEey1v3WFk5nuApHT
+	YQrzfiBkxzMrCbrXg+UvMsxRJO53wGl0ZcGB3dp3c0ix2g==
+X-Virus-Scanned: by MailRoute
+Received: from 003.mia.mailroute.net ([127.0.0.1])
+ by localhost (003.mia [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id BlR3mNq9qd8M; Fri, 19 Sep 2025 20:57:32 +0000 (UTC)
+Received: from [100.66.154.22] (unknown [104.135.204.82])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bvanassche@acm.org)
+	by 003.mia.mailroute.net (Postfix) with ESMTPSA id 4cT4ZS2SZ2zlgqW0;
+	Fri, 19 Sep 2025 20:57:19 +0000 (UTC)
+Message-ID: <bc612c10-a4eb-41ab-b8e5-726d22935518@acm.org>
+Date: Fri, 19 Sep 2025 13:57:18 -0700
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 01/10] ufs: host: mediatek: Fix runtime suspend error
+ deadlock
+To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
+ "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ "martin.petersen@oracle.com" <martin.petersen@oracle.com>
+Cc: =?UTF-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
+ =?UTF-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
+ =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
+ =?UTF-8?B?RWQgVHNhaSAo6JSh5a6X6LuSKQ==?= <Ed.Tsai@mediatek.com>,
+ wsd_upstream <wsd_upstream@mediatek.com>,
+ =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
+ <Chaotian.Jing@mediatek.com>, =?UTF-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?=
+ <Chun-hung.Wu@mediatek.com>, =?UTF-8?B?WWktZmFuIFBlbmcgKOW9ree+v+WHoSk=?=
+ <Yi-fan.Peng@mediatek.com>, =?UTF-8?B?UWlsaW4gVGFuICjosK3pupLpup8p?=
+ <Qilin.Tan@mediatek.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ =?UTF-8?B?SmlhamllIEhhbyAo6YOd5Yqg6IqCKQ==?= <jiajie.hao@mediatek.com>,
+ =?UTF-8?B?TGluIEd1aSAo5qGC5p6XKQ==?= <Lin.Gui@mediatek.com>,
+ =?UTF-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?= <Naomi.Chu@mediatek.com>,
+ =?UTF-8?B?VHVuLXl1IFl1ICjmuLjmlabogb8p?= <Tun-yu.Yu@mediatek.com>
+References: <20250918104000.208856-1-peter.wang@mediatek.com>
+ <20250918104000.208856-2-peter.wang@mediatek.com>
+ <80a31144-852f-4df5-802e-a8c5d04a298a@acm.org>
+ <bdb6ee1402ae4c9ba8919011b1d8fcb9d984129f.camel@mediatek.com>
+Content-Language: en-US
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <bdb6ee1402ae4c9ba8919011b1d8fcb9d984129f.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="utf-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250919_120219_460218_A0271A9F 
-X-CRM114-Status: GOOD (  22.80  )
+X-CRM114-CacheID: sfid-20250919_135736_815935_80C2B067 
+X-CRM114-Status: GOOD (  20.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,64 +102,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Friday, 19 September 2025 18:32:12 Central European Summer Time Jassi Br=
-ar wrote:
-> On Fri, Sep 19, 2025 at 3:31=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org>=
- wrote:
-> >
-> > On Fri, Sep 19, 2025 at 7:50=E2=80=AFAM Jassi Brar <jassisinghbrar@gmai=
-l.com> wrote:
-> > >
-> > > On Thu, Aug 21, 2025 at 9:12=E2=80=AFPM Jjian Zhou <jjian.zhou@mediat=
-ek.com> wrote:
-> > >
-> > > .....
-> > >
-> > > > +#include <linux/module.h>
-> > > > +#include <linux/of.h>
-> > > > +#include <linux/platform_device.h>
-> > > > +#include <linux/slab.h>
-> > > > +
-> > > > +struct mtk_vcp_mbox_priv {
-> > > Maybe 'mtk_vcp_mbox' is a more appropriate name ?
-> > >
-> > > > +       void __iomem *base;
-> > > > +       struct device *dev;
-> > > > +       struct mbox_controller mbox;
-> > > > +       const struct mtk_vcp_mbox_cfg *cfg;
-> > > > +       struct mtk_ipi_info ipi_recv;
-> > >
-> > > Maybe also have "struct mbox_chan chan[1]; " so that you don't have to
-> > > allocate one during the probe.
-> >
-> > > Also if you have  "struct mbox_controller mbox;" as the first member,
-> > > you could simply typecast that to get this structure.
-> > > Something like "struct mpfs_mbox" in mailbox-mpfs.c
-> >
-> > I read somewhere that this way of subclassing is not recommended.
-> > Instead the base class should explicitly not be the first member.
-> > And then container_of() should be used.
-> >
-> > I don't remember where I read this though. But I think the explicit
-> > container_of() is easier for understanding the intent.
-> >
-> And how does container_of() work ? :)
-> typcasting the first member to its parent is the simplest form of contain=
-er_of.
+On 9/19/25 1:11 AM, Peter Wang (=E7=8E=8B=E4=BF=A1=E5=8F=8B) wrote:
+> An error occurred during the suspend process, causing IO to hang.
+> This is because the error handler (eh) work is waiting for
+> resume, while the suspend work is waiting for the error handler
+> to finish before sending SSU.
+
+If the suspend callback waits for error handling to finish and the
+error handler waits until resuming has finished, isn't this an issue
+that can occur for any UFS host controller and hence that should be
+fixed in the UFSHCI driver core rather than in one host driver only?
+
+Why is the hba->pm_op_in_progress variable not sufficient to prevent
+this deadlock? Should this code perhaps be moved from
+ufshcd_eh_host_reset_handler() into ufshcd_err_handler()?
+
+	/*
+	 * If runtime PM sent SSU and got a timeout, scsi_error_handler is
+	 * stuck in this function waiting for flush_work(&hba->eh_work). And
+	 * ufshcd_err_handler(eh_work) is stuck waiting for runtime PM. Do
+	 * ufshcd_link_recovery instead of eh_work to prevent deadlock.
+	 */
+	if (hba->pm_op_in_progress) {
+		if (ufshcd_link_recovery(hba))
+			err =3D FAILED;
+
+		return err;
+	}
+
+>> How can ufs_mtk_suspend() be called while the error handler is in
+>> progress? ufshcd_err_handler() disables RPM before it sets the
+>> UFSHCD_EH_IN_PROGRESS flag.
 >=20
-> -j
+> This error is triggered by ufs_mtk_auto_hibern8_disable,
+> As the comment description
+> /* May trigger EH work without exiting hibern8 error */
+> so it could happen during the suspend period.
+
+That source code comment is confusing me, especially the "without
+exiting hibern8 error" part. Do you really want to say that the device
+is in a hibernation error state and remains in a hibernation error
+state?
+
+>> The UFSHCD_EH_IN_PROGRESS definition and also the
+>> ufshcd_set_eh_in_progress() and ufshcd_clear_eh_in_progress()
+>> definitions must remain in the UFS core private code. Please do not
+>> move
+>> these definitions into the include/ufs/ufshcd.h header file.
 >=20
->=20
+> Do you think we should check ufshcd_eh_in_progress in
+> __ufshcd_wl_suspend? I'm not sure, because we don't see this
+> error on all UFS hosts =E2=80=94 the vendor suspend operations
+> (ufshcd_vops_suspend) could be different.
 
-Which is why it's completely equivalent and since code is supposed
-to communicate meaning to humans, container_of should be used.
+Why is auto-hibernation disabled during suspend? As far as I know the
+UFSHCI standard allows to keep auto-hibernation enabled during suspend.
 
-"In this case if nobody ever reorders members you can avoid a
-preprocessor macro that will get optimised away" is pointless
-nitpicking. It's a strictly worse way to do the same thing.
+Thanks,
 
-Why bikeshed the use of container_of of all things?
-
-
-
+Bart.
 
