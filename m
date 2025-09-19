@@ -4,67 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2454CAC59A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Sep 2025 12:50:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C8D3CAC592
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Sep 2025 12:50:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IMHXkNbkhnV0s51Q5+h9NGZbjfcJdQCk+0MfP9hZRnU=; b=TBapMGJ194NfgBJs4bbr+R2nqh
-	zClUzrxehq32IAyc+x0h4Mnilryo/zCuGutkXy8BX8DdAOzQOnt0HANfKJy36Kg/BvbvpG1YMwAXm
-	+xcBb9Tf0YMuPXYacaMJ1OMje3c1EIrpGX00ZPxX2DM4QdclX0558WVf7n/4NqwXzWaI0tMDhM7Cy
-	7R3+Zk7RTpOQ7lc9jgRQ96MS5a4ud8nIvunFpTN+3uBduyyB3BlI+zbFFldWlNDZIFemljGBU9hVH
-	8FWIMxL1ZAscrafYaumbwf3KTjDWZiuk83esgfEYCbWCj0SBjUQSojTWVrsDyPIZUQS3Rf3L0bGlk
-	RdQ3EW6Q==;
+	bh=mJ1W7Lqi7lXiObg/9ptItYWX4ywWluzP64XdJkdaQnw=; b=P+dkVCu0LJ+Zb7x3BYy2GEeJP4
+	ezFr+owaRI5aVlNPCgpqOp3YaxAnAZTXNXppyIy2/DpaVQpbCZLBYAbSge+dh+AU1RnAp4z+jCWEB
+	TaEO0pSjCbsiEAwWiSdRS7rF1X8bjNaBq5WRyErE8MqdfZixxmFxky3aCdIgyJ6rlTxb2EmAIhyCS
+	zIdrtE54uTReO8i8QV6J0mUQlJjrKxuPlOQZ+vWK6Pbm6Rk0vJH/XE6b32ez6ycl6kRIcx7fpEQ7U
+	3yEGy1ZWyjDX4wTQnyd0Oa5Msje2wsgpfS5v8LeQsw84jl676B0i3VeM9kmQ/7i/FlCV+5Y3iAxP9
+	LLk+jmVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzaZS-00000002tOM-3zuX;
-	Fri, 19 Sep 2025 12:50:38 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uzaZY-00000002tS2-0t9N;
+	Fri, 19 Sep 2025 12:50:44 +0000
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzaZR-00000002tNq-35nt
-	for linux-mediatek@bombadil.infradead.org;
-	Fri, 19 Sep 2025 12:50:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=IMHXkNbkhnV0s51Q5+h9NGZbjfcJdQCk+0MfP9hZRnU=; b=aVauFb0TyQ+QADPRZku7s0cUDF
-	7XJ1+4ofKRu9Ccc6NhIlcVTe3NIef+FOOY6AAobGDS4TwFcWDTtSAPzMnsIoghw1t+/QDpx9UumYn
-	M6VdgVgvCNyBQhnBvMYhuzRnkmVoAssRsCulqRtdVHXNrwIYFBjnjBH2dStoxvaPS2i6EYQyGajV+
-	kavsS5XKVWNod23RovPmMenzgo4jVJ6dyIP3QufoIwcX7Zmx53FknsOU3ouTdKrpRVYwlpKDgMvKl
-	kXhUayfjycjGtK54RLCiFRUpGSFMMIrhr7tE9R/AqWQDCO32il8F7Sw6IVHEOwqu6JOvN8LxoTXzZ
-	vsDyjXMg==;
-Received: from smtpout-04.galae.net ([185.171.202.116])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzaZO-00000007qas-1D3o
+	id 1uzaZV-00000002tPI-3kHg
 	for linux-mediatek@lists.infradead.org;
-	Fri, 19 Sep 2025 12:50:36 +0000
+	Fri, 19 Sep 2025 12:50:43 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id 502CEC8F1C5;
-	Fri, 19 Sep 2025 12:49:39 +0000 (UTC)
+	by smtpout-03.galae.net (Postfix) with ESMTPS id 6EAA14E40D60;
+	Fri, 19 Sep 2025 12:50:40 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 0318E606A8;
-	Fri, 19 Sep 2025 12:49:56 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id B5839102F1D55;
-	Fri, 19 Sep 2025 14:49:44 +0200 (CEST)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 36D86606A8;
+	Fri, 19 Sep 2025 12:50:40 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 76CE5102F177A;
+	Fri, 19 Sep 2025 14:50:34 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1758286194; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1758286238; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:content-language:in-reply-to:references:autocrypt;
-	bh=IMHXkNbkhnV0s51Q5+h9NGZbjfcJdQCk+0MfP9hZRnU=;
-	b=xef+060LVl/U1v99txex5Kpn1STm3MFQUy2Or7GAgmV106XfsJQMOVSParN2Sn827ONhXG
-	YYhuJBRi1XHTtNthWM/Eev/9e1FmuxLjNqDaDKBGWSHv+1WUmT/rhR+QHmjIsW4vIFLciP
-	8l0RS0RCNu1qyboI+epLJEHdDzTSL8WKtGbtWEAcCT5JxX8Wivb/2kxb/yBs2UNIMOfktH
-	rna5orvh/BSMCb1AKXsZYp4oQcZppPfACUYn5jvW8VHaQjpfQExYyd2yJNZsJ+6lnyUKdh
-	CiWiLizRS/29huVDF0mMgDG36iFzwaTyg/QAP42EwWB32weK+6IyrsSUob6KZQ==
-Message-ID: <f59a91cb-dda0-4c39-a1b5-8a78fdc8abe4@bootlin.com>
-Date: Fri, 19 Sep 2025 14:49:43 +0200
+	bh=mJ1W7Lqi7lXiObg/9ptItYWX4ywWluzP64XdJkdaQnw=;
+	b=sqLXdg1/8iFiQRaZdQAu518c6tt929vkJqAUqxewCtq4tcpHZ7RNfeaZEsmOpj52Dt7age
+	hEzWKe8g3d56GBEZH4rRLDirU+O+DTdcHeORT4BpbP/vkEMTH/v1CA5wsyyFLki884M4c3
+	FgrG/9AvOjWs6Zhq1ExjspG/00Zv1mjrlyFSRbs4aYVAezCBLFUGRk6WmtBHkETy/9/nma
+	43d3lu6n/r2dE7L0YwY75TAYpb4RqoniDZkAOHipzFu4cs6zz8jDq8mYm4ngIZ2SWzQpkB
+	LgDSDxIDxySb4+fkY0/auB7ccvM/wG+t/YG1lmqC771/dy7MKO0GjpBCsc9r3Q==
+Message-ID: <58869a61-12f4-40de-8a24-dbfbf47695bc@bootlin.com>
+Date: Fri, 19 Sep 2025 14:50:34 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 From: Louis Chauvet <louis.chauvet@bootlin.com>
-Subject: Re: [PATCH RFC v2 20/20] drm/vkms: Set post-blend color pipeline
+Subject: Re: [PATCH RFC v2 16/20] drm/mediatek: Set post-blend color pipeline
  driver cap
 To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
  Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
@@ -90,7 +75,7 @@ Cc: Alex Hung <alex.hung@amd.com>, wayland-devel@lists.freedesktop.org,
  linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  Simona Vetter <simona.vetter@ffwll.ch>
 References: <20250917-mtk-post-blend-color-pipeline-v2-0-ac4471b44758@collabora.com>
- <20250917-mtk-post-blend-color-pipeline-v2-20-ac4471b44758@collabora.com>
+ <20250917-mtk-post-blend-color-pipeline-v2-16-ac4471b44758@collabora.com>
 Content-Language: en-US, fr
 Autocrypt: addr=louis.chauvet@bootlin.com; keydata=
  xsFNBGCG5KEBEAD1yQ5C7eS4rxD0Wj7JRYZ07UhWTbBpbSjHjYJQWx/qupQdzzxe6sdrxYSY
@@ -146,13 +131,13 @@ Autocrypt: addr=louis.chauvet@bootlin.com; keydata=
  wDN7ORknPndzxrq3CyB7b/Tk1e8Qx+6HU/pnMb4ZqwwMwZAMk24TZpsgg28o9MQiUNzad0h2
  gIszbeej9ryrtLHxMzyK8yKhHoI2i2ovxy5O+hsWeAoCPE9xwbqnAjLjOn4Jzd/pPovizrq/
  kUoX66YgvCuHfQMC/aBPLnVunZSP23J2CrkTrnsUzw==
-In-Reply-To: <20250917-mtk-post-blend-color-pipeline-v2-20-ac4471b44758@collabora.com>
+In-Reply-To: <20250917-mtk-post-blend-color-pipeline-v2-16-ac4471b44758@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250919_135034_518162_12D37621 
-X-CRM114-Status: GOOD (  13.36  )
+X-CRM114-CacheID: sfid-20250919_055042_065259_6D5E6B05 
+X-CRM114-Status: GOOD (  13.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -178,23 +163,23 @@ Le 18/09/2025 à 02:43, Nícolas F. R. A. Prado a écrit :
 Reviewed-by: Louis Chauvet <louis.chauvet@bootlin.com>
 
 > ---
->   drivers/gpu/drm/vkms/vkms_drv.c | 3 ++-
+>   drivers/gpu/drm/mediatek/mtk_drm_drv.c | 3 ++-
 >   1 file changed, 2 insertions(+), 1 deletion(-)
 > 
-> diff --git a/drivers/gpu/drm/vkms/vkms_drv.c b/drivers/gpu/drm/vkms/vkms_drv.c
-> index e8472d9b6e3b2b5d6d497763288bf3dc6fde5987..4cc67a789d28288575235b7efc87bc5e45d668cc 100644
-> --- a/drivers/gpu/drm/vkms/vkms_drv.c
-> +++ b/drivers/gpu/drm/vkms/vkms_drv.c
-> @@ -80,7 +80,8 @@ static void vkms_atomic_commit_tail(struct drm_atomic_state *old_state)
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> index d5e6bab364143540e1f59df481b9a9d559c39199..73c0f448d7fcf25e473e2c3c6ddaaf28446570cf 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> @@ -611,7 +611,8 @@ static struct drm_gem_object *mtk_gem_prime_import(struct drm_device *dev,
 >   }
 >   
->   static const struct drm_driver vkms_driver = {
-> -	.driver_features	= DRIVER_MODESET | DRIVER_ATOMIC | DRIVER_GEM,
-> +	.driver_features	= DRIVER_MODESET | DRIVER_ATOMIC | DRIVER_GEM |
-> +				  DRIVER_POST_BLEND_COLOR_PIPELINE,
->   	.fops			= &vkms_driver_fops,
->   	DRM_GEM_SHMEM_DRIVER_OPS,
->   	DRM_FBDEV_SHMEM_DRIVER_OPS,
+>   static const struct drm_driver mtk_drm_driver = {
+> -	.driver_features = DRIVER_MODESET | DRIVER_GEM | DRIVER_ATOMIC,
+> +	.driver_features = DRIVER_MODESET | DRIVER_GEM | DRIVER_ATOMIC |
+> +			   DRIVER_POST_BLEND_COLOR_PIPELINE,
+>   
+>   	.dumb_create = mtk_gem_dumb_create,
+>   	DRM_FBDEV_DMA_DRIVER_OPS,
 > 
 
 -- 
