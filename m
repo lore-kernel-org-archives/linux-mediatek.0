@@ -4,44 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 877E6CAC592
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Sep 2025 10:53:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0862BCAC59A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Sep 2025 12:19:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WhpXIa44PXWsjs2uxeORCT8byyhIH3oxkQYJDXpg7eI=; b=fF+CljSUAY4gwOt/unPFcMHsz8
-	vV/t81GfRBfKjmgD566g30TpPwdzTu2KqWPnXUPV5Wt+dtrh3mlAfFlB4vJXWJ2T50MhqZ68HW6Fb
-	4us57j1yZt1PxT1R16JizceYC0TDEXkufOH+IFeBEKNqCV7Z0ir/+z6pLxWeGfb0ISmcvHgdXs2QF
-	w7ekoIeAlEwPvk/bOfdxZHx9AfBFV4QDJMPL3VzkASP3jZtVuuUZsUY1beX67jgSgfE/EDT5rzgIJ
-	OuZlfTNrisHdW4COYZkUW2os7G9E3h1xpb0QvUmLUICSCEA949bR6VROogQIHICwbbgSEtU0H6aSj
-	Mb1qI7bA==;
+	bh=EiVKkL22YbljXIkdVcER9mqBNCLAbO3Otj7ELKVqmVE=; b=a7qpfg8nWWn0OgAwCGwRcB6Hqr
+	IJJyrqpmAchDn+7hOjjL9V1ecGFIu7VFBUHionxxWkf4tRI9+1XuxE3gdadn6NlvKcq70/Fz84MvA
+	4ZP2H9xysnE3NSz4j9FbmuVuLMcEtbpVnf5b8zQ/BDPR/6dli/OuE3CLhFEs/Kn2ZJDz+dTGo4Ixz
+	PfKGPAdZiSNQdl7SwM/5Fo1nkE/Siv2fXUo6bXPcGje/z+qPnpA3Ttd9sZ9sBinaYYzZhoZFxmAO5
+	l8543MyhnrD78sUTsUG1SiLiuvwIcgoyh3oMn8pXNUPLW40dufBP3KNHg9zYA+ECOSdJPOcRJsOsh
+	yhcFiuYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzYk4-00000002ddG-0ds6;
-	Fri, 19 Sep 2025 10:53:28 +0000
-Received: from out-186.mta0.migadu.com ([2001:41d0:1004:224b::ba])
+	id 1uza5U-00000002nrl-3hUS;
+	Fri, 19 Sep 2025 12:19:40 +0000
+Received: from out-188.mta0.migadu.com ([2001:41d0:1004:224b::bc])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzYk1-00000002dcZ-0hyC
+	id 1uza5S-00000002nqx-0vNq
 	for linux-mediatek@lists.infradead.org;
-	Fri, 19 Sep 2025 10:53:27 +0000
-Message-ID: <dfb303b9-151b-49ec-b7ef-691c71bd5385@linux.dev>
+	Fri, 19 Sep 2025 12:19:39 +0000
+Message-ID: <9395a9ca-d865-42d7-9ea1-8e693e4e38e0@linux.dev>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
-	t=1758279199;
+	t=1758284374;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=WhpXIa44PXWsjs2uxeORCT8byyhIH3oxkQYJDXpg7eI=;
-	b=qSYExmxViT2E12srT6OQWReC8YdRSo2KFRn2DWjtAvYvVIyjqxrOdS4zegzCzFd0dCTWYY
-	FSyoAUpPigDRkODuI2z4KTcOxmP/rlQ7XAhhG5HTjOvgkcoGgJsuEz6s+ivTGmAzCqQwyu
-	ZWH56bQt9BjCCQCmDdrtFjEh9FVQXRM=
-Date: Fri, 19 Sep 2025 18:53:05 +0800
+	bh=EiVKkL22YbljXIkdVcER9mqBNCLAbO3Otj7ELKVqmVE=;
+	b=M5wUJJhGOKGalv8K65cSpDEtiAkwo7VxeOJE3XDf7FsY3sXohsexAOis/J4GO681ypJuJ7
+	ZhDFcFD2GZhk7ws4vP0mQDNRFfEFOunPk2f12QPiFu5iraacdY/1DdY5A7jTeqrCyb5fxR
+	82ubdEbzh3Ym39f3zPHEqae0+2V302w=
+Date: Fri, 19 Sep 2025 20:19:25 +0800
 MIME-Version: 1.0
 Subject: Re: [PATCH v5 2/6] mm: remap unused subpages to shared zeropage when
  splitting isolated thp
+Content-Language: en-US
 X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
 From: Lance Yang <lance.yang@linux.dev>
 To: David Hildenbrand <david@redhat.com>
@@ -82,14 +83,14 @@ References: <20240830100438.3623486-1-usamaarif642@gmail.com>
  <120445c8-7250-42e0-ad6a-978020c8fad3@linux.dev>
  <9d2c3e3e-439d-4695-b7c9-21fa52f48ced@redhat.com>
  <4cf41cd5-e93a-412b-b209-4180bd2d4015@linux.dev>
-Content-Language: en-US
-In-Reply-To: <4cf41cd5-e93a-412b-b209-4180bd2d4015@linux.dev>
+ <dfb303b9-151b-49ec-b7ef-691c71bd5385@linux.dev>
+In-Reply-To: <dfb303b9-151b-49ec-b7ef-691c71bd5385@linux.dev>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250919_035325_354247_C0337870 
-X-CRM114-Status: GOOD (  23.01  )
+X-CRM114-CacheID: sfid-20250919_051938_487571_5CF14677 
+X-CRM114-Status: GOOD (  21.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,148 +105,194 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hey David,
+
+I believe I've found the exact reason why KSM skips MTE-tagged pages ;p
+
+> 
+> 
+> On 2025/9/19 16:14, Lance Yang wrote:
+>>
+>>
+>> On 2025/9/19 15:55, David Hildenbrand wrote:
+>>>>> I think where possible we really only want to identify problematic
+>>>>> (tagged) pages and skip them. And we should either look into fixing 
+>>>>> KSM
+>>>>> as well or finding out why KSM is not affected.
+>>>>
+>>>> Yeah. Seems like we could introduce a new helper,
+>>>> folio_test_mte_tagged(struct
+>>>> folio *folio). By default, it would return false, and architectures 
+>>>> like
+>>>> arm64
+>>>> can override it.
+>>>
+>>> If we add a new helper it should instead express the semantics that 
+>>> we cannot deduplicate.
+>>
+>> Agreed.
+>>
+>>>
+>>> For THP, I recall that only some pages might be tagged. So likely we 
+>>> want to check per page.
+>>
+>> Yes, a per-page check would be simpler.
+>>
+>>>
+>>>>
+>>>> Looking at the code, the PG_mte_tagged flag is not set for regular THP.
+>>>
+>>> I think it's supported for THP per page. Only for hugetlb we tag the 
+>>> whole thing through the head page instead of individual pages.
+>>
+>> Right. That's exactly what I meant.
+>>
+>>>
+>>>> The MTE
+>>>> status actually comes from the VM_MTE flag in the VMA that maps it.
+>>>>
+>>>
+>>> During the rmap walk we could check the VMA flag, but there would be 
+>>> no way to just stop the THP shrinker scanning this page early.
+>>>
+>>>> static inline bool folio_test_hugetlb_mte_tagged(struct folio *folio)
+>>>> {
+>>>>     bool ret = test_bit(PG_mte_tagged, &folio->flags.f);
+>>>>
+>>>>     VM_WARN_ON_ONCE(!folio_test_hugetlb(folio));
+>>>>
+>>>>     /*
+>>>>      * If the folio is tagged, ensure ordering with a likely subsequent
+>>>>      * read of the tags.
+>>>>      */
+>>>>     if (ret)
+>>>>         smp_rmb();
+>>>>     return ret;
+>>>> }
+>>>>
+>>>> static inline bool page_mte_tagged(struct page *page)
+>>>> {
+>>>>     bool ret = test_bit(PG_mte_tagged, &page->flags.f);
+>>>>
+>>>>     VM_WARN_ON_ONCE(folio_test_hugetlb(page_folio(page)));
+>>>>
+>>>>     /*
+>>>>      * If the page is tagged, ensure ordering with a likely subsequent
+>>>>      * read of the tags.
+>>>>      */
+>>>>     if (ret)
+>>>>         smp_rmb();
+>>>>     return ret;
+>>>> }
+>>>>
+>>>> contpte_set_ptes()
+>>>>     __set_ptes()
+>>>>         __set_ptes_anysz()
+>>>>             __sync_cache_and_tags()
+>>>>                 mte_sync_tags()
+>>>>                     set_page_mte_tagged()
+>>>>
+>>>> Then, having the THP shrinker skip any folios that are identified as
+>>>> MTE-tagged.
+>>>
+>>> Likely we should just do something like (maybe we want better naming)
+>>>
+>>> #ifndef page_is_mergable
+>>> #define page_is_mergable(page) (true)
+>>> #endif
+>>
+>>
+>> Maybe something like page_is_optimizable()? Just a thought ;p
+>>
+>>>
+>>> And for arm64 have it be
+>>>
+>>> #define page_is_mergable(page) (!page_mte_tagged(page))
+>>>
+>>>
+>>> And then do
+>>>
+>>> diff --git a/mm/huge_memory.c b/mm/huge_memory.c
+>>> index 1f0813b956436..1cac9093918d6 100644
+>>> --- a/mm/huge_memory.c
+>>> +++ b/mm/huge_memory.c
+>>> @@ -4251,7 +4251,8 @@ static bool thp_underused(struct folio *folio)
+>>>
+>>>          for (i = 0; i < folio_nr_pages(folio); i++) {
+>>>                  kaddr = kmap_local_folio(folio, i * PAGE_SIZE);
+>>> -               if (!memchr_inv(kaddr, 0, PAGE_SIZE)) {
+>>> +               if (page_is_mergable(folio_page(folio, i)) &&
+>>> +                   !memchr_inv(kaddr, 0, PAGE_SIZE)) {
+>>>                          num_zero_pages++;
+>>>                          if (num_zero_pages > 
+>>> khugepaged_max_ptes_none) {
+>>>                                  kunmap_local(kaddr);
+>>> diff --git a/mm/migrate.c b/mm/migrate.c
+>>> index 946253c398072..476a9a9091bd3 100644
+>>> --- a/mm/migrate.c
+>>> +++ b/mm/migrate.c
+>>> @@ -306,6 +306,8 @@ static bool try_to_map_unused_to_zeropage(struct 
+>>> page_vma_mapped_walk *pvmw,
+>>>
+>>>          if (PageCompound(page))
+>>>                  return false;
+>>> +       if (!page_is_mergable(page))
+>>> +               return false;
+>>>          VM_BUG_ON_PAGE(!PageAnon(page), page);
+>>>          VM_BUG_ON_PAGE(!PageLocked(page), page);
+>>>          VM_BUG_ON_PAGE(pte_present(ptep_get(pvmw->pte)), page);
+>>
+>> Looks good to me!
+>>
+>>>
+>>>
+>>> For KSM, similarly just bail out early. But still wondering if this 
+>>> is already checked
+>>> somehow for KSM.
+>>
+>> +1 I'm looking for a machine to test it on.
+> 
+> Interestingly, it seems KSM is already skipping MTE-tagged pages. My test,
+> running on a v6.8.0 kernel inside QEMU (with MTE enabled), shows no merging
+> activity for those pages ...
+
+KSM's call to pages_identical() ultimately leads to memcmp_pages(). The
+arm64 implementation of memcmp_pages() in arch/arm64/kernel/mte.c contains
+a specific check that prevents merging in this case.
+
+try_to_merge_one_page()
+	-> pages_identical()
+		-> !memcmp_pages() Fails!
+		-> replace_page()
 
 
-On 2025/9/19 16:14, Lance Yang wrote:
-> 
-> 
-> On 2025/9/19 15:55, David Hildenbrand wrote:
->>>> I think where possible we really only want to identify problematic
->>>> (tagged) pages and skip them. And we should either look into fixing KSM
->>>> as well or finding out why KSM is not affected.
->>>
->>> Yeah. Seems like we could introduce a new helper,
->>> folio_test_mte_tagged(struct
->>> folio *folio). By default, it would return false, and architectures like
->>> arm64
->>> can override it.
->>
->> If we add a new helper it should instead express the semantics that we 
->> cannot deduplicate.
-> 
-> Agreed.
-> 
->>
->> For THP, I recall that only some pages might be tagged. So likely we 
->> want to check per page.
-> 
-> Yes, a per-page check would be simpler.
-> 
->>
->>>
->>> Looking at the code, the PG_mte_tagged flag is not set for regular THP.
->>
->> I think it's supported for THP per page. Only for hugetlb we tag the 
->> whole thing through the head page instead of individual pages.
-> 
-> Right. That's exactly what I meant.
-> 
->>
->>> The MTE
->>> status actually comes from the VM_MTE flag in the VMA that maps it.
->>>
->>
->> During the rmap walk we could check the VMA flag, but there would be 
->> no way to just stop the THP shrinker scanning this page early.
->>
->>> static inline bool folio_test_hugetlb_mte_tagged(struct folio *folio)
->>> {
->>>     bool ret = test_bit(PG_mte_tagged, &folio->flags.f);
->>>
->>>     VM_WARN_ON_ONCE(!folio_test_hugetlb(folio));
->>>
->>>     /*
->>>      * If the folio is tagged, ensure ordering with a likely subsequent
->>>      * read of the tags.
->>>      */
->>>     if (ret)
->>>         smp_rmb();
->>>     return ret;
->>> }
->>>
->>> static inline bool page_mte_tagged(struct page *page)
->>> {
->>>     bool ret = test_bit(PG_mte_tagged, &page->flags.f);
->>>
->>>     VM_WARN_ON_ONCE(folio_test_hugetlb(page_folio(page)));
->>>
->>>     /*
->>>      * If the page is tagged, ensure ordering with a likely subsequent
->>>      * read of the tags.
->>>      */
->>>     if (ret)
->>>         smp_rmb();
->>>     return ret;
->>> }
->>>
->>> contpte_set_ptes()
->>>     __set_ptes()
->>>         __set_ptes_anysz()
->>>             __sync_cache_and_tags()
->>>                 mte_sync_tags()
->>>                     set_page_mte_tagged()
->>>
->>> Then, having the THP shrinker skip any folios that are identified as
->>> MTE-tagged.
->>
->> Likely we should just do something like (maybe we want better naming)
->>
->> #ifndef page_is_mergable
->> #define page_is_mergable(page) (true)
->> #endif
-> 
-> 
-> Maybe something like page_is_optimizable()? Just a thought ;p
-> 
->>
->> And for arm64 have it be
->>
->> #define page_is_mergable(page) (!page_mte_tagged(page))
->>
->>
->> And then do
->>
->> diff --git a/mm/huge_memory.c b/mm/huge_memory.c
->> index 1f0813b956436..1cac9093918d6 100644
->> --- a/mm/huge_memory.c
->> +++ b/mm/huge_memory.c
->> @@ -4251,7 +4251,8 @@ static bool thp_underused(struct folio *folio)
->>
->>          for (i = 0; i < folio_nr_pages(folio); i++) {
->>                  kaddr = kmap_local_folio(folio, i * PAGE_SIZE);
->> -               if (!memchr_inv(kaddr, 0, PAGE_SIZE)) {
->> +               if (page_is_mergable(folio_page(folio, i)) &&
->> +                   !memchr_inv(kaddr, 0, PAGE_SIZE)) {
->>                          num_zero_pages++;
->>                          if (num_zero_pages > khugepaged_max_ptes_none) {
->>                                  kunmap_local(kaddr);
->> diff --git a/mm/migrate.c b/mm/migrate.c
->> index 946253c398072..476a9a9091bd3 100644
->> --- a/mm/migrate.c
->> +++ b/mm/migrate.c
->> @@ -306,6 +306,8 @@ static bool try_to_map_unused_to_zeropage(struct 
->> page_vma_mapped_walk *pvmw,
->>
->>          if (PageCompound(page))
->>                  return false;
->> +       if (!page_is_mergable(page))
->> +               return false;
->>          VM_BUG_ON_PAGE(!PageAnon(page), page);
->>          VM_BUG_ON_PAGE(!PageLocked(page), page);
->>          VM_BUG_ON_PAGE(pte_present(ptep_get(pvmw->pte)), page);
-> 
-> Looks good to me!
-> 
->>
->>
->> For KSM, similarly just bail out early. But still wondering if this is 
->> already checked
->> somehow for KSM.
-> 
-> +1 I'm looking for a machine to test it on.
+int memcmp_pages(struct page *page1, struct page *page2)
+{
+	char *addr1, *addr2;
+	int ret;
 
-Interestingly, it seems KSM is already skipping MTE-tagged pages. My test,
-running on a v6.8.0 kernel inside QEMU (with MTE enabled), shows no merging
-activity for those pages ...
+	addr1 = page_address(page1);
+	addr2 = page_address(page2);
+	ret = memcmp(addr1, addr2, PAGE_SIZE);
 
+	if (!system_supports_mte() || ret)
+		return ret;
+
+	/*
+	 * If the page content is identical but at least one of the pages is
+	 * tagged, return non-zero to avoid KSM merging. If only one of the
+	 * pages is tagged, __set_ptes() may zero or change the tags of the
+	 * other page via mte_sync_tags().
+	 */
+	if (page_mte_tagged(page1) || page_mte_tagged(page2))
+		return addr1 != addr2;
+
+	return ret;
+}
+
+IIUC, if either page is MTE-tagged, memcmp_pages() intentionally returns
+a non-zero value, which in turn causes pages_identical() to return false.
+
+Cheers,
+Lance
 
