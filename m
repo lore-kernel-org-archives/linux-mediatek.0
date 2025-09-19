@@ -4,177 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 986F0CAC5A5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Sep 2025 07:55:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C4BECAC59A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Sep 2025 08:11:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=osse2QL84K0KAyQfQ6mkJcBclhUlpgaOVm2/yxp2Gk4=; b=Lcsn0Y4WZ++lG2vlTAhk3nvbWt
-	CgHx1x2yDth9hdPVQuIYhozWkzGa2un81x5C2ELEYqTyghty5Sk9DiHoAfUzW/AZhvIiUO7ACibA6
-	fKkCivx/wRsdJ051HH8mM1jJOJMV2hbZMW8S2C9WWCy5pObXSYWtqdBbUbymyGIT7/mzY0fQHozZq
-	gwH8ixFQBlpwM/RivT5eYf6fY1gdRmufo3y1LPf84L6lSgJAFfX6b/Pmft4wYs/eO7ft5leolVqjx
-	ZN5A2wR5aUe076Gtthn/Y3TgBFzEzpD4AAh3F0bLAtrhxA2njPsOyCce0cMKUvvKcAcCGYlKJOrKm
-	VHYXVU/g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8AGrTL1WME+MkjB7NmTfDtQhx+C8E273qhuMaHap5lc=; b=vhg18CfjcFcfMWwlvu5MbG2ReU
+	jt8OGDwF1oCbnuRdzMWrky2qOvjVbMy0yi2ACzjPyGLqpoRj2DseLAMnVsb3glxMV0nHMJT87fBx7
+	ptYne3gQtOcowixxSTWdUaaTnQSJHgTLlStwmr7fwHdNJ2ZFLwIlAmHct31awQB7b2hkeP4GHbX4V
+	h+3XgLBb1rN1hc0I247H6YW2+zG9tj2qGglC3G92oX0SE2UOz5998i2f7IcGDxf5DhwVSIsT0nAX0
+	mLO7NdLCDcJAKJZ3IlyEsFwW8U2SMhwMkeFUnJrlChEiAzaOyw0ZU5hzcOW4CQaREwWkeuGBywE3q
+	Cluw1YUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzVxq-00000002AlT-3Aww;
-	Fri, 19 Sep 2025 07:55:30 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1uzWD0-00000002Cab-0RcI;
+	Fri, 19 Sep 2025 08:11:10 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzVxn-00000002Ajj-218G
-	for linux-mediatek@lists.infradead.org;
-	Fri, 19 Sep 2025 07:55:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1758268526;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=osse2QL84K0KAyQfQ6mkJcBclhUlpgaOVm2/yxp2Gk4=;
-	b=WSookrfd+yQqnoDskxKKasg9nkT3Vq03hd9qu6qGUiUgbWC7Eab9F3sETjXaTq5VV3m01E
-	QSbCoF5/JwWCZBYB61+ad9J99bfzl+HghyOue3cKinOF+yrtTKvK53qcMAL3kFw2YuoMD2
-	nBPGWLvSylphthnjFWZ8Ta75kxDPu00=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-106-FH2BpmQXOvmZ4WmV22agRQ-1; Fri, 19 Sep 2025 03:55:23 -0400
-X-MC-Unique: FH2BpmQXOvmZ4WmV22agRQ-1
-X-Mimecast-MFC-AGG-ID: FH2BpmQXOvmZ4WmV22agRQ_1758268522
-Received: by mail-wr1-f72.google.com with SMTP id ffacd0b85a97d-3df07c967e9so948224f8f.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 19 Sep 2025 00:55:23 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1758268522; x=1758873322;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=osse2QL84K0KAyQfQ6mkJcBclhUlpgaOVm2/yxp2Gk4=;
-        b=JlyKB9ch1sdmrQfvFKicOaG7gmOmql6C0t09pvKU751ppqgOuxRN3eSo1LEEp0yfXD
-         Ly7UIlyq5GgR0M7OoNwiG2UGdZTnwNLbMUN7gTLfQCPkwFbaktO838KQca0tpvyB7A8Q
-         66mFrlG6R82Y8/8/TViWfNKbO7U7wQvcRfCsLw4vcr2a45jYqvKkquJ+huiKSnPKyzhh
-         aq7FtuP2qYDcPoWV2nP1elb7ZrZI235QpgDgpv/hoExxTG1to5KnwVrul9dH9Ho0vjLo
-         hdpSJ4g9aduQUzJkHgeANoVXLKJqaqb+NmMc6LDxbCOD8AR3Pv+5lLNrxlESXhUZMETX
-         B+/Q==
-X-Forwarded-Encrypted: i=1; AJvYcCU/ZYiIJqRl6ZkLtdsA92QQTR1WFkYN3MOOk35DHfIBi1OtQ/mQX6dRacrycBbOfCuVo6fQLuBZFZGb4+jEKQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzgo5JCh4LQr2eoGKpNgFQXuQiJumo6fSEssVXn0kXw4O0Sao5s
-	gmYrVI5+/UDC4/V0rT3Jh7ZvTvqfJifV0y0Y2wKQg/jVOt6ywG5A3YywgqAJNdPPR0TfCFf0KPU
-	Gpcb1s1oKjwF4FosHLXCD2XddT+1vzGyArDsZfoo5RR7012d+16Y34KNU6D+hROUoH/mS/zRnIg
-	==
-X-Gm-Gg: ASbGnctv4cNHrqKmVBmcVOCHAnowECXM6Vuv4aPxOZM2eys95K2jVDXcO/7nvHOwcG0
-	q5FgQZU2uabsg/BE+3GaRXpRuk8IQR9aBKW67ApWYYZjyz04Lcd4XUAQOIbw5VtG+HSFXa6AUgS
-	WOqSLTD5euesMREqHWRhbFPo43/yCZdvWg2OD1JqjyB1zzobiOXoJBReABhtctZG9feMEfibaPf
-	Xq1WxK5X+TasJFKc8DwdKsos8wAP4V8y/vdVETzu599TYqpye1Svml+gUyCxDf1mctEd+ERW8xQ
-	LKyxOTK9l1EcNxIhXe4JeZ/rOtN8X50yH/sb/OrS5h3TNasOKxkmiHYtQ727BEFkgWU4wuNB65P
-	Fk0ZBCJ1gaCRIb3mQ5mahZmNJkfH/WChypeLCfx1sFdQty2W0FfyvDIHSZaH9+EX6GIWX
-X-Received: by 2002:a05:6000:2910:b0:3ec:4fe:860 with SMTP id ffacd0b85a97d-3ee85b4a18dmr1762969f8f.46.1758268522087;
-        Fri, 19 Sep 2025 00:55:22 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEmsOCk89rguq4xBcv0mHt16LvH4R5w4qPU2plvXNCKjIZCrWBP0TcUZNBN6vEsunOB08tPlQ==
-X-Received: by 2002:a05:6000:2910:b0:3ec:4fe:860 with SMTP id ffacd0b85a97d-3ee85b4a18dmr1762914f8f.46.1758268521573;
-        Fri, 19 Sep 2025 00:55:21 -0700 (PDT)
-Received: from ?IPV6:2003:d8:2f23:5600:727b:b2f6:94a1:a51b? (p200300d82f235600727bb2f694a1a51b.dip0.t-ipconnect.de. [2003:d8:2f23:5600:727b:b2f6:94a1:a51b])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3f02f332c31sm1086606f8f.45.2025.09.19.00.55.19
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 19 Sep 2025 00:55:20 -0700 (PDT)
-Message-ID: <9d2c3e3e-439d-4695-b7c9-21fa52f48ced@redhat.com>
-Date: Fri, 19 Sep 2025 09:55:18 +0200
+	id 1uzWCv-00000002CZj-3Mva;
+	Fri, 19 Sep 2025 08:11:08 +0000
+X-UUID: 2e7af842953011f09f706fa2197c6ceb-20250919
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=8AGrTL1WME+MkjB7NmTfDtQhx+C8E273qhuMaHap5lc=;
+	b=B+ZhD47ldAOLJZxc1X+5RWcrJ3jkjxgVKkATCx6ar15TWzllPatTbT3l64FnZ478LdJnOQ3lkkzju/cCsmRctXvXAi/7R9zHwwb6hjvYGF+P/IGwcWD2NLckRa7ZQNQmHXiOIOoqmRAx6HrN5qhghfPtYpK7EfKqcVSVzpsDG4c=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.4,REQID:3c1e70db-aedc-4d5c-ae1c-4f7fb2ab6f3a,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:1ca6b93,CLOUDID:e214bb6c-8443-424b-b119-dc42e68239b0,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,
+	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 2e7af842953011f09f706fa2197c6ceb-20250919
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
+	(envelope-from <zhengnan.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2095047048; Fri, 19 Sep 2025 01:11:01 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Fri, 19 Sep 2025 16:10:58 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Fri, 19 Sep 2025 16:10:57 +0800
+From: Zhengnan Chen <zhengnan.chen@mediatek.com>
+To: Yong Wu <yong.wu@mediatek.com>, Krzysztof Kozlowski <krzk@kernel.org>, Rob
+ Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Zhengnan Chen
+	<zhengnan.chen@mediatek.com>
+Subject: [PATCH 0/2] MT8189 SMI SUPPORT
+Date: Fri, 19 Sep 2025 16:09:54 +0800
+Message-ID: <20250919081014.14100-1-zhengnan.chen@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 2/6] mm: remap unused subpages to shared zeropage when
- splitting isolated thp
-To: Lance Yang <lance.yang@linux.dev>
-Cc: =?UTF-8?B?UXVuLXdlaSBMaW4gKOael+e+pOW0tCk=?= <Qun-wei.Lin@mediatek.com>,
- "catalin.marinas@arm.com" <catalin.marinas@arm.com>,
- "usamaarif642@gmail.com" <usamaarif642@gmail.com>,
- "linux-mm@kvack.org" <linux-mm@kvack.org>,
- "yuzhao@google.com" <yuzhao@google.com>,
- "akpm@linux-foundation.org" <akpm@linux-foundation.org>,
- "corbet@lwn.net" <corbet@lwn.net>,
- =?UTF-8?B?QW5kcmV3IFlhbmcgKOaliuaZuuW8tyk=?= <Andrew.Yang@mediatek.com>,
- "npache@redhat.com" <npache@redhat.com>, "rppt@kernel.org"
- <rppt@kernel.org>, "willy@infradead.org" <willy@infradead.org>,
- "kernel-team@meta.com" <kernel-team@meta.com>,
- "roman.gushchin@linux.dev" <roman.gushchin@linux.dev>,
- "hannes@cmpxchg.org" <hannes@cmpxchg.org>,
- "cerasuolodomenico@gmail.com" <cerasuolodomenico@gmail.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "ryncsn@gmail.com" <ryncsn@gmail.com>, "surenb@google.com"
- <surenb@google.com>, "riel@surriel.com" <riel@surriel.com>,
- "shakeel.butt@linux.dev" <shakeel.butt@linux.dev>,
- =?UTF-8?B?Q2hpbndlbiBDaGFuZyAo5by16Yym5paHKQ==?=
- <chinwen.chang@mediatek.com>,
- "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
- =?UTF-8?B?Q2FzcGVyIExpICjmnY7kuK3mpq4p?= <casper.li@mediatek.com>,
- "ryan.roberts@arm.com" <ryan.roberts@arm.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "baohua@kernel.org" <baohua@kernel.org>,
- "kaleshsingh@google.com" <kaleshsingh@google.com>,
- "zhais@google.com" <zhais@google.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-References: <20240830100438.3623486-1-usamaarif642@gmail.com>
- <20240830100438.3623486-3-usamaarif642@gmail.com>
- <a7944523fcc3634607691c35311a5d59d1a3f8d4.camel@mediatek.com>
- <434c092b-0f19-47bf-a5fa-ea5b4b36c35e@redhat.com>
- <CABzRoyYWQMFTGYgfC7N=cWMnL_+5Y05=jrMhFjBf1aKOGxzq5g@mail.gmail.com>
- <ebedc478-7519-4e30-854e-f6616a7647b0@redhat.com>
- <120445c8-7250-42e0-ad6a-978020c8fad3@linux.dev>
-From: David Hildenbrand <david@redhat.com>
-Autocrypt: addr=david@redhat.com; keydata=
- xsFNBFXLn5EBEAC+zYvAFJxCBY9Tr1xZgcESmxVNI/0ffzE/ZQOiHJl6mGkmA1R7/uUpiCjJ
- dBrn+lhhOYjjNefFQou6478faXE6o2AhmebqT4KiQoUQFV4R7y1KMEKoSyy8hQaK1umALTdL
- QZLQMzNE74ap+GDK0wnacPQFpcG1AE9RMq3aeErY5tujekBS32jfC/7AnH7I0v1v1TbbK3Gp
- XNeiN4QroO+5qaSr0ID2sz5jtBLRb15RMre27E1ImpaIv2Jw8NJgW0k/D1RyKCwaTsgRdwuK
- Kx/Y91XuSBdz0uOyU/S8kM1+ag0wvsGlpBVxRR/xw/E8M7TEwuCZQArqqTCmkG6HGcXFT0V9
- PXFNNgV5jXMQRwU0O/ztJIQqsE5LsUomE//bLwzj9IVsaQpKDqW6TAPjcdBDPLHvriq7kGjt
- WhVhdl0qEYB8lkBEU7V2Yb+SYhmhpDrti9Fq1EsmhiHSkxJcGREoMK/63r9WLZYI3+4W2rAc
- UucZa4OT27U5ZISjNg3Ev0rxU5UH2/pT4wJCfxwocmqaRr6UYmrtZmND89X0KigoFD/XSeVv
- jwBRNjPAubK9/k5NoRrYqztM9W6sJqrH8+UWZ1Idd/DdmogJh0gNC0+N42Za9yBRURfIdKSb
- B3JfpUqcWwE7vUaYrHG1nw54pLUoPG6sAA7Mehl3nd4pZUALHwARAQABzSREYXZpZCBIaWxk
- ZW5icmFuZCA8ZGF2aWRAcmVkaGF0LmNvbT7CwZoEEwEIAEQCGwMCF4ACGQEFCwkIBwICIgIG
- FQoJCAsCBBYCAwECHgcWIQQb2cqtc1xMOkYN/MpN3hD3AP+DWgUCaJzangUJJlgIpAAKCRBN
- 3hD3AP+DWhAxD/9wcL0A+2rtaAmutaKTfxhTP0b4AAp1r/eLxjrbfbCCmh4pqzBhmSX/4z11
- opn2KqcOsueRF1t2ENLOWzQu3Roiny2HOU7DajqB4dm1BVMaXQya5ae2ghzlJN9SIoopTWlR
- 0Af3hPj5E2PYvQhlcqeoehKlBo9rROJv/rjmr2x0yOM8qeTroH/ZzNlCtJ56AsE6Tvl+r7cW
- 3x7/Jq5WvWeudKrhFh7/yQ7eRvHCjd9bBrZTlgAfiHmX9AnCCPRPpNGNedV9Yty2Jnxhfmbv
- Pw37LA/jef8zlCDyUh2KCU1xVEOWqg15o1RtTyGV1nXV2O/mfuQJud5vIgzBvHhypc3p6VZJ
- lEf8YmT+Ol5P7SfCs5/uGdWUYQEMqOlg6w9R4Pe8d+mk8KGvfE9/zTwGg0nRgKqlQXrWRERv
- cuEwQbridlPAoQHrFWtwpgYMXx2TaZ3sihcIPo9uU5eBs0rf4mOERY75SK+Ekayv2ucTfjxr
- Kf014py2aoRJHuvy85ee/zIyLmve5hngZTTe3Wg3TInT9UTFzTPhItam6dZ1xqdTGHZYGU0O
- otRHcwLGt470grdiob6PfVTXoHlBvkWRadMhSuG4RORCDpq89vu5QralFNIf3EysNohoFy2A
- LYg2/D53xbU/aa4DDzBb5b1Rkg/udO1gZocVQWrDh6I2K3+cCs7BTQRVy5+RARAA59fefSDR
- 9nMGCb9LbMX+TFAoIQo/wgP5XPyzLYakO+94GrgfZjfhdaxPXMsl2+o8jhp/hlIzG56taNdt
- VZtPp3ih1AgbR8rHgXw1xwOpuAd5lE1qNd54ndHuADO9a9A0vPimIes78Hi1/yy+ZEEvRkHk
- /kDa6F3AtTc1m4rbbOk2fiKzzsE9YXweFjQvl9p+AMw6qd/iC4lUk9g0+FQXNdRs+o4o6Qvy
- iOQJfGQ4UcBuOy1IrkJrd8qq5jet1fcM2j4QvsW8CLDWZS1L7kZ5gT5EycMKxUWb8LuRjxzZ
- 3QY1aQH2kkzn6acigU3HLtgFyV1gBNV44ehjgvJpRY2cC8VhanTx0dZ9mj1YKIky5N+C0f21
- zvntBqcxV0+3p8MrxRRcgEtDZNav+xAoT3G0W4SahAaUTWXpsZoOecwtxi74CyneQNPTDjNg
- azHmvpdBVEfj7k3p4dmJp5i0U66Onmf6mMFpArvBRSMOKU9DlAzMi4IvhiNWjKVaIE2Se9BY
- FdKVAJaZq85P2y20ZBd08ILnKcj7XKZkLU5FkoA0udEBvQ0f9QLNyyy3DZMCQWcwRuj1m73D
- sq8DEFBdZ5eEkj1dCyx+t/ga6x2rHyc8Sl86oK1tvAkwBNsfKou3v+jP/l14a7DGBvrmlYjO
- 59o3t6inu6H7pt7OL6u6BQj7DoMAEQEAAcLBfAQYAQgAJgIbDBYhBBvZyq1zXEw6Rg38yk3e
- EPcA/4NaBQJonNqrBQkmWAihAAoJEE3eEPcA/4NaKtMQALAJ8PzprBEXbXcEXwDKQu+P/vts
- IfUb1UNMfMV76BicGa5NCZnJNQASDP/+bFg6O3gx5NbhHHPeaWz/VxlOmYHokHodOvtL0WCC
- 8A5PEP8tOk6029Z+J+xUcMrJClNVFpzVvOpb1lCbhjwAV465Hy+NUSbbUiRxdzNQtLtgZzOV
- Zw7jxUCs4UUZLQTCuBpFgb15bBxYZ/BL9MbzxPxvfUQIPbnzQMcqtpUs21CMK2PdfCh5c4gS
- sDci6D5/ZIBw94UQWmGpM/O1ilGXde2ZzzGYl64glmccD8e87OnEgKnH3FbnJnT4iJchtSvx
- yJNi1+t0+qDti4m88+/9IuPqCKb6Stl+s2dnLtJNrjXBGJtsQG/sRpqsJz5x1/2nPJSRMsx9
- 5YfqbdrJSOFXDzZ8/r82HgQEtUvlSXNaXCa95ez0UkOG7+bDm2b3s0XahBQeLVCH0mw3RAQg
- r7xDAYKIrAwfHHmMTnBQDPJwVqxJjVNr7yBic4yfzVWGCGNE4DnOW0vcIeoyhy9vnIa3w1uZ
- 3iyY2Nsd7JxfKu1PRhCGwXzRw5TlfEsoRI7V9A8isUCoqE2Dzh3FvYHVeX4Us+bRL/oqareJ
- CIFqgYMyvHj7Q06kTKmauOe4Nf0l0qEkIuIzfoLJ3qr5UyXc2hLtWyT9Ir+lYlX9efqh7mOY
- qIws/H2t
-In-Reply-To: <120445c8-7250-42e0-ad6a-978020c8fad3@linux.dev>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: yrLQo58T5-uSAQ4zKcLe68RgMDAWWrzKjjadcbFz3js_1758268522
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250919_005527_588977_7E888CCA 
-X-CRM114-Status: GOOD (  20.92  )
+X-CRM114-CacheID: sfid-20250919_011105_846728_E2E17F1C 
+X-CRM114-Status: UNSURE (   6.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -189,119 +88,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
->> I think where possible we really only want to identify problematic
->> (tagged) pages and skip them. And we should either look into fixing KSM
->> as well or finding out why KSM is not affected.
-> 
-> Yeah. Seems like we could introduce a new helper,
-> folio_test_mte_tagged(struct
-> folio *folio). By default, it would return false, and architectures like
-> arm64
-> can override it.
+Based on tag: next-20250919, linux-next/master
 
-If we add a new helper it should instead express the semantics that we cannot deduplicate.
+This patchset add mt8189 smi support.
 
-For THP, I recall that only some pages might be tagged. So likely we want to check per page.
+zhengnan.chen (2):
+  dt-bindings: memory-controllers: mtk-smi: Add support for mt8189
+  memory: mtk-smi: Add mt8189 support
 
-> 
-> Looking at the code, the PG_mte_tagged flag is not set for regular THP.
-
-I think it's supported for THP per page. Only for hugetlb we tag the whole thing through the head page instead of individual pages.
-
-> The MTE
-> status actually comes from the VM_MTE flag in the VMA that maps it.
-> 
-
-During the rmap walk we could check the VMA flag, but there would be no way to just stop the THP shrinker scanning this page early.
-
-> static inline bool folio_test_hugetlb_mte_tagged(struct folio *folio)
-> {
-> 	bool ret = test_bit(PG_mte_tagged, &folio->flags.f);
-> 
-> 	VM_WARN_ON_ONCE(!folio_test_hugetlb(folio));
-> 
-> 	/*
-> 	 * If the folio is tagged, ensure ordering with a likely subsequent
-> 	 * read of the tags.
-> 	 */
-> 	if (ret)
-> 		smp_rmb();
-> 	return ret;
-> }
-> 
-> static inline bool page_mte_tagged(struct page *page)
-> {
-> 	bool ret = test_bit(PG_mte_tagged, &page->flags.f);
-> 
-> 	VM_WARN_ON_ONCE(folio_test_hugetlb(page_folio(page)));
-> 
-> 	/*
-> 	 * If the page is tagged, ensure ordering with a likely subsequent
-> 	 * read of the tags.
-> 	 */
-> 	if (ret)
-> 		smp_rmb();
-> 	return ret;
-> }
-> 
-> contpte_set_ptes()
-> 	__set_ptes()
-> 		__set_ptes_anysz()
-> 			__sync_cache_and_tags()
-> 				mte_sync_tags()
-> 					set_page_mte_tagged()
-> 
-> Then, having the THP shrinker skip any folios that are identified as
-> MTE-tagged.
-
-Likely we should just do something like (maybe we want better naming)
-
-#ifndef page_is_mergable
-#define page_is_mergable(page) (true)
-#endif
-
-And for arm64 have it be
-
-#define page_is_mergable(page) (!page_mte_tagged(page))
-
-
-And then do
-
-diff --git a/mm/huge_memory.c b/mm/huge_memory.c
-index 1f0813b956436..1cac9093918d6 100644
---- a/mm/huge_memory.c
-+++ b/mm/huge_memory.c
-@@ -4251,7 +4251,8 @@ static bool thp_underused(struct folio *folio)
-  
-         for (i = 0; i < folio_nr_pages(folio); i++) {
-                 kaddr = kmap_local_folio(folio, i * PAGE_SIZE);
--               if (!memchr_inv(kaddr, 0, PAGE_SIZE)) {
-+               if (page_is_mergable(folio_page(folio, i)) &&
-+                   !memchr_inv(kaddr, 0, PAGE_SIZE)) {
-                         num_zero_pages++;
-                         if (num_zero_pages > khugepaged_max_ptes_none) {
-                                 kunmap_local(kaddr);
-diff --git a/mm/migrate.c b/mm/migrate.c
-index 946253c398072..476a9a9091bd3 100644
---- a/mm/migrate.c
-+++ b/mm/migrate.c
-@@ -306,6 +306,8 @@ static bool try_to_map_unused_to_zeropage(struct page_vma_mapped_walk *pvmw,
-  
-         if (PageCompound(page))
-                 return false;
-+       if (!page_is_mergable(page))
-+               return false;
-         VM_BUG_ON_PAGE(!PageAnon(page), page);
-         VM_BUG_ON_PAGE(!PageLocked(page), page);
-         VM_BUG_ON_PAGE(pte_present(ptep_get(pvmw->pte)), page);
-
-
-For KSM, similarly just bail out early. But still wondering if this is already checked
-somehow for KSM.
+ .../mediatek,smi-common.yaml                  |  2 +
+ .../memory-controllers/mediatek,smi-larb.yaml |  3 ++
+ drivers/memory/mtk-smi.c                      | 44 +++++++++++++++++++
+ 3 files changed, 49 insertions(+)
 
 -- 
-Cheers
-
-David / dhildenb
+2.46.0
 
 
