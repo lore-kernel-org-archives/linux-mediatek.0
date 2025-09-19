@@ -4,93 +4,140 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0862BCAC59A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Sep 2025 12:19:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BEF3CAC59A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Sep 2025 12:42:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EiVKkL22YbljXIkdVcER9mqBNCLAbO3Otj7ELKVqmVE=; b=a7qpfg8nWWn0OgAwCGwRcB6Hqr
-	IJJyrqpmAchDn+7hOjjL9V1ecGFIu7VFBUHionxxWkf4tRI9+1XuxE3gdadn6NlvKcq70/Fz84MvA
-	4ZP2H9xysnE3NSz4j9FbmuVuLMcEtbpVnf5b8zQ/BDPR/6dli/OuE3CLhFEs/Kn2ZJDz+dTGo4Ixz
-	PfKGPAdZiSNQdl7SwM/5Fo1nkE/Siv2fXUo6bXPcGje/z+qPnpA3Ttd9sZ9sBinaYYzZhoZFxmAO5
-	l8543MyhnrD78sUTsUG1SiLiuvwIcgoyh3oMn8pXNUPLW40dufBP3KNHg9zYA+ECOSdJPOcRJsOsh
-	yhcFiuYw==;
+	bh=1/1g5tMQmVPFRJCQ3+SeEupEv5s5OFyxdK2wh+6wges=; b=SrzOEIqWRHZlKUJJdeotPBuDDM
+	kOBnJpbISaJ+OuuRgz/oQFkpnDJdJzPbyXOBPOTnoNEhb7pQicagUn88fW7GZyqQwq7/9b7JiRHRU
+	qvOxKOlSDfb5qDtqO0Fx/BSCCGHfQjpAcKa+Oc2pOG6w5tFJ2KeC/M/jky5XIfEXPBVxF7xj6evpq
+	tO40tUJ5r/MuJ1waQVtNaITBWR5qsDxT4xuqg3iSKqaOhGM5IMw/E5PRmk/ModlGVEcU/DSkWOeJH
+	6j4gStGadcACQa3jOlz7P9+NgPFxoZCqAYpp3Dmnvb8lEO3EGs7wo0eExRlSCMdx7+Myd8LNmwU+A
+	RedvZcJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uza5U-00000002nrl-3hUS;
-	Fri, 19 Sep 2025 12:19:40 +0000
-Received: from out-188.mta0.migadu.com ([2001:41d0:1004:224b::bc])
+	id 1uzaRB-00000002quP-1vyM;
+	Fri, 19 Sep 2025 12:42:05 +0000
+Received: from smtpout-04.galae.net ([185.171.202.116])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uza5S-00000002nqx-0vNq
+	id 1uzaR6-00000002qrO-2X0p
 	for linux-mediatek@lists.infradead.org;
-	Fri, 19 Sep 2025 12:19:39 +0000
-Message-ID: <9395a9ca-d865-42d7-9ea1-8e693e4e38e0@linux.dev>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
-	t=1758284374;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=EiVKkL22YbljXIkdVcER9mqBNCLAbO3Otj7ELKVqmVE=;
-	b=M5wUJJhGOKGalv8K65cSpDEtiAkwo7VxeOJE3XDf7FsY3sXohsexAOis/J4GO681ypJuJ7
-	ZhDFcFD2GZhk7ws4vP0mQDNRFfEFOunPk2f12QPiFu5iraacdY/1DdY5A7jTeqrCyb5fxR
-	82ubdEbzh3Ym39f3zPHEqae0+2V302w=
-Date: Fri, 19 Sep 2025 20:19:25 +0800
+	Fri, 19 Sep 2025 12:42:03 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-04.galae.net (Postfix) with ESMTPS id 04F83C8F1C5;
+	Fri, 19 Sep 2025 12:41:36 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id A285D606A8;
+	Fri, 19 Sep 2025 12:41:52 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 46D72102F1C98;
+	Fri, 19 Sep 2025 14:41:26 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1758285710; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:content-language:in-reply-to:references:autocrypt;
+	bh=1/1g5tMQmVPFRJCQ3+SeEupEv5s5OFyxdK2wh+6wges=;
+	b=M0A85OqPSdomJxkBrrfYF+huOuhvd8wTww1PfxyWE1Wj5/4/GYpOUbHlS1oMQpn/TCi6V3
+	nuLqXSYdqksIeTG4YAW/a04CDg2fhxliLkXtCPK3TM5KLVRhsUFV5iDvy4ZIFL4TQKTWoN
+	cQ2H8lZpYwWOWmoYszGGazJISCbjBGWTMxrYu1rl4FyahysPQ9zXpfumRLaD3kQHlnfXHp
+	22BOLNjQvOc7QZzLDKt588EEOPPdtZRUKDSjdZup5EzelbxUTchQGtTCv8BNKB6NsNgNOc
+	CfoN5ko8hef5sR68XuFEnsKfECMFc57/3IihvJGwL4Q37JAnL8MlBxzgRCNHHQ==
+Message-ID: <50ceaf05-f2ea-4c13-b294-5b3ca76d645b@bootlin.com>
+Date: Fri, 19 Sep 2025 14:41:25 +0200
 MIME-Version: 1.0
-Subject: Re: [PATCH v5 2/6] mm: remap unused subpages to shared zeropage when
- splitting isolated thp
-Content-Language: en-US
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: Lance Yang <lance.yang@linux.dev>
-To: David Hildenbrand <david@redhat.com>
-Cc: =?UTF-8?B?UXVuLXdlaSBMaW4gKOael+e+pOW0tCk=?= <Qun-wei.Lin@mediatek.com>,
- "catalin.marinas@arm.com" <catalin.marinas@arm.com>,
- "usamaarif642@gmail.com" <usamaarif642@gmail.com>,
- "linux-mm@kvack.org" <linux-mm@kvack.org>,
- "yuzhao@google.com" <yuzhao@google.com>,
- "akpm@linux-foundation.org" <akpm@linux-foundation.org>,
- "corbet@lwn.net" <corbet@lwn.net>,
- =?UTF-8?B?QW5kcmV3IFlhbmcgKOaliuaZuuW8tyk=?= <Andrew.Yang@mediatek.com>,
- "npache@redhat.com" <npache@redhat.com>, "rppt@kernel.org"
- <rppt@kernel.org>, "willy@infradead.org" <willy@infradead.org>,
- "kernel-team@meta.com" <kernel-team@meta.com>,
- "roman.gushchin@linux.dev" <roman.gushchin@linux.dev>,
- "hannes@cmpxchg.org" <hannes@cmpxchg.org>,
- "cerasuolodomenico@gmail.com" <cerasuolodomenico@gmail.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "ryncsn@gmail.com" <ryncsn@gmail.com>, "surenb@google.com"
- <surenb@google.com>, "riel@surriel.com" <riel@surriel.com>,
- "shakeel.butt@linux.dev" <shakeel.butt@linux.dev>,
- =?UTF-8?B?Q2hpbndlbiBDaGFuZyAo5by16Yym5paHKQ==?=
- <chinwen.chang@mediatek.com>,
- "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
- =?UTF-8?B?Q2FzcGVyIExpICjmnY7kuK3mpq4p?= <casper.li@mediatek.com>,
- "ryan.roberts@arm.com" <ryan.roberts@arm.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "baohua@kernel.org" <baohua@kernel.org>,
- "kaleshsingh@google.com" <kaleshsingh@google.com>,
- "zhais@google.com" <zhais@google.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-References: <20240830100438.3623486-1-usamaarif642@gmail.com>
- <20240830100438.3623486-3-usamaarif642@gmail.com>
- <a7944523fcc3634607691c35311a5d59d1a3f8d4.camel@mediatek.com>
- <434c092b-0f19-47bf-a5fa-ea5b4b36c35e@redhat.com>
- <CABzRoyYWQMFTGYgfC7N=cWMnL_+5Y05=jrMhFjBf1aKOGxzq5g@mail.gmail.com>
- <ebedc478-7519-4e30-854e-f6616a7647b0@redhat.com>
- <120445c8-7250-42e0-ad6a-978020c8fad3@linux.dev>
- <9d2c3e3e-439d-4695-b7c9-21fa52f48ced@redhat.com>
- <4cf41cd5-e93a-412b-b209-4180bd2d4015@linux.dev>
- <dfb303b9-151b-49ec-b7ef-691c71bd5385@linux.dev>
-In-Reply-To: <dfb303b9-151b-49ec-b7ef-691c71bd5385@linux.dev>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH RFC v2 07/20] drm/atomic: Pass post_blend_color_pipeline
+ client cap to atomic check
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Haneen Mohammed <hamohammed.sa@gmail.com>,
+ Melissa Wen <melissa.srw@gmail.com>
+Cc: Alex Hung <alex.hung@amd.com>, wayland-devel@lists.freedesktop.org,
+ harry.wentland@amd.com, leo.liu@amd.com, ville.syrjala@linux.intel.com,
+ pekka.paalanen@collabora.com, contact@emersion.fr, mwen@igalia.com,
+ jadahl@redhat.com, sebastian.wick@redhat.com, shashank.sharma@amd.com,
+ agoins@nvidia.com, joshua@froggi.es, mdaenzer@redhat.com, aleixpol@kde.org,
+ xaver.hugl@gmail.com, victoria@system76.com, uma.shankar@intel.com,
+ quic_naseer@quicinc.com, quic_cbraga@quicinc.com, quic_abhinavk@quicinc.com,
+ marcan@marcan.st, Liviu.Dudau@arm.com, sashamcintosh@google.com,
+ chaitanya.kumar.borah@intel.com, mcanal@igalia.com, kernel@collabora.com,
+ daniels@collabora.com, leandro.ribeiro@collabora.com,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Simona Vetter <simona.vetter@ffwll.ch>
+References: <20250917-mtk-post-blend-color-pipeline-v2-0-ac4471b44758@collabora.com>
+ <20250917-mtk-post-blend-color-pipeline-v2-7-ac4471b44758@collabora.com>
+Content-Language: en-US, fr
+From: Louis Chauvet <louis.chauvet@bootlin.com>
+Autocrypt: addr=louis.chauvet@bootlin.com; keydata=
+ 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
+In-Reply-To: <20250917-mtk-post-blend-color-pipeline-v2-7-ac4471b44758@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Migadu-Flow: FLOW_OUT
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250919_051938_487571_5CF14677 
-X-CRM114-Status: GOOD (  21.47  )
+X-CRM114-CacheID: sfid-20250919_054200_858559_BB5BA2FF 
+X-CRM114-Status: GOOD (  14.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,194 +152,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hey David,
 
-I believe I've found the exact reason why KSM skips MTE-tagged pages ;p
 
+Le 18/09/2025 à 02:43, Nícolas F. R. A. Prado a écrit :
+> Pass the state of the post-blend color pipeline client cap to the atomic
+> state so that drivers can rely on it to enable color pipeline
+> functionality and ignore the deprecated color management CRTC
+> properties.
 > 
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+
+Reviewed-by: Louis Chauvet <louis.chauvet@bootlin.com>
+
+> ---
+>   drivers/gpu/drm/drm_atomic_uapi.c |  1 +
+>   include/drm/drm_atomic.h          | 20 ++++++++++++++++++++
+>   2 files changed, 21 insertions(+)
 > 
-> On 2025/9/19 16:14, Lance Yang wrote:
->>
->>
->> On 2025/9/19 15:55, David Hildenbrand wrote:
->>>>> I think where possible we really only want to identify problematic
->>>>> (tagged) pages and skip them. And we should either look into fixing 
->>>>> KSM
->>>>> as well or finding out why KSM is not affected.
->>>>
->>>> Yeah. Seems like we could introduce a new helper,
->>>> folio_test_mte_tagged(struct
->>>> folio *folio). By default, it would return false, and architectures 
->>>> like
->>>> arm64
->>>> can override it.
->>>
->>> If we add a new helper it should instead express the semantics that 
->>> we cannot deduplicate.
->>
->> Agreed.
->>
->>>
->>> For THP, I recall that only some pages might be tagged. So likely we 
->>> want to check per page.
->>
->> Yes, a per-page check would be simpler.
->>
->>>
->>>>
->>>> Looking at the code, the PG_mte_tagged flag is not set for regular THP.
->>>
->>> I think it's supported for THP per page. Only for hugetlb we tag the 
->>> whole thing through the head page instead of individual pages.
->>
->> Right. That's exactly what I meant.
->>
->>>
->>>> The MTE
->>>> status actually comes from the VM_MTE flag in the VMA that maps it.
->>>>
->>>
->>> During the rmap walk we could check the VMA flag, but there would be 
->>> no way to just stop the THP shrinker scanning this page early.
->>>
->>>> static inline bool folio_test_hugetlb_mte_tagged(struct folio *folio)
->>>> {
->>>>     bool ret = test_bit(PG_mte_tagged, &folio->flags.f);
->>>>
->>>>     VM_WARN_ON_ONCE(!folio_test_hugetlb(folio));
->>>>
->>>>     /*
->>>>      * If the folio is tagged, ensure ordering with a likely subsequent
->>>>      * read of the tags.
->>>>      */
->>>>     if (ret)
->>>>         smp_rmb();
->>>>     return ret;
->>>> }
->>>>
->>>> static inline bool page_mte_tagged(struct page *page)
->>>> {
->>>>     bool ret = test_bit(PG_mte_tagged, &page->flags.f);
->>>>
->>>>     VM_WARN_ON_ONCE(folio_test_hugetlb(page_folio(page)));
->>>>
->>>>     /*
->>>>      * If the page is tagged, ensure ordering with a likely subsequent
->>>>      * read of the tags.
->>>>      */
->>>>     if (ret)
->>>>         smp_rmb();
->>>>     return ret;
->>>> }
->>>>
->>>> contpte_set_ptes()
->>>>     __set_ptes()
->>>>         __set_ptes_anysz()
->>>>             __sync_cache_and_tags()
->>>>                 mte_sync_tags()
->>>>                     set_page_mte_tagged()
->>>>
->>>> Then, having the THP shrinker skip any folios that are identified as
->>>> MTE-tagged.
->>>
->>> Likely we should just do something like (maybe we want better naming)
->>>
->>> #ifndef page_is_mergable
->>> #define page_is_mergable(page) (true)
->>> #endif
->>
->>
->> Maybe something like page_is_optimizable()? Just a thought ;p
->>
->>>
->>> And for arm64 have it be
->>>
->>> #define page_is_mergable(page) (!page_mte_tagged(page))
->>>
->>>
->>> And then do
->>>
->>> diff --git a/mm/huge_memory.c b/mm/huge_memory.c
->>> index 1f0813b956436..1cac9093918d6 100644
->>> --- a/mm/huge_memory.c
->>> +++ b/mm/huge_memory.c
->>> @@ -4251,7 +4251,8 @@ static bool thp_underused(struct folio *folio)
->>>
->>>          for (i = 0; i < folio_nr_pages(folio); i++) {
->>>                  kaddr = kmap_local_folio(folio, i * PAGE_SIZE);
->>> -               if (!memchr_inv(kaddr, 0, PAGE_SIZE)) {
->>> +               if (page_is_mergable(folio_page(folio, i)) &&
->>> +                   !memchr_inv(kaddr, 0, PAGE_SIZE)) {
->>>                          num_zero_pages++;
->>>                          if (num_zero_pages > 
->>> khugepaged_max_ptes_none) {
->>>                                  kunmap_local(kaddr);
->>> diff --git a/mm/migrate.c b/mm/migrate.c
->>> index 946253c398072..476a9a9091bd3 100644
->>> --- a/mm/migrate.c
->>> +++ b/mm/migrate.c
->>> @@ -306,6 +306,8 @@ static bool try_to_map_unused_to_zeropage(struct 
->>> page_vma_mapped_walk *pvmw,
->>>
->>>          if (PageCompound(page))
->>>                  return false;
->>> +       if (!page_is_mergable(page))
->>> +               return false;
->>>          VM_BUG_ON_PAGE(!PageAnon(page), page);
->>>          VM_BUG_ON_PAGE(!PageLocked(page), page);
->>>          VM_BUG_ON_PAGE(pte_present(ptep_get(pvmw->pte)), page);
->>
->> Looks good to me!
->>
->>>
->>>
->>> For KSM, similarly just bail out early. But still wondering if this 
->>> is already checked
->>> somehow for KSM.
->>
->> +1 I'm looking for a machine to test it on.
+> diff --git a/drivers/gpu/drm/drm_atomic_uapi.c b/drivers/gpu/drm/drm_atomic_uapi.c
+> index f5125fa3fa28ff2a6ff07fd7cf07d4bdf77ab738..56a440a9390c7730c4c41b491f29b933a2bbb889 100644
+> --- a/drivers/gpu/drm/drm_atomic_uapi.c
+> +++ b/drivers/gpu/drm/drm_atomic_uapi.c
+> @@ -1660,6 +1660,7 @@ int drm_mode_atomic_ioctl(struct drm_device *dev,
+>   	state->acquire_ctx = &ctx;
+>   	state->allow_modeset = !!(arg->flags & DRM_MODE_ATOMIC_ALLOW_MODESET);
+>   	state->plane_color_pipeline = file_priv->plane_color_pipeline;
+> +	state->post_blend_color_pipeline = file_priv->post_blend_color_pipeline;
+>   
+>   retry:
+>   	copied_objs = 0;
+> diff --git a/include/drm/drm_atomic.h b/include/drm/drm_atomic.h
+> index 678708df9cdb90b4266127193a92183069f18688..8c42c584aefbf0034b2163d90538e80099b0dadb 100644
+> --- a/include/drm/drm_atomic.h
+> +++ b/include/drm/drm_atomic.h
+> @@ -482,6 +482,26 @@ struct drm_atomic_state {
+>   	 */
+>   	bool plane_color_pipeline : 1;
+>   
+> +	/**
+> +	 * @post_blend_color_pipeline:
+> +	 *
+> +	 * Indicates whether this atomic state originated with a client that
+> +	 * set the DRM_CLIENT_CAP_POST_BLEND_COLOR_PIPELINE.
+> +	 *
+> +	 * Drivers and helper functions should use this to ignore legacy
+> +	 * properties that are incompatible with the drm_crtc COLOR_PIPELINE
+> +	 * behavior, such as:
+> +	 *
+> +	 *  - GAMMA_LUT
+> +	 *  - DEGAMMA_LUT
+> +	 *  - GAMMA_LUT_SIZE
+> +	 *  - CTM
+> +	 *
+> +	 * or any other driver-specific properties that might affect pixel
+> +	 * values.
+> +	 */
+> +	bool post_blend_color_pipeline : 1;
+> +
+>   	/**
+>   	 * @colorops:
+>   	 *
 > 
-> Interestingly, it seems KSM is already skipping MTE-tagged pages. My test,
-> running on a v6.8.0 kernel inside QEMU (with MTE enabled), shows no merging
-> activity for those pages ...
 
-KSM's call to pages_identical() ultimately leads to memcmp_pages(). The
-arm64 implementation of memcmp_pages() in arch/arm64/kernel/mte.c contains
-a specific check that prevents merging in this case.
+-- 
+--
+Louis Chauvet, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
-try_to_merge_one_page()
-	-> pages_identical()
-		-> !memcmp_pages() Fails!
-		-> replace_page()
-
-
-int memcmp_pages(struct page *page1, struct page *page2)
-{
-	char *addr1, *addr2;
-	int ret;
-
-	addr1 = page_address(page1);
-	addr2 = page_address(page2);
-	ret = memcmp(addr1, addr2, PAGE_SIZE);
-
-	if (!system_supports_mte() || ret)
-		return ret;
-
-	/*
-	 * If the page content is identical but at least one of the pages is
-	 * tagged, return non-zero to avoid KSM merging. If only one of the
-	 * pages is tagged, __set_ptes() may zero or change the tags of the
-	 * other page via mte_sync_tags().
-	 */
-	if (page_mte_tagged(page1) || page_mte_tagged(page2))
-		return addr1 != addr2;
-
-	return ret;
-}
-
-IIUC, if either page is MTE-tagged, memcmp_pages() intentionally returns
-a non-zero value, which in turn causes pages_identical() to return false.
-
-Cheers,
-Lance
 
