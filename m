@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CE25CAC5A7
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E6E9CAC5A8
 	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Sep 2025 16:25:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
@@ -12,46 +12,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ra9y4q2EFN89c65T8guYtTeREK25syWCt+2DUaQWtEk=; b=zBQWXbXNQf8cAgH+dpsHAyfdN4
-	ALBdMCRccHhU/rju9/wxG2MiBPlciJjNubFOhrJNasYR9YbCbyOkc8OBSEG1WypOfdZLre6KYQg/v
-	i+AiqO2U2+6+LEcDnb/Iwr51xw9MTgSfWw7AR7ZsMR3D00E52fx/8+sVVMqyVx9rJeRbW5kXKuMnl
-	OvZxa0Kav4L8BxjiL/RrKeGdrDGTLiwb/fGbVxsdcWK7gQ4+yu0a8MyK4+DSPjZoullUNg1CEj7lz
-	dXMh1WRtTdDTCiBM6kKG51pIuyT8srz+QTVQe9hgBEQKy4oofFHPhJEHqHAHoQDXFPvK/4RcMfg8K
-	PwsLSXXA==;
+	bh=9Lv9o061EuaZrXJeVsbV30sxFkjrU+JEV+O5HKiQ/VQ=; b=FTAQX9NhvMZ31AtZq2LsQfYJIM
+	C8lidq6r0V2fVT+iBeMM9Rg734tlqSjajcQdAbDn9+CuKUmiU99XFtYsf7s2NteOhAznUNOSyF8lW
+	VJPuuZ+qxQBihMi8x6Lu94OGT+ngZJf14avqwIHd5oIdHVsqt59q9U86APC/IqYcqfnZ4WD13DP+n
+	NG4fAyRfr9M/p69h+uLgg/ZQte824BVY5WsWvA4tGUgUxh4L2HuribZUPUjXAlGIyhivnuuUxa0F0
+	wxX4okHeLCtfxOnfvZAIpz0rps0Zoh2g/hsG/9nsUIiYqSy5yEAf8SBwRyP78g6EFOde/B4l/t/6L
+	+PfCgnyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v00Om-00000005byZ-1HhD;
+	id 1v00Om-00000005bzC-2bQJ;
 	Sat, 20 Sep 2025 16:25:20 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v00OM-00000005bdf-1CWr;
+	id 1v00OM-00000005bde-1CZh;
 	Sat, 20 Sep 2025 16:24:56 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 851A144CE0;
+	by sea.source.kernel.org (Postfix) with ESMTP id 7D32244CCA;
 	Sat, 20 Sep 2025 16:24:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 57939C116B1;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 4D867C113CF;
 	Sat, 20 Sep 2025 16:24:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1758385493;
-	bh=Yw21Bj4O1CcXJALjZystKMv5JLsbgLxSaC0YPKbfZUc=;
+	bh=qb2+EkBXp7Hgrg+P1wF5GIqdIOe/IYDimtrwxuCDjmY=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=XUrBZQkDTUcos1EmYXcH+Gg5TepAB6pxcKoAuBd07gLLrxWGxMDxQnFrmHnTkH6YJ
-	 n2ObM5LqX7E5sO2iYH6IUD4Mlt0eqWl1pO2zjSiwacIuMBACouqRWwV74tKKIyyJsc
-	 Wa76qkKuk+5NzMkJCDswxtfhQfVqhvWLNnUVHWqZ5MbMTguvNe9pQj3uYLkXccfEQ/
-	 rW14Ukl5d9m9kAoT6DSXN/riwls4ncNS/h/+vTJ6+MMWS95nwFLp077dMnCXme1H15
-	 HDGNa8M/Gswgy5rtSZNlY9hE8SHmI7n3czOaxrroSXd2noKVLvB9jg1XpyWxw3C51f
-	 OY7cKPz2lU1Ag==
+	b=F/qrcZPWLw7tQe9MPG1XnGMnfhs3LFogPoB66NSxfnupZ4kB94+6FTQTT2mT4JRYh
+	 9yVbrZfDqcMfULLP/ge8vdGq9hVNtM3IlDRDJQl8B2vKuVpBWvBDpY9mV9yKRz7yR4
+	 onxgpfZW3wNPPfNbr5SBplumk0d85wg2y2F03s6C49lihE9WAT397Ig1fZEZYx7xIF
+	 3NmZZfpDLU0N7D/3ubbfUVgx+w/4CfI+OYnqBObXTImN2DMfp9pAiTvnrOD99286IN
+	 cRgkvfkZLtCirrvEeKVynuAWy7o36/Dvc3XC4SwGSEyJhcd6TRO6U1D0CnQukiHMYs
+	 B9IqE6Nud0xSg==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4F804CAC5A9;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 41A34CAC5AD;
 	Sat, 20 Sep 2025 16:24:53 +0000 (UTC)
 From: Cristian Cozzolino via B4 Relay <devnull+cristian_ci.protonmail.com@kernel.org>
-Date: Sat, 20 Sep 2025 20:23:30 +0200
-Subject: [PATCH 05/10] ARM: dts: mediatek: mt6582: remove compatible
- property from root node
+Date: Sat, 20 Sep 2025 20:23:29 +0200
+Subject: [PATCH 04/10] ARM: dts: mediatek: mt6582: sort nodes and
+ properties
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250920-mt6582-v1-5-b887720f577d@protonmail.com>
+Message-Id: <20250920-mt6582-v1-4-b887720f577d@protonmail.com>
 References: <20250920-mt6582-v1-0-b887720f577d@protonmail.com>
 In-Reply-To: <20250920-mt6582-v1-0-b887720f577d@protonmail.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -64,20 +64,19 @@ Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  phone-devel@vger.kernel.org, 
  Cristian Cozzolino <cristian_ci@protonmail.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1758392693; l=662;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1758392693; l=3996;
  i=cristian_ci@protonmail.com; s=20250620; h=from:subject:message-id;
- bh=LHxW1zi0DUMWIe5Lj8+bFJxdSQEdq66WG8h16b3dP4E=;
- b=TMvWA8WAGPT44mYP1vueAUHoVtdz+gB18NfVa5rTYKl9Nvrdu+N4bkMVEM0O20iu9Q/hAADvR
- nyg/7JLiZh/BjIexjLpZYiTP2vBK9Ll6QgIwFucLxYSOOgRikBzNpzI
+ bh=Z1S2PzSFTRUHdm6e5KvQH8f0VJGVi1iLBc3KX94/HbU=;
+ b=FQWueJz6fpe77OaZh5ItLntT/nNPCZOu63nJSRYJV7jq1NjhxWRXdvUnJxw9UR4CUIP3IznxY
+ UHp1qlhmqfVCmY0/5UixAQOQI4bbNxzXkG2hfTt/7J2KCsgnT8JYP8a
 X-Developer-Key: i=cristian_ci@protonmail.com; a=ed25519;
  pk=xH5IvIPUNHV1Q8R0/pq2CfuVFR/wTiAyuyi6IwedjZY=
 X-Endpoint-Received: by B4 Relay for cristian_ci@protonmail.com/20250620
  with auth_id=438
 X-Original-From: Cristian Cozzolino <cristian_ci@protonmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250920_092454_356547_C4B8927F 
-X-CRM114-Status: UNSURE (   9.30  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250920_092454_373938_10C049AD 
+X-CRM114-Status: GOOD (  10.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,25 +94,143 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Cristian Cozzolino <cristian_ci@protonmail.com>
 
-SoC's DTSI does not require compatible property. Drop that.
+Sort fixed clocks nodes by clock frequency and memory mapped device
+nodes by reg address. Also, sort properties as shown in dt-bindings
+examples.
 
 Signed-off-by: Cristian Cozzolino <cristian_ci@protonmail.com>
 ---
- arch/arm/boot/dts/mediatek/mt6582.dtsi | 1 -
- 1 file changed, 1 deletion(-)
+ arch/arm/boot/dts/mediatek/mt6582.dtsi | 46 +++++++++++++++-------------------
+ 1 file changed, 20 insertions(+), 26 deletions(-)
 
 diff --git a/arch/arm/boot/dts/mediatek/mt6582.dtsi b/arch/arm/boot/dts/mediatek/mt6582.dtsi
-index 8ada8c6518661509ebee647367064187f4376ab9..8a14dc1759d6f65fa75accddab83c1b6424d1632 100644
+index 37d2b8786188aecb65c0a6e0d31aabc3b66e2bd7..8ada8c6518661509ebee647367064187f4376ab9 100644
 --- a/arch/arm/boot/dts/mediatek/mt6582.dtsi
 +++ b/arch/arm/boot/dts/mediatek/mt6582.dtsi
-@@ -9,7 +9,6 @@
- / {
- 	#address-cells = <1>;
- 	#size-cells = <1>;
--	compatible = "mediatek,mt6582";
+@@ -13,8 +13,8 @@ / {
  	interrupt-parent = <&sysirq>;
  
  	cpus {
+-		#address-cells = <1>;
+ 		#size-cells = <0>;
++		#address-cells = <1>;
+ 
+ 		cpu@0 {
+ 			device_type = "cpu";
+@@ -38,22 +38,22 @@ cpu@3 {
+ 		};
+ 	};
+ 
+-	system_clk: dummy13m {
++	uart_clk: dummy26m {
+ 		compatible = "fixed-clock";
+-		clock-frequency = <13000000>;
+ 		#clock-cells = <0>;
++		clock-frequency = <26000000>;
+ 	};
+ 
+-	rtc_clk: dummy32k {
++	system_clk: dummy13m {
+ 		compatible = "fixed-clock";
+-		clock-frequency = <32000>;
+ 		#clock-cells = <0>;
++		clock-frequency = <13000000>;
+ 	};
+ 
+-	uart_clk: dummy26m {
++	rtc_clk: dummy32k {
+ 		compatible = "fixed-clock";
+-		clock-frequency = <26000000>;
+ 		#clock-cells = <0>;
++		clock-frequency = <32000>;
+ 	};
+ 
+ 	soc {
+@@ -62,6 +62,11 @@ soc {
+ 		compatible = "simple-bus";
+ 		ranges;
+ 
++		watchdog: watchdog@10007000 {
++			compatible = "mediatek,mt6582-wdt", "mediatek,mt6589-wdt";
++			reg = <0x10007000 0x100>;
++		};
++
+ 		timer: timer@11008000 {
+ 			compatible = "mediatek,mt6577-timer";
+ 			reg = <0x10008000 0x80>;
+@@ -71,18 +76,17 @@ timer: timer@11008000 {
+ 		};
+ 
+ 		sysirq: interrupt-controller@10200100 {
+-			compatible = "mediatek,mt6582-sysirq",
+-				     "mediatek,mt6577-sysirq";
++			compatible = "mediatek,mt6582-sysirq", "mediatek,mt6577-sysirq";
++			reg = <0x10200100 0x1c>;
++			interrupt-parent = <&gic>;
+ 			interrupt-controller;
+ 			#interrupt-cells = <3>;
+-			interrupt-parent = <&gic>;
+-			reg = <0x10200100 0x1c>;
+ 		};
+ 
+ 		gic: interrupt-controller@10211000 {
+ 			compatible = "arm,cortex-a7-gic";
+-			interrupt-controller;
+ 			#interrupt-cells = <3>;
++			interrupt-controller;
+ 			interrupt-parent = <&gic>;
+ 			reg = <0x10211000 0x1000>,
+ 			      <0x10212000 0x2000>,
+@@ -91,8 +95,7 @@ gic: interrupt-controller@10211000 {
+ 		};
+ 
+ 		uart0: serial@11002000 {
+-			compatible = "mediatek,mt6582-uart",
+-				     "mediatek,mt6577-uart";
++			compatible = "mediatek,mt6582-uart", "mediatek,mt6577-uart";
+ 			reg = <0x11002000 0x400>;
+ 			interrupts = <GIC_SPI 51 IRQ_TYPE_LEVEL_LOW>;
+ 			clocks = <&uart_clk>;
+@@ -100,8 +103,7 @@ uart0: serial@11002000 {
+ 		};
+ 
+ 		uart1: serial@11003000 {
+-			compatible = "mediatek,mt6582-uart",
+-				     "mediatek,mt6577-uart";
++			compatible = "mediatek,mt6582-uart", "mediatek,mt6577-uart";
+ 			reg = <0x11003000 0x400>;
+ 			interrupts = <GIC_SPI 52 IRQ_TYPE_LEVEL_LOW>;
+ 			clocks = <&uart_clk>;
+@@ -109,8 +111,7 @@ uart1: serial@11003000 {
+ 		};
+ 
+ 		uart2: serial@11004000 {
+-			compatible = "mediatek,mt6582-uart",
+-				     "mediatek,mt6577-uart";
++			compatible = "mediatek,mt6582-uart", "mediatek,mt6577-uart";
+ 			reg = <0x11004000 0x400>;
+ 			interrupts = <GIC_SPI 53 IRQ_TYPE_LEVEL_LOW>;
+ 			clocks = <&uart_clk>;
+@@ -118,18 +119,11 @@ uart2: serial@11004000 {
+ 		};
+ 
+ 		uart3: serial@11005000 {
+-			compatible = "mediatek,mt6582-uart",
+-				     "mediatek,mt6577-uart";
++			compatible = "mediatek,mt6582-uart", "mediatek,mt6577-uart";
+ 			reg = <0x11005000 0x400>;
+ 			interrupts = <GIC_SPI 54 IRQ_TYPE_LEVEL_LOW>;
+ 			clocks = <&uart_clk>;
+ 			status = "disabled";
+ 		};
+-
+-		watchdog: watchdog@10007000 {
+-			compatible = "mediatek,mt6582-wdt",
+-				     "mediatek,mt6589-wdt";
+-			reg = <0x10007000 0x100>;
+-		};
+ 	};
+ };
 
 -- 
 2.49.0
