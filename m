@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA651CAC5A7
-	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Sep 2025 16:25:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8A07CAC5A7
+	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Sep 2025 16:25:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e0UgbCyg574tUWuvun0yte5YPn4KHmXOnmj3uYjhOYw=; b=zBKyFm+oBx9QwTprVbTQjl3wb5
-	AxL4qrE9QSNox0hnerKAFDJx27fghu4SSudFESyfFelhqgLl46eH2KRNQBCrSWLIShNnG+xX9WiNS
-	lCzP7EBjKJ/uRXn2BCawXR1bnHfjAKHTAqcltXN65Um5wqgusrsLDMrFjeCOOP2Y+LhMdpCY1xOyq
-	G4LZ5xIJgcjVdjUFlh8Ydbwd8B6pajH4nzSpq3QT+nMYT53eyRw+L/OFarW8JhulfIcpwMIIhbgMa
-	kj7QXSInqihxAAgLxC5JODP+QCSUCUHmBMWXZHxev26NFwo5yqBbO3CER2dT85rJICnf1J6vLptJE
-	CXwruRRg==;
+	bh=abA8Sw6usbYjdyq2KoXonFK+N8gmr8jonOU+aOdXl7w=; b=LEqIQMirmvTmtD/BdwuqL6Wh7B
+	NeZEC5FGHoGd3m3WTslTBvgpXW/IQf+sWjEWjuFyk815+JMTO//1Kzce0rK+wsW58ce8/tGsBOIu4
+	NzkCUoIDeOSc7YlMzbDDveD7GWdiZv6+KCJPTQlIzSEINt1YQs3Nib6AUII569QTk+Glohp6wSTnz
+	UxuJjbN9xC967haHi2k9de1xje5lkviZ09Ev5gRAt5QwlgyIXHThuhfDHlnWniPEI0IEhLBlOHNLN
+	xlK072G4KSrGyzMh7iXLcdq8MmnQ0PIHywWypOVH4IeDBergA2lwILAeIhF/r605QIHX7QzX9xLia
+	23pWYWpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v00OV-00000005bko-07q6;
-	Sat, 20 Sep 2025 16:25:03 +0000
+	id 1v00Oc-00000005bqe-3qhc;
+	Sat, 20 Sep 2025 16:25:10 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v00OM-00000005bdd-0kbn;
+	id 1v00OM-00000005bdg-10BQ;
 	Sat, 20 Sep 2025 16:24:56 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6B80244BD2;
+	by sea.source.kernel.org (Postfix) with ESMTP id 9C4EB44CEE;
 	Sat, 20 Sep 2025 16:24:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 432B0C4CEFB;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 73CC6C19422;
 	Sat, 20 Sep 2025 16:24:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1758385493;
-	bh=vr+vUucMTlHCNRTrav6CDTy/w5gINTD8DBlVa8EbYeg=;
+	bh=8AVmMZ4i5vlJy4yy6ArsXwdN8LZl6h2LuSGyZF1y3pQ=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=MyQwP0bIvozkCW66sMKeL/nIC5Kw9BjmZTVDLQlaseG54xYANBthiySy66N3qC8Rk
-	 Gk5WACLw/XuqR+whggOcZZr8TgVMBj/xv4Kohdw/1veE6T4/syshAGJ6E17NOG1dWQ
-	 tCJhvdRI6cv6/mZYXRVFV8Wap5n6Z+egXNU/SiEzTh2lV7Y5CxfD5Czk7ZVkTH2A4D
-	 OkLHdTLOG6aTihTnyGLnjpou1158deB0wh1PRVKY+KXdiZTTdf5cAVQcEFZxBrGXtZ
-	 En2T4FDU+nuAWC8HLv+gL71aIygeso6+qmlKlP3n+Ofz3EFHn85Z3CBSBGVNVGZx6B
-	 MpNtuUKrPprIg==
+	b=hU719B0YQ4LUE0/+mPl3T6HjAIxuI8g5AadgBId1wj+jXt9njbl/pTqdrjBpnoJ37
+	 HUWKaZMGrORG3k1Da4mYpLVz+25MDZvqyQ4zDjfgEQxKOISriLOmF6cj73I02LRk0W
+	 qd0wwPIJzPDbzmHl9vdeLPV6+V7v/Ci1T/wBM1gzTJ9/5caS2v18NX/LdtoSVEUQH8
+	 MI7pNy1ldUbJg6k/F+X1HdMnBkGYftAnX8298BA66DG8AEUz5nB7yjUjbu7NqZmpKK
+	 m6aZlyicPKWZCbgVQa0Oi8+IC4BrG5jXaunDCPv9C0ygXE6TIfP0a+T2Qg2xFZSwRN
+	 9fF7Fm8nqMqyg==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3425ACAC5A5;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6BB4BCAC5A0;
 	Sat, 20 Sep 2025 16:24:53 +0000 (UTC)
 From: Cristian Cozzolino via B4 Relay <devnull+cristian_ci.protonmail.com@kernel.org>
-Date: Sat, 20 Sep 2025 20:23:28 +0200
-Subject: [PATCH 03/10] ARM: dts: mediatek: mt6582: move MMIO devices under
- soc node
+Date: Sat, 20 Sep 2025 20:23:32 +0200
+Subject: [PATCH 07/10] ARM: dts: mediatek: mt6582: add clock-names property
+ to uart nodes
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250920-mt6582-v1-3-b887720f577d@protonmail.com>
+Message-Id: <20250920-mt6582-v1-7-b887720f577d@protonmail.com>
 References: <20250920-mt6582-v1-0-b887720f577d@protonmail.com>
 In-Reply-To: <20250920-mt6582-v1-0-b887720f577d@protonmail.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -64,20 +64,19 @@ Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  phone-devel@vger.kernel.org, 
  Cristian Cozzolino <cristian_ci@protonmail.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1758392693; l=4612;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1758392693; l=1434;
  i=cristian_ci@protonmail.com; s=20250620; h=from:subject:message-id;
- bh=ygAMw2Q0SfkqnJBPfSCrpCT2WbyasWzsR4XcmLR13kA=;
- b=iYsV2k3gqnQRfJBNS7hWnK0zwFbYkC0sD2NkURCWkQsSwMGSTCgk/CMS5NtaUoD8dBNihHCaI
- GFvlo8/As1mAwsDJAAePOfGBuOtx51MKWZ0txLBmWR71Z3OTuzzO6dT
+ bh=IJ2WpBgydGyDmriFnyhyzls81B4aPjYb5NY6k/JiK2Y=;
+ b=VAp6w9Z5osx1mLNbqsginU96nD8BYUh3ydYdVzHCMjEzRr/CrmZ2ZHQ8JbulRfNn5Th37kQyh
+ n5+6W4naoVNCBrFrIuWqNaARBOwLiUqEpeQMwx9EANcZGw5ZhO4CPwF
 X-Developer-Key: i=cristian_ci@protonmail.com; a=ed25519;
  pk=xH5IvIPUNHV1Q8R0/pq2CfuVFR/wTiAyuyi6IwedjZY=
 X-Endpoint-Received: by B4 Relay for cristian_ci@protonmail.com/20250620
  with auth_id=438
 X-Original-From: Cristian Cozzolino <cristian_ci@protonmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250920_092454_265639_82494CB9 
-X-CRM114-Status: UNSURE (   9.70  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250920_092454_329774_9CCFEA92 
+X-CRM114-Status: GOOD (  10.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,160 +94,50 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Cristian Cozzolino <cristian_ci@protonmail.com>
 
-Memory mapped devices are part of soc. So, add such node and move those
-devices into it.
+Other SoC DTSI files define this property for their uart nodes.
+Do the same here too, to be consistent.
 
 Signed-off-by: Cristian Cozzolino <cristian_ci@protonmail.com>
 ---
- arch/arm/boot/dts/mediatek/mt6582.dtsi | 129 +++++++++++++++++----------------
- 1 file changed, 68 insertions(+), 61 deletions(-)
+ arch/arm/boot/dts/mediatek/mt6582.dtsi | 4 ++++
+ 1 file changed, 4 insertions(+)
 
 diff --git a/arch/arm/boot/dts/mediatek/mt6582.dtsi b/arch/arm/boot/dts/mediatek/mt6582.dtsi
-index 4263371784cd15db7af0ceb49dd069b62b623639..37d2b8786188aecb65c0a6e0d31aabc3b66e2bd7 100644
+index 54d675ecb390c52c7ca0f406155bfc59e32137ec..82564c740c2182448f8f88bbc2b22c4fef1fdeef 100644
 --- a/arch/arm/boot/dts/mediatek/mt6582.dtsi
 +++ b/arch/arm/boot/dts/mediatek/mt6582.dtsi
-@@ -56,73 +56,80 @@ uart_clk: dummy26m {
- 		#clock-cells = <0>;
+@@ -97,6 +97,7 @@ uart0: serial@11002000 {
+ 			reg = <0x11002000 0x400>;
+ 			interrupts = <GIC_SPI 51 IRQ_TYPE_LEVEL_LOW>;
+ 			clocks = <&uart_clk>;
++			clock-names = "baud";
+ 			status = "disabled";
+ 		};
+ 
+@@ -105,6 +106,7 @@ uart1: serial@11003000 {
+ 			reg = <0x11003000 0x400>;
+ 			interrupts = <GIC_SPI 52 IRQ_TYPE_LEVEL_LOW>;
+ 			clocks = <&uart_clk>;
++			clock-names = "baud";
+ 			status = "disabled";
+ 		};
+ 
+@@ -113,6 +115,7 @@ uart2: serial@11004000 {
+ 			reg = <0x11004000 0x400>;
+ 			interrupts = <GIC_SPI 53 IRQ_TYPE_LEVEL_LOW>;
+ 			clocks = <&uart_clk>;
++			clock-names = "baud";
+ 			status = "disabled";
+ 		};
+ 
+@@ -121,6 +124,7 @@ uart3: serial@11005000 {
+ 			reg = <0x11005000 0x400>;
+ 			interrupts = <GIC_SPI 54 IRQ_TYPE_LEVEL_LOW>;
+ 			clocks = <&uart_clk>;
++			clock-names = "baud";
+ 			status = "disabled";
+ 		};
  	};
- 
--	timer: timer@11008000 {
--		compatible = "mediatek,mt6577-timer";
--		reg = <0x10008000 0x80>;
--		interrupts = <GIC_SPI 112 IRQ_TYPE_LEVEL_LOW>;
--		clocks = <&system_clk>, <&rtc_clk>;
--		clock-names = "system-clk", "rtc-clk";
--	};
-+	soc {
-+		#address-cells = <1>;
-+		#size-cells = <1>;
-+		compatible = "simple-bus";
-+		ranges;
- 
--	sysirq: interrupt-controller@10200100 {
--		compatible = "mediatek,mt6582-sysirq",
--			     "mediatek,mt6577-sysirq";
--		interrupt-controller;
--		#interrupt-cells = <3>;
--		interrupt-parent = <&gic>;
--		reg = <0x10200100 0x1c>;
--	};
-+		timer: timer@11008000 {
-+			compatible = "mediatek,mt6577-timer";
-+			reg = <0x10008000 0x80>;
-+			interrupts = <GIC_SPI 112 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&system_clk>, <&rtc_clk>;
-+			clock-names = "system-clk", "rtc-clk";
-+		};
- 
--	gic: interrupt-controller@10211000 {
--		compatible = "arm,cortex-a7-gic";
--		interrupt-controller;
--		#interrupt-cells = <3>;
--		interrupt-parent = <&gic>;
--		reg = <0x10211000 0x1000>,
--		      <0x10212000 0x2000>,
--		      <0x10214000 0x2000>,
--		      <0x10216000 0x2000>;
--	};
-+		sysirq: interrupt-controller@10200100 {
-+			compatible = "mediatek,mt6582-sysirq",
-+				     "mediatek,mt6577-sysirq";
-+			interrupt-controller;
-+			#interrupt-cells = <3>;
-+			interrupt-parent = <&gic>;
-+			reg = <0x10200100 0x1c>;
-+		};
- 
--	uart0: serial@11002000 {
--		compatible = "mediatek,mt6582-uart",
--			     "mediatek,mt6577-uart";
--		reg = <0x11002000 0x400>;
--		interrupts = <GIC_SPI 51 IRQ_TYPE_LEVEL_LOW>;
--		clocks = <&uart_clk>;
--		status = "disabled";
--	};
-+		gic: interrupt-controller@10211000 {
-+			compatible = "arm,cortex-a7-gic";
-+			interrupt-controller;
-+			#interrupt-cells = <3>;
-+			interrupt-parent = <&gic>;
-+			reg = <0x10211000 0x1000>,
-+			      <0x10212000 0x2000>,
-+			      <0x10214000 0x2000>,
-+			      <0x10216000 0x2000>;
-+		};
- 
--	uart1: serial@11003000 {
--		compatible = "mediatek,mt6582-uart",
--			     "mediatek,mt6577-uart";
--		reg = <0x11003000 0x400>;
--		interrupts = <GIC_SPI 52 IRQ_TYPE_LEVEL_LOW>;
--		clocks = <&uart_clk>;
--		status = "disabled";
--	};
-+		uart0: serial@11002000 {
-+			compatible = "mediatek,mt6582-uart",
-+				     "mediatek,mt6577-uart";
-+			reg = <0x11002000 0x400>;
-+			interrupts = <GIC_SPI 51 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&uart_clk>;
-+			status = "disabled";
-+		};
- 
--	uart2: serial@11004000 {
--		compatible = "mediatek,mt6582-uart",
--			     "mediatek,mt6577-uart";
--		reg = <0x11004000 0x400>;
--		interrupts = <GIC_SPI 53 IRQ_TYPE_LEVEL_LOW>;
--		clocks = <&uart_clk>;
--		status = "disabled";
--	};
-+		uart1: serial@11003000 {
-+			compatible = "mediatek,mt6582-uart",
-+				     "mediatek,mt6577-uart";
-+			reg = <0x11003000 0x400>;
-+			interrupts = <GIC_SPI 52 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&uart_clk>;
-+			status = "disabled";
-+		};
- 
--	uart3: serial@11005000 {
--		compatible = "mediatek,mt6582-uart",
--			     "mediatek,mt6577-uart";
--		reg = <0x11005000 0x400>;
--		interrupts = <GIC_SPI 54 IRQ_TYPE_LEVEL_LOW>;
--		clocks = <&uart_clk>;
--		status = "disabled";
--	};
-+		uart2: serial@11004000 {
-+			compatible = "mediatek,mt6582-uart",
-+				     "mediatek,mt6577-uart";
-+			reg = <0x11004000 0x400>;
-+			interrupts = <GIC_SPI 53 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&uart_clk>;
-+			status = "disabled";
-+		};
-+
-+		uart3: serial@11005000 {
-+			compatible = "mediatek,mt6582-uart",
-+				     "mediatek,mt6577-uart";
-+			reg = <0x11005000 0x400>;
-+			interrupts = <GIC_SPI 54 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&uart_clk>;
-+			status = "disabled";
-+		};
- 
--	watchdog: watchdog@10007000 {
--		compatible = "mediatek,mt6582-wdt",
--			     "mediatek,mt6589-wdt";
--		reg = <0x10007000 0x100>;
-+		watchdog: watchdog@10007000 {
-+			compatible = "mediatek,mt6582-wdt",
-+				     "mediatek,mt6589-wdt";
-+			reg = <0x10007000 0x100>;
-+		};
- 	};
- };
 
 -- 
 2.49.0
