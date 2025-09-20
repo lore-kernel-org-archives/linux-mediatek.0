@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45FBACAC5A7
-	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Sep 2025 16:25:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31F00CAC5A5
+	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Sep 2025 16:25:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q80w6XFXvELBmPWUOgcqaqJi4m55PNVCe0OHmyFN2Vg=; b=tTP8dx8uQfWqeSt0/3/rI31+Sf
-	BLBWJgeNKZ08MbwOkeBBmre+LP9WayfafbHdAYE1PDtGRxm2cIvJikd48Di7zVs1cPn0gXSO0/vZ8
-	4Xo8SE7L+16R857Os56YAOyt48Hpxjb7gzjt5Gai6dMCmICsRyVZPE2aZzmjjEM/hd/U5LBMdTf3M
-	KdUMHNS2H9UABG1wbC6Za0IC0FIqgRbzTrStSZIpRxGeYD6n5tsSdO7PKbysjvUKbxIkcRusyBpVd
-	vgfTezM5zV8MHRHBPek7U1Khl9Fe92ndxJlyLxMnPz98Sg8SsE3qU99dvHDeVxgOwsLjpZidTgSQ7
-	Pmg4TtfA==;
+	bh=75usRvvBUvYXukRrmuxSOsHIRzVX/Q3R0OCmCMp32EM=; b=NGxtqTp+qakXXQNKBOkNmLnis4
+	VsGTWd0nCaFqhyLbjBrGSQqjZYts92YqMeVI6Uu3EukOzcwUVKOWqtg1kOvOWbSa+G8FbIkb9rE6T
+	ZdBS49DjxHUFDHqW3IjopGcUuvNzW0DnUu7Hd1SOA53RBj1aUYyZs1QMcGuI7qFZfG0etPPMO9uTV
+	j2fykJz4zGHDk031oCWTMiCVoD0useW2jp++dlz3luClepOtGtGPRtN2pknUhfjSh1oiC2fq6JemU
+	Re6zONXuigfMBoCkOS1jEv1MLGivynfZ9mL0YFLl6LLq9n1afNaXx7piCCBkuHqqUpo6ZoX8mmQ+0
+	T/5Dh6Zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v00P0-00000005cGJ-1OiW;
-	Sat, 20 Sep 2025 16:25:34 +0000
+	id 1v00P2-00000005cIJ-0Uht;
+	Sat, 20 Sep 2025 16:25:36 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v00OP-00000005bgY-0uFS;
+	id 1v00OP-00000005bgW-0uO0;
 	Sat, 20 Sep 2025 16:24:57 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id BF937601B7;
+	by tor.source.kernel.org (Postfix) with ESMTP id 86B3760194;
 	Sat, 20 Sep 2025 16:24:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 664E6C4CEFA;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 29646C4CEF9;
 	Sat, 20 Sep 2025 16:24:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1758385493;
-	bh=wmglTdOzvnu1osT4KrcPRK2F9+u7HUzFQhkD3GLaJoM=;
+	bh=PAEbSGe1wIOU1VKhTsFGw4i3kezoEQ7HO0g02DBBGic=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=IdpzhaREvgAq/lTr4gTriUHIyxCA3wqGmRdDHZSvTQatSslcjFkb5ur8pnBWSxY6h
-	 JJhWA+W6+ABPPkryP6N5+e3VSr6s/egFk5uY7dcJ7PhtigMejK88LhOCxoYrEfrXuc
-	 umY7loUIaCUZZQj/REdDP1gktzuOIhHHFyR3M/WpAnZcwyUOaPbxcgf2c/Bd4u8V58
-	 1SbwTGMT2ihdEFabJstE8mUaHgJ89KFCESLZQg4ent4JnDpe/Oi7KIqBjrilMF6h2+
-	 tkMYGWtKFtbIllPovDExgiuqe3fGYb/bNl1H0zgfDCYavbG2XvkNg4Gl1yWR7kjD3c
-	 mjbIaqBp4XVOQ==
+	b=kPoqBo9PkEIpeYKdsrGhqwwHJL5OMHsElMvH2vvivU8Pyj2PZxule376bxZnJkwNU
+	 Tw4xgugwq5gkQtp+NSjclN5LiU5ACYNg9gzUYgdNSrYt9MaG2DcVzc3SiHiZF5PgIO
+	 APJh8w0YsR3gnnjp1/aHvGZTGzYSQOQmHmslCy/r1TOaV6KjIfM7yebTrVOe+RwW+U
+	 gfNk6ymVv2Nu9aN0lnO+ez0IB/c9ZybZQ/zbH/s7inMr9LkOPvgXOLUCrhAH6yxGiR
+	 7WdcFxlxAPYxoSg7j4VJE6WNzvl2NGSRkJcFG3xgjSlL3/lPoEi9JpoU2XQkT0CApB
+	 P1FJxdrOWdC2g==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5D4A5CAC5A7;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1863CCAC5A7;
 	Sat, 20 Sep 2025 16:24:53 +0000 (UTC)
 From: Cristian Cozzolino via B4 Relay <devnull+cristian_ci.protonmail.com@kernel.org>
-Date: Sat, 20 Sep 2025 20:23:31 +0200
-Subject: [PATCH 06/10] ARM: dts: mediatek: mt6582: add mt6582 compatible to
- timer
+Date: Sat, 20 Sep 2025 20:23:26 +0200
+Subject: [PATCH 01/10] ARM: mediatek: add board_dt_compat entry for the
+ MT6582 SoC
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250920-mt6582-v1-6-b887720f577d@protonmail.com>
+Message-Id: <20250920-mt6582-v1-1-b887720f577d@protonmail.com>
 References: <20250920-mt6582-v1-0-b887720f577d@protonmail.com>
 In-Reply-To: <20250920-mt6582-v1-0-b887720f577d@protonmail.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -64,11 +64,11 @@ Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  phone-devel@vger.kernel.org, 
  Cristian Cozzolino <cristian_ci@protonmail.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1758392693; l=1128;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1758392693; l=726;
  i=cristian_ci@protonmail.com; s=20250620; h=from:subject:message-id;
- bh=r6SXHQbEHcaMnuM7G635DvBb4GqKr2d885SMc7iqSiQ=;
- b=z6YTtrGMN5Tgfi5hnkCwEdqfPbpmjia5G5oRbA2+IRGF5mPfUNLHlgAQk0ZuNJvauGoo5Me3t
- R8K3WtIxkAJCQdUJ9uVrnv16xY0b3iunHZm/GNJ2V73/uCjtEtDAHBq
+ bh=rPW5X0dJhrkjRCNNcYv6faj1inNTS9fRmw61VUQKL+w=;
+ b=sk3kgTpc2Yx2+z5wdsgMX0XRjqoO+k8vc8osDkRpQFyJa/JHqcBSNo/vrm8lBDnIOJq4DyTco
+ DiaGwpso9ZNBl0PDGiYXz4Q63P8uiDz5rqVgpgW0C9YVonlimW/SX20
 X-Developer-Key: i=cristian_ci@protonmail.com; a=ed25519;
  pk=xH5IvIPUNHV1Q8R0/pq2CfuVFR/wTiAyuyi6IwedjZY=
 X-Endpoint-Received: by B4 Relay for cristian_ci@protonmail.com/20250620
@@ -91,34 +91,25 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Cristian Cozzolino <cristian_ci@protonmail.com>
 
-Bindings already have mt6582 compatible for timer, so add that to DTSI.
-While at it, remove clock-names property (which is not required by timer
-node) and fix node address.
+Add a compatible string for the MT6582 SoC.
 
 Signed-off-by: Cristian Cozzolino <cristian_ci@protonmail.com>
 ---
- arch/arm/boot/dts/mediatek/mt6582.dtsi | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ arch/arm/mach-mediatek/mediatek.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm/boot/dts/mediatek/mt6582.dtsi b/arch/arm/boot/dts/mediatek/mt6582.dtsi
-index 8a14dc1759d6f65fa75accddab83c1b6424d1632..54d675ecb390c52c7ca0f406155bfc59e32137ec 100644
---- a/arch/arm/boot/dts/mediatek/mt6582.dtsi
-+++ b/arch/arm/boot/dts/mediatek/mt6582.dtsi
-@@ -66,12 +66,11 @@ watchdog: watchdog@10007000 {
- 			reg = <0x10007000 0x100>;
- 		};
- 
--		timer: timer@11008000 {
--			compatible = "mediatek,mt6577-timer";
-+		timer: timer@10008000 {
-+			compatible = "mediatek,mt6582-timer", "mediatek,mt6577-timer";
- 			reg = <0x10008000 0x80>;
- 			interrupts = <GIC_SPI 112 IRQ_TYPE_LEVEL_LOW>;
- 			clocks = <&system_clk>, <&rtc_clk>;
--			clock-names = "system-clk", "rtc-clk";
- 		};
- 
- 		sysirq: interrupt-controller@10200100 {
+diff --git a/arch/arm/mach-mediatek/mediatek.c b/arch/arm/mach-mediatek/mediatek.c
+index 5c28124bd0078b31665fef647e496f4131b82c8d..fd3a8834fc4fd47adcc91c0d9371d4a1e9c0a7e6 100644
+--- a/arch/arm/mach-mediatek/mediatek.c
++++ b/arch/arm/mach-mediatek/mediatek.c
+@@ -39,6 +39,7 @@ static void __init mediatek_timer_init(void)
+ static const char * const mediatek_board_dt_compat[] = {
+ 	"mediatek,mt2701",
+ 	"mediatek,mt6572",
++	"mediatek,mt6582",
+ 	"mediatek,mt6589",
+ 	"mediatek,mt6592",
+ 	"mediatek,mt7623",
 
 -- 
 2.49.0
