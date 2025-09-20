@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2746DCAC5A5
-	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Sep 2025 19:52:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A861CAC5A7
+	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Sep 2025 19:52:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=EXH2uzOsYXEb/OZo3TWC/EXROKtOKzc0Az2pObM5tZE=; b=uqPzA0pBHsW4MLuO7jqPrMFc1A
-	frqljbpxP5EQxc8vb44U52DgH2hHQtJuMJNWhiwgLY3jTQmUS74WzEnL48Efwxsj3UwQ0wzSxx8qQ
-	vkZKx8P/NNgHOaxd4gPho51DyhB4jTGXt2LWQftQjwN4rP/+j0qMqnZh+0n8nyH48TrZ7vC8FLvKf
-	rSqoA4E+0fs2cLpNGAPBi7jOdloLLJGmErpbQNTbLrrRh10pJuqiFB9gxe3Ih0l5Ea+Nuf1mHXKkQ
-	70z7QWc8I/fLu3CWSowao54VhR32q7wxMzO/SgEM8BIudMXKzd03/AV58amgil5FJP+Jb4oa4o26x
-	a31hGagg==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=k0SOWbLw84OBsxZriedsqK5hxUT6sNCYYaMQDUt04bA=; b=R4zO5AXYjF/NgfS4EHhdUyWiMe
+	5CIUou+B6yjavknArJ6p0LCKmHJDJgDhJoTH/ILFujHcFhIWOCirTwPqLjevh0uQT52EMucrm76j7
+	xhi22WqojHYeS1QgXZ7gY7CV9EX+vwmtH7TmipLSfd0YxHrRggIHbuayVt84tGpI+sfZ63qC/5EQ7
+	tnI6bMnS6VSba/6c5B2YIWPM9Tx/lw0j4b9ViqcMpHQWE6RJISFMlS+F1j/dRsnwoN1xYI2bIdmcu
+	dRUXGJ4CdHEveAtC740H3sJtdyByzse40/qLU+7dPiSvX60nUk1nQKg5v1hq3bWk+BE57wahdQcFx
+	v4AIuHkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v03d6-00000005pko-3n1w;
-	Sat, 20 Sep 2025 19:52:20 +0000
-Received: from p-west2-cluster5-host6-snip4-10.eps.apple.com ([57.103.71.63] helo=outbound.mr.icloud.com)
+	id 1v03dC-00000005pnZ-32a3;
+	Sat, 20 Sep 2025 19:52:26 +0000
+Received: from p-west2-cluster6-host2-snip4-10.eps.apple.com ([57.103.70.83] helo=outbound.mr.icloud.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v03d4-00000005pju-1csq
+	id 1v03d7-00000005pkx-2r54
 	for linux-mediatek@lists.infradead.org;
-	Sat, 20 Sep 2025 19:52:19 +0000
+	Sat, 20 Sep 2025 19:52:22 +0000
 Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
-	by p00-icloudmta-asmtp-us-west-2a-60-percent-1 (Postfix) with UTF8SMTPS id A6B121806677;
-	Sat, 20 Sep 2025 19:52:13 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bryanhinton.com; s=sig1; bh=EXH2uzOsYXEb/OZo3TWC/EXROKtOKzc0Az2pObM5tZE=; h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme; b=JH20zbhuvH3+lZmfx5i5GM42mEK6KZEZhCcJfFVfdLpoIy3uGdod+WIr1lFDNA3aHA3peu7Oet7aIiD3Nptqs1Yd6lhMrvjxQ1pSml8AyjQnfYMh1/SuyM52hnIjjwJqCmliEwLd3HtGas35vYqK9QCQWztgDXSlmKmHO0OKFAXerWYZaUYmluJlYGN9KyHVjxuYrLO4cVdo2hq+ySr17chrcPYwJHqoiflP4FgZuNMlyg9bID15GmStOjXFuqkOrHto3MuxUHMzWXQkyWCBB7J3PRjVZBdlNf22O6A0hkHCIFFwWMFPsKptzhIqeS3YnEH8XLYZZPxv6If6V8Wmgg==
+	by p00-icloudmta-asmtp-us-west-2a-60-percent-11 (Postfix) with UTF8SMTPS id C36AF1806084;
+	Sat, 20 Sep 2025 19:52:18 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bryanhinton.com; s=sig1; bh=k0SOWbLw84OBsxZriedsqK5hxUT6sNCYYaMQDUt04bA=; h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme; b=BmApqPn4hfaWnHMKj6gYPoM85OiOogScwm6AguIcIwnwW+siyn3vxjZwzqFd37mZ6zDxFVsC3smPzr7ed+WvTDeqVDvI3ExzeI2XlkQKoo1ymJomVJIaSXDrWdMSMVzEN9WPc2HPnsXqBdpH0cNpiZqbvqyrPwCfdIMsCKnJddLz1+3j70Xwq7BWybuVQ4gOiCIb8YmKrpYntpm3BzZhk0v7FdcLM+OwKKnheV42YMLuwtjS3TxulFf3C5jNORoPIV8Ktcm3fUrGO1Y11NEzfqhBaY5tF/E8eRQuPOJNhb9ze0K+XP7yaxPUaGLzKtHU6Cy5uQlpz6Tl1mh3q2Ij6A==
 mail-alias-created-date: 1643268037438
 Received: from localhost (mr-asmtp-me-k8s.p00.prod.me.com [17.57.152.38])
-	by p00-icloudmta-asmtp-us-west-2a-60-percent-1 (Postfix) with UTF8SMTPSA id B68D918012C8;
-	Sat, 20 Sep 2025 19:52:12 +0000 (UTC)
+	by p00-icloudmta-asmtp-us-west-2a-60-percent-11 (Postfix) with UTF8SMTPSA id 40D1418001F0;
+	Sat, 20 Sep 2025 19:52:18 +0000 (UTC)
 From: Bryan Hinton <bryan@bryanhinton.com>
 To: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
@@ -47,30 +47,32 @@ Cc: angelogioacchino.delregno@collabora.com,
 	robh@kernel.org,
 	daniel@makrotopia.org,
 	Bryan Hinton <bryan@bryanhinton.com>
-Subject: [PATCH v2 0/2] arm64: dts: mt7981/openwrt-one: UART labels and console
-Date: Sat, 20 Sep 2025 14:50:49 -0500
-Message-ID: <20250920195102.2733949-1-bryan@bryanhinton.com>
+Subject: [PATCH v2 1/2] arm64: dts: mediatek: mt7981b: add labels for UART0/1/2 nodes
+Date: Sat, 20 Sep 2025 14:50:50 -0500
+Message-ID: <20250920195102.2733949-2-bryan@bryanhinton.com>
 X-Mailer: git-send-email 2.51.0
+In-Reply-To: <20250920195102.2733949-1-bryan@bryanhinton.com>
+References: <20250920195102.2733949-1-bryan@bryanhinton.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: K2aGzzbemrEhCQMLHIN_3CskBEMNjXuE
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwOTIwMDE5NCBTYWx0ZWRfX/tGkTmd8Pmsw
- Ra/N8lH8kZZf59fRYSssPgX7Q4DwpgGyfV+P7hdpq2ZJsBJosEZBGZai4duDup1Ll7uIj9IKwt4
- v3XwXd6bI5BRHnfhVgSvCn66rOfFZnkvredODjER5Je0X6YT6qdLa+SIFACZ9ku4QrObK0L9lLM
- NfIQA+ioH9zGgIcadv67dMnoazLeGwcN51gV4sGBv+HE3o+9xwy0YBLZ/E/ex7YTLQDD4H/fVy1
- mVhGkkM7U8O+4iEyUWSnuRdspOh0k2WBffSsjQHewPPpDTZmd3mztaa30hfzpgesqPpQau9mY=
-X-Proofpoint-ORIG-GUID: K2aGzzbemrEhCQMLHIN_3CskBEMNjXuE
+X-Proofpoint-GUID: mBhngQ9sjVFgcqTigtoistV_k-tujIkB
+X-Proofpoint-ORIG-GUID: mBhngQ9sjVFgcqTigtoistV_k-tujIkB
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwOTIwMDE5NCBTYWx0ZWRfXxFPJSD5OGktG
+ UeLPBUNIy/S47Jzetf6J/BjxXzzzabI64GJPlhbXknJYYGl0J9fTCS0BFPBYYGtpGGTnOs6EXEr
+ 2ejUaLPloAWxnkVAs+0GjAmVg+LVc5aadIwKyFbr+xPaicpeXHMdyVuyMo8howBJs0g6FWndv7U
+ vemQRI37sNJJS3kfG4pjmW9yu3EBlYGTZyFbLDbK3YnZ6hnffKb1JJEQuqm88o7yX5tqyDKCO+U
+ /xiXVSh/LJkIh9HMZ5pONdulImxak/wo/C2jNXzDNscEJijaClG5bACFSWYjoLzXYkCvp9enI=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
  definitions=2025-09-20_07,2025-09-19_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=987
- clxscore=1030 phishscore=0 suspectscore=0 spamscore=0 bulkscore=0
- adultscore=0 mlxscore=0 malwarescore=0 classifier=spam adjust=0 reason=mlx
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ mlxlogscore=913 clxscore=1030 bulkscore=0 mlxscore=0 suspectscore=0
+ phishscore=0 adultscore=0 malwarescore=0 classifier=spam adjust=0 reason=mlx
  scancount=1 engine=8.22.0-2506270000 definitions=main-2509200194
-X-JNJ: AAAAAAABxnfy/qibpBMfdIii5yEhB9Xb/qWgxjXzVzMh2r7UF6jSgDVhRMc1bkaxeXwfMLaW2FsiQdAQ0PWZxLmnyQklXqLG4/Ni1917P7h+iEP10i4RtXRyH4x5dRSFUVHWhnNhuGIAquh/st21QZAwmIP1a1vrA3ji7jqJnlRnqzcuqU6iHZFV5vkYMRqn24i4kpG4Ps5YZJCp+/s7VBjEey9Ehu2ylQpgfwtyVX0uZEAq8Ygt3ddLYbsZn3SqTR4xRNvOM+lloTRMCCg7EpXv5rm62020OqREx84+cx2OLUW6m78k21RXvZ9HOunCNpyNusHwLkYJ9kXgP4MODpEVrbtV3MESGSy04LiujPQppzFIspfGhTrtqUsAp/6RGi8Wv31gtMK8Adqc12M+22EJAFY/HwKV9vu8rbhHM758ZQ8yfchbNfo3Ssy5fx9EV+VHbfnHFKS9jmyUkdAWY23rK/BNoniEeeEMuQD7ie9Ly0oJdRUrbvUCxkRo6+k5Gu/60x9rT1iJqgk9+I1QJrUvwjdw9S/ifKMTsjWILZPCTBcoIYO3egG/FIeKawWhWtZ48sMVcSxqBTXfHe5SDEkCFHMcAC2nHLxNyycrn1WGRKlsZPG094zgIonHJk/5OgcRrZ4GAa8sZ5omhHqJAtofpGUpUtddPmrH7GzubRWDkK9Iv3PMLg3/QJrpuKzSHMG+TO67l69JCCm7CHxb3UBx1/a6sYgtzcmvQo0K0w==
+X-JNJ: AAAAAAABU7elWgdKEGifIUerGrdz3AuEfJ8Sw9y2TUnmm3megRUveYhBf2WD2d1Lr06lEVapCSAcM6eEaaP8gfzAgb11lIDXu/aIyrr5WLmFQPDW/r0UocqP//VEbmxAveqC9de2SWEcUwxCZnrsl++7BiOiA0LwqEsyictdElbeJFZbGILSpDbFwmaV/sz8awy/dXUeG4V2LWvvXZO5IdphIJe4/nYTwV9AVXTVqEmiic51a7NE8HZENkwjppfE7Z5BF37EoATzGnhvxCAg9yAtrIhg+J4T/yzGDreA61wW3a23VGpHZUaZBCS8mB6MIwQJVxUGET4+Hu/3X0LfuCkowb6TVOrzlrxMdQJUPNUbCLHniHteYd5vqBlYOrUbxBKFTaSZQqL1R3CmVRvVUpmqbaZ/VMSyQbhDofKA1Ai6RxIFSPdvai6TG3JhezBylKInVX5GrgMQexUU42v1W+vU+9z2zurcpfzOOnTQ+ytY9UxqH0oj6t9rqbn68J3F5b2k0eAN9PVZPERUmmE+wUrN8WX7Z8gpPVb6iW8hS6/HuFRoLEMnnjfph3C8OVYNsD5Lh6Fi8IKsUMEZDvNzNwhJew7LrIPOvAYlIWi3fdZ+v7PBCICT2jy8RcJ+IFHu+A8nePdE80A4P9pZ94l1kvJ/amhePwQVCpB1Mb+ap/7JOq/1Ags1cSCqf/u5OYWhqUnL+FpOj6y5JcTVjO76xIQIOLnYe78DcZPbuLJEIaMuIqcaJQ==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250920_125218_619856_0843FF90 
-X-CRM114-Status: UNSURE (   6.76  )
+X-CRM114-CacheID: sfid-20250920_125221_722089_902EEF05 
+X-CRM114-Status: UNSURE (   8.98  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,34 +88,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series makes two small updates for MT7981:
+Add stable labels (uart0, uart1, uart2) to the MT7981B SoC UART nodes so
+board DTS files can reference them directly. This change is purely
+cosmetic and introduces no functional differences.
 
-- Patch 1/2: Add stable labels (uart0, uart1, uart2) in the SoC dtsi so
-  that board dts files can reference them directly.
-- Patch 2/2: Update the OpenWrt One board dts to define serial0 alias,
-  configure chosen stdout-path, and set correct UART current-speed.
+Verification: Built dtbs and boot-tested mainline Image+DTB via U-Boot on
+MT7981B hardware; decompiled DT shows the uart0 label present and the
+serial0 alias (or absolute path) resolves to serial@11002000.
 
-Both patches were build-tested (dtbs) and boot-tested: 
-mainline Image+DTB built and loaded via U-Boot on MT7981 hardware,
-with serial console output verified.
-
-Changes in v2:
-- Patch 1/2: Unchanged.
-- Patch 2/2: Drop redundant hex comment per review feedback.
-
-Thanks,
-Bryan
-
+Signed-off-by: Bryan Hinton <bryan@bryanhinton.com>
 ---
+ arch/arm64/boot/dts/mediatek/mt7981b.dtsi | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-Bryan Hinton (2):
-  arm64: dts: mediatek: mt7981b: add labels for UART0/1/2 nodes
-  arm64: dts: mediatek: mt7981b: OpenWrt One: set console UART to 115200
-
- .../arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts | 13 +++++++++++++
- arch/arm64/boot/dts/mediatek/mt7981b.dtsi           |  6 +++---
- 2 files changed, 16 insertions(+), 3 deletions(-)
-
+diff --git a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
+index 5cbea9cd411f..4ee7fb83000d 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
+@@ -94,7 +94,7 @@ pwm@10048000 {
+ 			#pwm-cells = <2>;
+ 		};
+ 
+-		serial@11002000 {
++		uart0: serial@11002000 {
+ 			compatible = "mediatek,mt7981-uart", "mediatek,mt6577-uart";
+ 			reg = <0 0x11002000 0 0x100>;
+ 			interrupts = <GIC_SPI 123 IRQ_TYPE_LEVEL_HIGH>;
+@@ -105,7 +105,7 @@ serial@11002000 {
+ 			status = "disabled";
+ 		};
+ 
+-		serial@11003000 {
++		uart1: serial@11003000 {
+ 			compatible = "mediatek,mt7981-uart", "mediatek,mt6577-uart";
+ 			reg = <0 0x11003000 0 0x100>;
+ 			interrupts = <GIC_SPI 124 IRQ_TYPE_LEVEL_HIGH>;
+@@ -116,7 +116,7 @@ serial@11003000 {
+ 			status = "disabled";
+ 		};
+ 
+-		serial@11004000 {
++		uart2: serial@11004000 {
+ 			compatible = "mediatek,mt7981-uart", "mediatek,mt6577-uart";
+ 			reg = <0 0x11004000 0 0x100>;
+ 			interrupts = <GIC_SPI 125 IRQ_TYPE_LEVEL_HIGH>;
 -- 
 2.51.0
 
