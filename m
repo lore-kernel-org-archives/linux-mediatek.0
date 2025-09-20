@@ -4,69 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16281CAC5A5
-	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Sep 2025 17:23:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2746DCAC5A5
+	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Sep 2025 19:52:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=aaAslXuUtUX6oS3VLGxNFurl4ejRCOlN9+jSRnvqk/U=; b=Izs38sDeuS1lrv7Xr2lBTgAbbJ
-	wCalMt6dV5siNRejXHuoa/P/bY6TVY4OZlSWZNsVPmOLvaigzB1mXK4FSRJG/iBLABIyyBkYJkj1c
-	1SMSihyDMczqh1OzGwrmpu3k9fqnm+/pJniDwCIGh40LM8YIh6XsqO+oL3wC39EKgsGgrx8UoRKPZ
-	Rn/aHOxQJkKxfgCUy+/4wGzaG05R8xg61obgzcuZfUA95ipGGgLLcSPnnh/WCV9JzXfFcTu4KOmcp
-	rfp0ifH7+UrCJlUVeA3s8PXyr+lDEoyKjodJY1Nh2r8bSRHzqwC7WTrzZEeFRRo8R5nUV0LrT+8NL
-	SX45iStw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=EXH2uzOsYXEb/OZo3TWC/EXROKtOKzc0Az2pObM5tZE=; b=uqPzA0pBHsW4MLuO7jqPrMFc1A
+	frqljbpxP5EQxc8vb44U52DgH2hHQtJuMJNWhiwgLY3jTQmUS74WzEnL48Efwxsj3UwQ0wzSxx8qQ
+	vkZKx8P/NNgHOaxd4gPho51DyhB4jTGXt2LWQftQjwN4rP/+j0qMqnZh+0n8nyH48TrZ7vC8FLvKf
+	rSqoA4E+0fs2cLpNGAPBi7jOdloLLJGmErpbQNTbLrrRh10pJuqiFB9gxe3Ih0l5Ea+Nuf1mHXKkQ
+	70z7QWc8I/fLu3CWSowao54VhR32q7wxMzO/SgEM8BIudMXKzd03/AV58amgil5FJP+Jb4oa4o26x
+	a31hGagg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v01It-00000005gds-2OIy;
-	Sat, 20 Sep 2025 17:23:19 +0000
-Received: from sendmail.purelymail.com ([34.202.193.197])
+	id 1v03d6-00000005pko-3n1w;
+	Sat, 20 Sep 2025 19:52:20 +0000
+Received: from p-west2-cluster5-host6-snip4-10.eps.apple.com ([57.103.71.63] helo=outbound.mr.icloud.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v01Iq-00000005gdT-2lwG
+	id 1v03d4-00000005pju-1csq
 	for linux-mediatek@lists.infradead.org;
-	Sat, 20 Sep 2025 17:23:18 +0000
-Authentication-Results: purelymail.com; auth=pass
-DKIM-Signature: a=rsa-sha256; b=ba5PtmFjowsIaHfACEh+0dU237szl4KEjgtN+AEHH5yNE4yl8t6kGqtsqa0LpXSvC3Eo4uGU7y68CtTs9Oic7MoZHr8ByUS+46tQknWuPP9clbP37TKBhw76hpfxuVI752/+YXC8Ll1/qZYu7OqhayQVWQT9NCEaMAEVnjJ9PgiQGxbjKROBFBE5MvuvUklmQJRkWMjmhxXDVnXw+VvWkKmd9czttkTFKIgRphvTP+1LZIcgDOz5NqLdjmNv/V39qXrf3CV/heebpvs329wnoji6AY1HcmxTEJg5FmDRS4nML6WJVlL1+X2/dXItwFYJiGPAjnpjRshcbyXqPbQlrw==; s=purelymail1; d=purelymail.com; v=1; bh=6/Bi9HXJdwmtXopWk4wjqbKq9IfI+RP10q7/G7trKjE=; h=Feedback-ID:Received:From:Date:Subject:To;
-Feedback-ID: 68247:10037:null:purelymail
-X-Pm-Original-To: linux-mediatek@lists.infradead.org
-Received: by smtp.purelymail.com (Purelymail SMTP) with ESMTPSA id 1392048781;
-          (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384);
-          Sat, 20 Sep 2025 17:23:04 +0000 (UTC)
-From: Igor Belwon <igor.belwon@mentallysanemainliners.org>
-Date: Sat, 20 Sep 2025 19:22:52 +0200
-Subject: [PATCH v2] dt-bindings: i2c: i2c-mt65xx: Document MediaTek MT6878
- I2C
+	Sat, 20 Sep 2025 19:52:19 +0000
+Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
+	by p00-icloudmta-asmtp-us-west-2a-60-percent-1 (Postfix) with UTF8SMTPS id A6B121806677;
+	Sat, 20 Sep 2025 19:52:13 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bryanhinton.com; s=sig1; bh=EXH2uzOsYXEb/OZo3TWC/EXROKtOKzc0Az2pObM5tZE=; h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme; b=JH20zbhuvH3+lZmfx5i5GM42mEK6KZEZhCcJfFVfdLpoIy3uGdod+WIr1lFDNA3aHA3peu7Oet7aIiD3Nptqs1Yd6lhMrvjxQ1pSml8AyjQnfYMh1/SuyM52hnIjjwJqCmliEwLd3HtGas35vYqK9QCQWztgDXSlmKmHO0OKFAXerWYZaUYmluJlYGN9KyHVjxuYrLO4cVdo2hq+ySr17chrcPYwJHqoiflP4FgZuNMlyg9bID15GmStOjXFuqkOrHto3MuxUHMzWXQkyWCBB7J3PRjVZBdlNf22O6A0hkHCIFFwWMFPsKptzhIqeS3YnEH8XLYZZPxv6If6V8Wmgg==
+mail-alias-created-date: 1643268037438
+Received: from localhost (mr-asmtp-me-k8s.p00.prod.me.com [17.57.152.38])
+	by p00-icloudmta-asmtp-us-west-2a-60-percent-1 (Postfix) with UTF8SMTPSA id B68D918012C8;
+	Sat, 20 Sep 2025 19:52:12 +0000 (UTC)
+From: Bryan Hinton <bryan@bryanhinton.com>
+To: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Cc: angelogioacchino.delregno@collabora.com,
+	conor+dt@kernel.org,
+	krzk+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	robh@kernel.org,
+	daniel@makrotopia.org,
+	Bryan Hinton <bryan@bryanhinton.com>
+Subject: [PATCH v2 0/2] arm64: dts: mt7981/openwrt-one: UART labels and console
+Date: Sat, 20 Sep 2025 14:50:49 -0500
+Message-ID: <20250920195102.2733949-1-bryan@bryanhinton.com>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250920-mt6878-i2c-bringup-v2-1-70a951f10be9@mentallysanemainliners.org>
-X-B4-Tracking: v=1; b=H4sIAOvizmgC/32NQQ6CMBBFr0K6dkypUNCV9zAsSjuFSaCQKRIJ4
- e5WDuDyveS/v4uITBjFI9sF40qRppBAXTJhexM6BHKJhZKqlHclYVx0XdVAykLLFLr3DLqQrqh
- t67VuRRrOjJ4+Z/TVJO4pLhNv58ea/+zf3JqDBJeXqvLe3ayrniOGxQzDFk3A0VAYKCDH68Sda
- I7j+AIbBwCnxQAAAA==
-X-Change-ID: 20250920-mt6878-i2c-bringup-640d48cbf66b
-To: Qii Wang <qii.wang@mediatek.com>, Andi Shyti <andi.shyti@kernel.org>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: ~postmarketos/upstreaming@lists.sr.ht, linux-i2c@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Igor Belwon <igor.belwon@mentallysanemainliners.org>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1758388982; l=1428;
- i=igor.belwon@mentallysanemainliners.org; s=20250908;
- h=from:subject:message-id; bh=6/Bi9HXJdwmtXopWk4wjqbKq9IfI+RP10q7/G7trKjE=;
- b=vNonu+OGzG1QGA4lfkYdNlJVPkanBGWOsfd/gZnlyCoNtSvnYDZ3hMHmvgtL3a7KF4FMHt+Yt
- 4v5m6V101nbBX7mQEFH98yis37DhzMY9NfRonqE8E/C5RphlUkKgbJK
-X-Developer-Key: i=igor.belwon@mentallysanemainliners.org; a=ed25519;
- pk=t9Kz6B3jEwJD7YAKcp8XftfEz7SUSlGbrsfFlbrrFwA=
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-GUID: K2aGzzbemrEhCQMLHIN_3CskBEMNjXuE
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwOTIwMDE5NCBTYWx0ZWRfX/tGkTmd8Pmsw
+ Ra/N8lH8kZZf59fRYSssPgX7Q4DwpgGyfV+P7hdpq2ZJsBJosEZBGZai4duDup1Ll7uIj9IKwt4
+ v3XwXd6bI5BRHnfhVgSvCn66rOfFZnkvredODjER5Je0X6YT6qdLa+SIFACZ9ku4QrObK0L9lLM
+ NfIQA+ioH9zGgIcadv67dMnoazLeGwcN51gV4sGBv+HE3o+9xwy0YBLZ/E/ex7YTLQDD4H/fVy1
+ mVhGkkM7U8O+4iEyUWSnuRdspOh0k2WBffSsjQHewPPpDTZmd3mztaa30hfzpgesqPpQau9mY=
+X-Proofpoint-ORIG-GUID: K2aGzzbemrEhCQMLHIN_3CskBEMNjXuE
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-09-20_07,2025-09-19_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=987
+ clxscore=1030 phishscore=0 suspectscore=0 spamscore=0 bulkscore=0
+ adultscore=0 mlxscore=0 malwarescore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.22.0-2506270000 definitions=main-2509200194
+X-JNJ: AAAAAAABxnfy/qibpBMfdIii5yEhB9Xb/qWgxjXzVzMh2r7UF6jSgDVhRMc1bkaxeXwfMLaW2FsiQdAQ0PWZxLmnyQklXqLG4/Ni1917P7h+iEP10i4RtXRyH4x5dRSFUVHWhnNhuGIAquh/st21QZAwmIP1a1vrA3ji7jqJnlRnqzcuqU6iHZFV5vkYMRqn24i4kpG4Ps5YZJCp+/s7VBjEey9Ehu2ylQpgfwtyVX0uZEAq8Ygt3ddLYbsZn3SqTR4xRNvOM+lloTRMCCg7EpXv5rm62020OqREx84+cx2OLUW6m78k21RXvZ9HOunCNpyNusHwLkYJ9kXgP4MODpEVrbtV3MESGSy04LiujPQppzFIspfGhTrtqUsAp/6RGi8Wv31gtMK8Adqc12M+22EJAFY/HwKV9vu8rbhHM758ZQ8yfchbNfo3Ssy5fx9EV+VHbfnHFKS9jmyUkdAWY23rK/BNoniEeeEMuQD7ie9Ly0oJdRUrbvUCxkRo6+k5Gu/60x9rT1iJqgk9+I1QJrUvwjdw9S/ifKMTsjWILZPCTBcoIYO3egG/FIeKawWhWtZ48sMVcSxqBTXfHe5SDEkCFHMcAC2nHLxNyycrn1WGRKlsZPG094zgIonHJk/5OgcRrZ4GAa8sZ5omhHqJAtofpGUpUtddPmrH7GzubRWDkK9Iv3PMLg3/QJrpuKzSHMG+TO67l69JCCm7CHxb3UBx1/a6sYgtzcmvQo0K0w==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250920_102316_781231_AE4C18DA 
-X-CRM114-Status: UNSURE (   8.32  )
+X-CRM114-CacheID: sfid-20250920_125218_619856_0843FF90 
+X-CRM114-Status: UNSURE (   6.76  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,41 +86,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Document the I2C controllers found in the MediaTek MT6878 SoC, by adding
-a new compatible string for the controllers. Their design is compatible
-with the design from the MediaTek MT8188 SoC.
+This series makes two small updates for MT7981:
 
-Signed-off-by: Igor Belwon <igor.belwon@mentallysanemainliners.org>
----
+- Patch 1/2: Add stable labels (uart0, uart1, uart2) in the SoC dtsi so
+  that board dts files can reference them directly.
+- Patch 2/2: Update the OpenWrt One board dts to define serial0 alias,
+  configure chosen stdout-path, and set correct UART current-speed.
+
+Both patches were build-tested (dtbs) and boot-tested: 
+mainline Image+DTB built and loaded via U-Boot on MT7981 hardware,
+with serial console output verified.
+
 Changes in v2:
-- Removed driver change, made the binding compatible with mt8188
-- Link to v1: https://lore.kernel.org/r/20250920-mt6878-i2c-bringup-v1-0-d1527ffd3cd7@mentallysanemainliners.org
----
- Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml | 4 ++++
- 1 file changed, 4 insertions(+)
+- Patch 1/2: Unchanged.
+- Patch 2/2: Drop redundant hex comment per review feedback.
 
-diff --git a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml b/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
-index 23fe8ff76645e440c19469999ae9a86b7fdabe68..bd6811cbde701ce0fd9baa002aea59d43f8af445 100644
---- a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
-+++ b/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
-@@ -50,6 +50,10 @@ properties:
-           - enum:
-               - mediatek,mt6795-i2c
-           - const: mediatek,mt8173-i2c
-+      - items:
-+          - enum:
-+              - mediatek,mt6878-i2c
-+          - const: mediatek,mt8188-i2c
-       - items:
-           - enum:
-               - mediatek,mt6893-i2c
+Thanks,
+Bryan
 
 ---
-base-commit: 846bd2225ec3cfa8be046655e02b9457ed41973e
-change-id: 20250920-mt6878-i2c-bringup-640d48cbf66b
 
-Best regards,
+Bryan Hinton (2):
+  arm64: dts: mediatek: mt7981b: add labels for UART0/1/2 nodes
+  arm64: dts: mediatek: mt7981b: OpenWrt One: set console UART to 115200
+
+ .../arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts | 13 +++++++++++++
+ arch/arm64/boot/dts/mediatek/mt7981b.dtsi           |  6 +++---
+ 2 files changed, 16 insertions(+), 3 deletions(-)
+
 -- 
-Igor Belwon <igor.belwon@mentallysanemainliners.org>
+2.51.0
 
 
