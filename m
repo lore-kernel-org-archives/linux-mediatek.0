@@ -4,68 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F5B5CAC5A5
-	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Sep 2025 15:31:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16C59CAC5A7
+	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Sep 2025 16:24:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Rxoe6gkMqaTRHJBxx7naU2YBnTbK7xxNZMLfKtFttQo=; b=ADbhw6wKHPIxP4
-	3PVNnkumPqOos3Nce+0hpXJWke1uhmEM80Ibk7pvIB55xdCOQ77KkTkq+SSzJSeECLkKrEJedaOP3
-	KwbEekSVbq9h5zDdUqtLqXbWBHKpff5g5WvBKHFG9M7QPyGvup3PLTeUuNhHknaiVAkkdobSBTdZB
-	Xke7C38fDeRdPefj41KTzxPqRmD94HAVUmfqTfMMUwbyz3/pan2jCTjD/ZLvBV54Ffsyhty5paGvE
-	GAEYWZHkoSky1Cc6KnkN1CQgCa5Hkf/l1Ll/6OBdsdBCCPgWgmjiPHHflTN4I5NYlLcBUyDDWpgS1
-	Z/Hp2e0MHDaWzS3B0zHw==;
+	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Bl4uXSY7Bc7Xmngak6P6JQMIdZXLD0O9sCdT/kuECH8=; b=YNlh4wIrt19fwbPVr7tRVXT2JB
+	2jwgPs8zwIjlWy0J5vHmmCweLKmupem3FRhdmEgjryz+qbKaEDGodUnnl0m9xPrq5XvDnkzKhK/xj
+	ltgDllnx5t4YJp4ol0Ilw4BRmWI1pNu1Hu4BF4bdaqGapcpxc/uB/W80sBp2IppTCqwULqkQYUKXs
+	D4DVUHTqJH24B22S0b//Bhi61PTeagFnOuY+0N18rHv6W9uy42Hf/B8YWFsqyUzWU01RLlJz/SJez
+	MANyPQLhr0aNC/q4jZ8MD1YI8XF8+uSMaXJlZZioaji/dHnKNRCNS5oyUAUD3ZBlxpMGzSWvyJrrp
+	Xlqlnihg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzzZ3-00000005Xl9-1s5b;
-	Sat, 20 Sep 2025 15:31:53 +0000
-Received: from sendmail.purelymail.com ([34.202.193.197])
+	id 1v00ON-00000005bfk-3NC9;
+	Sat, 20 Sep 2025 16:24:55 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzzYy-00000005Xh3-45ls
-	for linux-mediatek@lists.infradead.org;
-	Sat, 20 Sep 2025 15:31:50 +0000
-Authentication-Results: purelymail.com; auth=pass
-DKIM-Signature: a=rsa-sha256; b=iWqtrSbkxBi/JLRtP+iV4RQ3k1a/tesuTQDMgAOYaJrV4z4Alue0kRIlCXG9+d0c7mYoZjRyokZC22Hggfu2+b6LpUspt8EsOPd0y42DuKze8KnMR2qsqUXog8/vBIDorYRSGpMhhkzrylMEnZFo8XMajFm4DXKrdI8Gvhw40NCJpOAClQuewkde8tKwYx+5CPhtWn7VLhRtgiGa2pcmcfDUwpPA/HPCQNkI0yX4WgetJ6Kekc3bFTlHJePlollL72koMZLnIU3bi1RNKs6xTQm77+g+4MTi19Y8AgflsVqnDRUe5byyQ7OWccIXe0Aa+TVbQyjfEvY3fDB14PL3eQ==; s=purelymail1; d=purelymail.com; v=1; bh=hSg3c2ZghTZizAbYqX13nbRSTVnHbltJh3jiavgkq80=; h=Feedback-ID:Received:From:Subject:Date:To;
-Feedback-ID: 68247:10037:null:purelymail
-X-Pm-Original-To: linux-mediatek@lists.infradead.org
-Received: by smtp.purelymail.com (Purelymail SMTP) with ESMTPSA id -1935225507;
-          (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384);
-          Sat, 20 Sep 2025 15:31:09 +0000 (UTC)
-From: Igor Belwon <igor.belwon@mentallysanemainliners.org>
-Subject: [PATCH 0/2] i2c: Add support for MT6878 I2C controllers
-Date: Sat, 20 Sep 2025 17:31:02 +0200
-Message-Id: <20250920-mt6878-i2c-bringup-v1-0-d1527ffd3cd7@mentallysanemainliners.org>
+	id 1v00OL-00000005bdc-3vml;
+	Sat, 20 Sep 2025 16:24:54 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 500BF449CB;
+	Sat, 20 Sep 2025 16:24:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 1B18EC4CEEB;
+	Sat, 20 Sep 2025 16:24:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1758385493;
+	bh=u840vuSdNA238eaEpBUXCICkOP9msH1ZivtGlgxyhXY=;
+	h=From:Subject:Date:To:Cc:Reply-To:From;
+	b=ErmjTj1foKcF6UARGZ7AW6uu0wLM47I32cf9nhIsCczl91jF2Y4j23rU5+Tjm+GEg
+	 o9JQUxeC/hDe9CqDAXQi458yOguDzop/ETBLbqBjp9zy6JYAAHeu4W4gBMAMw7A80Q
+	 P2a2uu9G+yaWF0z98iS10aPFLA8/5L0/k3eKUPH71cRWFrn58GWAySNA3SG0wsndUa
+	 zua3NWit+RK+vWKT9bC+NPrWXyQi/QQgNfNYCFk1jvF0+JATpuBl/T/jvdq9SIw2s5
+	 5SJxhaMdNxhwHMNAq5edahRzAT1OGVyPdnlhBIj/+DDG4kV/N3vtUIMCYrJnc3M91f
+	 RYNeqzhSaKGTg==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0A418CAC5A0;
+	Sat, 20 Sep 2025 16:24:53 +0000 (UTC)
+From: Cristian Cozzolino via B4 Relay <devnull+cristian_ci.protonmail.com@kernel.org>
+Subject: [PATCH 00/10] ARM: Add support for yarisxl mt6582 board
+Date: Sat, 20 Sep 2025 20:23:25 +0200
+Message-Id: <20250920-mt6582-v1-0-b887720f577d@protonmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIALfIzmgC/x3MQQ5AMBBA0avIrE1SDVWuIhZa05qFkhaRiLtrL
- N/i/wcSRaYEffFApIsTbyGjKguwyxQ8Ic/ZIIVsRCcFrofSrUaWFk3k4M8dVS3mWlvjlDKQwz2
- S4/ufDuP7fnRUnrZkAAAA
-X-Change-ID: 20250920-mt6878-i2c-bringup-640d48cbf66b
-To: Qii Wang <qii.wang@mediatek.com>, Andi Shyti <andi.shyti@kernel.org>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: ~postmarketos/upstreaming@lists.sr.ht, linux-i2c@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Igor Belwon <igor.belwon@mentallysanemainliners.org>
+X-B4-Tracking: v=1; b=H4sIAB7xzmgC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDI1MDSyMD3dwSM1MLI11LY2PLFPO05NQkYxMloOKCotS0zAqwQdGxtbUAIVX
+ EO1gAAAA=
+X-Change-ID: 20250920-mt6582-9339d7fceb34
+To: Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Russell King <linux@armlinux.org.uk>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+ phone-devel@vger.kernel.org, 
+ Cristian Cozzolino <cristian_ci@protonmail.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1758382267; l=759;
- i=igor.belwon@mentallysanemainliners.org; s=20250908;
- h=from:subject:message-id; bh=hSg3c2ZghTZizAbYqX13nbRSTVnHbltJh3jiavgkq80=;
- b=ZmmuUVQP60SFRzeKx5oSct4QOEoDeLeYJIF9FKk4TQgtZPtWpkWxvMFN31WjyU6lbr31VyM1G
- uWVbihpePQ5BA6j/daH/+17Zn4BAr2LzmQymhbXdmJlbCFgEvwgwFTG
-X-Developer-Key: i=igor.belwon@mentallysanemainliners.org; a=ed25519;
- pk=t9Kz6B3jEwJD7YAKcp8XftfEz7SUSlGbrsfFlbrrFwA=
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1758392693; l=1921;
+ i=cristian_ci@protonmail.com; s=20250620; h=from:subject:message-id;
+ bh=u840vuSdNA238eaEpBUXCICkOP9msH1ZivtGlgxyhXY=;
+ b=f4PxI5rxzmphfC3mJqHuJLLtu74mC8xdE0jGsQiiZDg3Bhahc+aOijqzXFUCItKAZYB1hMVMj
+ lXU7DXzkgbVBmoqDQ6RZfAdU6e6CAmTqrrYb1ssoPVQofruMMy5o98c
+X-Developer-Key: i=cristian_ci@protonmail.com; a=ed25519;
+ pk=xH5IvIPUNHV1Q8R0/pq2CfuVFR/wTiAyuyi6IwedjZY=
+X-Endpoint-Received: by B4 Relay for cristian_ci@protonmail.com/20250620
+ with auth_id=438
+X-Original-From: Cristian Cozzolino <cristian_ci@protonmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250920_083149_086952_2155EE96 
-X-CRM114-Status: UNSURE (   7.08  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250920_092454_019484_C382895D 
+X-CRM114-Status: GOOD (  10.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,30 +89,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: cristian_ci@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi all,
+This series adds support for Alcatel Pop C7 (OT-7041D) smartphone
+board, named yarisxl, based on MT6582 SoC. It also includes some
+preliminary patches. More in detail:
+- patches 1 and 2 add support for mt6582 to platform code 
+  (verified by looking at generic mt6582 downstream source code)
+- patches 3-6 do some maintenance work to mt6582.dtsi 
+  (I was unsure if squashing timer node patches into one)
+- patches 7 and 8 add devicetree and dt-bindings support for yarisxl
 
-This patchest adds support for the i2c units found in the MediaTek 
-MT6878 SoC. These units use the new v3 register offset scheme 
-(differing only in OFFSET_SLAVE_ADDR).
-
-Signed-off-by: Igor Belwon <igor.belwon@mentallysanemainliners.org>
+Signed-off-by: Cristian Cozzolino <cristian_ci@protonmail.com>
 ---
-Igor Belwon (2):
-      dt-bindings: i2c: i2c-mt65xx: Document MediaTek MT6878 I2C
-      i2c: mediatek: add support for MT6878 SoC
+Cristian Cozzolino (10):
+      ARM: mediatek: add board_dt_compat entry for the MT6582 SoC
+      ARM: mediatek: add MT6582 smp bring up code
+      ARM: dts: mediatek: mt6582: move MMIO devices under soc node
+      ARM: dts: mediatek: mt6582: sort nodes and properties
+      ARM: dts: mediatek: mt6582: remove compatible property from root node
+      ARM: dts: mediatek: mt6582: add mt6582 compatible to timer
+      ARM: dts: mediatek: mt6582: add clock-names property to uart nodes
+      ARM: dts: mediatek: mt6582: add enable-method property to cpus
+      dt-bindings: arm: mediatek: Add MT6582 yarisxl
+      ARM: dts: mediatek: add basic support for Alcatel yarisxl board
 
- Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml |  1 +
- drivers/i2c/busses/i2c-mt65xx.c                       | 14 ++++++++++++++
- 2 files changed, 15 insertions(+)
+ .../devicetree/bindings/arm/mediatek.yaml          |   1 +
+ arch/arm/boot/dts/mediatek/Makefile                |   1 +
+ .../boot/dts/mediatek/mt6582-alcatel-yarisxl.dts   |  61 +++++++++
+ arch/arm/boot/dts/mediatek/mt6582.dtsi             | 142 +++++++++++----------
+ arch/arm/mach-mediatek/Kconfig                     |   4 +
+ arch/arm/mach-mediatek/mediatek.c                  |   1 +
+ arch/arm/mach-mediatek/platsmp.c                   |   1 +
+ 7 files changed, 142 insertions(+), 69 deletions(-)
 ---
 base-commit: 846bd2225ec3cfa8be046655e02b9457ed41973e
-change-id: 20250920-mt6878-i2c-bringup-640d48cbf66b
+change-id: 20250920-mt6582-9339d7fceb34
 
 Best regards,
 -- 
-Igor Belwon <igor.belwon@mentallysanemainliners.org>
+Cristian Cozzolino <cristian_ci@protonmail.com>
+
 
 
