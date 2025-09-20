@@ -4,54 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 984F4CAC5A0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Sep 2025 11:57:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BAA9CAC5A8
+	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Sep 2025 15:31:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FFtTq6aHl4LnmUX8oUJuJd7fxhJRJVthJLoqd2hrnzg=; b=KzHljpMK0za2/ICg6SW4sH9qYL
-	ZL3WX16VvnJ3l4SriAHYsSL4FQ047PfC0naE/TBy91WCiEH8rdb0JXfz3N7muCAycRJ0V27xTv0mB
-	gAB0JZAMrJf6sx8PiLIvXgG26GAIkK9yBqdwI40ZaPibg7DnESyf5fef9moKd0EjNYEV2DFPm97ju
-	vWz9POQuteteM2N5y9IOJ2d+Pn2Q9aIc7FMwwO9Txus1ZQZXU3eObroJspXtrhc0owVhVg/5rWE1a
-	xHpnV2L8pmFjgJKS8lj3W2kBUGa99p1H3/bHe3XZrPIWrnyrgV4xuTakXwGUyVny/38lchGnOvTu9
-	5/oqepsQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=i39MNlt+UVbQy0OCfpedB6PVEeJs/a2h3+TPgOfuHAE=; b=cAmy2XtefDRWkOm9TwSceFrku7
+	HNmm+G9yCi0y0oBlzYsZUb2C2bj/XyloXwBF/TNAkziioX0CwCIkkVWvMTxAhFR69AZ1kOX/fmg2Z
+	Bxse63kp+4RMvRQikRDFdp2oan39VcnVR8Z6NjrYY8X+VFJvF6iT8a280bjhwSzKpNp06mPUSx/qM
+	Y6Z8LISfRcRLIiFutpLA8Hlda5jbC/+qEsFsZXKrjHCW++h/S7G8vbP1e1iHDGvxZ7FX+Wrl8ksrZ
+	qvo2bcrXmbbXdzWqy22/13zlWeC4kGkDkAXZcYr9e2UvEOEH4Z35u6hOOB2j3kX1azYJnAU3eQlrL
+	IFkpcalw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzwDK-00000005I03-3f9Y;
-	Sat, 20 Sep 2025 11:57:14 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1uzzZ1-00000005XjN-0nzQ;
+	Sat, 20 Sep 2025 15:31:51 +0000
+Received: from sendmail.purelymail.com ([34.202.193.197])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzwDI-00000005HwA-08qk;
-	Sat, 20 Sep 2025 11:57:13 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.98.2)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1uzwDF-000000000XJ-3xao;
-	Sat, 20 Sep 2025 11:57:10 +0000
-Date: Sat, 20 Sep 2025 12:57:07 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 4/4] arm64: dts: mediatek: mt7988a: add 'soc-uuid' cell to
- efuse
-Message-ID: <2c205246baddde49c66fd918c46e5125b395d083.1758369130.git.daniel@makrotopia.org>
-References: <40004650c99c09ff540d8e2028a1393f4a70a6b4.1758369130.git.daniel@makrotopia.org>
+	id 1uzzYy-00000005Xgr-2ikT
+	for linux-mediatek@lists.infradead.org;
+	Sat, 20 Sep 2025 15:31:49 +0000
+Authentication-Results: purelymail.com; auth=pass
+DKIM-Signature: a=rsa-sha256; b=WAf3mWuW96hFGq4BJ1iyiYkb4moeL6UPzqDlqymZ+dlV7xLfdfkz1x0WMaBLy6FjKAm3pByUXkuGAhwCyn7rIW4TQs86m6jOp62JAXSuMwcqnlE5O4gvRP+ucHbEoVUegH+eyfc+rZOsEXz+vet+wjpu6Gt0nLEIBOgYSUBk3qc0EXvXzXG9SODBcK1Ns2K3VotnwccF4Obr9ILwxjpsSy/NDkiW5CZPn0KoK2FTsb5zRh+Q+fBx/bdwpf+u1k1ks+7PGDln8ASc4soWqdV+LcQqbMp7IamDU508cMnVoBBVoNeNOysORqg5p8fQ47WDgk9CfwzVjBb+YHtaA8KrWw==; s=purelymail1; d=purelymail.com; v=1; bh=L4sIzuHH5e728nteRUrwdrI8eR4rd0jT03HRoNtIA4U=; h=Feedback-ID:Received:From:Date:Subject:To;
+Feedback-ID: 68247:10037:null:purelymail
+X-Pm-Original-To: linux-mediatek@lists.infradead.org
+Received: by smtp.purelymail.com (Purelymail SMTP) with ESMTPSA id -1935225507;
+          (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384);
+          Sat, 20 Sep 2025 15:31:12 +0000 (UTC)
+From: Igor Belwon <igor.belwon@mentallysanemainliners.org>
+Date: Sat, 20 Sep 2025 17:31:04 +0200
+Subject: [PATCH 2/2] i2c: mediatek: add support for MT6878 SoC
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <40004650c99c09ff540d8e2028a1393f4a70a6b4.1758369130.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250920-mt6878-i2c-bringup-v1-2-d1527ffd3cd7@mentallysanemainliners.org>
+References: <20250920-mt6878-i2c-bringup-v1-0-d1527ffd3cd7@mentallysanemainliners.org>
+In-Reply-To: <20250920-mt6878-i2c-bringup-v1-0-d1527ffd3cd7@mentallysanemainliners.org>
+To: Qii Wang <qii.wang@mediatek.com>, Andi Shyti <andi.shyti@kernel.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: ~postmarketos/upstreaming@lists.sr.ht, linux-i2c@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Igor Belwon <igor.belwon@mentallysanemainliners.org>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1758382267; l=1715;
+ i=igor.belwon@mentallysanemainliners.org; s=20250908;
+ h=from:subject:message-id; bh=L4sIzuHH5e728nteRUrwdrI8eR4rd0jT03HRoNtIA4U=;
+ b=YZB3LNAadsjA02iG5NTdWh8e13gZGiQwzvjF7fYZg4rXVNL7C+SgjfARtCWlDTmE+QZhBzmlw
+ 3jFtL39WcEyB6tm9nHVany5eM/8qY8rYRGWCPYF767QM2BTe3vzdSln
+X-Developer-Key: i=igor.belwon@mentallysanemainliners.org; a=ed25519;
+ pk=t9Kz6B3jEwJD7YAKcp8XftfEz7SUSlGbrsfFlbrrFwA=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250920_045712_074015_D564E735 
-X-CRM114-Status: GOOD (  10.55  )
+X-CRM114-CacheID: sfid-20250920_083148_767698_DEB810AF 
+X-CRM114-Status: UNSURE (   9.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,33 +78,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The efuse of the MediaTek MT7988 contains a 16-byte unique identifier.
-Add a 'soc-uuid' cell covering those 16 bytes to the nvmem defininition
-of the efuse to allow easy access from userspace, eg. to generate a
-persistent random MAC address on boards like the BananaPi R4 which
-doesn't have any factory-assigned addresses.
+Add support for the I2C units found in the MediaTek MT6878 SoC.
+Just like other recent MediaTek SoCs, it uses the v3 register offsets
+(which differ from v2 only by OFFSET_SLAVE_ADDR being
+0x94 instead of 0x4).
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+Signed-off-by: Igor Belwon <igor.belwon@mentallysanemainliners.org>
 ---
- arch/arm64/boot/dts/mediatek/mt7988a.dtsi | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/i2c/busses/i2c-mt65xx.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-index 366203a72d6d..93c9f8c3f223 100644
---- a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-@@ -714,6 +714,10 @@ efuse@11f50000 {
- 			#address-cells = <1>;
- 			#size-cells = <1>;
+diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+index ab456c3717db18eef74226de0ee88c49228796f5..085702aee006a6dd0ac89d1382a12fbac2d91c55 100644
+--- a/drivers/i2c/busses/i2c-mt65xx.c
++++ b/drivers/i2c/busses/i2c-mt65xx.c
+@@ -402,6 +402,19 @@ static const struct mtk_i2c_compatible mt6589_compat = {
+ 	.max_dma_support = 32,
+ };
  
-+			soc-uuid@140 {
-+				reg = <0x140 0x10>;
-+			};
++static const struct mtk_i2c_compatible mt6878_compat = {
++	.regs = mt_i2c_regs_v3,
++	.pmic_i2c = 0,
++	.dcm = 0,
++	.auto_restart = 1,
++	.aux_len_reg = 1,
++	.timing_adjust = 1,
++	.dma_sync = 0,
++	.ltiming_adjust = 1,
++	.apdma_sync = 1,
++	.max_dma_support = 36,
++};
 +
- 			lvts_calibration: calib@918 {
- 				reg = <0x918 0x28>;
- 			};
+ static const struct mtk_i2c_compatible mt7622_compat = {
+ 	.quirks = &mt7622_i2c_quirks,
+ 	.regs = mt_i2c_regs_v1,
+@@ -525,6 +538,7 @@ static const struct of_device_id mtk_i2c_of_match[] = {
+ 	{ .compatible = "mediatek,mt2712-i2c", .data = &mt2712_compat },
+ 	{ .compatible = "mediatek,mt6577-i2c", .data = &mt6577_compat },
+ 	{ .compatible = "mediatek,mt6589-i2c", .data = &mt6589_compat },
++	{ .compatible = "mediatek,mt6878-i2c", .data = &mt6878_compat },
+ 	{ .compatible = "mediatek,mt7622-i2c", .data = &mt7622_compat },
+ 	{ .compatible = "mediatek,mt7981-i2c", .data = &mt7981_compat },
+ 	{ .compatible = "mediatek,mt7986-i2c", .data = &mt7986_compat },
+
 -- 
 2.51.0
+
 
