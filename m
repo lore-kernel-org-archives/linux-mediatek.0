@@ -4,76 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA6A3CAC5A5
-	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Sep 2025 19:52:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDEBDCAC5A5
+	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Sep 2025 22:42:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ARNulbwujzqTC6TBIyUcN+Sxg1gArb1tBFDYw0Up1wE=; b=5GETSgrjbHs8kCp+kKvnL9vVZV
-	LZGKKvfZHL7TExxOtdQTf7vKeRilEgiXvb/uXJJJtrpFcJPOdZ+ymLKCtsg8rvs5B/vsNO99j6kSi
-	zbQ6cOndjhanWFAXF/cZVwsHi/sMqI1QHylvbgHhtQfU3eGRGexri35b8aaDEYFHQRO3wgIr8LDay
-	TVcJiQvvKS5PP++lx7yWomTlDOAL4Y2319+ZiuFqH5ne+WpDCFj82E6sPv1GQy/WLHTlEOm9TaEPU
-	VOwi7XAP+7PVksw5rSB8vNMc4g9k9RfZF8rh6dKpsUn0ISLbABLaR9p3F0hzx/qSQKPmGghW787kn
-	aqFbvvRw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lTtZhruTVLF4GPNyBajpZdwiUP3tJkM+q78Hsw3okYw=; b=LJTfP+NfDAFPB3TcU3dywO1tVe
+	U6zWq2xezWJ0hLKl2RH/H5HoBGbCm47va0fOglCUsDUUhHdzZOJkpJuycfzRvCcFtkd9kODqqDf2A
+	9az2aBRdypGsc4vYCoIUF7427aTdzapyQSLsWUfx4SMAs7v7BjOotzmpvz/ZGhOksxxr43dKLrkjO
+	YGvQAMjoLUbFt+g8D6+c9HxvF3k5wyPfm24lUbB4lrFxhEDhLwMUD4hcT6iUXzYimd0qmDvln8jq8
+	5yEh08u0fEL+0CWdQylNufSKnYwmMQkX6A6A9bZrfJM31cp+FGjxcnOiFlZq11Q+rUfAybeYCzhep
+	OWpxEsdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v03dC-00000005pnu-478A;
-	Sat, 20 Sep 2025 19:52:26 +0000
-Received: from p-west2-cluster4-host8-snip4-3.eps.apple.com ([57.103.69.224] helo=outbound.mr.icloud.com)
+	id 1v06HN-000000061TY-1DsW;
+	Sat, 20 Sep 2025 22:42:05 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v03dA-00000005plt-04MH
-	for linux-mediatek@lists.infradead.org;
-	Sat, 20 Sep 2025 19:52:25 +0000
-Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
-	by p00-icloudmta-asmtp-us-west-2a-20-percent-0 (Postfix) with UTF8SMTPS id 948721801B24;
-	Sat, 20 Sep 2025 19:52:22 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bryanhinton.com; s=sig1; bh=ARNulbwujzqTC6TBIyUcN+Sxg1gArb1tBFDYw0Up1wE=; h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme; b=ig3ymr+Z+eqzf5M5oemHs6qSw2bHI6kP9uNx6KcgXQa9r74tfZp94pp1bRmrlAM9GQGn1sJcw02QgWy2w6NDexI5TEZ4X8O8eLfI+G1CUt4z4XdTjufcGzweuuwvB9IAfNPdqTF1ieychu7P12NHEsxbjMQ++qktZQo9OEjK8eM+TVdLir13vjvVPQWbeCItwTeMqmq7AhjGauprOuQS/F1lhbu4YBqbdxhrofGtgQDtqh2yVoEIyq4FjvMNAupuVx8+PFII2lGpkEZL1gGVYY9nCa31m8g+hWAeLQb7RKY0tk9UvMl87wJwNWYEKQqfZR+BDIVlKbxYmeTKAcTUSw==
-mail-alias-created-date: 1643268037438
-Received: from localhost (mr-asmtp-me-k8s.p00.prod.me.com [17.57.152.38])
-	by p00-icloudmta-asmtp-us-west-2a-20-percent-0 (Postfix) with UTF8SMTPSA id 2449718001A2;
-	Sat, 20 Sep 2025 19:52:22 +0000 (UTC)
-From: Bryan Hinton <bryan@bryanhinton.com>
-To: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Cc: angelogioacchino.delregno@collabora.com,
-	conor+dt@kernel.org,
-	krzk+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	robh@kernel.org,
-	daniel@makrotopia.org,
-	Bryan Hinton <bryan@bryanhinton.com>
-Subject: [PATCH v2 2/2] arm64: dts: mediatek: mt7981b: OpenWrt One: set console UART to 115200
-Date: Sat, 20 Sep 2025 14:50:51 -0500
-Message-ID: <20250920195102.2733949-3-bryan@bryanhinton.com>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20250920195102.2733949-1-bryan@bryanhinton.com>
-References: <20250920195102.2733949-1-bryan@bryanhinton.com>
-MIME-Version: 1.0
+	id 1v06HK-000000061So-1oJP;
+	Sat, 20 Sep 2025 22:42:03 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 1F30940961;
+	Sat, 20 Sep 2025 22:42:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5BDD5C4CEEB;
+	Sat, 20 Sep 2025 22:42:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1758408121;
+	bh=Dt8VKsI0bzzPWavc0PQi4CMaYsaPhVChPxt1pBUrkF4=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=O2VD451vT9HNTTN9Ot+gYm+T7u5XS4TeGU3KNlq3MyYzbPc/WfKyJ5YsAal0YSqZa
+	 xVtREVHKDSzLplyY10SBSdmsSkd8v5ip1Co82UnaMPTaNqgxCQbGA18E8DeWVBE2Zo
+	 SPYF0+SvJAmBHV64T2e37DNfLhT5tv8ICq0uLqr/KChDAFAk3cxcyoFYaBYj8TEvYu
+	 tFnngljlcAoDTqs1yknnMrQY7rGzRV3q8ZPQ4pR3BcK5CAvsPT0GYyQPXbCNhMKRpw
+	 GIQRLcZwMYeIxTY63zUOhMNQchRVFai5QcRRjKXe54mpAmHWTldY9qzCM9oUtlMk28
+	 Pmn+JiZra4uYA==
+Date: Sat, 20 Sep 2025 17:41:57 -0500
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: 43BJrrDByWVIPkQyTa670jQr2J9PN48K
-X-Proofpoint-ORIG-GUID: 43BJrrDByWVIPkQyTa670jQr2J9PN48K
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwOTIwMDE5NCBTYWx0ZWRfXxZxI4GWXbEsL
- Pin0amTzsu+Gfn5Yh1yU3KuNzcd0LQeLbaN2gUx5RQ+VO5p8Qwxfx59XeEeL2S4WhYC3n7faxVI
- xOYkgY7bUntNjSApyOMsc0xUfTwhv4FgpEJmuHpe+q0DnRWC12yH1kPaZqVKMBguWBO8XhOckMd
- WeKn1j7xiovRJfSCfhVggxDSAv4ejbgIF/yZRlMF2FyVbSbXPrAbYuFKlqWmbm6/8hbVkNgL4LE
- 1JmwvuTD3KG9rmc9j88fNoZe08nGcAmYrk11CnU2ULyHeEOf4SsCzwWzFMDyK57hMiq1mxYFQ=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-09-20_07,2025-09-19_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- mlxlogscore=999 clxscore=1030 bulkscore=0 mlxscore=0 suspectscore=0
- phishscore=0 adultscore=0 malwarescore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.22.0-2506270000 definitions=main-2509200194
-X-JNJ: AAAAAAABZyS4qkue9UJqaMuEO9aLsllPNgsr19EgF0o6Go+lbA0OpU/ZdC7ZCpg0WtAKEpSMlAzriZ0PC2hEffbbKoIZRkmByvbzpFEBIGaY5NlGP2x/5WqylzT8mSZ7cuCUl6+LDd5rj88xIHaxv7Hh+Va62O+RbPu53nYWkqiFa92qtMZBlqqyaCauGEqgW5LDi+T9KHCxffUtdcowshQfUH6K96XbaGyeARnIkYF8izk4CpQVHTv+imtsoucY8njD5axLO3dNnMX+wwGLaCnOyBIOliTeD9iRG45M/H1dpAeL3xwhCvGhl+9W78PLYlCtYz0GH5qAPvAko7eGbGFxzdYPbVqRP4UojdfW51VRJ+7v82TWw2Z/Wu9t8RQcAHlWnvSsmGbKMm7ZX6O2ioGjjrszlbz40lTLDV6UUCb0fgP/aj8YWTndujDH+t3Dh9oDhMRafybne5Eb/dq64k9wfQMnSCc44LYd/XH8G8QKWkHNzhjuoZF1XdgC2fZl7uFqnDWsVvd43SigHkjBY7NGyNVjb2j/ZJsW/Ly6Pt6pP4PnK50ikDfpw7wzfXtsNe9XUsBg7DdpQ2y1VbB9i6HUAlUE42t2eQqy8PnaueTDU8M8hLwsrwEfvRs1pKlPMVyQUCzRv6rs8MoIv0D40bbNe3f8Hl1zChqQCjbgR8zSdbKLL5IRqpVFSQdg6QV/CfuM8WbNdGmyB+G/eq4XDB9oMu0SiQRCE9CFb8xUIYUXtei5q+mx
+MIME-Version: 1.0
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Jianjun Wang <jianjun.wang@mediatek.com>, 
+ linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ linux-arm-kernel@lists.infradead.org, Bjorn Helgaas <bhelgaas@google.com>, 
+ Manivannan Sadhasivam <mani@kernel.org>, 
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+ Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+ Ryder Lee <ryder.lee@mediatek.com>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-kernel@vger.kernel.org
+To: Christian Marangi <ansuelsmth@gmail.com>
+In-Reply-To: <20250920114103.16964-1-ansuelsmth@gmail.com>
+References: <20250920114103.16964-1-ansuelsmth@gmail.com>
+Message-Id: <175838993594.10832.1517003373145392481.robh@kernel.org>
+Subject: Re: [PATCH 1/2] dt-bindings: PCI: mediatek: Convert to YAML schema
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250920_125224_067270_3BEE1B39 
-X-CRM114-Status: UNSURE (   9.11  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250920_154202_511167_6D37FA2D 
+X-CRM114-Status: GOOD (  11.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,49 +79,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use the new uart0 label for the console and make the speed explicit by
-adding current-speed = <115200>. This keeps the DTS OS-agnostic: no
-bootargs or distribution-specific properties are added.
 
-Verification: Boot-tested with mainline Image+DTB via U-Boot on OpenWrt
-One (MT7981B). Serial console active at 115200 baud, and DTB decompile
-confirms serial0 alias and stdout-path set correctly.
+On Sat, 20 Sep 2025 13:41:01 +0200, Christian Marangi wrote:
+> Convert the PCI mediatek Documentation to YAML schema to enable
+> validation of the supported GEN1/2 Mediatek PCIe controller.
+> 
+> While converting, lots of cleanup were done from the .txt with better
+> specifying what is supported by the various PCIe controller variant and
+> drop of redundant info that are part of the standard PCIe Host Bridge
+> schema.
+> 
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> ---
+>  .../devicetree/bindings/pci/mediatek-pcie.txt | 289 ---------
+>  .../bindings/pci/mediatek-pcie.yaml           | 564 ++++++++++++++++++
+>  2 files changed, 564 insertions(+), 289 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/pci/mediatek-pcie.txt
+>  create mode 100644 Documentation/devicetree/bindings/pci/mediatek-pcie.yaml
+> 
 
-Changes in v2:
-  - Dropped redundant hex value comment on current-speed (review feedback).
+My bot found errors running 'make dt_binding_check' on your patch:
 
-Signed-off-by: Bryan Hinton <bryan@bryanhinton.com>
----
- .../arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+yamllint warnings/errors:
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
-index 4f6cbb491287..638ed76107e3 100644
---- a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
-@@ -8,8 +8,21 @@ / {
- 	compatible = "openwrt,one", "mediatek,mt7981b";
- 	model = "OpenWrt One";
- 
-+	aliases {
-+		serial0 = &uart0;
-+	};
-+
-+	chosen {
-+		stdout-path = "serial0:115200n8";
-+	};
-+
- 	memory@40000000 {
- 		reg = <0 0x40000000 0 0x40000000>;
- 		device_type = "memory";
- 	};
- };
-+
-+&uart0 {
-+	status = "okay";
-+	current-speed = <115200>;
-+};
--- 
-2.51.0
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/mediatek-pcie.example.dtb: syscon@1a000000 (mediatek,mt7623-hifsys): compatible: 'oneOf' conditional failed, one must be fixed:
+	['mediatek,mt7623-hifsys', 'mediatek,mt2701-hifsys', 'syscon'] is too long
+	'mediatek,mt7623-hifsys' is not one of ['mediatek,mt2701-hifsys', 'mediatek,mt7622-hifsys']
+	from schema $id: http://devicetree.org/schemas/clock/mediatek,mt2701-hifsys.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/mediatek-pcie.example.dtb: pcie@0,0: 'device_type' is a required property
+	from schema $id: http://devicetree.org/schemas/pci/pci-bus-common.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/mediatek-pcie.example.dtb: pcie@1,0: 'device_type' is a required property
+	from schema $id: http://devicetree.org/schemas/pci/pci-bus-common.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/mediatek-pcie.example.dtb: pcie@2,0: 'device_type' is a required property
+	from schema $id: http://devicetree.org/schemas/pci/pci-bus-common.yaml#
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250920114103.16964-1-ansuelsmth@gmail.com
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
 
 
