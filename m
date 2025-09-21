@@ -4,94 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DD5FCAC59A
-	for <linux-mediatek@archiver.kernel.org>; Sun, 21 Sep 2025 05:01:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36A30CAC59A
+	for <linux-mediatek@archiver.kernel.org>; Sun, 21 Sep 2025 05:54:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IjfAWdx3qllN2H0M+sW0dm7oGyFJwrK43aFNVvYCDkE=; b=xLQjezD9zDUZUGJRTLo3PXZ/AQ
-	mRCHjnX/l/LzNaJmISJY8UMwUkP5tGTvbxZQzigkLKk0aigUZCUZZsSvUTXy0PqAJqdRYybV0uOup
-	VrH7Gz+bGOkW1GdoYMHyFA/bQE8wxQO0qi+1q1gBMzBYCRn3n2tpcV+0+eAD/oMzelsuiqfGxnoGM
-	ALqv/qP+8el5qyuIrkGY62Gx7vwqzYmtQCW+8zIswCY5UvaT8eOvxwUnjl1AqcwIeqYNIwrQUXlLX
-	+8wT7gDtv3m3+JekydgGjtfUGo+A0lfEW2HwyqIikPj1w3Y8MwIm5gIE6n3zIoCijXISz1b9+NVl0
-	uKBWOI7A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=BNy9JUEk5SM7ujHcWVu+qwus9vysipdIfL068MRHlUw=; b=isNzt5jQy1f6DsipLAQ99oLS6w
+	go1Amf7hiDjMU/tuifYdM9jI6CoLyINJctcyEIsP1q6Fmt46f4Zmw+0EP75aK9woreqC2kG5ci9mH
+	uVdyI8qx1fEjMKIpWneAEY4AgEgP2LQQIqplVyL+y2eddY+FSGOHWTSZ0uAUnJ0r6p25MZN7F5NNV
+	Mw6I9CaUIT2Y98UQgRqjrsKVse3ctQwXWvNwdJkDCyDMXaIElr9ETkljPo02MV1aHmA8Q7fRS+BbZ
+	hrfvYr8g3u0/uP1Z3CVn1XJ33tbumO9frMY75iVPWZitc9f7HMq5cwH5d+RRk3kHeld3kaSNsBdzg
+	VlM06mcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0CCI-00000006bey-29Q7;
-	Sun, 21 Sep 2025 05:01:14 +0000
-Received: from mail-oa1-x35.google.com ([2001:4860:4864:20::35])
+	id 1v0D2C-00000006jEf-3iTX;
+	Sun, 21 Sep 2025 05:54:52 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0CCF-00000006bdw-3e63
-	for linux-mediatek@lists.infradead.org;
-	Sun, 21 Sep 2025 05:01:13 +0000
-Received: by mail-oa1-x35.google.com with SMTP id 586e51a60fabf-30cceb749d7so1437828fac.2
-        for <linux-mediatek@lists.infradead.org>; Sat, 20 Sep 2025 22:01:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1758430871; x=1759035671; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=IjfAWdx3qllN2H0M+sW0dm7oGyFJwrK43aFNVvYCDkE=;
-        b=AMsivfWW/mRsJmXalj2XT1NbWd+RfcJWJxAzdx7n9B2vX2Wp5EN9CPFynS0qzUHFJh
-         usYqxX3bxjERmJm0A5ILRjjLd8HWZgY7XOyWpwBIKVREvbH8zW0tWp+ukjnBeJNmuzAC
-         0SbAOPrY8T2leYIJZUfUVzTjWitNW2tuwiBHFDwmSy1lH9clIARNbFtoLGShEgOghXUT
-         VWnSd8/mD6kkyBrZxGoSgOxusrco5Aa5uwVjPuUqIANVxVdr+9sf1WDV3O6vzo7+OFy1
-         fUpOVpL4icftVwXwisUPjZJMjpKmHaHa/IzqZH9qnuHnqFvt6NKxmH0Urjmdt6XqW21D
-         f04g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1758430871; x=1759035671;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=IjfAWdx3qllN2H0M+sW0dm7oGyFJwrK43aFNVvYCDkE=;
-        b=Z/WjPqYTUO6K5WOzPeV/NYSoTUoMnwLLldy/74wlfqLHcPTk2cNKVNdamjSQx58cJs
-         ID37NynQgiiJVobI/MY3hgzv5iuMh131v97PWzr7Uf8/KMPi9hgc08l4pvSS1Ifs+V36
-         fPChzEzD5lwpXZ9SfrOYgJpUIiyTLCY02ZxM4LdqNeZHph73QtKoqsRvKFU8izcGcfet
-         3OndLGFiLPwNm4CdqwVf9qXMWClC4nnZT47/JBwh5kpOPLVhhiQjHHYtMqFOUUz67gcW
-         ahGuwRErqFi+wB4EcbwRXNKb/bjOU838bLfOw9ZwzBW0Gy4Pi45xKGC+nQM9b21h8rbk
-         ytuA==
-X-Forwarded-Encrypted: i=1; AJvYcCXed7T+o4olCVWCpfV0/qoZhuScpOVeu+ppA/avBMmW4QulvMCQcxQdFxrF6RqrJfUO3MnLSRQKkQDowJQEGQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YycNV7LjY/dQ0IWQDulYPm48X5MO6QxNhmEZaDhJsff5PmtnezZ
-	3VXDalpJcLREg4iG83cbl4dzvmDN2QG5dfp9BdOyA1lGFExnebIJlr8kFQwyf11aoZqJbYL4I66
-	JVCUaGSTdEsBObSvpxQqhpt/kE27Yez8=
-X-Gm-Gg: ASbGncs6lzaH+P1QIJv7EO2h5h7N+01zptJGx40BKDxLCViCBXVHth9ztJI1eHRT5Dn
-	xPQhtNz7wFwHAVLWjd3C35f5TGKRH4XzU2GfrbJL92JRrcDU2jr8wPeH7HesOtSAJQQcWvmUHf7
-	BxiwFRRelJiwPbyn0+IDqpmvCoZRWmIrbxxy23UsOiGz59ntbr6Mq99AUMDnnLD1UOJjLkmcuFZ
-	THHr9mp
-X-Google-Smtp-Source: AGHT+IFKpKCb+G5+tP41Jly7b1/38Uvws70S97XKQpr/S5rzy7zAFBiiLMjEcsLoKodvfvth4fS5Yj3OP9ZLUPhO44s=
-X-Received: by 2002:a05:6870:6e83:b0:31d:718f:a09d with SMTP id
- 586e51a60fabf-33bb5c80cf2mr4292754fac.25.1758430870653; Sat, 20 Sep 2025
- 22:01:10 -0700 (PDT)
+	id 1v0D2A-00000006jDP-318Z;
+	Sun, 21 Sep 2025 05:54:51 +0000
+X-UUID: 7877a56e96af11f0a52f393f94899d25-20250920
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=BNy9JUEk5SM7ujHcWVu+qwus9vysipdIfL068MRHlUw=;
+	b=vC6Da8TvSReux9uhI3O4l9xiuqUyx7CWiajFQbYI9moKnVNZQ6JrdplQx71pIZ0PT3eTNdYsrTfS7bkR+eD5LrIHbdBi4vGywWpQNG91SCK+tD03SMdL8LOKtH853go3OUa+50yBvoTakUOMi9x9vSeovcSOYCFvRrfsNNRr9OQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.4,REQID:d9d01078-3351-4c0a-bc54-c53af8a9b5d3,IP:0,UR
+	L:0,TC:0,Content:82,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:107
+X-CID-META: VersionHash:1ca6b93,CLOUDID:c73785f8-ebfe-43c9-88c9-80cb93f22ca4,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:4|15|5
+	0,EDM:5,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,O
+	SA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 7877a56e96af11f0a52f393f94899d25-20250920
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <jay.liu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1893007226; Sat, 20 Sep 2025 22:54:43 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Sun, 21 Sep 2025 13:54:40 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1748.10 via Frontend Transport; Sun, 21 Sep 2025 13:54:39 +0800
+From: Jay Liu <jay.liu@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+	<p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, Simona Vetter
+	<simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Yongqiang Niu <yongqiang.niu@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
+	Hsin-Yi Wang <hsinyi@chromium.org>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, Jay
+ Liu <jay.liu@mediatek.com>
+Subject: [PATCH v1 0/1]  Support color matrix negative input
+Date: Sun, 21 Sep 2025 13:53:04 +0800
+Message-ID: <20250921055416.25588-1-jay.liu@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-References: <20250917-mt8196-gpufreq-v3-0-c4ede4b4399e@collabora.com> <20250917-mt8196-gpufreq-v3-5-c4ede4b4399e@collabora.com>
-In-Reply-To: <20250917-mt8196-gpufreq-v3-5-c4ede4b4399e@collabora.com>
-From: Jassi Brar <jassisinghbrar@gmail.com>
-Date: Sun, 21 Sep 2025 00:00:59 -0500
-X-Gm-Features: AS18NWDK9SEswNrgx0QIzUV1feO9ul79WZJVBOk2Mw-YsP45swDD7fxXXq-LHKs
-Message-ID: <CABb+yY0_TZC0Dd3Rue=6Am4=Urs8hdkaa6RE=42t58SYUsLV0w@mail.gmail.com>
-Subject: Re: [PATCH v3 05/10] mailbox: add MediaTek GPUEB IPI mailbox
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Boris Brezillon <boris.brezillon@collabora.com>, Steven Price <steven.price@arm.com>, 
-	Liviu Dudau <liviu.dudau@arm.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, 
-	Kyungmin Park <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, 
-	Kees Cook <kees@kernel.org>, "Gustavo A. R. Silva" <gustavoars@kernel.org>, Chia-I Wu <olvaffe@gmail.com>, 
-	Chen-Yu Tsai <wenst@chromium.org>, kernel@collabora.com, dri-devel@lists.freedesktop.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-pm@vger.kernel.org, linux-hardening@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250920_220111_921385_583EF170 
-X-CRM114-Status: GOOD (  20.10  )
+X-CRM114-CacheID: sfid-20250920_225450_772416_5A37486E 
+X-CRM114-Status: UNSURE (   6.29  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,118 +89,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 17, 2025 at 7:23=E2=80=AFAM Nicolas Frattaroli
-<nicolas.frattaroli@collabora.com> wrote:
-....
+Change in v1:
+- replace mtk_ctm_s31_32_to_s1_n with drm_color_ctm_s31_32_to_qm_n.
 
-> +#define MBOX_CTL_TX_STS                0x0000
-> +#define MBOX_CTL_IRQ_SET       0x0004
-> +#define MBOX_CTL_IRQ_CLR       0x0074
-> +#define MBOX_CTL_RX_STS                0x0078
-> +
-1) Please don't pollute the global namespace. Make these something
-like MBOX_MTK_GPUEB_xxx. Here and elsewhere.
-2) You don't write short values, so maybe just 0x04, 0x04 0x74 and 0x78.
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
+Jay Liu (1):
+  drm/mediatek: fix CCORR mtk_ctm_s31_32_to_s1_n function issue
 
-> +#define MBOX_FULL              BIT(0) /* i.e. we've received data */
-> +#define MBOX_CLOGGED           BIT(1) /* i.e. the channel is shutdown */
-> +
-This is confusing. CLOGGED usually means malfunction, but it seems you
-want to call it STOPPED or UNINIT?
+ drivers/gpu/drm/mediatek/mtk_disp_ccorr.c | 26 +++--------------------
+ 1 file changed, 3 insertions(+), 23 deletions(-)
 
+-- 
+2.46.0
 
-> +#define MBOX_MAX_RX_SIZE       32 /* in bytes */
-> +
-> +struct mtk_gpueb_mbox {
-> +       struct device *dev;
-> +       struct clk *clk;
-> +       void __iomem *mbox_mmio;
-> +       void __iomem *mbox_ctl;
-> +       struct mbox_controller mbox;
-> +       struct mtk_gpueb_mbox_chan *ch;
-> +       int irq;
-> +       const struct mtk_gpueb_mbox_variant *v;
-> +};
-Other structures have kernel-doc, so why not here too?
-...
-
-> +
-> +static int mtk_gpueb_mbox_send_data(struct mbox_chan *chan, void *data)
-> +{
-> +       struct mtk_gpueb_mbox_chan *ch =3D chan->con_priv;
-> +       int i;
-> +       u32 *values =3D data;
-> +
-maybe order in decreasing lengths ?
-
-
-> +
-> +       /*
-> +        * We don't want any fancy nonsense, just write the 32-bit values=
- in
-> +        * order. memcpy_toio/__iowrite32_copy don't work here, because f=
-ancy.
-> +        */
->
-Please make the comment technical. Currently it just expresses your
-distaste for fancy :)
-
-> +       for (i =3D 0; i < ch->c->tx_len; i +=3D 4)
-> +               writel(values[i / 4], ch->ebm->mbox_mmio + ch->c->tx_offs=
-et + i);
-> +
-
-...
-> +
-> +static struct mbox_chan *
-> +mtk_gpueb_mbox_of_xlate(struct mbox_controller *mbox,
-> +                       const struct of_phandle_args *sp)
-> +{
-> +       struct mtk_gpueb_mbox *ebm =3D dev_get_drvdata(mbox->dev);
-> +
-> +       if (!sp->args_count)
-> +               return ERR_PTR(-EINVAL);
-> +
-> +       if (sp->args[0] >=3D ebm->v->num_channels)
-> +               return ERR_PTR(-ECHRNG);
-> +
-> +       return &mbox->chans[sp->args[0]];
-> +}
->
-Just use the default of_mbox_index_xlate()
-
-....
-> +
-> +       for (i =3D 0; i < ebm->v->num_channels; i++) {
-
-You make this block a bit cleaner by using a temporary variable
-        echan =3D &ebm->ch[i];
-and using echan instead of ebm->ch[i] a dozen times below.
-
-> +               ebm->ch[i].c =3D &ebm->v->channels[i];
-> +               if (ebm->ch[i].c->rx_len > MBOX_MAX_RX_SIZE) {
-> +                       dev_err(ebm->dev, "Channel %s RX size (%d) too la=
-rge\n",
-> +                               ebm->ch[i].c->name, ebm->ch[i].c->rx_len)=
-;
-> +                       return -EINVAL;
-> +               }
-> +               ebm->ch[i].full_name =3D devm_kasprintf(ebm->dev, GFP_KER=
-NEL, "%s:%s",
-> +                                                     dev_name(ebm->dev),=
- ebm->ch[i].c->name);
-> +               if (!ebm->ch[i].full_name)
-> +                       return -ENOMEM;
-> +
-> +               ebm->ch[i].ebm =3D ebm;
-> +               ebm->ch[i].num =3D i;
-> +               spin_lock_init(&ebm->mbox.chans[i].lock);
-> +               ebm->mbox.chans[i].con_priv =3D &ebm->ch[i];
-> +               atomic_set(&ebm->ch[i].rx_status, MBOX_CLOGGED);
-> +       }
-> +
-
-
--j
 
