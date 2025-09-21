@@ -4,56 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C731CAC5A7
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3346CAC59A
 	for <linux-mediatek@archiver.kernel.org>; Sun, 21 Sep 2025 11:04:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
-	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
-	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TYMZtnyaXfKmtQD1OxiJdY2oaTQJJXMOM9qJkk02h4A=; b=HREkwLiAVklR+DDOfVKPCUgn0T
-	xdD5X5Z1tK5PVK2GKLcIzLWluHlYmR9AKa01ZWp7ZFnTcUTjUMsf99FZVg70nIxM21o7Bqqqgry2W
-	MSKOhpV/EMd4rM8/lgqGjBKZqPs4NBnO+Xj/3Ew89dHdPkbNM9X+xoTX1AkBn0/ocJ7MnP1TNVE36
-	cTIMdbwDjvfQoT0Vmhff074J1pDJNaflaWQH2iwsa6dQiq49h2qMdIDTb6KwmEL3X8XQj32bsZs7w
-	e3xRpxbZctfEbNtoxCkAU++5tPdEk47J5AEpxjjzA7DjV5QhpITUEpjlfYex1aEQQFfVpxOlwL9kP
-	jqcdbNpQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5cCSC9rKfBN7NsnVJ+bJTLTBAgS76WdOQVLEAxH/L7w=; b=jg8kCo8X+yqWY/AOM+m8dUfEU/
+	1JZkVEIyfQtaa+vaf+9IKmM8uUtuwbT5SNHrJeuYr0eNcGPIp+mglT0DbW6IaLe59RDSXpZl9w/rp
+	DPnLnGGWDcka/c2kfyJQbAxeNCfNBVSPgTmVtCNfZPHY+42FjTVDYQOI99HK0bsTdA73vfQHGK8bK
+	JvVk/9l/Z35g0i4RqdELatMY8R4CoYAv2+ZeIiT2hc6eEzTDx9jstJ65dka2XANo6VrEtYwHoihNU
+	/+kdY43/7v16+X4I5MPfvHM7Qiy4UebehYHmQ8Froc+2fK+zyggNvFMRpX4AZUUogfEDNY0VsoY9G
+	ZXm15tPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0Hrh-00000007LWM-38qC;
-	Sun, 21 Sep 2025 11:04:21 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1v0Hri-00000007LX3-06iz;
+	Sun, 21 Sep 2025 11:04:22 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0HrX-00000007LPx-2dsU;
+	id 1v0HrX-00000007LPw-2tx3;
 	Sun, 21 Sep 2025 11:04:11 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 966DF601A5;
+	by tor.source.kernel.org (Postfix) with ESMTP id 5F25960054;
 	Sun, 21 Sep 2025 11:04:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 2A950C116D0;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 0582CC4CEE7;
 	Sun, 21 Sep 2025 11:04:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1758452649;
-	bh=ulSPXBA1u1faRv4/f8arTi2w78WVoq/znuBQRkfs6Zo=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=t56+27g4EaW8nnlv1PZ3Su58UPdFiDAuie2uyPMxsjoXMsAHjpTucLIK9bOBDIqh+
-	 hOPhXrFJXSbC0efVuWfAWR7eXSVgn67VtYEq4GaYEOdqqVSc8c1TlF9PpvtqJjpJMc
-	 49cqXUyZX9RNUC/qsFCCRLZZQJFyzxUPu2DV0EemhUDp8T9fjmCvMfoip0kyF63n1c
-	 iGGIXaXAE6vsAA7nrSz2sLhAN48GmTAXyvdWHH6u+VR/UOIK8DxcfxBKpAKeWmPSx8
-	 A+5+VOKGv0ND8GwvuonbgB6E2H4ASAWv/YpmuljOY06Kr/bP7jPZTlQWlUJmHpPF/I
-	 y9/Ti4RN2hUVQ==
+	bh=zfFGum9b0/BleKUZeCTKfLnLOBtKdYp2e9/Jc3IpdTQ=;
+	h=From:Subject:Date:To:Cc:Reply-To:From;
+	b=cBxtlNSj9/iDkZtPyO7LpMwcoOHRtvNZukkGVFWUw8U6mbcpDlZdkfbTZN4i/dLjJ
+	 YTyfYBx3JVvVcEE++n0oQUF++0ud6sWCGcLcyNRNHwirmjZh9+r0MME6UbUcurJkb/
+	 E7TxEkisbqgyQqO9ihC4I+4Cqm9gUwyDCVy3rhi6ECkKkADqk6yBElPXS0WWfUlD+5
+	 xJ2TsON32V9qPpWMkZSUSCd2KY8qXKAkFktcp4lENj5MIqu2uHtG42MW1pHYX2tSvR
+	 s9xvvRKM2GHP6to/lXX676O54bmyhRivhTcQhfo/OqiDb13yN+N4xg8lFl8StwjTY6
+	 wVS00FwxsB7oA==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1C82ACAC5A8;
-	Sun, 21 Sep 2025 11:04:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E5498CAC59A;
+	Sun, 21 Sep 2025 11:04:08 +0000 (UTC)
 From: Max Shevchenko via B4 Relay <devnull+wctrl.proton.me@kernel.org>
-Date: Sun, 21 Sep 2025 14:03:42 +0300
-Subject: [PATCH 3/3] arm64: dts: mediatek: mt6795: drop mediatek,dma-33bits
- property
+Subject: [PATCH 0/3] Rewrite MediaTek UART APDMA driver to support more
+ than 33 bits
+Date: Sun, 21 Sep 2025 14:03:39 +0300
+Message-Id: <20250921-uart-apdma-v1-0-107543c7102c@proton.me>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250921-uart-apdma-v1-3-107543c7102c@proton.me>
-References: <20250921-uart-apdma-v1-0-107543c7102c@proton.me>
-In-Reply-To: <20250921-uart-apdma-v1-0-107543c7102c@proton.me>
+X-B4-Tracking: v=1; b=H4sIAIvbz2gC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDI1MDSyND3dLEohLdxIKU3ERdy8RUc7NUE6M0I0NjJaCGgqLUtMwKsGHRsbW
+ 1ABs0505cAAAA
+X-Change-ID: 20250921-uart-apdma-9ae76e42f213
 To: Sean Wang <sean.wang@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, 
@@ -64,11 +66,11 @@ Cc: dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
  linux-kernel@vger.kernel.org, Max Shevchenko <wctrl@proton.me>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1758452646; l=1089;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1758452646; l=1014;
  i=wctrl@proton.me; s=20250603; h=from:subject:message-id;
- bh=efNh38U+hbw7SE9tyV1qJBxX+aihILQofpcGc0kC/ts=;
- b=P2Den4CzqXR4nni1RZlcgJUrU+BdnDEx6nZid1RneZyCMn5h8Mysh1cY8Rig6oOMQpbLsXBdS
- golrZUGOoSGA2ZCKjBqltNqDh1rkr621J5L7bYeinB8Sw0aZmqZIF3B
+ bh=zfFGum9b0/BleKUZeCTKfLnLOBtKdYp2e9/Jc3IpdTQ=;
+ b=Quibm1DVcGl0mSoso1wZuKD1LG4vQ1WaKLN47ZGF1Ghf4HYVz2LEe84dbtvy0i9yXo49BuSCK
+ r48rMZ4pJgKAXvMo/b1LwQAGKfFUn70yV3rHmeoxZI6PX4WuBaNbKmU
 X-Developer-Key: i=wctrl@proton.me; a=ed25519;
  pk=JXUx3mL/OrnRvbK57HXgugBjEBKq4QgDKJqp7BALm74=
 X-Endpoint-Received: by B4 Relay for wctrl@proton.me/20250603 with
@@ -89,41 +91,31 @@ Reply-To: wctrl@proton.me
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Max Shevchenko <wctrl@proton.me>
+This patch series aims to support more than 33 bits for the MediaTek
+APDMA driver, since newer SoCs like MT6795, MT6779 or MT6985 have higher
+values for the DMA bitmask.
 
-Drop the mediatek,dma-33bits property and use compatible for the
-platform data instead.
+The reference SoCs for bitmask values were taken from the downstream
+kernel (6.6) for the MT6991 SoC. 
 
 Signed-off-by: Max Shevchenko <wctrl@proton.me>
 ---
- arch/arm64/boot/dts/mediatek/mt6795.dtsi | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+Max Shevchenko (3):
+      dt-bindings: dma: mediatek,uart-dma: drop mediatek,dma-33bits property
+      dmaengine: mediatek: mtk-uart-apdma: support more than 33 bits for DMA bitmask
+      arm64: dts: mediatek: mt6795: drop mediatek,dma-33bits property
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6795.dtsi b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-index e5e269a660b11b0e94da1a1cf362ff0839f0dabf..5123316b21285cf589c0c616c0a12420f0b1ef19 100644
---- a/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-@@ -547,8 +547,7 @@ uart1: serial@11003000 {
- 		};
- 
- 		apdma: dma-controller@11000380 {
--			compatible = "mediatek,mt6795-uart-dma",
--				     "mediatek,mt6577-uart-dma";
-+			compatible = "mediatek,mt6795-uart-dma";
- 			reg = <0 0x11000380 0 0x60>,
- 			      <0 0x11000400 0 0x60>,
- 			      <0 0x11000480 0 0x60>,
-@@ -568,7 +567,6 @@ apdma: dma-controller@11000380 {
- 			dma-requests = <8>;
- 			clocks = <&pericfg CLK_PERI_AP_DMA>;
- 			clock-names = "apdma";
--			mediatek,dma-33bits;
- 			#dma-cells = <1>;
- 		};
- 
+ .../devicetree/bindings/dma/mediatek,uart-dma.yaml | 11 ++---
+ arch/arm64/boot/dts/mediatek/mt6795.dtsi           |  4 +-
+ drivers/dma/mediatek/mtk-uart-apdma.c              | 47 ++++++++++++++++------
+ 3 files changed, 39 insertions(+), 23 deletions(-)
+---
+base-commit: f83ec76bf285bea5727f478a68b894f5543ca76e
+change-id: 20250921-uart-apdma-9ae76e42f213
 
+Best regards,
 -- 
-2.51.0
+Max Shevchenko <wctrl@proton.me>
 
 
 
