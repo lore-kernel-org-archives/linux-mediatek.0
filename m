@@ -4,59 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2D00CAC5A7
-	for <linux-mediatek@archiver.kernel.org>; Sun, 21 Sep 2025 16:55:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52973CAC59A
+	for <linux-mediatek@archiver.kernel.org>; Sun, 21 Sep 2025 16:55:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:
 	Subject:References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:
 	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jUJ3QTE5SKSMJ7av9qqcw/J10K5MvzFo+ogFOfZXTM0=; b=4KuJ0pGcsdN15vddokupDRthtg
-	lYyYYyXBung7VT6KfJ/Ian3ZgWtT0RpRB/FpA5ASKEncHAvwbRg244esvv4dd85GbS8PEXYlCh3iv
-	wR8GWh/pVwtD6pkvfs3DRvq2q/TSgxUXQsJT4KO1dJ8iJT0Z5MbmeNwj+4K0AjbvwYw8beXRFwZxR
-	2oeQPKMXS4F6y9/ARvUe2l+ipYWmEL5LIMDbaVgzRiOnNOzjcd87hLl0y6SHDgbjtUxaXhN6/qJvm
-	frXZVP3mkOg5298DlJEx72AJUz/yscmVNZx+HmmJs56MBw4tLBnK3tWZzNnanioM8PamcecreVp+2
-	p29ooxsw==;
+	bh=85bf3Bwm5zPNrRpw6Kz2kWnimc4LviNT955VzKxH2lk=; b=C4VAUvrL8cBFfNOkRa0hyn1dfh
+	BnIo8ilFlO31eLuXN9DLcX85dsUn2h06hgrX+b5UFdw52P+PRh41O9OKrAyODrEGF5PXs/InQFIvF
+	sbPnElCyTGkqxw06We4Rf97zTqJVJHyTBhCi5Jcse4K6GZeJ8sqt7kSdLQM8+M/K+kW+XbYNoKNI2
+	Sf8Zo2WDzpCAP3b2SLhQ4VglJLI47Mzl4+RGnIlIK6tEnK/OT3T9nGSzqGrZlSDP/r7IqeUtbdbX9
+	qtFMj8aQra9nelz8OACdXc42WeQyg4HLBOPf+TN4//Ich1Cs0b+ELg6FtJ9SDHRZ5TCklDCVedOIA
+	epML2RBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0NLd-00000007r5v-3UEP;
-	Sun, 21 Sep 2025 16:55:37 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1v0NLl-00000007rCn-2U7y;
+	Sun, 21 Sep 2025 16:55:45 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0NKl-00000007qHK-2alk;
-	Sun, 21 Sep 2025 16:54:44 +0000
+	id 1v0NKq-00000007qLT-0T3i;
+	Sun, 21 Sep 2025 16:54:48 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 46AEB44160;
-	Sun, 21 Sep 2025 16:54:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 05E39C4CEF7;
-	Sun, 21 Sep 2025 16:54:42 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 8A00A6013B;
+	Sun, 21 Sep 2025 16:54:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 21659C4CEE7;
+	Sun, 21 Sep 2025 16:54:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1758473683;
-	bh=jUJ3QTE5SKSMJ7av9qqcw/J10K5MvzFo+ogFOfZXTM0=;
+	s=k20201202; t=1758473687;
+	bh=85bf3Bwm5zPNrRpw6Kz2kWnimc4LviNT955VzKxH2lk=;
 	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=W8qReoNU/pgcmYsfUAQvRCy3+8vQtXKM9xWomvoR2HSXOEJx7egiLXPl6J7D8Y3zx
-	 AMy6GmNCeSAjNID6JolZvUqx/DV4968w5CX9t8q8qQBEmYZjrMZCZy2wEgqad0SYn0
-	 WJr0exZOYnWqYEzwvTOJDifR0f7z9B34dzsYAftypbPu9x9L9V5mlKEl6nNV3J4aIe
-	 RDI5/rtrFkDvLDiCpjSIDSB52Vpq7ZN0aW3N1gexc6dIMJ0lOolsUo315Tiyy5ls6X
-	 bRd4vH3Mf2TB5vh7Bglwogg6wuF0kMpgiLFNGpMrdFNGsJ1SxIWdAfVcomuKCinJWE
-	 oNFAhJzo9DssA==
+	b=sglWRXT5eg3VsPmjVcdMnAvpaVOd1bi1fZcxXEGo48ARQRKosryzz5h3y3KswKUjV
+	 1tJkZDVzHEk32g/AXEkiemECUhZYB6EhUI919En9rw11YnM6dhAYHsG6gQzos+NlIf
+	 RzW5kfwmawaI3ucvMgHNkNA+lva3Fcu/UyoPsaA1nWjTO9b2w/vp31Syy0seQOFGPQ
+	 3OQOS6q4DYZ2LTTAxJDWvF/i2t4Kczt0Gea3V52fCISo8rBN/JI9E94BluJpMdTN/+
+	 7NzC+V2bBZqIrk9ZrwAYShTVxplVHZ1qQe+uO/fUVt4OHe+iWHi5wPlUU9r0Pne3LU
+	 5vLUN2rLnbf6Q==
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20250915151947.277983-21-laura.nao@collabora.com>
-References: <20250915151947.277983-1-laura.nao@collabora.com> <20250915151947.277983-21-laura.nao@collabora.com>
-Subject: Re: [PATCH v6 20/27] clk: mediatek: Add MT8196 mfg clock support
+In-Reply-To: <20250915151947.277983-22-laura.nao@collabora.com>
+References: <20250915151947.277983-1-laura.nao@collabora.com> <20250915151947.277983-22-laura.nao@collabora.com>
+Subject: Re: [PATCH v6 21/27] clk: mediatek: Add MT8196 disp0 clock support
 From: Stephen Boyd <sboyd@kernel.org>
 Cc: guangjie.song@mediatek.com, wenst@chromium.org, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, kernel@collabora.com, Laura Nao <laura.nao@collabora.com>, =?utf-8?q?N=C3=ADcolas?= F . R . A . Prado <nfraprado@collabora.com>
 To: Laura Nao <laura.nao@collabora.com>, angelogioacchino.delregno@collabora.com, conor+dt@kernel.org, krzk+dt@kernel.org, matthias.bgg@gmail.com, mturquette@baylibre.com, p.zabel@pengutronix.de, richardcochran@gmail.com, robh@kernel.org
-Date: Sun, 21 Sep 2025 09:54:41 -0700
-Message-ID: <175847368181.4354.17704668308510890460@lazor>
+Date: Sun, 21 Sep 2025 09:54:46 -0700
+Message-ID: <175847368604.4354.13252498572745408389@lazor>
 User-Agent: alot/0.11
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250921_095443_681999_F4EC08EE 
-X-CRM114-Status: UNSURE (   6.34  )
-X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,9 +67,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Laura Nao (2025-09-15 08:19:40)
-> Add support for the MT8196 mfg clock controller, which provides PLL
-> control for the GPU.
+Quoting Laura Nao (2025-09-15 08:19:41)
+> Add support for the MT8196 disp0 clock controller, which provides clock
+> gate control for the display system. It is integrated with the mtk-mmsys
+> driver, which registers the disp0 clock driver via
+> platform_device_register_data().
 >=20
 > Reviewed-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
 > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
