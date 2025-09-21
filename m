@@ -4,58 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93717CAC59A
-	for <linux-mediatek@archiver.kernel.org>; Sun, 21 Sep 2025 16:54:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10097CAC5A7
+	for <linux-mediatek@archiver.kernel.org>; Sun, 21 Sep 2025 16:54:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:
 	Subject:References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:
 	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gVO5xNIVYqZvF4xlVxFswaKEPI9bsSAehw30odPu6KU=; b=ftKPSP6/vBsFsbv/zPKOQNTkFc
-	V2LykVO5jAUufFibdh5IMpYWYICWXy5w3vEm54HXa4mwAf0cm3qdSHYwywA0hRff4G+tgwCCBkBdm
-	Ei+aNl6pinmRqmrn3VMVCG9t7O0aveiBzbfGhP5Q/XtKxtInSs6CVQKBL0jWbT5Kbuk9W3jT368yx
-	nFWwE0KY0y8WSe1KCkblig5TYCF/h5BGLJdJLd7lMWeBSkpeTZRgvn7+H2bbtQMlP9cZT7WLly9VX
-	+3o4B85N0pJP8OMlB4yuzZY7G3at32pB8Ke7OnTN7p5UHn/D2zTSkthc048KN3krPTRtgTiCst9u0
-	URZxvSgA==;
+	bh=GA6BCFTOq3NBFHY6q2lgyBET4FIS7eNAL7ai6/PmSoE=; b=Y3ybNtDV0Hvh6AwBQIcio7JsFR
+	v16Q+m80olqMdaLELSSMe6IZMJHAgerSaLDPCas1LUQmDo9FbMHO2SIXzvzIP3uH+hB7Jodv+erqx
+	vOBsXSgxLqPH6DN5BnAdjl6ytQs5mt/dHx9OfO8VQwI8sXc4QWZvDiQzo9wUaGC6gRO0eymbOHDR1
+	cAniflHUdKvOHd8+kgdxOzX2oYHcVe59Iw1eo+75QFQ3Ul2WRhfaC9CMor8CNMLNKtn++CWHxl+tq
+	RtRk0ty6Ep4yxe0/Ls0B6LnUmSa6XkX0bmBK2h4a5ufuqlAs3wl7ZOFf7PkvU5gGG1ZK5kFp0+179
+	z8EdNbUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0NKB-00000007pi8-1kG2;
-	Sun, 21 Sep 2025 16:54:07 +0000
+	id 1v0NKL-00000007psM-0gge;
+	Sun, 21 Sep 2025 16:54:17 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0NJt-00000007pSj-3hBQ;
-	Sun, 21 Sep 2025 16:53:51 +0000
+	id 1v0NJy-00000007pWs-3CMW;
+	Sun, 21 Sep 2025 16:53:55 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7F40F419A2;
-	Sun, 21 Sep 2025 16:53:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2B882C116B1;
-	Sun, 21 Sep 2025 16:53:49 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 6D9CD44118;
+	Sun, 21 Sep 2025 16:53:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2C1FEC4CEE7;
+	Sun, 21 Sep 2025 16:53:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1758473629;
-	bh=gVO5xNIVYqZvF4xlVxFswaKEPI9bsSAehw30odPu6KU=;
+	s=k20201202; t=1758473634;
+	bh=GA6BCFTOq3NBFHY6q2lgyBET4FIS7eNAL7ai6/PmSoE=;
 	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=i3VPWGCnokTLF7UHMmnVfu0S0pp9LJ0vefynAk4f6dzG88dnSzlnA6Vz3nlhO8E9s
-	 dZpvFHbrUyx/m2YlHUZGAkvLR5/N0xM3OwmGUhIZuvFNxl69kFoRNm/2+DhRxdnRrm
-	 Y4ivXeq9Jdn1u/Dw4XyML3CUrUGY7KO2/Q3bePNEPlplch1M0w/nw2faZp7rwcIpWi
-	 Ccr8wjs0Te/UykGsAD0M4O2qxovAfggprGSLC4Na48DyW2bPxn3sTQzxtcqQAPdygo
-	 f/DY/YIrYPBs/lNfgZETgbvlKK1+zauHGbdLS5RmVWcV4ug1SzsvoBgCbYSS/mpghm
-	 /ZznKWkCIY0KQ==
+	b=EeZm+GLxVHviyeka01Bsj2CCEeYvDXc07N0pUAD5Ce4fJDb4h4gxVw/VV8NZiBpt+
+	 POTLqVL0YBPWSSYUEAiCZzbK0LiUWzSsZzW3kUWF+fLPRjGwpXB3NzQhbQ8Mo1smfB
+	 kj0ikoXr+YPcTi4Q2QLsuCqUZU3mCncrI/c9Jmn3eLj1pRsKta4l00wqC3wNV9zHBF
+	 dAFj23zUaKx4axLjQk6Rf6OCvg2xD/mVelxikLG+6WCn3vwiEtz34AORJDFFg8mEEL
+	 Vqu4P1lQEZNlIZcvOmHaq7Tj2j/oeQopiuV58JWchDVGOms9PeWq7Ic7UDZ4pH6KnV
+	 x988fSzi6iYhw==
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20250915151947.277983-10-laura.nao@collabora.com>
-References: <20250915151947.277983-1-laura.nao@collabora.com> <20250915151947.277983-10-laura.nao@collabora.com>
-Subject: Re: [PATCH v6 09/27] dt-bindings: clock: mediatek: Describe MT8196 clock controllers
+In-Reply-To: <20250915151947.277983-11-laura.nao@collabora.com>
+References: <20250915151947.277983-1-laura.nao@collabora.com> <20250915151947.277983-11-laura.nao@collabora.com>
+Subject: Re: [PATCH v6 10/27] clk: mediatek: Add MT8196 apmixedsys clock support
 From: Stephen Boyd <sboyd@kernel.org>
-Cc: guangjie.song@mediatek.com, wenst@chromium.org, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, kernel@collabora.com, Laura Nao <laura.nao@collabora.com>, =?utf-8?q?N=C3=ADcolas?= F . R . A . Prado <nfraprado@collabora.com>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: guangjie.song@mediatek.com, wenst@chromium.org, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, kernel@collabora.com, Laura Nao <laura.nao@collabora.com>, =?utf-8?q?N=C3=ADcolas?= F . R . A . Prado <nfraprado@collabora.com>
 To: Laura Nao <laura.nao@collabora.com>, angelogioacchino.delregno@collabora.com, conor+dt@kernel.org, krzk+dt@kernel.org, matthias.bgg@gmail.com, mturquette@baylibre.com, p.zabel@pengutronix.de, richardcochran@gmail.com, robh@kernel.org
-Date: Sun, 21 Sep 2025 09:53:47 -0700
-Message-ID: <175847362784.4354.9605164942435120239@lazor>
+Date: Sun, 21 Sep 2025 09:53:53 -0700
+Message-ID: <175847363300.4354.16886488568604694955@lazor>
 User-Agent: alot/0.11
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250921_095349_957591_A44E7B06 
-X-CRM114-Status: GOOD (  10.82  )
+X-CRM114-CacheID: sfid-20250921_095354_835639_64FF6E38 
+X-CRM114-Status: UNSURE (   6.21  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,29 +71,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Laura Nao (2025-09-15 08:19:29)
-> Introduce binding documentation for system clocks, functional clocks,
-> and PEXTP0/1 and UFS reset controllers on MediaTek MT8196.
->=20
-> This binding also includes a handle to the hardware voter, a
-> fixed-function MCU designed to aggregate votes from the application
-> processor and other remote processors to manage clocks and power
-> domains.
->=20
-> The HWV on MT8196/MT6991 is incomplete and requires software to manually
-> enable power supplies, parent clocks, and FENC, as well as write to both
-> the HWV MMIO and the controller registers.
-> Because of these constraints, the HWV cannot be modeled using generic
-> clock, power domain, or interconnect APIs. Instead, a custom phandle is
-> exceptionally used to provide direct, syscon-like register access to
-> drivers.
+Quoting Laura Nao (2025-09-15 08:19:30)
+> Add support for the MT8196 apmixedsys clock controller, which provides
+> PLLs generated from SoC 26m.
 >=20
 > Reviewed-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
-> Co-developed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@co=
-llabora.com>
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
-> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
 > Signed-off-by: Laura Nao <laura.nao@collabora.com>
 > ---
 
