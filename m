@@ -4,84 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8081DCAC5A7
-	for <linux-mediatek@archiver.kernel.org>; Sun, 21 Sep 2025 06:06:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74B99CAC5A7
+	for <linux-mediatek@archiver.kernel.org>; Sun, 21 Sep 2025 11:04:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kSZ8f26xwP7W9tIwfcRu6xgyhwwb76kKsTMsYf3aGXI=; b=iAmySs3ZzFYRy1byDBdkx8ZRyo
-	5h59s85V0izWHZtZibWjh9Z0V7Giv7ErA7ryercivW5TEBtYqaGczEvcdjblRMGyyKxLq9dgvsnkd
-	Czr54u6FAgHZrJ1D5s2z0UKJ7BXY6lL9IY7JbS/MGaLAhk0+kGZvowubZBMiNHDHRryEYsxThkpuZ
-	50bBQIiwVOR2WD7/8zE3PnrHrqvcUh/u3yiWoDsNBmihTXGa1J3Ap/HQztb6vgeWY6ADrcmCfDX2e
-	d086msIrnhqliRuhOWJA1IbB0dv5Mx+pYsAk3LeqHRdvC6YAgdLTzAYXSR9sn1ymQ2vrtKg1KdYV7
-	aJeY8O7A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
+	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
+	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=U5C1TIEucDIKXPM0qEf7/e5VBx4GfF4vu0scHga/16o=; b=fbYW9M1PmKzcFW7io8u0mRigk7
+	iAcK5axmJykjOG62+hA3wkEzcwPJb1s59xGW5Umg2KIpT0bblT+eI8n5ilnXtTdE2j+9QlVbblpCl
+	alzIwy0Q7c1y0As5xJOLUSgo368X0KHo/DvUfeiOnBVxdA8GPjUgYSVoGk+xpF5VooncfPW06lYrA
+	BdwZIds0nxsQQNFTckesVDEFz0h7Ms675kslApgz3EZTk2RIOoNxjVGYvdgG72dAnm5wBiJ9G5OlB
+	QRTUZljyakTpBNem/YEPFyDYAJOkMNckyXocKroJA0g0VY+Bx8XNaL6kG7xW2qg6Gc96NyDhjebgD
+	X6cD5bgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0DCz-00000006kwx-0Xil;
-	Sun, 21 Sep 2025 06:06:01 +0000
-Received: from mgamail.intel.com ([192.198.163.19])
+	id 1v0HrY-00000007LQy-49pR;
+	Sun, 21 Sep 2025 11:04:12 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0DCw-00000006kvr-1D7b;
-	Sun, 21 Sep 2025 06:05:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1758434758; x=1789970758;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=8ctr9bJIScthH2cD/1XQ1vcsW7U4Lt1MN5qWna68e2c=;
-  b=IYRQusscBlZsCXn5DqtivMP4hI7cU7Tb8Wp2Bl5BHZpKhaqJH6M5WMhZ
-   yPZxFfavZQlzFOXnH3VOvkO7xIGEwcB7Axl+ioOPcZdC6tYjqel4AzB/7
-   +KK7beEqueYQe5yho6JXsmZUmwa2Luz35JoJPLYFi9h0n7jZjr87TSiXS
-   tbBFhLe7QjUR61HcwgKi67vFFLn3aVN+/GqHyS6FGM2+e6Bwkq9g2U7yZ
-   RZEWZqKlvgZIvYBwCAF707sPutdf4XHKFjocO44wARqiR6Bi1m1/ZuoI7
-   19bSCZIV6ZxqucqaVGDWcrUAzs5s77LB+cm3EsWhyVxhcGZaMQNPizH01
-   A==;
-X-CSE-ConnectionGUID: Si/Tqig6RbiAgGW0wYzADQ==
-X-CSE-MsgGUID: YWQdOxgSQwGTrimau11wrg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11559"; a="59769789"
-X-IronPort-AV: E=Sophos;i="6.18,282,1751266800"; 
-   d="scan'208";a="59769789"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
-  by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Sep 2025 23:05:54 -0700
-X-CSE-ConnectionGUID: Bx5ZTH74RSeyEBDMZHWvWw==
-X-CSE-MsgGUID: rnp+F5cfT3GT6/klwfGJDw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.18,282,1751266800"; 
-   d="scan'208";a="199916867"
-Received: from lkp-server02.sh.intel.com (HELO 84c55410ccf6) ([10.239.97.151])
-  by fmviesa002.fm.intel.com with ESMTP; 20 Sep 2025 23:05:51 -0700
-Received: from kbuild by 84c55410ccf6 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1v0DCn-0000Ur-0u;
-	Sun, 21 Sep 2025 06:05:49 +0000
-Date: Sun, 21 Sep 2025 14:05:06 +0800
-From: kernel test robot <lkp@intel.com>
-To: Christian Marangi <ansuelsmth@gmail.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <helgaas@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	upstream@airoha.com
-Cc: oe-kbuild-all@lists.linux.dev, Christian Marangi <ansuelsmth@gmail.com>
-Subject: Re: [PATCH] PCI: mediatek: add support for Airoha AN7583 SoC
-Message-ID: <202509211315.51HZNnRI-lkp@intel.com>
-References: <20250920114341.17818-1-ansuelsmth@gmail.com>
+	id 1v0HrW-00000007LPQ-1BCN;
+	Sun, 21 Sep 2025 11:04:11 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 5AA9B44DA0;
+	Sun, 21 Sep 2025 11:04:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 1CF29C116C6;
+	Sun, 21 Sep 2025 11:04:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1758452649;
+	bh=ZwpRe43I5VpGo3wIi+bC13qk5rK8A78m5VM7bKe4ulc=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=li+psmRZvKnhv+xapYuB+FYZsIpAkKSyAP7/BJdcXtbYx7vyA7CwuH+3Ip1XhtUTG
+	 cNobK1gWgHRFErqcfxxlQPMBjndialIx2md3Pep61W2vKL9mdrFy9fDm17JHjB5R8K
+	 J1Z3mERIHPKO1JEYdqzaxGOKM4VHNF0UoqInPedWeN7j+5h9HD0EsdSvuzbGnhaejF
+	 Dep5wS6kYqhpaC5+ScFlsPzQ3YIlQPYAEqts1XdwhTW0UrRPWJeac3YqeyBhfd/9mT
+	 eu/Qf/Zu0d9pLGp/N/ZRSFMwlIxvxllY+F+nbhvupn9DAz2/mekCTnKqJ5vPjIqF8h
+	 DQIlHzcRoCk7w==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0F1BDCAC5AA;
+	Sun, 21 Sep 2025 11:04:09 +0000 (UTC)
+From: Max Shevchenko via B4 Relay <devnull+wctrl.proton.me@kernel.org>
+Date: Sun, 21 Sep 2025 14:03:41 +0300
+Subject: [PATCH 2/3] dmaengine: mediatek: mtk-uart-apdma: support more than
+ 33 bits for DMA bitmask
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250920114341.17818-1-ansuelsmth@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250921-uart-apdma-v1-2-107543c7102c@proton.me>
+References: <20250921-uart-apdma-v1-0-107543c7102c@proton.me>
+In-Reply-To: <20250921-uart-apdma-v1-0-107543c7102c@proton.me>
+To: Sean Wang <sean.wang@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Long Cheng <long.cheng@mediatek.com>
+Cc: dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, Max Shevchenko <wctrl@proton.me>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1758452646; l=3836;
+ i=wctrl@proton.me; s=20250603; h=from:subject:message-id;
+ bh=UkczX1bFRaMGp10NOd3W6tGmV9gfRhg9tG4OjCZWL14=;
+ b=yoy3rBto0yqvXKa2q7FupadhIQI8nEqoZjvnx8zEMbQXPCJAOktpJ8D7shhNd0fbp7vjXI4c/
+ vPHxZcPP8B7A4ETjyPXHjVu6xtFMXg7Je3j5ekWJej3OjSJdyJiXg55
+X-Developer-Key: i=wctrl@proton.me; a=ed25519;
+ pk=JXUx3mL/OrnRvbK57HXgugBjEBKq4QgDKJqp7BALm74=
+X-Endpoint-Received: by B4 Relay for wctrl@proton.me/20250603 with
+ auth_id=421
+X-Original-From: Max Shevchenko <wctrl@proton.me>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250920_230558_370213_E2A836CC 
-X-CRM114-Status: GOOD (  12.22  )
+X-CRM114-CacheID: sfid-20250921_040410_365905_3478B435 
+X-CRM114-Status: GOOD (  14.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,37 +88,137 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: wctrl@proton.me
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Christian,
+From: Max Shevchenko <wctrl@proton.me>
 
-kernel test robot noticed the following build warnings:
+Drop mediatek,dma-33bits property and introduce a platform data with
+field representing DMA bitmask.
 
-[auto build test WARNING on pci/next]
-[also build test WARNING on pci/for-linus linus/master v6.17-rc6 next-20250919]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+The reference SoCs were taken from the downstream kernel (6.6) for
+the MT6991 SoC.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Christian-Marangi/PCI-mediatek-add-support-for-Airoha-AN7583-SoC/20250920-194637
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git next
-patch link:    https://lore.kernel.org/r/20250920114341.17818-1-ansuelsmth%40gmail.com
-patch subject: [PATCH] PCI: mediatek: add support for Airoha AN7583 SoC
-config: openrisc-allyesconfig (https://download.01.org/0day-ci/archive/20250921/202509211315.51HZNnRI-lkp@intel.com/config)
-compiler: or1k-linux-gcc (GCC) 15.1.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250921/202509211315.51HZNnRI-lkp@intel.com/reproduce)
+Signed-off-by: Max Shevchenko <wctrl@proton.me>
+---
+ drivers/dma/mediatek/mtk-uart-apdma.c | 47 +++++++++++++++++++++++++----------
+ 1 file changed, 34 insertions(+), 13 deletions(-)
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202509211315.51HZNnRI-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
->> Warning: drivers/pci/controller/pcie-mediatek.c:163 struct member 'skip_pcie_rstb' not described in 'mtk_pcie_soc'
+diff --git a/drivers/dma/mediatek/mtk-uart-apdma.c b/drivers/dma/mediatek/mtk-uart-apdma.c
+index 08e15177427b94246951d38a2a1d76875c1e452e..68dd3a4ee0d88fd508870a5de24ae67505023495 100644
+--- a/drivers/dma/mediatek/mtk-uart-apdma.c
++++ b/drivers/dma/mediatek/mtk-uart-apdma.c
+@@ -42,6 +42,7 @@
+ #define VFF_EN_CLR_B		0
+ #define VFF_INT_EN_CLR_B	0
+ #define VFF_4G_SUPPORT_CLR_B	0
++#define VFF_ORI_ADDR_BITS_NUM	32
+ 
+ /*
+  * interrupt trigger level for tx
+@@ -74,10 +75,14 @@
+ #define VFF_DEBUG_STATUS	0x50
+ #define VFF_4G_SUPPORT		0x54
+ 
++struct mtk_uart_apdma_data {
++	unsigned int dma_bits;
++};
++
+ struct mtk_uart_apdmadev {
+ 	struct dma_device ddev;
+ 	struct clk *clk;
+-	bool support_33bits;
++	unsigned int support_bits;
+ 	unsigned int dma_requests;
+ };
+ 
+@@ -148,7 +153,7 @@ static void mtk_uart_apdma_start_tx(struct mtk_chan *c)
+ 		mtk_uart_apdma_write(c, VFF_WPT, 0);
+ 		mtk_uart_apdma_write(c, VFF_INT_FLAG, VFF_TX_INT_CLR_B);
+ 
+-		if (mtkd->support_33bits)
++		if (mtkd->support_bits > VFF_ORI_ADDR_BITS_NUM)
+ 			mtk_uart_apdma_write(c, VFF_4G_SUPPORT, VFF_4G_EN_B);
+ 	}
+ 
+@@ -191,7 +196,7 @@ static void mtk_uart_apdma_start_rx(struct mtk_chan *c)
+ 		mtk_uart_apdma_write(c, VFF_RPT, 0);
+ 		mtk_uart_apdma_write(c, VFF_INT_FLAG, VFF_RX_INT_CLR_B);
+ 
+-		if (mtkd->support_33bits)
++		if (mtkd->support_bits > VFF_ORI_ADDR_BITS_NUM)
+ 			mtk_uart_apdma_write(c, VFF_4G_SUPPORT, VFF_4G_EN_B);
+ 	}
+ 
+@@ -297,7 +302,7 @@ static int mtk_uart_apdma_alloc_chan_resources(struct dma_chan *chan)
+ 		goto err_pm;
+ 	}
+ 
+-	if (mtkd->support_33bits)
++	if (mtkd->support_bits > VFF_ORI_ADDR_BITS_NUM)
+ 		mtk_uart_apdma_write(c, VFF_4G_SUPPORT, VFF_4G_SUPPORT_CLR_B);
+ 
+ err_pm:
+@@ -467,8 +472,27 @@ static void mtk_uart_apdma_free(struct mtk_uart_apdmadev *mtkd)
+ 	}
+ }
+ 
++static const struct mtk_uart_apdma_data mt6577_data = {
++	.dma_bits = 32
++};
++
++static const struct mtk_uart_apdma_data mt6795_data = {
++	.dma_bits = 33
++};
++
++static const struct mtk_uart_apdma_data mt6779_data = {
++	.dma_bits = 34
++};
++
++static const struct mtk_uart_apdma_data mt6985_data = {
++	.dma_bits = 35
++};
++
+ static const struct of_device_id mtk_uart_apdma_match[] = {
+-	{ .compatible = "mediatek,mt6577-uart-dma", },
++	{ .compatible = "mediatek,mt6577-uart-dma", .data = &mt6577_data },
++	{ .compatible = "mediatek,mt6795-uart-dma", .data = &mt6795_data },
++	{ .compatible = "mediatek,mt6779-uart-dma", .data = &mt6779_data },
++	{ .compatible = "mediatek,mt6985-uart-dma", .data = &mt6985_data },
+ 	{ /* sentinel */ },
+ };
+ MODULE_DEVICE_TABLE(of, mtk_uart_apdma_match);
+@@ -477,7 +501,8 @@ static int mtk_uart_apdma_probe(struct platform_device *pdev)
+ {
+ 	struct device_node *np = pdev->dev.of_node;
+ 	struct mtk_uart_apdmadev *mtkd;
+-	int bit_mask = 32, rc;
++	const struct mtk_uart_apdma_data *data;
++	int rc;
+ 	struct mtk_chan *c;
+ 	unsigned int i;
+ 
+@@ -492,13 +517,9 @@ static int mtk_uart_apdma_probe(struct platform_device *pdev)
+ 		return rc;
+ 	}
+ 
+-	if (of_property_read_bool(np, "mediatek,dma-33bits"))
+-		mtkd->support_33bits = true;
+-
+-	if (mtkd->support_33bits)
+-		bit_mask = 33;
+-
+-	rc = dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(bit_mask));
++	data = of_device_get_match_data(&pdev->dev);
++	mtkd->support_bits = data->dma_bits;
++	rc = dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(data->dma_bits));
+ 	if (rc)
+ 		return rc;
+ 
 
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.51.0
+
+
 
