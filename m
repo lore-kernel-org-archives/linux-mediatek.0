@@ -4,59 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C034ACAC5A7
-	for <linux-mediatek@archiver.kernel.org>; Sun, 21 Sep 2025 16:56:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 770D5CAC59A
+	for <linux-mediatek@archiver.kernel.org>; Sun, 21 Sep 2025 17:20:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:
-	Subject:References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gladXUT5F0XURCw6JuQBdgxcedelWcH2hcrlQcX0DOc=; b=ZHXQ0Zt/wiBr/ghlD1eSgpBXEE
-	6x3LXygM2vdWQfde7t8RyUe1P8X17VxjgEyhxGd+ZVf5qGv8rDzpzkSHZederw7crq6pT1Hze08Jy
-	OLJSTPwDvK/qz8v9EmRtxEpZCjtHw2eZVuJhaCxtN/g0w//TRiv7e8MIe+eJZZeJiFmLf9cO3RTkO
-	F8s2eJ5/p4rzdX7NZ/wb2tW65iAEXYuShrjIPiD+4VS3r6o81s/ptxW/PFc0xnqt9IfKBwjbfyt5m
-	/UixkVxYGbmsM738pj2+uL91ippWbmgFVpuTyJp9S6exFhFG45L0GUTce5RLAqf6o7GgP5U0ga0GV
-	tv7lWR0w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Subject:Cc:To:From:Message-ID:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=d37O19kDYF7cJBBjfV0XDP4xmYdr9u1gDGKV1jqw++U=; b=Cii6S6H0heaOMNdvi9TtUxbWHi
+	aiOzIErg136VNZaWfbKJxKcYruB99GMC/D1q0mLK0epGHtJm53So3AyJ4LTWp0AMXDnds/p2w4BAd
+	y/e9pYFo+OHMJ5Gsi2OLzoU718xMELixCLKbYIzdK6GXMdBh5T+Rhu1/5WnAQHOMJIWgP8+0k7wFP
+	VfTQlKfEEn+wQ9XckcptPVdbsfTQK+wvJkwMqRoLuj4dmS8sW/e1iWl/wzwQMUA9hq7tDcZynIlDX
+	g+CGQpMr9fiSmNunvcirnlo5Fi/YW5sMkoCcpFjYSYiVIJA3rD2s4ftHPtivxjWC4tiU0gL9QvYIt
+	AL0M9jVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0NMD-00000007rhP-3NLx;
-	Sun, 21 Sep 2025 16:56:13 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1v0Njd-00000007v37-06Rd;
+	Sun, 21 Sep 2025 17:20:25 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0NLI-00000007qmU-1ADW;
-	Sun, 21 Sep 2025 16:55:17 +0000
+	id 1v0Nja-00000007v1E-2tqt;
+	Sun, 21 Sep 2025 17:20:22 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id D9EE643881;
-	Sun, 21 Sep 2025 16:55:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 98C83C4CEE7;
-	Sun, 21 Sep 2025 16:55:15 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 49631600AE;
+	Sun, 21 Sep 2025 17:19:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E58E4C4CEE7;
+	Sun, 21 Sep 2025 17:19:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1758473715;
-	bh=gladXUT5F0XURCw6JuQBdgxcedelWcH2hcrlQcX0DOc=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=HSj9EssM6Pxf5rY/zKangvdCD4/dxy/LP46OVg7ucuK6LIHBr8Y2vYVWHg73C1SUe
-	 pU7hbDILv5qHCZ4Y1g11RSmHLmj5jvY1DfDVfYrZaISfLbJfwYsdNIeg4fk70MkkJV
-	 cGb+R63jQ3qsMUbLwG/byY/bHYuBtElrsMSXapEVzWFNagumVf5cHumZQGPEyiNX8G
-	 gUYrUoqW/1OM+wSP+g86QQz6QbskDGjB6t7hpKQ3A9NiJ7dJ7ylW6kl2tErBkqe0L2
-	 46I5Q6u1oRHwUFMc3BT5B2LrxtP8bG1uN4ywU/ctkwnI7iqZY2SQvUviJ/Bx5F5Rrx
-	 jE8ZtStQV2Q4Q==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20250915151947.277983-28-laura.nao@collabora.com>
-References: <20250915151947.277983-1-laura.nao@collabora.com> <20250915151947.277983-28-laura.nao@collabora.com>
-Subject: Re: [PATCH v6 27/27] clk: mediatek: Add MT8196 vencsys clock support
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: guangjie.song@mediatek.com, wenst@chromium.org, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, kernel@collabora.com, Laura Nao <laura.nao@collabora.com>, =?utf-8?q?N=C3=ADcolas?= F . R . A . Prado <nfraprado@collabora.com>
-To: Laura Nao <laura.nao@collabora.com>, angelogioacchino.delregno@collabora.com, conor+dt@kernel.org, krzk+dt@kernel.org, matthias.bgg@gmail.com, mturquette@baylibre.com, p.zabel@pengutronix.de, richardcochran@gmail.com, robh@kernel.org
-Date: Sun, 21 Sep 2025 09:55:14 -0700
-Message-ID: <175847371427.4354.3269379078117550500@lazor>
-User-Agent: alot/0.11
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250921_095516_341680_C0164D6A 
-X-CRM114-Status: UNSURE (   6.03  )
-X-CRM114-Notice: Please train this message.
+	s=k20201202; t=1758475190;
+	bh=rxiF7+0X+E1DwELu2yV6ORqUEuJ5BQYtLtP8zWsIpaI=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=M4/7Svp6AnZCeOKbjsm5eSg8NQKXGqzgGhzt1oHC2Jaw2wkJqRR/Lx77QBE/qh7c3
+	 tlWvTiszBm2dAbpbNBuNdlAfPf2ZVOZQCyQ9wrFCjom3tnv6mBVuf+aPHZoZ6VRVBw
+	 IPXwvAe0UIYT0VfxkFlwDh02s9o7A2R+BZXlB9ogV4yC4FsiZ7vmS0F9SRSTupxy8v
+	 eUmTvjfRQhom1jH1wSFN6j49GD2osRCotFGsMjNLAGJPeh0/XJPS1ehi8N5cotcwUj
+	 awvcjovcHP77qzG9dNH8B/L6svBqwaP++ul63wxVNEud6cw6+I0No9ua9nzQTKg9m6
+	 k+b0AK3XAZn1Q==
+Received: from sofa.misterjones.org ([185.219.108.64] helo=lobster-girl.misterjones.org)
+	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.98.2)
+	(envelope-from <maz@kernel.org>)
+	id 1v0Nj1-00000008Ctq-0grY;
+	Sun, 21 Sep 2025 17:19:47 +0000
+Date: Sun, 21 Sep 2025 18:19:46 +0100
+Message-ID: <87ms6nyb7x.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Alok Tiwari <alok.a.tiwari@oracle.com>
+Cc: thomas.petazzoni@bootlin.com,
+	pali@kernel.org,
+	lpieralisi@kernel.org,
+	kwilczynski@kernel.org,
+	mani@kernel.org,
+	robh@kernel.org,
+	bhelgaas@google.com,
+	joyce.ooi@intel.com,
+	alyssa@rosenzweig.io,
+	jim2101024@gmail.com,
+	florian.fainelli@broadcom.com,
+	bcm-kernel-feedback-list@broadcom.com,
+	rjui@broadcom.com,
+	sbranden@broadcom.com,
+	ryder.lee@mediatek.com,
+	jianjun.wang@mediatek.com,
+	sergio.paracuellos@gmail.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	marek.vasut+renesas@gmail.com,
+	yoshihiro.shimoda.uh@renesas.com,
+	geert+renesas@glider.be,
+	magnus.damm@gmail.com,
+	shawn.lin@rock-chips.com,
+	heiko@sntech.de,
+	michal.simek@amd.com,
+	bharat.kumar.gogada@amd.com,
+	will@kernel.org,
+	kys@microsoft.com,
+	haiyangz@microsoft.com,
+	wei.liu@kernel.org,
+	decui@microsoft.com,
+	linus.walleij@linaro.org,
+	thierry.reding@gmail.com,
+	jonathanh@nvidia.com,
+	rric@kernel.org,
+	nirmal.patel@linux.intel.com,
+	toan@os.amperecomputing.com,
+	jonathan.derrick@linux.dev,
+	linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rpi-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-hyperv@vger.kernel.org,
+	linux-tegra@vger.kernel.org
+Subject: Re: [PATCH RFC] PCI: Convert devm_pci_alloc_host_bridge() users to error-pointer returns
+In-Reply-To: <20250921161434.1561770-1-alok.a.tiwari@oracle.com>
+References: <20250921161434.1561770-1-alok.a.tiwari@oracle.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/30.1
+ (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+Content-Type: text/plain; charset=US-ASCII
+X-SA-Exim-Connect-IP: 185.219.108.64
+X-SA-Exim-Rcpt-To: alok.a.tiwari@oracle.com, thomas.petazzoni@bootlin.com, pali@kernel.org, lpieralisi@kernel.org, kwilczynski@kernel.org, mani@kernel.org, robh@kernel.org, bhelgaas@google.com, joyce.ooi@intel.com, alyssa@rosenzweig.io, jim2101024@gmail.com, florian.fainelli@broadcom.com, bcm-kernel-feedback-list@broadcom.com, rjui@broadcom.com, sbranden@broadcom.com, ryder.lee@mediatek.com, jianjun.wang@mediatek.com, sergio.paracuellos@gmail.com, matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, marek.vasut+renesas@gmail.com, yoshihiro.shimoda.uh@renesas.com, geert+renesas@glider.be, magnus.damm@gmail.com, shawn.lin@rock-chips.com, heiko@sntech.de, michal.simek@amd.com, bharat.kumar.gogada@amd.com, will@kernel.org, kys@microsoft.com, haiyangz@microsoft.com, wei.liu@kernel.org, decui@microsoft.com, linus.walleij@linaro.org, thierry.reding@gmail.com, jonathanh@nvidia.com, rric@kernel.org, nirmal.patel@linux.intel.com, toan@os.amperecomputing.com, jonathan.derrick@linux.
+ dev, linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-hyperv@vger.kernel.org, linux-tegra@vger.kernel.org
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,15 +126,114 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Laura Nao (2025-09-15 08:19:47)
-> Add support for the MT8196 vencsys clock controller, which provides
-> clock gate control for the video encoder.
->=20
-> Reviewed-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
-> Signed-off-by: Laura Nao <laura.nao@collabora.com>
-> ---
+On Sun, 21 Sep 2025 17:14:07 +0100,
+Alok Tiwari <alok.a.tiwari@oracle.com> wrote:
+> 
+> devm_pci_alloc_host_bridge() and pci_alloc_host_bridge() previously
+> returned NULL on failure, forcing callers to special-case NULL handling
+> and often hardcode -ENOMEM as the error.
+> 
+> This series updates devm_pci_alloc_host_bridge() to consistently return
+> error pointers (ERR_PTR) with the actual error code, instead of NULL.
+> All callers across PCI host controller drivers are updated to use
+> IS_ERR_OR_NULL()/PTR_ERR() instead of NULL checks and hardcoded -ENOMEM.
+> 
+> Benefits:
+>   - Standardizes error handling with Linux kernel ERR_PTR()/PTR_ERR()
+>     conventions.
+>   - Ensures that the actual error code from lower-level helpers is
+>     propagated back to the caller.
+>   - Removes ambiguity between NULL and error pointer returns.
+>
+> Touched drivers include:
+>  cadence (J721E, cadence-plat)
+>  dwc (designware, qcom)
+>  mobiveil (layerscape-gen4, mobiveil-plat)
+>  aardvark, ftpci100, ixp4xx, loongson, mvebu, rcar, tegra, v3-semi,
+>  versatile, xgene, altera, brcmstb, iproc, mediatek, mt7621, xilinx,
+>  plda, and others
+> 
+> This patch updates error handling across these host controller drivers
+>  so that callers consistently receive ERR_PTR() instead of NULL.
 
-Applied to clk-next
+Not quite.
+
+> diff --git a/arch/mips/pci/pci-xtalk-bridge.c b/arch/mips/pci/pci-xtalk-bridge.c
+> index e00c38620d14..c2c8ed8ecac1 100644
+> --- a/arch/mips/pci/pci-xtalk-bridge.c
+> +++ b/arch/mips/pci/pci-xtalk-bridge.c
+> @@ -636,8 +636,8 @@ static int bridge_probe(struct platform_device *pdev)
+>  	pci_set_flags(PCI_PROBE_ONLY);
+>  
+>  	host = devm_pci_alloc_host_bridge(dev, sizeof(*bc));
+> -	if (!host) {
+> -		err = -ENOMEM;
+> +	if (IS_ERR_OR_NULL(host)) {
+> +		err = PTR_ERR(host);
+
+Under which circumstances can NULL still be returned? Because applying
+PTR_ERR() to a NULL pointer looks like a pretty bad idea.
+
+>  		goto err_remove_domain;
+>  	}
+>  
+
+[...]
+
+> diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
+> index f41128f91ca7..e627f36b7683 100644
+> --- a/drivers/pci/probe.c
+> +++ b/drivers/pci/probe.c
+> @@ -686,18 +686,18 @@ struct pci_host_bridge *devm_pci_alloc_host_bridge(struct device *dev,
+>  
+>  	bridge = pci_alloc_host_bridge(priv);
+>  	if (!bridge)
+> -		return NULL;
+> +		return ERR_PTR(-ENOMEM);
+>  
+>  	bridge->dev.parent = dev;
+>  
+>  	ret = devm_add_action_or_reset(dev, devm_pci_alloc_host_bridge_release,
+>  				       bridge);
+>  	if (ret)
+> -		return NULL;
+> +		return ERR_PTR(ret);
+>  
+>  	ret = devm_of_pci_bridge_init(dev, bridge);
+>  	if (ret)
+> -		return NULL;
+> +		return ERR_PTR(ret);
+>  
+>  	return bridge;
+>  }
+> @@ -3198,7 +3198,7 @@ struct pci_bus *pci_create_root_bus(struct device *parent, int bus,
+>  
+>  	bridge = pci_alloc_host_bridge(0);
+>  	if (!bridge)
+> -		return NULL;
+> +		return ERR_PTR(-ENOMEM);
+>  
+>  	bridge->dev.parent = parent;
+>  
+
+And what about the code that comes after that if we fail to register
+the bus? The remaining "return NULL", which will then be interpreted
+as 0 in any user of this function, leading to a worse situation than
+what we have now.
+
+Also, things like pci_scan_root_bus() have the following pattern:
+
+	b = pci_create_root_bus(parent, bus, ops, sysdata, resources);
+	if (!b)
+		return NULL;
+
+which will end with prejudice given what you have introduced.
+
+If you are going to touch this sort of things, at least make it
+consistent, analyse *all* code paths, and provide documentation.
+
+	M.
+
+-- 
+Jazz isn't dead. It just smells funny.
 
