@@ -4,71 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37DFFCAC592
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Sep 2025 15:43:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B47BCA100F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Sep 2025 16:03:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FkpL0tmHxowKoCQg6KgQE7aVVXQ8VXFIV/me0DgJOe8=; b=cTCj/zQ+VT74i6vne5oq5Dx7+z
-	fUUAE8/7qcovMT3s5ixpxxn2jkcAAbwatgm95UwfIsCKrPOgJ+od6lPHSNykjrztp19d2t+4k1T1G
-	e85MKMYiukKDDcMH3hzAVcy2q0BXlYDUJYmekfqtkwmt//rv50EkXEMBaYwZDNdL7K1H0UAdKH7mz
-	iyhdBS04nYa4C10ZhCTUclBVC06gUTH+DgM0HgAadYJA3WjT0TLDU2UhB+G+mKqtHujJvFvH/tPbZ
-	vMrTAFdOXfRvq6ohN1HSETKEOr3jSHmCDxFfhxSYm3r9lTo/hTx/YlAkil6tCzHij325+9cU4/7tG
-	S/ajLDhw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rpW7rYAxjBymElN3zC8FzAPYo3nFs/KXy+Wc4Z6+hL4=; b=unKheS235yy26dlDlypH8MCUz6
+	FrCnFoK7Uh8I4Dk6hvlEBrRaCSp7f618dD9ZefP0A7K4hR/yShjth6vZlJxYNhdUGvCacDsG4oP/O
+	iVGgIfyO4tQ/PJ9kZRNBz+YmZcazujchjZi076PkSXlaU37N5HjvOzG9tSWYzuFNtqg+BiXZODamF
+	GNO7FhEKcgcvYzCHy034LDGhlKmiTk6oSxtRx53GniU7DiwYeoiM8Fly9i70T9KQ5xl80arBdvN/i
+	5gyDig8v2bkyXzkmD44c7EBNlBkxtNl6KI9Scb6HAMgmvYtA6tPMsPncp74kOh5QY5HwUGZtNXJrN
+	3A+QXv0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0iha-0000000As8P-1AnT;
-	Mon, 22 Sep 2025 15:43:42 +0000
-Received: from smtp-19.smtpout.orange.fr ([80.12.242.19] helo=smtp.smtpout.orange.fr)
+	id 1v0j0f-0000000AvAl-2znP;
+	Mon, 22 Sep 2025 16:03:25 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0ihX-0000000As3j-02ZK;
-	Mon, 22 Sep 2025 15:43:40 +0000
-Received: from [IPV6:2a01:cb10:785:b00:8347:f260:7456:7662]
- ([IPv6:2a01:cb10:785:b00:8347:f260:7456:7662])
-	by smtp.orange.fr with ESMTPA
-	id 0ihNv1uZQ6fJ30ihNvRBh2; Mon, 22 Sep 2025 17:43:33 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
-	s=t20230301; t=1758555813;
-	bh=FkpL0tmHxowKoCQg6KgQE7aVVXQ8VXFIV/me0DgJOe8=;
-	h=Message-ID:Date:MIME-Version:Subject:To:From;
-	b=AJj3luLdsdZm6Hh9cs8v3hu1Xrx/xtjz6njOnl5bdrsltRGWoLkcpzbo3ji7oS6mC
-	 5YZaQyvvjYyK1wwjrJP8l42XJEaw/Dq5KvFKbSBJWHzyAk+lqlHGJtxMIGEHBwgsf3
-	 pYd8pmC4hcZpAGD3ZdEPKpVlCzjgF8D97oDt92/q7T6CTj7umly4owlqUQfQSZ+sZw
-	 Zf/Kw+b9ryh7irWVLdjOEhvLQ2DEfal6jZBAZiSy5YmyFLth7HKC3Y17SdKeVQdC0l
-	 iC53qyWGA6KOu0Y98FUDUUbm0XISxieirL48iwVUOnd0qPfRJMgpsWp3P2EwI9YZN0
-	 DB2lcqiMlrCRw==
-X-ME-Helo: [IPV6:2a01:cb10:785:b00:8347:f260:7456:7662]
-X-ME-Auth: bWFyaW9uLmphaWxsZXRAd2FuYWRvby5mcg==
-X-ME-Date: Mon, 22 Sep 2025 17:43:33 +0200
-X-ME-IP: 2a01:cb10:785:b00:8347:f260:7456:7662
-Message-ID: <dcb6023b-8c14-4bbd-9bac-2933e91ef553@wanadoo.fr>
-Date: Mon, 22 Sep 2025 17:43:28 +0200
+	id 1v0j0e-0000000Av9z-46Rl;
+	Mon, 22 Sep 2025 16:03:25 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 09C5B6020C;
+	Mon, 22 Sep 2025 16:03:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 05220C4CEF0;
+	Mon, 22 Sep 2025 16:03:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1758557003;
+	bh=SBGcHxTA1qXpjYcMN2XvPCz4NeeP4t9w4dEm7rTj6mI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Okdk4HLpW7Kmoxgxc97pQ2qYlroVJ/LR1qBFjpayn3uKBBhgY65vvD5163oCK9WgH
+	 hpHrSkjmcc6hzLlajkdmPSJiDTq44kQzw2/jZaHLba2rTWEEGCydLFy3QhKZsN4ZXC
+	 Vjq5Ly2WbORSmmMberQB7tT42jTifK/WO50CloeJ4LpSZQlrN36/p8u3IWvu+PYGpd
+	 llpAF5PGvW4gn7LbQwItU6acJSa2UjKBpARczJa4qmhZzuKQMUc3+BOK7LMSX1Vem+
+	 0qd5B/8DFOZw9mtOdBWfi1YR0BQu0XbhSvy8gY/Iv74JmQcN+kHjIhg3QdmldLL/mb
+	 6D94AhDK7WiNw==
+Date: Mon, 22 Sep 2025 11:03:16 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Kyrie Wu <kyrie.wu@mediatek.com>
+Cc: Arnd Bergmann <arnd@arndb.de>, Irui Wang <irui.wang@mediatek.com>,
+	linux-mediatek@lists.infradead.org,
+	Sebastian Fricke <sebastian.fricke@collabora.com>,
+	Tiffany Lin <tiffany.lin@mediatek.com>,
+	Nathan Hebert <nhebert@chromium.org>,
+	Hans Verkuil <hverkuil@xs4all.nl>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	linux-arm-kernel@lists.infradead.org,
+	Conor Dooley <conor+dt@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Yunfei Dong <yunfei.dong@mediatek.com>, linux-media@vger.kernel.org,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	George Sun <george.sun@mediatek.com>,
+	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+	Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>
+Subject: Re: [PATCH v3 1/8] dt-bindings: media: mediatek: decoder: Add MT8189
+ mediatek,vcodec-decoder
+Message-ID: <175855699590.126634.9163224835580363424.robh@kernel.org>
+References: <20250915091958.31509-1-kyrie.wu@mediatek.com>
+ <20250915091958.31509-2-kyrie.wu@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] ASoC: mediatek: mt8365: Add check for devm_kcalloc()
- in mt8365_afe_suspend()
-To: Guangshuo Li <lgs201920130244@gmail.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Charles Keepax <ckeepax@opensource.cirrus.com>,
- Alexandre Mergnat <amergnat@baylibre.com>, linux-sound@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Cc: stable@vger.kernel.org
-References: <20250922153448.1824447-1-lgs201920130244@gmail.com>
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Content-Language: en-US, fr-FR
-In-Reply-To: <20250922153448.1824447-1-lgs201920130244@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250922_084339_196067_AD94CF03 
-X-CRM114-Status: GOOD (  19.46  )
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250915091958.31509-2-kyrie.wu@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,57 +87,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le 22/09/2025 à 17:34, Guangshuo Li a écrit :
-> devm_kcalloc() may fail. mt8365_afe_suspend() uses afe->reg_back_up
-> unconditionally after allocation and writes afe->reg_back_up[i], which
-> can lead to a NULL pointer dereference under low-memory conditions.
+
+On Mon, 15 Sep 2025 17:19:51 +0800, Kyrie Wu wrote:
+> Add compatible for video decoder on MT8189 platform. Compared with
+> former ICs, the MT8189 decoder use iommu to instead of smmu, and
+> use scp architecture, the frequency is only 406MHZ, and cannot reach
+> more than 700MHZ. At the same time, the decoder supports the vp9
+> decoding protocol for the first time in single IC.
 > 
-> Add a NULL check and bail out with -ENOMEM, making sure to disable the
-> main clock via the existing error path to keep clock state balanced.
-> 
-> Fixes: e1991d102bc2 ("ASoC: mediatek: mt8365: Add the AFE driver support")
-> Cc: stable@vger.kernel.org
+> Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
 > ---
-> changelog:
-> v2:
-> - Return -ENOMEM directly on allocation failure without goto/label.
-> - Disable the main clock before returning to keep clock state balanced.
+>  .../bindings/media/mediatek,vcodec-subdev-decoder.yaml           | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
 
-This should be above the ---
-
-> ---
->   sound/soc/mediatek/mt8365/mt8365-afe-pcm.c | 10 +++++++---
->   1 file changed, 7 insertions(+), 3 deletions(-)
-> 
-> diff --git a/sound/soc/mediatek/mt8365/mt8365-afe-pcm.c b/sound/soc/mediatek/mt8365/mt8365-afe-pcm.c
-> index 10793bbe9275..55d832e05072 100644
-> --- a/sound/soc/mediatek/mt8365/mt8365-afe-pcm.c
-> +++ b/sound/soc/mediatek/mt8365/mt8365-afe-pcm.c
-> @@ -1975,11 +1975,15 @@ static int mt8365_afe_suspend(struct device *dev)
->   
->   	mt8365_afe_enable_main_clk(afe);
->   
-> -	if (!afe->reg_back_up)
-> +	if (!afe->reg_back_up) {
->   		afe->reg_back_up =
->   			devm_kcalloc(dev, afe->reg_back_up_list_num,
-> -				     sizeof(unsigned int), GFP_KERNEL);
-> -
-> +				    sizeof(unsigned int), GFP_KERNEL);
-
-you should not remove a space here.
-
-CJ
-
-> +		if (!afe->reg_back_up) {
-> +			mt8365_afe_disable_main_clk(afe);
-> +			return -ENOMEM;
-> +		}
-> +	}
->   	for (i = 0; i < afe->reg_back_up_list_num; i++)
->   		regmap_read(regmap, afe->reg_back_up_list[i],
->   			    &afe->reg_back_up[i]);
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
 
