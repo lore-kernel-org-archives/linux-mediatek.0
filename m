@@ -4,73 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22EC4CAC5A7
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Sep 2025 03:36:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A25EFCAC5A7
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Sep 2025 03:58:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9/pAYjt1PTM1WTwOEAJ1ryShiXtBMZp1571RlbpsQfQ=; b=fd1Jbuzv6CN4G1uL9yZK6tXQpF
-	jPBhYNMZ6YW4MrVVNKjoZcQMVYnslr2rNXaJXMd8bYUJqIG3vdtp8/Al0q/WDlwjYZABTyGiQS5OT
-	BWcjyjVvEgPuDfaULm9phs1nb1WFNrDlrUN4lp9k7zkF/Ukpl3Xy0HSGmVsCvEkgfQchEf5PUDYVA
-	PjffrbkhFH5Bgx5O0G60dSWKO5jsqiSiDTiI2x19/8486SiFP6M/9UKwGYviP+QVrpC46f16yF5Ck
-	/2XJPZYhV6phtbe6RRVMT4QFBLazgnUj7jf5Vtxy+gXJT/1uajDiC/lycBHtfw/w/2JYsiFTnwnNy
-	00pE059Q==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=s2pZSik72TY21Dy++4e2+FSjBI2j0gpKQPCcrZ1+wys=; b=fgii0LYy9czGCfANBiVjs71VfC
+	JO79EKjJO4BHrksHqxKnBYZSF6b5meVQ2Yt1XtG8CzXC6Nrd0uq3Qf81HT0W9EqgY8zAidAd0gH0y
+	8GgA+GsL7ZHkxQqGD+Za9onx5rqzByCRKcqpaUhtmnf7d22x32Dqe1StY9Y8sR90NxRxmiM8C0ND7
+	gHkavsuByufFWWtGFjn9L371mBhI7M4XJ5LGF3GfGJdSurk/XGCB6FeaOJz6ZiLjHWO220nZjnvcn
+	nuuvG42qc5/eSvQDxx4LGX6ktcBP3dgKzh9E09OTwJOkeddwy5m9cE0IqeHBE3rVg4LvoY3ruCDgM
+	IhEFl6yQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0XMG-00000008ho4-3jyS;
-	Mon, 22 Sep 2025 03:36:56 +0000
-Received: from out-173.mta0.migadu.com ([91.218.175.173])
+	id 1v0XhK-00000008k7R-1Lak;
+	Mon, 22 Sep 2025 03:58:42 +0000
+Received: from p-west1-cluster5-host8-snip4-10.eps.apple.com ([57.103.66.251] helo=outbound.pv.icloud.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0XMA-00000008hm9-3Nr7
+	id 1v0XhF-00000008k4j-0NuJ
 	for linux-mediatek@lists.infradead.org;
-	Mon, 22 Sep 2025 03:36:54 +0000
-Message-ID: <e4e82695-c03f-4105-bddd-9778d7e368d4@linux.dev>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
-	t=1758512191;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=9/pAYjt1PTM1WTwOEAJ1ryShiXtBMZp1571RlbpsQfQ=;
-	b=dYeIGHtXEhwqRe5dY2kuaOhbMvjIC5LBJnI4MTLAavEHM28MO5fC1RBYYw1JQSenqd1Od+
-	ppNvqg9coKtIPXFQHgGtx3lExQK15m1zekX1RHO6FWDHA+ZXFNiB8BTagglJX3zuepxRoC
-	P2383CbGkK919uOabMZSgfcRGK4vAQ8=
-Date: Mon, 22 Sep 2025 11:36:11 +0800
+	Mon, 22 Sep 2025 03:58:39 +0000
+Received: from outbound.pv.icloud.com (unknown [127.0.0.2])
+	by p00-icloudmta-asmtp-us-west-1a-100-percent-10 (Postfix) with UTF8SMTPS id 13B6F1800718;
+	Mon, 22 Sep 2025 03:58:29 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bryanhinton.com; s=sig1; bh=s2pZSik72TY21Dy++4e2+FSjBI2j0gpKQPCcrZ1+wys=; h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme; b=okXmIHd7KwiREU5Ukxzd3CF1CYjnUjBfxsBa+oVepm7ebaupmABKEesJbffZWu4hnZsLfOD8IqRmUe6Bi2dVzbvcAAnMk7jYdylfpsihAhWLfwmRPEDnS+wqtsu3z2Ig1VynP1cbylV+l5gSa2QnCTqkTrmwTZ3RWJ6JdA/WZuDEXaMHuWuHg18b+TSj9mrldbIUHl+BTMePiR7ryIeNHk/fMufZfMx809WmEX2xyltKnl6icjA3ck9h4qMmt54yv8Ef6xRx8VNbHXvxHIm3nH7oetg7z/ezdfPI6qW5NEtw1eqpzeLpyus4J6cMPSMgYZ6adEphm0L4yzZvM71IzQ==
+mail-alias-created-date: 1643268037438
+Received: from localhost (pv-asmtp-me-k8s.p00.prod.me.com [17.56.9.36])
+	by p00-icloudmta-asmtp-us-west-1a-100-percent-10 (Postfix) with UTF8SMTPSA id 2D5021800125;
+	Mon, 22 Sep 2025 03:58:29 +0000 (UTC)
+From: Bryan Hinton <bryan@bryanhinton.com>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	daniel@makrotopia.org
+Cc: devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	bryan@bryanhinton.com
+Subject: [PATCH v3 0/2] arm64: dts: mt7981/openwrt-one: UART labels and console
+Date: Sun, 21 Sep 2025 22:58:08 -0500
+Message-ID: <20250922035828.2941327-1-bryan@bryanhinton.com>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-Subject: Re: [PATCH 1/1] mm/thp: fix MTE tag mismatch when replacing
- zero-filled subpages
-Content-Language: en-US
-To: Zi Yan <ziy@nvidia.com>
-Cc: akpm@linux-foundation.org, david@redhat.com, lorenzo.stoakes@oracle.com,
- usamaarif642@gmail.com, yuzhao@google.com, baolin.wang@linux.alibaba.com,
- baohua@kernel.org, voidice@gmail.com, Liam.Howlett@oracle.com,
- catalin.marinas@arm.com, cerasuolodomenico@gmail.com, hannes@cmpxchg.org,
- kaleshsingh@google.com, npache@redhat.com, riel@surriel.com,
- roman.gushchin@linux.dev, rppt@kernel.org, ryan.roberts@arm.com,
- dev.jain@arm.com, ryncsn@gmail.com, shakeel.butt@linux.dev,
- surenb@google.com, hughd@google.com, willy@infradead.org,
- matthew.brost@intel.com, joshua.hahnjy@gmail.com, rakie.kim@sk.com,
- byungchul@sk.com, gourry@gourry.net, ying.huang@linux.alibaba.com,
- apopple@nvidia.com, qun-wei.lin@mediatek.com, Andrew.Yang@mediatek.com,
- casper.li@mediatek.com, chinwen.chang@mediatek.com,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-mm@kvack.org, ioworker0@gmail.com,
- stable@vger.kernel.org, linux-riscv@lists.infradead.org,
- palmer@rivosinc.com, samuel.holland@sifive.com, charlie@rivosinc.com
-References: <20250922021458.68123-1-lance.yang@linux.dev>
- <3DD2EF5E-3E6A-40B0-AFCC-8FB38F0763DB@nvidia.com>
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: Lance Yang <lance.yang@linux.dev>
-In-Reply-To: <3DD2EF5E-3E6A-40B0-AFCC-8FB38F0763DB@nvidia.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Migadu-Flow: FLOW_OUT
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-ORIG-GUID: 4RuZaZCIurzNU15Ktsexkjb433pEZ9CI
+X-Proofpoint-GUID: 4RuZaZCIurzNU15Ktsexkjb433pEZ9CI
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwOTIyMDAzNiBTYWx0ZWRfX5xzue/VdevBo
+ QzS108sHnbWZ0qgiL3S0R24E7FOX6N8U+2bWyJXaYG5kBH43gX0TeV5iPHCA8DZojWC+2xVD1ma
+ kcD6yRBkRArd85kfGfLilQdLUciVkIxA7a/gzfTcIzxI/orTl3sUbZfovvHGYYRl8h/W2I1r3Ma
+ ELWAoglVrGQxtkdQFG4xpZssUy2fJrSa3viOIy0U8cWDKJHSx2kJpFj5UaieGqX58hbg89cItVA
+ Raut4zBcHsEaG3cTGw9/D7sebPqbmz32XJFjjZ2RvN3Tg8Uya+l0VqMuncAKkfB0OED8blTSQ=
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-09-21_10,2025-09-19_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ mlxlogscore=788 clxscore=1030 spamscore=0 bulkscore=0 mlxscore=0
+ suspectscore=0 adultscore=0 phishscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.22.0-2506270000 definitions=main-2509220036
+X-JNJ: AAAAAAABLAgEF4m/ScTvlirqyLyT96PSZK4hRhRnpe9ErY5FGoXkDTgetLg7US6PlacoOlQwO9xOw/GyxXFbSO7NWcylsa6gW7Aj4RzIw9IU23XxEolIBS/dECsEEV/Yxk3Up3wXjnUhEpfskON+d3siZ73Fs3IsZKoJBtw6/nPkskY5ApX+a4O/ppuXW6ztcQEnVDiGwXvyOnMfIbekBXOGRocO0vaEo61JDO5CqgDNRYRgynY9OCVIrn3ViaZxANGpVxFcfAmNozm4Gy3XhOUltMHVGIQRprRtnXldG+67N/w6361aW6eOcG2wy23LNnoKsPdKqbXQxI670uk8PzI4dq5mfNV11b46Aq/8qqiOD2Sw1+RcOdWU8rZfUumMuBK6rbQAEuz7R2aonFPCM9Ec12vQQI9QjEfq95H62rqwEwZpnBUw73kmdKSLhR92MPRp3RoEUaRiUZzaZf9HtMw3Csd7BT3mIYlEjBMloxSFnIdidnKxkDs9yvHA3BAN5kP4hXOV2Eb+2p3xB69LugDTL/oJ0wjDu37C4fCh+bUSqv9X+k21bfznIP0gRfrju/Ue/65QpevCrTsRSHGN3FAOHgsZu6UWXdGHgP+emWF2PokSh3CK3jkF40mKy1Vv0xTJgtFhzeEvpDQDyJp2xUB+uCMRt8/+Epr3O2MOytSn8wjDAA0ZhZpkIA/2/FjxBbCKAqz37fDu3/ozRlHDwWFEx49nw0k6aKnls3Nfw4oWUu01nA==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250921_203650_986922_1E382629 
-X-CRM114-Status: GOOD (  26.88  )
+X-CRM114-CacheID: sfid-20250921_205837_136958_B8A6E872 
+X-CRM114-Status: UNSURE (   8.02  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,156 +86,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Cc: RISC-V folks
+This series makes two small updates for MT7981:
 
-On 2025/9/22 10:36, Zi Yan wrote:
-> On 21 Sep 2025, at 22:14, Lance Yang wrote:
-> 
->> From: Lance Yang <lance.yang@linux.dev>
->>
->> When both THP and MTE are enabled, splitting a THP and replacing its
->> zero-filled subpages with the shared zeropage can cause MTE tag mismatch
->> faults in userspace.
->>
->> Remapping zero-filled subpages to the shared zeropage is unsafe, as the
->> zeropage has a fixed tag of zero, which may not match the tag expected by
->> the userspace pointer.
->>
->> KSM already avoids this problem by using memcmp_pages(), which on arm64
->> intentionally reports MTE-tagged pages as non-identical to prevent unsafe
->> merging.
->>
->> As suggested by David[1], this patch adopts the same pattern, replacing the
->> memchr_inv() byte-level check with a call to pages_identical(). This
->> leverages existing architecture-specific logic to determine if a page is
->> truly identical to the shared zeropage.
->>
->> Having both the THP shrinker and KSM rely on pages_identical() makes the
->> design more future-proof, IMO. Instead of handling quirks in generic code,
->> we just let the architecture decide what makes two pages identical.
->>
->> [1] https://lore.kernel.org/all/ca2106a3-4bb2-4457-81af-301fd99fbef4@redhat.com
->>
->> Cc: <stable@vger.kernel.org>
->> Reported-by: Qun-wei Lin <Qun-wei.Lin@mediatek.com>
->> Closes: https://lore.kernel.org/all/a7944523fcc3634607691c35311a5d59d1a3f8d4.camel@mediatek.com
->> Fixes: b1f202060afe ("mm: remap unused subpages to shared zeropage when splitting isolated thp")
->> Suggested-by: David Hildenbrand <david@redhat.com>
->> Signed-off-by: Lance Yang <lance.yang@linux.dev>
->> ---
->> Tested on x86_64 and on QEMU for arm64 (with and without MTE support),
->> and the fix works as expected.
-> 
->  From [1], I see you mentioned RISC-V also has the address masking feature.
-> Is it affected by this? And memcmp_pages() is only implemented by ARM64
-> for MTE. Should any arch with address masking always implement it to avoid
-> the same issue?
+- Patch 1/2: Add stable labels (uart0, uart1, uart2) in the SoC dtsi so
+  that board dts files can reference them directly.
+- Patch 2/2: Update the OpenWrt One board dts to define serial0 alias,
+  set chosen stdout-path, and enable uart0.
 
-Yeah, I'm new to RISC-V, seems like RISC-V has a similar feature as
-described in Documentation/arch/riscv/uabi.rst, which is the Supm
-(Supervisor-mode Pointer Masking) extension.
+Both patches were build-tested (dtbs) and boot-tested: mainline Image+DTB
+built and loaded via U-Boot on MT7981 hardware, with serial console output
+verified.
 
-```
-Pointer masking
----------------
+Changes in v3:
+- Patch 1/2: Unchanged.
+- Patch 2/2: Drop disallowed 'current-speed' from uart0 per dtbs_check.
+  Console baud is already specified via stdout-path.
 
-Support for pointer masking in userspace (the Supm extension) is 
-provided via
-the ``PR_SET_TAGGED_ADDR_CTRL`` and ``PR_GET_TAGGED_ADDR_CTRL`` ``prctl()``
-operations. Pointer masking is disabled by default. To enable it, userspace
-must call ``PR_SET_TAGGED_ADDR_CTRL`` with the ``PR_PMLEN`` field set to the
-number of mask/tag bits needed by the application. ``PR_PMLEN`` is 
-interpreted
-as a lower bound; if the kernel is unable to satisfy the request, the
-``PR_SET_TAGGED_ADDR_CTRL`` operation will fail. The actual number of 
-tag bits
-is returned in ``PR_PMLEN`` by the ``PR_GET_TAGGED_ADDR_CTRL`` operation.
-```
+Thanks,
+Bryan
 
-But, IIUC, Supm by itself only ensures that the upper bits are ignored on
-memory access :)
+---
 
-So, RISC-V today would likely not be affected. However, once it implements
-full hardware tag checking, it will face the exact same zero-page problem.
+Bryan Hinton (2):
+  arm64: dts: mediatek: mt7981b: add labels for UART0/1/2 nodes
+  arm64: dts: mediatek: mt7981b: OpenWrt One: set console UART to 115200
 
-Anyway, any architecture with a feature like MTE in the future will need
-its own memcmp_pages() to prevent unsafe merges ;)
+ arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts | 12 ++++++++++++
+ arch/arm64/boot/dts/mediatek/mt7981b.dtsi            |  6 +++---
+ 2 files changed, 15 insertions(+), 3 deletions(-)
 
-> 
->>
->>   mm/huge_memory.c | 15 +++------------
->>   mm/migrate.c     |  8 +-------
->>   2 files changed, 4 insertions(+), 19 deletions(-)
->>
->> diff --git a/mm/huge_memory.c b/mm/huge_memory.c
->> index 32e0ec2dde36..28d4b02a1aa5 100644
->> --- a/mm/huge_memory.c
->> +++ b/mm/huge_memory.c
->> @@ -4104,29 +4104,20 @@ static unsigned long deferred_split_count(struct shrinker *shrink,
->>   static bool thp_underused(struct folio *folio)
->>   {
->>   	int num_zero_pages = 0, num_filled_pages = 0;
->> -	void *kaddr;
->>   	int i;
->>
->>   	for (i = 0; i < folio_nr_pages(folio); i++) {
->> -		kaddr = kmap_local_folio(folio, i * PAGE_SIZE);
->> -		if (!memchr_inv(kaddr, 0, PAGE_SIZE)) {
->> -			num_zero_pages++;
->> -			if (num_zero_pages > khugepaged_max_ptes_none) {
->> -				kunmap_local(kaddr);
->> +		if (pages_identical(folio_page(folio, i), ZERO_PAGE(0))) {
->> +			if (++num_zero_pages > khugepaged_max_ptes_none)
->>   				return true;
->> -			}
->>   		} else {
->>   			/*
->>   			 * Another path for early exit once the number
->>   			 * of non-zero filled pages exceeds threshold.
->>   			 */
->> -			num_filled_pages++;
->> -			if (num_filled_pages >= HPAGE_PMD_NR - khugepaged_max_ptes_none) {
->> -				kunmap_local(kaddr);
->> +			if (++num_filled_pages >= HPAGE_PMD_NR - khugepaged_max_ptes_none)
->>   				return false;
->> -			}
->>   		}
->> -		kunmap_local(kaddr);
->>   	}
->>   	return false;
->>   }
->> diff --git a/mm/migrate.c b/mm/migrate.c
->> index aee61a980374..ce83c2c3c287 100644
->> --- a/mm/migrate.c
->> +++ b/mm/migrate.c
->> @@ -300,9 +300,7 @@ static bool try_to_map_unused_to_zeropage(struct page_vma_mapped_walk *pvmw,
->>   					  unsigned long idx)
->>   {
->>   	struct page *page = folio_page(folio, idx);
->> -	bool contains_data;
->>   	pte_t newpte;
->> -	void *addr;
->>
->>   	if (PageCompound(page))
->>   		return false;
->> @@ -319,11 +317,7 @@ static bool try_to_map_unused_to_zeropage(struct page_vma_mapped_walk *pvmw,
->>   	 * this subpage has been non present. If the subpage is only zero-filled
->>   	 * then map it to the shared zeropage.
->>   	 */
->> -	addr = kmap_local_page(page);
->> -	contains_data = memchr_inv(addr, 0, PAGE_SIZE);
->> -	kunmap_local(addr);
->> -
->> -	if (contains_data)
->> +	if (!pages_identical(page, ZERO_PAGE(0)))
->>   		return false;
->>
->>   	newpte = pte_mkspecial(pfn_pte(my_zero_pfn(pvmw->address),
->> -- 
->> 2.49.0
-> 
-> The changes look good to me. Thanks. Acked-by: Zi Yan <ziy@nvidia.com>
-
-Cheers!
+-- 
+2.51.0
 
 
