@@ -4,60 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D930DCAC5AA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Sep 2025 17:24:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D053CA100F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Sep 2025 17:27:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KjlkSDWeLfgzt2hJTSF/yA75QuafGIPlx3UP9Kck4kU=; b=grhRhswPZcBlylKz6+w8iEfNU8
-	0Kyp8EdrZFqlhPly8h55H0alSodfPgiXG0ERTDsIzYi90p4SIircReAy9SmPEADY6IC1JoDqYRbEv
-	KtWM+bdxEuFN3TP1oFa6BvhR6zvh20VqOEF+B3ejLqdhZh6Y4Alog7CnD8HnotOzNTq2dH2TVD6T4
-	LmTtDUVoQLcW9l6/p893Uf7frw9YnvFxTGlbFBfnhiE14+pGBvlqax4eIllE/bIgECCgs9mlGresb
-	fc//eMsWXIdGx/a138hjsAsTvxeOarNh5mR589m3sTTxvOSXBBu+MkY4XxHRn13JcAclbS3VKyqkc
-	SXnxIGeg==;
+	bh=XrglqygU28IwGKhRkuJiVgnOhi1QWBZjpMckQhkutCU=; b=0ybKVaRwXHwlZi+x2q7Mm0gapR
+	ixIdmthryVhTf2lXQkphCqVF2PdhLb92pNB5vWMvnCa2tC6aHIIDCfm7TCXCR+vrzOYVNBtwdbTJW
+	nDb6fv1Tz7kzhnqjbyskzVx59Cegwm/lcrHE4MA1QIEJijj9E3O3x4AXKp9r/MHZQmJVYrUwBT6qi
+	yfcAoepXWtir/+nHiE/FvEK5obH2EX8y8XJ/GxqkPxi2F+e/3T3bm77MzFJN0wXQVqbwglh7wusOs
+	JePVnRwZqBAKQC9A8SNCttbA3XE5MSzJ+9EKhM9NyoqdToE35Q1fcJFrGtFhuMKufuK7SWncAxfcq
+	aCXdyOyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0kHO-0000000B6lA-2WgW;
-	Mon, 22 Sep 2025 17:24:46 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1v0kKI-0000000B7DS-2lfZ;
+	Mon, 22 Sep 2025 17:27:46 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0kHM-0000000B6kr-0u0H;
-	Mon, 22 Sep 2025 17:24:44 +0000
+	id 1v0kKF-0000000B7CD-0UR3;
+	Mon, 22 Sep 2025 17:27:44 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 52522601AA;
-	Mon, 22 Sep 2025 17:24:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 68AACC4CEF0;
-	Mon, 22 Sep 2025 17:24:36 +0000 (UTC)
-Date: Mon, 22 Sep 2025 18:24:33 +0100
-From: Catalin Marinas <catalin.marinas@arm.com>
-To: Lance Yang <lance.yang@linux.dev>
-Cc: akpm@linux-foundation.org, david@redhat.com, lorenzo.stoakes@oracle.com,
-	usamaarif642@gmail.com, yuzhao@google.com, ziy@nvidia.com,
-	baolin.wang@linux.alibaba.com, baohua@kernel.org, voidice@gmail.com,
-	Liam.Howlett@oracle.com, cerasuolodomenico@gmail.com,
-	hannes@cmpxchg.org, kaleshsingh@google.com, npache@redhat.com,
-	riel@surriel.com, roman.gushchin@linux.dev, rppt@kernel.org,
-	ryan.roberts@arm.com, dev.jain@arm.com, ryncsn@gmail.com,
-	shakeel.butt@linux.dev, surenb@google.com, hughd@google.com,
-	willy@infradead.org, matthew.brost@intel.com,
-	joshua.hahnjy@gmail.com, rakie.kim@sk.com, byungchul@sk.com,
-	gourry@gourry.net, ying.huang@linux.alibaba.com, apopple@nvidia.com,
-	qun-wei.lin@mediatek.com, Andrew.Yang@mediatek.com,
-	casper.li@mediatek.com, chinwen.chang@mediatek.com,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-mm@kvack.org,
-	ioworker0@gmail.com, stable@vger.kernel.org
-Subject: Re: [PATCH 1/1] mm/thp: fix MTE tag mismatch when replacing
- zero-filled subpages
-Message-ID: <aNGGUXLCn_bWlne5@arm.com>
-References: <20250922021458.68123-1-lance.yang@linux.dev>
+	by sea.source.kernel.org (Postfix) with ESMTP id 949894322E;
+	Mon, 22 Sep 2025 17:27:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3E1A3C4CEF0;
+	Mon, 22 Sep 2025 17:27:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1758562062;
+	bh=LgvstVAhZFC9XhxzN9f9868XJZhXwPjlACehXJwu3Ow=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=Lwy686eAmRzFn9wVoSkxBMfVS0wTWyDxiuIfRayw8WHPEqgHVdzudSv/T7EHkf+mT
+	 OUnV7UYLzVxuGZFdDO8Nhm7lLnR3Cv2Hdo18GaZh1LuODRyO6BWqkB2XWrdLx/fQ0e
+	 zmELoJT7yq+iTEcmun9sALqa5iSEmoYG0uJRifsQ3ZhQVU8TE3tCtqGtqoyVPP7Kun
+	 TmVitBC7BgB1AdwawbPKSOIK/4D/VVh10OW9Q6C12gDVjZdWmdpADxup6wDYEEAjbN
+	 KgnB984+8t3Y8gJTYzSNQLfxNmZEDYr/b7ZHnOGvDhmETbpYSo32r1Wxy47IX+f8ZH
+	 SjjU6G5H9g8kA==
+Date: Mon, 22 Sep 2025 12:27:41 -0500
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250922021458.68123-1-lance.yang@linux.dev>
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Conor Dooley <conor+dt@kernel.org>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ devicetree@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, 
+ linux-kernel@vger.kernel.org, Felix Fietkau <nbd@nbd.name>, 
+ linux-mediatek@lists.infradead.org, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ linux-arm-kernel@lists.infradead.org, John Crispin <john@phrozen.org>
+To: Christian Marangi <ansuelsmth@gmail.com>
+In-Reply-To: <20250920091230.17702-1-ansuelsmth@gmail.com>
+References: <20250920091230.17702-1-ansuelsmth@gmail.com>
+Message-Id: <175856183533.499759.5488159366911717626.robh@kernel.org>
+Subject: Re: [PATCH 1/2] dt-bindings: arm64: dts: airoha: Add AN7583
+ compatible
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250922_102743_175559_35899B59 
+X-CRM114-Status: GOOD (  12.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,71 +76,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 22, 2025 at 10:14:58AM +0800, Lance Yang wrote:
-> From: Lance Yang <lance.yang@linux.dev>
-> 
-> When both THP and MTE are enabled, splitting a THP and replacing its
-> zero-filled subpages with the shared zeropage can cause MTE tag mismatch
-> faults in userspace.
-> 
-> Remapping zero-filled subpages to the shared zeropage is unsafe, as the
-> zeropage has a fixed tag of zero, which may not match the tag expected by
-> the userspace pointer.
-> 
-> KSM already avoids this problem by using memcmp_pages(), which on arm64
-> intentionally reports MTE-tagged pages as non-identical to prevent unsafe
-> merging.
-> 
-> As suggested by David[1], this patch adopts the same pattern, replacing the
-> memchr_inv() byte-level check with a call to pages_identical(). This
-> leverages existing architecture-specific logic to determine if a page is
-> truly identical to the shared zeropage.
-> 
-> Having both the THP shrinker and KSM rely on pages_identical() makes the
-> design more future-proof, IMO. Instead of handling quirks in generic code,
-> we just let the architecture decide what makes two pages identical.
-> 
-> [1] https://lore.kernel.org/all/ca2106a3-4bb2-4457-81af-301fd99fbef4@redhat.com
-> 
-> Cc: <stable@vger.kernel.org>
-> Reported-by: Qun-wei Lin <Qun-wei.Lin@mediatek.com>
-> Closes: https://lore.kernel.org/all/a7944523fcc3634607691c35311a5d59d1a3f8d4.camel@mediatek.com
-> Fixes: b1f202060afe ("mm: remap unused subpages to shared zeropage when splitting isolated thp")
-> Suggested-by: David Hildenbrand <david@redhat.com>
-> Signed-off-by: Lance Yang <lance.yang@linux.dev>
 
-Functionally, the patch looks fine, both with and without MTE.
+On Sat, 20 Sep 2025 11:12:28 +0200, Christian Marangi wrote:
+> Add Airoha AN7583 compatible to the list of enum for Airoha Supported
+> SoCs.
+> 
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> ---
+>  Documentation/devicetree/bindings/arm/airoha.yaml | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
 
-Reviewed-by: Catalin Marinas <catalin.marinas@arm.com>
 
-> diff --git a/mm/huge_memory.c b/mm/huge_memory.c
-> index 32e0ec2dde36..28d4b02a1aa5 100644
-> --- a/mm/huge_memory.c
-> +++ b/mm/huge_memory.c
-> @@ -4104,29 +4104,20 @@ static unsigned long deferred_split_count(struct shrinker *shrink,
->  static bool thp_underused(struct folio *folio)
->  {
->  	int num_zero_pages = 0, num_filled_pages = 0;
-> -	void *kaddr;
->  	int i;
->  
->  	for (i = 0; i < folio_nr_pages(folio); i++) {
-> -		kaddr = kmap_local_folio(folio, i * PAGE_SIZE);
-> -		if (!memchr_inv(kaddr, 0, PAGE_SIZE)) {
-> -			num_zero_pages++;
-> -			if (num_zero_pages > khugepaged_max_ptes_none) {
-> -				kunmap_local(kaddr);
-> +		if (pages_identical(folio_page(folio, i), ZERO_PAGE(0))) {
-> +			if (++num_zero_pages > khugepaged_max_ptes_none)
->  				return true;
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
 
-I wonder what the overhead of doing a memcmp() vs memchr_inv() is. The
-former will need to read from two places. If it's noticeable, it would
-affect architectures that don't have an MTE equivalent.
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
 
-Alternatively we could introduce something like folio_has_metadata()
-which on arm64 simply checks PG_mte_tagged.
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
 
--- 
-Catalin
+  pip3 install dtschema --upgrade
+
+
+This patch series was applied (using b4) to base:
+ Base: attempting to guess base-commit...
+ Base: tags/v6.17-rc5-999-g7ca61ed8b3f3 (exact match)
+
+If this is not the correct base, please add 'base-commit' tag
+(or use b4 which does this automatically)
+
+New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/airoha/' for 20250920091230.17702-1-ansuelsmth@gmail.com:
+
+arch/arm64/boot/dts/airoha/an7583-evb.dtb: opp-table-cpu-smcc (operating-points-v2): $nodename:0: 'opp-table-cpu-smcc' does not match '^opp-table(-[a-z0-9]+)?$'
+	from schema $id: http://devicetree.org/schemas/opp/opp-v2.yaml#
+arch/arm64/boot/dts/airoha/an7583-evb.dtb: opp-table-cpu-smcc (operating-points-v2): Unevaluated properties are not allowed ('opp0', 'opp1', 'opp10', 'opp11', 'opp12', 'opp13', 'opp14', 'opp2', 'opp3', 'opp4', 'opp5', 'opp6', 'opp7', 'opp8', 'opp9' were unexpected)
+	from schema $id: http://devicetree.org/schemas/opp/opp-v2.yaml#
+arch/arm64/boot/dts/airoha/an7583-evb.dtb: crypto@1e004000 (inside-secure,safexcel-eip93ies): compatible: 'oneOf' conditional failed, one must be fixed:
+	['inside-secure,safexcel-eip93ies'] is too short
+	'airoha,en7581-eip93' was expected
+	'inside-secure,safexcel-eip93ies' should not be valid under {}
+	from schema $id: http://devicetree.org/schemas/crypto/inside-secure,safexcel-eip93.yaml#
+
+
+
+
+
 
