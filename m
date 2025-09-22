@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2FFCCAC5A7
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Sep 2025 07:55:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3BACCAC592
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Sep 2025 07:58:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YxwUKlOwEESknbd+JhAL5AsxkLK4doEFu2HbM6hDsXA=; b=pZNRgv3Nkgb13FkRUskVo/zD1N
-	lnKrF/jPB/q+H57La9R3p44S8dDVwwTaWSnhNwAJ1lggVDsBJXexGLhlw68q9v9GgrbrXoM+YW7u+
-	RXo+L4dxNfRZLHKiTB3gFC30W16ebKc2gWYx/xt8LMfs71C8BgMOz27k9BFDeamNFVlvUf0WDJ1Bb
-	IalHZ4vaDhDUmzcaptqfLjuHWt5wr1oOYyX0Hgpn5hTD9ZEPHxcL1Yc3pTBhFLHgd/8xYZqmSM6LM
-	xhIBukrBKlzUQHAmk3wBlB4e8xZsP53bUZgQHwaUtIUp07x9hMDetE9DF5Hr8ry2JDZAEWJD1o0Cl
-	hwhcA2nw==;
+	bh=Kq5wo//6bi0o+PvvKwUwOqRVQd5EVBmZwltJnl1N460=; b=mkfOVplmVJ7Wdf2jEntpe9kQBg
+	hwF4osJCvdxA09OaCablWxZ1rFVzO5vyJv7Mo6wD50VeL+ldwONT1iYOfEoSzYDRnFbCRPFgakY7Z
+	b5owmonhjw6OMRxZPDIgFneE5eGxl9Q0IJ//iPnCArgr6LROFClQPLdGcreSGRSPp8XN86qxSHXDs
+	P7N/dpWKZb2aza5CXPYMpH5iHwDLaTJAHbOBGjSiW187HuPNVo1mMJFu+/SgcDo5l/J8m7f5HeI26
+	8Cg+KsG5xYGD5oQBLzkMmi1HFd8BzQAeeDZ/LaVGg3IZSLynB6OuaCWshUrJgvyPuoVnnCa5ngzfB
+	8EcpZFSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0bOf-00000009YKr-4AM8;
-	Mon, 22 Sep 2025 07:55:41 +0000
+	id 1v0bRS-00000009ZUa-0CVD;
+	Mon, 22 Sep 2025 07:58:34 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0bOc-00000009YHg-35Ff;
-	Mon, 22 Sep 2025 07:55:40 +0000
+	id 1v0bRP-00000009ZT0-22dc;
+	Mon, 22 Sep 2025 07:58:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1758527736;
-	bh=mqGkL35d2nAV740tOqCB7tTDbkawSkgqIN7WEgn3v2E=;
+	s=mail; t=1758527909;
+	bh=8prAEjWiaIxuhpvbka12E01qTmGrcc+1Ik4AmS/ME0Q=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=bbYUroKuQyvxF+EmcZlnhWeQZvg1VPp6HPukgoFZkoU3yvga/+FKPVtepmRphsj1C
-	 A4/kOlnaXC6FzfT2i1qsM4yMxNIWDpZHWSHpylFkNL8Bjuyh9oJPvmIbZBsPWBcBat
-	 ULBvUZXv33vT4YAweBRSpRxjOsCpv3Qa5VKdBCeqeiniTtLpscWrpybXtzVsAnpsNq
-	 4xhshjEqRZxmWWZMCj2Mhe5CLcmHTKlvFxP501lxQ7+5Cv1Iz69ntCl95zQs9G0qlo
-	 x+OsoGwHb/xaWl+p1IEU6r3w1cGCoI0m0F9fr4qvOPrDzWjoebqSjFexsLuUTcq8tR
-	 2xe4MQ/MNtGVg==
+	b=b5d7EVlUHQdN2AF0SXwMm4ZQ8Cu4k5AEEp0o7tYGfyA2lZ+UnVAFjn4gyXQmzr29L
+	 G7tazT37GcCi+JWj6chdYu54wRR7iNjrf2ESHQAL3gpxgTlHLDQeZrcfJ1b7U9Z3Pk
+	 WSQW5DT5I4n3Y2KLN2SzIqrT+LGizeLnQCgzRFvHQdregu7OmRbK5bWggbFR1dNpW9
+	 7548ERovKVc+HmAnNz0Nrzff2QCNFkUKRvHW14vA9pD4WExqrWXVrH6i0tTkWDlcwt
+	 GfN/Y0X+7ppGbk1xC03+k271jPVvKoX22lStPWe3wuigMlIQ4+wlIDRQW13QolOn7a
+	 hTr/RLOGFbwkQ==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 65ACB17E10B7;
-	Mon, 22 Sep 2025 09:55:36 +0200 (CEST)
-Message-ID: <53d152b7-7e72-4189-adbe-6045418541a4@collabora.com>
-Date: Mon, 22 Sep 2025 09:55:35 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id BEB8E17E00A3;
+	Mon, 22 Sep 2025 09:58:28 +0200 (CEST)
+Message-ID: <0e45f5bc-837c-448c-952e-6fbd16c738ed@collabora.com>
+Date: Mon, 22 Sep 2025 09:58:28 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] dt-bindings: i2c: i2c-mt65xx: Document MediaTek
- MT6878 I2C
+Subject: Re: [PATCH v2] dt-bindings: i2c: i2c-mt65xx: Document MediaTek MT6878
+ I2C
 To: Igor Belwon <igor.belwon@mentallysanemainliners.org>,
  Qii Wang <qii.wang@mediatek.com>, Andi Shyti <andi.shyti@kernel.org>,
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -56,16 +56,16 @@ To: Igor Belwon <igor.belwon@mentallysanemainliners.org>,
 Cc: ~postmarketos/upstreaming@lists.sr.ht, linux-i2c@vger.kernel.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20250920-mt6878-i2c-bringup-v1-0-d1527ffd3cd7@mentallysanemainliners.org>
- <20250920-mt6878-i2c-bringup-v1-1-d1527ffd3cd7@mentallysanemainliners.org>
+References: <20250920-mt6878-i2c-bringup-v2-1-70a951f10be9@mentallysanemainliners.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250920-mt6878-i2c-bringup-v1-1-d1527ffd3cd7@mentallysanemainliners.org>
+In-Reply-To: <20250920-mt6878-i2c-bringup-v2-1-70a951f10be9@mentallysanemainliners.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250922_005538_926179_9C5B6DA7 
-X-CRM114-Status: GOOD (  12.84  )
+X-CRM114-CacheID: sfid-20250922_005831_703273_1029E193 
+X-CRM114-Status: UNSURE (   8.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,38 +80,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 20/09/25 17:31, Igor Belwon ha scritto:
+Il 20/09/25 19:22, Igor Belwon ha scritto:
 > Document the I2C controllers found in the MediaTek MT6878 SoC, by adding
-> a new compatible string for the controllers.
+> a new compatible string for the controllers. Their design is compatible
+> with the design from the MediaTek MT8188 SoC.
 > 
 
-Sorry but this is not right :-)
+Heh, I have seen that one just after reviewing the first version.
 
-compatible = "mediatek,mt6878-i2c", "mediatek,mt8188-i2c"
+Happy to see that you already pushed a fix for whatever I would be complaining
+about :))))
 
-That's what you need.
-
-Cheers,
-Angelo
-
-> Signed-off-by: Igor Belwon <igor.belwon@mentallysanemainliners.org>
-> ---
->   Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml b/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
-> index 23fe8ff76645e440c19469999ae9a86b7fdabe68..b0d7dd0dd8fdd7b0dba14d11f75c8f0b7ac15f58 100644
-> --- a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
-> +++ b/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
-> @@ -22,6 +22,7 @@ properties:
->         - const: mediatek,mt2712-i2c
->         - const: mediatek,mt6577-i2c
->         - const: mediatek,mt6589-i2c
-> +      - const: mediatek,mt6878-i2c
->         - const: mediatek,mt7622-i2c
->         - const: mediatek,mt7981-i2c
->         - const: mediatek,mt7986-i2c
-> 
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
 
