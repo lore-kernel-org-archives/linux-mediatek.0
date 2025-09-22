@@ -4,160 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45B7ECAC592
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Sep 2025 17:59:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA5C5CA100F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Sep 2025 18:28:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=X+NpTFRiqIAeX32lj/YJRRr02h3IMluyoifxGje7HdY=; b=1WTNHV2ER+a92mA9RIacLEmfQn
-	QBKsjuUErIGR0xyWcyVP+qBkH2zhzo32LTu8KkCIfHAOrdRx10rRCvSn1poQa3S1QpijR7vdsIQ44
-	N/q9MtE6OFCDFlqFK26eUfDLswa6klNd68e5UZbBOkapKsli8Mq0mJEyYL68PfFtpmcvWxU1/IyeH
-	eWRJkPovOe1NDKxyspZtrxmXgvOhwH9es3i37GrWhcxUwSmbI6wHPnRITdTHUSRSeLwmi1RMUAe5+
-	b6ROydIZVF4nzkVgLImLSVhVlcuU+8FlW072cnc9ORpj7iwxb1WyQyodKWeqmig34kvmqrtSA3EEg
-	H5B71jlA==;
+	bh=ynGvtr8Hk8lqE6fM2W7drPwjY+TAz4tWP7iL0AILI9U=; b=kdiQhy+jE33uhyIgdtQts9si4r
+	NvHn9Y2pfyJDIFZCkfjsad9SypAd5guw/ut+IBz2Sxzt1AdmpDgKlJSCXC/MA2jm1RyOGrDmXTzlN
+	KqiwPvIS6e1XcDHuK+kV/x4m9HVoIr0NBL+JKFm1V//KPDwboVa5foNZTXsCw/yu0r5sZMwMua3s2
+	jISwNPz/ae32BtbsP/87xRJE6caUULdrB+Knc9QS/wgMztSb4ADAbmWiS4xTgdMXNuZqi/9MeOJmk
+	zMqXTni4XLX6xFLtj5ve6F9KSdU4qqVjpYjncUE6PNZ1hiGvrlOifhz/QcIiqB+M6Oz+MLhU96Hcj
+	emnw/CqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0kog-0000000BC8n-301q;
-	Mon, 22 Sep 2025 17:59:10 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1v0lGy-0000000BFMX-3lhF;
+	Mon, 22 Sep 2025 18:28:24 +0000
+Received: from 004.mia.mailroute.net ([199.89.3.7])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0kod-0000000BC7r-3fiJ
+	id 1v0lGv-0000000BFLE-2H7u
 	for linux-mediatek@lists.infradead.org;
-	Mon, 22 Sep 2025 17:59:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1758563946;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=X+NpTFRiqIAeX32lj/YJRRr02h3IMluyoifxGje7HdY=;
-	b=N64cQPf23OMOKn8TGNdXivCw5IxXdU+/0DpoI6atO/EuAOX/IzzQVVa+2tecxAhUexQr+H
-	2vvm/pLkhVPR3uKa3BQ8sB4sUaRNcxibWiDxZOMzN+v9SCMvfFVUgfOqVdv7uxIVcjMhZF
-	mefGu7QTh5oPip1a8hkIP9nhszRqWAY=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-589-qXVjIF28M4SKvYv9sOwFEQ-1; Mon, 22 Sep 2025 13:59:04 -0400
-X-MC-Unique: qXVjIF28M4SKvYv9sOwFEQ-1
-X-Mimecast-MFC-AGG-ID: qXVjIF28M4SKvYv9sOwFEQ_1758563944
-Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-45f2b0eba08so33537735e9.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 22 Sep 2025 10:59:04 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1758563944; x=1759168744;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=X+NpTFRiqIAeX32lj/YJRRr02h3IMluyoifxGje7HdY=;
-        b=g/R/84oJfYcjrT88cB7lxJlN7+a4qSu41xw4Ge+ooionyTzEGK2IZQsxOhzynd65+K
-         UobY9qOZBKtXHz2V6Y9CH9Ezr7Mt1gZN7trcAZ3vb6zT8NR93sn8WGU4rsxR2uA+UIFl
-         dPWu2eTU87tTvtEmZ+ejsP+ZZOPuBjkMEhCu1y2haNRHfj3EXEW/7h8XCiFzbO3JYGXk
-         jl0h4iWk+hSoQzqd2tlSHXyf66Hpkb08ks9IlcA2wpB7nL1pl4Th9oJPWf1VxY5zZwzP
-         jTbCuZoxW98ichB/rFK9fhMoAp80zPxA66OpBBUN487T9cqGRGueO4w9SE5lrKFQQNml
-         w1kg==
-X-Forwarded-Encrypted: i=1; AJvYcCVrMUDxapyRhVJQdZpUqoY3B2xNmZfa8lpuqLrT897371QFX4hMlVyw6j56klbxlzVeZk1TYykuQHhRHnuxZQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwWRdsjtSBcVXLEf9Anvng47Kvwi+E8kq07An1Gc10vs6FXh/xC
-	W6477Ncc9amSVp/EMRU++FjTSy+vbvxmgqveiDRki0tcoMS+rRiri9N9XL5em+0DzXqhisiKEnK
-	+GJ0BXSuVpIm6ERXZCOt+Ezu3MWW9aKYBbMVZHdvQrV5fSEZ6QHBaBJsssz3s2/yMRmBpCCNQMg
-	==
-X-Gm-Gg: ASbGnctu7iBoBkQdPOTbnSHp87upBMAKWaA+In9l3lZ0x7e4ujeFqAWJXtxHNEq4xK3
-	2cfu7NWkblrKgXak0TtHQtPTz4fC1tS164+DnTU/UGz93bNzCwfe7tMalCHiWWWvzk4ogqkPc0K
-	HMvvJKLRautzCZcsOmg7d5pE/Fhoq4dLeL636owkhvmory3L6WCbAuNj6RylFjKEfc4DTjdELAA
-	da8Hi/77TXBhe5p2JMbK0zzRUvHeF8+yH1Lb0ctLn3eYWaMs2GUXczKYUGpJ3n6u4BHpRV7WzhP
-	pbf8mfmBWXAi6Y1/4goHMQ+7i4kU+i1ykAehFtv+906jXMLJsBdPwIhQmIJGb6SbHhvpsSQANKc
-	tFcjuBXpQs1LSoJaFzwWxO0Ma34OYYrpspzUuI4h84YDd8JjniZ3MoJ7sIrwFA8s=
-X-Received: by 2002:a05:600c:468c:b0:46d:4f41:3704 with SMTP id 5b1f17b1804b1-46d4f41384dmr40724495e9.24.1758563943622;
-        Mon, 22 Sep 2025 10:59:03 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEoE/UaKLNkRz3YUEvL7yXGK4SAbmQlqVmH48OgbeeBRyoglBEIuVbqUV5YzWqsII28Z7eKwA==
-X-Received: by 2002:a05:600c:468c:b0:46d:4f41:3704 with SMTP id 5b1f17b1804b1-46d4f41384dmr40724115e9.24.1758563943097;
-        Mon, 22 Sep 2025 10:59:03 -0700 (PDT)
-Received: from ?IPV6:2003:d8:2f2a:e200:f98f:8d71:83f:f88? (p200300d82f2ae200f98f8d71083f0f88.dip0.t-ipconnect.de. [2003:d8:2f2a:e200:f98f:8d71:83f:f88])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-461383b7b9csm253669505e9.2.2025.09.22.10.59.01
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 22 Sep 2025 10:59:02 -0700 (PDT)
-Message-ID: <a3412715-6d9d-4809-9588-ba08da450d16@redhat.com>
-Date: Mon, 22 Sep 2025 19:59:00 +0200
+	Mon, 22 Sep 2025 18:28:22 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 004.mia.mailroute.net (Postfix) with ESMTP id 4cVs704Y4dzm0yTG;
+	Mon, 22 Sep 2025 18:28:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1758565689; x=1761157690; bh=ynGvtr8Hk8lqE6fM2W7drPwj
+	Y+TAz4tWP7iL0AILI9U=; b=l2Mls1D8BqIqyJXVAkQqU2QfuYfBVL0osXDfZPxf
+	k+5+1/X6tYeWgpkX3BL9i+ErV8HJMy5L94rVwUFqAMBZhfD8XtpguLCnS2ToH6le
+	gVoAq702PMeThTvLT6DaxF2Y+N9meoTf7aXuR4STvS+Yk+KL7+DW2+yz+AkBAKQz
+	e+e/QZhNUNZJCfXbfJYKyq7Pf0C9nPop2nyJF1poe1QJ41s4SBc6OlyWDPIDo/R/
+	6pcoqBvRWQHfK+/Nb1KEHQ1fU27tUnCJ1rgy/lMieMmEzQlp1u4jvA7seiu/KAdz
+	LTRbVUGZSHbfw8bOiS3zyPA4H1ntMBEe7RVvOelc7wa/4A==
+X-Virus-Scanned: by MailRoute
+Received: from 004.mia.mailroute.net ([127.0.0.1])
+ by localhost (004.mia [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id 5KrV1a4zT8tf; Mon, 22 Sep 2025 18:28:09 +0000 (UTC)
+Received: from [100.119.48.131] (unknown [104.135.180.219])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bvanassche@acm.org)
+	by 004.mia.mailroute.net (Postfix) with ESMTPSA id 4cVs6j5G9fzm0ySG;
+	Mon, 22 Sep 2025 18:27:56 +0000 (UTC)
+Message-ID: <59dd8d29-48e8-4f45-b9f8-2f67b3f316b5@acm.org>
+Date: Mon, 22 Sep 2025 11:27:55 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/1] mm/thp: fix MTE tag mismatch when replacing
- zero-filled subpages
-To: Catalin Marinas <catalin.marinas@arm.com>,
- Lance Yang <lance.yang@linux.dev>
-Cc: akpm@linux-foundation.org, lorenzo.stoakes@oracle.com,
- usamaarif642@gmail.com, yuzhao@google.com, ziy@nvidia.com,
- baolin.wang@linux.alibaba.com, baohua@kernel.org, voidice@gmail.com,
- Liam.Howlett@oracle.com, cerasuolodomenico@gmail.com, hannes@cmpxchg.org,
- kaleshsingh@google.com, npache@redhat.com, riel@surriel.com,
- roman.gushchin@linux.dev, rppt@kernel.org, ryan.roberts@arm.com,
- dev.jain@arm.com, ryncsn@gmail.com, shakeel.butt@linux.dev,
- surenb@google.com, hughd@google.com, willy@infradead.org,
- matthew.brost@intel.com, joshua.hahnjy@gmail.com, rakie.kim@sk.com,
- byungchul@sk.com, gourry@gourry.net, ying.huang@linux.alibaba.com,
- apopple@nvidia.com, qun-wei.lin@mediatek.com, Andrew.Yang@mediatek.com,
- casper.li@mediatek.com, chinwen.chang@mediatek.com,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-mm@kvack.org, ioworker0@gmail.com,
- stable@vger.kernel.org
-References: <20250922021458.68123-1-lance.yang@linux.dev>
- <aNGGUXLCn_bWlne5@arm.com>
-From: David Hildenbrand <david@redhat.com>
-Autocrypt: addr=david@redhat.com; keydata=
- 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
- qIws/H2t
-In-Reply-To: <aNGGUXLCn_bWlne5@arm.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Rxglt63VWWqZ3lY_qEDeub0NIfSaIkpWR8AoWK9Yauw_1758563944
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH v1 01/10] ufs: host: mediatek: Fix runtime suspend error
+ deadlock
+To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
+ "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ "martin.petersen@oracle.com" <martin.petersen@oracle.com>
+Cc: =?UTF-8?B?VHVuLXl1IFl1ICjmuLjmlabogb8p?= <Tun-yu.Yu@mediatek.com>,
+ =?UTF-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
+ =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
+ =?UTF-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
+ =?UTF-8?B?RWQgVHNhaSAo6JSh5a6X6LuSKQ==?= <Ed.Tsai@mediatek.com>,
+ wsd_upstream <wsd_upstream@mediatek.com>,
+ =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
+ <Chaotian.Jing@mediatek.com>, =?UTF-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?=
+ <Chun-hung.Wu@mediatek.com>, =?UTF-8?B?WWktZmFuIFBlbmcgKOW9ree+v+WHoSk=?=
+ <Yi-fan.Peng@mediatek.com>, =?UTF-8?B?UWlsaW4gVGFuICjosK3pupLpup8p?=
+ <Qilin.Tan@mediatek.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ =?UTF-8?B?SmlhamllIEhhbyAo6YOd5Yqg6IqCKQ==?= <jiajie.hao@mediatek.com>,
+ =?UTF-8?B?TGluIEd1aSAo5qGC5p6XKQ==?= <Lin.Gui@mediatek.com>,
+ =?UTF-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?= <Naomi.Chu@mediatek.com>
+References: <20250918104000.208856-1-peter.wang@mediatek.com>
+ <20250918104000.208856-2-peter.wang@mediatek.com>
+ <80a31144-852f-4df5-802e-a8c5d04a298a@acm.org>
+ <bdb6ee1402ae4c9ba8919011b1d8fcb9d984129f.camel@mediatek.com>
+ <bc612c10-a4eb-41ab-b8e5-726d22935518@acm.org>
+ <4f8d4f0c9efd24aa4448e6dda064b0633d253f2d.camel@mediatek.com>
 Content-Language: en-US
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <4f8d4f0c9efd24aa4448e6dda064b0633d253f2d.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250922_105907_989506_70672B5D 
-X-CRM114-Status: GOOD (  23.33  )
+X-CRM114-CacheID: sfid-20250922_112821_732458_44580B55 
+X-CRM114-Status: GOOD (  14.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -172,86 +104,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 22.09.25 19:24, Catalin Marinas wrote:
-> On Mon, Sep 22, 2025 at 10:14:58AM +0800, Lance Yang wrote:
->> From: Lance Yang <lance.yang@linux.dev>
->>
->> When both THP and MTE are enabled, splitting a THP and replacing its
->> zero-filled subpages with the shared zeropage can cause MTE tag mismatch
->> faults in userspace.
->>
->> Remapping zero-filled subpages to the shared zeropage is unsafe, as the
->> zeropage has a fixed tag of zero, which may not match the tag expected by
->> the userspace pointer.
->>
->> KSM already avoids this problem by using memcmp_pages(), which on arm64
->> intentionally reports MTE-tagged pages as non-identical to prevent unsafe
->> merging.
->>
->> As suggested by David[1], this patch adopts the same pattern, replacing the
->> memchr_inv() byte-level check with a call to pages_identical(). This
->> leverages existing architecture-specific logic to determine if a page is
->> truly identical to the shared zeropage.
->>
->> Having both the THP shrinker and KSM rely on pages_identical() makes the
->> design more future-proof, IMO. Instead of handling quirks in generic code,
->> we just let the architecture decide what makes two pages identical.
->>
->> [1] https://lore.kernel.org/all/ca2106a3-4bb2-4457-81af-301fd99fbef4@redhat.com
->>
->> Cc: <stable@vger.kernel.org>
->> Reported-by: Qun-wei Lin <Qun-wei.Lin@mediatek.com>
->> Closes: https://lore.kernel.org/all/a7944523fcc3634607691c35311a5d59d1a3f8d4.camel@mediatek.com
->> Fixes: b1f202060afe ("mm: remap unused subpages to shared zeropage when splitting isolated thp")
->> Suggested-by: David Hildenbrand <david@redhat.com>
->> Signed-off-by: Lance Yang <lance.yang@linux.dev>
-> 
-> Functionally, the patch looks fine, both with and without MTE.
-> 
-> Reviewed-by: Catalin Marinas <catalin.marinas@arm.com>
-> 
->> diff --git a/mm/huge_memory.c b/mm/huge_memory.c
->> index 32e0ec2dde36..28d4b02a1aa5 100644
->> --- a/mm/huge_memory.c
->> +++ b/mm/huge_memory.c
->> @@ -4104,29 +4104,20 @@ static unsigned long deferred_split_count(struct shrinker *shrink,
->>   static bool thp_underused(struct folio *folio)
->>   {
->>   	int num_zero_pages = 0, num_filled_pages = 0;
->> -	void *kaddr;
->>   	int i;
->>   
->>   	for (i = 0; i < folio_nr_pages(folio); i++) {
->> -		kaddr = kmap_local_folio(folio, i * PAGE_SIZE);
->> -		if (!memchr_inv(kaddr, 0, PAGE_SIZE)) {
->> -			num_zero_pages++;
->> -			if (num_zero_pages > khugepaged_max_ptes_none) {
->> -				kunmap_local(kaddr);
->> +		if (pages_identical(folio_page(folio, i), ZERO_PAGE(0))) {
->> +			if (++num_zero_pages > khugepaged_max_ptes_none)
->>   				return true;
-> 
-> I wonder what the overhead of doing a memcmp() vs memchr_inv() is. The
-> former will need to read from two places. If it's noticeable, it would
-> affect architectures that don't have an MTE equivalent.
-> 
-> Alternatively we could introduce something like folio_has_metadata()
-> which on arm64 simply checks PG_mte_tagged.
 
-We discussed something similar in the other thread (I suggested 
-page_is_mergable()). I'd prefer to use pages_identical() for now, so we 
-have the same logic here and in ksm code.
+On 9/22/25 1:37 AM, Peter Wang (=E7=8E=8B=E4=BF=A1=E5=8F=8B) wrote:
+> Okay, you prefer to check pm_op_in_progress before getting
+> runtime PM, like below patch?
+> If yes, I will remove this patch and check this in ufs core.
+>=20
+> @@ -6625,6 +6625,11 @@ static void ufshcd_err_handler(struct
+> work_struct *work)
+>          }
+>          spin_unlock_irqrestore(hba->host->host_lock, flags);
+>=20
+> +       if (hba->pm_op_in_progress) {
+> +               ufshcd_link_recovery(hba);
+> +               return;
+> +       }
+> +
+>          ufshcd_err_handling_prepare(hba);
 
-(this patch here almost looks like a cleanup :) )
+Yes, the above change is what I prefer. Please note that I haven't
+tested this change myself.
+>>>> The UFSHCD_EH_IN_PROGRESS definition and also the
+>>>> ufshcd_set_eh_in_progress() and ufshcd_clear_eh_in_progress()
+>>>> definitions must remain in the UFS core private code. Please do
+>>>> not
+>>>> move
+>>>> these definitions into the include/ufs/ufshcd.h header file.
+>>>
+>>> Do you think we should check ufshcd_eh_in_progress in
+>>> __ufshcd_wl_suspend? I'm not sure, because we don't see this
+>>> error on all UFS hosts =E2=80=94 the vendor suspend operations
+>>> (ufshcd_vops_suspend) could be different.
+>>
+>> Why is auto-hibernation disabled during suspend? As far as I know the
+>> UFSHCI standard allows to keep auto-hibernation enabled during
+>> suspend.
+>=20
+> This is a limitation of MediaTek=E2=80=99s SoC.
+> If auto-hibernate is triggered concurrently with manual
+> hibernate, it may cause errors. Therefore, we disable
+> auto-hibernate before issuing a manual hibernate command.
 
-If this becomes a problem, what we could do is in pages_identical() 
-would be simply doing the memchr_inv() in case is_zero_pfn(). KSM might 
-benefit from that as well when merging with the shared zeropage through 
-try_to_merge_with_zero_page().
+How about adding a comment that explains this?
 
--- 
-Cheers
+Thanks,
 
-David / dhildenb
-
+Bart.
 
