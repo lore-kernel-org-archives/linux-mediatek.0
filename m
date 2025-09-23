@@ -4,62 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13830CAC5A5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Sep 2025 21:39:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31CABCAC5AC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Sep 2025 21:41:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=p+GFxQErCvWj4PbtQGhJ+tJMGMSzlUWRYZ+DV6Ypzug=; b=Sj+xeQi3ql0ogvuWwI6tqj9Cdw
-	LhOrW3yNWk2aIOyA2inV2DGo/KmxYOo7Y3xmRW7K+GlU0dgK/mkGOPoDsFnKXuG/UAS6cf0/GNHHh
-	aHzTa3GgfdJnpUMAsxwrG9L19jeqjimZ5RmLX58dcsXc2O76Ib4lHlhbAO/xVfk0WOt6gFw9P9my0
-	y5SrTXJZEej6YFxrgks0mkUEA4DrXO0fopQkKOiT+d4XLIAnN8H+IJTlVC+rxM7r76FmITn2q79/f
-	dFXTlqCyV/VacfD1RbM5Z8LOXhmvBr6b4sSHYmB2eydDaCC7FU9jmiOE+Gdldh6MwD9WsSSWzWJTR
-	K0aXiZVw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lafGBJ0VQ4ZmQeQQdWVZa8RBcapI9UnE8qzTzoRje3I=; b=oZBImGKqcdOfDjeodqDB+5nQiv
+	enLenXVLY9NqlZKufp/u6I2nyg6nGcYrTIVOIqxUi3yKvJVaVD60BhtUoStf6Q+/ZDjKqyvrRR75r
+	ABw66J5Gcq40d5RJIkPyEXRvkDnrIY8VERtBnr3aHL5F8sRHY+Hm3NVWPEu07TbRE9aXqZysW/pvF
+	qwXHyPZpYV5cF157BjOKJeb2NHhQHgFQ2Yw2C9A0ne/qCW5hiyHm0PDkphMRXG4XWDCBBh0I4/OQD
+	vPHyFR+GlAvbWz6zTJ2G0ciO41t05eR6mbNq2gLiulKh9w2HpEobLKhriDtFCyPqEpF/Q1M7gDDFj
+	YzqCk4ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1AjT-0000000EtIF-1ERr;
-	Tue, 23 Sep 2025 21:39:31 +0000
-Received: from out-178.mta1.migadu.com ([2001:41d0:203:375::b2])
+	id 1v1Alq-0000000EtXb-1LYR;
+	Tue, 23 Sep 2025 21:41:58 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1AjR-0000000EtHk-1Uuy
-	for linux-mediatek@lists.infradead.org;
-	Tue, 23 Sep 2025 21:39:30 +0000
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
-	t=1758663564;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=p+GFxQErCvWj4PbtQGhJ+tJMGMSzlUWRYZ+DV6Ypzug=;
-	b=IFFn5IiOy9Uc88PgON7sTpVx0lyqFk8K50yLPv3yQe2AojM4EmCPbgBoK2OUeOuIZoGZXz
-	ZOIRBsXpTG9djL6zo3e4j2apoX5CNKoMOrNCzkh0OM2TFSsaP4q4S+EVZD7OfM1JuU5VVb
-	4LMpPBMuVcUDyhknP9EEGvu1GgufzMM=
-From: Thorsten Blum <thorsten.blum@linux.dev>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
+	id 1v1Aln-0000000EtWQ-3JDw;
+	Tue, 23 Sep 2025 21:41:56 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 215BA43F56;
+	Tue, 23 Sep 2025 21:41:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9ED8DC4CEF5;
+	Tue, 23 Sep 2025 21:41:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1758663715;
+	bh=K2AFaAphLag2Ez54TqgVqGYTS8Wuz1j2Ec7u9TglbZo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=PKYPkq+6h1XJ9wGM5liz75OrgDFlseHe0NHVyy5OBATAdDhhLl6qIsBVWjON4BALj
+	 ZiHkfUV3SznpvQb59DBKHUnG/7++D0QXpoIOXfpvH7QezalbMYSeoGjXFKOxgaywz0
+	 nIYp+j4Ub6fj5zAQCJ08Vm89NHxlyz7qvS2+EQ/6PfQ2f8DwJJT/U4CkD9mtjvmRzK
+	 ZM6hAohKtD19lHeS1AuMB+7dcsJilH5exq1kO3XGXUxBy8Sy7CaLCvQvBInusXcZf+
+	 IVsk/ng0JtXK7e+lIXpL2Dn4aVXjW6WzNM0XW6TwDOQTeE2BImZXhdHzCM3OM3SRUW
+	 BKY5R566k+9SA==
+Date: Tue, 23 Sep 2025 16:41:52 -0500
+From: Rob Herring <robh@kernel.org>
+To: Julien Massot <julien.massot@collabora.com>
+Cc: kernel@collabora.com, Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Thorsten Blum <thorsten.blum@linux.dev>,
-	linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Ikjoon Jang <ikjn@chromium.org>,
+	Enric Balletbo i Serra <eballetbo@kernel.org>,
+	Chen-Yu Tsai <wenst@chromium.org>, Weiyi Lu <weiyi.lu@mediatek.com>,
+	Eugen Hristev <eugen.hristev@linaro.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Julien Massot <jmassot@collabora.com>,
+	Sean Wang <sean.wang@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>, linux-clk@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH wireless-next] wifi: mt76: connac: Replace memcpy + hard-coded size with strscpy
-Date: Tue, 23 Sep 2025 23:38:31 +0200
-Message-ID: <20250923213831.1896823-2-thorsten.blum@linux.dev>
+	linux-mediatek@lists.infradead.org, linux-sound@vger.kernel.org,
+	linux-gpio@vger.kernel.org
+Subject: Re: [PATCH v3 3/6] dt-bindings: arm: mediatek: Support
+ mt8183-audiosys variant
+Message-ID: <20250923214152.GB91441-robh@kernel.org>
+References: <20250826-mtk-dtb-warnings-v3-0-20e89886a20e@collabora.com>
+ <20250826-mtk-dtb-warnings-v3-3-20e89886a20e@collabora.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Migadu-Flow: FLOW_OUT
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250826-mtk-dtb-warnings-v3-3-20e89886a20e@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250923_143929_601384_E80D3508 
-X-CRM114-Status: UNSURE (   7.36  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250923_144155_848005_62764EF0 
+X-CRM114-Status: GOOD (  11.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,30 +89,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Replace memcpy() and the hard-coded string length with strscpy() to
-safely copy the string and improve mt76_connac_mcu_chip_config().
+On Tue, Aug 26, 2025 at 09:39:36AM +0200, Julien Massot wrote:
+> Update the mediatek,audsys binding to support the mt8183-audiosys
+> compatible, which uses a different audio controller
+> (mediatek,mt8183-audio.yaml) compared to the legacy mt2701-audio
+> controller.
+> 
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+> Signed-off-by: Julien Massot <julien.massot@collabora.com>
+> ---
+>  .../bindings/arm/mediatek/mediatek,audsys.yaml           | 16 +++++++++++++++-
+>  1 file changed, 15 insertions(+), 1 deletion(-)
 
-No functional changes.
+As this hasn't been picked up, I've applied it.
 
-Signed-off-by: Thorsten Blum <thorsten.blum@linux.dev>
----
- drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-index 16db0f2082d1..0ccd39149663 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-@@ -1949,7 +1949,7 @@ int mt76_connac_mcu_chip_config(struct mt76_dev *dev)
- 		.resp_type = 0,
- 	};
- 
--	memcpy(req.data, "assert", 7);
-+	strscpy(req.data, "assert");
- 
- 	return mt76_mcu_send_msg(dev, MCU_CE_CMD(CHIP_CONFIG),
- 				 &req, sizeof(req), false);
--- 
-2.51.0
-
+Rob
 
