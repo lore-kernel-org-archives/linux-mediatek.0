@@ -4,84 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A63DCCAC5A7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Sep 2025 14:37:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDF54CAC5AE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Sep 2025 14:39:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oglCBmL4B4WbAybvmqD8cJJViYSD9fzgh1Gue4gY1UE=; b=yJFrRtTnIGaimI6e3YnHgOv6tg
-	hWBENuaW7KWImDbWm8EmKw/eJ+axnoPfzcPnzZFYDpG54/NABuvAAYVyHV0A9WiV8m9o97NVbnLl/
-	Xss5g8zKTOMsVWLSs6s7gdKMohPdcXCiAtJkJeIP6a+TmxLJ8qRRViomM1SYc5bgUgypZs2yZPFir
-	odYF+EcX3gH989tu7cL85v23P6gtaDMcxBnlgR/4GGwsKFOIzpJoaLVzsIqcqZtGm46cylHTSPdn8
-	Ae598iiY2KCCHBC2Ifw7EJF+fvmMagjI4JoiNS5ZKKFiHMQOmnp6UboYeSd1vVmdvD21a+Rqqpu0h
-	cqM/VG6A==;
+	bh=mARY3xOYQh4uKhHgWSMpXzOKQHEe30Fmz/3A8KJzfvc=; b=CaFRIyJU/c30Fhq3fKNrMbIwxW
+	gh+xBeOxR0B4uZY1+zSa0vVBYhY72IZIDTLcYrmrQIKmbpG9CBJIkeexpwT0SFPbEqwFE2/8+CygB
+	y0X/ofyV3E6RzDTPyL2f913LU4zWKs01IU+CLMiRe9ibWsBiDuKitQyltwReTdeoL+lP3H7Fdbl1s
+	+s7hj4Pg6MyLinLQOanTkK301N1Vyi8P2vRxZ6Mh0+iZ5GK9VtTedd5qr8xIAul+wwaTM6g0E7fvR
+	V4dejqx9+7DHumZOUyPR1SGIZJdRbrU2JyuH6qT0tVBQYopvxP5utUwu0i88WFCewcW5miZw3NNv+
+	ezypuAaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v149L-0000000DpB5-3r5z;
-	Tue, 23 Sep 2025 14:37:47 +0000
-Received: from mail-yb1-xb2a.google.com ([2607:f8b0:4864:20::b2a])
+	id 1v14Ad-0000000DqIa-0Epj;
+	Tue, 23 Sep 2025 14:39:07 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v149I-0000000Dp96-3qEd
-	for linux-mediatek@lists.infradead.org;
-	Tue, 23 Sep 2025 14:37:46 +0000
-Received: by mail-yb1-xb2a.google.com with SMTP id 3f1490d57ef6-ea5bafdfea3so5674695276.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 23 Sep 2025 07:37:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1758638264; x=1759243064; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=oglCBmL4B4WbAybvmqD8cJJViYSD9fzgh1Gue4gY1UE=;
-        b=FbkrIf+eBzCLLcNQH+iMhy8FMl1hvw+RXpFbamQb5Gyqwy/fjlv9hYqobASEBCgOrt
-         XD9fpkrfnMX6CTSxo/Ju5YDAEsgMMXTGimUln2RfJz6c+wTuIFfKC+irVYgouRF949Sw
-         edKxCJ4xGE5l3leQxr2RiS7Dk0c+glYHUMCcCClN7pT8BQBcxuB4QBij4BQsEOZeaeKU
-         02Iz8tYwNUzKlD8d4LriMZwAVhGHR4SroDeheH1J9+vtidrZWZQlw7Ahpq1UTG7BnRpp
-         27AS7nKWgy0G+yByXuC+BliCUf0Y4SLxWf7uSN3JJahUSZv8qh1+96qzlViymDmzNqoZ
-         ONEQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1758638264; x=1759243064;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=oglCBmL4B4WbAybvmqD8cJJViYSD9fzgh1Gue4gY1UE=;
-        b=F3p6KCsgWCvbUPOYkXTFdjon8EUsf/xUyUr8RNZr0Rd/eFx/NaamqH572jEWm/+yJX
-         HtjNV9r5+7Og9TR+LkfFvo4VtebWFd+6hIUAVuNb6W2whTrMA9K/kYy8/eASd7ZsZCeg
-         jmGFThNB9xaQVb2dO7ezfjNtQvBuzsHPqk/LQGFMhfQql77HmKzW9AokG4YE0oM8il1Q
-         2GxRcdww2ZSrrLyEsYccHAIRwKM07b57lfWnvL9vUwXK4a5UIWGeCrsIwkP6xXUymUbc
-         Y1IXXynEvw7ju/yteki7J5GY6gdGnUdH87LZ+8lHwa6KqtiLEaFyuNh587BQkwTiRrnv
-         QxCg==
-X-Forwarded-Encrypted: i=1; AJvYcCVsdSuExDnKDHyT1XWMsjZrTGrAeeDvrZibtyiDkeoZa8s42k89Kv4ye9/tfM8/K8h+1airWRiol0719uvcGw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzWXUlLwo3zaZP0ijCC83Fokn+2YUFL7s82uM8VgEDeRmnYcGOa
-	t5FOoIl0F0WAADcaVr9aav1P8J54Lsl2wNnXkDS48JIvO1ySIsYS3uVMFh1U3XQLkNtEC6blgmm
-	FI6jD1inoGl1cZPOXLpLz9UkcIzAd8OejpM8VuD7VxQ==
-X-Gm-Gg: ASbGncukPcn1HnlESzBil56FDfvZKTOnYJh80Fvl8/Ty0mP1fY9skUkmn0QL2EPxFmd
-	3b1rLRlLz5FQjwf8PqitudUoeAFJKRh5oNdjyynTGqVyDT6iTcIW0G4n0QdTnrGmwW4DDCu7AYg
-	qJchvxWjSheR/7IxcOX9ZJM2IrfMhLZkI90940K4psH8s74mQNvEzOXaQMloiqD/Iokd3N0HMbU
-	UYOCUHwySRF
-X-Google-Smtp-Source: AGHT+IEXKuzIArBc91/KA3f/YzDK175N+zTx0haFXxYxlTGRRGGJLMlWHDTe/A1+uBFUxsZwnePdVwoGLZBFbpfcE78=
-X-Received: by 2002:a05:690e:42d3:b0:635:35a0:c5a0 with SMTP id
- 956f58d0204a3-636045219e6mr1586791d50.0.1758638263271; Tue, 23 Sep 2025
- 07:37:43 -0700 (PDT)
+	id 1v14Ab-0000000DqGp-2ALf;
+	Tue, 23 Sep 2025 14:39:05 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id E404F60052;
+	Tue, 23 Sep 2025 14:39:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6B57EC113CF;
+	Tue, 23 Sep 2025 14:39:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1758638344;
+	bh=7y7/yuACkZLW79g5K5sIcU1j82Ksu2UcLf91irlmAcg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ANjomnT7tvAlSvx7jeHkZqzpLc2fb96iYwhxRZrRaCXSqjMjrkqllXf6P0ALKVP0y
+	 s3nI2y2MQxTpYk9losq0G3Q33MJWvh5B0X+KRd15ayCOGw7tSLWqycG7rpRmiscHYX
+	 QeM2U4ZvQ00/Atfe6dDO8CRnKqR57PwxmPEmDfdrX6VAQ3dFDl6CpmKGZVf3+4nu6F
+	 SHU/jZjtyWZrtTpXbmECEy7ut43ONk0H6gbinCYk4DvAIeTuqKZBRgRYXNP+lKDiXW
+	 qmBk652g99F7+dxUQaGQfWmNpJA7bUnqgJtqSukaC24NAlPfYv9fwAoLjwl/MnpwOi
+	 nbQ5VWDe9aXpg==
+Date: Tue, 23 Sep 2025 09:39:03 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org,
+	Simona Vetter <simona@ffwll.ch>,
+	Jassi Brar <jassisinghbrar@gmail.com>,
+	Chia-I Wu <olvaffe@gmail.com>, Steven Price <steven.price@arm.com>,
+	linux-mediatek@lists.infradead.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	kernel@collabora.com, Kees Cook <kees@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	David Airlie <airlied@gmail.com>,
+	"Gustavo A. R. Silva" <gustavoars@kernel.org>,
+	Liviu Dudau <liviu.dudau@arm.com>, linux-kernel@vger.kernel.org,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Boris Brezillon <boris.brezillon@collabora.com>,
+	devicetree@vger.kernel.org, linux-hardening@vger.kernel.org,
+	linux-pm@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Maxime Ripard <mripard@kernel.org>
+Subject: Re: [PATCH v4 4/8] dt-bindings: mailbox: Add MT8196 GPUEB Mailbox
+Message-ID: <175863834028.3197589.1266826496329321064.robh@kernel.org>
+References: <20250923-mt8196-gpufreq-v4-0-6cd63ade73d6@collabora.com>
+ <20250923-mt8196-gpufreq-v4-4-6cd63ade73d6@collabora.com>
 MIME-Version: 1.0
-References: <20250923-mt8195-pmdomain-audio-fix-v1-1-782190385f46@collabora.com>
-In-Reply-To: <20250923-mt8195-pmdomain-audio-fix-v1-1-782190385f46@collabora.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Tue, 23 Sep 2025 16:37:07 +0200
-X-Gm-Features: AS18NWDFuHpbFMIzRsDGrqDtLAtiZBYWyMCQ67uXlma11BT4iPN9Gof36Ta3gH0
-Message-ID: <CAPDyKFrpwZ+7202Zzs=Hh3=AYqAOPpr98CubYw8dRp5Y+ScxpA@mail.gmail.com>
-Subject: Re: [PATCH] pmdomain: mediatek: set default off flag for MT8195 AUDIO
- power domain
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, kernel@collabora.com, 
-	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250923_073744_962434_83F390B1 
-X-CRM114-Status: GOOD (  18.23  )
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250923-mt8196-gpufreq-v4-4-6cd63ade73d6@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,49 +86,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 23 Sept 2025 at 10:52, Louis-Alexis Eyraud
-<louisalexis.eyraud@collabora.com> wrote:
->
-> In MT8195 power domain data array, set the KEEP_DEFAULT_OFF and
-> ACTIVE_WAKEUP flags for the AUDIO power domain entry to avoid
-> having this domain being on during boot sequence when unneeded.
->
-> Fixes: 0e789b491ba0 ("pmdomain: core: Leave powered-on genpds on until sync_state")
-> Fixes: 13a4b7fb6260 ("pmdomain: core: Leave powered-on genpds on until late_initcall_sync")
-> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 
-Applied for fixes, thanks!
-
-Kind regards
-Uffe
-
-
+On Tue, 23 Sep 2025 13:39:57 +0200, Nicolas Frattaroli wrote:
+> The MediaTek MT8196 SoC includes an embedded MCU referred to as "GPUEB",
+> acting as glue logic to control power and frequency of the Mali GPU.
+> This MCU runs special-purpose firmware for this use, and the main
+> application processor communicates with it through a mailbox.
+> 
+> Add a binding that describes this mailbox.
+> 
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 > ---
-> Patch tested on Mediatek Genio 1200-EVK board (based on MT8395 SoC)
-> with a kernel based on linux-next (tag: next-20250922).
-> ---
->  drivers/pmdomain/mediatek/mt8195-pm-domains.h | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/drivers/pmdomain/mediatek/mt8195-pm-domains.h b/drivers/pmdomain/mediatek/mt8195-pm-domains.h
-> index 9405e8f62eaf07112d52a28e6545d26a4342c7c6..1d3ca195ac75806c458db71db4538940f37128a8 100644
-> --- a/drivers/pmdomain/mediatek/mt8195-pm-domains.h
-> +++ b/drivers/pmdomain/mediatek/mt8195-pm-domains.h
-> @@ -126,6 +126,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8195[] = {
->                                     MT8195_TOP_AXI_PROT_EN_2_CLR,
->                                     MT8195_TOP_AXI_PROT_EN_2_STA1),
->                 },
-> +               .caps = MTK_SCPD_KEEP_DEFAULT_OFF | MTK_SCPD_ACTIVE_WAKEUP,
->         },
->         [MT8195_POWER_DOMAIN_MFG0] = {
->                 .name = "mfg0",
->
-> ---
-> base-commit: fba389ea7aa6401d3539456123cbadfa1a87231e
-> change-id: 20250922-mt8195-pmdomain-audio-fix-f7ebf2afb15f
->
-> Best regards,
-> --
-> Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
->
+>  .../mailbox/mediatek,mt8196-gpueb-mbox.yaml        | 64 ++++++++++++++++++++++
+>  1 file changed, 64 insertions(+)
+> 
+
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+
 
