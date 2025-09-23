@@ -4,79 +4,206 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C20B7CAC5B0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Sep 2025 11:41:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0924CCAC5B0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Sep 2025 11:46:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HYKeHHm6NsgBv+iw3ceRO3055kcHfkYzP5Udx2VlZbo=; b=GMCWCg7Lp9Nk+1MN1yPxf9qTcs
-	tKwHxzMex7mt/vBHyEFykFwiW19OmVXXAor++twV5Vaeinz3SWlXcGyccYo/5jjh6ipV8ofdAhB/r
-	GKMpi11e+p55YOpJv0NBMkC0VeL4pGI4J4lyBS+IQhUaAQOs0SqZkczUzH3sV0nj4KPIyAZzCbExw
-	LOhD61+5PqJs0kA7RSbJpxAZOEHE/Z5re4Mu2oebDM7IlYDb9eLt4HkRDLwXL8beThZSgWN+6gObx
-	+orHuWDkxzCOhjPzJ4oPzRbbkqyxHtHJXoQUGnw2QFf4CdnPr4VCHKyS/mMKF8nAoow3jeLoy/5Q7
-	5EP88oEw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6ZYMQaU6iTg+ntCigY8yuUCj8932fWsL3KO1t44ENSI=; b=gMV7tZpjSre4CYvC587m/fPZVO
+	IuZiPkOEMQ3Xq2n94CXtLq3VrcHL7f4cgFKlZvguTl0t7FIKoeZguzerlXESGnCqBxu9ZplArTy5b
+	rBDqoXAKyiYrRHfoQH4REi1WmI5YTAsxtk934S0qelyMWnl2gOiawSqxXBcuKDvFbSlp+qHuXFS9E
+	oS3nCh3z5IGj6YpFg2BWUyt/Q64XbBc9T0iwYS2XO0ahoZkAm+mWMi/r/1ydqoRT/GMwr4Ttp/lqF
+	75BMlLgOTrBQveDFIaOGoUlLuiZU80bxwuYJ5yFp2Cx9BknfXOP9uMM2zIehDrkz+Vl8g6HUWzbOt
+	qKucZNUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v11Ol-0000000DDaf-1p4S;
-	Tue, 23 Sep 2025 11:41:31 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1v11U0-0000000DEjy-0xZY;
+	Tue, 23 Sep 2025 11:46:56 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v11Oh-0000000DDWn-1jbW;
-	Tue, 23 Sep 2025 11:41:30 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1758627672; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=QygnWcrjsh+SqHNjFJkGVhDQfwt84Gl0MIE9igj/Pap6O3zC7s0aI3xPD7w1p6NwROOvfT+WZAP1bvg1ue3VHZQml4dlZWFrv5rR8an+USywukJFxS2xVIfU4hC2pFsQA+AgrM++Gh+tiuNd/vFshB+8QqSbKluA/KNRQ9t1sMQ=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1758627672; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=HYKeHHm6NsgBv+iw3ceRO3055kcHfkYzP5Udx2VlZbo=; 
-	b=IWg0F+jry3ZlzKdI5ajZZUowb7aTQ7BdFyKcnCLDDnDt+ep5f0Uqf/u9o5seDfCPVaSbXOgG40wUyN4RkWQixhDvh0WecpF/2XdFnxwSEcD9Dm35VHr5fFCUUvfcfjH9fPuHC7xcMSaRnUKmv6ZUYSbBU1m9aqobZmZ3ZcU5/I8=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1758627672;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=HYKeHHm6NsgBv+iw3ceRO3055kcHfkYzP5Udx2VlZbo=;
-	b=fQgJmqD4Q4kqT7A7y5ZyPi7lqhxv/ZJFfWKedpxv+lZfL3TvkWPoyL2aXBVxj0hH
-	UopYS6AtkP7Yknp6OHFx3e0caSs2aWkEOkXyGTeDrxbujNzmlWazZlvctlxjSpOI0dK
-	nWvfqJvGCKkMuKcMuebBHT2bLv3hXN90Nj8PXeUo=
-Received: by mx.zohomail.com with SMTPS id 1758627671505460.9892284202813;
-	Tue, 23 Sep 2025 04:41:11 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Tue, 23 Sep 2025 13:40:01 +0200
-Subject: [PATCH v4 8/8] pmdomain: mediatek: Add support for MFlexGraphics
-MIME-Version: 1.0
+	id 1v11Tw-0000000DEjJ-2Sa4;
+	Tue, 23 Sep 2025 11:46:53 +0000
+X-UUID: fb16ca62987211f09f706fa2197c6ceb-20250923
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=6ZYMQaU6iTg+ntCigY8yuUCj8932fWsL3KO1t44ENSI=;
+	b=R5s1o+NhrCdQiQ/chE/6GONh13+T6LJi58V6lAcr9LBicnCuz+kA291EWwj/h0BmxzE0q+AaY7orzyv262itoCFyhqfa4qPnG92Sil1wMfUB/Byjf8Q00o1LKCBX3Y9LjlMTxLZA+jX9SUlNQf2n9xPv90VZK/EhYZT6nqtiTII=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.4,REQID:2e2cf57f-6850-4b68-a277-7b044caa525c,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:1ca6b93,CLOUDID:29e9db6c-8443-424b-b119-dc42e68239b0,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111|836|888|898,
+	TC:-5,Content:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:nil,Bulk:nil,QS:nil,
+	BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: fb16ca62987211f09f706fa2197c6ceb-20250923
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
+	(envelope-from <jjian.zhou@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1690354569; Tue, 23 Sep 2025 04:46:45 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.10; Tue, 23 Sep 2025 19:46:42 +0800
+Received: from SG2PR04CU009.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.1748.10 via Frontend Transport; Tue, 23 Sep 2025 19:46:42 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=bGmy5A86vq/ybh5GlZm1U6ke4lsWukL7/+u9k+X5eDWqqDuuCiJTVc/q+o1xeMlEhW2URTBdwNsl36H/jgCJ9688fEu1nHWWvAw6r4eke15mZgCABsUvGrNyWaHAIdUqTDkwxdivFphCWsP1jk9dhVN0AHWnosYcDc0+EIGi6zbOKXsqlz3P1cs+6kbAKLNN96JiawJLPYNnCS/8CEuvRat5zJMHV8l+cvr38xXO3LPN0uu09gb9Cud8rvpKDpOe2U7kf0pgk9gjfDJD6E9yK5AI/KIihBoTjc7q8dUn6N8aaP6mrSQ7QWrKMcJum9JaZXNvEhR2DGq2dMWdWwMUgQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=6ZYMQaU6iTg+ntCigY8yuUCj8932fWsL3KO1t44ENSI=;
+ b=mrRvrLkJWQzTOKpWMgPdUmSTOmCZ8hnrV/cMu5sKmaoCEZrdgFAd5OJ/fClCq74zq3+Flo3iGRMel/bLioWsB8fKiiJR/hzmfztrBdx5aJVlRNBfMTjQZFENpprlcqUQ6yDA/De/ir/tYUabalbuANuoR/TjeK7dWbHeOGzb9jGrG5fnQoKaj1mtX2JQZ+Q6A9TDrR3Nhl55eoUcaMbZIsOSoUeXVrLgjGWjnQjBUZSqG1uYXe/VoNq3EnCOn+o/yczqlLQYHiY6RsNXlgMopsgkiNmgTko7hoQ6J+PUTxJkD/jRFYftjQDBIZ5sXxA8I0tZCdGR8hwBxdQRwk4HQw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=6ZYMQaU6iTg+ntCigY8yuUCj8932fWsL3KO1t44ENSI=;
+ b=OFfuYF56vk7m+/aGUq1wgyvsJ2p5pH32lseb4rylaTgAf07TmavPmP61D6ClSq2bErLUkSqg17KmNrFWyWqkGdKqEc+wXdYDK6ODF8NargpIU5/iv8EY7r9OmbZaxcR0FFwH4EhzE7w2m16dMA14Ri7qCYVVY6uD3NBU4JTco94=
+Received: from PSAPR03MB6363.apcprd03.prod.outlook.com (2603:1096:301:5f::10)
+ by TYZPR03MB7083.apcprd03.prod.outlook.com (2603:1096:400:342::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9137.20; Tue, 23 Sep
+ 2025 11:46:38 +0000
+Received: from PSAPR03MB6363.apcprd03.prod.outlook.com
+ ([fe80::eb73:91b9:5905:e89f]) by PSAPR03MB6363.apcprd03.prod.outlook.com
+ ([fe80::eb73:91b9:5905:e89f%6]) with mapi id 15.20.9137.018; Tue, 23 Sep 2025
+ 11:46:37 +0000
+From: =?utf-8?B?SmppYW4gWmhvdSAo5ZGo5bu6KQ==?= <Jjian.Zhou@mediatek.com>
+To: "jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>,
+	"nicolas.frattaroli@collabora.com" <nicolas.frattaroli@collabora.com>
+CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"wenst@chromium.org" <wenst@chromium.org>, "devicetree@vger.kernel.org"
+	<devicetree@vger.kernel.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
+	Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, "robh@kernel.org"
+	<robh@kernel.org>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v5 2/2] mailbox: mediatek: Add mtk-vcp-mailbox driver
+Thread-Topic: [PATCH v5 2/2] mailbox: mediatek: Add mtk-vcp-mailbox driver
+Thread-Index: AQHcEwpW87Sc9bspPUqF1pf91CjDQbSZyAEAgACRkwCAAIY+AIAAKeQAgAIpV4CAAcjDAIAAYpcAgADhGgCAAG01AIAALKKA
+Date: Tue, 23 Sep 2025 11:46:37 +0000
+Message-ID: <15f3bb4bd00925636922871160b46f1104d409b7.camel@mediatek.com>
+References: <20250822021217.1598-1-jjian.zhou@mediatek.com>
+	 <13850137.uLZWGnKmhe@workhorse>
+	 <eb9b0ea70abb09f45c50e88b6221948ae09be6f7.camel@mediatek.com>
+	 <2382077.ElGaqSPkdT@workhorse>
+In-Reply-To: <2382077.ElGaqSPkdT@workhorse>
+Accept-Language: zh-CN, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: PSAPR03MB6363:EE_|TYZPR03MB7083:EE_
+x-ms-office365-filtering-correlation-id: c16bb2cb-a515-4768-4877-08ddfa96daa6
+x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|7416014|366016|1800799024|376014|7053199007|38070700021;
+x-microsoft-antispam-message-info: =?utf-8?B?VUx3Z1M3U0xsdjBtNTBnRnRYQ29DbDJVcHc3QmREc1lrb0RHWGZCVEJ0eWt1?=
+ =?utf-8?B?SFM3cHJDSFl4ZTgxOGRJQW05Ym9YRXRFVEpOcmg2S2lJU1A0QW9zQUxIRUdu?=
+ =?utf-8?B?Z2VVQUIzVjBKZCtZZy9wWnJTd2dXanp2cEdXdzdFOGcxM0toVjNCcnc5ZERS?=
+ =?utf-8?B?bkpqM1I1SWZvR0tVMDRDSUhxVVRyYWMvQzJLTEIwTUh0YmVic2tDNnlBVUdF?=
+ =?utf-8?B?dHRvS0dZc1BWYU8raUhDZlRldHcvSzdVaSsreFFyTU9lMVR2TmxYa2EvZWpx?=
+ =?utf-8?B?K29BMFl0RlMveThyTFBZM2hUQUlwTTlUTys2L0FadGR1cGZVd2VGTHZaalFD?=
+ =?utf-8?B?VjIrUWpUZHlwaGpJckNZMStTdXk0ek00a2M3VzJyK1JyRDMzRnYreko2RkRu?=
+ =?utf-8?B?YjlJWHNwQlBNS1RXemlERUtLVDQ3RTZnSmJHSjh2TElycE5abVQ2Vk1LOTYx?=
+ =?utf-8?B?UmprOHFmbEF0TkIyT004OTlyVThQMWdWeHI5cUt4bGhqMFVGWkVya3IreVhV?=
+ =?utf-8?B?UXc4T0luazBXdzdoeG1iUlhDc1d2NE8xZjAvdWs3OCs3K3pxLzFEbFdnQnJy?=
+ =?utf-8?B?NkpIQzZJNDRkczZMdTR1dEJzeUxWOC9MSk5iZG9URDRPQWZabk5YRWNpRS9H?=
+ =?utf-8?B?M21lT2U4L1lXZ2ZMUUloU1A1a2JUNmFkWGRvZFVoczlmV1pJVXBtazRpYjdB?=
+ =?utf-8?B?dWQ4cG5ack00WSt5a2RHcHlmc25OSmRQVWJJKzcrVFJNTFVrcWhOQ3dHcFJp?=
+ =?utf-8?B?anRVdHpMbUFUWEYvQ0lwQ2JsRW9scmZDamNBeVlyT0JTUmluQXR6eTFwRFgr?=
+ =?utf-8?B?RmFMYXA2b1NFc3F5a3ZBZUkzVWZCMTIxNlBXeE1TV2RucHMvVTlCUEs5VmZr?=
+ =?utf-8?B?ZWFFQmNOUTZzMTRheDkvR2Npb3E5RXdkVmNja1BzWWVhc2c5RkVaTmQrSGsr?=
+ =?utf-8?B?QnEyRW9BS2t4UytRT0p3cWw3dHdaN1dPZXozWVdNSGJnSG1rZ1JrKzlOUlps?=
+ =?utf-8?B?dU4xWFB5aXhZQWQ1OUNvT2trTmE3Y0lOQWxOeTZuaVBrQWVxVWVQV21tbkt3?=
+ =?utf-8?B?ME95YWF2YU8zdDB1ZzEwKzVudm5LUVRTVmMwaUxtN2wrUm14YkxXL2xraUcv?=
+ =?utf-8?B?aExCK2VWdTRmYjVOWkMwWnN6bS9jU0R3a2RhU2Y2MmcvREdDTEN0d0FoenVm?=
+ =?utf-8?B?QWl3VytCTlNJa3BIdkw2ejc1US9hcXBIQkpvMjc3NUlUeExDS1FzSGtmRVYw?=
+ =?utf-8?B?TERxNW1yYzdCMUorTzhaYmlWVTZJUGw3RVUrUStZcEhGenFrc0F6OTNVRE9i?=
+ =?utf-8?B?SkorZnhWTFNvcXhYbDRyWnFrWkpKWWJRYi9PQ3E1T2I3d3ZCbStrMmlpNkx5?=
+ =?utf-8?B?UXg0SHkvaWcxekJWRndGaHNSb3E4aUMwRjVGOHYxWnJ0QkJ6UHJibVFQRm9i?=
+ =?utf-8?B?d0lWNy8xV1UxMFM4YUhMQWNrYUozZ2tqQzdXNGtHM2N0NTZmWjd6M1o4VUJB?=
+ =?utf-8?B?b1plL2hLOTFGSXpTVnBZMEt0eFhzb2RrSllHa3BXdnVEam5ETUVKVHZUOXM2?=
+ =?utf-8?B?SlRSZStXaVZxL2VScnljYWVrUWtkcTh4cEJ6OHZwckVrek44VXFwNVBEZWF0?=
+ =?utf-8?B?a2pIM3FNOXlQZFFKUDFZMk16aVpUNWhBQmNtZE4ybVQyNHUxYit6aFFPRVlK?=
+ =?utf-8?B?Ung0bjM4ZnNUZ3BvaGpkUnZtd2cxVHlzYVYxZDJHTXEzWGhlbVlQcC9yUTM3?=
+ =?utf-8?B?ZHZ0WUFIcTNySnZxWnFsNWhOT2JJT3BvN3EraExXL1NXNC9jS2RPbTJFN1hJ?=
+ =?utf-8?B?TGRleUYreGFYQ2pWSkVTbCtGWUI4dXNnTHNIZVE1YWRqcHU4aHRVUVlnZ3hN?=
+ =?utf-8?B?UnlzUWNvWjhueU9SS2Fsbk93MHBtWDZVLzVpdkFxQi9GdDdBLzduTmZUSk56?=
+ =?utf-8?B?UjFLd2kxSHl1YnRJaWxXQTF2Z1lSOUc5cE5uWTJySmFEdFNUaEhnTkFDNExk?=
+ =?utf-8?Q?O9iuYSaOUr0pL35VH1g7xYqUE+v7I4=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PSAPR03MB6363.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(366016)(1800799024)(376014)(7053199007)(38070700021);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?ODgrVnZ2VUsxVnB6a0tzbk5ReWMvb281aEtxS0MvemQrRDZBeTBnc0c1cU5s?=
+ =?utf-8?B?VzRWaFlsMmFISXhubzI3Rmk4RFY0eGN2SWFMVTdqUm52aUNKMUl1bkhYTkVk?=
+ =?utf-8?B?Y0ltRlg4T2RRRFM1bFRMaGZKMzFQQzRNWXJJNGg2S24rb0xnc0RabDVoYURr?=
+ =?utf-8?B?ZDhWZzhSdXpKVzJsOHlKVDhsR2hEMUZWVGl4QjVsdjd6YlUxMXgvMVgyZkFW?=
+ =?utf-8?B?ZlFmZ3JNLzdPeVlhT0tYb3l1bmlONnJBeXRkK3JWemIybDZad2dqSldDM0Vr?=
+ =?utf-8?B?NDlLSVBIRzQyc3RQSGMyWTJSaUlMN1NieGxLeFVJWWx6eW9oQlVla2hlMjlU?=
+ =?utf-8?B?SitjamkyV1g0WWw0L0tQK0JHZVV2bFNGL3hJQmdOYWhrS2h1WDVDeWtUTHo5?=
+ =?utf-8?B?ekg5Y09lcktvNTJ0OG5NNmdqbEh4NTdEeU4zaEJxeU9INHVaaXdwOHNJMlQx?=
+ =?utf-8?B?VnBZUWJBeHd1QTQxNFpTYkdTdTJGSTVQRy9USlpRV3lHRVRiTk9Qd0t0aUcv?=
+ =?utf-8?B?a2xHUU9tNzdFazRUckRrbXR0Nk5ublVNWnk2SURKanhkdGRqandMV1JLQW04?=
+ =?utf-8?B?TUo1TUgxeVpJbEw0d1oyb0h2QW9lOHJQZXhhNjlTWkZyRjZ5TG9mejhGSDNt?=
+ =?utf-8?B?Q01JeDV1TDVBeXAvZWdrRXdqYkx4SnBYdURkenc3TE50ZjNpaDdIamlQeUMv?=
+ =?utf-8?B?QzVzQWpJYnJpVkljaW9UMGxCMzRGSXhRWHpWU2piSWIxb294am1rSGlWc1Vp?=
+ =?utf-8?B?bDVQclpkMmNRVEpSLzFuaS9zRXNnbGN6czh5Zms0TGU1S3pINVVhRldnckxF?=
+ =?utf-8?B?M0tHOElvN1Nsb2pzUjA1eEN0b056S05JL0l3b3o3VDEzTi9RekYwcUwybkRa?=
+ =?utf-8?B?RFljaCtDY0pVRDdaeFg0N2pOM0RMZ1ZrZXQ5T3FKZkwwUUpVNzE1ZmhBODZG?=
+ =?utf-8?B?eDUrWmx1czJydlJsV051RDc4aU9ucmFhbmE2eFhUVmszdlloUm5UTGIrM1ZR?=
+ =?utf-8?B?NitaZ3hxeEVqdmd3Z3FHSU9nMjB0bzYrTzdWdjc3bnNMNnl5YUVTSUJBc1Nz?=
+ =?utf-8?B?T2liR2JuOHcrRGoraUFLeks0bWtaMExzdzlTUi9TV09IaDNWVHAzM3hNRndt?=
+ =?utf-8?B?UWFHMm5QdmVZbXpBUStKWS80ZGZtWmJZTEs3MS8vaVJ4YlJxSktScVppbUJ0?=
+ =?utf-8?B?MTNVSHhoVWc3QnlOdWJKbThPZnNIYWc1M2YvMys1cUgzVXNLZUNtY0F3YlJ2?=
+ =?utf-8?B?TkFkNFZpbTg5OVlGY1hkalN5WmtxdWErMFR2bVZML1RteXJsUWpXb0JPL2R5?=
+ =?utf-8?B?clI3aWo4TTlaNEZSeVFPdlZTSUNoQlB4RDdBTGh5SmlZdjQwRktUTUhzMDJP?=
+ =?utf-8?B?UklsRnNlbDg4MW1zTXRkRkxpRmNLOUNzemRKRHhGNGV5N1hKeEhSZHl5dEE2?=
+ =?utf-8?B?aHVuVFFBVlNyYTVFWWdUbW1MTlpZVlpqaWJQYXJwZ2RtTnVGUXlFK0txdy9z?=
+ =?utf-8?B?cHpXNnZYcEtBSzByTDVWMmdDOWhLWWNJczFSV2tSczRoNkxIRUt6bU04MWhR?=
+ =?utf-8?B?aG5ScFBJdStST0IvS2Q4NER0R3ZFOW5QSTRYN0hwQm1vUHEweHUxNldLZGhS?=
+ =?utf-8?B?MUtZM1hEcjQvT2xBNk9KODRmMzdsSkwxWFpwenRnT2hYMGpQMTR3QitpSjBZ?=
+ =?utf-8?B?d2VaN0RJZlAxcUdFVnhwY2NpTis1Tk5WeEdxeFloempFU1ZuR1dUd1hWY3dy?=
+ =?utf-8?B?RFZ4MEovQ3AxeXVvaDB0eU9CS1FPWERHaC9OQ2RwUElVWmNVVDRMN1ZHdWdR?=
+ =?utf-8?B?L0hLekNhOTRiTncraEZGNDFXNXRuVHZZTmM3Z0k3d1hEQTVFVnhoVEFRYTIr?=
+ =?utf-8?B?QmRDUHhSSy9IT0RYa1lGVnFaUnZvYXJveGpiaVc3Q21hdTRCTC9ZeE5qSUJZ?=
+ =?utf-8?B?TlI5ZFF4UG40N0R6RkNQRmRxaUJDL0tGQ3Y5R3l0K05ZK2ZMWG9KQ1lQTWVa?=
+ =?utf-8?B?dkVOTFM3anRUNDVsYlFTaXdnL2NFQ3pVamRDKzhlb3R5N2wwVllYajhHaEJz?=
+ =?utf-8?B?K293VmQxNTB3UzRkWCsxVFcva3FmVVlsSEpoS1ovam83VHRTWlBPSnRsdFNh?=
+ =?utf-8?B?aUVlRm9hK01wQUpPVmhOVHp6RlQ3LzRVdC81NWZvaDRSZEw2SUJhTXppdVND?=
+ =?utf-8?B?WkE9PQ==?=
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250923-mt8196-gpufreq-v4-8-6cd63ade73d6@collabora.com>
-References: <20250923-mt8196-gpufreq-v4-0-6cd63ade73d6@collabora.com>
-In-Reply-To: <20250923-mt8196-gpufreq-v4-0-6cd63ade73d6@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Boris Brezillon <boris.brezillon@collabora.com>, 
- Jassi Brar <jassisinghbrar@gmail.com>, Chia-I Wu <olvaffe@gmail.com>, 
- Chen-Yu Tsai <wenst@chromium.org>, Steven Price <steven.price@arm.com>, 
- Liviu Dudau <liviu.dudau@arm.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Kees Cook <kees@kernel.org>, 
- "Gustavo A. R. Silva" <gustavoars@kernel.org>, 
- Ulf Hansson <ulf.hansson@linaro.org>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-hardening@vger.kernel.org, linux-pm@vger.kernel.org, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-X-Mailer: b4 0.14.2
+Content-ID: <ED4880B0945154439C5235432B5BB89C@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: PSAPR03MB6363.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c16bb2cb-a515-4768-4877-08ddfa96daa6
+X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Sep 2025 11:46:37.6441
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: iKtuudE1A8aRXfWIhfyqyCbWAEXFPrteEVCmWXDP2N8Afzy2LWiiyJ8Onp8mw6C4PoEiBbSmU5Rr0ZCJ1J0LOw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR03MB7083
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250923_044127_595842_920F9051 
-X-CRM114-Status: GOOD (  24.15  )
+X-CRM114-CacheID: sfid-20250923_044652_663870_5C237DE5 
+X-CRM114-Status: GOOD (  14.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,1001 +218,129 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Various MediaTek SoCs use GPU integration silicon named "MFlexGraphics"
-by MediaTek. On the MT8196 and MT6991 SoCs, interacting with this
-integration silicon is required to power on the GPU.
-
-This glue silicon is in the form of an embedded microcontroller running
-special-purpose firmware, which autonomously adjusts clocks and
-regulators.
-
-Implement a driver, modelled as a pmdomain driver with a
-set_performance_state operation, to support these SoCs.
-
-The driver also exposes the actual achieved clock rate, as read back
-from the MCU, as common clock framework clocks, by acting as a clock
-provider as well.
-
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
----
- drivers/pmdomain/mediatek/Kconfig            |  16 +
- drivers/pmdomain/mediatek/Makefile           |   1 +
- drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c | 928 +++++++++++++++++++++++++++
- 3 files changed, 945 insertions(+)
-
-diff --git a/drivers/pmdomain/mediatek/Kconfig b/drivers/pmdomain/mediatek/Kconfig
-index 0e34a517ab7d5a867bebaab11c0d866282a15e45..2abf78c85d017b1e3526b41c81f274f78d581fd0 100644
---- a/drivers/pmdomain/mediatek/Kconfig
-+++ b/drivers/pmdomain/mediatek/Kconfig
-@@ -26,6 +26,22 @@ config MTK_SCPSYS_PM_DOMAINS
- 	  Control Processor System (SCPSYS) has several power management related
- 	  tasks in the system.
- 
-+config MTK_MFG_PM_DOMAIN
-+	tristate "MediaTek MFlexGraphics power domain"
-+	default ARCH_MEDIATEK
-+	depends on PM
-+	depends on OF
-+	depends on COMMON_CLK
-+	select PM_GENERIC_DOMAINS
-+	imply MTK_GPUEB_MBOX
-+	help
-+	  Say y or m here to enable the power domains driver for MediaTek
-+	  MFlexGraphics. This driver allows for power and frequency control of
-+	  GPUs on MediaTek SoCs such as the MT8196 or MT6991.
-+
-+	  This driver is required for the Mali GPU to work at all on MT8196 and
-+	  MT6991.
-+
- config AIROHA_CPU_PM_DOMAIN
- 	tristate "Airoha CPU power domain"
- 	default ARCH_AIROHA
-diff --git a/drivers/pmdomain/mediatek/Makefile b/drivers/pmdomain/mediatek/Makefile
-index 18ba92e3c418154e1d428dbc6b59b97b26056d98..b424f1ed867604393b3ff96364855363aedaa40c 100644
---- a/drivers/pmdomain/mediatek/Makefile
-+++ b/drivers/pmdomain/mediatek/Makefile
-@@ -1,4 +1,5 @@
- # SPDX-License-Identifier: GPL-2.0-only
-+obj-$(CONFIG_MTK_MFG_PM_DOMAIN)		+= mtk-mfg-pmdomain.o
- obj-$(CONFIG_MTK_SCPSYS)		+= mtk-scpsys.o
- obj-$(CONFIG_MTK_SCPSYS_PM_DOMAINS) 	+= mtk-pm-domains.o
- obj-$(CONFIG_AIROHA_CPU_PM_DOMAIN) 	+= airoha-cpu-pmdomain.o
-diff --git a/drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c b/drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c
-new file mode 100644
-index 0000000000000000000000000000000000000000..3148796a6b8aea9958c424f695efb7d8af23b7ce
---- /dev/null
-+++ b/drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c
-@@ -0,0 +1,928 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Driver for MediaTek MFlexGraphics Devices
-+ *
-+ * Copyright (C) 2025, Collabora Ltd.
-+ */
-+
-+#include <linux/completion.h>
-+#include <linux/clk.h>
-+#include <linux/clk-provider.h>
-+#include <linux/container_of.h>
-+#include <linux/iopoll.h>
-+#include <linux/mailbox_client.h>
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/of_address.h>
-+#include <linux/of_platform.h>
-+#include <linux/overflow.h>
-+#include <linux/platform_device.h>
-+#include <linux/pm_domain.h>
-+#include <linux/pm_opp.h>
-+#include <linux/regulator/consumer.h>
-+
-+#define GPR_LP_STATE		0x0028
-+#define   EB_ON_SUSPEND		0x0
-+#define   EB_ON_RESUME		0x1
-+#define GPR_IPI_MAGIC		0x34
-+
-+#define RPC_PWR_CON		0x0504
-+#define   PWR_ACK_M		GENMASK(31, 30)
-+#define RPC_DUMMY_REG_2		0x0658
-+#define RPC_GHPM_CFG0_CON	0x0800
-+#define   GHPM_ENABLE_M		BIT(0)
-+#define   GHPM_ON_SEQ_M		BIT(2)
-+#define RPC_GHPM_RO0_CON	0x09A4
-+#define   GHPM_STATE_M		GENMASK(7, 0)
-+#define   GHPM_PWR_STATE_M	BIT(16)
-+
-+#define GF_REG_MAGIC			0x0000
-+#define GF_REG_GPU_OPP_IDX		0x0004
-+#define GF_REG_STK_OPP_IDX		0x0008
-+#define GF_REG_GPU_OPP_NUM		0x000c
-+#define GF_REG_STK_OPP_NUM		0x0010
-+#define GF_REG_GPU_OPP_SNUM		0x0014
-+#define GF_REG_STK_OPP_SNUM		0x0018
-+#define GF_REG_POWER_COUNT		0x001c
-+#define GF_REG_BUCK_COUNT		0x0020
-+#define GF_REG_MTCMOS_COUNT		0x0024
-+#define GF_REG_CG_COUNT			0x0028 /* CG = Clock Gate? */
-+#define GF_REG_ACTIVE_COUNT		0x002C
-+#define GF_REG_TEMP_RAW			0x0030
-+#define GF_REG_TEMP_NORM_GPU		0x0034
-+#define GF_REG_TEMP_HIGH_GPU		0x0038
-+#define GF_REG_TEMP_NORM_STK		0x003C
-+#define GF_REG_TEMP_HIGH_STK		0x0040
-+#define GF_REG_FREQ_CUR_GPU		0x0044
-+#define GF_REG_FREQ_CUR_STK		0x0048
-+#define GF_REG_FREQ_OUT_GPU		0x004C /* Guess: actual achieved freq */
-+#define GF_REG_FREQ_OUT_STK		0x0050 /* Guess: actual achieved freq */
-+#define GF_REG_FREQ_METER_GPU		0x0054 /* Seems unused, always 0 */
-+#define GF_REG_FREQ_METER_STK		0x0058 /* Seems unused, always 0 */
-+#define GF_REG_VOLT_CUR_GPU		0x005C /* in tens of microvolts */
-+#define GF_REG_VOLT_CUR_STK		0x0060 /* in tens of microvolts */
-+#define GF_REG_VOLT_CUR_GPU_SRAM	0x0064
-+#define GF_REG_VOLT_CUR_STK_SRAM	0x0068
-+#define GF_REG_VOLT_CUR_GPU_REG		0x006C /* Seems unused, always 0 */
-+#define GF_REG_VOLT_CUR_STK_REG		0x0070 /* Seems unused, always 0 */
-+#define GF_REG_VOLT_CUR_GPU_REG_SRAM	0x0074
-+#define GF_REG_VOLT_CUR_STK_REG_SRAM	0x0078
-+#define GF_REG_PWR_CUR_GPU		0x007C /* in milliwatts */
-+#define GF_REG_PWR_CUR_STK		0x0080 /* in milliwatts */
-+#define GF_REG_PWR_MAX_GPU		0x0084 /* in milliwatts */
-+#define GF_REG_PWR_MAX_STK		0x0088 /* in milliwatts */
-+#define GF_REG_PWR_MIN_GPU		0x008C /* in milliwatts */
-+#define GF_REG_PWR_MIN_STK		0x0090 /* in milliwatts */
-+#define GF_REG_LEAKAGE_RT_GPU		0x0094 /* Unknown */
-+#define GF_REG_LEAKAGE_RT_STK		0x0098 /* Unknown */
-+#define GF_REG_LEAKAGE_RT_SRAM		0x009C /* Unknown */
-+#define GF_REG_LEAKAGE_HT_GPU		0x00A0 /* Unknown */
-+#define GF_REG_LEAKAGE_HT_STK		0x00A4 /* Unknown */
-+#define GF_REG_LEAKAGE_HT_SRAM		0x00A8 /* Unknown */
-+#define GF_REG_VOLT_DAC_LOW_GPU		0x00AC /* Seems unused, always 0 */
-+#define GF_REG_VOLT_DAC_LOW_STK		0x00B0 /* Seems unused, always 0 */
-+#define GF_REG_OPP_CUR_CEIL		0x00B4
-+#define GF_REG_OPP_CUR_FLOOR		0x00B8
-+#define GF_REG_OPP_CUR_LIMITER_CEIL	0x00BC
-+#define GF_REG_OPP_CUR_LIMITER_FLOOR	0x00C0
-+#define GF_REG_OPP_PRIORITY_CEIL	0x00C4
-+#define GF_REG_OPP_PRIORITY_FLOOR	0x00C8
-+#define GF_REG_PWR_CTL			0x00CC
-+#define GF_REG_ACTIVE_SLEEP_CTL		0x00D0
-+#define GF_REG_DVFS_STATE		0x00D4
-+#define GF_REG_SHADER_PRESENT		0x00D8
-+#define GF_REG_ASENSOR_ENABLE		0x00DC
-+#define GF_REG_AGING_LOAD		0x00E0
-+#define GF_REG_AGING_MARGIN		0x00E4
-+#define GF_REG_AVS_ENABLE		0x00E8
-+#define GF_REG_AVS_MARGIN		0x00EC
-+#define GF_REG_CHIP_TYPE		0x00F0
-+#define GF_REG_SB_VERSION		0x00F4
-+#define GF_REG_PTP_VERSION		0x00F8
-+#define GF_REG_DBG_VERSION		0x00FC
-+#define GF_REG_KDBG_VERSION		0x0100
-+#define GF_REG_GPM1_MODE		0x0104
-+#define GF_REG_GPM3_MODE		0x0108
-+#define GF_REG_DFD_MODE			0x010C
-+#define GF_REG_DUAL_BUCK		0x0110
-+#define GF_REG_SEGMENT_ID		0x0114
-+#define GF_REG_POWER_TIME_H		0x0118
-+#define GF_REG_POWER_TIME_L		0x011C
-+#define GF_REG_PWR_STATUS		0x0120
-+#define GF_REG_STRESS_TEST		0x0124
-+#define GF_REG_TEST_MODE		0x0128
-+#define GF_REG_IPS_MODE			0x012C
-+#define GF_REG_TEMP_COMP_MODE		0x0130
-+#define GF_REG_HT_TEMP_COMP_MODE	0x0134
-+#define GF_REG_PWR_TRACKER_MODE		0x0138
-+#define GF_REG_OPP_TABLE_GPU		0x0314
-+#define GF_REG_OPP_TABLE_STK		0x09A4
-+#define GF_REG_OPP_TABLE_GPU_S		0x1034
-+#define GF_REG_OPP_TABLE_STK_S		0x16c4
-+#define GF_REG_LIMIT_TABLE		0x1d54
-+#define GF_REG_GPM3_TABLE		0x223C
-+
-+#define MFG_MT8196_E2_ID		0x101
-+#define GPUEB_SLEEP_MAGIC		0x55667788UL
-+#define GPUEB_SRAM_MAGIC		0xBABADADAUL
-+
-+#define GPUEB_TIMEOUT_US		10000UL
-+#define GPUEB_POLL_US			50
-+
-+#define MAX_OPP_NUM			70
-+
-+#define GPUEB_MBOX_MAX_RX_SIZE		32 /* in bytes */
-+
-+/*
-+ * This enum is part of the ABI of the GPUEB firmware. Don't change the
-+ * numbering, as you would wreak havoc.
-+ */
-+enum mtk_mfg_ipi_cmd {
-+	CMD_INIT_SHARED_MEM		= 0,
-+	CMD_GET_FREQ_BY_IDX		= 1,
-+	CMD_GET_POWER_BY_IDX		= 2,
-+	CMD_GET_OPPIDX_BY_FREQ		= 3,
-+	CMD_GET_LEAKAGE_POWER		= 4,
-+	CMD_SET_LIMIT			= 5,
-+	CMD_POWER_CONTROL		= 6,
-+	CMD_ACTIVE_SLEEP_CONTROL	= 7,
-+	CMD_COMMIT			= 8,
-+	CMD_DUAL_COMMIT			= 9,
-+	CMD_PDCA_CONFIG			= 10,
-+	CMD_UPDATE_DEBUG_OPP_INFO	= 11,
-+	CMD_SWITCH_LIMIT		= 12,
-+	CMD_FIX_TARGET_OPPIDX		= 13,
-+	CMD_FIX_DUAL_TARGET_OPPIDX	= 14,
-+	CMD_FIX_CUSTOM_FREQ_VOLT	= 15,
-+	CMD_FIX_DUAL_CUSTOM_FREQ_VOLT	= 16,
-+	CMD_SET_MFGSYS_CONFIG		= 17,
-+	CMD_MSSV_COMMIT			= 18,
-+	CMD_NUM				= 19,
-+};
-+
-+/*
-+ * This struct is part of the ABI of the GPUEB firmware. Changing it, or
-+ * reordering fields in it, will break things, so don't do it. Thank you.
-+ */
-+struct __packed mtk_mfg_ipi_msg {
-+	__le32 magic;
-+	__le32 cmd;
-+	__le32 target;
-+	/*
-+	 * Downstream relies on the compiler to implicitly add the following
-+	 * padding, as it declares the struct as non-packed.
-+	 */
-+	__le32 reserved;
-+	union {
-+		s32 __bitwise oppidx;
-+		s32 __bitwise return_value;
-+		__le32 freq;
-+		__le32 volt;
-+		__le32 power;
-+		__le32 power_state;
-+		__le32 mode;
-+		__le32 value;
-+		struct {
-+			__le64 base;
-+			__le32 size;
-+		} shared_mem;
-+		struct {
-+			__le32 freq;
-+			__le32 volt;
-+		} custom;
-+		struct {
-+			__le32 limiter;
-+			s32 __bitwise ceiling_info;
-+			s32 __bitwise floor_info;
-+		} set_limit;
-+		struct {
-+			__le32 target;
-+			__le32 val;
-+		} mfg_cfg;
-+		struct {
-+			__le32 target;
-+			__le32 val;
-+		} mssv;
-+		struct {
-+			s32 __bitwise gpu_oppidx;
-+			s32 __bitwise stack_oppidx;
-+		} dual_commit;
-+		struct {
-+			__le32 fgpu;
-+			__le32 vgpu;
-+			__le32 fstack;
-+			__le32 vstack;
-+		} dual_custom;
-+	} u;
-+};
-+
-+struct __packed mtk_mfg_ipi_sleep_msg {
-+	__le32 event;
-+	__le32 state;
-+	__le32 magic;
-+};
-+
-+/**
-+ * struct mtk_mfg_opp_entry - OPP table entry from firmware
-+ * @freq_khz: The operating point's frequency in kilohertz
-+ * @voltage_core: The operating point's core voltage in tens of microvolts
-+ * @voltage_sram: The operating point's SRAM voltage in tens of microvolts
-+ * @posdiv: exponent of base 2 for PLL frequency divisor used for this OPP
-+ * @voltage_margin: Number of tens of microvolts the voltage can be undershot
-+ * @power_mw: estimate of power usage at this operating point, in milliwatts
-+ *
-+ * This struct is part of the ABI with the EB firmware. Do not change it.
-+ */
-+struct __packed mtk_mfg_opp_entry {
-+	__le32 freq_khz;
-+	__le32 voltage_core;
-+	__le32 voltage_sram;
-+	__le32 posdiv;
-+	__le32 voltage_margin;
-+	__le32 power_mw;
-+};
-+
-+struct mtk_mfg_mbox {
-+	struct mbox_client cl;
-+	struct completion rx_done;
-+	struct mtk_mfg *mfg;
-+	struct mbox_chan *ch;
-+	void *rx_data;
-+};
-+
-+struct mtk_mfg {
-+	struct generic_pm_domain pd;
-+	struct platform_device *pdev;
-+	struct clk *clk_eb;
-+	struct clk_bulk_data *gpu_clks;
-+	struct clk_hw clk_core_hw;
-+	struct clk_hw clk_stack_hw;
-+	struct regulator_bulk_data *gpu_regs;
-+	void __iomem *rpc;
-+	void __iomem *gpr;
-+	void __iomem *sram;
-+	phys_addr_t sram_phys;
-+	unsigned int sram_size;
-+	unsigned int ghpm_en_reg;
-+	u32 ipi_magic;
-+	unsigned int num_opps;
-+	unsigned int num_unique_gpu_opps;
-+	struct dev_pm_opp_data *gpu_opps;
-+	struct mtk_mfg_mbox *gf_mbox;
-+	struct mtk_mfg_mbox *slp_mbox;
-+	int last_opp;
-+	const struct mtk_mfg_variant *variant;
-+};
-+
-+struct mtk_mfg_variant {
-+	const char *const *clk_names;
-+	unsigned int num_clks;
-+	const char *const *regulator_names;
-+	unsigned int num_regulators;
-+	/** @turbo_below: opp indices below this value are considered turbo */
-+	unsigned int turbo_below;
-+	int (*init)(struct mtk_mfg *mfg);
-+};
-+
-+static inline struct mtk_mfg *mtk_mfg_from_genpd(struct generic_pm_domain *pd)
-+{
-+	return container_of(pd, struct mtk_mfg, pd);
-+}
-+
-+static inline void mtk_mfg_update_reg_bits(void __iomem *addr, u32 mask, u32 val)
-+{
-+	writel((readl(addr) & ~mask) | (val & mask), addr);
-+}
-+
-+static unsigned long mtk_mfg_recalc_rate_gpu(struct clk_hw *hw,
-+					     unsigned long parent_rate)
-+{
-+	struct mtk_mfg *mfg = container_of(hw, struct mtk_mfg, clk_core_hw);
-+
-+	return readl(mfg->sram + GF_REG_FREQ_OUT_GPU) * 1000UL;
-+}
-+
-+static unsigned long mtk_mfg_recalc_rate_stack(struct clk_hw *hw,
-+					       unsigned long parent_rate)
-+{
-+	struct mtk_mfg *mfg = container_of(hw, struct mtk_mfg, clk_stack_hw);
-+
-+	return readl(mfg->sram + GF_REG_FREQ_OUT_STK) * 1000UL;
-+}
-+
-+static const struct clk_ops mtk_mfg_clk_gpu_ops = {
-+	.recalc_rate = mtk_mfg_recalc_rate_gpu,
-+};
-+
-+static const struct clk_ops mtk_mfg_clk_stack_ops = {
-+	.recalc_rate = mtk_mfg_recalc_rate_stack,
-+};
-+
-+static const struct clk_init_data mtk_mfg_clk_gpu_init = {
-+	.name = "gpu-core",
-+	.ops = &mtk_mfg_clk_gpu_ops,
-+	.flags = CLK_GET_RATE_NOCACHE,
-+};
-+
-+static const struct clk_init_data mtk_mfg_clk_stack_init = {
-+	.name = "gpu-stack",
-+	.ops = &mtk_mfg_clk_stack_ops,
-+	.flags = CLK_GET_RATE_NOCACHE,
-+};
-+
-+static int mtk_mfg_eb_on(struct mtk_mfg *mfg)
-+{
-+	struct device *dev = &mfg->pdev->dev;
-+	u32 val;
-+	int ret;
-+
-+	/*
-+	 * If MFG is already on from e.g. the bootloader, we should skip doing
-+	 * the power-on sequence, as it wouldn't work without powering it off
-+	 * first.
-+	 */
-+	if ((readl(mfg->rpc + RPC_PWR_CON) & PWR_ACK_M) == PWR_ACK_M)
-+		return 0;
-+
-+	ret = readl_poll_timeout(mfg->rpc + RPC_GHPM_RO0_CON, val,
-+				 !(val & (GHPM_PWR_STATE_M | GHPM_STATE_M)),
-+				 GPUEB_POLL_US, GPUEB_TIMEOUT_US);
-+	if (ret) {
-+		dev_err(dev, "timed out waiting for EB to power on\n");
-+		return ret;
-+	}
-+
-+	mtk_mfg_update_reg_bits(mfg->rpc + mfg->ghpm_en_reg, GHPM_ENABLE_M,
-+				GHPM_ENABLE_M);
-+
-+	mtk_mfg_update_reg_bits(mfg->rpc + RPC_GHPM_CFG0_CON, GHPM_ON_SEQ_M, 0);
-+	mtk_mfg_update_reg_bits(mfg->rpc + RPC_GHPM_CFG0_CON, GHPM_ON_SEQ_M,
-+				GHPM_ON_SEQ_M);
-+
-+	mtk_mfg_update_reg_bits(mfg->rpc + mfg->ghpm_en_reg, GHPM_ENABLE_M, 0);
-+
-+
-+	ret = readl_poll_timeout(mfg->rpc + RPC_PWR_CON, val,
-+				 (val & PWR_ACK_M) == PWR_ACK_M,
-+				 GPUEB_POLL_US, GPUEB_TIMEOUT_US);
-+	if (ret) {
-+		dev_err(dev, "timed out waiting for EB power ack, val = 0x%X\n",
-+			val);
-+		return ret;
-+	}
-+
-+	ret = readl_poll_timeout(mfg->gpr + GPR_LP_STATE, val,
-+				 (val == EB_ON_RESUME),
-+				 GPUEB_POLL_US, GPUEB_TIMEOUT_US);
-+	if (ret) {
-+		dev_err(dev, "timed out waiting for EB to resume, status = 0x%X\n", val);
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mtk_mfg_eb_off(struct mtk_mfg *mfg)
-+{
-+	struct device *dev = &mfg->pdev->dev;
-+	struct mtk_mfg_ipi_sleep_msg msg = {
-+		.event = 0,
-+		.state = 0,
-+		.magic = GPUEB_SLEEP_MAGIC
-+	};
-+	u32 val;
-+	int ret;
-+
-+	ret = mbox_send_message(mfg->slp_mbox->ch, &msg);
-+	if (ret < 0) {
-+		dev_err(dev, "Cannot send sleep command: %pe\n", ERR_PTR(ret));
-+		return ret;
-+	}
-+
-+	ret = readl_poll_timeout(mfg->rpc + RPC_PWR_CON, val,
-+				 !(val & PWR_ACK_M), GPUEB_POLL_US,
-+				 GPUEB_TIMEOUT_US);
-+
-+	if (ret)
-+		dev_err(dev, "timed out waiting for EB to power off, val=0x%08X\n",
-+			val);
-+
-+	return ret;
-+}
-+
-+static int mtk_mfg_send_ipi(struct mtk_mfg *mfg, struct mtk_mfg_ipi_msg *msg)
-+{
-+	struct device *dev = &mfg->pdev->dev;
-+	unsigned long wait;
-+	int ret;
-+
-+	msg->magic = mfg->ipi_magic;
-+
-+	ret = mbox_send_message(mfg->gf_mbox->ch, msg);
-+	if (ret < 0) {
-+		dev_err(dev, "Cannot send GPUFreq IPI command: %pe\n", ERR_PTR(ret));
-+		return ret;
-+	}
-+
-+	wait = wait_for_completion_timeout(&mfg->gf_mbox->rx_done, msecs_to_jiffies(500));
-+	if (!wait)
-+		return -ETIMEDOUT;
-+
-+	msg = mfg->gf_mbox->rx_data;
-+
-+	if (msg->u.return_value < 0) {
-+		dev_err(dev, "IPI return: %d\n", msg->u.return_value);
-+		return -EPROTO;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mtk_mfg_init_shared_mem(struct mtk_mfg *mfg)
-+{
-+	struct device *dev = &mfg->pdev->dev;
-+	struct mtk_mfg_ipi_msg msg = {};
-+	int ret;
-+
-+	dev_dbg(dev, "clearing GPUEB sram, 0x%X bytes\n", mfg->sram_size);
-+	memset_io(mfg->sram, 0, mfg->sram_size);
-+
-+	msg.cmd = CMD_INIT_SHARED_MEM;
-+	msg.u.shared_mem.base = mfg->sram_phys;
-+	msg.u.shared_mem.size = mfg->sram_size;
-+
-+	ret = mtk_mfg_send_ipi(mfg, &msg);
-+	if (ret)
-+		return ret;
-+
-+	if (readl(mfg->sram) != GPUEB_SRAM_MAGIC) {
-+		dev_err(dev, "EB did not initialise SRAM correctly\n");
-+		return -EIO;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mtk_mfg_power_control(struct mtk_mfg *mfg, bool enabled)
-+{
-+	struct mtk_mfg_ipi_msg msg = {};
-+
-+	msg.cmd = CMD_POWER_CONTROL;
-+	msg.u.power_state = enabled ? 1 : 0;
-+
-+	return mtk_mfg_send_ipi(mfg, &msg);
-+}
-+
-+static int mtk_mfg_set_oppidx(struct mtk_mfg *mfg, unsigned int opp_idx)
-+{
-+	struct mtk_mfg_ipi_msg msg = {};
-+	int ret;
-+
-+	if (opp_idx >= mfg->num_opps)
-+		return -EINVAL;
-+
-+	if (mfg->last_opp == opp_idx)
-+		return 0;
-+
-+	msg.cmd = CMD_FIX_TARGET_OPPIDX;
-+	msg.u.oppidx = opp_idx;
-+
-+	ret = mtk_mfg_send_ipi(mfg, &msg);
-+	if (ret) {
-+		dev_err(&mfg->pdev->dev, "Failed to set OPP %u: %pe\n",
-+			opp_idx, ERR_PTR(ret));
-+		return ret;
-+	}
-+
-+	mfg->last_opp = opp_idx;
-+
-+	return 0;
-+}
-+
-+static int mtk_mfg_read_opp_tables(struct mtk_mfg *mfg)
-+{
-+	struct device *dev = &mfg->pdev->dev;
-+	struct mtk_mfg_opp_entry e = {};
-+	unsigned int i;
-+	unsigned long long last_freq;
-+
-+	mfg->num_opps = readl(mfg->sram + GF_REG_GPU_OPP_NUM);
-+
-+	if (mfg->num_opps > MAX_OPP_NUM || mfg->num_opps == 0) {
-+		dev_err(dev, "OPP count (%u) out of range %u >= count > 0\n",
-+			mfg->num_opps, MAX_OPP_NUM);
-+		return -EINVAL;
-+	}
-+
-+	mfg->gpu_opps = devm_kcalloc(dev, mfg->num_opps,
-+				     sizeof(struct dev_pm_opp_data), GFP_KERNEL);
-+	if (!mfg->gpu_opps)
-+		return -ENOMEM;
-+
-+	for (i = 0; i < mfg->num_opps; i++) {
-+		memcpy_fromio(&e, mfg->sram + GF_REG_OPP_TABLE_GPU + i * sizeof(e),
-+			      sizeof(e));
-+		if (mem_is_zero(&e, sizeof(e))) {
-+			dev_err(dev, "ran into an empty GPU OPP at index %u\n",
-+				i);
-+			return -EINVAL;
-+		}
-+		mfg->gpu_opps[i].freq = e.freq_khz * 1000ULL;
-+		mfg->gpu_opps[i].u_volt = e.voltage_core * 10;
-+		mfg->gpu_opps[i].level = i;
-+		if (i < mfg->variant->turbo_below)
-+			mfg->gpu_opps[i].turbo = true;
-+
-+		if (!last_freq || mfg->gpu_opps[i].freq != last_freq)
-+			mfg->num_unique_gpu_opps++;
-+
-+		last_freq = mfg->gpu_opps[i].freq;
-+	}
-+
-+	return 0;
-+}
-+
-+static const char *const mtk_mfg_mt8196_clk_names[] = {
-+	"core",
-+	"stack0",
-+	"stack1",
-+};
-+
-+static const char *const mtk_mfg_mt8196_regulators[] = {
-+	"core",
-+	"stack",
-+	"sram",
-+};
-+
-+static int mtk_mfg_mt8196_init(struct mtk_mfg *mfg)
-+{
-+	void __iomem *e2_base;
-+
-+	e2_base = devm_platform_ioremap_resource_byname(mfg->pdev, "hw-revision");
-+	if (IS_ERR(e2_base))
-+		return dev_err_probe(&mfg->pdev->dev, PTR_ERR(e2_base),
-+				     "Couldn't get hw-revision register\n");
-+
-+	if (readl(e2_base) == MFG_MT8196_E2_ID)
-+		mfg->ghpm_en_reg = RPC_DUMMY_REG_2;
-+	else
-+		mfg->ghpm_en_reg = RPC_GHPM_CFG0_CON;
-+
-+	return 0;
-+};
-+
-+static const struct mtk_mfg_variant mtk_mfg_mt8196_variant = {
-+	.clk_names = mtk_mfg_mt8196_clk_names,
-+	.num_clks = ARRAY_SIZE(mtk_mfg_mt8196_clk_names),
-+	.regulator_names = mtk_mfg_mt8196_regulators,
-+	.num_regulators = ARRAY_SIZE(mtk_mfg_mt8196_regulators),
-+	.turbo_below = 7,
-+	.init = mtk_mfg_mt8196_init,
-+};
-+
-+static void mtk_mfg_mbox_rx_callback(struct mbox_client *cl, void *mssg)
-+{
-+	struct mtk_mfg_mbox *mb = container_of(cl, struct mtk_mfg_mbox, cl);
-+
-+	if (mb->rx_data)
-+		mb->rx_data = memcpy(mb->rx_data, mssg, GPUEB_MBOX_MAX_RX_SIZE);
-+	complete(&mb->rx_done);
-+}
-+
-+static int mtk_mfg_attach_dev(struct generic_pm_domain *pd, struct device *dev)
-+{
-+	struct mtk_mfg *mfg = mtk_mfg_from_genpd(pd);
-+	struct dev_pm_opp_data *opps = mfg->gpu_opps;
-+	int i, ret;
-+
-+	for (i = mfg->num_opps - 1; i >= 0; i--) {
-+		if ((i == mfg->num_opps - 1) || (opps[i].freq != opps[i + 1].freq)) {
-+			ret = dev_pm_opp_add_dynamic(dev, &opps[i]);
-+			if (ret) {
-+				dev_err(dev, "Failed to add OPP level %u from PD %s\n",
-+					opps[i].level, pd->name);
-+				dev_pm_opp_remove_all_dynamic(dev);
-+				return ret;
-+			}
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+static void mtk_mfg_detach_dev(struct generic_pm_domain *pd, struct device *dev)
-+{
-+	dev_pm_opp_remove_all_dynamic(dev);
-+}
-+
-+static int mtk_mfg_set_performance(struct generic_pm_domain *pd,
-+				   unsigned int state)
-+{
-+	struct mtk_mfg *mfg = mtk_mfg_from_genpd(pd);
-+
-+	/*
-+	 * Occasionally, we're asked to set OPPs when we're off. This will fail,
-+	 * so don't do it at all. We do foo != GENPD_STATE_ON instead of !foo
-+	 * as to not depend on the actual value of the enum.
-+	 */
-+	if (mfg->pd.status != GENPD_STATE_ON)
-+		return 0;
-+
-+	return mtk_mfg_set_oppidx(mfg, state);
-+}
-+
-+static int mtk_mfg_power_on(struct generic_pm_domain *pd)
-+{
-+	struct mtk_mfg *mfg = mtk_mfg_from_genpd(pd);
-+	int ret;
-+
-+	ret = regulator_bulk_enable(mfg->variant->num_regulators,
-+				    mfg->gpu_regs);
-+	if (ret)
-+		return ret;
-+
-+	ret = clk_prepare_enable(mfg->clk_eb);
-+	if (ret)
-+		goto err_disable_regulators;
-+
-+	ret = clk_bulk_prepare_enable(mfg->variant->num_clks, mfg->gpu_clks);
-+	if (ret)
-+		goto err_disable_eb_clk;
-+
-+	ret = mtk_mfg_eb_on(mfg);
-+	if (ret)
-+		goto err_disable_clks;
-+
-+	ret = mtk_mfg_power_control(mfg, true);
-+	if (ret)
-+		goto err_eb_off;
-+
-+	return 0;
-+
-+err_eb_off:
-+	mtk_mfg_eb_off(mfg);
-+err_disable_clks:
-+	clk_bulk_disable_unprepare(mfg->variant->num_clks, mfg->gpu_clks);
-+err_disable_eb_clk:
-+	clk_disable_unprepare(mfg->clk_eb);
-+err_disable_regulators:
-+	regulator_bulk_disable(mfg->variant->num_regulators, mfg->gpu_regs);
-+
-+	return ret;
-+}
-+
-+static int mtk_mfg_power_off(struct generic_pm_domain *pd)
-+{
-+	struct mtk_mfg *mfg = mtk_mfg_from_genpd(pd);
-+	struct device *dev = &mfg->pdev->dev;
-+	int ret;
-+
-+	ret = mtk_mfg_power_control(mfg, false);
-+	if (ret) {
-+		dev_err(dev, "power_control failed: %pe\n", ERR_PTR(ret));
-+		return ret;
-+	}
-+	ret = mtk_mfg_eb_off(mfg);
-+	if (ret) {
-+		dev_err(dev, "eb_off failed: %pe\n", ERR_PTR(ret));
-+		return ret;
-+	}
-+	mfg->last_opp = -1;
-+	clk_bulk_disable_unprepare(mfg->variant->num_clks, mfg->gpu_clks);
-+	clk_disable_unprepare(mfg->clk_eb);
-+	ret = regulator_bulk_disable(mfg->variant->num_regulators, mfg->gpu_regs);
-+
-+	return ret;
-+}
-+
-+static int mtk_mfg_init_mbox(struct mtk_mfg *mfg)
-+{
-+	struct device *dev = &mfg->pdev->dev;
-+	struct mtk_mfg_mbox *gf;
-+	struct mtk_mfg_mbox *slp;
-+
-+	gf = devm_kzalloc(dev, sizeof(*gf), GFP_KERNEL);
-+	if (!gf)
-+		return -ENOMEM;
-+
-+	slp = devm_kzalloc(dev, sizeof(*slp), GFP_KERNEL);
-+	if (!slp)
-+		return -ENOMEM;
-+
-+	gf->mfg = mfg;
-+	init_completion(&gf->rx_done);
-+	gf->cl.dev = dev;
-+	gf->cl.rx_callback = mtk_mfg_mbox_rx_callback;
-+	gf->cl.tx_tout = GPUEB_TIMEOUT_US / USEC_PER_MSEC;
-+	gf->rx_data = devm_kzalloc(dev, GPUEB_MBOX_MAX_RX_SIZE, GFP_KERNEL);
-+	if (!gf->rx_data)
-+		return -ENOMEM;
-+	gf->ch = mbox_request_channel_byname(&gf->cl, "gpufreq");
-+	if (IS_ERR(gf->ch))
-+		return PTR_ERR(gf->ch);
-+
-+	mfg->gf_mbox = gf;
-+
-+	slp->mfg = mfg;
-+	init_completion(&slp->rx_done);
-+	slp->cl.dev = dev;
-+	slp->cl.tx_tout = GPUEB_TIMEOUT_US / USEC_PER_MSEC;
-+	slp->cl.tx_block = true;
-+	slp->ch = mbox_request_channel_byname(&slp->cl, "sleep");
-+	if (IS_ERR(slp->ch))
-+		return PTR_ERR(slp->ch);
-+
-+	mfg->slp_mbox = slp;
-+
-+	return 0;
-+}
-+
-+static int mtk_mfg_init_clk_provider(struct mtk_mfg *mfg)
-+{
-+	struct device *dev = &mfg->pdev->dev;
-+	struct clk_hw_onecell_data *clk_data;
-+	int ret;
-+
-+	clk_data = devm_kzalloc(dev, struct_size(clk_data, hws, 2), GFP_KERNEL);
-+	if (!clk_data)
-+		return -ENOMEM;
-+
-+	clk_data->num = 2;
-+
-+	mfg->clk_core_hw.init = &mtk_mfg_clk_gpu_init;
-+	mfg->clk_stack_hw.init = &mtk_mfg_clk_stack_init;
-+
-+	ret = devm_clk_hw_register(dev, &mfg->clk_core_hw);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "Couldn't register GPU core clock\n");
-+
-+	ret = devm_clk_hw_register(dev, &mfg->clk_stack_hw);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "Couldn't register GPU stack clock\n");
-+
-+	clk_data->hws[0] = &mfg->clk_core_hw;
-+	clk_data->hws[1] = &mfg->clk_stack_hw;
-+
-+	ret = devm_of_clk_add_hw_provider(dev, of_clk_hw_onecell_get, clk_data);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "Couldn't register clock provider\n");
-+
-+	return 0;
-+}
-+
-+static const struct of_device_id mtk_mfg_of_match[] = {
-+	{ .compatible = "mediatek,mt8196-gpufreq", .data = &mtk_mfg_mt8196_variant },
-+	{}
-+};
-+MODULE_DEVICE_TABLE(of, mtk_mfg_of_match);
-+
-+static int mtk_mfg_probe(struct platform_device *pdev)
-+{
-+	struct device_node *shmem __free(device_node);
-+	struct mtk_mfg *mfg;
-+	struct device *dev = &pdev->dev;
-+	const struct mtk_mfg_variant *data = of_device_get_match_data(dev);
-+	struct resource res;
-+	int ret, i;
-+
-+	mfg = devm_kzalloc(dev, sizeof(*mfg), GFP_KERNEL);
-+	if (!mfg)
-+		return -ENOMEM;
-+
-+	mfg->pdev = pdev;
-+	mfg->variant = data;
-+
-+	dev_set_drvdata(dev, mfg);
-+
-+	mfg->gpr = devm_platform_ioremap_resource_byname(pdev, "gpr");
-+	if (IS_ERR(mfg->gpr))
-+		return dev_err_probe(dev, PTR_ERR(mfg->gpr),
-+				     "Could not retrieve GPR MMIO registers\n");
-+
-+	mfg->rpc = devm_platform_ioremap_resource_byname(pdev, "rpc");
-+	if (IS_ERR(mfg->rpc))
-+		return dev_err_probe(dev, PTR_ERR(mfg->rpc),
-+				     "Could not retrieve RPC MMIO registers\n");
-+
-+	mfg->clk_eb = devm_clk_get(dev, "eb");
-+	if (IS_ERR(mfg->clk_eb))
-+		return dev_err_probe(dev, PTR_ERR(mfg->clk_eb),
-+				     "Could not get 'eb' clock\n");
-+
-+	mfg->gpu_clks = devm_kcalloc(dev, data->num_clks, sizeof(*mfg->gpu_clks),
-+				     GFP_KERNEL);
-+	if (!mfg->gpu_clks)
-+		return -ENOMEM;
-+
-+	for (i = 0; i < data->num_clks; i++)
-+		mfg->gpu_clks[i].id = data->clk_names[i];
-+
-+	ret = devm_clk_bulk_get(dev, data->num_clks, mfg->gpu_clks);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "couldn't get GPU clocks\n");
-+
-+	mfg->gpu_regs = devm_kcalloc(dev, data->num_regulators,
-+				     sizeof(*mfg->gpu_regs), GFP_KERNEL);
-+	if (!mfg->gpu_regs)
-+		return -ENOMEM;
-+
-+	for (i = 0; i < data->num_regulators; i++)
-+		mfg->gpu_regs[i].supply = data->regulator_names[i];
-+
-+	ret = devm_regulator_bulk_get(dev, data->num_regulators, mfg->gpu_regs);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "couldn't get GPU regulators\n");
-+
-+	shmem = of_parse_phandle(dev->of_node, "shmem", 0);
-+	if (!shmem)
-+		return dev_err_probe(dev, -ENODEV, "Could not get 'shmem'\n");
-+
-+	ret = of_address_to_resource(shmem, 0, &res);
-+	if (ret)
-+		return dev_err_probe(dev, ret,
-+				     "failed to get GPUEB shared memory\n");
-+
-+	mfg->sram = devm_ioremap(dev, res.start, resource_size(&res));
-+	if (!mfg->sram)
-+		return dev_err_probe(dev, -EADDRNOTAVAIL,
-+				     "failed to ioremap GPUEB sram\n");
-+	mfg->sram_size = resource_size(&res);
-+	mfg->sram_phys = res.start;
-+
-+	if (data->init) {
-+		ret = data->init(mfg);
-+		if (ret)
-+			return dev_err_probe(dev, ret, "Variant init failed\n");
-+	}
-+
-+	mfg->pd.name = dev_name(dev);
-+	mfg->pd.attach_dev = mtk_mfg_attach_dev;
-+	mfg->pd.detach_dev = mtk_mfg_detach_dev;
-+	mfg->pd.power_off = mtk_mfg_power_off;
-+	mfg->pd.power_on = mtk_mfg_power_on;
-+	mfg->pd.set_performance_state = mtk_mfg_set_performance;
-+	mfg->pd.flags = GENPD_FLAG_OPP_TABLE_FW;
-+	pm_genpd_init(&mfg->pd, NULL, false);
-+
-+	ret = clk_prepare_enable(mfg->clk_eb);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "failed to turn on EB clock\n");
-+	mfg->ipi_magic = readl(mfg->gpr + GPR_IPI_MAGIC);
-+	/* Downstream does this, don't know why. */
-+	writel(0x0, mfg->gpr + GPR_IPI_MAGIC);
-+
-+	ret = mtk_mfg_init_mbox(mfg);
-+	if (ret) {
-+		ret = dev_err_probe(dev, ret, "Couldn't initialise mailbox\n");
-+		goto out;
-+	}
-+
-+	mfg->last_opp = -1;
-+
-+	ret = mtk_mfg_power_on(&mfg->pd);
-+	clk_disable_unprepare(mfg->clk_eb);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "Failed to power on MFG\n");
-+
-+	ret = mtk_mfg_init_shared_mem(mfg);
-+	if (ret) {
-+		dev_err(dev, "Couldn't initialize EB SRAM: %pe\n", ERR_PTR(ret));
-+		goto out;
-+	}
-+
-+	ret = mtk_mfg_read_opp_tables(mfg);
-+	if (ret) {
-+		dev_err(dev, "Error reading OPP tables from EB: %pe\n",
-+			ERR_PTR(ret));
-+		goto out;
-+	}
-+
-+	ret = mtk_mfg_init_clk_provider(mfg);
-+	if (ret)
-+		goto out;
-+
-+	ret = of_genpd_add_provider_simple(pdev->dev.of_node, &mfg->pd);
-+	if (ret) {
-+		ret = dev_err_probe(dev, ret, "Failed to add pmdomain provider\n");
-+		goto out;
-+	}
-+
-+	return 0;
-+
-+out:
-+	mtk_mfg_power_off(&mfg->pd);
-+	return ret;
-+}
-+
-+static struct platform_driver mtk_mfg_driver = {
-+	.driver = {
-+		.name = "mtk-mfg-pmdomain",
-+		.of_match_table = mtk_mfg_of_match,
-+	},
-+	.probe = mtk_mfg_probe,
-+};
-+module_platform_driver(mtk_mfg_driver);
-+
-+MODULE_AUTHOR("Nicolas Frattaroli <nicolas.frattaroli@collabora.com>");
-+MODULE_DESCRIPTION("MediaTek MFlexGraphics Power Domain Driver");
-+MODULE_LICENSE("GPL");
-
--- 
-2.51.0
-
+T24gVHVlLCAyMDI1LTA5LTIzIGF0IDExOjA2ICswMjAwLCBOaWNvbGFzIEZyYXR0YXJvbGkgd3Jv
+dGU6DQo+IEV4dGVybmFsIGVtYWlsIDogUGxlYXNlIGRvIG5vdCBjbGljayBsaW5rcyBvciBvcGVu
+IGF0dGFjaG1lbnRzIHVudGlsDQo+IHlvdSBoYXZlIHZlcmlmaWVkIHRoZSBzZW5kZXIgb3IgdGhl
+IGNvbnRlbnQuDQo+IA0KPiANCj4gT24gVHVlc2RheSwgMjMgU2VwdGVtYmVyIDIwMjUgMDQ6MzU6
+NTkgQ2VudHJhbCBFdXJvcGVhbiBTdW1tZXIgVGltZQ0KPiBKamlhbiBaaG91ICjlkajlu7opIHdy
+b3RlOg0KPiA+IE9uIE1vbiwgMjAyNS0wOS0yMiBhdCAxNToxMCArMDIwMCwgTmljb2xhcyBGcmF0
+dGFyb2xpIHdyb3RlOg0KPiA+ID4gRXh0ZXJuYWwgZW1haWwgOiBQbGVhc2UgZG8gbm90IGNsaWNr
+IGxpbmtzIG9yIG9wZW4gYXR0YWNobWVudHMNCj4gPiA+IHVudGlsDQo+ID4gPiB5b3UgaGF2ZSB2
+ZXJpZmllZCB0aGUgc2VuZGVyIG9yIHRoZSBjb250ZW50Lg0KPiA+ID4gDQo+ID4gPiANCj4gPiA+
+IE9uIE1vbmRheSwgMjIgU2VwdGVtYmVyIDIwMjUgMDk6MTc6MjcgQ2VudHJhbCBFdXJvcGVhbiBT
+dW1tZXINCj4gPiA+IFRpbWUNCj4gPiA+IEpqaWFuIFpob3UgKOWRqOW7uikgd3JvdGU6DQo+ID4g
+PiA+IE9uIFNhdCwgMjAyNS0wOS0yMCBhdCAyMzowMiAtMDUwMCwgSmFzc2kgQnJhciB3cm90ZToN
+Cj4gPiA+ID4gPiBFeHRlcm5hbCBlbWFpbCA6IFBsZWFzZSBkbyBub3QgY2xpY2sgbGlua3Mgb3Ig
+b3Blbg0KPiA+ID4gPiA+IGF0dGFjaG1lbnRzDQo+ID4gPiA+ID4gdW50aWwNCj4gPiA+ID4gPiB5
+b3UgaGF2ZSB2ZXJpZmllZCB0aGUgc2VuZGVyIG9yIHRoZSBjb250ZW50Lg0KPiA+ID4gPiA+IA0K
+PiA+ID4gPiA+IA0KPiA+ID4gPiA+IE9uIEZyaSwgU2VwIDE5LCAyMDI1IGF0IDI6MDLigK9QTSBO
+aWNvbGFzIEZyYXR0YXJvbGkNCj4gPiA+ID4gPiA8bmljb2xhcy5mcmF0dGFyb2xpQGNvbGxhYm9y
+YS5jb20+IHdyb3RlOg0KPiA+ID4gPiA+ID4gDQo+ID4gPiA+ID4gPiBPbiBGcmlkYXksIDE5IFNl
+cHRlbWJlciAyMDI1IDE4OjMyOjEyIENlbnRyYWwgRXVyb3BlYW4NCj4gPiA+ID4gPiA+IFN1bW1l
+cg0KPiA+ID4gPiA+ID4gVGltZQ0KPiA+ID4gPiA+ID4gSmFzc2kgQnJhciB3cm90ZToNCj4gPiA+
+ID4gPiA+ID4gT24gRnJpLCBTZXAgMTksIDIwMjUgYXQgMzozMeKAr0FNIENoZW4tWXUgVHNhaSA8
+DQo+ID4gPiA+ID4gPiA+IHdlbnN0QGNocm9taXVtLm9yZz4NCj4gPiA+ID4gPiA+ID4gd3JvdGU6
+DQo+ID4gPiA+ID4gPiA+ID4gDQo+ID4gPiA+ID4gPiA+ID4gT24gRnJpLCBTZXAgMTksIDIwMjUg
+YXQgNzo1MOKAr0FNIEphc3NpIEJyYXIgPA0KPiA+ID4gPiA+ID4gPiA+IGphc3Npc2luZ2hicmFy
+QGdtYWlsLmNvbT4gd3JvdGU6DQo+ID4gPiA+ID4gPiA+ID4gPiANCj4gPiA+ID4gPiA+ID4gPiA+
+IE9uIFRodSwgQXVnIDIxLCAyMDI1IGF0IDk6MTLigK9QTSBKamlhbiBaaG91IDwNCj4gPiA+ID4g
+PiA+ID4gPiA+IGpqaWFuLnpob3VAbWVkaWF0ZWsuY29tPiB3cm90ZToNCj4gPiA+ID4gPiA+ID4g
+PiA+IA0KPiA+ID4gPiA+ID4gPiA+ID4gLi4uLi4NCj4gPiA+ID4gPiA+ID4gPiA+IA0KPiA+ID4g
+PiA+ID4gPiA+ID4gPiArI2luY2x1ZGUgPGxpbnV4L21vZHVsZS5oPg0KPiA+ID4gPiA+ID4gPiA+
+ID4gPiArI2luY2x1ZGUgPGxpbnV4L29mLmg+DQo+ID4gPiA+ID4gPiA+ID4gPiA+ICsjaW5jbHVk
+ZSA8bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+DQo+ID4gPiA+ID4gPiA+ID4gPiA+ICsjaW5jbHVk
+ZSA8bGludXgvc2xhYi5oPg0KPiA+ID4gPiA+ID4gPiA+ID4gPiArDQo+ID4gPiA+ID4gPiA+ID4g
+PiA+ICtzdHJ1Y3QgbXRrX3ZjcF9tYm94X3ByaXYgew0KPiA+ID4gPiA+ID4gPiA+ID4gDQo+ID4g
+PiA+ID4gPiA+ID4gPiBNYXliZSAnbXRrX3ZjcF9tYm94JyBpcyBhIG1vcmUgYXBwcm9wcmlhdGUg
+bmFtZSA/DQo+ID4gPiA+ID4gPiA+ID4gPiANCj4gPiA+ID4gPiA+ID4gPiA+ID4gKyAgICAgICB2
+b2lkIF9faW9tZW0gKmJhc2U7DQo+ID4gPiA+ID4gPiA+ID4gPiA+ICsgICAgICAgc3RydWN0IGRl
+dmljZSAqZGV2Ow0KPiA+ID4gPiA+ID4gPiA+ID4gPiArICAgICAgIHN0cnVjdCBtYm94X2NvbnRy
+b2xsZXIgbWJveDsNCj4gPiA+ID4gPiA+ID4gPiA+ID4gKyAgICAgICBjb25zdCBzdHJ1Y3QgbXRr
+X3ZjcF9tYm94X2NmZyAqY2ZnOw0KPiA+ID4gPiA+ID4gPiA+ID4gPiArICAgICAgIHN0cnVjdCBt
+dGtfaXBpX2luZm8gaXBpX3JlY3Y7DQo+ID4gPiA+ID4gPiA+ID4gPiANCj4gPiA+ID4gPiA+ID4g
+PiA+IE1heWJlIGFsc28gaGF2ZSAic3RydWN0IG1ib3hfY2hhbiBjaGFuWzFdOyAiIHNvIHRoYXQN
+Cj4gPiA+ID4gPiA+ID4gPiA+IHlvdQ0KPiA+ID4gPiA+ID4gPiA+ID4gZG9uJ3QgaGF2ZSB0bw0K
+PiA+ID4gPiA+ID4gPiA+ID4gYWxsb2NhdGUgb25lIGR1cmluZyB0aGUgcHJvYmUuDQo+ID4gPiA+
+ID4gPiA+ID4gPiBBbHNvIGlmIHlvdSBoYXZlICAic3RydWN0IG1ib3hfY29udHJvbGxlciBtYm94
+OyIgYXMNCj4gPiA+ID4gPiA+ID4gPiA+IHRoZQ0KPiA+ID4gPiA+ID4gPiA+ID4gZmlyc3QNCj4g
+PiA+ID4gPiA+ID4gPiA+IG1lbWJlciwNCj4gPiA+ID4gPiA+ID4gPiA+IHlvdSBjb3VsZCBzaW1w
+bHkgdHlwZWNhc3QgdGhhdCB0byBnZXQgdGhpcyBzdHJ1Y3R1cmUuDQo+ID4gPiA+ID4gPiA+ID4g
+PiBTb21ldGhpbmcgbGlrZSAic3RydWN0IG1wZnNfbWJveCIgaW4gbWFpbGJveC1tcGZzLmMNCj4g
+PiA+ID4gPiA+ID4gPiANCj4gPiA+ID4gPiA+ID4gPiBJIHJlYWQgc29tZXdoZXJlIHRoYXQgdGhp
+cyB3YXkgb2Ygc3ViY2xhc3NpbmcgaXMgbm90DQo+ID4gPiA+ID4gPiA+ID4gcmVjb21tZW5kZWQu
+DQo+ID4gPiA+ID4gPiA+ID4gSW5zdGVhZCB0aGUgYmFzZSBjbGFzcyBzaG91bGQgZXhwbGljaXRs
+eSBub3QgYmUgdGhlDQo+ID4gPiA+ID4gPiA+ID4gZmlyc3QNCj4gPiA+ID4gPiA+ID4gPiBtZW1i
+ZXIuDQo+ID4gPiA+ID4gPiA+ID4gQW5kIHRoZW4gY29udGFpbmVyX29mKCkgc2hvdWxkIGJlIHVz
+ZWQuDQo+ID4gPiA+ID4gPiA+ID4gDQo+ID4gPiA+ID4gPiA+ID4gSSBkb24ndCByZW1lbWJlciB3
+aGVyZSBJIHJlYWQgdGhpcyB0aG91Z2guIEJ1dCBJIHRoaW5rDQo+ID4gPiA+ID4gPiA+ID4gdGhl
+DQo+ID4gPiA+ID4gPiA+ID4gZXhwbGljaXQNCj4gPiA+ID4gPiA+ID4gPiBjb250YWluZXJfb2Yo
+KSBpcyBlYXNpZXIgZm9yIHVuZGVyc3RhbmRpbmcgdGhlIGludGVudC4NCj4gPiA+ID4gPiA+ID4g
+PiANCj4gPiA+ID4gPiA+ID4gDQo+ID4gPiA+ID4gPiA+IEFuZCBob3cgZG9lcyBjb250YWluZXJf
+b2YoKSB3b3JrID8gOikNCj4gPiA+ID4gPiA+ID4gdHlwY2FzdGluZyB0aGUgZmlyc3QgbWVtYmVy
+IHRvIGl0cyBwYXJlbnQgaXMgdGhlIHNpbXBsZXN0DQo+ID4gPiA+ID4gPiA+IGZvcm0gb2YNCj4g
+PiA+ID4gPiA+ID4gY29udGFpbmVyX29mLg0KPiA+ID4gPiA+ID4gPiANCj4gPiA+ID4gPiA+ID4g
+LWoNCj4gPiA+ID4gPiA+ID4gDQo+ID4gPiA+ID4gPiA+IA0KPiA+ID4gPiA+ID4gDQo+ID4gPiA+
+ID4gPiBXaGljaCBpcyB3aHkgaXQncyBjb21wbGV0ZWx5IGVxdWl2YWxlbnQgYW5kIHNpbmNlIGNv
+ZGUgaXMNCj4gPiA+ID4gPiA+IHN1cHBvc2VkDQo+ID4gPiA+ID4gPiB0byBjb21tdW5pY2F0ZSBt
+ZWFuaW5nIHRvIGh1bWFucywgY29udGFpbmVyX29mIHNob3VsZCBiZQ0KPiA+ID4gPiA+ID4gdXNl
+ZC4NCj4gPiA+ID4gPiA+IA0KPiA+ID4gPiA+IA0KPiA+ID4gPiA+IE5vYm9keSBpcyBzdWdnZXN0
+aW5nIHR5cGVjYXN0aW5nIGNmZywgZGV2IG9yIGFueXRoaW5nIGVsc2UuDQo+ID4gPiA+ID4gVHlw
+ZWNhc3RpbmcgYmV0d2VlbiBtYWlsYm94IGNvbnRyb2xsZXJzIGlzIGZpbmUgYW5kIGFyZ3VhYmx5
+DQo+ID4gPiA+ID4gZWFzaWVyDQo+ID4gPiA+ID4gb24NCj4gPiA+ID4gPiB0aGUgZXllcyB0aGFu
+IHVzaW5nIGEgY29udGFpbmVyX29mLg0KPiA+ID4gPiA+IA0KPiA+ID4gPiA+IC1qDQo+ID4gPiA+
+IA0KPiA+ID4gPiBPSy4gSG93IGFib3V0Og0KPiA+ID4gPiBzdHJ1Y3QgbXRrX3ZjcF9tYm94ICpw
+cml2ID0gKHN0cnVjdCBtdGtfdmNwX21ib3ggKiljaGFuLQ0KPiA+ID4gPiA+IGNvbl9wcml2Ow0K
+PiA+ID4gPiANCj4gPiA+ID4gVGhhbmtzLg0KPiA+ID4gPiANCj4gPiA+IA0KPiA+ID4gQW4gZXhw
+bGljaXQgY2FzdCB3b3VsZCBiZSB3b3JzZSwgYXMgYXQgdGhhdCBwb2ludCB5b3UncmUgdGVsbGlu
+Zw0KPiA+ID4gQyB0byBjb21wbGV0ZWx5IGlnbm9yZSBhbnkgc2VtYmxhbmNlIG9mIGEgdHlwZSBz
+eXN0ZW0gaXQgaGFzLg0KPiA+ID4gDQo+ID4gPiANCj4gPiA+IA0KPiA+IA0KPiA+ICAgICAgc3Ry
+dWN0IG10a192Y3BfbWJveCAqcHJpdjsNCj4gPiAgICAgIHByaXYtPmRldiA9IGRldjsNCj4gPiAg
+ICAgIHByaXYtPmNoYW5zWzBdLmNvbl9wcml2ID0gcHJpdjsNCj4gPiBUaGUgdHlwZSBvZiBjb25f
+cHJpdiBpcyAidm9pZCAqIi4NCj4gPiBXb3VsZCB0aGUgY29udmVyc2lvbiBtZW50aW9uZWQgYWJv
+dmUgYWxzbyBoYXZlIHRoZSBpc3N1ZSB5b3UNCj4gPiBtZW50aW9uZWQ/DQo+ID4gDQo+ID4gVGhh
+bmtzLg0KPiA+IA0KPiANCj4gTm8sIGluIHRoYXQgY2FzZSB0aGUgY2FzdCBpcyBpbXBsaWNpdC4g
+V2hpbGUgdm9pZCBwb2ludGVycyBkbw0KPiBzdWJ2ZXJ0IHRoZSB0eXBlIHN5c3RlbSwgdGhleSBh
+cmUgbmVlZGVkIGluIHRoaXMgY2FzZSBiZWNhdXNlDQo+IHRoZSBjb25fcHJpdiBtZW1iZXIgbmVl
+ZHMgdG8gcG9pbnQgYXQgc3RydWN0cyBvZiBhbnkgdHlwZS4NCj4gDQo+IFRoZSBwcm9ibGVtIGlz
+IHRoYXQgd2hlbiB5b3UgZG8gc29tZXRoaW5nIGxpa2UNCj4gDQo+ICAgc3RydWN0IGFwcGxlICph
+ID0gc29tZXRoaW5nOw0KPiAgIHN0cnVjdCBvcmFuZ2UgKm8gPSAoc3RydWN0IG9yYW5nZSAqKWE7
+DQo+IA0KPiB0aGVuIGlmIHRoZSB0d28gc3RydWN0cyAoYXBwbGUgYW5kIG9yYW5nZSkgYXJlIGlu
+Y29tcGF0aWJsZSwNCj4gdGhlIGNvbXBpbGVyIHdvbid0IGV2ZW4geWVsbCBhdCB5b3UsIGJlY2F1
+c2UgeW91J3JlIGV4cGxpY2l0bHkNCj4gY2FzdGluZy4NCj4gDQo+IFdpdGggYW4gaW1wbGljaXQg
+Y2FzdDoNCj4gDQo+ICAgc3RydWN0IGFwcGxlICphID0gc29tZXRoaW5nOw0KPiAgIHN0cnVjdCBv
+cmFuZ2UgKm8gPSBhOw0KPiANCj4gdGhlIGNvbXBpbGVyIHdpbGwgdGVsbCB5b3UgaWYgeW91J3Jl
+IGRvaW5nIHNvbWV0aGluZyB3cm9uZy4NCj4gSGVyZSdzIGEgdXNlcnNwYWNlIGNvZGUgZXhhbXBs
+ZSB0byBpbGx1c3RyYXRlIHRoZSBwb2ludDoNCj4gDQo+ICAgICAjaW5jbHVkZSA8c3RkaW8uaD4N
+Cj4gDQo+ICAgICBzdHJ1Y3QgYXBwbGUgew0KPiAgICAgICAgICAgICBjb25zdCBjaGFyICpuYW1l
+Ow0KPiAgICAgICAgICAgICB1bnNpZ25lZCBpbnQgd2VpZ2h0Ow0KPiAgICAgfTsNCj4gDQo+ICAg
+ICBzdHJ1Y3Qgb3JhbmdlIHsNCj4gICAgICAgICAgICAgaW50IHg7DQo+ICAgICAgICAgICAgIGlu
+dCB5Ow0KPiAgICAgICAgICAgICBpbnQgejsNCj4gICAgIH07DQo+IA0KPiAgICAgaW50IG1haW4o
+aW50IGFyZ2MsIGNoYXIqKiBhcmd2KQ0KPiAgICAgew0KPiAgICAgICAgICAgICBzdHJ1Y3QgYXBw
+bGUgYSA9IHsiR3Jhbm55IFNtaXRoIiwgMjAwfTsNCj4gICAgICAgICAgICAgLy8gd29uJ3QgY29t
+cGlsZSwgZ29vZCENCj4gICAgICAgICAgICAgLyogc3RydWN0IG9yYW5nZSAqbyA9ICZhOyAqLw0K
+PiAgICAgICAgICAgICAvLyB3aWxsIGNvbXBpbGUsIGJhZCENCj4gICAgICAgICAgICAgc3RydWN0
+IG9yYW5nZSAqbyA9IChzdHJ1Y3Qgb3JhbmdlICopJmE7DQo+IA0KPiAgICAgICAgICAgICBwcmlu
+dGYoIiVkXG4iLCBvLT54KTsNCj4gDQo+ICAgICAgICAgICAgIHJldHVybiAwOw0KPiAgICAgfQ0K
+PiANCj4gSWYgeW91IGNvbW1lbnQgb3V0IHRoZSBzZWNvbmQgc3RydWN0IG9yYW5nZSBsaW5lIGFu
+ZCB1bmNvbW1lbnQgdGhlDQo+IGZpcnN0LCB0aGVuIHlvdSdsbCBnZXQgYSBjb21waWxhdGlvbiBl
+cnJvciwgd2hpY2ggaXMgd2hhdCB3ZSB3YW50DQo+IGJlY2F1c2UgdGhlIHR3byBzdHJ1Y3RzIGFy
+ZSBpbmNvbXBhdGlibGUgYW5kIHdlIGRvbid0IHdhbnQgdGhlDQo+IGFzc2lnbm1lbnQgdG8gd29y
+ayBpbiB0aGlzIGNhc2UsIGFzIHRoYXQgd291bGQgYmUgYSBidWcuDQo+IA0KPiBUaGUgc2Vjb25k
+IHN0cnVjdCBvcmFuZ2UgbGluZSBhbHdheXMgY29tcGlsZXMsIGV2ZW4gdGhvdWdoIHRoZSB0d28N
+Cj4gc3RydWN0cyBhcmUgaW5jb21wYXRpYmxlLCBhbmQgd2lsbCBjYXVzZSBub25zZW5zZSB0byBi
+ZSBwcmludGVkLg0KPiANCj4gSSBob3BlIHRoaXMgaWxsdXN0cmF0ZXMgdGhlIHBvaW50IEkgd2Fz
+IHRyeWluZyB0byBtYWtlLCB3aGljaCBpcw0KPiB0aGF0IGV4cGxpY2l0IGNhc3RzIG1ha2UgaXQg
+aGFyZGVyIHRvIGZpbmQgaXNzdWVzIGJlY2F1c2UgdGhleQ0KPiBmb3JjZSB0aGUgbGFuZ3VhZ2Ug
+dG8gc2ltcGx5IGFjY2VwdCB0aGUgY2FzdCByYXRoZXIgdGhhbiBnaXZlIHVzDQo+IGEgY29tcGls
+YXRpb24gZXJyb3Igd2hlbiBzb21ldGhpbmcgbm9uc2Vuc2ljYWwgaXMgYmVpbmcgZG9uZS4NCj4g
+DQo+IEtpbmQgcmVnYXJkcywNCj4gTmljb2xhcyBGcmF0dGFyb2xpDQo+IA0KPiANCg0KSSBzaG91
+bGQgbm90IGRpcmVjdGx5IGFzc2lnbiBhIHZhcmlhYmxlIHRvIHByaXYgYWZ0ZXIgYW4gZXhwbGlj
+aXQgDQpjYXN0OyBpbnN0ZWFkLCBJIHNob3VsZCB1c2UgaW1wbGljaXQgY2FzdGluZy4gVGhpcyB3
+YXksIHRoZSBjb21waWxlciANCmNhbiBjYXRjaCB0eXBlIG1pc21hdGNoIGVycm9ycywgYXZvaWRp
+bmcgdW5leHBlY3RlZCBlcnJvcnMgY2F1c2VkIGJ5IA0KZXhwbGljaXQgY2FzdGluZy4NCkxpa2U6
+DQogIHN0YXRpYyBpbnQgbXRrX3ZjcF9tYm94X3NlbmRfZGF0YShzdHJ1Y3QgbWJveF9jaGFuICpj
+aGFuLCB2b2lkICpkYXRhKQ0KICB7DQogICAgIC8vIHNob3VsZCBiZQ0KICAgICBzdHJ1Y3QgbXRr
+X3ZjcF9tYm94ICpwcml2ID0gY2hhbi0+Y29uX3ByaXY7IA0KICAgICAvLyBzaG91bGQgbm90IA0K
+DQpzdHJ1Y3QgbXRrX3ZjcF9tYm94ICpwcml2ID0gKHN0cnVjdCBtdGtfdmNwX21ib3ggKiljaGFu
+LT5jb25fcHJpdjsgDQoNCg0KDQogICAgIA0KDQo=
 
