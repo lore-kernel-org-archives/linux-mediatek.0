@@ -4,74 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A155BCAC5B0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Sep 2025 12:06:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C35FCAC5B0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Sep 2025 12:18:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
+	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gk6eqZAFbX16sas/2kwE2G4a7ts2lJRHO7QXaYrFraE=; b=1tKBDfa+vq0zz1ura/V7VSSZW5
-	IQTs3ibZb4DSWZEB9L1byj6kM9LdSd22r9/uBIwTKoO+RQdkZz097pVTl347bv0mDbaxzjkumFMYM
-	+HMwJGdhb4hiU+jj73zmzTiJW75q0vmnTG1lK9Y6XiZd6mVrWR0CtOCYm09W93RECoqe7X3SHJEs4
-	nxIPE4ktpd+9PLOrHjw6/Iu1EJs+fuc1bVGxgpHShqITHhIJ4plo0yXvZfqz8zSzjjwbsODSrv0zx
-	ArPSbmfq5ydbwWVJTvMtMNbvwlUQq+cJd9Ev3EXopiucW8ScKSgSMXrYwMhoH3kin4UHhNodEl6W5
-	bZ5Sp7Vg==;
+	bh=fgbwTeN4mBqznS0b5v+G7eAnKEwgbBFcZpWyDDDQBEA=; b=xqkrojT5N6UI1jaS3641gqOtWo
+	227ycvCb31pzTF4Adehzqj8EPOhVnG2UVW0v3dFNCS25e8ghhtxGCHC8jkVyy06lQ7mCLoEKhFsZI
+	Xb9r2WQ9ZIK35IPGmRYlWplNUYrSoRFHxF9EiofboGwp2t1EPvH4vxB6dhW3BpP4zRxn9cDTP8/4C
+	aKwEZ1MbcVDg4YSH1P3Cxz62A3K+mM6xSqk00brbkTqirWUEZSP6fMAxkxem7XlPjQWyhjJOFhWdb
+	58bM0JmehpUhnH1FuiIUmXQPjRaWEQtSI55TWla49kzc1Tsqq3lqJPFlJ+8vjVotH7JPOTiFbq206
+	Jw6U7DPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v11n9-0000000DGfZ-0Y88;
-	Tue, 23 Sep 2025 12:06:43 +0000
-Received: from out-181.mta1.migadu.com ([2001:41d0:203:375::b5])
+	id 1v11yC-0000000DI05-0olA;
+	Tue, 23 Sep 2025 12:18:08 +0000
+Received: from mail-106102.protonmail.ch ([79.135.106.102])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v11n6-0000000DGOO-1ZDA
+	id 1v11y8-0000000DHz4-43Hi
 	for linux-mediatek@lists.infradead.org;
-	Tue, 23 Sep 2025 12:06:41 +0000
-Message-ID: <3734c5a7-6b3f-4af1-ac35-6bd680823be5@linux.dev>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
-	t=1758629077;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=gk6eqZAFbX16sas/2kwE2G4a7ts2lJRHO7QXaYrFraE=;
-	b=RYNpYPHd2k0bh9y0HCKQd4gHfuRL/axnDG6gO211K7wPMxOmhySDA/74pfMz2VMbDhK3x8
-	ZnAbmEezV0E2kHK7kw/VT5JJClf3+ebKpPD6F7Rj60cETRvmVVrKada7NfskvXxs4npNVR
-	x5REP7lHguHRrQ6JhP1YbRbGmWx3H+U=
-Date: Tue, 23 Sep 2025 20:04:18 +0800
+	Tue, 23 Sep 2025 12:18:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
+	s=protonmail; t=1758629879; x=1758889079;
+	bh=fgbwTeN4mBqznS0b5v+G7eAnKEwgbBFcZpWyDDDQBEA=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector;
+	b=OLUTESS1EIxO5wu69Pkg4FbXF0V50+VJj0phn3kui/Cp1rvKW3llyCRylXo3fQsuf
+	 zcYc+UTZovXCAxdJpPBfMYqjK6oRL/v8DVbbL03AfIBK7vjyytYzaF0MNyMEe9Ghp7
+	 MfjMIVJCsIH/SHVOFrttuZINLZ/GoJPzZfq2qAws+3zu4MVrhN+uWTV8gB0ELCMTTT
+	 V7kOD+bnYMP1nqb1xkgRtgWIWhAbT0OoY3JBZFps+1dv4vOhJcWi7/yVoDPJuZQijT
+	 hIE4grV89D6Wk7Vm/AY1E4hKhKD2bVS9muXjrdVq6k/AjLlMCgs7G9LieiJ0Fm27Z1
+	 27E6xIiNet1ug==
+Date: Tue, 23 Sep 2025 12:17:45 +0000
+To: Rob Herring <robh@kernel.org>
+From: Max Shevchenko <wctrl@proton.me>
+Cc: "sean.wang@mediatek.com" <sean.wang@mediatek.com>, "vkoul@kernel.org" <vkoul@kernel.org>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>, "long.cheng@mediatek.com" <long.cheng@mediatek.com>, "dmaengine@vger.kernel.org" <dmaengine@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH 1/3] dt-bindings: dma: mediatek,uart-dma: drop mediatek,dma-33bits property
+Message-ID: <OqrpnP1RyPRyuNfMPA0kXp64iZ1Q5a0ZDMKXz4xmzcg9U7s9SvEvuo1jmiNAwTCgCibt0r1EafrFMwj-ML0ByUC1nsh5ZVbsY1pfOF7pzq8=@proton.me>
+In-Reply-To: <20250922204756.GA1294776-robh@kernel.org>
+References: <20250921-uart-apdma-v1-0-107543c7102c@proton.me> <20250921-uart-apdma-v1-1-107543c7102c@proton.me> <20250922204756.GA1294776-robh@kernel.org>
+Feedback-ID: 131238559:user:proton
+X-Pm-Message-ID: ea64799d345eab79b1e8b6edd13a26df9a410340
 MIME-Version: 1.0
-Subject: Re: [PATCH 1/1] mm/thp: fix MTE tag mismatch when replacing
- zero-filled subpages
-To: David Hildenbrand <david@redhat.com>,
- Catalin Marinas <catalin.marinas@arm.com>
-Cc: akpm@linux-foundation.org, lorenzo.stoakes@oracle.com,
- usamaarif642@gmail.com, yuzhao@google.com, ziy@nvidia.com,
- baolin.wang@linux.alibaba.com, baohua@kernel.org, voidice@gmail.com,
- Liam.Howlett@oracle.com, cerasuolodomenico@gmail.com, hannes@cmpxchg.org,
- kaleshsingh@google.com, npache@redhat.com, riel@surriel.com,
- roman.gushchin@linux.dev, rppt@kernel.org, ryan.roberts@arm.com,
- dev.jain@arm.com, ryncsn@gmail.com, shakeel.butt@linux.dev,
- surenb@google.com, hughd@google.com, willy@infradead.org,
- matthew.brost@intel.com, joshua.hahnjy@gmail.com, rakie.kim@sk.com,
- byungchul@sk.com, gourry@gourry.net, ying.huang@linux.alibaba.com,
- apopple@nvidia.com, qun-wei.lin@mediatek.com, Andrew.Yang@mediatek.com,
- casper.li@mediatek.com, chinwen.chang@mediatek.com,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-mm@kvack.org, ioworker0@gmail.com,
- stable@vger.kernel.org
-References: <20250922021458.68123-1-lance.yang@linux.dev>
- <aNGGUXLCn_bWlne5@arm.com> <a3412715-6d9d-4809-9588-ba08da450d16@redhat.com>
- <aNKJ5glToE4hMhWA@arm.com> <8bf8302a-6aba-4f7e-8356-a933bcf9e4a1@redhat.com>
-Content-Language: en-US
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: Lance Yang <lance.yang@linux.dev>
-In-Reply-To: <8bf8302a-6aba-4f7e-8356-a933bcf9e4a1@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Migadu-Flow: FLOW_OUT
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250923_050640_555158_E5B0EA5B 
-X-CRM114-Status: GOOD (  34.33  )
+X-CRM114-CacheID: sfid-20250923_051805_641677_89DDC738 
+X-CRM114-Status: GOOD (  20.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,130 +69,92 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Monday, September 22nd, 2025 at 11:47 PM, Rob Herring <robh@kernel.org> =
+wrote:
+
+> On Sun, Sep 21, 2025 at 02:03:40PM +0300, Max Shevchenko wrote:
+>=20
+> > Many newer SoCs support more than 33 bits for DMA.
+> > Drop the property in order to switch to the platform data.
+> >=20
+> > The reference SoCs were taken from the downstream kernel (6.6) for
+> > the MT6991 SoC.
+> >=20
+> > Signed-off-by: Max Shevchenko wctrl@proton.me
+> > ---
+> > Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml | 11 ++++-=
+------
+> > 1 file changed, 4 insertions(+), 7 deletions(-)
+> >=20
+> > diff --git a/Documentation/devicetree/bindings/dma/mediatek,uart-dma.ya=
+ml b/Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml
+> > index dab468a88942d694525aa391f695c44d192f0c42..9dfdfe81af7edbe3540e4b7=
+57547a5d5e6ae810c 100644
+> > --- a/Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml
+> > +++ b/Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml
+> > @@ -22,12 +22,14 @@ properties:
+> > - items:
+> > - enum:
+> > - mediatek,mt2712-uart-dma
+> > - - mediatek,mt6795-uart-dma
+> > - mediatek,mt8365-uart-dma
+> > - mediatek,mt8516-uart-dma
+> > - const: mediatek,mt6577-uart-dma
+> > - enum:
+> > - - mediatek,mt6577-uart-dma
+> > + - mediatek,mt6577-uart-dma # 32 bits
+> > + - mediatek,mt6795-uart-dma # 33 bits
+>=20
+>=20
+> Unless all existing s/w supported mediatek,mt6795-uart-dma, you just
+> broke this platform which was relying on the fallback compatible.
+>=20
 
 
-On 2025/9/23 20:00, David Hildenbrand wrote:
-> On 23.09.25 13:52, Catalin Marinas wrote:
->> On Mon, Sep 22, 2025 at 07:59:00PM +0200, David Hildenbrand wrote:
->>> On 22.09.25 19:24, Catalin Marinas wrote:
->>>> On Mon, Sep 22, 2025 at 10:14:58AM +0800, Lance Yang wrote:
->>>>> diff --git a/mm/huge_memory.c b/mm/huge_memory.c
->>>>> index 32e0ec2dde36..28d4b02a1aa5 100644
->>>>> --- a/mm/huge_memory.c
->>>>> +++ b/mm/huge_memory.c
->>>>> @@ -4104,29 +4104,20 @@ static unsigned long 
->>>>> deferred_split_count(struct shrinker *shrink,
->>>>>    static bool thp_underused(struct folio *folio)
->>>>>    {
->>>>>        int num_zero_pages = 0, num_filled_pages = 0;
->>>>> -    void *kaddr;
->>>>>        int i;
->>>>>        for (i = 0; i < folio_nr_pages(folio); i++) {
->>>>> -        kaddr = kmap_local_folio(folio, i * PAGE_SIZE);
->>>>> -        if (!memchr_inv(kaddr, 0, PAGE_SIZE)) {
->>>>> -            num_zero_pages++;
->>>>> -            if (num_zero_pages > khugepaged_max_ptes_none) {
->>>>> -                kunmap_local(kaddr);
->>>>> +        if (pages_identical(folio_page(folio, i), ZERO_PAGE(0))) {
->>>>> +            if (++num_zero_pages > khugepaged_max_ptes_none)
->>>>>                    return true;
->>>>
->>>> I wonder what the overhead of doing a memcmp() vs memchr_inv() is. The
->>>> former will need to read from two places. If it's noticeable, it would
->>>> affect architectures that don't have an MTE equivalent.
->>>>
->>>> Alternatively we could introduce something like folio_has_metadata()
->>>> which on arm64 simply checks PG_mte_tagged.
->>>
->>> We discussed something similar in the other thread (I suggested
->>> page_is_mergable()). I'd prefer to use pages_identical() for now, so 
->>> we have
->>> the same logic here and in ksm code.
->>>
->>> (this patch here almost looks like a cleanup :) )
->>>
->>> If this becomes a problem, what we could do is in pages_identical() 
->>> would be
->>> simply doing the memchr_inv() in case is_zero_pfn(). KSM might 
->>> benefit from
->>> that as well when merging with the shared zeropage through
->>> try_to_merge_with_zero_page().
->>
->> Yes, we can always optimise it later.
->>
->> I just realised that on arm64 with MTE we won't get any merging with the
->> zero page even if the user page isn't mapped with PROT_MTE. In
->> cpu_enable_mte() we zero the tags in the zero page and set
->> PG_mte_tagged. The reason is that we want to use the zero page with
->> PROT_MTE mappings (until tag setting causes CoW). Hmm, the arm64
->> memcmp_pages() messed up KSM merging with the zero page even before this
->> patch.
->>
->> The MTE tag setting evolved a bit over time with some locking using PG_*
->> flags to avoid a set_pte_at() race trying to initialise the tags on the
->> same page. We also moved the swap restoring to arch_swap_restore()
->> rather than the set_pte_at() path. So it is safe now to merge with the
->> zero page if the other page isn't tagged. A subsequent set_pte_at()
->> attempting to clear the tags would notice that the zero page is already
->> tagged.
->>
->> We could go a step further and add tag comparison (I had some code
->> around) but I think the quick fix is to just not treat the zero page as
->> tagged.
-> 
-> I assume any tag changes would result in CoW.
-> 
-> It would be interesting to know if there are use cases with VMs or other 
-> workloads where that could be beneficial with KSM.
-> 
->> Not fully tested yet:
->>
->> diff --git a/arch/arm64/kernel/mte.c b/arch/arm64/kernel/mte.c
->> index e5e773844889..72a1dfc54659 100644
->> --- a/arch/arm64/kernel/mte.c
->> +++ b/arch/arm64/kernel/mte.c
->> @@ -73,6 +73,8 @@ int memcmp_pages(struct page *page1, struct page 
->> *page2)
->>   {
->>       char *addr1, *addr2;
->>       int ret;
->> +    bool page1_tagged = page_mte_tagged(page1) && !is_zero_page(page1);
->> +    bool page2_tagged = page_mte_tagged(page2) && !is_zero_page(page2);
->>       addr1 = page_address(page1);
->>       addr2 = page_address(page2);
->> @@ -83,11 +85,10 @@ int memcmp_pages(struct page *page1, struct page 
->> *page2)
->>       /*
->>        * If the page content is identical but at least one of the 
->> pages is
->> -     * tagged, return non-zero to avoid KSM merging. If only one of the
->> -     * pages is tagged, __set_ptes() may zero or change the tags of the
->> -     * other page via mte_sync_tags().
->> +     * tagged, return non-zero to avoid KSM merging. Ignore the zero 
->> page
->> +     * since it is always tagged with the tags cleared.
->>        */
->> -    if (page_mte_tagged(page1) || page_mte_tagged(page2))
->> +    if (page1_tagged || page2_tagged)
->>           return addr1 != addr2;
-> 
-> That looks reasonable to me.
+As of v6.17-rc6 and linux-next 20250922, the only user of the
+mediatek,mt6795-uart-dma compatible is the MT6795 itself, which also
+uses the mediatek,dma-33bits property. The second patch makes driver
+to set the DMA bitmask based on the compatible.
+Therefore I don't think it breaks the platform.
 
-Yeah, looks good to me as well.
+> > + - mediatek,mt6779-uart-dma # 34 bits
+> > + - mediatek,mt6985-uart-dma # 35 bits
+> >=20
+> > reg:
+> > minItems: 1
+> > @@ -56,10 +58,6 @@ properties:
+> > Number of virtual channels of the UART APDMA controller
+> > maximum: 16
+> >=20
+> > - mediatek,dma-33bits:
+> > - type: boolean
+> > - description: Enable 33-bits UART APDMA support
+>=20
+>=20
+> If this is in use, you need to mark it 'deprecated' instead.
+>=20
 
-> 
-> @Lance as you had a test setup, could you give this a try as well with 
-> KSM shared zeropage deduplication enabled whether it now works as 
-> expected as well?
 
-Sure. I'll test that and get back to you ;)
+The same question here, third patch removes this property from its
+sole user. Does it actually need to be marked as deprecated and
+not deleted?
 
-> 
-> Then, this should likely be an independent fix.
-> 
-> For KSM you likely have to enable it first through /sys/kernel/mm/ksm/ 
-> use_zero_pages.
+> > -
+> > required:
+> > - compatible
+> > - reg
+> > @@ -116,7 +114,6 @@ examples:
+> > dma-requests =3D <12>;
+> > clocks =3D <&pericfg CLK_PERI_AP_DMA>;
+> > clock-names =3D "apdma";
+> > - mediatek,dma-33bits;
+> > #dma-cells =3D <1>;
+> > };
+> > };
+> >=20
+> > --
+> > 2.51.0
 
-Got it.
-
+Sincerely,
+Max
 
