@@ -4,74 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDF54CAC5AE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Sep 2025 14:39:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AE43CAC5AE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Sep 2025 15:26:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mARY3xOYQh4uKhHgWSMpXzOKQHEe30Fmz/3A8KJzfvc=; b=CaFRIyJU/c30Fhq3fKNrMbIwxW
-	gh+xBeOxR0B4uZY1+zSa0vVBYhY72IZIDTLcYrmrQIKmbpG9CBJIkeexpwT0SFPbEqwFE2/8+CygB
-	y0X/ofyV3E6RzDTPyL2f913LU4zWKs01IU+CLMiRe9ibWsBiDuKitQyltwReTdeoL+lP3H7Fdbl1s
-	+s7hj4Pg6MyLinLQOanTkK301N1Vyi8P2vRxZ6Mh0+iZ5GK9VtTedd5qr8xIAul+wwaTM6g0E7fvR
-	V4dejqx9+7DHumZOUyPR1SGIZJdRbrU2JyuH6qT0tVBQYopvxP5utUwu0i88WFCewcW5miZw3NNv+
-	ezypuAaQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2TT4i9o6vmlNV258gIEwTF7UW+DJTKjRnCXVpBmKafU=; b=RTYGwuF2dyvrUHa+DjpYKAgxTw
+	tFGnqR6waXRtgGUySVb5G1mWH/xAnmE+bzzV4e9OLetMgAAZoEjAQfHhWzHIVX1mlPoZcOWPzUzBi
+	yV4Ncb5QynZhgfGRrNyLKNb4TX3aHD1KPBWhQT+PrBRpzeWuBZW90VJHLy2mr12N9F3JbWIEUfv9E
+	GJnZKGXO/S1pH65BJvivBpmG4SqV8OKkXItc4TwHInhTHq4EL9VCNKlRRYRgeAkIS7rw+NQHZ70Ja
+	LXloOV/8iq5gRuifauoQEnd125dWexBMfP1OCRzcG+kSonv0JQmpXgmtgTY7dHQEqcM4QP95IkqEy
+	Iu3YmEjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v14Ad-0000000DqIa-0Epj;
-	Tue, 23 Sep 2025 14:39:07 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1v14uF-0000000E2OM-2CWU;
+	Tue, 23 Sep 2025 15:26:15 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v14Ab-0000000DqGp-2ALf;
-	Tue, 23 Sep 2025 14:39:05 +0000
+	id 1v14uD-0000000E2LM-0FrQ
+	for linux-mediatek@lists.infradead.org;
+	Tue, 23 Sep 2025 15:26:14 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E404F60052;
-	Tue, 23 Sep 2025 14:39:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6B57EC113CF;
-	Tue, 23 Sep 2025 14:39:04 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id AF2DA44521;
+	Tue, 23 Sep 2025 15:26:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8CDD6C113CF;
+	Tue, 23 Sep 2025 15:26:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1758638344;
-	bh=7y7/yuACkZLW79g5K5sIcU1j82Ksu2UcLf91irlmAcg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ANjomnT7tvAlSvx7jeHkZqzpLc2fb96iYwhxRZrRaCXSqjMjrkqllXf6P0ALKVP0y
-	 s3nI2y2MQxTpYk9losq0G3Q33MJWvh5B0X+KRd15ayCOGw7tSLWqycG7rpRmiscHYX
-	 QeM2U4ZvQ00/Atfe6dDO8CRnKqR57PwxmPEmDfdrX6VAQ3dFDl6CpmKGZVf3+4nu6F
-	 SHU/jZjtyWZrtTpXbmECEy7ut43ONk0H6gbinCYk4DvAIeTuqKZBRgRYXNP+lKDiXW
-	 qmBk652g99F7+dxUQaGQfWmNpJA7bUnqgJtqSukaC24NAlPfYv9fwAoLjwl/MnpwOi
-	 nbQ5VWDe9aXpg==
-Date: Tue, 23 Sep 2025 09:39:03 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org,
+	s=k20201202; t=1758641172;
+	bh=PsJAbGUFgpe5g/scTy+yXdnPAge1y+ZrMfeoR4lXF1w=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=Ma1flkly2f1uNKpKvOHlthl8/236GxH1+vA8DkFIHwHZLexNBGq/13eI7BbrDbRdI
+	 zqBh+mSWGWvPQGcpLc2IfjKRzI0MT/C4b6RvTyIxYh6X5ZL4dPb66bhz1wNSKrkKzf
+	 2+zhu1vcxxincXvOtKJImCbVAXGB8Rg6vYl36l7L0JluiBbx8pBPJWi09fsRO4l1h2
+	 XZaU5mGu9+SpQ3OM1hIshkwBJcTuAX/MDnVwmZTeU965zJptw8QSoopk1Rw+2swTcz
+	 f2p+NdEmTzxmMpGmmEi5NusSgPtXqRWZNlsEHhjNMAtfrPIkM71N5ySZiHW54Js25y
+	 A91X7vxSnxdrA==
+Received: from johan by xi.lan with local (Exim 4.98.2)
+	(envelope-from <johan@kernel.org>)
+	id 1v14u6-000000004mo-3m3w;
+	Tue, 23 Sep 2025 17:26:06 +0200
+From: Johan Hovold <johan@kernel.org>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>
+Cc: David Airlie <airlied@gmail.com>,
 	Simona Vetter <simona@ffwll.ch>,
-	Jassi Brar <jassisinghbrar@gmail.com>,
-	Chia-I Wu <olvaffe@gmail.com>, Steven Price <steven.price@arm.com>,
-	linux-mediatek@lists.infradead.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	kernel@collabora.com, Kees Cook <kees@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Chen-Yu Tsai <wenst@chromium.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	David Airlie <airlied@gmail.com>,
-	"Gustavo A. R. Silva" <gustavoars@kernel.org>,
-	Liviu Dudau <liviu.dudau@arm.com>, linux-kernel@vger.kernel.org,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Boris Brezillon <boris.brezillon@collabora.com>,
-	devicetree@vger.kernel.org, linux-hardening@vger.kernel.org,
-	linux-pm@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Maxime Ripard <mripard@kernel.org>
-Subject: Re: [PATCH v4 4/8] dt-bindings: mailbox: Add MT8196 GPUEB Mailbox
-Message-ID: <175863834028.3197589.1266826496329321064.robh@kernel.org>
-References: <20250923-mt8196-gpufreq-v4-0-6cd63ade73d6@collabora.com>
- <20250923-mt8196-gpufreq-v4-4-6cd63ade73d6@collabora.com>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Johan Hovold <johan@kernel.org>,
+	stable@vger.kernel.org,
+	CK Hu <ck.hu@mediatek.com>
+Subject: [PATCH 1/5] drm/mediatek: fix probe resource leaks
+Date: Tue, 23 Sep 2025 17:23:36 +0200
+Message-ID: <20250923152340.18234-2-johan@kernel.org>
+X-Mailer: git-send-email 2.49.1
+In-Reply-To: <20250923152340.18234-1-johan@kernel.org>
+References: <20250923152340.18234-1-johan@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250923-mt8196-gpufreq-v4-4-6cd63ade73d6@collabora.com>
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250923_082613_138635_F898A702 
+X-CRM114-Status: GOOD (  13.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,22 +84,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Make sure to unmap and release the component iomap and clock on probe
+failure (e.g. probe deferral) and on driver unbind.
 
-On Tue, 23 Sep 2025 13:39:57 +0200, Nicolas Frattaroli wrote:
-> The MediaTek MT8196 SoC includes an embedded MCU referred to as "GPUEB",
-> acting as glue logic to control power and frequency of the Mali GPU.
-> This MCU runs special-purpose firmware for this use, and the main
-> application processor communicates with it through a mailbox.
-> 
-> Add a binding that describes this mailbox.
-> 
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> ---
->  .../mailbox/mediatek,mt8196-gpueb-mbox.yaml        | 64 ++++++++++++++++++++++
->  1 file changed, 64 insertions(+)
-> 
+Note that unlike of_iomap(), devm_of_iomap() also checks whether the
+region is already mapped.
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Fixes: 119f5173628a ("drm/mediatek: Add DRM Driver for Mediatek SoC MT8173.")
+Cc: stable@vger.kernel.org	# 4.7
+Cc: CK Hu <ck.hu@mediatek.com>
+Signed-off-by: Johan Hovold <johan@kernel.org>
+---
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.c | 20 ++++++++++++++++----
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.h |  2 +-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c  |  4 ++--
+ 3 files changed, 19 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
+index ac6620e10262..0264017806ad 100644
+--- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
+@@ -621,15 +621,20 @@ int mtk_find_possible_crtcs(struct drm_device *drm, struct device *dev)
+ 	return ret;
+ }
+ 
+-int mtk_ddp_comp_init(struct device_node *node, struct mtk_ddp_comp *comp,
++static void mtk_ddp_comp_clk_put(void *_clk)
++{
++	struct clk *clk = _clk;
++
++	clk_put(clk);
++}
++
++int mtk_ddp_comp_init(struct device *dev, struct device_node *node, struct mtk_ddp_comp *comp,
+ 		      unsigned int comp_id)
+ {
+ 	struct platform_device *comp_pdev;
+ 	enum mtk_ddp_comp_type type;
+ 	struct mtk_ddp_comp_dev *priv;
+-#if IS_REACHABLE(CONFIG_MTK_CMDQ)
+ 	int ret;
+-#endif
+ 
+ 	if (comp_id >= DDP_COMPONENT_DRM_ID_MAX)
+ 		return -EINVAL;
+@@ -670,11 +675,18 @@ int mtk_ddp_comp_init(struct device_node *node, struct mtk_ddp_comp *comp,
+ 	if (!priv)
+ 		return -ENOMEM;
+ 
+-	priv->regs = of_iomap(node, 0);
++	priv->regs = devm_of_iomap(dev, node, 0, NULL);
++	if (IS_ERR(priv->regs))
++		return PTR_ERR(priv->regs);
++
+ 	priv->clk = of_clk_get(node, 0);
+ 	if (IS_ERR(priv->clk))
+ 		return PTR_ERR(priv->clk);
+ 
++	ret = devm_add_action_or_reset(dev, mtk_ddp_comp_clk_put, priv->clk);
++	if (ret)
++		return ret;
++
+ #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+ 	ret = cmdq_dev_get_client_reg(comp->dev, &priv->cmdq_reg, 0);
+ 	if (ret)
+diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
+index 7289b3dcf22f..3f3d43f4330d 100644
+--- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
++++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
+@@ -350,7 +350,7 @@ static inline void mtk_ddp_comp_encoder_index_set(struct mtk_ddp_comp *comp)
+ int mtk_ddp_comp_get_id(struct device_node *node,
+ 			enum mtk_ddp_comp_type comp_type);
+ int mtk_find_possible_crtcs(struct drm_device *drm, struct device *dev);
+-int mtk_ddp_comp_init(struct device_node *comp_node, struct mtk_ddp_comp *comp,
++int mtk_ddp_comp_init(struct device *dev, struct device_node *comp_node, struct mtk_ddp_comp *comp,
+ 		      unsigned int comp_id);
+ enum mtk_ddp_comp_type mtk_ddp_comp_get_type(unsigned int comp_id);
+ void mtk_ddp_write(struct cmdq_pkt *cmdq_pkt, unsigned int value,
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index eb5537f0ac90..384b0510272c 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -1133,7 +1133,7 @@ static int mtk_drm_probe(struct platform_device *pdev)
+ 							    (void *)private->mmsys_dev,
+ 							    sizeof(*private->mmsys_dev));
+ 		private->ddp_comp[DDP_COMPONENT_DRM_OVL_ADAPTOR].dev = &ovl_adaptor->dev;
+-		mtk_ddp_comp_init(NULL, &private->ddp_comp[DDP_COMPONENT_DRM_OVL_ADAPTOR],
++		mtk_ddp_comp_init(dev, NULL, &private->ddp_comp[DDP_COMPONENT_DRM_OVL_ADAPTOR],
+ 				  DDP_COMPONENT_DRM_OVL_ADAPTOR);
+ 		component_match_add(dev, &match, compare_dev, &ovl_adaptor->dev);
+ 	}
+@@ -1199,7 +1199,7 @@ static int mtk_drm_probe(struct platform_device *pdev)
+ 						   node);
+ 		}
+ 
+-		ret = mtk_ddp_comp_init(node, &private->ddp_comp[comp_id], comp_id);
++		ret = mtk_ddp_comp_init(dev, node, &private->ddp_comp[comp_id], comp_id);
+ 		if (ret) {
+ 			of_node_put(node);
+ 			goto err_node;
+-- 
+2.49.1
 
 
