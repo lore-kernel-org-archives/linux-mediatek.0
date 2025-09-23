@@ -4,71 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 825A9CAC5AC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Sep 2025 15:26:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8417CAC5A7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Sep 2025 15:54:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HnfJXGZT31jZNW6p3TXRr7aQI1Tj+I0COYb2D9ZnlPE=; b=kOGAT9erchrzPS2cwMUCEbuEjl
-	Oyj2UFavsgrICuJRVq6OL+5nWR7aISrLKdllwcn50UlyPpeVLI+Y/BDMcXUst6IRA6eSCxs1Kbfka
-	IShNNcIW60oX7Yt0+dMn2uD7qLZZMLNsZxFNnEIPaPXvmR+FtIguutrRjtKH9L0xTJDPBnHf9QuUe
-	pVqhu94vlEli0AYYecebyh12Py1GjN/bP/UTBkDdAkU8UfzJ9pGxj6CjMdm2ubPdv+/mK+KZriwjM
-	w3M3W7nWZRRW0XfnWujarDI24d7/RBajPti+TZoNNGsSEK2yCIrDnbUtc0J+sybiNSzeFju/jQhnD
-	vt/md5Sw==;
+	bh=hzXdEbAZvdcjl7GHoIg2QEV7fEXYa2beOYMm8hIqXSo=; b=XwW+F+wlmBYuaMQxN2PAF1Y2dP
+	IjeuQEvtf2I0cmV8oclnf6udQ+KutS1weaCTYKHORhPNtwSEimzAS5/aStfiMQSAVDG+aHdUiUNRC
+	aAccXj74kkUxnPPAnwORmS/WawN2NLLwA99gv/loourXs8xn1hy48Ux4JusKTpRrns/E4wfoolOEQ
+	EJ3yybj0uFNdEQm9tagh2hqeTRKjEPN8xDWPUqtcnq1Um/t8+ZtqGlEW2SlO79F6fl7sFPKTKQz3U
+	ROpOVPJvnyBUa/hr76uFbUThnYeabtIPe8P6VbIwfEqUKoSzEkLKGIXPBGhHTpexcOMBZEuu20nge
+	3GW3dGyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v14uJ-0000000E2TE-2zZU;
-	Tue, 23 Sep 2025 15:26:19 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1v15Lv-0000000EA6i-2kHU;
+	Tue, 23 Sep 2025 15:54:51 +0000
+Received: from 004.mia.mailroute.net ([199.89.3.7])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v14uD-0000000E2Lb-1PKn
+	id 1v15Ls-0000000EA51-2A01
 	for linux-mediatek@lists.infradead.org;
-	Tue, 23 Sep 2025 15:26:15 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id EA12643824;
-	Tue, 23 Sep 2025 15:26:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CCEFFC19421;
-	Tue, 23 Sep 2025 15:26:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1758641172;
-	bh=CX4657yA0nVtCwJ99HeYU2TEyd1VwUMZkfyJlumA3Fw=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=V6yt8Dd01hQYW7tFm79LRMPeF/k8WJfQrQ6DVn9XeoMSORQUvMUWKMVYjfp+9NK3P
-	 aIO8luiitVPFhEwFFLo+5I9JRBV7pDAvnqQ+8G4YENa2T3LPaejd+WeQud+A7mphpn
-	 NVRjF/8MxbKvINvHJ94CuPM6d2liKLZp2SXm4L7/1tfmBTU1alO/fRO4l1JjB4CP6Y
-	 PNBq7/dDQVlugxp5DnejPAzsIL3h51y+ZSA9pC7pDcgJ68UOCQkLNRDWa51hiSgC6U
-	 AnGaaSkoRnrRFVo9etYvwoG6s9EGY3m9HVfCEbEBMt4ugU6z9+ji528EC/N9HsB6BM
-	 M2/2IchSh+InA==
-Received: from johan by xi.lan with local (Exim 4.98.2)
-	(envelope-from <johan@kernel.org>)
-	id 1v14u7-000000004ms-0HWq;
-	Tue, 23 Sep 2025 17:26:07 +0200
-From: Johan Hovold <johan@kernel.org>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>
-Cc: David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Johan Hovold <johan@kernel.org>,
-	stable@vger.kernel.org
-Subject: [PATCH 3/5] drm/mediatek: fix probe device leaks
-Date: Tue, 23 Sep 2025 17:23:38 +0200
-Message-ID: <20250923152340.18234-4-johan@kernel.org>
-X-Mailer: git-send-email 2.49.1
-In-Reply-To: <20250923152340.18234-1-johan@kernel.org>
-References: <20250923152340.18234-1-johan@kernel.org>
+	Tue, 23 Sep 2025 15:54:50 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 004.mia.mailroute.net (Postfix) with ESMTP id 4cWPgV59P4zm0ytX;
+	Tue, 23 Sep 2025 15:54:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1758642883; x=1761234884; bh=hzXdEbAZvdcjl7GHoIg2QEV7
+	fEXYa2beOYMm8hIqXSo=; b=N30chI8ksn2Z0xxLDe9QCltfcCP0lPWZhN6vONPy
+	NRKHd6+mXZz6ix1N10I/K+hmilSVbRsGxoBOPVC6W5EAfGsYySYnXJ3Jds0HhuKX
+	zLwpe8VPWvVdQ984Ue8Mvlq/WK3CNF6/uh3MrfwAR8fgwlRrv5cuomKNutzGn+i9
+	5T1KHwRGzEm7PF5rSqYRv7KLcL5rDdRmY2R84TGW47jjT2V4KVcbB1Czbstr3Qlo
+	3eEKpZZo4B9cJgufDH90QTLeBjU75ap4Rj4R4pw+lp33xuOX+ynzIqacSbU2cbaT
+	FeGPT8Hiqkqofrrsfd1u2GvcPaDCU8bmVMWfFXj+v96kBQ==
+X-Virus-Scanned: by MailRoute
+Received: from 004.mia.mailroute.net ([127.0.0.1])
+ by localhost (004.mia [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id ikHvNY3E9x2o; Tue, 23 Sep 2025 15:54:43 +0000 (UTC)
+Received: from [100.119.48.131] (unknown [104.135.180.219])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bvanassche@acm.org)
+	by 004.mia.mailroute.net (Postfix) with ESMTPSA id 4cWPgB2Q3fzm0ytP;
+	Tue, 23 Sep 2025 15:54:29 +0000 (UTC)
+Message-ID: <c9f1ce41-b81d-490e-b919-a6105ed34ff0@acm.org>
+Date: Tue, 23 Sep 2025 08:54:28 -0700
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1] ufs: core: Change MCQ interrupt enable flow
+To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
+ martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
+ jejb@linux.ibm.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, jiajie.hao@mediatek.com,
+ yi-fan.peng@mediatek.com, qilin.tan@mediatek.com, lin.gui@mediatek.com,
+ tun-yu.yu@mediatek.com, eddie.huang@mediatek.com, naomi.chu@mediatek.com,
+ ed.tsai@mediatek.com
+References: <20250923090855.2522149-1-peter.wang@mediatek.com>
+Content-Language: en-US
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20250923090855.2522149-1-peter.wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250923_082613_392239_04811F2D 
-X-CRM114-Status: GOOD (  10.73  )
+X-CRM114-CacheID: sfid-20250923_085448_644089_675B230A 
+X-CRM114-Status: UNSURE (   7.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,47 +90,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Make sure to drop the reference taken to each component device during
-probe on probe failure (e.g. probe deferral) and on driver unbind.
+On 9/23/25 2:08 AM, peter.wang@mediatek.com wrote:
+> -static void ufshcd_enable_intr(struct ufs_hba *hba, u32 intrs)
+> +void ufshcd_enable_intr(struct ufs_hba *hba, u32 intrs)
+>   {
+>   	u32 old_val = ufshcd_readl(hba, REG_INTERRUPT_ENABLE);
+>   	u32 new_val = old_val | intrs;
+> @@ -377,6 +372,7 @@ static void ufshcd_enable_intr(struct ufs_hba *hba, u32 intrs)
+>   	if (new_val != old_val)
+>   		ufshcd_writel(hba, new_val, REG_INTERRUPT_ENABLE);
+>   }
+> +EXPORT_SYMBOL_GPL(ufshcd_enable_intr);
 
-Fixes: 6ea6f8276725 ("drm/mediatek: Use correct device pointer to get CMDQ client register")
-Cc: stable@vger.kernel.org	# 5.12
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Signed-off-by: Johan Hovold <johan@kernel.org>
----
- drivers/gpu/drm/mediatek/mtk_ddp_comp.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+Please do not export ufshcd_enable_intr() - this function should not be
+called from outside the UFS driver core.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-index 31d67a131c50..9672ea1f91a2 100644
---- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-@@ -621,6 +621,13 @@ int mtk_find_possible_crtcs(struct drm_device *drm, struct device *dev)
- 	return ret;
- }
- 
-+static void mtk_ddp_comp_put_device(void *_dev)
-+{
-+	struct device *dev = _dev;
-+
-+	put_device(dev);
-+}
-+
- static void mtk_ddp_comp_clk_put(void *_clk)
- {
- 	struct clk *clk = _clk;
-@@ -656,6 +663,10 @@ int mtk_ddp_comp_init(struct device *dev, struct device_node *node, struct mtk_d
- 	}
- 	comp->dev = &comp_pdev->dev;
- 
-+	ret = devm_add_action_or_reset(dev, mtk_ddp_comp_put_device, comp->dev);
-+	if (ret)
-+		return ret;
-+
- 	if (type == MTK_DISP_AAL ||
- 	    type == MTK_DISP_BLS ||
- 	    type == MTK_DISP_CCORR ||
--- 
-2.49.1
+Thanks,
 
+Bart.
 
