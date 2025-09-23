@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1FD7CAC5B1
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 825A9CAC5AC
 	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Sep 2025 15:26:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,39 +12,39 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n4NTpqnouhxyOcWCCh2NeTRY1iVR9sE6z3F9z1uT0AU=; b=YRtmZ0VBglxh6H9GmJTfkyuzxm
-	hKky+KTjZ1S/axKKxm6pwXWxMJIOpRTj2whsgtZZMlyk3/raMZjw2/Jx6MwCwcD2PoSSG9us4mrUg
-	HWzwZR6NiJEo45Uomu9RsDJYZE0RrN2p0bRtOPq3R3cbD6woThuPFmHQLMgmCea+qUXES7PEisT+y
-	RvajAJuTlREy08I/XKjR/8Wj1fnmrd2NL1SikkSuHlvq22YoRznK1ATp09f4P/TfO7+8kwDfJTkqw
-	hwnCv3NfzrsZbID55QP7NqNhnWXvCba0l6BgKb5Bn+uG9fbQ5mzx/dAq+ZMLJ/NMPZuh7nd8063mz
-	HUX6+dvg==;
+	bh=HnfJXGZT31jZNW6p3TXRr7aQI1Tj+I0COYb2D9ZnlPE=; b=kOGAT9erchrzPS2cwMUCEbuEjl
+	Oyj2UFavsgrICuJRVq6OL+5nWR7aISrLKdllwcn50UlyPpeVLI+Y/BDMcXUst6IRA6eSCxs1Kbfka
+	IShNNcIW60oX7Yt0+dMn2uD7qLZZMLNsZxFNnEIPaPXvmR+FtIguutrRjtKH9L0xTJDPBnHf9QuUe
+	pVqhu94vlEli0AYYecebyh12Py1GjN/bP/UTBkDdAkU8UfzJ9pGxj6CjMdm2ubPdv+/mK+KZriwjM
+	w3M3W7nWZRRW0XfnWujarDI24d7/RBajPti+TZoNNGsSEK2yCIrDnbUtc0J+sybiNSzeFju/jQhnD
+	vt/md5Sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v14uK-0000000E2Tl-0AuQ;
-	Tue, 23 Sep 2025 15:26:20 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1v14uJ-0000000E2TE-2zZU;
+	Tue, 23 Sep 2025 15:26:19 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v14uD-0000000E2Lq-2QjQ
+	id 1v14uD-0000000E2Lb-1PKn
 	for linux-mediatek@lists.infradead.org;
 	Tue, 23 Sep 2025 15:26:15 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1755244D16;
-	Tue, 23 Sep 2025 15:26:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ED311C19424;
+	by sea.source.kernel.org (Postfix) with ESMTP id EA12643824;
+	Tue, 23 Sep 2025 15:26:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CCEFFC19421;
 	Tue, 23 Sep 2025 15:26:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1758641173;
-	bh=c0az61wbtOZUqLNGV0rJC8DczNsHSPgRUfjfrHYMoFI=;
+	s=k20201202; t=1758641172;
+	bh=CX4657yA0nVtCwJ99HeYU2TEyd1VwUMZkfyJlumA3Fw=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Vpt8l3/lzn7Ssa2Vt1YoSEs93/7jzHiV360V7dvgkCxApbJjTW2GOqMdkr1EvTVIs
-	 9xD3YVVCF7FDl7hjP9EqhjPFNIXWXndoKHp65Y81ZklzZN0to7BHHENOXKnOgcyGrm
-	 UpJ7Dtgulcsj+ikFf1VNQEFgBqhIZaC21i2atkyT/TwGouHp+3dmyhExhEeyjOs4Gv
-	 9FnRPmicXvu7OIzCcIfU+oo/I847RqUe23Ux5QvyCdJQfBUN3Ur9voYhUItzx/qF3n
-	 WsGQqHH4RUkdl9Ot9PC9GqtGJGTlLUCZ9mbT52G8g57gvX/SkZ4YU7oPq5fduJOVi+
-	 a3cKWgfhG/jGg==
+	b=V6yt8Dd01hQYW7tFm79LRMPeF/k8WJfQrQ6DVn9XeoMSORQUvMUWKMVYjfp+9NK3P
+	 aIO8luiitVPFhEwFFLo+5I9JRBV7pDAvnqQ+8G4YENa2T3LPaejd+WeQud+A7mphpn
+	 NVRjF/8MxbKvINvHJ94CuPM6d2liKLZp2SXm4L7/1tfmBTU1alO/fRO4l1JjB4CP6Y
+	 PNBq7/dDQVlugxp5DnejPAzsIL3h51y+ZSA9pC7pDcgJ68UOCQkLNRDWa51hiSgC6U
+	 AnGaaSkoRnrRFVo9etYvwoG6s9EGY3m9HVfCEbEBMt4ugU6z9+ji528EC/N9HsB6BM
+	 M2/2IchSh+InA==
 Received: from johan by xi.lan with local (Exim 4.98.2)
 	(envelope-from <johan@kernel.org>)
-	id 1v14u7-000000004my-12OL;
+	id 1v14u7-000000004ms-0HWq;
 	Tue, 23 Sep 2025 17:26:07 +0200
 From: Johan Hovold <johan@kernel.org>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
@@ -57,19 +57,18 @@ Cc: David Airlie <airlied@gmail.com>,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Johan Hovold <johan@kernel.org>,
-	stable@vger.kernel.org,
-	"Nancy.Lin" <nancy.lin@mediatek.com>
-Subject: [PATCH 5/5] drm/mediatek: ovl_adaptor: fix probe device leaks
-Date: Tue, 23 Sep 2025 17:23:40 +0200
-Message-ID: <20250923152340.18234-6-johan@kernel.org>
+	stable@vger.kernel.org
+Subject: [PATCH 3/5] drm/mediatek: fix probe device leaks
+Date: Tue, 23 Sep 2025 17:23:38 +0200
+Message-ID: <20250923152340.18234-4-johan@kernel.org>
 X-Mailer: git-send-email 2.49.1
 In-Reply-To: <20250923152340.18234-1-johan@kernel.org>
 References: <20250923152340.18234-1-johan@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250923_082613_634957_6453012E 
-X-CRM114-Status: GOOD (  11.01  )
+X-CRM114-CacheID: sfid-20250923_082613_392239_04811F2D 
+X-CRM114-Status: GOOD (  10.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,48 +83,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Make sure to drop the references taken to the component devices by
-of_find_device_by_node() during probe on probe failure (e.g. probe
-deferral) and on driver unbind.
+Make sure to drop the reference taken to each component device during
+probe on probe failure (e.g. probe deferral) and on driver unbind.
 
-Fixes: 453c3364632a ("drm/mediatek: Add ovl_adaptor support for MT8195")
-Cc: stable@vger.kernel.org	# 6.4
-Cc: Nancy.Lin <nancy.lin@mediatek.com>
+Fixes: 6ea6f8276725 ("drm/mediatek: Use correct device pointer to get CMDQ client register")
+Cc: stable@vger.kernel.org	# 5.12
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 Signed-off-by: Johan Hovold <johan@kernel.org>
 ---
- drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-index fe97bb97e004..c0af3e3b51d5 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-@@ -527,6 +527,13 @@ bool mtk_ovl_adaptor_is_comp_present(struct device_node *node)
- 	       type == OVL_ADAPTOR_TYPE_PADDING;
+diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
+index 31d67a131c50..9672ea1f91a2 100644
+--- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
+@@ -621,6 +621,13 @@ int mtk_find_possible_crtcs(struct drm_device *drm, struct device *dev)
+ 	return ret;
  }
  
-+static void ovl_adaptor_put_device(void *_dev)
++static void mtk_ddp_comp_put_device(void *_dev)
 +{
 +	struct device *dev = _dev;
 +
 +	put_device(dev);
 +}
 +
- static int ovl_adaptor_comp_init(struct device *dev, struct component_match **match)
+ static void mtk_ddp_comp_clk_put(void *_clk)
  {
- 	struct mtk_disp_ovl_adaptor *priv = dev_get_drvdata(dev);
-@@ -560,6 +567,11 @@ static int ovl_adaptor_comp_init(struct device *dev, struct component_match **ma
- 		if (!comp_pdev)
- 			return -EPROBE_DEFER;
+ 	struct clk *clk = _clk;
+@@ -656,6 +663,10 @@ int mtk_ddp_comp_init(struct device *dev, struct device_node *node, struct mtk_d
+ 	}
+ 	comp->dev = &comp_pdev->dev;
  
-+		ret = devm_add_action_or_reset(dev, ovl_adaptor_put_device,
-+					       &comp_pdev->dev);
-+		if (ret)
-+			return ret;
++	ret = devm_add_action_or_reset(dev, mtk_ddp_comp_put_device, comp->dev);
++	if (ret)
++		return ret;
 +
- 		priv->ovl_adaptor_comp[id] = &comp_pdev->dev;
- 
- 		drm_of_component_match_add(dev, match, component_compare_of, node);
+ 	if (type == MTK_DISP_AAL ||
+ 	    type == MTK_DISP_BLS ||
+ 	    type == MTK_DISP_CCORR ||
 -- 
 2.49.1
 
