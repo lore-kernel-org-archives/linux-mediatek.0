@@ -4,94 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A723FCAC5AC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Sep 2025 13:17:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 313B8CAC5AE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Sep 2025 14:24:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=f2WPlGw6ip7PYA/9tuI3OZb0vgkUfUYvz/dn9O4WHM8=; b=Mnu280z3Cj2YyIknD6y50dz8nD
-	sF58UhTzg5Grv0KxcDbyAVMZhqtd6WdGP6XtAIgOQ0VkwwLdahUbRF+D4JLxI0G/Lax4dOPLnrY5j
-	QJSCT9MAlBW7AWzaQ0Dt6QCEG2yhQcibBo6LIxyS0fXc8+tH7KB0InlCczfZExRALEIJ7a+7+bzpo
-	vi19thDcFUqKECQADyk8q086IGEj2UoF6OZLibXDIBQEBEAlxZU8JjN2LKFuqODMOuGvLL0cb3Alj
-	EP63rRFaECx5Vha5HRdedwG5hFSPzrB1EmwMX0+pjL6A7YAOV6+kHq8xQmSsbcKLkiXJCJDPDBWsz
-	OAj2+qZA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1tUpBb6qulXCWAadHVOQRFgdDFu6TKGouRDpRCguBiA=; b=xiSfSaDAnNwQ5mFAiIGc/xQSMa
+	SvRgoVTaqIWHJ4/yg5pAkFdV/XWlAjvBKyGTF89JoVnafKpKy97lsLIIbx2m3p75IQNDbW2eDRIhh
+	F+4n6i4BTkC3i0kASbHdbiEKXA7ZXcnMc07JOn7Tcz1BoI/5O0vzEnHxI/n7rY+zQ9FZ/P/Il+21l
+	BEliTXeeu4yUGgQH5QKdXKG/0Xxgr4wm9IQok5/+6Eado7EsR+rXWO5PP3laIJbDPUm7eztSjzRri
+	lc/kEx3D/VrpR8NcPcTeRCJOhnYs8eTfp/Bce51YszHoM6s9ilcztDnchY+iTulN1JyTPnvpetzaK
+	1mPWMLrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v12tJ-0000000DTY0-3fdp;
-	Tue, 23 Sep 2025 13:17:09 +0000
-Received: from mail-ot1-x32a.google.com ([2607:f8b0:4864:20::32a])
+	id 1v13wr-0000000Djgq-3oHt;
+	Tue, 23 Sep 2025 14:24:53 +0000
+Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v12tG-0000000DTWT-2bdb
+	id 1v13wo-0000000Djdh-3f4U
 	for linux-mediatek@lists.infradead.org;
-	Tue, 23 Sep 2025 13:17:08 +0000
-Received: by mail-ot1-x32a.google.com with SMTP id 46e09a7af769-797130a6df1so69906a34.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 23 Sep 2025 06:17:06 -0700 (PDT)
+	Tue, 23 Sep 2025 14:24:52 +0000
+Received: by mail-yb1-xb35.google.com with SMTP id 3f1490d57ef6-ea5b96d2488so4176284276.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 23 Sep 2025 07:24:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1758633425; x=1759238225; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=f2WPlGw6ip7PYA/9tuI3OZb0vgkUfUYvz/dn9O4WHM8=;
-        b=Girlr8FdM3LkiGwFSQhfm9zoSWTYCcooeam08hKLyEGt3a8MXjJS2H+XLm1t9sAZj4
-         BIHz5UmHNXsgCCwmOTWUCXCjVpMi3+RrEYMv8v62YyOazZqogApF5mkSB1Va1oaSjYtq
-         T8Q/PvRMwniW15g7BbaJmVd+ch1GrWr92reqLkLF5hJhQ3V6fcpiluLsXLcqV7raLEAy
-         5EH33wGarhNCl6w96PeH7N39IG5iStpr3cTIV3hdBsrBSSYAjPB3SE7LLM6BfrkV2fLq
-         m9Itfhjwk5Itt8GokRC05mOQswyqhDhlgYJ9eKTdeIcTXQaUGnawp0liWMG7eVQhHCaG
-         /Tvg==
+        d=linaro.org; s=google; t=1758637489; x=1759242289; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=1tUpBb6qulXCWAadHVOQRFgdDFu6TKGouRDpRCguBiA=;
+        b=xVgdYjsbclkfagEiwOJrpITOAWaTjkoV4Dfqi2ofR0XoikOAS/cDm6WIXiiUXKW6IA
+         EGoJXW99dzkW5i9CqosJqg8hj6L9zswb4U9lKZ+AFjVCrODjoyzTdjnjpgK8HEApYOdd
+         U4qQ0yjm2XV6hXMuAKSNt4f5i/MOvBQM0hyXcMPEdTlg6lspb8vmF5aNfTUL2pseYgtl
+         qUfY8Sg9XzyB2xKazF/quG8F/Qm7AsN9ncSjLYFOerYfHUfbGx4PNBAHwtBH3XemDblQ
+         Vpts8dy8sksQK5ufwJ3XHOY3AE7IV3FBoZseAUemF0aCz6phTXUnExu+gQQqRAXwaVe1
+         iSqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1758633425; x=1759238225;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=f2WPlGw6ip7PYA/9tuI3OZb0vgkUfUYvz/dn9O4WHM8=;
-        b=Cs5Oh3CG3ddZs6t75KenQzRAntvhach3bNYnFPaTFhTnIIvrzx5FCwSkQDIxQXCLcO
-         Mq5Fi7ryG9jvjFYWuwqyYqkseaHLF822czp8QOB52uGQZMBOGP7qeJA8AKro0SX4d5CH
-         6fhZ4Y/x4rQRjVvQ64GE/nbiTH6nFjQjpETVja3FDnouBSYuHaKt14wOedto/1g/Rrkn
-         YCbmz5SVX3VGoyx2n5k8vM/1ZxOWhKzaYx563vN6rWEvfSdjXGSFooJYviF7GU0mBYa+
-         IvEOdWZYPYdTx0eyDLNjD+WpukaXj9fV/9XbEN7Eb3D+t9rucUXvcg46SKK8giD37ye5
-         eaHw==
-X-Forwarded-Encrypted: i=1; AJvYcCV5C3siprqcNGukroKQqqu9d2MjzPfVmdGLwn2J53KwATgP90PwVUoqXuBY5zmLujKaoPQzOrriETorH/jl9g==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx7LSickwKXJZKcLMXsokWbZqlsFmclPpkmw+lqU3NLhw/8z+gJ
-	jo8WSU0SSQn5mNegMVjoXbNGxzn882nsS3UsX5VqD7aLfgYqCDrvOJdPEYYMeGq2hI8pYnAEezj
-	9PJASOt4SodNjpxEXvB3/EvgqMtiDjIk=
-X-Gm-Gg: ASbGncsMqJ30dcpnzrq89j1J9GobELKNT76pkBVnsHVqO/vN4L171iSjMN9nhzjNfPO
-	aHGLM//bZDEGG787LwpCpFY/KqDv+e2wtLosGnymyqRHaPY7OzuK0ILw+n4miKZuReL7fZjeN9Z
-	bR4PKoXNn+2gKv2pAetNecRAHqxVTCzzPlx9llNTJndCsRFgbWvULaheHGSD5wzXRSftvC9NTp4
-	b5HrmeRtAgnjygKPMA=
-X-Google-Smtp-Source: AGHT+IG8OdD4UhyFmVnw+1B4Hou6a7FTFOoQAxaWAXHib0ERshZVgibiY61D/fwCONr+Awn82RcI18YLm8tvlRhZT7k=
-X-Received: by 2002:a05:6808:3194:b0:43d:2dc4:9d16 with SMTP id
- 5614622812f47-43f2d355ee6mr1166642b6e.9.1758633425437; Tue, 23 Sep 2025
- 06:17:05 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1758637489; x=1759242289;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=1tUpBb6qulXCWAadHVOQRFgdDFu6TKGouRDpRCguBiA=;
+        b=wZKcfGLfCFIYykYEd2xRZlRW3+wbVB6RmaGUEm+XaDOuZx0p0NeBsQSZSXnha6mPZx
+         Gzt5DYsrQXb/c0B0uBQ4RzD55NnsTtTHwFphZCOCY9/+GQU3d7lQ7OFmZ5pSD6d06bN+
+         eiM9ilgQMu+r6pWs7ahLXI1aiL43IqlodhQ3EK/KjZSh0SkzM7A4TuSQevghPJnallLQ
+         V2KpduKjKdH73i5i7N1C/jQ0ZDgUAPikl8yK/zPMX4c/mxU/SYAi/NA8FlQqnWo6p7VN
+         gwN2+4NLhv0O/vQQnKZPW3/2w1/LTE98M3yrbh1v6peTf5tWm7+lPytdE3TkJuYIQINa
+         NqXA==
+X-Forwarded-Encrypted: i=1; AJvYcCVNF9RdPNkllTS+xAwniVmVhOD07m4BB27hIPB3o5PS3nR/D6iIAbCCO3z615PxZRb/WfMAn2GLSsHJFjH/7A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwfF9JbIiQaZ5N8z0RXzFthTp45qi2CLdwfj1YlQhbJi0IbKObn
+	J+WdkWGoePpVs0PyJ8E+Wdmlou/S69SiJP7328VB5ZwAnDQIG/SDJ2h5SviLS1UGLNIAQhMaK9v
+	e+ZrZEJICt5/WxoZpYMufL0MUYS8nPCMUwtKXEI/sO1TgKVLIKyF5DF0=
+X-Gm-Gg: ASbGncs+WCNN5Vu+q6hibAC5Csy+bTSTXNeJBIISnHr2Ey/03PlHVwtRBCup41y9IEo
+	jOptqRCeMrbzqu1PUt5/kpzaA85K98noCuAN+J/qJeLztuBXfgHoKawxn+xoMxPZh3/oJGo1cch
+	rQn+f/iYcE/TYC/3CSUm+cQVnh8+NVyGDg8n7mUWjxmCosGme7EErbrT7xw/gEjFTqZ5/sF26++
+	7KuUS9ETvs5l3jeD5I=
+X-Google-Smtp-Source: AGHT+IF1FCtcjMSOAGh57xMvLkahzg1nEGPiVoAht6L/S8rmvuZxjp7LQD0zrTATTe5JO0aUrJTq9dOrEPI1k3shK8c=
+X-Received: by 2002:a05:690c:5511:20b0:720:5fbc:20c2 with SMTP id
+ 00721157ae682-758a5393f77mr18808297b3.36.1758637489554; Tue, 23 Sep 2025
+ 07:24:49 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250822021217.1598-1-jjian.zhou@mediatek.com>
- <CAGXv+5F-L2+4PGixx7OG2+vp2yXc_2885yMzqWtkQDwhxVAPxw@mail.gmail.com>
- <CABb+yY3N2=01yKJon25_6_vmihj09H=T9pLwzdGPrqY5h=hRFQ@mail.gmail.com>
- <5789241.GXAFRqVoOG@workhorse> <CABb+yY2Ay+KqviJvOQC8X8kfzJN6-fQT04A+TCJAkLnWx+XwZg@mail.gmail.com>
- <a9dd348fd7df95ebd5ad9cc58d57b588a18ccc9d.camel@mediatek.com>
-In-Reply-To: <a9dd348fd7df95ebd5ad9cc58d57b588a18ccc9d.camel@mediatek.com>
-From: Jassi Brar <jassisinghbrar@gmail.com>
-Date: Tue, 23 Sep 2025 08:16:53 -0500
-X-Gm-Features: AS18NWCOZv9Pv2u_322Xt4q4LUafUyRkH0j9o_POX7ZdoLtYf5wU82ru76Msenc
-Message-ID: <CABb+yY2bYh70A=n9+XBBqthjngZP2D8ebFje-F9TN7K0c+fmMA@mail.gmail.com>
-Subject: Re: [PATCH v5 2/2] mailbox: mediatek: Add mtk-vcp-mailbox driver
-To: =?UTF-8?B?SmppYW4gWmhvdSAo5ZGo5bu6KQ==?= <Jjian.Zhou@mediatek.com>
-Cc: "nicolas.frattaroli@collabora.com" <nicolas.frattaroli@collabora.com>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "wenst@chromium.org" <wenst@chromium.org>, 
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>, 
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, 
-	"robh@kernel.org" <robh@kernel.org>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+References: <20250923-mt8196-gpufreq-v4-0-6cd63ade73d6@collabora.com> <20250923-mt8196-gpufreq-v4-8-6cd63ade73d6@collabora.com>
+In-Reply-To: <20250923-mt8196-gpufreq-v4-8-6cd63ade73d6@collabora.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Tue, 23 Sep 2025 16:24:13 +0200
+X-Gm-Features: AS18NWC-sVzrTkGqH5gpcO5QSqPC0ul4k36msuT8kehXNT5ngXXnGDzn6xEf6ew
+Message-ID: <CAPDyKFpLNJRRxWPm2Eye+Fs8go-LNwWGzPUPPKmNVJkyK5N3Dw@mail.gmail.com>
+Subject: Re: [PATCH v4 8/8] pmdomain: mediatek: Add support for MFlexGraphics
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Boris Brezillon <boris.brezillon@collabora.com>, Jassi Brar <jassisinghbrar@gmail.com>, 
+	Chia-I Wu <olvaffe@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>, 
+	Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Kees Cook <kees@kernel.org>, 
+	"Gustavo A. R. Silva" <gustavoars@kernel.org>, kernel@collabora.com, 
+	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-hardening@vger.kernel.org, 
+	linux-pm@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250923_061706_663651_067ABBDA 
-X-CRM114-Status: GOOD (  23.58  )
+X-CRM114-CacheID: sfid-20250923_072451_081739_A2FE1971 
+X-CRM114-Status: GOOD (  25.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,58 +104,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 22, 2025 at 2:17=E2=80=AFAM Jjian Zhou (=E5=91=A8=E5=BB=BA) <Jj=
-ian.Zhou@mediatek.com> wrote:
+On Tue, 23 Sept 2025 at 13:41, Nicolas Frattaroli
+<nicolas.frattaroli@collabora.com> wrote:
 >
+> Various MediaTek SoCs use GPU integration silicon named "MFlexGraphics"
+> by MediaTek. On the MT8196 and MT6991 SoCs, interacting with this
+> integration silicon is required to power on the GPU.
+>
+> This glue silicon is in the form of an embedded microcontroller running
+> special-purpose firmware, which autonomously adjusts clocks and
+> regulators.
+>
+> Implement a driver, modelled as a pmdomain driver with a
+> set_performance_state operation, to support these SoCs.
+>
+> The driver also exposes the actual achieved clock rate, as read back
+> from the MCU, as common clock framework clocks, by acting as a clock
+> provider as well.
+>
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> ---
+>  drivers/pmdomain/mediatek/Kconfig            |  16 +
+>  drivers/pmdomain/mediatek/Makefile           |   1 +
+>  drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c | 928 +++++++++++++++++++++++++++
+>  3 files changed, 945 insertions(+)
 
-> > > > > >
-> > > > > > > +       void __iomem *base;
-> > > > > > > +       struct device *dev;
-> > > > > > > +       struct mbox_controller mbox;
-> > > > > > > +       const struct mtk_vcp_mbox_cfg *cfg;
-> > > > > > > +       struct mtk_ipi_info ipi_recv;
-> > > > > >
-> > > > > > Maybe also have "struct mbox_chan chan[1]; " so that you
-> > > > > > don't have to
-> > > > > > allocate one during the probe.
-> > > > > > Also if you have  "struct mbox_controller mbox;" as the first
-> > > > > > member,
-> > > > > > you could simply typecast that to get this structure.
-> > > > > > Something like "struct mpfs_mbox" in mailbox-mpfs.c
-> > > > >
-> > > > > I read somewhere that this way of subclassing is not
-> > > > > recommended.
-> > > > > Instead the base class should explicitly not be the first
-> > > > > member.
-> > > > > And then container_of() should be used.
-> > > > >
-> > > > > I don't remember where I read this though. But I think the
-> > > > > explicit
-> > > > > container_of() is easier for understanding the intent.
-> > > > >
-> > > >
-> > > > And how does container_of() work ? :)
-> > > > typcasting the first member to its parent is the simplest form of
-> > > > container_of.
-> > > >
-> > > > -j
-> > > >
-> > > >
-> > >
-> > > Which is why it's completely equivalent and since code is supposed
-> > > to communicate meaning to humans, container_of should be used.
-> > >
-> >
-> > Nobody is suggesting typecasting cfg, dev or anything else.
-> > Typecasting between mailbox controllers is fine and arguably easier
-> > on
-> > the eyes than using a container_of.
-> >
-> > -j
->
-> OK. How about:
-> struct mtk_vcp_mbox *priv =3D (struct mtk_vcp_mbox *)chan->con_priv;
->
-You don't need to typecast a void *. So simply do
-    struct mtk_vcp_mbox *priv =3D chan->con_priv;
+[...]
+
+> +
+> +static int mtk_mfg_set_performance(struct generic_pm_domain *pd,
+> +                                  unsigned int state)
+> +{
+> +       struct mtk_mfg *mfg = mtk_mfg_from_genpd(pd);
+> +
+> +       /*
+> +        * Occasionally, we're asked to set OPPs when we're off. This will fail,
+> +        * so don't do it at all. We do foo != GENPD_STATE_ON instead of !foo
+> +        * as to not depend on the actual value of the enum.
+> +        */
+> +       if (mfg->pd.status != GENPD_STATE_ON)
+> +               return 0;
+
+Returning 0 here, means that we may end up never restoring the
+performance state for a device and its genpd, when the device is
+getting runtime resumed. In genpd_runtime_resume() we are calling
+genpd_restore_performance_state() before calling genpd_power_on().
+This is deliberate, see commit ae8ac19655e0.
+
+That said, I think we need to manage the restore in the ->power_on()
+callback. In principle, it means we should call
+mtk_mfg_set_oppidx(mfg, genpd->performance_state) from there.
+
+> +
+> +       return mtk_mfg_set_oppidx(mfg, state);
+> +}
+> +
+> +static int mtk_mfg_power_on(struct generic_pm_domain *pd)
+> +{
+> +       struct mtk_mfg *mfg = mtk_mfg_from_genpd(pd);
+> +       int ret;
+> +
+> +       ret = regulator_bulk_enable(mfg->variant->num_regulators,
+> +                                   mfg->gpu_regs);
+> +       if (ret)
+> +               return ret;
+> +
+> +       ret = clk_prepare_enable(mfg->clk_eb);
+> +       if (ret)
+> +               goto err_disable_regulators;
+> +
+> +       ret = clk_bulk_prepare_enable(mfg->variant->num_clks, mfg->gpu_clks);
+> +       if (ret)
+> +               goto err_disable_eb_clk;
+> +
+> +       ret = mtk_mfg_eb_on(mfg);
+> +       if (ret)
+> +               goto err_disable_clks;
+> +
+> +       ret = mtk_mfg_power_control(mfg, true);
+> +       if (ret)
+> +               goto err_eb_off;
+> +
+> +       return 0;
+> +
+> +err_eb_off:
+> +       mtk_mfg_eb_off(mfg);
+> +err_disable_clks:
+> +       clk_bulk_disable_unprepare(mfg->variant->num_clks, mfg->gpu_clks);
+> +err_disable_eb_clk:
+> +       clk_disable_unprepare(mfg->clk_eb);
+> +err_disable_regulators:
+> +       regulator_bulk_disable(mfg->variant->num_regulators, mfg->gpu_regs);
+> +
+> +       return ret;
+> +}
+
+[...]
+
+Note, I intend to have a bit closer look at this soon, but I just
+observed the issue I pointed out above from my first quick look.
+
+Kind regards
+Uffe
 
