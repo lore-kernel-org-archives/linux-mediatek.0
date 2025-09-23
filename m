@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8CDDCAC5A7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Sep 2025 15:26:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51DA0CAC5AE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Sep 2025 15:26:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+Nv6lp70DAL3P9JVoaFhTvOM1f4uo5xLsdu11gYZslw=; b=tyN+XPh14OxbnYVORv0vOOXfhe
-	9a7F/ZSssu5ot+SuxUcLl78qyCitfCv9vBi2aDIdDozq3lo5TpoeZxeEqsCWvGVqFQR/D5A7w1yBc
-	B4V3o9834UuIKReBqsFp5KnZPkzvyD5XkaTLu3MFLR1XGwNVuoCmo4/hl1fTgbhDqsUtOLQ4K9XTV
-	0wKdlPYZLYZm38QoSafDn4Y/4JkVy+tr6aPdhybd7PD8xh380lnMVb1EuXvvCGGPoD7Sf5tv/DhRL
-	qLe6sc4oupwR4k66cogpAtDchg0cwl4XhcTIWxQAlZvOdEGb15kMtkKiaEXphx/VgCRyv4qktsATK
-	TAHssttw==;
+	bh=hHfPKhUQYUCknZFG8ACl/doBBnfNCNclK6q333fPeU0=; b=3fhHDuGolXXr+jF1fQitk3vF4s
+	OK72DwRMuN5/tFFyUR/TA3+qR9/gHL2pIH1ReimxvBEyJT9PSd9o8BEdv0LQT29RPZd1X6VN9daJT
+	VZhp9tU+m6QloI6zQfV3c5Z1/7iTebW8zY3ObycwOP8Gh+I/QrefbQ7U3z164BTBkrgrwMvf0tuFx
+	tAOqQMhbSVXBAQMsFI49esb9KQyKzU3vllWkaNuMxXn4BYgrE3hRnG14ADHskrChfxX0b7VPrqG6R
+	+sM0S1qcNqQQQrJwARsEMpjSfsVIW3ltUZJYfMud7KJ+9CY6NTp0NC4YTaxuesip/ii/65ugTby9r
+	rQ+LXw/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v14uJ-0000000E2Ru-09v9;
+	id 1v14uJ-0000000E2ST-1Ohe;
 	Tue, 23 Sep 2025 15:26:19 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v14uD-0000000E2LQ-0tVa
+	id 1v14uE-0000000E2N0-1HEl
 	for linux-mediatek@lists.infradead.org;
 	Tue, 23 Sep 2025 15:26:15 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id D5375439CF;
-	Tue, 23 Sep 2025 15:26:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B8D40C113D0;
-	Tue, 23 Sep 2025 15:26:12 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 36AE144D17;
+	Tue, 23 Sep 2025 15:26:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 195F4C4CEF5;
+	Tue, 23 Sep 2025 15:26:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1758641172;
-	bh=600+gl2y/5DXDE8JzKJY5V6QLYLeY4g2SnvrcP9hV44=;
+	s=k20201202; t=1758641173;
+	bh=30zvSnUQBdVP9nzTp9cWqSwZXrzYK9ux1hOlnELHiMU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=EUTeYdA5pQktnE96dmZRLl7V/ujUZJQApclxLmczzcUy0dOOVY1AQUPIhKrP4a4W6
-	 E0wDpFyjZjf0N4zCEjTTJF8oeH8vvlgfGpoet8ohApUcbg/YKUI/CtcHNaOZhkPxxr
-	 65AYe+vUh/tfzo2kgh2b0YwzqXLrLtDyAQrVTm+xjio27qXRcuy82p0eyrfsBX0Cgq
-	 hAy4L6BlL9j+3vvOszbzOIvnWNqsZ4Cbn+xMa9nglrtaIV/b8XYtDpnhC2kPjwolQs
-	 MNeC5vhqdPPNX2sIbHnAVjzYottYaeeuF24Yu4Jx6m6PlDhg53GljSEBIbzz/Dpzzb
-	 4Q+0d0WHkoJJg==
+	b=I7K7+f+Rbm1S4nTXRHRqvh91O7U0m8/B6AUA+ntX4CdJJSk5ObmzTNWPnH6KZCOw4
+	 UzbXvOlLO2uPG6LQtVr/w1RvH/W68P0jmfEFCjjo9cO9zhRC0xFAF+sKhbUSJXEsA2
+	 LEgxPxLXpFmRZ8lyOvBOHLkrh5hN3zsSCR1YSz63lPQooVmakiahMDH1NWWoSmXL41
+	 H8xEAZHP5ex9Ga9uVil+WgByS+giNxIllok+J7B5I14gJ0tr6mJn/he44FMoRWC+RU
+	 szrEWjCUnwhBCNLJgwXUSHlPiUZ4EtLNyjs2bqXjTkhFm8RJh6ZG7sXu4y8BfPiqqn
+	 67i83Z4IhQvBQ==
 Received: from johan by xi.lan with local (Exim 4.98.2)
 	(envelope-from <johan@kernel.org>)
-	id 1v14u6-000000004mq-46Hf;
+	id 1v14u7-000000004mv-0ek6;
 	Tue, 23 Sep 2025 17:26:07 +0200
 From: Johan Hovold <johan@kernel.org>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
@@ -58,18 +58,18 @@ Cc: David Airlie <airlied@gmail.com>,
 	linux-kernel@vger.kernel.org,
 	Johan Hovold <johan@kernel.org>,
 	stable@vger.kernel.org,
-	CK Hu <ck.hu@mediatek.com>
-Subject: [PATCH 2/5] drm/mediatek: fix probe memory leak
-Date: Tue, 23 Sep 2025 17:23:37 +0200
-Message-ID: <20250923152340.18234-3-johan@kernel.org>
+	Jie Qiu <jie.qiu@mediatek.com>
+Subject: [PATCH 4/5] drm/mediatek: mtk_hdmi: fix probe device leaks
+Date: Tue, 23 Sep 2025 17:23:39 +0200
+Message-ID: <20250923152340.18234-5-johan@kernel.org>
 X-Mailer: git-send-email 2.49.1
 In-Reply-To: <20250923152340.18234-1-johan@kernel.org>
 References: <20250923152340.18234-1-johan@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250923_082613_274282_DCC71D02 
-X-CRM114-Status: GOOD (  12.70  )
+X-CRM114-CacheID: sfid-20250923_082614_382864_CC13B454 
+X-CRM114-Status: GOOD (  11.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,35 +84,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Mediatek DRM driver allocates private data for components without a
-platform driver but as the lifetime is tied to each component device,
-the memory is never freed.
+Make sure to drop the references to the DDC adapter and CEC device
+taken during probe on probe failure (e.g. probe deferral) and on driver
+unbind.
 
-Tie the allocation lifetime to the DRM platform device so that the
-memory is released on probe failure (e.g. probe deferral) and when the
-driver is unbound.
-
-Fixes: c0d36de868a6 ("drm/mediatek: Move clk info from struct mtk_ddp_comp to sub driver private data")
-Cc: stable@vger.kernel.org	# 5.12
-Cc: CK Hu <ck.hu@mediatek.com>
+Fixes: 8f83f26891e1 ("drm/mediatek: Add HDMI support")
+Cc: stable@vger.kernel.org	# 4.8
+Cc: Jie Qiu <jie.qiu@mediatek.com>
 Signed-off-by: Johan Hovold <johan@kernel.org>
 ---
- drivers/gpu/drm/mediatek/mtk_ddp_comp.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/gpu/drm/mediatek/mtk_hdmi.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-index 0264017806ad..31d67a131c50 100644
---- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-@@ -671,7 +671,7 @@ int mtk_ddp_comp_init(struct device *dev, struct device_node *node, struct mtk_d
- 	    type == MTK_DSI)
- 		return 0;
+diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+index b766dd5e6c8d..306e2c907311 100644
+--- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
++++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+@@ -1345,6 +1345,13 @@ static const struct drm_bridge_funcs mtk_hdmi_bridge_funcs = {
+ 	.edid_read = mtk_hdmi_bridge_edid_read,
+ };
  
--	priv = devm_kzalloc(comp->dev, sizeof(*priv), GFP_KERNEL);
-+	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
- 	if (!priv)
- 		return -ENOMEM;
++static void mtk_hdmi_put_device(void *_dev)
++{
++	struct device *dev = _dev;
++
++	put_device(dev);
++}
++
+ static int mtk_hdmi_get_cec_dev(struct mtk_hdmi *hdmi, struct device *dev, struct device_node *np)
+ {
+ 	struct platform_device *cec_pdev;
+@@ -1369,6 +1376,10 @@ static int mtk_hdmi_get_cec_dev(struct mtk_hdmi *hdmi, struct device *dev, struc
+ 	}
+ 	of_node_put(cec_np);
  
++	ret = devm_add_action_or_reset(dev, mtk_hdmi_put_device, &cec_pdev->dev);
++	if (ret)
++		return ret;
++
+ 	/*
+ 	 * The mediatek,syscon-hdmi property contains a phandle link to the
+ 	 * MMSYS_CONFIG device and the register offset of the HDMI_SYS_CFG
+@@ -1423,6 +1434,10 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
+ 	if (!hdmi->ddc_adpt)
+ 		return dev_err_probe(dev, -EINVAL, "Failed to get ddc i2c adapter by node\n");
+ 
++	ret = devm_add_action_or_reset(dev, mtk_hdmi_put_device, &hdmi->ddc_adpt->dev);
++	if (ret)
++		return ret;
++
+ 	ret = mtk_hdmi_get_cec_dev(hdmi, dev, np);
+ 	if (ret)
+ 		return ret;
 -- 
 2.49.1
 
