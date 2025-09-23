@@ -4,77 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73038CAC5B0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Sep 2025 09:07:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 143D3CAC5B0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Sep 2025 09:09:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lDSLbWRe3/XSF6EHknU6DwHbBjpQeYWU/BRQOn+S+E0=; b=cvNMBy8xAxkD/D3Ew7pJL8tQ7r
-	vN+KmlHKXsE1SuxAIF2/L4YmiDUVia3Wz6OzGQiQr6fMwaj5dbEF1MCnDsPGEr3Iuf/jdk4Behw1l
-	NH8IBZ7np28oIAk4ULuwDRjL75LPPQPH1N/SCO9RROdCh0DM4uP37d43YeJULpHeXZZ4ceOMmz7KG
-	/Qni99tXo33rIsU/X2+wRTdbenxxYXcfLikD7maBoAEzVj2rhZhS5B1z1Imux8xZHudwqTii8Pl8C
-	7AvDUl5NU/5Np6eWliivnxwsceqq4EDQP/BjsU5sAWWWAIZwXRcHpd3roYjAAkCtbpH0ASkYsERfi
-	o0SyL5BA==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=6PLezvTXFH/JVjLyBd+LeFurch1gBGqBwmeiVexHW1E=; b=HfmwK2RaW/tnB6J45VcZ3k7Xn6
+	88uk4HVFzVfuOhhhchgIDYbDj1VYlG0hmf5z2z7Mpt71VsXx/qK1pFMTBORQn1O9byzKyKxOYl2b3
+	8wMRGAZUK2dCFJnaUCUTcgYckWt9u+l1+BiExHOZfPT7fnrnPupf0FndlIgejpfo1hKZAx0O+mr3W
+	sfI6fyyDAL4dzqUpOHivrBgBZxhGnVrhiMS+zuwXmttUb0E9kXBuAGrNnxI/OBEFn0gj5pblQqYMH
+	dwfeVIUbzGkuMtXGjnA2Q/bLd3TPP2V7kS1Ms3xHzYAYOdn0wqYnJ7rVLzG7WyjF9i0I4gJc6rAvi
+	oH5kaOcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0yzJ-0000000CsoN-0269;
-	Tue, 23 Sep 2025 09:07:05 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1v0z1F-0000000CtbY-178x;
+	Tue, 23 Sep 2025 09:09:05 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0yzG-0000000Csnw-0gwQ;
-	Tue, 23 Sep 2025 09:07:03 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1758618417; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=WUVll49IQ+H3NMXdoaT6K2RFOubCRIh8nTVDC130XCwvQtEqkgW8odYao0QpHWGZA2xf2Jbv8o0qKuvI0tFfylr9/nxi3kCX+idBXWtpHEJcFAlKIaoz0hoVm71HDpVu5PMQLDiz3LNzcUdlHe2qJS4++ljbea0gqmb6pMpDexk=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1758618417; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=lDSLbWRe3/XSF6EHknU6DwHbBjpQeYWU/BRQOn+S+E0=; 
-	b=iyt1yQ/3U0uKZsgnULMdD3f/prailyEXuo2yvBU6agBfC9hJYFRVhlb6Br75wjrLOitUQtw/oerKm/d6sCnnBRwp/BkIBbf+1WO7F5bqfOdQ69Ip+9imwWwAsmSJODvnX4LhPC+z5yGpfklXY9EPiS0Ueu0imU4nidq3sY9DKDg=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1758618417;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=lDSLbWRe3/XSF6EHknU6DwHbBjpQeYWU/BRQOn+S+E0=;
-	b=kKRpg/SUMjRrSseNMULThv4AZ7il2w6TbWlp+iHoeVtfTNv9szWRJZDrbtPUkxQY
-	3GUrqSzx5yxcXQaVFMbe0AhUSJ4BSHR01kILwd2HHJGoM34dbY2Cc8uozi9d7FxMtwq
-	ftuXMxgrlPcDErDdb4GFWLL3L2WgpA9GKLS6HaLw=
-Received: by mx.zohomail.com with SMTPS id 1758618414479846.6177567826774;
-	Tue, 23 Sep 2025 02:06:54 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: "jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>,
- Jjian Zhou =?UTF-8?B?KOWRqOW7uik=?= <Jjian.Zhou@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "wenst@chromium.org" <wenst@chromium.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- "robh@kernel.org" <robh@kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v5 2/2] mailbox: mediatek: Add mtk-vcp-mailbox driver
-Date: Tue, 23 Sep 2025 11:06:50 +0200
-Message-ID: <2382077.ElGaqSPkdT@workhorse>
-In-Reply-To: <eb9b0ea70abb09f45c50e88b6221948ae09be6f7.camel@mediatek.com>
-References: <20250822021217.1598-1-jjian.zhou@mediatek.com>
- <13850137.uLZWGnKmhe@workhorse>
- <eb9b0ea70abb09f45c50e88b6221948ae09be6f7.camel@mediatek.com>
+	id 1v0z1D-0000000CtbA-0M6N
+	for linux-mediatek@lists.infradead.org;
+	Tue, 23 Sep 2025 09:09:04 +0000
+X-UUID: f132ff86985c11f09f706fa2197c6ceb-20250923
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=6PLezvTXFH/JVjLyBd+LeFurch1gBGqBwmeiVexHW1E=;
+	b=XP9Gqz8RivPNUM3U+k30HwtSlTpuhobYinxovljQnb190BeETCG+axq4ExiZKT2ug8lJfDYsyzbLPsaDc8beYngznQRfR4wJkYZKugubY3QnOK2lpcdqZ7w8SL7CbDl0Nuu/MWlYm24p25cqouDjsy3ylG1SfZB/Yp/IzLd1UwY=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.4,REQID:4b6c1a88-71be-4a45-b166-8c7cab6c84ad,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:1ca6b93,CLOUDID:654ec221-c299-443d-bb51-d77d2f000e20,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:0,File:130,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,
+	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 3,DMD|SSN|SDN
+X-CID-BAS: 3,DMD|SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: f132ff86985c11f09f706fa2197c6ceb-20250923
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2005590074; Tue, 23 Sep 2025 02:08:59 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.10; Tue, 23 Sep 2025 17:08:57 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1748.10 via Frontend Transport; Tue, 23 Sep 2025 17:08:57 +0800
+From: <peter.wang@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
+	<avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
+CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
+	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
+	<yi-fan.peng@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
+	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
+	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>, <bvanassche@acm.org>
+Subject: [PATCH v1] ufs: core: Change MCQ interrupt enable flow
+Date: Tue, 23 Sep 2025 17:08:15 +0800
+Message-ID: <20250923090855.2522149-1-peter.wang@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250923_020702_285471_AFA2F790 
-X-CRM114-Status: GOOD (  39.63  )
+X-CRM114-CacheID: sfid-20250923_020903_131738_BD3C9532 
+X-CRM114-Status: GOOD (  14.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,179 +90,117 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tuesday, 23 September 2025 04:35:59 Central European Summer Time Jjian Z=
-hou (=E5=91=A8=E5=BB=BA) wrote:
-> On Mon, 2025-09-22 at 15:10 +0200, Nicolas Frattaroli wrote:
-> > External email : Please do not click links or open attachments until
-> > you have verified the sender or the content.
-> >=20
-> >=20
-> > On Monday, 22 September 2025 09:17:27 Central European Summer Time
-> > Jjian Zhou (=E5=91=A8=E5=BB=BA) wrote:
-> > > On Sat, 2025-09-20 at 23:02 -0500, Jassi Brar wrote:
-> > > > External email : Please do not click links or open attachments
-> > > > until
-> > > > you have verified the sender or the content.
-> > > >=20
-> > > >=20
-> > > > On Fri, Sep 19, 2025 at 2:02=E2=80=AFPM Nicolas Frattaroli
-> > > > <nicolas.frattaroli@collabora.com> wrote:
-> > > > >=20
-> > > > > On Friday, 19 September 2025 18:32:12 Central European Summer
-> > > > > Time
-> > > > > Jassi Brar wrote:
-> > > > > > On Fri, Sep 19, 2025 at 3:31=E2=80=AFAM Chen-Yu Tsai <
-> > > > > > wenst@chromium.org>
-> > > > > > wrote:
-> > > > > > >=20
-> > > > > > > On Fri, Sep 19, 2025 at 7:50=E2=80=AFAM Jassi Brar <
-> > > > > > > jassisinghbrar@gmail.com> wrote:
-> > > > > > > >=20
-> > > > > > > > On Thu, Aug 21, 2025 at 9:12=E2=80=AFPM Jjian Zhou <
-> > > > > > > > jjian.zhou@mediatek.com> wrote:
-> > > > > > > >=20
-> > > > > > > > .....
-> > > > > > > >=20
-> > > > > > > > > +#include <linux/module.h>
-> > > > > > > > > +#include <linux/of.h>
-> > > > > > > > > +#include <linux/platform_device.h>
-> > > > > > > > > +#include <linux/slab.h>
-> > > > > > > > > +
-> > > > > > > > > +struct mtk_vcp_mbox_priv {
-> > > > > > > >=20
-> > > > > > > > Maybe 'mtk_vcp_mbox' is a more appropriate name ?
-> > > > > > > >=20
-> > > > > > > > > +       void __iomem *base;
-> > > > > > > > > +       struct device *dev;
-> > > > > > > > > +       struct mbox_controller mbox;
-> > > > > > > > > +       const struct mtk_vcp_mbox_cfg *cfg;
-> > > > > > > > > +       struct mtk_ipi_info ipi_recv;
-> > > > > > > >=20
-> > > > > > > > Maybe also have "struct mbox_chan chan[1]; " so that you
-> > > > > > > > don't have to
-> > > > > > > > allocate one during the probe.
-> > > > > > > > Also if you have  "struct mbox_controller mbox;" as the
-> > > > > > > > first
-> > > > > > > > member,
-> > > > > > > > you could simply typecast that to get this structure.
-> > > > > > > > Something like "struct mpfs_mbox" in mailbox-mpfs.c
-> > > > > > >=20
-> > > > > > > I read somewhere that this way of subclassing is not
-> > > > > > > recommended.
-> > > > > > > Instead the base class should explicitly not be the first
-> > > > > > > member.
-> > > > > > > And then container_of() should be used.
-> > > > > > >=20
-> > > > > > > I don't remember where I read this though. But I think the
-> > > > > > > explicit
-> > > > > > > container_of() is easier for understanding the intent.
-> > > > > > >=20
-> > > > > >=20
-> > > > > > And how does container_of() work ? :)
-> > > > > > typcasting the first member to its parent is the simplest
-> > > > > > form of
-> > > > > > container_of.
-> > > > > >=20
-> > > > > > -j
-> > > > > >=20
-> > > > > >=20
-> > > > >=20
-> > > > > Which is why it's completely equivalent and since code is
-> > > > > supposed
-> > > > > to communicate meaning to humans, container_of should be used.
-> > > > >=20
-> > > >=20
-> > > > Nobody is suggesting typecasting cfg, dev or anything else.
-> > > > Typecasting between mailbox controllers is fine and arguably
-> > > > easier
-> > > > on
-> > > > the eyes than using a container_of.
-> > > >=20
-> > > > -j
-> > >=20
-> > > OK. How about:
-> > > struct mtk_vcp_mbox *priv =3D (struct mtk_vcp_mbox *)chan-
-> > > > con_priv;
-> > >=20
-> > > Thanks.
-> > >=20
-> >=20
-> > An explicit cast would be worse, as at that point you're telling
-> > C to completely ignore any semblance of a type system it has.
-> >=20
-> >=20
-> >=20
->      struct mtk_vcp_mbox *priv;=20
->      priv->dev =3D dev;
->      priv->chans[0].con_priv =3D priv;
-> The type of con_priv is "void *".=20
-> Would the conversion mentioned above also have the issue you mentioned?
->=20
-> Thanks.
->=20
+From: Peter Wang <peter.wang@mediatek.com>
 
-No, in that case the cast is implicit. While void pointers do
-subvert the type system, they are needed in this case because
-the con_priv member needs to point at structs of any type.
+Move the MCQ interrupt enable process to
+ufshcd_mcq_make_queues_operational to ensure that interrupts
+are set correctly when making queues operational, similar to
+ufshcd_make_hba_operational. This change addresses the issue
+where ufshcd_mcq_make_queues_operational was not fully
+operational due to missing interrupt enablement.
 
-The problem is that when you do something like
+Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+---
+ drivers/ufs/core/ufs-mcq.c | 11 +++++++++++
+ drivers/ufs/core/ufshcd.c  | 13 ++-----------
+ include/ufs/ufshcd.h       |  1 +
+ 3 files changed, 14 insertions(+), 11 deletions(-)
 
-  struct apple *a =3D something;
-  struct orange *o =3D (struct orange *)a;
-
-then if the two structs (apple and orange) are incompatible,
-the compiler won't even yell at you, because you're explicitly
-casting.
-
-With an implicit cast:
-
-  struct apple *a =3D something;
-  struct orange *o =3D a;
-
-the compiler will tell you if you're doing something wrong.
-Here's a userspace code example to illustrate the point:
-
-    #include <stdio.h>
-
-    struct apple {
-            const char *name;
-            unsigned int weight;
-    };
-
-    struct orange {
-            int x;
-            int y;
-            int z;
-    };
-
-    int main(int argc, char** argv)
-    {
-            struct apple a =3D {"Granny Smith", 200};
-            // won't compile, good!
-            /* struct orange *o =3D &a; */
-            // will compile, bad!
-            struct orange *o =3D (struct orange *)&a;
-
-            printf("%d\n", o->x);
-
-            return 0;
-    }
-
-If you comment out the second struct orange line and uncomment the
-first, then you'll get a compilation error, which is what we want
-because the two structs are incompatible and we don't want the
-assignment to work in this case, as that would be a bug.
-
-The second struct orange line always compiles, even though the two
-structs are incompatible, and will cause nonsense to be printed.
-
-I hope this illustrates the point I was trying to make, which is
-that explicit casts make it harder to find issues because they
-force the language to simply accept the cast rather than give us
-a compilation error when something nonsensical is being done.
-
-Kind regards,
-Nicolas Frattaroli
-
+diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
+index cc88aaa106da..c9bdd4140fd0 100644
+--- a/drivers/ufs/core/ufs-mcq.c
++++ b/drivers/ufs/core/ufs-mcq.c
+@@ -29,6 +29,10 @@
+ #define MCQ_ENTRY_SIZE_IN_DWORD	8
+ #define CQE_UCD_BA GENMASK_ULL(63, 7)
+ 
++#define UFSHCD_ENABLE_MCQ_INTRS	(UTP_TASK_REQ_COMPL |\
++				 UFSHCD_ERROR_MASK |\
++				 MCQ_CQ_EVENT_STATUS)
++
+ /* Max mcq register polling time in microseconds */
+ #define MCQ_POLL_US 500000
+ 
+@@ -355,9 +359,16 @@ EXPORT_SYMBOL_GPL(ufshcd_mcq_poll_cqe_lock);
+ void ufshcd_mcq_make_queues_operational(struct ufs_hba *hba)
+ {
+ 	struct ufs_hw_queue *hwq;
++	u32 intrs;
+ 	u16 qsize;
+ 	int i;
+ 
++	/* Enable required interrupts */
++	intrs = UFSHCD_ENABLE_MCQ_INTRS;
++	if (hba->quirks & UFSHCD_QUIRK_MCQ_BROKEN_INTR)
++		intrs &= ~MCQ_CQ_EVENT_STATUS;
++	ufshcd_enable_intr(hba, intrs);
++
+ 	for (i = 0; i < hba->nr_hw_queues; i++) {
+ 		hwq = &hba->uhq[i];
+ 		hwq->id = i;
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index 0735bd5df1cc..585d56e04daf 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -45,11 +45,6 @@
+ 				 UTP_TASK_REQ_COMPL |\
+ 				 UFSHCD_ERROR_MASK)
+ 
+-#define UFSHCD_ENABLE_MCQ_INTRS	(UTP_TASK_REQ_COMPL |\
+-				 UFSHCD_ERROR_MASK |\
+-				 MCQ_CQ_EVENT_STATUS)
+-
+-
+ /* UIC command timeout, unit: ms */
+ enum {
+ 	UIC_CMD_TIMEOUT_DEFAULT	= 500,
+@@ -369,7 +364,7 @@ EXPORT_SYMBOL_GPL(ufshcd_disable_irq);
+  * @hba: per adapter instance
+  * @intrs: interrupt bits
+  */
+-static void ufshcd_enable_intr(struct ufs_hba *hba, u32 intrs)
++void ufshcd_enable_intr(struct ufs_hba *hba, u32 intrs)
+ {
+ 	u32 old_val = ufshcd_readl(hba, REG_INTERRUPT_ENABLE);
+ 	u32 new_val = old_val | intrs;
+@@ -377,6 +372,7 @@ static void ufshcd_enable_intr(struct ufs_hba *hba, u32 intrs)
+ 	if (new_val != old_val)
+ 		ufshcd_writel(hba, new_val, REG_INTERRUPT_ENABLE);
+ }
++EXPORT_SYMBOL_GPL(ufshcd_enable_intr);
+ 
+ /**
+  * ufshcd_disable_intr - disable interrupts
+@@ -8927,16 +8923,11 @@ static int ufshcd_alloc_mcq(struct ufs_hba *hba)
+ static void ufshcd_config_mcq(struct ufs_hba *hba)
+ {
+ 	int ret;
+-	u32 intrs;
+ 
+ 	ret = ufshcd_mcq_vops_config_esi(hba);
+ 	hba->mcq_esi_enabled = !ret;
+ 	dev_info(hba->dev, "ESI %sconfigured\n", ret ? "is not " : "");
+ 
+-	intrs = UFSHCD_ENABLE_MCQ_INTRS;
+-	if (hba->quirks & UFSHCD_QUIRK_MCQ_BROKEN_INTR)
+-		intrs &= ~MCQ_CQ_EVENT_STATUS;
+-	ufshcd_enable_intr(hba, intrs);
+ 	ufshcd_mcq_make_queues_operational(hba);
+ 	ufshcd_mcq_config_mac(hba, hba->nutrs);
+ 
+diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
+index ea0021f067c9..d8e06de0afbb 100644
+--- a/include/ufs/ufshcd.h
++++ b/include/ufs/ufshcd.h
+@@ -1292,6 +1292,7 @@ static inline void ufshcd_rmwl(struct ufs_hba *hba, u32 mask, u32 val, u32 reg)
+ 
+ void ufshcd_enable_irq(struct ufs_hba *hba);
+ void ufshcd_disable_irq(struct ufs_hba *hba);
++void ufshcd_enable_intr(struct ufs_hba *hba, u32 intrs);
+ int ufshcd_alloc_host(struct device *, struct ufs_hba **);
+ int ufshcd_hba_enable(struct ufs_hba *hba);
+ int ufshcd_init(struct ufs_hba *, void __iomem *, unsigned int);
+-- 
+2.45.2
 
 
