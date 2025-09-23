@@ -4,77 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5B67CAC5AC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Sep 2025 16:07:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0CD8CAC5A7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Sep 2025 16:15:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zbruSP7rTY8HLsD8zPBU4YUA1qQNLZSLfDKDdyydwSQ=; b=ZFP2CFlYX5vd1hpLqGqqsZ9S+8
-	pH5eAlTCypOsj1JtuQkZCng+jlKVFcXvrSLDYTi59l/uxaBGQ3YnIsbZAtGhOWoFjFY1L1xXp/cxI
-	k3Q7iPQIqcPhgjZgL41Ypw3zZx5loqnFkK62IckLQLbcBa1o9pMB/xy+A0aZqnQq9XAtqFqbXaUgU
-	JT3Lm3PtsmQvrpHwsmLjbep8r7OTorWD5nEkNwlYm8HgKUHX0qdw84J82oEYAGF+IEGVPdgRFaRj1
-	46QkG6sGwnPWVFjYdpz8Ghx/eZMWfOS4At922EdIjlqh9rNiChg9D1NlK6UCt5QFiof7e9H6F43b8
-	Z17OJiLg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=od3W27UP2d4Dd91dUdUX5opiLkersdSVw2Akopacp7A=; b=eErqNMUcOG6Ex8Zij5voqq6/d6
+	2JodxOOzE3I+hUNRkpQv361g5Z3M2D5t4w3+rUPorTSL19hClMDeK4x71qMLLHd10EN+8EoByv3sP
+	oHW/hnPxhvLo3bVTbbCrgfVu3WMvshi0eVGMZorZUZ/NYm436TRbmyx6TOyU3xYIJdjeRsCdTWXKG
+	5S1xcCFLsWtISc4hDdnrRYjsP/bW47Ku8zsyXFEAtD4y2CmmAGWkzYOEgNqT/lu2CeUzLeE+W6har
+	whetYvxOof+Hs1TbbTy/552V0N5KJEJ5gBgknI4+EAGwf+y4tte8JYUq2kMN24x4tKXTBNT9u/0OT
+	6408WXzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v15YI-0000000EDUI-1110;
-	Tue, 23 Sep 2025 16:07:38 +0000
-Received: from 004.mia.mailroute.net ([199.89.3.7])
+	id 1v15fU-0000000EEZz-30aB;
+	Tue, 23 Sep 2025 16:15:04 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v15YF-0000000EDTX-08mI
-	for linux-mediatek@lists.infradead.org;
-	Tue, 23 Sep 2025 16:07:36 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 004.mia.mailroute.net (Postfix) with ESMTP id 4cWPyF6CCgzm0yVX;
-	Tue, 23 Sep 2025 16:07:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1758643650; x=1761235651; bh=zbruSP7rTY8HLsD8zPBU4YUA
-	1qQNLZSLfDKDdyydwSQ=; b=Qpi7tVSNMRGbdpE68cf5HnEM+xqaPx8crt3tHpI8
-	Un1gYwGMh0wykFD6zZaTTBQrVWTGlRyiho+3FU65ahZ77IKxYnj0k95OCri3XH+D
-	HC/VcVmsXfPnw+w6yFXJjRioorYKhtFgDM6Hn6MMXor4ZJKcShmHkwGj3Z1pA8c8
-	pXL8YzcIJ0GlNtYauxLS+W0l+IdVH/ZoCUtBSJcxAgw0Ne7pyXA3Zo5E26Y0/t3U
-	wxXIfDtZQKNAT3pGYmxNFqAMAs0SU0wAZAJ7Z04WnTDeamqQhyphQAoZcxMQ0731
-	jX1GgpO0aOMdIjTK1pYh7vflQgU9YlvTx/iyAEFZOTT2Iw==
-X-Virus-Scanned: by MailRoute
-Received: from 004.mia.mailroute.net ([127.0.0.1])
- by localhost (004.mia [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id Tm3RX5dzHQSk; Tue, 23 Sep 2025 16:07:30 +0000 (UTC)
-Received: from [100.119.48.131] (unknown [104.135.180.219])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 004.mia.mailroute.net (Postfix) with ESMTPSA id 4cWPxn2PtTzm1743;
-	Tue, 23 Sep 2025 16:07:07 +0000 (UTC)
-Message-ID: <ecc17025-692d-45fe-97eb-9cc4c4ce7a06@acm.org>
-Date: Tue, 23 Sep 2025 09:07:06 -0700
+	id 1v15fS-0000000EEYu-1Dtn;
+	Tue, 23 Sep 2025 16:15:03 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 9747844A33;
+	Tue, 23 Sep 2025 16:15:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B4DEEC4CEF5;
+	Tue, 23 Sep 2025 16:14:53 +0000 (UTC)
+Date: Tue, 23 Sep 2025 17:14:51 +0100
+From: Catalin Marinas <catalin.marinas@arm.com>
+To: David Hildenbrand <david@redhat.com>
+Cc: Lance Yang <lance.yang@linux.dev>, akpm@linux-foundation.org,
+	lorenzo.stoakes@oracle.com, usamaarif642@gmail.com,
+	yuzhao@google.com, ziy@nvidia.com, baolin.wang@linux.alibaba.com,
+	baohua@kernel.org, voidice@gmail.com, Liam.Howlett@oracle.com,
+	cerasuolodomenico@gmail.com, hannes@cmpxchg.org,
+	kaleshsingh@google.com, npache@redhat.com, riel@surriel.com,
+	roman.gushchin@linux.dev, rppt@kernel.org, ryan.roberts@arm.com,
+	dev.jain@arm.com, ryncsn@gmail.com, shakeel.butt@linux.dev,
+	surenb@google.com, hughd@google.com, willy@infradead.org,
+	matthew.brost@intel.com, joshua.hahnjy@gmail.com, rakie.kim@sk.com,
+	byungchul@sk.com, gourry@gourry.net, ying.huang@linux.alibaba.com,
+	apopple@nvidia.com, qun-wei.lin@mediatek.com,
+	Andrew.Yang@mediatek.com, casper.li@mediatek.com,
+	chinwen.chang@mediatek.com, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-mm@kvack.org, ioworker0@gmail.com, stable@vger.kernel.org
+Subject: Re: [PATCH 1/1] mm/thp: fix MTE tag mismatch when replacing
+ zero-filled subpages
+Message-ID: <aNLHexcNI53HQ46A@arm.com>
+References: <20250922021458.68123-1-lance.yang@linux.dev>
+ <aNGGUXLCn_bWlne5@arm.com>
+ <a3412715-6d9d-4809-9588-ba08da450d16@redhat.com>
+ <aNKJ5glToE4hMhWA@arm.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1] ufs: core: Fix runtime suspend error deadlock
-To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
- jejb@linux.ibm.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com,
- yi-fan.peng@mediatek.com, qilin.tan@mediatek.com, lin.gui@mediatek.com,
- tun-yu.yu@mediatek.com, eddie.huang@mediatek.com, naomi.chu@mediatek.com,
- ed.tsai@mediatek.com
-References: <20250923082147.2491450-1-peter.wang@mediatek.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20250923082147.2491450-1-peter.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <aNKJ5glToE4hMhWA@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250923_090735_159698_050B06C9 
-X-CRM114-Status: GOOD (  14.96  )
+X-CRM114-CacheID: sfid-20250923_091502_366082_4134783B 
+X-CRM114-Status: GOOD (  27.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,46 +78,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/23/25 1:20 AM, peter.wang@mediatek.com wrote:
-> From: Peter Wang <peter.wang@mediatek.com>
-> 
-> Resolve the deadlock issue during runtime suspend when an
-> error triggers the error handler. Prevent the deadlock
-> by checking pm_op_in_progress and performing a quick recovery.
-> This approach ensures that the error handler does not wait
-> indefinitely for runtime PM to resume, allowing runtime
-> suspend to proceed smoothly.
-> 
-> Signed-off-by: Peter Wang <peter.wang@mediatek.com>
-> Suggested-by: Bart Van Assche <bvanassche@acm.org>
-> Tested-by: Bart Van Assche <bvanassche@acm.org>
-> ---
->   drivers/ufs/core/ufshcd.c | 5 +++++
->   1 file changed, 5 insertions(+)
-> 
-> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-> index 88a0e9289ca6..0735bd5df1cc 100644
-> --- a/drivers/ufs/core/ufshcd.c
-> +++ b/drivers/ufs/core/ufshcd.c
-> @@ -6681,6 +6681,11 @@ static void ufshcd_err_handler(struct work_struct *work)
->   	}
->   	spin_unlock_irqrestore(hba->host->host_lock, flags);
->   
-> +	if (hba->pm_op_in_progress) {
-> +		ufshcd_link_recovery(hba);
-> +		return;
-> +	}
-> +
->   	ufshcd_err_handling_prepare(hba);
->   
->   	spin_lock_irqsave(hba->host->host_lock, flags);
+On Tue, Sep 23, 2025 at 12:52:06PM +0100, Catalin Marinas wrote:
+> I just realised that on arm64 with MTE we won't get any merging with the
+> zero page even if the user page isn't mapped with PROT_MTE. In
+> cpu_enable_mte() we zero the tags in the zero page and set
+> PG_mte_tagged. The reason is that we want to use the zero page with
+> PROT_MTE mappings (until tag setting causes CoW). Hmm, the arm64
+> memcmp_pages() messed up KSM merging with the zero page even before this
+> patch.
+[...]
+> diff --git a/arch/arm64/kernel/mte.c b/arch/arm64/kernel/mte.c
+> index e5e773844889..72a1dfc54659 100644
+> --- a/arch/arm64/kernel/mte.c
+> +++ b/arch/arm64/kernel/mte.c
+> @@ -73,6 +73,8 @@ int memcmp_pages(struct page *page1, struct page *page2)
+>  {
+>  	char *addr1, *addr2;
+>  	int ret;
+> +	bool page1_tagged = page_mte_tagged(page1) && !is_zero_page(page1);
+> +	bool page2_tagged = page_mte_tagged(page2) && !is_zero_page(page2);
+>  
+>  	addr1 = page_address(page1);
+>  	addr2 = page_address(page2);
+> @@ -83,11 +85,10 @@ int memcmp_pages(struct page *page1, struct page *page2)
+>  
+>  	/*
+>  	 * If the page content is identical but at least one of the pages is
+> -	 * tagged, return non-zero to avoid KSM merging. If only one of the
+> -	 * pages is tagged, __set_ptes() may zero or change the tags of the
+> -	 * other page via mte_sync_tags().
+> +	 * tagged, return non-zero to avoid KSM merging. Ignore the zero page
+> +	 * since it is always tagged with the tags cleared.
+>  	 */
+> -	if (page_mte_tagged(page1) || page_mte_tagged(page2))
+> +	if (page1_tagged || page2_tagged)
+>  		return addr1 != addr2;
+>  
+>  	return ret;
 
-Does this patch introduce a race condition? Can a power management
-operation start after hba->pm_op_in_progress has been tested and before
-ufshcd_err_handling_prepare() is called? Should the added code perhaps
-be surrounded with ufshcd_rpm_get_noresume() and ufshcd_rpm_put()?
+Unrelated to this discussion, I got an internal report that Linux hangs
+during boot with CONFIG_DEFERRED_STRUCT_PAGE_INIT because
+try_page_mte_tagging() locks up on uninitialised page flags.
 
-Thanks,
+Since we (always?) map the zero page as pte_special(), set_pte_at()
+won't check if the tags have to be initialised, so we can skip the
+PG_mte_tagged altogether. We actually had this code for some time until
+we introduced the pte_special() check in set_pte_at().
 
-Bart.
+So alternative patch that also fixes the deferred struct page init (on
+the assumptions that the zero page is always mapped as pte_special():
+
+diff --git a/arch/arm64/kernel/cpufeature.c b/arch/arm64/kernel/cpufeature.c
+index 7b78c95a9017..e325ba34f45c 100644
+--- a/arch/arm64/kernel/cpufeature.c
++++ b/arch/arm64/kernel/cpufeature.c
+@@ -2419,17 +2419,21 @@ static void bti_enable(const struct arm64_cpu_capabilities *__unused)
+ #ifdef CONFIG_ARM64_MTE
+ static void cpu_enable_mte(struct arm64_cpu_capabilities const *cap)
+ {
++	static bool cleared_zero_page = false;
++
+ 	sysreg_clear_set(sctlr_el1, 0, SCTLR_ELx_ATA | SCTLR_EL1_ATA0);
+ 
+ 	mte_cpu_setup();
+ 
+ 	/*
+ 	 * Clear the tags in the zero page. This needs to be done via the
+-	 * linear map which has the Tagged attribute.
++	 * linear map which has the Tagged attribute. Since this page is
++	 * always mapped as pte_special(), set_pte_at() will not attempt to
++	 * clear the tags or set PG_mte_tagged.
+ 	 */
+-	if (try_page_mte_tagging(ZERO_PAGE(0))) {
++	if (!cleared_zero_page) {
++		cleared_zero_page = true;
+ 		mte_clear_page_tags(lm_alias(empty_zero_page));
+-		set_page_mte_tagged(ZERO_PAGE(0));
+ 	}
+ 
+ 	kasan_init_hw_tags_cpu();
+
+-- 
+Catalin
 
