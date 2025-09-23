@@ -4,76 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A26B9CAC5A5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Sep 2025 21:48:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A208CAC5AC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Sep 2025 23:15:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TdDHz2N8EWtmzxnP8VWPHz5i0XXaLhLxl0Z/yNaK7Ms=; b=sGxzkJT9LfAnV0H8Tsw96JhlZ8
-	JSo/WkkzD6A8PRFOu7BatkTjk+lR9mfIci0O/Oiy2s61DhoRXJtjP5zl/wPXI0G1ZL5HDquCstLdf
-	hkQFQJfI3/9z8vFx+gjyfPH9APWxSIJdQ6tPWQfy9s+0za37aZMNJGBQwgFHp1TKP5ifxO6yX2fXT
-	2WFKlYe8uOfJ5vQH/7Q9cwvvHtvVQdiZhyByhKbqpm8+aQEWlBkJpUx+Gn0hUDzgFrq6WF6ux5xCW
-	VNKnQ5BujRdE/D4YRUza3S+mYxApbI7Y/A39fKFJhZci+iiJ3OSO11P/Z6a5Nh6wLdWsf3Tcngrgj
-	n/narHmw==;
+	bh=zDzY2LVQMaK7Ywv58utFvcpGy/aHYxvDby3fPDHMQQE=; b=bDERKBlXJCshpwHo6PbOIBz3ac
+	+fszztYl2FFnzLBTb/gqHAfbB/54YoXNKXsiBcCI7kpTxqIMmbMlztmSrp4ztf97LOZjD9ykQVOb6
+	bJDSgc2RrgvJi7zaITfEWcXqjGBWFMr9w76ojSeahlTmiQmKvPBhImfZxV8nwHo1+rV3KP8HZw/4f
+	Np03nQg5zv9s7GUgyrqyCzYxLUZQbHsLJH9g5EtFe6ZidHTrFhdMKs7o0p9NtJayV5NzKxnX9HwFK
+	THDWCmbd2vALLEFcyWSIeJ4TN5i0FfXzKa4IABCrn/ZaX55lNjBloWpWsqb2aWrvzy6DMJ2Y4nnO/
+	UQwuil1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1AsI-0000000F00S-1dux;
-	Tue, 23 Sep 2025 21:48:38 +0000
+	id 1v1CEe-0000000F8ol-0US4;
+	Tue, 23 Sep 2025 23:15:48 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1AsG-0000000F007-3wj5;
-	Tue, 23 Sep 2025 21:48:37 +0000
+	id 1v1CEc-0000000F8oQ-1RWs;
+	Tue, 23 Sep 2025 23:15:46 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 3A1006029B;
-	Tue, 23 Sep 2025 21:48:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B63F5C4CEF7;
-	Tue, 23 Sep 2025 21:48:35 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 88251601D4;
+	Tue, 23 Sep 2025 23:15:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 14A9AC4CEF5;
+	Tue, 23 Sep 2025 23:15:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1758664115;
-	bh=ynSU1sjv/APhbJJAUkW92GPfKCAkcMDj27Y78DB5+JA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=gPtHV0imNsUTP1wQzviVh4zQi3BxZ5/9R0MrNEIhtqcEaB/XUpHIKkKeRanyeehY0
-	 ievQlqwU2fZZUxcrIHQrV7w6FvObgnmnDdd72mY1KwpPiDV5r/F0fQ9+ksRhi/Xr8F
-	 uWlhIVqm6YSkGT2vYircLvEly2pCXJIHPJF6FMjpkEzH1H2herK4Njygc3EfE0lrL3
-	 ozpyW40XNqKw7fH7eq/7gsEIlJFf2Vr/ijD2RX5ii7SfLIKdyN2mPOP4BKWK/XqoB6
-	 yAYE6NoqRCOrl51Qu9pWtpQJ6IvHxKM1uhTLUVw8OMgZxIgorvSJ1zgyjRohNZMKx1
-	 8GX+dWpLaH69g==
-Date: Tue, 23 Sep 2025 16:48:34 -0500
-From: Rob Herring <robh@kernel.org>
-To: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-Cc: airlied@gmail.com, amergnat@baylibre.com, andrew+netdev@lunn.ch,
-	andrew-ct.chen@mediatek.com,
-	angelogioacchino.delregno@collabora.com, broonie@kernel.org,
-	chunkuang.hu@kernel.org, conor+dt@kernel.org, davem@davemloft.net,
-	dmitry.torokhov@gmail.com, edumazet@google.com,
-	flora.fu@mediatek.com, heiko@sntech.de, houlong.wei@mediatek.com,
-	jeesw@melfas.com, kernel@collabora.com, krzk+dt@kernel.org,
-	kuba@kernel.org, lgirdwood@gmail.com, linus.walleij@linaro.org,
-	louisalexis.eyraud@collabora.com, luiz.dentz@gmail.com,
-	maarten.lankhorst@linux.intel.com, marcel@holtmann.org,
-	matthias.bgg@gmail.com, mchehab@kernel.org,
-	minghsiu.tsai@mediatek.com, mripard@kernel.org,
-	p.zabel@pengutronix.de, pabeni@redhat.com, sean.wang@kernel.org,
-	simona@ffwll.ch, support.opensource@diasemi.com,
-	tiffany.lin@mediatek.com, tzimmermann@suse.de,
-	yunfei.dong@mediatek.com, devicetree@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-bluetooth@vger.kernel.org, linux-gpio@vger.kernel.org,
-	linux-input@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org,
-	netdev@vger.kernel.org
-Subject: Re: [PATCH v2 00/12] MediaTek dt-bindings sanitization (MT8173)
-Message-ID: <20250923214834.GC91441-robh@kernel.org>
-References: <20250911151001.108744-1-ariel.dalessandro@collabora.com>
+	s=k20201202; t=1758669345;
+	bh=pvYfKhTpW3bGdjpAO4fy40xvT7yPgb7fyXYDyfDid0A=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=cSjI8deF/T3Mix8vrvDs9Z9batQCsKLVzSU5rsijTocNND7sNti50XVFJjAh1zS8H
+	 dtLgwJuwWxDE3dTC8l0dLRYeAqtwzCHe/KB898BmFRWK74hJZITRdYuy5NTo5bL/C7
+	 rV3tRB2OlIjYLo0yY0cnkXFeeHS0FbYbSJY6JewMxjbcvNZNQ2CxzqZoD5W7pvaO6d
+	 q3ktcxqi2f+sl1QnqRf2I3SH/gdlsf0nq3RGg7uDqXvwyYh1ScMm/sli1e2WR4zOk/
+	 RSVg0S/0ySBriMcnbO+Th7axxEWa8PMA231+9bpQgnc+mpwwU13b0WoB+MgYT/ZwBI
+	 q+k+eNHNkzwfw==
+Date: Tue, 23 Sep 2025 18:15:44 -0500
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250911151001.108744-1-ariel.dalessandro@collabora.com>
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, linux-pci@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, 
+ Stephen Boyd <sboyd@kernel.org>, upstream@airoha.com, 
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+ Michael Turquette <mturquette@baylibre.com>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-kernel@vger.kernel.org, 
+ Manivannan Sadhasivam <mani@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Bjorn Helgaas <bhelgaas@google.com>, Conor Dooley <conor+dt@kernel.org>, 
+ Lorenzo Pieralisi <lpieralisi@kernel.org>, devicetree@vger.kernel.org, 
+ Jianjun Wang <jianjun.wang@mediatek.com>, 
+ Ryder Lee <ryder.lee@mediatek.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: Christian Marangi <ansuelsmth@gmail.com>
+In-Reply-To: <20250923201244.952-2-ansuelsmth@gmail.com>
+References: <20250923201244.952-1-ansuelsmth@gmail.com>
+ <20250923201244.952-2-ansuelsmth@gmail.com>
+Message-Id: <175866934419.400019.15611978179247377029.robh@kernel.org>
+Subject: Re: [PATCH v2 1/4] dt-bindings: clock: mediatek: Fix wrong
+ compatible list for hifsys YAML
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,59 +80,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 11, 2025 at 12:09:49PM -0300, Ariel D'Alessandro wrote:
-> This patch series continues the effort to address Device Tree validation
-> warnings for MediaTek platforms, with a focus on MT8173. It follows the
-> initial cleanup series by Angelo [0].
-> 
-> Similarly to the ongoing MT8183 work done by Julien Massot, this patchset
-> eliminates several of the remaining warnings by improving or converting DT
-> bindings to YAML, adding missing properties, and updating device tree files
-> accordingly.
-> 
-> [0] https://www.spinics.net/lists/kernel/msg5780177.html
-> 
-> Changes in v2:
-> * Wrapped commit messages to 75 columns line wrap.
-> * Replaced "YAML" by "DT schema" in patches subject and content.
-> * mt8173-mdp: Fixed properties: compatible, clocks, iommus and
->   mediatek,vpu.
-> * mt8173-vpu: Fixed line wrap. Dropped memory-region property description.
-> * mediatek,mmsys: Dropped patch as it's not a binding issue.
-> * mediatek,od: Rewrote commit log with details on DT schema users missing
->   the related property. Rewrote mediatek,gce-client-reg property.
-> * mediatek,ufoe: Rewrote commit log with details on DT schema users missing
->   the related property. Rewrote mediatek,gce-client-reg property.
-> * marvell,sd8897-bt: Moved to net/bluetooth/. Added missing ref to
->   bluetooth-controller.yaml. Dropped example. Updated reference in another
->   file. Minor fixes in properties.
-> * mediatek,mt8173-rt5650: Dropped unnecessary quotes and unused label.
-> * dlg,da9211: Dropped enable-gpios description. Rewrote generic example
->   node names. Minor fixes in properties.
-> * melfas,mip4_ts: Dropped unnecessary quotes. Added "active high" to
->   ce-gpios property description.
-> * mediatek,jpeg: Dropped patch as it doesn't apply.
-> 
-> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-> 
-> Ariel D'Alessandro (12):
->   dt-bindings: media: Convert MediaTek mt8173-mdp bindings to DT schema
->   dt-bindings: media: Convert MediaTek mt8173-vpu bindings to DT schema
->   dt-bindings: net: Convert Marvell 8897/8997 bindings to DT schema
->   dt-bindings: ASoC: Convert MediaTek RT5650 codecs bindings to DT
->     schema
->   dt-bindings: display: mediatek,od: Add mediatek,gce-client-reg
->     property
->   dt-bindings: display: mediatek,ufoe: Add mediatek,gce-client-reg
->     property
->   arm64: dts: mediatek: mt8173: Fix mt8173-pinctrl node names
->   dt-bindings: pinctrl: mt65xx: Allow gpio-line-names
->   dt-bindings: regulator: Convert Dialog DA9211 Regulators to DT schema
->   arm64: dts: mediatek: mt8173-elm: Drop unused bank supply
->   dt-bindings: soc: mediatek: pwrap: Add power-domains property
->   dt-bindings: input: Convert MELFAS MIP4 Touchscreen to DT schema
 
-As we're close to the merge window, I applied patches 2, 8, and 11.
+On Tue, 23 Sep 2025 22:12:29 +0200, Christian Marangi wrote:
+> While converting the hifsys to YAML schema, the "syscon" compatible was
+> dropped for the mt7623 and the mt2701 compatible.
+> 
+> Add back the compatible to mute DTBs warning on "make dtbs_check" and
+> reflect real state of the .dtsi.
+> 
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> ---
+>  .../devicetree/bindings/clock/mediatek,mt2701-hifsys.yaml | 8 +++++---
+>  1 file changed, 5 insertions(+), 3 deletions(-)
+> 
 
-Rob
+My bot found errors running 'make dt_binding_check' on your patch:
+
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/clock/mediatek,mt2701-hifsys.example.dtb: clock-controller@1a000000 (mediatek,mt2701-hifsys): compatible: 'oneOf' conditional failed, one must be fixed:
+	['mediatek,mt2701-hifsys'] is too short
+	'mediatek,mt7622-hifsys' was expected
+	'mediatek,mt2701-hifsys' is not one of ['mediatek,mt7623-hifsys']
+	from schema $id: http://devicetree.org/schemas/clock/mediatek,mt2701-hifsys.yaml#
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250923201244.952-2-ansuelsmth@gmail.com
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
+
 
