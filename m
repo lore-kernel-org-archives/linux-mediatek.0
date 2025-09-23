@@ -4,79 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2098CAC5A5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Sep 2025 08:22:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C4D7CAC5A7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Sep 2025 08:52:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=HR4kzmV/LEaTa3hngEfRhjuk6ILuJiKVoLiLmmgCLIE=; b=Mwqprn5nOpc5NAWN8pxVnrG/wk
-	t3XwLb3QDWEaWQaROLxUJeUw0xG3wIwPZX4SvUftl9m9Wfn7eNsKMGjvtFq0CuVfxRwbEPHDIEY1g
-	qXUfqnF4L08uqVRnIL3mtskk90jeAIHYmWNRNbjSbnqy7jgWfa+2hQRZc9M3JHxfNpM+0oWtJ+cE2
-	v+63w9u4H0iFw7/py5l5eJ7xeEgCFyL8l8cQyZUfoQKm/Dwz0WalLFOxF81/oWdPa/JI+8OEkApGm
-	eq/HpibxvzTmav51Uh8GZBToqR55vPch2zSL/Ak2AiJYKfFLA3gkcW5vM+eZjlZT4XvtbNbM2vZPo
-	vuT6QLLg==;
+	bh=ebINn/Ex6peTjWVdcmsWh2BtgOfbHEuHXthkszx0uqg=; b=yq4x6LLu7jEjXEkKUo17lTzJWk
+	v7R0VsigB1IHz8cdW651UkK/a+N0naBvaJFf/XpR8OR7vlsRQe3bumF3vwyBplK7UGIzxMqcKZsnJ
+	WG8Sk+GzOucTmmDf25/Vc/yLJ2upUympCGBFqz7YlFjTU5M0QfW7Yoq2bq4Rt38z7Wast/gN1ARSF
+	GTZ4C1o+2tstsmc8SGZNwujkTOOX/g2B+YEmBhXxrlbDL9DhUg54L4dbiITiMbBmFwEPWctQnwIh3
+	0ynPoe4bBfe9v2MlrcyapoH1JeoKbe8wswt3u0b3U+p03vRk+w4m3UEXJXIZYzkfS01WNiVvloFLo
+	PMwn50Gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0yHf-0000000Cnlq-3eEv;
-	Tue, 23 Sep 2025 08:21:59 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1v0ylJ-0000000Cr1R-3dlH;
+	Tue, 23 Sep 2025 08:52:37 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0yHb-0000000Cnja-2eWd
-	for linux-mediatek@lists.infradead.org;
-	Tue, 23 Sep 2025 08:21:57 +0000
-X-UUID: 5b2be1a2985611f0a52f393f94899d25-20250923
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=HR4kzmV/LEaTa3hngEfRhjuk6ILuJiKVoLiLmmgCLIE=;
-	b=FtW8NTLH95iXXpeZkS9tC6XFz9Lr+JnGPK/DiRdhRzDZ14FuqAoglMawJ4i/N02XPAvwbsKEbenOfyPolP9fpe+YcJoOzHYLw54MI/2rR0QzVWwy6uD67aDNpxp60/hk9RmrQUrGZ3Iz8FoG9dUfyWraoFvM18DJU7fMHe6bx2g=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.4,REQID:076bc37b-a612-478b-95a3-f8758c5ff093,IP:0,UR
-	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:-5
-X-CID-META: VersionHash:1ca6b93,CLOUDID:bbc5c121-c299-443d-bb51-d77d2f000e20,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
-	0,EDM:-3,IP:nil,URL:0,File:130,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,
-	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 3,DMD|SSN|SDN
-X-CID-BAS: 3,DMD|SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 5b2be1a2985611f0a52f393f94899d25-20250923
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1577872273; Tue, 23 Sep 2025 01:21:51 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.10; Tue, 23 Sep 2025 16:21:48 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.10 via Frontend Transport; Tue, 23 Sep 2025 16:21:48 +0800
-From: <peter.wang@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
-	<avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
-	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
-	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
-	<yi-fan.peng@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
-	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
-	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>, <bvanassche@acm.org>
-Subject: [PATCH v1] ufs: core: Fix runtime suspend error deadlock
-Date: Tue, 23 Sep 2025 16:20:58 +0800
-Message-ID: <20250923082147.2491450-1-peter.wang@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1v0ylG-0000000Cqzu-0rrM;
+	Tue, 23 Sep 2025 08:52:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1758617550;
+	bh=eQ3bgrFsPixYkoX5WF8vxszDEQywePDRPFRChX8eSyw=;
+	h=From:Date:Subject:To:Cc:From;
+	b=C/OJcW2wr0UlSy5iTPEpZ+d530Z8l5Wsiq0TXn6L8RJwC7pO4y0epp/5S2uleH32b
+	 bTh98ZZqQ/MjqrpDjYrEMMTuyg2a0Pa7cTQLtBeoiUedwGxzshq6Jdn4dUrG7w/w59
+	 7MTyHyHK0u0xvxjYzOoKpaUfKjxfB+XDQzo1aVFIW+T4CRSDqYS00Trb/HTxc8/Qj0
+	 L6ZLyKZDg2h8/l5lrcITOa5cs+GfbWTbI8tp3OUL7eyil/OXsMdT184J4JqwizbiIG
+	 g6fFxWcI74qHIjUMz88+PBU+GOdj7tkT2LbxvByV66mg+Ud8iY2m8u+nVNjUTLs8A4
+	 gy3RQdZ9GqUtw==
+Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: laeyraud)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3CFC617E0299;
+	Tue, 23 Sep 2025 10:52:30 +0200 (CEST)
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Date: Tue, 23 Sep 2025 10:52:12 +0200
+Subject: [PATCH] pmdomain: mediatek: set default off flag for MT8195 AUDIO
+ power domain
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250923-mt8195-pmdomain-audio-fix-v1-1-782190385f46@collabora.com>
+X-B4-Tracking: v=1; b=H4sIALtf0mgC/zWNQQrDIBBFryKz7kAUpEmuUrLQOKazUFM1IRBy9
+ 0pDl+/B/++EQpmpwChOyLRz4RQbyIeA+W3iQsiuMahO6W5QCkPt5aBxDS4FwxHN5jih5wP9k6x
+ XxlupPbT9mqnp3/drujnTZ2uJekuwphDOKQSuo4h0VPxnYLquL3bFntucAAAA
+X-Change-ID: 20250922-mt8195-pmdomain-audio-fix-f7ebf2afb15f
+To: Ulf Hansson <ulf.hansson@linaro.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: kernel@collabora.com, linux-pm@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1758617550; l=1485;
+ i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
+ bh=eQ3bgrFsPixYkoX5WF8vxszDEQywePDRPFRChX8eSyw=;
+ b=lG8MR+Jilqa9YvJI4g5WNbwG6A6UqK+1dxOy1mukQ6zReDxsF9ZSp8MjJSLdz7dYlCjb+gHTw
+ Ei7/kDTc2ZOCZjuWhIC+g/nPNVHDq3IGkwIKz2djC75wH2f9j8PQ85I
+X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
+ pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250923_012155_683729_4264CC76 
-X-CRM114-Status: UNSURE (   9.47  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250923_015234_440002_095E2127 
+X-CRM114-Status: GOOD (  11.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,39 +87,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Wang <peter.wang@mediatek.com>
+In MT8195 power domain data array, set the KEEP_DEFAULT_OFF and
+ACTIVE_WAKEUP flags for the AUDIO power domain entry to avoid
+having this domain being on during boot sequence when unneeded.
 
-Resolve the deadlock issue during runtime suspend when an
-error triggers the error handler. Prevent the deadlock
-by checking pm_op_in_progress and performing a quick recovery.
-This approach ensures that the error handler does not wait
-indefinitely for runtime PM to resume, allowing runtime
-suspend to proceed smoothly.
-
-Signed-off-by: Peter Wang <peter.wang@mediatek.com>
-Suggested-by: Bart Van Assche <bvanassche@acm.org>
-Tested-by: Bart Van Assche <bvanassche@acm.org>
+Fixes: 0e789b491ba0 ("pmdomain: core: Leave powered-on genpds on until sync_state")
+Fixes: 13a4b7fb6260 ("pmdomain: core: Leave powered-on genpds on until late_initcall_sync")
+Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- drivers/ufs/core/ufshcd.c | 5 +++++
- 1 file changed, 5 insertions(+)
+Patch tested on Mediatek Genio 1200-EVK board (based on MT8395 SoC)
+with a kernel based on linux-next (tag: next-20250922).
+---
+ drivers/pmdomain/mediatek/mt8195-pm-domains.h | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index 88a0e9289ca6..0735bd5df1cc 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -6681,6 +6681,11 @@ static void ufshcd_err_handler(struct work_struct *work)
- 	}
- 	spin_unlock_irqrestore(hba->host->host_lock, flags);
- 
-+	if (hba->pm_op_in_progress) {
-+		ufshcd_link_recovery(hba);
-+		return;
-+	}
-+
- 	ufshcd_err_handling_prepare(hba);
- 
- 	spin_lock_irqsave(hba->host->host_lock, flags);
+diff --git a/drivers/pmdomain/mediatek/mt8195-pm-domains.h b/drivers/pmdomain/mediatek/mt8195-pm-domains.h
+index 9405e8f62eaf07112d52a28e6545d26a4342c7c6..1d3ca195ac75806c458db71db4538940f37128a8 100644
+--- a/drivers/pmdomain/mediatek/mt8195-pm-domains.h
++++ b/drivers/pmdomain/mediatek/mt8195-pm-domains.h
+@@ -126,6 +126,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8195[] = {
+ 				    MT8195_TOP_AXI_PROT_EN_2_CLR,
+ 				    MT8195_TOP_AXI_PROT_EN_2_STA1),
+ 		},
++		.caps = MTK_SCPD_KEEP_DEFAULT_OFF | MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT8195_POWER_DOMAIN_MFG0] = {
+ 		.name = "mfg0",
+
+---
+base-commit: fba389ea7aa6401d3539456123cbadfa1a87231e
+change-id: 20250922-mt8195-pmdomain-audio-fix-f7ebf2afb15f
+
+Best regards,
 -- 
-2.45.2
+Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 
 
