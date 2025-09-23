@@ -4,70 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1441BCAC592
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Sep 2025 21:47:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE532CAC5AA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Sep 2025 01:49:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=0xkXv2rAOqeadwBfbHxi6+JkjJBy+wx/AP8Zs/wjb8c=; b=Z/i+vTrJPZ53dXIk0rx0OFGrIF
-	sIs1aZqXTahSmdpFOT3uQdPakaougXXuFnt/NMAD1KLHpD38z1r7h0DGT+s8+7GSneZmS2v7eyANF
-	FnXGxTNfx4aPFk5FNic8jc9YO+yMfZZ8cS0FvHpkARU0tkVnkDBTty1lmnZAlPS9DdeJWba6JtsrZ
-	nfoTDrEo3Qh1xdD8ltjqTlIAO15o3bFJxiWn3t/vbfKYUPHB3LPs7UfO2Q7Norc0x28nEbUFrrxD2
-	gJjxgVN2WsQYQSgs1dHnA+JlSqhoAjFisIdXSY8GLMbkB0DDDGEeJk9PgyYzdGjBBTsF50SWE3IVQ
-	gpI/YO3Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KiWATjJlRyNXagDcw5KRHJfeXKRLsAKy/bPmDguzbG0=; b=T7RyOu9rodhNJKcHACek1IzVrM
+	/2W0kwvowfmC+HUlsG/6AxeFFKPO6Q3Q1rsdVQlnKa+zno0HjhPX3B+COjbvxDNs9VIJF0mIXQ8Gm
+	RfXwwqhGeqsHa9XDEct2KbDim/1oLj5GeDsLpOK20EbS3msCFpbQF8Tw2tEyYjISHpMb/5/GQ5UGv
+	qeG+R1x04NZD+EfN9t1IRXhqNfyhChfYyTEyf6S3ND/YbeP3I1NbyRH9EYDtxO9kYFJtN0CoviULY
+	ivcaJuFYbyja0Mak8q8ty08EUViO7xP6J7cqemlrXsM4DF30wsY+mhnI04c/tE1SVuvXCqYWRNGv3
+	lmDHf/1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0oO4-0000000Bada-2fqa;
-	Mon, 22 Sep 2025 21:47:56 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1v0s9m-0000000C3O8-34GT;
+	Tue, 23 Sep 2025 01:49:26 +0000
+Received: from out-171.mta1.migadu.com ([2001:41d0:203:375::ab])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0oO1-0000000Bad3-3p3F
+	id 1v0s9j-0000000C3NE-1wSt
 	for linux-mediatek@lists.infradead.org;
-	Mon, 22 Sep 2025 21:47:55 +0000
-X-UUID: c639b9e697fd11f0a52f393f94899d25-20250922
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=0xkXv2rAOqeadwBfbHxi6+JkjJBy+wx/AP8Zs/wjb8c=;
-	b=Sxwa2nSaTh5NRT5/0DB4SlY5NgshdSzHVTY09zdnwRD6SDTsRoF3IQ7VUoEpV/KG3IsFyT18WwNAp9cA0SG/RFJ0f3nENS50ixAp+wAog2lSyF5gXPlpnH33C+N+R2HwyTkD70t7CFh49h8Xp5Nvmk3RA1znPq8d3+HQmsqz2Ug=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.4,REQID:e5a08ed5-d00a-43eb-a217-05269a329cde,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:1ca6b93,CLOUDID:38291085-5317-4626-9d82-238d715c253f,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
-	0,EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,
-	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: c639b9e697fd11f0a52f393f94899d25-20250922
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
-	(envelope-from <ryder.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1197833671; Mon, 22 Sep 2025 14:47:45 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Tue, 23 Sep 2025 05:47:41 +0800
-Received: from mussdccf250.eus.mediatek.inc (10.73.250.250) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.10 via Frontend Transport; Tue, 23 Sep 2025 05:47:40 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Ryder Lee <ryder.lee@mediatek.com>
-CC: <linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@medaitek.com>
-Subject: [PATCH] wifi: cfg80211: fix width unit in cfg80211_radio_chandef_valid()
-Date: Mon, 22 Sep 2025 21:47:37 +0000
-Message-ID: <02e27f91195aebcc1d80351fba4a01a719bfeccf.1758577296.git.ryder.lee@medaitek.com>
-X-Mailer: git-send-email 2.17.1
+	Tue, 23 Sep 2025 01:49:25 +0000
+Message-ID: <9471bd83-911f-433d-8ce2-f83f080ed264@linux.dev>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+	t=1758592150;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=KiWATjJlRyNXagDcw5KRHJfeXKRLsAKy/bPmDguzbG0=;
+	b=NsZlq29cN7YJE4XCbL77ung8YpUPS/Ew9mPVomMh00fJjOeP0PekGP1EtxZgGpMCHL7cOg
+	hn8YGsfqo2M5EI3luUBnZUXQOc4F7+KZLHXZfeHrkKaRVyvNSVVMtRyO46aE7/0e6fCf2M
+	ugvJETzfOwEkWEw7g7wKHzc6mVClt/E=
+Date: Tue, 23 Sep 2025 09:48:45 +0800
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Subject: Re: [PATCH 1/1] mm/thp: fix MTE tag mismatch when replacing
+ zero-filled subpages
+Content-Language: en-US
+To: Catalin Marinas <catalin.marinas@arm.com>,
+ David Hildenbrand <david@redhat.com>
+Cc: akpm@linux-foundation.org, lorenzo.stoakes@oracle.com,
+ usamaarif642@gmail.com, yuzhao@google.com, ziy@nvidia.com,
+ baolin.wang@linux.alibaba.com, baohua@kernel.org, voidice@gmail.com,
+ Liam.Howlett@oracle.com, cerasuolodomenico@gmail.com, hannes@cmpxchg.org,
+ kaleshsingh@google.com, npache@redhat.com, riel@surriel.com,
+ roman.gushchin@linux.dev, rppt@kernel.org, ryan.roberts@arm.com,
+ dev.jain@arm.com, ryncsn@gmail.com, shakeel.butt@linux.dev,
+ surenb@google.com, hughd@google.com, willy@infradead.org,
+ matthew.brost@intel.com, joshua.hahnjy@gmail.com, rakie.kim@sk.com,
+ byungchul@sk.com, gourry@gourry.net, ying.huang@linux.alibaba.com,
+ apopple@nvidia.com, qun-wei.lin@mediatek.com, Andrew.Yang@mediatek.com,
+ casper.li@mediatek.com, chinwen.chang@mediatek.com,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-mm@kvack.org, ioworker0@gmail.com,
+ stable@vger.kernel.org
+References: <20250922021458.68123-1-lance.yang@linux.dev>
+ <aNGGUXLCn_bWlne5@arm.com> <a3412715-6d9d-4809-9588-ba08da450d16@redhat.com>
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Lance Yang <lance.yang@linux.dev>
+In-Reply-To: <a3412715-6d9d-4809-9588-ba08da450d16@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250922_144753_960263_312B388A 
-X-CRM114-Status: GOOD (  11.14  )
+X-CRM114-CacheID: sfid-20250922_184923_787601_F3161C3C 
+X-CRM114-Status: GOOD (  22.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,31 +85,108 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ryder Lee <ryder.lee@medaitek.com>
 
-The original code used nl80211_chan_width_to_mhz(), which returns the width in MHz.
-However, the expected unit is KHz.
 
-Fixes: 510dba80ed66 ("wifi: cfg80211: add helper for checking if a chandef is valid on a radio")
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- net/wireless/util.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On 2025/9/23 01:59, David Hildenbrand wrote:
+> On 22.09.25 19:24, Catalin Marinas wrote:
+>> On Mon, Sep 22, 2025 at 10:14:58AM +0800, Lance Yang wrote:
+>>> From: Lance Yang <lance.yang@linux.dev>
+>>>
+>>> When both THP and MTE are enabled, splitting a THP and replacing its
+>>> zero-filled subpages with the shared zeropage can cause MTE tag mismatch
+>>> faults in userspace.
+>>>
+>>> Remapping zero-filled subpages to the shared zeropage is unsafe, as the
+>>> zeropage has a fixed tag of zero, which may not match the tag 
+>>> expected by
+>>> the userspace pointer.
+>>>
+>>> KSM already avoids this problem by using memcmp_pages(), which on arm64
+>>> intentionally reports MTE-tagged pages as non-identical to prevent 
+>>> unsafe
+>>> merging.
+>>>
+>>> As suggested by David[1], this patch adopts the same pattern, 
+>>> replacing the
+>>> memchr_inv() byte-level check with a call to pages_identical(). This
+>>> leverages existing architecture-specific logic to determine if a page is
+>>> truly identical to the shared zeropage.
+>>>
+>>> Having both the THP shrinker and KSM rely on pages_identical() makes the
+>>> design more future-proof, IMO. Instead of handling quirks in generic 
+>>> code,
+>>> we just let the architecture decide what makes two pages identical.
+>>>
+>>> [1] https://lore.kernel.org/all/ 
+>>> ca2106a3-4bb2-4457-81af-301fd99fbef4@redhat.com
+>>>
+>>> Cc: <stable@vger.kernel.org>
+>>> Reported-by: Qun-wei Lin <Qun-wei.Lin@mediatek.com>
+>>> Closes: https://lore.kernel.org/all/ 
+>>> a7944523fcc3634607691c35311a5d59d1a3f8d4.camel@mediatek.com
+>>> Fixes: b1f202060afe ("mm: remap unused subpages to shared zeropage 
+>>> when splitting isolated thp")
+>>> Suggested-by: David Hildenbrand <david@redhat.com>
+>>> Signed-off-by: Lance Yang <lance.yang@linux.dev>
+>>
+>> Functionally, the patch looks fine, both with and without MTE.
+>>
+>> Reviewed-by: Catalin Marinas <catalin.marinas@arm.com>
 
-diff --git a/net/wireless/util.c b/net/wireless/util.c
-index d12d49134c88..55925d6f800f 100644
---- a/net/wireless/util.c
-+++ b/net/wireless/util.c
-@@ -2992,7 +2992,7 @@ bool cfg80211_radio_chandef_valid(const struct wiphy_radio *radio,
- 	u32 freq, width;
- 
- 	freq = ieee80211_chandef_to_khz(chandef);
--	width = cfg80211_chandef_get_width(chandef);
-+	width = MHZ_TO_KHZ(cfg80211_chandef_get_width(chandef));
- 	if (!ieee80211_radio_freq_range_valid(radio, freq, width))
- 		return false;
- 
--- 
-2.45.2
+Thanks for taking time to review!
 
+>>
+>>> diff --git a/mm/huge_memory.c b/mm/huge_memory.c
+>>> index 32e0ec2dde36..28d4b02a1aa5 100644
+>>> --- a/mm/huge_memory.c
+>>> +++ b/mm/huge_memory.c
+>>> @@ -4104,29 +4104,20 @@ static unsigned long 
+>>> deferred_split_count(struct shrinker *shrink,
+>>>   static bool thp_underused(struct folio *folio)
+>>>   {
+>>>       int num_zero_pages = 0, num_filled_pages = 0;
+>>> -    void *kaddr;
+>>>       int i;
+>>>       for (i = 0; i < folio_nr_pages(folio); i++) {
+>>> -        kaddr = kmap_local_folio(folio, i * PAGE_SIZE);
+>>> -        if (!memchr_inv(kaddr, 0, PAGE_SIZE)) {
+>>> -            num_zero_pages++;
+>>> -            if (num_zero_pages > khugepaged_max_ptes_none) {
+>>> -                kunmap_local(kaddr);
+>>> +        if (pages_identical(folio_page(folio, i), ZERO_PAGE(0))) {
+>>> +            if (++num_zero_pages > khugepaged_max_ptes_none)
+>>>                   return true;
+>>
+>> I wonder what the overhead of doing a memcmp() vs memchr_inv() is. The
+>> former will need to read from two places. If it's noticeable, it would
+>> affect architectures that don't have an MTE equivalent.
+>>
+>> Alternatively we could introduce something like folio_has_metadata()
+>> which on arm64 simply checks PG_mte_tagged.
+> 
+> We discussed something similar in the other thread (I suggested 
+> page_is_mergable()). I'd prefer to use pages_identical() for now, so we 
+> have the same logic here and in ksm code.
+> 
+> (this patch here almost looks like a cleanup :) )
+
+Yeah, let's keep it as-is for now.
+
+Using the same pages_identical() pattern as KSM makes the logic
+consistent.
+
+And it's simple enough to be easily backported to stable trees ;)
+
+> 
+> If this becomes a problem, what we could do is in pages_identical() 
+> would be simply doing the memchr_inv() in case is_zero_pfn(). KSM might 
+> benefit from that as well when merging with the shared zeropage through 
+> try_to_merge_with_zero_page().
+
+Right, there is room for that optimization. I will look into it as a
+follow-up patch after this one is settled and backported, especially if
+the performance overhead turns out to be a real concern :)
+
+Cheers,
+Lance
 
