@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AE43CAC5AE
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C783CAC5A7
 	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Sep 2025 15:26:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2TT4i9o6vmlNV258gIEwTF7UW+DJTKjRnCXVpBmKafU=; b=RTYGwuF2dyvrUHa+DjpYKAgxTw
-	tFGnqR6waXRtgGUySVb5G1mWH/xAnmE+bzzV4e9OLetMgAAZoEjAQfHhWzHIVX1mlPoZcOWPzUzBi
-	yV4Ncb5QynZhgfGRrNyLKNb4TX3aHD1KPBWhQT+PrBRpzeWuBZW90VJHLy2mr12N9F3JbWIEUfv9E
-	GJnZKGXO/S1pH65BJvivBpmG4SqV8OKkXItc4TwHInhTHq4EL9VCNKlRRYRgeAkIS7rw+NQHZ70Ja
-	LXloOV/8iq5gRuifauoQEnd125dWexBMfP1OCRzcG+kSonv0JQmpXgmtgTY7dHQEqcM4QP95IkqEy
-	Iu3YmEjA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=VMYVlC5cVd9hEBHrdCgxKFGg+HIzb/TsuUzaSl4+W+4=; b=NM3gOYVS9HHJK0hjpv8VBKgH33
+	PBah/k/8YLPw8Eb8tcv2RlDRLB11MhLqYIM1CBnBKLkiwdzrj7ybUzT5cj40LaZZKNphu8V0uqlXK
+	pyKxFz8CYV/xzeRxNwLxGHa5RwkmlIdJm6D5BNdhnA37q3F6A8u8DXOML2CNM2+FDWx07k0GK9dV+
+	U3HALDn+MLfJaQJXfIn4M3SHjBnsqqoGdiFq+aEZWa13+nfwXrZx7HHjhyCoReDfHRD19kTbj1kVy
+	zUwi6Nzsd+naWPO1YmkyBqebaIAC95SZfF57wAbD5F5IhlJGrER59VbExLZ9BBoF4oQU77LoSp2nG
+	/T7HJPEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v14uF-0000000E2OM-2CWU;
+	id 1v14uF-0000000E2OC-17wE;
 	Tue, 23 Sep 2025 15:26:15 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v14uD-0000000E2LM-0FrQ
+	id 1v14uC-0000000E2LL-3xZz
 	for linux-mediatek@lists.infradead.org;
 	Tue, 23 Sep 2025 15:26:14 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id AF2DA44521;
+	by sea.source.kernel.org (Postfix) with ESMTP id 9CB70440F9;
 	Tue, 23 Sep 2025 15:26:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8CDD6C113CF;
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 79FE3C4CEF5;
 	Tue, 23 Sep 2025 15:26:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1758641172;
-	bh=PsJAbGUFgpe5g/scTy+yXdnPAge1y+ZrMfeoR4lXF1w=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Ma1flkly2f1uNKpKvOHlthl8/236GxH1+vA8DkFIHwHZLexNBGq/13eI7BbrDbRdI
-	 zqBh+mSWGWvPQGcpLc2IfjKRzI0MT/C4b6RvTyIxYh6X5ZL4dPb66bhz1wNSKrkKzf
-	 2+zhu1vcxxincXvOtKJImCbVAXGB8Rg6vYl36l7L0JluiBbx8pBPJWi09fsRO4l1h2
-	 XZaU5mGu9+SpQ3OM1hIshkwBJcTuAX/MDnVwmZTeU965zJptw8QSoopk1Rw+2swTcz
-	 f2p+NdEmTzxmMpGmmEi5NusSgPtXqRWZNlsEHhjNMAtfrPIkM71N5ySZiHW54Js25y
-	 A91X7vxSnxdrA==
+	bh=A7kQ6dm5aKh3HyJvuod+6ppwPxKHu8JboA2fiUwRno4=;
+	h=From:To:Cc:Subject:Date:From;
+	b=B57zID4v4TFh+gpUwpajXLQgpBXB1iu/d8v3NJAqo/1QvtRn3neNTJjSQmLiQvkso
+	 7ySS6DQuUaUPfCvrlx0GubJmS65Xe+tAFXDMRbgwjGSZZAiEsrV3KaBu6L/euIm5GS
+	 tZ+HxaIV0VHYO1T3CwYt74J9uTQifWoraZezeBV+OwlUYvOsTni3/BxbrSxOl6mg9C
+	 89XNBtbyr4pBeS9Gtgdk/Uv2RyfT4PgSj4xtSpgH+Pk2LL0nMWKV+TszlJokEGtEtG
+	 a2Y0OW8rgSD/2AZayiNDt1Zm+PGoODK95ceHq8VL/c3GP4Ku+qCWAwpkZiOVCOPvGT
+	 6RXPpvh6nvK6A==
 Received: from johan by xi.lan with local (Exim 4.98.2)
 	(envelope-from <johan@kernel.org>)
-	id 1v14u6-000000004mo-3m3w;
+	id 1v14u6-000000004mm-0MeD;
 	Tue, 23 Sep 2025 17:26:06 +0200
 From: Johan Hovold <johan@kernel.org>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
@@ -56,20 +56,17 @@ Cc: David Airlie <airlied@gmail.com>,
 	dri-devel@lists.freedesktop.org,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Johan Hovold <johan@kernel.org>,
-	stable@vger.kernel.org,
-	CK Hu <ck.hu@mediatek.com>
-Subject: [PATCH 1/5] drm/mediatek: fix probe resource leaks
-Date: Tue, 23 Sep 2025 17:23:36 +0200
-Message-ID: <20250923152340.18234-2-johan@kernel.org>
+	Johan Hovold <johan@kernel.org>
+Subject: [PATCH 0/5] drm/mediatek: fix probe resource leaks
+Date: Tue, 23 Sep 2025 17:23:35 +0200
+Message-ID: <20250923152340.18234-1-johan@kernel.org>
 X-Mailer: git-send-email 2.49.1
-In-Reply-To: <20250923152340.18234-1-johan@kernel.org>
-References: <20250923152340.18234-1-johan@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250923_082613_138635_F898A702 
-X-CRM114-Status: GOOD (  13.08  )
+X-CRM114-CacheID: sfid-20250923_082613_002401_A05D9C70 
+X-CRM114-Status: UNSURE (   7.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,105 +81,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Make sure to unmap and release the component iomap and clock on probe
-failure (e.g. probe deferral) and on driver unbind.
+This series fixes various probe resource leaks in the mediatek drm
+drivers that were found through inspection.
 
-Note that unlike of_iomap(), devm_of_iomap() also checks whether the
-region is already mapped.
+Johan
 
-Fixes: 119f5173628a ("drm/mediatek: Add DRM Driver for Mediatek SoC MT8173.")
-Cc: stable@vger.kernel.org	# 4.7
-Cc: CK Hu <ck.hu@mediatek.com>
-Signed-off-by: Johan Hovold <johan@kernel.org>
----
- drivers/gpu/drm/mediatek/mtk_ddp_comp.c | 20 ++++++++++++++++----
- drivers/gpu/drm/mediatek/mtk_ddp_comp.h |  2 +-
- drivers/gpu/drm/mediatek/mtk_drm_drv.c  |  4 ++--
- 3 files changed, 19 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-index ac6620e10262..0264017806ad 100644
---- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-@@ -621,15 +621,20 @@ int mtk_find_possible_crtcs(struct drm_device *drm, struct device *dev)
- 	return ret;
- }
- 
--int mtk_ddp_comp_init(struct device_node *node, struct mtk_ddp_comp *comp,
-+static void mtk_ddp_comp_clk_put(void *_clk)
-+{
-+	struct clk *clk = _clk;
-+
-+	clk_put(clk);
-+}
-+
-+int mtk_ddp_comp_init(struct device *dev, struct device_node *node, struct mtk_ddp_comp *comp,
- 		      unsigned int comp_id)
- {
- 	struct platform_device *comp_pdev;
- 	enum mtk_ddp_comp_type type;
- 	struct mtk_ddp_comp_dev *priv;
--#if IS_REACHABLE(CONFIG_MTK_CMDQ)
- 	int ret;
--#endif
- 
- 	if (comp_id >= DDP_COMPONENT_DRM_ID_MAX)
- 		return -EINVAL;
-@@ -670,11 +675,18 @@ int mtk_ddp_comp_init(struct device_node *node, struct mtk_ddp_comp *comp,
- 	if (!priv)
- 		return -ENOMEM;
- 
--	priv->regs = of_iomap(node, 0);
-+	priv->regs = devm_of_iomap(dev, node, 0, NULL);
-+	if (IS_ERR(priv->regs))
-+		return PTR_ERR(priv->regs);
-+
- 	priv->clk = of_clk_get(node, 0);
- 	if (IS_ERR(priv->clk))
- 		return PTR_ERR(priv->clk);
- 
-+	ret = devm_add_action_or_reset(dev, mtk_ddp_comp_clk_put, priv->clk);
-+	if (ret)
-+		return ret;
-+
- #if IS_REACHABLE(CONFIG_MTK_CMDQ)
- 	ret = cmdq_dev_get_client_reg(comp->dev, &priv->cmdq_reg, 0);
- 	if (ret)
-diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
-index 7289b3dcf22f..3f3d43f4330d 100644
---- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
-+++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
-@@ -350,7 +350,7 @@ static inline void mtk_ddp_comp_encoder_index_set(struct mtk_ddp_comp *comp)
- int mtk_ddp_comp_get_id(struct device_node *node,
- 			enum mtk_ddp_comp_type comp_type);
- int mtk_find_possible_crtcs(struct drm_device *drm, struct device *dev);
--int mtk_ddp_comp_init(struct device_node *comp_node, struct mtk_ddp_comp *comp,
-+int mtk_ddp_comp_init(struct device *dev, struct device_node *comp_node, struct mtk_ddp_comp *comp,
- 		      unsigned int comp_id);
- enum mtk_ddp_comp_type mtk_ddp_comp_get_type(unsigned int comp_id);
- void mtk_ddp_write(struct cmdq_pkt *cmdq_pkt, unsigned int value,
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index eb5537f0ac90..384b0510272c 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -1133,7 +1133,7 @@ static int mtk_drm_probe(struct platform_device *pdev)
- 							    (void *)private->mmsys_dev,
- 							    sizeof(*private->mmsys_dev));
- 		private->ddp_comp[DDP_COMPONENT_DRM_OVL_ADAPTOR].dev = &ovl_adaptor->dev;
--		mtk_ddp_comp_init(NULL, &private->ddp_comp[DDP_COMPONENT_DRM_OVL_ADAPTOR],
-+		mtk_ddp_comp_init(dev, NULL, &private->ddp_comp[DDP_COMPONENT_DRM_OVL_ADAPTOR],
- 				  DDP_COMPONENT_DRM_OVL_ADAPTOR);
- 		component_match_add(dev, &match, compare_dev, &ovl_adaptor->dev);
- 	}
-@@ -1199,7 +1199,7 @@ static int mtk_drm_probe(struct platform_device *pdev)
- 						   node);
- 		}
- 
--		ret = mtk_ddp_comp_init(node, &private->ddp_comp[comp_id], comp_id);
-+		ret = mtk_ddp_comp_init(dev, node, &private->ddp_comp[comp_id], comp_id);
- 		if (ret) {
- 			of_node_put(node);
- 			goto err_node;
+Johan Hovold (5):
+  drm/mediatek: fix probe resource leaks
+  drm/mediatek: fix probe memory leak
+  drm/mediatek: fix probe device leaks
+  drm/mediatek: mtk_hdmi: fix probe device leaks
+  drm/mediatek: ovl_adaptor: fix probe device leaks
+
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.c       | 33 ++++++++++++++++---
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.h       |  2 +-
+ .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   | 12 +++++++
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c        |  4 +--
+ drivers/gpu/drm/mediatek/mtk_hdmi.c           | 15 +++++++++
+ 5 files changed, 58 insertions(+), 8 deletions(-)
+
 -- 
 2.49.1
 
