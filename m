@@ -4,71 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 611EDCAC5B3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 10:15:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A03ACCAC5A5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 10:20:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wSrLsyBqPp2VkZRrMVRRxN6FIFV101kCxP7Vh9vckU0=; b=DDbK0mAO50Mabm0GcES2o3d+Qn
-	40VJwRGZjVSOXvmyEvJPN5wgxRnoJMASPx9yf4UQeeF3foxp8zFbOLz6uePeVBifA9BfaTkamVsAM
-	syg+iK431Yb+77giUrfPaal5fSAgZFnpwUlWaQLlMGrAec5EsbCliTtUVLZUdKgZaAhgwsn3EOVYP
-	PGduzf8ACMlQDuLj8taBgz8gXRL/zD8N+HC4fYKvjsxqMR29cxq902nNgjBknNX6PiYwakjnGo5tp
-	6c/6CtxoynmOwDEUxl0evqMCiCTRVQFZ9OW44I2CCwcJo6Rg7epTw1gsrmUXTxs23Gi8c9tATae7R
-	0LvREEWA==;
+	bh=YFGMgFsmPPXzgkT16Kyz+tCCDuJTPtKgEXIM4AzH6wc=; b=rokip7FHyFr36KsjzxmW4qDBHa
+	RVIx85p0cRdls2KwaFzWLvpzcrLdHEcxifF87uL8dZqrkwEChKuhLyq73tfd8ajKfIyP49vFyAGUg
+	v0jQw4Ozc3to0fM4aVTi2OAMYjZMJuVIS/4VjTqqL1QED2RdXYSHBGJ90KvsDZdPv8h5TdM7KIEZF
+	9dOqyhPWW50OYVR0lKVyrxAsPvecuv/1dwKAYQKNM4OjO/19NyZ9wNfYCvCK3BKFA+iVqt/IZv9g6
+	MYnZrSZV3JnbnXkd2wVceykzd7e+OzO6bLsRv4LHhOC+vC2kMyKQd2l7XGiLfrfvo6ty9QKs3qvxi
+	Fb55jl7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1MX6-0000000GPDM-1p7o;
-	Wed, 24 Sep 2025 10:15:32 +0000
+	id 1v1McK-0000000GRlE-3QUr;
+	Wed, 24 Sep 2025 10:20:56 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1MX3-0000000GPBs-2Qoh;
-	Wed, 24 Sep 2025 10:15:30 +0000
+	id 1v1McI-0000000GRjM-1D2g;
+	Wed, 24 Sep 2025 10:20:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1758708927;
-	bh=1uyEu6yafkIx0SXozzaxMJRC9ltSjEJEMuHsl0MpVlU=;
+	s=mail; t=1758709252;
+	bh=Gb7PLFsKmlEYtoQ+aSKKrwMrUf84Ic9+Nei/2tc1Lxk=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=S93HjY1cAJMNbDfCnyhBybY0llsQplGyrGqfWhpQQRCAFvk9J5NX/iMbG2zVt2mqL
-	 s7K6LahFrz2/SowOlGk+h05i3VtpzPIcGdypz9y/6uiDaE7b+W7r/CNZuG++4m2xjR
-	 Lnzvm6aUPI539UHXr8WTczL1o5EwFB8BflEdau/FajawvUsUNLV+UhsrW0FPeYJnwv
-	 sGqZq66K+GRCImEiLFECqD7x7Ng/PsO3vLiZeR7JA5LoAxMsvHnT8IS7wcMLCyMokl
-	 ZNLWzoHsTugp96TAt6fesMYXhvFVKFcYszrWjbaY9r48dsDeTV79SdE09KF8uA0v/c
-	 tJqHUnTPwWlfg==
+	b=PF3IuZuW5KjDpZZnwN7rak4k2wlBmhb3VPhdsEay7moWOSeooNtZ4NPu3lTZctsiV
+	 bdf+jiRSVT+9ESuC4nzb36pg6sNIH4aSajXTTDWvKfv72/uzA91rqXtWIPSK8tM/n3
+	 IE0dnzApRzsUQznDaludnVVfwARWDTpPAcJZSwduUwobSYljpkX0O5rVWsvBqpldGi
+	 HYYVpko0B/4hBiCsoLkji/aT+MWkS6XsAITgkYSgJuUPQb8j19DPd/6/w8iYBv9Z9M
+	 Ym0a0OxraPSziLhT2wXQNk4u58EKDse5j+HiC83paBNuRfGbY0bclNi38EOZGqbBkQ
+	 lFbDUlAnuMD6w==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9AFDC17E12A7;
-	Wed, 24 Sep 2025 12:15:26 +0200 (CEST)
-Message-ID: <6af21910-5e45-4eef-90d2-690766913bed@collabora.com>
-Date: Wed, 24 Sep 2025 12:15:26 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9B34717E124A;
+	Wed, 24 Sep 2025 12:20:51 +0200 (CEST)
+Message-ID: <76a5e9ee-b8b3-4f7f-9410-9133263358bf@collabora.com>
+Date: Wed, 24 Sep 2025 12:20:51 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/2] dt-bindings: remoteproc: mediatek: Add binding for
- mt8189 scp
-To: Huayu Zong <huayu.zong@mediatek.com>,
- Bjorn Andersson <andersson@kernel.org>,
- Mathieu Poirier <mathieu.poirier@linaro.org>, Rob Herring <robh@kernel.org>,
+Subject: Re: [PATCH v2 2/3] clk: en7523: Add reset-controller support for
+ EN7523 SoC
+To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tinghan Shen <tinghan.shen@mediatek.com>
-Cc: linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
+ Philipp Zabel <p.zabel@pengutronix.de>, Felix Fietkau <nbd@nbd.name>,
+ linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20250924084422.4604-1-huayu.zong@mediatek.com>
- <20250924084422.4604-2-huayu.zong@mediatek.com>
+ linux-mediatek@lists.infradead.org
+Cc: Andreas Gnau <andreas.gnau@iopsys.eu>
+References: <20250924060509.1889131-1-mikhail.kshevetskiy@iopsys.eu>
+ <20250924094112.1918444-1-mikhail.kshevetskiy@iopsys.eu>
+ <20250924094112.1918444-3-mikhail.kshevetskiy@iopsys.eu>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250924084422.4604-2-huayu.zong@mediatek.com>
+In-Reply-To: <20250924094112.1918444-3-mikhail.kshevetskiy@iopsys.eu>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250924_031529_795774_3C4E8DA0 
-X-CRM114-Status: GOOD (  13.42  )
+X-CRM114-CacheID: sfid-20250924_032054_487157_068249BE 
+X-CRM114-Status: UNSURE (   8.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,47 +85,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 24/09/25 10:44, Huayu Zong ha scritto:
-> Add the compatible for mt8189 SCP to the binding.
+Il 24/09/25 11:41, Mikhail Kshevetskiy ha scritto:
+> Introduce reset API support to EN7523 clock driver. EN7523 uses the
+> same reset logic as EN7581, so just reuse existing code. The patch
+> renames:
+>   * en7581_rst_ofs to en75xx_rst_ofs,
+>   * en7581_reset_register() to en75xx_reset_register()
+> because they are not en7581 specific.
+
+You ignored all of my comments (sent at v1) on this patch.
+
+Regards,
+Angelo
+
 > 
-> Signed-off-by: Huayu Zong <huayu.zong@mediatek.com>
-
-Please fix the commit description.
-
-Example:
-
-Add a new compatible for MT8189's SCP: even though this is partially
-compatible with the SCP found in MT8192, the register layout has some
-slight differences.
-
-...after which:
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogiaocchino.delregno@collabora.com>
-
+> Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
 > ---
->   Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml | 2 ++
->   1 file changed, 2 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> index 179c98b33b4d..407be544b404 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> @@ -20,6 +20,7 @@ properties:
->         - mediatek,mt8186-scp
->         - mediatek,mt8188-scp
->         - mediatek,mt8188-scp-dual
-> +      - mediatek,mt8189-scp
->         - mediatek,mt8192-scp
->         - mediatek,mt8195-scp
->         - mediatek,mt8195-scp-dual
-> @@ -168,6 +169,7 @@ allOf:
->               - mediatek,mt8183-scp
->               - mediatek,mt8186-scp
->               - mediatek,mt8188-scp
-> +            - mediatek,mt8189-scp
->       then:
->         properties:
->           reg:
-
-
 
