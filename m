@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C90C2CAC5B3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 10:37:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F4E4CAC5B7
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 10:37:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=cAHGF8NPACDOV/8Ynuw7kqNcAMPlFhs2QNdw+CC9zx4=; b=pweHr+yFC6E3Hz+cGbkBxAK9VM
-	dXs3qaJqvlTTZGPRFyKh0c++gyXDbp1MhH02YTOxyJQVSsCWef9WFlIEhWdjTrYZzpsI6qduMnYnW
-	ZjKiuk6RspipnZBAP1eS1VUIu0be6MkTcT/4htdgyrhuGcAYs8ukNN8g2gkMk+LK2L7ai4d/y92Nq
-	UkU24Rd+0qJyWOy4EOvxojm1kYHmFLlRQBIQL04qaszTTtwq1lX8cl6aMkQf1QM/+BNrJTMTlaqh8
-	0bu+Jjbg+2C/Q7WWweNzm9oLjbL45In9Wramlm3kLH+dA7ytATvS7d9QoASYnuWgMZU8Gqo0oNALc
-	VmdcO21w==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=db/8h4eUh2GZZfqVhdaScEYOT88NqYpu+PG29GTH6Yk=; b=VJXewSDPcHONvxFtJ3aPMjlSpV
+	JS9Ycs1kV5fuq8IUbr6clxeJ64tVilMlHWM6v8e5cIAF2pHwa6ebYtMh8MWZzLyLXZam0A0MHtB0M
+	PC69uFfjADkhJS2otgpIhgFNMGsP7vE/8YZ1jsHy6M8C7iGLki8y9Z3Rc7RLvSIpNDEH+xbG0SbgI
+	5M6Bguv25Bb/94JIMFLUwpU+7EuI6eozwzehr6OpVwtQIYljGu0Kxs7lDvYqY1K6xeUsIQnhCw8hP
+	/9/larbjh3ZHze1Vw2x9IXjtVkmd7YB++rgtNMqVr14/yX9u6+EY0TJ3nBvN5Bds4ZhqTSC6ko3I6
+	9rj0ZK0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1MsF-0000000GYbs-0jPV;
-	Wed, 24 Sep 2025 10:37:23 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1v1MsL-0000000GYhl-14eP;
+	Wed, 24 Sep 2025 10:37:29 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1MsB-0000000GYXU-2yGB;
-	Wed, 24 Sep 2025 10:37:21 +0000
+	id 1v1MsD-0000000GYYE-0exc;
+	Wed, 24 Sep 2025 10:37:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1758710237;
-	bh=VRbbyb2TqGZ2vmUel9UTJU8dUoPtOcrO+Q97F0QNAUo=;
-	h=From:To:Cc:Subject:Date:From;
-	b=AFSWeblmyZTvXqZuH6q9hrkH5s0gfXBar4a01bue57y1fGC/DaGtkp/t/DXQ9oinq
-	 unWnG4od1U54jaWI3EeirUBKNi+I4dUDE7u0niGG/l8I6CRA4A6mWKwSj3L9R5qap0
-	 sD6RjFW+xn0yj0IiVFV4IcRpro3VIqSa2XHkXviZcQ66byosgCmREcICEqwSwoV2DB
-	 EzaTUPnyY9yFhiZpLsq2FpKkU+kIXqwjrDpyVMAPZjQx0kMV5Yy4AiHYUu4DopJAEo
-	 9b37lkEqfLiYRvF6AEcOicEISkQcZmgLpYSkTTHqvsxa8Rymty8bR0XVP+yEGD7naX
-	 H4s655fSBrd8A==
+	s=mail; t=1758710238;
+	bh=+J77+l7Lax/S/gMWseCwZwXAhPq50CEolzz2N70e80I=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=KkW8jzA0iWKXbsQJ8Ha4JsBLSVqztaLIMJZEiGGEJrBZmcrvem0mQSqvMpvJS5lYU
+	 8Qq4eMK06HQuKWy/MtfE6+HFB3QONf58p4MG5fr2ur3BxLFvEEgj7RM3w04Kn3nOzT
+	 VIfjflLhf1kM05TtORCZqVdVPH1BwKvIMLlBuwTLaq7O+LhIBYSvLIIgnxbwo0z4VV
+	 axvVN3xCGMy8d5eSDUY9iu57iv+ncEk2106dOnJWno+hvi3/QirtMDf5bAC/6kPPIh
+	 l3HM48U27K4KxV6ITBreCSlXOZ+Thggi49rECVNwwnkL5MEEIRB4z/L+RRkULyI2Hg
+	 Jr3Cu+Ur8UL+g==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3F0EA17E068C;
-	Wed, 24 Sep 2025 12:37:16 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 06AAF17E12E4;
+	Wed, 24 Sep 2025 12:37:17 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -63,16 +63,17 @@ Cc: p.zabel@pengutronix.de,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH 0/3] drm/mediatek: Fixes: Stale pointer usage and device leak
-Date: Wed, 24 Sep 2025 12:37:05 +0200
-Message-ID: <20250924103708.19071-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 2/3] drm/mediatek: mtk_disp_ovl: Enable/disable interrupt on bind/unbind
+Date: Wed, 24 Sep 2025 12:37:07 +0200
+Message-ID: <20250924103708.19071-3-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.51.0
+In-Reply-To: <20250924103708.19071-1-angelogioacchino.delregno@collabora.com>
+References: <20250924103708.19071-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250924_033720_060611_6210A510 
-X-CRM114-Status: UNSURE (   8.63  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250924_033721_371144_147C909D 
+X-CRM114-Status: GOOD (  17.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,29 +88,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-A while ago I've found some issues in drm/mediatek and fixed those
-but then forgot to send all of the fixes as I was progressing on more.
+The OVL driver is installing an ISR in the probe function but, if
+the component is not bound yet, the interrupt handler may call the
+vblank_cb ahead of time (while probing other drivers) or too late
+(while removing other drivers), possibly accessing memory that it
+should not try to access by reusing stale pointers.
 
-For whatever reason, I couldn't continue with more fixes and eventually
-forgot to send what I had.
-Recent series reminded me about those, which we're carrying in the
-Collabora MediaTek integration kernel since .. forever, and are tested
-on all of the MTK boards that we have in the lab, including MT8173,
-MT8183, MT8192, MT8195, MT8188, MT8186 Chromebooks and Genio boards.
+In order to fix this, add a new `irq` member to struct mtk_disp_ovl
+and then set the NOAUTOEN flag to the irq before installing the ISR
+to manually call enable_irq() and disable_irq() in the bind and
+unbind callbacks respectively.
 
-The mtk_dp fix was sent months ago, but got ignored - it's included
-in this series again anyway.
+Fixes: 119f5173628a ("drm/mediatek: Add DRM Driver for Mediatek SoC MT8173.")
+Link: https://lore.kernel.org/r/20250402083628.20111-5-angelogioacchino.delregno@collabora.com
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 20 +++++++++++++-------
+ 1 file changed, 13 insertions(+), 7 deletions(-)
 
-AngeloGioacchino Del Regno (3):
-  drm/mediatek: mtk_dp: Fix hdmi codec and phy driver unregistration
-  drm/mediatek: mtk_disp_ovl: Enable/disable interrupt on bind/unbind
-  drm/mediatek: mtk_disp_rdma: Enable/disable interrupt on bind/unbind
-
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c  | 20 +++++++++-----
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c | 34 ++++++++++++++----------
- drivers/gpu/drm/mediatek/mtk_dp.c        | 30 ++++++++++++++++++---
- 3 files changed, 59 insertions(+), 25 deletions(-)
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+index e0236353d499..8e20b45411fc 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+@@ -161,6 +161,7 @@ struct mtk_disp_ovl {
+ 	struct drm_crtc			*crtc;
+ 	struct clk			*clk;
+ 	void __iomem			*regs;
++	int				irq;
+ 	struct cmdq_client_reg		cmdq_reg;
+ 	const struct mtk_disp_ovl_data	*data;
+ 	void				(*vblank_cb)(void *data);
+@@ -594,12 +595,18 @@ void mtk_ovl_bgclr_in_off(struct device *dev)
+ static int mtk_disp_ovl_bind(struct device *dev, struct device *master,
+ 			     void *data)
+ {
++	struct mtk_disp_ovl *priv = dev_get_drvdata(dev);
++
++	enable_irq(priv->irq);
+ 	return 0;
+ }
+ 
+ static void mtk_disp_ovl_unbind(struct device *dev, struct device *master,
+ 				void *data)
+ {
++	struct mtk_disp_ovl *priv = dev_get_drvdata(dev);
++
++	disable_irq(priv->irq);
+ }
+ 
+ static const struct component_ops mtk_disp_ovl_component_ops = {
+@@ -611,16 +618,15 @@ static int mtk_disp_ovl_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+ 	struct mtk_disp_ovl *priv;
+-	int irq;
+ 	int ret;
+ 
+ 	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
+ 	if (!priv)
+ 		return -ENOMEM;
+ 
+-	irq = platform_get_irq(pdev, 0);
+-	if (irq < 0)
+-		return irq;
++	priv->irq = platform_get_irq(pdev, 0);
++	if (priv->irq < 0)
++		return priv->irq;
+ 
+ 	priv->clk = devm_clk_get(dev, NULL);
+ 	if (IS_ERR(priv->clk))
+@@ -640,10 +646,10 @@ static int mtk_disp_ovl_probe(struct platform_device *pdev)
+ 	priv->data = of_device_get_match_data(dev);
+ 	platform_set_drvdata(pdev, priv);
+ 
+-	ret = devm_request_irq(dev, irq, mtk_disp_ovl_irq_handler,
+-			       IRQF_TRIGGER_NONE, dev_name(dev), priv);
++	ret = devm_request_irq(dev, priv->irq, mtk_disp_ovl_irq_handler,
++			       IRQF_NO_AUTOEN, dev_name(dev), priv);
+ 	if (ret < 0)
+-		return dev_err_probe(dev, ret, "Failed to request irq %d\n", irq);
++		return dev_err_probe(dev, ret, "Failed to request irq %d\n", priv->irq);
+ 
+ 	pm_runtime_enable(dev);
+ 
 -- 
 2.51.0
 
