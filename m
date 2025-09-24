@@ -4,73 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A03ACCAC5A5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 10:20:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 389D0CAC5A5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 10:37:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YFGMgFsmPPXzgkT16Kyz+tCCDuJTPtKgEXIM4AzH6wc=; b=rokip7FHyFr36KsjzxmW4qDBHa
-	RVIx85p0cRdls2KwaFzWLvpzcrLdHEcxifF87uL8dZqrkwEChKuhLyq73tfd8ajKfIyP49vFyAGUg
-	v0jQw4Ozc3to0fM4aVTi2OAMYjZMJuVIS/4VjTqqL1QED2RdXYSHBGJ90KvsDZdPv8h5TdM7KIEZF
-	9dOqyhPWW50OYVR0lKVyrxAsPvecuv/1dwKAYQKNM4OjO/19NyZ9wNfYCvCK3BKFA+iVqt/IZv9g6
-	MYnZrSZV3JnbnXkd2wVceykzd7e+OzO6bLsRv4LHhOC+vC2kMyKQd2l7XGiLfrfvo6ty9QKs3qvxi
-	Fb55jl7w==;
+	bh=HNNBeObjdL43LHXCCN8I8bejSq21u9A9sayNPRpBblE=; b=kkURBii5w5KLKMpLp6nWFcbj/H
+	64MDg3dh+ITH7xnJqrOew1qcYRnXTnxGZIkqmGlyHz7BkFLX/L3/ET6jRkAmqd0+hAPMWXqj3hcHM
+	7GcPhNBVCgxMVBHWy0W7NqLeI8/qCVHI8beQUyuOjmXSHmIWLLF3Y1qapphQXxo2vRcvSGom4l2sY
+	pI3CnMQP6cc4G6bTRwYKdN6ytI4tWzBdW7J4/YC/dQFdVN2EinB7OBCQDoV3PwN19vQS8iA+Re0X6
+	OwT9CBLbD9RRAF/bge9Jp5qc3qZkqLm5sWuqf7kZyHYONug4Xh1KPgLz9qTAbPUy8xokiODoSGDlH
+	maygSERg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1McK-0000000GRlE-3QUr;
-	Wed, 24 Sep 2025 10:20:56 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1v1MsG-0000000GYch-1SRW;
+	Wed, 24 Sep 2025 10:37:24 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1McI-0000000GRjM-1D2g;
-	Wed, 24 Sep 2025 10:20:55 +0000
+	id 1v1MsB-0000000GYXr-3mSi;
+	Wed, 24 Sep 2025 10:37:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1758709252;
-	bh=Gb7PLFsKmlEYtoQ+aSKKrwMrUf84Ic9+Nei/2tc1Lxk=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=PF3IuZuW5KjDpZZnwN7rak4k2wlBmhb3VPhdsEay7moWOSeooNtZ4NPu3lTZctsiV
-	 bdf+jiRSVT+9ESuC4nzb36pg6sNIH4aSajXTTDWvKfv72/uzA91rqXtWIPSK8tM/n3
-	 IE0dnzApRzsUQznDaludnVVfwARWDTpPAcJZSwduUwobSYljpkX0O5rVWsvBqpldGi
-	 HYYVpko0B/4hBiCsoLkji/aT+MWkS6XsAITgkYSgJuUPQb8j19DPd/6/w8iYBv9Z9M
-	 Ym0a0OxraPSziLhT2wXQNk4u58EKDse5j+HiC83paBNuRfGbY0bclNi38EOZGqbBkQ
-	 lFbDUlAnuMD6w==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	s=mail; t=1758710237;
+	bh=6q4nIF9PbW8vKqtt8oUILNc6BjJu8LTWVp+LAjhBKV0=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=KYorXydr04gRo8aD6mEUTsaAEfjf68IsYc/xPn+AY75dqEk4qsAErHToxf/23Qf50
+	 V2kuQKgEinw2Avv35Et65VjGv5ABHECvVsHMSxJMZol1yF0MFMR3KXQzqNfsPSkNzj
+	 X45ccvwsAx7OitpexfKtvkU/6G6WTbOTk+0sTj/TyS/8uYAM6FR3b5mEcYDP0zlnrf
+	 E7/7deUpAPPZP/K42HOtBv+wvIs+cDB7lnk3R0VhuSQBJ16I+/VqttkQAW/5zIn3kC
+	 FdMF2LtvJs9NqI3aSb4fkRQ5nSfRK9JkTOJl5ZdJB299L5EIvM/LesV7hzYM3qDzy1
+	 knM5JDQY4v4WQ==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9B34717E124A;
-	Wed, 24 Sep 2025 12:20:51 +0200 (CEST)
-Message-ID: <76a5e9ee-b8b3-4f7f-9410-9133263358bf@collabora.com>
-Date: Wed, 24 Sep 2025 12:20:51 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/3] clk: en7523: Add reset-controller support for
- EN7523 SoC
-To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Felix Fietkau <nbd@nbd.name>,
- linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Cc: Andreas Gnau <andreas.gnau@iopsys.eu>
-References: <20250924060509.1889131-1-mikhail.kshevetskiy@iopsys.eu>
- <20250924094112.1918444-1-mikhail.kshevetskiy@iopsys.eu>
- <20250924094112.1918444-3-mikhail.kshevetskiy@iopsys.eu>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2324017E12DF;
+	Wed, 24 Sep 2025 12:37:17 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250924094112.1918444-3-mikhail.kshevetskiy@iopsys.eu>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+To: chunkuang.hu@kernel.org
+Cc: p.zabel@pengutronix.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	dmitry.osipenko@collabora.com,
+	granquet@baylibre.com,
+	rex-bc.chen@mediatek.com,
+	ck.hu@mediatek.com,
+	amergnat@baylibre.com,
+	djkurtz@chromium.org,
+	littlecvr@chromium.org,
+	bibby.hsieh@mediatek.com,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com
+Subject: [PATCH 1/3] drm/mediatek: mtk_dp: Fix hdmi codec and phy driver unregistration
+Date: Wed, 24 Sep 2025 12:37:06 +0200
+Message-ID: <20250924103708.19071-2-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.51.0
+In-Reply-To: <20250924103708.19071-1-angelogioacchino.delregno@collabora.com>
+References: <20250924103708.19071-1-angelogioacchino.delregno@collabora.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250924_032054_487157_068249BE 
-X-CRM114-Status: UNSURE (   8.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250924_033720_103902_D1B4E9AD 
+X-CRM114-Status: GOOD (  16.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,20 +88,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 24/09/25 11:41, Mikhail Kshevetskiy ha scritto:
-> Introduce reset API support to EN7523 clock driver. EN7523 uses the
-> same reset logic as EN7581, so just reuse existing code. The patch
-> renames:
->   * en7581_rst_ofs to en75xx_rst_ofs,
->   * en7581_reset_register() to en75xx_reset_register()
-> because they are not en7581 specific.
+During probe, this driver is registering two platform devices: one
+for the HDMI Codec driver and one for the DisplayPort PHY driver.
 
-You ignored all of my comments (sent at v1) on this patch.
+In the probe function, none of the error cases are unregistering
+any of the two platform devices and this may cause registration
+of multiple instances of those in case this driver returns one or
+more probe deferral(s) in the "wrong" spots.
 
-Regards,
-Angelo
+In order to fix this, add devm actions to unregister those and
+remove the manual calls to platform_device_unregister in the
+mtk_dp_remove() function, as those would otherwise be redundant.
 
-> 
-> Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-> ---
+Fixes: e71a8ebbe086 ("drm/mediatek: dp: Audio support for MT8195")
+Fixes: caf2ae486742 ("drm/mediatek: dp: Add support for embedded DisplayPort aux-bus")
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dp.c | 30 ++++++++++++++++++++++++++----
+ 1 file changed, 26 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
+index bef6eeb30d3e..9b374b8d079e 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dp.c
++++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+@@ -2650,6 +2650,13 @@ static const struct hdmi_codec_ops mtk_dp_audio_codec_ops = {
+ 	.hook_plugged_cb = mtk_dp_audio_hook_plugged_cb,
+ };
+ 
++static void mtk_dp_unregister_pdevs(void *data)
++{
++	struct platform_device *ext_pdev = data;
++
++	platform_device_unregister(ext_pdev);
++}
++
+ static int mtk_dp_register_audio_driver(struct device *dev)
+ {
+ 	struct mtk_dp *mtk_dp = dev_get_drvdata(dev);
+@@ -2660,18 +2667,29 @@ static int mtk_dp_register_audio_driver(struct device *dev)
+ 		.data = mtk_dp,
+ 		.no_capture_mute = 1,
+ 	};
++	int ret;
+ 
+ 	mtk_dp->audio_pdev = platform_device_register_data(dev,
+ 							   HDMI_CODEC_DRV_NAME,
+ 							   PLATFORM_DEVID_AUTO,
+ 							   &codec_data,
+ 							   sizeof(codec_data));
+-	return PTR_ERR_OR_ZERO(mtk_dp->audio_pdev);
++	if (IS_ERR(mtk_dp->audio_pdev))
++		return PTR_ERR(mtk_dp->audio_pdev);
++
++	ret = devm_add_action_or_reset(dev, mtk_dp_unregister_pdevs, mtk_dp->phy_dev);
++	if (ret) {
++		platform_device_unregister(mtk_dp->audio_pdev);
++		return dev_err_probe(dev, ret,
++				     "Failed to add codec unregister devm action");
++	}
++	return 0;
+ }
+ 
+ static int mtk_dp_register_phy(struct mtk_dp *mtk_dp)
+ {
+ 	struct device *dev = mtk_dp->dev;
++	int ret;
+ 
+ 	mtk_dp->phy_dev = platform_device_register_data(dev, "mediatek-dp-phy",
+ 							PLATFORM_DEVID_AUTO,
+@@ -2681,6 +2699,13 @@ static int mtk_dp_register_phy(struct mtk_dp *mtk_dp)
+ 		return dev_err_probe(dev, PTR_ERR(mtk_dp->phy_dev),
+ 				     "Failed to create device mediatek-dp-phy\n");
+ 
++	ret = devm_add_action_or_reset(dev, mtk_dp_unregister_pdevs, mtk_dp->phy_dev);
++	if (ret) {
++		platform_device_unregister(mtk_dp->phy_dev);
++		return dev_err_probe(dev, ret,
++				     "Failed to add phy unregister devm action");
++	}
++
+ 	mtk_dp_get_calibration_data(mtk_dp);
+ 
+ 	mtk_dp->phy = devm_phy_get(&mtk_dp->phy_dev->dev, "dp");
+@@ -2850,9 +2875,6 @@ static void mtk_dp_remove(struct platform_device *pdev)
+ 	pm_runtime_disable(&pdev->dev);
+ 	if (mtk_dp->data->bridge_type != DRM_MODE_CONNECTOR_eDP)
+ 		timer_delete_sync(&mtk_dp->debounce_timer);
+-	platform_device_unregister(mtk_dp->phy_dev);
+-	if (mtk_dp->audio_pdev)
+-		platform_device_unregister(mtk_dp->audio_pdev);
+ }
+ 
+ #ifdef CONFIG_PM_SLEEP
+-- 
+2.51.0
+
 
