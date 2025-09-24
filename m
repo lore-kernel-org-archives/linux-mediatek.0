@@ -4,73 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51409CAC5A5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 08:41:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5F26CAC5A7
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 08:44:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RgH3mRAmKAPsyrnQbbiNJ3RYBy7qC5ALKa2jB9tm4zc=; b=zLb+i5S/b4Aphn9UqwtmJGJqM8
-	Zhg7b6f0zTn89DLDmuzgWIWqwUxu29ghfsHPA+1SO87QfZK+FndxNljvocu4/KYRlm3IpbDOL7IKo
-	FUrwVqpB3lN3X9AaKpa6B5T1z5anIz32gmv43PNi7bplKxZIQei/xbApP7s+6cdaI0xlcFSnXsHzy
-	KjMO3wVEUDElsZiY0C+OqiCobeJj5tZhbU4AftDKKPrVh4iFyxxF+M03qXQRVIj/GpwQ3sh4XhpBD
-	yiLCoRZjnCKAYwZgc172EVy5ajjoH/fnKZgvqEz3hQnaonaNRTuAfu5sN2V1kLMpQ1Wd6i8o0C0WT
-	9IG/k0jQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=PFuPLTdWH67tX0oh7ejew8sf/DWLeKIxmgCUYj8rnI8=; b=QvEg6IosAu6ZqxksaY/dofbnae
+	4IULNULb/7NqbgX2fLpY0UQhYM8e0IaQSnzUg2KSNe0xbymzrUCU5ajnw8d5g1YIz7UXisXVjkYQm
+	MNsAREdkAnQkrMbX5hvHHdctUVp6p4jYarnb13x/qgNu5l9KAVky2SKvPkxYhpNTtkJl7lpE5ydBf
+	IGCbIVMsLEbLpt2rNtDweaatKppSZYMRE0rJ+MH32U3C9EpYXLllJZKzt7FuPyi1wSnEmYYcr+ovy
+	TLTOtOFdzPrT7anRcselzGXWaD7fw7d7rDxiLrNQYrHFskZwr+0s9JnRY/gGyICFxiBRunM5Mkidw
+	3zjpDaWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1L3c-0000000Fuz7-2QIk;
-	Wed, 24 Sep 2025 08:41:00 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1v1L77-0000000FvVL-1QYX;
+	Wed, 24 Sep 2025 08:44:37 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1L3Z-0000000Fuxv-2abv;
-	Wed, 24 Sep 2025 08:40:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1758703255;
-	bh=gXC0TIrjtt2H2hnirLrmLxXWil8GQdYIzvmwDbexWv4=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=BoycKNLxBpKS7o7K2G6u08bk0AR1/6FDaoLq4ouUHT8QbBwgx4d26LmjoT/bO82g0
-	 1Rch6X9SMSIdwBFJKcI2pBeuWgqhXojAyS5e6e0Evon/rc4tB07sIfIxp8IAo1FXs6
-	 H2aQVi/TMEbFnx+Lkb9jsFKCngH4iEUNFV5Rr/DlJKGoRBGyYe45j6IjcX6ieC3W1M
-	 0kNgKzPTkqpuNiEIHERnXlPLBNI/0uczTtIxRM4iDytO0urEBQe71zqlUSBDCgIRdE
-	 pWpQtV46syHtpRg5o43gP2l37ISIhLYQOMeT/m/IKXuXefmJqYdQ1KfXY71hY+qlbN
-	 AQsLsPZAepXTg==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 14BD517E0237;
-	Wed, 24 Sep 2025 10:40:55 +0200 (CEST)
-Message-ID: <d2b9fae6-eb73-4484-9048-67c0c8507171@collabora.com>
-Date: Wed, 24 Sep 2025 10:40:54 +0200
+	id 1v1L74-0000000FvSw-2ZKA;
+	Wed, 24 Sep 2025 08:44:35 +0000
+X-UUID: adfb0094992211f09f706fa2197c6ceb-20250924
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=PFuPLTdWH67tX0oh7ejew8sf/DWLeKIxmgCUYj8rnI8=;
+	b=AUeMTNuU8mESewvD/6TspUB7ttXJd/6/FklSDo91dOizitck7Rg6g9ByCFpWi0gslQzc+fZXFeiwFbMZr/T+xn8jqx/e2YKPonTvHDliZ1vP2o2vL48ppA5GVHHk+DN4G/8aXMR+O/H0+xI+nOD642ZwKx2rTEQC8blygfuCHI8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.4,REQID:a47538cb-d073-4cb5-83d9-87209fef5f86,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:1ca6b93,CLOUDID:ec99e46c-8443-424b-b119-dc42e68239b0,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:0,File:130,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,
+	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: adfb0094992211f09f706fa2197c6ceb-20250924
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <huayu.zong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1529998545; Wed, 24 Sep 2025 01:44:27 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.10; Wed, 24 Sep 2025 16:44:24 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1748.10 via Frontend Transport; Wed, 24 Sep 2025 16:44:23 +0800
+From: Huayu Zong <huayu.zong@mediatek.com>
+To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
+	<mathieu.poirier@linaro.org>, Rob Herring <robh@kernel.org>, "Krzysztof
+ Kozlowski" <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+	"Matthias Brugger" <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Tinghan Shen
+	<tinghan.shen@mediatek.com>
+CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Huayu Zong
+	<huayu.zong@mediatek.com>
+Subject: [PATCH v2 0/2] Add support for MT8189 SCP and device tree bindings
+Date: Wed, 24 Sep 2025 16:44:16 +0800
+Message-ID: <20250924084422.4604-1-huayu.zong@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/2] PCI: mediatek-gen3: add support for Airoha AN7583
- SoC
-To: Christian Marangi <ansuelsmth@gmail.com>,
- Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
- <jianjun.wang@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
- Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, upstream@airoha.com
-References: <20250923190711.23304-1-ansuelsmth@gmail.com>
- <20250923190711.23304-2-ansuelsmth@gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250923190711.23304-2-ansuelsmth@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250924_014057_811747_62678488 
-X-CRM114-Status: UNSURE (   9.06  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250924_014434_651234_FCBB51DC 
+X-CRM114-Status: GOOD (  10.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,17 +90,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 23/09/25 21:07, Christian Marangi ha scritto:
-> Add support for Airoha AN7583 SoC that implement the same logic of
-> Airoha EN7581 with the only difference that only 1 PCIe line is
-> supported (for GEN3).
-> 
-> A dedicated compatible is defined with the pdata struct with the 1 reset
-> line.
-> 
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+  This patch series adds support for the System Companion
+Processor (SCP) on MediaTek MT8189, including device tree
+bindings and driver support.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Huayu Zong (2):
+  dt-bindings: remoteproc: mediatek: Add binding for mt8189 scp
+  remoteproc: mediatek: Support MT8189 SCP
 
+ .../bindings/remoteproc/mtk,scp.yaml          |  2 ++
+ drivers/remoteproc/mtk_common.h               | 10 +++++++
+ drivers/remoteproc/mtk_scp.c                  | 29 +++++++++++++++++--
+ 3 files changed, 39 insertions(+), 2 deletions(-)
+
+-- 
+2.45.2
 
 
