@@ -4,172 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DBDBCAC5A5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 21:02:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BB5ACAC5AE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 21:15:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VNojt7aMVflgWZMZF/1yfftwQPxOFC3B//05vtbnNE8=; b=Qgw/vlzfQI+fcyTPc5+ojmAY/5
-	/2WHBUteE1rpH0+hFoyl/iR3aDkL7WzdCgN5Tl3ZV2qy2tWdEkSn8fO/fs6L516HBY1HTYenPniY0
-	JdAfdHiQj41M4Loz2K4+rmhAbZ9zUYKwpxByASHLmbAuS0xr12Ea47HYAbX5A7NVk5WPn6/pECR0J
-	W4VFoBr1aZ32DNPohgo7cxRpIsB6fl+0yyG8FRCuOBHV4cBanSMHqUrteFWY5NwWZULAAxj6I1Wf8
-	XEh7HZY5SPwqsTGZnHTHbES1B1wZMUm3mCGKm6vwJs9/LN7CJdE011/9FBYyuyZ2t0oxtyrk7zrVB
-	s/q5rBSg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8vehDCHFQPuf5/+JLt9NrQDdNgbJgcFD+JEAxhSZTeg=; b=qRtq/Cglr1gzvrTDFz/EPvptE0
+	USg9Y5I+Ufj8gdEO+WNscyo+jdAadad6dnCLeZgkqouyvDjTBq25Lh2UjnQ241kriQXDXsg7p1sHd
+	9wgLzlFn9MmMV/uDHSytXPQBYXz+6Fwe+Bd55HA9EwcJKiOWldsNZfoAqpaKcEX3pXHLBsHP7oaxM
+	btwEUcz1wMg818ohcmX7k9A24s3r1MzJh7m9k7oe3K/VLZRqf4vUN2ms9f6hMk+qKrLz4gXRBaVPq
+	7tAJAcydEl8/sVXNIL1oX3h7B6wkZTX63+TYGDtuiSdKtLpjLwMDluk/LcgEoEscUVhGgoubIMJN7
+	alOEVrNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1WdQ-00000003jZM-1K2r;
-	Wed, 24 Sep 2025 21:02:44 +0000
-Received: from mail-eastus2azlp170100001.outbound.protection.outlook.com ([2a01:111:f403:c110::1] helo=BN1PR04CU002.outbound.protection.outlook.com)
+	id 1v1WpQ-00000003pFY-46Qy;
+	Wed, 24 Sep 2025 21:15:08 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1WdN-00000003jWJ-2BQa;
-	Wed, 24 Sep 2025 21:02:42 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=miQLbuj5pjmPg8wjD8lGiM7I+D8rofgR4Bixk7fFHzmrbqCiqpg+x8HI+BWAUwGf5QEIMpGYakiuxUj+OQPQ/yWr+3XCa51OfAgRnhP9VxU9TpW4+TJYmZzy2VXboRxd0lDUpyYeGJp64uUhKl7dvXNsF/YPrTd/Cg84K2zhVesGvUi7Ba3V9Za9f7kyzg0kcI6BrD3gSn+efizhv78kopya0ryHeieDp4/NHQHwULoiwb/5EU5B/k+h/tx8rqcLsRP0323H8MpWMAsUkNZfV8rpove+msRell6tSpyZF+BVhj8qT/9tN+/D9t32NnfWb8CrZssyMJYgSyjz1p417w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=VNojt7aMVflgWZMZF/1yfftwQPxOFC3B//05vtbnNE8=;
- b=iIQb5Soz8KA8uj1UgnrXlaWbtb9ZsDQqgs66BkHR4ianyfDhdcynfLRIptP0vhWOnIKYTmYrrXK8T2s8ZeSfkx82OhZWqeend9LrojWE24bxxUeLabVLHoOu1tYapQIewuQx7T/WO6WSzqYg3pDwXh8R8lIerdcIiLBEuWKbewR4VRGoL9Si1I0ydvJE2iONE+E1DY4aFg04kBUlJ3kaVGQlCiEgIafCORsFqGBI2MfWzzxVqL2si9Lww+ykrJqcNHg59HgDNvfgqMbB4k/WYfGT7XPXGsNScZkXc40bEb+9Og6OzBgHTVpDM9CPOdBeInCSaGyEOWmxVu0js2n+Kw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=VNojt7aMVflgWZMZF/1yfftwQPxOFC3B//05vtbnNE8=;
- b=doMmKeaQtoi8yeYARUMLxGN7qIBrv/es4sxPAmlsfLurbo01RPZhUSIMQTHfv721beogMInIScijBSIknw5CLIyYXKCu4TSUnNAL8GvJPCYl/BFmEkvq7kasuqBQzqintygV0+z6/aZvL+sOr6BOlYS2Kdc16PRQS0phJQpNf6v7s1x7ytn6Fy3FTLCOmjngsFd9ES0Sfu0lx87ibtlM5QF0oezZw1LR2vf+ez/qKviicp2FGVNH0APrLusGqCJw7eLmo2LCl7SqcP0W3syu/NmigU5RmaNmkxRtWA93aUwPaXXE0qPh3ER1AkV5YdJIf0XoFevhrQNC6Fa1NNZ6Vg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from PH7PR12MB5757.namprd12.prod.outlook.com (2603:10b6:510:1d0::13)
- by CH3PR12MB9194.namprd12.prod.outlook.com (2603:10b6:610:19f::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9137.20; Wed, 24 Sep
- 2025 21:02:30 +0000
-Received: from PH7PR12MB5757.namprd12.prod.outlook.com
- ([fe80::f012:300c:6bf4:7632]) by PH7PR12MB5757.namprd12.prod.outlook.com
- ([fe80::f012:300c:6bf4:7632%2]) with mapi id 15.20.9137.021; Wed, 24 Sep 2025
- 21:02:30 +0000
-Date: Wed, 24 Sep 2025 18:02:28 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Nicolin Chen <nicolinc@nvidia.com>
-Cc: joro@8bytes.org, bhelgaas@google.com, suravee.suthikulpanit@amd.com,
-	will@kernel.org, robin.murphy@arm.com, sven@kernel.org,
-	j@jannau.net, alyssa@rosenzweig.io, neal@gompa.dev,
-	robin.clark@oss.qualcomm.com, m.szyprowski@samsung.com,
-	krzk@kernel.org, alim.akhtar@samsung.com, dwmw2@infradead.org,
-	baolu.lu@linux.intel.com, kevin.tian@intel.com,
-	yong.wu@mediatek.com, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, tjeznach@rivosinc.com,
-	paul.walmsley@sifive.com, palmer@dabbelt.com, aou@eecs.berkeley.edu,
-	alex@ghiti.fr, heiko@sntech.de, schnelle@linux.ibm.com,
-	mjrosato@linux.ibm.com, gerald.schaefer@linux.ibm.com,
-	orsonzhai@gmail.com, baolin.wang@linux.alibaba.com,
-	zhang.lyra@gmail.com, wens@csie.org, jernej.skrabec@gmail.com,
-	samuel@sholland.org, jean-philippe@linaro.org, rafael@kernel.org,
-	lenb@kernel.org, yi.l.liu@intel.com, cwabbott0@gmail.com,
-	quic_pbrahma@quicinc.com, iommu@lists.linux.dev,
-	linux-kernel@vger.kernel.org, asahi@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
-	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
-	virtualization@lists.linux.dev, linux-acpi@vger.kernel.org,
-	linux-pci@vger.kernel.org, patches@lists.linux.dev,
-	vsethi@nvidia.com, helgaas@kernel.org, etzhao1900@gmail.com
-Subject: Re: [PATCH v4 5/7] iommu: Add iommu_get_domain_for_dev_locked()
- helper
-Message-ID: <20250924210228.GM2617119@nvidia.com>
-References: <cover.1756682135.git.nicolinc@nvidia.com>
- <c9daeafb9046bed9e915fdafe20fe28a8c427d29.1756682135.git.nicolinc@nvidia.com>
- <20250924191055.GJ2617119@nvidia.com>
- <aNRLOsomtHNumaSY@Asurada-Nvidia>
- <20250924195254.GL2617119@nvidia.com>
- <aNRObmtcUkYTworw@Asurada-Nvidia>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <aNRObmtcUkYTworw@Asurada-Nvidia>
-X-ClientProxiedBy: BLAP220CA0004.NAMP220.PROD.OUTLOOK.COM
- (2603:10b6:208:32c::9) To PH7PR12MB5757.namprd12.prod.outlook.com
- (2603:10b6:510:1d0::13)
+	id 1v1WpO-00000003pEE-3JZJ;
+	Wed, 24 Sep 2025 21:15:06 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id D605B602A2;
+	Wed, 24 Sep 2025 21:15:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0FC18C4CEE7;
+	Wed, 24 Sep 2025 21:15:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1758748505;
+	bh=C/wfjUCsdiaeeAQq1JlkTgcHiBcnmTP3fACu65+WKFU=;
+	h=From:Date:Subject:To:Cc:From;
+	b=I+A4o40DPLh/cpYaOKT8T4ZD/DpeVn/rGxCVzSz/W2Hp1FqiCmv2s0AnnyFXEGF5x
+	 Vflk0QFRxYyueXTEeHS8CAr9STokDoYDb9t1vYQ0AAGtAl6pFuc+03cmupjgrwE6ho
+	 /p8ahHbLhb70/N8uL01dj/6bP+9AFvmykRJ7QVbvuEmIDqSb89WL6qEmrgBxGaYbYS
+	 MIRCiVBUGgyELcHYJvu34697Ofu89Qp6fXS6sFFqGWRmBdBrnLpB0p9wx6sV1f/izs
+	 +oBO57FNZrtN1Nbn5bCqXILNdV9BryOAfIDa/ZI9Qt7cwHa1h22qpAmnIwBgVSDN37
+	 TPpEYYBFZ5uvA==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Wed, 24 Sep 2025 23:14:53 +0200
+Subject: [PATCH net-next] net: airoha: npu: Add a NPU callback to
+ initialize flow stats
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH7PR12MB5757:EE_|CH3PR12MB9194:EE_
-X-MS-Office365-Filtering-Correlation-Id: 6dc089ef-f2f8-41bf-b3c3-08ddfbadac80
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|7416014|376014;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?HN9MCgHfnMwp+8+QALWQd9n7lwqyOEZwHb7roaj+zKJf6OewNNh9wuhPd8lX?=
- =?us-ascii?Q?pycdFFWpbgt1F/O0RjxJmcE6uZd8ajoxwcVF+w6uclo9cgnxKPgFYvs5ipeI?=
- =?us-ascii?Q?MfWfIGwYg5guhpmo8GggD4EE+CZYE4PLct19ADyqCxOsU2wD3PJ+XQV13j0g?=
- =?us-ascii?Q?YUyvi5Z9qQ+d7UR5FfrsCIKcy6sQwVj39l7VJFY2rCAwviS1UVF2MdG3EN6z?=
- =?us-ascii?Q?rNMRW+QIDtTbI/Ai2dIRXFGR8ipgTcXRXAOxiCokpskTwz1JTw/M7mFifDVT?=
- =?us-ascii?Q?Xf/GSpbNz2+2I6ZdRBZG1C55eqZGTS15z1UuqKKC3Ln35mw9pHuaoqZV/tDl?=
- =?us-ascii?Q?YfNSTNSZI7q/Eo4J1iZWtS8qOYZOVr86y9PuI8k8NTST7/S6+hHTsJNlIA0g?=
- =?us-ascii?Q?rdXwHb4JLVg7m0OACtAk0KgEV+EldBKLPU5bvydphdTPXITlIfJcHUj+Dngj?=
- =?us-ascii?Q?9cHe5EgCm+4UjHDpTfjEJlj4PfdIkeFbxYAiEM5QEU+whTPuo0587EhoEqYt?=
- =?us-ascii?Q?Tfh/AvbXbC3iTncyn7A11J+GMcBk9GzdUge34PluXghfwpKi4NkyGz6EoIn+?=
- =?us-ascii?Q?OaLhNRC0EUXTjVjCpt19YEtwnatyJix/bnz523rd+4SbhOY3IfxVBPU9YUET?=
- =?us-ascii?Q?iiIluX8I4jgMAq/3y2UEvuGP3h9I3KvjBPsZwN0or31wMBglc3FxKgkvjUaF?=
- =?us-ascii?Q?wk5BfUIKzb+UebOX2bYL0KBfep2TpT/kEhsYkM0pmUcCMbu6prXAeV2g8Y0I?=
- =?us-ascii?Q?qfPnRtI07ikLOFy9F02fWQ40lc1MYBosB2J/iMlDyoRlIzdjALwRMPNCc3Lo?=
- =?us-ascii?Q?X3XgX3TYtxNiuYjPOuRBSBCQKVUTeCTy6TK5eazas0hyuBxNC5OeH75ioPp3?=
- =?us-ascii?Q?hSQ3m34gEuAjGnLBWdO/AHk+TaXFFcEQeG6s3zwZpjObaT8JtGjbahT9H4Um?=
- =?us-ascii?Q?6uJ/3Ft6WRJFrJbi40xkE8XjUAwny8eyU3oTHVObFtQw4lnH7kbukgzhptp9?=
- =?us-ascii?Q?ARtqUOYfAZWglQHtS/WIUftYravvpnFcylkHyDcWUcecfPC2Lt9tojWx4LCj?=
- =?us-ascii?Q?BTFemJkt1nVX1di6+4ei8Gj5MCKE2VsYPnGBwz0coPr40ozK1K2eoIhtO4NM?=
- =?us-ascii?Q?zBggKr9pQLs+uq5hwJrc1jsuV/U1zJBLqZs0vljysJjz2W/m1J+VoZBWSgkr?=
- =?us-ascii?Q?KjL725rElRFZfoZdptHQOvRfuLQCxruiiFTf1J2c3i8SU3DcIG2F+jdAQHwa?=
- =?us-ascii?Q?8kKOmVWuC5IMfDhr1dvTIuOIgtYjHFEq/AQ31wwSnxcVnoOX9BaHcYSHAWGz?=
- =?us-ascii?Q?kXMfJr8HoOp3ylxMECl+KqhDP84m0KB+x73Kwz0x5LB9X9t9eD5CJToxIQli?=
- =?us-ascii?Q?AawLSP91jzinRf4jfGtqQeUhQt4u6PyMRYwkGyL0NJlwgDTAj5I/lz7ouoFW?=
- =?us-ascii?Q?sieIEsDr9ts=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH7PR12MB5757.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(7416014)(376014);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?llu2qpY0s2eoOiIYovn16JfEgXyp1x0Gxn7U0JDa+0i3kAnV8nqg7XSAbN7/?=
- =?us-ascii?Q?V+tsS9uSrj/TsV3Tm8Mx5zcWQ4W/i11Zy926inoQyE/LfT3Qz5GeFkuGII2h?=
- =?us-ascii?Q?BynuplbFA6935+w521aezby7ew32jdHjQ6VVVl2YSPg4I/GeEZE6NnlJZZ5S?=
- =?us-ascii?Q?5IhoGo1HmW16I+23AhWU5ndMTyV/Zv7BG8vlvSFWYMsEUWcvcpirwWx3jjJS?=
- =?us-ascii?Q?Xb7OCR/qmukhWiRXnrb+/lXKBqURK/G2rArcbHxkJu7Fe6+lie3eCDFL8JxD?=
- =?us-ascii?Q?ss45yoDEAyHme4UuOyq0o9jznI/phOB+JrNBCidJ+HF7m56DFx51TOQmwjjp?=
- =?us-ascii?Q?GzdqjEXbUJitfSyXJuG5rUyrEqzr814wdWqJHQhoBnC80uhfKjqf6NV9+ox7?=
- =?us-ascii?Q?vaaaO9LNJYyDbWCwiw/Z4ivl0rWv9oscoL94QzWbfGSKvgDlu5lckEUn9/oy?=
- =?us-ascii?Q?33DbUWm3IOLnIpjWA5ZSnnUcR7fJYAFYoJFdCNcHFWNFiZUDqBTyRrrjE8Zr?=
- =?us-ascii?Q?Kvu2yXT5K/LJGBh1Dz6Ng2pKs//QRs3qpU0SChG6/+igEE7kFpkqsalcnoSY?=
- =?us-ascii?Q?8YIHXUByKCmpvxY5wIAmHXGDM3mkJGAQioJnm2C+7PYIzBD8Ufo20Vdk19H3?=
- =?us-ascii?Q?F3Ny+gCs+oW2Jun/pJu812IJHN4XrXVR9TutT9fn9rPdn6s9j+oXHFl6DFI/?=
- =?us-ascii?Q?q4ANsNvYuvIChBUqzjBXneNedZhK+iUTvu2m16uEcZeTPS/sReoOJ3Pijkt7?=
- =?us-ascii?Q?SR/ssJSl+2lnNrU9BM+1vqHFyEzCPUKqPpbddqkwzUZ5jiQBNZzfTnHXg431?=
- =?us-ascii?Q?1FLWAT2mHnZzduvBEctN8dFjnRUUqz9EuLL1Ya9EsoStMoDyLy3Wtr6PXjJE?=
- =?us-ascii?Q?+qsmf5bZ+e5AFfYjwI4qCu4I+vwrd7PkT8EvAQnLfXvNgF0yJpIlHQn+lkDk?=
- =?us-ascii?Q?rcPiiTAmnZ8gBalNGxNWxRgtJoN5rZLyOiaTILhfq6v57d8Y7SZP17g9EBsY?=
- =?us-ascii?Q?BQMfLkrZGKSBKTmKgewTvEAQEJFAPX3ZUua4WPHaVcsgiQuJYcvzJZ6aCCET?=
- =?us-ascii?Q?1lldZwP8x7VIbtwgqB9SGTkG6sHDtgtxgofwlZeKajM+8fLGs4R7KuY/ahNC?=
- =?us-ascii?Q?OmMQdPrcSEjGl0D+BbGO4uUAFPZfacOWx6YMgdYyffyWge9SEUtjVJNEOiZP?=
- =?us-ascii?Q?QfBRj9vGxD0G9tv9NaQkCREJRRudmpxyNFXsSWLqMKXYH5bf+zKnhCIV4N/e?=
- =?us-ascii?Q?g7SF1EqML+ENE0lG0OewixIHDtM+SCIgvAcmuKLVXBcxVGGFCQS4Dxbl2Atf?=
- =?us-ascii?Q?F6nq5PCHyCNSwAdFrbG+ynGkAUHQcpS7yWiuCP8rajW2jEaMQAyQbjpiBsqU?=
- =?us-ascii?Q?IDFedulN3oAaBercVL9LgeL+ylUrHWZDYa6Zp+l14ydCGRkiQz+1xQfh7dr7?=
- =?us-ascii?Q?nQz887L/Wj7f7opXPErLaf52+KehGwebIQRSyYgbqpwGeJIEsMt60Kv9KNMM?=
- =?us-ascii?Q?VjxYCzs+WsHTm3QWqZ6GOx3kPQmYgeMJTvfmCJ+oSjogaX49ll5zlBKo4pbk?=
- =?us-ascii?Q?yiN8VtCjRDFpSs+PC9y/EzzkYnDlAqJUe7apPu7L?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6dc089ef-f2f8-41bf-b3c3-08ddfbadac80
-X-MS-Exchange-CrossTenant-AuthSource: PH7PR12MB5757.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Sep 2025 21:02:30.0895
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: FR9ue+xgoyRVvrOoIkk2uaqr3m6O93ZubObdMPfJqo1B7ZhQmHA2NI/RW7XftyRy
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR12MB9194
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250924_140241_561370_25B78EED 
-X-CRM114-Status: GOOD (  18.54  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250924-airoha-npu-init-stats-callback-v1-1-88bdf3c941b2@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAExf1GgC/x3NQQqDMBBA0avIrDugMZXEqxQXY5zWoRIlkxZBv
+ LvB5dv8f4ByElboqwMS/0VljQXNo4IwU/wwylQMpjbP2huLJGmdCeP2Q4mSUTNlxUDLMlL4Yjs
+ Ftq2zXecdlMiW+C37PXgN53kBc0rawHAAAAA=
+X-Change-ID: 20250924-airoha-npu-init-stats-callback-3dce43846698
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -184,28 +74,170 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 24, 2025 at 01:02:54PM -0700, Nicolin Chen wrote:
-> On Wed, Sep 24, 2025 at 04:52:54PM -0300, Jason Gunthorpe wrote:
-> > On Wed, Sep 24, 2025 at 12:49:14PM -0700, Nicolin Chen wrote:
-> > > > I really wanted to say this should just always return the
-> > > > default_domain, but it looks like host1x_client_iommu_detach() is the
-> > > > only place outside the iommu drivers that would be unhappy with that.
-> > > 
-> > > I suppose any external user that allocates/attaches a domain has a
-> > > risk of potentially using this helper, in which case group->domain
-> > > may not be default_domain?
-> > 
-> > Yes, host1x seemed to be the only place that had that intersection.
-> 
-> I meant, we cannot prevent others from calling it like host1x does?
-> 
-> Even if we have those replacement APIs that we discussed last time,
-> such a driver might still want its own domain v.s. default_domain,
-> for pgsize or other use?
+Introduce a NPU callback to initialize flow stats and remove NPU stats
+initialization from airoha_npu_get routine. Add num_stats_entries to
+airoha_npu_ppe_stats_setup routine.
+This patch makes the code more readable since NPU statistic are now
+initialized on demand by the NPU consumer (at the moment NPU statistic
+are configured just by the airoha_eth driver).
+Moreover this patch allows the NPU consumer (PPE module) to explicitly
+enable/disable NPU flow stats.
 
-If a driver allocates its own domain and attaches it then it should be
-able to track it and not need to ask the iommu subsystem to give it
-back to them :)
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/ethernet/airoha/airoha_npu.c  | 24 ++++++------------------
+ drivers/net/ethernet/airoha/airoha_ppe.c  | 19 +++++++++++++------
+ include/linux/soc/airoha/airoha_offload.h |  7 ++++---
+ 3 files changed, 23 insertions(+), 27 deletions(-)
 
-Jason
+diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ethernet/airoha/airoha_npu.c
+index e1d131d6115c10b40a56b63427eec59ea587d22a..8c883f2b2d36b74053282bc299f0a0572b2e0e71 100644
+--- a/drivers/net/ethernet/airoha/airoha_npu.c
++++ b/drivers/net/ethernet/airoha/airoha_npu.c
+@@ -379,15 +379,13 @@ static int airoha_npu_foe_commit_entry(struct airoha_npu *npu,
+ 	return err;
+ }
+ 
+-static int airoha_npu_stats_setup(struct airoha_npu *npu,
+-				  dma_addr_t foe_stats_addr)
++static int airoha_npu_ppe_stats_setup(struct airoha_npu *npu,
++				      dma_addr_t foe_stats_addr,
++				      u32 num_stats_entries)
+ {
+-	int err, size = PPE_STATS_NUM_ENTRIES * sizeof(*npu->stats);
++	int err, size = num_stats_entries * sizeof(*npu->stats);
+ 	struct ppe_mbox_data *ppe_data;
+ 
+-	if (!size) /* flow stats are disabled */
+-		return 0;
+-
+ 	ppe_data = kzalloc(sizeof(*ppe_data), GFP_ATOMIC);
+ 	if (!ppe_data)
+ 		return -ENOMEM;
+@@ -542,7 +540,7 @@ static void airoha_npu_wlan_irq_disable(struct airoha_npu *npu, int q)
+ 	regmap_clear_bits(npu->regmap, REG_IRQ_RXDONE(q), NPU_IRQ_RX_MASK(q));
+ }
+ 
+-struct airoha_npu *airoha_npu_get(struct device *dev, dma_addr_t *stats_addr)
++struct airoha_npu *airoha_npu_get(struct device *dev)
+ {
+ 	struct platform_device *pdev;
+ 	struct device_node *np;
+@@ -581,17 +579,6 @@ struct airoha_npu *airoha_npu_get(struct device *dev, dma_addr_t *stats_addr)
+ 		goto error_module_put;
+ 	}
+ 
+-	if (stats_addr) {
+-		int err;
+-
+-		err = airoha_npu_stats_setup(npu, *stats_addr);
+-		if (err) {
+-			dev_err(dev, "failed to allocate npu stats buffer\n");
+-			npu = ERR_PTR(err);
+-			goto error_module_put;
+-		}
+-	}
+-
+ 	return npu;
+ 
+ error_module_put:
+@@ -643,6 +630,7 @@ static int airoha_npu_probe(struct platform_device *pdev)
+ 	npu->dev = dev;
+ 	npu->ops.ppe_init = airoha_npu_ppe_init;
+ 	npu->ops.ppe_deinit = airoha_npu_ppe_deinit;
++	npu->ops.ppe_init_stats = airoha_npu_ppe_stats_setup;
+ 	npu->ops.ppe_flush_sram_entries = airoha_npu_ppe_flush_sram_entries;
+ 	npu->ops.ppe_foe_commit_entry = airoha_npu_foe_commit_entry;
+ 	npu->ops.wlan_init_reserved_memory = airoha_npu_wlan_init_memory;
+diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
+index 78473527ff508919fa60a464917617cb882aac20..691361b254075555549ee80a4ed358c52e8e00b2 100644
+--- a/drivers/net/ethernet/airoha/airoha_ppe.c
++++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+@@ -1243,12 +1243,11 @@ static int airoha_ppe_flush_sram_entries(struct airoha_ppe *ppe,
+ 
+ static struct airoha_npu *airoha_ppe_npu_get(struct airoha_eth *eth)
+ {
+-	struct airoha_npu *npu = airoha_npu_get(eth->dev,
+-						&eth->ppe->foe_stats_dma);
++	struct airoha_npu *npu = airoha_npu_get(eth->dev);
+ 
+ 	if (IS_ERR(npu)) {
+ 		request_module("airoha-npu");
+-		npu = airoha_npu_get(eth->dev, &eth->ppe->foe_stats_dma);
++		npu = airoha_npu_get(eth->dev);
+ 	}
+ 
+ 	return npu;
+@@ -1257,6 +1256,7 @@ static struct airoha_npu *airoha_ppe_npu_get(struct airoha_eth *eth)
+ static int airoha_ppe_offload_setup(struct airoha_eth *eth)
+ {
+ 	struct airoha_npu *npu = airoha_ppe_npu_get(eth);
++	struct airoha_ppe *ppe = eth->ppe;
+ 	int err;
+ 
+ 	if (IS_ERR(npu))
+@@ -1266,12 +1266,19 @@ static int airoha_ppe_offload_setup(struct airoha_eth *eth)
+ 	if (err)
+ 		goto error_npu_put;
+ 
+-	airoha_ppe_hw_init(eth->ppe);
+-	err = airoha_ppe_flush_sram_entries(eth->ppe, npu);
++	if (PPE_STATS_NUM_ENTRIES) {
++		err = npu->ops.ppe_init_stats(npu, ppe->foe_stats_dma,
++					      PPE_STATS_NUM_ENTRIES);
++		if (err)
++			goto error_npu_put;
++	}
++
++	airoha_ppe_hw_init(ppe);
++	err = airoha_ppe_flush_sram_entries(ppe, npu);
+ 	if (err)
+ 		goto error_npu_put;
+ 
+-	airoha_ppe_foe_flow_stats_reset(eth->ppe, npu);
++	airoha_ppe_foe_flow_stats_reset(ppe, npu);
+ 
+ 	rcu_assign_pointer(eth->npu, npu);
+ 	synchronize_rcu();
+diff --git a/include/linux/soc/airoha/airoha_offload.h b/include/linux/soc/airoha/airoha_offload.h
+index 1dc5b4e35ef9eaa1d06072a6b6dad52902468f79..6f66eb339b3fc6e130c24bf04f7daa898314f1e2 100644
+--- a/include/linux/soc/airoha/airoha_offload.h
++++ b/include/linux/soc/airoha/airoha_offload.h
+@@ -181,6 +181,8 @@ struct airoha_npu {
+ 	struct {
+ 		int (*ppe_init)(struct airoha_npu *npu);
+ 		int (*ppe_deinit)(struct airoha_npu *npu);
++		int (*ppe_init_stats)(struct airoha_npu *npu,
++				      dma_addr_t addr, u32 num_stats_entries);
+ 		int (*ppe_flush_sram_entries)(struct airoha_npu *npu,
+ 					      dma_addr_t foe_addr,
+ 					      int sram_num_entries);
+@@ -206,7 +208,7 @@ struct airoha_npu {
+ };
+ 
+ #if (IS_BUILTIN(CONFIG_NET_AIROHA_NPU) || IS_MODULE(CONFIG_NET_AIROHA_NPU))
+-struct airoha_npu *airoha_npu_get(struct device *dev, dma_addr_t *stats_addr);
++struct airoha_npu *airoha_npu_get(struct device *dev);
+ void airoha_npu_put(struct airoha_npu *npu);
+ 
+ static inline int airoha_npu_wlan_init_reserved_memory(struct airoha_npu *npu)
+@@ -256,8 +258,7 @@ static inline void airoha_npu_wlan_disable_irq(struct airoha_npu *npu, int q)
+ 	npu->ops.wlan_disable_irq(npu, q);
+ }
+ #else
+-static inline struct airoha_npu *airoha_npu_get(struct device *dev,
+-						dma_addr_t *foe_stats_addr)
++static inline struct airoha_npu *airoha_npu_get(struct device *dev)
+ {
+ 	return NULL;
+ }
+
+---
+base-commit: 5e3fee34f626a8cb8715f5b5409416c481714ebf
+change-id: 20250924-airoha-npu-init-stats-callback-3dce43846698
+
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
+
 
