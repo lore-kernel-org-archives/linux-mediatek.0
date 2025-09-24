@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A813DCAC5A7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 08:25:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E9FFCAC5A5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 08:27:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=teLA4i8nux4HKrIXNPo+zPMCtmw2VVGeEgKQ+gJ1nyw=; b=NHuSU6hz1pYkfRjWLIXIhgP/Vi
-	R1nddrgsKdrOIYpgOJVV/ld5HLJSmnjCT6FAAskf/O6izHHlIyDeZ+AxoHL2HDuoaYwujlP+ks0E8
-	xXrgzJxId3renFbMxCnB8i9EGHMLylufjLzEGyvtvknuVaH5iN+e6fr67T0/xPH1RqnO0iN3eYOoG
-	4Y4jMyVmR5XZTZWyWVSzoypaBqNnHoX/dnu6AeslI+PQTI52/xs4xpJtwEcQBlf3CJRVReCXGy3u2
-	7cLASYUubcw/BqnQmanzVDi4a2TCjnIlThKBqREGHpB6vyGwBuc1duSRWzCZhk4guB2vI+HSWD1jf
-	Pntm+IYA==;
+	bh=NuhYqOb0TYRwqy3AN367Dp0WjMoAcmdmQel9CM5tbA0=; b=n0N3VZajUq//F+nZzQmPHL/rtv
+	X9eMgoohPympMNu2zzCWqkL42FM2T8h72FDHtRb9DZSqp8E4YPBf8JPEeIThRKfdAjFBkJPZNbXoo
+	tOGzjGUVRlnuyBSL8Fvh/c/1OEZ9YSy74awEs6VQU0EgoOII73z2MDrd+zcjuKkbHd+3priMZ6smh
+	T8CV/d8NZM+jP6JQc7UYo/AglguKVOuJXDukJkZPPtXl5bbyHozWJcAcMnOnlu4hllVgnvjohVL5h
+	L/mS2rE9M+7WdV7uH4rP4b1RzZ98eX+I1FmNgtzmZJpIYm1aPKyevYqlaWSbbu7Oshl1IW3ShW5zL
+	m0XHE0Jg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1Ko7-0000000FrMk-0Jkq;
-	Wed, 24 Sep 2025 08:24:59 +0000
+	id 1v1KqG-0000000FryS-15PY;
+	Wed, 24 Sep 2025 08:27:12 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1Ko3-0000000FrL3-3uQM;
-	Wed, 24 Sep 2025 08:24:57 +0000
+	id 1v1KqD-0000000Frvc-08rn;
+	Wed, 24 Sep 2025 08:27:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1758702292;
-	bh=nc3lW4hEPO4+UuoQL/uQ7/SVAuuMyo049NNa4zT6c8I=;
+	s=mail; t=1758702427;
+	bh=6Wtt45GCrcyLE7Y+MjZ0xRGSIEip4Qk9mzL+4G6Noh8=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=O4T5RwlG/l99iCRkcEwzdsV6JY/OpyJQDfQ6W7/poAYXWcSO4tV5AcGEaWcHoCNvl
-	 kiU/KsrBZxpZ1uJBs6LAFEtnF3X+pPELLZksBI4PgG4q3I3qQp0uJdlDRoz3V4rp8S
-	 5STjySeXm8+5yr9L9srjG51a+IGK6UixO1CW+jS0/tNrpS5BWyfQHH30Wd/yM2MEp2
-	 oXZnGt/BnHDLFCLdLDITI2JVLBNCq24ciTvAxmbMERCsGWhHs6iGI1td6gnG5fB6k1
-	 wycjzBy8/mD+dFny/+JZV5958k39l65AgNU+w/a51w9lzTO5XgiAKuQSs88L7N0IpW
-	 5ZGphx99dbu3w==
+	b=C+eiHwu5PH2XvRjUDDPKl/cjs3WlZViR0RFmhNVG5mu2kN+qHXOyf1R9JGqEk0vKz
+	 rBP+czHXptgenYuE6tUvFUROm644KdcAyJG1VoweCC0JoD+8EDLzbjHklWa5tSsJlx
+	 5pc2ovu1A6qBaTlOcZuI9/ilMvO/sZVLJw7JsB43UXBJr36dnEUWML2QDfjUG/fna9
+	 4n9fYhv+C+I58FqJKab3KsbpAgYGloWiT3p6RTple/pXyM9CM2VVHJDkWQxqKOk+MI
+	 yM/gw1AMS3m6MhXn44AimDZNqOGp14I7FSC/rpOW0tl37fqrKagIG4z2r3HJmfx16p
+	 F95p9XMb676EA==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0A62F17E068C;
-	Wed, 24 Sep 2025 10:24:52 +0200 (CEST)
-Message-ID: <fee90caf-1646-4fdf-8835-20c28c0181c6@collabora.com>
-Date: Wed, 24 Sep 2025 10:24:51 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 73B8017E068C;
+	Wed, 24 Sep 2025 10:27:06 +0200 (CEST)
+Message-ID: <9dd2fea8-f828-4298-97a2-10ef1c61799f@collabora.com>
+Date: Wed, 24 Sep 2025 10:27:05 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] clk: en7523: Add reset-controller support for EN7523
- SoC
+Subject: Re: [PATCH 1/2] dt-bindings: clock: airoha: Add reset support to
+ EN7523 clock binding
 To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
  Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
  <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
@@ -60,15 +60,15 @@ To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
  linux-mediatek@lists.infradead.org
 Cc: Andreas Gnau <andreas.gnau@iopsys.eu>
 References: <20250924060509.1889131-1-mikhail.kshevetskiy@iopsys.eu>
- <20250924060509.1889131-3-mikhail.kshevetskiy@iopsys.eu>
+ <20250924060509.1889131-2-mikhail.kshevetskiy@iopsys.eu>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250924060509.1889131-3-mikhail.kshevetskiy@iopsys.eu>
+In-Reply-To: <20250924060509.1889131-2-mikhail.kshevetskiy@iopsys.eu>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250924_012456_160832_5925F6EE 
-X-CRM114-Status: GOOD (  21.43  )
+X-CRM114-CacheID: sfid-20250924_012709_241189_4AAF0DE6 
+X-CRM114-Status: GOOD (  14.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,155 +84,53 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 24/09/25 08:05, Mikhail Kshevetskiy ha scritto:
-> Introduce reset API support to EN7523 clock driver. EN7523 uses the
-> same reset logic as EN7581, so just reuse existing code. The patch
-> renames:
->   * en7581_rst_ofs to en75xx_rst_ofs,
->   * en7581_reset_register() to en75xx_reset_register()
-> because they are not en7581 specific.
-> 
-> This patch also updates en7523 dtsi file to add required '#reset-cells'
-> property to the System Control Unit node.
+> Introduce reset capability to EN7523 device-tree clock binding
+> documentation. Also this patch makes mandatory '#reset-cells'
+> property for EN7523 SoC dts.
 > 
 > Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
 > ---
->   arch/arm/boot/dts/airoha/en7523.dtsi |  1 +
-
-Driver and devicetree changes have to be done in two different commits.
-Please split.
-
->   drivers/clk/clk-en7523.c             | 72 ++++++++++++++++++++++++----
->   2 files changed, 64 insertions(+), 9 deletions(-)
+>   .../bindings/clock/airoha,en7523-scu.yaml     |  4 +-
+>   .../dt-bindings/reset/airoha,en7523-reset.h   | 61 +++++++++++++++++++
+>   2 files changed, 63 insertions(+), 2 deletions(-)
+>   create mode 100644 include/dt-bindings/reset/airoha,en7523-reset.h
 > 
-> diff --git a/arch/arm/boot/dts/airoha/en7523.dtsi b/arch/arm/boot/dts/airoha/en7523.dtsi
-> index b523a868c4ad..7d60a4f2e650 100644
-> --- a/arch/arm/boot/dts/airoha/en7523.dtsi
-> +++ b/arch/arm/boot/dts/airoha/en7523.dtsi
-> @@ -91,6 +91,7 @@ scu: system-controller@1fa20000 {
->   		reg = <0x1fa20000 0x400>,
->   		      <0x1fb00000 0x1000>;
->   		#clock-cells = <1>;
-> +		#reset-cells = <1>;
->   	};
->   
->   	gic: interrupt-controller@9000000 {
-> diff --git a/drivers/clk/clk-en7523.c b/drivers/clk/clk-en7523.c
-> index 15bbdeb60b8e..f276937181b9 100644
-> --- a/drivers/clk/clk-en7523.c
-> +++ b/drivers/clk/clk-en7523.c
-> @@ -9,6 +9,7 @@
->   #include <linux/regmap.h>
->   #include <linux/reset-controller.h>
->   #include <dt-bindings/clock/en7523-clk.h>
-> +#include <dt-bindings/reset/airoha,en7523-reset.h>
->   #include <dt-bindings/reset/airoha,en7581-reset.h>
->   
->   #define RST_NR_PER_BANK			32
-> @@ -294,11 +295,58 @@ static const struct en_clk_desc en7581_base_clks[] = {
->   	}
->   };
->   
-> -static const u16 en7581_rst_ofs[] = {
-> +static const u16 en75xx_rst_ofs[] = {
+> diff --git a/Documentation/devicetree/bindings/clock/airoha,en7523-scu.yaml b/Documentation/devicetree/bindings/clock/airoha,en7523-scu.yaml
+> index fe2c5c1baf43..a0df16485300 100644
+> --- a/Documentation/devicetree/bindings/clock/airoha,en7523-scu.yaml
+> +++ b/Documentation/devicetree/bindings/clock/airoha,en7523-scu.yaml
+> @@ -53,6 +53,7 @@ required:
+>     - compatible
+>     - reg
+>     - '#clock-cells'
+> +  - '#reset-cells'
 
-There's no need to rename this.
+I can't find any reason why #reset-cells should be a required property: this is a
+clock controller, it doesn't necessarily have to provide resets, and you don't
+necessarily have to use resets, so this shall not be a required property.
 
->   	REG_RST_CTRL2,
->   	REG_RST_CTRL1,
->   };
->   
-> +static const u16 en7523_rst_map[] = {
-> +	/* RST_CTRL2 */
-> +	[EN7523_XPON_PHY_RST]		= 0,
-> +	[EN7523_XSI_MAC_RST]		= 7,
-> +	[EN7523_XSI_PHY_RST]		= 8,
-> +	[EN7523_NPU_RST]		= 9,
-> +	[EN7523_I2S_RST]		= 10,
-> +	[EN7523_TRNG_RST]		= 11,
-> +	[EN7523_TRNG_MSTART_RST]	= 12,
-> +	[EN7523_DUAL_HSI0_RST]		= 13,
-> +	[EN7523_DUAL_HSI1_RST]		= 14,
-> +	[EN7523_HSI_RST]		= 15,
-> +	[EN7523_DUAL_HSI0_MAC_RST]	= 16,
-> +	[EN7523_DUAL_HSI1_MAC_RST]	= 17,
-> +	[EN7523_HSI_MAC_RST]		= 18,
-> +	[EN7523_WDMA_RST]		= 19,
-> +	[EN7523_WOE0_RST]		= 20,
-> +	[EN7523_WOE1_RST]		= 21,
-> +	[EN7523_HSDMA_RST]		= 22,
-> +	[EN7523_I2C2RBUS_RST]		= 23,
-> +	[EN7523_TDMA_RST]		= 24,
-> +	/* RST_CTRL1 */
-> +	[EN7523_PCM1_ZSI_ISI_RST]	= RST_NR_PER_BANK + 0,
-> +	[EN7523_FE_PDMA_RST]		= RST_NR_PER_BANK + 1,
-> +	[EN7523_FE_QDMA_RST]		= RST_NR_PER_BANK + 2,
-> +	[EN7523_PCM_SPIWP_RST]		= RST_NR_PER_BANK + 4,
-> +	[EN7523_CRYPTO_RST]		= RST_NR_PER_BANK + 6,
-> +	[EN7523_TIMER_RST]		= RST_NR_PER_BANK + 8,
-> +	[EN7523_PCM1_RST]		= RST_NR_PER_BANK + 11,
-> +	[EN7523_UART_RST]		= RST_NR_PER_BANK + 12,
-> +	[EN7523_GPIO_RST]		= RST_NR_PER_BANK + 13,
-> +	[EN7523_GDMA_RST]		= RST_NR_PER_BANK + 14,
-> +	[EN7523_I2C_MASTER_RST]		= RST_NR_PER_BANK + 16,
-> +	[EN7523_PCM2_ZSI_ISI_RST]	= RST_NR_PER_BANK + 17,
-> +	[EN7523_SFC_RST]		= RST_NR_PER_BANK + 18,
-> +	[EN7523_UART2_RST]		= RST_NR_PER_BANK + 19,
-> +	[EN7523_GDMP_RST]		= RST_NR_PER_BANK + 20,
-> +	[EN7523_FE_RST]			= RST_NR_PER_BANK + 21,
-> +	[EN7523_USB_HOST_P0_RST]	= RST_NR_PER_BANK + 22,
-> +	[EN7523_GSW_RST]		= RST_NR_PER_BANK + 23,
-> +	[EN7523_SFC2_PCM_RST]		= RST_NR_PER_BANK + 25,
-> +	[EN7523_PCIE0_RST]		= RST_NR_PER_BANK + 26,
-> +	[EN7523_PCIE1_RST]		= RST_NR_PER_BANK + 27,
-> +	[EN7523_PCIE_HB_RST]		= RST_NR_PER_BANK + 29,
-> +	[EN7523_XPON_MAC_RST]		= RST_NR_PER_BANK + 31,
-> +};
-> +
->   static const u16 en7581_rst_map[] = {
->   	/* RST_CTRL2 */
->   	[EN7581_XPON_PHY_RST]		= 0,
-> @@ -357,6 +405,9 @@ static const u16 en7581_rst_map[] = {
->   	[EN7581_XPON_MAC_RST]		= RST_NR_PER_BANK + 31,
->   };
->   
-> +static int en75xx_reset_register(struct device *dev, void __iomem *base,
-> +				 const u16 *rst_map, int nr_resets);
-> +
->   static u32 en7523_get_base_rate(const struct en_clk_desc *desc, u32 val)
->   {
->   	if (!desc->base_bits)
-> @@ -552,7 +603,8 @@ static int en7523_clk_hw_init(struct platform_device *pdev,
->   
->   	en7523_register_clocks(&pdev->dev, clk_data, base, np_base);
->   
-> -	return 0;
-> +	return en75xx_reset_register(&pdev->dev, np_base, en7523_rst_map,
-> +				     ARRAY_SIZE(en7523_rst_map));
->   }
->   
->   static void en7581_register_clocks(struct device *dev, struct clk_hw_onecell_data *clk_data,
-> @@ -646,13 +698,14 @@ static int en7523_reset_xlate(struct reset_controller_dev *rcdev,
->   	return rst_data->idx_map[reset_spec->args[0]];
->   }
->   
-> -static const struct reset_control_ops en7581_reset_ops = {
-> +static const struct reset_control_ops en75xx_reset_ops = {
 
-Same, no need to rename.
-
->   	.assert = en7523_reset_assert,
->   	.deassert = en7523_reset_deassert,
->   	.status = en7523_reset_status,
->   };
 >   
-> -static int en7581_reset_register(struct device *dev, void __iomem *base)
-> +static int en75xx_reset_register(struct device *dev, void __iomem *base,
-> +				 const u16 *rst_map, int nr_resets)
+>   allOf:
+>     - if:
+> @@ -64,8 +65,6 @@ allOf:
+>           reg:
+>             minItems: 2
+>   
+> -        '#reset-cells': false
+> -
+>     - if:
+>         properties:
+>           compatible:
+> @@ -85,6 +84,7 @@ examples:
+>         reg = <0x1fa20000 0x400>,
+>               <0x1fb00000 0x1000>;
+>         #clock-cells = <1>;
+> +      #reset-cells = <1>;
+>       };
+>   
+>     - |
 
-And again. No need to rename.
-
-Cheers,
+Regards,
 Angelo
-
-
 
