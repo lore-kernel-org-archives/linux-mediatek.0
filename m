@@ -4,160 +4,162 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 513B4CAC5B0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 09:41:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E97CCAC5B3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 09:44:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8Rkm7PmTzmoNGXzyaRHNq2Ac4Bjo92vYvTFt305jT+c=; b=EhoobEyplqD0J11m5wdZZmzLws
-	qEDDr/MQNr3ky50jUfxP7T+q/q+8GJg4GW7bZAHoAi0zzEHEhtVMI0vY2VBmdY0oOCjmyFOX9lMUP
-	sElhAavQRTy3U95jMI765LO/tq1LYOOm2PnAFGD50c9qnyb+4dLzit4VpyB7jUYyel0ceInopo+fI
-	2bVX+q5R+HOWcNAOrfhO4+U6BtHbpnSTU2CsGsOhESGR35PxLbZE1gXHLxhBZV3Q4UT2DDkl4SeMO
-	TNuCvVQWh7cspgQl9+3cQFVeekkjMeS+ABRBVN0Vn+QXYMk5ghKklDv4wVQsuUq5nitGjV6pN3IlO
-	PHl/OrDQ==;
+	bh=LATvy2V6SYrxON5S0ZwKxz6/ssurKvZ0zpsAbTZsXD4=; b=q9HtOUYVnUv7U58n2SGXj0pjjo
+	SMtHgiM5fvPAfuZyotCJ1tBNvMs7QHg7ekqHnbFB6o5SlxaLggpVR8fMVKxYNoF5qqRqXN9ZuhO5P
+	67Io1nuZOwNbasoYdfgQbDuLduM75pevBu0OFZVJpvGrdw83ywhFv0+B7AI3jCZYdvq10Cb4Hd5Lv
+	nBZ55o8sYw8ztLye4cR8hOw/1ioa6MXAzXR0cBdss8WMdfJN+Kc5N0N9hyaXb/WjP1tGZxANTQZtO
+	Cg9SOMGRhx5sF2RNui8VfIURmuhI+wHgDmhTTv5haRir1mEDLn/X1G+0E0aYctMPOss+jxaaq+QGM
+	jG7VsXHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1M0P-0000000G8Th-22tH;
-	Wed, 24 Sep 2025 09:41:45 +0000
-Received: from mail-westeuropeazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c201::3] helo=AS8PR04CU009.outbound.protection.outlook.com)
+	id 1v1M32-0000000G9vF-3TVM;
+	Wed, 24 Sep 2025 09:44:28 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1M0F-0000000G8EO-1WMJ;
-	Wed, 24 Sep 2025 09:41:36 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=eGN/RevX0VTV8hNXvE/0IFAlJzSqnTqsYq7Qesp1XYeASt5KSzHYAidPdt74xQ/s98g9DMgbsxQrIOn6wI5XmeFhvyXrb69y9g/rMXMcNuM6AThj3avBkx4BTZ25cIzMReaH6cmPqKiBwV8Zud8txnK1VXv7an3czV247FaeBmpoCJOVTiM4FkDVbcoRBYBFgo4+daSPhiobtN/0W5xJsUhxkdpfc/kjU3uPT1oNeqh8KSGBia9b7PAe+WpgK45m7GjkBv2Ncw3GKcBedJZJSw774mXAX1OD/nnWIefII6EqNmdM5QC8DnuNl9OIubba0/2/WBMUpQ1ZEYrSQGbRfg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=8Rkm7PmTzmoNGXzyaRHNq2Ac4Bjo92vYvTFt305jT+c=;
- b=JvajG7WDuHWRU77Yhkus7ypZOY2eOb10y6s34ogKKwS301Mn1SQvckHl6iTL+QyqBLJqUwAjrcp/W0IgE5mErcTKvsUu8IQgoQFrW1kU2pxKvCd5KkOggSROsdXQA6Kl7wQJcjQZkhmXe1p3nl9JbuStcHnJNdneWZG0014piZwDlFm0eo+1sQDJ87raP7hdCv7jJt6QWZeTH+y71yPq5BWvD5zDMO8C31VTlBkhRdlI8FFXb4XstMyAakw6PKApcj8I79p4jxg2ep/84NxjgPhYuiJwZMo5pKvX14lMb6NmGmMB2XQcviRpCkNSRt5HWUi+1oC7KW8ptuYxzBwnhA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=iopsys.eu;
- dkim=pass header.d=iopsys.eu; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iopsys.eu;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=8Rkm7PmTzmoNGXzyaRHNq2Ac4Bjo92vYvTFt305jT+c=;
- b=Je+lHbX5J8Z1fhv4YZQ3D4svjHlavSdKN0+031Be8HAOCBm/8ed276dPWdOtkcsKBeIx7+kkKwbIoVA8QsTJvxtt6UVNaDmzEoz9rjX+2QKCQXIxoKz1fEs3eKvevmyFiR/67sZBqPbmnNlnjqjC6t0HppO/4LVRd8rw/5rXNVXNZXPR0WiAg55ioUlfvzZfwio3O/dtVKEzDdAaSY8Ah6J/SC78sxdwYYFGGb3tSONa6USUDPJMfBOagWn5JAaTZdfAHbaILwbju2Z8yO9qWG1VrRjhrAIDayVKstFeJhHPYecPZmBx+Ps0njaOvZYgpwULcdj+ihS23Zi+vnv0lQ==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=iopsys.eu;
-Received: from GV2PR08MB8121.eurprd08.prod.outlook.com (2603:10a6:150:7d::22)
- by AM9PR08MB6098.eurprd08.prod.outlook.com (2603:10a6:20b:2d9::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9160.9; Wed, 24 Sep
- 2025 09:41:23 +0000
-Received: from GV2PR08MB8121.eurprd08.prod.outlook.com
- ([fe80::4cd3:da80:2532:daa0]) by GV2PR08MB8121.eurprd08.prod.outlook.com
- ([fe80::4cd3:da80:2532:daa0%3]) with mapi id 15.20.9137.018; Wed, 24 Sep 2025
- 09:41:23 +0000
-From: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-To: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Felix Fietkau <nbd@nbd.name>,
-	linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
-	Andreas Gnau <andreas.gnau@iopsys.eu>
-Subject: [PATCH v2 2/3] clk: en7523: Add reset-controller support for EN7523 SoC
-Date: Wed, 24 Sep 2025 12:41:11 +0300
-Message-ID: <20250924094112.1918444-3-mikhail.kshevetskiy@iopsys.eu>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20250924094112.1918444-1-mikhail.kshevetskiy@iopsys.eu>
-References: <20250924060509.1889131-1-mikhail.kshevetskiy@iopsys.eu>
- <20250924094112.1918444-1-mikhail.kshevetskiy@iopsys.eu>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: GV3P280CA0091.SWEP280.PROD.OUTLOOK.COM
- (2603:10a6:150:8::25) To GV2PR08MB8121.eurprd08.prod.outlook.com
- (2603:10a6:150:7d::22)
+	id 1v1M30-0000000G9uL-1lpN
+	for linux-mediatek@lists.infradead.org;
+	Wed, 24 Sep 2025 09:44:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1758707065;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=LATvy2V6SYrxON5S0ZwKxz6/ssurKvZ0zpsAbTZsXD4=;
+	b=Ym2fl5DsEBP/zm3pmP3tCV37bPoTuhLZTx3SXhSRx/No2FLicoa8MslT2xHsSYV1flh3UQ
+	YXJd4+NCoJt4CSDVyu3Ps1BMSK8bM+9oCcc2wgYkwWzICsFKdOX+dQ4QKprC5eRHoTotYY
+	+ok7+B0AeZHI+t66KpmExa3j0ITYx88=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-595-ADIb89tGPc2ZM21RAo6voQ-1; Wed, 24 Sep 2025 05:44:24 -0400
+X-MC-Unique: ADIb89tGPc2ZM21RAo6voQ-1
+X-Mimecast-MFC-AGG-ID: ADIb89tGPc2ZM21RAo6voQ_1758707063
+Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-4612d068c47so45929015e9.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 24 Sep 2025 02:44:23 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1758707063; x=1759311863;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=LATvy2V6SYrxON5S0ZwKxz6/ssurKvZ0zpsAbTZsXD4=;
+        b=LungqhnaKS/f/fjW5wTmQ3WmwJdmGGUWiEoLOjJCVLF3YAV5xR3oWsnbsWWze3MNMq
+         os8mvapFGN+bHGk+N/vQO4cOI5J+iDvjLr0qlgZDRIwt5Mgj5Bt5sP6Iwm9+75BpiAMk
+         mRDa32LbaxYEcLTKqAnb5AFp0umBTcMhyg/wbYJuCGqvaXNF2pm3pmwpdMLypEzC8kHX
+         7NvB9NSpz2II3FkImq6rFHYo4sML+anOD0LeX0ZQPZC6cx3CJPafzB23tt6pXvLlkEPA
+         Znx4E/wH8+jThsud17Bt+qV84IjKGV/62tfr3owkYv2ND2DYJIH6JSyEkv0jfC1isumz
+         ElhQ==
+X-Forwarded-Encrypted: i=1; AJvYcCX7P39LAFeS9nhnvTk+j5SXOemNMLWeqmDA0qUkEG+VZ1p4/GUkSG6H1pJ7FbuPZ03Jslp9+ROndjhT6Qle9g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyDsYE6bs/ixbhXaHuypi1XgMKTsiXi5Xk72LXgmbTVOp/lDMPO
+	t04vqGcshZym2CNWKjx84s69T0mF0i1jApVcXSDuKprusvXOoTka8s6Q0cnfbEwlklln2OhxYp6
+	8fPHBgWb2t48H8KlgQirR4T3T27+7yywydvyb2KKU9+06PU7lqCIzTsEtaeAmRB4pKOa47DrBJA
+	==
+X-Gm-Gg: ASbGncuIBhVyi7ajyGgnRfnI+OjZJ9alFTdykezXP1HC1L9ri3xJzsGu4TGqqQVzXIz
+	JfOP9BCJR7oM4odQSWL8RawQKqYrDdWjExnfKJAu9cj2qhxecLgyGuKb7S4BgQWBV1v3QlQaIFn
+	7WjwKvydGioqQ7zOGXe1TU5y+hdJp7jpQRkUYHIxO5kgYF2Sict3m9oYp92VB3jkj8JrLvl2qDy
+	y19pnCk9J0Cl0RZbhR/v6KmN7xNMz51p2gxb1OvLBT5awayPA492rh15bfPQJxpsBAxGx2EIes5
+	O4k/otWJUyauzJHWP2zbfOnIjfUJTW0W+9FlI5LDVPm1rGb/pV+f0aYDIA13V3qU5z3J3CpL6TD
+	GOvOKTrY5cftiVwqlfgVdPEbTd8FGe+94hAf1KD/iQLhLbDt5MuwAvIUiJPRS4bVWwQ==
+X-Received: by 2002:a05:600c:8b4c:b0:46e:1ae7:dc1a with SMTP id 5b1f17b1804b1-46e1dacdeccmr60077315e9.35.1758707062749;
+        Wed, 24 Sep 2025 02:44:22 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFtajsvp/kDNdAlIZ81myaBdoqXgoPzgIMj71ym20C24BB7lOR6FEuJDw/hq3ekdj+UMiHTYg==
+X-Received: by 2002:a05:600c:8b4c:b0:46e:1ae7:dc1a with SMTP id 5b1f17b1804b1-46e1dacdeccmr60076735e9.35.1758707062201;
+        Wed, 24 Sep 2025 02:44:22 -0700 (PDT)
+Received: from ?IPV6:2003:d8:2f14:2400:afc:9797:137c:a25b? (p200300d82f1424000afc9797137ca25b.dip0.t-ipconnect.de. [2003:d8:2f14:2400:afc:9797:137c:a25b])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-46e2aad99f8sm25671645e9.17.2025.09.24.02.44.20
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 24 Sep 2025 02:44:21 -0700 (PDT)
+Message-ID: <791e0d59-0eb2-481f-bf8b-ba4b413d5ebd@redhat.com>
+Date: Wed, 24 Sep 2025 11:44:19 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: GV2PR08MB8121:EE_|AM9PR08MB6098:EE_
-X-MS-Office365-Filtering-Correlation-Id: 333473b1-cba0-4e05-ee4d-08ddfb4e85f9
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|376014|7416014|52116014|38350700014|921020;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?Nv8MpJST96I/DR2DGq7rxYYCRoEJgzDwndQirTMd+XDJwwMVQGZICr3WfOeT?=
- =?us-ascii?Q?O9gZg9hYbB1/b5SfbtC516fMsIgSWvvPj16PXyQ7Z8CsS7JnsbN/N8C5BdNc?=
- =?us-ascii?Q?wUxifTz2kteelO2R29q8MMN6D2VbxMmqreQQeDcQJxGh5Ru/pwzFTK6R1Gfh?=
- =?us-ascii?Q?yK1KX38s3WLq2Kz7131c8hedLfs+0FCRWSL/CKF7QCbJvVIcRCuqJZ1JrlCL?=
- =?us-ascii?Q?5bEE+TEw3+aUqNANZRqN51zUC1QstDBF5+Gt+Xr4Zrv/EXh3sgSnAPUVX0/2?=
- =?us-ascii?Q?RlWSPBELbXRx3T4rCVpHYB5c95iyE2DEzn8wMA6bd+yxNsYClz7jQNotQ98s?=
- =?us-ascii?Q?oGoJMgZxVmPLLIPOG5o3gIc29dcJneJk5hBSMOICpgHNAj1ahxZGvtVBo8MR?=
- =?us-ascii?Q?jGrJZO0TEaUeS6926UXVFsZ/oIreDyZFaK5gpHpE3NDKF3fs4XJxF3XD52Pa?=
- =?us-ascii?Q?ypgMDrY8nv4et2LpWaA0vvyfA/oDGnpE6XKoVQ20O3RwsW8/voqDT0J5geQl?=
- =?us-ascii?Q?jMmfq/sZOWWZCw9N4gyg10aE6q6e11e0aNAr4p2Hcxqlk98BMJ1Mw7wskHlm?=
- =?us-ascii?Q?MW5z/3Noc4OW0Cd5xEVSJAPXvBWxaL27cDzSDeiyK5fQSVsWfD/oSd/v+9nU?=
- =?us-ascii?Q?bF4tjqUYddDm6knYssg7R40eOjnyvxTQodiFoXTrQbf7EuB+CHHNuNliQxTm?=
- =?us-ascii?Q?fxLavrcn3gaFVsEAJzV1r6mIKSu48aSxwYZiwFLIK8n0CFB5nFgMsqYfASCG?=
- =?us-ascii?Q?nFW0sok2Z+0i4Qz3zbtQ9Gyg+jCtJZQ5mZOaZRrKNg0z6YTOdPgKyVBytCk2?=
- =?us-ascii?Q?dDj+mOur6u03Y46fYF+1e4tm93U3GrXQT1WjP2GrMWe5qprumDNABLBU7M8E?=
- =?us-ascii?Q?e0qR22CRwj+iSghLGR9fNqQI9K8fQ8sk4WJTtmrQoYrfiGyr3976Lf6aR5uL?=
- =?us-ascii?Q?IAF1+bjVgf5+XvnQLiy/aQ/L5rOsyyrcxpXezAwpWsjEaf7XxQwiN/4gW2wI?=
- =?us-ascii?Q?H7aEhYhWXmtVVAFxsWBxTd1XKCBsTZWHR+puk4p8BkAgfYgvOkn0Bs1ArUMU?=
- =?us-ascii?Q?XzRkj08fjCKDsMjgbqHN0iiVfAMQigitQpizeKwi8dT3QswI+5loQMLDB1mC?=
- =?us-ascii?Q?RqOmqDUE6JCvgRBo2rYmaP6EBDdZ8VlNJ/Kqi62ChzG19qtJocKkb5y+RPPY?=
- =?us-ascii?Q?Zm/E4234jg2UVMA2XlwR84I1l7vb6ncIQDltSewntyz9MukfD7p2UulAQNUH?=
- =?us-ascii?Q?4lf43KxE1ktxpqEFdZbugNNzOKhVIZn6fwwrX9kQDb0PvrOQhcHzV2Ef5Y98?=
- =?us-ascii?Q?uiioTyZl1PeTZ9UBk1+8wpHBudJgXg1Gi6jarEjpdlIq/t7+pFbyabtDRGMC?=
- =?us-ascii?Q?cW2jrBbGpjjyz2L6OfY9byKkciPNT2ZOvzsG7yvZ5exJHkNohAVrwu45jvUB?=
- =?us-ascii?Q?suOMa/Cy05qj2E/Aha1XpI1dhtmZAU24zjc7GV1skmabwOnt+5kbYYE92K9b?=
- =?us-ascii?Q?9InHSwZI4XEWylU=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GV2PR08MB8121.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014)(7416014)(52116014)(38350700014)(921020);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?DkgAEElD1lILYLyp/01CA2Kil7gcd5s1Twy8Zujuj6A55saP2dgZBI6050RG?=
- =?us-ascii?Q?/w/vTD+DO3Gpg8jrRSr09nacDlqQc+m84+n0wg7iMigEYOZ9p3qkrK1BL1WT?=
- =?us-ascii?Q?SnfMwgiEZvY5Ok0xCVxU38y0DkhTLFV9r7/bI4goBkSxWtpaCaO2WtBJtsXJ?=
- =?us-ascii?Q?c/RaGlb6dt71ReYEeJ3/bMKZKBNStfeDxRrxR775aESHeZcboD+IKkkN4Evr?=
- =?us-ascii?Q?rkF4NYyo7d5zykgjYp1xEqjnHsZGkYLrJ11AxuqxIVBzKmLfEDRkSzWSQxHF?=
- =?us-ascii?Q?RSKs50mb7Z52CmI0Bqqwan1lalcGpzWnh4efafc1JxxCbXOS62VPlkiDYVGt?=
- =?us-ascii?Q?CHczbw7nVi+hI4HCuJJW1k64j0ILu/zStFFytqFcQ4vrB/aACRPYMqgafRai?=
- =?us-ascii?Q?Z9OyDw2IizZr8pmgzt7hYzj7A+9QUO2YJ0fO0IFsUgamlLd0/Z8WWeSOtXrv?=
- =?us-ascii?Q?bNqgpE29SXho6ZsiVidjT0wqKP1+jHORkKRim8vAqshqivwakLOzN9hUjPl6?=
- =?us-ascii?Q?aqx1KDVSOXIgwSPxrQIwrPsiDLAPF4oDCXHovuQgb1zas9uN5UASuVAEF8aF?=
- =?us-ascii?Q?5kWxy6+EcXvd8nqGmWV3AJ/6og/h7eNyQN+7XwfmOLXt3wCrlqKCXh6+itta?=
- =?us-ascii?Q?o+tiDawg6LF60XwiA7VXcTyHlcPMOELMr6qQzM43a0QGVhfe3PYiwsUXEk/G?=
- =?us-ascii?Q?65hZTJkZLRSMholBuYykWdHtJyS73grcx9jIFU4m7Z4JBfIyrWnlF2l1dLch?=
- =?us-ascii?Q?9RnOEPPyJZLtQjv9/NJgsjj9T+LmhzlNAYAfyXjyqrNVFedZ6JcOb/J29Ytb?=
- =?us-ascii?Q?5sCjjTSSBIva8QSAgUP/quBRtj86tjLjfX5urRxeIPiuonC/pPJYVgxPViX2?=
- =?us-ascii?Q?tJW9EF0JIFUJfxVQ3ooTDG4bG2r8KlnPg261XRU/qadhYf6A4s7zHKxKl5Nq?=
- =?us-ascii?Q?V3o11FQZx6/YvgDvtUEXaVosqqaH44hGK9Im1+/v7+/ElLrYyEJ42cid4l0k?=
- =?us-ascii?Q?OlhG9mlgTEPJAq5I/TFB8yxe7a4yPVW6wmOK0kNb2a3+o9BC7jTOtePqJeCP?=
- =?us-ascii?Q?z/yFHy44bE90aFOLkbzaw4a9N+fVDTS8osq5XK3CX3Ph5aYWwMUmg34tu7kD?=
- =?us-ascii?Q?0OpqOZIP7q+ANuhQPJb+wVyBmxmGlHHJNs3bW5ijClqkMlxRW7VZ5vm7TIBK?=
- =?us-ascii?Q?YtXEFgzUsphZAjEbVJO9Q8Hp93mDN3/uEFx8/cjuZm4NhMKXK09TxUOCA7RL?=
- =?us-ascii?Q?bghjV5iqRDd+979CiQbKKtIXkylSfpQn7FtALyZltV3QYx/s3fMFQCfQT6zm?=
- =?us-ascii?Q?hl8FlcfA/oQyza49vH6/+E+ob8FUYIaN360npfKzasdCEHGFHiOEiLD5bCJT?=
- =?us-ascii?Q?fN3BIoRv9nb9UfJU2yDU96wAdHfBFUzCD6p2cQq9JuGN51qb74sw44BmyKNL?=
- =?us-ascii?Q?LNwmXSf0TmZP6mJrLeXz+fpGJSGcy+eDuJD+bNWhrTeglllyqdD1N0YOciPr?=
- =?us-ascii?Q?sc0yDzVz2Jd2Y4UN9finxI273GBSWX2cJ/fASccfNBZLYyMFLJrNwQ4k5Mx6?=
- =?us-ascii?Q?tfon+Wle/sTKzekTss060WpVducQ22DLv1QnNqdtkXHrvj0xMMTbNKMxbUSP?=
- =?us-ascii?Q?3gIB57bRqtroXWmfpJcWIrY=3D?=
-X-OriginatorOrg: iopsys.eu
-X-MS-Exchange-CrossTenant-Network-Message-Id: 333473b1-cba0-4e05-ee4d-08ddfb4e85f9
-X-MS-Exchange-CrossTenant-AuthSource: GV2PR08MB8121.eurprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Sep 2025 09:41:23.2469
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: WuePPci4tqdZ68ulKCGD+6X1Ml2R6ukjpHR5Tj92rrKSyDMW/LyUx9cODpKNBkyjZXXNAUQ9b1gI+BScBfVZFyE06+HxAL95gtEXVxXv09I=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM9PR08MB6098
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/1] mm/thp: fix MTE tag mismatch when replacing
+ zero-filled subpages
+To: Catalin Marinas <catalin.marinas@arm.com>
+Cc: Lance Yang <lance.yang@linux.dev>, akpm@linux-foundation.org,
+ lorenzo.stoakes@oracle.com, usamaarif642@gmail.com, yuzhao@google.com,
+ ziy@nvidia.com, baolin.wang@linux.alibaba.com, baohua@kernel.org,
+ voidice@gmail.com, Liam.Howlett@oracle.com, cerasuolodomenico@gmail.com,
+ hannes@cmpxchg.org, kaleshsingh@google.com, npache@redhat.com,
+ riel@surriel.com, roman.gushchin@linux.dev, rppt@kernel.org,
+ ryan.roberts@arm.com, dev.jain@arm.com, ryncsn@gmail.com,
+ shakeel.butt@linux.dev, surenb@google.com, hughd@google.com,
+ willy@infradead.org, matthew.brost@intel.com, joshua.hahnjy@gmail.com,
+ rakie.kim@sk.com, byungchul@sk.com, gourry@gourry.net,
+ ying.huang@linux.alibaba.com, apopple@nvidia.com, qun-wei.lin@mediatek.com,
+ Andrew.Yang@mediatek.com, casper.li@mediatek.com,
+ chinwen.chang@mediatek.com, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-mm@kvack.org, ioworker0@gmail.com, stable@vger.kernel.org
+References: <20250922021458.68123-1-lance.yang@linux.dev>
+ <aNGGUXLCn_bWlne5@arm.com> <a3412715-6d9d-4809-9588-ba08da450d16@redhat.com>
+ <aNKJ5glToE4hMhWA@arm.com> <aNLHexcNI53HQ46A@arm.com>
+ <f2fe9c01-2a8d-4de9-abd5-dbb86d15a37b@linux.dev> <aNOwuKmbAaMaEMb7@arm.com>
+ <17dabd83-0849-44c9-b4a2-196af60d9676@redhat.com> <aNO7MrQt9oPT8Hic@arm.com>
+From: David Hildenbrand <david@redhat.com>
+Autocrypt: addr=david@redhat.com; keydata=
+ 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
+ qIws/H2t
+In-Reply-To: <aNO7MrQt9oPT8Hic@arm.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 1tlt3etOTQHVY6ZVQUPN4mi0l8m5rL-v5GP6rbSGKtA_1758707063
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250924_024135_418854_8D3FB611 
-X-CRM114-Status: GOOD (  16.28  )
+X-CRM114-CacheID: sfid-20250924_024426_529211_3D609A54 
+X-CRM114-Status: GOOD (  18.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -172,156 +174,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce reset API support to EN7523 clock driver. EN7523 uses the
-same reset logic as EN7581, so just reuse existing code. The patch
-renames:
- * en7581_rst_ofs to en75xx_rst_ofs,
- * en7581_reset_register() to en75xx_reset_register()
-because they are not en7581 specific.
+On 24.09.25 11:34, Catalin Marinas wrote:
+> On Wed, Sep 24, 2025 at 11:13:18AM +0200, David Hildenbrand wrote:
+>> On 24.09.25 10:50, Catalin Marinas wrote:
+>>> On Wed, Sep 24, 2025 at 10:49:27AM +0800, Lance Yang wrote:
+>>>> On 2025/9/24 00:14, Catalin Marinas wrote:
+>>>>> So alternative patch that also fixes the deferred struct page init (on
+>>>>> the assumptions that the zero page is always mapped as pte_special():
+>>>>
+>>>> I can confirm that this alternative patch also works correctly; my tests
+>>>> for MTE all pass ;)
+>>>
+>>> Thanks Lance for testing. I'll post one of the variants today.
+>>>
+>>>> This looks like a better fix since it solves the boot hang issue too.
+>>>
+>>> In principle, yes, until I tracked down why I changed it in the first
+>>> place - 68d54ceeec0e ("arm64: mte: Allow PTRACE_PEEKMTETAGS access to
+>>> the zero page"). ptrace() can read tags from PROT_MTE mappings and we
+>>> want to allow reading zeroes as well if the page points to the zero
+>>> page. Not flagging the page as PG_mte_tagged caused issues.
+>>>
+>>> I can change the logic in the ptrace() code, I just need to figure out
+>>> what happens to the huge zero page. Ideally we should treat both in the
+>>> same way but, AFAICT, we don't use pmd_mkspecial() on the huge zero
+>>> page, so it gets flagged with PG_mte_tagged.
+>>
+>> I changed that recently :) The huge zero folio will now always have
+>> pmd_special() set.
+> 
+> Oh, which commit was this? It means that we can end up with
+> uninitialised tags if we have a PROT_MTE huge zero page since
+> set_pmd_at/set_pte_at() skips mte_sync_tags().
+> 
 
-Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
----
- drivers/clk/clk-en7523.c | 72 +++++++++++++++++++++++++++++++++++-----
- 1 file changed, 63 insertions(+), 9 deletions(-)
+This one:
 
-diff --git a/drivers/clk/clk-en7523.c b/drivers/clk/clk-en7523.c
-index 15bbdeb60b8e..f276937181b9 100644
---- a/drivers/clk/clk-en7523.c
-+++ b/drivers/clk/clk-en7523.c
-@@ -9,6 +9,7 @@
- #include <linux/regmap.h>
- #include <linux/reset-controller.h>
- #include <dt-bindings/clock/en7523-clk.h>
-+#include <dt-bindings/reset/airoha,en7523-reset.h>
- #include <dt-bindings/reset/airoha,en7581-reset.h>
- 
- #define RST_NR_PER_BANK			32
-@@ -294,11 +295,58 @@ static const struct en_clk_desc en7581_base_clks[] = {
- 	}
- };
- 
--static const u16 en7581_rst_ofs[] = {
-+static const u16 en75xx_rst_ofs[] = {
- 	REG_RST_CTRL2,
- 	REG_RST_CTRL1,
- };
- 
-+static const u16 en7523_rst_map[] = {
-+	/* RST_CTRL2 */
-+	[EN7523_XPON_PHY_RST]		= 0,
-+	[EN7523_XSI_MAC_RST]		= 7,
-+	[EN7523_XSI_PHY_RST]		= 8,
-+	[EN7523_NPU_RST]		= 9,
-+	[EN7523_I2S_RST]		= 10,
-+	[EN7523_TRNG_RST]		= 11,
-+	[EN7523_TRNG_MSTART_RST]	= 12,
-+	[EN7523_DUAL_HSI0_RST]		= 13,
-+	[EN7523_DUAL_HSI1_RST]		= 14,
-+	[EN7523_HSI_RST]		= 15,
-+	[EN7523_DUAL_HSI0_MAC_RST]	= 16,
-+	[EN7523_DUAL_HSI1_MAC_RST]	= 17,
-+	[EN7523_HSI_MAC_RST]		= 18,
-+	[EN7523_WDMA_RST]		= 19,
-+	[EN7523_WOE0_RST]		= 20,
-+	[EN7523_WOE1_RST]		= 21,
-+	[EN7523_HSDMA_RST]		= 22,
-+	[EN7523_I2C2RBUS_RST]		= 23,
-+	[EN7523_TDMA_RST]		= 24,
-+	/* RST_CTRL1 */
-+	[EN7523_PCM1_ZSI_ISI_RST]	= RST_NR_PER_BANK + 0,
-+	[EN7523_FE_PDMA_RST]		= RST_NR_PER_BANK + 1,
-+	[EN7523_FE_QDMA_RST]		= RST_NR_PER_BANK + 2,
-+	[EN7523_PCM_SPIWP_RST]		= RST_NR_PER_BANK + 4,
-+	[EN7523_CRYPTO_RST]		= RST_NR_PER_BANK + 6,
-+	[EN7523_TIMER_RST]		= RST_NR_PER_BANK + 8,
-+	[EN7523_PCM1_RST]		= RST_NR_PER_BANK + 11,
-+	[EN7523_UART_RST]		= RST_NR_PER_BANK + 12,
-+	[EN7523_GPIO_RST]		= RST_NR_PER_BANK + 13,
-+	[EN7523_GDMA_RST]		= RST_NR_PER_BANK + 14,
-+	[EN7523_I2C_MASTER_RST]		= RST_NR_PER_BANK + 16,
-+	[EN7523_PCM2_ZSI_ISI_RST]	= RST_NR_PER_BANK + 17,
-+	[EN7523_SFC_RST]		= RST_NR_PER_BANK + 18,
-+	[EN7523_UART2_RST]		= RST_NR_PER_BANK + 19,
-+	[EN7523_GDMP_RST]		= RST_NR_PER_BANK + 20,
-+	[EN7523_FE_RST]			= RST_NR_PER_BANK + 21,
-+	[EN7523_USB_HOST_P0_RST]	= RST_NR_PER_BANK + 22,
-+	[EN7523_GSW_RST]		= RST_NR_PER_BANK + 23,
-+	[EN7523_SFC2_PCM_RST]		= RST_NR_PER_BANK + 25,
-+	[EN7523_PCIE0_RST]		= RST_NR_PER_BANK + 26,
-+	[EN7523_PCIE1_RST]		= RST_NR_PER_BANK + 27,
-+	[EN7523_PCIE_HB_RST]		= RST_NR_PER_BANK + 29,
-+	[EN7523_XPON_MAC_RST]		= RST_NR_PER_BANK + 31,
-+};
-+
- static const u16 en7581_rst_map[] = {
- 	/* RST_CTRL2 */
- 	[EN7581_XPON_PHY_RST]		= 0,
-@@ -357,6 +405,9 @@ static const u16 en7581_rst_map[] = {
- 	[EN7581_XPON_MAC_RST]		= RST_NR_PER_BANK + 31,
- };
- 
-+static int en75xx_reset_register(struct device *dev, void __iomem *base,
-+				 const u16 *rst_map, int nr_resets);
-+
- static u32 en7523_get_base_rate(const struct en_clk_desc *desc, u32 val)
- {
- 	if (!desc->base_bits)
-@@ -552,7 +603,8 @@ static int en7523_clk_hw_init(struct platform_device *pdev,
- 
- 	en7523_register_clocks(&pdev->dev, clk_data, base, np_base);
- 
--	return 0;
-+	return en75xx_reset_register(&pdev->dev, np_base, en7523_rst_map,
-+				     ARRAY_SIZE(en7523_rst_map));
- }
- 
- static void en7581_register_clocks(struct device *dev, struct clk_hw_onecell_data *clk_data,
-@@ -646,13 +698,14 @@ static int en7523_reset_xlate(struct reset_controller_dev *rcdev,
- 	return rst_data->idx_map[reset_spec->args[0]];
- }
- 
--static const struct reset_control_ops en7581_reset_ops = {
-+static const struct reset_control_ops en75xx_reset_ops = {
- 	.assert = en7523_reset_assert,
- 	.deassert = en7523_reset_deassert,
- 	.status = en7523_reset_status,
- };
- 
--static int en7581_reset_register(struct device *dev, void __iomem *base)
-+static int en75xx_reset_register(struct device *dev, void __iomem *base,
-+				 const u16 *rst_map, int nr_resets)
- {
- 	struct en_rst_data *rst_data;
- 
-@@ -660,13 +713,13 @@ static int en7581_reset_register(struct device *dev, void __iomem *base)
- 	if (!rst_data)
- 		return -ENOMEM;
- 
--	rst_data->bank_ofs = en7581_rst_ofs;
--	rst_data->idx_map = en7581_rst_map;
-+	rst_data->bank_ofs = en75xx_rst_ofs;
-+	rst_data->idx_map = rst_map;
- 	rst_data->base = base;
- 
--	rst_data->rcdev.nr_resets = ARRAY_SIZE(en7581_rst_map);
-+	rst_data->rcdev.nr_resets = nr_resets;
- 	rst_data->rcdev.of_xlate = en7523_reset_xlate;
--	rst_data->rcdev.ops = &en7581_reset_ops;
-+	rst_data->rcdev.ops = &en75xx_reset_ops;
- 	rst_data->rcdev.of_node = dev->of_node;
- 	rst_data->rcdev.of_reset_n_cells = 1;
- 	rst_data->rcdev.owner = THIS_MODULE;
-@@ -698,7 +751,8 @@ static int en7581_clk_hw_init(struct platform_device *pdev,
- 	val = readl(base + REG_NP_SCU_PCIC);
- 	writel(val | 3, base + REG_NP_SCU_PCIC);
- 
--	return en7581_reset_register(&pdev->dev, base);
-+	return en75xx_reset_register(&pdev->dev, base, en7581_rst_map,
-+				     ARRAY_SIZE(en7581_rst_map));
- }
- 
- static int en7523_clk_probe(struct platform_device *pdev)
+commit d82d09e482199e6bbc204df10b2082f764cbe1f4
+Author: David Hildenbrand <david@redhat.com>
+Date:   Mon Aug 11 13:26:25 2025 +0200
+
+     mm/huge_memory: mark PMD mappings of the huge zero folio special
+
+     The huge zero folio is refcounted (+mapcounted -- is that a word?)
+     differently than "normal" folios, similarly (but different) to the
+     ordinary shared zeropage.
+
+
+It should be in mm-stable, to go upstream in the upcoming merge window. 
+It's been lurking in -next for a while now.
+
+As it behaves just like the ordinary shared zeropage now, would we have 
+to zero/initialize the tags after allocating it?
+
 -- 
-2.51.0
+Cheers
+
+David / dhildenb
 
 
