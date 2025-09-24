@@ -4,160 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54A62CAC5B6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 10:49:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DF7ECAC5B3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 11:11:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=o9Gch6omiWO3A08BFZ6zYYOikqsDOljdI8CDFQzYHoU=; b=NUQkPbzVDq5LIHPVsNnqvkGhgp
-	xijcLJyskffnRp18gNfh+aPpWix2C5C5zGlCLqI7LGVUFActNAuMh7D8R9x9l7v40S+cH/rUnKwen
-	MnAL/Zct9R+9cEf5lvoALfc4QGKEAJeY8NhGjHDokizhiaIjjJEUdBgQjq2DKLAXMeMDJpmBA76OA
-	MZ1k39JOYh0NHUZslulCeHy6SF8FdBbRg4lV7Alp1LbjJIRxmjPmv+zuCg+qbc4qz7ghsdl4zdnfa
-	IJ++V8PvivHUzcp4WqqSfcyvPDPEpvjwcAGrKU8raZ1AY43VJL0gfVLUhfJpab+arBiXxQ8fZZ7Tq
-	edZeV5EQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=0WlA1OkllYtpW7fXlum03ByotMD3xXO2F5kb/Vnk4bc=; b=M+nzpZOKe+rT6d
+	fb/I0PfhzmswNW3xLfi+5yVpCWtpj6lyMcVQT0L+wfD7wZ+2iQ5gdqu+MDVcMkztzQvfF+wVnVKpv
+	G6bGvTFw8EEAB3J3H6HHMcoHwqhmteXajze0rjSWsqV9K8w+UX1RJtxIQa/9stVqX7RUUPbQSAsXF
+	PYaCVnhXOW5IxY9Akq4komYNySlu8nh+op7jAnnp8UmO4sRTsY7kOgatpz+szFkKP0T9fn9SeAcW0
+	3nh26IjaTN38zHsF6eGdN02+bZ/zPRezh0dWNKvNLlXk3JdLGq4j3a+tXvsP3znxAZ0Vph7V9lzRV
+	I7Uw1nKaBXu0WXLIiBZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1N3k-0000000GeM0-1wxS;
-	Wed, 24 Sep 2025 10:49:16 +0000
-Received: from mail-westeuropeazlp170100001.outbound.protection.outlook.com ([2a01:111:f403:c201::1] helo=AM0PR83CU005.outbound.protection.outlook.com)
+	id 1v1NPC-0000000Gnjt-3tgU;
+	Wed, 24 Sep 2025 11:11:26 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1N3f-0000000Ge8t-3FU1;
-	Wed, 24 Sep 2025 10:49:13 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=hmPNoQ5awj9aL8PUT/dbc9IQy4NoevfuIldF3qB7KxNNnwPqEEyCemp5F8Bub+UWBzx4BPEFCa5xd4ZymGdIUx+0BPxDcVMbSuCUvmPNYUszOu4CxgsIEaUpvsACi83WQsKCotTYWYytp3wlV5rLXV6cqTlf8zgZJrQ+LbYU55qroS2kveEM9yS3jj17QYbhD7yNpfV7/c1K1dQm9IhnGdPPXs9t+94SW1hQZxa5scHZ2u1HqbI+HN+kn5tj5rFT5wUtHEwOTe/TXQN3n/V4bgNE62fKzJejBSYUajycM6uVcQRx+Nl1veb6qCbjmX0wZp2xkJg9syQ4VzBOFF/FCQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=o9Gch6omiWO3A08BFZ6zYYOikqsDOljdI8CDFQzYHoU=;
- b=FSNpK5BI1rsIC5N3gafG2cnsq85WdSx52shjY75Arvuwa7oqBZtq/suVNJzGc0AtZHM5+48OWAFYSf1UFowMrzaxhIcuYMYjWi4ZvW4hoZkiCGGo0DI9i8QzxMyO/rI+u3VKMn8WGuTXLWS9U4qkiXn2/kulneiLATrqrKp79Z14wloFq281a1VyeGRGd48QT+Oj8poj3zchKuhwTC2oRcrdcjnvSXoWj7fIrei0ppwPp/ZK0ERalJwsHj70ez725kN2caafi0eQXWInIFy70y3PRjoHLSn/LSqONhS5RRDOKiub6x/NlJwFxv2c8oEaApkFWZgumAPZE3zZ+V9aGA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=iopsys.eu;
- dkim=pass header.d=iopsys.eu; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iopsys.eu;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=o9Gch6omiWO3A08BFZ6zYYOikqsDOljdI8CDFQzYHoU=;
- b=ElmHeCmhuaOb1u1golJofdoGiQ+aTCHxu3rpc+Et3rBxIKeJplgERSxl2cZa/13jQj8FgWV9NdBvlzZtHjHYfcscq8dQtwH3XI2pf9ic0u++1eeZmUb1kR9U1iSTIGtmkVbiJ06GHGzwxdjiZmzKYhtsmxagrcFkeWVjj1LUDy3QwKC21HMaaXEtqYo0ivikBCA9Q5ur76a4jk0A+SVShzbTOBpn9+gZOYyF0/GO2TzeA/ZpP20i+BmKbjJlU18xUDKzxkQH77Pkx+Mss4SplXRkoekapu/OS/1BwLgYsfJPT3JbMiXYrSST9VVNnrqFBAPUAJPCzCgA/PbIMVt1qg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=iopsys.eu;
-Received: from GV2PR08MB8121.eurprd08.prod.outlook.com (2603:10a6:150:7d::22)
- by AS2PR08MB10010.eurprd08.prod.outlook.com (2603:10a6:20b:64a::17) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9137.20; Wed, 24 Sep
- 2025 10:49:03 +0000
-Received: from GV2PR08MB8121.eurprd08.prod.outlook.com
- ([fe80::4cd3:da80:2532:daa0]) by GV2PR08MB8121.eurprd08.prod.outlook.com
- ([fe80::4cd3:da80:2532:daa0%3]) with mapi id 15.20.9137.018; Wed, 24 Sep 2025
- 10:49:03 +0000
-From: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-To: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Felix Fietkau <nbd@nbd.name>,
-	linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
-	Andreas Gnau <andreas.gnau@iopsys.eu>
-Subject: [PATCH v3 3/3] ARM: dts: airoha: update EN7523 dtsi to support resets
-Date: Wed, 24 Sep 2025 13:48:50 +0300
-Message-ID: <20250924104850.1930254-4-mikhail.kshevetskiy@iopsys.eu>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20250924104850.1930254-1-mikhail.kshevetskiy@iopsys.eu>
-References: <20250924094112.1918444-1-mikhail.kshevetskiy@iopsys.eu>
- <20250924104850.1930254-1-mikhail.kshevetskiy@iopsys.eu>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: GV3P280CA0003.SWEP280.PROD.OUTLOOK.COM
- (2603:10a6:150:b::28) To GV2PR08MB8121.eurprd08.prod.outlook.com
- (2603:10a6:150:7d::22)
+	id 1v1NP8-0000000Gndh-3fTj;
+	Wed, 24 Sep 2025 11:11:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1758712280;
+	bh=5GT6jnvxYjStCKgCq5+Wz35bOeICFGv9mfyP8q18sGI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=FqQDe9Eo+x/xmzaI1BbvECmNJw21c6MO2jBjAvmTpblE+Q+gR1a9m8bHeSohkfPxj
+	 MO41XNvHtQL2w4W11nwUdY0Nr1MJdNMeIGtrXpLKX7GHdpypxk+Ou/HFM8bHfcxxrj
+	 uXhBevqAezWCIkkpqVmmMO3MjODu92EXK/HpMh2p+E2zODc79juhktSXrlDn0KXdS+
+	 99EW6jPyZBRIlfG9dLatj36vySf7eRYi8Rj+9R6ci5HePQJ+4ugKXyRN7WLn4bw9YG
+	 fbNlzUAHdg1+DwFRIc8uJw+GuiCaB0cgmA7v+5JbFLvUddHPegEoX6Dv6p5VxOi4kN
+	 4mHxFqTQ23HSw==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 25D9117E068C;
+	Wed, 24 Sep 2025 13:11:19 +0200 (CEST)
+Message-ID: <5fb4a548-4dc4-4964-975f-675541c4b728@collabora.com>
+Date: Wed, 24 Sep 2025 13:11:18 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: GV2PR08MB8121:EE_|AS2PR08MB10010:EE_
-X-MS-Office365-Filtering-Correlation-Id: 7e891678-234f-4f36-be2e-08ddfb57f9e6
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|376014|52116014|366016|1800799024|38350700014|921020;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?pwrVSZle3RDqhll8azLKqqsEHKMRZ6ER0M5mY2yAI7MKFzKk4z+2/FQYHzbo?=
- =?us-ascii?Q?MWCqg7OxUauzSbFkof+ftgp0cdX3Cd4CAS81rAUVRNebAIT847lHPauY/qDT?=
- =?us-ascii?Q?p6kV8GGOKLlvvud4V3/farGHXLuVue/7ykiqUo9WiMJ8C4imx+pXINBHK3Ap?=
- =?us-ascii?Q?wsRB/evPp9Z6/ettwaeF+E/hWqvTupysa7DZR8Krf/mndVOjSiHo93ZE1MRu?=
- =?us-ascii?Q?5ITC4a6DFysdVQdh1x3bG/VVnYhF8UpiFJuI3VU8iGzY93OkBtQGcVu7wv3x?=
- =?us-ascii?Q?OwI1DoALb2+OlMBV4vgXvXFmEPplVykzc+n3D8HAE5YXtyteUwBF16gbVu/G?=
- =?us-ascii?Q?rllMD0dmrYQ/usHuoUI1wngwn+QN9BeLpOAtrwYDYV/VS5mLrLScm9S9qeso?=
- =?us-ascii?Q?4ohtwpJhvM/qHkq7dGzSOw209/ut4MeOyoNcPrtdBRDP7ZPNncIGOhVhhCdt?=
- =?us-ascii?Q?o1ieUV3FtE+se1REtFUCM0ASnBfWpeus7SXjVgmbDnO92VxPcaMSPa8ekdY8?=
- =?us-ascii?Q?jvgY/8YZwBTlhd0oX1TItp50JnNJxX+QIqbsmQTFKPNYQSjz6NOt9jt27CgW?=
- =?us-ascii?Q?fPXpZiuK/dK1RxGHmPi7acAlH2LBrw/ZXccVBpV6u2eNibUOYFAwK6b+w55P?=
- =?us-ascii?Q?Cmt7uCZsWY/ruhouLIFzc/kptLADVceWcCMd4/MD7RmW4gOykBszMkDcUvLa?=
- =?us-ascii?Q?MZ4eXvfsaWJ4ALXEqxXLYGSSnX1G5GkFE2e6VItFsQ9Q5pVYlP1Gm4qOg1oY?=
- =?us-ascii?Q?em9vnZqORxQbQcmKU1JULQ1vxRiP59awhNAFlmshUb+kNlg4kSOVTJ3sBUkH?=
- =?us-ascii?Q?43AsZs6C7be8RQEV0CF1GEPpA8X38ZgNRrwKnk90h+xq1qL3iDXzeVjQ1CPc?=
- =?us-ascii?Q?PNJMag52vl9Ze4IdOG1GBNMLJuYOsjjOLJrdvYj/4oCyHXiaGnUOmrJl2SQc?=
- =?us-ascii?Q?4kM0zYpO6043+MexTdIWIyv1D5AYdlJ8e47alhu2NVhE033A0OHmuaTrspEz?=
- =?us-ascii?Q?9kT7j8hABZFPRYRAdHHEYJR1KApXLAdVBcjEOO3F2LATtBpwteWwVSv+1Bo0?=
- =?us-ascii?Q?qyrCoY0+NlKghGXqqjX4cx9EKT0B9bBs5r1U76SPb7gjwbfTFPvO4MiIakx0?=
- =?us-ascii?Q?u9D4+bGTeX5rc4kwjQ5ciTQ2thZRpj4D4HIvY8IvZPLJdS4296wdTWku0d2y?=
- =?us-ascii?Q?oLimVx1UG9bmlog+mDoC5Ey+nmFyde1crOIXe0rpfJhgp5WwsZEox+hbb3Gb?=
- =?us-ascii?Q?bUoEg8eklMmIcZsOOKxC2iAreplr2alvTGkpdtA+1Aq/FzEPISfIwq0uL24a?=
- =?us-ascii?Q?C9+nkvu3tmpxmBH9l9EN7gnvCXmD2fsfcVl2nFkbcg0QD9AwOBSOBsUlKjHw?=
- =?us-ascii?Q?7zVinUqb81nsK5Rn+hazwGwU9lFRpRUHcfTLSgLqOHIdwy7CwJ2HLVle4PeK?=
- =?us-ascii?Q?vC01p4XTJoTqLPcDsrZo/0vGsK9oGx8MihejCOk975rxWVrGKyldG99DT8S6?=
- =?us-ascii?Q?+YYbIbmMgfkBRbU=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GV2PR08MB8121.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(376014)(52116014)(366016)(1800799024)(38350700014)(921020);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?n9LqI5m6Vc3n+DTKMzryE3DZeKF4GZ31GuuB0DkgjZrV1vo0DlVYuE/n4/YI?=
- =?us-ascii?Q?khVMxloZ6vNy+Rh4NPvjYUp65RUMskhmOGMP1yRNkQRNdP1TsBFQNxYUSKcf?=
- =?us-ascii?Q?pGJS9sBYK8rlp/GCtSMm8oq25QGYS2sOICBysrz1ICg6GvvJ51nzRT1zJQXG?=
- =?us-ascii?Q?6CNhR3Nm6z69KsJd+sGPjWdt9WOpEq3DKs2J6XPH6xJcxftGiQngWFUBMoi8?=
- =?us-ascii?Q?OE6f3sonmyJtrwdWoOsCAYfRCPRtVyz6YffkM7z5BQd27uwis3Xo3oDLtttz?=
- =?us-ascii?Q?31/Ke3/s9kUhemw7zW0OrVofuV73JU9ZD4foKfBJGGawYiT2QfH5Otq4PK1a?=
- =?us-ascii?Q?TDdaMgBpCk2mAXOsLDmUJse8/soVXb9PKpted+KUFlEMfEwJsAT3+QJPJZeo?=
- =?us-ascii?Q?99PRr+1xSN/3FJUEKzB4WmtGrqtxdZobsFMDUHVk/CThQ9rSmieGU6G3PVWB?=
- =?us-ascii?Q?ILprXoZM15XOZJ105jHhtT6QFrDAhL0JP+8FsOe3+wcikSYja54KycEW2THU?=
- =?us-ascii?Q?BhQbdKzZXsCI/Fe0xo6UXJSZEvjJFETozfltBU9nO55YFw3kiRX8jW+ttVcD?=
- =?us-ascii?Q?RTDrT774YUji69j59eUdPlShEGswXT3mScOlaItv2ocbRYjLa/KOrdOH4m7f?=
- =?us-ascii?Q?U4ns+C8fQHIqJmwGeP4Ls5EaxVDoH77BdJf/SA4WvBdHqVRUyldudPF556bT?=
- =?us-ascii?Q?DTQy4VqIRo1+dSSxR/cU61JGOt+xXQYYJiuRkkr3Q9tsX87gk/kVhuPhf4aU?=
- =?us-ascii?Q?SiM+LOUDhKpqwrafqWtLjFR82PpLBIQNPHSXaJaYoqtaOe0xyqx1ohgUMnif?=
- =?us-ascii?Q?ZZtpuDqgJXLDKQWy98ECx51sKlJaV3nwOJ9Eq5EsRtmOTdpdeAt+tQBcLJKq?=
- =?us-ascii?Q?h2Go4IpCckLCTM4+t4N/s1a88NVoMiyNDq+31SVWy4W+e3605ZVg7OkQcylv?=
- =?us-ascii?Q?KdCsOThCuBQD1awVbCDoP5oW7NdiIVvMRENeAojKRtvehYIzQbmstCC1/zpf?=
- =?us-ascii?Q?9O8Z0+PAMxvtqwYHXTZPSIcZkF//LHIllJrQmt09AMoPOz10FuR5swOZ3agY?=
- =?us-ascii?Q?k+9E+4jD/rxSSk0ASdq55xJxSPqlKhmw9orZglSw/XDv2I0begIE9qAnIAPv?=
- =?us-ascii?Q?jq7c+Hs1pJA/JOBRz6MXGVigT/JfMwvn5zz4GE3/1887hCpQVP9ErjWk3oNk?=
- =?us-ascii?Q?CBgxbokAfVpd4hFUsnAgYXSxKoPwjsh9kLozAv6J1uuWskdJ9mpg2D6xS81q?=
- =?us-ascii?Q?FZZ4mOSOyIrIiGMje2sZD7DY7IoIkNI7LJhe6O9g64qPUrpV0Tlh1Ix5obdw?=
- =?us-ascii?Q?HH8rwK0/IkwpG1vDcLsM9IW0VbkeB1b5qoENj8OOQ1msWjeQ5tmPMf5LgZdg?=
- =?us-ascii?Q?azzcOWJqq3+0X+GwysoTN5uz/+YeEAM8JUgTTU36+bnA/DFDu2+jooZOBw4N?=
- =?us-ascii?Q?ONCplorIsEJwyB5+OrPCK9bFPqvT3SqrExyPe8UrGiqglZ06xZtmKZ4ELfYM?=
- =?us-ascii?Q?ZiNvA1M7cPytfFkcZf60vhRmEjZTtPeJRj3p9qWIGMkOK+gxuvsMlY0te8hd?=
- =?us-ascii?Q?Uy5Gd2gi2ruK2pFVUGfyNEkI6d5mBS+rmbzdG5rVCGfnwp1qDOwdZJS+v4jC?=
- =?us-ascii?Q?XLTz5BNMje35lbRzlbduUPY=3D?=
-X-OriginatorOrg: iopsys.eu
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7e891678-234f-4f36-be2e-08ddfb57f9e6
-X-MS-Exchange-CrossTenant-AuthSource: GV2PR08MB8121.eurprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Sep 2025 10:49:03.1928
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 3JlD5rJrdCkZoeXcljwMMZnL8xbddV9YMcUOIFjjn8PGvPxjUxRLfMVdNAzIRMU0DePr/U+4nGgnPPswUXO0gQQK6QbT9dBEJxiz1qCYigw=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS2PR08MB10010
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 0/9] Add thermal sensor driver support for Mediatek
+ MT8196
+To: Laura Nao <laura.nao@collabora.com>, srini@kernel.org, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, rafael@kernel.org,
+ daniel.lezcano@linaro.org, rui.zhang@intel.com, lukasz.luba@arm.com,
+ matthias.bgg@gmail.com
+References: <20250804133035.309990-1-laura.nao@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250804133035.309990-1-laura.nao@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250924_034911_863215_BB507A63 
-X-CRM114-Status: GOOD (  11.62  )
+X-CRM114-CacheID: sfid-20250924_041123_099872_D903F23B 
+X-CRM114-Status: GOOD (  16.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -169,38 +73,70 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: andrew-ct.chen@mediatek.com, lala.lin@mediatek.com, arnd@arndb.de, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, nfraprado@collabora.com, devicetree@vger.kernel.org, u.kleine-koenig@baylibre.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, kernel@collabora.com, colin.i.king@gmail.com, bchihi@baylibre.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch updates EN7523 dtsi to reflect the reset-controller
-support for EN7523 SoC.
+Il 04/08/25 15:30, Laura Nao ha scritto:
+> This patch series extends the MediaTek LVTS thermal driver to support the
+> MT8196 SoC.
+> 
+> MT8196 requires a different implementation of the lvts_temp_to_raw()
+> function.
+> 
+> To support this, the series introduces:
+> 
+> - A new struct lvts_platform_ops to allow platform-specific
+>    conversion logic between raw sensor values and temperature
+> - A variant of the lvts_temp_to_raw() implementation
+> - Platform data and controller definitions for MT8196
+> 
+> Link to v2: https://lore.kernel.org/all/20250730152128.311109-1-laura.nao@collabora.com/
+> 
+> Changes in v3:
+> - Make ops in struct lvts_data a pointer to const struct lvts_platform_ops
+> - Changed mediatek,mt8188-efuse const entry in eFuse binding to an enum
+> with mediatek,mt8196-efuse and mediatek,mt8188-efuse, dropped mediatek,mt8196-efuse
+> const entry
+> 
 
-Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
----
- arch/arm/boot/dts/airoha/en7523.dtsi | 2 ++
- 1 file changed, 2 insertions(+)
+Whole series is both
 
-diff --git a/arch/arm/boot/dts/airoha/en7523.dtsi b/arch/arm/boot/dts/airoha/en7523.dtsi
-index b523a868c4ad..231638b25c5b 100644
---- a/arch/arm/boot/dts/airoha/en7523.dtsi
-+++ b/arch/arm/boot/dts/airoha/en7523.dtsi
-@@ -4,6 +4,7 @@
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/clock/en7523-clk.h>
-+#include <dt-bindings/reset/airoha,en7523-reset.h>
- 
- / {
- 	interrupt-parent = <&gic>;
-@@ -91,6 +92,7 @@ scu: system-controller@1fa20000 {
- 		reg = <0x1fa20000 0x400>,
- 		      <0x1fb00000 0x1000>;
- 		#clock-cells = <1>;
-+		#reset-cells = <1>;
- 	};
- 
- 	gic: interrupt-controller@9000000 {
--- 
-2.51.0
+Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> 
+#MT8196 Chromebook
+
+and is also
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+...and besides, this got also tested on MT8188/95 in our lab (for quite a while).
+
+Regards,
+Angelo
+
+> Laura Nao (9):
+>    dt-bindings: thermal: mediatek: Add LVTS thermal controller support
+>      for MT8196
+>    thermal/drivers/mediatek/lvts: Make number of calibration offsets
+>      configurable
+>    thermal/drivers/mediatek/lvts: Guard against zero temp_factor in
+>      lvts_raw_to_temp
+>    thermal: mediatek: lvts: Add platform ops to support alternative
+>      conversion logic
+>    thermal/drivers/mediatek/lvts: Add lvts_temp_to_raw variant
+>    thermal/drivers/mediatek/lvts: Add support for ATP mode
+>    thermal/drivers/mediatek/lvts: Support MSR offset for 16-bit
+>      calibration data
+>    thermal/drivers/mediatek/lvts_thermal: Add MT8196 support
+>    dt-bindings: nvmem: mediatek: efuse: Add support for MT8196
+> 
+>   .../bindings/nvmem/mediatek,efuse.yaml        |   4 +-
+>   .../thermal/mediatek,lvts-thermal.yaml        |   2 +
+>   drivers/thermal/mediatek/lvts_thermal.c       | 305 ++++++++++++++++--
+>   .../thermal/mediatek,lvts-thermal.h           |  26 ++
+>   4 files changed, 314 insertions(+), 23 deletions(-)
+> 
+
+
 
 
