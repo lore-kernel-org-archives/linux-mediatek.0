@@ -4,93 +4,161 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3B5FCAC5A5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 19:12:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4FF6CAC5AE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 19:19:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MP5auDUMxEYh7gEFpW+fTsgkWPRs0id0KEIy7AhJUyY=; b=4s/zNp6Z/MjrHw5yWz/HJ94vS7
-	YpPtiLlfPs1XhyQLNApSbX7El/9fqXgfiI5W5OHm16zMpuDTG6p7QU4pVjqG3g7qSbpn8lqwq4Ogy
-	RDWCsB4lRqsWh2IwY2HD/kUs71atsoGYwS1jv94fjBVlx5Y2g2Zrab/wlN+q6zsjX1kbCuJ+/jFk1
-	3IA7/JLQ84GEWOrkaX6nXZ9DaRMd5myqcGSjFGxtoXO0C1fp3b3HtsBAsR9sdGABDc15ioG/k9ZR6
-	WYhBp3vf023/VvHp7EpS2FOxTlhCKpEx3qsTpT2zKGVlQRAOq30QRMrA/Rv6Sk1yfrbDTJR4AhY8a
-	VMJJV68w==;
+	bh=gXNzY6XHZfn/5ZTzycSEtYX2YjcDoXsQIMwssN7E92s=; b=i5+ATqkQv594fZOpo8Z2dEJvp+
+	4tlfBDxfTpmFTvA5GBncTFgsUf/JSueEDJXaReGJRejetiH+ChlvbaAmwQ32zmqbiSUUk4eajytgj
+	mC39lJaGOkVBq5bhxhVTuXCPh0AAzohb1N8Eb7e+kVj8Q43rjNuAuzRFPaYbUjOPhnAU742v3oZ9u
+	xyKvKSOe0+wQoKLO+QAyLgnLnQT+wK+dlhQZTLldPuzgzYzPv4Mzgzuc4sDJcCCufdaV8xkgEO1wZ
+	DJLc9/UUO0jm6g5jko++4064IUGk7sEIuS0OD7rGIs46+KkBlvO5jBSPEIVqU5uoPM1jE2Du/v0Rx
+	oYcFzZzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1UuR-00000002wKI-3m7p;
-	Wed, 24 Sep 2025 19:12:11 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1v1V17-00000002zzA-2t5k;
+	Wed, 24 Sep 2025 19:19:05 +0000
+Received: from mail-southcentralusazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c10d::3] helo=SN4PR0501CU005.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1UuP-00000002wIV-49QB;
-	Wed, 24 Sep 2025 19:12:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=MP5auDUMxEYh7gEFpW+fTsgkWPRs0id0KEIy7AhJUyY=; b=JtT/4GaczhTrXWevKq1Z0GGSBN
-	7hL6b1vSi4WVd26aD2jyjPQxXfOF2WHPwCosphruokVyh8n0qweAuwA7/b9A+cHoDWqfakttmjUNb
-	z15qD/Zc3jsnRzmryWcictDancPCXk+SPXAYDA6xCnp5DrXXZT4V6mVC4/w1ym8w3l4J7+jxf5S/z
-	B2FqdsYUeEFFeBZXtGpWcnvcCq/jr1K3SnC4Q1MWQ4RaD8oIOH1VIJhLBhr/R6UO6wUfscqYtwpAD
-	NgIf1yD3YoNPxMVWj7ymFwKi+kLnouHtieSuMBtPa8jpscMPumJnNg/COs2w1dbUUqvAYO8+MoNku
-	kt7NSXPA==;
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1UuK-00000008ooH-0QZ8;
-	Wed, 24 Sep 2025 19:12:08 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1758741100; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=QaedpyvNWTm3ZyznWbct9XcTO3uyB+R10rhzjIfFZlOg7KJGXAJZZzEfBpfH+jG80Am+sQEvS9nCd1i1Ja0zm9jXFbOR83QP+rqGozhNhTL1cUAK2Qp3bSt4DHLSqdhR72GCR8JY3HTwfFWLSNNrVP7hwAbNmY6NulRfLMiORoM=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1758741100; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=MP5auDUMxEYh7gEFpW+fTsgkWPRs0id0KEIy7AhJUyY=; 
-	b=Wj01iXE+yaT1qmASXvtr4YBqwc+M3+/wbukdfVD4VsA4otCqxQby7YRIlV7l+sCZHpoIagC/EWBVyVgBLnf3R+CAj+LVXu10NhowVdaOZvdDKMPwfmi/yik3p/gTe26bs83Rl04dP01yTfOPxWjgajSRo00WybIM8g5GMx+f53E=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1758741100;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=MP5auDUMxEYh7gEFpW+fTsgkWPRs0id0KEIy7AhJUyY=;
-	b=gizke4EylmQRwo1ox82aCREvOiJDAToCi9ZbGcQEgrGbRZEcyE0439huHBBt2Sqo
-	L4/TMMpxSx5Lqcz4me5aZQ0TwnmWUGBzJ9GRFa+TgZW+WxqbI6AFCHX8yuCd9wsEKUo
-	FTNb5CvC++cr/b3ciCE/g03i7JrtSDOHC1kJkjNU=
-Received: by mx.zohomail.com with SMTPS id 1758741097995233.96426730070766;
-	Wed, 24 Sep 2025 12:11:37 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Boris Brezillon <boris.brezillon@collabora.com>,
- Jassi Brar <jassisinghbrar@gmail.com>, Chia-I Wu <olvaffe@gmail.com>,
- Chen-Yu Tsai <wenst@chromium.org>, Steven Price <steven.price@arm.com>,
- Liviu Dudau <liviu.dudau@arm.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Kees Cook <kees@kernel.org>,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- Ulf Hansson <ulf.hansson@linaro.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-hardening@vger.kernel.org, linux-pm@vger.kernel.org
-Subject: Re: [PATCH v4 8/8] pmdomain: mediatek: Add support for MFlexGraphics
-Date: Wed, 24 Sep 2025 21:11:31 +0200
-Message-ID: <13851204.uLZWGnKmhe@workhorse>
-In-Reply-To: <673af008-04a8-432d-9517-ca2255e6b35f@collabora.com>
-References: <20250923-mt8196-gpufreq-v4-0-6cd63ade73d6@collabora.com>
- <20250923-mt8196-gpufreq-v4-8-6cd63ade73d6@collabora.com>
- <673af008-04a8-432d-9517-ca2255e6b35f@collabora.com>
+	id 1v1V15-00000002zw7-0kEO;
+	Wed, 24 Sep 2025 19:19:04 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=HFXIG7KcQZvwT9GX4t4wFzNHoCGkDJo7NfcOB9Gb1cxCx9NyRpu8+YFm9cDVZoelu/k+SM9Xp1Ro7hqJgLreEkMGTcIltjJtH9/h9KALfuAlsuSMetCmzX25xAa2NmBZZuSadb4w9gEmcB3aI8juRRoewq50Un6x65Pstyn7I5KPIdKO+tl115BCzRGoJmm6Z2/gqjo3p868hqmDhzXcFiZ2hdjUfb6lPRM0/TLYoVb4n8JAKrugZkqFhL8d1QnFjRbmD+009ycKsMhjHBTriKqZ+2KvNzC5cjx7bLx672RHuDEpWXjSfS91I+qZSoUZlAmtLl/DPNDKbcq9tmUhIw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=gXNzY6XHZfn/5ZTzycSEtYX2YjcDoXsQIMwssN7E92s=;
+ b=KDnQ0BkyJxaSM5IcFi/ifoQXSnff46+ZZfn88iwkbLvRasx5wtpvBdLb8+FWzKXi26+ZKhjumy7MPxFY8Hykn7ArqycyetxCiPomNZ5XLtSiJxG6muQzevqj3vCqWi/SbGDuyLbOb28gdk/uUf95Vz4pniQd6Igs/qlmB9Aqc78b6dvaIM1kg6WsoUon4IWmjmD0C2JHYFwYBRwJpbLG9TlCIj6gzvsIdmTHxHKg9Ze+OsLobGLXwkZByZM14oW6UK9+9Zquh5rj4Cs1EPzInr1kVfJ72dAgQAf6PlDGQPqNc+W5TL46PgzNHAmfef7a7YTTf56mV+pa861lZS14Rw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.118.232) smtp.rcpttodomain=csie.org smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=gXNzY6XHZfn/5ZTzycSEtYX2YjcDoXsQIMwssN7E92s=;
+ b=lk+db/bLq1f0SifuPXuFUQ+zGjgjutqjhqiHVlbBm4HkFu+1jDQqJKwRNOSEl+8bdkndHfd7hihCbCCM05zyZVXtD0xbg4BC4SpQL9Fi4EtWqAFO7+Pck2nC/L5XWhyZr13UHt2jKLhpkx2kkiqS4cXRWizbg0//57dB32Yn7PfY9LURqeoP+54pkHit//uSUEcNKVBUY8ZqFPkUtxorcHuo+gK9/nlSm5CoYU5KS0HV0/2gvVas2uPufL3SpB/IiIeRcCYhn1a8e0cKvE71c+nUHSzSS9cNGf1rKndYvkJo6yCfzO7JavPm7BSqQNyrYVHSeGcrlkgskM1BMt0F2A==
+Received: from CH2PR12CA0006.namprd12.prod.outlook.com (2603:10b6:610:57::16)
+ by LV5PR12MB9778.namprd12.prod.outlook.com (2603:10b6:408:300::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9137.20; Wed, 24 Sep
+ 2025 19:18:57 +0000
+Received: from DS3PEPF0000C37F.namprd04.prod.outlook.com
+ (2603:10b6:610:57:cafe::b1) by CH2PR12CA0006.outlook.office365.com
+ (2603:10b6:610:57::16) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9137.21 via Frontend Transport; Wed,
+ 24 Sep 2025 19:18:56 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.232)
+ smtp.mailfrom=nvidia.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.118.232 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.118.232; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.118.232) by
+ DS3PEPF0000C37F.mail.protection.outlook.com (10.167.23.9) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9160.9 via Frontend Transport; Wed, 24 Sep 2025 19:18:56 +0000
+Received: from drhqmail203.nvidia.com (10.126.190.182) by mail.nvidia.com
+ (10.127.129.5) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Wed, 24 Sep
+ 2025 12:18:47 -0700
+Received: from drhqmail201.nvidia.com (10.126.190.180) by
+ drhqmail203.nvidia.com (10.126.190.182) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.20; Wed, 24 Sep 2025 12:18:46 -0700
+Received: from Asurada-Nvidia (10.127.8.11) by mail.nvidia.com
+ (10.126.190.180) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20 via Frontend
+ Transport; Wed, 24 Sep 2025 12:18:44 -0700
+Date: Wed, 24 Sep 2025 12:18:43 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
+CC: <joro@8bytes.org>, <bhelgaas@google.com>, <suravee.suthikulpanit@amd.com>,
+	<will@kernel.org>, <robin.murphy@arm.com>, <sven@kernel.org>, <j@jannau.net>,
+	<alyssa@rosenzweig.io>, <neal@gompa.dev>, <robin.clark@oss.qualcomm.com>,
+	<m.szyprowski@samsung.com>, <krzk@kernel.org>, <alim.akhtar@samsung.com>,
+	<dwmw2@infradead.org>, <baolu.lu@linux.intel.com>, <kevin.tian@intel.com>,
+	<yong.wu@mediatek.com>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <tjeznach@rivosinc.com>,
+	<paul.walmsley@sifive.com>, <palmer@dabbelt.com>, <aou@eecs.berkeley.edu>,
+	<alex@ghiti.fr>, <heiko@sntech.de>, <schnelle@linux.ibm.com>,
+	<mjrosato@linux.ibm.com>, <gerald.schaefer@linux.ibm.com>,
+	<orsonzhai@gmail.com>, <baolin.wang@linux.alibaba.com>,
+	<zhang.lyra@gmail.com>, <wens@csie.org>, <jernej.skrabec@gmail.com>,
+	<samuel@sholland.org>, <jean-philippe@linaro.org>, <rafael@kernel.org>,
+	<lenb@kernel.org>, <yi.l.liu@intel.com>, <cwabbott0@gmail.com>,
+	<quic_pbrahma@quicinc.com>, <iommu@lists.linux.dev>,
+	<linux-kernel@vger.kernel.org>, <asahi@lists.linux.dev>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
+	<linux-samsung-soc@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-riscv@lists.infradead.org>, <linux-rockchip@lists.infradead.org>,
+	<linux-s390@vger.kernel.org>, <linux-sunxi@lists.linux.dev>,
+	<linux-tegra@vger.kernel.org>, <virtualization@lists.linux.dev>,
+	<linux-acpi@vger.kernel.org>, <linux-pci@vger.kernel.org>,
+	<patches@lists.linux.dev>, <vsethi@nvidia.com>, <helgaas@kernel.org>,
+	<etzhao1900@gmail.com>
+Subject: Re: [PATCH v4 4/7] iommu: Pass in old domain to attach_dev callback
+ functions
+Message-ID: <aNREE5qMJRU+0+Bw@Asurada-Nvidia>
+References: <cover.1756682135.git.nicolinc@nvidia.com>
+ <19570f350d15528e13447168b7dcd95795afdbf3.1756682135.git.nicolinc@nvidia.com>
+ <20250924184346.GI2617119@nvidia.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20250924184346.GI2617119@nvidia.com>
+X-NV-OnPremToCloud: ExternallySecured
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS3PEPF0000C37F:EE_|LV5PR12MB9778:EE_
+X-MS-Office365-Filtering-Correlation-Id: ea0ff33c-82bc-4f39-19cf-08ddfb9f350a
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|36860700013|376014|7416014|1800799024|82310400026;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?cBcblxgwdefty0+60CAsDexb2LWIuUGGs0+Yy5DkDXjR4BUO44FR/6HKpIKO?=
+ =?us-ascii?Q?tdnp3sb9LM8uZHZUbPzqhOmJmrKOwPiZCQY6CuXP1rC23o2MMDInzbVByHbr?=
+ =?us-ascii?Q?yH1oIEFFPsIun7Us/3MMYvtkTTbQymsB2+wdzG0k3nR9m+IncBPAwKs9sWik?=
+ =?us-ascii?Q?CAIe4ks0/LOuwdG+7gVZRmv/9cZ1iqRly02LTfjNtaBMEKH5hCUgfpn+nxfJ?=
+ =?us-ascii?Q?3p30Xz+XrSSx/u1icZ0e9L0Qq/Oe0eE9yEM7Wva/6ommIGFEsUdvpZVpM9cY?=
+ =?us-ascii?Q?I5R8eg4bgVkRPRaGvkzUgsI2bLS0xqK7LySXirszLbbxTrIhsKVw/DLmCgDT?=
+ =?us-ascii?Q?JMLViVBhvUDk7iwn9oSglYJNyr4adrDClCpeobfg6QoKWRtnqlZnnhs1aQFR?=
+ =?us-ascii?Q?FEzvCG/IIp9s1mYqsFumCevpUjX62zObZ0AWfLoGzZN4YANv2EIwb6abYRG3?=
+ =?us-ascii?Q?m8sEMAtTb2t9mbQaALvTfGU9oF9YDB8aTEBqcqw8zJUbo59zMMrw6dt1H49S?=
+ =?us-ascii?Q?CHITGOg3hMPk3HukIGRC222AUhws0rE8jRscGocO/k3Qnp7eO7ZGrwDYNV5a?=
+ =?us-ascii?Q?N2t+fdDrlWVD2yG2oSKkVcoag21QH+qTR5PzynQVq+yf6wys3aYGO3w6P0IJ?=
+ =?us-ascii?Q?RG3U6+eBswCLuA58GAMB5oJVMC4QCy5DqIOfs3IZiSPql/fruopHmxqQXLCA?=
+ =?us-ascii?Q?4qRNjMU4vl8K/wEFIykH0cwNwyM+4hbWk1Ymi4o/4m5+yr58CyqqbKZcjlye?=
+ =?us-ascii?Q?Gg2bPK5+DP/kOw/SXbOq04GpmnmhGHvIDHhV/4kPP09vZIGBO8vgTDD2gPKE?=
+ =?us-ascii?Q?x7TKwPXfsBtw4Th5eZpUj0CdfPsBTGqeaUKZrUbwq1rOJg1V0ropL8XHs0iu?=
+ =?us-ascii?Q?N6fiTEo4htBXkAicXqtl9lxY9YY/0plvbOg4uODOF647EYWB1oKHJHKrG3Sq?=
+ =?us-ascii?Q?31xXjMgbXfoJ1PXDAMe5/brF2XU66q+1tFn+phQxH3/B88CyC1M37vtyYEt5?=
+ =?us-ascii?Q?HjxE6yD3rxyuKuYNRtgU1son+QRNk++x+kWN+rcQG7819p6lckdX5EEQVHY7?=
+ =?us-ascii?Q?ajTICTjw7FgbeSnU1f92uyvcfbTG916BoUkFREaucvA6hN0ClXHMkock70G0?=
+ =?us-ascii?Q?6Z8b+6U+GXp8Q7YTJD43yJq0G8m0gSITjbfN5d0/y5ORLD2OTfaIhtPTrJME?=
+ =?us-ascii?Q?dbqDpRO16+4+gla4Tjr1xm455k+UhIJsYNkJcbT7jS9dT34tJWszd2gpJdSn?=
+ =?us-ascii?Q?zedMJX6pCVH+HZqsd/38bIA89gY+jFG1MzO8JuVm/I/CgKFr2np3yvwivc/l?=
+ =?us-ascii?Q?ND4yChwwsjuMgKLbhjgZAjkwiUc0IAET6/iHjlvLvA4rQniKn689LRh0RrD+?=
+ =?us-ascii?Q?ZLYvlSEspBwAVIx2dpXa9MPS81C0VVjh2ZG0dEtGEHMM8t8ppQ93OGH3n4bB?=
+ =?us-ascii?Q?Rul/s13vpajYIrpY/pmxAkcRWfVN3FKf4Fh3MfgI7V3XFqVu0ufUzEQVp7RT?=
+ =?us-ascii?Q?qqWvWRMYCKiButfEjzP2C4O3EQz9/+zNQ72l?=
+X-Forefront-Antispam-Report: CIP:216.228.118.232;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc7edge1.nvidia.com;CAT:NONE;SFS:(13230040)(36860700013)(376014)(7416014)(1800799024)(82310400026);DIR:OUT;SFP:1101;
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Sep 2025 19:18:56.3711
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: ea0ff33c-82bc-4f39-19cf-08ddfb9f350a
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.118.232];Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: DS3PEPF0000C37F.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV5PR12MB9778
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250924_201204_971278_D40DDA12 
-X-CRM114-Status: GOOD (  56.99  )
+X-CRM114-CacheID: sfid-20250924_121903_213792_28A3BD1C 
+X-CRM114-Status: GOOD (  12.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,301 +173,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tuesday, 23 September 2025 18:25:53 Central European Summer Time AngeloGioacchino Del Regno wrote:
-> Il 23/09/25 13:40, Nicolas Frattaroli ha scritto:
-> > Various MediaTek SoCs use GPU integration silicon named "MFlexGraphics"
-> > by MediaTek. On the MT8196 and MT6991 SoCs, interacting with this
-> > integration silicon is required to power on the GPU.
-> > 
-> > This glue silicon is in the form of an embedded microcontroller running
-> > special-purpose firmware, which autonomously adjusts clocks and
-> > regulators.
-> > 
-> > Implement a driver, modelled as a pmdomain driver with a
-> > set_performance_state operation, to support these SoCs.
-> > 
-> > The driver also exposes the actual achieved clock rate, as read back
-> > from the MCU, as common clock framework clocks, by acting as a clock
-> > provider as well.
-> > 
-> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > ---
-> >   drivers/pmdomain/mediatek/Kconfig            |  16 +
-> >   drivers/pmdomain/mediatek/Makefile           |   1 +
-> >   drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c | 928 +++++++++++++++++++++++++++
-> >   3 files changed, 945 insertions(+)
-> > 
-> > diff --git a/drivers/pmdomain/mediatek/Kconfig b/drivers/pmdomain/mediatek/Kconfig
-> > index 0e34a517ab7d5a867bebaab11c0d866282a15e45..2abf78c85d017b1e3526b41c81f274f78d581fd0 100644
-> > [ ... snip ...]
-> > +
-> > +/*
-> > + * This enum is part of the ABI of the GPUEB firmware. Don't change the
-> > + * numbering, as you would wreak havoc.
-> > + */
-> > +enum mtk_mfg_ipi_cmd {
-> > +	CMD_INIT_SHARED_MEM		= 0,
-> > +	CMD_GET_FREQ_BY_IDX		= 1,
-> > +	CMD_GET_POWER_BY_IDX		= 2,
-> > +	CMD_GET_OPPIDX_BY_FREQ		= 3,
-> > +	CMD_GET_LEAKAGE_POWER		= 4,
-> > +	CMD_SET_LIMIT			= 5,
-> > +	CMD_POWER_CONTROL		= 6,
-> > +	CMD_ACTIVE_SLEEP_CONTROL	= 7,
-> > +	CMD_COMMIT			= 8,
-> > +	CMD_DUAL_COMMIT			= 9,
-> > +	CMD_PDCA_CONFIG			= 10,
-> > +	CMD_UPDATE_DEBUG_OPP_INFO	= 11,
-> > +	CMD_SWITCH_LIMIT		= 12,
-> > +	CMD_FIX_TARGET_OPPIDX		= 13,
-> > +	CMD_FIX_DUAL_TARGET_OPPIDX	= 14,
-> > +	CMD_FIX_CUSTOM_FREQ_VOLT	= 15,
-> > +	CMD_FIX_DUAL_CUSTOM_FREQ_VOLT	= 16,
-> > +	CMD_SET_MFGSYS_CONFIG		= 17,
-> > +	CMD_MSSV_COMMIT			= 18,
-> > +	CMD_NUM				= 19,
-> 
-> I don't really like seeing index assignments to enumeration, especially when there
-> are no holes... and you have also clearly written that this is ABI-do-not-touch so
-> I'm not sure that having those numbers here is improving anything.
-> 
-> I also haven't got strong opinions about that, anyway.
+On Wed, Sep 24, 2025 at 03:43:46PM -0300, Jason Gunthorpe wrote:
+> I've split things like this into more patches before, but this
+> actually isn't too bad, so I wouldn't push for it.
 
-My main worry is that someone comes by and alphabetically sorts them
-with either some style linter script and does not think to read the
-comment, and it's either an overworked maintainer or get acked by
-an overworked maintainer.
+Thanks. I will keep the flow in mind.
 
-> [... snip ...]
-> > +
-> > +static int mtk_mfg_eb_off(struct mtk_mfg *mfg)
-> > +{
-> > +	struct device *dev = &mfg->pdev->dev;
-> > +	struct mtk_mfg_ipi_sleep_msg msg = {
-> 
-> Can this be constified?
+For working more on the new test attach op, I'd probably keep it
+as-is.
 
-No :( mbox_send_message's msg parameter is not const, so it'd discard
-the qualifier, and instead of explicitly discarding the qualifier
-(which would be a very stinky code smell) we would have to look into
-whether the mailbox subsystem is cool with const void* for messages,
-and whether all the mailbox drivers are fine with that too.
+> A series version would be:
+>  - add a new op 'attach_dev2' or whatever
+>  - Convert all drivers that just change the signature
+>  - Convert drivers that have a trivial iommu_get_domain_for_dev()
+>  - N patches to convert more complex drivers one by one
+>  - Remove old op attach_dev
 
-> > +		.event = 0,
-> > +		.state = 0,
-> > +		.magic = GPUEB_SLEEP_MAGIC
-> > +	};
-> > +	u32 val;
-> > +	int ret;
-> > +
-> > +	ret = mbox_send_message(mfg->slp_mbox->ch, &msg);
-> > +	if (ret < 0) {
-> > +		dev_err(dev, "Cannot send sleep command: %pe\n", ERR_PTR(ret));
-> > +		return ret;
-> > +	}
-> > +
-> > +	ret = readl_poll_timeout(mfg->rpc + RPC_PWR_CON, val,
-> > +				 !(val & PWR_ACK_M), GPUEB_POLL_US,
-> > +				 GPUEB_TIMEOUT_US);
-> > +
-> > +	if (ret)
-> > +		dev_err(dev, "timed out waiting for EB to power off, val=0x%08X\n",
-> > +			val);
-> 
-> 90 columns is fine, one line please.
-> 
-> > +
-> > +	return ret;
-> > +}
-> > +
-> [... snip ...]
-> > +
-> > +static int mtk_mfg_attach_dev(struct generic_pm_domain *pd, struct device *dev)
-> > +{
-> > +	struct mtk_mfg *mfg = mtk_mfg_from_genpd(pd);
-> > +	struct dev_pm_opp_data *opps = mfg->gpu_opps;
-> > +	int i, ret;
-> > +
-> > +	for (i = mfg->num_opps - 1; i >= 0; i--) {
-> > +		if ((i == mfg->num_opps - 1) || (opps[i].freq != opps[i + 1].freq)) {
-> 
-> 		/* Add a comment here, because you're using a trick, and it's not
-> 		 * very fast to read, as in, if you skim through that, you're most
-> 		 * probably losing the fact that the first OPP is always added
-> 		 * regardless of anything.
-> 		 */
-> 		if ((i != mfg->num_opps - 1) || (opps[i].freq == opps[i + 1].freq))
-> 			continue;
-> 
-> 		/* Reduced indentation :-) */
-> 		ret = dev_pm_opp_add_dynamic(.....) etc
-> 
+Does this mean that drivers would live with the 'attach_dev2' op
+renamed from 'attach_dev'? Or the last could rename it back?
 
-Sure, but not before properly applying De Morgan's law here ;) It
-should be the following as far as I can tell:
-
-    if ((i != mfg->num_opps - 1) && (opps[i].freq == opps[i + 1].freq))
-			    continue;
-
-> > +			ret = dev_pm_opp_add_dynamic(dev, &opps[i]);
-> > +			if (ret) {
-> > +				dev_err(dev, "Failed to add OPP level %u from PD %s\n",
-> > +					opps[i].level, pd->name);
-> > +				dev_pm_opp_remove_all_dynamic(dev);
-> > +				return ret;
-> > +			}
-> > +		}
-> > +	}
-> > +
-> > +	return 0;
-> > +}
-> > +
-> [... snip ...]
-> > +
-> > +static int mtk_mfg_probe(struct platform_device *pdev)
-> > +{
-> [... snip ...]
-> > +
-> > +	ret = clk_prepare_enable(mfg->clk_eb);
-> > +	if (ret)
-> > +		return dev_err_probe(dev, ret, "failed to turn on EB clock\n");
-> 
-> What happens if the `gpu_regs` regulator(s) is/are not enabled at boot?
-> 
-> I am guessing that the EB doesn't depend at all on these being enabled, as it
-> should be powered by the internal vscp or sspm - but still asking to make sure
-> that this wasn't an overlook.
-
-Yeah, the EB doesn't need those regulators on. After somewhat fixing module
-unload and reload on my side, I can now confirm that it doesn't appear to
-need them during probe.
-
-> 
-> > +	mfg->ipi_magic = readl(mfg->gpr + GPR_IPI_MAGIC);
-> > +	/* Downstream does this, don't know why. */
-> 
-> Preventing reinitialization?
-> Did you try to avoid that write? What happens in that case?
-> 
-> Also, if you unload this module and reload it, are you able to reinitialize the EB,
-> or are you reading zero in GPR_IPI_MAGIC (preventing you from correctly reinit this
-> driver again)?
-
-Okay so this led me down a deep rabbit hole and I realised that so far, we
-could only read the IPI magic because the bootloader helpfully left MFG on
-for us. So on second probe, we'd get a magic number of 0, and all IPI comms
-that use it would fail.
-
-Fix is simple though, just read the magic in power_on. I also left out the
-0 write but I might experimentally add it back in to see if it changes any
-of the other behaviour I'm currently chasing.
-
-> 
-> > +	writel(0x0, mfg->gpr + GPR_IPI_MAGIC);
-> > +
-> > +	ret = mtk_mfg_init_mbox(mfg);
-> > +	if (ret) {
-> > +		ret = dev_err_probe(dev, ret, "Couldn't initialise mailbox\n");
-> > +		goto out;
-> > +	}
-> > +
-> > +	mfg->last_opp = -1;
-> > +
-> > +	ret = mtk_mfg_power_on(&mfg->pd);
-> > +	clk_disable_unprepare(mfg->clk_eb);
-> > +	if (ret)
-> > +		return dev_err_probe(dev, ret, "Failed to power on MFG\n");
-> > +
-> > +	ret = mtk_mfg_init_shared_mem(mfg);
-> > +	if (ret) {
-> > +		dev_err(dev, "Couldn't initialize EB SRAM: %pe\n", ERR_PTR(ret));
-> > +		goto out;
-> > +	}
-> > +
-> > +	ret = mtk_mfg_read_opp_tables(mfg);
-> > +	if (ret) {
-> > +		dev_err(dev, "Error reading OPP tables from EB: %pe\n",
-> > +			ERR_PTR(ret));
-> > +		goto out;
-> > +	}
-> > +
-> > +	ret = mtk_mfg_init_clk_provider(mfg);
-> > +	if (ret)
-> > +		goto out;
-> > +
-> > +	ret = of_genpd_add_provider_simple(pdev->dev.of_node, &mfg->pd);
-> > +	if (ret) {
-> > +		ret = dev_err_probe(dev, ret, "Failed to add pmdomain provider\n");
-> > +		goto out;
-> > +	}
-> > +
-> > +	return 0;
-> > +
-> > +out:
-> > +	mtk_mfg_power_off(&mfg->pd);
-> > +	return ret;
-> > +}
-> 
-> static void mtk_mfg_remove(struct platform_device *pdev)
-> {
-> 	struct mtk_mfg *mfg = dev_get_drvdata(&pdev->dev);
-> 
-> 	of_genpd_del_provider(....)
-> 
-> 	pm_genpd_remove(....)
-> 
-> 	mtk_mfg_power_off(...)
-
-Unconditional power_off will go poorly if the thing isn't powered
-on at removal time, so I need to figure out something more clever.
-
-Unfortunately, that something more clever isn't "dev_pm_genpd_is_on"
-because that has a case where it will return false and then devres
-kicks in and says hey you left your regulators on that's not cool.
-
-I'll have to spend another day at the debug print factory until
-I can figure out what's wrong there, and if I can't, then I guess
-we'll add our own pd_on counting.
-
-> 
-> 	mbox_free_channel(mfg->gf_mbox->ch);
-> 	mfg->gf_mbox->ch = NULL;
-> 
-> 	mbox_free_channel(mfg->slp_mbox->ch);
-> 	mfg->slp_mbox->ch = NULL;
-> 
-> 
-> }
-> 
-> > +
-> > +static struct platform_driver mtk_mfg_driver = {
-> > +	.driver = {
-> > +		.name = "mtk-mfg-pmdomain",
-> > +		.of_match_table = mtk_mfg_of_match,
-> > +	},
-> > +	.probe = mtk_mfg_probe,
-> 
-> 	.remove = mtk_mfg_remove,
-> 
-> > +};
-> > +module_platform_driver(mtk_mfg_driver);
-> > +
-> > +MODULE_AUTHOR("Nicolas Frattaroli <nicolas.frattaroli@collabora.com>");
-> > +MODULE_DESCRIPTION("MediaTek MFlexGraphics Power Domain Driver");
-> > +MODULE_LICENSE("GPL");
-> > 
-> 
-> There might be more, but for now, I'm done with this review round :-)
-> 
-> Cheers,
-> Angelo
-> 
-
-Thanks for the review. Assume all comments I didn't reply to (including
-the big one) are acknowledged and will be addressed.
-
-Kind regards,
-Nicolas Frattaroli
-
-
+Nicolin
 
