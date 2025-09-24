@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F4E4CAC5B7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 10:37:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF49FCAC5B5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 10:37:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=db/8h4eUh2GZZfqVhdaScEYOT88NqYpu+PG29GTH6Yk=; b=VJXewSDPcHONvxFtJ3aPMjlSpV
-	JS9Ycs1kV5fuq8IUbr6clxeJ64tVilMlHWM6v8e5cIAF2pHwa6ebYtMh8MWZzLyLXZam0A0MHtB0M
-	PC69uFfjADkhJS2otgpIhgFNMGsP7vE/8YZ1jsHy6M8C7iGLki8y9Z3Rc7RLvSIpNDEH+xbG0SbgI
-	5M6Bguv25Bb/94JIMFLUwpU+7EuI6eozwzehr6OpVwtQIYljGu0Kxs7lDvYqY1K6xeUsIQnhCw8hP
-	/9/larbjh3ZHze1Vw2x9IXjtVkmd7YB++rgtNMqVr14/yX9u6+EY0TJ3nBvN5Bds4ZhqTSC6ko3I6
-	9rj0ZK0A==;
+	bh=OaIbAjWTh8T2PMIUZB1cr5xLwcizvgkSYJjQ9roWZQ0=; b=ak3BhLahq11BCiOXTydEKBTlX8
+	tJzHEww784ydIRHsltTvXENVnrpNv5QmirfqGYW3Vq6Slr0ebsrdHKhuuPRaPfdqX6IRmI10zTHq9
+	OS74YiIH2uEV32EY5TpJE20q7fP6NTXgkyFLF84FGTYgIvFQ+H0SXT7GdxBkCjn3sYnho9LAH6WuX
+	oOkKrVn+XpZYZXV2s52fTJbPJDZLR/a+ye92WlCMkTNeUrWWr6Xy56H6xh8Cn4w+Xlx6e9bcJ6uvx
+	ILcJTbiJPCjwuVTuNGl+L5pNeXiHOlJMIpkI5sNo+RBJm6B1phnD2MlaYZhjtp2QkAyvvPTf0hEfO
+	OlL1nOyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1MsL-0000000GYhl-14eP;
-	Wed, 24 Sep 2025 10:37:29 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1v1MsQ-0000000GYpY-3n8D;
+	Wed, 24 Sep 2025 10:37:34 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1MsD-0000000GYYE-0exc;
-	Wed, 24 Sep 2025 10:37:22 +0000
+	id 1v1MsD-0000000GYYw-2EU8;
+	Wed, 24 Sep 2025 10:37:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1758710238;
-	bh=+J77+l7Lax/S/gMWseCwZwXAhPq50CEolzz2N70e80I=;
+	s=mail; t=1758710239;
+	bh=zBsUv12CnB+eYEv/phnc2P7PAeGpmJaBNqHcFB5Huqg=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=KkW8jzA0iWKXbsQJ8Ha4JsBLSVqztaLIMJZEiGGEJrBZmcrvem0mQSqvMpvJS5lYU
-	 8Qq4eMK06HQuKWy/MtfE6+HFB3QONf58p4MG5fr2ur3BxLFvEEgj7RM3w04Kn3nOzT
-	 VIfjflLhf1kM05TtORCZqVdVPH1BwKvIMLlBuwTLaq7O+LhIBYSvLIIgnxbwo0z4VV
-	 axvVN3xCGMy8d5eSDUY9iu57iv+ncEk2106dOnJWno+hvi3/QirtMDf5bAC/6kPPIh
-	 l3HM48U27K4KxV6ITBreCSlXOZ+Thggi49rECVNwwnkL5MEEIRB4z/L+RRkULyI2Hg
-	 Jr3Cu+Ur8UL+g==
+	b=DjpjYwUb5pOMFOpgc5Ffg1V9RI+Q2NHA9uv7N9HEy4JDU+sGEWERm9NJNmIYxIK0Y
+	 bWSN2BXojWpqoxWqNoxaCWPULPMLnCLHBfjs9VsUWYkgN++pNztlxZYlZ/1u69egO/
+	 E/MMa6w3OocHpTGsi/oIDnSRAWnonwOCaylCjeIWYIOBC4mjbWMKZnQr0IG458Zc07
+	 2CMrHMLC/GvQ/qITeGf8b+ezFJSzcyAp/JGe6ZLcQKLMahG00tTjmYQMmYk55NzA3P
+	 4YxVxtyjlqjYPussaH4fm/qKnM2UMLi/IwR9TJ8I4lg8hPxfzyeOevyW2n9UtTKlQS
+	 CqjUbPidS6+oQ==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 06AAF17E12E4;
-	Wed, 24 Sep 2025 12:37:17 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DC33017E1389;
+	Wed, 24 Sep 2025 12:37:18 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -63,17 +63,17 @@ Cc: p.zabel@pengutronix.de,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH 2/3] drm/mediatek: mtk_disp_ovl: Enable/disable interrupt on bind/unbind
-Date: Wed, 24 Sep 2025 12:37:07 +0200
-Message-ID: <20250924103708.19071-3-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 3/3] drm/mediatek: mtk_disp_rdma: Enable/disable interrupt on bind/unbind
+Date: Wed, 24 Sep 2025 12:37:08 +0200
+Message-ID: <20250924103708.19071-4-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20250924103708.19071-1-angelogioacchino.delregno@collabora.com>
 References: <20250924103708.19071-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250924_033721_371144_147C909D 
-X-CRM114-Status: GOOD (  17.55  )
+X-CRM114-CacheID: sfid-20250924_033721_733444_663DFF2D 
+X-CRM114-Status: GOOD (  19.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,59 +88,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The OVL driver is installing an ISR in the probe function but, if
+The RDMA driver is installing an ISR in the probe function but, if
 the component is not bound yet, the interrupt handler may call the
 vblank_cb ahead of time (while probing other drivers) or too late
 (while removing other drivers), possibly accessing memory that it
 should not try to access by reusing stale pointers.
 
-In order to fix this, add a new `irq` member to struct mtk_disp_ovl
-and then set the NOAUTOEN flag to the irq before installing the ISR
-to manually call enable_irq() and disable_irq() in the bind and
-unbind callbacks respectively.
+In order to fix this, like done in the OVL driver, add a new `irq`
+member to struct mtk_disp_ovl and then set the NOAUTOEN flag to
+the irq before installing the ISR to manually disable and clear
+the hwirqs with register writes, and enable_irq() and disable_irq()
+in the bind and unbind callbacks respectively.
 
 Fixes: 119f5173628a ("drm/mediatek: Add DRM Driver for Mediatek SoC MT8173.")
-Link: https://lore.kernel.org/r/20250402083628.20111-5-angelogioacchino.delregno@collabora.com
+Link: https://lore.kernel.org/r/20250402083628.20111-6-angelogioacchino.delregno@collabora.com
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 20 +++++++++++++-------
- 1 file changed, 13 insertions(+), 7 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c | 34 ++++++++++++++----------
+ 1 file changed, 20 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index e0236353d499..8e20b45411fc 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -161,6 +161,7 @@ struct mtk_disp_ovl {
- 	struct drm_crtc			*crtc;
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+index c9d41d75e7f2..9fd9bb1ee544 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+@@ -81,6 +81,7 @@ struct mtk_disp_rdma_data {
+ struct mtk_disp_rdma {
  	struct clk			*clk;
  	void __iomem			*regs;
 +	int				irq;
  	struct cmdq_client_reg		cmdq_reg;
- 	const struct mtk_disp_ovl_data	*data;
+ 	const struct mtk_disp_rdma_data	*data;
  	void				(*vblank_cb)(void *data);
-@@ -594,12 +595,18 @@ void mtk_ovl_bgclr_in_off(struct device *dev)
- static int mtk_disp_ovl_bind(struct device *dev, struct device *master,
- 			     void *data)
+@@ -295,13 +296,23 @@ void mtk_rdma_layer_config(struct device *dev, unsigned int idx,
+ static int mtk_disp_rdma_bind(struct device *dev, struct device *master,
+ 			      void *data)
  {
-+	struct mtk_disp_ovl *priv = dev_get_drvdata(dev);
+-	return 0;
++	struct mtk_disp_rdma *priv = dev_get_drvdata(dev);
++
++	/* Disable and clear pending interrupts */
++	writel(0x0, priv->regs + DISP_REG_RDMA_INT_ENABLE);
++	writel(0x0, priv->regs + DISP_REG_RDMA_INT_STATUS);
 +
 +	enable_irq(priv->irq);
- 	return 0;
+ 
++	return 0;
  }
  
- static void mtk_disp_ovl_unbind(struct device *dev, struct device *master,
- 				void *data)
+ static void mtk_disp_rdma_unbind(struct device *dev, struct device *master,
+ 				 void *data)
  {
-+	struct mtk_disp_ovl *priv = dev_get_drvdata(dev);
++	struct mtk_disp_rdma *priv = dev_get_drvdata(dev);
 +
 +	disable_irq(priv->irq);
  }
  
- static const struct component_ops mtk_disp_ovl_component_ops = {
-@@ -611,16 +618,15 @@ static int mtk_disp_ovl_probe(struct platform_device *pdev)
+ static const struct component_ops mtk_disp_rdma_component_ops = {
+@@ -313,16 +324,15 @@ static int mtk_disp_rdma_probe(struct platform_device *pdev)
  {
  	struct device *dev = &pdev->dev;
- 	struct mtk_disp_ovl *priv;
+ 	struct mtk_disp_rdma *priv;
 -	int irq;
  	int ret;
  
@@ -157,20 +164,33 @@ index e0236353d499..8e20b45411fc 100644
  
  	priv->clk = devm_clk_get(dev, NULL);
  	if (IS_ERR(priv->clk))
-@@ -640,10 +646,10 @@ static int mtk_disp_ovl_probe(struct platform_device *pdev)
- 	priv->data = of_device_get_match_data(dev);
- 	platform_set_drvdata(pdev, priv);
+@@ -345,21 +355,17 @@ static int mtk_disp_rdma_probe(struct platform_device *pdev)
+ 	if (ret && (ret != -EINVAL))
+ 		return dev_err_probe(dev, ret, "Failed to get rdma fifo size\n");
  
--	ret = devm_request_irq(dev, irq, mtk_disp_ovl_irq_handler,
+-	/* Disable and clear pending interrupts */
+-	writel(0x0, priv->regs + DISP_REG_RDMA_INT_ENABLE);
+-	writel(0x0, priv->regs + DISP_REG_RDMA_INT_STATUS);
+-
+-	ret = devm_request_irq(dev, irq, mtk_disp_rdma_irq_handler,
 -			       IRQF_TRIGGER_NONE, dev_name(dev), priv);
-+	ret = devm_request_irq(dev, priv->irq, mtk_disp_ovl_irq_handler,
-+			       IRQF_NO_AUTOEN, dev_name(dev), priv);
- 	if (ret < 0)
+-	if (ret < 0)
 -		return dev_err_probe(dev, ret, "Failed to request irq %d\n", irq);
-+		return dev_err_probe(dev, ret, "Failed to request irq %d\n", priv->irq);
+-
+ 	priv->data = of_device_get_match_data(dev);
+ 
+ 	platform_set_drvdata(pdev, priv);
  
  	pm_runtime_enable(dev);
  
++	ret = devm_request_irq(dev, priv->irq, mtk_disp_rdma_irq_handler,
++			       IRQF_NO_AUTOEN, dev_name(dev), priv);
++	if (ret < 0)
++		return dev_err_probe(dev, ret, "Failed to request irq %d\n", priv->irq);
++
+ 	ret = component_add(dev, &mtk_disp_rdma_component_ops);
+ 	if (ret) {
+ 		pm_runtime_disable(dev);
 -- 
 2.51.0
 
