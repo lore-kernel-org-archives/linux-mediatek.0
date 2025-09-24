@@ -4,79 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA551CAC5A5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 09:45:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DD93CAC5B3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 10:02:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PEtB/jeXGm36SGW9vystyOKcTh+yx2yGuulGhP8QtBc=; b=SwnI+nQoAw9Au7DJ/cbTnluJFR
-	1o2k+8rHw7uzgbah3QYcCLdN7rYHrDYl+DHU5BCavlr62u0fDTgJ9C2NIay7x4fzRu/yEFqvwt9j+
-	Kmld8kn2n2UOdkR7Kinoo9T99OkadcSYsOqzax/vniwIZFl2qStNu8tTFk8Z4YVI8ozv1IwZETy4T
-	3o1fbXkLcHvIImwVvYCcawZqP5mdK5zd7Gac/sdROToBlI8Yes3RZTpWnFSigEzM9QRN0/MuNu8wO
-	j1Oc7UucIuTUM+7katRm2RuYyUUHHsDgMAOZfYBH4eh3ayMvdbWpLOVkf0AbPTPBxm2XfBNyO/F2F
-	UKMknbRw==;
+	bh=sN4TFCft2/wZSXIELr5RHWTzLUBfhTJlV5b+crUf6Vc=; b=yULrp6jRAbILnmv10WwfIHJzjj
+	l3eDcmDO30jvv2bUG8FdUPUzcxnI0dkXBzHK/MiuL00w/j9fCEyCNrBfxvK183VWegXyTjGyGSUQB
+	wyWKJ5Bqx7rcWP1nCY6/Sd3CV2/KdAq0JGgrCey9euE0QBagBOJwVFSdmw+7XaL84vfL+mqLiuVuC
+	Hnw4EvrvqneUHKtaUQLp20qMSSyfGP/rmYTuCUYkUCbANaPSZpjLrqY2NEyUj3nuKcX0kPGl30yvt
+	memLo0MvjCthD5I7hxyv/WsK6H1Td0t46XrQf1VK18WMVHM53nKQD6qF7kwI7j6j9tsYzijWaXDGD
+	ziByBOzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1M4L-0000000GB05-1tJg;
-	Wed, 24 Sep 2025 09:45:49 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1v1MKS-0000000GIgY-0aDi;
+	Wed, 24 Sep 2025 10:02:28 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1M4D-0000000GAoB-012I
-	for linux-mediatek@lists.infradead.org;
-	Wed, 24 Sep 2025 09:45:43 +0000
-X-UUID: 37a6f296992b11f09f706fa2197c6ceb-20250924
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=PEtB/jeXGm36SGW9vystyOKcTh+yx2yGuulGhP8QtBc=;
-	b=gcxZM7jICqzQObbMB/R41yV/krgDu4XDdnDI7O+CxFUFTxtxCO9f83XlDtJ7wPRkFtHeRIS8SD5X4kmLbeDMO5U1OzKHF5cZJO/HmsPP1kLcTc1PYPiG/ZJUdDowdOSC2AGhpbV0NKyzOgVyPKkwUlQZazNChivsYk8fOfZ9a2k=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.4,REQID:bb0a3d91-0e08-4c63-ba39-e2d7d67f4990,IP:0,UR
-	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-25
-X-CID-META: VersionHash:1ca6b93,CLOUDID:d6dca3f8-ebfe-43c9-88c9-80cb93f22ca4,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
-	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,
-	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 3,DMD|SSN|SDN
-X-CID-BAS: 3,DMD|SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 37a6f296992b11f09f706fa2197c6ceb-20250924
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1253034565; Wed, 24 Sep 2025 02:45:34 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.10; Wed, 24 Sep 2025 17:45:29 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.10 via Frontend Transport; Wed, 24 Sep 2025 17:45:29 +0800
-From: <peter.wang@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>
-CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
-	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
-	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
-	<yi-fan.peng@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
-	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
-	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>, <bvanassche@acm.org>
-Subject: [PATCH v2 6/8] ufs: host: mediatek: Remove duplicate function
-Date: Wed, 24 Sep 2025 17:43:28 +0800
-Message-ID: <20250924094527.2992256-7-peter.wang@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20250924094527.2992256-1-peter.wang@mediatek.com>
-References: <20250924094527.2992256-1-peter.wang@mediatek.com>
+	id 1v1MKQ-0000000GIem-0OJP;
+	Wed, 24 Sep 2025 10:02:26 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 717B6600AA;
+	Wed, 24 Sep 2025 10:02:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A36D5C4CEE7;
+	Wed, 24 Sep 2025 09:59:49 +0000 (UTC)
+Date: Wed, 24 Sep 2025 10:59:23 +0100
+From: Catalin Marinas <catalin.marinas@arm.com>
+To: David Hildenbrand <david@redhat.com>
+Cc: Lance Yang <lance.yang@linux.dev>, akpm@linux-foundation.org,
+	lorenzo.stoakes@oracle.com, usamaarif642@gmail.com,
+	yuzhao@google.com, ziy@nvidia.com, baolin.wang@linux.alibaba.com,
+	baohua@kernel.org, voidice@gmail.com, Liam.Howlett@oracle.com,
+	cerasuolodomenico@gmail.com, hannes@cmpxchg.org,
+	kaleshsingh@google.com, npache@redhat.com, riel@surriel.com,
+	roman.gushchin@linux.dev, rppt@kernel.org, ryan.roberts@arm.com,
+	dev.jain@arm.com, ryncsn@gmail.com, shakeel.butt@linux.dev,
+	surenb@google.com, hughd@google.com, willy@infradead.org,
+	matthew.brost@intel.com, joshua.hahnjy@gmail.com, rakie.kim@sk.com,
+	byungchul@sk.com, gourry@gourry.net, ying.huang@linux.alibaba.com,
+	apopple@nvidia.com, qun-wei.lin@mediatek.com,
+	Andrew.Yang@mediatek.com, casper.li@mediatek.com,
+	chinwen.chang@mediatek.com, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-mm@kvack.org, ioworker0@gmail.com, stable@vger.kernel.org
+Subject: Re: [PATCH 1/1] mm/thp: fix MTE tag mismatch when replacing
+ zero-filled subpages
+Message-ID: <aNPA--5AcqeFd6nl@arm.com>
+References: <20250922021458.68123-1-lance.yang@linux.dev>
+ <aNGGUXLCn_bWlne5@arm.com>
+ <a3412715-6d9d-4809-9588-ba08da450d16@redhat.com>
+ <aNKJ5glToE4hMhWA@arm.com>
+ <aNLHexcNI53HQ46A@arm.com>
+ <f2fe9c01-2a8d-4de9-abd5-dbb86d15a37b@linux.dev>
+ <aNOwuKmbAaMaEMb7@arm.com>
+ <17dabd83-0849-44c9-b4a2-196af60d9676@redhat.com>
+ <aNO7MrQt9oPT8Hic@arm.com>
+ <791e0d59-0eb2-481f-bf8b-ba4b413d5ebd@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250924_024541_135624_DCEDE06C 
-X-CRM114-Status: GOOD (  13.27  )
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <791e0d59-0eb2-481f-bf8b-ba4b413d5ebd@redhat.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,86 +81,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Wang <peter.wang@mediatek.com>
+On Wed, Sep 24, 2025 at 11:44:19AM +0200, David Hildenbrand wrote:
+> On 24.09.25 11:34, Catalin Marinas wrote:
+> > On Wed, Sep 24, 2025 at 11:13:18AM +0200, David Hildenbrand wrote:
+> > > On 24.09.25 10:50, Catalin Marinas wrote:
+> > > > On Wed, Sep 24, 2025 at 10:49:27AM +0800, Lance Yang wrote:
+> > > > > On 2025/9/24 00:14, Catalin Marinas wrote:
+> > > > > > So alternative patch that also fixes the deferred struct page init (on
+> > > > > > the assumptions that the zero page is always mapped as pte_special():
+> > > > > 
+> > > > > I can confirm that this alternative patch also works correctly; my tests
+> > > > > for MTE all pass ;)
+> > > > 
+> > > > Thanks Lance for testing. I'll post one of the variants today.
+> > > > 
+> > > > > This looks like a better fix since it solves the boot hang issue too.
+> > > > 
+> > > > In principle, yes, until I tracked down why I changed it in the first
+> > > > place - 68d54ceeec0e ("arm64: mte: Allow PTRACE_PEEKMTETAGS access to
+> > > > the zero page"). ptrace() can read tags from PROT_MTE mappings and we
+> > > > want to allow reading zeroes as well if the page points to the zero
+> > > > page. Not flagging the page as PG_mte_tagged caused issues.
+> > > > 
+> > > > I can change the logic in the ptrace() code, I just need to figure out
+> > > > what happens to the huge zero page. Ideally we should treat both in the
+> > > > same way but, AFAICT, we don't use pmd_mkspecial() on the huge zero
+> > > > page, so it gets flagged with PG_mte_tagged.
+> > > 
+> > > I changed that recently :) The huge zero folio will now always have
+> > > pmd_special() set.
+> > 
+> > Oh, which commit was this? It means that we can end up with
+> > uninitialised tags if we have a PROT_MTE huge zero page since
+> > set_pmd_at/set_pte_at() skips mte_sync_tags().
+> 
+> This one:
+> 
+> commit d82d09e482199e6bbc204df10b2082f764cbe1f4
+> Author: David Hildenbrand <david@redhat.com>
+> Date:   Mon Aug 11 13:26:25 2025 +0200
+> 
+>     mm/huge_memory: mark PMD mappings of the huge zero folio special
+> 
+>     The huge zero folio is refcounted (+mapcounted -- is that a word?)
+>     differently than "normal" folios, similarly (but different) to the
+>     ordinary shared zeropage.
+> 
+> 
+> It should be in mm-stable, to go upstream in the upcoming merge window. It's
+> been lurking in -next for a while now.
 
-Remove the duplicate ufs_mtk_us_to_ahit function in the UFS
-Mediatek driver and export the existing ufshcd_us_to_ahit
-function for shared use. This change reduces redundancy
-and maintains consistency across the codebase.
+Thanks. At least it's something to address in the next kernel version. I
+need to improve the MTE kselftests to catch the zero page scenarios.
 
-Signed-off-by: Peter Wang <peter.wang@mediatek.com>
-Reviewed-by: Bart Van Assche <bvanassche@acm.org>
----
- drivers/ufs/core/ufs-sysfs.c    |  3 ++-
- drivers/ufs/host/ufs-mediatek.c | 14 +-------------
- include/ufs/ufshcd.h            |  1 +
- 3 files changed, 4 insertions(+), 14 deletions(-)
+> As it behaves just like the ordinary shared zeropage now, would we have to
+> zero/initialize the tags after allocating it?
 
-diff --git a/drivers/ufs/core/ufs-sysfs.c b/drivers/ufs/core/ufs-sysfs.c
-index 4bd7d491e3c5..0fb236ce7f4c 100644
---- a/drivers/ufs/core/ufs-sysfs.c
-+++ b/drivers/ufs/core/ufs-sysfs.c
-@@ -235,7 +235,7 @@ static int ufshcd_ahit_to_us(u32 ahit)
- }
- 
- /* Convert microseconds to Auto-Hibernate Idle Timer register value */
--static u32 ufshcd_us_to_ahit(unsigned int timer)
-+u32 ufshcd_us_to_ahit(unsigned int timer)
- {
- 	unsigned int scale;
- 
-@@ -245,6 +245,7 @@ static u32 ufshcd_us_to_ahit(unsigned int timer)
- 	return FIELD_PREP(UFSHCI_AHIBERN8_TIMER_MASK, timer) |
- 	       FIELD_PREP(UFSHCI_AHIBERN8_SCALE_MASK, scale);
- }
-+EXPORT_SYMBOL_GPL(ufshcd_us_to_ahit);
- 
- static int ufshcd_read_hci_reg(struct ufs_hba *hba, u32 *val, unsigned int reg)
- {
-diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index c00e62adbbda..3e54154d5547 100644
---- a/drivers/ufs/host/ufs-mediatek.c
-+++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -1109,18 +1109,6 @@ static void ufs_mtk_setup_clk_gating(struct ufs_hba *hba)
- 	}
- }
- 
--/* Convert microseconds to Auto-Hibernate Idle Timer register value */
--static u32 ufs_mtk_us_to_ahit(unsigned int timer)
--{
--	unsigned int scale;
--
--	for (scale = 0; timer > UFSHCI_AHIBERN8_TIMER_MASK; ++scale)
--		timer /= UFSHCI_AHIBERN8_SCALE_FACTOR;
--
--	return FIELD_PREP(UFSHCI_AHIBERN8_TIMER_MASK, timer) |
--	       FIELD_PREP(UFSHCI_AHIBERN8_SCALE_MASK, scale);
--}
--
- static void ufs_mtk_fix_ahit(struct ufs_hba *hba)
- {
- 	unsigned int us;
-@@ -1143,7 +1131,7 @@ static void ufs_mtk_fix_ahit(struct ufs_hba *hba)
- 			break;
- 		}
- 
--		hba->ahit = ufs_mtk_us_to_ahit(us);
-+		hba->ahit = ufshcd_us_to_ahit(us);
- 	}
- 
- 	ufs_mtk_setup_clk_gating(hba);
-diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-index 53b837b024ce..ff0143502413 100644
---- a/include/ufs/ufshcd.h
-+++ b/include/ufs/ufshcd.h
-@@ -1484,5 +1484,6 @@ int ufshcd_update_ee_control(struct ufs_hba *hba, u16 *mask,
- 			     const u16 *other_mask, u16 set, u16 clr);
- void ufshcd_force_error_recovery(struct ufs_hba *hba);
- void ufshcd_pm_qos_update(struct ufs_hba *hba, bool on);
-+u32 ufshcd_us_to_ahit(unsigned int timer);
- 
- #endif /* End of Header */
+Yes. Before pmd_special(), it was be done lazily via set_pmd_at(). I
+think it just needs a __GFP_ZEROTAGS. The only other place we use this
+flag is in vma_alloc_zeroed_movable_folio(), as an optimisation to avoid
+a separate loop for zeroing the tags after data.
+
 -- 
-2.45.2
-
+Catalin
 
