@@ -4,51 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D6E8CAC5A7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 08:36:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5219ECAC5A5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 08:40:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:References:To:From:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
 	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1pJczWKPYx48PqC1/2gWgesawuE/PCSWC3IvHh49AdM=; b=mid4PtFcYWhJxKbOm04eXVzqot
-	S/EftiaGmIMb14lu9KukOlcDW8CshpDPE9tRekfVo2cHlgpG8ZkxueU2aPyiSnXWLNYFR/S48vY1/
-	seduVX+5iPAuCzoIO4Ts5qVtPxyDpNnkExEI7F6rroPbARIjHFSzYC5qHdO7L9+x+vQw9dklooTxV
-	PWZMTXXFkAzw9AYJZY/SKFP54zvPmKNCwAokZ7mV6SBW0Nj2+vrcIf4RkEC3YaF4Csj7IA2m8K1Bb
-	X8XI0kQoORm+ovfTzCyHkydXLs+49FifUuAsTkxZQzZzBB/HCf1EALTWXpVU/ldbzNpdhB9PEEA69
-	McZ17foA==;
+	bh=s0hF39s+PNPVeOVqJoEiQX/x4ftXzQgSSeNBKI04lks=; b=iYanuLusNLY749tvh+96jI7wbY
+	0K2Eg0r+LE0BJ6IBqPAiOs3SP3ndyBDIB4v0hQNHkROqHME5l1c/nqDMChhr7kyxWFVYVin6CA3kI
+	P6AdC+yso/QGUXBGCUyU1E4AsV0y+REW+cw+sx9SUImft0dLzQ2siOJezIcxNGSQAs3yCapg1JBFf
+	x6eu1Ms9shYT2zuSqsgPKgdLAFSgB86xRjiD6+76BNH2duOl+R/s+pjs0a028lx8T/U6+w2tWzQiZ
+	uP3qh1OHH078E0zA19jvaUylyrePUd0Vu4j/0U1UWs7qfGhcoWvX5EFApFXDH7u7E8UzHC2qGaKTK
+	DmHBj5nQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1KzH-0000000Fu8b-10XG;
-	Wed, 24 Sep 2025 08:36:31 +0000
+	id 1v1L3F-0000000Fuq7-1roJ;
+	Wed, 24 Sep 2025 08:40:37 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1KzD-0000000Fu76-2vTv;
-	Wed, 24 Sep 2025 08:36:29 +0000
+	id 1v1L3C-0000000FupN-2QYu;
+	Wed, 24 Sep 2025 08:40:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1758702985;
-	bh=y2emJ3dCkKOLxXAImQ9Iunq9nqId75ZvptZuFpfKlP8=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=dIkiCsN69Gm3Y/Um2he7IcoInbgW3QKztEMubZde4HWmm7utmioP5m/xdywfOcUGh
-	 5iAdf8YHvgMw79jfB31uUbH4Nq7qSd8+xLLvaZro1Df1l/FA+zdlUbFz/WoEzstHKq
-	 QZKTQkJy+FWNR0A1AlWET2e7JuOy+KxpH0nmR+vougchQ9tthRqSqwurhmpCpb2W6T
-	 iNXp01B9k0cZ+g/DlxScCYqYSPUzDMc3kZO5kpmCbM87BFLZO7ofrIqYehWe5oHVyv
-	 r9tINJhRLh7J8hGhh3Mm+tKy3phxIWnQqsZ2rcDXWz1/qTmUDts19e0cNIunvgb107
-	 p8lHC524+Od8A==
+	s=mail; t=1758703232;
+	bh=GBBy8OfUbS037/v/HVudu6cAjDC718OOGqsKe4ghfXA=;
+	h=Date:Subject:From:To:References:In-Reply-To:From;
+	b=LpBW/jDlmidfKvgjk/Z26EZJxIP98EgnR+TEYeFA7JUWlAv9iriMFLrqgjsczXMM0
+	 Ik56f0Zb1kcH4wtkAqogIsPerYyhy0Wmw9er2p3GivQm3kU7Ix9XfhAS7u/b7oX31p
+	 14fES58bZCzydYZt7j4n8WfsvrwwpKzoClzAOO9hdiIfA8lReMzYlMD9uLVVR3YUpk
+	 cjykWly8FciQeHL+jbVoheOAZBE49jJ5N7y/z4G+U4hBpAjn3ze+kMnlFAslKlspR1
+	 brIg2AxEDJk3cVhvfARAzf5k2gAVQxqmXbis/pOssJBX2LfjC9r9RairVB6KqQuH3C
+	 6202ZCZIo+h7Q==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3E85017E0C21;
-	Wed, 24 Sep 2025 10:36:25 +0200 (CEST)
-Message-ID: <5613a7f0-c624-46ca-9c65-1b48b4e3e3bd@collabora.com>
-Date: Wed, 24 Sep 2025 10:36:24 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E76C817E0237;
+	Wed, 24 Sep 2025 10:40:31 +0200 (CEST)
+Message-ID: <18af5a93-e5b1-45fa-b942-47c6c3cd5ddb@collabora.com>
+Date: Wed, 24 Sep 2025 10:40:31 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2 1/2] dt-bindings: PCI: mediatek-gen3: Add support for
  Airoha AN7583
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: Christian Marangi <ansuelsmth@gmail.com>,
  Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
  <jianjun.wang@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>,
@@ -61,14 +62,14 @@ To: Christian Marangi <ansuelsmth@gmail.com>,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, upstream@airoha.com
 References: <20250923190711.23304-1-ansuelsmth@gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+ <5613a7f0-c624-46ca-9c65-1b48b4e3e3bd@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250923190711.23304-1-ansuelsmth@gmail.com>
+In-Reply-To: <5613a7f0-c624-46ca-9c65-1b48b4e3e3bd@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250924_013627_893053_B3368595 
-X-CRM114-Status: GOOD (  13.78  )
+X-CRM114-CacheID: sfid-20250924_014034_789677_FAEA762F 
+X-CRM114-Status: GOOD (  14.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,39 +84,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 23/09/25 21:06, Christian Marangi ha scritto:
-> Introduce Airoha AN7583 SoC compatible in mediatek-gen3 PCIe controller
-> binding.
+Il 24/09/25 10:36, AngeloGioacchino Del Regno ha scritto:
+> Il 23/09/25 21:06, Christian Marangi ha scritto:
+>> Introduce Airoha AN7583 SoC compatible in mediatek-gen3 PCIe controller
+>> binding.
+>>
+>> This differ from the Airoha EN7581 SoC by the fact that only one Gen3
+>> PCIe controller is present on the SoC.
+>>
+>> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+>> ---
+>> Changes v2:
+>> - Fix alphabetical order
+>>
+>>   .../bindings/pci/mediatek-pcie-gen3.yaml      | 21 +++++++++++++++++++
+>>   1 file changed, 21 insertions(+)
+>>
+>> diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/ 
+>> Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+>> index 0278845701ce..1ca9594a9739 100644
+>> --- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+>> +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+>> @@ -58,6 +58,7 @@ properties:
+>>             - const: mediatek,mt8196-pcie
+>>         - const: mediatek,mt8192-pcie
+>>         - const: mediatek,mt8196-pcie
+>> +      - const: airoha,an7583-pcie-gen3
 > 
-> This differ from the Airoha EN7581 SoC by the fact that only one Gen3
-> PCIe controller is present on the SoC.
+> In the previous review, I also asked you to change the compatible string to be
+> consistent with the others.
 > 
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> ---
-> Changes v2:
-> - Fix alphabetical order
-> 
->   .../bindings/pci/mediatek-pcie-gen3.yaml      | 21 +++++++++++++++++++
->   1 file changed, 21 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> index 0278845701ce..1ca9594a9739 100644
-> --- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> @@ -58,6 +58,7 @@ properties:
->             - const: mediatek,mt8196-pcie
->         - const: mediatek,mt8192-pcie
->         - const: mediatek,mt8196-pcie
-> +      - const: airoha,an7583-pcie-gen3
+> airoha,an7583-pcie
 
-In the previous review, I also asked you to change the compatible string to be
-consistent with the others.
+I have just seen the other series where you add AN7583 to the GEN2 PCIe controller
+driver; this means that this SoC has two controllers, one GEN2 and one GEN3.
 
-airoha,an7583-pcie
+The compatible string inconsistency is therefore acceptable.
 
-Regards,
-Angelo
+Please, though - add this information in the commit message, saying that the new
+string is inconsistent with the others and explain the reason.
 
->         - const: airoha,en7581-pcie
->   
+After which,
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+
 
