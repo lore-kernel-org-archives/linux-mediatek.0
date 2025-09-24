@@ -4,65 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 682EDCAC5A5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 14:40:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7338BCAC5AE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 15:34:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=QHkyOKHXgkfKiKAlVtCZbhNOlQiNxd1WUrvn9aGxjkU=; b=HrBCCtdpR7Xoo4j6nz/wza13Km
-	MOecnr0HZabI8QkDgLmhjRBkm0reBGkVUb3fvLCQo4PUovD2RaeAzd8gSwlshnndSQ53UqcOmOyYf
-	VyjQry8ZUYC4CtmWYKvikoMyta8mZ4fQXm/0zuiyPhAT2n5WeNNWpKoDpTLEHPLPvW3i+b2vprl8e
-	Bu5Ov5+OSB+1my4j2hrPmUsLVfnJ/zQX+Exu7HzsNe7sMt806wVWkx2JPfo4acY5GfERr5IFTVaKD
-	CR6GUQjPEP5Z2MeoyrvOSxXTRw6GpkhPPcRmgQ9O96TXNqgQrByd55q7s/6X5FKDArr5nX+yFLNHQ
-	mnIamhUg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+PYii/wjRN6f5w2gYFSSZ4aGmKPxv60CLe4GWP0amtY=; b=L7tVq5iQtq9wLjJ3s94zx3TFwX
+	q/bp7bpkjUawcDITUTBCQ2KF1ZVeeU+mR7s7kl7RyzjlsHUHIqqdNcu2rcMty51J6CcAqCYvfz4r8
+	uEqesx5KDHlRmHiC5ovBohofuQ226NI4UFS3+iG8WxIcXw7Lscr5Ck4zgXnmsr+F4JIkOaX0OoyL7
+	PxbHURD5wmT85JUmeQ5OURkOiCDOpXipPFLrzOquRUnksXW1b0LwmNbRUKTTUefByX+5EmmCYmW1D
+	+K5KyAV3zCEMMVfL1HgVfTPHWdR/YY6ylk26UpobVGW/5erP9RId4FDGVsX0ExJgtmGnT2tPw9ZI4
+	KOlOnDiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1QfN-00000000lie-0lgH;
-	Wed, 24 Sep 2025 14:40:21 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1v1RVi-00000001JiL-0FYD;
+	Wed, 24 Sep 2025 15:34:26 +0000
+Received: from mail.simonwunderlich.de ([23.88.38.48])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1QfL-00000000lhM-0n5t
-	for linux-mediatek@lists.infradead.org;
-	Wed, 24 Sep 2025 14:40:19 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 9399F60007;
-	Wed, 24 Sep 2025 14:40:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4305FC4CEF4;
-	Wed, 24 Sep 2025 14:40:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1758724818;
-	bh=4T26JdYYsM1e+t3tkUnI/PC5m7zquhrZvJn75mxBUl0=;
-	h=From:To:Cc:Subject:Date:From;
-	b=l7HITxtpfw5v7AfGaQb2F4B2jNmtn0RMw5nDMlYyZh5CyjHb2YeLlgXAeHLhL6A1/
-	 pCa06CyLgHxfv1Q5OCSyjeI7cyBVwYunS6Y7OQ5eCv1vfqoo0/+TwDreRuNvxlNtc6
-	 JRMn+7PhugLkWlyK8dSlC93FrLVLwlCyInGq2IWS3V9lQ37ulUyuvJuE6X7IDS+1cO
-	 8W0zWgbA6cpW7Non7OA+oc68DJtF0U0S4j7dKuBWIcF/XEE/DfBNwd0A1CaTwmPpAN
-	 K2/7StV3wfKP8Tamry23SHIdYVjkWvelRkNbgZD6w4P1V9dLAD8ednLAprAV/UbP5b
-	 yFYtrMfPTveMA==
-Received: from johan by xi.lan with local (Exim 4.98.2)
-	(envelope-from <johan@kernel.org>)
-	id 1v1QfD-000000002vR-2p10;
-	Wed, 24 Sep 2025 16:40:12 +0200
-From: Johan Hovold <johan@kernel.org>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Hans Verkuil <hverkuil@kernel.org>,
-	linux-media@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Johan Hovold <johan@kernel.org>,
-	stable@vger.kernel.org,
-	Moudy Ho <moudy.ho@mediatek.com>
-Subject: [PATCH] media: platform: mtk-mdp3: fix device leaks at probe
-Date: Wed, 24 Sep 2025 16:39:19 +0200
-Message-ID: <20250924143919.11183-1-johan@kernel.org>
-X-Mailer: git-send-email 2.49.1
+	id 1v1RVe-00000001Jdq-2y7N;
+	Wed, 24 Sep 2025 15:34:23 +0000
+Received: from sven-desktop.home.narfation.org (p200300C597296be00000000000000C00.dip0.t-ipconnect.de [IPv6:2003:c5:9729:6be0::c00])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.simonwunderlich.de (Postfix) with ESMTPSA id 2C3DFFA130;
+	Wed, 24 Sep 2025 17:34:18 +0200 (CEST)
+From: "Sven Eckelmann (Plasma Cloud)" <se@simonwunderlich.de>
+Date: Wed, 24 Sep 2025 17:33:09 +0200
+Subject: [PATCH 1/3] dt-bindings: net: wireless: mt76: Document
+ power-limits country property
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250924-backoff-table-support-v1-1-20e50fbc59de@simonwunderlich.de>
+References: <20250924-backoff-table-support-v1-0-20e50fbc59de@simonwunderlich.de>
+In-Reply-To: <20250924-backoff-table-support-v1-0-20e50fbc59de@simonwunderlich.de>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, 
+ Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, 
+ Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Johannes Berg <johannes@sipsolutions.net>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>
+Cc: linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-stm32@st-md-mailman.stormreply.com, devicetree@vger.kernel.org, 
+ "Sven Eckelmann (Plasma Cloud)" <se@simonwunderlich.de>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1751; i=se@simonwunderlich.de;
+ h=from:subject:message-id; bh=pa03GJbD9ITiVTNCYJUKaELBwKC4tTy/GDvazBnS/g0=;
+ b=owGbwMvMwCXmy1+ufVnk62nG02pJDBlX+BO2r32Wpik86WrpXv24J/tZ3wr++VP/RENf8/vp9
+ tU/a+bWd5SyMIhxMciKKbLsuZJ/fjP7W/nP0z4ehZnDygQyhIGLUwAmIvOFkeGXtXli1vo18sdY
+ OhVb/s1bfvGhjcivFdz6/Lu4jJuPuSxnZHhyNfHJf/cNMVufTbuufjRYIfLr8/PtSS4vamz4zHb
+ dO8UNAA==
+X-Developer-Key: i=se@simonwunderlich.de; a=openpgp;
+ fpr=522D7163831C73A635D12FE5EC371482956781AF
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250924_083422_909941_CDF8E6AF 
+X-CRM114-Status: GOOD (  12.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,68 +82,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Make sure to drop the references taken when looking up the subsys
-devices during probe on probe failure (e.g. probe deferral) and on
-driver unbind.
+The commit 22b980badc0f ("mt76: add functions for parsing rate power limits
+from DT") added filtering of the power limits based on two properties:
 
-Similarly, drop the SCP device reference after retrieving its platform
-data during probe to avoid leaking it.
+* regdomain
+* country
 
-Note that holding a reference to a device does not prevent its driver
-data from going away.
+If either the country or the regdomain matches, the power limits are
+applied and the search is aborted. If none of the two is defined for the
+power limit, it is a global (or "fallback") power limit. The last
+"fallback" power limit in the list will be returned when not matching
+regdomain or country was found.
 
-Fixes: 61890ccaefaf ("media: platform: mtk-mdp3: add MediaTek MDP3 driver")
-Cc: stable@vger.kernel.org	# 6.1
-Cc: Moudy Ho <moudy.ho@mediatek.com>
-Signed-off-by: Johan Hovold <johan@kernel.org>
+The idea is here to allow to specify "overwriting" country limits in front
+of the list - just in case a regdomain is shared but a country has
+additional limitations.
+
+But this property was forgotten to be defined in commit 2de6ccebe0e7
+("dt-bindings:net:wireless:mediatek,mt76: introduce power-limits node").
+
+Signed-off-by: Sven Eckelmann (Plasma Cloud) <se@simonwunderlich.de>
 ---
- .../media/platform/mediatek/mdp3/mtk-mdp3-core.c   | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+ Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-index 8de2c8e4d333..fc117a6a822c 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-@@ -157,10 +157,18 @@ void mdp_video_device_release(struct video_device *vdev)
- 	kfree(mdp);
- }
+diff --git a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
+index eabceb849537c418650697da86682ef04c979193..f8f72f3f1b1dd185b4797be38b87c621ef3eac08 100644
+--- a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
++++ b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
+@@ -151,6 +151,11 @@ properties:
+               - ETSI
+               - JP
  
-+static void mdp_put_device(void *_dev)
-+{
-+	struct device *dev = _dev;
++          country:
++            $ref: /schemas/types.yaml#/definitions/string
++            description:
++              ISO 3166-1 alpha-2 country code for power limits
 +
-+	put_device(dev);
-+}
-+
- static int mdp_mm_subsys_deploy(struct mdp_dev *mdp, enum mdp_infra_id id)
- {
- 	struct platform_device *mm_pdev = NULL;
- 	struct device **dev;
-+	int ret;
- 	int i;
- 
- 	if (!mdp)
-@@ -194,6 +202,11 @@ static int mdp_mm_subsys_deploy(struct mdp_dev *mdp, enum mdp_infra_id id)
- 		if (WARN_ON(!mm_pdev))
- 			return -ENODEV;
- 
-+		ret = devm_add_action_or_reset(&mdp->pdev->dev, mdp_put_device,
-+					       &mm_pdev->dev);
-+		if (ret)
-+			return ret;
-+
- 		*dev = &mm_pdev->dev;
- 	}
- 
-@@ -279,6 +292,7 @@ static int mdp_probe(struct platform_device *pdev)
- 			goto err_destroy_clock_wq;
- 		}
- 		mdp->scp = platform_get_drvdata(mm_pdev);
-+		put_device(&mm_pdev->dev);
- 	}
- 
- 	mdp->rproc_handle = scp_get_rproc(mdp->scp);
+         patternProperties:
+           "^txpower-[256]g$":
+             type: object
+
 -- 
-2.49.1
+2.47.3
 
 
