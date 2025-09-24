@@ -4,212 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 658ADCAC5A5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 09:26:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E72F5CAC5B0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 09:36:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3iALyKQPldi5/W1XT5F+C8xm9Lbj3oKhVKMWpMX+hWc=; b=a5HZrnZvCHPtE9A3/4PKDXYIIC
-	5STloCUC+ctpKsUCH2eboGyA7FSxKOe3dVe4LnErmI5arb/PjLVIHg1NTqx+APcTRTCOA78KinF11
-	DNHep65RZYqH/Za4BFVNe1hpUclXAGMHCO7XyMeI+bm6wVz3i//8sQpin03PDRvUAwu5mkprbfsTM
-	pQ60btnI1D02dz2Vvl15QG11/RwcjDPGn4xBN6u5eapQuopM1wfQ92kSIwApjsXNd7hc1Ox2zYmAw
-	+ujpAjBoCdPJlKJ24wrGc4+wlcg4pAhEp2uGkrcDwSYNvGScrZR1u68GmYniDarrEte2ZEVL4REFg
-	lEnQA2lQ==;
+	bh=AjCeAO14p3zmD9+iEqpOsVWSf1uUTsFnLPszehJC8mM=; b=AkkqXyLb/YOML3zDeuJagQDlOV
+	w0WEkNRw5P9PdgkPc3u5ncsyjnNXslQdqCukDmNojs5r8JW02umPaYuIpy+k/1oS0Rsj4OySwFGlb
+	iFXGkhDRV3yPFdQGiNOVy3CS1760sdjpc5fHQl0dFFul5g+4OXg+hToHXU9XpOfUHSJVjGaoN6/bu
+	EtUGwpKGugutPkWNtI5fbAAmMu1zkVjhEwHwdyV5ts8Pgw/+agut3Gf7MqZ0uc8+o0dXuBDNjcaCP
+	4ADWvRAKMeHiHEME0sKo+0YOVoZmFnDB04APgDfCCQQjDq71yyUPIQlCm5tDhbt9mr+BVl2Jejtfp
+	JBjXGkZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1Llo-0000000G2N7-3oZj;
-	Wed, 24 Sep 2025 09:26:40 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1v1Luz-0000000G5tm-3k1t;
+	Wed, 24 Sep 2025 09:36:09 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1Llm-0000000G2MU-0HM5
-	for linux-mediatek@lists.infradead.org;
-	Wed, 24 Sep 2025 09:26:39 +0000
-X-UUID: 8fa98704992811f09f706fa2197c6ceb-20250924
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=3iALyKQPldi5/W1XT5F+C8xm9Lbj3oKhVKMWpMX+hWc=;
-	b=sPoZp7Czc+6Yl2GdKrfv1UoBm0YLWpBzX9uzaV/WIT/l4FxzGXHSW7zTlGoYvZ32Xy4gA5Gzyyd4uapzYzM+C7lPomX8fkcA3HI5l4vK8LblswzZ1mMQ8PP2nhnEyaVVchE92+OfW/i8r3TSwC7IF2DKRCYoi8v/jSOgMoZlFTQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.4,REQID:0daf4f64-07d3-4daa-93de-3f39a19b831b,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:1ca6b93,CLOUDID:1b0ae56c-8443-424b-b119-dc42e68239b0,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111|836|888|898,
-	TC:-5,Content:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:nil,Bulk:nil,QS:nil,
-	BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 8fa98704992811f09f706fa2197c6ceb-20250924
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 726167048; Wed, 24 Sep 2025 02:26:33 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.10; Wed, 24 Sep 2025 17:26:30 +0800
-Received: from SI4PR04CU001.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
- 15.2.1748.10 via Frontend Transport; Wed, 24 Sep 2025 17:26:30 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=IPPelidJ3yGxct5U1h7bhp40XtCiV/VCFiL0M3HIgfyOrZAkbfNvn1XgPsidTtgUAZOEZJwH3UPOVnsG75W0fhv4lVb1t/bkHjXgaXElZ3tcrD1uOd3NlRene7GZY2lygj3NCuN6aAPwPMZvM0sqdhEplg/sSH8o5qF9eYjrEo2fN36oNd5LiSpwXzvnsZOB5p7ANoijKIdWI+0SamXGA9z9XHg5uoixV2KQodnQkBXhkRSFCcNL7TZe6Rb0qaSlRCGqZMT4NW44NqhQ06HVu00Sq9IYqQdxKzpJ+zkQvytLmQQUY34CzC9Gup+DhMAkqhW9sIpJsVi1cs2MNf4YiQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=3iALyKQPldi5/W1XT5F+C8xm9Lbj3oKhVKMWpMX+hWc=;
- b=vz8xIoMBvih2yXn98Euj/KHrPHn43rgXvJ07U5zhWruAvwLaaCe8xLBDR803hU9vHeuybZ2Jw0tazxxHMWptq6AFw/ZkYR24czsSfSTgLj8vokme1ZRWWlAGSPMGr/t1Aj+y46dFfpruWfr+bWzSoHEui0KLTC8kl9RkPCJOAXWtGBsLLBvkmGwW1Jd/ExzykPyE0wfvNrqWog0hItWI8/u0MsOOTZSdFHcTi2++yCLRpEK4I7s0kfvQx6NNVjKeLYaFE/PPSOwk2zn8g7BgAg1wdJZ6hD2u9Q6I2ZRYy0Cx0Qfuv8MYJd1CkYyZ1ztmKIMNSND/0RHnxUIvcCutTw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=3iALyKQPldi5/W1XT5F+C8xm9Lbj3oKhVKMWpMX+hWc=;
- b=RbDVacsiGpPy+TQrYu9RDzRJJsrv+YyRvU2KaoB8F49z6S6c3iuF/NSZZ5mm4Vse0Puj9EFXbiU35XoqmVVmyOnNut7QCFoKX7pfBOpA+gqkODis8SjVWQ7Tnnpldovuu/ZmbtsgkzORFO92GqY/4pqGRlI72lRZOl+DnfARATU=
-Received: from PSAPR03MB5605.apcprd03.prod.outlook.com (2603:1096:301:66::6)
- by SEYPR03MB6796.apcprd03.prod.outlook.com (2603:1096:101:8b::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9137.20; Wed, 24 Sep
- 2025 09:26:27 +0000
-Received: from PSAPR03MB5605.apcprd03.prod.outlook.com
- ([fe80::3945:7dbc:62bd:c31c]) by PSAPR03MB5605.apcprd03.prod.outlook.com
- ([fe80::3945:7dbc:62bd:c31c%6]) with mapi id 15.20.9160.008; Wed, 24 Sep 2025
- 09:26:27 +0000
-From: =?utf-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>
-To: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
-	"jejb@linux.ibm.com" <jejb@linux.ibm.com>, "bvanassche@acm.org"
-	<bvanassche@acm.org>, "avri.altman@wdc.com" <avri.altman@wdc.com>,
-	"martin.petersen@oracle.com" <martin.petersen@oracle.com>,
-	"alim.akhtar@samsung.com" <alim.akhtar@samsung.com>
-CC: =?utf-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
-	=?utf-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
-	=?utf-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
-	=?utf-8?B?RWQgVHNhaSAo6JSh5a6X6LuSKQ==?= <Ed.Tsai@mediatek.com>, wsd_upstream
-	<wsd_upstream@mediatek.com>, =?utf-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
-	<Chaotian.Jing@mediatek.com>, =?utf-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?=
-	<Chun-hung.Wu@mediatek.com>, =?utf-8?B?WWktZmFuIFBlbmcgKOW9ree+v+WHoSk=?=
-	<Yi-fan.Peng@mediatek.com>, =?utf-8?B?UWlsaW4gVGFuICjosK3pupLpup8p?=
-	<Qilin.Tan@mediatek.com>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>,
-	=?utf-8?B?SmlhamllIEhhbyAo6YOd5Yqg6IqCKQ==?= <jiajie.hao@mediatek.com>,
-	=?utf-8?B?TGluIEd1aSAo5qGC5p6XKQ==?= <Lin.Gui@mediatek.com>,
-	=?utf-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?= <Naomi.Chu@mediatek.com>,
-	=?utf-8?B?VHVuLXl1IFl1ICjmuLjmlabogb8p?= <Tun-yu.Yu@mediatek.com>
-Subject: Re: [PATCH v1] ufs: core: Fix runtime suspend error deadlock
-Thread-Topic: [PATCH v1] ufs: core: Fix runtime suspend error deadlock
-Thread-Index: AQHcLGMd6+SljMTAGUerWxHWzkJ+3LSg73AAgAEiYwA=
-Date: Wed, 24 Sep 2025 09:26:26 +0000
-Message-ID: <2ab086da45acaab5ff6ff5117670a8ae65d2f0ca.camel@mediatek.com>
-References: <20250923082147.2491450-1-peter.wang@mediatek.com>
-	 <ecc17025-692d-45fe-97eb-9cc4c4ce7a06@acm.org>
-In-Reply-To: <ecc17025-692d-45fe-97eb-9cc4c4ce7a06@acm.org>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: PSAPR03MB5605:EE_|SEYPR03MB6796:EE_
-x-ms-office365-filtering-correlation-id: 962e48d1-b1fa-493a-5382-08ddfb4c6fe5
-x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|376014|366016|1800799024|38070700021;
-x-microsoft-antispam-message-info: =?utf-8?B?QUphYVBmRUlVNjNXY0EvbXVlNmpDUVJVdCt2MW9nc3dTclJLcXBMQjIrU1Zw?=
- =?utf-8?B?WjFCNjFZL2s0bElyUHVLYWZ1OEMvNzJTRHR2ZkpxeStMaE53V3hUNmdvYmxV?=
- =?utf-8?B?cm51NHZDSW9TOWd2M3ZGSG5nQVdQc055Mm51ell0WTVoNkhzK1YyQXI4MjdV?=
- =?utf-8?B?VVpOM0ZDOU5RSi80a2NyQ0xMWlhtRWsra05TYjlPOGtKWjB3ejdsRytOS2F2?=
- =?utf-8?B?dW42a3krcml2RWF5Nnh2dm01VjQ1UFRHSUh0eFVBS2QyUms0WUY1a3k4aVJJ?=
- =?utf-8?B?WlN6OFliMDhLMkliY3gxUlRSNm1nNkdLZlpNc01xSW1KazREOVI3aXRReUJ5?=
- =?utf-8?B?emFvallsYUdTNlBielBvYWxTdldqWXdnVTVUeEhTTDNOcEZ4aVl5cVNzd09E?=
- =?utf-8?B?cDlCWCsrUnZJY2I0VGNwczBLMFRSeXQyNTFrY001Y0pKaXdIdVFYVVlYWTg4?=
- =?utf-8?B?aXlCRUpTbk5FQmViV0Y5cWtvejhsMHhtdU5LRHpPSGE3aThDWjZHMzQ4OEpK?=
- =?utf-8?B?WjVtblRjYUwxVWRzWlpsTmllT3cwZ0FRektEOE5FdXR0M2k2SUVVbmpxblc2?=
- =?utf-8?B?blNMMFdCNzlrWExlN1J5ZXR3RGpaS3hhREtXMVFrem1tRlorVCtDWGpaZStY?=
- =?utf-8?B?dzBPQmkweC9yZHd1dWtIQXY0OHdxMTMxem5HbjhSR2ZGNzNFdmZwWm5BYVFi?=
- =?utf-8?B?aGllVDVUeXZ3bHBra3RLWFNzMzV4NFNHMTFJaldJbDVFTHFOcG9KUXU0RVRh?=
- =?utf-8?B?UjBxbFBtZVNKaXVadCt1NGl0Q21yNXlxY0pTa21MRDh4SGFTTU8xTWpveXgy?=
- =?utf-8?B?SUR1cWI4UUs3TmZyaTNDblhHaUJLOHNnODdqd3FtbzBNSVRJbVpUSWpPQ3Na?=
- =?utf-8?B?M0xDREU1dTcvU3JPd3ZQcWdCMnJnWTBoQnBlMmtaOGt3U3R0ekE5UGExZDdZ?=
- =?utf-8?B?cUtVVGE2d0dhbkNTdTYzQWFZb3JyTm5yaDVwcS84RlRLUFBSSmEvSVpJK0Fm?=
- =?utf-8?B?NDRaQlRKNCtEYWpOTkZHU1ZUWXpidUM2UjFQTmhGbDhGdWtKSTFYVnJDUEgx?=
- =?utf-8?B?V3NxY2NqV1ppY2lZUzk0OVFjZEJGa2ZRUGEyK0luYmhLS3ZwRkpyZ242aVN2?=
- =?utf-8?B?M09MM1FETG5IVzBPeGF0eFhDSEF2c2YwNDU3N0hqbDVGNmlxRFNmVzh1ZEp5?=
- =?utf-8?B?NVc0RVRCbkRKcnR6MGUvZVI5ZEFtUFNpZ3hIR0NWRFFobEZMaEVmai9YeGFO?=
- =?utf-8?B?M25KMnhXdm55Nzd5QWNSdXJpWXZJRmd4ejZnVWhUTzR5dzcwWUFOZ3JyS2pT?=
- =?utf-8?B?NnAreXdOSGttK2FRYWtYdytpZ3FjVllRWGxHUEZXMTlOODhDVm95TEovYlZO?=
- =?utf-8?B?SG9lWUZ1UjFzY21yeEVTRlQ5SDgrZW1TUUxyZUx3Y096ZVRlOVVXbEdBMTBL?=
- =?utf-8?B?RVBReFE1Uy9ac2xFSjJhRVNyRHg2d000MUFwMXBMRE56b1NkV3BpbEU2Nlg2?=
- =?utf-8?B?NU5remRCbnlSVWVMZEltZFFweCs1c3hZaVJNNzRWMkVjSHdVQldSUW9JKzlB?=
- =?utf-8?B?bVZsNHM3SHRsaTB0UG0rRzFrdVAxVERtWVQwa1hxcGxGalJaOXFtWG4zdGR5?=
- =?utf-8?B?VmE4VmU0ZldVQ2lYV0d2VkoxSlVxOUMwUUNhMksxT001MzdCWEtNc0VNejB2?=
- =?utf-8?B?OEN1VEFjQmhkRjVKbm14TUlXbXM3dGd5R1Nnc3dhcUNoVWNWN3JGNWs3Sjg3?=
- =?utf-8?B?SkM1Qk5Cc2NOTEpvaGx3UzhzaSsvaUhnbDFPOFJ6L3p3Q1JsZFlBQnRuWkhO?=
- =?utf-8?B?NWFEYSs4TWNPcjRJc1JjUkY5UU52eEM2YXVCZVg0ZG1VdFNpaUlhZWJFejB4?=
- =?utf-8?B?UTlIVmxYb1E3cCthMTBmMGlNVXY2Rk1ObVp1bXZvanloQ2ZsaTlabk5RWWlh?=
- =?utf-8?B?USsvRGZoWFhNdHdYakNzRXBHWExuVUdWcUptNW8vWVE5TDJUSjBUVTAwOS9h?=
- =?utf-8?Q?zLlgd24SpP/VnqI9pCdZvSNPR0Yo/8=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PSAPR03MB5605.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(366016)(1800799024)(38070700021);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?azgwNkNtUTZvSmVZQ0tjY1Y5c0FBMXNma2l5M3drS25LYUJxaHdIWjROWFVt?=
- =?utf-8?B?dDFRbENIaGpnZU1JM1IydlZ3TnVOVW1HQTFVRHFSZjRSeWxCeEJqeGVDMitl?=
- =?utf-8?B?Z3MvWmhsNGlEK05HRGxUUU1JbElIVGZTdGphRGt4SU1YbkhiK2NtK0VzZnBP?=
- =?utf-8?B?NzdKbXhhSys1clZrcFExd1RIalNsaWpEWlVvV1B0RGEwMWF3SnZ5RURxVkdJ?=
- =?utf-8?B?ZWwxNkJZTjBTZWtFQ0JUUnFZRUVhY2tmUzc5Zi9DODZmWFhrb0hVQkx1UXNt?=
- =?utf-8?B?RWpmQitQUVA1QW01UjRTQ2c0Y0VOUGtTelROTE10cVlobmFKVWtIeWtlUGVN?=
- =?utf-8?B?VGFhRGtmandaR2lvMk5yR2RFZTNHZko2T25mSExXamJDWTQ5NlZLNnRIeElK?=
- =?utf-8?B?eEtRS0FlVVRITzFhTkVVZW5PNGpydXpabjBMclVLY2pOd3NtZU4wZFZaU2Yz?=
- =?utf-8?B?dnIyclRBbmdFOFJMaXk4TFh4M3FVV2dsdmJ2c0NOMlZQbUt6R3hIenNxNFBM?=
- =?utf-8?B?Ykc1ZnhjZHNvbWZURHVqb1hSWUFUaUgzVkFlRVFZZ3o2Nmo0R3Z0ZER3eE1i?=
- =?utf-8?B?dTFmRG1QSDhRak1LQlFkT0FYY3ZRa2NGVWdYYlB6aW95dFJKSEh2b2FJd21j?=
- =?utf-8?B?YVFkY3Fwcjd2eXVBRjRsY21wa090cmJiSWdUYUlWaXBiR3lrK2VscUVwM21h?=
- =?utf-8?B?a0Q1SDB0ekNjTTBUZGxTcTlMUUlTS1lNVzFjb2JtNDc5bFJ3b1NUZDlFdVJr?=
- =?utf-8?B?SFZHeHRSaVIwanJoNmxiSDFCZEx6T0N5WEN1aDVacGRtbXUwUFh1R3dQcmVF?=
- =?utf-8?B?QmFMTURTalFIVHZXQTlkSUpqclJJazNkU1RXNkdIU25nVzNwVFRZTURPc0Fj?=
- =?utf-8?B?emtLV2VieUJ4Wm9admtldlRIUnZUaUZYQWpLaUphUHFpL1d6bkFQeTJvelhl?=
- =?utf-8?B?V3ZOK2tVNkgwSGdTMnozcDFhYjJRZE9DeWk3RTZxU2hMQmFHT1pyUDhTM3VH?=
- =?utf-8?B?Y2cyaE1yanVBaUJBbGp0NWlGem5YTjg2ZWl1YWovOXJRb3lhMmpxRjJhbG5a?=
- =?utf-8?B?NEVtMzN3SVlzcWlmL1dWdTRuU1RZS005SXR0bjFXdFpaTmdTaTVnbGwzZjVa?=
- =?utf-8?B?VmlSdmU5VmYyZDc3T1FvOERpMWpkdkRTUWZJa2dIWWFGMFdGdkVEZm55RStR?=
- =?utf-8?B?Ry95WnVOUkhYQ3VkRVJJemJVRUJleW9pekVkdWF6dDE5RmZTVDVLMDNXLytv?=
- =?utf-8?B?VlROYnl0NCtqL0ttL1FKMjZ5OGlNQ3VPeWlkZHRZZllZZW5xYWVJR04zV0pW?=
- =?utf-8?B?Z0tuYzJob2o3N1RyOUErMXNIOUpTTVBmR1ZINFBsN2lkM0E3ZGtxUkRjOW13?=
- =?utf-8?B?SUtDZjZZR296enFFeTlwcDNVc0pqeXc5dzF2WkpmL3BDYzg4OVVUTXoxUE91?=
- =?utf-8?B?S3RmbWtXT2RZWTBpR3JUL1lCYWxlTThINkhhT3p0RFZXb3VwQkplNytKWlpx?=
- =?utf-8?B?eWV1Tlp4L294S2gyNUVFOUlPbThOc0s4UndqVStNd1N6SnhmMlR3WXFPdmc1?=
- =?utf-8?B?cEdpdmpqMUpBcVRyQ0NORGRsMHIvTXk4MWhqWWJiYXVIajlOTWg1RWtEU1Rt?=
- =?utf-8?B?bWNrYUNQY25EOFR0N2czWmRQWkQ3MnNYQXVEOVFVNFpkRENGV2dUdDVYb3Vm?=
- =?utf-8?B?VUdkOGs3Q3VrS3Z4RmREbWUzekFnVWFDNHYzNUdKc1dnQUI1VHJHRWJ3UWVV?=
- =?utf-8?B?WWRxYXhEenptVHgrU1FKYmVIRjNzTlQzTVFoOFMrUTRrOU5CUDF3SWFBaDRY?=
- =?utf-8?B?MGoxd05ZOXhkb1FrQ21aTVlGUnB1NDJMMGNvdFFTbDM0Z2tJNGVuOVZuMU5H?=
- =?utf-8?B?Tm41Wi8rbDFHYm1iSjZwREF0Y0ovdHpnQUNyanJxWHpCM3YvcmNPa3M2NTVC?=
- =?utf-8?B?elUvNjNvUTN3elRCNFhLc1lic0J0WHZaZUFHcjhZNU9NaDJkb2lVdVBLWm5B?=
- =?utf-8?B?WXRBL3IwY0hEK2dDMG9IZjMyOXVCV2NaOUlibGZMa0Z6dWV2VWtiN2NCdTFC?=
- =?utf-8?B?WDVpTkQ1bEVJOWIrN2tuVXVWMStDU3ZXK1MweU9ncnplaU9OeVRoUVo1Nkd6?=
- =?utf-8?B?M2NmejlEUU5seUVrdkZLMFE3UCtlZ0VXc2VydmtZRHU5ZGVwK2xXdGJXci9Z?=
- =?utf-8?B?Y0E9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <C247B44FDD8E9648A07E081AC17B5FB8@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+	id 1v1Luv-0000000G5r2-32iD;
+	Wed, 24 Sep 2025 09:36:08 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 62A8B43B27;
+	Wed, 24 Sep 2025 09:36:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 551F0C116B1;
+	Wed, 24 Sep 2025 09:34:55 +0000 (UTC)
+Date: Wed, 24 Sep 2025 10:34:42 +0100
+From: Catalin Marinas <catalin.marinas@arm.com>
+To: David Hildenbrand <david@redhat.com>
+Cc: Lance Yang <lance.yang@linux.dev>, akpm@linux-foundation.org,
+	lorenzo.stoakes@oracle.com, usamaarif642@gmail.com,
+	yuzhao@google.com, ziy@nvidia.com, baolin.wang@linux.alibaba.com,
+	baohua@kernel.org, voidice@gmail.com, Liam.Howlett@oracle.com,
+	cerasuolodomenico@gmail.com, hannes@cmpxchg.org,
+	kaleshsingh@google.com, npache@redhat.com, riel@surriel.com,
+	roman.gushchin@linux.dev, rppt@kernel.org, ryan.roberts@arm.com,
+	dev.jain@arm.com, ryncsn@gmail.com, shakeel.butt@linux.dev,
+	surenb@google.com, hughd@google.com, willy@infradead.org,
+	matthew.brost@intel.com, joshua.hahnjy@gmail.com, rakie.kim@sk.com,
+	byungchul@sk.com, gourry@gourry.net, ying.huang@linux.alibaba.com,
+	apopple@nvidia.com, qun-wei.lin@mediatek.com,
+	Andrew.Yang@mediatek.com, casper.li@mediatek.com,
+	chinwen.chang@mediatek.com, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-mm@kvack.org, ioworker0@gmail.com, stable@vger.kernel.org
+Subject: Re: [PATCH 1/1] mm/thp: fix MTE tag mismatch when replacing
+ zero-filled subpages
+Message-ID: <aNO7MrQt9oPT8Hic@arm.com>
+References: <20250922021458.68123-1-lance.yang@linux.dev>
+ <aNGGUXLCn_bWlne5@arm.com>
+ <a3412715-6d9d-4809-9588-ba08da450d16@redhat.com>
+ <aNKJ5glToE4hMhWA@arm.com>
+ <aNLHexcNI53HQ46A@arm.com>
+ <f2fe9c01-2a8d-4de9-abd5-dbb86d15a37b@linux.dev>
+ <aNOwuKmbAaMaEMb7@arm.com>
+ <17dabd83-0849-44c9-b4a2-196af60d9676@redhat.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: PSAPR03MB5605.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 962e48d1-b1fa-493a-5382-08ddfb4c6fe5
-X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Sep 2025 09:26:26.9443
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: FVQWGgNzdP+eTGUpbXf++P0syEbMLvrsE7h74eo9L279RicfLHcPjIOgIdsg7tvOpCpJ1o99qI0MggfUFVd0Eg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR03MB6796
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <17dabd83-0849-44c9-b4a2-196af60d9676@redhat.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250924_022638_327702_1165BE62 
-X-CRM114-Status: GOOD (  12.79  )
+X-CRM114-CacheID: sfid-20250924_023605_778998_E94E8880 
+X-CRM114-Status: GOOD (  22.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -224,17 +82,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCAyMDI1LTA5LTIzIGF0IDA5OjA3IC0wNzAwLCBCYXJ0IFZhbiBBc3NjaGUgd3JvdGU6
-DQo+IA0KPiANCj4gRG9lcyB0aGlzIHBhdGNoIGludHJvZHVjZSBhIHJhY2UgY29uZGl0aW9uPyBD
-YW4gYSBwb3dlciBtYW5hZ2VtZW50DQo+IG9wZXJhdGlvbiBzdGFydCBhZnRlciBoYmEtPnBtX29w
-X2luX3Byb2dyZXNzIGhhcyBiZWVuIHRlc3RlZCBhbmQNCj4gYmVmb3JlDQo+IHVmc2hjZF9lcnJf
-aGFuZGxpbmdfcHJlcGFyZSgpIGlzIGNhbGxlZD8gU2hvdWxkIHRoZSBhZGRlZCBjb2RlDQo+IHBl
-cmhhcHMNCj4gYmUgc3Vycm91bmRlZCB3aXRoIHVmc2hjZF9ycG1fZ2V0X25vcmVzdW1lKCkgYW5k
-IHVmc2hjZF9ycG1fcHV0KCk/DQo+IA0KPiBUaGFua3MsDQo+IA0KPiBCYXJ0Lg0KDQpIaSBCYXJ0
-LA0KDQpBcmUgeW91IHNheWluZyB0aGF0IGFmdGVyIHRoZSBydW50aW1lIHN1c3BlbmQgdGltZXIg
-ZXhwaXJlcywgDQp0aGUgZXJyb3IgaGFuZGxlciBtaWdodCBiZSB0cmlnZ2VyZWQganVzdCBiZWZv
-cmUgcnVudGltZSBzdXNwZW5kPw0KSSBkb24ndCB0aGluayB0aGlzIGNhbiBoYXBwZW4sIHNpbmNl
-IHRoZXJlIHNob3VsZG4ndCBiZSBhbnl0aGluZyANCnRyaWdnZXJpbmcgdGhlIGVycm9yIGhhbmRs
-ZXIgd2hlbiB0aGUgYnVzIGhhcyBiZWVuIGlkbGUgZm9yIGEgbG9uZw0KdGltZS4NCg0KVGhhbmtz
-DQpQZXRlcg0KDQo=
+On Wed, Sep 24, 2025 at 11:13:18AM +0200, David Hildenbrand wrote:
+> On 24.09.25 10:50, Catalin Marinas wrote:
+> > On Wed, Sep 24, 2025 at 10:49:27AM +0800, Lance Yang wrote:
+> > > On 2025/9/24 00:14, Catalin Marinas wrote:
+> > > > So alternative patch that also fixes the deferred struct page init (on
+> > > > the assumptions that the zero page is always mapped as pte_special():
+> > > 
+> > > I can confirm that this alternative patch also works correctly; my tests
+> > > for MTE all pass ;)
+> > 
+> > Thanks Lance for testing. I'll post one of the variants today.
+> > 
+> > > This looks like a better fix since it solves the boot hang issue too.
+> > 
+> > In principle, yes, until I tracked down why I changed it in the first
+> > place - 68d54ceeec0e ("arm64: mte: Allow PTRACE_PEEKMTETAGS access to
+> > the zero page"). ptrace() can read tags from PROT_MTE mappings and we
+> > want to allow reading zeroes as well if the page points to the zero
+> > page. Not flagging the page as PG_mte_tagged caused issues.
+> > 
+> > I can change the logic in the ptrace() code, I just need to figure out
+> > what happens to the huge zero page. Ideally we should treat both in the
+> > same way but, AFAICT, we don't use pmd_mkspecial() on the huge zero
+> > page, so it gets flagged with PG_mte_tagged.
+> 
+> I changed that recently :) The huge zero folio will now always have
+> pmd_special() set.
+
+Oh, which commit was this? It means that we can end up with
+uninitialised tags if we have a PROT_MTE huge zero page since
+set_pmd_at/set_pte_at() skips mte_sync_tags().
+
+-- 
+Catalin
 
