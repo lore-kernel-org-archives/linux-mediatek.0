@@ -4,70 +4,159 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E72F5CAC5B0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 09:36:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A996CAC5B0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 09:41:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AjCeAO14p3zmD9+iEqpOsVWSf1uUTsFnLPszehJC8mM=; b=AkkqXyLb/YOML3zDeuJagQDlOV
-	w0WEkNRw5P9PdgkPc3u5ncsyjnNXslQdqCukDmNojs5r8JW02umPaYuIpy+k/1oS0Rsj4OySwFGlb
-	iFXGkhDRV3yPFdQGiNOVy3CS1760sdjpc5fHQl0dFFul5g+4OXg+hToHXU9XpOfUHSJVjGaoN6/bu
-	EtUGwpKGugutPkWNtI5fbAAmMu1zkVjhEwHwdyV5ts8Pgw/+agut3Gf7MqZ0uc8+o0dXuBDNjcaCP
-	4ADWvRAKMeHiHEME0sKo+0YOVoZmFnDB04APgDfCCQQjDq71yyUPIQlCm5tDhbt9mr+BVl2Jejtfp
-	JBjXGkZA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=16pnkGFVbO1vjzK4Fqh9nQhcK7NoT6dcZwayS88HTh0=; b=U/ZZMhw/OqmYcgKidTsYqH7c72
+	H6APWQ4GdH+le7Jbi/P44pyTD9BkqN6s4DtiTRo98TpsvTrWzm4qpkSw0/XbWVniMBnP5j0ul8GHA
+	tBPyOopgIGtgZ2rkgT0EwfiM5QFPxW1TpowoJw6vpuXTdcPjTLyedeFggH2nkWqfZSUK+qugNECl7
+	lSXTvZ2aTdqQeoxZGUhKhI6Z85qTNQLORW15p+x+Wxi9r/PMdrLSjhJ2xyIDZi6dPC9lF5UkgduUL
+	nBjPeUwZ6pNF6n9KskxEXaJYjxlZ6SIWlhM4NZMiTIn3djaWNjXuEFODsYp3ZzFlGFwSr3ICB3AgB
+	20KV0MoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1Luz-0000000G5tm-3k1t;
-	Wed, 24 Sep 2025 09:36:09 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1v1M0E-0000000G8Ha-1KFl;
+	Wed, 24 Sep 2025 09:41:34 +0000
+Received: from mail-westeuropeazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c201::3] helo=AS8PR04CU009.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1Luv-0000000G5r2-32iD;
-	Wed, 24 Sep 2025 09:36:08 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 62A8B43B27;
-	Wed, 24 Sep 2025 09:36:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 551F0C116B1;
-	Wed, 24 Sep 2025 09:34:55 +0000 (UTC)
-Date: Wed, 24 Sep 2025 10:34:42 +0100
-From: Catalin Marinas <catalin.marinas@arm.com>
-To: David Hildenbrand <david@redhat.com>
-Cc: Lance Yang <lance.yang@linux.dev>, akpm@linux-foundation.org,
-	lorenzo.stoakes@oracle.com, usamaarif642@gmail.com,
-	yuzhao@google.com, ziy@nvidia.com, baolin.wang@linux.alibaba.com,
-	baohua@kernel.org, voidice@gmail.com, Liam.Howlett@oracle.com,
-	cerasuolodomenico@gmail.com, hannes@cmpxchg.org,
-	kaleshsingh@google.com, npache@redhat.com, riel@surriel.com,
-	roman.gushchin@linux.dev, rppt@kernel.org, ryan.roberts@arm.com,
-	dev.jain@arm.com, ryncsn@gmail.com, shakeel.butt@linux.dev,
-	surenb@google.com, hughd@google.com, willy@infradead.org,
-	matthew.brost@intel.com, joshua.hahnjy@gmail.com, rakie.kim@sk.com,
-	byungchul@sk.com, gourry@gourry.net, ying.huang@linux.alibaba.com,
-	apopple@nvidia.com, qun-wei.lin@mediatek.com,
-	Andrew.Yang@mediatek.com, casper.li@mediatek.com,
-	chinwen.chang@mediatek.com, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-mm@kvack.org, ioworker0@gmail.com, stable@vger.kernel.org
-Subject: Re: [PATCH 1/1] mm/thp: fix MTE tag mismatch when replacing
- zero-filled subpages
-Message-ID: <aNO7MrQt9oPT8Hic@arm.com>
-References: <20250922021458.68123-1-lance.yang@linux.dev>
- <aNGGUXLCn_bWlne5@arm.com>
- <a3412715-6d9d-4809-9588-ba08da450d16@redhat.com>
- <aNKJ5glToE4hMhWA@arm.com>
- <aNLHexcNI53HQ46A@arm.com>
- <f2fe9c01-2a8d-4de9-abd5-dbb86d15a37b@linux.dev>
- <aNOwuKmbAaMaEMb7@arm.com>
- <17dabd83-0849-44c9-b4a2-196af60d9676@redhat.com>
+	id 1v1M0B-0000000G8EO-0YLQ;
+	Wed, 24 Sep 2025 09:41:32 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Y97OriNT8ofeGymkVgliKKvfGUmrJxDgBVc6hRrnqtqkM5DxIQFYh+eD9IBlL8zzK7XK/qtCdIRpE/t0tlB0IxB8XvaErM4RHwIzOzYhm5I0mZwjeA8CusEyfesFIqY/b4vIsFiZ82nAzVFhQTBWvktFL52oFxhMC+ylVFMO1qTdp9qBzH7zcstaAhahVY2Qn5xsvUCJxnhulCz6ZadeRjKWIzcovslo75NpQ3wq31RGL2SOC90a2DlGu3dDXFZkeAkaJxdJ0hX1Ew762Vxf51HwL4cLFJWsWOkNdRkfLd8rSGH94VgCWS/qH61LScIbbJ67lr7rbI3hykulrOwNhQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=16pnkGFVbO1vjzK4Fqh9nQhcK7NoT6dcZwayS88HTh0=;
+ b=R3uduCmqerQggax7XZ0G/AI0N1ztkBt/ls56iqtlBBS16DkNWLC8en3QZkKkaOw5qG8HTMK5I/GOc/KhhYyxuaYw5ElqUk1JwHukkq2e6Ey5FHbjss0GlHUGYyTP7RcLgi70kao3p6TdmxX2mcwhv4SkdSt9vAqCNjC08SVC69OwwsfAjNRRMMcYhbBHJCKtP8cl7Q8T0u/Ev24A+JkDZbZ7XWo8rVeVl0Z8nmLmoJpIE309BaOybVZTH3E1QcZW4gv277eLQQ3PgVcdDIA3E1Dcbto01tgPWWjFPUemaAPqVXI56f5C1A7YEaWvARmxwYbUV0TtRHYcfCaK6eL8TQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=iopsys.eu;
+ dkim=pass header.d=iopsys.eu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iopsys.eu;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=16pnkGFVbO1vjzK4Fqh9nQhcK7NoT6dcZwayS88HTh0=;
+ b=GI8JHFtjqZi3RYuvoDw4a/fcnLpZiB5Kx3jPbJ/NMtj89CIVXH+FKLKoX7e9JOfdhQFFuFaqTaL5j2TYFrmbcGPb0DVwGHqfo60eW3lm2lrkIWKyne7OGN0sMzO+SfYZCOSkVEkGVdbz5bMdMjoKSKHJWT/sseE1MDSOCrh0g3M7z+zKsWtQ4ayPPA1tTeQPFYgkTnvW68KC9zKnbReO2P0HCzSQbyA0d5Y82W933wCp6K6VmP95OS7d6JAdXkxANaOfaEinHOOY/E3Z1upM6ZZSlxRE3ylhscD/Sx/InDjJb8YOnWVXir/p7zyUzutkDWucZDC9oRz6zqPMMrG9/g==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=iopsys.eu;
+Received: from GV2PR08MB8121.eurprd08.prod.outlook.com (2603:10a6:150:7d::22)
+ by AM9PR08MB6098.eurprd08.prod.outlook.com (2603:10a6:20b:2d9::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9160.9; Wed, 24 Sep
+ 2025 09:41:20 +0000
+Received: from GV2PR08MB8121.eurprd08.prod.outlook.com
+ ([fe80::4cd3:da80:2532:daa0]) by GV2PR08MB8121.eurprd08.prod.outlook.com
+ ([fe80::4cd3:da80:2532:daa0%3]) with mapi id 15.20.9137.018; Wed, 24 Sep 2025
+ 09:41:20 +0000
+From: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+To: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Felix Fietkau <nbd@nbd.name>,
+	linux-clk@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
+	Andreas Gnau <andreas.gnau@iopsys.eu>
+Subject: [PATCH v2 0/3] clk: en7523: reset-controller support for EN7523 SoC
+Date: Wed, 24 Sep 2025 12:41:09 +0300
+Message-ID: <20250924094112.1918444-1-mikhail.kshevetskiy@iopsys.eu>
+X-Mailer: git-send-email 2.51.0
+In-Reply-To: <20250924060509.1889131-1-mikhail.kshevetskiy@iopsys.eu>
+References: <20250924060509.1889131-1-mikhail.kshevetskiy@iopsys.eu>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: GV3P280CA0091.SWEP280.PROD.OUTLOOK.COM
+ (2603:10a6:150:8::25) To GV2PR08MB8121.eurprd08.prod.outlook.com
+ (2603:10a6:150:7d::22)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <17dabd83-0849-44c9-b4a2-196af60d9676@redhat.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: GV2PR08MB8121:EE_|AM9PR08MB6098:EE_
+X-MS-Office365-Filtering-Correlation-Id: dd88d894-fc0e-40ef-83c6-08ddfb4e83ff
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|376014|7416014|52116014|38350700014|921020;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?utcLrT+8bG7GJ2Fs7wve0mIYmiEBtwLcLjJtTA/8EeDMzL915Os8fL7rt649?=
+ =?us-ascii?Q?CPe52bcMOctpGE40oB4x4Nujp2z60b47yx+0JyckFHOwtZdd3FYosNFxwlxJ?=
+ =?us-ascii?Q?HfqydyR61HW+riNfspN3ASRsFj+zYypJdsLIDiXGh9qiIt9s9NV55o5oNF7b?=
+ =?us-ascii?Q?SeJ7WgQX6PtJG8BcKsef0Fhkby6stMe1QUum+y7Nvj1Bp+BE7BOkB8olcCcW?=
+ =?us-ascii?Q?8p/1GQzK5pTqGHldIEYeGSSVGHAIrfCk4n0d5Ej0QVNybrwrKI9Hun7TQ9dg?=
+ =?us-ascii?Q?UpT0Joy9Gqy6VMu3ZKofN/NbM2qKb+ZQ4hArqWnHPge6y8NWuEjftO4bTkvg?=
+ =?us-ascii?Q?5USoTipV9bRticv2/jdCmyPoTDfBaUaPhIM9HcOpA97JC0GmLS0Xg8tzVTlf?=
+ =?us-ascii?Q?ZAq+ZfVeHrlivUs/Z1iDCZPy3qXc9j7shB6lJxcMAw4YtxKhYBQF+59Jf3/p?=
+ =?us-ascii?Q?WVY8nBkKlvxg5tuZx3tTwmEUO/vCK5je9uvpwd2u3z0At9q2pjTip9dLT5hI?=
+ =?us-ascii?Q?8JzOcutSyTWmEqk1mD5OaU0c5KjQgCgm3MHA4ueeYGp3oMLuBNDCOkGbEKuN?=
+ =?us-ascii?Q?AZe3/3FniyNJ8WCvlqwdBsdLmLEMDEdjZEOjr6WM0KPSm57qALJ0jWAPcGfi?=
+ =?us-ascii?Q?Kzu82q/5L6rpBOkrrEaVkIDd3/wc2Ny3WNbaY/wrjA+yqVgttu+vdB7VLfoB?=
+ =?us-ascii?Q?v9Q4/OgqJqQUk6wZxY6I/4qLvJNE3A5B1CuEC9duCXORBYgdzPf2g2QhOgHq?=
+ =?us-ascii?Q?b5GdhYZzKPWZdrVbWAx3zv5IjJqPAUjv159upmToNPN40ueeorxqoHZlAj/B?=
+ =?us-ascii?Q?BAmrTLOv3zkH7Q6fOz7+1wedbHQSb+YQfIIAZH/xARj7GkbiqUmiMgN472Uy?=
+ =?us-ascii?Q?Ej5K6FL6uje6BE800q8A+rRCOWHYIR5wTkEzDtu4cPx59wzkaig8U3YPwFwT?=
+ =?us-ascii?Q?bNDYIzUHCcZDVoNZk/0+yyvM8ti5bRG2FUVa7OthLK8xNPfV40PoUYdQvwkB?=
+ =?us-ascii?Q?LPFZKvMqbCarCiw+MHjqgE/q0gQIAdB9SL0yExUSeLPcUiJobi1q+CiZha+O?=
+ =?us-ascii?Q?Nb5lTXxSc95HIsCKnKjHkD7qbq7V/Cl/i4RBmP3asDgYyhmdQR947cq2SCUw?=
+ =?us-ascii?Q?6WcUn3XiF1Y9DRKrDor9SkOxzpRbRNmAmR9v2MEck8JaB50J/0yfLaLZSIRG?=
+ =?us-ascii?Q?DW95AQ466yIExtbvlepM8+ksTupMu92enQ/zcGK+3qsM6DTZ2v7SNRS1l5wd?=
+ =?us-ascii?Q?KNKyqHWd5SNGV6Q09Nt2ATdRZ/hiOIFjsKe9JjHFWgWOC5kkKSDzg7VgnEJg?=
+ =?us-ascii?Q?qenIn2kR8brEKfqsQaLNdZhI2lOAq400QQccBNrUNXnJv16xWgYBbnWecqcR?=
+ =?us-ascii?Q?kTHdTjp3VVxAP4vTgeBLlV4h3sEz/r2hY1uagnFGjxHkFqD889YNJibtBt9J?=
+ =?us-ascii?Q?SZ2EmIIbTs7+GsJ0xHvhnJtAYnc9m0debDOACjPntBKt7Lmv9bAVuQkJEx7i?=
+ =?us-ascii?Q?ygAeGsWRkHqL32o=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GV2PR08MB8121.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014)(7416014)(52116014)(38350700014)(921020);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?KbzO56FP0cG/nkS+lh3yBMPaUhSnzjbvqJwbbF75+4IU6OupFvxecHW+2UNV?=
+ =?us-ascii?Q?jVTzzw+r27HlA4SPl5jWclfqBFgiMd87fWOddI6jqaSGTQIxCAu2sPnEqeIy?=
+ =?us-ascii?Q?TbR/wNHVFzhsD4t7o56M5kpFDOUWLgAz97hiKG2+9enk7dQXhF0GZ/gxyVBs?=
+ =?us-ascii?Q?RdscWTUBNyPYOdE5cps+hP4lfa7BnX5nZAI9zoF7cyfV3V1Z0FwhfGAywH1+?=
+ =?us-ascii?Q?mvqm2ogF/UJ1vkMD5fnaNSwS8Qtlt5PkyiznaI4Q/lnZEvPPSx71KRGQmOw6?=
+ =?us-ascii?Q?b5YNJYIz/bohsjC8sbE0UDfuw7pZkbdkU1Gnp7HO7NLZL3Y/CKthbgY9VErE?=
+ =?us-ascii?Q?CiB+TALK5cL7kZwnfiYnhdXu12quMjvzr2gn2ce0D/adPRamlwulopYW0Fsy?=
+ =?us-ascii?Q?iHVIsqQWBgkPdvuTKFJvy9uLdrUiLGlRZ1kC1Xir3/e0y7Uox1l7l3Lpzvw3?=
+ =?us-ascii?Q?HT4vYDlQmTGzPsfbXTXDwlBb4e4Bi1c+e5FmU9YzvhrF0tMzgTHXk4IKnDQd?=
+ =?us-ascii?Q?jQtasvgiudn1ixMBvU5VvwFBioZrS+EdLnZ2NSPTz0r0jIU1QVg9jyam3ZHr?=
+ =?us-ascii?Q?MAKtu4iqV+0LdHXZWQy9LMlPe/G2xAmTvxjolq67WqPs1r5FRLb9mI3yCy0b?=
+ =?us-ascii?Q?Fli8mQEC2E+B7+dKGevjgqFMbd/xIMO398FT+/8YfIJhZSccCb7MShdIcUaw?=
+ =?us-ascii?Q?05Jsuiq5Ll7oHxMGXkjSp0X0laRUMlw/yUrBLKECH/yjCvU9ZpLovRndor9B?=
+ =?us-ascii?Q?bHm8H6d825QF59rymkpb56EZ9NX2WQyG25MPoc7JyWIJXYFq9CtyK3kdtTwk?=
+ =?us-ascii?Q?LQUyYbgcyqYueCMiwXe1J3k5aGBPML+sE3Y4tUAn7QDBnh7JyOHlhhLc1Ult?=
+ =?us-ascii?Q?PgzlKzB52zxF/6FNR1pmtY5bRR9rth+3J3cUcOcxMlQFWuMa3m5tj1GbOE6i?=
+ =?us-ascii?Q?4SpAxz+gWeZzPhSmuMFHDpk4+K2LlsBm+ifySV9H9QIeMvsIHZxquY0w9sFX?=
+ =?us-ascii?Q?sxqKBLLVn1MfDOhgFZhZn0aTi+F86cZw/eaR6DqT69F/jh3qPPsCwTg9EIp+?=
+ =?us-ascii?Q?0oKqc+wQ+r5E0py3HWI/i/OTmX2M04gE+GWN7hZSpSGtwUOqYl0Ddun6RLAZ?=
+ =?us-ascii?Q?D7yBH3DqkwSQky+7rhWOPT32mZD24rS0AFIh+SY/KmGKXXd3JWjzXntGzXHF?=
+ =?us-ascii?Q?edsMzglLdha6mFVcGPwHY+1RlubfwpLbp0bu8p3wxOipkgmPM26boEAOy7eW?=
+ =?us-ascii?Q?4CZhSgXiqXnrIp9lM6D5a1z4osEpdkSZN2NqHaW3XMOKrCx+Xu3pZ1TVsBf2?=
+ =?us-ascii?Q?iiIGDN/PjNMHjC5K0CV32IyWWjGk3kPAnPAklIa7kd6oBbBNKKRJ12GIaVib?=
+ =?us-ascii?Q?kTqxFmNIgatQ0sebwT44+9VJJ+9tM0KANBksViXKkwvAdPo8TP04T3qV/oYM?=
+ =?us-ascii?Q?Q3yeeX5mE2WDRJaL6BBE+dj5IEYfD9VosgSFnU2Gukq7mzmVCWgItpDv/ZBM?=
+ =?us-ascii?Q?g632JNck1lfKuSmOhCetW8o7dMLnwm1DuzBvPpSmimbB16jed8Ym+Wr2AqTd?=
+ =?us-ascii?Q?nixNJx+cdpRUDUBf+TLNTsOUqoguQWOrXejBQcpcj0ej5RmhyACPFltSxo8W?=
+ =?us-ascii?Q?v1UdvpjqE0VN3x1IsS9NpTc=3D?=
+X-OriginatorOrg: iopsys.eu
+X-MS-Exchange-CrossTenant-Network-Message-Id: dd88d894-fc0e-40ef-83c6-08ddfb4e83ff
+X-MS-Exchange-CrossTenant-AuthSource: GV2PR08MB8121.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Sep 2025 09:41:20.1056
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: Sasz9xPUAajLHkasZcNSB7V5xpEUbnzbR5Jh7zZH4j5TVrg1zck/MFtoMVvuhffU7LNAlMgFCweL6VhKo7jwvFKKNvSa5dz6un/jC2RZYUY=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM9PR08MB6098
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250924_023605_778998_E94E8880 
-X-CRM114-Status: GOOD (  22.65  )
+X-CRM114-CacheID: sfid-20250924_024131_549083_3AB2BE43 
+X-CRM114-Status: GOOD (  10.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,38 +171,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 24, 2025 at 11:13:18AM +0200, David Hildenbrand wrote:
-> On 24.09.25 10:50, Catalin Marinas wrote:
-> > On Wed, Sep 24, 2025 at 10:49:27AM +0800, Lance Yang wrote:
-> > > On 2025/9/24 00:14, Catalin Marinas wrote:
-> > > > So alternative patch that also fixes the deferred struct page init (on
-> > > > the assumptions that the zero page is always mapped as pte_special():
-> > > 
-> > > I can confirm that this alternative patch also works correctly; my tests
-> > > for MTE all pass ;)
-> > 
-> > Thanks Lance for testing. I'll post one of the variants today.
-> > 
-> > > This looks like a better fix since it solves the boot hang issue too.
-> > 
-> > In principle, yes, until I tracked down why I changed it in the first
-> > place - 68d54ceeec0e ("arm64: mte: Allow PTRACE_PEEKMTETAGS access to
-> > the zero page"). ptrace() can read tags from PROT_MTE mappings and we
-> > want to allow reading zeroes as well if the page points to the zero
-> > page. Not flagging the page as PG_mte_tagged caused issues.
-> > 
-> > I can change the logic in the ptrace() code, I just need to figure out
-> > what happens to the huge zero page. Ideally we should treat both in the
-> > same way but, AFAICT, we don't use pmd_mkspecial() on the huge zero
-> > page, so it gets flagged with PG_mte_tagged.
-> 
-> I changed that recently :) The huge zero folio will now always have
-> pmd_special() set.
+These patches:
+ * adds reset-controller support for EN7523 SoC
+ * updates dt-bindings
+ * updates en7523 dtsi
 
-Oh, which commit was this? It means that we can end up with
-uninitialised tags if we have a PROT_MTE huge zero page since
-set_pmd_at/set_pte_at() skips mte_sync_tags().
+Reset-controller support will allow us more easily reusing of en7581 drivers
+for en7523.
+
+Changes v2:
+ * keep '#reset-cells' property optional
+ * put dtsi changes to a separate commit
+ * add missed dtsi include
+
+Mikhail Kshevetskiy (3):
+  dt-bindings: clock: airoha: Add reset support to EN7523 clock binding
+  clk: en7523: Add reset-controller support for EN7523 SoC
+  ARM: dts: airoha: update EN7523 dtsi to support resets
+
+ .../bindings/clock/airoha,en7523-scu.yaml     |  3 +-
+ arch/arm/boot/dts/airoha/en7523.dtsi          |  2 +
+ drivers/clk/clk-en7523.c                      | 72 ++++++++++++++++---
+ .../dt-bindings/reset/airoha,en7523-reset.h   | 61 ++++++++++++++++
+ 4 files changed, 127 insertions(+), 11 deletions(-)
+ create mode 100644 include/dt-bindings/reset/airoha,en7523-reset.h
 
 -- 
-Catalin
+2.51.0
+
 
