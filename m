@@ -4,73 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40FC4CAC5B0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 11:13:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D57E9CAC5B3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Sep 2025 11:30:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=M/wcBwhTPg+WhijPk23CaI2hCH/vm7Zi74wsiKBa9Ts=; b=bXB+/YnWzWTjfmQhnZX+MH12n6
-	/qpBrWgMnBcXy7J801mazFmCzgKq8krYNydvddIot2SDpoQ7tlkQtQ2hip7043AaYth7IMwj/kPyL
-	FcfzjAP3szQoATCKAhrbymxsZFRhgU4+xGaz4+6xnXkZyo1o8qizYowSmBKwAOlwtDvh9bx4vx5ez
-	fMn0ksOSHz/mhlCIEoCf2PdoIY/wiDoqkBmNQ4LgxsYD2rQ4BSPAMwrYH+o0n+APg2PbD/RYRXnJ4
-	cRMjWwD/lWMDildefqxaE7n/kOu20ng5NLthV0LP3V+meDpG/t1Zk1kDtJZXTpBuXVx93PxS75RWI
-	U/gYmzqw==;
+	bh=nwfkqMziB6gCJNcij5fnepcOp1KZIm6MW8qrBIKv5YI=; b=Wge4bRHNUvLyEjEWRrTQIwk0hI
+	EmVXxaJ99ABoJXIJPYbNrWGb2BVN+wHJXvkzoYdiS3sPwA4coQoJJ/z1UhJsEU5a+A/6mWZvMYzEf
+	u/S8HPdB0q+RmaRmUZn7sQl+oroDTmkcNh1hV/FoM1FY6jxU6aA3JAzVnkKo/tu5/dnY4x/1yi1gH
+	gF/655qR9G8zajX3x1RCyPIo3WUiy9THd7W+6FPnyol/Ald0nhcsWqm4juVUv+PfliJVtL1+CQxy2
+	xHLjsgJ3/f/RJGUvHudHZYE0CjiSSZpNfPnZJINCL42FdVbOYSIj0NHCqc+yvgSriIsKHBirANMKB
+	L44MzTLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1NQl-0000000Gp7h-1qGd;
-	Wed, 24 Sep 2025 11:13:03 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1v1Nhw-0000000Gvip-1y30;
+	Wed, 24 Sep 2025 11:30:48 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1NQi-0000000Gp2z-4220;
-	Wed, 24 Sep 2025 11:13:02 +0000
+	id 1v1Nhs-0000000Gvgm-3VFZ;
+	Wed, 24 Sep 2025 11:30:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1758712378;
-	bh=mEaPxnXPWDr4+sD/gn++M63cz2JPCbACYRxAhexmBWw=;
+	s=mail; t=1758713442;
+	bh=zAejJcsR74t5qZJ7rjpWSVUmAm/GDBIrDrA/WIcoYEs=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=LpkfQhXpa9huGJydB70kP2swCrNVh7lR5ONAGi2uIpFKwLzt7bt214owUR9Wr9Ywm
-	 oH8+UqTL9Bmf1iLkT1rkaCdxYcwgBhYHsTd8IhsZ7oDcq2SKRxb2i5v3odVk+qF8oE
-	 dXuhqx9sMNrobUcg8p16NPBGXFpx3v76T8z7go5XExyAQMqSqQDJWNZ5GMfQrsKvW5
-	 I6EZTdZEeFE9QTJxHPYzJsjVwZ3efFXGGno2yRvnaH1wvpVh4G2mb1lHpvGTLnZphK
-	 u0f8wLM8IE1kImVtn4uApybH4xzHOo0QrQMeVBtmhv/LEXsa7ac7KTSGmVaRXAtLYh
-	 672EkJtLChEBQ==
+	b=QuG46zSOaR9X4edxtW+pQ+3UH7B0FcrFvBxe7Vu2/CCarOOCmn5RvqMyETMNLE5Tj
+	 sUYiZCLg71vRI1BbB6aTfIgCBvDQuP5NAbTCPKq2lGB0VN563Jyg+zLAlX3H03CdCi
+	 EeGgtGZL4auDTismc2lxfaK9fjIMJWRm2+o1gjmUt/x4ka+NouSoBNnv3kdEIZ4DS3
+	 qjGWGExCRy0SSX21dBZmYlHnq3+8J2IupiofzMjM/fQB2pAGZsRP5wMWone9L6h1uh
+	 4V+IzMSqztrRXMwUCnlFA9+JsbWCqxcxyRHXiMWDxv0wsctZ72gfkq2KZZAl7Ylf41
+	 kzxsin8p9aL9w==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2C3F617E068C;
-	Wed, 24 Sep 2025 13:12:58 +0200 (CEST)
-Message-ID: <f495967f-5713-47c4-afec-723d4ad005cc@collabora.com>
-Date: Wed, 24 Sep 2025 13:12:57 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A001C17E07EE;
+	Wed, 24 Sep 2025 13:30:41 +0200 (CEST)
+Message-ID: <4603e18e-e9c9-4f0e-9c0c-8cbad3567ea8@collabora.com>
+Date: Wed, 24 Sep 2025 13:30:41 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 3/3] ARM: dts: airoha: update EN7523 dtsi to support
- resets
-To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Felix Fietkau <nbd@nbd.name>,
- linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Cc: Andreas Gnau <andreas.gnau@iopsys.eu>
-References: <20250924094112.1918444-1-mikhail.kshevetskiy@iopsys.eu>
- <20250924104850.1930254-1-mikhail.kshevetskiy@iopsys.eu>
- <20250924104850.1930254-4-mikhail.kshevetskiy@iopsys.eu>
+Subject: Re: [PATCH v4 2/8] dt-bindings: power: Add MT8196 GPU frequency
+ control binding
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ Jassi Brar <jassisinghbrar@gmail.com>, Chia-I Wu <olvaffe@gmail.com>,
+ Chen-Yu Tsai <wenst@chromium.org>, Steven Price <steven.price@arm.com>,
+ Liviu Dudau <liviu.dudau@arm.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Kees Cook <kees@kernel.org>,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ Ulf Hansson <ulf.hansson@linaro.org>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-hardening@vger.kernel.org, linux-pm@vger.kernel.org
+References: <20250923-mt8196-gpufreq-v4-0-6cd63ade73d6@collabora.com>
+ <20250923-mt8196-gpufreq-v4-2-6cd63ade73d6@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250924104850.1930254-4-mikhail.kshevetskiy@iopsys.eu>
+In-Reply-To: <20250923-mt8196-gpufreq-v4-2-6cd63ade73d6@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250924_041301_174917_6D44E4CC 
-X-CRM114-Status: UNSURE (   7.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250924_043045_039751_4CBA3F04 
+X-CRM114-Status: GOOD (  17.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,13 +90,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 24/09/25 12:48, Mikhail Kshevetskiy ha scritto:
-> This patch updates EN7523 dtsi to reflect the reset-controller
-> support for EN7523 SoC.
+Il 23/09/25 13:39, Nicolas Frattaroli ha scritto:
+> On the MT8196 and MT6991 SoCs, the GPU power and frequency is controlled
+> by some integration logic, referred to as "MFlexGraphics" by MediaTek,
+> which comes in the form of an embedded controller running
+> special-purpose firmware.
 > 
-> Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+> This controller takes care of the regulators and PLL clock frequencies
+> to squeeze the maximum amount of power out of the silicon.
+> 
+> Add a binding which models it as a power domain.
+> 
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> ---
+>   .../bindings/power/mediatek,mt8196-gpufreq.yaml    | 117 +++++++++++++++++++++
+>   1 file changed, 117 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/power/mediatek,mt8196-gpufreq.yaml b/Documentation/devicetree/bindings/power/mediatek,mt8196-gpufreq.yaml
+> new file mode 100644
+> index 0000000000000000000000000000000000000000..03721244a737ce0914a89cc0aedd88fa3b6b2038
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/power/mediatek,mt8196-gpufreq.yaml
+> @@ -0,0 +1,117 @@
+> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/power/mediatek,mt8196-gpufreq.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek MFlexGraphics Power and Frequency Controller
+> +
+> +maintainers:
+> +  - Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> +
+> +description: |
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+This vertical bar is not needed. Please drop it.
 
+Cheers,
+Angelo
 
+> +  A special-purpose embedded MCU to control power and frequency of GPU devices
+> +  using MediaTek Flexible Graphics integration hardware.
+> +
 
