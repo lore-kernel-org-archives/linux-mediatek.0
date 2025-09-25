@@ -4,53 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51AFECAC5B9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Sep 2025 21:49:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45AE5CAC5B5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Sep 2025 22:55:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=NSo1oVUYQuqUkCOmbFgTBe96VBD0+Lgn0IKt0naDqQA=; b=YU6iUo5YvdrBcrCE9EtTfE2cvs
-	iA9wejuGBJjedoGXjIf5bziFB3CHVf02n5xSw08bbvbvSzvPLXl/aSjgc2yYFrmkNHtvtjA7lwrKc
-	kIxuyzagp2Ic2Z9fvDahwwXVVyxGJ407WpYpH049oge+yrQz9nfY4SlCi1xWykZxJoTLjUTKqecVt
-	v2XGSiMn+su3Vq0zbcY/IoFgxOnzdHg0f+u49IXXllnxR8uM7Ye50O6pJ9u8YmyOV6v2Skk8dK/Pl
-	ycmyeuxV0GOvvyL29Y7dd6ahq6WLmZ5W1zvY2VB0Qx+dl5O6X5+4IcBo2mOzx2KfRg0qMKHG4D4mW
-	9d4tXPRQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4iTJ9vgbRI7WDW7RKpXc81GuQWITBQWwpqtNxLwnRRk=; b=ahsy8a2RPne4b56jkVnoKRmUom
+	NBRQ2FTKTz//+88qvx9rTSMEckkwIILxZH3qWtmS4X0bfl9AeW/yTyI7s+MPxAwMDVF6sL4c7xRvo
+	zZp273M09gHOvR1UCKxqbhurNsT5by+dxYwFCkP3FQ2tQWTM/sYXV37mcyCgNwtUCy/LySANq10au
+	OXWxcxMUgKbKHsVvSY2mO/M3Qm96o2RghQX689zqVwivNFB2alezhRh8/g2vqetGL9bnHmf/Z2K7j
+	16D/2ECU8zXMisI1eZ0iVRdfJVbenNv1DCV5Q/SqvGGQSEBFJlRe+dcPjDTsbBM8cgiHb04cm5C8n
+	tmlXlolA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1tq5-0000000DJdV-09J6;
-	Thu, 25 Sep 2025 21:49:21 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1v1urp-0000000DlHd-468t;
+	Thu, 25 Sep 2025 22:55:13 +0000
+Received: from mgamail.intel.com ([198.175.65.14])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1tpx-0000000DJYW-2091;
-	Thu, 25 Sep 2025 21:49:14 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.98.2)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1v1tpp-000000000qK-1fL9;
-	Thu, 25 Sep 2025 21:49:05 +0000
-Date: Thu, 25 Sep 2025 22:48:59 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
+	id 1v1urn-0000000DlFh-01VA;
+	Thu, 25 Sep 2025 22:55:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1758840911; x=1790376911;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=Wcm+0+MGr0QhGbbKqE9by5FkhaqCe/1wQYUpEehdWbc=;
+  b=B0e7N5+CJ3/AH6A8pmss74HIVvs5E7kRGoQmE7AKk1EYMRN94PMG5eIn
+   BRbJkFz5hK+BNDCrKpK4EaC514EerFcusB7+FF3wC8yA+QxcJyrBLzIk1
+   dvTacy9ZfOmQiOw/o8Kp5vc3LCiusdOtOXRmxe/EW+xKq/k/piSk6SUE9
+   Uwp3dlPvvZO+5+xOW0ndpHPTJ+qJYNKdJj9sOL+KWAl7KxiFKXT3rRUwn
+   GVG9SXJ8/IlhA7HsyIUvkBuOSfAySjjC4mF6Fq9t8nJyzZUpO+7GrDNfu
+   3ajq66dM4l5bQWZB6qMYcOdI+hfIebHiE7XAScJKiLaHyRbJNW+c5xvfj
+   Q==;
+X-CSE-ConnectionGUID: rFq5TsMSQ/aeUA4PDqsTdA==
+X-CSE-MsgGUID: 55o/ezMBSjGLGfBua8yIrQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11531"; a="64985626"
+X-IronPort-AV: E=Sophos;i="6.17,312,1747724400"; 
+   d="scan'208";a="64985626"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Sep 2025 15:55:10 -0700
+X-CSE-ConnectionGUID: 3ZgUONWAQ9KZXqtUzThLIQ==
+X-CSE-MsgGUID: m4VRglUzTn60fiyCen3W5Q==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.18,293,1751266800"; 
+   d="scan'208";a="176586918"
+Received: from lkp-server02.sh.intel.com (HELO 84c55410ccf6) ([10.239.97.151])
+  by orviesa006.jf.intel.com with ESMTP; 25 Sep 2025 15:55:06 -0700
+Received: from kbuild by 84c55410ccf6 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1v1ure-0005gz-38;
+	Thu, 25 Sep 2025 22:55:02 +0000
+Date: Fri, 26 Sep 2025 06:55:01 +0800
+From: kernel test robot <lkp@intel.com>
+To: Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>,
+	Marcel Holtmann <marcel@holtmann.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Daniel Golle <daniel@makrotopia.org>, linux-clk@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2] clk: mediatek: mt7988-infracfg: SPI0 clocks are not
- critical
-Message-ID: <a801e8fed69ab8f9e61970bc8ed2e2c0b634e8bb.1758836835.git.daniel@makrotopia.org>
+	Luiz Von Dentz <luiz.dentz@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: oe-kbuild-all@lists.linux.dev, Krzysztof Kozlowski <krzk@kernel.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Deren Wu <deren.Wu@mediatek.com>, Chris Lu <chris.lu@mediatek.com>,
+	Hao Qin <Hao.qin@mediatek.com>,
+	linux-bluetooth <linux-bluetooth@vger.kernel.org>,
+	linux-kernel <linux-kernel@vger.kernel.org>,
+	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>,
+	Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>
+Subject: Re: [PATCH v8] Bluetooth: mediatek: add gpio pin to reset bt
+Message-ID: <202509260623.nZX7ipvc-lkp@intel.com>
+References: <20250925092058.16648-1-ot_zhangchao.zhang@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <20250925092058.16648-1-ot_zhangchao.zhang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250925_144913_516230_7EDAA2B9 
-X-CRM114-Status: UNSURE (   9.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250925_155511_127274_8F7D2EED 
+X-CRM114-Status: GOOD (  15.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,38 +97,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SPI0 clocks have wrongly been marked as critical while, probably due
-to the SPI driver not requesting them. This can (and should) be addressed
-in device tree instead.
-Remove CLK_IS_CRITICAL flag from clocks related to SPI0.
+Hi Zhangchao,
 
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
-v2: drop Fixes:-tag
+kernel test robot noticed the following build errors:
 
- drivers/clk/mediatek/clk-mt7988-infracfg.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+[auto build test ERROR on bluetooth/master]
+[also build test ERROR on bluetooth-next/master linus/master v6.17-rc7 next-20250925]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-diff --git a/drivers/clk/mediatek/clk-mt7988-infracfg.c b/drivers/clk/mediatek/clk-mt7988-infracfg.c
-index ef8267319d91..c40e18c27f12 100644
---- a/drivers/clk/mediatek/clk-mt7988-infracfg.c
-+++ b/drivers/clk/mediatek/clk-mt7988-infracfg.c
-@@ -196,12 +196,10 @@ static const struct mtk_gate infra_clks[] = {
- 	GATE_INFRA2(CLK_INFRA_SPINFI, "infra_f_fspinfi", "spinfi_sel", 10),
- 	GATE_INFRA2_FLAGS(CLK_INFRA_66M_NFI_HCK, "infra_hf_66m_nfi_hck", "sysaxi_sel", 11,
- 			  CLK_IS_CRITICAL),
--	GATE_INFRA2_FLAGS(CLK_INFRA_104M_SPI0, "infra_hf_104m_spi0", "infra_mux_spi0_sel", 12,
--			  CLK_IS_CRITICAL),
-+	GATE_INFRA2(CLK_INFRA_104M_SPI0, "infra_hf_104m_spi0", "infra_mux_spi0_sel", 12),
- 	GATE_INFRA2(CLK_INFRA_104M_SPI1, "infra_hf_104m_spi1", "infra_mux_spi1_sel", 13),
- 	GATE_INFRA2(CLK_INFRA_104M_SPI2_BCK, "infra_hf_104m_spi2_bck", "infra_mux_spi2_sel", 14),
--	GATE_INFRA2_FLAGS(CLK_INFRA_66M_SPI0_HCK, "infra_hf_66m_spi0_hck", "sysaxi_sel", 15,
--			  CLK_IS_CRITICAL),
-+	GATE_INFRA2(CLK_INFRA_66M_SPI0_HCK, "infra_hf_66m_spi0_hck", "sysaxi_sel", 15),
- 	GATE_INFRA2(CLK_INFRA_66M_SPI1_HCK, "infra_hf_66m_spi1_hck", "sysaxi_sel", 16),
- 	GATE_INFRA2(CLK_INFRA_66M_SPI2_HCK, "infra_hf_66m_spi2_hck", "sysaxi_sel", 17),
- 	GATE_INFRA2(CLK_INFRA_66M_FLASHIF_AXI, "infra_hf_66m_flashif_axi", "sysaxi_sel", 18),
+url:    https://github.com/intel-lab-lkp/linux/commits/Zhangchao-Zhang/Bluetooth-mediatek-add-gpio-pin-to-reset-bt/20250925-172508
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/bluetooth/bluetooth.git master
+patch link:    https://lore.kernel.org/r/20250925092058.16648-1-ot_zhangchao.zhang%40mediatek.com
+patch subject: [PATCH v8] Bluetooth: mediatek: add gpio pin to reset bt
+config: sh-randconfig-001-20250926 (https://download.01.org/0day-ci/archive/20250926/202509260623.nZX7ipvc-lkp@intel.com/config)
+compiler: sh4-linux-gcc (GCC) 12.5.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250926/202509260623.nZX7ipvc-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202509260623.nZX7ipvc-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   drivers/bluetooth/btusb.c: In function 'btusb_mtk_reset':
+>> drivers/bluetooth/btusb.c:2769:19: error: 'struct btusb_data' has no member named 'rest_gpio'; did you mean 'reset_gpio'?
+    2769 |         if (data->rest_gpio) {
+         |                   ^~~~~~~~~
+         |                   reset_gpio
+
+
+vim +2769 drivers/bluetooth/btusb.c
+
+  2740	
+  2741	static int btusb_mtk_reset(struct hci_dev *hdev, void *rst_data)
+  2742	{
+  2743		struct btusb_data *data = hci_get_drvdata(hdev);
+  2744		struct btmtk_data *btmtk_data = hci_get_priv(hdev);
+  2745		int err;
+  2746	
+  2747		/* It's MediaTek specific bluetooth reset mechanism via USB */
+  2748		if (test_and_set_bit(BTMTK_HW_RESET_ACTIVE, &btmtk_data->flags)) {
+  2749			bt_dev_err(hdev, "last reset failed? Not resetting again");
+  2750			return -EBUSY;
+  2751		}
+  2752	
+  2753		err = usb_autopm_get_interface(data->intf);
+  2754		if (err < 0)
+  2755			return err;
+  2756	
+  2757		/* Release MediaTek ISO data interface */
+  2758		btusb_mtk_release_iso_intf(hdev);
+  2759	
+  2760		btusb_stop_traffic(data);
+  2761		usb_kill_anchored_urbs(&data->tx_anchor);
+  2762	
+  2763		/* Toggle the hard reset line. The MediaTek device is going to
+  2764		 * yank itself off the USB and then replug. The cleanup is handled
+  2765		 * correctly on the way out (standard USB disconnect), and the new
+  2766		 * device is detected cleanly and bound to the driver again like
+  2767		 * it should be.
+  2768		 */
+> 2769		if (data->rest_gpio) {
+  2770			gpiod_set_value_cansleep(data->reset_gpio, 1);
+  2771			msleep(200);
+  2772			gpiod_set_value_cansleep(data->reset_gpio, 0);
+  2773			return 0;
+  2774		}
+  2775	
+  2776		err = btmtk_usb_subsys_reset(hdev, btmtk_data->dev_id);
+  2777	
+  2778		usb_queue_reset_device(data->intf);
+  2779		clear_bit(BTMTK_HW_RESET_ACTIVE, &btmtk_data->flags);
+  2780	
+  2781		return err;
+  2782	}
+  2783	
+
 -- 
-2.51.0
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
