@@ -4,93 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED521CAC5A5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Sep 2025 14:05:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBE1BCAC5A7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Sep 2025 14:31:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OvzRWlr1AsAppW+7NbJb7lHmXfQyzadLNFuD+HINmpE=; b=LimDZ/S91zPqaG/P3AFMvi4O+K
-	I7TofVlkHWLaFeWEyHmpMPDPC6uo7fp35MHuoebS5Ne9ZgiIu5TmVEGeWHX6rCrrBbt7bBiMFtHZ/
-	qbLNESmwhgx+fNQacjXX6SlVFEImNA8T7zbwJDAIFtei43DMTByleNbHY+6bAMHK7+C9+FOeu6Res
-	fPn2Amnty2XhePV1gVOMdU9Ka2mc7TWvFdg9BygFN+nI5bHFOhSkUQiC8ysNY0rbAQNAUNs1dL/B9
-	sHayGURT7iHaWnixrbwYgeds2eTorNOP6XeLVc9eNGjb4sv1Bj8gjeGte1D/jl/355aHCOhu0OIj7
-	YSciGM+g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=aZEr/DunUodcbsHjhFeEGbYikZRjo3YM0O9AspiM+UY=; b=4SoXDS8lsZeO5+
+	KXvP6S1UorIYOdRFAdBlw/SJP+YHdk2r0Z3AzLe45YtWsNqrn0wG2b8wq6UvB2OJUKqekKh4d1S/E
+	6LxOwqprQiBpoDQTJ2883FZ4xXXeVM3V6ksQ4BouIf1vsHinwnWjkhB8geGS/qqOG6bOb5vywUkyh
+	78w9s9lFUG7Tx6E1RHDE4wwDlzO4Rhoz6GU6nPjYdHlWRGHpkZAgNI3YFgg9Fcwl0wXeAQ11iZ8MM
+	Mp/Gog/p4xynN5BDM2LoH7xcH68S/AmC0TmtBtBkBzZIx6zTsr85G429fk8QJT+E33EzvTrbiu9Gz
+	/dQasw/a7NIQVMnDnFkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1mbD-00000009lxr-2x8r;
-	Thu, 25 Sep 2025 14:05:31 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1v1n0R-0000000A4se-1fDq;
+	Thu, 25 Sep 2025 14:31:35 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1mbC-00000009lwF-2L7D;
-	Thu, 25 Sep 2025 14:05:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=OvzRWlr1AsAppW+7NbJb7lHmXfQyzadLNFuD+HINmpE=; b=iWJulSVKBbbakmSNUKDKWKYQ4/
-	lQu3EXImNad5P0fgRlP6towcS/5HCP3Y2k5FTEmJbAyf+Yz1joTZOLPITmzOcmgqf2Dk2yFM5UjMM
-	XxqvEGYEZbL0Ch2eRs8YsvetOhfTBbchIT+fNqjmn/7BJJ0gh0ta8AlJwmPHMZoV1jZ5ceS/BJP/U
-	yU+qN2zV7YoW8C7IJH2qdh/1feGLRJ18E7WIYwjQacVxNv95cyBQeg39A2b0uO3tUSPlN5lH1K5wI
-	p5suuFcNDnctA8buje7fs2CFWuxYQLYh0Bi8/lEWQ9P88fEr/sMoxpBl1WUf3YdDR+vWJstNqVFi9
-	8lpc03Lw==;
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1mb9-00000009Cqk-1ao4;
-	Thu, 25 Sep 2025 14:05:29 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1758809109; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=cQh9vCGaK7a5DYd7rza61JtUGEP0Vz18KvzIfciBZKzG7jXvEMAD3kDwZFw2F5BDouwKe689Bh/3vNB5tAOdJlDlY4j7kOda4ZAxDhcWIUgpOPd1S0CzZ14RnE5zeR1R+VlFouKW/hEIJ/efZXKXoTJV7CqVsZ2ukJiu/DmKZ38=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1758809109; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=OvzRWlr1AsAppW+7NbJb7lHmXfQyzadLNFuD+HINmpE=; 
-	b=UZ/VsNtpBrPjPmJ1vrfNmiu/+3MDkNII5l1JivYKK84zCKKOhWw+RVG1FbWXO1fdRAwh0LwLfKKy1yUI3U3uuq43dv84BC+6RDaURBDbrvt3dw1bOD/fRTjZuWucvmGQ9anhWBARMJef8dtvZk89F44coSgM3I5HXluDBTXVPQI=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1758809109;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=OvzRWlr1AsAppW+7NbJb7lHmXfQyzadLNFuD+HINmpE=;
-	b=jEN2Ueeq3h2ncv9IpdvT6N+pBrPDythheciswAlgARWVQBrUiSGuf6Ms9FtpVs+b
-	rZd9U4lz0/vR19E1wqaDeX29hAehM/hu9xbvSuROcq0laF3jqv7a+D+KK4QrFzD8n5r
-	qRx9UVBEv3VRY01OlG/2GxUdW0wIUHtNtl0kpF2A=
-Received: by mx.zohomail.com with SMTPS id 1758809108075771.102720899719;
-	Thu, 25 Sep 2025 07:05:08 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- Jassi Brar <jassisinghbrar@gmail.com>, Chia-I Wu <olvaffe@gmail.com>,
- Chen-Yu Tsai <wenst@chromium.org>, Steven Price <steven.price@arm.com>,
- Liviu Dudau <liviu.dudau@arm.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Kees Cook <kees@kernel.org>,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>, kernel@collabora.com,
- dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-hardening@vger.kernel.org,
- linux-pm@vger.kernel.org
-Subject: Re: [PATCH v4 8/8] pmdomain: mediatek: Add support for MFlexGraphics
-Date: Thu, 25 Sep 2025 16:04:59 +0200
-Message-ID: <2015216.PYKUYFuaPT@workhorse>
-In-Reply-To: <CAPDyKFpLNJRRxWPm2Eye+Fs8go-LNwWGzPUPPKmNVJkyK5N3Dw@mail.gmail.com>
-References: <20250923-mt8196-gpufreq-v4-0-6cd63ade73d6@collabora.com>
- <20250923-mt8196-gpufreq-v4-8-6cd63ade73d6@collabora.com>
- <CAPDyKFpLNJRRxWPm2Eye+Fs8go-LNwWGzPUPPKmNVJkyK5N3Dw@mail.gmail.com>
+	id 1v1n0O-0000000A4mh-2d1v;
+	Thu, 25 Sep 2025 14:31:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1758810690;
+	bh=3fkmVe49ZqkNZbH1Ddxixn6eJb+ThovqAzK3HkVrxFs=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=nwiWN0H5lhiw9Rka8oEhxPOK0qcEqmntHsIVnB/MfUgYc85hSxMu5ExsMAZZTzhlK
+	 tUR/4A7Nl5gJlPgwOQ+rRH5kPudgeq6s4RFwDCPdAI9+br3K/6MDX+XousJKWvoGuE
+	 Yp2XNgLnD747g7hOG4lboL0sGUpUYsmj6dxpu4X3RLieLYpueFwHnK3UGHUf0q71D9
+	 geDUCVc7PeQ7gCWeYFdLUctZVGcxzpMcZ+yG6GdVTYvMt+YylQoSlhkFNYDNr5V9si
+	 EP+CZNvngFF+T4tb9NdnS+Tpll/RV5v/lHu2/wnpTKZZFfl3b4dqXxGqsMDD2Y5ts4
+	 LsFDD0u4MCHRw==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 81DAF17E1389;
+	Thu, 25 Sep 2025 16:31:29 +0200 (CEST)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: ulf.hansson@linaro.org
+Subject: [PATCH v2 1/5] dt-bindings: power: Add support for MT8196 power controllers
+Date: Thu, 25 Sep 2025 16:31:12 +0200
+Message-ID: <20250925143122.39796-2-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.51.0
+In-Reply-To: <20250925143122.39796-1-angelogioacchino.delregno@collabora.com>
+References: <20250925143122.39796-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250925_150527_836940_A2F33276 
-X-CRM114-Status: GOOD (  36.79  )
+X-CRM114-CacheID: sfid-20250925_073132_836562_5FD40C90 
+X-CRM114-Status: GOOD (  14.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,140 +68,115 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: robh@kernel.org, conor+dt@kernel.org, mbrugger@suse.com, y.oudjana@protonmail.com, nfraprado@collabora.com, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, mandyjh.liu@mediatek.com, wenst@chromium.org, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, krzk+dt@kernel.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tuesday, 23 September 2025 16:24:13 Central European Summer Time Ulf Hansson wrote:
-> On Tue, 23 Sept 2025 at 13:41, Nicolas Frattaroli
-> <nicolas.frattaroli@collabora.com> wrote:
-> >
-> > Various MediaTek SoCs use GPU integration silicon named "MFlexGraphics"
-> > by MediaTek. On the MT8196 and MT6991 SoCs, interacting with this
-> > integration silicon is required to power on the GPU.
-> >
-> > This glue silicon is in the form of an embedded microcontroller running
-> > special-purpose firmware, which autonomously adjusts clocks and
-> > regulators.
-> >
-> > Implement a driver, modelled as a pmdomain driver with a
-> > set_performance_state operation, to support these SoCs.
-> >
-> > The driver also exposes the actual achieved clock rate, as read back
-> > from the MCU, as common clock framework clocks, by acting as a clock
-> > provider as well.
-> >
-> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > ---
-> >  drivers/pmdomain/mediatek/Kconfig            |  16 +
-> >  drivers/pmdomain/mediatek/Makefile           |   1 +
-> >  drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c | 928 +++++++++++++++++++++++++++
-> >  3 files changed, 945 insertions(+)
-> 
-> [...]
-> 
-> > +
-> > +static int mtk_mfg_set_performance(struct generic_pm_domain *pd,
-> > +                                  unsigned int state)
-> > +{
-> > +       struct mtk_mfg *mfg = mtk_mfg_from_genpd(pd);
-> > +
-> > +       /*
-> > +        * Occasionally, we're asked to set OPPs when we're off. This will fail,
-> > +        * so don't do it at all. We do foo != GENPD_STATE_ON instead of !foo
-> > +        * as to not depend on the actual value of the enum.
-> > +        */
-> > +       if (mfg->pd.status != GENPD_STATE_ON)
-> > +               return 0;
-> 
-> Returning 0 here, means that we may end up never restoring the
-> performance state for a device and its genpd, when the device is
-> getting runtime resumed. In genpd_runtime_resume() we are calling
-> genpd_restore_performance_state() before calling genpd_power_on().
-> This is deliberate, see commit ae8ac19655e0.
-> 
-> That said, I think we need to manage the restore in the ->power_on()
-> callback. In principle, it means we should call
-> mtk_mfg_set_oppidx(mfg, genpd->performance_state) from there.
-> 
+Add support for the power controllers found in the MediaTek MT8196
+Chromebook SoC.
 
-Thanks for pointing this out, yeah setting the oppidx in power_on
-does look like the right choice.
+This chip has three power controllers, two of which located in the
+SCP subsystems (where one can be directly controlled and the other
+can be controlled only through the HW Voter IP), and one located
+in the Multimedia HFRP subsystem, controllable only through the HW
+Voter IP.
 
-> > +
-> > +       return mtk_mfg_set_oppidx(mfg, state);
-> > +}
-> > +
-> > +static int mtk_mfg_power_on(struct generic_pm_domain *pd)
-> > +{
-> > +       struct mtk_mfg *mfg = mtk_mfg_from_genpd(pd);
-> > +       int ret;
-> > +
-> > +       ret = regulator_bulk_enable(mfg->variant->num_regulators,
-> > +                                   mfg->gpu_regs);
-> > +       if (ret)
-> > +               return ret;
-> > +
-> > +       ret = clk_prepare_enable(mfg->clk_eb);
-> > +       if (ret)
-> > +               goto err_disable_regulators;
-> > +
-> > +       ret = clk_bulk_prepare_enable(mfg->variant->num_clks, mfg->gpu_clks);
-> > +       if (ret)
-> > +               goto err_disable_eb_clk;
-> > +
-> > +       ret = mtk_mfg_eb_on(mfg);
-> > +       if (ret)
-> > +               goto err_disable_clks;
-> > +
-> > +       ret = mtk_mfg_power_control(mfg, true);
-> > +       if (ret)
-> > +               goto err_eb_off;
-> > +
-> > +       return 0;
-> > +
-> > +err_eb_off:
-> > +       mtk_mfg_eb_off(mfg);
-> > +err_disable_clks:
-> > +       clk_bulk_disable_unprepare(mfg->variant->num_clks, mfg->gpu_clks);
-> > +err_disable_eb_clk:
-> > +       clk_disable_unprepare(mfg->clk_eb);
-> > +err_disable_regulators:
-> > +       regulator_bulk_disable(mfg->variant->num_regulators, mfg->gpu_regs);
-> > +
-> > +       return ret;
-> > +}
-> 
-> [...]
-> 
-> Note, I intend to have a bit closer look at this soon, but I just
-> observed the issue I pointed out above from my first quick look.
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
+Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../power/mediatek,power-controller.yaml      |  4 ++
+ .../dt-bindings/power/mediatek,mt8196-power.h | 58 +++++++++++++++++++
+ 2 files changed, 62 insertions(+)
+ create mode 100644 include/dt-bindings/power/mediatek,mt8196-power.h
 
-I actually have a question about a mystery that has been puzzling
-me as I work on v5: when unloading the driver that uses the PD
-(panthor) and my driver using `modprobe -r panthor mtk_mfg_pmdomain`,
-I see that sometimes detach_dev is called with the pd status
-reportedly being off, but according to my own power-on/power-off
-counting I hacked in, it actually being on. It then proceeds to
-call my remove, which results in three splats from the regulator
-subsystem as the regulators weren't balanced with disables before
-they were freed, which isn't the main problem but more a symptom
-of the bigger problem that power_off and power_on calls don't
-appear to be balanced by the pmdomain subsystem when a driver is
-removed under certain circumstances.
-
-Did I run into a core pmdomain bug here, or do I have to balance
-the power_on/off myself somehow in detach_dev? If the latter, I'm
-struggling to figure out how I can determine that the PD is still
-on without doing my own bookkeeping, as pmdomain core seems to clear
-these fields before my detach_dev gets to them :(
-
-> 
-> Kind regards
-> Uffe
-> 
-
-Kind regards,
-Nicolas Frattaroli
-
+diff --git a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
+index 500d98921581..f8a13928f615 100644
+--- a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
++++ b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
+@@ -33,6 +33,9 @@ properties:
+       - mediatek,mt8188-power-controller
+       - mediatek,mt8192-power-controller
+       - mediatek,mt8195-power-controller
++      - mediatek,mt8196-hwv-hfrp-power-controller
++      - mediatek,mt8196-hwv-scp-power-controller
++      - mediatek,mt8196-power-controller
+       - mediatek,mt8365-power-controller
+ 
+   '#power-domain-cells':
+@@ -157,6 +160,7 @@ allOf:
+           contains:
+             enum:
+               - mediatek,mt8183-power-controller
++              - mediatek,mt8196-power-controller
+     then:
+       properties:
+         access-controllers:
+diff --git a/include/dt-bindings/power/mediatek,mt8196-power.h b/include/dt-bindings/power/mediatek,mt8196-power.h
+new file mode 100644
+index 000000000000..c12f0fe8f4c1
+--- /dev/null
++++ b/include/dt-bindings/power/mediatek,mt8196-power.h
+@@ -0,0 +1,58 @@
++/* SPDX-License-Identifier: (GPL-2.0 OR MIT) */
++/*
++ * Copyright (c) 2025 Collabora Ltd
++ *                    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
++ */
++
++#ifndef _DT_BINDINGS_POWER_MT8196_POWER_H
++#define _DT_BINDINGS_POWER_MT8196_POWER_H
++
++/* SCPSYS Secure Power Manager - Direct Control */
++#define MT8196_POWER_DOMAIN_MD				0
++#define MT8196_POWER_DOMAIN_CONN			1
++#define MT8196_POWER_DOMAIN_SSUSB_P0			2
++#define MT8196_POWER_DOMAIN_SSUSB_DP_PHY_P0		3
++#define MT8196_POWER_DOMAIN_SSUSB_P1			4
++#define MT8196_POWER_DOMAIN_SSUSB_P23			5
++#define MT8196_POWER_DOMAIN_SSUSB_PHY_P2		6
++#define MT8196_POWER_DOMAIN_PEXTP_MAC0			7
++#define MT8196_POWER_DOMAIN_PEXTP_MAC1			8
++#define MT8196_POWER_DOMAIN_PEXTP_MAC2			9
++#define MT8196_POWER_DOMAIN_PEXTP_PHY0			10
++#define MT8196_POWER_DOMAIN_PEXTP_PHY1			11
++#define MT8196_POWER_DOMAIN_PEXTP_PHY2			12
++#define MT8196_POWER_DOMAIN_AUDIO			13
++#define MT8196_POWER_DOMAIN_ADSP_TOP_DORMANT		14
++#define MT8196_POWER_DOMAIN_ADSP_INFRA			15
++#define MT8196_POWER_DOMAIN_ADSP_AO			16
++
++/* SCPSYS Secure Power Manager - HW Voter */
++#define MT8196_POWER_DOMAIN_MM_PROC_DORMANT		0
++#define MT8196_POWER_DOMAIN_SSR				1
++
++/* HFRPSYS MultiMedia Power Control (MMPC) - HW Voter */
++#define MT8196_POWER_DOMAIN_VDE0			0
++#define MT8196_POWER_DOMAIN_VDE1			1
++#define MT8196_POWER_DOMAIN_VDE_VCORE0			2
++#define MT8196_POWER_DOMAIN_VEN0			3
++#define MT8196_POWER_DOMAIN_VEN1			4
++#define MT8196_POWER_DOMAIN_VEN2			5
++#define MT8196_POWER_DOMAIN_DISP_VCORE			6
++#define MT8196_POWER_DOMAIN_DIS0_DORMANT		7
++#define MT8196_POWER_DOMAIN_DIS1_DORMANT		8
++#define MT8196_POWER_DOMAIN_OVL0_DORMANT		9
++#define MT8196_POWER_DOMAIN_OVL1_DORMANT		10
++#define MT8196_POWER_DOMAIN_DISP_EDPTX_DORMANT		11
++#define MT8196_POWER_DOMAIN_DISP_DPTX_DORMANT		12
++#define MT8196_POWER_DOMAIN_MML0_SHUTDOWN		13
++#define MT8196_POWER_DOMAIN_MML1_SHUTDOWN		14
++#define MT8196_POWER_DOMAIN_MM_INFRA0			15
++#define MT8196_POWER_DOMAIN_MM_INFRA1			16
++#define MT8196_POWER_DOMAIN_MM_INFRA_AO			17
++#define MT8196_POWER_DOMAIN_CSI_BS_RX			18
++#define MT8196_POWER_DOMAIN_CSI_LS_RX			19
++#define MT8196_POWER_DOMAIN_DSI_PHY0			20
++#define MT8196_POWER_DOMAIN_DSI_PHY1			21
++#define MT8196_POWER_DOMAIN_DSI_PHY2			22
++
++#endif /* _DT_BINDINGS_POWER_MT8196_POWER_H */
+-- 
+2.51.0
 
 
