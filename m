@@ -4,66 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C614CCAC5B0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Sep 2025 21:06:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51AFECAC5B9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Sep 2025 21:49:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xPHMj71ylaA/Pst6CfYJPDLa58yFoMZJIXza1Geua0w=; b=KlYATl8y7+adWjG7mPLOA7n0pA
-	L/NSM1EiYkEwMLY84cA+UTROx7Ch0LRn77fAITH6s7pT68qI5pzzq2tFwCRbORQIsiHgAHEvmY0+l
-	b0dldDK2cxtQl8P4Due9CgNY4bo1RmcvHUXO1VUWCabHa7HtsOz9/eSqAXyNpzNB11qHOX12j1WBK
-	/ZgN2xIKSjQHRHP9TYlBzfiL3a6z9h2QzwCzphHFxGsLHcRC5TKXzGrbSVLJz2yzlhtnwjew+i5bP
-	R0hAjgMjqY1LVl3pj3b/w6NbPk9SQAK2mHwSK9CrjcFiJOSpSXJE7waYOgRQ+6bN0dH/WdzChIwga
-	zGHh8CSw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=NSo1oVUYQuqUkCOmbFgTBe96VBD0+Lgn0IKt0naDqQA=; b=YU6iUo5YvdrBcrCE9EtTfE2cvs
+	iA9wejuGBJjedoGXjIf5bziFB3CHVf02n5xSw08bbvbvSzvPLXl/aSjgc2yYFrmkNHtvtjA7lwrKc
+	kIxuyzagp2Ic2Z9fvDahwwXVVyxGJ407WpYpH049oge+yrQz9nfY4SlCi1xWykZxJoTLjUTKqecVt
+	v2XGSiMn+su3Vq0zbcY/IoFgxOnzdHg0f+u49IXXllnxR8uM7Ye50O6pJ9u8YmyOV6v2Skk8dK/Pl
+	ycmyeuxV0GOvvyL29Y7dd6ahq6WLmZ5W1zvY2VB0Qx+dl5O6X5+4IcBo2mOzx2KfRg0qMKHG4D4mW
+	9d4tXPRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1tAy-0000000D03w-0F7x;
-	Thu, 25 Sep 2025 21:06:52 +0000
-Received: from zeus03.de ([194.117.254.33] helo=mail.zeus03.de)
+	id 1v1tq5-0000000DJdV-09J6;
+	Thu, 25 Sep 2025 21:49:21 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1tAu-0000000D01g-3mjk
-	for linux-mediatek@lists.infradead.org;
-	Thu, 25 Sep 2025 21:06:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	sang-engineering.com; h=date:from:to:cc:subject:message-id
-	:references:mime-version:content-type:content-transfer-encoding
-	:in-reply-to; s=k1; bh=xPHMj71ylaA/Pst6CfYJPDLa58yFoMZJIXza1Geua
-	0w=; b=ZaOfW0TajNUTRaQQdd2bpuhhw8JNGjznHVqn9Y+v090V/IwPPai/3t4Ej
-	tHfhqHd1oCLVIGFkRLX/lMOoAJR0aUtfjeI2Q4kbWgLER/+XB+Vdv2cBtQr3R7m3
-	lu88er7bZ1KKVlEq/tIXSBlfLjSMODSYBR2DXxQlDFyB/4lt4CBZhduc+8AshyCM
-	gn/+Z7FsTwYQmg4+usYXG2pNJSM/sMNwLbpNHTc1JVhg6UjVSP+rAMqUrZ9BC/PJ
-	xJPfEWXnCi2n5aDZQkRuaADDQyHlauOOIvgtV0sNH8Hio2v1GLeQoFV3u61fmdNF
-	VtXtIk0gP3BL6v8RnNcy9v5xE7JQw==
-Received: (qmail 2015546 invoked from network); 25 Sep 2025 23:06:46 +0200
-Received: by mail.zeus03.de with UTF8SMTPSA (TLS_AES_256_GCM_SHA384 encrypted, authenticated); 25 Sep 2025 23:06:46 +0200
-X-UD-Smtp-Session: l3s3148p1@LY3Fi6Y/esgujntx
-Date: Thu, 25 Sep 2025 23:06:42 +0200
-From: Wolfram Sang <wsa+renesas@sang-engineering.com>
-To: Leilk Liu <leilk.liu@mediatek.com>
-Cc: Andi Shyti <andi.shyti@kernel.org>,
+	id 1v1tpx-0000000DJYW-2091;
+	Thu, 25 Sep 2025 21:49:14 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.98.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1v1tpp-000000000qK-1fL9;
+	Thu, 25 Sep 2025 21:49:05 +0000
+Date: Thu, 25 Sep 2025 22:48:59 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Qii Wang <qii.wang@mediatek.com>, Wolfram Sang <wsa@kernel.org>,
-	Liguo Zhang <liguo.zhang@mediatek.com>, linux-i2c@vger.kernel.org,
+	Daniel Golle <daniel@makrotopia.org>, linux-clk@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	Chen-Yu Tsai <wenst@chromium.org>
-Subject: Re: [PATCH v2] i2c: mediatek: fix potential incorrect use of
- I2C_MASTER_WRRD
-Message-ID: <aNWu4hC2Yer7c2kG@shikoro>
-References: <20250906082652.16864-1-leilk.liu@mediatek.com>
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v2] clk: mediatek: mt7988-infracfg: SPI0 clocks are not
+ critical
+Message-ID: <a801e8fed69ab8f9e61970bc8ed2e2c0b634e8bb.1758836835.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250906082652.16864-1-leilk.liu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250925_140649_208011_C523174C 
-X-CRM114-Status: GOOD (  11.63  )
+X-CRM114-CacheID: sfid-20250925_144913_516230_7EDAA2B9 
+X-CRM114-Status: UNSURE (   9.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,26 +65,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Sep 06, 2025 at 04:24:06PM +0800, Leilk Liu wrote:
-> From: "Leilk.Liu" <leilk.liu@mediatek.com>
-> 
-> The old IC does not support the I2C_MASTER_WRRD (write-then-read)
-> function, but the current code’s handling of i2c->auto_restart may
-> potentially lead to entering the I2C_MASTER_WRRD software flow,
-> resulting in unexpected bugs.
-> 
-> Instead of repurposing the auto_restart flag, add a separate flag
-> to signal I2C_MASTER_WRRD operations.
-> 
-> Also fix handling of msgs. If the operation (i2c->op) is
-> I2C_MASTER_WRRD, then the msgs pointer is incremented by 2.
-> For all other operations, msgs is simply incremented by 1.
-> 
-> Fixes: b2ed11e224a2 ("I2C: mediatek: Add driver for MediaTek MT8173 I2C controller")
-> Signed-off-by: Leilk.Liu <leilk.liu@mediatek.com>
-> Suggested-by: Chen-Yu Tsai <wenst@chromium.org>
-> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+SPI0 clocks have wrongly been marked as critical while, probably due
+to the SPI driver not requesting them. This can (and should) be addressed
+in device tree instead.
+Remove CLK_IS_CRITICAL flag from clocks related to SPI0.
 
-Applied to for-next, thanks!
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+v2: drop Fixes:-tag
 
+ drivers/clk/mediatek/clk-mt7988-infracfg.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/clk/mediatek/clk-mt7988-infracfg.c b/drivers/clk/mediatek/clk-mt7988-infracfg.c
+index ef8267319d91..c40e18c27f12 100644
+--- a/drivers/clk/mediatek/clk-mt7988-infracfg.c
++++ b/drivers/clk/mediatek/clk-mt7988-infracfg.c
+@@ -196,12 +196,10 @@ static const struct mtk_gate infra_clks[] = {
+ 	GATE_INFRA2(CLK_INFRA_SPINFI, "infra_f_fspinfi", "spinfi_sel", 10),
+ 	GATE_INFRA2_FLAGS(CLK_INFRA_66M_NFI_HCK, "infra_hf_66m_nfi_hck", "sysaxi_sel", 11,
+ 			  CLK_IS_CRITICAL),
+-	GATE_INFRA2_FLAGS(CLK_INFRA_104M_SPI0, "infra_hf_104m_spi0", "infra_mux_spi0_sel", 12,
+-			  CLK_IS_CRITICAL),
++	GATE_INFRA2(CLK_INFRA_104M_SPI0, "infra_hf_104m_spi0", "infra_mux_spi0_sel", 12),
+ 	GATE_INFRA2(CLK_INFRA_104M_SPI1, "infra_hf_104m_spi1", "infra_mux_spi1_sel", 13),
+ 	GATE_INFRA2(CLK_INFRA_104M_SPI2_BCK, "infra_hf_104m_spi2_bck", "infra_mux_spi2_sel", 14),
+-	GATE_INFRA2_FLAGS(CLK_INFRA_66M_SPI0_HCK, "infra_hf_66m_spi0_hck", "sysaxi_sel", 15,
+-			  CLK_IS_CRITICAL),
++	GATE_INFRA2(CLK_INFRA_66M_SPI0_HCK, "infra_hf_66m_spi0_hck", "sysaxi_sel", 15),
+ 	GATE_INFRA2(CLK_INFRA_66M_SPI1_HCK, "infra_hf_66m_spi1_hck", "sysaxi_sel", 16),
+ 	GATE_INFRA2(CLK_INFRA_66M_SPI2_HCK, "infra_hf_66m_spi2_hck", "sysaxi_sel", 17),
+ 	GATE_INFRA2(CLK_INFRA_66M_FLASHIF_AXI, "infra_hf_66m_flashif_axi", "sysaxi_sel", 18),
+-- 
+2.51.0
 
