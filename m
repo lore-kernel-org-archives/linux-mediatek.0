@@ -4,69 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AF6DCAC5B1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Sep 2025 16:23:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A0ECCAC5B3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Sep 2025 16:23:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=MTyvmotOb0/PgMOHsXh4gvDuOiENNfX5B0XL/LoNWUk=; b=CjjuMYwXcMH8SPte1uOw1Y+qGH
-	IFd8gr9SyldQVW4wgjtfrGVdJTJdPngXfw7pnTgw/7JQJFAGbku1j0MVLzZtuwavLItDOrqgCz6Ln
-	PAXrmdnIMO6HXDMNQu1XQ6NI8Dx5HdLMDXBMXimWxa7/L1/5f+TVU32CLLG4wbTKw68QC4fKPskki
-	Cpt3x+H1IzajrdmJ8e4q95bax59zDXo2QH0v6z4Y8B+q0JFL0YhJKXowLU+onTivySoOl93aGaz+i
-	9N2ZAaWMqkHHauF/npD/1yWRVLLYxPq5VtaR+CfJQApzGQSEx7Kn0NSkcjG/QZj9LZOsIg4jxHzWn
-	OdeVgTdA==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
+	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bhfgeWKTTFehUL5ME9QvRLQsevmzrNA8iD7btwmAz3g=; b=3tRytgxN4GESP16nc7ld/McK5c
+	BEMaPgj1vWxnLDLN/rftLJrnaG1BYsUS3gEFMgwP5aJX1klUfC0wVgLKwIWUj9dGTZfbT/d7jBPZ5
+	u/BLUz61/Ddnynv/9exbT9TO6rZL6NrTWiNn6Ij8cKhXfVHdokjDnOKkxMVqCIgcNqau5yu+3liE3
+	OwLE6uldsFvW4sQbn/p5UYheL+VkCDcL+3twm5b1pmbuuhb1V3n39K7ss8OKZpYMbIdZYd7d0Q1TS
+	IrpXDPSlgvWUKwpLZ1FVpGwYUgrHdnJxldB2HzbkeUNbXa83F4b9yR6TZxyWhjz7ex9ty6nnISvdL
+	zoHkkObA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1ol3-0000000B4tR-0dw1;
-	Thu, 25 Sep 2025 16:23:49 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1v1olB-0000000B53J-2fqC;
+	Thu, 25 Sep 2025 16:23:57 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1ol0-0000000B4qo-3uUq
+	id 1v1ol2-0000000B4sA-2yIi
 	for linux-mediatek@lists.infradead.org;
-	Thu, 25 Sep 2025 16:23:48 +0000
-Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-3f0ae439bc3so475901f8f.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 25 Sep 2025 09:23:46 -0700 (PDT)
+	Thu, 25 Sep 2025 16:23:50 +0000
+Received: by mail-wr1-x432.google.com with SMTP id ffacd0b85a97d-3b9edf4cf6cso1291095f8f.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 25 Sep 2025 09:23:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1758817425; x=1759422225; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:from:to:cc:subject:date:message-id:reply-to;
-        bh=MTyvmotOb0/PgMOHsXh4gvDuOiENNfX5B0XL/LoNWUk=;
-        b=HZVgG5ddq9HyWqzw0bSq3WUihWkthVB9m/uaw5IjApFWMSLKBgLOeDO0CY3e+Sh0vh
-         U6a59nThuTxmuNBf6hp0Fyx2sKDnmsPQFFD4wcl52a1aaJ7qxP8Mzdo4Ta9uPzeitk2B
-         CGkq2cWxtUAME3RQiSZdw4rsnTON4UYaR3BHIO8C5txrsq5fKfrPJiD7ftHTGqI53y3+
-         I7ZiWBCXONBcQjlQ1P4DjPOQyTSCdz61vadIvB8S8VkLTnUwxmqibExxFqDjN0W25IuW
-         A2M5kjRCUTKlOvKokkIp2yZUk1cg4Hnw6CnIBJlLiivCJMmO8ua0Tcd5qWEG07pAWMLk
-         Htqg==
+        d=gmail.com; s=20230601; t=1758817427; x=1759422227; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=bhfgeWKTTFehUL5ME9QvRLQsevmzrNA8iD7btwmAz3g=;
+        b=GfJJV4AM9i15EMus4foLVJT9wYxvdiXwtJNE2AgEgnxnujb3HaXlFBaTqAdQzSVGof
+         BigzZXG1VXQJ1qHreOXtc1Lj7Omjo7NJ3+tmXOy7j46mgwaydnd2+8hb8Ej5qwZAAO5n
+         V2+lAfGChVlHHcri2wnzl2UkemrIrmucx2fCzCdTuPQVEbmOe4IT3VDwEtLGP3yZ+PaZ
+         jZM9VZOTEnAYvC8iPLpZvHzQWPSB18gXFUbDwERWo5B5A+54C+ciL19SI5xpnVbog81D
+         7lVrar/+B5K7PHySvpENF5gv44PRFTrk0FOQjqjd5M7GPZpKZdoRhUHgf3ZlAGeQ1+TC
+         hw/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1758817425; x=1759422225;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=MTyvmotOb0/PgMOHsXh4gvDuOiENNfX5B0XL/LoNWUk=;
-        b=GvyzGNyRkWEhBATNjo5mUj1Yx/xCiBIPS241bekyyoFpSd1E1Ut8CB1w+S2d33FU7V
-         Nj2Wiwd5zJu14nNjx0KZJ3YiN+zCloB2l4YcW5yXrzrrtjUo2lq6uJc8E64n/CMHccUB
-         FGVcNNKqME0pCqCbT24MkibvPb6C9vbNfJ0dDqeO6D9nRMQO2Zq10ze02gbkkCTYN3gv
-         E25YYb3y4uljHQeTuOx2ZqU/NTu8b35hMQu4oExOX9z+pxqQXuUDPmTmzfgmxh5Jvxic
-         AUaGzIvieeBaQ7DxgxRe9kk+eAwv01QuiZUrn+xiT8lOaivp2dKytM/DCnYDQVLtqm8N
-         KplQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUL2bnyYvBNqZWS3XDZdrbA2gBz3PRuvX2n++ppI758ZQ9lQQb8vO0rcqQI+GwB594iMyVZUNWGny8AUdC7xQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzjI0mRFvK2sh+6DNw0YQuUxb0HLPjhg7Udg1sin3h/2p5rnNMD
-	y9pxc1VpzD5qDkRRMtYBfUiRBk6WzJ8QLxrm5SnPFvSSdU8BVG81diIn
-X-Gm-Gg: ASbGnct3kVVsC6Fz4kQ+T4BcSyRH/FtMNqiiAby4LW0/8jVpuOK4aNgli9OixM7v6ny
-	ZdxjxLU46COgYK2K/pT6vVZwtH2NTOOMOxGVa4IAWGo8nfEWzAvN6mFWpnI5X3RejQvgTW0XehS
-	CRnxifDkFAIEpr6gpaSeZ2PHQJF3K98TyLKHMUKVdLHnCa1Ci00z6/mZzFhQwUnP55Q36wEBlqM
-	/hq1edpt26uEHH5p5Z6kjw0nDnE2EBVUH5U9INNC2Nhr33At31Ji5ZU8rmopDB79AZOmgcXiLfo
-	ur+eoSPFBrvcyb5Dnvc1ATPfNapnzSvgY3Sds7dT1ABrIhVM7Y/M9k8oUtDISTtJQ7Juo0/mhvm
-	MqkT3pDOJOrGUd2MXJ6HXtjQRMuANqosEVrGHrGrxlbWT/exJSSZy/eE+aXExEwla4U2suR4=
-X-Google-Smtp-Source: AGHT+IG8wt7D2RVybhrtsXF08OvAI7r2C+qCPryu+R0Ya0aCRRAJKGzbWS2JdRSo8S3uobYjXYxcdw==
-X-Received: by 2002:a05:6000:655:b0:40f:288e:996f with SMTP id ffacd0b85a97d-40f288e9f05mr2728379f8f.63.1758817425041;
-        Thu, 25 Sep 2025 09:23:45 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1758817427; x=1759422227;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=bhfgeWKTTFehUL5ME9QvRLQsevmzrNA8iD7btwmAz3g=;
+        b=bNWIuGAXYJDzm66skNwdKHU7G58JAtCiq/iLYOOGWDOX4GDtIerTgTUn2+VcBg9ykd
+         HeXSw8jiJrubCnz7O9xYRwQ9MONPfezdA7GgkBnyrj2A8fSxTS8EJFBidRZOS2UPWFgO
+         emXzurbo8gG4cucvCTc/zA33XkLouy8S5MbRbK1hveE5hlRI0KcnNQ2AbOqkny8chlzs
+         UIB9QkuL27vqsT2bs3hkmkkw+cjuHVLdjb76QmxPMQt3E2LMQ4fdP3Oi5KQgn5RWGyem
+         OLEbyQ8zIxbilVf6b5KhloVt2LKaGyD7T+fKIokxk58wy7spLDyURbB/FFYUDyXOopPA
+         /jWQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWqiRau/TXU5Di84Zh67EmJT8hdPGmOQxjWVxi35jSAl3XnC9VwyPPM9leDaxNZXEq8d9X5Wi8eQV5Otq8Khw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx1UNFegRXaz9B5yJHwHB4OpBiLQvoEywo4s8etqX4d5JhvxaJD
+	c6JnwHV7mXSZLkYm5rA4ZO8CqXjrCszzP88HMj/NTlJbAXYjfR58WMM9
+X-Gm-Gg: ASbGncvwkCnZFYidbzAOiRVBP0b9aiJQLEJGP0dsH8tFP/GB0Czjr2YowpWHM3ZjFF+
+	4LBEguR5UN/E+RjL6D3LfimnWOCcj0k0t5mCAA356LEcH0lJlUja4S0dE1UG/gjTRLaRT3sArLV
+	x3Now7LB/CgobNWXkYPSvUKPAOZtA/L8urhso/ZERv0va56XkCLAnKAtSr26ivfoURY726Tb3m2
+	UvZJIk1D5Gh3hTL74CY0eGdLqR1gtGkaEcalVBp/UmQmM2ZB1L2ce1CNzJ5da9go1fx4re5hnF8
+	DhD8gTgdD9dqhtrpl/0Q3Iz7nN3a9MMfKpjVTjR29GgQt0n75Ir5rg2ZftfVCq75t0dAwg/jbFd
+	E6TXFd+kmv2ToMixolKR/oJS32dcl/zi2x6MFP3k6w93bfnvwhIL1i+2ueF7LFOTwqQwvCFE=
+X-Google-Smtp-Source: AGHT+IE30qlsw+LGQbGsOMA9cwguph9rKHkg04I434dGAXsnLJ3Ub8ZjYMz0XZC+8/ecQZtZP2gmGQ==
+X-Received: by 2002:adf:f10e:0:b0:413:46a6:6a51 with SMTP id ffacd0b85a97d-41346a66a66mr555231f8f.38.1758817426788;
+        Thu, 25 Sep 2025 09:23:46 -0700 (PDT)
 Received: from Ansuel-XPS24 (host-95-249-236-54.retail.telecomitalia.it. [95.249.236.54])
-        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-40fb985e080sm3534819f8f.24.2025.09.25.09.23.43
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-40fb985e080sm3534819f8f.24.2025.09.25.09.23.45
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 25 Sep 2025 09:23:44 -0700 (PDT)
+        Thu, 25 Sep 2025 09:23:46 -0700 (PDT)
 From: Christian Marangi <ansuelsmth@gmail.com>
 To: Ryder Lee <ryder.lee@mediatek.com>,
 	Jianjun Wang <jianjun.wang@mediatek.com>,
@@ -86,15 +88,17 @@ To: Ryder Lee <ryder.lee@mediatek.com>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	upstream@airoha.com
-Subject: [PATCH v3 0/4] PCI: mediatek: add support AN7583 + YAML rework
-Date: Thu, 25 Sep 2025 18:23:14 +0200
-Message-ID: <20250925162332.9794-1-ansuelsmth@gmail.com>
+Subject: [PATCH v3 1/4] ARM: dts: mediatek: drop wrong syscon hifsys compatible for MT2701/7623
+Date: Thu, 25 Sep 2025 18:23:15 +0200
+Message-ID: <20250925162332.9794-2-ansuelsmth@gmail.com>
 X-Mailer: git-send-email 2.51.0
+In-Reply-To: <20250925162332.9794-1-ansuelsmth@gmail.com>
+References: <20250925162332.9794-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250925_092346_983222_94565D82 
-X-CRM114-Status: GOOD (  10.42  )
+X-CRM114-CacheID: sfid-20250925_092348_760933_2FCE5747 
+X-CRM114-Status: GOOD (  14.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,36 +113,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This little series convert the PCIe GEN2 Documentation to YAML schema
-and adds support for Airoha AN7583 GEN2 PCIe Controller.
+The syscon compatible for the hifsys node for Mediatek MT2701/MT7623 SoC
+was wrongly added following the pattern of other clock node but it's
+actually not needed as the register are not used by other device on the
+SoC.
 
-Changes v3:
-- Rework patch 1 to drop syscon compatible
-Changes v2:
-- Add cover letter
-- Describe skip_pcie_rstb variable
-- Fix hifsys schema (missing syscon)
-- Address comments on the YAML schema for PCIe GEN2
-- Keep alphabetical order for AN7583
+On top of this it does against the schema for hifsys amnd cause
+dtbs_check warning.
 
-Christian Marangi (4):
-  ARM: dts: mediatek: drop wrong syscon hifsys compatible for
-    MT2701/7623
-  dt-bindings: PCI: mediatek: Convert to YAML schema
-  dt-bindings: PCI: mediatek: Add support for Airoha AN7583
-  PCI: mediatek: add support for Airoha AN7583 SoC
+Drop the "syscon" compatible to mute the warning and reflect the
+compatible property described in the mediatek,mt2701-hifsys.yaml schema.
 
- .../bindings/pci/mediatek-pcie-mt7623.yaml    | 173 ++++++
- .../devicetree/bindings/pci/mediatek-pcie.txt | 289 ----------
- .../bindings/pci/mediatek-pcie.yaml           | 514 ++++++++++++++++++
- arch/arm/boot/dts/mediatek/mt2701.dtsi        |   2 +-
- arch/arm/boot/dts/mediatek/mt7623.dtsi        |   3 +-
- drivers/pci/controller/pcie-mediatek.c        |  85 ++-
- 6 files changed, 752 insertions(+), 314 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/pci/mediatek-pcie-mt7623.yaml
- delete mode 100644 Documentation/devicetree/bindings/pci/mediatek-pcie.txt
- create mode 100644 Documentation/devicetree/bindings/pci/mediatek-pcie.yaml
+Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+---
+ arch/arm/boot/dts/mediatek/mt2701.dtsi | 2 +-
+ arch/arm/boot/dts/mediatek/mt7623.dtsi | 3 +--
+ 2 files changed, 2 insertions(+), 3 deletions(-)
 
+diff --git a/arch/arm/boot/dts/mediatek/mt2701.dtsi b/arch/arm/boot/dts/mediatek/mt2701.dtsi
+index ce6a4015fed5..128b87229f3d 100644
+--- a/arch/arm/boot/dts/mediatek/mt2701.dtsi
++++ b/arch/arm/boot/dts/mediatek/mt2701.dtsi
+@@ -597,7 +597,7 @@ larb1: larb@16010000 {
+ 	};
+ 
+ 	hifsys: syscon@1a000000 {
+-		compatible = "mediatek,mt2701-hifsys", "syscon";
++		compatible = "mediatek,mt2701-hifsys";
+ 		reg = <0 0x1a000000 0 0x1000>;
+ 		#clock-cells = <1>;
+ 		#reset-cells = <1>;
+diff --git a/arch/arm/boot/dts/mediatek/mt7623.dtsi b/arch/arm/boot/dts/mediatek/mt7623.dtsi
+index fd7a89cc337d..4b1685b93989 100644
+--- a/arch/arm/boot/dts/mediatek/mt7623.dtsi
++++ b/arch/arm/boot/dts/mediatek/mt7623.dtsi
+@@ -744,8 +744,7 @@ vdecsys: syscon@16000000 {
+ 
+ 	hifsys: syscon@1a000000 {
+ 		compatible = "mediatek,mt7623-hifsys",
+-			     "mediatek,mt2701-hifsys",
+-			     "syscon";
++			     "mediatek,mt2701-hifsys";
+ 		reg = <0 0x1a000000 0 0x1000>;
+ 		#clock-cells = <1>;
+ 		#reset-cells = <1>;
 -- 
 2.51.0
 
