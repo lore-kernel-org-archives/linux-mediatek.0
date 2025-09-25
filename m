@@ -4,61 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B2CECAC5A7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Sep 2025 14:46:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CA7BCAC5B1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Sep 2025 15:49:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IceFdSzD9QVgHEqH1BZZlaGy9RrNBmZN26Wl2NcP3H0=; b=Iov/myCQt+vLmeBPMWC4RTNUZx
-	dBx82o3/sOF53d9GOkqTFc/lu3h3gIz6wRZx/hcoGqKbj9SWPzpSaicjHC7k6JmAVcgaDOrkRCDUM
-	TTvzwewNQS3Wnn4XDs15WozufguPNlrRdXXA9DaSTxOjO34WMEskDh1hWplUYf2WmFDTNU8aIDQ8t
-	M5E56LnMn0sQSzhOqP1ZDSNGoG22hvFXpGAVlNitAS0lk3IQ+tSLxwyXaa7Rzv7MzGzVQmNA9CWLa
-	y08+0Obf5VM6K+cP4eegPKC5gcwyX5mJcFSgTuqy7ZEFa+GncrJgUQLoJkuXljHjopkAgkXaWYMMD
-	xwXFjpkQ==;
+	bh=JNJavTQjkknopqd0oPAIQcXO5xoI8oxuPjMPorcG+Ao=; b=xsDNNKtrhPx8h0MI7BQwvaaNk+
+	IudTe7NEJIvQwpIXoDiRoGWYEtX7mh5e50cgoA2gPf3OwD1LIOyQNUvrvGqE5TB88VP+JMXpOOh//
+	pDP96BCnBt70++/42ow845A///jwYOQ/XPFWrx4JA3lWTxOP7oYmQ+i5dTpL+/kLvuJOkY6p87ek0
+	PftotHox+87taN86cJ9AgCVhyluQqeBVVOht9jAL7FkdKeBeQwVplxEpRNKe3E7N1UPuUhx3a4WAZ
+	77yNw3DsvKonIYKGFXvK6CBWQ7oEzONB3o5yE9/Qixrh6TjzfKyuzSXDcFgt+oCIvmZ2q7j/2Fc5Q
+	xX/gtyVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1nEh-0000000AE0v-00Wr;
-	Thu, 25 Sep 2025 14:46:19 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1v1oDX-0000000ApNW-1g1V;
+	Thu, 25 Sep 2025 15:49:11 +0000
+Received: from 004.mia.mailroute.net ([199.89.3.7])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1nEf-0000000AE0V-3DYT
+	id 1v1oDU-0000000ApKV-49es
 	for linux-mediatek@lists.infradead.org;
-	Thu, 25 Sep 2025 14:46:17 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id D4497605FF;
-	Thu, 25 Sep 2025 14:46:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 829CFC4CEF0;
-	Thu, 25 Sep 2025 14:46:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1758811576;
-	bh=u1I7JyHDzj9nlh2ovCkhEeA/71ug/8ULKEugP+a07Jk=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=SxfQqoFmEp8R9sezFEsIKgoaAojx+rF2++Qxw65QWkqs7uZuNcO9124nOdy4Z9OkC
-	 7HU8sQDNVbP5kkUauZXXzwAsmfsqnTYtS0mVKhevEOcnUKLVln1LF8GZjSJTibLL/C
-	 xl8Arbi5np8eKK5DsCd8QwiFtocDfC7pOTFHOWHZ3m+2R8DMhZgTTUgSokpZPtxUpw
-	 r7Yw0f1Z8YFzNI5U6CTvLYM0kJbHWAbfvwlFNKyPEG/vokTMd8lQPUZnIf7IA4rOJF
-	 3I2J/VH8vjFXKy9ZPjRDWvUn1ikp1/ySq+s7ohurEOkNbakokuPaUHcfAe2rBtK02u
-	 jtDk3Ynav1CNA==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 70E0539D0C9F;
-	Thu, 25 Sep 2025 14:46:13 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	Thu, 25 Sep 2025 15:49:10 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 004.mia.mailroute.net (Postfix) with ESMTP id 4cXdS355M5zm0pJw;
+	Thu, 25 Sep 2025 15:49:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1758815344; x=1761407345; bh=JNJavTQjkknopqd0oPAIQcXO
+	5xoI8oxuPjMPorcG+Ao=; b=1+JeKSWibrZVfErAUN4XyEsWCpGAEg2a4lkCqwj8
+	OIyNgYY/ZSQALymCf7APRcppZqUWvXto9WdTvGAkRAjDxA5yqWMWKqppnOcN8p4P
+	d29Ek/gMvhnLzC87fSJZX6ahQVCka2ITVQg0QY/jadcxqwIswgJjWm6hPFYzE/8A
+	Lf2354m905SgoF6n1IkJpjwP8OCK2Id12/mKgPoyx4bMUr3rJhTRZin0GjdS0xpT
+	ZOyU6410BB5xNx8IdgIeSm+rnK2++eFqIJp05cnHaGouAHveZcBJTndJDyvFvC1C
+	dpRsU1tzuU7CmUEIoUv929DKDzdDvtbHDqgnPrZLXfHYVg==
+X-Virus-Scanned: by MailRoute
+Received: from 004.mia.mailroute.net ([127.0.0.1])
+ by localhost (004.mia [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id QXziTda_FYE4; Thu, 25 Sep 2025 15:49:04 +0000 (UTC)
+Received: from [100.119.48.131] (unknown [104.135.180.219])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bvanassche@acm.org)
+	by 004.mia.mailroute.net (Postfix) with ESMTPSA id 4cXdRk626fzm0djt;
+	Thu, 25 Sep 2025 15:48:49 +0000 (UTC)
+Message-ID: <81e6af29-eb75-4149-8fbc-7e726fdd2acc@acm.org>
+Date: Thu, 25 Sep 2025 08:48:48 -0700
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH v2] Bluetooth: btusb: Add new VID/PID 13d3/3627 for MT7925
-From: patchwork-bot+bluetooth@kernel.org
-Message-Id: <175881157225.3004481.8227650174530640013.git-patchwork-notify@kernel.org>
-Date: Thu, 25 Sep 2025 14:46:12 +0000
-References: <20250908084912.1853827-1-chris.lu@mediatek.com>
-In-Reply-To: <20250908084912.1853827-1-chris.lu@mediatek.com>
-To: Chris Lu <chris.lu@mediatek.com>
-Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
- sean.wang@mediatek.com, will-cy.Lee@mediatek.com, ss.wu@mediatek.com,
- steve.lee@mediatek.com, linux-bluetooth@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] ufs: core: Fix runtime suspend error deadlock
+To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
+ martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
+ jejb@linux.ibm.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, jiajie.hao@mediatek.com,
+ yi-fan.peng@mediatek.com, qilin.tan@mediatek.com, lin.gui@mediatek.com,
+ tun-yu.yu@mediatek.com, eddie.huang@mediatek.com, naomi.chu@mediatek.com,
+ ed.tsai@mediatek.com
+References: <20250925102420.3553715-1-peter.wang@mediatek.com>
+Content-Language: en-US
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20250925102420.3553715-1-peter.wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250925_084909_118284_762CD695 
+X-CRM114-Status: UNSURE (   5.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,67 +90,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+On 9/25/25 3:22 AM, peter.wang@mediatek.com wrote:
+> Tested-by: Bart Van Assche <bvanassche@acm.org>
 
-This patch was applied to bluetooth/bluetooth-next.git (master)
-by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
+Did I ever claim that I tested this patch? I think the Tested-by tag
+should be removed.
 
-On Mon, 8 Sep 2025 16:49:11 +0800 you wrote:
-> Add VID 13d3 & PID 3627 for MediaTek MT7925 USB Bluetooth chip.
-> 
-> The information in /sys/kernel/debug/usb/devices about the Bluetooth
-> device is listed as the below.
-> 
-> T:  Bus=07 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
-> D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
-> P:  Vendor=13d3 ProdID=3627 Rev= 1.00
-> S:  Manufacturer=MediaTek Inc.
-> S:  Product=Wireless_Device
-> S:  SerialNumber=000000000
-> C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
-> A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
-> I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
-> E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-> I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-> I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-> I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-> I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-> I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-> I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-> I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-> E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
-> E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
-> I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-> E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
-> E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
-> 
-> [...]
+Anyway, since this patch looks good to me:
 
-Here is the summary with links:
-  - [v2] Bluetooth: btusb: Add new VID/PID 13d3/3627 for MT7925
-    https://git.kernel.org/bluetooth/bluetooth-next/c/11ccdf96e612
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+Reviewed-by: Bart Van Assche <bvanassche@acm.org>
 
