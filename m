@@ -4,68 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4158CAC5B9
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Sep 2025 09:33:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64B7BCAC5AE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Sep 2025 10:05:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=7/L7YYDOWwlU+D3FfZyTbXiGx2QzxPsXvcQaHU+1ji0=; b=NeG5lAxmRSwvpmhans0AjWUnbS
-	j5la83buI6hwThAOa8DeM5CLs8+73ey6cpPNRfUy9fDA9M+BlITyHkfQcGh0XvMoKVQyekcgKH1Yu
-	NVAXhtJ1XXP5gkbelCnaS5W4mbNH7fuqWDiAWra51latKyB14O0IY7j/RLVoQbqg/7Mgq07FZFsmT
-	QlsF9ED27/ed1VmaHopbWQc4QGTULqZCaHE0q+OD7QhUz3tEez9CHoy9x/URdmTosh7Ql2GYWLbxs
-	obYLcEhwyB363EajrZMF/tDhNH/iCfI7bnZE1SMGC5B/p4h3PN0abHqz/uGQJG1zC69oSZYqcucPt
-	RzzvseZw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fvLsk9QKyQp/yVdLhE3qJAQkBSlK5XgZUJpLjMgY4Vk=; b=rTTz9IEBS7bUt+
+	ruxsOiF/rV7V+YL1MKiYYIHApIqfnWBdfoIoLFlOHAFLqV5UhFV9t3TRYc/dXHPrzJQRoMa9F5F8D
+	T+z8hMotWF1/0q2r8iGhzIfSragJJ+Z6EPlzAiyuE5HE4/rl0AtbtbcQ6ZQsyllTU2CxsVhLsxHBu
+	oNukjlk/BnrUYRDKjiO622YunaZo8yGyF/tQBMLZ6Q+vPlXjtlx/KhOJq9z+jpxHJy0+kZ1P6GAsH
+	yviK20uUn9hnHbJLq2n/61egAXLagoehMRWQWJxhC9UqMUEwbf+iqX/rqsNDS0Piv6nbsdpDqKTgA
+	gT20hSrkXwBSznqm3SIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v24ps-000000000EE-3toG;
-	Fri, 26 Sep 2025 09:33:52 +0000
-Received: from mail.simonwunderlich.de ([23.88.38.48])
+	id 1v25Kt-00000000Elg-2xIP;
+	Fri, 26 Sep 2025 10:05:55 +0000
+Received: from mail.simonwunderlich.de ([2a01:4f8:c17:e8c0::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v24pp-000000000CH-2jYP;
-	Fri, 26 Sep 2025 09:33:51 +0000
-Received: from sven-desktop.home.narfation.org (p200300C597166bE00000000000000C00.dip0.t-ipconnect.de [IPv6:2003:c5:9716:6be0::c00])
+	id 1v25Kq-00000000EhM-3D8N;
+	Fri, 26 Sep 2025 10:05:54 +0000
+Received: from sven-desktop.home.narfation.org (p200300c597166be00000000000000c00.dip0.t-ipconnect.de [IPv6:2003:c5:9716:6be0::c00])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mail.simonwunderlich.de (Postfix) with ESMTPSA id 55A2DFA12C;
-	Fri, 26 Sep 2025 11:33:45 +0200 (CEST)
+	by mail.simonwunderlich.de (Postfix) with ESMTPSA id 5AB0AFA12C;
+	Fri, 26 Sep 2025 12:05:49 +0200 (CEST)
 From: "Sven Eckelmann (Plasma Cloud)" <se@simonwunderlich.de>
-Date: Fri, 26 Sep 2025 11:32:54 +0200
-Subject: [PATCH v2] wifi: mt76: Fix DTS power-limits on little endian
- systems
+Subject: [PATCH mt76 v2 0/3] wifi: mt76: mt7915: Beamforming backoff limit
+ table
+Date: Fri, 26 Sep 2025 12:04:51 +0200
+Message-Id: <20250926-backoff-table-support-v2-0-16d3726646c4@simonwunderlich.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250926-fix-power-limits-v2-1-c2bc7881eb6d@simonwunderlich.de>
-X-B4-Tracking: v=1; b=H4sIAMVd1mgC/32NQQ6CMBBFr0Jm7RimBmhdcQ/DAukok0BLWgQN4
- e5WDuDy/fz//gaRg3CEa7ZB4EWieJdAnTLo+tY9GcUmBpWrIjdU4UPeOPmVAw4yyhyx6Div7sZ
- cSk2QZlPg1DmUtyZxL3H24XM8LPRL/8gWQsKSStaFaY3WVEcZvVtfznIYpOvPlqHZ9/0LdN4Qb
- rkAAAA=
-X-Change-ID: 20250917-fix-power-limits-5ce07b993681
+X-B4-Tracking: v=1; b=H4sIAENl1mgC/3WPwXKEIBBEf8XiHFKAAo6n/EdqDwJjpKJiAN2kt
+ vz3sG6SW449Xd2v50YSRo+JdNWNRNx98mEpQjxVxI798obUu6KJYEIy4Jqa3r6HYaC5NxPStK1
+ riJkCCN62opZaOVKya8TBf569r2TOWpHL4xrxYyuQ/GP9MQryl1CCdA1XjHTys8+JSotMG4Bat
+ bzb+b3f9AmpDXPxu8rUykmpOBNc9qCVUJqDds4Cb4AJ20CjmXT63DD6lEP8Oh8uXfcRD7Jo/vl
+ t55RRwVCywVgJDl+Sn8Ny3RaHcfJ2fHZILsdxfAP7OpHHTQEAAA==
+X-Change-ID: 20250917-backoff-table-support-99218823576d
 To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, 
  Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, 
  Sean Wang <sean.wang@mediatek.com>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Johannes Berg <johannes@sipsolutions.net>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>
 Cc: linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- stable@vger.kernel.org, 
+ linux-stm32@st-md-mailman.stormreply.com, devicetree@vger.kernel.org, 
  "Sven Eckelmann (Plasma Cloud)" <se@simonwunderlich.de>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5112; i=se@simonwunderlich.de;
- h=from:subject:message-id; bh=L6Pca3P0pknz3JY6jYwTU3eI8BhWMQZtzDoR7Jozi6U=;
- b=owGbwMvMwCXmy1+ufVnk62nG02pJDBnXYs8v0WH4HM6U2KKWalXE1JSRoN+al+KhKBr1zzSVP
- 6+s/npHKQuDGBeDrJgiy54r+ec3s7+V/zzt41GYOaxMIEMYuDgFYCLb/BgZ5r1htPhyfXn4zQ3T
- UlmvB97L2bfgwLRnnsc2FmhIhMyW42D4K3jrmdfck+x90llr4/tmbCuavCdtFuvphbNf/PjwdFG
- YDSMA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3232; i=se@simonwunderlich.de;
+ h=from:subject:message-id; bh=b3/ybPY9EaJmt4SNpWg+0Y0d2UPRyNHmWizTO630UoI=;
+ b=owGbwMvMwCXmy1+ufVnk62nG02pJDBnXUss9ct29d7r4R67WnH+CVbb8VDvbsvZPJebO5xdFn
+ m1l2ZPWUcrCIMbFICumyLLnSv75zexv5T9P+3gUZg4rE8gQBi5OAZhI7S6G/5GaPVoMHNeX8fGc
+ eKQlskXcetLiy0Wuqpvl2CfZce/fws/wPyAwytbUWUZ9Uv+mm1M3u7/hPKfr0xUr+jj9elm48Yd
+ MXgA=
 X-Developer-Key: i=se@simonwunderlich.de; a=openpgp;
  fpr=522D7163831C73A635D12FE5EC371482956781AF
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250926_023350_016924_6E5ACE8C 
-X-CRM114-Status: GOOD (  14.08  )
+X-CRM114-CacheID: sfid-20250926_030552_954439_0726AE07 
+X-CRM114-Status: GOOD (  12.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,139 +86,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The power-limits for ru and mcs and stored in the devicetree as bytewise
-array (often with sizes which are not a multiple of 4). These arrays have a
-prefix which defines for how many modes a line is applied. This prefix is
-also only a byte - but the code still tried to fix the endianness of this
-byte with a be32 operation. As result, loading was mostly failing or was
-sending completely unexpected values to the firmware.
+It was noticed that Mediatek's MT7915 does not only require calibration of
+the normal rates (configured via DT) but also some backoff values for
+beamforming. The proprietary driver loads this from some file in the
+firmware folder. But for the the upstream driver, it is necessary to get
+them from the same place as the normal limits - in this case from the
+devicetree.
 
-Since the other rates are also stored in the devicetree as bytewise arrays,
-just drop the u32 access + be32_to_cpu conversion and directly access them
-as bytes arrays.
+They released the support for this [1,2] in their own SDK but
+without any kind of documentation. And it was (to my knowledge) never
+forwarded to upstream. But since also (in my case) OpenWrt needs correct
+calibration for this WiFi chip, we should get this upstreamed.
 
-Cc: stable@vger.kernel.org
-Fixes: 22b980badc0f ("mt76: add functions for parsing rate power limits from DT")
-Fixes: a9627d992b5e ("mt76: extend DT rate power limits to support 11ax devices")
+I try to my best to provide some sensible information about the patch and
+the DT entries. If anyone else has more information about it (to improve
+the descriptions), please feel free to comment and provide some
+enhanced/corrected version.
+
+The patch from Shayne Chen was only rebased and modified to perform byte
+reads from the DT [3]. Besides this, only a commit message was added,
+MTK_DEBUG parts were dropped and some checkpatch problems were fixed.
+
+Regards,
+	Sven
+
+[1] https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/f0d2527deb4f91592b6486a5c98ea3f584f76a61
+[2] https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/737340322ab22b138fd200e020d61ffdbe3e36a9/autobuild/autobuild_5.4_mac80211_release/package/kernel/mt76/patches/1022-wifi-mt76-mt7915-add-bf-backoff-limit-table-support.patch
+[3] https://lore.kernel.org/r/20250917-fix-power-limits-v1-1-616e859a9881@simonwunderlich.de
+
 Signed-off-by: Sven Eckelmann (Plasma Cloud) <se@simonwunderlich.de>
 ---
 Changes in v2:
-- Fix second Fixes line, thanks Zhi-Jun You
-- Link to v1: https://lore.kernel.org/r/20250917-fix-power-limits-v1-1-616e859a9881@simonwunderlich.de
+- add [PATCH mt76] as requested by Zhi-Jun You
+- Link to v1: https://lore.kernel.org/r/20250924-backoff-table-support-v1-0-20e50fbc59de@simonwunderlich.de
+
 ---
- drivers/net/wireless/mediatek/mt76/eeprom.c | 37 +++++++++++++++++++----------
- 1 file changed, 24 insertions(+), 13 deletions(-)
+Shayne Chen (1):
+      wifi: mt76: mt7915: add bf backoff limit table support
 
-diff --git a/drivers/net/wireless/mediatek/mt76/eeprom.c b/drivers/net/wireless/mediatek/mt76/eeprom.c
-index a987c5e4eff6c6b0a014b4b069dc1259ffa82d31..6ce8e4af18fe53c10a0cb7290bf65962ce9cdde4 100644
---- a/drivers/net/wireless/mediatek/mt76/eeprom.c
-+++ b/drivers/net/wireless/mediatek/mt76/eeprom.c
-@@ -253,6 +253,19 @@ mt76_get_of_array(struct device_node *np, char *name, size_t *len, int min)
- 	return prop->value;
- }
- 
-+static const s8 *
-+mt76_get_of_array_s8(struct device_node *np, char *name, size_t *len, int min)
-+{
-+	struct property *prop = of_find_property(np, name, NULL);
-+
-+	if (!prop || !prop->value || prop->length < min)
-+		return NULL;
-+
-+	*len = prop->length;
-+
-+	return prop->value;
-+}
-+
- struct device_node *
- mt76_find_channel_node(struct device_node *np, struct ieee80211_channel *chan)
- {
-@@ -294,7 +307,7 @@ mt76_get_txs_delta(struct device_node *np, u8 nss)
- }
- 
- static void
--mt76_apply_array_limit(s8 *pwr, size_t pwr_len, const __be32 *data,
-+mt76_apply_array_limit(s8 *pwr, size_t pwr_len, const s8 *data,
- 		       s8 target_power, s8 nss_delta, s8 *max_power)
- {
- 	int i;
-@@ -303,15 +316,14 @@ mt76_apply_array_limit(s8 *pwr, size_t pwr_len, const __be32 *data,
- 		return;
- 
- 	for (i = 0; i < pwr_len; i++) {
--		pwr[i] = min_t(s8, target_power,
--			       be32_to_cpu(data[i]) + nss_delta);
-+		pwr[i] = min_t(s8, target_power, data[i] + nss_delta);
- 		*max_power = max(*max_power, pwr[i]);
- 	}
- }
- 
- static void
- mt76_apply_multi_array_limit(s8 *pwr, size_t pwr_len, s8 pwr_num,
--			     const __be32 *data, size_t len, s8 target_power,
-+			     const s8 *data, size_t len, s8 target_power,
- 			     s8 nss_delta, s8 *max_power)
- {
- 	int i, cur;
-@@ -319,8 +331,7 @@ mt76_apply_multi_array_limit(s8 *pwr, size_t pwr_len, s8 pwr_num,
- 	if (!data)
- 		return;
- 
--	len /= 4;
--	cur = be32_to_cpu(data[0]);
-+	cur = data[0];
- 	for (i = 0; i < pwr_num; i++) {
- 		if (len < pwr_len + 1)
- 			break;
-@@ -335,7 +346,7 @@ mt76_apply_multi_array_limit(s8 *pwr, size_t pwr_len, s8 pwr_num,
- 		if (!len)
- 			break;
- 
--		cur = be32_to_cpu(data[0]);
-+		cur = data[0];
- 	}
- }
- 
-@@ -346,7 +357,7 @@ s8 mt76_get_rate_power_limits(struct mt76_phy *phy,
- {
- 	struct mt76_dev *dev = phy->dev;
- 	struct device_node *np;
--	const __be32 *val;
-+	const s8 *val;
- 	char name[16];
- 	u32 mcs_rates = dev->drv->mcs_rates;
- 	u32 ru_rates = ARRAY_SIZE(dest->ru[0]);
-@@ -392,21 +403,21 @@ s8 mt76_get_rate_power_limits(struct mt76_phy *phy,
- 
- 	txs_delta = mt76_get_txs_delta(np, hweight16(phy->chainmask));
- 
--	val = mt76_get_of_array(np, "rates-cck", &len, ARRAY_SIZE(dest->cck));
-+	val = mt76_get_of_array_s8(np, "rates-cck", &len, ARRAY_SIZE(dest->cck));
- 	mt76_apply_array_limit(dest->cck, ARRAY_SIZE(dest->cck), val,
- 			       target_power, txs_delta, &max_power);
- 
--	val = mt76_get_of_array(np, "rates-ofdm",
--				&len, ARRAY_SIZE(dest->ofdm));
-+	val = mt76_get_of_array_s8(np, "rates-ofdm",
-+				   &len, ARRAY_SIZE(dest->ofdm));
- 	mt76_apply_array_limit(dest->ofdm, ARRAY_SIZE(dest->ofdm), val,
- 			       target_power, txs_delta, &max_power);
- 
--	val = mt76_get_of_array(np, "rates-mcs", &len, mcs_rates + 1);
-+	val = mt76_get_of_array_s8(np, "rates-mcs", &len, mcs_rates + 1);
- 	mt76_apply_multi_array_limit(dest->mcs[0], ARRAY_SIZE(dest->mcs[0]),
- 				     ARRAY_SIZE(dest->mcs), val, len,
- 				     target_power, txs_delta, &max_power);
- 
--	val = mt76_get_of_array(np, "rates-ru", &len, ru_rates + 1);
-+	val = mt76_get_of_array_s8(np, "rates-ru", &len, ru_rates + 1);
- 	mt76_apply_multi_array_limit(dest->ru[0], ARRAY_SIZE(dest->ru[0]),
- 				     ARRAY_SIZE(dest->ru), val, len,
- 				     target_power, txs_delta, &max_power);
+Sven Eckelmann (Plasma Cloud) (2):
+      dt-bindings: net: wireless: mt76: Document power-limits country property
+      dt-bindings: net: wireless: mt76: introduce backoff limit properties
 
+ .../bindings/net/wireless/mediatek,mt76.yaml       |  65 ++++++++
+ drivers/net/wireless/mediatek/mt76/debugfs.c       |   4 +-
+ drivers/net/wireless/mediatek/mt76/eeprom.c        |  38 ++++-
+ drivers/net/wireless/mediatek/mt76/mt76.h          |   8 +
+ .../net/wireless/mediatek/mt76/mt7915/debugfs.c    |  74 ++++++++-
+ drivers/net/wireless/mediatek/mt76/mt7915/init.c   |   7 +
+ drivers/net/wireless/mediatek/mt76/mt7915/main.c   |   2 +-
+ drivers/net/wireless/mediatek/mt76/mt7915/mcu.c    | 182 ++++++++++++++++-----
+ drivers/net/wireless/mediatek/mt76/mt7915/mcu.h    |   6 +
+ drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h |   9 +-
+ .../net/wireless/mediatek/mt76/mt7915/testmode.c   |   2 +-
+ 11 files changed, 342 insertions(+), 55 deletions(-)
 ---
 base-commit: b36d55610215a976267197ddc914902c494705d7
-change-id: 20250917-fix-power-limits-5ce07b993681
+change-id: 20250917-backoff-table-support-99218823576d
+prerequisite-change-id: 20250917-fix-power-limits-5ce07b993681:v1
+prerequisite-patch-id: 964626eea847052cefc907ef0f01286a080fdc3c
 
 Best regards,
 -- 
