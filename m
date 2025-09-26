@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 271C7CAC5AE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Sep 2025 16:10:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BE56CAC5BB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Sep 2025 20:53:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=a8ppqvzfJbHLORVI4FUGxAEtvpysmOlFWvNRW2iwm/E=; b=EZ0qqBqG0R0I/BDwCHZo5TClPl
-	eozV4lWZDqYaGPTLH0wNYFZJfzFjj618hnd+PokXcVO3vWDqNLeVf/imC7xAE4xdNOa+qzTrJSJW/
-	RV0hIMvEeEBXrUO1YCALApSMPWh5jt2v4UK3dTA8/6KSAP9SF3kWfdvlhMrM+p2Ri4Um9+GW2sYOl
-	0ZFyHI5a1MTdxPdD3qtDWB9QwL9i1zY6lIUe7Ebt2qcs+yPYchiOB6D1Qw7NODFb5x9z3MU2mjKPy
-	6yP8UEgy9EYDqQJ/+8wYb2LKwZuc/jQPm3JOHwCzmUEqNzijPUr+pOsHmAkBrKS+1naeQD5elQ2zF
-	6ZNez6TQ==;
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=VSKLyM00phHW0wHDaWMQHUhD1sQtOyruhpvSDC8vCOY=; b=m2E5inZi3x6EmT
+	PlNiBHrsqJ1xod+a6k2chcz/bW43WpQ1vKlL9fyUTYU2tqQJlWt5tBrMn1Bdu4KgaF+9NJduzEgMR
+	z64Q/6JrnZhJUHXGUFAKiXBcvlx6EqdYFtzGojPk2JKzTu1fr+P4lVZWfSe0cZt61SmwpFE5Jk1iH
+	nwRIz51n4c5ChhoUkBRls+lIG9ahhwRo1suwlLbopp+REgwV2mk278pQJ1GGxhuAhVwSeZyaWEe6u
+	5bVBrREy2Ylw71lS81nMoYSFzBmBhLOtTI94vbgvUCMORTdyhFMb3T9qHcjYzsSUu7AnvNNVqq0Qk
+	/XZKx6U2JRiZUNyxcK5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v2B1q-00000002k0v-3x6A;
-	Fri, 26 Sep 2025 16:10:38 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1v2FRw-00000004SEp-2dSO;
+	Fri, 26 Sep 2025 20:53:52 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v2B1o-00000002jxc-2epV;
-	Fri, 26 Sep 2025 16:10:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=a8ppqvzfJbHLORVI4FUGxAEtvpysmOlFWvNRW2iwm/E=; b=cg9+AN104PlZDbjadHhLemQ6P3
-	2SECT9YE20k1+7x95YYYNw64/FuHB2bAG83MSCcNdmOFxUVGUxbju3lD93C6rwX26VOe8M9IEDEtz
-	nZZJn3lRXRQC8dkazzykeIzR/huKAQJlAUgvHcvi+NpFW+Wj0XaBPBwZxqytRph6F2js=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1v2B1g-009a97-KM; Fri, 26 Sep 2025 18:10:28 +0200
-Date: Fri, 26 Sep 2025 18:10:28 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
+	id 1v2FRv-00000004SDs-2VT1;
+	Fri, 26 Sep 2025 20:53:51 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id A4B0A61F6B;
+	Fri, 26 Sep 2025 20:53:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 22861C4CEF4;
+	Fri, 26 Sep 2025 20:53:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1758920030;
+	bh=+2j9/0CdRMeV9jn7IdyUu73NHHsTC5nbTEOVlrmZkHo=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=MmvtP3EQERr0QqgKsC48/0imRxbynvn6Lx+1COGwNGlSb+ElEt1nsaqYPEODbYYlK
+	 hLnKV9dVAZn8aUynnmXVEn98uJwFTDI3G03xHiu87tOqop1k56HYxOB6FwBqcWcspc
+	 cy/ELMTE3aQOAUty5ZONn4BC3ECwkkLySQEvA0sb04SrQPMarGDHrGlm0zXHIYaE/M
+	 /spoBSuskav8QFCqoxrTmClj30NXnDuhIzQF50I1cb2TjgNuvkvwGgwugyqONcfJ3E
+	 bn8PPYEtIDdGTvQPdNTminngrfQ+uyYIFfWV+5DanTiuhPe2YDhgAbdxYhe8UJJfB3
+	 RGqdkA3uIcujw==
+Date: Fri, 26 Sep 2025 15:53:48 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next 2/2] net: airoha: npu: Add 7583 SoC support
-Message-ID: <b5ff2e06-df4f-423a-86ac-fb025b243844@lunn.ch>
-References: <20250926-airoha-npu-7583-v1-0-447e5e2df08d@kernel.org>
- <20250926-airoha-npu-7583-v1-2-447e5e2df08d@kernel.org>
- <82a08bb5-cbc3-4bba-abad-393092d66557@lunn.ch>
- <aNa464zcFCvNhL33@lore-desk>
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, upstream@airoha.com
+Subject: Re: [PATCH v3 4/4] PCI: mediatek: add support for Airoha AN7583 SoC
+Message-ID: <20250926205348.GA2266187@bhelgaas>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <aNa464zcFCvNhL33@lore-desk>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250926_091036_669437_DAC91B15 
-X-CRM114-Status: GOOD (  14.70  )
+In-Reply-To: <20250925162332.9794-5-ansuelsmth@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,32 +77,180 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 26, 2025 at 06:01:47PM +0200, Lorenzo Bianconi wrote:
-> > > -	ret = request_firmware(&fw, NPU_EN7581_FIRMWARE_DATA, dev);
-> > > +	if (of_device_is_compatible(dev->of_node, "airoha,an7583-npu"))
-> > > +		fw_name = NPU_AN7583_FIRMWARE_DATA;
-> > > +	else
-> > > +		fw_name = NPU_EN7581_FIRMWARE_DATA;
-> > > +	ret = request_firmware(&fw, fw_name, dev);
-> > >  	if (ret)
-> > >  		return ret == -ENOENT ? -EPROBE_DEFER : ret;
-> > >  
-> > > @@ -612,6 +623,7 @@ EXPORT_SYMBOL_GPL(airoha_npu_put);
-> > >  
-> > >  static const struct of_device_id of_airoha_npu_match[] = {
-> > >  	{ .compatible = "airoha,en7581-npu" },
-> > > +	{ .compatible = "airoha,an7583-npu" },
-> > 
-> > It would be more normal to make use of the void * in of_device_id to
-> > have per compatible data, such are firmware name.
-> > 
-> > 	Andrew
+In subject:
+
+  PCI: mediatek: Add support for Airoha AN7583 SoC
+
+On Thu, Sep 25, 2025 at 06:23:18PM +0200, Christian Marangi wrote:
+> Add support for the second PCIe line present on Airoha AN7583 SoC.
+
+What is a "second PCIe line"?  Does this mean a second Root Complex?
+Or a second Root Port in a Root Complex?
+
+I guess maybe it just means this adds support for another variant of
+the Mediatek IP that is used in Airoha AN7583?
+
+> This is based on the Mediatek Gen1/2 PCIe driver and similar to Gen3
+> also require workaround for the reset signals.
 > 
-> ack, I implemted this way since we have 2 fw names but we can have a struct
-> pointed by of_device_id driver_data pointer to contains both of them.
-> What do you think?
+> Introduce a new bool to skip having to reset signals and also introduce
+> some additional logic to configure the PBUS registers required for
+> Airoha SoC.
+> 
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> ---
+>  drivers/pci/controller/pcie-mediatek.c | 85 +++++++++++++++++++-------
+>  1 file changed, 63 insertions(+), 22 deletions(-)
+> 
+> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+> index 24cc30a2ab6c..640d1f1a6478 100644
+> --- a/drivers/pci/controller/pcie-mediatek.c
+> +++ b/drivers/pci/controller/pcie-mediatek.c
+> @@ -147,6 +147,7 @@ struct mtk_pcie_port;
+>   * @need_fix_class_id: whether this host's class ID needed to be fixed or not
+>   * @need_fix_device_id: whether this host's device ID needed to be fixed or not
+>   * @no_msi: Bridge has no MSI support, and relies on an external block
+> + * @skip_pcie_rstb: Skip calling RSTB bits on PCIe probe
+>   * @device_id: device ID which this host need to be fixed
+>   * @ops: pointer to configuration access functions
+>   * @startup: pointer to controller setting functions
+> @@ -156,6 +157,7 @@ struct mtk_pcie_soc {
+>  	bool need_fix_class_id;
+>  	bool need_fix_device_id;
+>  	bool no_msi;
+> +	bool skip_pcie_rstb;
+>  	unsigned int device_id;
+>  	struct pci_ops *ops;
+>  	int (*startup)(struct mtk_pcie_port *port);
+> @@ -679,28 +681,30 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
+>  		regmap_update_bits(pcie->cfg, PCIE_SYS_CFG_V2, val, val);
+>  	}
+>  
+> -	/* Assert all reset signals */
+> -	writel(0, port->base + PCIE_RST_CTRL);
+> -
+> -	/*
+> -	 * Enable PCIe link down reset, if link status changed from link up to
+> -	 * link down, this will reset MAC control registers and configuration
+> -	 * space.
+> -	 */
+> -	writel(PCIE_LINKDOWN_RST_EN, port->base + PCIE_RST_CTRL);
+> -
+> -	/*
+> -	 * Described in PCIe CEM specification sections 2.2 (PERST# Signal) and
+> -	 * 2.2.1 (Initial Power-Up (G3 to S0)). The deassertion of PERST# should
+> -	 * be delayed 100ms (TPVPERL) for the power and clock to become stable.
+> -	 */
+> -	msleep(100);
+> -
+> -	/* De-assert PHY, PE, PIPE, MAC and configuration reset	*/
+> -	val = readl(port->base + PCIE_RST_CTRL);
+> -	val |= PCIE_PHY_RSTB | PCIE_PERSTB | PCIE_PIPE_SRSTB |
+> -	       PCIE_MAC_SRSTB | PCIE_CRSTB;
+> -	writel(val, port->base + PCIE_RST_CTRL);
+> +	if (!soc->skip_pcie_rstb) {
+> +		/* Assert all reset signals */
+> +		writel(0, port->base + PCIE_RST_CTRL);
+> +
+> +		/*
+> +		 * Enable PCIe link down reset, if link status changed from link up to
+> +		 * link down, this will reset MAC control registers and configuration
+> +		 * space.
+> +		 */
+> +		writel(PCIE_LINKDOWN_RST_EN, port->base + PCIE_RST_CTRL);
+> +
+> +		/*
+> +		 * Described in PCIe CEM specification sections 2.2 (PERST# Signal) and
+> +		 * 2.2.1 (Initial Power-Up (G3 to S0)). The deassertion of PERST# should
+> +		 * be delayed 100ms (TPVPERL) for the power and clock to become stable.
 
-That would work.
+Wrap these comments to fit in 80 columns like the rest of the file.
 
-	Andrew
+You only moved the comment, without updating it, but since you're
+touching it anyway, it's a chance to add the CEM spec revision, e.g.,
+"PCIe CEM r5.0, sec 2.2"
+
+> +		 */
+> +		msleep(100);
+
+Use PCIE_T_PVPERL_MS if that's what this is.
+
+> +
+> +		/* De-assert PHY, PE, PIPE, MAC and configuration reset	*/
+> +		val = readl(port->base + PCIE_RST_CTRL);
+> +		val |= PCIE_PHY_RSTB | PCIE_PERSTB | PCIE_PIPE_SRSTB |
+> +		       PCIE_MAC_SRSTB | PCIE_CRSTB;
+> +		writel(val, port->base + PCIE_RST_CTRL);
+> +	}
+>  
+>  	/* Set up vendor ID and class code */
+>  	if (soc->need_fix_class_id) {
+> @@ -1105,6 +1109,33 @@ static int mtk_pcie_probe(struct platform_device *pdev)
+>  	if (err)
+>  		goto put_resources;
+>  
+> +	if (device_is_compatible(dev, "airoha,an7583-pcie")) {
+> +		struct resource_entry *entry;
+> +		struct regmap *pbus_regmap;
+> +		resource_size_t addr;
+> +		u32 args[2], size;
+> +
+> +		/*
+> +		 * Configure PBus base address and base address mask to allow the
+> +		 * hw to detect if a given address is accessible on PCIe controller.
+
+Wrap to fit in 80 columns.
+
+> +		 */
+> +		pbus_regmap = syscon_regmap_lookup_by_phandle_args(dev->of_node,
+> +								   "mediatek,pbus-csr",
+> +								   ARRAY_SIZE(args),
+> +								   args);
+> +		if (IS_ERR(pbus_regmap))
+> +			return PTR_ERR(pbus_regmap);
+> +
+> +		entry = resource_list_first_type(&host->windows, IORESOURCE_MEM);
+> +		if (!entry)
+> +			return -ENODEV;
+> +
+> +		addr = entry->res->start - entry->offset;
+> +		regmap_write(pbus_regmap, args[0], lower_32_bits(addr));
+> +		size = lower_32_bits(resource_size(entry->res));
+> +		regmap_write(pbus_regmap, args[1], GENMASK(31, __fls(size)));
+> +	}
+> +
+>  	return 0;
+>  
+>  put_resources:
+> @@ -1205,6 +1236,15 @@ static const struct mtk_pcie_soc mtk_pcie_soc_mt7622 = {
+>  	.setup_irq = mtk_pcie_setup_irq,
+>  };
+>  
+> +static const struct mtk_pcie_soc mtk_pcie_soc_an7583 = {
+> +	.skip_pcie_rstb = true,
+> +	.need_fix_class_id = true,
+> +	.need_fix_device_id = false,
+
+No need to specify "false" items; things are false by default since
+members not explicitly initialized are set to zero.
+
+> +	.ops = &mtk_pcie_ops_v2,
+> +	.startup = mtk_pcie_startup_port_v2,
+> +	.setup_irq = mtk_pcie_setup_irq,
+> +};
+> +
+>  static const struct mtk_pcie_soc mtk_pcie_soc_mt7629 = {
+>  	.need_fix_class_id = true,
+>  	.need_fix_device_id = true,
+> @@ -1215,6 +1255,7 @@ static const struct mtk_pcie_soc mtk_pcie_soc_mt7629 = {
+>  };
+>  
+>  static const struct of_device_id mtk_pcie_ids[] = {
+> +	{ .compatible = "airoha,an7583-pcie", .data = &mtk_pcie_soc_an7583 },
+>  	{ .compatible = "mediatek,mt2701-pcie", .data = &mtk_pcie_soc_v1 },
+>  	{ .compatible = "mediatek,mt7623-pcie", .data = &mtk_pcie_soc_v1 },
+>  	{ .compatible = "mediatek,mt2712-pcie", .data = &mtk_pcie_soc_mt2712 },
+> -- 
+> 2.51.0
+> 
 
