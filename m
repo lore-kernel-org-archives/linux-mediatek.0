@@ -4,42 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04860CAC5B9
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Sep 2025 15:55:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82591CAC5AE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Sep 2025 16:01:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LDqdoJk9lubv55rDAuOytv8/K4Mn4cbUmQU9E/sNBGg=; b=qaR+/2Jt3RDRj/znPNor0creHk
-	mxWkFTW/VLur1Py62lT4DTYUcbRqWdrqD2Fd+xkdxf1bVg1NmExjHkrlTZmGo5gsT2EnyrPzKW4LD
-	9ngGhS9+cHi4iobh5MA78ZJHPg4UBKgHoDLS1i7KHyiGE5P9K552LksfD2QG6ZBVYpUAJySntgx5t
-	3pJ27jSzhEER+3XMREvzi7u4sy+MkrAuDCEhjlYy4T9EcifVBmsrYWeJveRlpBOWLP7AXJyhqGDp2
-	aHVLfG3y0dhBKsPpKZAi5XFJclhUxvb4B2FHAkJbimcqi5RtG5ZNpDUJfSsjen13k/sjhZkEKGGwP
-	CaxZqRgQ==;
+	bh=9XBCdxZwWAyM7YHqLw8rKM8rLqvMES4Ag8yxAIsV+hM=; b=MQw83fahd17orww65OJBHJ0r1c
+	WN2zA4lD4q61eoBq1WuWekdq6cwRgSp5TTElabWK9IUd/Wz5UMWBBC9W6HsBLYW8mdoGca1bgM/qm
+	Rpa3fKnAo+Z12DtQVUg0XRIaFRntwd39zcyEC1JXxn/QsmSMsYG940JvrIYChmESnlVmAZRJbDMFC
+	lYHuKFnM9vXu6BJO63SrusEqC5qbT3rgxmi5eF02eY+ptnnKi9Jr/iybg8ZmK+906GsQJCVX0juNJ
+	EfYSOkea9Lkqbg+r4lg3t0i3DTORZUd868YdA1s+ShPzNztIzYrm411pQtzYyMGE5XOHswcedcNYQ
+	oLRs7HSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v2Amw-00000002d4g-2yDa;
-	Fri, 26 Sep 2025 15:55:14 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1v2AtM-00000002fre-2JzG;
+	Fri, 26 Sep 2025 16:01:52 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v2Ams-00000002d43-3Iw4;
-	Fri, 26 Sep 2025 15:55:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=LDqdoJk9lubv55rDAuOytv8/K4Mn4cbUmQU9E/sNBGg=; b=Yt/mIccIH8D+vqtslbMH4u7aif
-	Lh9lE2zaAFQ4JJvskOU91hQF3wzOQsRIZ5xafcxXCaUlKqUvTBuqg/aEfiEP5bBykK3Ytnq2ETOH7
-	26tZlKzlxGkY96gLhDoQQ0AeNakHSegmpTVeOFmtTV3jXOYLiUgudWdAyib1ZH+icivk=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1v2Amf-009a1U-Q7; Fri, 26 Sep 2025 17:54:57 +0200
-Date: Fri, 26 Sep 2025 17:54:57 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
+	id 1v2AtK-00000002fqZ-1EVu;
+	Fri, 26 Sep 2025 16:01:51 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id E8432438BA;
+	Fri, 26 Sep 2025 16:01:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 718ACC4CEF7;
+	Fri, 26 Sep 2025 16:01:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1758902509;
+	bh=YM8IV0+v374wnHxVVm/Vnnd8QnjR389XXK1l3TAj00o=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=QPjBmudZnf09hWZOTPBa90uUNc78OHxilarHsju0QpVLdXDTZf5eMwPs+QusAhLFa
+	 ZH7B9f4yMUW9krRsFQ0nxlxRbBsRghqnvFXL3RYoSvlnPLwAR4TrFUTRli3MrPiCAW
+	 KUDMgFp4AIs6K6V85SmYlShCmOajgcwWEQF/5z0DjBQ4M52DPlKNwJZS5gTi5J1CFV
+	 +8RGq3rsSNFROXlne4G2uxcWwdQ4AgrrD5T+77XaENVQ7LCJ5nCu3B48CNX/+NhX68
+	 BBLcMdcMtCTo1hyITS9Ahzlk1pUefKnb8VGOcLzvJtDkTFBTD5kOKG+rt4ZKUipMNN
+	 O6BqmVtYm1puQ==
+Date: Fri, 26 Sep 2025 18:01:47 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Andrew Lunn <andrew@lunn.ch>
 Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
@@ -50,17 +54,18 @@ Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
 Subject: Re: [PATCH net-next 2/2] net: airoha: npu: Add 7583 SoC support
-Message-ID: <82a08bb5-cbc3-4bba-abad-393092d66557@lunn.ch>
+Message-ID: <aNa464zcFCvNhL33@lore-desk>
 References: <20250926-airoha-npu-7583-v1-0-447e5e2df08d@kernel.org>
  <20250926-airoha-npu-7583-v1-2-447e5e2df08d@kernel.org>
+ <82a08bb5-cbc3-4bba-abad-393092d66557@lunn.ch>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="hB/pAcwWM8gt6iYi"
 Content-Disposition: inline
-In-Reply-To: <20250926-airoha-npu-7583-v1-2-447e5e2df08d@kernel.org>
+In-Reply-To: <82a08bb5-cbc3-4bba-abad-393092d66557@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250926_085510_826442_82AC0CCA 
-X-CRM114-Status: UNSURE (   8.89  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250926_090150_350818_66A590BC 
+X-CRM114-Status: GOOD (  13.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,23 +80,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> -	ret = request_firmware(&fw, NPU_EN7581_FIRMWARE_DATA, dev);
-> +	if (of_device_is_compatible(dev->of_node, "airoha,an7583-npu"))
-> +		fw_name = NPU_AN7583_FIRMWARE_DATA;
-> +	else
-> +		fw_name = NPU_EN7581_FIRMWARE_DATA;
-> +	ret = request_firmware(&fw, fw_name, dev);
->  	if (ret)
->  		return ret == -ENOENT ? -EPROBE_DEFER : ret;
->  
-> @@ -612,6 +623,7 @@ EXPORT_SYMBOL_GPL(airoha_npu_put);
->  
->  static const struct of_device_id of_airoha_npu_match[] = {
->  	{ .compatible = "airoha,en7581-npu" },
-> +	{ .compatible = "airoha,an7583-npu" },
 
-It would be more normal to make use of the void * in of_device_id to
-have per compatible data, such are firmware name.
+--hB/pAcwWM8gt6iYi
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-	Andrew
+> > -	ret =3D request_firmware(&fw, NPU_EN7581_FIRMWARE_DATA, dev);
+> > +	if (of_device_is_compatible(dev->of_node, "airoha,an7583-npu"))
+> > +		fw_name =3D NPU_AN7583_FIRMWARE_DATA;
+> > +	else
+> > +		fw_name =3D NPU_EN7581_FIRMWARE_DATA;
+> > +	ret =3D request_firmware(&fw, fw_name, dev);
+> >  	if (ret)
+> >  		return ret =3D=3D -ENOENT ? -EPROBE_DEFER : ret;
+> > =20
+> > @@ -612,6 +623,7 @@ EXPORT_SYMBOL_GPL(airoha_npu_put);
+> > =20
+> >  static const struct of_device_id of_airoha_npu_match[] =3D {
+> >  	{ .compatible =3D "airoha,en7581-npu" },
+> > +	{ .compatible =3D "airoha,an7583-npu" },
+>=20
+> It would be more normal to make use of the void * in of_device_id to
+> have per compatible data, such are firmware name.
+>=20
+> 	Andrew
+
+ack, I implemted this way since we have 2 fw names but we can have a struct
+pointed by of_device_id driver_data pointer to contains both of them.
+What do you think?
+
+Regards,
+Lorenzo
+
+--hB/pAcwWM8gt6iYi
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaNa46wAKCRA6cBh0uS2t
+rPX0AP4jYjmSFYol3JmGbMp9YCs2mGaQp8A9OZ1MuJvwphnyXgEAyEhcgj/ytZnA
+tBXvUeNCKzmn5hurXo642VMuHkx7dAg=
+=aHsk
+-----END PGP SIGNATURE-----
+
+--hB/pAcwWM8gt6iYi--
 
