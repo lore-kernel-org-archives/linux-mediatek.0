@@ -4,74 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36BC5CAC5B9
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Sep 2025 13:26:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C881CAC5BC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Sep 2025 13:52:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aXJO0WkU401jpk4kwGrc8SuCAOE3eIWrZnESqPAkAFM=; b=qnL8xg0qcGy4uH78qAk6+g5mop
-	b+sb3L67/bZXY79QaAmXV7exb3vcO/l+NhD3TLq4qdpt5lPGA0x4ws8ZyLwVoptuhNXCk/oI9rUyX
-	qgE1cZpfKm+MwM4EUNV/J7lGwtRULbS2HqfjMHBqNf31HA6mfyyKFIup1W7fAKfkn7XOP3ScPe8yX
-	/CYDiqssGjIcd1IbDxiRJT8PCnwh/L7fYpf2SDdNDtico6LV72glN5tACCggqfSXtz4K5G8Tzs8lS
-	9hwjBjIsSWyN13VTDT20/TVWlBkVBckXUcGTUmPa0ltJofhgkDj8JqHfrijnbre64ljZ1V0AwjfnI
-	6yEXjYsQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Subject:References:In-Reply-To:Message-Id:Cc:To:From:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=e/Miwyy5nX5tiT7Mz4fzifIfuWqRaBy8itcynQspnpE=; b=kxm5WgGcTAy62p3nubY+m3XVpY
+	wN20xSdpm9pUhAXW0+5IWWDz4yTOvEwoTqBgsf75EjM670FwXd6AHGD1fNvOuftVuikfleGbsC2xQ
+	t2rZ865OVT/apcMnaANdb+aSrjulQi+r10QCS4tQZeYYXou/Kti4tgkiz4Nqk0YcbeCMDeXg7Cwmh
+	IG3Lcmgm/QontdBs/1Ir9Q4mIb1v2qfN0VKuPQUjR/oTfVeEcPbHr3Oyz5PHstXJFxGWesP4b0GeP
+	63cBVxeZAGJvOyDTuKJvXfjMApl6wiZjrDfGmKzSj9grxNhPxLP8vHGIu0Yr1U+RwOw9v2XJhRnEv
+	tWqSy08g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v28TK-00000001Yfn-3hsC;
-	Fri, 26 Sep 2025 13:26:50 +0000
-Received: from mgamail.intel.com ([198.175.65.13])
+	id 1v28s4-00000001iYf-3PO3;
+	Fri, 26 Sep 2025 13:52:24 +0000
+Received: from flow-b5-smtp.messagingengine.com ([202.12.124.140])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v28TH-00000001Ydi-1X2F;
-	Fri, 26 Sep 2025 13:26:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1758893208; x=1790429208;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=tt8j4f67Myq2x91/cEcHImKhtQzK3hMmMD/sIcbXrSI=;
-  b=C5iVojS+BUp0M4Jcv0Jhy3W49aPzSlDp+szlAqWzyQ0HBqCCgjdvLAzP
-   /6doJ+NgaEM8T7mnIbDyxUQhuKOxqFBETu0Q5lz/6mbFdVTZOM/7YEZmd
-   w9SIO3tfF2thHD4swGgD63gm50tMCBhFWrS4FXwpVeGiRcZCDAgjOFzXZ
-   sSkPsOPCHKq8pbtL64t8l33MolquzSh1m2enx5Sk1tlpEKmTRWZCAauIm
-   ZcXWVpUmko7ty6Dq4FRqd52wx81y82VEGMj62JQz+gSF4Y5aLkRSvfRyo
-   cjqKJazX6GpDFySPvHfrJ9yfKw4tago6Qy11khqrWMHwXNeqDkbhpESzU
-   A==;
-X-CSE-ConnectionGUID: ipTeV35mS86imoBcnok+EA==
-X-CSE-MsgGUID: og4z4ekhSwyNmtpXAt0EBA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11564"; a="72324278"
-X-IronPort-AV: E=Sophos;i="6.18,295,1751266800"; 
-   d="scan'208";a="72324278"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
-  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Sep 2025 06:26:46 -0700
-X-CSE-ConnectionGUID: KyBoOnMDT3WLFyHiLckXHQ==
-X-CSE-MsgGUID: gaUzxMHbRR2LRreEpd9+TQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.18,295,1751266800"; 
-   d="scan'208";a="181619627"
-Received: from lkp-server02.sh.intel.com (HELO 84c55410ccf6) ([10.239.97.151])
-  by orviesa003.jf.intel.com with ESMTP; 26 Sep 2025 06:26:41 -0700
-Received: from kbuild by 84c55410ccf6 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1v28T9-0006GP-0Q;
-	Fri, 26 Sep 2025 13:26:39 +0000
-Date: Fri, 26 Sep 2025 21:26:01 +0800
-From: kernel test robot <lkp@intel.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	ulf.hansson@linaro.org
-Subject: Re: [PATCH v2 3/5] pmdomain: mediatek: Add support for secure HWCCF
- infra power on
-Message-ID: <202509262155.Ux4J6K4D-lkp@intel.com>
-References: <20250925143122.39796-4-angelogioacchino.delregno@collabora.com>
+	id 1v28s2-00000001iVO-0LUA;
+	Fri, 26 Sep 2025 13:52:23 +0000
+Received: from phl-compute-01.internal (phl-compute-01.internal [10.202.2.41])
+	by mailflow.stl.internal (Postfix) with ESMTP id 921741300055;
+	Fri, 26 Sep 2025 09:52:19 -0400 (EDT)
+Received: from phl-imap-09 ([10.202.2.99])
+  by phl-compute-01.internal (MEProxy); Fri, 26 Sep 2025 09:52:20 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	sebastianwick.net; h=cc:cc:content-transfer-encoding
+	:content-type:content-type:date:date:from:from:in-reply-to
+	:in-reply-to:message-id:mime-version:references:reply-to:subject
+	:subject:to:to; s=fm2; t=1758894739; x=1758901939; bh=e/Miwyy5nX
+	5tiT7Mz4fzifIfuWqRaBy8itcynQspnpE=; b=gZvzVX+vMtwY/Eh184vtzfOksT
+	U0e7pUqZqA8iBvWDxl9s+GF+yVTOAPb43e7lq4gcr5Qs68M8QCAQYuOYHA53fysm
+	jg3FOkFj033tYbiZ3mvm7c/spjJ7uAMGvjT++1hURVdsphlRTVMoWg3sp8XdsKWo
+	lk91rjdD7+dZB2fh+hSyl/o4/dpVsrfFqH/ICVqwW8PMrGe96XjJtcozKjaP9OnE
+	/T/cb07sTZ1nJabL0PqOkpa6ttGPKYUgLbxfCavCAI2x8WnN+Vj2OZTC6zY7O49E
+	pzb1OWVAkkBQUjjYMluXL9Z8i/D5D5gQ8l92p9GA56VpL8I3NEO7DT6edURA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:content-type:date:date:feedback-id:feedback-id
+	:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:subject:to:to:x-me-proxy
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1758894739; x=
+	1758901939; bh=e/Miwyy5nX5tiT7Mz4fzifIfuWqRaBy8itcynQspnpE=; b=K
+	LQJJxIryFfwXUbUMVLG7mHaCl7f+PyLuuZbLMxvJkVsLQCI03s9qvdIkY90sB9bC
+	4rJx8ZnSYRqF1W+/wNPKjUIra7beOBviriSV//wEiDv1mzHadNpHUzvC0y3WxVUL
+	RYCKnkxjbOokLceQXLBCvjINZcVmQdFv2eWKAzcG1av8n6py0OfxTtd7L0ZTqmK9
+	JPD+wyj6uiLfnir3idi71yDyIqYcR42387KKoBrFN6Pw7ymsULosAJwZFvtGfR9u
+	4bRmdh5yH07HOsosels1Lr8PC0ez6tEkVD0f4KUScw9jpt0/01UuMNxQtfW12zCH
+	x7/FbVu6cCKXwTFzhrupw==
+X-ME-Sender: <xms:kZrWaBC-Z_teyeytGOi2qhBgUNr9tw5PJxq7XDWHdbD35RunVIe1rQ>
+    <xme:kZrWaKUgPTIPUxLaccLLHUAOj2ReAF8Vex6huoPtAw77k8Xe0TUZnKXMCrvFPdOu8
+    F0WNUGUUgsAlKclRY5wRvdsaqxmwcpZU4jm6voMDrJCw-UqdAmWuN0>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdeggdeileehgecutefuodetggdotefrod
+    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpuffrtefokffrpgfnqfghnecuuegr
+    ihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjug
+    hrpefoggffhffvvefkjghfufgtgfesthhqredtredtjeenucfhrhhomhepfdfuvggsrghs
+    thhirghnucghihgtkhdfuceoshgvsggrshhtihgrnhesshgvsggrshhtihgrnhifihgtkh
+    drnhgvtheqnecuggftrfgrthhtvghrnhepveetfeetleevfeevtdelhffhuefgheekkeel
+    hfehfeegvdfhfefhlefhieefledtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrg
+    hmpehmrghilhhfrhhomhepshgvsggrshhtihgrnhesshgvsggrshhtihgrnhifihgtkhdr
+    nhgvthdpnhgspghrtghpthhtohepgeegpdhmohguvgepshhmthhpohhuthdprhgtphhtth
+    hopegrlhgvgidrhhhunhhgsegrmhgurdgtohhmpdhrtghpthhtohephhgrrhhrhidrfigv
+    nhhtlhgrnhgusegrmhgurdgtohhmpdhrtghpthhtoheplhgvohdrlhhiuhesrghmugdrtg
+    homhdprhgtphhtthhopehshhgrshhhrghnkhdrshhhrghrmhgrsegrmhgurdgtohhmpdhr
+    tghpthhtoheplhhivhhiuhdrughuuggruhesrghrmhdrtghomhdprhgtphhtthhopehloh
+    huihhsrdgthhgruhhvvghtsegsohhothhlihhnrdgtohhmpdhrtghpthhtoheprghnghgv
+    lhhoghhiohgrtggthhhinhhordguvghlrhgvghhnohestgholhhlrggsohhrrgdrtghomh
+    dprhgtphhtthhopegurghnihgvlhhssegtohhllhgrsghorhgrrdgtohhmpdhrtghpthht
+    ohepkhgvrhhnvghlsegtohhllhgrsghorhgrrdgtohhm
+X-ME-Proxy: <xmx:kprWaMdLdGN2spLhtNCNS67Klt1G4DqUzXgUG5qHuc-bEV83ycKSlQ>
+    <xmx:kprWaM0BvbL8ZDrn2YSg496OCpHA33bgktoge4OW1Bp3_Ic0O-21yw>
+    <xmx:kprWaNKBzp0_vxj_swcEwac56RCEoo-XznFcZCRExAuwSYq6vvkj0A>
+    <xmx:kprWaIJTsQOYCLALftDKAFNX28i3MG_FLV2281tt7ltk7KKeZhvr6A>
+    <xmx:k5rWaKDq6aODF1168FNykMnX-9PLei9JflP268c1DX6UH65jH9pbJXS0>
+Feedback-ID: i460949e8:Fastmail
+Received: by mailuser.phl.internal (Postfix, from userid 501)
+	id D68CF3020073; Fri, 26 Sep 2025 09:52:17 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250925143122.39796-4-angelogioacchino.delregno@collabora.com>
+X-ThreadId: AC10qL-M5Mko
+Date: Fri, 26 Sep 2025 15:51:57 +0200
+From: "Sebastian Wick" <sebastian@sebastianwick.net>
+To: "Daniel Stone" <daniel@fooishbar.org>,
+ =?UTF-8?Q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Cc: "Xaver Hugl" <xaver.hugl@gmail.com>,
+ "Maarten Lankhorst" <maarten.lankhorst@linux.intel.com>,
+ "Maxime Ripard" <mripard@kernel.org>,
+ "Thomas Zimmermann" <tzimmermann@suse.de>,
+ "David Airlie" <airlied@gmail.com>, "Simona Vetter" <simona@ffwll.ch>,
+ "Chun-Kuang Hu" <chunkuang.hu@kernel.org>,
+ "Philipp Zabel" <p.zabel@pengutronix.de>,
+ "Matthias Brugger" <matthias.bgg@gmail.com>,
+ "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
+ "Alex Hung" <alex.hung@amd.com>, wayland-devel@lists.freedesktop.org,
+ harry.wentland@amd.com, leo.liu@amd.com, ville.syrjala@linux.intel.com,
+ pekka.paalanen@collabora.com, mwen@igalia.com, jadahl@redhat.com,
+ sebastian.wick@redhat.com, shashank.sharma@amd.com, agoins@nvidia.com,
+ joshua@froggi.es, mdaenzer@redhat.com, aleixpol@kde.org,
+ victoria@system76.com, uma.shankar@intel.com, quic_naseer@quicinc.com,
+ quic_cbraga@quicinc.com, quic_abhinavk@quicinc.com, marcan@marcan.st,
+ Liviu.Dudau@arm.com, sashamcintosh@google.com,
+ chaitanya.kumar.borah@intel.com, louis.chauvet@bootlin.com,
+ mcanal@igalia.com, kernel@collabora.com, daniels@collabora.com,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ "Simona Vetter" <simona.vetter@ffwll.ch>
+Message-Id: <7a25beb8-6b81-4652-b509-b6410ae1dec1@app.fastmail.com>
+In-Reply-To: <CAPj87rMhsFy+uzKmNecrQG4e+BEoeX1FyEobO7bnHdQqhy1_2Q@mail.gmail.com>
+References: <20250822-mtk-post-blend-color-pipeline-v1-0-a9446d4aca82@collabora.com>
+ <20250822-mtk-post-blend-color-pipeline-v1-1-a9446d4aca82@collabora.com>
+ <CAPj87rPAoD2D99zTdsvJ=9K8+G17mTS2jDYHMPYmXNtUyp2L_Q@mail.gmail.com>
+ <CAFZQkGwotQ6cxVCSgp-BhUi5DaZ7MyVvbnrDJW11Z7ztzqy58g@mail.gmail.com>
+ <CAPj87rMTOD3_tC70QX4xz3G4zdG=tmwt5VgPhq6jNyf8bbW49Q@mail.gmail.com>
+ <269ca85a59f613568543f45867fba7e604cc9f11.camel@collabora.com>
+ <CAPj87rMhsFy+uzKmNecrQG4e+BEoeX1FyEobO7bnHdQqhy1_2Q@mail.gmail.com>
+Subject: Re: [PATCH RFC 1/5] drm: Support post-blend color pipeline API
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250926_062647_446443_35E6FD7B 
-X-CRM114-Status: GOOD (  13.99  )
+X-CRM114-CacheID: sfid-20250926_065222_175378_99F29B14 
+X-CRM114-Status: GOOD (  37.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,161 +138,110 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, mbrugger@suse.com, y.oudjana@protonmail.com, nfraprado@collabora.com, linux-pm@vger.kernel.org, llvm@lists.linux.dev, linux-kernel@vger.kernel.org, wenst@chromium.org, devicetree@vger.kernel.org, mandyjh.liu@mediatek.com, oe-kbuild-all@lists.linux.dev, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, krzk+dt@kernel.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi AngeloGioacchino,
+(Sorry for re-sending; used a web mail client which send html)
 
-kernel test robot noticed the following build errors:
+On Mon, Sep 15, 2025, at 2:31 PM, Daniel Stone wrote:
+> Hi N=C3=ADcolas,
+>=20
+> On Wed, 3 Sept 2025 at 19:43, N=C3=ADcolas F. R. A. Prado
+> <nfraprado@collabora.com> wrote:
+> > On Tue, 2025-08-26 at 13:25 +0100, Daniel Stone wrote:
+> > Based on this discussion, this is my understanding for the changes
+> > desired on the series and their reasonings:
+> >
+> > 1. Add a driver cap, DRM_CAP_POST_BLEND_COLOR_PIPELINE, which drivers
+> > will use to signal they support post-blend color pipelines.
+> >   - Reason: Allow userspace to figure out that the driver doesn't
+> > support post-blend color pipelines and choose to not set the client
+> > cap, DRM_CLIENT_CAP_POST_BLEND_COLOR_PIPELINE, so it can use legacy
+> > color management instead.
+> > 2. Make it so setting the client cap,
+> > DRM_CLIENT_CAP_POST_BLEND_COLOR_PIPELINE, fails if the driver cap,
+> > DRM_CAP_POST_BLEND_COLOR_PIPELINE, isn't set
+> >   - Reason: Prevent userspace from making color management unusable =
+if
+> > the driver doesn't support post-blend color pipelines, as the legacy
+> > color-management properties (GAMMA_LUT, DEGAMMA_LUT, CTM) would be
+> > unwriteable with the client cap set.
+>=20
+> Definitely.
+>=20
+> > 3. Make legacy color-management properties (GAMMA_LUT, DEGAMMA_LUT,
+> > CTM) read-only if the client cap,
+> > DRM_CLIENT_CAP_POST_BLEND_COLOR_PIPELINE, is set
+> >   - Reason: Allow drm_info to print legacy color management
+> > configuration while still enabling post-blend color pipelines through
+> > the client cap. Also to allow smooth handover from pre-colorop
+> > userspace client to colorop-ready userspace client, as the latter can
+> > now replicate the legacy color configuration through the colorops.
+>=20
+> I think yes, but I don't really feel strongly about this. If others
+> involved have stronger opinions, I'm happy to yield.
 
-[auto build test ERROR on next-20250924]
-[cannot apply to robh/for-next linus/master v6.17-rc7 v6.17-rc6 v6.17-rc5 v6.17-rc7]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+So I'm going to argue that making the properties read-only or read-write=
+ is useless.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/AngeloGioacchino-Del-Regno/dt-bindings-power-Add-support-for-MT8196-power-controllers/20250925-223530
-base:   next-20250924
-patch link:    https://lore.kernel.org/r/20250925143122.39796-4-angelogioacchino.delregno%40collabora.com
-patch subject: [PATCH v2 3/5] pmdomain: mediatek: Add support for secure HWCCF infra power on
-config: i386-buildonly-randconfig-001-20250926 (https://download.01.org/0day-ci/archive/20250926/202509262155.Ux4J6K4D-lkp@intel.com/config)
-compiler: clang version 20.1.8 (https://github.com/llvm/llvm-project 87f0227cb60147a26a1eeb4fb06e3b505e9c7261)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250926/202509262155.Ux4J6K4D-lkp@intel.com/reproduce)
+The only case where knowing the color pipeline of the previous user woul=
+d be useful is if you want to re-use the framebuffer of said user. Other=
+wise, the color pipeline and the generated framebuffer have to somehow j=
+ust match to produce the desired output and that does not require any pr=
+evious state, making the legacy properties useless.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202509262155.Ux4J6K4D-lkp@intel.com/
+If we genuinely believe that this is something to be supported, then my =
+question is why the new color pipeline should not be able to accurate re=
+flect the state of the previous user, even if they used the legacy props?
 
-All errors (new ones prefixed by >>):
+The hardware was able to get into some state based on the legacy props, =
+so it will be able to get into the same state with the color pipeline pr=
+ops; it's "just" a matter of exposing the right pipeline.
 
->> drivers/pmdomain/mediatek/mtk-pm-domains.c:124:23: error: variable has incomplete type 'struct arm_smccc_res'
-     124 |         struct arm_smccc_res res;
-         |                              ^
-   drivers/pmdomain/mediatek/mtk-pm-domains.c:124:9: note: forward declaration of 'struct arm_smccc_res'
-     124 |         struct arm_smccc_res res;
-         |                ^
->> drivers/pmdomain/mediatek/mtk-pm-domains.c:127:2: error: call to undeclared function 'arm_smccc_smc'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-     127 |         arm_smccc_smc(MTK_SIP_KERNEL_HWCCF_CONTROL, cmd, 0, 0, 0, 0, 0, 0, &res);
-         |         ^
->> drivers/pmdomain/mediatek/mtk-pm-domains.c:127:16: error: call to undeclared function 'ARM_SMCCC_CALL_VAL'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-     127 |         arm_smccc_smc(MTK_SIP_KERNEL_HWCCF_CONTROL, cmd, 0, 0, 0, 0, 0, 0, &res);
-         |                       ^
-   drivers/pmdomain/mediatek/mtk-pm-domains.c:55:38: note: expanded from macro 'MTK_SIP_KERNEL_HWCCF_CONTROL'
-      55 | #define MTK_SIP_KERNEL_HWCCF_CONTROL    MTK_SIP_SMC_CMD(0x540)
-         |                                         ^
-   include/linux/soc/mediatek/mtk_sip_svc.h:22:2: note: expanded from macro 'MTK_SIP_SMC_CMD'
-      22 |         ARM_SMCCC_CALL_VAL(ARM_SMCCC_FAST_CALL, MTK_SIP_SMC_CONVENTION, \
-         |         ^
->> drivers/pmdomain/mediatek/mtk-pm-domains.c:127:16: error: use of undeclared identifier 'ARM_SMCCC_FAST_CALL'
-   drivers/pmdomain/mediatek/mtk-pm-domains.c:55:38: note: expanded from macro 'MTK_SIP_KERNEL_HWCCF_CONTROL'
-      55 | #define MTK_SIP_KERNEL_HWCCF_CONTROL    MTK_SIP_SMC_CMD(0x540)
-         |                                         ^
-   include/linux/soc/mediatek/mtk_sip_svc.h:22:21: note: expanded from macro 'MTK_SIP_SMC_CMD'
-      22 |         ARM_SMCCC_CALL_VAL(ARM_SMCCC_FAST_CALL, MTK_SIP_SMC_CONVENTION, \
-         |                            ^
->> drivers/pmdomain/mediatek/mtk-pm-domains.c:127:16: error: use of undeclared identifier 'ARM_SMCCC_SMC_32'
-   drivers/pmdomain/mediatek/mtk-pm-domains.c:55:38: note: expanded from macro 'MTK_SIP_KERNEL_HWCCF_CONTROL'
-      55 | #define MTK_SIP_KERNEL_HWCCF_CONTROL    MTK_SIP_SMC_CMD(0x540)
-         |                                         ^
-   include/linux/soc/mediatek/mtk_sip_svc.h:22:42: note: expanded from macro 'MTK_SIP_SMC_CMD'
-      22 |         ARM_SMCCC_CALL_VAL(ARM_SMCCC_FAST_CALL, MTK_SIP_SMC_CONVENTION, \
-         |                                                 ^
-   include/linux/soc/mediatek/mtk_sip_svc.h:18:41: note: expanded from macro 'MTK_SIP_SMC_CONVENTION'
-      18 | #define MTK_SIP_SMC_CONVENTION          ARM_SMCCC_SMC_32
-         |                                         ^
->> drivers/pmdomain/mediatek/mtk-pm-domains.c:127:16: error: use of undeclared identifier 'ARM_SMCCC_OWNER_SIP'
-   drivers/pmdomain/mediatek/mtk-pm-domains.c:55:38: note: expanded from macro 'MTK_SIP_KERNEL_HWCCF_CONTROL'
-      55 | #define MTK_SIP_KERNEL_HWCCF_CONTROL    MTK_SIP_SMC_CMD(0x540)
-         |                                         ^
-   include/linux/soc/mediatek/mtk_sip_svc.h:23:7: note: expanded from macro 'MTK_SIP_SMC_CMD'
-      23 |                            ARM_SMCCC_OWNER_SIP, fn_id)
-         |                            ^
-   6 errors generated.
+If we are not able to accurate reflect the previous state with the pipel=
+ine props, then use space will see inconsistent state between the legacy=
+ and color pipeline props. Which state is the right one? We cannot know.=
+ The previous user could have used either one. So having the legacy prop=
+s does not help because we don't know if we should use them or the pipel=
+ine state.
 
+So, I would argue that we should *remove* the legacy props if DRM_CLIENT=
+_CAP_POST_BLEND_COLOR_PIPELINE is set. If the handover is relevant for a=
+ driver, they should ensure the legacy props state translates to the cor=
+rect color pipeline state.=20
 
-vim +124 drivers/pmdomain/mediatek/mtk-pm-domains.c
-
-    54	
-  > 55	#define MTK_SIP_KERNEL_HWCCF_CONTROL	MTK_SIP_SMC_CMD(0x540)
-    56	
-    57	struct scpsys_domain {
-    58		struct generic_pm_domain genpd;
-    59		const struct scpsys_domain_data *data;
-    60		const struct scpsys_hwv_domain_data *hwv_data;
-    61		struct scpsys *scpsys;
-    62		int num_clks;
-    63		struct clk_bulk_data *clks;
-    64		int num_subsys_clks;
-    65		struct clk_bulk_data *subsys_clks;
-    66		struct regulator *supply;
-    67	};
-    68	
-    69	struct scpsys {
-    70		struct device *dev;
-    71		struct regmap *base;
-    72		const struct scpsys_soc_data *soc_data;
-    73		u8 bus_prot_index[BUS_PROT_BLOCK_COUNT];
-    74		struct regmap **bus_prot;
-    75		struct genpd_onecell_data pd_data;
-    76		struct generic_pm_domain *domains[];
-    77	};
-    78	
-    79	#define to_scpsys_domain(gpd) container_of(gpd, struct scpsys_domain, genpd)
-    80	
-    81	static bool scpsys_domain_is_on(struct scpsys_domain *pd)
-    82	{
-    83		struct scpsys *scpsys = pd->scpsys;
-    84		u32 status, status2;
-    85	
-    86		regmap_read(scpsys->base, pd->data->pwr_sta_offs, &status);
-    87		status &= pd->data->sta_mask;
-    88	
-    89		regmap_read(scpsys->base, pd->data->pwr_sta2nd_offs, &status2);
-    90		status2 &= pd->data->sta_mask;
-    91	
-    92		/* A domain is on when both status bits are set. */
-    93		return status && status2;
-    94	}
-    95	
-    96	static bool scpsys_hwv_domain_is_disable_done(struct scpsys_domain *pd)
-    97	{
-    98		const struct scpsys_hwv_domain_data *hwv = pd->hwv_data;
-    99		u32 regs[2] = { hwv->done, hwv->clr_sta };
-   100		u32 val[2];
-   101		u32 mask = BIT(hwv->setclr_bit);
-   102	
-   103		regmap_multi_reg_read(pd->scpsys->base, regs, val, 2);
-   104	
-   105		/* Disable is done when the bit is set in DONE, cleared in CLR_STA */
-   106		return (val[0] & mask) && !(val[1] & mask);
-   107	}
-   108	
-   109	static bool scpsys_hwv_domain_is_enable_done(struct scpsys_domain *pd)
-   110	{
-   111		const struct scpsys_hwv_domain_data *hwv = pd->hwv_data;
-   112		u32 regs[3] = { hwv->done, hwv->en, hwv->set_sta };
-   113		u32 val[3];
-   114		u32 mask = BIT(hwv->setclr_bit);
-   115	
-   116		regmap_multi_reg_read(pd->scpsys->base, regs, val, 3);
-   117	
-   118		/* Enable is done when the bit is set in DONE and EN, cleared in SET_STA */
-   119		return (val[0] & mask) && (val[1] & mask) && !(val[2] & mask);
-   120	}
-   121	
-   122	static int scpsys_sec_infra_power_on(bool on)
-   123	{
- > 124		struct arm_smccc_res res;
-   125		unsigned long cmd = on ? 1 : 0;
-   126	
- > 127		arm_smccc_smc(MTK_SIP_KERNEL_HWCCF_CONTROL, cmd, 0, 0, 0, 0, 0, 0, &res);
-   128		return res.a0;
-   129	}
-   130	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+> > Side note: Smooth handover back to pre-colorop userspace after tweak=
+ing
+> > the colorops to something else would not be possible without making =
+the
+> > legacy properties writable too, so that the client could update them=
+ to
+> > match the colorops setting before switching back. I don't imagine th=
+is
+> > would be a common use case, and colorops are a superset of the legacy
+> > properties so there are cases where it wouldn't even be possible to
+> > replicate the colorop setting on the legacy properties, but thought =
+I'd
+> > mention this limitation for completeness' sake.
+>=20
+> That's a totally acceptable tradeoff. We don't have a standard
+> inter-client capability handshake, so if downgrading from a
+> newer/more-capable to an older/less-capable client is a bit janky,
+> that's OK. There's only so much we can do given the original design
+> decision for the KMS core to not be opinionated about a 'golden state'
+> that could be used as a reference for userspace to work from as a
+> base.
+>=20
+> > Also, as Xaver noted, this feedback also applies to pre-blend pipeli=
+nes
+> > and its legacy color-management properties (COLOR_ENCODING,
+> > COLOR_RANGE), so the same changes would be desirable there for the s=
+ame
+> > reasons. So we should share this feedback on that series as well.
+>=20
+> Yep.
+>=20
+> Cheers,
+> Daniel
+>=20
 
