@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1985ACAC5AE
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2449CAC5BC
 	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Sep 2025 10:06:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,34 +12,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+PYii/wjRN6f5w2gYFSSZ4aGmKPxv60CLe4GWP0amtY=; b=Hwpdgk5YB7pFhWbva9K6Zw3f0H
-	uxsgfEOLW5hn7ykLjEHGjIAH7sHZXGqDb5WxkUAox4QJ5+lhA/FOeiyVXYhixprVQ0dCEFwrxkL6S
-	cIh6YJX0Qt+tYQBg5l0FNY4OwiwmnDnzHviLrnMXBWpoN3hP/qCuiJUI3Ts7A2VF1Ik5mYrHoe3l/
-	ismtOqLdcCGFYqeuOGcoix7RIRHuE9jTQtIIrQBGT3Oj925kf5oj6QluZXJHeWTmBzuSVimcI/Dte
-	PeCS893AmcUEYnMYKg5LOy+Ei+wvuicOOjICl5TD8GuGTCR6ViIxOjso/Zh+MGRE4N0kC/UThAHuW
-	5oaPTb9Q==;
+	bh=7zyeSrCviALKLwpxVGFG8rZWElA3nuGww42zxu/BiFw=; b=WFtmneOjFmyBdelDCu5N44LERH
+	ZS5JppztkuyRW/yG+HgoS7tEQQu9JLo+WngtuHi1d/cInZvYZgDrCbpD/UZxwwFtLb2ly5xSk0pl8
+	dk825PXC4sanTNYFsfdtn2/e6U2oM3LYo01bqnyr0L49Hoozl4MQCERJm1j1oswP5V21ff3weTyc8
+	Tz6cdOXxBeOpTYg77fqRfEY4WD86UAKOtZR2G1yoLJ+1tr1+/srlycQtnXAJtU11c7nh8in8xCnG/
+	okTVcxs0ma6f5g/gz/P4d4dyyJZ9/44Th0rasTlLoL0eiSkIYwKG5arhtr/eaNdZhKIgdVjyqnE7x
+	QckV3Wig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v25L0-00000000EsA-1CHE;
+	id 1v25L0-00000000EtP-3Ukn;
 	Fri, 26 Sep 2025 10:06:02 +0000
 Received: from mail.simonwunderlich.de ([2a01:4f8:c17:e8c0::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v25Ks-00000000Ej2-0Lb6;
-	Fri, 26 Sep 2025 10:05:55 +0000
-Received: from sven-desktop.home.narfation.org (p200300c597166BE00000000000000C00.dip0.t-ipconnect.de [IPv6:2003:c5:9716:6be0::c00])
+	id 1v25Kt-00000000Ejv-3II5;
+	Fri, 26 Sep 2025 10:05:57 +0000
+Received: from sven-desktop.home.narfation.org (p200300C597166BE00000000000000c00.dip0.t-ipconnect.de [IPv6:2003:c5:9716:6be0::c00])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mail.simonwunderlich.de (Postfix) with ESMTPSA id 9B90EFA130;
-	Fri, 26 Sep 2025 12:05:51 +0200 (CEST)
+	by mail.simonwunderlich.de (Postfix) with ESMTPSA id 45E62FA182;
+	Fri, 26 Sep 2025 12:05:53 +0200 (CEST)
 From: "Sven Eckelmann (Plasma Cloud)" <se@simonwunderlich.de>
-Date: Fri, 26 Sep 2025 12:04:52 +0200
-Subject: [PATCH mt76 v2 1/3] dt-bindings: net: wireless: mt76: Document
- power-limits country property
+Date: Fri, 26 Sep 2025 12:04:53 +0200
+Subject: [PATCH mt76 v2 2/3] dt-bindings: net: wireless: mt76: introduce
+ backoff limit properties
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250926-backoff-table-support-v2-1-16d3726646c4@simonwunderlich.de>
+Message-Id: <20250926-backoff-table-support-v2-2-16d3726646c4@simonwunderlich.de>
 References: <20250926-backoff-table-support-v2-0-16d3726646c4@simonwunderlich.de>
 In-Reply-To: <20250926-backoff-table-support-v2-0-16d3726646c4@simonwunderlich.de>
 To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, 
@@ -57,17 +57,18 @@ Cc: linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com, devicetree@vger.kernel.org, 
  "Sven Eckelmann (Plasma Cloud)" <se@simonwunderlich.de>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1751; i=se@simonwunderlich.de;
- h=from:subject:message-id; bh=pa03GJbD9ITiVTNCYJUKaELBwKC4tTy/GDvazBnS/g0=;
- b=owGbwMvMwCXmy1+ufVnk62nG02pJDBnXUst5eepFFq/ad+KQhsRpjx9CvNFtV8XDe1dVNl2x3
- HCAQ2pxRykLgxgXg6yYIsueK/nnN7O/lf887eNRmDmsTCBDGLg4BWAiC1MY/oq19QrVPlg0K/vc
- n1MTTfSd8qLjC6XOzGSdV/HuSZSi3EWGf8ZpGx4rrGS+sM41Ly3o+FTPi2FZrOLPnkdMeuC6/ZS
- FJQsA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3962; i=se@simonwunderlich.de;
+ h=from:subject:message-id; bh=uBaOvLBEYw6cM2ZE3ZNKPKFL8pnovauxKrJogvIVOw0=;
+ b=owGbwMvMwCXmy1+ufVnk62nG02pJDBnXUivUEs2uzDGR6H+Uue2e2eWwvV1ps35aeW+K41ulf
+ WuJJ4dnRykLgxgXg6yYIsueK/nnN7O/lf887eNRmDmsTCBDGLg4BWAi0W8Y/gpUezLuO37AtPfK
+ i+gAoSauq+vnfFkXfa40XN4tP2jz7uOMDMsrQtMfXt8S/Df33yEb1sB/ku/Lz2wX4F0r80B4fve
+ qb3wA
 X-Developer-Key: i=se@simonwunderlich.de; a=openpgp;
  fpr=522D7163831C73A635D12FE5EC371482956781AF
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250926_030554_301464_DE10A253 
-X-CRM114-Status: GOOD (  11.95  )
+X-CRM114-CacheID: sfid-20250926_030556_005995_B7F53F89 
+X-CRM114-Status: UNSURE (   8.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,46 +83,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The commit 22b980badc0f ("mt76: add functions for parsing rate power limits
-from DT") added filtering of the power limits based on two properties:
-
-* regdomain
-* country
-
-If either the country or the regdomain matches, the power limits are
-applied and the search is aborted. If none of the two is defined for the
-power limit, it is a global (or "fallback") power limit. The last
-"fallback" power limit in the list will be returned when not matching
-regdomain or country was found.
-
-The idea is here to allow to specify "overwriting" country limits in front
-of the list - just in case a regdomain is shared but a country has
-additional limitations.
-
-But this property was forgotten to be defined in commit 2de6ccebe0e7
-("dt-bindings:net:wireless:mediatek,mt76: introduce power-limits node").
+Introduce path backoff limit properties in mt76 binding in order to specify
+beamforming and non-beamforming backoff limits for 802.11n/ac/ax.
 
 Signed-off-by: Sven Eckelmann (Plasma Cloud) <se@simonwunderlich.de>
 ---
- Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml | 5 +++++
- 1 file changed, 5 insertions(+)
+ .../bindings/net/wireless/mediatek,mt76.yaml       | 60 ++++++++++++++++++++++
+ 1 file changed, 60 insertions(+)
 
 diff --git a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-index eabceb849537c418650697da86682ef04c979193..f8f72f3f1b1dd185b4797be38b87c621ef3eac08 100644
+index f8f72f3f1b1dd185b4797be38b87c621ef3eac08..0b06455ce955c38b324efebf8c7762bee33b57f6 100644
 --- a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
 +++ b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-@@ -151,6 +151,11 @@ properties:
-               - ETSI
-               - JP
+@@ -215,6 +215,66 @@ properties:
+                       minItems: 13
+                       maxItems: 13
  
-+          country:
-+            $ref: /schemas/types.yaml#/definitions/string
-+            description:
-+              ISO 3166-1 alpha-2 country code for power limits
++                  paths-cck:
++                    $ref: /schemas/types.yaml#/definitions/uint8-array
++                    minItems: 4
++                    maxItems: 4
++                    description:
++                      4 half-dBm backoff values (1 - 4 antennas, single spacial
++                      stream)
 +
-         patternProperties:
-           "^txpower-[256]g$":
-             type: object
++                  paths-ofdm:
++                    $ref: /schemas/types.yaml#/definitions/uint8-array
++                    minItems: 4
++                    maxItems: 4
++                    description:
++                      4 half-dBm backoff values (1 - 4 antennas, single spacial
++                      stream)
++
++                  paths-ofdm-bf:
++                    $ref: /schemas/types.yaml#/definitions/uint8-array
++                    minItems: 4
++                    maxItems: 4
++                    description:
++                      4 half-dBm backoff values for beamforming
++                      (1 - 4 antennas, single spacial stream)
++
++                  paths-ru:
++                    $ref: /schemas/types.yaml#/definitions/uint8-matrix
++                    description:
++                      Sets of half-dBm backoff values for 802.11ax rates for
++                      1T1ss (aka 1 transmitting antenna with 1 spacial stream),
++                      2T1ss, 3T1ss, 4T1ss, 2T2ss, 3T2ss, 4T2ss, 3T3ss, 4T3ss
++                      and 4T4ss.
++                      Each set starts with the number of channel bandwidth or
++                      resource unit settings for which the rate set applies,
++                      followed by 10 power limit values. The order of the
++                      channel resource unit settings is RU26, RU52, RU106,
++                      RU242/SU20, RU484/SU40, RU996/SU80 and RU2x996/SU160.
++                    minItems: 1
++                    maxItems: 7
++                    items:
++                      minItems: 11
++                      maxItems: 11
++
++                  paths-ru-bf:
++                    $ref: /schemas/types.yaml#/definitions/uint8-matrix
++                    description:
++                      Sets of half-dBm backoff (beamforming) values for 802.11ax
++                      rates for 1T1ss (aka 1 transmitting antenna with 1 spacial
++                      stream), 2T1ss, 3T1ss, 4T1ss, 2T2ss, 3T2ss, 4T2ss, 3T3ss,
++                      4T3ss and 4T4ss.
++                      Each set starts with the number of channel bandwidth or
++                      resource unit settings for which the rate set applies,
++                      followed by 10 power limit values. The order of the
++                      channel resource unit settings is RU26, RU52, RU106,
++                      RU242/SU20, RU484/SU40, RU996/SU80 and RU2x996/SU160.
++                    minItems: 1
++                    maxItems: 7
++                    items:
++                      minItems: 11
++                      maxItems: 11
++
+                   txs-delta:
+                     $ref: /schemas/types.yaml#/definitions/uint32-array
+                     description:
 
 -- 
 2.47.3
