@@ -4,48 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64B7BCAC5AE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Sep 2025 10:05:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1985ACAC5AE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Sep 2025 10:06:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=fvLsk9QKyQp/yVdLhE3qJAQkBSlK5XgZUJpLjMgY4Vk=; b=rTTz9IEBS7bUt+
-	ruxsOiF/rV7V+YL1MKiYYIHApIqfnWBdfoIoLFlOHAFLqV5UhFV9t3TRYc/dXHPrzJQRoMa9F5F8D
-	T+z8hMotWF1/0q2r8iGhzIfSragJJ+Z6EPlzAiyuE5HE4/rl0AtbtbcQ6ZQsyllTU2CxsVhLsxHBu
-	oNukjlk/BnrUYRDKjiO622YunaZo8yGyF/tQBMLZ6Q+vPlXjtlx/KhOJq9z+jpxHJy0+kZ1P6GAsH
-	yviK20uUn9hnHbJLq2n/61egAXLagoehMRWQWJxhC9UqMUEwbf+iqX/rqsNDS0Piv6nbsdpDqKTgA
-	gT20hSrkXwBSznqm3SIA==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+PYii/wjRN6f5w2gYFSSZ4aGmKPxv60CLe4GWP0amtY=; b=Hwpdgk5YB7pFhWbva9K6Zw3f0H
+	uxsgfEOLW5hn7ykLjEHGjIAH7sHZXGqDb5WxkUAox4QJ5+lhA/FOeiyVXYhixprVQ0dCEFwrxkL6S
+	cIh6YJX0Qt+tYQBg5l0FNY4OwiwmnDnzHviLrnMXBWpoN3hP/qCuiJUI3Ts7A2VF1Ik5mYrHoe3l/
+	ismtOqLdcCGFYqeuOGcoix7RIRHuE9jTQtIIrQBGT3Oj925kf5oj6QluZXJHeWTmBzuSVimcI/Dte
+	PeCS893AmcUEYnMYKg5LOy+Ei+wvuicOOjICl5TD8GuGTCR6ViIxOjso/Zh+MGRE4N0kC/UThAHuW
+	5oaPTb9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v25Kt-00000000Elg-2xIP;
-	Fri, 26 Sep 2025 10:05:55 +0000
+	id 1v25L0-00000000EsA-1CHE;
+	Fri, 26 Sep 2025 10:06:02 +0000
 Received: from mail.simonwunderlich.de ([2a01:4f8:c17:e8c0::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v25Kq-00000000EhM-3D8N;
-	Fri, 26 Sep 2025 10:05:54 +0000
-Received: from sven-desktop.home.narfation.org (p200300c597166be00000000000000c00.dip0.t-ipconnect.de [IPv6:2003:c5:9716:6be0::c00])
+	id 1v25Ks-00000000Ej2-0Lb6;
+	Fri, 26 Sep 2025 10:05:55 +0000
+Received: from sven-desktop.home.narfation.org (p200300c597166BE00000000000000C00.dip0.t-ipconnect.de [IPv6:2003:c5:9716:6be0::c00])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mail.simonwunderlich.de (Postfix) with ESMTPSA id 5AB0AFA12C;
-	Fri, 26 Sep 2025 12:05:49 +0200 (CEST)
+	by mail.simonwunderlich.de (Postfix) with ESMTPSA id 9B90EFA130;
+	Fri, 26 Sep 2025 12:05:51 +0200 (CEST)
 From: "Sven Eckelmann (Plasma Cloud)" <se@simonwunderlich.de>
-Subject: [PATCH mt76 v2 0/3] wifi: mt76: mt7915: Beamforming backoff limit
- table
-Date: Fri, 26 Sep 2025 12:04:51 +0200
-Message-Id: <20250926-backoff-table-support-v2-0-16d3726646c4@simonwunderlich.de>
+Date: Fri, 26 Sep 2025 12:04:52 +0200
+Subject: [PATCH mt76 v2 1/3] dt-bindings: net: wireless: mt76: Document
+ power-limits country property
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAENl1mgC/3WPwXKEIBBEf8XiHFKAAo6n/EdqDwJjpKJiAN2kt
- vz3sG6SW449Xd2v50YSRo+JdNWNRNx98mEpQjxVxI798obUu6KJYEIy4Jqa3r6HYaC5NxPStK1
- riJkCCN62opZaOVKya8TBf569r2TOWpHL4xrxYyuQ/GP9MQryl1CCdA1XjHTys8+JSotMG4Bat
- bzb+b3f9AmpDXPxu8rUykmpOBNc9qCVUJqDds4Cb4AJ20CjmXT63DD6lEP8Oh8uXfcRD7Jo/vl
- t55RRwVCywVgJDl+Sn8Ny3RaHcfJ2fHZILsdxfAP7OpHHTQEAAA==
-X-Change-ID: 20250917-backoff-table-support-99218823576d
+Message-Id: <20250926-backoff-table-support-v2-1-16d3726646c4@simonwunderlich.de>
+References: <20250926-backoff-table-support-v2-0-16d3726646c4@simonwunderlich.de>
+In-Reply-To: <20250926-backoff-table-support-v2-0-16d3726646c4@simonwunderlich.de>
 To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, 
  Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, 
  Sean Wang <sean.wang@mediatek.com>, 
@@ -61,17 +57,17 @@ Cc: linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com, devicetree@vger.kernel.org, 
  "Sven Eckelmann (Plasma Cloud)" <se@simonwunderlich.de>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3232; i=se@simonwunderlich.de;
- h=from:subject:message-id; bh=b3/ybPY9EaJmt4SNpWg+0Y0d2UPRyNHmWizTO630UoI=;
- b=owGbwMvMwCXmy1+ufVnk62nG02pJDBnXUss9ct29d7r4R67WnH+CVbb8VDvbsvZPJebO5xdFn
- m1l2ZPWUcrCIMbFICumyLLnSv75zexv5T9P+3gUZg4rE8gQBi5OAZhI7S6G/5GaPVoMHNeX8fGc
- eKQlskXcetLiy0Wuqpvl2CfZce/fws/wPyAwytbUWUZ9Uv+mm1M3u7/hPKfr0xUr+jj9elm48Yd
- MXgA=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1751; i=se@simonwunderlich.de;
+ h=from:subject:message-id; bh=pa03GJbD9ITiVTNCYJUKaELBwKC4tTy/GDvazBnS/g0=;
+ b=owGbwMvMwCXmy1+ufVnk62nG02pJDBnXUst5eepFFq/ad+KQhsRpjx9CvNFtV8XDe1dVNl2x3
+ HCAQ2pxRykLgxgXg6yYIsueK/nnN7O/lf887eNRmDmsTCBDGLg4BWAiC1MY/oq19QrVPlg0K/vc
+ n1MTTfSd8qLjC6XOzGSdV/HuSZSi3EWGf8ZpGx4rrGS+sM41Ly3o+FTPi2FZrOLPnkdMeuC6/ZS
+ FJQsA
 X-Developer-Key: i=se@simonwunderlich.de; a=openpgp;
  fpr=522D7163831C73A635D12FE5EC371482956781AF
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250926_030552_954439_0726AE07 
-X-CRM114-Status: GOOD (  12.93  )
+X-CRM114-CacheID: sfid-20250926_030554_301464_DE10A253 
+X-CRM114-Status: GOOD (  11.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,68 +82,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-It was noticed that Mediatek's MT7915 does not only require calibration of
-the normal rates (configured via DT) but also some backoff values for
-beamforming. The proprietary driver loads this from some file in the
-firmware folder. But for the the upstream driver, it is necessary to get
-them from the same place as the normal limits - in this case from the
-devicetree.
+The commit 22b980badc0f ("mt76: add functions for parsing rate power limits
+from DT") added filtering of the power limits based on two properties:
 
-They released the support for this [1,2] in their own SDK but
-without any kind of documentation. And it was (to my knowledge) never
-forwarded to upstream. But since also (in my case) OpenWrt needs correct
-calibration for this WiFi chip, we should get this upstreamed.
+* regdomain
+* country
 
-I try to my best to provide some sensible information about the patch and
-the DT entries. If anyone else has more information about it (to improve
-the descriptions), please feel free to comment and provide some
-enhanced/corrected version.
+If either the country or the regdomain matches, the power limits are
+applied and the search is aborted. If none of the two is defined for the
+power limit, it is a global (or "fallback") power limit. The last
+"fallback" power limit in the list will be returned when not matching
+regdomain or country was found.
 
-The patch from Shayne Chen was only rebased and modified to perform byte
-reads from the DT [3]. Besides this, only a commit message was added,
-MTK_DEBUG parts were dropped and some checkpatch problems were fixed.
+The idea is here to allow to specify "overwriting" country limits in front
+of the list - just in case a regdomain is shared but a country has
+additional limitations.
 
-Regards,
-	Sven
-
-[1] https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/f0d2527deb4f91592b6486a5c98ea3f584f76a61
-[2] https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/737340322ab22b138fd200e020d61ffdbe3e36a9/autobuild/autobuild_5.4_mac80211_release/package/kernel/mt76/patches/1022-wifi-mt76-mt7915-add-bf-backoff-limit-table-support.patch
-[3] https://lore.kernel.org/r/20250917-fix-power-limits-v1-1-616e859a9881@simonwunderlich.de
+But this property was forgotten to be defined in commit 2de6ccebe0e7
+("dt-bindings:net:wireless:mediatek,mt76: introduce power-limits node").
 
 Signed-off-by: Sven Eckelmann (Plasma Cloud) <se@simonwunderlich.de>
 ---
-Changes in v2:
-- add [PATCH mt76] as requested by Zhi-Jun You
-- Link to v1: https://lore.kernel.org/r/20250924-backoff-table-support-v1-0-20e50fbc59de@simonwunderlich.de
+ Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
----
-Shayne Chen (1):
-      wifi: mt76: mt7915: add bf backoff limit table support
+diff --git a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
+index eabceb849537c418650697da86682ef04c979193..f8f72f3f1b1dd185b4797be38b87c621ef3eac08 100644
+--- a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
++++ b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
+@@ -151,6 +151,11 @@ properties:
+               - ETSI
+               - JP
+ 
++          country:
++            $ref: /schemas/types.yaml#/definitions/string
++            description:
++              ISO 3166-1 alpha-2 country code for power limits
++
+         patternProperties:
+           "^txpower-[256]g$":
+             type: object
 
-Sven Eckelmann (Plasma Cloud) (2):
-      dt-bindings: net: wireless: mt76: Document power-limits country property
-      dt-bindings: net: wireless: mt76: introduce backoff limit properties
-
- .../bindings/net/wireless/mediatek,mt76.yaml       |  65 ++++++++
- drivers/net/wireless/mediatek/mt76/debugfs.c       |   4 +-
- drivers/net/wireless/mediatek/mt76/eeprom.c        |  38 ++++-
- drivers/net/wireless/mediatek/mt76/mt76.h          |   8 +
- .../net/wireless/mediatek/mt76/mt7915/debugfs.c    |  74 ++++++++-
- drivers/net/wireless/mediatek/mt76/mt7915/init.c   |   7 +
- drivers/net/wireless/mediatek/mt76/mt7915/main.c   |   2 +-
- drivers/net/wireless/mediatek/mt76/mt7915/mcu.c    | 182 ++++++++++++++++-----
- drivers/net/wireless/mediatek/mt76/mt7915/mcu.h    |   6 +
- drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h |   9 +-
- .../net/wireless/mediatek/mt76/mt7915/testmode.c   |   2 +-
- 11 files changed, 342 insertions(+), 55 deletions(-)
----
-base-commit: b36d55610215a976267197ddc914902c494705d7
-change-id: 20250917-backoff-table-support-99218823576d
-prerequisite-change-id: 20250917-fix-power-limits-5ce07b993681:v1
-prerequisite-patch-id: 964626eea847052cefc907ef0f01286a080fdc3c
-
-Best regards,
 -- 
-Sven Eckelmann (Plasma Cloud) <se@simonwunderlich.de>
+2.47.3
 
 
