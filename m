@@ -4,70 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11872CAC5BB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Sep 2025 21:32:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F085FCAC5B8
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Sep 2025 01:10:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kO1m5LqFHJxf8DWdb/7mVe4tFOYj20Dk1WkRKFf112s=; b=UpNGEBTlBkEu2oCjMiEaqUQ1wJ
-	b42rRRxCBHgAfm+qm81Lyyay9NPXTPERreE2hIfi4YFHvg923ty6hqpssekE+gVDi6BII6NFuIhT2
-	Hvo51c887QoklmXcSzRnBnPkP7GB67Q/614N96jiFt7QvvN6PV9Cxx+c3Ik+HAlKO6pD3NKXEnYUg
-	49g7agEfiix23tcdFduXfW92pxbLMxicfHJvY4DZgVBEguzf0ui883cvpq4Com0CwoeSY1s2LtsbT
-	ytIaA6MIm2xkABmUkOrFrQi7YRzKjOKYmJwaEJbV66DlDPi1/VNtVgKPibg/JWIcydbC5va/q8i0t
-	yyccwZVw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yV6rb2qU6UxlLPgEqSMmvUt42VQU+/LmKsnF4rRybJc=; b=eyiwe7BlIuc16OA4SDlR1qlGpf
+	thJ51RmjPymVEU04RKzSAxEzfTOfduS4eJrDZbiwlRco/LgSr9eXC2V0pXD8MoyNdel3KKJwfbuGN
+	COiUGSa8ybHzaFj4dyQeU6JKObo/vYngfLTYNm9jvbZka2bLprrBlv+HeGPS/2QuVfwQgSHFXlNjU
+	3PShUFLhkVaOuvL/nMtwSFYs7Np75wtDUe5ZseSbLJsbUTHwnPBBXUL0L8YekjqAz5RXz6UpWToUY
+	t85cHeA0I4tfzb19VtXKslIdtCrqfcaIS2v32X+M2xpt7mx7+cXoYbdTeLa6N1XPg4NdF2ablpGa2
+	MITxNvLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v2G30-00000004hHT-1182;
-	Fri, 26 Sep 2025 21:32:10 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1v2JSI-00000005vsN-3hHr;
+	Sat, 27 Sep 2025 01:10:30 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v2G2x-00000004hEe-1lAc;
-	Fri, 26 Sep 2025 21:32:08 +0000
+	id 1v2JSH-00000005vq8-0tEv;
+	Sat, 27 Sep 2025 01:10:29 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id D6E9C45A26;
-	Fri, 26 Sep 2025 21:32:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0FA28C4CEF7;
-	Fri, 26 Sep 2025 21:32:05 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 61E0C61FDA;
+	Sat, 27 Sep 2025 01:10:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 17B32C4CEF4;
+	Sat, 27 Sep 2025 01:10:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1758922326;
-	bh=s11rU3UFLaS0Sp8EzrbQgKe7uppn0ywvUykAZ5Jlu+o=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KpYdeDfnhMqz1YxGrCTA0V5KRELoLAUV9N8OpcWmOafoCcc2MoUgARxKF4e+LgwYB
-	 bwf8l5nL/62riCbPcp1/3Jg2qR0xVozoaBP7lgUPISAvfDR2qplS0Bsyzth/Rg+sU1
-	 cXfZM3eBYe6rJ5kKYSc7APTXRU+Dnhyj1WAoTvgvEjoG7nKRs4bhVExMyhO0J1s7VB
-	 K6PXj5BZJoLWsY3r/pNNkYyxMUy/javEKi1h0IA/Q6qjYI9OZhzHgefObwy0TB/yyc
-	 h7p+VMuNQgR3oxqKeQ3/Bwc6kgGa2+QxjRmcLxShiJxxmrZaC0A5dpNVc/usPR++dB
-	 5Bvo4nOiPS6yw==
-Date: Fri, 26 Sep 2025 16:32:02 -0500
-From: Rob Herring <robh@kernel.org>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, upstream@airoha.com
-Subject: Re: [PATCH v3 4/4] PCI: mediatek: add support for Airoha AN7583 SoC
-Message-ID: <20250926213202.GB1573360-robh@kernel.org>
-References: <20250925162332.9794-1-ansuelsmth@gmail.com>
- <20250925162332.9794-5-ansuelsmth@gmail.com>
+	s=k20201202; t=1758935428;
+	bh=dycmrG8L42shWyOFq1LplDW0kt8JqYvNmyTy5n4cmII=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=npYmKC0PdSzX7/utwapI/6czHnX7CCci2RE2SDWtAPBz+csfL1txtWcozAY8cdOhA
+	 yWDMwSUFlUYXp5r8JgBXrTUTtiRKQXSXr7Jwk4E0gH/ODwDMztxneMCUaGakcEkg+t
+	 t3FwgJ1P3fMGVgX1ZPD5nfAez2GGysv5u/qTBLNZLI3SbpejpqPKKDbm+Gc6pES8PV
+	 /od62rPAXjVETBJ51zGyp27RkfQpylLBzSqVXzsGRHVo7JViwH/ERtQ7X2En9x/6go
+	 Bezhk2RwpXP9S4/31kQQnFVEjyFtxM7XEvHw7Uqurzn46P3uJFi8n5qlE7dS2madA0
+	 83Qrx3ZJsH/2g==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 710A339D0C3F;
+	Sat, 27 Sep 2025 01:10:24 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250925162332.9794-5-ansuelsmth@gmail.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250926_143207_505071_37DC08CD 
-X-CRM114-Status: GOOD (  27.31  )
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next] net: airoha: npu: Add a NPU callback to
+ initialize flow stats
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <175893542299.113130.1861554660002474046.git-patchwork-notify@kernel.org>
+Date: Sat, 27 Sep 2025 01:10:22 +0000
+References: <20250924-airoha-npu-init-stats-callback-v1-1-88bdf3c941b2@kernel.org>
+In-Reply-To: <20250924-airoha-npu-init-stats-callback-v1-1-88bdf3c941b2@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,103 +72,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 25, 2025 at 06:23:18PM +0200, Christian Marangi wrote:
-> Add support for the second PCIe line present on Airoha AN7583 SoC.
-> 
-> This is based on the Mediatek Gen1/2 PCIe driver and similar to Gen3
-> also require workaround for the reset signals.
-> 
-> Introduce a new bool to skip having to reset signals and also introduce
-> some additional logic to configure the PBUS registers required for
-> Airoha SoC.
-> 
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> ---
->  drivers/pci/controller/pcie-mediatek.c | 85 +++++++++++++++++++-------
->  1 file changed, 63 insertions(+), 22 deletions(-)
-> 
-> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-> index 24cc30a2ab6c..640d1f1a6478 100644
-> --- a/drivers/pci/controller/pcie-mediatek.c
-> +++ b/drivers/pci/controller/pcie-mediatek.c
-> @@ -147,6 +147,7 @@ struct mtk_pcie_port;
->   * @need_fix_class_id: whether this host's class ID needed to be fixed or not
->   * @need_fix_device_id: whether this host's device ID needed to be fixed or not
->   * @no_msi: Bridge has no MSI support, and relies on an external block
-> + * @skip_pcie_rstb: Skip calling RSTB bits on PCIe probe
->   * @device_id: device ID which this host need to be fixed
->   * @ops: pointer to configuration access functions
->   * @startup: pointer to controller setting functions
-> @@ -156,6 +157,7 @@ struct mtk_pcie_soc {
->  	bool need_fix_class_id;
->  	bool need_fix_device_id;
->  	bool no_msi;
-> +	bool skip_pcie_rstb;
->  	unsigned int device_id;
->  	struct pci_ops *ops;
->  	int (*startup)(struct mtk_pcie_port *port);
-> @@ -679,28 +681,30 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
->  		regmap_update_bits(pcie->cfg, PCIE_SYS_CFG_V2, val, val);
->  	}
->  
-> -	/* Assert all reset signals */
-> -	writel(0, port->base + PCIE_RST_CTRL);
-> -
-> -	/*
-> -	 * Enable PCIe link down reset, if link status changed from link up to
-> -	 * link down, this will reset MAC control registers and configuration
-> -	 * space.
-> -	 */
-> -	writel(PCIE_LINKDOWN_RST_EN, port->base + PCIE_RST_CTRL);
-> -
-> -	/*
-> -	 * Described in PCIe CEM specification sections 2.2 (PERST# Signal) and
-> -	 * 2.2.1 (Initial Power-Up (G3 to S0)). The deassertion of PERST# should
-> -	 * be delayed 100ms (TPVPERL) for the power and clock to become stable.
-> -	 */
-> -	msleep(100);
-> -
-> -	/* De-assert PHY, PE, PIPE, MAC and configuration reset	*/
-> -	val = readl(port->base + PCIE_RST_CTRL);
-> -	val |= PCIE_PHY_RSTB | PCIE_PERSTB | PCIE_PIPE_SRSTB |
-> -	       PCIE_MAC_SRSTB | PCIE_CRSTB;
-> -	writel(val, port->base + PCIE_RST_CTRL);
-> +	if (!soc->skip_pcie_rstb) {
-> +		/* Assert all reset signals */
-> +		writel(0, port->base + PCIE_RST_CTRL);
-> +
-> +		/*
-> +		 * Enable PCIe link down reset, if link status changed from link up to
-> +		 * link down, this will reset MAC control registers and configuration
-> +		 * space.
-> +		 */
-> +		writel(PCIE_LINKDOWN_RST_EN, port->base + PCIE_RST_CTRL);
-> +
-> +		/*
-> +		 * Described in PCIe CEM specification sections 2.2 (PERST# Signal) and
-> +		 * 2.2.1 (Initial Power-Up (G3 to S0)). The deassertion of PERST# should
-> +		 * be delayed 100ms (TPVPERL) for the power and clock to become stable.
-> +		 */
-> +		msleep(100);
-> +
-> +		/* De-assert PHY, PE, PIPE, MAC and configuration reset	*/
-> +		val = readl(port->base + PCIE_RST_CTRL);
-> +		val |= PCIE_PHY_RSTB | PCIE_PERSTB | PCIE_PIPE_SRSTB |
-> +		       PCIE_MAC_SRSTB | PCIE_CRSTB;
-> +		writel(val, port->base + PCIE_RST_CTRL);
-> +	}
->  
->  	/* Set up vendor ID and class code */
->  	if (soc->need_fix_class_id) {
-> @@ -1105,6 +1109,33 @@ static int mtk_pcie_probe(struct platform_device *pdev)
->  	if (err)
->  		goto put_resources;
->  
-> +	if (device_is_compatible(dev, "airoha,an7583-pcie")) {
+Hello:
 
-This should check some match data flag rather than checking compatible 
-again. Otherwise this becomes device_is_compatible() || 
-device_is_compatible() || device_is_compatible()...
+This patch was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-Rob
+On Wed, 24 Sep 2025 23:14:53 +0200 you wrote:
+> Introduce a NPU callback to initialize flow stats and remove NPU stats
+> initialization from airoha_npu_get routine. Add num_stats_entries to
+> airoha_npu_ppe_stats_setup routine.
+> This patch makes the code more readable since NPU statistic are now
+> initialized on demand by the NPU consumer (at the moment NPU statistic
+> are configured just by the airoha_eth driver).
+> Moreover this patch allows the NPU consumer (PPE module) to explicitly
+> enable/disable NPU flow stats.
+> 
+> [...]
+
+Here is the summary with links:
+  - [net-next] net: airoha: npu: Add a NPU callback to initialize flow stats
+    https://git.kernel.org/netdev/net-next/c/105ce7ad57e4
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
