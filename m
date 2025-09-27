@@ -4,63 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4158ECAC5B8
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Sep 2025 14:04:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A4BFCAC5B0
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Sep 2025 22:42:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UvAmOrcTaEezRkG3Mb2t6b+yKReem3l0ddXZ/uqPAVY=; b=ajiuuDHb3gJA4AZaurk+zPf7KX
-	8b90pelyIgH09CqB447L/v46XXoCD//0x3BI5AJZ5wtKsgutTQ0wCXLbBT8VOq9RWTDndAbfU2MRb
-	hh3zFMccDH7OjZ0thNyPLlGYZ1Q6/vX7wN3dXIbhe3k4/fb2NDxDqTvipIUt5xzRf2LLisHJx90Zs
-	p2kN7lxEtScOh9KGASPom5M/0L7FHk8hjW8hWpEcpCc78zoLX4EJKff5jJTfuJTGQjlk2fkZJ9vQr
-	bnFITTfcZET8Yx/lsxid6i/2XORBD+urCaf9baXBmBdBa+uIhMADWV6rK92u/UvvDTH1PuXNAHq+V
-	Fmgumi9A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=W8gS3lBr3j7Wvud1lK+lD9eX9tSSo9wWSRk6jSkPi+Y=; b=w771IudyMiWlVXVAxAaP67929a
+	sk9PVgjiPFEdpvUFxz9hyfrK8UlyF7zilVgxiMhspOFfQ63rh+qvhqPhunViUD4Yw1Q2iUn/GYizK
+	6mtKFpObMqZBB4p0XTq6Bukon2vOwseXBWzGuad9rj34NQuQiiWfmEn4IjQH3tfrgIbw+n6Xhu0B1
+	s+WC5jw0NlMR1q/zuj59xZTKuwx7dqQosY4dXTmZDa6h5j7t37lfI73On/dQtQhm+q7yEHQscQjQw
+	e9+olOl9+oofrZTblNkZxwusyU9dnjsObHHlOolyMVv2fUmA4+D/rTpseHrNOyOzpS+MWs6YE2KVo
+	yIObFneQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v2VX8-0000000ACdp-2Nh9;
-	Sat, 27 Sep 2025 14:04:18 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1v2dcf-0000000D521-2V8Z;
+	Sat, 27 Sep 2025 22:42:33 +0000
+Received: from zeus03.de ([194.117.254.33] helo=mail.zeus03.de)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v2VX3-0000000ACXr-2OiL;
-	Sat, 27 Sep 2025 14:04:14 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E5C56454DA;
-	Sat, 27 Sep 2025 14:04:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 75CA5C4CEF7;
-	Sat, 27 Sep 2025 14:04:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1758981852;
-	bh=zKz5W5a/bYoV41kuFP8JGCYMqCLf0l+xh3vHJjLoYTM=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=BLBvfjbGmkYx2JKf2TI+gzDX4ZsWq3IzNTsng421LaMnMMr2l9LIu8tekq3ES24kg
-	 Cy4y91IKXeyZ63nUHg+g/OkZRq43AlsNZhps/y8nLTfwFQB3XyXIfxy71zzgupUdHD
-	 3w7aqiPBBNie5GdmzIVup2qgnr8NrGy5qUcCRbnb8VUKyVsfwDWRHxWKUb6vOX3zOq
-	 huUclHjuWxETUdXAi1bp+9DgRZBWChMowI9i3rjHc4qDMRAwgzqk8vuC9r4UeduwPp
-	 oReXNIFIxZnA2SFPH+vHmYoKWgCjhANPv1pJeobRvg/8XjvKoMI7yDAO+LD+0t9f63
-	 59nDjOTGseo7A==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Sat, 27 Sep 2025 16:03:42 +0200
-Subject: [PATCH net-next v2 3/3] net: airoha: npu: Add 7583 SoC support
+	id 1v2dcd-0000000D4zm-0XnF
+	for linux-mediatek@lists.infradead.org;
+	Sat, 27 Sep 2025 22:42:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	sang-engineering.com; h=date:from:to:cc:subject:message-id
+	:references:mime-version:content-type:in-reply-to; s=k1; bh=W8gS
+	3lBr3j7Wvud1lK+lD9eX9tSSo9wWSRk6jSkPi+Y=; b=SCUrABG6nCFnoowG4VFN
+	zpzTaCxwHx6HIP8KwDMyizitPF4QVumwiuztsIKD+sL7lT3S1lvRo4c4YLHisrEK
+	VJFD5U/AiAajMgXydB6Wu/IIXMxgulA8BhcQtyWu8fB8AIkvqXGzqFSiUuonvjCS
+	/fOVsLiygNzuelks6eJ/qr/q1tzrgfrWvVV7AUb1qqDGm4UXNeqeuwMK1r1hu/Rd
+	QAZ2Mm/R0kUsonjB57vEWI4j1cq4zH5lmmeXhQp985GEQ+vAEsHpkRoq6rxO6qjA
+	aqdwoOAmzbPkY9oKqXlC4KQYI9NPal51DWikUoyEfkVJK/knMrk2NUQJOsW8jiwF
+	ZA==
+Received: (qmail 2704494 invoked from network); 28 Sep 2025 00:42:27 +0200
+Received: by mail.zeus03.de with UTF8SMTPSA (TLS_AES_256_GCM_SHA384 encrypted, authenticated); 28 Sep 2025 00:42:27 +0200
+X-UD-Smtp-Session: l3s3148p1@miPlHdA/jssujnsw
+Date: Sun, 28 Sep 2025 00:42:27 +0200
+From: Wolfram Sang <wsa+renesas@sang-engineering.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org, qii.wang@mediatek.com,
+	andi.shyti@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
+	conor+dt@kernel.org, matthias.bgg@gmail.com,
+	gregkh@linuxfoundation.org, jirislaby@kernel.org,
+	daniel.lezcano@linaro.org, tglx@linutronix.de,
+	linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org,
+	kernel@collabora.com
+Subject: Re: [PATCH 3/3] dt-bindings: i2c: i2c-mt65xx: Add MediaTek
+ MT8196/6991 compatibles
+Message-ID: <aNhoU8AUVJUepzVf@shikoro>
+References: <20250611110800.458164-1-angelogioacchino.delregno@collabora.com>
+ <20250611110800.458164-4-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250927-airoha-npu-7583-v2-3-e12fac5cce1f@kernel.org>
-References: <20250927-airoha-npu-7583-v2-0-e12fac5cce1f@kernel.org>
-In-Reply-To: <20250927-airoha-npu-7583-v2-0-e12fac5cce1f@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-X-Mailer: b4 0.14.2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250611110800.458164-4-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250927_070413_677153_4E6898E7 
-X-CRM114-Status: GOOD (  10.27  )
+X-CRM114-CacheID: sfid-20250927_154231_436652_08DCD628 
+X-CRM114-Status: UNSURE (   7.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,58 +79,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce support for Airoha 7583 SoC NPU selecting proper firmware images.
+On Wed, Jun 11, 2025 at 01:08:00PM +0200, AngeloGioacchino Del Regno wrote:
+> Add support for the MediaTek MT8196 Chromebook SoC and for its
+> close relative, the MediaTek Dimensity 9400 MT6991 SoC.
+> 
+> Those chips' multiple I2C controller instances are compatible with
+> the ones found in the MT8188 SoC.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_npu.c | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
-
-diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ethernet/airoha/airoha_npu.c
-index 41944cc5f6b062129528e9357511fd9e05cbe1e6..68b7f9684dc7f3912493876ae937207f55b81330 100644
---- a/drivers/net/ethernet/airoha/airoha_npu.c
-+++ b/drivers/net/ethernet/airoha/airoha_npu.c
-@@ -16,6 +16,8 @@
- 
- #define NPU_EN7581_FIRMWARE_DATA		"airoha/en7581_npu_data.bin"
- #define NPU_EN7581_FIRMWARE_RV32		"airoha/en7581_npu_rv32.bin"
-+#define NPU_AN7583_FIRMWARE_DATA		"airoha/an7583_npu_data.bin"
-+#define NPU_AN7583_FIRMWARE_RV32		"airoha/an7583_npu_rv32.bin"
- #define NPU_EN7581_FIRMWARE_RV32_MAX_SIZE	0x200000
- #define NPU_EN7581_FIRMWARE_DATA_MAX_SIZE	0x10000
- #define NPU_DUMP_SIZE				512
-@@ -622,8 +624,20 @@ static const struct airoha_npu_soc_data en7581_npu_soc_data = {
- 	},
- };
- 
-+static const struct airoha_npu_soc_data an7583_npu_soc_data = {
-+	.fw_rv32 = {
-+		.name = NPU_AN7583_FIRMWARE_RV32,
-+		.max_size = NPU_EN7581_FIRMWARE_RV32_MAX_SIZE,
-+	},
-+	.fw_data = {
-+		.name = NPU_AN7583_FIRMWARE_DATA,
-+		.max_size = NPU_EN7581_FIRMWARE_DATA_MAX_SIZE,
-+	},
-+};
-+
- static const struct of_device_id of_airoha_npu_match[] = {
- 	{ .compatible = "airoha,en7581-npu", .data = &en7581_npu_soc_data },
-+	{ .compatible = "airoha,an7583-npu", .data = &an7583_npu_soc_data },
- 	{ /* sentinel */ }
- };
- MODULE_DEVICE_TABLE(of, of_airoha_npu_match);
-@@ -762,6 +776,8 @@ module_platform_driver(airoha_npu_driver);
- 
- MODULE_FIRMWARE(NPU_EN7581_FIRMWARE_DATA);
- MODULE_FIRMWARE(NPU_EN7581_FIRMWARE_RV32);
-+MODULE_FIRMWARE(NPU_AN7583_FIRMWARE_DATA);
-+MODULE_FIRMWARE(NPU_AN7583_FIRMWARE_RV32);
- MODULE_LICENSE("GPL");
- MODULE_AUTHOR("Lorenzo Bianconi <lorenzo@kernel.org>");
- MODULE_DESCRIPTION("Airoha Network Processor Unit driver");
-
--- 
-2.51.0
+Applied a rebased version to for-next, thanks!
 
 
