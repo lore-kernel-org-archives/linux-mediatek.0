@@ -4,66 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A4BFCAC5B0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Sep 2025 22:42:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 153B8CAC5BB
+	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Sep 2025 16:27:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W8gS3lBr3j7Wvud1lK+lD9eX9tSSo9wWSRk6jSkPi+Y=; b=w771IudyMiWlVXVAxAaP67929a
-	sk9PVgjiPFEdpvUFxz9hyfrK8UlyF7zilVgxiMhspOFfQ63rh+qvhqPhunViUD4Yw1Q2iUn/GYizK
-	6mtKFpObMqZBB4p0XTq6Bukon2vOwseXBWzGuad9rj34NQuQiiWfmEn4IjQH3tfrgIbw+n6Xhu0B1
-	s+WC5jw0NlMR1q/zuj59xZTKuwx7dqQosY4dXTmZDa6h5j7t37lfI73On/dQtQhm+q7yEHQscQjQw
-	e9+olOl9+oofrZTblNkZxwusyU9dnjsObHHlOolyMVv2fUmA4+D/rTpseHrNOyOzpS+MWs6YE2KVo
-	yIObFneQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=MSRaQ+ObtkD3Po8EdVDm3zfPKQVhGfP4jfrtmOzXWk8=; b=PepU4QFeTbhjB3iWB6DeH3GzjR
+	SscvSaTTTYq/Qurq/QoaFQwhvnARZXp6mZVXt3nbhLivYgggKKbGFsexsXZ8++m/EMzH37rjnG6Fa
+	WBx1n5pvDY2RsLp3rZdFsGKRdp+n4IOHfS8vUEDxAaSHyslRn4uj66JPZthGIMMXvqSDOTPBVOlEU
+	8yC+HaM3HptJTfZdQZwJAZs2pSE+qjD1MBgskLHRDgZtxku15Oz1s6GlHaleRMeBFLVbW7sczVfKC
+	esDD/3GuL1BJiay7YM5ej+dJuf33Ewi38XV/iqRaUooaXZbxZX3Bzwi9ZQUuu0qNAWEy3oOma4nB7
+	9TmJPXww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v2dcf-0000000D521-2V8Z;
-	Sat, 27 Sep 2025 22:42:33 +0000
-Received: from zeus03.de ([194.117.254.33] helo=mail.zeus03.de)
+	id 1v2uFG-0000000GZys-0gSI;
+	Sun, 28 Sep 2025 16:27:30 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v2dcd-0000000D4zm-0XnF
-	for linux-mediatek@lists.infradead.org;
-	Sat, 27 Sep 2025 22:42:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	sang-engineering.com; h=date:from:to:cc:subject:message-id
-	:references:mime-version:content-type:in-reply-to; s=k1; bh=W8gS
-	3lBr3j7Wvud1lK+lD9eX9tSSo9wWSRk6jSkPi+Y=; b=SCUrABG6nCFnoowG4VFN
-	zpzTaCxwHx6HIP8KwDMyizitPF4QVumwiuztsIKD+sL7lT3S1lvRo4c4YLHisrEK
-	VJFD5U/AiAajMgXydB6Wu/IIXMxgulA8BhcQtyWu8fB8AIkvqXGzqFSiUuonvjCS
-	/fOVsLiygNzuelks6eJ/qr/q1tzrgfrWvVV7AUb1qqDGm4UXNeqeuwMK1r1hu/Rd
-	QAZ2Mm/R0kUsonjB57vEWI4j1cq4zH5lmmeXhQp985GEQ+vAEsHpkRoq6rxO6qjA
-	aqdwoOAmzbPkY9oKqXlC4KQYI9NPal51DWikUoyEfkVJK/knMrk2NUQJOsW8jiwF
-	ZA==
-Received: (qmail 2704494 invoked from network); 28 Sep 2025 00:42:27 +0200
-Received: by mail.zeus03.de with UTF8SMTPSA (TLS_AES_256_GCM_SHA384 encrypted, authenticated); 28 Sep 2025 00:42:27 +0200
-X-UD-Smtp-Session: l3s3148p1@miPlHdA/jssujnsw
-Date: Sun, 28 Sep 2025 00:42:27 +0200
-From: Wolfram Sang <wsa+renesas@sang-engineering.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org, qii.wang@mediatek.com,
-	andi.shyti@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, matthias.bgg@gmail.com,
-	gregkh@linuxfoundation.org, jirislaby@kernel.org,
-	daniel.lezcano@linaro.org, tglx@linutronix.de,
-	linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org,
-	kernel@collabora.com
-Subject: Re: [PATCH 3/3] dt-bindings: i2c: i2c-mt65xx: Add MediaTek
- MT8196/6991 compatibles
-Message-ID: <aNhoU8AUVJUepzVf@shikoro>
-References: <20250611110800.458164-1-angelogioacchino.delregno@collabora.com>
- <20250611110800.458164-4-angelogioacchino.delregno@collabora.com>
+	id 1v2uFD-0000000GZx2-1KZ8;
+	Sun, 28 Sep 2025 16:27:28 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id E440D438D2;
+	Sun, 28 Sep 2025 16:27:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 48B1AC4CEF0;
+	Sun, 28 Sep 2025 16:27:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1759076845;
+	bh=FnampJXSHrU0rM+ZuwqnJeG9CYsIVyW79tDZuVj+Tlc=;
+	h=From:Date:Subject:To:Cc:From;
+	b=E3hevEsRkAecdgEYvHKNhZ8v4gsgm28pIuhVG+LL+Eu/q7VgguRHflI57Rdj2v29j
+	 vXQjtAg6q1qb60SebttOHthzVm2IRUwxTbbYBjOf4JeYYbFUMo8Q2DUMxVTQbSqfhj
+	 4pT34ONqp3P8BO325vhssd0Pum4old6ek0zs3n+qi8CAB47zdBBGAHJ1TeYck8+zFl
+	 o0TkpHFL1wXBJRjwRyr7URiYHeK/X4tC18SpUDT1yaUjNCcBKVGlT13nDBdaG7YL3V
+	 4TmEKqPW0q1TuMzlwufsd6QleGGiUbUdwdGpFGUfOtFleEzbK9NSwnuSM9zoCVbswz
+	 OkUqNU4gEp/mA==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Sun, 28 Sep 2025 18:27:01 +0200
+Subject: [PATCH mt76] wifi: mt76: mt7996: Add missing CHANCTX_STA_CSA
+ property
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250611110800.458164-4-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250928-mt7996_chanctx_sta_csa-v1-1-82e455185990@kernel.org>
+X-B4-Tracking: v=1; b=H4sIANRh2WgC/x2M0QoCIRAAf0X2OcHz0PJ+JUIW22of8g5XQhD/P
+ etxGGY6CBUmgU11KPRh4T1PWE4K0gvzkzTfJ4M11plgL/pdzyH4+JOptigVYxLUJqy4OuM8OYQ
+ ZH4Ue3P7j622ML4eAnYhoAAAA
+X-Change-ID: 20250928-mt7996_chanctx_sta_csa-093a35056e5a
+To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250927_154231_436652_08DCD628 
-X-CRM114-Status: UNSURE (   7.56  )
+X-CRM114-CacheID: sfid-20250928_092727_381635_FA28AD1B 
+X-CRM114-Status: UNSURE (   6.70  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,16 +78,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 11, 2025 at 01:08:00PM +0200, AngeloGioacchino Del Regno wrote:
-> Add support for the MediaTek MT8196 Chromebook SoC and for its
-> close relative, the MediaTek Dimensity 9400 MT6991 SoC.
-> 
-> Those chips' multiple I2C controller instances are compatible with
-> the ones found in the MT8188 SoC.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Enable missing CHANCTX_STA_CSA property required for MLO.
 
-Applied a rebased version to for-next, thanks!
+Fixes: f5160304d57c ("wifi: mt76: mt7996: Enable MLO support for client interfaces")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/wireless/mediatek/mt76/mt7996/init.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+index 5e95a36b42d1645dbf63d8bf6717ac6a29a91a5c..5048f8cf175c2ef4ba6ff343830bdab79fafc441 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+@@ -521,6 +521,7 @@ mt7996_init_wiphy(struct ieee80211_hw *hw, struct mtk_wed_device *wed)
+ 	ieee80211_hw_set(hw, SUPPORTS_RX_DECAP_OFFLOAD);
+ 	ieee80211_hw_set(hw, NO_VIRTUAL_MONITOR);
+ 	ieee80211_hw_set(hw, SUPPORTS_MULTI_BSSID);
++	ieee80211_hw_set(hw, CHANCTX_STA_CSA);
+ 
+ 	hw->max_tx_fragments = 4;
+ 
+
+---
+base-commit: 56d9de46715245c9cc46dbe16830e431056abbc3
+change-id: 20250928-mt7996_chanctx_sta_csa-093a35056e5a
+
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
