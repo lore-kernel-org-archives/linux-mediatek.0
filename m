@@ -4,73 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC6AECAC5B9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Sep 2025 16:25:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFD28CAC5B0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Sep 2025 17:31:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Y+hgyn2E0Ma4hOCRVip31Vm6RHNaCa1ts9SY0eNd/9g=; b=duPC7GkDHt8dHjeoZ181XGKorV
-	B9FsAFScCR8+O+NP/LlOyEDiKbFjffNFvAjd5kyUGQrTiXxHOURL0etFUrIGnAztfUgL5x3/nTdlm
-	KhDd1xhPGdC3rtzCs4SpHPlrY7ua1ui+GpA6oleQOCs3xhFQT6Ew12XsNbksynn3t039F9jaaqRkr
-	cecOeACUldLmne3fSm4B2GFdoSksyrFkNlpbAWeKcQbRtbkyB314tJEItDAuHMlAipL7JKFfjGICD
-	Q4OcBwo2ImNaxovuch61w2NF4WL632Ec2SKIJympbj9bwohf0PQvcXsw6SQXT3bb1qJdt38HhGrO3
-	P2CPD43A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=T67zK9Vz4Jc4fcP89icAwJtwafnVSm8SPy/tBpYc5v0=; b=dK4NDnFgQZfaubBmHdj5l+DkRJ
+	UICEIjsgz8QwJj4zseqmJa7AK7M5iNFqmCFMppxR6ZeanLadX3JJmBLSj+zNcrRvem452uyYaOKIZ
+	HnnxWf9FbpycLBmsYdWMR7WrMxDbMOhcTQchJXhpCc1MdVIEd8DvLzEgNhkYuax/OasmosB5hoY61
+	cRna2GAGXLK+0KNMguoENIPxlG3AziWuBwIAwa3j40Kmts9D09wl8xBCK63VlEV+/HztMAe7tFLpm
+	KKP7egEEkg4reeBnMi3+gE9lFGXQQ7cfWy7A6y15oxe5iPK90+yBsa2/pd3az8NdcNqhfMRKdlunE
+	8ZsTuI/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3GgU-00000002yE8-2BBO;
-	Mon, 29 Sep 2025 16:25:06 +0000
-Received: from smtp21.cstnet.cn ([159.226.251.21] helo=cstnet.cn)
+	id 1v3Hj0-000000038Eg-0rdp;
+	Mon, 29 Sep 2025 17:31:46 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3GgP-00000002yCv-2UH0;
-	Mon, 29 Sep 2025 16:25:04 +0000
-Received: from DESKTOP-L0HPE2S (unknown [114.245.39.210])
-	by APP-01 (Coremail) with SMTP id qwCowAD3UKPXstpoT7XhCA--.29927S2;
-	Tue, 30 Sep 2025 00:24:57 +0800 (CST)
-From: Haotian Zhang <vulab@iscas.ac.cn>
-To: Jonathan Cameron <jic23@kernel.org>,
-	linux-iio@vger.kernel.org
-Cc: Lars-Peter Clausen <lars@metafoo.de>,
+	id 1v3Hiy-000000038E5-13kk;
+	Mon, 29 Sep 2025 17:31:44 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 79F4462656;
+	Mon, 29 Sep 2025 17:31:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A73DEC4CEF4;
+	Mon, 29 Sep 2025 17:31:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1759167102;
+	bh=L5taQOZ5fy1HPwxCZ3NhYxZGxI2dRfW/9CQ4Tx0pvww=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=E2H/+TEkd8fEL8/p0gb75SpCX8X6iF6IxTCTi3qfbM2zU9bOFClp7xXuFFCOYQx32
+	 ISexCizfVvTtpJlrJnLUj9FcyyMi1cZ+iLl5FMQWkLhjYkbLefB32LaJgI2aJWh3WQ
+	 eyiv5rt6d1iELQ2nDhnJfWPB7dWasVAwYy2HSC2IP9f7LCq/RjzLsBJDdcRDOWyTDk
+	 l958AiHye4QE5ChB8naMrouHvdgeGayukpBjRoZjt+1xvICR5d8CpeZZfQb6/vB+Fj
+	 Af4+mAKLlgDZtD4Aygg7RYj2PiDr8JhDQqWEhiTXjU1/IrZ4Xy4pAYLulQRtTlJvOR
+	 DZiiMip4bNMQA==
+Date: Mon, 29 Sep 2025 18:31:36 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Abhash Jha <abhashkumarjha123@gmail.com>,
-	Al Viro <viro@zeniv.linux.org.uk>,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Haotian Zhang <vulab@iscas.ac.cn>
-Subject: [PATCH v2] iio: adc: mt6360: Handle error in cleanup path correctly
-Date: Tue, 30 Sep 2025 00:24:53 +0800
-Message-ID: <20250929162453.1203-1-vulab@iscas.ac.cn>
-X-Mailer: git-send-email 2.50.1.windows.1
-In-Reply-To: <20250929025358.2064-1-vulab@iscas.ac.cn>
-References: <20250929025358.2064-1-vulab@iscas.ac.cn>
+	Guangjie Song <guangjie.song@mediatek.com>,
+	Laura Nao <laura.nao@collabora.com>,
+	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
+	Yassine Oudjana <y.oudjana@protonmail.com>, kernel@collabora.com,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/4] dt-bindings: clock: mediatek: Add clocks for MT8196
+ mfgpll
+Message-ID: <20250929-whoops-kennel-5f54fb6559a8@spud>
+References: <20250929-mtk-pll-rpm-v1-0-49541777878d@collabora.com>
+ <20250929-mtk-pll-rpm-v1-1-49541777878d@collabora.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: qwCowAD3UKPXstpoT7XhCA--.29927S2
-X-Coremail-Antispam: 1UD129KBjvJXoWxJrWxKryxuFW8ZrW3uF48WFg_yoW8uryfpr
-	1YkFyqkFy8KFySka1xt3WUZFWFya17Kw4Fk34kCanFv3s8Ar1IgFyrGa4q934v9rZYyan0
-	v3yUuFWUuw18ZaUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUU9014x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
-	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
-	1l84ACjcxK6xIIjxv20xvE14v26r1I6r4UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4j
-	6F4UM28EF7xvwVC2z280aVAFwI0_Gr0_Cr1l84ACjcxK6I8E87Iv6xkF7I0E14v26r4j6r
-	4UJwAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0
-	I7IYx2IY67AKxVWUJVWUGwAv7VC2z280aVAFwI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r1j6r
-	4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwACI402YVCY1x02628v
-	n2kIc2xKxwCY1x0262kKe7AKxVWUtVW8ZwCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7x
-	kEbVWUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E
-	67AF67kF1VAFwI0_Jw0_GFylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVWUJVWUCw
-	CI42IY6xIIjxv20xvEc7CjxVAFwI0_Gr0_Cr1lIxAIcVCF04k26cxKx2IYs7xG6r1j6r1x
-	MIIF0xvEx4A2jsIE14v26r1j6r4UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Gr0_Gr1UYxBIda
-	VFxhVjvjDU0xZFpf9x0JUd-B_UUUUU=
-X-Originating-IP: [114.245.39.210]
-X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiCRAAA2jan9oN4wABsC
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250929_092502_011112_07A5D6DD 
-X-CRM114-Status: GOOD (  11.77  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="u4M+BrM+qE9Xid1p"
+Content-Disposition: inline
+In-Reply-To: <20250929-mtk-pll-rpm-v1-1-49541777878d@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,56 +82,107 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The return value of a regmap_raw_write() and regmap_update_bits()
-in the cleanup path was being ignored.
 
-Fix this by checking the return value and warn on error.
+--u4M+BrM+qE9Xid1p
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Fixes: 1f4877218f7e ("iio: adc: mt6360: Add ADC driver for MT6360")
-Signed-off-by: Haotian Zhang <vulab@iscas.ac.cn>
+On Mon, Sep 29, 2025 at 02:13:20PM +0200, Nicolas Frattaroli wrote:
+> The clock controllers for mfgpll, mfgpll-sc0, and mfgpll-sc1 all need
+> CLK_TOP_MFG_EB to be on if their clock control registers are touched in
+> any way.
+>=20
+> This was not known at the time this binding was written, as this
+> dependency only came to light when I started poking at the MFlexGraphics
+> hardware, where this undocumented peculiarity made itself known through
+> SErrors being thrown during register reads.
+>=20
+> Add a clocks property to the binding to describe this relationship, and
+> mark it as required for the affected clocks.
+>=20
+> Fixes: dd240e95f1be ("dt-bindings: clock: mediatek: Describe MT8196 clock=
+ controllers")
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> ---
+>  .../bindings/clock/mediatek,mt8196-sys-clock.yaml  | 28 ++++++++++++++++=
+++++++
+>  1 file changed, 28 insertions(+)
+>=20
+> diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt8196-sys-=
+clock.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt8196-sys-cl=
+ock.yaml
+> index 660ab64f390d2e722b7d3e25cf057926da318bc0..41aacd8d5f69050eebdf8392f=
+7b652427632f491 100644
+> --- a/Documentation/devicetree/bindings/clock/mediatek,mt8196-sys-clock.y=
+aml
+> +++ b/Documentation/devicetree/bindings/clock/mediatek,mt8196-sys-clock.y=
+aml
+> @@ -45,6 +45,9 @@ properties:
+>    reg:
+>      maxItems: 1
+> =20
+> +  clocks:
+> +    maxItems: 1
+> +
+>    '#clock-cells':
+>      const: 1
+> =20
+> @@ -90,6 +93,23 @@ required:
+> =20
+>  additionalProperties: false
+> =20
+> +allOf:
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            enum:
+> +              - mediatek,mt8196-mfgpll-pll-ctrl
+> +              - mediatek,mt8196-mfgpll-sc0-pll-ctrl
+> +              - mediatek,mt8196-mfgpll-sc1-pll-ctrl
+> +    then:
+> +      properties:
+> +        clocks:
+> +          items:
+> +            - description: mfg_eb clock
+> +      required:
+> +        - clocks
 
----
-Changes in v2:
- - Do not propagate cleanup path errors.
- - Log a warning on failure instead of overwriting the return value, as
-   suggested by the maintainer.
- - Also check the return value of regmap_update_bits() for consistency.
----
- drivers/iio/adc/mt6360-adc.c | 10 ++++++++--
- 1 file changed, 8 insertions(+), 2 deletions(-)
+Don't you want an else: properties: clocks: false here?
 
-diff --git a/drivers/iio/adc/mt6360-adc.c b/drivers/iio/adc/mt6360-adc.c
-index 69b3569c90e5..9ee7247aacbe 100644
---- a/drivers/iio/adc/mt6360-adc.c
-+++ b/drivers/iio/adc/mt6360-adc.c
-@@ -70,6 +70,7 @@ static int mt6360_adc_read_channel(struct mt6360_adc_data *mad, int channel, int
- 	ktime_t predict_end_t, timeout;
- 	unsigned int pre_wait_time;
- 	int ret;
-+	int cleanup_ret;
- 
- 	mutex_lock(&mad->adc_lock);
- 
-@@ -130,11 +131,16 @@ static int mt6360_adc_read_channel(struct mt6360_adc_data *mad, int channel, int
- out_adc_conv:
- 	/* Only keep ADC enable */
- 	adc_enable = cpu_to_be16(MT6360_ADCEN_MASK);
--	regmap_raw_write(mad->regmap, MT6360_REG_PMUADCCFG, &adc_enable, sizeof(adc_enable));
-+	cleanup_ret = regmap_raw_write(mad->regmap, MT6360_REG_PMUADCCFG,
-+				&adc_enable, sizeof(adc_enable));
-+	if (cleanup_ret)
-+		dev_warn(mad->dev, "Failed to reset ADC config: %d\n", cleanup_ret);
- 	mad->last_off_timestamps[channel] = ktime_get();
- 	/* Config prefer channel to NO_PREFER */
--	regmap_update_bits(mad->regmap, MT6360_REG_PMUADCRPT1, MT6360_PREFERCH_MASK,
-+	cleanup_ret = regmap_update_bits(mad->regmap, MT6360_REG_PMUADCRPT1, MT6360_PREFERCH_MASK,
- 			   MT6360_NO_PREFER << MT6360_PREFERCH_SHFT);
-+	if (cleanup_ret)
-+		dev_warn(mad->dev, "Failed to reset prefer channel: %d\n", cleanup_ret);
- out_adc_lock:
- 	mutex_unlock(&mad->adc_lock);
- 
--- 
-2.50.1.windows.1
+> +
+>  examples:
+>    - |
+>      apmixedsys_clk: syscon@10000800 {
+> @@ -104,4 +124,12 @@ examples:
+>          mediatek,hardware-voter =3D <&scp_hwv>;
+>          #clock-cells =3D <1>;
+>      };
+> +  - |
+> +    #include <dt-bindings/clock/mediatek,mt8196-clock.h>
+> =20
+> +    clock-controller@4b810000 {
+> +        compatible =3D "mediatek,mt8196-mfgpll-pll-ctrl", "syscon";
+> +        reg =3D <0x4b810000 0x400>;
+> +        clocks =3D <&topckgen CLK_TOP_MFG_EB>;
+> +        #clock-cells =3D <1>;
+> +    };
+>=20
+> --=20
+> 2.51.0
+>=20
 
+--u4M+BrM+qE9Xid1p
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaNrCeAAKCRB4tDGHoIJi
+0iJxAP4mU6+C8Eh7IxIoYQL1Qb0tkSwfwCjYaPhrKJSDWD8nUwEAx0m/G5GfkzGq
+vzTWSFTPy8nqiETYWXzWi/6gx3Yqpwo=
+=JKYV
+-----END PGP SIGNATURE-----
+
+--u4M+BrM+qE9Xid1p--
 
