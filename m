@@ -4,63 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48F3FCAC5B5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Sep 2025 15:44:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60B98CAC5B0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Sep 2025 16:02:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Med3hhOfkg/RvIlfsT/fOLVf/1vKUH87rV5RB+twrWw=; b=Rf0u40mJnE6Eaw0yv91MbLvj+/
-	SQZQS7ry0R3KTBUSVj/CyESIjmfcsWj4FxAPNgwu75JAgAHqAeS7HMcPUbELmx6/uw+Mh8qGfCEo5
-	7MsmtbS/5sOYiAsEBgMfPjbjYMmy+bswfW6JQ96CXAvUSMKvhWaWDY7xzUL6mObb8r2dkApqQJZxH
-	7VAojVsdWrsUOsB2FwDh7gyGKrRl3Eqk69lEfLLa7f34eeX7uGvumYsI7XmrZaUEMzhZVBDKvzXcy
-	eFXppBO1n/VvZ2N7cNb1GEhWsHEB6FokhtwFZN+7Xm2lBPLvsphHzU/z0wLKO5MnUnTk6zdBeQbOe
-	c7MoKNQw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tBhdtn4WywjV8YX0pSLDWDcNcDkRLFjP5hlSSBzqSms=; b=vtEGppKuKKCRnJpd4w7JNEhM12
+	JN8D88T4azHn8U8q1C5SS2tX0XqlUb3NvipoT5OJsyDyPcuR7AwGoLR18ba2kRt/jQLIYuX0QkgBH
+	3DMNXts/vI5KHklVwujZOGmFav0T7RLKRdovXUIKNYzMHdgMufnCHOrOSz4TENIZFOE6r1WnaD2iD
+	PVy83cWVtvlu/QmVoMHh54gAMLQ2onLIluwFg8p1nYFcvwn16d5o3EiUBlaUj2u1JHeohq9866Zyc
+	E/WFdH9EwFP5xz4zKl4NSwaVAVcP93d77nS61SVRaACimRLVyE6WXgLbcBFdL6dMw72gRfnrNnIgA
+	20tFO8rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3G3D-00000002oTO-0BS7;
-	Mon, 29 Sep 2025 15:44:31 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3G39-00000002oSD-2YCy;
-	Mon, 29 Sep 2025 15:44:29 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 17EA1150C;
-	Mon, 29 Sep 2025 08:44:15 -0700 (PDT)
-Received: from [10.57.1.31] (unknown [10.57.1.31])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 9429C3F59E;
-	Mon, 29 Sep 2025 08:44:19 -0700 (PDT)
-Message-ID: <2432db52-ed83-491c-81d7-f8c3e4b8bf20@arm.com>
-Date: Mon, 29 Sep 2025 16:44:17 +0100
+	id 1v3GKC-00000002st1-2vgS;
+	Mon, 29 Sep 2025 16:02:04 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1v3GK9-00000002ssV-2zDE;
+	Mon, 29 Sep 2025 16:02:02 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1759161649; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=lO4XkvatoUXQvbjF88NEo4GQV304NUsNzGnfLfpAGQJACgtdT6ns9sqamBDeq5T3rrLNKdsMf5rTsiniDa3tJWa/86fe0pQYx0iN0L5IDHhkJqeNA7IlkLDk/UNDQjKhz5/8rGOPQljktYtoDkNRPLtpPwyO4kdAEK/YNnxGO5I=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1759161649; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=tBhdtn4WywjV8YX0pSLDWDcNcDkRLFjP5hlSSBzqSms=; 
+	b=lVLGTmETVkCIP0WKjmObmfrsZtGUq1ZYWjIVjC8VqJrB4aS4A5ggVHhmXiQIREqehiPffKh/8rJAxzL+50geybX9h7y5p84pJK2E31LxkhYaVa87FqJQhD8htU20NLiJWF+HYRbmrJE1EAF17YQXRe/JLlubBSh4bRbsimFGL68=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nfraprado@collabora.com;
+	dmarc=pass header.from=<nfraprado@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1759161648;
+	s=zohomail; d=collabora.com; i=nfraprado@collabora.com;
+	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
+	bh=tBhdtn4WywjV8YX0pSLDWDcNcDkRLFjP5hlSSBzqSms=;
+	b=FVF4tF848aJT71bWiRy++xWwA9rP30861XDd6VJanlPKxOzcEwMkNT5gxumr/gid
+	RGj1Z4ASg6BM+hhQSEj2Bbs32NY8JjgpZsmiJRz05Gpee1bJzyqwggVI8cMSCLp2Era
+	LWQsvLIkjLNilz17UTXRFEFBYPa2wjDsDxtsIY4M=
+Received: by mx.zohomail.com with SMTPS id 1759161645995986.0060307420077;
+	Mon, 29 Sep 2025 09:00:45 -0700 (PDT)
+Message-ID: <7307e84f9e4b0a8c67b82f7234f90bf83f201037.camel@collabora.com>
+Subject: Re: [PATCH RFC v2 05/20] drm: Introduce
+ DRM_CAP_POST_BLEND_COLOR_PIPELINE
+From: =?ISO-8859-1?Q?N=EDcolas?= "F. R. A. Prado" <nfraprado@collabora.com>
+To: Harry Wentland <harry.wentland@amd.com>, Louis Chauvet	
+ <louis.chauvet@bootlin.com>, Maarten Lankhorst	
+ <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>,  Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger	
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
+ <angelogioacchino.delregno@collabora.com>, Haneen Mohammed	
+ <hamohammed.sa@gmail.com>, Melissa Wen <melissa.srw@gmail.com>
+Cc: Alex Hung <alex.hung@amd.com>, wayland-devel@lists.freedesktop.org, 
+	leo.liu@amd.com, ville.syrjala@linux.intel.com,
+ pekka.paalanen@collabora.com, 	contact@emersion.fr, mwen@igalia.com,
+ jadahl@redhat.com, sebastian.wick@redhat.com, 	shashank.sharma@amd.com,
+ agoins@nvidia.com, joshua@froggi.es, mdaenzer@redhat.com, 
+	aleixpol@kde.org, xaver.hugl@gmail.com, victoria@system76.com, 
+	uma.shankar@intel.com, quic_naseer@quicinc.com, quic_cbraga@quicinc.com, 
+	quic_abhinavk@quicinc.com, marcan@marcan.st, Liviu.Dudau@arm.com, 
+	sashamcintosh@google.com, chaitanya.kumar.borah@intel.com,
+ mcanal@igalia.com, 	kernel@collabora.com, daniels@collabora.com,
+ leandro.ribeiro@collabora.com, 	dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, 	linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org,  Simona Vetter
+ <simona.vetter@ffwll.ch>
+Date: Mon, 29 Sep 2025 12:00:40 -0400
+In-Reply-To: <52cce852-f4fb-4692-9318-1602fe878644@amd.com>
+References: <20250917-mtk-post-blend-color-pipeline-v2-0-ac4471b44758@collabora.com>
+	 <20250917-mtk-post-blend-color-pipeline-v2-5-ac4471b44758@collabora.com>
+	 <ff53599d-fd7f-4791-a3e1-3269386c6b3e@bootlin.com>
+	 <52cce852-f4fb-4692-9318-1602fe878644@amd.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.2-2+b1 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/2] drm/panthor: add custom ASN_HASH support for
- mt8196
-To: Chia-I Wu <olvaffe@gmail.com>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- Liviu Dudau <liviu.dudau@arm.com>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20250913002155.1163908-1-olvaffe@gmail.com>
- <20250913002155.1163908-3-olvaffe@gmail.com>
-From: Steven Price <steven.price@arm.com>
-Content-Language: en-GB
-In-Reply-To: <20250913002155.1163908-3-olvaffe@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+X-ZohoMailClient: External
+X-ZohoMail-Owner: <7307e84f9e4b0a8c67b82f7234f90bf83f201037.camel@collabora.com>+zmo_0_nfraprado@collabora.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250929_084427_718074_FE6F5FCB 
-X-CRM114-Status: GOOD (  31.11  )
+X-CRM114-CacheID: sfid-20250929_090201_803113_0351C6E0 
+X-CRM114-Status: GOOD (  22.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,177 +102,120 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13/09/2025 01:21, Chia-I Wu wrote:
-> Add panthor_soc_data to control custom ASN_HASH. Add compatible string
-> for "mediatek,mt8196-mali" and enable custom ASN_HASH for the soc.
-> 
-> Without custom ASN_HASH, FW fails to boot
-> 
->   panthor 48000000.gpu: [drm] *ERROR* Unhandled Page fault in AS0 at VA 0x0000000000000000
->   panthor 48000000.gpu: [drm] *ERROR* Failed to boot MCU (status=fatal)
->   panthor 48000000.gpu: probe with driver panthor failed with error -110
-> 
-> With custom ASN_HASH, panthor probes fine and userspace boots to ui just
-> fine as well
-> 
->   panthor 48000000.gpu: [drm] clock rate = 0
->   panthor 48000000.gpu: EM: created perf domain
->   panthor 48000000.gpu: [drm] Mali-G925-Immortalis id 0xd830 major 0x0 minor 0x1 status 0x5
->   panthor 48000000.gpu: [drm] Features: L2:0x8130306 Tiler:0x809 Mem:0x301 MMU:0x2830 AS:0xff
->   panthor 48000000.gpu: [drm] shader_present=0xee0077 l2_present=0x1 tiler_present=0x1
->   panthor 48000000.gpu: [drm] Firmware protected mode entry not be supported, ignoring
->   panthor 48000000.gpu: [drm] Firmware git sha: 27713280172c742d467a4b7d11180930094092ec
->   panthor 48000000.gpu: [drm] CSF FW using interface v3.13.0, Features 0x10 Instrumentation features 0x71
->   [drm] Initialized panthor 1.5.0 for 48000000.gpu on minor 1
-> 
-> Note that the clock and the regulator drivers are not upstreamed yet.
-> They might as well take a different form when upstreamed.
-> 
-> Signed-off-by: Chia-I Wu <olvaffe@gmail.com>
+On Mon, 2025-09-29 at 05:40 -0400, Harry Wentland wrote:
+>=20
+>=20
+> On 2025-09-19 08:42, Louis Chauvet wrote:
+> >=20
+> >=20
+> > Le 18/09/2025 =C3=A0 02:43, N=C3=ADcolas F. R. A. Prado a =C3=A9crit=C2=
+=A0:
+> > > Add a new cap that drivers can set to signal they support post-
+> > > blend
+> > > color pipelines.
+> > >=20
+> > > Signed-off-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
+> >=20
+> > Reviewed-by: Louis Chauvet <louis.chauvet@bootlin.com>
+> >=20
+> > > ---
+> > > =C2=A0 drivers/gpu/drm/drm_ioctl.c | 3 +++
+> > > =C2=A0 include/drm/drm_drv.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 6 =
+++++++
+> > > =C2=A0 include/uapi/drm/drm.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 6 +++++=
++
+> > > =C2=A0 3 files changed, 15 insertions(+)
+> > >=20
+> > > diff --git a/drivers/gpu/drm/drm_ioctl.c
+> > > b/drivers/gpu/drm/drm_ioctl.c
+> > > index=20
+> > > ff193155129e7e863888d8958458978566b144f8..01592d10e3465ddceddef94
+> > > bc417f98d3ec12087 100644
+> > > --- a/drivers/gpu/drm/drm_ioctl.c
+> > > +++ b/drivers/gpu/drm/drm_ioctl.c
+> > > @@ -304,6 +304,9 @@ static int drm_getcap(struct drm_device *dev,
+> > > void=20
+> > > *data, struct drm_file *file_
+> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 req->value =3D=
+ drm_core_check_feature(dev, DRIVER_ATOMIC)
+> > > &&
+> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 dev->mode_config.async_page_flip;
+> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
+> > > +=C2=A0=C2=A0=C2=A0 case DRM_CAP_POST_BLEND_COLOR_PIPELINE:
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 req->value =3D drm_core_c=
+heck_feature(dev,=20
+> > > DRIVER_POST_BLEND_COLOR_PIPELINE);
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
+> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 default:
+> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return -EINVAL=
+;
+> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+> > > diff --git a/include/drm/drm_drv.h b/include/drm/drm_drv.h
+> > > index=20
+> > > 42fc085f986dee9261f8b08c4fc7d93b8d6d9769..6b0f4904e69766232283d43
+> > > 0c2540d30afef850f 100644
+> > > --- a/include/drm/drm_drv.h
+> > > +++ b/include/drm/drm_drv.h
+> > > @@ -122,6 +122,12 @@ enum drm_driver_feature {
+> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * the cursor planes to work corr=
+ectly).
+> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 */
+> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 DRIVER_CURSOR_HOTSPOT=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =3D BIT(9),
+> > > +=C2=A0=C2=A0=C2=A0 /**
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0 * @DRIVER_POST_BLEND_COLOR_PIPELINE:
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0 *
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0 * Driver supports post-blend color pipeline=
+.
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0 */
+> > > +=C2=A0=C2=A0=C2=A0 DRIVER_POST_BLEND_COLOR_PIPELINE=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 =3D BIT(10),
+>=20
+> Is this to let userspace know that the driver supports a
+> post-blending color pipeline? Why couldn't userspace simply
+> check whether crtc objects have "Color Pipeline" properties?
 
-Reviewed-by: Steven Price <steven.price@arm.com>
+It is, and yes userspace could figure it out that way, though since the
+property is only exposed after the client cap is set, it requires a
+more involved setup: set the client cap, check for the property, if not
+present unset the client cap.
 
-> 
-> ---
-> v2:
->  - remove CONFIG_DRM_PANTHOR_SOC_MT8196 and panthor_soc*.[ch]
->  - update commit message
-> ---
->  drivers/gpu/drm/panthor/panthor_device.c |  2 ++
->  drivers/gpu/drm/panthor/panthor_device.h | 14 +++++++++++++
->  drivers/gpu/drm/panthor/panthor_drv.c    |  6 ++++++
->  drivers/gpu/drm/panthor/panthor_gpu.c    | 25 +++++++++++++++++++++++-
->  drivers/gpu/drm/panthor/panthor_regs.h   |  4 ++++
->  5 files changed, 50 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/gpu/drm/panthor/panthor_device.c b/drivers/gpu/drm/panthor/panthor_device.c
-> index 81df49880bd87..c7033d82cef55 100644
-> --- a/drivers/gpu/drm/panthor/panthor_device.c
-> +++ b/drivers/gpu/drm/panthor/panthor_device.c
-> @@ -172,6 +172,8 @@ int panthor_device_init(struct panthor_device *ptdev)
->  	struct page *p;
->  	int ret;
->  
-> +	ptdev->soc_data = of_device_get_match_data(ptdev->base.dev);
-> +
->  	init_completion(&ptdev->unplug.done);
->  	ret = drmm_mutex_init(&ptdev->base, &ptdev->unplug.lock);
->  	if (ret)
-> diff --git a/drivers/gpu/drm/panthor/panthor_device.h b/drivers/gpu/drm/panthor/panthor_device.h
-> index 4fc7cf2aeed57..9f0649ecfc4fc 100644
-> --- a/drivers/gpu/drm/panthor/panthor_device.h
-> +++ b/drivers/gpu/drm/panthor/panthor_device.h
-> @@ -31,6 +31,17 @@ struct panthor_perfcnt;
->  struct panthor_vm;
->  struct panthor_vm_pool;
->  
-> +/**
-> + * struct panthor_soc_data - Panthor SoC Data
-> + */
-> +struct panthor_soc_data {
-> +	/** @asn_hash_enable: True if GPU_L2_CONFIG_ASN_HASH_ENABLE must be set. */
-> +	bool asn_hash_enable;
-> +
-> +	/** @asn_hash: ASN_HASH values when asn_hash_enable is true. */
-> +	u32 asn_hash[3];
-> +};
-> +
->  /**
->   * enum panthor_device_pm_state - PM state
->   */
-> @@ -93,6 +104,9 @@ struct panthor_device {
->  	/** @base: Base drm_device. */
->  	struct drm_device base;
->  
-> +	/** @soc_data: Optional SoC data. */
-> +	const struct panthor_soc_data *soc_data;
-> +
->  	/** @phys_addr: Physical address of the iomem region. */
->  	phys_addr_t phys_addr;
->  
-> diff --git a/drivers/gpu/drm/panthor/panthor_drv.c b/drivers/gpu/drm/panthor/panthor_drv.c
-> index be962b1387f03..9dd90754865ac 100644
-> --- a/drivers/gpu/drm/panthor/panthor_drv.c
-> +++ b/drivers/gpu/drm/panthor/panthor_drv.c
-> @@ -1682,7 +1682,13 @@ static struct attribute *panthor_attrs[] = {
->  
->  ATTRIBUTE_GROUPS(panthor);
->  
-> +static const struct panthor_soc_data soc_data_mediatek_mt8196 = {
-> +	.asn_hash_enable = true,
-> +	.asn_hash = { 0xb, 0xe, 0x0, },
-> +};
-> +
->  static const struct of_device_id dt_match[] = {
-> +	{ .compatible = "mediatek,mt8196-mali", .data = &soc_data_mediatek_mt8196, },
->  	{ .compatible = "rockchip,rk3588-mali" },
->  	{ .compatible = "arm,mali-valhall-csf" },
->  	{}
-> diff --git a/drivers/gpu/drm/panthor/panthor_gpu.c b/drivers/gpu/drm/panthor/panthor_gpu.c
-> index db69449a5be09..9d98720ce03fd 100644
-> --- a/drivers/gpu/drm/panthor/panthor_gpu.c
-> +++ b/drivers/gpu/drm/panthor/panthor_gpu.c
-> @@ -52,6 +52,28 @@ static void panthor_gpu_coherency_set(struct panthor_device *ptdev)
->  		ptdev->coherent ? GPU_COHERENCY_PROT_BIT(ACE_LITE) : GPU_COHERENCY_NONE);
->  }
->  
-> +static void panthor_gpu_l2_config_set(struct panthor_device *ptdev)
-> +{
-> +	const struct panthor_soc_data *data = ptdev->soc_data;
-> +	u32 l2_config;
-> +	u32 i;
-> +
-> +	if (!data || !data->asn_hash_enable)
-> +		return;
-> +
-> +	if (GPU_ARCH_MAJOR(ptdev->gpu_info.gpu_id) < 11) {
-> +		drm_err(&ptdev->base, "Custom ASN hash not supported by the device");
-> +		return;
-> +	}
-> +
-> +	for (i = 0; i < ARRAY_SIZE(data->asn_hash); i++)
-> +		gpu_write(ptdev, GPU_ASN_HASH(i), data->asn_hash[i]);
-> +
-> +	l2_config = gpu_read(ptdev, GPU_L2_CONFIG);
-> +	l2_config |= GPU_L2_CONFIG_ASN_HASH_ENABLE;
-> +	gpu_write(ptdev, GPU_L2_CONFIG, l2_config);
-> +}
-> +
->  static void panthor_gpu_irq_handler(struct panthor_device *ptdev, u32 status)
->  {
->  	gpu_write(ptdev, GPU_INT_CLEAR, status);
-> @@ -241,8 +263,9 @@ int panthor_gpu_l2_power_on(struct panthor_device *ptdev)
->  			      hweight64(ptdev->gpu_info.shader_present));
->  	}
->  
-> -	/* Set the desired coherency mode before the power up of L2 */
-> +	/* Set the desired coherency mode and L2 config before the power up of L2 */
->  	panthor_gpu_coherency_set(ptdev);
-> +	panthor_gpu_l2_config_set(ptdev);
->  
->  	return panthor_gpu_power_on(ptdev, L2, 1, 20000);
->  }
-> diff --git a/drivers/gpu/drm/panthor/panthor_regs.h b/drivers/gpu/drm/panthor/panthor_regs.h
-> index 8bee76d01bf83..8fa69f33e911e 100644
-> --- a/drivers/gpu/drm/panthor/panthor_regs.h
-> +++ b/drivers/gpu/drm/panthor/panthor_regs.h
-> @@ -64,6 +64,8 @@
->  
->  #define GPU_FAULT_STATUS				0x3C
->  #define GPU_FAULT_ADDR					0x40
-> +#define GPU_L2_CONFIG					0x48
-> +#define   GPU_L2_CONFIG_ASN_HASH_ENABLE			BIT(24)
->  
->  #define GPU_PWR_KEY					0x50
->  #define  GPU_PWR_KEY_UNLOCK				0x2968A819
-> @@ -110,6 +112,8 @@
->  
->  #define GPU_REVID					0x280
->  
-> +#define GPU_ASN_HASH(n)					(0x2C0 + ((n) * 4))
-> +
->  #define GPU_COHERENCY_FEATURES				0x300
->  #define GPU_COHERENCY_PROT_BIT(name)			BIT(GPU_COHERENCY_  ## name)
->  
+With the driver cap introduced here, setting the client cap would fail
+in the first place if the driver cap is not set, so in this case
+userspace just tries to set the client cap, if it succeeds it knows it
+can use color pipelines, if it fails it knows to use the legacy color
+properties.
 
+--=20
+Thanks,
+
+N=C3=ADcolas
+
+>=20
+> Harry
+>=20
+> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* IMPORTANT: Below are all the legacy=
+ flags, add new ones=20
+> > > above. */
+> > > diff --git a/include/uapi/drm/drm.h b/include/uapi/drm/drm.h
+> > > index=20
+> > > 27cc159c1d275c7a7fe057840ef792f30a582bb7..c6c53e57958e951204154ce
+> > > 41a69696a6876f0e8 100644
+> > > --- a/include/uapi/drm/drm.h
+> > > +++ b/include/uapi/drm/drm.h
+> > > @@ -812,6 +812,12 @@ struct drm_gem_change_handle {
+> > > =C2=A0=C2=A0 * commits.
+> > > =C2=A0=C2=A0 */
+> > > =C2=A0 #define DRM_CAP_ATOMIC_ASYNC_PAGE_FLIP=C2=A0=C2=A0=C2=A0 0x15
+> > > +/**
+> > > + * DRM_CAP_POST_BLEND_COLOR_PIPELINE
+> > > + *
+> > > + * If set to 1, the driver supports post-blend color pipelines.
+> > > + */
+> > > +#define DRM_CAP_POST_BLEND_COLOR_PIPELINE=C2=A0=C2=A0=C2=A0 0x16
+> > > =C2=A0 /* DRM_IOCTL_GET_CAP ioctl argument type */
+> > > =C2=A0 struct drm_get_cap {
+> > >=20
+> >=20
 
