@@ -4,71 +4,193 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 903E8CAC5B5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Sep 2025 14:40:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A461CAC5B9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Sep 2025 15:25:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4SehLwPwCIWjGCByLFgpIVLB4JRGEWglrJ0hg9NjAVc=; b=n8RWeR1bCw8wJKynY+HH+/UpKJ
-	wICCgh2027iXglm1p8P9u27p7UKz/H7hosBY9tKnCIZTnGyt4QbmK9Dp1J5RrMdQb+c84A2yM8t1B
-	CW+/u9pU86QFnbFL7dLNgYuUBVRnkDJl94f1kyo/SKU93phdbEA2xOJsL6qRBIMlTDPvnZ3GZYoAw
-	DncbJ1j1imYX51fmX4M063Q3TAPrutTLb14bSc0NOZfB6IHQ/W1Q2QWt73VlMimsbvW5Eo9zFontK
-	ge77Hde9TTy9KWJKe+z3iwdUv7y/9/NLkfqkWB5uNZq29LZt0DFX7nJStYD5+I7cs9oz1qZSmL05S
-	ACJxY9EA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:References:Message-ID:Subject:CC:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7DrfsUfYOjRcTmkcVDBqPf9zwY1622Tqdmn7/DS0wIY=; b=Lalv/r87p8uDaIE8l7Aa0rXuvk
+	oIezgJxUa1PXLrNV5hF7ERbomf30ku55wgwwOM4B9f5Yleg3EV/DKgfwGxKQM9KyUYmsdnjeLMn01
+	ceW2eWvT4K+QxJ4+96k2O3cHB/Sfm9BeurvckJCd5O4lZh/6RmZMdZE0WmvZsIyWUFsYTzLrnRq3n
+	7WogADjYwfIxXWN75FbXVNchXyY67i1gee4JAwaMl8GUGOWM8SoI8PIBrmhldER2FhnMi3Yju98Ij
+	Cg9+stpbu9S0tSenyP8D79Bhmh0EG7Tcs8HDXDcM8XNPDi8kXlj/JxWsPNy7pjGjTqO1jl8E1jLnu
+	9hGPn/Rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3F3D-00000002hO0-11xO;
-	Mon, 29 Sep 2025 14:40:27 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1v3Fl5-00000002me7-2fmm;
+	Mon, 29 Sep 2025 15:25:47 +0000
+Received: from mgamail.intel.com ([192.198.163.18])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3F3A-00000002hN3-3B50;
-	Mon, 29 Sep 2025 14:40:25 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6A19943214;
-	Mon, 29 Sep 2025 14:40:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 22704C4CEF7;
-	Mon, 29 Sep 2025 14:40:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1759156824;
-	bh=HPTDRYIkQ98sc0e+r+R4VGK7Iy87o2rFwoVWJNtJgAY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Z2A2NXZCqN5MtuZNW+W12uuSdgwhWSq/PmM06GYl+XIWyAAzW53QOmCe9g+S1Cuj1
-	 PC3mSm+BNg+pSH/J8wsDk6tO5RtWCqA7Tv33IuHss1lMqmDJwKeOkx1DEVTiRiyr86
-	 wY4qFWEXxvPHyAD91Qy170zF8jMM9fCSfzBnK9wBVIk5eO+1Ue0qfSaSnDPS04dnsF
-	 59Sk9KOfzunRJjf0V+vJEFn3q5Eh3jO4KHawZmlvVdxjMJ22ys1fwxPjwBgJLJb4IN
-	 0GNcHTG+oGtvR5wmOy7icrsbqIXcq5Ge3h6uOZI1wVIdEz/8o1ZVpSSAP+BA876s45
-	 p/oFaWfZQzTRg==
-Date: Mon, 29 Sep 2025 09:40:23 -0500
-From: Rob Herring <robh@kernel.org>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v4 3/5] dt-bindings: PCI: mediatek: Add support for
- Airoha AN7583
-Message-ID: <20250929144023.GA4111165-robh@kernel.org>
-References: <20250929113806.2484-1-ansuelsmth@gmail.com>
- <20250929113806.2484-4-ansuelsmth@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+	id 1v3Fl2-00000002mba-0FoB;
+	Mon, 29 Sep 2025 15:25:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1759159544; x=1790695544;
+  h=date:from:to:cc:subject:message-id:references:
+   content-transfer-encoding:in-reply-to:mime-version;
+  bh=0yMBbTdrbZsoKnHaFswecQWWVrw035NB0ey/rqgunGY=;
+  b=XyM6YQZJ/O0rmBpfvfC3M1GcDq+oFPN1O+eh2Wx/jbWcdRd+tJSlqLgw
+   juSWWTLRivOWYsPHpGBdiu8of6dzzte65lnWwfZZ4JkM8LCQbwM4bbV9s
+   66m0i37WnHuuyN6WRGs9FLzbCCbaAmNG9H6etjZktpBdw6AjzVoesfmQQ
+   6M2BgqtrE/JfJqKi+YmgJQpBKcSbd7u9P7hxjupohemXF3WDfaZlZBNR8
+   dX2vpix047WepHKYo8sOp4mnxixLJPDiO5rcK9P0ex4CvJag7FXTsNuPZ
+   aCDdCzWuGVS5+77OtaWAStB1/FfZoXCtFX/ueo5LOcycE+o1/CeUs2Dnf
+   w==;
+X-CSE-ConnectionGUID: HR0ffKbXTs2acffkhdGWCQ==
+X-CSE-MsgGUID: uOm7swWfTiuhmfuiojjWmg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11568"; a="60615335"
+X-IronPort-AV: E=Sophos;i="6.18,301,1751266800"; 
+   d="scan'208";a="60615335"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Sep 2025 08:25:37 -0700
+X-CSE-ConnectionGUID: vS2lVLIiSOaesnaX4OriqQ==
+X-CSE-MsgGUID: uoeqhmQtRhiBoZ3bnTr8Kg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.18,301,1751266800"; 
+   d="scan'208";a="177387425"
+Received: from orsmsx902.amr.corp.intel.com ([10.22.229.24])
+  by orviesa006.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Sep 2025 08:25:37 -0700
+Received: from ORSMSX902.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.27; Mon, 29 Sep 2025 08:25:36 -0700
+Received: from ORSEDG903.ED.cps.intel.com (10.7.248.13) by
+ ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.27 via Frontend Transport; Mon, 29 Sep 2025 08:25:36 -0700
+Received: from SN4PR2101CU001.outbound.protection.outlook.com (40.93.195.55)
+ by edgegateway.intel.com (134.134.137.113) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.27; Mon, 29 Sep 2025 08:25:36 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=IAwpEE3TeyxfuQRigo3ZFdiwxt3TKU8egDzAdn/7KexEXXMPlkI0iHLcoIHdjPYDxlTTltodtWlkePpAD5nHhITvBtRWdJ9fl7gTa8ver572g9K+Z60GTVfDV3Lcz/dDfrIfE/eASzwb31JYNDIIU5aq7bbxsbspRIZ4GoWfc086A9pOA3IEYCSA20lIsCmuLjngURZFMP3MQo9aRTJxkr4ntyDNqOquYeKWlSp2t2DM/+VZvi2xur1XgM50PjxMNKiK65iwvJM4dwrrPckjSOFyG06v4eaNzq2Ou8SOZe6g0fTBUZp0N6OWX6gAQKxwUBFxfDQBm/TIfTdrQYNU6g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=p0lyNX3BUmvGp66jtnY0mXVEFk176o4Cm6HjnAa0dFc=;
+ b=Z5LhSpWQae9MRZPSfIY2nZ4Xr4C58nQ+SWYgMWJMlswkLSFVK6RcuQP2X7++EEnGyHSMgpvi6Bnb9aW+3f7s4Tw4NK+gIHLdtiysg9nG6Y79zdKA/RzXu2Nj5najeblC5z/AmbHs1/oyM7hAO7vz1LAyQdI2YYGYPKRo8ac4DVrAlijbS0hTAtygyBy/8oCRPkbD5Oh5kUsdSmSgUp4AQEkKrYT5yTBUHtEFbxIp1IauYZsSs88NjBV7sm9x42uPvDl6gNBbhkE1xwJwflJFVhjQ55HicAm/MtDi32gW+lF2mbBsbp6jfL1oFOKojflhWHhmNoz3+CrelPEXhcH+hw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Received: from CY5PR11MB6139.namprd11.prod.outlook.com (2603:10b6:930:29::17)
+ by CH3PR11MB7868.namprd11.prod.outlook.com (2603:10b6:610:12e::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9160.16; Mon, 29 Sep
+ 2025 15:25:30 +0000
+Received: from CY5PR11MB6139.namprd11.prod.outlook.com
+ ([fe80::7141:316f:77a0:9c44]) by CY5PR11MB6139.namprd11.prod.outlook.com
+ ([fe80::7141:316f:77a0:9c44%6]) with mapi id 15.20.9160.015; Mon, 29 Sep 2025
+ 15:25:30 +0000
+Date: Mon, 29 Sep 2025 10:25:26 -0500
+From: Lucas De Marchi <lucas.demarchi@intel.com>
+To: Thomas Zimmermann <tzimmermann@suse.de>
+CC: <simona@ffwll.ch>, <airlied@gmail.com>, <mripard@kernel.org>,
+	<maarten.lankhorst@linux.intel.com>, <geert@linux-m68k.org>,
+	<tomi.valkeinen@ideasonboard.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <freedreno@lists.freedesktop.org>,
+	<linux-arm-msm@vger.kernel.org>, <imx@lists.linux.dev>,
+	<linux-samsung-soc@vger.kernel.org>, <nouveau@lists.freedesktop.org>,
+	<virtualization@lists.linux.dev>, <spice-devel@lists.freedesktop.org>,
+	<linux-renesas-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
+	<linux-tegra@vger.kernel.org>, <intel-xe@lists.freedesktop.org>,
+	<xen-devel@lists.xenproject.org>, Matthew Auld <matthew.auld@intel.com>,
+	Thomas =?utf-8?Q?Hellstr=C3=B6m?= <thomas.hellstrom@linux.intel.com>,
+	"Rodrigo Vivi" <rodrigo.vivi@intel.com>
+Subject: Re: [PATCH v6 23/25] drm/xe: Compute dumb-buffer sizes with
+ drm_mode_size_dumb()
+Message-ID: <urjqzmhgj2otboptnkgwa3bampqxi362xxtlmbrwf5td3qm3rf@pplm7q755sgg>
+References: <20250821081918.79786-1-tzimmermann@suse.de>
+ <20250821081918.79786-24-tzimmermann@suse.de>
+Content-Type: text/plain; charset="iso-8859-1"; format=flowed
 Content-Disposition: inline
-In-Reply-To: <20250929113806.2484-4-ansuelsmth@gmail.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20250821081918.79786-24-tzimmermann@suse.de>
+X-ClientProxiedBy: SJ0PR03CA0356.namprd03.prod.outlook.com
+ (2603:10b6:a03:39c::31) To CY5PR11MB6139.namprd11.prod.outlook.com
+ (2603:10b6:930:29::17)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CY5PR11MB6139:EE_|CH3PR11MB7868:EE_
+X-MS-Office365-Filtering-Correlation-Id: 9a7ce1ba-c1b5-42d1-e603-08ddff6c6cdd
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|376014|7416014|7053199007;
+X-Microsoft-Antispam-Message-Info: =?iso-8859-1?Q?JgDW+n75dUbON4IcrAM9gXBZeut+NEYdDAKyzZMSOy/a+UAuYmOb+aKsvU?=
+ =?iso-8859-1?Q?tCxTC3tEevtR3QvGENanInjPLdTlWNlZcnks8+8Qp5gWnFCg1aY/14KpP1?=
+ =?iso-8859-1?Q?4qi4d3SdqCXhs2SuIQ5kUf8ocjlXBi3gGUL3N6VtHgZ3QYyHHHmErPXO9f?=
+ =?iso-8859-1?Q?gnwyFOh1aZZHuIVZ+jdZvWrAbQoa4X/M9Gx0268kC2MU+4SGTh6fNmstTq?=
+ =?iso-8859-1?Q?yuIZugOJky1ADC4PCtssiCS6JwPmw55y6iVWduEskvnd9iqrTsu1yP0t1t?=
+ =?iso-8859-1?Q?Ta4WQOWP6vcEv9zsP1a4fQe3Pu6eXuqkSyAo2Sc5nrUn/+TLN8ZCep9kL6?=
+ =?iso-8859-1?Q?Q+9Br37abcU7w1/FWFihWz9YZH+HV6y/3XiCh4RGIiYa/XnhQZ/YhScxv2?=
+ =?iso-8859-1?Q?5OvuNee3VvQajgQIrlDgY/yQLkGQNrK3uuXLghItw9ByUbiDwyXJuy/ykW?=
+ =?iso-8859-1?Q?8TgF9r/OM17ur2r3p+knOkgFxpnV+/XndLk+9xdpOsNz9s+N0gsdCcNoSK?=
+ =?iso-8859-1?Q?saksMVF0xvZYRUnGkkPMOSMo3tRhH6+SI2vhqcxS6hcfu0NEB4vMGuZmYf?=
+ =?iso-8859-1?Q?z/TbXTR6VOMLmEmK3mllz5S2EHuY7mOZ7ex4f6VYQfBUWLD5h5LbjkVGZT?=
+ =?iso-8859-1?Q?oA/a8HFZaVBgyhhsXAdyEMBm39S70+Cqaepit0axuvwgFeIdE1XkBrcz5a?=
+ =?iso-8859-1?Q?RflIi0Ebji0+KsOSssR2H24pqCzwhW5eHXNEZwbPLGll2hpmzOGXoHF3Bz?=
+ =?iso-8859-1?Q?Lc79hnyc9etauCvWTuwUoozkWAO44Iwe4+shAQgUNpCCGi7CV+coxseyUo?=
+ =?iso-8859-1?Q?ywymFa0LuOTuFCn4goljNp4eMb/zKZnPmrrcu0OvktrQ5qosuafP+K2vmv?=
+ =?iso-8859-1?Q?8iPf2rIricA/DwxlAShRF3F/2Fy6jMTWNnh6APdQUe1CJTMsgOhiRcd05e?=
+ =?iso-8859-1?Q?YW8bF010UdNqsFwUUKnls+91hJ1i6llKjYn1VH3289GExOOE0gLUW+Xn2L?=
+ =?iso-8859-1?Q?ZvT1FDXgQFj5EHUdxItCwyxt5yQA3fMcsaE5KRCnTM4N2j08tfaQo/oLXj?=
+ =?iso-8859-1?Q?iKjGRZOOTwL9ZDDHVx8AtciEN5dNNotEUKZgMgB6UKtV7qql8ekeDpV18P?=
+ =?iso-8859-1?Q?YXSXhQ5S0XP6e79FHqi+Pmw5pozxkkiomhzHrWcDz/qzEoLKtjyTgYSef8?=
+ =?iso-8859-1?Q?S3a1oln1tvHgGho0n0pt1hPT0Lgi+/MCITrpuxS8e9Tozz429RqX6HdTGu?=
+ =?iso-8859-1?Q?3zHqfcltAvbghVkwYdlHahSiy8WLYK8OTFwek9I9L+azzGQCSLClQqA5z2?=
+ =?iso-8859-1?Q?apDFYN5gHs1R8/gZ4tBt2PrLkECT9zChKzIUcbH2adPfX+8usn45OXLA0e?=
+ =?iso-8859-1?Q?WAPi8Ou/7jcUgs6Z3PwR+G/RNscLdUey7h8yOCZJTxdjlVml4iiGxZNxSm?=
+ =?iso-8859-1?Q?4vuXK9k/zSmZVsXCJz7YXxG+tP4jZjELxTtG8yyHqeBJD0rs+JcQXGh+I0?=
+ =?iso-8859-1?Q?rNuG3CeJO2uNuFBAoulLs8?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CY5PR11MB6139.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014)(7416014)(7053199007);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?tf+wSmX7h/PnweaMVgGBvU1wGT0ZB0STuf3BwXg60UfCA3drqBKZRzfS2o?=
+ =?iso-8859-1?Q?/ZqyAt8WbVigpR4VfkcYUTV5JH4wmQjVB92GX9SXWnOdvX0yHShHvseWqJ?=
+ =?iso-8859-1?Q?eZDiBjN3EnQvVHFuN1lmQZik9qaurcI4cnAmHN7UwET+zC1dYN+2HXw+kN?=
+ =?iso-8859-1?Q?jXEQvFnrMgmwyy6xi3lPZ73k1wjUlfMbbCvgoIgfVr/W564ntjQwwWRe9v?=
+ =?iso-8859-1?Q?9SfZrG/d253ATx7IpyWYhGRg3uTb+TwBEOFSzEl22OMYITk22ctzjVh+Bm?=
+ =?iso-8859-1?Q?ZmtihVqNuZh03gk/k1fqMKCKLbfRrwmbQssAGaXI/ZHufVCNwn+7lmwk0T?=
+ =?iso-8859-1?Q?CP9lUSbsgHw1tCLza/3qCGF8b2092Bzlgq+sD3uVfRD9hKAEMSaSW6Fbab?=
+ =?iso-8859-1?Q?YZIg6TKncLqE1bwahGeLIKcPJsCoiE5Yg50PikcKh9YkTyPx7mpKz/vJ8H?=
+ =?iso-8859-1?Q?oNyK3OObWUrdYNC071IO56fr62hyDlSIaiTjtLTmi5uKhRU8ljuyJ7PL+p?=
+ =?iso-8859-1?Q?2RkLhJkCEOtWDU2RdJX6UgjUAsGzAsr2bYznvl/M0gDuGEItNvlZISCO9m?=
+ =?iso-8859-1?Q?g5C2rMxSORI3gzgrwgFS9EzItU3VCJcqlr9hDrmJuxoAbk1nSAOvF6fluf?=
+ =?iso-8859-1?Q?LAqrEqRdh2HXRC5fTtwfdCmfydp/hO0Yre55Vbww4HojqLu+EHq2WYmUd7?=
+ =?iso-8859-1?Q?Qp9c3CoItHfMRMNTfx4O7qO0yi9wimzMAg+R+BmUzmcMQH3Q6MkTr1ayY8?=
+ =?iso-8859-1?Q?F8baLI3Zgsj09YIuLO7JCFoxBR9ERxUYi81gE86u2y/jICQeUZbzTwQMGt?=
+ =?iso-8859-1?Q?IakF75T0fSagXPQhtVPJwKb+xUlTGNcGGWvGqRgzUTkG/9wIRT5v4QVc98?=
+ =?iso-8859-1?Q?SqGxkfewdurHzRIATCiyDv8BlEBusHKEdpX+gY24BZslMJ1YVDWeMkzPDS?=
+ =?iso-8859-1?Q?rxBLSQIQ8j3eGiTGDVbqjOzFg8Q1x5cdpIIGYkoo5uUmx5onN623haWiGU?=
+ =?iso-8859-1?Q?fSaSkyGTNbRaTHpSj+N+RhvNy4EV1KPhvvwpLVInZekMy4qTpf5ubCmtoj?=
+ =?iso-8859-1?Q?5pwOeO5g7k1MAPL/a2rgceK8LoBbN8h7f3NExpmKEjbKu1FiG8uEQ+BMrq?=
+ =?iso-8859-1?Q?QiqC8BZNY/+sowidrZ6lROpaxzecQ/h2vkSTDbFWqxZFfmn/zBNgevm6r9?=
+ =?iso-8859-1?Q?gDnSYU8NChMM3/5O8rCs4XjqNgoZ9KIXeEs9SyPnjHPVP7yxOsySAO+dU8?=
+ =?iso-8859-1?Q?S5qZsL+o3i71xBVpWiILJ0WVOLHghYmdKrvx6MsFWa7yBHyTPrTHh341cw?=
+ =?iso-8859-1?Q?M7qCAORFBYr7Af5aAE0uKr9GGokIm9AYeZzpPKwX43CvrDLJEGIns1TzRU?=
+ =?iso-8859-1?Q?+Qz5LXGuRr5O9V09fGEAIZZtS7YH0Qi6eWccHvSIeCEtCIqcov7bkMzq8H?=
+ =?iso-8859-1?Q?KddXqiHCb+6Rf7yZqvmWQ11P44fhmrrtnnlZiW40JoFSLA2Qh9pFy9cyUq?=
+ =?iso-8859-1?Q?z9B1ojp3dThQaNxhHdzpG7gbcdQT1tPzpH+C7Gkc3UHxQBo0zuTEyIWFpi?=
+ =?iso-8859-1?Q?39Xm8PFGxEcvySM/nnU4Y3W2CrbOeb0yURH1IAPAZKBi41k9iv+GSveqDc?=
+ =?iso-8859-1?Q?jEs7O4tDnTQqR/7eh3t+Ml3LB7BiINHuWC4QScIjbJNUeNzjTVfwJ1cg?=
+ =?iso-8859-1?Q?=3D=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9a7ce1ba-c1b5-42d1-e603-08ddff6c6cdd
+X-MS-Exchange-CrossTenant-AuthSource: CY5PR11MB6139.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Sep 2025 15:25:30.8021
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: eZARfbdpVMrNRufPMp0vxzwZrI+oykbORRY+0kxlNZv8Erp/UhQ4BBo4LgIufw57mOjduLFIUfwUc6K6PQD0eQggml19NKcmIrHLZQXWOZg=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR11MB7868
+X-OriginatorOrg: intel.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250929_074024_835110_DCE78247 
-X-CRM114-Status: GOOD (  21.04  )
+X-CRM114-CacheID: sfid-20250929_082544_170632_74AA00DE 
+X-CRM114-Status: GOOD (  10.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,200 +205,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 29, 2025 at 01:38:02PM +0200, Christian Marangi wrote:
-> Introduce Airoha AN7583 SoC compatible in mediatek PCIe controller
-> binding.
-> 
-> Similar to GEN3, the Airoha AN7583 GEN2 PCIe controller require the
-> PBUS csr property to permit the correct functionality of the PCIe
-> controller.
+On Thu, Aug 21, 2025 at 10:17:30AM +0200, Thomas Zimmermann wrote:
+>Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch
+>and buffer size. Align the pitch to a multiple of 8. Align the
+>buffer size according to hardware requirements.
+>
+>Xe's internal calculation allowed for 64-bit wide buffer sizes, but
+>the ioctl's internal checks always verified against 32-bit wide limits.
+>Hance, it is safe to limit the driver code to 32-bit calculations as
+>well.
+>
+>v3:
+>- mention 32-bit calculation in commit description (Matthew)
+>
+>Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+>Reviewed-by: Matthew Auld <matthew.auld@intel.com>
+>Cc: Lucas De Marchi <lucas.demarchi@intel.com>
+>Cc: "Thomas Hellström" <thomas.hellstrom@linux.intel.com>
+>Cc: Rodrigo Vivi <rodrigo.vivi@intel.com>
 
-I guess I didn't get my point across before. Test your crap before 
-sending or I'm going to stop reviewing your stuff.
+Acked-by: Lucas De Marchi <lucas.demarchi@intel.com>
 
-> 
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> ---
->  .../bindings/pci/mediatek-pcie.yaml           | 110 ++++++++++++++++++
->  1 file changed, 110 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie.yaml
-> index fca6cb20d18b..b91b13a0220c 100644
-> --- a/Documentation/devicetree/bindings/pci/mediatek-pcie.yaml
-> +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie.yaml
-> @@ -13,6 +13,7 @@ properties:
->    compatible:
->      oneOf:
->        - enum:
-> +          - airoha,an7583-pcie
->            - mediatek,mt2712-pcie
->            - mediatek,mt7622-pcie
->            - mediatek,mt7629-pcie
-> @@ -55,6 +56,17 @@ properties:
->    power-domains:
->      maxItems: 1
->  
-> +  mediatek,pbus-csr:
-> +    $ref: /schemas/types.yaml#/definitions/phandle-array
-> +    items:
-> +      - items:
-> +          - description: phandle to pbus-csr syscon
-> +          - description: offset of pbus-csr base address register
-> +          - description: offset of pbus-csr base address mask register
-> +    description:
-> +      Phandle with two arguments to the syscon node used to detect if
-> +      a given address is accessible on PCIe controller.
-> +
->    '#interrupt-cells':
->      const: 1
->  
-> @@ -90,6 +102,45 @@ required:
->  allOf:
->    - $ref: /schemas/pci/pci-host-bridge.yaml#
->  
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          const: airoha,an7583-pcie
-> +    then:
-> +      properties:
-> +        reg:
-> +          maxItems: 1
+to merge this via drm-misc.
 
-That's already the maximum. Drop.
+thanks
+Lucas De Marchi
 
-> +
-> +        reg-names:
-> +          const: port1
-> +
-> +        clocks:
-> +          maxItems: 1
-> +
-> +        clock-names:
-> +          const: sys_ck1
-> +
-> +        reset:
-> +          maxItems: 1
-
-That's already the maximum. Drop.
-
-> +
-> +        reset-names:
-> +          const: pcie-rst1
-> +
-> +        phys:
-> +          maxItems: 1
-
-That's already the maximum. Drop.
-
-> +
-> +        phy-names:
-> +          const: pcie-phy1
-> +
-> +        power-domain: false
-> +
-> +      required:
-> +        - resets
-> +        - reset-names
-> +        - phys
-> +        - phy-names
-> +        - mediatek,pbus-csr
-> +
->    - if:
->        properties:
->          compatible:
-> @@ -106,6 +157,8 @@ allOf:
->  
->          power-domains: false
->  
-> +        mediatek,pbus-csr: false
-> +
->        required:
->          - phys
->          - phy-names
-> @@ -123,6 +176,8 @@ allOf:
->  
->          phy-names: false
->  
-> +        mediatek,pbus-csr: false
-> +
->        required:
->          - power-domains
->  
-> @@ -135,6 +190,8 @@ allOf:
->          clocks:
->            minItems: 6
->  
-> +        mediatek,pbus-csr: false
-> +
->        required:
->          - power-domains
->  
-> @@ -157,6 +214,8 @@ allOf:
->  
->          power-domain: false
->  
-> +        mediatek,pbus-csr: false
-> +
->  unevaluatedProperties: false
->  
->  examples:
-> @@ -316,3 +375,54 @@ examples:
->              };
->          };
->      };
-> +
-> +  # AN7583
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/irq.h>
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/clock/en7523-clk.h>
-> +
-> +    soc_3 {
-> +        #address-cells = <2>;
-> +        #size-cells = <2>;
-> +
-> +        pcie@1fa92000 {
-> +            compatible = "airoha,an7583-pcie";
-> +            device_type = "pci";
-> +            linux,pci-domain = <1>;
-> +            #address-cells = <3>;
-> +            #size-cells = <2>;
-> +
-> +            reg = <0x0 0x1fa92000 0x0 0x1670>;
-> +            reg-names = "port1";
-> +
-> +            clocks = <&scuclk EN7523_CLK_PCIE>;
-> +            clock-names = "sys_ck1";
-> +
-> +            phys = <&pciephy>;
-> +            phy-names = "pcie-phy1";
-> +
-> +            ranges = <0x02000000 0 0x24000000 0x0 0x24000000 0 0x4000000>;
-> +
-> +            resets = <&scuclk>; /* AN7583_PCIE1_RST */
-> +            reset-names = "pcie-rst1";
-> +
-> +            mediatek,pbus-csr = <&pbus_csr 0x8 0xc>;
-> +
-> +            interrupts = <GIC_SPI 40 IRQ_TYPE_LEVEL_HIGH>;
-> +            interrupt-names = "pcie_irq";
-> +            bus-range = <0x00 0xff>;
-> +            #interrupt-cells = <1>;
-> +            interrupt-map-mask = <0 0 0 7>;
-> +            interrupt-map = <0 0 0 1 &pcie_intc1 0>,
-> +                            <0 0 0 2 &pcie_intc1 1>,
-> +                            <0 0 0 3 &pcie_intc1 2>,
-> +                            <0 0 0 4 &pcie_intc1 3>;
-> +
-> +            pcie_intc1_4: interrupt-controller {
-> +                interrupt-controller;
-> +                #address-cells = <0>;
-> +                #interrupt-cells = <1>;
-> +            };
-> +        };
-> +    };
-> -- 
-> 2.51.0
-> 
+>---
+> drivers/gpu/drm/xe/xe_bo.c | 8 ++++----
+> 1 file changed, 4 insertions(+), 4 deletions(-)
+>
+>diff --git a/drivers/gpu/drm/xe/xe_bo.c b/drivers/gpu/drm/xe/xe_bo.c
+>index 6fea39842e1e..2be7a618165a 100644
+>--- a/drivers/gpu/drm/xe/xe_bo.c
+>+++ b/drivers/gpu/drm/xe/xe_bo.c
+>@@ -9,6 +9,7 @@
+> #include <linux/nospec.h>
+>
+> #include <drm/drm_drv.h>
+>+#include <drm/drm_dumb_buffers.h>
+> #include <drm/drm_gem_ttm_helper.h>
+> #include <drm/drm_managed.h>
+> #include <drm/ttm/ttm_backup.h>
+>@@ -3130,14 +3131,13 @@ int xe_bo_dumb_create(struct drm_file *file_priv,
+> 	struct xe_device *xe = to_xe_device(dev);
+> 	struct xe_bo *bo;
+> 	uint32_t handle;
+>-	int cpp = DIV_ROUND_UP(args->bpp, 8);
+> 	int err;
+> 	u32 page_size = max_t(u32, PAGE_SIZE,
+> 		xe->info.vram_flags & XE_VRAM_FLAGS_NEED64K ? SZ_64K : SZ_4K);
+>
+>-	args->pitch = ALIGN(args->width * cpp, 64);
+>-	args->size = ALIGN(mul_u32_u32(args->pitch, args->height),
+>-			   page_size);
+>+	err = drm_mode_size_dumb(dev, args, SZ_64, page_size);
+>+	if (err)
+>+		return err;
+>
+> 	bo = xe_bo_create_user(xe, NULL, NULL, args->size,
+> 			       DRM_XE_GEM_CPU_CACHING_WC,
+>-- 
+>2.50.1
+>
 
