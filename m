@@ -4,193 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A461CAC5B9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Sep 2025 15:25:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31628CAC5B9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Sep 2025 15:27:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:References:Message-ID:Subject:CC:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7DrfsUfYOjRcTmkcVDBqPf9zwY1622Tqdmn7/DS0wIY=; b=Lalv/r87p8uDaIE8l7Aa0rXuvk
-	oIezgJxUa1PXLrNV5hF7ERbomf30ku55wgwwOM4B9f5Yleg3EV/DKgfwGxKQM9KyUYmsdnjeLMn01
-	ceW2eWvT4K+QxJ4+96k2O3cHB/Sfm9BeurvckJCd5O4lZh/6RmZMdZE0WmvZsIyWUFsYTzLrnRq3n
-	7WogADjYwfIxXWN75FbXVNchXyY67i1gee4JAwaMl8GUGOWM8SoI8PIBrmhldER2FhnMi3Yju98Ij
-	Cg9+stpbu9S0tSenyP8D79Bhmh0EG7Tcs8HDXDcM8XNPDi8kXlj/JxWsPNy7pjGjTqO1jl8E1jLnu
-	9hGPn/Rw==;
+	bh=lD/ZRIRPRoD4eeilEpQ/Ax8KbRLZBttE2gusXUBy/7U=; b=ajeWQJbHwfqXfZvZloTa5gfwqu
+	FhVujkDToewij83Iu46/N1DAZeosYsPPGD6ZeTF7ioN544ThBnidov4I+OMt4/Td9RTNCT80DNROS
+	FcN4w8IwfHApQ8oRvafalrKqFtGW+MDsPcQLf8u5B1H4wWD4OaSosCpYZhCyAmw7QE8UhncD+iB0b
+	+5F7D0xtRzbo1K1JLHO1l3P5sCrT2N/upuKPnx0NwDGhJuibFy3Aggp4nSzktFn8tCD7JSacB0uXg
+	HQAVNKvUKpZvWuufFusbYALxAx+R3sjh2J+QnX61VvmuD1kFaOZ6VkjKmLsAajNJI2d0KZ1yH2NIt
+	ZFA69lHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3Fl5-00000002me7-2fmm;
-	Mon, 29 Sep 2025 15:25:47 +0000
-Received: from mgamail.intel.com ([192.198.163.18])
+	id 1v3FmH-00000002mo5-15jd;
+	Mon, 29 Sep 2025 15:27:01 +0000
+Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3Fl2-00000002mba-0FoB;
-	Mon, 29 Sep 2025 15:25:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1759159544; x=1790695544;
-  h=date:from:to:cc:subject:message-id:references:
-   content-transfer-encoding:in-reply-to:mime-version;
-  bh=0yMBbTdrbZsoKnHaFswecQWWVrw035NB0ey/rqgunGY=;
-  b=XyM6YQZJ/O0rmBpfvfC3M1GcDq+oFPN1O+eh2Wx/jbWcdRd+tJSlqLgw
-   juSWWTLRivOWYsPHpGBdiu8of6dzzte65lnWwfZZ4JkM8LCQbwM4bbV9s
-   66m0i37WnHuuyN6WRGs9FLzbCCbaAmNG9H6etjZktpBdw6AjzVoesfmQQ
-   6M2BgqtrE/JfJqKi+YmgJQpBKcSbd7u9P7hxjupohemXF3WDfaZlZBNR8
-   dX2vpix047WepHKYo8sOp4mnxixLJPDiO5rcK9P0ex4CvJag7FXTsNuPZ
-   aCDdCzWuGVS5+77OtaWAStB1/FfZoXCtFX/ueo5LOcycE+o1/CeUs2Dnf
-   w==;
-X-CSE-ConnectionGUID: HR0ffKbXTs2acffkhdGWCQ==
-X-CSE-MsgGUID: uOm7swWfTiuhmfuiojjWmg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11568"; a="60615335"
-X-IronPort-AV: E=Sophos;i="6.18,301,1751266800"; 
-   d="scan'208";a="60615335"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
-  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Sep 2025 08:25:37 -0700
-X-CSE-ConnectionGUID: vS2lVLIiSOaesnaX4OriqQ==
-X-CSE-MsgGUID: uoeqhmQtRhiBoZ3bnTr8Kg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.18,301,1751266800"; 
-   d="scan'208";a="177387425"
-Received: from orsmsx902.amr.corp.intel.com ([10.22.229.24])
-  by orviesa006.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Sep 2025 08:25:37 -0700
-Received: from ORSMSX902.amr.corp.intel.com (10.22.229.24) by
- ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.27; Mon, 29 Sep 2025 08:25:36 -0700
-Received: from ORSEDG903.ED.cps.intel.com (10.7.248.13) by
- ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.27 via Frontend Transport; Mon, 29 Sep 2025 08:25:36 -0700
-Received: from SN4PR2101CU001.outbound.protection.outlook.com (40.93.195.55)
- by edgegateway.intel.com (134.134.137.113) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.27; Mon, 29 Sep 2025 08:25:36 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=IAwpEE3TeyxfuQRigo3ZFdiwxt3TKU8egDzAdn/7KexEXXMPlkI0iHLcoIHdjPYDxlTTltodtWlkePpAD5nHhITvBtRWdJ9fl7gTa8ver572g9K+Z60GTVfDV3Lcz/dDfrIfE/eASzwb31JYNDIIU5aq7bbxsbspRIZ4GoWfc086A9pOA3IEYCSA20lIsCmuLjngURZFMP3MQo9aRTJxkr4ntyDNqOquYeKWlSp2t2DM/+VZvi2xur1XgM50PjxMNKiK65iwvJM4dwrrPckjSOFyG06v4eaNzq2Ou8SOZe6g0fTBUZp0N6OWX6gAQKxwUBFxfDQBm/TIfTdrQYNU6g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=p0lyNX3BUmvGp66jtnY0mXVEFk176o4Cm6HjnAa0dFc=;
- b=Z5LhSpWQae9MRZPSfIY2nZ4Xr4C58nQ+SWYgMWJMlswkLSFVK6RcuQP2X7++EEnGyHSMgpvi6Bnb9aW+3f7s4Tw4NK+gIHLdtiysg9nG6Y79zdKA/RzXu2Nj5najeblC5z/AmbHs1/oyM7hAO7vz1LAyQdI2YYGYPKRo8ac4DVrAlijbS0hTAtygyBy/8oCRPkbD5Oh5kUsdSmSgUp4AQEkKrYT5yTBUHtEFbxIp1IauYZsSs88NjBV7sm9x42uPvDl6gNBbhkE1xwJwflJFVhjQ55HicAm/MtDi32gW+lF2mbBsbp6jfL1oFOKojflhWHhmNoz3+CrelPEXhcH+hw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Received: from CY5PR11MB6139.namprd11.prod.outlook.com (2603:10b6:930:29::17)
- by CH3PR11MB7868.namprd11.prod.outlook.com (2603:10b6:610:12e::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9160.16; Mon, 29 Sep
- 2025 15:25:30 +0000
-Received: from CY5PR11MB6139.namprd11.prod.outlook.com
- ([fe80::7141:316f:77a0:9c44]) by CY5PR11MB6139.namprd11.prod.outlook.com
- ([fe80::7141:316f:77a0:9c44%6]) with mapi id 15.20.9160.015; Mon, 29 Sep 2025
- 15:25:30 +0000
-Date: Mon, 29 Sep 2025 10:25:26 -0500
-From: Lucas De Marchi <lucas.demarchi@intel.com>
-To: Thomas Zimmermann <tzimmermann@suse.de>
-CC: <simona@ffwll.ch>, <airlied@gmail.com>, <mripard@kernel.org>,
-	<maarten.lankhorst@linux.intel.com>, <geert@linux-m68k.org>,
-	<tomi.valkeinen@ideasonboard.com>, <dri-devel@lists.freedesktop.org>,
-	<linux-mediatek@lists.infradead.org>, <freedreno@lists.freedesktop.org>,
-	<linux-arm-msm@vger.kernel.org>, <imx@lists.linux.dev>,
-	<linux-samsung-soc@vger.kernel.org>, <nouveau@lists.freedesktop.org>,
-	<virtualization@lists.linux.dev>, <spice-devel@lists.freedesktop.org>,
-	<linux-renesas-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
-	<linux-tegra@vger.kernel.org>, <intel-xe@lists.freedesktop.org>,
-	<xen-devel@lists.xenproject.org>, Matthew Auld <matthew.auld@intel.com>,
-	Thomas =?utf-8?Q?Hellstr=C3=B6m?= <thomas.hellstrom@linux.intel.com>,
-	"Rodrigo Vivi" <rodrigo.vivi@intel.com>
-Subject: Re: [PATCH v6 23/25] drm/xe: Compute dumb-buffer sizes with
- drm_mode_size_dumb()
-Message-ID: <urjqzmhgj2otboptnkgwa3bampqxi362xxtlmbrwf5td3qm3rf@pplm7q755sgg>
-References: <20250821081918.79786-1-tzimmermann@suse.de>
- <20250821081918.79786-24-tzimmermann@suse.de>
-Content-Type: text/plain; charset="iso-8859-1"; format=flowed
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250821081918.79786-24-tzimmermann@suse.de>
-X-ClientProxiedBy: SJ0PR03CA0356.namprd03.prod.outlook.com
- (2603:10b6:a03:39c::31) To CY5PR11MB6139.namprd11.prod.outlook.com
- (2603:10b6:930:29::17)
+	id 1v3FmD-00000002mmo-2xR4
+	for linux-mediatek@lists.infradead.org;
+	Mon, 29 Sep 2025 15:27:00 +0000
+Received: by mail-lj1-x22b.google.com with SMTP id 38308e7fff4ca-362e291924aso40045351fa.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 29 Sep 2025 08:26:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1759159615; x=1759764415; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=lD/ZRIRPRoD4eeilEpQ/Ax8KbRLZBttE2gusXUBy/7U=;
+        b=YYTIc2jZHZLROPB1u44+vCBM/89/CdLLjjG/HoLv25VU5WcCwGfV/d6ue6upT+LhrZ
+         X89mcs/0q5fxNLXAFu/l4m9YOtVspGCsPk2UVKVKhMwUzv0xYpeuznOogSQCA7ECaxHg
+         PlqGuEinVJ49TxjCYWuSF5fBCMbH6FBjhmg74n4MTKmaWLo6dBTo7XxYJfvp+nzt56Uz
+         A5EXDJvpWzKvqVJM1v9Rqn4c5ggRIGBeHLdAVPLkwcaf+TuS6FK6BRSEgATjthLwWGYd
+         p4tWorrVvGTMQe0t2WDD0xyWVupgUjxA8UdIE31NQbp2tXuA44wWNXRCgbWaRXiUwRpQ
+         AMhQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1759159615; x=1759764415;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=lD/ZRIRPRoD4eeilEpQ/Ax8KbRLZBttE2gusXUBy/7U=;
+        b=lZnR8yNJLLQUMbJYNKFrjbBHz+GJg0R1AcKmG69Adqj0U5Xv+lypf4JjKujIfuCL23
+         u7LHgTm50bL/ZGnSjfFh0JYUK6vDwuIaor7I7CA4MTRMai+nB9XEv8s1ILNwtiH8p4gO
+         4kIzw71EKxud5nExLgFTj8kxB0lbtCSpqhuaz4K5E22ot9p8+dPJe/laY9V4GGPDtumf
+         dVeJF25sLDvPXf3AtnDABP1KS6M1rdd7Vg8ov1UuRgetbuXH1zawwpYQcGJD6OzUMBe5
+         ghyvyVwJKt+C2NJu23r7Q+yN6mCLgiX86FG5iIkQVMXYLzsCpMVJlp32a53qh0Nr/6O8
+         9kjw==
+X-Forwarded-Encrypted: i=1; AJvYcCWit0zeHGSqRWuwmwfrRqisx+PKK3gp+gvxlUXNJ/5jnyAFrNYWS3f9cDs8CzBecVKwP5t54LKA3LKsSFBaQw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzaq0fVot/1O8Jf9BOJHCXYEVtUZYzIZGzHjkjSaWmUd7Ep6KAy
+	diLcPPWoqB+bph9aw2xTEsJRXlOiod+6qSnqdw+f2SEN+rbITbonIIwa9kJBd8WuvnEKWNDJ8rw
+	ZWgkL341k6xCpISLvEqLhidSEjHl1aXXJ1dDGHm2KJw==
+X-Gm-Gg: ASbGncs7eff1LhBMKOUavdF7MLVCq9liknia7CFc1vE1L8x0kO+nbU/C8R/duaenytk
+	5Xu8P0KzbTVK82X+arG/4gx+BL04uR46irP8NpUX7OwMY3ZfaBrUGm7eLeOqZsiskMeYVEq0m70
+	LOCm3qml5Wm8vNYi3fhGnvMmYVNzjiU7JoIkW74oLN3Fxxct+E++EA1YDcpFwFXSazQEENIKESs
+	IikcOTw2kAA8D/T/g==
+X-Google-Smtp-Source: AGHT+IEtN2lUKLnGoQ7WbW57ONBR/QKmzEKKycsDkK+DioqKXixXXuBeSvK0yyrJ+ATSRroRyWJm9ggSxHWFJcUI9/Y=
+X-Received: by 2002:a05:651c:25d3:10b0:372:950f:2ae2 with SMTP id
+ 38308e7fff4ca-372950f3057mr14578111fa.5.1759159615153; Mon, 29 Sep 2025
+ 08:26:55 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CY5PR11MB6139:EE_|CH3PR11MB7868:EE_
-X-MS-Office365-Filtering-Correlation-Id: 9a7ce1ba-c1b5-42d1-e603-08ddff6c6cdd
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|376014|7416014|7053199007;
-X-Microsoft-Antispam-Message-Info: =?iso-8859-1?Q?JgDW+n75dUbON4IcrAM9gXBZeut+NEYdDAKyzZMSOy/a+UAuYmOb+aKsvU?=
- =?iso-8859-1?Q?tCxTC3tEevtR3QvGENanInjPLdTlWNlZcnks8+8Qp5gWnFCg1aY/14KpP1?=
- =?iso-8859-1?Q?4qi4d3SdqCXhs2SuIQ5kUf8ocjlXBi3gGUL3N6VtHgZ3QYyHHHmErPXO9f?=
- =?iso-8859-1?Q?gnwyFOh1aZZHuIVZ+jdZvWrAbQoa4X/M9Gx0268kC2MU+4SGTh6fNmstTq?=
- =?iso-8859-1?Q?yuIZugOJky1ADC4PCtssiCS6JwPmw55y6iVWduEskvnd9iqrTsu1yP0t1t?=
- =?iso-8859-1?Q?Ta4WQOWP6vcEv9zsP1a4fQe3Pu6eXuqkSyAo2Sc5nrUn/+TLN8ZCep9kL6?=
- =?iso-8859-1?Q?Q+9Br37abcU7w1/FWFihWz9YZH+HV6y/3XiCh4RGIiYa/XnhQZ/YhScxv2?=
- =?iso-8859-1?Q?5OvuNee3VvQajgQIrlDgY/yQLkGQNrK3uuXLghItw9ByUbiDwyXJuy/ykW?=
- =?iso-8859-1?Q?8TgF9r/OM17ur2r3p+knOkgFxpnV+/XndLk+9xdpOsNz9s+N0gsdCcNoSK?=
- =?iso-8859-1?Q?saksMVF0xvZYRUnGkkPMOSMo3tRhH6+SI2vhqcxS6hcfu0NEB4vMGuZmYf?=
- =?iso-8859-1?Q?z/TbXTR6VOMLmEmK3mllz5S2EHuY7mOZ7ex4f6VYQfBUWLD5h5LbjkVGZT?=
- =?iso-8859-1?Q?oA/a8HFZaVBgyhhsXAdyEMBm39S70+Cqaepit0axuvwgFeIdE1XkBrcz5a?=
- =?iso-8859-1?Q?RflIi0Ebji0+KsOSssR2H24pqCzwhW5eHXNEZwbPLGll2hpmzOGXoHF3Bz?=
- =?iso-8859-1?Q?Lc79hnyc9etauCvWTuwUoozkWAO44Iwe4+shAQgUNpCCGi7CV+coxseyUo?=
- =?iso-8859-1?Q?ywymFa0LuOTuFCn4goljNp4eMb/zKZnPmrrcu0OvktrQ5qosuafP+K2vmv?=
- =?iso-8859-1?Q?8iPf2rIricA/DwxlAShRF3F/2Fy6jMTWNnh6APdQUe1CJTMsgOhiRcd05e?=
- =?iso-8859-1?Q?YW8bF010UdNqsFwUUKnls+91hJ1i6llKjYn1VH3289GExOOE0gLUW+Xn2L?=
- =?iso-8859-1?Q?ZvT1FDXgQFj5EHUdxItCwyxt5yQA3fMcsaE5KRCnTM4N2j08tfaQo/oLXj?=
- =?iso-8859-1?Q?iKjGRZOOTwL9ZDDHVx8AtciEN5dNNotEUKZgMgB6UKtV7qql8ekeDpV18P?=
- =?iso-8859-1?Q?YXSXhQ5S0XP6e79FHqi+Pmw5pozxkkiomhzHrWcDz/qzEoLKtjyTgYSef8?=
- =?iso-8859-1?Q?S3a1oln1tvHgGho0n0pt1hPT0Lgi+/MCITrpuxS8e9Tozz429RqX6HdTGu?=
- =?iso-8859-1?Q?3zHqfcltAvbghVkwYdlHahSiy8WLYK8OTFwek9I9L+azzGQCSLClQqA5z2?=
- =?iso-8859-1?Q?apDFYN5gHs1R8/gZ4tBt2PrLkECT9zChKzIUcbH2adPfX+8usn45OXLA0e?=
- =?iso-8859-1?Q?WAPi8Ou/7jcUgs6Z3PwR+G/RNscLdUey7h8yOCZJTxdjlVml4iiGxZNxSm?=
- =?iso-8859-1?Q?4vuXK9k/zSmZVsXCJz7YXxG+tP4jZjELxTtG8yyHqeBJD0rs+JcQXGh+I0?=
- =?iso-8859-1?Q?rNuG3CeJO2uNuFBAoulLs8?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CY5PR11MB6139.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014)(7416014)(7053199007);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?tf+wSmX7h/PnweaMVgGBvU1wGT0ZB0STuf3BwXg60UfCA3drqBKZRzfS2o?=
- =?iso-8859-1?Q?/ZqyAt8WbVigpR4VfkcYUTV5JH4wmQjVB92GX9SXWnOdvX0yHShHvseWqJ?=
- =?iso-8859-1?Q?eZDiBjN3EnQvVHFuN1lmQZik9qaurcI4cnAmHN7UwET+zC1dYN+2HXw+kN?=
- =?iso-8859-1?Q?jXEQvFnrMgmwyy6xi3lPZ73k1wjUlfMbbCvgoIgfVr/W564ntjQwwWRe9v?=
- =?iso-8859-1?Q?9SfZrG/d253ATx7IpyWYhGRg3uTb+TwBEOFSzEl22OMYITk22ctzjVh+Bm?=
- =?iso-8859-1?Q?ZmtihVqNuZh03gk/k1fqMKCKLbfRrwmbQssAGaXI/ZHufVCNwn+7lmwk0T?=
- =?iso-8859-1?Q?CP9lUSbsgHw1tCLza/3qCGF8b2092Bzlgq+sD3uVfRD9hKAEMSaSW6Fbab?=
- =?iso-8859-1?Q?YZIg6TKncLqE1bwahGeLIKcPJsCoiE5Yg50PikcKh9YkTyPx7mpKz/vJ8H?=
- =?iso-8859-1?Q?oNyK3OObWUrdYNC071IO56fr62hyDlSIaiTjtLTmi5uKhRU8ljuyJ7PL+p?=
- =?iso-8859-1?Q?2RkLhJkCEOtWDU2RdJX6UgjUAsGzAsr2bYznvl/M0gDuGEItNvlZISCO9m?=
- =?iso-8859-1?Q?g5C2rMxSORI3gzgrwgFS9EzItU3VCJcqlr9hDrmJuxoAbk1nSAOvF6fluf?=
- =?iso-8859-1?Q?LAqrEqRdh2HXRC5fTtwfdCmfydp/hO0Yre55Vbww4HojqLu+EHq2WYmUd7?=
- =?iso-8859-1?Q?Qp9c3CoItHfMRMNTfx4O7qO0yi9wimzMAg+R+BmUzmcMQH3Q6MkTr1ayY8?=
- =?iso-8859-1?Q?F8baLI3Zgsj09YIuLO7JCFoxBR9ERxUYi81gE86u2y/jICQeUZbzTwQMGt?=
- =?iso-8859-1?Q?IakF75T0fSagXPQhtVPJwKb+xUlTGNcGGWvGqRgzUTkG/9wIRT5v4QVc98?=
- =?iso-8859-1?Q?SqGxkfewdurHzRIATCiyDv8BlEBusHKEdpX+gY24BZslMJ1YVDWeMkzPDS?=
- =?iso-8859-1?Q?rxBLSQIQ8j3eGiTGDVbqjOzFg8Q1x5cdpIIGYkoo5uUmx5onN623haWiGU?=
- =?iso-8859-1?Q?fSaSkyGTNbRaTHpSj+N+RhvNy4EV1KPhvvwpLVInZekMy4qTpf5ubCmtoj?=
- =?iso-8859-1?Q?5pwOeO5g7k1MAPL/a2rgceK8LoBbN8h7f3NExpmKEjbKu1FiG8uEQ+BMrq?=
- =?iso-8859-1?Q?QiqC8BZNY/+sowidrZ6lROpaxzecQ/h2vkSTDbFWqxZFfmn/zBNgevm6r9?=
- =?iso-8859-1?Q?gDnSYU8NChMM3/5O8rCs4XjqNgoZ9KIXeEs9SyPnjHPVP7yxOsySAO+dU8?=
- =?iso-8859-1?Q?S5qZsL+o3i71xBVpWiILJ0WVOLHghYmdKrvx6MsFWa7yBHyTPrTHh341cw?=
- =?iso-8859-1?Q?M7qCAORFBYr7Af5aAE0uKr9GGokIm9AYeZzpPKwX43CvrDLJEGIns1TzRU?=
- =?iso-8859-1?Q?+Qz5LXGuRr5O9V09fGEAIZZtS7YH0Qi6eWccHvSIeCEtCIqcov7bkMzq8H?=
- =?iso-8859-1?Q?KddXqiHCb+6Rf7yZqvmWQ11P44fhmrrtnnlZiW40JoFSLA2Qh9pFy9cyUq?=
- =?iso-8859-1?Q?z9B1ojp3dThQaNxhHdzpG7gbcdQT1tPzpH+C7Gkc3UHxQBo0zuTEyIWFpi?=
- =?iso-8859-1?Q?39Xm8PFGxEcvySM/nnU4Y3W2CrbOeb0yURH1IAPAZKBi41k9iv+GSveqDc?=
- =?iso-8859-1?Q?jEs7O4tDnTQqR/7eh3t+Ml3LB7BiINHuWC4QScIjbJNUeNzjTVfwJ1cg?=
- =?iso-8859-1?Q?=3D=3D?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9a7ce1ba-c1b5-42d1-e603-08ddff6c6cdd
-X-MS-Exchange-CrossTenant-AuthSource: CY5PR11MB6139.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Sep 2025 15:25:30.8021
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: eZARfbdpVMrNRufPMp0vxzwZrI+oykbORRY+0kxlNZv8Erp/UhQ4BBo4LgIufw57mOjduLFIUfwUc6K6PQD0eQggml19NKcmIrHLZQXWOZg=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR11MB7868
-X-OriginatorOrg: intel.com
+References: <20250929025358.2064-1-vulab@iscas.ac.cn>
+In-Reply-To: <20250929025358.2064-1-vulab@iscas.ac.cn>
+From: David Lechner <dlechner@baylibre.com>
+Date: Mon, 29 Sep 2025 17:26:44 +0200
+X-Gm-Features: AS18NWC2Vrzn89dFO6i3Pc5PcwsDZZtJqDcKNUIw8w9lRMGluo4z28T9Y4iCLNQ
+Message-ID: <CAMknhBFm1HPKv6bPnYALc_=wGBHWB3SKnWmnBZ82Pan9z9TPVw@mail.gmail.com>
+Subject: Re: [PATCH] iio: adc: mt6360: Handle error in cleanup path correctly
+To: Haotian Zhang <vulab@iscas.ac.cn>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>, =?UTF-8?B?TnVubyBTw6E=?= <nuno.sa@analog.com>, 
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250929_082544_170632_74AA00DE 
-X-CRM114-Status: GOOD (  10.60  )
+X-CRM114-CacheID: sfid-20250929_082658_002273_D694B930 
+X-CRM114-Status: GOOD (  20.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -205,67 +98,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 21, 2025 at 10:17:30AM +0200, Thomas Zimmermann wrote:
->Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch
->and buffer size. Align the pitch to a multiple of 8. Align the
->buffer size according to hardware requirements.
->
->Xe's internal calculation allowed for 64-bit wide buffer sizes, but
->the ioctl's internal checks always verified against 32-bit wide limits.
->Hance, it is safe to limit the driver code to 32-bit calculations as
->well.
->
->v3:
->- mention 32-bit calculation in commit description (Matthew)
->
->Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
->Reviewed-by: Matthew Auld <matthew.auld@intel.com>
->Cc: Lucas De Marchi <lucas.demarchi@intel.com>
->Cc: "Thomas Hellström" <thomas.hellstrom@linux.intel.com>
->Cc: Rodrigo Vivi <rodrigo.vivi@intel.com>
+It looks like you missed the IIO mailing list in the CC, so this might
+not show up in Jonathan's queue.
 
-Acked-by: Lucas De Marchi <lucas.demarchi@intel.com>
+On Mon, Sep 29, 2025 at 4:54=E2=80=AFAM Haotian Zhang <vulab@iscas.ac.cn> w=
+rote:
+>
+> The return value of a regmap_raw_write() in the cleanup path was
+> being ignored.
+>
+> Fix this by checking the return value and propagating the error.
+>
+> Fixes: 1f4877218f7e ("iio: adc: mt6360: Add ADC driver for MT6360")
+> Signed-off-by: Haotian Zhang <vulab@iscas.ac.cn>
+> ---
+>  drivers/iio/adc/mt6360-adc.c | 7 ++++++-
+>  1 file changed, 6 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/iio/adc/mt6360-adc.c b/drivers/iio/adc/mt6360-adc.c
+> index 69b3569c90e5..97c4af8a93fc 100644
+> --- a/drivers/iio/adc/mt6360-adc.c
+> +++ b/drivers/iio/adc/mt6360-adc.c
+> @@ -70,6 +70,7 @@ static int mt6360_adc_read_channel(struct mt6360_adc_da=
+ta *mad, int channel, int
+>         ktime_t predict_end_t, timeout;
+>         unsigned int pre_wait_time;
+>         int ret;
+> +       int cleanup_ret;
+>
+>         mutex_lock(&mad->adc_lock);
+>
+> @@ -130,11 +131,15 @@ static int mt6360_adc_read_channel(struct mt6360_ad=
+c_data *mad, int channel, int
+>  out_adc_conv:
+>         /* Only keep ADC enable */
+>         adc_enable =3D cpu_to_be16(MT6360_ADCEN_MASK);
+> -       regmap_raw_write(mad->regmap, MT6360_REG_PMUADCCFG, &adc_enable, =
+sizeof(adc_enable));
+> +       cleanup_ret =3D regmap_raw_write(mad->regmap, MT6360_REG_PMUADCCF=
+G,
+> +                               &adc_enable, sizeof(adc_enable));
+> +       if (ret >=3D 0)
+> +               ret =3D cleanup_ret;
 
-to merge this via drm-misc.
+This overwrites the original return error, which is IIO_VAL_INT on
+success or an error code. In either case, changing the return value
+will break things.
 
-thanks
-Lucas De Marchi
+In cleanup paths, there really isn't anything we can do with return
+values other than ignore them like we were already doing or log an
+error message.
 
->---
-> drivers/gpu/drm/xe/xe_bo.c | 8 ++++----
-> 1 file changed, 4 insertions(+), 4 deletions(-)
+>         mad->last_off_timestamps[channel] =3D ktime_get();
+>         /* Config prefer channel to NO_PREFER */
+>         regmap_update_bits(mad->regmap, MT6360_REG_PMUADCRPT1, MT6360_PRE=
+FERCH_MASK,
+
+The return value here is also being ignored. If we decide that we
+should add error messages, then we should add one here as well.
+
+>                            MT6360_NO_PREFER << MT6360_PREFERCH_SHFT);
+> +
+>  out_adc_lock:
+>         mutex_unlock(&mad->adc_lock);
 >
->diff --git a/drivers/gpu/drm/xe/xe_bo.c b/drivers/gpu/drm/xe/xe_bo.c
->index 6fea39842e1e..2be7a618165a 100644
->--- a/drivers/gpu/drm/xe/xe_bo.c
->+++ b/drivers/gpu/drm/xe/xe_bo.c
->@@ -9,6 +9,7 @@
-> #include <linux/nospec.h>
->
-> #include <drm/drm_drv.h>
->+#include <drm/drm_dumb_buffers.h>
-> #include <drm/drm_gem_ttm_helper.h>
-> #include <drm/drm_managed.h>
-> #include <drm/ttm/ttm_backup.h>
->@@ -3130,14 +3131,13 @@ int xe_bo_dumb_create(struct drm_file *file_priv,
-> 	struct xe_device *xe = to_xe_device(dev);
-> 	struct xe_bo *bo;
-> 	uint32_t handle;
->-	int cpp = DIV_ROUND_UP(args->bpp, 8);
-> 	int err;
-> 	u32 page_size = max_t(u32, PAGE_SIZE,
-> 		xe->info.vram_flags & XE_VRAM_FLAGS_NEED64K ? SZ_64K : SZ_4K);
->
->-	args->pitch = ALIGN(args->width * cpp, 64);
->-	args->size = ALIGN(mul_u32_u32(args->pitch, args->height),
->-			   page_size);
->+	err = drm_mode_size_dumb(dev, args, SZ_64, page_size);
->+	if (err)
->+		return err;
->
-> 	bo = xe_bo_create_user(xe, NULL, NULL, args->size,
-> 			       DRM_XE_GEM_CPU_CACHING_WC,
->-- 
->2.50.1
+> --
+> 2.50.1.windows.1
 >
 
