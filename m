@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 153B8CAC5BB
-	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Sep 2025 16:27:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED89DCAC5B5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Sep 2025 02:36:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=MSRaQ+ObtkD3Po8EdVDm3zfPKQVhGfP4jfrtmOzXWk8=; b=PepU4QFeTbhjB3iWB6DeH3GzjR
-	SscvSaTTTYq/Qurq/QoaFQwhvnARZXp6mZVXt3nbhLivYgggKKbGFsexsXZ8++m/EMzH37rjnG6Fa
-	WBx1n5pvDY2RsLp3rZdFsGKRdp+n4IOHfS8vUEDxAaSHyslRn4uj66JPZthGIMMXvqSDOTPBVOlEU
-	8yC+HaM3HptJTfZdQZwJAZs2pSE+qjD1MBgskLHRDgZtxku15Oz1s6GlHaleRMeBFLVbW7sczVfKC
-	esDD/3GuL1BJiay7YM5ej+dJuf33Ewi38XV/iqRaUooaXZbxZX3Bzwi9ZQUuu0qNAWEy3oOma4nB7
-	9TmJPXww==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=t+3WBiuhzkliva6qQ60VQN5Z/fBMQIWgWbfshrrlReo=; b=bUBuhEWCe7SlXJxJMJhOIkYGOy
+	TaNIhb/a1cOhePEvb3r71ws5c5PUUTINNBIv0Og/TnehfSzGABK2gmCoJ/KiFuXwOQVkZkcEdEfIN
+	wBixI4DaYCpb1i4lMrmzQdpdkt4sf/5jNpUAgl0cNfp/rLxxayZQZU4t+gbOQhPVqMXf/BY5dvfN2
+	r/PAsSTTeuzng/Foaw2DIsuCyEYzvwYcw931tg3h62Ky2twf0HfOezLZV0R09uvOGmHDV2l4ZweQG
+	qxQxxo4Nj47zaKK+uiDaDVw0p+/GPdr1jDQwAuUWIgtoqINlDqt3PK5P7nC+FsisTah/BH9NOD0oy
+	a8GcRPLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v2uFG-0000000GZys-0gSI;
-	Sun, 28 Sep 2025 16:27:30 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1v33km-0000000184H-3J3q;
+	Mon, 29 Sep 2025 02:36:40 +0000
+Received: from smtp84.cstnet.cn ([159.226.251.84] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v2uFD-0000000GZx2-1KZ8;
-	Sun, 28 Sep 2025 16:27:28 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E440D438D2;
-	Sun, 28 Sep 2025 16:27:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 48B1AC4CEF0;
-	Sun, 28 Sep 2025 16:27:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1759076845;
-	bh=FnampJXSHrU0rM+ZuwqnJeG9CYsIVyW79tDZuVj+Tlc=;
-	h=From:Date:Subject:To:Cc:From;
-	b=E3hevEsRkAecdgEYvHKNhZ8v4gsgm28pIuhVG+LL+Eu/q7VgguRHflI57Rdj2v29j
-	 vXQjtAg6q1qb60SebttOHthzVm2IRUwxTbbYBjOf4JeYYbFUMo8Q2DUMxVTQbSqfhj
-	 4pT34ONqp3P8BO325vhssd0Pum4old6ek0zs3n+qi8CAB47zdBBGAHJ1TeYck8+zFl
-	 o0TkpHFL1wXBJRjwRyr7URiYHeK/X4tC18SpUDT1yaUjNCcBKVGlT13nDBdaG7YL3V
-	 4TmEKqPW0q1TuMzlwufsd6QleGGiUbUdwdGpFGUfOtFleEzbK9NSwnuSM9zoCVbswz
-	 OkUqNU4gEp/mA==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Sun, 28 Sep 2025 18:27:01 +0200
-Subject: [PATCH mt76] wifi: mt76: mt7996: Add missing CHANCTX_STA_CSA
- property
+	id 1v33ki-0000000183P-2Zor;
+	Mon, 29 Sep 2025 02:36:38 +0000
+Received: from DESKTOP-L0HPE2S (unknown [124.16.141.245])
+	by APP-05 (Coremail) with SMTP id zQCowABX+RKr8NloAxaICA--.65038S2;
+	Mon, 29 Sep 2025 10:36:29 +0800 (CST)
+From: Haotian Zhang <vulab@iscas.ac.cn>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Haotian Zhang <vulab@iscas.ac.cn>
+Subject: [PATCH] clk: mediatek: Use devm_alloc for clk_data allocation to fix memory leak on probe error
+Date: Mon, 29 Sep 2025 10:36:20 +0800
+Message-ID: <20250929023621.1968-1-vulab@iscas.ac.cn>
+X-Mailer: git-send-email 2.50.1.windows.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250928-mt7996_chanctx_sta_csa-v1-1-82e455185990@kernel.org>
-X-B4-Tracking: v=1; b=H4sIANRh2WgC/x2M0QoCIRAAf0X2OcHz0PJ+JUIW22of8g5XQhD/P
- etxGGY6CBUmgU11KPRh4T1PWE4K0gvzkzTfJ4M11plgL/pdzyH4+JOptigVYxLUJqy4OuM8OYQ
- ZH4Ue3P7j622ML4eAnYhoAAAA
-X-Change-ID: 20250928-mt7996_chanctx_sta_csa-093a35056e5a
-To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: zQCowABX+RKr8NloAxaICA--.65038S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7uF13tr1DZry8Ww47WrW5GFg_yoW8WFy3pF
+	ykGFWYya4ayw47KFW8tr4kK3WSy340ga4UKF15u3s7u345Gr4jkFZYk3sYva4IyrZ2kFy2
+	qrn09r48ZayUuFDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUUkC14x267AKxVWUJVW8JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
+	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
+	1l84ACjcxK6xIIjxv20xvE14v26r4j6ryUM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4j
+	6F4UM28EF7xvwVC2z280aVAFwI0_Gr1j6F4UJwA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_Cr
+	1j6rxdM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj
+	6xIIjxv20xvE14v26r1j6r18McIj6I8E87Iv67AKxVWUJVW8JwAm72CE4IkC6x0Yz7v_Jr
+	0_Gr1lF7xvr2IYc2Ij64vIr41lF7I21c0EjII2zVCS5cI20VAGYxC7MxkF7I0En4kS14v2
+	6r126r1DMxAIw28IcxkI7VAKI48JMxC20s026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrV
+	AFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CEb7AF67AKxVWUAVWUtwCI
+	c40Y0x0EwIxGrwCI42IY6xIIjxv20xvE14v26r1j6r1xMIIF0xvE2Ix0cI8IcVCY1x0267
+	AKxVWUJVW8JwCI42IY6xAIw20EY4v20xvaj40_Jr0_JF4lIxAIcVC2z280aVAFwI0_Jr0_
+	Gr1lIxAIcVC2z280aVCY1x0267AKxVWUJVW8JbIYCTnIWIevJa73UjIFyTuYvjfUehL0UU
+	UUU
+X-Originating-IP: [124.16.141.245]
+X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiDAUAA2jZ4CVDngAAsj
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250928_092727_381635_FA28AD1B 
-X-CRM114-Status: UNSURE (   6.70  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250928_193637_022859_86C24784 
+X-CRM114-Status: GOOD (  11.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,33 +78,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable missing CHANCTX_STA_CSA property required for MLO.
+The probe functions for the mt6765 apmixed, top, and infrasys clocks
+use mtk_alloc_clk_data() to allocate memory. This requires manual
+freeing of the memory in all error handling paths and in the driver's
+remove function.
 
-Fixes: f5160304d57c ("wifi: mt76: mt7996: Enable MLO support for client interfaces")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Switch to mtk_devm_alloc_clk_data() in order to fix the memory leak in the
+probe function.
+
+Fixes: 1aca9939bf72 ("clk: mediatek: Add MT6765 clock support")
+Signed-off-by: Haotian Zhang <vulab@iscas.ac.cn>
 ---
- drivers/net/wireless/mediatek/mt76/mt7996/init.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/clk/mediatek/clk-mt6765.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-index 5e95a36b42d1645dbf63d8bf6717ac6a29a91a5c..5048f8cf175c2ef4ba6ff343830bdab79fafc441 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-@@ -521,6 +521,7 @@ mt7996_init_wiphy(struct ieee80211_hw *hw, struct mtk_wed_device *wed)
- 	ieee80211_hw_set(hw, SUPPORTS_RX_DECAP_OFFLOAD);
- 	ieee80211_hw_set(hw, NO_VIRTUAL_MONITOR);
- 	ieee80211_hw_set(hw, SUPPORTS_MULTI_BSSID);
-+	ieee80211_hw_set(hw, CHANCTX_STA_CSA);
+diff --git a/drivers/clk/mediatek/clk-mt6765.c b/drivers/clk/mediatek/clk-mt6765.c
+index d53731e7933f..5cfb9a3a5ee3 100644
+--- a/drivers/clk/mediatek/clk-mt6765.c
++++ b/drivers/clk/mediatek/clk-mt6765.c
+@@ -736,7 +736,7 @@ static int clk_mt6765_apmixed_probe(struct platform_device *pdev)
+ 	if (IS_ERR(base))
+ 		return PTR_ERR(base);
  
- 	hw->max_tx_fragments = 4;
+-	clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
++	clk_data = mtk_devm_alloc_clk_data(CLK_APMIXED_NR_CLK);
+ 	if (!clk_data)
+ 		return -ENOMEM;
  
-
----
-base-commit: 56d9de46715245c9cc46dbe16830e431056abbc3
-change-id: 20250928-mt7996_chanctx_sta_csa-093a35056e5a
-
-Best regards,
+@@ -770,7 +770,7 @@ static int clk_mt6765_top_probe(struct platform_device *pdev)
+ 	if (IS_ERR(base))
+ 		return PTR_ERR(base);
+ 
+-	clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
++	clk_data = mtk_devm_alloc_clk_data(CLK_TOP_NR_CLK);
+ 	if (!clk_data)
+ 		return -ENOMEM;
+ 
+@@ -810,7 +810,7 @@ static int clk_mt6765_ifr_probe(struct platform_device *pdev)
+ 	if (IS_ERR(base))
+ 		return PTR_ERR(base);
+ 
+-	clk_data = mtk_alloc_clk_data(CLK_IFR_NR_CLK);
++	clk_data = mtk_devm_alloc_clk_data(CLK_IFR_NR_CLK);
+ 	if (!clk_data)
+ 		return -ENOMEM;
+ 
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.50.1.windows.1
 
 
