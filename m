@@ -4,62 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EB98CAC5B9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Sep 2025 16:10:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC6AECAC5B9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Sep 2025 16:25:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=C7tiW1lLlQHK3c8uKDQKHKYSmxBluixy+3xVj6FtqBw=; b=Rr8XuUh2LmN5f3//jnkchNzJyL
-	o2FG6R5sBpMTt9l5I7ImDMnuEXoWrRG9TGTosTYjG6op7Hbc9O7OGwOjQV8ZA8X9VnWbpSZFBwb0f
-	CWvMHTUYhJR7V+uZAohITvz3WlpWKmp1NuRgn+46Xv7rDAYOBpSOY2TcLJAeFFhy3Q9EDamnV4Mmv
-	a08kEvtp1Le+u3WYUHJZukixxRixsZbimwajNom0alUGvcSppAizlpQwWX1AWPZUpxAq4d+2i7UMk
-	q2SNpeAeL3u4TXww0cHGt4v2PdHKQQDKUCRhlWYzMKUcVqCTZyID70g92xRTt3oz4OR5btUDckHNJ
-	WYsCJW3Q==;
+	bh=Y+hgyn2E0Ma4hOCRVip31Vm6RHNaCa1ts9SY0eNd/9g=; b=duPC7GkDHt8dHjeoZ181XGKorV
+	B9FsAFScCR8+O+NP/LlOyEDiKbFjffNFvAjd5kyUGQrTiXxHOURL0etFUrIGnAztfUgL5x3/nTdlm
+	KhDd1xhPGdC3rtzCs4SpHPlrY7ua1ui+GpA6oleQOCs3xhFQT6Ew12XsNbksynn3t039F9jaaqRkr
+	cecOeACUldLmne3fSm4B2GFdoSksyrFkNlpbAWeKcQbRtbkyB314tJEItDAuHMlAipL7JKFfjGICD
+	Q4OcBwo2ImNaxovuch61w2NF4WL632Ec2SKIJympbj9bwohf0PQvcXsw6SQXT3bb1qJdt38HhGrO3
+	P2CPD43A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3GS9-00000002vuz-1Pem;
-	Mon, 29 Sep 2025 16:10:17 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1v3GgU-00000002yE8-2BBO;
+	Mon, 29 Sep 2025 16:25:06 +0000
+Received: from smtp21.cstnet.cn ([159.226.251.21] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3GS7-00000002vug-0qwS;
-	Mon, 29 Sep 2025 16:10:15 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 76382625EC;
-	Mon, 29 Sep 2025 16:10:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1C5ABC4CEF4;
-	Mon, 29 Sep 2025 16:10:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1759162214;
-	bh=VwMhtKXqp3LJwH0OUSm1EemiOWjyAmIPXaZUF2o60sw=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=PBhj9yc8jaOsTTukyhZ4zNItFdk5J8xaZApDb4/6SYHiICmDC/IuAqFxlhXNTJDKH
-	 PVnBh8tl0KS/ONXvfe117/uz4HNw2WhXYxCHWkqqBmGMyCC7luKvuANlX36uIjPbHs
-	 YiogN9tGiCrEkSLJ1CSINU9O4VnxTwbh9RmUrpiw/FzVLJPtNrFEczLYor4LdpSbHp
-	 AOXHNb27OmXHcGfBaPIWKxq5YXMeJuhWNANXHBqS0EErebR7hNV0YohGMXPZXL95/x
-	 iPYMZuZxvn9cx6do++dx6HV5KKwqhEXZa7/YM1L0iE4obi0Dv795/jMwslB+tqb7qu
-	 vKOC+7QA79Kcw==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id EBB1D39D0C1A;
-	Mon, 29 Sep 2025 16:10:08 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1v3GgP-00000002yCv-2UH0;
+	Mon, 29 Sep 2025 16:25:04 +0000
+Received: from DESKTOP-L0HPE2S (unknown [114.245.39.210])
+	by APP-01 (Coremail) with SMTP id qwCowAD3UKPXstpoT7XhCA--.29927S2;
+	Tue, 30 Sep 2025 00:24:57 +0800 (CST)
+From: Haotian Zhang <vulab@iscas.ac.cn>
+To: Jonathan Cameron <jic23@kernel.org>,
+	linux-iio@vger.kernel.org
+Cc: Lars-Peter Clausen <lars@metafoo.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Abhash Jha <abhashkumarjha123@gmail.com>,
+	Al Viro <viro@zeniv.linux.org.uk>,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Haotian Zhang <vulab@iscas.ac.cn>
+Subject: [PATCH v2] iio: adc: mt6360: Handle error in cleanup path correctly
+Date: Tue, 30 Sep 2025 00:24:53 +0800
+Message-ID: <20250929162453.1203-1-vulab@iscas.ac.cn>
+X-Mailer: git-send-email 2.50.1.windows.1
+In-Reply-To: <20250929025358.2064-1-vulab@iscas.ac.cn>
+References: <20250929025358.2064-1-vulab@iscas.ac.cn>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH v9] Bluetooth: mediatek: add gpio pin to reset bt
-From: patchwork-bot+bluetooth@kernel.org
-Message-Id: <175916220774.1630000.3594430707404440573.git-patchwork-notify@kernel.org>
-Date: Mon, 29 Sep 2025 16:10:07 +0000
-References: <20250926101046.26559-1-ot_zhangchao.zhang@mediatek.com>
-In-Reply-To: <20250926101046.26559-1-ot_zhangchao.zhang@mediatek.com>
-To: Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>
-Cc: marcel@holtmann.org, matthias.bgg@gmail.com, luiz.dentz@gmail.com,
- angelogioacchino.delregno@collabora.com, krzk@kernel.org,
- sean.wang@mediatek.com, deren.Wu@mediatek.com, chris.lu@mediatek.com,
- Hao.qin@mediatek.com, linux-bluetooth@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+X-CM-TRANSID: qwCowAD3UKPXstpoT7XhCA--.29927S2
+X-Coremail-Antispam: 1UD129KBjvJXoWxJrWxKryxuFW8ZrW3uF48WFg_yoW8uryfpr
+	1YkFyqkFy8KFySka1xt3WUZFWFya17Kw4Fk34kCanFv3s8Ar1IgFyrGa4q934v9rZYyan0
+	v3yUuFWUuw18ZaUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUU9014x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
+	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
+	1l84ACjcxK6xIIjxv20xvE14v26r1I6r4UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4j
+	6F4UM28EF7xvwVC2z280aVAFwI0_Gr0_Cr1l84ACjcxK6I8E87Iv6xkF7I0E14v26r4j6r
+	4UJwAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0
+	I7IYx2IY67AKxVWUJVWUGwAv7VC2z280aVAFwI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r1j6r
+	4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwACI402YVCY1x02628v
+	n2kIc2xKxwCY1x0262kKe7AKxVWUtVW8ZwCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7x
+	kEbVWUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E
+	67AF67kF1VAFwI0_Jw0_GFylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVWUJVWUCw
+	CI42IY6xIIjxv20xvEc7CjxVAFwI0_Gr0_Cr1lIxAIcVCF04k26cxKx2IYs7xG6r1j6r1x
+	MIIF0xvEx4A2jsIE14v26r1j6r4UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Gr0_Gr1UYxBIda
+	VFxhVjvjDU0xZFpf9x0JUd-B_UUUUU=
+X-Originating-IP: [114.245.39.210]
+X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiCRAAA2jan9oN4wABsC
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250929_092502_011112_07A5D6DD 
+X-CRM114-Status: GOOD (  11.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,30 +85,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+The return value of a regmap_raw_write() and regmap_update_bits()
+in the cleanup path was being ignored.
 
-This patch was applied to bluetooth/bluetooth-next.git (master)
-by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
+Fix this by checking the return value and warn on error.
 
-On Fri, 26 Sep 2025 18:10:46 +0800 you wrote:
-> Support the platform Bluetooth to be reset by hardware pin,
-> when a Bluetooth exception occurs, attempt to reset the
-> Bluetooth module using the hardware reset pin, as this
-> method is generally more stable and reliable than a
-> software reset. If the hardware reset pin is not specified
-> in the device tree, fall back to the existing software
-> reset mechanism to ensure backward compatibility.
-> 
-> [...]
+Fixes: 1f4877218f7e ("iio: adc: mt6360: Add ADC driver for MT6360")
+Signed-off-by: Haotian Zhang <vulab@iscas.ac.cn>
 
-Here is the summary with links:
-  - [v9] Bluetooth: mediatek: add gpio pin to reset bt
-    https://git.kernel.org/bluetooth/bluetooth-next/c/8fe90a5ad3d9
+---
+Changes in v2:
+ - Do not propagate cleanup path errors.
+ - Log a warning on failure instead of overwriting the return value, as
+   suggested by the maintainer.
+ - Also check the return value of regmap_update_bits() for consistency.
+---
+ drivers/iio/adc/mt6360-adc.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
 
-You are awesome, thank you!
+diff --git a/drivers/iio/adc/mt6360-adc.c b/drivers/iio/adc/mt6360-adc.c
+index 69b3569c90e5..9ee7247aacbe 100644
+--- a/drivers/iio/adc/mt6360-adc.c
++++ b/drivers/iio/adc/mt6360-adc.c
+@@ -70,6 +70,7 @@ static int mt6360_adc_read_channel(struct mt6360_adc_data *mad, int channel, int
+ 	ktime_t predict_end_t, timeout;
+ 	unsigned int pre_wait_time;
+ 	int ret;
++	int cleanup_ret;
+ 
+ 	mutex_lock(&mad->adc_lock);
+ 
+@@ -130,11 +131,16 @@ static int mt6360_adc_read_channel(struct mt6360_adc_data *mad, int channel, int
+ out_adc_conv:
+ 	/* Only keep ADC enable */
+ 	adc_enable = cpu_to_be16(MT6360_ADCEN_MASK);
+-	regmap_raw_write(mad->regmap, MT6360_REG_PMUADCCFG, &adc_enable, sizeof(adc_enable));
++	cleanup_ret = regmap_raw_write(mad->regmap, MT6360_REG_PMUADCCFG,
++				&adc_enable, sizeof(adc_enable));
++	if (cleanup_ret)
++		dev_warn(mad->dev, "Failed to reset ADC config: %d\n", cleanup_ret);
+ 	mad->last_off_timestamps[channel] = ktime_get();
+ 	/* Config prefer channel to NO_PREFER */
+-	regmap_update_bits(mad->regmap, MT6360_REG_PMUADCRPT1, MT6360_PREFERCH_MASK,
++	cleanup_ret = regmap_update_bits(mad->regmap, MT6360_REG_PMUADCRPT1, MT6360_PREFERCH_MASK,
+ 			   MT6360_NO_PREFER << MT6360_PREFERCH_SHFT);
++	if (cleanup_ret)
++		dev_warn(mad->dev, "Failed to reset prefer channel: %d\n", cleanup_ret);
+ out_adc_lock:
+ 	mutex_unlock(&mad->adc_lock);
+ 
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.50.1.windows.1
 
 
