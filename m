@@ -4,90 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60B98CAC5B0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Sep 2025 16:02:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EB98CAC5B9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Sep 2025 16:10:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tBhdtn4WywjV8YX0pSLDWDcNcDkRLFjP5hlSSBzqSms=; b=vtEGppKuKKCRnJpd4w7JNEhM12
-	JN8D88T4azHn8U8q1C5SS2tX0XqlUb3NvipoT5OJsyDyPcuR7AwGoLR18ba2kRt/jQLIYuX0QkgBH
-	3DMNXts/vI5KHklVwujZOGmFav0T7RLKRdovXUIKNYzMHdgMufnCHOrOSz4TENIZFOE6r1WnaD2iD
-	PVy83cWVtvlu/QmVoMHh54gAMLQ2onLIluwFg8p1nYFcvwn16d5o3EiUBlaUj2u1JHeohq9866Zyc
-	E/WFdH9EwFP5xz4zKl4NSwaVAVcP93d77nS61SVRaACimRLVyE6WXgLbcBFdL6dMw72gRfnrNnIgA
-	20tFO8rg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=C7tiW1lLlQHK3c8uKDQKHKYSmxBluixy+3xVj6FtqBw=; b=Rr8XuUh2LmN5f3//jnkchNzJyL
+	o2FG6R5sBpMTt9l5I7ImDMnuEXoWrRG9TGTosTYjG6op7Hbc9O7OGwOjQV8ZA8X9VnWbpSZFBwb0f
+	CWvMHTUYhJR7V+uZAohITvz3WlpWKmp1NuRgn+46Xv7rDAYOBpSOY2TcLJAeFFhy3Q9EDamnV4Mmv
+	a08kEvtp1Le+u3WYUHJZukixxRixsZbimwajNom0alUGvcSppAizlpQwWX1AWPZUpxAq4d+2i7UMk
+	q2SNpeAeL3u4TXww0cHGt4v2PdHKQQDKUCRhlWYzMKUcVqCTZyID70g92xRTt3oz4OR5btUDckHNJ
+	WYsCJW3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3GKC-00000002st1-2vgS;
-	Mon, 29 Sep 2025 16:02:04 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1v3GS9-00000002vuz-1Pem;
+	Mon, 29 Sep 2025 16:10:17 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3GK9-00000002ssV-2zDE;
-	Mon, 29 Sep 2025 16:02:02 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1759161649; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=lO4XkvatoUXQvbjF88NEo4GQV304NUsNzGnfLfpAGQJACgtdT6ns9sqamBDeq5T3rrLNKdsMf5rTsiniDa3tJWa/86fe0pQYx0iN0L5IDHhkJqeNA7IlkLDk/UNDQjKhz5/8rGOPQljktYtoDkNRPLtpPwyO4kdAEK/YNnxGO5I=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1759161649; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=tBhdtn4WywjV8YX0pSLDWDcNcDkRLFjP5hlSSBzqSms=; 
-	b=lVLGTmETVkCIP0WKjmObmfrsZtGUq1ZYWjIVjC8VqJrB4aS4A5ggVHhmXiQIREqehiPffKh/8rJAxzL+50geybX9h7y5p84pJK2E31LxkhYaVa87FqJQhD8htU20NLiJWF+HYRbmrJE1EAF17YQXRe/JLlubBSh4bRbsimFGL68=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nfraprado@collabora.com;
-	dmarc=pass header.from=<nfraprado@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1759161648;
-	s=zohomail; d=collabora.com; i=nfraprado@collabora.com;
-	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=tBhdtn4WywjV8YX0pSLDWDcNcDkRLFjP5hlSSBzqSms=;
-	b=FVF4tF848aJT71bWiRy++xWwA9rP30861XDd6VJanlPKxOzcEwMkNT5gxumr/gid
-	RGj1Z4ASg6BM+hhQSEj2Bbs32NY8JjgpZsmiJRz05Gpee1bJzyqwggVI8cMSCLp2Era
-	LWQsvLIkjLNilz17UTXRFEFBYPa2wjDsDxtsIY4M=
-Received: by mx.zohomail.com with SMTPS id 1759161645995986.0060307420077;
-	Mon, 29 Sep 2025 09:00:45 -0700 (PDT)
-Message-ID: <7307e84f9e4b0a8c67b82f7234f90bf83f201037.camel@collabora.com>
-Subject: Re: [PATCH RFC v2 05/20] drm: Introduce
- DRM_CAP_POST_BLEND_COLOR_PIPELINE
-From: =?ISO-8859-1?Q?N=EDcolas?= "F. R. A. Prado" <nfraprado@collabora.com>
-To: Harry Wentland <harry.wentland@amd.com>, Louis Chauvet	
- <louis.chauvet@bootlin.com>, Maarten Lankhorst	
- <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>,  Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger	
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
- <angelogioacchino.delregno@collabora.com>, Haneen Mohammed	
- <hamohammed.sa@gmail.com>, Melissa Wen <melissa.srw@gmail.com>
-Cc: Alex Hung <alex.hung@amd.com>, wayland-devel@lists.freedesktop.org, 
-	leo.liu@amd.com, ville.syrjala@linux.intel.com,
- pekka.paalanen@collabora.com, 	contact@emersion.fr, mwen@igalia.com,
- jadahl@redhat.com, sebastian.wick@redhat.com, 	shashank.sharma@amd.com,
- agoins@nvidia.com, joshua@froggi.es, mdaenzer@redhat.com, 
-	aleixpol@kde.org, xaver.hugl@gmail.com, victoria@system76.com, 
-	uma.shankar@intel.com, quic_naseer@quicinc.com, quic_cbraga@quicinc.com, 
-	quic_abhinavk@quicinc.com, marcan@marcan.st, Liviu.Dudau@arm.com, 
-	sashamcintosh@google.com, chaitanya.kumar.borah@intel.com,
- mcanal@igalia.com, 	kernel@collabora.com, daniels@collabora.com,
- leandro.ribeiro@collabora.com, 	dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, 	linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org,  Simona Vetter
- <simona.vetter@ffwll.ch>
-Date: Mon, 29 Sep 2025 12:00:40 -0400
-In-Reply-To: <52cce852-f4fb-4692-9318-1602fe878644@amd.com>
-References: <20250917-mtk-post-blend-color-pipeline-v2-0-ac4471b44758@collabora.com>
-	 <20250917-mtk-post-blend-color-pipeline-v2-5-ac4471b44758@collabora.com>
-	 <ff53599d-fd7f-4791-a3e1-3269386c6b3e@bootlin.com>
-	 <52cce852-f4fb-4692-9318-1602fe878644@amd.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.2-2+b1 
+	id 1v3GS7-00000002vug-0qwS;
+	Mon, 29 Sep 2025 16:10:15 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 76382625EC;
+	Mon, 29 Sep 2025 16:10:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1C5ABC4CEF4;
+	Mon, 29 Sep 2025 16:10:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1759162214;
+	bh=VwMhtKXqp3LJwH0OUSm1EemiOWjyAmIPXaZUF2o60sw=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=PBhj9yc8jaOsTTukyhZ4zNItFdk5J8xaZApDb4/6SYHiICmDC/IuAqFxlhXNTJDKH
+	 PVnBh8tl0KS/ONXvfe117/uz4HNw2WhXYxCHWkqqBmGMyCC7luKvuANlX36uIjPbHs
+	 YiogN9tGiCrEkSLJ1CSINU9O4VnxTwbh9RmUrpiw/FzVLJPtNrFEczLYor4LdpSbHp
+	 AOXHNb27OmXHcGfBaPIWKxq5YXMeJuhWNANXHBqS0EErebR7hNV0YohGMXPZXL95/x
+	 iPYMZuZxvn9cx6do++dx6HV5KKwqhEXZa7/YM1L0iE4obi0Dv795/jMwslB+tqb7qu
+	 vKOC+7QA79Kcw==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id EBB1D39D0C1A;
+	Mon, 29 Sep 2025 16:10:08 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-X-ZohoMailClient: External
-X-ZohoMail-Owner: <7307e84f9e4b0a8c67b82f7234f90bf83f201037.camel@collabora.com>+zmo_0_nfraprado@collabora.com
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250929_090201_803113_0351C6E0 
-X-CRM114-Status: GOOD (  22.70  )
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH v9] Bluetooth: mediatek: add gpio pin to reset bt
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id: <175916220774.1630000.3594430707404440573.git-patchwork-notify@kernel.org>
+Date: Mon, 29 Sep 2025 16:10:07 +0000
+References: <20250926101046.26559-1-ot_zhangchao.zhang@mediatek.com>
+In-Reply-To: <20250926101046.26559-1-ot_zhangchao.zhang@mediatek.com>
+To: Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>
+Cc: marcel@holtmann.org, matthias.bgg@gmail.com, luiz.dentz@gmail.com,
+ angelogioacchino.delregno@collabora.com, krzk@kernel.org,
+ sean.wang@mediatek.com, deren.Wu@mediatek.com, chris.lu@mediatek.com,
+ Hao.qin@mediatek.com, linux-bluetooth@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,120 +74,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2025-09-29 at 05:40 -0400, Harry Wentland wrote:
->=20
->=20
-> On 2025-09-19 08:42, Louis Chauvet wrote:
-> >=20
-> >=20
-> > Le 18/09/2025 =C3=A0 02:43, N=C3=ADcolas F. R. A. Prado a =C3=A9crit=C2=
-=A0:
-> > > Add a new cap that drivers can set to signal they support post-
-> > > blend
-> > > color pipelines.
-> > >=20
-> > > Signed-off-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
-> >=20
-> > Reviewed-by: Louis Chauvet <louis.chauvet@bootlin.com>
-> >=20
-> > > ---
-> > > =C2=A0 drivers/gpu/drm/drm_ioctl.c | 3 +++
-> > > =C2=A0 include/drm/drm_drv.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 6 =
-++++++
-> > > =C2=A0 include/uapi/drm/drm.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 6 +++++=
-+
-> > > =C2=A0 3 files changed, 15 insertions(+)
-> > >=20
-> > > diff --git a/drivers/gpu/drm/drm_ioctl.c
-> > > b/drivers/gpu/drm/drm_ioctl.c
-> > > index=20
-> > > ff193155129e7e863888d8958458978566b144f8..01592d10e3465ddceddef94
-> > > bc417f98d3ec12087 100644
-> > > --- a/drivers/gpu/drm/drm_ioctl.c
-> > > +++ b/drivers/gpu/drm/drm_ioctl.c
-> > > @@ -304,6 +304,9 @@ static int drm_getcap(struct drm_device *dev,
-> > > void=20
-> > > *data, struct drm_file *file_
-> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 req->value =3D=
- drm_core_check_feature(dev, DRIVER_ATOMIC)
-> > > &&
-> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 dev->mode_config.async_page_flip;
-> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
-> > > +=C2=A0=C2=A0=C2=A0 case DRM_CAP_POST_BLEND_COLOR_PIPELINE:
-> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 req->value =3D drm_core_c=
-heck_feature(dev,=20
-> > > DRIVER_POST_BLEND_COLOR_PIPELINE);
-> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
-> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 default:
-> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return -EINVAL=
-;
-> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
-> > > diff --git a/include/drm/drm_drv.h b/include/drm/drm_drv.h
-> > > index=20
-> > > 42fc085f986dee9261f8b08c4fc7d93b8d6d9769..6b0f4904e69766232283d43
-> > > 0c2540d30afef850f 100644
-> > > --- a/include/drm/drm_drv.h
-> > > +++ b/include/drm/drm_drv.h
-> > > @@ -122,6 +122,12 @@ enum drm_driver_feature {
-> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * the cursor planes to work corr=
-ectly).
-> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 */
-> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 DRIVER_CURSOR_HOTSPOT=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =3D BIT(9),
-> > > +=C2=A0=C2=A0=C2=A0 /**
-> > > +=C2=A0=C2=A0=C2=A0=C2=A0 * @DRIVER_POST_BLEND_COLOR_PIPELINE:
-> > > +=C2=A0=C2=A0=C2=A0=C2=A0 *
-> > > +=C2=A0=C2=A0=C2=A0=C2=A0 * Driver supports post-blend color pipeline=
-.
-> > > +=C2=A0=C2=A0=C2=A0=C2=A0 */
-> > > +=C2=A0=C2=A0=C2=A0 DRIVER_POST_BLEND_COLOR_PIPELINE=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0 =3D BIT(10),
->=20
-> Is this to let userspace know that the driver supports a
-> post-blending color pipeline? Why couldn't userspace simply
-> check whether crtc objects have "Color Pipeline" properties?
+Hello:
 
-It is, and yes userspace could figure it out that way, though since the
-property is only exposed after the client cap is set, it requires a
-more involved setup: set the client cap, check for the property, if not
-present unset the client cap.
+This patch was applied to bluetooth/bluetooth-next.git (master)
+by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
 
-With the driver cap introduced here, setting the client cap would fail
-in the first place if the driver cap is not set, so in this case
-userspace just tries to set the client cap, if it succeeds it knows it
-can use color pipelines, if it fails it knows to use the legacy color
-properties.
+On Fri, 26 Sep 2025 18:10:46 +0800 you wrote:
+> Support the platform Bluetooth to be reset by hardware pin,
+> when a Bluetooth exception occurs, attempt to reset the
+> Bluetooth module using the hardware reset pin, as this
+> method is generally more stable and reliable than a
+> software reset. If the hardware reset pin is not specified
+> in the device tree, fall back to the existing software
+> reset mechanism to ensure backward compatibility.
+> 
+> [...]
 
---=20
-Thanks,
+Here is the summary with links:
+  - [v9] Bluetooth: mediatek: add gpio pin to reset bt
+    https://git.kernel.org/bluetooth/bluetooth-next/c/8fe90a5ad3d9
 
-N=C3=ADcolas
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
->=20
-> Harry
->=20
-> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* IMPORTANT: Below are all the legacy=
- flags, add new ones=20
-> > > above. */
-> > > diff --git a/include/uapi/drm/drm.h b/include/uapi/drm/drm.h
-> > > index=20
-> > > 27cc159c1d275c7a7fe057840ef792f30a582bb7..c6c53e57958e951204154ce
-> > > 41a69696a6876f0e8 100644
-> > > --- a/include/uapi/drm/drm.h
-> > > +++ b/include/uapi/drm/drm.h
-> > > @@ -812,6 +812,12 @@ struct drm_gem_change_handle {
-> > > =C2=A0=C2=A0 * commits.
-> > > =C2=A0=C2=A0 */
-> > > =C2=A0 #define DRM_CAP_ATOMIC_ASYNC_PAGE_FLIP=C2=A0=C2=A0=C2=A0 0x15
-> > > +/**
-> > > + * DRM_CAP_POST_BLEND_COLOR_PIPELINE
-> > > + *
-> > > + * If set to 1, the driver supports post-blend color pipelines.
-> > > + */
-> > > +#define DRM_CAP_POST_BLEND_COLOR_PIPELINE=C2=A0=C2=A0=C2=A0 0x16
-> > > =C2=A0 /* DRM_IOCTL_GET_CAP ioctl argument type */
-> > > =C2=A0 struct drm_get_cap {
-> > >=20
-> >=20
+
 
