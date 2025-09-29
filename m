@@ -4,94 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F9F3CAC5B5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Sep 2025 09:59:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12984CAC5B5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Sep 2025 10:10:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2KUdznDw5vZ05JufQlJyZkuSTNllnaQhlyyX0vFY+xA=; b=ekY8gX3330hU3hETeb/ZPEj96+
-	UCvbRSxlikDZQIvkKkqPMvo9ZFGepqJ3AN+69t3VlrCMLcc5WtfC/EEKQ1oBbFtQ9Zn9jV5PkTusM
-	AEWdvtkhS8aZwMjXEVtgAmMsOlkBDbZiS2KtufcE/0sQmQY24k+xu32IYKi4yM9JY2PnqADdLGfks
-	jXf0k7VwWytTha16cpQzudIs9dtaW6sgU4R5mkWLwAwv+LMGMq6js+z72gQZrcsEdor/oMRXUy6s4
-	fo3twC9kB3DK8s28ZKYBoPzBa3zX/3h5605/Yv9HfK75HykBKgrl2PnGEtxxKDpdfOofYolRfptrN
-	KPDeDPpA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Nq6jhWhqFYu86W0WPvq5nngq+igyEPYcUkXesgVhfaw=; b=FYCCGnN6DdxafuE2PEIm+TtlbK
+	5pkjzKXt9esnSPE1W9tfJM+4gQ2vvJpgYXv+fEv6ZkXYV2e7Vx0wDMBIR+anS95vu8RPXM4z0Pyhp
+	43Nh+apViA4LaUC2ceTBpXW6DbF9VAF5N7GaDkpm+KlpN7C15/frsfp0imTomJILB4PMS9gOkIx/v
+	XYyFgQzTnK/Byx0QZcxii256vasOGGVXd0nfzI2I2p1439Fn2ZWa1AKT/hoeiUx2yTmR6mMxl6iFv
+	DcgCpdMcEmnrcEllqNB2XVmBj1YaV8nVZUbpylUw2AEygiin5c+XQNz0Y+eVobAY9IocWpR4H6dkg
+	GjLVKsyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3AfB-000000024Pg-3BSm;
-	Mon, 29 Sep 2025 09:59:21 +0000
-Received: from mail-yx1-xb129.google.com ([2607:f8b0:4864:20::b129])
+	id 1v3AqP-0000000262s-3Zqj;
+	Mon, 29 Sep 2025 10:10:57 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3Af8-000000024Nx-0W21
-	for linux-mediatek@lists.infradead.org;
-	Mon, 29 Sep 2025 09:59:19 +0000
-Received: by mail-yx1-xb129.google.com with SMTP id 956f58d0204a3-6352a77add0so3437000d50.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 29 Sep 2025 02:59:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1759139957; x=1759744757; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=2KUdznDw5vZ05JufQlJyZkuSTNllnaQhlyyX0vFY+xA=;
-        b=pcuc25u38ynlySDv9udDyJxHNCNvil3idefozZVZxGI3+X/3zqtY1qDUX43uPXvfxA
-         to6+DG2cMsww1pa35R0W892aGattymx2CgBNU3yTRXSJbzhZF67OpdNxGslzQGN37fQd
-         T6IIXaDm/jSia5fW5Pne47PhtKjnRsUO+l8K9U4kIJHUC6Q3FzssHH34CMKO2q+2e0Wd
-         CBNNLM1N5nXuSEhLuR8COcL30SuPVH2rHYU6ado+t2c3OPI+uJkauNhM/GtTJl7yeN4x
-         6GN83NbQ8gbBCR57QPyqfCEBxrod6+oXdz7fbZBYv+vDbLZDWYn5dNzlGfjFUHO4LPpr
-         v8JQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1759139957; x=1759744757;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=2KUdznDw5vZ05JufQlJyZkuSTNllnaQhlyyX0vFY+xA=;
-        b=Emg+fmd8CJiTxEddc4Fxb6W0t9o6BeYdr9IT957OylZzW3sF/bex8nCigJJVFW0q1j
-         xfLe2Ph8x4K58CMlaTu7UpYc47p0y8W2jJNp4Bzv+uM3Xjk65phgwyooaTYhvjTy0k5C
-         sk/LRYVGmJ4L7jGVbuarqxQIQhLo8qbC27M7fTOLJsWrfgPnXNFWynnKlxETvmFckbIW
-         2wrfsMZU+tqRuLjz70UStVfEyhJROAWclB5Wu5dryfzAMzq2rdeQy/i855ZsgSEaImpD
-         1RNGzRSvBzIt5GXegwvM4g0TPOJ09zQpLACR/mhZocZvnkez/X61UipBOpiZlSdhgk8K
-         cbLA==
-X-Forwarded-Encrypted: i=1; AJvYcCUcJxH3aqMkNBbJqabkpYze0+KzAkeD/op/4OVSGC3zppmhZlOisYQ3t5Rphx0/j6ENVDxU4hJ5QY2xglcp3A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxB0KOs5udzIgkSRrXOy+RWNjGm4GB/lajSXZSSFnwW9VAfz39e
-	aP3KC83UQsNXWx39JMk6HoevyYzVLASt1KHto5NJPmsRkfzisOS2/d9PbNF7aTrlpPmj7TUQtdo
-	JoKh7Gd0yGzAlr4YidPD2eRbOm249NOum4jMR8s/hYw==
-X-Gm-Gg: ASbGncuga9huY0VQ7rlXERMPLjbSow06bjXu7RzA7TZwFLrxOKT5VPjM3eYvYxZwIh7
-	WNZXdkdp90O72xX8MjaTEOtuU8mAyIouxYBGt+jFjNfE9VP3i7jiaI9puVlEJe5WZq5Y9DMGd29
-	EBrDEx3Lr+yxjSCRkXZzlSTjLsZP7JP1CkqKwtGTzw0tCkbQ2uH/lffvk/vKeZXvkiOZpA0u/CF
-	uDJ4jxD
-X-Google-Smtp-Source: AGHT+IHKB6dZwmkkiRTmQMJ6qqV5u+Z5RUcKikaK+UuufgwTUJ8RoCQyTBvf2kQBGXi0WQ0jZXHoQTtqUIZWVWUBjSA=
-X-Received: by 2002:a05:690e:1a4f:b0:636:f1d:e26 with SMTP id
- 956f58d0204a3-6361a8734e7mr18613222d50.32.1759139956833; Mon, 29 Sep 2025
- 02:59:16 -0700 (PDT)
+	id 1v3AqM-00000002625-2JuK;
+	Mon, 29 Sep 2025 10:10:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1759140651;
+	bh=oOq/K7RTeSRws70Trwj2HjoDrovM9ft5yZ0P7I05xrw=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=btlpg6OccvX6sm6yAdU5r0isl8r5hNC5dQcMow5Y2wBFpXXp86cTCxmNF9X3EgQWb
+	 8uuWVuphWoD0MNJ+LaWccoPE5Y8z+AUvQj9b8FaF8mJg+met5EfmkAZJbmcUwOKoK8
+	 V148lh+aYG0nk8zV/AFgVbHDaQE1mW4lFuuPIc6MHZ/za4FHTkLM6MVrxx6XpvIJGJ
+	 gp1OXGDV+hWRaDwg52EQ8jAviSp9gPBqp3vvruYgdEvqYrwJ2uzWQ5VvjTl3xnaFP5
+	 K9ZRRf91E9rdcW5mMPI0NUl35ac/5H+zQMrQg6iONIts417VRJL10H/SqCv2L2DrHX
+	 /38M5hwnFc9oQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7F60817E003B;
+	Mon, 29 Sep 2025 12:10:50 +0200 (CEST)
+Message-ID: <38e03c8d-a038-474a-b62a-897694299642@collabora.com>
+Date: Mon, 29 Sep 2025 12:10:49 +0200
 MIME-Version: 1.0
-References: <20250923-mt8196-gpufreq-v4-0-6cd63ade73d6@collabora.com>
- <20250923-mt8196-gpufreq-v4-8-6cd63ade73d6@collabora.com> <CAPDyKFpLNJRRxWPm2Eye+Fs8go-LNwWGzPUPPKmNVJkyK5N3Dw@mail.gmail.com>
- <2015216.PYKUYFuaPT@workhorse>
-In-Reply-To: <2015216.PYKUYFuaPT@workhorse>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Mon, 29 Sep 2025 11:58:40 +0200
-X-Gm-Features: AS18NWDi6KooeuuBdFZYN2-L6gygoxiX5visVgVu6hIAQ09WtQulOO0qEvr47Zc
-Message-ID: <CAPDyKFoCPkNsbq8s3d6cQXxfFhiYH1kjrocNdq8=v+g+LY8c6A@mail.gmail.com>
-Subject: Re: [PATCH v4 8/8] pmdomain: mediatek: Add support for MFlexGraphics
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Boris Brezillon <boris.brezillon@collabora.com>, Jassi Brar <jassisinghbrar@gmail.com>, 
-	Chia-I Wu <olvaffe@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>, 
-	Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Kees Cook <kees@kernel.org>, 
-	"Gustavo A. R. Silva" <gustavoars@kernel.org>, kernel@collabora.com, 
-	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-hardening@vger.kernel.org, 
-	linux-pm@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/4] ARM: dts: mediatek: drop wrong syscon hifsys
+ compatible for MT2701/7623
+To: Christian Marangi <ansuelsmth@gmail.com>,
+ Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
+ <jianjun.wang@mediatek.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+ Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
+ Bjorn Helgaas <bhelgaas@google.com>, Krzysztof Kozlowski
+ <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-pci@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ upstream@airoha.com
+References: <20250925162332.9794-1-ansuelsmth@gmail.com>
+ <20250925162332.9794-2-ansuelsmth@gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250925162332.9794-2-ansuelsmth@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250929_025918_171141_C45CCF76 
-X-CRM114-Status: GOOD (  19.30  )
+X-CRM114-CacheID: sfid-20250929_031054_753484_29D6317D 
+X-CRM114-Status: GOOD (  10.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,44 +84,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-[...]
+Il 25/09/25 18:23, Christian Marangi ha scritto:
+> The syscon compatible for the hifsys node for Mediatek MT2701/MT7623 SoC
+> was wrongly added following the pattern of other clock node but it's
+> actually not needed as the register are not used by other device on the
+> SoC.
+> 
+> On top of this it does against the schema for hifsys amnd cause
+> dtbs_check warning.
+> 
+> Drop the "syscon" compatible to mute the warning and reflect the
+> compatible property described in the mediatek,mt2701-hifsys.yaml schema.
+> 
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 
->
-> I actually have a question about a mystery that has been puzzling
-> me as I work on v5: when unloading the driver that uses the PD
-> (panthor) and my driver using `modprobe -r panthor mtk_mfg_pmdomain`,
-> I see that sometimes detach_dev is called with the pd status
-> reportedly being off, but according to my own power-on/power-off
-> counting I hacked in, it actually being on. It then proceeds to
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Yes, ->detach_dev() may be called for a device, when its corresponding
-PM domain is both on or off.
 
-> call my remove, which results in three splats from the regulator
-> subsystem as the regulators weren't balanced with disables before
-> they were freed, which isn't the main problem but more a symptom
-> of the bigger problem that power_off and power_on calls don't
-> appear to be balanced by the pmdomain subsystem when a driver is
-> removed under certain circumstances.
-
-If the callbacks aren't called in a properly balanced manner that
-would be a bug in genpd. Certainly.
-
->
-> Did I run into a core pmdomain bug here, or do I have to balance
-> the power_on/off myself somehow in detach_dev? If the latter, I'm
-> struggling to figure out how I can determine that the PD is still
-> on without doing my own bookkeeping, as pmdomain core seems to clear
-> these fields before my detach_dev gets to them :(
-
-When genpd_dev_pm_detach() is called, the device is being detached
-from its genpd and part of that procedure means calling the
-->detach_dev() callback.
-
-When the device has been detached, we may have the PM domain being
-powered-on for no good reason. That's why we also punt a work to check
-if we can turn it off (see the call to genpd_queue_power_off_work()).
-
-Kind regards
-Uffe
 
