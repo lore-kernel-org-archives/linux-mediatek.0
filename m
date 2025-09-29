@@ -4,70 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6136ACAC5B5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Sep 2025 02:54:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 623E8CAC5B0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Sep 2025 06:56:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=4KXlujy/0bS3FW5YncZMqJxqeCytqdoi7ZpzmWYOsaY=; b=nJf5Hm3N6Rhetk0a9XaThPLqv4
-	uhsCS7UaOjb0pqYMGkgyidmQBcyZUhaVOea0OKgDqDIsmL9ugleaDp71KbvuviA5hZVY5EjNuc3Dv
-	nh5t5vzl5SjJSDiaH/fen8BosorrfsTMuFzqeKL/Cz7a1XxfyUf7rN0HP5QXmvXWw31S/SOPg8Lwi
-	av6P4EOWxd4bQlmYt2HY8AU0vOCGZ/RUoFDvcFBNNczEdRkDbTcw5VjmabH0+/S66y6jOOMHePnQC
-	kjJ1pt9OWxE13Bvv59dk5Mri57VuExD5YRngfKgefnFSu0oYKtu8jn4/Nghb47e7486ML8Qr/olNO
-	ZDexblgg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2myreG7B52eRaaZNn8tqnyQ5yDGx1IIPA6P1UOv+5Dc=; b=ghLLTBr3R0wiDgoElSVtqZh/x4
+	HBWGswBjsH5UUF/7grVYotrA9xOiad7abXeXRPSYZqSMgZ71LOECXGovmaPRAvHpZxLcqh4vNuDsr
+	clzdCofVKpXyHHpfyHq28HyzfpAblvvGmLJK3fE+ThvFsLwuJpsymsDCxhY8Tfnt+DL8vzT4A8zbR
+	KKbkS2aylAYqYsQBi7A98bvWjsNZHzU3jqNgXOwlnlWMy8+TIhXeMd2HfrmVdj4c3A5ZGVHh3uadj
+	7Ie5tAui3SiAUNcARmUxEypGsWjDZUIJqrEdmf9DC2lvtAcZe0NuqH3qrX9sDEbjXXIbuVzr/NE7v
+	5yf3+RSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v341o-00000001ATu-4Bs0;
-	Mon, 29 Sep 2025 02:54:17 +0000
-Received: from smtp84.cstnet.cn ([159.226.251.84] helo=cstnet.cn)
+	id 1v37oK-00000001XuZ-0kj7;
+	Mon, 29 Sep 2025 06:56:36 +0000
+Received: from mgamail.intel.com ([198.175.65.18])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v341l-00000001AT6-3EcQ;
-	Mon, 29 Sep 2025 02:54:15 +0000
-Received: from DESKTOP-L0HPE2S (unknown [124.16.141.245])
-	by APP-05 (Coremail) with SMTP id zQCowABX+RLN9NloTWOKCA--.65172S2;
-	Mon, 29 Sep 2025 10:54:06 +0800 (CST)
-From: Haotian Zhang <vulab@iscas.ac.cn>
-To: David Lechner <dlechner@baylibre.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
-	=?UTF-8?q?Nuno=20S=C3=A1?= <nuno.sa@analog.com>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	linux-kernel@vger.kernel.org,
+	id 1v37oH-00000001Xtp-3iL4;
+	Mon, 29 Sep 2025 06:56:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1759128994; x=1790664994;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=CPNJ0DoJOWsjWqUu7JhZ8h2za7aZcaHA/CMWvZn/9W8=;
+  b=bt2egUodSrviBAJQtrQmPg3B84g8RJZcWIUPqsxoWmJhMfRZhcPXhQaU
+   yRj3wnEUzHXB1ojCa0oFuji3BB9065jA66MA245PM+1i3bva2fm1KD60P
+   /aeF/x6p6DnKtlQ+iutugMxBBQbmzbFMIoUSWjMi8ADLPYNfbgIeWMAUa
+   g337DLgawUtyfzygUbeaLYchYo+kV7CnwbQ1iq4nIu7vLD9SY6p13qh7T
+   BxlXoNPlslaTVvvwSYf4Wu0oaD/DW7O64ERXYfkUMNRIc5CvMYhZypF0R
+   p2LoG3uEgV4ud8Ggu3oTXYPKD7WQI0yp2QNIQMepezig2u2VV5spovOsU
+   w==;
+X-CSE-ConnectionGUID: SDPLCvWIRLChJi+KyszBNQ==
+X-CSE-MsgGUID: hxm0H1E2Tragyo/0YFLuOg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11531"; a="61411865"
+X-IronPort-AV: E=Sophos;i="6.17,312,1747724400"; 
+   d="scan'208";a="61411865"
+Received: from fmviesa009.fm.intel.com ([10.60.135.149])
+  by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Sep 2025 23:56:28 -0700
+X-CSE-ConnectionGUID: 9E5dO3GkRtadc1zjR3AKTQ==
+X-CSE-MsgGUID: ENISX4HsQnWcDb+ywlSk9A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.18,301,1751266800"; 
+   d="scan'208";a="178584086"
+Received: from lkp-server02.sh.intel.com (HELO 62862f778ede) ([10.239.97.151])
+  by fmviesa009.fm.intel.com with ESMTP; 28 Sep 2025 23:56:26 -0700
+Received: from kbuild by 62862f778ede with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1v37o3-00003P-22;
+	Mon, 29 Sep 2025 06:56:20 +0000
+Date: Mon, 29 Sep 2025 14:54:39 +0800
+From: kernel test robot <lkp@intel.com>
+To: Haotian Zhang <vulab@iscas.ac.cn>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: oe-kbuild-all@lists.linux.dev, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	Haotian Zhang <vulab@iscas.ac.cn>
-Subject: [PATCH] iio: adc: mt6360: Handle error in cleanup path correctly
-Date: Mon, 29 Sep 2025 10:53:58 +0800
-Message-ID: <20250929025358.2064-1-vulab@iscas.ac.cn>
-X-Mailer: git-send-email 2.50.1.windows.1
+Subject: Re: [PATCH] clk: mediatek: Use devm_alloc for clk_data allocation to
+ fix memory leak on probe error
+Message-ID: <202509291432.RfHOsLVY-lkp@intel.com>
+References: <20250929023621.1968-1-vulab@iscas.ac.cn>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: zQCowABX+RLN9NloTWOKCA--.65172S2
-X-Coremail-Antispam: 1UD129KBjvJXoW7uF4kJw1DGr4ktryrJw13Jwb_yoW8Xw43pr
-	4jkFyDJFy09FyfCF4xta1UZFWFya17Gryjy34DC3ZrZ3s8Ar12gF1rJFyqva4vvrZIyan0
-	vrWUCrWUuw1UZF7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUUBY14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
-	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
-	1l84ACjcxK6xIIjxv20xvE14v26ryj6F1UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4U
-	JVWxJr1l84ACjcxK6I8E87Iv67AKxVW8Jr0_Cr1UM28EF7xvwVC2z280aVCY1x0267AKxV
-	WxJr0_GcWle2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2Wl
-	Yx0E2Ix0cI8IcVAFwI0_Jrv_JF1lYx0Ex4A2jsIE14v26r1j6r4UMcvjeVCFs4IE7xkEbV
-	WUJVW8JwACjcxG0xvY0x0EwIxGrwACjI8F5VA0II8E6IAqYI8I648v4I1lFIxGxcIEc7Cj
-	xVA2Y2ka0xkIwI1lc7CjxVAaw2AFwI0_Jw0_GFylc2xSY4AK67AK6r4UMxAIw28IcxkI7V
-	AKI48JMxC20s026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCj
-	r7xvwVAFwI0_JrI_JrWlx4CE17CEb7AF67AKxVWUtVW8ZwCIc40Y0x0EwIxGrwCI42IY6x
-	IIjxv20xvE14v26r1j6r1xMIIF0xvE2Ix0cI8IcVCY1x0267AKxVW8JVWxJwCI42IY6xAI
-	w20EY4v20xvaj40_Jr0_JF4lIxAIcVC2z280aVAFwI0_Jr0_Gr1lIxAIcVC2z280aVCY1x
-	0267AKxVW8JVW8JrUvcSsGvfC2KfnxnUUI43ZEXa7VUbKhF3UUUUU==
-X-Originating-IP: [124.16.141.245]
-X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiBwwAA2jZ4FFQ9QAAst
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250929023621.1968-1-vulab@iscas.ac.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250928_195414_173922_69E54737 
-X-CRM114-Status: GOOD (  10.27  )
+X-CRM114-CacheID: sfid-20250928_235634_004071_578E0C21 
+X-CRM114-Status: GOOD (  13.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,47 +91,119 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The return value of a regmap_raw_write() in the cleanup path was
-being ignored.
+Hi Haotian,
 
-Fix this by checking the return value and propagating the error.
+kernel test robot noticed the following build errors:
 
-Fixes: 1f4877218f7e ("iio: adc: mt6360: Add ADC driver for MT6360")
-Signed-off-by: Haotian Zhang <vulab@iscas.ac.cn>
----
- drivers/iio/adc/mt6360-adc.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+[auto build test ERROR on clk/clk-next]
+[also build test ERROR on linus/master v6.17 next-20250926]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-diff --git a/drivers/iio/adc/mt6360-adc.c b/drivers/iio/adc/mt6360-adc.c
-index 69b3569c90e5..97c4af8a93fc 100644
---- a/drivers/iio/adc/mt6360-adc.c
-+++ b/drivers/iio/adc/mt6360-adc.c
-@@ -70,6 +70,7 @@ static int mt6360_adc_read_channel(struct mt6360_adc_data *mad, int channel, int
- 	ktime_t predict_end_t, timeout;
- 	unsigned int pre_wait_time;
- 	int ret;
-+	int cleanup_ret;
- 
- 	mutex_lock(&mad->adc_lock);
- 
-@@ -130,11 +131,15 @@ static int mt6360_adc_read_channel(struct mt6360_adc_data *mad, int channel, int
- out_adc_conv:
- 	/* Only keep ADC enable */
- 	adc_enable = cpu_to_be16(MT6360_ADCEN_MASK);
--	regmap_raw_write(mad->regmap, MT6360_REG_PMUADCCFG, &adc_enable, sizeof(adc_enable));
-+	cleanup_ret = regmap_raw_write(mad->regmap, MT6360_REG_PMUADCCFG,
-+				&adc_enable, sizeof(adc_enable));
-+	if (ret >= 0)
-+		ret = cleanup_ret;
- 	mad->last_off_timestamps[channel] = ktime_get();
- 	/* Config prefer channel to NO_PREFER */
- 	regmap_update_bits(mad->regmap, MT6360_REG_PMUADCRPT1, MT6360_PREFERCH_MASK,
- 			   MT6360_NO_PREFER << MT6360_PREFERCH_SHFT);
-+
- out_adc_lock:
- 	mutex_unlock(&mad->adc_lock);
- 
+url:    https://github.com/intel-lab-lkp/linux/commits/Haotian-Zhang/clk-mediatek-Use-devm_alloc-for-clk_data-allocation-to-fix-memory-leak-on-probe-error/20250929-103835
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/clk/linux.git clk-next
+patch link:    https://lore.kernel.org/r/20250929023621.1968-1-vulab%40iscas.ac.cn
+patch subject: [PATCH] clk: mediatek: Use devm_alloc for clk_data allocation to fix memory leak on probe error
+config: i386-buildonly-randconfig-001-20250929 (https://download.01.org/0day-ci/archive/20250929/202509291432.RfHOsLVY-lkp@intel.com/config)
+compiler: gcc-14 (Debian 14.2.0-19) 14.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250929/202509291432.RfHOsLVY-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202509291432.RfHOsLVY-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   In file included from drivers/clk/mediatek/clk-mt6765.c:20:
+   drivers/clk/mediatek/clk-mt6765.c: In function 'clk_mt6765_apmixed_probe':
+>> include/dt-bindings/clock/mt6765-clk.h:32:41: error: passing argument 1 of 'mtk_devm_alloc_clk_data' makes pointer from integer without a cast [-Wint-conversion]
+      32 | #define CLK_APMIXED_NR_CLK              22
+         |                                         ^~
+         |                                         |
+         |                                         int
+   drivers/clk/mediatek/clk-mt6765.c:739:44: note: in expansion of macro 'CLK_APMIXED_NR_CLK'
+     739 |         clk_data = mtk_devm_alloc_clk_data(CLK_APMIXED_NR_CLK);
+         |                                            ^~~~~~~~~~~~~~~~~~
+   In file included from drivers/clk/mediatek/clk-mt6765.c:16:
+   drivers/clk/mediatek/clk-mtk.h:234:68: note: expected 'struct device *' but argument is of type 'int'
+     234 | struct clk_hw_onecell_data *mtk_devm_alloc_clk_data(struct device *dev,
+         |                                                     ~~~~~~~~~~~~~~~^~~
+>> drivers/clk/mediatek/clk-mt6765.c:739:20: error: too few arguments to function 'mtk_devm_alloc_clk_data'
+     739 |         clk_data = mtk_devm_alloc_clk_data(CLK_APMIXED_NR_CLK);
+         |                    ^~~~~~~~~~~~~~~~~~~~~~~
+   drivers/clk/mediatek/clk-mtk.h:234:29: note: declared here
+     234 | struct clk_hw_onecell_data *mtk_devm_alloc_clk_data(struct device *dev,
+         |                             ^~~~~~~~~~~~~~~~~~~~~~~
+   drivers/clk/mediatek/clk-mt6765.c: In function 'clk_mt6765_top_probe':
+   include/dt-bindings/clock/mt6765-clk.h:161:41: error: passing argument 1 of 'mtk_devm_alloc_clk_data' makes pointer from integer without a cast [-Wint-conversion]
+     161 | #define CLK_TOP_NR_CLK                  126
+         |                                         ^~~
+         |                                         |
+         |                                         int
+   drivers/clk/mediatek/clk-mt6765.c:773:44: note: in expansion of macro 'CLK_TOP_NR_CLK'
+     773 |         clk_data = mtk_devm_alloc_clk_data(CLK_TOP_NR_CLK);
+         |                                            ^~~~~~~~~~~~~~
+   drivers/clk/mediatek/clk-mtk.h:234:68: note: expected 'struct device *' but argument is of type 'int'
+     234 | struct clk_hw_onecell_data *mtk_devm_alloc_clk_data(struct device *dev,
+         |                                                     ~~~~~~~~~~~~~~~^~~
+   drivers/clk/mediatek/clk-mt6765.c:773:20: error: too few arguments to function 'mtk_devm_alloc_clk_data'
+     773 |         clk_data = mtk_devm_alloc_clk_data(CLK_TOP_NR_CLK);
+         |                    ^~~~~~~~~~~~~~~~~~~~~~~
+   drivers/clk/mediatek/clk-mtk.h:234:29: note: declared here
+     234 | struct clk_hw_onecell_data *mtk_devm_alloc_clk_data(struct device *dev,
+         |                             ^~~~~~~~~~~~~~~~~~~~~~~
+   drivers/clk/mediatek/clk-mt6765.c: In function 'clk_mt6765_ifr_probe':
+   include/dt-bindings/clock/mt6765-clk.h:228:41: error: passing argument 1 of 'mtk_devm_alloc_clk_data' makes pointer from integer without a cast [-Wint-conversion]
+     228 | #define CLK_IFR_NR_CLK                  64
+         |                                         ^~
+         |                                         |
+         |                                         int
+   drivers/clk/mediatek/clk-mt6765.c:813:44: note: in expansion of macro 'CLK_IFR_NR_CLK'
+     813 |         clk_data = mtk_devm_alloc_clk_data(CLK_IFR_NR_CLK);
+         |                                            ^~~~~~~~~~~~~~
+   drivers/clk/mediatek/clk-mtk.h:234:68: note: expected 'struct device *' but argument is of type 'int'
+     234 | struct clk_hw_onecell_data *mtk_devm_alloc_clk_data(struct device *dev,
+         |                                                     ~~~~~~~~~~~~~~~^~~
+   drivers/clk/mediatek/clk-mt6765.c:813:20: error: too few arguments to function 'mtk_devm_alloc_clk_data'
+     813 |         clk_data = mtk_devm_alloc_clk_data(CLK_IFR_NR_CLK);
+         |                    ^~~~~~~~~~~~~~~~~~~~~~~
+   drivers/clk/mediatek/clk-mtk.h:234:29: note: declared here
+     234 | struct clk_hw_onecell_data *mtk_devm_alloc_clk_data(struct device *dev,
+         |                             ^~~~~~~~~~~~~~~~~~~~~~~
+
+
+vim +/mtk_devm_alloc_clk_data +32 include/dt-bindings/clock/mt6765-clk.h
+
+eb7beb65ac30af Mars Cheng 2020-02-21   8  
+eb7beb65ac30af Mars Cheng 2020-02-21   9  /* APMIXEDSYS */
+eb7beb65ac30af Mars Cheng 2020-02-21  10  #define CLK_APMIXED_ARMPLL_L		0
+eb7beb65ac30af Mars Cheng 2020-02-21  11  #define CLK_APMIXED_ARMPLL		1
+eb7beb65ac30af Mars Cheng 2020-02-21  12  #define CLK_APMIXED_CCIPLL		2
+eb7beb65ac30af Mars Cheng 2020-02-21  13  #define CLK_APMIXED_MAINPLL		3
+eb7beb65ac30af Mars Cheng 2020-02-21  14  #define CLK_APMIXED_MFGPLL		4
+eb7beb65ac30af Mars Cheng 2020-02-21  15  #define CLK_APMIXED_MMPLL		5
+eb7beb65ac30af Mars Cheng 2020-02-21  16  #define CLK_APMIXED_UNIV2PLL		6
+eb7beb65ac30af Mars Cheng 2020-02-21  17  #define CLK_APMIXED_MSDCPLL		7
+eb7beb65ac30af Mars Cheng 2020-02-21  18  #define CLK_APMIXED_APLL1		8
+eb7beb65ac30af Mars Cheng 2020-02-21  19  #define CLK_APMIXED_MPLL		9
+eb7beb65ac30af Mars Cheng 2020-02-21  20  #define CLK_APMIXED_ULPOSC1		10
+eb7beb65ac30af Mars Cheng 2020-02-21  21  #define CLK_APMIXED_ULPOSC2		11
+eb7beb65ac30af Mars Cheng 2020-02-21  22  #define CLK_APMIXED_SSUSB26M		12
+eb7beb65ac30af Mars Cheng 2020-02-21  23  #define CLK_APMIXED_APPLL26M		13
+eb7beb65ac30af Mars Cheng 2020-02-21  24  #define CLK_APMIXED_MIPIC0_26M		14
+eb7beb65ac30af Mars Cheng 2020-02-21  25  #define CLK_APMIXED_MDPLLGP26M		15
+eb7beb65ac30af Mars Cheng 2020-02-21  26  #define CLK_APMIXED_MMSYS_F26M		16
+eb7beb65ac30af Mars Cheng 2020-02-21  27  #define CLK_APMIXED_UFS26M		17
+eb7beb65ac30af Mars Cheng 2020-02-21  28  #define CLK_APMIXED_MIPIC1_26M		18
+eb7beb65ac30af Mars Cheng 2020-02-21  29  #define CLK_APMIXED_MEMPLL26M		19
+eb7beb65ac30af Mars Cheng 2020-02-21  30  #define CLK_APMIXED_CLKSQ_LVPLL_26M	20
+eb7beb65ac30af Mars Cheng 2020-02-21  31  #define CLK_APMIXED_MIPID0_26M		21
+eb7beb65ac30af Mars Cheng 2020-02-21 @32  #define CLK_APMIXED_NR_CLK		22
+eb7beb65ac30af Mars Cheng 2020-02-21  33  
+
 -- 
-2.50.1.windows.1
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
