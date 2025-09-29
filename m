@@ -4,66 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED89DCAC5B5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Sep 2025 02:36:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6136ACAC5B5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Sep 2025 02:54:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=t+3WBiuhzkliva6qQ60VQN5Z/fBMQIWgWbfshrrlReo=; b=bUBuhEWCe7SlXJxJMJhOIkYGOy
-	TaNIhb/a1cOhePEvb3r71ws5c5PUUTINNBIv0Og/TnehfSzGABK2gmCoJ/KiFuXwOQVkZkcEdEfIN
-	wBixI4DaYCpb1i4lMrmzQdpdkt4sf/5jNpUAgl0cNfp/rLxxayZQZU4t+gbOQhPVqMXf/BY5dvfN2
-	r/PAsSTTeuzng/Foaw2DIsuCyEYzvwYcw931tg3h62Ky2twf0HfOezLZV0R09uvOGmHDV2l4ZweQG
-	qxQxxo4Nj47zaKK+uiDaDVw0p+/GPdr1jDQwAuUWIgtoqINlDqt3PK5P7nC+FsisTah/BH9NOD0oy
-	a8GcRPLA==;
+	bh=4KXlujy/0bS3FW5YncZMqJxqeCytqdoi7ZpzmWYOsaY=; b=nJf5Hm3N6Rhetk0a9XaThPLqv4
+	uhsCS7UaOjb0pqYMGkgyidmQBcyZUhaVOea0OKgDqDIsmL9ugleaDp71KbvuviA5hZVY5EjNuc3Dv
+	nh5t5vzl5SjJSDiaH/fen8BosorrfsTMuFzqeKL/Cz7a1XxfyUf7rN0HP5QXmvXWw31S/SOPg8Lwi
+	av6P4EOWxd4bQlmYt2HY8AU0vOCGZ/RUoFDvcFBNNczEdRkDbTcw5VjmabH0+/S66y6jOOMHePnQC
+	kjJ1pt9OWxE13Bvv59dk5Mri57VuExD5YRngfKgefnFSu0oYKtu8jn4/Nghb47e7486ML8Qr/olNO
+	ZDexblgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v33km-0000000184H-3J3q;
-	Mon, 29 Sep 2025 02:36:40 +0000
+	id 1v341o-00000001ATu-4Bs0;
+	Mon, 29 Sep 2025 02:54:17 +0000
 Received: from smtp84.cstnet.cn ([159.226.251.84] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v33ki-0000000183P-2Zor;
-	Mon, 29 Sep 2025 02:36:38 +0000
+	id 1v341l-00000001AT6-3EcQ;
+	Mon, 29 Sep 2025 02:54:15 +0000
 Received: from DESKTOP-L0HPE2S (unknown [124.16.141.245])
-	by APP-05 (Coremail) with SMTP id zQCowABX+RKr8NloAxaICA--.65038S2;
-	Mon, 29 Sep 2025 10:36:29 +0800 (CST)
+	by APP-05 (Coremail) with SMTP id zQCowABX+RLN9NloTWOKCA--.65172S2;
+	Mon, 29 Sep 2025 10:54:06 +0800 (CST)
 From: Haotian Zhang <vulab@iscas.ac.cn>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-kernel@vger.kernel.org,
+To: David Lechner <dlechner@baylibre.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	=?UTF-8?q?Nuno=20S=C3=A1?= <nuno.sa@analog.com>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	Haotian Zhang <vulab@iscas.ac.cn>
-Subject: [PATCH] clk: mediatek: Use devm_alloc for clk_data allocation to fix memory leak on probe error
-Date: Mon, 29 Sep 2025 10:36:20 +0800
-Message-ID: <20250929023621.1968-1-vulab@iscas.ac.cn>
+Subject: [PATCH] iio: adc: mt6360: Handle error in cleanup path correctly
+Date: Mon, 29 Sep 2025 10:53:58 +0800
+Message-ID: <20250929025358.2064-1-vulab@iscas.ac.cn>
 X-Mailer: git-send-email 2.50.1.windows.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: zQCowABX+RKr8NloAxaICA--.65038S2
-X-Coremail-Antispam: 1UD129KBjvJXoW7uF13tr1DZry8Ww47WrW5GFg_yoW8WFy3pF
-	ykGFWYya4ayw47KFW8tr4kK3WSy340ga4UKF15u3s7u345Gr4jkFZYk3sYva4IyrZ2kFy2
-	qrn09r48ZayUuFDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUUkC14x267AKxVWUJVW8JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
+X-CM-TRANSID: zQCowABX+RLN9NloTWOKCA--.65172S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7uF4kJw1DGr4ktryrJw13Jwb_yoW8Xw43pr
+	4jkFyDJFy09FyfCF4xta1UZFWFya17Gryjy34DC3ZrZ3s8Ar12gF1rJFyqva4vvrZIyan0
+	vrWUCrWUuw1UZF7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUUBY14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
 	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
-	1l84ACjcxK6xIIjxv20xvE14v26r4j6ryUM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4j
-	6F4UM28EF7xvwVC2z280aVAFwI0_Gr1j6F4UJwA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_Cr
-	1j6rxdM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj
-	6xIIjxv20xvE14v26r1j6r18McIj6I8E87Iv67AKxVWUJVW8JwAm72CE4IkC6x0Yz7v_Jr
-	0_Gr1lF7xvr2IYc2Ij64vIr41lF7I21c0EjII2zVCS5cI20VAGYxC7MxkF7I0En4kS14v2
-	6r126r1DMxAIw28IcxkI7VAKI48JMxC20s026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrV
-	AFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CEb7AF67AKxVWUAVWUtwCI
-	c40Y0x0EwIxGrwCI42IY6xIIjxv20xvE14v26r1j6r1xMIIF0xvE2Ix0cI8IcVCY1x0267
-	AKxVWUJVW8JwCI42IY6xAIw20EY4v20xvaj40_Jr0_JF4lIxAIcVC2z280aVAFwI0_Jr0_
-	Gr1lIxAIcVC2z280aVCY1x0267AKxVWUJVW8JbIYCTnIWIevJa73UjIFyTuYvjfUehL0UU
-	UUU
+	1l84ACjcxK6xIIjxv20xvE14v26ryj6F1UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4U
+	JVWxJr1l84ACjcxK6I8E87Iv67AKxVW8Jr0_Cr1UM28EF7xvwVC2z280aVCY1x0267AKxV
+	WxJr0_GcWle2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2Wl
+	Yx0E2Ix0cI8IcVAFwI0_Jrv_JF1lYx0Ex4A2jsIE14v26r1j6r4UMcvjeVCFs4IE7xkEbV
+	WUJVW8JwACjcxG0xvY0x0EwIxGrwACjI8F5VA0II8E6IAqYI8I648v4I1lFIxGxcIEc7Cj
+	xVA2Y2ka0xkIwI1lc7CjxVAaw2AFwI0_Jw0_GFylc2xSY4AK67AK6r4UMxAIw28IcxkI7V
+	AKI48JMxC20s026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCj
+	r7xvwVAFwI0_JrI_JrWlx4CE17CEb7AF67AKxVWUtVW8ZwCIc40Y0x0EwIxGrwCI42IY6x
+	IIjxv20xvE14v26r1j6r1xMIIF0xvE2Ix0cI8IcVCY1x0267AKxVW8JVWxJwCI42IY6xAI
+	w20EY4v20xvaj40_Jr0_JF4lIxAIcVC2z280aVAFwI0_Jr0_Gr1lIxAIcVC2z280aVCY1x
+	0267AKxVW8JVW8JrUvcSsGvfC2KfnxnUUI43ZEXa7VUbKhF3UUUUU==
 X-Originating-IP: [124.16.141.245]
-X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiDAUAA2jZ4CVDngAAsj
+X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiBwwAA2jZ4FFQ9QAAst
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250928_193637_022859_86C24784 
-X-CRM114-Status: GOOD (  11.28  )
+X-CRM114-CacheID: sfid-20250928_195414_173922_69E54737 
+X-CRM114-Status: GOOD (  10.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,50 +82,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The probe functions for the mt6765 apmixed, top, and infrasys clocks
-use mtk_alloc_clk_data() to allocate memory. This requires manual
-freeing of the memory in all error handling paths and in the driver's
-remove function.
+The return value of a regmap_raw_write() in the cleanup path was
+being ignored.
 
-Switch to mtk_devm_alloc_clk_data() in order to fix the memory leak in the
-probe function.
+Fix this by checking the return value and propagating the error.
 
-Fixes: 1aca9939bf72 ("clk: mediatek: Add MT6765 clock support")
+Fixes: 1f4877218f7e ("iio: adc: mt6360: Add ADC driver for MT6360")
 Signed-off-by: Haotian Zhang <vulab@iscas.ac.cn>
 ---
- drivers/clk/mediatek/clk-mt6765.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/iio/adc/mt6360-adc.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/clk/mediatek/clk-mt6765.c b/drivers/clk/mediatek/clk-mt6765.c
-index d53731e7933f..5cfb9a3a5ee3 100644
---- a/drivers/clk/mediatek/clk-mt6765.c
-+++ b/drivers/clk/mediatek/clk-mt6765.c
-@@ -736,7 +736,7 @@ static int clk_mt6765_apmixed_probe(struct platform_device *pdev)
- 	if (IS_ERR(base))
- 		return PTR_ERR(base);
+diff --git a/drivers/iio/adc/mt6360-adc.c b/drivers/iio/adc/mt6360-adc.c
+index 69b3569c90e5..97c4af8a93fc 100644
+--- a/drivers/iio/adc/mt6360-adc.c
++++ b/drivers/iio/adc/mt6360-adc.c
+@@ -70,6 +70,7 @@ static int mt6360_adc_read_channel(struct mt6360_adc_data *mad, int channel, int
+ 	ktime_t predict_end_t, timeout;
+ 	unsigned int pre_wait_time;
+ 	int ret;
++	int cleanup_ret;
  
--	clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
-+	clk_data = mtk_devm_alloc_clk_data(CLK_APMIXED_NR_CLK);
- 	if (!clk_data)
- 		return -ENOMEM;
+ 	mutex_lock(&mad->adc_lock);
  
-@@ -770,7 +770,7 @@ static int clk_mt6765_top_probe(struct platform_device *pdev)
- 	if (IS_ERR(base))
- 		return PTR_ERR(base);
- 
--	clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
-+	clk_data = mtk_devm_alloc_clk_data(CLK_TOP_NR_CLK);
- 	if (!clk_data)
- 		return -ENOMEM;
- 
-@@ -810,7 +810,7 @@ static int clk_mt6765_ifr_probe(struct platform_device *pdev)
- 	if (IS_ERR(base))
- 		return PTR_ERR(base);
- 
--	clk_data = mtk_alloc_clk_data(CLK_IFR_NR_CLK);
-+	clk_data = mtk_devm_alloc_clk_data(CLK_IFR_NR_CLK);
- 	if (!clk_data)
- 		return -ENOMEM;
+@@ -130,11 +131,15 @@ static int mt6360_adc_read_channel(struct mt6360_adc_data *mad, int channel, int
+ out_adc_conv:
+ 	/* Only keep ADC enable */
+ 	adc_enable = cpu_to_be16(MT6360_ADCEN_MASK);
+-	regmap_raw_write(mad->regmap, MT6360_REG_PMUADCCFG, &adc_enable, sizeof(adc_enable));
++	cleanup_ret = regmap_raw_write(mad->regmap, MT6360_REG_PMUADCCFG,
++				&adc_enable, sizeof(adc_enable));
++	if (ret >= 0)
++		ret = cleanup_ret;
+ 	mad->last_off_timestamps[channel] = ktime_get();
+ 	/* Config prefer channel to NO_PREFER */
+ 	regmap_update_bits(mad->regmap, MT6360_REG_PMUADCRPT1, MT6360_PREFERCH_MASK,
+ 			   MT6360_NO_PREFER << MT6360_PREFERCH_SHFT);
++
+ out_adc_lock:
+ 	mutex_unlock(&mad->adc_lock);
  
 -- 
 2.50.1.windows.1
