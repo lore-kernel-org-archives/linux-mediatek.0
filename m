@@ -4,105 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA095CCA470
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Sep 2025 11:09:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 228B7CCA470
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Sep 2025 11:34:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FfPcBPeiA6B4ouOuexFejWK64dOaFigAn8muMWhU3dQ=; b=Ziy7FNL+ET55SD1Sx7GmVl3m2i
-	76Zb6E7paw7jUnb6bUtqXpWkqowPJ10R1T5mXbeBBYFKiqTJGf7uuFhb+QnybOw+HYl8u1QXBDBoW
-	1axeTHrVUFe8IB9fG5eiW+RTjDKzuWjpZpfuinq+YFM3aVW1rH1KfM2R/qPSfi6Ghyswn4s+SCkMK
-	u+3CiN0ESAGQk2zv/a+9WG2dvmqmKJWr8nOK/jmNBS8qz1RpCO8JhCInR6USExy3aJ8nSQ7LlduJk
-	unZDF4MH3+bNIcpiFMdhWiGqTh5abNtDTYekOXkhl2o9AN6HBD2oxuS3MTn/Wb5WaLx0mIegqUq6v
-	4VepXbZQ==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/kpRoDlQKgkPxrhoCTc6tiLDhDx4soudMVQPPboBrxg=; b=WSX2IRb7mFqzly31nlg4GVAa5n
+	tGtXA+LdTmT4R1pstE18UC4f7Hc7pj0E4Jjt3P+zpldwA/w/CRvGqweeVl6NUKZxbiMjJsycpzKrL
+	ZYDLoyHAmSLj9ptCZJZyBXFINbJgZ3Mzg1P+GodE/qqbvQ9e8cldgRMUqbEMvbq78Z3VHh0uaJiWG
+	ZH6U0sAEWZ8PL+LNxPO96yxFWrdjnAyLJ5iEYyvxNvmLudPSuiujxQEAYwU+GBdPZR/+v672wZUP/
+	LUugec50E+o/CuF+jq+v4jl4U84HpcqRmuTa2YP1Sl7ZN2xtusJVWMitwdjblIopvVVh5KQaem5pj
+	cWs7NvjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3YEk-000000056VC-3yoH;
-	Tue, 30 Sep 2025 11:09:38 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1v3Ycp-000000059SE-3OwX;
+	Tue, 30 Sep 2025 11:34:31 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3YEi-000000056UC-2ky9
-	for linux-mediatek@lists.infradead.org;
-	Tue, 30 Sep 2025 11:09:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1759230574;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=FfPcBPeiA6B4ouOuexFejWK64dOaFigAn8muMWhU3dQ=;
-	b=Mmyk4ruijP65e0LMLlnrX19tqo4N1V0KKctJ/CSrf9bRpxUPFsLUGCZjy4deyaxiAqAFAI
-	y1okaxMmZU4XsdqvSU6mw99815UnsRm3gUJyi2d+9CQbzNYiyAI3ZfUSTy6VcVBaNT3KlU
-	dV/rQfigujyRprm1k48D5Bdcw84etJQ=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-642-wVPkoSIRMwCVmqJ4fLv9Xg-1; Tue, 30 Sep 2025 07:08:02 -0400
-X-MC-Unique: wVPkoSIRMwCVmqJ4fLv9Xg-1
-X-Mimecast-MFC-AGG-ID: wVPkoSIRMwCVmqJ4fLv9Xg_1759230481
-Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-46e38bd6680so19490865e9.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 30 Sep 2025 04:08:01 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1759230481; x=1759835281;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=FfPcBPeiA6B4ouOuexFejWK64dOaFigAn8muMWhU3dQ=;
-        b=M/c1cpHw8pYf/tHhoaZxuJooo9dMSmk44fV/5bbIexCvMppEw+7KyoRfoaJIl2bx38
-         V1zbLvWyjqQ56zY6gfFWt/DhMtPioVC6/UIjUzblxQLJVbQiSKX25+N8xhDgnPFzkh4d
-         6anod5dr/403vCIsLtIwitYg0zHSiyYz3iq2oZ9SWMMW3MOqKGYKRUMHtuRC8KutGQjM
-         un8KrmWU3bx60usrkEgvLcGTBxQsI8SSQvuhAhlAiUHtpNifh77hlmM7mftHXXHc2vre
-         XdZm7N4OjfuBJjtYVxOzvdeFR4uibHxmKHjZ5YcLEGjasWMhUANNNRidnhcEsKmeCBAy
-         yOhw==
-X-Forwarded-Encrypted: i=1; AJvYcCU+hTwALZBQf/5noNv+zm3/wOc+PqCZljxX+bMcPS61qsRMHpajOBbTeNNJulEZSgzD5Pp9j84aqgxYfOhneA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YykO4wszo06IZPpk/QzTYcf8fYU+IycRTkSx/aP1CuuMr1U3aO+
-	tXuHNtP9BNBjDUGgRgV2PvysLzYuaOGzrtb5WbF4CbodR+ZqPY3SR+LwBP/GRGpedl0NC/5JoOc
-	1O2pZWzArlD2RdO56TSFSX4EYP9IbM6rN98Azd9Gr7XccBHvzYPwYk6Nag6g/qMrlbOIc7L0Zjg
-	==
-X-Gm-Gg: ASbGncshU0fPMVGl+MBFQSKkqAvCLQmsLqHMRjy1WtVvaAjTSVXYEScvdA2cNgHG214
-	DdVUV6kqKvWqx49S0lX04uM92qcLmXxIkgDo09b4WHwx5M16NR8OXupoi477VeLIwxbgmJ3i2J9
-	dEfDZjNHcstd0URHHTn04R63Ta712GuizAYkpl3a0QGpKJloHTwmH+yhhBPt/KkY6Ypc3BQIqxK
-	V5SiuGXEZlFsy9X9kM8koVhRdyTLQmlZYaaC5msxIcprCvPa+56Pvv0vxqnL00YjJGTNmL96TIL
-	OsPWWag/wIPLXnCeqxj+aQghQK6/aWDA7GY84PUcgmZjBpKjJ1oZq9g90Nz/12xTOQza8vNs425
-	6exeUOCKjUAj5WlF78g==
-X-Received: by 2002:a05:600c:8416:b0:46e:440f:144b with SMTP id 5b1f17b1804b1-46e440f1681mr106148155e9.14.1759230480815;
-        Tue, 30 Sep 2025 04:08:00 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEtp2PNPVi0ALjvuUKoPRLDELJ7rf4PAGV+onh7dq2Ietz1gwVjsUfUi7sNW36nUdpmYhddmA==
-X-Received: by 2002:a05:600c:8416:b0:46e:440f:144b with SMTP id 5b1f17b1804b1-46e440f1681mr106147925e9.14.1759230480426;
-        Tue, 30 Sep 2025 04:08:00 -0700 (PDT)
-Received: from ?IPV6:2a0d:3344:2712:7e10:4d59:d956:544f:d65c? ([2a0d:3344:2712:7e10:4d59:d956:544f:d65c])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-40fac4a5e41sm23693038f8f.0.2025.09.30.04.07.59
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 30 Sep 2025 04:07:59 -0700 (PDT)
-Message-ID: <157578d3-c06f-4621-b707-ca4208d18807@redhat.com>
-Date: Tue, 30 Sep 2025 13:07:58 +0200
+	id 1v3Ycm-000000059Qq-2M9c;
+	Tue, 30 Sep 2025 11:34:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1759232065;
+	bh=tiHFk+xnP8SCA8zL96xKjLYHlIM3mrrw6V0YZnBkr44=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=aLvaKjQc2v07qJGvKM+cMa88Ljf8faYwGdWNauchDkYGAEKudftAh5IMVYrUCAhqq
+	 jO4HlmEaYnGy/4KnIjIIhCvgfxMgA2dC7LyZ0qW0YIjf9l6qEFu0mmGGGsY+H0IEOD
+	 9DMc8zSWZ6QNnJtXigFQ4xCLvoc5IQVgHA8baENNnkduqgE7Lb9YoAteesynpnlgNk
+	 9Itol08/eiPordsqMClY066Q9jwfKBmi4jL69xenD35bSFqrrjz9DSB1QdSB87jtki
+	 4uJYi3ZnVITDfz5AizU1FJZaU46kq8G+9qNb9twQP5IbcHArwWOf4LByn1GMdSTeJq
+	 dqiKgTEAqZtOw==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5961717E107D;
+	Tue, 30 Sep 2025 13:34:25 +0200 (CEST)
+Message-ID: <ce4bad93-2663-4c07-8cdb-fb6fdcbfc1ca@collabora.com>
+Date: Tue, 30 Sep 2025 13:34:24 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v2 1/3] dt-bindings: net: airoha: npu: Add AN7583
- support
-To: Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn
- <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+Subject: Re: [PATCH RESEND v4] arm64: dts: mediatek: mt7986-bpi-r3: Change fan
+ PWM value for mid speed
+To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>
-Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20250927-airoha-npu-7583-v2-0-e12fac5cce1f@kernel.org>
- <20250927-airoha-npu-7583-v2-1-e12fac5cce1f@kernel.org>
-From: Paolo Abeni <pabeni@redhat.com>
-In-Reply-To: <20250927-airoha-npu-7583-v2-1-e12fac5cce1f@kernel.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Sj6IHHgwAdmXmzHCvoWBeEDpq-Ep6rcEmPARBjb6l6E_1759230481
-X-Mimecast-Originator: redhat.com
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20250930021656.1394942-1-mikhail.kshevetskiy@iopsys.eu>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20250930021656.1394942-1-mikhail.kshevetskiy@iopsys.eu>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250930_040936_765409_3D3B4DB3 
-X-CRM114-Status: GOOD (  12.06  )
+X-CRM114-CacheID: sfid-20250930_043428_764273_5BBA5486 
+X-CRM114-Status: GOOD (  15.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,31 +78,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/27/25 4:03 PM, Lorenzo Bianconi wrote:
-> Introduce AN7583 NPU support to Airoha EN7581 NPU device-tree bindings.
+Il 30/09/25 04:16, Mikhail Kshevetskiy ha scritto:
+> Popular cheap PWM fans for this machine, like the ones coming in
+> heatsink+fan combos will not work properly at the currently defined
+> medium speed. Trying different pwm setting using a command
 > 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml | 1 +
->  1 file changed, 1 insertion(+)
+>    echo $value > /sys/devices/platform/pwm-fan/hwmon/hwmon1/pwm1
 > 
-> diff --git a/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml b/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
-> index c7644e6586d329d8ec2f0a0d8d8e4f4490429dcc..59c57f58116b568092446e6cfb7b6bd3f4f47b82 100644
-> --- a/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
-> +++ b/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
-> @@ -18,6 +18,7 @@ properties:
->    compatible:
->      enum:
->        - airoha,en7581-npu
-> +      - airoha,an7583-npu
->  
->    reg:
->      maxItems: 1
+> I found:
 > 
+>    pwm1 value     fan rotation speed   cpu temperature     notes
+>    -----------------------------------------------------------------
+>      0            maximal              31.5 Celsius        too noisy
+>     40            optimal              35.2 Celsius        no noise hearable
+>     95            minimal
+>     above 95      does not rotate      55.5 Celsius
+>    -----------------------------------------------------------------
+> 
+> Thus only cpu-active-high and cpu-active-low modes are usable.
+> I think this is wrong.
+> 
+> This patch fixes cpu-active-medium settings for bpi-r3 board.
+> 
+> I know, the patch is not ideal as it can break pwm fan for some users.
+> Likely this is the only official mt7986-bpi-r3 heatsink+fan solution
+> available on the market.
+> 
+> This patch may not be enough. Users may wants to tweak their thermal_zone0
+> trip points, thus tuning fan rotation speed depending on cpu temperature.
+> That can be done on the base of the following example:
+> 
+>    === example =========
+>    # cpu temperature below 25 Celsius degrees, no rotation
+>    echo 25000 > /sys/class/thermal/thermal_zone0/trip_point_4_temp
+>    # cpu temperature in [25..32] Celsius degrees, normal rotation speed
+>    echo 32000 > /sys/class/thermal/thermal_zone0/trip_point_3_temp
+>    # cpu temperature above 50 Celsius degrees, max rotation speed
+>    echo 50000 > /sys/class/thermal/thermal_zone0/trip_point_2_temp
+>    =====================
+> 
+> Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+> Acked-by: Frank Wunderlich <frank-w@public-files.de>
 
-This needs ack from the DT maintainer and we are finalizing the net-next
-PR right now. Let's defer this series to the next cycle, thanks!
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Paolo
 
 
