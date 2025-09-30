@@ -4,76 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D0CCCCA468
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Sep 2025 11:01:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA095CCA470
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Sep 2025 11:09:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J7/5/gzwC2GOD9G4tDJ2ngF/uUxrVWglDknfBB6sGcY=; b=W+KovWvXUHkYniP6jcdfVGXboO
-	grXGUT/Ynqzd9n4H+jpKQlcf+tv2Oy382tYuA75j7TGhkvys4bv0cy8fF+QprSQMveS6ubFlB1iKE
-	g2bbDrLCskOHR1EgOixEi7peD4wM5p+4HAUKdtseTSLAXmLFyoa0iONmBpIWM0MAVUOVqi+u/ucHJ
-	rNWPpBYIjUGpw4WXXA8epXKHwW74/IISL1SfNrfJZucAT+7YlHevqnEOE9smKK7hbYHDWK6BpIsRu
-	7EFO3lOHLlVYizcUXk1grpXpg5eoKIF1jIloMIBUqXyw4+7AzB2zIuOnp9r0ylu5zSHH6NqiltEgg
-	eYuWGUsw==;
+	bh=FfPcBPeiA6B4ouOuexFejWK64dOaFigAn8muMWhU3dQ=; b=Ziy7FNL+ET55SD1Sx7GmVl3m2i
+	76Zb6E7paw7jUnb6bUtqXpWkqowPJ10R1T5mXbeBBYFKiqTJGf7uuFhb+QnybOw+HYl8u1QXBDBoW
+	1axeTHrVUFe8IB9fG5eiW+RTjDKzuWjpZpfuinq+YFM3aVW1rH1KfM2R/qPSfi6Ghyswn4s+SCkMK
+	u+3CiN0ESAGQk2zv/a+9WG2dvmqmKJWr8nOK/jmNBS8qz1RpCO8JhCInR6USExy3aJ8nSQ7LlduJk
+	unZDF4MH3+bNIcpiFMdhWiGqTh5abNtDTYekOXkhl2o9AN6HBD2oxuS3MTn/Wb5WaLx0mIegqUq6v
+	4VepXbZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3Y6i-0000000559D-0wKp;
-	Tue, 30 Sep 2025 11:01:20 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1v3YEk-000000056VC-3yoH;
+	Tue, 30 Sep 2025 11:09:38 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3Y6c-00000005568-3hIJ;
-	Tue, 30 Sep 2025 11:01:15 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 867DB40452;
-	Tue, 30 Sep 2025 11:01:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 093B6C4CEF0;
-	Tue, 30 Sep 2025 11:01:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1759230074;
-	bh=NNpca/YuA608VwFWD5syQSnSR7WL3yT9VicGjOlQbus=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=gZczisjPaJ6ukhHexem/qzlqPVv4YocPy6iaJNBuqaXuL+0xUVzJ2g1QqTg/Awjoc
-	 /ov9O0asZrk4HfvOd7rjWniV9GGYjaDU/gKuvA7l4S0M09KDslgJEwvC+lzidBsA9J
-	 KsMpK/sbx22r18nJN0hC369sepRIKhDWb92xaUNo7lnDs0r//AFXQKKb1btMpJSpVg
-	 WcQme4BE5G4FQTaYpV3FjIuJ3OWx/dk9s2BICSiifHKhi1hPT+JLsyJB9U3vDRPr1f
-	 Jmh3kU/NmuDNQIQeMFT3Cj3htKgXL7/CdmNlI6rwjQp7yDAyOppWsS6nVkN3HZrQ85
-	 Fz1rjr3qq1itg==
-From: Maxime Ripard <mripard@kernel.org>
-Date: Tue, 30 Sep 2025 12:59:39 +0200
-Subject: [PATCH v5 24/39] drm/mediatek: Switch to
- drm_atomic_get_new_crtc_state()
+	id 1v3YEi-000000056UC-2ky9
+	for linux-mediatek@lists.infradead.org;
+	Tue, 30 Sep 2025 11:09:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1759230574;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=FfPcBPeiA6B4ouOuexFejWK64dOaFigAn8muMWhU3dQ=;
+	b=Mmyk4ruijP65e0LMLlnrX19tqo4N1V0KKctJ/CSrf9bRpxUPFsLUGCZjy4deyaxiAqAFAI
+	y1okaxMmZU4XsdqvSU6mw99815UnsRm3gUJyi2d+9CQbzNYiyAI3ZfUSTy6VcVBaNT3KlU
+	dV/rQfigujyRprm1k48D5Bdcw84etJQ=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-642-wVPkoSIRMwCVmqJ4fLv9Xg-1; Tue, 30 Sep 2025 07:08:02 -0400
+X-MC-Unique: wVPkoSIRMwCVmqJ4fLv9Xg-1
+X-Mimecast-MFC-AGG-ID: wVPkoSIRMwCVmqJ4fLv9Xg_1759230481
+Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-46e38bd6680so19490865e9.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 30 Sep 2025 04:08:01 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1759230481; x=1759835281;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=FfPcBPeiA6B4ouOuexFejWK64dOaFigAn8muMWhU3dQ=;
+        b=M/c1cpHw8pYf/tHhoaZxuJooo9dMSmk44fV/5bbIexCvMppEw+7KyoRfoaJIl2bx38
+         V1zbLvWyjqQ56zY6gfFWt/DhMtPioVC6/UIjUzblxQLJVbQiSKX25+N8xhDgnPFzkh4d
+         6anod5dr/403vCIsLtIwitYg0zHSiyYz3iq2oZ9SWMMW3MOqKGYKRUMHtuRC8KutGQjM
+         un8KrmWU3bx60usrkEgvLcGTBxQsI8SSQvuhAhlAiUHtpNifh77hlmM7mftHXXHc2vre
+         XdZm7N4OjfuBJjtYVxOzvdeFR4uibHxmKHjZ5YcLEGjasWMhUANNNRidnhcEsKmeCBAy
+         yOhw==
+X-Forwarded-Encrypted: i=1; AJvYcCU+hTwALZBQf/5noNv+zm3/wOc+PqCZljxX+bMcPS61qsRMHpajOBbTeNNJulEZSgzD5Pp9j84aqgxYfOhneA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YykO4wszo06IZPpk/QzTYcf8fYU+IycRTkSx/aP1CuuMr1U3aO+
+	tXuHNtP9BNBjDUGgRgV2PvysLzYuaOGzrtb5WbF4CbodR+ZqPY3SR+LwBP/GRGpedl0NC/5JoOc
+	1O2pZWzArlD2RdO56TSFSX4EYP9IbM6rN98Azd9Gr7XccBHvzYPwYk6Nag6g/qMrlbOIc7L0Zjg
+	==
+X-Gm-Gg: ASbGncshU0fPMVGl+MBFQSKkqAvCLQmsLqHMRjy1WtVvaAjTSVXYEScvdA2cNgHG214
+	DdVUV6kqKvWqx49S0lX04uM92qcLmXxIkgDo09b4WHwx5M16NR8OXupoi477VeLIwxbgmJ3i2J9
+	dEfDZjNHcstd0URHHTn04R63Ta712GuizAYkpl3a0QGpKJloHTwmH+yhhBPt/KkY6Ypc3BQIqxK
+	V5SiuGXEZlFsy9X9kM8koVhRdyTLQmlZYaaC5msxIcprCvPa+56Pvv0vxqnL00YjJGTNmL96TIL
+	OsPWWag/wIPLXnCeqxj+aQghQK6/aWDA7GY84PUcgmZjBpKjJ1oZq9g90Nz/12xTOQza8vNs425
+	6exeUOCKjUAj5WlF78g==
+X-Received: by 2002:a05:600c:8416:b0:46e:440f:144b with SMTP id 5b1f17b1804b1-46e440f1681mr106148155e9.14.1759230480815;
+        Tue, 30 Sep 2025 04:08:00 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEtp2PNPVi0ALjvuUKoPRLDELJ7rf4PAGV+onh7dq2Ietz1gwVjsUfUi7sNW36nUdpmYhddmA==
+X-Received: by 2002:a05:600c:8416:b0:46e:440f:144b with SMTP id 5b1f17b1804b1-46e440f1681mr106147925e9.14.1759230480426;
+        Tue, 30 Sep 2025 04:08:00 -0700 (PDT)
+Received: from ?IPV6:2a0d:3344:2712:7e10:4d59:d956:544f:d65c? ([2a0d:3344:2712:7e10:4d59:d956:544f:d65c])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-40fac4a5e41sm23693038f8f.0.2025.09.30.04.07.59
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 30 Sep 2025 04:07:59 -0700 (PDT)
+Message-ID: <157578d3-c06f-4621-b707-ca4208d18807@redhat.com>
+Date: Tue, 30 Sep 2025 13:07:58 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20250930-drm-no-more-existing-state-v5-24-eeb9e1287907@kernel.org>
-References: <20250930-drm-no-more-existing-state-v5-0-eeb9e1287907@kernel.org>
-In-Reply-To: <20250930-drm-no-more-existing-state-v5-0-eeb9e1287907@kernel.org>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>
-Cc: dri-devel@lists.freedesktop.org, Maxime Ripard <mripard@kernel.org>, 
- =?utf-8?q?Ville_Syrj=C3=A4l=C3=A4?= <ville.syrjala@linux.intel.com>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1747; i=mripard@kernel.org;
- h=from:subject:message-id; bh=NNpca/YuA608VwFWD5syQSnSR7WL3yT9VicGjOlQbus=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDBm3d2j9k69+2mCyWvl4YuGV6wX3zCvNtju8mLL1WZst4
- /5dqs03OqayMAhzMsiKKbI8kQk7vbx9cZWD/cofMHNYmUCGMHBxCsBE/PsYGx4wT1bSL3+xtuua
- S8xq86wO+xu3b/Z9vtKceX/FDvfOXL/ARQs7Wm7434qUntlU6MW/jLHh7tn4tw1Nxacun/SVvfX
- e64HP07lV7hm9xtZcJa8l87kC2bUeyB390Wm+8rgZY0mw/lIA
-X-Developer-Key: i=mripard@kernel.org; a=openpgp;
- fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next v2 1/3] dt-bindings: net: airoha: npu: Add AN7583
+ support
+To: Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn
+ <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>
+Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20250927-airoha-npu-7583-v2-0-e12fac5cce1f@kernel.org>
+ <20250927-airoha-npu-7583-v2-1-e12fac5cce1f@kernel.org>
+From: Paolo Abeni <pabeni@redhat.com>
+In-Reply-To: <20250927-airoha-npu-7583-v2-1-e12fac5cce1f@kernel.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: Sj6IHHgwAdmXmzHCvoWBeEDpq-Ep6rcEmPARBjb6l6E_1759230481
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250930_040114_960630_6AD9FECF 
-X-CRM114-Status: GOOD (  11.15  )
+X-CRM114-CacheID: sfid-20250930_040936_765409_3D3B4DB3 
+X-CRM114-Status: GOOD (  12.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,48 +117,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mediatek atomic_check implementation uses the deprecated
-drm_atomic_get_existing_crtc_state() helper.
+On 9/27/25 4:03 PM, Lorenzo Bianconi wrote:
+> Introduce AN7583 NPU support to Airoha EN7581 NPU device-tree bindings.
+> 
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>  Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml b/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
+> index c7644e6586d329d8ec2f0a0d8d8e4f4490429dcc..59c57f58116b568092446e6cfb7b6bd3f4f47b82 100644
+> --- a/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
+> +++ b/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
+> @@ -18,6 +18,7 @@ properties:
+>    compatible:
+>      enum:
+>        - airoha,en7581-npu
+> +      - airoha,an7583-npu
+>  
+>    reg:
+>      maxItems: 1
+> 
 
-This hook is called as part of the global atomic_check, thus before the
-states are swapped. The existing state thus points to the new state, and
-we can use drm_atomic_get_new_crtc_state() instead.
+This needs ack from the DT maintainer and we are finalizing the net-next
+PR right now. Let's defer this series to the next cycle, thanks!
 
-Reviewed-by: Ville Syrjälä <ville.syrjala@linux.intel.com>
-Signed-off-by: Maxime Ripard <mripard@kernel.org>
----
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-To: Philipp Zabel <p.zabel@pengutronix.de>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: dri-devel@lists.freedesktop.org
-Cc: linux-mediatek@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
----
- drivers/gpu/drm/mediatek/mtk_plane.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_plane.c b/drivers/gpu/drm/mediatek/mtk_plane.c
-index cbc4f37da8ba81ff9c8b3b58f66363837ffc21ec..d4486a63a6e01f02b6777522440dee8e39d51bf1 100644
---- a/drivers/gpu/drm/mediatek/mtk_plane.c
-+++ b/drivers/gpu/drm/mediatek/mtk_plane.c
-@@ -120,11 +120,12 @@ static int mtk_plane_atomic_async_check(struct drm_plane *plane,
- 	ret = mtk_crtc_plane_check(new_plane_state->crtc, plane,
- 				   to_mtk_plane_state(new_plane_state));
- 	if (ret)
- 		return ret;
- 
--	crtc_state = drm_atomic_get_existing_crtc_state(state, new_plane_state->crtc);
-+	crtc_state = drm_atomic_get_new_crtc_state(state,
-+						   new_plane_state->crtc);
- 
- 	return drm_atomic_helper_check_plane_state(plane->state, crtc_state,
- 						   DRM_PLANE_NO_SCALING,
- 						   DRM_PLANE_NO_SCALING,
- 						   true, true);
-
--- 
-2.51.0
+Paolo
 
 
