@@ -4,64 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD241CAC5B8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Sep 2025 09:30:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8CF8CCA470
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Sep 2025 11:00:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PYhNZAuXNsQZXbAM0zt2/NAND3rDrfAPR4vuwvQwywc=; b=cQ5DyDigAm96HGCNf17KY97WMI
-	4aDB7F0S+gur6/6poG1LBXYh0KDCZr/PR4fXeK7/0zz+Ybxf2wJJiCWXFcGIj0r4OtFaBX5kFPuv4
-	qulvBSuLeUmpCkKH02+0pnCWukyevIZmmAhoIT27z7ddZ2nM1E7vbIuwjbu4+cAumVa9WAazOLH+O
-	INDNErKv4JkQPS2i35mV9LUAdi6f/SLr5/5JW+zekr6k3ECXeBzthAx7315Eex+SFONEST1W5fzX0
-	Q42HEXmHkmwLcTwqwRFlFDsXvwr/Ub+XG7fCi5VQNG18Cg7E4OZI5yLwpEQ4O2bO/770wnzHcGmnz
-	1RMsO79w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=dHiiuApL/zOJlud+Z6td623Wtzuw8wg8mOVH9bFX7+k=; b=YxTq0CBHydrbOc
+	QWV8MEsIfUVIhVQW+dXoJ/6r1EvwxmD/BKrXjOiP3o6NvaEnIK7vzwAJwoWCZk1rnCwR877Db8xYy
+	K/mP/KJ+rYSEEu04N0b/O5K8rQtmN/QbHJaCdf/V6zhdeA5clJgxSRK79/HH39Uc2sXA+6+zvwy/R
+	gyt2LLzKXsGS/Z3+i8keYJYkrJDwVCgZaXemkiSH9RMvLXjbgmV5eEVTV9fzzbWWElNXK5A/ZBLqC
+	5dEHmvpT8Z1usCOULLbNvPFi/z6vbirxaO4muRxlG9F24rwODhWO7NOSep8wCrUrSQV87cUV2bSZS
+	7J1CjH5TPoTtSHUGqCnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3Wgq-00000004pBi-3xW2;
-	Tue, 30 Sep 2025 09:30:33 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1v3Y5W-000000054bu-3lr1;
+	Tue, 30 Sep 2025 11:00:06 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3Wgn-00000004pBJ-0OSw
-	for linux-mediatek@lists.infradead.org;
-	Tue, 30 Sep 2025 09:30:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1759224627;
-	bh=/1lp1CrXLlYtkipf1kbmhOx4cqTFS3wPb2lnYsNlfso=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=CIqntvus7FBsh5V1Iu5dCliMhxyeio1V6FtfJ89zj0Wfcp2uJgZOQYYn5GnIdWrj0
-	 q3wImbZhQlYx8o9VRb1ITZQeZprPkjQTfzgozacg9fXfUM0XUskzWr2ZI6UEdjEEzo
-	 TtaAKPW/9BrRp0R7sHdmPSLRoMo90/a4oa8fALwkiBe+3qNfzPGTF2xOE8XKL2i/ui
-	 +bS+qzdXyqdQQ5luVzkDNO4BFpehSBr1r4O0ObYHZSxLY4YxXtmVTa61pHuYw8vce+
-	 hQzl3u/KNZfLjCotN2TS+GBcB6UNvi/eqO2nSb0ti4CBGL46sjQ1IVp7ADcr0lI13e
-	 +tpFMYE/l+H0w==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E592F17E129E;
-	Tue, 30 Sep 2025 11:30:26 +0200 (CEST)
-Message-ID: <b69b2bf8-2226-4dd4-97b7-a6bf17cc4f94@collabora.com>
-Date: Tue, 30 Sep 2025 11:30:26 +0200
+	id 1v3Y5U-000000054bh-3zEC;
+	Tue, 30 Sep 2025 11:00:05 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 3072F604CD;
+	Tue, 30 Sep 2025 11:00:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 51488C4CEF0;
+	Tue, 30 Sep 2025 11:00:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1759230003;
+	bh=hl6CpBsFM0yclQLF3Wr1UR3e+Pr0M3yXUJx6ZUgVFTo=;
+	h=From:Subject:Date:To:Cc:From;
+	b=hMgAjDFiUcHZlHXjNfiivYmi8e8vUVWCi59OcfXv0rRTbwfOXoZRgN9AbmT6dp24I
+	 QG9cauPJW6cadrjxv9LaBeqXg2c41/8Afqvud6K2PeYu5cT41oVL2Rd0dO08HLJ1KN
+	 EzucbmMAqmuZu+7MBn6um5hAXXbmRWnDv/rV8vIGOBaSOEnTsFyZ6ZM571/O9AUMGH
+	 Flap9Gu7hgedgeX22zbtnMoQdL9pkmX/clya9FLtDuexAQAJiXx6m81fUxDWpuNtm+
+	 hQszCjBUs8oMkf3jYBWhJnB4L+H4zNY2ZqKUrJaEKvD8H/JgewXOHCi9u/myHJLxn8
+	 dS3ZTJeRZILEw==
+From: Maxime Ripard <mripard@kernel.org>
+Subject: [PATCH v5 00/39] drm/atomic: Get rid of existing states (not
+ really)
+Date: Tue, 30 Sep 2025 12:59:15 +0200
+Message-Id: <20250930-drm-no-more-existing-state-v5-0-eeb9e1287907@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 0/8] Add support MT6316/6363/MT6373 PMICs regulators
- and MFD
-To: Igor Belwon <igor.belwon@mentallysanemainliners.org>,
- linux-mediatek@lists.infradead.org
-References: <20250715140224.206329-1-angelogioacchino.delregno@collabora.com>
- <DD5B2MK444DP.BA3ZBBY5Z6HZ@mentallysanemainliners.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <DD5B2MK444DP.BA3ZBBY5Z6HZ@mentallysanemainliners.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250930_023029_455941_0922C4F1 
-X-CRM114-Status: GOOD (  20.38  )
+X-B4-Tracking: v=1; b=H4sIAAO422gC/43NTWrDMBCG4asErTtFP5at6ar3KF3Yo5Ej2khFM
+ iYl+O5VsmlKwHT5fgzPXETlErmKl8NFFF5jjTm1sE8HQccxzQzRtxZaaiudtuDLCVKGUy4MfI5
+ 1iWmGuowLA05GW01qNGYSDfgqHOL5hr+9tz6261y+b79WdV3/xa4KJATpiDwGZwlfP7gk/nzOZ
+ RZXd9W/Fkq9a+lmeUYXyIbe9/2DZe4t3LVMsxQN4+Cxl2TMg9XdWWrYtbpmWd9N6BySIffH2rb
+ tB24+KlipAQAA
+X-Change-ID: 20250825-drm-no-more-existing-state-9b3252c1a33b
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>
+Cc: dri-devel@lists.freedesktop.org, Maxime Ripard <mripard@kernel.org>, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
+ =?utf-8?q?Ville_Syrj=C3=A4l=C3=A4?= <ville.syrjala@linux.intel.com>, 
+ Louis Chauvet <louis.chauvet@bootlin.com>, 
+ Haneen Mohammed <hamohammed.sa@gmail.com>, 
+ Melissa Wen <melissa.srw@gmail.com>, Jyri Sarha <jyri.sarha@iki.fi>, 
+ Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
+ Paul Cercueil <paul@crapouillou.net>, linux-mips@vger.kernel.org, 
+ Liviu Dudau <liviu.dudau@arm.com>, Russell King <linux@armlinux.org.uk>, 
+ Manikandan Muralidharan <manikandan.m@microchip.com>, 
+ Dharma Balasubiramani <dharma.b@microchip.com>, 
+ Nicolas Ferre <nicolas.ferre@microchip.com>, 
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+ Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
+ linux-arm-kernel@lists.infradead.org, Inki Dae <inki.dae@samsung.com>, 
+ Seung-Woo Kim <sw0312.kim@samsung.com>, 
+ Kyungmin Park <kyungmin.park@samsung.com>, 
+ Krzysztof Kozlowski <krzk@kernel.org>, 
+ Alim Akhtar <alim.akhtar@samsung.com>, linux-samsung-soc@vger.kernel.org, 
+ Liu Ying <victor.liu@nxp.com>, Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, imx@lists.linux.dev, 
+ Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, 
+ Lucas Stach <l.stach@pengutronix.de>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Anitha Chrisanthus <anitha.chrisanthus@intel.com>, 
+ Edmund Dea <edmund.j.dea@intel.com>, Paul Kocialkowski <paulk@sys-base.io>, 
+ Sui Jingfeng <suijingfeng@loongson.cn>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Rob Clark <robin.clark@oss.qualcomm.com>, 
+ Dmitry Baryshkov <lumag@kernel.org>, 
+ Abhinav Kumar <abhinav.kumar@linux.dev>, 
+ Jessica Zhang <jessica.zhang@oss.qualcomm.com>, Sean Paul <sean@poorly.run>, 
+ Marijn Suijten <marijn.suijten@somainline.org>, 
+ linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, linux-rockchip@lists.infradead.org, 
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Samuel Holland <samuel@sholland.org>, linux-sunxi@lists.linux.dev, 
+ Thierry Reding <thierry.reding@gmail.com>, 
+ Mikko Perttunen <mperttunen@nvidia.com>, 
+ Jonathan Hunter <jonathanh@nvidia.com>, linux-tegra@vger.kernel.org, 
+ Hans de Goede <hansg@kernel.org>, 
+ Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+ =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=6084; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=hl6CpBsFM0yclQLF3Wr1UR3e+Pr0M3yXUJx6ZUgVFTo=;
+ b=owGbwMvMwCmsHn9OcpHtvjLG02pJDBm3d8j/a/a6xTLbujO7gOmIX8GRFI/Z08TFfa8l/f2wJ
+ 1vwnOCTjqksDMKcDLJiiixPZMJOL29fXOVgv/IHzBxWJpAhDFycAjCRo76M9RGT5kX9/PrcYUOU
+ Xc3vVCdrnrZQvp8/9rW2TlB2zd9arHTJpL76n8H01qSDffMSOxbsZayPWzpdcdqEsnkMcZ3Su3a
+ bh9aUT/vo9XJ+SPfni76/f52viFVZ8PjkVV3ZNO+5Bldt9xgAAA==
+X-Developer-Key: i=mripard@kernel.org; a=openpgp;
+ fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,67 +133,128 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 29/09/25 15:07, Igor Belwon ha scritto:
-> On Tue Jul 15, 2025 at 4:02 PM CEST, AngeloGioacchino Del Regno wrote:
->> This series adds support for three new MediaTek PMICs: MT6316, MT6363
->> and MT6373 and their variants - used in board designs featuring the
->> MediaTek MT8196 Chromebook SoC, or the MT6991 Dimensity 9400 Smartphone
->> SoC.
->>
-> 
-> Hi Angelo,
-> 
-> Apologies for asking, but is there any future for this series? I
-> understand you as a MediaTek maintainer have a lot of work on your head -
-> however as part of my MT6878 upstreaming work, getting this series merged
-> would really be beneficial.
-> 
-> I only have MT6363 (well, also 6685, 6319 and 6369, but expect a
-> seperate patchset for these) on my platform, so I'm unable to pick up
-> the work for other PMICs anyway.
-> 
-> Thanks and regards,
-> Igor
+Hi,
 
-No worries about asking - that's totally legit!
+Here's a series to get rid of the drm_atomic_helper_get_existing_*_state
+accessors.
 
-Happy to see that you're going serious with the upstreaming of the Dimensity 7300!
-I admit I'd be proud to finally see some modern MediaTek smartphone upstream, as
-there is practically none (well, apart from some old-old-old stuff that I added
-and - ugh - only partially) and I don't think that those deserve to become e-waste
-"just like that".
+The initial intent was to remove the __drm_*_state->state pointer to
+only rely on old and new states, but we still need it now to know which
+of the two we need to free: if a state has not been committed (either
+dropped or checked only), then we need to free the new one, if it has
+been committed we need to free the old state. 
 
-Those regulators are required for the MediaTek Kompanio Ultra (MT8196) SoC, and yes
-I plan to respin this series as soon as possible.
+Thus, the state pointer is kept (and documented) only to point to the
+state we should free eventually.
 
-I should also be trying to upstream the MT6685 RTC in the future (not clkbuf, most
-probably, as that doesn't seem to be actually needed for anything meaningful).
+All users have been converted to the relevant old or new state
+accessors.  
 
-As for MT6319 and MT6369, I currently have no plans for upstreaming those, at least
-for now.
+This was tested on tidss.
 
-Besides, does the Dimensity 7300 also use SPMI 2.0?
-In case you missed it: 
-https://lore.kernel.org/all/c31bc281-94d5-40b6-a9bd-76b41769f6e5@collabora.com
+Let me know what you think,
+Maxime
 
-Also - if this can help you in any way, we (as Collabora) are performing all of the
-upstreaming work publicly: the commits that aren't "exactly ready yet" (but working
-anyway) are of course available to everyone... and also some WIP things.
+Signed-off-by: Maxime Ripard <mripard@kernel.org>
+---
+Changes in v5:
+- Added some more documentation on state teardown
+- Link to v4: https://lore.kernel.org/r/20250917-drm-no-more-existing-state-v4-0-5d4b9889c3c8@kernel.org
 
-This includes, for example, the SCMI TinySYS Protocol (which probably D7300 also
-uses) and DVFSRC v4 code, other than devicetrees that are close to upstream for the
-MT8196 platform - of which, some new style nodes should apply to your SoC (not in
-a 1:1 copy-paste fashion, but you get the point, I guess).
+Changes in v4:
+- Fix ingenic
+- Rebased on latest drm-misc-next tag
+- Link to v3: https://lore.kernel.org/r/20250909-drm-no-more-existing-state-v3-0-1c7a7d960c33@kernel.org
 
-Check it out:
-https://gitlab.collabora.com/mediatek/aiot/linux/-/commits/mediatek-dev
+Changes in v3:
+- Added an armada rework patch
+- Added an ingenic fix
+- Collected tags
+- Rebased on latest drm-misc-next tag
+- Link to v2: https://lore.kernel.org/r/20250902-drm-no-more-existing-state-v2-0-de98fc5f6d66@kernel.org
 
-Beware that we have multiple branches, and some may be more updated than others.
+Changes in v2:
+- Dropped the first and second patches
+- Reworked the recipient list to be nicer with SMTPs
+- Link to v1: https://lore.kernel.org/r/20250825-drm-no-more-existing-state-v1-0-f08ccd9f85c9@kernel.org
 
-...and we also have some documentation that could help:
-https://gitlab.collabora.com/mediatek/aiot/wiki/-/blob/main/README.md
+---
+Maxime Ripard (39):
+      drm/atomic: Convert drm_atomic_get_connector_state() to use new connector state
+      drm/atomic: Remove unused drm_atomic_get_existing_connector_state()
+      drm/atomic: Document __drm_connectors_state state pointer
+      drm/atomic: Convert __drm_atomic_get_current_plane_state() to modern accessor
+      drm/atomic: Convert drm_atomic_get_plane_state() to use new plane state
+      drm/vkms: Convert vkms_crtc_atomic_check() to use new plane state
+      drm/tilcdc: crtc: Use drm_atomic_helper_check_crtc_primary_plane()
+      drm/atomic: Remove unused drm_atomic_get_existing_plane_state()
+      drm/atomic: Document __drm_planes_state state pointer
+      drm/atomic: Convert drm_atomic_get_crtc_state() to use new connector state
+      drm/ingenic: ipu: Switch to drm_atomic_get_new_crtc_state()
+      drm/arm/malidp: Switch to drm_atomic_get_new_crtc_state()
+      drm/armada: Drop always true condition in atomic_check
+      drm/armada: Switch to drm_atomic_get_new_crtc_state()
+      drm/atmel-hlcdc: Switch to drm_atomic_get_new_crtc_state()
+      drm/exynos: Switch to drm_atomic_get_new_crtc_state()
+      drm/imx-dc: Switch to drm_atomic_get_new_crtc_state()
+      drm/imx-dcss: Switch to drm_atomic_get_new_crtc_state()
+      drm/imx-ipuv3: Switch to drm_atomic_get_new_crtc_state()
+      drm/ingenic: Switch to drm_atomic_get_new_crtc_state()
+      drm/kmb: Switch to drm_atomic_get_new_crtc_state()
+      drm/logicvc: Switch to drm_atomic_get_new_crtc_state()
+      drm/loongson: Switch to drm_atomic_get_new_crtc_state()
+      drm/mediatek: Switch to drm_atomic_get_new_crtc_state()
+      drm/msm/mdp5: Switch to drm_atomic_get_new_crtc_state()
+      drm/omap: Switch to drm_atomic_get_new_crtc_state()
+      drm/rockchip: Switch to drm_atomic_get_new_crtc_state()
+      drm/sun4i: Switch to drm_atomic_get_new_crtc_state()
+      drm/tegra: Switch to drm_atomic_get_new_crtc_state()
+      drm/tilcdc: Switch to drm_atomic_get_new_crtc_state()
+      drm/vboxvideo: Switch to drm_atomic_get_new_crtc_state()
+      drm/vc4: Switch to drm_atomic_get_new_crtc_state()
+      drm/atomic: Switch to drm_atomic_get_new_crtc_state()
+      drm/framebuffer: Switch to drm_atomic_get_new_crtc_state()
+      drm/atomic: Remove unused drm_atomic_get_existing_crtc_state()
+      drm/atomic: Document __drm_crtcs_state state pointer
+      drm/ingenic: crtc: Switch to ingenic_drm_get_new_priv_state()
+      drm/atomic: Convert drm_atomic_get_private_obj_state() to use new plane state
+      drm/atomic: Document __drm_private_objs_state state pointer
 
+ drivers/gpu/drm/arm/malidp_planes.c             |   2 +-
+ drivers/gpu/drm/armada/armada_plane.c           |   7 +-
+ drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_plane.c |   2 +-
+ drivers/gpu/drm/drm_atomic.c                    |  21 ++--
+ drivers/gpu/drm/drm_framebuffer.c               |   2 +-
+ drivers/gpu/drm/exynos/exynos_drm_plane.c       |   2 +-
+ drivers/gpu/drm/imx/dc/dc-plane.c               |   2 +-
+ drivers/gpu/drm/imx/dcss/dcss-plane.c           |   4 +-
+ drivers/gpu/drm/imx/ipuv3/ipuv3-plane.c         |   3 +-
+ drivers/gpu/drm/ingenic/ingenic-drm-drv.c       |  13 +-
+ drivers/gpu/drm/ingenic/ingenic-ipu.c           |   4 +-
+ drivers/gpu/drm/kmb/kmb_plane.c                 |   3 +-
+ drivers/gpu/drm/logicvc/logicvc_layer.c         |   4 +-
+ drivers/gpu/drm/loongson/lsdc_plane.c           |   2 +-
+ drivers/gpu/drm/mediatek/mtk_plane.c            |   3 +-
+ drivers/gpu/drm/msm/disp/mdp5/mdp5_plane.c      |   7 +-
+ drivers/gpu/drm/omapdrm/omap_plane.c            |   2 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c     |   6 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c    |   2 +-
+ drivers/gpu/drm/sun4i/sun8i_ui_layer.c          |   3 +-
+ drivers/gpu/drm/sun4i/sun8i_vi_layer.c          |   3 +-
+ drivers/gpu/drm/tegra/dc.c                      |   2 +-
+ drivers/gpu/drm/tilcdc/tilcdc_crtc.c            |   9 +-
+ drivers/gpu/drm/tilcdc/tilcdc_plane.c           |   3 +-
+ drivers/gpu/drm/vboxvideo/vbox_mode.c           |   8 +-
+ drivers/gpu/drm/vc4/vc4_plane.c                 |   6 +-
+ drivers/gpu/drm/vkms/vkms_crtc.c                |   4 +-
+ include/drm/drm_atomic.h                        | 152 +++++++++++++-----------
+ 28 files changed, 140 insertions(+), 141 deletions(-)
+---
+base-commit: 91494dee1091a14d91da6bcb39e12a907765c793
+change-id: 20250825-drm-no-more-existing-state-9b3252c1a33b
 
-Cheers,
-Angelo
+Best regards,
+-- 
+Maxime Ripard <mripard@kernel.org>
+
 
