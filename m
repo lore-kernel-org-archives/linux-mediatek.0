@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 000C7CAC5BB
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Oct 2025 15:53:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADBAECAC5BB
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Oct 2025 15:56:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6ySUKec7wcMB/xPZzhKACyCo75gQZPqejQV+yYGMai0=; b=bdSzaq3E7gtXd3d3mBEyveiJob
-	GVTND49n08QBdWmCH1uG4TRx5Uimvv1S5ci73D/jrZt9TWZ9OjZB3O0GLDEyXhpK7AYdtWIjlE1Zp
-	ynl0xk8prGFXqVhUQgW6WOwxCT4jnNRUZ59eADryCR4O4PDRoWxJ5L0gx3PNb8hbKsWN1skKErIE1
-	y0oGAYziA0EcHjDORkTCw7yvJYclrD8uqGLx+TLyuRQVPhg5Iw1AXVy2DnroEoU5jqCJHqbcDxlNj
-	iNugEHIqdaJt1/EHzzkDoyDshs72qBG+C8HllfGiPvZ0xtZquErBIHI4ax/wWB6yLiAFRCoWmfSs5
-	3lU3SHVw==;
+	bh=+PYVMPyYtKSb9TDUfot2Xu0Vmuv7MKO3dRzcBLskl30=; b=RAbmPqi1MuHO8vpSjCI9kIdZ7m
+	Wuu/PwxMKGJzsQ359K6fzRB7UGXgzHgME9jGpDLE2L5fk7sVaufFnKxIS9/QTaadhyxnG2o7SctgC
+	qIlQzOQQkfymHfk1IxfK7LAI4TbJvDQ6niBoJabYtoiRelBYAGHpn/DT9X+c0P13k+O5yEwHZWgJ5
+	F3X8sWEAm0l1LqcMavz/9AWeRvNgNis8NehjDbEGN/GOSrOGSPpXIw4StLlYhWfZJqe0Ylp2/bUyf
+	TWhb+aBAQDcYQ08cn1wH68Y67SFV5U5JeUiOpPJpeaANnT/M06eD/x455UduocWQJmwlwr50zadlr
+	WEyExnOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3z9J-00000008SK1-162e;
-	Wed, 01 Oct 2025 15:53:49 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1v3zBs-00000008Sp0-1JtO;
+	Wed, 01 Oct 2025 15:56:28 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3z9H-00000008SJS-2uT1;
-	Wed, 01 Oct 2025 15:53:47 +0000
+	id 1v3zBr-00000008SoZ-1Knn;
+	Wed, 01 Oct 2025 15:56:27 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id BFE2961E8D;
-	Wed,  1 Oct 2025 15:53:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 51AD2C4CEF5;
-	Wed,  1 Oct 2025 15:53:46 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id B9C6C60376;
+	Wed,  1 Oct 2025 15:56:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4F883C4CEF1;
+	Wed,  1 Oct 2025 15:56:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1759334026;
-	bh=jWXIj+XQH9k2rgZC0jazDofhOuOkjdLHKY7Gs7wBT/E=;
+	s=k20201202; t=1759334186;
+	bh=dpDxbJEa9xHDq32Iw4dhO02Kxs37V/TEEB8swDIuAXU=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=TrzW+CXIWwbeoLSHb0D68yTZm+49nG0+/giNoRu8VZ6yS0KxEgGU+delOR0dbRxEe
-	 IQknSZeIOek17i4D7cs8YDPO7sUsTxtJD5+vIXDgbm/fMK1Cpdl4JJ9Zo0J2I9UQVd
-	 H1TUK4T69ulJ8R2VFXtobzcY9OnEw+u95pU9WzQVip1f/55ZcsJZ9ayVmdPSTlFEr4
-	 fcC0+w2TXcTY862q2+zieIDlUMpoENEfeB+dS9fqSUi/fgOrHnCEm0hBTXEAFLga5+
-	 FDe3B0MzyLq2U9bI31Xf99E6JiCRuMIEUba43kO6VkKe0gK0bgIML+mdvJj6JdJJWL
-	 LnljY/N8OWHxw==
-Date: Wed, 1 Oct 2025 10:53:45 -0500
+	b=DDnGZVRSsuogS4Rz0rpmzlM5UBo6GlPks/QrPDVktYTRkHIlNBDcuEgF5G/HQaTFG
+	 LJNoyXC0SKBmi9hhUjpPUhAKR6Z78s0oZIbynz+7PgGZG81tpqFFXRS70J5NS530vo
+	 GDs7SZEicBivPJu/feQHSOFqIN+LYCgMq8O7FqvC2t5Fb5/BMdnDaxFTFcJeT5kt0k
+	 WBWij5+tglL96vr3PohqhG6CjjW+iVAgZ45C3JJeBOrh+ZUIV2z0cQkMj8rYvsRMlZ
+	 qo/TUbqtuHTg8OoyaKGOPJf/2I6hp+xtoWTG4H+xY5W9ADS220IgM0yYzviJ3cgz95
+	 aZHMgHOmeV7Rw==
+Date: Wed, 1 Oct 2025 10:56:25 -0500
 From: Rob Herring <robh@kernel.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: linux-mediatek@lists.infradead.org, lee@kernel.org, krzk+dt@kernel.org,
@@ -49,16 +49,18 @@ Cc: linux-mediatek@lists.infradead.org, lee@kernel.org, krzk+dt@kernel.org,
 	broonie@kernel.org, devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com, wenst@chromium.org,
-	igor.belwon@mentallysanemainliners.org
-Subject: Re: [PATCH v6 7/9] dt-bindings: iio: adc: mt6359: Allow reg for SPMI
- PMICs AuxADC
-Message-ID: <20251001155345.GD1833526-robh@kernel.org>
+	igor.belwon@mentallysanemainliners.org,
+	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>
+Subject: Re: [PATCH v6 8/9] dt-bindings: mfd: Add binding for MediaTek MT6363
+ series SPMI PMIC
+Message-ID: <20251001155625.GE1833526-robh@kernel.org>
 References: <20251001111316.31828-1-angelogioacchino.delregno@collabora.com>
- <20251001111316.31828-8-angelogioacchino.delregno@collabora.com>
+ <20251001111316.31828-9-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <20251001111316.31828-8-angelogioacchino.delregno@collabora.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20251001111316.31828-9-angelogioacchino.delregno@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,18 +75,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 01, 2025 at 01:13:14PM +0200, AngeloGioacchino Del Regno wrote:
-> When one or multiple Auxiliary ADC IPs are embedded in a SPMI PMIC
-> it is reachable at a specific address.
+On Wed, Oct 01, 2025 at 01:13:15PM +0200, AngeloGioacchino Del Regno wrote:
+> Add a binding for the MediaTek MT6363/6373 (and similar) multi
+> function PMICs connected over SPMI.
 > 
-> Allow specifying the `reg` property and make it a required one for
-> MediaTek MT6363/6373 PMICs as those communicate over SPMI and also
-> disallow it for the others (as it wouldn't be applicable).
+> These PMICs are found on board designs using newer MediaTek SoCs,
+> such as the Dimensity 9400 Smartphone chip, or the Chromebook
+> MT8196 chip.
 > 
+> Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> Link: https://lore.kernel.org/r/20250715140224.206329-8-angelogioacchino.delregno@collabora.com
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  .../iio/adc/mediatek,mt6359-auxadc.yaml         | 17 +++++++++++++++++
->  1 file changed, 17 insertions(+)
+>  .../bindings/mfd/mediatek,mt6363.yaml         | 115 ++++++++++++++++++
+>  1 file changed, 115 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,mt6363.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6363.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6363.yaml
+> new file mode 100644
+> index 000000000000..6f477186a9c6
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6363.yaml
+> @@ -0,0 +1,115 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/mfd/mediatek,mt6363.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek MT6363 series SPMI PMICs multi-function device
+> +
+> +maintainers:
+> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> +
+> +description: |
+> +  Some MediaTek Power Management ICs (PMICs) found in board designs with
+> +  the Helio, Dimensity and/or Kompanio series of SoCs are interfaced to
+> +  the chip via the System Power Management Interface (SPMI) bus.
+> +
+> +  These PMICs are multi-function devices with various sub modules.
+> +  For example, those may include one, or more of the following:
+> +  - Auxiliary ADC Controller
+> +  - Clock Controller
+> +  - eFuses
+> +  - GPIO Controller
+> +  - Interrupt Controller
+> +  - Keys
+> +  - LEDs Controller
+> +  - Regulators
+> +  - RTC
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - mediatek,mt6363
+> +      - mediatek,mt6373
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  '#address-cells':
+> +    const: 1
+> +
+> +  '#size-cells':
+> +    const: 0
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  interrupt-controller: true
+> +
+> +  "#interrupt-cells":
+> +    const: 3
+> +
+> +patternProperties:
+> +  "^adc@[0-9a-f]+$":
+> +    type: object
+> +    $ref: /schemas/iio/adc/mediatek,mt6359-auxadc.yaml#
+> +
+> +  "^regulators@[0-9a-f]+$":
+> +    type: object
+> +    properties:
+> +      compatible:
+> +        contains:
+> +          enum:
+> +            - mediatek,mt6363-regulator
+> +            - mediatek,mt6373-regulator
+> +    oneOf:
+> +      - $ref: /schemas/regulator/mediatek,mt6363-regulator.yaml#
+> +      - $ref: /schemas/regulator/mediatek,mt6373-regulator.yaml#
+> +    additionalProperties: true
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - '#address-cells'
+
+#size-cells should be required too. With that fixed,
 
 Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
