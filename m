@@ -4,63 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADBAECAC5BB
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Oct 2025 15:56:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB6CFCAC5BB
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Oct 2025 17:18:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+PYVMPyYtKSb9TDUfot2Xu0Vmuv7MKO3dRzcBLskl30=; b=RAbmPqi1MuHO8vpSjCI9kIdZ7m
-	Wuu/PwxMKGJzsQ359K6fzRB7UGXgzHgME9jGpDLE2L5fk7sVaufFnKxIS9/QTaadhyxnG2o7SctgC
-	qIlQzOQQkfymHfk1IxfK7LAI4TbJvDQ6niBoJabYtoiRelBYAGHpn/DT9X+c0P13k+O5yEwHZWgJ5
-	F3X8sWEAm0l1LqcMavz/9AWeRvNgNis8NehjDbEGN/GOSrOGSPpXIw4StLlYhWfZJqe0Ylp2/bUyf
-	TWhb+aBAQDcYQ08cn1wH68Y67SFV5U5JeUiOpPJpeaANnT/M06eD/x455UduocWQJmwlwr50zadlr
-	WEyExnOQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SkWCXVZn9oQwr9fOneaWYc16aLwPTVni5B0m5Fk1lXU=; b=5Cd6+XGNOPcDlaSDIwpO/R1Q3f
+	v63jNajF/csG7/O10sjH4q79aK1Wft8j7Y6HHftnhgEZipy/HSyokerWm/jnyMOv4ucHoq4451+Ih
+	173Ehw8eM5/28lchBaseNtnP8wRVhuRzNe7OKPdtj4N6aXVehkY94yD2WK1vRTMq+6/OGs45DdhHo
+	z+40mf1DcTwUA6cBl3uAcvF5mp9/JNHR9El/5bFuxoBfnD1pR5saub2c0YGTSvXk3NnJxW9a/wbCK
+	uPd+oQ91d5T7tYH2j7+P+BLE5grz+PFMze2r9f85+A3UrmYnnfaYnN8zyLcfW2VJG8KAdhnPBJIhv
+	rDqsgguQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3zBs-00000008Sp0-1JtO;
-	Wed, 01 Oct 2025 15:56:28 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1v40TJ-00000008cxw-1ZAN;
+	Wed, 01 Oct 2025 17:18:33 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3zBr-00000008SoZ-1Knn;
-	Wed, 01 Oct 2025 15:56:27 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id B9C6C60376;
-	Wed,  1 Oct 2025 15:56:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4F883C4CEF1;
-	Wed,  1 Oct 2025 15:56:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1759334186;
-	bh=dpDxbJEa9xHDq32Iw4dhO02Kxs37V/TEEB8swDIuAXU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=DDnGZVRSsuogS4Rz0rpmzlM5UBo6GlPks/QrPDVktYTRkHIlNBDcuEgF5G/HQaTFG
-	 LJNoyXC0SKBmi9hhUjpPUhAKR6Z78s0oZIbynz+7PgGZG81tpqFFXRS70J5NS530vo
-	 GDs7SZEicBivPJu/feQHSOFqIN+LYCgMq8O7FqvC2t5Fb5/BMdnDaxFTFcJeT5kt0k
-	 WBWij5+tglL96vr3PohqhG6CjjW+iVAgZ45C3JJeBOrh+ZUIV2z0cQkMj8rYvsRMlZ
-	 qo/TUbqtuHTg8OoyaKGOPJf/2I6hp+xtoWTG4H+xY5W9ADS220IgM0yYzviJ3cgz95
-	 aZHMgHOmeV7Rw==
-Date: Wed, 1 Oct 2025 10:56:25 -0500
-From: Rob Herring <robh@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-mediatek@lists.infradead.org, lee@kernel.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, matthias.bgg@gmail.com, lgirdwood@gmail.com,
-	broonie@kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	kernel@collabora.com, wenst@chromium.org,
-	igor.belwon@mentallysanemainliners.org,
-	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>
-Subject: Re: [PATCH v6 8/9] dt-bindings: mfd: Add binding for MediaTek MT6363
- series SPMI PMIC
-Message-ID: <20251001155625.GE1833526-robh@kernel.org>
-References: <20251001111316.31828-1-angelogioacchino.delregno@collabora.com>
- <20251001111316.31828-9-angelogioacchino.delregno@collabora.com>
+	id 1v40TG-00000008cx2-3bqz;
+	Wed, 01 Oct 2025 17:18:32 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1759339054; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=g6eeKVe8q5UYu/Zyv+4f8spD2OVynk46aIqjrhPwvud4pg/yFU6GJ8m/Y+1A38QxhJIyMHo9XvP2zVwJvaf/koqQdRI7iWsrnIYH03ufiggiwoc8wIKBaqBtmNuHNS3TWVaLJgEmt6Fefs8/PbI5VQDaVTNFQ38gfghwAncUdSI=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1759339054; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=SkWCXVZn9oQwr9fOneaWYc16aLwPTVni5B0m5Fk1lXU=; 
+	b=PXCmVyZKF60Fi3lkeBl8zsfau5T0mvo/+YUBztmCZGuI3hDgh8QllEmRMfQbbgGMoKMd6NpZArnRZfrbBQ6qU0VMrSsDFscLsUkiHKPlNfxm2mHOvEE/MuGlBOc92dOt6bAR2SQCSepwaMg2H0rHrr1SVIUaN7fmLbAM2i5Vss8=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=ariel.dalessandro@collabora.com;
+	dmarc=pass header.from=<ariel.dalessandro@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1759339053;
+	s=zohomail; d=collabora.com; i=ariel.dalessandro@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=SkWCXVZn9oQwr9fOneaWYc16aLwPTVni5B0m5Fk1lXU=;
+	b=ksINNn9Ry5kbkov/RYjCPthrjeR/B3ir8QZC1VLMfigTV/SQeRC/9naX5P5o+oQt
+	gcY1Xc/8D9yh670ZLUBONiSf31YNccaNSXJ9MVf3Ct2t0tT28Smz/yZBpoLObK3k8S4
+	J9608xI9dzJLMBP3t+Ok40Iuj+DdtKnf3vUZ3udU=
+Received: by mx.zohomail.com with SMTPS id 175933905208321.77046877084581;
+	Wed, 1 Oct 2025 10:17:32 -0700 (PDT)
+Message-ID: <a3b54ec9-e4d7-4d56-8493-f40be81f803e@collabora.com>
+Date: Wed, 1 Oct 2025 14:17:16 -0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20251001111316.31828-9-angelogioacchino.delregno@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 00/12] MediaTek dt-bindings sanitization (MT8173)
+To: Rob Herring <robh@kernel.org>
+Cc: airlied@gmail.com, amergnat@baylibre.com, andrew+netdev@lunn.ch,
+ andrew-ct.chen@mediatek.com, angelogioacchino.delregno@collabora.com,
+ broonie@kernel.org, chunkuang.hu@kernel.org, conor+dt@kernel.org,
+ davem@davemloft.net, dmitry.torokhov@gmail.com, edumazet@google.com,
+ flora.fu@mediatek.com, heiko@sntech.de, houlong.wei@mediatek.com,
+ jeesw@melfas.com, kernel@collabora.com, krzk+dt@kernel.org, kuba@kernel.org,
+ lgirdwood@gmail.com, linus.walleij@linaro.org,
+ louisalexis.eyraud@collabora.com, luiz.dentz@gmail.com,
+ maarten.lankhorst@linux.intel.com, marcel@holtmann.org,
+ matthias.bgg@gmail.com, mchehab@kernel.org, minghsiu.tsai@mediatek.com,
+ mripard@kernel.org, p.zabel@pengutronix.de, pabeni@redhat.com,
+ sean.wang@kernel.org, simona@ffwll.ch, support.opensource@diasemi.com,
+ tiffany.lin@mediatek.com, tzimmermann@suse.de, yunfei.dong@mediatek.com,
+ devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-bluetooth@vger.kernel.org,
+ linux-gpio@vger.kernel.org, linux-input@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-sound@vger.kernel.org, netdev@vger.kernel.org
+References: <20250911151001.108744-1-ariel.dalessandro@collabora.com>
+ <20250923214834.GC91441-robh@kernel.org>
+Content-Language: en-US
+From: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+In-Reply-To: <20250923214834.GC91441-robh@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ZohoMailClient: External
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251001_101830_956683_1A305ADD 
+X-CRM114-Status: GOOD (  12.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,103 +96,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 01, 2025 at 01:13:15PM +0200, AngeloGioacchino Del Regno wrote:
-> Add a binding for the MediaTek MT6363/6373 (and similar) multi
-> function PMICs connected over SPMI.
-> 
-> These PMICs are found on board designs using newer MediaTek SoCs,
-> such as the Dimensity 9400 Smartphone chip, or the Chromebook
-> MT8196 chip.
-> 
-> Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> Link: https://lore.kernel.org/r/20250715140224.206329-8-angelogioacchino.delregno@collabora.com
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  .../bindings/mfd/mediatek,mt6363.yaml         | 115 ++++++++++++++++++
->  1 file changed, 115 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,mt6363.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6363.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6363.yaml
-> new file mode 100644
-> index 000000000000..6f477186a9c6
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6363.yaml
-> @@ -0,0 +1,115 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/mfd/mediatek,mt6363.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek MT6363 series SPMI PMICs multi-function device
-> +
-> +maintainers:
-> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> +
-> +description: |
-> +  Some MediaTek Power Management ICs (PMICs) found in board designs with
-> +  the Helio, Dimensity and/or Kompanio series of SoCs are interfaced to
-> +  the chip via the System Power Management Interface (SPMI) bus.
-> +
-> +  These PMICs are multi-function devices with various sub modules.
-> +  For example, those may include one, or more of the following:
-> +  - Auxiliary ADC Controller
-> +  - Clock Controller
-> +  - eFuses
-> +  - GPIO Controller
-> +  - Interrupt Controller
-> +  - Keys
-> +  - LEDs Controller
-> +  - Regulators
-> +  - RTC
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - mediatek,mt6363
-> +      - mediatek,mt6373
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  '#address-cells':
-> +    const: 1
-> +
-> +  '#size-cells':
-> +    const: 0
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  interrupt-controller: true
-> +
-> +  "#interrupt-cells":
-> +    const: 3
-> +
-> +patternProperties:
-> +  "^adc@[0-9a-f]+$":
-> +    type: object
-> +    $ref: /schemas/iio/adc/mediatek,mt6359-auxadc.yaml#
-> +
-> +  "^regulators@[0-9a-f]+$":
-> +    type: object
-> +    properties:
-> +      compatible:
-> +        contains:
-> +          enum:
-> +            - mediatek,mt6363-regulator
-> +            - mediatek,mt6373-regulator
-> +    oneOf:
-> +      - $ref: /schemas/regulator/mediatek,mt6363-regulator.yaml#
-> +      - $ref: /schemas/regulator/mediatek,mt6373-regulator.yaml#
-> +    additionalProperties: true
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - '#address-cells'
+Rob,
 
-#size-cells should be required too. With that fixed,
+On 9/23/25 6:48 PM, Rob Herring wrote:
+> On Thu, Sep 11, 2025 at 12:09:49PM -0300, Ariel D'Alessandro wrote:
+>> This patch series continues the effort to address Device Tree validation
+>> warnings for MediaTek platforms, with a focus on MT8173. It follows the
+>> initial cleanup series by Angelo [0].
+>>
+>> Similarly to the ongoing MT8183 work done by Julien Massot, this patchset
+>> eliminates several of the remaining warnings by improving or converting DT
+>> bindings to YAML, adding missing properties, and updating device tree files
+>> accordingly.
+>>
+>> [0] https://www.spinics.net/lists/kernel/msg5780177.html
+>>
+>> Changes in v2:
+>> * Wrapped commit messages to 75 columns line wrap.
+>> * Replaced "YAML" by "DT schema" in patches subject and content.
+>> * mt8173-mdp: Fixed properties: compatible, clocks, iommus and
+>>    mediatek,vpu.
+>> * mt8173-vpu: Fixed line wrap. Dropped memory-region property description.
+>> * mediatek,mmsys: Dropped patch as it's not a binding issue.
+>> * mediatek,od: Rewrote commit log with details on DT schema users missing
+>>    the related property. Rewrote mediatek,gce-client-reg property.
+>> * mediatek,ufoe: Rewrote commit log with details on DT schema users missing
+>>    the related property. Rewrote mediatek,gce-client-reg property.
+>> * marvell,sd8897-bt: Moved to net/bluetooth/. Added missing ref to
+>>    bluetooth-controller.yaml. Dropped example. Updated reference in another
+>>    file. Minor fixes in properties.
+>> * mediatek,mt8173-rt5650: Dropped unnecessary quotes and unused label.
+>> * dlg,da9211: Dropped enable-gpios description. Rewrote generic example
+>>    node names. Minor fixes in properties.
+>> * melfas,mip4_ts: Dropped unnecessary quotes. Added "active high" to
+>>    ce-gpios property description.
+>> * mediatek,jpeg: Dropped patch as it doesn't apply.
+>>
+>> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+>>
+>> Ariel D'Alessandro (12):
+>>    dt-bindings: media: Convert MediaTek mt8173-mdp bindings to DT schema
+>>    dt-bindings: media: Convert MediaTek mt8173-vpu bindings to DT schema
+>>    dt-bindings: net: Convert Marvell 8897/8997 bindings to DT schema
+>>    dt-bindings: ASoC: Convert MediaTek RT5650 codecs bindings to DT
+>>      schema
+>>    dt-bindings: display: mediatek,od: Add mediatek,gce-client-reg
+>>      property
+>>    dt-bindings: display: mediatek,ufoe: Add mediatek,gce-client-reg
+>>      property
+>>    arm64: dts: mediatek: mt8173: Fix mt8173-pinctrl node names
+>>    dt-bindings: pinctrl: mt65xx: Allow gpio-line-names
+>>    dt-bindings: regulator: Convert Dialog DA9211 Regulators to DT schema
+>>    arm64: dts: mediatek: mt8173-elm: Drop unused bank supply
+>>    dt-bindings: soc: mediatek: pwrap: Add power-domains property
+>>    dt-bindings: input: Convert MELFAS MIP4 Touchscreen to DT schema
+> 
+> As we're close to the merge window, I applied patches 2, 8, and 11.
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Great, I can see that patches 5 and 6 were also applied (with small 
+modifications).
+
+Thanks!
+
+-- 
+Ariel D'Alessandro
+Software Engineer
+
+Collabora Ltd.
+Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK 
+Registered in England & Wales, no. 5513718
+
 
