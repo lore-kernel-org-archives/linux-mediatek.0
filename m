@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71F4BCCA470
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Oct 2025 08:11:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32C34CAC5BB
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Oct 2025 08:11:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k3EAP/+FOI83O/PLuTxumtXIUWMsfxlSJk1xntjwfM4=; b=3f2zus0jxTqGCNLaJWd5ZmwM/A
-	pQj/FogI1NBCI9V/Byqfung6xiBP1j7rhn9mMZvGjMYYAIFuDkbdOkA2On+sNONCOFbdTXltFN8Lv
-	7qiYiMTENom/ig5jL0l1bQ7sVD7//MRsyd5k3SATNLjSUGxAeMt8nuUS2vHcpumb4IK6pgtRpUd5I
-	YSRaQHZG3ES5ggkpK2m7g76N7Ww3Cj3bD2ONcE7oFxUr8raDvR7nG2aSrwkag9nW7/39Imhun+E/W
-	cPQ/A40V+FuGPKIZX5nNSzWpRTYHHGfTiH+tYOQaDx3QxYaJVjoNjAVDAkpi6zMzQco94l005QaJi
-	i8rhnBrA==;
+	bh=bPjJVKJWfX/QRF1O7LRg4cKSp0jf6hqcZ2RrU6a4XBs=; b=DylgbagUHi48frheRxnMdOWDjs
+	ewEQn0zrpXvyUYGR1FPnqvW33JRByORvj7AxSptabUtmrR5e2/uUmBwqeP9qh0Cgk2vpE5tgdWyl3
+	keWeC7vb6/QnsoHfTgPIZSwt9PQSZB5boQAGPMP1aC1g1ahCJIB3XFMgcLQuBlcUdQZExgWS1VLbb
+	cTPquqrXLoromNThmaKFPV+3EX/H7YGHozBMOCkwautlPw5oSHntTUuazLeLxWVaPsa2Z3FSuQADl
+	dD3OV5UpeZPhO/Hjz7IcdGk7CkhyTi1qf1/DInpir0rB7r2WPrlSH3uumAZLBO5EaNBVJo2rOAHG2
+	iqrl/PFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3rwI-00000006zKG-0MQH;
-	Wed, 01 Oct 2025 08:11:54 +0000
+	id 1v3rwJ-00000006zKq-1PCs;
+	Wed, 01 Oct 2025 08:11:55 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3rwG-00000006zJZ-0aoC
+	id 1v3rwG-00000006zJo-38fa
 	for linux-mediatek@lists.infradead.org;
 	Wed, 01 Oct 2025 08:11:53 +0000
-X-UUID: 47104b069e9e11f09f706fa2197c6ceb-20251001
+X-UUID: 472cabf29e9e11f09f706fa2197c6ceb-20251001
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=k3EAP/+FOI83O/PLuTxumtXIUWMsfxlSJk1xntjwfM4=;
-	b=rfuqTJWleW+5w+YzX/yK1/cvkW8s9M25zehLPtYuKXx7FMDGrO75IN0dgKWovTT5VMMqDjVzPxEFNumyWrtyQCo1G9hT7EwPnLWTDu6WIkNhNVOQlxj3FGbCrQb124Be31wxfeO9IX9ooWcyaRaw9sOz3MeWcDjGpY+evOBVdgE=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=bPjJVKJWfX/QRF1O7LRg4cKSp0jf6hqcZ2RrU6a4XBs=;
+	b=hhZlevLnu2oeuBuzEdrrZgj+4p/Uh8QEGClZ4ceEj4OXpUB7tQxR+OwvdrvhXqDI9WanP5iU5W+H47P/aByh18MfV+mHPLOaZWP1aunIJ5ENZF6m2iE+GhMPAE5k6AcymVsPW+LOWA/OHAiQbEs+FZJWWXoSJY7Bp++1tiLIXgU=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:ba1daa52-3d04-479b-9578-8b2af6e29700,IP:0,UR
+X-CID-O-INFO: VERSION:1.3.6,REQID:207f2bcd-4941-447d-ac1e-9629ac42a304,IP:0,UR
 	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
 	elease,TS:0
-X-CID-META: VersionHash:a9d874c,CLOUDID:2202dde9-2ff9-4246-902c-2e3f7acb03c4,B
+X-CID-META: VersionHash:a9d874c,CLOUDID:f0e9def8-ebfe-43c9-88c9-80cb93f22ca4,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
 	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,
 	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -43,13 +43,13 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 47104b069e9e11f09f706fa2197c6ceb-20251001
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
+X-UUID: 472cabf29e9e11f09f706fa2197c6ceb-20251001
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
 	(envelope-from <chris.lu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1788438030; Wed, 01 Oct 2025 01:11:48 -0700
+	with ESMTP id 1464571579; Wed, 01 Oct 2025 01:11:48 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1748.10; Wed, 1 Oct 2025 16:11:45 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
@@ -63,9 +63,9 @@ CC: Sean Wang <sean.wang@mediatek.com>, Will Lee <will-cy.Lee@mediatek.com>,
 	linux-bluetooth <linux-bluetooth@vger.kernel.org>, linux-kernel
 	<linux-kernel@vger.kernel.org>, linux-mediatek
 	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
-Subject: [PATCH v2 1/2] Bluetooth: btusb: MT7920: Add VID/PID 0489/e135
-Date: Wed, 1 Oct 2025 16:11:43 +0800
-Message-ID: <20251001081144.2384434-2-chris.lu@mediatek.com>
+Subject: [PATCH v2 2/2] Bluetooth: btusb: MT7922: Add VID/PID 0489/e170
+Date: Wed, 1 Oct 2025 16:11:44 +0800
+Message-ID: <20251001081144.2384434-3-chris.lu@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20251001081144.2384434-1-chris.lu@mediatek.com>
 References: <20251001081144.2384434-1-chris.lu@mediatek.com>
@@ -73,8 +73,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251001_011152_183342_65305B2E 
-X-CRM114-Status: GOOD (  10.50  )
+X-CRM114-CacheID: sfid-20251001_011152_783370_F17DD5A1 
+X-CRM114-Status: GOOD (  10.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,14 +89,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add VID 0489 & PID e135 for MediaTek MT7920 USB Bluetooth chip.
+Add VID 0489 & PID e170 for MediaTek MT7922 USB Bluetooth chip.
 
 The information in /sys/kernel/debug/usb/devices about the Bluetooth
 device is listed as the below.
 
 T:  Bus=06 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
 D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
-P:  Vendor=0489 ProdID=e135 Rev= 1.00
+P:  Vendor=0489 ProdID=e170 Rev= 1.00
 S:  Manufacturer=MediaTek Inc.
 S:  Product=Wireless_Device
 S:  SerialNumber=000000000
@@ -131,8 +131,8 @@ I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
 E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
 E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
 I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
-E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
+E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
+E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
 
 Signed-off-by: Chris Lu <chris.lu@mediatek.com>
 ---
@@ -140,18 +140,18 @@ Signed-off-by: Chris Lu <chris.lu@mediatek.com>
  1 file changed, 2 insertions(+)
 
 diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 4be34c556db8..a2cde2284163 100644
+index a2cde2284163..6834592f3c39 100644
 --- a/drivers/bluetooth/btusb.c
 +++ b/drivers/bluetooth/btusb.c
-@@ -621,6 +621,8 @@ static const struct usb_device_id quirks_table[] = {
- 	/* Additional MediaTek MT7920 Bluetooth devices */
- 	{ USB_DEVICE(0x0489, 0xe134), .driver_info = BTUSB_MEDIATEK |
+@@ -687,6 +687,8 @@ static const struct usb_device_id quirks_table[] = {
  						     BTUSB_WIDEBAND_SPEECH },
-+	{ USB_DEVICE(0x0489, 0xe135), .driver_info = BTUSB_MEDIATEK |
+ 	{ USB_DEVICE(0x0489, 0xe153), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x0489, 0xe170), .driver_info = BTUSB_MEDIATEK |
 +						     BTUSB_WIDEBAND_SPEECH },
- 	{ USB_DEVICE(0x13d3, 0x3620), .driver_info = BTUSB_MEDIATEK |
+ 	{ USB_DEVICE(0x04ca, 0x3804), .driver_info = BTUSB_MEDIATEK |
  						     BTUSB_WIDEBAND_SPEECH },
- 	{ USB_DEVICE(0x13d3, 0x3621), .driver_info = BTUSB_MEDIATEK |
+ 	{ USB_DEVICE(0x04ca, 0x38e4), .driver_info = BTUSB_MEDIATEK |
 -- 
 2.45.2
 
