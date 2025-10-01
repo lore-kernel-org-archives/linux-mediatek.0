@@ -4,77 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E22A5CAC5B8
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Oct 2025 01:25:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16E6DCCA470
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Oct 2025 03:48:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=AMidoLFDdM/wUOTBcVSUCnmXVpqpkQUiemA9u1f3XeY=; b=zIxT/KPrf7zn4OEsKniDRqu8cj
-	V5F16ifGWVP3DdRnTqMgPO8NbSXTlAsIHDM+kQBtMzy+i/APIkB8nGSFbX8QI3X4yIO6Z2eclbMeD
-	5lvb3JSFiBHhNVUKmgfJ2ZzBr8TUlJk+yjl70LaAbZUnS91tuIEjr+LnAHn3c8Bdp0mXDTEuvk03i
-	KlDmZEGNdoQ76G/mJsDOfuUBF7l2cXumXIoABeFmwWR7jScf0CHslRpN0HJvstV3vZdrhiIPZCqIH
-	yHckzdrAEm0f/RTBPcoL9WZ+9yorcixwRM2yidad6LGZhZO6bzBSZQz/0r6nFuN/VP7EA79xPbD3j
-	eFBU+REA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bbDGpgTcV4nPy99Bde42+h9SYqbXF4/JT7azRtjchCw=; b=sOzS+1C0iTBoEBwcOxbh6dq4a3
+	rit5BNPS00H0e0EMcnRt2BLe9KAL6ere1YNqsEZHW6XRCyflvr3DqfgSwlHJqRm7O2jWW2R6Iek0J
+	x7byOOHR64O1r1BD79GvEypoAt9HGfwa/GHBduhku4ln4CWG7BCHqsJV10XCMGjJa4luSR4k/iEE3
+	E9JSakpOHrOKE95NlzYISOt/QATo+DSotvLz3w181v6y91/WP/pKeb1Gsb1gzN16P/RHFuKhqmKeo
+	owz7Zs6iPqsIvXWxU+sdnyGFcZv8xlAgD93z9QV+dL+ArB1ZzTQR+H+OKYTCnvZWTstW7sjYojwbm
+	PkZwsbvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3lao-00000006WBl-1xZw;
-	Wed, 01 Oct 2025 01:25:18 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1v3npf-00000006eEY-12Yq;
+	Wed, 01 Oct 2025 03:48:47 +0000
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3lam-00000006WB0-0hwH
+	id 1v3npb-00000006eDg-2MfZ
 	for linux-mediatek@lists.infradead.org;
-	Wed, 01 Oct 2025 01:25:17 +0000
-X-UUID: 78990e449e6511f0a52f393f94899d25-20250930
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=AMidoLFDdM/wUOTBcVSUCnmXVpqpkQUiemA9u1f3XeY=;
-	b=bQqgsrm226oLKU+OHsvf8GSn+BobbDuAAp/ZfajlXodnNFmKePJqtkPApSZ8g/uBw7fR8CosXWZlshGKk0OjFCTiWg14M0niwpHmIQ9sGZ3eD2PH1YI64MkZZptLlducEmCnTkdJN224tZRWwLR0LdQwJKaM5FOYJy/wUGr2jFI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:772f4f5e-e027-46b0-8b69-0165c7643562,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:a9d874c,CLOUDID:0f091c6d-8443-424b-b119-dc42e68239b0,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
-	0,EDM:-3,IP:nil,URL:0,File:130,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,
-	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 78990e449e6511f0a52f393f94899d25-20250930
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <mingyen.hsieh@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 261379047; Tue, 30 Sep 2025 18:25:10 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.10; Wed, 1 Oct 2025 09:25:05 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.10 via Frontend Transport; Wed, 1 Oct 2025 09:25:06 +0800
-From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
-	<Leon.Yen@mediatek.com>, <Michael.Lo@mediatek.com>,
-	<allan.wang@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
-	<km.lin@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
-	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Jack Kao <jack.kao@mediatek.com>, "Ming
- Yen Hsieh" <mingyen.hsieh@mediatek.com>
-Subject: [PATCH v3] wifi: mt76: mt7925: cqm rssi low/high event notify
-Date: Wed, 1 Oct 2025 09:25:06 +0800
-Message-ID: <20251001012506.2168037-1-mingyen.hsieh@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	Wed, 01 Oct 2025 03:48:45 +0000
+Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-57b7c83cc78so569455e87.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 30 Sep 2025 20:48:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1759290521; x=1759895321; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=bbDGpgTcV4nPy99Bde42+h9SYqbXF4/JT7azRtjchCw=;
+        b=GpqFjlOs595FPqbvcrq0r7UsUlKw03NvM28ysbC+d6kMMshw8sgYoR7nm8iE0iv4xN
+         LV0hyy0wudqU3pdVbeZxDNlyJPLqC3FNr/5O1HWzgMpvwvXLYsr5kXdtPXI/RXz/6DWa
+         4eTK3pndoGHI/1ar9YZZYBUZDbRyJYTHes5vA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1759290521; x=1759895321;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=bbDGpgTcV4nPy99Bde42+h9SYqbXF4/JT7azRtjchCw=;
+        b=SIh9tMklnJ/zs3lGSmBOkctiXgVPc6i+aY1kFXtsvmY5jkid3Y/990yJCXxRf+QhJI
+         9PsFBX1UcsfnJEq1lzdQceIhg64LJsqphiBDpr/nShzZeSgo0to56Ku6aw8JP6K4Ra8I
+         djluqsB8rNzOY4K/niqNGPjOeUG/+B6jfetrehw4crrf6rsE460YZHvaMC9QCTWFbWqK
+         eoRDDZK9uoBQ8nJDSAjIN5qPWRIj1yv3KAa+NA4uQPsJalo9ZBt3cgMQLdUDlSAaRdL9
+         zjQAeDojqICzvV835kRZYBRhNIAii3tcgQi+okdytVO1gKPAejuubWhXJ7g2nR5fB69e
+         W4oQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUw51h9OtCXw7g/PLM33byzEojy+kxHMKRgAcRL+gnoOyI3VyGzrwegYsEHHvND2DM2p9jeHgZCqYW2IgfE2Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyg9ibs9qor7IeMvMnS8u5qWS6S0cdFb0BN5nXOoLJFHAmQ1c6/
+	ZvFqb7x9Irg1mXNUkSPHKIUXExFEx6BpE3im6Lx30vrdXcundUpsdC6bKFgHJQ9juaFb7xT2vyd
+	1LCYcbXFqgaT8eZ9BnpFDOc7304iiEytuVmrJbIF/
+X-Gm-Gg: ASbGncuKX7DbIMAJ8yBnt8wL6k/oC60wrerApnmmNtK14D3tIz2/3nkjOyQO3IqsOAV
+	C6zBEujPkTtEsoV1lGt3DlDz0L6bAVP5S9WdDDDx9OWUGO1lo0cu8eLikOCnVmMFaIbnYG3UKhA
+	iRZzD3TbQvfIHfhE1KsFkkFA0GaEtRq7GvnAO7aOQDdin3O0i7/uwqDVzxx5oQhZzh4Hh42qss3
+	uPBVRri7glSv6qDAaGiay1Hj3y4fHiCCm0mNZYtcjPznGtxQfppGGL+icpB4w==
+X-Google-Smtp-Source: AGHT+IEt27GdUNuEil1oCZ0SLhwUHChkXL8gmJhktqVVplGqcGKrSSp67qADibM4PY5Cnx6ufacc+rJwkmcCX3eGhbM=
+X-Received: by 2002:a05:6512:6181:b0:577:a108:93ca with SMTP id
+ 2adb3069b0e04-58984e225bbmr1821361e87.28.1759290520880; Tue, 30 Sep 2025
+ 20:48:40 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+References: <1710418312-6559-1-git-send-email-quic_amrianan@quicinc.com>
+In-Reply-To: <1710418312-6559-1-git-send-email-quic_amrianan@quicinc.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Wed, 1 Oct 2025 11:48:30 +0800
+X-Gm-Features: AS18NWDDl3OS7A4mcJKeQv_2tDSls1y22vmY0gN81pxraCtuEd9IP-mkQAX3bNg
+Message-ID: <CAGXv+5FQSETv62FS32=eadBWwZPB_ShaJ3_P0cksnL=sdBwkFQ@mail.gmail.com>
+Subject: Re: [PATCH v2 0/2] Add board-id support for multiple DT selection
+To: Amrit Anand <quic_amrianan@quicinc.com>
+Cc: robh@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, 
+	agross@kernel.org, andersson@kernel.org, konrad.dybcio@linaro.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-msm@vger.kernel.org, kernel@quicinc.com, peter.griffin@linaro.org, 
+	caleb.connolly@linaro.org, linux-riscv@lists.infradead.org, 
+	chrome-platform@lists.linux.dev, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250930_182516_223883_D347D39E 
-X-CRM114-Status: GOOD (  15.09  )
+X-CRM114-CacheID: sfid-20250930_204843_807294_2715ED06 
+X-CRM114-Status: GOOD (  24.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,218 +96,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jack Kao <jack.kao@mediatek.com>
+Hi Amrit,
 
-The implementation amounts to setting the driver flag
-IEEE80211_VIF_SUPPORTS_CQM_RSSI, and then providing
-mechanisms for continuously updating enough information
-to be able to provide notifications to userspace when
-RSSI drops below a certain threshold
+On Thu, Mar 14, 2024 at 8:13=E2=80=AFPM Amrit Anand <quic_amrianan@quicinc.=
+com> wrote:
+>
+> The software packages are shipped with multiple device tree blobs support=
+ing
+> multiple boards. For instance, suppose we have 3 SoC, each with 4 boards =
+supported,
+> along with 2 PMIC support for each case which would lead to total of 24 D=
+TB files.
+> Along with these configurations, OEMs may also add certain additional boa=
+rd variants.
+> Hence, a mechanism is required to pick the correct DTB for the board on w=
+hich the
+> software package is deployed. Introduce a unique property for adding boar=
+d identifiers
+> to device trees. Here, board-id property provides a mechanism for Qualcom=
+m based
+> bootloaders to select the appropriate DTB.
+>
+> Isn't that what the compatible property is for?
+> -----------------------------------------------
+> The compatible property can be used for board matching, but requires
+> bootloaders and/or firmware to maintain a database of possible strings
+> to match against or have complex compatible string parsing and matching.
+> Compatible string matching becomes complicated when there are multiple
+> versions of the same board. It becomes difficult for the device tree
+> selection mechanism to recognize the right DTB to pick, with minor
+> differences in compatible strings.
 
-Signed-off-by: Jack Kao <jack.kao@mediatek.com>
-Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
----
-v2: fix build err for parameter of mt7925_mcu_set_rssimonitor()
-v3: fix the merge conflict at nbd-tree.
----
- .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  2 +
- .../net/wireless/mediatek/mt76/mt7925/main.c  |  6 ++
- .../net/wireless/mediatek/mt76/mt7925/mcu.c   | 82 +++++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7925/mcu.h   |  8 ++
- .../wireless/mediatek/mt76/mt7925/mt7925.h    |  7 ++
- 5 files changed, 105 insertions(+)
+I plan to revisit this topic, and also include device tree overlay selectio=
+n,
+at Plumbers this year. I was wondering if there was any progress or changes
+on your end?
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-index 27daf419560a..0b02f34c40a4 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-@@ -1062,6 +1062,7 @@ enum {
- 	MCU_UNI_EVENT_ROC = 0x27,
- 	MCU_UNI_EVENT_TX_DONE = 0x2d,
- 	MCU_UNI_EVENT_THERMAL = 0x35,
-+	MCU_UNI_EVENT_RSSI_MONITOR = 0x41,
- 	MCU_UNI_EVENT_NIC_CAPAB = 0x43,
- 	MCU_UNI_EVENT_WED_RRO = 0x57,
- 	MCU_UNI_EVENT_PER_STA_INFO = 0x6d,
-@@ -1300,6 +1301,7 @@ enum {
- 	MCU_UNI_CMD_THERMAL = 0x35,
- 	MCU_UNI_CMD_VOW = 0x37,
- 	MCU_UNI_CMD_FIXED_RATE_TABLE = 0x40,
-+	MCU_UNI_CMD_RSSI_MONITOR = 0x41,
- 	MCU_UNI_CMD_TESTMODE_CTRL = 0x46,
- 	MCU_UNI_CMD_RRO = 0x57,
- 	MCU_UNI_CMD_OFFCH_SCAN_CTRL = 0x58,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-index ac3d485a2f78..35985d17ebf8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-@@ -430,6 +430,9 @@ mt7925_add_interface(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
- 		goto out;
- 
- 	vif->driver_flags |= IEEE80211_VIF_BEACON_FILTER;
-+	if (phy->chip_cap & MT792x_CHIP_CAP_RSSI_NOTIFY_EVT_EN)
-+		vif->driver_flags |= IEEE80211_VIF_SUPPORTS_CQM_RSSI;
-+
- out:
- 	mt792x_mutex_release(dev);
- 
-@@ -1958,6 +1961,9 @@ static void mt7925_link_info_changed(struct ieee80211_hw *hw,
- 		mt7925_mcu_set_eht_pp(mvif->phy->mt76, &mconf->mt76,
- 				      link_conf, NULL);
- 
-+	if (changed & BSS_CHANGED_CQM)
-+		mt7925_mcu_set_rssimonitor(dev, vif);
-+
- 	mt792x_mutex_release(dev);
- }
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index 2d3ca4b89169..1bfaed9474b4 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -450,6 +450,56 @@ mt7925_mcu_tx_done_event(struct mt792x_dev *dev, struct sk_buff *skb)
- 	}
- }
- 
-+static void
-+mt7925_mcu_rssi_monitor_iter(void *priv, u8 *mac,
-+			     struct ieee80211_vif *vif)
-+{
-+	struct mt7925_uni_rssi_monitor_event *event = priv;
-+	enum nl80211_cqm_rssi_threshold_event nl_event;
-+	s32 rssi = le32_to_cpu(event->rssi);
-+
-+	if (vif->type != NL80211_IFTYPE_STATION)
-+		return;
-+
-+	if (!(vif->driver_flags & IEEE80211_VIF_SUPPORTS_CQM_RSSI))
-+		return;
-+
-+	if (rssi > vif->bss_conf.cqm_rssi_thold)
-+		nl_event = NL80211_CQM_RSSI_THRESHOLD_EVENT_HIGH;
-+	else
-+		nl_event = NL80211_CQM_RSSI_THRESHOLD_EVENT_LOW;
-+
-+	ieee80211_cqm_rssi_notify(vif, nl_event, rssi, GFP_KERNEL);
-+}
-+
-+static void
-+mt7925_mcu_rssi_monitor_event(struct mt792x_dev *dev, struct sk_buff *skb)
-+{
-+	struct tlv *tlv;
-+	u32 tlv_len;
-+	struct mt7925_uni_rssi_monitor_event *event;
-+
-+	skb_pull(skb, sizeof(struct mt7925_mcu_rxd) + 4);
-+	tlv = (struct tlv *)skb->data;
-+	tlv_len = skb->len;
-+
-+	while (tlv_len > 0 && le16_to_cpu(tlv->len) <= tlv_len) {
-+		switch (le16_to_cpu(tlv->tag)) {
-+		case UNI_EVENT_RSSI_MONITOR_INFO:
-+			event = (struct mt7925_uni_rssi_monitor_event *)skb->data;
-+			ieee80211_iterate_active_interfaces_atomic(dev->mt76.hw,
-+								   IEEE80211_IFACE_ITER_RESUME_ALL,
-+								   mt7925_mcu_rssi_monitor_iter,
-+								   event);
-+			break;
-+		default:
-+			break;
-+		}
-+		tlv_len -= le16_to_cpu(tlv->len);
-+		tlv = (struct tlv *)((char *)(tlv) + le16_to_cpu(tlv->len));
-+	}
-+}
-+
- static void
- mt7925_mcu_uni_debug_msg_event(struct mt792x_dev *dev, struct sk_buff *skb)
- {
-@@ -546,6 +596,9 @@ mt7925_mcu_uni_rx_unsolicited_event(struct mt792x_dev *dev,
- 	case MCU_UNI_EVENT_BSS_BEACON_LOSS:
- 		mt7925_mcu_connection_loss_event(dev, skb);
- 		break;
-+	case MCU_UNI_EVENT_RSSI_MONITOR:
-+		mt7925_mcu_rssi_monitor_event(dev, skb);
-+		break;
- 	case MCU_UNI_EVENT_COREDUMP:
- 		dev->fw_assert = true;
- 		mt76_connac_mcu_coredump_event(&dev->mt76, skb, &dev->coredump);
-@@ -3818,3 +3871,32 @@ int mt7925_mcu_set_rxfilter(struct mt792x_dev *dev, u32 fif,
- 	return mt76_mcu_send_msg(&phy->dev->mt76, MCU_UNI_CMD(BAND_CONFIG),
- 				 &req, sizeof(req), true);
- }
-+
-+int mt7925_mcu_set_rssimonitor(struct mt792x_dev *dev, struct ieee80211_vif *vif)
-+{
-+	struct mt792x_bss_conf *mconf = mt792x_link_conf_to_mconf(&vif->bss_conf);
-+	struct {
-+		struct {
-+			u8 bss_idx;
-+			u8 pad[3];
-+		} __packed hdr;
-+		__le16 tag;
-+		__le16 len;
-+		u8 enable;
-+		s8 cqm_rssi_high;
-+		s8 cqm_rssi_low;
-+		u8 rsv;
-+	} req = {
-+		.hdr = {
-+			.bss_idx = mconf->mt76.idx,
-+		},
-+		.tag = cpu_to_le16(UNI_CMD_RSSI_MONITOR_SET),
-+		.len = cpu_to_le16(sizeof(req) - 4),
-+		.enable = vif->cfg.assoc,
-+		.cqm_rssi_high = (s8)(vif->bss_conf.cqm_rssi_thold + vif->bss_conf.cqm_rssi_hyst),
-+		.cqm_rssi_low = (s8)(vif->bss_conf.cqm_rssi_thold - vif->bss_conf.cqm_rssi_hyst),
-+	};
-+
-+	return mt76_mcu_send_msg(&dev->mt76, MCU_UNI_CMD(RSSI_MONITOR), &req,
-+				 sizeof(req), false);
-+}
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
-index a40764d89a1f..148aa3c05c8c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
-@@ -152,6 +152,14 @@ enum {
- 	UNI_EVENT_SCAN_DONE_NLO = 3,
- };
- 
-+enum {
-+	UNI_CMD_RSSI_MONITOR_SET = 0,
-+};
-+
-+enum {
-+	UNI_EVENT_RSSI_MONITOR_INFO = 0,
-+};
-+
- enum connac3_mcu_cipher_type {
- 	CONNAC3_CIPHER_NONE = 0,
- 	CONNAC3_CIPHER_WEP40 = 1,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
-index 1b165d0d8bd3..ad9614d7eaad 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
-@@ -103,6 +103,12 @@ struct mt7925_uni_beacon_loss_event {
- 	struct mt7925_beacon_loss_tlv beacon_loss;
- } __packed;
- 
-+struct mt7925_uni_rssi_monitor_event {
-+		__le16 tag;
-+		__le16 len;
-+		__le32 rssi;
-+} __packed;
-+
- #define to_rssi(field, rxv)		((FIELD_GET(field, rxv) - 220) / 2)
- #define to_rcpi(rssi)			(2 * (rssi) + 220)
- 
-@@ -372,4 +378,5 @@ int mt7925_testmode_cmd(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- int mt7925_testmode_dump(struct ieee80211_hw *hw, struct sk_buff *msg,
- 			 struct netlink_callback *cb, void *data, int len);
- 
-+int mt7925_mcu_set_rssimonitor(struct mt792x_dev *dev, struct ieee80211_vif *vif);
- #endif
--- 
-2.34.1
+Thanks
+ChenYu
 
+> The solution proposed here is simpler to implement and doesn't require th=
+e need
+> to update bootloader for every new board.
+>
+> How is this better than Qualcomm's qcom,msm-id/qcom,board-id?
+> -------------------------------------------------------------
+> Qualcomm's qcom,msm-id/qcom,board-id are not scalable for other distingui=
+shing
+> features as we need to add a new property every time. Board-id property p=
+rovide
+> a solution that the bootloader can use to select appropriate device tree.=
+ Board-id
+> encapsulates soc, board, pmic and oem identifiers. Qualcomm based bootloa=
+der can use
+> these key-value pairs to uniquely identify the device tree. This solution=
+ scales well
+> for cases where additional identifiers would be needed for device tree se=
+lection
+> criteria. Adding a new tuple in "board-id" along with "board-id-type" wil=
+l help support it.
+>
+> Changes in V2:
+>  - Based on comment on V1 related to challenges on designing common bootl=
+oader for all
+>    the vendors, where different vendors can have different representation=
+ of board-id
+>    and the best and exact match logic can also be different for different=
+ vendors, moving
+>    the board-id definition in qcom specific binding.
+>  - Adding support for board IDs for all the boards that are in kernel.org=
+.
+>  - Adding Qualcomm bootloader best/exact match logic for multi DT selecti=
+on.
+>  - Keeping list of other vendors in CC for comment/awareness related to t=
+his requirement
+>  - Link to V1: https://lore.kernel.org/all/1705749649-4708-1-git-send-ema=
+il-quic_amrianan@quicinc.com/
+>
+> Amrit Anand (2):
+>   dt-bindings: arm: qcom: Update Devicetree identifiers
+>   dt-bindings: qcom: Update DT bindings for multiple DT
+>
+>  Documentation/devicetree/bindings/arm/qcom.yaml | 90 +++++++++++++++++++=
+++++++
+>  include/dt-bindings/arm/qcom,ids.h              | 86 +++++++++++++++++++=
++---
+>  2 files changed, 167 insertions(+), 9 deletions(-)
+>
+> --
+> 2.7.4
+>
+>
 
