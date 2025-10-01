@@ -4,74 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66F8FCAC5BB
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Oct 2025 11:13:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80DE9CAC5BB
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Oct 2025 11:35:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cqY+iUEKzUXQBemZwea3cW6vbfOf+cyX0sYR49uFcQ8=; b=b0KUPHSfdJiqJYSTMXVVKTV4qz
-	7I95+I2y65/jluFiKYPlXXcVLsWNPefFX0zARWqC1CEpXK2VmPb9BTHHNct2D2YsalhX8RbliX6I5
-	tfZXSRgg9jldANhccYDZkte9Y6qeDnVpF2Nl6RgntEme4CRKn2zMEytGqqcLmhdY8MIRi7vcNZLDh
-	ub/UAj0qBmWDzTt4nA0cMufOWmAAQpn1ArutUbkrVye19bcvJ6YLyMn4qn1R9Biy0rxHAicJ72kuU
-	kFpBNBhMKP2a2jU+yQpD0BiDXnA9pwxbbSf8InW5F0X5zJRh7xjEheSYn8YKn30eeElmgPjjjaeBk
-	vWnzbZeA==;
+	bh=8O3Ul98HoYTxzqy/tmFcTHI5BnsVGIbKVSPuEXC+wQ0=; b=LTKMqc5QPuAycRu3G457v0O56g
+	/g1/jrWHG24FCsPtSuTTrhIFpxrZzeEqbmZ06kD/n6EdwIpOAUba/20ItwzlpKevzCqxg/Ah/kuVe
+	rzQvNkvkryDDsyMXMCG9yrEiT/NilCGwTB0VeNio9U4jDGG5ie439VWBNPgasoAY22er38iUs9B8A
+	FWEpAG4FHLP9MMgSwDlbTtFRh0mwsc88RW1Ulow2tlBDzVOmdDwNypOOSUUthttmMF05sYaqbVzUp
+	bhqMJzWY35TtZVjOcj3hepsisk3FGDNmLkNroStq5hEPVGbDLQw/EzBaiB/ZPYzbQoiWBERQMt2Ce
+	WuAys6Ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3umC-00000007L1r-0hwo;
-	Wed, 01 Oct 2025 11:13:40 +0000
+	id 1v3v7D-00000007Q1t-0mQY;
+	Wed, 01 Oct 2025 11:35:23 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3um3-00000007Kia-0YAz;
-	Wed, 01 Oct 2025 11:13:33 +0000
+	id 1v3v79-00000007PxY-2oYy;
+	Wed, 01 Oct 2025 11:35:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1759317209;
-	bh=6y4qzMKJ3ZzXXo4oJpYsaDXA2QjOmvzYw0GiafxN4n0=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=aG/iiFYPZME4gzwDHT8Q7fsWVuz28w3VbU7BWi85TyGz7XabUdoI8LHryjqMJ3Bn0
-	 DCASYIac25oy2UvRRSvT/X+jhz6wQ73uiFesDlWlp4M6DOAcHQTK/IMn9yMCxng+oR
-	 HJ8sfOO9sUUYxdjh5aSrvWtadTOu1OHjFfgY8sA1WCoIz6Ez59ah2dhBXfGQXFvCxQ
-	 HOy4WadBYCQnWIxFwEeOPrpFBs6F7IfU1Pyjf8U4vkB8yH5jcJfuepwnxR++ds8S2W
-	 YwCqVlXTHHzVVAm0vPnW1gJQXCZ6zl8tHrC/ifKfcgus6474b9YJwUGl2OZpqQz8GY
-	 7J0+Zo5z8IidA==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	s=mail; t=1759318517;
+	bh=WnOikCSnuc0MhHD5uJ+JkBcDcggU4x/o08v6yhqMGZ4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=VYUPVfxkcaz9GYd4udVsfsdqJBfE4lS8rShpipzv+fwlJ1wMU8ZPlKMOhFsF/YSTz
+	 bJignkV+Yjd7WUCsIiLh6ZWVT3DNjZrIsSGepajzrxLfdqGGRBJVJzc2m7hQc/HGjj
+	 1NDZ27uj31jA/h2Z8+eQ4V/UkIsxcjxPyZtQSwFCf6TnIhyt1AMSKk5C67V3FUexpN
+	 cN8a25gPhqcBYiUd8inHuRpH6Eahnc6vMUQLFs80qKWNzlcpnThQad6kvdqjPRzoN+
+	 Nu+Tr2ngknP7hDE7rjhenyOvjhNbZtsiY5VG5G36BDcNhGJ6OhIX/EAV9WukK+319C
+	 +ia9SUG9iMqzg==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8D5D417E13DC;
-	Wed,  1 Oct 2025 13:13:28 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: linux-mediatek@lists.infradead.org
-Cc: lee@kernel.org,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	lgirdwood@gmail.com,
-	broonie@kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	kernel@collabora.com,
-	wenst@chromium.org,
-	igor.belwon@mentallysanemainliners.org,
-	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
-Subject: [PATCH v6 9/9] drivers: mfd: Add support for MediaTek SPMI PMICs and MT6363/73
-Date: Wed,  1 Oct 2025 13:13:16 +0200
-Message-ID: <20251001111316.31828-10-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20251001111316.31828-1-angelogioacchino.delregno@collabora.com>
-References: <20251001111316.31828-1-angelogioacchino.delregno@collabora.com>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id BA30717E0B83;
+	Wed,  1 Oct 2025 13:35:16 +0200 (CEST)
+Message-ID: <fbe41fb5-1799-4b81-a6e2-4b783d1a2f7e@collabora.com>
+Date: Wed, 1 Oct 2025 13:35:16 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 2/2] mailbox: mediatek: Add mtk-vcp-mailbox driver
+To: =?UTF-8?B?SmppYW4gWmhvdSAo5ZGo5bu6KQ==?= <Jjian.Zhou@mediatek.com>,
+ "jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>,
+ "robh@kernel.org" <robh@kernel.org>, "krzk+dt@kernel.org"
+ <krzk+dt@kernel.org>, "wenst@chromium.org" <wenst@chromium.org>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
+Cc: "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+References: <20250926090505.26267-1-jjian.zhou@mediatek.com>
+ <20250926090505.26267-3-jjian.zhou@mediatek.com>
+ <b62611ef-7ead-4bbe-8c96-d39e3c5c8dd8@collabora.com>
+ <aa86f9012bc56231066846f423263504313b6717.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <aa86f9012bc56231066846f423263504313b6717.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251001_041331_589070_02BB448F 
-X-CRM114-Status: GOOD (  34.77  )
+X-CRM114-CacheID: sfid-20251001_043519_874348_860B7E4E 
+X-CRM114-Status: GOOD (  25.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,560 +87,245 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This driver adds support for the MediaTek SPMI PMICs and their
-interrupt controller (which is present in 95% of the cases).
+Il 30/09/25 04:59, Jjian Zhou (周建) ha scritto:
+> On Mon, 2025-09-29 at 12:33 +0200, AngeloGioacchino Del Regno wrote:
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
+>>
+>>
+>> Il 26/09/25 11:05, Jjian Zhou ha scritto:
+>>> Add mtk-vcp-mailbox driver to support the communication with
+>>> VCP remote microprocessor.
+>>>
+>>> Signed-off-by: Jjian Zhou <jjian.zhou@mediatek.com>
+>>> ---
+>>>    drivers/mailbox/Kconfig                 |   9 ++
+>>>    drivers/mailbox/Makefile                |   2 +
+>>>    drivers/mailbox/mtk-vcp-mailbox.c       | 168
+>>> ++++++++++++++++++++++++
+>>>    include/linux/mailbox/mtk-vcp-mailbox.h |  32 +++++
+>>>    4 files changed, 211 insertions(+)
+>>>    create mode 100644 drivers/mailbox/mtk-vcp-mailbox.c
+>>>    create mode 100644 include/linux/mailbox/mtk-vcp-mailbox.h
+>>>
+>>> diff --git a/drivers/mailbox/Kconfig b/drivers/mailbox/Kconfig
+>>> index 02432d4a5ccd..c28bdb855663 100644
+>>> --- a/drivers/mailbox/Kconfig
+>>> +++ b/drivers/mailbox/Kconfig
+>>> @@ -294,6 +294,15 @@ config MTK_CMDQ_MBOX
+>>>          critical time limitation, such as updating display
+>>> configuration
+>>>          during the vblank.
+>>>
+>>> +config MTK_VCP_MBOX
+>>> +     tristate "MediaTek VCP Mailbox Support"
+>>> +     depends on ARCH_MEDIATEK || COMPILE_TEST
+>>> +     help
+>>> +       Say yes here to add support for the MediaTek VCP mailbox
+>>> driver.
+>>> +       The mailbox implementation provides access from the
+>>> application
+>>> +       processor to Video Companion Processor Unit.
+>>> +       If unsure say N.
+>>> +
+>>>    config ZYNQMP_IPI_MBOX
+>>>        tristate "Xilinx ZynqMP IPI Mailbox"
+>>>        depends on ARCH_ZYNQMP && OF
+>>> diff --git a/drivers/mailbox/Makefile b/drivers/mailbox/Makefile
+>>> index 98a68f838486..07278871d254 100644
+>>> --- a/drivers/mailbox/Makefile
+>>> +++ b/drivers/mailbox/Makefile
+>>> @@ -63,6 +63,8 @@ obj-$(CONFIG_MTK_ADSP_MBOX) += mtk-adsp-mailbox.o
+>>>
+>>>    obj-$(CONFIG_MTK_CMDQ_MBOX) += mtk-cmdq-mailbox.o
+>>>
+>>> +obj-$(CONFIG_MTK_VCP_MBOX)   += mtk-vcp-mailbox.o
+>>> +
+>>>    obj-$(CONFIG_ZYNQMP_IPI_MBOX)       += zynqmp-ipi-mailbox.o
+>>>
+>>>    obj-$(CONFIG_SUN6I_MSGBOX)  += sun6i-msgbox.o
+>>> diff --git a/drivers/mailbox/mtk-vcp-mailbox.c
+>>> b/drivers/mailbox/mtk-vcp-mailbox.c
+>>> new file mode 100644
+>>> index 000000000000..a2a80d124e50
+>>> --- /dev/null
+>>> +++ b/drivers/mailbox/mtk-vcp-mailbox.c
+>>> @@ -0,0 +1,168 @@
+>>> +// SPDX-License-Identifier: GPL-2.0
+>>> +/*
+>>> + * Copyright (c) 2025 MediaTek Corporation. All rights reserved.
+>>> + * Author: Jjian Zhou <jjian.zhou.@mediatek.com>
+>>> + */
+>>> +
+>>> +#include <linux/interrupt.h>
+>>> +#include <linux/io.h>
+>>> +#include <linux/kernel.h>
+>>> +#include <linux/mailbox_controller.h>
+>>> +#include <linux/mailbox/mtk-vcp-mailbox.h>
+>>> +#include <linux/module.h>
+>>> +#include <linux/of.h>
+>>> +#include <linux/platform_device.h>
+>>> +#include <linux/slab.h>
+>>> +
+>>> +struct mtk_vcp_mbox {
+>>> +     struct mbox_controller mbox;
+>>> +     void __iomem *base;
+>>> +     struct device *dev;
+>>> +     const struct mtk_vcp_mbox_cfg *cfg;
+>>> +     struct mtk_ipi_info ipi_recv;
+>>> +     struct mbox_chan chans;
+>>> +};
+>>> +
+>>> +struct mtk_vcp_mbox_cfg {
+>>> +     u32 set_in;
+>>> +     u32 clr_out;
+>>
+>> u16 is enough for both register offsets, at least for now - and I
+>> suspect it's
+>> going to be enough forever.
+> 
+> OK. I change u32 to u16 in the next version.
+> 
+>>
+>>> +};
+>>> +
+>>> +static irqreturn_t mtk_vcp_mbox_irq_thread(int irq, void *data)
+>>> +{
+>>> +     struct mtk_vcp_mbox *priv = data;
+>>> +
+>>> +     /* get irq status */
+>>> +     priv->ipi_recv.irq_status = readl(priv->base + priv->cfg-
+>>>> clr_out);
+>>> +
+>>> +     __ioread32_copy(priv->ipi_recv.msg, priv->base,
+>>> MBOX_SLOT_MAX_SIZE / 4);
+>>> +
+>>> +     mbox_chan_received_data(&priv->chans, &priv->ipi_recv);
+>>> +
+>>> +     /* clear irq status */
+>>> +     writel(priv->ipi_recv.irq_status, priv->base + priv->cfg-
+>>>> clr_out);
+>>> +
+>>> +     return IRQ_HANDLED;
+>>> +}
+>>> +
+>>> +static struct mbox_chan *mtk_vcp_mbox_xlate(struct mbox_controller
+>>> *mbox,
+>>> +                                         const struct
+>>> of_phandle_args *sp)
+>>> +{
+>>> +     if (sp->args_count)
+>>> +             return NULL;
+>>> +
+>>> +     return &mbox->chans[0];
+>>> +}
+>>> +
+>>> +static int mtk_vcp_mbox_send_data(struct mbox_chan *chan, void
+>>> *data)
+>>> +{
+>>> +     struct mtk_vcp_mbox *priv = chan->con_priv;
+>>> +     struct mtk_ipi_info *ipi_info = data;
+>>> +     u32 status;
+>>> +
+>>> +     if (!ipi_info->msg) {
+>>> +             dev_err(priv->dev, "msg buffer is NULL.\n");
+>>> +             return -EINVAL;
+>>> +     }
+>>> +
+>>> +     status = readl(priv->base + priv->cfg->set_in) &
+>>> BIT(ipi_info->index);
+>>
+>> status = readl(priv->base + priv->cfg->set_in);
+>> if (status & BIT(ipi_info->index) {
+>>    ....
+>> }
+> 
+> OK.
+> 
+>>
+>>> +     if (status) {
+>>> +             dev_warn(priv->dev, "mailbox IPI %d is busy.\n",
+>>> ipi_info->id);
+>>> +             return -EBUSY;
+>>> +     }
+>>> +
+>>> +     if (ipi_info->slot_ofs + ipi_info->len > MBOX_SLOT_MAX_SIZE)
+>>> +             return -EINVAL;
+>>> +     __iowrite32_copy(priv->base + ipi_info->slot_ofs, ipi_info-
+>>>> msg,
+>>> +                      ipi_info->len);
+>>> +
+>>> +     writel(BIT(ipi_info->index), priv->base + priv->cfg->set_in);
+>>> +
+>>> +     return 0;
+>>> +}
+>>> +
+>>> +static bool mtk_vcp_mbox_last_tx_done(struct mbox_chan *chan)
+>>> +{
+>>> +     struct mtk_ipi_info *ipi_info = chan->active_req;
+>>> +     struct mtk_vcp_mbox *priv = chan->con_priv;
+>>> +
+>>> +     return !(readl(priv->base + priv->cfg->set_in) &
+>>> BIT(ipi_info->index));
+>>> +}
+>>> +
+>>> +static const struct mbox_chan_ops mtk_vcp_mbox_chan_ops = {
+>>> +     .send_data      = mtk_vcp_mbox_send_data,
+>>> +     .last_tx_done   = mtk_vcp_mbox_last_tx_done,
+>>> +};
+>>> +
+>>> +static int mtk_vcp_mbox_probe(struct platform_device *pdev)
+>>> +{
+>>> +     struct device *dev = &pdev->dev;
+>>> +     struct mtk_vcp_mbox *priv;
+>>> +     struct mbox_controller *mbox;
+>>> +     int ret, irq;
+>>> +
+>>> +     priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
+>>> +     if (!priv)
+>>> +             return -ENOMEM;
+>>> +
+>>> +     priv->dev = dev;
+>>> +     priv->chans.con_priv = priv;
+>>> +     mbox = &priv->mbox;
+>>> +     mbox->dev = dev;
+>>> +     mbox->ops = &mtk_vcp_mbox_chan_ops;
+>>> +     mbox->txdone_irq = false;
+>>> +     mbox->txdone_poll = true;
+>>> +     mbox->of_xlate = mtk_vcp_mbox_xlate;
+>>> +     mbox->num_chans = 1;
+>>> +     mbox->chans = &priv->chans;
+>>> +
+>>> +     priv->ipi_recv.msg = devm_kzalloc(dev, MBOX_SLOT_MAX_SIZE,
+>>> GFP_KERNEL);
+>>> +     if (!priv->ipi_recv.msg)
+>>> +             return -ENOMEM;
+>>> +
+>>> +     priv->base = devm_platform_ioremap_resource(pdev, 0);
+>>> +     if (IS_ERR(priv->base))
+>>> +             return PTR_ERR(priv->base);
+>>> +
+>>> +     priv->cfg = of_device_get_match_data(dev);
+>>> +     if (!priv->cfg)
+>>> +             return -EINVAL;
+>>> +
+>>> +     irq = platform_get_irq(pdev, 0);
+>>> +     if (irq < 0)
+>>> +             return irq;
+>>> +
+>>
+>> Please set the driver data before requesting the interrupt: what
+>> happens if the
+>> ISR is run before having driver data available otherwise?! :-)
+>>
+> 
+> OK, I put the "platform_set_drvdata(pdev, priv)" between
+> "of_device_get_match_data(dev)" and "platform_get_irq(pdev, 0)".
+> 
+> Do you want me to submit a new version right now?
 
-Other than probing all of the sub-devices of a SPMI PMIC, this
-sets up a regmap from the relevant SPMI bus and initializes an
-interrupt controller with its irq domain and irqchip to handle
-chained interrupts, with the SPMI bus itself being its parent
-irq controller, and the PMIC being the outmost device.
+Yes, please.
 
-This driver hence holds all of the information about a specific
-PMIC's interrupts and will properly handle them, calling the
-ISR for any subdevice that requested an interrupt.
-
-As for the interrupt spec, this driver wants 3 interrupt cells,
-but ignores the first one: this is because of how this first
-revision of the MediaTek SPMI 2.0 Controller works, which does
-not hold irq number information in its register, but delegates
-that to the SPMI device - it's possible that this will change
-in the future with a newer revision of the controller IP, and
-this is the main reason for that.
-
-To make use of this implementation, this driver also adds the
-required bits to support MediaTek MT6363 and MT6373 SPMI PMICs.
-
-Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-Link: https://lore.kernel.org/r/20250715140224.206329-9-angelogioacchino.delregno@collabora.com
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/mfd/Kconfig         |  17 ++
- drivers/mfd/Makefile        |   1 +
- drivers/mfd/mtk-spmi-pmic.c | 410 ++++++++++++++++++++++++++++++++++++
- include/linux/mfd/mt6363.h  |  26 +++
- include/linux/mfd/mt6373.h  |  21 ++
- 5 files changed, 475 insertions(+)
- create mode 100644 drivers/mfd/mtk-spmi-pmic.c
- create mode 100644 include/linux/mfd/mt6363.h
- create mode 100644 include/linux/mfd/mt6373.h
-
-diff --git a/drivers/mfd/Kconfig b/drivers/mfd/Kconfig
-index 13c955d31309..339fcd37eab6 100644
---- a/drivers/mfd/Kconfig
-+++ b/drivers/mfd/Kconfig
-@@ -1120,6 +1120,23 @@ config MFD_MT6397
- 	  accessing the device; additional drivers must be enabled in order
- 	  to use the functionality of the device.
- 
-+config MFD_MTK_SPMI_PMIC
-+	tristate "MediaTek SPMI PMICs"
-+	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	depends on OF
-+	depends on SPMI
-+	select REGMAP_SPMI
-+	default y if ARCH_MEDIATEK
-+	help
-+	  Say yes here to enable support for MediaTek's SPMI PMICs.
-+	  These PMICs made their first appearance in board designs using the
-+          MediaTek Dimensity 9400 series of SoCs.
-+	  Note that this will only be useful paired with descriptions of the
-+	  independent functions as children nodes in the device tree.
-+
-+	  Say M here if you want to include support for the MediaTek SPMI
-+	  PMICs as a module. The module will be called "mtk-spmi-pmic".
-+
- config MFD_MENF21BMC
- 	tristate "MEN 14F021P00 Board Management Controller Support"
- 	depends on I2C
-diff --git a/drivers/mfd/Makefile b/drivers/mfd/Makefile
-index d2720d496e07..8f33fd9519ac 100644
---- a/drivers/mfd/Makefile
-+++ b/drivers/mfd/Makefile
-@@ -187,6 +187,7 @@ obj-$(CONFIG_MFD_MT6360)	+= mt6360-core.o
- obj-$(CONFIG_MFD_MT6370)	+= mt6370.o
- mt6397-objs			:= mt6397-core.o mt6397-irq.o mt6358-irq.o
- obj-$(CONFIG_MFD_MT6397)	+= mt6397.o
-+obj-$(CONFIG_MFD_MTK_SPMI_PMIC)	+= mtk-spmi-pmic.o
- 
- obj-$(CONFIG_RZ_MTU3)		+= rz-mtu3.o
- obj-$(CONFIG_ABX500_CORE)	+= abx500-core.o
-diff --git a/drivers/mfd/mtk-spmi-pmic.c b/drivers/mfd/mtk-spmi-pmic.c
-new file mode 100644
-index 000000000000..512b53bdb0d1
---- /dev/null
-+++ b/drivers/mfd/mtk-spmi-pmic.c
-@@ -0,0 +1,410 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Copyright (c) 2024 MediaTek Inc.
-+ * Copyright (c) 2025 Collabora Ltd
-+ *                    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+ */
-+
-+#include <linux/device.h>
-+#include <linux/errno.h>
-+#include <linux/gfp.h>
-+#include <linux/irq.h>
-+#include <linux/irqdomain.h>
-+#include <linux/kernel.h>
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/of_device.h>
-+#include <linux/of_irq.h>
-+#include <linux/of_platform.h>
-+#include <linux/spmi.h>
-+#include <linux/types.h>
-+#include <linux/regmap.h>
-+#include <linux/irqchip/chained_irq.h>
-+#include <linux/mfd/mt6363.h>
-+#include <linux/mfd/mt6373.h>
-+
-+#define MTK_SPMI_PMIC_VAL_BITS		8
-+#define MTK_SPMI_PMIC_CHIP_ID_REG_M	0xb
-+#define MTK_SPMI_PMIC_RCS_IRQ_DONE	0x41b
-+
-+/**
-+ * mtk_spmi_pmic_irq_group - Group of interrupts in SPMI PMIC
-+ * @num_int_regs: Number of registers for this group of interrupts
-+ * @con_reg:      PMIC Interrupt Group Control 0 register
-+ * @sta_reg:      PMIC Interrupt Group Status 0 register
-+ * @group_num:    PMIC Interrupt Group number - also corresponds to the
-+ *                status bit in the global IRQ Control register
-+ */
-+struct mtk_spmi_pmic_irq_grp {
-+	u8 hwirq_base;
-+	u8 num_int_regs;
-+	u16 con_reg;
-+	u16 sta_reg;
-+	u8 group_num;
-+};
-+
-+/**
-+ * mtk_spmi_pmic_pdata - SPMI PMIC Platform Data
-+ * @pmic_irq:    Group of interrupts in SPMI PMIC
-+ * @num_groups:  Number of groups of interrupts
-+ * @con_reg_sz:  Size of Control registers, depends on existence
-+ *               of SET and CLR registers in the layout
-+ * @top_irq_reg: Global interrupt status register, explains which
-+ *               group needs attention because of a group irq
-+ * @chip_id_reg: Chip ID Register
-+ */
-+struct mtk_spmi_pmic_pdata {
-+	const struct mtk_spmi_pmic_irq_grp *pmic_irq;
-+	u8 num_groups;
-+	u8 con_reg_sz;
-+	u8 top_irq_reg;
-+	u8 chip_id_reg;
-+};
-+
-+/**
-+ * mtk_spmi_pmic - Main driver structure
-+ * @pdata:    SPMI PMIC Platform data
-+ * @dev:      Handle to SPMI Device
-+ * @dom:      IRQ Domain of the PMIC's interrupt controller
-+ * @regmap:   Handle to PMIC regmap
-+ * @irq_lock: Lock for the PMIC's irqchip
-+ * @irq:      PMIC chained interrupt
-+ */
-+struct mtk_spmi_pmic {
-+	const struct mtk_spmi_pmic_pdata *pdata;
-+	struct device *dev;
-+	struct irq_domain *dom;
-+	struct regmap *regmap;
-+	struct mutex irq_lock;
-+	int irq;
-+};
-+
-+static void mtk_spmi_pmic_irq_set_unmasking(struct irq_data *d, bool unmask)
-+{
-+	struct mtk_spmi_pmic *pmic = irq_data_get_irq_chip_data(d);
-+	const struct mtk_spmi_pmic_pdata *pdata = pmic->pdata;
-+	struct regmap *regmap = pmic->regmap;
-+	irq_hw_number_t hwirq = irqd_to_hwirq(d);
-+	unsigned short i;
-+
-+	for (i = 0; i < pdata->num_groups; i++) {
-+		const struct mtk_spmi_pmic_irq_grp *irq_grp = &pdata->pmic_irq[i];
-+		u32 con_reg;
-+		u8 irq_en_bit;
-+
-+		if (hwirq < irq_grp->hwirq_base)
-+			continue;
-+
-+		con_reg = irq_grp->con_reg + (pdata->con_reg_sz * i);
-+		irq_en_bit = hwirq - irq_grp->hwirq_base;
-+
-+		regmap_assign_bits(regmap, con_reg, BIT(irq_en_bit), unmask);
-+
-+		break;
-+	}
-+}
-+
-+static void mtk_spmi_pmic_irq_mask(struct irq_data *d)
-+{
-+	mtk_spmi_pmic_irq_set_unmasking(d, false);
-+}
-+
-+static void mtk_spmi_pmic_irq_unmask(struct irq_data *d)
-+{
-+	mtk_spmi_pmic_irq_set_unmasking(d, true);
-+}
-+
-+static void mtk_spmi_pmic_irq_lock(struct irq_data *d)
-+{
-+	struct mtk_spmi_pmic *pmic = irq_data_get_irq_chip_data(d);
-+
-+	mutex_lock(&pmic->irq_lock);
-+}
-+
-+static void mtk_spmi_pmic_irq_sync_unlock(struct irq_data *d)
-+{
-+	struct mtk_spmi_pmic *pmic = irq_data_get_irq_chip_data(d);
-+
-+	mutex_unlock(&pmic->irq_lock);
-+}
-+
-+static struct irq_chip mtk_spmi_pmic_irq_chip = {
-+	.name = "mtk-spmi-pmic",
-+	.irq_mask = mtk_spmi_pmic_irq_mask,
-+	.irq_unmask = mtk_spmi_pmic_irq_unmask,
-+	.irq_bus_lock = mtk_spmi_pmic_irq_lock,
-+	.irq_bus_sync_unlock = mtk_spmi_pmic_irq_sync_unlock,
-+	.flags = IRQCHIP_SKIP_SET_WAKE,
-+};
-+
-+static int mtk_spmi_pmic_irq_domain_map(struct irq_domain *d, unsigned int virq,
-+					irq_hw_number_t hwirq)
-+{
-+	struct mtk_spmi_pmic *pmic = d->host_data;
-+
-+	irq_set_chip_data(virq, pmic);
-+	irq_set_chip_and_handler(virq, &mtk_spmi_pmic_irq_chip, handle_level_irq);
-+
-+	return 0;
-+}
-+
-+static int mtk_spmi_pmic_irq_xlate(struct irq_domain *d, struct device_node *ctrlr,
-+				  const u32 *intspec, unsigned int intsize,
-+				  unsigned long *out_hwirq, unsigned int *out_type)
-+{
-+	struct mtk_spmi_pmic *pmic = d->host_data;
-+	struct device *dev = pmic->dev;
-+	struct irq_fwspec fwspec;
-+
-+	of_phandle_args_to_fwspec(ctrlr, intspec, intsize, &fwspec);
-+	if (WARN_ON(fwspec.param_count < 3))
-+		return -EINVAL;
-+
-+	/*
-+	 * The IRQ number in intspec[0] is ignored on purpose here!
-+	 *
-+	 * This is because of how at least the first revision of the SPMI 2.0
-+	 * controller works in MediaTek SoCs: the controller will raise an
-+	 * interrupt for each SID (but doesn't know the details!), and the
-+	 * specific IRQ number that got raised must be read from the PMIC or
-+	 * its sub-device driver.
-+	 * It's possible that this will change in the future with a newer
-+	 * revision of the SPMI controller, and this is why the devicetree
-+	 * holds the full intspec.
-+	 */
-+	*out_hwirq = intspec[1];
-+	*out_type = intspec[2] & IRQ_TYPE_SENSE_MASK;
-+
-+	dev_dbg(dev, "Found device IRQ %u chained from SPMI IRQ %x (map: 0x%lx)\n",
-+		intspec[1], intspec[0], *out_hwirq);
-+
-+	return 0;
-+}
-+
-+static const struct irq_domain_ops mtk_spmi_pmic_irq_domain_ops = {
-+	.map = mtk_spmi_pmic_irq_domain_map,
-+	.xlate = mtk_spmi_pmic_irq_xlate,
-+};
-+
-+static int mtk_spmi_pmic_handle_group_irq(struct mtk_spmi_pmic *pmic, int group)
-+{
-+	const struct mtk_spmi_pmic_irq_grp *irq_grp = &pmic->pdata->pmic_irq[group];
-+	struct regmap *regmap = pmic->regmap;
-+	struct device *dev = pmic->dev;
-+	int i, ret;
-+
-+	for (i = 0; i < irq_grp->num_int_regs; i++) {
-+		u32 status, saved_status;
-+
-+		ret = regmap_read(regmap, irq_grp->sta_reg + i, &status);
-+		if (ret) {
-+			dev_err(dev, "Could not read IRQ status register: %d", ret);
-+			return ret;
-+		}
-+
-+		if (status == 0)
-+			continue;
-+
-+		saved_status = status;
-+		do {
-+			irq_hw_number_t hwirq;
-+			u8 bit = __ffs(status);
-+
-+			/* Each reg has 8 bits: this is the first irq of this group */
-+			hwirq = MTK_SPMI_PMIC_VAL_BITS * i;
-+
-+			/* Offset by this group's start interrupt */
-+			hwirq += irq_grp->hwirq_base;
-+
-+			/* Finally, offset by the fired irq's bit number */
-+			hwirq += bit;
-+
-+			status &= ~BIT(bit);
-+
-+			generic_handle_domain_irq(pmic->dom, hwirq);
-+		} while (status);
-+
-+		/* Clear the interrupts by writing the previous status */
-+		regmap_write(regmap, irq_grp->sta_reg + i, saved_status);
-+	}
-+
-+	return 0;
-+}
-+
-+static void mtk_spmi_pmic_handle_chained_irq(struct irq_desc *desc)
-+{
-+	struct mtk_spmi_pmic *pmic = irq_desc_get_handler_data(desc);
-+	const struct mtk_spmi_pmic_pdata *pdata = pmic->pdata;
-+	struct irq_chip *chip = irq_desc_get_chip(desc);
-+	struct regmap *regmap = pmic->regmap;
-+	bool irq_handled = false;
-+	int i, ret;
-+	u32 val;
-+
-+	chained_irq_enter(chip, desc);
-+
-+	ret = regmap_read(regmap, pdata->top_irq_reg, &val);
-+	if (ret)
-+		handle_bad_irq(desc);
-+
-+	dev_dbg(pmic->dev, "PMIC IRQ Status: %x\n", val);
-+
-+	/* This is very unlikely to happen */
-+	if (val == 0) {
-+		chained_irq_exit(chip, desc);
-+		return;
-+	}
-+
-+	for (i = 0; i < pdata->num_groups; i++) {
-+		const struct mtk_spmi_pmic_irq_grp *irq_grp = &pdata->pmic_irq[i];
-+		u8 group_bit = BIT(irq_grp[i].group_num);
-+
-+		if (val & group_bit) {
-+			ret = mtk_spmi_pmic_handle_group_irq(pmic, i);
-+			if (ret == 0)
-+				irq_handled = true;
-+		}
-+	}
-+
-+	/* The RCS flag has to be cleared even if the IRQ was not handled. */
-+	ret = regmap_write(regmap, MTK_SPMI_PMIC_RCS_IRQ_DONE, 1);
-+	if (ret)
-+		dev_warn(pmic->dev, "Could not clear RCS flag!\n");
-+
-+	if (!irq_handled)
-+		handle_bad_irq(desc);
-+
-+	chained_irq_exit(chip, desc);
-+}
-+
-+static void mtk_spmi_pmic_irq_remove(void *data)
-+{
-+	struct mtk_spmi_pmic *pmic = (struct mtk_spmi_pmic *)data;
-+
-+	irq_set_chained_handler_and_data(pmic->irq, NULL, NULL);
-+	irq_domain_remove(pmic->dom);
-+}
-+
-+static int mtk_spmi_pmic_irq_init(struct spmi_device *sdev, struct regmap *regmap,
-+				  const struct mtk_spmi_pmic_pdata *pdata)
-+{
-+	struct mtk_spmi_pmic *pmic;
-+	int ret;
-+
-+	pmic = devm_kzalloc(&sdev->dev, sizeof(*pmic), GFP_KERNEL);
-+	if (!pmic)
-+		return -ENOMEM;
-+
-+	pmic->irq = of_irq_get(sdev->dev.of_node, 0);
-+	if (pmic->irq < 0)
-+		return dev_err_probe(&sdev->dev, pmic->irq, "Cannot get IRQ\n");
-+
-+	pmic->dev = &sdev->dev;
-+	pmic->regmap = regmap;
-+	pmic->pdata = pdata;
-+	mutex_init(&pmic->irq_lock);
-+
-+	pmic->dom = irq_domain_add_tree(sdev->dev.of_node,
-+					&mtk_spmi_pmic_irq_domain_ops, pmic);
-+	if (!pmic->dom)
-+		return dev_err_probe(&sdev->dev, -ENOMEM, "Cannot create IRQ domain\n");
-+
-+	ret = devm_add_action_or_reset(&sdev->dev, mtk_spmi_pmic_irq_remove, pmic);
-+	if (ret) {
-+		irq_domain_remove(pmic->dom);
-+		return ret;
-+	}
-+
-+	irq_set_chained_handler_and_data(pmic->irq, mtk_spmi_pmic_handle_chained_irq, pmic);
-+
-+	return 0;
-+}
-+
-+#define MTK_SPMI_PMIC_IRQ_GROUP(pmic, grp, gnum, first_irq, last_irq)	\
-+{									\
-+	.hwirq_base = first_irq,					\
-+	.num_int_regs = ((last_irq - first_irq) /			\
-+			 MTK_SPMI_PMIC_VAL_BITS) + 1,			\
-+	.con_reg = pmic##_##grp##_TOP_INT_CON0,				\
-+	.sta_reg = pmic##_##grp##_TOP_INT_STATUS0,			\
-+	.group_num = gnum,						\
-+}
-+
-+static const struct mtk_spmi_pmic_irq_grp mt6363_irq_groups[] = {
-+	MTK_SPMI_PMIC_IRQ_GROUP(MT6363, BUCK, 0, 0, 9),
-+	MTK_SPMI_PMIC_IRQ_GROUP(MT6363, LDO, 1, 16, 40),
-+	MTK_SPMI_PMIC_IRQ_GROUP(MT6363, PSC, 2, 48, 57),
-+	MTK_SPMI_PMIC_IRQ_GROUP(MT6363, MISC, 3, 64, 79),
-+	MTK_SPMI_PMIC_IRQ_GROUP(MT6363, HK, 4, 80, 87),
-+	MTK_SPMI_PMIC_IRQ_GROUP(MT6363, BM, 6, 88, 107)
-+};
-+
-+static const struct mtk_spmi_pmic_irq_grp mt6373_irq_groups[] = {
-+	MTK_SPMI_PMIC_IRQ_GROUP(MT6373, BUCK, 0, 0, 9),
-+	MTK_SPMI_PMIC_IRQ_GROUP(MT6373, LDO, 1, 16, 39),
-+	MTK_SPMI_PMIC_IRQ_GROUP(MT6373, MISC, 3, 56, 71),
-+};
-+
-+static const struct mtk_spmi_pmic_pdata mt6363_pdata = {
-+	.pmic_irq = mt6363_irq_groups,
-+	.num_groups = ARRAY_SIZE(mt6363_irq_groups),
-+	.con_reg_sz = 3,
-+	.top_irq_reg = MT6363_TOP_INT_STATUS1,
-+	.chip_id_reg = MTK_SPMI_PMIC_CHIP_ID_REG_M,
-+};
-+
-+static const struct mtk_spmi_pmic_pdata mt6373_pdata = {
-+	.pmic_irq = mt6373_irq_groups,
-+	.num_groups = ARRAY_SIZE(mt6373_irq_groups),
-+	.con_reg_sz = 3,
-+	.top_irq_reg = MT6373_TOP_INT_STATUS1,
-+	.chip_id_reg = MTK_SPMI_PMIC_CHIP_ID_REG_M,
-+};
-+
-+static const struct regmap_config mtk_spmi_regmap_config = {
-+	.reg_bits	= 16,
-+	.val_bits	= MTK_SPMI_PMIC_VAL_BITS,
-+	.max_register	= 0xffff,
-+	.fast_io	= true,
-+};
-+
-+static int mtk_spmi_pmic_probe(struct spmi_device *sdev)
-+{
-+	const struct mtk_spmi_pmic_pdata *pdata;
-+	struct device *dev = &sdev->dev;
-+	struct regmap *regmap;
-+	int ret;
-+
-+	regmap = devm_regmap_init_spmi_ext(sdev, &mtk_spmi_regmap_config);
-+	if (IS_ERR(regmap))
-+		return PTR_ERR(regmap);
-+
-+	pdata = (const struct mtk_spmi_pmic_pdata *)device_get_match_data(&sdev->dev);
-+	if (pdata && pdata->num_groups) {
-+		ret = mtk_spmi_pmic_irq_init(sdev, regmap, pdata);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	return devm_of_platform_populate(dev);
-+}
-+
-+static const struct of_device_id mtk_pmic_spmi_id_table[] = {
-+	{ .compatible = "mediatek,mt6363", .data = &mt6363_pdata },
-+	{ .compatible = "mediatek,mt6373", .data = &mt6373_pdata },
-+	{ /* sentinel */ }
-+};
-+MODULE_DEVICE_TABLE(of, mtk_pmic_spmi_id_table);
-+
-+static struct spmi_driver mtk_spmi_pmic_driver = {
-+	.probe = mtk_spmi_pmic_probe,
-+	.driver = {
-+		.name = "mtk-spmi-pmic",
-+		.of_match_table = mtk_pmic_spmi_id_table,
-+	},
-+};
-+module_spmi_driver(mtk_spmi_pmic_driver);
-+
-+MODULE_AUTHOR("AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>");
-+MODULE_DESCRIPTION("MediaTek SPMI PMIC driver");
-+MODULE_LICENSE("GPL");
-diff --git a/include/linux/mfd/mt6363.h b/include/linux/mfd/mt6363.h
-new file mode 100644
-index 000000000000..2e13398f5af5
---- /dev/null
-+++ b/include/linux/mfd/mt6363.h
-@@ -0,0 +1,26 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * Copyright (c) 2021 MediaTek Inc.
-+ * Copyright (c) 2025 Collabora Ltd
-+ *                    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+ */
-+
-+#ifndef __MFD_MT6363_H__
-+#define __MFD_MT6363_H__
-+
-+/* PMIC Registers */
-+#define MT6363_MISC_TOP_INT_CON0	0x37
-+#define MT6363_MISC_TOP_INT_STATUS0	0x43
-+#define MT6363_TOP_INT_STATUS1		0x4e
-+#define MT6363_PSC_TOP_INT_CON0		0x90f
-+#define MT6363_PSC_TOP_INT_STATUS0	0x91b
-+#define MT6363_BM_TOP_INT_CON0		0xc24
-+#define MT6363_BM_TOP_INT_STATUS0	0xc36
-+#define MT6363_HK_TOP_INT_CON0		0xf92
-+#define MT6363_HK_TOP_INT_STATUS0	0xf9e
-+#define MT6363_BUCK_TOP_INT_CON0	0x1411
-+#define MT6363_BUCK_TOP_INT_STATUS0	0x141d
-+#define MT6363_LDO_TOP_INT_CON0		0x1b11
-+#define MT6363_LDO_TOP_INT_STATUS0	0x1b29
-+
-+#endif /* __MFD_MT6363_H__ */
-diff --git a/include/linux/mfd/mt6373.h b/include/linux/mfd/mt6373.h
-new file mode 100644
-index 000000000000..3509e46447bd
---- /dev/null
-+++ b/include/linux/mfd/mt6373.h
-@@ -0,0 +1,21 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * Copyright (c) 2021 MediaTek Inc.
-+ * Copyright (c) 2025 Collabora Ltd
-+ *                    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+ */
-+
-+#ifndef __MFD_MT6373_H__
-+#define __MFD_MT6373_H__
-+
-+/* PMIC Registers */
-+#define MT6373_MISC_TOP_INT_CON0	0x3c
-+#define MT6373_MISC_TOP_INT_STATUS0	0x48
-+#define MT6373_TOP_INT_MASK_CON0	0x4c
-+#define MT6373_TOP_INT_STATUS1		0x53
-+#define MT6373_BUCK_TOP_INT_CON0	0x1411
-+#define MT6373_BUCK_TOP_INT_STATUS0	0x141d
-+#define MT6373_LDO_TOP_INT_CON0		0x1b10
-+#define MT6373_LDO_TOP_INT_STATUS0	0x1b22
-+
-+#endif /* __MFD_MT6373_H__ */
--- 
-2.51.0
-
+Cheers,
+Angelo
 
