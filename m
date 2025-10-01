@@ -4,73 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CBF7CCA471
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Oct 2025 18:35:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87D2CCCA470
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Oct 2025 20:57:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Eih+Gvrl/V/M1VLTYZoN9wZ1OWt0+vDKt9t9071sjq8=; b=dYCF22Sk/y7zXoBeoLPWCEAR4A
-	Lf+AVuj9ufwrgf9hLjuwFCQ9jYyw69wgci1kJ8W6GlH/ZYBT85A6dIE9yUSrsQ9UaVS2H0IL8brfd
-	xWopyktKkBrLusCjtvurVX8pR8UynFPsn3cJv2BQVbkn7qjf0ljdfVQ0kXrbnbK+2KPufvRnj+17d
-	/mK2IOhin7npf8ZBqY6B+vb1/hx/JI16sRa3PYwZfSnfXQ/do/KrlV+hRfIfv7V+Mn5bYxOLqRYW7
-	cedGCIkdvrfqXd+XV/XxwTLjLgX6TXbe1kW6L5pfCFRQFu/nY7feWexfwhxOEDtgcUM1qcqBRJmBx
-	YZKbXiQw==;
+	bh=+45+pLhmRpnqwKQs2OmyisBAtmvmvvrbwhhu0F6U6d0=; b=C0P41RxYvUm4lWTqFl7X7fyZpq
+	vd89fLQf4BwhbL5lCW9YlwmNVtqTxq8Rd0ampBRrD4RXoANhRVuf2GrlaPk9lL5JcFv6VlUFqPIut
+	0Noqje/QYYP63FCn904mZHju7K/gtq03UTGhlLMcKkSY3aLK5RPluNKZIweJCLv08a9S/zz4DC3Au
+	HY29f0DW7TTfc4GWW39ZVU7FQPzsMGE24EdMyqm7wCh8V4K2mr+SjlBE2rRcWW+M3R+ygIPH7fvFv
+	8ZOuwOzyref7Kxsi3XOZLJ01I+/qR/PD3KrvtFnzVxWS98ASx0l7Fn2NutR0Yo3/2y+cAgy6aDv3W
+	XjvRxtEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v41ft-00000008lfY-3G1V;
-	Wed, 01 Oct 2025 18:35:37 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1v43tJ-00000008xOH-15yU;
+	Wed, 01 Oct 2025 20:57:37 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v41fr-00000008leU-166C;
-	Wed, 01 Oct 2025 18:35:36 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1759343728; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=GO4M1NUWW6TWSbDNpVVaR40eptHIMXCdh2YjC997tWUHghEYAviXb7B2JKiHPx6ak2zqbvcohnzvplGJ0yiSZHZ5PiNeTAqXhZ74jQM4eiuy8ET7BrITFys0Mw3euZHo721CFIwsHdO5OdF3WiVHzIsf6aIx5jOZDyyW+kgLg1s=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1759343728; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=Eih+Gvrl/V/M1VLTYZoN9wZ1OWt0+vDKt9t9071sjq8=; 
-	b=HxL6LvSjBZX0g6EJdxuatweoVCdWVSedspO8pUQ0LceXTUsGP2xbBOpWIwTxNFt3dR7t3c60oQ/qVfHc955QgrNAJnJ7yBuu/ppOc9Zoxc1OvJR2h58LhFp5pRxZJf2A8eQsLr8EguO4SCxvwd6FN8z80LERLbeFK/H7uzyRv+0=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=ariel.dalessandro@collabora.com;
-	dmarc=pass header.from=<ariel.dalessandro@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1759343728;
-	s=zohomail; d=collabora.com; i=ariel.dalessandro@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=Eih+Gvrl/V/M1VLTYZoN9wZ1OWt0+vDKt9t9071sjq8=;
-	b=Bus2fud+WrXA21LkdBDB7ozBil6sVjRukemB2tKN9DqEPvcIj4itNHtZuQYhDxpy
-	E2AnanCOAQzgGPBM2OGiSOUh2voGxTwx2Ti521mKjUQ6Dde3GKUxorirWs7TqkqTIkk
-	DUgWf5zeUMJpbH0VWTOwgcR9DHPrh2bECZGCOOHA=
-Received: by mx.zohomail.com with SMTPS id 175934372619585.09151494021478;
-	Wed, 1 Oct 2025 11:35:26 -0700 (PDT)
-From: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-To: angelogioacchino.delregno@collabora.com,
-	ariel.dalessandro@collabora.com,
-	broonie@kernel.org,
-	conor+dt@kernel.org,
-	krzk+dt@kernel.org,
-	lgirdwood@gmail.com,
-	matthias.bgg@gmail.com,
-	robh@kernel.org
-Cc: devicetree@vger.kernel.org,
-	kernel@collabora.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-sound@vger.kernel.org
-Subject: [PATCH v3] dt-bindings: ASoC: Convert MediaTek RT5650 codecs bindings to DT schema
-Date: Wed,  1 Oct 2025 15:35:17 -0300
-Message-ID: <20251001183517.83278-1-ariel.dalessandro@collabora.com>
-X-Mailer: git-send-email 2.51.0
+	id 1v43tG-00000008xMX-0DdW;
+	Wed, 01 Oct 2025 20:57:35 +0000
+Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 591Ic7qC005598;
+	Wed, 1 Oct 2025 20:57:25 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+	cc:content-type:date:from:message-id:mime-version:subject:to; s=
+	qcppdkim1; bh=+45+pLhmRpnqwKQs2OmyisBAtmvmvvrbwhhu0F6U6d0=; b=Y2
+	/QSmcvxMQgd2cIdrqb6axjOZNWWRRyQn+PTTGYoQ4qk6ZZhsYn0aXCn+fQtNzJyx
+	6ep6MFPQuWMG6/rVoN4Yl3kVP+iYbcSGemrLTP2Tdxd5g1TjoHmVMVA8t5L0cfhk
+	ZOVsgUz8S496W5ZnyddeR6BYqOsgIs2Fd7HTdEPAofMGqA+t+JE1ld00Gc/tyvTw
+	wah0O1k+emxfdE9c9YP963iEaLOvZYrVDEYjSdr1RbXpzGNI5FXvXE6r0YHn/D1f
+	Be14GwEuWsxsS+3gWdYUBDt2yFOO8NLUECXZsaiqyDxFSnovurRtFr4tX0aTzRdD
+	pUbHIs+8ZaenPCHxNoEw==
+Received: from nasanppmta01.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 49e851nvmw-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 01 Oct 2025 20:57:24 +0000 (GMT)
+Received: from nasanex01a.na.qualcomm.com (nasanex01a.na.qualcomm.com [10.52.223.231])
+	by NASANPPMTA01.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTPS id 591KvOlC011137
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 1 Oct 2025 20:57:24 GMT
+Received: from stor-berry.qualcomm.com (10.80.80.8) by
+ nasanex01a.na.qualcomm.com (10.52.223.231) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.24; Wed, 1 Oct 2025 13:57:23 -0700
+From: "Bao D. Nguyen" <quic_nguyenb@quicinc.com>
+To: <quic_cang@quicinc.com>, <quic_nitirawa@quicinc.com>, <bvanassche@acm.org>,
+        <avri.altman@wdc.com>, <peter.wang@mediatek.com>,
+        <manivannan.sadhasivam@linaro.org>, <adrian.hunter@intel.com>,
+        <martin.petersen@oracle.com>
+CC: <linux-scsi@vger.kernel.org>, "Bao D. Nguyen" <quic_nguyenb@quicinc.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>,
+        "open list:ARM/Mediatek SoC
+ support:Keyword:mediatek" <linux-kernel@vger.kernel.org>,
+        "moderated
+ list:ARM/Mediatek SoC support:Keyword:mediatek"
+	<linux-arm-kernel@lists.infradead.org>,
+        "moderated list:ARM/Mediatek SoC
+ support:Keyword:mediatek" <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v1 0/2] *** Remove UFS_DEVICE_QUIRK_DELAY_AFTER_LPM quirk ***
+Date: Wed, 1 Oct 2025 13:57:10 -0700
+Message-ID: <cover.1759348507.git.quic_nguyenb@quicinc.com>
+X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+Content-Type: text/plain
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nasanex01a.na.qualcomm.com (10.52.223.231)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Authority-Analysis: v=2.4 cv=OJoqHCaB c=1 sm=1 tr=0 ts=68dd95b4 cx=c_pps
+ a=JYp8KDb2vCoCEuGobkYCKw==:117 a=JYp8KDb2vCoCEuGobkYCKw==:17
+ a=GEpy-HfZoHoA:10 a=x6icFKpwvdMA:10 a=QiTLis0nzNNC8PZdpUgA:9
+ a=cPQSjfK2_nFv0Q5t_7PE:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwOTI3MDAzMiBTYWx0ZWRfX7uMPnhAKSqt7
+ MhTQGmrdaJO/ZNPh7ZmuKJGl2PpMvWQdeod6H3jOwKBPua6WiY+FMzWS9JyOCqInOnx5HyWR9vq
+ oaizxr5wz5Dr7hwV09nU1vCKiv+9OUNms5tEBRT4ZR3pz8wGNeTOYO5ThCE+vbY37QoXXRpcpNZ
+ 62RJPNT/RamQP7SSQQeU4uGSSkok6CIwdtqMFYpD+IYKZ1WLGiPjkoISxnrje1V33RbkxiMOmlh
+ XojcgY91D0eOO71V02CGXaJ6hlbMqgc3BOMv+Gto/qE278pgj/gZGjNHvBVz93CiOulUTs+qjyd
+ coFqmlYk9gm6QehJN0sg01ZFmEnfupgNJGR8s9uSxb7xG76bO4EEu06ntg7z+g+BkZDW+iG+mVr
+ sAqjNe3gNRso+xKHOSySTLJNmpYoCg==
+X-Proofpoint-ORIG-GUID: 9Qo_BlZEcpNsFWHqs7gVQBLDAM4axfq8
+X-Proofpoint-GUID: 9Qo_BlZEcpNsFWHqs7gVQBLDAM4axfq8
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-10-01_06,2025-09-29_04,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ spamscore=0 adultscore=0 priorityscore=1501 bulkscore=0 impostorscore=0
+ suspectscore=0 lowpriorityscore=0 phishscore=0 malwarescore=0 clxscore=1011
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.19.0-2509150000 definitions=main-2509270032
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251001_113535_339971_1E23842A 
-X-CRM114-Status: GOOD (  14.35  )
+X-CRM114-CacheID: sfid-20251001_135734_129824_DD1DD0AA 
+X-CRM114-Status: GOOD (  13.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,135 +115,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert the existing text-based DT bindings for Mediatek MT8173 RT5650
-codecs to a DT schema.
+Multiple ufs device manufacturers request support for the
+UFS_DEVICE_QUIRK_DELAY_AFTER_LPM quirk in the Qualcomm's platform driver.
+After checking further with the major UFS manufacturers engineering teams
+such as Samsung, Kioxia, SK Hynix and Micron, all the manufacturers require
+this quirk. Since the quirk is needed by all the ufs device manufacturers,
+remove the quirk in the ufs core driver and implement a universal delay
+for all the ufs devices.
 
-Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
----
- .../sound/mediatek,mt8173-rt5650.yaml         | 73 +++++++++++++++++++
- .../bindings/sound/mt8173-rt5650.txt          | 31 --------
- 2 files changed, 73 insertions(+), 31 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt8173-rt5650.yaml
- delete mode 100644 Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
+In addition to verifying with the public device's datasheets, the ufs
+device manufacturer's engineering teams confirmed the required vcc
+power-off time for the devices is a minimum of 1ms before vcc can be
+powered on again. The existing 5ms delay implemented in the ufs core
+driver seems too conservative, so reduce this time to 2ms to improve
+the system resume latency.
 
-diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8173-rt5650.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8173-rt5650.yaml
-new file mode 100644
-index 0000000000000..a3166cc40a206
---- /dev/null
-+++ b/Documentation/devicetree/bindings/sound/mediatek,mt8173-rt5650.yaml
-@@ -0,0 +1,73 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/sound/mediatek,mt8173-rt5650.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek MT8173 with RT5650 codecs and HDMI via I2S
-+
-+maintainers:
-+  - Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-+
-+properties:
-+  compatible:
-+    const: mediatek,mt8173-rt5650
-+
-+  reg:
-+    maxItems: 1
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  mediatek,audio-codec:
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    description:
-+      The phandles of rt5650 codecs and of the HDMI encoder node.
-+    minItems: 2
-+
-+  mediatek,platform:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description:
-+      The phandle of MT8173 ASoC platform.
-+
-+  mediatek,mclk:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description: |
-+      The MCLK source.
-+      0: external oscillator, MCLK = 12.288M
-+      1: internal source from mt8173, MCLK = sampling rate * 256
-+
-+  codec-capture:
-+    description: Subnode of rt5650 codec capture.
-+    type: object
-+
-+    properties:
-+      sound-dai:
-+        maxItems: 1
-+        description: phandle of the CPU DAI
-+
-+    additionalProperties: false
-+
-+required:
-+  - compatible
-+  - mediatek,audio-codec
-+  - mediatek,platform
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    sound {
-+        compatible = "mediatek,mt8173-rt5650";
-+        mediatek,audio-codec = <&rt5650 &hdmi0>;
-+        mediatek,platform = <&afe>;
-+        pinctrl-names = "default";
-+        pinctrl-0 = <&aud_i2s2>;
-+
-+        mediatek,mclk = <1>;
-+        codec-capture {
-+            sound-dai = <&rt5650 1>;
-+        };
-+    };
-+
-+...
-diff --git a/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt b/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
-deleted file mode 100644
-index 29dce2ac8773a..0000000000000
---- a/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
-+++ /dev/null
-@@ -1,31 +0,0 @@
--MT8173 with RT5650 CODECS and HDMI via I2S
--
--Required properties:
--- compatible : "mediatek,mt8173-rt5650"
--- mediatek,audio-codec: the phandles of rt5650 codecs
--                        and of the hdmi encoder node
--- mediatek,platform: the phandle of MT8173 ASoC platform
--
--Optional subnodes:
--- codec-capture : the subnode of rt5650 codec capture
--Required codec-capture subnode properties:
--- sound-dai: audio codec dai name on capture path
--  <&rt5650 0> : Default setting. Connect rt5650 I2S1 for capture. (dai_name = rt5645-aif1)
--  <&rt5650 1> : Connect rt5650 I2S2 for capture. (dai_name = rt5645-aif2)
--
--- mediatek,mclk: the MCLK source
--  0 : external oscillator, MCLK = 12.288M
--  1 : internal source from mt8173, MCLK = sampling rate*256
--
--Example:
--
--	sound {
--		compatible = "mediatek,mt8173-rt5650";
--		mediatek,audio-codec = <&rt5650 &hdmi0>;
--		mediatek,platform = <&afe>;
--		mediatek,mclk = <0>;
--		codec-capture {
--			sound-dai = <&rt5650 1>;
--		};
--	};
--
+Bao D. Nguyen (2):
+  scsi: ufs: core: Remove UFS_DEVICE_QUIRK_DELAY_AFTER_LPM quirk
+  scsi: ufs: core: Reduce the sleep before vcc can be powered on
+
+ drivers/ufs/core/ufshcd.c       |  7 +++----
+ drivers/ufs/host/ufs-mediatek.c | 11 ++++-------
+ drivers/ufs/host/ufs-qcom.c     |  3 ---
+ include/ufs/ufs_quirks.h        |  7 -------
+ 4 files changed, 7 insertions(+), 21 deletions(-)
+
 -- 
-2.51.0
+2.7.4
 
 
