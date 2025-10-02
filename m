@@ -4,69 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44B62CAC5B0
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Oct 2025 08:01:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FCBCCAC5B0
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Oct 2025 08:42:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=N0TohroCiXkyWQ05AuhTxt+XmDpEOTenEj6RXccTgbM=; b=i+7mxvvXYYx+wKQj6Af5rJFX1k
-	81xFh9j6FCM19fStX5aDWhuBHUr12FcEw8/bLZScvzUusCMXrqw5yoO1GDpBnazBv2gwpCgr6rsT6
-	ro1w8EznYcqhsfx/pkZIlFvfHNM/mP4y3lhcgDxTX5LOP+j0Yc42YHK370Jn5sBL4+8K5/5AEX251
-	X6Tbk6X/L9zFRa3nCQtygpwFSoD0M1XpJ6jU5DT/Twy52s11ZFHeQ7dirJZJT5QyqTakXIsSWwh5E
-	eWW5MHGfkIzMrz4SPymgknTaWDU48nLdXcebowmEykgWljvV47vSTbvQt0U/nOoBTFDsa7LXRDEQK
-	4t937lOw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=BlSY6+qrGUZ462JTxJxa19s7WGyY7mscy/vRmwnQl0g=; b=kj1aNrtaF2K4iL664p59tAl5XX
+	sExlWtW9ayWmvL7NsxfczhjXSH+aay9agd2FDjAZUtvdvQcJ1iOn2SXi2ic2kWrJbYDcFTi7MwoiO
+	BcG/j1pjYE3+WjUBJuYOKfTZG7tZKgW2blcEJ6WCTqdK4LJqQcsA4VsULVISnU5JoSGzisCLJPFRU
+	R+OqBp8th/Mg9TaIy2pMXi+YSLhej2XEwKBl78QbWensXP67V1Pkb2Gs+eo92PMHTC3MIZhjC03kD
+	q5+yUAc1dUohCrz+WPUkHnE8ZVZTPp2KjzKt1u+TJkUxCqMG35jAS1WLOS5Wbdw8mpbBzMuiZ0uXi
+	u7TkcXgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4EGE-00000009qXG-1RCg;
-	Thu, 02 Oct 2025 08:01:58 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1v4EtD-0000000A1MS-4Bql;
+	Thu, 02 Oct 2025 08:42:16 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4EGB-00000009qWR-3War;
-	Thu, 02 Oct 2025 08:01:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1759392113;
-	bh=Hr60drvLfL1YnuE4KY5/qlJit8NkSU47rT83xTzVQdQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=d/u8+HlQ67vxa1gJdWO61ZfwqBsj1e2ZElsUb60KjXiUbvJ4qmXGss70wU9RjDaH+
-	 p62WaCtaIwoypiQfBJw8qRFyHofPfaKMAMpADrFEGwpOniIQB6Ss/G+lixLZTlotIh
-	 G9RGIWiDepWsNZ7lgyPhR4BMumef6/6GdIyOyrnanP8vVaSSQNmxXdGaw5UlE3Amh/
-	 qiO1qflTR9B6JlE9O6lgOCgQATvR6syetO95kpmnazYDRUps4D4qpTQYlLr3qZRzxg
-	 9R4wuOdOdP8vjfsZ2MurG4quvfJDMBHIUFJ7a0a/uwf5J+vJBPO1PKKz4vQjGnzDD8
-	 IQXFRFKpkj6CA==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5C91617E038B;
-	Thu,  2 Oct 2025 10:01:53 +0200 (CEST)
-Message-ID: <c14d80e9-f383-4311-afa7-4d2879e1e4cb@collabora.com>
-Date: Thu, 2 Oct 2025 10:01:52 +0200
+	id 1v4EtA-0000000A1LZ-3n5R;
+	Thu, 02 Oct 2025 08:42:15 +0000
+X-UUID: aed090989f6b11f0a52f393f94899d25-20251002
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=BlSY6+qrGUZ462JTxJxa19s7WGyY7mscy/vRmwnQl0g=;
+	b=KW/LJGTq7tQ02RW/UZiteDYVt8IhiTrbnMcaQGIwh/paF9pi5VHFPpibJINfGqi7bWgRXSjXkl+QCnxKJVEd9nc/ypEfRwcFPDrwwpjcsOHXm7yXD4G91ljKY7g9Vwx1mTvsqr5ilQ9eQq/07tglJKOlsWNhbdmrbZaWPS1TNtQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.6,REQID:ee94a327-c86d-48ea-96d7-9fb6df2e98ae,IP:0,UR
+	L:0,TC:0,Content:100,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:100
+X-CID-META: VersionHash:a9d874c,CLOUDID:d6b42a6d-8443-424b-b119-dc42e68239b0,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:3|15|5
+	0,EDM:-3,IP:nil,URL:99|1,File:130,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI
+	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: aed090989f6b11f0a52f393f94899d25-20251002
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <jjian.zhou@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1286553512; Thu, 02 Oct 2025 01:42:09 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.10; Thu, 2 Oct 2025 16:42:04 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1748.10 via Frontend Transport; Thu, 2 Oct 2025 16:42:03 +0800
+From: Jjian Zhou <jjian.zhou@mediatek.com>
+To: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Jjian Zhou
+	<Jjian.Zhou@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>
+CC: <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jjian Zhou
+	<jjian.zhou@mediatek.corp-partner.google.com>
+Subject: [PATCH v7 0/2] add VCP mailbox driver
+Date: Thu, 2 Oct 2025 16:41:53 +0800
+Message-ID: <20251002084204.15898-1-jjian.zhou@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 1/9] dt-bindings: regulator: Document MediaTek MT6316
- PMIC Regulators
-To: Rob Herring <robh@kernel.org>
-Cc: linux-mediatek@lists.infradead.org, lee@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, matthias.bgg@gmail.com, lgirdwood@gmail.com,
- broonie@kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- kernel@collabora.com, wenst@chromium.org,
- igor.belwon@mentallysanemainliners.org
-References: <20251001111316.31828-1-angelogioacchino.delregno@collabora.com>
- <20251001111316.31828-2-angelogioacchino.delregno@collabora.com>
- <20251001154537.GA1833526-robh@kernel.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20251001154537.GA1833526-robh@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251002_010156_030642_E40F5FF0 
-X-CRM114-Status: GOOD (  17.00  )
+X-CRM114-CacheID: sfid-20251002_014212_951286_ECAFCE3E 
+X-CRM114-Status: GOOD (  14.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,106 +89,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 01/10/25 17:45, Rob Herring ha scritto:
-> On Wed, Oct 01, 2025 at 01:13:08PM +0200, AngeloGioacchino Del Regno wrote:
->> Add bindings for the regulators found in the MediaTek MT6316 PMIC,
->> usually found in board designs using the MT6991 Dimensity 9400 and
->> on MT8196 Kompanio SoC for Chromebooks.
->>
->> This chip is fully controlled by SPMI and has multiple variants
->> providing different phase configurations.
->>
->> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
->> Link: https://lore.kernel.org/r/20250715140224.206329-2-angelogioacchino.delregno@collabora.com
-> 
-> Why do we want a link to v5 here in the git history forever? You've seen
-> Linus' recent comments on Link usage?
-> 
+From: Jjian Zhou <jjian.zhou@mediatek.corp-partner.google.com>
 
-Yes, I've seen that, and I fully agree with him.
+Hi everyone,
 
-That was a mistake and was totally unintentional - I actually wanted to, but then
-forgot to, remove the links.
+This is v7 of my VCP mailbox driver.
 
-I really have to spend those 5 minutes to configure b4 correctly.
+Changes since v7:
+- mtk-vcp-mailbox.c:
+  - Change type u32 to u16.
+  - Change BIT(ipi_info->index) to if.
+  - Put the platform_set_drvdata between "of_device_get_match_data"
+    and "platform_get_irq".
+- mtk-vcp-mailbox.h
+  - Modify the definition to MTK_VCP_MBOX_SLOT_MAX_SIZE.
 
-Sorry about that, will fix in v7.
+Changes since v6:
+- mtk-vcp-mailbox.c:
+  - Replace mtk_vcp_mbox_priv with mtk_vcp_mbox.
+  - Move mbox_controller to the first member.
+  - Define "struct mbox_chan chan"; Remove allocate one during the probe.
+  - Remove API get_mtk_vcp_mbox_priv.
+  - Pass the private data since there's only one mailbox.
+  - Modify mtk_vcp_mbox_xlate "return &mbox->chans[0]".
 
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   .../regulator/mediatek,mt6316b-regulator.yaml | 46 +++++++++++++++++++
->>   .../regulator/mediatek,mt6316c-regulator.yaml | 46 +++++++++++++++++++
->>   .../regulator/mediatek,mt6316d-regulator.yaml | 41 +++++++++++++++++
->>   3 files changed, 133 insertions(+)
->>   create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml
->>   create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6316c-regulator.yaml
->>   create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6316d-regulator.yaml
->>
->> diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml
->> new file mode 100644
->> index 000000000000..e7a6b70cdab2
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml
->> @@ -0,0 +1,46 @@
->> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
->> +%YAML 1.2
->> +---
->> +$id: http://devicetree.org/schemas/regulator/mediatek,mt6316b-regulator.yaml#
->> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->> +
->> +title: MediaTek MT6316 BP/VP SPMI PMIC Regulators
->> +
->> +maintainers:
->> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> +
->> +description:
->> +  The MediaTek MT6316BP/VP PMICs are fully controlled by SPMI interface, both
->> +  feature four step-down DC/DC (buck) converters, and provides 2+2 Phases,
->> +  joining Buck 1+2 for the first phase, and Buck 3+4 for the second phase.
->> +
->> +properties:
->> +  compatible:
->> +    const: mediatek,mt6316b-regulator
->> +
->> +  vbuck12:
->> +    type: object
->> +    $ref: regulator.yaml#
->> +    unevaluatedProperties: false
->> +
->> +  vbuck34:
->> +    type: object
->> +    $ref: regulator.yaml#
->> +    unevaluatedProperties: false
->> +
->> +additionalProperties: false
->> +
->> +examples:
->> +  - |
->> +    pmic {
->> +      regulators {
->> +        compatible = "mediatek,mt6316b-regulator";
->> +
->> +        vbuck12 {
->> +          regulator-min-microvolt = <450000>;
->> +          regulator-max-microvolt = <965000>;
->> +          regulator-always-on;
->> +        };
->> +      };
->> +    };
-> 
-> One complete example for the pmic please rather than incomplete child
-> node examples.
-> 
+Changes since v5:
+- binding:
+  - Patch 1 fix 'make dt_binding_check' errors.
+  - Link to v5
+    https://patchwork.kernel.org/project/linux-mediatek/patch/20250822021217.1598-2-jjian.zhou@mediatek.com/
 
-Thanks for making me notice - actually, this example is even wrong... as I
-eventually changed the node, but for whatever reason I completely forgot
-about updating the binding. UGH.
+Changes since v4:
+- binding:
+  - Match the binding file name and compatible.
+- mtk-vcp-mailbox.c:
+  - Drop 'dev_dbg(dev, "MTK VCP mailbox initialized\n")'.
+- Since the reviewer hopes to combine the VCP IPC driver and
+  the VCP driver for a unified review, the original three patches
+  have been split into two parts: the VCP mailbox driver and
+  the binding remain together, while the VCP IPC driver is merged
+  with the VCP driver and submitted as one.
+- Link to v4
+  https://lore.kernel.org/all/20250820094545.23821-1-jjian.zhou@mediatek.com/
 
-The MT6316(x) are PMICs themselves, providing only regulators.
+Changes since v3:
+- binding:
+  - Remove unused lable '|' and 'vcp_mailbox0'.
+- Link to v3
+  https://lore.kernel.org/all/20250317110331.2776-1-jjian.zhou@mediatek.com/
 
-I'll come up with a decent example.
+Changes since v1:
+- Link to v1
+  https://lore.kernel.org/all/20250305082047.15746-1-jjian.zhou@mediatek.com/
 
-Cheers,
-Angelo
+In the v2 version, there is ongoing discussion about whether the VCP's
+IPC should use mailbox or rpmsg. To prevent the discussion records
+from being lost, the previous discussion link is attached.
+https://lore.kernel.org/all/CAGXv+5FXqZb_v2dQNgCKbFpJrLhbVk3f0sWrrMCVk3jaWwoBqA@mail.gmail.com/
+
+Jjian Zhou (2):
+  dt-bindings: mailbox: mediatek,mt8196-vcp-mbox: add mtk vcp-mbox
+    document
+  mailbox: mediatek: Add mtk-vcp-mailbox driver
+
+ .../mailbox/mediatek,mt8196-vcp-mbox.yaml     |  49 +++++
+ drivers/mailbox/Kconfig                       |   9 +
+ drivers/mailbox/Makefile                      |   2 +
+ drivers/mailbox/mtk-vcp-mailbox.c             | 170 ++++++++++++++++++
+ include/linux/mailbox/mtk-vcp-mailbox.h       |  32 ++++
+ 5 files changed, 262 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/mailbox/mediatek,mt8196-vcp-mbox.yaml
+ create mode 100644 drivers/mailbox/mtk-vcp-mailbox.c
+ create mode 100644 include/linux/mailbox/mtk-vcp-mailbox.h
+
+--
+2.45.2
 
 
