@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAD09CAC5B0
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Oct 2025 09:00:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53488CCA472
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Oct 2025 09:00:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aqITEesOcTCFkhTfu37WoeTMAKXnPTHBlWWrNNb9nto=; b=uY7Os/Y0wofxOikfYlnKh9L1Bu
-	9So/6Y+zRrwQHFik+44FwbcU15ObLTseWlEC7/BmYp32IFDBdxYjaG6DSYW7ewaGH8QP+jQnEwALW
-	xXnZG2vacTIbeGeedp6M7zpj+KAwdJ2gnJnYOgYyOPUYdp7gyVMkJqHRNPNKD/tjuUrGHkZ+Nd9Y+
-	wWjOKxANQqgicYa8oOlN2KSPzlaBW6/5Ll2G8xmgyl4gJKkiILj9pv+JxigkPEV3zehxOwt+RLpbf
-	IaxbzuE17uy40RzfmpkFkbKh6UnCBy8SJxNd5U/SJcDgTAPNiFYmDy5uLFZ2zFHBI4Z+YMpSuG7gn
-	5hrkAhSQ==;
+	bh=PXzr/4hGKs8glC5IZwqv79qrVZdZhJY1RJw+kcpMxvM=; b=SEWgiq6OQBR2vEGKKbgX24nw+y
+	UbuzfpyXZDQFTivMozR/Zw2hRElXowPkp8FmJBuCdJKRYt+ygTFSHMujMrSdY5feIY32f+jy0E5Li
+	GW2VltVhyYBZZgp+01FHvjgQXztvmOGd82whQCDr9HvJ9fLn3j+URE6vyfVT3M2OD0SggQfDiSMD8
+	DGvbZaF4kl1Y5F2Vj6QDPCbBCQX9Uqg19doWfeHcyWErvsK7KrKMRYR2Ylnht+2tqL2xEuJAG3rd1
+	bzZNpAbOUWG0DXkSI0/SvoEbuGOQnNcl7va85/ZUMmCnLyqbkzdWaMJ7UzH+7gMc3R5XMP2bxeGFf
+	tnh/r6VQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4FB4-0000000A56A-2sUD;
-	Thu, 02 Oct 2025 09:00:42 +0000
+	id 1v4FB5-0000000A57P-1NSk;
+	Thu, 02 Oct 2025 09:00:43 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4FAy-0000000A4xZ-2fFT;
-	Thu, 02 Oct 2025 09:00:38 +0000
+	id 1v4FB0-0000000A4yZ-0N9c;
+	Thu, 02 Oct 2025 09:00:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1759395634;
-	bh=OJ2WCrlDsNvJIgqvoenQOJhkrHmYAWEaYUOwsHP408k=;
+	s=mail; t=1759395636;
+	bh=E1zmjjlBBxFy/4tW2HdcrJ+ALN1Y5NvGD8okhz9niTk=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=oEwcyI/3QTBbb/5Q0W8fObBwhCaHbMRvJhspviJ+zyLKfB4Y+kikmwfY+j/wZ9EN2
-	 M4lX0uxsayFqE8xe5RqXdUsOp7FW7ML1vJhulUGc/+pNwdVqppZvBanxeYD58n80fl
-	 ermOnmdlb4pkgXGwzoFUM6Gs3nTwY5vez/+ahNCowPQ8KnnFYzFTjBnLJHJH44MsXb
-	 31//IXJfsbFx2M9NAlF+uJjRlmWr9PU1NVADWfulXY3DUf/dVWNWClfM8wFCvRXBOe
-	 kkCdzhnYwoid1n4FLn5pAaThCCv+KuqAHNZhHOxaqxk34RF7QSVFWJEhs+cT+zJCG5
-	 ArGbMJup55U7Q==
+	b=eEgcoj0HTUeuPQwZWiDJKza2gIHCVMtt42cKaoN3X2/vNDYUKy4eZElMIsnLlqEOx
+	 iG2hObnV+vdyID4+Fb07ANNmf3Ur4LaXJHsRHakzV0q0MxkTW4wSTttNgtKoUdKFZd
+	 JKCvgbE0XHIYKZYrFA2X7r1O/eoB5Kp+3ybjoSaTZqYL0kS7bAA4hutKO+0ONRMS9r
+	 safwTT/krqeoGpN20Fl8Ny+eYrf0HL84HJpDaq8choxFl1N8aW4frgF89TDMJkWmML
+	 2zoSAqHQ5HpBq7YwywFGGkXLPNVfehfPM5aShwO4TmggkP7dC1TQyj6yd4wcSBcrP1
+	 cI2IxsZ9Cut8w==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4919817E13D3;
-	Thu,  2 Oct 2025 11:00:34 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A8C6D17E13E0;
+	Thu,  2 Oct 2025 11:00:35 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: linux-mediatek@lists.infradead.org
 Cc: lee@kernel.org,
@@ -59,17 +59,17 @@ Cc: lee@kernel.org,
 	kernel@collabora.com,
 	wenst@chromium.org,
 	igor.belwon@mentallysanemainliners.org
-Subject: [PATCH v7 3/9] dt-bindings: regulator: Document MediaTek MT6363 PMIC Regulators
-Date: Thu,  2 Oct 2025 11:00:22 +0200
-Message-ID: <20251002090028.1796462-4-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v7 5/9] dt-bindings: regulator: Document MediaTek MT6373 PMIC Regulators
+Date: Thu,  2 Oct 2025 11:00:24 +0200
+Message-ID: <20251002090028.1796462-6-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20251002090028.1796462-1-angelogioacchino.delregno@collabora.com>
 References: <20251002090028.1796462-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251002_020036_821088_E27DCD9F 
-X-CRM114-Status: GOOD (  13.36  )
+X-CRM114-CacheID: sfid-20251002_020038_431083_008ECECB 
+X-CRM114-Status: GOOD (  13.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,43 +87,45 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Add bindings for the regulators found in the MediaTek MT6363 PMIC,
 usually found in board designs using the MT6991 Dimensity 9400 and
 on MT8196 Kompanio SoC for Chromebooks, along with the MT6316 and
-MT6373 PMICs.
+MT6363 PMICs.
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../regulator/mediatek,mt6363-regulator.yaml  | 146 ++++++++++++++++++
- 1 file changed, 146 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6363-regulator.yaml
+ .../regulator/mediatek,mt6373-regulator.yaml  | 137 ++++++++++++++++++
+ 1 file changed, 137 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6373-regulator.yaml
 
-diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6363-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6363-regulator.yaml
+diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6373-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6373-regulator.yaml
 new file mode 100644
-index 000000000000..4f79d4f81d49
+index 000000000000..4562f291fc0a
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6363-regulator.yaml
-@@ -0,0 +1,146 @@
++++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6373-regulator.yaml
+@@ -0,0 +1,137 @@
 +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
 +%YAML 1.2
 +---
-+$id: http://devicetree.org/schemas/regulator/mediatek,mt6363-regulator.yaml#
++$id: http://devicetree.org/schemas/regulator/mediatek,mt6373-regulator.yaml#
 +$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+title: MediaTek MT6363 PMIC Regulators
++title: MediaTek MT6373 PMIC Regulators
 +
 +maintainers:
 +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 +
 +description:
-+  The MT6363 SPMI PMIC provides 10 BUCK and 25 LDO (Low DropOut) regulators
++  The MT6373 SPMI PMIC provides 10 BUCK and 23 LDO (Low DropOut) regulators
 +  and can optionally provide overcurrent warnings with one ocp interrupt
 +  for each voltage regulator.
 +
 +properties:
 +  compatible:
-+    const: mediatek,mt6363-regulator
++    const: mediatek,mt6373-regulator
 +
 +  reg:
 +    maxItems: 1
++
++  vsys-vbuck0-supply:
++    description: Input supply for vbuck0
 +
 +  vsys-vbuck1-supply:
 +    description: Input supply for vbuck1
@@ -146,42 +148,38 @@ index 000000000000..4f79d4f81d49
 +  vsys-vbuck7-supply:
 +    description: Input supply for vbuck7
 +
-+  vsys-vs1-supply:
-+    description: Input supply for vs1
++  vsys-vbuck8-supply:
++    description: Input supply for vbuck8
 +
-+  vsys-vs2-supply:
-+    description: Input supply for vs2
-+
-+  vsys-vs3-supply:
-+    description: Input supply for vs3
++  vsys-vbuck9-supply:
++    description: Input supply for vbuck9
 +
 +  vs1-ldo1-supply:
-+    description: Input supply for va15, vio0p75, vm18, vrf18, vrf-io18
-+
-+  vs1-ldo2-supply:
-+    description: Input supply for vcn15, vio18, vufs18
++    description: Input supply for vant18, vaud18, vcn18io
 +
 +  vs2-ldo1-supply:
-+    description: Input supply for vsram-cpub, vsram-cpum, vrf12, vrf13, vufs12
-+
-+  vs2-ldo2-supply:
-+    description: Input supply for va12-1, va12-2, vcn13, vsram-cpul
++    description: Input supply for vrf12-aif, vrf13-aif
 +
 +  vs3-ldo1-supply:
-+    description: Input supply for vsram-apu, vsram-digrf, vsram-mdfe
-+
-+  vs3-ldo2-supply:
-+    description: Input supply for vsram-modem, vrf0p9
++    description: Input supply for vrf09-aif, vsram-digrf-aif
 +
 +  vsys-ldo1-supply:
-+    description: Input supply for vaux18, vemc, vtref18
++    description: Input supply for vcn33-1, vcn33-2, vmc
++
++  vsys-ldo2-supply:
++    description:
++      Input supply for vaux18, vcn33-3, vefuse, vfp, vibr, vio28, vtp, vusb
++
++  vsys-ldo3-supply:
++    description: Input supply for vmch, vmch-eint-high/low
 +
 +patternProperties:
-+  "^v(buck[1-7]|s[1-3])$":
-+    description: Buck regulators
++  "^v(ant|aud|aux)18$":
++    $ref: "#/$defs/ldo-common"
++
++  "^vbuck[0-9]$":
 +    type: object
 +    $ref: regulator.yaml#
-+    unevaluatedProperties: false
 +    properties:
 +      regulator-allowed-modes:
 +        description: |
@@ -202,26 +200,18 @@ index 000000000000..4f79d4f81d49
 +        maxItems: 3
 +        items:
 +          enum: [ 0, 1, 2, 3 ]
++    unevaluatedProperties: false
 +
-+  "^va(12-1|12-2|15)$":
++  "^v(cn18io|cn33-[123]|efuse|fp|tp|ibr|io28|sram-digrf-aif|usb)$":
 +    $ref: "#/$defs/ldo-common"
 +
-+  "^v(aux|m|rf-io|tref)18$":
++  "^vmc(h)?$":
 +    $ref: "#/$defs/ldo-common"
 +
-+  "^v(cn13|cn15|emc)$":
++  "^vmch-eint-(low|high)$":
 +    $ref: "#/$defs/ldo-common"
 +
-+  "^vio(0p75|18)$":
-+    $ref: "#/$defs/ldo-common"
-+
-+  "^vrf(0p9|12|13|18)$":
-+    $ref: "#/$defs/ldo-common"
-+
-+  "^vsram-(apu|cpub|cpum|cpul|digrf|mdfe|modem)$":
-+    $ref: "#/$defs/ldo-common"
-+
-+  "^vufs(12|18)$":
++  "^vrf(09|12|13|18|io18)-aif$":
 +    $ref: "#/$defs/ldo-common"
 +
 +$defs:
