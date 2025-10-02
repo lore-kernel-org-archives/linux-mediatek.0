@@ -4,69 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7EEDCAC5B8
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Oct 2025 10:34:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC032CAC5B0
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Oct 2025 11:42:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k3OI8dqzCXAlrwcNBsODFWErW6N73sg9XsAnuc/ZS70=; b=JVNJqbyUXF9nDohD81DpIHgbZa
-	6sf1CTalNbl7wCkslH1wzo8Qdy+MPJMtkSuE1sdHpZfC63RvWzBLEDICO0x4+dDZWboft8kHy1mdh
-	flu5RYCZGXYhSDD2HQD2VsV6yLCeeLAcgxyXEwwty2Ex5AKeMgxFlsYO7+ILxKquy+cY7H90iBN1h
-	Pp4TBOSUB/pn5d3kyNAJdppIm/cAOIuOKjnZQB6rDAT3U9u1lepJ5jXCr5MmOa8iboK/2cKcWOhyY
-	2NKlxdr+WtkTRSObaDTKfGa5YVFbiAXCJypt6p/kTQ0px3GW9zcMW5nwtjFYZ8OoQrLuB18biv8Y1
-	p/d1DgJQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vbNFbdJYlLnZG2wACTOj7jBkUXMZiUzzUteZi3K/WGk=; b=YiQ0y7yWzFzgK9gI09xS3z53Wv
+	/xQQ575I/IYm8pTldKC3f50OfT1dJvK51boJriO+b2/4h5rFYfAxmM/W9jPvTRpucXSOZ3ZGnBU1U
+	xBZUmWzpU4HuDuMqgdBUvuFOJ8pvKM/KS3b8I2o0pFdzfvruqD1rqNasSREhb8tcDHksFVssC2qtf
+	mkNqoj7z0Gf75ybQ1wJoNtvqt5+lGS6S+Jr8snTIl9tNrwDmG8ZM/v9kLVozkofS4vL1AliJOjOQc
+	koc3wK+bS05EGMQUpMCLFGNuo1VKTYL7luJFN8YUCTGJjg1hHOiw4tK7s3t9HLTPDRZ+Lg9KYdLrV
+	Jtcs5VEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4GdU-0000000AHFl-3JkC;
-	Thu, 02 Oct 2025 10:34:08 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1v4Hi3-0000000AO0o-0kC7;
+	Thu, 02 Oct 2025 11:42:55 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4GdR-0000000AHDw-40Gu;
-	Thu, 02 Oct 2025 10:34:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1759401243;
-	bh=yCHwgWNVGCTxuuG33TUZ1dUtpx+S65GKZJdMcIKh/u4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=FEqpewgygAdLWN4GejD4G3au5APVkAWwxzYwAhqQsX2cH/YoAk3f9fY4fY3gNKWq5
-	 OVvREIT4CCMYz/9wa9KCofWUZPRRK+brp6ezfunnU6T7wPHotA8CkgpAiTSSVSw/jq
-	 qvK+7tE73h/XLy2gaKlozS55gI4oU6ecw2ugERVwWAyXATBFrDomxfL5myXbZQWjYt
-	 2acwSwCEtPjjA2SUqtXq31uNWhSukDtRhzmy+ed45eUe1PzL+uxWFgxwxqg57LqSMN
-	 QLgxCy3BghLFGm7kaDyXI7uqPkJnHo7QlpANJ+3eu7qUcFDryOg82GTlTQFqYFdzQb
-	 5K0eO1mkRU8SQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C0FED17E02B0;
-	Thu,  2 Oct 2025 12:34:02 +0200 (CEST)
-Message-ID: <e584b589-e9f0-48cf-9e75-a6ed64d9f7a3@collabora.com>
-Date: Thu, 2 Oct 2025 12:34:02 +0200
+	id 1v4Hi1-0000000AO0W-1rkS;
+	Thu, 02 Oct 2025 11:42:53 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 94A9263DD8;
+	Thu,  2 Oct 2025 11:42:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D3B83C4CEFC;
+	Thu,  2 Oct 2025 11:42:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1759405372;
+	bh=vbNFbdJYlLnZG2wACTOj7jBkUXMZiUzzUteZi3K/WGk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=dXf5HugE2M/1uw3eIrVJdnXIOaGbLjiyduT4zq89pe0c9hylUVCAqHD5fjitAzcuB
+	 6mAnIDaRYASpySLAhtVXPfY6LszYliFh8id6SuSjfQzJec0JWX54dr3gIzF411Xtcm
+	 JXe509xlNkL8dC57yFEm7OVd545/1NZ+fyWecn4o5hUUN6JydaVLnOBeoc7z0ZtKhq
+	 ktIn261RjE6P5OEdqnQE/O51+K16n2xGHpVhhUnYjkFVks4zcWKXmV/T6ASLQkoZEN
+	 3yuY15Q110BLgK0oHcXF0PBghnVUt0gQuz+0Sl59GOZYAKnhRJueAVThQl6J3IyEFx
+	 BsJ2WcJ6QLqvQ==
+Date: Thu, 2 Oct 2025 12:42:47 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+Cc: angelogioacchino.delregno@collabora.com, conor+dt@kernel.org,
+	krzk+dt@kernel.org, lgirdwood@gmail.com, matthias.bgg@gmail.com,
+	robh@kernel.org, devicetree@vger.kernel.org, kernel@collabora.com,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-sound@vger.kernel.org
+Subject: Re: [PATCH v3] dt-bindings: ASoC: Convert MediaTek RT5650 codecs
+ bindings to DT schema
+Message-ID: <83df4958-8cdc-4ec4-a77a-0f6132513664@sirena.org.uk>
+References: <20251001183517.83278-1-ariel.dalessandro@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 2/2] mailbox: mediatek: Add mtk-vcp-mailbox driver
-To: Jjian Zhou <jjian.zhou@mediatek.com>,
- Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Chen-Yu Tsai <wenst@chromium.org>
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20251002084204.15898-1-jjian.zhou@mediatek.com>
- <20251002084204.15898-3-jjian.zhou@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20251002084204.15898-3-jjian.zhou@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251002_033406_161254_26307878 
-X-CRM114-Status: UNSURE (   5.96  )
-X-CRM114-Notice: Please train this message.
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="TE5evtEICq1wpIvP"
+Content-Disposition: inline
+In-Reply-To: <20251001183517.83278-1-ariel.dalessandro@collabora.com>
+X-Cookie: idleness, n.:
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,13 +73,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 02/10/25 10:41, Jjian Zhou ha scritto:
-> Add mtk-vcp-mailbox driver to support the communication with
-> VCP remote microprocessor.
-> 
-> Signed-off-by: Jjian Zhou <jjian.zhou@mediatek.com>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+--TE5evtEICq1wpIvP
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
+On Wed, Oct 01, 2025 at 03:35:17PM -0300, Ariel D'Alessandro wrote:
+> Convert the existing text-based DT bindings for Mediatek MT8173 RT5650
+> codecs to a DT schema.
 
+Please submit patches using subject lines reflecting the style for the
+subsystem, this makes it easier for people to identify relevant patches.
+Look at what existing commits in the area you're changing are doing and
+make sure your subject lines visually resemble what they're doing.
+There's no need to resubmit to fix this alone.
+
+--TE5evtEICq1wpIvP
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmjeZTYACgkQJNaLcl1U
+h9CNRQgAgB0/gZ+KlQcFzodFTVNysydvUs64RjVNx19lW3i4SQf/GsUktr4RAh9g
+9fM6ZQz7A8jXbMTRxjR6N+/ePk0Fi0UA+l68gKCNAA05qsLW/8+BQ+reEVHQ9lIi
+CeSYhmUTlX3qcE7AM/bhjSPJxyEqCQM+hDt3Hwj7FYICOD+S1djW7oKo+sHmVsYN
+Lwrxb3cL5cLE2ySupwT6rACvXkA3N969/9FkJI33fPBPM5gSdrxRcmEzxU9qlhQg
+Tm7qISufYk0OjvRcd3+Nm6l2YNrbfolcFyCKWeM2lbPVd17Ryb2E0ft4F71DhL/y
+6n1IvdgVe8vNJ7NEGDu1SYQctIoenw==
+=0b63
+-----END PGP SIGNATURE-----
+
+--TE5evtEICq1wpIvP--
 
