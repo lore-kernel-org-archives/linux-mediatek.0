@@ -4,61 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC032CAC5B0
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Oct 2025 11:42:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E359CCAC5B8
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Oct 2025 12:59:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vbNFbdJYlLnZG2wACTOj7jBkUXMZiUzzUteZi3K/WGk=; b=YiQ0y7yWzFzgK9gI09xS3z53Wv
-	/xQQ575I/IYm8pTldKC3f50OfT1dJvK51boJriO+b2/4h5rFYfAxmM/W9jPvTRpucXSOZ3ZGnBU1U
-	xBZUmWzpU4HuDuMqgdBUvuFOJ8pvKM/KS3b8I2o0pFdzfvruqD1rqNasSREhb8tcDHksFVssC2qtf
-	mkNqoj7z0Gf75ybQ1wJoNtvqt5+lGS6S+Jr8snTIl9tNrwDmG8ZM/v9kLVozkofS4vL1AliJOjOQc
-	koc3wK+bS05EGMQUpMCLFGNuo1VKTYL7luJFN8YUCTGJjg1hHOiw4tK7s3t9HLTPDRZ+Lg9KYdLrV
-	Jtcs5VEA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=bnNp+Qctegu2HELmtHmiLa0Yy0boHIPCdZG0VOVPl7w=; b=HmyiXYaXI23hZu
+	eI7QLFgY5T+1hFIPGj73KDm3wYvsjGYClh2LOJY9FPc86eWN9grfu6LQtGHwW1g8Wi31S/vzk5ZrU
+	DdhHg+RFPm+14Mcflj9O4GYbQt7v3wuSp4js9b9IslZkQff5vtQLjZoGTd+GMYZGIwsd/EN8FMhGN
+	Ej9mrmIJsQbFpsOQXMShyNwwQi9HwOGowjygt/ErI9a6bJ/7chmLpwDn4YaDAs1bcZ9vriscravOb
+	DaK+Tz/h2hQErFn1lA2kiFJCemowbeMcsAwFwht9r63Qfd5tgzns2UkVhUogA0RcMjasi9iv7QndG
+	pQC7nrEAy3eJm2e022yA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4Hi3-0000000AO0o-0kC7;
-	Thu, 02 Oct 2025 11:42:55 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1v4Itl-0000000AUpE-2u1I;
+	Thu, 02 Oct 2025 12:59:05 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4Hi1-0000000AO0W-1rkS;
-	Thu, 02 Oct 2025 11:42:53 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 94A9263DD8;
-	Thu,  2 Oct 2025 11:42:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D3B83C4CEFC;
-	Thu,  2 Oct 2025 11:42:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1759405372;
-	bh=vbNFbdJYlLnZG2wACTOj7jBkUXMZiUzzUteZi3K/WGk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=dXf5HugE2M/1uw3eIrVJdnXIOaGbLjiyduT4zq89pe0c9hylUVCAqHD5fjitAzcuB
-	 6mAnIDaRYASpySLAhtVXPfY6LszYliFh8id6SuSjfQzJec0JWX54dr3gIzF411Xtcm
-	 JXe509xlNkL8dC57yFEm7OVd545/1NZ+fyWecn4o5hUUN6JydaVLnOBeoc7z0ZtKhq
-	 ktIn261RjE6P5OEdqnQE/O51+K16n2xGHpVhhUnYjkFVks4zcWKXmV/T6ASLQkoZEN
-	 3yuY15Q110BLgK0oHcXF0PBghnVUt0gQuz+0Sl59GOZYAKnhRJueAVThQl6J3IyEFx
-	 BsJ2WcJ6QLqvQ==
-Date: Thu, 2 Oct 2025 12:42:47 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-Cc: angelogioacchino.delregno@collabora.com, conor+dt@kernel.org,
-	krzk+dt@kernel.org, lgirdwood@gmail.com, matthias.bgg@gmail.com,
-	robh@kernel.org, devicetree@vger.kernel.org, kernel@collabora.com,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-sound@vger.kernel.org
-Subject: Re: [PATCH v3] dt-bindings: ASoC: Convert MediaTek RT5650 codecs
- bindings to DT schema
-Message-ID: <83df4958-8cdc-4ec4-a77a-0f6132513664@sirena.org.uk>
-References: <20251001183517.83278-1-ariel.dalessandro@collabora.com>
+	id 1v4Iti-0000000AUnV-2VLn;
+	Thu, 02 Oct 2025 12:59:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1759409939;
+	bh=OY6KJ1cnrmSQKTHuQpxnxgR86H+8o7i/jX5qg0r50as=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=GgnZDdYjMGacTTJFQjyv44CoQO3sdnIZbfa7BdrzLSGTYhg3CWOrFw/QrWmj7fEi5
+	 MDhTlaFDadOU0FL+ZtmmAikssvsq1n0H7+vH5h+n/IMh7+NoA+aqdkVVLOBosmbJnQ
+	 H8i5ntqnyAHsRJHT/mE0zMgm5mZSYjUkupojZ/Y+h/cHgmwEifAfi5R8AIiONWyGFK
+	 29swS5AoHj1tVM/jPgnNkcp0Eskg61i8VS6jmkimmbKBgYlys9RbLIgz5/WFyuMdxO
+	 ETg8P/Y37uG7ILYFRHzN8N1rSWQW4b6q+cpEDnS90GrJZdDXWd/lTGDEPr6IJgAfG6
+	 Q8nIarGZYn81w==
+Received: from laura.lan (unknown [IPv6:2001:b07:646b:e2:4c71:ac9f:71a:857])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: laura.nao)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6135917E0AC3;
+	Thu,  2 Oct 2025 14:58:58 +0200 (CEST)
+From: Laura Nao <laura.nao@collabora.com>
+To: laura.nao@collabora.com
+Subject: Re: [PATCH v3 0/9] Add thermal sensor driver support for Mediatek MT8196
+Date: Thu,  2 Oct 2025 14:57:46 +0200
+Message-Id: <20251002125746.107012-1-laura.nao@collabora.com>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20250804133035.309990-1-laura.nao@collabora.com>
+References: <20250804133035.309990-1-laura.nao@collabora.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="TE5evtEICq1wpIvP"
-Content-Disposition: inline
-In-Reply-To: <20251001183517.83278-1-ariel.dalessandro@collabora.com>
-X-Cookie: idleness, n.:
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251002_055902_817209_790459A2 
+X-CRM114-Status: GOOD (  14.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,38 +68,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: andrew-ct.chen@mediatek.com, lala.lin@mediatek.com, rafael@kernel.org, kernel@collabora.com, bchihi@baylibre.com, robh@kernel.org, nfraprado@collabora.com, daniel.lezcano@linaro.org, rui.zhang@intel.com, colin.i.king@gmail.com, devicetree@vger.kernel.org, conor+dt@kernel.org, arnd@arndb.de, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com, linux-kernel@vger.kernel.org, srini@kernel.org, u.kleine-koenig@baylibre.com, krzk+dt@kernel.org, lukasz.luba@arm.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 8/4/25 15:30, Laura Nao wrote:
+> This patch series extends the MediaTek LVTS thermal driver to support the
+> MT8196 SoC.
+>
+> MT8196 requires a different implementation of the lvts_temp_to_raw()
+> function.
+>
+> To support this, the series introduces:
+>
+> - A new struct lvts_platform_ops to allow platform-specific
+>   conversion logic between raw sensor values and temperature
+> - A variant of the lvts_temp_to_raw() implementation
+> - Platform data and controller definitions for MT8196
+>
+> Link to v2: https://lore.kernel.org/all/20250730152128.311109-1-laura.nao@collabora.com/
+>
+> Changes in v3:
+> - Make ops in struct lvts_data a pointer to const struct lvts_platform_ops
+> - Changed mediatek,mt8188-efuse const entry in eFuse binding to an enum
+> with mediatek,mt8196-efuse and mediatek,mt8188-efuse, dropped mediatek,mt8196-efuse
+> const entry
 
---TE5evtEICq1wpIvP
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Hello,
 
-On Wed, Oct 01, 2025 at 03:35:17PM -0300, Ariel D'Alessandro wrote:
-> Convert the existing text-based DT bindings for Mediatek MT8173 RT5650
-> codecs to a DT schema.
+Following up on this patch series to see if there’s any further 
+feedback. I’ve verified that it still applies cleanly on 
+linux-pm/thermal and next-20250929.
 
-Please submit patches using subject lines reflecting the style for the
-subsystem, this makes it easier for people to identify relevant patches.
-Look at what existing commits in the area you're changing are doing and
-make sure your subject lines visually resemble what they're doing.
-There's no need to resubmit to fix this alone.
+Best,
 
---TE5evtEICq1wpIvP
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmjeZTYACgkQJNaLcl1U
-h9CNRQgAgB0/gZ+KlQcFzodFTVNysydvUs64RjVNx19lW3i4SQf/GsUktr4RAh9g
-9fM6ZQz7A8jXbMTRxjR6N+/ePk0Fi0UA+l68gKCNAA05qsLW/8+BQ+reEVHQ9lIi
-CeSYhmUTlX3qcE7AM/bhjSPJxyEqCQM+hDt3Hwj7FYICOD+S1djW7oKo+sHmVsYN
-Lwrxb3cL5cLE2ySupwT6rACvXkA3N969/9FkJI33fPBPM5gSdrxRcmEzxU9qlhQg
-Tm7qISufYk0OjvRcd3+Nm6l2YNrbfolcFyCKWeM2lbPVd17Ryb2E0ft4F71DhL/y
-6n1IvdgVe8vNJ7NEGDu1SYQctIoenw==
-=0b63
------END PGP SIGNATURE-----
-
---TE5evtEICq1wpIvP--
+Laura
 
