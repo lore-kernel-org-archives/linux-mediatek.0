@@ -4,77 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16B72CCA471
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Oct 2025 13:50:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFEB0CAC5B0
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Oct 2025 14:01:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=7cyDKQoLb5v05sCvUle4+p2qhZB8eTTDBt0WH24rd9U=; b=jMxm9qTFmpQrj4OzFPtwVrUvOK
-	RpeHLdpKbtCTePY4ILyTZC+dyrLypfZTwkkO9P+myPaqv8ehCbD/iP0QfqCdM1HcXOT0IAtnIHl6y
-	Y8HVlOGcKkjWds9PkxFmYVY7maE88xrNDi4BVQSTzAHeW0nH5Qfjq07NQa76iTmzZhKjifKM9reaN
-	IqmyGGOUmDr47FpoFqzGy/5GcvcfKmrsq0BEKQqsxypRrHaCya+GT+8ku/wNVdReptIdPGxhuQnE7
-	7PGr6iHp3sZ9iTUfArmqEg823vSyEa2Mipk0bSH7i275bFKkGIjzFRr/SRagg7EtitA8PHoqgggLI
-	s46bVCGQ==;
+	bh=d8nA96xwr34cLO0GbWv9spU6pHzjrky3Sx5bHtvE/Hs=; b=cAxGSwK1dKYs6y9fBPJc8Xyw2n
+	J/Iswc3oqszFUW1IJwJv4KsqwNPm1XI4wqBe2OVlToXLSMjxADXwY4bkHO2LNPyUtffqIRVyqa3Vy
+	PgF8ErrRLFG2JBTjR+s/1cC0tedoAKoUgO7xQdZR5Nyu8eCD1PoJxx1+uxVMblDoeDR0uwbC6Q/uD
+	e4dgZF+R77Tv0jEHXyglodAmXRjdOB24Zdth8KGyb3Bon3qwWwam0jZa1gNJ7i0WLrUfjTxomL65t
+	Il7aBioLfXTyWP2SP7AemLk6pWlONJeZNNfI6XpadtvLnhBccg2gee+KM7uA7G13T4SyqQH/JyTef
+	ZOqj12sQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4gAr-0000000CUYu-3BsT;
-	Fri, 03 Oct 2025 13:50:17 +0000
+	id 1v4gLi-0000000CVWg-1Prd;
+	Fri, 03 Oct 2025 14:01:30 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4gAo-0000000CUY9-29Vu;
-	Fri, 03 Oct 2025 13:50:16 +0000
+	id 1v4gLf-0000000CVV4-19c7;
+	Fri, 03 Oct 2025 14:01:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1759499411;
-	bh=APXL16u9DtsmEsPU93iOfNZjpSUSe6UPagw99C/Plzg=;
+	s=mail; t=1759500085;
+	bh=cPM9JXOFF7ibYCync3LVv1ejPvu2H2nbyMWY+uEM8fU=;
 	h=From:Date:Subject:To:Cc:From;
-	b=Ggt9SLWpKqSfaRytZouU7I7WygLTtSOqywnoCOk1auGHLUReQIj6aWCgHQ8ccQYfm
-	 aDhHB5YCN3kY0RqjqX+g0p6FgLxWrIdvkuk9UQ0gILn276vmRRTHcJ6La+qk1OXbzl
-	 tAjZ8z+1MVbys4VR4G2+QpbJSpHJqr2OqCVq2FHoDPlyVFJ+XRjXyghYX/fHsM2HZP
-	 KXc5dnW+Mhqejly3DABMqGtJ6NwReWGRyk0Jsg2IsKgQrdc97h89Eezs/dYNcdsOeS
-	 /ZaLUMMp1otn1oxWMsMB39tbuIYM+Lvm0ET409e5MlCrY+0l0cPlOV4aEawTOFOl/H
-	 rQakgarywY3yg==
+	b=Jqn+Dkpm/6ZZ4hoK26JhVgFO+BgPcu2yKhvOdOLJ9s4p64cRHMjPyg067uVA4p2xP
+	 YC216rYbMMlz2URqwyzEmfm2aSBkto2O8EuwaxFa2xjJDul5gkc9ABYFguXOMPdaNE
+	 bMMsu4RWd+HpC99KBXa1+w6oEBaaP4YlC9suVWD6C1swgsFKU4EW9rfyHBRs4Ts0tB
+	 Nb0afsfdenqo6Ld2bNsVWB4QIMZouhkcgOLtKa2Ve8mGrH7hemRcCEz2xVfbv0ikVz
+	 U9U2TcbUayoEgpSQDKZ1Zdex9BrgoZqiCQLpwU3zSFdxsMZ/SRwINS2ekvj8l0IMxl
+	 1y83eqj3Rb17Q==
 Received: from yukiji.home (lfbn-idf1-1-2269-27.w92-151.abo.wanadoo.fr [92.151.67.27])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8604917E00AC;
-	Fri,  3 Oct 2025 15:50:11 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9A6AF17E00AC;
+	Fri,  3 Oct 2025 16:01:24 +0200 (CEST)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Fri, 03 Oct 2025 15:48:49 +0200
-Subject: [PATCH] pinctrl: mediatek: mt8189: align register base names to
+Date: Fri, 03 Oct 2025 16:00:28 +0200
+Subject: [PATCH] pinctrl: mediatek: mt8196: align register base names to
  dt-bindings ones
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251003-fix-mt8189-pinctrl-regnames-v1-1-408a2531b127@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAEDU32gC/zWNQQrCMBBFrxJm7UASG2l7FekipmMdMGmdRCmU3
- t1gcfk+n/c2yCRMGXq1gdCHM8+pgjkpCA+fJkIeK4PV1hmtz3jnFWNpTdvhwikUeaLQlHykjMH
- psaHmElxnoRoWoXr/2a/DwUKvd42UY4Sbz4RhjpFLrxKtBf8hGPb9C78AvPqeAAAA
-X-Change-ID: 20251003-fix-mt8189-pinctrl-regnames-c50d4e46c592
+Message-Id: <20251003-fix-mt8196-pinctrl-regnames-v1-1-4d22031140f0@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAPvW32gC/zWNywrCMBBFfyXM2oE8sNb+inQR07EOmLROUimU/
+ rvB4vJcLudskEmYMnRqA6EPZ55SBXNSEJ4+jYQ8VAar7dlo7fDBK8bSmmuDM6dQ5IVCY/KRMjZ
+ 6cLq9uOCtg2qYher9Z7/1Bwu9lxopxwh3nwnDFCOXTiVaC/5D0O/7F5BslyeeAAAA
+X-Change-ID: 20251003-fix-mt8196-pinctrl-regnames-60d30873ca23
 To: Sean Wang <sean.wang@kernel.org>, 
  Linus Walleij <linus.walleij@linaro.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Cathy Xu <ot_cathy.xu@mediatek.com>
+ Cathy Xu <ot_cathy.xu@mediatek.com>, Guodong Liu <guodong.liu@mediatek.com>
 Cc: kernel@collabora.com, linux-mediatek@lists.infradead.org, 
  linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, 
  Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1759499411; l=1688;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1759500084; l=1688;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=APXL16u9DtsmEsPU93iOfNZjpSUSe6UPagw99C/Plzg=;
- b=FtEYOCuxQadnGf2/o9O5sK78bMhzTIAs8Hdkmjhzw9XdolUDhujJGHWtbD/L0lo/zU/U1os8+
- xnXmI+K1GgUApnqB6mIta4ahvdP9cGxQllRifnouOgxj29wqyZLzSSQ
+ bh=cPM9JXOFF7ibYCync3LVv1ejPvu2H2nbyMWY+uEM8fU=;
+ b=JXCauQA7P83lu0MWupp+csOkf8/00iSvFsB4NG3QcNCOYDGebAwMM4pGIw8azXZaBdIdsbgz4
+ 6zaoOSPcvTtATRzWZCKGcIjBG96I2R03fKa4898kgQb6oyAQafqHvD7
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251003_065014_729936_14486B95 
-X-CRM114-Status: GOOD (  10.84  )
+X-CRM114-CacheID: sfid-20251003_070127_478573_E706C15D 
+X-CRM114-Status: GOOD (  10.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,40 +89,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mt8189-pinctrl driver requires to probe that a device tree uses
-in the device node the same names than mt8189_pinctrl_register_base_names
+The mt8196-pinctrl driver requires to probe that a device tree uses
+in the device node the same names than mt8196_pinctrl_register_base_names
 array. But they are not matching the required ones in the
-"mediatek,mt8189-pinctrl" dt-bindings, leading to possible dtbs check
-issues. The mt8189_pinctrl_register_base_names entry order is also
-different.
-So, align all mt8189_pinctrl_register_base_names entry names and order
-on dt-bindings.
+"mediatek,mt8196-pinctrl" dt-bindings, leading to possible dtbs check
+issues.
+So, align all mt8196_pinctrl_register_base_names entries on dt-bindings
+ones.
 
-Fixes: a3fe1324c3c5 ("pinctrl: mediatek: Add pinctrl driver for mt8189")
+Fixes: f7a29377c253 ("pinctrl: mediatek: Add pinctrl driver on mt8196")
 Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- drivers/pinctrl/mediatek/pinctrl-mt8189.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ drivers/pinctrl/mediatek/pinctrl-mt8196.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8189.c b/drivers/pinctrl/mediatek/pinctrl-mt8189.c
-index 7028aff55ae5869880e9e9b14a3ad8cad6780bc6..f6a3e584588b0e8a1aafa9dca74c559974a57af5 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8189.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8189.c
-@@ -1642,9 +1642,7 @@ static const struct mtk_pin_reg_calc mt8189_reg_cals[PINCTRL_PIN_REG_MAX] = {
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8196.c b/drivers/pinctrl/mediatek/pinctrl-mt8196.c
+index 82a73929c7a0fc0fb841b5fe313d905c8478044a..dec957c1724b014522a70ed38057e162fe9e25af 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8196.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8196.c
+@@ -1801,10 +1801,8 @@ static const struct mtk_pin_reg_calc mt8196_reg_cals[PINCTRL_PIN_REG_MAX] = {
  };
  
- static const char * const mt8189_pinctrl_register_base_names[] = {
--	"gpio_base", "iocfg_bm0_base", "iocfg_bm1_base", "iocfg_bm2_base", "iocfg_lm_base",
--	"iocfg_lt0_base", "iocfg_lt1_base", "iocfg_rb0_base", "iocfg_rb1_base",
--	"iocfg_rt_base"
-+	"base", "lm", "rb0", "rb1", "bm0", "bm1", "bm2", "lt0", "lt1", "rt",
+ static const char * const mt8196_pinctrl_register_base_names[] = {
+-	"iocfg0", "iocfg_rt", "iocfg_rm1", "iocfg_rm2",
+-	"iocfg_rb", "iocfg_bm1", "iocfg_bm2", "iocfg_bm3",
+-	"iocfg_lt", "iocfg_lm1", "iocfg_lm2", "iocfg_lb1",
+-	"iocfg_lb2", "iocfg_tm1", "iocfg_tm2", "iocfg_tm3",
++	"base", "rt", "rm1", "rm2", "rb", "bm1", "bm2", "bm3",
++	"lt", "lm1", "lm2", "lb1", "lb2", "tm1", "tm2", "tm3",
  };
  
- static const struct mtk_eint_hw mt8189_eint_hw = {
+ static const struct mtk_eint_hw mt8196_eint_hw = {
 
 ---
 base-commit: 4a7bcf9e0158d9976525370ff84401a1e955bbee
-change-id: 20251003-fix-mt8189-pinctrl-regnames-c50d4e46c592
+change-id: 20251003-fix-mt8196-pinctrl-regnames-60d30873ca23
 
 Best regards,
 -- 
