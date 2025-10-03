@@ -4,79 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2EEDCCA471
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Oct 2025 10:11:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27F0ACAC5B0
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Oct 2025 12:20:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=rCWTJ5R2NCNypQCi7Ufs3WBbi/2erjgrmQN0rSx0Sy0=; b=rd8rNvzpH9wnMcfn35dmG+x0vv
-	Xtl8ikeWZDRqT2E3i2WIlhliHvGQM9fo4ce0c3EdIjj/USfJbTzJ9B4kBrGxuoTT/myoVzt4o/xBO
-	lj9Wjf6xWuhFOFnQloBpHpdJNGBZ3Z/lqbtOL8XCs4edkpZSY3HTA7yRoJO8XCDOzN6tBWjM+8peg
-	eUuybzROF/8p5XiQpPtwJ48UZnvLqBQI/d3u895A0fDqY/HV44U26+stEYOtXeNkDItsIEiwoMcnG
-	SD5uMdRr4f+BIJKkm5sDoSUMqno1SNHged5L9tNAFjI5xVg9FDBVjjpIGcYb3++x/tAt1NNVzwQ+z
-	HVSSIKiA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/zcAyMi7iRvz6DT9Srqlkg41Q0hHrE7Mrjqu6LbnD9w=; b=lxJfldfU0gmfUHSm8lIAsHgRRa
+	izClmfbVbSQ/H9dST2dFcTtIo1HkrVyoPqTE20+bKnOdBHWMKWfj0xcWb9BcGM8khA+IbzWVX77g9
+	ort8Tk2oMPGEb6o8WTgNqKvnE9T5aGNtgma8Byob1Uz9Fk1Hk9YeDFKJ4NH2ZxMYdVrebArIM1QYR
+	eUzO2FWfpZS3+n/syALfFUyOBSYuTxeS8RBs9LQOtVBXcShl/Kduw3FXnKWMbXTD89VkloLRfADtj
+	5ftxt13gmlic5yUqubbWb4+QAdz3hinfcDB7c5/OZjer746/PG5LoB56ujjyZZRSGt19n8EhTithQ
+	h4jkRc6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4cl7-0000000C17C-1T0q;
-	Fri, 03 Oct 2025 10:11:29 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1v4els-0000000CGuu-2DFR;
+	Fri, 03 Oct 2025 12:20:24 +0000
+Received: from fout-b6-smtp.messagingengine.com ([202.12.124.149])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4cl5-0000000C16d-1WbL
+	id 1v4elq-0000000CGu1-0dQP
 	for linux-mediatek@lists.infradead.org;
-	Fri, 03 Oct 2025 10:11:28 +0000
-X-UUID: 4e82b136a04111f0a52f393f94899d25-20251003
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=rCWTJ5R2NCNypQCi7Ufs3WBbi/2erjgrmQN0rSx0Sy0=;
-	b=aFjQ+8+K23QQagfDMzyJdeFAjFRVrCFh2a+pZWYhnFZ2f8O/0nKESEDyCWe4rTitAmTNL+2AhNHneZ5dOc+t9xzDuuPA+HbNcXsidTYQTI4s38rm6I5TGVEIhfGiUne/WHoWaVu+7PRTN0Xyt1kQdm9Uhf5eADByULzEiKtrXtU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:3992b300-a0d3-4ee1-9e84-265ef507cdbd,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:a9d874c,CLOUDID:a430f4f8-ebfe-43c9-88c9-80cb93f22ca4,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
-	0,EDM:-3,IP:nil,URL:0,File:130,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,
-	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 4e82b136a04111f0a52f393f94899d25-20251003
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 209002946; Fri, 03 Oct 2025 03:11:19 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.10; Fri, 3 Oct 2025 18:11:16 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.10 via Frontend Transport; Fri, 3 Oct 2025 18:11:16 +0800
-From: <peter.wang@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
-	<avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
-	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
-	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
-	<yi-fan.peng@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
-	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
-	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>, <bvanassche@acm.org>,
-	<dan.carpenter@linaro.org>
-Subject: [PATCH v1] ufs: core: Fix error handler host_sem issue
-Date: Fri, 3 Oct 2025 18:10:29 +0800
-Message-ID: <20251003101115.3642410-1-peter.wang@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	Fri, 03 Oct 2025 12:20:23 +0000
+Received: from phl-compute-02.internal (phl-compute-02.internal [10.202.2.42])
+	by mailfout.stl.internal (Postfix) with ESMTP id B6B191D0011A;
+	Fri,  3 Oct 2025 08:20:18 -0400 (EDT)
+Received: from phl-mailfrontend-02 ([10.202.2.163])
+  by phl-compute-02.internal (MEProxy); Fri, 03 Oct 2025 08:20:18 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=testtoast.com;
+	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
+	:from:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to; s=fm2; t=1759494018; x=
+	1759580418; bh=/zcAyMi7iRvz6DT9Srqlkg41Q0hHrE7Mrjqu6LbnD9w=; b=o
+	5JVBmwOsLt06LaLc/7ipjSZv7RQAjFNamo4e3XlCgqTI2egrt7VrC5ugFIzwXWAL
+	AnrvFwzCBxlky8G81UCp4mSLHUGF6wv42LAbQZg29sICy6PGXT8w2XuegQ5BL7OS
+	GYyzqFo4gHS6iyBj7tUB+DuhvIZBOzHigbAD66/Zo3dRYNqc8sHrWeaF9+vycx5X
+	AHHGly4KOd9Jj66wEMaQEmP0GzG+09ZeLl12XHrBeH1oXlA1a1auNpABp3rTM6vy
+	jKOb2qaS9lA36IleyQCXI0sRZuOLql5oDhXNtnuCoLZxei6Z81YPj3XLOyeNzGc3
+	bMUI26rlkBnMmkgeFadFA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
+	:x-me-sender:x-sasl-enc; s=fm2; t=1759494018; x=1759580418; bh=/
+	zcAyMi7iRvz6DT9Srqlkg41Q0hHrE7Mrjqu6LbnD9w=; b=m6oEZU1E72b1Gz5nA
+	ClcHGcxnvZkFlcAdjRRvDg0YSTByjQto/cFEHL9wqFBvIpWI4/poVv+0ytVYwtoU
+	lovBVsTsFhk7I27Bmi98XQUiQnT9YT4HfwkLJfrozRYT0NQzWMFiyrFld/yzsoBm
+	x/Nmz0XcRu8ZOBFjFeFP9tthq0w6Cky2ayLn8KHQZm2sKHoynvQcC9m2Bg2GuIcW
+	+zP+DD5QlTAQZTR8j4xP3UywEHzhFXJoujh/uA7SQ4IycSNZmg/M76kGfznNp/gp
+	9Obi+ac2xZv6s1DGl77sGdT0tZTcbELTJEpHHuEj0PzTBBq5VPPDOzcwNI7LYqHZ
+	e2Xzg==
+X-ME-Sender: <xms:gr_faMxhN-OatVnL2bpk2C9b8BbCfRrQNu1FfXkxQ5-rXpU8a145lQ>
+    <xme:gr_faItGRdkWeW_j3lE-vY6bvbMLedkdVjNFcZyL3C-DWTYVcwyESDaYfCekh-5GG
+    rRE0lgO2DlM0C3Ehtze2ZujQFraI1yDSOhNiFPYP72ZuWv4duC_>
+X-ME-Received: <xmr:gr_faOxa8TWJjcNq0dYuu2KXrcr2pqN4_ruyj6nAM-LLKPVXitdK8DxVbLPUNpxVH39mWVSY_LkURHhppFMgTe7QlUw>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdeggdekkeekkecutefuodetggdotefrod
+    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpuffrtefokffrpgfnqfghnecuuegr
+    ihhlohhuthemuceftddtnecunecujfgurhephffvvefufffkofgjfhgggfestdekredtre
+    dttdenucfhrhhomheptfihrghnucghrghlkhhlihhnuceorhihrghnsehtvghsthhtohgr
+    shhtrdgtohhmqeenucggtffrrghtthgvrhhnpeelfedtledvgffftdevudejudegkeetve
+    ejtefgkeduueejveejheefheevgfeiteenucffohhmrghinheprghlphhinhgvlhhinhhu
+    gidrohhrghenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhroh
+    hmpehrhigrnhesthgvshhtthhorghsthdrtghomhdpnhgspghrtghpthhtohepiedpmhho
+    uggvpehsmhhtphhouhhtpdhrtghpthhtoheprghllhgrnhdrfigrnhhgsehmvgguihgrth
+    gvkhdrtghomhdprhgtphhtthhopehmihhnghihvghnrdhhshhivghhsehmvgguihgrthgv
+    khdrtghomhdprhgtphhtthhopehlihhnuhigqdhfihhrmhifrghrvgeskhgvrhhnvghlrd
+    horhhgpdhrtghpthhtoheplhhinhhugidqmhgvughirghtvghksehlihhsthhsrdhinhhf
+    rhgruggvrggurdhorhhgpdhrtghpthhtohepshgrmhesghgvnhhtohhordhorhhgpdhrtg
+    hpthhtohepgihirghnghiihhgvuggvvhesghhmrghilhdrtghomh
+X-ME-Proxy: <xmx:gr_faLCNea9K211UiNqGzkynV2HJvBcKBHobrrVf8fJ9Wfck-2FScw>
+    <xmx:gr_faMeSfbmNEv37aYdOu_NE4X32vAUQ0-ZWdyt19g11pvsL4Fybfw>
+    <xmx:gr_faFm_0rsx5C6VC5ZodAZAF7il-RjCFmViDBAiVK9NrS0ySkKo-Q>
+    <xmx:gr_faDFzf-NFtoSrvBPlEH5R54kF-EbcT6LqecT3k1VD9-mTCq-yLA>
+    <xmx:gr_faFkn_svGOA1p3Th96qO8XCkBRC1N4PxzjT5poxEJiTss81QVHcqm>
+Feedback-ID: idc0145fc:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
+ 3 Oct 2025 08:20:15 -0400 (EDT)
+From: Ryan Walklin <ryan@testtoast.com>
+To: allan.wang@mediatek.com
+Cc: Mingyen.Hsieh@mediatek.com,
+	linux-firmware@kernel.org,
+	linux-mediatek@lists.infradead.org,
+	sam@gentoo.org,
+	xiangzhedev@gmail.com
+Subject: Re: Regression in linux-firmware-20250917 for mt7921e driver
+Date: Sat,  4 Oct 2025 01:19:27 +1300
+Message-ID: <20251003122000.7335-1-ryan@testtoast.com>
+X-Mailer: git-send-email 2.51.0
+In-Reply-To: <dda63a6b723d31f41e6e275ac7f38d31c6715fc8.camel@mediatek.com>
+References: <dda63a6b723d31f41e6e275ac7f38d31c6715fc8.camel@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251003_031127_413146_41596120 
-X-CRM114-Status: GOOD (  10.54  )
+X-CRM114-CacheID: sfid-20251003_052022_375581_E2449683 
+X-CRM114-Status: UNSURE (   4.37  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,56 +115,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Wang <peter.wang@mediatek.com>
+Hi,
 
-Fix the issue where host_sem is not released due to a new return
-path introduced in commit 'f966e02ae521'. Move the check for
-pm_op_in_progress before acquiring hba->host_sem to ensure proper
-semaphore handling. This fix prevents potential deadlocks and
-ensures that resources are correctly managed during error handling.
+I have a laptop with a mt7921e wifi chip (Lenovo Z13) and can confirm that firmware-20250917 prevents wifi from working, downgrading to the prior version from August or passing
 
-Fixes: f966e02ae521 ("scsi: ufs: core: Fix runtime suspend error deadlock")
-Reported-by: Dan Carpenter <dan.carpenter@linaro.org>
-Signed-off-by: Peter Wang <peter.wang@mediatek.com>
----
- drivers/ufs/core/ufshcd.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+"mt7921_common disable_clc=1"
 
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index 8185a7791923..9b1207dede64 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -6670,6 +6670,14 @@ static void ufshcd_err_handler(struct work_struct *work)
- 		 hba->saved_uic_err, hba->force_reset,
- 		 ufshcd_is_link_broken(hba) ? "; link is broken" : "");
- 
-+	ufshcd_rpm_get_noresume(hba);
-+	if (hba->pm_op_in_progress) {
-+		ufshcd_link_recovery(hba);
-+		ufshcd_rpm_put(hba);
-+		return;
-+	}
-+	ufshcd_rpm_put(hba);
-+
- 	down(&hba->host_sem);
- 	spin_lock_irqsave(hba->host->host_lock, flags);
- 	if (ufshcd_err_handling_should_stop(hba)) {
-@@ -6681,14 +6689,6 @@ static void ufshcd_err_handler(struct work_struct *work)
- 	}
- 	spin_unlock_irqrestore(hba->host->host_lock, flags);
- 
--	ufshcd_rpm_get_noresume(hba);
--	if (hba->pm_op_in_progress) {
--		ufshcd_link_recovery(hba);
--		ufshcd_rpm_put(hba);
--		return;
--	}
--	ufshcd_rpm_put(hba);
--
- 	ufshcd_err_handling_prepare(hba);
- 
- 	spin_lock_irqsave(hba->host->host_lock, flags);
--- 
-2.45.2
+restores functionality.
 
+Also reported to Alpine - https://gitlab.alpinelinux.org/alpine/aports/-/issues/17560
+
+Thanks,
+
+Ryan
 
