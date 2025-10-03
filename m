@@ -4,77 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAD56CAC5B0
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Oct 2025 16:15:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 064F9CCA471
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Oct 2025 18:16:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HQ3d8Ffh/1LgjQ6iaj4lMPycIAt2rbfoQUM0RcZ4GA8=; b=eCkYaReIk0PcHmnl9QmAbAW727
-	Y9Age/QAeiqw12vxE0vsZH6woDZtb1V6R++7U+lZkyrdpZc4Gq1psE1Y2MSjbQNzHh4ZuR1JRP5xp
-	r95L0ZPpmoh2e51O74rg4zzB17K6BgR4VdEy1jFyocYBsquJXP/JrSbJLTkYDRCXGKCYbkNL7g7V1
-	GMTirl+fGyMkU4CDP1h/FHDsilYSVDcH3rq1ayh2IBVxabvjEixvRitDZeyTtEMCQ18cSn7bOEOcw
-	EpaiEE927qaQ2m4RoavElgSQoJCo9G6/8ITuSUG37G14JdvdN2ILpyqw2ieWL1VHr7qIr7IxH3q6O
-	7NCgPxQg==;
+	bh=hA+2wesaVrYL13Ek9PytzgyCt01NNN1W3ZjSk7cfKyA=; b=E+5xo56r3WaUtWwvpvVLpwd1rq
+	R2tknheKDLpgmR7IuFmk8Jb7u54ctKd9Rd56AufSbFa7bDty46wUOpyL/RT0kCaKMYrPGLUyOBOAL
+	eZk6v/SBryo9MOXhKWs6pedTw/1IY8v3Rslk0wUM5UUb6VovGbvHLmW6eB5aEK6SAPtaLnwVdGKgx
+	lgPHGRzzhLyT3gcL67dlo8+QoxkzZk9SKmYMbPev+rKP7PmShGITuQxNoImz6u3BW3soay59LXetW
+	sLiHNg6TZT0JI4ILm6VSZjR9T3IjLrR6b9WrKf0AJkmbkE5RBcibSXfYQDdrg8+z93yd5hq546Sib
+	bxfOtwcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4iRl-0000000CiN3-3gvR;
-	Fri, 03 Oct 2025 16:15:53 +0000
-Received: from 003.mia.mailroute.net ([199.89.3.6])
+	id 1v4kK6-0000000Cuzo-3EyQ;
+	Fri, 03 Oct 2025 18:16:06 +0000
+Received: from mail-yx1-xb12f.google.com ([2607:f8b0:4864:20::b12f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4iRj-0000000CiMh-157n
+	id 1v4kK4-0000000CuyZ-0MId
 	for linux-mediatek@lists.infradead.org;
-	Fri, 03 Oct 2025 16:15:52 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 003.mia.mailroute.net (Postfix) with ESMTP id 4cdYg81fD7zlschR;
-	Fri,  3 Oct 2025 16:15:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1759508144; x=1762100145; bh=HQ3d8Ffh/1LgjQ6iaj4lMPyc
-	IAt2rbfoQUM0RcZ4GA8=; b=ueEWVnXleyFOJg3eWN4HTF7lirvGSa30gW3VV5v6
-	Hw5SMc/Y2OAgJ6em4olx8SeQ0ZnnWUenzURT5CTG01A9yEyHIYVg87Nu2LWQ/URz
-	0iTOsr0tV7N6hXlcvsCLUkYTyNlhkJx7SfabRxiblXFPCe1K7iMUzyzaqR0FUVr7
-	YuOyTYrj815urokiRIlBdOzqk1ao5+i+AHHxb69cS9oaT9pQOWf47zN5D1kcUTcT
-	fLgOaDcHMd4UlgPO/pfqPCXGH+6KyvBEw3GFXkgNj313UTWXJCur3Zuqag5uyObx
-	fIitvB3iQUyywgwe1LVE7m+iTMKX0RQjg/u4kZtro3TpkQ==
-X-Virus-Scanned: by MailRoute
-Received: from 003.mia.mailroute.net ([127.0.0.1])
- by localhost (003.mia [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id o9fEHU-0j7zU; Fri,  3 Oct 2025 16:15:44 +0000 (UTC)
-Received: from [100.119.48.131] (unknown [104.135.180.219])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 003.mia.mailroute.net (Postfix) with ESMTPSA id 4cdYfp47KzzlnfwY;
-	Fri,  3 Oct 2025 16:15:29 +0000 (UTC)
-Message-ID: <3e673104-d36a-4128-bb5c-a71093eda419@acm.org>
-Date: Fri, 3 Oct 2025 09:15:28 -0700
+	Fri, 03 Oct 2025 18:16:05 +0000
+Received: by mail-yx1-xb12f.google.com with SMTP id 956f58d0204a3-633bca5451cso2742722d50.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 03 Oct 2025 11:16:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1759515362; x=1760120162; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=hA+2wesaVrYL13Ek9PytzgyCt01NNN1W3ZjSk7cfKyA=;
+        b=JrhIqG4XNP9c1swHX504IxhFg+pDEbcPNbAikpCi6gsG0c61bIli0NcRIPh2RatPlL
+         W8n3eCJafFIUcmXESMdb9+2Ww3nwOXLUgGHLo8glnyDlcdI6G4FhdRQwgdeA6u8np5IA
+         OG6a3gBAvpSbJhVTqUje8d5LvoOOZm0KErYfKfGsdSprxMWsQrWyriDRmmHPaYo7nqTt
+         EMMVNyyfUPlW7sUumdJdyfYuXFTh19vtUK+BnTz1tP+9SDnOisxzD4jIIBvKlRyxzBJn
+         uhAwANZvQzz32oHXPG3BxX8sybBPIlwleqvRDpsvptNCmKDdw3IEgCUK2gl66JLhzzVT
+         POzQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1759515362; x=1760120162;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=hA+2wesaVrYL13Ek9PytzgyCt01NNN1W3ZjSk7cfKyA=;
+        b=dEPwhnxXiegXlNrM+0RfmOqbNjOEgeBJ5lkGsyPZzTSoC0RbOypDOSjGRrhSmpcubg
+         6UflryHxTR2+ggOiH6zoyHdtI97PtZVrgaMgnQ4MscHuAjm34ERjRZxNTlqIM2RnvHN1
+         DlwEJa3lfsgmAk/II5CcWjj0n1ko9QrTIoRySvla7o/4iN7siPunF8+VkQ4Ln9oZUBmm
+         jKqXjhxVw3r23CpowcAwwVL20nra//8Y8IqbFPXekgR8GUHstVffQSLVowibzDDfR/KD
+         DZD33ZHI64wWri/kN4aIk47WDucMUyJjU1VifvdZWa3sWsOyyg54eEynr5Oi2q9kMc1K
+         MK8g==
+X-Forwarded-Encrypted: i=1; AJvYcCUyg08ghMX6tWVctqLMWA8+Ny/bQ859pGwmrOeaJX3daoTWbAccCtd5uE8OEhA6BHKUgpGxmb8dNYdG2U88jA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyC5Tp/l3Lv0Ajh8Iu9Vj9xn+mkdfz93HyeOu86iv9bjTkOFPzq
+	rHhmtUgbMsG9gV78CIjpZlxZO+tnwozu/pRQ+o/TgSw8MLG+ndWkpCTZbEeL89oo9NcfXFjOOu5
+	49X8HzkZFPAmDGaXpRvHUUJB+waZOTig=
+X-Gm-Gg: ASbGncs9Kvze2SusfB+hK78UYj3qaK8qmYZib3067CcUQlZsCIUEdo+j5ztA/7erHv+
+	uC9n0YBuUO+7PjhGFl+v7uChtqwjSpvvSojWu/HiEj+TKBI2JpHFIt6r8hAwzzqta1y5jIDrlpy
+	/BSoAi+NE2tZMuZrbZlPXKFdCnXC34WhWCm1Iua4A1PG3Y2Q+/WCj+lbCMZQbJ5hWqDNmY9Dgns
+	F/Ut9Xm1Atm6F8UxmTr6LWkdZDJUXWBoEafMDAfmWKkCEpg7mofBYRfT5jAGHijH7hZ17i/J4yT
+	ze+v96+a1UqU6xDGbWRDlOGIGBTGGIU5
+X-Google-Smtp-Source: AGHT+IHcaFQJqVTztaB0e9RyZeNiAagOyj3g8KNYxpfdC0wTuijqki+QAQ/mSLPGzCBtgMgInYIWdXqQgPlyAlcpaNk=
+X-Received: by 2002:a05:690e:28d:b0:604:3849:89a8 with SMTP id
+ 956f58d0204a3-63b9a076118mr3027885d50.16.1759515362277; Fri, 03 Oct 2025
+ 11:16:02 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1] ufs: core: Fix error handler host_sem issue
-To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
- jejb@linux.ibm.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com,
- yi-fan.peng@mediatek.com, qilin.tan@mediatek.com, lin.gui@mediatek.com,
- tun-yu.yu@mediatek.com, eddie.huang@mediatek.com, naomi.chu@mediatek.com,
- ed.tsai@mediatek.com, dan.carpenter@linaro.org
-References: <20251003101115.3642410-1-peter.wang@mediatek.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20251003101115.3642410-1-peter.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20250929-mt8196-gpufreq-v5-0-3056e5ecf765@collabora.com> <20250929-mt8196-gpufreq-v5-4-3056e5ecf765@collabora.com>
+In-Reply-To: <20250929-mt8196-gpufreq-v5-4-3056e5ecf765@collabora.com>
+From: Chia-I Wu <olvaffe@gmail.com>
+Date: Fri, 3 Oct 2025 11:15:51 -0700
+X-Gm-Features: AS18NWBanN0MXtcDFrnukKn4J7dSEQIT7fLhFbzGJzYOporRHK4S0vyKzeHBSFc
+Message-ID: <CAPaKu7Tz9tw=fbz17kpPn1Pj_YsGRJZR9o28zkfiBgvxL3rdxg@mail.gmail.com>
+Subject: Re: [PATCH v5 4/7] mailbox: add MediaTek GPUEB IPI mailbox
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Boris Brezillon <boris.brezillon@collabora.com>, Jassi Brar <jassisinghbrar@gmail.com>, 
+	Chen-Yu Tsai <wenst@chromium.org>, Steven Price <steven.price@arm.com>, 
+	Liviu Dudau <liviu.dudau@arm.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Kees Cook <kees@kernel.org>, 
+	"Gustavo A. R. Silva" <gustavoars@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>, kernel@collabora.com, 
+	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-hardening@vger.kernel.org, 
+	linux-pm@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251003_091551_387828_45B458AD 
-X-CRM114-Status: GOOD (  11.49  )
+X-CRM114-CacheID: sfid-20251003_111604_134826_D966019B 
+X-CRM114-Status: GOOD (  20.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,49 +107,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/3/25 3:10 AM, peter.wang@mediatek.com wrote:
-> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-> index 8185a7791923..9b1207dede64 100644
-> --- a/drivers/ufs/core/ufshcd.c
-> +++ b/drivers/ufs/core/ufshcd.c
-> @@ -6670,6 +6670,14 @@ static void ufshcd_err_handler(struct work_struct *work)
->   		 hba->saved_uic_err, hba->force_reset,
->   		 ufshcd_is_link_broken(hba) ? "; link is broken" : "");
->   
-> +	ufshcd_rpm_get_noresume(hba);
-> +	if (hba->pm_op_in_progress) {
-> +		ufshcd_link_recovery(hba);
-> +		ufshcd_rpm_put(hba);
-> +		return;
-> +	}
-> +	ufshcd_rpm_put(hba);
+On Mon, Sep 29, 2025 at 12:47=E2=80=AFAM Nicolas Frattaroli
+<nicolas.frattaroli@collabora.com> wrote:
+>
+> The MT8196 SoC uses an embedded MCU to control frequencies and power of
+> the GPU. This controller is referred to as "GPUEB".
+>
+> It communicates to the application processor, among other ways, through
+> a mailbox.
+>
+> The mailbox exposes one interrupt, which appears to only be fired when a
+> response is received, rather than a transaction is completed. For us,
+> this means we unfortunately need to poll for txdone.
+>
+> The mailbox also requires the EB clock to be on when touching any of the
+> mailbox registers.
+>
+> Add a simple driver for it based on the common mailbox framework.
+>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Reviewed-by: Chia-I Wu <olvaffe@gmail.com>
+> ---
+>  drivers/mailbox/Kconfig             |  10 ++
+>  drivers/mailbox/Makefile            |   2 +
+>  drivers/mailbox/mtk-gpueb-mailbox.c | 318 ++++++++++++++++++++++++++++++=
+++++++
+>  3 files changed, 330 insertions(+)
+[...]
+> +static irqreturn_t mtk_gpueb_mbox_thread(int irq, void *data)
+> +{
+> +       struct mtk_gpueb_mbox_chan *ch =3D data;
+> +       u8 buf[GPUEB_MBOX_MAX_RX_SIZE] =3D {};
+nit: move to inside the if-block below.
+> +       int status;
 > +
->   	down(&hba->host_sem);
->   	spin_lock_irqsave(hba->host->host_lock, flags);
->   	if (ufshcd_err_handling_should_stop(hba)) {
-> @@ -6681,14 +6689,6 @@ static void ufshcd_err_handler(struct work_struct *work)
->   	}
->   	spin_unlock_irqrestore(hba->host->host_lock, flags);
->   
-> -	ufshcd_rpm_get_noresume(hba);
-> -	if (hba->pm_op_in_progress) {
-> -		ufshcd_link_recovery(hba);
-> -		ufshcd_rpm_put(hba);
-> -		return;
-> -	}
-> -	ufshcd_rpm_put(hba);
-> -
->   	ufshcd_err_handling_prepare(hba);
->   
->   	spin_lock_irqsave(hba->host->host_lock, flags);
-
-The purpose of hba->host_sem is to serialize power management
-operations, error handling and sysfs callbacks. Hence, I think that
-hba->host_sem should be held around the ufshcd_link_recovery() call
-and hence that the code block that is moved by this patch should not
-be moved.
-
-Thanks,
-
-Bart.
+> +       status =3D atomic_cmpxchg(&ch->rx_status, GPUEB_MBOX_FULL | GPUEB=
+_MBOX_BLOCKED,
+> +                               GPUEB_MBOX_FULL);
+> +       if (status =3D=3D (GPUEB_MBOX_FULL | GPUEB_MBOX_BLOCKED)) {
+> +               mtk_gpueb_mbox_read_rx(buf, ch);
+> +               writel(BIT(ch->num), ch->ebm->mbox_ctl + GPUEB_MBOX_CTL_I=
+RQ_CLR);
+> +               mbox_chan_received_data(&ch->ebm->mbox.chans[ch->num], bu=
+f);
+> +               atomic_set(&ch->rx_status, 0);
+> +               return IRQ_HANDLED;
+> +       }
+> +
+> +       return IRQ_NONE;
+> +}
 
