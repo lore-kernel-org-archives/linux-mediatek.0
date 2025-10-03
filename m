@@ -4,81 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59009CAC5B0
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Oct 2025 06:39:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D205CCAC5B0
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Oct 2025 08:09:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5BceyP132cCaj7UKIuavDpoanqHmQZGtxldRMNL/w/Q=; b=ykGxeOgEJAmEM9FBDSFSe0cS9y
-	n4o+7FJNT4PVoi1wlU0vs3m5w+/Ol30fIjYhZlNsqLL8mkbGG2zsfMBKrx7ZFouOWL8y5ZpNdiRuZ
-	Lz+bAWQzkBUz3N//3ihdcp6zLp1bALM2Cay4igvTQp9pmLDBKDdONTlSCSYuCu1VAelO+RZKgPkeM
-	TYNpnLUNYXCURhc6dIUSjVV/CtvCr5yxjQjfe6KxC4Snfvzjztwzi2fOZZBCVxFF0wrgFiV7Axi79
-	fYJm+KY4GfvWtB7Nmp98A1JfVKKUh8rwq7QeCbIWCFcO6B91NnwbW/Vy/kiegZt75cH7BTeU9LXWG
-	FNa0rzYQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=hhS+Ifei7tMzhG+IktzCTPlAHqpoGjdHL0NFGBDAyKQ=; b=dt1RjDcii6vUu33wG1YWAdvfLq
+	bs38orxZT+YBP7HJy+6F9C0JCWInqZSdPSngUd2hULwajtvOvWapeQkJLQuSJwj5OXb5P4AZCPjpL
+	YfbzGdOV57Uo22Ke01GTDF+se4GFOMU6iZHJF7dMPEcntdIWGRRQRTv3pKl+Hdn3ERbhojBjxrB3n
+	OE07eJcOPaqeYHuxu38Av7kFtHBvzA50aQ+GyWX458KSDmttHuHBTD69DKZt/uzPe5pPV7pPgcLUd
+	p2wr9AAd1z3uj4Iz6SFpV8/hnVN4cR5cLxsbJ91++8kfk0TYmjBarwkpG28wsiZxxZVuCOZLTcUUb
+	/xq5L1GA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4ZSB-0000000BkPV-2jb5;
-	Fri, 03 Oct 2025 06:39:43 +0000
-Received: from mgamail.intel.com ([198.175.65.13])
+	id 1v4aqm-0000000Br9S-1KTW;
+	Fri, 03 Oct 2025 08:09:12 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4ZS9-0000000BkOj-13aw;
-	Fri, 03 Oct 2025 06:39:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1759473581; x=1791009581;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=1udu7BCVdf/1HJxKb7sLZXkalgIJcCkVINf8u8yM/dI=;
-  b=kIB5dfxPeELhgX9MLA7QkiwTvVEJZ+ouHZ8otC4KFydWLwoSXzAGyn09
-   ombNTCEBDDspvacb6zebxEMgELoSqhj89NKLoXQqWe86R8OIbsIkYTxJk
-   H24lCftRfXscVmJ6hWTILHNclNG3vdIrdIx+qJ4upeKXH9hhu7qBx3WRt
-   PKLpMwYpIhJJL7j3W/2jRM5SPcIoOpu7alGr4tBT/tIkGz8ujpJhYvEmX
-   v8qqBSttMjZW5T85exD9xfebkdZ5mOYnGqmRFn0AMoUm2ZPbXE7jcK6G3
-   Km7BlNwDq46zElNH4D5vZ7B0qI3dlaUDSaHt4u0EK7GARC/VnjoMQk0ZR
-   Q==;
-X-CSE-ConnectionGUID: kV8vMPLDQWmNezRlHvhE5A==
-X-CSE-MsgGUID: 1hlCBRUlT8aKPnuLMTZYXQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11570"; a="72860286"
-X-IronPort-AV: E=Sophos;i="6.18,311,1751266800"; 
-   d="scan'208";a="72860286"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
-  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Oct 2025 23:39:39 -0700
-X-CSE-ConnectionGUID: gZ4GhqDhS+aj3/CLaF9nhQ==
-X-CSE-MsgGUID: FI2EvZm+S42jGXxwG/Rx9A==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.18,311,1751266800"; 
-   d="scan'208";a="179167487"
-Received: from lkp-server01.sh.intel.com (HELO 2f2a1232a4e4) ([10.239.97.150])
-  by fmviesa006.fm.intel.com with ESMTP; 02 Oct 2025 23:39:36 -0700
-Received: from kbuild by 2f2a1232a4e4 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1v4ZS1-0004NP-13;
-	Fri, 03 Oct 2025 06:39:33 +0000
-Date: Fri, 3 Oct 2025 14:38:48 +0800
-From: kernel test robot <lkp@intel.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org
-Cc: oe-kbuild-all@lists.linux.dev, lee@kernel.org, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, lgirdwood@gmail.com,
-	broonie@kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	kernel@collabora.com, wenst@chromium.org,
-	igor.belwon@mentallysanemainliners.org
-Subject: Re: [PATCH v7 4/9] regulator: Add support for MediaTek MT6363 SPMI
- PMIC Regulators
-Message-ID: <202510031435.HCIv3oqu-lkp@intel.com>
-References: <20251002090028.1796462-5-angelogioacchino.delregno@collabora.com>
+	id 1v4aqj-0000000Br8k-0Yg8;
+	Fri, 03 Oct 2025 08:09:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1759478946;
+	bh=6GfjdzBYXtQXVVzw5qbP/vPa3zyw2hMXgRM8SkcABNI=;
+	h=From:Date:Subject:To:Cc:From;
+	b=oICQE8tX3CqBblaW09lSMpOQUtAuCbJs6wfJzLVVSjgEoD5wfa3oC0Y3vuRsI/QF6
+	 u7LhLgWr8FZagjzt0PsH7JZTfW1DeRT/UTVddR0NQsNqAJble8hLgJe9WcvIFQUJpv
+	 Is0imdaLS5RurRtKUncJ18OwjumZeJovPone6Dr9Hffw5Sbs0CgwftDbRsRZBLh9Je
+	 QH2wfHhMtP9FljxC6F2TJTIUS4M2fP5jgwh0TCx+9EnvflmmDNQtTKJ53E88j5651g
+	 Jrf94DhxRhHMdp2X0Lf7mKc3JmfRSonCO7T4jIhhd++kA8ZmMCperfbVFnnTvBqTEj
+	 ivk8FpbpqM4dg==
+Received: from beast.luon.net (simons.connected.by.freedominter.net [45.83.240.172])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: sjoerd)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0043917E0B83;
+	Fri,  3 Oct 2025 10:09:05 +0200 (CEST)
+Received: by beast.luon.net (Postfix, from userid 1000)
+	id 902001066940D; Fri, 03 Oct 2025 10:09:05 +0200 (CEST)
+From: Sjoerd Simons <sjoerd@collabora.com>
+Date: Fri, 03 Oct 2025 10:08:28 +0200
+Subject: [PATCH] drm/mediatek: Fix refcounting in mtk_drm_get_all_drm_priv
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20251002090028.1796462-5-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20251003-mtk-drm-refcount-v1-1-3b3f2813b0db@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAHuE32gC/x2MWwqAIBAArxL73YLau6tEH5FrLZGFWgTS3ZM+h
+ 2EmgifH5KHPIji62fNhE8g8g3md7ELIOjEooSophMI9bKjdjo7MfFw2IAnTyFZ3RV1OkLIzGX7
+ +5TC+7wfuibDKYgAAAA==
+X-Change-ID: 20251002-mtk-drm-refcount-e0f718d9364a
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ CK Hu <ck.hu@mediatek.com>, Johan Hovold <johan@kernel.org>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ kernel@collabora.com, stable@vger.kernel.org, 
+ Sjoerd Simons <sjoerd@collabora.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251002_233941_333833_3A89C5C8 
-X-CRM114-Status: GOOD (  10.47  )
+X-CRM114-CacheID: sfid-20251003_010909_340563_76653B49 
+X-CRM114-Status: GOOD (  15.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,34 +83,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi AngeloGioacchino,
+dev_get_drvdata simply returns the driver data part of drm_dev, which
+has its lifetime bound to the drm_dev. So only drop the reference in the
+error paths, on success they will get dropped later.
 
-kernel test robot noticed the following build errors:
+Cc: stable@vger.kernel.org
+Fixes: 9ba2556cef1df ("drm/mediatek: clean up driver data initialisation")
+Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 22 ++++++++++++++++------
+ 1 file changed, 16 insertions(+), 6 deletions(-)
 
-[auto build test ERROR on broonie-regulator/for-next]
-[also build test ERROR on lee-mfd/for-mfd-next jic23-iio/togreg lee-leds/for-leds-next lee-mfd/for-mfd-fixes linus/master v6.17 next-20251002]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 7841f59c52ee772dba3de416f410604f5f13eef2..c85fbecce9d6f0ade700e047e067ee7f9250f037 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -373,7 +373,7 @@ static int mtk_drm_match(struct device *dev, const void *data)
+ static bool mtk_drm_get_all_drm_priv(struct device *dev)
+ {
+ 	struct mtk_drm_private *drm_priv = dev_get_drvdata(dev);
+-	struct mtk_drm_private *all_drm_priv[MAX_CRTC];
++	struct mtk_drm_private *all_drm_priv[MAX_CRTC] = { NULL, };
+ 	struct mtk_drm_private *temp_drm_priv;
+ 	struct device_node *phandle = dev->parent->of_node;
+ 	const struct of_device_id *of_id;
+@@ -399,16 +399,22 @@ static bool mtk_drm_get_all_drm_priv(struct device *dev)
+ 			continue;
+ 
+ 		temp_drm_priv = dev_get_drvdata(drm_dev);
+-		put_device(drm_dev);
+-		if (!temp_drm_priv)
++		if (!temp_drm_priv) {
++			put_device(drm_dev);
+ 			continue;
++		}
+ 
+-		if (temp_drm_priv->data->main_len)
++		if (temp_drm_priv->data->main_len) {
+ 			all_drm_priv[CRTC_MAIN] = temp_drm_priv;
+-		else if (temp_drm_priv->data->ext_len)
++		} else if (temp_drm_priv->data->ext_len) {
+ 			all_drm_priv[CRTC_EXT] = temp_drm_priv;
+-		else if (temp_drm_priv->data->third_len)
++		} else if (temp_drm_priv->data->third_len) {
+ 			all_drm_priv[CRTC_THIRD] = temp_drm_priv;
++		} else {
++			dev_warn(drm_dev, "Could not determine crtc type");
++			put_device(drm_dev);
++			continue;
++		}
+ 
+ 		if (temp_drm_priv->mtk_drm_bound)
+ 			cnt++;
+@@ -427,6 +433,10 @@ static bool mtk_drm_get_all_drm_priv(struct device *dev)
+ 		return true;
+ 	}
+ 
++	for (i = 0; i < MAX_CRTC; i++)
++		if (all_drm_priv[i])
++			put_device(all_drm_priv[i]->dev);
++
+ 	return false;
+ }
+ 
 
-url:    https://github.com/intel-lab-lkp/linux/commits/AngeloGioacchino-Del-Regno/dt-bindings-regulator-Document-MediaTek-MT6316-PMIC-Regulators/20251002-170532
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
-patch link:    https://lore.kernel.org/r/20251002090028.1796462-5-angelogioacchino.delregno%40collabora.com
-patch subject: [PATCH v7 4/9] regulator: Add support for MediaTek MT6363 SPMI PMIC Regulators
-config: x86_64-randconfig-001-20251003 (https://download.01.org/0day-ci/archive/20251003/202510031435.HCIv3oqu-lkp@intel.com/config)
-compiler: gcc-14 (Debian 14.2.0-19) 14.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20251003/202510031435.HCIv3oqu-lkp@intel.com/reproduce)
+---
+base-commit: 22b5e8cde1db67c64b83fc0e4e1ab166cacff246
+change-id: 20251002-mtk-drm-refcount-e0f718d9364a
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202510031435.HCIv3oqu-lkp@intel.com/
-
-All errors (new ones prefixed by >>, old ones prefixed by <<):
-
->> ERROR: modpost: "__devm_regmap_init_spmi_ext" [drivers/regulator/mt6363-regulator.ko] undefined!
-
+Best regards,
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Sjoerd Simons <sjoerd@collabora.com>
+
 
