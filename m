@@ -4,96 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3B18CCA472
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Oct 2025 21:42:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7AD6CAC5BB
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Oct 2025 14:31:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Qb4Wu82O8H4woRuNaXSp6qi7XmoH0H5VI5tHbH7Spug=; b=qDd8mdtkCC2CXshA9W27lSSWIG
-	f4jzZ+MHCfMva3vDz/LfPx0GQVOM7/5I17S9/TgpV7fResNKVkzDaimLbhBxgPuSs/lveX3WR+pUk
-	lUGI58wCgZZouMoS/73Lt5Y/3MhcUxz/wnXatgYihrCLvte/4jxJ7TmLb2Gknw9K2X7K1OPA8CG7I
-	5rLCaRj62RntbGR5gApNP+H+/WEhnSTi0/MHrQpn+XIWyT+1/mPJVzQV/qHwvo6VnJak4iA0lSJUX
-	uS48UPlfymp0FTvr3WRbWFy9HoXWVGcPke/thwjmGpn3aoLoQPd9b+KPSsCHUvl6KFLbMZn0DzhI2
-	iyZ+E1XQ==;
+	bh=K4PQXiBWNKYMhVB0OpQgu8imnyO9rnR1isf3ixF9lJA=; b=yN3zXc7Lu7TewD9EdvBinYyXoN
+	TSh1IZ8zUnR3vWg5iJPvJxfoUYpW1jYGTSEWyvZeUrONZMbT/TEhEBhVZewtR+xo1puqIlas5oExL
+	xCopS4j4472SaLoUJGUcVRM5CddeYfDi5dVeb52oWbOOyBEuBrWu/t28o6ODnyqNNWvR0LIrweqay
+	L5qNnkmirFngics2u7YdjgSHPCKQGCzF6rgaiUxo8X5WZkZl5cvMJ1CPBG7H3M2ec9vhjE9pXlzOW
+	uLIyEVocjDc+U4+PAKBpBaL3h/IhcbE5GwErevayW2w8yI42WuiMBVKPqE/53x8yIkX34VX/pnL0v
+	LtqjO1tg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4nXw-0000000DAu7-0MC2;
-	Fri, 03 Oct 2025 21:42:36 +0000
-Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
+	id 1v53IM-0000000Dmye-1b2K;
+	Sat, 04 Oct 2025 14:31:34 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4nXt-0000000DAt4-2iBt
-	for linux-mediatek@lists.infradead.org;
-	Fri, 03 Oct 2025 21:42:34 +0000
-Received: by mail-yw1-x1131.google.com with SMTP id 00721157ae682-77636fb28f6so26423257b3.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 03 Oct 2025 14:42:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1759527752; x=1760132552; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Qb4Wu82O8H4woRuNaXSp6qi7XmoH0H5VI5tHbH7Spug=;
-        b=P2Rf2Us1HAk46D5duaSaF+5TMTeocxFpKQoTs2k/2JWUYhzxg5VDiOBz+0m0AthJfv
-         qUJNFO3ec4smn6Thk26Q8K1KmUwJpkFquhHr+4UD6cMEs80FilXWtsdtKrp2sL/1Ajzf
-         vsWUk3feoqRAdkVQwq1zHl3VMpo3vZlDkyyRTIUhypP8eDwfklQq9CKYx21tPwzthlt6
-         Yrs1iysQ8EHBRqLcE3MiikgL/SoxFZTrG3S/AwR+29ik4NE46AjcisRHY1u2qNWOYI2d
-         IHDlDM+BO/d2OKxl+RbneBpYVg7kc4j2cUusTtj0oi56TNGWh2hmfKrKrHb7xHQjpjmC
-         3oZw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1759527752; x=1760132552;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Qb4Wu82O8H4woRuNaXSp6qi7XmoH0H5VI5tHbH7Spug=;
-        b=Zqg0LlDJtwysDo/tpM4lmRrwdmIWEohWB9EivTxftIHjYBEGKRehovYqrH0mfb0tzv
-         fCcCPqIuYixarXCnjHHbelzzi/HSFQvq3E/H68tL4zMUKIxn1y0rLXU33oWsHRKRk0WE
-         lH6Pxw7C5cAYH1On8D2N4jk1cqbECuqgjuk8bgPF9f1IyG3Eu2PSYlrSwyhY1mtl26HB
-         gaUGxQk8jb4hc6NtQkl0DY3eMK7SPnNZFYJltX+yj7KBqgC8rFa13Y02DafjSCnGnSq4
-         Z+mDO2BSmI0F4mtZjqrf/DGcmD8qc0Ox50iPPDBUqD8/wL4GMVbkRHNv/CP4mFbs4cko
-         SXvQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUF7aIyvcffTmra9j80t6RmpH70DK1b3Unp5x2OtcO41HuSr6lssL/LTVtVdxy7BaSNSgp6WISRfHQvNPh2qw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz5iTuHzZFnvJZGDYhH372wR1Sy7bjvcro95p0ovwAv4yuyrgtt
-	HraqIEnBT3DNg403ePyxHEBSnBM2362llPbRrhaO3AZOBOjGA3u35+YZAdnr+wbwxa4wbO5wFAi
-	z+8TrrihE3sIRg28zOYeOyKr8rsTmqIg=
-X-Gm-Gg: ASbGncsEw5csNziNfIlPWkJmzUY3syAVUz1J5bAaskNDR3E/77CH90K5HXxgSb2MPiT
-	rcR3HKNsDQoeDSXPRpyIILLce2o6SZ94Nhv+9HL/SCIMDc/7nA67SI3/1zUY3BHltWqqiP0n9t9
-	W/iR3ZhDshCXBXIIXq7o4op6PloKBWqRvf/teOD0aJSZ14rR5Ra9wdhywQWapq5uxAJfqP7vitN
-	AnAnUjt0kBT5rQidmnwuEXnoo6d86HKj0QCyfZQBBKs7boOB2wMLBeSvSBGGhJcmSvF5hZanMml
-	Te4uLq6x+zjmotF3jxwhGA==
-X-Google-Smtp-Source: AGHT+IFpa62J3F001fD6gEmxASZM+7hprfmJdW+U2IPWM14bwbGqXpUXslnfVMopKEr/h/JVkCYbZZaxq7ZVg2GVzCI=
-X-Received: by 2002:a05:690c:6085:b0:726:37ae:95a0 with SMTP id
- 00721157ae682-77f947377dbmr63264647b3.47.1759527752486; Fri, 03 Oct 2025
- 14:42:32 -0700 (PDT)
+	id 1v53IJ-0000000DmyO-46QL;
+	Sat, 04 Oct 2025 14:31:32 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id DF21B62034;
+	Sat,  4 Oct 2025 14:31:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3B4E8C4CEF1;
+	Sat,  4 Oct 2025 14:31:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1759588290;
+	bh=7I9cs/CZgED4iFSnKxJlz8RXYc/lFuGyZFexuMMRKWo=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=swhG2/atqORA2zXzxRuCGA5HDC/Y7Y4PcbdiUfUpmVlQbDd+NScOmjRL9MHLrK4H9
+	 7CZiDCSw2iH3CzmLDkVvq7kpfRBk1XYA3EvgLQTCloKccWnJNPYKzMqT5o+E8V4g2U
+	 VGS61RBSpL6VLP3Uwh5BId7Im5jaadP5yXpm8A3TUCeKzZwaNtJpyQWZmC2G+K6DYy
+	 o2E9g15Tz/WjAMi2KiAra9cuWIm/ecBmKPObkiXugNYUjqStN2wrolc9Zdm2mjirLK
+	 Pxffe4TnxdeQGtmprcxRS0Xk4AoXZ9/uM98rvJeLMnStxxiTRcpaOz/H3XWcEKRBvH
+	 IEVbI7Bk1UHlQ==
+Date: Sat, 4 Oct 2025 15:31:25 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Haotian Zhang <vulab@iscas.ac.cn>
+Cc: linux-iio@vger.kernel.org, Lars-Peter Clausen <lars@metafoo.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Abhash Jha
+ <abhashkumarjha123@gmail.com>, Al Viro <viro@zeniv.linux.org.uk>,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2] iio: adc: mt6360: Handle error in cleanup path
+ correctly
+Message-ID: <20251004153125.2e46b6ff@jic23-huawei>
+In-Reply-To: <20250929162453.1203-1-vulab@iscas.ac.cn>
+References: <20250929025358.2064-1-vulab@iscas.ac.cn>
+	<20250929162453.1203-1-vulab@iscas.ac.cn>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.51; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-References: <20251003-mt8196-gpufreq-v6-0-76498ad61d9e@collabora.com>
- <20251003-mt8196-gpufreq-v6-7-76498ad61d9e@collabora.com> <CAPaKu7QWBShwr+YhFi+nUFo0kJ06k4PK3zggcCefWGjqUmTx5w@mail.gmail.com>
-In-Reply-To: <CAPaKu7QWBShwr+YhFi+nUFo0kJ06k4PK3zggcCefWGjqUmTx5w@mail.gmail.com>
-From: Chia-I Wu <olvaffe@gmail.com>
-Date: Fri, 3 Oct 2025 14:42:21 -0700
-X-Gm-Features: AS18NWBXV7Dg7kjMsva2cG1ZX6ySiRudcCipxqw2a3pxKBvNUjFKzkOnT-TXcr4
-Message-ID: <CAPaKu7SK=st9FkU+i25MOwBnBPQYpiBxS7-1nnerdBCiPnHy3A@mail.gmail.com>
-Subject: Re: [PATCH v6 7/7] pmdomain: mediatek: Add support for MFlexGraphics
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Boris Brezillon <boris.brezillon@collabora.com>, Jassi Brar <jassisinghbrar@gmail.com>, 
-	Chen-Yu Tsai <wenst@chromium.org>, Steven Price <steven.price@arm.com>, 
-	Liviu Dudau <liviu.dudau@arm.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Kees Cook <kees@kernel.org>, 
-	"Gustavo A. R. Silva" <gustavoars@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>, kernel@collabora.com, 
-	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-hardening@vger.kernel.org, 
-	linux-pm@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251003_144233_690701_94DB68BD 
-X-CRM114-Status: GOOD (  16.45  )
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,27 +74,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Oct 3, 2025 at 2:41=E2=80=AFPM Chia-I Wu <olvaffe@gmail.com> wrote:
->
-> On Fri, Oct 3, 2025 at 1:16=E2=80=AFPM Nicolas Frattaroli
-> <nicolas.frattaroli@collabora.com> wrote:
-> >
-> > Various MediaTek SoCs use GPU integration silicon named "MFlexGraphics"
-> > by MediaTek. On the MT8196 and MT6991 SoCs, interacting with this
-> > integration silicon is required to power on the GPU.
-> >
-> > This glue silicon is in the form of an embedded microcontroller running
-> > special-purpose firmware, which autonomously adjusts clocks and
-> > regulators.
-> >
-> > Implement a driver, modelled as a pmdomain driver with a
-> > set_performance_state operation, to support these SoCs.
-> I like this model a lot. Thanks!
->
-> panthor might potentially need to interact with this driver beyond
-> what pmdomain provides. I am thinking about querying
-> GF_REG_SHADER_PRESENT. Not sure if we've heard back from the vendor.
-> Have you considered moving this to drivers/soc/mediatek such that we
-> can provide include/linux/mtk-mfg.h to panthor?
-I meant to say include/linux/soc/mediatek/mtk-mfg.h.
+On Tue, 30 Sep 2025 00:24:53 +0800
+Haotian Zhang <vulab@iscas.ac.cn> wrote:
+
+> The return value of a regmap_raw_write() and regmap_update_bits()
+> in the cleanup path was being ignored.
+> 
+> Fix this by checking the return value and warn on error.
+> 
+> Fixes: 1f4877218f7e ("iio: adc: mt6360: Add ADC driver for MT6360")
+> Signed-off-by: Haotian Zhang <vulab@iscas.ac.cn>
+> 
+> ---
+> Changes in v2:
+>  - Do not propagate cleanup path errors.
+>  - Log a warning on failure instead of overwriting the return value, as
+>    suggested by the maintainer.
+
+As below. I think dev_err() is appropriate.
+
+>  - Also check the return value of regmap_update_bits() for consistency.
+> ---
+>  drivers/iio/adc/mt6360-adc.c | 10 ++++++++--
+>  1 file changed, 8 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/iio/adc/mt6360-adc.c b/drivers/iio/adc/mt6360-adc.c
+> index 69b3569c90e5..9ee7247aacbe 100644
+> --- a/drivers/iio/adc/mt6360-adc.c
+> +++ b/drivers/iio/adc/mt6360-adc.c
+> @@ -70,6 +70,7 @@ static int mt6360_adc_read_channel(struct mt6360_adc_data *mad, int channel, int
+>  	ktime_t predict_end_t, timeout;
+>  	unsigned int pre_wait_time;
+>  	int ret;
+> +	int cleanup_ret;
+>  
+>  	mutex_lock(&mad->adc_lock);
+>  
+> @@ -130,11 +131,16 @@ static int mt6360_adc_read_channel(struct mt6360_adc_data *mad, int channel, int
+>  out_adc_conv:
+>  	/* Only keep ADC enable */
+>  	adc_enable = cpu_to_be16(MT6360_ADCEN_MASK);
+> -	regmap_raw_write(mad->regmap, MT6360_REG_PMUADCCFG, &adc_enable, sizeof(adc_enable));
+> +	cleanup_ret = regmap_raw_write(mad->regmap, MT6360_REG_PMUADCCFG,
+> +				&adc_enable, sizeof(adc_enable));
+> +	if (cleanup_ret)
+> +		dev_warn(mad->dev, "Failed to reset ADC config: %d\n", cleanup_ret);
+Why warn? If this happens it's definite and error and may bite us later.
+
+>  	mad->last_off_timestamps[channel] = ktime_get();
+>  	/* Config prefer channel to NO_PREFER */
+> -	regmap_update_bits(mad->regmap, MT6360_REG_PMUADCRPT1, MT6360_PREFERCH_MASK,
+> +	cleanup_ret = regmap_update_bits(mad->regmap, MT6360_REG_PMUADCRPT1, MT6360_PREFERCH_MASK,
+>  			   MT6360_NO_PREFER << MT6360_PREFERCH_SHFT);
+> +	if (cleanup_ret)
+> +		dev_warn(mad->dev, "Failed to reset prefer channel: %d\n", cleanup_ret);
+>  out_adc_lock:
+>  	mutex_unlock(&mad->adc_lock);
+>  
+
+Maybe it is worth trying to surface the error if nothing else has already gone wrong. That is a little fiddly
+to do but something like
+
+	if (cleanup_ret) {
+		dev_err()
+		ret = ret ?: cleanup_ret;
+	}
+
+I'm not sure it is worth the complexity however, so perhaps see if others have comments on this
+in next few days before spinning a v3.
+
+Thanks,
+
+Jonathan
 
