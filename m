@@ -4,44 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E78F6CCA470
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Oct 2025 04:48:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B14B9CCA471
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Oct 2025 09:35:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:
-	To:From:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=fXjCDdBKJtaqAnII1u9YIaRu2he3L9vFhcMRM/C1VJY=; b=Bq3/wErXM1xbXZ
-	ltSfSe2rtlhAZBo/4A92E5wBXljzibF/jxcsZJ2DI6Wbhm2KB3f+JM8mj0ht+ffm1M1RPDA97OdUf
-	3ZKYXjIeqY7MFiGafpebRAYjtPMDiTfPZYxVfZppG6aeGIX4YLQETfGX0LHUzvZuuTcinXeHk4okC
-	IZNpQw1q4jjDXNSO5x2sI6CwlDw5EvbYpsSIFb9q+DmllFDD+CEguMB0s6oWk+UzrvscwR6MymAAx
-	XRTP0o6pqDSKn7rPHGxjGllTpT/R26yomgCRE5U5IBXitjSBCLjo9HJSTGZH/P2PGWlTunGL3hdp9
-	JYOsdVvI0+EZO/Q+19Zw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cOUev9smRqrf20h7AgAgtACtfzGeLYPOJB1ND6oO+uc=; b=Zw8Cgi7nrTuClAfEEAdkuKpf1B
+	Ri2oHfDwKSAMKWWybck9qT5CfhV69BPicGPYOFU/G4AaHS2+H3Xae8NH3Snb9RZSsq1VZA4fjcBvF
+	nFc7bQ5ciQIrP50tbJ/dKp685Hpf7NQ8+Ttg2n5MWJ9YbA3Lcl8TzELDC9oeHWJ9kao04X3fHet98
+	YXvhAT2mjSy9hZhvq66A2oQ7CiunJkI1Kvd6HcnuLpyrzKNf8je3GWBNPzzd/pcCUmfMcz0oLb2uW
+	ZKKB1TqyUQOdbNfBdSWPJSNIm1p3QxfPhcrnhwD9OHtXJfTT66iJFwkFeN71zJjPl7ieEt1qf01wr
+	YwB45jTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v5d94-0000000Gvhs-3sLw;
-	Mon, 06 Oct 2025 04:48:22 +0000
-Received: from [69.84.36.126] (helo=host12.cannet.com)
+	id 1v5hd3-0000000HFLx-1Xr5;
+	Mon, 06 Oct 2025 09:35:37 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v5d90-0000000Gvdw-3LpV
-	for linux-mediatek@lists.infradead.org;
-	Mon, 06 Oct 2025 04:48:20 +0000
-Received: from [45.138.16.152] (unknown [45.138.16.152])
-	by host12.cannet.com (Postfix) with ESMTPSA id 74C64128369
-	for <linux-mediatek@lists.infradead.org>; Mon,  6 Oct 2025 00:45:16 -0400 (EDT)
-From: cwm@millersparty.com
-To: linux-mediatek@lists.infradead.org
-Subject: xls/
-Date: 5 Oct 2025 21:45:16 -0700
-Message-ID: <20251005214516.9D58853B15CD95C2@millersparty.com>
+	id 1v5hd0-0000000HFKv-23Gn;
+	Mon, 06 Oct 2025 09:35:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1759743329;
+	bh=Zk8Jo5SPmzAsmHMFK8+ptR1vnmkxF9QjVRBwUXv/GcQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=lZVnTSMdtFXdu9MAyZ4uke97TZskIr4QYzIH9ZEwEq5Kjo/T1Qwi/eagTJodWRdoU
+	 fAAn1tBR7rwBTkz/46bBSXS9W0co3anMfYBIuZBvZZ6Fvn2Y/25g3+dlIHBfFDj90w
+	 Xwti81iw1rHNLI8p0QR1GBtVff/pcpBH2y8iN08nE/8d/eos2M0aYGXZRrvx+svaZu
+	 zvkoxLSbh+q3i3d5WG+8BMiauD8TGkEO9qdtYNjaFMMDKJTFSrwpncqe+r7CpHrvIU
+	 Gd75dNAEMJT8eQA2KttK8aKdxsFk+oeoLznjhQg4qwHsxhgXNUIjcI8ODxTo8hcp0G
+	 oBLRNjIuYXN3g==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B079417E0FC2;
+	Mon,  6 Oct 2025 11:35:28 +0200 (CEST)
+Message-ID: <e92fea15-86c7-4160-aa8d-28c8052b1697@collabora.com>
+Date: Mon, 6 Oct 2025 11:35:28 +0200
 MIME-Version: 1.0
-Content-Type: text/plain;
-	charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 1/7] dt-bindings: gpu: mali-valhall-csf: add
+ mediatek,mt8196-mali variant
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ Jassi Brar <jassisinghbrar@gmail.com>, Chia-I Wu <olvaffe@gmail.com>,
+ Chen-Yu Tsai <wenst@chromium.org>, Steven Price <steven.price@arm.com>,
+ Liviu Dudau <liviu.dudau@arm.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Kees Cook <kees@kernel.org>,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ Ulf Hansson <ulf.hansson@linaro.org>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-hardening@vger.kernel.org, linux-pm@vger.kernel.org
+References: <20251003-mt8196-gpufreq-v6-0-76498ad61d9e@collabora.com>
+ <20251003-mt8196-gpufreq-v6-1-76498ad61d9e@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20251003-mt8196-gpufreq-v6-1-76498ad61d9e@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251005_214818_895524_8A3BCA46 
-X-CRM114-Status: UNSURE (   0.12  )
+X-CRM114-CacheID: sfid-20251006_023534_854494_026FE1F2 
+X-CRM114-Status: UNSURE (   9.89  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -54,27 +88,23 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: info.superenalotto@gmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Wir freuen uns, Ihnen mitteilen zu k=C3=B6nnen, dass Sie zu den=20
-Gewinnern der j=C3=BCngsten SuperEnalotto-Ziehung in Zusammenarbeit=20
-mit Lotto24, EuroMillions und Powerball geh=C3=B6ren. Sie haben einen=20
-einmaligen Gewinn von =E2=82=AC3.850.000  in der zweiten Gewinnklasse=20
-gewonnen. Um Ihren Gewinn abzuwickeln, senden Sie uns bitte=20
-folgende Informationen per E-Mail:
+Il 03/10/25 22:15, Nicolas Frattaroli ha scritto:
+> The Mali-based GPU on the MediaTek MT8196 SoC uses a separate MCU to
+> control the power and frequency of the GPU. This is modelled as a power
+> domain and clock provider.
+> 
+> It lets us omit the OPP tables from the device tree, as those can now be
+> enumerated at runtime from the MCU.
+> 
+> Add the necessary schema logic to handle what this SoC expects in terms
+> of clocks and power-domains.
+> 
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-Vollst=C3=A4ndiger Name: Land: Wohnadresse: Alter: Geschlecht: Beruf:=20
-Handynummer: WhatsApp-Nummer.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Im Namen der Online-Lotterieabteilungen SuperEnalotto,=20
-EuroMillions und Powerball gratulieren wir Ihnen herzlich zu=20
-Ihrem Gewinn.
 
-Mit freundlichen Gr=C3=BC=C3=9Fen
-
-Frau Katherine Federico
-Leiterin Online-Zahlungen / Validierungsmanagerin
-=20
 
