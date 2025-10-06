@@ -4,78 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 089E4CCA471
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Oct 2025 09:36:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7C11CAC5B8
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Oct 2025 09:39:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0CsNh1QO9LTfhssYldvjQJa9MLvQe0v6qstw3MRTV2U=; b=1dZGy/ajpc4v9lxVWkE7dQ6v7g
-	jXiMgmOC+6NnwcJtiTyXZpYjXqe6iE1REGWLjt5THkY5YYJUIPaEr9bCMNAjJ17ClQCfx3nZYOcy0
-	s8a3L7Rn/Ui/iXT0VJxnzTGqoxVzvgZI0FcH3IcGHb+chcyKAEOSOLJgx8E5N2QN77jsPmbSGR5hS
-	0Wflw0f1vV39g9Mc+Bdzgz+0uc8UM349VL+1fITSywmDfq6WMwCwr8acNNB30t4ZLiTmNX9EXHncx
-	pVmA8FJfdFNanWA0K7QLRbltW3/wSuVsXphaFWZHGyhtqLiGuTYOTyFqYMSwVX0Z7iljQ0DeC316c
-	TmWclGUQ==;
+	bh=+kX/VnGIUQI3uOmspwlv4PHEEOUXankYQ4Ft7GwSwRI=; b=gepM5WcDqqCzvJUAA1cueAzURI
+	iljMb+NdKWOXCzt3esSxGJSr+1NVNkIfOAZsj6v8X7gQc37c6c8V4husgzW/u3XWqqTID7T5qQEY1
+	nwqtNR2VU5X73aeZgtSgN77VWJHrOnbFtg9jTEl+TAVl2Dgt7zmiXWTONYOigBrHDtmzKWZrgEH+m
+	iLYHcD3PilbEZUJh6MWn+s3cIatJTWpHsHvPPpFgAqqrL2J/PaMcPpxvuwi883O8iPx+RmVrJ8QwJ
+	gtnh4/t2R0qLclR4WI26eMrXaikR5XByyTvFmADR3gok1e3g1xHZouTWRbINFLQ/T0jdv8NwvHvW7
+	21/QsAVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v5hdi-0000000HFV9-16Hl;
-	Mon, 06 Oct 2025 09:36:18 +0000
+	id 1v5hgK-0000000HFvk-0VdW;
+	Mon, 06 Oct 2025 09:39:00 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v5hde-0000000HFSy-3t8z;
-	Mon, 06 Oct 2025 09:36:16 +0000
+	id 1v5hgH-0000000HFtc-0K0y;
+	Mon, 06 Oct 2025 09:38:58 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1759743371;
-	bh=Xp3by8t0maP1Vb90Nju6hz9/zSoF5Ht9B7xI4C7ASrY=;
+	s=mail; t=1759743534;
+	bh=hscnZUUxLtA7mtlzePy0AkMC7fr7x+NOSL1u/YrwjI0=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=oqea8QCyl47tPr2p/I2JBWilB27/dytrdw7oUiy72JMtI+hZdP+/GK6bMH2b1ME3U
-	 tBJTqozUMuhy57OsKjw9xE+X2Mn2TK0KFsoxYVqVEPoT8sm3MhgeDQnLL6eHT8KN6P
-	 yfxg1uwEWuCeR7B/NKGiy645OImZrboJpCg5VUzChTWyElKansn6MrrDbbzT3Pbmvi
-	 9myQ4DYvltdcxXoVbXZM5kIIDecRP7QVtSNFTJLIZLEzNBlbFZt6m1c0TsshyPYifc
-	 Vmb1J6wn5DEuCDQG3hAdm9SOVs6Mcb42/H3Wtw/ACt0oshGypbrkCRrFxmkYeUq1J0
-	 TbpwM/i587E1Q==
+	b=FfB/DOixx8HLns5gxS3GWfSeqUHQh9Zn+MOChQtuYcKtwwGAeKMu/J+xyBmVsS26U
+	 BK2HVTT3DrrIQKYiRu0IOq+dILLssOqQNvJJfPeCmVNsbHbeBZUjF7hDHQ1Aab8NGk
+	 PkRXUpJ1+nIQhApB038PH4umro2D+cD+stTvT1TgtIWga8vPkaYn2CBQ7sSgw5OYZZ
+	 xD7v9KOhhBGQsC8xlRECre44Ljm4tTlLe3FHI0wK5v/JSyaMabVqrTY53Uv4ezwP2f
+	 6vBguUeMMAm+XojFDoiOA8/oWP0Hh2UL3K8jQimxt4GGn8X1XghOolIyjjkuPSA4Zb
+	 DvEmPozR5YjqQ==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C34CF17E0FC2;
-	Mon,  6 Oct 2025 11:36:10 +0200 (CEST)
-Message-ID: <137811e2-f28e-4605-a6b2-935a0a8b463b@collabora.com>
-Date: Mon, 6 Oct 2025 11:36:10 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 534CD17E0071;
+	Mon,  6 Oct 2025 11:38:54 +0200 (CEST)
+Message-ID: <1347051d-187c-4aa5-a4af-cfd8b275f066@collabora.com>
+Date: Mon, 6 Oct 2025 11:38:53 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 2/7] dt-bindings: power: Add MT8196 GPU frequency
- control binding
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- Jassi Brar <jassisinghbrar@gmail.com>, Chia-I Wu <olvaffe@gmail.com>,
- Chen-Yu Tsai <wenst@chromium.org>, Steven Price <steven.price@arm.com>,
- Liviu Dudau <liviu.dudau@arm.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Kees Cook <kees@kernel.org>,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- Ulf Hansson <ulf.hansson@linaro.org>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-hardening@vger.kernel.org, linux-pm@vger.kernel.org
-References: <20251003-mt8196-gpufreq-v6-0-76498ad61d9e@collabora.com>
- <20251003-mt8196-gpufreq-v6-2-76498ad61d9e@collabora.com>
+Subject: Re: [PATCH] pinctrl: mediatek: mt8196: align register base names to
+ dt-bindings ones
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+ Sean Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Cathy Xu <ot_cathy.xu@mediatek.com>, Guodong Liu <guodong.liu@mediatek.com>
+Cc: kernel@collabora.com, linux-mediatek@lists.infradead.org,
+ linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20251003-fix-mt8196-pinctrl-regnames-v1-1-4d22031140f0@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20251003-mt8196-gpufreq-v6-2-76498ad61d9e@collabora.com>
+In-Reply-To: <20251003-fix-mt8196-pinctrl-regnames-v1-1-4d22031140f0@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251006_023615_141829_72F7FB36 
-X-CRM114-Status: GOOD (  10.56  )
+X-CRM114-CacheID: sfid-20251006_023857_295254_51894F51 
+X-CRM114-Status: UNSURE (   7.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,18 +80,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 03/10/25 22:15, Nicolas Frattaroli ha scritto:
-> On the MT8196 and MT6991 SoCs, the GPU power and frequency is controlled
-> by some integration logic, referred to as "MFlexGraphics" by MediaTek,
-> which comes in the form of an embedded controller running
-> special-purpose firmware.
+Il 03/10/25 16:00, Louis-Alexis Eyraud ha scritto:
+> The mt8196-pinctrl driver requires to probe that a device tree uses
+> in the device node the same names than mt8196_pinctrl_register_base_names
+> array. But they are not matching the required ones in the
+> "mediatek,mt8196-pinctrl" dt-bindings, leading to possible dtbs check
+> issues.
+> So, align all mt8196_pinctrl_register_base_names entries on dt-bindings
+> ones.
 > 
-> This controller takes care of the regulators and PLL clock frequencies
-> to squeeze the maximum amount of power out of the silicon.
-> 
-> Add a binding which models it as a power domain.
-> 
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> Fixes: f7a29377c253 ("pinctrl: mediatek: Add pinctrl driver on mt8196")
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
