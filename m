@@ -4,69 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D762CAC5B8
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Oct 2025 09:49:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8CACCCA471
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Oct 2025 09:55:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KrUG+CFDWdFhl2oO5Mb/bp0M33QnqWfcHQcX232OcnE=; b=wQHK4zptbkJJBxTGSEGVb3qCOt
-	An+JxNSHvT6QsVyYNZFdTwDgU2PF5vlq5iI2Od5Fdi3I7X/r7B83/Dy7F5n5xbH8Svjm1Aw5LTvpz
-	I8X8nsiyuRdauNwvXP8pKDWthUZMQnxlRMqMBlgGhwBfgSC1SaVveuutFqDYYaIYgCfbgmD6PAbwL
-	TE0q1u3XYAulXvyys1D0i/DGI11LKVY0gfAO0YSPQxCTPMhToZtGYYcnleHSdW+II74vfle0vq0xP
-	EXh/Rg6P8UCBOW2smJ2WsMkS9wA9MLhrVNd15JsFf01Cq0t/DKhYjq2saZvPrMKVn7wDyoOErlLfc
-	rnBDFXVQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Z2kirqEsMQeMY39R175gsSI+vbf0VkUSUcGwEbjuY5Q=; b=T662Rbom8KjpFiisPdTfRx9Ns4
+	c7agi+QutBDc64VEiYhaW7C2V7VZpEIiQ/sTOo8arXClgtbc8peebeqs7vWbyH8lL855jTQsNMMS3
+	56Qk35323t7WIhilSP1ssrZ0KUBivGkHKj+lzBJ2Z1b+VgbpQAwCoQnqhdW18xxIqy2f/XNFbb2L7
+	CBNL8nl6ZaxR748Q+2kCJXH+5pQQcjAkeSSNmLgfnQLhuxFwMw7lhXoIu8NUmcNtHibmi5pbR/MVM
+	kbkwtbF2G1svkF0FK5nQ9APxKDrOznH9gu2gf+23/qqB0gYhx7do2ULkphkC1koEVTkuKm3HPAZmJ
+	MZsz2q7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v5hqr-0000000HGxB-1aDo;
-	Mon, 06 Oct 2025 09:49:53 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v5hqo-0000000HGwR-3Y8q;
-	Mon, 06 Oct 2025 09:49:52 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6943C40A5C;
-	Mon,  6 Oct 2025 09:49:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 409EBC4CEF5;
-	Mon,  6 Oct 2025 09:49:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1759744189;
-	bh=bQYO0VYtBtio80MmlSTfZwF05jmL0sNFgnqPZjKtqzo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=r8NcdP3tmUHEJD/5oHfudOZ3+YWlX59Fzq+n2oTdWwrvPdSOEOpBO04z+2qMleb2t
-	 mTSxMK6cFadRiZbhMGuRNRCanftfMrGqUS1EIO1lLxiDAFrzwCwHDxNA6EQqxHFk2H
-	 u03XXCBG9JKSAG1S3iGxX+OTGY0jH/qcmQWU2Pow13z0tm/lyQWDe1Rh7gs9YNbZfD
-	 x3R387n+1EwQwBU7OwpJQd0iQkaIjOplQsG0Rfd9D6cvKhFQopXDu6mdCCjju3+VAz
-	 3qKpA/bwvjD7QpTj7cjlEK7lHHT4+IezQzZTzKDkFRq8QwDqAvHsJtP4a2wCxyhSWa
-	 8kr+wc2WDemIw==
-Received: from johan by xi.lan with local (Exim 4.98.2)
-	(envelope-from <johan@kernel.org>)
-	id 1v5hql-000000007Oc-0j5U;
-	Mon, 06 Oct 2025 11:49:47 +0200
-Date: Mon, 6 Oct 2025 11:49:47 +0200
-From: Johan Hovold <johan@kernel.org>
-To: Sjoerd Simons <sjoerd@collabora.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	CK Hu <ck.hu@mediatek.com>, dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
-	stable@vger.kernel.org
-Subject: Re: [PATCH] drm/mediatek: Fix refcounting in mtk_drm_get_all_drm_priv
-Message-ID: <aOOQu9Lu_3-EhtGd@hovoldconsulting.com>
-References: <20251003-mtk-drm-refcount-v1-1-3b3f2813b0db@collabora.com>
+	id 1v5hvp-0000000HHpj-0XKm;
+	Mon, 06 Oct 2025 09:55:01 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1v5hvl-0000000HHoA-2Jl0;
+	Mon, 06 Oct 2025 09:54:59 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 835001515;
+	Mon,  6 Oct 2025 02:54:46 -0700 (PDT)
+Received: from [10.57.34.189] (unknown [10.57.34.189])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id B6E7A3F59E;
+	Mon,  6 Oct 2025 02:54:50 -0700 (PDT)
+Message-ID: <2e6141f9-be76-41a4-a851-7ac1c31c101e@arm.com>
+Date: Mon, 6 Oct 2025 10:54:48 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20251003-mtk-drm-refcount-v1-1-3b3f2813b0db@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 0/2] drm/panthor: initial mt8196 support
+To: Chia-I Wu <olvaffe@gmail.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ Liviu Dudau <liviu.dudau@arm.com>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20250913002155.1163908-1-olvaffe@gmail.com>
+From: Steven Price <steven.price@arm.com>
+Content-Language: en-GB
+In-Reply-To: <20250913002155.1163908-1-olvaffe@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251006_024950_976908_5C2E0F6C 
-X-CRM114-Status: GOOD (  13.76  )
+X-CRM114-CacheID: sfid-20251006_025457_633767_A96407D9 
+X-CRM114-Status: GOOD (  19.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,29 +73,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Oct 03, 2025 at 10:08:28AM +0200, Sjoerd Simons wrote:
-> dev_get_drvdata simply returns the driver data part of drm_dev, which
-> has its lifetime bound to the drm_dev.
+On 13/09/2025 01:21, Chia-I Wu wrote:
+> MediaTek MT8196 has Mali-G925-Immortalis, for which panthor gained
+> support recently. But the soc also requires custom ASN hash to be
+> enabled. This series introduces panthor_soc_data for per-soc data and
+> uses it to enable custom ASN hash on MT8196.
+> 
+> The clk/regulator provider on MT8196 is GPUEB, whose driver[1] needs to
+> be cleaned up and upstreamed separately.
+> 
+> This initial support also lacks support for some hw configs. On some
+> configs, panthor is expected to query a mask from efuse to mask out
+> unavailable shader cores from ptdev->gpu_info.shader_present. This
+> requires extending panthor_soc_data with a callback to read the mask.
+> 
+> This is an RFC because the dependent drivers are not ready yet. But I
+> would like to gather opinions on having panthor_soc_data for
+> soc-specific data and having CONFIG_DRM_PANTHOR_SOC_MT8196 for
+> soc-specific code.
+> 
+> [1] https://gitlab.freedesktop.org/olv/kernel/-/commit/170d5fc90f817dc90bde54b32872c59cf5c77779
 
-No, that is not correct: the driver data goes away when the driver is
-unbound, not when the device is freed.
+Applied to drm-misc-next.
 
-> So only drop the reference in the
-> error paths, on success they will get dropped later.
+Thanks,
+Steve
 
-But there is indeed a partial fix for the device leak here which was
-overlooked. Good catch.
+> 
+> ---
+> v2:
+> 
+> - drop RFC as this series works with the downstream GPUEB driver, and
+>   should work with Nicolas's GPUEB driver posted to
+>   https://lore.kernel.org/lkml/20250912-mt8196-gpufreq-v2-0-779a8a3729d9@collabora.com/
+>   with no change.
+> - remove CONFIG_DRM_PANTHOR_SOC_MT8196 and panthor_soc*.[ch], as this
+>   initial support is just about ASN hash.
+> 
+> Chia-I Wu (2):
+>   dt-bindings: gpu: mali-valhall-csf: add MediaTek MT8196 compatible
+>   drm/panthor: add custom ASN_HASH support for mt8196
+> 
+>  .../bindings/gpu/arm,mali-valhall-csf.yaml    |  1 +
+>  drivers/gpu/drm/panthor/panthor_device.c      |  2 ++
+>  drivers/gpu/drm/panthor/panthor_device.h      | 14 +++++++++++
+>  drivers/gpu/drm/panthor/panthor_drv.c         |  6 +++++
+>  drivers/gpu/drm/panthor/panthor_gpu.c         | 25 ++++++++++++++++++-
+>  drivers/gpu/drm/panthor/panthor_regs.h        |  4 +++
+>  6 files changed, 51 insertions(+), 1 deletion(-)
+> 
 
-> Cc: stable@vger.kernel.org
-> Fixes: 9ba2556cef1df ("drm/mediatek: clean up driver data initialisation")
-
-This is clearly not the commit that introduced the issue (even if I also
-failed to notice the reference imbalance).
-
-Since there is no need to keep the references, I've just sent a fix
-which instead fixes this by dropping the previous partial fix:
-
-	https://lore.kernel.org/r/20251006093937.27869-1-johan@kernel.org
-
-Johan
 
