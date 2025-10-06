@@ -4,79 +4,125 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41662CAC5B8
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Oct 2025 11:41:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E6B5CCA476
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Oct 2025 12:02:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2zSa8t0BLFbE2sFL8sEge/sB6GfievzXdAQnRQjaaHE=; b=UL3QOk/p7k6xVO2dRfV5+m/1UE
-	tDwMcm76KjyxCIMGVyYeA/3oSmXFivutEgtNnfKTRXEiiUmP1C+ShJdZkCPqt9nMuu5Tf2pg0a/If
-	bdUvs75IiJkSGPhp0Ln61CmeccxccImgnlIrmWU6y3pZB8K8szExkhxsnrJIXNXL5UuTYJxAgEV4t
-	VvkYm/pLD9+BauscCRB71IEFFKeHPBZDC5fNUA6lYgMOJY3RCtjPqDIRBsmBokIpHo7waUZWEoKU4
-	C5/Wx1as0w58mAYGALdNgutR9FYhNCa4FFcnOwpqXthqeEj7RyjRVDMEq0AsFzh71i00b0UYA4iUu
-	ivlHelDg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=muVRGWsQlp2wN5jHTmfgcHtJ5GaF+aVvkXJ/sANwbyI=; b=ggoXW9Wz3FL52+cI3dZQ2GfgF+
+	s2HiCsKllyclyd2k9wNsvMAWaDikD+bpJt51BAX7OIs+SPXvooFBUSOqdPy8LyvwjwbAmnFeNbuS+
+	Rl90xdjf0NQyPuU7FUqQvzrnPe72FJAxL5FKgdolt+i9tfC9PsQCRCfpwWgN8dm7Z5NMDWdoJWRlD
+	m2n/4JbOS85sKBh9AxwQdaVkj8m2YeBzC7qIIRD7+kFvaQKGGr3YQIz+QNESws35WyiFFu3z7VpA8
+	2MWD66LqavoLvR1pIJvY5BMpUQu0XWD8eI0/R061542eixeHrdzNElmpJEXFNOa+ugyyK2ojXZSBa
+	sdiPRPvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v5jaP-0000000HVMk-1qIc;
-	Mon, 06 Oct 2025 11:41:01 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1v5jvW-0000000HXgC-0K2S;
+	Mon, 06 Oct 2025 12:02:50 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v5jaN-0000000HVLV-000V;
-	Mon, 06 Oct 2025 11:41:00 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1759750843; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=C8pwcjsJ+qowHJ37zlXp12Ma1w0Ko/I/NzluVBpY+/82lmGqlPpQvMpphsi4l9HCJpYdFV3dIJotUDRoRbIzK1u6ioMrJtEmt2FeIWl9tKwOqWP9xOq11BwfRRCYCeYEGXkX8gE5YRTUJrf9FsmKfBnMPytChaMtIyvSFrXRggk=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1759750843; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=2zSa8t0BLFbE2sFL8sEge/sB6GfievzXdAQnRQjaaHE=; 
-	b=npgMq/QsQ/ncrLWzA2MOJFVNkUM49rUnZfnuxYOiG++NPcP5dp0wk2W4d2JT/tcHCvch/mfY/S0OWF9kuMJn+j/C4pGf+UYoMPBPmGlIA9GsnOLlFulC9AVMVoXiifzsLZy5fTlu7FBrkE3xZCoVO3SnmPBdt1Y1q3JVC9oDafk=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1759750843;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=2zSa8t0BLFbE2sFL8sEge/sB6GfievzXdAQnRQjaaHE=;
-	b=MMZpYfqpYfrc7dXHgD412byATIiTHhnz7W4rKmFMt2MG3Zl2+7d0+d0Ced8fa1W1
-	iBcyNF/oSgkohtiQC+CM3LAixL1bPSoHqFOaTAqQP+eHRAE4iMk2jsDArs+EnEt5AiJ
-	L4Jk/8QKvYFz2ARu1LgCLJ4C0C0B7pp+XYoUnv/o=
-Received: by mx.zohomail.com with SMTPS id 1759750841484642.2099292517786;
-	Mon, 6 Oct 2025 04:40:41 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Chia-I Wu <olvaffe@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- Jassi Brar <jassisinghbrar@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>,
- Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Kees Cook <kees@kernel.org>,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- Ulf Hansson <ulf.hansson@linaro.org>, kernel@collabora.com,
- dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-hardening@vger.kernel.org,
- linux-pm@vger.kernel.org
-Subject: Re: [PATCH v6 7/7] pmdomain: mediatek: Add support for MFlexGraphics
-Date: Mon, 06 Oct 2025 13:40:35 +0200
-Message-ID: <2323923.iZASKD2KPV@workhorse>
-In-Reply-To: <8586490.T7Z3S40VBb@workhorse>
-References: <20251003-mt8196-gpufreq-v6-0-76498ad61d9e@collabora.com>
- <CAPaKu7QWBShwr+YhFi+nUFo0kJ06k4PK3zggcCefWGjqUmTx5w@mail.gmail.com>
- <8586490.T7Z3S40VBb@workhorse>
+	id 1v5jvU-0000000HXfp-1ax6;
+	Mon, 06 Oct 2025 12:02:48 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 88E4D60487;
+	Mon,  6 Oct 2025 12:02:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AB346C4CEF5;
+	Mon,  6 Oct 2025 12:02:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1759752167;
+	bh=cUe8CtrafWoQsXn9fWcPDQv7fF4kzWcQD9k5yUC/Uwg=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=XrCExbDGUw0LYXohARq0wj5ixhBkiguFlV69LWhd/t5NkqihItIxVGgkJYVYebHeS
+	 bbGyaUuLZY+rwJSwZdtdSVGYP6I24TmlPhVDqN3Wu92pv+ho39wr+IsgKQ4bTbIXIF
+	 /rxkzb2rUvpt4jA4wBfhlKXw9LrjD5ZY3pm0GvalCYvKo8YZv0RDduhtmOOi5uTZcr
+	 5QGgim6xn/vbzvVz0I6jiD9IgFzb0QM0DR+KeRrjaciAgfDTBhDRWzcUBYkJdaez7v
+	 oj403k6Xyt+lqNwWRmPTY+GWjQCnvIg51e+wjQY/qGWc5qLIda+gQeEaowTaVrk0Rs
+	 AiZqBRuYNrzoQ==
+From: Maxime Ripard <mripard@kernel.org>
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Maxime Ripard <mripard@kernel.org>
+Cc: dri-devel@lists.freedesktop.org,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+	=?UTF-8?q?Ville=20Syrj=C3=A4l=C3=A4?= <ville.syrjala@linux.intel.com>,
+	Louis Chauvet <louis.chauvet@bootlin.com>,
+	Haneen Mohammed <hamohammed.sa@gmail.com>,
+	Melissa Wen <melissa.srw@gmail.com>,
+	Jyri Sarha <jyri.sarha@iki.fi>,
+	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+	Paul Cercueil <paul@crapouillou.net>,
+	linux-mips@vger.kernel.org,
+	Liviu Dudau <liviu.dudau@arm.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Manikandan Muralidharan <manikandan.m@microchip.com>,
+	Dharma Balasubiramani <dharma.b@microchip.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	linux-arm-kernel@lists.infradead.org,
+	Inki Dae <inki.dae@samsung.com>,
+	Seung-Woo Kim <sw0312.kim@samsung.com>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	linux-samsung-soc@vger.kernel.org,
+	Liu Ying <victor.liu@nxp.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	imx@lists.linux.dev,
+	Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>,
+	Lucas Stach <l.stach@pengutronix.de>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Anitha Chrisanthus <anitha.chrisanthus@intel.com>,
+	Edmund Dea <edmund.j.dea@intel.com>,
+	Paul Kocialkowski <paulk@sys-base.io>,
+	Sui Jingfeng <suijingfeng@loongson.cn>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Rob Clark <robin.clark@oss.qualcomm.com>,
+	Dmitry Baryshkov <lumag@kernel.org>,
+	Abhinav Kumar <abhinav.kumar@linux.dev>,
+	Jessica Zhang <jessica.zhang@oss.qualcomm.com>,
+	Sean Paul <sean@poorly.run>,
+	Marijn Suijten <marijn.suijten@somainline.org>,
+	linux-arm-msm@vger.kernel.org,
+	freedreno@lists.freedesktop.org,
+	Sandy Huang <hjc@rock-chips.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	linux-rockchip@lists.infradead.org,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	linux-sunxi@lists.linux.dev,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Mikko Perttunen <mperttunen@nvidia.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	linux-tegra@vger.kernel.org,
+	Hans de Goede <hansg@kernel.org>,
+	Dave Stevenson <dave.stevenson@raspberrypi.com>,
+	=?UTF-8?q?Ma=C3=ADra=20Canal?= <mcanal@igalia.com>,
+	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
+Subject: Re: [PATCH v5 00/39] drm/atomic: Get rid of existing states (not really)
+Date: Mon,  6 Oct 2025 14:02:42 +0200
+Message-ID: <175975215493.792368.2468724280200785252.b4-ty@kernel.org>
+X-Mailer: git-send-email 2.51.0
+In-Reply-To: <20250930-drm-no-more-existing-state-v5-0-eeb9e1287907@kernel.org>
+References: <20250930-drm-no-more-existing-state-v5-0-eeb9e1287907@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain; charset="utf-8"
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251006_044059_058571_3C832EB5 
-X-CRM114-Status: GOOD (  24.24  )
+Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,149 +137,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Monday, 6 October 2025 12:58:55 Central European Summer Time Nicolas Fra=
-ttaroli wrote:
-> On Friday, 3 October 2025 23:41:16 Central European Summer Time Chia-I Wu=
- wrote:
-> > On Fri, Oct 3, 2025 at 1:16=E2=80=AFPM Nicolas Frattaroli
-> > <nicolas.frattaroli@collabora.com> wrote:
-> > >
-> > > Various MediaTek SoCs use GPU integration silicon named "MFlexGraphic=
-s"
-> > > by MediaTek. On the MT8196 and MT6991 SoCs, interacting with this
-> > > integration silicon is required to power on the GPU.
-> > >
-> > > This glue silicon is in the form of an embedded microcontroller runni=
-ng
-> > > special-purpose firmware, which autonomously adjusts clocks and
-> > > regulators.
-> > >
-> > > Implement a driver, modelled as a pmdomain driver with a
-> > > set_performance_state operation, to support these SoCs.
+On Tue, 30 Sep 2025 12:59:15 +0200, Maxime Ripard wrote:
+> Here's a series to get rid of the drm_atomic_helper_get_existing_*_state
+> accessors.
+> 
+> The initial intent was to remove the __drm_*_state->state pointer to
+> only rely on old and new states, but we still need it now to know which
+> of the two we need to free: if a state has not been committed (either
+> dropped or checked only), then we need to free the new one, if it has
+> been committed we need to free the old state.
+> 
 > [...]
-> > > +static int mtk_mfg_probe(struct platform_device *pdev)
-> > > +{
-> > > +       struct device_node *shmem __free(device_node);
-> > > +       struct mtk_mfg *mfg;
-> > > +       struct device *dev =3D &pdev->dev;
-> > > +       const struct mtk_mfg_variant *data =3D of_device_get_match_da=
-ta(dev);
-> > > +       struct resource res;
-> > > +       int ret, i;
-> > > +
-> > > +       mfg =3D devm_kzalloc(dev, sizeof(*mfg), GFP_KERNEL);
-> > > +       if (!mfg)
-> > > +               return -ENOMEM;
-> > > +
-> > > +       mfg->pdev =3D pdev;
-> > > +       mfg->variant =3D data;
-> > > +
-> > > +       dev_set_drvdata(dev, mfg);
-> > > +
-> > > +       mfg->gpr =3D devm_platform_ioremap_resource(pdev, 0);
-> > > +       if (IS_ERR(mfg->gpr))
-> > > +               return dev_err_probe(dev, PTR_ERR(mfg->gpr),
-> > > +                                    "Couldn't retrieve GPR MMIO regi=
-sters\n");
-> > > +
-> > > +       mfg->rpc =3D devm_platform_ioremap_resource(pdev, 1);
-> > > +       if (IS_ERR(mfg->rpc))
-> > > +               return dev_err_probe(dev, PTR_ERR(mfg->rpc),
-> > > +                                    "Couldn't retrieve RPC MMIO regi=
-sters\n");
-> > > +
-> > > +       mfg->clk_eb =3D devm_clk_get(dev, "eb");
-> > > +       if (IS_ERR(mfg->clk_eb))
-> > > +               return dev_err_probe(dev, PTR_ERR(mfg->clk_eb),
-> > > +                                    "Couldn't get 'eb' clock\n");
-> > > +
-> > > +       mfg->gpu_clks =3D devm_kcalloc(dev, data->num_clks, sizeof(*m=
-fg->gpu_clks),
-> > > +                                    GFP_KERNEL);
-> > > +       if (!mfg->gpu_clks)
-> > > +               return -ENOMEM;
-> > > +
-> > > +       for (i =3D 0; i < data->num_clks; i++)
-> > > +               mfg->gpu_clks[i].id =3D data->clk_names[i];
-> > > +
-> > > +       ret =3D devm_clk_bulk_get(dev, data->num_clks, mfg->gpu_clks);
-> > > +       if (ret)
-> > > +               return dev_err_probe(dev, ret, "Couldn't get GPU cloc=
-ks\n");
-> > > +
-> > > +       mfg->gpu_regs =3D devm_kcalloc(dev, data->num_regulators,
-> > > +                                    sizeof(*mfg->gpu_regs), GFP_KERN=
-EL);
-> > > +       if (!mfg->gpu_regs)
-> > > +               return -ENOMEM;
-> > > +
-> > > +       for (i =3D 0; i < data->num_regulators; i++)
-> > > +               mfg->gpu_regs[i].supply =3D data->regulator_names[i];
-> > > +
-> > > +       ret =3D devm_regulator_bulk_get(dev, data->num_regulators, mf=
-g->gpu_regs);
-> > > +       if (ret)
-> > > +               return dev_err_probe(dev, ret, "Couldn't get GPU regu=
-lators\n");
-> > > +
-> > > +       ret =3D of_reserved_mem_region_to_resource(dev->of_node, 0, &=
-res);
-> > > +       if (ret)
-> > > +               return dev_err_probe(dev, ret, "Couldn't get GPUEB sh=
-ared memory\n");
-> > > +
-> > > +       mfg->shared_mem =3D devm_ioremap(dev, res.start, resource_siz=
-e(&res));
-> > > +       if (!mfg->shared_mem)
-> > > +               return dev_err_probe(dev, -ENOMEM, "Can't ioremap GPU=
-EB shared memory\n");
-> > > +       mfg->shared_mem_size =3D resource_size(&res);
-> > > +       mfg->shared_mem_phys =3D res.start;
-> > > +
-> > > +       if (data->init) {
-> > > +               ret =3D data->init(mfg);
-> > > +               if (ret)
-> > > +                       return dev_err_probe(dev, ret, "Variant init =
-failed\n");
-> > > +       }
-> > > +
-> > > +       mfg->pd.name =3D dev_name(dev);
-> > > +       mfg->pd.attach_dev =3D mtk_mfg_attach_dev;
-> > > +       mfg->pd.detach_dev =3D mtk_mfg_detach_dev;
-> > > +       mfg->pd.power_off =3D mtk_mfg_power_off;
-> > > +       mfg->pd.power_on =3D mtk_mfg_power_on;
-> > > +       mfg->pd.set_performance_state =3D mtk_mfg_set_performance;
-> > > +       mfg->pd.flags =3D GENPD_FLAG_OPP_TABLE_FW;
-> > > +
-> > > +       ret =3D pm_genpd_init(&mfg->pd, NULL, false);
-> > > +       if (ret)
-> > > +               return dev_err_probe(dev, ret, "Failed to initialise =
-power domain\n");
-> > We need to clean up mgf->md on errors from this point on. Maybe we can
-> > move this to a later point?
-> >=20
-> > > +
-> > > +       ret =3D mtk_mfg_init_mbox(mfg);
-> > > +       if (ret)
-> > > +               return dev_err_probe(dev, ret, "Couldn't initialise m=
-ailbox\n");
-> > We need to free the mboxes from this point on.
-> >=20
->=20
-> For this and the one above, does .remove not get called on probe failure?=
- If not,
-> I'll definitely do this. Otherwise it seems redundant, though with the ad=
-ded
-> concern that .remove does not check before calling those functions.
->=20
 
-Alright nevermind, I'm being confused by devres vs. remove callback.
+Applied to misc/kernel.git (drm-misc-next).
 
-=2Eremove does not get called if the probe function fails, but devres
-handlers still do get called.
-
-Sorry for the confusion, will fix things accordingly.
-
-
-
+Thanks!
+Maxime
 
