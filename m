@@ -4,79 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD0CFCAC5B8
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Oct 2025 14:29:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9C44CCA470
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Oct 2025 19:02:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iHftLHgFZNS3C4E6aPsJBhfPuPzL1BpukdJae4jebVw=; b=E9kDOihqV8WvlBQnWM5DWcOQAF
-	1uCaYhKa8tOyn+yn7Sva/4AUgjcjuCXGCTv9vo3FOBdSpICteSqtXM6oSyHZT0EL4Y+SYRBe1wlcE
-	9N7LKk8YdUNT2rgmf5TzAydZnmZkc0482rPucngHdVlG8alkoDtyglCPPRQgXC/yqiwzUJ9hrmAew
-	XtATZcwgrcVp0EmZFdhe4/Er0r/nNJGofk8/VPfaJ3Pavg57owmBrMzjiASouQdyxtvEUCFyFBeN9
-	bLex5s+Ogx4mPSWHXpxQjpHlEcnTVBYjgvLZFTjHruFHwCbAdxWOKGTM/Jisa5T8YxgGMo0LF5AwM
-	wQ67ztvQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=O1JDYsT150BDUca3Z4ctGricew8pDdsRotfUdYSg0Rc=; b=YuS8HojuBfs11UbsUhT0EuccCn
+	ZmY3/FQes2s0rBW+247BokZGJw9A0lW1HJsO41QpdSd+MEnyH2kLr+xXeVBB9ZUS7kL9dxETfeHgF
+	cRYRt3HrEZhdLH5PBT4JFGkDKQn1ObBWfw/enIcgYUKIZdifyi5+1IvWdR7cgYAiQA+6QTQkMEFmE
+	fnSaQx/De5FaG9UqN25sc3nDpCDoHPZ/sfevx5YB9Jo5LTqnkLitwcwnjuDU51kobUxMyz4l9BqYD
+	0nj7C/mNmgJeBdABiEH3EbOWn4+C3/vCsT6HLi4iOVULTJFcD1DaKM5sb9wgkZTuiJ3/m0ZSoJZc1
+	8scoOv+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v5mD0-00000000AlY-2Vie;
-	Mon, 06 Oct 2025 14:29:02 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1v5qTS-00000000e8m-2ZuA;
+	Mon, 06 Oct 2025 19:02:18 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v5mCw-00000000Ajv-1hkg;
-	Mon, 06 Oct 2025 14:29:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1759760935;
-	bh=moPhboMCqOcy7E35eV70b8p04uz19sEys49+po5lmDc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=aTu5Azn9EYNbHp0U0Frt4k7Z/yiKZqUrUW1Eb0f0yhAkipHb7gxuL3SRtmOLhh3Fk
-	 xGCmIUu0V8u50FF3ZploRlYW67Rz5TtuUQ4OyPGQMYm4dHWl8RvUNpZ/hQ0jXgLo98
-	 QzjwrTrUyMIWZmQvIIN2dCBKd8CAdggTwWLpAy527gxXKccjgIZNuzGRaYjzBRA7F3
-	 xhaBzlhq+Xtuy9ngFDjrpMEXUD7CRK/lk7w1OqqVvZprBiO/Q7LeHJMpsLWtbd9KcJ
-	 bAheJzOsUqRMX2aIjqttPfCoEzm373uR8hNwTQrBWWVPRxUXGs7tegPZbvGVD70orl
-	 hX3t2ma24MH5w==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A9D1C17E0071;
-	Mon,  6 Oct 2025 16:28:54 +0200 (CEST)
-Message-ID: <97228670-1e68-4bd5-8ee7-3d87bdf3eaad@collabora.com>
-Date: Mon, 6 Oct 2025 16:28:54 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 7/7] pmdomain: mediatek: Add support for MFlexGraphics
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
- Chia-I Wu <olvaffe@gmail.com>
-Cc: Boris Brezillon <boris.brezillon@collabora.com>,
- Jassi Brar <jassisinghbrar@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>,
- Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Kees Cook <kees@kernel.org>,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- Ulf Hansson <ulf.hansson@linaro.org>, kernel@collabora.com,
- dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+	id 1v5qTP-00000000e7x-3oYS;
+	Mon, 06 Oct 2025 19:02:17 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1759777319; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=VojlPtg9/Rfvpj6UlK0cOvbwN9k91tInVLcIwzrzUVl2GINHhvD9imC4Tia7PoX9Hc5QFe517MrTqhSc73G0M0RoBvd0jCXAwwaeLLuey0D65mwEUwzOUDXvyFznXByUQKXZOprKkhG/dYgUAdryE32tgRWJlnLrYTpS1LWR3+4=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1759777319; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=O1JDYsT150BDUca3Z4ctGricew8pDdsRotfUdYSg0Rc=; 
+	b=BCSWtwNT/iKBhlByQj4qjqVtgYcyYACR6XXXR1SkNTX6E2nv1P86kIj1/5pBVFWkb/0f2jry28uKo33B880//X12jg84QEZYoc15xSF5orpu4a44ibQl602MwJLKkKKZTZuNphIPFB1J2m6kme56Wyk1KT4ZM8x43IAYrJsPG+s=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1759777319;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=O1JDYsT150BDUca3Z4ctGricew8pDdsRotfUdYSg0Rc=;
+	b=hMAMpiR06OFOnsGU3Fvgcr2CLJjq5ARkTZkyPPbwAD5OZXErrqQ6ptAHmQ5Lc0T7
+	OhUrIzRLjYRTwM070arweqotenbPkfwgd1xEWG5h926h0qeUhlq5Hf8d7htDTYe5CD7
+	kJaO0jfcPG2aMTsrEyNLf0MKhI9sQK5s0FyIWrww=
+Received: by mx.zohomail.com with SMTPS id 1759777318037550.8501866601403;
+	Mon, 6 Oct 2025 12:01:58 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Guangjie Song <guangjie.song@mediatek.com>,
+ Laura Nao <laura.nao@collabora.com>,
+ =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>,
+ Yassine Oudjana <y.oudjana@protonmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: kernel@collabora.com,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-hardening@vger.kernel.org,
- linux-pm@vger.kernel.org
-References: <20251003-mt8196-gpufreq-v6-0-76498ad61d9e@collabora.com>
- <8586490.T7Z3S40VBb@workhorse>
- <94866bc6-0fdb-4e6c-ba78-5ebd7138f193@collabora.com>
- <4457422.ejJDZkT8p0@workhorse>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <4457422.ejJDZkT8p0@workhorse>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 4/4] clk: mediatek: Add rpm clocks to clk-mt8196-mfg
+Date: Mon, 06 Oct 2025 21:01:52 +0200
+Message-ID: <2164240.KlZ2vcFHjT@workhorse>
+In-Reply-To: <6441788.lOV4Wx5bFT@workhorse>
+References: <20250929-mtk-pll-rpm-v1-0-49541777878d@collabora.com>
+ <748f1176-c73c-48af-a1af-0b63d088e834@collabora.com>
+ <6441788.lOV4Wx5bFT@workhorse>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="utf-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251006_072858_773993_2BD76C62 
-X-CRM114-Status: GOOD (  68.13  )
+X-CRM114-CacheID: sfid-20251006_120216_010078_808EA276 
+X-CRM114-Status: GOOD (  49.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,296 +88,358 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/10/25 14:16, Nicolas Frattaroli ha scritto:
-> On Monday, 6 October 2025 13:37:28 Central European Summer Time AngeloGioacchino Del Regno wrote:
->> Il 06/10/25 12:58, Nicolas Frattaroli ha scritto:
->>> On Friday, 3 October 2025 23:41:16 Central European Summer Time Chia-I Wu wrote:
->>>> On Fri, Oct 3, 2025 at 1:16 PM Nicolas Frattaroli
->>>> <nicolas.frattaroli@collabora.com> wrote:
->>>>>
->>>>> Various MediaTek SoCs use GPU integration silicon named "MFlexGraphics"
->>>>> by MediaTek. On the MT8196 and MT6991 SoCs, interacting with this
->>>>> integration silicon is required to power on the GPU.
->>>>>
->>>>> This glue silicon is in the form of an embedded microcontroller running
->>>>> special-purpose firmware, which autonomously adjusts clocks and
->>>>> regulators.
->>>>>
->>>>> Implement a driver, modelled as a pmdomain driver with a
->>>>> set_performance_state operation, to support these SoCs.
->>>> I like this model a lot. Thanks!
->>>>
->>>> panthor might potentially need to interact with this driver beyond
->>>> what pmdomain provides. I am thinking about querying
->>>> GF_REG_SHADER_PRESENT. Not sure if we've heard back from the vendor.
->>>
->>> We did. The vendor confirmed this value is read by the EB firmware
->>> from an efuse, but considers the efuse address to be confidential.
->>> Consequently, we are not allowed to know the efuse address, or any
->>> of the other information required to read the efuse ourselves
->>> directly, such as what clocks and power domains it depends on.
->>>
->>> We therefore likely need to pass GF_REG_SHADER_PRESENT onward, but
->>> I do have an idea for that: struct generic_pm_domain has a member
->>> "cpumask_var_t cpus", which is there to communicate a mask of which
->>> CPUs are attached to a power domain if the power domain has the flag
->>> GENPD_FLAG_CPU_DOMAIN set. If the flag isn't set, the member is
->>> unused.
->>
->> cpumask_var_t is not going to be the right type for anything else that is
->> not a cpumask, as that is limited by NR_CPUS.
+On Wednesday, 1 October 2025 15:17:13 Central European Summer Time Nicolas Frattaroli wrote:
+> On Wednesday, 1 October 2025 13:49:54 Central European Summer Time AngeloGioacchino Del Regno wrote:
+> > Il 29/09/25 14:13, Nicolas Frattaroli ha scritto:
+> > > The mfgpll clocks on mt8196 require that the MFG's EB clock is on if
+> > > their control registers are touched in any way at all.
+> > 
+> > ....so, the MFGPLL clocks are children of EB?
+> > 
+> > Why are you using such a convoluted way of adding a parent clock to the MFGPLL
+> > instead of just
+> > ---->   `.parent_name = "mfg_eb"`  <-----
+> > 
+> > ???????
 > 
-> Hmmm, good point, I thought that would be done by the allocation
-> but nope.
->   
->> You'd have to declare a new bitmap, suitable for generic devices, which may
->> get a little complicated on deciding how many bits would be enough... and
->> if we look at GPUs... AMD and nV have lots of cores, so that becomes a bit
->> unfeasible to put in a bitmap.
->>
->> Not sure then how generic that would be.
+> They're not children. A child would mean that they derive their
+> clock rate from the parent clock. This isn't the relationship here
+> though, their clock signal is completely independent of mfg_eb,
+> but the registers they access for clock control depend on mfg_eb to
+> be on. This means that even if mfgpll is off, and something wants to
+> check if they're on or not, the mfg_eb needs to be on for that
+> register access to happen. Similarly, when reconfiguring the mfgpll
+> rate, the clock rate of mfg_eb plays no role. It just needs to be on
+> for the register access.
 > 
-> Yeah, at this point I'm rapidly approaching "shove stuff into pmdomain
-> for no obvious pmdomain reason" territory, because we're not really
-> communicating that this pmdomain is only tied to these cores, but
-> rather that only these cores are present. Subtle difference that
-> could come bite us in the rear once some other chip has several power
-> domains that tie to different GPU shader cores.
-> 
+> mfg_eb here is a clock that drives a register, the register just
+> happens to be part of a clock controller.
 
-I think that the only thing that we might see at some point in the future is one
-power domain per "set of shader cores", but not even sure that's really going to
-ever be a thing, as it might just not be worth implementing from a firmware
-perspective.
+As a follow-up to this, I've done some experiments now, as Angelo
+let me know that the only way we can know for sure is by observing
+mfgpll working while mfg_eb is off.
 
-I am guessing here - we won't ever see one power domain per core.
+With horrid hacks, I've managed to manufacture a scenario in which
+EB was definitely off, the mfgplls were still on, the GPUEB didn't
+try to ruin the party by fiddling with the mfgpll clock registers,
+and what I got in return was panthor printing errors about its jobs
+timing out, before an SError splat after several timeouts.
 
-Besides, also remember that many GPUs do have internal power management (as in,
-per-core or per-core-set shutdown) so there already is such a power saving way.
-That makes a vendor-specific implementation of that way less likely to see, even
-though.. being cautious, never say never.
+This makes me think that mfg_eb really is a parent of mfgpll, as
+evidently mfgpll didn't seem to be ticking anymore and caused the
+timeouts to happen before something touched unclocked registers
+and caused an SError. Put in glmark2 terms, the horse was no longer
+spinning around its axis, causing much grief.
 
-In any case, we can't predict the future, we can only guess - and evaluate things
-that could or could not realistically make sense.
+The other possibility is, and I think this is quite likely: we are
+modeling the mfgpll power up/down wrong anyway, and always rely on
+the GPUEB to actually do this properly. I've diffed the mfgpll clock
+registers with the GPUEB running and with it not running, here are
+the results in addr u32 u32 u32 u32 format:
 
-(anyway if you find a magic ball, please share, I need it for some other stuff :P)
+$ diff -u mfgplldump-not-running.txt mfgplldump-running.txt 
+--- mfgplldump-not-running.txt  2025-10-06 20:03:11.902125545 +0200
++++ mfgplldump-running.txt      2025-10-06 20:03:08.457020814 +0200
+@@ -1,5 +1,5 @@
+-4b810000  00000000 0001fc23  00084444 831a0000
+-4b810010  001a0000 00000002  00000048 00000200
++4b810000  00000000 0001fc23  00084445 031a0000
++4b810010  001a0000 80000002  00000048 00000200
+ 4b810020  00000000 00000000  00000000 00000000
+ 4b810030  00000000 00000000  00000000 00000000
+ 4b810040  00018000 01ff1a00  00000000 00000000
+@@ -62,8 +62,8 @@
+ 4b8103d0  00000000 00000000  00000000 00000000
+ 4b8103e0  00000000 00000000  00000000 00000000
+ 4b8103f0  00000000 00000000  00000000 00000000
+-4b810400  00000000 0001fc23  00084444 831a0000
+-4b810410  001a0000 00000002  00000048 00000200
++4b810400  00000000 0001fc23  00084445 031a0000
++4b810410  001a0000 80000002  00000048 00000200
+ 4b810420  00000000 00000000  00000000 00000000
+ 4b810430  00000000 00000000  00000000 00000000
+ 4b810440  00018000 01ff1a00  00000000 00000000
+@@ -126,8 +126,8 @@
+ 4b8107d0  00000000 00000000  00000000 00000000
+ 4b8107e0  00000000 00000000  00000000 00000000
+ 4b8107f0  00000000 00000000  00000000 00000000
+-4b810800  00000000 0001fc23  00084444 831a0000
+-4b810810  001a0000 00000002  00000048 00000200
++4b810800  00000000 0001fc23  00084445 031a0000
++4b810810  001a0000 80000002  00000048 00000200
+ 4b810820  00000000 00000000  00000000 00000000
+ 4b810830  00000000 00000000  00000000 00000000
+ 4b810840  00018000 01ff1a00  00000000 00000000
 
->>
->>>
->>> This means we could overload its meaning, e.g. with a new flag, to
->>> communicate such masks for other purposes, since it's already the
->>> right type and all. This would be quite a generic way for hardware
->>> other than cpus to communicate such core masks. I was planning to
->>> develop and send out an RFC series for this, to gauge how much Ulf
->>> Hansson hates that approach.
->>>
->>> A different solution could be that mtk-mfg-pmdomain could act as an
->>> nvmem provider, and then we integrate generic "shader_present is
->>> stored in nvmem" support in panthor, and adjust the DT binding for
->>> this.
->>>
->>> This approach would again be generic across vendors from panthor's
->>> perspective. It would, however, leak into DT the fact that we have
->>> to implement this in the gpufreq device, rather than having the
->>> efuse read directly.
->>>
->>>> Have you considered moving this to drivers/soc/mediatek such that we
->>>> can provide include/linux/mtk-mfg.h to panthor?
->>>
->>> Having panthor read data structures from mtk-mfg-pmdomain would be a
->>> last resort for me if none of the other approaches work out, as I'm
->>> not super keen on adding vendor-specific code paths to panthor
->>> itself. A new generic code path in panthor that is only used by one
->>> vendor for now is different in that it has the potential to be used
->>> by a different vendor's integration logic in the future as well.
->>>
->>> So for now I'd like to keep it out of public includes and panthor as
->>> much as possible, unless the two other approaches don't work out for
->>> us.
->>>
->>
->> I don't really like seeing more and more vendor specific APIs: MediaTek does
->> suffer quite a lot from that, with cmdq being one of the examples - and the
->> fact that it's not just MediaTek having those, but also others like Qualcomm,
->> Rockchip, etc, is not an excuse to keep adding new ones when there are other
->> alternatives.
->>
->> Also another fact there is that I don't think that panthor should get any
->> vendor specific "things" added (I mean, that should be avoided as much as
->> possible).
-> 
-> The big issue to me is that vendors will always prefer to shoehorn
-> more vendor specific hacks into panthor, because the alternative is
-> to tell us how the hardware actually works. Which they all hate
-> doing.
+Note how bit 31 of MFGPLL*CON3 gets flipped to 1 in the registers
+when the GPUEB is running. Nothing in our code would model it to be
+like this.
 
-That's a bit too much pessimistic... I hope.
+I'll rework the series to just model MFG_EB as a parent. I'll drop the
+bindings patch, but will keep the refactor since it's still useful.
+Then I'll drop the mfgpll RPM patch and make it a fixes patch to add
+the EB parent instead.
 
-> I definitely agree that we should work from the assumption
-> that panthor can support a Mali implementation without adding too
-> much special code for it, because in 10 years there will still be
-> new devices that use panthor as a driver, but few people will still
-> be testing MT8196 codepaths within panthor, which makes refactoring
-> prone to subtle breakage.
+However, I'm not happy about this, because I am quite certain that
+the code here is not all that correct, but we do not have access to
+the documentation to show us how it would be correct, and downstream
+kernels are not of any help either.
 
-I had no doubt that you were thinking alike, but happy to see that confirmed.
+I also can't just adjust the mfgpll stuff to fit the bit writes I
+actually see happening from the EB, because powering off the EB so
+it doesn't try to touch them and then setting those registers right
+again will still leave a gap wherein the register is not correct
+and who knows what happens. Ditto for the regulators. Similarly,
+I can't just try disabling MFG_EB while the EB is running, because
+it will touch the control registers of the clocks and depends on
+MFG_EB for sure, and I can't observe whether MFGPLL is ticking in
+any other way other than looking at whether the GPU is working. Or
+maybe I can and there's some monitor register somewhere, but not
+anywhere I have documentation for.
 
-> 
-> Not to mention that we don't want to rewrite all the vendor specific
-> code for Tyr.
-> 
->> That said - what you will be trying to pass is really a value that is read
->> from eFuse, with the EB firmware being a wrapper over that: if we want, we
->> could see that yet-another-way of interfacing ourselves with reading nvmem
->> where, instead of a direct MMIO read, we're asking a firmware to give us a
->> readout.
->>
->> This leads me to think that one of the possible options could be to actually
->> register (perhaps as a new platform device, because I'm not sure that it could
->> be feasible to register a pmdomain driver as a nvmem provider, but ultimately
->> that is Ulf and Srinivas' call I guess) a nvmem driver that makes an IPI call
->> to GPUEB and gives back the value to panthor through generic bindings.
-> 
-> Lee Jones will probably tell me to use MFD instead and that I'm silly
-> for not using MFD, so we might as well. Should I do that for v7 or
-> should v7 be less disruptive? Also, would I fillet out the clock
-> provider stuff into an MFD cell as well, or is that too much?
-> 
-> Also, nb: there is no IPI call for getting the SHADER_PRESENT value
-> that we know of. It's a location in the reserved shared memory
-> populated by the EB during the shared mem init, which ideally isn't
-> done multiple times by multiple drivers because that's dumb.
-> 
-> On the other hand, I don't really know what we get out of splitting
-> this up into several drivers, other than a more pleasing directory
-> structure and get_maintainers picking up the right subsystem people.
-> 
+I've checked the remaining memory area of the mfgpll clock controllers,
+and found no suspiciously changing values in there that could indicate
+a monitor register that contains the actual pll frequency.
 
-I'm not sure. A power controller being also a clock provider isn't entirely
-uncommon (look at i.MX8 MP), but then think about it: if you add a MFD, you
-are still introducing vendor APIs around... as you'd need a way to do your
-piece of communication with the EB.
+Kind regards,
+Nicolas Frattaroli
 
-The benefit, then, is only what you just said.
-
-There are literally too many alternatives to do the very same as what you're
-doing here, including having a (firmware|soc)/mediatek-gpueb.c driver managing
-only the communication part, and the rest all in small different drivers, or...
-
-...you could share the reserved-memory between the two drivers, and have the efuse
-driver getting a power domain from mtk-mfg-pmdomain (to check and call mfg power
-on), then reading the byte(s) that you need from GF_REG_SHADER_PRESENT from there.
-
-Not sure then what's the best option.
-
-One thing I'm sure about is that you're setting how everything works *now*, and
-changing that later is going to cause lots of pain and lots of suffering, so a
-decision must be taken right now.
-
->>>>>
->>>>> The driver also exposes the actual achieved clock rate, as read back
->>>>> from the MCU, as common clock framework clocks, by acting as a clock
->>>>> provider as well.
->>>>>
->>>>> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
->>>>> ---
->>>>>    drivers/pmdomain/mediatek/Kconfig            |   16 +
->>>>>    drivers/pmdomain/mediatek/Makefile           |    1 +
->>>>>    drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c | 1027 ++++++++++++++++++++++++++
->>>>>    3 files changed, 1044 insertions(+)
->>>> [...]
->>>>> +static int mtk_mfg_init_shared_mem(struct mtk_mfg *mfg)
->>>>> +{
->>>>> +       struct device *dev = &mfg->pdev->dev;
->>>>> +       struct mtk_mfg_ipi_msg msg = {};
->>>>> +       int ret;
->>>>> +
->>>>> +       dev_dbg(dev, "clearing GPUEB shared memory, 0x%X bytes\n", mfg->shared_mem_size);
->>>>> +       memset_io(mfg->shared_mem, 0, mfg->shared_mem_size);
->>>>> +
->>>>> +       msg.cmd = CMD_INIT_SHARED_MEM;
->>>>> +       msg.u.shared_mem.base = mfg->shared_mem_phys;
->>>>> +       msg.u.shared_mem.size = mfg->shared_mem_size;
->>>>> +
->>>>> +       ret = mtk_mfg_send_ipi(mfg, &msg);
->>>>> +       if (ret)
->>>>> +               return ret;
->>>>> +
->>>>> +       if (readl(mfg->shared_mem) != GPUEB_MEM_MAGIC) {
->>>> Add the offset GF_REG_MAGIC, even though it is 0.
->>>
->>> Good catch, will do!
->>>
->>>>
->>>>> +               dev_err(dev, "EB did not initialise shared memory correctly\n");
->>>>> +               return -EIO;
->>>>> +       }
->>>>> +
->>>>> +       return 0;
->>>>> +}
->>>> [...]
->>>>> +static int mtk_mfg_mt8196_init(struct mtk_mfg *mfg)
->>>>> +{
->>>>> +       void __iomem *e2_base;
->>>>> +
->>>>> +       e2_base = devm_platform_ioremap_resource_byname(mfg->pdev, "hw-revision");
->>>>> +       if (IS_ERR(e2_base))
->>>>> +               return dev_err_probe(&mfg->pdev->dev, PTR_ERR(e2_base),
->>>>> +                                    "Couldn't get hw-revision register\n");
->>>>> +
->>>>> +       if (readl(e2_base) == MFG_MT8196_E2_ID)
->>>>> +               mfg->ghpm_en_reg = RPC_DUMMY_REG_2;
->>>>> +       else
->>>>> +               mfg->ghpm_en_reg = RPC_GHPM_CFG0_CON;
->>>>> +
->>>>> +       return 0;
->>>>> +};
->>>> Extraneous semicolon.
->>>
->>> Good catch, will fix!
->>>
->>>>
->>>>> +static int mtk_mfg_init_mbox(struct mtk_mfg *mfg)
->>>>> +{
->>>>> +       struct device *dev = &mfg->pdev->dev;
->>>>> +       struct mtk_mfg_mbox *gf;
->>>>> +       struct mtk_mfg_mbox *slp;
->>>>> +
->>>>> +       gf = devm_kzalloc(dev, sizeof(*gf), GFP_KERNEL);
->>>>> +       if (!gf)
->>>>> +               return -ENOMEM;
->>>>> +
->>>>> +       gf->rx_data = devm_kzalloc(dev, GPUEB_MBOX_MAX_RX_SIZE, GFP_KERNEL);
->>>> It looks like gfx->rx_data can simply be "struct mtk_mfg_ipi_msg rx_data;".
->>>
->>> Hmmm, good point. I'll change it to that.
->>>
->>
->> Honestly, I prefer the current version. No strong opinions though.
-> 
-> And I just realised you're sorta right in that; struct mtk_mfg_mbox is
-> a type used by both the gpufreq mbox and the sleep mbox. The struct
-> mtk_mfg_ipi_msg type is only the right type to use for the gpufreq
-> mbox. By making rx_data a `struct mtk_mfg_ipi_msg` type, we're
-> allocating it for both channels, and in the case of the sleep mailbox,
-> it's the wrong type to boot (though not like sleep replies).
-> 
-> So yeah I think I'll keep the current construct. If this driver grows
-> another limb in the future that talks to yet another mailbox channel,
-> we'll appreciate not having to untangle that.
-
-...that was the implicit reasoning around my statement, yes.
-
-Cheers,
-Angelo
-
-> 
->> [...]
 > 
 > Kind regards,
 > Nicolas Frattaroli
 > 
+> > 
+> > Cheers,
+> > Angelo
+> > 
+> > > Failing to ensure
+> > > this results in a pleasant SError interrupt if the EB clock happens to
+> > > be off.
+> > > 
+> > > To achieve this, leverage the CCF core's runtime power management
+> > > support. Define the necessary suspend/resume callbacks, add the
+> > > necessary code to get RPM clocks from the DT, and make sure RPM is
+> > > enabled before clock registration happens.
+> > > 
+> > > For the RPM callbacks to really make much sense at all, we change the
+> > > drvdata from clk_data to a new private struct, as is common in drivers
+> > > across the Linux kernel.
+> > > 
+> > > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> > > ---
+> > >   drivers/clk/mediatek/clk-mt8196-mfg.c | 104 +++++++++++++++++++++++++++-------
+> > >   drivers/clk/mediatek/clk-pll.h        |   2 +
+> > >   2 files changed, 87 insertions(+), 19 deletions(-)
+> > > 
+> > > diff --git a/drivers/clk/mediatek/clk-mt8196-mfg.c b/drivers/clk/mediatek/clk-mt8196-mfg.c
+> > > index 8e09c0f7b7548f8e286671cea2dac64530b8ce47..64cc0c037f62d7eab8d0e7fc00c05d122bf4130c 100644
+> > > --- a/drivers/clk/mediatek/clk-mt8196-mfg.c
+> > > +++ b/drivers/clk/mediatek/clk-mt8196-mfg.c
+> > > @@ -13,6 +13,7 @@
+> > >   #include <linux/of_address.h>
+> > >   #include <linux/of_device.h>
+> > >   #include <linux/platform_device.h>
+> > > +#include <linux/pm_runtime.h>
+> > >   
+> > >   #include "clk-mtk.h"
+> > >   #include "clk-pll.h"
+> > > @@ -38,7 +39,7 @@
+> > >   	    _flags, _rst_bar_mask,				\
+> > >   	    _pd_reg, _pd_shift, _tuner_reg,			\
+> > >   	    _tuner_en_reg, _tuner_en_bit,			\
+> > > -	    _pcw_reg, _pcw_shift, _pcwbits) {			\
+> > > +	    _pcw_reg, _pcw_shift, _pcwbits, _rpm_clks) {	\
+> > >   		.id = _id,					\
+> > >   		.name = _name,					\
+> > >   		.reg = _reg,					\
+> > > @@ -58,26 +59,60 @@
+> > >   		.pcw_shift = _pcw_shift,			\
+> > >   		.pcwbits = _pcwbits,				\
+> > >   		.pcwibits = MT8196_INTEGER_BITS,		\
+> > > +		.rpm_clk_names = _rpm_clks,			\
+> > > +		.num_rpm_clks = ARRAY_SIZE(_rpm_clks),		\
+> > >   	}
+> > >   
+> > > +static const char * const mfgpll_rpm_clk_names[] = {
+> > > +	NULL
+> > > +};
+> > > +
+> > >   static const struct mtk_pll_data mfg_ao_plls[] = {
+> > >   	PLL(CLK_MFG_AO_MFGPLL, "mfgpll", MFGPLL_CON0, MFGPLL_CON0, 0, 0, 0,
+> > > -	    BIT(0), MFGPLL_CON1, 24, 0, 0, 0,
+> > > -	    MFGPLL_CON1, 0, 22),
+> > > +	    BIT(0), MFGPLL_CON1, 24, 0, 0, 0, MFGPLL_CON1, 0, 22,
+> > > +	    mfgpll_rpm_clk_names),
+> > >   };
+> > >   
+> > >   static const struct mtk_pll_data mfgsc0_ao_plls[] = {
+> > >   	PLL(CLK_MFGSC0_AO_MFGPLL_SC0, "mfgpll-sc0", MFGPLL_SC0_CON0,
+> > >   	    MFGPLL_SC0_CON0, 0, 0, 0, BIT(0), MFGPLL_SC0_CON1, 24, 0, 0, 0,
+> > > -	    MFGPLL_SC0_CON1, 0, 22),
+> > > +	    MFGPLL_SC0_CON1, 0, 22, mfgpll_rpm_clk_names),
+> > >   };
+> > >   
+> > >   static const struct mtk_pll_data mfgsc1_ao_plls[] = {
+> > >   	PLL(CLK_MFGSC1_AO_MFGPLL_SC1, "mfgpll-sc1", MFGPLL_SC1_CON0,
+> > >   	    MFGPLL_SC1_CON0, 0, 0, 0, BIT(0), MFGPLL_SC1_CON1, 24, 0, 0, 0,
+> > > -	    MFGPLL_SC1_CON1, 0, 22),
+> > > +	    MFGPLL_SC1_CON1, 0, 22, mfgpll_rpm_clk_names),
+> > >   };
+> > >   
+> > > +struct clk_mt8196_mfg {
+> > > +	struct clk_hw_onecell_data *clk_data;
+> > > +	struct clk_bulk_data *rpm_clks;
+> > > +	unsigned int num_rpm_clks;
+> > > +};
+> > > +
+> > > +static int __maybe_unused clk_mt8196_mfg_resume(struct device *dev)
+> > > +{
+> > > +	struct clk_mt8196_mfg *clk_mfg = dev_get_drvdata(dev);
+> > > +
+> > > +	if (!clk_mfg || !clk_mfg->rpm_clks)
+> > > +		return 0;
+> > > +
+> > > +	return clk_bulk_prepare_enable(clk_mfg->num_rpm_clks, clk_mfg->rpm_clks);
+> > > +}
+> > > +
+> > > +static int __maybe_unused clk_mt8196_mfg_suspend(struct device *dev)
+> > > +{
+> > > +	struct clk_mt8196_mfg *clk_mfg = dev_get_drvdata(dev);
+> > > +
+> > > +	if (!clk_mfg || !clk_mfg->rpm_clks)
+> > > +		return 0;
+> > > +
+> > > +	clk_bulk_disable_unprepare(clk_mfg->num_rpm_clks, clk_mfg->rpm_clks);
+> > > +
+> > > +	return 0;
+> > > +}
+> > > +
+> > >   static const struct of_device_id of_match_clk_mt8196_mfg[] = {
+> > >   	{ .compatible = "mediatek,mt8196-mfgpll-pll-ctrl",
+> > >   	  .data = &mfg_ao_plls },
+> > > @@ -92,35 +127,60 @@ MODULE_DEVICE_TABLE(of, of_match_clk_mt8196_mfg);
+> > >   static int clk_mt8196_mfg_probe(struct platform_device *pdev)
+> > >   {
+> > >   	const struct mtk_pll_data *plls;
+> > > -	struct clk_hw_onecell_data *clk_data;
+> > > +	struct clk_mt8196_mfg *clk_mfg;
+> > >   	struct device_node *node = pdev->dev.of_node;
+> > > +	struct device *dev = &pdev->dev;
+> > >   	const int num_plls = 1;
+> > > -	int r;
+> > > +	int r, i;
+> > >   
+> > > -	plls = of_device_get_match_data(&pdev->dev);
+> > > +	plls = of_device_get_match_data(dev);
+> > >   	if (!plls)
+> > >   		return -EINVAL;
+> > >   
+> > > -	clk_data = mtk_alloc_clk_data(num_plls);
+> > > -	if (!clk_data)
+> > > +	clk_mfg = devm_kzalloc(dev, sizeof(*clk_mfg), GFP_KERNEL);
+> > > +	if (!clk_mfg)
+> > >   		return -ENOMEM;
+> > >   
+> > > -	r = mtk_clk_register_plls(&pdev->dev, plls, num_plls, clk_data);
+> > > +	clk_mfg->num_rpm_clks = plls[0].num_rpm_clks;
+> > > +
+> > > +	if (clk_mfg->num_rpm_clks) {
+> > > +		clk_mfg->rpm_clks = devm_kcalloc(dev, clk_mfg->num_rpm_clks,
+> > > +						 sizeof(*clk_mfg->rpm_clks),
+> > > +						 GFP_KERNEL);
+> > > +		if (!clk_mfg->rpm_clks)
+> > > +			return -ENOMEM;
+> > > +
+> > > +		for (i = 0; i < clk_mfg->num_rpm_clks; i++)
+> > > +			clk_mfg->rpm_clks->id = plls[0].rpm_clk_names[i];
+> > > +
+> > > +		r = devm_clk_bulk_get(dev, clk_mfg->num_rpm_clks,
+> > > +				      clk_mfg->rpm_clks);
+> > > +		if (r)
+> > > +			return r;
+> > > +	}
+> > > +
+> > > +	clk_mfg->clk_data = mtk_alloc_clk_data(num_plls);
+> > > +	if (!clk_mfg->clk_data)
+> > > +		return -ENOMEM;
+> > > +
+> > > +	dev_set_drvdata(dev, clk_mfg);
+> > > +	pm_runtime_enable(dev);
+> > > +
+> > > +	r = mtk_clk_register_plls(dev, plls, num_plls, clk_mfg->clk_data);
+> > >   	if (r)
+> > >   		goto free_clk_data;
+> > >   
+> > > -	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+> > > +	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get,
+> > > +				   clk_mfg->clk_data);
+> > >   	if (r)
+> > >   		goto unregister_plls;
+> > >   
+> > > -	platform_set_drvdata(pdev, clk_data);
+> > > -
+> > >   	return r;
+> > >   
+> > >   unregister_plls:
+> > > -	mtk_clk_unregister_plls(plls, num_plls, clk_data);
+> > > +	mtk_clk_unregister_plls(plls, num_plls, clk_mfg->clk_data);
+> > >   free_clk_data:
+> > > -	mtk_free_clk_data(clk_data);
+> > > +	mtk_free_clk_data(clk_mfg->clk_data);
+> > >   
+> > >   	return r;
+> > >   }
+> > > @@ -128,20 +188,26 @@ static int clk_mt8196_mfg_probe(struct platform_device *pdev)
+> > >   static void clk_mt8196_mfg_remove(struct platform_device *pdev)
+> > >   {
+> > >   	const struct mtk_pll_data *plls = of_device_get_match_data(&pdev->dev);
+> > > -	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
+> > > +	struct clk_mt8196_mfg *clk_mfg = dev_get_drvdata(&pdev->dev);
+> > >   	struct device_node *node = pdev->dev.of_node;
+> > >   
+> > >   	of_clk_del_provider(node);
+> > > -	mtk_clk_unregister_plls(plls, 1, clk_data);
+> > > -	mtk_free_clk_data(clk_data);
+> > > +	mtk_clk_unregister_plls(plls, 1, clk_mfg->clk_data);
+> > > +	mtk_free_clk_data(clk_mfg->clk_data);
+> > >   }
+> > >   
+> > > +static DEFINE_RUNTIME_DEV_PM_OPS(clk_mt8196_mfg_pm_ops,
+> > > +				 clk_mt8196_mfg_suspend,
+> > > +				 clk_mt8196_mfg_resume,
+> > > +				 NULL);
+> > > +
+> > >   static struct platform_driver clk_mt8196_mfg_drv = {
+> > >   	.probe = clk_mt8196_mfg_probe,
+> > >   	.remove = clk_mt8196_mfg_remove,
+> > >   	.driver = {
+> > >   		.name = "clk-mt8196-mfg",
+> > >   		.of_match_table = of_match_clk_mt8196_mfg,
+> > > +		.pm = pm_ptr(&clk_mt8196_mfg_pm_ops),
+> > >   	},
+> > >   };
+> > >   module_platform_driver(clk_mt8196_mfg_drv);
+> > > diff --git a/drivers/clk/mediatek/clk-pll.h b/drivers/clk/mediatek/clk-pll.h
+> > > index 0f2a1d19eea78b7390b221af47016eb9897f3596..82b86b849a67359d8f23d828f50422081c2747e3 100644
+> > > --- a/drivers/clk/mediatek/clk-pll.h
+> > > +++ b/drivers/clk/mediatek/clk-pll.h
+> > > @@ -53,6 +53,8 @@ struct mtk_pll_data {
+> > >   	u8 pll_en_bit; /* Assume 0, indicates BIT(0) by default */
+> > >   	u8 pcw_chg_bit;
+> > >   	u8 fenc_sta_bit;
+> > > +	const char * const *rpm_clk_names;
+> > > +	unsigned int num_rpm_clks;
+> > >   };
+> > >   
+> > >   /*
+> > > 
+> > 
+> > 
+> > 
 > 
+> 
+
+
 
 
 
