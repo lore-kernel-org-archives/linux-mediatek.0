@@ -4,67 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF595CCA470
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Oct 2025 21:57:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BB03CAC5B0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Oct 2025 06:22:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ykSuG+jlMa59PgQtNlOKjt0WWar3y1ZxZjMPxMcJ7KU=; b=4KbzXieZcbNQgNUwfC+3f1DLz1
-	ccjM3WJ5cr5l+Pq6YfAKTRUv1pLrk6195octlrvDVTfasyKGSCIsfpzUIrjvYuuBdhuWbxVLWQxRk
-	IF85ulKMVN8aazUfUrtUOwkS9/aXf7Esn61EEWDXwpT+hrOsltYMBxTwW0DWH5hryvJ8jYvmK1G+0
-	/RtFE7t4a17jye9B9D33+0W4NGdI5UIHwJ39RKzFsHx9wf9QCaeGvcdjatYs8k/XJ2VXOyBI4ICmX
-	imGRsZRdYYrksPR0Fo9sENSYWlPMiPGzgNN2zZNrG1nInfDj3wN2i7cI73Jo5a874RqUHmPekxgGG
-	EgpkZdww==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=A69RYfKst6AYHDVVMInvS7LhHEZ7W61Ln2DcYwYJasc=; b=D7Vbt4hf66T/ip8hfOabxw4NkD
+	NBN+ka+838dQurbC6p8SX2adJq2ISjgtswH9KvitYW8wLM9lw76e+Cvyv/eGLgtYzoh3L89K7W9Cv
+	iSLtDWcOsobMuZdKHAW3w13w5zc97rJUlrkOBEI48esILz5mDyWVn8AHvHYtCwrtfVBFWWZfl0Ipe
+	DaCf08rcFhd+CfUU8KXVe5OkNlBSYiQavrwXEU6C7oHoeCUTQAgESLJbpVK25UpQO2B0iaHa0e+dm
+	M7jYT1FGrWR9/w57n4PLCbA4RgeN3eD4EXm0A1AYH+mNylXP9NTfDouLnc163KFsWoe/bKEsjvI1o
+	qAFsP9uQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v5tDI-00000000sy1-0orq;
-	Mon, 06 Oct 2025 21:57:48 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1v615J-00000001Lka-22bW;
+	Tue, 07 Oct 2025 06:22:05 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v5tDF-00000000sxR-3lxQ;
-	Mon, 06 Oct 2025 21:57:45 +0000
+	id 1v615H-00000001Ljt-3Hjp;
+	Tue, 07 Oct 2025 06:22:03 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 41981611A6;
-	Mon,  6 Oct 2025 21:57:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B8C8EC4CEF5;
-	Mon,  6 Oct 2025 21:57:44 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 2444560539;
+	Tue,  7 Oct 2025 06:22:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CFF23C4CEF1;
+	Tue,  7 Oct 2025 06:21:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1759787865;
-	bh=yp9tR/3bMmlgJmoJe+O7mORmnlg42QVaBRKpSQK+faw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=GTyoIor0/sVEIADuKwC2wgz0koY/pk6wANm9phf3dA/bKr5hBzcYwHqszSKqpPCX2
-	 cA4l0i8FyBxnWUi31SE26Qw22ZzmmwFflHH2APVfOv7uEGxUzoAmxxZncclZhC2yvi
-	 zF/0Ffbfq2BJEHjUvUzaIOkIKVrB9F2cUszSPmI1sgfzD/jR6Y9GOzdRwE79/xP51m
-	 el9HfnvxsvKbZSGHiuOhx7KhB0kEObs9wrwscFDOkh64eaEo0Aw3D+2A6LuPhsHOKx
-	 mMdvE1E+KkI/JjaVQC9qQuGuxTHSsxNmxY8GR3GYFgPIfoNwRj9Z7UMdnqHPFtvQPP
-	 7xor4IFATWACQ==
-Date: Mon, 6 Oct 2025 16:57:44 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Conor Dooley <conor+dt@kernel.org>, linux-watchdog@vger.kernel.org,
-	Wim Van Sebroeck <wim@linux-watchdog.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Herbert Xu <herbert@gondor.apana.org.au>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org, linux-crypto@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	John Crispin <john@phrozen.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Guenter Roeck <linux@roeck-us.net>, Felix Fietkau <nbd@nbd.name>,
-	devicetree@vger.kernel.org, "David S. Miller" <davem@davemloft.net>,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v4 2/4] dt-bindings: watchdog: airoha: Add support for
- Airoha AN7583 SoC
-Message-ID: <175978786337.652658.2471025622526650707.robh@kernel.org>
-References: <20250929114917.5501-1-ansuelsmth@gmail.com>
- <20250929114917.5501-3-ansuelsmth@gmail.com>
+	s=k20201202; t=1759818122;
+	bh=m9l0GR2ClUtN+ciiYusPN4tTbjjNy3iFq1z02WpEF1I=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=abjo5rzDXeCd294Zg+iSQe5/I9Bq95Y6MEc5VEeFGc2NwtAlUWop/7nZpdk9mLR5p
+	 Fm1zBEQ7tw+KuITElHfBr6J6wtlXJVjiygbFgvv/5i76dsMk32xbl+qpTAFRomhNbR
+	 FUX2Lkav/a7XJNNiR6JBT8Nnk/HhKii0H/mcLnCB4AMwmzmPXe0Xe6m0qkye4UL1L9
+	 xTJmamK5ON3lgECZ3QWOTTQ4e3Ptsuj4Ek+4dewQ/e+2Ev58QZbQp7mvOiWcVscWuP
+	 +fffNhZ1qHdrACOy13QITaY02r4OhXeKwTtcGMMewoHf2bXGGJQJ1p9r5riVmC2PKU
+	 332zR9eT/zfmw==
+Message-ID: <e2511655-1907-42db-bed5-8943a8c835c2@kernel.org>
+Date: Tue, 7 Oct 2025 15:21:53 +0900
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250929114917.5501-3-ansuelsmth@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 4/6] dt-bindings: display: mediatek: disp-tdshp: Add
+ support for MT8196
+To: =?UTF-8?B?SmF5IExpdSAo5YiY5Y2aKQ==?= <Jay.Liu@mediatek.com>
+Cc: "linux-mediatek@lists.infradead.org"
+ <linux-mediatek@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "tzimmermann@suse.de" <tzimmermann@suse.de>,
+ "simona@ffwll.ch" <simona@ffwll.ch>, "mripard@kernel.org"
+ <mripard@kernel.org>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "airlied@gmail.com" <airlied@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+References: <20250808125512.9788-1-jay.liu@mediatek.com>
+ <20250808125512.9788-5-jay.liu@mediatek.com>
+ <20250811-boisterous-skinny-ammonite-a4ca7b@kuoka>
+ <ee7b16097fbc7c5cc6b8c3163447d48ead0d44f5.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
+ cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
+ JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
+ gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
+ J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
+ NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
+ BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
+ vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
+ Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
+ TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
+ S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
+ FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJoF1BKBQkWlnSaAAoJEBuTQ307
+ QWKbHukP/3t4tRp/bvDnxJfmNdNVn0gv9ep3L39IntPalBFwRKytqeQkzAju0whYWg+R/rwp
+ +r2I1Fzwt7+PTjsnMFlh1AZxGDmP5MFkzVsMnfX1lGiXhYSOMP97XL6R1QSXxaWOpGNCDaUl
+ ajorB0lJDcC0q3xAdwzRConxYVhlgmTrRiD8oLlSCD5baEAt5Zw17UTNDnDGmZQKR0fqLpWy
+ 786Lm5OScb7DjEgcA2PRm17st4UQ1kF0rQHokVaotxRM74PPDB8bCsunlghJl1DRK9s1aSuN
+ hL1Pv9VD8b4dFNvCo7b4hfAANPU67W40AaaGZ3UAfmw+1MYyo4QuAZGKzaP2ukbdCD/DYnqi
+ tJy88XqWtyb4UQWKNoQqGKzlYXdKsldYqrLHGoMvj1UN9XcRtXHST/IaLn72o7j7/h/Ac5EL
+ 8lSUVIG4TYn59NyxxAXa07Wi6zjVL1U11fTnFmE29ALYQEXKBI3KUO1A3p4sQWzU7uRmbuxn
+ naUmm8RbpMcOfa9JjlXCLmQ5IP7Rr5tYZUCkZz08LIfF8UMXwH7OOEX87Y++EkAB+pzKZNNd
+ hwoXulTAgjSy+OiaLtuCys9VdXLZ3Zy314azaCU3BoWgaMV0eAW/+gprWMXQM1lrlzvwlD/k
+ whyy9wGf0AEPpLssLVt9VVxNjo6BIkt6d1pMg6mHsUEVzsFNBFVDXDQBEADNkrQYSREUL4D3
+ Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
+ MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
+ OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
+ GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
+ 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
+ YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
+ 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
+ BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
+ JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
+ 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
+ YpsFAmgXUF8FCRaWWyoACgkQG5NDfTtBYptO0w//dlXJs5/42hAXKsk+PDg3wyEFb4NpyA1v
+ qmx7SfAzk9Hf6lWwU1O6AbqNMbh6PjEwadKUk1m04S7EjdQLsj/MBSgoQtCT3MDmWUUtHZd5
+ RYIPnPq3WVB47GtuO6/u375tsxhtf7vt95QSYJwCB+ZUgo4T+FV4hquZ4AsRkbgavtIzQisg
+ Dgv76tnEv3YHV8Jn9mi/Bu0FURF+5kpdMfgo1sq6RXNQ//TVf8yFgRtTUdXxW/qHjlYURrm2
+ H4kutobVEIxiyu6m05q3e9eZB/TaMMNVORx+1kM3j7f0rwtEYUFzY1ygQfpcMDPl7pRYoJjB
+ dSsm0ZuzDaCwaxg2t8hqQJBzJCezTOIkjHUsWAK+tEbU4Z4SnNpCyM3fBqsgYdJxjyC/tWVT
+ AQ18NRLtPw7tK1rdcwCl0GFQHwSwk5pDpz1NH40e6lU+NcXSeiqkDDRkHlftKPV/dV+lQXiu
+ jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
+ zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
+ XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
+In-Reply-To: <ee7b16097fbc7c5cc6b8c3163447d48ead0d44f5.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,19 +132,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 21/09/2025 13:39, Jay Liu (刘博) wrote:
+>>> +
+>>> +maintainers:
+>>> +  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
+>>> +  - Philipp Zabel <p.zabel@pengutronix.de>
+>>> +
+>>> +description: |
+>>> +  MediaTek display 2D sharpness processor, namely TDSHP, provides
+>>> a
+>>> +  operation used to adjust sharpness in display system.
+>>> +  TDSHP device node must be siblings to the central MMSYS_CONFIG
+>>> node.
+>>
+>> Heh? Why would this have to be a sibling? This is really odd, because
+>> you cannto actually rely on that.
+>>
+> hi Krzysztof,
+> disp-tdshp is one of components of display pipeline. just like OVL,
+> color, etc. MMSYS_CONFIG controls the clock of display pipeline,
 
-On Mon, 29 Sep 2025 13:49:13 +0200, Christian Marangi wrote:
-> Add compatible for Airoha AN7583 SoC. The implementation is exactly the
-> same of Airoha EN7581 hence we add the compatible in addition to EN7581
-> ones.
+
+Read feedback again.
+
+Unfortunately Mediatek produces way too many poor quality patches and
+review has so many obstacles like not addressing the comments. Example
+above. You need to pay more attention and invest more time, before
+pinging or replying to maintainers.
+
 > 
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  .../devicetree/bindings/watchdog/airoha,en7581-wdt.yaml     | 6 +++++-
->  1 file changed, 5 insertions(+), 1 deletion(-)
-> 
+>> You just added unverifiable unusual ABI with no explanation.
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
-
+Best regards,
+Krzysztof
 
