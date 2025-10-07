@@ -4,102 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07FD3CCA470
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Oct 2025 13:07:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D207CCA476
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Oct 2025 15:28:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/XBg5ffSo2GrH186PgVqj31fJqaeqJpOT+XmNAkbPa8=; b=QwAmCoulVnG6t0AbHyM6HwZbuR
-	T60REFAyuLnf2Hr8KKymIqBZ5vqprnW2H6Knh7TbZdpnyRFUeIWcNc2VG66sXr79CH+jrQMbQ6tvN
-	oEkDASg9Xj2SKvV8NR+bOc+I8hK0wVqaTCi9lTsq+zIrooanUyWqIi8ujgwGbHiKNX7g0CYVl7dTd
-	KSeJgN7yYZjWE2vp2esVpETzXB/nhFFwfX2r7zzo3YP/CarmgKw2bX52IaIBXSCfcqDrh+BuFVAK9
-	gMZZYtODYzpaxaKiaNMA+Y6W1yA2wIGgXWrYWpErXcARqux/IPEGCB7S9xCUEk6hIIP2yLaGfoVAs
-	b0hsFWgQ==;
+	bh=1AtSgdu/zhEIwEp8jrIIUZRzuV/9W+89fOYn2ZCku1g=; b=Ctsh0RTgxw21e1XK5hqyn5CdVS
+	NdcDlJFKtLMCQ3KzSqoDg7vXqLJxfr7rO3WdgtveaF6Gfys0/r1JYIDwnF7cxhKmkVRCgaBJBoCTh
+	IAmCieAsEwaPzu/H2yPnXG0DOecC5tPW44J6pjK+7xJSTT9C6ahPW0OO7Uo4Y1EGhchxf63ijttTr
+	2gK2TGYbUOvaJTbWJLEpwHXJZsgE0lyJTFKfkOoWEqFCzpNxwjep5AIofXQd14FIW5Di5MLRAJekP
+	umiGbHov4KQ58kM1vbhgC3SU0z7BaMoxZdkThW8K/wS5MueXTzWBIiIeTsENT638Ge2vQPaSZiSZi
+	vhnrM8lA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v67PZ-000000021oU-0Xcq;
-	Tue, 07 Oct 2025 13:07:25 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1v69bt-00000002IHJ-3PVQ;
+	Tue, 07 Oct 2025 15:28:17 +0000
+Received: from mail-oo1-xc32.google.com ([2607:f8b0:4864:20::c32])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v67PW-000000021nT-1sJB
+	id 1v69br-00000002IGW-1aN5
 	for linux-mediatek@lists.infradead.org;
-	Tue, 07 Oct 2025 13:07:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1759842441;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=/XBg5ffSo2GrH186PgVqj31fJqaeqJpOT+XmNAkbPa8=;
-	b=iMjYNXjwKtvjpqGSpyeZBsUeRR+M5j6lVW5JHUNXHTxBO3oDvLT2ZuWxnUnihtXdaTIZkf
-	IoK0ge8ETr8cZFs5aDv4zTnEJXSC2hQsld/SgEew076hQ3o8dbtnYyS1I+RUTeauck5wDI
-	zRyBzGQme6+Tdz5JS4plY2rv6Zz1jR8=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-471-TM2a5YAAMdWyN8eRq1JLKw-1; Tue, 07 Oct 2025 09:07:18 -0400
-X-MC-Unique: TM2a5YAAMdWyN8eRq1JLKw-1
-X-Mimecast-MFC-AGG-ID: TM2a5YAAMdWyN8eRq1JLKw_1759842437
-Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-46e3ef2dd66so31353175e9.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 07 Oct 2025 06:07:17 -0700 (PDT)
+	Tue, 07 Oct 2025 15:28:16 +0000
+Received: by mail-oo1-xc32.google.com with SMTP id 006d021491bc7-64e58fb2789so2853483eaf.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 07 Oct 2025 08:28:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1759850894; x=1760455694; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=1AtSgdu/zhEIwEp8jrIIUZRzuV/9W+89fOYn2ZCku1g=;
+        b=G/+OIytLFeVrc5YIs2GesjEyPx/wvFUdlN34u1Xbwyg4zaDa7ZaYydD2cgXB2uGgJo
+         L6641VunR9EV/HnnvueOGK3zYYkh0YuV7fEi38N7BwSQ2kzX8tGV8H8zxTsM8DZQXv0f
+         6klx1L6PY6S0/ILkthKJ1tklxWFiS2xLVlzYVC981wqJD29FDu0rwtQ5SJtVuRGs4IwP
+         QQmPwlZV4uT09nHvunZwC+LAUbnqSS62xzIze7JD2Dct+Jr2xF1yzGnlLtjQ5Cbgp1Kg
+         KaMzCJfn0pjde9XN4T0cyy7yo04ToFEhQoCD6cDPvcnU81e2x1jYAQW0HmcI/etVp4EB
+         lwQw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1759842437; x=1760447237;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=/XBg5ffSo2GrH186PgVqj31fJqaeqJpOT+XmNAkbPa8=;
-        b=CIVpQ7jVrnVHz8HMXjZ5RFZt/LOzXXWVGLItme6boxX8ME6HULVknXfIKFMG9Vnpdc
-         coSFWH7HZoS/dp7yzPRGiG7mVQxpmZuUymJjKetyXx0287HyqfEPGDB/pjB55Uxz4h13
-         fAKVacgcjCibCQqXVJe/PoPpYBH5SEhz+IG2UlSvqCPOUcoj6WITzjECBPtWe6hxyNh5
-         NWqFHfYT7PPIIEZI0TfvAJXhJ4rQ+06PwB6FkhF5S9XTnOQ7F8kQXV1Wu4tKFz3cusjs
-         EBFkhtKUT8ub0qmioPzRk3DGqGKPfDX0oTyOPUuvSsfnQ8cPphsKoW8jA21yTAhWK7dS
-         73AA==
-X-Forwarded-Encrypted: i=1; AJvYcCXTrP12hNYrBm2E3CXAOSPHGEPzwi7tL9uNCEmyGQvnjSMz8G2zjP9NK32H6P9G8RwTyqvv/F96XOPodL6PXA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz/th3PcDwzl1xJAUtBqeRJoTcyNhnHapzAiVW7Z4QSpaHGJw1R
-	ThOKm+XYOrFBoJF3NY53OrQzQqwCpDvUtFkQj8Ran3gGPawEcnEnuG1eIyo4tpLdZ6P841kovBS
-	UAskayIfoVKr4U/iom58ZI652QMzQeCpYEGzvU2JSEcHq2E16NGiZb7CgCQsSnKMQ4D4hpW7TyQ
-	==
-X-Gm-Gg: ASbGnctzVlGfUM5fOi016pZEUf4ahvI/VApXOI3QHiKm0Uq9iFrsCjU2YCuHiTWEMm/
-	1clXM7P+E7450fJk9+zXFpuXaG/wq4HAjXxQ0masg22EkiLqVruXNRCKDki3Z75n+84m3Se2Ur2
-	ARQ0P6e+E/N+mLKDyluZ26sxv9rWjStEDiu+Z0uneIYTgpIZFX1E2rvEP3+Jsqqu4kRjzhRnu3h
-	N8DuBRGT7u5XmvMQf0IyAuHIfmNAbANiN1a3E/395giMOYeC7WVLvEjLw5JauxdOf07NDWObCLQ
-	BX2C7gmPtgvZ7KpjOCAvF25n43XTnXV9Y2/feoA3iH+yEMx9RL+yxAuLBjQu7KnlCLSPazpeOtK
-	ijO5ALGkq/30fOCZAyg==
-X-Received: by 2002:a05:600c:6a07:b0:46e:74bb:6bd with SMTP id 5b1f17b1804b1-46fa2952c89mr17285465e9.4.1759842436891;
-        Tue, 07 Oct 2025 06:07:16 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IE2L851GpOZr+HLN+RmzEFHJmku4g/YovfWmiVjt/V8y3IuJukmtrAjm+9vQy2k3rcv11whEw==
-X-Received: by 2002:a05:600c:6a07:b0:46e:74bb:6bd with SMTP id 5b1f17b1804b1-46fa2952c89mr17285295e9.4.1759842436449;
-        Tue, 07 Oct 2025 06:07:16 -0700 (PDT)
-Received: from ?IPV6:2a0d:3344:2712:7e10:4d59:d956:544f:d65c? ([2a0d:3344:2712:7e10:4d59:d956:544f:d65c])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-46e61a020a3sm307487145e9.10.2025.10.07.06.07.15
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 07 Oct 2025 06:07:15 -0700 (PDT)
-Message-ID: <7b460ea8-c340-4ab8-96d9-43568227ee07@redhat.com>
-Date: Tue, 7 Oct 2025 15:07:14 +0200
+        d=1e100.net; s=20230601; t=1759850894; x=1760455694;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=1AtSgdu/zhEIwEp8jrIIUZRzuV/9W+89fOYn2ZCku1g=;
+        b=lohrCvyIHQINGnqoyxKLRTd9uE4sO5niQd1jk3mRYWnfWYunMIk39AjVOQgFDfTJy3
+         2P+336qbrV9V3/iCpQt6GpEiy86djKwdMQfak8FZjiRADgC4hZr0cXzhbYIS6YrLJ4Xh
+         I0Jb7NLAMBifOEanMzOWwUgzdyoTgwA1XCtW7fugqlTxRQsHdAHbHnMuCjA7+Peq3VIC
+         wgzYpZWuvtEq779dyNHhuvyaJbTRK1YjMcQvv5e7XE8ZTr2kFtxpJrS6EMcFkOmHBDdo
+         QWZTTOfmUpm3ED9b/zDubAVRzAaD1kjTverGwMfnEn9+0B4BZBwig0xAP5RYDS855+UV
+         wLFA==
+X-Forwarded-Encrypted: i=1; AJvYcCXVGpuPwLsBFu5ShLPL2bpIES2/GQVm2Fiaqcpgf3DxUqBatMG8GbYstsFLWUXWbRXXtSMGZ+kn6OEX5RpRlg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwLi4CUBrq7Nf3jqtjUhzZsZ6Syp697yu1yyrTX37AD1vr6Y5TS
+	yw9v6srrY/glE5ZWLQLsbYFJXtm6Qrhm2sHf5fDs96k/Z9fdiIUz1tP8a4C+OEY7zA2WrkR+Qkr
+	BaVmYO3EyDZfVKqDO4MhN+jCESh75STI=
+X-Gm-Gg: ASbGnctkdQFcucU90alZF3msCRxUfnoF7m1v2iFU0nDyNJVqUCj5j9TNCY8TXVBtcqU
+	GuXpjx4eu3ANZOlw9Vh0OqMcxyKNEwkcFACHpw/T/RYUEKixnE5TvnwSK55a/LrOZ4Osq1oYDQa
+	V+nfDhTw118KKjCtmPUTXEAGNvKDPuIlbP91vgRzDuBnlhlOBU+zNRdInRcgzlbi1bf+/i+OQU/
+	ZXMfRyMLiyPoBaARxL2PHe3cJMZWSw79w1C16ZGpAQ=
+X-Google-Smtp-Source: AGHT+IFFCD+05k/f2pnhMy8ZzAH383HR9gPRjWkOyfaj0oG6GpKVsVXnHQIOkpY8Be0wAaj5uUymmdOl4EjjYOj/MsA=
+X-Received: by 2002:a05:6870:c1c6:b0:377:bbde:5278 with SMTP id
+ 586e51a60fabf-3b0fa24fd92mr9347675fac.37.1759850893884; Tue, 07 Oct 2025
+ 08:28:13 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net] net: airoha: Fix loopback mode configuration for GDM2
- port
-To: Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn
- <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org
-References: <20251005-airoha-loopback-mode-fix-v1-1-d017f78acf76@kernel.org>
-From: Paolo Abeni <pabeni@redhat.com>
-In-Reply-To: <20251005-airoha-loopback-mode-fix-v1-1-d017f78acf76@kernel.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: fmWcCHfhN2K3bZEsaV8MHoQN3O-XqBUL9zhaeDFFL9g_1759842437
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+References: <20251002084204.15898-1-jjian.zhou@mediatek.com> <20251002084204.15898-3-jjian.zhou@mediatek.com>
+In-Reply-To: <20251002084204.15898-3-jjian.zhou@mediatek.com>
+From: Jassi Brar <jassisinghbrar@gmail.com>
+Date: Tue, 7 Oct 2025 10:28:00 -0500
+X-Gm-Features: AS18NWA1zX6Oa-17YwjJlyhdpYlXfh240reFbRpuwEmWd3JTrDtYGE7kwX4p96A
+Message-ID: <CABb+yY1Z+F=emOi2Q58bGv6AtKOMjY3qsNgRYqheNni+yN4_yQ@mail.gmail.com>
+Subject: Re: [PATCH v7 2/2] mailbox: mediatek: Add mtk-vcp-mailbox driver
+To: Jjian Zhou <jjian.zhou@mediatek.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>, 
+	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251007_060722_550327_0ABDA649 
-X-CRM114-Status: GOOD (  12.96  )
+X-CRM114-CacheID: sfid-20251007_082815_447157_8C48A3E8 
+X-CRM114-Status: GOOD (  25.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,33 +99,195 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/5/25 4:52 PM, Lorenzo Bianconi wrote:
-> Add missing configuration for loopback mode in airhoha_set_gdm2_loopback
-> routine.
-> 
-> Fixes: 9cd451d414f6e ("net: airoha: Add loopback support for GDM2")
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+On Thu, Oct 2, 2025 at 3:42=E2=80=AFAM Jjian Zhou <jjian.zhou@mediatek.com>=
+ wrote:
+>
+> Add mtk-vcp-mailbox driver to support the communication with
+> VCP remote microprocessor.
+>
+> Signed-off-by: Jjian Zhou <jjian.zhou@mediatek.com>
 > ---
->  drivers/net/ethernet/airoha/airoha_eth.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-> index 81ea01a652b9c545c348ad6390af8be873a4997f..abe7a23e3ab7a189a3a28007004572719307de90 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> @@ -1710,7 +1710,9 @@ static void airhoha_set_gdm2_loopback(struct airoha_gdm_port *port)
->  	airoha_fe_wr(eth, REG_GDM_RXCHN_EN(2), 0xffff);
->  	airoha_fe_rmw(eth, REG_GDM_LPBK_CFG(2),
->  		      LPBK_CHAN_MASK | LPBK_MODE_MASK | LPBK_EN_MASK,
-> -		      FIELD_PREP(LPBK_CHAN_MASK, chan) | LPBK_EN_MASK);
-> +		      FIELD_PREP(LPBK_CHAN_MASK, chan) |
-> +		      FIELD_PREP(LPBK_MODE_MASK, 7) |
+>  drivers/mailbox/Kconfig                 |   9 ++
+>  drivers/mailbox/Makefile                |   2 +
+>  drivers/mailbox/mtk-vcp-mailbox.c       | 170 ++++++++++++++++++++++++
+>  include/linux/mailbox/mtk-vcp-mailbox.h |  32 +++++
+>  4 files changed, 213 insertions(+)
+>  create mode 100644 drivers/mailbox/mtk-vcp-mailbox.c
+>  create mode 100644 include/linux/mailbox/mtk-vcp-mailbox.h
+>
+> diff --git a/drivers/mailbox/Kconfig b/drivers/mailbox/Kconfig
+> index 02432d4a5ccd..c28bdb855663 100644
+> --- a/drivers/mailbox/Kconfig
+> +++ b/drivers/mailbox/Kconfig
+> @@ -294,6 +294,15 @@ config MTK_CMDQ_MBOX
+>           critical time limitation, such as updating display configuratio=
+n
+>           during the vblank.
+>
+> +config MTK_VCP_MBOX
+> +       tristate "MediaTek VCP Mailbox Support"
+> +       depends on ARCH_MEDIATEK || COMPILE_TEST
+> +       help
+> +         Say yes here to add support for the MediaTek VCP mailbox driver=
+.
+> +         The mailbox implementation provides access from the application
+> +         processor to Video Companion Processor Unit.
+> +         If unsure say N.
+> +
+>  config ZYNQMP_IPI_MBOX
+>         tristate "Xilinx ZynqMP IPI Mailbox"
+>         depends on ARCH_ZYNQMP && OF
+> diff --git a/drivers/mailbox/Makefile b/drivers/mailbox/Makefile
+> index 98a68f838486..07278871d254 100644
+> --- a/drivers/mailbox/Makefile
+> +++ b/drivers/mailbox/Makefile
+> @@ -63,6 +63,8 @@ obj-$(CONFIG_MTK_ADSP_MBOX)   +=3D mtk-adsp-mailbox.o
+>
+>  obj-$(CONFIG_MTK_CMDQ_MBOX)    +=3D mtk-cmdq-mailbox.o
+>
+> +obj-$(CONFIG_MTK_VCP_MBOX)     +=3D mtk-vcp-mailbox.o
+> +
+>  obj-$(CONFIG_ZYNQMP_IPI_MBOX)  +=3D zynqmp-ipi-mailbox.o
+>
+>  obj-$(CONFIG_SUN6I_MSGBOX)     +=3D sun6i-msgbox.o
+> diff --git a/drivers/mailbox/mtk-vcp-mailbox.c b/drivers/mailbox/mtk-vcp-=
+mailbox.c
+> new file mode 100644
+> index 000000000000..94dac59ca32b
+> --- /dev/null
+> +++ b/drivers/mailbox/mtk-vcp-mailbox.c
+> @@ -0,0 +1,170 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (c) 2025 MediaTek Corporation. All rights reserved.
+> + * Author: Jjian Zhou <jjian.zhou.@mediatek.com>
+> + */
+> +
+> +#include <linux/interrupt.h>
+> +#include <linux/io.h>
+> +#include <linux/kernel.h>
+> +#include <linux/mailbox_controller.h>
+> +#include <linux/mailbox/mtk-vcp-mailbox.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/slab.h>
+> +
+> +struct mtk_vcp_mbox {
+> +       struct mbox_controller mbox;
+> +       void __iomem *base;
+> +       struct device *dev;
+> +       const struct mtk_vcp_mbox_cfg *cfg;
+> +       struct mtk_ipi_info ipi_recv;
+> +       struct mbox_chan chans;
+> +};
+> +
+> +struct mtk_vcp_mbox_cfg {
+> +       u16 set_in;
+> +       u16 clr_out;
+> +};
+> +
+> +static irqreturn_t mtk_vcp_mbox_irq_thread(int irq, void *data)
+> +{
+> +       struct mtk_vcp_mbox *priv =3D data;
+> +
+> +       /* get irq status */
+> +       priv->ipi_recv.irq_status =3D readl(priv->base + priv->cfg->clr_o=
+ut);
+> +
+> +       __ioread32_copy(priv->ipi_recv.msg, priv->base,
+> +                       MTK_VCP_MBOX_SLOT_MAX_SIZE / 4);
+> +
+> +       mbox_chan_received_data(&priv->chans, &priv->ipi_recv);
+> +
+> +       /* clear irq status */
+> +       writel(priv->ipi_recv.irq_status, priv->base + priv->cfg->clr_out=
+);
+> +
+> +       return IRQ_HANDLED;
+> +}
+> +
+> +static struct mbox_chan *mtk_vcp_mbox_xlate(struct mbox_controller *mbox=
+,
+> +                                           const struct of_phandle_args =
+*sp)
+> +{
+> +       if (sp->args_count)
+> +               return NULL;
+> +
+> +       return &mbox->chans[0];
+> +}
+> +
+> +static int mtk_vcp_mbox_send_data(struct mbox_chan *chan, void *data)
+> +{
+> +       struct mtk_vcp_mbox *priv =3D chan->con_priv;
+> +       struct mtk_ipi_info *ipi_info =3D data;
+> +       u32 status;
+> +
+> +       if (!ipi_info->msg) {
+> +               dev_err(priv->dev, "msg buffer is NULL.\n");
+> +               return -EINVAL;
+> +       }
+> +
+> +       status =3D readl(priv->base + priv->cfg->set_in);
+> +       if (status & BIT(ipi_info->index)) {
+> +               dev_warn(priv->dev, "mailbox IPI %d is busy.\n", ipi_info=
+->id);
+> +               return -EBUSY;
+> +       }
+> +
+> +       if (ipi_info->slot_ofs + ipi_info->len > MTK_VCP_MBOX_SLOT_MAX_SI=
+ZE)
+> +               return -EINVAL;
+> +       __iowrite32_copy(priv->base + ipi_info->slot_ofs, ipi_info->msg,
+> +                        ipi_info->len);
+> +
+> +       writel(BIT(ipi_info->index), priv->base + priv->cfg->set_in);
+> +
+> +       return 0;
+> +}
+> +
+> +static bool mtk_vcp_mbox_last_tx_done(struct mbox_chan *chan)
+> +{
+> +       struct mtk_ipi_info *ipi_info =3D chan->active_req;
+> +       struct mtk_vcp_mbox *priv =3D chan->con_priv;
+> +
+> +       return !(readl(priv->base + priv->cfg->set_in) & BIT(ipi_info->in=
+dex));
+> +}
+> +
+> +static const struct mbox_chan_ops mtk_vcp_mbox_chan_ops =3D {
+> +       .send_data      =3D mtk_vcp_mbox_send_data,
+> +       .last_tx_done   =3D mtk_vcp_mbox_last_tx_done,
+> +};
+> +
+> +static int mtk_vcp_mbox_probe(struct platform_device *pdev)
+> +{
+> +       struct device *dev =3D &pdev->dev;
+> +       struct mtk_vcp_mbox *priv;
+> +       struct mbox_controller *mbox;
+> +       int ret, irq;
+> +
+> +       priv =3D devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
+> +       if (!priv)
+> +               return -ENOMEM;
+> +
+> +       priv->dev =3D dev;
+> +       priv->chans.con_priv =3D priv;
+> +       mbox =3D &priv->mbox;
+> +       mbox->dev =3D dev;
+> +       mbox->ops =3D &mtk_vcp_mbox_chan_ops;
+> +       mbox->txdone_irq =3D false;
+> +       mbox->txdone_poll =3D true;
+> +       mbox->of_xlate =3D mtk_vcp_mbox_xlate;
+> +       mbox->num_chans =3D 1;
+> +       mbox->chans =3D &priv->chans;
+> +
+> +       priv->ipi_recv.msg =3D devm_kzalloc(dev, MTK_VCP_MBOX_SLOT_MAX_SI=
+ZE
+> +                                         GFP_KERNEL);
+>
+Please compile-test at least before submitting. Dropping it, sorry.
 
-I suggest introducing some human readable macro to replace the above
-magic number.
-
-Thanks,
-
-Paolo
-
+-jassi
 
