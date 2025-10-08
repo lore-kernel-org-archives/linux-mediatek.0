@@ -4,70 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1918DCAC5BB
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Oct 2025 09:02:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25C11CAC5BB
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Oct 2025 09:12:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=xAUvOUV3gFHnesCfh2XcNr/cWherRMTVqtwTY/kK+k0=; b=jbnjc9AhvBZKEBHpaNSIwWsZ1k
-	7SN9sqOCwT9lWU1YRWzNPtaP7FYK5wjVCEkkM5lko+S6thzIkdxy0jxtpfpw69D0JTEKcAtLXufXt
-	hR7HojfLfzW8yIWYTXnHfsZyQN5bXKB3+pLtbm/XIHFvLgTwUgOy6zl3sQAuoHXwcuj013LesDYP3
-	1X3VMBC8ZeyOBboVGopiEa+rbqJ9RC7atjqQQcYM2jLVKQeoqJnmk+7bVVdqVKLrR3oddm0Jm7Nw1
-	49r0ZDXRS2SnQ/ra87Xzp34Koezl+SF9MNwzzbHkg6cG5WWUV3TSqJ7V9aeqW/l46DVjgdnI2Fmwd
-	2q5JI60w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yFcKqv6NENApTHDEgHun0uuN+uezqyHAhEFQCuoA28I=; b=4D1yPtT6vKGssyV9o9AoizKj+r
+	kYfM0qkwsOLFUCsikW4koxN/ajGKyIcyb17AsfYXx/0XABIpBPcG5r8/xfI+tjtl7DTFt6AA+E+HM
+	wMMBiD4p1jkW2utzh3Zb4esLMvn9f50V8XHh6whtXMwhd3+8nFzkCM9oMOnlQdSLsnsz4DhHWcTc6
+	A1ceF0SgRBw+FCZaftTA0P41aM66YtpxU/vGFdERf/x/SyzJw3bJJnxpXD1qSgF7moSmdUhKiWsyh
+	Q/NaqeFRkThz2zObrIl20B8U7G8WiYRDpkoEUsu1dhzIczEaC0W0NJTv3CehdIXH4E3AabpOdbeJa
+	B6e5YRGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6Q3y-00000003X53-3G1K;
-	Wed, 08 Oct 2025 09:02:22 +0000
-Received: from m16.mail.163.com ([117.135.210.5])
+	id 1v6QDY-00000003Y72-1TQT;
+	Wed, 08 Oct 2025 09:12:16 +0000
+Received: from s3.sipsolutions.net ([2a01:4f8:242:246e::2] helo=sipsolutions.net)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6Q3w-00000003X49-0VkC;
-	Wed, 08 Oct 2025 09:02:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=xA
-	UvOUV3gFHnesCfh2XcNr/cWherRMTVqtwTY/kK+k0=; b=C8+wn5Y0YY+GdfcPMh
-	YfUzG8+cedQbz8nRkNLrv7avUJChkPFhhX59OJzm2dKyWjpOXTue4PLLKxyAOCRB
-	J79JYBuIMTuwOya/+qeXZLSwXmcent9n7vnBQT9lAFCJV/eBh8Vmi5X2r0wsi95b
-	uISMKKHtBrhcoblUHoynfcMo4=
-Received: from localhost.localdomain (unknown [])
-	by gzga-smtp-mtada-g1-0 (Coremail) with SMTP id _____wDXz2+GKOZozDEcCw--.44898S4;
-	Wed, 08 Oct 2025 17:01:59 +0800 (CST)
-From: Haoxiang Li <haoxiang_li2024@163.com>
-To: minghsiu.tsai@mediatek.com,
-	houlong.wei@mediatek.com,
-	andrew-ct.chen@mediatek.com,
-	mchehab@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	hans.verkuil@cisco.com,
-	christophe.jaillet@wanadoo.fr,
-	nicolas@ndufresne.ca
-Cc: linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Haoxiang Li <haoxiang_li2024@163.com>,
-	stable@vger.kernel.org
-Subject: [PATCH] media: mtk-mdp: Fix a reference leak bug in mtk_mdp_remove()
-Date: Wed,  8 Oct 2025 17:01:56 +0800
-Message-Id: <20251008090156.14224-1-haoxiang_li2024@163.com>
-X-Mailer: git-send-email 2.25.1
+	id 1v6QDV-00000003Y5U-3PUo
+	for linux-mediatek@lists.infradead.org;
+	Wed, 08 Oct 2025 09:12:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
+	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
+	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
+	Resent-Cc:Resent-Message-ID; bh=yFcKqv6NENApTHDEgHun0uuN+uezqyHAhEFQCuoA28I=;
+	t=1759914733; x=1761124333; b=n7Tu9+0zOwdDxgVtOcEs9C6pIGt8VrFi+CWrS31cLdRqS2G
+	lhnZLMgqXqDlTRFOIy5HxHDOI5Ll4Tqx4Y+RqkIOVB3Ic42J9duWOPOdFKeYGrfc5yuPAaJOvCkVG
+	b1I0xIzVPTLFxE2aFG3npOx8oooV8ffwllNjtIzma/NLWwblpYCa7wXwWnKeuMwC76nExxeW6QfGi
+	/wOupvRMryys5n5UsiWCDDXldX3zubSsYI4DLNTpzXpZa8MdLydir6WAfyKB16IDdgfDPLA+lS/3P
+	mXmz8QrvB55W5QXHZX2Vnjk4bZka81t0pIhGK+eXDfmE7lMOUyODuOTrM5MLoNeA==;
+Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+	(Exim 4.98.2)
+	(envelope-from <johannes@sipsolutions.net>)
+	id 1v6QDN-00000000FXv-1RFj;
+	Wed, 08 Oct 2025 11:12:05 +0200
+Message-ID: <d7eb196b01003a1de70456d5a31d9b4a37d555bd.camel@sipsolutions.net>
+Subject: Re: [PATCH v2] wifi: mt76: mt7921: Add PCIe AER handler support to
+ prevent system crash
+From: Johannes Berg <johannes@sipsolutions.net>
+To: Mingyen Hsieh <mingyen.hsieh@mediatek.com>, nbd@nbd.name, 
+	lorenzo@kernel.org
+Cc: deren.wu@mediatek.com, Sean.Wang@mediatek.com, Leon.Yen@mediatek.com, 
+	Michael.Lo@mediatek.com, allan.wang@mediatek.com,
+ Eric-SY.Chang@mediatek.com, 	km.lin@mediatek.com, Quan.Zhou@mediatek.com,
+ Ryder.Lee@mediatek.com, 	Shayne.Chen@mediatek.com,
+ linux-wireless@vger.kernel.org, 	linux-mediatek@lists.infradead.org
+Date: Wed, 08 Oct 2025 11:12:04 +0200
+In-Reply-To: <20251008085916.1626952-1-mingyen.hsieh@mediatek.com>
+References: <20251008085916.1626952-1-mingyen.hsieh@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.2 (3.56.2-2.fc42) 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wDXz2+GKOZozDEcCw--.44898S4
-X-Coremail-Antispam: 1Uf129KBjvdXoW7GF4kXF1fuF4rtFy5Gw4fuFg_yoWDurX_Jw
-	1v9FZ3Xr1fCFnYkr18trna9ry7tFZ3Kr4FyF1fKrsxX3yruF1jgrnFvFZ8Wr4DXanFvFyU
-	JFWDWFWxurZxWjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7sRGtCcUUUUUU==
-X-Originating-IP: [36.112.3.223]
-X-CM-SenderInfo: xkdr5xpdqjszblsqjki6rwjhhfrp/1tbiOxDgbmjmIYqTMwAAsg
+X-malware-bazaar: not-scanned
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251008_020220_476264_43587993 
-X-CRM114-Status: UNSURE (   7.76  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251008_021213_887002_80EB82BE 
+X-CRM114-Status: GOOD (  10.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,30 +78,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In mtk_mdp_probe(), vpu_get_plat_device() increases the reference
-count of the returned platform device. Add platform_device_put()
-to prevent reference leak.
+Hi,
 
-Fixes: c8eb2d7e8202 ("[media] media: Add Mediatek MDP Driver")
-Cc: stable@vger.kernel.org
-Signed-off-by: Haoxiang Li <haoxiang_li2024@163.com>
----
- drivers/media/platform/mediatek/mdp/mtk_mdp_core.c | 1 +
- 1 file changed, 1 insertion(+)
+So ... yeah it's your driver, and yes it's already at v2, but ... this
+still seems very much papering over a problem?
 
-diff --git a/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c b/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c
-index 80fdc6ff57e0..eb212ca1a083 100644
---- a/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c
-+++ b/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c
-@@ -242,6 +242,7 @@ static void mtk_mdp_remove(struct platform_device *pdev)
- 
- 	pm_runtime_disable(&pdev->dev);
- 	vb2_dma_contig_clear_max_seg_size(&pdev->dev);
-+	platform_device_put(mdp->vpu_dev);
- 	mtk_mdp_unregister_m2m_device(mdp);
- 	v4l2_device_unregister(&mdp->v4l2_dev);
- 
--- 
-2.25.1
+On Wed, 2025-10-08 at 16:59 +0800, Mingyen Hsieh wrote:
+>=20
+> Unable to handle kernel paging request at virtual address ffffffc01099eac=
+0
+> pc : mt76_dma_add_buf+0x124/0x188 [mt76]
 
+Why does it even crash there?
+
+> +++ b/drivers/net/wireless/mediatek/mt76/agg-rx.c
+> @@ -96,6 +96,9 @@ mt76_rx_aggr_reorder_work(struct work_struct *work)
+>  	struct sk_buff_head frames;
+>  	int nframes;
+> =20
+> +	if (atomic_read(&dev->bus_hung) =3D=3D 1)
+> +		return;
+
+And how does sprinkling this "magic dust" all over even do anything?
+
+
+This sounds a bit like the driver isn't able to deal with surprise
+removal, what happens if you e.g. rmmod it while running traffic? I
+believe the effect of the error recovery would be similar, if you don't
+handle it, so are you sure there's not a completely different underlying
+bug?
+
+johannes
 
