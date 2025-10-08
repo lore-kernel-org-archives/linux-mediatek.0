@@ -4,66 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25C11CAC5BB
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Oct 2025 09:12:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 505CECCA470
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Oct 2025 09:28:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yFcKqv6NENApTHDEgHun0uuN+uezqyHAhEFQCuoA28I=; b=4D1yPtT6vKGssyV9o9AoizKj+r
-	kYfM0qkwsOLFUCsikW4koxN/ajGKyIcyb17AsfYXx/0XABIpBPcG5r8/xfI+tjtl7DTFt6AA+E+HM
-	wMMBiD4p1jkW2utzh3Zb4esLMvn9f50V8XHh6whtXMwhd3+8nFzkCM9oMOnlQdSLsnsz4DhHWcTc6
-	A1ceF0SgRBw+FCZaftTA0P41aM66YtpxU/vGFdERf/x/SyzJw3bJJnxpXD1qSgF7moSmdUhKiWsyh
-	Q/NaqeFRkThz2zObrIl20B8U7G8WiYRDpkoEUsu1dhzIczEaC0W0NJTv3CehdIXH4E3AabpOdbeJa
-	B6e5YRGA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=TadWLUGO9wZq/9F37BtuY/ph2LiackkZKNTrWCxt6gI=; b=zUL0ORNq48QWyBmOnVi7tgr6qN
+	pI8J4NC8OcHsXr/suio00l/5Z+yxN/aCMFryYKWRoBSLKFGH1h/YpuLsCEsTIka8wUsLrYwz0FQYz
+	mzUgKWHFH5+NSxY3Y9BU4ElgWvEJr1463Wsr7U6kPWRZCsJa1tN+3rV6tLdX7vsmSxp4TV7NDL1pK
+	RSIQAINyc+xfaNWcBiw3Jn1+GknS/LfJEGnbRfWVUDZCuHj392/EPhyKyW6kJjjMRVS1uzCFw6VrW
+	RVxuqDCppEkgDc+4UESthlUeEslx8qZoojkngIUPT7fjCgZxM3JkweeaQQwmMPOCtrg2KcNWlD5a/
+	rLrco2MQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6QDY-00000003Y72-1TQT;
-	Wed, 08 Oct 2025 09:12:16 +0000
-Received: from s3.sipsolutions.net ([2a01:4f8:242:246e::2] helo=sipsolutions.net)
+	id 1v6QSq-00000003Z5W-30Dk;
+	Wed, 08 Oct 2025 09:28:04 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6QDV-00000003Y5U-3PUo
-	for linux-mediatek@lists.infradead.org;
-	Wed, 08 Oct 2025 09:12:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
-	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
-	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
-	Resent-Cc:Resent-Message-ID; bh=yFcKqv6NENApTHDEgHun0uuN+uezqyHAhEFQCuoA28I=;
-	t=1759914733; x=1761124333; b=n7Tu9+0zOwdDxgVtOcEs9C6pIGt8VrFi+CWrS31cLdRqS2G
-	lhnZLMgqXqDlTRFOIy5HxHDOI5Ll4Tqx4Y+RqkIOVB3Ic42J9duWOPOdFKeYGrfc5yuPAaJOvCkVG
-	b1I0xIzVPTLFxE2aFG3npOx8oooV8ffwllNjtIzma/NLWwblpYCa7wXwWnKeuMwC76nExxeW6QfGi
-	/wOupvRMryys5n5UsiWCDDXldX3zubSsYI4DLNTpzXpZa8MdLydir6WAfyKB16IDdgfDPLA+lS/3P
-	mXmz8QrvB55W5QXHZX2Vnjk4bZka81t0pIhGK+eXDfmE7lMOUyODuOTrM5MLoNeA==;
-Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
-	(Exim 4.98.2)
-	(envelope-from <johannes@sipsolutions.net>)
-	id 1v6QDN-00000000FXv-1RFj;
-	Wed, 08 Oct 2025 11:12:05 +0200
-Message-ID: <d7eb196b01003a1de70456d5a31d9b4a37d555bd.camel@sipsolutions.net>
-Subject: Re: [PATCH v2] wifi: mt76: mt7921: Add PCIe AER handler support to
- prevent system crash
-From: Johannes Berg <johannes@sipsolutions.net>
-To: Mingyen Hsieh <mingyen.hsieh@mediatek.com>, nbd@nbd.name, 
-	lorenzo@kernel.org
-Cc: deren.wu@mediatek.com, Sean.Wang@mediatek.com, Leon.Yen@mediatek.com, 
-	Michael.Lo@mediatek.com, allan.wang@mediatek.com,
- Eric-SY.Chang@mediatek.com, 	km.lin@mediatek.com, Quan.Zhou@mediatek.com,
- Ryder.Lee@mediatek.com, 	Shayne.Chen@mediatek.com,
- linux-wireless@vger.kernel.org, 	linux-mediatek@lists.infradead.org
-Date: Wed, 08 Oct 2025 11:12:04 +0200
-In-Reply-To: <20251008085916.1626952-1-mingyen.hsieh@mediatek.com>
-References: <20251008085916.1626952-1-mingyen.hsieh@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.2 (3.56.2-2.fc42) 
+	id 1v6QSo-00000003Z5J-49KB;
+	Wed, 08 Oct 2025 09:28:03 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 1D73261EDE;
+	Wed,  8 Oct 2025 09:28:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 49B0CC4CEF4;
+	Wed,  8 Oct 2025 09:28:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1759915680;
+	bh=RC03KKut/tFuLMRGV1rLueDM9whbJfJ/nYBgSVrijaI=;
+	h=From:Date:Subject:To:Cc:From;
+	b=j3MA+Gp5znabotZ8h7cH079Ei8Vdc0RhbxL2qLaP5EttGXqQc+G7DmIhYPpIn31ps
+	 55NF8WFaLMgpFlMROe0Tl9DGKDB49pSRQ6OZa0sr50ScTM3aMTFXO/PcT2fGubkK6t
+	 g0x4MgUdE4Y1phFhBDrkIcBj75BLk6Kzxle1Ci14PqRfx0gj18NQrHOJjSoUtc0SuG
+	 M7pKeFyTKEpM9DEqJkrnGAdXxhACMpkhworVSE0g8GyDOHSJ2weQ0ubGmEznTpBB+i
+	 XZ3UGgtMGg0Eta5iEh01cfc7cpR7qCUH3IKbulXniVLqpMHF1+UErv4gTzA8tjL8QQ
+	 F6CfjkFcqk0zQ==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Wed, 08 Oct 2025 11:27:43 +0200
+Subject: [PATCH net v2] net: airoha: Fix loopback mode configuration for
+ GDM2 port
 MIME-Version: 1.0
-X-malware-bazaar: not-scanned
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251008_021213_887002_80EB82BE 
-X-CRM114-Status: GOOD (  10.04  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20251008-airoha-loopback-mode-fix-v2-1-045694fe7f60@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAI4u5mgC/4WNQQ6DMAwEv4J8rqsEBLQ98Y+KQxoMWNAYOQi1Q
+ vy9ER/ocWe1sztEUqYIj2wHpY0jS0ghv2TgRxcGQu5ShtzkpTWmRMcqo8NZZHk5P+FbOsKeP1i
+ 4uzemqIytCdJ8UUr4VD8h0AptgiPHVfR73m32rP6bN4sWu+Tt65vzfV01E2mg+So6QHscxw9Sm
+ pBdxgAAAA==
+X-Change-ID: 20251005-airoha-loopback-mode-fix-3a9c0036017e
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+X-Mailer: b4 0.14.2
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,35 +75,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Add missing configuration for loopback mode in airhoha_set_gdm2_loopback
+routine.
 
-So ... yeah it's your driver, and yes it's already at v2, but ... this
-still seems very much papering over a problem?
+Fixes: 9cd451d414f6e ("net: airoha: Add loopback support for GDM2")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+Changes in v2:
+- Use human readable marcos to configure loopback mode register
+- Link to v1: https://lore.kernel.org/r/20251005-airoha-loopback-mode-fix-v1-1-d017f78acf76@kernel.org
+---
+ drivers/net/ethernet/airoha/airoha_eth.c  | 4 +++-
+ drivers/net/ethernet/airoha/airoha_regs.h | 3 +++
+ 2 files changed, 6 insertions(+), 1 deletion(-)
 
-On Wed, 2025-10-08 at 16:59 +0800, Mingyen Hsieh wrote:
->=20
-> Unable to handle kernel paging request at virtual address ffffffc01099eac=
-0
-> pc : mt76_dma_add_buf+0x124/0x188 [mt76]
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index 81ea01a652b9c545c348ad6390af8be873a4997f..833dd911980b3f698bd7e5f9fd9e2ce131dd5222 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -1710,7 +1710,9 @@ static void airhoha_set_gdm2_loopback(struct airoha_gdm_port *port)
+ 	airoha_fe_wr(eth, REG_GDM_RXCHN_EN(2), 0xffff);
+ 	airoha_fe_rmw(eth, REG_GDM_LPBK_CFG(2),
+ 		      LPBK_CHAN_MASK | LPBK_MODE_MASK | LPBK_EN_MASK,
+-		      FIELD_PREP(LPBK_CHAN_MASK, chan) | LPBK_EN_MASK);
++		      FIELD_PREP(LPBK_CHAN_MASK, chan) |
++		      LBK_GAP_MODE_MASK | LBK_LEN_MODE_MASK |
++		      LBK_CHAN_MODE_MASK | LPBK_EN_MASK);
+ 	airoha_fe_rmw(eth, REG_GDM_LEN_CFG(2),
+ 		      GDM_SHORT_LEN_MASK | GDM_LONG_LEN_MASK,
+ 		      FIELD_PREP(GDM_SHORT_LEN_MASK, 60) |
+diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/ethernet/airoha/airoha_regs.h
+index e1c15c20be8e13197de743d9b590dc80058560a5..69c5a143db8c079be0a6ecf41081cd3f5048c090 100644
+--- a/drivers/net/ethernet/airoha/airoha_regs.h
++++ b/drivers/net/ethernet/airoha/airoha_regs.h
+@@ -151,6 +151,9 @@
+ #define LPBK_LEN_MASK			GENMASK(23, 10)
+ #define LPBK_CHAN_MASK			GENMASK(8, 4)
+ #define LPBK_MODE_MASK			GENMASK(3, 1)
++#define LBK_GAP_MODE_MASK		BIT(3)
++#define LBK_LEN_MODE_MASK		BIT(2)
++#define LBK_CHAN_MODE_MASK		BIT(1)
+ #define LPBK_EN_MASK			BIT(0)
+ 
+ #define REG_GDM_TXCHN_EN(_n)		(GDM_BASE(_n) + 0x24)
 
-Why does it even crash there?
+---
+base-commit: 1b54b0756f051c11f5a5d0fbc1581e0b9a18e2bc
+change-id: 20251005-airoha-loopback-mode-fix-3a9c0036017e
 
-> +++ b/drivers/net/wireless/mediatek/mt76/agg-rx.c
-> @@ -96,6 +96,9 @@ mt76_rx_aggr_reorder_work(struct work_struct *work)
->  	struct sk_buff_head frames;
->  	int nframes;
-> =20
-> +	if (atomic_read(&dev->bus_hung) =3D=3D 1)
-> +		return;
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
-And how does sprinkling this "magic dust" all over even do anything?
-
-
-This sounds a bit like the driver isn't able to deal with surprise
-removal, what happens if you e.g. rmmod it while running traffic? I
-believe the effect of the error recovery would be similar, if you don't
-handle it, so are you sure there's not a completely different underlying
-bug?
-
-johannes
 
