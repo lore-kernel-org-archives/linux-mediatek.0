@@ -4,67 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9906FCCA472
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Oct 2025 13:19:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE9EFCAC5BB
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Oct 2025 13:27:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4Putus+UwVhlUqdhHwPkYEZx6fL5F98W9wMajETR4L8=; b=eWIKYPICvgX7J6sTQR13evjupi
-	bv8/G39vEGAIizgOc9paUFvbOTGCk8lQH31aSg9y/QaOlOsK9dKjk7ChTP87EaoGfi5SZHhmzfb+P
-	GNinAmhe8wAK/HclVdk6mN+ctYdc+v7Cpy3fDeiKZbokvC1DWvpVy4kJibB9zreeCW4H4Oc7K3aOF
-	zSCESukiRmLDLj9W7YzXLTrd/fJG/SRLO8KLGJj1MbFV5TaMqdODREQaG3su5ycmHtGuAPeNvbzet
-	WzU1EAOwr2MjsUENlEb/kyQoWxcfmaZ5+78wLehgUYIBTkbK0lq/DXb8I2I+JNbQb05XWXqDYM6md
-	R3xausmw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/IqmJxYbXkGUJafgNNovCiyKceh2Ks0X8PZsaDhrLHg=; b=YSUBs28LLRglTwID99+nz9Ay9T
+	WDamjQF1/RNQAEAJ0pvnhLc2mH2elMPLtkt0SZP5FqsSNTnwPVhAKyhAf80q9eq/kuobLoJUrEIY6
+	K1TEew1Tw2ghyB1oJ04Kx7V9NpSLJESOhp0GHa2amMYee0yPzDCQvWAxhCBIi2k8/c3W0s/qWvLvo
+	N1YoX2HGKDcJl6Bg0tLJhRdOHWF3CiNNGAkdEG6zmbbDZ5DQRBKlQvynV5scAfNv8EQD83SyaRZ3M
+	gM/D4HzzInGS3I0BLwpazRgpnXqcFbKy5l6C9nbva7sL9VN65V/VL1Zehg2S3Hd245hia+H56IBwm
+	6pxi5A/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6U4p-00000003vOs-3Izd;
-	Wed, 08 Oct 2025 13:19:31 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1v6UCV-00000003w1a-2ism;
+	Wed, 08 Oct 2025 13:27:27 +0000
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6U4o-00000003vOd-1XiX;
-	Wed, 08 Oct 2025 13:19:30 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id C56E161FE6;
-	Wed,  8 Oct 2025 13:19:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2A3AEC4CEF4;
-	Wed,  8 Oct 2025 13:19:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1759929569;
-	bh=uD0fsM6U3se/luO9t3897ROnhJ9ki+QjdE7VMtEm1oQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Ujgc4VgxNm8/Q48WW9Y3hj+4AWBmhOjhQrmFHnROwG9xtX/hscnPhK2zyXNw0M4un
-	 8XZb8D2yUX72xcvqEBx60J3KCqNDbco4ANCpBKyTrd3VD0luf0rylj6rQ6quynAHNZ
-	 3ZAFIlkDmZNmNusckGQ0q/6p0cpjX1VDX1VoBH8z9f8lXAE3Sp64An4Zq1WpC2WQ4d
-	 51y8kGWVWFqolA4MmqoUHKLMZwl9hAPfwtq2lZX+OjHbP23n8mxIabnE5m5MKST3fT
-	 3WLQC7nBvBUsyIRO/9TAfwGPyBqRVStD4XCJa9Q7nVbl3XrI8Q/7T4FiwXZQUOggBr
-	 QCl0ohwZtkT8w==
-Date: Wed, 8 Oct 2025 15:19:27 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Simon Horman <horms@kernel.org>
-Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, Rex Lu <rex.lu@mediatek.com>,
-	Daniel Pawlik <pawlik.dan@gmail.com>,
-	Matteo Croce <teknoraver@meta.com>
-Subject: Re: [PATCH net] net: mtk: wed: add dma mask limitation and GFP_DMA32
- for device with more than 4GB DRAM
-Message-ID: <aOZk35XuJmLwCvZY@lore-desk>
-References: <20251008-wed-4g-ram-limitation-v1-1-16fe55e1d042@kernel.org>
- <20251008123731.GR3060232@horms.kernel.org>
+	id 1v6UCT-00000003w18-11mr
+	for linux-mediatek@lists.infradead.org;
+	Wed, 08 Oct 2025 13:27:26 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-b403bb7843eso1054866b.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 08 Oct 2025 06:27:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1759930043; x=1760534843; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=/IqmJxYbXkGUJafgNNovCiyKceh2Ks0X8PZsaDhrLHg=;
+        b=N3zKloq4eqpydSwLjQp30Xf+vF7uxsm9qZ7O/xRAbrZT4fqyuCu68gIHzj/Jpq/CBh
+         tKhmdy7nbZcltsSHPRLy2OOe6pgLiEXOVz5nZEor3QxJi/EyjAY5FquMK7IvEr2kxVGc
+         8MExnRBikPiO/YlVCoMdD0ErAZll6A7yNtGMP87RQHD/iQyPaDRzaOeaY+SEL6uICWK7
+         zKonAz+alBc2TaouzWXNuwu71hDsu+6ZEGrUDUOVNyf/4AErZ0fqiLbb9geBBn3s0yq1
+         FcHw3pNtMJ9HK+wqrgnRMfwXlAclmdZAsvL4mrRioXWocUkYeKxATtScmwDGnH/8r+xS
+         /tLQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1759930043; x=1760534843;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=/IqmJxYbXkGUJafgNNovCiyKceh2Ks0X8PZsaDhrLHg=;
+        b=sYEJNYDzelIgxEEtiQnr3nzypL7isu4nPi/Mk+iKW6etUUbw668+NldSPZRdkhejnw
+         mq0/lowVgfnVjjpbMstE6jii4SAaTQW4ANhws72+Wy/3ouw+UcCazu9W7W/4RzdjyVn5
+         a72AUff4ynrKt67TWXUVLS+IVb8fXgF8c8lRQ5uma0QKq1dgFdeH1jVdIcfeQXA1AoDz
+         uJMjDHuLvzk8E8YC8v4BbqMm0qMlNW1vtjpdELLCS/7tgiyxF3I05jHt7ufJLLn6KNcx
+         j93eJzr6HzcXBYqPmWhKhEYmcWDsxkBml+DM/965+IjaX7063vOWsM3OE6pQIXfSVRmG
+         iMQw==
+X-Forwarded-Encrypted: i=1; AJvYcCW351jFsA6TS9KVR5lfcFRL5Li4IvHIN3CUgD898L+HNtb6a+jQx6WiOxEOuZNxBsWapIlhjsx9/p3IG1d/Aw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxodcYf4R0JWtT9qKuuObPldhyJluty4SK9Jkng6+Xrb29Izvlu
+	HXafMdi/rOnR6hofzEOrqqJhjgQ9EqtdQ4iBWu79M5eWwjH9JB1iV3Fu7pj125GQ++V5wSzy+WB
+	ihWQMzSQyW6uF5EJsQWcN2wNQiOyCRhxPVOsv
+X-Gm-Gg: ASbGncuUawj8E+xogeqC6+IxmfebM0ytCbZkkV4zd2k/ExkKtwhmK67gJGK4mkSgD6E
+	5IsQplmwYXbP7cYgkaEW1xhyeC4rfS7cGrlX/nuIRg5eWCtivZao8V2+r5P3BW9+pOOQNGGVVl0
+	8QflqMOZTORDFldQOMZiy+nRc8jGoIaglVmBolCbhbQICtDzb8Ceqn3TeqweGcxlNpx+AcFCFAL
+	agRs1V/vIc2F6J32J4uHmZdc/72
+X-Google-Smtp-Source: AGHT+IGtJ3jgYS7oPpguD0YA6ZhtC3wC1OUit6lk2wQGBVxISV94tnsyrtpc9yPU/HqjXfGT1Y+pevkAgWHeTxVbv1c=
+X-Received: by 2002:a17:906:c153:b0:b46:35c3:83fd with SMTP id
+ a640c23a62f3a-b50aae96556mr314316366b.29.1759930043185; Wed, 08 Oct 2025
+ 06:27:23 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="xv+5q7pi86ls0BfX"
-Content-Disposition: inline
-In-Reply-To: <20251008123731.GR3060232@horms.kernel.org>
+References: <87bjn6fgr6.fsf@gentoo.org> <87a52n1xvv.fsf@gentoo.org>
+ <dda63a6b723d31f41e6e275ac7f38d31c6715fc8.camel@mediatek.com> <d0a06fe1-abd0-49b2-8867-6c01d6551e54@gmail.com>
+In-Reply-To: <d0a06fe1-abd0-49b2-8867-6c01d6551e54@gmail.com>
+From: Matteo Croce <technoboy85@gmail.com>
+Date: Wed, 8 Oct 2025 15:26:46 +0200
+X-Gm-Features: AS18NWDmEhUMBJE36cywPVgrOf9iPqSdrOLBHTFGScvseC-Phs7Q7qbvrnVFBg0
+Message-ID: <CAFnufp2pbBtNnVrEpxbkKzA5JhRFRiD-7Vd8ss9fLbYW39Jqgg@mail.gmail.com>
+Subject: Re: Regression in linux-firmware-20250917 for mt7921e driver
+To: =?UTF-8?B?QWxsYW4gV2FuZyAo546L5a625YGJKQ==?= <Allan.Wang@mediatek.com>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "sam@gentoo.org" <sam@gentoo.org>, 
+	=?UTF-8?B?TWluZ3llbiBIc2llaCAo6Kyd5piO6Ku6KQ==?= <Mingyen.Hsieh@mediatek.com>
+Cc: "xiangzhedev@gmail.com" <xiangzhedev@gmail.com>, 
+	"linux-firmware@kernel.org" <linux-firmware@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251008_062725_309218_9DE118D8 
+X-CRM114-Status: GOOD (  11.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,68 +98,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Il giorno mer 8 ott 2025 alle ore 15:12 Matteo Croce
+<technoboy85@gmail.com> ha scritto:
+>
+>
+> On 22/09/25 10:24, Allan Wang (=E7=8E=8B=E5=AE=B6=E5=81=89) wrote:
+> > Hi Sam,
+> >
+> > Would you please try "insmod mt7921_common disable_clc=3D1"
+> > to help us clarifying this issue ?
+>
+> I confirm that disable_clc=3D1 fixes the issue:
+>
+>
 
---xv+5q7pi86ls0BfX
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-> On Wed, Oct 08, 2025 at 12:48:05PM +0200, Lorenzo Bianconi wrote:
-> > From: Rex Lu <rex.lu@mediatek.com>
-> >=20
-> > Limit tx/rx buffer address to 32-bit address space for board with more
-> > than 4GB DRAM.
-> >=20
->=20
-> Hi Lorenzo, Rex, all,
-
-Hi Simon,
-
->=20
-> As a fix for net a Fixes tag should probably go here.
-> > Tested-by: Daniel Pawlik <pawlik.dan@gmail.com>
-> > Tested-by: Matteo Croce <teknoraver@meta.com>
-> > Signed-off-by: Rex Lu <rex.lu@mediatek.com>
-> > Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
->=20
-> ...
->=20
-> > @@ -2426,6 +2426,10 @@ mtk_wed_attach(struct mtk_wed_device *dev)
-> >  	dev->version =3D hw->version;
-> >  	dev->hw->pcie_base =3D mtk_wed_get_pcie_base(dev);
-> > =20
-> > +	ret =3D dma_set_mask_and_coherent(hw->dev, DMA_BIT_MASK(32));
-> > +	if (ret)
-> > +		return ret;
->=20
-> I think 'goto out' is needed here to avoid leaking hw_lock.
-
-right, I will fix it in v2.
+Looking at the code seems regulatory stuff to handle the power
+depending on the country.
+Am I right?
 
 Regards,
-Lorenzo
+--=20
+Matteo Croce
 
->=20
-> > +
-> >  	if (hw->eth->dma_dev =3D=3D hw->eth->dev &&
-> >  	    of_dma_is_coherent(hw->eth->dev->of_node))
-> >  		mtk_eth_set_dma_device(hw->eth, hw->dev);
-> >=20
->=20
-> --=20
-> pw-bot: changes-requested
-
---xv+5q7pi86ls0BfX
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaOZk3gAKCRA6cBh0uS2t
-rOnvAP0fwQEDHk1NkJRLOBUd4bCOkD1SsS4bO/focUB/2eArjAD+LYJXD5hGGb8J
-Wo+bKo/93KpLDi+VEbwbSzyiyMI8agk=
-=jr+9
------END PGP SIGNATURE-----
-
---xv+5q7pi86ls0BfX--
+perl -e 'for($t=3D0;;$t++){print chr($t*($t>>8|$t>>13)&255)}' |aplay
 
