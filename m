@@ -4,63 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 142D6CCA470
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Oct 2025 10:42:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C403CCCA470
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Oct 2025 10:48:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RXincFsGPd4t/V1M7vzyJrviqv80PAJbxZi/T5A4VKI=; b=uSNwgTRaOK4AQyYlMAhTjpNMZo
-	ISF5fdPglfDI4n7y5bahNpR2FVRd1NdwwiyJzwRWGOgBH5jEmoOQcOkctwWXd9nwvnjYKMq85n+/G
-	98uspe7xDUrCumshLPs8DBvE0Y2AhRj4ivkzN15Ea0Rfquia/D5P/pNlI9Q/Ak3antgWgIaDicmPp
-	NMZmAa7QdtnsIWrQLufwxZt42Ci2ysM8HnAL3VD5XXdN/o9D/lLFLMe3OOicM8jeweGrvBr3FQhAm
-	i03ojhsmMgGsr0+amjNfpu6HlrtJ87kEgZrFPoFlWSqYsTEIpFdUYBTan/ToWToOmLbCxrL6pouX2
-	433OhvFg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5cRdwlSpnxS4LEsDA4lGj0GmLZOGgOsp4ZRnuw/8QKE=; b=Mw5wAN0XKoyh97Gk10nw8pWYM4
+	nrBo0mg6kZ677hKZcyE2CS02IzV/rnmJPd20op5oSOa8w001SWzRZfQhEnjD3FPTBHh3m1qYyXp9y
+	LF4rslLK8tbkNtJA1kxW7ukn8eOaCZQQ9CstHG7cDNZIubfj7p8DnknapQzrDcM2yh9fcjLFQzlFo
+	FRkmdLn2RgNplRkWcaV6IxCox+9DoghRksI0yFBmQ/kxAFIRc+lIDbgQeCF82iLTCJ+jFtuiqlCUS
+	DcND6CwKvV6i6UAqVzitwCj8UemseQeaaxqjcenn9S8W7jAl1uIFaTLUZuHXRpYChlc0D1Du3lZra
+	/VktFxhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6Rcn-00000003f1f-0ttz;
-	Wed, 08 Oct 2025 10:42:25 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1v6Rio-00000003foo-0KzU;
+	Wed, 08 Oct 2025 10:48:38 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6Rcl-00000003eys-0rBr;
-	Wed, 08 Oct 2025 10:42:23 +0000
+	id 1v6Ril-00000003foB-2ulb;
+	Wed, 08 Oct 2025 10:48:36 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id A180C61F53;
-	Wed,  8 Oct 2025 10:42:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 02499C113D0;
-	Wed,  8 Oct 2025 10:42:21 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 5CB8F43717;
+	Wed,  8 Oct 2025 10:48:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B0CA2C4CEF4;
+	Wed,  8 Oct 2025 10:48:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1759920142;
-	bh=rm5wdK2uJNnErMUOf4H7M2S9QIT0yFPobsLvDwKPFgM=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=WAeJ7Y5GNB4E4Y1VCg1NEphRXbA6Rs/sRnHaxI1qP0Q+mXg1gZEh0zoNDP2j88f1b
-	 7jaBLtOVa5+q5H92c8wgVH+8NTbqaPadVJE1+AJcD8ymZbzgkcb3ycagf0sK2IcDq5
-	 YjraSm+orTRtElVRLiQkCj8aNFjUvotXk51fIMrk7amhemiSx2o+6w8tcA41dhetVP
-	 XWmEhb28SKhRkoodDG/0LpUrTzhUVMGO6RQfs2sVpPTvRje/l+IbBYNpI+sbT/ZFLb
-	 NRIxS7kP56B7oPK8ngBvVFNe3wdmTjYihVk5gcZf+KAnrNfgXw7JzHlrMjk0ZKm1ex
-	 n3A6jImSzI/Tg==
+	s=k20201202; t=1759920515;
+	bh=r8JHW7S9t8XtUom2huYwx+1JK/cKzVt5jAQ2jApdSJ4=;
+	h=From:Date:Subject:To:Cc:From;
+	b=jh27gp3rw022a1h/WWr+t1wM0U5EPs25PS24UudRsvMvW7VuFNgttsy1GgDnKTtOE
+	 fJy2IBNDNmHfBsGgVXOuQhiY/2uVhdRXyxjViLozWaO5OtoeEKYnQVCKAyogH5fWkw
+	 O4L4XaH2//EYfNKzmkmT7znzYUWq5PFSUH2X7hz7TGr0wdeHvdbfqdhH0q/0TXB6M5
+	 Px2bnP5mAsnm0130NIgU98b6Of7kZyGZ1FB0Td96nq92zEog71n0wX8Xg26Oll+B1F
+	 NzioWB/ah65ZPpHNtDTd9tUPpR1QacxVqKJXSdnZ+uFtCkDGtA83RymnbEOHYZhEIn
+	 /BZqFWAU1f/HA==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Wed, 08 Oct 2025 12:41:49 +0200
-Subject: [PATCH mt76 2/2] wifi: mt76: use GFP_DMA32 for page_pool buffer
- allocation
+Date: Wed, 08 Oct 2025 12:48:05 +0200
+Subject: [PATCH net] net: mtk: wed: add dma mask limitation and GFP_DMA32
+ for device with more than 4GB DRAM
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251008-wed-fixes-v1-2-8f7678583385@kernel.org>
-References: <20251008-wed-fixes-v1-0-8f7678583385@kernel.org>
-In-Reply-To: <20251008-wed-fixes-v1-0-8f7678583385@kernel.org>
-To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+Message-Id: <20251008-wed-4g-ram-limitation-v1-1-16fe55e1d042@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAGRB5mgC/x3MQQrDIBBG4avIrDtgE5Ngr1KykPonGYi2qCSF4
+ N0rXb7F9y7KSIJMD3VRwiFZ3rHF/abotbm4gsW3pk53g7a95hOezcrJBd4lSHGlCR6N1Zjgre8
+ tNftJWOT7/z4potBc6w9l4YGwbAAAAA==
+X-Change-ID: 20250930-wed-4g-ram-limitation-6490e7ed9d39
+To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
+ Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Sujuan Chen <sujuan.chen@mediatek.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Rex Lu <rex.lu@mediatek.com>, 
+ Daniel Pawlik <pawlik.dan@gmail.com>, Matteo Croce <teknoraver@meta.com>, 
  Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Peter Chiu <chui-hao.chiu@mediatek.com>, 
- Daniel Pawlik <pawlik.dan@gmail.com>, Matteo Croce <teknoraver@meta.com>
 X-Mailer: b4 0.14.2
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251008_034835_766102_9E00116B 
+X-CRM114-Status: GOOD (  10.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,36 +81,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Chiu <chui-hao.chiu@mediatek.com>
+From: Rex Lu <rex.lu@mediatek.com>
 
-Set GFP_DMA32 flag for page_pool buffers allocation since the hw relies
-on 32-bit DMA addresses for WED offloading.
+Limit tx/rx buffer address to 32-bit address space for board with more
+than 4GB DRAM.
 
 Tested-by: Daniel Pawlik <pawlik.dan@gmail.com>
 Tested-by: Matteo Croce <teknoraver@meta.com>
-Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+Signed-off-by: Rex Lu <rex.lu@mediatek.com>
 Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76.h | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/mediatek/mtk_wed.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 7753afa3d883d6c7104bbb68d1d61b562e828ac5..aed5dc347ab11903ed34ac33bc20dea63a9e926c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -1869,7 +1869,8 @@ mt76_get_page_pool_buf(struct mt76_queue *q, u32 *offset, u32 size)
- {
- 	struct page *page;
+diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
+index 3dbb113b792cf00fb4f89ab20f7e7fa72ecac260..cc3f3380a9980a6525921205dc7adaf321a099ae 100644
+--- a/drivers/net/ethernet/mediatek/mtk_wed.c
++++ b/drivers/net/ethernet/mediatek/mtk_wed.c
+@@ -677,7 +677,7 @@ mtk_wed_tx_buffer_alloc(struct mtk_wed_device *dev)
+ 		void *buf;
+ 		int s;
  
--	page = page_pool_dev_alloc_frag(q->page_pool, offset, size);
-+	page = page_pool_alloc_frag(q->page_pool, offset, size,
-+				    GFP_ATOMIC | __GFP_NOWARN | GFP_DMA32);
- 	if (!page)
- 		return NULL;
+-		page = __dev_alloc_page(GFP_KERNEL);
++		page = __dev_alloc_page(GFP_KERNEL | GFP_DMA32);
+ 		if (!page)
+ 			return -ENOMEM;
  
+@@ -800,7 +800,7 @@ mtk_wed_hwrro_buffer_alloc(struct mtk_wed_device *dev)
+ 		struct page *page;
+ 		int s;
+ 
+-		page = __dev_alloc_page(GFP_KERNEL);
++		page = __dev_alloc_page(GFP_KERNEL | GFP_DMA32);
+ 		if (!page)
+ 			return -ENOMEM;
+ 
+@@ -2426,6 +2426,10 @@ mtk_wed_attach(struct mtk_wed_device *dev)
+ 	dev->version = hw->version;
+ 	dev->hw->pcie_base = mtk_wed_get_pcie_base(dev);
+ 
++	ret = dma_set_mask_and_coherent(hw->dev, DMA_BIT_MASK(32));
++	if (ret)
++		return ret;
++
+ 	if (hw->eth->dma_dev == hw->eth->dev &&
+ 	    of_dma_is_coherent(hw->eth->dev->of_node))
+ 		mtk_eth_set_dma_device(hw->eth, hw->dev);
 
+---
+base-commit: 07fdad3a93756b872da7b53647715c48d0f4a2d0
+change-id: 20250930-wed-4g-ram-limitation-6490e7ed9d39
+
+Best regards,
 -- 
-2.51.0
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
