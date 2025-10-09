@@ -4,78 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65701CAC5BB
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Oct 2025 02:02:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C882CCA470
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Oct 2025 06:30:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=aZIE8iEoWepIU4IvbJ7gGd9jnoBAtSM2nxsZWSBh934=; b=JUiirr+atKfaca0ya39ggKirOG
-	WPonp7YdjiOuupBR0S8pInRjhwJjrO5ug4QHJWRwqDHu7FbN+p9wTUqmBomv90vUvR80DRWvZAMGy
-	AyoS58DTR3s5Zes+sFeMsYuWR8ueVVQUeubJsN0i5NBD9lHEgur8SfM7FSwrWO9krRshVR1M11B9Y
-	vElYvVOO2LyWJUHG2FZoHP57CYUQB2a0F4enW5yKAWX1uGlfBKiVZMwlRCO5qG9X9qooLlQz16Tis
-	FBfKs8Ate4g5aAt0IQeC/O8ZxdeVG6pUKFKjJAbylA3S50l6+PKKrQxK6ZYtxJi+UjMzVN62VDMdN
-	6pFse2tQ==;
+	bh=Rj1QGauGtTeiJ6R7+rilmmnzYIboPf6nkX4vie379bI=; b=jdY61U9f6RvERFnlsZhrOWVCJ6
+	xTyUawVzzHSEytChxON4ZKMsAqdsfICiHC5KSz1e9z/DIJz45j+69/xGn77E+WgUH0TaM61wCVci3
+	6JEwrhsknyg+JY5cXQgkf/Filj7nEYaF4yAUt6VargzFsx6UJJmkf4WS3LTLa+1bQ9nZvtF3E1rir
+	sAozVHbNwh3T4LZ5sVzN9XJ5IFLrTGUPiWEqwzgCcd0Qz5FBPFyBvKflNvasl2t7sjLsTvF49XblH
+	x3Rra/4YZO+pHcoEpowyoAewNzixVSqAMZJDxA6Q1eI5UWChXksN3sFrhru8D2mlBnuwPQMfM6EId
+	MQBXy+/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6fyv-000000051Rt-0EMn;
-	Thu, 09 Oct 2025 02:02:13 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1v6kAU-00000005HNc-16Ol;
+	Thu, 09 Oct 2025 06:30:26 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6fys-000000051Qb-2NBW
-	for linux-mediatek@lists.infradead.org;
-	Thu, 09 Oct 2025 02:02:11 +0000
-X-UUID: f47e37c4a4b311f0a52f393f94899d25-20251008
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=aZIE8iEoWepIU4IvbJ7gGd9jnoBAtSM2nxsZWSBh934=;
-	b=DWGngXQfD5chsjPJIdgLykAiwas4ZVDDZOIwMTIDcADe2vWAMrwgLNX79azOylUzi89XOD3d1j/IP5rhFLmRcGTFPz5BMEOM9+8tGIZJwS5zj7kg07Kj2bJqXwNQn2ApkIrlUHag/OvmHISFBlSJ+MneBV5hr7aeMf6oVFt8UWw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:6396fe0a-d7fc-4e3f-bd17-caf25ff5778e,IP:0,UR
-	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:-5
-X-CID-META: VersionHash:a9d874c,CLOUDID:e70afab8-795c-4f99-91f3-c115e0d49051,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
-	0,EDM:-3,IP:nil,URL:0,File:130,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,
-	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: f47e37c4a4b311f0a52f393f94899d25-20251008
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <mingyen.hsieh@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1856283960; Wed, 08 Oct 2025 19:02:05 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26; Thu, 9 Oct 2025 10:01:59 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.10 via Frontend Transport; Thu, 9 Oct 2025 10:01:59 +0800
-From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
-	<Leon.Yen@mediatek.com>, <Michael.Lo@mediatek.com>,
-	<allan.wang@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
-	<km.lin@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
-	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Leon Yen <leon.yen@mediatek.com>,
-	<stable@vger.kernel.org>, Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
-Subject: [PATCH] wifi: mt76: mt7921: fix a potential clc buffer length underflow
-Date: Thu, 9 Oct 2025 10:01:58 +0800
-Message-ID: <20251009020158.1923429-1-mingyen.hsieh@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1v6kAS-00000005HNL-1x0p;
+	Thu, 09 Oct 2025 06:30:24 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 08414621D9;
+	Thu,  9 Oct 2025 06:30:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5798CC4CEE7;
+	Thu,  9 Oct 2025 06:30:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1759991422;
+	bh=iixDKVyiVVp7+8PaX5CJIKm90MRovONR4rKXMm7l76g=;
+	h=From:Date:Subject:To:Cc:From;
+	b=a0aAP3sczWi62YXdnte+kBjE8NFpslFYjYlv0AQ6YNrHz35BUmioYW00WUS7t5kB2
+	 kZM8Ag8pBWplicYBjgg47lxvsTGJ1u/V58J4OSH4UxxB47j/vh+pANO/KtEWwIQCfy
+	 +Wc0kZn3hesiGQ2A7JQBK8ANmuPYTmhE+V62Wz9P7VFVan4afD/LZ+D0eQlA8Udk9V
+	 1Dgj0X3/OnySckPMBQlBERIZ07jlCOSu8gwz6JJ7qBaxRL/2cBwhczeXJ4+3vo5OZe
+	 Z+ZRZpCrxcUNImyoqsomOITm/mHXbWXvSXGuhsrcDEYW7vQhjIDMYtZFSVMvdexjPk
+	 giDsMNFUqDtVw==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Thu, 09 Oct 2025 08:29:34 +0200
+Subject: [PATCH net v2] net: mtk: wed: add dma mask limitation and
+ GFP_DMA32 for device with more than 4GB DRAM
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251008_190210_618595_165FCF58 
-X-CRM114-Status: UNSURE (   8.91  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20251009-wed-4g-ram-limitation-v2-1-c0ca75b26a29@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAE1W52gC/3WNzQ6CMBCEX4Xs2TVt+dF68j0MB2IX2Ait2TaoI
+ by7lbuZ08xkvlkhkjBFuBQrCC0cOfhszKGA+9j5gZBd9mCUqZUtFb7IYTWgdDNOPHPqUl5gU1l
+ FJ3LWlRby9inU83vn3sBTgjaHI8cU5LN/LXqvflit1PkPdtGY1fRU16Sdqsz1QeJpOgYZoN227
+ QvjgTr1wAAAAA==
+X-Change-ID: 20250930-wed-4g-ram-limitation-6490e7ed9d39
+To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
+ Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>, 
+ Sujuan Chen <sujuan.chen@mediatek.com>
+Cc: netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Rex Lu <rex.lu@mediatek.com>, 
+ Daniel Pawlik <pawlik.dan@gmail.com>, Matteo Croce <teknoraver@meta.com>
+X-Mailer: b4 0.14.2
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,38 +80,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Leon Yen <leon.yen@mediatek.com>
+From: Rex Lu <rex.lu@mediatek.com>
 
-The buf_len is used to limit the iterations for retrieving the country
-power setting and may underflow under certain conditions due to changes
-in the power table in CLC.
+Limit tx/rx buffer address to 32-bit address space for board with more
+than 4GB DRAM.
 
-This underflow leads to an almost infinite loop or an invalid power
-setting resulting in driver initialization failure.
-
-Cc: stable@vger.kernel.org
-Fixes: fa6ad88e023d ("wifi: mt76: mt7921: fix country count limitation for CLC")
-Signed-off-by: Leon Yen <leon.yen@mediatek.com>
-Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+Fixes: 804775dfc2885 ("net: ethernet: mtk_eth_soc: add support for Wireless Ethernet Dispatch (WED)")
+Fixes: 6757d345dd7db ("net: ethernet: mtk_wed: introduce hw_rro support for MT7988")
+Tested-by: Daniel Pawlik <pawlik.dan@gmail.com>
+Tested-by: Matteo Croce <teknoraver@meta.com>
+Signed-off-by: Rex Lu <rex.lu@mediatek.com>
+Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt7921/mcu.c | 3 +++
- 1 file changed, 3 insertions(+)
+Changes in v2:
+- Add missing Fixes tags
+- Avoid possible deadlock if dma_set_mask_and_coherent fails
+- Link to v1: https://lore.kernel.org/r/20251008-wed-4g-ram-limitation-v1-1-16fe55e1d042@kernel.org
+---
+ drivers/net/ethernet/mediatek/mtk_wed.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-index 86bd33b916a9..80ccd56409b3 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-@@ -1353,6 +1353,9 @@ int __mt7921_mcu_set_clc(struct mt792x_dev *dev, u8 *alpha2,
- 		u16 len = le16_to_cpu(rule->len);
- 		u16 offset = len + sizeof(*rule);
+diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
+index 3dbb113b792cf00fb4f89ab20f7e7fa72ecac260..1ed1f88dd7f8bc69bf4cb2803b907c8d7776ae20 100644
+--- a/drivers/net/ethernet/mediatek/mtk_wed.c
++++ b/drivers/net/ethernet/mediatek/mtk_wed.c
+@@ -677,7 +677,7 @@ mtk_wed_tx_buffer_alloc(struct mtk_wed_device *dev)
+ 		void *buf;
+ 		int s;
  
-+		if (buf_len < offset)
-+			break;
+-		page = __dev_alloc_page(GFP_KERNEL);
++		page = __dev_alloc_page(GFP_KERNEL | GFP_DMA32);
+ 		if (!page)
+ 			return -ENOMEM;
+ 
+@@ -800,7 +800,7 @@ mtk_wed_hwrro_buffer_alloc(struct mtk_wed_device *dev)
+ 		struct page *page;
+ 		int s;
+ 
+-		page = __dev_alloc_page(GFP_KERNEL);
++		page = __dev_alloc_page(GFP_KERNEL | GFP_DMA32);
+ 		if (!page)
+ 			return -ENOMEM;
+ 
+@@ -2426,6 +2426,10 @@ mtk_wed_attach(struct mtk_wed_device *dev)
+ 	dev->version = hw->version;
+ 	dev->hw->pcie_base = mtk_wed_get_pcie_base(dev);
+ 
++	ret = dma_set_mask_and_coherent(hw->dev, DMA_BIT_MASK(32));
++	if (ret)
++		goto out;
 +
- 		pos += offset;
- 		buf_len -= offset;
- 		if (rule->alpha2[0] != alpha2[0] ||
+ 	if (hw->eth->dma_dev == hw->eth->dev &&
+ 	    of_dma_is_coherent(hw->eth->dev->of_node))
+ 		mtk_eth_set_dma_device(hw->eth, hw->dev);
+
+---
+base-commit: 07fdad3a93756b872da7b53647715c48d0f4a2d0
+change-id: 20250930-wed-4g-ram-limitation-6490e7ed9d39
+
+Best regards,
 -- 
-2.34.1
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
