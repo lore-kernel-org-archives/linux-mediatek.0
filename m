@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5AF4CCD185
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Oct 2025 11:27:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44282CCD18E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Oct 2025 11:27:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xPd0ZjeboARFnV14EUx/4trsex2WcBOkc8rNb5ltniA=; b=jDWdGMTuHUl8QO
-	Y3c47tCi6XMHC8h3Oev/+Th9bGEZjuCqPA/Yw5wY2ULrlMC/qyLRMpk6nyBcLmFXRQlvZvHngS/Sh
-	fDlINm+1Z0VLUuRKQj1BbgXDX/rKBER6DBDTY5SuRENJEz++H234v5wT6WJ/yBOBpZ+Tpj+qyDF5U
-	V8MWcBoKz6WX0ONa67AO6wj5gypTBudod2tCJJrCo6zKqG574z2XJTnc0DDX3YLaGrBH09HyEeWzf
-	FZ6HDdzGU7SpR5ZSIlEJ7zUhuKeaFDnyz3GDcphdHizM7amRv5BRMH74F0G3l7vzZy5bCA39qwBoS
-	3DqsbgmJFwQY788oghxg==;
+	List-Owner; bh=p3UZ08G8p52hac3wjyX6pswKOcx/IRYP7stg7dSAVT4=; b=YjV8Fv5333jyoX
+	xIxAVezp9duurgImKKG4s5qIQw9ePyjfQwCbMDGFkaISZu7wiHudmBwzyzccSMgDy9ZLuz2q+q7IF
+	OgytbELVPdgIIyHA8BPjcS+pGkGF17cJZ/MEvpuRGk8yLWgEOisMuZrKSKGV1ijrEpJ/EFwrwZltH
+	c908ulHd0LehUSC0cmKj24FaM0gX9bhTygVEcsFcU+ZFOEtHrf1SpvvKClIncqbmF+9pr3Q+0Jglj
+	PSoDxRjYw+pPGtoLosGPq1bRM73hdpFv66DumqVFk9tKX7kaUmG5pbIv9sI5txs5kYEdtjuWXjtlB
+	zx9p7EAw0ZMVx2KJc1zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6onn-00000005y8V-475i;
-	Thu, 09 Oct 2025 11:27:19 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1v6onq-00000005yBZ-2IN7;
+	Thu, 09 Oct 2025 11:27:22 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6onk-00000005y4J-20FJ;
-	Thu, 09 Oct 2025 11:27:17 +0000
+	id 1v6onn-00000005y5p-0Or9;
+	Thu, 09 Oct 2025 11:27:20 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1760009234;
-	bh=Ci7fJTXqo4Z20C2XhPVrLu17OYCK7HuDTL8uZuZ4OA8=;
+	s=mail; t=1760009237;
+	bh=8yYyWkZiJJsYeW345sz5gfJX+xO2eBRcOdxAaPWHPsI=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=VRa6RD7Z4Ol1Fi6WqTpUb4G5Kwx/WEEJvoDj3O7XI7UtRxwsZWqDvZi7rz+8Yi2U1
-	 74l8i5c1HmW7+/oIF2wwuVu/QkUH9oXcRxE/Sl4YTESoHst3p6/6x+QKOvCzENZkM9
-	 vaEI06KKa9cZkQ5utMuvB6whcGIWEHeF494dGEtt/Qz4kp37JTpsU0a8eiqIiMr0n+
-	 E0QV7nmS4cYw3HbxyzuCVpYqC3+h0YNKCD7MxCbCvevMfWnWDZgNr03vFG9PPrsuwr
-	 J+XsyfNE2DEqTZYSlQF8/UPho0EX4DH4N/l4YtafPp3fEtorvPw0gR00MPOvndUMlU
-	 9h+U96Rz4XV5g==
+	b=GdHTDrYUjyY+hNDLtc/GWgG71srg8R0g/MfsuijCxhpb5hW/b6J1WZo5P0CI0dSRZ
+	 7W00otLOIgeVmFJ+GSWPToZ1gojK0jWBFK2v3cKp+4Wo8WwCQbXCp4KgrbopCPNkiC
+	 678ZbBrnNawUWOEklAETh7Qd01inhsAYyWQN6PB6mOFAG2wlJg1HF0Ihx5UalGLHz/
+	 Co065qHcnXBSUqq4MdWv7YWt+7QXWwICjy1rUxjL+D+2FdYd0zZNu6AbZ7lkVQ0AfO
+	 ATLYSh4f3smMFpvM6bT4b8MiVKe8udTrBzuDoVxVpz51VKuKDA5UKkROVOyTyiLwif
+	 tw5z8LgUNGvZA==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4C15F17E0579;
-	Thu,  9 Oct 2025 13:27:13 +0200 (CEST)
-Message-ID: <044f8f98-7ae2-45ef-9b9e-a112d7013e5d@collabora.com>
-Date: Thu, 9 Oct 2025 13:27:12 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 408E117E136C;
+	Thu,  9 Oct 2025 13:27:16 +0200 (CEST)
+Message-ID: <3c97025f-289e-48a3-9b58-3d469cba7366@collabora.com>
+Date: Thu, 9 Oct 2025 13:27:16 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 06/20] mailbox: mtk-cmdq: Add GCE hardware
- virtualization configuration
+Subject: Re: [PATCH v7 02/20] mailbox: mtk-cmdq: Refine DMA address handling
+ for the command buffer
 To: Jason-JH Lin <jason-jh.lin@mediatek.com>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Jassi Brar <jassisinghbrar@gmail.com>,
  Chun-Kuang Hu <chunkuang.hu@kernel.org>,
  Mauro Carvalho Chehab <mchehab@kernel.org>
 References: <20250827114006.3310175-1-jason-jh.lin@mediatek.com>
- <20250827114006.3310175-7-jason-jh.lin@mediatek.com>
+ <20250827114006.3310175-3-jason-jh.lin@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250827114006.3310175-7-jason-jh.lin@mediatek.com>
+In-Reply-To: <20250827114006.3310175-3-jason-jh.lin@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251009_042716_691301_71AE32EB 
-X-CRM114-Status: GOOD (  12.84  )
+X-CRM114-CacheID: sfid-20251009_042719_318009_6E89B4D8 
+X-CRM114-Status: GOOD (  30.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,35 +80,178 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 27/08/25 13:37, Jason-JH Lin ha scritto:
-> The GCE hardware virtualization configuration supports the isolation of
-> GCE hardware resources across different OS environments. Each OS is
-> treated as a virtual machine (VM) for GCE purposes.
-> There are 6 VMs and 1 host VM. The host VM has main control over the
-> GCE virtualization settings for all VMs.
+> GCE can only fetch the command buffer address from a 32-bit register.
+> Some SoCs support a 35-bit command buffer address for GCE, which
+> requires a right shift of 3 bits before setting the address into
+> the 32-bit register. A comment has been added to the header of
+> cmdq_get_shift_pa() to explain this requirement.
 > 
-> To properly access the GCE thread registers, it is necessary to
-> configure access permissions for specific GCE threads assigned to
-> different VMs.
-> Currently, since only the host VM is being used, it is required to
-> enable access permissions for all GCE threads for the host VM.
+> To prevent the GCE command buffer address from being DMA mapped beyond
+> its supported bit range, the DMA bit mask for the device is set during
+> initialization.
 > 
-> There are 2 VM configurations:
-> 1. VM_ID_MAP
-> There are 4 registers to allocate 32 GCE threads across different VMs:
-> VM_ID_MAP0 for threads 0-9, VM_ID_MAP1 for threads 10-19,
-> VM_ID_MAP2 for threads 20-29, and VM_ID_MAP3 for threads 30-31.
-> Each thread has a 3-bit configuration, where setting all bits to 1
-> configures the thread for the host VM.
+> Additionally, to ensure the correct shift is applied when setting or
+> reading the register that stores the GCE command buffer address,
+> new APIs, cmdq_reg_shift_addr() and cmdq_reg_revert_addr(), have been
+> introduced for consistent operations on this register.
 > 
-> 2. VM_CPR_GSIZE
-> It is used to allocate the CPR SRAM size to each VM. Each VM has 4-bit
-> configuration, where setting bit 0-3 to configures the size of host VM.
-> This setting must be configured before the VM configuration to prevent
-> resource leakage.
+> The variable type for the command buffer address has been standardized
+> to dma_addr_t to prevent handling issues caused by type mismatches.
 > 
+> Fixes: 0858fde496f8 ("mailbox: cmdq: variablize address shift in platform")
 > Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
+> ---
+>   drivers/mailbox/mtk-cmdq-mailbox.c       | 43 ++++++++++++++++--------
+>   include/linux/mailbox/mtk-cmdq-mailbox.h | 10 ++++++
+>   2 files changed, 39 insertions(+), 14 deletions(-)
+> 
+> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+> index 532929916e99..a60486cbb533 100644
+> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
+> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+> @@ -92,6 +92,16 @@ struct gce_plat {
+>   	u32 gce_num;
+>   };
+>   
+> +static inline u32 cmdq_reg_shift_addr(dma_addr_t addr, const struct gce_plat *pdata)
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+cmdq_format_gce_addr() or cmdq_pa_to_gce_addr()
+
+(or cmdq_va_to_gce_addr() if this is not a physical address)
+
+explains what you're doing here a bit better I think.
+
+> +{
+> +	return (addr >> pdata->shift);
+
+You don't need parenthesis; just `return addr >> pdata->shift;` is fine
+
+> +}
+> +
+> +static inline dma_addr_t cmdq_reg_revert_addr(u32 addr, const struct gce_plat *pdata)
+
+cmdq_gce_to_pa_addr() or cmdq_get_pa_addr() perhaps? :-)
+
+(same comments for s/pa/va/g if this is not physical address)
+
+Everything else looks ok.
+
+Cheers,
+Angelo
+
+> +{
+> +	return ((dma_addr_t)addr << pdata->shift);
+> +}
+> +
+>   u8 cmdq_get_shift_pa(struct mbox_chan *chan)
+>   {
+>   	struct cmdq *cmdq = container_of(chan->mbox, struct cmdq, mbox);
+> @@ -188,13 +198,12 @@ static void cmdq_task_insert_into_thread(struct cmdq_task *task)
+>   	struct cmdq_task *prev_task = list_last_entry(
+>   			&thread->task_busy_list, typeof(*task), list_entry);
+>   	u64 *prev_task_base = prev_task->pkt->va_base;
+> +	u32 shift_addr = cmdq_reg_shift_addr(task->pa_base, task->cmdq->pdata);
+>   
+>   	/* let previous task jump to this task */
+>   	dma_sync_single_for_cpu(dev, prev_task->pa_base,
+>   				prev_task->pkt->cmd_buf_size, DMA_TO_DEVICE);
+> -	prev_task_base[CMDQ_NUM_CMD(prev_task->pkt) - 1] =
+> -		(u64)CMDQ_JUMP_BY_PA << 32 |
+> -		(task->pa_base >> task->cmdq->pdata->shift);
+> +	prev_task_base[CMDQ_NUM_CMD(prev_task->pkt) - 1] = (u64)CMDQ_JUMP_BY_PA << 32 | shift_addr;
+>   	dma_sync_single_for_device(dev, prev_task->pa_base,
+>   				   prev_task->pkt->cmd_buf_size, DMA_TO_DEVICE);
+>   
+> @@ -237,7 +246,8 @@ static void cmdq_thread_irq_handler(struct cmdq *cmdq,
+>   				    struct cmdq_thread *thread)
+>   {
+>   	struct cmdq_task *task, *tmp, *curr_task = NULL;
+> -	u32 curr_pa, irq_flag, task_end_pa;
+> +	u32 irq_flag, shift_addr;
+> +	dma_addr_t curr_pa, task_end_pa;
+>   	bool err;
+>   
+>   	irq_flag = readl(thread->base + CMDQ_THR_IRQ_STATUS);
+> @@ -259,7 +269,8 @@ static void cmdq_thread_irq_handler(struct cmdq *cmdq,
+>   	else
+>   		return;
+>   
+> -	curr_pa = readl(thread->base + CMDQ_THR_CURR_ADDR) << cmdq->pdata->shift;
+> +	shift_addr = readl(thread->base + CMDQ_THR_CURR_ADDR);
+> +	curr_pa = cmdq_reg_revert_addr(shift_addr, cmdq->pdata);
+>   
+>   	list_for_each_entry_safe(task, tmp, &thread->task_busy_list,
+>   				 list_entry) {
+> @@ -378,7 +389,8 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
+>   	struct cmdq_thread *thread = (struct cmdq_thread *)chan->con_priv;
+>   	struct cmdq *cmdq = dev_get_drvdata(chan->mbox->dev);
+>   	struct cmdq_task *task;
+> -	unsigned long curr_pa, end_pa;
+> +	u32 shift_addr;
+> +	dma_addr_t curr_pa, end_pa;
+>   	int ret;
+>   
+>   	/* Client should not flush new tasks if suspended. */
+> @@ -409,20 +421,20 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
+>   		 */
+>   		WARN_ON(cmdq_thread_reset(cmdq, thread) < 0);
+>   
+> -		writel(task->pa_base >> cmdq->pdata->shift,
+> -		       thread->base + CMDQ_THR_CURR_ADDR);
+> -		writel((task->pa_base + pkt->cmd_buf_size) >> cmdq->pdata->shift,
+> -		       thread->base + CMDQ_THR_END_ADDR);
+> +		shift_addr = cmdq_reg_shift_addr(task->pa_base, cmdq->pdata);
+> +		writel(shift_addr, thread->base + CMDQ_THR_CURR_ADDR);
+> +		shift_addr = cmdq_reg_shift_addr(task->pa_base + pkt->cmd_buf_size, cmdq->pdata);
+> +		writel(shift_addr, thread->base + CMDQ_THR_END_ADDR);
+>   
+>   		writel(thread->priority, thread->base + CMDQ_THR_PRIORITY);
+>   		writel(CMDQ_THR_IRQ_EN, thread->base + CMDQ_THR_IRQ_ENABLE);
+>   		writel(CMDQ_THR_ENABLED, thread->base + CMDQ_THR_ENABLE_TASK);
+>   	} else {
+>   		WARN_ON(cmdq_thread_suspend(cmdq, thread) < 0);
+> -		curr_pa = readl(thread->base + CMDQ_THR_CURR_ADDR) <<
+> -			cmdq->pdata->shift;
+> -		end_pa = readl(thread->base + CMDQ_THR_END_ADDR) <<
+> -			cmdq->pdata->shift;
+> +		shift_addr = readl(thread->base + CMDQ_THR_CURR_ADDR);
+> +		curr_pa = cmdq_reg_revert_addr(shift_addr, cmdq->pdata);
+> +		shift_addr = readl(thread->base + CMDQ_THR_END_ADDR);
+> +		end_pa = cmdq_reg_revert_addr(shift_addr, cmdq->pdata);
+>   		/* check boundary */
+>   		if (curr_pa == end_pa - CMDQ_INST_SIZE ||
+>   		    curr_pa == end_pa) {
+> @@ -656,6 +668,9 @@ static int cmdq_probe(struct platform_device *pdev)
+>   	if (err)
+>   		return err;
+>   
+> +	dma_set_coherent_mask(dev,
+> +			      DMA_BIT_MASK(sizeof(u32) * BITS_PER_BYTE + cmdq->pdata->shift));
+> +
+>   	cmdq->mbox.dev = dev;
+>   	cmdq->mbox.chans = devm_kcalloc(dev, cmdq->pdata->thread_nr,
+>   					sizeof(*cmdq->mbox.chans), GFP_KERNEL);
+> diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
+> index 4c1a91b07de3..e1555e06e7e5 100644
+> --- a/include/linux/mailbox/mtk-cmdq-mailbox.h
+> +++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
+> @@ -77,6 +77,16 @@ struct cmdq_pkt {
+>   	size_t			buf_size; /* real buffer size */
+>   };
+>   
+> +/**
+> + * cmdq_get_shift_pa() - get the shift bits of physical address
+> + * @chan: mailbox channel
+> + *
+> + * GCE can only fetch the command buffer address from a 32-bit register.
+> + * Some SOCs support more than 32-bit command buffer address for GCE, which
+> + * requires some shift bits to make the address fit into the 32-bit register.
+> + *
+> + * Return: the shift bits of physical address
+> + */
+>   u8 cmdq_get_shift_pa(struct mbox_chan *chan);
+>   
+>   #endif /* __MTK_CMDQ_MAILBOX_H__ */
 
 
 
