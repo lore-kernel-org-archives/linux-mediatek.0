@@ -4,76 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18AD0CCD183
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Oct 2025 19:27:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A179CCD183
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Oct 2025 20:11:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Y7+mqGR7dpFOmg9HvnMXYkfm59tcB5c47+S6f1nglZA=; b=4WR8I/uko8/BCwLnzmtNg2DZmf
-	VorQ0tukj5ycBlwkfwDCWcDV0RyzUvU6mw20/+3RR5TlxPz0fA78PP/L8t0alQzUIj6JigEO2L4Tu
-	sXXDDaxvaru7NIgleK7G1eD/r0dOQtpPKOJD41ALSMFF+TM+0LQIbvZyfINM4/dQTvs39i1forCgb
-	b0bmv2Y3KPRjC+lmi7Qy9zZQ90mVpIWJM2BtPHcb2wStN0YefFgK2KwCPhZbIwjl1MzqyOXOVkEXS
-	x2sWhAwCO414VGazzdljz49XI7R+2BoWOG/f6ssXoxig+Hl2gAFnhEYDshk1eCZtMxcxaa82iLGbp
-	ecye0hwA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=f0Z6sFSRwksfBZQlXTFw+3+zEZbAZaUN0TuayQVteiY=; b=oc+f+H5m4T73EHLmxaOHP2cfIi
+	yUqarPEUwLBCuJsdBGMmU9OrtZZr2IGa+AV1eH2Lp+pUUAvOIB43a4lfyjEOgsojCOAcn4rLEndVm
+	X++jiAHEI+uNh1R6LX4ruoWutGsFB6Y6BTNHq0HTg+VoY+jVwZ1i+oyZtHmchaJ9peCVZpsjV5RB/
+	oBb9cp/2Ltlc4sfGIOvPSSNg0NNApj0itN93lkVDymwTMWhG13kmbHML7aX7z8Du8x+9pyK06hnv7
+	LTSSQO+6XnIC7Aj3VCyQhjABCFelMPNYIn5aHn1d+urGTMwHBI+d3T4HDY5WRJs0+zBnGVmSye7g2
+	ZATpWjlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6wID-000000070e7-1ByH;
-	Thu, 09 Oct 2025 19:27:13 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1v6wyx-000000073Dz-3LTk;
+	Thu, 09 Oct 2025 20:11:23 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6wIB-000000070cy-3jQ5;
-	Thu, 09 Oct 2025 19:27:11 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 0BB5B62400;
-	Thu,  9 Oct 2025 19:27:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5FEB6C116C6;
-	Thu,  9 Oct 2025 19:27:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760038029;
-	bh=J7CUiWc0ADF5tenIxtE4W4RrkCaIIs7aFDIdrQb3yuA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ocOfs+N7rtJInE5RqP5OdMODSvcF4BMfHOQ/dcESFUUiWLWZAxbZaF5uNBcC7hENh
-	 qSwKlQWc7ueBC64kW2mHYeok0OYGmn9lyK+JRYDFeqfUUJL++YiR0VukEUdApGwZ4P
-	 06fxejW18TPzKsAf3FaJh5To8Xpr1/s8bqgN9DgXGr/z1ZXFBh272XQyfXUJXlKFAv
-	 4mF3dyXq7P/6ESbB3idH+ngJx9sPFTjCaHZ8861rBV4KfbYP+Zth70YDTTW0kAiNxW
-	 8QJP0JGvJcnnBDViirhzGPJdCFx3Ynf1ASJF8rtJ/rR02QsosocZbskOnujsGkzC/J
-	 /yWABoLKDafzg==
-Date: Thu, 9 Oct 2025 14:27:08 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Maxime Ripard <mripard@kernel.org>, devicetree@vger.kernel.org,
-	Ulf Hansson <ulf.hansson@linaro.org>,
-	Steven Price <steven.price@arm.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Liviu Dudau <liviu.dudau@arm.com>,
-	"Gustavo A. R. Silva" <gustavoars@kernel.org>,
-	David Airlie <airlied@gmail.com>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Simona Vetter <simona@ffwll.ch>, Kees Cook <kees@kernel.org>,
-	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	dri-devel@lists.freedesktop.org,
-	Jassi Brar <jassisinghbrar@gmail.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, kernel@collabora.com,
-	Chia-I Wu <olvaffe@gmail.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	linux-hardening@vger.kernel.org,
-	Boris Brezillon <boris.brezillon@collabora.com>,
-	Chen-Yu Tsai <wenst@chromium.org>
-Subject: Re: [PATCH v6 2/7] dt-bindings: power: Add MT8196 GPU frequency
- control binding
-Message-ID: <176003802776.3154911.16315672930945564696.robh@kernel.org>
-References: <20251003-mt8196-gpufreq-v6-0-76498ad61d9e@collabora.com>
- <20251003-mt8196-gpufreq-v6-2-76498ad61d9e@collabora.com>
+	id 1v6wyu-000000073Cr-1Kd6;
+	Thu, 09 Oct 2025 20:11:21 +0000
+Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 599EIOxQ014054;
+	Thu, 9 Oct 2025 20:11:11 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+	cc:content-type:date:from:message-id:mime-version:subject:to; s=
+	qcppdkim1; bh=f0Z6sFSRwksfBZQlXTFw+3+zEZbAZaUN0TuayQVteiY=; b=pK
+	sHcFtdOQwL6pntzVrA7Ht/NcAaQKasWUMYPGN6q93J1GRd+H56fugCwfQXnMiiuP
+	8wOM3WE0CrIPIEjX1SGLVj+zoHU9pch2t9uHfAsnpk3ZGbSz6qRuzzNQb3DS1Tgo
+	omVMaNy+tfAXvXYFbAgIr5oT3xOwIzRSpmPTPbmJLDP0mbu6t2sjMwQmtZVu2+tb
+	lNNqSHKw8xz/xn/UC+YitxUkYtiXQxVbemPgKpSLDLG4AnuJSVs5Jw9Odc3G+Vxh
+	kkBC2HIccb1Wh3kz/nkacv4uuBR/wz/ib0Idp/jUQeLvrZc3ftzd46FDXdFV2DXI
+	enGSU8R5/e9P5kxZYmrQ==
+Received: from nasanppmta01.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 49nv4km70r-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 09 Oct 2025 20:11:10 +0000 (GMT)
+Received: from nasanex01a.na.qualcomm.com (nasanex01a.na.qualcomm.com [10.52.223.231])
+	by NASANPPMTA01.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTPS id 599KBATN002953
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 9 Oct 2025 20:11:10 GMT
+Received: from stor-berry.qualcomm.com (10.80.80.8) by
+ nasanex01a.na.qualcomm.com (10.52.223.231) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.24; Thu, 9 Oct 2025 13:11:09 -0700
+From: "Bao D. Nguyen" <quic_nguyenb@quicinc.com>
+To: <quic_cang@quicinc.com>, <quic_nitirawa@quicinc.com>, <bvanassche@acm.org>,
+        <avri.altman@wdc.com>, <peter.wang@mediatek.com>,
+        <adrian.hunter@intel.com>, <martin.petersen@oracle.com>
+CC: <linux-scsi@vger.kernel.org>, "Bao D. Nguyen" <quic_nguyenb@quicinc.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>,
+        "open list:ARM/Mediatek SoC
+ support:Keyword:mediatek" <linux-kernel@vger.kernel.org>,
+        "moderated
+ list:ARM/Mediatek SoC support:Keyword:mediatek"
+	<linux-arm-kernel@lists.infradead.org>,
+        "moderated list:ARM/Mediatek SoC
+ support:Keyword:mediatek" <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v2 0/2] *** Remove UFS_DEVICE_QUIRK_DELAY_AFTER_LPM quirk ***
+Date: Thu, 9 Oct 2025 13:10:57 -0700
+Message-ID: <cover.1760039554.git.quic_nguyenb@quicinc.com>
+X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20251003-mt8196-gpufreq-v6-2-76498ad61d9e@collabora.com>
+Content-Type: text/plain
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nasanex01a.na.qualcomm.com (10.52.223.231)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Authority-Analysis: v=2.4 cv=dojWylg4 c=1 sm=1 tr=0 ts=68e816de cx=c_pps
+ a=JYp8KDb2vCoCEuGobkYCKw==:117 a=JYp8KDb2vCoCEuGobkYCKw==:17
+ a=GEpy-HfZoHoA:10 a=x6icFKpwvdMA:10 a=EGZWyozpdK3AfW_iKrYA:9
+ a=cPQSjfK2_nFv0Q5t_7PE:22
+X-Proofpoint-GUID: X1k8RkBjTGYHt1tHE3U4UbrVs3m654S0
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDA4MDEyMSBTYWx0ZWRfX+E5yWUxx6HgG
+ 7HPLgXeR1x7Gp5xOWCjS2dQ8qG0LRB3a1alhNiSqs6qQhBT7Wq5J3xI2TE4IK5vBs6oJ5nI7tmM
+ gSHRhGn7DBlUZWNvWqzvydon+Fy8IkLEvHOvng1vd3Z0O4713/NM6hvxyu9d7dQRZa88hbd1OIO
+ tB5NfR3mtEHo7gCS/r1le9g1fXSEoBwHjDXZjeoNjhYxJvwTDoph01vQuXkEM7pwHLA/LiGSFSZ
+ eYNtfgvJZVZcIo8ttv57IiZJxdjaD3zAVymkkT2XJQQiSnhPK+Qe69H4FRLbuq+Am2WKQbBi4vj
+ HM7/wCid0ug05+pMC1OjYCFjQSLxETC8O2DqyaUZc3nck4USx1OGxJ+aLcG99W9A+Tu+3gXiFQE
+ 1VPfPHjoksvFCRifkRHeuI8gYmC43A==
+X-Proofpoint-ORIG-GUID: X1k8RkBjTGYHt1tHE3U4UbrVs3m654S0
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-10-09_07,2025-10-06_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1015 impostorscore=0 suspectscore=0 lowpriorityscore=0 adultscore=0
+ bulkscore=0 spamscore=0 priorityscore=1501 phishscore=0 malwarescore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.19.0-2510020000 definitions=main-2510080121
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251009_131120_381852_F30D76F2 
+X-CRM114-Status: GOOD (  13.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,24 +114,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Multiple ufs device manufacturers request support for the
+UFS_DEVICE_QUIRK_DELAY_AFTER_LPM quirk in the Qualcomm's platform driver.
+After checking further with the major UFS manufacturers engineering teams
+such as Samsung, Kioxia, SK Hynix and Micron, all the manufacturers require
+this quirk. Since the quirk is needed by all the ufs device manufacturers,
+remove the quirk in the ufs core driver and implement a universal delay
+for all the ufs devices.
 
-On Fri, 03 Oct 2025 22:15:04 +0200, Nicolas Frattaroli wrote:
-> On the MT8196 and MT6991 SoCs, the GPU power and frequency is controlled
-> by some integration logic, referred to as "MFlexGraphics" by MediaTek,
-> which comes in the form of an embedded controller running
-> special-purpose firmware.
-> 
-> This controller takes care of the regulators and PLL clock frequencies
-> to squeeze the maximum amount of power out of the silicon.
-> 
-> Add a binding which models it as a power domain.
-> 
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> ---
->  .../bindings/power/mediatek,mt8196-gpufreq.yaml    | 117 +++++++++++++++++++++
->  1 file changed, 117 insertions(+)
-> 
+In addition to verifying with the public device's datasheets, the ufs
+device manufacturer's engineering teams confirmed the required vcc
+power-off time for the devices is a minimum of 1ms before vcc can be
+powered on again. The existing 5ms delay implemented in the ufs core
+driver seems too conservative, so replace the hard coded 5ms delay with a
+variable default to 5ms setting and allow the platform drivers
+to override this setting as needed to improve the system resume latency.
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+v1 -> v2:
+	- Added a check for vcc's always_on to skip the delay if the vcc
+	  is an always-on regulator (Peter's comment)
+	- Added a sleep_post_vcc_off variable to allow platform drivers to
+	  override the default core driver's setting as needed (Bart and Peter's comments)
+
+Bao D. Nguyen (2):
+  scsi: ufs: core: Remove UFS_DEVICE_QUIRK_DELAY_AFTER_LPM quirk
+  scsi: ufs: core: Replace hard coded vcc-off delay with a variable
+
+ drivers/ufs/core/ufshcd.c       | 15 +++++++++++----
+ drivers/ufs/host/ufs-mediatek.c | 11 ++++-------
+ drivers/ufs/host/ufs-qcom.c     |  3 ---
+ include/ufs/ufs_quirks.h        |  7 -------
+ include/ufs/ufshcd.h            |  2 ++
+ 5 files changed, 17 insertions(+), 21 deletions(-)
+
+-- 
+2.7.4
 
 
