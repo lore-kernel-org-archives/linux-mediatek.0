@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF090CCD187
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Oct 2025 11:35:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB87DCCD185
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Oct 2025 11:41:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qI73iBWdz1yG8sK+Mp5xzDq+xEkKCF/JG17lsOVTyA4=; b=rBLFrxtBYTZhWZ
-	4RhWMRjSM9eCVZwNXGKBVU84F5p2J9JuLvat4Z/0R1w+QTtq7DhntKZ3ljlDtxICqEIENi/QsYIur
-	nvM1f99R9FsnW7jJAAOT607DVnPwE+RVVp65NqYNypHPsyVmTgvFp5LrzcUjIf776JOqVdRj04y9L
-	LrdsN2U8khrjY89zQQV+86XWKsHKB9oGWHs4yzOz/IZDp45aEs94ese58YUx+MLjk1F13PzQSQvTp
-	sEAbRnfoFnA0Gup+rzCFEaCCaovg2h3nf/yHO19CxKKNCqluRvD6pERl8VX9DKeYNF9I3XJCubx+4
-	jG96aqK3qTTFVYi2TZ4A==;
+	List-Owner; bh=EAvKbkD/SVmCg3W0qls8xZdyspkVNIgNQEMq0eojYIU=; b=vWwYsu/slfqofy
+	9dv7mDH6iAK8mG9oXEPzAMH+hGM8P5tcUwvUgliD3zyVJondonn021sRJmmp+JI8T2k/fVuiOAg24
+	Z9pzKYBzxrvvCujqrA82ybtHLypzdZyEPeMVrb9TDGcR8jSjCV+tib3/iseIyG0eaNuaxkJdcod/o
+	el/m38dCJf9yx6PcNSixKCO8nP489ETuLx0qGUpndgph399cqD+NtWx8n5wtsKVT1GFiVOUIJsTyN
+	f4buKSwSSqGN4/wsdJ7LmtaqjKeLcoem+BRq0+jC1yx41zB1pvKDvdOVOqsxbvrC4LcjdaGnPARRc
+	JBmy3xvn/tVgWVs439Ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6ow8-00000005ziQ-2Qa0;
-	Thu, 09 Oct 2025 11:35:56 +0000
+	id 1v6p1a-000000060lh-48TA;
+	Thu, 09 Oct 2025 11:41:34 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6ow5-00000005zhw-34wk;
-	Thu, 09 Oct 2025 11:35:55 +0000
+	id 1v6p1X-000000060jF-2aRb;
+	Thu, 09 Oct 2025 11:41:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1760009751;
-	bh=Z0E5Ui2XxRD/RtSI3wRkIkjJDJlHxUBHJsvJwXR2IHc=;
+	s=mail; t=1760010089;
+	bh=J6gOtlXNGiadx1WV9Jrsfa9A9Mo7GEanyAvz8BWuZfg=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=FqNEEpMAGBk0Mc1/tb6CS85/YBxMY+XW72k7bSSh7lUpqvu2Fh3zIkzgg9LKe7Unj
-	 BXPXZAX6Kv8WfI5J6Qn7hw0pQHwHiGZHVODQxK2jmqh2vNoj2nY9HyhBMQNk54wsgL
-	 sRVV7EzEFq47OSde/2j/vhSyWyv8OJaFm6Sah9DzpXb2CPlA+JzES4SaXK1sXWU+Nq
-	 X2Qp+VnafoXkIRT/ZEYsZvGGASt0kljvMsgWjAKfTgAvyfi/JrFHOFJBaLTGX/Uee9
-	 88mwX+isXesAIfHJjalyi+7jsBW7zVgmTKJhh4snxm0TnkoPMLZZzQj4UR1PY1w/uZ
-	 IY0y0TMYh05iA==
+	b=UhcDCo/VFw8EUeX1askLaZJwGhGmzayOECoCTQAA+mbSvRoMXXroPrLvNH5qJpgwP
+	 kLbBG5Az1XLGWkRh7gGcB/KsOgRB03/Yd70YwobnJPGeqXyifcNWQYfsswsyqjIkg5
+	 92e95GjlMMqLWysVaZEsYYKeaoZjw6CH9mmcwAnlpdQ34+i8e+6fl2AgAa5agnNO4M
+	 k7PbDB5JqdcRyNjr9HzCvLLahDKAQoz6ryFPZvjGy4+IVhmmIakoRrPY0xR887d07v
+	 Xv3DSx/v+FyQdOolGjE4C+ItL6S6GZx44Q6+/EsZeNRynx9hp8cF8+u+5qsGwzn4CR
+	 YCth/5VZ/s6Iw==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C891117E0125;
-	Thu,  9 Oct 2025 13:35:50 +0200 (CEST)
-Message-ID: <e18a0772-3031-4fff-a625-b1d4e1aab605@collabora.com>
-Date: Thu, 9 Oct 2025 13:35:50 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 94FBB17E0A30;
+	Thu,  9 Oct 2025 13:41:28 +0200 (CEST)
+Message-ID: <6f1f74b3-ac2e-4ea6-abce-14ef12ea10dd@collabora.com>
+Date: Thu, 9 Oct 2025 13:41:28 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 09/20] soc: mediatek: mtk-cmdq: Add pa_base parsing for
- hardware without subsys ID support
+Subject: Re: [PATCH v7 12/20] soc: mediatek: Add programming flow for
+ unsupported subsys ID hardware
 To: Jason-JH Lin <jason-jh.lin@mediatek.com>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Jassi Brar <jassisinghbrar@gmail.com>,
  Chun-Kuang Hu <chunkuang.hu@kernel.org>,
  Mauro Carvalho Chehab <mchehab@kernel.org>
 References: <20250827114006.3310175-1-jason-jh.lin@mediatek.com>
- <20250827114006.3310175-10-jason-jh.lin@mediatek.com>
+ <20250827114006.3310175-13-jason-jh.lin@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250827114006.3310175-10-jason-jh.lin@mediatek.com>
+In-Reply-To: <20250827114006.3310175-13-jason-jh.lin@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251009_043554_121971_68EC8831 
-X-CRM114-Status: GOOD (  24.10  )
+X-CRM114-CacheID: sfid-20251009_044131_837834_267BBF69 
+X-CRM114-Status: GOOD (  20.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,103 +80,84 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 27/08/25 13:37, Jason-JH Lin ha scritto:
-> When GCE executes instructions, it typically locates the corresponding
-> hardware register using the subsys ID. For hardware that does not
-> support subsys ID, the subsys ID is set to an invalid value, and the
-> physical address must be used to generate GCE instructions.
+> To support hardware without subsys IDs on new SoCs, add a programming
+> flow that checks whether the subsys ID is valid.
 > 
-> The main advantage of using subsys ID is to reduce the number of
-> instructions. Without subsys ID, an additional `ASSIGN` instruction
-> is needed to assign the high bytes of the physical address, which can
-> impact performance if too many instructions are required. However, if
-> the hardware does not support subsys ID, using the physical address
-> is the only option to achieve the same functionality.
+> If the subsys ID is valid, the flow will call cmdq_pkt_write_subsys()
+> and cmdq_pkt_write_mask_subsys() instead of the original
+> cmdq_pkt_write() and cmdq_pkt_write_mask().
 > 
-> This commit adds a pa_base parsing flow to the cmdq_client_reg structure
-> to handle hardware without subsys ID support.
+> If the subsys ID is invalid, the flow will call cmdq_pkt_write_pa() and
+> cmdq_pkt_write_mask_pa() to achieve the same functionality.
 > 
 > Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
 > ---
->   drivers/soc/mediatek/mtk-cmdq-helper.c | 15 +++++++++++++--
->   include/linux/soc/mediatek/mtk-cmdq.h  |  3 +++
->   2 files changed, 16 insertions(+), 2 deletions(-)
+>   drivers/soc/mediatek/mtk-mmsys.c | 12 +++++++++---
+>   drivers/soc/mediatek/mtk-mutex.c |  8 ++++++--
+>   2 files changed, 15 insertions(+), 5 deletions(-)
 > 
-> diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> index 4b1591e5b1ae..41e1997cdd53 100644
-> --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
-> +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> @@ -8,6 +8,7 @@
->   #include <linux/module.h>
->   #include <linux/mailbox_controller.h>
->   #include <linux/of.h>
-> +#include <linux/of_address.h>
->   #include <linux/soc/mediatek/mtk-cmdq.h>
+> diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+> index bb4639ca0b8c..0c324846e334 100644
+> --- a/drivers/soc/mediatek/mtk-mmsys.c
+> +++ b/drivers/soc/mediatek/mtk-mmsys.c
+> @@ -167,9 +167,15 @@ static void mtk_mmsys_update_bits(struct mtk_mmsys *mmsys, u32 offset, u32 mask,
+>   	u32 tmp;
 >   
->   #define CMDQ_WRITE_ENABLE_MASK	BIT(0)
-> @@ -60,20 +61,30 @@ int cmdq_dev_get_client_reg(struct device *dev,
->   			    struct cmdq_client_reg *client_reg, int idx)
->   {
->   	struct of_phandle_args spec;
-> +	struct resource res;
->   	int err;
->   
->   	if (!client_reg)
->   		return -ENOENT;
->   
+>   	if (mmsys->cmdq_base.size && cmdq_pkt) {
+> -		ret = cmdq_pkt_write_mask(cmdq_pkt, mmsys->cmdq_base.subsys,
+> -					  mmsys->cmdq_base.offset + offset, val,
+> -					  mask);
+> +		offset += mmsys->cmdq_base.offset;
+> +		if (mmsys->cmdq_base.subsys != CMDQ_SUBSYS_INVALID)
+> +			ret = cmdq_pkt_write_mask_subsys(cmdq_pkt, mmsys->cmdq_base.subsys,
+> +							 mmsys->cmdq_base.pa_base, offset,
+> +							 val, mask);
+> +		else /* only MMIO access, no need to check mminfro_offset */
 
-	err = of_address_to_resource( ... )
-	if (err) {
-		dev_err(....)
-		return;
-	}
+nit: fix typo -> mminfra_offset
 
-after which:
+and also it would be nice if you could also say in a comment that all GCEs support
+write_mask_pa() without subsys, but it is less performant - so for the platforms
+that do support it, we prefer using it.
+
+Of course that has to be properly reworded, but that's the idea anyway :-)
+
+after which
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-> +	if (of_address_to_resource(dev->of_node, 0, &res) != 0) {
-> +		dev_err(dev, "Missing reg in %s node\n", dev->of_node->full_name);
-> +		return -EINVAL;
-> +	}
-> +	client_reg->pa_base = res.start;
+> +			ret = cmdq_pkt_write_mask_pa(cmdq_pkt, mmsys->cmdq_base.subsys,
+> +						     mmsys->cmdq_base.pa_base, offset, val, mask);
 > +
->   	err = of_parse_phandle_with_fixed_args(dev->of_node,
->   					       "mediatek,gce-client-reg",
->   					       3, idx, &spec);
->   	if (err < 0) {
-> -		dev_warn(dev,
-> +		dev_dbg(dev,
->   			"error %d can't parse gce-client-reg property (%d)",
->   			err, idx);
+>   		if (ret)
+>   			pr_debug("CMDQ unavailable: using CPU write\n");
+>   		else
+> diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
+> index 38179e8cd98f..9b22d7e09d99 100644
+> --- a/drivers/soc/mediatek/mtk-mutex.c
+> +++ b/drivers/soc/mediatek/mtk-mutex.c
+> @@ -990,6 +990,7 @@ int mtk_mutex_enable_by_cmdq(struct mtk_mutex *mutex, void *pkt)
+>   	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
+>   						 mutex[mutex->id]);
+>   	struct cmdq_pkt *cmdq_pkt = (struct cmdq_pkt *)pkt;
+> +	dma_addr_t en_addr = mtx->addr + DISP_REG_MUTEX_EN(mutex->id);
 >   
-> -		return err;
-> +		/* make subsys invalid */
-> +		client_reg->subsys = CMDQ_SUBSYS_INVALID;
-> +
-> +		return 0;
+>   	WARN_ON(&mtx->mutex[mutex->id] != mutex);
+>   
+> @@ -998,8 +999,11 @@ int mtk_mutex_enable_by_cmdq(struct mtk_mutex *mutex, void *pkt)
+>   		return -ENODEV;
 >   	}
 >   
->   	client_reg->subsys = (u8)spec.args[0];
-> diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
-> index 5e3a0e807980..3699229a7375 100644
-> --- a/include/linux/soc/mediatek/mtk-cmdq.h
-> +++ b/include/linux/soc/mediatek/mtk-cmdq.h
-> @@ -23,6 +23,8 @@
->   #define CMDQ_THR_SPR_IDX2	(2)
->   #define CMDQ_THR_SPR_IDX3	(3)
->   
-> +#define CMDQ_SUBSYS_INVALID	(U8_MAX)
+> -	cmdq_pkt_write(cmdq_pkt, mtx->cmdq_reg.subsys,
+> -		       mtx->addr + DISP_REG_MUTEX_EN(mutex->id), 1);
+> +	if (mtx->cmdq_reg.subsys != CMDQ_SUBSYS_INVALID)
+> +		cmdq_pkt_write_subsys(cmdq_pkt, mtx->cmdq_reg.subsys, en_addr, en_addr, 1);
+> +	else /* only MMIO access, no need to check mminfro_offset */
+> +		cmdq_pkt_write_pa(cmdq_pkt, mtx->cmdq_reg.subsys, en_addr, en_addr, 1);
 > +
->   struct cmdq_pkt;
->   
->   enum cmdq_logic_op {
-> @@ -52,6 +54,7 @@ struct cmdq_operand {
->   
->   struct cmdq_client_reg {
->   	u8 subsys;
-> +	phys_addr_t pa_base;
->   	u16 offset;
->   	u16 size;
->   };
+>   	return 0;
+>   }
+>   EXPORT_SYMBOL_GPL(mtk_mutex_enable_by_cmdq);
+
 
 
