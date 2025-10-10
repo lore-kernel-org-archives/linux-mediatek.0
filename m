@@ -4,72 +4,162 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE086CCD185
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Oct 2025 18:59:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97E08CCD185
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Oct 2025 19:20:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CpXjWKVKug4tzPYRQ+Eep5X9L3Q6WwjqX11S81MkIlI=; b=mhHB5n3Hx74lmX2UeOOPr02UJp
-	oUF0Kbk1AGKZ0vNNQpF1TX42yZ7igjfu1Ra+GPTIpZb9qAylRD9mHgls8wZ4yyvmOKKvaFkmWrPht
-	/B8yOQSFaPWTN/owvXw5OYwCJjOlTIuu+FDNAx3BBJZrdRE1vgZaV3YEHzj+9FwTZlao0syli7eGZ
-	7FhnIXRuBPS1hSFyJuTIJ2fhVsSStMfnY+gCa9X4hRCpGpx7jxi92nhedoudaBnlmZRpe5p8tiUld
-	aRqRM4cSC4QfQzGZycecxOUwyDNPsqps6jt38jXJPxi/mmQa0FPW9X2OiQ/RMll6AJsthVrACFEdx
-	870nTwkw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=18eqlHdcSvn8mzWmPDAf/8pve1cI5mVsrNxED55XZZ8=; b=2zvJWHf+mHgHdsd3s+gi+o+pt6
+	3m1Ow2WJvdmYU5D3oHoIQnVT2cDO+ImqTd0y0uptLNbdT6KFsleL8IHTWM85gzznZnFIRTWv7XZar
+	40Z/Zw8p730IsNO0f55GkTdjcgJG1lzvAr7NbYnr30Ds21bVaEi9cqrAQWEnqLSaYUiKUfstLXGbc
+	krp6LqY9POs2a2vyh6oE1zG2QoEFHjr90nzQ78CwVqqMBoEpaJUQesgbvk1igIaTFvCTUGmoGRg+u
+	T0Tcc/Y/CMKEWYgxDOowDGlcrXcpxv1YPrFcZe6xRzfD5q/JxzBZtX/jiXnrK7g/Pky1DNa6A/KDN
+	Lv2H7XLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v7ILB-00000009Bei-3i6A;
-	Fri, 10 Oct 2025 18:59:45 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1v7Ifh-00000009DE5-3bCW;
+	Fri, 10 Oct 2025 19:20:57 +0000
+Received: from mail-northeuropeazlp170100001.outbound.protection.outlook.com ([2a01:111:f403:c200::1] helo=DB3PR0202CU003.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v7IL9-00000009Bdw-0U6I;
-	Fri, 10 Oct 2025 18:59:44 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3BF7F43B51;
-	Fri, 10 Oct 2025 18:59:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D4770C4CEF1;
-	Fri, 10 Oct 2025 18:59:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760122782;
-	bh=sYk5aMSZbgzMbwPbuCiskyPX36SDyxnlnzL93Z3Hx8U=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=aAbBoqOLzWF5nIYGCF3jaULfN5Z8H0pbTLCv/IjTM6Gd299B8zQJpW7CXm5El1rXj
-	 iuJfOS+1Cg6jIH6iHKnZmTeCbs2GSzx2yCtpp0gdXr6j1HMku/mDAarkQWmDow2Hsh
-	 VKVV/HgenrEHtChtQrtuaTsSl7d5HJhCKWS2b8ptAdBFrf7mkgLeRvuPfEg5gpQ5EZ
-	 8HkBjSHV16j42dmgpdXvLgKVi/5O71eSJApuuY3jbzm00UhyFEuX7lWTZILJYm0aTV
-	 /nddl0q8EVqvLysUt0crqykn5+yg9kykhhYYhhL54kE3rwJa15drT+Fqk12R1rWV7J
-	 tmfbN4l/HCLaw==
-Date: Fri, 10 Oct 2025 13:59:40 -0500
-From: Rob Herring <robh@kernel.org>
-To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-Cc: Conor Dooley <conor@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ray Liu <ray.liu@airoha.com>, Mark Brown <broonie@kernel.org>,
+	id 1v7Iff-00000009DCF-3iUZ;
+	Fri, 10 Oct 2025 19:20:57 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=AVLre+FfPWfHo5HBcNA6s4KcLxsuD/txEgBkG7S/oocEmh/6pOnuBDk98TsDbcHZHtllp/ecnHdNQ6+LvImJ53pchJ0QeQBjBmqO4rTBlqJ2Fd8kVmPKFzucgq9OyvFbxB4XUjuedCcQC3+lUIl8G/NceprxVocjDTsIKNrNFdl+qg1x5ZNtMAauLEZxPE5bo1Bq4NeELO1PBVFIebj0TqG2R+KMGD7DVUPeuBom67gxtDWnzTwIC+HUetIpuqc2cKhsGwiu1dspRo2p/HIgKgV2gJV+jEqJjSZdYCoErxxAARMGZCdSqSpAVhvwlh+s6cdVnErtnPYaDngrZ7UHFg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=18eqlHdcSvn8mzWmPDAf/8pve1cI5mVsrNxED55XZZ8=;
+ b=v8Xx4hW19DUwqORoyiHgP1ca+NTy3m1rHumxWfR/ele0990EtVYBmYg9u8pFWQUKY4PdumHs6Y7br4saDgela7XzmwMn3mFelDYKgXv1S0vY4Md90mI0gNYQ7SdzSmdsEepzZxf+Ofkq8OgFxZnCb/X/NHOg2OmPO48JHI4gMG63JIZfVSpMtBrrcyO8pBN19VWZJfbBZZlLKcNP33uRHvTesBrDssHEBoOcIO+WQv5qrVHLfLpO/sO8To8Uo1X5P9E9Kwg3ZgDNqyT5Vi4uHLy3mppos7I6ayJj9pai8IxnAVJIwHzhrFBJKbrj401N3uyH2EgttcN+iV5Ed4E0YA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=iopsys.eu;
+ dkim=pass header.d=iopsys.eu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iopsys.eu;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=18eqlHdcSvn8mzWmPDAf/8pve1cI5mVsrNxED55XZZ8=;
+ b=AhIapOD4jnQMCac6pYaeOt0OnC6144nrIOZ7FAqWc3bQA0Y+G2zsmmF2aBGur5X6LzQZF8PgS7f5dUM3BDT7tZTAen1XCakOD5GVexYCDO72YIFtZIrGamU7XJgD/aPl4mz43f1f2/MYBEUtEXARhEziKjaSY8VnK9eLzRlgCruQMItf4eSMmFy5OWoPTyVOXKXzupXCGfG75zCO3Q3/5Mih+2EFyu8vWcczRwCHNWGbaPUBZD4euh90OtGapcXG5ltO7LGoSBnw66kx+pCMrxMjN4MxIrxRAARRNFAbuHEYtyjlRcxnP/VdfqDd6ADgKbVzlsKhs8QNiQpkHDYKDA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=iopsys.eu;
+Received: from GV2PR08MB8121.eurprd08.prod.outlook.com (2603:10a6:150:7d::22)
+ by GVXPR08MB11352.eurprd08.prod.outlook.com (2603:10a6:150:2c4::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9203.10; Fri, 10 Oct
+ 2025 19:20:49 +0000
+Received: from GV2PR08MB8121.eurprd08.prod.outlook.com
+ ([fe80::4cd3:da80:2532:daa0]) by GV2PR08MB8121.eurprd08.prod.outlook.com
+ ([fe80::4cd3:da80:2532:daa0%3]) with mapi id 15.20.9203.009; Fri, 10 Oct 2025
+ 19:20:49 +0000
+From: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ray Liu <ray.liu@airoha.com>,
+	Mark Brown <broonie@kernel.org>,
 	Andy Shevchenko <andy@kernel.org>,
-	linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-spi@vger.kernel.org
+Cc: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
 	Andreas Gnau <andreas.gnau@iopsys.eu>
-Subject: Re: [PATCH v7 16/17] dt-bindings: spi: airoha: add compatible for
- EN7523
-Message-ID: <20251010185940.GA715991-robh@kernel.org>
-References: <20251010033136.1475673-1-mikhail.kshevetskiy@iopsys.eu>
- <20251010033136.1475673-17-mikhail.kshevetskiy@iopsys.eu>
- <20251010-landscape-cavity-88a963e45a6b@spud>
- <f709fe24-ca89-498a-a06d-677b703aecba@iopsys.eu>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+Subject: [PATCH v8 02/15] spi: airoha: remove unnecessary restriction length
+Date: Fri, 10 Oct 2025 22:20:25 +0300
+Message-ID: <20251010192038.1592889-3-mikhail.kshevetskiy@iopsys.eu>
+X-Mailer: git-send-email 2.51.0
+In-Reply-To: <20251010192038.1592889-1-mikhail.kshevetskiy@iopsys.eu>
+References: <20251010185940.GA715991-robh@kernel.org>
+ <20251010192038.1592889-1-mikhail.kshevetskiy@iopsys.eu>
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <f709fe24-ca89-498a-a06d-677b703aecba@iopsys.eu>
+Content-Type: text/plain
+X-ClientProxiedBy: GV3P280CA0020.SWEP280.PROD.OUTLOOK.COM
+ (2603:10a6:150:b::32) To GV2PR08MB8121.eurprd08.prod.outlook.com
+ (2603:10a6:150:7d::22)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: GV2PR08MB8121:EE_|GVXPR08MB11352:EE_
+X-MS-Office365-Filtering-Correlation-Id: c3051d89-7589-4904-ad31-08de08321eb3
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|52116014|376014|7416014|921020|38350700014;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?pvER7p+He2KIraH68MtYtFuGtGT1JOqWq3MN25/eAydBcUBdEgveDM9j0A+a?=
+ =?us-ascii?Q?VvN/0iJIo5Am/8t18Rzkd+uW1IjaNkNIvoFdPcChecSzGCk0B42CyZmbIzbv?=
+ =?us-ascii?Q?j+HD4+TwCXMAYlxJV0unGgvpyEM5a4JHz1k/yeIxdLzQSXxb+I+cqQiZXNzy?=
+ =?us-ascii?Q?Ml5J152DJ3kP0XjHz5k1oD6S8ksIKe6It1Zl7ctnpu1IwTnOt6VOoPvzwjYo?=
+ =?us-ascii?Q?nEt6DBblmYuiFhgVnoGD/uThkjpLtdp0cMyS3I3qgF+qmT/zCuVdXlQI6MAS?=
+ =?us-ascii?Q?n05LDSuxrSrL0eHKpL4CDGOxh8LgA1ovzZtad1yQJbC9Is3SemwdxC8UR1JT?=
+ =?us-ascii?Q?JtE2DN6buas1CYNkBdVfycuJ4DFewc8XEK0vUr0XFTomGbhMyckyyhp+HfSn?=
+ =?us-ascii?Q?NZF5G5s6MiBeO+rCz7Ep6XqvJtD/6o+Z18Lty1Ks6A/xM9BsemCTZ67J6uY8?=
+ =?us-ascii?Q?/pBl7NYSPKejgvY7g0/sh2tMb7KOtwQckzFAvLNHPaAbmM093Fzz5jOW9puh?=
+ =?us-ascii?Q?z7bXEL9Oqvwu8388LrZhn15jQvvtk+lXqQjb7ZNN6i13TtVkxSzrGdak8Z79?=
+ =?us-ascii?Q?gZChwYA3GheGB4+6nbi4yey6HTdcRZRkOA+wcQILLaJV9JR7ZgneDhr/1uWp?=
+ =?us-ascii?Q?xReMyXfXEuSs5I4p+Za7ekh+XNN+3MTz15p5V3cJvKnvS+EYaU+KoUZRCSH3?=
+ =?us-ascii?Q?iVAZdcRXbKwby6Q9uJBzr0cb95Tjq/vuY3U7zJEXoNVZvI2ZrDmK2S1B93MM?=
+ =?us-ascii?Q?2UR7h3kP2v7y8WkjKRxDDltnrgWUH7IJ7McPkdxQs2BiCsk+nI1xZsuo4ZtJ?=
+ =?us-ascii?Q?SvyC2wfrPiTV+ZHS4vA5QcsXzdl9f4g+3vTM8mb9Z9Q4fYMdwxCy7K+IdnFG?=
+ =?us-ascii?Q?w6IWsDCnFkS/m7UNdWbz4FSViXihnoCIMRM39mwipccf2Ut9MfDOGFcoBXzV?=
+ =?us-ascii?Q?OBHoMSf+265AopXPAOc6W1jiK8Tf6Xi5wIYemp4O1Js3nMSmXIF1hSiM4qID?=
+ =?us-ascii?Q?enqbwMxirMYmNduT+smtCPFG25GEp+YPnIQUjUj8DJJiJr7Y2hTBqtAoioOG?=
+ =?us-ascii?Q?VWaOkMfSd9wovY2bjK9f7bYzi5alK9yEEtGimRLuKOFcNNEAchnfLo/jwyFQ?=
+ =?us-ascii?Q?vDpdIy1/nd0I/RSqK+RvJcohP+Zx9J+RanZ3AJazTAHEv1erd3TKAOc/tgfH?=
+ =?us-ascii?Q?vQSjJEuXbt33jVVRIvsIBofawctoeeIE9j6FZsEam2Dani1AMArSgeuBDnyp?=
+ =?us-ascii?Q?Fir20LGkmxBM6dCD7YNWhR2jS6rEOTXI65uxRiqJ+GYiIkeUswrU9ywUmoQ/?=
+ =?us-ascii?Q?XMekpyl3HVfU8ulSssXvkCIbxz4wgQ9POv/fCCcUpOdCFcQd8HQxXPqUdWqs?=
+ =?us-ascii?Q?UD62/7RVAVCavq+6ksCEZRbRXxmtvtRW5ZvF1P6wBLX+OCJodMSSNZsftQzp?=
+ =?us-ascii?Q?HNs0nZFeJsy+ENYjSIxMcboXavrYEemDSkfsmZWVB4Y8W50m0Jtt2MnD1QVY?=
+ =?us-ascii?Q?iDp/Bt38lzj4zdxKS59ok8qUs4ArJYJJLaVObjlZ/f1eB9C8ht77LoGvUg?=
+ =?us-ascii?Q?=3D=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GV2PR08MB8121.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(52116014)(376014)(7416014)(921020)(38350700014);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?NXXau5H58XwvGpPZYc1qPkRgyF5CLCiTlMj4wyuHG3Kv483eOxeSNK8gR8Je?=
+ =?us-ascii?Q?aC/C0EbqyVk3r5p5eAMBcaJRMvNsgP+5ODHuf1wjvPB0qGcvzjT4LuT8BBFJ?=
+ =?us-ascii?Q?dnhQdB15htCXATpMZ5jabeVUE4bO1/DmaunmrjAWWRVdfHry9M7PijNegEqK?=
+ =?us-ascii?Q?r32cqr+W658+hWMcBTkxHmiIPggHBfDtXLyMpSiYekkfFAO/X0hGucK6TerL?=
+ =?us-ascii?Q?Md80GFa1CcsVlRFyhdP60h9sKJBIhs5gDJ32Q1DVx0mfkz9RdZ062YabwdlH?=
+ =?us-ascii?Q?3EQzNyepl6EWuUJe6UcZaAAooFXCVc1Lc7Ds9sBJcZNSJ6/su+wL2vuczzzp?=
+ =?us-ascii?Q?8yfYGzH7SuG0zmQB27jBVE5qI9JH2iIDLKJ7mURFHJOlU/6hB4OdQZ7E/IwA?=
+ =?us-ascii?Q?bSG+IjoXoOK8ymHjE1cIxvqQkvECoxIjpdoTa7SxEWtRdRcF+yUN8MBBFrtQ?=
+ =?us-ascii?Q?WdBMzKpbE0wm5csTjHwEY83jci+SqU6s/Li4v+Wm7r5I4oE5vvtd4z/KhySe?=
+ =?us-ascii?Q?4/yn8OASsMoWiQUivKZb4YrOHjTd5hvU88+7kNKtUOQHCTxYDmqehOYIeVhr?=
+ =?us-ascii?Q?3BkUHWUEp7Syq5Fs824TwqnMNH/7XRbzTlUceNX/bCHAB3eC9E+Ya6rFfYD7?=
+ =?us-ascii?Q?1vH4zYpHwAdYLm1xAje6hdnE99e42cQIxSCZ0BVDfm5PGjrxs/tWCNalx9Td?=
+ =?us-ascii?Q?W1L54DwfUk3HTGZN2ZhwiDnfBnXZHCXGlxaLuUiOCNIPVeTeN2YhuRA3sAhB?=
+ =?us-ascii?Q?/AZN5YsWxdQ02/7WLMtMugXGfuutCuT12IqIv8Fw6G8DFcteCiV2lOfaEFJv?=
+ =?us-ascii?Q?MW9Z4X3IubPdyLAUyHf1vRafOgMA1RR7trzSn4OD4Je69+coTJNYNURpt7QQ?=
+ =?us-ascii?Q?K/kPcx5PKu0g+zXOgZ5RQTYT4F+puJL7iAlxwVhfHZeM+Gxo7lpgimDQ5E9D?=
+ =?us-ascii?Q?9PXw09xOnYTSZApL6+ZK13JnfJFTzXRY/a07qHJS6nEuOe3juf99jRPceWqf?=
+ =?us-ascii?Q?ZyFAfrtMKMMUk1Iv37GzMrc5EsZqIHpyymbXuYbpPJml2gG4y/62SDS4dy0e?=
+ =?us-ascii?Q?UaRMYtsIKAWvRR9oEgB9V3SAbpxLCR5FEMjyjFDQnWIe8iheqfVERFlV0NwM?=
+ =?us-ascii?Q?QGal5kV+jQjkbsb2IBT2shVklSF+0wtouJs3WxV9jcg6WTrxAD6e+al7tByW?=
+ =?us-ascii?Q?2NLvsp/eb5aCX4uHz0WXxCmkjoriemzQemxb+mLnnAkDSO25vxCjTY4zUNcq?=
+ =?us-ascii?Q?oIxG/IXJEO5NV6ercYVATY6UL47sGjYGCt7s4BdCfmurYm4IRH/TvO5wnB+G?=
+ =?us-ascii?Q?+OqLBY9gF0vZH5JqT/6ElK/EF7xdvOXVkBrmFvf4Bzy9w1TjBTPvSGwy3CMl?=
+ =?us-ascii?Q?ZZlW3gufcdduW1ng1aimrtPIcvkZuU7+rPfF3fTAsOi4kMrehNKq2frMq4ru?=
+ =?us-ascii?Q?sVthx1lds2tTOpIR+CAdLYnkIhqbIT/295hBT7PzrzQTjxebN+5TgPaPgJdy?=
+ =?us-ascii?Q?3k0Fn81pgSaTB1YwXmNTKJNCaOC7+Dka+AhNY2rfpUcAhc38uUmtgw5dvbrl?=
+ =?us-ascii?Q?5QYwCE9gbOgH77vF3dRslY5L0WyNpyOnl/xo+9OLMR47R9t0IZk38qYWs6LZ?=
+ =?us-ascii?Q?pHTtgnkIK7SezTIZ1KCyHYE=3D?=
+X-OriginatorOrg: iopsys.eu
+X-MS-Exchange-CrossTenant-Network-Message-Id: c3051d89-7589-4904-ad31-08de08321eb3
+X-MS-Exchange-CrossTenant-AuthSource: GV2PR08MB8121.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Oct 2025 19:20:49.1961
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: jRuoNGUZbrRa1AAnIFWkdNkybVwoAuQfEdQi86g1VCNNsVj99u3ZG4+tamwSoUJke31zF0vwFVzDMBOaPUJUvOXqXP0CEyivyG8vAzZa5jU=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: GVXPR08MB11352
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251010_115943_171973_480C4426 
-X-CRM114-Status: GOOD (  12.10  )
+X-CRM114-CacheID: sfid-20251010_122055_918896_EFC6C5B8 
+X-CRM114-Status: UNSURE (   9.23  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,24 +174,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Oct 10, 2025 at 05:57:35PM +0300, Mikhail Kshevetskiy wrote:
-> On 10.10.2025 17:24, Conor Dooley wrote:
-> > On Fri, Oct 10, 2025 at 06:31:35AM +0300, Mikhail Kshevetskiy wrote:
-> >> Add dt-bindings documentation of SPI NAND controller
-> >> for Airoha EN7523 SoC platform.
-> >>
-> >> Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-> > Please explain in the commit message why these two devices are not
-> > compatible.
-> 
-> 
-> They are compatible (at least from the point of this driver), but
->  * en7523 is an old chip destined for 32-bit OS (ARCH=arm)
->  * en7581 is a much newer chip destined for 64-bit OS (ARCH=arm64)
-> so using of 'en7581-snand' may leads to peoples confusion.
+The "length < 160" restriction is not needed because airoha_snand_write_data()
+and airoha_snand_read_data() will properly handle data transfers above
+SPI_MAX_TRANSFER_SIZE.
 
-If they are confused, then that is their problem. That is how compatible 
-works.
+Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/spi/spi-airoha-snfi.c | 7 -------
+ 1 file changed, 7 deletions(-)
 
-Rob
+diff --git a/drivers/spi/spi-airoha-snfi.c b/drivers/spi/spi-airoha-snfi.c
+index 043a03cd90a1..bcc464ec9c61 100644
+--- a/drivers/spi/spi-airoha-snfi.c
++++ b/drivers/spi/spi-airoha-snfi.c
+@@ -579,13 +579,6 @@ static int airoha_snand_adjust_op_size(struct spi_mem *mem,
+ 
+ 		if (op->data.nbytes > max_len)
+ 			op->data.nbytes = max_len;
+-	} else {
+-		max_len = 1 + op->addr.nbytes + op->dummy.nbytes;
+-		if (max_len >= 160)
+-			return -EOPNOTSUPP;
+-
+-		if (op->data.nbytes > 160 - max_len)
+-			op->data.nbytes = 160 - max_len;
+ 	}
+ 
+ 	return 0;
+-- 
+2.51.0
+
 
