@@ -4,70 +4,173 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86FE6CCD185
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Oct 2025 14:25:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED3DCCCD185
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Oct 2025 14:57:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=czSt1NsB0GvY9kXEI6C2H8lLt1I9DM1teM133Tj0WUQ=; b=ZcjKr8Inl00PKFprzWLX4t4rKy
-	UZg+hijkUb5uFkHxUyAicStY+YQwHp0ZXM8/PcrUokw4JhUFPp0hHZipxzUD1Jpq/LjSD4Fz/UWQ0
-	Cp1qTQHkFFxiW3nbRnN9/8sNd0JCx/IC86vUSedHCqQZxlrDs3IBHVZCt/OIoJYJzfj81NoFRJV1m
-	5eAbtI+Ew0wTy5Z02X3rfVTgBcRoy3l2SidcNIMBqPGC5L+i1STzH8Y/TARykqBUD0FYKUUyBnMxs
-	mBcrTDFA8pW3XTROi1meSULtPZX4S3cxWPxli5sGP+IU4kkZREbm8z0cAJuCTYyiBiZIytLpBaUfJ
-	ZptZqTww==;
+	bh=FlSSLgS8vVosI5hb4hUKiH+dP35bTpcuKW76tnSjwjU=; b=tSkVmLWEYRPI7Ia0ViNdMqLnd8
+	Seyh832YZT+b2JBZLrEnTAm9x0kJHVFZiLD3FaL0k85/GY4ln3fpBq9a8h5Aoms960wzUeRJyyeGe
+	3IfJTclJBvZXqNRj/BlcD1bysR+Il9U7kA2AJjpzsHWXuGTPSeUerwXda1PWtkS8o7X/yYZ5a4oQI
+	thx1id/ctPvJ//AEK6FQ/P6mpMu8bQASDzWGQrhtBxraT3Y+dx8Kxo3RRtr8RDayyJJgQL02H/Nnp
+	vM63fBcmJJ2INVZZt1H52soN+l/yaLjiVKBXD4pMP0wWxgGjbpi7HhdGYU8Cx+kbZAR4Bso194EPa
+	qZ/A1TKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v7E3o-00000008gME-387Q;
-	Fri, 10 Oct 2025 14:25:32 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1v7EZ5-00000008kkM-0dQ5;
+	Fri, 10 Oct 2025 14:57:51 +0000
+Received: from mail-northeuropeazlp170120005.outbound.protection.outlook.com ([2a01:111:f403:c200::5] helo=DUZPR83CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v7E3m-00000008gLf-3yUx;
-	Fri, 10 Oct 2025 14:25:31 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 0432C6266E;
-	Fri, 10 Oct 2025 14:25:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 727E1C4CEF1;
-	Fri, 10 Oct 2025 14:25:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760106328;
-	bh=2cqoklTmnWcMBIxfli3d/ARO/y0tQWg6ESZXPMf9q0I=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=lpzpcZ/dKsdtgEk2sydCmYgvR99u1H5iNfrZ6WIpCTfgdKaLAtChsAxBatdre8cI6
-	 mpqUg3lak6r+Pb1sJ1/kWOKdj75Vz6tsnHq1KQ9FfQTAJH1v0sLcqaPwXfeN7z//GV
-	 Z+K8aiV1pKme6p7fSxbEAy/lwmQJFJdjOffDf5ThZ6ISFlJ2apU2Sp3BhyeV3Fujuo
-	 tSX2icvdUoZ2pz7Efhc8TA7bpOYqvuEffH+yf2W411C7fW3KFTaycjCzzN7IzkXXk9
-	 IxXn7gPwybpY/E8CL9ry/3lwDr9gun4ZrVUQ8jsh3v4zTNC4y8JVXqbJuo2SJ7tdfi
-	 YO4UPHzhl451w==
-Date: Fri, 10 Oct 2025 09:25:26 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: "Sven Eckelmann (Plasma Cloud)" <se@simonwunderlich.de>
-Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	linux-arm-kernel@lists.infradead.org,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
-	linux-stm32@st-md-mailman.stormreply.com,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
-	Johannes Berg <johannes@sipsolutions.net>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	linux-mediatek@lists.infradead.org,
-	Conor Dooley <conor+dt@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ryder Lee <ryder.lee@mediatek.com>, linux-wireless@vger.kernel.org
-Subject: Re: [PATCH mt76 v3 1/3] dt-bindings: net: wireless: mt76: Document
- power-limits country property
-Message-ID: <176010632601.241034.1894010503665386462.robh@kernel.org>
-References: <20251007-backoff-table-support-v3-0-fd6e2684988f@simonwunderlich.de>
- <20251007-backoff-table-support-v3-1-fd6e2684988f@simonwunderlich.de>
+	id 1v7EZ1-00000008kid-3Vhv;
+	Fri, 10 Oct 2025 14:57:49 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=EzlvNNkiV564VIfvkAKwJvbuTRgCHhoPlu9nIioffs8MA3PPqXFZJNtQic64bt3GoaXFb22Y0sUVKuiZ4AIUd15zRJRl6IAjrxPv4eLAH/WcvFFyiBGMBHxeoVbKPc6WZcZXzAsJ7QzZvqg0/3WNR6b1a9sELfIJgO8o0ZIoEtJeaakQPjkKoR/iJED8lvOPgNeHWNS+aRpfoT7VYnwVoJVzCx9mKvEqvJFm4PnGhoPckZkNCzfDCdSuHfCHMeNBvNfv/t81ODCLRZuarIlUv1Z0laqQA3GVGOWgtoVk0bpr5L1fplUwZQIQT3HbxGLN2HUaYPocvgV2JWisUUGsNw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=FlSSLgS8vVosI5hb4hUKiH+dP35bTpcuKW76tnSjwjU=;
+ b=AU4R26QmofFOaqkTYjLW3UkxXPNpPc3jwGMQasGgloH8bIa2+aQQGlyPXHwnnB7y5BVzHZeCQ7EEn1+wffplPnPIUyS48Ok0Guv4UdPhvyJcEnclnblMg2Ti0TwQOy8esRZ63QE3cL4yBaxClnztFDr0SGUowF9fHHRQzf7nhDRxb8jNbK3InnWglQeBnxrV7raoyEywrMJb+Q9ZXyv2RvOrriss6zszUMoxngGEY0Mlb0/6kcuRkjlWGoIcwVCrPPuSfWVnnA/68bI85ZYiKYjnmJ/vguzaadbbPXqD4mOUGo3vSI99C8SrrL/RtD1pxst/ZO/5llw1pC2kV5LOVg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=iopsys.eu;
+ dkim=pass header.d=iopsys.eu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iopsys.eu;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=FlSSLgS8vVosI5hb4hUKiH+dP35bTpcuKW76tnSjwjU=;
+ b=z6ejRtoOaMD80zO6Bj9VyPswu8QCG3k3TozjoicaUJhNI3MdHhvFG4R9OgVlTU7IibOJ8n12P4+WHkO7pGC4QUVAg9j2TlcBYxpShtp/mU2IMzkDJOhs+KG/NPyfMVGlaHwt90BC3ScfbAc6sjNcU8Gb0ZgHH6dWKjcH28sosc+swdNXVuvG7Z0jzETZvrn4i8aFsm/1WWRtI1Kuo/EvvlcGAwvjmI0V+WmfaEftvOinEeL6bdnj8iELDjukmebRoiG0Vdp20Kq4SwTInwqDsRMbJlBnkswQnKCWAYkfwP7h10Uv1dIi5uwDibkJLXVPhuvi2uKGUvjAJNRbKTwP/A==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=iopsys.eu;
+Received: from GV2PR08MB8121.eurprd08.prod.outlook.com (2603:10a6:150:7d::22)
+ by AS8PR08MB10069.eurprd08.prod.outlook.com (2603:10a6:20b:636::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9203.9; Fri, 10 Oct
+ 2025 14:57:38 +0000
+Received: from GV2PR08MB8121.eurprd08.prod.outlook.com
+ ([fe80::4cd3:da80:2532:daa0]) by GV2PR08MB8121.eurprd08.prod.outlook.com
+ ([fe80::4cd3:da80:2532:daa0%3]) with mapi id 15.20.9203.009; Fri, 10 Oct 2025
+ 14:57:37 +0000
+Message-ID: <f709fe24-ca89-498a-a06d-677b703aecba@iopsys.eu>
+Date: Fri, 10 Oct 2025 17:57:35 +0300
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 16/17] dt-bindings: spi: airoha: add compatible for
+ EN7523
+To: Conor Dooley <conor@kernel.org>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Ray Liu <ray.liu@airoha.com>,
+ Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Andy Shevchenko <andy@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-spi@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Andreas Gnau <andreas.gnau@iopsys.eu>
+References: <20251010033136.1475673-1-mikhail.kshevetskiy@iopsys.eu>
+ <20251010033136.1475673-17-mikhail.kshevetskiy@iopsys.eu>
+ <20251010-landscape-cavity-88a963e45a6b@spud>
+From: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+Content-Language: en-US, ru-RU
+In-Reply-To: <20251010-landscape-cavity-88a963e45a6b@spud>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: FR4P281CA0446.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:c6::12) To GV2PR08MB8121.eurprd08.prod.outlook.com
+ (2603:10a6:150:7d::22)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20251007-backoff-table-support-v3-1-fd6e2684988f@simonwunderlich.de>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: GV2PR08MB8121:EE_|AS8PR08MB10069:EE_
+X-MS-Office365-Filtering-Correlation-Id: e2c969d8-e5a1-4528-4ca9-08de080d5a35
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|376014|7416014;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?U081TEdsNlJYaXh3UVZLUHlYZ3dVcWdjdDhhdGhNUmxMRXRwV3ZmZzI1UUlK?=
+ =?utf-8?B?WXduV2xXY0QrWG4zekdSQWlvK3dncmNjTFVNbUF2dEJLajZVK2prRjR1Slhl?=
+ =?utf-8?B?WHdiZUZ4T0tXUm9WNXNET2pqS29rZjFjTTlWSkRsbm8yUTBWYVEvWUdLMEps?=
+ =?utf-8?B?aFlTd2c1UURYbWlvMzcyZENmNXA3WkdGYVE3SWFTVzh3RU9xR09VMTlWVG51?=
+ =?utf-8?B?QmtESHRqOUhsbjU4cHRVVjVJSC9GQmhBaWpVcXEydktGTTA1ZlpBa0pqWG53?=
+ =?utf-8?B?ZlhaWFNCRG9tYUVIcGZjUkpLZWs4UTZ4ZDFuc21xbTB0S3k5WUFVSlZqa1Ry?=
+ =?utf-8?B?UE0rRUhKd1VtekVLUW41bUtwNU5RZ2Y0ekdXT0VwSTF2OUZ1elhWU2g2M0Ju?=
+ =?utf-8?B?MnoyMXY2bHFta1A3M1ZXWGdzeGdiNjNTNExNZFJSb0kvaWRNZWdTZ01tenZh?=
+ =?utf-8?B?WkIwYVRHWU1VNWxhZkk0MFlhWUEvV3hWQ1JVR29UcUZhT2Y5SEIxb2srT3Zj?=
+ =?utf-8?B?bHk1eFJoUlhRcmEva1BDRVVvWVZsVzFkQzIzWm1OOXVTRTJjL3U0eEFNRlEy?=
+ =?utf-8?B?Zmk3YVFzYTRMdS9nOE5TNGpvMFZLcTFGSnhET0pnYzRRRER5TEpHUXlpYUFx?=
+ =?utf-8?B?REdDQUUrM0pkWkdnUEFOVWdNMW9OTU5YRGsyNmhadWFDVHMvYlJlblRNNHBY?=
+ =?utf-8?B?RTJYelVlNHI3RFRIQk9oL2paZDRDTzRuSUh3THR3TXVxQjF5eGtLZndQSEJO?=
+ =?utf-8?B?ZkRMelBBcFNOK0dSM3RDekZ3UGQzengrZHRDNFhoenhKMldUUE02RWF6c0ZN?=
+ =?utf-8?B?YzlTV0FJNUM2bFY4ZnVxdE5BNkg3V2xVY1U4VkZDUldqTkNXSkczSWphMUhR?=
+ =?utf-8?B?V2JjQW1lT3VPWUMxQ2pDbGQwL1VFekJKTjlYR1o5Wm1uZ1FGNzh4eStKaFZG?=
+ =?utf-8?B?VU14WmpyWEJKaC9FWnhiM0xkRzJXbFBEcW93K0FQOUcvWlpUWUtzUGh2MDVm?=
+ =?utf-8?B?dVdRSmI4NlE4TlNRbHZLRmZwTjc0WXdNR3lja0l3T2RpTU9GekY2MUdmTnEy?=
+ =?utf-8?B?VDZWdWhleTFlclg5cU1xWDh4eENBaCthNTIwaXVmWkRNc2xraVZRVnFrZGxj?=
+ =?utf-8?B?T2hiek9lcmhnSmZyTGxIdWVlaitNR2ZOamt0ejVEbHBxQWdNNllSNStjbEJo?=
+ =?utf-8?B?eVd0U2JZN3cxbkZuaHFQT3loei9VM095NGNDd0JlTlF4eUtyRFpUQ0duL0d3?=
+ =?utf-8?B?UjhlTUNqSUNnUnU5MVF0bEdzVFdIbktPZ2l4TUxxL1ZSRHpOR2NrMEIxc2lY?=
+ =?utf-8?B?anU0aGJ1eWpEVlhBcGZucURFN1JuczR1RTZDMWpJaGUxUFZsc01oMzl3Y1dj?=
+ =?utf-8?B?RktuNnFLOFhvbzRkaXY3QWdvM3hLclhmaktvR1E2UmRFakdUaTBFOWpQdCs1?=
+ =?utf-8?B?cDBZVDllZ1U0dHVrTEJHbVBINVdvOW9vejZYVmhkd2NZK2hCdkd3UXFvbldX?=
+ =?utf-8?B?dVN4RGRSaGR6eVdNdXl3OG9OWmdxUHoxOG5MUmpzN1Y2Z0hobGFrZUd3a0E3?=
+ =?utf-8?B?QWFNU2RUKzVUU2ZCZjhpd3c1a3Jvc3NPd1BRbDl0QlZPc2c0ZmhvZ2xjUmV2?=
+ =?utf-8?B?enFrMEwzcTVvZEVNeDB5NkJpR0hzaGt2bi9zRS9sdUlVQW1ZamVaOFpYUjdR?=
+ =?utf-8?B?aGVzV2w1RjZjVmFhK0pnY1RRMzNCZWozWFhyVlhrOHpINkFBdGErU1FoVkwv?=
+ =?utf-8?B?aFBlUHZIdDFpME9QTTlkZXNLVEtVbUloZ3dsRzVuZS96T1l2RkdWMTBjdTVs?=
+ =?utf-8?B?T2ZXSUNtS0t6Nm5ydGVKMHA4bDY2cHB6TXlLSDdzSG9qRXpMQ1VENTBYOFBI?=
+ =?utf-8?B?ZGoxd0lqZmx0eEJHSWw0K2t5Zmcwd252TTZ6YVRVT29vSDh4aXl4a0Rjdm9r?=
+ =?utf-8?Q?wLijiiaO327hVwg8VzxI0gBUjqJmG+V1?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GV2PR08MB8121.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(376014)(7416014);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?ZDEva3dSRFBsUDlCcGZHVjVkRmVIWmNYbGxhaWs0bVM4RURwTCtBbmg4N3Ru?=
+ =?utf-8?B?emh3eTRuOGhCeDNVRG5oY0dPT2tQcjA1MlNYMit2NkdqdXFlOEFJZU5ZMHcw?=
+ =?utf-8?B?dHZ2OUEvNGY3Vy93T05jN1oxWHI3RUUxUTRYZ0pXRjZWUzNRRGtHVisvMUdx?=
+ =?utf-8?B?bXZFR3RSakZBVFdocDN5SG81MjNBcHlsQWpROE9yQ2tieUlpU0xlZmFkM2dq?=
+ =?utf-8?B?aDN5NnI5TXJlSzVIK1Fhdjl2RG4vWTg2c01DYjNUc1d5b1YyaWJPcHVGY0cy?=
+ =?utf-8?B?cFora0pyQm82bjdoZTZaMElHYjBraFhJRE0rQ2hYajQrc0N0clRsSDNZdHhP?=
+ =?utf-8?B?T3VlY0RHNCs3dm9mVnJreFRJSlF1akY0WXZSRGJ5NnY2L3lpUmdadXRzVE93?=
+ =?utf-8?B?UmZzK3N5T0lSdllrWnU5cFo1S0V3eUtDc2lJN3VmeFRDQ3ZQc29ZM09UUUxL?=
+ =?utf-8?B?WkZMQm5qdHgrd29zQ1JtUkZrOTRYZmVXMkM2cWdzMENYV0FueTA4QTlZK0Jh?=
+ =?utf-8?B?OVF2aTUzeVpUTGNFbjMzd3AzaHA4NDM3cTB5YTVpUnJ0MWx6VUR3enFZUy9E?=
+ =?utf-8?B?L0JCM2ljVmh6ZE5ZQ0ovdFljWnUwejJwaVF4eUlhRStMb0QxazNMbTh3eXlT?=
+ =?utf-8?B?bnB4TFpuUnRoK1ZvUUo5cjFLTktVL0xlNThoV3JkeXlFbW8zTjRiYTFaTmxm?=
+ =?utf-8?B?VjI1S1lzYXF6aktNVjZsaVhoQjc1eG1tVklJelByS2MxNXdza25hR2ZVQUpR?=
+ =?utf-8?B?NnU3VTFiKzlsQWtmOFh5a3RwY1pHSnNpV3cyL2ppYXhjaysxeUtqVlk2ZUY5?=
+ =?utf-8?B?dGc5TXJ3c043U3M1OEdWS1k3azEzUFJzR01ZUzZ2akJpcDhUNTIwZlcxUnBl?=
+ =?utf-8?B?ZjU2L1Q3c3JWZ29tR3hCM0Z3YXhtcjhSTHV4YUlWWFdmT3Q1V28zNFhldHZK?=
+ =?utf-8?B?RVRiUzBHNS9QcVB4eFdXSGQrOWhGbXdISDB1Vmlub09sWnZwdzFlY09BSGhV?=
+ =?utf-8?B?MUFsbHdob1pHcEJDMithSFBsR2lnMVFYbjVtbHFTcVdUK0kwRDdudW52Qk9w?=
+ =?utf-8?B?a1J0cGhhMW91cVZaMDBPZVFGQUNKSG5rbFNmcHd5YmtRNXFMOUxIcnk0aVBt?=
+ =?utf-8?B?UlQyNkpJU20xK0dPUEhUNkZGbEUrTGxaVXk3aVV5RFV0SGI4TEdJWURHMGZ0?=
+ =?utf-8?B?QTYrNk9RcnhXaSswaGNHTzltSnV4RFFXTWFsS2srTUxDZ08vTlhYcVBCcDhX?=
+ =?utf-8?B?UTRGR1hnTzdJUk9pT0pteU5rK2EySHBjQzFRM3daYkNQbXZ1T25TVFNUU0oz?=
+ =?utf-8?B?TDkyaVZpRmpQSlhjMmFhdXhsWXFsQkNLWG5Ddzc1aldCK2x3UjJIMUlpR0tC?=
+ =?utf-8?B?YkhYRWtDRkphWTZHWTdnbmtZdGRxdVphTlo2aTNYamZSSGdaSGRGWFZCSklL?=
+ =?utf-8?B?dzBRMkMxUnF5ZDNSZTJ2UmI2WG5selo3TXhOUlhvcHpZTkNObTVXK2VXUlBJ?=
+ =?utf-8?B?NkZrczJVZXJEQVFkSFNleXhhMGJiTVM1V2MwTHhMSmtMNEMzWElFSGRBaWVm?=
+ =?utf-8?B?eTV5YWovaE1kSWg0UDlKemFHTWQrb2ZGem02MGttZ0VhZUxoWm1GRnpSQVRJ?=
+ =?utf-8?B?NlBYZWdRTUR3VXFBcnNpVXRCL2dBUVRsRDU5Zmp0bHNsMGk5UitwMzJLdUNw?=
+ =?utf-8?B?ODFVampuTzZjQnhjM0dXNU5QZ0ZEVlUrbXdvQkVnSmFuQnY4NjRWSGtnVVlj?=
+ =?utf-8?B?YkwrSEpJa0U3cmtoWUNiZTRuS3dVZFdoRnQyQXI5ellaNGJHQXpmOFdRSWxL?=
+ =?utf-8?B?elY3a2JHS0VUOWg4MFRDMlVWb2dRMjBTaDZHcWo2d1MxNVBJbVF6a2N4d2Fz?=
+ =?utf-8?B?ZFZrRnVIOHZnRzg1QkhDaFlXbkhGaHFKVVpHZyt0bW5KMkJyVWdsYWc0NkZx?=
+ =?utf-8?B?RWhGWmlaSnh3VXNoS0s0bDVaRDBLNUtOcnZYS3BSdkpnUkljZUxod2l3U3ln?=
+ =?utf-8?B?ZDdhS3VTR1ByYjF1VkpEUzVmdE1QUldkSWpGdzZQcXVyb3RxYkZqWFVJRmlx?=
+ =?utf-8?B?cFQ4elljUTJSQ3MrNTQ4a1dBZjlrOTd6NE5WMjF5bjNZMzRUM2d2ZGZTY3Jn?=
+ =?utf-8?B?R3M4Nk5qVXFKZ2pkTWFWRE05Qy9id2RTV2xROElZOGtxc3lFcjYrcEdoR09Z?=
+ =?utf-8?Q?vwItgcdZcO6dvzgZ9jUmDOI=3D?=
+X-OriginatorOrg: iopsys.eu
+X-MS-Exchange-CrossTenant-Network-Message-Id: e2c969d8-e5a1-4528-4ca9-08de080d5a35
+X-MS-Exchange-CrossTenant-AuthSource: GV2PR08MB8121.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Oct 2025 14:57:37.6770
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: cyuqkiHO84XOjc5L6JOFS6JU3PzZMVOuJk3cm6WsVHyvN3eGckaI8uDwC81JRoHODLfacHbt2YJ3udsrHx6euYAlhxW7V2TAzcHxywmhnrM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR08MB10069
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251010_075748_482243_F544F549 
+X-CRM114-Status: GOOD (  13.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,33 +185,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 10.10.2025 17:24, Conor Dooley wrote:
+> On Fri, Oct 10, 2025 at 06:31:35AM +0300, Mikhail Kshevetskiy wrote:
+>> Add dt-bindings documentation of SPI NAND controller
+>> for Airoha EN7523 SoC platform.
+>>
+>> Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+> Please explain in the commit message why these two devices are not
+> compatible.
 
-On Tue, 07 Oct 2025 10:11:14 +0200, Sven Eckelmann (Plasma Cloud) wrote:
-> The commit 22b980badc0f ("mt76: add functions for parsing rate power limits
-> from DT") added filtering of the power limits based on two properties:
-> 
-> * regdomain
-> * country
-> 
-> If either the country or the regdomain matches, the power limits are
-> applied and the search is aborted. If none of the two is defined for the
-> power limit, it is a global (or "fallback") power limit. The last
-> "fallback" power limit in the list will be returned when not matching
-> regdomain or country was found.
-> 
-> The idea is here to allow to specify "overwriting" country limits in front
-> of the list - just in case a regdomain is shared but a country has
-> additional limitations.
-> 
-> But this property was forgotten to be defined in commit 2de6ccebe0e7
-> ("dt-bindings:net:wireless:mediatek,mt76: introduce power-limits node").
-> 
-> Signed-off-by: Sven Eckelmann (Plasma Cloud) <se@simonwunderlich.de>
-> ---
->  Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml | 6 ++++++
->  1 file changed, 6 insertions(+)
-> 
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+They are compatible (at least from the point of this driver), but
+ * en7523 is an old chip destined for 32-bit OS (ARCH=arm)
+ * en7581 is a much newer chip destined for 64-bit OS (ARCH=arm64)
+so using of 'en7581-snand' may leads to peoples confusion.
 
+>
+>> ---
+>>  .../devicetree/bindings/spi/airoha,en7581-snand.yaml         | 5 ++++-
+>>  1 file changed, 4 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/Documentation/devicetree/bindings/spi/airoha,en7581-snand.yaml b/Documentation/devicetree/bindings/spi/airoha,en7581-snand.yaml
+>> index b820c5613dcc..fdc5b0f920cc 100644
+>> --- a/Documentation/devicetree/bindings/spi/airoha,en7581-snand.yaml
+>> +++ b/Documentation/devicetree/bindings/spi/airoha,en7581-snand.yaml
+>> @@ -14,7 +14,10 @@ allOf:
+>>  
+>>  properties:
+>>    compatible:
+>> -    const: airoha,en7581-snand
+>> +    enum:
+>> +      - airoha,en7523-snand
+>> +      - airoha,en7581-snand
+>> +
+>>  
+>>    reg:
+>>      items:
+>> -- 
+>> 2.51.0
+>>
 
