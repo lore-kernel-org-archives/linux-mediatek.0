@@ -4,81 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0D5BCCD185
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Oct 2025 21:18:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C22FCCD185
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Oct 2025 23:36:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QcaRmLz9FiLPhXXmE8TyE1XEjU9TRcZZad+3l2nV6sI=; b=r814WisNDSkp1fz6gw4L1Etgcy
-	lCw4QRIpJR465AK3plqYO5+89VNNNX4s3HOHyK/33ow0MBaLTtl5GpqdD/MK99hxODKsBKt6YmKj2
-	mJ9m+gLdujyPIFW+yUu1qhYjaqcQUSugMmDzuXCV25BX0hSzp3ctEqROr4OcDCvZo/XrKYLpzttPu
-	50TcqyDODnrGqfi+Ig4hgnQy30j3OV3KoJbETZhTMKgiqW+kEkVP/xNkpB2etHQ5xbqOZhZ9+9Sw0
-	3qOx7m2yiepzf94K2BJ4BMaf+5xgOdBBEEQuLhMQA3fG5ZDuEcGToI6FKi99zl2TpQfF8ryq9r0mk
-	fMOe+MmA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FCJaYzdpPKn3/Q4kFR5n7iLUko8Bms1sTsjbX4WG72c=; b=CBT52K8Cws5bVwOTK8i9u8wXlr
+	d/dBmQY6niTzHYoXyfJCYlBP9c47pkH25Mu95fyTMo7URPDyZDO5ruMYLkW29Ppd5+7egqvV4d85o
+	wQjtHX4uoMWJskD6Z2p8pi8sqm49Er33uldhBgp0CSVOvnZ+tFBE/36mmLFFftjZE8OJ1r38FsrIU
+	rN5yE7owVSqIe8UXm5O9Igrk3jgkMTj75ARmORTMdqtU1e703p53MLDdWcVVkJ+gL5KnikhMk/oZm
+	AtQoKmmeHsSoVVCPDEFDCU9mBcg96NI4sAjAO5dxw93itma7NPwkYUAxOpS22e0sona8jSfGTOxBu
+	+DZQdLUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v7KVa-00000009PKn-0MoE;
-	Fri, 10 Oct 2025 21:18:38 +0000
-Received: from mgamail.intel.com ([192.198.163.14])
+	id 1v7Mf3-00000009WrN-3YTi;
+	Fri, 10 Oct 2025 23:36:33 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v7KVX-00000009PKC-3873;
-	Fri, 10 Oct 2025 21:18:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1760131115; x=1791667115;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=ZB7gTALx625QNqK16XpJCnVnzCKeZXqVUYR+15Tq6Eo=;
-  b=fbeqMBo7IhHvbKapr5u+zCIs2LabyKp4AdZvIOWm5FVZ1uJgGJ3TFiem
-   xS6T9KVwkQUVLGaHfqzzR+45J9p6gizp/GvjZxpDWb52W8hfUqPL3EumR
-   N88LIHMJYhFqW8634ZcCM1/1qRLLuLTA4N3YRJLwogmuhXua6n0jX13hY
-   ixw3GRVZTiegDbEHM0vCtHa2lGXbG418c/j6ImvAUm3mICrw6iyLDODNE
-   4gv9gE2gr0RCCKiCRfZMZfpDU3j+Sx6hIZ6b7U4pP+MuQ6A1BUK/3qRkB
-   LbJd18muaxfG5M8PlpD5BBbf3ET7kqpQ8MQJZxslA1TpsSi7nfx+taOKR
-   g==;
-X-CSE-ConnectionGUID: 1UD4fRkxQsueXKOmwhnD3A==
-X-CSE-MsgGUID: iN0NEaryTB+nuzDBLRcZFA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11578"; a="62386911"
-X-IronPort-AV: E=Sophos;i="6.19,220,1754982000"; 
-   d="scan'208";a="62386911"
-Received: from orviesa009.jf.intel.com ([10.64.159.149])
-  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Oct 2025 14:18:31 -0700
-X-CSE-ConnectionGUID: fA3MzUJ8R5W/zcSKv2QBPQ==
-X-CSE-MsgGUID: rr8eFiMJT5eYgQ8vSm6kFw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.19,220,1754982000"; 
-   d="scan'208";a="180653184"
-Received: from lkp-server01.sh.intel.com (HELO 6a630e8620ab) ([10.239.97.150])
-  by orviesa009.jf.intel.com with ESMTP; 10 Oct 2025 14:18:26 -0700
-Received: from kbuild by 6a630e8620ab with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1v7KVM-0003BB-16;
-	Fri, 10 Oct 2025 21:18:24 +0000
-Date: Sat, 11 Oct 2025 05:17:56 +0800
-From: kernel test robot <lkp@intel.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org
-Cc: oe-kbuild-all@lists.linux.dev, lee@kernel.org, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, lgirdwood@gmail.com,
-	broonie@kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	kernel@collabora.com, wenst@chromium.org,
-	igor.belwon@mentallysanemainliners.org
-Subject: Re: [PATCH v8 2/9] regulator: Add support for MediaTek MT6316 SPMI
- PMIC Regulators
-Message-ID: <202510110504.A2lR6quW-lkp@intel.com>
-References: <20251003091158.26748-3-angelogioacchino.delregno@collabora.com>
+	id 1v7Mf1-00000009Wq7-13JD;
+	Fri, 10 Oct 2025 23:36:32 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 7568D44FA4;
+	Fri, 10 Oct 2025 23:36:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3938DC4CEF1;
+	Fri, 10 Oct 2025 23:36:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1760139390;
+	bh=ohAw33xHL0/75mMJMzs2FmNdsANeJBZluGZyx2FUnEI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Enoj0WiNHpX06TnUY8t2TKsLnPpvfq1KNv8noESLxJkZzKaQtjPlhpGraosFJE1Ae
+	 gxdW5wr2Kagvbhg4yCSxisTS7GA2eLasm00CkbQIVEkm/hDcHwdxplvjx2+qW1jPGq
+	 RxIGe8CQH1ohNdVXb2KvHeG9jxoiKkVQkG+uybZ8JzN4Wb0ZwjOpKkRXIskJHbJw/S
+	 H2wLr3W5F1nO7qIwp+73Z15H5j8cGuEkJb8ukL7pwKkmnHAi0Mt6iZW/bEboBS0kZ/
+	 HYCqtX3Fqsyyrhc1kMXtSo91BHla99IPsMpk6Zs8y9LLgxED9reysdfwELa8vShuNG
+	 dGDNFbzoEnsjA==
+Message-ID: <e56f3314-c5f4-44bb-b914-8d8e56a5c67a@kernel.org>
+Date: Sat, 11 Oct 2025 01:36:20 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20251003091158.26748-3-angelogioacchino.delregno@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 00/15] spi: airoha: driver fixes & improvements
+To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Ray Liu <ray.liu@airoha.com>, Mark Brown <broonie@kernel.org>,
+ Andy Shevchenko <andy@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org
+Cc: Andreas Gnau <andreas.gnau@iopsys.eu>
+References: <20251010185940.GA715991-robh@kernel.org>
+ <20251010192038.1592889-1-mikhail.kshevetskiy@iopsys.eu>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <20251010192038.1592889-1-mikhail.kshevetskiy@iopsys.eu>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251010_141835_832908_AC536533 
-X-CRM114-Status: GOOD (  13.65  )
+X-CRM114-CacheID: sfid-20251010_163631_336368_E9F55A5F 
+X-CRM114-Status: UNSURE (   8.08  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,236 +124,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi AngeloGioacchino,
+On 10/10/2025 21:20, Mikhail Kshevetskiy wrote:
+> Changes v5:
+>  * reorder patches a bit
+>  * improve description of some patches
+>  * minor fixes & improvements
+> 
+> Changes v6:
+>  * do not fill with 0xff the whole write buffer, only areas not covered
+>    by user provided data are filled now.
+> 
+> Changes v7:
+>  * add EN7523 SoC support
+>  * add en7523 specific hack to avoid flash data damaging if UART_TX pin
+>    was short to ground during boot
+>  * add SNAND node to en7523.dtsi
+>  * update dt-bindings
+> 
+> Changes v8:
+>  * remove dt-bindings changes
 
-kernel test robot noticed the following build errors:
+Why? Nothing indicated that in discussion. No one suggested that.
 
-[auto build test ERROR on broonie-regulator/for-next]
-[also build test ERROR on lee-mfd/for-mfd-next jic23-iio/togreg lee-leds/for-leds-next lee-mfd/for-mfd-fixes linus/master v6.17 next-20251010]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/AngeloGioacchino-Del-Regno/dt-bindings-regulator-Document-MediaTek-MT6316-PMIC-Regulators/20251003-171606
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
-patch link:    https://lore.kernel.org/r/20251003091158.26748-3-angelogioacchino.delregno%40collabora.com
-patch subject: [PATCH v8 2/9] regulator: Add support for MediaTek MT6316 SPMI PMIC Regulators
-config: alpha-randconfig-r073-20251009 (https://download.01.org/0day-ci/archive/20251011/202510110504.A2lR6quW-lkp@intel.com/config)
-compiler: alpha-linux-gcc (GCC) 11.5.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20251011/202510110504.A2lR6quW-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202510110504.A2lR6quW-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
-   `xe_configfs_exit' referenced in section `.data.rel.ro' of drivers/gpu/drm/xe/xe_module.o: defined in discarded section `.exit.text' of drivers/gpu/drm/xe/xe_configfs.o
-   alpha-linux-ld: drivers/base/regmap/regmap-spmi.o: in function `regmap_spmi_base_read':
->> drivers/base/regmap/regmap-spmi.c:26:(.text+0x11c): undefined reference to `spmi_register_read'
->> alpha-linux-ld: drivers/base/regmap/regmap-spmi.c:26:(.text+0x124): undefined reference to `spmi_register_read'
-   alpha-linux-ld: drivers/base/regmap/regmap-spmi.o: in function `regmap_spmi_base_gather_write':
->> drivers/base/regmap/regmap-spmi.c:46:(.text+0x1f0): undefined reference to `spmi_register_zero_write'
->> alpha-linux-ld: drivers/base/regmap/regmap-spmi.c:46:(.text+0x1f4): undefined reference to `spmi_register_zero_write'
->> alpha-linux-ld: drivers/base/regmap/regmap-spmi.c:56:(.text+0x220): undefined reference to `spmi_register_write'
-   alpha-linux-ld: drivers/base/regmap/regmap-spmi.c:56:(.text+0x228): undefined reference to `spmi_register_write'
-   alpha-linux-ld: drivers/base/regmap/regmap-spmi.o: in function `regmap_spmi_ext_read':
->> drivers/base/regmap/regmap-spmi.c:124:(.text+0x3f0): undefined reference to `spmi_ext_register_read'
->> alpha-linux-ld: drivers/base/regmap/regmap-spmi.c:124:(.text+0x404): undefined reference to `spmi_ext_register_read'
->> alpha-linux-ld: drivers/base/regmap/regmap-spmi.c:136:(.text+0x444): undefined reference to `spmi_ext_register_readl'
-   alpha-linux-ld: drivers/base/regmap/regmap-spmi.c:136:(.text+0x458): undefined reference to `spmi_ext_register_readl'
-   alpha-linux-ld: drivers/base/regmap/regmap-spmi.o: in function `regmap_spmi_ext_gather_write':
->> drivers/base/regmap/regmap-spmi.c:164:(.text+0x528): undefined reference to `spmi_ext_register_write'
->> alpha-linux-ld: drivers/base/regmap/regmap-spmi.c:164:(.text+0x53c): undefined reference to `spmi_ext_register_write'
->> alpha-linux-ld: drivers/base/regmap/regmap-spmi.c:176:(.text+0x57c): undefined reference to `spmi_ext_register_writel'
-   alpha-linux-ld: drivers/base/regmap/regmap-spmi.c:176:(.text+0x590): undefined reference to `spmi_ext_register_writel'
-
-Kconfig warnings: (for reference only)
-   WARNING: unmet direct dependencies detected for REGMAP_SPMI
-   Depends on [n]: SPMI [=n]
-   Selected by [y]:
-   - REGULATOR_MT6316 [=y] && REGULATOR [=y] && (SPMI [=n] || COMPILE_TEST [=y])
+Do not attach (thread) your patchsets to some other threads (unrelated
+or older versions). This buries them deep in the mailbox and might
+interfere with applying entire sets. See also:
+https://elixir.bootlin.com/linux/v6.16-rc2/source/Documentation/process/submitting-patches.rst#L830
 
 
-vim +26 drivers/base/regmap/regmap-spmi.c
-
-a01779f89fc8a2 Josh Cartwright 2013-10-28   15  
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   16  static int regmap_spmi_base_read(void *context,
-a01779f89fc8a2 Josh Cartwright 2013-10-28   17  				 const void *reg, size_t reg_size,
-a01779f89fc8a2 Josh Cartwright 2013-10-28   18  				 void *val, size_t val_size)
-a01779f89fc8a2 Josh Cartwright 2013-10-28   19  {
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   20  	u8 addr = *(u8 *)reg;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   21  	int err = 0;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   22  
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   23  	BUG_ON(reg_size != 1);
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   24  
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   25  	while (val_size-- && !err)
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  @26  		err = spmi_register_read(context, addr++, val++);
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   27  
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   28  	return err;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   29  }
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   30  
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   31  static int regmap_spmi_base_gather_write(void *context,
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   32  					 const void *reg, size_t reg_size,
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   33  					 const void *val, size_t val_size)
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   34  {
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   35  	const u8 *data = val;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   36  	u8 addr = *(u8 *)reg;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   37  	int err = 0;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   38  
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   39  	BUG_ON(reg_size != 1);
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   40  
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   41  	/*
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   42  	 * SPMI defines a more bandwidth-efficient 'Register 0 Write' sequence,
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   43  	 * use it when possible.
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   44  	 */
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   45  	if (addr == 0 && val_size) {
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  @46  		err = spmi_register_zero_write(context, *data);
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   47  		if (err)
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   48  			goto err_out;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   49  
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   50  		data++;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   51  		addr++;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   52  		val_size--;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   53  	}
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   54  
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   55  	while (val_size) {
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  @56  		err = spmi_register_write(context, addr, *data);
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   57  		if (err)
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   58  			goto err_out;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   59  
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   60  		data++;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   61  		addr++;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   62  		val_size--;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   63  	}
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   64  
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   65  err_out:
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   66  	return err;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   67  }
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   68  
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   69  static int regmap_spmi_base_write(void *context, const void *data,
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   70  				  size_t count)
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   71  {
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   72  	BUG_ON(count < 1);
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   73  	return regmap_spmi_base_gather_write(context, data, 1, data + 1,
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   74  					     count - 1);
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   75  }
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   76  
-9c2e5cb38da220 Julia Lawall    2017-08-11   77  static const struct regmap_bus regmap_spmi_base = {
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   78  	.read				= regmap_spmi_base_read,
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   79  	.write				= regmap_spmi_base_write,
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   80  	.gather_write			= regmap_spmi_base_gather_write,
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   81  	.reg_format_endian_default	= REGMAP_ENDIAN_NATIVE,
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   82  	.val_format_endian_default	= REGMAP_ENDIAN_NATIVE,
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   83  };
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   84  
-3cfe7a74d42b7e Nicolas Boichat 2015-07-08   85  struct regmap *__regmap_init_spmi_base(struct spmi_device *sdev,
-3cfe7a74d42b7e Nicolas Boichat 2015-07-08   86  				       const struct regmap_config *config,
-3cfe7a74d42b7e Nicolas Boichat 2015-07-08   87  				       struct lock_class_key *lock_key,
-3cfe7a74d42b7e Nicolas Boichat 2015-07-08   88  				       const char *lock_name)
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   89  {
-3cfe7a74d42b7e Nicolas Boichat 2015-07-08   90  	return __regmap_init(&sdev->dev, &regmap_spmi_base, sdev, config,
-3cfe7a74d42b7e Nicolas Boichat 2015-07-08   91  			     lock_key, lock_name);
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   92  }
-3cfe7a74d42b7e Nicolas Boichat 2015-07-08   93  EXPORT_SYMBOL_GPL(__regmap_init_spmi_base);
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   94  
-3cfe7a74d42b7e Nicolas Boichat 2015-07-08   95  struct regmap *__devm_regmap_init_spmi_base(struct spmi_device *sdev,
-3cfe7a74d42b7e Nicolas Boichat 2015-07-08   96  					    const struct regmap_config *config,
-3cfe7a74d42b7e Nicolas Boichat 2015-07-08   97  					    struct lock_class_key *lock_key,
-3cfe7a74d42b7e Nicolas Boichat 2015-07-08   98  					    const char *lock_name)
-c9afbb05a9ffbe Josh Cartwright 2014-02-12   99  {
-3cfe7a74d42b7e Nicolas Boichat 2015-07-08  100  	return __devm_regmap_init(&sdev->dev, &regmap_spmi_base, sdev, config,
-3cfe7a74d42b7e Nicolas Boichat 2015-07-08  101  				  lock_key, lock_name);
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  102  }
-3cfe7a74d42b7e Nicolas Boichat 2015-07-08  103  EXPORT_SYMBOL_GPL(__devm_regmap_init_spmi_base);
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  104  
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  105  static int regmap_spmi_ext_read(void *context,
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  106  				const void *reg, size_t reg_size,
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  107  				void *val, size_t val_size)
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  108  {
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  109  	int err = 0;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  110  	size_t len;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  111  	u16 addr;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  112  
-a01779f89fc8a2 Josh Cartwright 2013-10-28  113  	BUG_ON(reg_size != 2);
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  114  
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  115  	addr = *(u16 *)reg;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  116  
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  117  	/*
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  118  	 * Split accesses into two to take advantage of the more
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  119  	 * bandwidth-efficient 'Extended Register Read' command when possible
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  120  	 */
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  121  	while (addr <= 0xFF && val_size) {
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  122  		len = min_t(size_t, val_size, 16);
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  123  
-c9afbb05a9ffbe Josh Cartwright 2014-02-12 @124  		err = spmi_ext_register_read(context, addr, val, len);
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  125  		if (err)
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  126  			goto err_out;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  127  
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  128  		addr += len;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  129  		val += len;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  130  		val_size -= len;
-a01779f89fc8a2 Josh Cartwright 2013-10-28  131  	}
-a01779f89fc8a2 Josh Cartwright 2013-10-28  132  
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  133  	while (val_size) {
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  134  		len = min_t(size_t, val_size, 8);
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  135  
-dec8e8f6e6504a Jack Pham       2016-04-14 @136  		err = spmi_ext_register_readl(context, addr, val, len);
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  137  		if (err)
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  138  			goto err_out;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  139  
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  140  		addr += len;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  141  		val += len;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  142  		val_size -= len;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  143  	}
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  144  
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  145  err_out:
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  146  	return err;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  147  }
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  148  
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  149  static int regmap_spmi_ext_gather_write(void *context,
-a01779f89fc8a2 Josh Cartwright 2013-10-28  150  					const void *reg, size_t reg_size,
-a01779f89fc8a2 Josh Cartwright 2013-10-28  151  					const void *val, size_t val_size)
-a01779f89fc8a2 Josh Cartwright 2013-10-28  152  {
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  153  	int err = 0;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  154  	size_t len;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  155  	u16 addr;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  156  
-a01779f89fc8a2 Josh Cartwright 2013-10-28  157  	BUG_ON(reg_size != 2);
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  158  
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  159  	addr = *(u16 *)reg;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  160  
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  161  	while (addr <= 0xFF && val_size) {
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  162  		len = min_t(size_t, val_size, 16);
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  163  
-c9afbb05a9ffbe Josh Cartwright 2014-02-12 @164  		err = spmi_ext_register_write(context, addr, val, len);
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  165  		if (err)
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  166  			goto err_out;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  167  
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  168  		addr += len;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  169  		val += len;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  170  		val_size -= len;
-a01779f89fc8a2 Josh Cartwright 2013-10-28  171  	}
-a01779f89fc8a2 Josh Cartwright 2013-10-28  172  
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  173  	while (val_size) {
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  174  		len = min_t(size_t, val_size, 8);
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  175  
-c9afbb05a9ffbe Josh Cartwright 2014-02-12 @176  		err = spmi_ext_register_writel(context, addr, val, len);
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  177  		if (err)
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  178  			goto err_out;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  179  
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  180  		addr += len;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  181  		val += len;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  182  		val_size -= len;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  183  	}
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  184  
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  185  err_out:
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  186  	return err;
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  187  }
-c9afbb05a9ffbe Josh Cartwright 2014-02-12  188  
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Best regards,
+Krzysztof
 
