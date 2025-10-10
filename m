@@ -4,54 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A084FCCA476
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Oct 2025 08:18:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD01ECAC5BB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Oct 2025 09:16:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=qsFkU/uX4KHJ4f1uzm2iz39kAHCe9u2uFgt0PtntkBE=; b=A93QX7/oHa1WxuyGS0QDo57Y6D
-	VXqIut0iR9agrUTvcyezptC2DUijtWpf9WhJXnfaHNqytq2qH7RYaaKDG5H5d9M1sk8y2fFgyKNQh
-	ENEiCzW7zpmr43gE357WXRmW8Uatdv3fDTlqAcHiVOFfnVM1e60zfWkbJ/C0Rs+Tfk1vla59su88q
-	hlqjc/ukOv8NvVCsQqDCKmHbRWDlk9i5yQP4bTC4vCh8qWwaVvV79MeyqUz7a091PLcUo8D2DOd4I
-	x/hxjLorgPqvd9c9Ioz4JBIkQseXFCGR1lKuh08WcdWqmFTkm4ofAJpXvWF05QZXKAwRAnDmuxOFP
-	ENZkCl1w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=apG8K30MnOcSCx7GyUTEGK3EwtCSFnvkXGwzpcjG1jE=; b=xSzBezk74wXYWr7KSRG56bz58n
+	BnxeBVOsLatL/yugYbNQg3rBzsVmF2h5TqkEiKq1fBJcabsQr5CE9oZ7pvTxSj/AcMaWXqe80qZqd
+	40wDkhY4+r+LmE/ehtNf4J8Lz1wH7qwS8B7OeJPvbHVGdSLtyLBIRZdO2iOHdBRZar9lwHGrkeYeX
+	1yqxlZyOdO9+tub61f1XL3h2fFPKYgTSuGhScfo2B2UhFNVAI7v00VVPgTSnDdLrzkBdoyHgOdIRi
+	4dBNZG9T6VMnbmNHvlQdrD9MzC31dW77/dNPDdBskFSSxH7+3z+kgSJ7dhPVqnkceui8rF/DyEXaJ
+	V53rEHaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v78Kh-00000007xz6-49v4;
-	Fri, 10 Oct 2025 08:18:36 +0000
-Received: from mail.scalenook.pl ([51.91.253.187])
+	id 1v79EI-000000087hi-0IOX;
+	Fri, 10 Oct 2025 09:16:02 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v78Kf-00000007xyk-1Tof
-	for linux-mediatek@lists.infradead.org;
-	Fri, 10 Oct 2025 08:18:34 +0000
-Received: by mail.scalenook.pl (Postfix, from userid 1002)
-	id DAB06277F6; Fri, 10 Oct 2025 08:06:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=scalenook.pl; s=mail;
-	t=1760083699; bh=qsFkU/uX4KHJ4f1uzm2iz39kAHCe9u2uFgt0PtntkBE=;
-	h=Date:From:To:Subject:From;
-	b=YfhWbYyZ6OxpHSQrbrAsAS4aJpq2tIoqael0JGnLzQQrrArm7UI0ViJhTILL90bb6
-	 xMH43JoBbIDkCA7uTJvjJ1hPRy6TcCq3598fmzSlRXVQtzXIEZIXL8iCdCdlnaKkSd
-	 KZoAi7kNaiwdE77esG5MWJ2UNBrF8uZfxg2q3NF5get+EynNM9IxxPfpi09en7imrv
-	 kKrdLeFE2VhuxCxZPrURcVKVxZeLkr0HbR715IWaJUhw/x7wOKSKPH2x+w6SkZRbDQ
-	 zQxj5rmDtodIzU4vvhnbZRVf6uvlgEk36Mol3FNIO499X1iN7QhzYXebmTtmTdjYls
-	 wGPV7n8bcoRUA==
-Received: by mail.scalenook.pl for <linux-mediatek@lists.infradead.org>; Fri, 10 Oct 2025 08:05:48 GMT
-Message-ID: <20251010064500-0.1.m.a6w6.0.uih14asosa@scalenook.pl>
-Date: Fri, 10 Oct 2025 08:05:48 GMT
-From: "Ewelina Koprowska" <ewelina.koprowska@scalenook.pl>
-To: <linux-mediatek@lists.infradead.org>
-Subject: Karta lunchowa
-X-Mailer: mail.scalenook.pl
+	id 1v79EF-000000087gw-3kBa;
+	Fri, 10 Oct 2025 09:16:01 +0000
+X-UUID: b9eabd38a5b911f09f706fa2197c6ceb-20251010
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=apG8K30MnOcSCx7GyUTEGK3EwtCSFnvkXGwzpcjG1jE=;
+	b=NqdCyKpoXrByBKtKSIeXRLXehugXATnv/xrso8l50j73d0V70JuVExUcJPwMdsSvwwqT7IP5Rot7qWrRvXolhl5FqavASy6txPp62vvihCTm6K8CMTHWxHC0asUBGsi/wzI6UsF2lJbxn01bjQp3EAp3eNxVGGlEKLWMxudh23Y=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.6,REQID:6ffc1972-b924-475a-8b34-cb35bab99cfb,IP:0,UR
+	L:25,TC:0,Content:58,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:83
+X-CID-META: VersionHash:a9d874c,CLOUDID:ecef06b9-795c-4f99-91f3-c115e0d49051,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
+	3|15|50,EDM:-3,IP:nil,URL:11|97|99|83|106|1,File:130,RT:nil,Bulk:nil,QS:ni
+	l,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:
+	0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: b9eabd38a5b911f09f706fa2197c6ceb-20251010
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <jjian.zhou@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 772416789; Fri, 10 Oct 2025 02:15:55 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.10; Fri, 10 Oct 2025 17:15:52 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1748.10 via Frontend Transport; Fri, 10 Oct 2025 17:15:51 +0800
+From: Jjian Zhou <jjian.zhou@mediatek.com>
+To: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Jjian Zhou
+	<Jjian.Zhou@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>
+CC: <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jjian Zhou
+	<jjian.zhou@mediatek.com>, Krzysztof Kozlowski
+	<krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v8 1/2] dt-bindings: mailbox: mediatek,mt8196-vcp-mbox: add mtk vcp-mbox document
+Date: Fri, 10 Oct 2025 17:15:11 +0800
+Message-ID: <20251010091549.21325-2-jjian.zhou@mediatek.com>
+X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20251010091549.21325-1-jjian.zhou@mediatek.com>
+References: <20251010091549.21325-1-jjian.zhou@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251010_011833_679915_5C2D4713 
-X-CRM114-Status: UNSURE (   0.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251010_021559_932061_A4BE4B51 
+X-CRM114-Status: GOOD (  13.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,25 +93,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Szanowni Pa=C5=84stwo,
+The MTK VCP mailbox enables the SoC to communicate with the VCP by passing
+messages through 64 32-bit wide registers. It has 32 interrupt vectors in
+either direction for signalling purposes.
 
-czy zastanawiali si=C4=99 Pa=C5=84stwo, jak zwi=C4=99kszy=C4=87 zadowolen=
-ie pracownik=C3=B3w i jednocze=C5=9Bnie zaoszcz=C4=99dzi=C4=87 na kosztac=
-h zatrudnienia?=20
+This adds a binding for Mediatek VCP mailbox.
 
-Obecnie jest mo=C5=BCliwo=C5=9B=C4=87 zwolnienia z op=C5=82at ZUS a=C5=BC=
- do 450 z=C5=82 miesi=C4=99cznie na ka=C5=BCdego pracownika poprzez dofin=
-ansowanie posi=C5=82k=C3=B3w.=20
+Signed-off-by: Jjian Zhou <jjian.zhou@mediatek.com>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ .../mailbox/mediatek,mt8196-vcp-mbox.yaml     | 49 +++++++++++++++++++
+ 1 file changed, 49 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/mailbox/mediatek,mt8196-vcp-mbox.yaml
 
-Za pomoc=C4=85 karty lunch pracownicy mog=C4=85 p=C5=82aci=C4=87 w restau=
-racjach, zamawia=C4=87 jedzenie online, korzysta=C4=87 z cateringu czy ro=
-bi=C4=87 zakupy spo=C5=BCywcze. To doskona=C5=82e narz=C4=99dzie motywacy=
-jne, kt=C3=B3re tak=C5=BCe wyr=C3=B3=C5=BCnia firm=C4=99 na rynku pracy.
+diff --git a/Documentation/devicetree/bindings/mailbox/mediatek,mt8196-vcp-mbox.yaml b/Documentation/devicetree/bindings/mailbox/mediatek,mt8196-vcp-mbox.yaml
+new file mode 100644
+index 000000000000..7b1c5165e64e
+--- /dev/null
++++ b/Documentation/devicetree/bindings/mailbox/mediatek,mt8196-vcp-mbox.yaml
+@@ -0,0 +1,49 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/mailbox/mediatek,mt8196-vcp-mbox.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek Video Companion Processor (VCP) mailbox
++
++maintainers:
++  - Jjian Zhou <Jjian.Zhou@mediatek.com>
++
++description:
++  The MTK VCP mailbox enables the SoC to communicate with the VCP by passing
++  messages through 64 32-bit wide registers. It has 32 interrupt vectors in
++  either direction for signalling purposes.
++
++properties:
++  compatible:
++    enum:
++      - mediatek,mt8196-vcp-mbox
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  "#mbox-cells":
++    const: 0
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - "#mbox-cells"
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++
++    mailbox@31b80000 {
++        compatible = "mediatek,mt8196-vcp-mbox";
++        reg = <0x31b80000 0x1000>;
++        interrupts = <GIC_SPI 789 IRQ_TYPE_LEVEL_HIGH 0>;
++        #mbox-cells = <0>;
++    };
+-- 
+2.45.2
 
-Ch=C4=99tnie opowiem wi=C4=99cej na ten temat, czy mogliby=C5=9Bmy porozm=
-awia=C4=87 w najbli=C5=BCszym czasie?
-
-
-Pozdrawiam
-Ewelina Koprowska
 
