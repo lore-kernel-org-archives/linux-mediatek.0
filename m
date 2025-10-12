@@ -4,119 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 573DFCCA476
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Oct 2025 02:59:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A7F3CCD184
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Oct 2025 09:20:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IvEzWQUAaOjHPdpMdQxvqQ47OP9HAP40IF4mX3YtluQ=; b=J7C/WN0rmCijaaUeRP101Rp3I7
-	8i3mfVssd5/eqB5txXWUqpf5NI5rqf2+1H5cBp9ZBjdrMkSrYAhh9o4XDXxa7gxV36AsRvKLOrKxA
-	CyaRmnIT6y6YtpLZoXhwbC1hIawRzkivNtkDkbsSX1Y17Yxs4PJuAuCl5SsBBO5l3v1tNF63Qzrxk
-	Atzw/yQLLcnQfdYmDD7EpIUST4Kn/iPNFQAfnsNXs9//G4uXrilnEkF2/QhJgXOsflJR0ktAeEbZq
-	gfAlOwYTk2TNSe9IhKALf36ELcAzT5wHoMwroR3CaUQKTY358tcfHLpPTjCx9kmk9U6I9FkTekB26
-	B6NgFmPw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=kN5/ilIo+JZwjBvr6gw3dBoY4gM4GAFP0osH7FpQv5Y=; b=WegZi5y6JtEL/ylWQiIGNMv5Tv
+	uyJvE2cvepIb9T/WtB7sduBij//m38HSMMnLPlbnYR18LEp3lW7vWHFS4UQ8ZjjoBnKqLFqhyam4p
+	KLXpAgnG/y0cPIoK6pjjsX+UcYT+ITFtxWvucW10ss32RJxVpqVX1TLKEwDlc8mzpze1T81aHJRrl
+	TgAFKZK2qu+bjIt3p3rWUqbZ0Rj2bvc7M8eQE3AplOn6I0GEDspQWgB5jTpknZb1sL4ncESVe+Zy2
+	wUfNH8O13XgV7f6eLnF8A3EYhQ1GAG0L9cur1QnlpXarH+VfQ7MqMGeM837zPR7pI82kD/xE1dcB5
+	+uLyHm9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v7mJP-0000000B1XF-0GT1;
-	Sun, 12 Oct 2025 02:59:55 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1v7sFj-0000000BD9T-3PUA;
+	Sun, 12 Oct 2025 09:20:31 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v7mJL-0000000B1Wn-3VgH;
-	Sun, 12 Oct 2025 02:59:52 +0000
+	id 1v7sFg-0000000BD8y-3rbo;
+	Sun, 12 Oct 2025 09:20:30 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 34B1B44C97;
-	Sun, 12 Oct 2025 02:59:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5D10DC4CEF4;
-	Sun, 12 Oct 2025 02:59:43 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id BF78642D6B;
+	Sun, 12 Oct 2025 09:20:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1370EC4CEE7;
+	Sun, 12 Oct 2025 09:20:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760237991;
-	bh=IvEzWQUAaOjHPdpMdQxvqQ47OP9HAP40IF4mX3YtluQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=UrfB6O7XiK5fq5J9VkQFVx9DlsWObF9naDdGobkS51OZAz/jsx3R9ihwg0PLnMCZn
-	 JrKUbGanIvovfFOqUpavv8i68LSXB5gYwPhxZQEvgJa3RGqaADbQQ7AjIK8ZETL/AI
-	 k2ksov7/j4uHzLq/D9T2NltgotoXlVkvFworT2mf+35iUUKslWRUBPKWb+f/UxYUtm
-	 pjZgzEcIbrTYbk7whs72knHyaZuiftVsYOq9GBojVzE1FjE3WyTCH6gjtrRMpfcfgt
-	 iSD03Kbjtal01DVcL/7u3l9L+Byxbye1FM8aF/SHnk+m6dkbH6QV/3RD5PHD48okUk
-	 KR4Whw1jdA+Lg==
-Message-ID: <50eb3618-4ce0-44b4-91fb-561207fe7554@kernel.org>
-Date: Sun, 12 Oct 2025 04:59:41 +0200
+	s=k20201202; t=1760260826;
+	bh=3DV/u5wjSCtg1WSPlQteng/aS2VViRpDHJXCVKKehVo=;
+	h=From:Date:Subject:To:Cc:From;
+	b=lIoQ0XBnPfDb39ejCm9t7Ft7oUm2id6K2uOyaSxfR0R/YIHmbv+gz/S4E+TNeiCZC
+	 nmVo7/0XGlSQKliLIyrkKNh1byogSLS2jIZKFPdnnJynMHTDChYCFQpscK2HvfHI6Y
+	 5YSSM4geEyhrwZQbOEAvvSSTIEyfqP6yHGVRX4PgXF6qMVAAXcFgyW4Upwy3YnGcI4
+	 6xHImMKb9V2ERh0lqnaH3EvUfNok9CFF5jZCSL7/KgC3Vvl6xdadEvIYva9VoQ2I4z
+	 d7ufZ7hVAK8O6z7VUvzqnWzMfWs3wDRlzb3RVLzUP9ppQIGszhLi3eV0q1xRhXHytg
+	 uQN/AGn+koO6Q==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Sun, 12 Oct 2025 11:19:44 +0200
+Subject: [PATCH net v2] net: airoha: Take into account out-of-order tx
+ completions in airoha_dev_xmit()
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 1/2] dt-bindings: mailbox: mediatek,mt8196-vcp-mbox:
- add mtk vcp-mbox document
-To: =?UTF-8?B?SmppYW4gWmhvdSAo5ZGo5bu6KQ==?= <Jjian.Zhou@mediatek.com>,
- "jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>,
- "robh@kernel.org" <robh@kernel.org>, "krzk+dt@kernel.org"
- <krzk+dt@kernel.org>, "wenst@chromium.org" <wenst@chromium.org>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
-Cc: "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-References: <20251010091549.21325-1-jjian.zhou@mediatek.com>
- <20251010091549.21325-2-jjian.zhou@mediatek.com>
- <9a7d9264fe4914ce58031e08710dfd2453678653.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <9a7d9264fe4914ce58031e08710dfd2453678653.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20251012-airoha-tx-busy-queue-v2-1-a600b08bab2d@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAK9y62gC/32NQQ6CMBBFr0Jm7ZhOFaOuvIdhUegAE02rUyAQw
+ t1tOIDL93/++yskVuEE92IF5UmSxJDBHgpoehc6RvGZwRpbkiGDTjT2DocZ6zEt+B15ZKx9S9R
+ wcz2xhzz9KLcy79onBB6gymEvaYi67FcT7dV/60RIeGNybenNhcz58WIN/D5G7aDatu0HAPDQD
+ b4AAAA=
+X-Change-ID: 20251010-airoha-tx-busy-queue-bdf11cec83ed
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ Simon Horman <horms@kernel.org>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251011_195951_937288_E8DE0AB3 
-X-CRM114-Status: UNSURE (   7.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251012_022029_032765_273AEA5F 
+X-CRM114-Status: GOOD (  12.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,27 +79,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/10/2025 08:51, Jjian Zhou (周建) wrote:
-> On Fri, 2025-10-10 at 17:15 +0800, Jjian Zhou wrote:
->> The MTK VCP mailbox enables the SoC to communicate with the VCP by
->> passing
->> messages through 64 32-bit wide registers. It has 32 interrupt
->> vectors in
->> either direction for signalling purposes.
->>
->> This adds a binding for Mediatek VCP mailbox.
->>
->> Signed-off-by: Jjian Zhou <jjian.zhou@mediatek.com>
->> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
->> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-> I forgot to add "AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com>".
-> Do I need to resubmit it?
+Completion napi can free out-of-order tx descriptors if hw QoS is
+enabled and packets with different priority are queued to same DMA ring.
+Take into account possible out-of-order reports checking if the tx queue
+is full using circular buffer head/tail pointer instead of the number of
+queued packets.
 
-Yes.
+Fixes: 23020f0493270 ("net: airoha: Introduce ethernet support for EN7581 SoC")
+Suggested-by: Simon Horman <horms@kernel.org>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+Changes in v2:
+- Fix corner case when the queue is full
+- Link to v1: https://lore.kernel.org/r/20251010-airoha-tx-busy-queue-v1-1-9e1af5d06104@kernel.org
+---
+ drivers/net/ethernet/airoha/airoha_eth.c | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
 
-You also should use b4, so you won't be making such mistakes.
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index 833dd911980b3f698bd7e5f9fd9e2ce131dd5222..433a646e9831773bf63600e7c3d3b2176c4d133e 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -1873,6 +1873,20 @@ static u32 airoha_get_dsa_tag(struct sk_buff *skb, struct net_device *dev)
+ #endif
+ }
+ 
++static bool airoha_dev_tx_queue_busy(struct airoha_queue *q, u32 nr_frags)
++{
++	u32 tail = q->tail <= q->head ? q->tail + q->ndesc : q->tail;
++	u32 index = q->head + nr_frags;
++
++	/* completion napi can free out-of-order tx descriptors if hw QoS is
++	 * enabled and packets with different priorities are queued to the same
++	 * DMA ring. Take into account possible out-of-order reports checking
++	 * if the tx queue is full using circular buffer head/tail pointers
++	 * instead of the number of queued packets.
++	 */
++	return index >= tail;
++}
++
+ static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
+ 				   struct net_device *dev)
+ {
+@@ -1926,7 +1940,7 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
+ 	txq = netdev_get_tx_queue(dev, qid);
+ 	nr_frags = 1 + skb_shinfo(skb)->nr_frags;
+ 
+-	if (q->queued + nr_frags > q->ndesc) {
++	if (airoha_dev_tx_queue_busy(q, nr_frags)) {
+ 		/* not enough space in the queue */
+ 		netif_tx_stop_queue(txq);
+ 		spin_unlock_bh(&q->lock);
+
+---
+base-commit: 18a7e218cfcdca6666e1f7356533e4c988780b57
+change-id: 20251010-airoha-tx-busy-queue-bdf11cec83ed
 
 Best regards,
-Krzysztof
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
+
 
