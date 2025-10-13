@@ -4,76 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43B9FCCD183
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Oct 2025 14:15:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E41B5CCD18E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Oct 2025 14:15:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9K2/B5MPGejpyktnrayd2M4OnjFiC4FIJq+++ipUzUw=; b=DEEE1/+owp9Wosq+PH4VUGShO2
-	QHj0BOUpdt4y+0FLdPFBrSmBwUojogcG5enuzM/ttzn15wRZnKGA27hieExMfxdZfV3glNJq3xGmb
-	53yEGcKMQW0B/CNP1tHChbhWrXZNyUbRwAgphvY08sl1bhR49tfixuVgVQHJjsxdjb+4isJzbtQIl
-	vlRSRZ7QxvkFSaT3T7MYIz8Ma98JV95THNHnv34FwIuLDYCiPDd+sC9NdFhHIp+xndzBXK0In751d
-	PGOXeHJDR1tA7pAZn3Tcauvm6aAUoWjJmwPyRMW3JqK/L0vt50DCLU7BgQM0GwCYvtnHOUWio6SFg
-	FJIH+uIw==;
+	bh=cw6YFePVdJ/w0HUJNx+YTiAEhWK3QpB9xmEBqnhTSDQ=; b=24pfyb3BAOTDdI3s4jceH3jfzd
+	8lwohaI7TKasOvDp8YWdRU+lauzUbqjsH8JDJ72BdCGmF1b1vuoIy4gpD/fXpe39vxPQQE5t3hvow
+	vV9oPovc91UprJKDz/mj7X6hvFfsrArTGvDxY+tndRIZsT2tB/61pw0hAM16wnFThe2WBNGLpWQdq
+	6BgAIUlFar5aGMXXokGWXLOumywcgrMqMOH2nQSrCPKn47zyLKp101bfSmO9VSAFaICcCZOruuCsn
+	cuG7GazBjsqzW4Sk4Z6RBZKt6WTSG5wcWdeJH3Hnx4WE3lAQPU2ltlPaB7PunxMkz4sR5qO6BgGy3
+	IZPP6NJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8JKF-0000000DKdu-01dx;
-	Mon, 13 Oct 2025 14:14:59 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1v8JKI-0000000DKkr-383q;
+	Mon, 13 Oct 2025 14:15:02 +0000
+Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8JK9-0000000DKUK-0lE0
+	id 1v8JK9-0000000DKUQ-3Z46
 	for linux-mediatek@lists.infradead.org;
-	Mon, 13 Oct 2025 14:14:55 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-57da66e0dc9so4294411e87.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 13 Oct 2025 07:14:52 -0700 (PDT)
+	Mon, 13 Oct 2025 14:14:57 +0000
+Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-579363a4602so5034388e87.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 13 Oct 2025 07:14:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1760364891; x=1760969691; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1760364892; x=1760969692; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=9K2/B5MPGejpyktnrayd2M4OnjFiC4FIJq+++ipUzUw=;
-        b=VpFd9iWfPP8tfZ7e/ucXIjgWcr+DtpcCy5Ja+a8qeLhsd7VEXwrnm41XXmFFxR/Zkv
-         YyUcAY1hBLIybDkLz16o7eIuX3pj+MetfKOPii24LU+2mUSoorRJFkY5lKTQoWZIQB/a
-         CUnY/G/pmrbmVrzOsM7S03bCZE8esJRcTKznw=
+        bh=cw6YFePVdJ/w0HUJNx+YTiAEhWK3QpB9xmEBqnhTSDQ=;
+        b=BsS9IpkuKCElB57i0Yv/KGwyK3FbHcpNU0yRvQFv1IRUp6ifXK1A7h5EPUYIfeBiYZ
+         lwaLQ1nAHlcMsOgeSiHjn9HJ+4aGNlLTQFq/If2BysEQKhNrWF95sMB6POsEcwphqv1W
+         4bjjS6CsE9NiSPSff5uEQF5liHDe+zWA1NL44=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1760364891; x=1760969691;
+        d=1e100.net; s=20230601; t=1760364892; x=1760969692;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=9K2/B5MPGejpyktnrayd2M4OnjFiC4FIJq+++ipUzUw=;
-        b=eslWItz88iwi6pb56/7J/QW86ZLgKovFfFicd6KkDW+X2F+U5t5z0Qb/ipjPNfleGw
-         ITKfnZqq4fPBQVsUPhmlGk4cgUA+Xfpk6KA/kac+jS+avwLYo2r5SYXeOnzLNrGq/egh
-         BUyEhNBS0FfQBh/8urmezVpapU6oCvyovBlMBklNX31uStK8MdjbRsxBWrjUYGUWrBvk
-         bhtR6ODmBrQD/G5c9q2Xf9+yZIALTT4iaTTk1LbzOVOz1vVCiUqlcbcLQGxZ0SquaSVq
-         c42Y8oSIW8uK5APFQ3Cc2uKNftK2gZGq0liD3s/KjlFOpvH4ma8zhBJp3CI7H5mrKhRR
-         ooWQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUWMblcAxyvSjGhv6t5EWuDp5ETbRPu30bsc2huGvay3UMIL/JqZD1OxBIr6JpgCyhJaofEGo0ms8q3WfXExQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxZZ4l2iEuvZjethgfVQs/9WQT4oucTuCTheU00grr/4qz+yf82
-	Fw9yuS+2sEX2rHBZgQ8sz/pzEi8cjKpb/pP/ir9jQ3QnyVmU8A/2TSdDapLQN1X9lg==
-X-Gm-Gg: ASbGnct7mSBkFvlMc1ftSCsucKXdHsRHR2WTJjSqgxz1EkOYMkbQJkVr/D0IxztY4Xy
-	G+rTcE5ZzTpwzpxpsX00QuTOCC9DGpy6y5LM3GYKH2m03lRAJ/+LE8V6LAZf5DnuGci1feLLJVH
-	UKlKuR9AxJxIjkL3pTSapq9gpMUHoNQOTKUZGiHjBLDFchTcKuv7Tpxxix4Md9y3tR+Eb3XYFOH
-	0Ga5SY9o9TzxgxanSNjWa2BVdAnkvuKHe1nw7W65ptyh5XT15NtiwCtfjkpSFaAT6Bn03dcuMxh
-	uE5rWZrIHme31G9UjjOhfoswYUcWzpo12bmHqxWPgN8S3ishAPZAiB62ijWYBw1OXHB+igJ5nyh
-	IdHr4AB78givR4xkhti2oVZpsXBNdHMBJeIQI/HGl3BhWlhJsCK0S10qpe6mdbo4mdDnsGtzO5B
-	u8S2oXnEOHVXQy+PoXxhWXokcT/86M
-X-Google-Smtp-Source: AGHT+IG5qmXDx4UbLHB42EHlB1t6C5RYlcWqyFNneQm/x2WKvXaXI+FP3no4d6C9H/LUJRdom0BMRw==
-X-Received: by 2002:a05:6512:12c9:b0:57b:c798:9edf with SMTP id 2adb3069b0e04-5906dfa81aemr5323251e87.56.1760364891242;
+        bh=cw6YFePVdJ/w0HUJNx+YTiAEhWK3QpB9xmEBqnhTSDQ=;
+        b=Ob8SmRUxjCHVK6DQT1Dypy7NTWaaelGTVrR0QSd0TcdT3s9vukyGkNFhTPy6oCTcqP
+         IlIndPxUIHOvHZplioB4BQRADGxbxWZPDcafLK7ErHwPXVx9MA35TYtxg/s5IzkYewBA
+         u2U6Timfreqo9f6qP9Zft0A6nI6+kgs5Uh8BFwC28CmEoBM9mmIKNsCQRGsWVRpDS+LR
+         01Tuw/NzHkfJitRzooe56ooylLxEFptUTSXTRl9ScT8O81GKRvZckT7eLJPSkEdkxXyN
+         bsenH7pBmVK9utx7T2i6vV/BR26zHD76rAnvejcldgmwhBBR5Any6xe/s9/sN/7Bkzh6
+         NbPQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUk5ncFQYhbQYZ0uZCa9PPEQM2/CD6zGBwz4CsNeT3G0PoZvqeZ3eiKtK3/1f9sW2Ty+4z03DfvlWpIWwg0yA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx8ua6yhw92aNe8UwkGeuMAjVpLBU7+pWC7bfd2qQ4v9ZCddldo
+	y7nGhwNWkJ0v5g5/+iQcsHWDNnXvG5yslUTRe1qSqWUci5o7HamFoGTMVbf8lQ8vag==
+X-Gm-Gg: ASbGnctvv4B5f6ljGzjl0jfZdzFXOrzsz6nYwLC0WEfT3e6Kmiz534ABzWg3Zb5h5/l
+	mFdy4+7HARomHtrAyxKRJ8DY8Eyx7hUfZFmf/MRHPCAn0kIqePQj5ccflKh6WVqt+GPiQrKhyAC
+	tjtIoLvKLHTK4qi2+pYagNK/YoUQsQjLqKDr/66vWzSWPXldpHgDjEu6LZMkWB2c2NQvxsnD5WE
+	Y57ciLBQ4SqYRpu1K9sev0zYAG9N0x0jNQHjfWLRIFK1j9DmB2OEgecoK/SO42Pzt4W9MesW8IK
+	EeqUpwNnhfSAUQBEMmMxjFd/2Tq7aHFtHmT+sZy1R7XV6XobSnTJYn9Txz/Py6VtXR/IMUgyLhg
+	hBpTqYws6ZVCJOX0B67AoRBehsM4BhyAYmGCXzEzvFEomlhlEp5GDJez3i4zJVbH/wKUZ0LBmqw
+	IMvSfnY+SmMKYb2VkTHA==
+X-Google-Smtp-Source: AGHT+IEKVe60oXFEuaV/5sAfkl2vR8IvNhsEsPje9O6F0QVcXOQ4CmYWAzNOjArzbT4yXoFh7KUNeA==
+X-Received: by 2002:a05:6512:2309:b0:57a:baaa:394 with SMTP id 2adb3069b0e04-5906dd51898mr4676162e87.27.1760364891849;
         Mon, 13 Oct 2025 07:14:51 -0700 (PDT)
 Received: from ribalda.c.googlers.com (56.213.88.34.bc.googleusercontent.com. [34.88.213.56])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-590881e4e58sm4165256e87.25.2025.10.13.07.14.50
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-590881e4e58sm4165256e87.25.2025.10.13.07.14.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Oct 2025 07:14:50 -0700 (PDT)
+        Mon, 13 Oct 2025 07:14:51 -0700 (PDT)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Mon, 13 Oct 2025 14:14:42 +0000
-Subject: [PATCH 02/32] media: dvbdev: Use %pe format specifier
+Date: Mon, 13 Oct 2025 14:14:43 +0000
+Subject: [PATCH 03/32] media: mn88443x: Use %pe format specifier
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251013-ptr_err-v1-2-2c5efbd82952@chromium.org>
+Message-Id: <20251013-ptr_err-v1-3-2c5efbd82952@chromium.org>
 References: <20251013-ptr_err-v1-0-2c5efbd82952@chromium.org>
 In-Reply-To: <20251013-ptr_err-v1-0-2c5efbd82952@chromium.org>
 To: Linus Walleij <linus.walleij@linaro.org>, 
@@ -121,8 +121,8 @@ Cc: linux-input@vger.kernel.org, linux-kernel@vger.kernel.org,
  Ricardo Ribalda <ribalda@chromium.org>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251013_071453_270938_9058D486 
-X-CRM114-Status: GOOD (  12.05  )
+X-CRM114-CacheID: sfid-20251013_071453_896825_21F35D3A 
+X-CRM114-Status: GOOD (  11.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,28 +142,39 @@ a symbolic error name (eg. -EINVAL) and it makes the code simpler by
 omitting PTR_ERR()
 
 This patch fixes this cocci report:
-./dvb-core/dvbdev.c:575:48-55: WARNING: Consider using %pe to print PTR_ERR()
+./dvb-frontends/mn88443x.c:698:3-10: WARNING: Consider using %pe to print PTR_ERR()
+./dvb-frontends/mn88443x.c:713:3-10: WARNING: Consider using %pe to print PTR_ERR()
 
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
- drivers/media/dvb-core/dvbdev.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/media/dvb-frontends/mn88443x.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/media/dvb-core/dvbdev.c b/drivers/media/dvb-core/dvbdev.c
-index 9df7c213716aec54bab7fde2c94ac030696fe25f..8b980d371a45e4fec5368a7e90d4c42518b72e72 100644
---- a/drivers/media/dvb-core/dvbdev.c
-+++ b/drivers/media/dvb-core/dvbdev.c
-@@ -571,8 +571,8 @@ int dvb_register_device(struct dvb_adapter *adap, struct dvb_device **pdvbdev,
- 			       MKDEV(DVB_MAJOR, minor),
- 			       dvbdev, "dvb%d.%s%d", adap->num, dnames[type], id);
- 	if (IS_ERR(clsdev)) {
--		pr_err("%s: failed to create device dvb%d.%s%d (%ld)\n",
--		       __func__, adap->num, dnames[type], id, PTR_ERR(clsdev));
-+		pr_err("%s: failed to create device dvb%d.%s%d (%pe)\n",
-+		       __func__, adap->num, dnames[type], id, clsdev);
- 		if (new_node) {
- 			list_del(&new_node->list_head);
- 			kfree(dvbdevfops);
+diff --git a/drivers/media/dvb-frontends/mn88443x.c b/drivers/media/dvb-frontends/mn88443x.c
+index 7a58f53ab9996031e319711a21b1a8f1c13abed4..818c4e67364c7c6ec2bfc17f21e2cac360f6bfb3 100644
+--- a/drivers/media/dvb-frontends/mn88443x.c
++++ b/drivers/media/dvb-frontends/mn88443x.c
+@@ -694,8 +694,7 @@ static int mn88443x_probe(struct i2c_client *client)
+ 
+ 	chip->mclk = devm_clk_get(dev, "mclk");
+ 	if (IS_ERR(chip->mclk) && !conf) {
+-		dev_err(dev, "Failed to request mclk: %ld\n",
+-			PTR_ERR(chip->mclk));
++		dev_err(dev, "Failed to request mclk: %pe\n", chip->mclk);
+ 		return PTR_ERR(chip->mclk);
+ 	}
+ 
+@@ -709,8 +708,8 @@ static int mn88443x_probe(struct i2c_client *client)
+ 	chip->reset_gpio = devm_gpiod_get_optional(dev, "reset",
+ 						   GPIOD_OUT_HIGH);
+ 	if (IS_ERR(chip->reset_gpio)) {
+-		dev_err(dev, "Failed to request reset_gpio: %ld\n",
+-			PTR_ERR(chip->reset_gpio));
++		dev_err(dev, "Failed to request reset_gpio: %pe\n",
++			chip->reset_gpio);
+ 		return PTR_ERR(chip->reset_gpio);
+ 	}
+ 
 
 -- 
 2.51.0.760.g7b8bcc2412-goog
