@@ -4,76 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1DBECCD193
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Oct 2025 14:15:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03A99CCD18D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Oct 2025 14:15:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7VLNzWiaaayGbLPJ+CR/kQopGEdhcg7BnTJUn+bNJDA=; b=e1Uv4MeYtlGrj/UzfjIr40n4g9
-	u7oN5M0LpOttHXdjhnEDTWogMY3IgG4g955CRbHH3GAEkj1I+G9nzJaESIrSu6a6X1QQe7IEDMxtC
-	H1f75PfWep/+e2ckYrv7CRB6KsfSmMHDFbMSbG5bJB4k+2ivOH/ajaLNbBHyGpvc2hsVr+Pjgwo8X
-	yfbQw9LdCIKrM6yUAJpoJWiTQwj9EMmbLwT7dwVXMcOKCWAA75p7InXgoGJOrvIUYSNN0smsYp3G+
-	hnUHj62w2n/+xjUSCBK5lWo68hbskFakSnPmi6fBtzY2VIM/6oCvrWiWctlevEG9DcAGgQGT/jQX4
-	N5KthCDw==;
+	bh=Nh8P+yO8NsicwjNOpOoZpCCNOToSmwS7+PssriFBCJo=; b=L/jbXHL0p0vVHwBAASnxG/3jN5
+	J9UhlHFbXz4iIEoRMZo7GKb28VznPS995Enzak+O6kMgpxdw2FQ3MqXHkFFqH30jyV0Vrw0hUIiYA
+	OnNd8xz6S+aJZFY2YaUDVRfM4Vnf4+GEiaOT8Hhwp3JWx7KhmrmFihlwtC8aVcFteZEJNFr0J+TGI
+	HJlyDSuEoGECUj1nv6h/c12ZMVFjecHJ5IpVv/S4DYQDqCUHc5pW5ZAmML/SvFvpD70kl4T+s0Erv
+	UzdfMCO9l5SZQr82CoVcTNPV2nHHVhj2PCJ6yQ8Qj9LBQLrXIeF3wdcM1Fq1uSipji0uKCm6BJH9k
+	NDMogr/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8JKx-0000000DLxr-31kn;
-	Mon, 13 Oct 2025 14:15:43 +0000
-Received: from mail-lf1-f51.google.com ([209.85.167.51])
+	id 1v8JKz-0000000DM1G-07JK;
+	Mon, 13 Oct 2025 14:15:45 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8JKO-0000000DKtV-2K77
+	id 1v8JKQ-0000000DKzf-44n6
+	for linux-mediatek@bombadil.infradead.org;
+	Mon, 13 Oct 2025 14:15:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=Nh8P+yO8NsicwjNOpOoZpCCNOToSmwS7+PssriFBCJo=; b=KJmyzD/vIP1ex4htT2xtjCg+V6
+	nyxAHX8sXaKrmQh9YgYni2ttk6PADffChozZQyt2FkiuQ8fm9Tf9tuB7pg92ObrJuKFroZ/3K3/qE
+	1ZfBoFhuJslZyweSMPm74HQee91OP3oYGaDrmuG+MuMMn4KLHRzLoS0I5iIToTWSfjeeYD+RCYEvb
+	YxwhTl33vb6azGnJvqCYPWpJOTBDttFyEIF7EhPVlM/UtdiIPjSIZoX2Y0d74OQB1VW+lofAjFNMg
+	HQbp4FwKarM4TrpX8i7ADSEkJKCmu+pN4d2TvoMFjQUWmu3Elmd9Gt602V5b6Xjcmr9b+wzeBer4C
+	aiiyUWDw==;
+Received: from mail-lf1-f44.google.com ([209.85.167.44])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1v8JKL-00000004NAr-2lfs
 	for linux-mediatek@lists.infradead.org;
-	Mon, 13 Oct 2025 14:15:10 +0000
-Received: by mail-lf1-f51.google.com with SMTP id 2adb3069b0e04-57d8ff3944dso4608886e87.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 13 Oct 2025 07:15:08 -0700 (PDT)
+	Mon, 13 Oct 2025 14:15:09 +0000
+Received: by mail-lf1-f44.google.com with SMTP id 2adb3069b0e04-57992ba129eso5322344e87.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 13 Oct 2025 07:15:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1760364906; x=1760969706; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1760364903; x=1760969703; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=7VLNzWiaaayGbLPJ+CR/kQopGEdhcg7BnTJUn+bNJDA=;
-        b=EZrrk8Egtio1/eNZItOEff5C5q59fO0WGrXg6jBQnypES2MT8HO03afXEY4V4TIgbn
-         L3ucvqtalpV0N3Of8KdQ7BBLCwY+JsfJNctjDf39sBAeK/jUOL7HvEtBo/JZNFi5bANd
-         SA8b8KRlsOZGeM2q+6pa4TJ9eSgsPhQqbGO2w=
+        bh=Nh8P+yO8NsicwjNOpOoZpCCNOToSmwS7+PssriFBCJo=;
+        b=ZtySOHFH8P/R5qIyuKOWgqrRjbXafUArgGsdSDIHPM0dO/+KfQ9CA72Ob0hGY/dAop
+         ToUzDpKc826EshLleN/TZq2FxKQeYs3BOFNh5D1PDGqR6f2wo62QmQWvDFrOp9mmXDbz
+         jEcypA+N6jhv1/Zm1MF/dvuPirG7l43DeiWhs=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1760364906; x=1760969706;
+        d=1e100.net; s=20230601; t=1760364903; x=1760969703;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=7VLNzWiaaayGbLPJ+CR/kQopGEdhcg7BnTJUn+bNJDA=;
-        b=OhLcff/aePlG2u4pLrxK0A+MY1DfARsohMW3yHrUFnNDojAoKITi0mox9fE8rGCqqb
-         0o0ok90rAE7PnW+6Ptu5zyNim93hww4Ev30w8IJtjNU1JfmxxzfQwaYTjXvad+FWVCCi
-         d6lYBQIrbLZDQf1JB/sP7rn5RxQI4Rk0lnrgqBSQ5J4+i4XHftpV6+HBGGDV8j8Qj6UY
-         h1K+uWEnMLtlrgbXL2n1eGxoJqsyi4f//DFyR2huFHkE5dJPQ+USUJCLzrfnfY7e0SI1
-         ryNX3MO8k8hZPaq18VUjXfphXrhL2gF3w3N+H0WxxYlTFZiq5yi54Heen8H3I76AZHpE
-         lF6w==
-X-Forwarded-Encrypted: i=1; AJvYcCXZ2KcKKc5Nej0Ng0VU6LdZ8BXISeCQRvPw7NlnffYIjjNTzIxZmqTocIajm+Me5Rhq5Kb3VgfQasUzYVoPow==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzDbo+BUHaSym0/C4tK/l6Urgq6enf5UPCNO5lHQ2MzNK4B1fT7
-	hvljHf8FwyzZPz+CH+FGzcUwUVJNqoozXSuhRSPv2CETbSQPBXTEuIrpoqiuROx9ig==
-X-Gm-Gg: ASbGncuQK0gASJ8wyqlLVFeM7XvYOgr28/KKXHfVTe30z0TcgYp3jQk0XdIo1nBBht3
-	bPnC7DHMxzKqSbSIBgbci0G4NzFrIYPwTKkm/RBX+PAJjjnqI8yPxKEEvQZv8UUokzuhh1IIAXs
-	NisZ3ufZbocoHcCJBd+vmBGMFMMY3+dv0vFVGI3sBljM47d7bdf6kOisGl1aj5vhMrMmzM6dcML
-	DtxeItsHXdQVmtLDyXnxshdru7gz8pjjg6lKDroKXi4fNImrH8RG9ufpWVEiBPcR6XpV1eQrl3r
-	S1qvGxWKB92PgFPsIm4aDKTMr1FxFPA4kABGFrRm8HDx7Q9f/HvBMLLHeOh+DePxUd/SMKoRIr+
-	uZhrumjImd+o7GwLghEpxkJbufPEof1MhiCkygXuzdNvNj3CPgdBkLwVDJSGT6V8IFz/Z3fVk3V
-	04RwldRQzS9WPdlc+MYw==
-X-Google-Smtp-Source: AGHT+IHgQ/WMhPa6rwn8Aka868vYVRu77lc4adXi44XLWG27weltH/9eVYPP+kQHy8I85fd7fOXyWw==
-X-Received: by 2002:a05:6512:3c87:b0:58b:23e:5ec with SMTP id 2adb3069b0e04-5906d8e5b43mr6011775e87.26.1760364906103;
-        Mon, 13 Oct 2025 07:15:06 -0700 (PDT)
+        bh=Nh8P+yO8NsicwjNOpOoZpCCNOToSmwS7+PssriFBCJo=;
+        b=BbETkUQf/yLGzY8WtJsX1AuNIxcbe3IgjIBiM0jz52w9Hc4QKqy/VITR99+KDNh0QC
+         xzZMvD1Gsbo5toy5xra9NvV2HAuM5oi8sFdfjgh9HT2y+xKjtJxsh+wAgkpyfd6TfIGk
+         grgFoIMyvVFoxu82Cwf7Yzs1FVA0dlu9jF9u2BektFtyJufAQAZGeSQjVSpdQUjj3K/C
+         D+8CMy4A07kpEfHtC9ZNhXfS/XFVyY9mXk47m+gZ3HdBsRdbYBNQFfc09ODzbZvJWsZY
+         Qyij6qt1CfTs9qFKHhPIXm0XQwp3s9st97d2F+4CquZLpoHrapXNBDJSBEW2aAzB/8Fd
+         XY1g==
+X-Forwarded-Encrypted: i=1; AJvYcCWLYPVnR8ZBAFlZ/vhlDW3Gdb+jHd8J7RGFXULbrV4GAG4QSTbpU81AKnMigVMHqYOC1YNTUEjk6avBSZccPQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxc1dFN8wjdKMtmk7FHwBEK+nW6yBSoMIOQnbmy77qQlfoa9dOK
+	AWDZxaY76NinXydrQD/wonYIMKouWKZT/QuSi7BBIKv1gWsvHu4W2rm5ywfTZNpZjw==
+X-Gm-Gg: ASbGnct3h2x0hP9VOwx9EPOkyS347cwt6sbeYAX20aCWbCu3AYyN/1C2VuFmstO7REh
+	LYh/Anf5UcJCzqv+WAbI7xG7o1sdr7dDxTVyzPySI0xd8TGU115RIuZP7e3TsPpTyt1tvtHQV+j
+	HVRSy9CDBoGFh2yOKDCPTOqcQ9nXE3NLMa98P9fk6VE4tPXyjruZmHGNY8HK06wf5Xeej2pVvO4
+	GckiBH2lOYgX5Wbx1UZ+PJQvl4hVPkoremqB8z2VVGJWMbH+D2hMpnaSt7bmBY3IwlrgOfpZHbi
+	FDm3LpRi0XJpxKbR3Ade8KTyz0WHedSfi5sG8ztmgvnHED8wGIbuyKfZ1ycllgVjVb7V0UdFMwN
+	PmTRHdf4FtcSSL2R1sxKAtGv2DfmlL4Ss6C3uOegXoekEsnD3u8YP41VX+kKQKZQbi6hLvb5tbo
+	94OMhhqKzooeBc8YU04g==
+X-Google-Smtp-Source: AGHT+IHTiQ/qP/uDKTsRTktboy2tz6+O6QgpLJK8/qSWk5/9SrQl1mdClJ1AYpOXCltPovAllg1/dg==
+X-Received: by 2002:a05:6512:3c87:b0:576:89cc:95e3 with SMTP id 2adb3069b0e04-5906dc12458mr6541046e87.10.1760364903311;
+        Mon, 13 Oct 2025 07:15:03 -0700 (PDT)
 Received: from ribalda.c.googlers.com (56.213.88.34.bc.googleusercontent.com. [34.88.213.56])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-590881e4e58sm4165256e87.25.2025.10.13.07.15.05
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-590881e4e58sm4165256e87.25.2025.10.13.07.15.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Oct 2025 07:15:05 -0700 (PDT)
+        Mon, 13 Oct 2025 07:15:02 -0700 (PDT)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Mon, 13 Oct 2025 14:15:08 +0000
-Subject: [PATCH 28/32] media: rkisp1: Use %pe format specifier
+Date: Mon, 13 Oct 2025 14:15:03 +0000
+Subject: [PATCH 23/32] media: ipu6: isys: Use %pe format specifier
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251013-ptr_err-v1-28-2c5efbd82952@chromium.org>
+Message-Id: <20251013-ptr_err-v1-23-2c5efbd82952@chromium.org>
 References: <20251013-ptr_err-v1-0-2c5efbd82952@chromium.org>
 In-Reply-To: <20251013-ptr_err-v1-0-2c5efbd82952@chromium.org>
 To: Linus Walleij <linus.walleij@linaro.org>, 
@@ -121,8 +136,8 @@ Cc: linux-input@vger.kernel.org, linux-kernel@vger.kernel.org,
  Ricardo Ribalda <ribalda@chromium.org>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251013_071508_624563_93E98CDC 
-X-CRM114-Status: GOOD (  12.97  )
+X-CRM114-CacheID: sfid-20251013_151506_058970_3BD49807 
+X-CRM114-Status: GOOD (  12.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,43 +157,26 @@ a symbolic error name (eg. -EINVAL) and it makes the code simpler by
 omitting PTR_ERR().
 
 This patch fixes this cocci report:
-./platform/rockchip/rkisp1/rkisp1-isp.c:940:3-10: WARNING: Consider using %pe to print PTR_ERR()
-./platform/rockchip/rkisp1/rkisp1-csi.c:372:3-10: WARNING: Consider using %pe to print PTR_ERR()
+./pci/intel/ipu6/ipu6-isys-csi2.c:91:22-29: WARNING: Consider using %pe to print PTR_ERR()
 
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
- drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c | 4 ++--
- drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ drivers/media/pci/intel/ipu6/ipu6-isys-csi2.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
-index 841e58c20f7fcb484643138627413425a049d1fa..ddc6182f3e4bdacdd1962c86f6259334b16aa505 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
-@@ -368,8 +368,8 @@ static int rkisp1_csi_s_stream(struct v4l2_subdev *sd, int enable)
- 
- 	source_pad = media_entity_remote_source_pad_unique(&sd->entity);
- 	if (IS_ERR(source_pad)) {
--		dev_dbg(rkisp1->dev, "Failed to get source for CSI: %ld\n",
--			PTR_ERR(source_pad));
-+		dev_dbg(rkisp1->dev, "Failed to get source for CSI: %pe\n",
-+			source_pad);
- 		return -EPIPE;
- 	}
- 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-index 8c29a1c9309a846152d212dcb50b7bf991d4f422..147d33eb6ee0d975b257c5df2997b811ba3a62e1 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-@@ -936,8 +936,8 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
- 	sink_pad = &isp->pads[RKISP1_ISP_PAD_SINK_VIDEO];
- 	source_pad = media_pad_remote_pad_unique(sink_pad);
- 	if (IS_ERR(source_pad)) {
--		dev_dbg(rkisp1->dev, "Failed to get source for ISP: %ld\n",
--			PTR_ERR(source_pad));
-+		dev_dbg(rkisp1->dev, "Failed to get source for ISP: %pe\n",
-+			source_pad);
- 		return -EPIPE;
+diff --git a/drivers/media/pci/intel/ipu6/ipu6-isys-csi2.c b/drivers/media/pci/intel/ipu6/ipu6-isys-csi2.c
+index d1fece6210ab25de4e8c7b5247f049cc1dd1e677..d858976112ba2bfc2907f9b88dc6c6434053f4a3 100644
+--- a/drivers/media/pci/intel/ipu6/ipu6-isys-csi2.c
++++ b/drivers/media/pci/intel/ipu6/ipu6-isys-csi2.c
+@@ -87,8 +87,8 @@ s64 ipu6_isys_csi2_get_link_freq(struct ipu6_isys_csi2 *csi2)
+ 	src_pad = media_entity_remote_source_pad_unique(&csi2->asd.sd.entity);
+ 	if (IS_ERR(src_pad)) {
+ 		dev_err(&csi2->isys->adev->auxdev.dev,
+-			"can't get source pad of %s (%ld)\n",
+-			csi2->asd.sd.name, PTR_ERR(src_pad));
++			"can't get source pad of %s (%pe)\n",
++			csi2->asd.sd.name, src_pad);
+ 		return PTR_ERR(src_pad);
  	}
  
 
