@@ -4,113 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68F11CCD187
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Oct 2025 00:16:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 462E0CCD187
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Oct 2025 03:19:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8e57tjT9Wc1Btxd/DAqryQ/2cyu53owm31o58BNpdDI=; b=f3wQOHsalZzj0bdefTol5HoTG8
-	quGlxINtKsL4LjaMKe6JAzI3Sar/NxelaN4gWBRkJpc6FpXPGrC2/rYF3y9r8wSzxXtViQJJ0lFrj
-	Bs+h+XdDx09D+JsIdwqdZQzB//C6e7gOOY7xwRf9TvvByj1UT//lCcxYanNApcyD8AATxnwfTA3Rz
-	LbeeglQO6mH/OUTVkbhv8rgIsVKCKSCqnbBNXHAgWtuqq+ZFxEdFpYnPd5P1FAf6fZwdTP2bpMzCq
-	XzYd3idp0dVHZcarM1w5T8qd6ioQLF0vjNKGrSCwYqYK1ImltXm9yq8iEWJb2IAEbKLBbFrbW3wp6
-	UrnwMx9A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VEyUNALeKZReCOUeEy61moOcKcs1mVltWxuE+1mDomk=; b=ztP4p4Bx9F1dj3RKKM5hFIEw1D
+	7qrw5Ljzt5TTf8iyxj5oKen2HTyJwhcWUlFlwvWmgZFiuHPl9Q2ej/+WyKdzLYhsi/6WW30MuqlN/
+	+WEZSsDH7di3oHrr2N4yA6/rkcxbAjzvKeASM1K/UN6Qw92Vua4Mg/sw/MorW0tmkTis+Ur+JHvBV
+	BY45m5LKVg8xUoDTSWwJH8LeGVMR+xLWJciiWVs4T7W9IpW9pPHn/wjyTi9t5Wsw/rwCCH+VZl2Tu
+	5mULMHz6XVqSV3oK3Rk0T6meOwii4NOBAxIa9xTjUbMH5vNtSwPHtZF3CzBY72WPeHipUiVIPJljZ
+	98ehuoHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v86EX-0000000BykA-2Bpf;
-	Mon, 13 Oct 2025 00:16:13 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1v895e-0000000C9mR-0Vp5;
+	Mon, 13 Oct 2025 03:19:14 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v86ET-0000000ByjL-48NK;
-	Mon, 13 Oct 2025 00:16:11 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3B40E43DCE;
-	Mon, 13 Oct 2025 00:16:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5AEAAC4CEE7;
-	Mon, 13 Oct 2025 00:16:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760314569;
-	bh=F0KFyqCFrCsK6+EYl3CHCcvA1HlVICuj1u7c4TTtos8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=nyoFif6hJUgSfBCVyWTjmHeUweBMO+FV8wZ13V7Z03wP9ed5BMDU3Rz7ASg8B0tj5
-	 2mSpE9/wEW2tNxCsY/WKA+u7fhLPRs0bWtPRafoV2gRlaPFQEPq8pt1FbdkwT0Hdn+
-	 qxfsadBBKvvxPg+JTmaC7kb624Jjjm1aMx7Ut9L0offr9fOVLj/xTB+VwL6qQlAXTd
-	 aC1YnOaYn2Uk68Wl/icXW8BlfBkemSS2zZn4R3865h8QWxc+/cDSs8ID5o3EADiriK
-	 pbYGQbraal/Ed3sw3v2pzaUMz7HYFIit02tRvSdvT+YFJU/6wYbeSSzq4WzIRjibgL
-	 46Z/cQvfVmV0g==
-Message-ID: <f4a90053-57ec-4663-8ad4-9186d409b1dc@kernel.org>
-Date: Mon, 13 Oct 2025 02:16:02 +0200
+	id 1v895c-0000000C9m6-1G7l
+	for linux-mediatek@lists.infradead.org;
+	Mon, 13 Oct 2025 03:19:13 +0000
+X-UUID: 61123f84a7e311f0a52f393f94899d25-20251012
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:To:From:Subject:Message-ID; bh=VEyUNALeKZReCOUeEy61moOcKcs1mVltWxuE+1mDomk=;
+	b=XxorBs+4gr9Oud+eSwLiIoZFi4WA9V5AvQY+mvjgh0QnHjX9qc7rT77E6Be7GZx95nOUj2Id9beWZ9j2uTQqXLF7B+pwpg4v+tX6+43Re5tcaqV0DPCf5174MA2gZ3X1xNq5P8bDtSPYH0F5mx8E4MnK2F8Tw7e3kDPOwu04p/A=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.6,REQID:04d35333-2761-4d98-a1e3-710c3c905769,IP:0,UR
+	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:-5
+X-CID-META: VersionHash:a9d874c,CLOUDID:2d50fb50-c509-4cf3-8dc0-fcdaad49a6d3,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|836|888|898,TC:-5,Co
+	ntent:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:nil,Bulk:nil,QS:nil,BEC:nil,
+	COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 61123f84a7e311f0a52f393f94899d25-20251012
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw02.mediatek.com
+	(envelope-from <chui-hao.chiu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 293858982; Sun, 12 Oct 2025 20:19:07 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.10; Mon, 13 Oct 2025 11:19:03 +0800
+Received: from [10.233.130.16] (10.233.130.16) by mtkmbs13n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
+ Transport; Mon, 13 Oct 2025 11:19:03 +0800
+Message-ID: <96f5ff922d22d66ad271a37f2babd60bd2cfb7dc.camel@mediatek.com>
+Subject: Re: [report] wifi: mt76: mt7996: fix FCS error flag check in RX
+ descriptor
+From: Peter Chiu <chui-hao.chiu@mediatek.com>
+To: ALOK TIWARI <alok.a.tiwari@oracle.com>, <Bo.Jiao@mediatek.com>,
+	<howard-yh.hsu@mediatek.com>, <meichia.chiu@mediatek.com>,
+	<Money.Wang@mediatek.com>, <StanleyYP.Wang@mediatek.com>,
+	<ryder.lee@mediatek.com>, <shayne.chen@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>,
+	=?UTF-8?Q?=E7=8F=8A=E9=88=BA_=E8=94=A1?= <Evelyn.Tsai@mediatek.com>,
+	<greearb@candelatech.com>
+Date: Mon, 13 Oct 2025 11:19:05 +0800
+In-Reply-To: <ba082ece-a6a6-4287-9cb9-b216b865b8f4@oracle.com>
+References: <ba082ece-a6a6-4287-9cb9-b216b865b8f4@oracle.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.52.3-0ubuntu1 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v10 15/16] dt-bindings: spi: airoha: add compatible for
- EN7523
-To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Ray Liu <ray.liu@airoha.com>,
- Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Andy Shevchenko <andy@kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-spi@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-Cc: Andreas Gnau <andreas.gnau@iopsys.eu>
-References: <20251012121707.2296160-1-mikhail.kshevetskiy@iopsys.eu>
- <20251012121707.2296160-16-mikhail.kshevetskiy@iopsys.eu>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <20251012121707.2296160-16-mikhail.kshevetskiy@iopsys.eu>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251012_171610_215653_AD4B7D6C 
-X-CRM114-Status: UNSURE (   4.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251012_201912_368701_F38F9DC3 
+X-CRM114-Status: GOOD (  17.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,14 +90,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/10/2025 14:17, Mikhail Kshevetskiy wrote:
-> Add dt-bindings documentation of SPI NAND controller
-> for Airoha EN7523 SoC platform.
-> 
-> Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+On Sun, 2025-10-12 at 22:02 +0530, ALOK TIWARI wrote:
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Hi Alok,
 
-Best regards,
-Krzysztof
+Thanks for your mail.
+Your understanding is correct.
+There is a typo in mt7996.
+
+Thanks,
+Peter Chiu
+
+>=20
+> External email : Please do not click links or open attachments until
+> you have verified the sender or the content.
+>=20
+>=20
+> Hi,
+>=20
+> While looking through the FCS error handling in the mt76 drivers,
+> I noticed that mt7996 uses rxd1 to check the MT_RXD3_NORMAL_FCS_ERR
+> bit,
+> whereas other Connac3-based drivers (such as mt7925) use rxd3.
+>=20
+> According to the definitions, MT_RXD3_NORMAL_FCS_ERR is located in
+> the
+> fourth
+> RX descriptor word (rxd3), so I prepared a small patch to switch the
+> check from
+> rxd1 to rxd3 for consistency and correctness.
+>=20
+> Before sending it formally, I wanted to confirm whether this
+> understanding is correct.
+> is mt7996 indeed supposed to use rxd3 for this flag, like mt7925?
+>=20
+> Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-
+> Fi
+> 7 (802.11be) devices")
+>=20
+> Thanks,
+> Alok
+>=20
+> ---
+> =C2=A0 drivers/net/wireless/mediatek/mt76/mt7996/mac.c | 2 +-
+> =C2=A0 1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+> b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+> index 9501def3e0e3..59744e5593b6 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+> @@ -527,7 +527,7 @@ mt7996_mac_fill_rx(struct mt7996_dev *dev, enum
+> mt76_rxq_id q,
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
+!(csum_status & (BIT(0) | BIT(2) | BIT(3))))
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0 skb->ip_summed =3D CHECKSUM_UNNECESSARY;
+>=20
+> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (rxd1 & MT_RXD3_NORMAL_FCS_ERR)
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (rxd3 & MT_RXD3_NORMAL_FCS_ERR)
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0 status->flag |=3D RX_FLAG_FAILED_FCS_CRC;
+>=20
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (rxd1 & MT_RXD1_NORMA=
+L_TKIP_MIC_ERR)
+> --
+> 2.50.1
+
 
