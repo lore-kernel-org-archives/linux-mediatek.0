@@ -4,76 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6024BCCD183
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Oct 2025 14:15:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAA9DCCD18D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Oct 2025 14:15:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Gx2Nk8bbTBBYhN943GhcMzv342eYq6Mo/xpbKyZ7/rI=; b=CAvOlCXZUfTPrSkMdIbE0uy+Uj
-	/DcSPXJGlGOknPmLBmpEL2+elMn7WIP/CYfGQTGl0hwF+mNdgG6MJTDGD4V5zXspNkMG+uvDR52tU
-	uv0KMq2/3o6YpnXdXCtgAaCJWnP5UyzVavqPshFhIH+GkJI9xU9ojAqH/uMnwzauratLTzxztNv+4
-	GGNUcJdu2oUd+rpWFe+C3aRzrGsOabhWCzpA2o9ON1uyvPZIw21aGCDqqMuGKCgA40VCgtuv7Frtr
-	da2UfQY1wvth5T+8k7yikgMDYmxRNrNQLNqG+YmbGqKUWYvNZRVYWIwv1FlD/fauxoGzid9nFZMSI
-	vgoawquw==;
+	bh=nxwItL4tz8pq3Mzmh9A8flAtdwuQ+oH3jrE+Iyzt0C8=; b=nnPZm6TKuqNnc7BVkLJvyYBtCd
+	fbxYpRUFjYT+Mv5JJGDMysOuYeTcETkdampX55PuGHVe4m9GtCNs47UTwK3D15nNkfxzkj/BvROAL
+	zA80gSy5WRtb3Pm9/zX1y66EvKwXG7yqckezf2MyqzmTGmQcWtPRlZr6K8Lff2nkrw7iMbe2ynIT9
+	Hx8cd6XaAVVyK+pguN4IIEIfCj6+XcH0aUzK6He/7kCqk5jV1wGR7vtdW1XXTAmRCBEGi/Gg4OtHs
+	ZGoe/3mIKr8LYATZOz+gYRCQL3hUaVaTHK2M9eQzr7fs1wDbgQg1UpOdiizMTlnajz2FJW0PoF9rj
+	nXfk9QqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8JKT-0000000DL5g-1GfJ;
-	Mon, 13 Oct 2025 14:15:13 +0000
-Received: from mail-lf1-f54.google.com ([209.85.167.54])
+	id 1v8JKW-0000000DLBT-1BFa;
+	Mon, 13 Oct 2025 14:15:16 +0000
+Received: from mail-lf1-f53.google.com ([209.85.167.53])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8JKF-0000000DKbM-0WUY
+	id 1v8JKE-0000000DKa1-1JWm
 	for linux-mediatek@lists.infradead.org;
-	Mon, 13 Oct 2025 14:15:01 +0000
-Received: by mail-lf1-f54.google.com with SMTP id 2adb3069b0e04-58b025fce96so3763973e87.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 13 Oct 2025 07:14:58 -0700 (PDT)
+	Mon, 13 Oct 2025 14:15:00 +0000
+Received: by mail-lf1-f53.google.com with SMTP id 2adb3069b0e04-57a59124323so4619661e87.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 13 Oct 2025 07:14:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1760364897; x=1760969697; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1760364896; x=1760969696; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=Gx2Nk8bbTBBYhN943GhcMzv342eYq6Mo/xpbKyZ7/rI=;
-        b=WZUujPaB1ZiEMl8ZlDqkFBgkR8tjQOwysrmgzQ+7OUpIgInMk1eerXmiwmMsFFqNTh
-         uJuAwV/3IRK9Xsaz9D/f8nbdScdCJZKx46znwWr+DowdMaPhqsMlcbReZw1R5NaprTZa
-         BTWJteAdZ8v7X/MgglhOM6O6Vjo49scmUrZVM=
+        bh=nxwItL4tz8pq3Mzmh9A8flAtdwuQ+oH3jrE+Iyzt0C8=;
+        b=i4lsaV2nxCWYwbJpoLK6d3dy4k/tChpj+/E2A/DQdwaQZ7YBZEfeFlQxuLrdJb3BEk
+         8sj3dUQbtSaAgWiyJjG7OGSqN6Qulij/hKmGA3svkVJlW88Y9C2ajFFn1dCbKMhFdSeu
+         8mtOLPZdyu8gNr79bneZDGgmwm10Vjj6Siw24=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1760364897; x=1760969697;
+        d=1e100.net; s=20230601; t=1760364896; x=1760969696;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Gx2Nk8bbTBBYhN943GhcMzv342eYq6Mo/xpbKyZ7/rI=;
-        b=ndqMSgk0ywycRp3ag9u+ZXPueolwL+D7kRDD9TE9qjl3xoxnESseBLvTSUPH8YOMkj
-         qAZXpLWsj7Ezh4AS0El51YJmBsLUem5BTCt5hO7QlE39/t38TxvhcxuwH/rRehsCcD8k
-         MiatANooXeHvYF4V/3Fk/Q0IT9bPI1JdIdKMXsmtmCfif0zChVIS+ULm29nyeCOp3qz9
-         D/93T3JPYDOOd0AtokSbxicULMkEkxHJD14tz24Va2vkXi4qaKpAikB/OXHx7RA0pM3y
-         9cJwMCVhGOR04/u5hWE5l0ieHCcTd+vgSEAh00GDDuGj3UZj0VsI+m4tCmCc33p9awwl
-         Y9nA==
-X-Forwarded-Encrypted: i=1; AJvYcCV+4aCgP6R4pyLRiBIRKNWkZans2qwVLDunaKnWq4VbZ0EIxBKBi94fQtTbLS7S8ViuyryUPVcjwi2ywXUF0w==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy7yRKKdc7BSEAJeipdM3zSGvMjpZvpCDYbwgAwbmueEjzfpuyg
-	5mWVee09oFmSrDetgIc3UcLiYkT9aquzAVdAU17XCQpDipEVKdSb1FqVvnyIK+qgSg==
-X-Gm-Gg: ASbGncvrMS5+/cF1YEkvQTVv+kLxsB1IVGup7sgM0Z9lYwpvN0PWfvaE/9YCRMvOaEY
-	GhI3gKEwDWYHki6p5Lb3hnNP0vZpLwnwkqefDcWU6RiS+AUrZtLSzbD9cKyZaMfRyJdJAkWeG84
-	wnA/0one8r1TuuCd+jp2jpGjZDHJVgq449Nt1JQULDVfiFWmIKXg/g78je5wGEiZhpXIfoVfxqi
-	OVD+G/lyLEwtCbJ2008RyGlJtrigFIl69Ik+2Gmf2DU4PrGK4Q7ggJ4UYSW8XaTSGQ8mtyP7D9N
-	WifAFJlrmDDWpsYxE/P4C9H6H4Bf1TsKs9Plf97nZg6sk3UCNyVLGG8rl39Qir5WmbEhFO7oLIu
-	G3PoaHOguEhtIaimMmLFTPFG054du58nMYkjGXmYos8H+14joLNTEfnvfeqJjMdlIQNJsJgCv0l
-	h4tHvMQ+P7EOh8/5aG0oCyv/vtnr1ndAkLq2ocAR4=
-X-Google-Smtp-Source: AGHT+IGza3WB72u87Qc/jc2dtqKhHQX3673S999Ht+Uo4ar3zMBnJvEIFFWeIrwIdWwBJ84BunwKvw==
-X-Received: by 2002:ac2:4c45:0:b0:57e:9865:d6a5 with SMTP id 2adb3069b0e04-5906d9e7318mr6028332e87.40.1760364896522;
-        Mon, 13 Oct 2025 07:14:56 -0700 (PDT)
+        bh=nxwItL4tz8pq3Mzmh9A8flAtdwuQ+oH3jrE+Iyzt0C8=;
+        b=Sw0tCFl9UXYJPY3ZEO52q7Tl2ktI51WTkOqU49mcz2N/HgeYytED6Me7QDUsNspFLs
+         3AWRWaUMvQo5bJJsSeahUhk7KHjYzrodZTA+9k7Ip9pF0BAltWTwSGJ84QAIUCWzpu9I
+         Wdd2SG3uF3j+ewym7LfTjDUGDCqiUpp2G+hRXm4YsOYmp5QlR8DAp1NNBinkfuep44Rn
+         OddPO13btYLEh1Sa+n5NrqmFFyo5WE0wx7hvj3nqiRkvKM2at3DCZCyIcaXr9PGuLXzf
+         qzz3WnIHWOFhy/89MnbdYHEQ1UsTa7WicVj1BRQlXpRCUJ41z2Fqdx4JWuhzMWKsOvRh
+         Xv6Q==
+X-Forwarded-Encrypted: i=1; AJvYcCX2SJjsOX2x4xiIjlHYhJS2RwHo/cWD17DWDmCD7WGNNeXxQc4oPvnKlExKO2RhBfAXwOk6yuPEXMKp8jvYVw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwulFeDMBftcBRbPDgnYa7ThP7wsuvweEGpsZbfCEzW0dqwdTX1
+	wy6tfNNdqmYCKKPmsI2n2LVJrnt/6gHV7rtxqwTVoravLrlTVXgU+1+djddPnjDnbQ==
+X-Gm-Gg: ASbGncveuhJYxAJOS65crdP/oNJohy//7Io3jqffOvdhvHsm9O1+cNW/ygVitVYR0qg
+	uasM4BZ9gz4tzQiqknwJ+sg0p07YphLUwciZEU/gXLYCah8KXr56KoCwsh1g6VOPv0E+bPzc2II
+	wN069jpF5UEMrG1VHNrHkZQmVaCkAyzyBPn8n8WtHlXrnQfHRnRu8iYQxa6crbv+K131ILSfKLj
+	+mP2RjgWgziM3/iCd8YcNCIBYM6Jew1cg3CvSC3F3JMvydoyDgdFDNhplHDxLdPUQ9vm4SPCNeT
+	4Nl77kbrGrDDD9UQdJJWMUi0uYAx6O0/kEm1jmumuSkLPU0a5+nAW4Vl5QfWcJzS0GIxAZZdiiw
+	SpWwkuS4ccVpGhxNiBsZpDKM1zKKqeJFD8DFlptyp7RV45BbnJY3RJPr7mzCQQMKHSOaiLrAo2k
+	jkDhrxVwZva4pfUowzGQ==
+X-Google-Smtp-Source: AGHT+IHRStcb5/UNrBSpVyOQrSmM6wvY4Sq5I8E4EibgafKAtbziLGF8qFxpeqrq8sYvK0QOKhdKZw==
+X-Received: by 2002:a05:6512:308d:b0:579:ec3a:ada2 with SMTP id 2adb3069b0e04-5906d7738b2mr6908772e87.4.1760364895693;
+        Mon, 13 Oct 2025 07:14:55 -0700 (PDT)
 Received: from ribalda.c.googlers.com (56.213.88.34.bc.googleusercontent.com. [34.88.213.56])
         by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-590881e4e58sm4165256e87.25.2025.10.13.07.14.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 13 Oct 2025 07:14:55 -0700 (PDT)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Mon, 13 Oct 2025 14:14:51 +0000
-Subject: [PATCH 11/32] media: i2c: imx412: Use %pe format specifier
+Date: Mon, 13 Oct 2025 14:14:50 +0000
+Subject: [PATCH 10/32] media: i2c: imx335: Use %pe format specifier
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251013-ptr_err-v1-11-2c5efbd82952@chromium.org>
+Message-Id: <20251013-ptr_err-v1-10-2c5efbd82952@chromium.org>
 References: <20251013-ptr_err-v1-0-2c5efbd82952@chromium.org>
 In-Reply-To: <20251013-ptr_err-v1-0-2c5efbd82952@chromium.org>
 To: Linus Walleij <linus.walleij@linaro.org>, 
@@ -121,7 +121,7 @@ Cc: linux-input@vger.kernel.org, linux-kernel@vger.kernel.org,
  Ricardo Ribalda <ribalda@chromium.org>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251013_071459_312903_A0CA38D7 
+X-CRM114-CacheID: sfid-20251013_071458_510119_3EB8A0CD 
 X-CRM114-Status: GOOD (  12.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -142,26 +142,26 @@ a symbolic error name (eg. -EINVAL) and it makes the code simpler by
 omitting PTR_ERR().
 
 This patch fixes this cocci report:
-./i2c/imx412.c:931:3-10: WARNING: Consider using %pe to print PTR_ERR()
+./i2c/imx335.c:1013:3-10: WARNING: Consider using %pe to print PTR_ERR()
 
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
- drivers/media/i2c/imx412.c | 4 ++--
+ drivers/media/i2c/imx335.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/i2c/imx412.c b/drivers/media/i2c/imx412.c
-index 7bbd639a9ddfa7fa76d3a4594be1e1c4d002c98a..b3826f80354703b17b416dc233854da3f5736e38 100644
---- a/drivers/media/i2c/imx412.c
-+++ b/drivers/media/i2c/imx412.c
-@@ -927,8 +927,8 @@ static int imx412_parse_hw_config(struct imx412 *imx412)
- 	imx412->reset_gpio = devm_gpiod_get_optional(imx412->dev, "reset",
- 						     GPIOD_OUT_LOW);
- 	if (IS_ERR(imx412->reset_gpio)) {
--		dev_err(imx412->dev, "failed to get reset gpio %ld\n",
--			PTR_ERR(imx412->reset_gpio));
-+		dev_err(imx412->dev, "failed to get reset gpio %pe\n",
-+			imx412->reset_gpio);
- 		return PTR_ERR(imx412->reset_gpio);
+diff --git a/drivers/media/i2c/imx335.c b/drivers/media/i2c/imx335.c
+index c043df2f15fb25b3a56422092f99a1fd9a508fa9..71ed9a0d84a252ee362621c4d38001508fb86d28 100644
+--- a/drivers/media/i2c/imx335.c
++++ b/drivers/media/i2c/imx335.c
+@@ -1009,8 +1009,8 @@ static int imx335_parse_hw_config(struct imx335 *imx335)
+ 	imx335->reset_gpio = devm_gpiod_get_optional(imx335->dev, "reset",
+ 						     GPIOD_OUT_HIGH);
+ 	if (IS_ERR(imx335->reset_gpio)) {
+-		dev_err(imx335->dev, "failed to get reset gpio %ld\n",
+-			PTR_ERR(imx335->reset_gpio));
++		dev_err(imx335->dev, "failed to get reset gpio %pe\n",
++			imx335->reset_gpio);
+ 		return PTR_ERR(imx335->reset_gpio);
  	}
  
 
