@@ -4,76 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94815CCD192
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Oct 2025 14:15:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBACECCD190
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Oct 2025 14:15:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Smwvmk+cDkyGjYaS177QmxkSssvQt/cgmiOzwIecscI=; b=RkGq/fUNwaAUbkA65N5lK8S5JQ
-	Fy6Kog/hW0gyZY+6qRC/LF/CWrsLcmNYoqftpCsyq1Tb3MiD4XB7fAPSzQYzpXg9+ch1MbnSWYAjN
-	G1KnAvmKj2yGj4QPzUzZAtStfwntKptQrIfGxRBw6myE3cH9VWijREkWdOW2t8SghX4WIERhV+L0D
-	mpXhFW9GdIquJUuGpSh89/A4kdtS6XVU7J0XbEGbjco/+0FvvFO5lzJIOtusVFQnURPoppoYX9qW/
-	99i9h7hV+ficoR+S8ajuNvHN8M98L2E5OSz3rFsQuD14pDGWnZO+vpWz0vKobVEnVQfaHH+JsCVY3
-	bKYRBiOg==;
+	bh=MPyzKdSQgEFTOs6vrnV72MjIpSFJDGoFOT83Au3htUM=; b=Rv3i9Gq8sO3Fe7w+bgvUYPzpMB
+	Hk5NBWQqtxK5wMF9t4u8Phvxedmu4nLEI4+ppqZZSOVkC265aJxGlBFYtO4CmTO12XFvFOLwaoImI
+	gIM47n/B5ubq/AByNJwaYK2WOUeEdWlcR9vlxeaYS/UMTj2o412ZA7Hnh4daSF2tbvOsjVgehj/Re
+	XjdXjSuI+ZcVnMXDVM9uY1S+z/2Oim4isIRVKlL+oMBxaqBDyBTc36c7cTUhPKZYGLShknqNAIMPM
+	rt+ZzvmxJVXxemvEafIDjJZkppjzpI2gIPJpx0Zov9msGyq4afC4b7HXBL8+BGowXs/qfeQijnLCh
+	OEA2QM0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8JKz-0000000DM3A-39az;
-	Mon, 13 Oct 2025 14:15:45 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1v8JL0-0000000DM6N-46HQ;
+	Mon, 13 Oct 2025 14:15:46 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8JKO-0000000DKu0-3IRI
+	id 1v8JKR-0000000DL12-43cY
+	for linux-mediatek@bombadil.infradead.org;
+	Mon, 13 Oct 2025 14:15:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:Message-Id
+	:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender
+	:Reply-To:Content-ID:Content-Description;
+	bh=MPyzKdSQgEFTOs6vrnV72MjIpSFJDGoFOT83Au3htUM=; b=sDS7BaGuD0Eu7n+HhYAcfEFahh
+	ZwpwTzGSBCFhCgL2PRgPYoctf3tJmckJj34EM9jHbZWJsz5UV4U8I+YZp17c6nxFpooXbus9YKVXJ
+	SjriKxiKuMB33mlRRVLjt0ASY/xd2m0+GjhN7qXrIo+vTC5pl4cfiAphmaHnvxWKoYGWYqN5HlI2m
+	SrTL2AdGQ3EeHY4pgYuOK9ECZiK4GPZMrjm5CXysEL+NLWAS2rZxEn7PhEuHz15Vs6eYEs9nOcRYb
+	HucIkLGLH+rM5gvtIm0fVhErfI3rEiI5JbqoR7uxFgjB0+wMoy9spyyqi2v+ZCewbJ3gjzw9BDgKI
+	3UBk9raA==;
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
+	by casper.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1v8JKN-00000007W5x-0GTs
 	for linux-mediatek@lists.infradead.org;
 	Mon, 13 Oct 2025 14:15:10 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-57a292a3a4bso5390510e87.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 13 Oct 2025 07:15:08 -0700 (PDT)
+Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-57a59124323so4619855e87.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 13 Oct 2025 07:15:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1760364907; x=1760969707; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1760364905; x=1760969705; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=Smwvmk+cDkyGjYaS177QmxkSssvQt/cgmiOzwIecscI=;
-        b=E/SfB3MaibsPg3F5ga8mVRZcZz0EdQXvrLZYQze0a9g1FHFJ5iby32fbl2RRsS88yj
-         2wjsJK6pM6davn+gsXIecyfm2BvgPNTiT2ussYRNby26zEn5I14yheU1rCGHeleezMOc
-         gqsTp0Zo70+LiKJIIrK9KHV2VcHjJHk++zGfw=
+        bh=MPyzKdSQgEFTOs6vrnV72MjIpSFJDGoFOT83Au3htUM=;
+        b=arVJPm+v8vPxAOoU4jNSMpceJwIcZR2yAnqUSBw2bpU2s+DxnXnDniNga6FDYm7Jrt
+         NGnvFrnFYwlK26kq/wKAiZ44UvIyhdSNONFwm0YVkfqDm+GfmCTKbmwpvlZRCsH9J3Mx
+         NshT3/YinoSahaK1G9X8djVipUIUkZXRXmy9U=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1760364907; x=1760969707;
+        d=1e100.net; s=20230601; t=1760364905; x=1760969705;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Smwvmk+cDkyGjYaS177QmxkSssvQt/cgmiOzwIecscI=;
-        b=cjlFIebnW7jkM42YVEiL9e4kftokOBZ+z96Y7X+0V0A4A/0p7TeHWLp5PMDnJOeFfd
-         eShK+8iSdh04BmisdI1mjGnzRajYz7MpYZnDmhnN4mFHP7Xjsl8xnmdcn9p7mqkMFxQc
-         TAvwgVkg4vupe/XNopwnkcCGXQdsd7cHd8JNS+k0bvkp8WppUDuaBN3WOBFiPPT9HuvH
-         PPeK0qzhFUkdv2/VXPGELEj9UHKaPHZe8gB7sPjz4vIPLKfChfkFABA04JJDx6fBesYm
-         c+NtYuHLqVNdOX///U4bOER7TmA+KsT0WCE39qWI+GWxTvOpo/nhFGddrF7kLjC2pdNT
-         jirQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXr+mtlENRR++nlESHcfbYrGcbyrQNbFeiOFhlOWKK00xnlShVPTpm6DP9K77bNrc81G6hMdXB9VXl1suo5PA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz0J4GrtK5fbh/w2uEL3j8LRGY6inMlaZ31xJucdh7UvulvrXkf
-	PIZEJ+JuNm0f17TTXdDpS/7rprgbnXLmCTZMQcmjOwOhjyz+tG+EduDvoKlM3K/NFQ==
-X-Gm-Gg: ASbGnctaou+w8SDv1tPWOXQKhT5LFJ1TLYeM9+AeawfrkLRII45TRUnkNNld+gUqLbr
-	pfQozwYn3dvejqEbqcLe6XmBxJE54Ol5+g/X7ia/4GSiQdfDUT+x5WmNoICK+mdV20rVup+nwdp
-	6DOJTtW9O1R/YYVvJ6w4FKMMnofobjfMbWBgqSikfqAZ2jRgr9ImAPzT6lkRUUdftv9E4onv+8S
-	y7pwb7p4gZfM1l9ZVL+neMh5W5N7z48PdNfz9yeL2ijpNbFDeGm3qiF03hmDoLnfMbTi9S4xWy0
-	gCM2IDlU/C+38mgXl4mBkin2IbHaPGbocoiqDSa9dpKHThNWKN0X404NoKc/+XURx3FVyg+7hH4
-	4fUVbIWUtrzMmeGXtJU5aeoj0FHdRHIDK1+9Y2USdbJIjlnY7/IguRJIJlYJm9oBm24bPvmxdaK
-	4g3Lq2SwhKNiYzYbMVIg==
-X-Google-Smtp-Source: AGHT+IG0XyykaxSpAJZEJBiMkxB//rHuKsliNYYIqdi4qrxeJQYdIviCb9iwNXvzzJnUAUziWI3Chw==
-X-Received: by 2002:a05:6512:ea9:b0:585:bc5e:237c with SMTP id 2adb3069b0e04-5906dafca4dmr5906081e87.49.1760364906745;
-        Mon, 13 Oct 2025 07:15:06 -0700 (PDT)
+        bh=MPyzKdSQgEFTOs6vrnV72MjIpSFJDGoFOT83Au3htUM=;
+        b=gnV0wWsVDbSIAywEgp232l/54Fs5F9LD2WOkVe9y+EJzPlVZhMVMwHbftH2JA5MIX/
+         Uxg1A6JMudRAZeOFYU6zHPa58QWD8YxkMem9byP+Q7Y+75n5JNPqWxz7XS6sJMICLWkR
+         8HXbuwpCnGuE5i9E8KeV3Wz8wAw9Y7LjaJnE9k592BUg6w6FQVBX8cXifrBuClSrJAo5
+         AP5e6nDEIkL70xSWv7xJGqFsHj+fNm1PQfYKGyTKLZu1nrdUU7PQUUQa6ao+9uDHmNpP
+         4jsUjgmlL1mlhmAUeTJy8ngDRaK8dlpMv8WzXZ9M6XGFJgCk2DvymuKKrGonR0TrKP0x
+         iLmg==
+X-Forwarded-Encrypted: i=1; AJvYcCVFgXo1DKnY7AlXRRZyfQA40SEWoSiGaxs/FKgmUPp8qTVNuKUg579Az85eFK4aazZki3o1gAQ0XBuT3G7aPQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxsGDn7U4DMbqaOoUYa22hDQcBkF2kHHh3rlC2F4b7Ujk/y50Fa
+	hKUFG6L81tpAfws6wbJ9P7X9XJAvcY8SC4S6SmkRExa8xQFcPN+pVa/OYaIRQ05c4Q==
+X-Gm-Gg: ASbGncszqNBwD8aYDoVqLNWaeNqVh+yixtonZXuJ00JLBTaHA9R1bn+7t4K2ve+bye5
+	vbHxSW7c/35IxuiHv+n73zsV5gokvhZ80EITZuHumBfALJ7OM4NvbnxAF5P88PijAYiojdepS0W
+	aY1qS0RkcGQ03+KrsxhB0p4osMkgboNylgWkgvIj98jOMIrzZA7HncioGinpvh9fP1soIdSVohA
+	kW8KqkbimRupOhfh76nqCGPMb5waY05Wd4kXW/p2ARq2g5+Yv8hIQZfCl54FjxOhKXIpcJ7b3RC
+	6COZZlhnTnAlWQYkGNuAMbkIMM3jYFn70tGEuulEvFZ1svmf2neVQGqx6UKT1jtFL6qNPxWkK0T
+	Q9bWDNRLuT/w6HDnLsHLicUmZ3cqvalgwvc7uCW9BBbFUm99rAlLbeDWP0RR6ZbR9fUq/9n20mG
+	yx159qb47Gtm4Vm5FbVSUm7wxxjFxs
+X-Google-Smtp-Source: AGHT+IHCybNyNMb0drsyz0aREmcwI4Uni6luvsP458rJiLZIzoW/QcUDGoAA5wmoQMp1unUYu7EgCQ==
+X-Received: by 2002:a05:6512:2c06:b0:58a:92cc:581d with SMTP id 2adb3069b0e04-5906dafd171mr5060480e87.50.1760364904884;
+        Mon, 13 Oct 2025 07:15:04 -0700 (PDT)
 Received: from ribalda.c.googlers.com (56.213.88.34.bc.googleusercontent.com. [34.88.213.56])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-590881e4e58sm4165256e87.25.2025.10.13.07.15.06
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-590881e4e58sm4165256e87.25.2025.10.13.07.15.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Oct 2025 07:15:06 -0700 (PDT)
+        Mon, 13 Oct 2025 07:15:04 -0700 (PDT)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Mon, 13 Oct 2025 14:15:09 +0000
-Subject: [PATCH 29/32] media: samsung: exynos4-is: Use %pe format specifier
+Date: Mon, 13 Oct 2025 14:15:06 +0000
+Subject: [PATCH 26/32] media: platform: rzg2l-cru: Use %pe format specifier
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251013-ptr_err-v1-29-2c5efbd82952@chromium.org>
+Message-Id: <20251013-ptr_err-v1-26-2c5efbd82952@chromium.org>
 References: <20251013-ptr_err-v1-0-2c5efbd82952@chromium.org>
 In-Reply-To: <20251013-ptr_err-v1-0-2c5efbd82952@chromium.org>
 To: Linus Walleij <linus.walleij@linaro.org>, 
@@ -121,8 +136,8 @@ Cc: linux-input@vger.kernel.org, linux-kernel@vger.kernel.org,
  Ricardo Ribalda <ribalda@chromium.org>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251013_071508_907668_2013C2FE 
-X-CRM114-Status: GOOD (  12.70  )
+X-CRM114-CacheID: sfid-20251013_151508_363499_C2823D85 
+X-CRM114-Status: GOOD (  10.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,28 +157,40 @@ a symbolic error name (eg. -EINVAL) and it makes the code simpler by
 omitting PTR_ERR().
 
 This patch fixes this cocci report:
-./platform/samsung/exynos4-is/media-dev.c:1337:16-23: WARNING: Consider using %pe to print PTR_ERR()
+./platform/renesas/rzg2l-cru/rzg2l-csi2.c:307:30-37: WARNING: Consider using %pe to print PTR_ERR()
+./platform/renesas/rzg2l-cru/rzg2l-csi2.c:726:30-37: WARNING: Consider using %pe to print PTR_ERR()
 
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
- drivers/media/platform/samsung/exynos4-is/media-dev.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/media/platform/renesas/rzg2l-cru/rzg2l-csi2.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/media/platform/samsung/exynos4-is/media-dev.c b/drivers/media/platform/samsung/exynos4-is/media-dev.c
-index c781853586fd21996105c050e587bf8079cfc095..d6f7601de597e3d3517ef9195d728deb578e74f1 100644
---- a/drivers/media/platform/samsung/exynos4-is/media-dev.c
-+++ b/drivers/media/platform/samsung/exynos4-is/media-dev.c
-@@ -1333,8 +1333,8 @@ static int fimc_md_register_clk_provider(struct fimc_md *fmd)
+diff --git a/drivers/media/platform/renesas/rzg2l-cru/rzg2l-csi2.c b/drivers/media/platform/renesas/rzg2l-cru/rzg2l-csi2.c
+index 1520211e74185fea3bca85f36239254f6b4651db..0fbdae280fdc49f963269a4bdaea38ff2e51884e 100644
+--- a/drivers/media/platform/renesas/rzg2l-cru/rzg2l-csi2.c
++++ b/drivers/media/platform/renesas/rzg2l-cru/rzg2l-csi2.c
+@@ -303,8 +303,8 @@ static int rzg2l_csi2_calc_mbps(struct rzg2l_csi2 *csi2)
  
- 		cp->clks[i] = clk_register(NULL, &camclk->hw);
- 		if (IS_ERR(cp->clks[i])) {
--			dev_err(dev, "failed to register clock: %s (%ld)\n",
--					init.name, PTR_ERR(cp->clks[i]));
-+			dev_err(dev, "failed to register clock: %s (%pe)\n",
-+				init.name, cp->clks[i]);
- 			ret = PTR_ERR(cp->clks[i]);
- 			goto err;
- 		}
+ 	remote_pad = media_pad_remote_pad_unique(&csi2->pads[RZG2L_CSI2_SINK]);
+ 	if (IS_ERR(remote_pad)) {
+-		dev_err(csi2->dev, "can't get source pad of %s (%ld)\n",
+-			csi2->remote_source->name, PTR_ERR(remote_pad));
++		dev_err(csi2->dev, "can't get source pad of %s (%pe)\n",
++			csi2->remote_source->name, remote_pad);
+ 		return PTR_ERR(remote_pad);
+ 	}
+ 
+@@ -722,8 +722,8 @@ static int rzg2l_csi2_get_frame_desc(struct v4l2_subdev *sd, unsigned int pad,
+ 
+ 	remote_pad = media_pad_remote_pad_unique(&csi2->pads[RZG2L_CSI2_SINK]);
+ 	if (IS_ERR(remote_pad)) {
+-		dev_err(csi2->dev, "can't get source pad of %s (%ld)\n",
+-			csi2->remote_source->name, PTR_ERR(remote_pad));
++		dev_err(csi2->dev, "can't get source pad of %s (%pe)\n",
++			csi2->remote_source->name, remote_pad);
+ 		return PTR_ERR(remote_pad);
+ 	}
+ 	return v4l2_subdev_call(csi2->remote_source, pad, get_frame_desc,
 
 -- 
 2.51.0.760.g7b8bcc2412-goog
