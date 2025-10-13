@@ -4,75 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B882CCD18D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Oct 2025 18:11:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B571CCD185
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Oct 2025 19:38:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2xkS9wqt6rMxoJ6WboptAtLN/bXSuc1NV3hZ+JyctS8=; b=NSD3f+IcALdO9e+JB0i8MtgHRQ
-	sscSyjqLJeY52FqUeGFVeb1TP2oMWWMZVFI4D8nZxkQ54gNn35PV3tHU2JgE/9Vcg0EcMpB0Tu8aV
-	FruAP5fUgu925Z/2YeGUhpiCdJBzGuc9rx5XpKtSMqVrT3bdQtoLAIxnG+c5wa+v7E6U+WbLR6bBP
-	sKwgdAxxmzgEI+G5hLt5u3vt09GTpRynchho2Ro6Vu/KN8oH+g5tsTKKCGYxqquYhrvc1AmT81nB+
-	sNSJbbMnmLu51Zyt3O7L4L3Ys1xBW91bRVlhge2UoxKRZhM0CVPlaQ+oTVu/nhU1GSkT0qFresiWR
-	FXVwG8vA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=3DR+Y9YeijrAcC09e3k/rjlsd6433fk4E6uM23VjGwI=; b=rrUyOwJSMzcYbMO1RxT7ptd/ND
+	QY6jlUnbFJRUHB4emUP6YEvEp40j3ObxMPG70WkLOu0qXgUGe8gavsrivTMZT+2slk38IjpGeV0Mm
+	AsPUBSnOwtOFhv7L+pop+E2oLE6c1bsuvhIkmJ/rBZ4CidDNvNxgtqcAxnNtXhkTUSM1Ich4FurIf
+	G7fD5xhq9sylUWg4ayPsuGTyIEFdNzBWavKIaFa0PsD72nqO3nZMiramDlp9dDcpMC8HKpB2JcL1H
+	gniAZ0sv4/Xfm9KKv1ry/HMqqcS9XPu39o0GJX9yLYsjHhPBVeQGwNxyh6AR/+3XwQPzMpI6wUJ9U
+	1Fsh0G5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8N1P-0000000E7WN-2BnO;
-	Mon, 13 Oct 2025 18:11:47 +0000
-Received: from dispatch1-us1.ppe-hosted.com ([67.231.154.183])
+	id 1v8ONg-0000000EJ04-46Ta;
+	Mon, 13 Oct 2025 19:38:52 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8N1N-0000000E7Vc-2RzZ
-	for linux-mediatek@lists.infradead.org;
-	Mon, 13 Oct 2025 18:11:46 +0000
-X-Virus-Scanned: Proofpoint Essentials engine
-Received: from mail3.candelatech.com (mail.candelatech.com [208.74.158.173])
-	by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id 3B83C2C00A2;
-	Mon, 13 Oct 2025 18:11:41 +0000 (UTC)
-Received: from [192.168.100.159] (firewall.candelatech.com [50.251.239.81])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by mail3.candelatech.com (Postfix) with ESMTPSA id B5F6213C2B0;
-	Mon, 13 Oct 2025 11:11:38 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com B5F6213C2B0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=candelatech.com;
-	s=default; t=1760379098;
-	bh=rcxIt2RQI0BgZtE3ekGXC9YLRzn4DsngXvvFTtKNsBs=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=fPEEYJ4NZVwND8uh+UdUs8ZS4psQw5dIQX5OkY4yz1vI6RhqlJ6qhNwWlnDnoPniu
-	 RZaMefmYk6/N1O/Xmwlnb5Nhu6wiF8LOvya6M5Vi5GibZBRlc+HgSrV+QNkPjulq3Z
-	 9O8558y3vynWFJk1Q9ex9IU0ShiF3GTI1TASTtlE=
-Message-ID: <f2c4c835-bc90-c4d1-b1e0-f85b8a945ee9@candelatech.com>
-Date: Mon, 13 Oct 2025 11:11:38 -0700
+	id 1v8ONd-0000000EIyf-2OLl;
+	Mon, 13 Oct 2025 19:38:50 +0000
+Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 59DHDo4Q003848;
+	Mon, 13 Oct 2025 19:38:27 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+	cc:content-type:date:from:message-id:mime-version:subject:to; s=
+	qcppdkim1; bh=3DR+Y9YeijrAcC09e3k/rjlsd6433fk4E6uM23VjGwI=; b=fw
+	yEyJG54PuJfi53ZzL9CLPGrjBt0CD76KYBqQW8fLEnzK2WdqfxKrhJKaEL2/0uxh
+	CZLIN2nXwsHmIQ93iA+AILHgq52o3gF6Rq5+gMKtTwSy7wxayUkCrS5DXZEtetGC
+	Hm+sJerb7YmJhkaKyUSK1wLybJIjnbKrySqA2rpbb9pVsXWVyzAbM8VfYu2bJS6q
+	1icRqm7jYQ9Z5oXlCIQBfagCQxssBlIPrkkV9gKKKjQFA9eZwkBcGJ5i8EiTbB+f
+	UMGsAaP6HGCpB8VehriDebbtKCy6B2Sz/MYzbAhXokeF2ZOukXZ6zoIOCCZ0a+rE
+	+9xc/FrSjEZgRvDHIeqQ==
+Received: from nasanppmta04.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 49qfbhwwd5-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 13 Oct 2025 19:38:27 +0000 (GMT)
+Received: from nasanex01a.na.qualcomm.com (nasanex01a.na.qualcomm.com [10.52.223.231])
+	by NASANPPMTA04.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTPS id 59DJcQPZ005298
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 13 Oct 2025 19:38:26 GMT
+Received: from stor-berry.qualcomm.com (10.80.80.8) by
+ nasanex01a.na.qualcomm.com (10.52.223.231) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.24; Mon, 13 Oct 2025 12:38:25 -0700
+From: "Bao D. Nguyen" <quic_nguyenb@quicinc.com>
+To: <quic_cang@quicinc.com>, <quic_nitirawa@quicinc.com>, <bvanassche@acm.org>,
+        <avri.altman@wdc.com>, <peter.wang@mediatek.com>,
+        <adrian.hunter@intel.com>, <martin.petersen@oracle.com>
+CC: <linux-scsi@vger.kernel.org>, "Bao D. Nguyen" <quic_nguyenb@quicinc.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>,
+        "open list:ARM/Mediatek SoC
+ support:Keyword:mediatek" <linux-kernel@vger.kernel.org>,
+        "moderated
+ list:ARM/Mediatek SoC support:Keyword:mediatek"
+	<linux-arm-kernel@lists.infradead.org>,
+        "moderated list:ARM/Mediatek SoC
+ support:Keyword:mediatek" <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v3 0/2] *** Remove UFS_DEVICE_QUIRK_DELAY_AFTER_LPM quirk ***
+Date: Mon, 13 Oct 2025 12:38:14 -0700
+Message-ID: <cover.1760383740.git.quic_nguyenb@quicinc.com>
+X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [report] wifi: mt76: mt7996: fix FCS error flag check in RX
- descriptor
-Content-Language: en-US
-To: Peter Chiu <chui-hao.chiu@mediatek.com>,
- ALOK TIWARI <alok.a.tiwari@oracle.com>, Bo.Jiao@mediatek.com,
- howard-yh.hsu@mediatek.com, meichia.chiu@mediatek.com,
- Money.Wang@mediatek.com, StanleyYP.Wang@mediatek.com,
- ryder.lee@mediatek.com, shayne.chen@mediatek.com,
- linux-mediatek@lists.infradead.org, =?UTF-8?B?54+K6Yi6IOiUoQ==?=
- <Evelyn.Tsai@mediatek.com>
-References: <ba082ece-a6a6-4287-9cb9-b216b865b8f4@oracle.com>
- <96f5ff922d22d66ad271a37f2babd60bd2cfb7dc.camel@mediatek.com>
-From: Ben Greear <greearb@candelatech.com>
-Organization: Candela Technologies
-In-Reply-To: <96f5ff922d22d66ad271a37f2babd60bd2cfb7dc.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-MDID: 1760379102-rD26PMJf0pCZ
-X-PPE-STACK: {"stack":"us5"}
-X-MDID-O: us5;at1;1760379102;rD26PMJf0pCZ;<greearb@candelatech.com>;2bc1667803e43859c13b14ba9db8f4db
-X-PPE-TRUSTED: V=1;DIR=OUT;
+Content-Type: text/plain
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nasanex01a.na.qualcomm.com (10.52.223.231)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDExMDAxOCBTYWx0ZWRfX1ra6uHgtO8ZF
+ EUrwbHxIRfytshlSygmzeDQ/EoY1Q9yMmHxyFPhauo0EQ5NV4E/9kupUzBYp6OAcz4R4cFgSusY
+ +1OQTK5+SDWHKDYLmdf/yzKKVTflfrEsIsPeUBrVArmiP1VU7RGOmXHbrGg6NM1VdTXcLAsrDQc
+ /5Us5ParoPd3FQH/F+5AzXawngJEbVPmLRIYJzIJdJ20R5DJJa1g1KbczZHGim67Qfa8HK2oUF7
+ U8uCI6KO62kOqUXzCzr1bC/R1rNe/wG3inQEFJYsa0CEREU6QlRz8E2F/h6dkcnI2KarrAboJWj
+ r/0CC4J+rj7cJzFQVWS52+p6wGxtkj9KQHRrPdg25PoMhnm+3fxcUn5a5OOWgKPxfsauEkK+8kM
+ b+/F0AleoVis8XW+vkA80/0jMHr9yw==
+X-Proofpoint-ORIG-GUID: YDACFd5mVpx-cI07geh5FyAw2yu0OTWR
+X-Authority-Analysis: v=2.4 cv=bodBxUai c=1 sm=1 tr=0 ts=68ed5533 cx=c_pps
+ a=JYp8KDb2vCoCEuGobkYCKw==:117 a=JYp8KDb2vCoCEuGobkYCKw==:17
+ a=GEpy-HfZoHoA:10 a=x6icFKpwvdMA:10 a=EGZWyozpdK3AfW_iKrYA:9
+ a=cPQSjfK2_nFv0Q5t_7PE:22
+X-Proofpoint-GUID: YDACFd5mVpx-cI07geh5FyAw2yu0OTWR
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-10-13_07,2025-10-13_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ phishscore=0 lowpriorityscore=0 adultscore=0 impostorscore=0 suspectscore=0
+ bulkscore=0 priorityscore=1501 clxscore=1015 malwarescore=0 spamscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.19.0-2510020000 definitions=main-2510110018
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251013_111145_703171_E901AEE8 
-X-CRM114-Status: GOOD (  27.87  )
+X-CRM114-CacheID: sfid-20251013_123849_725195_8A6EFABC 
+X-CRM114-Status: GOOD (  13.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,99 +114,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Peter,
+Multiple ufs device manufacturers request support for the
+UFS_DEVICE_QUIRK_DELAY_AFTER_LPM quirk in the Qualcomm's platform driver.
+After checking further with the major UFS manufacturers engineering teams
+such as Samsung, Kioxia, SK Hynix and Micron, all the manufacturers require
+this quirk. Since the quirk is needed by all the ufs device manufacturers,
+remove the quirk in the ufs core driver and implement a universal delay
+for all the ufs devices.
 
-To help understand the severity of this problem, can you let us know when
-the incorrect bit is set?  In other words, would looking at the wrong bit
-erroneously cause good frames to be dropped, or was the bit always zero and
-it just allowed bad frames to be accepted?
+In addition to verifying with the public device's datasheets, the ufs
+device manufacturer's engineering teams confirmed the required vcc
+power-off time for the devices is a minimum of 1ms before vcc can be
+powered on again. The existing 5ms delay implemented in the ufs core
+driver seems too conservative, so replace the hard coded 5ms delay with a
+variable default to 2ms setting to improve the system resume latency.
+The platform drivers can override this setting as needed.
 
-Thanks,
-Ben
+v2 -> v3:
+        - Rename sleep_post_vcc_off to vcc_off_delay_us and change the
+          default setting for this variable from 5ms to 2ms (Peter's comment).
 
-On 10/12/25 20:19, Peter Chiu wrote:
-> On Sun, 2025-10-12 at 22:02 +0530, ALOK TIWARI wrote:
-> 
-> Hi Alok,
-> 
-> Thanks for your mail.
-> Your understanding is correct.
-> There is a typo in mt7996.
-> 
-> Thanks,
-> Peter Chiu
-> 
->> 
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
->> 
->> 
->> Hi,
->> 
->> While looking through the FCS error handling in the mt76 drivers,
->> I noticed that mt7996 uses rxd1 to check the MT_RXD3_NORMAL_FCS_ERR
->> bit,
->> whereas other Connac3-based drivers (such as mt7925) use rxd3.
->> 
->> According to the definitions, MT_RXD3_NORMAL_FCS_ERR is located in
->> the
->> fourth
->> RX descriptor word (rxd3), so I prepared a small patch to switch the
->> check from
->> rxd1 to rxd3 for consistency and correctness.
->> 
->> Before sending it formally, I wanted to confirm whether this
->> understanding is correct.
->> is mt7996 indeed supposed to use rxd3 for this flag, like mt7925?
->> 
->> Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-
->> Fi
->> 7 (802.11be) devices")
->> 
->> Thanks,
->> Alok
->> 
->> ---
->>   drivers/net/wireless/mediatek/mt76/mt7996/mac.c | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->> 
->> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
->> b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
->> index 9501def3e0e3..59744e5593b6 100644
->> --- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
->> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
->> @@ -527,7 +527,7 @@ mt7996_mac_fill_rx(struct mt7996_dev *dev, enum
->> mt76_rxq_id q,
->>              !(csum_status & (BIT(0) | BIT(2) | BIT(3))))
->>                  skb->ip_summed = CHECKSUM_UNNECESSARY;
->> 
->> -       if (rxd1 & MT_RXD3_NORMAL_FCS_ERR)
->> +       if (rxd3 & MT_RXD3_NORMAL_FCS_ERR)
->>                  status->flag |= RX_FLAG_FAILED_FCS_CRC;
->> 
->>          if (rxd1 & MT_RXD1_NORMAL_TKIP_MIC_ERR)
->> --
->> 2.50.1
-> 
-> ************* MEDIATEK Confidentiality Notice
->   ********************
-> The information contained in this e-mail message (including any
-> attachments) may be confidential, proprietary, privileged, or otherwise
-> exempt from disclosure under applicable laws. It is intended to be
-> conveyed only to the designated recipient(s). Any use, dissemination,
-> distribution, printing, retaining or copying of this e-mail (including its
-> attachments) by unintended recipient(s) is strictly prohibited and may
-> be unlawful. If you are not an intended recipient of this e-mail, or believe
->   
-> that you have received this e-mail in error, please notify the sender
-> immediately (by replying to this e-mail), delete any and all copies of
-> this e-mail (including any attachments) from your system, and do not
-> disclose the content of this e-mail to any other person. Thank you!
-> 
+v1 -> v2:
+        - Added a check for vcc's always_on to skip the delay if the vcc
+          is an always-on regulator (Peter's comment)
+        - Added a sleep_post_vcc_off variable to allow platform drivers to
+          override the default core driver's setting as needed (Bart and Peter's comments)
+
+Bao D. Nguyen (2):
+  scsi: ufs: core: Remove UFS_DEVICE_QUIRK_DELAY_AFTER_LPM quirk
+  scsi: ufs: core: Replace hard coded vcc-off delay with a variable
+
+ drivers/ufs/core/ufshcd.c       | 15 +++++++++++----
+ drivers/ufs/host/ufs-mediatek.c | 11 ++++-------
+ drivers/ufs/host/ufs-qcom.c     |  3 ---
+ include/ufs/ufs_quirks.h        |  7 -------
+ include/ufs/ufshcd.h            |  2 ++
+ 5 files changed, 17 insertions(+), 21 deletions(-)
 
 -- 
-Ben Greear <greearb@candelatech.com>
-Candela Technologies Inc  http://www.candelatech.com
-
+2.7.4
 
 
