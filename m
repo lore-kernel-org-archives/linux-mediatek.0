@@ -4,91 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B335BCCD183
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Oct 2025 14:15:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DE71CCD18E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Oct 2025 14:15:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AWalVF0nnSBnNQ4jdDd+P85V6zyjZ9PX8Y+NqBliTWQ=; b=0tENvUXur8hhsDDu/6G0wy4+pf
-	t0GsUguasZA1i/HDVPNmnh20KJEqTQ5HDSvNhy6waxSExfGAI6Cb0z3+38vZP8vv7oTwhkQMzXvZz
-	AjAu1PTfxPCs1UdncqazIXqNlI1MkJx8uKhTas8zx4FxkRRr3DGhQjguagp8X7PWaJDafsiYxsi6q
-	f3h6uubFLnORkWB4o0uGJlvS54EOSYjX88smNGDkVhPOnFJ2Nddx+Ed55+RN+qHxmMg8LgIbKbw/Z
-	ZsCN1QWDUQf9k/Kr3UujhhqhvADswkXA8pMlj7OnOUG/2twP/phNIT1GWuloUWjlW6ETkjz54nd+f
-	wgmbhIvQ==;
+	bh=XTfgrP773mTzuIwpFbkRpkdwa1sJQvDkaUU5vsQzRTQ=; b=QAdCMZlwsbci7T1xeYJJwoeYWs
+	i/63GrkRUR1ofyF+69k/BqbG9L1Vuv0ZHd38YPg/CeS+rkHRATs2ZGSCONm5NpNJN90xIyYUhbuLu
+	FRoPuwHPs8d15t6kv9W31KO/fknKXiJ/YXUjEOyhHxTeKXUT/IF6fI+6QxhDeu0TEYrIgxhuQRBRN
+	6BemTBPjab7+mCP9s7FT9elGQHLABHtBOZzSrxNW62VKAOuFWEj9MiILju29k5etGMTlBYmBbAKWX
+	7ify/8ZnicLofzh6LLS0FpqTQoNM537Iye4LMY3lbeIu+gvkqbKdPcFS5kPykhS1VGazK0syBVVtH
+	gteKDNCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8JKs-0000000DLmj-2D2b;
-	Mon, 13 Oct 2025 14:15:38 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1v8JKt-0000000DLp7-2Kyv;
+	Mon, 13 Oct 2025 14:15:39 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8JKO-0000000DKus-3tgf
+	id 1v8JKQ-0000000DKxX-0DvI
 	for linux-mediatek@bombadil.infradead.org;
-	Mon, 13 Oct 2025 14:15:09 +0000
+	Mon, 13 Oct 2025 14:15:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=AWalVF0nnSBnNQ4jdDd+P85V6zyjZ9PX8Y+NqBliTWQ=; b=fNsUbAThEHaghEVBOWG9F/cARg
-	W/TUoEShHWQVIBY5Zjdr4/5kyDhVpwwa9VG/Q788II5TjA4mKGktfKbJQckIzMsz9JntdeRQYrfi1
-	14xQoHByFCY45Fwy2XwSKfX1fqpAFBQOEg07Cp/S4E+wgkDuwkURvcW/OPD5+6H0OERBmqI2LMUJk
-	CizADM0Je6pdmIPUi1Tf3p8EBI3UX1RbXBO750h8IR/9vstqQ8ZQxOvPVIZ7FBBdju5RUpkDWlrC8
-	+7DpQQ80LTt24Tw63spu2/BcHDZbt0Amf7oEvUu4EDPpaOTWI5SxxFlOLwN2zwfUoEvq0VCGPpmr3
-	Em7/s4qA==;
-Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8JKI-00000004N8I-06Mo
+	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:Message-Id
+	:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender
+	:Reply-To:Content-ID:Content-Description;
+	bh=XTfgrP773mTzuIwpFbkRpkdwa1sJQvDkaUU5vsQzRTQ=; b=Vg5mh04ZrEXEMPAPSdDYBIKOEa
+	zIxY5gCICtPrJVy68uAbEoNDmUD5n242Tl7zxz7r5c0YQCGQqY58GvTrMCkg5bDyrVaZBzusjMbpl
+	0PiJI1lweqjIkVhLvFKGdhs6VkdeEC8r4uxMvWlu+x+WM+KYC6NCs+ELbRQ0n955k2MUF5LZLir7h
+	Z2eQrNHwlLuF3736+1NeU5i1x/FY8lcsF7+DkiIU6qcuDURgY3BScVMlhqmepoZc/U1NkXsucG7fQ
+	hwYyHGj0QrMOp8W5cWGIaE7miqNr1CcErKYCwyQ7kr0fCCIfcMogX3Hhi6dh12dHb4PVA+QUQYtKB
+	D32EgWgA==;
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+	by casper.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1v8JKK-00000007W4p-2mQq
 	for linux-mediatek@lists.infradead.org;
-	Mon, 13 Oct 2025 14:15:07 +0000
-Received: by mail-lj1-x22d.google.com with SMTP id 38308e7fff4ca-36a6a3974fdso46171011fa.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 13 Oct 2025 07:15:01 -0700 (PDT)
+	Mon, 13 Oct 2025 14:15:08 +0000
+Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-57992ba129eso5322314e87.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 13 Oct 2025 07:15:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1760364900; x=1760969700; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1760364902; x=1760969702; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=AWalVF0nnSBnNQ4jdDd+P85V6zyjZ9PX8Y+NqBliTWQ=;
-        b=lBMj1r1AUmWWGdV7WQf6NBVBjLBddtAbzCxUPgMBk2w9425/a5pO6uGeBY90ncYFqf
-         0H3kFV8Nh84aCtSPMlqcTTIkhgAjR/m7Ph+grJzybRbtej3BRDT+i1xDs66lbVxg640R
-         cnU7uco23QL44rQovs06I4+Cedqp8Jml3P7MU=
+        bh=XTfgrP773mTzuIwpFbkRpkdwa1sJQvDkaUU5vsQzRTQ=;
+        b=XJ3aYY6ojyfENYuqSXXpICiW6wKecTVWIqTKXiS/rr7hPZ+/pGPt1AH8ZJcU588vsM
+         TpXZRt3T90A27Ncj1e8BMtkGkl0byPCDgYfo3IASTzKE60bE28WcfgEP7xJ/apJc6h3V
+         VXG8UaXX5j9TiYY5verUTEzt34fBh9yp756Do=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1760364900; x=1760969700;
+        d=1e100.net; s=20230601; t=1760364902; x=1760969702;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=AWalVF0nnSBnNQ4jdDd+P85V6zyjZ9PX8Y+NqBliTWQ=;
-        b=u0Pez/1UA9ozwrcS2Sb1gu34smnSBCvHc5F7g2aSkyOfrOmytYXeHIPBruTNhpd1J/
-         v4ui2d03LmsRWuYZ1p5R+bA5O6A53TZwLvCqjbOcJe/OFdd9CgEqVvs3Dyi86dSKwG0m
-         6W+nw+X+716DTXkC7KGVSz0xKsyRVbynTSoNTyswQlJesBFXtJI2cMUKxFN2u2tINRGQ
-         HoeklG39jHN/MfzNdCDejMMT7KfVZAbMzUP+nIkZi4S6kSEq/XrwjKfjcYtM88z2IbbV
-         9QdbpCvirofBliA/EhYrjitG2gmL5JEHvV29TJTMEmLpU7vIydCN7+YpPWVkjI+p8A3T
-         63eg==
-X-Forwarded-Encrypted: i=1; AJvYcCUejP31ww9OXGY1s29yQ8FapNUvozah9AMpIHVG2f4uQXrOtbYcVEAEFbq0GBkdUG+vmDxSP1hti7aeiNkPZA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxiiJPXqjXPTiLzktmlvkjCHOCsf2G/JQO8TpvynY8uGAT0+NyB
-	XVIrf9PiOIQ9AFhhrAHhLZjv2BIjGsvCtSe52p0Sgm3IsuJYsms+eO19R+sU0PofjA==
-X-Gm-Gg: ASbGncv3I69Z/Xu6oqQR9Lt52ummjj1Jp3UWQGiSGTRi507L4t0+3HAh2qvqRuYTCDt
-	QBHkmOr/4b71XAgWco60XfP7bWUWhcM+LgWz51uZcocDtIdTgAyZSMddFqg6o42NEy6IDjTvtMw
-	ApNoj8Kcxqj+SrKFWXKy17bdj644mNl3C7qHjLFVfwXn4trTENy6o932rXRX3lutRInmYjVXrBy
-	R6o2pzoZCvHguu6TJ6piiD0Wla9B9/LhsePK2uT9OsxMCBCC5js9cQJJVT0VVGY6Yw/oT7uO/9d
-	u1PAzww+vSBLzHHOIVlH+a3nPZ/HVQShMGdNVM456J58sRktX6qrSZFiw1VgnJIEYnJHx2U5Xg6
-	l43HcCb9JpSJmElAe8EmccAEFF4elzWWJv5GT79e9iX449pnldU1GHbHCEp9BvHy1N5+LGADuoM
-	36N6A8tItdDzp2s97C6g==
-X-Google-Smtp-Source: AGHT+IGPZ0GBnGH+/De00vLY51zTi7j6Ya9EGY1cvcSTJfIjXM0TP8WRpiQmjBMOUob4MSX3WpygTw==
-X-Received: by 2002:a05:6512:a91:b0:58a:f865:d7a4 with SMTP id 2adb3069b0e04-5906d5da909mr5473662e87.0.1760364899579;
-        Mon, 13 Oct 2025 07:14:59 -0700 (PDT)
+        bh=XTfgrP773mTzuIwpFbkRpkdwa1sJQvDkaUU5vsQzRTQ=;
+        b=YHHHx9DTIPQKihce+QmxHIpYM01Udky86eNcwA4eDkACodrmSShx0SH+WzPZV4yGfM
+         Lo1tvmvL01lneMbGx3mTLvElHcEbymC5r/kD0KQSM1f/k9iDNaNFVYp0sT/phYT7r6z8
+         LhQK+yHbAnNEo3MwxHkNeFmYrIpdOmgJrJfJAtgCLMeB8gWdhCU8AxN9ea0g34JF0K/0
+         FV4fjKI+FyA2o2OQHRxqFaP3DJtqiAI7kk1Y8VaoCvrTXdaYfHGSUdDibF1P+U73Sfu+
+         4RHDDrcrrhtExE1jZsDEPKe72aAcTlwkG6CxAD5SPdC9idjKP7gXbc8nLy64N/tD+c5m
+         VVsA==
+X-Forwarded-Encrypted: i=1; AJvYcCW64t5CGoZRuX3aEOKJW5PMIvTn41E8OGfgjdmcsb1LKX4yX/9dbJkC0BmBN4s68yGBtdM4vVh1ps0ntRJDFQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzCEmPLGTvwoYrdx7+l7unty/nSIEhtm2Ld4KrHaNuvhERB+OPx
+	VJLYfwzd4fzb9aiBGu5V4Gkd2IExOisLZKuQ4Opm7agTlRPZNxITEokcolg4yWHI2w==
+X-Gm-Gg: ASbGnctiD0wODAIT+nNIUn9FgXe70u3NYVGCN/zE7MmmggB+mb0+DfPhcx8YCmzTUGW
+	kt0OGOB6VLqdfquNrKpzOrbvrm6uUXWPeKF2KTAyeowTVSz/QsI1m7NFJiBu8DmfIgQQPtSzx5w
+	cHxs05ztzJT9FUJfHMsAZUJWVM4dP3b4rwXXQZ4Qi9qy5OKMQ4ql/seLhUJKOtns41fxIygNXTd
+	ptiqofKlpDddEyPWefDzJ9Q519qpGsNrqqhWwaBkULnaqoKSLtQGVH9t60jFFU3ScKblLJFkd7R
+	HG6vkFc2th7caCq6dhIoIJQdS4NUmmdCdVfejp/tmoVSjoEQCCX23nKiwwScKGkVrMy1IRUON3m
+	+xZqeYpRpdNL3ZI5G07yv1IULcydcVXUJMSB7q32YzJw8kYHaFqFhRIqkYUm/5iNvVra2mjbFGW
+	+Rn1drt6UtpPyx5Vl6ULBS7kDag+WZ
+X-Google-Smtp-Source: AGHT+IEmYSyu4nHTtG8vRgmb2LccUUeX39k0JKnrkMfDo77UUQwM9CrYH1frfefAQcn5JPDuzUf+OA==
+X-Received: by 2002:a05:6512:104b:b0:58b:394:fd4c with SMTP id 2adb3069b0e04-5906dd6fb89mr6060927e87.33.1760364902483;
+        Mon, 13 Oct 2025 07:15:02 -0700 (PDT)
 Received: from ribalda.c.googlers.com (56.213.88.34.bc.googleusercontent.com. [34.88.213.56])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-590881e4e58sm4165256e87.25.2025.10.13.07.14.59
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-590881e4e58sm4165256e87.25.2025.10.13.07.15.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Oct 2025 07:14:59 -0700 (PDT)
+        Mon, 13 Oct 2025 07:15:02 -0700 (PDT)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Mon, 13 Oct 2025 14:14:57 +0000
-Subject: [PATCH 17/32] media: i2c: ov5693: Use %pe format specifier
+Date: Mon, 13 Oct 2025 14:15:02 +0000
+Subject: [PATCH 22/32] media: ipu3-cio2: Use %pe format specifier
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251013-ptr_err-v1-17-2c5efbd82952@chromium.org>
+Message-Id: <20251013-ptr_err-v1-22-2c5efbd82952@chromium.org>
 References: <20251013-ptr_err-v1-0-2c5efbd82952@chromium.org>
 In-Reply-To: <20251013-ptr_err-v1-0-2c5efbd82952@chromium.org>
 To: Linus Walleij <linus.walleij@linaro.org>, 
@@ -136,8 +136,8 @@ Cc: linux-input@vger.kernel.org, linux-kernel@vger.kernel.org,
  Ricardo Ribalda <ribalda@chromium.org>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251013_151502_320069_8A81CED1 
-X-CRM114-Status: GOOD (  12.50  )
+X-CRM114-CacheID: sfid-20251013_151505_983770_735B93EA 
+X-CRM114-Status: GOOD (  11.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -157,28 +157,28 @@ a symbolic error name (eg. -EINVAL) and it makes the code simpler by
 omitting PTR_ERR().
 
 This patch fixes this cocci report:
-./i2c/ov5693.c:1296:9-16: WARNING: Consider using %pe to print PTR_ERR()
+./pci/intel/ipu3/ipu3-cio2.c:318:19-26: WARNING: Consider using %pe to print PTR_ERR()
 
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
- drivers/media/i2c/ov5693.c | 4 ++--
+ drivers/media/pci/intel/ipu3/ipu3-cio2.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/i2c/ov5693.c b/drivers/media/i2c/ov5693.c
-index d294477f9dd30704d2e43a0ed3e222aff3af365f..4cc796bbee9263c032384d8327961b5cee52b9e7 100644
---- a/drivers/media/i2c/ov5693.c
-+++ b/drivers/media/i2c/ov5693.c
-@@ -1292,8 +1292,8 @@ static int ov5693_probe(struct i2c_client *client)
- 	ov5693->xvclk = devm_v4l2_sensor_clk_get(&client->dev, "xvclk");
- 	if (IS_ERR(ov5693->xvclk))
- 		return dev_err_probe(&client->dev, PTR_ERR(ov5693->xvclk),
--				     "failed to get xvclk: %ld\n",
--				     PTR_ERR(ov5693->xvclk));
-+				     "failed to get xvclk: %pe\n",
-+				     ov5693->xvclk);
+diff --git a/drivers/media/pci/intel/ipu3/ipu3-cio2.c b/drivers/media/pci/intel/ipu3/ipu3-cio2.c
+index a87f105beb5e267fd450b8a36ef9b0e0ecafc598..986b9afd7cb5b6a07c796b4333f93d427a8c4fbe 100644
+--- a/drivers/media/pci/intel/ipu3/ipu3-cio2.c
++++ b/drivers/media/pci/intel/ipu3/ipu3-cio2.c
+@@ -314,8 +314,8 @@ static int cio2_csi2_calc_timing(struct cio2_device *cio2, struct cio2_queue *q,
  
- 	xvclk_rate = clk_get_rate(ov5693->xvclk);
- 	if (xvclk_rate != OV5693_XVCLK_FREQ)
+ 	src_pad = media_entity_remote_source_pad_unique(&q->subdev.entity);
+ 	if (IS_ERR(src_pad)) {
+-		dev_err(dev, "can't get source pad of %s (%ld)\n",
+-			q->subdev.name, PTR_ERR(src_pad));
++		dev_err(dev, "can't get source pad of %s (%pe)\n",
++			q->subdev.name, src_pad);
+ 		return PTR_ERR(src_pad);
+ 	}
+ 
 
 -- 
 2.51.0.760.g7b8bcc2412-goog
