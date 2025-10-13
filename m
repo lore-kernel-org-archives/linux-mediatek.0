@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06FBFCCA476
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Oct 2025 09:42:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CF15CCA476
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Oct 2025 09:47:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:To:
-	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=I8m6beCvxnJPquCD7h0XJsUUqveX57WbhrGe2a0Cw3I=; b=tHbImj4LzZTdjm3sMEgC8Y0/Gq
-	wEVBv8u5/Z2u7Vrr2isT/ZvZ2op5YO0pTTDG0f96fuSv6NhyhJIsz8p6kDGCCS6WryIPVkbeoOPwG
-	EVMEVDAi3ACD7W59tv/yA5Rjg/qYG2WmGMtKcXBW351y52lj0BdFKRFq2CjuBRccG/RIPY2LgBcYx
-	5w8Dn0CCH+3FARXDkBlnv9bNMRVbxSyUyjTE9j/s8M1DurT3+cTIBOcxNkgJ4qa3Wf5APjnnWNp5b
-	GnS/fbabEuPjorTTPnEBmzBIL9GIbCbcrkzWfJyPJvLUndJJVGQb9We3Ob86WfShL/Y6zEx89CItu
-	tIw+Q+Eg==;
+	bh=APtU01S/PWy2NIsB8tnCVtFoTCQ2EfX2HKt0Mi2/2z8=; b=h39eNmHpOD47iE96+YBRB/aWMs
+	7K94Os6wCpG8oMAAyG9ilA6tVJ4nWGDKlGsqBzwyBft1FzCAi5VRJZmB0ftLkSIm7PmEqrFDhTy08
+	Cf1S9n9wGPMHWnSubSbOk1euHfAUQ9tXfHWgjvmaloHKmkCrVFZkUoHqgWCiSu4X4PfsF+/X9Z23P
+	CgbBdcVERK4bK2Q41doqnz2J22zfc8L4RmNCeSbGE09ZhM8uHpf4w83rzzRO6qpFvhhhLL5jVPWpp
+	rK+b5W85uIvi0AeoaCc6gFDJgdePvSj8zm5kimBlwHuiMpPSkSGWn5SbEKjPGFgpRk6XkEOtfhdtb
+	AO/Eilbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8F4e-0000000CmGF-0rJi;
-	Mon, 13 Oct 2025 09:42:36 +0000
+	id 1v8F9L-0000000Cn0w-3sAX;
+	Mon, 13 Oct 2025 09:47:27 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8F4b-0000000CmEw-0grm;
-	Mon, 13 Oct 2025 09:42:34 +0000
+	id 1v8F9H-0000000Cmy7-45CJ;
+	Mon, 13 Oct 2025 09:47:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1760348550;
-	bh=214Dajmg0oakMhmrau+WfKp7HaFOxspiih+ll6xoZrc=;
+	s=mail; t=1760348842;
+	bh=yyzWwMTNAcACtaKwTd+Hy6q4Ei9iZX7sevim4Y9MBwQ=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=nKvUsihUlsIWIIjyXxJAOXoWsrzMF35QZuvwR07iQeSv69v52O6YB52TbWKkw2ZXt
-	 Ov4R5KZZZsKu45giPfjxhV22BWSHIApNOaC/oLTf45HPbGzwHYbW75NYgW07vqsdR/
-	 SYGWI0ikLX5dRgOGSccZFdqC7D6eoun2daBExvc0UtwonRcWITN2DNJGRQC+oGOazV
-	 Vs4AM+uvVyWIkkbWfZJjXLAxmXYVq3fyPsmTflP/R6PmtQO9KdiY+7zvgFt0S7gmbm
-	 dLO4TDou+ddabf5pn740qYlkdfItQrmcDGWXYxXJHdaOT1TUWvWStumBfOfNavm2Al
-	 QALo5F5dkMKnw==
+	b=QMtTVT32or9zRYbwMlw5rv+zn4LgwybdfZUUMR5Mq4w4ULIvbGqHh58Kh1A+1449T
+	 4NBk84QL3LzzZMy3aJoKoLNLO2AAlBwKgKZKRrZ0NKrtT0v+V4JRBWmwFALc1HWuPI
+	 yrXDSaa2vSUhTlIEGln7vUPtwe0qa+ok6Iidn/bf+Rqb7GlZf7TzKH+fl24mAaD5Ik
+	 OOVHwvhQgBV58RBOcmViOitrOYWCcFuuY67vmIcxPWBiEFXimiQQmjRwQG5nc5M/Tf
+	 hWWAkOlvEUIMkfmTl8lp0Twl1oxe1uShMgdSdMGshpB/QNDZ6gOfr52etu4ET69aME
+	 3G5iTa8sGT5Yg==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1BE1017E0523;
-	Mon, 13 Oct 2025 11:42:29 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9E40417E1292;
+	Mon, 13 Oct 2025 11:47:19 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-In-Reply-To: <20250930021656.1394942-1-mikhail.kshevetskiy@iopsys.eu>
-References: <20250930021656.1394942-1-mikhail.kshevetskiy@iopsys.eu>
-Subject: Re: [PATCH RESEND v4] arm64: dts: mediatek: mt7986-bpi-r3: Change
- fan PWM value for mid speed
-Message-Id: <176034854901.22371.15796783278122302723.b4-ty@collabora.com>
-Date: Mon, 13 Oct 2025 11:42:29 +0200
+To: Matthias Brugger <matthias.bgg@gmail.com>, 
+ Russell King <linux@armlinux.org.uk>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, 
+ Cristian Cozzolino <cristian_ci@protonmail.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+ phone-devel@vger.kernel.org
+In-Reply-To: <20250920-mt6582-v1-0-b887720f577d@protonmail.com>
+References: <20250920-mt6582-v1-0-b887720f577d@protonmail.com>
+Subject: Re: (subset) [PATCH 00/10] ARM: Add support for yarisxl mt6582
+ board
+Message-Id: <176034883956.23045.13247529000134209670.b4-ty@collabora.com>
+Date: Mon, 13 Oct 2025 11:47:19 +0200
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251013_024233_388738_88192158 
-X-CRM114-Status: UNSURE (   6.36  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251013_024724_158904_C3DDD959 
+X-CRM114-Status: GOOD (  10.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,21 +79,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 30 Sep 2025 05:16:56 +0300, Mikhail Kshevetskiy wrote:
-> Popular cheap PWM fans for this machine, like the ones coming in
-> heatsink+fan combos will not work properly at the currently defined
-> medium speed. Trying different pwm setting using a command
-> 
->   echo $value > /sys/devices/platform/pwm-fan/hwmon/hwmon1/pwm1
-> 
-> I found:
+On Sat, 20 Sep 2025 20:23:25 +0200, Cristian Cozzolino wrote:
+> This series adds support for Alcatel Pop C7 (OT-7041D) smartphone
+> board, named yarisxl, based on MT6582 SoC. It also includes some
+> preliminary patches. More in detail:
+> - patches 1 and 2 add support for mt6582 to platform code
+>   (verified by looking at generic mt6582 downstream source code)
+> - patches 3-6 do some maintenance work to mt6582.dtsi
+>   (I was unsure if squashing timer node patches into one)
+> - patches 7 and 8 add devicetree and dt-bindings support for yarisxl
 > 
 > [...]
 
-Applied to v6.18-next/dts64, thanks!
+Applied to v6.18-next/arm32, thanks!
 
-[1/1] arm64: dts: mediatek: mt7986-bpi-r3: Change fan PWM value for mid speed
-      commit: 8365a3e1fdc3e9a69114165877e0ca281ffdc8de
+[01/10] ARM: mediatek: add board_dt_compat entry for the MT6582 SoC
+        commit: a9ad357fb2104cc07a64d7e642f6c35b72b16405
+[02/10] ARM: mediatek: add MT6582 smp bring up code
+        commit: 7f637d718752f1b821f90170bf841c4d924b382b
 
 Cheers,
 Angelo
