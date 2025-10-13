@@ -4,76 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23547CCD18D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Oct 2025 14:15:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5784CCD192
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Oct 2025 14:15:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HQOTcbEIyF8Gidv4VnpqffbURmu3SD1oIPY/sSQVQc4=; b=Pdg6r658p7l5y1CvbPZyfTL9Ve
-	N2ebsUbk7eoIzzjouT5sVQWAjJRObSpyXcZ0fthlY7MJq1cp0czEzwxsPTmP017hfrzB6M5DfMioO
-	vjlBE8ByJPdyz+Nh2WDNGNKvJ32gR0pHkkgHyGVkJyBJthmZrojT5SO5gVO2Ow9vNOQ4qiY8sK4Vv
-	NbHWYYAK+meJKkzqIfpo6aOHfetlmG7XKrJg+gTd4j65yKaRpKwtF27IGnarUGgDsbKVlgZa++nLZ
-	YbHwVOgvjxUDCc2vfKz2sEC63w3tMDWvWUW3oC+ZH51CJoyUqkKZMLKqK6hwGUip3/ncUPC2LPL/s
-	BndWpgOQ==;
+	bh=9T8mO4GmxU6Sp5lObaHqxq0/smUXIq4FXIudPa6OeB0=; b=2Lq/rTlb8wNrEO5xTbvXKzgVH9
+	PUQ4xxlWXaHVqCnkra9Y51ONrqP0IB+tFEA9oN/yskz6c2OopLuQyO1rwlz5fENCUtMdNqyXiLQee
+	huzPRNyjwcrmxN55/2K0p8ixl4RTq2qc55yuu1CBLZ5zc/NB5W0xlk2leJtWAWBifug5Nrc53o9jU
+	7wARKbxw3ZMK5qNQAjbq561z066K8BlOzsTblTd3xio+KsDQJH7w0ez4DkWRs7wsPZqWwJwMONj7w
+	9PcdiZbHMyI870UOEUq/ASVuWL0ntlF1fzUvw/xRzgmvkBfHdd6nbufRqUF4uw7NLtpIBoQWVfJos
+	kQBx7tGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8JKR-0000000DL11-00mB;
-	Mon, 13 Oct 2025 14:15:11 +0000
-Received: from mail-lf1-f49.google.com ([209.85.167.49])
+	id 1v8JKS-0000000DL4k-3nCH;
+	Mon, 13 Oct 2025 14:15:12 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8JKC-0000000DKY8-2EhW
+	id 1v8JKG-0000000DKf9-20QJ
+	for linux-mediatek@bombadil.infradead.org;
+	Mon, 13 Oct 2025 14:15:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=9T8mO4GmxU6Sp5lObaHqxq0/smUXIq4FXIudPa6OeB0=; b=KRO8fh8Y1hIC+G2hUyKkzclOo7
+	UMCG5k3F92v24jHxh1EEhGqGkObrEf22KwLbFXKwVFukgeoOpasEt+NKoeui9yrN/GJWlAof7/EWo
+	dPHw3IHGSNulYVE66BwiSreLqtEb8nPK6Wlc+XHsXZMn79GsLiU38A7X4Vi0i3TnnTEoeQ94Xz82Y
+	S3lo/DAF3NjmvV164X5MvCUBHiGhb8bKsQC/axktHpBXg8MupxAKYg3165dA6sULyrCXDwKtlmFYW
+	9RqLhoQzfS33I9OkK8G0YJe5PC4AYZSQhPreCnxf4TXeQYuJW4IoMtABV7O3rykCf/LSiBcnOV2ca
+	SuuejJFg==;
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1v8JKB-00000004N1m-0t0k
 	for linux-mediatek@lists.infradead.org;
 	Mon, 13 Oct 2025 14:14:59 +0000
-Received: by mail-lf1-f49.google.com with SMTP id 2adb3069b0e04-57f0aa38aadso4965096e87.2
+Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-57b8fc6097fso1150050e87.1
         for <linux-mediatek@lists.infradead.org>; Mon, 13 Oct 2025 07:14:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1760364894; x=1760969694; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1760364893; x=1760969693; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=HQOTcbEIyF8Gidv4VnpqffbURmu3SD1oIPY/sSQVQc4=;
-        b=bx73R4crlZuvsK59FWpFiExhVaRQQJE9/5gNraNTdHnMofCNrLGcghw2nsjXTUCIZs
-         aq3FraqlqXoXyi4knlDVQm0uEDVmGXKUHa8/L/8irBfSofb0YOuqAeS63GvB6Bm0DkxE
-         4pZ1VFN/4WqCgGEruoU3oOd9AAMZsT2wDpkE4=
+        bh=9T8mO4GmxU6Sp5lObaHqxq0/smUXIq4FXIudPa6OeB0=;
+        b=e47GQCNzQGzMpsKjju9KuHYyKdXoaRy5QNo6vpVuoYND6/28WFvjZE+o3pJTyXJgHM
+         S9kCBIhYNNhZx+CT9aKWsVeIV4ohEEToLxUOSC0xz96BNNwU58/5fxQU51XMumcO44AF
+         neZLYoWhjgVK6HP5t3wmptSDt4eI7lsqK3TGQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1760364894; x=1760969694;
+        d=1e100.net; s=20230601; t=1760364893; x=1760969693;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=HQOTcbEIyF8Gidv4VnpqffbURmu3SD1oIPY/sSQVQc4=;
-        b=r0GK446ob8HxDwMwXQ52khDDFS65cyGYjPbcBQocWl/nSn3UWzlfAVc5qK5NDmX1FR
-         /XXUt7riCkvqOE2pvNTdFJzbq1qGez15+mJ2Vwshy5Voe//AcaUBRxNwzKN0j2mOfZs6
-         o76HNOAHIvyKwfpss0Q5WqUSNQuzh18cxFOqEd5P1hTElaYvF0DlDTcLpd/+GVA/TqJq
-         CZpWMoWL2tEIGFjCdQNL9uTAxfwrXeeBMClcZKgplT/IQDLkOuCogQciptLP+tcXfAxS
-         VRclC2bdIu3jJjZ7SHUdXRO6+cIHn7dRpygaGnE2wjaHAHltHEEqsDv0F/EouFD3Lp0P
-         pmZA==
-X-Forwarded-Encrypted: i=1; AJvYcCXS9AUxCz88uqpmJ9/772ovj5/PPkTWOr4sIytSzKqU5B2wSQB1tg7fLs75JE+q3hvKDgR0x8RT9OM2uB08cQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzLZX6QVJFtMBztlsFPUxS7ILnL1ReDw+6FX3a+N8Z718HdXEUm
-	lRI0gueC5HD0qmRWcm8/gidDTwLyu0oNo7kBMXF17uyzXDPONbHwv63p0qOaObDQfw==
-X-Gm-Gg: ASbGnct2qBOZoalRiVQeGyDAxVtyPsKHjWF/0B1/3cK1P6O5eMvSlwMlyyvRMDa3Q3V
-	WnjFtVKhuhFZ2JQwOQO3p/hYoG7GZYstVzrfEeB/jxb/x0jqIffsKvNDqoSpzsTgd8VBDN0xSVW
-	mumIBr/zMuJfkm34Qhmp9aGIfQl/Sj3EY4ytJCOCsz9cxkn9/VLf6e4BXmBYHfwizjNXZ62qu2V
-	FIzL1Wy0GwcdP3XmWT1Cxz27rnDqbC5oWEWXv638ulZaq9dCoKAEmdtOmqnUzdznn6LK/5hpJ79
-	ytdaPK30AZMS5ruCFvLUi9uEtJldSWg2coJ+ojS/QyZ2eVqKnSg+Kmx4gvWyq43DSSS7OfPYOzf
-	BKred1AuR83Isup9O3e5OaDkeLFA2loi13BVY7RJKOm1maUx3g2Katuhy6Jgy4NlB3yvmu8uLH+
-	wHYabVz13ZIq8cLXblwg==
-X-Google-Smtp-Source: AGHT+IGDBA6vFVbdaAIVk4TqwO+W9UovYsrjETSu90SPXIb8+mEsMg943qVguajtHcsDf6ytgGLF1Q==
-X-Received: by 2002:a05:6512:6c3:b0:57e:f60:2327 with SMTP id 2adb3069b0e04-5906dae8090mr6097318e87.49.1760364893949;
+        bh=9T8mO4GmxU6Sp5lObaHqxq0/smUXIq4FXIudPa6OeB0=;
+        b=XoM7pLqyfmaWSD82GeKATRR2k64ghfQg9dtD58ZpNF0jIt/bQkv5gKToUjXe7FYvM3
+         nyE65JUA77CJEgnV0J7GrnGUG2QEKaCAc/efKIplMypBgozDWTBLwS7PLiQjq9D7AeNe
+         LyEV5hJmaZJemxf7TH744BxVtMmmwxMozWu8IOgzrPWXzUwHMpm+l2ICFYkC7GC58ZEF
+         bldkC1+1tySJ9LIy9sJFSZIB7cDtUAVYDcErPLe/AhJqEKljQUObExagcA+SEjtOOR11
+         cYUK7BL92dbm8yOUh6LrdtZMg+I+CITOL+9A4McapDk7jPJPHpQoDYmGs7olp0KtXIhS
+         dxuw==
+X-Forwarded-Encrypted: i=1; AJvYcCV1Q9LErXnIYLj/GXdzlvQ+xaxcjsvIqYLmXDWUu9h0MOMgewb+NPfGKLa/psrH4Q/LxurjXxh8QaafioiPfg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyWR6uF44bPHyjpSCMJ+1BvGmJ6NDn1RLTkYYQ3dJzWFw3mJdES
+	mQFSNVJ+qUsu2nwJeuvuisYa3Mldl9Je2dD1QWbStKdiQvWOp0oIqwJqG12WIUL8gg==
+X-Gm-Gg: ASbGnctDl+OQYnWE82YlAnvOW+8QO6p7x9cnz2wloMeyQUc3Q8PUHvooHGDCC0q1sf/
+	tc+eULCDzXEEFlwJWfjHjHMVRJH7a9ON/YnJWRAwdChOoc3IgqxCAj4zpfhDFMqX6GiWYFpgb//
+	wNpvplqENwiqX4y5gOTYSvZaO9XaOPaERmRRrefpm6fikc2KY6tnAhRKKoyM/dC2duImGYcx4gq
+	X230jNG8gDBURrt35csxmRIzJlQc/l/U6MXyrnr8Dnm1rOc5A5/gXAPkBq38zKycPKyoMst5oyP
+	KLc0rYjgz7TJElZA40LoOKVPcOtKFjo9tfe2/x3nxA+Bk/vJhJ5HAAOuyACJ1LKRETukHTmJJ8Q
+	HcbnUdk9ZtFK7Yc/cCOcCZKxEV6BhVtVnk4ta4s53BOyFkLsSOLNeVc7fNHzN3whJx7tzIGS6Fk
+	YSWWZSp7WZ0Sb1ysLr+bcBL1zTjEaF
+X-Google-Smtp-Source: AGHT+IF29XnVuKewIk2Zn4qpOdHSO/Y/bSkdxJ/SAd2VXfC5cMU7PSQseV2CsRuBBvo11GHLWuTn2Q==
+X-Received: by 2002:a05:6512:3d14:b0:55f:4633:7b2 with SMTP id 2adb3069b0e04-5906dd73db3mr5724883e87.46.1760364893403;
         Mon, 13 Oct 2025 07:14:53 -0700 (PDT)
 Received: from ribalda.c.googlers.com (56.213.88.34.bc.googleusercontent.com. [34.88.213.56])
         by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-590881e4e58sm4165256e87.25.2025.10.13.07.14.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 13 Oct 2025 07:14:53 -0700 (PDT)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Mon, 13 Oct 2025 14:14:47 +0000
-Subject: [PATCH 07/32] media: i2c: ds90ub913: Use %pe format specifier
+Date: Mon, 13 Oct 2025 14:14:46 +0000
+Subject: [PATCH 06/32] media: ccs: Use %pe format specifier
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251013-ptr_err-v1-7-2c5efbd82952@chromium.org>
+Message-Id: <20251013-ptr_err-v1-6-2c5efbd82952@chromium.org>
 References: <20251013-ptr_err-v1-0-2c5efbd82952@chromium.org>
 In-Reply-To: <20251013-ptr_err-v1-0-2c5efbd82952@chromium.org>
 To: Linus Walleij <linus.walleij@linaro.org>, 
@@ -121,8 +136,8 @@ Cc: linux-input@vger.kernel.org, linux-kernel@vger.kernel.org,
  Ricardo Ribalda <ribalda@chromium.org>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251013_071456_596838_4DA79434 
-X-CRM114-Status: GOOD (  12.84  )
+X-CRM114-CacheID: sfid-20251013_151455_840963_E644CA9A 
+X-CRM114-Status: GOOD (  11.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -139,29 +154,43 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 The %pe format specifier is designed to print error pointers. It prints
 a symbolic error name (eg. -EINVAL) and it makes the code simpler by
-omitting PTR_ERR().
+omitting PTR_ERR()
 
 This patch fixes this cocci report:
-./i2c/ds90ub913.c:625:44-51: WARNING: Consider using %pe to print PTR_ERR()
+./i2c/ccs/ccs-core.c:3241:3-10: WARNING: Consider using %pe to print PTR_ERR()
+./i2c/ccs/ccs-core.c:3298:3-10: WARNING: Consider using %pe to print PTR_ERR()
 
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
- drivers/media/i2c/ds90ub913.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/media/i2c/ccs/ccs-core.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/media/i2c/ds90ub913.c b/drivers/media/i2c/ds90ub913.c
-index 73150061ea458937ae4ba7a937ea030b0d98bce3..e97e499b04e6c2700d7d433ccb4fdc57ff12b586 100644
---- a/drivers/media/i2c/ds90ub913.c
-+++ b/drivers/media/i2c/ds90ub913.c
-@@ -622,7 +622,7 @@ static int ub913_v4l2_notifier_register(struct ub913_data *priv)
- 	fwnode_handle_put(ep_fwnode);
- 
- 	if (IS_ERR(asd)) {
--		dev_err(dev, "Failed to add subdev: %ld", PTR_ERR(asd));
-+		dev_err(dev, "Failed to add subdev: %pe", asd);
- 		v4l2_async_nf_cleanup(&priv->notifier);
- 		return PTR_ERR(asd);
+diff --git a/drivers/media/i2c/ccs/ccs-core.c b/drivers/media/i2c/ccs/ccs-core.c
+index 1c889c878abd3aeb1b7a887cff29b5eb864ab057..f8523140784c7120eaf018ffa9e3b43ea12ef72f 100644
+--- a/drivers/media/i2c/ccs/ccs-core.c
++++ b/drivers/media/i2c/ccs/ccs-core.c
+@@ -3237,8 +3237,8 @@ static int ccs_probe(struct i2c_client *client)
+ 		dev_info(&client->dev, "no clock defined, continuing...\n");
+ 		sensor->ext_clk = NULL;
+ 	} else if (IS_ERR(sensor->ext_clk)) {
+-		dev_err(&client->dev, "could not get clock (%ld)\n",
+-			PTR_ERR(sensor->ext_clk));
++		dev_err(&client->dev, "could not get clock (%pe)\n",
++			sensor->ext_clk);
+ 		return -EPROBE_DEFER;
  	}
+ 
+@@ -3294,8 +3294,8 @@ static int ccs_probe(struct i2c_client *client)
+ 
+ 	sensor->regmap = devm_cci_regmap_init_i2c(client, 16);
+ 	if (IS_ERR(sensor->regmap)) {
+-		dev_err(&client->dev, "can't initialise CCI (%ld)\n",
+-			PTR_ERR(sensor->regmap));
++		dev_err(&client->dev, "can't initialise CCI (%pe)\n",
++			sensor->regmap);
+ 		return PTR_ERR(sensor->regmap);
+ 	}
+ 
 
 -- 
 2.51.0.760.g7b8bcc2412-goog
