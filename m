@@ -4,164 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD150CCD183
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Oct 2025 17:22:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B882CCD18D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Oct 2025 18:11:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iBFzFjM744pvcWKfxcWjcYGUSZzANLCdtx3flHgof18=; b=uapJ4SKgKCRjvyuVoVwaYHF/6F
-	BzmR+LB/DYgGEd4ooOQeIPDua4JY7tkq3RQNUb967AhMnU2OFaXClQJVqH1JC+PEuXl2XA0dDz+Bk
-	hobwleRfdF6QwF9LEMAPDLRRgH0YqTdH1fRN/2XSj2fVNnqBWm4esWzwhW/gBrw/r2JshNb8t6Hk3
-	Bnha3tG0XeFcI1C+rlNZIhQj9bZmfsJeKlThp915VfOAGY1oKu5UgzEo4I+j/WqlyNmIJ8tCC4fk9
-	9HRhsmZDbOpphgqaJunlEYC+PAXEMbyHify+dSd53yOjtyi/ty1lDaynPREVjP80/iob9fBF7Nc2o
-	mspPSdhg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2xkS9wqt6rMxoJ6WboptAtLN/bXSuc1NV3hZ+JyctS8=; b=NSD3f+IcALdO9e+JB0i8MtgHRQ
+	sscSyjqLJeY52FqUeGFVeb1TP2oMWWMZVFI4D8nZxkQ54gNn35PV3tHU2JgE/9Vcg0EcMpB0Tu8aV
+	FruAP5fUgu925Z/2YeGUhpiCdJBzGuc9rx5XpKtSMqVrT3bdQtoLAIxnG+c5wa+v7E6U+WbLR6bBP
+	sKwgdAxxmzgEI+G5hLt5u3vt09GTpRynchho2Ro6Vu/KN8oH+g5tsTKKCGYxqquYhrvc1AmT81nB+
+	sNSJbbMnmLu51Zyt3O7L4L3Ys1xBW91bRVlhge2UoxKRZhM0CVPlaQ+oTVu/nhU1GSkT0qFresiWR
+	FXVwG8vA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8MG4-0000000E1hT-2402;
-	Mon, 13 Oct 2025 17:22:52 +0000
-Received: from mail-northcentralusazlp170100001.outbound.protection.outlook.com ([2a01:111:f403:c105::1] helo=CH1PR05CU001.outbound.protection.outlook.com)
+	id 1v8N1P-0000000E7WN-2BnO;
+	Mon, 13 Oct 2025 18:11:47 +0000
+Received: from dispatch1-us1.ppe-hosted.com ([67.231.154.183])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8MG2-0000000E1g5-0Oyn;
-	Mon, 13 Oct 2025 17:22:51 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=RQbWXPMxF70GMbNGkKtmXEomexWZMakrAC01ozDNEvRmnp5m00HEOwVP6zHo0qyVrwECSftyR86slsB2t1xVECxuQdvTVwx4p7f3MQAIs5W+JvSw59jkaiTPTUGYg4oH04ARaVZfG+yEXo+J7Ph6AD7FRfRt5lRWANUrp1qdBIGKGAwm5jGqnqFkK+NIq0bsQIo8I4eF+WIVzp57LV04LKKeb+rlVA0IsCfo2hfWbuoEoYyeotV7qtiw15q3oSKnsRZGaChwwdvX+mnIIesruX3BITABiM5+KkgBOrD6mcwGdAE+loVey5aS610pBN74qUk4AOjcB+mT/jpY1O7Ifg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=iBFzFjM744pvcWKfxcWjcYGUSZzANLCdtx3flHgof18=;
- b=NnRLPJRp6d1GMRUODmZE8Ilh1wOVO8rRpniAWJKNAppKuwze0PZS7jb7a8wIII858b5s9uM8pvfws3wj3/okW6asOaCBWcWR4A0D9HeHXwtLEU6xS+eX+qoIIRocGQOSOLBUtJbAP3zWJdGaKbjYg0XvqocL1YztJt40UwPno0ThwQ8eYQy91N1eZTms1sFXVheIy18EMLdq/5kDjMPC8ds/iGB3MDnMzBdxwVXnqkp62SGiKcIx2268C4OxQIf5DbzxgSE0h18wxKX2VEpbjqMYcLEvPHnGzLPG+b5UFCBxZrZCJanaLUYxNvWHGmxSXL4j38U+WEV9EzZ6bj521g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.161) smtp.rcpttodomain=linux.ibm.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=iBFzFjM744pvcWKfxcWjcYGUSZzANLCdtx3flHgof18=;
- b=C2apNRhKsmlm4qx8wdkksIPbzZMVvf+2XYn0ktbJDOzXy2f/hOSUM90QQThMqX0UQg4F+LlV7ijWOBX2Oi99e7jf4NNBZIyn/w9N4PhhrMuEM8NEG/27YVglLYpFMu5SVmgN/H1Y2JIhqHCP+9wn3nNiI7b7hdlp1lIz8ovLziaasSyLVSWtrAdAjdW6S+u87ETGglPpke7yXWxmMcGTynf+4es4vmBl4Al9z853NY62zt4U+w6zu7froJOCNLfr6t2rLNeelysE/H8y1eu8m2c8f0H+ECGz3pI6GSSK4TteYpw1ybmGt8GE/Hkec6exMl7JetUY+mDzNLt5CtJKDQ==
-Received: from MW4PR04CA0210.namprd04.prod.outlook.com (2603:10b6:303:86::35)
- by DM4PR12MB6255.namprd12.prod.outlook.com (2603:10b6:8:a4::18) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9203.13; Mon, 13 Oct
- 2025 17:22:37 +0000
-Received: from MWH0EPF000A672F.namprd04.prod.outlook.com
- (2603:10b6:303:86:cafe::98) by MW4PR04CA0210.outlook.office365.com
- (2603:10b6:303:86::35) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9203.13 via Frontend Transport; Mon,
- 13 Oct 2025 17:22:37 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.161) by
- MWH0EPF000A672F.mail.protection.outlook.com (10.167.249.21) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9228.7 via Frontend Transport; Mon, 13 Oct 2025 17:22:37 +0000
-Received: from rnnvmail202.nvidia.com (10.129.68.7) by mail.nvidia.com
- (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Mon, 13 Oct
- 2025 10:22:26 -0700
-Received: from rnnvmail203.nvidia.com (10.129.68.9) by rnnvmail202.nvidia.com
- (10.129.68.7) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Mon, 13 Oct
- 2025 10:22:26 -0700
-Received: from Asurada-Nvidia (10.127.8.12) by mail.nvidia.com (10.129.68.9)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20 via Frontend
- Transport; Mon, 13 Oct 2025 10:22:23 -0700
-Date: Mon, 13 Oct 2025 10:22:22 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Niklas Schnelle <schnelle@linux.ibm.com>
-CC: <joro@8bytes.org>, <jgg@nvidia.com>, <kevin.tian@intel.com>,
-	<suravee.suthikulpanit@amd.com>, <will@kernel.org>, <robin.murphy@arm.com>,
-	<sven@kernel.org>, <j@jannau.net>, <jean-philippe@linaro.org>,
-	<robin.clark@oss.qualcomm.com>, <dwmw2@infradead.org>,
-	<baolu.lu@linux.intel.com>, <yong.wu@mediatek.com>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <tjeznach@rivosinc.com>,
-	<pjw@kernel.org>, <palmer@dabbelt.com>, <aou@eecs.berkeley.edu>,
-	<heiko@sntech.de>, <mjrosato@linux.ibm.com>, <wens@csie.org>,
-	<jernej.skrabec@gmail.com>, <samuel@sholland.org>,
-	<thierry.reding@gmail.com>, <jonathanh@nvidia.com>, <iommu@lists.linux.dev>,
-	<linux-kernel@vger.kernel.org>, <asahi@lists.linux.dev>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-riscv@lists.infradead.org>,
-	<linux-rockchip@lists.infradead.org>, <linux-s390@vger.kernel.org>,
-	<linux-sunxi@lists.linux.dev>, <linux-tegra@vger.kernel.org>,
-	<virtualization@lists.linux.dev>, <patches@lists.linux.dev>
-Subject: Re: [PATCH v1 02/20] iommu: Introduce a test_dev domain op and an
- internal helper
-Message-ID: <aO01TkkA7ZLDgqXg@Asurada-Nvidia>
-References: <cover.1760312725.git.nicolinc@nvidia.com>
- <32ce256a2ece5d63e99d5858f953586859818ffc.1760312725.git.nicolinc@nvidia.com>
- <5165448792268e184e508a9c76fa0ce382a4a389.camel@linux.ibm.com>
+	id 1v8N1N-0000000E7Vc-2RzZ
+	for linux-mediatek@lists.infradead.org;
+	Mon, 13 Oct 2025 18:11:46 +0000
+X-Virus-Scanned: Proofpoint Essentials engine
+Received: from mail3.candelatech.com (mail.candelatech.com [208.74.158.173])
+	by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id 3B83C2C00A2;
+	Mon, 13 Oct 2025 18:11:41 +0000 (UTC)
+Received: from [192.168.100.159] (firewall.candelatech.com [50.251.239.81])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by mail3.candelatech.com (Postfix) with ESMTPSA id B5F6213C2B0;
+	Mon, 13 Oct 2025 11:11:38 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com B5F6213C2B0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=candelatech.com;
+	s=default; t=1760379098;
+	bh=rcxIt2RQI0BgZtE3ekGXC9YLRzn4DsngXvvFTtKNsBs=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=fPEEYJ4NZVwND8uh+UdUs8ZS4psQw5dIQX5OkY4yz1vI6RhqlJ6qhNwWlnDnoPniu
+	 RZaMefmYk6/N1O/Xmwlnb5Nhu6wiF8LOvya6M5Vi5GibZBRlc+HgSrV+QNkPjulq3Z
+	 9O8558y3vynWFJk1Q9ex9IU0ShiF3GTI1TASTtlE=
+Message-ID: <f2c4c835-bc90-c4d1-b1e0-f85b8a945ee9@candelatech.com>
+Date: Mon, 13 Oct 2025 11:11:38 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Disposition: inline
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [report] wifi: mt76: mt7996: fix FCS error flag check in RX
+ descriptor
+Content-Language: en-US
+To: Peter Chiu <chui-hao.chiu@mediatek.com>,
+ ALOK TIWARI <alok.a.tiwari@oracle.com>, Bo.Jiao@mediatek.com,
+ howard-yh.hsu@mediatek.com, meichia.chiu@mediatek.com,
+ Money.Wang@mediatek.com, StanleyYP.Wang@mediatek.com,
+ ryder.lee@mediatek.com, shayne.chen@mediatek.com,
+ linux-mediatek@lists.infradead.org, =?UTF-8?B?54+K6Yi6IOiUoQ==?=
+ <Evelyn.Tsai@mediatek.com>
+References: <ba082ece-a6a6-4287-9cb9-b216b865b8f4@oracle.com>
+ <96f5ff922d22d66ad271a37f2babd60bd2cfb7dc.camel@mediatek.com>
+From: Ben Greear <greearb@candelatech.com>
+Organization: Candela Technologies
+In-Reply-To: <96f5ff922d22d66ad271a37f2babd60bd2cfb7dc.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <5165448792268e184e508a9c76fa0ce382a4a389.camel@linux.ibm.com>
-X-NV-OnPremToCloud: ExternallySecured
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MWH0EPF000A672F:EE_|DM4PR12MB6255:EE_
-X-MS-Office365-Filtering-Correlation-Id: 5910ceb6-b4c9-41ce-87e1-08de0a7d1b0b
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|82310400026|1800799024|376014|7416014|36860700013;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?WjZ4ZlRtT3hzakljbjVxWDlNZGtUTFVTVmtKWkdiVEtUcTJwZ2d2dGpTejIw?=
- =?utf-8?B?QWZ5UlJyZlNwNXNDT2dzUDVIZ0tXY0RKdkZielEwU1pnenFtTnZodWNxcHJ6?=
- =?utf-8?B?WmtMNTYvRzNNWWNzR1pKQm9aQjFmSVlTVXd2K1Eza0NMcjcrenFxLy8xTkky?=
- =?utf-8?B?SC94TzZ3UytPZXVCVVlIa3FXcWdOM0Z5VW1wQThaWTlqVzFVS2E3RjBjR1U1?=
- =?utf-8?B?aWV1YmdMT2RYWGQrZ2NZeXdONFdncldyUXJWWXNtU2Z5RmZzNTVpaDViN3Nz?=
- =?utf-8?B?ZUZ5S041YzAvMmRidGZpbGo0SXUwSlRxSytHR0hGN0ZqTERqbzZmOWNyQnFk?=
- =?utf-8?B?YitMUldWa1A1TTZVM2VWMjNBTzJ6UXhSN1hyRDNZZnRzcFd4SDdldWF6WHdX?=
- =?utf-8?B?K3pTY1NENk5KMEtXMG0zdmRQaG1PUUpPRm5XWGFYUmFwSGY3YkRiNWw2bEhN?=
- =?utf-8?B?RnB5ejFpWFVGbWg0STRrQ203T2U5TURvaTRuM1k3V29HYW5EM2xlL2srLzlD?=
- =?utf-8?B?dWkyN2J0WThKSFV1Y1dHQlhLNk05dnFYQ3VFWUFuRmVVUGdTUFU5RmF1SUhj?=
- =?utf-8?B?ZHJrL3RoeEZCSkU1eW9aRkxkZU82YmdnQ1AwMU5MdlhEQWRLeE5sOVdPaXdS?=
- =?utf-8?B?azBEcGNkUU9XQ0tVcGpMcGlnNWRqRVl3RksraUhwbittYmYrMkFrVjQ4cEx6?=
- =?utf-8?B?WSsrSkhwcTBCQkpYMTNWWGwwQkRCejBtalFoaThWK3ZwQlM0VHpoR05CQ0J2?=
- =?utf-8?B?Snl4cTRtS2FGaCt5UDFZYXBjN0gza2d5YS9INFB2L1I0TG0wSUVnMXYvOW12?=
- =?utf-8?B?R3ZENzluVWpQU1NDZEtzSkFoVFVNVDlITjc1OTlRNEliTGU0S2V2NTQ3bVhI?=
- =?utf-8?B?eFhpRHJLVm1qUHZoZitEL25aWlNhOURWbFVsOElPRDRWalY1aTZzb1pIdk11?=
- =?utf-8?B?M3BxYVhkdVJHN016L2tHeGhOdDlZdUlCWjBheDV2TFNNZ0Faa1A3V2UrOXlM?=
- =?utf-8?B?aUljKzFGVHVCcld5ZWhkdlhIby9sT0d6VjBvQVFVZ2w4S2VNUG5zaGhlRTM4?=
- =?utf-8?B?cG5xVFVMN3N5elBtV2w5N3NDTVhxQVNBLzU4Y3lDNkhWMlB4eTZwSzBlS3dW?=
- =?utf-8?B?UlNFTWJuQndhTlZ1Q0VYOWJLcDZBQms3M29GdmRNRVBUUE0vbVFJNmQ3VEpw?=
- =?utf-8?B?dUIyb3lCUU4zVDZMSWREZVN3WjR3UXpTZFBEVGtGRUFUWFM5UkV2Nk4yemow?=
- =?utf-8?B?MEV6WVpkTVg5NXgvUDdiRnpOR1BKNkVtWGxuNGNoTEVXTlp6MW92bGJZZ1Uv?=
- =?utf-8?B?UThham04ZFNWdzV5bWlJVDlLN1hwMXpybzQ3MG1IUjVNcHZ3RW9GalBmMkZ5?=
- =?utf-8?B?QzkxVitwSnNoL01neFh1QktYZGVVdno2TW95K0Rvd1dIRGJTTGx2MGpCa2hx?=
- =?utf-8?B?RDd1cmFlU3BieHFQQUpEQS9iNGlGQ3h2Nk1kcXJEaG1mVEJCZjhhb3RJU3Iz?=
- =?utf-8?B?M01NUU5zS2Rqc0J4dm9vT1NDT3NkL1F2aEJtZWRac1pKWVAwTE5qOEQ4MzA2?=
- =?utf-8?B?VnlyNS9lSzRicDRhN0dSZGNXV3Q0eFpRSzNxNkFsMFl1c0hycDFWTURDM1pO?=
- =?utf-8?B?eGV1MG9HVCtzZCtIaVNROFQ5OHFHQlFINHVTNHhNZTlDb0ZFUlIxTWZaR0s0?=
- =?utf-8?B?M05mTUJFSUk0cW4yV08zRWZjSFhhK2tUY3NXWXJLeU5LbE1NSldPK2Jwcmhh?=
- =?utf-8?B?d09rZjcrM1hGWjRCL3c2dlZ5a1ZvRXZPUUFZNlNoU0wyd0pnc2xucmtnQU96?=
- =?utf-8?B?dWUxdFU2RFkwdWx4Z0pHUXhZb0pXOFhvM2FvcWc1cGRFYnNpTWpJTGJjK3Yw?=
- =?utf-8?B?c3JwNFRialRaTVc1QnRCaVBCenhXUUtPV1ZxeXJBNWtBYWJtMzJFcHF5WmNZ?=
- =?utf-8?B?ZnJmSisxdWxZS2I0Z2tRL1JYK2VDMjFXM1FFMFc4TW9IYWlsb0ZXL0FBSTY0?=
- =?utf-8?B?YllmaTcyQk1LZlRhYXJwUFFtVDQzdUcxcDllTVJJVDNIWThwcnNPSGVuWTIz?=
- =?utf-8?B?WlM2Y0tDVDRvNGF3T2lMdmZnRk50UE9TeEhpZzlHRXIrK1pNQUNjSVJ5c0to?=
- =?utf-8?Q?6Uzk=3D?=
-X-Forefront-Antispam-Report: CIP:216.228.117.161;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc6edge2.nvidia.com;CAT:NONE;SFS:(13230040)(82310400026)(1800799024)(376014)(7416014)(36860700013);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Oct 2025 17:22:37.3033
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5910ceb6-b4c9-41ce-87e1-08de0a7d1b0b
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.117.161];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: MWH0EPF000A672F.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB6255
+X-MDID: 1760379102-rD26PMJf0pCZ
+X-PPE-STACK: {"stack":"us5"}
+X-MDID-O: us5;at1;1760379102;rD26PMJf0pCZ;<greearb@candelatech.com>;2bc1667803e43859c13b14ba9db8f4db
+X-PPE-TRUSTED: V=1;DIR=OUT;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251013_102250_154843_1C87A3A3 
-X-CRM114-Status: GOOD (  24.47  )
+X-CRM114-CacheID: sfid-20251013_111145_703171_E901AEE8 
+X-CRM114-Status: GOOD (  27.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -176,74 +87,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Niklas,
+Hello Peter,
 
-On Mon, Oct 13, 2025 at 11:53:55AM +0200, Niklas Schnelle wrote:
-> On Sun, 2025-10-12 at 17:04 -0700, Nicolin Chen wrote:
-> > Add a new test_dev domain op for driver to test the compatibility between
-> > a domain and a device at the driver level, before calling into the actual
-> > attachment/replacement of a domain. Support pasid for set_dev_pasid call.
-> > 
-> > Move existing core-level compatibility tests to a helper function. Invoke
-> > it prior to:
-> >  * __iommu_attach_device() or its wrapper __iommu_device_set_domain()
-> >  * __iommu_set_group_pasid()
+To help understand the severity of this problem, can you let us know when
+the incorrect bit is set?  In other words, would looking at the wrong bit
+erroneously cause good frames to be dropped, or was the bit always zero and
+it just allowed bad frames to be accepted?
+
+Thanks,
+Ben
+
+On 10/12/25 20:19, Peter Chiu wrote:
+> On Sun, 2025-10-12 at 22:02 +0530, ALOK TIWARI wrote:
 > 
-> Should this list also include iommu_deferred_attach()? The code does
-> include it.
-
-iommu_deferred_attach() invokes __iommu_attach_device(), so it is
-already included in the list :)
-
-> >  /**
-> >   * struct iommu_domain_ops - domain specific operations
-> > - * @attach_dev: attach an iommu domain to a device
-> > + * @test_dev: Test compatibility prior to an @attach_dev or @set_dev_pasid call.
-> > + *            A driver-level callback of this op should do a thorough sanity, to
+> Hi Alok,
 > 
-> You're missing the word "check" above.
-
-Ack.
-
-> > + *            make sure a device is compatible with the domain. So the following
-> > + *            @attach_dev and @set_dev_pasid functions would likely succeed with
-> > + *            only one exception due to a temporary failure like out of memory.
+> Thanks for your mail.
+> Your understanding is correct.
+> There is a typo in mt7996.
 > 
-> Nit: "… only one exception …" / "… like out of memory …" this sounds a
-> bit odd to me because on the one hand it's one exception but then also
-> a group (temporary failures).
+> Thanks,
+> Peter Chiu
 > 
-> Maybe better:
-> "… would likely succeed with only the exception of temporary failures
-> like out of memory."?
-
-Sure. I can do that. Fixing both parts, it would be:
-
- * @test_dev: Test compatibility prior to an @attach_dev or @set_dev_pasid call.
- *            A driver callback of this op should do a thorough sanity check, to
- *            make sure a device is compatible with the domain, so the following
- *            @attach_dev and @set_dev_pasid functions would likely succeed with
- *            only the exception of temporary failures like out of memory.
-
-> --- snip ---
-> > @@ -3615,6 +3657,11 @@ int iommu_replace_device_pasid(struct iommu_domain *domain,
-> >  	ret = 0;
-> >  
-> >  	if (curr_domain != domain) {
-> > +		ret = __iommu_domain_test_device(domain, dev, pasid,
-> > +						 curr_domain);
-> > +		if (ret)
-> > +			goto out_unlock;
-> > +
-> >  		ret = __iommu_set_group_pasid(domain, group,
-> >  					      pasid, curr_domain);
-> >  		if (ret)
+>> 
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
+>> 
+>> 
+>> Hi,
+>> 
+>> While looking through the FCS error handling in the mt76 drivers,
+>> I noticed that mt7996 uses rxd1 to check the MT_RXD3_NORMAL_FCS_ERR
+>> bit,
+>> whereas other Connac3-based drivers (such as mt7925) use rxd3.
+>> 
+>> According to the definitions, MT_RXD3_NORMAL_FCS_ERR is located in
+>> the
+>> fourth
+>> RX descriptor word (rxd3), so I prepared a small patch to switch the
+>> check from
+>> rxd1 to rxd3 for consistency and correctness.
+>> 
+>> Before sending it formally, I wanted to confirm whether this
+>> understanding is correct.
+>> is mt7996 indeed supposed to use rxd3 for this flag, like mt7925?
+>> 
+>> Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-
+>> Fi
+>> 7 (802.11be) devices")
+>> 
+>> Thanks,
+>> Alok
+>> 
+>> ---
+>>   drivers/net/wireless/mediatek/mt76/mt7996/mac.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>> 
+>> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+>> b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+>> index 9501def3e0e3..59744e5593b6 100644
+>> --- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+>> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+>> @@ -527,7 +527,7 @@ mt7996_mac_fill_rx(struct mt7996_dev *dev, enum
+>> mt76_rxq_id q,
+>>              !(csum_status & (BIT(0) | BIT(2) | BIT(3))))
+>>                  skb->ip_summed = CHECKSUM_UNNECESSARY;
+>> 
+>> -       if (rxd1 & MT_RXD3_NORMAL_FCS_ERR)
+>> +       if (rxd3 & MT_RXD3_NORMAL_FCS_ERR)
+>>                  status->flag |= RX_FLAG_FAILED_FCS_CRC;
+>> 
+>>          if (rxd1 & MT_RXD1_NORMAL_TKIP_MIC_ERR)
+>> --
+>> 2.50.1
 > 
-> Apart from the comment and commit description nits mentioned above this
-> looks good to me.
+> ************* MEDIATEK Confidentiality Notice
+>   ********************
+> The information contained in this e-mail message (including any
+> attachments) may be confidential, proprietary, privileged, or otherwise
+> exempt from disclosure under applicable laws. It is intended to be
+> conveyed only to the designated recipient(s). Any use, dissemination,
+> distribution, printing, retaining or copying of this e-mail (including its
+> attachments) by unintended recipient(s) is strictly prohibited and may
+> be unlawful. If you are not an intended recipient of this e-mail, or believe
+>   
+> that you have received this e-mail in error, please notify the sender
+> immediately (by replying to this e-mail), delete any and all copies of
+> this e-mail (including any attachments) from your system, and do not
+> disclose the content of this e-mail to any other person. Thank you!
 > 
-> Reviewed-by: Niklas Schnelle <schnelle@linux.ibm.com>
 
-Thanks for the review!
-Nicolin
+-- 
+Ben Greear <greearb@candelatech.com>
+Candela Technologies Inc  http://www.candelatech.com
+
+
 
