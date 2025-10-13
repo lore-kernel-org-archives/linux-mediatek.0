@@ -4,91 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBACECCD190
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Oct 2025 14:15:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B13EBCCD18D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Oct 2025 14:15:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MPyzKdSQgEFTOs6vrnV72MjIpSFJDGoFOT83Au3htUM=; b=Rv3i9Gq8sO3Fe7w+bgvUYPzpMB
-	Hk5NBWQqtxK5wMF9t4u8Phvxedmu4nLEI4+ppqZZSOVkC265aJxGlBFYtO4CmTO12XFvFOLwaoImI
-	gIM47n/B5ubq/AByNJwaYK2WOUeEdWlcR9vlxeaYS/UMTj2o412ZA7Hnh4daSF2tbvOsjVgehj/Re
-	XjdXjSuI+ZcVnMXDVM9uY1S+z/2Oim4isIRVKlL+oMBxaqBDyBTc36c7cTUhPKZYGLShknqNAIMPM
-	rt+ZzvmxJVXxemvEafIDjJZkppjzpI2gIPJpx0Zov9msGyq4afC4b7HXBL8+BGowXs/qfeQijnLCh
-	OEA2QM0Q==;
+	bh=LGG/+lvAfLoFYTFsHBbdKee0g975J4ynYIjn3miRvz8=; b=zFqmTZDPy4bT3Bn268MELGw+jB
+	hJkGIDjgLpmBrshetmUquH8Xwm5rdOYcacAePrxXiiGuWntWtWTmdz+GkLPiDR77JjCvIFd+jq0Zm
+	VH0R/wV/iWMU5Zn9wx/U9UEMn+CJxivhp0A/4iLdeSj1T+ABkfaHpIoxUJRkVajhS71BfQFVXS0L2
+	hmbbpGQwYIk2O5vXcJrb+7CB7Fkxbl9OKl6TzRIf9aSD4dkG0aBitDqpjajn8S5kbOM6pcKJN4lEU
+	XgxxRu/VPan+f4ONVizrmGhVQ7wVXvRIFZxaeE2AErJr3ZrQnnYo730Bd79b/Ym16iTFFIgtk3Q+U
+	/tHQUHsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8JL0-0000000DM6N-46HQ;
-	Mon, 13 Oct 2025 14:15:46 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1v8JL1-0000000DM77-16El;
+	Mon, 13 Oct 2025 14:15:47 +0000
+Received: from mail-lf1-f48.google.com ([209.85.167.48])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8JKR-0000000DL12-43cY
-	for linux-mediatek@bombadil.infradead.org;
-	Mon, 13 Oct 2025 14:15:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:Message-Id
-	:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender
-	:Reply-To:Content-ID:Content-Description;
-	bh=MPyzKdSQgEFTOs6vrnV72MjIpSFJDGoFOT83Au3htUM=; b=sDS7BaGuD0Eu7n+HhYAcfEFahh
-	ZwpwTzGSBCFhCgL2PRgPYoctf3tJmckJj34EM9jHbZWJsz5UV4U8I+YZp17c6nxFpooXbus9YKVXJ
-	SjriKxiKuMB33mlRRVLjt0ASY/xd2m0+GjhN7qXrIo+vTC5pl4cfiAphmaHnvxWKoYGWYqN5HlI2m
-	SrTL2AdGQ3EeHY4pgYuOK9ECZiK4GPZMrjm5CXysEL+NLWAS2rZxEn7PhEuHz15Vs6eYEs9nOcRYb
-	HucIkLGLH+rM5gvtIm0fVhErfI3rEiI5JbqoR7uxFgjB0+wMoy9spyyqi2v+ZCewbJ3gjzw9BDgKI
-	3UBk9raA==;
-Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
-	by casper.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8JKN-00000007W5x-0GTs
+	id 1v8JKR-0000000DKz4-0MT5
 	for linux-mediatek@lists.infradead.org;
-	Mon, 13 Oct 2025 14:15:10 +0000
-Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-57a59124323so4619855e87.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 13 Oct 2025 07:15:07 -0700 (PDT)
+	Mon, 13 Oct 2025 14:15:13 +0000
+Received: by mail-lf1-f48.google.com with SMTP id 2adb3069b0e04-57a292a3a4bso5390578e87.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 13 Oct 2025 07:15:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1760364905; x=1760969705; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1760364908; x=1760969708; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=MPyzKdSQgEFTOs6vrnV72MjIpSFJDGoFOT83Au3htUM=;
-        b=arVJPm+v8vPxAOoU4jNSMpceJwIcZR2yAnqUSBw2bpU2s+DxnXnDniNga6FDYm7Jrt
-         NGnvFrnFYwlK26kq/wKAiZ44UvIyhdSNONFwm0YVkfqDm+GfmCTKbmwpvlZRCsH9J3Mx
-         NshT3/YinoSahaK1G9X8djVipUIUkZXRXmy9U=
+        bh=LGG/+lvAfLoFYTFsHBbdKee0g975J4ynYIjn3miRvz8=;
+        b=hnHlv6Ca2lVjBc28KpZT2/7MBeMfBu7FGl0/r4xee1bqgV7lsCtpKWDwCQRnFxKlCx
+         Yf/1S1pof1WGbwnBWlpIPV+XkFM4cqiJgwli2lj1PGmWXFjPBEWyFY5qjJ135dtj6h9B
+         a3NABlLu8AnbfJeAs5SsYa/uUnAv9SrV4nyQY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1760364905; x=1760969705;
+        d=1e100.net; s=20230601; t=1760364908; x=1760969708;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=MPyzKdSQgEFTOs6vrnV72MjIpSFJDGoFOT83Au3htUM=;
-        b=gnV0wWsVDbSIAywEgp232l/54Fs5F9LD2WOkVe9y+EJzPlVZhMVMwHbftH2JA5MIX/
-         Uxg1A6JMudRAZeOFYU6zHPa58QWD8YxkMem9byP+Q7Y+75n5JNPqWxz7XS6sJMICLWkR
-         8HXbuwpCnGuE5i9E8KeV3Wz8wAw9Y7LjaJnE9k592BUg6w6FQVBX8cXifrBuClSrJAo5
-         AP5e6nDEIkL70xSWv7xJGqFsHj+fNm1PQfYKGyTKLZu1nrdUU7PQUUQa6ao+9uDHmNpP
-         4jsUjgmlL1mlhmAUeTJy8ngDRaK8dlpMv8WzXZ9M6XGFJgCk2DvymuKKrGonR0TrKP0x
-         iLmg==
-X-Forwarded-Encrypted: i=1; AJvYcCVFgXo1DKnY7AlXRRZyfQA40SEWoSiGaxs/FKgmUPp8qTVNuKUg579Az85eFK4aazZki3o1gAQ0XBuT3G7aPQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxsGDn7U4DMbqaOoUYa22hDQcBkF2kHHh3rlC2F4b7Ujk/y50Fa
-	hKUFG6L81tpAfws6wbJ9P7X9XJAvcY8SC4S6SmkRExa8xQFcPN+pVa/OYaIRQ05c4Q==
-X-Gm-Gg: ASbGncszqNBwD8aYDoVqLNWaeNqVh+yixtonZXuJ00JLBTaHA9R1bn+7t4K2ve+bye5
-	vbHxSW7c/35IxuiHv+n73zsV5gokvhZ80EITZuHumBfALJ7OM4NvbnxAF5P88PijAYiojdepS0W
-	aY1qS0RkcGQ03+KrsxhB0p4osMkgboNylgWkgvIj98jOMIrzZA7HncioGinpvh9fP1soIdSVohA
-	kW8KqkbimRupOhfh76nqCGPMb5waY05Wd4kXW/p2ARq2g5+Yv8hIQZfCl54FjxOhKXIpcJ7b3RC
-	6COZZlhnTnAlWQYkGNuAMbkIMM3jYFn70tGEuulEvFZ1svmf2neVQGqx6UKT1jtFL6qNPxWkK0T
-	Q9bWDNRLuT/w6HDnLsHLicUmZ3cqvalgwvc7uCW9BBbFUm99rAlLbeDWP0RR6ZbR9fUq/9n20mG
-	yx159qb47Gtm4Vm5FbVSUm7wxxjFxs
-X-Google-Smtp-Source: AGHT+IHCybNyNMb0drsyz0aREmcwI4Uni6luvsP458rJiLZIzoW/QcUDGoAA5wmoQMp1unUYu7EgCQ==
-X-Received: by 2002:a05:6512:2c06:b0:58a:92cc:581d with SMTP id 2adb3069b0e04-5906dafd171mr5060480e87.50.1760364904884;
-        Mon, 13 Oct 2025 07:15:04 -0700 (PDT)
+        bh=LGG/+lvAfLoFYTFsHBbdKee0g975J4ynYIjn3miRvz8=;
+        b=qVV6lyLfndCo7pC/hO9VUfW7DxglYhVWQdhaJsnykvcPGcjNx7QgRyDNZzmbhJogaU
+         o+HSdiwpEJan1+bN/ozXe3TJaZ9URo8LxrNitxkbQ98atdkZOWgTjbH+yjRVHSfknasK
+         Q6gWSYRuez0yY4l8g0RSZcvQjOV/K/fuom+fXwZ8LiATwrgsrucXIx3s/p2dvYbJPLlM
+         6XxbrrkhbbakORTahrSWCB+/8dg1EZOAE6TyQxn0zMSppgZEDQ3kw5ENNDTURoT1aVsW
+         HUkM9e5tWJ8LyfIBr3YGS4wc319IFWjxYyMDJeS5t9/DsKC69vu1zI0AEPHn7qTaagMI
+         9g+Q==
+X-Forwarded-Encrypted: i=1; AJvYcCUMytj1H6Hi7Jz8ode+xm/BYXU0j7mWVEo/9IynmNQe0OHgyqdMzcxTi2vXyCQv0wxLi1htYP8pZdJfeSNiMA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyPEUvNGRq4wmBYWeem8lOXYdotqddBDia/ksY9rARLYLpSoe0i
+	E8W1+Mgu5/LuoCFGJV5P8BOeYIWeK2EZaGpLn183A38uchW6Npk0b41RWMiSbEVPNg==
+X-Gm-Gg: ASbGncuq3HxMlMeJmm7l8TeI3SJDECT4CviORh2l6vrjiJqDQMUWkJ3OaadLxBhBbpW
+	HQU3PIQqlUwyZSX/mVe8fCI/kMNkZx/HHH8wshRgJhqVzHRFGU9Uu/HrWATIq1imkWSQBoOB5ID
+	bBZw7eQTiqleLuNPdxCP+hki3jypIWw0JMZGANoXWYV2o8qKqQQBqkvOC/6IgCPbyjHggjJVvf0
+	vvWc/AVZ6YQuBgjNwSYN/MSnBmb3QtYO2ZzFlGv4BHowyiHAaykVtjwy03EZeGeqHugwBzBesXc
+	SFbMGmvNnPGDoFPbqSBRM8cg6F8p9Zpadi82WUGTkFYfH3T+VKF6InLmJ87W65KQlXBI0lynQ6J
+	udqRSk6K1yoPlooCRobCBOoAgd8UFDnvHcVrWtPzOKXX870vDTyWJolBLFqUquN/HWFvjR0Muwa
+	zbq7ufzgLRpBZzpBhQ3kiNHAlMzi5JYHa8v/uY01E=
+X-Google-Smtp-Source: AGHT+IHonGCa8by4IRlUhFwqne0G+xChLaB77A4Elu7KHX/ytkwCKxhNDSfo6zsqaOoV+Q8fGGx9SA==
+X-Received: by 2002:a05:6512:1093:b0:587:a4fa:1e50 with SMTP id 2adb3069b0e04-5906dae5b56mr5886844e87.41.1760364908274;
+        Mon, 13 Oct 2025 07:15:08 -0700 (PDT)
 Received: from ribalda.c.googlers.com (56.213.88.34.bc.googleusercontent.com. [34.88.213.56])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-590881e4e58sm4165256e87.25.2025.10.13.07.15.04
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-590881e4e58sm4165256e87.25.2025.10.13.07.15.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Oct 2025 07:15:04 -0700 (PDT)
+        Mon, 13 Oct 2025 07:15:07 -0700 (PDT)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Mon, 13 Oct 2025 14:15:06 +0000
-Subject: [PATCH 26/32] media: platform: rzg2l-cru: Use %pe format specifier
+Date: Mon, 13 Oct 2025 14:15:12 +0000
+Subject: [PATCH 32/32] media: staging/ipu7: Use %pe format specifier
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251013-ptr_err-v1-26-2c5efbd82952@chromium.org>
+Message-Id: <20251013-ptr_err-v1-32-2c5efbd82952@chromium.org>
 References: <20251013-ptr_err-v1-0-2c5efbd82952@chromium.org>
 In-Reply-To: <20251013-ptr_err-v1-0-2c5efbd82952@chromium.org>
 To: Linus Walleij <linus.walleij@linaro.org>, 
@@ -136,8 +121,8 @@ Cc: linux-input@vger.kernel.org, linux-kernel@vger.kernel.org,
  Ricardo Ribalda <ribalda@chromium.org>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251013_151508_363499_C2823D85 
-X-CRM114-Status: GOOD (  10.03  )
+X-CRM114-CacheID: sfid-20251013_071511_201911_7950B2C4 
+X-CRM114-Status: GOOD (  12.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -157,40 +142,45 @@ a symbolic error name (eg. -EINVAL) and it makes the code simpler by
 omitting PTR_ERR().
 
 This patch fixes this cocci report:
-./platform/renesas/rzg2l-cru/rzg2l-csi2.c:307:30-37: WARNING: Consider using %pe to print PTR_ERR()
-./platform/renesas/rzg2l-cru/rzg2l-csi2.c:726:30-37: WARNING: Consider using %pe to print PTR_ERR()
+./ipu7/ipu7-isys-csi-phy.c:311:23-30: WARNING: Consider using %pe to print PTR_ERR()
+./ipu7/ipu7-isys-csi2.c:59:22-29: WARNING: Consider using %pe to print PTR_ERR()
 
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
- drivers/media/platform/renesas/rzg2l-cru/rzg2l-csi2.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/staging/media/ipu7/ipu7-isys-csi-phy.c | 4 ++--
+ drivers/staging/media/ipu7/ipu7-isys-csi2.c    | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/media/platform/renesas/rzg2l-cru/rzg2l-csi2.c b/drivers/media/platform/renesas/rzg2l-cru/rzg2l-csi2.c
-index 1520211e74185fea3bca85f36239254f6b4651db..0fbdae280fdc49f963269a4bdaea38ff2e51884e 100644
---- a/drivers/media/platform/renesas/rzg2l-cru/rzg2l-csi2.c
-+++ b/drivers/media/platform/renesas/rzg2l-cru/rzg2l-csi2.c
-@@ -303,8 +303,8 @@ static int rzg2l_csi2_calc_mbps(struct rzg2l_csi2 *csi2)
+diff --git a/drivers/staging/media/ipu7/ipu7-isys-csi-phy.c b/drivers/staging/media/ipu7/ipu7-isys-csi-phy.c
+index b8c5db7ae3009e16264d7aaca6d4d237c1402ab7..2d57178835188a44b002b38712437cbd551751a5 100644
+--- a/drivers/staging/media/ipu7/ipu7-isys-csi-phy.c
++++ b/drivers/staging/media/ipu7/ipu7-isys-csi-phy.c
+@@ -307,8 +307,8 @@ static int ipu7_isys_csi_ctrl_dids_config(struct ipu7_isys_csi2 *csi2, u32 id)
  
- 	remote_pad = media_pad_remote_pad_unique(&csi2->pads[RZG2L_CSI2_SINK]);
- 	if (IS_ERR(remote_pad)) {
--		dev_err(csi2->dev, "can't get source pad of %s (%ld)\n",
--			csi2->remote_source->name, PTR_ERR(remote_pad));
-+		dev_err(csi2->dev, "can't get source pad of %s (%pe)\n",
-+			csi2->remote_source->name, remote_pad);
- 		return PTR_ERR(remote_pad);
+ 	pad = media_entity_remote_source_pad_unique(&csi2->asd.sd.entity);
+ 	if (IS_ERR(pad)) {
+-		dev_warn(dev, "can't get remote source pad of %s (%ld)\n",
+-			 csi2->asd.sd.name, PTR_ERR(pad));
++		dev_warn(dev, "can't get remote source pad of %s (%pe)\n",
++			 csi2->asd.sd.name, pad);
+ 		return PTR_ERR(pad);
  	}
  
-@@ -722,8 +722,8 @@ static int rzg2l_csi2_get_frame_desc(struct v4l2_subdev *sd, unsigned int pad,
- 
- 	remote_pad = media_pad_remote_pad_unique(&csi2->pads[RZG2L_CSI2_SINK]);
- 	if (IS_ERR(remote_pad)) {
--		dev_err(csi2->dev, "can't get source pad of %s (%ld)\n",
--			csi2->remote_source->name, PTR_ERR(remote_pad));
-+		dev_err(csi2->dev, "can't get source pad of %s (%pe)\n",
-+			csi2->remote_source->name, remote_pad);
- 		return PTR_ERR(remote_pad);
+diff --git a/drivers/staging/media/ipu7/ipu7-isys-csi2.c b/drivers/staging/media/ipu7/ipu7-isys-csi2.c
+index 4023db4a6466dd57f0ac007847bdd74bcdf394f7..f34eabfe8a985f29fa48b4a8896a058fde2f2b2f 100644
+--- a/drivers/staging/media/ipu7/ipu7-isys-csi2.c
++++ b/drivers/staging/media/ipu7/ipu7-isys-csi2.c
+@@ -55,8 +55,8 @@ s64 ipu7_isys_csi2_get_link_freq(struct ipu7_isys_csi2 *csi2)
+ 	src_pad = media_entity_remote_source_pad_unique(&csi2->asd.sd.entity);
+ 	if (IS_ERR(src_pad)) {
+ 		dev_err(&csi2->isys->adev->auxdev.dev,
+-			"can't get source pad of %s (%ld)\n",
+-			csi2->asd.sd.name, PTR_ERR(src_pad));
++			"can't get source pad of %s (%pe)\n",
++			csi2->asd.sd.name, src_pad);
+ 		return PTR_ERR(src_pad);
  	}
- 	return v4l2_subdev_call(csi2->remote_source, pad, get_frame_desc,
+ 
 
 -- 
 2.51.0.760.g7b8bcc2412-goog
