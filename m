@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B366DCCD18E
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1DBECCD193
 	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Oct 2025 14:15:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,68 +12,68 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eZ1y71tufxgFEEk7Jm6x6zTef8El2vgKtA+3jSIjqY0=; b=QCGRzAD2/joZXk8TTlG6zbvuGO
-	WdbvUgEiF1QooMu719I0f3EF1EnPML+yCvqfC8oBE2t0iQMpw+5PrtvpZU+PQYUgHb0ENQX4ihg2Q
-	HMT2qgl4N7uKDaUVRTWPduriP+xZK9t7eD7j8UQu1tK68Q1CIJW6fhJ0sVnRLDED6tjldcJmUxL82
-	eU5jFPcT71BRvo553dfKjfZT5hfS38DRhiBHGjZ8OuqZ3BGs6ISlfChzpp1zv7ASKQvJ9JiebyKGe
-	PNB2/Ji703+nYmo3mRMy36JatHe1aTZ9+BxFdHGgPU+H+cafl80Uq2RBHCMk2MiP6k9flt0gt9kw7
-	NuaX24bQ==;
+	bh=7VLNzWiaaayGbLPJ+CR/kQopGEdhcg7BnTJUn+bNJDA=; b=e1Uv4MeYtlGrj/UzfjIr40n4g9
+	u7oN5M0LpOttHXdjhnEDTWogMY3IgG4g955CRbHH3GAEkj1I+G9nzJaESIrSu6a6X1QQe7IEDMxtC
+	H1f75PfWep/+e2ckYrv7CRB6KsfSmMHDFbMSbG5bJB4k+2ivOH/ajaLNbBHyGpvc2hsVr+Pjgwo8X
+	yfbQw9LdCIKrM6yUAJpoJWiTQwj9EMmbLwT7dwVXMcOKCWAA75p7InXgoGJOrvIUYSNN0smsYp3G+
+	hnUHj62w2n/+xjUSCBK5lWo68hbskFakSnPmi6fBtzY2VIM/6oCvrWiWctlevEG9DcAGgQGT/jQX4
+	N5KthCDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8JKx-0000000DLwX-0Zsc;
+	id 1v8JKx-0000000DLxr-31kn;
 	Mon, 13 Oct 2025 14:15:43 +0000
-Received: from mail-lf1-f54.google.com ([209.85.167.54])
+Received: from mail-lf1-f51.google.com ([209.85.167.51])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8JKO-0000000DKsV-0OJM
+	id 1v8JKO-0000000DKtV-2K77
 	for linux-mediatek@lists.infradead.org;
-	Mon, 13 Oct 2025 14:15:09 +0000
-Received: by mail-lf1-f54.google.com with SMTP id 2adb3069b0e04-57bd04f2e84so4681962e87.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 13 Oct 2025 07:15:07 -0700 (PDT)
+	Mon, 13 Oct 2025 14:15:10 +0000
+Received: by mail-lf1-f51.google.com with SMTP id 2adb3069b0e04-57d8ff3944dso4608886e87.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 13 Oct 2025 07:15:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1760364905; x=1760969705; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1760364906; x=1760969706; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=eZ1y71tufxgFEEk7Jm6x6zTef8El2vgKtA+3jSIjqY0=;
-        b=GijuDPnzb8FcxZMyHV9x219xZYN7Ldn1CpGjrZ9rOAvZaVR00EpHeOK973+2j4f9rD
-         uNFBXGl2lRBnmj0D5gktL6Wo8YTSBWFHhz22bsDux1VvJVvxprPkS2RvYvYSEXEEig2n
-         mEzSwCQCXH/lIo864rnoI3jKwviV07h7Z54Q8=
+        bh=7VLNzWiaaayGbLPJ+CR/kQopGEdhcg7BnTJUn+bNJDA=;
+        b=EZrrk8Egtio1/eNZItOEff5C5q59fO0WGrXg6jBQnypES2MT8HO03afXEY4V4TIgbn
+         L3ucvqtalpV0N3Of8KdQ7BBLCwY+JsfJNctjDf39sBAeK/jUOL7HvEtBo/JZNFi5bANd
+         SA8b8KRlsOZGeM2q+6pa4TJ9eSgsPhQqbGO2w=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1760364905; x=1760969705;
+        d=1e100.net; s=20230601; t=1760364906; x=1760969706;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=eZ1y71tufxgFEEk7Jm6x6zTef8El2vgKtA+3jSIjqY0=;
-        b=iPfqD1w2Zp/S/0Mq4Yo9M48/jNvIA8sLM94XoO2FxyNF3do54IbPYUkUfqT4bBWH/R
-         K2arps9iKA6GuIUTehET6td9t5gtkPtZPLGqv/CJSwPcgLgQhd1JMtYsYdSHoiVsfTCW
-         sdsmwgLr2EBPR2BEdLXdIHI+tSTiovLsk7QRj/wK5pSeyhIa+dlnHIQWbPxAPPvCBWT1
-         77K2QQ+UCu/s5RlWvzbPEB0SjoDCS5V8pFlJTp7bScNS2e5eTy8PDPPpqHXDyJXcfKAM
-         3FN9KZrLf3qdB8zhTdJ3UcIIU+dw+beA+/EKnLvx58loUV9DJPNM+1ou8O1sBMpefLXe
-         Nm/g==
-X-Forwarded-Encrypted: i=1; AJvYcCXjGtUgUSAHENVfnFe4rLyaV49Fh/cmFvQiqq2y8HGj6tRKkGyvnYhwSlW7wZJSmYClYxPTBX8HFIlUKzSBYg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwP7pHEMSktrRxE0LuUhssGL1J/ce1/PfD22NJE8Wo7IEloHnc4
-	5kHxxSwmFN4HdmJb5lc6Ssesa/tSRC/Ln4SjvqUCHK9KEeev6lfQYAwkyzYWvcb1Nw==
-X-Gm-Gg: ASbGnctOxatjBkIETZyFk9QZtON8dp/G9/3HR6lWlzJHPfVXNXLNS3hyMRdiARTPZde
-	pp/Rb16ju/n2TZwDwf4V2sc0vZbBHmMbqXSt9XaZtqaeEcnxYqXlKQuuGmC73D7hRid69dLeEH6
-	LPokQjogn6FoX1V3AClerFBrSlUMXfPDX45QRU9+jXfhAea5LaV/M2cxoJlEC/ItNkVZ7j8+47N
-	9kX35NZ2Vfhiz2a6AWKutwSW4bemkdRH5c+SZ8VWI1/f7+7vioLTSG7lREO2u3K0PPLZR7wuZMp
-	KXwtIqoosDDFipgzhNmnYB76X0jNJmRtzKDXY5KmtaB+0Bj+O1oZKxh8OvlM/t3d+U7v30Fefyb
-	PwpSW78FmPVt8zPvn3kJhcKPuc9qo7pGU0fEQTb08w014tAnn9yiiuIVjAms7OmU4+meDFuYv9m
-	QDcD5DGr4EtikTluIjag==
-X-Google-Smtp-Source: AGHT+IFBH7uOHCgk463dX9utRYXWTvTjqks9NRSCe1XoUpKorvtzVnjNPhpyhsxKq9EgJCfyUEV3JQ==
-X-Received: by 2002:a05:6512:ad0:b0:57b:1ca2:ab60 with SMTP id 2adb3069b0e04-5906de89076mr6151331e87.52.1760364905455;
-        Mon, 13 Oct 2025 07:15:05 -0700 (PDT)
+        bh=7VLNzWiaaayGbLPJ+CR/kQopGEdhcg7BnTJUn+bNJDA=;
+        b=OhLcff/aePlG2u4pLrxK0A+MY1DfARsohMW3yHrUFnNDojAoKITi0mox9fE8rGCqqb
+         0o0ok90rAE7PnW+6Ptu5zyNim93hww4Ev30w8IJtjNU1JfmxxzfQwaYTjXvad+FWVCCi
+         d6lYBQIrbLZDQf1JB/sP7rn5RxQI4Rk0lnrgqBSQ5J4+i4XHftpV6+HBGGDV8j8Qj6UY
+         h1K+uWEnMLtlrgbXL2n1eGxoJqsyi4f//DFyR2huFHkE5dJPQ+USUJCLzrfnfY7e0SI1
+         ryNX3MO8k8hZPaq18VUjXfphXrhL2gF3w3N+H0WxxYlTFZiq5yi54Heen8H3I76AZHpE
+         lF6w==
+X-Forwarded-Encrypted: i=1; AJvYcCXZ2KcKKc5Nej0Ng0VU6LdZ8BXISeCQRvPw7NlnffYIjjNTzIxZmqTocIajm+Me5Rhq5Kb3VgfQasUzYVoPow==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzDbo+BUHaSym0/C4tK/l6Urgq6enf5UPCNO5lHQ2MzNK4B1fT7
+	hvljHf8FwyzZPz+CH+FGzcUwUVJNqoozXSuhRSPv2CETbSQPBXTEuIrpoqiuROx9ig==
+X-Gm-Gg: ASbGncuQK0gASJ8wyqlLVFeM7XvYOgr28/KKXHfVTe30z0TcgYp3jQk0XdIo1nBBht3
+	bPnC7DHMxzKqSbSIBgbci0G4NzFrIYPwTKkm/RBX+PAJjjnqI8yPxKEEvQZv8UUokzuhh1IIAXs
+	NisZ3ufZbocoHcCJBd+vmBGMFMMY3+dv0vFVGI3sBljM47d7bdf6kOisGl1aj5vhMrMmzM6dcML
+	DtxeItsHXdQVmtLDyXnxshdru7gz8pjjg6lKDroKXi4fNImrH8RG9ufpWVEiBPcR6XpV1eQrl3r
+	S1qvGxWKB92PgFPsIm4aDKTMr1FxFPA4kABGFrRm8HDx7Q9f/HvBMLLHeOh+DePxUd/SMKoRIr+
+	uZhrumjImd+o7GwLghEpxkJbufPEof1MhiCkygXuzdNvNj3CPgdBkLwVDJSGT6V8IFz/Z3fVk3V
+	04RwldRQzS9WPdlc+MYw==
+X-Google-Smtp-Source: AGHT+IHgQ/WMhPa6rwn8Aka868vYVRu77lc4adXi44XLWG27weltH/9eVYPP+kQHy8I85fd7fOXyWw==
+X-Received: by 2002:a05:6512:3c87:b0:58b:23e:5ec with SMTP id 2adb3069b0e04-5906d8e5b43mr6011775e87.26.1760364906103;
+        Mon, 13 Oct 2025 07:15:06 -0700 (PDT)
 Received: from ribalda.c.googlers.com (56.213.88.34.bc.googleusercontent.com. [34.88.213.56])
         by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-590881e4e58sm4165256e87.25.2025.10.13.07.15.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 13 Oct 2025 07:15:05 -0700 (PDT)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Mon, 13 Oct 2025 14:15:07 +0000
-Subject: [PATCH 27/32] media: renesas: vsp1: Use %pe format specifier
+Date: Mon, 13 Oct 2025 14:15:08 +0000
+Subject: [PATCH 28/32] media: rkisp1: Use %pe format specifier
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251013-ptr_err-v1-27-2c5efbd82952@chromium.org>
+Message-Id: <20251013-ptr_err-v1-28-2c5efbd82952@chromium.org>
 References: <20251013-ptr_err-v1-0-2c5efbd82952@chromium.org>
 In-Reply-To: <20251013-ptr_err-v1-0-2c5efbd82952@chromium.org>
 To: Linus Walleij <linus.walleij@linaro.org>, 
@@ -121,8 +121,8 @@ Cc: linux-input@vger.kernel.org, linux-kernel@vger.kernel.org,
  Ricardo Ribalda <ribalda@chromium.org>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251013_071508_180973_1F150D37 
-X-CRM114-Status: GOOD (  12.59  )
+X-CRM114-CacheID: sfid-20251013_071508_624563_93E98CDC 
+X-CRM114-Status: GOOD (  12.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,26 +142,44 @@ a symbolic error name (eg. -EINVAL) and it makes the code simpler by
 omitting PTR_ERR().
 
 This patch fixes this cocci report:
-./platform/renesas/vsp1/vsp1_drv.c:958:4-11: WARNING: Consider using %pe to print PTR_ERR()
+./platform/rockchip/rkisp1/rkisp1-isp.c:940:3-10: WARNING: Consider using %pe to print PTR_ERR()
+./platform/rockchip/rkisp1/rkisp1-csi.c:372:3-10: WARNING: Consider using %pe to print PTR_ERR()
 
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
- drivers/media/platform/renesas/vsp1/vsp1_drv.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c | 4 ++--
+ drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/media/platform/renesas/vsp1/vsp1_drv.c b/drivers/media/platform/renesas/vsp1/vsp1_drv.c
-index 6c64657fc4f3366f27bb63dea56f535519af20fd..2de515c497eb8557602ec946de527823f07ab11f 100644
---- a/drivers/media/platform/renesas/vsp1/vsp1_drv.c
-+++ b/drivers/media/platform/renesas/vsp1/vsp1_drv.c
-@@ -954,8 +954,7 @@ static int vsp1_probe(struct platform_device *pdev)
- 		vsp1->fcp = rcar_fcp_get(fcp_node);
- 		of_node_put(fcp_node);
- 		if (IS_ERR(vsp1->fcp)) {
--			dev_dbg(&pdev->dev, "FCP not found (%ld)\n",
--				PTR_ERR(vsp1->fcp));
-+			dev_dbg(&pdev->dev, "FCP not found (%pe)\n", vsp1->fcp);
- 			return PTR_ERR(vsp1->fcp);
- 		}
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
+index 841e58c20f7fcb484643138627413425a049d1fa..ddc6182f3e4bdacdd1962c86f6259334b16aa505 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
+@@ -368,8 +368,8 @@ static int rkisp1_csi_s_stream(struct v4l2_subdev *sd, int enable)
+ 
+ 	source_pad = media_entity_remote_source_pad_unique(&sd->entity);
+ 	if (IS_ERR(source_pad)) {
+-		dev_dbg(rkisp1->dev, "Failed to get source for CSI: %ld\n",
+-			PTR_ERR(source_pad));
++		dev_dbg(rkisp1->dev, "Failed to get source for CSI: %pe\n",
++			source_pad);
+ 		return -EPIPE;
+ 	}
+ 
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+index 8c29a1c9309a846152d212dcb50b7bf991d4f422..147d33eb6ee0d975b257c5df2997b811ba3a62e1 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+@@ -936,8 +936,8 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
+ 	sink_pad = &isp->pads[RKISP1_ISP_PAD_SINK_VIDEO];
+ 	source_pad = media_pad_remote_pad_unique(sink_pad);
+ 	if (IS_ERR(source_pad)) {
+-		dev_dbg(rkisp1->dev, "Failed to get source for ISP: %ld\n",
+-			PTR_ERR(source_pad));
++		dev_dbg(rkisp1->dev, "Failed to get source for ISP: %pe\n",
++			source_pad);
+ 		return -EPIPE;
+ 	}
  
 
 -- 
