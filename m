@@ -4,60 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55C4ACCD183
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Oct 2025 09:37:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 816EBCCD183
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Oct 2025 09:41:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DudOMLsQRV+n263ygkOCjNo/TpYnVuRGxN7vn/o0BCU=; b=Rr3C/ob1QXHup6ryRSm6l57Ihk
-	V1rd2pZ+FzPOg+M4ivQT3EKtEc8KfEodN+Yh2Ddygj0vdfH8HQGe/iDTIf9TdeO2DbJznMOE8ju7H
-	bISoVsHOGNwn6gmbP0375GlFDddq8qTDKHrdj8Rq67ym9n639LIzyV62uU4hX5y7sDUTzoMX5K44K
-	GyLJOycGwiGAHhV6oRd9NygJ9860UABpv8NbiQmh5ioH4QHn9a/FjglAalEDwBP3MXEpE+EA6jFq/
-	8iHZp1+UI5EiD+4NyLtaEOsOd0X0/22cIRM5veyng2GkVGrHvpacdllUn+Uli04Up8H+1o2vksbuz
-	B7W7EEwg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0clX0gshyYIdjL3JFCjc5GksZgSQHQcZ7ChRC/NoKzU=; b=0WO731ESg3yKc0iyenPUxwlUyS
+	oqlBmVre08+6fLIk5yrtuJnotU6wvXYUiZLMwJ/T5hJUwyo1xlFO/9qEXkohRaOOJFhwksRBtH1rr
+	BTeM3vKNb4M7IOpDSLfqsCLxeArmhKFASc6epd8RBUOsRf0MgONEpVpcr00qW6Qu/mCvHUgmUj8s3
+	RTXh+D8hkGWTnSz0ORVUR+9b5ZbEFefnlAXioANBtRYD3rp88HOT33bO104sAXSCHh5SLzSxLp/N5
+	STFRxIsa2/KRboE5qTm8vzPax2snwnSadpmD3GrWpzrroVWdUsZsOVi1fOVk5/o0oAT8lvtygi8iJ
+	kQsf3Pfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8EzE-0000000ClTl-2HRJ;
-	Mon, 13 Oct 2025 09:37:00 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1v8F3d-0000000Clu3-3DWi;
+	Mon, 13 Oct 2025 09:41:33 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8EzC-0000000ClTR-32a9;
-	Mon, 13 Oct 2025 09:36:58 +0000
+	id 1v8F3a-0000000Clt2-3awY;
+	Mon, 13 Oct 2025 09:41:32 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 12079611A3;
-	Mon, 13 Oct 2025 09:36:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E215EC4CEFE;
-	Mon, 13 Oct 2025 09:36:55 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 4225E439FF;
+	Mon, 13 Oct 2025 09:41:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B3123C4CEE7;
+	Mon, 13 Oct 2025 09:41:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760348217;
-	bh=Yn7TjBfBuD0cTKnd++PHp7G1b/Ur34AI7puSNAOld80=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=n6NvnqACa97Q5EohDysILSyqPs2pPG8bBTEgVxKXb7GRMJFkAK4Tvs2H3jAQMmOxo
-	 5QETZF33oLTnRK2QXovE7gy6jQY5BFwrK2v15NpwI1jalM9WXNOAAZrdApBmWga8B/
-	 47REY+apf591ZtewkgH4WjoA7hvR/5pzeX1XLXEUKHMDzcjzTmHLz38KNscoednQJq
-	 8M7fN5eJCcZKsIY9zrAOeDcepo2hnEI3nCO2PvCbSCXdxToNoE3SyOw3exEuD7mAz/
-	 +rZJp0VeQ9avfdO19WODybyFrwk7faBRvxR1lPVbz3TKbjpOx4dg+xduOXvjX93ysz
-	 VWTr63UmwYmrA==
-Date: Mon, 13 Oct 2025 10:36:53 +0100
-From: Simon Horman <horms@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net v2] net: airoha: Take into account out-of-order tx
- completions in airoha_dev_xmit()
-Message-ID: <aOzINXtv-gu50mJ7@horms.kernel.org>
-References: <20251012-airoha-tx-busy-queue-v2-1-a600b08bab2d@kernel.org>
+	s=k20201202; t=1760348490;
+	bh=JBGlttPgEcGlkaapqMF5MSjaQ9HOMIlfMMQ6JxCDE5g=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ghOvtoQEypW4ImDFAnvNW097AJNEiEI/mn84ZnGrE7duaFTXttFY6ynUP93zxgcoN
+	 UVSCSBCgW6w5yEA15RO2jl1IKoot9Brls/zcCsAM/URqQE+M1fvIkglh516Nu6BhFF
+	 9qLJ+Nl/qjjbbJkx0ibduyp0LAOwDbWKaTboOc8LekZCPQN4oN28yCNe6tZJ+39u9a
+	 RJCI7tL0xK6TBhCQfiE8689ET2H3LItOVUqHvX6W6f2uVcILc6CisSIKQ3b+rsAVrN
+	 A+XRIVhG+HweZs2RCCu1hcWiwxX9J5nqBQuiz+Oi8ccvAnBefn8qfon8Xp4DnZ9Y8e
+	 tbq3D6U5syqFA==
+Message-ID: <4c974736-f257-42a5-9d39-801a579d9771@kernel.org>
+Date: Mon, 13 Oct 2025 11:41:25 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20251012-airoha-tx-busy-queue-v2-1-a600b08bab2d@kernel.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 0/4] Add support for Grinn GenioSBC-510/700 boards
+To: Mateusz Koza <mateusz.koza@grinn-global.com>
+Cc: krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ marcin.czarnecki@grinn-global.com, b.bilas@grinn-global.com, andrew@lunn.ch,
+ robh@kernel.org
+References: <20250909163052.446723-1-mateusz.koza@grinn-global.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@kernel.org>
+Content-Language: en-US
+In-Reply-To: <20250909163052.446723-1-mateusz.koza@grinn-global.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251013_024130_938572_09E8DB88 
+X-CRM114-Status: GOOD (  15.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,22 +75,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Oct 12, 2025 at 11:19:44AM +0200, Lorenzo Bianconi wrote:
-> Completion napi can free out-of-order tx descriptors if hw QoS is
-> enabled and packets with different priority are queued to same DMA ring.
-> Take into account possible out-of-order reports checking if the tx queue
-> is full using circular buffer head/tail pointer instead of the number of
-> queued packets.
+Il 09/09/25 18:30, Mateusz Koza ha scritto:
+> This patch series adds support for Grinn GenioSBC-510 and GenioSBC-700
+> boards based on MediaTek MT8370 and MT8390 SoCs, respectively. It
+> includes device tree files for both boards, updates to the device tree
+> bindings, and necessary modifications to the Makefile.
 > 
-> Fixes: 23020f0493270 ("net: airoha: Introduce ethernet support for EN7581 SoC")
-> Suggested-by: Simon Horman <horms@kernel.org>
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> As far as I know, <angelogioacchino.delregno@collabora.com> has access
+> to the schematics for these boards, as we've shared them under NDA with
+> Collabora.
+> 
+> Signed-off-by: Mateusz Koza <mateusz.koza@grinn-global.com>
 > ---
-> Changes in v2:
-> - Fix corner case when the queue is full
-> - Link to v1: https://lore.kernel.org/r/20251010-airoha-tx-busy-queue-v1-1-9e1af5d06104@kernel.org
+> v2:	Fixed the subject prefixes,
+> 	Fixed alignment in dts files,
+> 	Added missing SPDX-License-Identifier,
+> 	Fixed the ordering in dt-bindings,
+> 	Dropped redundant info from commit messages,
+> 	Run checkpatch.pl on the patchset and fixed the issues,
+> 	as suggested by Krzysztof Kozlowski <krzk@kernel.org>.
+> 
+> v3:	Changed eth phy-mode to 'rgmii-id',
+> 	Changed eth mediatek,tx-delay-ps to 30,
+> 	as suggested by Andrew Lunn <andrew@lunn.ch>.
+> 
+> v4:	Removed the nodes that are not present in upstream,
+> 	as suggested by Louis-Alexis <angelogioacchino.delregno@collabora.com>.
+> 
+> 	Added default pinctrl to ssusb0,
+> 	Enabled the scp_cluster node,
+> 	as suggested by Bartosz Biłas <b.bilas@grinn-global.com>.
+> 
+> v5:	Did NOT move the chasis-type - Error: Properties must precede subnodes,
+> 	Swapped underscores to commas in regulator names,
+> 	Reordered properties (generic -> vendor -> status),
+> 	Dropped the firmware property from the scp_c0 node,
+> 	Added interrupts-extended to the pmic node,
+> 	Dropped the mt6359key handle,
+> 	Added blank spaces before the memory nodes,
+> 	as suggested by AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+> 
+> Bartosz Bilas (1):
+>    arm64: dts: mediatek: mt8370-grinn-genio-510-sbc: Add Grinn
+>      GenioSBC-510
+> 
+> Mateusz Koza (3):
+>    arm64: dts: mediatek: mt8390-genio-700-evk: Add Grinn GenioSBC-700
+>    dt-bindings: arm: mediatek: Add grinn,genio-700-sbc
+>    dt-bindings: arm: mediatek: Add grinn,genio-510-sbc
+> 
+>   .../devicetree/bindings/arm/mediatek.yaml     |   2 +
+>   arch/arm64/boot/dts/mediatek/Makefile         |   2 +
+>   .../mediatek/mt8370-grinn-genio-510-sbc.dts   |  20 +
+>   .../mediatek/mt8390-grinn-genio-700-sbc.dts   |  20 +
+>   .../dts/mediatek/mt8390-grinn-genio-sbc.dtsi  | 538 ++++++++++++++++++
+>   .../dts/mediatek/mt8390-grinn-genio-som.dtsi  | 210 +++++++
+>   6 files changed, 792 insertions(+)
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8370-grinn-genio-510-sbc.dts
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-700-sbc.dts
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-sbc.dtsi
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-som.dtsi
+> 
 
-Thanks for the update.
+Patches 1, 3 applied to v6.18-next/dts64
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+Thanks!
 
