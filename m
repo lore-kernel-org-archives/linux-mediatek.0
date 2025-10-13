@@ -4,75 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98688CCA476
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Oct 2025 09:32:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF9A8CCD185
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Oct 2025 09:35:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RomrXBxa/0J0s0xCsFH109XZq08Sm+LyevRYIDaVrII=; b=T/BvlABhyiZTs1qebCyZFvnFNB
-	StbnQAznlgNdxXdGpxOdyvD9p0vDGI+xzoNLIEtEFNTQqtwXbTyWkkT710PNCbL3LWL3G9E+oLCSg
-	tGv4B4gDILP8sYzjKwncU36P/38vp1ygLuprvO4z8nK35BRHIywDzGWkFUryg4EFz0FU1cAdEymDu
-	eQJ1OylS9cEZF1DBNPzeTPJ/fVP62knvk8C3X+AdpYcv+zeLvrjZ+Wa1Jz6UoSAR4x4hP3W3LSnBC
-	wbWMU+148qphbS/OzWVMMPc8sdoz7WOhEaZO3CcArdUFFyHmF80aNGxYX84L8VsMFLfBiyFL7A75R
-	dzupru2Q==;
+	bh=BCPpnT6CUqEY7GoVJxhhOsw1DCasMs8tnUxRwp0k/aY=; b=VrXvmQ/dzEp9MoCeVrnZmtgsw/
+	UzfVpun/HV8CdIawl7fp3xSeWxDdnx030EfVfzTSZMWLoWlsfj9Zxq57Dzls1u0c9DvkWS15YDhr8
+	29bmENhGkJ3ARBl1RL+vSYpOANw7+POW3cp1dHGGuO82/eU85UEfpg7W5NEuEcVMSBm8oWdnwIqHC
+	KiQiuYOgVYPiN2NqfIAciotWV6yEDtEoFcK99A2AuoofkVmeheaN//UMQiVQjWEtr1YYKpYH4Kq00
+	K9k9eC8SR/Tgh8YA/SKxNn9jqaZwo/bJyCtGQXmfJkeKI5Gj/gtkDFSGWNajzi+HKpDRzCQR5Y5zU
+	sWCVx6sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8Eua-0000000CkJq-3AVo;
-	Mon, 13 Oct 2025 09:32:12 +0000
+	id 1v8ExZ-0000000Cksn-0iC2;
+	Mon, 13 Oct 2025 09:35:17 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8EuY-0000000CkIn-0qfX;
-	Mon, 13 Oct 2025 09:32:11 +0000
+	id 1v8ExV-0000000Ckqs-16WP;
+	Mon, 13 Oct 2025 09:35:14 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1760347927;
-	bh=gJp0KJN5JsnAs44g7Qv8Flla0ZPEoI3EDaHQ5Ie/TbE=;
+	s=mail; t=1760348111;
+	bh=bfL1IYH8BibJ2nPO35tm/brwL9jRYOHCupbnViHgTC0=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=oWA4MZYBiGExivnYMXUDxTPU+xKdquwfvIIDwrBYfG+KGl9zWe9TAn80ESph/rNit
-	 +wn9QGLV+81ZMhtsp9Mq1T0uxX3r2eInBu0BCsFGY2M9ZBE8fnwTonMf2Bt+HufGpZ
-	 UHqRfvVxkV/Cet+U/y+oqGUxKMJTamPfdtk2SOuh+QZfAV6JxaHjGnTYA5VfbPfeWn
-	 QzvQtrbMTRUSijnDknZ0Nl+HzQ56kRKoL9z2/r1BQNjyv/AYqzKXOQAAcXypfxozmQ
-	 WfQWASb+hJiB264YsedQBiHVjcGBbhEZrnnLKGurpispFL+zUGJ9Fo7qGUBWM3JObN
-	 CTu6ShfYITw+w==
+	b=UpVspcs4NU8hEVtlvhlE1NG6P7p/g37hclIOwLocxIHsvonh58l/41Rf5XG4DsIhG
+	 oLa2EFnlFn1Hw4vaJ7w3X4vlcBB5FEMa6fVOC3YIgkKvAL/U2U+7P7L4EB6Eai44+b
+	 FOnWTzFFGqU6LoeW+lJsWd+aOT4U232HRCWtj0QhuIHI56D0imH0XLxBQMmnoH+vrC
+	 LS+ESbNd06VYGmO3i6D4fe/BDJ5zCU1FLIhW9zci8vpoMHnXFUfoDF03r25PpU8atR
+	 qCdhXhPE8Je+zjbdARsXceQqtcwoEI3IVX3mIBt4iq3wufVYEt0vmK2sHZXaAcO6Hq
+	 LBWkVCGCmcUkA==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 847BF17E0023;
-	Mon, 13 Oct 2025 11:32:05 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 00B3E17E0523;
+	Mon, 13 Oct 2025 11:35:10 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: kernel@collabora.com, Michael Turquette <mturquette@baylibre.com>, 
- Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Ikjoon Jang <ikjn@chromium.org>, 
- Enric Balletbo i Serra <eballetbo@kernel.org>, 
- Chen-Yu Tsai <wenst@chromium.org>, Weiyi Lu <weiyi.lu@mediatek.com>, 
- Eugen Hristev <eugen.hristev@linaro.org>, 
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Julien Massot <jmassot@collabora.com>, Sean Wang <sean.wang@kernel.org>, 
- Linus Walleij <linus.walleij@linaro.org>, 
- Julien Massot <julien.massot@collabora.com>
-Cc: linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-sound@vger.kernel.org, 
- linux-gpio@vger.kernel.org
-In-Reply-To: <20250826-mtk-dtb-warnings-v3-0-20e89886a20e@collabora.com>
-References: <20250826-mtk-dtb-warnings-v3-0-20e89886a20e@collabora.com>
-Subject: Re: (subset) [PATCH v3 0/6] MediaTek devicetree/bindings warnings
- sanitization second round
-Message-Id: <176034792547.20821.16275876241287095581.b4-ty@collabora.com>
-Date: Mon, 13 Oct 2025 11:32:05 +0200
+ Matthias Brugger <matthias.bgg@gmail.com>, daniel@makrotopia.org, 
+ Bryan Hinton <bryan@bryanhinton.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <20250922035828.2941327-1-bryan@bryanhinton.com>
+References: <20250922035828.2941327-1-bryan@bryanhinton.com>
+Subject: Re: [PATCH v3 0/2] arm64: dts: mt7981/openwrt-one: UART labels and
+ console
+Message-Id: <176034811095.21265.12249221887009507081.b4-ty@collabora.com>
+Date: Mon, 13 Oct 2025 11:35:10 +0200
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251013_023210_402905_07CC7148 
-X-CRM114-Status: UNSURE (   9.34  )
+X-CRM114-CacheID: sfid-20251013_023513_459817_0494A3CD 
+X-CRM114-Status: UNSURE (   7.50  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,22 +78,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 26 Aug 2025 09:39:33 +0200, Julien Massot wrote:
-> This patch series continues the effort to address Device Tree validation
-> warnings for MediaTek platforms, with a focus on MT8183. It follows the
-> initial cleanup series by Angelo
-> (https://www.spinics.net/lists/kernel/msg5780177.html).
+On Sun, 21 Sep 2025 22:58:08 -0500, Bryan Hinton wrote:
+> This series makes two small updates for MT7981:
 > 
-> The patches in this set eliminate several of the remaining warnings by
-> improving or converting DT bindings to DT schema, adding missing properties,
-> and updating device tree files accordingly.
+> - Patch 1/2: Add stable labels (uart0, uart1, uart2) in the SoC dtsi so
+>   that board dts files can reference them directly.
+> - Patch 2/2: Update the OpenWrt One board dts to define serial0 alias,
+>   set chosen stdout-path, and enable uart0.
 > 
 > [...]
 
 Applied to v6.18-next/dts64, thanks!
 
-[4/6] arm64: dts: mt8183: Rename nodes to match audiosys DT schema
-      commit: 872fa3ea0c0e4602e4775d0fbe84ed3d6aa60e67
+[1/2] arm64: dts: mediatek: mt7981b: add labels for UART0/1/2 nodes
+      commit: c0a824edb6bf694a2d5a9eede29e1628f093cb22
+[2/2] arm64: dts: mediatek: mt7981b: OpenWrt One: set console UART to 115200
+      commit: 36712c5cf980980139bd8f7b84b1b6daec068857
 
 Cheers,
 Angelo
