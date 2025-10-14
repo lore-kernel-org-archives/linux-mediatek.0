@@ -4,76 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AF7CCCD192
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Oct 2025 15:47:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1134CCD193
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Oct 2025 16:50:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=41wA36PDmhkunY1fcShaZGqOcjr8qbaTCvwQtvR3cYc=; b=yd3+VAucD5r+TiuApy39p+aPPb
-	6xdP+L69lSG/iYYf6dU5b22OEN/pF8b/2vpammCN1xPXbTRN5XBDtGhA1iAYX37vx7OGNheSYeCUh
-	4sqHJ7h6pJCaem5arbUpkoqdvBXZojF6ZMeI65BVVT6teQOQziy0oS/4ucTUAPEDH5nl/PhIJ/aT2
-	n0RFA0ohcaNprVCdW5f+lfBuQoFpIICNhlOx7ldVI+80n8xK0l9orhCPmvQrdxDqvNPLDaZ+UGbuo
-	nqTglxdu96bYs8/N7k2TnG4VdqY1ficEcuQyCqfYfT3PKZgZ1tRB5TfSafUyH6be7qpEyImtvebSo
-	nB/pNaCA==;
+	bh=Hu289ulcjdhzLLjVVVbG3pIUzUH7uYAXzZ5B+3z00fQ=; b=wUIOL3TGgikNSne9KdoCZ+V0rh
+	N4AAsDl1viniNJojoOftP5/sJT8pcigVSQSQxy64TW+9jb2JAZIpKRKQUMbSItJxgK1NREfxwHe1E
+	d++J2Vca6uhLe8jZi6YhWlmbRwVDO492w9H17srbc+jEkW5plpWcNJ763gjkBYDKWfu416zGZIJj7
+	PL70CrlmL2s6kTdy9/xlyWqOFfUjNuxpRRNHFQ2+GTHHKiLOV32ErPXmTQgZJpssJxuVkFc9qzMzZ
+	U5HzRG4bN/OvkS1/oApeK+XheNlZRSJwwqnVgBEeObd0Y2Tn7NNtm81uzbZpAV29e0rq/+IXWTULL
+	+A9tOmhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8hEr-0000000GtmA-2Oef;
-	Tue, 14 Oct 2025 15:47:01 +0000
-Received: from 003.mia.mailroute.net ([199.89.3.6])
+	id 1v8iEP-0000000H2Jb-04CP;
+	Tue, 14 Oct 2025 16:50:37 +0000
+Received: from mx01.omp.ru ([90.154.21.10])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8hEp-0000000Gtlb-0xf5
-	for linux-mediatek@lists.infradead.org;
-	Tue, 14 Oct 2025 15:47:00 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 003.mia.mailroute.net (Postfix) with ESMTP id 4cmJVp0ppFzlgqyn;
-	Tue, 14 Oct 2025 15:46:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1760456812; x=1763048813; bh=41wA36PDmhkunY1fcShaZGqO
-	cjr8qbaTCvwQtvR3cYc=; b=q0lgc2Z2rCKoqzO7LWFpGajvWVZKHMhp47QdyrJJ
-	GoLYNwouKm8vLx7i/GrrLwh3admP+NRxjmUO1AZVg8MAsu27zoWg66I22j5LJgzw
-	IYhLY5vLQtLc+19yN3Xo/puH1+JOdXG3QZfK+hdHdkd6h8XoZOBQRkJ+sAteN8ss
-	nX8TFNnuB85xtUHvAvBS5Vn3em6qhvTUbcWNAHUko1Ds2ZCHhcxKGR0GfcOZrrmN
-	HNGcMLE78jNsWu/ttoOKWXaNO4g3kcuZuobVR/Pm+wguTSWJW079kgPKPTnN5GMy
-	8C8OJniH1GSx6eIn3ksGfNjVAgcMjQK+XM85rFX27Rtzog==
-X-Virus-Scanned: by MailRoute
-Received: from 003.mia.mailroute.net ([127.0.0.1])
- by localhost (003.mia [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id G4BRsfDz7acL; Tue, 14 Oct 2025 15:46:52 +0000 (UTC)
-Received: from [100.119.48.131] (unknown [104.135.180.219])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 003.mia.mailroute.net (Postfix) with ESMTPSA id 4cmJVS1Np3zlgqVm;
-	Tue, 14 Oct 2025 15:46:39 +0000 (UTC)
-Message-ID: <4c47f800-0536-452a-b64b-d177fa306418@acm.org>
-Date: Tue, 14 Oct 2025 08:46:38 -0700
+	id 1v8iEJ-0000000H2GW-2weF;
+	Tue, 14 Oct 2025 16:50:34 +0000
+Received: from [192.168.2.104] (213.87.128.219) by msexch01.omp.ru
+ (10.188.4.12) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.1258.12; Tue, 14 Oct
+ 2025 19:50:16 +0300
+Message-ID: <25e098b2-d786-437c-ad92-eccb90b148f7@omp.ru>
+Date: Tue, 14 Oct 2025 19:50:16 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 2/2] ufs: core: support dumping CQ entry in MCQ Mode
-To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, qilin.tan@mediatek.com,
- lin.gui@mediatek.com, tun-yu.yu@mediatek.com, eddie.huang@mediatek.com,
- naomi.chu@mediatek.com, ed.tsai@mediatek.com
-References: <20251014131758.270324-1-peter.wang@mediatek.com>
- <20251014131758.270324-3-peter.wang@mediatek.com>
+Subject: Re: [PATCH v2] serial: 8250_mtk: correct max baud rate in
+ set_termios() method
+To: Fedor Pchelkin <pchelkin@ispras.ru>
+CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby
+	<jirislaby@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	<linux-serial@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<lvc-project@linuxtesting.org>, Eddie Huang <eddie.huang@mediatek.com>, Long
+ Cheng <long.cheng@mediatek.com>
+References: <3eb40848-3bec-42ca-845b-c66d4b53cedc@omp.ru>
+ <20251014130050-5cdb9e464558d609872d38cc-pchelkin@ispras>
 Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20251014131758.270324-3-peter.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+From: Sergey Shtylyov <s.shtylyov@omp.ru>
+Organization: Open Mobile Platform
+In-Reply-To: <20251014130050-5cdb9e464558d609872d38cc-pchelkin@ispras>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
+X-Originating-IP: [213.87.128.219]
+X-ClientProxiedBy: msexch01.omp.ru (10.188.4.12) To msexch01.omp.ru
+ (10.188.4.12)
+X-KSE-ServerInfo: msexch01.omp.ru, 9
+X-KSE-AntiSpam-Interceptor-Info: scan successful
+X-KSE-AntiSpam-Version: 6.1.1, Database issued on: 10/14/2025 16:35:15
+X-KSE-AntiSpam-Status: KAS_STATUS_NOT_DETECTED
+X-KSE-AntiSpam-Method: none
+X-KSE-AntiSpam-Rate: 0
+X-KSE-AntiSpam-Info: Lua profiles 197067 [Oct 14 2025]
+X-KSE-AntiSpam-Info: Version: 6.1.1.11
+X-KSE-AntiSpam-Info: Envelope from: s.shtylyov@omp.ru
+X-KSE-AntiSpam-Info: LuaCore: 71 0.3.71
+ ee78c3da48e828d2b9b16d6d0b31328b8b240a3c
+X-KSE-AntiSpam-Info: {rep_avail}
+X-KSE-AntiSpam-Info: {Tracking_arrow_text}
+X-KSE-AntiSpam-Info: {Tracking_uf_ne_domains}
+X-KSE-AntiSpam-Info: {Tracking_from_domain_doesnt_match_to}
+X-KSE-AntiSpam-Info: omp.ru:7.1.1;d41d8cd98f00b204e9800998ecf8427e.com:7.1.1;213.87.128.219:7.1.2;127.0.0.199:7.1.2
+X-KSE-AntiSpam-Info: {Tracking_References_header}
+X-KSE-AntiSpam-Info: FromAlignment: s
+X-KSE-AntiSpam-Info: ApMailHostAddress: 213.87.128.219
+X-KSE-AntiSpam-Info: Rate: 0
+X-KSE-AntiSpam-Info: Status: not_detected
+X-KSE-AntiSpam-Info: Method: none
+X-KSE-AntiSpam-Info: Auth:dmarc=temperror header.from=omp.ru;spf=temperror
+ smtp.mailfrom=omp.ru;dkim=none
+X-KSE-Antiphishing-Info: Clean
+X-KSE-Antiphishing-ScanningType: Heuristic
+X-KSE-Antiphishing-Method: None
+X-KSE-Antiphishing-Bases: 10/14/2025 16:39:00
+X-KSE-Antivirus-Interceptor-Info: scan successful
+X-KSE-Antivirus-Info: Clean, bases: 10/14/2025 3:29:00 PM
+X-KSE-Attachment-Filter-Triggered-Rules: Clean
+X-KSE-Attachment-Filter-Triggered-Filters: Clean
+X-KSE-BulkMessagesFiltering-Scan-Result: InTheLimit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251014_084659_396186_99FF5DBA 
-X-CRM114-Status: GOOD (  13.01  )
+X-CRM114-CacheID: sfid-20251014_095031_967251_FBB5D825 
+X-CRM114-Status: UNSURE (   8.05  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,68 +106,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/14/25 6:15 AM, peter.wang@mediatek.com wrote:
-> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-> index d779cc777a17..b90500126b35 100644
-> --- a/drivers/ufs/core/ufshcd.c
-> +++ b/drivers/ufs/core/ufshcd.c
-> @@ -599,7 +599,8 @@ static void ufshcd_print_evt_hist(struct ufs_hba *hba)
->   }
->   
->   static
-> -void ufshcd_print_tr(struct ufs_hba *hba, int tag, bool pr_prdt)
-> +void ufshcd_print_tr(struct ufs_hba *hba, struct cq_entry *cqe,
-> +		     int tag, bool pr_prdt)
->   {
->   	const struct ufshcd_lrb *lrbp;
->   	int prdt_length;
-> @@ -618,6 +619,8 @@ void ufshcd_print_tr(struct ufs_hba *hba, int tag, bool pr_prdt)
->   
->   	ufshcd_hex_dump("UPIU TRD: ", lrbp->utr_descriptor_ptr,
->   			sizeof(struct utp_transfer_req_desc));
-> +	if (cqe)
-> +		ufshcd_hex_dump("UPIU CQE: ", cqe, sizeof(struct cq_entry));
->   	dev_err(hba->dev, "UPIU[%d] - Request UPIU phys@0x%llx\n", tag,
->   		(u64)lrbp->ucd_req_dma_addr);
->   	ufshcd_hex_dump("UPIU REQ: ", lrbp->ucd_req_ptr,
-> @@ -648,7 +651,7 @@ static bool ufshcd_print_tr_iter(struct request *req, void *priv)
->   	struct Scsi_Host *shost = sdev->host;
->   	struct ufs_hba *hba = shost_priv(shost);
->   
-> -	ufshcd_print_tr(hba, req->tag, *(bool *)priv);
-> +	ufshcd_print_tr(hba, NULL, req->tag, *(bool *)priv);
->   
->   	return true;
->   }
-> @@ -5536,7 +5539,7 @@ ufshcd_transfer_rsp_status(struct ufs_hba *hba, struct ufshcd_lrb *lrbp,
->   
->   	if ((host_byte(result) != DID_OK) &&
->   	    (host_byte(result) != DID_REQUEUE) && !hba->silence_err_logs)
-> -		ufshcd_print_tr(hba, lrbp->task_tag, true);
-> +		ufshcd_print_tr(hba, cqe, lrbp->task_tag, true);
->   	return result;
->   }
->   
-> @@ -7763,9 +7766,9 @@ static int ufshcd_abort(struct scsi_cmnd *cmd)
->   		ufshcd_print_evt_hist(hba);
->   		ufshcd_print_host_state(hba);
->   		ufshcd_print_pwr_info(hba);
-> -		ufshcd_print_tr(hba, tag, true);
-> +		ufshcd_print_tr(hba, NULL, tag, true);
->   	} else {
-> -		ufshcd_print_tr(hba, tag, false);
-> +		ufshcd_print_tr(hba, NULL, tag, false);
->   	}
->   	hba->req_abort_count++;
+On 10/14/25 1:07 PM, Fedor Pchelkin wrote:
 
-So there are four callers of ufshcd_print_tr() and only one caller dumps
-the CQE? Wouldn't it be better not to add any arguments to
-ufshcd_print_tr() and instead add the code for dumping the CQE directly
-in the only function that needs this functionality?
+>> Mediatek MT798x datasheets (that I was able to get my hands on) claim
 
-Thanks,
+   Thank you, Fedor, BTW! :-)
 
-Bart.
+>> the maximum supported baud rate to be 3 Mbps, while commit 81bb549fdf14
+>> ("serial: 8250_mtk: support big baud rate.") claimed it to be 4 Mbps --
+> 
+> At least MT7987A datasheet claims to support up to 4 Mbps, so I think 4 Mbps
+> should be chosen for the upper limit.
 
+   FTR, this SoC doesn't seem to be supported by the mainline kernel (looking
+at Linus' repo, at least).
+   I think, we should "parametrize" the max (and maybe even min?) baud rate
+adding more specific compatibles to mtk8250_of_match[] (and probably setting
+this parameter to 4 Mbps for the existing entry)...
+
+> + added the authors of 81bb549fdf14 ("serial: 8250_mtk: support big baud rate.")
+> to Cc.
+
+  Just noticed that the author of this "wonderful" patch didn't even sign off
+on it. "Excellent" work! :-/
+
+> --
+> Fedor
+
+MBR, Sergey
 
 
