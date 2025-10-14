@@ -4,72 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A5C2CCD184
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Oct 2025 11:47:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AF0DCCD184
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Oct 2025 12:35:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:To:
-	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mc9AOiHcgwnUop6Je31sTiU9nXPdrfPEMTdV3OVwjJM=; b=LwlhD9x8n14G2IsUvc6LTm8/+B
-	Xw2LF1XmSKLIuoe7A3uXaz/+HrRpV8bYnnDl7G5jlM64aZNZRvPCs0p3CW8JeW5lfzjI1vdE8y6do
-	KVDvIexHmTVWssZvRLQV8TqYNNAH2TvtxFvd/iz3621KWxrB8RmIn+6I41syuPxOZud3I2Flh/Px0
-	4VzhFdJPj/hXLRIl7mg/kTnORH3C9ifGye2sDmAiQ0SuYp2RMr7D+Azvb2Ln9aH2nIeKiandRcKwZ
-	+5Pg6Lzo76Kb7MiiXScFWL9Sd5AOBEWGTuzThB7Yz3GIjuSNwXQpUoljA5d2FWV6kh7DtaEpnloFM
-	WyQMXxLg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+tDudZUHvl8k24xVpvdCqu0hRwQS3DHiCIYgfQZ1jks=; b=auPr8W62bv6x3gdT5fnMRZQlA4
+	CQ/6EKjBr/bVg9ThBcubTtMQIOD68uKRG8jVq+2REohBws6KNdt0oDg1LvAKK0XaZczT4iZy9J2D6
+	tOe1PQ1+yNVz31afMcFc5e/9lx7ggLVbM4y1aSKVeMZkLIa5m79JWpfz6mk+x2PnAAMbyh/PCFp2G
+	5LQkPIAyoiAFnVeNwUDFoptvFP5R1GpP93Jim0lrGYwEUCpoiAxFNBq8Q4cTkEuM94iJ5osIiFB8N
+	eUIyQi0UCdExYsqkbTzbXONXQUsoKLMNH+/JA9fqcdvOwkID1hkouTfC9l0psPqT1MHG0w+cDiqKL
+	sjB2Vkqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8dVB-0000000G9AX-2lRI;
-	Tue, 14 Oct 2025 11:47:37 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1v8eFM-0000000GGZ1-42R4;
+	Tue, 14 Oct 2025 12:35:20 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8dV8-0000000G99d-46rN;
-	Tue, 14 Oct 2025 11:47:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1760442452;
-	bh=V9yoqwxESdZwxltRllnlJkbdQXUNmo1TpE4ddW0bRYo=;
-	h=From:To:In-Reply-To:References:Subject:Date:From;
-	b=pVxqN0wPKBKaeJhkbaLkohXFCzia/ZgKznHPt9ULdyZ0+kDJSbe65XnV1f260+orS
-	 BC6ZKkJYG/M+dqwRVWiVnerOm2HZIYw5PSi0JIZGO01FUfTd8mPhrgCeWtjxSHwnuT
-	 RoYVrZbfJ46dEwddj1r/ryHtiMiZA0nHZd2kAIxOyldoahBy9jUu9A3vB7VqkwBjwr
-	 pdwLsI06AwXoCcNMW2gkxXQ65IVj/cK7Eq1o1LR3IjutCebOV5Jodg7TXcBjGZmuIp
-	 SnwShRldBluFHmBSUjVrv7zNItDL4qYq6IQK3kn3HG+tIqpcxTV3D5LtUQS9dV0Ur7
-	 62vyaIO71vA0w==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3254417E013C;
-	Tue, 14 Oct 2025 13:47:32 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Ryder Lee <ryder.lee@mediatek.com>, 
- Jianjun Wang <jianjun.wang@mediatek.com>, 
- Bjorn Helgaas <bhelgaas@google.com>, 
- Lorenzo Pieralisi <lpieralisi@kernel.org>, 
- =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
- Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, linux-pci@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- upstream@airoha.com, Christian Marangi <ansuelsmth@gmail.com>
-In-Reply-To: <20251012205900.5948-1-ansuelsmth@gmail.com>
-References: <20251012205900.5948-1-ansuelsmth@gmail.com>
-Subject: Re: (subset) [PATCH v5 0/5] PCI: mediatek: add support AN7583 +
- YAML rework
-Message-Id: <176044245213.17852.7184723529222407322.b4-ty@collabora.com>
-Date: Tue, 14 Oct 2025 13:47:32 +0200
+	id 1v8eFL-0000000GGYa-2mac;
+	Tue, 14 Oct 2025 12:35:19 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 33F86622BF;
+	Tue, 14 Oct 2025 12:35:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E4438C113D0;
+	Tue, 14 Oct 2025 12:35:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1760445316;
+	bh=OglqYXM5gyVnfpoYuVb+zV5hz/W1Vl9+ARMyr+0WbGw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=lRx3vTWNBxv6d5kpQ7a+9oj+0o7lHIZ2qIzdRfQ4B2vbByNg7J2Xi4OJZclAzcVx/
+	 J2IAggSjs7wYlXqSaBYxSeXHuoggrkJ2HG9zsOPnMCDszeLhfMObE2hVGHfLKe61NT
+	 CIjZ6/syIKWmkLcpNm9nzmEfA/dQLuG4tCxL7a51qDcfatjBY04jtHBEB5LYUNzjFx
+	 X0VPhvtIYqTduRfMP/SEIdwcGumSF9YR0Js1EqDprBGu73IXGirDu2ibMC7/BqxmGA
+	 T7nx8YAxgFor4ii99Cm9S2/sxeOKgJeyR6ZnKTgfuibcBoTPmsRDX3DHvLDVVtnSzv
+	 Kp38JB9W+LMdA==
+Date: Tue, 14 Oct 2025 13:35:11 +0100
+From: Mark Brown <broonie@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+	linux-mediatek@lists.infradead.org, lee@kernel.org, robh@kernel.org,
+	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
+	lgirdwood@gmail.com, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com, wenst@chromium.org,
+	igor.belwon@mentallysanemainliners.org
+Subject: Re: [PATCH v8 4/9] regulator: Add support for MediaTek MT6363 SPMI
+ PMIC Regulators
+Message-ID: <bcf1004d-802a-4b48-9aab-0a4e39274037@sirena.org.uk>
+References: <20251003091158.26748-1-angelogioacchino.delregno@collabora.com>
+ <20251003091158.26748-5-angelogioacchino.delregno@collabora.com>
+ <5635636.31r3eYUQgx@workhorse>
+ <ac809179-7192-4218-8b13-86b9252652f4@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.14.3
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251014_044735_194581_EFDF6AC9 
-X-CRM114-Status: UNSURE (   8.90  )
-X-CRM114-Notice: Please train this message.
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="Wn5Uvbbd3mnsI5Zl"
+Content-Disposition: inline
+In-Reply-To: <ac809179-7192-4218-8b13-86b9252652f4@collabora.com>
+X-Cookie: Go 'way!  You're bothering me!
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,36 +78,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 12 Oct 2025 22:56:54 +0200, Christian Marangi wrote:
-> This little series convert the PCIe GEN2 Documentation to YAML schema
-> and adds support for Airoha AN7583 GEN2 PCIe Controller.
-> 
-> Changes v5:
-> - Drop redudant entry from AN7583 patch
-> - Fix YAML error for AN7583 patch (sorry)
-> Changes v4:
-> - Additional fix/improvement for YAML conversion
-> - Add review tag
-> - Fix wording on hifsys patch
-> - Rework PCI driver to flags and improve PBus logic
-> Changes v3:
-> - Rework patch 1 to drop syscon compatible
-> Changes v2:
-> - Add cover letter
-> - Describe skip_pcie_rstb variable
-> - Fix hifsys schema (missing syscon)
-> - Address comments on the YAML schema for PCIe GEN2
-> - Keep alphabetical order for AN7583
-> 
-> [...]
 
-Applied to v6.18-next/dts32, thanks!
+--Wn5Uvbbd3mnsI5Zl
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-[1/5] ARM: dts: mediatek: drop wrong syscon hifsys compatible for MT2701/7623
-      commit: 5416aeee4ef761b79d2e1c35f6d9a35bf3104709
+On Tue, Oct 14, 2025 at 01:35:37PM +0200, AngeloGioacchino Del Regno wrote:
+> Il 09/10/25 16:41, Nicolas Frattaroli ha scritto:
 
-Cheers,
-Angelo
+> > Just initialise ret to 0 at the start of the function scope when
+> > you declare it. You've already missed an uninitialised use once,
+> > and playing these branch games is just asking for more trouble
+> > in the future. There's no micro-optimisation you're doing here,
+> > clang produces the same assembly for both zero initialised and
+> > the else branch version you're doing here.
 
+> It's not about micro-optimization. Double initialization is a bad coding practice.
 
+Yes, if you just set the value at the start of the function then the
+compiler won't be able to tell if you messed up the logic somewhere
+later.  Sure, the warning is gone but that also includes cases where the
+compiler is telling you about an actual problem.
+
+--Wn5Uvbbd3mnsI5Zl
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmjuQ34ACgkQJNaLcl1U
+h9C5jwf/XU13FSuJxf8T6RtyRPNXGOvljyrxJ6DklBvAU42vkhAKd19/Gv8HQSYJ
+vBoncLDbmzjUzf0Eo8ciSWrShl2MjmlDmg72ZTQpebIO+DszBkL6A2Ikreff9HcL
+0OhH91cshDMWzgd2R00tC8PDORmTljNrqWted4qwYIbUrbOpZK7kfmgtXa/f06md
+fX+/uU6SJ2ojk0apfoLg/avXygk0WgcSyelVofWOrXOQFqv7WDjHDjRBnBqavlK6
+O0lOjIoOYcuNylri623mMDDsAWlxDQjST8SYW2vzxW51oVgi4ctPxzgnnmBwi4vq
+LegSnOySQBMW+QhVHbhCEQt3pYf86g==
+=YAVv
+-----END PGP SIGNATURE-----
+
+--Wn5Uvbbd3mnsI5Zl--
 
