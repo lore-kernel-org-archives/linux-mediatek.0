@@ -4,55 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF61ACCD194
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Oct 2025 15:11:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A1CBCCD194
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Oct 2025 15:11:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6Gff7G1g/GqG8/Cg1a6daJvkf1hEhtYTLHsqf3G+mlM=; b=vcscrYKHJaj3OhGBslvcHXdPCl
-	gykbBYaYaB3NtQvScmEIPVhhBBk5RwsWh2FfNOXoC0MQgSsFQB20gyk/G8Q40j0VfohVixEEw/F/N
-	i49tNgNT976EzU9u4tEtO05rt1TEMmVX52+au6/XwWx5U63s/EnjDG8W0r4vuuiqxHtqdAtKl5UxE
-	6u5jgbjMYJVUkt+4D6X3HMzbHmytu3M1IG5cwq2SXTqr3ROdbuKiFITOEQ7v2ItG31wbK5UyN2TpG
-	SLPbAn4hggcMlToqK8Blsm3syq6mJYqtjOe32FcTIRD+iMibUktRlkfG4QWdFzlMVFbG7H54xkFlQ
-	+Ed6hqVQ==;
+	bh=IaZjyVgZLuZuUtVnxGG37OKipwDbPrdj2yM2vX3Sqjw=; b=00yebF2CtiCuKTtLI9kws6Y4Ov
+	c5d4IBm+bwUgdQFCJ/7J7k5UahAk3LpmlZ6izk20O0i5oNLO8KibJsxg09Imf+061HN8be6ShV8s0
+	To+umz8BdPbhhaY03nVhEefcu+z00qeosn5N9CUjydc/kyD1D/41TzE34HDXasyxEP5zyMIWu5CXA
+	xribH7botjcCT5/78GwRSoSSFzAmwGzNM9pl7mNk+ir+8/C1RE/kDHbc0dCiTKzZDBHnTlN5+4AI3
+	omeu0nvNZwjR7TGW3ojM1SrwUf3kDgSGcMTfarBibKXHkaLJZajGGQZdat/p98jexjG5R2t3E32oi
+	4no9Yraw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8gfz-0000000GlPF-2vJV;
-	Tue, 14 Oct 2025 15:10:59 +0000
+	id 1v8gg9-0000000GlUo-2HbL;
+	Tue, 14 Oct 2025 15:11:09 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8gfm-0000000GlHj-0zFM;
-	Tue, 14 Oct 2025 15:10:48 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1760454634; cv=none; 
+	id 1v8gfv-0000000GlLQ-1tNo;
+	Tue, 14 Oct 2025 15:10:57 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1760454640; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=YFesbeUwlkzD1QphTliZ9lmVeXUHPW9hLQj9rgLnOw0yoDOOfrclGyZGyp4vrXoT+lGGBz6cohrQH2R0rABTY8Nlkp+s4NQ3zr56+pdVuVnC7o/x14M3HzU3EhXzCZ+y2XR4E3uw7MFs6iJjLpk2C876kO+IsW1itFUuZ1Kblbk=
+	b=EhK8NFG8ZYrA1NULgL/6B9R4BgOOuBqSodKvMH2ggz5BbFLTYvQ/UNgfgmsJzXg82pbnSP4Xb1YCTaAyvtp2B7QPaTNyr7jvtYSqXB3Qb3lJK9VQncMGXoFWG5+UaDo2bmzuvvbCVYiuNqdSyp3UOvUDASIg/3VHLiolODOoYj4=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1760454634; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=6Gff7G1g/GqG8/Cg1a6daJvkf1hEhtYTLHsqf3G+mlM=; 
-	b=bK1Jys7bgxokaalWMIKr5axRapsTOsIDtb0wd+gEyRjBYPRbpV4MAFcxt/+ZLV4c/aJGsW0WgCEOw9TFpc2p+2XQSX7RoSxrSXi+nYwIkCfuu8rIlMpJxj/N8rjsSrh+dsBBEZk6gt3K5cBSsFDwsVbBobxR8mykXbVD2cfDYMw=
+	t=1760454640; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=IaZjyVgZLuZuUtVnxGG37OKipwDbPrdj2yM2vX3Sqjw=; 
+	b=RAtV+qcdaWlzJIsmdOC4L1BBxSFXJQLhG35qNIFanGdgPzCKyNrF83Ybsb94fvnu/DRvoRPXyMfMiIql5ygDdz15p76n4eg0XY1y3LNE8fdSXHIUagrrqSCaeednZow+hDSNm0m9mVXE1l66k2jfXO1ePfJqZ6jjiZFuE8rVKzw=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1760454634;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1760454640;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=6Gff7G1g/GqG8/Cg1a6daJvkf1hEhtYTLHsqf3G+mlM=;
-	b=SkvXYBaC48Q1+OmzERbolE3fIu4xG1Ao/KReZN4R1gLtO/KsGKyA7GSd6r7SBEMj
-	f5lElPmfYtPM0SHn/o2Vvrc2iTA5jxn8cUaXJCxGQKsrL9iANW/QvIBOFJkfW1TYKRq
-	3KCAIw5OIPcDsLKEOnTWjk9FWEBXD0kC1+nH2ACg=
-Received: by mx.zohomail.com with SMTPS id 1760454632840287.65577737972126;
-	Tue, 14 Oct 2025 08:10:32 -0700 (PDT)
+	bh=IaZjyVgZLuZuUtVnxGG37OKipwDbPrdj2yM2vX3Sqjw=;
+	b=lQHwgqCA135N4a61mEhq1P61Zld0tISGXCENHxAZKdiBBNbEGytoWcapDtgho3Mw
+	zaUlC+15AmsSfa5tW6rnQ5XF+eh7onovN+Dy8ud1FaIwPfAJDtifUHitqTZmjYJGAHM
+	07A0PMDXjlwKA+KcDKBLHje/ahCFhCvz1sHEhAg8=
+Received: by mx.zohomail.com with SMTPS id 1760454638875336.50108320974346;
+	Tue, 14 Oct 2025 08:10:38 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Tue, 14 Oct 2025 17:10:06 +0200
-Subject: [PATCH 2/5] dt-bindings: phy: Add mediatek,mt8196-ufsphy variant
+Date: Tue, 14 Oct 2025 17:10:07 +0200
+Subject: [PATCH 3/5] scsi: ufs: mediatek: Move MTK_SIP_UFS_CONTROL to
+ mtk_sip_svc.h
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251014-mt8196-ufs-v1-2-195dceb83bc8@collabora.com>
+Message-Id: <20251014-mt8196-ufs-v1-3-195dceb83bc8@collabora.com>
 References: <20251014-mt8196-ufs-v1-0-195dceb83bc8@collabora.com>
 In-Reply-To: <20251014-mt8196-ufs-v1-0-195dceb83bc8@collabora.com>
 To: Alim Akhtar <alim.akhtar@samsung.com>, 
@@ -76,9 +77,8 @@ Cc: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
  Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251014_081047_879395_5677D0B7 
-X-CRM114-Status: UNSURE (   9.42  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251014_081055_542029_B3F0CE53 
+X-CRM114-Status: GOOD (  12.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,59 +93,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MediaTek MT8196 SoC includes an M-PHY compatible with the already
-existing mt8183 binding.
+SMC commands used by multiple drivers need to live in a shared header
+file somewhere to avoid code duplication. In order to rework the MPHY
+reset control to be in the phy-mtk-ufs.c driver, both ufs-mediatek and
+the phy driver need access to this command.
 
-However, one omission from the original binding was that all of these
-variants may have an optional reset.
-
-Add the new compatible, and also the resets property, with an example.
+Move it to mtk_sip_svc.h, where other such command definitions already
+live.
 
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- .../devicetree/bindings/phy/mediatek,ufs-phy.yaml        | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+ drivers/ufs/host/ufs-mediatek-sip.h      | 1 -
+ include/linux/soc/mediatek/mtk_sip_svc.h | 3 +++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/phy/mediatek,ufs-phy.yaml b/Documentation/devicetree/bindings/phy/mediatek,ufs-phy.yaml
-index 3e62b5d4da61..f414aaa18997 100644
---- a/Documentation/devicetree/bindings/phy/mediatek,ufs-phy.yaml
-+++ b/Documentation/devicetree/bindings/phy/mediatek,ufs-phy.yaml
-@@ -26,6 +26,7 @@ properties:
-       - items:
-           - enum:
-               - mediatek,mt8195-ufsphy
-+              - mediatek,mt8196-ufsphy
-           - const: mediatek,mt8183-ufsphy
-       - const: mediatek,mt8183-ufsphy
+diff --git a/drivers/ufs/host/ufs-mediatek-sip.h b/drivers/ufs/host/ufs-mediatek-sip.h
+index 7d17aedf6fb8..d627dfb4a766 100644
+--- a/drivers/ufs/host/ufs-mediatek-sip.h
++++ b/drivers/ufs/host/ufs-mediatek-sip.h
+@@ -11,7 +11,6 @@
+ /*
+  * SiP (Slicon Partner) commands
+  */
+-#define MTK_SIP_UFS_CONTROL               MTK_SIP_SMC_CMD(0x276)
+ #define UFS_MTK_SIP_VA09_PWR_CTRL         BIT(0)
+ #define UFS_MTK_SIP_DEVICE_RESET          BIT(1)
+ #define UFS_MTK_SIP_CRYPTO_CTRL           BIT(2)
+diff --git a/include/linux/soc/mediatek/mtk_sip_svc.h b/include/linux/soc/mediatek/mtk_sip_svc.h
+index abe24a73ee19..9a6866912e81 100644
+--- a/include/linux/soc/mediatek/mtk_sip_svc.h
++++ b/include/linux/soc/mediatek/mtk_sip_svc.h
+@@ -28,4 +28,7 @@
+ /* IOMMU related SMC call */
+ #define MTK_SIP_KERNEL_IOMMU_CONTROL	MTK_SIP_SMC_CMD(0x514)
  
-@@ -42,6 +43,10 @@ properties:
-       - const: unipro
-       - const: mp
- 
-+  resets:
-+    items:
-+      - description: Optional UFS M-PHY reset.
++/* UFS related SMC call */
++#define MTK_SIP_UFS_CONTROL		MTK_SIP_SMC_CMD(0x276)
 +
-   "#phy-cells":
-     const: 0
- 
-@@ -65,5 +70,16 @@ examples:
-         clock-names = "unipro", "mp";
-         #phy-cells = <0>;
-     };
-+  - |
-+    #include <dt-bindings/reset/mediatek,mt8196-resets.h>
-+    ufs-phy@16800000 {
-+        compatible = "mediatek,mt8196-ufsphy", "mediatek,mt8183-ufsphy";
-+        reg = <0x16800000 0x10000>;
-+        clocks = <&ufs_ao_clk 3>,
-+                 <&ufs_ao_clk 5>;
-+        clock-names = "unipro", "mp";
-+        resets = <&ufs_ao_clk MT8196_UFSAO_RST0_UFS_MPHY>;
-+        #phy-cells = <0>;
-+    };
- 
- ...
+ #endif
 
 -- 
 2.51.0
