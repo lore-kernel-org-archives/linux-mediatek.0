@@ -4,69 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB529CCD184
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Oct 2025 11:35:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F79ECCD184
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Oct 2025 11:46:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vWowQ5QX/OOxHa8vEg4j0wTIcyU/NF/w6QRhH8XGonQ=; b=JWKCVVsUFELuJCTgo4mTeIpyeZ
-	37s/vh9LvNf6c54EI6vU0K6BC9iZM11Tu3rXNpkShzEaVWgbF4vXhvKZLCZJH7oXWfBEGgU1QjGQI
-	oIepOLWSwY7w0obx6w5hD5+MtNmoFYxzFgnjLYdzTfMrSUQkadTH/XXIPTrjThclcmxZhH09ZMNmM
-	fkKc90/VwUe13nl6tG974jLfBQQOomuzwHL2KYS8P29NqjxYEuaHqmSkkkQtug1ZGqUG2sRwwL08N
-	p1lttklQeImOnzAtopTMm1T3bw1q7TY3T8vlEtpo9C/rx8368/l/lETzMUck026zJEc2haXSyBvpj
-	+kvDvHiQ==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WZtc2WpoNcz6XbHbCoqRq76rCEZjFybGJyPL+73RnEI=; b=WWUp3l5zAU7ch5NX4wVFu+tvPv
+	Fxg3iXdi9h6JK7yHbkFXW8TyQtzcpEwDvkFouPraMgg/SlP3KbKRG78usTIesNyjlvizx200PHpOo
+	onBIWhCj03tN9cRE8TV6rZzchV5xgGKrmIxYBux6vnjRmX+7zEFdWvLg8GrSYZB44DsQBmVgVmeM4
+	3i3KjDmnAP7sXwHaBFgrb1+NFluekHIPWOUB249PHSM59vQ6aDhUvQ7iojEEEzcLqWg6b+DZW02f3
+	2jM6oRVth5fqcgHyRe9e5VREl0QFVKtsQwTGkr9cazjo45PPO4I0pPr9VOsk+6NcvH2flzvhUUmkP
+	mqbYN/mA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8dJf-0000000G7bC-43Kq;
-	Tue, 14 Oct 2025 11:35:43 +0000
+	id 1v8dTn-0000000G8iF-0IMD;
+	Tue, 14 Oct 2025 11:46:11 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8dJd-0000000G7a6-0L11;
-	Tue, 14 Oct 2025 11:35:42 +0000
+	id 1v8dTk-0000000G8hO-0Sxt;
+	Tue, 14 Oct 2025 11:46:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1760441738;
-	bh=h4RfT8BW5uglHP1wgDRzO4OhIAmDCeHY9g1PjPS2PTQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=VVabfhq7ySgeQWE5YFVpMC15pBUMza3xxclEaC8rofCUOdhDa1fPFMXSahF59tAt/
-	 PlscaPeGH6puZRXSh6XtUdnz+6CF9Foificw1MOmFKh4t3a4oTta5+rOFKdNhW3H+Q
-	 XUaAdk+wzy5wenoOHpkJhmM5eZ70dpnkv4bCgV3LN459Q+UWo/+TGav8F5A4WOsx/S
-	 8dkoYVDPd0mQ+K3sv2RhVKBxsTdmrTyQsqw/GltdW4EFW9qQY1OT+ehE2YAkxfW/M2
-	 4E7JHPGCHYOr1A6gBUY6KCGgy4uWUVGuo0rGLqJlv8f7eswHLugQuJw1fo7qIn4pL+
-	 IF5aEfRAvMyFA==
+	s=mail; t=1760442365;
+	bh=zh3gtbXSbad8n/WFENsjqEdQRtU1t+VuBKeLZcIuCyo=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=TWReYMcOyfclxK+44jSQmchHsdlk6IIef/vqhGJE23lcMjrpnO1Et34zR/cQq9kAk
+	 rF+UbcMdgKjdvHYxxYigA1FNNnSZ3nfkkodefswzCN001LJtvDcFzbeXa6Owr7s6iS
+	 9qqkgib6MMZl3D+nKgBqOxrHD5fUnuPrRb7+EqtlOF3CWMNmEaxwfKLLK1CAzdFR4A
+	 l8Mar11CgfjWBkTS8lRDK2CziF+KrWXUnkTzhes4Ic1hPC5QEg7omk9FlxRTNwsn15
+	 yn5LdbSMY6dILtHYJxYEPEhzlfYPFESHmJnhXXqvrF09tA+TzQNy52wKKmcriF2AiQ
+	 3u2sVnc+uOG0Q==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1FB2517E055D;
-	Tue, 14 Oct 2025 13:35:38 +0200 (CEST)
-Message-ID: <ac809179-7192-4218-8b13-86b9252652f4@collabora.com>
-Date: Tue, 14 Oct 2025 13:35:37 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 516D217E013C;
+	Tue, 14 Oct 2025 13:46:05 +0200 (CEST)
+Message-ID: <675d5338-09f0-439b-b22c-a3d50b243b5e@collabora.com>
+Date: Tue, 14 Oct 2025 13:46:04 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 4/9] regulator: Add support for MediaTek MT6363 SPMI
- PMIC Regulators
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
- linux-mediatek@lists.infradead.org
-Cc: lee@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, lgirdwood@gmail.com, broonie@kernel.org,
+Subject: Re: [PATCH v5 4/5] PCI: mediatek: convert bool to single flags entry
+ and bitmap
+To: Christian Marangi <ansuelsmth@gmail.com>,
+ Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
+ <jianjun.wang@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+ Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
- wenst@chromium.org, igor.belwon@mentallysanemainliners.org
-References: <20251003091158.26748-1-angelogioacchino.delregno@collabora.com>
- <20251003091158.26748-5-angelogioacchino.delregno@collabora.com>
- <5635636.31r3eYUQgx@workhorse>
+ linux-arm-kernel@lists.infradead.org, upstream@airoha.com
+References: <20251012205900.5948-1-ansuelsmth@gmail.com>
+ <20251012205900.5948-5-ansuelsmth@gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <5635636.31r3eYUQgx@workhorse>
+In-Reply-To: <20251012205900.5948-5-ansuelsmth@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251014_043541_330002_E23E1485 
-X-CRM114-Status: GOOD (  20.35  )
+X-CRM114-CacheID: sfid-20251014_044608_333029_1DB0F8FE 
+X-CRM114-Status: GOOD (  24.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,109 +84,128 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 09/10/25 16:41, Nicolas Frattaroli ha scritto:
-> On Friday, 3 October 2025 11:11:53 Central European Summer Time AngeloGioacchino Del Regno wrote:
->> Add a driver for the regulators found on the MT6363 PMIC, fully
->> controlled by SPMI interface.
->> This PMIC regulates voltage with an input range of 2.6-5.0V, and
->> features 10 buck converters and 26 LDOs.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   drivers/regulator/Kconfig                  |  10 +
->>   drivers/regulator/Makefile                 |   1 +
->>   drivers/regulator/mt6363-regulator.c       | 935 +++++++++++++++++++++
->>   include/linux/regulator/mt6363-regulator.h | 330 ++++++++
->>   4 files changed, 1276 insertions(+)
->>   create mode 100644 drivers/regulator/mt6363-regulator.c
->>   create mode 100644 include/linux/regulator/mt6363-regulator.h
->>
->> [...]
->> diff --git a/drivers/regulator/mt6363-regulator.c b/drivers/regulator/mt6363-regulator.c
->> new file mode 100644
->> index 000000000000..812775072eb5
->> --- /dev/null
->> +++ b/drivers/regulator/mt6363-regulator.c
->> [...]
->> +
->> +static int mt6363_regulator_set_mode(struct regulator_dev *rdev,
->> +				     unsigned int mode)
->> +{
->> +	struct mt6363_regulator_info *info = rdev_get_drvdata(rdev);
->> +	struct regmap *regmap = rdev->regmap;
->> +	int cur_mode, ret;
->> +
->> +	if (!info->modeset_reg && mode == REGULATOR_MODE_FAST)
->> +		return -EOPNOTSUPP;
->> +
->> +	switch (mode) {
->> +	case REGULATOR_MODE_FAST:
->> +		ret = mt6363_buck_unlock(regmap, true);
->> +		if (ret)
->> +			break;
->> +
->> +		ret = regmap_set_bits(regmap, info->modeset_reg, info->modeset_mask);
->> +
->> +		mt6363_buck_unlock(regmap, false);
->> +		break;
->> +	case REGULATOR_MODE_NORMAL:
->> +		cur_mode = mt6363_regulator_get_mode(rdev);
->> +		if (cur_mode < 0) {
->> +			ret = cur_mode;
->> +			break;
->> +		}
->> +
->> +		if (cur_mode == REGULATOR_MODE_FAST) {
->> +			ret = mt6363_buck_unlock(regmap, true);
->> +			if (ret)
->> +				break;
->> +
->> +			ret = regmap_clear_bits(regmap, info->modeset_reg, info->modeset_mask);
->> +
->> +			mt6363_buck_unlock(regmap, false);
->> +			break;
->> +		} else if (cur_mode == REGULATOR_MODE_IDLE) {
->> +			ret = regmap_clear_bits(regmap, info->lp_mode_reg, info->lp_mode_mask);
->> +			if (ret == 0)
->> +				usleep_range(100, 200);
->> +		} else {
->> +			ret = 0;
+Il 12/10/25 22:56, Christian Marangi ha scritto:
+> To clean Mediatek SoC PCIe struct, convert all the bool to a bitmap and
+> use a single flags to reference all the values. This permits cleaner
+> addition of new flag without having to define a new bool in the struct.
 > 
-> Just initialise ret to 0 at the start of the function scope when
-> you declare it. You've already missed an uninitialised use once,
-> and playing these branch games is just asking for more trouble
-> in the future. There's no micro-optimisation you're doing here,
-> clang produces the same assembly for both zero initialised and
-> the else branch version you're doing here.
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> ---
+>   drivers/pci/controller/pcie-mediatek.c | 28 +++++++++++++++-----------
+>   1 file changed, 16 insertions(+), 12 deletions(-)
 > 
+> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+> index 24cc30a2ab6c..1678461e56d3 100644
+> --- a/drivers/pci/controller/pcie-mediatek.c
+> +++ b/drivers/pci/controller/pcie-mediatek.c
+> @@ -142,24 +142,29 @@
+>   
+>   struct mtk_pcie_port;
+>   
+> +enum mtk_pcie_flags {
 
-It's not about micro-optimization. Double initialization is a bad coding practice.
+enum mtk_pcie_quirks seems to be a better fit here, as this is used for... well..
+quirks.
+
+> +	NEED_FIX_CLASS_ID = BIT(0), /* host's class ID needed to be fixed */
+> +	NEED_FIX_DEVICE_ID = BIT(1), /* host's device ID needed to be fixed */
+> +	NO_MSI = BIT(2), /* Bridge has no MSI support, and relies on an
+> +			  * external block
+> +			  */
+
+Also perhaps... MTK_PCIE_FIX_CLASS_ID, MTK_PCIE_FIX_DEV_ID, MTK_PCIE_NO_MSI
+
+> +};
+> +
+>   /**
+>    * struct mtk_pcie_soc - differentiate between host generations
+> - * @need_fix_class_id: whether this host's class ID needed to be fixed or not
+> - * @need_fix_device_id: whether this host's device ID needed to be fixed or not
+>    * @no_msi: Bridge has no MSI support, and relies on an external block
+>    * @device_id: device ID which this host need to be fixed
+>    * @ops: pointer to configuration access functions
+>    * @startup: pointer to controller setting functions
+>    * @setup_irq: pointer to initialize IRQ functions
+> + * @flags: pcie device flags.
+>    */
+>   struct mtk_pcie_soc {
+> -	bool need_fix_class_id;
+> -	bool need_fix_device_id;
+> -	bool no_msi;
+>   	unsigned int device_id;
+>   	struct pci_ops *ops;
+>   	int (*startup)(struct mtk_pcie_port *port);
+>   	int (*setup_irq)(struct mtk_pcie_port *port, struct device_node *node);
+> +	u32 flags;
+
+u32 flags -> enum mtk_pcie_quirks quirks
 
 Cheers,
 Angelo
 
->> +		}
->> +		break;
->> +	case REGULATOR_MODE_IDLE:
->> +		ret = regmap_set_bits(regmap, info->lp_mode_reg, info->lp_mode_mask);
->> +		break;
->> +	default:
->> +		ret = -EINVAL;
->> +	}
->> +
->> +	if (ret) {
->> +		dev_err(&rdev->dev, "Failed to set mode %u: %d\n", mode, ret);
->> +		return ret;
->> +	}
->> +
->> +	return 0;
->> +}
->> +
->> [...]
-> 
-> Kind regards,
-> Nicolas Frattaroli
-> 
-> 
+>   };
+>   
+>   /**
+> @@ -703,7 +708,7 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
+>   	writel(val, port->base + PCIE_RST_CTRL);
+>   
+>   	/* Set up vendor ID and class code */
+> -	if (soc->need_fix_class_id) {
+> +	if (soc->flags & NEED_FIX_CLASS_ID) {
+>   		val = PCI_VENDOR_ID_MEDIATEK;
+>   		writew(val, port->base + PCIE_CONF_VEND_ID);
+>   
+> @@ -711,7 +716,7 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
+>   		writew(val, port->base + PCIE_CONF_CLASS_ID);
+>   	}
+>   
+> -	if (soc->need_fix_device_id)
+> +	if (soc->flags & NEED_FIX_DEVICE_ID)
+>   		writew(soc->device_id, port->base + PCIE_CONF_DEVICE_ID);
+>   
+>   	/* 100ms timeout value should be enough for Gen1/2 training */
+> @@ -1099,7 +1104,7 @@ static int mtk_pcie_probe(struct platform_device *pdev)
+>   
+>   	host->ops = pcie->soc->ops;
+>   	host->sysdata = pcie;
+> -	host->msi_domain = pcie->soc->no_msi;
+> +	host->msi_domain = !!(pcie->soc->flags & NO_MSI);
+>   
+>   	err = pci_host_probe(host);
+>   	if (err)
+> @@ -1187,9 +1192,9 @@ static const struct dev_pm_ops mtk_pcie_pm_ops = {
+>   };
+>   
+>   static const struct mtk_pcie_soc mtk_pcie_soc_v1 = {
+> -	.no_msi = true,
+>   	.ops = &mtk_pcie_ops,
+>   	.startup = mtk_pcie_startup_port,
+> +	.flags = NO_MSI,
+>   };
+>   
+>   static const struct mtk_pcie_soc mtk_pcie_soc_mt2712 = {
+> @@ -1199,19 +1204,18 @@ static const struct mtk_pcie_soc mtk_pcie_soc_mt2712 = {
+>   };
+>   
+>   static const struct mtk_pcie_soc mtk_pcie_soc_mt7622 = {
+> -	.need_fix_class_id = true,
+>   	.ops = &mtk_pcie_ops_v2,
+>   	.startup = mtk_pcie_startup_port_v2,
+>   	.setup_irq = mtk_pcie_setup_irq,
+> +	.flags = NEED_FIX_CLASS_ID,
+>   };
+>   
+>   static const struct mtk_pcie_soc mtk_pcie_soc_mt7629 = {
+> -	.need_fix_class_id = true,
+> -	.need_fix_device_id = true,
+>   	.device_id = PCI_DEVICE_ID_MEDIATEK_7629,
+>   	.ops = &mtk_pcie_ops_v2,
+>   	.startup = mtk_pcie_startup_port_v2,
+>   	.setup_irq = mtk_pcie_setup_irq,
+> +	.flags = NEED_FIX_CLASS_ID | NEED_FIX_DEVICE_ID,
+>   };
+>   
+>   static const struct of_device_id mtk_pcie_ids[] = {
+
 
 
