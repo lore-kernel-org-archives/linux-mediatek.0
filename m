@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C92D4CCD192
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Oct 2025 13:18:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CE60CCD192
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Oct 2025 13:18:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=l1L6dCANxX6aUgtEXhtUXuM3yx6oct3U3laoE+p24ZQ=; b=Vq7WmGHqRNzO8wc5Oe5nWyPaCK
-	Fu8KZHLqyvxLLHGkVRaSy0eOuwxPavNSPiVsXcC+GLDAAei22nAVoTvnr+I2Hw9mZOKnz5t+wZaTG
-	sDfopNZD+HDQHH6ve1cVdYPrlKL6XtvTkB3/a1rDTt8XFK+0vYw2ZeEsZUN4yq+FRI+M7jSzkz1l2
-	1976UC85hv37UjmHFFVVJsYZEVA0be8SLCxW7HfhJKPpLlfvAzD1MXR0RA4ZLJ3oiVkARQQz0Xx/y
-	c1WcBetEMe2sPMZ8BQ/j+9Vp5Omuacw1uNF7CZJfbYudY6Ysul+L30hXjyjGfcs3i8q5Y3UCnVVia
-	PaEpfvzg==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=b+/W5GqzX/f5jDv4MiVoAwbQFTs/rNKTXRmIxjri/8c=; b=YOjaMuhCKi0edicML2Q2CyutgE
+	xE2x6F8pgSBg++wSASl0ziKNrN8NRN4qTLTvvN6hmNnJGQdaGNyNNJzJ0u1LmKzB3iLFMU5ZpyaQ7
+	YnI1XDv/PVACk+tZEejurUYw8jBuQ3MuQYbmjPZ8+ChCVrtxzaO+0cQl+O5fzpAU2Wx4xAd7N5bXW
+	fautJFT0wzOHTAFJ7w+LKX1UBTpeErFEC+qteGDTdwzCBwp+ALsQ9cN0Z0DdblGd5CNayt5RcYh9v
+	15wGDM0s2iYsS8QvaQAcLCAJZCpojd2GDYZ3skxJiJemRaaRCwGuRK0f3qOse+hOrPOwUZ3OYAcCI
+	5ynGtKsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8euy-0000000GRqO-44DP;
-	Tue, 14 Oct 2025 13:18:20 +0000
+	id 1v8ev3-0000000GRru-15r9;
+	Tue, 14 Oct 2025 13:18:25 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8eux-0000000GRqA-3EqX
+	id 1v8ev1-0000000GRr8-2etM
 	for linux-mediatek@bombadil.infradead.org;
-	Tue, 14 Oct 2025 13:18:19 +0000
+	Tue, 14 Oct 2025 13:18:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=l1L6dCANxX6aUgtEXhtUXuM3yx6oct3U3laoE+p24ZQ=; b=V4U379IbMx8c50kNtRMMBs/oPe
-	8FIkEHbTAuGjKZjOzxrIaZaoMtr/MesgyENt7deC8oHChx+M8YXSkWyzgsbx3Y6/2nRFCec1rXuU7
-	NbG01ZX9w1+WLOi2uV0sqjhXdDOg7VBTsWEKP6tulwUHF72IvTrARQo8r9/BYe0m4Bv85T5wihN7Y
-	Zq5UOE0sbCVN+XNiVKfWJyydxaIRLpTDfwk7gJH6JhkDWec8W30FgqR3/yAuAbwXUhwBTl2EtliyK
-	UR3ATWAI6uaGGFV2wQEjeos8VS4CzC5dylIcLh8ZYqt9SsgYAO90dcrJfxkU7W6mCgHJxBwq2T3g2
-	aL5N4GxQ==;
+	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=b+/W5GqzX/f5jDv4MiVoAwbQFTs/rNKTXRmIxjri/8c=; b=iVjQ4fbKsAp6K48BhvSFHJ3Swu
+	CX4hqL+Ms47SuBAUX8UaeLQ0evmi8Zh+8be7r/FGUVqLyQAeet6t9y54VYydzvjHdMnjoxoO3fcYs
+	pOZvvm4q/gKD28Rzt6OwLVFcva7FmKCP+vj+1BmEBnF/ZpPf9q4afBJn7wpy90I84WKahw45Rc8FD
+	BUXw9P4e1nD8ePmx4Suwali9YqTOQ2I+I4DPdbi/ThDMIzuHBHzUslfWlaEj6GmS5VNz5uCd+DmP1
+	FVCo94EJ/oR0+N0ejyllEI9NlE2srezYXi8/l0uXl4fgLmUktMJsOU9xJn4Wcqz+nViCAhL4d3NGd
+	53ePjSeQ==;
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8eut-00000005BtY-1zr7
+	id 1v8eut-00000005BtZ-28kl
 	for linux-mediatek@lists.infradead.org;
-	Tue, 14 Oct 2025 13:18:18 +0000
-X-UUID: 36727cdaa90011f09f706fa2197c6ceb-20251014
+	Tue, 14 Oct 2025 13:18:22 +0000
+X-UUID: 36c46a72a90011f09f706fa2197c6ceb-20251014
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=l1L6dCANxX6aUgtEXhtUXuM3yx6oct3U3laoE+p24ZQ=;
-	b=Zx/XspCLadvqHpUk+xBJeFrYQXYhqSdacJ2yeAKVpk3mBH4+3kQicYebZTu29JJ2uIVowyC+wAKGx+K/er/spGCyDh1eck2PJOTXfq4yHSSW7oxf3Lr4QS+PElPb+gWrZUfWlxFvuxh/SS96Hy8ULedRD7jcCSaPVu7z8B8AVME=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=b+/W5GqzX/f5jDv4MiVoAwbQFTs/rNKTXRmIxjri/8c=;
+	b=mH7M1wNsVq3Hu5og42+L//ge6BNCmRZ8RMLzM/4SCUBzzIzVwQOL0cNQ1Gix8VQIXgMiJ0cGiXSRbri59ivt9P2v/X0ucT6rAmjM7WkF+tIXkQOnRAku0bWumSFCXjB8sBuc0shKbQywMJ5DpsktLLz2azVXhkRahFQZseHj2AM=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:368e40c9-ccb2-4be4-a317-9078c4906cb3,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:a9d874c,CLOUDID:cf670c51-c509-4cf3-8dc0-fcdaad49a6d3,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
-	0,EDM:-3,IP:nil,URL:0,File:130,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,
-	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.3.6,REQID:6aff3b33-bfc4-4791-b1cd-dd603c15f22b,IP:0,UR
+	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:-5
+X-CID-META: VersionHash:a9d874c,CLOUDID:3be16002-eaf8-4c8c-94de-0bc39887e077,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
+	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,
+	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 36727cdaa90011f09f706fa2197c6ceb-20251014
+X-UUID: 36c46a72a90011f09f706fa2197c6ceb-20251014
 Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
 	(envelope-from <peter.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 335102328; Tue, 14 Oct 2025 06:18:02 -0700
+	with ESMTP id 232768553; Tue, 14 Oct 2025 06:18:03 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
  MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
@@ -79,18 +79,19 @@ CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
 	<qilin.tan@mediatek.com>, <lin.gui@mediatek.com>, <tun-yu.yu@mediatek.com>,
 	<eddie.huang@mediatek.com>, <naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>,
 	<bvanassche@acm.org>
-Subject: [PATCH v1 0/2] update CQ entry and dump CQE in MCQ mode
-Date: Tue, 14 Oct 2025 21:15:54 +0800
-Message-ID: <20251014131758.270324-1-peter.wang@mediatek.com>
+Subject: [PATCH v1 1/2] ufs: core: update CQ Entry to UFS 4.1 format
+Date: Tue, 14 Oct 2025 21:15:55 +0800
+Message-ID: <20251014131758.270324-2-peter.wang@mediatek.com>
 X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20251014131758.270324-1-peter.wang@mediatek.com>
+References: <20251014131758.270324-1-peter.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251014_141816_459243_F631B964 
-X-CRM114-Status: UNSURE (   6.19  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251014_141816_372752_0F1D6A2C 
+X-CRM114-Status: GOOD (  12.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,18 +108,69 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Peter Wang <peter.wang@mediatek.com>
 
-Update the CQ entry format for UFS 4.1 compatibility and
-add support for logging CQ entries in MCQ mode, enhancing
-debugging capabilities.
+Update the completion queue (CQ) entry format with UFS 4.1
+specifications. UFS 4.1 introduces new members in reserved
+record DW5. This patch also refines the DW4 with detailed
+members defined in UFS 4.0. Modify the code to
+incorporate these changes by updating the overall_status
+in the CQ entry structure.
 
-Peter Wang (2):
-  ufs: core: update CQ Entry to UFS 4.1 format
-  ufs: core: support dumping CQ entry in MCQ Mode
-
- drivers/ufs/core/ufshcd.c | 17 ++++++++++-------
+Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+---
+ drivers/ufs/core/ufshcd.c |  4 ++--
  include/ufs/ufshci.h      | 17 +++++++++++++----
- 2 files changed, 23 insertions(+), 11 deletions(-)
+ 2 files changed, 15 insertions(+), 6 deletions(-)
 
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index ff7a3d60b11d..d779cc777a17 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -858,7 +858,7 @@ static enum utp_ocs ufshcd_get_tr_ocs(struct ufshcd_lrb *lrbp,
+ 				      struct cq_entry *cqe)
+ {
+ 	if (cqe)
+-		return le32_to_cpu(cqe->status) & MASK_OCS;
++		return cqe->overall_status & MASK_OCS;
+ 
+ 	return lrbp->utr_descriptor_ptr->header.ocs & MASK_OCS;
+ }
+@@ -5643,7 +5643,7 @@ void ufshcd_compl_one_cqe(struct ufs_hba *hba, int task_tag,
+ 		scsi_done(cmd);
+ 	} else {
+ 		if (cqe) {
+-			ocs = le32_to_cpu(cqe->status) & MASK_OCS;
++			ocs = cqe->overall_status & MASK_OCS;
+ 			lrbp->utr_descriptor_ptr->header.ocs = ocs;
+ 		}
+ 		complete(&hba->dev_cmd.complete);
+diff --git a/include/ufs/ufshci.h b/include/ufs/ufshci.h
+index 612500a7088f..8b14f6e5e6f5 100644
+--- a/include/ufs/ufshci.h
++++ b/include/ufs/ufshci.h
+@@ -567,10 +567,19 @@ struct cq_entry {
+ 	__le16  prd_table_offset;
+ 
+ 	/* DW 4 */
+-	__le32 status;
+-
+-	/* DW 5-7 */
+-	__le32 reserved[3];
++	u8 overall_status;
++	u8 extended_error_code;
++	__le16 reserved_1;
++
++	/* DW 5 */
++	u8 task_tag;
++	u8 lun;
++	u8 iid:4;
++	u8 ext_iid:4;
++	u8 reserved_2;
++
++	/* DW 6-7 */
++	__le32 reserved_3[2];
+ };
+ 
+ static_assert(sizeof(struct cq_entry) == 32);
 -- 
 2.45.2
 
