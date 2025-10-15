@@ -4,79 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67EF7CCD192
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Oct 2025 12:57:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49A00CCD192
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Oct 2025 13:42:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FJTwQv8Ox1iDrcXeqPavbH9zF4rYuJibos6k9whMNQ8=; b=zbZQohikHhhh6zNQD4kr1zKMz+
-	n2R9WTJRt/dPrbHDQqMUW2MZ/3vPtoj3M6TzL8N03RCsGIsDvrF0bJx7qMNlIf6jq73Beknk0QztZ
-	Mrzv12qVLFKnEol9wlz+FrZ3Q4VWCgC1e78TJEhZKfVrCFAvVmMZdqLY6jCrk5JO188hpG2WyO2I/
-	+I968L2g2jvCibGkk4znhDC7QbqyR465OuQgoSkHYZKgmUAUSOKgXCL7aKUA/uk1eusLI7CX+N9W3
-	PAEABiuYDx8t7TKDXEON0V+393lfdxVq7NtW8TmF/Xy7XQOlsvAMUNovac3+FuyTS1+cjxYfMIvOw
-	N8IbNi5Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Subject:References:In-Reply-To:Message-Id:Cc:To:From:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BYnaKJiuSf33cLfIqDvIV7F5Wm7fS2cDOTMrUdztEMY=; b=K41uDa8EFSaWGSXxddROZPMJcf
+	SFiBvneCZi1uutKD9HMv2SbRfmKGN5oib4OgrKCHi7o1U4kK0wVFe/fzWGKINFmF5vY70FQBMxjSU
+	psEfVkwflQIfsJZx6bwU/Wsr4x5I7lMz7pyZ7skAhg0xCAF6ltJLZMX6QTrUyWabFXbDpsI73Hk+D
+	f7Both9mGi7ml7dQlsH+U9NOT4DO1rTv2Tf82kJDr+mVo/dYJY2A67NN6xrv28nzfwKv8S63KI4MQ
+	ZZJZLGVgl8acdrjL+WB3hjn8ZgzWSkq23+JtMdLbaqbTKTewEi0G1+d35UrEW5a2LofbIPlPYmZFq
+	o8J9ML6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v914D-00000001buu-1yPi;
-	Wed, 15 Oct 2025 12:57:21 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1v91lU-00000001jL9-3N4L;
+	Wed, 15 Oct 2025 13:42:04 +0000
+Received: from fhigh-b7-smtp.messagingengine.com ([202.12.124.158])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9146-00000001bo0-3FSx;
-	Wed, 15 Oct 2025 12:57:16 +0000
-X-UUID: 760185f0a9c611f09f706fa2197c6ceb-20251015
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=FJTwQv8Ox1iDrcXeqPavbH9zF4rYuJibos6k9whMNQ8=;
-	b=Jsn06NISHI3EyVuEnrZgFQ31d6s+rKhkA870InDJUNJZorECH9QBUkJF1/8SEXGQ96W2/pxCXmgz37o7RXvu7DzdQG4doieNzIDqHIRvyDvjghk9eInJjYnjYbI5bV4emoxRdAkN4zqe6GDEqoogKLQajh7QnF9l02bP6OKQU9E=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:3c86c0ec-ec69-4983-9658-2af442e1456e,IP:0,UR
-	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:-5
-X-CID-META: VersionHash:a9d874c,CLOUDID:12fe1651-c509-4cf3-8dc0-fcdaad49a6d3,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
-	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,
-	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 760185f0a9c611f09f706fa2197c6ceb-20251015
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
-	(envelope-from <zhengnan.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1081302105; Wed, 15 Oct 2025 05:57:09 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.10; Wed, 15 Oct 2025 20:57:06 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.10 via Frontend Transport; Wed, 15 Oct 2025 20:57:05 +0800
-From: Zhengnan Chen <zhengnan.chen@mediatek.com>
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Will
- Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring
-	<robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
-	<conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: <iommu@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Zhengnan Chen
-	<zhengnan.chen@mediatek.com>
-Subject: [PATCH v3 3/5] iommu/mediatek: mt8189: Add APU IOMMUs support
-Date: Wed, 15 Oct 2025 20:55:15 +0800
-Message-ID: <20251015125532.9041-4-zhengnan.chen@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20251015125532.9041-1-zhengnan.chen@mediatek.com>
-References: <20251015125532.9041-1-zhengnan.chen@mediatek.com>
+	id 1v91lS-00000001jJl-0DYu;
+	Wed, 15 Oct 2025 13:42:03 +0000
+Received: from phl-compute-05.internal (phl-compute-05.internal [10.202.2.45])
+	by mailfhigh.stl.internal (Postfix) with ESMTP id 5BF447A0122;
+	Wed, 15 Oct 2025 09:42:00 -0400 (EDT)
+Received: from phl-imap-02 ([10.202.2.81])
+  by phl-compute-05.internal (MEProxy); Wed, 15 Oct 2025 09:42:00 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
+	:cc:content-transfer-encoding:content-type:content-type:date
+	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:subject:to:to; s=fm1; t=1760535720;
+	 x=1760622120; bh=BYnaKJiuSf33cLfIqDvIV7F5Wm7fS2cDOTMrUdztEMY=; b=
+	Z8W41eUdgOJmZNdBMqHrC8Tns2LnWihcTSmiry8QkvGnQyRilJ0DyaIVIh476NCe
+	l3cMN2QbixMphF5nsDTzDrnKXvVm9/InC4d6vdwSsu2aoEyUn0a2v4Nu6CAd9kdd
+	zjJNszE2NLq4ELpZ3zlqdOy7qQnVHVTRuBYjr/CF+DyWjWvEi7vbxuGBDgl7oRc8
+	rmiidsV2Xcf1raMx8BoZ0EN5qUCdm9C5+sqMGyZHrXT2PMmLrY26r2Ehf1rLZ6+m
+	/fz7XOtaxrelR8THCHrxUTZChp8rFi6sbco4X9+U9rAh2hrQXd6kuELf7dKRpkMw
+	CkNgXv0CtOWGN2k7urcD+w==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:content-type:date:date:feedback-id:feedback-id
+	:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:subject:to:to:x-me-proxy
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1760535720; x=
+	1760622120; bh=BYnaKJiuSf33cLfIqDvIV7F5Wm7fS2cDOTMrUdztEMY=; b=q
+	LJr+fOATB77i1UoDYJ2kxzcCw2bjzuDDYQaT3cQdCIF7lnYzDiYbCGTABwD00eMh
+	SMbzu/4fiIZprqPYlA5VY3QQHkd5S/INDNnR5A0r8iBrSOEC55Do+b1S0h2Te53w
+	eejvnad2XQGzT1iFdIDOvTEkKn5Ukt1GLeT3CpmJchv/Z9rfQoRyulBOmAYpSOhX
+	fHeE0T15sbOs/DxGbSlcFaPf2wiZLDzU28/LybCSUnWcOeGjW4PmMfsZ7ZuySgf6
+	4rrM6ghU2jhCzc2YeWQzRuCCLGD6Mi0cIBiTS+yaBoCL97kLE9CKbCbaDd9EyvCY
+	rK8bI8b5DRs77ySGjCSCQ==
+X-ME-Sender: <xms:p6TvaC6ye3TJbDtGaQiUZSlHawLRfoxuMC4CNTUvTFK2ubaz4smoQw>
+    <xme:p6TvaGsFt7znWv3O-Qvpe-rTxXuktBWy2d76kVZ_epS8R7DlL2RyVNfvNx_HbvBTA
+    gGEMR856W-NGRlDMCRLC9gTNtNr_7kd2wBmGmiq8x9jor_4Go5i-jo>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdeggdduvdefheeiucetufdoteggodetrf
+    dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
+    rghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujf
+    gurhepofggfffhvfevkfgjfhfutgfgsehtjeertdertddtnecuhfhrohhmpedftehrnhgu
+    uceuvghrghhmrghnnhdfuceorghrnhgusegrrhhnuggsrdguvgeqnecuggftrfgrthhtvg
+    hrnhepfefhheetffduvdfgieeghfejtedvkeetkeejfeekkeelffejteevvdeghffhiefh
+    necuffhomhgrihhnpehkvghrnhgvlhdrohhrghenucevlhhushhtvghrufhiiigvpedtne
+    curfgrrhgrmhepmhgrihhlfhhrohhmpegrrhhnugesrghrnhgusgdruggvpdhnsggprhgt
+    phhtthhopedutddpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtohepfigvnhhsthestg
+    hhrhhomhhiuhhmrdhorhhgpdhrtghpthhtoheprghnghgvlhhoghhiohgrtggthhhinhho
+    rdguvghlrhgvghhnohestgholhhlrggsohhrrgdrtghomhdprhgtphhtthhopehkvghrnh
+    gvlhestgholhhlrggsohhrrgdrtghomhdprhgtphhtthhopehmrghtthhhihgrshdrsghg
+    ghesghhmrghilhdrtghomhdprhgtphhtthhopegrnhguvghrshhsohhnsehkvghrnhgvlh
+    drohhrghdprhgtphhtthhopehmrghthhhivghurdhpohhirhhivghrsehlihhnrghrohdr
+    ohhrghdprhgtphhtthhopehlihhnuhigqdgrrhhmqdhkvghrnhgvlheslhhishhtshdrih
+    hnfhhrrgguvggrugdrohhrghdprhgtphhtthhopehlihhnuhigqdhmvgguihgrthgvkhes
+    lhhishhtshdrihhnfhhrrgguvggrugdrohhrghdprhgtphhtthhopehlihhnuhigqdhkvg
+    hrnhgvlhesvhhgvghrrdhkvghrnhgvlhdrohhrgh
+X-ME-Proxy: <xmx:p6TvaBHNKnVxvA4B7hOIhVtCul9uXfiSGWmrglzje3bwxBTbnMkk0g>
+    <xmx:p6TvaEkcm4NXqSwJus1Ky3jFT26RsL7n7F4wld23SJpafqj0XR7Cuw>
+    <xmx:p6TvaMfkDr06akdUCPnW3KfN1W7g0t61WypctFLh6SRzFv4b1v3NFA>
+    <xmx:p6TvaKEFO1EyMlfBAqLE1L4IEHWZqJeTJg4eN8x3mPzMnw2-SP28Og>
+    <xmx:qKTvaA6CcYQI_7d-v5lCFoQTbsV8HHuzART7r0eJRreAVCvRa1GIlar7>
+Feedback-ID: i56a14606:Fastmail
+Received: by mailuser.phl.internal (Postfix, from userid 501)
+	id B441B700065; Wed, 15 Oct 2025 09:41:59 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-ThreadId: A1uT7sOefpDB
+Date: Wed, 15 Oct 2025 15:41:39 +0200
+From: "Arnd Bergmann" <arnd@arndb.de>
+To: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
+ linux-remoteproc@vger.kernel.org
+Cc: "Bjorn Andersson" <andersson@kernel.org>,
+ "Mathieu Poirier" <mathieu.poirier@linaro.org>,
+ "Matthias Brugger" <matthias.bgg@gmail.com>,
+ "Chen-Yu Tsai" <wenst@chromium.org>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ kernel@collabora.com
+Message-Id: <3f23850e-f01f-4a2e-a7dc-82c04ab5926c@app.fastmail.com>
+In-Reply-To: <20251015084103.10737-1-angelogioacchino.delregno@collabora.com>
+References: <20251015084103.10737-1-angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2] remoteproc: mtk_scp: Construct FW path if firmware-name not
+ present
 Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251015_055714_940344_7AB4132E 
-X-CRM114-Status: GOOD (  12.66  )
+X-CRM114-CacheID: sfid-20251015_064202_397814_1FDECBE3 
+X-CRM114-Status: GOOD (  27.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,95 +121,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for mt8189 APU IOMMUs.
+On Wed, Oct 15, 2025, at 10:41, AngeloGioacchino Del Regno wrote:
+> After a reply on the mailing lists [1] it emerged that the DT
+> property "firmware-name" should not be relied on because of
+> possible issues with firmware versions.
+> For MediaTek SCP, there has never been any firmware version vs
+> driver version desync issue but, regardless, the firmwares are
+> always using the same name and they're always located in a path
+> with a specific pattern.
+>
+> Instead of unconditionally always relying on the firmware-name
+> devicetree property to get a path to the SCP FW file, drivers
+> should construct a name based on what firmware it knows and
+> what hardware it is running on.
+>
+> In order to do that, add a `scp_get_default_fw_path()` function
+> that constructs the path and filename based on two of the infos
+> that the driver can get:
+>  1. The compatible string with the highest priority (so, the
+>     first one at index 0); and
+>  2. The type of SCP HW - single-core or multi-core.
+>
+> This means that the default firmware path is generated as:
+>  - Single core SCP: mediatek/(soc_model)/scp.img
+>    for example:     mediatek/mt8183/scp.img;
+>
+>  - Multi core SCP:  mediatek/(soc_model)/scp_c(core_number).img
+>    for example:     mediatek/mt8188/scp_c0.img for Core 0, and
+>                     mediatek/mt8188/scp_c1.img for Core 1.
+>
+> Note that the generated firmware path is being used only if the
+> "firmware-name" devicetree property is not present in the SCP
+> node or in the SCP Core node(s).
+>
+> [1 - Reply regarding firmware-name property]
+> Link: 
+> https://lore.kernel.org/all/7e8718b0-df78-44a6-a102-89529d6abcce@app.fastmail.com/
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Signed-off-by: Zhengnan Chen <zhengnan.chen@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/iommu/mtk_iommu.c | 34 ++++++++++++++++++++++++++++++++++
- 1 file changed, 34 insertions(+)
+This looks good to me, thanks for the changes!
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 7af47c59b10b..999f7b858164 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -139,6 +139,7 @@
- /* 2 bits: iommu type */
- #define MTK_IOMMU_TYPE_MM		(0x0 << 13)
- #define MTK_IOMMU_TYPE_INFRA		(0x1 << 13)
-+#define MTK_IOMMU_TYPE_APU		(0x2 << 13)
- #define MTK_IOMMU_TYPE_MASK		(0x3 << 13)
- /* PM and clock always on. e.g. infra iommu */
- #define PM_CLK_AO			BIT(15)
-@@ -172,6 +173,7 @@ enum mtk_iommu_plat {
- 	M4U_MT8173,
- 	M4U_MT8183,
- 	M4U_MT8186,
-+	M4U_MT8189,
- 	M4U_MT8188,
- 	M4U_MT8192,
- 	M4U_MT8195,
-@@ -336,6 +338,7 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data, unsigned int ban
-  */
- #define MTK_IOMMU_4GB_MODE_REMAP_BASE	 0x140000000UL
- 
-+static LIST_HEAD(apulist);	/* List the apu iommu HWs */
- static LIST_HEAD(m4ulist);	/* List all the M4U HWs */
- 
- #define for_each_m4u(data, head)  list_for_each_entry(data, head, list)
-@@ -351,6 +354,15 @@ static const struct mtk_iommu_iova_region single_domain[] = {
- #define MT8192_MULTI_REGION_NR	(IS_ENABLED(CONFIG_ARCH_DMA_ADDR_T_64BIT) ? \
- 				 MT8192_MULTI_REGION_NR_MAX : 1)
- 
-+static const struct mtk_iommu_iova_region mt8189_multi_dom_apu[] = {
-+	{ .iova_base = 0x200000ULL,	.size = SZ_512M},	/* APU SECURE */
-+#if IS_ENABLED(CONFIG_ARCH_DMA_ADDR_T_64BIT)
-+	{ .iova_base = SZ_1G,		.size = 0xc0000000},	/* APU CODE */
-+	{ .iova_base = 0x70000000ULL,	.size = 0x12600000},	/* APU VLM */
-+	{ .iova_base = SZ_4G,		.size = SZ_4G * 3},	/* APU VPU */
-+#endif
-+};
-+
- static const struct mtk_iommu_iova_region mt8192_multi_dom[MT8192_MULTI_REGION_NR] = {
- 	{ .iova_base = 0x0,		.size = MTK_IOMMU_IOVA_SZ_4G},	/* 0 ~ 4G,  */
- 	#if IS_ENABLED(CONFIG_ARCH_DMA_ADDR_T_64BIT)
-@@ -1725,6 +1737,27 @@ static const struct mtk_iommu_plat_data mt8188_data_vpp = {
- 			   27, 28 /* ccu0 */, MTK_INVALID_LARBID}, {4, 6}},
- };
- 
-+static const unsigned int mt8189_apu_region_msk[][MTK_LARB_NR_MAX] = {
-+	[0] = {[0] = BIT(2)},	/* Region0: fake larb 0 APU_SECURE */
-+	[1] = {[0] = BIT(1)},	/* Region1: fake larb 0 APU_CODE */
-+	[2] = {[0] = BIT(3)},	/* Region2: fake larb 0 APU_VLM */
-+	[3] = {[0] = BIT(0)},	/* Region3: fake larb 0 APU_DATA */
-+};
-+
-+static const struct mtk_iommu_plat_data mt8189_data_apu = {
-+	.m4u_plat       = M4U_MT8189,
-+	.flags          = IOVA_34_EN | DCM_DISABLE |
-+			  MTK_IOMMU_TYPE_APU | PGTABLE_PA_35_EN,
-+	.hw_list        = &apulist,
-+	.inv_sel_reg    = REG_MMU_INV_SEL_GEN2,
-+	.banks_num	= 1,
-+	.banks_enable	= {true},
-+	.iova_region	= mt8189_multi_dom_apu,
-+	.iova_region_nr	= ARRAY_SIZE(mt8189_multi_dom_apu),
-+	.larbid_remap   = {{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}},
-+	.iova_region_larb_msk = mt8189_apu_region_msk,
-+};
-+
- static const struct mtk_iommu_plat_data mt8192_data = {
- 	.m4u_plat       = M4U_MT8192,
- 	.flags          = HAS_BCLK | HAS_SUB_COMM_2BITS | OUT_ORDER_WR_EN |
-@@ -1826,6 +1859,7 @@ static const struct of_device_id mtk_iommu_of_ids[] = {
- 	{ .compatible = "mediatek,mt8188-iommu-infra", .data = &mt8188_data_infra},
- 	{ .compatible = "mediatek,mt8188-iommu-vdo",   .data = &mt8188_data_vdo},
- 	{ .compatible = "mediatek,mt8188-iommu-vpp",   .data = &mt8188_data_vpp},
-+	{ .compatible = "mediatek,mt8189-iommu-apu",   .data = &mt8189_data_apu},
- 	{ .compatible = "mediatek,mt8192-m4u", .data = &mt8192_data},
- 	{ .compatible = "mediatek,mt8195-iommu-infra", .data = &mt8195_data_infra},
- 	{ .compatible = "mediatek,mt8195-iommu-vdo",   .data = &mt8195_data_vdo},
--- 
-2.46.0
+Reviewed-by: Arnd Bergmann <arnd@arndb.de>
 
+> +
+> +	/* If the compatible string starts with "mediatek,mt" assume that it's ok */
+> +	if (!str_has_prefix(compatible, "mediatek,mt"))
+> +		return ERR_PTR(-EINVAL);
+> +
+> +	if (core_id >= 0)
+> +		ret = snprintf(scp_fw_file, ARRAY_SIZE(scp_fw_file), "scp_c%1d", core_id);
+> +	else
+> +		ret = snprintf(scp_fw_file, ARRAY_SIZE(scp_fw_file), "scp");
+> +	if (ret <= 0)
+> +		return ERR_PTR(ret);
+> +
+> +	/* Not using strchr here, as strlen of a const gets optimized by compiler */
+> +	soc = &compatible[strlen("mediatek,")];
+> +
+> +	return devm_kasprintf(dev, GFP_KERNEL, "mediatek/%.*s/%s.img",
+> +			      (int)strlen("mtXXXX"), soc, scp_fw_file);
+> +}
+
+This might have to eventually support version numbers, in case
+there are ever incompatible ABIs where updating the firmware requires
+a minimum kernel driver version.
+
+Until there is a firmware file that needs it, this code is
+fine.
+
+I'm not sure if you need to handle the case where there is
+a "firmware-name" property in DT, but the filesystem only
+contains the generated filenames, or when the generated
+firmware name refers to a newer version. It may be best to
+try both the generated names and the name from the dts
+file.
+
+       Arnd
 
