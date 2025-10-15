@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8985BCCD193
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Oct 2025 08:49:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 650FFCCD193
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Oct 2025 08:50:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8drjSWcsdcZC/kN/jOxob14E9lnrkAHkfVWUucGAtpw=; b=2F9uf6om6YaISW8JMbYigtgVPE
-	I+KQ7d18Wwt6LykGBD4I8tR2H5t+UaoT2KYAIgBGewrA3fuDQRlqXHIN+f/Qj7QVOW9kgO8ebaSN8
-	LF+EGaNgU0sYvZInwmOuBQ/Hk+P3oyf8YzgmAUE6R775df4ghCFfqn2IsAv+D17sDZoD3TmSeUS7w
-	X0PCp8eKroUGX+Dozbv77iJ5FTECPi9yiKlf/GMDh6b1lIzZAOULdw5+iNn6PwtFrabH1X26u5VKx
-	F2glaU19VtaAKB4RxgxPKhawXmm2Ih8Y6XW/HmZkE1G02e5BzeB4+ApxfchBew1GeBWJCJJvq6mar
-	kdlsTJWQ==;
+	bh=QzYGu2PXNG3GqIBQOujZLfYI8c2HsuMuD2/JUQrAjmI=; b=AQwYzbkkRvE05wF2MRbebcmtWi
+	TOVVPoOYZQXdoLAH0ZoVt9MlHc4UhynZNAyb/fh0NBHP6h9zM6P61IsLHVo19YfiNL8EiLBR1FFnr
+	vx79b2cpy2W6kT2JNCzWB+/dQBPB6RKgCIe8m8k4+4Kc87on5pv96ar+DW+kP+sL33P78D4rnTg+I
+	LjNsraNUk6tJF3nQi3Q60LDKzmb3kNAfEtrTZ3ZFC+7AJ/1yfaZ2yAKtHX2u7ApQt5UeHHcVh0lzJ
+	o6M0ihhGPP9aoKFFD7kstbW5OUm+wtlqYB5RaLuQZsz4Fu81kdoEgeLmZN25WDEJ4/Vb9aAfscxel
+	f+Gw2VEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8xCg-00000000zNy-35qV;
-	Wed, 15 Oct 2025 08:49:50 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1v8xDC-00000000zar-1i7P;
+	Wed, 15 Oct 2025 08:50:22 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8xCd-00000000zMe-3bFq;
-	Wed, 15 Oct 2025 08:49:49 +0000
+	id 1v8xD8-00000000zXJ-1u2q;
+	Wed, 15 Oct 2025 08:50:20 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1760518185;
-	bh=aY30yly+tkGS5zXJbvh222ZSEsOj5+wwP+oIx+nOBkc=;
+	s=mail; t=1760518216;
+	bh=t29c9PtetIvlXp2obnw6JXqlK2zmWW7fIGiXSexeMgc=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=mUcMJMjHnh8vPmqIwcdjv9Haez39K5TYaXl8GcMFsaBBsEYH8WuRynYM/p8EvYxd7
-	 NHPM5KV4wYcclgdz3WNdEw+5PaBLB4ml3dYvl7HscnuEBHeNUjvf28M5m0LF82YSj5
-	 vCrJ8frGibMcq/2unfu080LiEYRQGSR6U3zezEOv4xrNDWTgAlSrdDhRVK1eUFtxU6
-	 1bgAYK66jJHsWKWBNr+QRDVA9NZW1VJSX89TPlLADKVPnF6tQocVCqTuVFLSGLEtaQ
-	 v9I1GVIVq9s05il89RcDgDMGJ4we2xQ9XrhUH8ijtud/E4gksojfgYBe1B1Unj5GWG
-	 Pw+5omfi4wKDQ==
+	b=jxwy1LCorlVU2G/siyVim5FEcPV20rrZ4gDiPM0fjx7FIGoPL5hJraFldsbvEg1cH
+	 mXse3vmeNjq80z22fd/dBmYnkjBQb5NTWnxxcYlP81egBwJmRoclO7SvBf3vVmzgNK
+	 ysr+PspBw5Jf6l5FcgdjeVXNpQFR3CJhhoe5Z0R0HxYPLg8qid8zlsf/+IT5RXg4Zz
+	 gGZBGS/mBdUrBRBW2kNyWA6c22wH2m++sHip2qds5qB5YliYRfEb1UTvoKFv/T4fkh
+	 7ACa7+rASft6rMcdD/QMHOizCGIz+fPiwUsYBESUdGvRUfqy3PtoQys6ca34quIk0w
+	 u1pA1Gb54kbnA==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E4C1717E12C8;
-	Wed, 15 Oct 2025 10:49:44 +0200 (CEST)
-Message-ID: <4614fe06-061f-462b-8e89-de2c5ff49880@collabora.com>
-Date: Wed, 15 Oct 2025 10:49:44 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 05B2217E12C8;
+	Wed, 15 Oct 2025 10:50:15 +0200 (CEST)
+Message-ID: <0848e13c-8eaa-4a26-88f8-a1b7e5da4d10@collabora.com>
+Date: Wed, 15 Oct 2025 10:50:15 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 5/5] iommu/mediatek: mt8189: Add MM IOMMUs support
+Subject: Re: [PATCH v2 4/5] iommu/mediatek: mt8189: Add INFRA IOMMUs support
 To: Zhengnan Chen <zhengnan.chen@mediatek.com>, Yong Wu
  <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
  Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
@@ -58,15 +58,15 @@ Cc: iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20251015032509.5057-1-zhengnan.chen@mediatek.com>
- <20251015032509.5057-6-zhengnan.chen@mediatek.com>
+ <20251015032509.5057-5-zhengnan.chen@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20251015032509.5057-6-zhengnan.chen@mediatek.com>
+In-Reply-To: <20251015032509.5057-5-zhengnan.chen@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251015_014948_048314_A383A35C 
-X-CRM114-Status: UNSURE (   5.85  )
+X-CRM114-CacheID: sfid-20251015_015018_638939_D8BF4B13 
+X-CRM114-Status: UNSURE (   5.67  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,7 +83,7 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 15/10/25 05:24, Zhengnan Chen ha scritto:
-> Add support for mt8189 MM IOMMUs.
+> Add support for mt8189 INFRA IOMMUs.
 > 
 > Signed-off-by: Zhengnan Chen <zhengnan.chen@mediatek.com>
 
