@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92CB5CCD185
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Oct 2025 16:06:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDA66CCD194
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Oct 2025 16:07:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=P4ZMHbMoFb9si/A9769lQGBOD/7c3ZzHe/wqHs4wxRE=; b=NYMPEzc9jLbCxnqQhb7lH5x5NF
-	/nVVf9BOO0IUwdvhDzL8T4JU3fjUDk8iyVtIP/Hhgbz6fXYqv8+m13ZKrdU1kiCBhdedxSAUzSrS6
-	8aTTcS2gUJpHy3TigcjvgU+VQ8LqRQTNjXC1A5sBeju55Dh/HADfO9HD7JWiEmsZ9tU9Y3BpLcqCR
-	mUTzyFH/DAw1CLQlunvnkX3h+VuMCxXpkMW7MPxH9AeJWeYh2HyleJC0Zi0++iIDaErHT3X1WX03f
-	0avHJsQZxRY17hlzePCOI4fW99mhd5MX3EspA5VAtklZ8aX/DjlsItxC9fgQk/VPgPLM9PVCf8olN
-	5LzRe7hQ==;
+	bh=7XF8hgw29FBS3UqTt6pdpH/UCnQ8pNPQc5CDJiZpncA=; b=rrnWidrLhSBMcQ+wMleS9X5Ri7
+	E/+C69Mua6IAjs4oeyyeUWpKcSDyolZWEXbJmOxeD5c+BW/d6YZ2dehTpti4iy8RcTvVGlz7jdtpf
+	XcArbbhr3bbB44m+806GFenJah0vKhcJ1rkJZaclcFH0TpaegtPOKVcEk6VZEhCuCTaN+OSRMTH9a
+	zyireqvCxuj/d0//QwdHdp7HTFUwr4A08Zh8z0rbdyToj3010ImtC2D5I+LacecdVE2EwZ8/OrH8P
+	9vFVZ5oSz8WWX/cNUp3qoW2lB2atotVXwtyUFIVMGrnzO3nZlVVq1YX53+Bu9Dn1vh4MiQkldgxzD
+	Ij6qpYaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v941F-00000002DLV-3Zy8;
-	Wed, 15 Oct 2025 16:06:29 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1v941o-00000002Dc1-0uSr;
+	Wed, 15 Oct 2025 16:07:04 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v941E-00000002DKx-3gw8;
-	Wed, 15 Oct 2025 16:06:28 +0000
+	id 1v941k-00000002DZG-3gP1;
+	Wed, 15 Oct 2025 16:07:02 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 4CA4A6268F;
-	Wed, 15 Oct 2025 16:06:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4EF48C4CEF8;
-	Wed, 15 Oct 2025 16:06:25 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 8415443D46;
+	Wed, 15 Oct 2025 16:07:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 850EFC4CEF8;
+	Wed, 15 Oct 2025 16:06:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760544388;
-	bh=36wvgkxUgybT9jKiuwNVYIkH5W5KCOcXkZLMXlDzl+4=;
+	s=k20201202; t=1760544420;
+	bh=yrrQGTEKDMa6yuiG3QQ8O0Gf2mIEuJW3I0RJHaiD/aQ=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qrUZlyqlHM+ceh+6TbjjLe8o7OLqVAsL1FLCSLbF79Kuk14YlGoiQfpSa3zJMk7z9
-	 mdduyflt2UDbyEqRo0MrsLBp9L2hAT2VBL/h8AlyxpwZQS+zVyKnD5AbSVsmWaPYoT
-	 poF7qz0b5wqzlBscxlHiDdlOvmjRmQeTjqseyfCPYP4DbeOkdY5reImgLzrhIamJPE
-	 kFBu/xvyaReOKMbm+mTZLILCmYjiXQKD/sFBGQtTi/+ubbVstuBFOJFx/u2rLN453B
-	 WNyRA9U+eS4zaAxjB044Ra8hztNvlUAMToj6VOERb0pahcp5X6HfMIcmciojKsRJak
-	 0AQLPs0E3BwNA==
-Date: Wed, 15 Oct 2025 17:06:23 +0100
+	b=ZIaU9VERfqZIcGyeL654N5TDtjSmgo9F8TyKOset1ob9H5G/A6Z5UzPpYLlaBVFWd
+	 UF43jQ38fG1YBDOntEw5zIx9vVW9N7tm2eKqB4d9OAxgq1V9/m/86q0LCF8S9NRZeB
+	 LEIvicMRzl18AtWvw1w2ZbON2uKdVTJ3D1LOI+aLhzdx1XI3pEXygeMbwKQ6mIsnLH
+	 Bkp1DGp6v9tMFihAyFL6RlnJeuKFQSdiPn/0/6SMv3SOZ1VngDUNw+pYQn0QLpSLFk
+	 2sTFFOSN+waKDun903dy4PFqA2wv26shl8j4TLmfFModc2n+ktsT4SYjqlqsMG2s23
+	 gKg2BcZUY4/jw==
+Date: Wed, 15 Oct 2025 17:06:55 +0100
 From: Simon Horman <horms@kernel.org>
 To: Lorenzo Bianconi <lorenzo@kernel.org>
 Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
@@ -54,16 +54,21 @@ Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	Philipp Zabel <p.zabel@pengutronix.de>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH net-next 02/12] net: airoha: ppe: Dynamically allocate
- foe_check_time array in airoha_ppe struct
-Message-ID: <aO_Gf4sYHi6BoKCr@horms.kernel.org>
+	devicetree@vger.kernel.org,
+	Christian Marangi <ansuelsmth@gmail.com>
+Subject: Re: [PATCH net-next 04/12] net: airoha: Add airoha_eth_soc_data
+ struct
+Message-ID: <aO_GnwiGo6w4jWuO@horms.kernel.org>
 References: <20251015-an7583-eth-support-v1-0-064855f05923@kernel.org>
- <20251015-an7583-eth-support-v1-2-064855f05923@kernel.org>
+ <20251015-an7583-eth-support-v1-4-064855f05923@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20251015-an7583-eth-support-v1-2-064855f05923@kernel.org>
+In-Reply-To: <20251015-an7583-eth-support-v1-4-064855f05923@kernel.org>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251015_090700_942518_3C1884CC 
+X-CRM114-Status: UNSURE (   8.67  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,10 +83,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 15, 2025 at 09:15:02AM +0200, Lorenzo Bianconi wrote:
-> This is a preliminary patch to properly enable PPE support for AN7583
-> SoC.
+On Wed, Oct 15, 2025 at 09:15:04AM +0200, Lorenzo Bianconi wrote:
+> Introduce airoha_eth_soc_data struct to contain differences between
+> various SoC. Move XSI reset names in airoha_eth_soc_data. This is a
+> preliminary patch to enable AN7583 ethernet controller support in
+> airoha-eth driver.
 > 
+> Co-developed-by: Christian Marangi <ansuelsmth@gmail.com>
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
 Reviewed-by: Simon Horman <horms@kernel.org>
