@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDA66CCD194
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Oct 2025 16:07:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0448CCD194
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Oct 2025 16:07:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7XF8hgw29FBS3UqTt6pdpH/UCnQ8pNPQc5CDJiZpncA=; b=rrnWidrLhSBMcQ+wMleS9X5Ri7
-	E/+C69Mua6IAjs4oeyyeUWpKcSDyolZWEXbJmOxeD5c+BW/d6YZ2dehTpti4iy8RcTvVGlz7jdtpf
-	XcArbbhr3bbB44m+806GFenJah0vKhcJ1rkJZaclcFH0TpaegtPOKVcEk6VZEhCuCTaN+OSRMTH9a
-	zyireqvCxuj/d0//QwdHdp7HTFUwr4A08Zh8z0rbdyToj3010ImtC2D5I+LacecdVE2EwZ8/OrH8P
-	9vFVZ5oSz8WWX/cNUp3qoW2lB2atotVXwtyUFIVMGrnzO3nZlVVq1YX53+Bu9Dn1vh4MiQkldgxzD
-	Ij6qpYaQ==;
+	bh=uNBtxvHQnc5IioU6O/qt1qOm9lZqIpqGTRsMKMDDSM4=; b=Q23e3zQXAoBjBN15LvTmFwlP4a
+	TobthQ22D732VGO0N1wE+js8RudZbUfXqmEY/nYY3mCN0hzC48eKpRo7iDOX/PvBHRPWRoF2SZSJE
+	AqmbvM9J9hRi0+qOB3NJTUwAiaxuPavpPZwxF00ZX0Mjaa4BvFtQhJcfZtZXlXxCTpFgzt1UPZ2dV
+	hITSPD4jHksNdaQ4OaKlmymw/q1VC/nt8+ELvqzVaAgyUQDkXv43lujRPSopM4saJyRl0g9KADQ7K
+	GPPmlIX3twI9Ollbi6R1pbl5YqN73g7SIlpBEZGTXsUuTVvjHtKZdRDxEM21/iZsTx10U7w8tB4IP
+	x3ss1Rzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v941o-00000002Dc1-0uSr;
-	Wed, 15 Oct 2025 16:07:04 +0000
+	id 1v9421-00000002Dij-3teK;
+	Wed, 15 Oct 2025 16:07:17 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v941k-00000002DZG-3gP1;
-	Wed, 15 Oct 2025 16:07:02 +0000
+	id 1v941z-00000002Dh1-0fbW;
+	Wed, 15 Oct 2025 16:07:16 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8415443D46;
-	Wed, 15 Oct 2025 16:07:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 850EFC4CEF8;
-	Wed, 15 Oct 2025 16:06:57 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id CF86144D03;
+	Wed, 15 Oct 2025 16:07:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 07EB3C4CEF8;
+	Wed, 15 Oct 2025 16:07:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760544420;
-	bh=yrrQGTEKDMa6yuiG3QQ8O0Gf2mIEuJW3I0RJHaiD/aQ=;
+	s=k20201202; t=1760544434;
+	bh=MJJ2ARInEp9nuBoQhvRqunMxsb/z0LeLIlIn+PkYGvA=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ZIaU9VERfqZIcGyeL654N5TDtjSmgo9F8TyKOset1ob9H5G/A6Z5UzPpYLlaBVFWd
-	 UF43jQ38fG1YBDOntEw5zIx9vVW9N7tm2eKqB4d9OAxgq1V9/m/86q0LCF8S9NRZeB
-	 LEIvicMRzl18AtWvw1w2ZbON2uKdVTJ3D1LOI+aLhzdx1XI3pEXygeMbwKQ6mIsnLH
-	 Bkp1DGp6v9tMFihAyFL6RlnJeuKFQSdiPn/0/6SMv3SOZ1VngDUNw+pYQn0QLpSLFk
-	 2sTFFOSN+waKDun903dy4PFqA2wv26shl8j4TLmfFModc2n+ktsT4SYjqlqsMG2s23
-	 gKg2BcZUY4/jw==
-Date: Wed, 15 Oct 2025 17:06:55 +0100
+	b=oqGs0yCV9VVLU5C+sp6b4Hpq3r8TEooFHRZn4LXo9RyodYfgMpER76QhgAeN8U/lh
+	 fK1u9X8dlcGSlBSLYwKzu2bJbXSiHj7qg6ECnVBJLDf1l2CsSjnLiMLWx6ecWtpNTG
+	 7llPkZAGRf3MWjJ9mFzELaBzm1neMdVeuJqEZbRei/K/ykRsn+ahKePq0KHpzfzysa
+	 MHwy3qGXLBGNeEtPHxzzppaShKjtN8fx+HEXla3zq9nRoH1t0OCBHQp0QztllA5Oic
+	 Xip/KibWyoCl2yuBAeFn8OWbGpnQTD0IEsP0ryrWHnryYJER/Opjhad7YtS7Gaela9
+	 59ja/2boyvRuQ==
+Date: Wed, 15 Oct 2025 17:07:09 +0100
 From: Simon Horman <horms@kernel.org>
 To: Lorenzo Bianconi <lorenzo@kernel.org>
 Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
@@ -54,20 +54,19 @@ Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	Philipp Zabel <p.zabel@pengutronix.de>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	Christian Marangi <ansuelsmth@gmail.com>
-Subject: Re: [PATCH net-next 04/12] net: airoha: Add airoha_eth_soc_data
- struct
-Message-ID: <aO_GnwiGo6w4jWuO@horms.kernel.org>
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH net-next 05/12] net: airoha: Generalize
+ airoha_ppe2_is_enabled routine
+Message-ID: <aO_Gre1bLbh5qlQ-@horms.kernel.org>
 References: <20251015-an7583-eth-support-v1-0-064855f05923@kernel.org>
- <20251015-an7583-eth-support-v1-4-064855f05923@kernel.org>
+ <20251015-an7583-eth-support-v1-5-064855f05923@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20251015-an7583-eth-support-v1-4-064855f05923@kernel.org>
+In-Reply-To: <20251015-an7583-eth-support-v1-5-064855f05923@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251015_090700_942518_3C1884CC 
-X-CRM114-Status: UNSURE (   8.67  )
+X-CRM114-CacheID: sfid-20251015_090715_218145_2F7C4220 
+X-CRM114-Status: UNSURE (   8.48  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,14 +82,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 15, 2025 at 09:15:04AM +0200, Lorenzo Bianconi wrote:
-> Introduce airoha_eth_soc_data struct to contain differences between
-> various SoC. Move XSI reset names in airoha_eth_soc_data. This is a
-> preliminary patch to enable AN7583 ethernet controller support in
-> airoha-eth driver.
+On Wed, Oct 15, 2025 at 09:15:05AM +0200, Lorenzo Bianconi wrote:
+> Rename airoha_ppe2_is_enabled() in airoha_ppe_is_enabled() and
+> generalize it in order to check if each PPE module is enabled.
+> Rely on airoha_ppe_is_enabled routine to properly initialize PPE for
+> AN7583 SoC since AN7583 does not support PPE2.
 > 
-> Co-developed-by: Christian Marangi <ansuelsmth@gmail.com>
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
 Reviewed-by: Simon Horman <horms@kernel.org>
