@@ -4,65 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C2B8CCD185
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Oct 2025 07:54:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13267CCD190
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Oct 2025 07:56:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Xg8GiBjDJqyNRK5q8tsOi8JmkFU0bVjWnj72A8oToaI=; b=fPiBoc6hCccBeS6IfHLATZdBVh
-	cuW5k+mGQ/WZTMLioqlN7pPn7tERY+c3kuYgEyOM8iB8SvScP7gfTLzPnf6ZEhJZTDW4mYPmXhvJE
-	dkdIlIiIGIVA8Ji787KwiqqUjgt+jRd/Z0gVxMEalQjNZrv6U/Vr8GIr1YNcvK3oLPTTEn0/uxEPg
-	1f1N83H9XGETjWuWuD4dI/7IOj18SLwzvTb3c8vWq3L2glidwTWo45k7Ooo0Otm8bvD8zD/r4BAeT
-	kemx/Ucuaf/iQ3hfYJbLa/A/UBZnbMlUNV+vEYl6c5/sog01bZM7fonxNBktRxxwpasNCWygcWCzw
-	b8Bn3yww==;
+	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=jxb0oDMobd7GaIcoqojTSF8ZoNcoVg4kM8ohJkoHKb8=; b=xhaihphALWh/rWeMrdTfWJpg4V
+	AQRULA7IgzaxOf1pz8oitzrozh47slUItK40B2L1AwGTffXkv2TqF6NTH1C9M7iNZVqvmdZl8TDAH
+	vBuWYMJxzbamvBFs7L829NV3C4e70yUZ7SYoFsLkxLnFBo6xaC6/c6J99PdMuuA9wOH9325heTcEZ
+	BA3xAIJxxWworRn9Gfr3nWo0HAj7aSlyNvZ6hrxGKGZq5q9UsNftB20qKijAWvf0DYqF1ExAZk4Nx
+	dgSN8tr5fMHr/YzplTgutyuBf7TFvZyWBllghkTHSBbjjm1lxE2Jza5e3bzCTXL/WPRGkDar7qDeS
+	AW1RtQsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8wL3-00000000omG-1kNO;
-	Wed, 15 Oct 2025 07:54:25 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1v8wNW-00000000q0I-0qqu;
+	Wed, 15 Oct 2025 07:56:58 +0000
+Received: from mail.proventix.pl ([51.195.118.1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8wKy-00000000ogB-0Pgy;
-	Wed, 15 Oct 2025 07:54:21 +0000
-Received: from pendragon.ideasonboard.com (87-94-110-32.bb.dnainternet.fi [87.94.110.32])
-	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id 94093162B;
-	Wed, 15 Oct 2025 09:52:39 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1760514759;
-	bh=R5HOgozqJoHFs+15LqFltUnY9B75cS3L+R4SpplU7WI=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=iEMWdVgHen4l3vZ7/248hwYc24ni4PWQ1bSDhTVNllVtT9oouIrkKyK1Ioh5g341A
-	 BVn0eWk1uu8GCNMw5HGjQCZwf2kFqgbP7N+HRQ8z7I6sxynJfHClVDLWFzgZ1ZunN6
-	 teI7e4RmJFUxEfi+tK1/rcSlUtg/lq4impkPTDGE=
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: linux-media@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Hans Verkuil <hverkuil+cisco@kernel.org>,
-	Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
-	Nathan Chancellor <nathan@kernel.org>,
-	Arnd Bergmann <arnd@arndb.de>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>
-Subject: [PATCH v2 09/25] media: mediatek: vcodec: Drop unneeded v4l2_m2m_get_vq() NULL check
-Date: Wed, 15 Oct 2025 10:53:32 +0300
-Message-ID: <20251015075353.22625-10-laurent.pinchart@ideasonboard.com>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20251015075353.22625-1-laurent.pinchart@ideasonboard.com>
-References: <20251015075353.22625-1-laurent.pinchart@ideasonboard.com>
+	id 1v8wNT-00000000pyx-1mLG
+	for linux-mediatek@lists.infradead.org;
+	Wed, 15 Oct 2025 07:56:56 +0000
+Received: by mail.proventix.pl (Postfix, from userid 1002)
+	id 13B6EA57B8; Wed, 15 Oct 2025 09:56:30 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=proventix.pl; s=mail;
+	t=1760515013; bh=jxb0oDMobd7GaIcoqojTSF8ZoNcoVg4kM8ohJkoHKb8=;
+	h=Date:From:To:Subject:From;
+	b=Ttsq+vds97hchZuDhw3IAab4vdl4iUiNe7E0WtxuzMBJfmlPo8OBFbADr1/ixov//
+	 IAgl0UH1hcqOXjj/zTPnlAG4vceSCZaXKDxGdD6V/WYKxMlvt+RfQDPGg/iw/I+jRr
+	 EKUMBOL7Rh1e8E9w5A9f78+eHzZVhnEW1YKcWdf0Z6cFEwGyOouubXcYUJd4VLSZ/X
+	 pxWYFUxM8Uw0fm1JmhL1q+wQieeRN6c4FoMHwfzOsT33Ydv3AlXUjmk6BS7xv4XEC4
+	 MCEYhCY7uNAxg5Nha2qfXa5GmcciTB+smtNMAU9L4rrBiQPG9K3zEbuDuxcFpQAKRL
+	 u3l8fP/5vOuwA==
+Received: by mail.proventix.pl for <linux-mediatek@lists.infradead.org>; Wed, 15 Oct 2025 07:56:11 GMT
+Message-ID: <20251015084500-0.1.oi.3hh8f.0.nd18boud7d@proventix.pl>
+Date: Wed, 15 Oct 2025 07:56:11 GMT
+From: "Adrian Liszka" <adrian.liszka@proventix.pl>
+To: <linux-mediatek@lists.infradead.org>
+Subject: =?UTF-8?Q?Prosz=C4=99_o_kontakt?=
+X-Mailer: mail.proventix.pl
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251015_005420_274934_D3A42541 
-X-CRM114-Status: GOOD (  12.48  )
+X-CRM114-CacheID: sfid-20251015_005655_752705_57D5D10F 
+X-CRM114-Status: UNSURE (   0.16  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,128 +66,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The v4l2_m2m_get_vq() function never returns NULL.
+Dzie=C5=84 dobry,
 
-In the set format handlers, the check may have been intended to catch
-invalid format types, but that's not needed as the V4L2 core picks the
-appropriate VIDIOC_S_FMT ioctl handler based on the format type, so the
-type can't be incorrect.
+Czy jest mo=C5=BCliwo=C5=9B=C4=87 nawi=C4=85zania wsp=C3=B3=C5=82pracy z =
+Pa=C5=84stwem?
 
-In the get format handlers, the return value is not used for any purpose
-other than the NULL check, which was therefore probably intended to
-catch invalid format types. That's not needed for the same reason as in
-the set format handler.
+Z ch=C4=99ci=C4=85 porozmawiam z osob=C4=85 zajmuj=C4=85c=C4=85 si=C4=99 =
+dzia=C5=82aniami zwi=C4=85zanymi ze sprzeda=C5=BC=C4=85.
 
-In other locations the v4l2_m2m_get_vq() function is called with a
-hardcoded V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE type, so the NULL check
-can't have been an attempt to catch an invalid type there either.
+Pomagamy skutecznie pozyskiwa=C4=87 nowych klient=C3=B3w.
 
-Drop the unneeded return value checks and, as the function has no side
-effect, the unneeded function call as well.
+Zapraszam do kontaktu.
 
-Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
----
-Changes since v1:
 
-- Address vidioc_venc_g_fmt()
----
- .../mediatek/vcodec/decoder/mtk_vcodec_dec.c       |  7 -------
- .../vcodec/decoder/vdec/vdec_av1_req_lat_if.c      |  2 --
- .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c      |  2 --
- .../mediatek/vcodec/encoder/mtk_vcodec_enc.c       | 14 --------------
- 4 files changed, 25 deletions(-)
-
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-index d691bd533103..1f32ba11a18c 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-@@ -674,15 +674,8 @@ static int vidioc_vdec_g_fmt(struct file *file, void *priv,
- {
- 	struct mtk_vcodec_dec_ctx *ctx = file_to_dec_ctx(file);
- 	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
--	struct vb2_queue *vq;
- 	struct mtk_q_data *q_data;
- 
--	vq = v4l2_m2m_get_vq(ctx->m2m_ctx, f->type);
--	if (!vq) {
--		mtk_v4l2_vdec_err(ctx, "no vb2 queue for type=%d", f->type);
--		return -EINVAL;
--	}
--
- 	q_data = mtk_vdec_get_q_data(ctx, f->type);
- 
- 	pix_mp->field = V4L2_FIELD_NONE;
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c
-index bf21f2467a0f..08e0f5a70935 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c
-@@ -1810,8 +1810,6 @@ static int vdec_av1_slice_setup_core_buffer(struct vdec_av1_slice_instance *inst
- 
- 	/* reference buffers */
- 	vq = v4l2_m2m_get_vq(instance->ctx->m2m_ctx, V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
--	if (!vq)
--		return -EINVAL;
- 
- 	/* get current output buffer */
- 	vb = &v4l2_m2m_next_dst_buf(instance->ctx->m2m_ctx)->vb2_buf;
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
-index 47c302745c1d..45cd555a5fb5 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
-@@ -1686,8 +1686,6 @@ static int vdec_vp9_slice_setup_core_buffer(struct vdec_vp9_slice_instance *inst
- 	/* reference buffers */
- 	vq = v4l2_m2m_get_vq(instance->ctx->m2m_ctx,
- 			     V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
--	if (!vq)
--		return -EINVAL;
- 
- 	/* get current output buffer */
- 	vb = &v4l2_m2m_next_dst_buf(instance->ctx->m2m_ctx)->vb2_buf;
-diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
-index d815e962ab89..6faf3f659e75 100644
---- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
-+++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
-@@ -421,10 +421,6 @@ static int vidioc_venc_s_fmt_cap(struct file *file, void *priv,
- 	const struct mtk_video_fmt *fmt;
- 
- 	vq = v4l2_m2m_get_vq(ctx->m2m_ctx, f->type);
--	if (!vq) {
--		mtk_v4l2_venc_err(ctx, "fail to get vq");
--		return -EINVAL;
--	}
- 
- 	if (vb2_is_busy(vq)) {
- 		mtk_v4l2_venc_err(ctx, "queue busy");
-@@ -476,10 +472,6 @@ static int vidioc_venc_s_fmt_out(struct file *file, void *priv,
- 	const struct mtk_video_fmt *fmt;
- 
- 	vq = v4l2_m2m_get_vq(ctx->m2m_ctx, f->type);
--	if (!vq) {
--		mtk_v4l2_venc_err(ctx, "fail to get vq");
--		return -EINVAL;
--	}
- 
- 	if (vb2_is_busy(vq)) {
- 		mtk_v4l2_venc_err(ctx, "queue busy");
-@@ -524,15 +516,9 @@ static int vidioc_venc_g_fmt(struct file *file, void *priv,
- {
- 	struct v4l2_pix_format_mplane *pix = &f->fmt.pix_mp;
- 	struct mtk_vcodec_enc_ctx *ctx = file_to_enc_ctx(file);
--	struct vb2_queue *vq;
- 	struct mtk_q_data *q_data = mtk_venc_get_q_data(ctx, f->type);
- 	int i;
- 
--	vq = v4l2_m2m_get_vq(ctx->m2m_ctx, f->type);
--	if (!vq)
--		return -EINVAL;
--
--
- 	pix->width = q_data->coded_width;
- 	pix->height = q_data->coded_height;
- 	pix->pixelformat = q_data->fmt->fourcc;
--- 
-Regards,
-
-Laurent Pinchart
-
+Z pozdrowieniami
+Adrian Liszka
 
