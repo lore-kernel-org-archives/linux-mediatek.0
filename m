@@ -4,66 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 880EACCD195
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Oct 2025 07:16:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C5FACCD185
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Oct 2025 07:31:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MD/AFc0UYMGviUCOGumw35vZB0mc0xIF9Y2+onUPUBo=; b=OVAfkPAUXEIhVj+R/0HJLj7vu0
-	31C3RTwweH48hXvqQ5BXPeShJRg+hhdbpFiIXhTB8p9dVx09eNaHmBJLg0Vi3J+QNyoQH73zJ3/+G
-	D9zPCUxkev972eiP6tw5GzD8zMyKQSII3c5bqdWaZHmSKzF67+M7uFuuLrDClXUNoXOQmaXkz0CfO
-	/XAkymBw1pDW+TtkYwlCwCFNPcwyqAPkA6gqxgByo+seWAaQ567U5qymGzAIo20oZhXURtMfgI8VU
-	jTFtc8w65G//EXWdnQLOn0GNrhFC2qr3aoJB7+LsTJfEtfR9rzo3P+lR8LG+G9V/v0yCT0tisDp1R
-	8b1sXp/A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=XA/rGkqw3N7PVH4gFdLuRaD7H9TojqRrEXcECrcqYbg=; b=1CqXKL3xsoYXxi
+	rmeDl6JjG78uVinnC1cTMlJZLJm9fTh+HDFbx3rxqhUKobLKhs6eoX7BJd9jIDu/RElpNussEGtfX
+	h6ILuZKFcXyHCGfkESyvFZZvEO+uXyTFZN9AKNg1ICb5NYNd9qcyposT8XmgeY5IBIIjThYvCFZl3
+	L6TYsFmtR2/wiX8LEahESbi6m/sd/P3iY3CEvBmR1zJQJCuIF0z/nBA37zHf5SO8aOBy6QN9NXsxw
+	JaxwKkK9OYDCr75P2YHk3rQGd2onA3P3orjJlT404y998wKyjkeGHN0JYfRxZaguerKIjWNyUuGpx
+	hPpZiMnWKaOkkYngvvRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8vk6-00000000h0C-0Dcu;
-	Wed, 15 Oct 2025 07:16:14 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1v8vz2-00000000kn4-33Lx;
+	Wed, 15 Oct 2025 07:31:40 +0000
+Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8vjr-00000000gi5-2FPK;
-	Wed, 15 Oct 2025 07:16:05 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 666C241877;
-	Wed, 15 Oct 2025 07:15:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E61CCC4CEF8;
-	Wed, 15 Oct 2025 07:15:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760512559;
-	bh=PieS47PQvx6O4BGuXJE65xiustPAR1BCwqadpxxW9K8=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=CT82OD0jngPS+9HrPHLQYy0QaY9WDAH8EU9zQlATpEHFgiIeSvbJBF/dNpPUtIZmQ
-	 1nMFD8eULZzuoxafmPBSX51ntpM0qk1iocDhh/tYR8KKWfXuMjllf5CDnu+PUHdzCz
-	 LuiySiuYp791rVHqr8PTKNHmtKHwvSz4D+g8Ve0qmwStAqdxUq6+ER13lUHFJ9tWVf
-	 HGhRdbh/JMTODcJ6QS4X0v3YT40zBCu6yQmtlaCuxz/LjjfCggS/q2EiKXthKc21wd
-	 mGzim/u46I57QBqWDJoBb4ol5vNUswMTzCx4o8p8tQnxqMYKD7mK4SLPMjx//8V3Qe
-	 aQGN7O3leh90Q==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Wed, 15 Oct 2025 09:15:11 +0200
-Subject: [PATCH net-next 11/12] net: airoha: Refactor src port
- configuration in airhoha_set_gdm2_loopback
+	id 1v8vyy-00000000kks-1psr
+	for linux-mediatek@lists.infradead.org;
+	Wed, 15 Oct 2025 07:31:39 +0000
+Received: by mail-lj1-x230.google.com with SMTP id 38308e7fff4ca-375eff817a3so61341691fa.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 15 Oct 2025 00:31:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1760513494; x=1761118294; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=XA/rGkqw3N7PVH4gFdLuRaD7H9TojqRrEXcECrcqYbg=;
+        b=KFlEr25yzFmPEPH3hrk1XXJSKKxOSl2JIeysNaO+ubrf7706Pv7W8Qw0KBEeVCrmBf
+         D5fnDbqYSL0SMHgW34gmbLn9ZVfgwsz6to+E8vGa8ht8OyIZ/x0f98U+kneN66J/X8m5
+         s4IEaYxmz0AFeuXTnwB9oS4wOj3Ht2/FQHw3g=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1760513494; x=1761118294;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=XA/rGkqw3N7PVH4gFdLuRaD7H9TojqRrEXcECrcqYbg=;
+        b=bp5UKpv5Sa84uR9ZLbMzD/zWzl+QUdbd0Fs7tHty0RH+bzW8MeIQSepTm/akJ+02l3
+         p0FQy+5kS/DXbrsDzUonX6STj3KYRc75ljXnH4HqKBwKqAUZPPgDQCZsTJjAbTscmJLS
+         AVfBizuMtkSRSHUUdoDtYNL2Odas/xYO5aL47RItKwRbe6uAc7w1Usne6tRyaxwBp8MB
+         5dvlmXNeChRBQiB5A/22BjqqGvHeVPa6Sij063UIsmXUqaAi7XUqMfjx0wqB2zYo3m9k
+         U33Z/rruvizCHSnvF8GmwGIkIzdU3bIC2RKUfqOvC2XofdsQPhcPnzXq9U0YCZmJCEKO
+         ZNaQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUZWw4K7yUqmBBLnJjY8YKQwJ4bEsDbj4G7b168pz/YD2JKbzfRFg+sUBu5kflXRHOyq3NbC/Hpe78Nm0ObVw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywx5b+Rp+oTQks9oPqsMQB/ksjwjuWLJzoyKiuZBdS7/0f5DyiX
+	od2HTjaHT2yWU3/Zdcs0SC+lyPZQUAEgyQEd46vLWf1heozk/mCE0Ocz2IBGbmtVC650Ssvi5w+
+	dcUxbW8SiLpQjLvblRTXL1wQERPT786MPNp01CjTt
+X-Gm-Gg: ASbGnctZ0jodoDdQA8nQucyLN66M56hbRS092Js8lfkcyZwvKXAtA40qltW9UXik0ok
+	TXU8V0SCeqTfN5J6w5t/UM3OwCg0y8o5lDwGM8QuTGyNnMpq9ikp/of9DioXCNoYWCQTOWA5ytR
+	w3nuse1Js2S1htF7PlCe05Y1pHa7bcik/JKpDnjNlBjKQCoTbBWYfSF1DSZuk2QwPAcwhI+xnK5
+	4TH2Lh0xT91n7ZDSqgY8qSDsejXlPlrBTD2f7ITultZtPeWvx31UAVXoGauWeX1Cqcbl6G7WLUZ
+	bA==
+X-Google-Smtp-Source: AGHT+IGix7SiLyiT/iVo280/TBO4WaVIjuGiYnKRmsDHJTLJH8R+MNxCQXl3EtGV1sD7rAb12vm7OwOdCHylb5Oip9A=
+X-Received: by 2002:a05:651c:3608:b0:364:f7e2:3908 with SMTP id
+ 38308e7fff4ca-37609e0fbbcmr72211741fa.26.1760513493816; Wed, 15 Oct 2025
+ 00:31:33 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20251015-an7583-eth-support-v1-11-064855f05923@kernel.org>
-References: <20251015-an7583-eth-support-v1-0-064855f05923@kernel.org>
-In-Reply-To: <20251015-an7583-eth-support-v1-0-064855f05923@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- devicetree@vger.kernel.org
-X-Mailer: b4 0.14.2
+References: <20250814092510.211672-1-wenst@chromium.org> <b20a1c7d-0da5-433b-987c-f55a5a229bed@collabora.com>
+In-Reply-To: <b20a1c7d-0da5-433b-987c-f55a5a229bed@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Wed, 15 Oct 2025 15:31:22 +0800
+X-Gm-Features: AS18NWDz5vKCVYo2LSqzyJIsi9qNL-WB0jpDYaeMQh-Pcz5jywfjijzblwQFm7E
+Message-ID: <CAGXv+5EPd5hLSNTFYkBWPCL1Bq4CJN4R7v5ZWtoRMYSi9+TeCA@mail.gmail.com>
+Subject: Re: [PATCH v2] arm64: dts: mediatek: mt8188-geralt: Enable first SCP core
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251015_001600_088860_0548A4FE 
-X-CRM114-Status: GOOD (  17.96  )
+X-CRM114-CacheID: sfid-20251015_003136_535064_1CB3D9FB 
+X-CRM114-Status: GOOD (  17.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,188 +88,95 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-AN7583 chipset relies on different definitions for source-port
-identifier used for hw offloading. In order to support hw offloading
-in AN7583 controller, refactor src port configuration in
-airhoha_set_gdm2_loopback routine and introduce get_src_port_id
-callback.
+On Tue, Oct 14, 2025 at 9:27=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Il 14/08/25 11:25, Chen-Yu Tsai ha scritto:
+> > The first SCP core is used to drive the video decoder and encoders.
+> >
+> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> > ---
+> > Changes since v1:
+> > - Added SCP vreq pin
+> > ---
+> >   .../boot/dts/mediatek/mt8188-geralt.dtsi      | 25 ++++++++++++++++++=
++
+> >   1 file changed, 25 insertions(+)
+> >
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi b/arch/arm=
+64/boot/dts/mediatek/mt8188-geralt.dtsi
+> > index c5254ae0bb99..7fedbacdac44 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
+> > @@ -164,6 +164,12 @@ reserved_memory: reserved-memory {
+> >               #size-cells =3D <2>;
+> >               ranges;
+> >
+> > +             scp_mem_reserved: memory@50000000 {
+> > +                     compatible =3D "shared-dma-pool";
+> > +                     reg =3D <0 0x50000000 0 0x800000>;
+> > +                     no-map;
+> > +             };
+> > +
+> >               apu_mem: memory@55000000 {
+> >                       compatible =3D "shared-dma-pool";
+> >                       reg =3D <0 0x55000000 0 0x1400000>;
+> > @@ -1077,6 +1083,13 @@ pins-bus {
+> >               };
+> >       };
+> >
+> > +     scp_pins: scp-pins {
+> > +             pins-scp-vreq {
+> > +                     pinmux =3D <PINMUX_GPIO98__FUNC_O_SCP_VREQ_VAO>;
+> > +                     bias-disable;
+> > +             };
+> > +     };
+> > +
+> >       spi0_pins: spi0-pins {
+> >               pins-bus {
+> >                       pinmux =3D <PINMUX_GPIO69__FUNC_O_SPIM0_CSB>,
+> > @@ -1146,6 +1159,18 @@ &postmask0_out {
+> >       remote-endpoint =3D <&dither0_in>;
+> >   };
+> >
+> > +&scp_cluster {
+> > +     status =3D "okay";
+> > +};
+> > +
+> > +&scp_c0 {
+> > +     pinctrl-names =3D "default";
+> > +     pinctrl-0 =3D <&scp_pins>;
+> > +     firmware-name =3D "mediatek/mt8188/scp.img";
+>
+> After a (very brief) discussion with Arnd last time, turns out we decided=
+ to avoid
+> using the firmware-name property, including for mtk-scp.
+>
+> Please resend without firmware-name.
+>
+> P.S.: there's a patch to construct the firmware name from compatible...
+> https://lore.kernel.org/r/20250911140043.190801-1-angelogioacchino.delreg=
+no@collabora.com
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c  | 75 +++++++++++++++++++++----------
- drivers/net/ethernet/airoha/airoha_eth.h  | 11 +++--
- drivers/net/ethernet/airoha/airoha_regs.h |  5 +--
- 3 files changed, 60 insertions(+), 31 deletions(-)
+I'm aware of the patch, but did that get merged? If not then this would
+cause it to default to just /lib/firmware/scp.img?
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 5f6b5ab52e0265f7bb56b008ca653d64e04ff2d2..76c82750b3ae89a9fa81c64d3b7c3578b369480c 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -1682,11 +1682,14 @@ static int airoha_dev_set_macaddr(struct net_device *dev, void *p)
- 	return 0;
- }
- 
--static void airhoha_set_gdm2_loopback(struct airoha_gdm_port *port)
-+static int airhoha_set_gdm2_loopback(struct airoha_gdm_port *port)
- {
- 	u32 pse_port = port->id == 3 ? FE_PSE_PORT_GDM3 : FE_PSE_PORT_GDM4;
- 	struct airoha_eth *eth = port->qdma->eth;
- 	u32 chan = port->id == 3 ? 4 : 0;
-+	/* XXX: handle XSI_USB_PORT and XSI_PCE1_PORT */
-+	u32 nbq = port->id == 3 ? 4 : 0;
-+	int src_port;
- 
- 	/* Forward the traffic to the proper GDM port */
- 	airoha_set_gdm_port_fwd_cfg(eth, REG_GDM_FWD_CFG(2), pse_port);
-@@ -1709,29 +1712,23 @@ static void airhoha_set_gdm2_loopback(struct airoha_gdm_port *port)
- 	airoha_fe_clear(eth, REG_FE_VIP_PORT_EN, BIT(2));
- 	airoha_fe_clear(eth, REG_FE_IFC_PORT_EN, BIT(2));
- 
--	if (port->id == 3) {
--		/* FIXME: handle XSI_PCE1_PORT */
--		airoha_fe_rmw(eth, REG_FE_WAN_PORT,
--			      WAN1_EN_MASK | WAN1_MASK | WAN0_MASK,
--			      FIELD_PREP(WAN0_MASK, HSGMII_LAN_PCIE0_SRCPORT));
--		airoha_fe_rmw(eth,
--			      REG_SP_DFT_CPORT(HSGMII_LAN_PCIE0_SRCPORT >> 3),
--			      SP_CPORT_PCIE0_MASK,
--			      FIELD_PREP(SP_CPORT_PCIE0_MASK,
--					 FE_PSE_PORT_CDM2));
--	} else {
--		/* FIXME: handle XSI_USB_PORT */
-+	src_port = eth->soc->ops.get_src_port_id(port, nbq);
-+	if (src_port < 0)
-+		return src_port;
-+
-+	airoha_fe_rmw(eth, REG_FE_WAN_PORT,
-+		      WAN1_EN_MASK | WAN1_MASK | WAN0_MASK,
-+		      FIELD_PREP(WAN0_MASK, src_port));
-+	airoha_fe_rmw(eth, REG_SP_DFT_CPORT(src_port >> 3),
-+		      SP_CPORT_MASK(src_port & 0x7),
-+		      FE_PSE_PORT_CDM2 << __ffs(SP_CPORT_MASK(src_port & 0x7)));
-+
-+	if (port->id != 3)
- 		airoha_fe_rmw(eth, REG_SRC_PORT_FC_MAP6,
- 			      FC_ID_OF_SRC_PORT24_MASK,
- 			      FIELD_PREP(FC_ID_OF_SRC_PORT24_MASK, 2));
--		airoha_fe_rmw(eth, REG_FE_WAN_PORT,
--			      WAN1_EN_MASK | WAN1_MASK | WAN0_MASK,
--			      FIELD_PREP(WAN0_MASK, HSGMII_LAN_ETH_SRCPORT));
--		airoha_fe_rmw(eth,
--			      REG_SP_DFT_CPORT(HSGMII_LAN_ETH_SRCPORT >> 3),
--			      SP_CPORT_ETH_MASK,
--			      FIELD_PREP(SP_CPORT_ETH_MASK, FE_PSE_PORT_CDM2));
--	}
-+
-+	return 0;
- }
- 
- static int airoha_dev_init(struct net_device *dev)
-@@ -1748,8 +1745,13 @@ static int airoha_dev_init(struct net_device *dev)
- 	case 3:
- 	case 4:
- 		/* If GDM2 is active we can't enable loopback */
--		if (!eth->ports[1])
--			airhoha_set_gdm2_loopback(port);
-+		if (!eth->ports[1]) {
-+			int err;
-+
-+			err = airhoha_set_gdm2_loopback(port);
-+			if (err)
-+				return err;
-+		}
- 		fallthrough;
- 	case 2:
- 		if (airoha_ppe_is_enabled(eth, 1)) {
-@@ -3055,11 +3057,38 @@ static const char * const en7581_xsi_rsts_names[] = {
- 	"xfp-mac",
- };
- 
-+static int airoha_en7581_get_src_port_id(struct airoha_gdm_port *port, int nbq)
-+{
-+	switch (port->id) {
-+	case 3:
-+		/* 7581 SoC supports PCIe serdes on GDM3 port */
-+		if (nbq == 4)
-+			return HSGMII_LAN_7581_PCIE0_SRCPORT;
-+		if (nbq == 5)
-+			return HSGMII_LAN_7581_PCIE1_SRCPORT;
-+		break;
-+	case 4:
-+		/* 7581 SoC supports eth and usb serdes on GDM4 port */
-+		if (!nbq)
-+			return HSGMII_LAN_7581_ETH_SRCPORT;
-+		if (nbq == 1)
-+			return HSGMII_LAN_7581_USB_SRCPORT;
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	return -EINVAL;
-+}
-+
- static const struct airoha_eth_soc_data en7581_soc_data = {
- 	.version = 0x7581,
- 	.xsi_rsts_names = en7581_xsi_rsts_names,
- 	.num_xsi_rsts = ARRAY_SIZE(en7581_xsi_rsts_names),
- 	.num_ppe = 2,
-+	.ops = {
-+		.get_src_port_id = airoha_en7581_get_src_port_id,
-+	},
- };
- 
- static const struct of_device_id of_airoha_match[] = {
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index df168d798699d50c70fa5f87764de24e85994dfd..1b83b935520cd736a1eb376eff937340ed99a49a 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -67,10 +67,10 @@ enum {
- };
- 
- enum {
--	HSGMII_LAN_PCIE0_SRCPORT = 0x16,
--	HSGMII_LAN_PCIE1_SRCPORT,
--	HSGMII_LAN_ETH_SRCPORT,
--	HSGMII_LAN_USB_SRCPORT,
-+	HSGMII_LAN_7581_PCIE0_SRCPORT	= 0x16,
-+	HSGMII_LAN_7581_PCIE1_SRCPORT,
-+	HSGMII_LAN_7581_ETH_SRCPORT,
-+	HSGMII_LAN_7581_USB_SRCPORT,
- };
- 
- enum {
-@@ -555,6 +555,9 @@ struct airoha_eth_soc_data {
- 	const char * const *xsi_rsts_names;
- 	int num_xsi_rsts;
- 	int num_ppe;
-+	struct {
-+		int (*get_src_port_id)(struct airoha_gdm_port *port, int nbq);
-+	} ops;
- };
- 
- struct airoha_eth {
-diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/ethernet/airoha/airoha_regs.h
-index 69c5a143db8c079be0a6ecf41081cd3f5048c090..cc230f61c0049a663c011556280af736284d018d 100644
---- a/drivers/net/ethernet/airoha/airoha_regs.h
-+++ b/drivers/net/ethernet/airoha/airoha_regs.h
-@@ -383,10 +383,7 @@
- #define REG_MC_VLAN_DATA		0x2108
- 
- #define REG_SP_DFT_CPORT(_n)		(0x20e0 + ((_n) << 2))
--#define SP_CPORT_PCIE1_MASK		GENMASK(31, 28)
--#define SP_CPORT_PCIE0_MASK		GENMASK(27, 24)
--#define SP_CPORT_USB_MASK		GENMASK(7, 4)
--#define SP_CPORT_ETH_MASK		GENMASK(7, 4)
-+#define SP_CPORT_MASK(_n)		GENMASK(3 + ((_n) << 2), ((_n) << 2))
- 
- #define REG_SRC_PORT_FC_MAP6		0x2298
- #define FC_ID_OF_SRC_PORT27_MASK	GENMASK(28, 24)
+ChenYu
 
--- 
-2.51.0
-
+> Cheers,
+> Angelo
+>
+> > +     memory-region =3D <&scp_mem_reserved>;
+> > +     status =3D "okay";
+> > +};
+> > +
+> >   &sound {
+> >       pinctrl-names =3D "aud_etdm_hp_on", "aud_etdm_hp_off",
+> >                       "aud_etdm_spk_on", "aud_etdm_spk_off",
+>
+>
 
