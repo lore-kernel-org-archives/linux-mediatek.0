@@ -4,63 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6BA5CCD184
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Oct 2025 02:50:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDFDCCCD18E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Oct 2025 03:25:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IonQ67/0P81sD3b1rsD6Zg4yb1nyuYJKORa0YmbOvrw=; b=eLMdmMmfjGogO5eykWP9No+wDo
-	aoaRaNgrkd2JQVQ9LBj6b6oKhYdTUbVN7tmTerH2ECJXtK3z+0lwYMxPTJNxAl0kvIhjncp6TM+AM
-	vUyreBijsacNoyiG/G7KW4trX1w7VJKxrSfiyzBuYDy9HX4v7/m679pLCUeHYvzUI0hucp03GEZP2
-	MGIZTVNl/lctUlz8eGfi3jqSL7SDSyHbXw/w4ZToeo2LS7ynUw6edPHP2d3tjjDrlKxcc+Wp2eiaB
-	a4SLoazZd2yDoruQ6NpUCE1fltc4/r9BaRIyDtMsg1GDaNXp0TvNVZ67L+esre7/cX4nfMKZqTLsS
-	mceNsDaQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=4+GDlV0/QYZJFrONo0Zw3ttAOMbbQn+Lvzsd9+YHlcA=; b=DNDJKlhM0wyGb2v2PQuUbs1EMH
+	kMHkOuT/CtQH2t+QMwUP2I6qXXu7kmLTR9D0y80W9WL0qEFyIXPHb9NnXIaVT5Xm0y/gh54rlMqyf
+	KRNXp7K3uPoyjs/+aVy0OpLpomi9HlDQ1V9vFVPeePzucYRciweRGWrMlUn2GxijaLgfHSY+7YD8P
+	66UcFRLmO7JK/z37TEpzt98TS+UFT53/vG4w+0z9YJBEOCm96Q4qv7AEJAm5iCqixH0xVxDclQOZ9
+	ZbE17OzBIFaK9Skpk1fyjYq5B7WUM4ZsvuxMPdT70a1FBLJz6glAqNTJJiGMZjgwvXbOnzzi8/iVm
+	C4lyHdOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8rau-00000000Guu-0Ih1;
-	Wed, 15 Oct 2025 02:50:28 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1v8s9C-00000000KcT-2JuE;
+	Wed, 15 Oct 2025 03:25:54 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8rar-00000000GuQ-1X37;
-	Wed, 15 Oct 2025 02:50:26 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 204C5451A6;
-	Wed, 15 Oct 2025 02:50:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EA646C4CEE7;
-	Wed, 15 Oct 2025 02:50:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760496624;
-	bh=1q0iAqm9oGtdCGI/z0cRfOHf5UFan2MXjLyPKCbObnM=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=eZelpvA/c239nHrPz2U5s0GWgcVmhHivsuLdhUdtvk2YKlFr23YPfIv8SLv6ov2Dt
-	 1nxOUrStjPMIkTOGnq1lrYqo1TQJNS/TOGAYB1SBI4qrXqyFfa8K02rlZRkgbtpguC
-	 9+Qscs3AODCCKO9sUbfDuMqcZVmKQ35iNeWqhEDwLQn4lGUhyeLlasUcfvaoVCswp/
-	 bN9Cg2AithAcDcCAfOykNxdZBnoqoK7SGyhzqNobb6Q1t/yJEsLcE+DOzfqt/j5AgQ
-	 5CnzbLmeNGLR8RZpIb/kMa5F+mBqpoS1Ja/gHPK7ZlDt7baMzQG4g95TxzrvDKuciQ
-	 EhiN+PRFE/U/w==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 33CB4380CEDD;
-	Wed, 15 Oct 2025 02:50:10 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1v8s99-00000000Kbw-1iIH;
+	Wed, 15 Oct 2025 03:25:52 +0000
+X-UUID: a4ab1eb6a97611f09f706fa2197c6ceb-20251014
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=4+GDlV0/QYZJFrONo0Zw3ttAOMbbQn+Lvzsd9+YHlcA=;
+	b=kBKj8Akn1u+CnN8C9reB+om7oPDKjhQ9Gu/pjZtcpF6KX0LyqAYjxTM4+UjHrjZJBK/X/JlTvmxq0XhqwRNY0qnz/1cFIQYkCuSTyAJiCZ5jtUmKKjTfcsEowMQ1fY7Ah+6KnftjrLZ1O5Fg9gwgWB6l1cpZ2sgNGDU50GUX75o=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.6,REQID:c2ecf7e3-b99d-4992-9c39-e75269cdea77,IP:0,UR
+	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:-5
+X-CID-META: VersionHash:a9d874c,CLOUDID:26d32db9-795c-4f99-91f3-c115e0d49051,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:99|1,File:130,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI
+	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: a4ab1eb6a97611f09f706fa2197c6ceb-20251014
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <zhengnan.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1721072076; Tue, 14 Oct 2025 20:25:48 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.10; Wed, 15 Oct 2025 11:25:44 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1748.10 via Frontend Transport; Wed, 15 Oct 2025 11:25:44 +0800
+From: Zhengnan Chen <zhengnan.chen@mediatek.com>
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, "Will
+ Deacon" <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring
+	<robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+	<conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: <iommu@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Zhengnan Chen
+	<zhengnan.chen@mediatek.com>
+Subject: [PATCH v2 0/5] MT8189 IOMMU SUPPORT
+Date: Wed, 15 Oct 2025 11:24:16 +0800
+Message-ID: <20251015032509.5057-1-zhengnan.chen@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next 0/2] net: airoha: Add some new ethtool bits
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <176049660901.197015.7658108803610807679.git-patchwork-notify@kernel.org>
-Date: Wed, 15 Oct 2025 02:50:09 +0000
-References: <20251013-airoha-ethtool-improvements-v1-0-fdd1c6fc9be1@kernel.org>
-In-Reply-To: <20251013-airoha-ethtool-improvements-v1-0-fdd1c6fc9be1@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251014_195025_440705_27A79789 
-X-CRM114-Status: UNSURE (   7.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251014_202551_456065_9DBE8270 
+X-CRM114-Status: GOOD (  10.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,32 +89,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Based on tag: next-20251015, linux-next/master
 
-This series was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+This patchset adds MT8189 iommu support.
 
-On Mon, 13 Oct 2025 16:29:40 +0200 you wrote:
-> - add missing stats to ethtool ethtool_eth_mac_stats struct
-> - set get_link ethtool callback to ethtool_op_get_link routine
-> 
-> ---
-> Lorenzo Bianconi (2):
->       net: airoha: Add missing stats to ethtool_eth_mac_stats
->       net: airoha: Add get_link ethtool callback
-> 
-> [...]
+MT8189 have 3 IOMMU HWs. 1 IOMMU HW is for multimedia,
+1 IOMMU HW is for apu(AI processer unit),
+and 2 IOMMU HW is for infra-master, like PCIe/USB.
 
-Here is the summary with links:
-  - [net-next,1/2] net: airoha: Add missing stats to ethtool_eth_mac_stats
-    https://git.kernel.org/netdev/net-next/c/331f8a8bea22
-  - [net-next,2/2] net: airoha: Add get_link ethtool callback
-    https://git.kernel.org/netdev/net-next/c/fc4fed9054ef
+About the INFRA IOMMU, it don't have larbs, the master connects the
+iommu directly. It use a independent pgtable, and these two
+INFRA IOMMU HW share a pgtable.
 
-You are awesome, thank you!
+In mt8189, the display connect with larb1 and larb2 at the same time.
+Thus, we should add link between disp-dev with these two larbs.
+
+The software solutions can be summarized as follows:
+1. Add iommu support for mt8189
+2. Add a flag DL_WITH_MULTI_LARB to support the HW which connect with
+   multiple larbs.
+
+---
+Changes in v2:
+- Split mt8189 iommu support patch into three patches, namely APU IOMMU,
+  INFRA IOMMU and MM IOMMU
+- Disable bank 4 of MM IOMMU
+- Link to v1:
+  https://lore.kernel.org/all/20250807095756.11840-1-zhengnan.chen@mediatek.com/
+---
+
+Zhengnan Chen (5):
+  dt-bindings: mediatek: mt8189: Add bindings for MM & APU & INFRA IOMMU
+  iommu/mediatek: Add a flag DL_WITH_MULTI_LARB
+  iommu/mediatek: mt8189: Add APU IOMMUs support
+  iommu/mediatek: mt8189: Add INFRA IOMMUs support
+  iommu/mediatek: mt8189: Add MM IOMMUs support
+
+ .../bindings/iommu/mediatek,iommu.yaml        |   7 +
+ drivers/iommu/mtk_iommu.c                     | 132 +++++++-
+ .../memory/mediatek,mt8189-memory-port.h      | 283 ++++++++++++++++++
+ 3 files changed, 409 insertions(+), 13 deletions(-)
+ create mode 100644 include/dt-bindings/memory/mediatek,mt8189-memory-port.h
+
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.46.0
 
 
