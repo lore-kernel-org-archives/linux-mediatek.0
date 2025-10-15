@@ -4,109 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49A00CCD192
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Oct 2025 13:42:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7574CCD18E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Oct 2025 13:49:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Subject:References:In-Reply-To:Message-Id:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BYnaKJiuSf33cLfIqDvIV7F5Wm7fS2cDOTMrUdztEMY=; b=K41uDa8EFSaWGSXxddROZPMJcf
-	SFiBvneCZi1uutKD9HMv2SbRfmKGN5oib4OgrKCHi7o1U4kK0wVFe/fzWGKINFmF5vY70FQBMxjSU
-	psEfVkwflQIfsJZx6bwU/Wsr4x5I7lMz7pyZ7skAhg0xCAF6ltJLZMX6QTrUyWabFXbDpsI73Hk+D
-	f7Both9mGi7ml7dQlsH+U9NOT4DO1rTv2Tf82kJDr+mVo/dYJY2A67NN6xrv28nzfwKv8S63KI4MQ
-	ZZJZLGVgl8acdrjL+WB3hjn8ZgzWSkq23+JtMdLbaqbTKTewEi0G1+d35UrEW5a2LofbIPlPYmZFq
-	o8J9ML6Q==;
+	bh=2VVsKKAAl3jseZ2R6iaLaDzGXnZaTeoKCd2s/NhHV0g=; b=P0L15uV+HZgjpxniCPUQbtrv2p
+	mEruEQrlpv1c3YSr9v26K0qAqcHJyjeEUZofLimcBIzF3nzoltpJ7HyD2cFbqlje88W/rSPOgOimU
+	/pgbfUwM0DL+4V9EIe+Z88r4TX2xEdmNQO3bycFWxqvQpp5+SHt1sLtfD/r/BVTgfrcWqzdtPa6QW
+	h3M804OcDROXTChDTH9XMEhTaF9lf4WLyMzgbszPfAGXA9MDG6XFEA81785A9V2E+W0/ql2sHvbSA
+	W1w+qpZGS8ZjMJDCALNTb8UXt/2Cgiwll90wO8ITFVwUs9r/bjDVXkKH3WNb8Jj6kwviRTbwjK+sM
+	+Km6U49A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v91lU-00000001jL9-3N4L;
-	Wed, 15 Oct 2025 13:42:04 +0000
-Received: from fhigh-b7-smtp.messagingengine.com ([202.12.124.158])
+	id 1v91sP-00000001l4c-3Xrk;
+	Wed, 15 Oct 2025 13:49:13 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v91lS-00000001jJl-0DYu;
-	Wed, 15 Oct 2025 13:42:03 +0000
-Received: from phl-compute-05.internal (phl-compute-05.internal [10.202.2.45])
-	by mailfhigh.stl.internal (Postfix) with ESMTP id 5BF447A0122;
-	Wed, 15 Oct 2025 09:42:00 -0400 (EDT)
-Received: from phl-imap-02 ([10.202.2.81])
-  by phl-compute-05.internal (MEProxy); Wed, 15 Oct 2025 09:42:00 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
-	:cc:content-transfer-encoding:content-type:content-type:date
-	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to; s=fm1; t=1760535720;
-	 x=1760622120; bh=BYnaKJiuSf33cLfIqDvIV7F5Wm7fS2cDOTMrUdztEMY=; b=
-	Z8W41eUdgOJmZNdBMqHrC8Tns2LnWihcTSmiry8QkvGnQyRilJ0DyaIVIh476NCe
-	l3cMN2QbixMphF5nsDTzDrnKXvVm9/InC4d6vdwSsu2aoEyUn0a2v4Nu6CAd9kdd
-	zjJNszE2NLq4ELpZ3zlqdOy7qQnVHVTRuBYjr/CF+DyWjWvEi7vbxuGBDgl7oRc8
-	rmiidsV2Xcf1raMx8BoZ0EN5qUCdm9C5+sqMGyZHrXT2PMmLrY26r2Ehf1rLZ6+m
-	/fz7XOtaxrelR8THCHrxUTZChp8rFi6sbco4X9+U9rAh2hrQXd6kuELf7dKRpkMw
-	CkNgXv0CtOWGN2k7urcD+w==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1760535720; x=
-	1760622120; bh=BYnaKJiuSf33cLfIqDvIV7F5Wm7fS2cDOTMrUdztEMY=; b=q
-	LJr+fOATB77i1UoDYJ2kxzcCw2bjzuDDYQaT3cQdCIF7lnYzDiYbCGTABwD00eMh
-	SMbzu/4fiIZprqPYlA5VY3QQHkd5S/INDNnR5A0r8iBrSOEC55Do+b1S0h2Te53w
-	eejvnad2XQGzT1iFdIDOvTEkKn5Ukt1GLeT3CpmJchv/Z9rfQoRyulBOmAYpSOhX
-	fHeE0T15sbOs/DxGbSlcFaPf2wiZLDzU28/LybCSUnWcOeGjW4PmMfsZ7ZuySgf6
-	4rrM6ghU2jhCzc2YeWQzRuCCLGD6Mi0cIBiTS+yaBoCL97kLE9CKbCbaDd9EyvCY
-	rK8bI8b5DRs77ySGjCSCQ==
-X-ME-Sender: <xms:p6TvaC6ye3TJbDtGaQiUZSlHawLRfoxuMC4CNTUvTFK2ubaz4smoQw>
-    <xme:p6TvaGsFt7znWv3O-Qvpe-rTxXuktBWy2d76kVZ_epS8R7DlL2RyVNfvNx_HbvBTA
-    gGEMR856W-NGRlDMCRLC9gTNtNr_7kd2wBmGmiq8x9jor_4Go5i-jo>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdeggdduvdefheeiucetufdoteggodetrf
-    dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
-    rghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujf
-    gurhepofggfffhvfevkfgjfhfutgfgsehtjeertdertddtnecuhfhrohhmpedftehrnhgu
-    uceuvghrghhmrghnnhdfuceorghrnhgusegrrhhnuggsrdguvgeqnecuggftrfgrthhtvg
-    hrnhepfefhheetffduvdfgieeghfejtedvkeetkeejfeekkeelffejteevvdeghffhiefh
-    necuffhomhgrihhnpehkvghrnhgvlhdrohhrghenucevlhhushhtvghrufhiiigvpedtne
-    curfgrrhgrmhepmhgrihhlfhhrohhmpegrrhhnugesrghrnhgusgdruggvpdhnsggprhgt
-    phhtthhopedutddpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtohepfigvnhhsthestg
-    hhrhhomhhiuhhmrdhorhhgpdhrtghpthhtoheprghnghgvlhhoghhiohgrtggthhhinhho
-    rdguvghlrhgvghhnohestgholhhlrggsohhrrgdrtghomhdprhgtphhtthhopehkvghrnh
-    gvlhestgholhhlrggsohhrrgdrtghomhdprhgtphhtthhopehmrghtthhhihgrshdrsghg
-    ghesghhmrghilhdrtghomhdprhgtphhtthhopegrnhguvghrshhsohhnsehkvghrnhgvlh
-    drohhrghdprhgtphhtthhopehmrghthhhivghurdhpohhirhhivghrsehlihhnrghrohdr
-    ohhrghdprhgtphhtthhopehlihhnuhigqdgrrhhmqdhkvghrnhgvlheslhhishhtshdrih
-    hnfhhrrgguvggrugdrohhrghdprhgtphhtthhopehlihhnuhigqdhmvgguihgrthgvkhes
-    lhhishhtshdrihhnfhhrrgguvggrugdrohhrghdprhgtphhtthhopehlihhnuhigqdhkvg
-    hrnhgvlhesvhhgvghrrdhkvghrnhgvlhdrohhrgh
-X-ME-Proxy: <xmx:p6TvaBHNKnVxvA4B7hOIhVtCul9uXfiSGWmrglzje3bwxBTbnMkk0g>
-    <xmx:p6TvaEkcm4NXqSwJus1Ky3jFT26RsL7n7F4wld23SJpafqj0XR7Cuw>
-    <xmx:p6TvaMfkDr06akdUCPnW3KfN1W7g0t61WypctFLh6SRzFv4b1v3NFA>
-    <xmx:p6TvaKEFO1EyMlfBAqLE1L4IEHWZqJeTJg4eN8x3mPzMnw2-SP28Og>
-    <xmx:qKTvaA6CcYQI_7d-v5lCFoQTbsV8HHuzART7r0eJRreAVCvRa1GIlar7>
-Feedback-ID: i56a14606:Fastmail
-Received: by mailuser.phl.internal (Postfix, from userid 501)
-	id B441B700065; Wed, 15 Oct 2025 09:41:59 -0400 (EDT)
-X-Mailer: MessagingEngine.com Webmail Interface
+	id 1v91sM-00000001l2Y-3leQ;
+	Wed, 15 Oct 2025 13:49:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1760536145;
+	bh=QhDeijH3p8Ah7FVP870DhjFVoOJ+c4VVl9Tj0q4GSts=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=TdYyJNFFjn/x9drAuSbqyFlDHb1SjL5QCX0mc6UcUjqPYn7wOW3vhLLHtn8yQ4RNH
+	 MMOg8r6SuxIgKbaH5aBUipced1gOdbStEPjstByIVrFArcjJRrbfUw0rXm4YrFbkG5
+	 5MCKvC6JpWC1cNRT7TTA+fOisATB4PpXXEvrAsK4k/tfQ7zxes0k77u1oz6W8/S0Vd
+	 Y/oXm+OkMQAF0KFTDkb6VMQz7FKj/LREI6oE2e5Ufdz8lzppodc5cveU0ai6zmHIok
+	 oqtFLmNuKU8yoWU4XDhXdHTj3YKHOR3703XuxVfOK79Q6sGQr+/d5Z+WSjgfxQbHti
+	 y8j+QVgnGSv4A==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7773E17E0523;
+	Wed, 15 Oct 2025 15:49:05 +0200 (CEST)
+Message-ID: <e9a265af-b6ad-4f7e-9dfb-bf87f4706d57@collabora.com>
+Date: Wed, 15 Oct 2025 15:49:04 +0200
 MIME-Version: 1.0
-X-ThreadId: A1uT7sOefpDB
-Date: Wed, 15 Oct 2025 15:41:39 +0200
-From: "Arnd Bergmann" <arnd@arndb.de>
-To: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
- linux-remoteproc@vger.kernel.org
-Cc: "Bjorn Andersson" <andersson@kernel.org>,
- "Mathieu Poirier" <mathieu.poirier@linaro.org>,
- "Matthias Brugger" <matthias.bgg@gmail.com>,
- "Chen-Yu Tsai" <wenst@chromium.org>, linux-kernel@vger.kernel.org,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] remoteproc: mtk_scp: Construct FW path if
+ firmware-name not present
+To: Arnd Bergmann <arnd@arndb.de>, linux-remoteproc@vger.kernel.org
+Cc: Bjorn Andersson <andersson@kernel.org>,
+ Mathieu Poirier <mathieu.poirier@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Chen-Yu Tsai
+ <wenst@chromium.org>, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  kernel@collabora.com
-Message-Id: <3f23850e-f01f-4a2e-a7dc-82c04ab5926c@app.fastmail.com>
-In-Reply-To: <20251015084103.10737-1-angelogioacchino.delregno@collabora.com>
 References: <20251015084103.10737-1-angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v2] remoteproc: mtk_scp: Construct FW path if firmware-name not
- present
-Content-Type: text/plain
+ <3f23850e-f01f-4a2e-a7dc-82c04ab5926c@app.fastmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <3f23850e-f01f-4a2e-a7dc-82c04ab5926c@app.fastmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251015_064202_397814_1FDECBE3 
-X-CRM114-Status: GOOD (  27.21  )
+X-CRM114-CacheID: sfid-20251015_064911_111489_C410A48C 
+X-CRM114-Status: GOOD (  30.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,80 +80,100 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 15, 2025, at 10:41, AngeloGioacchino Del Regno wrote:
-> After a reply on the mailing lists [1] it emerged that the DT
-> property "firmware-name" should not be relied on because of
-> possible issues with firmware versions.
-> For MediaTek SCP, there has never been any firmware version vs
-> driver version desync issue but, regardless, the firmwares are
-> always using the same name and they're always located in a path
-> with a specific pattern.
->
-> Instead of unconditionally always relying on the firmware-name
-> devicetree property to get a path to the SCP FW file, drivers
-> should construct a name based on what firmware it knows and
-> what hardware it is running on.
->
-> In order to do that, add a `scp_get_default_fw_path()` function
-> that constructs the path and filename based on two of the infos
-> that the driver can get:
->  1. The compatible string with the highest priority (so, the
->     first one at index 0); and
->  2. The type of SCP HW - single-core or multi-core.
->
-> This means that the default firmware path is generated as:
->  - Single core SCP: mediatek/(soc_model)/scp.img
->    for example:     mediatek/mt8183/scp.img;
->
->  - Multi core SCP:  mediatek/(soc_model)/scp_c(core_number).img
->    for example:     mediatek/mt8188/scp_c0.img for Core 0, and
->                     mediatek/mt8188/scp_c1.img for Core 1.
->
-> Note that the generated firmware path is being used only if the
-> "firmware-name" devicetree property is not present in the SCP
-> node or in the SCP Core node(s).
->
-> [1 - Reply regarding firmware-name property]
-> Link: 
-> https://lore.kernel.org/all/7e8718b0-df78-44a6-a102-89529d6abcce@app.fastmail.com/
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Il 15/10/25 15:41, Arnd Bergmann ha scritto:
+> On Wed, Oct 15, 2025, at 10:41, AngeloGioacchino Del Regno wrote:
+>> After a reply on the mailing lists [1] it emerged that the DT
+>> property "firmware-name" should not be relied on because of
+>> possible issues with firmware versions.
+>> For MediaTek SCP, there has never been any firmware version vs
+>> driver version desync issue but, regardless, the firmwares are
+>> always using the same name and they're always located in a path
+>> with a specific pattern.
+>>
+>> Instead of unconditionally always relying on the firmware-name
+>> devicetree property to get a path to the SCP FW file, drivers
+>> should construct a name based on what firmware it knows and
+>> what hardware it is running on.
+>>
+>> In order to do that, add a `scp_get_default_fw_path()` function
+>> that constructs the path and filename based on two of the infos
+>> that the driver can get:
+>>   1. The compatible string with the highest priority (so, the
+>>      first one at index 0); and
+>>   2. The type of SCP HW - single-core or multi-core.
+>>
+>> This means that the default firmware path is generated as:
+>>   - Single core SCP: mediatek/(soc_model)/scp.img
+>>     for example:     mediatek/mt8183/scp.img;
+>>
+>>   - Multi core SCP:  mediatek/(soc_model)/scp_c(core_number).img
+>>     for example:     mediatek/mt8188/scp_c0.img for Core 0, and
+>>                      mediatek/mt8188/scp_c1.img for Core 1.
+>>
+>> Note that the generated firmware path is being used only if the
+>> "firmware-name" devicetree property is not present in the SCP
+>> node or in the SCP Core node(s).
+>>
+>> [1 - Reply regarding firmware-name property]
+>> Link:
+>> https://lore.kernel.org/all/7e8718b0-df78-44a6-a102-89529d6abcce@app.fastmail.com/
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> 
+> This looks good to me, thanks for the changes!
+> 
+> Reviewed-by: Arnd Bergmann <arnd@arndb.de>
+> 
 
-This looks good to me, thanks for the changes!
+Thanks!
 
-Reviewed-by: Arnd Bergmann <arnd@arndb.de>
+>> +
+>> +	/* If the compatible string starts with "mediatek,mt" assume that it's ok */
+>> +	if (!str_has_prefix(compatible, "mediatek,mt"))
+>> +		return ERR_PTR(-EINVAL);
+>> +
+>> +	if (core_id >= 0)
+>> +		ret = snprintf(scp_fw_file, ARRAY_SIZE(scp_fw_file), "scp_c%1d", core_id);
+>> +	else
+>> +		ret = snprintf(scp_fw_file, ARRAY_SIZE(scp_fw_file), "scp");
+>> +	if (ret <= 0)
+>> +		return ERR_PTR(ret);
+>> +
+>> +	/* Not using strchr here, as strlen of a const gets optimized by compiler */
+>> +	soc = &compatible[strlen("mediatek,")];
+>> +
+>> +	return devm_kasprintf(dev, GFP_KERNEL, "mediatek/%.*s/%s.img",
+>> +			      (int)strlen("mtXXXX"), soc, scp_fw_file);
+>> +}
+> 
+> This might have to eventually support version numbers, in case
+> there are ever incompatible ABIs where updating the firmware requires
+> a minimum kernel driver version.
+> 
+> Until there is a firmware file that needs it, this code is
+> fine.
+> 
+> I'm not sure if you need to handle the case where there is
+> a "firmware-name" property in DT, but the filesystem only
+> contains the generated filenames, or when the generated
+> firmware name refers to a newer version. It may be best to
+> try both the generated names and the name from the dts
+> file.
 
-> +
-> +	/* If the compatible string starts with "mediatek,mt" assume that it's ok */
-> +	if (!str_has_prefix(compatible, "mediatek,mt"))
-> +		return ERR_PTR(-EINVAL);
-> +
-> +	if (core_id >= 0)
-> +		ret = snprintf(scp_fw_file, ARRAY_SIZE(scp_fw_file), "scp_c%1d", core_id);
-> +	else
-> +		ret = snprintf(scp_fw_file, ARRAY_SIZE(scp_fw_file), "scp");
-> +	if (ret <= 0)
-> +		return ERR_PTR(ret);
-> +
-> +	/* Not using strchr here, as strlen of a const gets optimized by compiler */
-> +	soc = &compatible[strlen("mediatek,")];
-> +
-> +	return devm_kasprintf(dev, GFP_KERNEL, "mediatek/%.*s/%s.img",
-> +			      (int)strlen("mtXXXX"), soc, scp_fw_file);
-> +}
+No, not really.
 
-This might have to eventually support version numbers, in case
-there are ever incompatible ABIs where updating the firmware requires
-a minimum kernel driver version.
+All of the platforms using firmware-name for the SCP are following the same
+pattern as path... so this code autogenerates the path based on what it is
+set already in DT as firmware-name where present.
 
-Until there is a firmware file that needs it, this code is
-fine.
+The only exception is MT8188, where the firmware was named scp.img regardless
+of the fact that it is dual-core and supports dual-firmware... that will need
+a rename in linux-firmware. It's necessary evil, but caught just in time ;-)
 
-I'm not sure if you need to handle the case where there is
-a "firmware-name" property in DT, but the filesystem only
-contains the generated filenames, or when the generated
-firmware name refers to a newer version. It may be best to
-try both the generated names and the name from the dts
-file.
+P.S.: There is no MT8188 DT declaring firmware-name, so the firmware can
+really just carelessly be renamed; doing so, no breakage/regression will
+happen, and we again don't need to check for existance of both.
 
-       Arnd
+
+Cheers!
+Angelo
 
