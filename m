@@ -4,91 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9ECFBCCD197
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Oct 2025 12:04:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 150C8CCD193
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Oct 2025 12:52:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yIkDzOp9lOkC64phyHj+bKX1qlxxtXvg/X9w367rNpc=; b=zuozdXVVn3TCJ83cgbDP3JKCmc
-	ajxR37JFNoBrG+Jua4ow0/yXG4p+yv8JaeJFPkUkKK0moAqN4jhkOcMrBdfgpXvjSiRjSiwHyn8CM
-	0meMM0DXvdRFkfWCE6WYOcJCZT2QkzdaPtgt5Ffa1h4uUbruZo5rEPli71gdcggtgbZouRUW7a36a
-	TUjR9+pteVLUgGAsqI1Eq5y2OQ/v6OWQt9oB+JjEwbPgzTEGtwYy/xumr5VaXWJmK4P5KqrvuQ8gd
-	r7VBtsKki/6n2dkZ/yfAW0nAW/0XIMVcAGHktaArf9AhlWKPwc3dZFeXVLWav28mS3OqSwKkADigc
-	1/Dm+EwQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=T/PeCLteuTZCtCAousugNZqWbsmGG2vzpEufPHA/fY8=; b=M67J766JxrimICOpY0hBHcdUnT
+	BZIJTdNd9ewTWoeFMxQShob9pvlMNxAhyo9caWqJUkYlRydflhbCNTpoR82WvVe8o1gD5euSA092b
+	Ja9gZME/A/7atcj+501AYZQXpN7uxuWHsKLM3tzGnqOWPpocEvCxOhD221LVrbFZwA1h9kWAHNg0/
+	ewwaT0q2E030wTjnk3c2JBHAUvzJXZysaPkDvw602ZE3mYAc7N3Y1Fn5t8iEMf79a4HklGi4y/Ddy
+	KFO4le/bBFMFz2wxctSXTo4bcnxOb2x3hVZPCIsmidh9i2xP2FPPJ39KLNGklAI4mtadaAeQhZxH3
+	djzofCtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v90F8-00000001V10-2crJ;
-	Wed, 15 Oct 2025 12:04:34 +0000
-Received: from mail-qk1-x733.google.com ([2607:f8b0:4864:20::733])
+	id 1v90za-00000001b8o-0BpV;
+	Wed, 15 Oct 2025 12:52:34 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v90F6-00000001Uz0-07MO
-	for linux-mediatek@lists.infradead.org;
-	Wed, 15 Oct 2025 12:04:33 +0000
-Received: by mail-qk1-x733.google.com with SMTP id af79cd13be357-856cbf74c4aso1238755785a.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 15 Oct 2025 05:04:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar.org; s=google; t=1760529871; x=1761134671; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=yIkDzOp9lOkC64phyHj+bKX1qlxxtXvg/X9w367rNpc=;
-        b=OPT5UA0OlOZZ50ueWhh5l/U1tmbQ+pAxTu2hguKgLLE5443ScxsK1meXXxsGPav9UL
-         ZuqS8weG/P+ebkn7Rkh42W1i87Q5+BJDfGCP+ud2Q/oqIol9vmVxaz8Bp3TuyQafqb2+
-         gG3L7WLqBMZo34M/dSoe+WXsL9sIziNaB/n7sVD+n1/6hdRnApFJemt1yddSHTHKP6qp
-         I1OzdLd/p6iNEYRei42SL+PuAMyUTPID0GBTpOfHFut5z8v6DR3AwcEsdt1nndTkzyYT
-         WuRwQN6gZIOwo5n+GbvCiPBE8Y8Wkg9Lkzz2HPY2obR+e31X1i91k/N98NYRWUpwDqr2
-         pzEQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1760529871; x=1761134671;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=yIkDzOp9lOkC64phyHj+bKX1qlxxtXvg/X9w367rNpc=;
-        b=nANrWu9mRj32TBZOCv7cM6jqKTjiekFOE6zqjpr7TI5i1FiCJcSE5/d58Kjijt1hcD
-         KovFuh6eErUxXu6WZJqJ45BDIF0Q8XlipQ9psz+/h3nnRs+LhStekYiazFCSKfKBhtNW
-         WdRg8CPT76B6Qn9wfalLyTSKndNZyX+ABpl3y/BvpOxVYC2wwizQqOKe3zxypMkjjD35
-         n52iSJujX5/lPcoennUGfrllbLlG1YvuL4lWW1V1x677pxIjS4Wf0NE/+Z34jQ2HOvR9
-         YrsPTCBKP/lhn6qZeX1+SYFiphW6X7CEgMgQ6xp4R7XSGivMhJjsQ5MNjO3hK+DmnuZc
-         500Q==
-X-Forwarded-Encrypted: i=1; AJvYcCWlClpaPe8nDpcF46+aHUofRoALzKtj0m6geeSjv7GRP+Wntmpb1a4BOYaTiaoWQ9xurOz4Z+cZddwHuC1gzQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwWTOPY8GYf1Tl1xVAiQsV5Qkva6vF9iQ6Clf/EPvuNufcxRyCI
-	R1Vl1Khq/HUvwEOkWlOP75oxLrAA9RVEmdOgJQeCTzUkESXXiHbGPMn/creCjgPdSW7fM24ONIH
-	4dC1vdMjXKtfP9Xe9JtIBCXthRRM58gZZkycv+U1QaQ==
-X-Gm-Gg: ASbGncvYInRwnFpG+n6KRcxuNTfTGDB7+h1ZeBprfQyVZGKBJjiblVOsJk6NhrvbGlg
-	RibcNI+Ohrp9oaHgqMGjuBvM+Nkxwx1YXvA7+dKvfVAONyWHhJqE02+Bz4LOdr56QCyhfVtbTPM
-	lUuWBynnjm7aeEO46r5Gu3fqQf5rgpan59fVKGZu4TlgLRXSrUGE195oKgifqoGXCo0FuBGZHkb
-	RPOV2ELIfmg66TmZ8TunHeCSVjN5/jWFQ==
-X-Google-Smtp-Source: AGHT+IGsy4ghNUujV8ICs5xCd3l4JFRIFi1WBGAyKhaZaEA9CMFYjjgZCN0vS1WL/9stf48sqTR9sa0kj6mJ0PU2Rkg=
-X-Received: by 2002:a05:620a:800b:b0:85b:5fdf:69ef with SMTP id
- af79cd13be357-883524cb7c1mr3776426285a.30.1760529870781; Wed, 15 Oct 2025
- 05:04:30 -0700 (PDT)
+	id 1v90zX-00000001b8Z-48Mv;
+	Wed, 15 Oct 2025 12:52:32 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 34EF2625B1;
+	Wed, 15 Oct 2025 12:52:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3F712C4CEF8;
+	Wed, 15 Oct 2025 12:52:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1760532750;
+	bh=4DK8NsHpOSDw78JlpzEJiBRJK0MDuJa00sse3sDOyDs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=t8o3nVisN7MqQBJeLDOFcbTRf67htnjR8DcPwRhAq4aev4tsHgIkoMlwuWCeCa59R
+	 jlqIcNRknLKlRb10gzt5joFkL1eEy7qb+mt/Q3pSm6LISI5M1QcmNxEwCRuQhkjFVy
+	 GjM39Goe0J/dWh2Lj3mWdO8BnpWZB64sG2Dhtmlcf+AtuYFim9Tm5oXfgMHB3oJU4G
+	 a0cGFDrFaJdrgVy5ES42Knl7f2I61yFf6tVgGI5i1bD8NaBUtayoom8W8zWj5doLaW
+	 9hWYFmzDkaKeDlv5b3NJmcOqRRuKGz2S8nNWATw5VeH3PKNyK2f7GDL6cTTEwJFi4G
+	 zEuQ9KR/cNgKw==
+Date: Wed, 15 Oct 2025 13:52:26 +0100
+From: Simon Horman <horms@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH net-next 03/12] net: airoha: Add
+ airoha_ppe_get_num_stats_entries() and
+ airoha_ppe_get_num_total_stats_entries()
+Message-ID: <aO-ZCqsvPQ6Pqjpg@horms.kernel.org>
+References: <20251015-an7583-eth-support-v1-0-064855f05923@kernel.org>
+ <20251015-an7583-eth-support-v1-3-064855f05923@kernel.org>
 MIME-Version: 1.0
-References: <20251013060212.14583-1-vignesh.raman@collabora.com>
-In-Reply-To: <20251013060212.14583-1-vignesh.raman@collabora.com>
-From: Daniel Stone <daniel@fooishbar.org>
-Date: Wed, 15 Oct 2025 13:04:18 +0100
-X-Gm-Features: AS18NWBrg_BqO2tS4RN_x8d2btqMDE8us2R2sNEBkP2IYKjicDOGCIjh3Jp7IkM
-Message-ID: <CAPj87rPDppYBRuQ99mh=VqrsSErGKcw-ZRY+zPuGrDj77G5k6Q@mail.gmail.com>
-Subject: Re: [PATCH v1] drm/ci: disable broken MR check in sanity job
-To: Vignesh Raman <vignesh.raman@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com, 
-	helen.fornazier@gmail.com, airlied@gmail.com, simona.vetter@ffwll.ch, 
-	robdclark@gmail.com, guilherme.gallo@collabora.com, 
-	sergi.blanch.torne@collabora.com, valentine.burley@collabora.com, 
-	lumag@kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org, 
-	intel-gfx@lists.freedesktop.org, virtualization@lists.linux.dev, 
-	linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251015_050432_074763_68FED436 
-X-CRM114-Status: UNSURE (   6.25  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20251015-an7583-eth-support-v1-3-064855f05923@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,23 +79,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Vignesh,
+On Wed, Oct 15, 2025 at 09:15:03AM +0200, Lorenzo Bianconi wrote:
+> Introduce airoha_ppe_get_num_stats_entries and
+> airoha_ppe_get_num_total_stats_entries routines in order to make the
+> code more readable controlling if CONFIG_NET_AIROHA_FLOW_STATS is
+> enabled or disabled.
+> Modify airoha_ppe_foe_get_flow_stats_index routine signature relying on
+> airoha_ppe_get_num_total_stats_entries().
+> 
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>  drivers/net/ethernet/airoha/airoha_eth.h |  10 +--
+>  drivers/net/ethernet/airoha/airoha_ppe.c | 103 +++++++++++++++++++++++++------
+>  2 files changed, 86 insertions(+), 27 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
+> index 4330b672d99e1e190efa5ad75d13fb35e77d070e..1f7e34a5f457ca2200e9c81dd05dc03cd7c5eb77 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.h
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.h
+> @@ -50,15 +50,9 @@
+>  
+>  #define PPE_NUM				2
+>  #define PPE1_SRAM_NUM_ENTRIES		(8 * 1024)
+> -#define PPE_SRAM_NUM_ENTRIES		(2 * PPE1_SRAM_NUM_ENTRIES)
+> -#ifdef CONFIG_NET_AIROHA_FLOW_STATS
+> +#define PPE_SRAM_NUM_ENTRIES		(PPE_NUM * PPE1_SRAM_NUM_ENTRIES)
+>  #define PPE1_STATS_NUM_ENTRIES		(4 * 1024)
+> -#else
+> -#define PPE1_STATS_NUM_ENTRIES		0
+> -#endif /* CONFIG_NET_AIROHA_FLOW_STATS */
+> -#define PPE_STATS_NUM_ENTRIES		(2 * PPE1_STATS_NUM_ENTRIES)
+> -#define PPE1_SRAM_NUM_DATA_ENTRIES	(PPE1_SRAM_NUM_ENTRIES - PPE1_STATS_NUM_ENTRIES)
+> -#define PPE_SRAM_NUM_DATA_ENTRIES	(2 * PPE1_SRAM_NUM_DATA_ENTRIES)
+> +#define PPE_STATS_NUM_ENTRIES		(PPE_NUM * PPE1_STATS_NUM_ENTRIES)
+>  #define PPE_DRAM_NUM_ENTRIES		(16 * 1024)
+>  #define PPE_NUM_ENTRIES			(PPE_SRAM_NUM_ENTRIES + PPE_DRAM_NUM_ENTRIES)
+>  #define PPE_HASH_MASK			(PPE_NUM_ENTRIES - 1)
+> diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
+> index 8d1dceadce0becb2b1ce656d64ab77bd3c2f914a..303d31e1da4b723023ee0cc1ca5f6038c16966cd 100644
+> --- a/drivers/net/ethernet/airoha/airoha_ppe.c
+> +++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+> @@ -32,6 +32,30 @@ static const struct rhashtable_params airoha_l2_flow_table_params = {
+>  	.automatic_shrinking = true,
+>  };
+>  
+> +static int airoha_ppe_get_num_stats_entries(struct airoha_ppe *ppe,
+> +					    u32 *num_stats)
+> +{
+> +#ifdef CONFIG_NET_AIROHA_FLOW_STATS
+> +	*num_stats = PPE1_STATS_NUM_ENTRIES;
+> +	return 0;
+> +#else
+> +	return -EOPNOTSUPP;
+> +#endif /* CONFIG_NET_AIROHA_FLOW_STATS */
+> +}
 
-On Mon, 13 Oct 2025 at 07:02, Vignesh Raman <vignesh.raman@collabora.com> w=
-rote:
-> GitLab recently changed the required permissions for the
-> are-developers-allowed-to-push-to-my-MR check:
-> https://gitlab.freedesktop.org/freedesktop/ci-templates/-/issues/81
->
-> Until that=E2=80=99s resolved, disable the check - it=E2=80=99s mostly ob=
-solete anyway.
->
-> Based on https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/37782
+Hi Lorenzo,
 
-Thanks for fixing this.
+I think that in general using IS_ENABLED is preferred over #ifdef
+in cases where the former can be used. For one thing it improves compile
+coverage.
 
-Reviewed-by: Daniel Stone <daniels@collabora.com>
+That does seem applicable here, so I'm wondering if
+we can do something like the following.
+(Compile tested only!)
 
-Cheers,
-Daniel
+static int airoha_ppe_get_num_stats_entries(struct airoha_ppe *ppe,
+                                            u32 *num_stats)
+{
+        if (!IS_ENABLED(CONFIG_NET_AIROHA_FLOW_STATS))
+                return -EOPNOTSUPP;
+
+        *num_stats = PPE1_STATS_NUM_ENTRIES;
+        return 0;
+}
+
+Also, very subjectively, I might have returned num_stats as
+a positive return value. I'm assuming it's value will never overflow an int.
+Likewise elsewhere.
+
+But that's just my idea. Feel free to stick with the current scheme.
+
+...
 
