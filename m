@@ -4,76 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FFA0CCD193
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Oct 2025 08:02:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0489CCCD193
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Oct 2025 08:25:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ufUK2ygb0AKaik0hD840D5eoLpDMDbgWUBvgDKfQsYs=; b=Knkj+ivNQHR7hrWSmTyoQlzkfM
-	9HVNcrZg2CKdW8ukwu7pv3rKk/AYXif7HCJjRuTkAM4grT0eDu7sJe5gpdzphe/qVqyhMK8saWVrF
-	5NPMEVjRQU0X2/kc0jKUcGguGaXd6b8/3VoOCRlbmk5gOdyy61QlUppqvjxo2g0TAdMDJ0TdXjltu
-	kPEUvdtk25t7fibsvKdbK44JJnltc8Y046R6Ca/scMvUBJVnfSIJCmgTkG8ZfaTnmMY/OGgaCpco1
-	GjpnlpsJWAxrmzapFOHukqRXk7P1FiHOCgKGQ3L1ZLKyUZTt+/DOwsIUVGRItjQZICQtkgRGLM3y7
-	CTjwk6Aw==;
+	bh=NYMYqpem9FeTe8SivcyvFxTUlDdQSFxSxd76rqbWE+s=; b=S26OGyuKSJH1L7wUUeNKAmfALj
+	ItTvrd0tgjaiS9grOPsJDwph6pa7Tu3eAbhaYyhbic8qOMUTe1sJle6km8jHDNsxXeTje1ELFLS1a
+	PKpJ550gbOd9viS23z7Fd97FO0FLKEb3y53iFvb5b/QRTDAxPnLJjMOyHA1y/0zvIp4aXWFFmXy2a
+	A6myIk74CGk1CKA/cUiw3VBPe+Cxxzk+DFs9gqjl3c8A+6QeE11s77tIevaRD/1D8RmoU3OVtGYx3
+	my44lxGnLrOWC+Q+GQ8Nrd987sIKvJCMU4PYqBuieo63ksRqab5qqF6Nq+7R1mEmiSj63jkViNiwr
+	5LVdWbfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8wT7-00000000qvq-3P22;
-	Wed, 15 Oct 2025 08:02:45 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1v8wpL-00000000tqp-2igx;
+	Wed, 15 Oct 2025 08:25:43 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8wT6-00000000quz-27X5;
-	Wed, 15 Oct 2025 08:02:44 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id DC0EE6020A;
-	Wed, 15 Oct 2025 08:02:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AD468C4CEF8;
-	Wed, 15 Oct 2025 08:02:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760515363;
-	bh=GXdSIq5iw3ZqrU8QMk6N8jf6eMJLMbNXSh7eZkTME/s=;
+	id 1v8wpJ-00000000tq4-0UqO;
+	Wed, 15 Oct 2025 08:25:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1760516738;
+	bh=C5vRLQ73Rs9hSl/5ofntob1CHll5VuYEA+yisHg++58=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=dtlVrVunpIl12FBsJIXRaT26DGtfPd5Qtb5LFc6vYKONhaDjmgrZHOYcIp3oiolCW
-	 NDwL5jSF4vZBrpzj30HjqadB88/mnkbeOAZCSht2+QjCXL9yW487pkL0uQtnSaln4J
-	 xg1lH6ZZDOWxoy6upi8HxFWmLdzhRx9Kn5BEQbJ7KMNvaXCW5seiQ27+QwHJ7okVRj
-	 XuAOVQP1aCgE8aEIxW5Gmy+HJ5qacejx2lVkhIPSRAyk293hl+E6uNYl4Z4iQjnIB8
-	 yvUfcEiBSj2kpTKppq8gdLM+p7fK32Kfh7oMuXFDPKfrxD/3UXtyave1ziFXkkFXsp
-	 BkOAlg28t4TxQ==
-Message-ID: <a4cf7a4a-f833-487d-9861-a6957f25e7e0@kernel.org>
-Date: Wed, 15 Oct 2025 10:02:37 +0200
+	b=PU7G/s2kkMnYb46jq+l1lYGjvPgImVi99loaaI/Nwb5d0V2jEqq2zM2GBioEMhQmq
+	 AgHYZ6Yn8pf4uNRhjQqrJxSLWT8qINRw0mzJlmqgxyHDA6/3P2KGezVZCRW8/TZPJW
+	 ybi7fkKXcvsW2E96/N4uWJGkzX3AnUtlVEV42Rv8QB6aKNXrR3IJWDF5YsUZCr9EoV
+	 JNdLli+/LB1yauQmEG8g5G1Cpkpw78EnALCMs15DDq9IGz9+vFI/UQCz0AcGJm1jAp
+	 kYTFFDT1odfonbP/+ymFDg5ioWOz502ofSFrOchuxSXmHZDGPG44eKPHaqxP9OyGU0
+	 P4avD0/ddtEyw==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id AF73F17E055D;
+	Wed, 15 Oct 2025 10:25:37 +0200 (CEST)
+Message-ID: <b5fe44f0-f733-46f3-9436-37aea1330aad@collabora.com>
+Date: Wed, 15 Oct 2025 10:25:37 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] media: v4l2-mem2mem: Don't copy frame flags for
- frame-based devices
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- linux-media@vger.kernel.org, imx@lists.linux.dev,
+Subject: Re: [PATCH 0/5] MediaTek UFS Cleanup and MT8196 Enablement
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
+ Bart Van Assche <bvanassche@acm.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Stanley Chu <stanley.chu@mediatek.com>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>,
+ Peter Wang <peter.wang@mediatek.com>, Stanley Jhu <chu.stanley@gmail.com>,
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+ kernel@collabora.com, linux-scsi@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
- linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev
-Cc: Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
- Bin Liu <bin.liu@mediatek.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Hans Verkuil <hverkuil@kernel.org>, Jacob Chen <jacob-chen@iotwrt.com>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Jiasheng Jiang <jiashengjiangcool@gmail.com>,
- Matthew Majewski <mattwmajewski@gmail.com>,
- Mirela Rabulea <mirela.rabulea@nxp.com>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Shuah Khan <skhan@linuxfoundation.org>,
- Steve Longerbeam <slongerbeam@gmail.com>,
- =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
- Xavier Roumegue <xavier.roumegue@oss.nxp.com>
-References: <20251009111143.9137-1-laurent.pinchart@ideasonboard.com>
- <45a3e39fb87fc4e32626dfaa277a314bce5f4f68.camel@collabora.com>
-From: Hans Verkuil <hverkuil+cisco@kernel.org>
+ linux-phy@lists.infradead.org
+References: <20251014-mt8196-ufs-v1-0-195dceb83bc8@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <45a3e39fb87fc4e32626dfaa277a314bce5f4f68.camel@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <20251014-mt8196-ufs-v1-0-195dceb83bc8@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251015_012541_343527_2FAA808F 
+X-CRM114-Status: UNSURE (   9.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,276 +89,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/9/25 15:04, Nicolas Dufresne wrote:
-> Hi,
+Il 14/10/25 17:10, Nicolas Frattaroli ha scritto:
+> In this series, the existing MediaTek UFS binding is expanded and
+> completed to correctly describe not just the existing compatibles, but
+> also to introduce a new compatible in the from of the MT8196 SoC.
 > 
-> Le jeudi 09 octobre 2025 à 14:11 +0300, Laurent Pinchart a écrit :
->> The v4l2_m2m_buf_copy_metadata() function takes a boolean
->> copy_frame_flags argument. When true, it causes the function to copy the
->> V4L2_BUF_FLAG_KEYFRAME, V4L2_BUF_FLAG_BFRAME and V4L2_BUF_FLAG_PFRAME
->> flags from the output buffer to the capture buffer.
->>
->> Many frame-based M2M drivers (e.g. for JPEG encoders, scalers,
->> dewarpers, 2D blenders, ...) set the argument to true, while the frame
->> flags are not applicable to those drivers as they have no concept of
->> key, B or P frames. Set the argument to false to avoid further
->> cargo-cult mistakes.
+> The resets, which until now were completely absent from both the UFS
+> host controller binding and the UFS PHY binding, are introduced to both.
+> This also means the driver's undocumented and, in mainline, unused reset
+> logic is reworked. In particular, the PHY reset is no longer a reset of
+> the host controller node, but of the PHY node.
 > 
-> There is no use cases in any upstream driver for copying them over (even in
-> Tegra 20 decoder driver). KEY/P/B are properties of bitstream buffer in some
-> formats. Once decoded, this is no longer a property of the video frame and
-> should be discarded. So even decoder supporting that feature should not copy
-> them over.
+> This means the host controller can reset the PHY through the common PHY
+> framework.
+> 
+> The resets remain optional.
+> 
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-I agree. I think I thought at the time that it could be useful to know if
-an uncompressed frame was decoded from a I/P/B compressed frame, and to
-preserve that information if that same uncompressed frame was passed through
-another M2M device (e.g. a scaler).
+While series is
 
-But looking back at the documentation it is clear that these flags are meant
-for compressed frames, so copying them makes no sense.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Regards,
-
-	Hans
-
-> 
-> I'd remove the boolean completely to be fair, this is always inappropriate to
-> set this to true. I'd be fine doing it in two steps, but then the list should be
-> completed, see below:
-> 
->>
->> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
->> ---
->>  drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c     | 4 ++--
->>  drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c   | 4 ++--
->>  drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c   | 4 ++--
->>  drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c      | 2 +-
->>  drivers/media/platform/nxp/dw100/dw100.c                 | 2 +-
->>  drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c           | 2 +-
->>  drivers/media/platform/rockchip/rga/rga.c                | 2 +-
->>  drivers/media/platform/st/stm32/dma2d/dma2d.c            | 2 +-
->>  drivers/media/platform/sunxi/sun8i-di/sun8i-di.c         | 2 +-
->>  drivers/media/platform/sunxi/sun8i-rotate/sun8i_rotate.c | 2 +-
->>  drivers/media/test-drivers/vim2m.c                       | 2 +-
->>  drivers/staging/media/imx/imx-media-csc-scaler.c         | 2 +-
-> 
-> Missing:
-> 
-> - drivers/media/platform/amphion/vdec.c
-> - drivers/media/platform/mediatek/vcodec/decoder/vdec/*
-> - drivers/media/platform/nvidia/tegra-vde/h264.c
-> - drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> - drivers/media/platform/verisilicon/hantro_drv.c
-> - drivers/staging/media/sunxi/cedrus/cedrus_dec.c
-> 
-> cheers,
-> Nicolas
-> 
->>  12 files changed, 15 insertions(+), 15 deletions(-)
->>
->> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
->> b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
->> index 35c70ec3ad2c..6bd5036430dc 100644
->> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
->> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
->> @@ -1619,7 +1619,7 @@ static void mtk_jpegenc_worker(struct work_struct *work)
->>  	if (!dst_buf)
->>  		goto getbuf_fail;
->>  
->> -	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
->> +	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, false);
->>  
->>  	mtk_jpegenc_set_hw_param(ctx, hw_id, src_buf, dst_buf);
->>  	ret = pm_runtime_get_sync(comp_jpeg[hw_id]->dev);
->> @@ -1715,7 +1715,7 @@ static void mtk_jpegdec_worker(struct work_struct *work)
->>  	if (!dst_buf)
->>  		goto getbuf_fail;
->>  
->> -	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
->> +	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, false);
->>  	jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(&src_buf->vb2_buf);
->>  	jpeg_dst_buf = mtk_jpeg_vb2_to_srcbuf(&dst_buf->vb2_buf);
->>  
->> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
->> b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
->> index e78e1d11093c..556865100872 100644
->> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
->> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
->> @@ -530,7 +530,7 @@ static void mtk_jpegdec_timeout_work(struct work_struct
->> *work)
->>  
->>  	src_buf = cjpeg->hw_param.src_buffer;
->>  	dst_buf = cjpeg->hw_param.dst_buffer;
->> -	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
->> +	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, false);
->>  
->>  	mtk_jpeg_dec_reset(cjpeg->reg_base);
->>  	clk_disable_unprepare(cjpeg->jdec_clk.clks->clk);
->> @@ -560,7 +560,7 @@ static irqreturn_t mtk_jpegdec_hw_irq_handler(int irq,
->> void *priv)
->>  	ctx = jpeg->hw_param.curr_ctx;
->>  	src_buf = jpeg->hw_param.src_buffer;
->>  	dst_buf = jpeg->hw_param.dst_buffer;
->> -	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
->> +	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, false);
->>  
->>  	irq_status = mtk_jpeg_dec_get_int_status(jpeg->reg_base);
->>  	dec_irq_ret = mtk_jpeg_dec_enum_result(irq_status);
->> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
->> b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
->> index 9ab27aee302a..4c8427b3c384 100644
->> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
->> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
->> @@ -261,7 +261,7 @@ static void mtk_jpegenc_timeout_work(struct work_struct
->> *work)
->>  
->>  	src_buf = cjpeg->hw_param.src_buffer;
->>  	dst_buf = cjpeg->hw_param.dst_buffer;
->> -	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
->> +	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, false);
->>  
->>  	mtk_jpeg_enc_reset(cjpeg->reg_base);
->>  	clk_disable_unprepare(cjpeg->venc_clk.clks->clk);
->> @@ -289,7 +289,7 @@ static irqreturn_t mtk_jpegenc_hw_irq_handler(int irq,
->> void *priv)
->>  	ctx = jpeg->hw_param.curr_ctx;
->>  	src_buf = jpeg->hw_param.src_buffer;
->>  	dst_buf = jpeg->hw_param.dst_buffer;
->> -	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
->> +	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, false);
->>  
->>  	irq_status = readl(jpeg->reg_base + JPEG_ENC_INT_STS) &
->>  		JPEG_ENC_INT_STATUS_MASK_ALLIRQ;
->> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
->> b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
->> index 59ce5cce0698..dba46a69c6be 100644
->> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
->> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
->> @@ -51,7 +51,7 @@ static void mdp_m2m_process_done(void *priv, int vb_state)
->>  	ctx->curr_param.frame_no = ctx->frame_count[MDP_M2M_SRC];
->>  	src_vbuf->sequence = ctx->frame_count[MDP_M2M_SRC]++;
->>  	dst_vbuf->sequence = ctx->frame_count[MDP_M2M_DST]++;
->> -	v4l2_m2m_buf_copy_metadata(src_vbuf, dst_vbuf, true);
->> +	v4l2_m2m_buf_copy_metadata(src_vbuf, dst_vbuf, false);
->>  
->>  	v4l2_m2m_buf_done(src_vbuf, vb_state);
->>  	v4l2_m2m_buf_done(dst_vbuf, vb_state);
->> diff --git a/drivers/media/platform/nxp/dw100/dw100.c
->> b/drivers/media/platform/nxp/dw100/dw100.c
->> index 7a0ee44d9e1f..b73302d54635 100644
->> --- a/drivers/media/platform/nxp/dw100/dw100.c
->> +++ b/drivers/media/platform/nxp/dw100/dw100.c
->> @@ -1483,7 +1483,7 @@ static void dw100_start(struct dw100_ctx *ctx, struct
->> vb2_v4l2_buffer *in_vb,
->>  				V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE),
->>  		in_vb->sequence, out_vb->sequence);
->>  
->> -	v4l2_m2m_buf_copy_metadata(in_vb, out_vb, true);
->> +	v4l2_m2m_buf_copy_metadata(in_vb, out_vb, false);
->>  
->>  	/* Now, let's deal with hardware ... */
->>  	dw100_hw_master_bus_disable(dw_dev);
->> diff --git a/drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c
->> b/drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c
->> index 37e0670f98c5..e1dda1e834e4 100644
->> --- a/drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c
->> +++ b/drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c
->> @@ -1537,7 +1537,7 @@ static void mxc_jpeg_device_run(void *priv)
->>  	src_buf->sequence = q_data_out->sequence++;
->>  	dst_buf->sequence = q_data_cap->sequence++;
->>  
->> -	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
->> +	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, false);
->>  
->>  	jpeg_src_buf = vb2_to_mxc_buf(&src_buf->vb2_buf);
->>  	if (q_data_cap->fmt->mem_planes != dst_buf->vb2_buf.num_planes) {
->> diff --git a/drivers/media/platform/rockchip/rga/rga.c
->> b/drivers/media/platform/rockchip/rga/rga.c
->> index 48b88da59da0..075b684fb178 100644
->> --- a/drivers/media/platform/rockchip/rga/rga.c
->> +++ b/drivers/media/platform/rockchip/rga/rga.c
->> @@ -75,7 +75,7 @@ static irqreturn_t rga_isr(int irq, void *prv)
->>  		WARN_ON(!src);
->>  		WARN_ON(!dst);
->>  
->> -		v4l2_m2m_buf_copy_metadata(src, dst, true);
->> +		v4l2_m2m_buf_copy_metadata(src, dst, false);
->>  
->>  		dst->sequence = ctx->csequence++;
->>  
->> diff --git a/drivers/media/platform/st/stm32/dma2d/dma2d.c
->> b/drivers/media/platform/st/stm32/dma2d/dma2d.c
->> index 643913adc1f3..4184bdb96e6d 100644
->> --- a/drivers/media/platform/st/stm32/dma2d/dma2d.c
->> +++ b/drivers/media/platform/st/stm32/dma2d/dma2d.c
->> @@ -483,7 +483,7 @@ static void device_run(void *prv)
->>  
->>  	src->sequence = frm_out->sequence++;
->>  	dst->sequence = frm_cap->sequence++;
->> -	v4l2_m2m_buf_copy_metadata(src, dst, true);
->> +	v4l2_m2m_buf_copy_metadata(src, dst, false);
->>  
->>  	if (clk_enable(dev->gate))
->>  		goto end;
->> diff --git a/drivers/media/platform/sunxi/sun8i-di/sun8i-di.c
->> b/drivers/media/platform/sunxi/sun8i-di/sun8i-di.c
->> index 3e7f2df70408..11a6c7f5212e 100644
->> --- a/drivers/media/platform/sunxi/sun8i-di/sun8i-di.c
->> +++ b/drivers/media/platform/sunxi/sun8i-di/sun8i-di.c
->> @@ -71,7 +71,7 @@ static void deinterlace_device_run(void *priv)
->>  	src = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
->>  	dst = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
->>  
->> -	v4l2_m2m_buf_copy_metadata(src, dst, true);
->> +	v4l2_m2m_buf_copy_metadata(src, dst, false);
->>  
->>  	deinterlace_write(dev, DEINTERLACE_MOD_ENABLE,
->>  			  DEINTERLACE_MOD_ENABLE_EN);
->> diff --git a/drivers/media/platform/sunxi/sun8i-rotate/sun8i_rotate.c
->> b/drivers/media/platform/sunxi/sun8i-rotate/sun8i_rotate.c
->> index abd10b218aa1..f6e2f11a20dd 100644
->> --- a/drivers/media/platform/sunxi/sun8i-rotate/sun8i_rotate.c
->> +++ b/drivers/media/platform/sunxi/sun8i-rotate/sun8i_rotate.c
->> @@ -70,7 +70,7 @@ static void rotate_device_run(void *priv)
->>  	src = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
->>  	dst = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
->>  
->> -	v4l2_m2m_buf_copy_metadata(src, dst, true);
->> +	v4l2_m2m_buf_copy_metadata(src, dst, false);
->>  
->>  	val = ROTATE_GLB_CTL_MODE(ROTATE_MODE_COPY_ROTATE);
->>  	if (ctx->hflip)
->> diff --git a/drivers/media/test-drivers/vim2m.c b/drivers/media/test-
->> drivers/vim2m.c
->> index dc82830a35a5..3e8476165721 100644
->> --- a/drivers/media/test-drivers/vim2m.c
->> +++ b/drivers/media/test-drivers/vim2m.c
->> @@ -482,7 +482,7 @@ static int device_process(struct vim2m_ctx *ctx,
->>  
->>  	out_vb->sequence = q_data_out->sequence++;
->>  	in_vb->sequence = q_data_in->sequence++;
->> -	v4l2_m2m_buf_copy_metadata(in_vb, out_vb, true);
->> +	v4l2_m2m_buf_copy_metadata(in_vb, out_vb, false);
->>  
->>  	if (ctx->mode & MEM2MEM_VFLIP) {
->>  		start = height - 1;
->> diff --git a/drivers/staging/media/imx/imx-media-csc-scaler.c
->> b/drivers/staging/media/imx/imx-media-csc-scaler.c
->> index 19fd31cb9bb0..770ba3fbaba2 100644
->> --- a/drivers/staging/media/imx/imx-media-csc-scaler.c
->> +++ b/drivers/staging/media/imx/imx-media-csc-scaler.c
->> @@ -96,7 +96,7 @@ static void ipu_ic_pp_complete(struct ipu_image_convert_run
->> *run, void *_ctx)
->>  	src_buf = v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
->>  	dst_buf = v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
->>  
->> -	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
->> +	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, false);
->>  
->>  	src_buf->sequence = ctx->sequence++;
->>  	dst_buf->sequence = src_buf->sequence;
->>
->> base-commit: e5f0a698b34ed76002dc5cff3804a61c80233a7a
-
+Cheers,
+Angelo
 
