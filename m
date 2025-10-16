@@ -4,107 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21691CCD199
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 16:21:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F5BBCCD19A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 16:38:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CA7cuB52W2mQEAqgkUGyrUbyJm9rGb31mdD8XpbhOA0=; b=rK2w4rmlaZJAhpKBsZiU+3Q3NB
-	Hp6qwdEpcWf7y6/H7L5yKYgyrMG/0FEZarLP1n8xbk3GjgNGx4yjFa9b5b/f20Mvr9X82GX1FPuHk
-	pBmwbIuV/Rqii++0uQXGHUxfnUsYeus6KvHMc9dDBtodeYgVnONMii8QM0kDYn35cigq5iiVPpsMS
-	GqXAbFcjwvMzjAYyd2YGd3XmsEox5qgdsPDJRE5eEndyJj2CS7PfWT5Oa+/XSj41MePjM+agiURBi
-	vr9Bcs8/3YZKu8Vwfvnl7aBxyNuXscu5B3YU6TOzSM46rDZU3uPghqplzH1uFBuJ/I2Wm4Tuywi81
-	KowuVh7Q==;
+	bh=6qO0GWoIRh8F0xtKOYhGrXaPAFwOqsj1xEzEGezHv8U=; b=eOktJtPu1AlSWLbGcu1ru/mOA6
+	51G7fMw4Ht8i0hju1RvWDzQ7mQcrp0J+/I+kmXhR9FmzCKr39N5frQ3mbCuSNvWRvizWKoLF+ni16
+	EihAAjkMWetASo1K3JGyh0jskmIa3sdATkemYgd6FXT2P8xeWWHuhk1jKJULVfeW6Lmr6MKKWO7Yn
+	v7oTZAqZZo445RGSrMaWJbsk3zGJObcFsAYGJ2T3GqjdRn9RkUijoxPV+Gi6zENgXCvSZTspwHTrV
+	f9o2uTW+KKsh+6cJzRkph6UtEUEH0HoAFMNXotcGO7Gvm2zV6EOMHglA1TSxtkh7TYebkZCyEAZ+E
+	UtG8wE7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9Qjl-00000005POE-3Z0J;
-	Thu, 16 Oct 2025 16:21:57 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1v9QzM-00000005RdN-3O91;
+	Thu, 16 Oct 2025 16:38:04 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9Qjh-00000005PL4-3tKa
-	for linux-mediatek@lists.infradead.org;
-	Thu, 16 Oct 2025 16:21:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1760631712;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=CA7cuB52W2mQEAqgkUGyrUbyJm9rGb31mdD8XpbhOA0=;
-	b=AnQdXSbpbaqc+pJ5AFJnZd1+MTaEZTpyYBLt8EOnkDZVB1Eb8qeY27XRzoeElMREOyyqFU
-	ULmSwLwTk+m1meb1mBkYc35xQ4U6jO8z/oASHPsfsUXSm2qFCk9GpJ1V+Z2mEoeFWFiPJb
-	kH9VDsKR3AvS9iQRFryMqyjNVnpncHY=
-Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
- [209.85.219.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-403-sBdt6miHPA-19AkUxRTjrQ-1; Thu, 16 Oct 2025 12:21:51 -0400
-X-MC-Unique: sBdt6miHPA-19AkUxRTjrQ-1
-X-Mimecast-MFC-AGG-ID: sBdt6miHPA-19AkUxRTjrQ_1760631711
-Received: by mail-qv1-f71.google.com with SMTP id 6a1803df08f44-87c2085ff29so9622546d6.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 16 Oct 2025 09:21:51 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1760631711; x=1761236511;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=CA7cuB52W2mQEAqgkUGyrUbyJm9rGb31mdD8XpbhOA0=;
-        b=AkYQ4u7YmHTNRaY/qPhxDs2e38mFm2iqnEMnqUQ8laj1xbbmERK2+vgr9cgfh31V6I
-         kx3OY3IVK22P/9lAzWX4cuxyrJX8EUUqO7n0eGzp/vgUJNkmBmQj4sv8z+lKKw+/MXQv
-         pAP4glIwb8YgidX1QWRRQJUzskvRxFfKnBKs4iNp7hDSj6zk/In+Tk8oDiCfrF1a5QYU
-         +oOIeld+4GmeRoBrHyDe3lD8i+R7+WzEynvYt377IBfspnZYJR1UTkVn80VyoUTocKqr
-         gt1lcQI3GhwR7MIEvEpfxDgB+LI/igDhLAMz8YiIfguh14jRLRrvdym0cpgj4uOYoRLZ
-         BCLw==
-X-Forwarded-Encrypted: i=1; AJvYcCX4mX4p5N+OXS0AkdvI0ce5GAIHFNLj5rVAPNxwknJwDF/A0LbKd58RJm5lU+sbCuFznkGssbShiKu4jls0OQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzD07s8wsO3d0F+hvHliX8LY2/LYBu/OTpjrovj7s/eMIZ6kXoK
-	OsjxRU9h5nAl3xpsCBEnnbZhnVYM+gB8idqqapxIVTa9XY7t3hcbZnHZT52QumzsgCGUGkCK4Hs
-	zuaWEB/JHxmMUKctA8MLMyqtp9DO4822dG66SwwKXXtpVkXOEkq3j0J/z9JgG2PqIhfG3SixBeQ
-	==
-X-Gm-Gg: ASbGncs8H1Ocvq+Gy4VfUFiATbg6c5YhOpeVvHsnVdSy9d+hpFkiYmSVTpgnWiXWGwU
-	XiMM8qKNEXTrZFI1/K0XSjRlo8G9cMC+ypHgUS3oEGLqw8s12uJLJLeCOWFKCRz48shAv2fjUSU
-	157itTpU2KVz7l0L30VHtvu0QG6yww3OucqRg71MmuIykDme1PTew8J7KHKbavomgoR0myK7EpB
-	Rm/weyJ8m/bOf43sTruxuPnFzzvWyZAZvr66wecVNoFiL2mO71BWbGtX79ACCf6EC4C5zUsliJR
-	DuBOb7tKlT7Fy+xQl0mMeuRaWcZ1jqWLrx72GvS8zMS45Oj80vWcsJGMTkxTFQ6bOxSJAirfUJF
-	To1Q9PtEi/xCfw12yR+nlQwP3Ibuc01eAHSrJPoil9qFkHSMeBfn3PSolfDkDPOta9A==
-X-Received: by 2002:a05:622a:1a9f:b0:4b5:ea1f:77ec with SMTP id d75a77b69052e-4e89d091468mr10559541cf.0.1760631711002;
-        Thu, 16 Oct 2025 09:21:51 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF4xG1metr/rpLguKpcRm9DUmy+rwmLo2vG6JrUEiGqV+HAheQWldgSDUdPw7Kfed4P6HKKmw==
-X-Received: by 2002:a05:622a:1a9f:b0:4b5:ea1f:77ec with SMTP id d75a77b69052e-4e89d091468mr10559121cf.0.1760631710594;
-        Thu, 16 Oct 2025 09:21:50 -0700 (PDT)
-Received: from redhat.com (c-73-183-52-120.hsd1.pa.comcast.net. [73.183.52.120])
-        by smtp.gmail.com with ESMTPSA id d75a77b69052e-4e885a8e10esm36941801cf.11.2025.10.16.09.21.49
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 16 Oct 2025 09:21:49 -0700 (PDT)
-Date: Thu, 16 Oct 2025 12:21:47 -0400
-From: Brian Masney <bmasney@redhat.com>
-To: Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	id 1v9QzK-00000005RcQ-0cbS;
+	Thu, 16 Oct 2025 16:38:03 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.98.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1v9Qz1-000000002mr-31Oo;
+	Thu, 16 Oct 2025 16:37:43 +0000
+Date: Thu, 16 Oct 2025 17:37:36 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Sjoerd Simons <sjoerd@collabora.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2 0/9] phy: convert from clk round_rate() to
- determine_rate()
-Message-ID: <aPEbm5qK8-hkV3w_@redhat.com>
-References: <20250810-phy-clk-round-rate-v2-0-9162470bb9f2@redhat.com>
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Lee Jones <lee@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+	kernel@collabora.com, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org,
+	linux-phy@lists.infradead.org, netdev@vger.kernel.org,
+	Bryan Hinton <bryan@bryanhinton.com>
+Subject: Re: [PATCH 02/15] arm64: dts: mediatek: mt7981b-openwrt-one:
+ Configure UART0 pinmux
+Message-ID: <aPEfUBl6fMe6QYdY@makrotopia.org>
+References: <20251016-openwrt-one-network-v1-0-de259719b6f2@collabora.com>
+ <20251016-openwrt-one-network-v1-2-de259719b6f2@collabora.com>
+ <aPDnT4tuSzNDzyAE@makrotopia.org>
+ <5f430ff9-d701-426a-bf93-5290e6912eb4@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <20250810-phy-clk-round-rate-v2-0-9162470bb9f2@redhat.com>
-User-Agent: Mutt/2.2.14 (2025-02-20)
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 96rBTZKVAuJ3NRJb9x-qKiJqrcNHy8QIEFXCke3R2_M_1760631711
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <5f430ff9-d701-426a-bf93-5290e6912eb4@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251016_092154_041276_3EF72525 
-X-CRM114-Status: GOOD (  11.02  )
+X-CRM114-CacheID: sfid-20251016_093802_185902_F791AFF4 
+X-CRM114-Status: GOOD (  23.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,23 +86,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Vinod,
+On Thu, Oct 16, 2025 at 04:29:14PM +0200, AngeloGioacchino Del Regno wrote:
+> Il 16/10/25 14:38, Daniel Golle ha scritto:
+> > On Thu, Oct 16, 2025 at 12:08:38PM +0200, Sjoerd Simons wrote:
+> > > Add explicit pinctrl configuration for UART0 on the OpenWrt One board,
+> > > 
+> > > Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
+> > > ---
+> > >   arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts | 11 +++++++++++
+> > >   1 file changed, 11 insertions(+)
+> > > 
+> > > diff --git a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
+> > > index 968b91f55bb27..f836059d7f475 100644
+> > > --- a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
+> > > +++ b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
+> > > @@ -22,6 +22,17 @@ memory@40000000 {
+> > >   	};
+> > >   };
+> > > +&pio {
+> > > +	uart0_pins: uart0-pins {
+> > > +		mux {
+> > > +			function = "uart";
+> > > +			groups = "uart0";
+> > > +		};
+> > > +	};
+> > > +};
+> > > +
+> > >   &uart0 {
+> > > +	pinctrl-names = "default";
+> > > +	pinctrl-0 = <&uart0_pins>;
+> > >   	status = "okay";
+> > >   };
+> > 
+> > As there is only a single possible pinctrl configuration for uart0,
+> > both the pinmux definition as well as the pinctrl properties should go
+> > into mt7981b.dtsi rather than in the board's dts.
+> 
+> If there's really one single possible pin configuration for the UART0 pins,
+> as in, those pins *do not* have a GPIO mode, then yes I agree.
+> 
+> If those pins can be as well configured as GPIOs, this goes to board DTS.
 
-On Sun, Aug 10, 2025 at 06:45:28PM -0400, Brian Masney wrote:
-> The round_rate() clk ops is deprecated in the clk framework in favor
-> of the determine_rate() clk ops, so let's go ahead and convert the
-> drivers in the phy subsystem using the Coccinelle semantic patch
-> posted below. I did a few minor cosmetic cleanups of the code in a
-> few cases.
+I respectfully disagree and will explain below.
 
-I'm hoping to get this series merged so that we can remove the round_rate()
-clk op from the clk core. The clk maintainer (Stephen) mentioned this work
-in his last pull to Linus.
+All pinmux pins on the MediaTek platform also allow being configured as
+GPIOs. However, if you configure those as GPIOs the consequence is that
+you cannot use UART0 any more at all. So using UART0 at all always
+implies using exactly those pins, there is no alternative to that.
 
-https://lore.kernel.org/linux-clk/20251007051720.11386-1-sboyd@kernel.org/
+Hence every board with every possible uses of pins 32 and 33 (there is
+only RX and TX for UART0, RTS/CTS flow-control is not possible) can be
+represented without needing to configure the pinctrl for uart0 on the
+board level. There isn't going to be any variation on the board-level
+when it comes to uart0. Either it is enabled (status = "okay";), and
+that will always imply using the 'uart0' group in mode 'uart', or, in
+case any of the two pins of uart0 is used for something else that means
+uart0 cannot be enabled. Simple as that.
 
-Thanks,
+Hence there is no need to duplicate that pinctrl settings on each and
+every board, as controlling the 'status' property on the board-level
+already gives 100% freedom.
 
-Brian
-
+(Sidenote: As even the BootROM already uses those two pins as UART for
+debug output, it is very unlikely that anyone would actually use them
+for anything else in production. Apart from being used as GPIOs you can
+also use pins 32 and 33 as an I2C target for external debug access to the
+registers of either the sgmii0_phy, sgmii1_phy or u3_phy. However, that
+doesn't matter in terms of the debate above, as the crucial point there
+is that using uart0 always implies using group 'uart0' in 'uart' mode.)
 
