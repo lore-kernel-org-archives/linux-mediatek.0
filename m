@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 280A8CCD199
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 16:00:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0874CCD199
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 16:00:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=trkNRBj5Jg9tq6k/FywQKGAvLZ9HzEqrgeq1wjUUjrE=; b=0+C4f77qdc5UbXBjVKGv0/COh4
-	7dNrquH3zLC592FnsBrjfA1nSvDkkWC+mRzGvB2CJjqbn77F+wH8rctp66b/kIxanw30P8187l23k
-	5N3AtdqXzJGb/iXZ4G4wyuotaK4tHuSjXy3lalQrLKT7IQTX256mWFcbIVB5ZH560X/abjrvMrMPM
-	IORVbGzql8sfNzCD5qLMkSctP9/zWmkcxatoBAVZLn72uXjtfbKyYRz2CvEuh2IQ46B+bTz9REVOC
-	t5j/JzFvQen6cFWKTKQoMSzAK0S+Or7vQHObJKsMabhjUfon25dxQlFvLCCPuupDREbpS+gHzWt2x
-	iKkzKWRA==;
+	bh=jqFJNhUJg1qnI/xkgkILNM+TjzTwU9ayVr2PWAsWxpM=; b=D2DxkCocMXoDjgvFCSgk8Wavq+
+	qUDalP89jBlvH7woftCv+ciIrBKIyZWH+OCNEEKDHSjeM5zyp703NUoxjwKRybgv/q40aoQLE2Vv2
+	JqCc/g6R5gmVKLfHoL1Sp/iIJb5sMN7SxqnSSxfMY9YJd4EYiw4l8RH2FWhejO7ux6D5BM9PuiCMs
+	zh0DJ3mQxmcSMrYap123D7NF0JVrpSvpckj/yCsCgEBKuS+KY4hLYyipwuEaJ8hBZEH/87XAAxYbq
+	Zc4WFUYaRh6LLhjecRqNTmv4Pqu7XyNiHMxUh4V/iVHHTBW1sgw4W3+54Kj+1f8fZu2KdXgscBKR5
+	wnUI8r/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9QOq-00000005JiT-1aAq;
-	Thu, 16 Oct 2025 16:00:20 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1v9QP9-00000005Jvv-418C;
+	Thu, 16 Oct 2025 16:00:39 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9QOn-00000005Jhd-0ePI;
-	Thu, 16 Oct 2025 16:00:18 +0000
+	id 1v9QP1-00000005JoI-3YbE;
+	Thu, 16 Oct 2025 16:00:32 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7DF906403D;
-	Thu, 16 Oct 2025 16:00:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 82BD5C4CEF1;
-	Thu, 16 Oct 2025 16:00:13 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 3E9C843A98;
+	Thu, 16 Oct 2025 16:00:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7DF95C4CEF1;
+	Thu, 16 Oct 2025 16:00:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760630416;
-	bh=NuqUOPCKexSPVN6pyx9qmVQ4zuprW6Q0ZQJ3dbKvATs=;
+	s=k20201202; t=1760630431;
+	bh=nORpSP6NrI6Qmuqm66M/ilyzrD8flM0QSTQ4gbzBGi8=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=V1OZNxhAC/VFy5c2v7Clp9XcpcWIZEQoDmeu8dfrVkzFV81Ty+TppXZ7CBIMZt6Oq
-	 yCpaRt4YuBqED+M9qz7KOHUM3GdjmowtScYZWMePVmuNGzbyb1BS3Z1cmyNfrbWt50
-	 mfEMqlKqaI6Ovopzjf6FngMC9/jwJyrSXDsEgOhEZnaMdRkliP+2S0BPnmSlFX9QMH
-	 bByZBmnkIrkpZ6M9zAEOpzPxFHf6PwYexqX/tN/PfYeQoCgqON5r2/HPeBID30HghQ
-	 VCKVdLtDaOUQS8BJFOdpDSX/o8jfvRK5oMYoklNCSyIWFZdZ8sRfupt8h42ITDpGVZ
-	 67TV4890pnI/w==
-Date: Thu, 16 Oct 2025 17:00:11 +0100
+	b=r6erMQRwckQ6A4zou04gI0aaPdOBZOubgDi7fAVY6xKulEcsY1GWnGPpOOaMHwnXX
+	 GkX9JWq2f1Htn1vUgbbi18LINXvee8aLd41Y8Sk6x9VzCvIRXEwHS7nHlNatdxhSMD
+	 8PhOhXvxuUlUOm4z1Md06yNnNcrfyqxbuOxzctZ7W9zwuBnaYKl8+8NCiw5nWDBoUJ
+	 9R89LQBk9cOsZHe1nCBEFiELV/oBteEcH8bbV5N+UgQHpTd6bpXclhtkVS11Hubxa4
+	 2OGv3/98XaU8adyPEQBuCToDHaxJSQO0OZnCNh9NnywXTahukgnoFuPiZ8Ad1qLsoV
+	 FH3/olxFBwC/Q==
+Date: Thu, 16 Oct 2025 17:00:26 +0100
 From: Simon Horman <horms@kernel.org>
 To: Lorenzo Bianconi <lorenzo@kernel.org>
 Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
@@ -55,15 +55,19 @@ Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
 	devicetree@vger.kernel.org
-Subject: Re: [PATCH net-next v2 11/13] net: airoha: Refactor src port
- configuration in airhoha_set_gdm2_loopback
-Message-ID: <aPEWiwy_ebWLDnNa@horms.kernel.org>
+Subject: Re: [PATCH net-next v2 12/13] net: airoha: ppe: Do not use magic
+ numbers in airoha_ppe_foe_get_entry_locked()
+Message-ID: <aPEWmlok8qlV8UCY@horms.kernel.org>
 References: <20251016-an7583-eth-support-v2-0-ea6e7e9acbdb@kernel.org>
- <20251016-an7583-eth-support-v2-11-ea6e7e9acbdb@kernel.org>
+ <20251016-an7583-eth-support-v2-12-ea6e7e9acbdb@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20251016-an7583-eth-support-v2-11-ea6e7e9acbdb@kernel.org>
+In-Reply-To: <20251016-an7583-eth-support-v2-12-ea6e7e9acbdb@kernel.org>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251016_090031_908619_A78155D1 
+X-CRM114-Status: UNSURE (   8.38  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,12 +82,9 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 16, 2025 at 12:28:25PM +0200, Lorenzo Bianconi wrote:
-> AN7583 chipset relies on different definitions for source-port
-> identifier used for hw offloading. In order to support hw offloading
-> in AN7583 controller, refactor src port configuration in
-> airhoha_set_gdm2_loopback routine and introduce get_src_port_id
-> callback.
+On Thu, Oct 16, 2025 at 12:28:26PM +0200, Lorenzo Bianconi wrote:
+> Explicit the size of entries pointed by hwe pointer in
+> airoha_ppe_foe_get_entry_locked routine
 > 
 > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
