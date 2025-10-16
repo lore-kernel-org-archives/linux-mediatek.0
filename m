@@ -4,71 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B555CCD199
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 15:55:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9923CCCD19A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 15:55:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SiCeC8KmiIM1YvH4w0dfK1GNGdzfBIn9teZ75xYOvlI=; b=mH97PcMO9IjVx2zxj7HHYJIbyT
-	gQOYADNDurg5703dBhiBd3GFdBvkDhr7e5BGF6X2UJKbI68wClwOfPDRDRZVUfABLoOKbb5xktSiP
-	pOQ4R84Ld3bH7VNEheOCPnPGZKqCejgJQs9YjGP2athx/Q21P1ixFxSAYrhsyvHb2nDWLLfPzbnhd
-	CLZKh0JCmnEYR4wwylNusnXx7Va6GKHTkXDvXOQhxdvWYn9I2GUGAXCL2tJdciFdM6qqCsFdK7ami
-	zHlyo36bIJvG71Cp5Vsn6nICQV67EbuMs9Zmmkyk1ap5SzGwlM/vA0iDKDseOaTyriOlGytoDoO65
-	FZPrukAg==;
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=dwKLt1l9xvJXd1vvMFOJ+hjpjU9ZjhnHZcBX0oNFQuo=; b=1rqWxc0LSFEmqv
+	7aIzrCEHpdtkqESdvFA8yaUs7otVdnpgcWnbQgKCyu2XfJ/v6kKizu00sS9W2II3JGyB0y4ZKNPKS
+	hJMnfxt7jay/gRObavxYCCGBVpjikZuaRdCI8KE6HKr6JDjsizsLduYxmyQ6VMZ+CAX3fjgg3o056
+	aoUUt/Urnj1VoSEctF4z7/lz4/QF71eMscomGEYk4sQ7IESumNet+VAQSf5FXf0gpxliR1ZH93PLA
+	A4SAmbGQG7pD3RExBVn0h0G3MScNztzBKvtQ/ytg7UvK+zfZVTdXZ413/boG/zPOiea6cLFawNaNC
+	2UsOI1I4DNeyoGYFS9ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9QJy-00000005HX7-161S;
-	Thu, 16 Oct 2025 15:55:18 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1v9QKP-00000005Hkb-3Sqt;
+	Thu, 16 Oct 2025 15:55:45 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9QJv-00000005HVl-3Zm1;
-	Thu, 16 Oct 2025 15:55:17 +0000
+	id 1v9QKO-00000005Hj8-1bB1;
+	Thu, 16 Oct 2025 15:55:44 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2F3FA45700;
-	Thu, 16 Oct 2025 15:55:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 60A0BC4CEF1;
-	Thu, 16 Oct 2025 15:55:12 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id C3EA764013;
+	Thu, 16 Oct 2025 15:55:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 461DDC4CEF1;
+	Thu, 16 Oct 2025 15:55:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760630115;
-	bh=mUd/cKwzucs5sz4MLIoHp3MJMXcZOqAnIjxG8j8Iy6Q=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=SNDMTo7AK5kSVF306sECe0SdK8OIZY1DeC5SQzKnfh8vIOZVH6SicOMXWlgWCcwgD
-	 VOkoVQSS5KPJankKA92WwI5ULiPm0ondHbrarrDxd1gO6jd3yIcxIcPX7nfiiyV62z
-	 3jht84mMTOW49pguSl7/B9m/tykDQowSYRTPFX8y7Grbmsb2G2xXvJ/ZsIq77ut3hU
-	 nmZeGfN0zaBAul4IdbhxayFqEErErCvxH6zXT9nT3VysNfD7WH5IbgLXkMWhdiO33X
-	 kM3ltWOvaZn4TtEwIYXXKmXLgnk/I6A4CnBp+ffJWL9NY1gzyjkpq1NkoIkojF+uD9
-	 5cJ5QdZJVE+LQ==
-Date: Thu, 16 Oct 2025 16:55:10 +0100
-From: Simon Horman <horms@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	s=k20201202; t=1760630143;
+	bh=HkFyKu+xLbSALL1o9HOxCzlRCTdBKmDeTKiXn+ccPxQ=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=EBgKyP628FMYhUyZybjaX9vcdmX7blg4QFheGJfsniNp1IlEFnJRZ1NANTGEfHG11
+	 Vla5Fihywf+rTjx7GyV+c15i/GmE2kW0dPlVZ8NlromccQXbuBXHDOh9SXsZp7I0Qc
+	 Ot8btIDd6cBdJtLbmkt+0BylDxEHhr32DgoSlwUENp/XYPP05PBuc+bQ5WZTZnBIP+
+	 oznZX4WEhqodaGgJXcChseSGuXYJN6prVnUW9b5Bv4rE0Q777ZtyJmVPCIY1bwZp7l
+	 SpUd5+kdLnll7X41HrlTE6bNNc55Ahf9M+UKpcsU1kc+HIC5c4GqG2micwthZV5Mq3
+	 ubCGH1YpF7nKw==
+Date: Thu, 16 Oct 2025 10:55:42 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Sjoerd Simons <sjoerd@collabora.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Lee Jones <lee@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH net-next v2 03/13] net: airoha: Add
- airoha_ppe_get_num_stats_entries() and
- airoha_ppe_get_num_total_stats_entries()
-Message-ID: <aPEVXhTE2_qFz5zz@horms.kernel.org>
-References: <20251016-an7583-eth-support-v2-0-ea6e7e9acbdb@kernel.org>
- <20251016-an7583-eth-support-v2-3-ea6e7e9acbdb@kernel.org>
+	Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+	kernel@collabora.com, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org,
+	linux-phy@lists.infradead.org, netdev@vger.kernel.org,
+	Daniel Golle <daniel@makrotopia.org>,
+	Bryan Hinton <bryan@bryanhinton.com>
+Subject: Re: [PATCH 05/15] dt-bindings: pci: mediatek-pcie-gen3: Add MT7981
+ PCIe compatible
+Message-ID: <20251016155542.GA985895@bhelgaas>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20251016-an7583-eth-support-v2-3-ea6e7e9acbdb@kernel.org>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251016_085515_907603_C6392D7E 
-X-CRM114-Status: UNSURE (   9.38  )
-X-CRM114-Notice: Please train this message.
+In-Reply-To: <20251016-openwrt-one-network-v1-5-de259719b6f2@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,16 +89,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 16, 2025 at 12:28:17PM +0200, Lorenzo Bianconi wrote:
-> Introduce airoha_ppe_get_num_stats_entries and
-> airoha_ppe_get_num_total_stats_entries routines in order to make the
-> code more readable controlling if CONFIG_NET_AIROHA_FLOW_STATS is
-> enabled or disabled.
-> Modify airoha_ppe_foe_get_flow_stats_index routine signature relying on
-> airoha_ppe_get_num_total_stats_entries().
-> 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+On Thu, Oct 16, 2025 at 12:08:41PM +0200, Sjoerd Simons wrote:
+> Add compatible string for MediaTek MT7981 PCIe Gen3 controller.
+> The MT7981 PCIe controller is compatible with the MT8192 PCIe
+> controller.
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+In subject,
+s/pci: mediatek-pcie-gen3:/PCI: mediatek-gen3:/
 
+Note that previous commits to this file use subject lines like this:
+
+  0106b6c114cf ("dt-bindings: PCI: mediatek-gen3: Add support for MT6991/MT8196")
+  a1360a6a72b9 ("dt-bindings: PCI: mediatek-gen3: Add mediatek,pbus-csr phandle array property")
+
+git log --oneline Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
 
