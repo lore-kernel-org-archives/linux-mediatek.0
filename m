@@ -4,61 +4,119 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB564CCD199
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 14:51:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C69ECCD195
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 14:52:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xnO8w4ce6Zvd0kjJm6wvasEGWAQD1+t0V7iBKZ7zgiM=; b=MerYx6xFEkVReywMx+v1SPPevE
-	SkqmLSud1va2gori0kRlDG09IBVqxU3vknuEgBWahoC9TDzq02QNtJTGFBONzeceBzGUPr7XmumrJ
-	qxYmJFxNEAThkWIQOIvNpeODZ75bqiktvGDvP5wdT5XgcsG8xfvhrn6nEYxtbvTwTMhOdjaH68G3g
-	Y+VYA4bIr+9LcQLw482dZK5t+ytH8Qt8Yw4iw+sNrq6KwbhhJX90xTZ4aE1flWLVUpqYIArtpthQY
-	A9ITa+mW4gQFE4gPq5P/KgMQrzK8xqUCoXswKfvNE2Bw1OVIsu/eKPR6yH7TqAqnXgkenauui8fSP
-	RmQB1Dkg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=jPmtY2bWstZxGYrHD2oLA4kDgMlBAGLM7cSsgPby8R8=; b=GT/5K3KVDP6mlW
+	OjXTmZEYOPH8NTcuIiI6tGJSFWokpP3sMEAnxtcoRaMHFnWRSClukyhAA/JQeceuUJFMT7twK8GAG
+	K4UT5kpvgsAHNG6e79n99SV2QjX0EfTvDDGk9lH+m1oDjeXW4ByyElO+9WlHVNPvAH77JOokd1ACN
+	g9SKRoFl4eF/TcgwaDUHnoL3mQldltCaZsX86I/LHhx9+u+CQLwqw2+UJX/edjx+vUO05G4Ts2Xyn
+	g8rgEJydmvi4ha63kmcQPVoDfEJW7mZVgD8udBbO7FaeYEwcu0rLXdXrokxHA0DElbohALEvuNeS/
+	XeUi0RehuxOkIra/2CcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9PKJ-000000054Sz-1jWt;
-	Thu, 16 Oct 2025 14:51:35 +0000
-Received: from mx3.molgen.mpg.de ([141.14.17.11])
+	id 1v9PLN-000000054lG-2QRf;
+	Thu, 16 Oct 2025 14:52:41 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9PKF-000000054RO-3rxz
+	id 1v9PLJ-000000054h8-2R3j
 	for linux-mediatek@lists.infradead.org;
-	Thu, 16 Oct 2025 14:51:34 +0000
-Received: from [141.14.220.42] (g42.guest.molgen.mpg.de [141.14.220.42])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: pmenzel)
-	by mx.molgen.mpg.de (Postfix) with ESMTPSA id BA2EB6020FEFF;
-	Thu, 16 Oct 2025 16:51:23 +0200 (CEST)
-Message-ID: <1d31e19c-b04e-4bf3-b21f-16d275434041@molgen.mpg.de>
-Date: Thu, 16 Oct 2025 16:51:22 +0200
+	Thu, 16 Oct 2025 14:52:39 +0000
+Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 59G7TfRq016695
+	for <linux-mediatek@lists.infradead.org>; Thu, 16 Oct 2025 14:52:36 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:reply-to:subject:to; s=
+	qcppdkim1; bh=jPmtY2bWstZxGYrHD2oLA4kDgMlBAGLM7cSsgPby8R8=; b=oK
+	0IvGUFq5Jpvs+nDFM/Il2MpT/ilhF7MHPLO+EQjXbkTN5WAB2rI0VHOSOOV+Qzxv
+	sRtsBKGetq9wWxLEcY2lXvRoMYL7LPpZ9pIVBfAimdy6R2mv9p6gAudwk8iSrs25
+	65FvBqQsyi+Yt4UDL56r1HgrPj1Jwtkn5AOnrPf0622q69XSNno8TLBKC0CUEYol
+	ixpON2jXbKn9SfLTwAQqtm6rDhMB2kh0BfyW/hagjxvIxYHeAEDIseAWzJedm9W+
+	vK8BUcdjcOH0s4pKDHXdtZfLjAruVuPpD/VTQr//0Fa2Z6QX9Ou1aNUUAQRav4qz
+	6q8Ce5vsU3zTX1Onw0lQ==
+Received: from mail-oa1-f70.google.com (mail-oa1-f70.google.com [209.85.160.70])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 49rtrtdmg7-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Thu, 16 Oct 2025 14:52:36 +0000 (GMT)
+Received: by mail-oa1-f70.google.com with SMTP id 586e51a60fabf-3c96de7fe34so233316fac.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 16 Oct 2025 07:52:36 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1760626355; x=1761231155;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :reply-to:in-reply-to:references:mime-version:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=jPmtY2bWstZxGYrHD2oLA4kDgMlBAGLM7cSsgPby8R8=;
+        b=IaQ+W+IoABra4BC2EI7mVyAcxTAkx7T0TeIzcITPcJYSSC3cCsUL5P5LhOlIf5mgO+
+         8h/0H+EQMq4hSDp6kazK296P2OO044IC4MYvh7z26TvDISk0lxEo4Vzb5wKWSdoVuB34
+         Z35lV6AID6DfX41XpOyOBgslyt++FqrRo5KaC4L3WmMl3OwRcPbIWN17+gTmmSOdmIcm
+         XpnhinC/3csqLTVEGWoDKHh6DDCzTkgPNCHMEf4c6NeEELZN1K+aR2B1i5wZpsiB3BqR
+         SAjPORxS83olUseynHF36+KiwTT3ISXXhFSLUmhYq+iZ+OZh4jLMljAnjmqSrBZsb/Pg
+         k7Ew==
+X-Forwarded-Encrypted: i=1; AJvYcCUsGVrDXBrSGbrDqUxXKrZR4uM2j7FbIGzdPfmDiTkAwvXr4eOEm26KXpboyQHpXGMDq2Z80SxJ+xvENzaqHA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwUk+GT79348tHuwWBHevLR2obir83hnxKrId8x1r0k5NaZoNn/
+	Gg/PF23wlLkhOVtwnFUoB0yThRlKp2NKTEMBGhPvzZC048EzQ8cE8JMES5L03+1mfiV8q4R7vgY
+	S/WRn8KDLZg9jUmgYqb30vXsB/TpaogydlN9ZFpP3gtGNg+lFpGPsx15kPsALj0QJvuuG9MN/i3
+	6qOcWI4FW793eX9rBrK7JjEkPSGgspqaN2M6cadKPkjxXc/rFlvQ==
+X-Gm-Gg: ASbGncvbAt4kh/tloHIN7DsgPpwHn6o+JSkzHI9kR21XT55C+qUoYhpeYp1QIkQp2Gg
+	q8xB+5ovtU93rr2ziAiSH63LFhXKxSYlki36bLnvMqaLnVHTuvPvkAjo85aE1JYbFLoub3TKI4f
+	cW56o6JSi4EUkqpP+EJfrpuKuvvRJfdOycfSBLuMHUL8K74YOPxyZ8uid6JTLLRL1JtiyUIbuBk
+	SlyXGsqq75q348=
+X-Received: by 2002:a05:6871:2e88:b0:35d:a9e2:fbd1 with SMTP id 586e51a60fabf-3c98cfa8295mr10095fac.21.1760626355268;
+        Thu, 16 Oct 2025 07:52:35 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF39ocujuIwT0Et62sHrBT+rRRN4wBRxOHxmKLmre65EnhOwqDPEsCuGBua+8VJiCAAa15gVkxk2D9mH6TwzQ8=
+X-Received: by 2002:a05:6871:2e88:b0:35d:a9e2:fbd1 with SMTP id
+ 586e51a60fabf-3c98cfa8295mr10075fac.21.1760626354773; Thu, 16 Oct 2025
+ 07:52:34 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 RESEND 1/2] Bluetooth: btusb: MT7920: Add VID/PID
- 0489/e135
-To: Chris Lu <chris.lu@mediatek.com>
-Cc: Marcel Holtmann <marcel@holtmann.org>,
- Johan Hedberg <johan.hedberg@gmail.com>,
- Luiz Von Dentz <luiz.dentz@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
- Will Lee <will-cy.Lee@mediatek.com>, SS Wu <ss.wu@mediatek.com>,
- Steve Lee <steve.lee@mediatek.com>,
- linux-bluetooth <linux-bluetooth@vger.kernel.org>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- linux-mediatek <linux-mediatek@lists.infradead.org>
-References: <20251015033150.498866-1-chris.lu@mediatek.com>
- <20251015033150.498866-2-chris.lu@mediatek.com>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20251015033150.498866-2-chris.lu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20250718105407.32878-1-vignesh.raman@collabora.com> <20250718105407.32878-2-vignesh.raman@collabora.com>
+In-Reply-To: <20250718105407.32878-2-vignesh.raman@collabora.com>
+From: Rob Clark <rob.clark@oss.qualcomm.com>
+Date: Thu, 16 Oct 2025 07:52:23 -0700
+X-Gm-Features: AS18NWBmqrEUHFQlSWdIGqm2-_tBPDNsmr766wJpJByzaFclGFLQ0RGnzuLEsPQ
+Message-ID: <CACSVV029ueL_4Y5irmmOwy_9QDQGqDe_1wCGUe22FdefQiNjkw@mail.gmail.com>
+Subject: Re: [PATCH v1 1/7] drm/ci: disable apq8016 and apq8096 bare-metal jobs
+To: Vignesh Raman <vignesh.raman@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com,
+        helen.fornazier@gmail.com, airlied@gmail.com, simona.vetter@ffwll.ch,
+        robdclark@gmail.com, guilherme.gallo@collabora.com,
+        sergi.blanch.torne@collabora.com, valentine.burley@collabora.com,
+        lumag@kernel.org, linux-mediatek@lists.infradead.org,
+        linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org,
+        amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
+        intel-gfx@lists.freedesktop.org, virtualization@lists.linux.dev,
+        linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Proofpoint-ORIG-GUID: qr-waw8eCakcwXxBGaYNKv6w4MyWoLTo
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDEzMDAyMiBTYWx0ZWRfXzLtfXNpRkP+4
+ t9d57Lb9PWkyz9DI1wkYli8Rl7Yn5YSWH+ckwCwrkhxLwMBx/JoCrpLOmlSvWY+VegbWXIeYPdU
+ H26hNmXvbZJFxmfuTddUoVDf92iIL+DchLzissg2obodH9auLRMIlFxvcm8a9eyxNDWfV0pYWCi
+ RuAMgfd5Gb91naytD/jzhPII62zfJW8/ABIIuG10JlJ+EQWGAXB4dAeTlGnhJtrqKzFc3DfCRJi
+ VYx18BOkBZJkeX7GI/x5rsb3IIybGhvcxXmdySZPXBfS9v0s1houwJYF7w7R1q6YpK0lYZDz4F5
+ eEZO9UA6m7y2oi9c2TUvaq6VetjTgSzg8rYHHClbIRVucNd1HKXdP3XQ2r+qSE83+6vGeuZ0nf7
+ gf2nkF7yF6/mmdm/OBibU7ija/3SEA==
+X-Authority-Analysis: v=2.4 cv=SfD6t/Ru c=1 sm=1 tr=0 ts=68f106b4 cx=c_pps
+ a=nSjmGuzVYOmhOUYzIAhsAg==:117 a=IkcTkHD0fZMA:10 a=x6icFKpwvdMA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=QX4gbG5DAAAA:8 a=Gxbm4VOBLxWGKnsTXboA:9
+ a=QEXdDO2ut3YA:10 a=1zu1i0D7hVQfj8NKfPKu:22 a=AbAUZ8qAyYyZVLSsDulk:22
+X-Proofpoint-GUID: qr-waw8eCakcwXxBGaYNKv6w4MyWoLTo
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-10-16_03,2025-10-13_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ malwarescore=0 clxscore=1011 adultscore=0 phishscore=0 lowpriorityscore=0
+ bulkscore=0 impostorscore=0 priorityscore=1501 spamscore=0 suspectscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.19.0-2510020000 definitions=main-2510130022
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251016_075132_124844_432803F7 
-X-CRM114-Status: GOOD (  13.02  )
+X-CRM114-CacheID: sfid-20251016_075237_728550_0221E1EC 
+X-CRM114-Status: GOOD (  15.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,83 +128,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: rob.clark@oss.qualcomm.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dear Chris,
+On Fri, Jul 18, 2025 at 3:54=E2=80=AFAM Vignesh Raman
+<vignesh.raman@collabora.com> wrote:
+>
+> These devices are being moved to LAVA. The jobs will be enabled and the
+> job definitions will be updated once the move is complete.
 
+fwiw, the runners are up and running in LAVA now
 
-Thank you for the patch.
+BR,
+-R
 
-Am 15.10.25 um 05:31 schrieb Chris Lu:
-> Add VID 0489 & PID e135 for MediaTek MT7920 USB Bluetooth chip.
-> 
-> The information in /sys/kernel/debug/usb/devices about the Bluetooth
-> device is listed as the below.
-> 
-> T:  Bus=06 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
-> D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
-> P:  Vendor=0489 ProdID=e135 Rev= 1.00
-> S:  Manufacturer=MediaTek Inc.
-> S:  Product=Wireless_Device
-> S:  SerialNumber=000000000
-> C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
-> A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
-> I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
-> E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-> I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-> I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-> I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-> I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-> I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-> I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-> I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-> E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
-> E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
-> I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-> E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
-> E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
-> 
-> Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
 > ---
->   drivers/bluetooth/btusb.c | 2 ++
->   1 file changed, 2 insertions(+)
-> 
-> diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-> index 4be34c556db8..a2cde2284163 100644
-> --- a/drivers/bluetooth/btusb.c
-> +++ b/drivers/bluetooth/btusb.c
-> @@ -621,6 +621,8 @@ static const struct usb_device_id quirks_table[] = {
->   	/* Additional MediaTek MT7920 Bluetooth devices */
->   	{ USB_DEVICE(0x0489, 0xe134), .driver_info = BTUSB_MEDIATEK |
->   						     BTUSB_WIDEBAND_SPEECH },
-> +	{ USB_DEVICE(0x0489, 0xe135), .driver_info = BTUSB_MEDIATEK |
-> +						     BTUSB_WIDEBAND_SPEECH },
->   	{ USB_DEVICE(0x13d3, 0x3620), .driver_info = BTUSB_MEDIATEK |
->   						     BTUSB_WIDEBAND_SPEECH },
->   	{ USB_DEVICE(0x13d3, 0x3621), .driver_info = BTUSB_MEDIATEK |
-
-Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
-
-
-Kind regards,
-
-Paul
+>  drivers/gpu/drm/ci/test.yml | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
+> index 81147e86bfd0..53d19ffaaf61 100644
+> --- a/drivers/gpu/drm/ci/test.yml
+> +++ b/drivers/gpu/drm/ci/test.yml
+> @@ -148,7 +148,9 @@ msm:sc7180-trogdor-kingoftown:
+>      GPU_VERSION: ${DEVICE_TYPE}
+>      RUNNER_TAG: mesa-ci-x86-64-lava-sc7180-trogdor-kingoftown
+>
+> -msm:apq8016:
+> +# FIXME: Disable the bare-metal jobs. These devices are being moved to L=
+AVA.
+> +# Once the move is complete, update the job definitions accordingly.
+> +.msm:apq8016:
+>    extends:
+>      - .baremetal-igt-arm64
+>    stage: msm
+> @@ -165,7 +167,7 @@ msm:apq8016:
+>    script:
+>      - ./install/bare-metal/fastboot.sh || exit $?
+>
+> -msm:apq8096:
+> +.msm:apq8096:
+>    extends:
+>      - .baremetal-igt-arm64
+>    stage: msm
+> --
+> 2.47.2
+>
 
