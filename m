@@ -4,71 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB6BFCCD194
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 12:05:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB073CCD183
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 12:07:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=s5MxHDjhVnMQw7538nov8Jo1+Up40NCVNBoxNeVwnxw=; b=BDfyNWKpsmTJ6o60frYTn/qzhz
-	R0x2ZMcvCo61sKuOlFPdBp3BINsoZQLW5y4ccKKstdPze7DQ2m2Emk3IJbCYkRid9hvWtMOkCkHIZ
-	tFvCRWyVtqttHfAueN+MsNROI9L8A19IuCb6iublNSoYwIB9O3l9sKcTjQpkKpvBAaeVzRhnXOgR/
-	shg0nXbEszgR6XGueVO1dN4v57dIEOJt+j/AvgNYUVWm6qOyJy+tV5f5LvWTMVL0g3sIgZogOsJoO
-	jAHrBjZSaNQ5o6L1R511To3p7Lu9BUETXawJSG5AoTy++3Vciot4btu2yzjgSpH7frlHo9mHbNwWk
-	7jX+trLg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=dxq839aAHMctLtHNxtYiJDDAjbNWx58BYY8KBjuCdF0=; b=Fhxb6Az1qL1C1x
+	0h1Lq3k5YC17tA6mSDuMBStr3TJpkFSs6I6AfbsqwrmoIBopkxdJ43eRbT4sNvIDrqGRkVtBQFgzH
+	9xyMzbspMkdaSrPQSmzOIx5b6ntgLXB5oX5QgNa+e3nCjCNkgKTFufzfUMfLg44ihYIiFYGRazvZK
+	CA/b7VlPLeOYXH7UIN6b1FYAWZBjwuEYlHYxkIuIFvklzxlHK2Mzu7ZxsYPpCR3AkH9bWBXJ4eBrI
+	BCxa0kk1WgihJZ9OyeaY+f7UCsDq5P739ACK9HFLdVauDHvgk1zC6Mkh66e/Ay/XeTnxsksHXxplG
+	Sxt0Gzq93OdNhLlgAZcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9MjE-00000004fBO-0ymG;
-	Thu, 16 Oct 2025 12:05:08 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1v9MlE-00000004g8h-3ATY;
+	Thu, 16 Oct 2025 12:07:12 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9MjB-00000004fAy-2x9C;
-	Thu, 16 Oct 2025 12:05:06 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5714A43D11;
-	Thu, 16 Oct 2025 12:05:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D0ABC4CEF1;
-	Thu, 16 Oct 2025 12:05:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760616305;
-	bh=s5MxHDjhVnMQw7538nov8Jo1+Up40NCVNBoxNeVwnxw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=AtNK6XZKFQXhYFJZyvQq+UuuWYZXaylSiYtJyc179f8ve8nE3MJwSs/g4w/SBM4Ds
-	 1eMtuIoHjTFSJYqeycd0nnqlXUEeor7/wf0J9W4TAJxFiaK8SAVNWo+fZ5eEMP/Tbu
-	 0MCaqqCpGjWdTUVX3Swj2pXS2swBlRp9pV3ScZ8zJKABsWfV8wD0xlHg2/9Cpm6g4k
-	 Nv/HVulNrtSV2ni7GIal+DU/7h4fkG3ohYvx7hMzNabKjyOB8Z1m9WSJVM+UAKs9oe
-	 KudcBdci2+JRYNR5Eu7/ofq17A3uE3cUUJGmn6810eo4ZjxzNbqPRyhLznJRVwHV6w
-	 NWLARMj9H1rHw==
-Date: Thu, 16 Oct 2025 13:04:59 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Ray Liu <ray.liu@airoha.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andy Shevchenko <andy@kernel.org>,
-	linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	Andreas Gnau <andreas.gnau@iopsys.eu>
-Subject: Re: [PATCH v10 02/16] spi: airoha: remove unnecessary restriction
- length
-Message-ID: <dbefe024-9b5c-4531-abb9-a1a7e9d3d769@sirena.org.uk>
-References: <20251012121707.2296160-1-mikhail.kshevetskiy@iopsys.eu>
- <20251012121707.2296160-3-mikhail.kshevetskiy@iopsys.eu>
+	id 1v9MlB-00000004g5E-19Zt;
+	Thu, 16 Oct 2025 12:07:11 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1760616416; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=U/OY09R1Umycf387LhQRQvZWdXv8njqpy4JvwlwOh6P5/txt7dlKHGsnuow2Y6m9+L9GKo98s9rA5t+grQmppVghS9EiN4KCwAdD9YhVf6k8iDQBgoe1eqcplqdE9zHy1WewTUKkq/et05/3VlnsUPaWYX/za3S9HLlNEYnySfU=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1760616416; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=dxq839aAHMctLtHNxtYiJDDAjbNWx58BYY8KBjuCdF0=; 
+	b=GVSwdJmw5rqzgD1x5BxRbXFq5txk0HivTAw0atpZziWAxGR4jLn1iNJpe9d42Zxr873dBciobmGOFiKft/T5jfad8+v743K64lW2YEB1AXrueDWZ3XJwx4t5g0JlJDjBMkI/g+U/UqhaXAZrp09jL6trf65XGgWMRiymdVqpyNI=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1760616416;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Type:Content-Transfer-Encoding:To:To:Cc:Cc:Reply-To;
+	bh=dxq839aAHMctLtHNxtYiJDDAjbNWx58BYY8KBjuCdF0=;
+	b=L/JmjaIh81EMz0o2ijeatci130DJ87NLZ00HdpCWEqdBE18ciO5xVau4hP8l7Xi1
+	LijPfqEiw5sgZuvGhqLPWspEAA6WlW4EO56UdCDxEjaxIXNAqE0IXCimoQHych8Nx16
+	yhISoSHJXWNGWkGHqvImOMv7wzGzbWKqlzm/lipo=
+Received: by mx.zohomail.com with SMTPS id 1760616413675917.2416629138661;
+	Thu, 16 Oct 2025 05:06:53 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Subject: [PATCH v2 0/5] MediaTek UFS Cleanup and MT8196 Enablement
+Date: Thu, 16 Oct 2025 14:06:42 +0200
+Message-Id: <20251016-mt8196-ufs-v2-0-c373834c4e7a@collabora.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="q3tFlK1kDVpufwE1"
-Content-Disposition: inline
-In-Reply-To: <20251012121707.2296160-3-mikhail.kshevetskiy@iopsys.eu>
-X-Cookie: Whoever dies with the most toys wins.
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIANLf8GgC/22OQQ6CMBBFr0Jm7RhaQCkr72FYtGWQJkC1LQRDu
+ LsV4s7lm+S9Pyt4coY8VMkKjmbjjR0j8FMCupPjg9A0kYGnvGApy3EIJRMXnFqPmnSuhBRXKjK
+ IwtNRa5Y9dq8PdvSaYjMcR1DSE2o7DCZUyUhLwF8XvkJnfLDuvT8zs934tzszTJGJotGkykzp8
+ qZt30tlnTzHONTbtn0AtFB0eNkAAAA=
+X-Change-ID: 20251014-mt8196-ufs-cec4b9a97e53
+To: Alim Akhtar <alim.akhtar@samsung.com>, 
+ Avri Altman <avri.altman@wdc.com>, Bart Van Assche <bvanassche@acm.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
+ Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Peter Wang <peter.wang@mediatek.com>, Stanley Jhu <chu.stanley@gmail.com>, 
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>, 
+ "Martin K. Petersen" <martin.petersen@oracle.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, 
+ kernel@collabora.com, linux-scsi@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-phy@lists.infradead.org, 
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251016_050505_781968_38DF2C33 
-X-CRM114-Status: UNSURE (   8.93  )
+X-CRM114-CacheID: sfid-20251016_050709_643938_C8F1AE31 
+X-CRM114-Status: UNSURE (   9.67  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,33 +95,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+In this series, the existing MediaTek UFS binding is expanded and
+completed to correctly describe not just the existing compatibles, but
+also to introduce a new compatible in the from of the MT8196 SoC.
 
---q3tFlK1kDVpufwE1
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+The resets, which until now were completely absent from both the UFS
+host controller binding and the UFS PHY binding, are introduced to both.
+This also means the driver's undocumented and, in mainline, unused reset
+logic is reworked. In particular, the PHY reset is no longer a reset of
+the host controller node, but of the PHY node.
 
-On Sun, Oct 12, 2025 at 03:16:53PM +0300, Mikhail Kshevetskiy wrote:
-> The "length < 160" restriction is not needed because airoha_snand_write_data()
-> and airoha_snand_read_data() will properly handle data transfers above
-> SPI_MAX_TRANSFER_SIZE.
+This means the host controller can reset the PHY through the common PHY
+framework.
 
-Non-fix changes should be after fixes so there aren't any spurious
-dependencies.
+The resets remain optional.
 
---q3tFlK1kDVpufwE1
-Content-Type: application/pgp-signature; name="signature.asc"
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+---
+Changes in v2:
+- Reorder define in mtk_sip_svc.h
+- Use bulk reset APIs in UFS host driver
+- Link to v1: https://lore.kernel.org/r/20251014-mt8196-ufs-v1-0-195dceb83bc8@collabora.com
 
------BEGIN PGP SIGNATURE-----
+---
+Nicolas Frattaroli (5):
+      dt-bindings: ufs: mediatek,ufs: Add mt8196-ufshci variant
+      dt-bindings: phy: Add mediatek,mt8196-ufsphy variant
+      scsi: ufs: mediatek: Move MTK_SIP_UFS_CONTROL to mtk_sip_svc.h
+      phy: mediatek: ufs: Add support for resets
+      scsi: ufs: mediatek: Rework resets
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmjw32oACgkQJNaLcl1U
-h9Ax0wf9Fl356s/j6iNh98poXzDgSc/amMedVpD88bacOl/P3k3rHfVm3j1ZPo7k
-SpoHlhWo9B+lVhKzicATIsbyurrxmp/vKaanHlb3GmYQ0kM77wBC4t0EmLa5p/Ec
-KL4Z/D0vD6MtAAASPFO4Dr0b2A0qSn9rKqw44FyekhlE42iJVFCKQ21CudKTkOYG
-47VRzbVV2GoR+6W+kijZG5XMFay/720b9whQiyOqwGlzAkdR+aAOv6yrNaXzFUpV
-m/Sy7u/XiRcozPGXlQ6G87JRx06RTDpXQbjY6ieyWHopjSOROafd381vke5qZusN
-mhowoJz3f1xAAkkobiuujUY9Zuk8RA==
-=wYyS
------END PGP SIGNATURE-----
+ .../devicetree/bindings/phy/mediatek,ufs-phy.yaml  |  16 +++
+ .../devicetree/bindings/ufs/mediatek,ufs.yaml      | 134 +++++++++++++++++++--
+ drivers/phy/mediatek/phy-mtk-ufs.c                 |  71 +++++++++++
+ drivers/ufs/host/ufs-mediatek-sip.h                |   9 --
+ drivers/ufs/host/ufs-mediatek.c                    |  78 ++++++------
+ drivers/ufs/host/ufs-mediatek.h                    |   7 +-
+ include/linux/soc/mediatek/mtk_sip_svc.h           |   3 +
+ 7 files changed, 255 insertions(+), 63 deletions(-)
+---
+base-commit: 40a3abb0f3e5229996c8ef0498fc8d8a0c2bd64f
+change-id: 20251014-mt8196-ufs-cec4b9a97e53
 
---q3tFlK1kDVpufwE1--
+Best regards,
+-- 
+Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+
 
