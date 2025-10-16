@@ -4,68 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39480CCD195
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 14:23:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 111D3CCD195
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 14:29:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ud6VA7VquzlTC3LLgGhzv6mpv++7QFWZ9FCn3m61rpg=; b=PnQhustPEuwSw0
-	8y+Zh7VITWPQrLWPvgZMQYHrgoKh1/GuAy7sBuRAtlUMeRJ9tjMRVlRIYpgCCsjksH/FKrVUdPa6m
-	DM7To5WTfrmHeYnleC8QOnAnUXra9ZsZfI+chZ7CfJz3spIBdpaJasnsaFP+yAKJr1XHCy0YZfKhz
-	1Ht62Rz6RyuYOXNdMeNkgd0GXjz2pJMnmoZpXxv3lItl6qK7arsAmKvb3zDVySC8YCDezlfhEY4Fy
-	znPb0NXNt4D5AC+VBqx5J9EBOGoOmcoICBABhD5kq/Up4K6kFSndLScD0a5s70SYh6zH4+9yexfTk
-	+5XFz3DJ/sAHx0m0oW+w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Vqmi7s4EIiMHfK3Naxxo/bu+2H1Uk7/GMfxGBRDNiK0=; b=IxL1znNpTGZstSVafHvAnU5xt9
+	npTQ6vJkK9luigmfjgxyps8DvIunzk5VYQq5ypeyb0UhRn1Fpj6XJPqz6XEyjznzcqZA76MCM2h57
+	IST6VXq3tCC8jh0VlkInT0bZoqclOQsJDXGn2Jf/jRQWw9L4akwJN/bqheykphOsVN3Ovp4xw7thT
+	/UZV/ZGmVt7vQMBfDrSjvU2967U5DUGxDYiCsO9iVJDWrYszzL2BUAvnTCAFpTrrInNjBATPqAUbe
+	689jcP9OLESAq1+rK1lhAgJNwkVLWPlAN3gc8glogoE85rW1stIKN6Zyn5tiVEGx8jg+MxPH1v1wt
+	JNmqhHTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9Oss-00000004yv1-0oc4;
-	Thu, 16 Oct 2025 14:23:14 +0000
+	id 1v9Oyp-000000050Cb-1F9F;
+	Thu, 16 Oct 2025 14:29:23 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9Osa-00000004yXT-0N93;
-	Thu, 16 Oct 2025 14:22:58 +0000
+	id 1v9Oym-000000050BD-2DH7;
+	Thu, 16 Oct 2025 14:29:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1760624573;
-	bh=/Trh+v1W/uhiBFTYoqQXEekxqHsqS7bTdkGqVrRYRBk=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=aVNVNztiHaDJ0c9NLhWPwbjZhsvWW8Zr/b4eqAt5QGaoNsJn0Z6AC3HqzYYD13Lt4
-	 /axQTpMlyei9J2PFKmBPQKos3F41LEApQ++DW0nMJk+oixKiuSR7VbtPtPPx6yAEvc
-	 7h6VWqyfGMdXPu2EDJlc7tedWdghXJDPgJo52ziMw9k0LbHJsBBYTe1nUMguwxkrMu
-	 U4agrD0lL+8dq1trQ2zOE+yFr4nN1x0aJqhTfhiB0mrLuJ7HW3Zhsu4+s7xiYqT88o
-	 fp7DlSq9wbQ4iduXlp4aBlTV6JAk5zqcBTFhgIHVEBny6SYdf3vwBYXj8a6vaqsyXi
-	 cq3sIcvc66/XA==
-Received: from laura.lan (unknown [IPv6:2001:b07:646b:e2:655a:5eaa:d2ad:4ee4])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	s=mail; t=1760624956;
+	bh=/ogrshpBMHpUYx7hds/fD1WgLsoTS+62iSlrqAObxms=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=SXqJvaEeN6DpDXxKAJ2nZHAdiOodqfTfzvKAlonZfsIL8ee+R2Jj9dwe4gQG1/8UT
+	 ikbDgKu56YCB82nhg8NnwreSXKB/uSxqzstktVanLw+HYEWmpyhhF4IN5iJR8XYk7q
+	 yw+2zrYQbGhkyneR7LvmjtU/tXFnjTlororY9q8M0Bnt7ufMdcclUwHujGfpx52hEX
+	 Jt/CYp4aWZeHLgd04du5mXg9WrqSRzEky39IAlZ8Zffdf33kq3S347zBoJBlQKrzo4
+	 6MeTDZnuykjPgjSBXEN37VJblWROrGp7oN5suST7x0Ikj708rJ923s8OEOFXcyAWpE
+	 4XY5LVyF0CVtg==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: laura.nao)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2DBE617E10C8;
-	Thu, 16 Oct 2025 16:22:52 +0200 (CEST)
-From: Laura Nao <laura.nao@collabora.com>
-To: srini@kernel.org,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	rafael@kernel.org,
-	daniel.lezcano@linaro.org,
-	rui.zhang@intel.com,
-	lukasz.luba@arm.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com
-Subject: [PATCH RESEND v3 9/9] dt-bindings: nvmem: mediatek: efuse: Add support for MT8196
-Date: Thu, 16 Oct 2025 16:21:58 +0200
-Message-Id: <20251016142158.740242-10-laura.nao@collabora.com>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20251016142158.740242-1-laura.nao@collabora.com>
-References: <20251016142158.740242-1-laura.nao@collabora.com>
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D939117E0125;
+	Thu, 16 Oct 2025 16:29:14 +0200 (CEST)
+Message-ID: <5f430ff9-d701-426a-bf93-5290e6912eb4@collabora.com>
+Date: Thu, 16 Oct 2025 16:29:14 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 02/15] arm64: dts: mediatek: mt7981b-openwrt-one:
+ Configure UART0 pinmux
+To: Daniel Golle <daniel@makrotopia.org>, Sjoerd Simons <sjoerd@collabora.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>,
+ Jianjun Wang <jianjun.wang@mediatek.com>, Bjorn Helgaas
+ <bhelgaas@google.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+ Manivannan Sadhasivam <mani@kernel.org>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>, Lee Jones <lee@kernel.org>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+ kernel@collabora.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org,
+ linux-phy@lists.infradead.org, netdev@vger.kernel.org,
+ Bryan Hinton <bryan@bryanhinton.com>
+References: <20251016-openwrt-one-network-v1-0-de259719b6f2@collabora.com>
+ <20251016-openwrt-one-network-v1-2-de259719b6f2@collabora.com>
+ <aPDnT4tuSzNDzyAE@makrotopia.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <aPDnT4tuSzNDzyAE@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251016_072256_310459_392F52C3 
-X-CRM114-Status: UNSURE (   9.48  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251016_072920_727005_959AAA18 
+X-CRM114-Status: GOOD (  14.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,37 +90,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: andrew-ct.chen@mediatek.com, lala.lin@mediatek.com, arnd@arndb.de, linux-pm@vger.kernel.org, Laura Nao <laura.nao@collabora.com>, linux-kernel@vger.kernel.org, nfraprado@collabora.com, devicetree@vger.kernel.org, u.kleine-koenig@baylibre.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, kernel@collabora.com, colin.i.king@gmail.com, bchihi@baylibre.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MT8196 eFuse layout is compatible with MT8186 and shares the same
-decoding scheme for the gpu-speedbin cell.
+Il 16/10/25 14:38, Daniel Golle ha scritto:
+> On Thu, Oct 16, 2025 at 12:08:38PM +0200, Sjoerd Simons wrote:
+>> Add explicit pinctrl configuration for UART0 on the OpenWrt One board,
+>>
+>> Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
+>> ---
+>>   arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts | 11 +++++++++++
+>>   1 file changed, 11 insertions(+)
+>>
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
+>> index 968b91f55bb27..f836059d7f475 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
+>> +++ b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
+>> @@ -22,6 +22,17 @@ memory@40000000 {
+>>   	};
+>>   };
+>>   
+>> +&pio {
+>> +	uart0_pins: uart0-pins {
+>> +		mux {
+>> +			function = "uart";
+>> +			groups = "uart0";
+>> +		};
+>> +	};
+>> +};
+>> +
+>>   &uart0 {
+>> +	pinctrl-names = "default";
+>> +	pinctrl-0 = <&uart0_pins>;
+>>   	status = "okay";
+>>   };
+> 
+> As there is only a single possible pinctrl configuration for uart0,
+> both the pinmux definition as well as the pinctrl properties should go
+> into mt7981b.dtsi rather than in the board's dts.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
-Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Laura Nao <laura.nao@collabora.com>
----
- Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+If there's really one single possible pin configuration for the UART0 pins,
+as in, those pins *do not* have a GPIO mode, then yes I agree.
 
-diff --git a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
-index 4dc0d42df3e6..c90b026e40bd 100644
---- a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
-+++ b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
-@@ -25,7 +25,9 @@ properties:
-   compatible:
-     oneOf:
-       - items:
--          - const: mediatek,mt8188-efuse
-+          - enum:
-+              - mediatek,mt8196-efuse
-+              - mediatek,mt8188-efuse
-           - const: mediatek,mt8186-efuse
-       - const: mediatek,mt8186-efuse
- 
--- 
-2.39.5
+If those pins can be as well configured as GPIOs, this goes to board DTS.
 
+Cheers,
+Angelo
 
