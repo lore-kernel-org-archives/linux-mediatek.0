@@ -4,78 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E9F6CCD199
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 16:54:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCB2CCCD199
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 17:06:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1ud188JUBlrzBdAeOUSOy9xh1TaWuv3Hu+RD3VybOso=; b=319VRSzIa3A/E8Rv1JNEr/p815
-	3oxPbAzxMXrEoKqWhSi5titmp1vbmqqv/TUWANOvu16GlEFXWN8nU7H8mhzSXb+PQM3GuNuIFYo4Z
-	Ksv9k+XY2rKTppx9KWW0xnuAJ+PzyEehSMGs6a+MnYhdEO3NIB+ZKDeTsbwwdAGfAeRA6UwvhOE0K
-	jzYHoPwCOCCQSpaDLpgtG/CwA9BMoAMol51hm6sHwfXRZKuO1C+m5JIN17DJrhMCNwodvSg8/ZwzN
-	DjHzM3fAjJJwM08F4hZOwK1jB5H0L4v9GxhabFQTgvNvMFr8aWYxXi98zvMr03BV+he2GngGWN62x
-	L6nflxwQ==;
+	bh=icNR1hHAkcJ1M76vFU+5TxUHRH5lg9WpifP45467krw=; b=if9+x4JQIPuJifmdf+FyqyZZmK
+	QUer1ESro3znO3L2x3nxew+12u8KZUnTf8S+YbVyYkzXf5VOFWUt/XYqzELl7iLtL8Ibb4T1qxXel
+	o8CB7nxTauSFFuNmi2ufp9vGYW4OaUF9fb3+LXoJaY6++W56calXSPM7WXxXCzx5TN24zhWOvvNhj
+	iO46k1VdOJQraxP4bIidtDFTSTX/aAiAF0xThcY33izNuhW1QWrQhe0D4BffxovFI/HGYAnTdjbGW
+	Q9qa9rfwQSpt7IcMtSQxWA+R9Q64DXViioZHOctBviOof9Z+JfL1F1MV2Elb/h67DntD/dV5qmxV2
+	P7ae+aTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9RFU-00000005U8g-0zrz;
-	Thu, 16 Oct 2025 16:54:44 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1v9RQY-00000005Wrx-2cze;
+	Thu, 16 Oct 2025 17:06:10 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9RFS-00000005U7x-0nvl;
-	Thu, 16 Oct 2025 16:54:42 +0000
+	id 1v9RQW-00000005Wr6-1Fa9;
+	Thu, 16 Oct 2025 17:06:09 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 805BA60441;
-	Thu, 16 Oct 2025 16:54:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 83354C4CEF1;
-	Thu, 16 Oct 2025 16:54:36 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id C66CC43A88;
+	Thu, 16 Oct 2025 17:06:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D44AFC4CEF1;
+	Thu, 16 Oct 2025 17:06:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760633681;
-	bh=P6z6MpZ3GyLdgUiuk5OCeZbUo2ga95ouA7nUg4Q6aj0=;
+	s=k20201202; t=1760634367;
+	bh=eskJgEswuM2KIOvIt6RczPdi3+e/Gu7TEutaJgkQaNs=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ozI6wj+mVED3BwR6VvJe1HkiU6QMx0LrkGAcqVEuP/lkCLmnLHzzm54D+zom70e/0
-	 TAZk/V46RlVvu+cGZ9PLP97lhv0DGYjBtFV6t/2FHKGlvvavoHAbHs5RTEdNcD3nhp
-	 53ZGGshZZlevE3Y0ZRQAJcy5RmqT4jjV5nNgb1Kh6QocmEeueWbSvyPd4h71JHlSxD
-	 w3YsGIJjuIlU5O8byeeGpEvT0qwbBav6vL6ECWuZyRukZXaJlfJIp+WLaWlI1fRcle
-	 +WnsqyzZ6JATGqkq9Nn7uMqraI5qgHYPSX/hpaHQyw3vZdsIglDXIQD9v0DGCRqA/U
-	 zt9C6TqsMbuLQ==
-Date: Thu, 16 Oct 2025 17:54:34 +0100
+	b=StUZULop3yfuwZFzcgU07+8rl7AoDfRwDxWR3fVzNsMYuJICsLtbGlFjtpIiEOOok
+	 30mfl50ly7MNR/gJg/ejoZob8b2r5MH7ITg7BKQQs+CEKcJ6ogATPsK0mQPRK03yZW
+	 vsuUhrCV/HAEDcZiZhQL82KEas1KB4yPtifk7O7bhgi7OKc2ipDr/w8jw/D5ySOlDg
+	 eblw3vtIX5gF4pTjTdZZ2/PNXcsXhHMaZxY+8btMw4AO3tE2JTIFHiNbdFZOT6mQEn
+	 bhwweXE/4/mvIV6UZ2QEfol6YddUhfs44cydLebviPgifWzeQMuPNd9dRdEuRlL5iO
+	 W+qgskq36+qZg==
+Date: Thu, 16 Oct 2025 18:06:02 +0100
 From: Conor Dooley <conor@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Alim Akhtar <alim.akhtar@samsung.com>,
-	Avri Altman <avri.altman@wdc.com>,
-	Bart Van Assche <bvanassche@acm.org>, Rob Herring <robh@kernel.org>,
+To: Lorenzo Bianconi <lorenzo@kernel.org>, g@spud
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Stanley Chu <stanley.chu@mediatek.com>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Peter Wang <peter.wang@mediatek.com>,
-	Stanley Jhu <chu.stanley@gmail.com>,
-	"James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
-	"Martin K. Petersen" <martin.petersen@oracle.com>,
 	Philipp Zabel <p.zabel@pengutronix.de>,
-	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
-	kernel@collabora.com, linux-scsi@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org
-Subject: Re: [PATCH 1/5] dt-bindings: ufs: mediatek,ufs: Add mt8196-ufshci
- variant
-Message-ID: <20251016-spookily-finisher-07e0240a11f2@spud>
-References: <20251014-mt8196-ufs-v1-0-195dceb83bc8@collabora.com>
- <20251014-mt8196-ufs-v1-1-195dceb83bc8@collabora.com>
- <20251016-kettle-clobber-2558d9c709de@spud>
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH net-next v2 01/13] dt-bindings: net: airoha: Add AN7583
+ support
+Message-ID: <20251016-hypnoses-caucasian-5d08812740a6@spud>
+References: <20251016-an7583-eth-support-v2-0-ea6e7e9acbdb@kernel.org>
+ <20251016-an7583-eth-support-v2-1-ea6e7e9acbdb@kernel.org>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="LGvrffN0k+9EYx8j"
+	protocol="application/pgp-signature"; boundary="9mL+XRXQMatgZUrQ"
 Content-Disposition: inline
-In-Reply-To: <20251016-kettle-clobber-2558d9c709de@spud>
+In-Reply-To: <20251016-an7583-eth-support-v2-1-ea6e7e9acbdb@kernel.org>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251016_100608_398059_3834FB8D 
+X-CRM114-Status: GOOD (  18.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,42 +83,159 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---LGvrffN0k+9EYx8j
+--9mL+XRXQMatgZUrQ
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, Oct 16, 2025 at 05:53:01PM +0100, Conor Dooley wrote:
-> On Tue, Oct 14, 2025 at 05:10:05PM +0200, Nicolas Frattaroli wrote:
-
-> > @@ -30,7 +42,15 @@ properties:
-> >    reg:
-> >      maxItems: 1
-> > =20
-> > +  resets:
-> > +    maxItems: 3
-> > +
-> > +  reset-names:
-> > +    maxItems: 3
+On Thu, Oct 16, 2025 at 12:28:15PM +0200, Lorenzo Bianconi wrote:
+> Introduce AN7583 ethernet controller support to Airoha EN7581
+> device-tree bindings. The main difference between EN7581 and AN7583 is
+> the number of reset lines required by the controller (AN7583 does not
+> require hsi-mac).
 >=20
-> You cannot use reset-names if you don't define what the names are.
-> Please provide a items list with descriptions in resets and some
-> names in reset-names.
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>  .../devicetree/bindings/net/airoha,en7581-eth.yaml | 60 ++++++++++++++++=
+++----
+>  1 file changed, 51 insertions(+), 9 deletions(-)
+>=20
+> diff --git a/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml=
+ b/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
+> index 6d22131ac2f9e28390b9e785ce33e8d983eafd0f..7b258949a76d5c603a8e66e18=
+1895c4a4ae95db8 100644
+> --- a/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
+> +++ b/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
+> @@ -17,6 +17,7 @@ properties:
+>    compatible:
+>      enum:
+>        - airoha,en7581-eth
+> +      - airoha,an7583-eth
+> =20
+>    reg:
+>      items:
+> @@ -44,18 +45,12 @@ properties:
+>        - description: PDMA irq
+> =20
+>    resets:
+> +    minItems: 7
+>      maxItems: 8
+> =20
+>    reset-names:
+> -    items:
+> -      - const: fe
+> -      - const: pdma
+> -      - const: qdma
+> -      - const: xsi-mac
+> -      - const: hsi0-mac
+> -      - const: hsi1-mac
+> -      - const: hsi-mac
+> -      - const: xfp-mac
 
-I missed that the names were provided in the if/then/else. Please just
-define them here, since there's currently only one possible set and use
-the if/then/else to block their use on !8195
+Pretty sure most of this diff can just be avoided by changing this list
+to be
+  reset-names:
+    items:
+      - const: fe
+      - const: pdma
+      - const: qdma
+      - const: xsi-mac
+      - const: hsi0-mac
+      - const: hsi1-mac
+      - enum: [ hsi-mac, xfp-mac ]
+      - const: xfp-mac
+    minItems: 7
 
---LGvrffN0k+9EYx8j
+All of these -names properties IIRC are arrays of unique strings, so doing
+8 with xfp-mac twice would not pass. Your conditional portion of the
+binding then need only set min to 8 for the old device and max to 7 for
+the new one.
+
+> =20
+>    memory-region:
+>      items:
+> @@ -81,6 +76,53 @@ properties:
+>        interface to implement hardware flow offloading programming Packet
+>        Processor Engine (PPE) flow table.
+> =20
+> +allOf:
+> +  - $ref: ethernet-controller.yaml#
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            enum:
+> +              - airoha,en7581-eth
+> +    then:
+> +      properties:
+> +        resets:
+> +          minItems: 8
+> +          maxItems: 8
+
+Same here fwiw, just need to set the min for this, and...
+
+> +
+> +        reset-names:
+> +          items:
+> +            - const: fe
+> +            - const: pdma
+> +            - const: qdma
+> +            - const: xsi-mac
+> +            - const: hsi0-mac
+> +            - const: hsi1-mac
+> +            - const: hsi-mac
+> +            - const: xfp-mac
+> +
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            enum:
+> +              - airoha,an7583-eth
+> +    then:
+> +      properties:
+> +        resets:
+> +          minItems: 7
+> +          maxItems: 7
+
+=2E..max to 7 here. Re-setting min here is redudant, since it matches the
+outermost/widest constraint that you set when defining the property
+outside the conditional.
+
+pw-bot: changes-requested
+
+Cheers,
+Conor.
+
+> +
+> +        reset-names:
+> +          items:
+> +            - const: fe
+> +            - const: pdma
+> +            - const: qdma
+> +            - const: xsi-mac
+> +            - const: hsi0-mac
+> +            - const: hsi1-mac
+> +            - const: xfp-mac
+> +
+>  patternProperties:
+>    "^ethernet@[1-4]$":
+>      type: object
+>=20
+> --=20
+> 2.51.0
+>=20
+
+--9mL+XRXQMatgZUrQ
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHQEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaPEjSgAKCRB4tDGHoIJi
-0hRAAPi8N6sPfeV1Bi3I///Ot3yTtonRd3989x6drtQm36IVAQD69kpquARZkUPk
-oMdifIXnmA5UyWpnpgSGOKCPH2daAg==
-=AjY2
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaPEl+gAKCRB4tDGHoIJi
+0on2AQCsGgDtbOnKMfcJ3xtmRPlJ8e6bbOl2Ha5gG8JXUfO1CgD/QxseQkLse1bg
+s5COTpsvRS3yGcjqbh/LziflXULgVgc=
+=rwvg
 -----END PGP SIGNATURE-----
 
---LGvrffN0k+9EYx8j--
+--9mL+XRXQMatgZUrQ--
 
