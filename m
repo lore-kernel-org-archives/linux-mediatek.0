@@ -4,83 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC75FCCD19E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 10:09:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBD53CCD194
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 10:28:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8wgv6vlZhKFrmpM0uQbFTE+ufe0srCnx3bmcMwqioJg=; b=iGlsxfGD9yEBqGYAQx4i9sRTba
-	Lq2NbWC1ttnPWU8w30EBNASq69fjuduGTzeRHcaWXOF1qBbKgIpvZoMiFXJU7K7ZJiQMZycOxozwJ
-	8pgJ+wr3tz6CJwTXMDSYfMVnBF07deKYWNxjfPcyR6c5lpOoQVxlPghA6exkbNcBcdvKZnw2U4YP2
-	D+h12Z8o+WIb6dfAUPCemS5vZy6AJclW0jLDs87wIS2XhYsFnmFgRfnNwUHIUcXMn8vwKmJAmxzqR
-	MW3aTDWGKPhhBIJJfn/zFWRffYkh9AI60Vx4ZabRngpo6JEhgSPe0TNGo+AZ+q+XvbKo7JLQpN/qO
-	4CHeknzA==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=XreqbEkjMx7wWtK/YgDE94Oo088cpjk8vUewdbX8Hbg=; b=hDQAd6FBppPF+h
+	dOnW5MHdlB+0u924plPzLphLcAGaSHqLibATdVHZHn8q61OZC9fYBXNo7rrxuv60s+ZhyXMHX4zzQ
+	wyS7UgS01uSm03XZfXzFIoneRB0j4F/gm2+m5VFOk62795BQiDpCytqOtwLJo5kWYPib6SIP7TxwH
+	jeEXtYw8nVT7CmWfBMQDVZTiW297pikYk+iojSP5HKSTZlXPr/+JlBKLrC5TJmOTe/bv2Jzjfhtzz
+	nFe1A0hPBYw0V8JZC+5Ig41NofpgsimAprkujAJjWK2g3rWuAwu9C5DwCrH1na0wP3+1XuOtP7o78
+	SbkNUAjwR/dgHsPweI2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9Kva-00000004Lvq-2Bh6;
-	Thu, 16 Oct 2025 10:09:46 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1v9LDt-00000004PjE-1LKh;
+	Thu, 16 Oct 2025 10:28:41 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9Kus-00000004Kwo-3fsZ;
-	Thu, 16 Oct 2025 10:09:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1760609335;
-	bh=UGU216bzWdi/xPxp07gdtNKrrz/AaYQxRBv23FP8Dhc=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=g3jThabVnbKEswmG8jUG6jHBK5NrGZmgTT1Ptq31SygSJjC6iq+YVqKGP5FiqgTD0
-	 52Fm3l4c9TOJmMpwdmQvwUZGHwTlI3MAfFmcJScDC80nseHasED02f62nlIEDSNBPJ
-	 Ld/l+nzFrC+sV07Ox8pHbYEOl/5Pd029C19BTVClH2phRMzAug/NapUTkcYTuKNEN9
-	 P6XmgqcIqODT9RhUPK/f5ZG25JsLWAUU/MwCbqrBnwu4j4oT+ACj7KS3lFLYtryF5r
-	 TzYuI0KreYB3htZ70xwIrPNd4QwuxWXVFEQo96FzNVgNMuLxYPJIhjhmGU9S60H84n
-	 EMCU7yZ8cEakg==
-Received: from beast.luon.net (unknown [IPv6:2a10:3781:2531::8])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: sjoerd)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5C4A817E1562;
-	Thu, 16 Oct 2025 12:08:55 +0200 (CEST)
-Received: by beast.luon.net (Postfix, from userid 1000)
-	id D28A310C9C79C; Thu, 16 Oct 2025 12:08:53 +0200 (CEST)
-From: Sjoerd Simons <sjoerd@collabora.com>
-Date: Thu, 16 Oct 2025 12:08:50 +0200
-Subject: [PATCH 14/15] arm64: dts: mediatek: mt7981b-openwrt-one: Enable
- wifi
+	id 1v9LDq-00000004PiG-1Z8e;
+	Thu, 16 Oct 2025 10:28:39 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id C8B8D4A1FE;
+	Thu, 16 Oct 2025 10:28:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2DD6DC4CEF1;
+	Thu, 16 Oct 2025 10:28:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1760610517;
+	bh=7ACd7nRHcRazteVxLXW9lw48ww6CyQ/yAb+kOxQueDY=;
+	h=From:Subject:Date:To:Cc:From;
+	b=jHciSve+YgrR5ZPP1cvzv1c1Q88lR62qr0SQy/FtXLTg+bkyqTv6sUdBsnsACQHLG
+	 dhYAG2tbPPpYnYZ3VbcIJyjzuumV3JzucaMSCOIJw3lbiZNkWFavZy3HjhN+BiEtZA
+	 GbTOuDz+gvwsNFnNF7oYk/ppu2Tdg6vASLls6O/No58CV6Yq6zle9CgYiCVVVkU2Rd
+	 yA+E7wi5cA8qCWrJkiXLxE2hY/ubTKjiaSUs4VnQDt3Imqlp6pg9laoYoX/GrsIKs/
+	 Kv8uz7K4Z8ICsk9LkIPLhy5edltXTol8yMZnmoApliKDGN4v1U7GI3rVIjdb5ID4FM
+	 3FUnz2UZgXkGQ==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH net-next v2 00/13] net: airoha: Add AN7583 ethernet
+ controller support
+Date: Thu, 16 Oct 2025 12:28:14 +0200
+Message-Id: <20251016-an7583-eth-support-v2-0-ea6e7e9acbdb@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251016-openwrt-one-network-v1-14-de259719b6f2@collabora.com>
-References: <20251016-openwrt-one-network-v1-0-de259719b6f2@collabora.com>
-In-Reply-To: <20251016-openwrt-one-network-v1-0-de259719b6f2@collabora.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Ryder Lee <ryder.lee@mediatek.com>, 
- Jianjun Wang <jianjun.wang@mediatek.com>, 
- Bjorn Helgaas <bhelgaas@google.com>, 
- Lorenzo Pieralisi <lpieralisi@kernel.org>, 
- =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
- Manivannan Sadhasivam <mani@kernel.org>, 
- Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
- Kishon Vijay Abraham I <kishon@kernel.org>, Lee Jones <lee@kernel.org>, 
- Andrew Lunn <andrew+netdev@lunn.ch>, 
+X-B4-Tracking: v=1; b=H4sIAL7I8GgC/22NQQ6CMBBFr0Jm7ZhpoQiuvIdhQWSARtM2U2w0h
+ LtbiUuX7yX//RUii+UI52IF4WSj9S6DPhRwm3s3MdohM2jSRhFV2LuTaUrkZcb4DMHLgqrXox7
+ qqi0bgjwMwqN97dFrl3m2cfHy3j+S+tpfTpl/uaSQkOqqMWYk0+rycmdx/Dh6maDbtu0DZDhTG
+ LUAAAA=
+X-Change-ID: 20251004-an7583-eth-support-1a2f2d649380
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
  "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, 
- linux-phy@lists.infradead.org, netdev@vger.kernel.org, 
- Daniel Golle <daniel@makrotopia.org>, Bryan Hinton <bryan@bryanhinton.com>, 
- Sjoerd Simons <sjoerd@collabora.com>
-X-Mailer: b4 0.14.3
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ devicetree@vger.kernel.org, Simon Horman <horms@kernel.org>, 
+ Christian Marangi <ansuelsmth@gmail.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251016_030905_704935_32E3CFD9 
-X-CRM114-Status: GOOD (  10.34  )
+X-CRM114-CacheID: sfid-20251016_032838_455091_6FA833A0 
+X-CRM114-Status: UNSURE (   7.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,57 +83,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable Dual-band WiFI 6 functionality on the Openwrt One
+Introduce support for AN7583 ethernet controller to airoha-eth dirver.
+The main differences between EN7581 and AN7583 is the latter runs a
+single PPE module while EN7581 runs two of them. Moreover PPE SRAM in
+AN7583 SoC is reduced to 8K (while SRAM is 16K on EN7581).
 
-Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
 ---
- .../boot/dts/mediatek/mt7981b-openwrt-one.dts      | 24 ++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
+Changes in v2:
+- rely on IS_ENABLED(CONFIG_NET_AIROHA_FLOW_STATS) instead of ifedef
+  CONFIG_NET_AIROHA_FLOW_STATS in airoha_ppe_get_num_stats_entries
+  routine
+- return number of stats_entries from airoha_ppe_get_num_stats_entries()
+  and airoha_ppe_get_total_num_stats_entries()
+- remove magic number in airoha_ppe_foe_commit_sram_entry routine
+- improve code readability in airhoha_set_gdm2_loopback routine adding
+  some macros
+- improve commit logs
+- remove magic numbers in airoha_ppe_foe_get_entry_locked()
+- Link to v1: https://lore.kernel.org/r/20251015-an7583-eth-support-v1-0-064855f05923@kernel.org
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
-index 6e6e4f1515f67..4d1653c336e71 100644
---- a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
-@@ -134,6 +134,22 @@ mux {
- 			groups = "uart0";
- 		};
- 	};
-+
-+	wifi_dbdc_pins: wifi-dbdc-pins {
-+		mux {
-+			function = "eth";
-+			groups = "wf0_mode1";
-+		};
-+
-+		conf {
-+			pins = "WF_HB1", "WF_HB2", "WF_HB3", "WF_HB4",
-+			       "WF_HB0", "WF_HB0_B", "WF_HB5", "WF_HB6",
-+			       "WF_HB7", "WF_HB8", "WF_HB9", "WF_HB10",
-+			       "WF_TOP_CLK", "WF_TOP_DATA", "WF_XO_REQ",
-+			       "WF_CBA_RESETB", "WF_DIG_RESETB";
-+			drive-strength = <MTK_DRIVE_4mA>;
-+		};
-+	};
- };
- 
- &spi2 {
-@@ -213,6 +229,14 @@ &usb_phy {
- 	status = "okay";
- };
- 
-+&wifi {
-+	nvmem-cells = <&eeprom_factory_0>;
-+	nvmem-cell-names = "eeprom";
-+	pinctrl-names = "dbdc";
-+	pinctrl-0 = <&wifi_dbdc_pins>;
-+	status = "okay";
-+};
-+
- &xhci {
- 	phys = <&u2port0 PHY_TYPE_USB2>;
- 	vusb33-supply = <&reg_3p3v>;
+---
+Lorenzo Bianconi (13):
+      dt-bindings: net: airoha: Add AN7583 support
+      net: airoha: ppe: Dynamically allocate foe_check_time array in airoha_ppe struct
+      net: airoha: Add airoha_ppe_get_num_stats_entries() and airoha_ppe_get_num_total_stats_entries()
+      net: airoha: Add airoha_eth_soc_data struct
+      net: airoha: Generalize airoha_ppe2_is_enabled routine
+      net: airoha: ppe: Move PPE memory info in airoha_eth_soc_data struct
+      net: airoha: ppe: Remove airoha_ppe_is_enabled() where not necessary
+      net: airoha: ppe: Configure SRAM PPE entries via the cpu
+      net: airoha: ppe: Flush PPE SRAM table during PPE setup
+      net: airoha: Select default ppe cpu port in airoha_dev_init()
+      net: airoha: Refactor src port configuration in airhoha_set_gdm2_loopback
+      net: airoha: ppe: Do not use magic numbers in airoha_ppe_foe_get_entry_locked()
+      net: airoha: Add AN7583 SoC support
 
+ .../devicetree/bindings/net/airoha,en7581-eth.yaml |  60 ++++-
+ drivers/net/ethernet/airoha/airoha_eth.c           | 254 ++++++++++++++------
+ drivers/net/ethernet/airoha/airoha_eth.h           |  65 ++++--
+ drivers/net/ethernet/airoha/airoha_ppe.c           | 259 ++++++++++++++-------
+ drivers/net/ethernet/airoha/airoha_ppe_debugfs.c   |   3 +-
+ drivers/net/ethernet/airoha/airoha_regs.h          |   6 +-
+ 6 files changed, 456 insertions(+), 191 deletions(-)
+---
+base-commit: 00922eeaca3c5c2001781bcad40e0bd54d0fdbb6
+change-id: 20251004-an7583-eth-support-1a2f2d649380
+
+Best regards,
 -- 
-2.51.0
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
