@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49DA9CCD183
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 08:10:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27D39CCD183
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 08:13:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jT1Ry3XK2uxvUYqon+pxyvPgFgnqM/4Z+7OBJI7gqgY=; b=XQAZB1kdSxeiIa+il4IYdYJ3oM
-	OmY8BylpjcxdBWeBXyJNnNaHSjXU9FHDziZ5pocj1zIZ3BbmeGmzB2sx3aJqOOl0a2aYnAZtf0tOC
-	6yo9YF14EKcNE4nxbmqRM039YeMYFol5Q/ULsnW3auYZPQscyMggBltmGQAcL3yHUtH5ezcrPGfgF
-	+prOMYjswsAryrAPGTAWa93q5H+nBCLKlRJQZdh+MN65fBX0n3OJ1ercdazDyrSlH8d03TUdrPcya
-	5kRwfj6TnIRyeRuZf0KGK0LAKFlaW+NvBpzxTJt1hmgLIqpLysfB0A5XcCQL+eSPdUTCX4rzzi9oE
-	tJ6jQvTg==;
+	bh=9lE1lcjKMGS6njjkAs4Q7DtVgz0COWaFrMoj2uLVJhM=; b=G8xFpfQVp62x7oL+EuEFo/TAjQ
+	7ohxIDkJoGTmbCDerl2n6yKTzLsFdm9Girc83H2IGIfowNIE9GwP+Ou1WUiRH8ebIn+yE4GnlF/e3
+	vZKczHaIbbXcP2A7+aEQenf9CUJ6gvTfevElvLf8+lWVwsr+MnzLg3ca4O8wWNSWiweUwDP3IRvkc
+	bCmYOahmk5BeB/YrRAoKiw229gZNo6yWoMwYeHGnsCVIFT12cngmWxOcCKV0RW/TLusU6byeiM48r
+	tTFoYXnhSO6R6UtqFzWRzbOh9yu73caGyCNDIhEXt5+0mbvya2VROlLtR5ZAe3qjoBhpmaCcLrGMz
+	zQdV3LSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9J4D-00000003rXq-03ro;
-	Thu, 16 Oct 2025 08:10:33 +0000
+	id 1v9J71-00000003rxi-1lN2;
+	Thu, 16 Oct 2025 08:13:27 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9J4B-00000003rXQ-2wgR;
-	Thu, 16 Oct 2025 08:10:31 +0000
+	id 1v9J6z-00000003rxB-23so;
+	Thu, 16 Oct 2025 08:13:25 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 2054660393;
-	Thu, 16 Oct 2025 08:10:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 45001C4CEF1;
-	Thu, 16 Oct 2025 08:10:30 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id DF65660393;
+	Thu, 16 Oct 2025 08:13:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 14B94C4CEF1;
+	Thu, 16 Oct 2025 08:13:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760602230;
-	bh=BqE165DW1W7QlpVTH7AU/66UVMbPwzOvW0CrLWglYhM=;
+	s=k20201202; t=1760602404;
+	bh=JRPlKX+eOfHCbEao1Pk+DQKZrPhLJMjawB7Jmn0nkuo=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=vFAs+/pzVgP+mpwH3riBiHGxPTQFVGQ1SFIFoCFpefs9Ay3Hae3mOTbOb9ANhytly
-	 h8ZZ1HqK+R0kNzc6F/+UIZPZ5RFZ9T5ZCm40F7YU5g3SupREgEsd3rH2UMvj6rqX3+
-	 Y90Lkvkdu6eYglFqR/BXbMaSwcyMr/jZx1kegnulI5CbT9B9O3tZ3QPJ05c6fj0XTv
-	 b9ud1Xm4QhpzMO/lI4giQm35TOECNxN819WRZd/Cy/eUe2uPfrKmpVkG6YRmIkZQCW
-	 O6cBEpXx0bnHzMQ976S4ryGEBcHBnbaFfz63KaSZi59UJlIM7VKXN4B6D0Y14KKYyb
-	 XDdhJeMcFu4mg==
-Date: Thu, 16 Oct 2025 10:10:28 +0200
+	b=pfwktXLkYCPsutEN4IMLIXWbPx1m+L2Pl1atPbDyhlQX9pB1k+ZnjDZ/wA/P3xM8R
+	 kZCQCiHgfvBb9xDNz7Prt6yHDUWZvQspwERNPPZEiS3CgAM0FHMlp2lXY79JBWFJA8
+	 5YYTSXrTlx2OqiDhBZrneODysIG/64H2YrLHdpAySXZi4zllPE3BFuaDJTOW20/QOb
+	 fb1tZNXuB6Qa2Hmwv3Bz5ikljnsPGEYX8irH4mli3cV1TPoKfhMUKgKUBpsaXOmuK3
+	 R80BM53DWbzjr7BrqJPj2xsGT+r9PeGnzl0BhJtWXl5aP6KbKA0kmNpVemnXHlwwQj
+	 yw7AhCajfDWVg==
+Date: Thu, 16 Oct 2025 10:13:21 +0200
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: Simon Horman <horms@kernel.org>
 Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
@@ -55,18 +55,17 @@ Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
 	devicetree@vger.kernel.org
-Subject: Re: [PATCH net-next 03/12] net: airoha: Add
- airoha_ppe_get_num_stats_entries() and
- airoha_ppe_get_num_total_stats_entries()
-Message-ID: <aPCodE0_u94s-w73@lore-desk>
+Subject: Re: [PATCH net-next 08/12] net: airoha: ppe: Configure SRAM PPE
+ entries via the cpu
+Message-ID: <aPCpIS1Hd4hIb20q@lore-desk>
 References: <20251015-an7583-eth-support-v1-0-064855f05923@kernel.org>
- <20251015-an7583-eth-support-v1-3-064855f05923@kernel.org>
- <aO-ZCqsvPQ6Pqjpg@horms.kernel.org>
+ <20251015-an7583-eth-support-v1-8-064855f05923@kernel.org>
+ <aO_CFRYy6vXCQIS2@horms.kernel.org>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="zgC7fqkmMZN9riIm"
+	protocol="application/pgp-signature"; boundary="vAW4T/rTlIVRq6th"
 Content-Disposition: inline
-In-Reply-To: <aO-ZCqsvPQ6Pqjpg@horms.kernel.org>
+In-Reply-To: <aO_CFRYy6vXCQIS2@horms.kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,107 +81,49 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---zgC7fqkmMZN9riIm
+--vAW4T/rTlIVRq6th
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-> On Wed, Oct 15, 2025 at 09:15:03AM +0200, Lorenzo Bianconi wrote:
-> > Introduce airoha_ppe_get_num_stats_entries and
-> > airoha_ppe_get_num_total_stats_entries routines in order to make the
-> > code more readable controlling if CONFIG_NET_AIROHA_FLOW_STATS is
-> > enabled or disabled.
-> > Modify airoha_ppe_foe_get_flow_stats_index routine signature relying on
-> > airoha_ppe_get_num_total_stats_entries().
+> On Wed, Oct 15, 2025 at 09:15:08AM +0200, Lorenzo Bianconi wrote:
+> > Introduce airoha_ppe_foe_commit_sram_entry routine in order to configure
+> > the SRAM PPE entries directly via the CPU instead of using the NPU APIs.
+> > This is a preliminary patch to enable netfilter flowtable hw offload for
+> > AN7583 SoC.
 > >=20
 > > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 > > ---
-> >  drivers/net/ethernet/airoha/airoha_eth.h |  10 +--
-> >  drivers/net/ethernet/airoha/airoha_ppe.c | 103 +++++++++++++++++++++++=
-++------
-> >  2 files changed, 86 insertions(+), 27 deletions(-)
+> >  drivers/net/ethernet/airoha/airoha_ppe.c | 30 +++++++++++++++++++++++-=
+------
+> >  1 file changed, 23 insertions(+), 7 deletions(-)
 > >=20
-> > diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/eth=
-ernet/airoha/airoha_eth.h
-> > index 4330b672d99e1e190efa5ad75d13fb35e77d070e..1f7e34a5f457ca2200e9c81=
-dd05dc03cd7c5eb77 100644
-> > --- a/drivers/net/ethernet/airoha/airoha_eth.h
-> > +++ b/drivers/net/ethernet/airoha/airoha_eth.h
-> > @@ -50,15 +50,9 @@
-> > =20
-> >  #define PPE_NUM				2
-> >  #define PPE1_SRAM_NUM_ENTRIES		(8 * 1024)
-> > -#define PPE_SRAM_NUM_ENTRIES		(2 * PPE1_SRAM_NUM_ENTRIES)
-> > -#ifdef CONFIG_NET_AIROHA_FLOW_STATS
-> > +#define PPE_SRAM_NUM_ENTRIES		(PPE_NUM * PPE1_SRAM_NUM_ENTRIES)
-> >  #define PPE1_STATS_NUM_ENTRIES		(4 * 1024)
-> > -#else
-> > -#define PPE1_STATS_NUM_ENTRIES		0
-> > -#endif /* CONFIG_NET_AIROHA_FLOW_STATS */
-> > -#define PPE_STATS_NUM_ENTRIES		(2 * PPE1_STATS_NUM_ENTRIES)
-> > -#define PPE1_SRAM_NUM_DATA_ENTRIES	(PPE1_SRAM_NUM_ENTRIES - PPE1_STATS=
-_NUM_ENTRIES)
-> > -#define PPE_SRAM_NUM_DATA_ENTRIES	(2 * PPE1_SRAM_NUM_DATA_ENTRIES)
-> > +#define PPE_STATS_NUM_ENTRIES		(PPE_NUM * PPE1_STATS_NUM_ENTRIES)
-> >  #define PPE_DRAM_NUM_ENTRIES		(16 * 1024)
-> >  #define PPE_NUM_ENTRIES			(PPE_SRAM_NUM_ENTRIES + PPE_DRAM_NUM_ENTRIES)
-> >  #define PPE_HASH_MASK			(PPE_NUM_ENTRIES - 1)
 > > diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/eth=
 ernet/airoha/airoha_ppe.c
-> > index 8d1dceadce0becb2b1ce656d64ab77bd3c2f914a..303d31e1da4b723023ee0cc=
-1ca5f6038c16966cd 100644
+> > index fcfd2d8826a9c2f8f94f1962c2b2a69f67f7f598..0ee2e41489aaa9de9c1e99d=
+242ee0bec11549750 100644
 > > --- a/drivers/net/ethernet/airoha/airoha_ppe.c
 > > +++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-> > @@ -32,6 +32,30 @@ static const struct rhashtable_params airoha_l2_flow=
-_table_params =3D {
-> >  	.automatic_shrinking =3D true,
-> >  };
+> > @@ -662,6 +662,27 @@ static bool airoha_ppe_foe_compare_entry(struct ai=
+roha_flow_table_entry *e,
+> >  	return !memcmp(&e->data.d, &hwe->d, len - sizeof(hwe->ib1));
+> >  }
 > > =20
-> > +static int airoha_ppe_get_num_stats_entries(struct airoha_ppe *ppe,
-> > +					    u32 *num_stats)
+> > +static int airoha_ppe_foe_commit_sram_entry(struct airoha_ppe *ppe, u3=
+2 hash)
 > > +{
-> > +#ifdef CONFIG_NET_AIROHA_FLOW_STATS
-> > +	*num_stats =3D PPE1_STATS_NUM_ENTRIES;
-> > +	return 0;
-> > +#else
-> > +	return -EOPNOTSUPP;
-> > +#endif /* CONFIG_NET_AIROHA_FLOW_STATS */
-> > +}
+> > +	struct airoha_foe_entry *hwe =3D ppe->foe + hash * sizeof(*hwe);
+> > +	bool ppe2 =3D hash >=3D PPE_SRAM_NUM_ENTRIES;
+> > +	u32 *ptr =3D (u32 *)hwe, val;
+> > +	int i;
+> > +
+> > +	for (i =3D 0; i < sizeof(*hwe) / 4; i++)
+> > +		airoha_fe_wr(ppe->eth, REG_PPE_RAM_ENTRY(ppe2, i), ptr[i]);
 >=20
-> Hi Lorenzo,
+> I realise that a similar pattern it is already used elsewhere,
+> but '4' seems somewhat magic here.
 
-Hi Simon,
-
->=20
-> I think that in general using IS_ENABLED is preferred over #ifdef
-> in cases where the former can be used. For one thing it improves compile
-> coverage.
->=20
-> That does seem applicable here, so I'm wondering if
-> we can do something like the following.
-> (Compile tested only!)
->=20
-> static int airoha_ppe_get_num_stats_entries(struct airoha_ppe *ppe,
->                                             u32 *num_stats)
-> {
->         if (!IS_ENABLED(CONFIG_NET_AIROHA_FLOW_STATS))
->                 return -EOPNOTSUPP;
->=20
->         *num_stats =3D PPE1_STATS_NUM_ENTRIES;
->         return 0;
-> }
-
-ack, fine. I will fix it in v2.
-
->=20
-> Also, very subjectively, I might have returned num_stats as
-> a positive return value. I'm assuming it's value will never overflow an i=
-nt.
-> Likewise elsewhere.
->=20
-> But that's just my idea. Feel free to stick with the current scheme.
-
-I guess it is fine. I will fix it in v2.
+ack, I will fix it in v2.
 
 Regards,
 Lorenzo
@@ -190,16 +131,16 @@ Lorenzo
 >=20
 > ...
 
---zgC7fqkmMZN9riIm
+--vAW4T/rTlIVRq6th
 Content-Type: application/pgp-signature; name=signature.asc
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaPCodAAKCRA6cBh0uS2t
-rOw7AQCrjTRELdN7df/7nasO5hLMxRhlBZzyAL0R8iFX2T/0jAD/Z0pUAE59OW0Z
-Q9RIe4mD8YXtUcw5ym+gnF/sXJKqLgM=
-=3ofA
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaPCpIQAKCRA6cBh0uS2t
+rKdgAPsH0ww4Hrlelb1QuqnLD1TGZZFr8UF1MNUoTOTwV+4gHgD/UrxDeNf2dARc
+ohcbUBc9rlkS5/IM2e7+vMYWUg5PBgA=
+=J4PD
 -----END PGP SIGNATURE-----
 
---zgC7fqkmMZN9riIm--
+--vAW4T/rTlIVRq6th--
 
