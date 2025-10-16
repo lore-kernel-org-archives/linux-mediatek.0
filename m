@@ -4,44 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0874CCD199
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 16:00:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8F7CCCD183
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 16:01:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jqFJNhUJg1qnI/xkgkILNM+TjzTwU9ayVr2PWAsWxpM=; b=D2DxkCocMXoDjgvFCSgk8Wavq+
-	qUDalP89jBlvH7woftCv+ciIrBKIyZWH+OCNEEKDHSjeM5zyp703NUoxjwKRybgv/q40aoQLE2Vv2
-	JqCc/g6R5gmVKLfHoL1Sp/iIJb5sMN7SxqnSSxfMY9YJd4EYiw4l8RH2FWhejO7ux6D5BM9PuiCMs
-	zh0DJ3mQxmcSMrYap123D7NF0JVrpSvpckj/yCsCgEBKuS+KY4hLYyipwuEaJ8hBZEH/87XAAxYbq
-	Zc4WFUYaRh6LLhjecRqNTmv4Pqu7XyNiHMxUh4V/iVHHTBW1sgw4W3+54Kj+1f8fZu2KdXgscBKR5
-	wnUI8r/w==;
+	bh=eaaASdllv469UH8GC6GoZygLxohTJBte5OoOXJHzFA4=; b=tYZqmVZd41z6VrPc/tAu9p1BjD
+	wZueuSDpWTSQtbUnxTjQnd/0/njRx+7dX4KxzaX+8J/vozsbsibjpah/Moda4RXl+JjRrE+WoylFr
+	d0ere1m3/FQZJ5+XeCwogDos0saB5htdjllKnk1VETwcsB/ui5Js4ZY40GJSFPABUB5k0LtYQ6L5t
+	A++yUyiMs3qYIunhF0OHbWfS0VFJ/ubihFyaMPN2K3fly+Q8hKqrV5XTUAZwu4OmsM1xepS13LF5h
+	yVPww2VqRNv0iekKVpqBSakLhtjVP9ycjDuWOB05cR51nwLPbShQQf2oWzx9qA/fR0JAlBqxkE5+q
+	SReeMnGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9QP9-00000005Jvv-418C;
-	Thu, 16 Oct 2025 16:00:39 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1v9QPW-00000005KNd-2eOR;
+	Thu, 16 Oct 2025 16:01:02 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9QP1-00000005JoI-3YbE;
-	Thu, 16 Oct 2025 16:00:32 +0000
+	id 1v9QPP-00000005KD9-1Xym;
+	Thu, 16 Oct 2025 16:00:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=eaaASdllv469UH8GC6GoZygLxohTJBte5OoOXJHzFA4=; b=auQwE+FD1SHytVKH4ql3YRlKcR
+	XAgQ4XGdCjszo3a1/+kHBvVxuGNHOPggGSn9WMPkMd2aR0390IVxbcZQHxBP4zr159dSwdrrfKpG9
+	99L5CbDIwnxIS/4M1KAR51AAVjvF+v1wOHeC+cvZ87VUb7+u6jdsf8N186XwwCtMxU9k1gjINtabl
+	dkgwAFwr5EOkz/9AQe/KWmaCRzDKHlh3AJvX7KJ9h92JPFhGiu9HfJJGrMONxpp18VV5lKmBBbFV+
+	QBeRjOyTAcPKE3lbggu1u5gU3IL67FLRJoqVK6BgylgOOdn1GbDCKlPoyX8eXZ5ZiNORbW5q+fQlv
+	Hfxqm+aw==;
+Received: from sea.source.kernel.org ([172.234.252.31])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1v9QPM-00000006qN5-0w6b;
+	Thu, 16 Oct 2025 16:00:54 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3E9C843A98;
-	Thu, 16 Oct 2025 16:00:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7DF95C4CEF1;
-	Thu, 16 Oct 2025 16:00:28 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 929754418D;
+	Thu, 16 Oct 2025 16:00:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C2D84C4CEFB;
+	Thu, 16 Oct 2025 16:00:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760630431;
-	bh=nORpSP6NrI6Qmuqm66M/ilyzrD8flM0QSTQ4gbzBGi8=;
+	s=k20201202; t=1760630445;
+	bh=wP6vXDlhFuYqFHW+R+FJucItnIxpqKnTwS+F/MUaEXM=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=r6erMQRwckQ6A4zou04gI0aaPdOBZOubgDi7fAVY6xKulEcsY1GWnGPpOOaMHwnXX
-	 GkX9JWq2f1Htn1vUgbbi18LINXvee8aLd41Y8Sk6x9VzCvIRXEwHS7nHlNatdxhSMD
-	 8PhOhXvxuUlUOm4z1Md06yNnNcrfyqxbuOxzctZ7W9zwuBnaYKl8+8NCiw5nWDBoUJ
-	 9R89LQBk9cOsZHe1nCBEFiELV/oBteEcH8bbV5N+UgQHpTd6bpXclhtkVS11Hubxa4
-	 2OGv3/98XaU8adyPEQBuCToDHaxJSQO0OZnCNh9NnywXTahukgnoFuPiZ8Ad1qLsoV
-	 FH3/olxFBwC/Q==
-Date: Thu, 16 Oct 2025 17:00:26 +0100
+	b=KLsJBU+NGTekT3lJD8bZzbUZL7mpypn9d6sseKpSmPBLD3e7VrygExoPmgNHpJ/OR
+	 7vpICSiW57AtXnDzb9YV+Px+QYfvbDzsjhZIY3Z1Z17dLe57WaplaG0BtADeU7Xc7m
+	 mia7IhBN7M8U90zOmyNmhYTlmKDCdUP1V5rfa6t3ucbhEYfFc6cLMreG59/pNbRE8l
+	 Rk474qliIo9+ND1dpjGA7/5Xpokv72LcyIM0UxQ0N+hG5On7+iZyKr+yrvWxddk5VW
+	 wIkVCCQYsgRQWIvqHciH7SQ8cDPL/1cvPC7J6Ceu3HHo4QA8EWq5F39OIhg1sJhtaA
+	 jMfXlZncMrWFQ==
+Date: Thu, 16 Oct 2025 17:00:40 +0100
 From: Simon Horman <horms@kernel.org>
 To: Lorenzo Bianconi <lorenzo@kernel.org>
 Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
@@ -55,18 +69,17 @@ Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
 	devicetree@vger.kernel.org
-Subject: Re: [PATCH net-next v2 12/13] net: airoha: ppe: Do not use magic
- numbers in airoha_ppe_foe_get_entry_locked()
-Message-ID: <aPEWmlok8qlV8UCY@horms.kernel.org>
+Subject: Re: [PATCH net-next v2 13/13] net: airoha: Add AN7583 SoC support
+Message-ID: <aPEWqOoGZFysIBVN@horms.kernel.org>
 References: <20251016-an7583-eth-support-v2-0-ea6e7e9acbdb@kernel.org>
- <20251016-an7583-eth-support-v2-12-ea6e7e9acbdb@kernel.org>
+ <20251016-an7583-eth-support-v2-13-ea6e7e9acbdb@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20251016-an7583-eth-support-v2-12-ea6e7e9acbdb@kernel.org>
+In-Reply-To: <20251016-an7583-eth-support-v2-13-ea6e7e9acbdb@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251016_090031_908619_A78155D1 
-X-CRM114-Status: UNSURE (   8.38  )
+X-CRM114-CacheID: sfid-20251016_170052_587509_F3D875BE 
+X-CRM114-Status: UNSURE (   7.39  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,9 +95,8 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 16, 2025 at 12:28:26PM +0200, Lorenzo Bianconi wrote:
-> Explicit the size of entries pointed by hwe pointer in
-> airoha_ppe_foe_get_entry_locked routine
+On Thu, Oct 16, 2025 at 12:28:27PM +0200, Lorenzo Bianconi wrote:
+> Introduce support for AN7583 ethernet controller to airoha-eth dirver.
 > 
 > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
