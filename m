@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88DDFCCD194
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 11:28:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79DA7CCD1A2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 11:29:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9mieTrT7MiH0/STt7PcCTrEA2xOPPz3H28rzpE9zS8Y=; b=viNPfAyJkgqtz1BrQie7iO4uCs
-	607TAjeF4ru8ANbo0Xp+DVkLswlhc53Qqtlc76YF2JC0ilcdZSSXbZzWFQxd3jm4cWSLktaUV7QwE
-	P2wo3W+hb/T2umWY3W5eNCV3iJlFaiSwLeiD48QUhHMhd0TziJpXyMOKo/EszW/6v58jSxzYaCzo8
-	XysoV4HPiIMBRenVNJmu50AUdewjn3cvEZgj6v8QgVkA1DvhhCy3amCWRSSmOpY+OoQGaz2WRqckF
-	gTrBrsiFi2S1DF01+uKNjq1JmCO4Go1QHPQQ56gC8l6ZplrpYb9f922hEN1r6Q+/UXAwmjZmXJpiE
-	91GqCU8Q==;
+	bh=QJWrEiDJfhn6YnkqChP2wurkjTOklKlkKuLOMg43mOk=; b=EzZUU0ZXcr5Wq9/GPpvkmUkZtr
+	z8V5mtlJRbREfNLftR6UmMHF5klox4gR10vBP+J+1eLZArqqbDedHQWOav8Ka6u8P/XZ7ljGDzj0b
+	2tSPn3TZxuKaRDvD1bzIMZB2YvDn7FRDbU0BUfd2118kp+941ETY/je42HffbReMMhPXawKNCWHKu
+	azysY+eqrhEH+cfdFQ5EpyU3TJyIpNzDVHHoTHzOl04O3oWtCv09rGvmmZkJt2YQAgqH1OPN2RxaR
+	BzeBj2UVhujpcHedRDEXvuCNTiQOXfLhmFN0Dc6M9h0JLcqyj9Vv0a3uY1tyRfq5Mt0jXdexq0sZC
+	ztBllouQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9MAD-00000004YNc-15FY;
-	Thu, 16 Oct 2025 11:28:57 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1v9MAG-00000004YRF-2Wty;
+	Thu, 16 Oct 2025 11:29:00 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9MA9-00000004YMU-2PyU;
-	Thu, 16 Oct 2025 11:28:55 +0000
+	id 1v9MAC-00000004YMl-3XYk;
+	Thu, 16 Oct 2025 11:28:58 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1760614131;
-	bh=+wVRuiQnZqQTQ83N4gc5pdZaUVwxqdGkvElu0H8WEmQ=;
+	s=mail; t=1760614134;
+	bh=uvKbe11B8kQ6Ee0GKNfpxCLAco7lfj+y6SoI+zoc8AA=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=DRqiCVfGvV57D50LE8su2GRqaZLq3rrABrFVgonzCYXAgI/VwlNkQ/zATG7M7A9p+
-	 OfBTDu2enhUjXetbR+bDKGwhTMXFe5LrnNN/lO7lOjrQQEDT09nb5gU6WMmlgliWNE
-	 K63Q50Mz2OLlil5SmFgu88kZuUqYKJtCTQKPOoI8qzoC6PHm5b7JIrWsiChKes2yvG
-	 VcKcmzDmtRqTsxRAKW4PGntbW2jRn6W7QzKLBNiP3cSDm2Zv6BPI/lV0DuvDP5N09k
-	 qRm/xBKDUb7UFXvLgZBdvF4zQ+904CjlQCwmHcZkS8H+QfLJHFXUYy+5QSN4DCY/Gb
-	 DjyeePEguMP7w==
+	b=Fche2fNudBfF4EiJNAIhzgxus/W7G1rXmy0ZISAzBlNqLXlkez8nEUVF4mFeLQq2B
+	 0+qex3PNagHzhTv9mTl7nlmWg8DWOwDFaw/zkw9GhvuyK0uGN4yNBDaRdVZ+Q3HcRY
+	 U+AihgPGf4FElZeklIWhqjk++yzvkfkX0GH8Uqf+JRB1PY45Y32XLw2XvZWINO0QsR
+	 9Vzztu206IXhgfsfFIcREu55tzxE/FcUZT8IvzPImZxhicuaCstPcuM/gcD90GvPPz
+	 KJP4ob0WqIdZeV4KST2Tb1b/XoXVf0d3Xiatko8wRWCM/EKpUcr5V4p75aqu+Lmoap
+	 hO1GHvT6+h9aA==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5184A17E05FE;
-	Thu, 16 Oct 2025 13:28:50 +0200 (CEST)
-Message-ID: <7333fc2b-bc30-41bf-be09-2b9ff7c3599f@collabora.com>
-Date: Thu, 16 Oct 2025 13:28:49 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7CCDB17E1060;
+	Thu, 16 Oct 2025 13:28:53 +0200 (CEST)
+Message-ID: <9bf32a56-b67f-488a-8719-3f97d85533d3@collabora.com>
+Date: Thu, 16 Oct 2025 13:28:53 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 15/15] arm64: dts: mediatek: mt7981b-openwrt-one: Enable
- leds
+Subject: Re: [PATCH 13/15] arm64: dts: mediatek: mt7981b: Add wifi memory
+ region
 To: Sjoerd Simons <sjoerd@collabora.com>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
@@ -69,15 +69,16 @@ Cc: kernel@collabora.com, devicetree@vger.kernel.org,
  linux-phy@lists.infradead.org, netdev@vger.kernel.org,
  Daniel Golle <daniel@makrotopia.org>, Bryan Hinton <bryan@bryanhinton.com>
 References: <20251016-openwrt-one-network-v1-0-de259719b6f2@collabora.com>
- <20251016-openwrt-one-network-v1-15-de259719b6f2@collabora.com>
+ <20251016-openwrt-one-network-v1-13-de259719b6f2@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20251016-openwrt-one-network-v1-15-de259719b6f2@collabora.com>
+In-Reply-To: <20251016-openwrt-one-network-v1-13-de259719b6f2@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251016_042853_789787_4753EC03 
-X-CRM114-Status: GOOD (  12.95  )
+X-CRM114-CacheID: sfid-20251016_042857_053906_740F7BC8 
+X-CRM114-Status: UNSURE (   7.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,103 +94,28 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 16/10/25 12:08, Sjoerd Simons ha scritto:
-> The Openwrt One has 3 status leds at the front (red, white, green) as
-> well as 2 software controlled leds for the LAN jack (amber, green).
+> Add required memory region for the builtin wifi block. Disable the block
+> by default as it won't function properly without at least pin muxing.
 > 
 > Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
-> ---
->   .../boot/dts/mediatek/mt7981b-openwrt-one.dts      | 57 ++++++++++++++++++++++
->   1 file changed, 57 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
-> index 4d1653c336e71..0c0878488ae98 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
-> @@ -43,6 +43,50 @@ reg_5v: regulator-5v {
->   		regulator-boot-on;
->   		regulator-always-on;
->   	};
-> +
-> +	pwm-leds {
 
-Please keep the nodes ordered by name.
+You should split this commit in two:
+  - Add wifi memory region
+  - Disable wifi by default
+
+Regarding the second commit, you have to re-enable the wifi node in all of
+the currently supported MT7981b devices, including:
+  - Xiaomi AX3000T
+  - Cudy WR3000 V1
+
+While I agree that without pin muxing the wifi may not properly work, it is
+unclear whether the aforementioned devices are pre-setting the pinmux in the
+bootloader before booting Linux.
+
+In case those do, you'd be "breaking" WiFi on two routers here.
 
 Cheers,
 Angelo
-
-> +		compatible = "pwm-leds";
-> +
-> +		led-0 {
-> +			color = <LED_COLOR_ID_WHITE>;
-> +			default-brightness = <0>;
-> +			function = LED_FUNCTION_STATUS;
-> +			max-brightness = <255>;
-> +			pwms = <&pwm 0 10000>;
-> +		};
-> +
-> +		led-1 {
-> +			color = <LED_COLOR_ID_GREEN>;
-> +			default-brightness = <0>;
-> +			function = LED_FUNCTION_STATUS;
-> +			max-brightness = <255>;
-> +			pwms = <&pwm 1 10000>;
-> +		};
-> +	};
-> +
-> +	gpio-leds {
-> +		compatible = "gpio-leds";
-> +
-> +		led-0 {
-> +			color = <LED_COLOR_ID_RED>;
-> +			function = LED_FUNCTION_STATUS;
-> +			gpios = <&pio 9 GPIO_ACTIVE_HIGH>;
-> +		};
-> +
-> +		led-1 {
-> +			color = <LED_COLOR_ID_AMBER>;
-> +			function = LED_FUNCTION_LAN;
-> +			gpios = <&pio 34 GPIO_ACTIVE_LOW>;
-> +			linux,default-trigger = "netdev";
-> +		};
-> +
-> +		led-2 {
-> +			color = <LED_COLOR_ID_GREEN>;
-> +			function = LED_FUNCTION_LAN;
-> +			gpios = <&pio 35 GPIO_ACTIVE_LOW>;
-> +			linux,default-trigger = "netdev";
-> +		};
-> +	};
->   };
->   
->   &eth {
-> @@ -109,6 +153,13 @@ mux {
->   		};
->   	};
->   
-> +	pwm_pins: pwm-pins {
-> +		mux {
-> +			function = "pwm";
-> +			groups = "pwm0_0", "pwm1_1";
-> +		};
-> +	};
-> +
->   	spi2_flash_pins: spi2-pins {
->   		mux {
->   			function = "spi";
-> @@ -152,6 +203,12 @@ conf {
->   	};
->   };
->   
-> +&pwm {
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&pwm_pins>;
-> +	status = "okay";
-> +};
-> +
->   &spi2 {
->   	pinctrl-names = "default";
->   	pinctrl-0 = <&spi2_flash_pins>;
-> 
 
 
 
