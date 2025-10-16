@@ -4,87 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EBB5CCD199
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 06:08:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49DA9CCD183
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 08:10:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7ZwgZ1yPCVManbniK00ddW0A9r3Z2AUU4qbd8SLHkq4=; b=owggPsMrFOZpzwAWiaPex+1362
-	3qi1e+dvLLO60eXmyLlyYCpLo5uELTtrrE0ARxK3Z9XRDArQ7ulIoDKNL+THyeelbHjfweH1YJjN7
-	j7zxpAWEz/K4avppfeGGOzjXLH5dlirlDtL2o2HsP97JT7wy3CaJT5nTGpa3Onl7YBYpBb7DBYcPM
-	zD+Ttc7JSJQlLL6sdAL/Q8F2UCnreJZnbuPsT8z3yuX6dTPZS+OLcZ6GBnEHhMLZuutj6f9QNIeWS
-	H7AlBooGZOovacvwzru9x+/40Vko9kqyzVXdLtmspiVr2SwhbhJPd7SlYFWYzEC5jN9iHDQcWpuqN
-	HuJNb3nQ==;
+	bh=jT1Ry3XK2uxvUYqon+pxyvPgFgnqM/4Z+7OBJI7gqgY=; b=XQAZB1kdSxeiIa+il4IYdYJ3oM
+	OmY8BylpjcxdBWeBXyJNnNaHSjXU9FHDziZ5pocj1zIZ3BbmeGmzB2sx3aJqOOl0a2aYnAZtf0tOC
+	6yo9YF14EKcNE4nxbmqRM039YeMYFol5Q/ULsnW3auYZPQscyMggBltmGQAcL3yHUtH5ezcrPGfgF
+	+prOMYjswsAryrAPGTAWa93q5H+nBCLKlRJQZdh+MN65fBX0n3OJ1ercdazDyrSlH8d03TUdrPcya
+	5kRwfj6TnIRyeRuZf0KGK0LAKFlaW+NvBpzxTJt1hmgLIqpLysfB0A5XcCQL+eSPdUTCX4rzzi9oE
+	tJ6jQvTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9HA3-00000003a0W-0M6d;
-	Thu, 16 Oct 2025 06:08:27 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1v9J4D-00000003rXq-03ro;
+	Thu, 16 Oct 2025 08:10:33 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9H9w-00000003Zk9-03Tz;
-	Thu, 16 Oct 2025 06:08:21 +0000
-X-UUID: 7ff7bf76aa5611f0a52f393f94899d25-20251015
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=7ZwgZ1yPCVManbniK00ddW0A9r3Z2AUU4qbd8SLHkq4=;
-	b=PAwhwAqrTe3gAdxxRDg7ple1NTnTCQBRbsvtA/zktjt/uwfoLXkwOWSwJcl5Rti2M9zOB0dlo6SC695mOYWdDxPGsW3EgvDE1dmYef+0PTvjempQ8M23UhsK4ueD5HYUpQ7jMhBwtx82ijaPg7WdLmMw7KDXSVOmwYn9dqjkNCg=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:6dbe04b0-99b3-4749-9e71-432e4f28ca08,IP:0,UR
-	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:-5
-X-CID-META: VersionHash:a9d874c,CLOUDID:205f3ab9-795c-4f99-91f3-c115e0d49051,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
-	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,
-	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 7ff7bf76aa5611f0a52f393f94899d25-20251015
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
-	(envelope-from <kyrie.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1369570188; Wed, 15 Oct 2025 23:08:13 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.10; Thu, 16 Oct 2025 14:08:11 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.10 via Frontend Transport; Thu, 16 Oct 2025 14:08:09 +0800
-From: Kyrie Wu <kyrie.wu@mediatek.com>
-To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
-	<andrew-ct.chen@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, Mauro
- Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Kyrie Wu <kyrie.wu@mediatek.com>,
-	Hans Verkuil <hverkuil@xs4all.nl>, Nicolas Dufresne
-	<nicolas.dufresne@collabora.com>, Christophe JAILLET
-	<christophe.jaillet@wanadoo.fr>, Sebastian Fricke
-	<sebastian.fricke@collabora.com>, Nathan Hebert <nhebert@chromium.org>, Arnd
- Bergmann <arnd@arndb.de>, Irui Wang <irui.wang@mediatek.com>, George Sun
-	<george.sun@mediatek.com>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: Neil Armstrong <neil.armstrong@linaro.org>, Andrzej Pietrasiewicz
-	<andrzejtp2010@gmail.com>
-Subject: [PATCH v4 8/8] media: mediatek: encoder: Add MT8189 encoder compatible data
-Date: Thu, 16 Oct 2025 14:07:46 +0800
-Message-ID: <20251016060747.20648-9-kyrie.wu@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20251016060747.20648-1-kyrie.wu@mediatek.com>
-References: <20251016060747.20648-1-kyrie.wu@mediatek.com>
+	id 1v9J4B-00000003rXQ-2wgR;
+	Thu, 16 Oct 2025 08:10:31 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 2054660393;
+	Thu, 16 Oct 2025 08:10:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 45001C4CEF1;
+	Thu, 16 Oct 2025 08:10:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1760602230;
+	bh=BqE165DW1W7QlpVTH7AU/66UVMbPwzOvW0CrLWglYhM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=vFAs+/pzVgP+mpwH3riBiHGxPTQFVGQ1SFIFoCFpefs9Ay3Hae3mOTbOb9ANhytly
+	 h8ZZ1HqK+R0kNzc6F/+UIZPZ5RFZ9T5ZCm40F7YU5g3SupREgEsd3rH2UMvj6rqX3+
+	 Y90Lkvkdu6eYglFqR/BXbMaSwcyMr/jZx1kegnulI5CbT9B9O3tZ3QPJ05c6fj0XTv
+	 b9ud1Xm4QhpzMO/lI4giQm35TOECNxN819WRZd/Cy/eUe2uPfrKmpVkG6YRmIkZQCW
+	 O6cBEpXx0bnHzMQ976S4ryGEBcHBnbaFfz63KaSZi59UJlIM7VKXN4B6D0Y14KKYyb
+	 XDdhJeMcFu4mg==
+Date: Thu, 16 Oct 2025 10:10:28 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Simon Horman <horms@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH net-next 03/12] net: airoha: Add
+ airoha_ppe_get_num_stats_entries() and
+ airoha_ppe_get_num_total_stats_entries()
+Message-ID: <aPCodE0_u94s-w73@lore-desk>
+References: <20251015-an7583-eth-support-v1-0-064855f05923@kernel.org>
+ <20251015-an7583-eth-support-v1-3-064855f05923@kernel.org>
+ <aO-ZCqsvPQ6Pqjpg@horms.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251015_230820_091256_E9EF626C 
-X-CRM114-Status: UNSURE (   9.98  )
-X-CRM114-Notice: Please train this message.
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="zgC7fqkmMZN9riIm"
+Content-Disposition: inline
+In-Reply-To: <aO-ZCqsvPQ6Pqjpg@horms.kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,47 +81,125 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-add compatible data to support MT8189 encoding.
 
-Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c   | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+--zgC7fqkmMZN9riIm
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c
-index 6b3d2e72fad9..2cc92a8f7a0d 100644
---- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c
-+++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c
-@@ -467,6 +467,19 @@ static const struct mtk_vcodec_enc_pdata mt8196_pdata = {
- 	.set_dma_bit_mask = true,
- };
- 
-+static const struct mtk_vcodec_enc_pdata mt8189_pdata = {
-+	.venc_model_num = 8189,
-+	.capture_formats = mtk_video_formats_capture_h264,
-+	.num_capture_formats = ARRAY_SIZE(mtk_video_formats_capture_h264),
-+	.output_formats = mtk_video_formats_output,
-+	.num_output_formats = ARRAY_SIZE(mtk_video_formats_output),
-+	.min_bitrate = 64,
-+	.max_bitrate = 100000000,
-+	.core_id = VENC_SYS,
-+	.uses_common_fw_iface = true,
-+	.set_dma_bit_mask = true,
-+};
-+
- static const struct of_device_id mtk_vcodec_enc_match[] = {
- 	{.compatible = "mediatek,mt8173-vcodec-enc",
- 			.data = &mt8173_avc_pdata},
-@@ -477,6 +490,7 @@ static const struct of_device_id mtk_vcodec_enc_match[] = {
- 	{.compatible = "mediatek,mt8192-vcodec-enc", .data = &mt8192_pdata},
- 	{.compatible = "mediatek,mt8195-vcodec-enc", .data = &mt8195_pdata},
- 	{.compatible = "mediatek,mt8196-vcodec-enc", .data = &mt8196_pdata},
-+	{.compatible = "mediatek,mt8189-vcodec-enc", .data = &mt8189_pdata},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_vcodec_enc_match);
--- 
-2.45.2
+> On Wed, Oct 15, 2025 at 09:15:03AM +0200, Lorenzo Bianconi wrote:
+> > Introduce airoha_ppe_get_num_stats_entries and
+> > airoha_ppe_get_num_total_stats_entries routines in order to make the
+> > code more readable controlling if CONFIG_NET_AIROHA_FLOW_STATS is
+> > enabled or disabled.
+> > Modify airoha_ppe_foe_get_flow_stats_index routine signature relying on
+> > airoha_ppe_get_num_total_stats_entries().
+> >=20
+> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > ---
+> >  drivers/net/ethernet/airoha/airoha_eth.h |  10 +--
+> >  drivers/net/ethernet/airoha/airoha_ppe.c | 103 +++++++++++++++++++++++=
+++------
+> >  2 files changed, 86 insertions(+), 27 deletions(-)
+> >=20
+> > diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/eth=
+ernet/airoha/airoha_eth.h
+> > index 4330b672d99e1e190efa5ad75d13fb35e77d070e..1f7e34a5f457ca2200e9c81=
+dd05dc03cd7c5eb77 100644
+> > --- a/drivers/net/ethernet/airoha/airoha_eth.h
+> > +++ b/drivers/net/ethernet/airoha/airoha_eth.h
+> > @@ -50,15 +50,9 @@
+> > =20
+> >  #define PPE_NUM				2
+> >  #define PPE1_SRAM_NUM_ENTRIES		(8 * 1024)
+> > -#define PPE_SRAM_NUM_ENTRIES		(2 * PPE1_SRAM_NUM_ENTRIES)
+> > -#ifdef CONFIG_NET_AIROHA_FLOW_STATS
+> > +#define PPE_SRAM_NUM_ENTRIES		(PPE_NUM * PPE1_SRAM_NUM_ENTRIES)
+> >  #define PPE1_STATS_NUM_ENTRIES		(4 * 1024)
+> > -#else
+> > -#define PPE1_STATS_NUM_ENTRIES		0
+> > -#endif /* CONFIG_NET_AIROHA_FLOW_STATS */
+> > -#define PPE_STATS_NUM_ENTRIES		(2 * PPE1_STATS_NUM_ENTRIES)
+> > -#define PPE1_SRAM_NUM_DATA_ENTRIES	(PPE1_SRAM_NUM_ENTRIES - PPE1_STATS=
+_NUM_ENTRIES)
+> > -#define PPE_SRAM_NUM_DATA_ENTRIES	(2 * PPE1_SRAM_NUM_DATA_ENTRIES)
+> > +#define PPE_STATS_NUM_ENTRIES		(PPE_NUM * PPE1_STATS_NUM_ENTRIES)
+> >  #define PPE_DRAM_NUM_ENTRIES		(16 * 1024)
+> >  #define PPE_NUM_ENTRIES			(PPE_SRAM_NUM_ENTRIES + PPE_DRAM_NUM_ENTRIES)
+> >  #define PPE_HASH_MASK			(PPE_NUM_ENTRIES - 1)
+> > diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/eth=
+ernet/airoha/airoha_ppe.c
+> > index 8d1dceadce0becb2b1ce656d64ab77bd3c2f914a..303d31e1da4b723023ee0cc=
+1ca5f6038c16966cd 100644
+> > --- a/drivers/net/ethernet/airoha/airoha_ppe.c
+> > +++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+> > @@ -32,6 +32,30 @@ static const struct rhashtable_params airoha_l2_flow=
+_table_params =3D {
+> >  	.automatic_shrinking =3D true,
+> >  };
+> > =20
+> > +static int airoha_ppe_get_num_stats_entries(struct airoha_ppe *ppe,
+> > +					    u32 *num_stats)
+> > +{
+> > +#ifdef CONFIG_NET_AIROHA_FLOW_STATS
+> > +	*num_stats =3D PPE1_STATS_NUM_ENTRIES;
+> > +	return 0;
+> > +#else
+> > +	return -EOPNOTSUPP;
+> > +#endif /* CONFIG_NET_AIROHA_FLOW_STATS */
+> > +}
+>=20
+> Hi Lorenzo,
 
+Hi Simon,
+
+>=20
+> I think that in general using IS_ENABLED is preferred over #ifdef
+> in cases where the former can be used. For one thing it improves compile
+> coverage.
+>=20
+> That does seem applicable here, so I'm wondering if
+> we can do something like the following.
+> (Compile tested only!)
+>=20
+> static int airoha_ppe_get_num_stats_entries(struct airoha_ppe *ppe,
+>                                             u32 *num_stats)
+> {
+>         if (!IS_ENABLED(CONFIG_NET_AIROHA_FLOW_STATS))
+>                 return -EOPNOTSUPP;
+>=20
+>         *num_stats =3D PPE1_STATS_NUM_ENTRIES;
+>         return 0;
+> }
+
+ack, fine. I will fix it in v2.
+
+>=20
+> Also, very subjectively, I might have returned num_stats as
+> a positive return value. I'm assuming it's value will never overflow an i=
+nt.
+> Likewise elsewhere.
+>=20
+> But that's just my idea. Feel free to stick with the current scheme.
+
+I guess it is fine. I will fix it in v2.
+
+Regards,
+Lorenzo
+
+>=20
+> ...
+
+--zgC7fqkmMZN9riIm
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaPCodAAKCRA6cBh0uS2t
+rOw7AQCrjTRELdN7df/7nasO5hLMxRhlBZzyAL0R8iFX2T/0jAD/Z0pUAE59OW0Z
+Q9RIe4mD8YXtUcw5ym+gnF/sXJKqLgM=
+=3ofA
+-----END PGP SIGNATURE-----
+
+--zgC7fqkmMZN9riIm--
 
