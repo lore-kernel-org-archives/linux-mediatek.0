@@ -4,70 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43C2DCCD195
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 15:08:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C80F6CCD195
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 15:10:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9uRFDjS7+x3BdeOr54o/KLXkg1iz2txFLMHKgJwlcVs=; b=pYg0AoCMVeddMfyv2zgL0FrjVy
-	FcEOwrjfhQtg+mclp1ZqTo4Ip80zecS86TYcndlyITYsAsFr5YQJU1M1h54QdTITOkh96aEigf1Vt
-	gCatMGfjW4a2R6cBIrExgECsnlO8YBW8pUHtrBGu2+4qVXpu2bgSmTrRoaUy+5/0fFnfIInJ5RP7v
-	qR+KGINdIsjrddxeWlwOrhn2VCY2587jXgnYj18T6emNwE0KWRL46jfwtqEvtwred+AWs3SkD4vMX
-	NO1fDsKsM57URE5f0OkbSy1poJ/w0k761HJic5ib8cvQf5HZNYfuYhga6wxdD+kO4F2SUuMg+uiBo
-	/OyOLMHQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vPdUsuuvqVx0tWULP2VNq3rtqu5GK3iOoOLd6TUM/AU=; b=xO454Al2zNh2p+le+c2yE1EBjg
+	Rbt6r8vO6pmUd1kyUDzTjgpNZkZnjU/A6RXwVfPLibb4tlSrmmxPg/ET+442k0Kbc+JsVtG/5aTd3
+	+A9fsnSEbggAx46N7R2EpXZTEoia4auGUItve2xadIPRJtryMOJIiKiECHyaftYHUIkBrC/0kuzlI
+	XxJvgrQ8xb/mjVBsvAFdDf1HFR//llLxssBQDv5TQNxJWgJWxB2B9LULCcHIXudFeaP6A7lwOjCXc
+	iRBBAAB3ZbgBniqJZpbQsfsJloEElLTrLjwu9aq7nZ5QT6jsrhkgZK70iif5GX6udVLZMQyCV8SFi
+	4Z9gW5hA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9PaJ-0000000584B-1BXD;
-	Thu, 16 Oct 2025 15:08:07 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1v9PcP-000000058Ua-3LFM;
+	Thu, 16 Oct 2025 15:10:17 +0000
+Received: from mx3.molgen.mpg.de ([141.14.17.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9PaH-0000000583K-0Srw;
-	Thu, 16 Oct 2025 15:08:05 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 44377603F6;
-	Thu, 16 Oct 2025 15:08:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 303D8C4CEF1;
-	Thu, 16 Oct 2025 15:08:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760627283;
-	bh=9uRFDjS7+x3BdeOr54o/KLXkg1iz2txFLMHKgJwlcVs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=YqYEJwnZ9PaMkDSnk875mAyc7GIhHZvNahcwqpD0zMtBraAlDgHef9/zw6CM4Q+Nr
-	 gmUkp175Hasp5o7BiFGTwL+H7eRH6p+Pr5gEqUS//72CSyGVTIWK/yeXhdeEV0bBDE
-	 YftO8/7wbA5vimMubS4ECH391sHnZNtbpG3pwnwCtKYH59sOU6V0icj7Z4HMo35sYv
-	 nT7qCj1guSL0XomnOb4YWEVUFwRLl3H4xm5ZbQ4Wikb3QO9cwgSdnH5V96dBoO8P9Y
-	 c2wEOQunvZlbOwmga/RPRN7JOpAQ7/+M0sOyYoFalQmip65/xVyujrwGxsqsBCrqvd
-	 xk/PrKp9WQfxg==
-Date: Thu, 16 Oct 2025 16:07:58 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Ray Liu <ray.liu@airoha.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andy Shevchenko <andy@kernel.org>,
-	linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	Andreas Gnau <andreas.gnau@iopsys.eu>
-Subject: Re: [PATCH v10 02/16] spi: airoha: remove unnecessary restriction
- length
-Message-ID: <0ccbe966-2e93-46a6-aad1-7715f289c275@sirena.org.uk>
-References: <20251012121707.2296160-1-mikhail.kshevetskiy@iopsys.eu>
- <20251012121707.2296160-3-mikhail.kshevetskiy@iopsys.eu>
- <dbefe024-9b5c-4531-abb9-a1a7e9d3d769@sirena.org.uk>
- <177bcba2-2358-424a-a22c-9bd8b42cbeae@iopsys.eu>
+	id 1v9PcM-000000058Tv-42zH
+	for linux-mediatek@lists.infradead.org;
+	Thu, 16 Oct 2025 15:10:16 +0000
+Received: from [141.14.220.42] (g42.guest.molgen.mpg.de [141.14.220.42])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: pmenzel)
+	by mx.molgen.mpg.de (Postfix) with ESMTPSA id BA2AE6020FEFF;
+	Thu, 16 Oct 2025 17:10:08 +0200 (CEST)
+Message-ID: <fb7bf4e4-de1d-4e64-bff9-77f37e978b29@molgen.mpg.de>
+Date: Thu, 16 Oct 2025 17:10:08 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="pJBUQKF41vwGzvXX"
-Content-Disposition: inline
-In-Reply-To: <177bcba2-2358-424a-a22c-9bd8b42cbeae@iopsys.eu>
-X-Cookie: Whoever dies with the most toys wins.
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 RESEND 2/2] Bluetooth: btusb: MT7922: Add VID/PID
+ 0489/e170
+To: Chris Lu <chris.lu@mediatek.com>
+Cc: Marcel Holtmann <marcel@holtmann.org>,
+ Johan Hedberg <johan.hedberg@gmail.com>,
+ Luiz Von Dentz <luiz.dentz@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
+ Will Lee <will-cy.Lee@mediatek.com>, SS Wu <ss.wu@mediatek.com>,
+ Steve Lee <steve.lee@mediatek.com>,
+ linux-bluetooth <linux-bluetooth@vger.kernel.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>
+References: <20251015033150.498866-1-chris.lu@mediatek.com>
+ <20251015033150.498866-3-chris.lu@mediatek.com>
+Content-Language: en-US
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20251015033150.498866-3-chris.lu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251016_081015_150667_2ED9CB8D 
+X-CRM114-Status: GOOD (  12.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,42 +73,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Dear Chris,
 
---pJBUQKF41vwGzvXX
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 
-On Thu, Oct 16, 2025 at 04:39:19PM +0300, Mikhail Kshevetskiy wrote:
+Thank you for your patch.
 
-> Could you give me an advice?
 
-> This patch series consist of:
-> 1) bug fixes (patches 1, 3, 5, 6, 13)
+Am 15.10.25 um 05:31 schrieb Chris Lu:
+> Add VID 0489 & PID e170 for MediaTek MT7922 USB Bluetooth chip.
+> 
+> The information in /sys/kernel/debug/usb/devices about the Bluetooth
+> device is listed as the below.
+> 
+> T:  Bus=06 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
+> D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
+> P:  Vendor=0489 ProdID=e170 Rev= 1.00
+> S:  Manufacturer=MediaTek Inc.
+> S:  Product=Wireless_Device
+> S:  SerialNumber=000000000
+> C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
+> A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
+> I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
+> E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+> E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+> I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+> I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+> I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+> I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+> I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+> I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+> I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+> I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
+> E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
+> E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
+> I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
+> E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
+> E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
+> 
+> Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+> ---
+>   drivers/bluetooth/btusb.c | 2 ++
+>   1 file changed, 2 insertions(+)
+> 
+> diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+> index a2cde2284163..6834592f3c39 100644
+> --- a/drivers/bluetooth/btusb.c
+> +++ b/drivers/bluetooth/btusb.c
+> @@ -687,6 +687,8 @@ static const struct usb_device_id quirks_table[] = {
+>   						     BTUSB_WIDEBAND_SPEECH },
+>   	{ USB_DEVICE(0x0489, 0xe153), .driver_info = BTUSB_MEDIATEK |
+>   						     BTUSB_WIDEBAND_SPEECH },
+> +	{ USB_DEVICE(0x0489, 0xe170), .driver_info = BTUSB_MEDIATEK |
+> +						     BTUSB_WIDEBAND_SPEECH },
+>   	{ USB_DEVICE(0x04ca, 0x3804), .driver_info = BTUSB_MEDIATEK |
+>   						     BTUSB_WIDEBAND_SPEECH },
+>   	{ USB_DEVICE(0x04ca, 0x38e4), .driver_info = BTUSB_MEDIATEK |
 
-I note that 13 isn't tagged as a fix.
+Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
 
-> 2) removing of boot related dirty hack, absolutely necessary for older
-> kernels (patch 12 and preparation patches 9-11)
-> 3) improvements (patches: 2, 8)
-> 4) cleanups (patches: 4, 7)
-> 5) support of en7523 SoC (patches: 14-16)
 
-Fixes, cleanups, general improvements, the new device support.
+Kind regards,
 
---pJBUQKF41vwGzvXX
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmjxCk0ACgkQJNaLcl1U
-h9CYxQf/Zam73IWvHoogSMEqvn1+FjvwC3ymOKtI15IO14X1QPWD8W+JGl44lCA/
-McicUAUY7SS/J/b9phJ5I9ubrseMWvT6IxzWovf7apQAOp7n96tf4xJT6qfOZPOJ
-YqW8COZF2RzHVYgT5074JjOI2cgpnmXjEEmskwvK7y+VJbEl5rqYCEo5tF6rHQsl
-VBnNVP/3RhBLOGdDJcoDEeHew+uRR4RGhYOAEB0VCJXK393VVNLdsaPzo59wFSH6
-ilwlEkybKrX5pXVOaHNAEDMMBGRBalLgBIciNYqjz2nYrP1ugYAwFR/f4cRdo1qJ
-Rd1gh0XVNefMf3rr6rq670m6gXtOhA==
-=tBz1
------END PGP SIGNATURE-----
-
---pJBUQKF41vwGzvXX--
+Paul
 
