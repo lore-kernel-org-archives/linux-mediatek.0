@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9869CCCD194
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 08:51:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23282CCD194
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 09:31:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=koW1mtyWEV/9nGXq0ft96CzBEM4wcxSxPZ7e/TfT/EQ=; b=ZoZBRR6s1JHqnPwlUtw7O/w4zn
-	ujdrwk2EVF01XXO7zJXjJRD1J/h8oeaz4d/Vk2SWfFOlkYqJJOBEGjs/+GUGTimljQmLkWgx/csNL
-	8pFIEODTniL/opIDPljBl9P6tclFQIXuVUJvQXwFZ73D21TVkBKSqQvnLJEnk0AiucHlvxEElhF3n
-	aSudmOwrvbbgQqFR5Hslg2m6tz4ceSac90dPkL5AfeEyrBAtoFXGHZhpbvhSXqfAWIsNJReVMoNB7
-	aGE33TwpVvuTrIJvctlfnYA/QzvxyFEILJmBX4D3+biZNG+0FDze5EcQUMgX9gdDwcjZQBu+W6tEY
-	/DJCqROQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Z6TRgV7R7pQ7LrrZT1eSc0JNHOm2nLOrXXLSi1EjYGk=; b=qG9wO/eUCH5ofd0Y5CQOIa+iio
+	LcsoUy7kgagV5DSKthWfmx1n9JMGeop74U2YOjiGV9WafKz5k0m/kcHSchl/whptuGZJ/JKXz/zpu
+	P8mQXyBnnyXypNQyo9unwF7wSD7LPJfBAEMmvs+ObysxZqkJ/U1+cNCX07+jJhhXOHo1bqImyBe8w
+	pQIJdXFKEcN8q1776dX45AFDgU5uJeRKG+dOdAI71cOW3mNF33fa/QOdaYxQl1aW9P9KKtlFcYUR2
+	PkrQkvxB3tFwvDP7yC3FkgTQ4+rkptG4BbWUumi+QpKHuh6okFFz7iA5bs6o9REpFcYLhSRHchx97
+	olCP3ncQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9JhW-0000000436v-3Uam;
-	Thu, 16 Oct 2025 08:51:10 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1v9KKD-00000004CCI-3UeH;
+	Thu, 16 Oct 2025 09:31:09 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9JhS-0000000433u-3tDX;
-	Thu, 16 Oct 2025 08:51:08 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 830474923F;
-	Thu, 16 Oct 2025 08:51:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 10D8EC116B1;
-	Thu, 16 Oct 2025 08:51:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760604663;
-	bh=koW1mtyWEV/9nGXq0ft96CzBEM4wcxSxPZ7e/TfT/EQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=fEpdiWMqRmp2xMTf47ahEHRYc/qm/JhOfrqZWWkQDLeH+jWySKsWrUtIpnjjldzQR
-	 C2Wb7EqNcPxRXQGryLLOgwVy/05DYboRnewGfthosAddKV6MrYwVBCSLcdgQxF1ME8
-	 gxtVHsUJI3E+pv+TkHnU/5w/XWDJ9tQngKggz2FmjM0IJTd2dKYlzFIStvZhmqK5YO
-	 gNpqFmXs5JfcEIhmUBuvOl0B65Ag11rL4pkdS5Jn9gn+TrlTida6kBH2sCFFqVQUlR
-	 d/tuSbjKC5Q6rn7UQxPPqjVtK55dMb9x3HKA8qQLhr+cRnSWAsB+vqaoYDy2+lAHdG
-	 8yJ+aCPBlA/Tg==
-Date: Thu, 16 Oct 2025 10:51:01 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Simon Horman <horms@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
+	id 1v9KK8-00000004C9G-0PPa;
+	Thu, 16 Oct 2025 09:31:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1760607062;
+	bh=pludmFCDqJvq7WEzwNPBhZzjbs99h72dhhI5Qeckujc=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=jSAUIGbF+ewE0rKv1KG/UgXUtypw2yAE8EH3qcdsmvrANKqt7FdoPrjgo6mwR06Op
+	 PFVrwyx9+qcTbZJeEh2x2HTlfdI4XB4mHfCg2Nz4ESUInnpqoBz0Q4TmJnNsSm1uQp
+	 6ZTz6t+67x4DA1hKsRDdSFy0/+XBe2IHUKd5NOj7vIZWA6uVmZqVZzoH9xDVnVGdPX
+	 2B259kZtHTxXJcF1Po8WnCiqCjhrChzX2yDcdRmGU6Ti4+EijqiLL3Jkfdg92tyjDZ
+	 D3MwmEWXYH+IYYq4lKhyTcUnGwKWwg4OUWNrgTLJQe4ENbTbGvMZOYoZVCDpUjQ3Nx
+	 Wyl48EvWkfdhg==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7274117E0DB7;
+	Thu, 16 Oct 2025 11:31:01 +0200 (CEST)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: linux-mediatek@lists.infradead.org
+Cc: lee@kernel.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	lgirdwood@gmail.com,
+	broonie@kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH net-next 10/12] net: airoha: Select default ppe cpu port
- in airoha_dev_init()
-Message-ID: <aPCx9dvYfxRoc1VB@lore-desk>
-References: <20251015-an7583-eth-support-v1-0-064855f05923@kernel.org>
- <20251015-an7583-eth-support-v1-10-064855f05923@kernel.org>
- <aO_Dwn9r_32-U72N@horms.kernel.org>
+	kernel@collabora.com,
+	wenst@chromium.org,
+	igor.belwon@mentallysanemainliners.org
+Subject: [PATCH v9 1/9] dt-bindings: regulator: Document MediaTek MT6316 PMIC Regulators
+Date: Thu, 16 Oct 2025 11:30:46 +0200
+Message-ID: <20251016093054.126293-2-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.51.0
+In-Reply-To: <20251016093054.126293-1-angelogioacchino.delregno@collabora.com>
+References: <20251016093054.126293-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="h7ChpTZEVr/Bj1tf"
-Content-Disposition: inline
-In-Reply-To: <aO_Dwn9r_32-U72N@horms.kernel.org>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251016_015107_004337_90B30AE0 
-X-CRM114-Status: GOOD (  13.58  )
+X-CRM114-CacheID: sfid-20251016_023104_290916_DA839A44 
+X-CRM114-Status: GOOD (  13.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,45 +84,276 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Add bindings for the regulators found in the MediaTek MT6316 PMIC,
+usually found in board designs using the MT6991 Dimensity 9400 and
+on MT8196 Kompanio SoC for Chromebooks.
 
---h7ChpTZEVr/Bj1tf
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This chip is fully controlled by SPMI and has multiple variants
+providing different phase configurations.
 
-On Oct 15, Simon Horman wrote:
-> On Wed, Oct 15, 2025 at 09:15:10AM +0200, Lorenzo Bianconi wrote:
-> > Select PPE default cpu port in airoha_dev_init routine.
-> > For PPE2 always use secondary cpu port. For PPE1 select cpu port
-> > according to the running QDMA.
->=20
-> Hi Lorenzo,
->=20
-> I think this could benefit from a few words around 'why?'.
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../regulator/mediatek,mt6316b-regulator.yaml | 78 +++++++++++++++++++
+ .../regulator/mediatek,mt6316c-regulator.yaml | 78 +++++++++++++++++++
+ .../regulator/mediatek,mt6316d-regulator.yaml | 77 ++++++++++++++++++
+ 3 files changed, 233 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml
+ create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6316c-regulator.yaml
+ create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6316d-regulator.yaml
 
-Hi Simon,
+diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml
+new file mode 100644
+index 000000000000..65b70dd90728
+--- /dev/null
++++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml
+@@ -0,0 +1,78 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/regulator/mediatek,mt6316b-regulator.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek MT6316 BP/VP SPMI PMIC Regulators
++
++maintainers:
++  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
++
++description:
++  The MediaTek MT6316BP/VP PMICs are fully controlled by SPMI interface, both
++  feature four step-down DC/DC (buck) converters, and provides 2+2 Phases,
++  joining Buck 1+2 for the first phase, and Buck 3+4 for the second phase.
++
++properties:
++  compatible:
++    const: mediatek,mt6316b-regulator
++
++  reg:
++    maxItems: 1
++
++patternProperties:
++  "^vbuck(12|34)$":
++    type: object
++    $ref: regulator.yaml#
++    unevaluatedProperties: false
++    properties:
++      regulator-allowed-modes:
++        description: |
++          Allowed Buck regulator operating modes allowed. Valid values below.
++            0 - Normal mode with automatic power saving, reducing the switching
++                frequency when light load conditions are detected
++            1 - Forced Continuous Conduction mode (FCCM) for improved voltage
++                regulation accuracy with constant switching frequency but lower
++                regulator efficiency
++            2 - Forced Low Power mode for improved regulator efficiency, used
++                when no heavy load is expected, will shut down unnecessary IP
++                blocks and secondary phases to reduce quiescent current.
++                This mode does not limit the maximum output current but unless
++                only a light load is applied, there will be regulation accuracy
++                and efficiency losses.
++        minItems: 1
++        maxItems: 3
++        items:
++          enum: [ 0, 1, 2 ]
++
++required:
++  - compatible
++  - reg
++  - '#address-cells'
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/spmi/spmi.h>
++
++    spmi {
++      #address-cells = <2>;
++      #size-cells = <0>;
++
++      pmic@8 {
++        compatible = "mediatek,mt6316b-regulator";
++        reg = <0x8 SPMI_USID>;
++        #address-cells = <0>;
++
++        vbuck12 {
++          regulator-name = "dvdd_core";
++          regulator-min-microvolt = <450000>;
++          regulator-max-microvolt = <965000>;
++          regulator-allowed-modes = <0 1 2>;
++          regulator-enable-ramp-delay = <256>;
++        };
++      };
++    };
++...
+diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6316c-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6316c-regulator.yaml
+new file mode 100644
+index 000000000000..1565aee43f1c
+--- /dev/null
++++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6316c-regulator.yaml
+@@ -0,0 +1,78 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/regulator/mediatek,mt6316c-regulator.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek MT6316 CP/HP/KP SPMI PMIC Regulators
++
++maintainers:
++  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
++
++description:
++  The MediaTek MT6316CP/HP/KP PMICs are fully controlled by SPMI interface,
++  features four step-down DC/DC (buck) converters, and provides 3+1 Phases,
++  joining Buck 1+2+4 for the first phase, and uses Buck 3 for the second.
++
++properties:
++  compatible:
++    const: mediatek,mt6316c-regulator
++
++  reg:
++    maxItems: 1
++
++patternProperties:
++  "^vbuck(124|3)$":
++    type: object
++    $ref: regulator.yaml#
++    unevaluatedProperties: false
++    properties:
++      regulator-allowed-modes:
++        description: |
++          Allowed Buck regulator operating modes allowed. Valid values below.
++            0 - Normal mode with automatic power saving, reducing the switching
++                frequency when light load conditions are detected
++            1 - Forced Continuous Conduction mode (FCCM) for improved voltage
++                regulation accuracy with constant switching frequency but lower
++                regulator efficiency
++            2 - Forced Low Power mode for improved regulator efficiency, used
++                when no heavy load is expected, will shut down unnecessary IP
++                blocks and secondary phases to reduce quiescent current.
++                This mode does not limit the maximum output current but unless
++                only a light load is applied, there will be regulation accuracy
++                and efficiency losses.
++        minItems: 1
++        maxItems: 3
++        items:
++          enum: [ 0, 1, 2 ]
++
++required:
++  - compatible
++  - reg
++  - '#address-cells'
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/spmi/spmi.h>
++
++    spmi {
++      #address-cells = <2>;
++      #size-cells = <0>;
++
++      pmic@6 {
++        compatible = "mediatek,mt6316c-regulator";
++        reg = <0x6 SPMI_USID>;
++        #address-cells = <0>;
++
++        vbuck124 {
++          regulator-name = "dvdd_proc_m";
++          regulator-min-microvolt = <450000>;
++          regulator-max-microvolt = <1277500>;
++          regulator-allowed-modes = <0 1 2>;
++          regulator-enable-ramp-delay = <256>;
++        };
++      };
++    };
++...
+diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6316d-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6316d-regulator.yaml
+new file mode 100644
+index 000000000000..b53c5a4a6f96
+--- /dev/null
++++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6316d-regulator.yaml
+@@ -0,0 +1,77 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/regulator/mediatek,mt6316d-regulator.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek MT6316 DP/TP SPMI PMIC Regulators
++
++maintainers:
++  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
++
++description:
++  The MediaTek MT6316DP/TP PMICs are fully controlled by SPMI interface, both
++  feature four step-down DC/DC (buck) converters, and provides a single Phase,
++  joining Buck 1+2+3+4.
++
++properties:
++  compatible:
++    const: mediatek,mt6316d-regulator
++
++  reg:
++    maxItems: 1
++
++  vbuck1234:
++    type: object
++    $ref: regulator.yaml#
++    unevaluatedProperties: false
++    properties:
++      regulator-allowed-modes:
++        description: |
++          Allowed Buck regulator operating modes allowed. Valid values below.
++            0 - Normal mode with automatic power saving, reducing the switching
++                frequency when light load conditions are detected
++            1 - Forced Continuous Conduction mode (FCCM) for improved voltage
++                regulation accuracy with constant switching frequency but lower
++                regulator efficiency
++            2 - Forced Low Power mode for improved regulator efficiency, used
++                when no heavy load is expected, will shut down unnecessary IP
++                blocks and secondary phases to reduce quiescent current.
++                This mode does not limit the maximum output current but unless
++                only a light load is applied, there will be regulation accuracy
++                and efficiency losses.
++        minItems: 1
++        maxItems: 3
++        items:
++          enum: [ 0, 1, 2 ]
++
++required:
++  - compatible
++  - reg
++  - '#address-cells'
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/spmi/spmi.h>
++
++    spmi {
++      #address-cells = <2>;
++      #size-cells = <0>;
++
++      pmic@7 {
++        compatible = "mediatek,mt6316d-regulator";
++        reg = <0x7 SPMI_USID>;
++        #address-cells = <0>;
++
++        vbuck1234 {
++          regulator-name = "dvdd_gpustack";
++          regulator-min-microvolt = <400000>;
++          regulator-max-microvolt = <1277500>;
++          regulator-allowed-modes = <0 1 2>;
++          regulator-enable-ramp-delay = <256>;
++        };
++      };
++    };
++...
+-- 
+2.51.0
 
-ack. I will do it in v2.
-
-Regards,
-Lorenzo
-
->=20
-> >=20
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
->=20
-> ...
-
---h7ChpTZEVr/Bj1tf
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaPCx9QAKCRA6cBh0uS2t
-rDjbAQCyZUZ+AGx+0t5mlhcr/wn0mB+6DKuep4ewNRmoYnyr/gD+K6LdpaOBgRPi
-Rp32H0CGkNzsfZVTiKA5T12MoC7Vrwo=
-=4yyA
------END PGP SIGNATURE-----
-
---h7ChpTZEVr/Bj1tf--
 
