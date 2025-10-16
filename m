@@ -4,79 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3A4DCCD183
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 11:29:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB6BFCCD194
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 12:05:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hGncQ0fOXoKOSzgvF8A/8io21Fw68WskvRr5JFrR4UQ=; b=t8Ll+o9b/IvYG9ydQ4gEX4o5Bc
-	lTGiHpLW4YrwzC5KSPPYZRDGSAOb3ke6HHezJUcf/BuBxBl45rx/dvAA4NvNqvWEtCPX1dR8HGz0M
-	lXHLPz6oUd0Jjag5JUUP49DvAYufXvb8zjKSekGBdMxckSWiq6ARcOSKd3efROJbFuPYnCddtfNpk
-	9tEqCgo5PD6S/JH/p6W3yZiFOrKxogtJsh3hKd8EFkWP3JjY9z61PIJ0KQGjyU2NmvZYKgy2YVlNZ
-	of0UUvYd1wWran+AUhFIxXQyeOwiAMmEVrm/mg4uyE+13J3LoQFFfc4HyuCIUfL0Uev4e0TfxZavM
-	qO+n0PKQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=s5MxHDjhVnMQw7538nov8Jo1+Up40NCVNBoxNeVwnxw=; b=BDfyNWKpsmTJ6o60frYTn/qzhz
+	R0x2ZMcvCo61sKuOlFPdBp3BINsoZQLW5y4ccKKstdPze7DQ2m2Emk3IJbCYkRid9hvWtMOkCkHIZ
+	tFvCRWyVtqttHfAueN+MsNROI9L8A19IuCb6iublNSoYwIB9O3l9sKcTjQpkKpvBAaeVzRhnXOgR/
+	shg0nXbEszgR6XGueVO1dN4v57dIEOJt+j/AvgNYUVWm6qOyJy+tV5f5LvWTMVL0g3sIgZogOsJoO
+	jAHrBjZSaNQ5o6L1R511To3p7Lu9BUETXawJSG5AoTy++3Vciot4btu2yzjgSpH7frlHo9mHbNwWk
+	7jX+trLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9MAt-00000004ZJl-29bc;
-	Thu, 16 Oct 2025 11:29:39 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1v9MjE-00000004fBO-0ymG;
+	Thu, 16 Oct 2025 12:05:08 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9MAp-00000004Z9A-0I8w;
-	Thu, 16 Oct 2025 11:29:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1760614173;
-	bh=6X8f+TKvlFE7+7iIebOd6vOulDFaK7Hq5QdhSQt2pOk=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=jYTunffuBN8ebxn+J0J1kc1YN1sbssCSZYgjcGOrNO2n1UMVW6LfsKWkyyq0RAUrB
-	 GLJG4OrIr0Sfcy+LmV8GJUk+PcEFSp6AampSQ6c+uHyH+elNjyePFNXn+Mm7b5AcAN
-	 wbVAiuGYfqYf5GRwhTm50x8bOtwU9u2SmHglYu+GhS/FvCvcs8w52zzO/kmqiYjQWQ
-	 bv+YPb7X7S8N40trUe/UrYbdaoXnYgx0qcGCa4bMI7nKyahcDO5gXlLousMhu/oYIl
-	 OWhJyIBRJSz948YcvSasAukvogji8BA5b5tGCcq0T02oOZYVIyNy1r5QStgmaeMuFt
-	 htkyu7PlpsOwA==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C413D17E3673;
-	Thu, 16 Oct 2025 13:29:31 +0200 (CEST)
-Message-ID: <ce2edd72-f9fe-4c27-b873-f06dc28e348b@collabora.com>
-Date: Thu, 16 Oct 2025 13:29:31 +0200
+	id 1v9MjB-00000004fAy-2x9C;
+	Thu, 16 Oct 2025 12:05:06 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 5714A43D11;
+	Thu, 16 Oct 2025 12:05:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D0ABC4CEF1;
+	Thu, 16 Oct 2025 12:05:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1760616305;
+	bh=s5MxHDjhVnMQw7538nov8Jo1+Up40NCVNBoxNeVwnxw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=AtNK6XZKFQXhYFJZyvQq+UuuWYZXaylSiYtJyc179f8ve8nE3MJwSs/g4w/SBM4Ds
+	 1eMtuIoHjTFSJYqeycd0nnqlXUEeor7/wf0J9W4TAJxFiaK8SAVNWo+fZ5eEMP/Tbu
+	 0MCaqqCpGjWdTUVX3Swj2pXS2swBlRp9pV3ScZ8zJKABsWfV8wD0xlHg2/9Cpm6g4k
+	 Nv/HVulNrtSV2ni7GIal+DU/7h4fkG3ohYvx7hMzNabKjyOB8Z1m9WSJVM+UAKs9oe
+	 KudcBdci2+JRYNR5Eu7/ofq17A3uE3cUUJGmn6810eo4ZjxzNbqPRyhLznJRVwHV6w
+	 NWLARMj9H1rHw==
+Date: Thu, 16 Oct 2025 13:04:59 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Ray Liu <ray.liu@airoha.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Andy Shevchenko <andy@kernel.org>,
+	linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Andreas Gnau <andreas.gnau@iopsys.eu>
+Subject: Re: [PATCH v10 02/16] spi: airoha: remove unnecessary restriction
+ length
+Message-ID: <dbefe024-9b5c-4531-abb9-a1a7e9d3d769@sirena.org.uk>
+References: <20251012121707.2296160-1-mikhail.kshevetskiy@iopsys.eu>
+ <20251012121707.2296160-3-mikhail.kshevetskiy@iopsys.eu>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 04/15] dt-bindings: mfd: syscon: Add mt7981-topmisc
-To: Sjoerd Simons <sjoerd@collabora.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
- <jianjun.wang@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
- Manivannan Sadhasivam <mani@kernel.org>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
- Kishon Vijay Abraham I <kishon@kernel.org>, Lee Jones <lee@kernel.org>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org,
- linux-phy@lists.infradead.org, netdev@vger.kernel.org,
- Daniel Golle <daniel@makrotopia.org>, Bryan Hinton <bryan@bryanhinton.com>
-References: <20251016-openwrt-one-network-v1-0-de259719b6f2@collabora.com>
- <20251016-openwrt-one-network-v1-4-de259719b6f2@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20251016-openwrt-one-network-v1-4-de259719b6f2@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="q3tFlK1kDVpufwE1"
+Content-Disposition: inline
+In-Reply-To: <20251012121707.2296160-3-mikhail.kshevetskiy@iopsys.eu>
+X-Cookie: Whoever dies with the most toys wins.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251016_042935_308590_F7C47BA0 
-X-CRM114-Status: UNSURE (   5.53  )
+X-CRM114-CacheID: sfid-20251016_050505_781968_38DF2C33 
+X-CRM114-Status: UNSURE (   8.93  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,13 +84,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 16/10/25 12:08, Sjoerd Simons ha scritto:
-> This hardware block amongst other things includes a multiplexer for a
-> high-speed Combo-Phy. This binding allows exposing the multiplexer
-> 
-> Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+--q3tFlK1kDVpufwE1
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
+On Sun, Oct 12, 2025 at 03:16:53PM +0300, Mikhail Kshevetskiy wrote:
+> The "length < 160" restriction is not needed because airoha_snand_write_data()
+> and airoha_snand_read_data() will properly handle data transfers above
+> SPI_MAX_TRANSFER_SIZE.
 
+Non-fix changes should be after fixes so there aren't any spurious
+dependencies.
+
+--q3tFlK1kDVpufwE1
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmjw32oACgkQJNaLcl1U
+h9Ax0wf9Fl356s/j6iNh98poXzDgSc/amMedVpD88bacOl/P3k3rHfVm3j1ZPo7k
+SpoHlhWo9B+lVhKzicATIsbyurrxmp/vKaanHlb3GmYQ0kM77wBC4t0EmLa5p/Ec
+KL4Z/D0vD6MtAAASPFO4Dr0b2A0qSn9rKqw44FyekhlE42iJVFCKQ21CudKTkOYG
+47VRzbVV2GoR+6W+kijZG5XMFay/720b9whQiyOqwGlzAkdR+aAOv6yrNaXzFUpV
+m/Sy7u/XiRcozPGXlQ6G87JRx06RTDpXQbjY6ieyWHopjSOROafd381vke5qZusN
+mhowoJz3f1xAAkkobiuujUY9Zuk8RA==
+=wYyS
+-----END PGP SIGNATURE-----
+
+--q3tFlK1kDVpufwE1--
 
