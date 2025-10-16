@@ -4,62 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F833CCD183
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 10:29:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C045CCD194
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 10:58:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TNoL+768qLt2jeQMC+NpKKTz85Lm/7ADx0OpGOEWz/U=; b=qe3ZFpolMky0mq1aDsaQVZzVqa
-	dkqVyLs9rNWsxEkp8Ks9t0mfvPElKBdOml48/y3rK0RunlwdGH4HcPtWEW0MYL0uiCmld1UV+Pohe
-	XPxHS/J3G2e0FHY5yHJa2iKrAkMT6WT7toPtxokbYt37M3r08GGxnS/BbQLTUgVdgO/mRc8jNTDmB
-	OCgLZEUFBvEGThvSscKo/o8AfhNV31fPuTKvkq8WqaKMQPp5h7a6PXbs2eZsigjNx7gz4tXhyih8O
-	bnjezJK/MiyM2KRMS1iFcRu1izum8z+Pu2308u4F+jd0sgEV/N1vvYFzt/6QRk2ypS/w4E8wXtXQR
-	/UCqbZzA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MYH1oKA04L/d13HmviNXI/Efg3/cjl8yndCY9EqtPgY=; b=cRos0PPsJ79S36pnpqCwkAHgcB
+	MFgBAbzx6ugEuz4WRu/8307JEEolG1bir3p5qaiac+e8PNlQ+tTF2WMnE25VkivCFcqCdi0SfS/oN
+	1owY+W+7JkDLx9v/3fX79EH8lbDMevMz5Tn46wMLvPCAqKdKRptsixBSoWHZG912NdOZbOJ5bG4Vy
+	EOZjmXJ0uW19XhQQ6+TGiDlnb3B5Umb77rUT0EhbZD3CGkVFZ+jtvBOuKu7gSzYTMzJfQWDt8SiNp
+	bwff2qp9oYGOttAge7LLfYFK8R0h5m1wFqHBQTebxxUtHhKfZ/2FXdCAjV54xXWwFQIdkQy9n+WI+
+	0i1W/rtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9LEj-00000004QbR-2F9f;
-	Thu, 16 Oct 2025 10:29:33 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1v9Lga-00000004VdD-3uxT;
+	Thu, 16 Oct 2025 10:58:20 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9LEP-00000004QKP-1d3l;
-	Thu, 16 Oct 2025 10:29:13 +0000
+	id 1v9LgZ-00000004Vco-38Ax;
+	Thu, 16 Oct 2025 10:58:19 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id BEE2763EB9;
-	Thu, 16 Oct 2025 10:29:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 19907C4CEF1;
-	Thu, 16 Oct 2025 10:29:11 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 0EF89603D4;
+	Thu, 16 Oct 2025 10:58:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 77777C4CEF1;
+	Thu, 16 Oct 2025 10:58:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760610552;
-	bh=V7uKdWh9DL8VLIBAcI157v28Uag8XqY9eeq4Pg3ppWU=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=NnHbnSELJYPgY3+ZqM+AKIPbdx9nnJPD8hPo09TKQLtx/x+TdzxgLEPg4r/+9Z/Vw
-	 L6JJj9MefF6oCFkl3C8glAQVkNwaneSuGR15KdqDUP+ObppcqLbC7KkubTC8/oCrfP
-	 61egIgKoOZXuNBlee62ixxrrJDZLnXG23o3sCzIEwFVbvm5aVFf1o5Vrom6/OkqGMY
-	 t1EboGM2kGh0jMlwKaEQuZJrmsVQUsNikiHUPKYjiXtzvIEA3YSCkxe36L5bQ1F/TU
-	 pZTsw9rcWN9Ln/ILlmKFWRQN+gTCaPfCIy1UytIzfV0Qd1nTRf+upUSeTxNp2J1GEq
-	 qbv1ItBFulW0g==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Thu, 16 Oct 2025 12:28:27 +0200
-Subject: [PATCH net-next v2 13/13] net: airoha: Add AN7583 SoC support
-MIME-Version: 1.0
+	s=k20201202; t=1760612298;
+	bh=cIG0LBA0EBE4pS7e8v8i1abU52KH42lFqM/1hKG+T6g=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=BYBd3f0ebCSEqSY4LkrtI2chwVdG0GQV1G2g4B5u+2iH3pLG9kYf0TC/ID6fo0Gi4
+	 ryaH3/5tOCaI5/Mp49yRY/Ef2LCzCJkvw5tS9ZT7pzsL64mhp33fgCd0rYxpLoGRko
+	 zlHNDp3AbhMG4GbNwZVFKugrNXZTWRw2LwTkaCfr3bF6YPfP6NlybRL/uWA8GvADmb
+	 Js+ukJRejbcbpugBEi8Umjeo2kVPp7TwPVkSfYC1IRuB2iyyGWWND5IJi1wOnlHJPh
+	 7Hs4S6Oz9OU0/ucPCyr7nwvfIobj1d3OPd2s4rfOvWT1Y4LFvVWywSs1lyVq1dwvlP
+	 PSY6HLf/Sl+mg==
+Date: Thu, 16 Oct 2025 05:58:16 -0500
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20251016-an7583-eth-support-v2-13-ea6e7e9acbdb@kernel.org>
-References: <20251016-an7583-eth-support-v2-0-ea6e7e9acbdb@kernel.org>
-In-Reply-To: <20251016-an7583-eth-support-v2-0-ea6e7e9acbdb@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- devicetree@vger.kernel.org
-X-Mailer: b4 0.14.2
+Content-Transfer-Encoding: 8bit
+MIME-Version: 1.0
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: broonie@kernel.org, igor.belwon@mentallysanemainliners.org, 
+ linux-kernel@vger.kernel.org, lgirdwood@gmail.com, kernel@collabora.com, 
+ matthias.bgg@gmail.com, wenst@chromium.org, devicetree@vger.kernel.org, 
+ krzk+dt@kernel.org, lee@kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, conor+dt@kernel.org
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20251016093054.126293-2-angelogioacchino.delregno@collabora.com>
+References: <20251016093054.126293-1-angelogioacchino.delregno@collabora.com>
+ <20251016093054.126293-2-angelogioacchino.delregno@collabora.com>
+Message-Id: <176061229682.2195705.7053755296248416631.robh@kernel.org>
+Subject: Re: [PATCH v9 1/9] dt-bindings: regulator: Document MediaTek
+ MT6316 PMIC Regulators
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,191 +72,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce support for AN7583 ethernet controller to airoha-eth dirver.
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c | 68 +++++++++++++++++++++++++++++---
- drivers/net/ethernet/airoha/airoha_eth.h | 11 ++++++
- drivers/net/ethernet/airoha/airoha_ppe.c |  3 ++
- 3 files changed, 77 insertions(+), 5 deletions(-)
+On Thu, 16 Oct 2025 11:30:46 +0200, AngeloGioacchino Del Regno wrote:
+> Add bindings for the regulators found in the MediaTek MT6316 PMIC,
+> usually found in board designs using the MT6991 Dimensity 9400 and
+> on MT8196 Kompanio SoC for Chromebooks.
+> 
+> This chip is fully controlled by SPMI and has multiple variants
+> providing different phase configurations.
+> 
+> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  .../regulator/mediatek,mt6316b-regulator.yaml | 78 +++++++++++++++++++
+>  .../regulator/mediatek,mt6316c-regulator.yaml | 78 +++++++++++++++++++
+>  .../regulator/mediatek,mt6316d-regulator.yaml | 77 ++++++++++++++++++
+>  3 files changed, 233 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml
+>  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6316c-regulator.yaml
+>  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6316d-regulator.yaml
+> 
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index b9d36b841fe272a302125367a8d1e88e6e5adfbf..79a85ce96d6393fe47d91208068ff20a29862ca7 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -1684,10 +1684,8 @@ static int airoha_dev_set_macaddr(struct net_device *dev, void *p)
- 
- static int airhoha_set_gdm2_loopback(struct airoha_gdm_port *port)
- {
--	u32 val, pse_port, chan = port->id == AIROHA_GDM3_IDX ? 4 : 0;
- 	struct airoha_eth *eth = port->qdma->eth;
--	/* XXX: handle XSI_USB_PORT and XSI_PCE1_PORT */
--	u32 nbq = port->id == AIROHA_GDM3_IDX ? 4 : 0;
-+	u32 val, pse_port, chan, nbq;
- 	int src_port;
- 
- 	/* Forward the traffic to the proper GDM port */
-@@ -1699,6 +1697,8 @@ static int airhoha_set_gdm2_loopback(struct airoha_gdm_port *port)
- 	/* Enable GDM2 loopback */
- 	airoha_fe_wr(eth, REG_GDM_TXCHN_EN(2), 0xffffffff);
- 	airoha_fe_wr(eth, REG_GDM_RXCHN_EN(2), 0xffff);
-+
-+	chan = port->id == AIROHA_GDM3_IDX ? airoha_is_7581(eth) ? 4 : 3 : 0;
- 	airoha_fe_rmw(eth, REG_GDM_LPBK_CFG(2),
- 		      LPBK_CHAN_MASK | LPBK_MODE_MASK | LPBK_EN_MASK,
- 		      FIELD_PREP(LPBK_CHAN_MASK, chan) |
-@@ -1713,6 +1713,8 @@ static int airhoha_set_gdm2_loopback(struct airoha_gdm_port *port)
- 	airoha_fe_clear(eth, REG_FE_VIP_PORT_EN, BIT(2));
- 	airoha_fe_clear(eth, REG_FE_IFC_PORT_EN, BIT(2));
- 
-+	/* XXX: handle XSI_USB_PORT and XSI_PCE1_PORT */
-+	nbq = port->id == AIROHA_GDM3_IDX && airoha_is_7581(eth) ? 4 : 0;
- 	src_port = eth->soc->ops.get_src_port_id(port, nbq);
- 	if (src_port < 0)
- 		return src_port;
-@@ -1726,7 +1728,7 @@ static int airhoha_set_gdm2_loopback(struct airoha_gdm_port *port)
- 		      SP_CPORT_MASK(val),
- 		      FE_PSE_PORT_CDM2 << __ffs(SP_CPORT_MASK(val)));
- 
--	if (port->id != AIROHA_GDM3_IDX)
-+	if (port->id != AIROHA_GDM3_IDX && airoha_is_7581(eth))
- 		airoha_fe_rmw(eth, REG_SRC_PORT_FC_MAP6,
- 			      FC_ID_OF_SRC_PORT24_MASK,
- 			      FIELD_PREP(FC_ID_OF_SRC_PORT24_MASK, 2));
-@@ -1881,6 +1883,22 @@ static u32 airoha_get_dsa_tag(struct sk_buff *skb, struct net_device *dev)
- #endif
- }
- 
-+static int airoha_get_fe_port(struct airoha_gdm_port *port)
-+{
-+	struct airoha_qdma *qdma = port->qdma;
-+	struct airoha_eth *eth = qdma->eth;
-+
-+	switch (eth->soc->version) {
-+	case 0x7583:
-+		return port->id == AIROHA_GDM3_IDX ? FE_PSE_PORT_GDM3
-+						   : port->id;
-+	case 0x7581:
-+	default:
-+		return port->id == AIROHA_GDM4_IDX ? FE_PSE_PORT_GDM4
-+						   : port->id;
-+	}
-+}
-+
- static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
- 				   struct net_device *dev)
- {
-@@ -1921,7 +1939,7 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
- 		}
- 	}
- 
--	fport = port->id == 4 ? FE_PSE_PORT_GDM4 : port->id;
-+	fport = airoha_get_fe_port(port);
- 	msg1 = FIELD_PREP(QDMA_ETH_TXMSG_FPORT_MASK, fport) |
- 	       FIELD_PREP(QDMA_ETH_TXMSG_METER_MASK, 0x7f);
- 
-@@ -3084,6 +3102,35 @@ static int airoha_en7581_get_src_port_id(struct airoha_gdm_port *port, int nbq)
- 	return -EINVAL;
- }
- 
-+static const char * const an7583_xsi_rsts_names[] = {
-+	"xsi-mac",
-+	"hsi0-mac",
-+	"hsi1-mac",
-+	"xfp-mac",
-+};
-+
-+static int airoha_an7583_get_src_port_id(struct airoha_gdm_port *port, int nbq)
-+{
-+	switch (port->id) {
-+	case 3:
-+		/* 7583 SoC supports eth serdes on GDM3 port */
-+		if (!nbq)
-+			return HSGMII_LAN_7583_ETH_SRCPORT;
-+		break;
-+	case 4:
-+		/* 7583 SoC supports PCIe and USB serdes on GDM4 port */
-+		if (!nbq)
-+			return HSGMII_LAN_7583_PCIE_SRCPORT;
-+		if (nbq == 1)
-+			return HSGMII_LAN_7583_USB_SRCPORT;
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	return -EINVAL;
-+}
-+
- static const struct airoha_eth_soc_data en7581_soc_data = {
- 	.version = 0x7581,
- 	.xsi_rsts_names = en7581_xsi_rsts_names,
-@@ -3094,8 +3141,19 @@ static const struct airoha_eth_soc_data en7581_soc_data = {
- 	},
- };
- 
-+static const struct airoha_eth_soc_data an7583_soc_data = {
-+	.version = 0x7583,
-+	.xsi_rsts_names = an7583_xsi_rsts_names,
-+	.num_xsi_rsts = ARRAY_SIZE(an7583_xsi_rsts_names),
-+	.num_ppe = 1,
-+	.ops = {
-+		.get_src_port_id = airoha_an7583_get_src_port_id,
-+	},
-+};
-+
- static const struct of_device_id of_airoha_match[] = {
- 	{ .compatible = "airoha,en7581-eth", .data = &en7581_soc_data },
-+	{ .compatible = "airoha,an7583-eth", .data = &an7583_soc_data },
- 	{ /* sentinel */ }
- };
- MODULE_DEVICE_TABLE(of, of_airoha_match);
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index e09579da8c78a99ef07ee7eef7be3cd6c1b5be76..eb27a4ff51984ef376c6e94607ee2dc1a806488b 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -73,6 +73,12 @@ enum {
- 	HSGMII_LAN_7581_USB_SRCPORT,
- };
- 
-+enum {
-+	HSGMII_LAN_7583_ETH_SRCPORT	= 0x16,
-+	HSGMII_LAN_7583_PCIE_SRCPORT	= 0x18,
-+	HSGMII_LAN_7583_USB_SRCPORT,
-+};
-+
- enum {
- 	XSI_PCIE0_VIP_PORT_MASK	= BIT(22),
- 	XSI_PCIE1_VIP_PORT_MASK	= BIT(23),
-@@ -629,6 +635,11 @@ static inline bool airoha_is_7581(struct airoha_eth *eth)
- 	return eth->soc->version == 0x7581;
- }
- 
-+static inline bool airoha_is_7583(struct airoha_eth *eth)
-+{
-+	return eth->soc->version == 0x7583;
-+}
-+
- bool airoha_is_valid_gdm_port(struct airoha_eth *eth,
- 			      struct airoha_gdm_port *port);
- 
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index eda95107cd1daf6ff00a85abc72313a509ed67e9..c373f21d95f5a610deae365c64bc589c21f5e1a0 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -37,6 +37,9 @@ static int airoha_ppe_get_num_stats_entries(struct airoha_ppe *ppe)
- 	if (!IS_ENABLED(CONFIG_NET_AIROHA_FLOW_STATS))
- 		return -EOPNOTSUPP;
- 
-+	if (airoha_is_7583(ppe->eth))
-+		return -EOPNOTSUPP;
-+
- 	return PPE_STATS_NUM_ENTRIES;
- }
- 
+My bot found errors running 'make dt_binding_check' on your patch:
 
--- 
-2.51.0
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/regulator/mediatek,mt6316c-regulator.example.dtb: pmic@6 (mediatek,mt6316c-regulator): '#address-cells' does not match any of the regexes: '^pinctrl-[0-9]+$', '^vbuck(124|3)$'
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt6316c-regulator.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.example.dtb: pmic@8 (mediatek,mt6316b-regulator): '#address-cells' does not match any of the regexes: '^pinctrl-[0-9]+$', '^vbuck(12|34)$'
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt6316b-regulator.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/regulator/mediatek,mt6316d-regulator.example.dtb: pmic@7 (mediatek,mt6316d-regulator): '#address-cells' does not match any of the regexes: '^pinctrl-[0-9]+$'
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt6316d-regulator.yaml#
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20251016093054.126293-2-angelogioacchino.delregno@collabora.com
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
 
 
