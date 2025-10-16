@@ -4,81 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 111D3CCD195
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 14:29:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2191CCD195
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 14:42:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Vqmi7s4EIiMHfK3Naxxo/bu+2H1Uk7/GMfxGBRDNiK0=; b=IxL1znNpTGZstSVafHvAnU5xt9
-	npTQ6vJkK9luigmfjgxyps8DvIunzk5VYQq5ypeyb0UhRn1Fpj6XJPqz6XEyjznzcqZA76MCM2h57
-	IST6VXq3tCC8jh0VlkInT0bZoqclOQsJDXGn2Jf/jRQWw9L4akwJN/bqheykphOsVN3Ovp4xw7thT
-	/UZV/ZGmVt7vQMBfDrSjvU2967U5DUGxDYiCsO9iVJDWrYszzL2BUAvnTCAFpTrrInNjBATPqAUbe
-	689jcP9OLESAq1+rK1lhAgJNwkVLWPlAN3gc8glogoE85rW1stIKN6Zyn5tiVEGx8jg+MxPH1v1wt
-	JNmqhHTg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jjl0am6Ty1/jZDMPoiRz5vbe7o1TNwBWQRFz2urTlFU=; b=C8Cl0y8Sm+I2p5QVLzoXxFErjZ
+	bfpSfPMsP4Za7Gbd89GkD8OBeVfCHECSFcbHwHgq9rxqg4Lzj7bES1D1DIeT7lnAGRa+Vcwu9+/Re
+	PbmFbH++XVSg1+15WpPs5iSVFpSviFzR6JoC4l/pbMoye7V3fqCh7zZtI8RILiT1r3bZX2v1iiPkm
+	AYcNRKJ50UuqjW5j69DHjsTI0nPAGHoYqn8rfe+b8a238DT+PiuVwcDzZff3nSiiTDpKVfxGvSGCp
+	SxdEJ/4zBtDaDRqowlQi/Qse4cPFAVQRfaqSjy/OqA2PFphvC/LaFCdox86HZ7U7eG9+qRPDHW7Be
+	1jD2gmLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9Oyp-000000050Cb-1F9F;
-	Thu, 16 Oct 2025 14:29:23 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1v9PBV-0000000537h-2zNy;
+	Thu, 16 Oct 2025 14:42:29 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9Oym-000000050BD-2DH7;
-	Thu, 16 Oct 2025 14:29:21 +0000
+	id 1v9PBS-00000005372-2kv2;
+	Thu, 16 Oct 2025 14:42:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1760624956;
-	bh=/ogrshpBMHpUYx7hds/fD1WgLsoTS+62iSlrqAObxms=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=SXqJvaEeN6DpDXxKAJ2nZHAdiOodqfTfzvKAlonZfsIL8ee+R2Jj9dwe4gQG1/8UT
-	 ikbDgKu56YCB82nhg8NnwreSXKB/uSxqzstktVanLw+HYEWmpyhhF4IN5iJR8XYk7q
-	 yw+2zrYQbGhkyneR7LvmjtU/tXFnjTlororY9q8M0Bnt7ufMdcclUwHujGfpx52hEX
-	 Jt/CYp4aWZeHLgd04du5mXg9WrqSRzEky39IAlZ8Zffdf33kq3S347zBoJBlQKrzo4
-	 6MeTDZnuykjPgjSBXEN37VJblWROrGp7oN5suST7x0Ikj708rJ923s8OEOFXcyAWpE
-	 4XY5LVyF0CVtg==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	s=mail; t=1760625744;
+	bh=jjl0am6Ty1/jZDMPoiRz5vbe7o1TNwBWQRFz2urTlFU=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=VTAD340tY1BwVmnfMhCJIsVuvW6/Y46pDQdugpP/XT0gWfNqbrO1uZ+aC2JfLquFk
+	 WBbIyNjK+rzQHWsSok+vclEY3RnJU45GJ0OsnYHBZiCbbQbOCfzCy+LHq7Xcu8DHcF
+	 Ihqkn/njaxWIesEmtusS8EhYfLgvPcHYs8OvmtDHLfHDE+FbyUD0ik8mX0QqXZlXtO
+	 TubExDvHADOCNmNXz5fcx38GrPEhaunjfvTaOQSRzwFCEPGuCDzVyxAzJfbkmJcVfU
+	 ffeD84/F3fE200JtXdfmEohmNZlS8BMYNK1KP70q4+4G50UQHghyBgTk+Tp+g0piPj
+	 I922IQ6O1JtEg==
+Received: from [IPv6:2606:6d00:17:ebd3::5ac] (unknown [IPv6:2606:6d00:17:ebd3::5ac])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D939117E0125;
-	Thu, 16 Oct 2025 16:29:14 +0200 (CEST)
-Message-ID: <5f430ff9-d701-426a-bf93-5290e6912eb4@collabora.com>
-Date: Thu, 16 Oct 2025 16:29:14 +0200
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7BAAD17E0CF8;
+	Thu, 16 Oct 2025 16:42:21 +0200 (CEST)
+Message-ID: <eeda0221acbe0a70219fb7d87603d3dfec73f56f.camel@collabora.com>
+Subject: Re: [PATCH v4 0/8] Enable video decoder & encoder for MT8189
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Kyrie Wu <kyrie.wu@mediatek.com>, Tiffany Lin
+ <tiffany.lin@mediatek.com>,  Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>, Mauro Carvalho Chehab	
+ <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski	
+ <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger	
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
+ <angelogioacchino.delregno@collabora.com>, Hans Verkuil
+ <hverkuil@xs4all.nl>,  Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ Sebastian Fricke <sebastian.fricke@collabora.com>, Nathan Hebert	
+ <nhebert@chromium.org>, Arnd Bergmann <arnd@arndb.de>, Irui Wang	
+ <irui.wang@mediatek.com>, George Sun <george.sun@mediatek.com>, 
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Cc: Neil Armstrong <neil.armstrong@linaro.org>, Andrzej Pietrasiewicz
+	 <andrzejtp2010@gmail.com>
+Date: Thu, 16 Oct 2025 10:42:19 -0400
+In-Reply-To: <20251016060747.20648-1-kyrie.wu@mediatek.com>
+References: <20251016060747.20648-1-kyrie.wu@mediatek.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-AbDKkJujBZd+Yb/YkvVa"
+User-Agent: Evolution 3.56.2 (3.56.2-2.fc42) 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 02/15] arm64: dts: mediatek: mt7981b-openwrt-one:
- Configure UART0 pinmux
-To: Daniel Golle <daniel@makrotopia.org>, Sjoerd Simons <sjoerd@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>,
- Jianjun Wang <jianjun.wang@mediatek.com>, Bjorn Helgaas
- <bhelgaas@google.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
- Manivannan Sadhasivam <mani@kernel.org>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
- Kishon Vijay Abraham I <kishon@kernel.org>, Lee Jones <lee@kernel.org>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
- kernel@collabora.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org,
- linux-phy@lists.infradead.org, netdev@vger.kernel.org,
- Bryan Hinton <bryan@bryanhinton.com>
-References: <20251016-openwrt-one-network-v1-0-de259719b6f2@collabora.com>
- <20251016-openwrt-one-network-v1-2-de259719b6f2@collabora.com>
- <aPDnT4tuSzNDzyAE@makrotopia.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <aPDnT4tuSzNDzyAE@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251016_072920_727005_959AAA18 
-X-CRM114-Status: GOOD (  14.26  )
+X-CRM114-CacheID: sfid-20251016_074226_858068_BBDD6B2F 
+X-CRM114-Status: GOOD (  19.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,47 +100,124 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 16/10/25 14:38, Daniel Golle ha scritto:
-> On Thu, Oct 16, 2025 at 12:08:38PM +0200, Sjoerd Simons wrote:
->> Add explicit pinctrl configuration for UART0 on the OpenWrt One board,
->>
->> Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
->> ---
->>   arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts | 11 +++++++++++
->>   1 file changed, 11 insertions(+)
->>
->> diff --git a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
->> index 968b91f55bb27..f836059d7f475 100644
->> --- a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
->> +++ b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
->> @@ -22,6 +22,17 @@ memory@40000000 {
->>   	};
->>   };
->>   
->> +&pio {
->> +	uart0_pins: uart0-pins {
->> +		mux {
->> +			function = "uart";
->> +			groups = "uart0";
->> +		};
->> +	};
->> +};
->> +
->>   &uart0 {
->> +	pinctrl-names = "default";
->> +	pinctrl-0 = <&uart0_pins>;
->>   	status = "okay";
->>   };
-> 
-> As there is only a single possible pinctrl configuration for uart0,
-> both the pinmux definition as well as the pinctrl properties should go
-> into mt7981b.dtsi rather than in the board's dts.
 
-If there's really one single possible pin configuration for the UART0 pins,
-as in, those pins *do not* have a GPIO mode, then yes I agree.
+--=-AbDKkJujBZd+Yb/YkvVa
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-If those pins can be as well configured as GPIOs, this goes to board DTS.
+Hi,
 
-Cheers,
-Angelo
+Le jeudi 16 octobre 2025 =C3=A0 14:07 +0800, Kyrie Wu a =C3=A9crit=C2=A0:
+> This series have the follow changing:
+> Firstly add mt8189 video decoder compatible, profile and level to support
+> MT8189 kernel driver.
+> Secondly fix some bugs, including vp 4K profile2 and media device node
+> number bug.
+> Lastly, add mt8189 video encoder compatible.
+>=20
+> This series has been tested with MT8189 tast test.
+> Encoding and decoding worked for this chip.
+>=20
+> Patches 1-2 Add decoder compatible.
+> Patches 3 Add profile and level supporting.
+> Patches 4 Add core-only VP9 decoding supporting.
+> Patches 5-6 fix some bugs.
+> Patches 7-8 Adds encoder compatible.
+>=20
+> ---
+> H264 test results:
+> ./fluster.py run -d GStreamer-H.264-V4L2SL-Gst1.0 -j1 -t 90
+> =C2=A0=C2=A0=C2=A0=C2=A0 JVT-AVC_V1=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 9=
+4/135
+
+Your set indicates that this SoC supports more then H.264, any reason to om=
+it
+other codecs ? Also, why not -j2, does it mean concurrent decoding is broke=
+n ?
+>=20
+> v4l2-compliance test results:
+> Compliance test for mtk-vcodec-enc device /dev/video2:
+> Total for mtk-vcodec-enc device /dev/video2: 47, Succeeded: 46, Failed: 1=
+, Warnings: 0
+> Compliance test for mtk-vcodec-dec device /dev/video3:
+> Total for mtk-vcodec-dec device /dev/video3: 48, Succeeded: 48, Failed: 0=
+, Warnings: 0
+>=20
+> scp upstream link:
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20250811015922.=
+32680-1-huayu.zong@mediatek.com/
+>=20
+> Changes compared with v3:
+> --add reviewer to commit messages
+> --Rebased on top of the latest media tree
+>=20
+> Changes compared with v2:
+> --add H264 fluster test results
+> --reorder compatible string for dt-bindings
+>=20
+> Changes compared with v1:
+> --add v4l2-compliance test results
+> --add scp upstream link
+> --add HW difference discriptions for dt-bindings commit messages
+>=20
+> This series patches dependent on:
+> [1]
+> https://patchwork.linuxtv.org/project/linux-media/cover/20250510075357.11=
+761-1-yunfei.dong@mediatek.com/
+> [2]
+> https://patchwork.linuxtv.org/project/linux-media/cover/20250814085642.17=
+343-1-kyrie.wu@mediatek.com/
+
+It could be nice to quote the subjects, so we can decide to open the links =
+or
+not. I suppose you opted for sending the DTS separately, I don't have the H=
+W,
+but if my chances someone wanted to test that, he's need a these, can you l=
+ink
+them please ?
+
+Nicolas
+
+>=20
+> Kyrie Wu (8):
+> =C2=A0 dt-bindings: media: mediatek: decoder: Add MT8189
+> =C2=A0=C2=A0=C2=A0 mediatek,vcodec-decoder
+> =C2=A0 media: mediatek: vcodec: add decoder compatible to support MT8189
+> =C2=A0 media: mediatek: vcodec: add profile and level supporting for MT81=
+89
+> =C2=A0 media: mediatek: vcodec: Add core-only VP9 decoding support for MT=
+8189
+> =C2=A0 media: mediatek: vcodec: fix vp9 4096x2176 fail for profile2
+> =C2=A0 media: mediatek: vcodec: fix media device node number
+> =C2=A0 dt-bindings: media: Add MT8189 mediatek,vcodec-encoder
+> =C2=A0 media: mediatek: encoder: Add MT8189 encoder compatible data
+>=20
+> =C2=A0.../media/mediatek,vcodec-encoder.yaml=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 |=C2=A0 2 ++
+> =C2=A0.../media/mediatek,vcodec-subdev-decoder.yaml |=C2=A0 1 +
+> =C2=A0.../vcodec/decoder/mtk_vcodec_dec_drv.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 |=C2=A0 9 +++++-
+> =C2=A0.../vcodec/decoder/mtk_vcodec_dec_drv.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 |=C2=A0 1 +
+> =C2=A0.../vcodec/decoder/mtk_vcodec_dec_stateless.c |=C2=A0 4 +++
+> =C2=A0.../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c | 32 ++++++++++++----=
+---
+> =C2=A0.../vcodec/encoder/mtk_vcodec_enc_drv.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 | 14 ++++++++
+> =C2=A07 files changed, 50 insertions(+), 13 deletions(-)
+
+--=-AbDKkJujBZd+Yb/YkvVa
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaPEESwAKCRDZQZRRKWBy
+9MMZAP0X3arp/YBTkXCva98lZDaCapBcw7wktlkZxAITnn8/ZQEA6FRrYm+LQmxk
+nPsXbosVPXzbjXK40/SFXm7EwWdetAw=
+=UGwt
+-----END PGP SIGNATURE-----
+
+--=-AbDKkJujBZd+Yb/YkvVa--
 
