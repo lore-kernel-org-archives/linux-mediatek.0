@@ -4,76 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 291A8CCD183
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 17:46:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61BC9CCD199
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 18:49:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=P5LrF4XUD3Qrzh57jCUubh/KmdYfbqo+2j4KHBLHHvk=; b=QKp+k32HWfSXrQQDJ5WSUiY0o1
-	0QCXVUerWPDFh81/JxJh88VayM6pEWB1nNl7Ba5sSltt+QIGWosY4bBAwwr8a9gmfFVQRaiNV1Iz3
-	vRNkfYRfFTGz+tCNVxoWrZXR/ehcU+2vYSIRtfD1gnKezxkiJfQs2Ihbvd2pFCQxh3G1p/hDMBREo
-	JroGSOYJeDIMa97fFJWMXAV0s4VaRmBPUpGjK/l9KBF+GQ72VxDGw7k8zlca9tEuuyWXwjP6+1Wko
-	oD9SRYvN/qmHltqdP9JDrfxWHKt0nRCIfO+7JiYMzNU6PdgQ5oD3HbhcKu0oaGcxPoeCFKGKnzgUD
-	L17XDLCg==;
+	bh=OodQksCOxye7cnNDHNgseeF5GX59PH6eZ+rBf8kRipA=; b=xQSt7kuhpiGfitA1ZSY44Z80T2
+	qaONcQOvr076GYP339D4nfb5Mo4A1ftv8CEaRxBM9FiQOsk1arU7F7VbtiA0P/eMkH4plC6D5+pdM
+	0WMaUHRiDahB8INYD3Ia7F3zOsnPGOi7AROD7kYLutmwqFwFl+6GW37Yg6qeVVIA6SYB1+vMzHwy/
+	iAV39zJ1bSKvKzRF4Sg7v5Kbs+TetIty7sFrIP5q1f+WLVeev6ITq22FxZ4gykHnVPyuZ0Sn94c8l
+	vedyINBGiakMfGdgIQ/FxMy4CRQokGr4RO/yu8w+zgB74EPW+DMPaN2EPWyymchg7V0hIN0EMf9gv
+	5wD6ev4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9S3J-00000005cjl-0cmt;
-	Thu, 16 Oct 2025 17:46:13 +0000
-Received: from 004.mia.mailroute.net ([199.89.3.7])
+	id 1v9T2B-00000005j8q-2AC0;
+	Thu, 16 Oct 2025 18:49:07 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9S3D-00000005chU-3rpI
-	for linux-mediatek@lists.infradead.org;
-	Thu, 16 Oct 2025 17:46:11 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 004.mia.mailroute.net (Postfix) with ESMTP id 4cnb3822qjzm0yNR;
-	Thu, 16 Oct 2025 17:45:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1760636753; x=1763228754; bh=P5LrF4XUD3Qrzh57jCUubh/K
-	mdYfbqo+2j4KHBLHHvk=; b=S284tZt/2XiA+I+2hPv7Cp0rDS5JIFtCFIBkVmFD
-	F6YGNwGD3PXJjB/evk10Wk693SZlXsdjI1mNflyfz7nWWR5y3/06mOelh1yDUzGd
-	rPxha2Ed1vxRxMw/Tys8E9y128XG7bAVfKuD6uH10+dYTuVE5W2pK3SpuWOyciXz
-	WDtHR2hvKS2bjE8doR7UxItBUZbL3b6zc++BHMiXJxlIN4OWQsnw/VCQxrIvPNuD
-	rm93labAQQQFIQ43QiJ/tUDhOJeWQPkyZY1L4YrT1PwBd+3baZCvj7c4YwVULcpG
-	ebbJKR/PgSaAADBpL3xrQzwTx0eZT75CuEmDbUjcft3oRg==
-X-Virus-Scanned: by MailRoute
-Received: from 004.mia.mailroute.net ([127.0.0.1])
- by localhost (004.mia [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id 8bU9H-wIF0Ao; Thu, 16 Oct 2025 17:45:53 +0000 (UTC)
-Received: from [100.119.48.131] (unknown [104.135.180.219])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 004.mia.mailroute.net (Postfix) with ESMTPSA id 4cnb2r0dSVzm0ytM;
-	Thu, 16 Oct 2025 17:45:38 +0000 (UTC)
-Message-ID: <5d04501f-4bb8-40ce-a396-010faae38481@acm.org>
-Date: Thu, 16 Oct 2025 10:45:37 -0700
+	id 1v9T29-00000005j85-0n7g;
+	Thu, 16 Oct 2025 18:49:06 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 3BFA34A15F;
+	Thu, 16 Oct 2025 18:49:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 68E14C4CEF1;
+	Thu, 16 Oct 2025 18:49:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1760640544;
+	bh=1TvsNySS/ii619yRBomO8Shvk95ED2emXEbjTPkgA+4=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=K0/nYnl6qvn+UNnZq1lrw10RG/Gdx6hWYCLPnyOt7ZIyaBKZLw6e3+qg+B7WVo5Y3
+	 YTibjb6/jRBuqzbjtdFbWKL37Fl39IaXtn1MkPmPsr6E4UZipnV0LEwb5CdrBO6wIT
+	 Jxfbm8UTeEdFJnGI0+uYokyxMgZomw1AQhNFZ/EVgSQcrsJPMFaMeet6msUQMrTPeb
+	 zHS7dXku+iXLSYBjrR8JFlVA3EmOFWLhTPA049mSPY2YAOHFLewNjpw5qIrL6NCeK5
+	 GyI+D/5frdSk81snrtmXgCGjYOHIVxS6DL42bLh8jwlSZSRLUg7yg29lddVCTJAemr
+	 eByPYIRjnOwpw==
+From: Mark Brown <broonie@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>, Ray Liu <ray.liu@airoha.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Andy Shevchenko <andy@kernel.org>, linux-arm-kernel@lists.infradead.org, 
+ linux-spi@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+Cc: Andreas Gnau <andreas.gnau@iopsys.eu>
+In-Reply-To: <20251012121707.2296160-1-mikhail.kshevetskiy@iopsys.eu>
+References: <20251012121707.2296160-1-mikhail.kshevetskiy@iopsys.eu>
+Subject: Re: (subset) [PATCH v10 00/16] spi: airoha: driver fixes &
+ improvements
+Message-Id: <176064054115.223781.11856902416382505599.b4-ty@kernel.org>
+Date: Thu, 16 Oct 2025 19:49:01 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/2] update CQ entry and dump CQE in MCQ mode
-To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, qilin.tan@mediatek.com,
- lin.gui@mediatek.com, tun-yu.yu@mediatek.com, eddie.huang@mediatek.com,
- naomi.chu@mediatek.com, ed.tsai@mediatek.com
-References: <20251016023507.1000664-1-peter.wang@mediatek.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20251016023507.1000664-1-peter.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.15-dev-2a268
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251016_104608_026054_EBC060BB 
-X-CRM114-Status: UNSURE (   6.18  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251016_114905_272672_E3EC95AD 
+X-CRM114-Status: GOOD (  12.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,13 +79,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/15/25 7:32 PM, peter.wang@mediatek.com wrote:
-> Update the CQ entry format for UFS 4.1 compatibility and
-> add support for logging CQ entries in MCQ mode, enhancing
-> debugging capabilities.
+On Sun, 12 Oct 2025 15:16:51 +0300, Mikhail Kshevetskiy wrote:
+> This patch series greatly improve airoha snfi driver and fix a
+> number of serious bugs.
+> 
+> Fixed bugs:
+>  * Fix reading/writing of flashes with more than one plane per lun
+>  * Fill the buffer with 0xff before writing
+>  * Fix reading of flashes supporting continuous reading mode
+>  * Fix error paths
+> 
+> [...]
 
-For the series:
+Applied to
 
-Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+
+Thanks!
+
+[01/16] spi: airoha: return an error for continuous mode dirmap creation cases
+        commit: 4314ffce4eb81a6c18700af1b6e29b6e0c6b9e37
+[03/16] spi: airoha: add support of dual/quad wires spi modes to exec_op() handler
+        commit: edd2e261b1babb92213089b5feadca12e3459322
+[05/16] spi: airoha: switch back to non-dma mode in the case of error
+        commit: 20d7b236b78c7ec685a22db5689b9c829975e0c3
+[06/16] spi: airoha: fix reading/writing of flashes with more than one plane per lun
+        commit: 0b7d9b25e4bc2e478c9d06281a65f930769fca09
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
