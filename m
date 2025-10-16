@@ -4,88 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2191CCD195
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 14:42:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB564CCD199
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 14:51:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jjl0am6Ty1/jZDMPoiRz5vbe7o1TNwBWQRFz2urTlFU=; b=C8Cl0y8Sm+I2p5QVLzoXxFErjZ
-	bfpSfPMsP4Za7Gbd89GkD8OBeVfCHECSFcbHwHgq9rxqg4Lzj7bES1D1DIeT7lnAGRa+Vcwu9+/Re
-	PbmFbH++XVSg1+15WpPs5iSVFpSviFzR6JoC4l/pbMoye7V3fqCh7zZtI8RILiT1r3bZX2v1iiPkm
-	AYcNRKJ50UuqjW5j69DHjsTI0nPAGHoYqn8rfe+b8a238DT+PiuVwcDzZff3nSiiTDpKVfxGvSGCp
-	SxdEJ/4zBtDaDRqowlQi/Qse4cPFAVQRfaqSjy/OqA2PFphvC/LaFCdox86HZ7U7eG9+qRPDHW7Be
-	1jD2gmLA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xnO8w4ce6Zvd0kjJm6wvasEGWAQD1+t0V7iBKZ7zgiM=; b=MerYx6xFEkVReywMx+v1SPPevE
+	SkqmLSud1va2gori0kRlDG09IBVqxU3vknuEgBWahoC9TDzq02QNtJTGFBONzeceBzGUPr7XmumrJ
+	qxYmJFxNEAThkWIQOIvNpeODZ75bqiktvGDvP5wdT5XgcsG8xfvhrn6nEYxtbvTwTMhOdjaH68G3g
+	Y+VYA4bIr+9LcQLw482dZK5t+ytH8Qt8Yw4iw+sNrq6KwbhhJX90xTZ4aE1flWLVUpqYIArtpthQY
+	A9ITa+mW4gQFE4gPq5P/KgMQrzK8xqUCoXswKfvNE2Bw1OVIsu/eKPR6yH7TqAqnXgkenauui8fSP
+	RmQB1Dkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9PBV-0000000537h-2zNy;
-	Thu, 16 Oct 2025 14:42:29 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1v9PKJ-000000054Sz-1jWt;
+	Thu, 16 Oct 2025 14:51:35 +0000
+Received: from mx3.molgen.mpg.de ([141.14.17.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9PBS-00000005372-2kv2;
-	Thu, 16 Oct 2025 14:42:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1760625744;
-	bh=jjl0am6Ty1/jZDMPoiRz5vbe7o1TNwBWQRFz2urTlFU=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=VTAD340tY1BwVmnfMhCJIsVuvW6/Y46pDQdugpP/XT0gWfNqbrO1uZ+aC2JfLquFk
-	 WBbIyNjK+rzQHWsSok+vclEY3RnJU45GJ0OsnYHBZiCbbQbOCfzCy+LHq7Xcu8DHcF
-	 Ihqkn/njaxWIesEmtusS8EhYfLgvPcHYs8OvmtDHLfHDE+FbyUD0ik8mX0QqXZlXtO
-	 TubExDvHADOCNmNXz5fcx38GrPEhaunjfvTaOQSRzwFCEPGuCDzVyxAzJfbkmJcVfU
-	 ffeD84/F3fE200JtXdfmEohmNZlS8BMYNK1KP70q4+4G50UQHghyBgTk+Tp+g0piPj
-	 I922IQ6O1JtEg==
-Received: from [IPv6:2606:6d00:17:ebd3::5ac] (unknown [IPv6:2606:6d00:17:ebd3::5ac])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1v9PKF-000000054RO-3rxz
+	for linux-mediatek@lists.infradead.org;
+	Thu, 16 Oct 2025 14:51:34 +0000
+Received: from [141.14.220.42] (g42.guest.molgen.mpg.de [141.14.220.42])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7BAAD17E0CF8;
-	Thu, 16 Oct 2025 16:42:21 +0200 (CEST)
-Message-ID: <eeda0221acbe0a70219fb7d87603d3dfec73f56f.camel@collabora.com>
-Subject: Re: [PATCH v4 0/8] Enable video decoder & encoder for MT8189
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Kyrie Wu <kyrie.wu@mediatek.com>, Tiffany Lin
- <tiffany.lin@mediatek.com>,  Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>, Mauro Carvalho Chehab	
- <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski	
- <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger	
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
- <angelogioacchino.delregno@collabora.com>, Hans Verkuil
- <hverkuil@xs4all.nl>,  Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
- Sebastian Fricke <sebastian.fricke@collabora.com>, Nathan Hebert	
- <nhebert@chromium.org>, Arnd Bergmann <arnd@arndb.de>, Irui Wang	
- <irui.wang@mediatek.com>, George Sun <george.sun@mediatek.com>, 
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Cc: Neil Armstrong <neil.armstrong@linaro.org>, Andrzej Pietrasiewicz
-	 <andrzejtp2010@gmail.com>
-Date: Thu, 16 Oct 2025 10:42:19 -0400
-In-Reply-To: <20251016060747.20648-1-kyrie.wu@mediatek.com>
-References: <20251016060747.20648-1-kyrie.wu@mediatek.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-AbDKkJujBZd+Yb/YkvVa"
-User-Agent: Evolution 3.56.2 (3.56.2-2.fc42) 
+	(Authenticated sender: pmenzel)
+	by mx.molgen.mpg.de (Postfix) with ESMTPSA id BA2EB6020FEFF;
+	Thu, 16 Oct 2025 16:51:23 +0200 (CEST)
+Message-ID: <1d31e19c-b04e-4bf3-b21f-16d275434041@molgen.mpg.de>
+Date: Thu, 16 Oct 2025 16:51:22 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 RESEND 1/2] Bluetooth: btusb: MT7920: Add VID/PID
+ 0489/e135
+To: Chris Lu <chris.lu@mediatek.com>
+Cc: Marcel Holtmann <marcel@holtmann.org>,
+ Johan Hedberg <johan.hedberg@gmail.com>,
+ Luiz Von Dentz <luiz.dentz@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
+ Will Lee <will-cy.Lee@mediatek.com>, SS Wu <ss.wu@mediatek.com>,
+ Steve Lee <steve.lee@mediatek.com>,
+ linux-bluetooth <linux-bluetooth@vger.kernel.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>
+References: <20251015033150.498866-1-chris.lu@mediatek.com>
+ <20251015033150.498866-2-chris.lu@mediatek.com>
+Content-Language: en-US
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20251015033150.498866-2-chris.lu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251016_074226_858068_BBDD6B2F 
-X-CRM114-Status: GOOD (  19.63  )
+X-CRM114-CacheID: sfid-20251016_075132_124844_432803F7 
+X-CRM114-Status: GOOD (  13.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,124 +73,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Dear Chris,
 
---=-AbDKkJujBZd+Yb/YkvVa
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-Hi,
+Thank you for the patch.
 
-Le jeudi 16 octobre 2025 =C3=A0 14:07 +0800, Kyrie Wu a =C3=A9crit=C2=A0:
-> This series have the follow changing:
-> Firstly add mt8189 video decoder compatible, profile and level to support
-> MT8189 kernel driver.
-> Secondly fix some bugs, including vp 4K profile2 and media device node
-> number bug.
-> Lastly, add mt8189 video encoder compatible.
->=20
-> This series has been tested with MT8189 tast test.
-> Encoding and decoding worked for this chip.
->=20
-> Patches 1-2 Add decoder compatible.
-> Patches 3 Add profile and level supporting.
-> Patches 4 Add core-only VP9 decoding supporting.
-> Patches 5-6 fix some bugs.
-> Patches 7-8 Adds encoder compatible.
->=20
+Am 15.10.25 um 05:31 schrieb Chris Lu:
+> Add VID 0489 & PID e135 for MediaTek MT7920 USB Bluetooth chip.
+> 
+> The information in /sys/kernel/debug/usb/devices about the Bluetooth
+> device is listed as the below.
+> 
+> T:  Bus=06 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
+> D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
+> P:  Vendor=0489 ProdID=e135 Rev= 1.00
+> S:  Manufacturer=MediaTek Inc.
+> S:  Product=Wireless_Device
+> S:  SerialNumber=000000000
+> C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
+> A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
+> I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
+> E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+> E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+> I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+> I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+> I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+> I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+> I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+> I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+> I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+> I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
+> E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
+> E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
+> I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
+> E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
+> E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
+> 
+> Signed-off-by: Chris Lu <chris.lu@mediatek.com>
 > ---
-> H264 test results:
-> ./fluster.py run -d GStreamer-H.264-V4L2SL-Gst1.0 -j1 -t 90
-> =C2=A0=C2=A0=C2=A0=C2=A0 JVT-AVC_V1=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 9=
-4/135
+>   drivers/bluetooth/btusb.c | 2 ++
+>   1 file changed, 2 insertions(+)
+> 
+> diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+> index 4be34c556db8..a2cde2284163 100644
+> --- a/drivers/bluetooth/btusb.c
+> +++ b/drivers/bluetooth/btusb.c
+> @@ -621,6 +621,8 @@ static const struct usb_device_id quirks_table[] = {
+>   	/* Additional MediaTek MT7920 Bluetooth devices */
+>   	{ USB_DEVICE(0x0489, 0xe134), .driver_info = BTUSB_MEDIATEK |
+>   						     BTUSB_WIDEBAND_SPEECH },
+> +	{ USB_DEVICE(0x0489, 0xe135), .driver_info = BTUSB_MEDIATEK |
+> +						     BTUSB_WIDEBAND_SPEECH },
+>   	{ USB_DEVICE(0x13d3, 0x3620), .driver_info = BTUSB_MEDIATEK |
+>   						     BTUSB_WIDEBAND_SPEECH },
+>   	{ USB_DEVICE(0x13d3, 0x3621), .driver_info = BTUSB_MEDIATEK |
 
-Your set indicates that this SoC supports more then H.264, any reason to om=
-it
-other codecs ? Also, why not -j2, does it mean concurrent decoding is broke=
-n ?
->=20
-> v4l2-compliance test results:
-> Compliance test for mtk-vcodec-enc device /dev/video2:
-> Total for mtk-vcodec-enc device /dev/video2: 47, Succeeded: 46, Failed: 1=
-, Warnings: 0
-> Compliance test for mtk-vcodec-dec device /dev/video3:
-> Total for mtk-vcodec-dec device /dev/video3: 48, Succeeded: 48, Failed: 0=
-, Warnings: 0
->=20
-> scp upstream link:
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20250811015922.=
-32680-1-huayu.zong@mediatek.com/
->=20
-> Changes compared with v3:
-> --add reviewer to commit messages
-> --Rebased on top of the latest media tree
->=20
-> Changes compared with v2:
-> --add H264 fluster test results
-> --reorder compatible string for dt-bindings
->=20
-> Changes compared with v1:
-> --add v4l2-compliance test results
-> --add scp upstream link
-> --add HW difference discriptions for dt-bindings commit messages
->=20
-> This series patches dependent on:
-> [1]
-> https://patchwork.linuxtv.org/project/linux-media/cover/20250510075357.11=
-761-1-yunfei.dong@mediatek.com/
-> [2]
-> https://patchwork.linuxtv.org/project/linux-media/cover/20250814085642.17=
-343-1-kyrie.wu@mediatek.com/
+Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
 
-It could be nice to quote the subjects, so we can decide to open the links =
-or
-not. I suppose you opted for sending the DTS separately, I don't have the H=
-W,
-but if my chances someone wanted to test that, he's need a these, can you l=
-ink
-them please ?
 
-Nicolas
+Kind regards,
 
->=20
-> Kyrie Wu (8):
-> =C2=A0 dt-bindings: media: mediatek: decoder: Add MT8189
-> =C2=A0=C2=A0=C2=A0 mediatek,vcodec-decoder
-> =C2=A0 media: mediatek: vcodec: add decoder compatible to support MT8189
-> =C2=A0 media: mediatek: vcodec: add profile and level supporting for MT81=
-89
-> =C2=A0 media: mediatek: vcodec: Add core-only VP9 decoding support for MT=
-8189
-> =C2=A0 media: mediatek: vcodec: fix vp9 4096x2176 fail for profile2
-> =C2=A0 media: mediatek: vcodec: fix media device node number
-> =C2=A0 dt-bindings: media: Add MT8189 mediatek,vcodec-encoder
-> =C2=A0 media: mediatek: encoder: Add MT8189 encoder compatible data
->=20
-> =C2=A0.../media/mediatek,vcodec-encoder.yaml=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 |=C2=A0 2 ++
-> =C2=A0.../media/mediatek,vcodec-subdev-decoder.yaml |=C2=A0 1 +
-> =C2=A0.../vcodec/decoder/mtk_vcodec_dec_drv.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 |=C2=A0 9 +++++-
-> =C2=A0.../vcodec/decoder/mtk_vcodec_dec_drv.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 |=C2=A0 1 +
-> =C2=A0.../vcodec/decoder/mtk_vcodec_dec_stateless.c |=C2=A0 4 +++
-> =C2=A0.../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c | 32 ++++++++++++----=
----
-> =C2=A0.../vcodec/encoder/mtk_vcodec_enc_drv.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 | 14 ++++++++
-> =C2=A07 files changed, 50 insertions(+), 13 deletions(-)
-
---=-AbDKkJujBZd+Yb/YkvVa
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaPEESwAKCRDZQZRRKWBy
-9MMZAP0X3arp/YBTkXCva98lZDaCapBcw7wktlkZxAITnn8/ZQEA6FRrYm+LQmxk
-nPsXbosVPXzbjXK40/SFXm7EwWdetAw=
-=UGwt
------END PGP SIGNATURE-----
-
---=-AbDKkJujBZd+Yb/YkvVa--
+Paul
 
