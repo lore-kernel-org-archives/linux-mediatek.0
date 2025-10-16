@@ -4,69 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 896F0CCD19A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 10:09:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE09ECCD19A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 10:09:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Hy22bcrCdRWaGHNiZCW8QeRRCExd7BelSd/I1HEJOb4=; b=D7yQPQYyuIUAt+G1It4oE/9jxl
-	XanNLvlu4UdJ/LOXXU8UKHDahSWwVTObeyzF7YZKnxephC10H2OG+wuZCaM8DBPAmTpykNJTgBLcf
-	vlOO1IneIG6DSol/740Bohnvblbr/eeZPjpB/VSxOE6w0XFzenUQaI9kjHeEAXsDvUyOwvOHAc7Wc
-	nx0qkRCieRO1dfRsfJR1UCfCrJJjn03XycDyJkwEdv8ByE+tcCsCz34+Yq4Swdn9jtyb8qC14enR4
-	VnK9SkaNPO8PYtMw9LkfPJ7fGrMYLG3xV95LjLegohawd/naEkUt1vwX1S/8IwBT4T9rlF7Y1jhZD
-	3MMnVcoA==;
+	bh=2/aXQxzi5aoMRxgwY/pOT/9ffqaNUwcrFIzV4r4t82A=; b=dDOE6CzeNjBb6NzmA+u8rUoDAl
+	ylucIuwjsKtVn85l1A3M3R5FBGreHhwS9ydYE0D9nXQgg0fWvPgA6WJPL7osO3tBXQsGhqQ2ncPqk
+	euODI4sUDmnsv/R5gX3l2fi8BqrtpkOQQk3Kz/+P+IwIup7Uc45PdDJ+W2SqCB/DSrrYYruiNHQJl
+	Wyx0N41gQYPUG2tqdQWdO0FvBc0e7I65B2XC4NbbI3zWYrNGt23ApsgdljecwDGt/kdTbryuBxl6t
+	lDE/MBbQIjY0YGxS3qXH/mSJJlpFm5AgEQ7r/sdRqLwoJZTo5+8mAiZf75YuCGyPolLE2lH+gAsMW
+	MFEbJW0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9KvJ-00000004LZu-3lzq;
-	Thu, 16 Oct 2025 10:09:29 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1v9KvM-00000004Ldu-15FJ;
+	Thu, 16 Oct 2025 10:09:32 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9Kux-00000004L24-010U;
+	id 1v9Kus-00000004Kvz-2PYJ;
 	Thu, 16 Oct 2025 10:09:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=Hy22bcrCdRWaGHNiZCW8QeRRCExd7BelSd/I1HEJOb4=; b=IUAlT1tOu6oQD/9A3bTFRO7rKH
-	hK3YRIDRJqqRaWRRc4DqT5KzY+gyjXErtpPp9MoUQDEmF9hiPwXHLl9f76xTn0I+MIY/HvWgBTeud
-	CzIOt1n+hwryfYstQGeJJWiOIASXaj+qB3523ITEN34ew60gH4yBCWGuGTSW5OmpEhh9RyyJrKzke
-	fhAXvtKdirbGClEyiSQb6Y1MuUsHYtnybwhd6DoQ6cmGXSYOtSuQ4yj3SYNa0k2kiILbyQ2RsWGiq
-	gOhm7EHZAXxn5FCJad1GLxpr1gGqaDWNYDFneD8HRGUOTMD/gTMHHNg2jE5iBloxLrDl93qNEuCiq
-	dkL90yeA==;
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9Kut-00000006f63-0KGL;
-	Thu, 16 Oct 2025 10:09:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1760609334;
-	bh=afFY8d06YR6Xe0mRxobtGmvJrl4DTV7aEVRQ2QIq/r0=;
+	s=mail; t=1760609335;
+	bh=/9YbgjlHnPZMHMycRQr53HOb6zwo9SzUrHjuObo7cBA=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=oSGfSCm7mQgqcQGeuEt+uG+gb/EysmochzTYczJ3QIPFUONJmMI5FOikniJx6xgzw
-	 STcVwsER77GIwib1IMca9+yNoWn56micy/WqUP/4kTfpz9R7JRGOvi0SOeIphvJvdO
-	 TKkvODvOKj4wpDqJD0pTiK1fRD7pOjVe8MJZ6kwN8+3nZy9HlYALXefetLijoKsbqd
-	 hf4Auh4Eh8GrYKRF7fClm1FIlqIoCVSObAnVNM9JBuxJCfKjGw4q/aT/HRQNhf0p4P
-	 p+w89q4zVfW+sk/a4yri5BwR4aZUzs651OLvdTAM/4Kxk2//0UTxZi2TQzKjU7vYkc
-	 G2enIYaziYT7w==
-Received: from beast.luon.net (simons.connected.by.freedominter.net [45.83.240.172])
+	b=KSkSRWTvGo6x1LTcT5efwwjCTTWLQ7wEEv9OStS3hULu24OWClwUwhJ8eoyA0jRir
+	 bg64S8D0jiifyHEPEigSstfRvdZ/sbpOBL3lieGUzKmWPv1Z57KFuXur5dMhZvNNfO
+	 0vDggTEJAREqU1ThiG8/obSKYr6fdiu38rwM3IVdu2Af8f8jQGsq4OT8ILU3/3mmLw
+	 dfNlLxnbtopWjqc4TnmwB7arULQ+gaYmKC+cWrNBMt0KjFLCMaHyHzc3SQCNZb0dL4
+	 TGzzukqSL4Zbuo2XGg2W74T2zcVNS40b3aRSgFK1hKOZnEJA3dyFt+T7AKXLqyLpH1
+	 HoIUJ5GApA2eQ==
+Received: from beast.luon.net (unknown [IPv6:2a10:3781:2531::8])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sjoerd)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id CC97117E1412;
-	Thu, 16 Oct 2025 12:08:54 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 20B5917E14DD;
+	Thu, 16 Oct 2025 12:08:55 +0200 (CEST)
 Received: by beast.luon.net (Postfix, from userid 1000)
-	id BEC0B10C9C796; Thu, 16 Oct 2025 12:08:53 +0200 (CEST)
+	id AAC9910C9C78E; Thu, 16 Oct 2025 12:08:53 +0200 (CEST)
 From: Sjoerd Simons <sjoerd@collabora.com>
-Date: Thu, 16 Oct 2025 12:08:47 +0200
-Subject: [PATCH 11/15] arm64: dts: mediatek: mt7981b-openwrt-one: Enable
- SPI NOR
+Date: Thu, 16 Oct 2025 12:08:43 +0200
+Subject: [PATCH 07/15] arm64: dts: mediatek: mt7981b: Add PCIe and USB
+ support
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251016-openwrt-one-network-v1-11-de259719b6f2@collabora.com>
+Message-Id: <20251016-openwrt-one-network-v1-7-de259719b6f2@collabora.com>
 References: <20251016-openwrt-one-network-v1-0-de259719b6f2@collabora.com>
 In-Reply-To: <20251016-openwrt-one-network-v1-0-de259719b6f2@collabora.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -93,8 +79,8 @@ Cc: kernel@collabora.com, devicetree@vger.kernel.org,
  Sjoerd Simons <sjoerd@collabora.com>
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251016_110903_793194_50B0803E 
-X-CRM114-Status: GOOD (  11.71  )
+X-CRM114-CacheID: sfid-20251016_030905_703731_629596BD 
+X-CRM114-Status: GOOD (  13.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,127 +95,129 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The openwrt one has a SPI NOR flash which from factory is used for:
-* Recovery system
-* WiFi eeprom data
-* ethernet Mac addresses
+Add device tree nodes for PCIe controller and USB3 XHCI host
+controller on MT7981B SoC. Both controllers share the USB3 PHY
+which can be configured for either USB3 or PCIe operation.
 
-Describe this following the same partitions as the openwrt configuration
-uses.
+The USB3 XHCI controller supports USB 2.0 and USB 3.0 SuperSpeed
+operation. The PCIe controller is compatible with PCIe Gen2
+specifications.
+
+Also add the topmisc syscon node required for USB/PCIe PHY
+multiplexing.
 
 Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
 ---
- .../boot/dts/mediatek/mt7981b-openwrt-one.dts      | 83 ++++++++++++++++++++++
- 1 file changed, 83 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt7981b.dtsi | 82 +++++++++++++++++++++++++++++++
+ 1 file changed, 82 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
-index b6ca628ee72fd..9878009385cc6 100644
---- a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
-@@ -3,6 +3,7 @@
- /dts-v1/;
+diff --git a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
+index b477375078ccd..13950fe6e8766 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
+@@ -2,6 +2,7 @@
  
- #include "mt7981b.dtsi"
-+#include "dt-bindings/pinctrl/mt65xx.h"
+ #include <dt-bindings/clock/mediatek,mt7981-clk.h>
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
++#include <dt-bindings/phy/phy.h>
+ #include <dt-bindings/reset/mt7986-resets.h>
  
  / {
- 	compatible = "openwrt,one", "mediatek,mt7981b";
-@@ -54,6 +55,25 @@ mux {
+@@ -221,6 +222,57 @@ auxadc: adc@1100d000 {
+ 			status = "disabled";
  		};
- 	};
  
-+	spi2_flash_pins: spi2-pins {
-+		mux {
-+			function = "spi";
-+			groups = "spi2";
++		xhci: usb@11200000 {
++			compatible = "mediatek,mt7986-xhci", "mediatek,mtk-xhci";
++			reg = <0 0x11200000 0 0x2e00>,
++			      <0 0x11203e00 0 0x0100>;
++			reg-names = "mac", "ippc";
++			clocks = <&infracfg CLK_INFRA_IUSB_SYS_CK>,
++				 <&infracfg CLK_INFRA_IUSB_CK>,
++				 <&infracfg CLK_INFRA_IUSB_133_CK>,
++				 <&infracfg CLK_INFRA_IUSB_66M_CK>,
++				 <&topckgen CLK_TOP_U2U3_XHCI_SEL>;
++			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck", "xhci_ck";
++			interrupts = <GIC_SPI 173 IRQ_TYPE_LEVEL_HIGH>;
++			phys = <&u2port0 PHY_TYPE_USB2>,
++			       <&u3port0 PHY_TYPE_USB3>;
++			status = "disabled";
 +		};
 +
-+		conf-pu {
-+			bias-pull-up = <MTK_PUPD_SET_R1R0_11>;
-+			drive-strength = <MTK_DRIVE_8mA>;
-+			pins = "SPI2_CS", "SPI2_WP";
++		pcie: pcie@11280000 {
++			compatible = "mediatek,mt7981-pcie",
++				     "mediatek,mt8192-pcie";
++			reg = <0 0x11280000 0 0x4000>;
++			reg-names = "pcie-mac";
++			ranges = <0x82000000 0 0x20000000
++				  0x0 0x20000000 0 0x10000000>;
++			bus-range = <0x00 0xff>;
++			clocks = <&infracfg CLK_INFRA_IPCIE_CK>,
++				 <&infracfg CLK_INFRA_IPCIE_PIPE_CK>,
++				 <&infracfg CLK_INFRA_IPCIER_CK>,
++				 <&infracfg CLK_INFRA_IPCIEB_CK>;
++			clock-names = "pl_250m", "tl_26m", "peri_26m", "top_133m";
++			device_type = "pci";
++			phys = <&u3port0 PHY_TYPE_PCIE>;
++			phy-names = "pcie-phy";
++			interrupts = <GIC_SPI 168 IRQ_TYPE_LEVEL_HIGH>;
++			interrupt-map-mask = <0 0 0 7>;
++			interrupt-map = <0 0 0 1 &pcie_intc 0>,
++					<0 0 0 2 &pcie_intc 1>,
++					<0 0 0 3 &pcie_intc 2>,
++					<0 0 0 4 &pcie_intc 3>;
++			#address-cells = <3>;
++			#interrupt-cells = <1>;
++			#size-cells = <2>;
++			status = "disabled";
++
++			pcie_intc: interrupt-controller {
++				interrupt-controller;
++				#address-cells = <0>;
++				#interrupt-cells = <1>;
++			};
 +		};
 +
-+		conf-pd {
-+			bias-pull-down = <MTK_PUPD_SET_R1R0_11>;
-+			drive-strength = <MTK_DRIVE_8mA>;
-+			pins = "SPI2_CLK", "SPI2_MOSI", "SPI2_MISO";
-+		};
-+	};
-+
- 	uart0_pins: uart0-pins {
- 		mux {
- 			function = "uart";
-@@ -62,6 +82,69 @@ mux {
- 	};
- };
+ 		pio: pinctrl@11d00000 {
+ 			compatible = "mediatek,mt7981-pinctrl";
+ 			reg = <0 0x11d00000 0 0x1000>,
+@@ -243,6 +295,36 @@ pio: pinctrl@11d00000 {
+ 			#interrupt-cells = <2>;
+ 		};
  
-+&spi2 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&spi2_flash_pins>;
-+	status = "okay";
++		topmisc: topmisc@11d10000 {
++			compatible = "mediatek,mt7981-topmisc", "syscon";
++			reg = <0 0x11d10000 0 0x10000>;
++			#clock-cells = <1>;
++		};
 +
-+	flash@0 {
-+		compatible = "jedec,spi-nor";
-+		reg = <0>;
-+		spi-max-frequency = <40000000>;
-+		#address-cells = <1>;
-+		#size-cells = <1>;
-+
-+		partitions {
-+			compatible = "fixed-partitions";
++		usb_phy: t-phy@11e10000 {
++			compatible = "mediatek,mt7981-tphy",
++				     "mediatek,generic-tphy-v2";
++			ranges = <0 0 0x11e10000 0x1700>;
 +			#address-cells = <1>;
 +			#size-cells = <1>;
++			status = "disabled";
 +
-+			partition@0 {
-+				reg = <0x00000 0x40000>;
-+				label = "bl2-nor";
++			u2port0: usb-phy@0 {
++				reg = <0x0 0x700>;
++				clocks = <&topckgen CLK_TOP_USB_FRMCNT_SEL>;
++				clock-names = "ref";
++				#phy-cells = <1>;
 +			};
 +
-+			partition@40000 {
-+				reg = <0x40000 0xc0000>;
-+				label = "factory";
-+				read-only;
-+
-+				nvmem-layout {
-+					compatible = "fixed-layout";
-+					#address-cells = <1>;
-+					#size-cells = <1>;
-+
-+					eeprom_factory_0: eeprom@0 {
-+						reg = <0x0 0x1000>;
-+					};
-+
-+					macaddr_factory_4: macaddr@4 {
-+						reg = <0x4 0x6>;
-+						compatible = "mac-base";
-+						#nvmem-cell-cells = <1>;
-+					};
-+
-+					macaddr_factory_24: macaddr@24 {
-+						reg = <0x24 0x6>;
-+						compatible = "mac-base";
-+						#nvmem-cell-cells = <1>;
-+					};
-+				};
-+			};
-+
-+			partition@100000 {
-+				reg = <0x100000 0x80000>;
-+				label = "fip-nor";
-+			};
-+
-+			partition@180000 {
-+				reg = <0x180000 0xc80000>;
-+				label = "recovery";
++			u3port0: usb-phy@700 {
++				reg = <0x700 0x900>;
++				clocks = <&topckgen CLK_TOP_USB3_PHY_SEL>;
++				clock-names = "ref";
++				#phy-cells = <1>;
++				mediatek,syscon-type = <&topmisc 0x218 0>;
 +			};
 +		};
-+	};
-+};
 +
- &uart0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&uart0_pins>;
+ 		efuse: efuse@11f20000 {
+ 			compatible = "mediatek,mt7981-efuse", "mediatek,efuse";
+ 			reg = <0 0x11f20000 0 0x1000>;
 
 -- 
 2.51.0
