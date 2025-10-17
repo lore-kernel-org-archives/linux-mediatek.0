@@ -4,73 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64A2BCCD195
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Oct 2025 06:51:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9BF0CCD195
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Oct 2025 06:51:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=9MNPOqZGHBNcVZdFzdSJoYku4VO6HyuAauN1EJm+i/c=; b=p5kQNSf0PUx8+orva127RnOmco
-	NGUbli0Fmuj0Chitl6lYKPibsBuJR414Xpzi5Kp29u+13HRKrlPVL7ieHXCOiS6H6yQ8fWO15Ipdo
-	NAFQBvMWeVFJkxX6CmBnaE6KRy/dXpIHcFsT4uzf9uIuCRWmUF2GIhlZveHhQsGz6fDmU/DdArkDB
-	SSBUkj6ECRPMn/iM8jIxRwB3368V1Hy2Y9DJ83+tjvBGndcs8WY3qTCUXybXhReYSkVDYcb3MOlDh
-	+KMvQK+ZE9PvbxYRb5VTOxjFlZO4EM6jaLLxm5hfbLHyGguf4STCUxWF5YNYxrrI/jja7A3yOO9gz
-	52KEplPg==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ajn5+At9A4JOxBAGorfjMbDXlmTNGH+QYFIsy6Lx1kg=; b=4pAXesHLeE9qAAF7tMraYSwuxr
+	9PjVKXhYCFBojWajmRq0D8bB6Z3TuEbL2mwxFwG3/IN0YQMNzZ5UyyXG/Dv5lhp8apj4EQ8tu1iEs
+	zxSwt76KpZk01Ec8dds4t+GJzE3ckmbykYFtvcS3lcWmVFerpRy7fq68FQ5p9NusKjatuSWxAZB5U
+	Po4PdCujX9vC3VfQH2IxF+oLNJoaI+NlQvz90VyunvCVHoSqGZKjaH1GZUW8HKWHmB/P8jkXdR3vu
+	wl8J5gyrZ67C4dqs9T5bGhYnUaXq4+Zuey+9SpYkPSnhHJ/EZAkIzsxp1SR/ow2kwxPnpsgRYlNaH
+	8SXYSwDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9eIv-00000006qxz-2GbG;
-	Fri, 17 Oct 2025 06:51:09 +0000
+	id 1v9eIx-00000006r1u-2df8;
+	Fri, 17 Oct 2025 06:51:11 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9eIU-00000006qEP-070j;
+	id 1v9eIU-00000006qAe-20CD;
 	Fri, 17 Oct 2025 06:50:45 +0000
-X-UUID: 940a1e12ab2511f0a52f393f94899d25-20251016
+X-UUID: 95c43256ab2511f0a52f393f94899d25-20251016
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=9MNPOqZGHBNcVZdFzdSJoYku4VO6HyuAauN1EJm+i/c=;
-	b=qrme8iY7KFEhnBL4XTt3VzbqHguGthd4jJZu6Z3kpPW0kPqUlR/gkgTA0B10xX7qBjaC5ja/s+tGwbqeQIuULzvoD4AFRt/Q6fuD91D4XAeGvhqxunpgMaFMQnpWciNCQ2yQ8U/HKywt5fsVqpXR9xEel0lvvzL5gMtwUBM1S04=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ajn5+At9A4JOxBAGorfjMbDXlmTNGH+QYFIsy6Lx1kg=;
+	b=hhmFo38BrNq8LQF3CWo6TCaYWuqQyRcyI1QCsuG/FQOQXM432NniKPTfq0YvuZTGDRalEGruBOYl/jQYf/5U11lS/0yKT91xKgicaPi+tHLyAZ0nfm4XOhxvbb3f8Ioanhq7Evgb7S4lcxuoQ6nTtJIF8m9Gi1FmommJju4PjY4=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:50d3fde1-d359-44fc-a2b4-c1c1b3dfca3b,IP:0,UR
+X-CID-O-INFO: VERSION:1.3.6,REQID:88d0f359-5d42-454c-9be1-7c70eaf0aa29,IP:0,UR
 	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
 	elease,TS:0
-X-CID-META: VersionHash:a9d874c,CLOUDID:23da5086-2e17-44e4-a09c-1e463bf6bc47,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
-	0,EDM:-3,IP:nil,URL:99|1,File:130,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI
-	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-META: VersionHash:a9d874c,CLOUDID:4dda5086-2e17-44e4-a09c-1e463bf6bc47,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
+	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,
+	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 940a1e12ab2511f0a52f393f94899d25-20251016
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
+X-UUID: 95c43256ab2511f0a52f393f94899d25-20251016
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
 	(envelope-from <jason-jh.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1751854691; Thu, 16 Oct 2025 23:50:33 -0700
+	with ESMTP id 727931216; Thu, 16 Oct 2025 23:50:36 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.10; Fri, 17 Oct 2025 14:50:29 +0800
+ 15.2.1748.10; Fri, 17 Oct 2025 14:50:32 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.10 via Frontend Transport; Fri, 17 Oct 2025 14:50:29 +0800
+ 15.2.1748.10 via Frontend Transport; Fri, 17 Oct 2025 14:50:32 +0800
 From: Jason-JH Lin <jason-jh.lin@mediatek.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>, Jassi Brar <jassisinghbrar@gmail.com>,
 	Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
 	<angelogioacchino.delregno@collabora.com>, Mauro Carvalho Chehab
 	<mchehab@kernel.org>
-Subject: [PATCH v8 00/20] Add GCE support for MT8196
-Date: Fri, 17 Oct 2025 14:44:25 +0800
-Message-ID: <20251017065028.1676930-1-jason-jh.lin@mediatek.com>
+Subject: [PATCH v8 18/20] soc: mediatek: mtk-cmdq: Remove cmdq_pkt_jump() and cmdq_pkt_jump_rel_temp()
+Date: Fri, 17 Oct 2025 14:44:43 +0800
+Message-ID: <20251017065028.1676930-19-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20251017065028.1676930-1-jason-jh.lin@mediatek.com>
+References: <20251017065028.1676930-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251016_235042_109296_88D0C9D9 
-X-CRM114-Status: GOOD (  18.97  )
+X-CRM114-CacheID: sfid-20251016_235042_579139_94ABB622 
+X-CRM114-Status: GOOD (  11.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,122 +84,76 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Jason-jh Lin <jason-jh.lin@mediatek.corp-partner.google.com>, devicetree@vger.kernel.org, Moudy Ho <moudy.ho@mediatek.com>, Xiandong Wang <xiandong.wang@mediatek.com>, Jason-JH Lin <jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Nicolas Dufresne <nicolas@ndufresne.ca>, Project_Global_Chrome_Upstream_Group@mediatek.com, Paul-PL Chen <paul-pl.chen@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Sirius Wang <sirius.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Cc: devicetree@vger.kernel.org, Moudy Ho <moudy.ho@mediatek.com>, Xiandong Wang <xiandong.wang@mediatek.com>, Jason-JH Lin <jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Nicolas Dufresne <nicolas@ndufresne.ca>, Project_Global_Chrome_Upstream_Group@mediatek.com, Paul-PL
+ Chen <paul-pl.chen@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Sirius Wang <sirius.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jason-jh Lin <jason-jh.lin@mediatek.corp-partner.google.com>
+Since all users have migrated to the new cmdq_pkt_jump* APIs without
+shift_pa, the wrapper APIs cmdq_pkt_jump() and cmdq_pkt_jump_rel_temp()
+can be removed.
 
-This patch series adds support for the MediaTek MT8196 SoC in the CMDQ
-driver and related subsystems. The changes include adding compatible
-names and iommus property, updating driver data to accommodate hardware
-changes, and modifying the usage of CMDQ APIs to support non-subsys ID
-hardware.
-
+Fixes: ade176534112 ("soc: mediatek: cmdq: Add parameter shift_pa to cmdq_pkt_jump()")
+Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
 ---
-Change in v8:
-1. Use function pointer to select the correct CMDQ APIs when checking
-   subsys is support for the HW component.
+ include/linux/soc/mediatek/mtk-cmdq.h | 30 ---------------------------
+ 1 file changed, 30 deletions(-)
 
-Change in v7:
-1. Rename cmdq_reg_shift_addr() and cmdq_reg_revert_addr() to 
-   cmdq_convert_gce_addr() and cmdq_revert_gce_addr().
-2. Change cmdq_vm_toggle to cmdq_vm_init().
-
-Change in v6:
-1. Move the removal patches to the end of series.
-2. Fix build error for cmdq_pkt_jump_rel_temp patch.
-
-Change in RESEND v5:
-1. Separate the removal of cmdq_get_shift_pa() from [PATCH v5 03/19] to a
-   single patch [PATCH RESEND v5 10/20].
-
-Change in v5:
-1. Rebase on tag: next-20250424 + patch [1].
-2. Split adding driver data for MT8196 patch to 3 independent patch
-   and add more detail commit message to each patch.
-3. Refine passing shift_pa as the parameter in API to storing it into
-   the cmdq_pkt.
-4. Refine DMA address potential issue in cmdq mailbox driver.
-5. Change the mminfra_offset related mbox API to passing it by cmdq_pkt.
-6. Add new cmdq_pkt_write_pa() and cmdq_pkt_write_subsys() APIs to
-   replace the cmdq_pkt_write().
-
-[1] mailbox: mtk-cmdq: Refine GCE_GCTL_VALUE setting
-- https://patchwork.kernel.org/project/linux-mediatek/patch/20250421035650.441383-1-jason-jh.lin@mediatek.com/
-
-Change in v4:
-1. Remove dt-binding header and add a gce header in dts folder.
-2. Remove dot in sign-off name.
-3. Change addr type from u32 to dma_addr_t for cmdq_reg_shift_addr() and
-   cmdq_reg_revert_addr().
-
-Change in v3:
-1. Merge 2 dt-bindings pathes together and add more detail commit message.
-2. Change type u32 to phys_addr_t for pa_base of struct cmdq_client_reg.
-3. Remove cmdq_subsys_is_valid() and subsys_num in CMDQ driver.
-4. Add CMDQ_SUBSYS_INVALID to check subsys instead of using
-   cmdq_subsys_is_invalid().
-5. Make use of CMDQ_THR_SPR0 define to the parameter of CMDQ APIs.
-6. Rebase on the new MACRO in mtk-mdp3-comp.h.
-
-Change in v2:
-1. Remove the constant and fix warning in dt-bindings.
-2. Remove the pa_base parameter of CMDQ APIs and related modification.
-3. Move subsys checking to client drivers and use 2 alternative
-   CMDQ APIs to achieve the same functionality.
-
----
-
-Jason-JH Lin (20):
-  arm64: dts: mediatek: Add GCE header for MT8196
-  mailbox: mtk-cmdq: Refine DMA address handling for the command buffer
-  mailbox: mtk-cmdq: Add cmdq private data to cmdq_pkt for generating
-    instruction
-  soc: mediatek: mtk-cmdq: Add cmdq_get_mbox_priv() in cmdq_pkt_create()
-  soc: mediatek: mtk-cmdq: Add cmdq_pkt_jump_rel_temp() for removing
-    shift_pa
-  mailbox: mtk-cmdq: Add GCE hardware virtualization configuration
-  mailbox: mtk-cmdq: Add mminfra_offset configuration for DRAM
-    transaction
-  mailbox: mtk-cmdq: Add driver data to support for MT8196
-  soc: mediatek: mtk-cmdq: Add pa_base parsing for hardware without
-    subsys ID support
-  soc: mediatek: mtk-cmdq: Extend cmdq_pkt_write API for SoCs without
-    subsys ID
-  soc: mediatek: mtk-cmdq: Add mminfra_offset adjustment for DRAM
-    addresses
-  soc: mediatek: Use reg_write function pointer for subsys ID
-    compatibility
-  drm/mediatek:Use reg_write function pointer for subsys ID
-    compatibility
-  media: platform: mtk-mdp3: Refactor CMDQ writes for CMDQ API change
-  media: platform: mtk-mdp3: Change cmdq_pkt_jump_rel() to
-    cmdq_pkt_jump_rel_temp()
-  soc: mediatek: mtk-cmdq: Remove shift_pa parameter from
-    cmdq_pkt_jump()
-  media: platform: mtk-mdp3: Use cmdq_pkt_jump_rel() without shift_pa
-  soc: mediatek: mtk-cmdq: Remove cmdq_pkt_jump() and
-    cmdq_pkt_jump_rel_temp()
-  soc: mediatek: mtk-cmdq: Remove cmdq_pkt_write() and
-    cmdq_pkt_write_mask()
-  mailbox: mtk-cmdq: Remove unsued cmdq_get_shift_pa()
-
- arch/arm64/boot/dts/mediatek/mt8196-gce.h     | 612 ++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_ddp_comp.c       |  12 +-
- drivers/mailbox/mtk-cmdq-mailbox.c            | 113 +++-
- .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    |   6 +-
- .../platform/mediatek/mdp3/mtk-mdp3-comp.h    |   6 +-
- .../platform/mediatek/mdp3/mtk-mdp3-core.c    |   2 -
- .../platform/mediatek/mdp3/mtk-mdp3-core.h    |   1 -
- drivers/soc/mediatek/mtk-cmdq-helper.c        |  82 ++-
- drivers/soc/mediatek/mtk-mmsys.c              |   8 +-
- drivers/soc/mediatek/mtk-mutex.c              |   5 +-
- include/linux/mailbox/mtk-cmdq-mailbox.h      |  19 +-
- include/linux/soc/mediatek/mtk-cmdq.h         |  87 ++-
- 12 files changed, 879 insertions(+), 74 deletions(-)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8196-gce.h
-
+diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
+index af66410b06d1..140c70bb707c 100644
+--- a/include/linux/soc/mediatek/mtk-cmdq.h
++++ b/include/linux/soc/mediatek/mtk-cmdq.h
+@@ -416,12 +416,6 @@ int cmdq_pkt_poll_addr(struct cmdq_pkt *pkt, dma_addr_t addr, u32 value, u32 mas
+  */
+ int cmdq_pkt_jump_abs(struct cmdq_pkt *pkt, dma_addr_t addr);
+ 
+-/* This wrapper has to be removed after all users migrated to jump_abs */
+-static inline int cmdq_pkt_jump(struct cmdq_pkt *pkt, dma_addr_t addr)
+-{
+-	return cmdq_pkt_jump_abs(pkt, addr);
+-}
+-
+ /**
+  * cmdq_pkt_jump_rel() - Append jump command to the CMDQ packet, ask GCE
+  *			 to execute an instruction that change current thread
+@@ -434,24 +428,6 @@ static inline int cmdq_pkt_jump(struct cmdq_pkt *pkt, dma_addr_t addr)
+  */
+ int cmdq_pkt_jump_rel(struct cmdq_pkt *pkt, s32 offset);
+ 
+-/**
+- * cmdq_pkt_jump_rel_temp() - Temporary wrapper for new CMDQ helper API
+- * @pkt:	the CMDQ packet
+- * @offset:	relative offset of target instruction buffer from current PC.
+- * @shift_pa:	[DEPRECATED] shift bits of physical address in CMDQ instruction.
+- *		This value is got by cmdq_get_shift_pa().
+- *
+- * This function is a temporary wrapper that was introduced only for ease of
+- * migration of the many users of the CMDQ API located in multiple kernel
+- * subsystems.
+- *
+- * This has to be removed after all users are migrated to the newer CMDQ API.
+- */
+-static inline int cmdq_pkt_jump_rel_temp(struct cmdq_pkt *pkt, s32 offset, u8 shift_pa)
+-{
+-	return cmdq_pkt_jump_rel(pkt, offset);
+-}
+-
+ /**
+  * cmdq_pkt_eoc() - Append EOC and ask GCE to generate an IRQ at end of execution
+  * @pkt:	The CMDQ packet
+@@ -606,12 +582,6 @@ static inline int cmdq_pkt_jump_rel(struct cmdq_pkt *pkt, s32 offset)
+ 	return -EINVAL;
+ }
+ 
+-/* This wrapper has to be removed after all users migrated to jump_rel */
+-static inline int cmdq_pkt_jump_rel_temp(struct cmdq_pkt *pkt, s32 offset, u8 shift_pa)
+-{
+-	return -EIMVAL;
+-}
+-
+ static inline int cmdq_pkt_eoc(struct cmdq_pkt *pkt)
+ {
+ 	return -EINVAL;
 -- 
 2.43.0
 
