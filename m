@@ -4,74 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CB1DCCD19A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Oct 2025 12:22:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62D59CCD19F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Oct 2025 15:32:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tVS1yjlCPcljk4srWv5SXmg1dIE2H/RRXTrB6Ic2heM=; b=a+M8wFGDfXnJndz7Vmw8G9YQuz
-	GwfrEqXfAfSs8gb7BY6eiTxWZLLwJE+nsjikjTCiRJSonfpMkRSTdc4edcrwJq55QrZBuAcdm28p8
-	ZAsYv531SrhhBT8H1Gwa4ivAOLPXmAD+cRxTXX5NuX7xnR0RnjnCX/b+XbqvkHNsvMicfCwXZXfc3
-	ws3XIXxiiRv808BXQy/KNHINMkal9rW/pNMZmmidvcBYw41i39S6lii3R2rzab6UwsvTjTE2AjFe2
-	qV2tuQSubHW4c8Udp0tAzw4SauvHCF/5QLl7gxgCfQg6GzAUupIgJrMnJ5VMW1aqvuH6cC11wmR4Q
-	U59nIdvA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5kCSOGJcwbOC+7+5BLR+gRNJdgGMuPaf20hsggRiPEw=; b=kROVTTN9eRH4wQE1rmG8h6mxsU
+	luPvqItgNSOkr04qFLCVcJhEpVK3dSML1jFDELfK4L6aC8LXNX/huR5LGgsKnaOz1l0YazxRT60CG
+	sV9tH67sTP1lbOTDs2J2PaXUY/HLvFRyyp3xrhP9Zm+uAWqAFjrlrDhrKbpThqJwx85OrbNEGvEiI
+	mcaix+1IM7/WywhEDqQam0CIRgPjsUuIPgLCNrXT1d9olDItJQhuBy6k0w2ixmVP6IAAlbhvTTFA7
+	mEVJTBWn2z8v5EpoSzOovzIFrbvCsaZdpM+eRuebzHCzB8QP/oLdOCLAdrVxJ0PasndWNWg8lLkSc
+	UE8H7BSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9jTY-00000007nIb-0imW;
-	Fri, 17 Oct 2025 12:22:28 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1v9mR1-00000008H7W-3pgW;
+	Fri, 17 Oct 2025 15:32:03 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9jTU-00000007nHF-3aBI;
-	Fri, 17 Oct 2025 12:22:26 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1760703723; cv=none; 
+	id 1v9mR1-00000008H6z-03tB;
+	Fri, 17 Oct 2025 15:32:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=5kCSOGJcwbOC+7+5BLR+gRNJdgGMuPaf20hsggRiPEw=; b=mcmdI+8Ec0GfoXPv/N67l3Halm
+	Yya0Q5B0/PWM39Qc86WIvX6vfGjWWFBy1arjLAmuHXZgbVbnUepNxYtckRprYmzgoBg6CNGgajxOH
+	YTAqP/e7xGd8Z72YkU8YA8/jJnd5ImnKkrryPAIBbOY65qfsuFJdsLfyASZWYo88Jn2V2JuDcaPz/
+	4JBHCa87ZtLg2a+0Jmo9Yp0WGVZa4vfwVwBEPqDnu0JAw9R4ZLKpzR8MBKTsUPXVzQD3etOeCvqTG
+	0txzDiJy6E8X3kMSIyD/Y4YOTjBUk/BTBTOtiHIVl9P1Ka3DYe58OpiIqdJvvm++k0WuaO5TLsm/B
+	LGezMWWg==;
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1v9mQx-00000007gSh-2cZP;
+	Fri, 17 Oct 2025 15:32:01 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1760715099; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=UMAmICaP0DmVjcDJq0w9peZBvM7IWGqT6pnW/tElYIgtQjckhuM0F0kgxg+7Uy3HIThBhmQ49GYS+aZL+VbQR7/kph9ctT1stl+SlqT5yCJz+W2j8D2pMeNXXehKek03JjLJtP4gDvVaLL4DaAjEbJnqMFagef4FsyVDaLl0Yg0=
+	b=c4cU1iyQ+Ldu7go/75NsLMcc895EysOzW9pPYMezdD/MCDBTPomGNy/uWJ+bgeTjT1obaPdxQ4sNYdYmVKnVNBci9PQIE++MXOD60PApvrwczh22YRj0vzlv7yCNiV3YN1fBo6NKy0okE4Alh5lxk4ioCVYJ8BzOEYBcoI8AvSg=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1760703723; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=tVS1yjlCPcljk4srWv5SXmg1dIE2H/RRXTrB6Ic2heM=; 
-	b=j4OoqGZ5DTFOsmf6cr1Emx6wGIfS4Sgu/rFqEX15FgSMns07IsUr6/PYK5okE9PtdtnZSe4jhQC/Vh2acBYC8HZdkTKNUJaHxCzOoU7Lhne2dbHZV5CaZK5oHGa1jP/79gH6XX22jgM/hNlQ8UMyHaD35+aYMIff/5DtiHBAWrQ=
+	t=1760715099; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=5kCSOGJcwbOC+7+5BLR+gRNJdgGMuPaf20hsggRiPEw=; 
+	b=FgeIcvHv9U6SUV9dE+nY+V2+u7r4znOqrJK5wIizK8lz4uykVEkdZrVJPLNmA6D2V0wDB+NTPyCg0xsuqdg24HnvTfMcdIypuLrbBA8+pwkuQsG2ivNuWwLIoK6TnwBi2TMA0eqs+5ZpRHBNPZDX4MXtfBd5wDAUmH4Ac1Xn53c=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1760703723;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1760715099;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=tVS1yjlCPcljk4srWv5SXmg1dIE2H/RRXTrB6Ic2heM=;
-	b=k8GMJlorX+Qdqv2XyU6q9law0BrDuTrEXukxDoN9+17ciGI0tmTwpxw53XC4zKDy
-	f4bpf3dvF4HiEO26sKZilcsYfau85A9okjutkAfx9MLsVbyBf7kRQygXWmaAF+Ts190
-	QltcMvkdhpDf0r9NAsDMwIDXnB7V96zLzZNFUhAo=
-Received: by mx.zohomail.com with SMTPS id 1760703720868631.1429498538683;
-	Fri, 17 Oct 2025 05:22:00 -0700 (PDT)
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
+	bh=5kCSOGJcwbOC+7+5BLR+gRNJdgGMuPaf20hsggRiPEw=;
+	b=dcRJGFVr87gKIRNY9cqyB1Pde29JDLQJFEqztQwXYYASI1ZGZaIrFxNmV89JpIsr
+	/W90DLOR2KhXfrKfQlX25SMmfViqCAOjs8zHh8DYLKcLAnNGm2y0IA5wignMKKiXPHn
+	Ejg6ZbvEQI+gf1I9Br+M9i7TaqIYMx3r3mVZrTfQ=
+Received: by mx.zohomail.com with SMTPS id 1760715097932797.8703392963683;
+	Fri, 17 Oct 2025 08:31:37 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Brian Masney <bmasney@redhat.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>,
- Dong Aisheng <aisheng.dong@nxp.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Yassine Oudjana <y.oudjana@protonmail.com>,
- Laura Nao <laura.nao@collabora.com>,
- =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>,
- Chia-I Wu <olvaffe@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>,
- kernel@collabora.com, linux-clk@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v3 1/5] clk: Respect CLK_OPS_PARENT_ENABLE during recalc
-Date: Fri, 17 Oct 2025 14:21:55 +0200
-Message-ID: <3342669.irdbgypaU6@workhorse>
-In-Reply-To: <aPFbDl_JKyDay1S5@redhat.com>
-References: <20251010-mtk-pll-rpm-v3-0-fb1bd15d734a@collabora.com>
- <20251010-mtk-pll-rpm-v3-1-fb1bd15d734a@collabora.com>
- <aPFbDl_JKyDay1S5@redhat.com>
+Date: Fri, 17 Oct 2025 17:31:08 +0200
+Subject: [PATCH v8 1/5] dt-bindings: gpu: mali-valhall-csf: add
+ mediatek,mt8196-mali variant
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
 Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20251017-mt8196-gpufreq-v8-1-98fc1cc566a1@collabora.com>
+References: <20251017-mt8196-gpufreq-v8-0-98fc1cc566a1@collabora.com>
+In-Reply-To: <20251017-mt8196-gpufreq-v8-0-98fc1cc566a1@collabora.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Boris Brezillon <boris.brezillon@collabora.com>, 
+ Jassi Brar <jassisinghbrar@gmail.com>, Chia-I Wu <olvaffe@gmail.com>, 
+ Chen-Yu Tsai <wenst@chromium.org>, Steven Price <steven.price@arm.com>, 
+ Liviu Dudau <liviu.dudau@arm.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Kees Cook <kees@kernel.org>, 
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>, 
+ Ulf Hansson <ulf.hansson@linaro.org>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-hardening@vger.kernel.org, linux-pm@vger.kernel.org, 
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251017_052224_949747_C6823252 
-X-CRM114-Status: GOOD (  32.35  )
+X-CRM114-CacheID: sfid-20251017_163200_210559_BAB418D1 
+X-CRM114-Status: GOOD (  11.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,108 +106,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thursday, 16 October 2025 22:52:30 Central European Summer Time Brian Masney wrote:
-> Hi Nicolas,
-> 
-> On Fri, Oct 10, 2025 at 10:47:09PM +0200, Nicolas Frattaroli wrote:
-> > When CLK_OPS_PARENT_ENABLE was introduced, it guarded various clock
-> > operations, such as setting the rate or switching parents. However,
-> > another operation that can and often does touch actual hardware state is
-> > recalc_rate, which may also be affected by such a dependency.
-> > 
-> > Add parent enables/disables where the recalc_rate op is called directly.
-> > 
-> > Fixes: fc8726a2c021 ("clk: core: support clocks which requires parents enable (part 2)")
-> > Fixes: a4b3518d146f ("clk: core: support clocks which requires parents enable (part 1)")
-> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > ---
-> >  drivers/clk/clk.c | 13 +++++++++++++
-> >  1 file changed, 13 insertions(+)
-> > 
-> > diff --git a/drivers/clk/clk.c b/drivers/clk/clk.c
-> > index 85d2f2481acf360f0618a4a382fb51250e9c2fc4..1b0f9d567f48e003497afc98df0c0d2ad244eb90 100644
-> > --- a/drivers/clk/clk.c
-> > +++ b/drivers/clk/clk.c
-> > @@ -1921,7 +1921,14 @@ static unsigned long clk_recalc(struct clk_core *core,
-> >  	unsigned long rate = parent_rate;
-> >  
-> >  	if (core->ops->recalc_rate && !clk_pm_runtime_get(core)) {
-> > +		if (core->flags & CLK_OPS_PARENT_ENABLE)
-> > +			clk_core_prepare_enable(core->parent);
-> > +
-> >  		rate = core->ops->recalc_rate(core->hw, parent_rate);
-> > +
-> > +		if (core->flags & CLK_OPS_PARENT_ENABLE)
-> > +			clk_core_disable_unprepare(core->parent);
-> > +
-> >  		clk_pm_runtime_put(core);
-> >  	}
-> >  	return rate;
-> 
-> clk_change_rate() has the following code:
-> 
-> 
->         if (core->flags & CLK_OPS_PARENT_ENABLE)
->                 clk_core_prepare_enable(parent);
-> 
-> 	...
-> 
->         core->rate = clk_recalc(core, best_parent_rate);
-> 
-> 	...
-> 
->         if (core->flags & CLK_OPS_PARENT_ENABLE)
->                 clk_core_disable_unprepare(parent);
-> 
-> clk_change_rate() ultimately is called by various clk_set_rate
-> functions. Will that be a problem for the double calls to
-> clk_core_prepare_enable()?
+The Mali-based GPU on the MediaTek MT8196 SoC uses a separate MCU to
+control the power and frequency of the GPU. This is modelled as a power
+domain and clock provider.
 
-I don't see how multiple prepares are a problem as long as they're
-balanced.
+It lets us omit the OPP tables from the device tree, as those can now be
+enumerated at runtime from the MCU.
 
-> 
-> Fanning this out to the edge further is going to make the code even
-> more complicated. What do you think about moving this to
-> clk_core_enable_lock()? I know the set_parent operation has a special
-> case that would need to be worked around.
+Add the necessary schema logic to handle what this SoC expects in terms
+of clocks and power-domains.
 
-__clk_core_init also needs special code in that case, as it calls the
-bare recalc_rate op with no clk_core_enable_lock beforehand. It's also
-wrong, in that recalc_rate does not necessitate the clock being on as
-far as I'm aware. (if it did, this wouldn't be a problem in the first
-place, as enabling it would enable the parent as well). Changing the
-semantics of clk_recalc, and therefore clk_get_rate, to also enable
-the clock, would be a major change in how the common clock framework
-functions.
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+---
+ .../bindings/gpu/arm,mali-valhall-csf.yaml         | 37 +++++++++++++++++++++-
+ 1 file changed, 36 insertions(+), 1 deletion(-)
 
-In my case, the __clk_core_init callback was the one that crashed,
-so it really needs to happen there, and I really don't want to
-refactor every location where `CLK_OPS_PARENT_ENABLE` is used for
-a bugfix just to avoid potentially checking the same flag twice.
+diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml
+index 613040fdb444..860691ce985e 100644
+--- a/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml
++++ b/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml
+@@ -45,7 +45,9 @@ properties:
+     minItems: 1
+     items:
+       - const: core
+-      - const: coregroup
++      - enum:
++          - coregroup
++          - stacks
+       - const: stacks
+ 
+   mali-supply: true
+@@ -110,6 +112,27 @@ allOf:
+         power-domain-names: false
+       required:
+         - mali-supply
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: mediatek,mt8196-mali
++    then:
++      properties:
++        mali-supply: false
++        sram-supply: false
++        operating-points-v2: false
++        power-domains:
++          maxItems: 1
++        power-domain-names: false
++        clocks:
++          maxItems: 2
++        clock-names:
++          items:
++            - const: core
++            - const: stacks
++      required:
++        - power-domains
+ 
+ examples:
+   - |
+@@ -145,5 +168,17 @@ examples:
+             };
+         };
+     };
++  - |
++    gpu@48000000 {
++        compatible = "mediatek,mt8196-mali", "arm,mali-valhall-csf";
++        reg = <0x48000000 0x480000>;
++        clocks = <&gpufreq 0>, <&gpufreq 1>;
++        clock-names = "core", "stacks";
++        interrupts = <GIC_SPI 606 IRQ_TYPE_LEVEL_HIGH 0>,
++                     <GIC_SPI 605 IRQ_TYPE_LEVEL_HIGH 0>,
++                     <GIC_SPI 604 IRQ_TYPE_LEVEL_HIGH 0>;
++        interrupt-names = "job", "mmu", "gpu";
++        power-domains = <&gpufreq>;
++    };
+ 
+ ...
 
-Having `CLK_OPS_PARENT_ENABLE` cleaned up such that every clk op
-that has potential register access is never directly called by the
-clk core except for one place, an accessor function that does both
-pmdomain and `CLK_OPS_PARENT_ENABLE` checks, would be nice, e.g.
-by keeping the clk_recalc change and then having __clk_core_init
-call clk_recalc instead of the recalc op directly. But then the
-__clk_core_init logic needs further refactoring as well.
-
-I'm not sure I want to do that in this series, because it's quite
-a bit different from just adding the missing check and parent
-toggling, and has the chance of me introducing subtle logic bugs
-in what is supposed to be a bugfix.
-
-> 
-> Brian
-> 
-> 
-
-Kind regards,
-Nicolas Frattaroli
-
+-- 
+2.51.0
 
 
