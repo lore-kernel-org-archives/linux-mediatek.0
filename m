@@ -4,37 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2587FCCD195
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Oct 2025 06:51:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0C03CCD195
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Oct 2025 06:51:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tBuzgVZFLhPv03j5fr8PoMY4MT5m212Vao5/661rt5E=; b=JdqwW7tVawY84lEBqJ+ygwEWP3
-	ROv8egGj9RKhv4wqSSzao3Jm7oP7UXlPChN1iMmR9um+CLOihyKWkn8coGqbAQvM5x3sZpMJMV5O9
-	vXXadB8pRdU8oudLzqZHW/0p2xM7oMdycN5K4x0KuReMMboA10KT5ZP1y1Ng8a3px18C4nO3UtlUE
-	ByS/XrKigQcBghq6qtPWFgH1gSy0BmpIqs9JhpAN7PpWWtkE3rbY+fK22GIAskOBKna3eJ/tRI1Gb
-	AGgPTWyfsoM7jDenOTF65B5AbJe6DYwZFkyQxU3bA6h8+YBXV+1tu1zMuXzMHrUlVLP05Rt63o5Y1
-	8VcPxcyA==;
+	bh=eLf0bzHt+kUtDapNbo6iALZJVNt6NOFjS74bsVLgWEc=; b=SyQ5+pa+ZODCZ4eXEw8cBzoLRW
+	fni5pIUYGT59tgrvA0mlYxH+Z+BmIzPzrtFXeyplUiwxiEBvp/NhZamfW3vouiXFIRJa7BDBrJSwT
+	gcCzJNqcP+R5V8PvPRIFQo7U/aLYVLeSH0FJeuftehFboSRKjpF4HnhbPOrkzmygNFiFKpXH3ACzn
+	HRDdedQoslxuUiMOmZE1zE/6rsjy4DnrG2iIPE37odqgrwBNa3xinZ8GxUvEeb1Kyhs71p4oom2xs
+	Z6bjiOfE6GAGnmT2Y+ECQ37JMmMKgQkhn+d66J7NLY/pRUNfX5qLvsLy7iI6+Rqv2dbAPlox8li1m
+	5kklHFPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9eJB-00000006rLd-3bFw;
-	Fri, 17 Oct 2025 06:51:25 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1v9eJE-00000006rQ0-3YMo;
+	Fri, 17 Oct 2025 06:51:28 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9eIV-00000006qHf-45wt;
-	Fri, 17 Oct 2025 06:50:46 +0000
-X-UUID: 963340a6ab2511f0a52f393f94899d25-20251016
+	id 1v9eIr-00000006qpC-0H8j
+	for linux-mediatek@bombadil.infradead.org;
+	Fri, 17 Oct 2025 06:51:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
+	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=eLf0bzHt+kUtDapNbo6iALZJVNt6NOFjS74bsVLgWEc=; b=ElGprxUQi6ljigXbaGPDqklX5Y
+	6gTzrzgagTwdXtcUnN5ZvJFMfqyRgPGoUse2XXB7LbeGn0N/QMITKyvplJ8rbjE0v+yGUXezm+rKY
+	8pDqjBS2XxwKdkyi1Z/67b04qbZ21p7k3I8ApgTP29GPZ8+qkMe0puAMtB/Efpj3WZkU8LE8gWNbE
+	2V8nEu/V4JuHrEUARSc74wdx/26NJI8LD4zYCjWR8U7JqtlN+OtxMVm5owiJJcXpdtRpIeWu5vtJh
+	8N+yyTJN9kKbXRI0W1TBCAefbWiWBpd0FqKmy14NoFLnOGs5zTi0tfzabVx+8ehQ36R1rhEi8FfUn
+	WgWh+uqg==;
+Received: from mailgw01.mediatek.com ([216.200.240.184])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1v9eIl-00000007M64-0wgh
+	for linux-mediatek@lists.infradead.org;
+	Fri, 17 Oct 2025 06:51:03 +0000
+X-UUID: 95447f5cab2511f09f706fa2197c6ceb-20251016
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=tBuzgVZFLhPv03j5fr8PoMY4MT5m212Vao5/661rt5E=;
-	b=Gt1xmSYV3AjkbJHI6FCah0EAr7R3pw9EcBYfuEeMbLFGkAqeIvKgVnnyzerozJyhl6cuSUIHZ1Jc4GjcFwWJ191Q2nHDAP/wYv7sKIP1SlKW8QFA/T9wZo/flrAvT0yiAMvrB/eSLYNvgUz8axuqX19bIzO5AvtX4UM7Q6vRBVM=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=eLf0bzHt+kUtDapNbo6iALZJVNt6NOFjS74bsVLgWEc=;
+	b=TNRSoyF0iH68lViMGZLknF731UMvOpFt5IBD7L3XVcN4EzmmIMiKtuSLnq4v8qWuQSgrN3PpFc97y+79B8NKZZZa5Ui2Y6vGGLcdSnb44Jyyuv+udeO4eb7VSRRz17f/9fbWRa7K0jo8ppf34kwWxdVp/+qwpay6apS3IS+TsoI=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:4e10a1f8-c39d-4707-ac75-54987bb465ee,IP:0,UR
+X-CID-O-INFO: VERSION:1.3.6,REQID:aa02c822-0f20-4358-9e84-249c107c2ee9,IP:0,UR
 	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
 	elease,TS:0
-X-CID-META: VersionHash:a9d874c,CLOUDID:393b2951-c509-4cf3-8dc0-fcdaad49a6d3,B
+X-CID-META: VersionHash:a9d874c,CLOUDID:27c17d02-eaf8-4c8c-94de-0bc39887e077,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
 	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,
 	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -42,27 +58,27 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 963340a6ab2511f0a52f393f94899d25-20251016
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
+X-UUID: 95447f5cab2511f09f706fa2197c6ceb-20251016
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
 	(envelope-from <jason-jh.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1838600134; Thu, 16 Oct 2025 23:50:37 -0700
+	with ESMTP id 1812048473; Thu, 16 Oct 2025 23:50:35 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.10; Fri, 17 Oct 2025 14:50:32 +0800
+ 15.2.1748.10; Fri, 17 Oct 2025 14:50:31 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.10 via Frontend Transport; Fri, 17 Oct 2025 14:50:32 +0800
+ 15.2.1748.10 via Frontend Transport; Fri, 17 Oct 2025 14:50:31 +0800
 From: Jason-JH Lin <jason-jh.lin@mediatek.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>, Jassi Brar <jassisinghbrar@gmail.com>,
 	Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
 	<angelogioacchino.delregno@collabora.com>, Mauro Carvalho Chehab
 	<mchehab@kernel.org>
-Subject: [PATCH v8 17/20] media: platform: mtk-mdp3: Use cmdq_pkt_jump_rel() without shift_pa
-Date: Fri, 17 Oct 2025 14:44:42 +0800
-Message-ID: <20251017065028.1676930-18-jason-jh.lin@mediatek.com>
+Subject: [PATCH v8 13/20] drm/mediatek:Use reg_write function pointer for subsys ID compatibility
+Date: Fri, 17 Oct 2025 14:44:38 +0800
+Message-ID: <20251017065028.1676930-14-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20251017065028.1676930-1-jason-jh.lin@mediatek.com>
 References: <20251017065028.1676930-1-jason-jh.lin@mediatek.com>
@@ -71,8 +87,9 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251016_235044_057689_34EB238F 
-X-CRM114-Status: GOOD (  15.14  )
+X-CRM114-CacheID: sfid-20251017_075101_248599_9AAD5F32 
+X-CRM114-Status: UNSURE (   9.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,58 +105,52 @@ Cc: devicetree@vger.kernel.org, Moudy Ho <moudy.ho@mediatek.com>, Xiandong Wang 
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-With the removal of the shift_pa parameter, cmdq_pkt_jump_rel_temp()
-can be replaced by the new cmdq_pkt_jump_rel() without shift_pa.
+Switch to reg_write and reg_write_mask function pointers for register
+access, enabling compatibility with platforms regardless of subsys ID
+support.
 
-Then, remove the cmdq_shift_pa variable in the mdp_dev structure for
-each mbox client.
-
-Fixes: ade176534112 ("soc: mediatek: cmdq: Add parameter shift_pa to cmdq_pkt_jump()")
 Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
 ---
- drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c | 2 +-
- drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c | 2 --
- drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h | 1 -
- 3 files changed, 1 insertion(+), 4 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
-index 5fc9263ccb78..7da5424d7e62 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
-@@ -628,7 +628,7 @@ static struct mdp_cmdq_cmd *mdp_cmdq_prepare(struct mdp_dev *mdp,
- 		goto err_free_path;
- 	}
- 	cmdq_pkt_eoc(&cmd->pkt);
--	cmdq_pkt_jump_rel_temp(&cmd->pkt, CMDQ_INST_SIZE, mdp->cmdq_shift_pa[pp_idx]);
-+	cmdq_pkt_jump_rel(&cmd->pkt, CMDQ_INST_SIZE);
- 
- 	for (i = 0; i < num_comp; i++) {
- 		s32 inner_id = MDP_COMP_NONE;
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-index 6559d72d5d42..4ac90f789062 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-@@ -293,8 +293,6 @@ static int mdp_probe(struct platform_device *pdev)
- 			ret = PTR_ERR(mdp->cmdq_clt[i]);
- 			goto err_mbox_destroy;
- 		}
--
--		mdp->cmdq_shift_pa[i] = cmdq_get_shift_pa(mdp->cmdq_clt[i]->chan);
- 	}
- 
- 	init_waitqueue_head(&mdp->callback_wq);
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-index 05cade1d098e..430251f63754 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-@@ -126,7 +126,6 @@ struct mdp_dev {
- 	u32					id_count;
- 	struct ida				mdp_ida;
- 	struct cmdq_client			*cmdq_clt[MDP_PP_MAX];
--	u8					cmdq_shift_pa[MDP_PP_MAX];
- 	wait_queue_head_t			callback_wq;
- 
- 	struct v4l2_device			v4l2_dev;
+diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
+index ac6620e10262..aa217fb11fd7 100644
+--- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
+@@ -72,8 +72,8 @@ void mtk_ddp_write(struct cmdq_pkt *cmdq_pkt, unsigned int value,
+ {
+ #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+ 	if (cmdq_pkt)
+-		cmdq_pkt_write(cmdq_pkt, cmdq_reg->subsys,
+-			       cmdq_reg->offset + offset, value);
++		cmdq_reg->reg_write(cmdq_pkt, cmdq_reg->subsys, cmdq_reg->pa_base,
++				    cmdq_reg->offset + offset, value);
+ 	else
+ #endif
+ 		writel(value, regs + offset);
+@@ -85,8 +85,8 @@ void mtk_ddp_write_relaxed(struct cmdq_pkt *cmdq_pkt, unsigned int value,
+ {
+ #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+ 	if (cmdq_pkt)
+-		cmdq_pkt_write(cmdq_pkt, cmdq_reg->subsys,
+-			       cmdq_reg->offset + offset, value);
++		cmdq_reg->reg_write(cmdq_pkt, cmdq_reg->subsys, cmdq_reg->pa_base,
++				    cmdq_reg->offset + offset, value);
+ 	else
+ #endif
+ 		writel_relaxed(value, regs + offset);
+@@ -98,8 +98,8 @@ void mtk_ddp_write_mask(struct cmdq_pkt *cmdq_pkt, unsigned int value,
+ {
+ #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+ 	if (cmdq_pkt) {
+-		cmdq_pkt_write_mask(cmdq_pkt, cmdq_reg->subsys,
+-				    cmdq_reg->offset + offset, value, mask);
++		cmdq_reg->reg_write_mask(cmdq_pkt, cmdq_reg->subsys, cmdq_reg->pa_base,
++					 cmdq_reg->offset + offset, value, mask);
+ 	} else {
+ #endif
+ 		u32 tmp = readl(regs + offset);
 -- 
 2.43.0
 
