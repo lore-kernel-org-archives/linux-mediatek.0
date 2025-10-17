@@ -4,80 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5294CCD19A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Oct 2025 09:09:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CB1DCCD19A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Oct 2025 12:22:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jtANRVclpvuWy8dlrPKXbqpWxnnOas7CgcIGeYvy6xo=; b=WdcX0T5FZsfxgF6PvjKr/hfpMU
-	wgzLsSBuLyXufVU9PdKeGG0j6sIrzaDBpyGaul6PoyEZKhkJwrl2j0+WCbsiU/i1JhPPuXgtT6opv
-	BBXZzCubBGIQzCuCVy/+McwYNGL6VPIxxxPIleT8NWftGd06l9P4LHtEMci353//cMmXSICJXuKtx
-	QCi8RuS7k2fWbwyzM1WGa2FaiVTLTUWMnFvW/oAOl8WUZzGMIeedDoZYp9L5MmEU0yUEMmtuW+QIr
-	/u9or+sIjVHze7S7hkAUB6ESqS+FyX4grV75XQqB1Y+0OBDTGosoVcen96uiYNtSTgK9PLQdUVga+
-	E/75TwNg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tVS1yjlCPcljk4srWv5SXmg1dIE2H/RRXTrB6Ic2heM=; b=a+M8wFGDfXnJndz7Vmw8G9YQuz
+	GwfrEqXfAfSs8gb7BY6eiTxWZLLwJE+nsjikjTCiRJSonfpMkRSTdc4edcrwJq55QrZBuAcdm28p8
+	ZAsYv531SrhhBT8H1Gwa4ivAOLPXmAD+cRxTXX5NuX7xnR0RnjnCX/b+XbqvkHNsvMicfCwXZXfc3
+	ws3XIXxiiRv808BXQy/KNHINMkal9rW/pNMZmmidvcBYw41i39S6lii3R2rzab6UwsvTjTE2AjFe2
+	qV2tuQSubHW4c8Udp0tAzw4SauvHCF/5QLl7gxgCfQg6GzAUupIgJrMnJ5VMW1aqvuH6cC11wmR4Q
+	U59nIdvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9gSr-00000007E0H-3mYV;
-	Fri, 17 Oct 2025 09:09:33 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1v9jTY-00000007nIb-0imW;
+	Fri, 17 Oct 2025 12:22:28 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9gSq-00000007DzT-1D9f;
-	Fri, 17 Oct 2025 09:09:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=jtANRVclpvuWy8dlrPKXbqpWxnnOas7CgcIGeYvy6xo=; b=Qi4OPRFhLXko8vuA7G0Xga0rfq
-	ToBckhXkwbpuLgbDWZ7vRVyB7ZNPBKPSIMDfXou0JSFRtmOjQWV9Ag3bb45o6cNwh0n8alfwYVar4
-	pOS9N5UQEMAK/4ZIlvChypwvg9MhYO6aE0xt8e7LT0eR2No25jWcjvNyVqY6JeFWN0/OVnvkibJRE
-	RSAO3X1xt3AEeXPLFiv+39BponHiW99SW/8QKXrNZ4sOho4dxqXI/z2iHu8l/Q2Oq/mtf3ne9Wv5y
-	wmYCkaCNLjDzfg+kJxrNDeHxmFS+2Aww9dQfeaBoDXloKP+khsFoKvJXCaoxQdMe+d2Egg0pFdYyv
-	1H4QObkw==;
-Received: from sea.source.kernel.org ([172.234.252.31])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9gQT-00000007Px7-1ILW;
-	Fri, 17 Oct 2025 09:09:17 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9C82440786;
-	Fri, 17 Oct 2025 09:06:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 25D13C4CEF9;
-	Fri, 17 Oct 2025 09:06:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760692017;
-	bh=ptWrRTulQ7ja6IlTLgATLScM0utDLOR3ac/K/ROGBcY=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=EhWDvd+IcNjQ0EpcsKd1baxcIeX8OsVl9Ajif4J0Y+YZHUD41LrqxMyizcajZGDSx
-	 +M029aoHL093q3HKgfO5qu++/XsFPEnpBMmKn/NJH7Rg6lexJMWjY6HEveyjm2JK83
-	 ZOguQAg9HAWpQaFl24rQTz9d/5qICMLAa97ZIsDW5x2RPw32IvC+d8P1r86suQNbqj
-	 Ap6CW1PDHUjZXQzyf9MEtzjUqpzWYg/BKRdK1Pm67Zyocu0ihKJGDzwIK77/PyRWzH
-	 cZYqMJaqMGWEMiRIBH7Z2x0syO5K00XjHheIguItvvHS7gSvxHpYchqsKw9/xPY0ZW
-	 ydpQbczxLuQNQ==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Fri, 17 Oct 2025 11:06:19 +0200
-Subject: [PATCH net-next v3 10/13] net: airoha: Select default ppe cpu port
- in airoha_dev_init()
+	id 1v9jTU-00000007nHF-3aBI;
+	Fri, 17 Oct 2025 12:22:26 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1760703723; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=UMAmICaP0DmVjcDJq0w9peZBvM7IWGqT6pnW/tElYIgtQjckhuM0F0kgxg+7Uy3HIThBhmQ49GYS+aZL+VbQR7/kph9ctT1stl+SlqT5yCJz+W2j8D2pMeNXXehKek03JjLJtP4gDvVaLL4DaAjEbJnqMFagef4FsyVDaLl0Yg0=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1760703723; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=tVS1yjlCPcljk4srWv5SXmg1dIE2H/RRXTrB6Ic2heM=; 
+	b=j4OoqGZ5DTFOsmf6cr1Emx6wGIfS4Sgu/rFqEX15FgSMns07IsUr6/PYK5okE9PtdtnZSe4jhQC/Vh2acBYC8HZdkTKNUJaHxCzOoU7Lhne2dbHZV5CaZK5oHGa1jP/79gH6XX22jgM/hNlQ8UMyHaD35+aYMIff/5DtiHBAWrQ=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1760703723;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=tVS1yjlCPcljk4srWv5SXmg1dIE2H/RRXTrB6Ic2heM=;
+	b=k8GMJlorX+Qdqv2XyU6q9law0BrDuTrEXukxDoN9+17ciGI0tmTwpxw53XC4zKDy
+	f4bpf3dvF4HiEO26sKZilcsYfau85A9okjutkAfx9MLsVbyBf7kRQygXWmaAF+Ts190
+	QltcMvkdhpDf0r9NAsDMwIDXnB7V96zLzZNFUhAo=
+Received: by mx.zohomail.com with SMTPS id 1760703720868631.1429498538683;
+	Fri, 17 Oct 2025 05:22:00 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Brian Masney <bmasney@redhat.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>,
+ Dong Aisheng <aisheng.dong@nxp.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Yassine Oudjana <y.oudjana@protonmail.com>,
+ Laura Nao <laura.nao@collabora.com>,
+ =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>,
+ Chia-I Wu <olvaffe@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>,
+ kernel@collabora.com, linux-clk@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v3 1/5] clk: Respect CLK_OPS_PARENT_ENABLE during recalc
+Date: Fri, 17 Oct 2025 14:21:55 +0200
+Message-ID: <3342669.irdbgypaU6@workhorse>
+In-Reply-To: <aPFbDl_JKyDay1S5@redhat.com>
+References: <20251010-mtk-pll-rpm-v3-0-fb1bd15d734a@collabora.com>
+ <20251010-mtk-pll-rpm-v3-1-fb1bd15d734a@collabora.com>
+ <aPFbDl_JKyDay1S5@redhat.com>
 MIME-Version: 1.0
+Content-Transfer-Encoding: 7Bit
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20251017-an7583-eth-support-v3-10-f28319666667@kernel.org>
-References: <20251017-an7583-eth-support-v3-0-f28319666667@kernel.org>
-In-Reply-To: <20251017-an7583-eth-support-v3-0-f28319666667@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- devicetree@vger.kernel.org, Simon Horman <horms@kernel.org>
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251017_100717_589159_A3C835A7 
-X-CRM114-Status: GOOD (  12.60  )
+X-CRM114-CacheID: sfid-20251017_052224_949747_C6823252 
+X-CRM114-Status: GOOD (  32.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,93 +86,108 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Select the PPE default cpu port in airoha_dev_init routine.
-This patch allows to distribute the load between the two available cpu
-ports (FE_PSE_PORT_CDM1 and FE_PSE_PORT_CDM2) if the device is running a
-single PPE module (e.g. 7583) selecting the cpu port based on the use
-QDMA device. For multi-PPE device (e.g. 7581) assign FE_PSE_PORT_CDM1 to
-PPE1 and FE_PSE_PORT_CDM2 to PPE2.
+On Thursday, 16 October 2025 22:52:30 Central European Summer Time Brian Masney wrote:
+> Hi Nicolas,
+> 
+> On Fri, Oct 10, 2025 at 10:47:09PM +0200, Nicolas Frattaroli wrote:
+> > When CLK_OPS_PARENT_ENABLE was introduced, it guarded various clock
+> > operations, such as setting the rate or switching parents. However,
+> > another operation that can and often does touch actual hardware state is
+> > recalc_rate, which may also be affected by such a dependency.
+> > 
+> > Add parent enables/disables where the recalc_rate op is called directly.
+> > 
+> > Fixes: fc8726a2c021 ("clk: core: support clocks which requires parents enable (part 2)")
+> > Fixes: a4b3518d146f ("clk: core: support clocks which requires parents enable (part 1)")
+> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> > Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> > ---
+> >  drivers/clk/clk.c | 13 +++++++++++++
+> >  1 file changed, 13 insertions(+)
+> > 
+> > diff --git a/drivers/clk/clk.c b/drivers/clk/clk.c
+> > index 85d2f2481acf360f0618a4a382fb51250e9c2fc4..1b0f9d567f48e003497afc98df0c0d2ad244eb90 100644
+> > --- a/drivers/clk/clk.c
+> > +++ b/drivers/clk/clk.c
+> > @@ -1921,7 +1921,14 @@ static unsigned long clk_recalc(struct clk_core *core,
+> >  	unsigned long rate = parent_rate;
+> >  
+> >  	if (core->ops->recalc_rate && !clk_pm_runtime_get(core)) {
+> > +		if (core->flags & CLK_OPS_PARENT_ENABLE)
+> > +			clk_core_prepare_enable(core->parent);
+> > +
+> >  		rate = core->ops->recalc_rate(core->hw, parent_rate);
+> > +
+> > +		if (core->flags & CLK_OPS_PARENT_ENABLE)
+> > +			clk_core_disable_unprepare(core->parent);
+> > +
+> >  		clk_pm_runtime_put(core);
+> >  	}
+> >  	return rate;
+> 
+> clk_change_rate() has the following code:
+> 
+> 
+>         if (core->flags & CLK_OPS_PARENT_ENABLE)
+>                 clk_core_prepare_enable(parent);
+> 
+> 	...
+> 
+>         core->rate = clk_recalc(core, best_parent_rate);
+> 
+> 	...
+> 
+>         if (core->flags & CLK_OPS_PARENT_ENABLE)
+>                 clk_core_disable_unprepare(parent);
+> 
+> clk_change_rate() ultimately is called by various clk_set_rate
+> functions. Will that be a problem for the double calls to
+> clk_core_prepare_enable()?
 
-Reviewed-by: Simon Horman <horms@kernel.org>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c | 38 ++++++++++++++------------------
- 1 file changed, 16 insertions(+), 22 deletions(-)
+I don't see how multiple prepares are a problem as long as they're
+balanced.
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index dea856ddf242d2c4ec3ca44796fc6deb2d784904..4e338c126dd3fa16f040960ff7f26d8214a9d6f7 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -531,25 +531,6 @@ static int airoha_fe_init(struct airoha_eth *eth)
- 	/* disable IFC by default */
- 	airoha_fe_clear(eth, REG_FE_CSR_IFC_CFG, FE_IFC_EN_MASK);
- 
--	airoha_fe_wr(eth, REG_PPE_DFT_CPORT0(0),
--		     FIELD_PREP(DFT_CPORT_MASK(7), FE_PSE_PORT_CDM1) |
--		     FIELD_PREP(DFT_CPORT_MASK(6), FE_PSE_PORT_CDM1) |
--		     FIELD_PREP(DFT_CPORT_MASK(5), FE_PSE_PORT_CDM1) |
--		     FIELD_PREP(DFT_CPORT_MASK(4), FE_PSE_PORT_CDM1) |
--		     FIELD_PREP(DFT_CPORT_MASK(3), FE_PSE_PORT_CDM1) |
--		     FIELD_PREP(DFT_CPORT_MASK(2), FE_PSE_PORT_CDM1) |
--		     FIELD_PREP(DFT_CPORT_MASK(1), FE_PSE_PORT_CDM1) |
--		     FIELD_PREP(DFT_CPORT_MASK(0), FE_PSE_PORT_CDM1));
--	airoha_fe_wr(eth, REG_PPE_DFT_CPORT0(1),
--		     FIELD_PREP(DFT_CPORT_MASK(7), FE_PSE_PORT_CDM2) |
--		     FIELD_PREP(DFT_CPORT_MASK(6), FE_PSE_PORT_CDM2) |
--		     FIELD_PREP(DFT_CPORT_MASK(5), FE_PSE_PORT_CDM2) |
--		     FIELD_PREP(DFT_CPORT_MASK(4), FE_PSE_PORT_CDM2) |
--		     FIELD_PREP(DFT_CPORT_MASK(3), FE_PSE_PORT_CDM2) |
--		     FIELD_PREP(DFT_CPORT_MASK(2), FE_PSE_PORT_CDM2) |
--		     FIELD_PREP(DFT_CPORT_MASK(1), FE_PSE_PORT_CDM2) |
--		     FIELD_PREP(DFT_CPORT_MASK(0), FE_PSE_PORT_CDM2));
--
- 	/* enable 1:N vlan action, init vlan table */
- 	airoha_fe_set(eth, REG_MC_VLAN_EN, MC_VLAN_EN_MASK);
- 
-@@ -1756,8 +1737,10 @@ static void airhoha_set_gdm2_loopback(struct airoha_gdm_port *port)
- static int airoha_dev_init(struct net_device *dev)
- {
- 	struct airoha_gdm_port *port = netdev_priv(dev);
--	struct airoha_eth *eth = port->qdma->eth;
--	u32 pse_port;
-+	struct airoha_qdma *qdma = port->qdma;
-+	struct airoha_eth *eth = qdma->eth;
-+	u32 pse_port, fe_cpu_port;
-+	u8 ppe_id;
- 
- 	airoha_set_macaddr(port, dev->dev_addr);
- 
-@@ -1770,16 +1753,27 @@ static int airoha_dev_init(struct net_device *dev)
- 		fallthrough;
- 	case 2:
- 		if (airoha_ppe_is_enabled(eth, 1)) {
-+			/* For PPE2 always use secondary cpu port. */
-+			fe_cpu_port = FE_PSE_PORT_CDM2;
- 			pse_port = FE_PSE_PORT_PPE2;
- 			break;
- 		}
- 		fallthrough;
--	default:
-+	default: {
-+		u8 qdma_id = qdma - &eth->qdma[0];
-+
-+		/* For PPE1 select cpu port according to the running QDMA. */
-+		fe_cpu_port = qdma_id ? FE_PSE_PORT_CDM2 : FE_PSE_PORT_CDM1;
- 		pse_port = FE_PSE_PORT_PPE1;
- 		break;
- 	}
-+	}
- 
- 	airoha_set_gdm_port_fwd_cfg(eth, REG_GDM_FWD_CFG(port->id), pse_port);
-+	ppe_id = pse_port == FE_PSE_PORT_PPE2 ? 1 : 0;
-+	airoha_fe_rmw(eth, REG_PPE_DFT_CPORT0(ppe_id),
-+		      DFT_CPORT_MASK(port->id),
-+		      fe_cpu_port << __ffs(DFT_CPORT_MASK(port->id)));
- 
- 	return 0;
- }
+> 
+> Fanning this out to the edge further is going to make the code even
+> more complicated. What do you think about moving this to
+> clk_core_enable_lock()? I know the set_parent operation has a special
+> case that would need to be worked around.
 
--- 
-2.51.0
+__clk_core_init also needs special code in that case, as it calls the
+bare recalc_rate op with no clk_core_enable_lock beforehand. It's also
+wrong, in that recalc_rate does not necessitate the clock being on as
+far as I'm aware. (if it did, this wouldn't be a problem in the first
+place, as enabling it would enable the parent as well). Changing the
+semantics of clk_recalc, and therefore clk_get_rate, to also enable
+the clock, would be a major change in how the common clock framework
+functions.
+
+In my case, the __clk_core_init callback was the one that crashed,
+so it really needs to happen there, and I really don't want to
+refactor every location where `CLK_OPS_PARENT_ENABLE` is used for
+a bugfix just to avoid potentially checking the same flag twice.
+
+Having `CLK_OPS_PARENT_ENABLE` cleaned up such that every clk op
+that has potential register access is never directly called by the
+clk core except for one place, an accessor function that does both
+pmdomain and `CLK_OPS_PARENT_ENABLE` checks, would be nice, e.g.
+by keeping the clk_recalc change and then having __clk_core_init
+call clk_recalc instead of the recalc op directly. But then the
+__clk_core_init logic needs further refactoring as well.
+
+I'm not sure I want to do that in this series, because it's quite
+a bit different from just adding the missing check and parent
+toggling, and has the chance of me introducing subtle logic bugs
+in what is supposed to be a bugfix.
+
+> 
+> Brian
+> 
+> 
+
+Kind regards,
+Nicolas Frattaroli
+
 
 
