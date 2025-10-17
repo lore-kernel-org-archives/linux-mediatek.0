@@ -4,51 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB9AFCCD19A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Oct 2025 09:07:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AAE4CCD195
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Oct 2025 09:07:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kKyjGiyd7indH53/JCj/Agdp6vht+UmUXB46TuKzHAg=; b=dgEubdstEibmIL7c1l+uVfZSsl
-	l0rmHK3hcbPAfnHvElv09Ph+ZInIxVqX3/TW638mrDBIHjaO4HPVzy4qkhNYa479R5hGIlUinB+8C
-	/3UU4y85FkRKnTGz+8RMV8fO4E/cfSXX6BhhHNnRfKxH4+mqVLZDpTwPTihlsP9k8j9HDK5moaUU4
-	+P/Mg4FTao038HxnsDqH6ekWZ8Ef1CMiG3cQ71DaWPffBpuu5O59fqLFXeoeFB37zkslpxQHsEYox
-	cV/itu6hZ60Zdgoqr9GVuvwrIHhS3naeX2XYo2NecdVtTLgsdbSMGQrUEpEbqs5KB9G/wcJrm1Y0n
-	MAv5Y+zg==;
+	bh=5ip9kvXru0pEM0OrmtvhpTlzSB1s6ihGfjEFF3zo82Q=; b=RSnNlRuK+9waMOKb7wpUpf430o
+	jyoL9kq9m5aoUiAQtfg8IH430EcSH12r4hjpFRKyp2cXhh1CiwkrMf+TxvISxg9HYuTpZ9QQ6SiVV
+	cZW04suIxrOT4yN+5lesMuwn4PWVEfHK87EL0VcmDZwOZOBSMN4aVrpN4MIzThjQkklh3PlI11J56
+	cJeNsMonmi/AuOHA5Jbsnwnebcfnp5mYOXCa4yp6Ndi0qhGly3TrFP0CzQPLdXk8WtLa9Z+ddJYS8
+	2IQ0iLjAF9RqsY0MXg+qewAhDIOJHXKOFRDKyWY1t1W/nB+Mn7f/V9/N/wvOPj9+DRvO3dndSQzm2
+	6Uvx+ipg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9gQQ-00000007CGJ-3SKv;
-	Fri, 17 Oct 2025 09:07:02 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1v9gQe-00000007CXN-43ul;
+	Fri, 17 Oct 2025 09:07:16 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9gQJ-00000007C4r-1eEd;
-	Fri, 17 Oct 2025 09:06:56 +0000
+	id 1v9gQd-00000007CUP-0W5I;
+	Fri, 17 Oct 2025 09:07:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:Message-Id
+	:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender
+	:Reply-To:Content-ID:Content-Description;
+	bh=5ip9kvXru0pEM0OrmtvhpTlzSB1s6ihGfjEFF3zo82Q=; b=WoUGTlKsGEpYYlmidSQ/LMjZTX
+	PYWhP4ZLfg/7dLEfC9YxNjyhP1rQ6oXOi/xhocFFFBDbKnO3yNfYrhglGh3irdsiMHxOjnLICeo6K
+	yi9k1b/QcUhx8wYsd5cKH175zN++ZIDqeli10fZS49fdQwmZzpHpb8HMUL8zMAZxwTPKq0zGpjhnZ
+	46+sGvTQQh0jTU3fzvJ2TE745yrT7boTOo7ApR3CDyYrD8xKc9WgpHNgkn2aFHvZcUKuTP14rNQnm
+	LvWaQqQmjAEinTekbc7Skuine8/148eZQLX59XJyU4G6XgGRInGeukLQrnvCxhnfXwFRgQXOBSA7G
+	B5eT8Nkw==;
+Received: from sea.source.kernel.org ([172.234.252.31])
+	by casper.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1v9gQY-000000072sj-20c6;
+	Fri, 17 Oct 2025 09:07:13 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 150854B0C1;
-	Fri, 17 Oct 2025 09:06:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 93BACC113D0;
-	Fri, 17 Oct 2025 09:06:54 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 5396A40C05;
+	Fri, 17 Oct 2025 09:07:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D33E8C4CEE7;
+	Fri, 17 Oct 2025 09:07:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760692014;
-	bh=2hNyNS6XgkjccYANXlv5LduUzRd2LBIUmU8MlMuX+94=;
+	s=k20201202; t=1760692025;
+	bh=0B65CqGzJEK6ceaUHrNKfW0NJ7hQsUV/sEi/kCYzBAw=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=FJtE8OVhXtLK8Cw7eEr39wsLv+2SPqW1Hz98/SFs0x2eNvqnlzcmw7z+YtUqubzae
-	 dYO2R/WjGzU1u07YgHEkj3lWmaS5wggVXP8XJa1qkU1lA0blSBTBLGl77iZHpAdIp2
-	 fHGrXA9hnJl5td2GtafWQFuNo0EVVbDMjfot/s6Dx/rur4zMws2yx+p5XYmaL8r/Ai
-	 cRemtla3D1hEYRImHxp0EHbeQ5xFQZwkoO/I9wdrMxcPbaG35DaO0v3WzwCUKSd6U+
-	 LjXM6Cit/1DpT5OH0OHdFMhyVxYmJ6af7QOwIny0XLMTkQsmA80xoq7l8ZzFGp+Zbm
-	 7fiVTnB7VLnXQ==
+	b=oP2P2nq9WZa8iQ6R+VCwTi0eH2hwOQ/biFYbUmiKYFKJECaYdfW0+/JCL2uZwMcy8
+	 HPHVzN1PSBUF0ZhjtPz/+mUNGN34VBoDkLfMR1SX/FPCgegjv8GTRj1Jx2lChBB5At
+	 c0oxRNe+6zjxYMgt5+2tdzDG4Ug0R84cDZKZ0eMsW/g8BuJ+t+atqQgWq47kf+UetI
+	 F8kLZNUd5A/Ix4AeHXaDr+mSv9fwIgk3ndUnae9OSloEWjaMMXHVpAmu3nsgdYd50x
+	 PvQtFpnzn/y8vUmSzhy877IEeKfq4IptYYohKiJD4NmVPqZVVBpacAP0O/dMoVLL8W
+	 DQBU2XNgHpZHw==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Fri, 17 Oct 2025 11:06:18 +0200
-Subject: [PATCH net-next v3 09/13] net: airoha: ppe: Flush PPE SRAM table
- during PPE setup
+Date: Fri, 17 Oct 2025 11:06:22 +0200
+Subject: [PATCH net-next v3 13/13] net: airoha: Add AN7583 SoC support
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251017-an7583-eth-support-v3-9-f28319666667@kernel.org>
+Message-Id: <20251017-an7583-eth-support-v3-13-f28319666667@kernel.org>
 References: <20251017-an7583-eth-support-v3-0-f28319666667@kernel.org>
 In-Reply-To: <20251017-an7583-eth-support-v3-0-f28319666667@kernel.org>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
@@ -62,8 +75,8 @@ Cc: linux-arm-kernel@lists.infradead.org,
  devicetree@vger.kernel.org, Simon Horman <horms@kernel.org>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251017_020655_473344_2ED87D7F 
-X-CRM114-Status: GOOD (  12.42  )
+X-CRM114-CacheID: sfid-20251017_100712_061297_858C8FB2 
+X-CRM114-Status: GOOD (  16.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,72 +91,190 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Rely on airoha_ppe_foe_commit_sram_entry routine to flush SRAM PPE table
-entries. This patch allow moving PPE SRAM flush during PPE setup and
-avoid dumping uninitialized values via the debugfs if no entries are
-offloaded yet.
+Introduce support for AN7583 ethernet controller to airoha-eth dirver.
 
 Reviewed-by: Simon Horman <horms@kernel.org>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/ethernet/airoha/airoha_ppe.c | 24 ++++++++++++++----------
- 1 file changed, 14 insertions(+), 10 deletions(-)
+ drivers/net/ethernet/airoha/airoha_eth.c | 68 +++++++++++++++++++++++++++++---
+ drivers/net/ethernet/airoha/airoha_eth.h | 11 ++++++
+ drivers/net/ethernet/airoha/airoha_ppe.c |  3 ++
+ 3 files changed, 77 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index 46755bc60a8e822b296e188c061c45eae0b88cb5..4b038673cefe20b47c42dd1419c05b57d4d6c64d 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -1291,18 +1291,22 @@ static int airoha_ppe_flow_offload_cmd(struct airoha_eth *eth,
- 	return -EOPNOTSUPP;
- }
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index 4671f906a68c794d2ad05fbf5777fe22405c3d8f..8483ea02603e24de5eb37654452f8c2b21b9bff4 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -1684,10 +1684,8 @@ static int airoha_dev_set_macaddr(struct net_device *dev, void *p)
  
--static int airoha_ppe_flush_sram_entries(struct airoha_ppe *ppe,
--					 struct airoha_npu *npu)
-+static int airoha_ppe_flush_sram_entries(struct airoha_ppe *ppe)
+ static int airhoha_set_gdm2_loopback(struct airoha_gdm_port *port)
  {
- 	u32 sram_num_entries = airoha_ppe_get_total_sram_num_entries(ppe);
- 	struct airoha_foe_entry *hwe = ppe->foe;
--	int i;
-+	int i, err = 0;
+-	u32 val, pse_port, chan = port->id == AIROHA_GDM3_IDX ? 4 : 0;
+ 	struct airoha_eth *eth = port->qdma->eth;
+-	/* XXX: handle XSI_USB_PORT and XSI_PCE1_PORT */
+-	u32 nbq = port->id == AIROHA_GDM3_IDX ? 4 : 0;
++	u32 val, pse_port, chan, nbq;
+ 	int src_port;
+ 
+ 	/* Forward the traffic to the proper GDM port */
+@@ -1699,6 +1697,8 @@ static int airhoha_set_gdm2_loopback(struct airoha_gdm_port *port)
+ 	/* Enable GDM2 loopback */
+ 	airoha_fe_wr(eth, REG_GDM_TXCHN_EN(2), 0xffffffff);
+ 	airoha_fe_wr(eth, REG_GDM_RXCHN_EN(2), 0xffff);
 +
-+	for (i = 0; i < sram_num_entries; i++) {
-+		int err;
++	chan = port->id == AIROHA_GDM3_IDX ? airoha_is_7581(eth) ? 4 : 3 : 0;
+ 	airoha_fe_rmw(eth, REG_GDM_LPBK_CFG(2),
+ 		      LPBK_CHAN_MASK | LPBK_MODE_MASK | LPBK_EN_MASK,
+ 		      FIELD_PREP(LPBK_CHAN_MASK, chan) |
+@@ -1713,6 +1713,8 @@ static int airhoha_set_gdm2_loopback(struct airoha_gdm_port *port)
+ 	airoha_fe_clear(eth, REG_FE_VIP_PORT_EN, BIT(2));
+ 	airoha_fe_clear(eth, REG_FE_IFC_PORT_EN, BIT(2));
  
--	for (i = 0; i < PPE_SRAM_NUM_ENTRIES; i++)
- 		memset(&hwe[i], 0, sizeof(*hwe));
-+		err = airoha_ppe_foe_commit_sram_entry(ppe, i);
-+		if (err)
-+			break;
-+	}
++	/* XXX: handle XSI_USB_PORT and XSI_PCE1_PORT */
++	nbq = port->id == AIROHA_GDM3_IDX && airoha_is_7581(eth) ? 4 : 0;
+ 	src_port = eth->soc->ops.get_src_port_id(port, nbq);
+ 	if (src_port < 0)
+ 		return src_port;
+@@ -1726,7 +1728,7 @@ static int airhoha_set_gdm2_loopback(struct airoha_gdm_port *port)
+ 		      SP_CPORT_MASK(val),
+ 		      FE_PSE_PORT_CDM2 << __ffs(SP_CPORT_MASK(val)));
  
--	return npu->ops.ppe_flush_sram_entries(npu, ppe->foe_dma,
--					       sram_num_entries);
-+	return err;
+-	if (port->id != AIROHA_GDM3_IDX)
++	if (port->id != AIROHA_GDM3_IDX && airoha_is_7581(eth))
+ 		airoha_fe_rmw(eth, REG_SRC_PORT_FC_MAP6,
+ 			      FC_ID_OF_SRC_PORT24_MASK,
+ 			      FIELD_PREP(FC_ID_OF_SRC_PORT24_MASK, 2));
+@@ -1895,6 +1897,22 @@ static bool airoha_dev_tx_queue_busy(struct airoha_queue *q, u32 nr_frags)
+ 	return index >= tail;
  }
  
- static struct airoha_npu *airoha_ppe_npu_get(struct airoha_eth *eth)
-@@ -1339,10 +1343,6 @@ static int airoha_ppe_offload_setup(struct airoha_eth *eth)
++static int airoha_get_fe_port(struct airoha_gdm_port *port)
++{
++	struct airoha_qdma *qdma = port->qdma;
++	struct airoha_eth *eth = qdma->eth;
++
++	switch (eth->soc->version) {
++	case 0x7583:
++		return port->id == AIROHA_GDM3_IDX ? FE_PSE_PORT_GDM3
++						   : port->id;
++	case 0x7581:
++	default:
++		return port->id == AIROHA_GDM4_IDX ? FE_PSE_PORT_GDM4
++						   : port->id;
++	}
++}
++
+ static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
+ 				   struct net_device *dev)
+ {
+@@ -1935,7 +1953,7 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
+ 		}
  	}
  
- 	airoha_ppe_hw_init(ppe);
--	err = airoha_ppe_flush_sram_entries(ppe, npu);
--	if (err)
--		goto error_npu_put;
--
- 	airoha_ppe_foe_flow_stats_reset(ppe, npu);
+-	fport = port->id == 4 ? FE_PSE_PORT_GDM4 : port->id;
++	fport = airoha_get_fe_port(port);
+ 	msg1 = FIELD_PREP(QDMA_ETH_TXMSG_FPORT_MASK, fport) |
+ 	       FIELD_PREP(QDMA_ETH_TXMSG_METER_MASK, 0x7f);
  
- 	rcu_assign_pointer(eth->npu, npu);
-@@ -1513,6 +1513,10 @@ int airoha_ppe_init(struct airoha_eth *eth)
- 	if (!ppe->foe_check_time)
- 		return -ENOMEM;
+@@ -3098,6 +3116,35 @@ static int airoha_en7581_get_src_port_id(struct airoha_gdm_port *port, int nbq)
+ 	return -EINVAL;
+ }
  
-+	err = airoha_ppe_flush_sram_entries(ppe);
-+	if (err)
-+		return err;
++static const char * const an7583_xsi_rsts_names[] = {
++	"xsi-mac",
++	"hsi0-mac",
++	"hsi1-mac",
++	"xfp-mac",
++};
 +
- 	err = rhashtable_init(&eth->flow_table, &airoha_flow_table_params);
- 	if (err)
- 		return err;
++static int airoha_an7583_get_src_port_id(struct airoha_gdm_port *port, int nbq)
++{
++	switch (port->id) {
++	case 3:
++		/* 7583 SoC supports eth serdes on GDM3 port */
++		if (!nbq)
++			return HSGMII_LAN_7583_ETH_SRCPORT;
++		break;
++	case 4:
++		/* 7583 SoC supports PCIe and USB serdes on GDM4 port */
++		if (!nbq)
++			return HSGMII_LAN_7583_PCIE_SRCPORT;
++		if (nbq == 1)
++			return HSGMII_LAN_7583_USB_SRCPORT;
++		break;
++	default:
++		break;
++	}
++
++	return -EINVAL;
++}
++
+ static const struct airoha_eth_soc_data en7581_soc_data = {
+ 	.version = 0x7581,
+ 	.xsi_rsts_names = en7581_xsi_rsts_names,
+@@ -3108,8 +3155,19 @@ static const struct airoha_eth_soc_data en7581_soc_data = {
+ 	},
+ };
+ 
++static const struct airoha_eth_soc_data an7583_soc_data = {
++	.version = 0x7583,
++	.xsi_rsts_names = an7583_xsi_rsts_names,
++	.num_xsi_rsts = ARRAY_SIZE(an7583_xsi_rsts_names),
++	.num_ppe = 1,
++	.ops = {
++		.get_src_port_id = airoha_an7583_get_src_port_id,
++	},
++};
++
+ static const struct of_device_id of_airoha_match[] = {
+ 	{ .compatible = "airoha,en7581-eth", .data = &en7581_soc_data },
++	{ .compatible = "airoha,an7583-eth", .data = &an7583_soc_data },
+ 	{ /* sentinel */ }
+ };
+ MODULE_DEVICE_TABLE(of, of_airoha_match);
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
+index e09579da8c78a99ef07ee7eef7be3cd6c1b5be76..eb27a4ff51984ef376c6e94607ee2dc1a806488b 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.h
++++ b/drivers/net/ethernet/airoha/airoha_eth.h
+@@ -73,6 +73,12 @@ enum {
+ 	HSGMII_LAN_7581_USB_SRCPORT,
+ };
+ 
++enum {
++	HSGMII_LAN_7583_ETH_SRCPORT	= 0x16,
++	HSGMII_LAN_7583_PCIE_SRCPORT	= 0x18,
++	HSGMII_LAN_7583_USB_SRCPORT,
++};
++
+ enum {
+ 	XSI_PCIE0_VIP_PORT_MASK	= BIT(22),
+ 	XSI_PCIE1_VIP_PORT_MASK	= BIT(23),
+@@ -629,6 +635,11 @@ static inline bool airoha_is_7581(struct airoha_eth *eth)
+ 	return eth->soc->version == 0x7581;
+ }
+ 
++static inline bool airoha_is_7583(struct airoha_eth *eth)
++{
++	return eth->soc->version == 0x7583;
++}
++
+ bool airoha_is_valid_gdm_port(struct airoha_eth *eth,
+ 			      struct airoha_gdm_port *port);
+ 
+diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
+index eda95107cd1daf6ff00a85abc72313a509ed67e9..c373f21d95f5a610deae365c64bc589c21f5e1a0 100644
+--- a/drivers/net/ethernet/airoha/airoha_ppe.c
++++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+@@ -37,6 +37,9 @@ static int airoha_ppe_get_num_stats_entries(struct airoha_ppe *ppe)
+ 	if (!IS_ENABLED(CONFIG_NET_AIROHA_FLOW_STATS))
+ 		return -EOPNOTSUPP;
+ 
++	if (airoha_is_7583(ppe->eth))
++		return -EOPNOTSUPP;
++
+ 	return PPE_STATS_NUM_ENTRIES;
+ }
+ 
 
 -- 
 2.51.0
