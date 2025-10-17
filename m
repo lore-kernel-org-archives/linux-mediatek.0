@@ -4,108 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6025CCD183
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Oct 2025 20:52:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2099CCD184
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Oct 2025 05:18:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/cKRiSBHedJeuF2YiPC1JdZMWW96N+8/8JV1od4hamE=; b=TcXbahadVSkygyHPUvoCsPetAl
-	c2widVPYXrirxN74fh/njmeW6zBhBqZ/ExX36P7BB3f93BkPgbzY+ma8cgD6IsChfS7lA7QTj2VtN
-	FDuWVMC53LQcqyWFPrF6sZz45Ok+6n4rcP2qBoH/NC7YH2/YAbPhFXI3/y+E6bs+x/1Lob5HPcWh1
-	+GULsTRS5NKyrTK3L9nnM0l822GdyJFpXI7u1Bxm8AYsOvrqrn5v3EX9UoesCHrFw+q3WFfGhbb6A
-	eVjSFm65NqP6pfMHWqLIzUeG1jMPG7bpH3oHaXZeSH6H/UoIpaIgUf/MoH+wQ5BNv97g4Ma5BiteA
-	sUvBiBBg==;
+	bh=l6S63uReOFquePjk+el+IDhyWrHQTPL8Zy49l1W17no=; b=r1nvP9u4j5bhdOZCoVYUlY5jqm
+	4Svq/zMx/76JWvmANZvGMsI7j4j6K2S+ib3mzHXqH+C6ugGRiH8wEFYgdiyo/JDnqvMbJqMdDnkuC
+	moWJg+SVkLWAkFl1OMt1nv66TyPZV2RWfz6Uo0kFELajL7Ft6jUcM4uBfEr+WMXRVvePT/spyzUvv
+	Tr+6zFh/pBOlrPqe4mdAKfhxw7bLbjNLOXPvqzNBXL8L3p+RbEIYlWVYyUdF6OmtQTg0RsCZ8Ibg+
+	t6rtSG4o3Oh8wJuvX18i53GPhgaBH9KFU/UECvEwCU0cBc3n2q311mkx5rPixkx31LtLW7I5WGd7X
+	FCFiOn9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9Uxk-00000005vS7-2Uw8;
-	Thu, 16 Oct 2025 20:52:40 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1v9crX-00000006bi3-0wPl;
+	Fri, 17 Oct 2025 05:18:47 +0000
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9Uxg-00000005vQn-3GvE
+	id 1v9crU-00000006bgU-0UJA
 	for linux-mediatek@lists.infradead.org;
-	Thu, 16 Oct 2025 20:52:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1760647955;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=/cKRiSBHedJeuF2YiPC1JdZMWW96N+8/8JV1od4hamE=;
-	b=LdSJQzpj6VonGYUkTxhD6cg7fx6ksYNMBWqfCoJxDsrxiYT3bMbnpvJKBGU6RMq5xMZTUM
-	E5G4qHRdcNT+6dqMw+2O6QDXOnAtL1hxcFaZuHsI9Noy22zpKysZMbTQE1RjKGz3e8A35i
-	hjddUnYxW0Up4Ihq3FrHbck0xWBRplY=
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-392-LBABZKCdPHuoMdjOWYvDOQ-1; Thu, 16 Oct 2025 16:52:34 -0400
-X-MC-Unique: LBABZKCdPHuoMdjOWYvDOQ-1
-X-Mimecast-MFC-AGG-ID: LBABZKCdPHuoMdjOWYvDOQ_1760647954
-Received: by mail-qk1-f198.google.com with SMTP id af79cd13be357-871614ad3efso406298185a.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 16 Oct 2025 13:52:34 -0700 (PDT)
+	Fri, 17 Oct 2025 05:18:46 +0000
+Received: by mail-pf1-x432.google.com with SMTP id d2e1a72fcca58-781001e3846so1487511b3a.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 16 Oct 2025 22:18:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1760678323; x=1761283123; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=l6S63uReOFquePjk+el+IDhyWrHQTPL8Zy49l1W17no=;
+        b=fn9pUa1+NX5CQG1g2GuzdLtXFzqBVEVeMFF8eqQOCixb3EoL04Zcns8y/eo/M4mwxg
+         F5Y3ls7ZoNEsVJxKZLvkB70ABSMcwUUH1JXj71ZdJ9KJe7cgnvl61MmJ1MBSMBquPwD2
+         2C6BRpc1xf/i5yq8E2TASZx6/FdZxz02rpmwQyIbF5fv0MZlLieb90JnMSamwZvl6QDb
+         BMQyHGw9+jyfqVUuHmASn1L+zpuBB5qXvtnfaqOpkSJ6uxyufx07JWNlSsHebtFu7xhI
+         92PpkDmOWkVBGqu1pxT8CXSb6rAtB8+gRnEW4rdbgjSntUCm0/ZgkaETD2fFyaVz6uVW
+         xe9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1760647953; x=1761252753;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=/cKRiSBHedJeuF2YiPC1JdZMWW96N+8/8JV1od4hamE=;
-        b=rBRP+Lk5NTXhHFVrpIK/q/oW3j/jr6MsabHJR84AqZHTrdKCNRNxa3UWWcqwZ5DETR
-         H0dCayuPQBC/EZ54Md7kQOvGcWwMWoW5ZFRRKIg2VWg9yTtZr6X/bjxxMqt6QTUFpIn4
-         WfpAcntGN5ni8Ph+cV50pH5P4TW/t2zFE1hs0HsQX9OT5ww+uRoFYbrCqssaqBHY00Mn
-         c8Z7O+Am0L40dOB7b97C2rtGtHN8dnKnIHFk4HhSpPeu+OJDp0XNUD82K2zIZuyt4eQj
-         kcWrt89+JYNHPFvKMbMhn5wvodE0w8MCe4BZcSXwd2Hz9J7h/WiCV3umdQjMZvTLGpMB
-         t5qA==
-X-Forwarded-Encrypted: i=1; AJvYcCUU+db70LgFEqjwxfFEnR+91TkG4H8wIWKCrZJIFQXunR5iQecL1+OdBxqd1+hCuvZ8chNWzcrmLAn5Olkj9w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyqaJqg0c0a7m0jG2ggLDqFElui6/9qyL6pSiXmO8sZ6KpZ+H3o
-	+PDLKKDMTXYgQtUzwZk6xm//h/+Gz8Sza2uDWBVI3VPrSXFRoR/IQBz+zt0Q3ux5l88YzFPpEGg
-	Y00AbYkhwsnQWqlcuAsufxIoEinhHsKmb1UNlTIWOFVrtlTXKL/2PcENQyZjMrJ1FtAmkOqr+EA
-	==
-X-Gm-Gg: ASbGncuNOdA3H5Du0ig6cqaZm7kVvH1DMzeNBu7rzqu4282L/HOwGrz6tjQybXj1hWT
-	b4C+hOdKO86xmpcMpWz0tzNunRqGITsvuwPiPvJk+037ECCE7l3762Nyu3+wyZtynRa+YaXNBiw
-	icUyY7oA93hySCwkKkSgzLXIQAh3zjezDuPQOFMfNJf/Q8dh/XWMrqKnZ1rQWM6jRtHYId2YA58
-	gXYNWeOEkPkazeAvzmQAUwit4/saambKsEujU+SBxL1cPV/9e5qYKxrjsuK0Hd6nDmKmGX3ca2h
-	yLLyV3rMKkg38o1e6eB7fP1tsBbOPRiy6siCIPvqoz1OScLj+00rPJkMp6VgZKpeoLjHhM/hiD2
-	JmXthnTg8HnNpRTggewedcGiBXD0lA5sipg+r7ZLjrZNRYffRQyfrzN2CMr1iD0QcMA==
-X-Received: by 2002:ac8:598b:0:b0:4e7:1f00:2ce8 with SMTP id d75a77b69052e-4e89d281865mr19861921cf.18.1760647953501;
-        Thu, 16 Oct 2025 13:52:33 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHATwA2Ecq5ayw4bx1RtADAqnB2jb/OZrDzGJ991Q3kxbxfK4bp4SH8V/S+x7MWZzR6YqvEcQ==
-X-Received: by 2002:ac8:598b:0:b0:4e7:1f00:2ce8 with SMTP id d75a77b69052e-4e89d281865mr19861681cf.18.1760647953054;
-        Thu, 16 Oct 2025 13:52:33 -0700 (PDT)
-Received: from redhat.com (c-73-183-52-120.hsd1.pa.comcast.net. [73.183.52.120])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-87c0120cc36sm47970366d6.2.2025.10.16.13.52.31
+        d=1e100.net; s=20230601; t=1760678323; x=1761283123;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=l6S63uReOFquePjk+el+IDhyWrHQTPL8Zy49l1W17no=;
+        b=TKhmiKj+O+kDq6YsVhJqBg2UMEGC6+zvJoUuYf15nkgK73JiYWWkx40tM52pVZcGTq
+         wwhz4JqSur2bNXLXy3s67qhT1BR2IIs6e/mucyYboPlFvo5afZGWDueer4l/RyU5EChU
+         sHsvrKKqEHLL5JYc6WnXbmPDwE1SZw2DIbMnZwC2laNFeM6/1hKb9178ZkHXJISjFoVm
+         ItmYqLkCLxlL4o7VOymvFyjxfhRT3HLX1aq8VKrQW21E4j14rfuZcOVRwWu5nTpOai57
+         KHDolirQd1M9NYppQXBwIqLACfKOQU6zs9qZ7mTzo+Lpk8vNQTAr1IcLmYhaxx/kihPl
+         9iOQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXYJ3EyOiPerdZu+TTbzpFse+FwJIgfW4UDHeZTU8sSQV1M+erSGhFaAM4JpKebQFGocJiMSMbU7DcgvXg8UQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz5llQquRG828M67EV0hNQ//1ntKFDPFJR9MUtvR9Cax+qSlqxP
+	rWaUw+kDbUBFnbCq3RNy3/kOv/0kSy7lNLfgABZFmW6TgpjAYb89uz0P
+X-Gm-Gg: ASbGncuC2kFbB26rI6XrwXAG2vvIJ8nhIYZ+QeqIFjHjBJlMMGma7D4WZozNEpy4pfz
+	vim/rQaP9QS/OmbIL4hhb+Z2H1t84cxakKhjwtNdkgPVtlwh4fxNhYViIIlP2a41gAc2oHlBuyZ
+	/ORjdsqGquIhFQB1M3fb+KbvFRiP7GwoQ0XeIY1pr84g9/Sz2RDOsswXb/Anv1zFE6tQESiOFdH
+	aqyc/qB3keMdZxkyprlYpibg6XSg22nYhiWEiivkZ8oZnY0PwPb+9qb64/ufuX7fGJL51d/YD9f
+	1S9RvjrXleErwAmAmIpMzfcBl93q/5LwhYlVhOtBYZktUo6ReTtnRpz6/Hv97sU6yxC2epdHxzs
+	K/zPfnZyb8D+B5bhVBu4hEgFWrMW7FpiaNIbHT7hxfXusx2nf8MC7rjGIXQY522eMbRVr4HisMO
+	e8Uajh9KxDgUZvKN4wzCxuqcd/5ES9pDvTaMCgXZi85A6J8w60t3I=
+X-Google-Smtp-Source: AGHT+IEoZYavaM7njBnG3D3Z+hduFKNotyz+5aU6kPX8BleR1uI1Sy5GSDkuztm0nYl05g784spRlg==
+X-Received: by 2002:a05:6a20:9185:b0:32d:b946:dd20 with SMTP id adf61e73a8af0-334a8566437mr3249260637.24.1760678322944;
+        Thu, 16 Oct 2025 22:18:42 -0700 (PDT)
+Received: from google.com ([2a00:79e0:2ebe:8:df8a:9eba:d1a8:6b39])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7992d993853sm24177361b3a.74.2025.10.16.22.18.40
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 16 Oct 2025 13:52:32 -0700 (PDT)
-Date: Thu, 16 Oct 2025 16:52:30 -0400
-From: Brian Masney <bmasney@redhat.com>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Dong Aisheng <aisheng.dong@nxp.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Yassine Oudjana <y.oudjana@protonmail.com>,
-	Laura Nao <laura.nao@collabora.com>,
-	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
-	Chia-I Wu <olvaffe@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>,
-	kernel@collabora.com, linux-clk@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v3 1/5] clk: Respect CLK_OPS_PARENT_ENABLE during recalc
-Message-ID: <aPFbDl_JKyDay1S5@redhat.com>
-References: <20251010-mtk-pll-rpm-v3-0-fb1bd15d734a@collabora.com>
- <20251010-mtk-pll-rpm-v3-1-fb1bd15d734a@collabora.com>
+        Thu, 16 Oct 2025 22:18:42 -0700 (PDT)
+Date: Thu, 16 Oct 2025 22:18:38 -0700
+From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+To: Ricardo Ribalda <ribalda@chromium.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hverkuil@kernel.org>, 
+	Sakari Ailus <sakari.ailus@linux.intel.com>, Krzysztof =?utf-8?Q?Ha=C5=82asa?= <khalasa@piap.pl>, 
+	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, Leon Luo <leonl@leopardimaging.com>, 
+	Kieran Bingham <kieran.bingham@ideasonboard.com>, Jacopo Mondi <jacopo+renesas@jmondi.org>, 
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
+	Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>, Julien Massot <julien.massot@collabora.com>, 
+	Jacopo Mondi <jacopo@jmondi.org>, Daniel Scally <djrscally@gmail.com>, 
+	Dave Stevenson <dave.stevenson@raspberrypi.com>, Benjamin Mugnier <benjamin.mugnier@foss.st.com>, 
+	Sylvain Petinot <sylvain.petinot@foss.st.com>, Yong Zhi <yong.zhi@intel.com>, Bingbu Cao <bingbu.cao@intel.com>, 
+	Tianshu Qiu <tian.shu.qiu@intel.com>, Tiffany Lin <tiffany.lin@mediatek.com>, 
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rui Miguel Silva <rmfrfs@gmail.com>, 
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Martin Kepplinger <martink@posteo.de>, 
+	Purism Kernel Team <kernel@puri.sm>, Shawn Guo <shawnguo@kernel.org>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
+	Fabio Estevam <festevam@gmail.com>, Dafna Hirschfeld <dafna@fastmail.com>, 
+	Heiko Stuebner <heiko@sntech.de>, Sylwester Nawrocki <s.nawrocki@samsung.com>, 
+	Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Yemike Abhilash Chandra <y-abhilashchandra@ti.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	linux-input@vger.kernel.org, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, imx@lists.linux.dev, 
+	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-samsung-soc@vger.kernel.org, linux-staging@lists.linux.dev
+Subject: Re: [PATCH 01/32] Input: cyttsp5 - Use %pe format specifier
+Message-ID: <xirb6664gow5ldjy7xihkz2wooidbm4bsyl7qrm2uosdybdki7@mqkdqzeznx6h>
+References: <20251013-ptr_err-v1-0-2c5efbd82952@chromium.org>
+ <20251013-ptr_err-v1-1-2c5efbd82952@chromium.org>
 MIME-Version: 1.0
-In-Reply-To: <20251010-mtk-pll-rpm-v3-1-fb1bd15d734a@collabora.com>
-User-Agent: Mutt/2.2.14 (2025-02-20)
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 4N7wW_HLokCldL3r1FzfDotmCkVshelyB7x6pfz7cLo_1760647954
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <20251013-ptr_err-v1-1-2c5efbd82952@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251016_135236_897484_3A988E2E 
-X-CRM114-Status: GOOD (  21.03  )
+X-CRM114-CacheID: sfid-20251016_221844_161895_14E2E565 
+X-CRM114-Status: GOOD (  10.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,69 +122,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Nicolas,
-
-On Fri, Oct 10, 2025 at 10:47:09PM +0200, Nicolas Frattaroli wrote:
-> When CLK_OPS_PARENT_ENABLE was introduced, it guarded various clock
-> operations, such as setting the rate or switching parents. However,
-> another operation that can and often does touch actual hardware state is
-> recalc_rate, which may also be affected by such a dependency.
+On Mon, Oct 13, 2025 at 02:14:41PM +0000, Ricardo Ribalda wrote:
+> The %pe format specifier is designed to print error pointers. It prints
+> a symbolic error name (eg. -EINVAL) and it makes the code simpler by
+> omitting PTR_ERR()
 > 
-> Add parent enables/disables where the recalc_rate op is called directly.
+> This patch fixes this cocci report:
+> ./cyttsp5.c:927:3-10: WARNING: Consider using %pe to print PTR_ERR()
 > 
-> Fixes: fc8726a2c021 ("clk: core: support clocks which requires parents enable (part 2)")
-> Fixes: a4b3518d146f ("clk: core: support clocks which requires parents enable (part 1)")
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> ---
->  drivers/clk/clk.c | 13 +++++++++++++
->  1 file changed, 13 insertions(+)
-> 
-> diff --git a/drivers/clk/clk.c b/drivers/clk/clk.c
-> index 85d2f2481acf360f0618a4a382fb51250e9c2fc4..1b0f9d567f48e003497afc98df0c0d2ad244eb90 100644
-> --- a/drivers/clk/clk.c
-> +++ b/drivers/clk/clk.c
-> @@ -1921,7 +1921,14 @@ static unsigned long clk_recalc(struct clk_core *core,
->  	unsigned long rate = parent_rate;
->  
->  	if (core->ops->recalc_rate && !clk_pm_runtime_get(core)) {
-> +		if (core->flags & CLK_OPS_PARENT_ENABLE)
-> +			clk_core_prepare_enable(core->parent);
-> +
->  		rate = core->ops->recalc_rate(core->hw, parent_rate);
-> +
-> +		if (core->flags & CLK_OPS_PARENT_ENABLE)
-> +			clk_core_disable_unprepare(core->parent);
-> +
->  		clk_pm_runtime_put(core);
->  	}
->  	return rate;
+> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 
-clk_change_rate() has the following code:
+Applied, thank you.
 
-
-        if (core->flags & CLK_OPS_PARENT_ENABLE)
-                clk_core_prepare_enable(parent);
-
-	...
-
-        core->rate = clk_recalc(core, best_parent_rate);
-
-	...
-
-        if (core->flags & CLK_OPS_PARENT_ENABLE)
-                clk_core_disable_unprepare(parent);
-
-clk_change_rate() ultimately is called by various clk_set_rate
-functions. Will that be a problem for the double calls to
-clk_core_prepare_enable()?
-
-Fanning this out to the edge further is going to make the code even
-more complicated. What do you think about moving this to
-clk_core_enable_lock()? I know the set_parent operation has a special
-case that would need to be worked around.
-
-Brian
-
+-- 
+Dmitry
 
