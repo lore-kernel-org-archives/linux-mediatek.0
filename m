@@ -4,62 +4,210 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9029CCCD193
-	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Oct 2025 09:22:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85B23CCD184
+	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Oct 2025 13:04:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=9M5STHmJ3JPrk2Wsv4wV3lFlLbIXAXhqL9CjPsfbW44=; b=ecwXagdtog3+V+CIqBfDLcKwf4
-	utDv9oHBKobwLZS9GI504TT7+XpsIHU+DrX8JAF+EWapE8/hg1bbkPeKqLPKzKBqFEPtkugA8ZanE
-	6H4kLcJiBO51cd7oZs8tUn+upe1+o3oDxhEchH1WGER9UyUs3yM4XpDyqhYUW1oUyxm9NxdnXrzB7
-	1SimhR18SNRVidCjs6CgsTS5wTatehYHC+XiTiWamQ/ae5eueB+lD/Fz7LavHiKdYDm7reQOyEzx1
-	mlsedd5fLRAC267j311jvhHA/SL+/hBTadA5x9TIsNWG6nef1wL8EaYz6zhOMsNkjFXzkZ1lV8GKe
-	GPGGG0sQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oFRNPeXNAEXwnuV1LGoDQmemodoayw4cu5y414aggkA=; b=qHboCnvy8ioqi4NkktsmxCHLxh
+	RghQt0nWcDgHiJdpazAjlbsmKKj3yMC2iPRH8BT9iPyV9jaVc56t1bubpdfpShukyA1c0NT7u/+Ei
+	iTjcJSuIHqDAKMY16OKQkBToHir7d8YQthB9tmIVUEugD1dOkPQ3AhwPd1oBNj4aN0+0FikwhsYKG
+	8/4nOhXmML3EbeEIZoFa4JOKBpLk2dIQBDHfPT4wCTUM0nbdvIc8YT/rbYifdE3wwAAY8nLKvoBxf
+	UgnvxFVfZVTtq/GhUhcazTGh5YUCtRiedLNVM2tizmmmTlQ1lnsWPrIVi7cNYT7WNCl+EqMT3KLNk
+	fmj0DoXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vA38a-00000009jgc-1DPA;
-	Sat, 18 Oct 2025 09:22:08 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vA6bl-00000009wTy-14GB;
+	Sat, 18 Oct 2025 13:04:29 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vA38Y-00000009jg7-0O8M;
-	Sat, 18 Oct 2025 09:22:06 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 65BCE60385;
-	Sat, 18 Oct 2025 09:22:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B3DD9C4CEF8;
-	Sat, 18 Oct 2025 09:22:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760779325;
-	bh=QQSf2fBH1I4j49Rjfw8dWqqBHqMePF2agU/OEK725YA=;
-	h=From:Date:Subject:To:Cc:From;
-	b=sVsRlwoo0wkMDAUzAZQgO5UNCIihquJ2tR3nf0sUHU/JR6lZtjiQ69TceRLnogk6D
-	 LCL01WbnwqqBu502Bug4WLc+kFFyagg2PcS+OYzhHpI6vWlqW41jdD6zNbXRjSSx37
-	 tg2vdN1NrQYSmJwjONIZcwdp/05wMpdPmBZ0ORgle+SHEOc0cVTXx07rqLNAqrgKsh
-	 HZGhKe/d/4EU3L0Cl8p+TYOH2wJaXLK8uZoCc2gKZ4TGmTXdcLSJx1OLjzumPdS6zG
-	 zVf7TT9feFcPtP0Px0gDD0j+EkObEU5RXMjBVo1C9WqLtUxcQQ0LwjrLnBsH70CB/b
-	 BVxT6lvZkggqg==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Sat, 18 Oct 2025 11:21:47 +0200
-Subject: [PATCH net-next] net: airoha: Remove code duplication in
- airoha_regs.h
-MIME-Version: 1.0
+	id 1vA6bh-00000009wTG-3pGB;
+	Sat, 18 Oct 2025 13:04:27 +0000
+X-UUID: f52b55f0ac2211f09f706fa2197c6ceb-20251018
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=oFRNPeXNAEXwnuV1LGoDQmemodoayw4cu5y414aggkA=;
+	b=RKtNCgpbC1m5fheyBL8Cpd+L9bAR/Rox4IfbfMWNktBBDzNpHxKbFcBkPdDnKjMQSu2SvJo47CYyT800IcFp7pli5UhTnW6AtUAQ+qNEu7YqFXmGIPPBoevAv+sBvj5XNLXV83E1Scoc21yYvsRfGuydE/kdf230bwFMKz9bVfQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.6,REQID:e99d0b6f-8a2f-4e26-b7ec-d9b654e79b8e,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:a9d874c,CLOUDID:17088702-eaf8-4c8c-94de-0bc39887e077,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111|836|888|898,
+	TC:-5,Content:0|15|52,EDM:-3,IP:nil,URL:0,File:130,RT:nil,Bulk:nil,QS:nil,
+	BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: f52b55f0ac2211f09f706fa2197c6ceb-20251018
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
+	(envelope-from <zhengnan.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1860179089; Sat, 18 Oct 2025 06:04:19 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.26; Sat, 18 Oct 2025 21:04:13 +0800
+Received: from SG2PR04CU010.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.1748.26 via Frontend Transport; Sat, 18 Oct 2025 21:04:13 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=v8p3FAR4guEy00u5/909l91UtxlEN1POdesDMSK4lBCgF2s4XlSaFZgmwZy+BNHuR8J81eetF933PG2Vw86EC4B4Tt+8AHzpMuy68Ng9L/43cmH9VK4RqS7/spgcTnZIZXszjP0L5YJpKGwP8K79ZxFfIBo2IjACstpzo3hJSWvDQ3H+xiIXXRpRnqqb63t+Zwls7iZhyEvvywGm5rurZlFZytwZxovPOq9CcPNv3niHF8o8glwEMslvpb05gjfqsRFKxyqAXhPiUWfoLYBjJ08/QlP9ao6WWAhv+bvJ38lm5kWfmyPyHu5+CxXjSkoI42GG1fueYcq5ewICXLX+AA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=oFRNPeXNAEXwnuV1LGoDQmemodoayw4cu5y414aggkA=;
+ b=SFhnt7gDoCuj5Ewj3D6l66mSDUiA4GMRiYsxE4jScpzwYkfgAPKyNkEF9H6+XqkrkuGxx50IAGP36e6X2QK6lSXh+Hmq5rmWIbGfr5TulZTzQN+g61TwqGqmR8x4KaRnuOYqsPYw0jJJfFVCi0UBGivwHbeHHivf1rUUMTUzdJ/YDLD071NbODTW58WOY0ZRMHzM0Z53sMAJjOWE6c/Y5nE+Uv8/UoV3U+4/s5V+lzzVCQaNNdl/QBXu1p/A5MKigy7wjPGRC7iQ/eQRvmipmOYH9y3RQMCQnbv6J/bUsg6ru6/nAGZsV+L6DtvjxmkZfGo5WPDK8atHdEiLSCxExw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=oFRNPeXNAEXwnuV1LGoDQmemodoayw4cu5y414aggkA=;
+ b=LD/3uzAiggW99U9jJxGrmvr/HVBY6u7qW7s4hV3KaNyNjOcshEAaCHRF6LBl18tPNsGq2W7OjNM/WfCdNHca2cUDbRIbgBEwAQvxBfnZieUl1N0E/w//Q1xAi9lWmUL7rVgJNTet/jDBVgyq764mpt0n8JAa4qCraPhWY7Abkek=
+Received: from SEZPR03MB7007.apcprd03.prod.outlook.com (2603:1096:101:ac::12)
+ by JH0PR03MB8073.apcprd03.prod.outlook.com (2603:1096:990:3e::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9228.14; Sat, 18 Oct
+ 2025 13:04:12 +0000
+Received: from SEZPR03MB7007.apcprd03.prod.outlook.com
+ ([fe80::641d:833a:915c:d1f0]) by SEZPR03MB7007.apcprd03.prod.outlook.com
+ ([fe80::641d:833a:915c:d1f0%5]) with mapi id 15.20.9228.014; Sat, 18 Oct 2025
+ 13:04:11 +0000
+From: =?utf-8?B?WmhlbmduYW4gQ2hlbiAo6ZmI5b6B5Y2XKQ==?=
+	<Zhengnan.Chen@mediatek.com>
+To: =?utf-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>
+CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"robin.murphy@arm.com" <robin.murphy@arm.com>, "joro@8bytes.org"
+	<joro@8bytes.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
+	Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, "robh@kernel.org"
+	<robh@kernel.org>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "iommu@lists.linux.dev"
+	<iommu@lists.linux.dev>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"krzk+dt@kernel.org" <krzk+dt@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, "will@kernel.org"
+	<will@kernel.org>
+Subject: Re: [PATCH v3 3/5] iommu/mediatek: mt8189: Add APU IOMMUs support
+Thread-Topic: [PATCH v3 3/5] iommu/mediatek: mt8189: Add APU IOMMUs support
+Thread-Index: AQHcPdNh+3rZt2Hle0ONITZTKIoDc7THMjaAgACxgoA=
+Date: Sat, 18 Oct 2025 13:04:10 +0000
+Message-ID: <903ccd6ee71f179a71a20cead597709dc3e9f507.camel@mediatek.com>
+References: <20251015125532.9041-1-zhengnan.chen@mediatek.com>
+	 <20251015125532.9041-4-zhengnan.chen@mediatek.com>
+	 <e7bd34b9bb34e9bd9538b2ce493e271d4688f4c5.camel@mediatek.com>
+In-Reply-To: <e7bd34b9bb34e9bd9538b2ce493e271d4688f4c5.camel@mediatek.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SEZPR03MB7007:EE_|JH0PR03MB8073:EE_
+x-ms-office365-filtering-correlation-id: b15044c2-3699-4511-8b44-08de0e46d468
+x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|1800799024|7416014|366016|376014|38070700021;
+x-microsoft-antispam-message-info: =?utf-8?B?M1BPaGt1bnEzRSs2Vkk0NHVTN3JsaFg0U0ZvMUJyTmdlUExVaENuWFJVbW5L?=
+ =?utf-8?B?aFQ5SzhtREh0MnJPeHNIUkdITTJUM05STFlhWWpaTERRRmQvRU9KNHZ0UWxl?=
+ =?utf-8?B?N3hjYWRyQkdxV2ZpZUtiNlJDT2k2K2hpc3JBT1ZhWlNiNkxmcnlLU2NTeXV6?=
+ =?utf-8?B?WGkyNW9UMUdIRHlWeGJRZ0laa01MaGF4aUdFU3ZzS0ppeTU5UGx2OFdHdFVW?=
+ =?utf-8?B?eEZpam9zYU5PQmFVa3VVejlsUmtudmJScjNSSWRreU5pd25kVVVSTjJyVENI?=
+ =?utf-8?B?amVFWExqeXdPM3hFekRDcW43dHBsVEdDcUpqSFI1b1ZzTkY1aTNHWGwraW1B?=
+ =?utf-8?B?aFFGcldwL3BNYmU5ZTdzU0xhR3FLNk9CRHkxbTBVL3lBeEV4bi9pRXRPYVFn?=
+ =?utf-8?B?OHpjdkNkdys0VjZEU0wwbWl0djgwN21lQ25XalY4OG90Nnk0Znk2VUlNUjhr?=
+ =?utf-8?B?RG13OWFHZEwvazVvQ096MGNNUmhqd0x4c2dVd3FOMmFJWXhnNTVtQW5GclBB?=
+ =?utf-8?B?U1N2N3BiMmFvNllDYm9HU1pBcWR0QnJ3T3ljODdCa2tYK2xSSDFDQVRvdWt3?=
+ =?utf-8?B?Q01kNmllTERLNjFNNHQ5STJwZmt5MEFYcXcxVzlhWnFtSVpITGpudm5FUVZu?=
+ =?utf-8?B?MUR0Qm5nSDgzY3BCYzlpNFlVRG1CbiswekFLdzQyYW4rVktBYWJwcDA0eVV4?=
+ =?utf-8?B?TkpTaVN6bFUzQ05NR1krMEVpV3JZVEZmL1dZd043dUkzRitKNkNVb0tBZ3Vn?=
+ =?utf-8?B?QmdoUEhYSHUyU2JPT3Ivc0NQWngvVEk3djhRS01LNWdSVU5ON014Vmp2VG5C?=
+ =?utf-8?B?akUwUS9qd0JQQmc5OXNXeXh6TkNSdTFDc2tHVlkvR1JjKzVZTTRzRFZUajEw?=
+ =?utf-8?B?ck0yU05QZHFNSmE3VVFDSUxiNmNUMHpZV21HOTlQcEQ5MlJUaE43TFZJZHZB?=
+ =?utf-8?B?WjEwT0NrOWo4SUZnSjBYMXhmVEZnMG80ZXZKanIrRHNoZ2x4cUZYd0FSYmhx?=
+ =?utf-8?B?WHZBNlYwV01KQk9DelNGd29Zdy9uTHp3cURSK3p1KzgrMUFWWVNQM2J0UUds?=
+ =?utf-8?B?d0JNSHg3OHUvaWhLZ1NqQ1lDbjd1RTJGaDQ3eE53ZHZPV1pBTUpXV2toOHNS?=
+ =?utf-8?B?ekpNZE4vVGVvUGJmQzFXaUxKZk1NRXRsSUFYMG9jS1dqREpaL2tWakNoWVRM?=
+ =?utf-8?B?aS91eGRPOW9Wamp1TjlDQkt6d1loOUVVaGh3VkFKVUdVaVdnQTRFWU9TRkhq?=
+ =?utf-8?B?NlRlWXFWOW9Cb2U1LzQrQzhuNU55YVJuVFB5L2lCeklmdXR4U2d4endBdXZ1?=
+ =?utf-8?B?RUhaUUdsYkhvSGFXOWIzdXBEQ3Jad1gzTzYrdHdyOTlzcytoMlppbXoxY1F3?=
+ =?utf-8?B?YW5pSE9FRXZGQW0yN2svNFJrT1g4TCtsSUZGUXMvckVWeXR5WVRwWU81c05j?=
+ =?utf-8?B?VDlGME9IaVAvcnc5Zm85SzhYUkpMY3ZOQllVT2JjM1ZOUmRRN3dkUXBwVXU5?=
+ =?utf-8?B?ZnoydFpHOGZkL0VxWWtxTnZ2OHJkc2VVK1FXcWhmd09ncG54WnVUempycmQ0?=
+ =?utf-8?B?Zmh0emd0dnlVdzVuQWpYNmMwY0MzVGNSYjJXWVNKaXdJbEhWOXhMS241czJi?=
+ =?utf-8?B?OVFDWmM3WndKZnA5OXRVaTNFQjFWVXFSVTBUejQ4V1I3SERhdHlhaGxyZ1JE?=
+ =?utf-8?B?QnMrY3I2QWhvQnVzODYzcDRINFdhOFQ3TitwaDNnVnNCR3F6Y2ViMmh5aVBJ?=
+ =?utf-8?B?ZEZyLytaakNyNWFNUVNlZEQyOXo4ekcvZXJla0hJTmFqQ0RwdXpQWi9heUJO?=
+ =?utf-8?B?SVRJZDFLb1Ntck40N2lXMjZ4R2ROZlpBOWZiLzB0RXlXczArOHc0UEdBWGR5?=
+ =?utf-8?B?bml6SFFEQlBtNWxFZDlwYmY3c1NkZjloK1R5V0dBZkdyZURXaTJtZzE3MkRJ?=
+ =?utf-8?B?TmU3MjlvV2F5VmRURit4RjZHdGczaFlnU3JkTXl6cmJ4eUpSYzI2cGRXOThR?=
+ =?utf-8?B?Y0NOc1VUVWNFMWtIeU5XUXptbkFwazJGY2YwL25QSWRmYmQ2RnRlTjVhdjJZ?=
+ =?utf-8?Q?vFwEtf?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR03MB7007.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(7416014)(366016)(376014)(38070700021);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?N3hlNXUvaG11N1RwaWFxNm5ESWswQUMycEYyajRyMTlSYjVRaWJ4dFRWTTI0?=
+ =?utf-8?B?QjM2NGFWYzc3SFY1YWFUOG9Oc2VuUTRUZU54OFBiL2RkSlR0U0F6bHFxOGIv?=
+ =?utf-8?B?VEl5My9HeHpsYzdjUHJ0V0N1OWQvN1NOMnk3VEdLYjU2MXZOR2FVdEEvMmRS?=
+ =?utf-8?B?bnBSbGhvaFE0OHZKMkpvV1YzZm53QUd4ZEk3UjJFMG9JYXBKdTg3eksyNUZF?=
+ =?utf-8?B?bUhRR2gxakxLblhnTHl2eWRPTk9POXliNDlRZ0JMYk1IMnZMN3EwazNuRGxQ?=
+ =?utf-8?B?bjAvR2ZxY0Z2T0grRjIxZFQyclhaRVh1bE42VkdzeE4xZ1gzbVllM29UTGdn?=
+ =?utf-8?B?TlYzVjFmb0xkdWtMS3VTa3JVaDM3MTg5RENmemlKZ1BIUm5tS0xHdlZIM1dF?=
+ =?utf-8?B?cEVJM2NBNE1lc1BQWmQweVZvNVFlcFl6QWhabGZNVklqUWVHVE41Vit1RGth?=
+ =?utf-8?B?SGRYTGlDQ081b3crODZJYnNGT21oVVJRSXk2ejEyV0QwZlpUWTF6YTkvbmpU?=
+ =?utf-8?B?QThvOGtzVFFwaHlQVHM1b3UvOEdIWkxESmxGMTk2VzFpZW9SYWkvK3l5Qzdk?=
+ =?utf-8?B?b2dNVnRvVVdMNGZjRGVmUVR6MHhsUnZoMmdqMEd3dFZOK1BxSnhNTU9jRHBB?=
+ =?utf-8?B?ci9NdStrSzVMNmxSeEVvR0JoeFRidUZic0JEQjg4NEVwUkNPTi83K1ROUDl2?=
+ =?utf-8?B?OTVjREg3bXQwbWVPeEZrM0lIbDBDTXY2RDVYMmMySWlHcWhFMXdLVjMzUncy?=
+ =?utf-8?B?NjU5TGozbmovcWVWMjFWMmlzQ3VVZ1ArMHhEaS9rWWlRNENiWU9TZWFvc2FT?=
+ =?utf-8?B?N1ZvOUJSaG5mY3JjQ0t4L2NPYWFSL01mbXVlMHYvdVFkTytxczlCclFqRUZD?=
+ =?utf-8?B?V3crcFBwU29tYlpUamlBcTVVM283cWtHNjMzTWtkdGFqVVU2SXV6VDBvaGh5?=
+ =?utf-8?B?c0lnZ0RSZldtTXNlRHhSL0taTlhLdHhCcDhFc3F6eDFsUVpkQytyVzZ6YTJI?=
+ =?utf-8?B?RWYyQnVjZDl1cVRkdkdjVnpGVmJBRzFQTFFvYjZOclpSWW5ydUwwTFFwYkFZ?=
+ =?utf-8?B?MTRlWkxUUGxEMGlhUFlCR3AvejhRaGlva1lDMUx1bjVhdjBpbVVkbm1hUThN?=
+ =?utf-8?B?QThSRW16M2FYTytvSE1mSkRudHEwZ1hkeEVuaWV1UHhpVFIxc200VjMvbmRp?=
+ =?utf-8?B?UG5WdHdNd2tiZEg1ZWpUWEtWQ2ZCODdVd09TUGhLUU5uYy96bm1XY2FPM1Zx?=
+ =?utf-8?B?ZmR1RkVIMFhlRWxaOHhDYVR2amViYXIwa3k5ZnNCeG0rYVFJM25aT1RoamZM?=
+ =?utf-8?B?d0V0Q0Z0eGcxenNOMmRGMjNTb0llNGpyNlAzUVNPNHAwbk1qdG1EbmtYT1Fo?=
+ =?utf-8?B?Ym0xNjFjQkZGVDVzMWRuaTJRbm9qckdTcGF5eUZsT2NEL1ZaVXhqclFYbXVm?=
+ =?utf-8?B?TDZ3Zy9aNVZCbS9OUUZ0VEk4WVRaR1NQeFQrd0tUOUdmWFlGSDFUSW1SWEdU?=
+ =?utf-8?B?QWhObkZkMlhJazRhN1VvVmVlL1I2RzVaMEdma096NHE2RmlaaVVqdy9jVmdL?=
+ =?utf-8?B?eHpwOTRWaWw4Tk1ENmZ6RHptNTBubU5wR2JVelExWWpjNms3N3ZTM1EzZTlD?=
+ =?utf-8?B?NnRHdjJzcFRkY1dRNmtJdExRUzN5eEd1QWNHU0FRVXFPWDM0RkRRV1NIdjF1?=
+ =?utf-8?B?UEJhVy9lU2NIZDZZblEyK0lMVDczVXhaV3pob2lVeWxFeEphSUhuN1hacXV6?=
+ =?utf-8?B?cU9abmQwSC9vWjJDWVdRSnNPdzRHVnNnRTlRU2VHVWttWVlqVlFFckZMckxn?=
+ =?utf-8?B?MHg0MDZQQ1J5SVRJN1VMM3BPbEFVWHpFUnlVNE1LZkRuSVZKbEhONWpmZjdH?=
+ =?utf-8?B?OGVZblFUNXlHMmxjRE9oZCtORmtJRDF0MWU1K3BZT3lyNzIyOWdpRGdCWmtk?=
+ =?utf-8?B?Qm1FZS90NFFYSWN6bEN1QjBlOExsWGVXNjg1RUZwS1A5NUlWdytKZWRpQW1N?=
+ =?utf-8?B?STNYOFVpMC9qd3llRUV3Y3ZqWmNscmwwMU1lZTlUSStKVHRzaG9XNDY2d2ha?=
+ =?utf-8?B?NEJIeDU1MjdYOUl6c0dHVHVGSHNKMmdUa3BDb1hXRVhIVVd3Y3FLbXF4cDZ1?=
+ =?utf-8?B?R2x3MGcrRG5mbWViMzBRNlE5WDZIM091aktGRW9wbU90NUlyTGVuaGJGZUVX?=
+ =?utf-8?B?dVE9PQ==?=
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20251018-airoha-regs-cosmetics-v1-1-bbf6295c45fd@kernel.org>
-X-B4-Tracking: v=1; b=H4sIACpc82gC/x3MQQqDMBBG4avIrB1IpKnVq0gXIf7VWdTIjIggu
- XtDl9/ivZsMKjAam5sUp5jkrcK3DaU1bgtY5mrqXBe88z1H0bxGVizGKdsXhyTj8MDgXEAfXk+
- q7a74yPX/Tu9SfmxsqmdnAAAA
-X-Change-ID: 20251017-airoha-regs-cosmetics-54e9005e7586
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-X-Mailer: b4 0.14.2
+Content-ID: <A62EF64A9285A24F8140B98DB46BEE29@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SEZPR03MB7007.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b15044c2-3699-4511-8b44-08de0e46d468
+X-MS-Exchange-CrossTenant-originalarrivaltime: 18 Oct 2025 13:04:10.7150
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: kab/dC97wV5Pv++O8OKWOSPNdhkTmlKA59z+3CH8Il0EaEIO6qO/Mak1uS0qztU78xaMsN5yoTM+BREVF71mrPAJUO3EaLzG5d8srf14Tos=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: JH0PR03MB8073
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251018_060426_394831_1773825F 
+X-CRM114-Status: GOOD (  15.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,351 +222,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch does not introduce any logical change, it just removes
-duplicated code in airoha_regs.h.
-Fix naming conventions in airoha_regs.h.
-
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c  | 102 ++++++++++++++--------------
- drivers/net/ethernet/airoha/airoha_regs.h | 109 ++++++++++++++----------------
- 2 files changed, 100 insertions(+), 111 deletions(-)
-
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 5825f6f29a92e8fff0596d7883a4c2648432a6ef..b06cab4ef25abb1f61915f84142835f30c15ce8f 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -137,11 +137,11 @@ static void airoha_fe_maccr_init(struct airoha_eth *eth)
- 
- 	for (p = 1; p <= ARRAY_SIZE(eth->ports); p++)
- 		airoha_fe_set(eth, REG_GDM_FWD_CFG(p),
--			      GDM_TCP_CKSUM | GDM_UDP_CKSUM | GDM_IP4_CKSUM |
--			      GDM_DROP_CRC_ERR);
-+			      GDM_TCP_CKSUM_MASK | GDM_UDP_CKSUM_MASK |
-+			      GDM_IP4_CKSUM_MASK | GDM_DROP_CRC_ERR_MASK);
- 
--	airoha_fe_rmw(eth, REG_CDM1_VLAN_CTRL, CDM1_VLAN_MASK,
--		      FIELD_PREP(CDM1_VLAN_MASK, 0x8100));
-+	airoha_fe_rmw(eth, REG_CDM_VLAN_CTRL(1), CDM_VLAN_MASK,
-+		      FIELD_PREP(CDM_VLAN_MASK, 0x8100));
- 
- 	airoha_fe_set(eth, REG_FE_CPORT_CFG, FE_CPORT_PAD);
- }
-@@ -396,46 +396,46 @@ static int airoha_fe_mc_vlan_clear(struct airoha_eth *eth)
- static void airoha_fe_crsn_qsel_init(struct airoha_eth *eth)
- {
- 	/* CDM1_CRSN_QSEL */
--	airoha_fe_rmw(eth, REG_CDM1_CRSN_QSEL(CRSN_22 >> 2),
--		      CDM1_CRSN_QSEL_REASON_MASK(CRSN_22),
--		      FIELD_PREP(CDM1_CRSN_QSEL_REASON_MASK(CRSN_22),
-+	airoha_fe_rmw(eth, REG_CDM_CRSN_QSEL(1, CRSN_22 >> 2),
-+		      CDM_CRSN_QSEL_REASON_MASK(CRSN_22),
-+		      FIELD_PREP(CDM_CRSN_QSEL_REASON_MASK(CRSN_22),
- 				 CDM_CRSN_QSEL_Q1));
--	airoha_fe_rmw(eth, REG_CDM1_CRSN_QSEL(CRSN_08 >> 2),
--		      CDM1_CRSN_QSEL_REASON_MASK(CRSN_08),
--		      FIELD_PREP(CDM1_CRSN_QSEL_REASON_MASK(CRSN_08),
-+	airoha_fe_rmw(eth, REG_CDM_CRSN_QSEL(1, CRSN_08 >> 2),
-+		      CDM_CRSN_QSEL_REASON_MASK(CRSN_08),
-+		      FIELD_PREP(CDM_CRSN_QSEL_REASON_MASK(CRSN_08),
- 				 CDM_CRSN_QSEL_Q1));
--	airoha_fe_rmw(eth, REG_CDM1_CRSN_QSEL(CRSN_21 >> 2),
--		      CDM1_CRSN_QSEL_REASON_MASK(CRSN_21),
--		      FIELD_PREP(CDM1_CRSN_QSEL_REASON_MASK(CRSN_21),
-+	airoha_fe_rmw(eth, REG_CDM_CRSN_QSEL(1, CRSN_21 >> 2),
-+		      CDM_CRSN_QSEL_REASON_MASK(CRSN_21),
-+		      FIELD_PREP(CDM_CRSN_QSEL_REASON_MASK(CRSN_21),
- 				 CDM_CRSN_QSEL_Q1));
--	airoha_fe_rmw(eth, REG_CDM1_CRSN_QSEL(CRSN_24 >> 2),
--		      CDM1_CRSN_QSEL_REASON_MASK(CRSN_24),
--		      FIELD_PREP(CDM1_CRSN_QSEL_REASON_MASK(CRSN_24),
-+	airoha_fe_rmw(eth, REG_CDM_CRSN_QSEL(1, CRSN_24 >> 2),
-+		      CDM_CRSN_QSEL_REASON_MASK(CRSN_24),
-+		      FIELD_PREP(CDM_CRSN_QSEL_REASON_MASK(CRSN_24),
- 				 CDM_CRSN_QSEL_Q6));
--	airoha_fe_rmw(eth, REG_CDM1_CRSN_QSEL(CRSN_25 >> 2),
--		      CDM1_CRSN_QSEL_REASON_MASK(CRSN_25),
--		      FIELD_PREP(CDM1_CRSN_QSEL_REASON_MASK(CRSN_25),
-+	airoha_fe_rmw(eth, REG_CDM_CRSN_QSEL(1, CRSN_25 >> 2),
-+		      CDM_CRSN_QSEL_REASON_MASK(CRSN_25),
-+		      FIELD_PREP(CDM_CRSN_QSEL_REASON_MASK(CRSN_25),
- 				 CDM_CRSN_QSEL_Q1));
- 	/* CDM2_CRSN_QSEL */
--	airoha_fe_rmw(eth, REG_CDM2_CRSN_QSEL(CRSN_08 >> 2),
--		      CDM2_CRSN_QSEL_REASON_MASK(CRSN_08),
--		      FIELD_PREP(CDM2_CRSN_QSEL_REASON_MASK(CRSN_08),
-+	airoha_fe_rmw(eth, REG_CDM_CRSN_QSEL(2, CRSN_08 >> 2),
-+		      CDM_CRSN_QSEL_REASON_MASK(CRSN_08),
-+		      FIELD_PREP(CDM_CRSN_QSEL_REASON_MASK(CRSN_08),
- 				 CDM_CRSN_QSEL_Q1));
--	airoha_fe_rmw(eth, REG_CDM2_CRSN_QSEL(CRSN_21 >> 2),
--		      CDM2_CRSN_QSEL_REASON_MASK(CRSN_21),
--		      FIELD_PREP(CDM2_CRSN_QSEL_REASON_MASK(CRSN_21),
-+	airoha_fe_rmw(eth, REG_CDM_CRSN_QSEL(2, CRSN_21 >> 2),
-+		      CDM_CRSN_QSEL_REASON_MASK(CRSN_21),
-+		      FIELD_PREP(CDM_CRSN_QSEL_REASON_MASK(CRSN_21),
- 				 CDM_CRSN_QSEL_Q1));
--	airoha_fe_rmw(eth, REG_CDM2_CRSN_QSEL(CRSN_22 >> 2),
--		      CDM2_CRSN_QSEL_REASON_MASK(CRSN_22),
--		      FIELD_PREP(CDM2_CRSN_QSEL_REASON_MASK(CRSN_22),
-+	airoha_fe_rmw(eth, REG_CDM_CRSN_QSEL(2, CRSN_22 >> 2),
-+		      CDM_CRSN_QSEL_REASON_MASK(CRSN_22),
-+		      FIELD_PREP(CDM_CRSN_QSEL_REASON_MASK(CRSN_22),
- 				 CDM_CRSN_QSEL_Q1));
--	airoha_fe_rmw(eth, REG_CDM2_CRSN_QSEL(CRSN_24 >> 2),
--		      CDM2_CRSN_QSEL_REASON_MASK(CRSN_24),
--		      FIELD_PREP(CDM2_CRSN_QSEL_REASON_MASK(CRSN_24),
-+	airoha_fe_rmw(eth, REG_CDM_CRSN_QSEL(2, CRSN_24 >> 2),
-+		      CDM_CRSN_QSEL_REASON_MASK(CRSN_24),
-+		      FIELD_PREP(CDM_CRSN_QSEL_REASON_MASK(CRSN_24),
- 				 CDM_CRSN_QSEL_Q6));
--	airoha_fe_rmw(eth, REG_CDM2_CRSN_QSEL(CRSN_25 >> 2),
--		      CDM2_CRSN_QSEL_REASON_MASK(CRSN_25),
--		      FIELD_PREP(CDM2_CRSN_QSEL_REASON_MASK(CRSN_25),
-+	airoha_fe_rmw(eth, REG_CDM_CRSN_QSEL(2, CRSN_25 >> 2),
-+		      CDM_CRSN_QSEL_REASON_MASK(CRSN_25),
-+		      FIELD_PREP(CDM_CRSN_QSEL_REASON_MASK(CRSN_25),
- 				 CDM_CRSN_QSEL_Q1));
- }
- 
-@@ -455,18 +455,18 @@ static int airoha_fe_init(struct airoha_eth *eth)
- 	airoha_fe_wr(eth, REG_FE_PCE_CFG,
- 		     PCE_DPI_EN_MASK | PCE_KA_EN_MASK | PCE_MC_EN_MASK);
- 	/* set vip queue selection to ring 1 */
--	airoha_fe_rmw(eth, REG_CDM1_FWD_CFG, CDM1_VIP_QSEL_MASK,
--		      FIELD_PREP(CDM1_VIP_QSEL_MASK, 0x4));
--	airoha_fe_rmw(eth, REG_CDM2_FWD_CFG, CDM2_VIP_QSEL_MASK,
--		      FIELD_PREP(CDM2_VIP_QSEL_MASK, 0x4));
-+	airoha_fe_rmw(eth, REG_CDM_FWD_CFG(1), CDM_VIP_QSEL_MASK,
-+		      FIELD_PREP(CDM_VIP_QSEL_MASK, 0x4));
-+	airoha_fe_rmw(eth, REG_CDM_FWD_CFG(2), CDM_VIP_QSEL_MASK,
-+		      FIELD_PREP(CDM_VIP_QSEL_MASK, 0x4));
- 	/* set GDM4 source interface offset to 8 */
--	airoha_fe_rmw(eth, REG_GDM4_SRC_PORT_SET,
--		      GDM4_SPORT_OFF2_MASK |
--		      GDM4_SPORT_OFF1_MASK |
--		      GDM4_SPORT_OFF0_MASK,
--		      FIELD_PREP(GDM4_SPORT_OFF2_MASK, 8) |
--		      FIELD_PREP(GDM4_SPORT_OFF1_MASK, 8) |
--		      FIELD_PREP(GDM4_SPORT_OFF0_MASK, 8));
-+	airoha_fe_rmw(eth, REG_GDM_SRC_PORT_SET(4),
-+		      GDM_SPORT_OFF2_MASK |
-+		      GDM_SPORT_OFF1_MASK |
-+		      GDM_SPORT_OFF0_MASK,
-+		      FIELD_PREP(GDM_SPORT_OFF2_MASK, 8) |
-+		      FIELD_PREP(GDM_SPORT_OFF1_MASK, 8) |
-+		      FIELD_PREP(GDM_SPORT_OFF0_MASK, 8));
- 
- 	/* set PSE Page as 128B */
- 	airoha_fe_rmw(eth, REG_FE_DMA_GLO_CFG,
-@@ -492,8 +492,8 @@ static int airoha_fe_init(struct airoha_eth *eth)
- 	airoha_fe_set(eth, REG_GDM_MISC_CFG,
- 		      GDM2_RDM_ACK_WAIT_PREF_MASK |
- 		      GDM2_CHN_VLD_MODE_MASK);
--	airoha_fe_rmw(eth, REG_CDM2_FWD_CFG, CDM2_OAM_QSEL_MASK,
--		      FIELD_PREP(CDM2_OAM_QSEL_MASK, 15));
-+	airoha_fe_rmw(eth, REG_CDM_FWD_CFG(2), CDM_OAM_QSEL_MASK,
-+		      FIELD_PREP(CDM_OAM_QSEL_MASK, 15));
- 
- 	/* init fragment and assemble Force Port */
- 	/* NPU Core-3, NPU Bridge Channel-3 */
-@@ -507,8 +507,8 @@ static int airoha_fe_init(struct airoha_eth *eth)
- 		      FIELD_PREP(IP_ASSEMBLE_PORT_MASK, 0) |
- 		      FIELD_PREP(IP_ASSEMBLE_NBQ_MASK, 22));
- 
--	airoha_fe_set(eth, REG_GDM3_FWD_CFG, GDM3_PAD_EN_MASK);
--	airoha_fe_set(eth, REG_GDM4_FWD_CFG, GDM4_PAD_EN_MASK);
-+	airoha_fe_set(eth, REG_GDM_FWD_CFG(3), GDM_PAD_EN_MASK);
-+	airoha_fe_set(eth, REG_GDM_FWD_CFG(4), GDM_PAD_EN_MASK);
- 
- 	airoha_fe_crsn_qsel_init(eth);
- 
-@@ -516,7 +516,7 @@ static int airoha_fe_init(struct airoha_eth *eth)
- 	airoha_fe_set(eth, REG_FE_CPORT_CFG, FE_CPORT_PORT_XFC_MASK);
- 
- 	/* default aging mode for mbi unlock issue */
--	airoha_fe_rmw(eth, REG_GDM2_CHN_RLS,
-+	airoha_fe_rmw(eth, REG_GDM_CHN_RLS(2),
- 		      MBI_RX_AGE_SEL_MASK | MBI_TX_AGE_SEL_MASK,
- 		      FIELD_PREP(MBI_RX_AGE_SEL_MASK, 3) |
- 		      FIELD_PREP(MBI_TX_AGE_SEL_MASK, 3));
-@@ -1703,7 +1703,7 @@ static void airhoha_set_gdm2_loopback(struct airoha_gdm_port *port)
- 
- 	/* Forward the traffic to the proper GDM port */
- 	airoha_set_gdm_port_fwd_cfg(eth, REG_GDM_FWD_CFG(2), pse_port);
--	airoha_fe_clear(eth, REG_GDM_FWD_CFG(2), GDM_STRIP_CRC);
-+	airoha_fe_clear(eth, REG_GDM_FWD_CFG(2), GDM_STRIP_CRC_MASK);
- 
- 	/* Enable GDM2 loopback */
- 	airoha_fe_wr(eth, REG_GDM_TXCHN_EN(2), 0xffffffff);
-diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/ethernet/airoha/airoha_regs.h
-index 69c5a143db8c079be0a6ecf41081cd3f5048c090..4b714b59740d5035fff0cdd1a405172d66f114b7 100644
---- a/drivers/net/ethernet/airoha/airoha_regs.h
-+++ b/drivers/net/ethernet/airoha/airoha_regs.h
-@@ -23,6 +23,8 @@
- #define GDM3_BASE			0x1100
- #define GDM4_BASE			0x2500
- 
-+#define CDM_BASE(_n)			\
-+	((_n) == 2 ? CDM2_BASE : CDM1_BASE)
- #define GDM_BASE(_n)			\
- 	((_n) == 4 ? GDM4_BASE :	\
- 	 (_n) == 3 ? GDM3_BASE :	\
-@@ -109,30 +111,24 @@
- #define PATN_DP_MASK			GENMASK(31, 16)
- #define PATN_SP_MASK			GENMASK(15, 0)
- 
--#define REG_CDM1_VLAN_CTRL		CDM1_BASE
--#define CDM1_VLAN_MASK			GENMASK(31, 16)
-+#define REG_CDM_VLAN_CTRL(_n)		CDM_BASE(_n)
-+#define CDM_VLAN_MASK			GENMASK(31, 16)
- 
--#define REG_CDM1_FWD_CFG		(CDM1_BASE + 0x08)
--#define CDM1_VIP_QSEL_MASK		GENMASK(24, 20)
-+#define REG_CDM_FWD_CFG(_n)		(CDM_BASE(_n) + 0x08)
-+#define CDM_OAM_QSEL_MASK		GENMASK(31, 27)
-+#define CDM_VIP_QSEL_MASK		GENMASK(24, 20)
- 
--#define REG_CDM1_CRSN_QSEL(_n)		(CDM1_BASE + 0x10 + ((_n) << 2))
--#define CDM1_CRSN_QSEL_REASON_MASK(_n)	\
--	GENMASK(4 + (((_n) % 4) << 3),	(((_n) % 4) << 3))
--
--#define REG_CDM2_FWD_CFG		(CDM2_BASE + 0x08)
--#define CDM2_OAM_QSEL_MASK		GENMASK(31, 27)
--#define CDM2_VIP_QSEL_MASK		GENMASK(24, 20)
--
--#define REG_CDM2_CRSN_QSEL(_n)		(CDM2_BASE + 0x10 + ((_n) << 2))
--#define CDM2_CRSN_QSEL_REASON_MASK(_n)	\
-+#define REG_CDM_CRSN_QSEL(_n, _m)	(CDM_BASE(_n) + 0x10 + ((_m) << 2))
-+#define CDM_CRSN_QSEL_REASON_MASK(_n)	\
- 	GENMASK(4 + (((_n) % 4) << 3),	(((_n) % 4) << 3))
- 
- #define REG_GDM_FWD_CFG(_n)		GDM_BASE(_n)
--#define GDM_DROP_CRC_ERR		BIT(23)
--#define GDM_IP4_CKSUM			BIT(22)
--#define GDM_TCP_CKSUM			BIT(21)
--#define GDM_UDP_CKSUM			BIT(20)
--#define GDM_STRIP_CRC			BIT(16)
-+#define GDM_PAD_EN_MASK			BIT(28)
-+#define GDM_DROP_CRC_ERR_MASK		BIT(23)
-+#define GDM_IP4_CKSUM_MASK		BIT(22)
-+#define GDM_TCP_CKSUM_MASK		BIT(21)
-+#define GDM_UDP_CKSUM_MASK		BIT(20)
-+#define GDM_STRIP_CRC_MASK		BIT(16)
- #define GDM_UCFQ_MASK			GENMASK(15, 12)
- #define GDM_BCFQ_MASK			GENMASK(11, 8)
- #define GDM_MCFQ_MASK			GENMASK(7, 4)
-@@ -156,6 +152,10 @@
- #define LBK_CHAN_MODE_MASK		BIT(1)
- #define LPBK_EN_MASK			BIT(0)
- 
-+#define REG_GDM_CHN_RLS(_n)		(GDM_BASE(_n) + 0x20)
-+#define MBI_RX_AGE_SEL_MASK		GENMASK(26, 25)
-+#define MBI_TX_AGE_SEL_MASK		GENMASK(18, 17)
-+
- #define REG_GDM_TXCHN_EN(_n)		(GDM_BASE(_n) + 0x24)
- #define REG_GDM_RXCHN_EN(_n)		(GDM_BASE(_n) + 0x28)
- 
-@@ -168,10 +168,10 @@
- #define FE_GDM_MIB_RX_CLEAR_MASK	BIT(1)
- #define FE_GDM_MIB_TX_CLEAR_MASK	BIT(0)
- 
--#define REG_FE_GDM1_MIB_CFG		(GDM1_BASE + 0xf4)
-+#define REG_FE_GDM_MIB_CFG(_n)		(GDM_BASE(_n) + 0xf4)
- #define FE_STRICT_RFC2819_MODE_MASK	BIT(31)
--#define FE_GDM1_TX_MIB_SPLIT_EN_MASK	BIT(17)
--#define FE_GDM1_RX_MIB_SPLIT_EN_MASK	BIT(16)
-+#define FE_GDM_TX_MIB_SPLIT_EN_MASK	BIT(17)
-+#define FE_GDM_RX_MIB_SPLIT_EN_MASK	BIT(16)
- #define FE_TX_MIB_ID_MASK		GENMASK(15, 8)
- #define FE_RX_MIB_ID_MASK		GENMASK(7, 0)
- 
-@@ -214,6 +214,33 @@
- #define REG_FE_GDM_RX_ETH_L511_CNT_L(_n)	(GDM_BASE(_n) + 0x198)
- #define REG_FE_GDM_RX_ETH_L1023_CNT_L(_n)	(GDM_BASE(_n) + 0x19c)
- 
-+#define REG_GDM_SRC_PORT_SET(_n)		(GDM_BASE(_n) + 0x23c)
-+#define GDM_SPORT_OFF2_MASK			GENMASK(19, 16)
-+#define GDM_SPORT_OFF1_MASK			GENMASK(15, 12)
-+#define GDM_SPORT_OFF0_MASK			GENMASK(11, 8)
-+
-+#define REG_FE_GDM_TX_OK_PKT_CNT_H(_n)		(GDM_BASE(_n) + 0x280)
-+#define REG_FE_GDM_TX_OK_BYTE_CNT_H(_n)		(GDM_BASE(_n) + 0x284)
-+#define REG_FE_GDM_TX_ETH_PKT_CNT_H(_n)		(GDM_BASE(_n) + 0x288)
-+#define REG_FE_GDM_TX_ETH_BYTE_CNT_H(_n)	(GDM_BASE(_n) + 0x28c)
-+
-+#define REG_FE_GDM_RX_OK_PKT_CNT_H(_n)		(GDM_BASE(_n) + 0x290)
-+#define REG_FE_GDM_RX_OK_BYTE_CNT_H(_n)		(GDM_BASE(_n) + 0x294)
-+#define REG_FE_GDM_RX_ETH_PKT_CNT_H(_n)		(GDM_BASE(_n) + 0x298)
-+#define REG_FE_GDM_RX_ETH_BYTE_CNT_H(_n)	(GDM_BASE(_n) + 0x29c)
-+#define REG_FE_GDM_TX_ETH_E64_CNT_H(_n)		(GDM_BASE(_n) + 0x2b8)
-+#define REG_FE_GDM_TX_ETH_L64_CNT_H(_n)		(GDM_BASE(_n) + 0x2bc)
-+#define REG_FE_GDM_TX_ETH_L127_CNT_H(_n)	(GDM_BASE(_n) + 0x2c0)
-+#define REG_FE_GDM_TX_ETH_L255_CNT_H(_n)	(GDM_BASE(_n) + 0x2c4)
-+#define REG_FE_GDM_TX_ETH_L511_CNT_H(_n)	(GDM_BASE(_n) + 0x2c8)
-+#define REG_FE_GDM_TX_ETH_L1023_CNT_H(_n)	(GDM_BASE(_n) + 0x2cc)
-+#define REG_FE_GDM_RX_ETH_E64_CNT_H(_n)		(GDM_BASE(_n) + 0x2e8)
-+#define REG_FE_GDM_RX_ETH_L64_CNT_H(_n)		(GDM_BASE(_n) + 0x2ec)
-+#define REG_FE_GDM_RX_ETH_L127_CNT_H(_n)	(GDM_BASE(_n) + 0x2f0)
-+#define REG_FE_GDM_RX_ETH_L255_CNT_H(_n)	(GDM_BASE(_n) + 0x2f4)
-+#define REG_FE_GDM_RX_ETH_L511_CNT_H(_n)	(GDM_BASE(_n) + 0x2f8)
-+#define REG_FE_GDM_RX_ETH_L1023_CNT_H(_n)	(GDM_BASE(_n) + 0x2fc)
-+
- #define REG_PPE_GLO_CFG(_n)			(((_n) ? PPE2_BASE : PPE1_BASE) + 0x200)
- #define PPE_GLO_CFG_BUSY_MASK			BIT(31)
- #define PPE_GLO_CFG_FLOW_DROP_UPDATE_MASK	BIT(9)
-@@ -326,44 +353,6 @@
- 
- #define REG_UPDMEM_DATA(_n)			(((_n) ? PPE2_BASE : PPE1_BASE) + 0x374)
- 
--#define REG_FE_GDM_TX_OK_PKT_CNT_H(_n)		(GDM_BASE(_n) + 0x280)
--#define REG_FE_GDM_TX_OK_BYTE_CNT_H(_n)		(GDM_BASE(_n) + 0x284)
--#define REG_FE_GDM_TX_ETH_PKT_CNT_H(_n)		(GDM_BASE(_n) + 0x288)
--#define REG_FE_GDM_TX_ETH_BYTE_CNT_H(_n)	(GDM_BASE(_n) + 0x28c)
--
--#define REG_FE_GDM_RX_OK_PKT_CNT_H(_n)		(GDM_BASE(_n) + 0x290)
--#define REG_FE_GDM_RX_OK_BYTE_CNT_H(_n)		(GDM_BASE(_n) + 0x294)
--#define REG_FE_GDM_RX_ETH_PKT_CNT_H(_n)		(GDM_BASE(_n) + 0x298)
--#define REG_FE_GDM_RX_ETH_BYTE_CNT_H(_n)	(GDM_BASE(_n) + 0x29c)
--#define REG_FE_GDM_TX_ETH_E64_CNT_H(_n)		(GDM_BASE(_n) + 0x2b8)
--#define REG_FE_GDM_TX_ETH_L64_CNT_H(_n)		(GDM_BASE(_n) + 0x2bc)
--#define REG_FE_GDM_TX_ETH_L127_CNT_H(_n)	(GDM_BASE(_n) + 0x2c0)
--#define REG_FE_GDM_TX_ETH_L255_CNT_H(_n)	(GDM_BASE(_n) + 0x2c4)
--#define REG_FE_GDM_TX_ETH_L511_CNT_H(_n)	(GDM_BASE(_n) + 0x2c8)
--#define REG_FE_GDM_TX_ETH_L1023_CNT_H(_n)	(GDM_BASE(_n) + 0x2cc)
--#define REG_FE_GDM_RX_ETH_E64_CNT_H(_n)		(GDM_BASE(_n) + 0x2e8)
--#define REG_FE_GDM_RX_ETH_L64_CNT_H(_n)		(GDM_BASE(_n) + 0x2ec)
--#define REG_FE_GDM_RX_ETH_L127_CNT_H(_n)	(GDM_BASE(_n) + 0x2f0)
--#define REG_FE_GDM_RX_ETH_L255_CNT_H(_n)	(GDM_BASE(_n) + 0x2f4)
--#define REG_FE_GDM_RX_ETH_L511_CNT_H(_n)	(GDM_BASE(_n) + 0x2f8)
--#define REG_FE_GDM_RX_ETH_L1023_CNT_H(_n)	(GDM_BASE(_n) + 0x2fc)
--
--#define REG_GDM2_CHN_RLS		(GDM2_BASE + 0x20)
--#define MBI_RX_AGE_SEL_MASK		GENMASK(26, 25)
--#define MBI_TX_AGE_SEL_MASK		GENMASK(18, 17)
--
--#define REG_GDM3_FWD_CFG		GDM3_BASE
--#define GDM3_PAD_EN_MASK		BIT(28)
--
--#define REG_GDM4_FWD_CFG		GDM4_BASE
--#define GDM4_PAD_EN_MASK		BIT(28)
--#define GDM4_SPORT_OFFSET0_MASK		GENMASK(11, 8)
--
--#define REG_GDM4_SRC_PORT_SET		(GDM4_BASE + 0x23c)
--#define GDM4_SPORT_OFF2_MASK		GENMASK(19, 16)
--#define GDM4_SPORT_OFF1_MASK		GENMASK(15, 12)
--#define GDM4_SPORT_OFF0_MASK		GENMASK(11, 8)
--
- #define REG_IP_FRAG_FP			0x2010
- #define IP_ASSEMBLE_PORT_MASK		GENMASK(24, 21)
- #define IP_ASSEMBLE_NBQ_MASK		GENMASK(20, 16)
-
----
-base-commit: 1f89ed0ebf2696d1d8fa7625e26c692aa153774a
-change-id: 20251017-airoha-regs-cosmetics-54e9005e7586
-
-Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
-
+T24gU2F0LCAyMDI1LTEwLTE4IGF0IDAyOjI4ICswMDAwLCBZb25nIFd1ICjlkLTli4cpIHdyb3Rl
+Og0KPiBPbiBXZWQsIDIwMjUtMTAtMTUgYXQgMjA6NTUgKzA4MDAsIFpoZW5nbmFuIENoZW4gd3Jv
+dGU6DQo+ID4gQWRkIHN1cHBvcnQgZm9yIG10ODE4OSBBUFUgSU9NTVVzLg0KPiA+IA0KPiA+IFNp
+Z25lZC1vZmYtYnk6IFpoZW5nbmFuIENoZW4gPHpoZW5nbmFuLmNoZW5AbWVkaWF0ZWsuY29tPg0K
+PiA+IFJldmlld2VkLWJ5OiBBbmdlbG9HaW9hY2NoaW5vIERlbCBSZWdubyA8DQo+ID4gYW5nZWxv
+Z2lvYWNjaGluby5kZWxyZWdub0Bjb2xsYWJvcmEuY29tPg0KPiA+IC0tLQ0KPiA+ICBkcml2ZXJz
+L2lvbW11L210a19pb21tdS5jIHwgMzQgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
+Kw0KPiA+ICAxIGZpbGUgY2hhbmdlZCwgMzQgaW5zZXJ0aW9ucygrKQ0KPiA+IA0KPiA+IGRpZmYg
+LS1naXQgYS9kcml2ZXJzL2lvbW11L210a19pb21tdS5jIGIvZHJpdmVycy9pb21tdS9tdGtfaW9t
+bXUuYw0KPiA+IGluZGV4IDdhZjQ3YzU5YjEwYi4uOTk5ZjdiODU4MTY0IDEwMDY0NA0KPiA+IC0t
+LSBhL2RyaXZlcnMvaW9tbXUvbXRrX2lvbW11LmMNCj4gPiArKysgYi9kcml2ZXJzL2lvbW11L210
+a19pb21tdS5jDQo+ID4gQEAgLTEzOSw2ICsxMzksNyBAQA0KPiA+ICAvKiAyIGJpdHM6IGlvbW11
+IHR5cGUgKi8NCj4gPiAgI2RlZmluZSBNVEtfSU9NTVVfVFlQRV9NTQkJKDB4MCA8PCAxMykNCj4g
+PiAgI2RlZmluZSBNVEtfSU9NTVVfVFlQRV9JTkZSQQkJKDB4MSA8PCAxMykNCj4gPiArI2RlZmlu
+ZSBNVEtfSU9NTVVfVFlQRV9BUFUJCSgweDIgPDwgMTMpDQo+ID4gICNkZWZpbmUgTVRLX0lPTU1V
+X1RZUEVfTUFTSwkJKDB4MyA8PCAxMykNCj4gPiAgLyogUE0gYW5kIGNsb2NrIGFsd2F5cyBvbi4g
+ZS5nLiBpbmZyYSBpb21tdSAqLw0KPiA+ICAjZGVmaW5lIFBNX0NMS19BTwkJCUJJVCgxNSkNCj4g
+PiBAQCAtMTcyLDYgKzE3Myw3IEBAIGVudW0gbXRrX2lvbW11X3BsYXQgew0KPiA+ICAJTTRVX01U
+ODE3MywNCj4gPiAgCU00VV9NVDgxODMsDQo+ID4gIAlNNFVfTVQ4MTg2LA0KPiA+ICsJTTRVX01U
+ODE4OSwNCj4gPiAgCU00VV9NVDgxODgsDQo+IA0KPiBNb3ZlIGFmdGVyIG10ODE4OC4NCj4gDQpv
+aywgaXQgd2lsbCBiZSBmaXhlZCBpbiB0aGUgbmV4dCB2ZXJzaW9uLg0KPiBSZXZpZXdlZC1ieTog
+WW9uZyBXdSA8eW9uZy53dUBtZWRpYXRlay5jb20+DQo+IA0KPiBUaGFua3MuDQo=
 
