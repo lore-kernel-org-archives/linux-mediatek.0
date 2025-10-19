@@ -4,66 +4,130 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46A5FCCD1AA
-	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Oct 2025 07:32:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 877ADCCD183
+	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Oct 2025 10:19:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NzJBwVufIqSd28UXTJiRvSTu8HB03cFHT0WX4CBcKAs=; b=WAu6EDBjOuukktUzjk2yAJbPc2
-	n9CW0UXZuU+lURNLUeNaAO7t1W+FjT3nNAofrwSAbgA/eoL/op1pFkTEbIwP3IcIc213nX8tQ0HcV
-	sorzfuZ8Eu6wWaIVsUApyrT7c+s1PEW8tToUD228kCDohlgDmB3JbiCwyo3fEwIQnhmPz5lLYyBgA
-	Re+lbw3IbDZ3wCQ49wz/a2L6pVwU47Ljhvzy4OT2UhCrrY2JAhN7X7FM9MXAu2W1M9qVJ4MY+UGo5
-	xsjHf6mreDRh77QVIUc+GG3teRzmT8rHZcg/p2HVYP0i+VJ0UkDichY2ZS18pycB/YJKOmMixbuQC
-	aUtzw+oQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qu72iZjF7zsGDaiI3P2IM+g6Uj4IABO0wVzHRBg6gmc=; b=1tyHKAG8CwBOtq0B2O1HBu9Lh3
+	dMeOJvcfX+6iBwQ6n17Tn9HmVyuS/QQBBn60ntcJt1UOookakuRQUaYWElEZiC6lfWYKWBvEDUbvr
+	6JaVDvMlILdGTDH5gsbhcclgfEbWYf98G3gdVLlLqPj6XKAR75p3BBvas4nEFaspav0ra0Wiw5sKU
+	25ggOQMaXMBKYYOX+IhYGm796+O1AWyCfJF3C4rkAlS8EsnY8XwvrVp7+qF3AXVKvSfSirkV9QUys
+	AR1SazF/kSqtAg+Qx2m9sqBEyo85P35dYjI4hv1Jk+0RJBAQwE2kD+kSqyb8ZoMreAsfNr8CfSXiP
+	+FbVrLfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vANtt-0000000AmcL-2iEH;
-	Sun, 19 Oct 2025 07:32:21 +0000
+	id 1vAQVc-0000000AukV-3RXl;
+	Sun, 19 Oct 2025 10:19:31 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vANtq-0000000AmbN-2tD6;
-	Sun, 19 Oct 2025 07:32:20 +0000
+	id 1vAQVa-0000000Aujx-1oiB;
+	Sun, 19 Oct 2025 10:19:27 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 4643B44456;
-	Sun, 19 Oct 2025 07:32:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DF52DC4CEE7;
-	Sun, 19 Oct 2025 07:31:53 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id BDD0C419CC;
+	Sun, 19 Oct 2025 10:19:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BD5F7C4CEE7;
+	Sun, 19 Oct 2025 10:19:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760859123;
-	bh=Q5WZijcRsjXr1RWFkwdQADczeQBWeDR34cnzsxqPN0o=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=oysZ12Tnrxw8qCzJaaW5FvHJsX9RECC9QhUHD4trdla7ylQC1SGPQ9dxBvbwfh4AB
-	 EZuq9TNoFGZKeRbBH5MmkMv3fcI3RkZjkGjXSDd3+cdi4WsjG0b2rv96lVjbHCAhko
-	 KmEaHXcJCviGKhdxY00RrIu2XmkcpgHioxyHCVaYgG7yjyq+cuSpKV6+xGOI73Pm/g
-	 lyAcuHPLAav9ye31NNhcKtGXM8Y4UMZvwgwXL7b2aMfSzjNPIpxbseiRy60DFPUNlb
-	 ktnUvzx6DG1m9szD4Ci9xy3LYv/BIuwrz+O+2qj57v5bPxfRwJ+1CXFQ4bTuhKnZ4Z
-	 aDQTsk24cusQQ==
-Date: Sun, 19 Oct 2025 13:01:44 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, 
-	Jianjun Wang <jianjun.wang@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, upstream@airoha.com
-Subject: Re: [PATCH v5 5/5] PCI: mediatek: add support for Airoha AN7583 SoC
-Message-ID: <hjyhso2sqgyq4ymzqg6pmjfrfncla24zwsev2mfinolmclm3ih@sol2yoapbykq>
-References: <20251012205900.5948-1-ansuelsmth@gmail.com>
- <20251012205900.5948-6-ansuelsmth@gmail.com>
+	s=k20201202; t=1760869155;
+	bh=zn/OlHAE8sHCqC3BJqgGMiH8F04MC2heZp4kXhJaObg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=MKoJY09cMaVovykS2UtNMvPdOEwHwiCPUVwbwEZuwZcSJ7GM6k5oHEhC61KDAmDIA
+	 BIlpHoEfLH+qZF8ooQRpOF3dolT2t4edjgUmpd+ipK04sqC0EvFCi3fyyIaCBTgSG3
+	 9I+W1vXef78wr1+J2rTsXeEY9i7ME9/VfQDV4eySQZxhHwPU6vO356NlWcX9LUnRXX
+	 KqjGC+ARYYwDv6ZkzJFoebcA2Lefndy5aNN66gtsQRiz6gt+XZYNDmwdytiJcbCm65
+	 aedQiYhvP//SPittdOEsPSqjcD2O7mhdf/7xRYV7Og7P5pGi+iSFcxd9h9ZFtR5moH
+	 xhZDi4HIkkhxw==
+Message-ID: <cb173df9-4c70-4619-b36d-8e99272551b6@kernel.org>
+Date: Sun, 19 Oct 2025 12:19:09 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 3/4] dt-bindings: ufs: mediatek,ufs: add MT8195
+ compatible and update clock nodes
+To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
+ "chu.stanley@gmail.com" <chu.stanley@gmail.com>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "James.Bottomley@HansenPartnership.com"
+ <James.Bottomley@HansenPartnership.com>,
+ "bvanassche@acm.org" <bvanassche@acm.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ =?UTF-8?B?TWFjcGF1bCBMaW4gKOael+aZuuaWjCk=?= <Macpaul.Lin@mediatek.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "avri.altman@wdc.com" <avri.altman@wdc.com>,
+ "martin.petersen@oracle.com" <martin.petersen@oracle.com>
+Cc: "macpaul@gmail.com" <macpaul@gmail.com>,
+ =?UTF-8?B?UGFibG8gU3VuICjlravmr5Pnv5Qp?= <pablo.sun@mediatek.com>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ =?UTF-8?B?QmVhciBXYW5nICjokKnljp/mg5/lvrcp?= <bear.wang@mediatek.com>,
+ =?UTF-8?B?UmFtYXggTG8gKOe+heaYjumBoCk=?= <Ramax.Lo@mediatek.com>
+References: <20250722085721.2062657-1-macpaul.lin@mediatek.com>
+ <20250722085721.2062657-3-macpaul.lin@mediatek.com>
+ <b90956e8-adf9-4411-b6f9-9212fcd14b59@collabora.com>
+ <438077d191833bb4f628b2c6da3b86b3ecfb40e6.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <438077d191833bb4f628b2c6da3b86b3ecfb40e6.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20251012205900.5948-6-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251019_003219_004175_11F05CB9 
-X-CRM114-Status: GOOD (  26.40  )
+X-CRM114-CacheID: sfid-20251019_031926_514324_CB4ADB47 
+X-CRM114-Status: GOOD (  13.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,102 +142,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Oct 12, 2025 at 10:56:59PM +0200, Christian Marangi wrote:
-> Add support for the second PCIe Root Complex present on Airoha AN7583
-> SoC.
+On 23/07/2025 11:41, Peter Wang (王信友) wrote:
+>> Please, look at my old submission, which actually fixes the
+>> compatibles other than
+>> adding the right clocks for all UFS controllers in MediaTek
+>> platforms.
+>>
+>> https://lore.kernel.org/all/20240612074309.50278-1-angelogioacchino.delregno@collabora.com/
+>>
 > 
-> This is based on the Mediatek Gen1/2 PCIe driver and similar to Gen3
-> also require workaround for the reset signals.
+> Hi Angelo,
 > 
-> Introduce a new flag to skip having to reset signals and also introduce
-> some additional logic to configure the PBUS registers required for
-> Airoha SoC.
+> The clock architecture may vary depending on the platform.
+> These clock patch look good to me.
 > 
-> While at it, also add additional info on the PERST# Signal delay
-> comments and use dedicated macro.
 > 
-
-This belongs to a separate patch which should come before this one.
-
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> ---
->  drivers/pci/controller/pcie-mediatek.c | 92 ++++++++++++++++++++------
->  1 file changed, 70 insertions(+), 22 deletions(-)
+>> I want to take the occasion to remind everyone that my fixes were
+>> discarded because
+>> the MediaTek UFS driver maintainer wants to keep the low quality of
+>> the driver in
+>> favor of easier downstream porting - which is *not* in any way
+>> adhering to quality
+>> standards that the Linux community deserves.
+>>
+>> Cheers,
+>> Angelo
 > 
-> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-> index 1678461e56d3..3340c005da4b 100644
-> --- a/drivers/pci/controller/pcie-mediatek.c
-> +++ b/drivers/pci/controller/pcie-mediatek.c
-> @@ -148,6 +148,7 @@ enum mtk_pcie_flags {
->  	NO_MSI = BIT(2), /* Bridge has no MSI support, and relies on an
->  			  * external block
->  			  */
-> +	SKIP_PCIE_RSTB	= BIT(3), /* Skip calling RSTB bits on PCIe probe */
->  };
->  
->  /**
-> @@ -684,28 +685,32 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
->  		regmap_update_bits(pcie->cfg, PCIE_SYS_CFG_V2, val, val);
->  	}
->  
-> -	/* Assert all reset signals */
-> -	writel(0, port->base + PCIE_RST_CTRL);
-> -
-> -	/*
-> -	 * Enable PCIe link down reset, if link status changed from link up to
-> -	 * link down, this will reset MAC control registers and configuration
-> -	 * space.
-> -	 */
-> -	writel(PCIE_LINKDOWN_RST_EN, port->base + PCIE_RST_CTRL);
-> -
-> -	/*
-> -	 * Described in PCIe CEM specification sections 2.2 (PERST# Signal) and
-> -	 * 2.2.1 (Initial Power-Up (G3 to S0)). The deassertion of PERST# should
-> -	 * be delayed 100ms (TPVPERL) for the power and clock to become stable.
-> -	 */
-> -	msleep(100);
-> -
-> -	/* De-assert PHY, PE, PIPE, MAC and configuration reset	*/
-> -	val = readl(port->base + PCIE_RST_CTRL);
-> -	val |= PCIE_PHY_RSTB | PCIE_PERSTB | PCIE_PIPE_SRSTB |
-> -	       PCIE_MAC_SRSTB | PCIE_CRSTB;
-> -	writel(val, port->base + PCIE_RST_CTRL);
-> +	if (!(soc->flags & SKIP_PCIE_RSTB)) {
-> +		/* Assert all reset signals */
-> +		writel(0, port->base + PCIE_RST_CTRL);
-> +
-> +		/*
-> +		 * Enable PCIe link down reset, if link status changed from
-> +		 * link up to link down, this will reset MAC control registers
-> +		 * and configuration space.
-> +		 */
-> +		writel(PCIE_LINKDOWN_RST_EN, port->base + PCIE_RST_CTRL);
-> +
-> +		/*
-> +		 * Described in PCIe CEM specification revision 3.0 sections
-> +		 * 2.2 (PERST# Signal) and 2.2.1 (Initial Power-Up (G3 to S0)).
-> +		 *
-> +		 * The deassertion of PERST# should be delayed 100ms (TPVPERL)
-> +		 * for the power and clock to become stable.
+> I want to clarify that I am not opposing this in order to keep the 
+> low quality of the driver for the sake of easier downstream porting.
 
-You can drop the comments since PCIE_T_PVPERL_MS definition has them.
+You did.
 
-> +		 */
-> +		msleep(PCIE_T_PVPERL_MS);
-> +
-> +		/* De-assert PHY, PE, PIPE, MAC and configuration reset	*/
-> +		val = readl(port->base + PCIE_RST_CTRL);
-> +		val |= PCIE_PHY_RSTB | PCIE_PERSTB | PCIE_PIPE_SRSTB |
-> +		       PCIE_MAC_SRSTB | PCIE_CRSTB;
-> +		writel(val, port->base + PCIE_RST_CTRL);
+You wrote very clearly here:
+https://lore.kernel.org/all/eb47587159484abca8e6d65dddcf0844822ce99f.camel@mediatek.com/
 
-If PCIE_LINKDOWN_RST_EN corresponds to PERST# signal, then it should be
-deasserted only after the power and REFCLK are stable. But I'm not sure what the
-above PCIE_RST_CTRL setting is doing. If it somehow affects either power or
-REFCLK, then it should come before PCIE_LINKDOWN_RST_EN.
+"In addition, it will require MediaTek to put in extra
+effort to migrate the kernel. "
 
-- Mani
 
--- 
-மணிவண்ணன் சதாசிவம்
+Also you wrote:
+"The role of MediaTek UFS maintainer is not suitable to be handed over
+to someone outside of MediaTek."
+
+https://lore.kernel.org/all/ce0f9785f8f488010cd81adbbdb5ac07742fc988.camel@mediatek.com/
+
+Holy molly, you really wrote this!
+
+That's completely unacceptable. You don't understand how upstream
+development works and you push your downstream narrative which for us
+does not matter. You also object community led efforts, because you
+apparently want to control the upstream process.
+
+That is red flag.
+
+I think you should step down from maintainer position and find more
+suitable person, who is willing to work with the community, or rethink
+how upstream process works and understand that your downstream goals do
+not matter completely.
+
+I will be watching closely this and if situation does not improve, I
+believe we should mark the driver orphaned until we find maintainer
+caring about community, not about corporate goals.
+
+Best regards,
+Krzysztof
 
