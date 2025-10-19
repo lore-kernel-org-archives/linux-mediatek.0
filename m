@@ -4,61 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6914CCD183
-	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Oct 2025 10:41:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B8F5CCD184
+	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Oct 2025 13:34:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=s9NxPfe6XfxXUjr+vI8y3+8zDY9J9m+A8OFmzTDnis0=; b=mdXq02YHukW6+J+vNDi2xROdu4
-	9fZM+fIrtilSxGvxDy0Qvvem5dLQKEEvr168gXdb1FCbr4YEpCg4QroXomJcrwbsbEeZpIzXgbCWa
-	aI5pjeFDEZne8KL2Uki6EypWa362ECeUTiXCnpRW1iYDvTu1/Fr/OezK28p1RP18jz1IkK9jdboDn
-	sBGPMqIhTiNIyzrNi2L/Y6bxPr6MnASQegHcJYni884l26a1kvDl5i2wpiUUNozg8jm3nXFAUO3f2
-	5mhUObDm5VO7NTVy5KLGqJ9BzQuHErRdH4AMz/TA01I/y73PhOhlTrgUV5hXCCX/p9nnw6mY8mvkp
-	PhMkTIvw==;
+	bh=rAUp/zOPfZjDHenR5pCa5rJWpFDGvgMLJJymplML+FU=; b=luNLEN6UGMtI+3aVGQ7H4LY3OS
+	Hhlo73mAThaqb9YCEmbWbEM9B2gPTEvMTb5VzPcYgSHBAkwW92rT3TnwWHSGGEffvHJoSKogvliRw
+	oTLLBjAxpPnifF4udRKjO7EB09tHj+JmTWbVxxTo5/Ie58r4Vi+evOgDSdymsBA69wVuDnMYqpRW2
+	T/UdAnlKOFzMW7J33Fr1CXfNDxbMu16MeXi3ddLz/M0GmhtiQ8ptRpy90X8KTbANAOsNE3JYVLtxq
+	fdbvWftQ+Yzfp1sDJpZQ3yqafbWYgwH/MdUf6xA1XZu+LwP9axoKUWOMR/8tivUvLqnULtKKWt4T/
+	SVM5w37w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAQqf-0000000AvpG-3u5G;
-	Sun, 19 Oct 2025 10:41:13 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1vATXu-0000000B1xm-3NPB;
+	Sun, 19 Oct 2025 13:34:02 +0000
+Received: from mail.ispras.ru ([83.149.199.84])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAQqc-0000000Avo8-3uQJ;
-	Sun, 19 Oct 2025 10:41:12 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.98.2)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1vAIke-000000005VK-0PXI;
-	Sun, 19 Oct 2025 02:02:28 +0000
-Date: Sun, 19 Oct 2025 03:02:24 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Jiri Slaby <jirislaby@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Yu Jiaoliang <yujiaoliang@vivo.com>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@baylibre.com>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Changqi Hu <changqi.hu@mediatek.com>,
-	Sam Shih <sam.shih@mediatek.com>,
-	Steven Liu <steven.liu@mediatek.com>,
-	John Crispin <john@phrozen.org>, linux-kernel@vger.kernel.org,
-	linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v3] serial: 8250_mtk: Enable baud clock and manage in
- runtime PM
-Message-ID: <aPRGsKGDrYlyoTje@makrotopia.org>
-References: <de5197ccc31e1dab0965cabcc11ca92e67246cf6.1758058441.git.daniel@makrotopia.org>
- <939cea9e-d7bd-4a13-b462-17e483f61e4c@gmail.com>
+	id 1vATXr-0000000B1wW-0q5o;
+	Sun, 19 Oct 2025 13:34:00 +0000
+Received: from localhost (unknown [10.10.165.9])
+	by mail.ispras.ru (Postfix) with UTF8SMTPSA id 9B43F4076720;
+	Sun, 19 Oct 2025 13:32:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail.ispras.ru 9B43F4076720
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ispras.ru;
+	s=default; t=1760880766;
+	bh=rAUp/zOPfZjDHenR5pCa5rJWpFDGvgMLJJymplML+FU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=SYpsxsyudGv77Du/W+Aj376mvpJBH/DqSar/O5dKKUa5FzIf88vBgFfRnWO7WgxSY
+	 jTaWC7WFny8AUjK7wSsX/TOco0l0oT+/A+L4DsBw+maYjY5j9fzasLNn9BGwlgVeCm
+	 cA2RL4y5mgpuSu8Ww1FhhjQeF5K1eBMSDsRSOnyw=
+Date: Sun, 19 Oct 2025 16:32:46 +0300
+From: Fedor Pchelkin <pchelkin@ispras.ru>
+To: Sergey Shtylyov <s.shtylyov@omp.ru>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Jiri Slaby <jirislaby@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-serial@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, lvc-project@linuxtesting.org, 
+	Eddie Huang <eddie.huang@mediatek.com>
+Subject: Re: [PATCH v3] serial: 8250_mtk: correct max baud rate in
+ set_termios() method
+Message-ID: <20251019162744-e3ac865925bae161b0193e70-pchelkin@ispras>
+References: <b238b17a-c22b-4bd8-87bd-2d924328a062@omp.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <939cea9e-d7bd-4a13-b462-17e483f61e4c@gmail.com>
+In-Reply-To: <b238b17a-c22b-4bd8-87bd-2d924328a062@omp.ru>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251019_034110_993199_14895FDE 
-X-CRM114-Status: GOOD (  28.61  )
+X-CRM114-CacheID: sfid-20251019_063359_421147_EA3371BD 
+X-CRM114-Status: GOOD (  17.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,79 +71,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Wed, Sep 17, 2025 at 12:00:57PM +0200, Matthias Brugger wrote:
-> On 16/09/2025 23:37, Daniel Golle wrote:
-> > Some MediaTek SoCs got a gated UART baud clock, which currently gets
-> > disabled as the clk subsystem believes it would be unused. This results in
-> > the uart freezing right after "clk: Disabling unused clocks" on those
-> > platforms.
-> > 
-> > Request the baud clock to be prepared and enabled during probe, and to
-> > restore run-time power management capabilities to what it was before commit
-> > e32a83c70cf9 ("serial: 8250-mtk: modify mtk uart power and clock
-> > management") disable and unprepare the baud clock when suspending the UART,
-> > prepare and enable it again when resuming it.
-> > 
-> > Fixes: e32a83c70cf9 ("serial: 8250-mtk: modify mtk uart power and clock management")
+On Sat, 18. Oct 23:44, Sergey Shtylyov wrote:
+> Commit 81bb549fdf14 ("serial: 8250_mtk: support big baud rate.") claimed
+> the maximum supported baud rate to be 4 Mbps; of the Mediatek datasheets
+> (I was able to get my hands on), only MT7987A datasheet did support this
+> claim and MT7981B/88A datasheets disagreed, claiming just 3 Mbps maximum.
+> However, this commit failed to enforce even the claimed maximum, passing
+> port->uartclk to uart_get_baud_rate() for the maximum baud rate -- while
+> the datasheets mention up to 52 MHz for the baud clock's frequency. This
+> means that an integer overflow would happen (when multiplying the baud
+> variable by 256) if a baud rate higher than 16777215 bps is passed via
+> termios->c_ospeed (division by 0 will also happen when exactly 16777216
+> bps is passed). Pass to uart_get_baud_rate() the documented maximum of
+> 4 Mbps or port->uartclk (whichever happens to be lesser) -- this way,
+> we can avoid both overflows and regression with the maximum baud rate...
 > 
-> Most of the issues from this commit are already fixed in
-> b6c7ff2693ddc ("serial: 8250_mtk: Simplify clock sequencing and runtime PM")
-> which is more or less a revert of e32a83c70cf9.
+> Found by Linux Verification Center (linuxtesting.org) with the Svace static
+> analysis tool.
 > 
-> I think we should add
-> Fixes: b6c7ff2693ddc ("serial: 8250_mtk: Simplify clock sequencing and runtime PM")
-> here as well. It's a fix of a fix :)
+> Fixes: 81bb549fdf14 ("serial: 8250_mtk: support big baud rate.")
+> Signed-off-by: Sergey Shtylyov <s.shtylyov@omp.ru>
 
-Just a friendly ping about this patch :)
-Should I resend the patch with the added Fixes:-tag? Or can it be merged
-including the tag added my Matthias without a resend?
+Tested-by: Fedor Pchelkin <pchelkin@ispras.ru>
 
+on Banana Pi BPI-R4 with MediaTek MT7988A chipset.
+
+Thanks!
 
 > 
-> Regards,
-> Matthias
+> ---
+> This patch is against the tty-linus branch of Greg KH's 'tty.git' repo.
 > 
+> Changes in version #3:
+> - updated the maximum baud rate to 4 Mbps;
+> - rewrote the description again, adding more info on the MT798x datasheets
+>   studied, on how the bug manifests iself, and on the solution.
 > 
-> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> > ---
-> > v3: squash into single patch
-> > v2: add managing run-time PM in dedicated patch
-> > 
-> >   drivers/tty/serial/8250/8250_mtk.c | 6 ++++--
-> >   1 file changed, 4 insertions(+), 2 deletions(-)
-> > 
-> > diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
-> > index b44de2ed7413..5875a7b9b4b1 100644
-> > --- a/drivers/tty/serial/8250/8250_mtk.c
-> > +++ b/drivers/tty/serial/8250/8250_mtk.c
-> > @@ -435,6 +435,7 @@ static int __maybe_unused mtk8250_runtime_suspend(struct device *dev)
-> >   	while
-> >   		(serial_in(up, MTK_UART_DEBUG0));
-> > +	clk_disable_unprepare(data->uart_clk);
-> >   	clk_disable_unprepare(data->bus_clk);
-> >   	return 0;
-> > @@ -445,6 +446,7 @@ static int __maybe_unused mtk8250_runtime_resume(struct device *dev)
-> >   	struct mtk8250_data *data = dev_get_drvdata(dev);
-> >   	clk_prepare_enable(data->bus_clk);
-> > +	clk_prepare_enable(data->uart_clk);
-> >   	return 0;
-> >   }
-> > @@ -475,13 +477,13 @@ static int mtk8250_probe_of(struct platform_device *pdev, struct uart_port *p,
-> >   	int dmacnt;
-> >   #endif
-> > -	data->uart_clk = devm_clk_get(&pdev->dev, "baud");
-> > +	data->uart_clk = devm_clk_get_enabled(&pdev->dev, "baud");
-> >   	if (IS_ERR(data->uart_clk)) {
-> >   		/*
-> >   		 * For compatibility with older device trees try unnamed
-> >   		 * clk when no baud clk can be found.
-> >   		 */
-> > -		data->uart_clk = devm_clk_get(&pdev->dev, NULL);
-> > +		data->uart_clk = devm_clk_get_enabled(&pdev->dev, NULL);
-> >   		if (IS_ERR(data->uart_clk)) {
-> >   			dev_warn(&pdev->dev, "Can't get uart clock\n");
-> >   			return PTR_ERR(data->uart_clk);
+> Changes in version #2:
+> - changed the approach to the problem (and hence rewrote the description);
+> - removed "the" article from the subject for brevity.
 > 
+>  drivers/tty/serial/8250/8250_mtk.c |    2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> Index: tty/drivers/tty/serial/8250/8250_mtk.c
+> ===================================================================
+> --- tty.orig/drivers/tty/serial/8250/8250_mtk.c
+> +++ tty/drivers/tty/serial/8250/8250_mtk.c
+> @@ -358,7 +358,7 @@ mtk8250_set_termios(struct uart_port *po
+>  	 */
+>  	baud = uart_get_baud_rate(port, termios, old,
+>  				  port->uartclk / 16 / UART_DIV_MAX,
+> -				  port->uartclk);
+> +				  min(4000000U, port->uartclk));
+>  
+>  	if (baud < 115200) {
+>  		serial_port_out(port, MTK_UART_HIGHS, 0x0);
 
