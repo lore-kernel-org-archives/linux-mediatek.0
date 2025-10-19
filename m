@@ -4,130 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 877ADCCD183
-	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Oct 2025 10:19:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6914CCD183
+	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Oct 2025 10:41:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qu72iZjF7zsGDaiI3P2IM+g6Uj4IABO0wVzHRBg6gmc=; b=1tyHKAG8CwBOtq0B2O1HBu9Lh3
-	dMeOJvcfX+6iBwQ6n17Tn9HmVyuS/QQBBn60ntcJt1UOookakuRQUaYWElEZiC6lfWYKWBvEDUbvr
-	6JaVDvMlILdGTDH5gsbhcclgfEbWYf98G3gdVLlLqPj6XKAR75p3BBvas4nEFaspav0ra0Wiw5sKU
-	25ggOQMaXMBKYYOX+IhYGm796+O1AWyCfJF3C4rkAlS8EsnY8XwvrVp7+qF3AXVKvSfSirkV9QUys
-	AR1SazF/kSqtAg+Qx2m9sqBEyo85P35dYjI4hv1Jk+0RJBAQwE2kD+kSqyb8ZoMreAsfNr8CfSXiP
-	+FbVrLfw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=s9NxPfe6XfxXUjr+vI8y3+8zDY9J9m+A8OFmzTDnis0=; b=mdXq02YHukW6+J+vNDi2xROdu4
+	9fZM+fIrtilSxGvxDy0Qvvem5dLQKEEvr168gXdb1FCbr4YEpCg4QroXomJcrwbsbEeZpIzXgbCWa
+	aI5pjeFDEZne8KL2Uki6EypWa362ECeUTiXCnpRW1iYDvTu1/Fr/OezK28p1RP18jz1IkK9jdboDn
+	sBGPMqIhTiNIyzrNi2L/Y6bxPr6MnASQegHcJYni884l26a1kvDl5i2wpiUUNozg8jm3nXFAUO3f2
+	5mhUObDm5VO7NTVy5KLGqJ9BzQuHErRdH4AMz/TA01I/y73PhOhlTrgUV5hXCCX/p9nnw6mY8mvkp
+	PhMkTIvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAQVc-0000000AukV-3RXl;
-	Sun, 19 Oct 2025 10:19:31 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vAQqf-0000000AvpG-3u5G;
+	Sun, 19 Oct 2025 10:41:13 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAQVa-0000000Aujx-1oiB;
-	Sun, 19 Oct 2025 10:19:27 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id BDD0C419CC;
-	Sun, 19 Oct 2025 10:19:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BD5F7C4CEE7;
-	Sun, 19 Oct 2025 10:19:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760869155;
-	bh=zn/OlHAE8sHCqC3BJqgGMiH8F04MC2heZp4kXhJaObg=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=MKoJY09cMaVovykS2UtNMvPdOEwHwiCPUVwbwEZuwZcSJ7GM6k5oHEhC61KDAmDIA
-	 BIlpHoEfLH+qZF8ooQRpOF3dolT2t4edjgUmpd+ipK04sqC0EvFCi3fyyIaCBTgSG3
-	 9I+W1vXef78wr1+J2rTsXeEY9i7ME9/VfQDV4eySQZxhHwPU6vO356NlWcX9LUnRXX
-	 KqjGC+ARYYwDv6ZkzJFoebcA2Lefndy5aNN66gtsQRiz6gt+XZYNDmwdytiJcbCm65
-	 aedQiYhvP//SPittdOEsPSqjcD2O7mhdf/7xRYV7Og7P5pGi+iSFcxd9h9ZFtR5moH
-	 xhZDi4HIkkhxw==
-Message-ID: <cb173df9-4c70-4619-b36d-8e99272551b6@kernel.org>
-Date: Sun, 19 Oct 2025 12:19:09 +0200
+	id 1vAQqc-0000000Avo8-3uQJ;
+	Sun, 19 Oct 2025 10:41:12 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.98.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1vAIke-000000005VK-0PXI;
+	Sun, 19 Oct 2025 02:02:28 +0000
+Date: Sun, 19 Oct 2025 03:02:24 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Jiri Slaby <jirislaby@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Yu Jiaoliang <yujiaoliang@vivo.com>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@baylibre.com>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Changqi Hu <changqi.hu@mediatek.com>,
+	Sam Shih <sam.shih@mediatek.com>,
+	Steven Liu <steven.liu@mediatek.com>,
+	John Crispin <john@phrozen.org>, linux-kernel@vger.kernel.org,
+	linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v3] serial: 8250_mtk: Enable baud clock and manage in
+ runtime PM
+Message-ID: <aPRGsKGDrYlyoTje@makrotopia.org>
+References: <de5197ccc31e1dab0965cabcc11ca92e67246cf6.1758058441.git.daniel@makrotopia.org>
+ <939cea9e-d7bd-4a13-b462-17e483f61e4c@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/4] dt-bindings: ufs: mediatek,ufs: add MT8195
- compatible and update clock nodes
-To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
- "chu.stanley@gmail.com" <chu.stanley@gmail.com>,
- "robh@kernel.org" <robh@kernel.org>,
- "James.Bottomley@HansenPartnership.com"
- <James.Bottomley@HansenPartnership.com>,
- "bvanassche@acm.org" <bvanassche@acm.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- =?UTF-8?B?TWFjcGF1bCBMaW4gKOael+aZuuaWjCk=?= <Macpaul.Lin@mediatek.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
- "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "avri.altman@wdc.com" <avri.altman@wdc.com>,
- "martin.petersen@oracle.com" <martin.petersen@oracle.com>
-Cc: "macpaul@gmail.com" <macpaul@gmail.com>,
- =?UTF-8?B?UGFibG8gU3VuICjlravmr5Pnv5Qp?= <pablo.sun@mediatek.com>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- =?UTF-8?B?QmVhciBXYW5nICjokKnljp/mg5/lvrcp?= <bear.wang@mediatek.com>,
- =?UTF-8?B?UmFtYXggTG8gKOe+heaYjumBoCk=?= <Ramax.Lo@mediatek.com>
-References: <20250722085721.2062657-1-macpaul.lin@mediatek.com>
- <20250722085721.2062657-3-macpaul.lin@mediatek.com>
- <b90956e8-adf9-4411-b6f9-9212fcd14b59@collabora.com>
- <438077d191833bb4f628b2c6da3b86b3ecfb40e6.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <438077d191833bb4f628b2c6da3b86b3ecfb40e6.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <939cea9e-d7bd-4a13-b462-17e483f61e4c@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251019_031926_514324_CB4ADB47 
-X-CRM114-Status: GOOD (  13.17  )
+X-CRM114-CacheID: sfid-20251019_034110_993199_14895FDE 
+X-CRM114-Status: GOOD (  28.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,68 +73,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 23/07/2025 11:41, Peter Wang (王信友) wrote:
->> Please, look at my old submission, which actually fixes the
->> compatibles other than
->> adding the right clocks for all UFS controllers in MediaTek
->> platforms.
->>
->> https://lore.kernel.org/all/20240612074309.50278-1-angelogioacchino.delregno@collabora.com/
->>
+
+On Wed, Sep 17, 2025 at 12:00:57PM +0200, Matthias Brugger wrote:
+> On 16/09/2025 23:37, Daniel Golle wrote:
+> > Some MediaTek SoCs got a gated UART baud clock, which currently gets
+> > disabled as the clk subsystem believes it would be unused. This results in
+> > the uart freezing right after "clk: Disabling unused clocks" on those
+> > platforms.
+> > 
+> > Request the baud clock to be prepared and enabled during probe, and to
+> > restore run-time power management capabilities to what it was before commit
+> > e32a83c70cf9 ("serial: 8250-mtk: modify mtk uart power and clock
+> > management") disable and unprepare the baud clock when suspending the UART,
+> > prepare and enable it again when resuming it.
+> > 
+> > Fixes: e32a83c70cf9 ("serial: 8250-mtk: modify mtk uart power and clock management")
 > 
-> Hi Angelo,
+> Most of the issues from this commit are already fixed in
+> b6c7ff2693ddc ("serial: 8250_mtk: Simplify clock sequencing and runtime PM")
+> which is more or less a revert of e32a83c70cf9.
 > 
-> The clock architecture may vary depending on the platform.
-> These clock patch look good to me.
+> I think we should add
+> Fixes: b6c7ff2693ddc ("serial: 8250_mtk: Simplify clock sequencing and runtime PM")
+> here as well. It's a fix of a fix :)
+
+Just a friendly ping about this patch :)
+Should I resend the patch with the added Fixes:-tag? Or can it be merged
+including the tag added my Matthias without a resend?
+
+
+> 
+> Regards,
+> Matthias
 > 
 > 
->> I want to take the occasion to remind everyone that my fixes were
->> discarded because
->> the MediaTek UFS driver maintainer wants to keep the low quality of
->> the driver in
->> favor of easier downstream porting - which is *not* in any way
->> adhering to quality
->> standards that the Linux community deserves.
->>
->> Cheers,
->> Angelo
+> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> > ---
+> > v3: squash into single patch
+> > v2: add managing run-time PM in dedicated patch
+> > 
+> >   drivers/tty/serial/8250/8250_mtk.c | 6 ++++--
+> >   1 file changed, 4 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
+> > index b44de2ed7413..5875a7b9b4b1 100644
+> > --- a/drivers/tty/serial/8250/8250_mtk.c
+> > +++ b/drivers/tty/serial/8250/8250_mtk.c
+> > @@ -435,6 +435,7 @@ static int __maybe_unused mtk8250_runtime_suspend(struct device *dev)
+> >   	while
+> >   		(serial_in(up, MTK_UART_DEBUG0));
+> > +	clk_disable_unprepare(data->uart_clk);
+> >   	clk_disable_unprepare(data->bus_clk);
+> >   	return 0;
+> > @@ -445,6 +446,7 @@ static int __maybe_unused mtk8250_runtime_resume(struct device *dev)
+> >   	struct mtk8250_data *data = dev_get_drvdata(dev);
+> >   	clk_prepare_enable(data->bus_clk);
+> > +	clk_prepare_enable(data->uart_clk);
+> >   	return 0;
+> >   }
+> > @@ -475,13 +477,13 @@ static int mtk8250_probe_of(struct platform_device *pdev, struct uart_port *p,
+> >   	int dmacnt;
+> >   #endif
+> > -	data->uart_clk = devm_clk_get(&pdev->dev, "baud");
+> > +	data->uart_clk = devm_clk_get_enabled(&pdev->dev, "baud");
+> >   	if (IS_ERR(data->uart_clk)) {
+> >   		/*
+> >   		 * For compatibility with older device trees try unnamed
+> >   		 * clk when no baud clk can be found.
+> >   		 */
+> > -		data->uart_clk = devm_clk_get(&pdev->dev, NULL);
+> > +		data->uart_clk = devm_clk_get_enabled(&pdev->dev, NULL);
+> >   		if (IS_ERR(data->uart_clk)) {
+> >   			dev_warn(&pdev->dev, "Can't get uart clock\n");
+> >   			return PTR_ERR(data->uart_clk);
 > 
-> I want to clarify that I am not opposing this in order to keep the 
-> low quality of the driver for the sake of easier downstream porting.
-
-You did.
-
-You wrote very clearly here:
-https://lore.kernel.org/all/eb47587159484abca8e6d65dddcf0844822ce99f.camel@mediatek.com/
-
-"In addition, it will require MediaTek to put in extra
-effort to migrate the kernel. "
-
-
-Also you wrote:
-"The role of MediaTek UFS maintainer is not suitable to be handed over
-to someone outside of MediaTek."
-
-https://lore.kernel.org/all/ce0f9785f8f488010cd81adbbdb5ac07742fc988.camel@mediatek.com/
-
-Holy molly, you really wrote this!
-
-That's completely unacceptable. You don't understand how upstream
-development works and you push your downstream narrative which for us
-does not matter. You also object community led efforts, because you
-apparently want to control the upstream process.
-
-That is red flag.
-
-I think you should step down from maintainer position and find more
-suitable person, who is willing to work with the community, or rethink
-how upstream process works and understand that your downstream goals do
-not matter completely.
-
-I will be watching closely this and if situation does not improve, I
-believe we should mark the driver orphaned until we find maintainer
-caring about community, not about corporate goals.
-
-Best regards,
-Krzysztof
 
