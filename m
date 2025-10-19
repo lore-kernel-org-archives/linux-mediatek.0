@@ -4,83 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38066CCD195
-	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Oct 2025 17:45:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBB2FCCD195
+	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Oct 2025 18:19:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yCkb5+ybyLL0MMc5cBqviSbrBCStnH4rtqG86uh5xyA=; b=jq55ePa4+okbAxwwWejf1ZF21S
-	Og0pSmGMmRwXzEizEMvYc7HI9gDJC8P6Flw1hn3LLkG0cXzuQT8rJ2e/cLNnD3laikXUpe2GFdjNn
-	5tGJQ747IcG6K7dtlc2kA+lr+/hzeMtvJDauyx+rLWEdvry1ovCIlHGgag8ji5Qgt8DTl85rA/oFP
-	gOnRve234DAzjZZby6oL0mldQ7SasOU5SGkPcnJmGLuWSUV5af0czjvKjeW8flJk9Nh5hCcgN7Rn9
-	813b+70ki+kFq+yC8JAlKFqCOBWyxCtmkrgZoBcA5vpw1KsgR4VmU11YO9B9cyN2rKpjY2rWqwy1E
-	Po0fDV0A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TEdAoTI0Zvq9lrO508IgR4SfxTCAqZjw0pM5fpGCRpU=; b=WNqiBNDeh5Ts523Da9HnBtXkPj
+	zxt+vSuz44+/c3butD4QU//Ifi+tsSXfFGhy5s5038V8HEQkVhDhNA2TQ9yBZYClO/1ga9SGm8sJu
+	GHbuqRVSdhuq8K4/Yvnd1ODv7PFJ4fuxKjMZGfaVNuNIBby0B2MsJu31v8bkMUy6Ev22I5b5RgabJ
+	Koiim5SRz8Y1m4jfjWNux69gFiaZrS01Uyrc9ye0Ax7rflt1+GA9kOvmWdRcpalIoc3bqg9yeTAt4
+	taNJye0L9+aQsKQEPyMVwDJUzV2wex103waUUAOcVIXyHoU8D8oMtKuL2HtVRk8SscsGRxg2p2YyY
+	T+zApODg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAXTZ-0000000BGjy-2v6v;
-	Sun, 19 Oct 2025 17:45:49 +0000
-Received: from mgamail.intel.com ([192.198.163.16])
+	id 1vAY08-0000000BIIN-1bhk;
+	Sun, 19 Oct 2025 18:19:28 +0000
+Received: from dispatch1-us1.ppe-hosted.com ([148.163.129.49])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAXTW-0000000BGjR-3zDy;
-	Sun, 19 Oct 2025 17:45:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1760895947; x=1792431947;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=PT5edAvGs2FKCeBZ2dl7OCjjziNGJmQxLTxQAcMOLvs=;
-  b=Z6W7ql7n6BYJaHwl3vhCxiQM/orCIbUguoQ9o1MhSaNLrtgM5V9dPWq3
-   dVzIbdgZrJJFHhL4+5yLNSyjRrXcHJZPGsiURuDRVlsYvth5laVNmS4+s
-   sEh8W54yBorFph/QWMxrG1cFJH3GO8MindVjvTXr+U0xKnHvjMtAKPHUX
-   J6P71tdfpaPymD80nUCW/VM8nz8CAepGB+kiaOXUyR//Juq28y/9XC5/N
-   D7M9M3OYmTabD5410B6oZYssOq+319i+I6mTuRxLQHTIi21jCTyhBJ0/X
-   2SL6y1eGAdtH/xveoJdUlhZWFJ27zD0X6JmdeGlyAzEnUgcX7LDQlKEvj
-   Q==;
-X-CSE-ConnectionGUID: +Zz+SV20RcC6SK9qrB7OiA==
-X-CSE-MsgGUID: UTv5Vi6BTYm87yS1jjB0YA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11587"; a="50603805"
-X-IronPort-AV: E=Sophos;i="6.19,241,1754982000"; 
-   d="scan'208";a="50603805"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
-  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Oct 2025 10:45:39 -0700
-X-CSE-ConnectionGUID: 0JZCniWVT4KAkMJjgpid2Q==
-X-CSE-MsgGUID: /WMS/oibQKCeZobeH9y1bg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.19,241,1754982000"; 
-   d="scan'208";a="183177175"
-Received: from lkp-server02.sh.intel.com (HELO 66d7546c76b2) ([10.239.97.151])
-  by orviesa008.jf.intel.com with ESMTP; 19 Oct 2025 10:45:34 -0700
-Received: from kbuild by 66d7546c76b2 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1vAXSx-0009F7-0G;
-	Sun, 19 Oct 2025 17:45:32 +0000
-Date: Mon, 20 Oct 2025 01:45:01 +0800
-From: kernel test robot <lkp@intel.com>
-To: Aleksander Jan Bajkowski <olek2@wp.pl>, nbd@nbd.name,
-	lorenzo@kernel.org, ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com, sean.wang@mediatek.com,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	howard-yh.hsu@mediatek.com, StanleyYP.Wang@mediatek.com,
-	rosenp@gmail.com, luoxueqin@kylinos.cn, chad@monroe.io,
-	linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: oe-kbuild-all@lists.linux.dev
+	id 1vAY01-0000000BIHl-2yhX;
+	Sun, 19 Oct 2025 18:19:26 +0000
+X-Virus-Scanned: Proofpoint Essentials engine
+Received: from mail3.candelatech.com (mail.candelatech.com [208.74.158.173])
+	by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id A656A28007A;
+	Sun, 19 Oct 2025 18:19:13 +0000 (UTC)
+Received: from [192.168.1.23] (unknown [98.97.32.185])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by mail3.candelatech.com (Postfix) with ESMTPSA id E397F13C2B0;
+	Sun, 19 Oct 2025 11:18:53 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com E397F13C2B0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=candelatech.com;
+	s=default; t=1760897951;
+	bh=d11pgiUBlTDSn8XZdaFMt+akqhMwov8Yt4HpY3gvaug=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=CPwIRTr17+B4Oc/3SpOvEJQmGN4mblNpDjM7OrDyawykWCqxg7OeBOsRFglJxBO6K
+	 Gu3w3XNR2LkSscHWH6uU+HhBhWGBAU+drpjW/yhi1gmHnv3BuGO41JQA+X6+WUMB9+
+	 4tYFRD4F/5PoWKtFxvc9A5Fkj1nkoLjaNXpGGXzs=
+Message-ID: <4f75bb90-25ee-4312-b4b1-3faf0249b05a@candelatech.com>
+Date: Sun, 19 Oct 2025 11:18:50 -0700
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] wifi: mt76: add tx checksum offload for mt7915, mt7921,
  mt7981 and mt7986
-Message-ID: <202510200105.T000lujD-lkp@intel.com>
+To: Aleksander Jan Bajkowski <olek2@wp.pl>, nbd@nbd.name, lorenzo@kernel.org,
+ ryder.lee@mediatek.com, shayne.chen@mediatek.com, sean.wang@mediatek.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ howard-yh.hsu@mediatek.com, StanleyYP.Wang@mediatek.com, rosenp@gmail.com,
+ luoxueqin@kylinos.cn, chad@monroe.io, linux-wireless@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
 References: <20251019155316.3537185-1-olek2@wp.pl>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+ <fa7befd5-b2c7-4277-ad57-a1577216ba83@candelatech.com>
+ <5a529d81-fb4e-4e7a-a132-3b76d26c3696@wp.pl>
+Content-Language: en-MW
+From: Ben Greear <greearb@candelatech.com>
+Organization: Candela Technologies
+In-Reply-To: <5a529d81-fb4e-4e7a-a132-3b76d26c3696@wp.pl>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20251019155316.3537185-1-olek2@wp.pl>
+X-MDID: 1760897955-ofoHgPYxUDkh
+X-PPE-STACK: {"stack":"us5"}
+X-MDID-O: us5;ut7;1760897955;ofoHgPYxUDkh;<greearb@candelatech.com>;d5c215dcae166280e85b20da571dd1ee
+X-PPE-TRUSTED: V=1;DIR=OUT;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251019_104547_036513_BF939615 
-X-CRM114-Status: GOOD (  11.53  )
+X-CRM114-CacheID: sfid-20251019_111922_181949_CA69C86C 
+X-CRM114-Status: GOOD (  19.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,61 +86,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Aleksander,
+On 10/19/25 09:43, Aleksander Jan Bajkowski wrote:
+> Hi Ben,
+> 
+> On 10/19/25 18:26, Ben Greear wrote:
+>> On 10/19/25 08:51, Aleksander Jan Bajkowski wrote:
+>>> Supports IPv4 and IPv6 TCP + UDP
+>>>
+>>> In various tests between MT7986 and Intel BE200, I observed a performance
+>>> boost ranging from 2 to 12%, with an average of 5.5%.
+>>>
+>>> I did the tests on the MT7915, MT7981, MT7986, and MT7921 variants. The
+>>> MT7922, MT7925, and MT799x are untouched for now and still have
+>>> checksumming disabled.
+>>
+>> At least with  7996, tcp csum only worked on the first few vdevs
+>> created in our testing, so we had to add logic to disable that flag
+>> on subsequent vdevs.
+>>
+>> Have you tried creating a bunch of station and/or vap vdevs to see if
+>> all of them can still transmit TCP traffic?
+>>
+>>
+> Thanks for the useful information. On all tested devices, I had a single
+> AP configured per device. I will try to create several APs for each device.
 
-kernel test robot noticed the following build warnings:
+We can try it out as well.
 
-[auto build test WARNING on wireless-next/main]
-[also build test WARNING on wireless/main linus/master v6.18-rc1 next-20251017]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+> I also have a router with MT7996. A quick test shows that checksum
+> offload doesn't work on this router. MT7996 is visible in the system
+> as a single DBDC device. I have 3 APs configured there. Each on a
+> separate band (2.4/5/6 GHz).
+> 
+> Best regards,
+> Aleksander
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Aleksander-Jan-Bajkowski/wifi-mt76-add-tx-checksum-offload-for-mt7915-mt7921-mt7981-and-mt7986/20251019-235515
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless-next.git main
-patch link:    https://lore.kernel.org/r/20251019155316.3537185-1-olek2%40wp.pl
-patch subject: [PATCH] wifi: mt76: add tx checksum offload for mt7915, mt7921, mt7981 and mt7986
-config: i386-buildonly-randconfig-003-20251019 (https://download.01.org/0day-ci/archive/20251020/202510200105.T000lujD-lkp@intel.com/config)
-compiler: gcc-14 (Debian 14.2.0-19) 14.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20251020/202510200105.T000lujD-lkp@intel.com/reproduce)
+We have it working on 7996, but the patch is tangled in some other changes we made
+with how wcid and such are allocated.  We are still cleaning and testing patches
+on top of Felix's tree, should have something to post sometime soon.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202510200105.T000lujD-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
-   In file included from include/linux/skbuff.h:29,
-                    from drivers/net/wireless/mediatek/mt76/mt76.h:12,
-                    from drivers/net/wireless/mediatek/mt76/mt76_connac.h:7,
-                    from drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h:7,
-                    from drivers/net/wireless/mediatek/mt76/mt792x.h:10,
-                    from drivers/net/wireless/mediatek/mt76/mt792x_core.c:7:
-   drivers/net/wireless/mediatek/mt76/mt792x_core.c: In function 'mt792x_init_wiphy':
->> include/linux/netdev_features.h:104:33: warning: statement with no effect [-Wunused-value]
-     104 | #define __NETIF_F_BIT(bit)      ((netdev_features_t)1 << (bit))
-         |                                 ^
-   include/linux/netdev_features.h:105:33: note: in expansion of macro '__NETIF_F_BIT'
-     105 | #define __NETIF_F(name)         __NETIF_F_BIT(NETIF_F_##name##_BIT)
-         |                                 ^~~~~~~~~~~~~
-   include/linux/netdev_features.h:119:33: note: in expansion of macro '__NETIF_F'
-     119 | #define NETIF_F_IP_CSUM         __NETIF_F(IP_CSUM)
-         |                                 ^~~~~~~~~
-   drivers/net/wireless/mediatek/mt76/mt792x_core.c:636:17: note: in expansion of macro 'NETIF_F_IP_CSUM'
-     636 |                 NETIF_F_IP_CSUM | NETIF_F_IPV6_CSUM;
-         |                 ^~~~~~~~~~~~~~~
-
-
-vim +104 include/linux/netdev_features.h
-
-a19f2a6df28e0c Michał Mirosław 2011-11-15  102  
-a19f2a6df28e0c Michał Mirosław 2011-11-15  103  /* copy'n'paste compression ;) */
-a19f2a6df28e0c Michał Mirosław 2011-11-15 @104  #define __NETIF_F_BIT(bit)	((netdev_features_t)1 << (bit))
-a19f2a6df28e0c Michał Mirosław 2011-11-15  105  #define __NETIF_F(name)		__NETIF_F_BIT(NETIF_F_##name##_BIT)
-a19f2a6df28e0c Michał Mirosław 2011-11-15  106  
+Thanks,
+Ben
 
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Ben Greear <greearb@candelatech.com>
+Candela Technologies Inc  http://www.candelatech.com
+
 
