@@ -4,52 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9559CCCD195
-	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Oct 2025 16:27:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BD92CCD184
+	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Oct 2025 16:43:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
 	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F4nurm4C437GvY/MkSXGc1LFe/0pjdPBVL3PvhKGUy4=; b=wfCitzpux+A+eGoGj+6JasCBQ0
-	BTMRbAy5h48pzzaCY8YxW7h5s8VahSPq0e2A8YLqBtaOkBDjSS2Tc+m6Y8A5izF+rpIOiTuaTZS7j
-	q9wWf5/EbZDG2qQB8xCwXUIggFLrUb9tHeHAyOM8h05EleUpvj8ZbQ+kuRm/IQ4NmY7jW5GD4Lhwt
-	Pf2UE/AbK9Lq7p7E1lOLcHLorkpjgh3RdH+JGcQLF6CWMwhl0GyDuYL8Q9S8JwazP8dzx6PGvPJk2
-	rGVSjosSA7/HIN8ann03nAc73OGePRDOHvhehn13KRlDoEYFe5cRRRPpciq52MV3nrz/fQTIloxD9
-	yrKOs5JA==;
+	bh=KgVBVUJXxuJNfAai+w6JVOE/OpKRFqXAijpu2MBRy4Y=; b=vtvay4rDBdb/SkCCqqJMMDiXsg
+	giEBZUOrATMdKuaphNIQAjoak95A2kpem/Bjg4YobqgsQWruoertG7QXpADcrUhzLS1ByMy2ByyUj
+	yedLVL9dNVM5Z4nd570lNRaoXw+sSRdECudQOTLPCEiWILXl3Xfvcmdq6IhPk2Xvn6Rx4YcIfWQWt
+	5EvjKs9+ZDi1XwaN24XmVVvop6TOV6UUSAqEpMY+WMdqOUviuhSDGyO9xozZEJM9uqXSR3+uI6tyX
+	U90XhPhvFcUcntjC9tIw24Ts6pskkZ+cELsQz4RSmUvrNDPuFY5jxdZ0UbzWZMUr2RIUYrqGW7klo
+	ibP1iYeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAWFb-0000000BCb2-3BkW;
-	Sun, 19 Oct 2025 16:27:19 +0000
-Received: from dispatch1-us1.ppe-hosted.com ([148.163.129.49])
+	id 1vAWVf-0000000BDVD-3o5C;
+	Sun, 19 Oct 2025 16:43:55 +0000
+Received: from mx4.wp.pl ([212.77.101.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAWFX-0000000BCZw-3iLm;
-	Sun, 19 Oct 2025 16:27:18 +0000
-X-Virus-Scanned: Proofpoint Essentials engine
-Received: from mail3.candelatech.com (mail.candelatech.com [208.74.158.173])
-	by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id B5E5FC00063;
-	Sun, 19 Oct 2025 16:27:04 +0000 (UTC)
-Received: from [192.168.1.23] (unknown [98.97.32.185])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by mail3.candelatech.com (Postfix) with ESMTPSA id 9D2B513C2B0;
-	Sun, 19 Oct 2025 09:26:44 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com 9D2B513C2B0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=candelatech.com;
-	s=default; t=1760891222;
-	bh=BJmOPFG38eK0SQjYH7HJARC0SJdnqD67ngX0T+67GTA=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=clqctUPTKzP1E+Q6/vsaq33wdwavDRqx0lN7mQQg3rVaeGoQ7ttwFl0FFv9KkQdYh
-	 F6oSDhZPdku7Wcrqr4ercqiQPlc15qFsoPOMMHl51T0U4WHKUBbI65JV8WF8tN/pAs
-	 VeT9Dv2x2qqBfNKV19u3z0j6PUgMXdDrl26MnGZc=
-Message-ID: <fa7befd5-b2c7-4277-ad57-a1577216ba83@candelatech.com>
-Date: Sun, 19 Oct 2025 09:26:41 -0700
+	id 1vAWVd-0000000BDUT-29il
+	for linux-mediatek@lists.infradead.org;
+	Sun, 19 Oct 2025 16:43:55 +0000
+Received: (wp-smtpd smtp.wp.pl 22663 invoked from network); 19 Oct 2025 18:43:48 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wp.pl; s=20241105;
+          t=1760892228; bh=KgVBVUJXxuJNfAai+w6JVOE/OpKRFqXAijpu2MBRy4Y=;
+          h=Subject:To:From;
+          b=peBtpR6E7ZW4mYxBVRYav6r8j8zPXBkmZ6KC1fyEaTN5k9iEEE5NYcPaLBSnYDgdM
+           4nCFA/00CFZ0/FTv/Dve5kuipwf7Ftzqs3olf5JTEZPF2e6jjIlaahChWh/DEU6hel
+           Thdeu/RtlqnD5qj5YiPsOaWMnicvLR6onNpj2q9RfXdNgRKsOstz762DDwpserWGCq
+           XJ0vddbs9T3Ib9+qXyJH8Z/iVRitMnGRM5hTmV7r33h1LLq+VzKUkg3FlUNdoN2cQ4
+           JoeSdxXoeAJNqFD51dnlJ4rR0/fxEZS6pkPVOOLWjc7P/Fd8FNQRXbfa3UGSDuhhwE
+           LLo5pcgxGo81A==
+Received: from 83.24.149.147.ipv4.supernova.orange.pl (HELO [192.168.1.10]) (olek2@wp.pl@[83.24.149.147])
+          (envelope-sender <olek2@wp.pl>)
+          by smtp.wp.pl (WP-SMTPD) with ECDHE-RSA-AES256-GCM-SHA384 encrypted SMTP
+          for <greearb@candelatech.com>; 19 Oct 2025 18:43:48 +0200
+Message-ID: <5a529d81-fb4e-4e7a-a132-3b76d26c3696@wp.pl>
+Date: Sun, 19 Oct 2025 18:43:47 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] wifi: mt76: add tx checksum offload for mt7915, mt7921,
  mt7981 and mt7986
-To: Aleksander Jan Bajkowski <olek2@wp.pl>, nbd@nbd.name, lorenzo@kernel.org,
+To: Ben Greear <greearb@candelatech.com>, nbd@nbd.name, lorenzo@kernel.org,
  ryder.lee@mediatek.com, shayne.chen@mediatek.com, sean.wang@mediatek.com,
  matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
  howard-yh.hsu@mediatek.com, StanleyYP.Wang@mediatek.com, rosenp@gmail.com,
@@ -57,19 +55,18 @@ To: Aleksander Jan Bajkowski <olek2@wp.pl>, nbd@nbd.name, lorenzo@kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
 References: <20251019155316.3537185-1-olek2@wp.pl>
-Content-Language: en-MW
-From: Ben Greear <greearb@candelatech.com>
-Organization: Candela Technologies
-In-Reply-To: <20251019155316.3537185-1-olek2@wp.pl>
+ <fa7befd5-b2c7-4277-ad57-a1577216ba83@candelatech.com>
+Content-Language: en-US
+From: Aleksander Jan Bajkowski <olek2@wp.pl>
+In-Reply-To: <fa7befd5-b2c7-4277-ad57-a1577216ba83@candelatech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-MDID: 1760891226-AlOZrs4LaPdf
-X-PPE-STACK: {"stack":"us5"}
-X-MDID-O: us5;ut7;1760891226;AlOZrs4LaPdf;<greearb@candelatech.com>;d5c215dcae166280e85b20da571dd1ee
-X-PPE-TRUSTED: V=1;DIR=OUT;
+Content-Transfer-Encoding: 8bit
+X-WP-MailID: 93b31ec6953bcf946e080ba9f5d8865d
+X-WP-AV: skaner antywirusowy Poczty Wirtualnej Polski
+X-WP-SPAM: NO 0000003 [IcDR]                               
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251019_092717_552164_5DC75A80 
-X-CRM114-Status: GOOD (  20.13  )
+X-CRM114-CacheID: sfid-20251019_094353_858473_FB4D4CE5 
+X-CRM114-Status: GOOD (  11.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,91 +81,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/19/25 08:51, Aleksander Jan Bajkowski wrote:
-> Supports IPv4 and IPv6 TCP + UDP
-> 
-> In various tests between MT7986 and Intel BE200, I observed a performance
-> boost ranging from 2 to 12%, with an average of 5.5%.
-> 
-> I did the tests on the MT7915, MT7981, MT7986, and MT7921 variants. The
-> MT7922, MT7925, and MT799x are untouched for now and still have
-> checksumming disabled.
+Hi Ben,
 
-At least with  7996, tcp csum only worked on the first few vdevs
-created in our testing, so we had to add logic to disable that flag
-on subsequent vdevs.
+On 10/19/25 18:26, Ben Greear wrote:
+> On 10/19/25 08:51, Aleksander Jan Bajkowski wrote:
+>> Supports IPv4 and IPv6 TCP + UDP
+>>
+>> In various tests between MT7986 and Intel BE200, I observed a 
+>> performance
+>> boost ranging from 2 to 12%, with an average of 5.5%.
+>>
+>> I did the tests on the MT7915, MT7981, MT7986, and MT7921 variants. The
+>> MT7922, MT7925, and MT799x are untouched for now and still have
+>> checksumming disabled.
+>
+> At least with  7996, tcp csum only worked on the first few vdevs
+> created in our testing, so we had to add logic to disable that flag
+> on subsequent vdevs.
+>
+> Have you tried creating a bunch of station and/or vap vdevs to see if
+> all of them can still transmit TCP traffic?
+>
+>
+Thanks for the useful information. On all tested devices, I had a single
+AP configured per device. I will try to create several APs for each device.
 
-Have you tried creating a bunch of station and/or vap vdevs to see if
-all of them can still transmit TCP traffic?
+I also have a router with MT7996. A quick test shows that checksum
+offload doesn't work on this router. MT7996 is visible in the system
+as a single DBDC device. I have 3 APs configured there. Each on a
+separate band (2.4/5/6 GHz).
 
-Thanks,
-Ben
-
-
-> 
-> Signed-off-by: Felix Fietkau <nbd@nbd.name>
-> [rebased and resolved conflicts]
-> Signed-off-by: Aleksander Jan Bajkowski <olek2@wp.pl>
-> ---
->   drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c | 5 +++++
->   drivers/net/wireless/mediatek/mt76/mt7915/init.c     | 3 ++-
->   drivers/net/wireless/mediatek/mt76/mt792x_core.c     | 3 +++
->   3 files changed, 10 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-> index 0db00efe88b0..e31b3e7e2038 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-> @@ -372,6 +372,9 @@ mt76_connac2_mac_write_txwi_8023(__le32 *txwi, struct sk_buff *skb,
->   		wmm = sta->wme;
->   	}
->   
-> +	val = FIELD_PREP(MT_TXD0_ETH_TYPE_OFFSET, 10);
-> +	txwi[0] |= cpu_to_le32(val);
-> +
->   	val = FIELD_PREP(MT_TXD1_HDR_FORMAT, MT_HDR_FORMAT_802_3) |
->   	      FIELD_PREP(MT_TXD1_TID, tid);
->   
-> @@ -391,6 +394,8 @@ mt76_connac2_mac_write_txwi_8023(__le32 *txwi, struct sk_buff *skb,
->   
->   	val = FIELD_PREP(MT_TXD7_TYPE, fc_type) |
->   	      FIELD_PREP(MT_TXD7_SUB_TYPE, fc_stype);
-> +	if (skb->ip_summed == CHECKSUM_PARTIAL)
-> +		val |= MT_TXD7_IP_SUM | MT_TXD7_UDP_TCP_SUM;
->   
->   	txwi[7] |= cpu_to_le32(val);
->   }
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-> index 5ea8b46e092e..a3bab240afb7 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-> @@ -359,7 +359,8 @@ mt7915_init_wiphy(struct mt7915_phy *phy)
->   	hw->queues = 4;
->   	hw->max_rx_aggregation_subframes = IEEE80211_MAX_AMPDU_BUF_HE;
->   	hw->max_tx_aggregation_subframes = IEEE80211_MAX_AMPDU_BUF_HE;
-> -	hw->netdev_features = NETIF_F_RXCSUM;
-> +	hw->netdev_features = NETIF_F_RXCSUM |
-> +			      NETIF_F_IP_CSUM | NETIF_F_IPV6_CSUM;
->   
->   	if (mtk_wed_device_active(&mdev->mmio.wed))
->   		hw->netdev_features |= NETIF_F_HW_TC;
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_core.c b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-> index c0e56541a954..fe138d2e8e62 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-> @@ -632,6 +632,9 @@ int mt792x_init_wiphy(struct ieee80211_hw *hw)
->   	}
->   	hw->netdev_features = NETIF_F_RXCSUM;
->   
-> +	if (is_mt7921(&dev->mt76))
-> +		NETIF_F_IP_CSUM | NETIF_F_IPV6_CSUM;
-> +
->   	hw->radiotap_timestamp.units_pos =
->   		IEEE80211_RADIOTAP_TIMESTAMP_UNIT_US;
->   
-
--- 
-Ben Greear <greearb@candelatech.com>
-Candela Technologies Inc  http://www.candelatech.com
+Best regards,
+Aleksander
 
 
