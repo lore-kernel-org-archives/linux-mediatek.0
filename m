@@ -4,89 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F4012CCD1A4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Oct 2025 15:18:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 226F1CCD193
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Oct 2025 15:41:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EGiTe4HXDqqZ4iZipJXi8jfv7cy2lBX3+OM+ZyQ6XbI=; b=TrNlP9fXvOQWRrV2VotEblYLgx
-	NfmrKaIIQ7D24bM9QqAY2pjAvPy1GQUHKVL6nDqeYcvAQEW7pdv7rCGNARp+TMC9474rFj+irEWZH
-	Jtrtsytq9LJF3ObKwmfyh08VURonaqT7+OYhQ3HZCMDW5mOABcdwz9uTSQLMe1Ii/uReI0syB6VHz
-	qSQMPQYT76tXHTDqiP30ccsGTEVYQaGs8ozwxN1IwBpFUHnPi2Fsb8w9nvP1Enj4RTReMUZ4RS0Kd
-	em4N3YSU+PwpRZWWxyMMCLw2xWNE9K4f2CICcFY9Mfa+w9RJlGSxsDPQH7T/0C2qfkjMQ7jaF5s2G
-	vHalDPYg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Oo7DpZ4wl1wswOWuSb4aFqE1cYvWje2320z/a0W/Glo=; b=vS11zftK2cJ4387cq7fTkwsARM
+	Km0TSDYRjV14z9UwwJKMkJAtaaCbr0YAmdKiIjEOKSUx9W9/0VJLqBT4SJ9TBs8dy4HVm+wWbK7d3
+	cpTPbev3/HJAgjp5TN4pJgJfRIvc98bcd6BYop9ghl/WqnfUkXdt50jQ/m/X06OJpF6uOe2wB7ZAr
+	ghsP8MRJ4u9NkBzkfW9ezJ85vk1MFBj1bwEDsLIpGbFYbwlIni5BCI8RU1shpv6LRWDb82ewBymUe
+	UxApKQ77oYfcI4WVT41+DOzI9LpzBwwStd4aoELzcXk8ButdOEKls8olXL6rzKKIMiXtHmAe31cYr
+	7b9YkDaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAren-0000000E5xK-0TqN;
-	Mon, 20 Oct 2025 15:18:45 +0000
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+	id 1vAs0V-0000000EAzr-3CLh;
+	Mon, 20 Oct 2025 15:41:11 +0000
+Received: from 003.mia.mailroute.net ([199.89.3.6])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vArek-0000000E5v3-01Az
-	for linux-mediatek@lists.infradead.org;
-	Mon, 20 Oct 2025 15:18:43 +0000
-Received: by mail-pf1-x42d.google.com with SMTP id d2e1a72fcca58-79ef9d1805fso4158750b3a.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 20 Oct 2025 08:18:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1760973521; x=1761578321; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=EGiTe4HXDqqZ4iZipJXi8jfv7cy2lBX3+OM+ZyQ6XbI=;
-        b=Qxql199dJTpFw8Ub49D0iumJ/eYfUCIXmkvpC8tjlNY2VFBIhw+lbudhC196d1JUv8
-         H49k9Lg/K/VbfIyC9PSUtpANHLqQ2zlIrMpxt4tBaIOKi037/l4T6qoD6xbxKAycJ5Ou
-         7ZmE3CnlVP7sSGnPooRYAS+zOMUf3EOaeBRKbn+q2++TmITCyoFC29AnDinKUi9bipy2
-         1Mwypx4Je5rYcfP26M5nlh/pX3TkMqptHpTjt0tqqwFGY6gUMLg2KvDWj3PMLPxq/9R0
-         kQCg8ptu7B4paJ9wEgWenz3SjPXEjcaPvE1MvbLw1JtYoytkZdpL3RtUav/iDkMSFbpx
-         YU/w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1760973521; x=1761578321;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=EGiTe4HXDqqZ4iZipJXi8jfv7cy2lBX3+OM+ZyQ6XbI=;
-        b=ncYqFtLgOnBURJTRMwUML/PkKnm08z7W0iUHKJS38wpJoM1KOWvdJC94+qNwy3Anmd
-         WDs6I9UEBXQP4KHk0yy7teDGw3QMwXG+MEwIHuYl2cV/aStBRYV2fNwMBLGjk/BOwaHM
-         gzU84S2hahYY7B9sokacUSURMYRqel8xyqJAtchp5Oe6ETt1fCRZ8Mmlj2TCmBhmZx/R
-         Dods+BZtZdAzaN5goaLxN0G3wz70OmbTep2ij+1UVVWJOkut6DRnsSlSvxbrpxeOK1p3
-         sszR+LoodL4KpbCzgwmy/zXA6+BBNjpK0ivIF7frjC/5GUs+arhiZvmYB8yFfWBBpl9v
-         5S2A==
-X-Forwarded-Encrypted: i=1; AJvYcCWZrY28ZmXqWTbBXguhSwuOXiRpmho647f35mE7i8zTAGs6LK00xF1kWgN9+YuB/rRsiIXOaT3U2BngWdEs1g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxuhY+cFIquQgyyLzMO/ZxIzQT4TG8BhYNd5bItRJaqH/JO/NJB
-	IVMYCsQh+c/GugSZqgVUceHGFnVKmm7dQzDpM0FQboch9hF4CJum1qsKkaz8AZincYs=
-X-Gm-Gg: ASbGncvKkCA/jdOQz3LvocuyNmC9977lfxl6xXb/vLsuRlmvFvpW9wCj1fkD0H5XntQ
-	pn+WybqF+TPGUzmLqnpeRv0IecD6iuQOEoXXMNxNAXXwuW+u/jDfUoZsP2lqfrFfpmryrFXZOiC
-	ogXjQiDP8xEEQoLb4WxeF8zllGsoZkk5LFvJ09/BS26VPZn5ecnFGN7o8V4APAAlhmPAXU3TvHX
-	yY8W1DfyiS4EzhYNMV9qfiB5nsBDzIJRCpdPt5Suy8ezcveeFiKlH633HM4ht6xi4fSqa4lr+0V
-	h+RiNWd3I8ZnOrc7NFfKC0ZwQHZYqDK00fqf7j86dChVPZ8NDBl5WFjoqss7pgpfLDj6wL90i67
-	AOZR8aK/U6K3dd0vaAW7z41BabMJAEOKj67ps7KJiWgMIJmbP38aSD3C6ASRjHaQGemuFwdjaGp
-	Vcjbjgh9NU9cSukA==
-X-Google-Smtp-Source: AGHT+IEZsyy7VgeyAy3dmy4J3fXKkw3RgKJZWu4jhzJnxWQDZQ+Dq+bopDMB+jrQP+4jBD/v93m2gA==
-X-Received: by 2002:a17:903:35c6:b0:276:76e1:2e87 with SMTP id d9443c01a7336-290cb46c267mr168729135ad.44.1760973520734;
-        Mon, 20 Oct 2025 08:18:40 -0700 (PDT)
-Received: from p14s ([2604:3d09:148c:c800:2360:6c8a:189d:ae5a])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-292471d5612sm82189935ad.65.2025.10.20.08.18.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 Oct 2025 08:18:40 -0700 (PDT)
-Date: Mon, 20 Oct 2025 09:18:37 -0600
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-remoteproc@vger.kernel.org, arnd@arndb.de, andersson@kernel.org,
-	matthias.bgg@gmail.com, wenst@chromium.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v2] remoteproc: mtk_scp: Construct FW path if
- firmware-name not present
-Message-ID: <aPZSzbXDBar3_X9O@p14s>
-References: <20251015084103.10737-1-angelogioacchino.delregno@collabora.com>
+	id 1vAs0S-0000000EAxv-3T2E;
+	Mon, 20 Oct 2025 15:41:10 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 003.mia.mailroute.net (Postfix) with ESMTP id 4cr05752FhzljBC1;
+	Mon, 20 Oct 2025 15:40:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1760974855; x=1763566856; bh=Oo7DpZ4wl1wswOWuSb4aFqE1
+	cYvWje2320z/a0W/Glo=; b=vDdO+gK/7aLRcCYqexOk3vyB/qSdU1m71g/jSNSO
+	WYA7nKpxkNrQs127L28ptZvN9LWzUJPJ3+/+/p5fjrZ8A/kEhFnrZ0MmpZv+1xvZ
+	jMPv5odsVYbu6k5lpHWYCNVk/XAukCt0PnNiQGH0m7fI9/fJ9pOl0OllpUnL32sC
+	FNMkeCMTD8CMgozwVMuqptLt8ntFgux8f5TpK1YO7+hlUr6BVn0buBxm3sJLkIlu
+	Nj5FKVfHkAzQzi3hyYky5jWXqaHBORTRYJ/3f2TlAWRu/mCIs8xMz2opfK/tNJJb
+	BPYpqW1A1UYXVV7F1JzmDKyz2vUfouC+TMJ5Nhr4bKWAiA==
+X-Virus-Scanned: by MailRoute
+Received: from 003.mia.mailroute.net ([127.0.0.1])
+ by localhost (003.mia [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id AT_bPrdYl-hz; Mon, 20 Oct 2025 15:40:55 +0000 (UTC)
+Received: from [100.119.48.131] (unknown [104.135.180.219])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bvanassche@acm.org)
+	by 003.mia.mailroute.net (Postfix) with ESMTPSA id 4cr04l5K2pzlgqVl;
+	Mon, 20 Oct 2025 15:40:38 +0000 (UTC)
+Message-ID: <05167a77-f34e-4c75-aded-3c907c4ba446@acm.org>
+Date: Mon, 20 Oct 2025 08:40:37 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20251015084103.10737-1-angelogioacchino.delregno@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/4] scsi: ufs: ufs-mediatek: Add UFS host support for
+ MT8195 SoC
+To: Macpaul Lin <macpaul.lin@mediatek.com>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Peter Wang <peter.wang@mediatek.com>, Stanley Jhu <chu.stanley@gmail.com>,
+ "James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
+ "Martin K . Petersen" <martin.petersen@oracle.com>,
+ linux-scsi@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+ Ramax Lo <ramax.lo@mediatek.com>, Macpaul Lin <macpaul@gmail.com>,
+ MediaTek Chromebook Upstream
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+References: <20250722085721.2062657-1-macpaul.lin@mediatek.com>
+Content-Language: en-US
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20250722085721.2062657-1-macpaul.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251020_081842_057652_E8845C6C 
-X-CRM114-Status: GOOD (  37.06  )
+X-CRM114-CacheID: sfid-20251020_084108_955119_68E306C8 
+X-CRM114-Status: UNSURE (   9.23  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,166 +97,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 15, 2025 at 10:41:03AM +0200, AngeloGioacchino Del Regno wrote:
-> After a reply on the mailing lists [1] it emerged that the DT
-> property "firmware-name" should not be relied on because of
-> possible issues with firmware versions.
-> For MediaTek SCP, there has never been any firmware version vs
-> driver version desync issue but, regardless, the firmwares are
-> always using the same name and they're always located in a path
-> with a specific pattern.
-> 
-> Instead of unconditionally always relying on the firmware-name
-> devicetree property to get a path to the SCP FW file, drivers
-> should construct a name based on what firmware it knows and
-> what hardware it is running on.
-> 
-> In order to do that, add a `scp_get_default_fw_path()` function
-> that constructs the path and filename based on two of the infos
-> that the driver can get:
->  1. The compatible string with the highest priority (so, the
->     first one at index 0); and
->  2. The type of SCP HW - single-core or multi-core.
-> 
-> This means that the default firmware path is generated as:
->  - Single core SCP: mediatek/(soc_model)/scp.img
->    for example:     mediatek/mt8183/scp.img;
-> 
->  - Multi core SCP:  mediatek/(soc_model)/scp_c(core_number).img
->    for example:     mediatek/mt8188/scp_c0.img for Core 0, and
->                     mediatek/mt8188/scp_c1.img for Core 1.
-> 
-> Note that the generated firmware path is being used only if the
-> "firmware-name" devicetree property is not present in the SCP
-> node or in the SCP Core node(s).
-> 
-> [1 - Reply regarding firmware-name property]
-> Link: https://lore.kernel.org/all/7e8718b0-df78-44a6-a102-89529d6abcce@app.fastmail.com/
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
-> 
-> Changes in v2:
->  - Removed initialization of scp_fw_file[7] char array (or string if you prefer)
-> 
->  drivers/remoteproc/mtk_scp.c | 65 ++++++++++++++++++++++++++++++++----
->  1 file changed, 59 insertions(+), 6 deletions(-)
->
-
-Applied.
+On 7/22/25 1:57 AM, Macpaul Lin wrote:
+> Add "mediatek,mt8195-ufshci" to the of_device_id table to enable
+> support for MediaTek MT8195/MT8395 UFS host controller. This matches the
+> device node entry in the MT8195/MT8395 device tree and allows proper driver
+> binding.
+Please always include a cover letter when posting a patch series. The
+cover letter generated by git includes helpful information like a diffstat.
 
 Thanks,
-Mathieu
- 
-> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> index 8206a1766481..10e3f9eb8cd2 100644
-> --- a/drivers/remoteproc/mtk_scp.c
-> +++ b/drivers/remoteproc/mtk_scp.c
-> @@ -16,6 +16,7 @@
->  #include <linux/remoteproc.h>
->  #include <linux/remoteproc/mtk_scp.h>
->  #include <linux/rpmsg/mtk_rpmsg.h>
-> +#include <linux/string.h>
->  
->  #include "mtk_common.h"
->  #include "remoteproc_internal.h"
-> @@ -1093,22 +1094,74 @@ static void scp_remove_rpmsg_subdev(struct mtk_scp *scp)
->  	}
->  }
->  
-> +/**
-> + * scp_get_default_fw_path() - Get default SCP firmware path
-> + * @dev:     SCP Device
-> + * @core_id: SCP Core number
-> + *
-> + * This function generates a path based on the following format:
-> + *     mediatek/(soc_model)/scp(_cX).img; for multi-core or
-> + *     mediatek/(soc_model)/scp.img for single core SCP HW
-> + *
-> + * Return: A devm allocated string containing the full path to
-> + *         a SCP firmware or an error pointer
-> + */
-> +static const char *scp_get_default_fw_path(struct device *dev, int core_id)
-> +{
-> +	struct device_node *np = core_id < 0 ? dev->of_node : dev->parent->of_node;
-> +	const char *compatible, *soc;
-> +	char scp_fw_file[7];
-> +	int ret;
-> +
-> +	/* Use only the first compatible string */
-> +	ret = of_property_read_string_index(np, "compatible", 0, &compatible);
-> +	if (ret)
-> +		return ERR_PTR(ret);
-> +
-> +	/* If the compatible string's length is implausible bail out early */
-> +	if (strlen(compatible) < strlen("mediatek,mtXXXX-scp"))
-> +		return ERR_PTR(-EINVAL);
-> +
-> +	/* If the compatible string starts with "mediatek,mt" assume that it's ok */
-> +	if (!str_has_prefix(compatible, "mediatek,mt"))
-> +		return ERR_PTR(-EINVAL);
-> +
-> +	if (core_id >= 0)
-> +		ret = snprintf(scp_fw_file, ARRAY_SIZE(scp_fw_file), "scp_c%1d", core_id);
-> +	else
-> +		ret = snprintf(scp_fw_file, ARRAY_SIZE(scp_fw_file), "scp");
-> +	if (ret <= 0)
-> +		return ERR_PTR(ret);
-> +
-> +	/* Not using strchr here, as strlen of a const gets optimized by compiler */
-> +	soc = &compatible[strlen("mediatek,")];
-> +
-> +	return devm_kasprintf(dev, GFP_KERNEL, "mediatek/%.*s/%s.img",
-> +			      (int)strlen("mtXXXX"), soc, scp_fw_file);
-> +}
-> +
->  static struct mtk_scp *scp_rproc_init(struct platform_device *pdev,
->  				      struct mtk_scp_of_cluster *scp_cluster,
-> -				      const struct mtk_scp_of_data *of_data)
-> +				      const struct mtk_scp_of_data *of_data,
-> +				      int core_id)
->  {
->  	struct device *dev = &pdev->dev;
->  	struct device_node *np = dev->of_node;
->  	struct mtk_scp *scp;
->  	struct rproc *rproc;
->  	struct resource *res;
-> -	const char *fw_name = "scp.img";
-> +	const char *fw_name;
->  	int ret, i;
->  	const struct mtk_scp_sizes_data *scp_sizes;
->  
->  	ret = rproc_of_parse_firmware(dev, 0, &fw_name);
-> -	if (ret < 0 && ret != -EINVAL)
-> -		return ERR_PTR(ret);
-> +	if (ret) {
-> +		fw_name = scp_get_default_fw_path(dev, core_id);
-> +		if (IS_ERR(fw_name)) {
-> +			dev_err(dev, "Cannot get firmware path: %ld\n", PTR_ERR(fw_name));
-> +			return ERR_CAST(fw_name);
-> +		}
-> +	}
->  
->  	rproc = devm_rproc_alloc(dev, np->name, &scp_ops, fw_name, sizeof(*scp));
->  	if (!rproc) {
-> @@ -1212,7 +1265,7 @@ static int scp_add_single_core(struct platform_device *pdev,
->  	struct mtk_scp *scp;
->  	int ret;
->  
-> -	scp = scp_rproc_init(pdev, scp_cluster, of_device_get_match_data(dev));
-> +	scp = scp_rproc_init(pdev, scp_cluster, of_device_get_match_data(dev), -1);
->  	if (IS_ERR(scp))
->  		return PTR_ERR(scp);
->  
-> @@ -1259,7 +1312,7 @@ static int scp_add_multi_core(struct platform_device *pdev,
->  			goto init_fail;
->  		}
->  
-> -		scp = scp_rproc_init(cpdev, scp_cluster, cluster_of_data[core_id]);
-> +		scp = scp_rproc_init(cpdev, scp_cluster, cluster_of_data[core_id], core_id);
->  		put_device(&cpdev->dev);
->  		if (IS_ERR(scp)) {
->  			ret = PTR_ERR(scp);
-> -- 
-> 2.51.0
-> 
+
+Bart.
 
