@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22F8DCCD199
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Oct 2025 10:05:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90BCECCD193
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Oct 2025 10:05:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CgDQeEkPHec0jlCzUvh0VGkZKTsmLyZBDX0ve5fRHa4=; b=1VEWAYMLtigI6R
-	SEVO7Z8wpZqhXXQOP1v7l85H7lQmCQhJf7qU2SNcXh1anSG0QuLZXXM87uiayIdr8mahRUzxehQuH
-	Vx0WfoS0pguo4f8265/G/Rw5kaY8q6qdfdrpQkpOFV3QH6g38kfF8X9UCuVHQ5+iAaKFhLJRetO1w
-	0AhLrL9SF+Ibmi/jo+u8XTN64SzYLM6u6acJWKQBI6DVlxWxKDBj2cnQw5EeMJxbktuZtBpyouRYh
-	c242jWkDxXcEdZQwtdKn4660JM5R/ip0rEbGMjlMBgwhBhXzwkYeiNJp507HjRRe9iHJhTgnU1BbX
-	9nBEeMiHTVWPM82UgEhA==;
+	List-Owner; bh=EdUiAqzvCeYnrG/Eu3AqsBdAT5oIEHl6/+wmVwzVGl8=; b=tETB7+VHBv5qJf
+	f7DfxY8hTJgjSzYfnIGxDV0xXx9p3GsIrhJp5CExEjetS4zi0VZBZfnqIBQS2kpV51RP2p/mUFach
+	d4K++jLzkkmCHcn10oLr+QPGbgqT4dp0tKkvaasb8Us3LAOrTR/J7RXZTSYVCHdoTyMMAY2CxfQ/F
+	1ZJ17I2EJkzyM1Zgf+QoVLFpHWECzwBf9/EavomkfCOlEgp0CErKbdteQB+55DuVsyMEVU2N3y8wK
+	NPlZRcjoB1yg0cq3NkWDWpwF1k8mSUmiXewK1DiAQWGU5ydJQ27EhJrGSSYWnAN/Q+ccsbevWQ9A/
+	5IvGADO0OXu5kV27usuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAml9-0000000Cj6n-1W2G;
-	Mon, 20 Oct 2025 10:04:59 +0000
+	id 1vAmlJ-0000000CjH5-1chx;
+	Mon, 20 Oct 2025 10:05:10 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAmks-0000000CinR-2t0A;
-	Mon, 20 Oct 2025 10:04:43 +0000
+	id 1vAmkt-0000000CioB-1kzn;
+	Mon, 20 Oct 2025 10:04:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1760954680;
-	bh=LemVXctvae+74luWmuzpmpLlI7eUe5tI3CrLuksCccA=;
+	s=mail; t=1760954681;
+	bh=Z4HlAqmuEginOGn4nx1Uy2m/t52IZhvWc16fAqzsR9c=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=kU21S4tLVJoq2/DVWFB4W4qUPhpmUJj6xfUGAniqDZ8p+j1ZKl4uDfGuU6pU1DPxa
-	 qkjIWZQeGS6KQmeSZcyI2/aOBzQs9ncrA5rXUQmik0EMQAGuylme1T/Q+jvyRiOSxd
-	 dLJBNRurrOH8rUct14t8hzMm97GsfE46qQi67Sx8+ccpEMwKxgOMGqXdomEabFYAv0
-	 /ESc4H4PIplRZ+kfSZ7Nm4olrLMkX7STVREMXRUYdphIowPQQuxa6G0wq158qVY9cO
-	 oIyB7UmCf3TyVdVJIs/ck4D2Tvpl4rHD/I/t62ZCnl9QG4NrvzdEEbz7s5jenEWjV3
-	 pgAeQ368TPxfQ==
+	b=Myqrzj5wOwTgtZKe9MGN5uLeKEMGcny6m9AWkZzMGkIoDoG6jJnZllSTOZ+vHWdPh
+	 QKb8iIz4wfiJonnz3wcRzxwCy02tGtZDbjl3KyW2uyc5JvsaRNpQ+Es8seDB0tdaxp
+	 WDwJUudnsHiwCi7/a51pNMG+52ZZ3w1ks/c5EeJybo3Rv+ukC81cjBh3KxZ2HMXzZM
+	 fhcGB9dZqbXMN2Hqp0TEORMuXATKr+tqMRO9F6YqOzdO4B8uMTFdzN9gC1FxGciAPT
+	 owK/uaOi2odutmhOjjICwhswiHvVfGWCjgQdaxtrDR2Y9z1gHx0vxKyIDI/oMONIJX
+	 X5y3tCRWRcwLw==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5242117E108C;
-	Mon, 20 Oct 2025 12:04:39 +0200 (CEST)
-Message-ID: <a44bf667-316b-4e20-81ce-41902d68ba1b@collabora.com>
-Date: Mon, 20 Oct 2025 12:04:39 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9CB9C17E1278;
+	Mon, 20 Oct 2025 12:04:40 +0200 (CEST)
+Message-ID: <f3d6bd0e-d682-4798-97a0-8bd60923b006@collabora.com>
+Date: Mon, 20 Oct 2025 12:04:40 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 13/20] drm/mediatek:Use reg_write function pointer for
- subsys ID compatibility
+Subject: Re: [PATCH v8 03/20] mailbox: mtk-cmdq: Add cmdq private data to
+ cmdq_pkt for generating instruction
 To: Jason-JH Lin <jason-jh.lin@mediatek.com>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Jassi Brar <jassisinghbrar@gmail.com>,
  Chun-Kuang Hu <chunkuang.hu@kernel.org>,
  Mauro Carvalho Chehab <mchehab@kernel.org>
 References: <20251017065028.1676930-1-jason-jh.lin@mediatek.com>
- <20251017065028.1676930-14-jason-jh.lin@mediatek.com>
+ <20251017065028.1676930-4-jason-jh.lin@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20251017065028.1676930-14-jason-jh.lin@mediatek.com>
+In-Reply-To: <20251017065028.1676930-4-jason-jh.lin@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251020_030442_879297_CE813311 
-X-CRM114-Status: UNSURE (   6.15  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251020_030443_639951_FECFE471 
+X-CRM114-Status: GOOD (  10.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,13 +80,20 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 17/10/25 08:44, Jason-JH Lin ha scritto:
-> Switch to reg_write and reg_write_mask function pointers for register
-> access, enabling compatibility with platforms regardless of subsys ID
-> support.
+> Add the cmdq_mbox_priv structure to store the private data of GCE,
+> such as the shift bits of the physical address. Then, include the
+> cmdq_mbox_priv structure within the cmdq_pkt structure.
+> 
+> This allows CMDQ users to utilize the private data in cmdq_pkt to
+> generate GCE instructions when needed. Additionally, having
+> cmdq_mbox_priv makes it easier to expand and reference other GCE
+> private data in the future.
+> 
+> Add cmdq_get_mbox_priv() for CMDQ users to get all the private data
+> into the cmdq_mbox_priv of the cmdq_pkt.
 > 
 > Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
 
 
