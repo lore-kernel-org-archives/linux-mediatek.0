@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A1FACCD1AB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Oct 2025 10:04:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2506ECCD1AA
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Oct 2025 10:04:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GviU1XjgZUD5Gl5FaCtRtBy/NyvMVZCWjmigauUwJpU=; b=l9/2zyLf3fzG+w
-	OJhp3G9cxqoSLugXg3DY/48a/MmVQM3opvzAEKa/vDbLk/NPyHeZFDUKY16F8XaZudRrGFumaD4bN
-	OG4Uw61WwxC+IUKuMSrfNYmJDTazC+AG6eZgghbNLBKecuVweFRLowlLpo3Wyo6iaX6RIIAtS/bq/
-	U9amJcLLHUkynHHIXyS/H2aiv+ZxJ42yRBxy0fViTt6iw1uhcQHUC0yYOhBoAvNg5ojtVQSiLY4WS
-	l8y6OpIFMsiFHE8QRoFja4+cWXWdgc7u5IdLWNK2DPAgb5TxfCtSy+mQXVUqTLlDgUxToGQzi00d9
-	BSwtlbDjfP/2LiF1q5bg==;
+	List-Owner; bh=SAyg5qsh9DMXhep1JUIW+PD0CGcTEKqEYiDFerCjvtE=; b=jzUheF7wrNamjM
+	cdvUvDxmUbZigkNnKY5c5kJR4/sCJMmP0cy/fuGawyaNGNVNTAdZUkQX0ouGE1U46ImphwxNAOxuA
+	i4WrMtNUQQPCMGJl3zRJkQyZYgwm1me+zRUo6gWLFrftp/KBW6ucDKodk0ts7eOamf0HldLR+2DDx
+	a1GkKl04wyhCh5u+EUeoUplAjDhkoAQNW5wrtuCuY8NeNEz25aX027rSQVoS/4EpWlMAM1x3N/TNz
+	S+0vrzDrDIyXuE1ihwtBnZUKums7HHVfPaWGxFxa09/FpUu3mfCAvKH3gYu6vI/FR+HRzIaoQIA/l
+	TXkwgxMvvr1rxGReeLjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAmkl-0000000Cif5-2uJS;
-	Mon, 20 Oct 2025 10:04:35 +0000
+	id 1vAmkm-0000000CigK-1mG4;
+	Mon, 20 Oct 2025 10:04:36 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAmkf-0000000CiXG-3OOb;
-	Mon, 20 Oct 2025 10:04:31 +0000
+	id 1vAmki-0000000CiZd-2Zbe;
+	Mon, 20 Oct 2025 10:04:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1760954667;
-	bh=HAo0u9lj8gh67AIZa7MpgeL6X721kh0HCt2UfsjSGtI=;
+	s=mail; t=1760954668;
+	bh=L1rux84uqgx/z11sRLkzA6t6Db5oXXI6MffF6eUjKHs=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=JFlNh8PF9j5E+7YvKhHPr9LB4/23lSOser7ah7FVnzBtfmA/J/VYtmvGVfsWZSffi
-	 NmCzTJgHFbxrEPAXJOWwPInsP+bNsJ3kiRQQc1FSI9pR0InRGryeQQWBmziZWj8iAl
-	 juTJuqv6ZmiIgP801q25W6eJTE0SAkk7HGtaN+K3gHeCcLsdXA99qEHuOrZmIz9D+5
-	 WTVDx+4GHklfMRHSdoTqaTixCtt8/XfrParHHjjWSvWH+uBiF3EGQs4lLHVTmDb851
-	 /31UmKpofsFQrAXgJE/zFVBi8oU2TLJ7GY6HndUrd2NLkDutvqjgPakGjI242clXr6
-	 XGqyXvP/ltA+w==
+	b=DRhdYVbrEghPgLy5Qcqa1koh1Qni8U62cjyXqlP4zHLE1ILf7rnxPpwQjAUw4juEo
+	 nh++ADgODNcbf3NB0UiAU3avqnYn5OTwRZCzNIhSiJLXgehnwMzvZ/Xof2OxLm5w0b
+	 0UDf8QiP7Xe+KGG9CLfHwXS/TIdZxl1VQdpRPytPuixPJ9NFaPzMNhYxRy1lvMZzmB
+	 4X/3xgZ9WEs9pkPJpE3IPSQrBJz9aVZWwNTWKi5QHMZ2qXNopcdNtzm8V1ul55Xw0l
+	 KghISDNQZZHriuQaTI+p+WbSr+HiQz4k6ZBuBb1Wo/NrMlXs1bpR79iLB+TXId978T
+	 MvXlpTXrmVBSQ==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1C7B417E1278;
-	Mon, 20 Oct 2025 12:04:26 +0200 (CEST)
-Message-ID: <abed2954-8a0e-4b8e-af44-f0b0d9764527@collabora.com>
-Date: Mon, 20 Oct 2025 12:04:25 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 67B0017E127F;
+	Mon, 20 Oct 2025 12:04:27 +0200 (CEST)
+Message-ID: <a30a7076-9c27-4e78-b57e-cdf2a14dc5c8@collabora.com>
+Date: Mon, 20 Oct 2025 12:04:27 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 18/20] soc: mediatek: mtk-cmdq: Remove cmdq_pkt_jump()
- and cmdq_pkt_jump_rel_temp()
+Subject: Re: [PATCH v8 16/20] soc: mediatek: mtk-cmdq: Remove shift_pa
+ parameter from cmdq_pkt_jump()
 To: Jason-JH Lin <jason-jh.lin@mediatek.com>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Jassi Brar <jassisinghbrar@gmail.com>,
  Chun-Kuang Hu <chunkuang.hu@kernel.org>,
  Mauro Carvalho Chehab <mchehab@kernel.org>
 References: <20251017065028.1676930-1-jason-jh.lin@mediatek.com>
- <20251017065028.1676930-19-jason-jh.lin@mediatek.com>
+ <20251017065028.1676930-17-jason-jh.lin@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20251017065028.1676930-19-jason-jh.lin@mediatek.com>
+In-Reply-To: <20251017065028.1676930-17-jason-jh.lin@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251020_030430_043381_ABE62B93 
-X-CRM114-Status: UNSURE (   7.26  )
+X-CRM114-CacheID: sfid-20251020_030432_847123_C89679BB 
+X-CRM114-Status: UNSURE (   7.18  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,12 +81,14 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 17/10/25 08:44, Jason-JH Lin ha scritto:
-> Since all users have migrated to the new cmdq_pkt_jump* APIs without
-> shift_pa, the wrapper APIs cmdq_pkt_jump() and cmdq_pkt_jump_rel_temp()
-> can be removed.
+> Since shift_pa will be stored in the cmdq_mbox_priv structure within
+> cmdq_pkt, all shift_pa parameters in CMDQ helper APIs can be removed.
 > 
-> Fixes: ade176534112 ("soc: mediatek: cmdq: Add parameter shift_pa to cmdq_pkt_jump()")
+> Remove the shift_pa parameters from cmdq_pkt_jump(), cmdq_pkt_jump_abs(),
+> and cmdq_pkt_jump_rel().
+> 
 > Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
+
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
