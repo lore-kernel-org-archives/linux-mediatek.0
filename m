@@ -4,79 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E607CCD199
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Oct 2025 11:51:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8831ECCD193
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Oct 2025 12:18:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=A/c/4oL8Z03NjnVaEgMnJiauD1mgyw2BMdnR11SbtOU=; b=18FptJcGFp94Ev9oiUEFdYa/Y3
-	K+6zi5bhMSMO2Goj1in01uczWlPN6P5AHJI48529iftHQsxH6XX4/8UpZNamH3wp7olV0HYaCyGoE
-	jJS5KseKHz8gTJJSU+G/f2NsuNRktkJaUt3TcaUxuu7x5OR4tYuXrVfoVW0LDEKyIghG7uUQKyXBs
-	uBHrxn8DKuT88Y+ca2mvvL1FVl4ZgS0sxc/Sm0BY/6OlYkgsnG53U/T456TeStKjzRPIp/MkbLm6M
-	KYOxbnSTaMHHKVXGSAyhSXIlRkwrIWgj8jET1thx3VNytSFK3jq7IHnfNwOOTiBjIlsIbNgE0yy5v
-	6ZZ+ouHg==;
+	bh=z89RtjLGWxpPZINVGL9RGjwfQnjB14DaWRU+giSqSOs=; b=ZAAW2SUolxebJLaJMb6YzBE3HR
+	QayLYl74CAvQkJnuusksJH9r866lHUpipLVxFoqfG+3gGdLurcpOiKtLNsYn98MofB4oMW7e5k9tg
+	NJ6ebKt13gMz7xSdfGXweORtc1FkvUP0eLfe1e31d17NRj1+IaKvnQ0qw/LCHDCoXKnz6kpwe3FtR
+	XpfVOGRrmNpJBXAbkpDg5sTnXSEpDgBnj8W3kw0CRZbuiR1JaSsJSfV0Xsu8VH9tovR5t0Its2sPn
+	yXZXQ2HhplBLeA9JAQ4B+YCspwBjZoHfdvTYtO29W+Nc5GamsPdqOL0gOCoeVoVruq4Q/WNhlslz9
+	W2HsAVcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoQ6-0000000D7xY-1kri;
-	Mon, 20 Oct 2025 11:51:22 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1vAoqJ-0000000DNKO-14R3;
+	Mon, 20 Oct 2025 12:18:27 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoQ3-0000000D7w1-2Oae;
-	Mon, 20 Oct 2025 11:51:21 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1760961056; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=C6s9lTyHmYNGClzUwi70t4LJADX3+pHHK1XyNHdHK8pkqZ0ewDbfJbwIXWji+uiKKcmUeuBW6l+zGWUuO+03pxUuW4fSbebuqG/S8KLJ5DCvdHU667ISmBHyMLGiEhevq79+UUaFc7vwqAm5S5mMXdCMvSHVgcf314a5waiB5NI=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1760961056; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=A/c/4oL8Z03NjnVaEgMnJiauD1mgyw2BMdnR11SbtOU=; 
-	b=iW82Q/ZctwRGQX/L9mOKuaimgoLOz0fVBR1M3TyCll3uEAfcdqH7w9UXuCqxDvtaM0ZJWtujTQtrBMFIsHz79mKsGlZlxVJUxxPgaOPiETDnmLnSSlwiQ6TTLdJq4ZGBBnB7YHbpk1mKNlRkRjCJStTnqRl8T1J3jkhSJ2wQsK0=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1760961056;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=A/c/4oL8Z03NjnVaEgMnJiauD1mgyw2BMdnR11SbtOU=;
-	b=PaL/OAYlpW7pCWoX/nW8/r5Ars7ZMGegZ6sORd7Ra52eVXY8qtIgTV84a6OuCiti
-	f1QFLSFukxd6rYxUkCCtp1sRRNyjyBoz59JCtIF/7UUcfAFVo1cFMZUeeejGOl4n1WW
-	oo+B23a8e3D8+ZHnwIQTPwmfqEktI30JqVK/GOy4=
-Received: by mx.zohomail.com with SMTPS id 1760961055618931.097867690532;
-	Mon, 20 Oct 2025 04:50:55 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- Jassi Brar <jassisinghbrar@gmail.com>, Chia-I Wu <olvaffe@gmail.com>,
- Chen-Yu Tsai <wenst@chromium.org>, Steven Price <steven.price@arm.com>,
- Liviu Dudau <liviu.dudau@arm.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Kees Cook <kees@kernel.org>,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- Ulf Hansson <ulf.hansson@linaro.org>, Karunika Choo <karunika.choo@arm.com>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-hardening@vger.kernel.org, linux-pm@vger.kernel.org, nd@arm.com
-Subject: Re: [PATCH v8 4/5] drm/panthor: Use existing OPP table if present
-Date: Mon, 20 Oct 2025 13:50:47 +0200
-Message-ID: <12781303.O9o76ZdvQC@workhorse>
-In-Reply-To: <386ca96d-34b6-4aab-844d-ea720099cf6b@arm.com>
-References: <20251017-mt8196-gpufreq-v8-0-98fc1cc566a1@collabora.com>
- <20251017-mt8196-gpufreq-v8-4-98fc1cc566a1@collabora.com>
- <386ca96d-34b6-4aab-844d-ea720099cf6b@arm.com>
+	id 1vAoqG-0000000DNHm-2RiE;
+	Mon, 20 Oct 2025 12:18:25 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.98.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1vAopx-000000003X8-401e;
+	Mon, 20 Oct 2025 12:18:06 +0000
+Date: Mon, 20 Oct 2025 13:17:57 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Sjoerd Simons <sjoerd@collabora.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Lee Jones <lee@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+	kernel@collabora.com, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org,
+	linux-phy@lists.infradead.org, netdev@vger.kernel.org,
+	Bryan Hinton <bryan@bryanhinton.com>
+Subject: Re: [PATCH 10/15] arm64: dts: mediatek: mt7981b: Add Ethernet and
+ WiFi offload support
+Message-ID: <aPYodR5N89vRUyQp@makrotopia.org>
+References: <20251016-openwrt-one-network-v1-0-de259719b6f2@collabora.com>
+ <20251016-openwrt-one-network-v1-10-de259719b6f2@collabora.com>
+ <aPEhiVdgkVLvF9Et@makrotopia.org>
+ <8a637fc2-7768-4816-bb4f-3af2e32908e4@collabora.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <8a637fc2-7768-4816-bb4f-3af2e32908e4@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251020_045119_645908_DDF47A13 
-X-CRM114-Status: GOOD (  25.77  )
+X-CRM114-CacheID: sfid-20251020_051824_618681_A894A45B 
+X-CRM114-Status: GOOD (  21.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,104 +86,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Monday, 20 October 2025 10:35:04 Central European Summer Time Karunika Choo wrote:
-> On 17/10/2025 16:31, Nicolas Frattaroli wrote:
-> > On SoCs where the GPU's power-domain is in charge of setting performance
-> > levels, the OPP table of the GPU node will have already been populated
-> > during said power-domain's attach_dev operation.
-> > 
-> > To avoid initialising an OPP table twice, only set the OPP regulator and
-> > the OPPs from DT if there's no OPP table present.
-> > 
-> > Reviewed-by: Chia-I Wu <olvaffe@gmail.com>
-> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > ---
-> >  drivers/gpu/drm/panthor/panthor_devfreq.c | 32 ++++++++++++++++++++++---------
-> >  1 file changed, 23 insertions(+), 9 deletions(-)
-> > 
-> > diff --git a/drivers/gpu/drm/panthor/panthor_devfreq.c b/drivers/gpu/drm/panthor/panthor_devfreq.c
-> > index a6dca599f0a5..ec63e27f4883 100644
-> > --- a/drivers/gpu/drm/panthor/panthor_devfreq.c
-> > +++ b/drivers/gpu/drm/panthor/panthor_devfreq.c
-> > @@ -141,6 +141,7 @@ int panthor_devfreq_init(struct panthor_device *ptdev)
-> >  	struct thermal_cooling_device *cooling;
-> >  	struct device *dev = ptdev->base.dev;
-> >  	struct panthor_devfreq *pdevfreq;
-> > +	struct opp_table *table;
-> >  	struct dev_pm_opp *opp;
-> >  	unsigned long cur_freq;
-> >  	unsigned long freq = ULONG_MAX;
-> > @@ -152,17 +153,30 @@ int panthor_devfreq_init(struct panthor_device *ptdev)
-> >  
-> >  	ptdev->devfreq = pdevfreq;
-> >  
-> > -	ret = devm_pm_opp_set_regulators(dev, reg_names);
-> > -	if (ret && ret != -ENODEV) {
-> > -		if (ret != -EPROBE_DEFER)
-> > -			DRM_DEV_ERROR(dev, "Couldn't set OPP regulators\n");
-> > -		return ret;
-> > +	/*
-> > +	 * The power domain associated with the GPU may have already added an
-> > +	 * OPP table, complete with OPPs, as part of the platform bus
-> > +	 * initialization. If this is the case, the power domain is in charge of
-> > +	 * also controlling the performance, with a set_performance callback.
-> > +	 * Only add a new OPP table from DT if there isn't such a table present
-> > +	 * already.
-> > +	 */
-> > +	table = dev_pm_opp_get_opp_table(dev);
-> > +	if (IS_ERR_OR_NULL(table)) {
-> > +		ret = devm_pm_opp_set_regulators(dev, reg_names);
-> > +		if (ret && ret != -ENODEV) {
+On Mon, Oct 20, 2025 at 12:27:53PM +0200, AngeloGioacchino Del Regno wrote:
+> Il 16/10/25 18:47, Daniel Golle ha scritto:
+> > On Thu, Oct 16, 2025 at 12:08:46PM +0200, Sjoerd Simons wrote:
+> > > Add device tree nodes for the Ethernet subsystem on MT7981B SoC,
+> > > including:
+> > > - Ethernet MAC controller with dual GMAC support
+> > > - Wireless Ethernet Dispatch (WED)
+> > > - SGMII PHY controllers for high-speed Ethernet interfaces
+> > > - Reserved memory regions for WiFi offload processor
+> > > 
+> > > Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
+> > > ---
+> > >   arch/arm64/boot/dts/mediatek/mt7981b.dtsi | 133 ++++++++++++++++++++++++++++++
+> > >   1 file changed, 133 insertions(+)
+> > > 
+> > > diff --git a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
+> > > index 13950fe6e8766..c85fa0ddf2da8 100644
+> > > --- a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
+> > > +++ b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
 > 
-> Is there a reason to not fail on -ENODEV? I would assume it is a valid 
-> failure path. 
-
-Hi,
-
-the -ENODEV logic wasn't added by me, it was added in
-Commit: a8cb5ca53690 ("drm/panthor: skip regulator setup if no such prop")
-
-with the justification
-
-  The regulator is optional, skip the setup instead of returning an
-  error if it is not present
-
-I will not be changing anything about this logic in this patch set,
-as it is not in scope for MT8196 enablement, since MT8196 does not
-use this code path at all.
-
-Kind regards,
-Nicolas Frattaroli
-
+> ..snip..
 > 
-> Kind regards,
-> Karunika Choo
-> 
-> > +			if (ret != -EPROBE_DEFER)
-> > +				DRM_DEV_ERROR(dev, "Couldn't set OPP regulators\n");
-> > +			return ret;
-> > +		}
-> > +
-> > +		ret = devm_pm_opp_of_add_table(dev);
-> > +		if (ret)
-> > +			return ret;
-> > +	} else {
-> > +		dev_pm_opp_put_opp_table(table);
-> >  	}
-> >  
-> > -	ret = devm_pm_opp_of_add_table(dev);
-> > -	if (ret)
-> > -		return ret;
-> > -
-> >  	spin_lock_init(&pdevfreq->lock);
-> >  
-> >  	panthor_devfreq_reset(pdevfreq);
+> > > +
+> > > +			mdio_bus: mdio-bus {
+> > > +				#address-cells = <1>;
+> > > +				#size-cells = <0>;
+> > > +
+> > > +				int_gbe_phy: ethernet-phy@0 {
+> > > +					compatible = "ethernet-phy-ieee802.3-c22";
+> > > +					reg = <0>;
+> > > +					phy-mode = "gmii";
+> > > +					phy-is-integrated;
+> > > +					nvmem-cells = <&phy_calibration>;
+> > > +					nvmem-cell-names = "phy-cal-data";
+> > 
+> > Please also define the two LEDs here with their corresponding (only)
+> > pinctrl options for each of them, with 'status = "disabled";'. This
+> > makes it easier for boards to make use of the Ethernet PHY leds by just
+> > referencing the LED and setting the status to 'okay'.
 > > 
 > 
+> Sorry Daniel, definitely no. The LEDs really are board specific.
 > 
+> Try to convince me otherwise, but for this one I really doubt that you can.
 
+You are right, the LEDs themselves are board-specific and may not even
+be present.
 
-
-
+However, the LED controller is always present because it is part of the
+PHY which is built-into the SoC. And the pinctrl property which I'd like
+to see described on SoC-level is a property of the LED controller rather
+than the LED itself. Sadly the device tree node doesn't make the
+distinction between LED and LED controller, so I understand you your
+argument as well.
 
