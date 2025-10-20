@@ -4,70 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3272FCCD193
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Oct 2025 10:49:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCAC6CCD193
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Oct 2025 11:04:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YVzrrzbDeBdvXS36mfiV19TOlGxvz78KHj4olurcwO0=; b=Dlyy7Yc6RNd5+eX72LixosJ10e
-	Q7leKL28V9NYddyFe7gTwZIlPouS0ZvC9OOlCphuP3KOUKf93ytyowlLPsiZCWDgz5nnNSvQ5zanE
-	0Dvv8KPLhkKHN6U49MXgSqGHH8L4KIflRRDe3W5LUTirs+conN+wi741o1aHM2ytDF2HkuPseabTm
-	2vQlpJH9XLF6l2rmtpOqIvopuW2HuGhwofB3Q2rJHbGt3D7/75qoosbq5Kh9HpWtytByv/pM0rXML
-	y8R9XAXK+U1rWdDREiPA+dAejNjeEnazIrjFO4y8ikJrwPdmDV58IXR88p47cnR/BWi2PKrHUs375
-	jgzoj/vw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Subject:Cc:To:
+	From:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FYOfZuoNHQ6zfb1eIHdQ/g7m/nIgJIBArSgWVNXdu3o=; b=cBKDkZ+pzEx0ZIAwxkvVXKlPmZ
+	f/TONG+RFTzwNzd56ZvhSSIC8rHIoHDx6Rdh6a2+zRkRIiryvltvovA9EGMZ3hmH9eq9En/QuXyxW
+	g+5MZrjrabz0KcCv/Y2FLBNzMInvFtAncxxEDd6C28DBkxWPTQFuozKlK85OJ6pfigTVjo5kEjEGG
+	4/0rfr6hSYgq1ntcSBzN9raH/w+EYeYcCwPSqypdbN8swx8LbjDo3iZ4VJzxRmDHjD7tjbaJ9m3M8
+	oHnsUFrqsc1qUoS7IOI3TtG7psvxTSvNyy61n/CFgbILm7uku7LitQEkAar8t8yE8OlA9Y/e1UmD3
+	b0QdEgMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAnSb-0000000CwAv-1TcZ;
-	Mon, 20 Oct 2025 10:49:53 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vAngS-0000000CzNc-1EnI;
+	Mon, 20 Oct 2025 11:04:12 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAnSR-0000000Cvy4-0FTh;
-	Mon, 20 Oct 2025 10:49:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1760957380;
-	bh=I+YIClIz20Rq9+WEu53+FWQ6hYP5ElMvgvG8sAmQxW0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=TpewgXYsijilmoIMmUUpMgdkfJFJReq3OTbo1AsZEUEFLxnVnQGhRvGFb/Vm3H2qC
-	 qcreg7872Lm/1HwpFl8lf+yx0YL9saa+oQkk5H4PKOC0plGlQWbyiA0VWJ1r5fNOsO
-	 Fyf0VbUIOcl6vXDtGNFLnC5vZ2rQ/bNFUlWFTuNLQvgIEuLUDCZK6tEuiMkLqwX1iH
-	 ZSbQmZZDUjRIHo+M0zqSY9Op5U7O7VW37zrWlGRv/kKxq+RIvZFxWrh6Ymu4O1fhg0
-	 j9cIUprsIA4Qss6fySTinczaWWKxgbA7vY9djbQyYjkQKnCTY20Tgm+9G0Jp6ZxXxS
-	 Q7TLYKf780Ipw==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E108717E13F9;
-	Mon, 20 Oct 2025 12:49:39 +0200 (CEST)
-Message-ID: <e22e4d18-a481-4332-8b99-ec8386023091@collabora.com>
-Date: Mon, 20 Oct 2025 12:49:39 +0200
+	id 1vAngO-0000000CzLZ-37ZP
+	for linux-mediatek@lists.infradead.org;
+	Mon, 20 Oct 2025 11:04:10 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-47157119d8bso3987435e9.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 20 Oct 2025 04:04:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1760958247; x=1761563047; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:subject:cc:to:from:date:message-id:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=FYOfZuoNHQ6zfb1eIHdQ/g7m/nIgJIBArSgWVNXdu3o=;
+        b=ZcfNGx+TYhEvTtKbT91QNg+KEE5wnlmrZ0cYDFujRFbOsTodZxX0J7TtWoqG8sAaxx
+         tZzpiFCB5dGWR+8L9zSUuFM1QSdv3XqEJvqJBqZo7kIIQsCVw3Yd91dLJ17u1neYQdg/
+         pqdbs6EiQqlu9JS5ppXvULBDh7j4XqveO5vbgKj5mEgGC61LJVdVQWXbhxGWGpYo+GSB
+         FFGEOmYKAD/GAa22GwCFOKHKOKbBn0qzaQASsJKKVQHoiNr2jTDtuR/tKY56cmBPwtMh
+         t+/DQTLn2jsgv/FfyzGMwMJCesJ1FGEA70HcVgfJFVPXZc0VOmUnmmE5JMxpJB0zahqB
+         KFIA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1760958247; x=1761563047;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:subject:cc:to:from:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=FYOfZuoNHQ6zfb1eIHdQ/g7m/nIgJIBArSgWVNXdu3o=;
+        b=PqerB8H74XUdX3rOfWcbKR+Zr0/9peaSEyUQy/TfVjf6Tp+B+yhcj3ppfykDWkvMQ1
+         gM8xpROrzpI5jzeiUcwmzdhp2AwyUoPt1P+IMSjLz0mSkcnLpaxogRrv5lvp2zxC4KsP
+         GEmtT7TvFoXsNewYj04r8a64I1TKwRXPQIoqZ+4NwFPQ8g4055eN0FCExE6V3VsLb7qx
+         e/cBvCfmD1tNX5VbUPjyRj1q41oGvUQrRqNnEgwuOIqRW+8JhpqP3GaIv07G430lKdih
+         9u2o34heX+HLYSn9TNHqfTVs1D22q5TPQy54todfOgXbWf7cSYFl5GjhA4XXZLV09HkF
+         NjSw==
+X-Forwarded-Encrypted: i=1; AJvYcCUSEelqPPiPMp6C+JI8kttsYVyrAHBbIm4vsSimspiLLhxTYc+LmBoeYtFwjZP/+oiA3Oa1F7CmAKFOu0gekQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwPlfJEDdY4ty13kLthMqB2vVXoNcHpIcBBswYtGXRB0usFRnip
+	4AvsXve5TwN+7Aml8kroQKn5x+KVRKONefO8PFWVISpp8nT8nkT/RI2Z
+X-Gm-Gg: ASbGncu4D6fF3aesAeyB/x7abYLppy5+MJxN9yHXS/RKub9Qb98Ef4OpMn5zkCkLea8
+	WvqSxRFqXjNRbEV+PUNZOnUAX1sQkK4FzoL0xCQOXAqlXJY3IJnfqgq5rn6ey+gNcVGDxSRnFhO
+	84LIx9UXmqUYwQnKPnezg6dQErJT320jecaR2fDdo8nnXXVOkobQK6QxHPbtECHf55WT4qhJcze
+	IqoztmBR8b9Hp7bJrLYWAjbIK0i0cS5bp56g07nfuD9aRl6XjEmr8JHEfd8J4MuEKO0TSnIdXf0
+	amHB4AaWr3Z5iaMO4JiRKr5PIdborG9JsexHg87R4IfobAExHEMbx7bijyDaMDbEQrnCEHmAG7L
+	wD1hKFB1U7z2qn/rZS5w2Gqj5Zsfz033z3uHw+XRDBxUM5PTPYxChuhDOXMHKvn7+tuVybn4e8/
+	711k7pZgPEdzUaTPNV/p8dbnxzq23xfHG3UM64tvdFJA==
+X-Google-Smtp-Source: AGHT+IGgJEIPMXEXNKI395DmJYirOVPGUv9eBwNI0mKNkT1iDHPejiG58osCYccM9drAAu3VR8kn5A==
+X-Received: by 2002:a05:600c:34d5:b0:46f:b42e:e394 with SMTP id 5b1f17b1804b1-4711793473fmr92013195e9.41.1760958246642;
+        Mon, 20 Oct 2025 04:04:06 -0700 (PDT)
+Received: from Ansuel-XPS. (93-34-92-177.ip49.fastwebnet.it. [93.34.92.177])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4715520dd65sm137840795e9.15.2025.10.20.04.04.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 20 Oct 2025 04:04:05 -0700 (PDT)
+Message-ID: <68f61725.050a0220.343129.f1f0@mx.google.com>
+X-Google-Original-Message-ID: <aPYXHZQYtY_jcRhd@Ansuel-XPS.>
+Date: Mon, 20 Oct 2025 13:03:57 +0200
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Manivannan Sadhasivam <mani@kernel.org>
+Cc: Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, upstream@airoha.com
+Subject: Re: [PATCH v5 5/5] PCI: mediatek: add support for Airoha AN7583 SoC
+References: <20251012205900.5948-1-ansuelsmth@gmail.com>
+ <20251012205900.5948-6-ansuelsmth@gmail.com>
+ <hjyhso2sqgyq4ymzqg6pmjfrfncla24zwsev2mfinolmclm3ih@sol2yoapbykq>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 07/13] dt-bindings: soc: mediatek: add ovl yaml for
- MT8189
-To: Xiandong Wang <xiandong.wang@mediatek.com>,
- Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Yongqiang Niu <yongqiang.niu@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- sirius.wang@mediatek.com, vince-wl.liu@mediatek.com, jh.hsu@mediatek.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20251020074211.8942-1-xiandong.wang@mediatek.com>
- <20251020074211.8942-8-xiandong.wang@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20251020074211.8942-8-xiandong.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <hjyhso2sqgyq4ymzqg6pmjfrfncla24zwsev2mfinolmclm3ih@sol2yoapbykq>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251020_034943_293768_C82E4046 
-X-CRM114-Status: GOOD (  12.75  )
+X-CRM114-CacheID: sfid-20251020_040408_807781_228299B0 
+X-CRM114-Status: GOOD (  33.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,48 +114,117 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 20/10/25 09:40, Xiandong Wang ha scritto:
-> Add compatible string to support ovl for MT8189.
+On Sun, Oct 19, 2025 at 01:01:44PM +0530, Manivannan Sadhasivam wrote:
+> On Sun, Oct 12, 2025 at 10:56:59PM +0200, Christian Marangi wrote:
+> > Add support for the second PCIe Root Complex present on Airoha AN7583
+> > SoC.
+> > 
+> > This is based on the Mediatek Gen1/2 PCIe driver and similar to Gen3
+> > also require workaround for the reset signals.
+> > 
+> > Introduce a new flag to skip having to reset signals and also introduce
+> > some additional logic to configure the PBUS registers required for
+> > Airoha SoC.
+> > 
+> > While at it, also add additional info on the PERST# Signal delay
+> > comments and use dedicated macro.
+> > 
 > 
-> Signed-off-by: Xiandong Wang <xiandong.wang@mediatek.com>
-
-Please change the title and write a .. descriptive .. commit description.
-
-dt-bindings: display: mediatek: ovl: Add compatible string for MT8189
-
-Add a OVL compatible for the MT8189 SoC. This SoC's OVL IP is fully compatible
-with the one found in MT819.. 5? 6? Which one?
-
-Also do the same for all (well, most of, actually) of your bindings commits.
-
-Cheers,
-Angelo
-
-> ---
->   .../devicetree/bindings/display/mediatek/mediatek,ovl.yaml      | 2 ++
->   1 file changed, 2 insertions(+)
+> This belongs to a separate patch which should come before this one.
 > 
-> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
-> index 4f110635afb6..578e90d0e3b9 100644
-> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
-> @@ -25,6 +25,7 @@ properties:
->             - mediatek,mt2701-disp-ovl
->             - mediatek,mt8173-disp-ovl
->             - mediatek,mt8183-disp-ovl
-> +          - mediatek,mt8189-disp-ovl
->             - mediatek,mt8192-disp-ovl
->             - mediatek,mt8195-disp-ovl
->             - mediatek,mt8195-mdp3-ovl
-> @@ -44,6 +45,7 @@ properties:
->             - const: mediatek,mt8192-disp-ovl
->         - items:
->             - const: mediatek,mt8188-disp-ovl
-> +          - const: mediatek,mt8189-disp-ovl
->             - const: mediatek,mt8195-disp-ovl
->         - items:
->             - const: mediatek,mt8188-mdp3-ovl
+> > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> > ---
+> >  drivers/pci/controller/pcie-mediatek.c | 92 ++++++++++++++++++++------
+> >  1 file changed, 70 insertions(+), 22 deletions(-)
+> > 
+> > diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+> > index 1678461e56d3..3340c005da4b 100644
+> > --- a/drivers/pci/controller/pcie-mediatek.c
+> > +++ b/drivers/pci/controller/pcie-mediatek.c
+> > @@ -148,6 +148,7 @@ enum mtk_pcie_flags {
+> >  	NO_MSI = BIT(2), /* Bridge has no MSI support, and relies on an
+> >  			  * external block
+> >  			  */
+> > +	SKIP_PCIE_RSTB	= BIT(3), /* Skip calling RSTB bits on PCIe probe */
+> >  };
+> >  
+> >  /**
+> > @@ -684,28 +685,32 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
+> >  		regmap_update_bits(pcie->cfg, PCIE_SYS_CFG_V2, val, val);
+> >  	}
+> >  
+> > -	/* Assert all reset signals */
+> > -	writel(0, port->base + PCIE_RST_CTRL);
+> > -
+> > -	/*
+> > -	 * Enable PCIe link down reset, if link status changed from link up to
+> > -	 * link down, this will reset MAC control registers and configuration
+> > -	 * space.
+> > -	 */
+> > -	writel(PCIE_LINKDOWN_RST_EN, port->base + PCIE_RST_CTRL);
+> > -
+> > -	/*
+> > -	 * Described in PCIe CEM specification sections 2.2 (PERST# Signal) and
+> > -	 * 2.2.1 (Initial Power-Up (G3 to S0)). The deassertion of PERST# should
+> > -	 * be delayed 100ms (TPVPERL) for the power and clock to become stable.
+> > -	 */
+> > -	msleep(100);
+> > -
+> > -	/* De-assert PHY, PE, PIPE, MAC and configuration reset	*/
+> > -	val = readl(port->base + PCIE_RST_CTRL);
+> > -	val |= PCIE_PHY_RSTB | PCIE_PERSTB | PCIE_PIPE_SRSTB |
+> > -	       PCIE_MAC_SRSTB | PCIE_CRSTB;
+> > -	writel(val, port->base + PCIE_RST_CTRL);
+> > +	if (!(soc->flags & SKIP_PCIE_RSTB)) {
+> > +		/* Assert all reset signals */
+> > +		writel(0, port->base + PCIE_RST_CTRL);
+> > +
+> > +		/*
+> > +		 * Enable PCIe link down reset, if link status changed from
+> > +		 * link up to link down, this will reset MAC control registers
+> > +		 * and configuration space.
+> > +		 */
+> > +		writel(PCIE_LINKDOWN_RST_EN, port->base + PCIE_RST_CTRL);
+> > +
+> > +		/*
+> > +		 * Described in PCIe CEM specification revision 3.0 sections
+> > +		 * 2.2 (PERST# Signal) and 2.2.1 (Initial Power-Up (G3 to S0)).
+> > +		 *
+> > +		 * The deassertion of PERST# should be delayed 100ms (TPVPERL)
+> > +		 * for the power and clock to become stable.
+> 
+> You can drop the comments since PCIE_T_PVPERL_MS definition has them.
+> 
+> > +		 */
+> > +		msleep(PCIE_T_PVPERL_MS);
+> > +
+> > +		/* De-assert PHY, PE, PIPE, MAC and configuration reset	*/
+> > +		val = readl(port->base + PCIE_RST_CTRL);
+> > +		val |= PCIE_PHY_RSTB | PCIE_PERSTB | PCIE_PIPE_SRSTB |
+> > +		       PCIE_MAC_SRSTB | PCIE_CRSTB;
+> > +		writel(val, port->base + PCIE_RST_CTRL);
+> 
+> If PCIE_LINKDOWN_RST_EN corresponds to PERST# signal, then it should be
+> deasserted only after the power and REFCLK are stable. But I'm not sure what the
+> above PCIE_RST_CTRL setting is doing. If it somehow affects either power or
+> REFCLK, then it should come before PCIE_LINKDOWN_RST_EN.
+>
 
+Hi I checked MT7622 programming guide for this.
 
+The order of operation for reset is exactly what you have described.
 
+Indded, first everything is reset (assert all signals) then we set
+PCIE_LINKDOWN_RST_EN that in unrelated. We wait for clock stabilization
+with the msleep and only AFTER we deassert the PCIE_PERSTB.
+
+So no, PCIE_LINKDOWN_RST_EN is not PERST# signal sw but it's actually
+PCIE_PERSTB.
+
+> 
+> -- 
+> மணிவண்ணன் சதாசிவம்
+
+-- 
+	Ansuel
 
