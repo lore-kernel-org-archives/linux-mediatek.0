@@ -4,154 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04CFFCCD1A7
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Oct 2025 18:52:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0D2DCCD1A5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Oct 2025 19:36:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bq7MnGqYrePh9wEPS49LBx3k3CGPL+8NjS9qiJdkxZU=; b=Y3bJw7LBdfIABmJHpoXq78ivBk
-	3moEYpF4A/Ef01qeaGXLQwVPwwafuUveczlngHk+J+z4+B2Ben2sjCWKYOge/iczWAdUaoMFavT3T
-	mb6dyFICO3yE8lRv2O4btQjjSTGNdWhdZhlRbu9wEPJZ11SOcTuHdGXIPsR0eALvUoQeL3fzL0TZt
-	7UETxU8VnTiL9MBg5JXVqJphw1VJ+YXVuRgoetQtH3EwQlaQ5QXz+BM9C79XMJq/pogv2HrhXsRUB
-	K49XqCIkoT/atqhgBJ/uvqc0ZFmFW2NVSadWsaV9A+quvJm4BkAbyfO5RQ8wDTdHTtoQnJDGqcmlI
-	vY5ehf9Q==;
+	bh=5ZiaSM2PnoC+EdbhzADV84+t+uutkx1Amp/dmBBeJxQ=; b=eiXMZ6l6Tf+mmSmvhkk8vOdN7S
+	dcrCilyU+7m1M+BwyAOyFw/aYJxd6iqYvxP1kr0bGSPLFUEiWvOJhhrv+9gLMXjEPciSjjK7GQ5Dq
+	YGHlVXsUTJ4Gyc5xyL78Vm5xO3CzbqjEdgtADnP2w2gFr/DzBPlHpttkE6IBoTcfAudNFUY9M4BKa
+	AA0JffM33h+Vr751rXHPBT8zvVU6prjoh/m4t7e4lB6FSTeU1ikRgWDVRwMuSDInAk2Y37ZEpXqgu
+	R4/sS7YAbovD6DchvNAPo1TgKH8bV58qycQDJqCuicAB9J0V1GcoFSHFjwgvxqKTB55M4fBad48eM
+	Xb5LdUgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAuzm-0000000EgDX-0YaR;
-	Mon, 20 Oct 2025 18:52:38 +0000
-Received: from mail-southcentralusazon11011059.outbound.protection.outlook.com ([40.93.194.59] helo=SN4PR0501CU005.outbound.protection.outlook.com)
+	id 1vAvgZ-0000000EnfE-382Y;
+	Mon, 20 Oct 2025 19:36:51 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAuzj-0000000EgCC-0Zev;
-	Mon, 20 Oct 2025 18:52:36 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Bg8UvY5w+uvcS+Mq9u+DPa06LYFvJ70EPKhcHMiO4u3wpha2KdmtpHRDgzZJ2JNIAddPfzOORYXKl2uBD+xsJv8MBvRCqyD0n5TWHLyh3kdRlPhCLn3jM5b/obgzXAH1045HA9Q7BqkGKP7nKSdbWbXFY0MUGuj2TryrCxXYqE4dReCpWUh9vp+ciQqvJXLVZ86lcCNC1oLa2vAFQYQBgYaAOwuf7qZLeqSwdu3yoLgf2tJ76oil8zbEwTq4AnBBblGr98Qb+QFIu7OH8DvNYARRFrps1du4SYchWHU352CgM2JIgQBVIRDBnnNg6g4pqJUku6LVREl+lxph/XfQ6Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=bq7MnGqYrePh9wEPS49LBx3k3CGPL+8NjS9qiJdkxZU=;
- b=fEF7GuEZIegZas+rwA1v5WSyYmiDaXYOPTJCK9lYbeZreNMCFSBeXkZ0+y8LjGstF4SKz3k8eP286Fr0TaJyENeRHyaH/jGHP3Q1zOC0UH64GZFCiVabmac2AmpWYmm0eQhVLCpppLbCoZeF/pj7LNI+LQsgg1yX8SqJmhmbwnHpFWjKV2Gn5Fnsq5suG33FBZJdJhMwmiXSKOZm6kZjimnqK+A8wTNtm4vNFvCFFLl6bYQCNcNVWJAldTReKamXxUFg057l9uppYcTSTJpMBB8VNvIhazhNmIasF19PUO1Xwnonsrms95/6p+LHRoC1hNW/KxzGMR3TQ1CpeR+pHg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.160) smtp.rcpttodomain=csie.org smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=bq7MnGqYrePh9wEPS49LBx3k3CGPL+8NjS9qiJdkxZU=;
- b=rFkY9KBlCvF9ETSLsOI91XkloxyNtGQXv8mWih5Mg8qLh/U7TWpDcFJ2WMwWRT0zbNe3ut9ooQ/MuI76vgZGrsMz1SUp2x32lWsAdKjzomxZeaN8+AH5SButHQUp0TXBKolsp6Q7NNsovOTKvsryTeqnddvx7p0m/rLRP9QB/8DCSgX5kj+RGIE+3sQQBz8Im13imvuf0YqI9f/pNM7kSBAeZgz8nvGaXT9RJBpRLoqnSL4NPr5qq0iQyjGVnITsWb46dC4y0+yeIQ/IpWkKwZz9ccznQuDXO4+CwNx5MM43poyBjBcXtiPB+h5BiMaRBI0d8vA406hJTS5bvIf4LQ==
-Received: from BN9PR03CA0545.namprd03.prod.outlook.com (2603:10b6:408:138::10)
- by SA3PR12MB9199.namprd12.prod.outlook.com (2603:10b6:806:398::19) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9228.16; Mon, 20 Oct
- 2025 18:52:26 +0000
-Received: from BL02EPF00021F6F.namprd02.prod.outlook.com
- (2603:10b6:408:138:cafe::10) by BN9PR03CA0545.outlook.office365.com
- (2603:10b6:408:138::10) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9228.17 via Frontend Transport; Mon,
- 20 Oct 2025 18:52:25 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.160) by
- BL02EPF00021F6F.mail.protection.outlook.com (10.167.249.11) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9253.7 via Frontend Transport; Mon, 20 Oct 2025 18:52:25 +0000
-Received: from rnnvmail205.nvidia.com (10.129.68.10) by mail.nvidia.com
- (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.34; Mon, 20 Oct
- 2025 11:51:52 -0700
-Received: from rnnvmail203.nvidia.com (10.129.68.9) by rnnvmail205.nvidia.com
- (10.129.68.10) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Mon, 20 Oct
- 2025 11:51:52 -0700
-Received: from Asurada-Nvidia (10.127.8.9) by mail.nvidia.com (10.129.68.9)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20 via Frontend
- Transport; Mon, 20 Oct 2025 11:51:50 -0700
-Date: Mon, 20 Oct 2025 11:51:49 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-CC: <joro@8bytes.org>, <kevin.tian@intel.com>,
-	<suravee.suthikulpanit@amd.com>, <will@kernel.org>, <robin.murphy@arm.com>,
-	<sven@kernel.org>, <j@jannau.net>, <jean-philippe@linaro.org>,
-	<robin.clark@oss.qualcomm.com>, <dwmw2@infradead.org>,
-	<baolu.lu@linux.intel.com>, <yong.wu@mediatek.com>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <tjeznach@rivosinc.com>,
-	<pjw@kernel.org>, <palmer@dabbelt.com>, <aou@eecs.berkeley.edu>,
-	<heiko@sntech.de>, <schnelle@linux.ibm.com>, <mjrosato@linux.ibm.com>,
-	<wens@csie.org>, <jernej.skrabec@gmail.com>, <samuel@sholland.org>,
-	<thierry.reding@gmail.com>, <jonathanh@nvidia.com>, <iommu@lists.linux.dev>,
-	<linux-kernel@vger.kernel.org>, <asahi@lists.linux.dev>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-riscv@lists.infradead.org>,
-	<linux-rockchip@lists.infradead.org>, <linux-s390@vger.kernel.org>,
-	<linux-sunxi@lists.linux.dev>, <linux-tegra@vger.kernel.org>,
-	<virtualization@lists.linux.dev>, <patches@lists.linux.dev>
-Subject: Re: [PATCH v1 02/20] iommu: Introduce a test_dev domain op and an
- internal helper
-Message-ID: <aPaExVobV9evs22n@Asurada-Nvidia>
-References: <cover.1760312725.git.nicolinc@nvidia.com>
- <32ce256a2ece5d63e99d5858f953586859818ffc.1760312725.git.nicolinc@nvidia.com>
- <20251020162736.GW316284@nvidia.com>
+	id 1vAvgX-0000000EndW-0vZC
+	for linux-mediatek@lists.infradead.org;
+	Mon, 20 Oct 2025 19:36:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1760989007;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=5ZiaSM2PnoC+EdbhzADV84+t+uutkx1Amp/dmBBeJxQ=;
+	b=SLxKsZLeFrUy2G8+Xmcm25oAQ1AfxdoeKnnHFdmco8Nv+7eq0bxPAHWwba8weZke/YLQTH
+	UiMMucZlztLQIezZDo0R9Tok/OV9lPsd/4ZkFo4Dg+a4PhnbQOzB6hCuWymH6BH0EcIqeA
+	5UtiGhMzOWpA+zq+MOaGyJuaQGzkFAI=
+Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
+ [209.85.222.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-210-4EvEVf-pPhOChLXi7ezuUA-1; Mon, 20 Oct 2025 15:36:45 -0400
+X-MC-Unique: 4EvEVf-pPhOChLXi7ezuUA-1
+X-Mimecast-MFC-AGG-ID: 4EvEVf-pPhOChLXi7ezuUA_1760989005
+Received: by mail-qk1-f200.google.com with SMTP id af79cd13be357-8904a9e94ebso1878495185a.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 20 Oct 2025 12:36:45 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1760989005; x=1761593805;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=5ZiaSM2PnoC+EdbhzADV84+t+uutkx1Amp/dmBBeJxQ=;
+        b=vmYFUdWKIliMAD+NFQbnj0PYn6Xp7ygjVv6iIhycgvHESI48QdQ2XdpgC5sypgcuFv
+         4wZVhb8fhiX+ziKaYRcK8JlWDRM4HN+yl+C4o9FUWYt3LrsmHTvu7weNwvknVFUr+b5g
+         4xdwaHXRMScMtsUaiyWBM8DtR/6REZqRdTd55SfkHy+za5Rt6uGGJtlCoHVr4US3/E21
+         igBujGUGOg002IR0ZTJ+H59WOPVTfEMqdlb5fC1YhroO4aysGwe+t2leA4TaA+q5kzCu
+         CAkmsc/bRMKOmQQ34QK926ki07KdpoYCm80WODXlgIvTXdW/KMeA6rfbF7YJcTn+76Jf
+         coTw==
+X-Forwarded-Encrypted: i=1; AJvYcCUwOdY1T6/4KSMko8GgZxW/g4ECAoG9nKL+hkhkVUzPHPFIRXFpopkqZsxBpWsJzMAEmFa5MMSGyF64Zb57lQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwHJ0K2T2FiLoqcD60e9ZQqanpmJXfbp5MxXb7VAWYA5/JzjRsn
+	6v8DFxrFVjElabsXeOnRWL7+xKI6F5Hg0mUNUFfBbO7s2RRFAI7WRDhzwQyP3KPI5gHOr3Wit8o
+	695JmAdL3rxG5GZOBPyAsmkPz03sJCnfNqvRpPi+Li1+aQWAEQnnvxp5we1WyBOftJj7Z05RpRg
+	==
+X-Gm-Gg: ASbGncu7VOmUlV3tiWVKpPm4cNzsQCAIQOWqGaWGTD8NZEREDm2PMidC+KxIYL0R/nk
+	fJxm4WsiLKBavvh/hP5Veb1Lx1dfCPTSTPY6TTn4KuYDq8huCXU0ocycLl9BqzuFzUmv7396NbJ
+	SMQl2v2WVqafL936i+/JPGoy3VSQLTc1/hnWru4J0aMH5wOV9Ppwl3qfd54U82FpOXcTommAKgr
+	/8TV/VX469EwGTkw+1FJXnNupv9fWJf9XfOR5EPm61IRTMfX1StV5hNMUKiF9WU/pUE3B4nPEJ3
+	Mk4zSVIzu/8LY9MtdOwyOOyfkS9YPvx1rJIWZkRduMc7ebh/WXuL5WSbAj+9HM+33LipV5I3Jl/
+	dYUpWx4UzOcMjxluariE3mkmWstJtyw==
+X-Received: by 2002:a05:620a:372a:b0:859:be3b:b5ac with SMTP id af79cd13be357-8906e7b97famr1467033685a.4.1760989004792;
+        Mon, 20 Oct 2025 12:36:44 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFsNNiKmKY9peurhzlqev2tF6KISu0JNaKtgEbeRgj3Y5mOQwBz7wnSHOaZ0F5uLAZ7ugJitg==
+X-Received: by 2002:a05:620a:372a:b0:859:be3b:b5ac with SMTP id af79cd13be357-8906e7b97famr1467030685a.4.1760989004383;
+        Mon, 20 Oct 2025 12:36:44 -0700 (PDT)
+Received: from redhat.com ([2600:382:7726:4296:a56e:fe07:ce3f:d5f0])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-8924e082780sm537713185a.51.2025.10.20.12.36.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 20 Oct 2025 12:36:43 -0700 (PDT)
+Date: Mon, 20 Oct 2025 15:36:41 -0400
+From: Brian Masney <bmasney@redhat.com>
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Dong Aisheng <aisheng.dong@nxp.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Yassine Oudjana <y.oudjana@protonmail.com>,
+	Laura Nao <laura.nao@collabora.com>,
+	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
+	Chia-I Wu <olvaffe@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>,
+	kernel@collabora.com, linux-clk@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v3 1/5] clk: Respect CLK_OPS_PARENT_ENABLE during recalc
+Message-ID: <aPaPSeClhiq2WYJN@redhat.com>
+References: <20251010-mtk-pll-rpm-v3-0-fb1bd15d734a@collabora.com>
+ <20251010-mtk-pll-rpm-v3-1-fb1bd15d734a@collabora.com>
+ <aPFbDl_JKyDay1S5@redhat.com>
+ <3342669.irdbgypaU6@workhorse>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+In-Reply-To: <3342669.irdbgypaU6@workhorse>
+User-Agent: Mutt/2.2.14 (2025-02-20)
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: cqQ7r3vutzfV_JPdGAAQKoBalx6W_dO2JKF0Jzk-YQs_1760989005
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20251020162736.GW316284@nvidia.com>
-X-NV-OnPremToCloud: ExternallySecured
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BL02EPF00021F6F:EE_|SA3PR12MB9199:EE_
-X-MS-Office365-Filtering-Correlation-Id: 39fd7eb8-9221-4580-ad1b-08de1009cf5f
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|82310400026|376014|36860700013|1800799024;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?WVN2xFLk0Qx25KrBBAYUc9WgRk50kq3NanZTLGyj9vCDuJVEvJCfAZPwXFdF?=
- =?us-ascii?Q?7g8KTwT8e+fGS1Jok+uw7ByrlORU7TVaBBzcus6Pfok6TRxbYFdt14n9RUA0?=
- =?us-ascii?Q?FoOGk5ndpsvYd2dHvzq7Zi7tY8NtV0HDxPzAtRebWAlColeP1cKzgmS1L3T7?=
- =?us-ascii?Q?s+I5l5BbVETq+xv6Xg2/G/Q6VkdSDM6An65283S+Ku7KDr+UzSG24hAyyaTE?=
- =?us-ascii?Q?yS45V9sPosBQ8Xsnql0mq6qsnFiWBI6MA0q9tbn3n5QkT1NBm2yuqNLwLIh7?=
- =?us-ascii?Q?hKEidWy3avC6AvSEuUcaVtzTMzahOK3ADzWBHZKN0V02hfoE9M01zsalZ9wl?=
- =?us-ascii?Q?lxkDczTVXQYDDBGwld5ZekzHm0m/houaRMxl2k5gN2Lmo/7N32hQs+2ZzhN8?=
- =?us-ascii?Q?IfEzgYzbi0xBXGqNknaa9SGRRbPudFIHmx6KGWUXE/U8DfV6JKk0+2gE+Kbg?=
- =?us-ascii?Q?GaqzMQbXVw8Z5m4J2Hu8XSTlDBlV8fa8W1UaynVAJ9LByvSQkgaA/nyRa41I?=
- =?us-ascii?Q?HHBlAdm0E0hCve74Wy78HjOFnbK8t0XOqyqvFPragLPklxdIgMfsPOzh0wGQ?=
- =?us-ascii?Q?QS9KQGmmjWFCnMt38njJP63tYASqNJinpy3o8lzkZ5cTq2tV75CVezxH+tpv?=
- =?us-ascii?Q?egllim0dRt+HZwum3Duk1jIFKoYVv6FvpVoRCMC20zlNxwVJ6JnVp/oP7Aqn?=
- =?us-ascii?Q?d+7f7evFeM/iSX1ctBAOOLZM9p9KEHA322F+E6hFIcyqA58V7kvQ4BEpvlYk?=
- =?us-ascii?Q?kwUkPG1lCp+DzfK1wAudlms0R053ovT2yRmeuVtpMVwBqT2GUApWxMN37zRr?=
- =?us-ascii?Q?f3niJEZ/KRnYfm+3AA/Is5iuknaHeeIEWTl2KFl8dx0RrvQeWZa02X/brblt?=
- =?us-ascii?Q?pIx6KekIrYeNhJEHzooqrCZf9Hy1urC1ia2ilirNAoKewdJDy6AIAW/eCKxd?=
- =?us-ascii?Q?RFGY+a9wy4Gxcn582I4u5AkcU7KJpAYcsAgHhgzGR5+7ocS57yvKI9EckgjN?=
- =?us-ascii?Q?ikJAlFMYe/b7219owtymEEGGMv1M4niAQ1THGUnRWip7+7Kb5J5s7VvZ4zUr?=
- =?us-ascii?Q?S2sZn+1kiqr9/gPy1EDWPUIzDvS7Lcevj6nk3h3mlK2r0jrS7N1j+IOSI0av?=
- =?us-ascii?Q?CraGqRdLEVG8RkgnluVWxO1S1q90tPX4LGkF24vlj8EEETcUq5JPbrUD16fp?=
- =?us-ascii?Q?pfeG73oCBF9b0klbKzWQeOwOYujPXNJp/JDL3rNTYI1kvwyWenmgs1SFUT+b?=
- =?us-ascii?Q?aDhRDXUkgAwmU9RXGIioUELRMt7Djw4dnCRBV1PvEGeWssJn4q9wRzoqgYyV?=
- =?us-ascii?Q?a1KE8y4e8/mgDvA7x3FlarkVc3ScPHfDPS8cHUWUVGZjXRKjneinlhzrDlL/?=
- =?us-ascii?Q?b0UYKmr33p4t317QAwmckaOYfRtURuA7O35R4/GSYUTxFVmRJxEpZHm17EUs?=
- =?us-ascii?Q?NGuOpwocYG+lfVHzV70JuznStbNr4aDN0Lv0x1bOa9erfvAXqzxccygHX7gQ?=
- =?us-ascii?Q?haltcVdaqCkDB38zbNDWitnq+sIzlcP52ShaEflwrwtqc+B/TsENcXIvsRKx?=
- =?us-ascii?Q?Hf+fR3IMQZDPQ8muJDU=3D?=
-X-Forefront-Antispam-Report: CIP:216.228.117.160;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc6edge1.nvidia.com;CAT:NONE;SFS:(13230040)(7416014)(82310400026)(376014)(36860700013)(1800799024);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Oct 2025 18:52:25.0808
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 39fd7eb8-9221-4580-ad1b-08de1009cf5f
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.117.160];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BL02EPF00021F6F.namprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA3PR12MB9199
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251020_115235_197454_E49195F6 
-X-CRM114-Status: GOOD (  15.36  )
+X-CRM114-CacheID: sfid-20251020_123649_321699_13B02B3A 
+X-CRM114-Status: GOOD (  41.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -166,34 +122,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 20, 2025 at 01:27:36PM -0300, Jason Gunthorpe wrote:
-> On Sun, Oct 12, 2025 at 05:04:59PM -0700, Nicolin Chen wrote:
+Hi Nicolas,
+
+On Fri, Oct 17, 2025 at 02:21:55PM +0200, Nicolas Frattaroli wrote:
+> On Thursday, 16 October 2025 22:52:30 Central European Summer Time Brian Masney wrote:
+> > On Fri, Oct 10, 2025 at 10:47:09PM +0200, Nicolas Frattaroli wrote:
+> > > When CLK_OPS_PARENT_ENABLE was introduced, it guarded various clock
+> > > operations, such as setting the rate or switching parents. However,
+> > > another operation that can and often does touch actual hardware state is
+> > > recalc_rate, which may also be affected by such a dependency.
+> > > 
+> > > Add parent enables/disables where the recalc_rate op is called directly.
+> > > 
+> > > Fixes: fc8726a2c021 ("clk: core: support clocks which requires parents enable (part 2)")
+> > > Fixes: a4b3518d146f ("clk: core: support clocks which requires parents enable (part 1)")
+> > > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> > > Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+> > > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> > > ---
+> > >  drivers/clk/clk.c | 13 +++++++++++++
+> > >  1 file changed, 13 insertions(+)
+> > > 
+> > > diff --git a/drivers/clk/clk.c b/drivers/clk/clk.c
+> > > index 85d2f2481acf360f0618a4a382fb51250e9c2fc4..1b0f9d567f48e003497afc98df0c0d2ad244eb90 100644
+> > > --- a/drivers/clk/clk.c
+> > > +++ b/drivers/clk/clk.c
+> > > @@ -1921,7 +1921,14 @@ static unsigned long clk_recalc(struct clk_core *core,
+> > >  	unsigned long rate = parent_rate;
+> > >  
+> > >  	if (core->ops->recalc_rate && !clk_pm_runtime_get(core)) {
+> > > +		if (core->flags & CLK_OPS_PARENT_ENABLE)
+> > > +			clk_core_prepare_enable(core->parent);
+> > > +
+> > >  		rate = core->ops->recalc_rate(core->hw, parent_rate);
+> > > +
+> > > +		if (core->flags & CLK_OPS_PARENT_ENABLE)
+> > > +			clk_core_disable_unprepare(core->parent);
+> > > +
+> > >  		clk_pm_runtime_put(core);
+> > >  	}
+> > >  	return rate;
+> > 
+> > clk_change_rate() has the following code:
+> > 
+> > 
+> >         if (core->flags & CLK_OPS_PARENT_ENABLE)
+> >                 clk_core_prepare_enable(parent);
+> > 
+> > 	...
+> > 
+> >         core->rate = clk_recalc(core, best_parent_rate);
+> > 
+> > 	...
+> > 
+> >         if (core->flags & CLK_OPS_PARENT_ENABLE)
+> >                 clk_core_disable_unprepare(parent);
+> > 
+> > clk_change_rate() ultimately is called by various clk_set_rate
+> > functions. Will that be a problem for the double calls to
+> > clk_core_prepare_enable()?
 > 
-> > And keep them within the group->mutex, so drivers can simply move all the
-> > sanity and compatibility tests from their attach_dev callbacks to the new
-> > test_dev callbacks without concerning about a race condition.
+> I don't see how multiple prepares are a problem as long as they're
+> balanced.
 > 
-> I'm not sure about this.. For the problem we are trying to solve this
-> would be racy as the test would be done and the group mutex
-> unlocked. Then later it will be re-tested and attached.
-
-Oh right, we'll have to retest in iommu_dev_reset_done(). I missed
-that.
-
-> > @@ -751,6 +760,8 @@ struct iommu_ops {
-> >   * @free: Release the domain after use.
-> >   */
-> >  struct iommu_domain_ops {
-> > +	int (*test_dev)(struct iommu_domain *domain, struct device *dev,
-> > +			ioasid_t pasid, struct iommu_domain *old);
+> > 
+> > Fanning this out to the edge further is going to make the code even
+> > more complicated. What do you think about moving this to
+> > clk_core_enable_lock()? I know the set_parent operation has a special
+> > case that would need to be worked around.
 > 
-> Because of the starting remark I'm skeptical that old should be
-> included here.
+> __clk_core_init also needs special code in that case, as it calls the
+> bare recalc_rate op with no clk_core_enable_lock beforehand. It's also
+> wrong, in that recalc_rate does not necessitate the clock being on as
+> far as I'm aware. (if it did, this wouldn't be a problem in the first
+> place, as enabling it would enable the parent as well). Changing the
+> semantics of clk_recalc, and therefore clk_get_rate, to also enable
+> the clock, would be a major change in how the common clock framework
+> functions.
+> 
+> In my case, the __clk_core_init callback was the one that crashed,
+> so it really needs to happen there, and I really don't want to
+> refactor every location where `CLK_OPS_PARENT_ENABLE` is used for
+> a bugfix just to avoid potentially checking the same flag twice.
+> 
+> Having `CLK_OPS_PARENT_ENABLE` cleaned up such that every clk op
+> that has potential register access is never directly called by the
+> clk core except for one place, an accessor function that does both
+> pmdomain and `CLK_OPS_PARENT_ENABLE` checks, would be nice, e.g.
+> by keeping the clk_recalc change and then having __clk_core_init
+> call clk_recalc instead of the recalc op directly. But then the
+> __clk_core_init logic needs further refactoring as well.
+> 
+> I'm not sure I want to do that in this series, because it's quite
+> a bit different from just adding the missing check and parent
+> toggling, and has the chance of me introducing subtle logic bugs
+> in what is supposed to be a bugfix.
 
-Hmm, the followings functions sanitizes "old":
- - qcom_iommu_identity_attach() drivers/iommu/arm/arm-smmu/qcom_iommu.c
- - iommu_sva_set_dev_pasid() in drivers/iommu/amd/pasid.c
+I agree and that makes sense. Thanks for the explanation. What you have
+is a good compromise.
 
-Thanks
-Nicolin
+Reviewed-by: Brian Masney <bmasney@redhat.com>
+
 
