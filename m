@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4F65CCD199
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Oct 2025 10:49:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3272FCCD193
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Oct 2025 10:49:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bVbKNDk5yTJpTN7awDAaJhIqsj29Bd566UQGsQmVHXg=; b=f/LLKdBJBNECe/XeHnPMTvB8PW
-	jHQa9LRBBP6cbAyTkfIvImGFCAQUbDei+B2H4C70Ig2Z7sB1w9RMuVQFpMARFIfWWQ741d8LeYLDE
-	6qeGAHahMON61I35MlUZPkcZr4/uEHQurnV09d9fjsvodMGEoRQ1TjO7o2SeKBxPPhfbwt7CJF2jz
-	/Lgml7L2DeBts3hrWWO4rylOA6+3Xfcsrki0Je0xss+Rtl/v2gT3WnjoqB5dqkTeliFspV6r8WfmH
-	+SzZLbrOIUY1JzSmN/LfC3ZdXan6bRmoV7mbgKkB7Fs1pQSTGgKubimeupfoSqT93eI8DiclMUXC0
-	wkK2Zi8g==;
+	bh=YVzrrzbDeBdvXS36mfiV19TOlGxvz78KHj4olurcwO0=; b=Dlyy7Yc6RNd5+eX72LixosJ10e
+	Q7leKL28V9NYddyFe7gTwZIlPouS0ZvC9OOlCphuP3KOUKf93ytyowlLPsiZCWDgz5nnNSvQ5zanE
+	0Dvv8KPLhkKHN6U49MXgSqGHH8L4KIflRRDe3W5LUTirs+conN+wi741o1aHM2ytDF2HkuPseabTm
+	2vQlpJH9XLF6l2rmtpOqIvopuW2HuGhwofB3Q2rJHbGt3D7/75qoosbq5Kh9HpWtytByv/pM0rXML
+	y8R9XAXK+U1rWdDREiPA+dAejNjeEnazIrjFO4y8ikJrwPdmDV58IXR88p47cnR/BWi2PKrHUs375
+	jgzoj/vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAnST-0000000Cw3t-2X5L;
-	Mon, 20 Oct 2025 10:49:45 +0000
+	id 1vAnSb-0000000CwAv-1TcZ;
+	Mon, 20 Oct 2025 10:49:53 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAnSP-0000000Cvxs-3M1z;
-	Mon, 20 Oct 2025 10:49:43 +0000
+	id 1vAnSR-0000000Cvy4-0FTh;
+	Mon, 20 Oct 2025 10:49:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1760957379;
-	bh=/VcFb2G/ht3F+guTqL6YvdGc27u72T+KofLlYcljNpQ=;
+	s=mail; t=1760957380;
+	bh=I+YIClIz20Rq9+WEu53+FWQ6hYP5ElMvgvG8sAmQxW0=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Av/j9O58crHA+r3Y1uu8hjcAwjsDNB9wawfJVPFWriYWirEt6j3kI/4s4DCps7iYH
-	 uU+KCuo64e8ZaA5mNEBjt3ley8gGlOuEzNeVudBUXSPAMxGrUPGey6G8E5y2d+2PJ6
-	 uUg/6ymcAR/EMHoZdxz8TWvRHnkIKjDp6Xzb+atSqJb9FF80/R/NCPgBN5b8kXrRsb
-	 biYB4FJZiEkoieVLTILdouXArxtIvaBsQ6Uc6EhHVy+cSTeYowFFDjZetAAwQ7nmLK
-	 t8b6Gx760BAgG4H64QmbKKJmSl3xBe6wzLisYbyPppGUmrGI1qge3ZzLoUztQDPdC8
-	 dqLLJ66EXdrQQ==
+	b=TpewgXYsijilmoIMmUUpMgdkfJFJReq3OTbo1AsZEUEFLxnVnQGhRvGFb/Vm3H2qC
+	 qcreg7872Lm/1HwpFl8lf+yx0YL9saa+oQkk5H4PKOC0plGlQWbyiA0VWJ1r5fNOsO
+	 Fyf0VbUIOcl6vXDtGNFLnC5vZ2rQ/bNFUlWFTuNLQvgIEuLUDCZK6tEuiMkLqwX1iH
+	 ZSbQmZZDUjRIHo+M0zqSY9Op5U7O7VW37zrWlGRv/kKxq+RIvZFxWrh6Ymu4O1fhg0
+	 j9cIUprsIA4Qss6fySTinczaWWKxgbA7vY9djbQyYjkQKnCTY20Tgm+9G0Jp6ZxXxS
+	 Q7TLYKf780Ipw==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B8EB417E108C;
-	Mon, 20 Oct 2025 12:49:38 +0200 (CEST)
-Message-ID: <3df15a75-cc5d-41ea-9a0e-6141b7d2ce39@collabora.com>
-Date: Mon, 20 Oct 2025 12:49:38 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E108717E13F9;
+	Mon, 20 Oct 2025 12:49:39 +0200 (CEST)
+Message-ID: <e22e4d18-a481-4332-8b99-ec8386023091@collabora.com>
+Date: Mon, 20 Oct 2025 12:49:39 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 12/13] drm/mediatek: Add support for mt8189 mmsys
- driver probe
+Subject: Re: [PATCH v1 07/13] dt-bindings: soc: mediatek: add ovl yaml for
+ MT8189
 To: Xiandong Wang <xiandong.wang@mediatek.com>,
  Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
@@ -59,15 +59,15 @@ Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
  sirius.wang@mediatek.com, vince-wl.liu@mediatek.com, jh.hsu@mediatek.com,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20251020074211.8942-1-xiandong.wang@mediatek.com>
- <20251020074211.8942-13-xiandong.wang@mediatek.com>
+ <20251020074211.8942-8-xiandong.wang@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20251020074211.8942-13-xiandong.wang@mediatek.com>
+In-Reply-To: <20251020074211.8942-8-xiandong.wang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251020_034942_016076_E2C94F7A 
-X-CRM114-Status: GOOD (  12.52  )
+X-CRM114-CacheID: sfid-20251020_034943_293768_C82E4046 
+X-CRM114-Status: GOOD (  12.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,43 +83,47 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 20/10/25 09:40, Xiandong Wang ha scritto:
-> mmsys probe for mt8189
+> Add compatible string to support ovl for MT8189.
 > 
 > Signed-off-by: Xiandong Wang <xiandong.wang@mediatek.com>
-> ---
->   drivers/gpu/drm/mediatek/mtk_ddp_comp.c  |  2 ++
->   drivers/gpu/drm/mediatek/mtk_disp_ovl.c  | 40 ++++++++++++++++++++++++
->   drivers/gpu/drm/mediatek/mtk_disp_ovl.h  |  2 ++
->   drivers/gpu/drm/mediatek/mtk_disp_rdma.c |  8 +++++
->   drivers/gpu/drm/mediatek/mtk_drm_drv.c   | 39 +++++++++++++++++++++++
->   5 files changed, 91 insertions(+)
-> 
 
-..snip..
+Please change the title and write a .. descriptive .. commit description.
 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> index 4c19cffafd0f..9e6d949e5d17 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> @@ -187,11 +187,27 @@ static const unsigned int mt8188_mtk_ddp_main[] = {
->   	DDP_COMPONENT_DITHER0,
->   };
->   
-> +static const unsigned int mt8189_mtk_ddp_main[] = {
-> +	DDP_COMPONENT_OVL0,
-> +	DDP_COMPONENT_RDMA0,
-> +	DDP_COMPONENT_COMP0_OUT_CB4,
-> +};
-> +
-> +static const unsigned int mt8189_mtk_ddp_ext[] = {
-> +	DDP_COMPONENT_OVL1,
-> +	DDP_COMPONENT_RDMA1,
-> +	DDP_COMPONENT_COMP0_OUT_CB5,
-> +};
+dt-bindings: display: mediatek: ovl: Add compatible string for MT8189
 
-NACK. Please use OF Graph only. Stop hardcoding paths in mediatek-drm.
+Add a OVL compatible for the MT8189 SoC. This SoC's OVL IP is fully compatible
+with the one found in MT819.. 5? 6? Which one?
 
-Regards,
+Also do the same for all (well, most of, actually) of your bindings commits.
+
+Cheers,
 Angelo
+
+> ---
+>   .../devicetree/bindings/display/mediatek/mediatek,ovl.yaml      | 2 ++
+>   1 file changed, 2 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
+> index 4f110635afb6..578e90d0e3b9 100644
+> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
+> @@ -25,6 +25,7 @@ properties:
+>             - mediatek,mt2701-disp-ovl
+>             - mediatek,mt8173-disp-ovl
+>             - mediatek,mt8183-disp-ovl
+> +          - mediatek,mt8189-disp-ovl
+>             - mediatek,mt8192-disp-ovl
+>             - mediatek,mt8195-disp-ovl
+>             - mediatek,mt8195-mdp3-ovl
+> @@ -44,6 +45,7 @@ properties:
+>             - const: mediatek,mt8192-disp-ovl
+>         - items:
+>             - const: mediatek,mt8188-disp-ovl
+> +          - const: mediatek,mt8189-disp-ovl
+>             - const: mediatek,mt8195-disp-ovl
+>         - items:
+>             - const: mediatek,mt8188-mdp3-ovl
+
+
 
 
