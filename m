@@ -4,64 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BE23CCD199
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Oct 2025 10:05:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2536BCCD1A5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Oct 2025 10:23:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cF0CzzZ+vOzNhuTSgzJBRg3dW4DQaqBLeotitf/3xTo=; b=w6AwbHLuSx47A1
-	tJLIec7I6bp0zObsWmwHAvwNV8uk1WnCK3U07OTvYcXjQBZbsAkKnATi3SmA+dKWi0fIH/irP1qtV
-	wRjxcDXLn8hr0QG5WE0f//mZkafj6omL51EdlN2EbKJOvALMpcGEn38oe8UGkk0LS5cg5NVMcHN6S
-	Yr//n4gDcBXJIbjck3DxzZx6T342IFVkDhRiKiNIm9mGnclj2bNifY8SC7/RZSFL8Iy7OtG6ZZngt
-	D5yd4ulPvlWmJVAIAPNzZ3SD4N58VKvx4bzgvO5Ydebw4C8xtPotPcuYPq0b3NgMyP1ST3XZAUkOu
-	ADF+GqyNRQyhqqOGivDw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=903Ah5njHI+DyOMowclwhZasZKSXxvGT0A3XgQ5V5e0=; b=XEKn5tXMRMVmNIRNA8tVWcNbQr
+	8gEnjC8XHD5cl9hF8so8KhbLV98hPrLpduJyhdNQ0DDAxq/x5AvhoanoJdzRgA41CC4TJIjWu5Ele
+	DyO2M4wy14YO7ucb5kFAx7eS6rRvm3HzomGELVLJDMfRdW9Y0RtThg2bAAyCe1es8D0ZqkdGbIuI+
+	bIDH9YrKJOChjCODlRJR6dHsjhrKAJrY5BgZNKOi+7BCCG/RCY+j9TZEaa/gIeib0FTFPpYdwTkW3
+	LyQOL3Tnd6Z9ATl+ymdUBRDOpgzV+BA7nlyRK2uc1aRJX7sNCeizCnQodoBI2rvbfMpPN36Z1w7g6
+	lUyI39RA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAmlZ-0000000CjWx-2s8Y;
-	Mon, 20 Oct 2025 10:05:26 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vAn2x-0000000Cqb0-0BcK;
+	Mon, 20 Oct 2025 10:23:23 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAml7-0000000Cj2h-3Dgn;
-	Mon, 20 Oct 2025 10:04:59 +0000
+	id 1vAn2t-0000000CqZ5-20cJ;
+	Mon, 20 Oct 2025 10:23:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1760954695;
-	bh=VBCX/ItB0EIHTgqrUHuePoEoaOPJI7L4EOIA3Eaw0bg=;
+	s=mail; t=1760955796;
+	bh=OxzG71sDwuES4H6I4qFPGwWEW0NNXV3gRKLkV68zpaE=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=DRiBjE+clR5+w6T4S11A8d7n78b1kXOEQgG9PoTAefEwttNUSUP8YFdDj+80iPr0X
-	 lKlK+rbERo48+A2Q0CjjvJbQLvyJrsOdmVWgRdUnl0F29WwE88CSrK22EiUcYKZkh4
-	 rPXE9S0v6VX+691uvebc0dZXL5c974/rmA4IQdw2BisERxM7LTNn8U5tshESEpJDwI
-	 J7Ya3W1Ag7Y0W5QBxXwT1Lvgc6Vfabb4nmn+F2TnEXgzXKvF19ZTqttrGNqg5wBDMN
-	 Y89c2rsmJV7b4PGlRbGjXPmQTlB1FS7/5Grr4UuVKfgsTwOq2J+RMuGGE2TbILlD4N
-	 0c0tNEs4fr3uQ==
+	b=XH//neKq+w5ZgmjiqKKIco53S1kTKoUN8zlzWGaHQ8eqMxEhNaqwvK724JMy91qct
+	 SqKfpex0IJtdEjSv88RB15h0kV/JycwfSC8bTA9LFfHIQZ10PQ0ES8GNIIQxrZ5snr
+	 JC939XvsPv0CDkgO+8enjSZ0MeRrXJ8axcyu5SVnYUQCPZJo4aiiXMCUE2ZvWpDXp/
+	 /crTyWIfJAIkew8Hpq8q2uyIhqben3OMy18dM0yJ/3dpAn3KiSJym0YV91fopaPvOR
+	 AEYNXvHbCVg4i4NP3th6xaoTA5npM+/tS1btPBBSuu+/OVxIOjV1hSX+EOX8JAWqT0
+	 E8WFxFyEYHcoQ==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A28F917E1278;
-	Mon, 20 Oct 2025 12:04:54 +0200 (CEST)
-Message-ID: <f0cccd9a-21fe-4496-b6e3-6f4a8beec158@collabora.com>
-Date: Mon, 20 Oct 2025 12:04:54 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 462D917E04DA;
+	Mon, 20 Oct 2025 12:23:15 +0200 (CEST)
+Message-ID: <82594ce7-f093-4753-b808-cd234845aed8@collabora.com>
+Date: Mon, 20 Oct 2025 12:23:14 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 00/20] Add GCE support for MT8196
-To: Jason-JH Lin <jason-jh.lin@mediatek.com>, Rob Herring <robh@kernel.org>,
+Subject: Re: [PATCH 02/15] arm64: dts: mediatek: mt7981b-openwrt-one:
+ Configure UART0 pinmux
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: Sjoerd Simons <sjoerd@collabora.com>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Jassi Brar <jassisinghbrar@gmail.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>
-References: <20251017065028.1676930-1-jason-jh.lin@mediatek.com>
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
+ <jianjun.wang@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+ Manivannan Sadhasivam <mani@kernel.org>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>, Lee Jones <lee@kernel.org>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+ kernel@collabora.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org,
+ linux-phy@lists.infradead.org, netdev@vger.kernel.org,
+ Bryan Hinton <bryan@bryanhinton.com>
+References: <20251016-openwrt-one-network-v1-0-de259719b6f2@collabora.com>
+ <20251016-openwrt-one-network-v1-2-de259719b6f2@collabora.com>
+ <aPDnT4tuSzNDzyAE@makrotopia.org>
+ <5f430ff9-d701-426a-bf93-5290e6912eb4@collabora.com>
+ <aPEfUBl6fMe6QYdY@makrotopia.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20251017065028.1676930-1-jason-jh.lin@mediatek.com>
+In-Reply-To: <aPEfUBl6fMe6QYdY@makrotopia.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251020_030458_196128_E6B9478E 
-X-CRM114-Status: GOOD (  30.34  )
+X-CRM114-CacheID: sfid-20251020_032320_025513_527D4A8D 
+X-CRM114-Status: GOOD (  28.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,147 +93,101 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Jason-jh Lin <jason-jh.lin@mediatek.corp-partner.google.com>, devicetree@vger.kernel.org, Moudy Ho <moudy.ho@mediatek.com>, Xiandong Wang <xiandong.wang@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Nicolas Dufresne <nicolas@ndufresne.ca>, Project_Global_Chrome_Upstream_Group@mediatek.com, Paul-PL Chen <paul-pl.chen@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Sirius Wang <sirius.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/10/25 08:44, Jason-JH Lin ha scritto:
-> From: Jason-jh Lin <jason-jh.lin@mediatek.corp-partner.google.com>
+Il 16/10/25 18:37, Daniel Golle ha scritto:
+> On Thu, Oct 16, 2025 at 04:29:14PM +0200, AngeloGioacchino Del Regno wrote:
+>> Il 16/10/25 14:38, Daniel Golle ha scritto:
+>>> On Thu, Oct 16, 2025 at 12:08:38PM +0200, Sjoerd Simons wrote:
+>>>> Add explicit pinctrl configuration for UART0 on the OpenWrt One board,
+>>>>
+>>>> Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
+>>>> ---
+>>>>    arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts | 11 +++++++++++
+>>>>    1 file changed, 11 insertions(+)
+>>>>
+>>>> diff --git a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
+>>>> index 968b91f55bb27..f836059d7f475 100644
+>>>> --- a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
+>>>> +++ b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
+>>>> @@ -22,6 +22,17 @@ memory@40000000 {
+>>>>    	};
+>>>>    };
+>>>> +&pio {
+>>>> +	uart0_pins: uart0-pins {
+>>>> +		mux {
+>>>> +			function = "uart";
+>>>> +			groups = "uart0";
+>>>> +		};
+>>>> +	};
+>>>> +};
+>>>> +
+>>>>    &uart0 {
+>>>> +	pinctrl-names = "default";
+>>>> +	pinctrl-0 = <&uart0_pins>;
+>>>>    	status = "okay";
+>>>>    };
+>>>
+>>> As there is only a single possible pinctrl configuration for uart0,
+>>> both the pinmux definition as well as the pinctrl properties should go
+>>> into mt7981b.dtsi rather than in the board's dts.
+>>
+>> If there's really one single possible pin configuration for the UART0 pins,
+>> as in, those pins *do not* have a GPIO mode, then yes I agree.
+>>
+>> If those pins can be as well configured as GPIOs, this goes to board DTS.
 > 
-> This patch series adds support for the MediaTek MT8196 SoC in the CMDQ
-> driver and related subsystems. The changes include adding compatible
-> names and iommus property, updating driver data to accommodate hardware
-> changes, and modifying the usage of CMDQ APIs to support non-subsys ID
-> hardware.
+> I respectfully disagree and will explain below.
 > 
 
-OK - after applying some last small changes as I pointed out in each patch,
-the code is ready IMO.
+Thanks a lot for taking the time to write all this - explains everything,
+and even too much :) :)
 
-To ease merging, though, I'd like you to split this series in multiple series:
-  1. Addition of new functions and support for MT8196
-  2. Migration of drm-mediatek, mailbox, mdp3 to the new functions
-  3. Removal of the temporary functions that were introduced only for migration
+Though, there's something funny here! The following snippet of "main" text
+does explain stuff that is interesting, but that I (not other people, so
+thanks again for saying all this) know already, but.....
 
-This gives everyone the opportunity of getting just the relevant parts for each
-merge cycle, avoiding possible confusion on what to pick and what not to.
+> All pinmux pins on the MediaTek platform also allow being configured as
+> GPIOs. However, if you configure those as GPIOs the consequence is that
+> you cannot use UART0 any more at all. So using UART0 at all always
+> implies using exactly those pins, there is no alternative to that.
+> 
+> Hence every board with every possible uses of pins 32 and 33 (there is
+> only RX and TX for UART0, RTS/CTS flow-control is not possible) can be
+> represented without needing to configure the pinctrl for uart0 on the
+> board level. There isn't going to be any variation on the board-level
+> when it comes to uart0. Either it is enabled (status = "okay";), and
+> that will always imply using the 'uart0' group in mode 'uart', or, in
+> case any of the two pins of uart0 is used for something else that means
+> uart0 cannot be enabled. Simple as that.
+> 
+> Hence there is no need to duplicate that pinctrl settings on each and
+> every board, as controlling the 'status' property on the board-level
+> already gives 100% freedom.
+> 
 
-Keep in mind that soc/mediatek and mailbox are from two different maintainers,
-and you may need to split this in more than 3 series.
+...all of this is not justifying your point.
 
-I believe that we might at least get a mailbox immutable branch if we want to
-do this in 3 kernel versions, otherwise it's going to be four, I think.
+> (Sidenote: As even the BootROM already uses those two pins as UART for
+> debug output,
 
-Cheers,
+Funny thing is, your side note is what *fully* justifies your disagreement
+and it's also what triggers me to say that you're right, lol :)
+
+Okay then, I am fine with this commit now and I can renew my
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+Cheers!
 Angelo
 
+> it is very unlikely that anyone would actually use them
+> for anything else in production. Apart from being used as GPIOs you can
+> also use pins 32 and 33 as an I2C target for external debug access to the
+> registers of either the sgmii0_phy, sgmii1_phy or u3_phy. However, that
+> doesn't matter in terms of the debate above, as the crucial point there
+> is that using uart0 always implies using group 'uart0' in 'uart' mode.)
 
-> ---
-> Change in v8:
-> 1. Use function pointer to select the correct CMDQ APIs when checking
->     subsys is support for the HW component.
-> 
-> Change in v7:
-> 1. Rename cmdq_reg_shift_addr() and cmdq_reg_revert_addr() to
->     cmdq_convert_gce_addr() and cmdq_revert_gce_addr().
-> 2. Change cmdq_vm_toggle to cmdq_vm_init().
-> 
-> Change in v6:
-> 1. Move the removal patches to the end of series.
-> 2. Fix build error for cmdq_pkt_jump_rel_temp patch.
-> 
-> Change in RESEND v5:
-> 1. Separate the removal of cmdq_get_shift_pa() from [PATCH v5 03/19] to a
->     single patch [PATCH RESEND v5 10/20].
-> 
-> Change in v5:
-> 1. Rebase on tag: next-20250424 + patch [1].
-> 2. Split adding driver data for MT8196 patch to 3 independent patch
->     and add more detail commit message to each patch.
-> 3. Refine passing shift_pa as the parameter in API to storing it into
->     the cmdq_pkt.
-> 4. Refine DMA address potential issue in cmdq mailbox driver.
-> 5. Change the mminfra_offset related mbox API to passing it by cmdq_pkt.
-> 6. Add new cmdq_pkt_write_pa() and cmdq_pkt_write_subsys() APIs to
->     replace the cmdq_pkt_write().
-> 
-> [1] mailbox: mtk-cmdq: Refine GCE_GCTL_VALUE setting
-> - https://patchwork.kernel.org/project/linux-mediatek/patch/20250421035650.441383-1-jason-jh.lin@mediatek.com/
-> 
-> Change in v4:
-> 1. Remove dt-binding header and add a gce header in dts folder.
-> 2. Remove dot in sign-off name.
-> 3. Change addr type from u32 to dma_addr_t for cmdq_reg_shift_addr() and
->     cmdq_reg_revert_addr().
-> 
-> Change in v3:
-> 1. Merge 2 dt-bindings pathes together and add more detail commit message.
-> 2. Change type u32 to phys_addr_t for pa_base of struct cmdq_client_reg.
-> 3. Remove cmdq_subsys_is_valid() and subsys_num in CMDQ driver.
-> 4. Add CMDQ_SUBSYS_INVALID to check subsys instead of using
->     cmdq_subsys_is_invalid().
-> 5. Make use of CMDQ_THR_SPR0 define to the parameter of CMDQ APIs.
-> 6. Rebase on the new MACRO in mtk-mdp3-comp.h.
-> 
-> Change in v2:
-> 1. Remove the constant and fix warning in dt-bindings.
-> 2. Remove the pa_base parameter of CMDQ APIs and related modification.
-> 3. Move subsys checking to client drivers and use 2 alternative
->     CMDQ APIs to achieve the same functionality.
-> 
-> ---
-> 
-> Jason-JH Lin (20):
-
-Series 1 start
-
->    arm64: dts: mediatek: Add GCE header for MT8196
->    mailbox: mtk-cmdq: Refine DMA address handling for the command buffer
->    mailbox: mtk-cmdq: Add cmdq private data to cmdq_pkt for generating
->      instruction
->    soc: mediatek: mtk-cmdq: Add cmdq_get_mbox_priv() in cmdq_pkt_create()
->    soc: mediatek: mtk-cmdq: Add cmdq_pkt_jump_rel_temp() for removing
->      shift_pa
->    mailbox: mtk-cmdq: Add GCE hardware virtualization configuration
->    mailbox: mtk-cmdq: Add mminfra_offset configuration for DRAM
->      transaction
->    mailbox: mtk-cmdq: Add driver data to support for MT8196
->    soc: mediatek: mtk-cmdq: Add pa_base parsing for hardware without
->      subsys ID support
->    soc: mediatek: mtk-cmdq: Extend cmdq_pkt_write API for SoCs without
->      subsys ID
->    soc: mediatek: mtk-cmdq: Add mminfra_offset adjustment for DRAM
->      addresses
->    soc: mediatek: Use reg_write function pointer for subsys ID
->      compatibility
->    drm/mediatek:Use reg_write function pointer for subsys ID
->      compatibility
->    media: platform: mtk-mdp3: Refactor CMDQ writes for CMDQ API change
->    media: platform: mtk-mdp3: Change cmdq_pkt_jump_rel() to
->      cmdq_pkt_jump_rel_temp()
->    soc: mediatek: mtk-cmdq: Remove shift_pa parameter from
->      cmdq_pkt_jump()
->    media: platform: mtk-mdp3: Use cmdq_pkt_jump_rel() without shift_pa
->    soc: mediatek: mtk-cmdq: Remove cmdq_pkt_jump() and
->      cmdq_pkt_jump_rel_temp()
->    soc: mediatek: mtk-cmdq: Remove cmdq_pkt_write() and
->      cmdq_pkt_write_mask()
->    mailbox: mtk-cmdq: Remove unsued cmdq_get_shift_pa()
-> 
->   arch/arm64/boot/dts/mediatek/mt8196-gce.h     | 612 ++++++++++++++++++
->   drivers/gpu/drm/mediatek/mtk_ddp_comp.c       |  12 +-
->   drivers/mailbox/mtk-cmdq-mailbox.c            | 113 +++-
->   .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    |   6 +-
->   .../platform/mediatek/mdp3/mtk-mdp3-comp.h    |   6 +-
->   .../platform/mediatek/mdp3/mtk-mdp3-core.c    |   2 -
->   .../platform/mediatek/mdp3/mtk-mdp3-core.h    |   1 -
->   drivers/soc/mediatek/mtk-cmdq-helper.c        |  82 ++-
->   drivers/soc/mediatek/mtk-mmsys.c              |   8 +-
->   drivers/soc/mediatek/mtk-mutex.c              |   5 +-
->   include/linux/mailbox/mtk-cmdq-mailbox.h      |  19 +-
->   include/linux/soc/mediatek/mtk-cmdq.h         |  87 ++-
->   12 files changed, 879 insertions(+), 74 deletions(-)
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8196-gce.h
-> 
 
 
