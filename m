@@ -4,223 +4,131 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8F60CCD199
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Oct 2025 08:17:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1D5DCCD199
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Oct 2025 08:29:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RcFzyJeV0zMEFi7wKYEI1brywqqOunhBDmcwwumjMdA=; b=edeQ+qCqn4ZGhiz6OqF+BHz1LR
-	vEfbusdm+IlPrrFVFDrxdOkAelpoLw0Qt43QDbv+UGuF6Dd9GppysZTO0nHYUa6GW7ZN7uk1bbt/U
-	r7ej+UpIsCXuTPTo6/up0pJr/9ZUI3x48nzR0JyC07SwVpRvExvndO5pANPS8N4MQLQ9dg9gRS1kZ
-	R2LyztWxYRhCS9ue568qUMlCYlbmSniqNwCuFbLJ4l+Wxcj6fBoPU/UEhlqloAEn9NSkO44veMeF7
-	8BKDcEdGGpaNYsUYlEIjuXreDN61Xlqfu6+UJddZsQ4i8zGvAneAwR2DiuuyiTEPdSit8WfW+hkDE
-	In+GHkog==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IyYnPS0E3u9eX9SbDoNXGkJ9aXYTEME8wn7PzxfJ9vQ=; b=11DW/yf2sIqLozgJX4sW+Ov1as
+	gYz8Zs6DDY3fSqEx157mjF2ug9mv5YHFpJoy7vmlkhSxWbGF97+7kZW92i08ODfYMroSoSTjoX+ca
+	4mzQuUpwr0recVu7uZG/bDNgI147wVlfYuLeqsLuO8YmWbswrFgb5uSNsNPJdmtNDx28Gma8k9rkL
+	JXXlZkyisdRP/oiE+JBujsOla7b59w2NXSe7Ezj6760YtBopvjHft5dBXm42+1reGz6jqQSLWwmLI
+	4SjvGUS47uFl6uYjTEoCSpdv8SVUS7U6o3jXeCwqpONaIDyE8FwKxJ7nPX2sdaX5Nz6sb1OqunvaS
+	g9453zHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAl5S-0000000CKTg-0Ysg;
-	Mon, 20 Oct 2025 08:17:50 +0000
-Received: from mail-francesouthazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c207::3] helo=MRWPR03CU001.outbound.protection.outlook.com)
+	id 1vAlGG-0000000COuX-1j5j;
+	Mon, 20 Oct 2025 08:29:00 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAl5O-0000000CKQn-1pnQ;
-	Mon, 20 Oct 2025 08:17:48 +0000
-ARC-Seal: i=2; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=pass;
- b=Dn4885MYghd/JoIZUDHjQDZnUxl0REKJrYTkKmrmkgIlhdoPBRjqrhfB1s2C17iWBvzmy49PlF5BO//3cRd0nyW+NyCbmy6wni86uaNEe65KI6TjOgYhH2EZ6ooV7r8iX+zGTXVUU68KkxI37UlWbpf2QnC5/4lgq+bMeTlgXqIJOCeQ1Q29g2glwSDnhS7KrGGWSSUNqb1K6tEQwBVOKC81CZBYpnFEXoq89e3GM9vxEIfn2S8t0f2Xttfe4oWeCnT1C699Fg944RKVkPBxqyYPg5TlD8H0NRaZPe3St3dYoImsvwsy4pFwkqiiwRquSnjpmByPBfuNPP+YlQ0R9w==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=RcFzyJeV0zMEFi7wKYEI1brywqqOunhBDmcwwumjMdA=;
- b=F0sEC0LScvU+S7ATGGXuiyFS57+9ImvNYNQ1MGBsSuwbzrrsQWpzySRzxUr2nFIjcAm6sLeCcn+Oo9C7c3POzmWuS4fiXBL80MezmVnuhk2aFLEYFyXmSzs0b3AJOf7zp3LHtHaJcn6nc602m1S8pmn9kOzkDjMnylUUY63Mq0VkD6Q0kXP/NgBJTOQwMl4Mv+xn7bYMevaeYU2zzLisBs2MhyaJPlJs3PvcU66lyC4HvFeOlcXlea3Sg5ZaW4dhnznIBnWhm8S6bME6JleF0Tpv5pVXXCN6BzTT5P7THbjw+pRMipj9G7lfIP5QulVrFE8McGhU2BpldRbK7k70eA==
-ARC-Authentication-Results: i=2; mx.microsoft.com 1; spf=pass (sender ip is
- 4.158.2.129) smtp.rcpttodomain=collabora.com smtp.mailfrom=arm.com;
- dmarc=pass (p=none sp=none pct=100) action=none header.from=arm.com;
- dkim=pass (signature was verified) header.d=arm.com; arc=pass (0 oda=1 ltdi=1
- spf=[1,1,smtp.mailfrom=arm.com] dkim=[1,1,header.d=arm.com]
- dmarc=[1,1,header.from=arm.com])
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arm.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=RcFzyJeV0zMEFi7wKYEI1brywqqOunhBDmcwwumjMdA=;
- b=Y7X5Csmr+1N0239TxUudsCxVZjP3/4GdRHjzvTCGgi1ZmIKKowxcBfqK3TG4kHrmDDrKBgKIVBLCEdD080tWm9IkrorIRKEFE+at77jBX+ps1HBU9oZc9cxj/wjEHlvof1S0zSpeEAGYyhoZvotuSLaK9HwXR0NXS/juoiTThFE=
-Received: from DU7P195CA0013.EURP195.PROD.OUTLOOK.COM (2603:10a6:10:54d::8) by
- DU2PR08MB10016.eurprd08.prod.outlook.com (2603:10a6:10:49e::11) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9228.16; Mon, 20 Oct
- 2025 08:17:33 +0000
-Received: from DB5PEPF00014B90.eurprd02.prod.outlook.com
- (2603:10a6:10:54d:cafe::f9) by DU7P195CA0013.outlook.office365.com
- (2603:10a6:10:54d::8) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9228.16 via Frontend Transport; Mon,
- 20 Oct 2025 08:17:33 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 4.158.2.129)
- smtp.mailfrom=arm.com; dkim=pass (signature was verified)
- header.d=arm.com;dmarc=pass action=none header.from=arm.com;
-Received-SPF: Pass (protection.outlook.com: domain of arm.com designates
- 4.158.2.129 as permitted sender) receiver=protection.outlook.com;
- client-ip=4.158.2.129; helo=outbound-uk1.az.dlp.m.darktrace.com; pr=C
-Received: from outbound-uk1.az.dlp.m.darktrace.com (4.158.2.129) by
- DB5PEPF00014B90.mail.protection.outlook.com (10.167.8.228) with Microsoft
- SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9253.7
- via Frontend Transport; Mon, 20 Oct 2025 08:17:32 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=OPsTG48mLFsGReFjNajor0+KnWOWqii9/H7sHqVNWzr1X4vQc42fua0koHDsaCQ3J5J1lQPZtUYvb+rmTs4itIzuZeuepnB5xl8tHSgrxPqC2cu7/HYpZZHjKj1rRLtWlR3ZGRw7LqUNB3b5MY4Vx6PgzQOnQk+uuaA9CcMJI6mYWKG27fYpuTbtUVmu+OCjIW+hXsooIjn7t7K8Eqd2lLPscHsZ9jvA1ci1eU0HTUi7R+Ra8J56QK/l0fvczaIW2N4a8rCjIG6VINZCRaOClanKbb/kmHeHsvN3E+OxKyIE/QJhlBYOKaH9Jos1F6XtmYi/TcZIrp0JSZh4auGwYw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=RcFzyJeV0zMEFi7wKYEI1brywqqOunhBDmcwwumjMdA=;
- b=IxY43k8aakBCMwu0efAmURyMirf1IYP7Q+d86c1qrnkZ1tOYbUQuXm2Mc2H7ReMZI7dIVTxcHRCsnPfGzPMTQX5ynVvZISTpKSQGwFCfqutkCYqSn+2yEHhF0wR0oELIQxgKMuDJhRxs5REBypAsSMxRS3x+as7afHWLoDI1bbDm7nHfa7XLr27iN7GXbzHN66Oqx/CFYBks3rukteb6ZSs1DfU9hy9YU7Mxfi8EL6r4FO/IQaLXX1kiDOVOWvV0Ozp/br2jntvrDyiztymczi/K3tfXX4xedMPJhOrZzuVDvw7jvWHCiSo54PkgHDkQD7LDg0jeCE6Lu5w79kzJlQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=arm.com; dmarc=pass action=none header.from=arm.com; dkim=pass
- header.d=arm.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arm.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=RcFzyJeV0zMEFi7wKYEI1brywqqOunhBDmcwwumjMdA=;
- b=Y7X5Csmr+1N0239TxUudsCxVZjP3/4GdRHjzvTCGgi1ZmIKKowxcBfqK3TG4kHrmDDrKBgKIVBLCEdD080tWm9IkrorIRKEFE+at77jBX+ps1HBU9oZc9cxj/wjEHlvof1S0zSpeEAGYyhoZvotuSLaK9HwXR0NXS/juoiTThFE=
-Authentication-Results-Original: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=arm.com;
-Received: from VI0PR08MB11200.eurprd08.prod.outlook.com
- (2603:10a6:800:257::18) by AM9PR08MB5905.eurprd08.prod.outlook.com
- (2603:10a6:20b:282::18) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9228.16; Mon, 20 Oct
- 2025 08:16:59 +0000
-Received: from VI0PR08MB11200.eurprd08.prod.outlook.com
- ([fe80::d594:64a:dfc:db74]) by VI0PR08MB11200.eurprd08.prod.outlook.com
- ([fe80::d594:64a:dfc:db74%7]) with mapi id 15.20.9228.015; Mon, 20 Oct 2025
- 08:16:58 +0000
-Message-ID: <6ee4b717-6c7e-4114-9130-0b2daccb3d3a@arm.com>
-Date: Mon, 20 Oct 2025 09:16:55 +0100
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 3/5] drm/panthor: call into devfreq for current
- frequency
-Content-Language: en-GB
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- Jassi Brar <jassisinghbrar@gmail.com>, Chia-I Wu <olvaffe@gmail.com>,
- Chen-Yu Tsai <wenst@chromium.org>, Steven Price <steven.price@arm.com>,
- Liviu Dudau <liviu.dudau@arm.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Kees Cook <kees@kernel.org>,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- Ulf Hansson <ulf.hansson@linaro.org>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-hardening@vger.kernel.org, linux-pm@vger.kernel.org, nd@arm.com
-References: <20251017-mt8196-gpufreq-v8-0-98fc1cc566a1@collabora.com>
- <20251017-mt8196-gpufreq-v8-3-98fc1cc566a1@collabora.com>
-From: Karunika Choo <karunika.choo@arm.com>
-In-Reply-To: <20251017-mt8196-gpufreq-v8-3-98fc1cc566a1@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: LO4P123CA0282.GBRP123.PROD.OUTLOOK.COM
- (2603:10a6:600:195::17) To VI0PR08MB11200.eurprd08.prod.outlook.com
- (2603:10a6:800:257::18)
+	id 1vAlGE-0000000COsu-12F5;
+	Mon, 20 Oct 2025 08:28:59 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id B8EA241962;
+	Mon, 20 Oct 2025 08:28:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C3376C4CEF9;
+	Mon, 20 Oct 2025 08:28:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1760948937;
+	bh=25hfAnvscR1U4cXixXqpwGfnnw5o7TPh3bpW0tfuVu4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=hmmB7Yl2UA6kpshuw/7MLcZjnNzAfzMGBi6uif6jlmm0ocr8CYagEs2bf/Z2wbqC4
+	 0XSbSwGj33+uZ3c6Bn6gKlya7o8IkRPIPEhCvrdIqqhOt7fDeLTC0RhBJuU1oF6vB6
+	 6GWo0gODk3tpOSlXjE3bGp8N1MRBysvpPx2QXnRYYqmY54VfqlWwDCvp7TiYm44ZCD
+	 +mG57VfAlSuV9x1YfmpMaCLmlD3u+fwbDKrzOjEeclUTKmJPCqGN9OB90mQxcHC3vC
+	 gGeDLo80fdcfpbgzBr+QtQxXLw1OrHoArKUQCSLz/wo0vIaz7wkJOZrfKjzpAKqx8V
+	 aEAjNgCC3OZPg==
+Message-ID: <7f285723-ecd7-4df6-8c9b-f2e786ce3602@kernel.org>
+Date: Mon, 20 Oct 2025 10:28:52 +0200
 MIME-Version: 1.0
-X-MS-TrafficTypeDiagnostic: VI0PR08MB11200:EE_|AM9PR08MB5905:EE_|DB5PEPF00014B90:EE_|DU2PR08MB10016:EE_
-X-MS-Office365-Filtering-Correlation-Id: 386fc4a6-8940-42ff-85ce-08de0fb11e1f
-X-LD-Processed: f34e5979-57d9-4aaa-ad4d-b122a662184d,ExtAddr,ExtAddr
-x-checkrecipientrouted: true
-NoDisclaimer: true
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam-Untrusted: BCL:0;ARA:13230040|7416014|376014|1800799024|366016|921020|7053199007;
-X-Microsoft-Antispam-Message-Info-Original: =?utf-8?B?d2hlMU5RblA5amZQblJVRW5hdkt1WjZXMEZCc0lmaXJicmQycSsrN2ZIdk1W?=
- =?utf-8?B?TmtxdSt5azF6NUNLTlFwcUlhVGdoU0RHL0kwOVVId1BMS1BRcjhvV3pEZ2Nz?=
- =?utf-8?B?d2YxRmJaRkwwSHhPOUkwYmV6UHRvY1p3S2ZUd1Rka1VhT0xHTVpKL3ZYNnRa?=
- =?utf-8?B?T1B6cnFZSFY2Z0hRam9LWHVQRlNKZllXK2VtK09TQUxtVjdNOHhDeitrMTJB?=
- =?utf-8?B?WVFXQm1kcDROOWVoMGdQYkVoWDhIM2piYkxlWHkrcDN2VUlwQ1ByTjAyN2k3?=
- =?utf-8?B?YjNQQlAyUVlOTit0cVl2WGlUNWY1amtvL1gvcDZHanhGY1N5K0kxdmFCTU5F?=
- =?utf-8?B?aG1LeVdrTnBpT3U2N2tXOG9NK0VSS0pzV29uSU1RUzZmaUxhTU9yKzU3YlJJ?=
- =?utf-8?B?UGhMcmQyNXlwamZxVG9ydy9sbjZvZlNObnBrRXVpWWZUd1A3Yk1iRUVkWjVn?=
- =?utf-8?B?SGpRektrT0c5WjgydXBxcHkzdjhueVluNjVhdU42b045NkhuT1VPcTVIS3Ft?=
- =?utf-8?B?bWk5cC80a0JlbFJlc3R6elBuL3I5dkx2c3p1S2pnMUR5QmdMc0RzYm5CRjlG?=
- =?utf-8?B?cXA5Y1ZBQVZ6eHJaZkttV2lyMmUzL0pEQXozZ2N3aTRDbHNkeFpyZUZsV1ZR?=
- =?utf-8?B?d3pjejZGTmdNZTVKR2RwclI4dkR6TE1KaVVFbFlrYkpzaS8zQlJpTGRlbTVH?=
- =?utf-8?B?L1NjNytSc0pDb0RneUphTGhaclVnckd3aFkvRndxalJGKzhFQ3NPSTRSd3Vo?=
- =?utf-8?B?bDBHTm03U3p2ZVhzWHo0YmZMZGpwSHlTaDBQVGxmTm5FVk9ZNzM0TUhpRnpG?=
- =?utf-8?B?R3pIcWYzcjhDNS9GelIvRmNQblV1aS94UU1iUUpPQTF4eU9zNkNQMG9aaHJj?=
- =?utf-8?B?QTJJcDJ1QmV3YWhMYXBZVm1wTE9vMmNWYXpycHdxMmozZVdrbEJPbk1GcnNR?=
- =?utf-8?B?UTA5c1hxbURMQmllTTk1bjc0bVJrbXJJTU9NSUo2NXVXUmNyWHd3ckhQcDBL?=
- =?utf-8?B?WHJpL1IwTkZQdWh6QXViWm9BNVZja211MSsvay9WMm9IQVhJTXhiTjhhZG9Y?=
- =?utf-8?B?UmdoakxiMWpZY3ZvQkY5VTFLU05MRXppMkJNbTM2MTNudm10NmJjYWZwTEVo?=
- =?utf-8?B?enJRY2hGWDVnV1hvajFzVWZaZnB1QlN3MHhsbUdNbU9HaXpoY3V6RUxPc0x3?=
- =?utf-8?B?Q0k2QXRLR05HMzNkSDZHelpqTXc5eFlTd1Yzd2c5VHN3UlcxSFFja1ZydFQz?=
- =?utf-8?B?di83MkRDWVY2ZDhMSXhCLyt2NXR3cmdHQXV6K01lT1ZFTmFjc1FraWIvMlpw?=
- =?utf-8?B?SUtuL0NKeVUyOGF6SFozVFBoUkp0dHJ5SDFDYTFvU1lIOFFxM3kxbG1nZ3ZL?=
- =?utf-8?B?ZHhReDJIcm5KT3FidUJPbmtUbDNHSFVFcmlYTmRKbzlMbllyR1lPOE9PYVlZ?=
- =?utf-8?B?NjRwV2JxRjVPb3JlNHRLNmYxMlRxUUoyTE1pRTM2VTZMQjdRUExralpuWUVS?=
- =?utf-8?B?aWhXWFhxY25tN21CYnc0NG8rTG5UVFNIdUNYeFRjNDVBSU43MUxJWCtyYklC?=
- =?utf-8?B?V3I5VlBqbEhTd1ltYXcveUFQc0ZrQ0dsQ3AxSHhRUXNEWUNtcVpkaGlBK1FK?=
- =?utf-8?B?b2gvS1FwVlM3R0R4ZHJrTy85VC9RRENPd0tVVFJLYnhIYlR6RWpsQW4zVjdJ?=
- =?utf-8?B?YWpSWjBhT09TTHFNNXk2WUgrMHR5MzUxSURabmF6V0dDajllQ05McGN6bFQ5?=
- =?utf-8?B?eDlOcXI1VnZlTnNOMkJjcUprYTF5b1VOQnAvK1FURmJWaG5mNXpXRjBod2JY?=
- =?utf-8?B?UzB6NVR4RjRUc2greUMxSGxMb28yVHkvS2Q0Q2lVc3ptNWZBQ1NRbXI3eFZH?=
- =?utf-8?B?aWhlQit3UFE0azAzaHdjV3lhOGhHM2RMbGNzOWFGeS9LQ3g2NGtrcFpJOUVO?=
- =?utf-8?B?TTBlZjRYdUhaOVB5VEpJeThOdVpkTDRYNHdOOHE4RlNiYXVaU1lsbU5CVlJk?=
- =?utf-8?Q?1GHOSZLm+VeFU2mvMN9sZIlxcjPdjg=3D?=
-X-Forefront-Antispam-Report-Untrusted: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:VI0PR08MB11200.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(376014)(1800799024)(366016)(921020)(7053199007);DIR:OUT;SFP:1101;
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM9PR08MB5905
-X-EOPAttributedMessage: 0
-X-MS-Exchange-Transport-CrossTenantHeadersStripped: DB5PEPF00014B90.eurprd02.prod.outlook.com
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id-Prvs: cf66e658-096b-473a-0eb4-08de0fb1098f
-X-Microsoft-Antispam: BCL:0;ARA:13230040|36860700013|35042699022|1800799024|7416014|82310400026|376014|14060799003|921020|7053199007;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?a2FPcW4vNEZtckpTaXB0RUl3ck55ZFVhbDlaUFpJTlB5aUJ6c1d5MDEwTm04?=
- =?utf-8?B?c3lDMU1PMDBmckpxaERDek1NRWV1ZGdYaHJ1ZW90Zk8vdm1DYU9nOTZhNjE4?=
- =?utf-8?B?M0htbDc3dG1hYTVJZkpDZ3NzZkY4bGd0L3VsWWowTC9Edk9zZGp6bkNmOFgr?=
- =?utf-8?B?RG5UcUlYank1WEhIdGVITlV5YzFUL0tMNUN0cE5pSzhyMTlvVWpRVU5aYlRT?=
- =?utf-8?B?K1VObTdla3N2UGcwdnJYb3hWZk9tWUVUWnVldlZYcTBNZ24zcjlPcTVzNVJT?=
- =?utf-8?B?ZmV4aCt1WG5MOFhnSW9SMkg4c0sxTy83L3R6R3VyWFhZWDhrMk5UMWdHUWcv?=
- =?utf-8?B?SlNuaVB3VlZjdURyWTVhOVJXU2tRQnFhUzBiWmQwaEVRM3djSXZ2V2NtZE42?=
- =?utf-8?B?dlZJNDZHTG1qcGhINmJVdGtDb2MxREJtYis0TzhweXgrTzZWQjh2V3R0V3Bi?=
- =?utf-8?B?dndld3phYmRRL2lIdjNTdTl0QVNkMGdhZUhvQVBUWHRaRHFKaFN6TDBKL05S?=
- =?utf-8?B?bGlSVnIrc0VkU0VJOVhHR0E1Yk9Pejl4Lzk2amVXcWlrendNV080d1c4aUk5?=
- =?utf-8?B?U3NScUQ2K3d4L2ZhN1F1MVlrSGxzb05venpJUmNDQnJ6dUVoL29qN2dJeEZm?=
- =?utf-8?B?N1N2MTJ2UjBWbWxBeWNQTXZpYzNMVnBpNkR1OGxjdlpvU2N4enFDR1JUWGVB?=
- =?utf-8?B?ajVqUXY1Wi9xTEJRZDBZRjEza0NxMDVEN2V5UHNzVTMvV1lLd1pxY25BK29V?=
- =?utf-8?B?cy91a1JtYzJnUEtzbHZZLytBNUxRM0JZWGlVTWFXaDJxS05BV2NwcGlRdlQy?=
- =?utf-8?B?RGZxZ2RlTlRSZkVOSkNsdnhOejhrSVhKUnpTKzd6WUtJcy83L0tNclZPc1dY?=
- =?utf-8?B?dHprdkJKaWc5OVYwcysraUVwYUZaU0ljTkVyRytMb1UzZlFzNFZnK0w5bUY1?=
- =?utf-8?B?bHBzaTdJekJ4K0gvbXhwd2ZlQjhNcjc2aVI1NVlBR0N4TFpRanBWRGhka0RE?=
- =?utf-8?B?VUtrSGZRTTd6Yi9JeXpoYjdONTFrS05ITldWVlhSb0R3cG1UTWkwcXZLc2Ev?=
- =?utf-8?B?Q1huR1BtVzV1S3poYTVzWW5Cem1jbVdXZ0RDNW1YNCtLOVdIQUNITmxSdlVw?=
- =?utf-8?B?UVlDQ3pFeDlWemhTdnArYWdGVTUwSzJGaTFEMjRGR3ZhOGNsUTVKMi94KzY2?=
- =?utf-8?B?ZWtKbWpKOXVoVnNRSmEvV2tMUHBrclUwdjBPNnlMeGlSc3dnVU4xS1kwYmFy?=
- =?utf-8?B?a1UzKzV1L0QrNEdkN3JwajR1VkhKNkNYdU9IV2ptcjhFMlk1YmhyWUI5RWhX?=
- =?utf-8?B?QnY2NjA4eElCa2c1aENwcWZ1elNxbHpXWDdXcU5XODdKK3hkd0U4Tkh5amh1?=
- =?utf-8?B?ZVVSd3JQOXZ4RDlDbmY1Q20vVENXdkdGMExOZGVOWjRMaENtazJVY084ZU9o?=
- =?utf-8?B?dnJ6a2JSNU55Z0d6Y2N6MlBKa0IyUlRHcE0xMnhkZ0hidTRZbmwwVkFZSEtr?=
- =?utf-8?B?ZGxISlZ3WXZTbVJHMnlCQUF5b1MrV3k1UDBmdndjeVB0elNwMGcrZ2EzdGlj?=
- =?utf-8?B?MCtOTGdKczJwc3NJWU5mNmdGS0YwR2lIT0Mrbk9KV1NWTFZYTEplYW5PSVVG?=
- =?utf-8?B?MjdhUlZ4dEZyUkhPZVFqK3FhL3dlUFM3T2REclN3ZFFBOThZTlBXeXBUUXBy?=
- =?utf-8?B?aFFhWEsyczJFRXY2andhT1cya0FQOFd2YmR1QmxkT01raEw2WUR1b2JOdzlP?=
- =?utf-8?B?QTR0bG5FZXNyai90cWFNcnlNOWwxOXNNYllWY3JnNGJGWkxyN1VSbFJmOGpL?=
- =?utf-8?B?Z2tReThJcllqR2RFamxRTGhobG1qUTMyS2pydnk1ODJoMXBMUlZFcnNsbXhJ?=
- =?utf-8?B?M2hoaWxoMjdpOUQzeFp4MHJ4MFF3YTdLRUI2d0VlVGk3ejdzMmNxa1FuU0Uw?=
- =?utf-8?B?Z0tKaENnMGx5MTFtRkN0eGwvdHhnbVEwZisvcXlnWXlXL25zRkhDZnozR1Vj?=
- =?utf-8?B?TThEM21GR21mWDRoaHNibGlLNEFTVFdqb1ZlZkd1c1NOaXNhOFpxN282UVNZ?=
- =?utf-8?B?d2ZPMVlCWTRydDd6SFFRQTB2UzlOWXZidUc0RGtKQXlHSC9iYklOSnRpSVQ1?=
- =?utf-8?Q?n7c0bHQTiF7yrp7pn0tHNDHUU?=
-X-Forefront-Antispam-Report: CIP:4.158.2.129;CTRY:GB;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:outbound-uk1.az.dlp.m.darktrace.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(36860700013)(35042699022)(1800799024)(7416014)(82310400026)(376014)(14060799003)(921020)(7053199007);DIR:OUT;SFP:1101;
-X-OriginatorOrg: arm.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Oct 2025 08:17:32.1111
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 386fc4a6-8940-42ff-85ce-08de0fb11e1f
-X-MS-Exchange-CrossTenant-Id: f34e5979-57d9-4aaa-ad4d-b122a662184d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=f34e5979-57d9-4aaa-ad4d-b122a662184d;Ip=[4.158.2.129];Helo=[outbound-uk1.az.dlp.m.darktrace.com]
-X-MS-Exchange-CrossTenant-AuthSource: DB5PEPF00014B90.eurprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DU2PR08MB10016
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 3/4] dt-bindings: ufs: mediatek,ufs: add MT8195
+ compatible and update clock nodes
+To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
+ "chu.stanley@gmail.com" <chu.stanley@gmail.com>,
+ "James.Bottomley@HansenPartnership.com"
+ <James.Bottomley@HansenPartnership.com>, "robh@kernel.org"
+ <robh@kernel.org>, "bvanassche@acm.org" <bvanassche@acm.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ =?UTF-8?B?TWFjcGF1bCBMaW4gKOael+aZuuaWjCk=?= <Macpaul.Lin@mediatek.com>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "avri.altman@wdc.com" <avri.altman@wdc.com>,
+ "martin.petersen@oracle.com" <martin.petersen@oracle.com>
+Cc: "macpaul@gmail.com" <macpaul@gmail.com>,
+ =?UTF-8?B?UGFibG8gU3VuICjlravmr5Pnv5Qp?= <pablo.sun@mediatek.com>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ =?UTF-8?B?QmVhciBXYW5nICjokKnljp/mg5/lvrcp?= <bear.wang@mediatek.com>,
+ =?UTF-8?B?UmFtYXggTG8gKOe+heaYjumBoCk=?= <Ramax.Lo@mediatek.com>
+References: <20250722085721.2062657-1-macpaul.lin@mediatek.com>
+ <20250722085721.2062657-3-macpaul.lin@mediatek.com>
+ <b90956e8-adf9-4411-b6f9-9212fcd14b59@collabora.com>
+ <438077d191833bb4f628b2c6da3b86b3ecfb40e6.camel@mediatek.com>
+ <cb173df9-4c70-4619-b36d-8e99272551b6@kernel.org>
+ <a9bf15e48afd8496ca9b015e7f5b03821863a0b2.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <a9bf15e48afd8496ca9b015e7f5b03821863a0b2.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251020_011746_622726_20F682C2 
-X-CRM114-Status: GOOD (  11.63  )
+X-CRM114-CacheID: sfid-20251020_012858_348498_5B3C25CF 
+X-CRM114-Status: GOOD (  19.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -235,145 +143,116 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17/10/2025 16:31, Nicolas Frattaroli wrote:
-> As it stands, panthor keeps a cached current frequency value for when it
-> wants to retrieve it. This doesn't work well for when things might
-> switch frequency without panthor's knowledge.
+On 20/10/2025 10:13, Peter Wang (王信友) wrote:
+> On Sun, 2025-10-19 at 12:19 +0200, Krzysztof Kozlowski wrote:
+>>
+>> You did.
+>>
+>> You wrote very clearly here:
+>> https://lore.kernel.org/all/eb47587159484abca8e6d65dddcf0844822ce99f.camel@mediatek.com/
+>>
+>> "In addition, it will require MediaTek to put in extra
+>> effort to migrate the kernel. "
+>>
 > 
-> Instead, implement the get_cur_freq operation, and expose it through a
-> helper function to the rest of panthor.
+> Hi Krzysztof Kozlowski,
 > 
-> Reviewed-by: Chia-I Wu <olvaffe@gmail.com>
-> Reviewed-by: Steven Price <steven.price@arm.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> ---
->  drivers/gpu/drm/panthor/panthor_devfreq.c | 30 ++++++++++++++++++++++++++----
->  drivers/gpu/drm/panthor/panthor_devfreq.h |  2 ++
->  drivers/gpu/drm/panthor/panthor_device.h  |  3 ---
->  drivers/gpu/drm/panthor/panthor_drv.c     |  4 +++-
->  4 files changed, 31 insertions(+), 8 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/panthor/panthor_devfreq.c b/drivers/gpu/drm/panthor/panthor_devfreq.c
-> index 2df1d76d84a0..a6dca599f0a5 100644
-> --- a/drivers/gpu/drm/panthor/panthor_devfreq.c
-> +++ b/drivers/gpu/drm/panthor/panthor_devfreq.c
-> @@ -62,7 +62,6 @@ static void panthor_devfreq_update_utilization(struct panthor_devfreq *pdevfreq)
->  static int panthor_devfreq_target(struct device *dev, unsigned long *freq,
->  				  u32 flags)
->  {
-> -	struct panthor_device *ptdev = dev_get_drvdata(dev);
->  	struct dev_pm_opp *opp;
->  	int err;
->  
-> @@ -72,8 +71,6 @@ static int panthor_devfreq_target(struct device *dev, unsigned long *freq,
->  	dev_pm_opp_put(opp);
->  
->  	err = dev_pm_opp_set_rate(dev, *freq);
-> -	if (!err)
-> -		ptdev->current_frequency = *freq;
->  
->  	return err;
->  }
-> @@ -115,11 +112,21 @@ static int panthor_devfreq_get_dev_status(struct device *dev,
->  	return 0;
->  }
->  
-> +static int panthor_devfreq_get_cur_freq(struct device *dev, unsigned long *freq)
-> +{
-> +	struct panthor_device *ptdev = dev_get_drvdata(dev);
-> +
-> +	*freq = clk_get_rate(ptdev->clks.core);
-> +
-> +	return 0;
-> +}
-> +
->  static struct devfreq_dev_profile panthor_devfreq_profile = {
->  	.timer = DEVFREQ_TIMER_DELAYED,
->  	.polling_ms = 50, /* ~3 frames */
->  	.target = panthor_devfreq_target,
->  	.get_dev_status = panthor_devfreq_get_dev_status,
-> +	.get_cur_freq = panthor_devfreq_get_cur_freq,
->  };
->  
->  int panthor_devfreq_init(struct panthor_device *ptdev)
-> @@ -197,7 +204,6 @@ int panthor_devfreq_init(struct panthor_device *ptdev)
->  		return PTR_ERR(opp);
->  
->  	panthor_devfreq_profile.initial_freq = cur_freq;
-> -	ptdev->current_frequency = cur_freq;
->  
->  	/*
->  	 * Set the recommend OPP this will enable and configure the regulator
-> @@ -295,3 +301,19 @@ void panthor_devfreq_record_idle(struct panthor_device *ptdev)
->  
->  	spin_unlock_irqrestore(&pdevfreq->lock, irqflags);
->  }
-> +
-> +unsigned long panthor_devfreq_get_freq(struct panthor_device *ptdev)
-> +{
-> +	struct panthor_devfreq *pdevfreq = ptdev->devfreq;
-> +	unsigned long freq = 0;
-> +	int ret;
-> +
-> +	if (!pdevfreq->devfreq)
-> +		return 0;
-> +
-> +	ret = pdevfreq->devfreq->profile->get_cur_freq(ptdev->base.dev, &freq);
-> +	if (ret)
-> +		return 0;
-> +
-> +	return freq;
-> +}
-> diff --git a/drivers/gpu/drm/panthor/panthor_devfreq.h b/drivers/gpu/drm/panthor/panthor_devfreq.h
-> index b7631de695f7..f8e29e02f66c 100644
-> --- a/drivers/gpu/drm/panthor/panthor_devfreq.h
-> +++ b/drivers/gpu/drm/panthor/panthor_devfreq.h
-> @@ -18,4 +18,6 @@ void panthor_devfreq_suspend(struct panthor_device *ptdev);
->  void panthor_devfreq_record_busy(struct panthor_device *ptdev);
->  void panthor_devfreq_record_idle(struct panthor_device *ptdev);
->  
-> +unsigned long panthor_devfreq_get_freq(struct panthor_device *ptdev);
-> +
->  #endif /* __PANTHOR_DEVFREQ_H__ */
-> diff --git a/drivers/gpu/drm/panthor/panthor_device.h b/drivers/gpu/drm/panthor/panthor_device.h
-> index 9f0649ecfc4f..f32c1868bf6d 100644
-> --- a/drivers/gpu/drm/panthor/panthor_device.h
-> +++ b/drivers/gpu/drm/panthor/panthor_device.h
-> @@ -214,9 +214,6 @@ struct panthor_device {
->  	/** @profile_mask: User-set profiling flags for job accounting. */
->  	u32 profile_mask;
->  
-> -	/** @current_frequency: Device clock frequency at present. Set by DVFS*/
-> -	unsigned long current_frequency;
-> -
->  	/** @fast_rate: Maximum device clock frequency. Set by DVFS */
->  	unsigned long fast_rate;
->  
-> diff --git a/drivers/gpu/drm/panthor/panthor_drv.c b/drivers/gpu/drm/panthor/panthor_drv.c
-> index fb4b293f17f0..75898d83a207 100644
-> --- a/drivers/gpu/drm/panthor/panthor_drv.c
-> +++ b/drivers/gpu/drm/panthor/panthor_drv.c
-> @@ -25,6 +25,7 @@
->  #include <drm/gpu_scheduler.h>
->  #include <drm/panthor_drm.h>
->  
-> +#include "panthor_devfreq.h"
->  #include "panthor_device.h"
->  #include "panthor_fw.h"
->  #include "panthor_gem.h"
-> @@ -1519,7 +1520,8 @@ static void panthor_gpu_show_fdinfo(struct panthor_device *ptdev,
->  		drm_printf(p, "drm-cycles-panthor:\t%llu\n", pfile->stats.cycles);
->  
->  	drm_printf(p, "drm-maxfreq-panthor:\t%lu Hz\n", ptdev->fast_rate);
-> -	drm_printf(p, "drm-curfreq-panthor:\t%lu Hz\n", ptdev->current_frequency);
-> +	drm_printf(p, "drm-curfreq-panthor:\t%lu Hz\n",
-> +		   panthor_devfreq_get_freq(ptdev));
->  }
->  
->  static void panthor_show_internal_memory_stats(struct drm_printer *p, struct drm_file *file)
-> 
+> The main reason for my objection was also clearly stated:
+> "removing these DTS settings will make what was originally
+> a simple task more complicated."
+> I’m not sure if you are quoting only the "In addition"
+> part to take it out of context?
 
-Reviewed-by: Karunika Choo <karunika.choo@arm.com>
+It is not out of context. It was the statement on its own.
 
+> 
+> 
+> 
+>>
+>> Also you wrote:
+>> "The role of MediaTek UFS maintainer is not suitable to be handed
+>> over
+>> to someone outside of MediaTek."
+>>
+>> https://lore.kernel.org/all/ce0f9785f8f488010cd81adbbdb5ac07742fc988.camel@mediatek.com/
+>>
+>> Holy molly, you really wrote this!
+>>
+> 
+> "The role of MediaTek UFS maintainer is not suitable to be handed
+> over to someone outside of MediaTek."
+> My main point is that MediaTek’s internal personnel certainly 
+> have a better understanding of the SoC architecture than external
+> parties.
+> Wouldn’t it be more appropriate for maintainers to be internal staff?
+
+
+You denied community to participate and now you twist the argument like
+you want Mediatek people to be involved. No one denied Mediatek to be
+maintainer.
+
+It is you who denied community to join the maintainers.
+
+This is not acceptable and you still do not understand why.
+
+> 
+> 
+> 
+>> That's completely unacceptable. You don't understand how upstream
+>> development works and you push your downstream narrative which for us
+>> does not matter. You also object community led efforts, because you
+>> apparently want to control the upstream process.
+>>
+> 
+> I don’t see how this relates to upstream/downstream?
+> Aren’t you reading too much into this? My objection is purely
+> because I don’t want to complicate a simple matter, not 
+> because I object to community-led efforts.
+> Please don’t misunderstand my intention.
+
+
+You could apologize and explain your mistakes, but instead you push same
+narrative.
+
+Still a red flag. I will not accept such vendor-like behaviors, because
+they significantly harm the community.
+
+I am very surprised that UFS maintainers did not object to it. This
+should be clearly ostracized.
+
+
+> 
+> 
+> 
+>> That is red flag.
+>>
+>> I think you should step down from maintainer position and find more
+>> suitable person, who is willing to work with the community, or
+>> rethink
+>> how upstream process works and understand that your downstream goals
+>> do
+>> not matter completely.
+>>
+>> I will be watching closely this and if situation does not improve, I
+>> believe we should mark the driver orphaned until we find maintainer
+>> caring about community, not about corporate goals.
+>>
+>> Best regards,
+>> Krzysztof
+> 
+> 
+> Mediatek will add a few more maintainers internally,
+
+
+Consider stepping down and choosing them if they better understand how
+upstream works.
+
+As Rob wrote earlier:
+
+"Sounds like we need a new maintainer then. They clearly don't
+understand that downstream doesn't exist."
+
+
+Best regards,
+Krzysztof
 
