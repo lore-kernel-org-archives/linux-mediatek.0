@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43991CCD193
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88476CCD1A7
 	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Oct 2025 07:42:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,29 +12,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9nBL17jK2N+4hwWPKN9KSwUEg2oVH8ATLxNZjHBvCw4=; b=dWyvOozvaZpZFCuP0Q2w6zdy3t
-	s6XYytN5NTFgOV51UDLE421zfKHwui4hIprV5Jqn1aO2v59gbp33lafb4wFKmUZXq6sDAX3xJcuQW
-	Blzn6lxdl32HsevDIajSdv7+Sqpo+mEN02K5fwMNtoNv9MMcRIYQ/h8gb4JcyS9vTesO+2KtaR9Y2
-	eF20j/a33ofKXW6Pj77Xjz9O7GWa2xY85iyLrNROJjrInwpr+oBn6MIcsoegde5DljdJSucpvahTA
-	ZtgRJfF5yKPeMc637e4Qz9ox9MvF5K1+TbLWFIPUTn2S96YXC6WY+WvsxaADaCm8c5hdfKebuBoEI
-	rSi2hsnw==;
+	bh=BRqSf4xFwqerRQJeKpftbFM7hfFFt/HgC1uk2U1hefo=; b=4jG/0/K/ie8L6dqcsEKlEgExKQ
+	W7PURsSjxMFqo+xpOSrFFyBcuc0DbU8tf8BldRX8BKeG7lUEPvt5uSAP/ITUJU+SmspU/AvICVUdc
+	fU9v6dcifMamPrZKiUGtlv33lh4LGd3XoSTR4sRlPKrCjekgLXeilUab9fZq1Kj2bFGnx/ja0lwnG
+	8k1XPBNMEfW81ExmmdjbpGsHrlNq0zG5+C1ujqq4SOneqCz9xmVxG4hmTL5pDpCW1Nwvv1h50sgHv
+	0ma91Q9DqI9klC8olukLCLXpDjb3/Hu9Fhdz4uARmza+Otq55DTJXj+qP79BwH1u1yqmZNOFeMDTz
+	Mj5SKp9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAkXZ-0000000CEN7-0zxQ;
+	id 1vAkXZ-0000000CENX-287P;
 	Mon, 20 Oct 2025 07:42:49 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAkXK-0000000CE3x-3dIS;
+	id 1vAkXL-0000000CE7N-2FEw;
 	Mon, 20 Oct 2025 07:42:36 +0000
-X-UUID: 5595af38ad8811f09f706fa2197c6ceb-20251020
+X-UUID: 550a23e6ad8811f09f706fa2197c6ceb-20251020
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=9nBL17jK2N+4hwWPKN9KSwUEg2oVH8ATLxNZjHBvCw4=;
-	b=bmq3nehEQzpnA+gMpihnQmIMfp1haEvGzPeIUCEYsVLAmM06G6zFGWllep4lJsB/xiZF+A1KegZX6UsAHF32tITfEeWCaAvapJrhEhgtHtCFfKv6+5UxEwCupComzT3MgEpLuGdZeMHhSz+WIQoTxPm3l5M40UjzPZptWRGenF0=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=BRqSf4xFwqerRQJeKpftbFM7hfFFt/HgC1uk2U1hefo=;
+	b=YfHAk+SGcvrVGD/0WZFtzNMJ33IAaCw0kW8MqB7dSd5oaftSjyroQmLuOFD1KOujr8yZ8fpPHD0mOZc5L6rACYJu7lLjvRLsUzTDl7IhsN6cxlH+Zk+pkrD4FL8c6Gz0lxiQTmXeaX7ZNl70+c1C2PDKrRkyXuETAmKg7S/LH5Y=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:eff2e5f8-cd70-4fd1-84ec-ffadbf73c3b2,IP:0,UR
+X-CID-O-INFO: VERSION:1.3.6,REQID:dda471c3-b3b7-4287-b81c-8a197acac2fa,IP:0,UR
 	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
 	elease,TS:0
-X-CID-META: VersionHash:a9d874c,CLOUDID:8a9c3e51-c509-4cf3-8dc0-fcdaad49a6d3,B
+X-CID-META: VersionHash:a9d874c,CLOUDID:899c3e51-c509-4cf3-8dc0-fcdaad49a6d3,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
 	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,
 	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -42,18 +42,18 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 5595af38ad8811f09f706fa2197c6ceb-20251020
+X-UUID: 550a23e6ad8811f09f706fa2197c6ceb-20251020
 Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
 	(envelope-from <xiandong.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 427103152; Mon, 20 Oct 2025 00:42:31 -0700
+	with ESMTP id 105008469; Mon, 20 Oct 2025 00:42:30 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26; Mon, 20 Oct 2025 15:42:24 +0800
+ 15.2.1748.26; Mon, 20 Oct 2025 15:42:22 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.26 via Frontend Transport; Mon, 20 Oct 2025 15:42:24 +0800
+ 15.2.1748.26 via Frontend Transport; Mon, 20 Oct 2025 15:42:22 +0800
 From: Xiandong Wang <xiandong.wang@mediatek.com>
 To: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
@@ -65,9 +65,9 @@ CC: <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<sirius.wang@mediatek.com>, <vince-wl.liu@mediatek.com>,
 	<jh.hsu@mediatek.com>, <Project_Global_Chrome_Upstream_Group@mediatek.com>,
 	Xiandong Wang <xiandong.wang@mediatek.com>
-Subject: [PATCH v1 08/13] dt-bindings: soc: mediatek: add rdma yaml for MT8189
-Date: Mon, 20 Oct 2025 15:40:21 +0800
-Message-ID: <20251020074211.8942-9-xiandong.wang@mediatek.com>
+Subject: [PATCH v1 07/13] dt-bindings: soc: mediatek: add ovl yaml for MT8189
+Date: Mon, 20 Oct 2025 15:40:20 +0800
+Message-ID: <20251020074211.8942-8-xiandong.wang@mediatek.com>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20251020074211.8942-1-xiandong.wang@mediatek.com>
 References: <20251020074211.8942-1-xiandong.wang@mediatek.com>
@@ -75,8 +75,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251020_004234_932188_7D86860F 
-X-CRM114-Status: UNSURE (   8.76  )
+X-CRM114-CacheID: sfid-20251020_004235_594605_A0B18185 
+X-CRM114-Status: UNSURE (   9.05  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,25 +92,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add compatible string to support rdma for MT8189.
+Add compatible string to support ovl for MT8189.
 
 Signed-off-by: Xiandong Wang <xiandong.wang@mediatek.com>
 ---
- .../devicetree/bindings/display/mediatek/mediatek,rdma.yaml      | 1 +
- 1 file changed, 1 insertion(+)
+ .../devicetree/bindings/display/mediatek/mediatek,ovl.yaml      | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
-index 878f676b581f..4d29a1385104 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
-@@ -44,6 +44,7 @@ properties:
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
+index 4f110635afb6..578e90d0e3b9 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
+@@ -25,6 +25,7 @@ properties:
+           - mediatek,mt2701-disp-ovl
+           - mediatek,mt8173-disp-ovl
+           - mediatek,mt8183-disp-ovl
++          - mediatek,mt8189-disp-ovl
+           - mediatek,mt8192-disp-ovl
+           - mediatek,mt8195-disp-ovl
+           - mediatek,mt8195-mdp3-ovl
+@@ -44,6 +45,7 @@ properties:
+           - const: mediatek,mt8192-disp-ovl
        - items:
-           - enum:
-               - mediatek,mt8186-disp-rdma
-+              - mediatek,mt8189-disp-rdma
-               - mediatek,mt8192-disp-rdma
-               - mediatek,mt8365-disp-rdma
-           - const: mediatek,mt8183-disp-rdma
+           - const: mediatek,mt8188-disp-ovl
++          - const: mediatek,mt8189-disp-ovl
+           - const: mediatek,mt8195-disp-ovl
+       - items:
+           - const: mediatek,mt8188-mdp3-ovl
 -- 
 2.46.0
 
