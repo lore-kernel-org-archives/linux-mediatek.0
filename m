@@ -4,72 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15347CCD19F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Oct 2025 17:04:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1454FCCD199
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Oct 2025 17:05:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=yZFI6bgH2OjVdPOzpRdpkHCD+IiO8b/2BHEuZv8OFik=; b=eveVKkezOQkZvH+7S+wKN4rNdm
-	kO9kBb82GqhQBqmeZyfqKq86LEFQFRXbxl6bdekmwzpZq5l2GeGmPGN38SJrRGR3QGBtVGARF7yK8
-	E8zO+W9jcLiZLiEah6lAgzr0IweRv/5Up4O5IuCiCfNsaLU8jxJwO5FXoN12QzQJOB8cj6N4jSm1M
-	57CkWbB2Fx98fDgQMPRHFrodJjEEdgG9Ynom7KjGNWur9tbk+9Pjx/iKKKnzRfjiN4PbTQH03PsXl
-	FFKD2fQr3GGo9Rtn9lhUiSsutxZ3DJoo5AeXK3gF+S6LzCNrY7eJSw/gX3Ad0pEpAqbCUaTeq0pxn
-	AjBNr6JA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Tl1HwVQ6bVLZapBHPgA/1M6RjCK4Q7J5tRgWObxFJAk=; b=3abxa5GpQufYzf84TWI/AfQ0fS
+	ZHFN8dzTcugOqk3n7nf0aNP0kBfn1IHKYK99icdriCqo9rBV1xVYtCfim2EN9NkJOlExNzt7IJEcU
+	jjOgX7U7bH2dUHen6MbnN3NFHp/x3a7B6De+R+sRPWjXfHbHlc7xlynPFzLmIcEYYb1NlKd8nU3PI
+	d/10m1xQszZfiFwhBpaJSJeQ4ymVtTRlw2Yh01WtdWek/PM+NErFjbeKAQsv90qObFQfX049yxQjO
+	lxkzEVxiuO2erzhAkLu0UEI/xVVXoLklrGdJHqA6zonUiSQgsA/OvVH0fIqrTk6PTUpEmfpOsf0KX
+	NGgaYK/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAtJS-0000000EPaH-3Nq7;
-	Mon, 20 Oct 2025 17:04:50 +0000
-Received: from smtp21.cstnet.cn ([159.226.251.21] helo=cstnet.cn)
+	id 1vAtKW-0000000EPtE-0GOv;
+	Mon, 20 Oct 2025 17:05:56 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAtJP-0000000EPY4-2SgY;
-	Mon, 20 Oct 2025 17:04:49 +0000
-Received: from DESKTOP-L0HPE2S (unknown [114.245.38.183])
-	by APP-01 (Coremail) with SMTP id qwCowAAnfqCsa_ZoP4ErEg--.24677S2;
-	Tue, 21 Oct 2025 01:04:44 +0800 (CST)
-From: Haotian Zhang <vulab@iscas.ac.cn>
-To: broonie@kernel.org
-Cc: lgirdwood@gmail.com,
-	perex@perex.cz,
-	tiwai@suse.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-sound@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Haotian Zhang <vulab@iscas.ac.cn>
-Subject: [PATCH] ASoC: mediatek: Fix double pm_runtime_disable in remove functions
-Date: Tue, 21 Oct 2025 01:04:40 +0800
-Message-ID: <20251020170440.585-1-vulab@iscas.ac.cn>
-X-Mailer: git-send-email 2.50.1.windows.1
+	id 1vAtKT-0000000EPrf-1wil;
+	Mon, 20 Oct 2025 17:05:54 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.98.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1vAtKD-000000005HU-0nRf;
+	Mon, 20 Oct 2025 17:05:37 +0000
+Date: Mon, 20 Oct 2025 18:05:33 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Sjoerd Simons <sjoerd@collabora.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Lee Jones <lee@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+	kernel@collabora.com, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org,
+	linux-phy@lists.infradead.org, netdev@vger.kernel.org,
+	Bryan Hinton <bryan@bryanhinton.com>
+Subject: Re: [PATCH 02/15] arm64: dts: mediatek: mt7981b-openwrt-one:
+ Configure UART0 pinmux
+Message-ID: <aPZr3WMybjTWnn9E@makrotopia.org>
+References: <20251016-openwrt-one-network-v1-0-de259719b6f2@collabora.com>
+ <20251016-openwrt-one-network-v1-2-de259719b6f2@collabora.com>
+ <aPDnT4tuSzNDzyAE@makrotopia.org>
+ <5f430ff9-d701-426a-bf93-5290e6912eb4@collabora.com>
+ <aPEfUBl6fMe6QYdY@makrotopia.org>
+ <82594ce7-f093-4753-b808-cd234845aed8@collabora.com>
+ <aPYq4cnaAHu5ags5@makrotopia.org>
+ <8453efd3-630e-4f2c-950d-88a73927cc54@collabora.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: qwCowAAnfqCsa_ZoP4ErEg--.24677S2
-X-Coremail-Antispam: 1UD129KBjvJXoWxJrW8ZF4UAF4UGFWktry7ZFb_yoW8ZFy3pw
-	nYga93t3yaqr1UAanrAw10qa4a9ryfCF43Gryq9347Z343Xr1IvF4qy34jvFWkKFykKanx
-	GFyUtFy7Gr4FqFUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUU9014x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
-	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
-	1l84ACjcxK6xIIjxv20xvE14v26r1j6r1xM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4j
-	6F4UM28EF7xvwVC2z280aVAFwI0_Jr0_Gr1l84ACjcxK6I8E87Iv6xkF7I0E14v26r4j6r
-	4UJwAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0
-	I7IYx2IY67AKxVWUJVWUGwAv7VC2z280aVAFwI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r1j6r
-	4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwACI402YVCY1x02628v
-	n2kIc2xKxwCY1x0262kKe7AKxVWUtVW8ZwCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7x
-	kEbVWUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E
-	67AF67kF1VAFwI0_Jw0_GFylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVWUJVWUCw
-	CI42IY6xIIjxv20xvEc7CjxVAFwI0_Gr0_Cr1lIxAIcVCF04k26cxKx2IYs7xG6r1j6r1x
-	MIIF0xvEx4A2jsIE14v26r1j6r4UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Gr0_Gr1UYxBIda
-	VFxhVjvjDU0xZFpf9x0JUd-B_UUUUU=
-X-Originating-IP: [114.245.38.183]
-X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiCRABA2j2T10bSgABsH
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <8453efd3-630e-4f2c-950d-88a73927cc54@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251020_100448_004164_FCF2BC34 
-X-CRM114-Status: UNSURE (   9.09  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251020_100553_649546_D1A1A0CE 
+X-CRM114-Status: GOOD (  69.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,47 +90,187 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Both mt8195-afe-pcm and mt8365-afe-pcm drivers use devm_pm_runtime_enable()
-in probe function, which automatically calls pm_runtime_disable() on device
-removal via devres mechanism. However, the remove callbacks explicitly call
-pm_runtime_disable() again, resulting in double pm_runtime_disable() calls.
+On Mon, Oct 20, 2025 at 04:02:58PM +0200, AngeloGioacchino Del Regno wrote:
+> Il 20/10/25 14:28, Daniel Golle ha scritto:
+> > On Mon, Oct 20, 2025 at 12:23:14PM +0200, AngeloGioacchino Del Regno wrote:
+> > > Il 16/10/25 18:37, Daniel Golle ha scritto:
+> > > > On Thu, Oct 16, 2025 at 04:29:14PM +0200, AngeloGioacchino Del Regno wrote:
+> > > > > Il 16/10/25 14:38, Daniel Golle ha scritto:
+> > > > > > On Thu, Oct 16, 2025 at 12:08:38PM +0200, Sjoerd Simons wrote:
+> > > > > > > Add explicit pinctrl configuration for UART0 on the OpenWrt One board,
+> > > > > > > 
+> > > > > > > Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
+> > > > > > > ---
+> > > > > > >     arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts | 11 +++++++++++
+> > > > > > >     1 file changed, 11 insertions(+)
+> > > > > > > 
+> > > > > > > diff --git a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
+> > > > > > > index 968b91f55bb27..f836059d7f475 100644
+> > > > > > > --- a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
+> > > > > > > +++ b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
+> > > > > > > @@ -22,6 +22,17 @@ memory@40000000 {
+> > > > > > >     	};
+> > > > > > >     };
+> > > > > > > +&pio {
+> > > > > > > +	uart0_pins: uart0-pins {
+> > > > > > > +		mux {
+> > > > > > > +			function = "uart";
+> > > > > > > +			groups = "uart0";
+> > > > > > > +		};
+> > > > > > > +	};
+> > > > > > > +};
+> > > > > > > +
+> > > > > > >     &uart0 {
+> > > > > > > +	pinctrl-names = "default";
+> > > > > > > +	pinctrl-0 = <&uart0_pins>;
+> > > > > > >     	status = "okay";
+> > > > > > >     };
+> > > > > > 
+> > > > > > As there is only a single possible pinctrl configuration for uart0,
+> > > > > > both the pinmux definition as well as the pinctrl properties should go
+> > > > > > into mt7981b.dtsi rather than in the board's dts.
+> > > > > 
+> > > > > If there's really one single possible pin configuration for the UART0 pins,
+> > > > > as in, those pins *do not* have a GPIO mode, then yes I agree.
+> > > > > 
+> > > > > If those pins can be as well configured as GPIOs, this goes to board DTS.
+> > > > 
+> > > > I respectfully disagree and will explain below.
+> > > > 
+> > > 
+> > > Thanks a lot for taking the time to write all this - explains everything,
+> > > and even too much :) :)
+> > > 
+> > > Though, there's something funny here! The following snippet of "main" text
+> > > does explain stuff that is interesting, but that I (not other people, so
+> > > thanks again for saying all this) know already, but.....
+> > > 
+> > > > All pinmux pins on the MediaTek platform also allow being configured as
+> > > > GPIOs. However, if you configure those as GPIOs the consequence is that
+> > > > you cannot use UART0 any more at all. So using UART0 at all always
+> > > > implies using exactly those pins, there is no alternative to that.
+> > > > 
+> > > > Hence every board with every possible uses of pins 32 and 33 (there is
+> > > > only RX and TX for UART0, RTS/CTS flow-control is not possible) can be
+> > > > represented without needing to configure the pinctrl for uart0 on the
+> > > > board level. There isn't going to be any variation on the board-level
+> > > > when it comes to uart0. Either it is enabled (status = "okay";), and
+> > > > that will always imply using the 'uart0' group in mode 'uart', or, in
+> > > > case any of the two pins of uart0 is used for something else that means
+> > > > uart0 cannot be enabled. Simple as that.
+> > > > 
+> > > > Hence there is no need to duplicate that pinctrl settings on each and
+> > > > every board, as controlling the 'status' property on the board-level
+> > > > already gives 100% freedom.
+> > > > 
+> > > 
+> > > ...all of this is not justifying your point.
+> > 
+> > So what is the rule then? I understand the logic of describing the
+> > pins eg. for uart1 only on board-level as there are actual alternatives
+> > regarding the pins to be used, and if also including RTS/CTS pins.
+> > Hence, for uart1, there are several possible pingroups which can be
+> > used. What would be the argument to keep a pinctrl description for
+> > which the SoC doesn't offer any alternatives to be on the board-level?
+> > There is nothing to be decided by the board, literally 0 freedom.
+> > 
+> 
+> As you described - the BootROM is using those two pins as UART0.
+> 
+> Should you want those pins to be used as GPIOs, you'd at least get HW glitches in
+> early boot phases, or you'd render emergency download mode unusable - which is not
+> a good idea, not practical, and also, well, almost a stupid thing to do from the
+> hardware perspective.
 
-Fix by removing the redundant pm_runtime_disable() calls from remove
-functions, letting the devres framework handle it automatically.
+No, that's not a problem. During reset the pinctrl/gpio controller is always
+reset to the default and no matter how the pins were used in Linux before the
+reset. Hence debug output and also emrgency download mode always works.
+The only disadvantage of use the pins differently is that the bootrom output
+on one of them cannot be prevented -- but in case that's not a problem (eg.
+because the pin is later used as an input rather than output) it can totally
+be done, though it would be stupid as it would render the debug UART unusable.
+Yet, I'd consider it a possible choice of a board designer.
 
-Fixes: 2ca0ec01d49c ("ASoC: mediatek: mt8195-afe-pcm: Simplify runtime PM during probe")
-Fixes: e1991d102bc2 ("ASoC: mediatek: mt8365: Add the AFE driver support")
-Signed-off-by: Haotian Zhang <vulab@iscas.ac.cn>
----
- sound/soc/mediatek/mt8195/mt8195-afe-pcm.c | 1 -
- sound/soc/mediatek/mt8365/mt8365-afe-pcm.c | 1 -
- 2 files changed, 2 deletions(-)
+> 
+> This means that it is very, very, very unlikely (to the point that it's practically
+> impossible) that those pins can ever be used for anything else that is not *the*
+> one of the two functions that are supported for them (which is UART0 in this case).
+> 
+> In this case, adding the pins at the board level would only create unnecessary
+> duplication and nothing else, because, well, noone could possibly ever use those
+> for anything else, again.
+> 
+> That's the criteria.
 
-diff --git a/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c b/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c
-index 5d025ad72263..c63b3444bc17 100644
---- a/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c
-+++ b/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c
-@@ -3176,7 +3176,6 @@ static int mt8195_afe_pcm_dev_probe(struct platform_device *pdev)
- 
- static void mt8195_afe_pcm_dev_remove(struct platform_device *pdev)
- {
--	pm_runtime_disable(&pdev->dev);
- 	if (!pm_runtime_status_suspended(&pdev->dev))
- 		mt8195_afe_runtime_suspend(&pdev->dev);
- }
-diff --git a/sound/soc/mediatek/mt8365/mt8365-afe-pcm.c b/sound/soc/mediatek/mt8365/mt8365-afe-pcm.c
-index 10793bbe9275..d48252cd96ac 100644
---- a/sound/soc/mediatek/mt8365/mt8365-afe-pcm.c
-+++ b/sound/soc/mediatek/mt8365/mt8365-afe-pcm.c
-@@ -2238,7 +2238,6 @@ static void mt8365_afe_pcm_dev_remove(struct platform_device *pdev)
- 
- 	mt8365_afe_disable_top_cg(afe, MT8365_TOP_CG_AFE);
- 
--	pm_runtime_disable(&pdev->dev);
- 	if (!pm_runtime_status_suspended(&pdev->dev))
- 		mt8365_afe_runtime_suspend(&pdev->dev);
- }
--- 
-2.25.1
+So this criteria, avoiding unnecessary duplication, is also what I thought and
+is very true for the argument I presented before which somehow wasn't what has
+convinced you: That using uart0 in any possible way **always** implied using
+the uart0 pingroup in uart mode, because there aren't any other pins which can
+be used for uart0. In this sense, if uart0 is used at all, it is **not** the
+choice of the board designer which pins to use for that -- there simply is only
+that one single option.
 
+> 
+> If the BootROM didn't use those pins, and those could support both GPIO mode and
+> HW function mode (any: uart0, 1, 2...n, spi, i2c, whatever else), even though it
+> is likely for boards to use them for one specific function, there is nothing that
+> stops a HW engineer to decide to route those elsewhere and use them as a GPIO
+> instead, so that's not a SoC configuration, but rather a HW implementation decision
+> at the PCB level.
+
+That's exactly my point: There isn't any other option to route uart0 to. Only
+those two pins. The other alternative functions of those pins (apart from GPIO)
+are rather esoteric debugging features (I2C access to SoC internals).
+
+> 
+> See it like this (although this is an oversimplified view):
+>  - SoC DT describes the SoC (the chip) - in this case the MT7981B chip
+>  - Board DT describes decisions that were taken by the HW engineer that developed
+>    the PCB on which the MT7981B was placed.
+
+So the choice of a HW engineer regarding uart0 is simply whether uart0
+is used or not. If uart0 is used, the HW engineer doesn't have any choice
+regarding which pins they would like to use for the uart0 RX and TX lines,
+the SoC design dictates exactly one option for that.
+
+> 
+> Clearly, if there's a board design (usually, a "base project") that has derivatives
+> (for example, a device with eMMC, one with UFS, one with both, one with two SFP,
+> one with one SFP and one soldered ethernet chip on a non-exposed SFP interface,
+> etc) it is ok to have a "board-common" dtsi and specific board variants on top,
+> like it is done with some bananapi and some genio boards.
+> 
+> Lots of text here - yet oversimplified. There is much more to say, but I think
+> (and hope) that this is enough to make you understand the main point (of course
+> feel free to throw more questions if what I wrote doesn't fully satisfy you).
+> 
+> > > 
+> > > > (Sidenote: As even the BootROM already uses those two pins as UART for
+> > > > debug output,
+> > > 
+> > > Funny thing is, your side note is what *fully* justifies your disagreement
+> > > and it's also what triggers me to say that you're right, lol :)
+> > > 
+> > > Okay then, I am fine with this commit now and I can renew my
+> > > 
+> > > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> > 
+> > Note that the patch you have just added your Reviewed-by:-tag to does
+> > *not* add the uart0 pinctrl on SoC-level but board-level, so different
+> > from what I argued for above.
+> 
+> Ewwww I'm doing too may things at once. Pretty crazy days around here :)))
+> 
+> >> Did you mean to add Reviewed-by: for that
+> > (which contraticts what you just wrote) or rather to the to-be-submitted
+> > v2 of this series which includes the change to move the uart0 pinctrl
+> > to mt7981b.dtsi?
+> 
+> Yeah. Sorry.
+> 
+> I repeat then, so that this is clear: you are right, the pinctrl for UART0 on the
+> MT7981B SoC must go to mt7981b.dtsi and *not* to mt7981b-openwrt-one.
+
+Thank you, that should make it clear to Sjoerd as well (who may skip and ignore
+all of our debating :).
 
