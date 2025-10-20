@@ -4,79 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03BE5CCD193
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Oct 2025 07:42:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26A58CCD193
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Oct 2025 07:52:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=skWTZtYKSk+L0V02K1h9jMQUDLDlNwNtlzucoipLJko=; b=m12C6L+V+AGoBGnRWSoQvsJNlq
-	mDrrn4tGSK2UVd3vxUthgwNUdfBNEqhZac6GlY9kH9+8ClhkZUnx87nolE7g5GtLz2w/WQyZ/2Oac
-	fnRFRDO5Lts4vT+Q6ltr3peDghPWqUssvIHMMuxvfYoGx4Rqon/1AN6XoQyZdLAm2ak57O9h8YPSR
-	YmUf772oMZKfxdceYM6pK3ZM93ckTRNdSuBG+bZNiPUKU/jSUo1zYJSIv9PQ6UcjRhQIoqkrjLZ54
-	k85Dswp1r5OmrxZjX+7Gq0X5Q4gN0YLZKVb0QS9fqL5spdvS356rzyZcedV6Xb8cgHJgUeVZx0K1T
-	qF/gfLrg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=wLHDbhR9J7AIpTM0DPoBZQKRT7dCduU3+z33Ueg+bbs=; b=1bx/1N7Lhx3pqehFIAfy3BFfrn
+	mbBJbYllSheAWTkUIktVLJ1zDSu4DyebYRHZXbE02S9EtW22UvejEu09uupF+neiVSyygG+ykFPhl
+	lLA3M8KhWIUq3wq+CSchIGuJLkGN1sT6dDUwjVjEzv83FPwBOWW3Zd34L/RDkoQ5iBqC5AUAS3nIx
+	6R0FooO/BOr5gZaMY9HQBrZ1W5tA9ZYYKUGRgnXWMWTXAaJ3kpcG6MvudZgg6gXtQdmBFwV5Ql2Jf
+	q1Qj8NDZ8QJBQaQMoyFZc5O7hQUPj4d+9Ei9pbq9Yo8iuS03iVa9EocpBezfNCrY3bziR2sY+aQbB
+	DBeKGj3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAkXf-0000000CEWX-0jJf;
-	Mon, 20 Oct 2025 07:42:55 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1vAkgm-0000000CGYU-16CP;
+	Mon, 20 Oct 2025 07:52:20 +0000
+Received: from mail.subventuro.com ([51.83.133.170])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAkXU-0000000CEIL-06lU;
-	Mon, 20 Oct 2025 07:42:46 +0000
-X-UUID: 5b5971d4ad8811f0a52f393f94899d25-20251020
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=skWTZtYKSk+L0V02K1h9jMQUDLDlNwNtlzucoipLJko=;
-	b=ujfnKOT/2FXo9PT8ZM6g6ZfiTmjMPsgDxV0qBuH15pU41kNmPjv7Hl4TfF4MJ0L8AeQjNi9Ldt4lXZP0uRDKkbikhWVawbc8SYMkGEMOqwHoLI4CMVpQInuFcAXPtbsRQ0L4CNUR0w5iD14pWaOBdtqnUjAgWAb9ZERzacxrXmo=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:92bcb100-88ff-4efa-a16c-cb543b54255f,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:a9d874c,CLOUDID:db309302-eaf8-4c8c-94de-0bc39887e077,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
-	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,
-	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 5b5971d4ad8811f0a52f393f94899d25-20251020
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
-	(envelope-from <xiandong.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1247365153; Mon, 20 Oct 2025 00:42:40 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26; Mon, 20 Oct 2025 15:42:33 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.26 via Frontend Transport; Mon, 20 Oct 2025 15:42:32 +0800
-From: Xiandong Wang <xiandong.wang@mediatek.com>
-To: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Yongqiang Niu
-	<yongqiang.niu@mediatek.com>
-CC: <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<sirius.wang@mediatek.com>, <vince-wl.liu@mediatek.com>,
-	<jh.hsu@mediatek.com>, <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	Xiandong Wang <xiandong.wang@mediatek.com>
-Subject: [PATCH v1 13/13] soc: mediatek: mutex: add mutex support for MT8189
-Date: Mon, 20 Oct 2025 15:40:26 +0800
-Message-ID: <20251020074211.8942-14-xiandong.wang@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20251020074211.8942-1-xiandong.wang@mediatek.com>
-References: <20251020074211.8942-1-xiandong.wang@mediatek.com>
+	id 1vAkgk-0000000CGXv-191L
+	for linux-mediatek@lists.infradead.org;
+	Mon, 20 Oct 2025 07:52:19 +0000
+Received: by mail.subventuro.com (Postfix, from userid 1002)
+	id 40BE5A46BA; Mon, 20 Oct 2025 09:51:48 +0200 (CEST)
+Received: by mail.subventuro.com for <linux-mediatek@lists.infradead.org>; Mon, 20 Oct 2025 07:51:24 GMT
+Message-ID: <20251020084500-0.1.n7.44z02.0.yytlx61nqq@CyberCircuitryCo.com>
+Date: Mon, 20 Oct 2025 07:51:24 GMT
+From: "Wiktoria Bielaszka" <wiktoria.bielaszka@subventuro.com>
+To: <linux-mediatek@lists.infradead.org>
+Subject: Energia elektryczna - zmiany
+X-Mailer: mail.CyberCircuitryCo.com
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251020_004244_136240_AA4F85A8 
-X-CRM114-Status: GOOD (  14.79  )
+X-CRM114-CacheID: sfid-20251020_005218_479195_2D158D24 
+X-CRM114-Status: UNSURE (   0.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,152 +57,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mutex support for the main and external displays in MT8189:
-- Introduce a new DVO1 output component for the new mutex
-  settings of MT8189.
-- Add a need_sof_mof flag to configure both SOF and MOD settings
-  for the output component.
+Dzie=C5=84 dobry,
 
-Signed-off-by: Xiandong Wang <xiandong.wang@mediatek.com>
----
- drivers/soc/mediatek/mtk-mutex.c | 88 ++++++++++++++++++++++++++++++++
- 1 file changed, 88 insertions(+)
+czy mogliby=C5=9Bmy um=C3=B3wi=C4=87 si=C4=99 na kr=C3=B3tk=C4=85 rozmow=C4=
+=99 na temat zmiany obecnego dostawcy energii?
 
-diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
-index c48983d8a6cd..743c4b93a39e 100644
---- a/drivers/soc/mediatek/mtk-mutex.c
-+++ b/drivers/soc/mediatek/mtk-mutex.c
-@@ -177,6 +177,48 @@
- #define MT8188_MUTEX_MOD_DISP1_DPI1		38
- #define MT8188_MUTEX_MOD_DISP1_DP_INTF1		39
- 
-+#define MT8189_DISP_MUTEX0_MOD0			0x30
-+#define MT8189_DISP_MUTEX0_MOD1			0x34
-+#define MT8189_DISP_MUTEX0_SOF			0x2C
-+#define MT8189_MUTEX_MOD_DISP_OVL0		0
-+#define MT8189_MUTEX_MOD_DISP_OVL1		1
-+#define MT8189_MUTEX_MOD_DISP_RSZ0		2
-+#define MT8189_MUTEX_MOD_DISP_RSZ1		3
-+#define MT8189_MUTEX_MOD_DISP_RDMA0		4
-+#define MT8189_MUTEX_MOD_DISP_RDMA1		5
-+#define MT8189_MUTEX_MOD_DISP_COLOR0		6
-+#define MT8189_MUTEX_MOD_DISP_COLOR1		4
-+#define MT8189_MUTEX_MOD_DISP_CCORR0		8
-+#define MT8189_MUTEX_MOD_DISP_CCORR1		9
-+#define MT8189_MUTEX_MOD_DISP_CCORR2		10
-+#define MT8189_MUTEX_MOD_DISP_CCORR3		11
-+#define MT8189_MUTEX_MOD_DISP_AAL0		12
-+#define MT8189_MUTEX_MOD_DISP_AAL1		13
-+#define MT8189_MUTEX_MOD_DISP_GAMMA0		14
-+#define MT8189_MUTEX_MOD_DISP_GAMMA1		15
-+#define MT8189_MUTEX_MOD_DISP_DITHER0		16
-+#define MT8189_MUTEX_MOD_DISP_DITHER1		17
-+#define MT8189_MUTEX_MOD_DISP_VPP_MERGE0	18
-+#define MT8189_MUTEX_MOD_DISP_DSC_WRAP0_CORE0	19
-+#define MT8189_MUTEX_MOD_DISP_DSC_WRAP0_CORE1	20
-+#define MT8189_MUTEX_MOD_DISP_DVO0		21
-+#define MT8189_MUTEX_MOD_DISP_DSI0		22
-+#define MT8189_MUTEX_MOD_DISP_DVO1		23
-+#define MT8189_MUTEX_MOD_DISP_DPI0		24
-+#define MT8189_MUTEX_MOD_DISP_WDMA0		25
-+#define MT8189_MUTEX_MOD_DISP_WDMA1		26
-+#define MT8189_MUTEX_MOD_DISP_PWM0		27
-+#define MT8189_MUTEX_MOD_DISP_PWM1		28
-+#define MT8189_MUTEX_MOD_ALL			0xff
-+
-+#define MT8189_MUTEX_SOF_SINGLE_MODE		0
-+#define MT8189_MUTEX_SOF_DSI0			1
-+#define MT8189_MUTEX_EOF_DSI0			(MT8189_MUTEX_SOF_DSI0 << 7)
-+#define MT8189_MUTEX_SOF_DVO			5
-+#define MT8189_MUTEX_EOF_DVO			(MT8189_MUTEX_SOF_DVO << 7)
-+#define MT8189_MUTEX_SOF_DPTX			6
-+#define MT8189_MUTEX_EOF_DPTX			(MT8189_MUTEX_SOF_DPTX << 7)
-+
- #define MT8195_MUTEX_MOD_DISP_OVL0		0
- #define MT8195_MUTEX_MOD_DISP_WDMA0		1
- #define MT8195_MUTEX_MOD_DISP_RDMA0		2
-@@ -554,6 +596,34 @@ static const u8 mt8188_mdp_mutex_table_mod[MUTEX_MOD_IDX_MAX] = {
- 	[MUTEX_MOD_IDX_MDP_WROT3] = MT8195_MUTEX_MOD_MDP_WROT3,
- };
- 
-+static const unsigned int mt8189_mutex_mod[DDP_COMPONENT_ID_MAX] = {
-+	[DDP_COMPONENT_OVL0] = MT8189_MUTEX_MOD_DISP_OVL0,
-+	[DDP_COMPONENT_OVL1] = MT8189_MUTEX_MOD_DISP_OVL1,
-+	[DDP_COMPONENT_RSZ0] = MT8189_MUTEX_MOD_DISP_RSZ0,
-+	[DDP_COMPONENT_RSZ1] = MT8189_MUTEX_MOD_DISP_RSZ1,
-+	[DDP_COMPONENT_RDMA0] = MT8189_MUTEX_MOD_DISP_RDMA0,
-+	[DDP_COMPONENT_RDMA1] = MT8189_MUTEX_MOD_DISP_RDMA1,
-+	[DDP_COMPONENT_COLOR0] = MT8189_MUTEX_MOD_DISP_COLOR0,
-+	[DDP_COMPONENT_COLOR1] = MT8189_MUTEX_MOD_DISP_COLOR1,
-+	[DDP_COMPONENT_CCORR0] = MT8189_MUTEX_MOD_DISP_CCORR0,
-+	[DDP_COMPONENT_CCORR1] = MT8189_MUTEX_MOD_DISP_CCORR1,
-+	[DDP_COMPONENT_AAL0] = MT8189_MUTEX_MOD_DISP_AAL0,
-+	[DDP_COMPONENT_AAL1] = MT8189_MUTEX_MOD_DISP_AAL1,
-+	[DDP_COMPONENT_GAMMA] = MT8189_MUTEX_MOD_DISP_GAMMA0,
-+	[DDP_COMPONENT_DITHER0] = MT8189_MUTEX_MOD_DISP_DITHER0,
-+	[DDP_COMPONENT_DITHER1] = MT8189_MUTEX_MOD_DISP_DITHER1,
-+	[DDP_COMPONENT_MERGE0] = MT8189_MUTEX_MOD_DISP_VPP_MERGE0,
-+	[DDP_COMPONENT_DSC0] = MT8189_MUTEX_MOD_DISP_DSC_WRAP0_CORE0,
-+	[DDP_COMPONENT_DVO0] = MT8189_MUTEX_MOD_DISP_DVO0,
-+	[DDP_COMPONENT_DVO1] = MT8189_MUTEX_MOD_DISP_DVO1,
-+	[DDP_COMPONENT_DSI0] = MT8189_MUTEX_MOD_DISP_DSI0,
-+	[DDP_COMPONENT_WDMA0] = MT8189_MUTEX_MOD_DISP_WDMA0,
-+	[DDP_COMPONENT_PWM0] = MT8189_MUTEX_MOD_DISP_PWM0,
-+	[DDP_COMPONENT_COMP0_OUT_CB4] = MT8189_MUTEX_MOD_ALL,
-+	[DDP_COMPONENT_COMP0_OUT_CB5] = MT8189_MUTEX_MOD_ALL,
-+	[MT8189_MUTEX_MOD_DISP_PWM1] = MT8189_MUTEX_MOD_DISP_PWM1,
-+};
-+
- static const u8 mt8192_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_AAL0] = MT8192_MUTEX_MOD_DISP_AAL0,
- 	[DDP_COMPONENT_CCORR] = MT8192_MUTEX_MOD_DISP_CCORR0,
-@@ -718,6 +788,14 @@ static const u16 mt8188_mutex_sof[DDP_MUTEX_SOF_MAX] = {
- 		MT8188_MUTEX_SOF_DP_INTF1 | MT8188_MUTEX_EOF_DP_INTF1,
- };
- 
-+static const unsigned int mt8189_mutex_sof[DDP_MUTEX_SOF_MAX] = {
-+	[MUTEX_SOF_SINGLE_MODE] = MT8189_MUTEX_SOF_SINGLE_MODE,
-+	[MUTEX_SOF_DSI0] =
-+		MT8189_MUTEX_SOF_DSI0 | MT8189_MUTEX_EOF_DSI0,
-+	[MUTEX_SOF_DP_INTF0] =
-+		MT8189_MUTEX_SOF_DPTX | MT8189_MUTEX_EOF_DPTX,
-+};
-+
- static const u16 mt8195_mutex_sof[DDP_MUTEX_SOF_MAX] = {
- 	[MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
- 	[MUTEX_SOF_DSI0] = MT8195_MUTEX_SOF_DSI0 | MT8195_MUTEX_EOF_DSI0,
-@@ -812,6 +890,14 @@ static const struct mtk_mutex_data mt8188_vpp_mutex_driver_data = {
- 	.mutex_table_mod = mt8188_mdp_mutex_table_mod,
- };
- 
-+static const struct mtk_mutex_data mt8189_mutex_driver_data = {
-+	.mutex_mod = mt8189_mutex_mod,
-+	.mutex_sof = mt8189_mutex_sof,
-+	.mutex_mod_reg = MT8189_DISP_MUTEX0_MOD0,
-+	.mutex_sof_reg = MT8189_DISP_MUTEX0_SOF,
-+	.need_sof_mod = true,
-+};
-+
- static const struct mtk_mutex_data mt8192_mutex_driver_data = {
- 	.mutex_mod = mt8192_mutex_mod,
- 	.mutex_sof = mt8183_mutex_sof,
-@@ -903,6 +989,7 @@ static int mtk_mutex_get_output_comp_sof(enum mtk_ddp_comp_id id)
- 	case DDP_COMPONENT_DPI1:
- 		return MUTEX_SOF_DPI1;
- 	case DDP_COMPONENT_DP_INTF0:
-+	case DDP_COMPONENT_DVO1:
- 		return MUTEX_SOF_DP_INTF0;
- 	case DDP_COMPONENT_DP_INTF1:
- 		return MUTEX_SOF_DP_INTF1;
-@@ -1182,6 +1269,7 @@ static const struct of_device_id mutex_driver_dt_match[] = {
- 	{ .compatible = "mediatek,mt8186-mdp3-mutex", .data = &mt8186_mdp_mutex_driver_data },
- 	{ .compatible = "mediatek,mt8188-disp-mutex", .data = &mt8188_mutex_driver_data },
- 	{ .compatible = "mediatek,mt8188-vpp-mutex",  .data = &mt8188_vpp_mutex_driver_data },
-+	{ .compatible = "mediatek,mt8189-disp-mutex", .data = &mt8189_mutex_driver_data },
- 	{ .compatible = "mediatek,mt8192-disp-mutex", .data = &mt8192_mutex_driver_data },
- 	{ .compatible = "mediatek,mt8195-disp-mutex", .data = &mt8195_mutex_driver_data },
- 	{ .compatible = "mediatek,mt8195-vpp-mutex",  .data = &mt8195_vpp_mutex_driver_data },
--- 
-2.46.0
+Udost=C4=99pniamy najkorzystniejsze na rynku warunki na stabilne dostawy =
+energii elektrycznej.
 
+Czy mog=C4=99 niezobowi=C4=85zuj=C4=85co przedstawi=C4=87 propozycj=C4=99=
+?
+
+
+Pozdrawiam
+Wiktoria Bielaszka
 
