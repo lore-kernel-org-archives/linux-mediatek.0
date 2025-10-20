@@ -4,54 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0174DCCD193
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Oct 2025 09:30:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10A81CCD199
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Oct 2025 09:46:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OGJ/LOFXo1K2Oq9DbtsxkgAibxiWQj1MuXH6r6QM4Lc=; b=pu7Op4I5JB0Sn2wwZPXKvRb95G
-	0+AzMKWyMegm9E8oYMa+hYkfmeEQ77L86PHqRRcXTPsg1qCvR1H99VxzOn0glPeS6y444AnhyE+tI
-	RQQnRHP3m/5kumnsSK12rQak1v+EuHptwxrcDDijovuMHImaG4A+VYI5zCQZT9nQaD6dS1nk1W96h
-	AVg24RiviiWaKo2/FWFlxHSrXnLnPldBRA5Z8WK/irEh+a+mMk6SM2DNqWh+FqV/ASL2/MBHiysDP
-	Sc//DgAG3XyMsoU4PQtCJpOBbEVk9wxaaWz2Rw89ci2i+2aXGemRgi27OozjflxrZo0VdUyiKY0ON
-	vjpiB+8A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=5/f5THsVNT2n6+wuFClk7UP7tP672TSKVcPb7xVt1qA=; b=KSlqWB5yixQMw2
+	JfGCanWt9byVH87zJ5U7lb3SBb0c76uR9A/2rPcSkjFlHuTm8gTm5M9h9AYo16gbkPuXF2zR+tAr/
+	/SiwCkh7GzmOBafg8cSw2eOj+x45sv7jdaOUXcZ5epNSUiSHEmkgNa9CGCgtcFqdFPZqTP1w8Shle
+	/xSb22PnbxTM13QvQbVw0puo1YfTLFaUF80Zog5heQg+hmzO+7SS8zDRzDTkZiNCBgKNJdu6TE2Uk
+	pwqLlPhHWSdW7ty7XwdF2u/qpP18csVD/brXT4WF1IxQg8J/NLZpSyDfiMfvi1d1/hBYWdIxmUF8A
+	1OPCtnFvXM6oCb4F89Vg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAmE4-0000000CasO-0lyP;
-	Mon, 20 Oct 2025 09:30:48 +0000
-Received: from mail.simonwunderlich.de ([23.88.38.48])
+	id 1vAmT7-0000000CeJ2-3Smm;
+	Mon, 20 Oct 2025 09:46:21 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAmE1-0000000Caqk-04of;
-	Mon, 20 Oct 2025 09:30:46 +0000
-Received: from ripper.localnet (p200300c59748F6e00000000000000c00.dip0.t-ipconnect.de [IPv6:2003:c5:9748:f6e0::c00])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	id 1vAmT4-0000000CeFz-3H8V;
+	Mon, 20 Oct 2025 09:46:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1760953574;
+	bh=jImzS7kzdcSLp9Jf+2/whVppszQvlgg1u1y3EIe5sjQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=V0pFhusgmorb/EI/Ff3qSALsH+A4wCvTsjbW4TxYmOYLbRf1iQLt0+7ZcKSynNJNr
+	 VSKmlM7OTEBSWmkM3ZOy5inFxIhvkWlrHbcTVa2Q3E7RrKCn2TaDnw8aWBuQlzdevt
+	 aszck1+q3M1v6YhWjGTclgROU1xcZsKybjEMFXp8cZ5/AkveIbIm4iHorglYqYN7sR
+	 MEt8DkpKHFowsspj6uIBFP3DM7IcxElvUgz+gwCg3g4LynJa5MV1lQKIbreLhIID4+
+	 awTbLhAerc2fOavsIGw5vKeLlaySd010Ptc2Ve0u1gNdtyv5ppLzRZOatOU1fL5HnU
+	 IzBiyEfDm1QwQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mail.simonwunderlich.de (Postfix) with ESMTPSA id 2476BFA130;
-	Mon, 20 Oct 2025 11:30:38 +0200 (CEST)
-From: Sven Eckelmann <se@simonwunderlich.de>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- stable@vger.kernel.org
-Subject: Re: [PATCH mt76 v3] wifi: mt76: Fix DTS power-limits on little endian systems
-Date: Mon, 20 Oct 2025 11:30:37 +0200
-Message-ID: <2453774.NG923GbCHz@ripper>
-In-Reply-To: <20251020-fix-power-limits-v3-1-019d2e49239a@simonwunderlich.de>
-References: <20251020-fix-power-limits-v3-1-019d2e49239a@simonwunderlich.de>
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id AFF3F17E0DB7;
+	Mon, 20 Oct 2025 11:46:13 +0200 (CEST)
+Message-ID: <4ed4e704-ba0d-4d72-bbb1-0bcbfba2dc11@collabora.com>
+Date: Mon, 20 Oct 2025 11:46:12 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; boundary="nextPart880480923.0ifERbkFSE";
- micalg="pgp-sha512"; protocol="application/pgp-signature"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 01/20] arm64: dts: mediatek: Add GCE header for MT8196
+To: Jason-JH Lin <jason-jh.lin@mediatek.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Jassi Brar <jassisinghbrar@gmail.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>
+References: <20251017065028.1676930-1-jason-jh.lin@mediatek.com>
+ <20251017065028.1676930-2-jason-jh.lin@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20251017065028.1676930-2-jason-jh.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251020_023045_217463_1A220604 
-X-CRM114-Status: GOOD (  15.26  )
+X-CRM114-CacheID: sfid-20251020_024618_979288_C5AA07EE 
+X-CRM114-Status: GOOD (  20.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,60 +74,76 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Moudy Ho <moudy.ho@mediatek.com>, Xiandong Wang <xiandong.wang@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Nicolas Dufresne <nicolas@ndufresne.ca>, Project_Global_Chrome_Upstream_Group@mediatek.com, Paul-PL Chen <paul-pl.chen@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Sirius Wang <sirius.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---nextPart880480923.0ifERbkFSE
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="utf-8"; protected-headers="v1"
-From: Sven Eckelmann <se@simonwunderlich.de>
-Date: Mon, 20 Oct 2025 11:30:37 +0200
-Message-ID: <2453774.NG923GbCHz@ripper>
-MIME-Version: 1.0
-
-On Monday, 20 October 2025 11:20:53 CEST Sven Eckelmann (Plasma Cloud) wrote:
-> The power-limits for ru and mcs and stored in the devicetree as bytewise
-> array (often with sizes which are not a multiple of 4). These arrays have a
-> prefix which defines for how many modes a line is applied. This prefix is
-> also only a byte - but the code still tried to fix the endianness of this
-> byte with a be32 operation. As result, loading was mostly failing or was
-> sending completely unexpected values to the firmware.
+Il 17/10/25 08:44, Jason-JH Lin ha scritto:
+> Add GCE header define for GCE Thread Priority and GCE Event IDs
+> that used in the MT8196 dtsi.
 > 
-> Since the other rates are also stored in the devicetree as bytewise arrays,
-> just drop the u32 access + be32_to_cpu conversion and directly access them
-> as bytes arrays.
-> 
-> Cc: stable@vger.kernel.org
-> Fixes: 22b980badc0f ("mt76: add functions for parsing rate power limits from DT")
-> Fixes: a9627d992b5e ("mt76: extend DT rate power limits to support 11ax devices")
-> Signed-off-by: Sven Eckelmann (Plasma Cloud) <se@simonwunderlich.de>
+> Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
 > ---
-> Changes in v3:
-> - add "mt76" as addition prefix after "PATCH" as requested by Zhi-Jun You
-> - Link to v2: https://lore.kernel.org/r/20250926-fix-power-limits-v2-1-c2bc7881eb6d@simonwunderlich.de
+>   arch/arm64/boot/dts/mediatek/mt8196-gce.h | 612 ++++++++++++++++++++++
+>   1 file changed, 612 insertions(+)
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8196-gce.h
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8196-gce.h b/arch/arm64/boot/dts/mediatek/mt8196-gce.h
+> new file mode 100644
+> index 000000000000..457dc73aeed3
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt8196-gce.h
+> @@ -0,0 +1,612 @@
+> +/* SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause */
+> +/*
+> + * Copyright (c) 2025 MediaTek Inc.
+> + *
+> + */
+> +
+> +#ifndef __DTS_GCE_MT8196_H
+> +#define __DTS_GCE_MT8196_H
+> +
+> +/* GCE Thread Priority
+> + * The GCE core has multiple GCE threads, each of which can independently
+> + * execute its own sequence of instructions.
+> + * However, the GCE threads on the same core cannot run in parallel.
+> + * Different GCE threads can determine thread priority based on the scenario,
+> + * thereby serving different user needs.
+> + *
+> + * Low priority thread is executed when no high priority thread is active.
+> + * Same priority thread is scheduled by round robin.
+> + */
+> +#define CMDQ_THR_PRIO_LOWEST	0
+> +#define CMDQ_THR_PRIO_1		1
+> +#define CMDQ_THR_PRIO_2		2
+> +#define CMDQ_THR_PRIO_3		3
+> +#define CMDQ_THR_PRIO_4		4
+> +#define CMDQ_THR_PRIO_5		5
+> +#define CMDQ_THR_PRIO_6		6
+> +#define CMDQ_THR_PRIO_HIGHEST	7
+> +
+> +/*
+> + * GCE0 Hardware Event IDs
+> + * Different SoCs will have varying numbers of hardware event signals,
+> + * which are sent from the corresponding hardware to the GCE.
+> + * Each hardware event signal corresponds to an event ID in the GCE.
+> + * The CMDQ driver can use the following event ID definitions to allow
+> + * the client driver to use wait and clear APIs provided by CMDQ, enabling
+> + * the GCE to execute operations in the instructions for that event ID.
+> + *
+> + * The event IDs of GCE0 are mainly used by display hardware.
 
-Seems like the v2 was already picked up [1] and I've simply missed it.
+..snip..
 
-Sorry about the noise,
-	Sven
+> +/* CMDQ_EVENT_MML1_FRAME_DONE_SEL0 ~ 15: 284 ~ 299 */
+> +#define CMDQ_EVENT_MML1_FRAME_DONE_SEL(n)					(284 + (n))
+> +/* CMDQ_EVENT_MML1_REG_UPDATE_DONE_ENG_EVENT0 ~ 15: 300 ~ 315 */
+> +#define CMDQ_EVENT_MML1_REG_UPDATE_DONE_ENG_EVENT0				(300 + (n))
+                                                     ^^^^^
+There's a typo here                                  (n)
 
-[1] https://github.com/nbd168/wireless/commit/3d63b5084c50607fff84d17d2727c3bab8190d8e
+Please fix, after which
 
---nextPart880480923.0ifERbkFSE
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part.
-Content-Transfer-Encoding: 7Bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQS81G/PswftH/OW8cVND3cr0xT1ywUCaPYBPQAKCRBND3cr0xT1
-y4ebAQCwb9tDygtnPh36+fO93hSzJLDBcmb2cPfpL0IU63CHWAD/VAvazvuQmmS1
-TBo61BmhKvF9W99jw9t2dIur+vxrSA0=
-=hC3z
------END PGP SIGNATURE-----
-
---nextPart880480923.0ifERbkFSE--
-
-
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
