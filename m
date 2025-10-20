@@ -4,65 +4,133 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10A81CCD199
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Oct 2025 09:46:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06C20CCD199
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Oct 2025 09:56:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5/f5THsVNT2n6+wuFClk7UP7tP672TSKVcPb7xVt1qA=; b=KSlqWB5yixQMw2
-	JfGCanWt9byVH87zJ5U7lb3SBb0c76uR9A/2rPcSkjFlHuTm8gTm5M9h9AYo16gbkPuXF2zR+tAr/
-	/SiwCkh7GzmOBafg8cSw2eOj+x45sv7jdaOUXcZ5epNSUiSHEmkgNa9CGCgtcFqdFPZqTP1w8Shle
-	/xSb22PnbxTM13QvQbVw0puo1YfTLFaUF80Zog5heQg+hmzO+7SS8zDRzDTkZiNCBgKNJdu6TE2Uk
-	pwqLlPhHWSdW7ty7XwdF2u/qpP18csVD/brXT4WF1IxQg8J/NLZpSyDfiMfvi1d1/hBYWdIxmUF8A
-	1OPCtnFvXM6oCb4F89Vg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gFJLxW8OUDNgtKGw5vBtPWMYgGcJSO6ZFLPzt/gNjxs=; b=V2l+sz0TNyvn4NmS4y280jtmQc
+	I8O97tgHZnDuK5R7hNhrGvXhPx5iq+LvAa2yNK2jCRm2YrNo4yuR7VpjBDpawc0a0UC4ovqWel7dO
+	+Gh8yh6zK2+DPQkWpaK1Nja+6GyI1h4XOMScFCRzZHh0WBHXhY1u3AztH9cFXRdJPOCMGpJk5+5Mf
+	Uv0ALF0fI+k/m2fmk5+87c4WcCTc6EhxHNWFVjl0E+zogWmcBmENzc5EmvyRaciVFI6Le8kLjplKi
+	VWKkuB81Z5Quf3ruRO6NKKuLqWSzk1UTwKVeaAFdEpus590A21AXLRvuqbEnrNpw6pkjhtSVGuTru
+	KKTDZ6+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAmT7-0000000CeJ2-3Smm;
-	Mon, 20 Oct 2025 09:46:21 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vAmdD-0000000CgFa-3PaU;
+	Mon, 20 Oct 2025 09:56:47 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAmT4-0000000CeFz-3H8V;
-	Mon, 20 Oct 2025 09:46:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1760953574;
-	bh=jImzS7kzdcSLp9Jf+2/whVppszQvlgg1u1y3EIe5sjQ=;
+	id 1vAmdA-0000000CgDA-1zTE;
+	Mon, 20 Oct 2025 09:56:46 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 9DC1345827;
+	Mon, 20 Oct 2025 09:56:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 844F3C4CEF9;
+	Mon, 20 Oct 2025 09:56:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1760954203;
+	bh=eRscmhaBeaXNyyMb6QNngH3o5h5QCnU9xCb75nFP7+M=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=V0pFhusgmorb/EI/Ff3qSALsH+A4wCvTsjbW4TxYmOYLbRf1iQLt0+7ZcKSynNJNr
-	 VSKmlM7OTEBSWmkM3ZOy5inFxIhvkWlrHbcTVa2Q3E7RrKCn2TaDnw8aWBuQlzdevt
-	 aszck1+q3M1v6YhWjGTclgROU1xcZsKybjEMFXp8cZ5/AkveIbIm4iHorglYqYN7sR
-	 MEt8DkpKHFowsspj6uIBFP3DM7IcxElvUgz+gwCg3g4LynJa5MV1lQKIbreLhIID4+
-	 awTbLhAerc2fOavsIGw5vKeLlaySd010Ptc2Ve0u1gNdtyv5ppLzRZOatOU1fL5HnU
-	 IzBiyEfDm1QwQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id AFF3F17E0DB7;
-	Mon, 20 Oct 2025 11:46:13 +0200 (CEST)
-Message-ID: <4ed4e704-ba0d-4d72-bbb1-0bcbfba2dc11@collabora.com>
-Date: Mon, 20 Oct 2025 11:46:12 +0200
+	b=TTfdfeu7+i1jUYuaXPwGYgFpZ061KDKhmAeYU6LXSHmZVl4lLGEFxYVEEjcUeeEIQ
+	 cvrGT7UgAI4lKgsp3/EPHY2EbxgElGBkCyw7GEhhjeH/DGWR7X6mpgaNoxKAkUXZZO
+	 Mi6f9OrDOYt0rus2Kaq8TnBWsTs5N/gJ389bdcbWjqtJ/iuhuNbY/IIUextL4vNluy
+	 +viQe9GpTDGX/6l5h/zlR2L6hMnQLjazC/sTjT5Nz84GLCCW6deVz6kg0GYBOIktNo
+	 5q+icUzkiCEYEf/J1+8Nkdkq28e8cgiyQYXWb6iXDOw7MHJ9UwIDe6oAePv90frKCU
+	 MAOkNIVOB4kPg==
+Message-ID: <4dc420a3-cf89-4f45-84e7-4d0079240681@kernel.org>
+Date: Mon, 20 Oct 2025 11:56:36 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 01/20] arm64: dts: mediatek: Add GCE header for MT8196
-To: Jason-JH Lin <jason-jh.lin@mediatek.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Jassi Brar <jassisinghbrar@gmail.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>
-References: <20251017065028.1676930-1-jason-jh.lin@mediatek.com>
- <20251017065028.1676930-2-jason-jh.lin@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2 3/4] dt-bindings: ufs: mediatek,ufs: add MT8195
+ compatible and update clock nodes
+To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
+ "chu.stanley@gmail.com" <chu.stanley@gmail.com>,
+ "James.Bottomley@HansenPartnership.com"
+ <James.Bottomley@HansenPartnership.com>, "robh@kernel.org"
+ <robh@kernel.org>, "bvanassche@acm.org" <bvanassche@acm.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ =?UTF-8?B?TWFjcGF1bCBMaW4gKOael+aZuuaWjCk=?= <Macpaul.Lin@mediatek.com>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "avri.altman@wdc.com" <avri.altman@wdc.com>,
+ "martin.petersen@oracle.com" <martin.petersen@oracle.com>
+Cc: "macpaul@gmail.com" <macpaul@gmail.com>,
+ =?UTF-8?B?UGFibG8gU3VuICjlravmr5Pnv5Qp?= <pablo.sun@mediatek.com>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ =?UTF-8?B?QmVhciBXYW5nICjokKnljp/mg5/lvrcp?= <bear.wang@mediatek.com>,
+ =?UTF-8?B?UmFtYXggTG8gKOe+heaYjumBoCk=?= <Ramax.Lo@mediatek.com>
+References: <20250722085721.2062657-1-macpaul.lin@mediatek.com>
+ <20250722085721.2062657-3-macpaul.lin@mediatek.com>
+ <b90956e8-adf9-4411-b6f9-9212fcd14b59@collabora.com>
+ <438077d191833bb4f628b2c6da3b86b3ecfb40e6.camel@mediatek.com>
+ <cb173df9-4c70-4619-b36d-8e99272551b6@kernel.org>
+ <a9bf15e48afd8496ca9b015e7f5b03821863a0b2.camel@mediatek.com>
+ <7f285723-ecd7-4df6-8c9b-f2e786ce3602@kernel.org>
+ <4b3d2678d2b724fb53ec7272ef8daf52197d4a0e.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
-In-Reply-To: <20251017065028.1676930-2-jason-jh.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <4b3d2678d2b724fb53ec7272ef8daf52197d4a0e.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251020_024618_979288_C5AA07EE 
-X-CRM114-Status: GOOD (  20.44  )
+X-CRM114-CacheID: sfid-20251020_025644_557454_8D1E1F71 
+X-CRM114-Status: GOOD (  16.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,76 +142,104 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Moudy Ho <moudy.ho@mediatek.com>, Xiandong Wang <xiandong.wang@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Nicolas Dufresne <nicolas@ndufresne.ca>, Project_Global_Chrome_Upstream_Group@mediatek.com, Paul-PL Chen <paul-pl.chen@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Sirius Wang <sirius.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/10/25 08:44, Jason-JH Lin ha scritto:
-> Add GCE header define for GCE Thread Priority and GCE Event IDs
-> that used in the MT8196 dtsi.
+On 20/10/2025 11:44, Peter Wang (王信友) wrote:
+> On Mon, 2025-10-20 at 10:28 +0200, Krzysztof Kozlowski wrote:
+>>>
+>>>
+>>> Hi Krzysztof Kozlowski,
+>>>
+>>> The main reason for my objection was also clearly stated:
+>>> "removing these DTS settings will make what was originally
+>>> a simple task more complicated."
+>>> I’m not sure if you are quoting only the "In addition"
+>>> part to take it out of context?
+>>
+>> It is not out of context. It was the statement on its own.
 > 
-> Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
-> ---
->   arch/arm64/boot/dts/mediatek/mt8196-gce.h | 612 ++++++++++++++++++++++
->   1 file changed, 612 insertions(+)
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8196-gce.h
+> Hi Krzysztof Kozlowski,
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8196-gce.h b/arch/arm64/boot/dts/mediatek/mt8196-gce.h
-> new file mode 100644
-> index 000000000000..457dc73aeed3
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8196-gce.h
-> @@ -0,0 +1,612 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause */
-> +/*
-> + * Copyright (c) 2025 MediaTek Inc.
-> + *
-> + */
-> +
-> +#ifndef __DTS_GCE_MT8196_H
-> +#define __DTS_GCE_MT8196_H
-> +
-> +/* GCE Thread Priority
-> + * The GCE core has multiple GCE threads, each of which can independently
-> + * execute its own sequence of instructions.
-> + * However, the GCE threads on the same core cannot run in parallel.
-> + * Different GCE threads can determine thread priority based on the scenario,
-> + * thereby serving different user needs.
-> + *
-> + * Low priority thread is executed when no high priority thread is active.
-> + * Same priority thread is scheduled by round robin.
-> + */
-> +#define CMDQ_THR_PRIO_LOWEST	0
-> +#define CMDQ_THR_PRIO_1		1
-> +#define CMDQ_THR_PRIO_2		2
-> +#define CMDQ_THR_PRIO_3		3
-> +#define CMDQ_THR_PRIO_4		4
-> +#define CMDQ_THR_PRIO_5		5
-> +#define CMDQ_THR_PRIO_6		6
-> +#define CMDQ_THR_PRIO_HIGHEST	7
-> +
-> +/*
-> + * GCE0 Hardware Event IDs
-> + * Different SoCs will have varying numbers of hardware event signals,
-> + * which are sent from the corresponding hardware to the GCE.
-> + * Each hardware event signal corresponds to an event ID in the GCE.
-> + * The CMDQ driver can use the following event ID definitions to allow
-> + * the client driver to use wait and clear APIs provided by CMDQ, enabling
-> + * the GCE to execute operations in the instructions for that event ID.
-> + *
-> + * The event IDs of GCE0 are mainly used by display hardware.
+> However, you haven’t addressed the main reason for my objection.
+> "removing these DTS settings will make what was originally
+> a simple task more complicated."
 
-..snip..
 
-> +/* CMDQ_EVENT_MML1_FRAME_DONE_SEL0 ~ 15: 284 ~ 299 */
-> +#define CMDQ_EVENT_MML1_FRAME_DONE_SEL(n)					(284 + (n))
-> +/* CMDQ_EVENT_MML1_REG_UPDATE_DONE_ENG_EVENT0 ~ 15: 300 ~ 315 */
-> +#define CMDQ_EVENT_MML1_REG_UPDATE_DONE_ENG_EVENT0				(300 + (n))
-                                                     ^^^^^
-There's a typo here                                  (n)
+You did not object in technical matter at all here:
+https://lore.kernel.org/all/ce0f9785f8f488010cd81adbbdb5ac07742fc988.camel@mediatek.com/
 
-Please fix, after which
+Look at this patch.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+You said nothing about actual change, except blocking the community
+maintainer. You did not raise any other concerns so what are you
+speaking about "other main concerns"?
 
+Even if such existed, they did not matter, because YOU WROTE ONLY:
+
+"The role of MediaTek UFS maintainer is not suitable to be handed over
+to someone outside of MediaTek."
+
+This is what we discuss here.
+
+> 
+>>
+>>
+>>
+>> You denied community to participate and now you twist the argument
+>> like
+>> you want Mediatek people to be involved. No one denied Mediatek to be
+>> maintainer.
+>>
+>> It is you who denied community to join the maintainers.
+>>
+>> This is not acceptable and you still do not understand why.
+> 
+> I think I understand your point now, you believe that opposing
+> this patch means opposing community participation and support, right?
+
+Do you even read your own comments and where did you place them? Do you
+understand that we discuss emails, not some unsaid or other threads?
+
+Look at this:
+
+https://lore.kernel.org/all/ce0f9785f8f488010cd81adbbdb5ac07742fc988.camel@mediatek.com/
+
+	
+> But it’s clear that you haven’t carefully considered the main 
+> reason for my objection?
+
+Main reason for objection? What?
+
+> 
+> 
+> 
+>>
+>>
+>> You could apologize and explain your mistakes, but instead you push
+>> same
+>> narrative.
+>>
+>> Still a red flag. I will not accept such vendor-like behaviors,
+>> because
+>> they significantly harm the community.
+>>
+>> I am very surprised that UFS maintainers did not object to it. This
+>> should be clearly ostracized.
+>>
+>>
+> 
+> Sorry, I still don’t quite understand why having people who
+> know the SoC better maintain the SoC driver would be considered
+> harmful to the community?
+
+You are twisting the problem, like anyone denied you being the maintainer.
+
+YOU DENIED OTHER PEOPLE!
+
+I finish the discussion here, I am considering your explanations
+intentionally twisting the point thus I find it still harmful behavior.
+
+Best regards,
+Krzysztof
 
