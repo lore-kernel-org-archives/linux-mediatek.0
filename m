@@ -4,76 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 352C8CCD1AB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Oct 2025 07:31:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD6ECCCD184
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Oct 2025 07:42:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=T2A3cog2Se4Y8e8z5DY+lKAMo1gWthYiTVE6Wcpod04=; b=HDn4nP9DPeTvDZmvYqdsUjes79
-	5DZ/Wp5AZe2tjw+YQlzOo1miMnFi6J1M+RaSUqrEb51Ef+4xN0FJuNvI3LgQkHRR6YUMr5wEcr1Ge
-	bHe52ha56rt2tcorWW/9UlTvGGNcNqBJk9tLZYqk2BQOnLtF1OGb57oHCKRyhdLpghHnwgXvAJdWU
-	fNrjJOi1gc6j7yFg2S3dES4z5WOlqflridmp8RduqKFCP51nOgtJjy3oS/+QkhVMzn2I1T5frGpLB
-	48u4jGVqpGlOv6uL6m1vsxyl2RYvBQM2dZlw0S0GcLNRZprjvLPNLHqVw5rvRa0CRDXanNKGmjT32
-	N7dnIEDg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=xZTLqM3E7aVDYIB/jnD5MiDi3FAIGgatFm751EDj2YQ=; b=fWZQ40dqjd5KzYK4Yd14CwolZM
+	+q8oD79WJctsqL9NemCo41TTwtb/45JJKXdJYtA7f7e9BLZ4XwLNc1k5clOv51Z1pmqvc+YzNZU64
+	7lm7Z5tqHxbokWJk5UtfNYwz8Bhj2gSxHdlAWAkz9PlZuNLDlppXh3K4Twe++luKL9xY8DI4YExYq
+	Q+oj5Sp1AMdFKPDqFHFDHFiAHGyjayP3wL2ik1z4f0e9UTBPaf8mxrWAOmyleF3rXE9QVz/DF/ZE8
+	4WXSVWasrqR5OcmsvOkGEAokT2lMXJXSg3JItfQ7i1qklWd8qLWt3BKaIOc7y63iQ1gLDW4Oz0Y4+
+	jJebJcyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vB6qc-0000000G4vS-1kuV;
-	Tue, 21 Oct 2025 07:31:58 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vB712-0000000G6e3-2rKs;
+	Tue, 21 Oct 2025 07:42:44 +0000
+Received: from mail.zynotix.com ([79.137.80.196])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vB6qW-0000000G4oM-23ef;
-	Tue, 21 Oct 2025 07:31:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1761031907;
-	bh=u+G8Mt1dpRFClpUAKvKbFwgypYjcR8NzUmnmamS1YxM=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=hy3dnRt3eGLK9sJNQcn2Pt6rxou3kv6Wfv2SP/N/THo1eNPYIzy9TRnq63NrEe4wM
-	 3d0cKnRe9qgCTziRmCs+3GxI/w15CJl941+Z3ktXdfq/GWSexB2keIn2YeTgglJqQd
-	 xQv04P2xssQLfgyP4AVJ/tJ20JJllo4EuuLKDjyNKJllhPKO271r3IS9m//4ynms0i
-	 zl75+KqwwF7Qdq12kbfhNk46A+POCAp9k+aIDz6qJ9ubhe3tUMINsDzVQhIIdLZgYm
-	 a3dI8YlQBaScUvg85jgXwWmLp6lFcqrzXqHEq88bJgmn2zWhnvevXiMw/L0tgWWDa8
-	 9wBba5oa2yjVA==
-Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E0EA417E1305;
-	Tue, 21 Oct 2025 09:31:46 +0200 (CEST)
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Tue, 21 Oct 2025 09:30:52 +0200
-Subject: [PATCH v2 2/3] arm64: dts: mediatek: mt8365: Add GPU support
+	id 1vB710-0000000G6dY-1QPo
+	for linux-mediatek@lists.infradead.org;
+	Tue, 21 Oct 2025 07:42:43 +0000
+Received: by mail.zynotix.com (Postfix, from userid 1002)
+	id E8B362561D; Tue, 21 Oct 2025 09:41:12 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=zynotix.com; s=mail;
+	t=1761032483; bh=xZTLqM3E7aVDYIB/jnD5MiDi3FAIGgatFm751EDj2YQ=;
+	h=Date:From:To:Subject:From;
+	b=b5xzEeSUzMdtEX86b6Db9krVJgv3z4Ikz1AZI2fLo7ajXtq6Q5VD0wFI16rGiYKU0
+	 bGpzuj1wpsvDfYs/zOv7+cfBHN2YD+WVsmIo+JbxOkpeBIBJKcPMzq0FGQf5rRcviq
+	 FiPPRwCkzoAnpjBagNe/eUPEorKyKK9WjEio3g8/ypTrAZR6yYsUtOlDo/48k11bKJ
+	 nN5GjXaSt0UiBU2qav8Z9dIajRrMcajEkP3DcW/1MNn9I+qlA4AN2EReKYEBs2GKRw
+	 VVd/FWUkQOwyHB6FHnerYEaO66MeBctpUR4tuCKTTb9i61cZoGGU0PMeNcZ4NFUwoq
+	 M9F+5tKfakwkg==
+Received: by mail.zynotix.com for <linux-mediatek@lists.infradead.org>; Tue, 21 Oct 2025 07:40:46 GMT
+Message-ID: <20251021084501-0.1.ck.ungu.0.kwo18bal1s@zynotix.com>
+Date: Tue, 21 Oct 2025 07:40:46 GMT
+From: =?UTF-8?Q?"Magdalena_Ko=C5=82adczyk"?= <magdalena.koladczyk@zynotix.com>
+To: <linux-mediatek@lists.infradead.org>
+Subject: =?UTF-8?Q?Informacja_z_ksi=C4=99gowo=C5=9Bci?=
+X-Mailer: mail.zynotix.com
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20251021-mt8365-enable-gpu-v2-2-17e05cff2c86@collabora.com>
-References: <20251021-mt8365-enable-gpu-v2-0-17e05cff2c86@collabora.com>
-In-Reply-To: <20251021-mt8365-enable-gpu-v2-0-17e05cff2c86@collabora.com>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1761031905; l=2580;
- i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=u+G8Mt1dpRFClpUAKvKbFwgypYjcR8NzUmnmamS1YxM=;
- b=y05pIlBN0LFY95ArJuuCsCuEONmMvdyrcfp3eGfkpqGJkcEnRG5trecSjXqSwe1G06oqT2A7H
- LCL+qahdJMeCBNOr/GGmvc/3avl+W9OykjeO9G1siKKpKZItu8jez8d
-X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
- pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251021_003152_680477_D0F0F19A 
-X-CRM114-Status: GOOD (  11.02  )
+X-CRM114-CacheID: sfid-20251021_004242_671415_2DBE8720 
+X-CRM114-Status: UNSURE (   0.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,87 +66,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Mediatek MT8365 SoC has an integrated Arm Mali G52 MC1 GPU
-(Bifrost).
-Add gpu, OPP table, and MFG clock driver nodes in mt8365.dtsi to support
-it using the Panfrost driver.
+Dzie=C5=84 dobry,
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt8365.dtsi | 43 +++++++++++++++++++++++++++++++-
- 1 file changed, 42 insertions(+), 1 deletion(-)
+prowadz=C4=99 biuro ksi=C4=99gowe, kt=C3=B3re specjalizuje si=C4=99 w obs=
+=C5=82udze biznesu Pa=C5=84stwa formatu.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-index e6d2b3221a3b7a855129258b379ae4bc2fd05449..a5ca3cda6ef30d59a106222549dc15bcb6ce503d 100644
---- a/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-@@ -267,6 +267,26 @@ clk26m: oscillator {
- 		clock-output-names = "clk26m";
- 	};
- 
-+	gpu_opp_table: opp-table-gpu {
-+		compatible = "operating-points-v2";
-+		opp-shared;
-+
-+		opp-450000000 {
-+			opp-hz = /bits/ 64 <450000000>;
-+			opp-microvolt = <650000>;
-+		};
-+
-+		opp-560000000 {
-+			opp-hz = /bits/ 64 <560000000>;
-+			opp-microvolt = <700000>;
-+		};
-+
-+		opp-800000000 {
-+			opp-hz = /bits/ 64 <800000000>;
-+			opp-microvolt = <800000>;
-+		};
-+	};
-+
- 	psci {
- 		compatible = "arm,psci-1.0";
- 		method = "smc";
-@@ -292,6 +312,27 @@ gic: interrupt-controller@c000000 {
- 			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
- 		};
- 
-+		mfgcfg: syscon@13000000 {
-+			compatible = "mediatek,mt8365-mfgcfg", "syscon";
-+			reg = <0 0x13000000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
-+		gpu: gpu@13040000 {
-+			compatible = "mediatek,mt8365-mali", "arm,mali-bifrost";
-+			reg = <0 0x13040000 0 0x4000>;
-+
-+			clocks = <&mfgcfg CLK_MFG_BG3D>;
-+			interrupts = <GIC_SPI 203 IRQ_TYPE_LEVEL_LOW>,
-+				     <GIC_SPI 202 IRQ_TYPE_LEVEL_LOW>,
-+				     <GIC_SPI 201 IRQ_TYPE_LEVEL_LOW>,
-+				     <GIC_SPI 204 IRQ_TYPE_LEVEL_LOW>;
-+			interrupt-names = "job", "mmu", "gpu", "event";
-+			operating-points-v2 = <&gpu_opp_table>;
-+			power-domains = <&spm MT8365_POWER_DOMAIN_MFG>;
-+			status = "disabled";
-+		};
-+
- 		topckgen: syscon@10000000 {
- 			compatible = "mediatek,mt8365-topckgen", "syscon";
- 			reg = <0 0x10000000 0 0x1000>;
-@@ -398,7 +439,7 @@ power-domain@MT8365_POWER_DOMAIN_CONN {
- 					mediatek,infracfg = <&infracfg>;
- 				};
- 
--				power-domain@MT8365_POWER_DOMAIN_MFG {
-+				mfg: power-domain@MT8365_POWER_DOMAIN_MFG {
- 					reg = <MT8365_POWER_DOMAIN_MFG>;
- 					clocks = <&topckgen CLK_TOP_MFG_SEL>;
- 					clock-names = "mfg";
+Wraz z zespo=C5=82em zapewniamy wsparcie, kt=C3=B3re wykracza daleko poza=
+ samo przygotowanie rozlicze=C5=84 i procesowanie dokumentacji.
 
--- 
-2.51.0
+Redukujemy do minimum czas i =C5=9Brodki, jakie nasi Klienci przeznaczaj=C4=
+=85 na obs=C5=82ug=C4=99 finansowo-ksi=C4=99gow=C4=85 i kadrowo-p=C5=82ac=
+ow=C4=85.=20
 
+Z racji mojego do=C5=9Bwiadczenia przy wsp=C3=B3=C5=82pracy z firmami o t=
+akim rodzaju dzia=C5=82alno=C5=9Bci, chcia=C5=82abym przedstawi=C4=87 kil=
+ka warto=C5=9Bciowych i sprawdzonych rozwi=C4=85za=C5=84.
+
+Czy mo=C5=BCemy porozmawia=C4=87 o obs=C5=82udze Pa=C5=84stwa firmy?
+
+Pozdrawiam
+Magdalena Ko=C5=82adczyk
 
