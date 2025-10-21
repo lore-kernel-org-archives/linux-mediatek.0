@@ -4,69 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25242CCD1A5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Oct 2025 08:04:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DADBCCD1A5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Oct 2025 11:20:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=x91IOqizOSo8pet+zWfpdTr9hKgeL8B/ySoSXY3XAFY=; b=Fqeiuyw8KU7T3oE1vvx3qeWG6Y
-	anK8SnHVXqB3GogNB8pNXsWgPlvZCL05b87cW0XBqtzwsJiZElAZ/1sKWnEnpOInsBEIlh4xo2mUt
-	mYOdTdQh2otTGFeO9uLjeTDm2rHIRF3v50SNhnARb/I7VsvdO20Qmp4OnJ04OdMKSowb9lsjAzIta
-	Bsk7Jjjo/Ehi0POsWI3X7XSJfkyEu7fFAJeWefhjt/52iI6l/1tbpGgCly4dwdOPlmy6OcTEf733x
-	tXxkqXTXbcOUyTJwOCR2NHGWSJCVaU2hg1xGx/SAVZezbp9mfAzwTWGg4wWIxvyqHHuF21YxVV7j3
-	EuyxNnig==;
+	bh=c+wVA+Y8ZRjs8khCvkibhIqHLBC+tv3RGaU5s7skx3g=; b=Luz0DsnfS4RfawCxlgrAvu/ypJ
+	kb8ewfMmbIEkmFcY3Wqv1nCxcuZiDoLnvwArSe79h4dqszuOs8OdbNWYKc0/AMJOh2iv2r03Gikrn
+	yU8QbnPr3UveeFwAFZVeQP4eda94aVscjFwCwSvFJ8xjxWOobADoOZAyYAQb4Vu8wBxlHmd4R/hkZ
+	Jyg2JQfvXcx3KJng+JuX2ashwnOBkdudqU6dQ2wI1RLcU2G5pxCS/UN1WOstKbWDk8TkpWdK2Sj5m
+	QMgDEEW+A2MJVSjSFeSt+aNTOcALih3sQbZpZUGHQDCvE8/pqBOsXI7n31oUVoZG10rgRcuZwaaac
+	6/QAQvVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vB7Lc-0000000GDG1-34Ni;
-	Tue, 21 Oct 2025 08:04:00 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vBAQC-0000000GkTI-2sOE;
+	Tue, 21 Oct 2025 11:20:56 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vB7LZ-0000000GDCC-1qi6;
-	Tue, 21 Oct 2025 08:03:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1761033833;
-	bh=uRJHPyETDsTCj2+OQ1mRFlr8Bbks2lxPY6twkMXsU2I=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=QROdFjdgod/ROylJgy2Guz/ooeoHdSBvVBAh5Je/NIPZVw8Id9oRiFxWXCVHFjshj
-	 rsRD6xnfsiXOoIPMpzKWa6gwzqBRxnJMMUIlnqUbKP4ybKE7I6R4GhedPFsJ3ZE0cn
-	 Fyat/tvas5N+DYhHCkOokWzRItq5v/Zd0JQSmtES+G9vqj1rpn4RTI4NNADxdS9hrh
-	 LXFtS0yZsdBIuIYbxVdQSQpkvqS3ytSXDQfTh0SgTgTNByE7O342gjxdPj5kPaOuN7
-	 H4/zTP9IVJTZUkHvAUNgPFqiZR4fy2QKTfr5H1t2/iaoHCAlUctjMHye0LLH0p2Rjt
-	 4/RNQDNBGf7PA==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 08DC317E081A;
-	Tue, 21 Oct 2025 10:03:52 +0200 (CEST)
-Message-ID: <0e5ca992-730d-42c5-b5b8-5ad04116b8d4@collabora.com>
-Date: Tue, 21 Oct 2025 10:03:52 +0200
+	id 1vBAQB-0000000GkSM-13ej;
+	Tue, 21 Oct 2025 11:20:55 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 42E78623CC;
+	Tue, 21 Oct 2025 11:20:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D4677C4CEF1;
+	Tue, 21 Oct 2025 11:20:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1761045639;
+	bh=+VaSZVBmZz5ORjS1Wb6KdbQodfWLfvpUe4sWk4+bHv4=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=YW1znFsumFVytyxSSC/x9NGDtSKDa95wxqD2GVitcp9zBDvj58z7i4UVfsYqyMESb
+	 0756yvamIZ5JBhICt1yrOhmGulkkWKUjuXg9nEXtxL2d1R5NXWyktgM1ONo1BM3+9D
+	 eM3u7SzC32ZvUTi8W9M9Npo2v2ZkjZ9NH1QfoVbSzjcBX6tRiUSkmRnEQsffdaiw0y
+	 na/QZqlQUaeMUVNggBSrFzt607Gl9yD8TApx2OmB/txPEG33msJMaGvo4oi432rB/6
+	 EsFxp0BhffTuDlM20IErb2ih6IgyYqB8TfoMmyUlMdQAgug5V45/0r9BQMV4F9FUx1
+	 C9mqq2/7zXWdA==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id ADE3A3A55ED9;
+	Tue, 21 Oct 2025 11:20:22 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/3] Add Mali GPU support for Mediatek MT8365 SoC
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next v3 00/13] net: airoha: Add AN7583 ethernet
+ controller support
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <176104562151.1030909.1115814969731162849.git-patchwork-notify@kernel.org>
+Date: Tue, 21 Oct 2025 11:20:21 +0000
+References: <20251017-an7583-eth-support-v3-0-f28319666667@kernel.org>
+In-Reply-To: <20251017-an7583-eth-support-v3-0-f28319666667@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, p.zabel@pengutronix.de,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Conor Dooley <conor.dooley@microchip.com>
-References: <20251021-mt8365-enable-gpu-v2-0-17e05cff2c86@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20251021-mt8365-enable-gpu-v2-0-17e05cff2c86@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251021_010357_633900_2E4E729C 
-X-CRM114-Status: GOOD (  18.14  )
+ netdev@vger.kernel.org, devicetree@vger.kernel.org, horms@kernel.org,
+ ansuelsmth@gmail.com
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,120 +75,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 21/10/25 09:30, Louis-Alexis Eyraud ha scritto:
-> This patchset adds the support of the ARM Mali G52 MC1 GPU (Bifrost),
-> integrated to the Mediatek MT8365 SoC, and its enablement to the
-> Mediatek Genio 350-EVK board.
-> 
-> I've tested this patchset on a Mediatek Genio 350-EVK board,
-> with a kernel based on linux-next (tag: next-20251021).
-> 
+Hello:
 
-Thanks for this one! This series is ready to be merged.
+This series was applied to netdev/net-next.git (main)
+by Paolo Abeni <pabeni@redhat.com>:
 
-However, in order to take the DT patches I need someone to pick the binding first.
-
-Cheers,
-Angelo
-
-> The panfrost driver probed with the following messages:
-> ```
-> panfrost 13040000.gpu: clock rate = 450000031
-> panfrost 13040000.gpu: mali-g52 id 0x7402 major 0x1 minor 0x0 status
->    0x0
-> panfrost 13040000.gpu: features: 00000000,00000df7, issues: 00000000,
->    00000400
-> panfrost 13040000.gpu: Features: L2:0x07110206 Shader:0x00000003
->   Tiler:0x00000209 Mem:0x1 MMU:0x00002823 AS:0xff JS:0x7
-> panfrost 13040000.gpu: shader_present=0x1 l2_present=0x1
-> [drm] Initialized panfrost 1.5.0 for 13040000.gpu on minor 0
-> ```
-> 
-> Running glmark2-es2-drm with MESA 25.2 is also OK:
-> ```
-> =======================================================
->      glmark2 2023.01
-> =======================================================
->      OpenGL Information
->      GL_VENDOR:      Mesa
->      GL_RENDERER:    Mali-G52 r1 (Panfrost)
->      GL_VERSION:     OpenGL ES 3.1 Mesa 25.2.5-1
->      Surface Config: buf=32 r=8 g=8 b=8 a=8 depth=24 stencil=0 samples=0
->      Surface Size:   1200x1920 fullscreen
-> =======================================================
-> [build] use-vbo=false: FPS: 513 FrameTime: 1.952 ms
-> [build] use-vbo=true: FPS: 514 FrameTime: 1.947 ms
-> [texture] texture-filter=nearest: FPS: 489 FrameTime: 2.046 ms
-> [texture] texture-filter=linear: FPS: 486 FrameTime: 2.061 ms
-> [texture] texture-filter=mipmap: FPS: 476 FrameTime: 2.101 ms
-> [shading] shading=gouraud: FPS: 436 FrameTime: 2.296 ms
-> [shading] shading=blinn-phong-inf: FPS: 387 FrameTime: 2.585 ms
-> [shading] shading=phong: FPS: 253 FrameTime: 3.955 ms
-> [shading] shading=cel: FPS: 232 FrameTime: 4.328 ms
-> [bump] bump-render=high-poly: FPS: 266 FrameTime: 3.765 ms
-> [bump] bump-render=normals: FPS: 421 FrameTime: 2.376 ms
-> [bump] bump-render=height: FPS: 343 FrameTime: 2.922 ms
-> [effect2d] kernel=0,1,0;1,-4,1;0,1,0;: FPS: 133 FrameTime: 7.521 ms
-> [effect2d] kernel=1,1,1,1,1;1,1,1,1,1;1,1,1,1,1;: FPS: 46 FrameTime:
->    21.990 ms
-> [pulsar] light=false:quads=5:texture=false: FPS: 379 FrameTime: 2.645 ms
-> [desktop] blur-radius=5:effect=blur:passes=1:separable=true:windows=4:
->    FPS: 57 FrameTime: 17.735 ms
-> [desktop] effect=shadow:windows=4: FPS: 249 FrameTime: 4.018 ms
-> [buffer] columns=200:interleave=false:update-dispersion=0.9:update-fraction
->    =0.5:update-method=map: FPS: 81 FrameTime: 12.447 ms
-> [buffer] columns=200:interleave=false:update-dispersion=0.9:update-fraction
->    =0.5:update-method=subdata: FPS: 81 FrameTime: 12.388 ms
-> [buffer] columns=200:interleave=true:update-dispersion=0.9:update-fraction
->    =0.5:update-method=map: FPS: 99 FrameTime: 10.127 ms
-> [ideas] speed=duration: FPS: 287 FrameTime: 3.492 ms
-> [jellyfish] <default>: FPS: 114 FrameTime: 8.842 ms
-> [terrain] <default>: FPS: 14 FrameTime: 76.911 ms
-> [shadow] <default>: FPS: 156 FrameTime: 6.432 ms
-> [refract] <default>: FPS: 29 FrameTime: 34.791 ms
-> [conditionals] fragment-steps=0:vertex-steps=0: FPS: 529 FrameTime: 1.890 ms
-> [conditionals] fragment-steps=5:vertex-steps=0: FPS: 326 FrameTime: 3.076 ms
-> [conditionals] fragment-steps=0:vertex-steps=5: FPS: 532 FrameTime: 1.880 ms
-> [function] fragment-complexity=low:fragment-steps=5: FPS: 475 FrameTime:
->    2.106 ms
-> [function] fragment-complexity=medium:fragment-steps=5: FPS: 227
->    FrameTime: 4.417 ms
-> [loop] fragment-loop=false:fragment-steps=5:vertex-steps=5: FPS: 475
->    FrameTime: 2.108 ms
-> [loop] fragment-steps=5:fragment-uniform=false:vertex-steps=5: FPS: 474
->    FrameTime: 2.110 ms
-> [loop] fragment-steps=5:fragment-uniform=true:vertex-steps=5: FPS: 226
->    FrameTime: 4.428 ms
-> =======================================================
->                                    glmark2 Score: 296
-> =======================================================
-> ```
-> 
-> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-> ---
-> Changes in v2:
-> - Rebased on next-20251021 tag
-> - Fixed missing blank lines in 'arm64: dts: mediatek: mt8365: Add GPU
->    support' patch
-> - Added reviewed-by and acked-by trailers
-> - Updated cover letter
-> - Link to v1: https://lore.kernel.org/r/20250813-mt8365-enable-gpu-v1-0-46c44c6c1566@collabora.com
+On Fri, 17 Oct 2025 11:06:09 +0200 you wrote:
+> Introduce support for AN7583 ethernet controller to airoha-eth dirver.
+> The main differences between EN7581 and AN7583 is the latter runs a
+> single PPE module while EN7581 runs two of them. Moreover PPE SRAM in
+> AN7583 SoC is reduced to 8K (while SRAM is 16K on EN7581).
 > 
 > ---
-> Louis-Alexis Eyraud (3):
->        dt-bindings: gpu: mali-bifrost: Add compatible for MT8365 SoC
->        arm64: dts: mediatek: mt8365: Add GPU support
->        arm64: dts: mediatek: mt8365-evk: Enable GPU support
+> Changes in v3:
+> - improve device-tree binding
+> - rebase on top of net-next main branch
+> - Link to v2: https://lore.kernel.org/r/20251016-an7583-eth-support-v2-0-ea6e7e9acbdb@kernel.org
 > 
->   .../devicetree/bindings/gpu/arm,mali-bifrost.yaml  |  1 +
->   arch/arm64/boot/dts/mediatek/mt8365-evk.dts        |  9 +++++
->   arch/arm64/boot/dts/mediatek/mt8365.dtsi           | 43 +++++++++++++++++++++-
->   3 files changed, 52 insertions(+), 1 deletion(-)
-> ---
-> base-commit: 853c202e4aec8006c2c1367b052c9f8949db019a
-> change-id: 20250812-mt8365-enable-gpu-a39835dca7fc
-> 
-> Best regards,
+> [...]
+
+Here is the summary with links:
+  - [net-next,v3,01/13] dt-bindings: net: airoha: Add AN7583 support
+    https://git.kernel.org/netdev/net-next/c/51538c0c9d8c
+  - [net-next,v3,02/13] net: airoha: ppe: Dynamically allocate foe_check_time array in airoha_ppe struct
+    https://git.kernel.org/netdev/net-next/c/6d5b601d52a2
+  - [net-next,v3,03/13] net: airoha: Add airoha_ppe_get_num_stats_entries() and airoha_ppe_get_num_total_stats_entries()
+    https://git.kernel.org/netdev/net-next/c/15f357cd4581
+  - [net-next,v3,04/13] net: airoha: Add airoha_eth_soc_data struct
+    https://git.kernel.org/netdev/net-next/c/5863b4e065e2
+  - [net-next,v3,05/13] net: airoha: Generalize airoha_ppe2_is_enabled routine
+    https://git.kernel.org/netdev/net-next/c/ef9449f080b6
+  - [net-next,v3,06/13] net: airoha: ppe: Move PPE memory info in airoha_eth_soc_data struct
+    https://git.kernel.org/netdev/net-next/c/5bd1d1fd48ea
+  - [net-next,v3,07/13] net: airoha: ppe: Remove airoha_ppe_is_enabled() where not necessary
+    https://git.kernel.org/netdev/net-next/c/41139125f5c7
+  - [net-next,v3,08/13] net: airoha: ppe: Configure SRAM PPE entries via the cpu
+    https://git.kernel.org/netdev/net-next/c/306b78f5035a
+  - [net-next,v3,09/13] net: airoha: ppe: Flush PPE SRAM table during PPE setup
+    https://git.kernel.org/netdev/net-next/c/620d7b91aadb
+  - [net-next,v3,10/13] net: airoha: Select default ppe cpu port in airoha_dev_init()
+    https://git.kernel.org/netdev/net-next/c/c71a7a861ef0
+  - [net-next,v3,11/13] net: airoha: Refactor src port configuration in airhoha_set_gdm2_loopback
+    https://git.kernel.org/netdev/net-next/c/9d5b5219f672
+  - [net-next,v3,12/13] net: airoha: ppe: Do not use magic numbers in airoha_ppe_foe_get_entry_locked()
+    https://git.kernel.org/netdev/net-next/c/63f283d36b1f
+  - [net-next,v3,13/13] net: airoha: Add AN7583 SoC support
+    https://git.kernel.org/netdev/net-next/c/e4e5ce823bdd
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
 
 
