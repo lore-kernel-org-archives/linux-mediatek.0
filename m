@@ -4,54 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD6ECCCD184
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Oct 2025 07:42:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25242CCD1A5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Oct 2025 08:04:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=xZTLqM3E7aVDYIB/jnD5MiDi3FAIGgatFm751EDj2YQ=; b=fWZQ40dqjd5KzYK4Yd14CwolZM
-	+q8oD79WJctsqL9NemCo41TTwtb/45JJKXdJYtA7f7e9BLZ4XwLNc1k5clOv51Z1pmqvc+YzNZU64
-	7lm7Z5tqHxbokWJk5UtfNYwz8Bhj2gSxHdlAWAkz9PlZuNLDlppXh3K4Twe++luKL9xY8DI4YExYq
-	Q+oj5Sp1AMdFKPDqFHFDHFiAHGyjayP3wL2ik1z4f0e9UTBPaf8mxrWAOmyleF3rXE9QVz/DF/ZE8
-	4WXSVWasrqR5OcmsvOkGEAokT2lMXJXSg3JItfQ7i1qklWd8qLWt3BKaIOc7y63iQ1gLDW4Oz0Y4+
-	jJebJcyA==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=x91IOqizOSo8pet+zWfpdTr9hKgeL8B/ySoSXY3XAFY=; b=Fqeiuyw8KU7T3oE1vvx3qeWG6Y
+	anK8SnHVXqB3GogNB8pNXsWgPlvZCL05b87cW0XBqtzwsJiZElAZ/1sKWnEnpOInsBEIlh4xo2mUt
+	mYOdTdQh2otTGFeO9uLjeTDm2rHIRF3v50SNhnARb/I7VsvdO20Qmp4OnJ04OdMKSowb9lsjAzIta
+	Bsk7Jjjo/Ehi0POsWI3X7XSJfkyEu7fFAJeWefhjt/52iI6l/1tbpGgCly4dwdOPlmy6OcTEf733x
+	tXxkqXTXbcOUyTJwOCR2NHGWSJCVaU2hg1xGx/SAVZezbp9mfAzwTWGg4wWIxvyqHHuF21YxVV7j3
+	EuyxNnig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vB712-0000000G6e3-2rKs;
-	Tue, 21 Oct 2025 07:42:44 +0000
-Received: from mail.zynotix.com ([79.137.80.196])
+	id 1vB7Lc-0000000GDG1-34Ni;
+	Tue, 21 Oct 2025 08:04:00 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vB710-0000000G6dY-1QPo
-	for linux-mediatek@lists.infradead.org;
-	Tue, 21 Oct 2025 07:42:43 +0000
-Received: by mail.zynotix.com (Postfix, from userid 1002)
-	id E8B362561D; Tue, 21 Oct 2025 09:41:12 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=zynotix.com; s=mail;
-	t=1761032483; bh=xZTLqM3E7aVDYIB/jnD5MiDi3FAIGgatFm751EDj2YQ=;
-	h=Date:From:To:Subject:From;
-	b=b5xzEeSUzMdtEX86b6Db9krVJgv3z4Ikz1AZI2fLo7ajXtq6Q5VD0wFI16rGiYKU0
-	 bGpzuj1wpsvDfYs/zOv7+cfBHN2YD+WVsmIo+JbxOkpeBIBJKcPMzq0FGQf5rRcviq
-	 FiPPRwCkzoAnpjBagNe/eUPEorKyKK9WjEio3g8/ypTrAZR6yYsUtOlDo/48k11bKJ
-	 nN5GjXaSt0UiBU2qav8Z9dIajRrMcajEkP3DcW/1MNn9I+qlA4AN2EReKYEBs2GKRw
-	 VVd/FWUkQOwyHB6FHnerYEaO66MeBctpUR4tuCKTTb9i61cZoGGU0PMeNcZ4NFUwoq
-	 M9F+5tKfakwkg==
-Received: by mail.zynotix.com for <linux-mediatek@lists.infradead.org>; Tue, 21 Oct 2025 07:40:46 GMT
-Message-ID: <20251021084501-0.1.ck.ungu.0.kwo18bal1s@zynotix.com>
-Date: Tue, 21 Oct 2025 07:40:46 GMT
-From: =?UTF-8?Q?"Magdalena_Ko=C5=82adczyk"?= <magdalena.koladczyk@zynotix.com>
-To: <linux-mediatek@lists.infradead.org>
-Subject: =?UTF-8?Q?Informacja_z_ksi=C4=99gowo=C5=9Bci?=
-X-Mailer: mail.zynotix.com
+	id 1vB7LZ-0000000GDCC-1qi6;
+	Tue, 21 Oct 2025 08:03:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1761033833;
+	bh=uRJHPyETDsTCj2+OQ1mRFlr8Bbks2lxPY6twkMXsU2I=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=QROdFjdgod/ROylJgy2Guz/ooeoHdSBvVBAh5Je/NIPZVw8Id9oRiFxWXCVHFjshj
+	 rsRD6xnfsiXOoIPMpzKWa6gwzqBRxnJMMUIlnqUbKP4ybKE7I6R4GhedPFsJ3ZE0cn
+	 Fyat/tvas5N+DYhHCkOokWzRItq5v/Zd0JQSmtES+G9vqj1rpn4RTI4NNADxdS9hrh
+	 LXFtS0yZsdBIuIYbxVdQSQpkvqS3ytSXDQfTh0SgTgTNByE7O342gjxdPj5kPaOuN7
+	 H4/zTP9IVJTZUkHvAUNgPFqiZR4fy2QKTfr5H1t2/iaoHCAlUctjMHye0LLH0p2Rjt
+	 4/RNQDNBGf7PA==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 08DC317E081A;
+	Tue, 21 Oct 2025 10:03:52 +0200 (CEST)
+Message-ID: <0e5ca992-730d-42c5-b5b8-5ad04116b8d4@collabora.com>
+Date: Tue, 21 Oct 2025 10:03:52 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 0/3] Add Mali GPU support for Mediatek MT8365 SoC
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Conor Dooley <conor.dooley@microchip.com>
+References: <20251021-mt8365-enable-gpu-v2-0-17e05cff2c86@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20251021-mt8365-enable-gpu-v2-0-17e05cff2c86@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251021_004242_671415_2DBE8720 
-X-CRM114-Status: UNSURE (   0.17  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251021_010357_633900_2E4E729C 
+X-CRM114-Status: GOOD (  18.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,24 +81,120 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dzie=C5=84 dobry,
+Il 21/10/25 09:30, Louis-Alexis Eyraud ha scritto:
+> This patchset adds the support of the ARM Mali G52 MC1 GPU (Bifrost),
+> integrated to the Mediatek MT8365 SoC, and its enablement to the
+> Mediatek Genio 350-EVK board.
+> 
+> I've tested this patchset on a Mediatek Genio 350-EVK board,
+> with a kernel based on linux-next (tag: next-20251021).
+> 
 
-prowadz=C4=99 biuro ksi=C4=99gowe, kt=C3=B3re specjalizuje si=C4=99 w obs=
-=C5=82udze biznesu Pa=C5=84stwa formatu.
+Thanks for this one! This series is ready to be merged.
 
-Wraz z zespo=C5=82em zapewniamy wsparcie, kt=C3=B3re wykracza daleko poza=
- samo przygotowanie rozlicze=C5=84 i procesowanie dokumentacji.
+However, in order to take the DT patches I need someone to pick the binding first.
 
-Redukujemy do minimum czas i =C5=9Brodki, jakie nasi Klienci przeznaczaj=C4=
-=85 na obs=C5=82ug=C4=99 finansowo-ksi=C4=99gow=C4=85 i kadrowo-p=C5=82ac=
-ow=C4=85.=20
+Cheers,
+Angelo
 
-Z racji mojego do=C5=9Bwiadczenia przy wsp=C3=B3=C5=82pracy z firmami o t=
-akim rodzaju dzia=C5=82alno=C5=9Bci, chcia=C5=82abym przedstawi=C4=87 kil=
-ka warto=C5=9Bciowych i sprawdzonych rozwi=C4=85za=C5=84.
+> The panfrost driver probed with the following messages:
+> ```
+> panfrost 13040000.gpu: clock rate = 450000031
+> panfrost 13040000.gpu: mali-g52 id 0x7402 major 0x1 minor 0x0 status
+>    0x0
+> panfrost 13040000.gpu: features: 00000000,00000df7, issues: 00000000,
+>    00000400
+> panfrost 13040000.gpu: Features: L2:0x07110206 Shader:0x00000003
+>   Tiler:0x00000209 Mem:0x1 MMU:0x00002823 AS:0xff JS:0x7
+> panfrost 13040000.gpu: shader_present=0x1 l2_present=0x1
+> [drm] Initialized panfrost 1.5.0 for 13040000.gpu on minor 0
+> ```
+> 
+> Running glmark2-es2-drm with MESA 25.2 is also OK:
+> ```
+> =======================================================
+>      glmark2 2023.01
+> =======================================================
+>      OpenGL Information
+>      GL_VENDOR:      Mesa
+>      GL_RENDERER:    Mali-G52 r1 (Panfrost)
+>      GL_VERSION:     OpenGL ES 3.1 Mesa 25.2.5-1
+>      Surface Config: buf=32 r=8 g=8 b=8 a=8 depth=24 stencil=0 samples=0
+>      Surface Size:   1200x1920 fullscreen
+> =======================================================
+> [build] use-vbo=false: FPS: 513 FrameTime: 1.952 ms
+> [build] use-vbo=true: FPS: 514 FrameTime: 1.947 ms
+> [texture] texture-filter=nearest: FPS: 489 FrameTime: 2.046 ms
+> [texture] texture-filter=linear: FPS: 486 FrameTime: 2.061 ms
+> [texture] texture-filter=mipmap: FPS: 476 FrameTime: 2.101 ms
+> [shading] shading=gouraud: FPS: 436 FrameTime: 2.296 ms
+> [shading] shading=blinn-phong-inf: FPS: 387 FrameTime: 2.585 ms
+> [shading] shading=phong: FPS: 253 FrameTime: 3.955 ms
+> [shading] shading=cel: FPS: 232 FrameTime: 4.328 ms
+> [bump] bump-render=high-poly: FPS: 266 FrameTime: 3.765 ms
+> [bump] bump-render=normals: FPS: 421 FrameTime: 2.376 ms
+> [bump] bump-render=height: FPS: 343 FrameTime: 2.922 ms
+> [effect2d] kernel=0,1,0;1,-4,1;0,1,0;: FPS: 133 FrameTime: 7.521 ms
+> [effect2d] kernel=1,1,1,1,1;1,1,1,1,1;1,1,1,1,1;: FPS: 46 FrameTime:
+>    21.990 ms
+> [pulsar] light=false:quads=5:texture=false: FPS: 379 FrameTime: 2.645 ms
+> [desktop] blur-radius=5:effect=blur:passes=1:separable=true:windows=4:
+>    FPS: 57 FrameTime: 17.735 ms
+> [desktop] effect=shadow:windows=4: FPS: 249 FrameTime: 4.018 ms
+> [buffer] columns=200:interleave=false:update-dispersion=0.9:update-fraction
+>    =0.5:update-method=map: FPS: 81 FrameTime: 12.447 ms
+> [buffer] columns=200:interleave=false:update-dispersion=0.9:update-fraction
+>    =0.5:update-method=subdata: FPS: 81 FrameTime: 12.388 ms
+> [buffer] columns=200:interleave=true:update-dispersion=0.9:update-fraction
+>    =0.5:update-method=map: FPS: 99 FrameTime: 10.127 ms
+> [ideas] speed=duration: FPS: 287 FrameTime: 3.492 ms
+> [jellyfish] <default>: FPS: 114 FrameTime: 8.842 ms
+> [terrain] <default>: FPS: 14 FrameTime: 76.911 ms
+> [shadow] <default>: FPS: 156 FrameTime: 6.432 ms
+> [refract] <default>: FPS: 29 FrameTime: 34.791 ms
+> [conditionals] fragment-steps=0:vertex-steps=0: FPS: 529 FrameTime: 1.890 ms
+> [conditionals] fragment-steps=5:vertex-steps=0: FPS: 326 FrameTime: 3.076 ms
+> [conditionals] fragment-steps=0:vertex-steps=5: FPS: 532 FrameTime: 1.880 ms
+> [function] fragment-complexity=low:fragment-steps=5: FPS: 475 FrameTime:
+>    2.106 ms
+> [function] fragment-complexity=medium:fragment-steps=5: FPS: 227
+>    FrameTime: 4.417 ms
+> [loop] fragment-loop=false:fragment-steps=5:vertex-steps=5: FPS: 475
+>    FrameTime: 2.108 ms
+> [loop] fragment-steps=5:fragment-uniform=false:vertex-steps=5: FPS: 474
+>    FrameTime: 2.110 ms
+> [loop] fragment-steps=5:fragment-uniform=true:vertex-steps=5: FPS: 226
+>    FrameTime: 4.428 ms
+> =======================================================
+>                                    glmark2 Score: 296
+> =======================================================
+> ```
+> 
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+> ---
+> Changes in v2:
+> - Rebased on next-20251021 tag
+> - Fixed missing blank lines in 'arm64: dts: mediatek: mt8365: Add GPU
+>    support' patch
+> - Added reviewed-by and acked-by trailers
+> - Updated cover letter
+> - Link to v1: https://lore.kernel.org/r/20250813-mt8365-enable-gpu-v1-0-46c44c6c1566@collabora.com
+> 
+> ---
+> Louis-Alexis Eyraud (3):
+>        dt-bindings: gpu: mali-bifrost: Add compatible for MT8365 SoC
+>        arm64: dts: mediatek: mt8365: Add GPU support
+>        arm64: dts: mediatek: mt8365-evk: Enable GPU support
+> 
+>   .../devicetree/bindings/gpu/arm,mali-bifrost.yaml  |  1 +
+>   arch/arm64/boot/dts/mediatek/mt8365-evk.dts        |  9 +++++
+>   arch/arm64/boot/dts/mediatek/mt8365.dtsi           | 43 +++++++++++++++++++++-
+>   3 files changed, 52 insertions(+), 1 deletion(-)
+> ---
+> base-commit: 853c202e4aec8006c2c1367b052c9f8949db019a
+> change-id: 20250812-mt8365-enable-gpu-a39835dca7fc
+> 
+> Best regards,
 
-Czy mo=C5=BCemy porozmawia=C4=87 o obs=C5=82udze Pa=C5=84stwa firmy?
 
-Pozdrawiam
-Magdalena Ko=C5=82adczyk
 
