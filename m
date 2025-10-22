@@ -4,81 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EF61CCD1AB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Oct 2025 09:12:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 924BCCCD1AB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Oct 2025 12:04:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PvNexhYHF8t9kM9PS58J6ZTCIJkGmPVdlS96wnNm7q4=; b=ZtnVBXutULNLLBlDD1lqEPh6OT
-	9+umlJpQ6c7tH2BZETVoMyKamLhlPO1jy74jszmMLEMMOel0mNQkVAB9Nzj3ltl2j8FnWeIX9ZnN4
-	j57trI1K+7ny3ieZyzYQ4DnDDy4KjdNKdBNgToBN/pMlc50g1oL/hP7aYvKa5LyYzRTLIcjI2QzRc
-	Y6+/H/nJbN0PLlNLfTSBXQ3N2RyiBXNg5mIi53LXH3XGzwQg0jWiQhELj0X/fJGtXPxxgRTVrrS9R
-	19v/qKXHFIiBybquhfs+0FxBfTIP7/tjLTT/rSrX8Sr+OTFnFzVi606kcEqs8z9/NogSpMXec+t0P
-	ci3e7sqA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=EBT8mdGkZMhubx3+PF0HBbvtvo57PUFO+I9TYpkyhbw=; b=tWTJ1nykOGgNWQ7U1x86BXMA3E
+	XWhsBV8Z239z6KUXEagAyjcyP0JxpGH2DM92DTJJa/rTRrDNuscR2IsN4qhqH7Zu6c9HYPjCdYlqC
+	MWky8BqNsSLY5LMZdrScrlGPZ3v0SQjYmN62cdhP7oyw1LlWW9zShx/g3Gvgu5VO73zIYTlbvh/k6
+	54cJEVVy8o+bQOY6rs/7qHDGyMWc2I9xi4J2y37Z/KDTB96EHOWXV9U+WfPcSSpI+F8YIUivvtVok
+	Sp3CEBrHg2Sa8X+tEhzz5Aeg8rLG+lqpzHzIrGT8BiriNs35iBztoyDFWguJmPWEbAqPReunkPv/O
+	XM8GBi+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBUtN-00000002DEZ-18U1;
-	Wed, 22 Oct 2025 09:12:25 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1vBXZV-00000002kD1-0lbB;
+	Wed, 22 Oct 2025 12:04:05 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBUtB-00000002D6F-0AHm;
-	Wed, 22 Oct 2025 09:12:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=PvNexhYHF8t9kM9PS58J6ZTCIJkGmPVdlS96wnNm7q4=; b=uTG6nb3zXuEOsXo6ZmuLPLDUKk
-	dhgep2PIJuJua+ZTxby9RvVTWscr+0EvAL9sJs7iPIiL5ibw08Yx0Sp9LE6LmUpAzJAaQIe4dZ5sX
-	wnWKrBIIPSicO2EoGVt0S0X5M6A8bV3cNLu/kr6Utx1WLoeS7Rt1zxEdQDyl5wb4XA3w=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1vBJ9a-00BfqE-Lg; Tue, 21 Oct 2025 22:40:22 +0200
-Date: Tue, 21 Oct 2025 22:40:22 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Sjoerd Simons <sjoerd@collabora.com>
-Cc: Eric Woudstra <ericwouds@gmail.com>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+	id 1vBXZR-00000002kBj-2H6x
+	for linux-mediatek@lists.infradead.org;
+	Wed, 22 Oct 2025 12:04:03 +0000
+Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-471075c0a18so71355435e9.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 22 Oct 2025 05:04:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1761134639; x=1761739439; darn=lists.infradead.org;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=EBT8mdGkZMhubx3+PF0HBbvtvo57PUFO+I9TYpkyhbw=;
+        b=SxsSFhgG8NHU/WMmqdfXMq8owBnmbZTpq62L3gUmtyqM2JmyaLoBhahSGsVaacRXC4
+         4jrylU/+FJVdLnS9E4rw72bUVEsJs0yeQ2OmzQWp2hZfyMdlwsE8haCRK0gIEETPskRl
+         9KfU4HsJdxCDHoUchmoba2O8WnC4S7SzMCTWjrBkZG4gkkLAYKCpq58Unb0tVHzfrqMc
+         k0xVio/DqUT53wereu24kRRbnk8/lHetrdvSu8D7cEspGglsFNagIsnY1OdMnr87jsHJ
+         +rMrjk5Xbo0mPhdGt2yBUarfQ0Sk4qFW/O1B9ieGCjVGqOJaPDhdrCwK3S0iIe++5Cjd
+         Rb3Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1761134639; x=1761739439;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=EBT8mdGkZMhubx3+PF0HBbvtvo57PUFO+I9TYpkyhbw=;
+        b=FTqCPthS4NFgneH9OYifPnjwknK5furHJL/QxUuta9ltrsxdQWfpXDU42T2JqQcPlF
+         AKKp56kQcOB430tnow/JPb4jY9mI2ZuHz59fN0Qa6jkaFwFNw3L9tgsP1ngXIJreAZf6
+         1psKeb4Z7c6g7/Ayt/rfIKNyFS9seCh3Asy5U3laTQVSoVmKjkfhdfRvMASqA/1I8NmF
+         zVbZ2SK9AASM/gRbGqFNcgyvVXhu5RmhLiPEx6pwx+am+nYnSOR+sP2N0VHpj49GfXo6
+         UVHhFUNltorjnNhc2pWlFalxmM2OYiAjz4VgMJXWqVxEgF8MIMnWxRKDtbql+2BtIW17
+         xx5g==
+X-Forwarded-Encrypted: i=1; AJvYcCXq6+NTcbUl5DrsJU+Z/lQVPBJAd2w9e3q5HVyMuqgnr3xxilxWGnH67sKXhl7NoPEs1K0KuYCnXBSB0P2yuQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywht2gBrm5kpwjOtc6EJSX3Jfnuc+XuJWpmXOSIGa63n8hXgg9H
+	LdeJOQ7UlAmvpRU+twMZhxOHigdlXXxN0rWA972nUmZFahFdEbmJX2OJ79y6+xEjaLRGNULqeAV
+	8LhsK
+X-Gm-Gg: ASbGncvTP31mLSJ+nfMlUmWjVzHQWqkM2oYmlAfltT3zWoN3S5bTOOZZJR5hri2adpT
+	4JhJDnDTaZeX+KvIzkMwgfwcwOKBL2b/gzqiuUdS/EkyZdXGoeOvkpbgz4YX8GiujvjH91gX50H
+	P9YdxSnY45xmHlNL+JwqfOxxwDeFMVRl26LGEsMSz5nI1Eej/YoiS5X0SibZybe2wVqWagDZtGE
+	XrfZ1YJHTMQAZCUoWKP2UbGtdWy0dlKem1wPsxGpvjJyof/Iuw35wb5lGsN+7et5DkIXdlw6OXX
+	n6j3LJYozj6B8KdNwxISFGHOiMKQsfdwuZTX/YdWRpi1J+IB1QjxYMSzbOEQTT1lWvgdRJdwlCM
+	BRsVdVe8OwJnCV2DkTo863wFiQLDCIy+Is3TNJ22Wk0UuTxZz6ufRtnytBL+NlSe1W0mSjnRVXq
+	YKBEZv8A==
+X-Google-Smtp-Source: AGHT+IGK45Cu7R7RqMblJ0H20sOThyXTHE0mGsTieR9rpgEJC68Mu7KEhV/qc0jaopljgaHcbYAevQ==
+X-Received: by 2002:a05:6000:428a:b0:428:3cd7:a336 with SMTP id ffacd0b85a97d-4283cd7a3a7mr11330553f8f.63.1761134639094;
+        Wed, 22 Oct 2025 05:03:59 -0700 (PDT)
+Received: from localhost ([196.207.164.177])
+        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-427f009a78csm25019851f8f.26.2025.10.22.05.03.58
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 22 Oct 2025 05:03:58 -0700 (PDT)
+Date: Wed, 22 Oct 2025 14:05:28 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: Bjorn Andersson <andersson@kernel.org>
+Cc: Mathieu Poirier <mathieu.poirier@linaro.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Lee Jones <lee@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
-	kernel@collabora.com, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org,
-	linux-phy@lists.infradead.org, netdev@vger.kernel.org,
-	Daniel Golle <daniel@makrotopia.org>,
-	Bryan Hinton <bryan@bryanhinton.com>
-Subject: Re: [PATCH 12/15] arm64: dts: mediatek: mt7981b-openwrt-one: Enable
- Ethernet
-Message-ID: <fd52be11-ccff-4f34-b86b-9c2f9f485756@lunn.ch>
-References: <20251016-openwrt-one-network-v1-0-de259719b6f2@collabora.com>
- <20251016-openwrt-one-network-v1-12-de259719b6f2@collabora.com>
- <4f82aa17-1bf8-4d72-bc1f-b32f364e1cf6@lunn.ch>
- <8f5335a703905dea9d8d0c1840862a3478da1ca7.camel@collabora.com>
+	linux-remoteproc@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
+Subject: [PATCH] remoteproc: mtk_scp:  remove unnecessary checking
+Message-ID: <aPi6eBlFLH43A4C0@stanley.mountain>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <8f5335a703905dea9d8d0c1840862a3478da1ca7.camel@collabora.com>
+X-Mailer: git-send-email haha only kidding
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251022_021213_130463_007F8F5D 
-X-CRM114-Status: GOOD (  11.50  )
+X-CRM114-CacheID: sfid-20251022_050401_609437_2432A235 
+X-CRM114-Status: UNSURE (   9.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,24 +102,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 21, 2025 at 10:21:31PM +0200, Sjoerd Simons wrote:
-> On Fri, 2025-10-17 at 19:31 +0200, Andrew Lunn wrote:
-> > > +&mdio_bus {
-> > > +	phy15: ethernet-phy@f {
-> > > +		compatible = "ethernet-phy-id03a2.a411";
-> > > +		reg = <0xf>;
-> > > +		interrupt-parent = <&pio>;
-> > > +		interrupts = <38 IRQ_TYPE_EDGE_FALLING>;
-> > 
-> > This is probably wrong. PHY interrupts are generally level, not edge.
-> 
-> Sadly i can't find a datasheet for the PHY, so can't really validate that easily.
+The kernel implementation of snprintf() cannot return negative error
+codes.  Also these particular calls to snprintf() can't return zero
+and the code to handle a zero return is sort of questionable.  Just
+delete this impossible code.
 
-What PHY is it? Look at the .handle_interrupt function in the
-driver. If the hardware supports a single interrupt bit, it could in
-theory support edge. However, as soon as you have multiple bits, you
-need level, to avoid races where an interrupt happens while you are
-clearing other interrupts.
+Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
+---
+ drivers/remoteproc/mtk_scp.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-	 Andrew
+diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+index 10e3f9eb8cd2..9b624948a572 100644
+--- a/drivers/remoteproc/mtk_scp.c
++++ b/drivers/remoteproc/mtk_scp.c
+@@ -1127,11 +1127,9 @@ static const char *scp_get_default_fw_path(struct device *dev, int core_id)
+ 		return ERR_PTR(-EINVAL);
+ 
+ 	if (core_id >= 0)
+-		ret = snprintf(scp_fw_file, ARRAY_SIZE(scp_fw_file), "scp_c%1d", core_id);
++		snprintf(scp_fw_file, ARRAY_SIZE(scp_fw_file), "scp_c%1d", core_id);
+ 	else
+-		ret = snprintf(scp_fw_file, ARRAY_SIZE(scp_fw_file), "scp");
+-	if (ret <= 0)
+-		return ERR_PTR(ret);
++		snprintf(scp_fw_file, ARRAY_SIZE(scp_fw_file), "scp");
+ 
+ 	/* Not using strchr here, as strlen of a const gets optimized by compiler */
+ 	soc = &compatible[strlen("mediatek,")];
+-- 
+2.51.0
+
 
