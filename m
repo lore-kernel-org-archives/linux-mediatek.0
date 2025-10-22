@@ -4,79 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C173CCD1BB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Oct 2025 12:58:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9999ECCD1AB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Oct 2025 13:48:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rjG53ExIK1WFjeDIAAZczTfr0kaW2lHML1A9qjZU6Y8=; b=OH6pZ8+HPo8ZViuu/uSH/QnnnQ
-	5piwAg951h21a+7hzhU/if73WF1TrDbUMeqerY9dCPT+QExRPgg8dQUh9F7PksEMN8zshrUJ93SHK
-	CsnxW7YNYWtoekBMI2zMeWGB7QCkHRJs9q+Dr/KG2hVJ/GjtT3WEdDfreVB1bAbY0ObtjmETwd+x7
-	u/aC16suIO3tmkeDqsmOusE6i9ydM/K5hflshONWxD8Q2watUaLMV/InfvpTT/9nRtFO1VreRJf1l
-	1ekSkKEBhkm3bwMBE5/U/ekr/QGb44CeETEK5u8vY87ZNhk0Ee0lQfpT4qwVVfdwZsVStZGJBVdan
-	8/dNcj8Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hrRSPxugKfBRbwb38s0reG3tqtJvi6mHZloAZZkTJtM=; b=bBt/VHCkg6tRlRilPu+tApePmJ
+	koQloT0AcXjQBSjgla6ieuyeAYO/l9AMd0LBG9Aucs6UQRzqEsn0PvEXFdimjVExqACmW1NVBIFdo
+	4hLfBLqPnVR3lNn7RHDsp6H4/SIiT5X3nLK+dvJuqs7V+cM4BFN/shYLqPHHOJ7/Yk/559ZC9AgAj
+	hMZB5ICE77jigVjLt6jQbW/oVpB7U/Bu+1DcRPExaYBnrMqyBY5uIJm1ssZjCnaGlt0R0upaEZB0K
+	23IOfbuIhfgsr4dMjFhWfUQcpCLVtCpcRyoqA7+jksc0zpNuYikkkPH8qeqr7ggAYG2/UiuvjLeMN
+	vulCSTLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBYQJ-00000002u8p-1yd2;
-	Wed, 22 Oct 2025 12:58:39 +0000
-Received: from mail-yx1-xb134.google.com ([2607:f8b0:4864:20::b134])
+	id 1vBZCA-000000035Pv-0YBz;
+	Wed, 22 Oct 2025 13:48:06 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBYQG-00000002u7j-1OGm
+	id 1vBZC7-000000035Ou-3hnc
 	for linux-mediatek@lists.infradead.org;
-	Wed, 22 Oct 2025 12:58:37 +0000
-Received: by mail-yx1-xb134.google.com with SMTP id 956f58d0204a3-63e11347fd9so6691484d50.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 22 Oct 2025 05:58:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1761137915; x=1761742715; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=rjG53ExIK1WFjeDIAAZczTfr0kaW2lHML1A9qjZU6Y8=;
-        b=gtuia/PVmE3dPtabCubMfjsFrT6eSoS6KjX8PJPaqCLFEemNwfgSj0dHqvSSSTwrkQ
-         OHhCP3IhMp2NCAI2t42MjK/XfRqN409MzwiwjBSDfm9abiobJ6d+upt8ZhVWedP5Uaia
-         gRf3PtklpeDrJRlbr/1qxFz/nDiTje/9sQPvpq2KwEDD5xmRr2ICvZpMGKP4DSJwoXFt
-         /WHirjv1c2N0GI5EzV9b5QjRddBaKLD6MXJHVJRLDMazcBKhDcgGlrC01GXvvCyaMQEZ
-         Z/Ra2NSmepKgk3v+iudTm2fsdQ/em2Uyn0TQmoNKn45qwVd7gZXupEOL/3lyH9jT7yyV
-         Xi7w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1761137915; x=1761742715;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=rjG53ExIK1WFjeDIAAZczTfr0kaW2lHML1A9qjZU6Y8=;
-        b=Ot9E3peZp4fnpJl8BvToALjogqED92W7JENBJf/UuaCPBbM+u6YDvYsqI1BAk7+bin
-         RMBcFMKMEAoN5CjEp8usPcEinz0+qt0PV0hFYePpor3UvlnhPLyA2ZF+tuAf1IB3CArD
-         J6CZHbOKr70FmOalR7YvYaisYR0CoVi3hsCnW/tCDc5RgN4iDjkTtOBUh7v/r76ja6y5
-         Fss+4M44usVvJUXEgTZNuqa3JIoS/HmVRtmt7BBHsfEF8kZdKJlDe1aoQH6iQ8gXQT04
-         rAQ6+2tF1PT2cGVT5JLxeeMlCiruyE+TtgqmTc9GjAgdGBSw5PMH3WUz3m9kjvtp6mMR
-         A3aQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVibtSfz/gtScLE7hdMpaIdxDBzuPxnHen1spi7Vw8KQFFpXA6maN2I7IQxeUPnjg3hEb5Y3meE6KFb0lHRYA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzUcSgukD2KOU+FBumBUaurDWRFxNBZS6yK0vNlZIZGi4ePFasD
-	KRlEZOZWwkcyW4IVwvwa5PaxlNKlV//6Q2SzMcNvokS7wMD2WlClpJ3NhhP+Jr3NslVVCAZRmHI
-	UvWighp3BOIQ2FWjvzinM/Lk8W0sy26Ic2utW+F76rA==
-X-Gm-Gg: ASbGncu5V9xjEdt4wCXa17mRhSP4fnBtrSFP4DtPjE0zz6S6lx/HHvsZ4tmxoJWuRjc
-	sqpi44JsIv80D8H/4Krra/oYaJYIziYRjJq3BL+Y8CUbKpQX9kjZWjM5OhFenaxFO9axdcA4NrQ
-	UYwciN4rYZWUF5z3M0jvMi3DFbuQ7MhfMNNII7ORl4Bz896vBUkAoJuNRKHbNGfJM+pLmCJSMwf
-	Rj4+yIqry3B0XLOXvu0o0W2KGzzmb3uwb5TuzOmyixR2yVtI9iL8ii1fEKpCsEB7UWTGKQ/
-X-Google-Smtp-Source: AGHT+IEpKfqQAP/glDCUgAVJgatRBUGG4LJgEA2qJzeL/hKIAfZyo7XzIeJETd/S1CbVK1X+8E38/575DImRXb9n0+g=
-X-Received: by 2002:a05:690e:4182:b0:63c:da95:21a4 with SMTP id
- 956f58d0204a3-63e161b6c8bmr15719971d50.25.1761137915143; Wed, 22 Oct 2025
- 05:58:35 -0700 (PDT)
+	Wed, 22 Oct 2025 13:48:04 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 4E64D62136
+	for <linux-mediatek@lists.infradead.org>; Wed, 22 Oct 2025 13:48:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EFBE4C4CEE7
+	for <linux-mediatek@lists.infradead.org>; Wed, 22 Oct 2025 13:48:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1761140883;
+	bh=jbBJWUa2D5mD4FO+YopVcu+7lzL7qETV1oQuE65ZYas=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=WvqXYva6pkQEoRMq5LvT+1+kG7B1Kz3PS02C1kUmogBm+k2sURFt38z6U9PPVW78p
+	 eDhGToTKrnnX79xe4DaP20mVy0Q0HozDY+D6ackoKN/oJg8N7w+BOkoUbOpE02PrCj
+	 go3SZVQq44RBgnGlCmKuFWNhqXWMmS/yzSePWuvXIvcxPE8XyNlGI8JS9cStg1O72W
+	 D3VWhcUPE5mDtWalOrZEfvMuUsBfb8u/+vSZvv8weiP9E6zyiaJeVjgYXvpzum49V8
+	 yIPutGD06uxQzesDA77BHQ4Uj0fUPOX9wYv4n9ycS0vsk61OthhucDnBKJHUqtUw01
+	 NJHEw1hLMo9VA==
+Received: by mail-pj1-f51.google.com with SMTP id 98e67ed59e1d1-339d7c403b6so6570293a91.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 22 Oct 2025 06:48:02 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCXxTfDkvv16Ea51F/jGRskQgA5K3GH/NQgXpljupd9gu4/GsSc3zs0WsRF3s9XC3wnGgtDGZNRe9c04Zb9qiA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwFE9uWc9ENtGDIxcph1aAfzwQQa8tulm87860RX+MxWInlEcmU
+	pWYpbfSLZ1Gfbt4Ukj2gy7qZTm9eH+RkDJ2xrO4sGHnGJ8W2CssXNA5mMsd1Wox9dxTnKl+npCi
+	pvjmnMFgwyRLxvdZVVdNISvayofaSmg==
+X-Google-Smtp-Source: AGHT+IFy1XRD8bUn3Ht+foWFb4onBy3I0BzeduV4i7PqazihqftsGN1m+bW8yLWYlxF6eUIqhNEGG1eW7HknFBsv3Jk=
+X-Received: by 2002:a17:902:f552:b0:290:6b30:fb3 with SMTP id
+ d9443c01a7336-290c9ca32eemr287339455ad.16.1761140882431; Wed, 22 Oct 2025
+ 06:48:02 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250925143122.39796-1-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20250925143122.39796-1-angelogioacchino.delregno@collabora.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Wed, 22 Oct 2025 14:57:59 +0200
-X-Gm-Features: AS18NWBK_6SEKp0LPrIDEzZP10EAnrhsIWSa5DHPeYttYjGzKLOmquHgZnWl3Xc
-Message-ID: <CAPDyKFq9oxUfdfF-TOGLgi7b4aYay40H-VaEq-s=C3F2eVOBVw@mail.gmail.com>
-Subject: Re: [PATCH v2 0/5] pmdomain: mediatek: Add HWVoter and MT8196 Support
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+References: <20250808-mediatek-drm-hdmi-v2-v10-0-21ea82eec1f6@collabora.com> <20250808-mediatek-drm-hdmi-v2-v10-4-21ea82eec1f6@collabora.com>
+In-Reply-To: <20250808-mediatek-drm-hdmi-v2-v10-4-21ea82eec1f6@collabora.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Wed, 22 Oct 2025 13:47:50 +0000
+X-Gmail-Original-Message-ID: <CAAOTY_8-W8XRsTFDKH69BRA=hurgZ2KOHeBDnixL-LgHObqhXQ@mail.gmail.com>
+X-Gm-Features: AS18NWDLymwzfszmU7JKmhTu0CgDInQdk-IxVHYP20sloO1fgKFGR0uo2gWdNLY
+Message-ID: <CAAOTY_8-W8XRsTFDKH69BRA=hurgZ2KOHeBDnixL-LgHObqhXQ@mail.gmail.com>
+Subject: Re: [PATCH v10 04/10] drm/mediatek: mtk_hdmi: Split driver and add
+ common probe function
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, CK Hu <ck.hu@mediatek.com>, 
+	kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251022_055836_396720_175DCF10 
-X-CRM114-Status: GOOD (  21.87  )
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,66 +83,43 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, mbrugger@suse.com, y.oudjana@protonmail.com, nfraprado@collabora.com, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, mandyjh.liu@mediatek.com, wenst@chromium.org, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, krzk+dt@kernel.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 25 Sept 2025 at 16:31, AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> The initial series [1] was refactoring the bus protection regmap retrieval,
-> adding modem power sequences and support for the RTFF hardware found in newer
-> generation MediaTek SoCs - and adding support for Hardware Voter, HWCCF Infra
-> power on, and MT8196 domains.
->
-> That series was doing a bit too much in one shot, and then a discussion about
-> the whole Hardware Voter started, so I decided to split that in two parts:
-> one dedicated only to the refactoring, modem and RTFF [2], and one that only
-> introduces MT8196-specific parts.
->
-> Since the refactoring series [2] was merged upstream and the Hardware Voter
-> discussion came to an agreement on how to proceed (resulting in all of the
-> MT8196 clock drivers being also merged upstream), it is now time to send
-> the final piece of the Power Domains (MTCMOS) support for the MediaTek
-> Kompanio Ultra (MT8196) SoC.
->
-> So - this series finally adds support for handling the Hardware Voter type
-> of power domains in the MT8196 SoC, for secure infracfg power control, and
-> for all of the power domains found in the MT8196 SoC - using all of the
-> newly introduced support (HWV, RTFF, etc).
->
-> This series was tested on multiple MT8196 Chromebooks now for more than 3
-> months, and works just great; the last test was performed on the Collabora
-> MediaTek integration kernel tree based on next-20250909.
->
-> P.S.: This is a v2 because the initial series ([1] v1) contained patches
->       that I am sending in this series.
->
-> [1]: https://lore.kernel.org/all/20250623120154.109429-1-angelogioacchino.delregno@collabora.com/
-> [2]: https://lore.kernel.org/all/CAPDyKFoe9=4KgOsPUX6FOE+yPxdUqAxRec5yKY2h6uFOeUvvDQ@mail.gmail.com/
->
-> AngeloGioacchino Del Regno (5):
->   dt-bindings: power: Add support for MT8196 power controllers
->   pmdomain: mediatek: Add support for Hardware Voter power domains
->   pmdomain: mediatek: Add support for secure HWCCF infra power on
->   pmdomain: mediatek: Add support for MT8196 SCPSYS power domains
->   pmdomain: mediatek: Add support for MT8196 HFRPSYS power domains
->
->  .../power/mediatek,power-controller.yaml      |   4 +
->  drivers/pmdomain/mediatek/mt8196-pm-domains.h | 625 ++++++++++++++++++
->  drivers/pmdomain/mediatek/mtk-pm-domains.c    | 305 ++++++++-
->  drivers/pmdomain/mediatek/mtk-pm-domains.h    |  49 +-
->  .../dt-bindings/power/mediatek,mt8196-power.h |  58 ++
->  5 files changed, 1012 insertions(+), 29 deletions(-)
->  create mode 100644 drivers/pmdomain/mediatek/mt8196-pm-domains.h
->  create mode 100644 include/dt-bindings/power/mediatek,mt8196-power.h
->
-> --
-> 2.51.0
->
+Hi, Louis:
 
-The series applied for next, thanks!
+When I apply this patch, conflicts happen.
+Please rebase this series base on latest kernel and resend these patches.
 
-Kind regards
-Uffe
+Regards,
+Chun-Kuang.
+
+Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com> =E6=96=BC 2025=E5=B9=
+=B48=E6=9C=888=E6=97=A5 =E9=80=B1=E4=BA=94 =E4=B8=8A=E5=8D=8810:13=E5=AF=AB=
+=E9=81=93=EF=BC=9A
+>
+> From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com=
+>
+>
+> In preparation for adding a new driver for the HDMI TX v2 IP,
+> split out the functions that will be common between the already
+> present mtk_hdmi (v1) driver and the new one.
+>
+> Since the probe flow for both drivers is 90% similar, add a common
+> probe function that will be called from each driver's .probe()
+> callback, avoiding lots of code duplication.
+>
+> Reviewed-by: CK Hu <ck.hu@mediatek.com>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+> ---
+>  drivers/gpu/drm/mediatek/Kconfig           |  11 +-
+>  drivers/gpu/drm/mediatek/Makefile          |   1 +
+>  drivers/gpu/drm/mediatek/mtk_hdmi.c        | 539 +----------------------=
+------
+>  drivers/gpu/drm/mediatek/mtk_hdmi_common.c | 428 +++++++++++++++++++++++
+>  drivers/gpu/drm/mediatek/mtk_hdmi_common.h | 188 ++++++++++
+>  5 files changed, 633 insertions(+), 534 deletions(-)
+>
 
