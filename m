@@ -4,64 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BEB1CCD1BE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Oct 2025 07:11:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48DDBCCD1AB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Oct 2025 07:12:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=c2IrHm5ESOIZoZZS6GGXCUUzBYSarY/tf251FkeJQ94=; b=L/yEOYU5fAYvB3+M6l0xoSbnZm
-	iMa8uMWs1pSZAVwxYswAnssKrFR0nu0PHXS6D6AqRrHDtu0YOBIcziuU3mMlZPflJfJBB0O/8e74u
-	37Wa11t5228RkDxi3E4a+hWphxBse2Y4RYpeP1YzXY+KUyTe6NtsFIPEFDvaUTc4udE01KyhrHySb
-	yTZ5mIdhMKNyB3UJvDMY4Lv7Bb18Db+XCkLYlThIuiVnn4YBGELmUUSrVt97NJ6LwMAD7ma/CE2+r
-	0CR5SqnmpCu29BKY93UdJ2rd2t4sWd6whbtoNS7CxEdakkYy/jKUVeewuIo+yc6joZne/4FrK5Mvp
-	gMu+IQOQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=aCOhMXeNcRlLEJFFTCWsYH3yznwlPc3/uJAlYhMI6lo=; b=EXl8xLZJbVyt8XcQcbSBKthIe/
+	n0Kp7yErfumL3lL/gA0GQQzUot8l2yRKPLZ+leUJGSw5U7VNZqt/AA+BRPLFNyS6Cjnw6JbjQ3s3P
+	s21JpDzk5H1bqgVrVqOs4HaLsaLidCsAdiZS/yOx1r+h8N9sXw6/BNd/2oJEyNu7+xRcnbnlVnMnb
+	dPu8s4gajmfeIdL8jZBl1NuzK2tmTOvGKj3OAQEPesvsFCX86P60lJrOTiacvycWgVUaYpaPw09HQ
+	d3wZiFKiEYSFhlpRmJxTspLe7/KAHNfdvsQpm4ujoiHvi+nbQRRCPcxUv8kx1zsPyo7KifJq84ute
+	f7NThlSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBT0N-00000001ohi-3epT;
-	Wed, 22 Oct 2025 07:11:31 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vBT1f-00000001pHj-1fsF;
+	Wed, 22 Oct 2025 07:12:51 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBT0L-00000001oh9-3TvE;
-	Wed, 22 Oct 2025 07:11:30 +0000
+	id 1vBT1d-00000001pH1-1PPT;
+	Wed, 22 Oct 2025 07:12:49 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 2996162873;
-	Wed, 22 Oct 2025 07:11:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 50393C4CEE7;
-	Wed, 22 Oct 2025 07:11:28 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id A534C6287A;
+	Wed, 22 Oct 2025 07:12:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 099D4C4CEE7;
+	Wed, 22 Oct 2025 07:12:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761117088;
-	bh=mc5SQIsHF/uFlw06qs6U1L61abcRnCd60gcvO4hgct8=;
-	h=From:Date:Subject:To:Cc:From;
-	b=pc+H9QkRrnLUM9/PqqDsJl95AMAGY+6svyWSFbmpYMW1R91S1SVlpy1X9lJ6uLJSi
-	 5mfRT6shQqqAy+C4BCsI3xaIfsKCWvAqh1Mi4/dekCDetwREwHIuiDTIuqhm79IRJZ
-	 +fOjgDFeR/eqdWcfGUAWmg9/qG0CoW7DqMrkd0GmnJilX0ruiKhHInFjhZ1eunylPM
-	 sH87CgyqAIKgID2E/ECk20yZeov4MDI8tdqSg5KTwrfaxu5+Z/WPoPIYiGsgzsOBlJ
-	 vlya0PTlF3foYozOWRL5RaWyQeeO8KPuw4Olm+iSW3QH+5lA1/YpFRPbjlJGJPj4SA
-	 EaulQ0E6yI6kA==
+	s=k20201202; t=1761117168;
+	bh=aCOhMXeNcRlLEJFFTCWsYH3yznwlPc3/uJAlYhMI6lo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=P20bzHE882yA6YpVwda4fjhuxkc1B1YP8vfan0Thd1UpfWY5E5Ai1Fa3iBvGDLdHo
+	 uHXRDqdfzWzSpBVY6fobdgGoVR57prFL3IAz/xKKrnyRdCB5oDF5znTcGusdVjqKNw
+	 /A2UlLm3syA+BDqsDTX8NW1Qdg18kcHNpq4o+G4HOCBsS8W92gxbsyEaT5lch7WEnC
+	 NIcdRgjZANy5OVG8M2BGmsa09g8zZi6mxBRjtBxUAsBP6+utl+22nBVSdM/EuknISt
+	 1p94l6tXZ1b3w9h1/xrpN2H3V81HhknAgRoxeMIX0np4FlDu718+UfWK3C2EnAxbIG
+	 Kj7KUzfAzpOng==
+Date: Wed, 22 Oct 2025 09:12:45 +0200
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Wed, 22 Oct 2025 09:11:12 +0200
-Subject: [PATCH net-next v2] net: airoha: Remove code duplication in
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net-next] net: airoha: Remove code duplication in
  airoha_regs.h
+Message-ID: <aPiD7WTSGbJq_xKO@lore-desk>
+References: <20251018-airoha-regs-cosmetics-v1-1-bbf6295c45fd@kernel.org>
+ <20251021182800.2c736d21@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20251022-airoha-regs-cosmetics-v2-1-e0425b3f2c2c@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAI+D+GgC/3WNyw6CMBBFf4XM2jFtQ3m48j8MCygDTFRqZgjRG
- P7dSuLS5TnJPfcNSsKkcMreILSycpwTuEMGYWrnkZD7xOCM89bYEluWOLUoNCqGqHdaOCj6nGp
- jPJW+KiBtH0IDP/fupUk8sS5RXvvNar/2V6z+FFeLFrtuKFztQ+6H/nwlmel2jDJCs23bB9Qoa
- 6K7AAAA
-X-Change-ID: 20251017-airoha-regs-cosmetics-54e9005e7586
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- Simon Horman <horms@kernel.org>
-X-Mailer: b4 0.14.2
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="z+kCoUsYQ/MpQx5l"
+Content-Disposition: inline
+In-Reply-To: <20251021182800.2c736d21@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,356 +73,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch does not introduce any logical change, it just removes
-duplicated code in airoha_regs.h.
-Fix naming conventions in airoha_regs.h.
 
-Reviewed-by: Simon Horman <horms@kernel.org>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
-Changes in v2:
-- Rebase on top of net-next main branch
-- Link to v1: https://lore.kernel.org/r/20251018-airoha-regs-cosmetics-v1-1-bbf6295c45fd@kernel.org
----
- drivers/net/ethernet/airoha/airoha_eth.c  | 102 ++++++++++++++--------------
- drivers/net/ethernet/airoha/airoha_regs.h | 109 ++++++++++++++----------------
- 2 files changed, 100 insertions(+), 111 deletions(-)
+--z+kCoUsYQ/MpQx5l
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 8483ea02603e24de5eb37654452f8c2b21b9bff4..e17a285a9e8fa7b4b4c1433240f2bb82401bcb9b 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -137,11 +137,11 @@ static void airoha_fe_maccr_init(struct airoha_eth *eth)
- 
- 	for (p = 1; p <= ARRAY_SIZE(eth->ports); p++)
- 		airoha_fe_set(eth, REG_GDM_FWD_CFG(p),
--			      GDM_TCP_CKSUM | GDM_UDP_CKSUM | GDM_IP4_CKSUM |
--			      GDM_DROP_CRC_ERR);
-+			      GDM_TCP_CKSUM_MASK | GDM_UDP_CKSUM_MASK |
-+			      GDM_IP4_CKSUM_MASK | GDM_DROP_CRC_ERR_MASK);
- 
--	airoha_fe_rmw(eth, REG_CDM1_VLAN_CTRL, CDM1_VLAN_MASK,
--		      FIELD_PREP(CDM1_VLAN_MASK, 0x8100));
-+	airoha_fe_rmw(eth, REG_CDM_VLAN_CTRL(1), CDM_VLAN_MASK,
-+		      FIELD_PREP(CDM_VLAN_MASK, 0x8100));
- 
- 	airoha_fe_set(eth, REG_FE_CPORT_CFG, FE_CPORT_PAD);
- }
-@@ -403,46 +403,46 @@ static int airoha_fe_mc_vlan_clear(struct airoha_eth *eth)
- static void airoha_fe_crsn_qsel_init(struct airoha_eth *eth)
- {
- 	/* CDM1_CRSN_QSEL */
--	airoha_fe_rmw(eth, REG_CDM1_CRSN_QSEL(CRSN_22 >> 2),
--		      CDM1_CRSN_QSEL_REASON_MASK(CRSN_22),
--		      FIELD_PREP(CDM1_CRSN_QSEL_REASON_MASK(CRSN_22),
-+	airoha_fe_rmw(eth, REG_CDM_CRSN_QSEL(1, CRSN_22 >> 2),
-+		      CDM_CRSN_QSEL_REASON_MASK(CRSN_22),
-+		      FIELD_PREP(CDM_CRSN_QSEL_REASON_MASK(CRSN_22),
- 				 CDM_CRSN_QSEL_Q1));
--	airoha_fe_rmw(eth, REG_CDM1_CRSN_QSEL(CRSN_08 >> 2),
--		      CDM1_CRSN_QSEL_REASON_MASK(CRSN_08),
--		      FIELD_PREP(CDM1_CRSN_QSEL_REASON_MASK(CRSN_08),
-+	airoha_fe_rmw(eth, REG_CDM_CRSN_QSEL(1, CRSN_08 >> 2),
-+		      CDM_CRSN_QSEL_REASON_MASK(CRSN_08),
-+		      FIELD_PREP(CDM_CRSN_QSEL_REASON_MASK(CRSN_08),
- 				 CDM_CRSN_QSEL_Q1));
--	airoha_fe_rmw(eth, REG_CDM1_CRSN_QSEL(CRSN_21 >> 2),
--		      CDM1_CRSN_QSEL_REASON_MASK(CRSN_21),
--		      FIELD_PREP(CDM1_CRSN_QSEL_REASON_MASK(CRSN_21),
-+	airoha_fe_rmw(eth, REG_CDM_CRSN_QSEL(1, CRSN_21 >> 2),
-+		      CDM_CRSN_QSEL_REASON_MASK(CRSN_21),
-+		      FIELD_PREP(CDM_CRSN_QSEL_REASON_MASK(CRSN_21),
- 				 CDM_CRSN_QSEL_Q1));
--	airoha_fe_rmw(eth, REG_CDM1_CRSN_QSEL(CRSN_24 >> 2),
--		      CDM1_CRSN_QSEL_REASON_MASK(CRSN_24),
--		      FIELD_PREP(CDM1_CRSN_QSEL_REASON_MASK(CRSN_24),
-+	airoha_fe_rmw(eth, REG_CDM_CRSN_QSEL(1, CRSN_24 >> 2),
-+		      CDM_CRSN_QSEL_REASON_MASK(CRSN_24),
-+		      FIELD_PREP(CDM_CRSN_QSEL_REASON_MASK(CRSN_24),
- 				 CDM_CRSN_QSEL_Q6));
--	airoha_fe_rmw(eth, REG_CDM1_CRSN_QSEL(CRSN_25 >> 2),
--		      CDM1_CRSN_QSEL_REASON_MASK(CRSN_25),
--		      FIELD_PREP(CDM1_CRSN_QSEL_REASON_MASK(CRSN_25),
-+	airoha_fe_rmw(eth, REG_CDM_CRSN_QSEL(1, CRSN_25 >> 2),
-+		      CDM_CRSN_QSEL_REASON_MASK(CRSN_25),
-+		      FIELD_PREP(CDM_CRSN_QSEL_REASON_MASK(CRSN_25),
- 				 CDM_CRSN_QSEL_Q1));
- 	/* CDM2_CRSN_QSEL */
--	airoha_fe_rmw(eth, REG_CDM2_CRSN_QSEL(CRSN_08 >> 2),
--		      CDM2_CRSN_QSEL_REASON_MASK(CRSN_08),
--		      FIELD_PREP(CDM2_CRSN_QSEL_REASON_MASK(CRSN_08),
-+	airoha_fe_rmw(eth, REG_CDM_CRSN_QSEL(2, CRSN_08 >> 2),
-+		      CDM_CRSN_QSEL_REASON_MASK(CRSN_08),
-+		      FIELD_PREP(CDM_CRSN_QSEL_REASON_MASK(CRSN_08),
- 				 CDM_CRSN_QSEL_Q1));
--	airoha_fe_rmw(eth, REG_CDM2_CRSN_QSEL(CRSN_21 >> 2),
--		      CDM2_CRSN_QSEL_REASON_MASK(CRSN_21),
--		      FIELD_PREP(CDM2_CRSN_QSEL_REASON_MASK(CRSN_21),
-+	airoha_fe_rmw(eth, REG_CDM_CRSN_QSEL(2, CRSN_21 >> 2),
-+		      CDM_CRSN_QSEL_REASON_MASK(CRSN_21),
-+		      FIELD_PREP(CDM_CRSN_QSEL_REASON_MASK(CRSN_21),
- 				 CDM_CRSN_QSEL_Q1));
--	airoha_fe_rmw(eth, REG_CDM2_CRSN_QSEL(CRSN_22 >> 2),
--		      CDM2_CRSN_QSEL_REASON_MASK(CRSN_22),
--		      FIELD_PREP(CDM2_CRSN_QSEL_REASON_MASK(CRSN_22),
-+	airoha_fe_rmw(eth, REG_CDM_CRSN_QSEL(2, CRSN_22 >> 2),
-+		      CDM_CRSN_QSEL_REASON_MASK(CRSN_22),
-+		      FIELD_PREP(CDM_CRSN_QSEL_REASON_MASK(CRSN_22),
- 				 CDM_CRSN_QSEL_Q1));
--	airoha_fe_rmw(eth, REG_CDM2_CRSN_QSEL(CRSN_24 >> 2),
--		      CDM2_CRSN_QSEL_REASON_MASK(CRSN_24),
--		      FIELD_PREP(CDM2_CRSN_QSEL_REASON_MASK(CRSN_24),
-+	airoha_fe_rmw(eth, REG_CDM_CRSN_QSEL(2, CRSN_24 >> 2),
-+		      CDM_CRSN_QSEL_REASON_MASK(CRSN_24),
-+		      FIELD_PREP(CDM_CRSN_QSEL_REASON_MASK(CRSN_24),
- 				 CDM_CRSN_QSEL_Q6));
--	airoha_fe_rmw(eth, REG_CDM2_CRSN_QSEL(CRSN_25 >> 2),
--		      CDM2_CRSN_QSEL_REASON_MASK(CRSN_25),
--		      FIELD_PREP(CDM2_CRSN_QSEL_REASON_MASK(CRSN_25),
-+	airoha_fe_rmw(eth, REG_CDM_CRSN_QSEL(2, CRSN_25 >> 2),
-+		      CDM_CRSN_QSEL_REASON_MASK(CRSN_25),
-+		      FIELD_PREP(CDM_CRSN_QSEL_REASON_MASK(CRSN_25),
- 				 CDM_CRSN_QSEL_Q1));
- }
- 
-@@ -462,18 +462,18 @@ static int airoha_fe_init(struct airoha_eth *eth)
- 	airoha_fe_wr(eth, REG_FE_PCE_CFG,
- 		     PCE_DPI_EN_MASK | PCE_KA_EN_MASK | PCE_MC_EN_MASK);
- 	/* set vip queue selection to ring 1 */
--	airoha_fe_rmw(eth, REG_CDM1_FWD_CFG, CDM1_VIP_QSEL_MASK,
--		      FIELD_PREP(CDM1_VIP_QSEL_MASK, 0x4));
--	airoha_fe_rmw(eth, REG_CDM2_FWD_CFG, CDM2_VIP_QSEL_MASK,
--		      FIELD_PREP(CDM2_VIP_QSEL_MASK, 0x4));
-+	airoha_fe_rmw(eth, REG_CDM_FWD_CFG(1), CDM_VIP_QSEL_MASK,
-+		      FIELD_PREP(CDM_VIP_QSEL_MASK, 0x4));
-+	airoha_fe_rmw(eth, REG_CDM_FWD_CFG(2), CDM_VIP_QSEL_MASK,
-+		      FIELD_PREP(CDM_VIP_QSEL_MASK, 0x4));
- 	/* set GDM4 source interface offset to 8 */
--	airoha_fe_rmw(eth, REG_GDM4_SRC_PORT_SET,
--		      GDM4_SPORT_OFF2_MASK |
--		      GDM4_SPORT_OFF1_MASK |
--		      GDM4_SPORT_OFF0_MASK,
--		      FIELD_PREP(GDM4_SPORT_OFF2_MASK, 8) |
--		      FIELD_PREP(GDM4_SPORT_OFF1_MASK, 8) |
--		      FIELD_PREP(GDM4_SPORT_OFF0_MASK, 8));
-+	airoha_fe_rmw(eth, REG_GDM_SRC_PORT_SET(4),
-+		      GDM_SPORT_OFF2_MASK |
-+		      GDM_SPORT_OFF1_MASK |
-+		      GDM_SPORT_OFF0_MASK,
-+		      FIELD_PREP(GDM_SPORT_OFF2_MASK, 8) |
-+		      FIELD_PREP(GDM_SPORT_OFF1_MASK, 8) |
-+		      FIELD_PREP(GDM_SPORT_OFF0_MASK, 8));
- 
- 	/* set PSE Page as 128B */
- 	airoha_fe_rmw(eth, REG_FE_DMA_GLO_CFG,
-@@ -499,8 +499,8 @@ static int airoha_fe_init(struct airoha_eth *eth)
- 	airoha_fe_set(eth, REG_GDM_MISC_CFG,
- 		      GDM2_RDM_ACK_WAIT_PREF_MASK |
- 		      GDM2_CHN_VLD_MODE_MASK);
--	airoha_fe_rmw(eth, REG_CDM2_FWD_CFG, CDM2_OAM_QSEL_MASK,
--		      FIELD_PREP(CDM2_OAM_QSEL_MASK, 15));
-+	airoha_fe_rmw(eth, REG_CDM_FWD_CFG(2), CDM_OAM_QSEL_MASK,
-+		      FIELD_PREP(CDM_OAM_QSEL_MASK, 15));
- 
- 	/* init fragment and assemble Force Port */
- 	/* NPU Core-3, NPU Bridge Channel-3 */
-@@ -514,8 +514,8 @@ static int airoha_fe_init(struct airoha_eth *eth)
- 		      FIELD_PREP(IP_ASSEMBLE_PORT_MASK, 0) |
- 		      FIELD_PREP(IP_ASSEMBLE_NBQ_MASK, 22));
- 
--	airoha_fe_set(eth, REG_GDM3_FWD_CFG, GDM3_PAD_EN_MASK);
--	airoha_fe_set(eth, REG_GDM4_FWD_CFG, GDM4_PAD_EN_MASK);
-+	airoha_fe_set(eth, REG_GDM_FWD_CFG(3), GDM_PAD_EN_MASK);
-+	airoha_fe_set(eth, REG_GDM_FWD_CFG(4), GDM_PAD_EN_MASK);
- 
- 	airoha_fe_crsn_qsel_init(eth);
- 
-@@ -523,7 +523,7 @@ static int airoha_fe_init(struct airoha_eth *eth)
- 	airoha_fe_set(eth, REG_FE_CPORT_CFG, FE_CPORT_PORT_XFC_MASK);
- 
- 	/* default aging mode for mbi unlock issue */
--	airoha_fe_rmw(eth, REG_GDM2_CHN_RLS,
-+	airoha_fe_rmw(eth, REG_GDM_CHN_RLS(2),
- 		      MBI_RX_AGE_SEL_MASK | MBI_TX_AGE_SEL_MASK,
- 		      FIELD_PREP(MBI_RX_AGE_SEL_MASK, 3) |
- 		      FIELD_PREP(MBI_TX_AGE_SEL_MASK, 3));
-@@ -1692,7 +1692,7 @@ static int airhoha_set_gdm2_loopback(struct airoha_gdm_port *port)
- 	pse_port = port->id == AIROHA_GDM3_IDX ? FE_PSE_PORT_GDM3
- 					       : FE_PSE_PORT_GDM4;
- 	airoha_set_gdm_port_fwd_cfg(eth, REG_GDM_FWD_CFG(2), pse_port);
--	airoha_fe_clear(eth, REG_GDM_FWD_CFG(2), GDM_STRIP_CRC);
-+	airoha_fe_clear(eth, REG_GDM_FWD_CFG(2), GDM_STRIP_CRC_MASK);
- 
- 	/* Enable GDM2 loopback */
- 	airoha_fe_wr(eth, REG_GDM_TXCHN_EN(2), 0xffffffff);
-diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/ethernet/airoha/airoha_regs.h
-index ebcce00d9bc6f0b0dfe3cabeddaa59b26c7b289d..ed4e3407f4a0e8b6a630ea1213ef155604479b66 100644
---- a/drivers/net/ethernet/airoha/airoha_regs.h
-+++ b/drivers/net/ethernet/airoha/airoha_regs.h
-@@ -23,6 +23,8 @@
- #define GDM3_BASE			0x1100
- #define GDM4_BASE			0x2500
- 
-+#define CDM_BASE(_n)			\
-+	((_n) == 2 ? CDM2_BASE : CDM1_BASE)
- #define GDM_BASE(_n)			\
- 	((_n) == 4 ? GDM4_BASE :	\
- 	 (_n) == 3 ? GDM3_BASE :	\
-@@ -109,30 +111,24 @@
- #define PATN_DP_MASK			GENMASK(31, 16)
- #define PATN_SP_MASK			GENMASK(15, 0)
- 
--#define REG_CDM1_VLAN_CTRL		CDM1_BASE
--#define CDM1_VLAN_MASK			GENMASK(31, 16)
-+#define REG_CDM_VLAN_CTRL(_n)		CDM_BASE(_n)
-+#define CDM_VLAN_MASK			GENMASK(31, 16)
- 
--#define REG_CDM1_FWD_CFG		(CDM1_BASE + 0x08)
--#define CDM1_VIP_QSEL_MASK		GENMASK(24, 20)
-+#define REG_CDM_FWD_CFG(_n)		(CDM_BASE(_n) + 0x08)
-+#define CDM_OAM_QSEL_MASK		GENMASK(31, 27)
-+#define CDM_VIP_QSEL_MASK		GENMASK(24, 20)
- 
--#define REG_CDM1_CRSN_QSEL(_n)		(CDM1_BASE + 0x10 + ((_n) << 2))
--#define CDM1_CRSN_QSEL_REASON_MASK(_n)	\
--	GENMASK(4 + (((_n) % 4) << 3),	(((_n) % 4) << 3))
--
--#define REG_CDM2_FWD_CFG		(CDM2_BASE + 0x08)
--#define CDM2_OAM_QSEL_MASK		GENMASK(31, 27)
--#define CDM2_VIP_QSEL_MASK		GENMASK(24, 20)
--
--#define REG_CDM2_CRSN_QSEL(_n)		(CDM2_BASE + 0x10 + ((_n) << 2))
--#define CDM2_CRSN_QSEL_REASON_MASK(_n)	\
-+#define REG_CDM_CRSN_QSEL(_n, _m)	(CDM_BASE(_n) + 0x10 + ((_m) << 2))
-+#define CDM_CRSN_QSEL_REASON_MASK(_n)	\
- 	GENMASK(4 + (((_n) % 4) << 3),	(((_n) % 4) << 3))
- 
- #define REG_GDM_FWD_CFG(_n)		GDM_BASE(_n)
--#define GDM_DROP_CRC_ERR		BIT(23)
--#define GDM_IP4_CKSUM			BIT(22)
--#define GDM_TCP_CKSUM			BIT(21)
--#define GDM_UDP_CKSUM			BIT(20)
--#define GDM_STRIP_CRC			BIT(16)
-+#define GDM_PAD_EN_MASK			BIT(28)
-+#define GDM_DROP_CRC_ERR_MASK		BIT(23)
-+#define GDM_IP4_CKSUM_MASK		BIT(22)
-+#define GDM_TCP_CKSUM_MASK		BIT(21)
-+#define GDM_UDP_CKSUM_MASK		BIT(20)
-+#define GDM_STRIP_CRC_MASK		BIT(16)
- #define GDM_UCFQ_MASK			GENMASK(15, 12)
- #define GDM_BCFQ_MASK			GENMASK(11, 8)
- #define GDM_MCFQ_MASK			GENMASK(7, 4)
-@@ -156,6 +152,10 @@
- #define LBK_CHAN_MODE_MASK		BIT(1)
- #define LPBK_EN_MASK			BIT(0)
- 
-+#define REG_GDM_CHN_RLS(_n)		(GDM_BASE(_n) + 0x20)
-+#define MBI_RX_AGE_SEL_MASK		GENMASK(26, 25)
-+#define MBI_TX_AGE_SEL_MASK		GENMASK(18, 17)
-+
- #define REG_GDM_TXCHN_EN(_n)		(GDM_BASE(_n) + 0x24)
- #define REG_GDM_RXCHN_EN(_n)		(GDM_BASE(_n) + 0x28)
- 
-@@ -168,10 +168,10 @@
- #define FE_GDM_MIB_RX_CLEAR_MASK	BIT(1)
- #define FE_GDM_MIB_TX_CLEAR_MASK	BIT(0)
- 
--#define REG_FE_GDM1_MIB_CFG		(GDM1_BASE + 0xf4)
-+#define REG_FE_GDM_MIB_CFG(_n)		(GDM_BASE(_n) + 0xf4)
- #define FE_STRICT_RFC2819_MODE_MASK	BIT(31)
--#define FE_GDM1_TX_MIB_SPLIT_EN_MASK	BIT(17)
--#define FE_GDM1_RX_MIB_SPLIT_EN_MASK	BIT(16)
-+#define FE_GDM_TX_MIB_SPLIT_EN_MASK	BIT(17)
-+#define FE_GDM_RX_MIB_SPLIT_EN_MASK	BIT(16)
- #define FE_TX_MIB_ID_MASK		GENMASK(15, 8)
- #define FE_RX_MIB_ID_MASK		GENMASK(7, 0)
- 
-@@ -214,6 +214,33 @@
- #define REG_FE_GDM_RX_ETH_L511_CNT_L(_n)	(GDM_BASE(_n) + 0x198)
- #define REG_FE_GDM_RX_ETH_L1023_CNT_L(_n)	(GDM_BASE(_n) + 0x19c)
- 
-+#define REG_GDM_SRC_PORT_SET(_n)		(GDM_BASE(_n) + 0x23c)
-+#define GDM_SPORT_OFF2_MASK			GENMASK(19, 16)
-+#define GDM_SPORT_OFF1_MASK			GENMASK(15, 12)
-+#define GDM_SPORT_OFF0_MASK			GENMASK(11, 8)
-+
-+#define REG_FE_GDM_TX_OK_PKT_CNT_H(_n)		(GDM_BASE(_n) + 0x280)
-+#define REG_FE_GDM_TX_OK_BYTE_CNT_H(_n)		(GDM_BASE(_n) + 0x284)
-+#define REG_FE_GDM_TX_ETH_PKT_CNT_H(_n)		(GDM_BASE(_n) + 0x288)
-+#define REG_FE_GDM_TX_ETH_BYTE_CNT_H(_n)	(GDM_BASE(_n) + 0x28c)
-+
-+#define REG_FE_GDM_RX_OK_PKT_CNT_H(_n)		(GDM_BASE(_n) + 0x290)
-+#define REG_FE_GDM_RX_OK_BYTE_CNT_H(_n)		(GDM_BASE(_n) + 0x294)
-+#define REG_FE_GDM_RX_ETH_PKT_CNT_H(_n)		(GDM_BASE(_n) + 0x298)
-+#define REG_FE_GDM_RX_ETH_BYTE_CNT_H(_n)	(GDM_BASE(_n) + 0x29c)
-+#define REG_FE_GDM_TX_ETH_E64_CNT_H(_n)		(GDM_BASE(_n) + 0x2b8)
-+#define REG_FE_GDM_TX_ETH_L64_CNT_H(_n)		(GDM_BASE(_n) + 0x2bc)
-+#define REG_FE_GDM_TX_ETH_L127_CNT_H(_n)	(GDM_BASE(_n) + 0x2c0)
-+#define REG_FE_GDM_TX_ETH_L255_CNT_H(_n)	(GDM_BASE(_n) + 0x2c4)
-+#define REG_FE_GDM_TX_ETH_L511_CNT_H(_n)	(GDM_BASE(_n) + 0x2c8)
-+#define REG_FE_GDM_TX_ETH_L1023_CNT_H(_n)	(GDM_BASE(_n) + 0x2cc)
-+#define REG_FE_GDM_RX_ETH_E64_CNT_H(_n)		(GDM_BASE(_n) + 0x2e8)
-+#define REG_FE_GDM_RX_ETH_L64_CNT_H(_n)		(GDM_BASE(_n) + 0x2ec)
-+#define REG_FE_GDM_RX_ETH_L127_CNT_H(_n)	(GDM_BASE(_n) + 0x2f0)
-+#define REG_FE_GDM_RX_ETH_L255_CNT_H(_n)	(GDM_BASE(_n) + 0x2f4)
-+#define REG_FE_GDM_RX_ETH_L511_CNT_H(_n)	(GDM_BASE(_n) + 0x2f8)
-+#define REG_FE_GDM_RX_ETH_L1023_CNT_H(_n)	(GDM_BASE(_n) + 0x2fc)
-+
- #define REG_PPE_GLO_CFG(_n)			(((_n) ? PPE2_BASE : PPE1_BASE) + 0x200)
- #define PPE_GLO_CFG_BUSY_MASK			BIT(31)
- #define PPE_GLO_CFG_FLOW_DROP_UPDATE_MASK	BIT(9)
-@@ -326,44 +353,6 @@
- 
- #define REG_UPDMEM_DATA(_n)			(((_n) ? PPE2_BASE : PPE1_BASE) + 0x374)
- 
--#define REG_FE_GDM_TX_OK_PKT_CNT_H(_n)		(GDM_BASE(_n) + 0x280)
--#define REG_FE_GDM_TX_OK_BYTE_CNT_H(_n)		(GDM_BASE(_n) + 0x284)
--#define REG_FE_GDM_TX_ETH_PKT_CNT_H(_n)		(GDM_BASE(_n) + 0x288)
--#define REG_FE_GDM_TX_ETH_BYTE_CNT_H(_n)	(GDM_BASE(_n) + 0x28c)
--
--#define REG_FE_GDM_RX_OK_PKT_CNT_H(_n)		(GDM_BASE(_n) + 0x290)
--#define REG_FE_GDM_RX_OK_BYTE_CNT_H(_n)		(GDM_BASE(_n) + 0x294)
--#define REG_FE_GDM_RX_ETH_PKT_CNT_H(_n)		(GDM_BASE(_n) + 0x298)
--#define REG_FE_GDM_RX_ETH_BYTE_CNT_H(_n)	(GDM_BASE(_n) + 0x29c)
--#define REG_FE_GDM_TX_ETH_E64_CNT_H(_n)		(GDM_BASE(_n) + 0x2b8)
--#define REG_FE_GDM_TX_ETH_L64_CNT_H(_n)		(GDM_BASE(_n) + 0x2bc)
--#define REG_FE_GDM_TX_ETH_L127_CNT_H(_n)	(GDM_BASE(_n) + 0x2c0)
--#define REG_FE_GDM_TX_ETH_L255_CNT_H(_n)	(GDM_BASE(_n) + 0x2c4)
--#define REG_FE_GDM_TX_ETH_L511_CNT_H(_n)	(GDM_BASE(_n) + 0x2c8)
--#define REG_FE_GDM_TX_ETH_L1023_CNT_H(_n)	(GDM_BASE(_n) + 0x2cc)
--#define REG_FE_GDM_RX_ETH_E64_CNT_H(_n)		(GDM_BASE(_n) + 0x2e8)
--#define REG_FE_GDM_RX_ETH_L64_CNT_H(_n)		(GDM_BASE(_n) + 0x2ec)
--#define REG_FE_GDM_RX_ETH_L127_CNT_H(_n)	(GDM_BASE(_n) + 0x2f0)
--#define REG_FE_GDM_RX_ETH_L255_CNT_H(_n)	(GDM_BASE(_n) + 0x2f4)
--#define REG_FE_GDM_RX_ETH_L511_CNT_H(_n)	(GDM_BASE(_n) + 0x2f8)
--#define REG_FE_GDM_RX_ETH_L1023_CNT_H(_n)	(GDM_BASE(_n) + 0x2fc)
--
--#define REG_GDM2_CHN_RLS		(GDM2_BASE + 0x20)
--#define MBI_RX_AGE_SEL_MASK		GENMASK(26, 25)
--#define MBI_TX_AGE_SEL_MASK		GENMASK(18, 17)
--
--#define REG_GDM3_FWD_CFG		GDM3_BASE
--#define GDM3_PAD_EN_MASK		BIT(28)
--
--#define REG_GDM4_FWD_CFG		GDM4_BASE
--#define GDM4_PAD_EN_MASK		BIT(28)
--#define GDM4_SPORT_OFFSET0_MASK		GENMASK(11, 8)
--
--#define REG_GDM4_SRC_PORT_SET		(GDM4_BASE + 0x23c)
--#define GDM4_SPORT_OFF2_MASK		GENMASK(19, 16)
--#define GDM4_SPORT_OFF1_MASK		GENMASK(15, 12)
--#define GDM4_SPORT_OFF0_MASK		GENMASK(11, 8)
--
- #define REG_IP_FRAG_FP			0x2010
- #define IP_ASSEMBLE_PORT_MASK		GENMASK(24, 21)
- #define IP_ASSEMBLE_NBQ_MASK		GENMASK(20, 16)
+On Oct 21, Jakub Kicinski wrote:
+> On Sat, 18 Oct 2025 11:21:47 +0200 Lorenzo Bianconi wrote:
+> > This patch does not introduce any logical change, it just removes
+> > duplicated code in airoha_regs.h.
+> > Fix naming conventions in airoha_regs.h.
+>=20
+> Appears not to apply
 
----
-base-commit: 962ac5ca99a5c3e7469215bf47572440402dfd59
-change-id: 20251017-airoha-regs-cosmetics-54e9005e7586
+ack, I will rebase and post v2.
 
-Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+Regards,
+Lorenzo
 
+> --=20
+> pw-bot: cr
+
+--z+kCoUsYQ/MpQx5l
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaPiD7QAKCRA6cBh0uS2t
+rIUJAP9sOdpMJGpik1zGfDRuiTGJVOSOzifTwnhJUXdgIC5RJgD+PW8POUZxObMS
+MPTuJ+Zw2b8Oy+Ww44Da7DmnCcrRDg4=
+=Cu9m
+-----END PGP SIGNATURE-----
+
+--z+kCoUsYQ/MpQx5l--
 
