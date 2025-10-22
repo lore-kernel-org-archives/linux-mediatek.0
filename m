@@ -4,68 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29130CCD1AB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Oct 2025 07:42:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 904B1CCD1BC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Oct 2025 08:10:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=02XK0aWcsbyJv7uQCLUfPYNpW5LcuCGsqkHjPzwoRqc=; b=Y0LrBsojYYLEezi6+x0WtAuQTf
-	zJkXkKSklt2j57uVouM1i5L4LeDJIBrglg5eXHNyAo95Cj677bA57wZ+U70jfWa5HLaOfn8XCjzr+
-	7EFOgK+Na/gBjGSVV3586Sa7aP+/HBj4psdDf36H5y4ZPbkk4Rjy0MIWFX1k+DHgv1a4sHj1lEtR+
-	pr8TJnWYPcCe/wc/SNPwONEP3ahJvTLS41D8MeF/oumM1JPPlKWqCWd0n57FRBNQwt5KGfox5Eqcj
-	hJ8pvXYCu0DdH4b7rPaVnIHJxE/7Ydza2kcSm2BBj508+Elbw/bq1xjRMC2ijJlijYjxsADU5f8bQ
-	MQD+XcOA==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tFK1KO4D+0gMTo4v0IBwFOBDfCPoPkcaJ3yQdNMsf7M=; b=IgjpHEeG7J/EeFV9Lo7qQK32u1
+	HYZMvYHUoCYvdbt2M7ZvDXaQ9Fm68oXbWx57mQdNrIGfgQwwgcK1XS+2iv9vv1tGxmvklG68EguNw
+	Jc0iGBQ49IV/ZlvPj/j/tjKIB2NBtgReSfyZuEXIffuTyVmncM3e5EnIt3LrMSQCTBt1l2Z5eMJ1I
+	M5J9SbJlOUNZhifO5Truj3y8+4b6VKgy0vQVoywXKeMamkFqCnz9vlC8hlqLlRymxhqZHCwQOQORM
+	0XfgobPDvdtDQq4enF/ANFFFKYGNN2Rsa4410K3XM7JieVtuWQaBbEt5mbYBjh/bTbMt+UK7OYN2Y
+	zYHeDjyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBTUF-00000001vAM-33kf;
-	Wed, 22 Oct 2025 07:42:23 +0000
-Received: from smtpout-04.galae.net ([185.171.202.116])
+	id 1vBTvG-000000021Qj-0Eh6;
+	Wed, 22 Oct 2025 08:10:18 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBTUB-00000001v8q-3BK8;
-	Wed, 22 Oct 2025 07:42:21 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id 48ED1C0B8BF;
-	Wed, 22 Oct 2025 07:41:56 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 058D0606DC;
-	Wed, 22 Oct 2025 07:42:16 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 87690102F241B;
-	Wed, 22 Oct 2025 09:42:12 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1761118935; h=from:subject:date:message-id:to:mime-version:content-type:
-	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=02XK0aWcsbyJv7uQCLUfPYNpW5LcuCGsqkHjPzwoRqc=;
-	b=MDVGp1r63WmOq64jmekkj2mNKIHbs8gK1TGb34e0gPscoq9dNeHqWxN5JDVukN66yBPu2i
-	eGSvf8Qtm3kmKeeUHL4nm2pbJCglwa6JYLmoGL1ofZh/6fcdt5zuCoqzvgQURNM7Bb/8b/
-	QOqz2a3N7Ij0zLkxQRUIN+RVMn2dDBD3NUDtrpV4wRdpR6hN/git6lvfza+VrJr4sdq/57
-	i1LWPlnHC2K0/kaPUR6MauG2ylML2CFrnC02YfK6uO9qZA33Ucsm46Pfi3AmDMIa5H1xqQ
-	blzuMkZylIM6hhWAKueQv0cDGxw7XuOj36EFpGAMYJCZcNql1QqO1c66Vxx/MQ==
-Message-ID: <2a9e1ecc-2f33-432b-bf77-e08ce7ccd0ce@bootlin.com>
-Date: Wed, 22 Oct 2025 09:42:11 +0200
+	id 1vBTv4-000000021MW-0OUJ
+	for linux-mediatek@lists.infradead.org;
+	Wed, 22 Oct 2025 08:10:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1761120603;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=tFK1KO4D+0gMTo4v0IBwFOBDfCPoPkcaJ3yQdNMsf7M=;
+	b=SDno7bQmT1OXWXE6LLygg49XDaPGtLvkRZH/VYHf25yjUSy3kCMFKfi2WqTVBceYnr040q
+	n6iwVxfGh6tyVd9dU1Sp6aJU6K90WAurG0BdK6DNXDJNBP6orkvsZmh4Q0VT4+5TcLZBZZ
+	uyj9sGpO+0VvSkLyqVfifIaX73shy68=
+Received: from mail-pl1-f197.google.com (mail-pl1-f197.google.com
+ [209.85.214.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-477-3dAn5ocSPQ6Zl7R7hFFQpA-1; Wed, 22 Oct 2025 04:08:16 -0400
+X-MC-Unique: 3dAn5ocSPQ6Zl7R7hFFQpA-1
+X-Mimecast-MFC-AGG-ID: 3dAn5ocSPQ6Zl7R7hFFQpA_1761120496
+Received: by mail-pl1-f197.google.com with SMTP id d9443c01a7336-28bd8b3fa67so62827875ad.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 22 Oct 2025 01:08:16 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1761120496; x=1761725296;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=tFK1KO4D+0gMTo4v0IBwFOBDfCPoPkcaJ3yQdNMsf7M=;
+        b=I/5/WMjyhdVOmsST5hEvRtt7+7KKSbnpiiDQz9ho/qpAW7xBAcFc9B6kcDhGfCOv/X
+         bbxNFzKdLIpMtB1AEHm3w/bsRej7w+C8krJ4Aq4zxB3eGdEUHeToDvT3rMOoew0HOlfO
+         Db2Aht3rHJMuFFermd6WaKuk7LhSHyS3+IjGXFwJJejGuYexvR2h1E4TPIAJTju1kHyv
+         Z7WyZqLPUkb7BKUUPPUI280q6svIc8PqGasvzLLMySbRvMRobF5QFzyxEXDgKP0t793I
+         vWgnBYVIEr6fK6zYLWxPr2shMkqSJox+dtOvzTzjjYerraIXsyQ0SEUNPWVYqlYo1GOT
+         vTsQ==
+X-Forwarded-Encrypted: i=1; AJvYcCU11oxl7/JxqpifVLrZwzNipLPVxeu/juJVTmDVWolijSv8L13LyhX6yfQ6bFrfBGMZrgmDl7P8UMOb/W8ChQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw0BFSU6USDQVz5MJXM1FVUuBRV5WGBOC5l0cwyylgr9oLkZa0+
+	7sKyF6IlSAYckUPZjANis/PTpQjJ6G2yyl4Iwp+hFiasvlG+hMdPlAiTcyXeDq05vEceUD6U5Rm
+	8EDHTUUOmm98loQhg1nLnronfiiD9aA0PBgC7w9Bd2C1dMeB5EXZ4DHSQ5ZG5tOopLvC+g9IKkl
+	+hBu9871x6rpOP+V0p6RwCCjLhGZe58/kKKwmIDWT1EGNp+Oan
+X-Gm-Gg: ASbGnctZry9viGV4+tba/5lxnI6XAjJ40zY3YQKNewtz94TTnkt+K07dcLE1Jzn56C6
+	JH0T6k6y+gdTEdYxPToff2zF/JX08nDxr5F82miaoWEHDf1gfNq1Krpkcyey4r4qp9etRvjMybu
+	BjpnF+xaf282pXe8H71Xx57E+EyqXPb3ino86wutWmEyw7vVsKb+hfdCHjF+Zaz87pndRuM4LYS
+	S5ljUCdAufWeoxQ
+X-Received: by 2002:a17:902:e5cf:b0:290:91b1:2a69 with SMTP id d9443c01a7336-290cb7560b8mr260211685ad.52.1761120495727;
+        Wed, 22 Oct 2025 01:08:15 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHo2XP/jVdY2pcYFKz6OnG7bzc461hULcT1/QO/xAI+P9k7vDhd+aVTkvwMGDjMEU/z3u35v2XMOR7IkEnO8xg=
+X-Received: by 2002:a17:902:e5cf:b0:290:91b1:2a69 with SMTP id
+ d9443c01a7336-290cb7560b8mr260211445ad.52.1761120495404; Wed, 22 Oct 2025
+ 01:08:15 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [net-next PATCH 2/2] net: airoha: add phylink support for GDM1
-To: Christian Marangi <ansuelsmth@gmail.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Russell King <linux@armlinux.org.uk>, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org
-References: <20251021193315.2192359-1-ansuelsmth@gmail.com>
- <20251021193315.2192359-3-ansuelsmth@gmail.com>
-From: Maxime Chevallier <maxime.chevallier@bootlin.com>
-Content-Language: en-US
-In-Reply-To: <20251021193315.2192359-3-ansuelsmth@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Last-TLS-Session-Version: TLSv1.3
+References: <20251022072729.14820-1-xion.wang@mediatek.com>
+In-Reply-To: <20251022072729.14820-1-xion.wang@mediatek.com>
+From: Ondrej Mosnacek <omosnace@redhat.com>
+Date: Wed, 22 Oct 2025 10:08:04 +0200
+X-Gm-Features: AS18NWB0L38kFa0XqRBxBuxoOL0blj0prvtzV3DKxomco7xkygfsMEqvL9322_U
+Message-ID: <CAFqZXNuPqwfqA23LH8NOG6KM1Nb7WvW77wnpp-vZ5omU40j_qQ@mail.gmail.com>
+Subject: Re: [PATCH 0/1] selinux: export current_sid API for use in other
+ kernel modules
+To: xion.wang@mediatek.com
+Cc: Paul Moore <paul@paul-moore.com>, Stephen Smalley <stephen.smalley.work@gmail.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, wsd_upstream@mediatek.com, 
+	huadian.liu@mediatek.com, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: yVGiqZGtZ5dcXRq5snATOtCgUWCTDySRUzOVCuakZlU_1761120496
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251022_004220_262106_CB89C334 
-X-CRM114-Status: GOOD (  21.34  )
+X-CRM114-CacheID: sfid-20251022_011006_263152_85A0A997 
+X-CRM114-Status: GOOD (  23.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,165 +109,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Christian,
+On Wed, Oct 22, 2025 at 9:43=E2=80=AFAM <xion.wang@mediatek.com> wrote:
+>
+> From: Xion Wang <xion.wang@mediatek.com>
+>
+> We have a kernel driver designed to monitor the status of the Android
+> userspace watchdog. The implementation works as follows: we modify the
+> Android userspace watchdog code to periodically send a "kick" signal to
+> the kernel driver via ioctl, so that the kernel driver can determine
+> whether the userspace is still responsive. If the kernel driver does not
+> receive a kick signal from the userspace watchdog within a certain
+> period, it infers that the userspace is stuck. In this case, the kernel
+> driver will dump key process information at the kernel level and trigger
+> a full system reboot.
+>
+> To ensure that only the legitimate Android userspace watchdog process can
+> access the ioctl interface and perform the kick operation, and to prevent
+> malicious or unauthorized processes from spoofing the kick action (which
+> could compromise system reliability), we want to identify the calling
+> task by its security identifier (sid). By checking the sid, we can
+> effectively prevent unauthorized processes from sending kick signals.
+>
+> Currently, the current_sid() function in the kernel is defined as
+> static inline and cannot be directly called from modules or drivers. We
+> propose to export this function, so that the kernel driver can call
+> current_sid() to obtain the sid of the current process and decide whether
+> to allow the kick operation.
+>
+> This change will help enhance system security and robustness by
+> preventing the watchdog mechanism from being bypassed or abused.
+>
+> I would like to ask the maintainers if there are any additional security
+> concerns regarding exporting current_sid() as a public API, or if there
+> are any alternative or more recommended approaches to achieve this goal.
+> Any feedback or suggestions would be greatly appreciated.
 
-On 21/10/2025 21:33, Christian Marangi wrote:
-> In preparation for support of GDM2+ port, fill in phylink OPs for GDM1
-> that is an INTERNAL port for the Embedded Switch.
-> 
-> Rework the GDM init logic by first preparing the struct with all the
-> required info and creating the phylink interface and only after the
-> parsing register the related netdev.
-> 
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> ---
->  drivers/net/ethernet/airoha/airoha_eth.c | 108 ++++++++++++++++++++---
->  drivers/net/ethernet/airoha/airoha_eth.h |   3 +
->  2 files changed, 99 insertions(+), 12 deletions(-)
+Couldn't you just use security_cred_getsecid() or the new
+security_cred_getlsmprop()?
 
-You also need to select PHYLINK in Kconfig
+Untested:
 
-> 
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-> index ce6d13b10e27..fc237775a998 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> @@ -1613,6 +1613,8 @@ static int airoha_dev_open(struct net_device *dev)
->  	struct airoha_gdm_port *port = netdev_priv(dev);
->  	struct airoha_qdma *qdma = port->qdma;
->  
-> +	phylink_start(port->phylink);
-> +
->  	netif_tx_start_all_queues(dev);
->  	err = airoha_set_vip_for_gdm_port(port, true);
->  	if (err)
-> @@ -1665,6 +1667,8 @@ static int airoha_dev_stop(struct net_device *dev)
->  		}
->  	}
->  
-> +	phylink_stop(port->phylink);
-> +
->  	return 0;
->  }
->  
-> @@ -2813,6 +2817,17 @@ static const struct ethtool_ops airoha_ethtool_ops = {
->  	.get_link		= ethtool_op_get_link,
->  };
->  
-> +static struct phylink_pcs *airoha_phylink_mac_select_pcs(struct phylink_config *config,
-> +							 phy_interface_t interface)
-> +{
-> +	return NULL;
-> +}
-> +
-> +static void airoha_mac_config(struct phylink_config *config, unsigned int mode,
-> +			      const struct phylink_link_state *state)
-> +{
-> +}
-> +
->  static int airoha_metadata_dst_alloc(struct airoha_gdm_port *port)
->  {
->  	int i;
-> @@ -2857,6 +2872,55 @@ bool airoha_is_valid_gdm_port(struct airoha_eth *eth,
->  	return false;
->  }
->  
-> +static void airoha_mac_link_up(struct phylink_config *config, struct phy_device *phy,
-> +			       unsigned int mode, phy_interface_t interface,
-> +			       int speed, int duplex, bool tx_pause, bool rx_pause)
-> +{
-> +}
-> +
-> +static void airoha_mac_link_down(struct phylink_config *config, unsigned int mode,
-> +				 phy_interface_t interface)
-> +{
-> +}
-> +
-> +static const struct phylink_mac_ops airoha_phylink_ops = {
-> +	.mac_select_pcs = airoha_phylink_mac_select_pcs,
-> +	.mac_config = airoha_mac_config,
-> +	.mac_link_up = airoha_mac_link_up,
-> +	.mac_link_down = airoha_mac_link_down,
-> +};
-> +
-> +static int airoha_setup_phylink(struct net_device *netdev)
-> +{
-> +	struct airoha_gdm_port *port = netdev_priv(netdev);
-> +	struct device *dev = &netdev->dev;
-> +	phy_interface_t phy_mode;
-> +	struct phylink *phylink;
-> +
-> +	phy_mode = device_get_phy_mode(dev);
-> +	if (phy_mode < 0) {
-> +		dev_err(dev, "incorrect phy-mode\n");
-> +		return phy_mode;
-> +	}
-> +
-> +	port->phylink_config.dev = dev;
-> +	port->phylink_config.type = PHYLINK_NETDEV;
-> +	port->phylink_config.mac_capabilities = MAC_ASYM_PAUSE | MAC_SYM_PAUSE |
-> +						MAC_10000FD;
-> +
-> +	__set_bit(PHY_INTERFACE_MODE_INTERNAL,
-> +		  port->phylink_config.supported_interfaces);
-> +
-> +	phylink = phylink_create(&port->phylink_config, dev_fwnode(dev),
-> +				 phy_mode, &airoha_phylink_ops);
-> +	if (IS_ERR(phylink))
-> +		return PTR_ERR(phylink);
-> +
-> +	port->phylink = phylink;
-> +
-> +	return 0;
-> +}
-> +
->  static int airoha_alloc_gdm_port(struct airoha_eth *eth,
->  				 struct device_node *np, int index)
->  {
-> @@ -2931,19 +2995,30 @@ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
->  	port->id = id;
->  	eth->ports[p] = port;
->  
-> -	err = airoha_metadata_dst_alloc(port);
-> -	if (err)
-> -		return err;
-> +	return airoha_metadata_dst_alloc(port);
-> +}
->  
-> -	err = register_netdev(dev);
-> -	if (err)
-> -		goto free_metadata_dst;
-> +static int airoha_register_gdm_ports(struct airoha_eth *eth)
-> +{
-> +	int i;
->  
-> -	return 0;
-> +	for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
-> +		struct airoha_gdm_port *port = eth->ports[i];
-> +		int err;
->  
-> -free_metadata_dst:
-> -	airoha_metadata_dst_free(port);
-> -	return err;
-> +		if (!port)
-> +			continue;
-> +
-> +		err = airoha_setup_phylink(port->dev);
-> +		if (err)
-> +			return err;
-> +
-> +		err = register_netdev(port->dev);
-> +		if (err)
-> +			return err;
+u32 sid;
+security_cred_getsecid(current_cred(), &sid);
 
-The cleanup for that path seems to only be done if
+-- or --
 
-  port->dev->reg_state == NETREG_REGISTERED
+lsm_prop prop;
+security_cred_getlsmprop(current_cred(), &prop);
+u32 sid =3D prop.selinux->secid;
 
-So if netdev registration fails here, you'll never destroy
-the phylink instance :(
-
-Maxime
-
+--=20
+Ondrej Mosnacek
+Senior Software Engineer, Linux Security - SELinux kernel
+Red Hat, Inc.
 
 
