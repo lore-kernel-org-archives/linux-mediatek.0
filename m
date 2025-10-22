@@ -4,80 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D130FCCD1BB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Oct 2025 12:35:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C173CCD1BB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Oct 2025 12:58:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=R95DGcQ4LYALHG8T4SNxi7BAAXg7er7ggzkRbLh42No=; b=sNRkFb6mWm0kXp7DXEgclGf/uW
-	uHS9cjrwYSPsdLiSFe0eGBeyx74oumFgYDBiLq/YOFxEtPQUahF+V02MRLt63WKZY7rY2nkjg9glP
-	cTs+s+3sG/tipRKF1kea5USlXLUijiAwnwdoWBzEkHh6shsEF4rRAdGWjXuBbJ++cYh10KU42zMX9
-	ofNDUyGmk9Gpul6gQADkDp5BSRGRD0wnjFVhIAfyGJMmoBmMK7p6pd5KEPHchLLkxqTpBY7tJJNAG
-	PPf2bwAvqyoiTpZq8Qra1A5SnVewrMGLkzqpchRDs1a7wIy9KqINelYuaviiloGHfAX6o2hsIxco+
-	cmB8LkmA==;
+	bh=rjG53ExIK1WFjeDIAAZczTfr0kaW2lHML1A9qjZU6Y8=; b=OH6pZ8+HPo8ZViuu/uSH/QnnnQ
+	5piwAg951h21a+7hzhU/if73WF1TrDbUMeqerY9dCPT+QExRPgg8dQUh9F7PksEMN8zshrUJ93SHK
+	CsnxW7YNYWtoekBMI2zMeWGB7QCkHRJs9q+Dr/KG2hVJ/GjtT3WEdDfreVB1bAbY0ObtjmETwd+x7
+	u/aC16suIO3tmkeDqsmOusE6i9ydM/K5hflshONWxD8Q2watUaLMV/InfvpTT/9nRtFO1VreRJf1l
+	1ekSkKEBhkm3bwMBE5/U/ekr/QGb44CeETEK5u8vY87ZNhk0Ee0lQfpT4qwVVfdwZsVStZGJBVdan
+	8/dNcj8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBY4K-00000002ory-3HNd;
-	Wed, 22 Oct 2025 12:35:56 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1vBYQJ-00000002u8p-1yd2;
+	Wed, 22 Oct 2025 12:58:39 +0000
+Received: from mail-yx1-xb134.google.com ([2607:f8b0:4864:20::b134])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBY4H-00000002oqu-2aKb;
-	Wed, 22 Oct 2025 12:35:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=R95DGcQ4LYALHG8T4SNxi7BAAXg7er7ggzkRbLh42No=; b=QSk6D6ZIL39KWQjpQVXzyu/daU
-	CkHCg8qd7kd0YqSVIzxh2OYFZ1Gtf6Zy1PMvilS2ibzw5vrduZP1N74w4P6Tj1JfPOXck0ka2IkIN
-	G3R9KHuq/zrSWxPK36Hjw1+QvspeXZMa8vN0KtQZWpHSk2jPm3N1Cw59r3FE3Ov57v3Y=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1vBY3w-00Bkxo-MY; Wed, 22 Oct 2025 14:35:32 +0200
-Date: Wed, 22 Oct 2025 14:35:32 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Sjoerd Simons <sjoerd@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Lee Jones <lee@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
-	kernel@collabora.com, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org,
-	linux-phy@lists.infradead.org, netdev@vger.kernel.org,
-	Daniel Golle <daniel@makrotopia.org>,
-	Bryan Hinton <bryan@bryanhinton.com>
-Subject: Re: [PATCH 15/15] arm64: dts: mediatek: mt7981b-openwrt-one: Enable
- leds
-Message-ID: <9ecffb7f-839c-4e4d-bef1-f59747d020b2@lunn.ch>
-References: <20251016-openwrt-one-network-v1-0-de259719b6f2@collabora.com>
- <20251016-openwrt-one-network-v1-15-de259719b6f2@collabora.com>
- <d8077ee4-21c2-43c5-b130-7ff270b09791@lunn.ch>
- <79d4a7379bce245d22b56c677fd7b3a263836239.camel@collabora.com>
+	id 1vBYQG-00000002u7j-1OGm
+	for linux-mediatek@lists.infradead.org;
+	Wed, 22 Oct 2025 12:58:37 +0000
+Received: by mail-yx1-xb134.google.com with SMTP id 956f58d0204a3-63e11347fd9so6691484d50.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 22 Oct 2025 05:58:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1761137915; x=1761742715; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=rjG53ExIK1WFjeDIAAZczTfr0kaW2lHML1A9qjZU6Y8=;
+        b=gtuia/PVmE3dPtabCubMfjsFrT6eSoS6KjX8PJPaqCLFEemNwfgSj0dHqvSSSTwrkQ
+         OHhCP3IhMp2NCAI2t42MjK/XfRqN409MzwiwjBSDfm9abiobJ6d+upt8ZhVWedP5Uaia
+         gRf3PtklpeDrJRlbr/1qxFz/nDiTje/9sQPvpq2KwEDD5xmRr2ICvZpMGKP4DSJwoXFt
+         /WHirjv1c2N0GI5EzV9b5QjRddBaKLD6MXJHVJRLDMazcBKhDcgGlrC01GXvvCyaMQEZ
+         Z/Ra2NSmepKgk3v+iudTm2fsdQ/em2Uyn0TQmoNKn45qwVd7gZXupEOL/3lyH9jT7yyV
+         Xi7w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1761137915; x=1761742715;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=rjG53ExIK1WFjeDIAAZczTfr0kaW2lHML1A9qjZU6Y8=;
+        b=Ot9E3peZp4fnpJl8BvToALjogqED92W7JENBJf/UuaCPBbM+u6YDvYsqI1BAk7+bin
+         RMBcFMKMEAoN5CjEp8usPcEinz0+qt0PV0hFYePpor3UvlnhPLyA2ZF+tuAf1IB3CArD
+         J6CZHbOKr70FmOalR7YvYaisYR0CoVi3hsCnW/tCDc5RgN4iDjkTtOBUh7v/r76ja6y5
+         Fss+4M44usVvJUXEgTZNuqa3JIoS/HmVRtmt7BBHsfEF8kZdKJlDe1aoQH6iQ8gXQT04
+         rAQ6+2tF1PT2cGVT5JLxeeMlCiruyE+TtgqmTc9GjAgdGBSw5PMH3WUz3m9kjvtp6mMR
+         A3aQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVibtSfz/gtScLE7hdMpaIdxDBzuPxnHen1spi7Vw8KQFFpXA6maN2I7IQxeUPnjg3hEb5Y3meE6KFb0lHRYA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzUcSgukD2KOU+FBumBUaurDWRFxNBZS6yK0vNlZIZGi4ePFasD
+	KRlEZOZWwkcyW4IVwvwa5PaxlNKlV//6Q2SzMcNvokS7wMD2WlClpJ3NhhP+Jr3NslVVCAZRmHI
+	UvWighp3BOIQ2FWjvzinM/Lk8W0sy26Ic2utW+F76rA==
+X-Gm-Gg: ASbGncu5V9xjEdt4wCXa17mRhSP4fnBtrSFP4DtPjE0zz6S6lx/HHvsZ4tmxoJWuRjc
+	sqpi44JsIv80D8H/4Krra/oYaJYIziYRjJq3BL+Y8CUbKpQX9kjZWjM5OhFenaxFO9axdcA4NrQ
+	UYwciN4rYZWUF5z3M0jvMi3DFbuQ7MhfMNNII7ORl4Bz896vBUkAoJuNRKHbNGfJM+pLmCJSMwf
+	Rj4+yIqry3B0XLOXvu0o0W2KGzzmb3uwb5TuzOmyixR2yVtI9iL8ii1fEKpCsEB7UWTGKQ/
+X-Google-Smtp-Source: AGHT+IEpKfqQAP/glDCUgAVJgatRBUGG4LJgEA2qJzeL/hKIAfZyo7XzIeJETd/S1CbVK1X+8E38/575DImRXb9n0+g=
+X-Received: by 2002:a05:690e:4182:b0:63c:da95:21a4 with SMTP id
+ 956f58d0204a3-63e161b6c8bmr15719971d50.25.1761137915143; Wed, 22 Oct 2025
+ 05:58:35 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <79d4a7379bce245d22b56c677fd7b3a263836239.camel@collabora.com>
+References: <20250925143122.39796-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250925143122.39796-1-angelogioacchino.delregno@collabora.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Wed, 22 Oct 2025 14:57:59 +0200
+X-Gm-Features: AS18NWBK_6SEKp0LPrIDEzZP10EAnrhsIWSa5DHPeYttYjGzKLOmquHgZnWl3Xc
+Message-ID: <CAPDyKFq9oxUfdfF-TOGLgi7b4aYay40H-VaEq-s=C3F2eVOBVw@mail.gmail.com>
+Subject: Re: [PATCH v2 0/5] pmdomain: mediatek: Add HWVoter and MT8196 Support
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251022_053553_653835_19EA5E2D 
-X-CRM114-Status: GOOD (  18.82  )
+X-CRM114-CacheID: sfid-20251022_055836_396720_175DCF10 
+X-CRM114-Status: GOOD (  21.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,49 +88,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: robh@kernel.org, conor+dt@kernel.org, mbrugger@suse.com, y.oudjana@protonmail.com, nfraprado@collabora.com, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, mandyjh.liu@mediatek.com, wenst@chromium.org, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, krzk+dt@kernel.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 22, 2025 at 09:26:11AM +0200, Sjoerd Simons wrote:
-> Hey,
-> 
-> On Fri, 2025-10-17 at 19:35 +0200, Andrew Lunn wrote:
-> > On Thu, Oct 16, 2025 at 12:08:51PM +0200, Sjoerd Simons wrote:
-> > > The Openwrt One has 3 status leds at the front (red, white, green) as
-> > > well as 2 software controlled leds for the LAN jack (amber, green).
-> > 
-> > A previous patch in this series added 2 PHY LEDs. Are they connected
-> > to a LAN jack? Are there multiple RJ45 connectors? Is it clear from
-> > /sys/class/leds what LED is what?
-> 
-> Yeah there are two RJ45 jacks. One referred to as WAN in the openwrt one
-> documentation (2.5G), which uses phy integrated leds. One referred to as LAN,
-> which for some reason is using software controlled leds rather then the phy's
-> led controller, which this patch adds support for.
-> 
-> When applying this set you'll get:
-> ```
-> root@openwrt-debian:/sys/class/leds# ls -1                                     
-> amber:lan                                                                      
-> green:lan                                                                      
-> green:status                                                                   
-> mdio-bus:0f:amber:wan                                                          
-> mdio-bus:0f:green:wan                                                          
-> mt76-phy0                                                                      
-> mt76-phy1                                                                      
-> red:status                                                                     
-> white:status                       
-> ```
-> 
-> Which is hopefully clear enough
+On Thu, 25 Sept 2025 at 16:31, AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> The initial series [1] was refactoring the bus protection regmap retrieval,
+> adding modem power sequences and support for the RTFF hardware found in newer
+> generation MediaTek SoCs - and adding support for Hardware Voter, HWCCF Infra
+> power on, and MT8196 domains.
+>
+> That series was doing a bit too much in one shot, and then a discussion about
+> the whole Hardware Voter started, so I decided to split that in two parts:
+> one dedicated only to the refactoring, modem and RTFF [2], and one that only
+> introduces MT8196-specific parts.
+>
+> Since the refactoring series [2] was merged upstream and the Hardware Voter
+> discussion came to an agreement on how to proceed (resulting in all of the
+> MT8196 clock drivers being also merged upstream), it is now time to send
+> the final piece of the Power Domains (MTCMOS) support for the MediaTek
+> Kompanio Ultra (MT8196) SoC.
+>
+> So - this series finally adds support for handling the Hardware Voter type
+> of power domains in the MT8196 SoC, for secure infracfg power control, and
+> for all of the power domains found in the MT8196 SoC - using all of the
+> newly introduced support (HWV, RTFF, etc).
+>
+> This series was tested on multiple MT8196 Chromebooks now for more than 3
+> months, and works just great; the last test was performed on the Collabora
+> MediaTek integration kernel tree based on next-20250909.
+>
+> P.S.: This is a v2 because the initial series ([1] v1) contained patches
+>       that I am sending in this series.
+>
+> [1]: https://lore.kernel.org/all/20250623120154.109429-1-angelogioacchino.delregno@collabora.com/
+> [2]: https://lore.kernel.org/all/CAPDyKFoe9=4KgOsPUX6FOE+yPxdUqAxRec5yKY2h6uFOeUvvDQ@mail.gmail.com/
+>
+> AngeloGioacchino Del Regno (5):
+>   dt-bindings: power: Add support for MT8196 power controllers
+>   pmdomain: mediatek: Add support for Hardware Voter power domains
+>   pmdomain: mediatek: Add support for secure HWCCF infra power on
+>   pmdomain: mediatek: Add support for MT8196 SCPSYS power domains
+>   pmdomain: mediatek: Add support for MT8196 HFRPSYS power domains
+>
+>  .../power/mediatek,power-controller.yaml      |   4 +
+>  drivers/pmdomain/mediatek/mt8196-pm-domains.h | 625 ++++++++++++++++++
+>  drivers/pmdomain/mediatek/mtk-pm-domains.c    | 305 ++++++++-
+>  drivers/pmdomain/mediatek/mtk-pm-domains.h    |  49 +-
+>  .../dt-bindings/power/mediatek,mt8196-power.h |  58 ++
+>  5 files changed, 1012 insertions(+), 29 deletions(-)
+>  create mode 100644 drivers/pmdomain/mediatek/mt8196-pm-domains.h
+>  create mode 100644 include/dt-bindings/power/mediatek,mt8196-power.h
+>
+> --
+> 2.51.0
+>
 
-You can also get to the LEDs associated to a MAC via
-/sys/class/net/eth42/leds, or a subdirectory.
+The series applied for next, thanks!
 
-Please could you expand the commit message with more details of the
-different RJ45 connectors, and how the different LEDs map to them.
-
-Thanks
-
-	Andrew
+Kind regards
+Uffe
 
