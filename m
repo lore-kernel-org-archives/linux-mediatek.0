@@ -4,61 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48DDBCCD1AB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Oct 2025 07:12:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F25BCCF9E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Oct 2025 07:26:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aCOhMXeNcRlLEJFFTCWsYH3yznwlPc3/uJAlYhMI6lo=; b=EXl8xLZJbVyt8XcQcbSBKthIe/
-	n0Kp7yErfumL3lL/gA0GQQzUot8l2yRKPLZ+leUJGSw5U7VNZqt/AA+BRPLFNyS6Cjnw6JbjQ3s3P
-	s21JpDzk5H1bqgVrVqOs4HaLsaLidCsAdiZS/yOx1r+h8N9sXw6/BNd/2oJEyNu7+xRcnbnlVnMnb
-	dPu8s4gajmfeIdL8jZBl1NuzK2tmTOvGKj3OAQEPesvsFCX86P60lJrOTiacvycWgVUaYpaPw09HQ
-	d3wZiFKiEYSFhlpRmJxTspLe7/KAHNfdvsQpm4ujoiHvi+nbQRRCPcxUv8kx1zsPyo7KifJq84ute
-	f7NThlSA==;
+	bh=Ne+Pmve/YJpQYWLxsEpgG2oak24NJMv5+UeWTnSp+5I=; b=0jTqFkllS9DU0/e049dcqRwtHj
+	Rlx1rHD3XhGivePa1g3cfbuMd9srYtXN1kTVu21Mv4RyYsA9P9gUDQ5B4dKRhDJPZh8SCVYWjfjhq
+	KDMqcA21XQ04bcRJ+F0JDtX72TCavpz5Qw2LshMSiJqKs6OLCOkkOk+mbp1gt2HtOr3swTYzKHufA
+	3s+/gGx1hrSUgqs66S5VNueBpe3FeGwTaPqbdZz0cU2VtuTohwnNmGFW0wcQlNKzpoTp7852T+wEm
+	c1OpDc08GAxVZLFJLx2X0E/jTGXxH6mY0XF6c8hZCN9mV44pvFvZXZsGUq8usAx9oVrGXWaxR/8Sj
+	KWPtIksA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBT1f-00000001pHj-1fsF;
-	Wed, 22 Oct 2025 07:12:51 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vBTFA-00000001s80-3WT9;
+	Wed, 22 Oct 2025 07:26:48 +0000
+Received: from sender4-op-o15.zoho.com ([136.143.188.15])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBT1d-00000001pH1-1PPT;
-	Wed, 22 Oct 2025 07:12:49 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id A534C6287A;
-	Wed, 22 Oct 2025 07:12:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 099D4C4CEE7;
-	Wed, 22 Oct 2025 07:12:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761117168;
-	bh=aCOhMXeNcRlLEJFFTCWsYH3yznwlPc3/uJAlYhMI6lo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=P20bzHE882yA6YpVwda4fjhuxkc1B1YP8vfan0Thd1UpfWY5E5Ai1Fa3iBvGDLdHo
-	 uHXRDqdfzWzSpBVY6fobdgGoVR57prFL3IAz/xKKrnyRdCB5oDF5znTcGusdVjqKNw
-	 /A2UlLm3syA+BDqsDTX8NW1Qdg18kcHNpq4o+G4HOCBsS8W92gxbsyEaT5lch7WEnC
-	 NIcdRgjZANy5OVG8M2BGmsa09g8zZi6mxBRjtBxUAsBP6+utl+22nBVSdM/EuknISt
-	 1p94l6tXZ1b3w9h1/xrpN2H3V81HhknAgRoxeMIX0np4FlDu718+UfWK3C2EnAxbIG
-	 Kj7KUzfAzpOng==
-Date: Wed, 22 Oct 2025 09:12:45 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net-next] net: airoha: Remove code duplication in
- airoha_regs.h
-Message-ID: <aPiD7WTSGbJq_xKO@lore-desk>
-References: <20251018-airoha-regs-cosmetics-v1-1-bbf6295c45fd@kernel.org>
- <20251021182800.2c736d21@kernel.org>
+	id 1vBTF7-00000001s5x-1lqP;
+	Wed, 22 Oct 2025 07:26:47 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1761117986; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=GWdWVJIci83v/eS69HecZIVsU2dKjax3EaKZENbtz8G9fVU3kFO9nY0W8fbL857a5mW3ciUZqRmPGiAn2qFYSRfUsXikN42get9YJK0XRoxavO8HtvhmmTrh6sXVgQ091coljHNh/p5NRqUQXn8vNn0LieCpkgF8NE75OevzYL8=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1761117986; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Ne+Pmve/YJpQYWLxsEpgG2oak24NJMv5+UeWTnSp+5I=; 
+	b=ZFwP3ceil6N4YJkKFYDLfc3uNtz7sFBZZs9URI8eHspzPQ9RO5mfmYIwTuRp/Pt0BgCsLXgGGmuDL0oIbK3wlG8wJHJesye68F3WBpKfNl3nVdW2Waqixq2ZVPbPC8gOtczfnFApIzT0yRx1/5t9XZJUMQlDgLGmCtf2orhIpWw=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sjoerd@collabora.com;
+	dmarc=pass header.from=<sjoerd@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1761117986;
+	s=zohomail; d=collabora.com; i=sjoerd@collabora.com;
+	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
+	bh=Ne+Pmve/YJpQYWLxsEpgG2oak24NJMv5+UeWTnSp+5I=;
+	b=WS0HFeV7KBFtIbds/DTNEOfzlWHiuEhf7zgrHzyBNXymtekgif2dvr8//CXl1Eja
+	5o0inS7TmzZMLQ8iQ3Ei7kl5nEinVZYEVFx7L46Nzx0eWtQ5TQX0iSAx2IQCmJK8X72
+	FD3DTFDuVjIDxFN5LhSIHklpFieoF/gr9TrumGso=
+Received: by mx.zohomail.com with SMTPS id 1761117982200158.6072297880238;
+	Wed, 22 Oct 2025 00:26:22 -0700 (PDT)
+Message-ID: <79d4a7379bce245d22b56c677fd7b3a263836239.camel@collabora.com>
+Subject: Re: [PATCH 15/15] arm64: dts: mediatek: mt7981b-openwrt-one: Enable
+ leds
+From: Sjoerd Simons <sjoerd@collabora.com>
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+  Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
+ <angelogioacchino.delregno@collabora.com>, Ryder Lee
+ <ryder.lee@mediatek.com>,  Jianjun Wang <jianjun.wang@mediatek.com>, Bjorn
+ Helgaas <bhelgaas@google.com>, Lorenzo Pieralisi	 <lpieralisi@kernel.org>,
+ Krzysztof =?UTF-8?Q?Wilczy=C5=84ski?=	 <kwilczynski@kernel.org>, Manivannan
+ Sadhasivam <mani@kernel.org>, Chunfeng Yun	 <chunfeng.yun@mediatek.com>,
+ Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
+ Lee Jones <lee@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,  "David S.
+ Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
+ Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo
+ Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>, 
+	kernel@collabora.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, 	linux-pci@vger.kernel.org,
+ linux-phy@lists.infradead.org, netdev@vger.kernel.org,  Daniel Golle
+ <daniel@makrotopia.org>, Bryan Hinton <bryan@bryanhinton.com>
+Date: Wed, 22 Oct 2025 09:26:11 +0200
+In-Reply-To: <d8077ee4-21c2-43c5-b130-7ff270b09791@lunn.ch>
+References: <20251016-openwrt-one-network-v1-0-de259719b6f2@collabora.com>
+	 <20251016-openwrt-one-network-v1-15-de259719b6f2@collabora.com>
+	 <d8077ee4-21c2-43c5-b130-7ff270b09791@lunn.ch>
+Organization: Collabora
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.2-5 
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="z+kCoUsYQ/MpQx5l"
-Content-Disposition: inline
-In-Reply-To: <20251021182800.2c736d21@kernel.org>
+X-ZohoMailClient: External
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251022_002645_513101_098627D2 
+X-CRM114-Status: GOOD (  12.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,38 +97,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hey,
 
---z+kCoUsYQ/MpQx5l
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Oct 21, Jakub Kicinski wrote:
-> On Sat, 18 Oct 2025 11:21:47 +0200 Lorenzo Bianconi wrote:
-> > This patch does not introduce any logical change, it just removes
-> > duplicated code in airoha_regs.h.
-> > Fix naming conventions in airoha_regs.h.
+On Fri, 2025-10-17 at 19:35 +0200, Andrew Lunn wrote:
+> On Thu, Oct 16, 2025 at 12:08:51PM +0200, Sjoerd Simons wrote:
+> > The Openwrt One has 3 status leds at the front (red, white, green) as
+> > well as 2 software controlled leds for the LAN jack (amber, green).
 >=20
-> Appears not to apply
+> A previous patch in this series added 2 PHY LEDs. Are they connected
+> to a LAN jack? Are there multiple RJ45 connectors? Is it clear from
+> /sys/class/leds what LED is what?
 
-ack, I will rebase and post v2.
+Yeah there are two RJ45 jacks. One referred to as WAN in the openwrt one
+documentation (2.5G), which uses phy integrated leds. One referred to as LA=
+N,
+which for some reason is using software controlled leds rather then the phy=
+'s
+led controller, which this patch adds support for.
 
-Regards,
-Lorenzo
+When applying this set you'll get:
+```
+root@openwrt-debian:/sys/class/leds# ls -1                                 =
+   =20
+amber:lan                                                                  =
+   =20
+green:lan                                                                  =
+   =20
+green:status                                                               =
+   =20
+mdio-bus:0f:amber:wan                                                      =
+   =20
+mdio-bus:0f:green:wan                                                      =
+   =20
+mt76-phy0                                                                  =
+   =20
+mt76-phy1                                                                  =
+   =20
+red:status                                                                 =
+   =20
+white:status                      =20
+```
 
-> --=20
-> pw-bot: cr
+Which is hopefully clear enough
 
---z+kCoUsYQ/MpQx5l
-Content-Type: application/pgp-signature; name=signature.asc
 
------BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaPiD7QAKCRA6cBh0uS2t
-rIUJAP9sOdpMJGpik1zGfDRuiTGJVOSOzifTwnhJUXdgIC5RJgD+PW8POUZxObMS
-MPTuJ+Zw2b8Oy+Ww44Da7DmnCcrRDg4=
-=Cu9m
------END PGP SIGNATURE-----
-
---z+kCoUsYQ/MpQx5l--
+--=20
+Sjoerd Simons <sjoerd@collabora.com>
+Collabora
 
