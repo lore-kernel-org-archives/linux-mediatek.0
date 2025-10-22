@@ -4,74 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9999ECCD1AB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Oct 2025 13:48:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5D75CCD1BB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Oct 2025 13:50:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hrRSPxugKfBRbwb38s0reG3tqtJvi6mHZloAZZkTJtM=; b=bBt/VHCkg6tRlRilPu+tApePmJ
-	koQloT0AcXjQBSjgla6ieuyeAYO/l9AMd0LBG9Aucs6UQRzqEsn0PvEXFdimjVExqACmW1NVBIFdo
-	4hLfBLqPnVR3lNn7RHDsp6H4/SIiT5X3nLK+dvJuqs7V+cM4BFN/shYLqPHHOJ7/Yk/559ZC9AgAj
-	hMZB5ICE77jigVjLt6jQbW/oVpB7U/Bu+1DcRPExaYBnrMqyBY5uIJm1ssZjCnaGlt0R0upaEZB0K
-	23IOfbuIhfgsr4dMjFhWfUQcpCLVtCpcRyoqA7+jksc0zpNuYikkkPH8qeqr7ggAYG2/UiuvjLeMN
-	vulCSTLA==;
+	bh=1gBTBnH1FtYIyWKafmQ4A++qeLZVVVxfxFP4zj0a1V0=; b=3FNfKaHuZDAVKprJ2ZLYnURIVP
+	8Np3p1T8bFHzJflrR0JbAktFQkZ5WruAzfmBH98XbUQUxdVgN3SQvXwWbKIUOnWstfdUNvte8XxrD
+	QYVyntsbn73Kb9U/tQfP2Y0hewOVymaMOGUgyRk9bA2bjLPup+1esKqhIh0YTReaQsgTV3NcvuZHY
+	UJehSXS9rg3V+Zq/7m9aY4AMn3Jbvm2r5F8HZXWBVM1vruQ1Z3hmsjEHTQmSn/fF4YZonX6WyqXkn
+	MjZox2FOoIhFE8w9eRJpy2IH+Llq5kSUWeU/a5AaKakLps1ulfwrWAy6iTdYiSMJGZLg7AgJO3/CZ
+	9o3qLGUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBZCA-000000035Pv-0YBz;
-	Wed, 22 Oct 2025 13:48:06 +0000
+	id 1vBZEV-000000035ym-46wV;
+	Wed, 22 Oct 2025 13:50:32 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBZC7-000000035Ou-3hnc
+	id 1vBZEU-000000035yJ-2cGE
 	for linux-mediatek@lists.infradead.org;
-	Wed, 22 Oct 2025 13:48:04 +0000
+	Wed, 22 Oct 2025 13:50:30 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 4E64D62136
-	for <linux-mediatek@lists.infradead.org>; Wed, 22 Oct 2025 13:48:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EFBE4C4CEE7
-	for <linux-mediatek@lists.infradead.org>; Wed, 22 Oct 2025 13:48:02 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 1208262131;
+	Wed, 22 Oct 2025 13:50:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B374BC4CEF5;
+	Wed, 22 Oct 2025 13:50:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761140883;
-	bh=jbBJWUa2D5mD4FO+YopVcu+7lzL7qETV1oQuE65ZYas=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=WvqXYva6pkQEoRMq5LvT+1+kG7B1Kz3PS02C1kUmogBm+k2sURFt38z6U9PPVW78p
-	 eDhGToTKrnnX79xe4DaP20mVy0Q0HozDY+D6ackoKN/oJg8N7w+BOkoUbOpE02PrCj
-	 go3SZVQq44RBgnGlCmKuFWNhqXWMmS/yzSePWuvXIvcxPE8XyNlGI8JS9cStg1O72W
-	 D3VWhcUPE5mDtWalOrZEfvMuUsBfb8u/+vSZvv8weiP9E6zyiaJeVjgYXvpzum49V8
-	 yIPutGD06uxQzesDA77BHQ4Uj0fUPOX9wYv4n9ycS0vsk61OthhucDnBKJHUqtUw01
-	 NJHEw1hLMo9VA==
-Received: by mail-pj1-f51.google.com with SMTP id 98e67ed59e1d1-339d7c403b6so6570293a91.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 22 Oct 2025 06:48:02 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCXxTfDkvv16Ea51F/jGRskQgA5K3GH/NQgXpljupd9gu4/GsSc3zs0WsRF3s9XC3wnGgtDGZNRe9c04Zb9qiA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwFE9uWc9ENtGDIxcph1aAfzwQQa8tulm87860RX+MxWInlEcmU
-	pWYpbfSLZ1Gfbt4Ukj2gy7qZTm9eH+RkDJ2xrO4sGHnGJ8W2CssXNA5mMsd1Wox9dxTnKl+npCi
-	pvjmnMFgwyRLxvdZVVdNISvayofaSmg==
-X-Google-Smtp-Source: AGHT+IFy1XRD8bUn3Ht+foWFb4onBy3I0BzeduV4i7PqazihqftsGN1m+bW8yLWYlxF6eUIqhNEGG1eW7HknFBsv3Jk=
-X-Received: by 2002:a17:902:f552:b0:290:6b30:fb3 with SMTP id
- d9443c01a7336-290c9ca32eemr287339455ad.16.1761140882431; Wed, 22 Oct 2025
- 06:48:02 -0700 (PDT)
+	s=k20201202; t=1761141029;
+	bh=4q54NyL9BUJnCJ65isVEm3uQJQT5pbbLzT96h2CIzbw=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=YWyr7Hjk0uAHY3sKgeXvhwKG78pVsDenMZJcSGrxmKJcRnZCRIkd6++4oqzQJAbbx
+	 KK41fh3yO45kfrWgUNrtmTd06QE6VuaUkGNVaAUvMDCMUY9ShTTpD8qMF6EIoS8Ua/
+	 olWILwGewGyr6ekC3JWRnr0imSo+sD2kkLd3Ba1814l2ajdhJ/0LnNmr5R7tqRxZww
+	 SbDGOW0FEfwEGeXI02aq6+ur8wH3bbOtevxz4EGCcAPhoxLxxf8WQZeV8c5pcxxFm3
+	 umNYMM/F1NSelhlBumeT3jTrelaU3vt3wuFhYIn4F1TlLqtmlotnFJQlYtgBX02i0Y
+	 A7zZjnBm+OU1w==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id EAE133A78A5D;
+	Wed, 22 Oct 2025 13:50:11 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-References: <20250808-mediatek-drm-hdmi-v2-v10-0-21ea82eec1f6@collabora.com> <20250808-mediatek-drm-hdmi-v2-v10-4-21ea82eec1f6@collabora.com>
-In-Reply-To: <20250808-mediatek-drm-hdmi-v2-v10-4-21ea82eec1f6@collabora.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Wed, 22 Oct 2025 13:47:50 +0000
-X-Gmail-Original-Message-ID: <CAAOTY_8-W8XRsTFDKH69BRA=hurgZ2KOHeBDnixL-LgHObqhXQ@mail.gmail.com>
-X-Gm-Features: AS18NWDLymwzfszmU7JKmhTu0CgDInQdk-IxVHYP20sloO1fgKFGR0uo2gWdNLY
-Message-ID: <CAAOTY_8-W8XRsTFDKH69BRA=hurgZ2KOHeBDnixL-LgHObqhXQ@mail.gmail.com>
-Subject: Re: [PATCH v10 04/10] drm/mediatek: mtk_hdmi: Split driver and add
- common probe function
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, CK Hu <ck.hu@mediatek.com>, 
-	kernel@collabora.com, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH v2 RESEND 0/2] Add two new ID for MediaTek's Bluetooth
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id: <176114101049.1909224.7135864082942324713.git-patchwork-notify@kernel.org>
+Date: Wed, 22 Oct 2025 13:50:10 +0000
+References: <20251015033150.498866-1-chris.lu@mediatek.com>
+In-Reply-To: <20251015033150.498866-1-chris.lu@mediatek.com>
+To: Chris Lu <chris.lu@mediatek.com>
+Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
+ sean.wang@mediatek.com, will-cy.Lee@mediatek.com, ss.wu@mediatek.com,
+ steve.lee@mediatek.com, linux-bluetooth@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,40 +73,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Louis:
+Hello:
 
-When I apply this patch, conflicts happen.
-Please rebase this series base on latest kernel and resend these patches.
+This series was applied to bluetooth/bluetooth-next.git (master)
+by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
 
-Regards,
-Chun-Kuang.
+On Wed, 15 Oct 2025 11:31:48 +0800 you wrote:
+> In response to the customer's request, add the following two
+> VID/PID to the USB driver table so that btusb driver can support
+> the corresponding MT7920/MT7922 modules.
+> 
+> 1. VID/PID 0489/e135 for MT7920
+> 2. VID/PID 0489/e170 for MT7922
+> 
+> [...]
 
-Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com> =E6=96=BC 2025=E5=B9=
-=B48=E6=9C=888=E6=97=A5 =E9=80=B1=E4=BA=94 =E4=B8=8A=E5=8D=8810:13=E5=AF=AB=
-=E9=81=93=EF=BC=9A
->
-> From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com=
->
->
-> In preparation for adding a new driver for the HDMI TX v2 IP,
-> split out the functions that will be common between the already
-> present mtk_hdmi (v1) driver and the new one.
->
-> Since the probe flow for both drivers is 90% similar, add a common
-> probe function that will be called from each driver's .probe()
-> callback, avoiding lots of code duplication.
->
-> Reviewed-by: CK Hu <ck.hu@mediatek.com>
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
-> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-> ---
->  drivers/gpu/drm/mediatek/Kconfig           |  11 +-
->  drivers/gpu/drm/mediatek/Makefile          |   1 +
->  drivers/gpu/drm/mediatek/mtk_hdmi.c        | 539 +----------------------=
-------
->  drivers/gpu/drm/mediatek/mtk_hdmi_common.c | 428 +++++++++++++++++++++++
->  drivers/gpu/drm/mediatek/mtk_hdmi_common.h | 188 ++++++++++
->  5 files changed, 633 insertions(+), 534 deletions(-)
->
+Here is the summary with links:
+  - [v2,RESEND,1/2] Bluetooth: btusb: MT7920: Add VID/PID 0489/e135
+    https://git.kernel.org/bluetooth/bluetooth-next/c/bb9da27b29d0
+  - [v2,RESEND,2/2] Bluetooth: btusb: MT7922: Add VID/PID 0489/e170
+    https://git.kernel.org/bluetooth/bluetooth-next/c/042b9b4c55c7
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
