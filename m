@@ -4,164 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E84ECCD1BB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Oct 2025 17:13:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1A46CCD1BB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Oct 2025 17:19:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NX6/G3q/A2aOK2BP+f/VOeIdQ/KH1BPplZXiNAxycVQ=; b=Qij+8zuxybbDQAhL8jINnvOcDu
-	8gfQ2HVHiv86F8wgQwTwQAPOnQSkhHPPQ2h97rxaR4uj/3QOoUwzg30BplB1dLbRP+lsFJM262HOS
-	rHxnGTB/uUUpddT+EPuOGaxW1wrktGOXenJn2lecSIyqLJCnb0Z57Tipl+qM5fmV5joUBroLTjJ2Q
-	MUie28TQjvQa9PommiYsvR7oMi6DlLLIzCJxRyk2MosZ2WoNjciCtNPIkc6psS1+dqA/GoflCgBTM
-	UcMd1v8Xd5Bj6wQwjJV2vSdPo3wm/Awzl0jJpTaxEC0TobZiKM988mX63MxqpdVsJcrnyKRQXYeSQ
-	JlfgKeqw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=EPP4wVPPUF3TysxbibtNWe6M149EJZiCu2ZRsWc1mP4=; b=MMnP4ORqEMb4LPrOamP5p11xA4
+	Zmr0wkJ7hRnvlJc7wsaqLVmVrQoWY68CjtzXPFBzP27o8gZ6Xr8LDBZa7CoqnPoSDpdbHuy+9OgmG
+	XY8iZ4+xD1ntatrpFgD80v8vE4w0x9bNQDRi28FV5h5U3/FuDrUri+zUjZCA/JvsH4GSPdp3Z5zdI
+	05pCzWaMvxHwu82P9iQexO+6Cl4uTi2hNko+TKU2gkxaMEJm0huV2i5sn17nQD9/wRftkJWaKQ2z7
+	iwd349BCbRo1pjGDc0Qy2yS0FQAjBvaPclW5oEODVmoyz4+hKhIRGOavPnP4lZN1YrxZS8ww89IUb
+	wKXoYq8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBcOf-00000003kAr-0y5L;
-	Wed, 22 Oct 2025 17:13:13 +0000
-Received: from mail-westus3azon11011038.outbound.protection.outlook.com ([40.107.208.38] helo=PH0PR06CU001.outbound.protection.outlook.com)
+	id 1vBcUG-00000003lWV-3MVv;
+	Wed, 22 Oct 2025 17:19:00 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBcOZ-00000003jz9-3lRi;
-	Wed, 22 Oct 2025 17:13:09 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=tPKPfi9g+9aAtYxx1csdvotvEaCdaK9gBdOvKk+QIFeCTwVP8FDkFPLJVddFV6GoVTcbfGUVSI8m5Bp9CQakxXh9nnjL4j55hAFbg/hbkoeXBOt0O6iRRHuV+9iCILEU6nLwqCh8FJ2wcsRzvT4Nh6NcVPxKHFmBvDhyO35UG3InTpSLYNEbka8rAzfwyPWPEBS9TR0v6/VD7N3K1dMAFbHquipwnPm2HnoP3a5Lbr8+te1wdhbQeVyeayWFNOKFlAB2OsDuqlK/4f/W8BE8IV8AKp1jd0sqmdUXBFhuOhnUqeqp7gb+qWzlq/W1gD9n9mjsBydo81/ei5KIVZqTVQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=NX6/G3q/A2aOK2BP+f/VOeIdQ/KH1BPplZXiNAxycVQ=;
- b=Es3J4D2KsW7KmttDV2vGA9KEUMrRgUDytx9IWXME1ci1WhqxR4z/aVNSpNpTY9zaR/i/J/AI9QoxX0Ccn2SDmvydCDjAffWRgcSiN7zijCqZSFGIiKzmuKyvifS5nerNqzR4AAzzYQJ1UplAH7N4VM6PlS0icCBgeRSHp4yDlX6S9vW1+zVpSbc5mBxqyFlUsNlQjt4auZr+U8sq/y4d0MTjbGielY7E4nCq9vQktXxY/Lx8CzarDdJW9zpxK0lLSh18rYMANXQXmqfaXn/DsI0Ne06lYWSH+qx5HWMYBh2hiY/3oORgW7ldjgsbs1MJoouySnj75hlZssJwRBQ4+g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=NX6/G3q/A2aOK2BP+f/VOeIdQ/KH1BPplZXiNAxycVQ=;
- b=oXBjr8KVwnUEHQSP3iQSCuU1keBbdZl0VXesQCEq+eSzjKwLcfBD+THjS0oSrkaZKGo320RvHcm3DbedHjiuMXIeAOYcCG36qL/YkMa4QVV0HsoYDbZxbqFwktKh0TIuAQzMYEUA6KL+751Bk0o1WHqBnjIB8T8oEPSdaSZnJ7Kz5Efhl8oygES9oSX4dNxCCb1nGoDW8x/VaMJnxBTRlCQQyF/a39ksitVvYkpVweZ5Xp0i6U+6n4mGMTBAjQXPTX/XY21i5Eg2IS1VAifD1xaPJ2C8pkOL2xhcL/U1p157ux4B4gRZujWZguuh1UhUcb5JPmUpYQP/jHnQ+GCOKA==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from MN2PR12MB3613.namprd12.prod.outlook.com (2603:10b6:208:c1::17)
- by MN2PR12MB4125.namprd12.prod.outlook.com (2603:10b6:208:1d9::9) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9253.13; Wed, 22 Oct
- 2025 17:12:54 +0000
-Received: from MN2PR12MB3613.namprd12.prod.outlook.com
- ([fe80::1b3b:64f5:9211:608b]) by MN2PR12MB3613.namprd12.prod.outlook.com
- ([fe80::1b3b:64f5:9211:608b%4]) with mapi id 15.20.9253.011; Wed, 22 Oct 2025
- 17:12:54 +0000
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Christian Benvenuti <benve@cisco.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	iommu@lists.linux.dev,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Joerg Roedel <joro@8bytes.org>,
-	Leon Romanovsky <leon@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rdma@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-sunxi@lists.linux.dev,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Nelson Escobar <neescoba@cisco.com>,
-	Rob Clark <robin.clark@oss.qualcomm.com>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Will Deacon <will@kernel.org>,
-	Yong Wu <yong.wu@mediatek.com>
-Cc: patches@lists.linux.dev
-Subject: [PATCH 2/3] iommu/amd: Don't call report_iommu_fault()
-Date: Wed, 22 Oct 2025 14:12:51 -0300
-Message-ID: <2-v1-391058a85f30+14b-iommu_set_fault_jgg@nvidia.com>
-In-Reply-To: <0-v1-391058a85f30+14b-iommu_set_fault_jgg@nvidia.com>
-References: 
+	id 1vBcUE-00000003lVf-2431;
+	Wed, 22 Oct 2025 17:18:59 +0000
+X-UUID: 2ed228b0af6b11f09f706fa2197c6ceb-20251022
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=EPP4wVPPUF3TysxbibtNWe6M149EJZiCu2ZRsWc1mP4=;
+	b=Nfh8zFc29EJs6brAz5eNpWYsA9IHceeADS1ktIV5gsjhqbPX07AXcxdorqZubGMe0nJiSe5VFpksbxVjXjYD0OTOWT35+eIjEdyFZ4aeu9CejAB33bdHyKvg6AQywFZ01HTxGSzsg7qGvz53sve4vKZTvHFTPH0WDnA0ill2z/I=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.6,REQID:99a02ead-c8ef-42ca-9c0a-340ba60c58a0,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:a9d874c,CLOUDID:43f23384-4124-4606-b51d-d5c9eec0e7b9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:99|1,File:130,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI
+	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 2ed228b0af6b11f09f706fa2197c6ceb-20251022
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 740815237; Wed, 22 Oct 2025 10:18:53 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.26; Thu, 23 Oct 2025 01:18:49 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1748.26 via Frontend Transport; Thu, 23 Oct 2025 01:18:49 +0800
+From: Jason-JH Lin <jason-jh.lin@mediatek.com>
+To: Jassi Brar <jassisinghbrar@gmail.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+Subject: [PATCH] mailbox: mtk-cmdq: Refine DMA address handling for the command buffer
+Date: Thu, 23 Oct 2025 01:16:30 +0800
+Message-ID: <20251022171847.379470-1-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-ClientProxiedBy: MN2PR04CA0012.namprd04.prod.outlook.com
- (2603:10b6:208:d4::25) To MN2PR12MB3613.namprd12.prod.outlook.com
- (2603:10b6:208:c1::17)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MN2PR12MB3613:EE_|MN2PR12MB4125:EE_
-X-MS-Office365-Filtering-Correlation-Id: f70aeee6-58bb-4821-1013-08de118e3d69
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|7416014|1800799024|376014|921020;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?FvkiCe9KNwYQc+Y9s9UiXPZoqg7PFuUM2eUY/lIjWbv+Xvd0JWFt1B2ya7g/?=
- =?us-ascii?Q?AsUvbTxwpsmvTQj7YoWqvkhySIqP11WQo/FdZfyXGYU1M9DEdTOvOk6yCU6l?=
- =?us-ascii?Q?zFeRd2tNmFHe/zRe2ikSc63Pe5RT6eUsgwL//qoZanG4p246IYw4JMpCkU7p?=
- =?us-ascii?Q?ZIHfe+EBJVlPYQAA/FdHvgqW5jWY+BUXHRIvBPQ9R5iLIKvdrFx7nFqD+obh?=
- =?us-ascii?Q?UUelsvGB9+2LvL8dovTnAWGyrDZbUyOW9WwmkL2plawfc4POiTZjo0IexCZE?=
- =?us-ascii?Q?X6hoS/4z6GttF/cspumAiWSKDl9mJAAQuYb6YIJR5Tgjsql3/eIb0jAhB/06?=
- =?us-ascii?Q?UzfW2UEox89tbP28/AvZTJTznHm6c2OrBxea4TXAcAsmU+tHHSkOuvO1zRyg?=
- =?us-ascii?Q?tPfvNrKnwhO4Fx3eU3Cei2tZ8ZJ5RVlzz7yq+GQDYqU9+ghhA/nUQSA2z44J?=
- =?us-ascii?Q?HjfpUMv4UpQ8qozH1UzkfjRlS4pMKkFnNB4ejed/tgTBRYleGBjDLyFS/X0K?=
- =?us-ascii?Q?2qgMkerrekDV/BA5MAkFFhE6pnMSvS9IyLWfGdYi41rMIf5YLWzVRfdpwDXH?=
- =?us-ascii?Q?56JLQ1iiol0T8rS+VPg8hsi/OZNg4V60GZAGCPRhMYHkFWqI57fwtqws8qPa?=
- =?us-ascii?Q?zm5QK3n1XA0G3phqbnbMQ1P1/sQypxU0+t9PZL5k7eINtHxyRvYV/grrK8zS?=
- =?us-ascii?Q?YoiLQHhO9FoFQdn0sgSqy92MI588mVk2+cxAlndS6fMyBGmq+xF3UiuME2fx?=
- =?us-ascii?Q?sfB1L+Z1jnWXi7GMNvszoQD/r542y0UpUju0xWnJmP0buGBK6MiqQGIFW8V+?=
- =?us-ascii?Q?1ix/HgrB3APAZwKChdx4jjZ9kscTJcQrVALCd/SgegalafSCgxQ2noyXU99J?=
- =?us-ascii?Q?/YKwvI2+D4/tF33fnCySPnI9ZMJZTYd5lMbB64eY36qQ1euxd+gOuZHq1C5D?=
- =?us-ascii?Q?jE+eeeM7Y/7OaB8Vf/u9A512BecydaXksBilQcCF43pBp5ui/7w6muZW2YuL?=
- =?us-ascii?Q?Zawe6X7CGwuSLsJ+poOjCfxMZs0RIfmmtZv7CX+xbKan7YCjCLRu65yUazXb?=
- =?us-ascii?Q?1KRY6F7j1JTYgu92AxcDbmuTQfmA5JUaxDMMKi6+6sAzgF6CfAiK5IHu25Sv?=
- =?us-ascii?Q?IHikajYYaD1a5tMrFc2leRbifimKUBTYgtq2uM7NFGr0pSPMiYPOBZywUcfF?=
- =?us-ascii?Q?lcRd5MRXzQ3v7HWsoG1UBdbeOqZVeSPsf85HZt47GbPA9p5WjB2yxy2xpWxy?=
- =?us-ascii?Q?Jr4JwGHro7WmFOQMakNBe190B2MCQtk1aQPAd4haQDFhr1wGIpnNUWypGD+W?=
- =?us-ascii?Q?clSqUzVxRJIZa15fP3VH90q51dXbkQtulUd2at0yyGPAzIoN0HjFDi2M0qMr?=
- =?us-ascii?Q?l91KOAewiERmKkvX//sitY9lU/gtAemHwG8z1xkJb2xl+TCXtuR5r6xK+xvS?=
- =?us-ascii?Q?5dcYRn28IFSbESkOsbaMf0x94gq/30KUtAOgvllKX9OqNgTWCXzy7JpETtt9?=
- =?us-ascii?Q?yParEiDn9/SiazY=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN2PR12MB3613.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(7416014)(1800799024)(376014)(921020);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?q6HKPK17/vMzLB5yC12XfxMCt8VO/GlHRYOCdhVImNFo0QuW+7du0cAgD0rI?=
- =?us-ascii?Q?SG572sepcYytLPpZ10vupJaSi7hPqovEaG/LVTpVWBXFohi9+jedvQ6nL6mz?=
- =?us-ascii?Q?k8NTjacwZRR+rFymgthH+lCai8zYAbW4ahv4yDHUwhnQ5/SQgHpAq7M9aX9z?=
- =?us-ascii?Q?tCnH+v2t0ViceMV62xGenklpjgOsfpuLTHznJ0IGFizcYTfvoPfnCgDHwaGr?=
- =?us-ascii?Q?2uKquwB4QhHSYQuAMTDtR5eyyedOBMUD28AFSqPi5CA8Pqlv6uMnc7h8Z/DT?=
- =?us-ascii?Q?lhBDDRbvRjUKCC8SsF+wW7790aeTaQHv+8XDab9eczU+nzd4/2HR1sODtZoo?=
- =?us-ascii?Q?dXD2yjnv5OuC0GnUtPf5ASPvegG5FUMujA77HUWfjCpFolTaolRYKYNe6che?=
- =?us-ascii?Q?lOONYac2qiJOt8TRA5MIUW5DK8JzheJvL8g0/bAl1xgchk4zr2/ZTo4ki/uu?=
- =?us-ascii?Q?PoGIojR1Nik46IU+xH/mEbrEjguOU9Y+1BtvTCe3mvDd6EKTEb7h2HYBicI4?=
- =?us-ascii?Q?7iWBFPVojm6VX9RgKaqxqK7n/Q0taZP1p2vNXz38J8Ahs0o2vnNifp6XjQgF?=
- =?us-ascii?Q?avnv4XuHpWXhDl4VIDVMZU4px0cIm9nSqm176q8i5F8CreJpugELH6P6C/LO?=
- =?us-ascii?Q?t/Gwjrk4vXY71dFS6vINuhITOc7fU7t0EezN+QGwYiW/3CNiU860HHRiiQ+c?=
- =?us-ascii?Q?TVwdL22R5th1csknzcOMSY6+3joN/4YZFtc3xfAClTBT82rdFEf+pGmYJ//s?=
- =?us-ascii?Q?GUY7VnSEsbfP+gYPoyEIM3ZQU6AQcqB1czz8TFfC9Ikg9a59TjRSN0VTIsRJ?=
- =?us-ascii?Q?fx865SKYEDBbgReQGVcJ8rS7jqfzbCzIAzuWvnUG4wOkk7nAj1CFLnYD5y9u?=
- =?us-ascii?Q?CLCxPgXQhjZcomORoWw5zZf49n57jCfnyxUNd0fN2AvWxW4NvJxDzpUAvgE2?=
- =?us-ascii?Q?RTq/6mGkORmROsmxUd5TcpGNJCNdVPhSuivbF/mmyPCNW30G9yW3xxX3QLPn?=
- =?us-ascii?Q?1vUxvWn8h3GlfgMPPdAyrV5KnYZwBwKsbYGBuV5SnfhCwqoiI8FgFIDzRj08?=
- =?us-ascii?Q?S/L6RC/atCPbS4sRgHs09oRPYHf5/iS163UmIJKv5kaccbUjhyX0AYKKSC+q?=
- =?us-ascii?Q?iO1MGQjnklv9PHCcn3UVGMMIjQOhBgaY+FHhNiykDrrQssrkvq1QY/Qp4wom?=
- =?us-ascii?Q?kDePuVvTWFUpXQOi02MRchW68LbSMyP7OunTJi5Rs0umlG16IYxkFp1NLXFQ?=
- =?us-ascii?Q?JMKSEXkOxeC63KLTUf9he2oX5rKU6AejMPA5cOOISmgY0zf9J8/XDFlKZabS?=
- =?us-ascii?Q?FAE5AulupCbxPv8gcuhecgrxwuaPQ41gaUNz4ITKO2EmGEtkpAVFZJeLaTrA?=
- =?us-ascii?Q?eOmkFa4T1zlwupwJngwd/ULrSQzw1MeobkHP28tkrnWEXrP3TUpk+K9H+ULB?=
- =?us-ascii?Q?euCeUWcJKLXkICP3dSXjQGyJTsxZBHTn2oyOSy2tPbifr5kiktTjjdqWrAM0?=
- =?us-ascii?Q?mvEsvxLoIU3wjM1/BpxjSdCKJ/ATklZP3FF5/KHz/+dXkWZKRJVpDsk3NN6Z?=
- =?us-ascii?Q?v95YP0cqvQx+5STAzo0=3D?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f70aeee6-58bb-4821-1013-08de118e3d69
-X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB3613.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Oct 2025 17:12:54.8322
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: We9KFnUXWshZWHRO8FtY5nJBIyqKK4EpZRvtIUppM1FksZMUE/qjA0BYgtYfEbR+
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR12MB4125
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251022_101307_948147_41CE8E9A 
-X-CRM114-Status: GOOD (  11.35  )
+X-CRM114-CacheID: sfid-20251022_101858_557971_00BA698F 
+X-CRM114-Status: GOOD (  21.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -173,60 +80,171 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Moudy Ho <moudy.ho@mediatek.com>, Xiandong Wang <xiandong.wang@mediatek.com>, Jason-JH Lin <jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>, linux-kernel@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Paul-PL Chen <paul-pl.chen@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Sirius Wang <sirius.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This old style API is only used by drivers/gpu/drm/msm and
-drivers/remoteproc, neither are used on x86 HW. Remove the dead code to
-discourage new users.
+GCE can only fetch the command buffer address from a 32-bit register.
+Some SoCs support a 35-bit command buffer address for GCE, which
+requires a right shift of 3 bits before setting the address into
+the 32-bit register. A comment has been added to the header of
+cmdq_get_shift_pa() to explain this requirement.
 
-Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+To prevent the GCE command buffer address from being DMA mapped beyond
+its supported bit range, the DMA bit mask for the device is set during
+initialization.
+
+Additionally, to ensure the correct shift is applied when setting or
+reading the register that stores the GCE command buffer address,
+new APIs, cmdq_convert_gce_addr() and cmdq_revert_gce_addr(), have
+been introduced for consistent operations on this register.
+
+The variable type for the command buffer address has been standardized
+to dma_addr_t to prevent handling issues caused by type mismatches.
+
+Fixes: 0858fde496f8 ("mailbox: cmdq: variablize address shift in platform")
+Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/iommu/amd/iommu.c | 24 ------------------------
- 1 file changed, 24 deletions(-)
+This patch is separated from series[1] because it is a fixes patch and
+it needs to be landed first.
 
-diff --git a/drivers/iommu/amd/iommu.c b/drivers/iommu/amd/iommu.c
-index 2e1865daa1cee8..072c80bb2c2b3a 100644
---- a/drivers/iommu/amd/iommu.c
-+++ b/drivers/iommu/amd/iommu.c
-@@ -840,29 +840,6 @@ static void amd_iommu_report_page_fault(struct amd_iommu *iommu,
- 		dev_data = dev_iommu_priv_get(&pdev->dev);
+[1] Add GCE support for MT8196
+- https://lore.kernel.org/all/20251017065028.1676930-1-jason-jh.lin@mediatek.com
+---
+ drivers/mailbox/mtk-cmdq-mailbox.c       | 45 ++++++++++++++++--------
+ include/linux/mailbox/mtk-cmdq-mailbox.h | 10 ++++++
+ 2 files changed, 41 insertions(+), 14 deletions(-)
+
+diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+index 654a60f63756..5791f80f995a 100644
+--- a/drivers/mailbox/mtk-cmdq-mailbox.c
++++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+@@ -92,6 +92,18 @@ struct gce_plat {
+ 	u32 gce_num;
+ };
  
- 	if (dev_data) {
--		/*
--		 * If this is a DMA fault (for which the I(nterrupt)
--		 * bit will be unset), allow report_iommu_fault() to
--		 * prevent logging it.
--		 */
--		if (IS_IOMMU_MEM_TRANSACTION(flags)) {
--			/* Device not attached to domain properly */
--			if (dev_data->domain == NULL) {
--				pr_err_ratelimited("Event logged [Device not attached to domain properly]\n");
--				pr_err_ratelimited("  device=%04x:%02x:%02x.%x domain=0x%04x\n",
--						   iommu->pci_seg->id, PCI_BUS_NUM(devid), PCI_SLOT(devid),
--						   PCI_FUNC(devid), domain_id);
--				goto out;
--			}
--
--			if (!report_iommu_fault(&dev_data->domain->domain,
--						&pdev->dev, address,
--						IS_WRITE_REQUEST(flags) ?
--							IOMMU_FAULT_WRITE :
--							IOMMU_FAULT_READ))
--				goto out;
--		}
--
- 		if (__ratelimit(&dev_data->rs)) {
- 			pci_err(pdev, "Event logged [IO_PAGE_FAULT domain=0x%04x address=0x%llx flags=0x%04x]\n",
- 				domain_id, address, flags);
-@@ -873,7 +850,6 @@ static void amd_iommu_report_page_fault(struct amd_iommu *iommu,
- 			domain_id, address, flags);
- 	}
++static inline u32 cmdq_convert_gce_addr(dma_addr_t addr, const struct gce_plat *pdata)
++{
++	/* Convert DMA addr (PA or IOVA) to GCE readable addr */
++	return addr >> pdata->shift;
++}
++
++static inline dma_addr_t cmdq_revert_gce_addr(u32 addr, const struct gce_plat *pdata)
++{
++	/* Revert GCE readable addr to DMA addr (PA or IOVA) */
++	return (dma_addr_t)addr << pdata->shift;
++}
++
+ u8 cmdq_get_shift_pa(struct mbox_chan *chan)
+ {
+ 	struct cmdq *cmdq = container_of(chan->mbox, struct cmdq, mbox);
+@@ -188,13 +200,12 @@ static void cmdq_task_insert_into_thread(struct cmdq_task *task)
+ 	struct cmdq_task *prev_task = list_last_entry(
+ 			&thread->task_busy_list, typeof(*task), list_entry);
+ 	u64 *prev_task_base = prev_task->pkt->va_base;
++	u32 gce_addr = cmdq_convert_gce_addr(task->pa_base, task->cmdq->pdata);
  
--out:
- 	if (pdev)
- 		pci_dev_put(pdev);
- }
+ 	/* let previous task jump to this task */
+ 	dma_sync_single_for_cpu(dev, prev_task->pa_base,
+ 				prev_task->pkt->cmd_buf_size, DMA_TO_DEVICE);
+-	prev_task_base[CMDQ_NUM_CMD(prev_task->pkt) - 1] =
+-		(u64)CMDQ_JUMP_BY_PA << 32 |
+-		(task->pa_base >> task->cmdq->pdata->shift);
++	prev_task_base[CMDQ_NUM_CMD(prev_task->pkt) - 1] = (u64)CMDQ_JUMP_BY_PA << 32 | gce_addr;
+ 	dma_sync_single_for_device(dev, prev_task->pa_base,
+ 				   prev_task->pkt->cmd_buf_size, DMA_TO_DEVICE);
+ 
+@@ -237,7 +248,8 @@ static void cmdq_thread_irq_handler(struct cmdq *cmdq,
+ 				    struct cmdq_thread *thread)
+ {
+ 	struct cmdq_task *task, *tmp, *curr_task = NULL;
+-	u32 curr_pa, irq_flag, task_end_pa;
++	u32 irq_flag, gce_addr;
++	dma_addr_t curr_pa, task_end_pa;
+ 	bool err;
+ 
+ 	irq_flag = readl(thread->base + CMDQ_THR_IRQ_STATUS);
+@@ -259,7 +271,8 @@ static void cmdq_thread_irq_handler(struct cmdq *cmdq,
+ 	else
+ 		return;
+ 
+-	curr_pa = readl(thread->base + CMDQ_THR_CURR_ADDR) << cmdq->pdata->shift;
++	gce_addr = readl(thread->base + CMDQ_THR_CURR_ADDR);
++	curr_pa = cmdq_revert_gce_addr(gce_addr, cmdq->pdata);
+ 
+ 	list_for_each_entry_safe(task, tmp, &thread->task_busy_list,
+ 				 list_entry) {
+@@ -378,7 +391,8 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
+ 	struct cmdq_thread *thread = (struct cmdq_thread *)chan->con_priv;
+ 	struct cmdq *cmdq = dev_get_drvdata(chan->mbox->dev);
+ 	struct cmdq_task *task;
+-	unsigned long curr_pa, end_pa;
++	u32 gce_addr;
++	dma_addr_t curr_pa, end_pa;
+ 
+ 	/* Client should not flush new tasks if suspended. */
+ 	WARN_ON(cmdq->suspended);
+@@ -402,20 +416,20 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
+ 		 */
+ 		WARN_ON(cmdq_thread_reset(cmdq, thread) < 0);
+ 
+-		writel(task->pa_base >> cmdq->pdata->shift,
+-		       thread->base + CMDQ_THR_CURR_ADDR);
+-		writel((task->pa_base + pkt->cmd_buf_size) >> cmdq->pdata->shift,
+-		       thread->base + CMDQ_THR_END_ADDR);
++		gce_addr = cmdq_convert_gce_addr(task->pa_base, cmdq->pdata);
++		writel(gce_addr, thread->base + CMDQ_THR_CURR_ADDR);
++		gce_addr = cmdq_convert_gce_addr(task->pa_base + pkt->cmd_buf_size, cmdq->pdata);
++		writel(gce_addr, thread->base + CMDQ_THR_END_ADDR);
+ 
+ 		writel(thread->priority, thread->base + CMDQ_THR_PRIORITY);
+ 		writel(CMDQ_THR_IRQ_EN, thread->base + CMDQ_THR_IRQ_ENABLE);
+ 		writel(CMDQ_THR_ENABLED, thread->base + CMDQ_THR_ENABLE_TASK);
+ 	} else {
+ 		WARN_ON(cmdq_thread_suspend(cmdq, thread) < 0);
+-		curr_pa = readl(thread->base + CMDQ_THR_CURR_ADDR) <<
+-			cmdq->pdata->shift;
+-		end_pa = readl(thread->base + CMDQ_THR_END_ADDR) <<
+-			cmdq->pdata->shift;
++		gce_addr = readl(thread->base + CMDQ_THR_CURR_ADDR);
++		curr_pa = cmdq_revert_gce_addr(gce_addr, cmdq->pdata);
++		gce_addr = readl(thread->base + CMDQ_THR_END_ADDR);
++		end_pa = cmdq_revert_gce_addr(gce_addr, cmdq->pdata);
+ 		/* check boundary */
+ 		if (curr_pa == end_pa - CMDQ_INST_SIZE ||
+ 		    curr_pa == end_pa) {
+@@ -646,6 +660,9 @@ static int cmdq_probe(struct platform_device *pdev)
+ 	if (err)
+ 		return err;
+ 
++	dma_set_coherent_mask(dev,
++			      DMA_BIT_MASK(sizeof(u32) * BITS_PER_BYTE + cmdq->pdata->shift));
++
+ 	cmdq->mbox.dev = dev;
+ 	cmdq->mbox.chans = devm_kcalloc(dev, cmdq->pdata->thread_nr,
+ 					sizeof(*cmdq->mbox.chans), GFP_KERNEL);
+diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
+index 4c1a91b07de3..e1555e06e7e5 100644
+--- a/include/linux/mailbox/mtk-cmdq-mailbox.h
++++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
+@@ -77,6 +77,16 @@ struct cmdq_pkt {
+ 	size_t			buf_size; /* real buffer size */
+ };
+ 
++/**
++ * cmdq_get_shift_pa() - get the shift bits of physical address
++ * @chan: mailbox channel
++ *
++ * GCE can only fetch the command buffer address from a 32-bit register.
++ * Some SOCs support more than 32-bit command buffer address for GCE, which
++ * requires some shift bits to make the address fit into the 32-bit register.
++ *
++ * Return: the shift bits of physical address
++ */
+ u8 cmdq_get_shift_pa(struct mbox_chan *chan);
+ 
+ #endif /* __MTK_CMDQ_MAILBOX_H__ */
 -- 
 2.43.0
 
