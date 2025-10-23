@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFEB0CCD1BE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Oct 2025 14:59:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5DACCCD1BC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Oct 2025 14:59:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=OWoL1UZ/q1eqzSis7uaNsqbiHg0hktnmtvNBWCaQMdw=; b=HNrpBQagm8bvP+z3rPKSUs4kkf
-	TMdgj019qFWkwWubHknUzvJ/S/O3uUTwIb8SGIgg/DO41zw4nA36w2XB0CGLc+3zlph8PrPcX+kZR
-	q4ENwiDaIiviNgOn/gwnkCkB685BbljYaku8pb+XHD37otQ1FbhCPEhjViAy1jfTEw0HkwxE/J0MJ
-	tJrIix4vW+TkFOZu5Sflaw+m4QpAxX9OEYyeOqTBkemfLP0BpS1Zukc2o3Mj94J+6tTQlYO+rXWex
-	v/+KCdU1+51fhl3CifHMrT8dJdvMDnPjtZvowuEk7POBuncd6Oa3RpHOS5EkL8lPYN2q2ivWAi57s
-	zaACSE8g==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gFUK3/M2/OMRE/7w/JqieZkjZV+2HO5R7PJSBTyxlH0=; b=fKZahJF9BtANco89Sj9gom66fC
+	4ZbdBdQOraHX05vCOt2QTq9aO1TTNWCYyyChnR1vvnVWlWzhnqRd6FMLKidIRITvrAc/VmKW/qZz6
+	q4Bzjq8W7G0W6vq53ybJ0TG2xFbhnKi77XlwGxv4LA4rrgPx82aIfZ+dZH4cIT4hTk/TQqT+fUNql
+	Y2WyAUUoQ5G0KeGYgIHMdEZQ9x/hxwRZEWTpboFmDLQFxZ9+tS3KqW2UhqxhW7b36HfWP5/snKEyO
+	C+llxe+WIyZsYeiNi60lj9cdm2IS3zrvL14nfZCIZs3hn1JXj6+R7ax3DHeLV7kmr86v0av83dRQz
+	yULPQBZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBwmS-00000006fXK-3VAA;
-	Thu, 23 Oct 2025 14:59:08 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1vBwmY-00000006faj-45Nv;
+	Thu, 23 Oct 2025 14:59:14 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBwmQ-00000006fUk-1I7y
+	id 1vBwmR-00000006fVH-1ikR
 	for linux-mediatek@lists.infradead.org;
-	Thu, 23 Oct 2025 14:59:07 +0000
-Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-47118259fd8so6276525e9.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 23 Oct 2025 07:59:05 -0700 (PDT)
+	Thu, 23 Oct 2025 14:59:09 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-4711825a02bso7710695e9.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 23 Oct 2025 07:59:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1761231544; x=1761836344; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=OWoL1UZ/q1eqzSis7uaNsqbiHg0hktnmtvNBWCaQMdw=;
-        b=A313K2YVI1Gq6eHsWtId1HqRlePGh4lqCLP+VZst1FtKzrwWt6q9ZeoFtMeVoHMtJb
-         ruN2xT+WnWzPxoKSvgEhOOhJmlLnmp6rx5YpQtjMJQ8vMwQcgRk4+oJVLaXopvuk73xB
-         kPH0pLPXKhuEAi4maigDiqR1TlmPUKSucsza8BDjxSlF5rfPvxLzsn+O7PRa8TlD4VYB
-         +9jpCKPQR2AbE5wJzmuJYSYW4oWVq6CjArEKNWlgzb0gC9DLGYOfxKOjQ4xyXwWR+Gc0
-         2Vx1//iU9qRm4vsxKeeCxhDdXloAKzOoYHx43/ZK8I7EejEZ1rlXbUfraQWuz2N/557k
-         q5iw==
+        d=gmail.com; s=20230601; t=1761231545; x=1761836345; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=gFUK3/M2/OMRE/7w/JqieZkjZV+2HO5R7PJSBTyxlH0=;
+        b=cvUM+hNp7w/q9hr2vJHx7WQytP6AF0z8bNXm5a2X+M12x/BXaphi/fv1vCGqf+tI/9
+         W8suYBhBIm0VjDgOGcXAy7FVWtVRqK9EwrQAMl56S6mnFaCVJ1P89Wdw4/Xx8qNMBoAd
+         8ZwNCNdfueHWodbeBeQN+MFrFJwAR0A7hJU3MQdWleax1DnezuPtyD30XMViqQTfmrvV
+         k84ulurdhc9GfnBxA4I/l7J4tKbcJ9yFSfokFIkS37+T2G8RZG17ahJSoPUboIvpGu4Y
+         T70HnVoS7EWg49YfMBw+n3BFfaqUH3D89uGOPACSG+JusCQNFluqfXWwTqVr8yqVjhzK
+         etqA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1761231544; x=1761836344;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=OWoL1UZ/q1eqzSis7uaNsqbiHg0hktnmtvNBWCaQMdw=;
-        b=TwFWWJQSz4d/+pfR00vYMLc7dfIzPOCBIGHgdl5b0Z3wqL0H7szUt8MfrZi+Mfbqae
-         oSlHJ1NCdBVCSbnIdIzjcBO7n9KxtZp+P5IDrnP7NqJyNLOOwhTcSoW0RmDe4SXmInc1
-         WDZr7VrZLngoQCMeEBEjkhaEQoxkn4w8ogVUQd07yW4nxiS4YXHxpoWgZpKwpQwKGgIE
-         PUEGuaRfkGjv866Qt69mrn/pNxxjfvDQwxkuS/QmHZ3maE2KmnV5UFLrH0OdffpankoX
-         CyizCR6LTx8t12yQ4xqbGmcv60w1FXkiiFhmehJLx5h+No9v8onf/1k8+EJC7DpSWFQD
-         riBA==
-X-Forwarded-Encrypted: i=1; AJvYcCX6yQLwBP2LHcWBPDVotDiBkFl40xxcfwrf9koCgLY+ZtQYnEzhHzLnbIy3B/bYvEhlfjQT3UBZGphHBu3yMA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yww3VWSIfCarw0LhebRV1kcOrGPEPkWuteETDOqd7x/sEGz8Spf
-	OmiWZyae8DKUJOBYZYmbYx6ASTpVf2RctxpsabebuV3jRjW+lK+SRSh2
-X-Gm-Gg: ASbGncvUf5ykBGmd/ESfqn5kZHERNp7RpXkhPK/lzAy0XOHHL9B1xWAcArvkisbJwZr
-	s4t1VhsHbK3rKH8X3lOqoZhzoukE2b+HYkNUCoNjtGN/HS/6jSpQuTZDC27WaXkjY6DY3Z5obl5
-	TG1RYucqaf3hWItG/8r1MZl5N6PRxlFxaXf6aY9Da8OMqJ9qMVvF95QHahq3rzLocevagb1xG9h
-	z96n52eYUeQCLyFwZoXL2um3WiaF0nd+cD263ybsJdg9byYJv8lQKPaD9OhkAEoYIrGMNbB7rlU
-	J/9lNIph7ZIElPGDE7xR9+HeipU1SKQTMSJrKLPDE7FJkAkW8U/vZ0A5fxa1BSGrQ600VuazHzh
-	DK/8N0fxsRumYvejaj0DdTyLtcSt+QxBskhDfSz6p0ClUnfubGzoXgXisuJxfOFLlENzzDefJxe
-	CSOYjhf3m5T9vPlgcHu1B64lIuoPNWggQzqVwkwZpp
-X-Google-Smtp-Source: AGHT+IHX3KE00pQn3aNP1QwDiE6EhD5Q3hRD8inmO43mr2wuZ5/VM7zYPzKmzGmrYwsAVd3vpyhaEw==
-X-Received: by 2002:a05:600c:4f89:b0:46e:3edc:2811 with SMTP id 5b1f17b1804b1-4711787750dmr167242385e9.14.1761231544110;
-        Thu, 23 Oct 2025 07:59:04 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1761231545; x=1761836345;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=gFUK3/M2/OMRE/7w/JqieZkjZV+2HO5R7PJSBTyxlH0=;
+        b=Nvvdr8UO04RpIHCLoWRj0NCw810yxIoYabV4aOFgFBpBerCUINLmKrGVbKSU6stJ4y
+         TvWf+JsUcQtRjMNnwv2kYpplU9SN7NnZQm4p4yRfekQONKDgnEm5eV0iNXgiJdZVJKyO
+         OrmmdAop8+kU5oNXAfrdlW7+9rh01jCgQ/zFvUXMWTYFllRNW47h9WJjpBx+5jzAJg+y
+         BUbI3lzdMw7gmYw13XY0mkdWSqpnduTxb5xrPCrWmiD3ExMh9x5IEXl6InQIM098Jane
+         D0yCXeY+0KpDuUsd3sUSy6doCkCHPL74qq4QUvEBJvOR7P7DxegJruRbhv5l4BGBVty/
+         A/Bg==
+X-Forwarded-Encrypted: i=1; AJvYcCUi1B2t/qBS/8JcMatCyzJH3xQ1WItLJdK20CXLeVTQ0Z2ztFvg21PLftpkcKjE5VsplmlCtl14DL/TPbt+TA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzit+q604AI+iN5IxsKyf4wdpS5Du0dL6NbfTX2rmaJVWwHiwal
+	rwxgm3rhanxbm5/o8IgOgNiRk5hZ+tULxT7D5kYBlEP8y6UooHjPJSPb
+X-Gm-Gg: ASbGncvRyt1MZ+1aQ11gkAL3B7DAMfgG6FZMM0NdGOwjq+r1A0guquqNExM8MQr44Wx
+	B/+px2LSyMWV8DIsMben7kLl094jqTLI3tANY4FW+3Dl0ZN8OV9oVrA5/meqvLdmJwapDzZVyNb
+	JHL4P8Di69O05QKXRq+OOLPNvL62XHwuTsIxmTWUNpmQqiS8tSE8AJQ4tgukbWIfO+a6Y7AzEr5
+	cbBJJsZjCyRbgtHIK0xTliuHHf31yMEKBOpbS/8lC9PDlWT6Dw5nzxSBJwTkaQM7oPNcfh44Rqe
+	dU6lvaGFbB3T5E95yb8huyw323ocfqpSpPvNQx8yObeupyLcZ0tCXD1FQ2AZSkIa7XjWtw5uQBz
+	esk5KvY5nlCQD8/RCl/i1237SD+UCLoqBr6SxzMIhmlAxDLYj+9zjqp/3ff9D8wcY3FjqNBU8sS
+	LtmR2k45/pEJrQWGVWHNuo5ke657QWDg==
+X-Google-Smtp-Source: AGHT+IGQzECuos+RCLjKO2dAeV8045JWlHC0U32i9kQFj54vECVk7KXnDT+AfzmBCj2mf9NTLyFiIg==
+X-Received: by 2002:a05:600c:3494:b0:46e:4744:add7 with SMTP id 5b1f17b1804b1-47117870715mr200630635e9.7.1761231545275;
+        Thu, 23 Oct 2025 07:59:05 -0700 (PDT)
 Received: from Ansuel-XPS24 (93-34-90-37.ip49.fastwebnet.it. [93.34.90.37])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-475cae9f292sm39822325e9.5.2025.10.23.07.59.03
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-475cae9f292sm39822325e9.5.2025.10.23.07.59.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 23 Oct 2025 07:59:03 -0700 (PDT)
+        Thu, 23 Oct 2025 07:59:04 -0700 (PDT)
 From: Christian Marangi <ansuelsmth@gmail.com>
 To: Lorenzo Bianconi <lorenzo@kernel.org>,
 	Andrew Lunn <andrew+netdev@lunn.ch>,
@@ -82,16 +83,17 @@ To: Lorenzo Bianconi <lorenzo@kernel.org>,
 	netdev@vger.kernel.org,
 	linux-kernel@vger.kernel.org
 Cc: Christian Marangi <ansuelsmth@gmail.com>
-Subject: [net-next PATCH v2 0/2] net: airoha: initial phylink support
-Date: Thu, 23 Oct 2025 16:58:47 +0200
-Message-ID: <20251023145850.28459-1-ansuelsmth@gmail.com>
+Subject: [net-next PATCH v2 1/2] net: airoha: use device_set_node helper to setup GDM node
+Date: Thu, 23 Oct 2025 16:58:48 +0200
+Message-ID: <20251023145850.28459-2-ansuelsmth@gmail.com>
 X-Mailer: git-send-email 2.51.0
+In-Reply-To: <20251023145850.28459-1-ansuelsmth@gmail.com>
+References: <20251023145850.28459-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251023_075906_348662_688E2DEF 
-X-CRM114-Status: UNSURE (   9.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251023_075907_463907_8B000397 
+X-CRM114-Status: GOOD (  11.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,26 +108,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This trivial patch adds the initial phylink support. It's expected
-in the future to add the dedicated PCS for the other GDM port.
+Use device_set_node helper to setup GDM node instead of manually setting
+the dev.of_node to also fill the fwnode entry.
 
-This is to give consistent data when running ethtool on the GDM1
-port instead of the "No Data"
+This is to address some API that use fwnode instead of of_node (for
+example phylink_create)
 
-Changes v2:
-- Move setup phylink to airoha_alloc_gdm_port
-- Better handle phylink_destroy on error path
-- Fix bug for device_get_phy_mode
+Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+---
+ drivers/net/ethernet/airoha/airoha_eth.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Christian Marangi (2):
-  net: airoha: use device_set_node helper to setup GDM node
-  net: airoha: add phylink support for GDM1
-
- drivers/net/ethernet/airoha/Kconfig      |  1 +
- drivers/net/ethernet/airoha/airoha_eth.c | 79 +++++++++++++++++++++++-
- drivers/net/ethernet/airoha/airoha_eth.h |  3 +
- 3 files changed, 81 insertions(+), 2 deletions(-)
-
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index 8483ea02603e..ce6d13b10e27 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -2904,7 +2904,7 @@ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
+ 			   NETIF_F_HW_TC;
+ 	dev->features |= dev->hw_features;
+ 	dev->vlan_features = dev->hw_features;
+-	dev->dev.of_node = np;
++	device_set_node(&dev->dev, of_fwnode_handle(np));
+ 	dev->irq = qdma->irq_banks[0].irq;
+ 	SET_NETDEV_DEV(dev, eth->dev);
+ 
 -- 
 2.51.0
 
