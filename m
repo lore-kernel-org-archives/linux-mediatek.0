@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5DACCCD1BC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Oct 2025 14:59:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FEF9CCF9E2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Oct 2025 14:59:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gFUK3/M2/OMRE/7w/JqieZkjZV+2HO5R7PJSBTyxlH0=; b=fKZahJF9BtANco89Sj9gom66fC
-	4ZbdBdQOraHX05vCOt2QTq9aO1TTNWCYyyChnR1vvnVWlWzhnqRd6FMLKidIRITvrAc/VmKW/qZz6
-	q4Bzjq8W7G0W6vq53ybJ0TG2xFbhnKi77XlwGxv4LA4rrgPx82aIfZ+dZH4cIT4hTk/TQqT+fUNql
-	Y2WyAUUoQ5G0KeGYgIHMdEZQ9x/hxwRZEWTpboFmDLQFxZ9+tS3KqW2UhqxhW7b36HfWP5/snKEyO
-	C+llxe+WIyZsYeiNi60lj9cdm2IS3zrvL14nfZCIZs3hn1JXj6+R7ax3DHeLV7kmr86v0av83dRQz
-	yULPQBZQ==;
+	bh=whAejHEzxjcYOcZ1D1ZZzNRHZW4qI8QgkbdfkGYPH3w=; b=Fh9byL1Ud63EkkX1anoN4ticVo
+	6JDbpL1IUjJ3jggNRSZ+0eWzrq/Hb/us8QXkVJPzTwVN8rjtk9XMrcGg31i29kJDpOpvJfnh5BZPr
+	8raPkmFAE63EZ6lz+778pOMn+Gn0qHz5XxjrRkzvol+9THWHSbtcydxeyaGsiLTVgVq0jLeZl35T9
+	TW7TwolV40WIrlAGJcqUru7mZlZWF8fDegN1BEZcSUORMi5H7arGrUqBgt4ICHbG9Z6Qe0U+qIGLE
+	Jd8P99G6BdD6+RzKC2iirsPvoXfuhy/txYXW52EmBgvA+yTIUswip4/xxYdUHheWckhTMYTPzt27t
+	1Ra9j1fA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBwmY-00000006faj-45Nv;
-	Thu, 23 Oct 2025 14:59:14 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1vBwmZ-00000006fbt-2DPC;
+	Thu, 23 Oct 2025 14:59:15 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBwmR-00000006fVH-1ikR
+	id 1vBwmS-00000006fW0-1nLt
 	for linux-mediatek@lists.infradead.org;
 	Thu, 23 Oct 2025 14:59:09 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-4711825a02bso7710695e9.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 23 Oct 2025 07:59:06 -0700 (PDT)
+Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-474975af41dso6642815e9.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 23 Oct 2025 07:59:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1761231545; x=1761836345; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1761231546; x=1761836346; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=gFUK3/M2/OMRE/7w/JqieZkjZV+2HO5R7PJSBTyxlH0=;
-        b=cvUM+hNp7w/q9hr2vJHx7WQytP6AF0z8bNXm5a2X+M12x/BXaphi/fv1vCGqf+tI/9
-         W8suYBhBIm0VjDgOGcXAy7FVWtVRqK9EwrQAMl56S6mnFaCVJ1P89Wdw4/Xx8qNMBoAd
-         8ZwNCNdfueHWodbeBeQN+MFrFJwAR0A7hJU3MQdWleax1DnezuPtyD30XMViqQTfmrvV
-         k84ulurdhc9GfnBxA4I/l7J4tKbcJ9yFSfokFIkS37+T2G8RZG17ahJSoPUboIvpGu4Y
-         T70HnVoS7EWg49YfMBw+n3BFfaqUH3D89uGOPACSG+JusCQNFluqfXWwTqVr8yqVjhzK
-         etqA==
+        bh=whAejHEzxjcYOcZ1D1ZZzNRHZW4qI8QgkbdfkGYPH3w=;
+        b=Yq2CUWMhnf80UM1MjH4uYORZyNyG1BGh1kO/l+RwW0pImdAE9Rt1jN42g75X8qJlA0
+         Qlu93hIuaNuDuAfe3FLOtWPhckCLIAqb1EpghDwzBtS5ezwBBKnbh5zM81Rjq3TCUTOn
+         Tipx9rMUxN4MtBuI+R2QaZA2HIT1f5LdDs+sYR2umdNJ4otctqaapMH9svslSEe4Wo5E
+         vzV2UdR53FxrTUy/WDFD1sQjz+it/4E6MB+4VvxQ8UthNXRrx0U6bQIiPK+gqtHbewc2
+         +7MIP3ZaCIfztF0tWS3VuinHkSjH0NeyYBkDrvu9apc252tiFOqGdDKjffOiLXC/fLJR
+         f5UA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1761231545; x=1761836345;
+        d=1e100.net; s=20230601; t=1761231546; x=1761836346;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=gFUK3/M2/OMRE/7w/JqieZkjZV+2HO5R7PJSBTyxlH0=;
-        b=Nvvdr8UO04RpIHCLoWRj0NCw810yxIoYabV4aOFgFBpBerCUINLmKrGVbKSU6stJ4y
-         TvWf+JsUcQtRjMNnwv2kYpplU9SN7NnZQm4p4yRfekQONKDgnEm5eV0iNXgiJdZVJKyO
-         OrmmdAop8+kU5oNXAfrdlW7+9rh01jCgQ/zFvUXMWTYFllRNW47h9WJjpBx+5jzAJg+y
-         BUbI3lzdMw7gmYw13XY0mkdWSqpnduTxb5xrPCrWmiD3ExMh9x5IEXl6InQIM098Jane
-         D0yCXeY+0KpDuUsd3sUSy6doCkCHPL74qq4QUvEBJvOR7P7DxegJruRbhv5l4BGBVty/
-         A/Bg==
-X-Forwarded-Encrypted: i=1; AJvYcCUi1B2t/qBS/8JcMatCyzJH3xQ1WItLJdK20CXLeVTQ0Z2ztFvg21PLftpkcKjE5VsplmlCtl14DL/TPbt+TA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzit+q604AI+iN5IxsKyf4wdpS5Du0dL6NbfTX2rmaJVWwHiwal
-	rwxgm3rhanxbm5/o8IgOgNiRk5hZ+tULxT7D5kYBlEP8y6UooHjPJSPb
-X-Gm-Gg: ASbGncvRyt1MZ+1aQ11gkAL3B7DAMfgG6FZMM0NdGOwjq+r1A0guquqNExM8MQr44Wx
-	B/+px2LSyMWV8DIsMben7kLl094jqTLI3tANY4FW+3Dl0ZN8OV9oVrA5/meqvLdmJwapDzZVyNb
-	JHL4P8Di69O05QKXRq+OOLPNvL62XHwuTsIxmTWUNpmQqiS8tSE8AJQ4tgukbWIfO+a6Y7AzEr5
-	cbBJJsZjCyRbgtHIK0xTliuHHf31yMEKBOpbS/8lC9PDlWT6Dw5nzxSBJwTkaQM7oPNcfh44Rqe
-	dU6lvaGFbB3T5E95yb8huyw323ocfqpSpPvNQx8yObeupyLcZ0tCXD1FQ2AZSkIa7XjWtw5uQBz
-	esk5KvY5nlCQD8/RCl/i1237SD+UCLoqBr6SxzMIhmlAxDLYj+9zjqp/3ff9D8wcY3FjqNBU8sS
-	LtmR2k45/pEJrQWGVWHNuo5ke657QWDg==
-X-Google-Smtp-Source: AGHT+IGQzECuos+RCLjKO2dAeV8045JWlHC0U32i9kQFj54vECVk7KXnDT+AfzmBCj2mf9NTLyFiIg==
-X-Received: by 2002:a05:600c:3494:b0:46e:4744:add7 with SMTP id 5b1f17b1804b1-47117870715mr200630635e9.7.1761231545275;
-        Thu, 23 Oct 2025 07:59:05 -0700 (PDT)
+        bh=whAejHEzxjcYOcZ1D1ZZzNRHZW4qI8QgkbdfkGYPH3w=;
+        b=E+KqXXUqFvPPgTgH2XcWuu+7q9WV8qkTdbkyR3hsdsp9Y1QFx+H/PsjTqWhZzJSpXG
+         IusAQaE+/zxN1qqgrP2Lm0+HawoKGL5EloFtF0Lq4UWvSnbhvHPA8A6agKqFsFTi49ZI
+         eXW5cMEk8t/LGKXQcG8n4KWR11q9DUb3n4k4s+dr3yExQcU5za99/K22X2ouBCscW8l8
+         sSKRgqugfQaoEiCvS+8cEv1ByZtK3XNEwIdRg+91kWNpjJoDH/RGihWJ+2vanPoD/xno
+         7CRpYGVHdmP62b0ymL/iFGFGYXMta6yL4QBsI11McqM/ODhyHc5tKeEnzTm96HLnCLLU
+         owxg==
+X-Forwarded-Encrypted: i=1; AJvYcCXnz7wziEdh9WW+Abo0kpolgTvc7d2r1+dlEqLu7lTKMWtT9a+3YOYf4mE96NHFvqjrumsCuPog0yAol94YHQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxKEhqkuMtpWDA/Ea/wfPSrBYPRGKn66XDBp28fEybV1jatvToi
+	tonLvtZoxbYDpthr/8V1YbybDw+WO75X50aKW0xjMZFvisVMk+H9BjCG
+X-Gm-Gg: ASbGncuc5hoVKuhPgPUbryrjNA5zWmpPd3WAMcbC3zGvh/RU3dvQUZAcCpg7uxBT8KY
+	JG0kvvTt2zfLx15bVn5HO5/e4hTgWKRQGoyPuUodkUvEtPalsIOBgxwXGXw028iIj/wDxOI7tgn
+	RK7zmJN63Tgory9JyEovs4OnzNcyPWZFS/WXYVvk3P48KrxwPzYWbarkJlRL3Rl9QbVQGXznJLE
+	IbkCVicgdRDQmr1rTaZp0k+BV9wEKL2a/1N0uYplisu1YCrQnbfKAQORfa8N8l0zmbXg4ovTP6N
+	Iy+opyDSIyUkLNRKm7GNKFpQVINtWT3hxP85La9N5E37A9wAvtQlMj8sGpB++kM6szVeVVtJSwp
+	rvP+n2IpcxgKzmzJqKKmanO5rj1KCHS6P25uZ44+ZdLTh8NiH9wjc1DL/xFjQGRTHGf0LHwKqKQ
+	hobkL1WLWUAKUQ0Ntqh76567yfuoTWDQzRxmulKWLY
+X-Google-Smtp-Source: AGHT+IFok8sHCYOpJa+r8lDaMXz2YO2SGlpSOMs1N7JK0iL61rgsPdp1b9Qo/9ADG3bA8aBrW1Chgg==
+X-Received: by 2002:a05:600c:45c9:b0:471:115e:87bd with SMTP id 5b1f17b1804b1-4711791c601mr171938455e9.26.1761231546476;
+        Thu, 23 Oct 2025 07:59:06 -0700 (PDT)
 Received: from Ansuel-XPS24 (93-34-90-37.ip49.fastwebnet.it. [93.34.90.37])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-475cae9f292sm39822325e9.5.2025.10.23.07.59.04
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-475cae9f292sm39822325e9.5.2025.10.23.07.59.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 23 Oct 2025 07:59:04 -0700 (PDT)
+        Thu, 23 Oct 2025 07:59:05 -0700 (PDT)
 From: Christian Marangi <ansuelsmth@gmail.com>
 To: Lorenzo Bianconi <lorenzo@kernel.org>,
 	Andrew Lunn <andrew+netdev@lunn.ch>,
@@ -83,17 +83,17 @@ To: Lorenzo Bianconi <lorenzo@kernel.org>,
 	netdev@vger.kernel.org,
 	linux-kernel@vger.kernel.org
 Cc: Christian Marangi <ansuelsmth@gmail.com>
-Subject: [net-next PATCH v2 1/2] net: airoha: use device_set_node helper to setup GDM node
-Date: Thu, 23 Oct 2025 16:58:48 +0200
-Message-ID: <20251023145850.28459-2-ansuelsmth@gmail.com>
+Subject: [net-next PATCH v2 2/2] net: airoha: add phylink support for GDM1
+Date: Thu, 23 Oct 2025 16:58:49 +0200
+Message-ID: <20251023145850.28459-3-ansuelsmth@gmail.com>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20251023145850.28459-1-ansuelsmth@gmail.com>
 References: <20251023145850.28459-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251023_075907_463907_8B000397 
-X-CRM114-Status: GOOD (  11.72  )
+X-CRM114-CacheID: sfid-20251023_075908_497226_F2FB575C 
+X-CRM114-Status: GOOD (  19.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,30 +108,180 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use device_set_node helper to setup GDM node instead of manually setting
-the dev.of_node to also fill the fwnode entry.
+In preparation for support of GDM2+ port, fill in phylink OPs for GDM1
+that is an INTERNAL port for the Embedded Switch.
 
-This is to address some API that use fwnode instead of of_node (for
-example phylink_create)
+Add all the phylink start/stop and fill in the MAC capabilities and the
+internal interface as the supported interface.
 
 Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 ---
- drivers/net/ethernet/airoha/airoha_eth.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/ethernet/airoha/Kconfig      |  1 +
+ drivers/net/ethernet/airoha/airoha_eth.c | 77 +++++++++++++++++++++++-
+ drivers/net/ethernet/airoha/airoha_eth.h |  3 +
+ 3 files changed, 80 insertions(+), 1 deletion(-)
 
+diff --git a/drivers/net/ethernet/airoha/Kconfig b/drivers/net/ethernet/airoha/Kconfig
+index ad3ce501e7a5..3c74438bc8a0 100644
+--- a/drivers/net/ethernet/airoha/Kconfig
++++ b/drivers/net/ethernet/airoha/Kconfig
+@@ -2,6 +2,7 @@
+ config NET_VENDOR_AIROHA
+ 	bool "Airoha devices"
+ 	depends on ARCH_AIROHA || COMPILE_TEST
++	select PHYLIB
+ 	help
+ 	  If you have a Airoha SoC with ethernet, say Y.
+ 
 diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 8483ea02603e..ce6d13b10e27 100644
+index ce6d13b10e27..deba909104bb 100644
 --- a/drivers/net/ethernet/airoha/airoha_eth.c
 +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -2904,7 +2904,7 @@ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
- 			   NETIF_F_HW_TC;
- 	dev->features |= dev->hw_features;
- 	dev->vlan_features = dev->hw_features;
--	dev->dev.of_node = np;
-+	device_set_node(&dev->dev, of_fwnode_handle(np));
- 	dev->irq = qdma->irq_banks[0].irq;
- 	SET_NETDEV_DEV(dev, eth->dev);
+@@ -1613,6 +1613,8 @@ static int airoha_dev_open(struct net_device *dev)
+ 	struct airoha_gdm_port *port = netdev_priv(dev);
+ 	struct airoha_qdma *qdma = port->qdma;
  
++	phylink_start(port->phylink);
++
+ 	netif_tx_start_all_queues(dev);
+ 	err = airoha_set_vip_for_gdm_port(port, true);
+ 	if (err)
+@@ -1665,6 +1667,8 @@ static int airoha_dev_stop(struct net_device *dev)
+ 		}
+ 	}
+ 
++	phylink_stop(port->phylink);
++
+ 	return 0;
+ }
+ 
+@@ -2813,6 +2817,18 @@ static const struct ethtool_ops airoha_ethtool_ops = {
+ 	.get_link		= ethtool_op_get_link,
+ };
+ 
++static struct phylink_pcs *airoha_phylink_mac_select_pcs(struct phylink_config *config,
++							 phy_interface_t interface)
++{
++	return NULL;
++}
++
++static void airoha_mac_config(struct phylink_config *config,
++			      unsigned int mode,
++			      const struct phylink_link_state *state)
++{
++}
++
+ static int airoha_metadata_dst_alloc(struct airoha_gdm_port *port)
+ {
+ 	int i;
+@@ -2857,6 +2873,57 @@ bool airoha_is_valid_gdm_port(struct airoha_eth *eth,
+ 	return false;
+ }
+ 
++static void airoha_mac_link_up(struct phylink_config *config,
++			       struct phy_device *phy, unsigned int mode,
++			       phy_interface_t interface, int speed,
++			       int duplex, bool tx_pause, bool rx_pause)
++{
++}
++
++static void airoha_mac_link_down(struct phylink_config *config,
++				 unsigned int mode, phy_interface_t interface)
++{
++}
++
++static const struct phylink_mac_ops airoha_phylink_ops = {
++	.mac_select_pcs = airoha_phylink_mac_select_pcs,
++	.mac_config = airoha_mac_config,
++	.mac_link_up = airoha_mac_link_up,
++	.mac_link_down = airoha_mac_link_down,
++};
++
++static int airoha_setup_phylink(struct net_device *netdev)
++{
++	struct airoha_gdm_port *port = netdev_priv(netdev);
++	struct device *dev = &netdev->dev;
++	struct phylink *phylink;
++	int phy_mode;
++
++	phy_mode = device_get_phy_mode(dev);
++	if (phy_mode < 0) {
++		dev_err(dev, "incorrect phy-mode\n");
++		return phy_mode;
++	}
++
++	port->phylink_config.dev = dev;
++	port->phylink_config.type = PHYLINK_NETDEV;
++	port->phylink_config.mac_capabilities = MAC_ASYM_PAUSE |
++						MAC_SYM_PAUSE |
++						MAC_10000FD;
++
++	__set_bit(PHY_INTERFACE_MODE_INTERNAL,
++		  port->phylink_config.supported_interfaces);
++
++	phylink = phylink_create(&port->phylink_config, dev_fwnode(dev),
++				 phy_mode, &airoha_phylink_ops);
++	if (IS_ERR(phylink))
++		return PTR_ERR(phylink);
++
++	port->phylink = phylink;
++
++	return 0;
++}
++
+ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
+ 				 struct device_node *np, int index)
+ {
+@@ -2935,12 +3002,18 @@ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
+ 	if (err)
+ 		return err;
+ 
+-	err = register_netdev(dev);
++	err = airoha_setup_phylink(port->dev);
+ 	if (err)
+ 		goto free_metadata_dst;
+ 
++	err = register_netdev(dev);
++	if (err)
++		goto free_phylink;
++
+ 	return 0;
+ 
++free_phylink:
++	phylink_destroy(port->phylink);
+ free_metadata_dst:
+ 	airoha_metadata_dst_free(port);
+ 	return err;
+@@ -3049,6 +3122,7 @@ static int airoha_probe(struct platform_device *pdev)
+ 
+ 		if (port && port->dev->reg_state == NETREG_REGISTERED) {
+ 			unregister_netdev(port->dev);
++			phylink_destroy(port->phylink);
+ 			airoha_metadata_dst_free(port);
+ 		}
+ 	}
+@@ -3076,6 +3150,7 @@ static void airoha_remove(struct platform_device *pdev)
+ 
+ 		airoha_dev_stop(port->dev);
+ 		unregister_netdev(port->dev);
++		phylink_destroy(port->phylink);
+ 		airoha_metadata_dst_free(port);
+ 	}
+ 	free_netdev(eth->napi_dev);
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
+index eb27a4ff5198..c144c1ece23b 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.h
++++ b/drivers/net/ethernet/airoha/airoha_eth.h
+@@ -531,6 +531,9 @@ struct airoha_gdm_port {
+ 	struct net_device *dev;
+ 	int id;
+ 
++	struct phylink *phylink;
++	struct phylink_config phylink_config;
++
+ 	struct airoha_hw_stats stats;
+ 
+ 	DECLARE_BITMAP(qos_sq_bmap, AIROHA_NUM_QOS_CHANNELS);
 -- 
 2.51.0
 
