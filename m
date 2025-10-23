@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D321CCD1BF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Oct 2025 10:33:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C262BCCD1BC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Oct 2025 10:33:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SWosEldLJ61O3S7luzRKjl1gHT/Gq2Zm+02JeNsPE/M=; b=DBwiMhN/OwOwsLVzgJ6pgG5ZB3
-	g7CTNPTAeUz0cchXSqnpJr89QIr73SeCxwMjfxmwFLRxC4EHvxxklQr0zx5epIBRKJBRBelICOeYa
-	LjClWK5+EIexPNelaPnctEh/HSoc8+kb9BenV8H9iG+JmDvxhi1BGZjWGRgy+9Vsjj99jQCsU412+
-	vDm/RSBYCIb3SvOrdgppCVuXjHWgJC+2/PtFjFwNcHRfj+gP8r0pc84Gdd76elpnfdpKrYqx5+Etu
-	0JUWk6xj55yeEi4Tx6iVsXCOhcFvGvAONDSEOZV/bPoEbpeQUaX8RZ3HmrDoWzn9BRsDojZCslZlf
-	wkHdUqsw==;
+	bh=q9R9hSZm7vVEvWHNiAcxNeVDgqmjDqEmwjliMyG1C9k=; b=2QvhVobPGbSjgKyg3HtJo1v1Dj
+	iQJzDrOrRiMIM8fbv3QzSTNd46F8sfxFDAV+pJZgCswZE/57GeC83vZVnHlEXJi4XPljSJl2u6YVG
+	y+6spOtVKb1KTPDekioZ7eVajkpDezvM/O70kmo+N7QCp/kSUgOamrheDt3/TzhE7EE2sYM3xZKED
+	R34lpryFt15ErRFqtZjocC2x8CkaoBJl1Wc2R44yoVIKE0nKs4SwO33foA1iIM9TcwimUFeyngrAJ
+	qKvEcjaDoNUpcMshACeW3KQuSY2jKceSDSBORYp+QUveK3pBf7jc7CxkL8wFL6gNr18wMtlGqvC5B
+	ptyXFKBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBscs-00000005tzV-3Z6J;
-	Thu, 23 Oct 2025 10:32:58 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vBsct-00000005u10-3LAM;
+	Thu, 23 Oct 2025 10:32:59 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBscf-00000005thz-3MPS;
+	id 1vBscg-00000005tiI-12lf;
 	Thu, 23 Oct 2025 10:32:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1761215562;
-	bh=Xu31R2pSa9GuM1qdI6iPO4EmI5Yt7WRGU5wBn2Vj36E=;
+	s=mail; t=1761215563;
+	bh=WnFjNChrbtpk/2v7evsrtmDbZUUbQIbg9xxfDzSTit0=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=cYk07iLXMYkldiZ3idRzrsD25om87JWouZC2tCOKlNbWbRozLizbjeT1UzLPQxXl8
-	 OsEvN+5H8HHu0EXVODyZsxYKtNFfC3Q2hI+1OUql0Lpv/t55aTlNl9Zfz83qIUzd2F
-	 UP4SMOTu+CTq1g4jPnMlltEFr+etIFV2ywfLMCuy7Gvegtq4QADj78tHfV7gnxr0nY
-	 I+8BCtNYhPoXwYG4N5nOJZqOdqTp5z7Kv0TGWaHkcIsV5ybb41oVwcakS8931PhrKd
-	 aum/YQ8KvCqSYSiYJ3WGNmlGXkT011JH72V5elqRgxUiviMw2GalO+2getDdzFWy1D
-	 9ud6tXb44n2Cw==
+	b=CtjEusBi8L8NaBFBjKT8oUXYtZZnU7vdc0iqNqdcd3eUkG9y7xaf2/qltBgJ1ks8S
+	 B5o9CDmM4TMMGUT0GEA5JmaPyJItwI09ZW/u3WFiai17sEbaiTEza8ecRI/M4KWgIG
+	 olT93zwvh94tTqcH9GZKimtDYT7FOqM1a/qrNd+XUlc1y1Xjecw3OEmBIkqhjd6VJv
+	 iGW0jF/8oETBjDZJdM1tgxJzWhWsdacK43gWtSPdCgAi5OIFZzVlJM6YdSMUEN7VF9
+	 Fwngl4+U0whe0mqkEyTIg9LZNDDYylRgtwV8BPm1CJuf3QmfGQHeL/vRW73w+xt/qj
+	 7MJjlvS2dL1ow==
 Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id CEF2B17E1413;
-	Thu, 23 Oct 2025 12:32:41 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8735717E1414;
+	Thu, 23 Oct 2025 12:32:42 +0200 (CEST)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Thu, 23 Oct 2025 12:32:31 +0200
-Subject: [PATCH v11 05/11] drm/mediatek: mtk_hdmi_common: Make CEC support
- optional
+Date: Thu, 23 Oct 2025 12:32:32 +0200
+Subject: [PATCH v11 06/11] drm/mediatek: mtk_hdmi_common: Assign DDC
+ adapter pointer to bridge
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251023-mediatek-drm-hdmi-v2-v11-5-7873ec4a1edf@collabora.com>
+Message-Id: <20251023-mediatek-drm-hdmi-v2-v11-6-7873ec4a1edf@collabora.com>
 References: <20251023-mediatek-drm-hdmi-v2-v11-0-7873ec4a1edf@collabora.com>
 In-Reply-To: <20251023-mediatek-drm-hdmi-v2-v11-0-7873ec4a1edf@collabora.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
@@ -63,16 +63,17 @@ Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
  linux-arm-kernel@lists.infradead.org, 
  Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1761215558; l=2372;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1761215558; l=1180;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=rRJNljGlCzvkTbiBSXYA2z00/RdbAoNV849z4+rEAUA=;
- b=VU7vOg/yuNTQbe5KtBVgoL/kbpGpqyxcWZweOHQ1PIlVBfseLvGEExavyhtNlIHIP1sJavvQ+
- oJlHOB9dfiVC5Aybk8UrICGrZDOfx8600AmXO2QgNRiGG+2pcExSi80
+ bh=nhWq0AUZF9mOGcHD7ubNmCv4pfxd2Wo1OwAO9nUMngg=;
+ b=hQTsTm4qHb7QJ12VpeMBvrQ9Ax6JnvHgcfwVhqDv1XRMax98QCG7Do0/VFRz6PL8yStfQVg7g
+ fT+Ka/41zmjCtxYlZEzvsyrceGbUm7RQLqL+DnhM5UFhZHIvwh/z8V9
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251023_033246_006928_8379C2E2 
-X-CRM114-Status: GOOD (  14.92  )
+X-CRM114-CacheID: sfid-20251023_033246_437970_4BDB94B4 
+X-CRM114-Status: UNSURE (   9.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,59 +90,32 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-In preparation for adding a new driver for HDMIv2, for which CEC
-is not strictly required, change the of_get_compatible_child()
-failure error to -ENOTSUPP to be able to differentiate between
-error conditions in mtk_hdmi_dt_parse_pdata().
+In preparation for adding the new HDMI TX v2 IP driver, assign the
+pointer to the DDC adapter to struct drm_bridge during probe.
 
-In that case, if -ENOTSUPP is returned, this driver will print
-an informative message saying that CEC support is unavailable,
-as the devicetree node for that was not found, but after that,
-function mtk_hdmi_dt_parse_pdata() will not return error to
-the caller.
-
-This will not change functionality of the mtk_hdmi (v1) driver
-as that is still checking whether CEC is present and, if not,
-will fail probing with an error saying that CEC is required
-by HDMIv1.
+This commit brings no functional changes.
 
 Reviewed-by: CK Hu <ck.hu@mediatek.com>
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- drivers/gpu/drm/mediatek/mtk_hdmi_common.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_hdmi_common.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_common.c b/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
-index f28e63716d7c2e2c6bdf5b28d24789bc926d2beb..989479fdfe40952762a1b63797bf602b520dcac5 100644
+index 989479fdfe40952762a1b63797bf602b520dcac5..3b589706d61b1e0e4aa66d0c81253b8aeb70c0d3 100644
 --- a/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
 +++ b/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
-@@ -253,12 +253,11 @@ static int mtk_hdmi_get_cec_dev(struct mtk_hdmi *hdmi, struct device *dev, struc
- 	/* The CEC module handles HDMI hotplug detection */
- 	cec_np = of_get_compatible_child(np->parent, "mediatek,mt8173-cec");
- 	if (!cec_np)
--		return dev_err_probe(dev, -EINVAL, "Failed to find CEC node\n");
-+		return dev_err_probe(dev, -ENOTSUPP, "Failed to find CEC node\n");
+@@ -412,7 +412,9 @@ struct mtk_hdmi *mtk_hdmi_common_probe(struct platform_device *pdev)
+ 	hdmi->bridge.of_node = pdev->dev.of_node;
+ 	hdmi->bridge.ops = DRM_BRIDGE_OP_DETECT | DRM_BRIDGE_OP_EDID
+ 			 | DRM_BRIDGE_OP_HPD;
++
+ 	hdmi->bridge.type = DRM_MODE_CONNECTOR_HDMIA;
++	hdmi->bridge.ddc = hdmi->ddc_adpt;
+ 	hdmi->bridge.vendor = "MediaTek";
+ 	hdmi->bridge.product = "On-Chip HDMI";
  
- 	cec_pdev = of_find_device_by_node(cec_np);
- 	if (!cec_pdev) {
--		dev_err(hdmi->dev, "Waiting for CEC device %pOF\n",
--			cec_np);
-+		dev_err(hdmi->dev, "Waiting for CEC device %pOF\n", cec_np);
- 		of_node_put(cec_np);
- 		return -EPROBE_DEFER;
- 	}
-@@ -319,7 +318,9 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi, struct platform_device
- 		return dev_err_probe(dev, -EINVAL, "Failed to get ddc i2c adapter by node\n");
- 
- 	ret = mtk_hdmi_get_cec_dev(hdmi, dev, np);
--	if (ret)
-+	if (ret == -ENOTSUPP)
-+		dev_info(dev, "CEC support unavailable: node not found\n");
-+	else if (ret)
- 		return ret;
- 
- 	return 0;
 
 -- 
 2.51.0
