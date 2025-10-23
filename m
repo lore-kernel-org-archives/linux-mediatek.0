@@ -4,60 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D0E6CCD193
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Oct 2025 04:54:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1134CCD1BC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Oct 2025 05:02:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dwgZDVKDRmfhAYHTqlXcWWPXhFwAOPJQl1VPP3sMcrM=; b=Y+lQu4TK6lHe1GS6rAQsziaKlx
-	LxoIfGi5akggu+1DxCCNvpGvLZ5XowHfoK8aRnqbufDm77AkAW4/OVf6Kf4lyGpvPKSPcxkKn9aVS
-	PaIXIMSnC/k1AjlnEJMRvki66TitUKb6rhCzCGKVGxs/mX3w8z+yAb1WcvRyDpA5d9DN3LytEnJcl
-	ZZcsjSxIkm9RhNgIFR58D83MGbSE2bwD1am4mQUhHgrKScFHLZ6NerZTfUQsJoehUIIt3xShB/Eo+
-	jxxYm+M1fBkBf3BKVZ+z/F+HioUz8FNZsDQn9bwLKTbpN8hBgxRRWwzkWryBhNncTllKmVDemLHxQ
-	gXD7/eOg==;
+	bh=EUbhkGBX6f8oG6KkMM/FSsAFe5FpFh5JvN1QFFOS7ag=; b=P/VKMJbpQmRt/fQK0QpqDwYlAa
+	KenJg0acFMEovOc/f4tt/tt31ZOqL4kBMIJ2wSBfUTZHpBTNMcY8STf623tDlyPk28d+Y0V1Otmy2
+	EfivyvSZzMoLetWPdd3ukwwLuSyvx2hU/rn6lj7hlO5RoYIEDC2KSg+SiPd37dDHUCLpF+GR1Dd0/
+	fxCXn/Ib5w8OAa8gPgkqredjcQU2QHMdxe7ojjrUcVHhUw7CnGqfDawPa0zlK19p0cfvG7bARQaAx
+	KMW6U7aVLDApsTgfVDj9XszQmH+WIYO0orVFEgEOajckmTkJeSYzvZ1J+ccIeI+YJw9IsQYeT6/i1
+	eogWa28Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBnL8-000000054mF-0IYQ;
-	Thu, 23 Oct 2025 04:54:18 +0000
-Received: from mgamail.intel.com ([192.198.163.7])
+	id 1vBnSx-000000055lY-2OHF;
+	Thu, 23 Oct 2025 05:02:23 +0000
+Received: from mgamail.intel.com ([198.175.65.17])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBnL5-000000054lU-1R1s;
-	Thu, 23 Oct 2025 04:54:16 +0000
+	id 1vBnSv-000000055kj-0Qip;
+	Thu, 23 Oct 2025 05:02:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1761195255; x=1792731255;
+  t=1761195741; x=1792731741;
   h=message-id:date:mime-version:subject:to:cc:references:
    from:in-reply-to:content-transfer-encoding;
-  bh=o/X8ig17zbEWg83ccAFqusXE4QA15fbF7lAl6rfU1tQ=;
-  b=Iv6ooUWU+iKmpePi+UBaWciHEcPAYHTdUwyeWtkZYKFWcNxHWcO4ieu9
-   ZGCbdP7sZBXeAJGhE8ewm5mGeNwE9s98y67gLEPbySIJ5W1qbZSLs99pR
-   v2cYTtQH1747h7v+ElBBIhlLcBr17PqB+SyGU1oGg4WOA5lDlP0DOfy7O
-   yJc8b73vGqAPszHPO3J733ZQiOHBuvKgrzdwJwYI5PZALa+l/n/F7iu8q
-   6OVObIW0bmnjbkDUKA7gSKvNcEj+8j2c6hyDj0u64XJTh+lTOufG4ITRu
-   iWCGxB/yGhIF6rYKs11xb30IW1a1c9lR1LyBMYbAAZ+scTWyifJr3oJjq
-   w==;
-X-CSE-ConnectionGUID: LRLJtLPQSruXxL27u2mgHw==
-X-CSE-MsgGUID: BfziioROQ/yqOpic6RVtcA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11586"; a="88820545"
-X-IronPort-AV: E=Sophos;i="6.19,248,1754982000"; 
-   d="scan'208";a="88820545"
+  bh=xnBFwakM2k1JPYwO3/Qy+Tx8eLKNZ7gwkUwwpTfHUOQ=;
+  b=O8ZYBY3ie81lTGSPDqv+BberPS2lyhZp+9noMBmKy3lGNnH49ZnIQfDZ
+   zI2DaLTS/Nu0BtYXkQcJDNDkheWFHdsAToWw2Vi/EUhC6B2wZP4pEpOaH
+   MwwoQY0T03W6Mltdlz8h3OGiszlp6g6SOg+91MEzIiAbaa/hhIJ/WftHa
+   qTBfeSJ5KWnPsYLewQ4akpowG2dwsHotFtdmPxX98bkrEk6kRgWecLlAC
+   iipnZDDJUg5MdGsaS8iY2LQFnyQgSrhmIyY5vj4eWuFDdVYZ9pEa2oo73
+   LDG6u3x1TU6r1/cr061nZnnhz/qg0w8WYcrGwTm+gCUPwRrFZIRKCi+GO
+   g==;
+X-CSE-ConnectionGUID: YwlFe8ejS2WdNRO9gX05+A==
+X-CSE-MsgGUID: vsxO1BuBSfqZ8DITJZuAwQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11531"; a="63277384"
+X-IronPort-AV: E=Sophos;i="6.17,312,1747724400"; 
+   d="scan'208";a="63277384"
 Received: from fmviesa001.fm.intel.com ([10.60.135.141])
-  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Oct 2025 21:54:15 -0700
-X-CSE-ConnectionGUID: HMCARIInQHW636C3OauOVA==
-X-CSE-MsgGUID: LmNg6KDHRqKFY/2EChkiAw==
+  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Oct 2025 22:02:20 -0700
+X-CSE-ConnectionGUID: kWA0S5r3S1ua2kzqQUzTDA==
+X-CSE-MsgGUID: MuIS53hmREe4ygA3mF8heg==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.19,248,1754982000"; 
-   d="scan'208";a="214985320"
+   d="scan'208";a="214986870"
 Received: from allen-sbox.sh.intel.com (HELO [10.239.159.30]) ([10.239.159.30])
-  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Oct 2025 21:54:06 -0700
-Message-ID: <47b5dfbe-dda7-419d-9032-d61bda44eb9f@linux.intel.com>
-Date: Thu, 23 Oct 2025 12:50:13 +0800
+  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Oct 2025 22:02:11 -0700
+Message-ID: <3a9698ac-ac50-499f-871c-ee44d7371815@linux.intel.com>
+Date: Thu, 23 Oct 2025 12:58:18 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 5/6] iommu: Do not revert set_domain for the last gdev
+Subject: Re: [PATCH v2 6/6] iommu: Pass in old domain to attach_dev callback
+ functions
 To: Nicolin Chen <nicolinc@nvidia.com>, joro@8bytes.org, jgg@nvidia.com,
  kevin.tian@intel.com
 Cc: suravee.suthikulpanit@amd.com, will@kernel.org, robin.murphy@arm.com,
@@ -78,15 +79,15 @@ Cc: suravee.suthikulpanit@amd.com, will@kernel.org, robin.murphy@arm.com,
  linux-tegra@vger.kernel.org, virtualization@lists.linux.dev,
  patches@lists.linux.dev
 References: <cover.1761017765.git.nicolinc@nvidia.com>
- <276875013de662fe50f3fdd9e9a5bfbc0f12602e.1761017765.git.nicolinc@nvidia.com>
+ <7f760e795097e3052da82abf410c6ee963e4c62b.1761017765.git.nicolinc@nvidia.com>
 Content-Language: en-US
 From: Baolu Lu <baolu.lu@linux.intel.com>
-In-Reply-To: <276875013de662fe50f3fdd9e9a5bfbc0f12602e.1761017765.git.nicolinc@nvidia.com>
+In-Reply-To: <7f760e795097e3052da82abf410c6ee963e4c62b.1761017765.git.nicolinc@nvidia.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251022_215415_404918_F9DABB0D 
-X-CRM114-Status: GOOD (  12.84  )
+X-CRM114-CacheID: sfid-20251022_220221_172834_62D4FF04 
+X-CRM114-Status: GOOD (  11.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,23 +103,53 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 10/23/25 10:21, Nicolin Chen wrote:
-> The last gdev is the device that failed the __iommu_device_set_domain().
-> So, it doesn't need to be reverted, given it's attached to group->domain
-> already.
+> The IOMMU core attaches each device to a default domain on probe(). Then,
+> every new "attach" operation has a fundamental meaning of two-fold:
+>   - detach from its currently attached (old) domain
+>   - attach to a given new domain
 > 
-> This is not a problem currently, since it's a simply re-attach. However,
-> the core will need to pass in the old domain to __iommu_device_set_domain
-> so the old domain pointers would be inconsistent between a failed device
-> and all its prior succeeded devices, as all the prior devices need to be
-> reverted.
+> Modern IOMMU drivers following this pattern usually want to clean up the
+> things related to the old domain, so they call iommu_get_domain_for_dev()
+> to fetch the old domain.
 > 
-> Avoid the re-attach for the last gdev, by breaking before the revert.
+> Pass in the old domain pointer from the core to drivers, aligning with the
+> set_dev_pasid op that does so already.
 > 
+> Ensure all low-level attach fcuntions in the core can forward the correct
+> old domain pointer. Thus, rework those functions as well.
+> 
+> Suggested-by: Jason Gunthorpe<jgg@nvidia.com>
+> Reviewed-by: Kevin Tian<kevin.tian@intel.com>
 > Reviewed-by: Jason Gunthorpe<jgg@nvidia.com>
 > Signed-off-by: Nicolin Chen<nicolinc@nvidia.com>
 > ---
->   drivers/iommu/iommu.c | 5 +++--
->   1 file changed, 3 insertions(+), 2 deletions(-)
+>   include/linux/iommu.h                         |  3 ++-
+>   arch/powerpc/kernel/iommu.c                   |  5 ++--
+>   drivers/iommu/amd/iommu.c                     | 11 ++++----
+>   drivers/iommu/apple-dart.c                    |  9 ++++---
+>   .../arm/arm-smmu-v3/arm-smmu-v3-iommufd.c     |  5 ++--
+>   drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c   | 24 +++++++++++-------
+>   drivers/iommu/arm/arm-smmu/arm-smmu.c         |  9 ++++---
+>   drivers/iommu/arm/arm-smmu/qcom_iommu.c       | 11 ++++----
+>   drivers/iommu/exynos-iommu.c                  |  8 +++---
+>   drivers/iommu/fsl_pamu_domain.c               | 12 ++++-----
+>   drivers/iommu/intel/iommu.c                   | 10 +++++---
+>   drivers/iommu/intel/nested.c                  |  2 +-
+>   drivers/iommu/iommu.c                         | 25 +++++++++++--------
+>   drivers/iommu/iommufd/selftest.c              |  2 +-
+>   drivers/iommu/ipmmu-vmsa.c                    | 10 ++++----
+>   drivers/iommu/msm_iommu.c                     | 11 ++++----
+>   drivers/iommu/mtk_iommu.c                     |  8 +++---
+>   drivers/iommu/mtk_iommu_v1.c                  |  7 ++++--
+>   drivers/iommu/omap-iommu.c                    | 12 ++++-----
+>   drivers/iommu/riscv/iommu.c                   |  9 ++++---
+>   drivers/iommu/rockchip-iommu.c                | 20 +++++++++++----
+>   drivers/iommu/s390-iommu.c                    | 13 ++++++----
+>   drivers/iommu/sprd-iommu.c                    |  3 ++-
+>   drivers/iommu/sun50i-iommu.c                  |  8 +++---
+>   drivers/iommu/tegra-smmu.c                    | 10 ++++----
+>   drivers/iommu/virtio-iommu.c                  |  6 +++--
+>   26 files changed, 153 insertions(+), 100 deletions(-)
 
 Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
 
