@@ -4,76 +4,159 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEE98CCD1BE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Oct 2025 15:59:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 474D5CCD1BC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Oct 2025 16:59:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TGXEqrpxuGhtSiEzqEbGWZIE6q4kkUxKyl23ZhAYOrg=; b=kZCrcxiaiI0HTA/KsSZDffPrJz
-	rR+7VLXOzMWHorFj9k3WOohW25LuKu1aHZvdR/TFBaGgjFqMCjVqMf33XaF7V2lTGy72RtVZUHkJj
-	qTrKbsfv3Kg165JLc1DqYA3tauF/wAi9omqHPShwNMy3crS+77hZajzQkjIlXMFIgwTUnjGOPsz26
-	g2g2RQ8zx2U3SZ7bOyfwaOgIrzRBjQVugIw/xOXx6MfxhSPg0clsQKBNw2qsxo7zW96/ZRCZDG12H
-	KciD2AopP533HnGVofJ366oY6W0LOIAa8VY/oZsBHOiMl57R71wjNR9qBzIO2f+08GZk/GuVDz7IT
-	aU2xkPEA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9ZE3FlVbVNkRlgwHcDRLTLRrjkegvQIvyene/gJeqMY=; b=2+cGAc/7Q7q5PxQax93lNO/lKb
+	FMeJwzUfaBMjMlkCX7mxYcKLmbXZqyFxkFcLACJaNVqGQQp8b9Ri5BSTSXLjy/dVNkDAtAjTtf/aE
+	sjMJ2tYtY5idAt20HLIoxcUQWUiM3McoWUG0clFfHkjs/ZbBfy+hsY9SCYZArQVoSO+y95wdznVX/
+	9vv2SimmOEogqLtpQkgYHDVyGmVqRxdX4c1YM469WfD8iYGivmxY0S2fiRz/WNAqb1Ekyvy8CfQk7
+	0tAC5XNnxFpD45KVXlp+6i+oFrx0sepk1oSpJRdMzH+9kFarENwHk4+TIU2H3fGuSTUaio5rKnskS
+	WVs8ZbsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBxiv-00000006pTa-2Zdp;
-	Thu, 23 Oct 2025 15:59:33 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vByeZ-000000070xU-3jwt;
+	Thu, 23 Oct 2025 16:59:07 +0000
+Received: from mail-centralusazlp170100005.outbound.protection.outlook.com ([2a01:111:f403:c111::5] helo=DM1PR04CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBxit-00000006pSS-0eds
-	for linux-mediatek@lists.infradead.org;
-	Thu, 23 Oct 2025 15:59:32 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 47CCC4AF62
-	for <linux-mediatek@lists.infradead.org>; Thu, 23 Oct 2025 15:59:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 29424C19422
-	for <linux-mediatek@lists.infradead.org>; Thu, 23 Oct 2025 15:59:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761235170;
-	bh=HNETIspV1pbV0Y7043vMBsmXaAMmB/3oT01AgEruh5o=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=Iqm9YOj1nwjHauObiKeCKcztOyM7IDzlzvu7DqnfXoWrCbXW8LFQnOaNQwQXRS/vD
-	 G93NwnP0QcDAlRnItO34nCtCUky9f5sS8uIW06ELuZh/XCOzOm/HDb1MBsqjFSD1aj
-	 tUZsK+U0FhYJA2963vqqMBLycJQx6Y+A1Y7m8Cofj4McSrdU2ytBtGI7MC1J4jK3Hd
-	 mzx3D0bfz4oapjweIXnuUQKhb+BuvvR15B9uAYCoh6UoLCFVSpT8LzYnGRU9LK32iA
-	 J29QaMXqAP0qOIIA3RnPHS0tkvekxr7aTAvoWDw3Tmz2gp6M+QxSYKuCqRcd71pATw
-	 TSezQ+JvIMjNw==
-Received: by mail-pl1-f180.google.com with SMTP id d9443c01a7336-2907948c1d2so10321205ad.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 23 Oct 2025 08:59:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCUQ0kSAIRzbmzD1qr1rQAM1n83gImKh+dUBylT7E81GLzmBczT9LauO7YjCU0C2OkkA6HrdblH4OkhhZKcGNA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxUm9l1oYq0zvDCpv5eKvmsJreBk5XFbec6U0tuZlxJvBo6gQrM
-	wz/pS5BfNUORRS/D8wrLqkSNAFFCO8POO6r6JxkUpN/zePLdZ61sj4vcAaiTbBDHFEmbiqokDiK
-	dTwLWgEMoJStNxIlPbJezQ/0/e69OSg==
-X-Google-Smtp-Source: AGHT+IECkDSLnMI58q2z6cfhGJynJyGmcN+cdUTnJb3cy4ZottyIHIlB5uHCXuVcpJ10ENJOaHc75BD0rCg14pUbOyU=
-X-Received: by 2002:a17:902:d48b:b0:269:a2bc:799f with SMTP id
- d9443c01a7336-2946e0ebfe2mr35532765ad.29.1761235169689; Thu, 23 Oct 2025
- 08:59:29 -0700 (PDT)
+	id 1vByeW-000000070wY-0YSW;
+	Thu, 23 Oct 2025 16:59:05 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=IC4pQT5/oZQp0nADfnuHiRl27aFb3jLZLYAcr3p9+N6EVRmmXwgfEDopPUy+G7QDXOLfE7+RuQIhYt3XZTdwFdFoYkCzFmM4K8iJbHcwtqDdy133W0lB8u/xdROmPFONH6IEswOFtp/QBCLMbx4PAjwbYY07iKmyfxbH/AisS3wEOmpbEApVnqEThodB1hGIoDyfgMN8FKUVWSm+S/botRqoI9gQ+98CjpaSrohUp9KRiab6YL3vBD6i5nu8r6uDfbks3I5hVSzZxmsTq73ctk04MMnFYnjGz0mQHgaw0cRnZdr9eGWmNWQPvr0YxsgVM+GiGS9hDnWVLyZO52S37g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=9ZE3FlVbVNkRlgwHcDRLTLRrjkegvQIvyene/gJeqMY=;
+ b=ggWPSbCA/lfoaNbAQ455DLb5ecOGhE7GRJxwJptKRnrD/1t2X2TY6UVZwwoUi9tH7aZUsSInFs8tWSkYepS45MGv0h2Fa+haURa2CWwfwXP/VnanHW+46bnyXaNG+jU7p5MPszGfBBbDadvh1ingQ89u40OTHRgpqfQAeCBFGcuLjIHo9Ff0q1zf4KLG61BsxZBIzAyHun0S0XY/WjqaQ2OQSnDxUHCNTVK9vq0P261ZfUeSLRUCp+WY9fl4KAy5p+umoUROM+W01CXsOEG6lGkigdwRPC2YIZJ4yA3+e7JsaYijpxshnGR3qsGMwAM/JAe9ul0FPuvTyHC60d6vhw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=9ZE3FlVbVNkRlgwHcDRLTLRrjkegvQIvyene/gJeqMY=;
+ b=P3trElotsDUj+iDerQBTc1JZd2W0vj/ViMZS61EP5xRQ570DLPIm++xkg8D32t4kj8Cb/oCbjfx78NXH3DGf5+Mxgf89PPF+yrsg924HG2DodhKhcrrjPJdvHTmxe2zo+2gF/0Gt/hjeUmRpSKFIEHmTmlm/Ulr5bzfEav3N8/6yZrVU1KDluGsEE/s7dQM40qm2gagC1jnMVCh0E3u09WLZ/sMChvqpX1L2xJn4AFFRU/3oXUFLasX1Ri8rm/wocydY/2enekqqYPVNoXy+ekyg+OH/luQlI2Vj67r9bYvuijLoKcH7b6Hve2z9+nIYN8YcE6m42PiTOczZQ4EKXw==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from MN2PR12MB3613.namprd12.prod.outlook.com (2603:10b6:208:c1::17)
+ by PH8PR12MB7027.namprd12.prod.outlook.com (2603:10b6:510:1be::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9253.13; Thu, 23 Oct
+ 2025 16:58:57 +0000
+Received: from MN2PR12MB3613.namprd12.prod.outlook.com
+ ([fe80::1b3b:64f5:9211:608b]) by MN2PR12MB3613.namprd12.prod.outlook.com
+ ([fe80::1b3b:64f5:9211:608b%4]) with mapi id 15.20.9253.011; Thu, 23 Oct 2025
+ 16:58:57 +0000
+Date: Thu, 23 Oct 2025 13:58:54 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Christian Benvenuti <benve@cisco.com>,
+	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Joerg Roedel <joro@8bytes.org>, Leon Romanovsky <leon@kernel.org>,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-rdma@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Nelson Escobar <neescoba@cisco.com>,
+	Rob Clark <robin.clark@oss.qualcomm.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+	Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>,
+	Yong Wu <yong.wu@mediatek.com>, patches@lists.linux.dev
+Subject: Re: [PATCH 3/3] iommu: Allow drivers to say if they use
+ report_iommu_fault()
+Message-ID: <20251023165854.GA742380@nvidia.com>
+References: <3-v1-391058a85f30+14b-iommu_set_fault_jgg@nvidia.com>
+ <d594cdf2-5aab-4539-8d44-f7e57770df72@arm.com>
+ <20251023145434.GJ262900@nvidia.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20251023145434.GJ262900@nvidia.com>
+X-ClientProxiedBy: BY1P220CA0001.NAMP220.PROD.OUTLOOK.COM
+ (2603:10b6:a03:59d::14) To MN2PR12MB3613.namprd12.prod.outlook.com
+ (2603:10b6:208:c1::17)
 MIME-Version: 1.0
-References: <20251023-mediatek-drm-hdmi-v2-v11-0-7873ec4a1edf@collabora.com> <20251023-mediatek-drm-hdmi-v2-v11-5-7873ec4a1edf@collabora.com>
-In-Reply-To: <20251023-mediatek-drm-hdmi-v2-v11-5-7873ec4a1edf@collabora.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Thu, 23 Oct 2025 15:59:17 +0000
-X-Gmail-Original-Message-ID: <CAAOTY_8y6C5=jSjzBVVJ2vJq1L+Nf9U0tZvxzVX-e-3g91xEeQ@mail.gmail.com>
-X-Gm-Features: AS18NWBPNnpQTLl2v2M-LiIiRpHYJ2lBBGYEU56O8zLVvGRR7Usps46KfOInouI
-Message-ID: <CAAOTY_8y6C5=jSjzBVVJ2vJq1L+Nf9U0tZvxzVX-e-3g91xEeQ@mail.gmail.com>
-Subject: Re: [PATCH v11 05/11] drm/mediatek: mtk_hdmi_common: Make CEC support optional
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, CK Hu <ck.hu@mediatek.com>, 
-	kernel@collabora.com, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MN2PR12MB3613:EE_|PH8PR12MB7027:EE_
+X-MS-Office365-Filtering-Correlation-Id: a4e6977e-d3cc-428b-d8f3-08de12557470
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|376014|366016|1800799024;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?2yEwHtqPySWvqcJrey9EEidWQiXtn/UmWmWhs3rSTPCd5bQ6/dSRiDVmkdC9?=
+ =?us-ascii?Q?2Qi6L2EMgyr95tToOlkugHECpKlXmNIhWUKzwGqqf95WX9bjm0vKYGUqyHWf?=
+ =?us-ascii?Q?qIypQf9BX26fr0QDrmlraOG6j78QmUZbAarhD6UySS1iiUBosCUJWFMZv4Wz?=
+ =?us-ascii?Q?PkvyAqMBVErJPGd2zpmt1uchr/iOQoo8oImHBL27eAvTy8Up+E2R93GwSXO1?=
+ =?us-ascii?Q?hMQXfAI8Ij9iX1p+lvVzPKTQtEepoau2QUTBt+w+csjOBMgomziiT2H31MpE?=
+ =?us-ascii?Q?7HuM0PI4Oktz0QqAuayni4sWWGt7wICi8pFckN1HTb3DLhCbswwIDri4zobG?=
+ =?us-ascii?Q?IDgF845G/wROm60U2PqVeJcXj38wfv1C6IWkY3SZ2y6XHpcSe5F0Wg0A6Mr2?=
+ =?us-ascii?Q?Tw3eg+jfnpZDUmEdVXr0WKpxgrW2n48qrUGiVTJERj1p3a2shEx0Rqf8X5bX?=
+ =?us-ascii?Q?8uvJVMFUg0amw+FCrtowrpJU8IVUoyhn8deUfkpyy7Ins7TwY8vsCvVDFM0S?=
+ =?us-ascii?Q?o+fne7F/nXTZnq7UrsgC8Vp3H9WxKMdoDhPI35/1cwwn4dhwPfaCEPv4abxI?=
+ =?us-ascii?Q?SPX8p1LCKon8kjga+Pd+/m0ws7HQCpGgO4EYilgUdfqfqtZ+eYVYWEyxYsTh?=
+ =?us-ascii?Q?Lqwqd6mXbFt+h/jw8qBoc1DoN316B298OMLLsdfzdjpZ9v5SwWlNz3yOs6Uj?=
+ =?us-ascii?Q?r+ASsGirCT/91nTB4IQ8KOjtANffFVd8ME/kNKnMgj2kfB45NRaZ78KjJpaX?=
+ =?us-ascii?Q?IYgrongNgam7Ci+ERlsLgMmQVRHLqk9xfyVLwz8wRF0zz+TGOcVwd07RxICz?=
+ =?us-ascii?Q?I35P1hc5RrMh9GWa2taHohfpVfeOE5L0qQM8ziC6SdqEFNJ/lTWjVOCwdgC+?=
+ =?us-ascii?Q?Fh87k4PYouj1v5yrHxf9G4VkjQzD8LZPiBtPFNJp50AtJGt2RC/eIFTqM8Wb?=
+ =?us-ascii?Q?PEi3UwxEqrVYTj41D0AS1EKCccq+NXYNN2ph2t0gztWZCYBj2rYk3vjUbC90?=
+ =?us-ascii?Q?koFuU0din8O7u1oAB8RxCKiPWKkeTu8cyZcr7/IIIhUXc9Vh850krGVzdfKC?=
+ =?us-ascii?Q?YhFqAopbkDOGrD+mGDw7xXPV9TUizn1digLV+kqAGRD2ohQxSLQuYuI9KsAg?=
+ =?us-ascii?Q?Dp9kSxYh5Ozt/ESiuRrOUNf0rata9NFMpDsBbmYpzMFYp7qNrpI7JqpbIWwv?=
+ =?us-ascii?Q?UorlCQwR3/zKNw2EILFtevDyGLhjKANaUnj6ELkH2rVJIAHc9FahzhA3brgO?=
+ =?us-ascii?Q?6G8G208HSnpIZMTXwkMZt3D2xamcZQcW/ZLsTAS/qRcd/1Sn3zrDGW4EaoIe?=
+ =?us-ascii?Q?3mbINN0aSqlTN6ohrH4H121OMeKuO53l0+mHXuQMBvdWNAVfVbGJtkdi/DWf?=
+ =?us-ascii?Q?Bc3MZhtrJfjvPQXZp91d8LjFM/quUM1bFxULOMCEOgDkAN84Bz/D1ilI4U6W?=
+ =?us-ascii?Q?bjn9TbqpUO12vU9NgWPAy3eZgSDZuz1H?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN2PR12MB3613.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(376014)(366016)(1800799024);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?azKN5s2ZQgKO1dtbB+rO20FAZmVop5ewEQUza4jYJ57cG5NJhyp6EN3FQ+iB?=
+ =?us-ascii?Q?VwuLTOpEOX3qa4W8TheQVuZD6T//Q13exPJW7dY8VQkeFzwDFDM9EfA9k56y?=
+ =?us-ascii?Q?9yUjJskkXwEJdCDnqgdfd7En9Xirt/u/HCceGtE3eZb1ck4eOaszSpl+NCH5?=
+ =?us-ascii?Q?XreotVpSR1s80ipNIkcfPlNBRu5OCNBedT223Jl/L5m30lXgFMbHN1NxvoRO?=
+ =?us-ascii?Q?eQ6XUOaqskOH+1d9MEhXjx2E4sF1GkAsEOgsUuvn7aNUP/3Z4whJQfhBvjwi?=
+ =?us-ascii?Q?TxGYKwKVbiZQGbWW0DmFHefz3eACrBfX86pgaJvetBEydQoDxsnespmH0y5u?=
+ =?us-ascii?Q?fYld67NnXJKIacKlccrrnWI7w2dErX9uEV3nhB6l+/Ad0NiDuK5h6UBVjb7h?=
+ =?us-ascii?Q?dwOR2fTqFmxQu2Tp3x9Ns38xo/cAdYQfCtMCgFDLTTImE6ykh9wroMQPjP48?=
+ =?us-ascii?Q?WnWmBdiE1pfVW0PptwQp+1LTNLKsyVi+8YG4bnR2Xj9Px6SJKnhy0WJC2Ntf?=
+ =?us-ascii?Q?zFD+105w/z8Q+8WK0Py61q9owp0IkFaez8NzG32UKsoYyyjJLsTCVknhq+v4?=
+ =?us-ascii?Q?ICQJTzKQT7dnuvS6nySXHs0ZwhVw8IitTGns1etxGajrtJZXgZIiHW0Cw++f?=
+ =?us-ascii?Q?ODmrwq5FRUVfc2YMOyUipIDr/rtWJhQEEekqLpcgqj/AEaTIVXQrU/F/Sobw?=
+ =?us-ascii?Q?np+WSVVTwreuj5K80ePTJW1YPtARzmSHZvCMw6vFoB1XAptfflsKqgpUWVBV?=
+ =?us-ascii?Q?tbLuY2SVOaMXho/dpUn0rgT+2WhKiyhnBrgFk1staKbE2TXAsCfWY3D071oT?=
+ =?us-ascii?Q?wldy88/472++/eA0P59UcXXl7Tn2ksklfxerAcs//4aUv6C+poU8A4iAmbZP?=
+ =?us-ascii?Q?V0MA9Xd4uWb8czun4+YNn9L9QVCZ/0QrMZjnr5oylLg3/8TzGIOcAtYn1SrF?=
+ =?us-ascii?Q?NS8tcmOjkAJ/qputICJrd2Ife6uAbehmk5M0e8bRn+q6D6stzSsRZyiZ8X32?=
+ =?us-ascii?Q?Xx7AaHHw6+NnouF8kBNVypoc8lQ3GlTM7StFhdG2w3VZgVCvN6Xru/qMRyz7?=
+ =?us-ascii?Q?Cb/TruNQfR60Sf775fL2zBCQ/zPUclbG85Of2M+lRd40YxW9x0SF7tGPwcFT?=
+ =?us-ascii?Q?4pvrioTQP19AQekEPixoB6uWwTka4W6whG98VM4PlraQTZ7FfK9lbHl5IDO8?=
+ =?us-ascii?Q?89sTyjzdwxTYqe0ORoIuQth6MNAswNVFGJfFV29NbtD9Ka1Pmj5s6H+Zr5qZ?=
+ =?us-ascii?Q?CHvhx8tD7KoLXkP++zAjTVUcFev7AjPH5pzpA6C0ZpA+y6jaVHqU7CZnoDGO?=
+ =?us-ascii?Q?ErcYArAwMxXNj+0Lg+7lsmq4p5mo916AtV3jFsnhoT9VLSnBaFXArW42mo6K?=
+ =?us-ascii?Q?wDu4p1IoDRzxqgMiKLhpCXqm109JFikHQFZtfLIRHqaRJ4uqHkXQRbgEDzPX?=
+ =?us-ascii?Q?AZXVNcQhLWkKlFbAn0RLFJUJ41ROOM7DHf+50UpMmd1p6P+WcggEv9RkLKVM?=
+ =?us-ascii?Q?fsEhZZlQgZxdRsFreTdNpQ5NXvCMDexQS2vMEpy7hggINAJJPHQJfYprSjSO?=
+ =?us-ascii?Q?pON8xUwkvs+KUjM3TL9F7rk7zWVhqvWvmmEfTiRj?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a4e6977e-d3cc-428b-d8f3-08de12557470
+X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB3613.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Oct 2025 16:58:56.9808
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: CWZn2SwiTaWoQNOpqTur4nWLipkVemN3asW2PuFvx7VHHouB7tAxNwKp8EhaTXfN
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH8PR12MB7027
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251023_085931_227218_20746D86 
-X-CRM114-Status: GOOD (  24.71  )
+X-CRM114-CacheID: sfid-20251023_095904_173422_7BABE840 
+X-CRM114-Status: GOOD (  22.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,97 +171,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Louis:
+On Thu, Oct 23, 2025 at 11:54:34AM -0300, Jason Gunthorpe wrote:
+> On Thu, Oct 23, 2025 at 12:24:01PM +0100, Robin Murphy wrote:
+> > On 2025-10-22 6:12 pm, Jason Gunthorpe wrote:
+> > > report_iommu_fault() is an older API that has been superseded by
+> > > iommu_report_device_fault() which is capable to support PRI.
+> > > 
+> > > Only two external drivers consume this, drivers/remoteproc and
+> > > drivers/gpu/drm/msm. Ideally they would move over to the new APIs, but for
+> > > now protect against accidentally mix and matching the wrong components.
+> > > 
+> > > The iommu drivers support either the old iommu_set_fault_handler() via the
+> > > driver calling report_iommu_fault(), or they are newer server focused
+> > > drivers that call iommu_report_device_fault().
+> > > 
+> > > Include a flag in the domain_ops if it calls report_iommu_fault() and
+> > > block iommu_set_fault_handler() on iommu's that can't support it.
+> > 
+> > This isn't a domain operation though; depending on how you look at it,
+> > supporting a legacy fault_handler is either a capability of the IOMMU driver
+> > (that would be reachable via domain->owner->capable) or a property of the
+> > iommu_domain itself that the drivers can set at allocation time (basically
+> > this same patch just with the lines in slightly different places).
+> 
+> That's right, the issue is:
+> 
+> void iommu_set_fault_handler(struct iommu_domain *domain,
+> 					iommu_fault_handler_t handler,
+> 					void *token)
+> 
+> We can't get to the iommu instance starting from a domain pointer
+> 
+> Do you think we should change the above signature to include a
+> struct device *?
 
-Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com> =E6=96=BC 2025=E5=B9=
-=B410=E6=9C=8823=E6=97=A5
-=E9=80=B1=E5=9B=9B =E4=B8=8A=E5=8D=8810:32=E5=AF=AB=E9=81=93=EF=BC=9A
->
-> From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com=
->
->
-> In preparation for adding a new driver for HDMIv2, for which CEC
-> is not strictly required, change the of_get_compatible_child()
-> failure error to -ENOTSUPP to be able to differentiate between
-> error conditions in mtk_hdmi_dt_parse_pdata().
->
-> In that case, if -ENOTSUPP is returned, this driver will print
-> an informative message saying that CEC support is unavailable,
-> as the devicetree node for that was not found, but after that,
-> function mtk_hdmi_dt_parse_pdata() will not return error to
-> the caller.
->
-> This will not change functionality of the mtk_hdmi (v1) driver
-> as that is still checking whether CEC is present and, if not,
-> will fail probing with an error saying that CEC is required
-> by HDMIv1.
->
-> Reviewed-by: CK Hu <ck.hu@mediatek.com>
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
-> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_hdmi_common.c | 9 +++++----
->  1 file changed, 5 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_common.c b/drivers/gpu/drm=
-/mediatek/mtk_hdmi_common.c
-> index f28e63716d7c2e2c6bdf5b28d24789bc926d2beb..989479fdfe40952762a1b6379=
-7bf602b520dcac5 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
-> @@ -253,12 +253,11 @@ static int mtk_hdmi_get_cec_dev(struct mtk_hdmi *hd=
-mi, struct device *dev, struc
->         /* The CEC module handles HDMI hotplug detection */
->         cec_np =3D of_get_compatible_child(np->parent, "mediatek,mt8173-c=
-ec");
->         if (!cec_np)
-> -               return dev_err_probe(dev, -EINVAL, "Failed to find CEC no=
-de\n");
-> +               return dev_err_probe(dev, -ENOTSUPP, "Failed to find CEC =
-node\n");
+Reading this again, it is easy to move it to the domain->owner, which
+is an *ops* pointer. It would still be driver global and not
+per-instance. Lets try that then
 
-The checkpatch show the warning:
+I like adding a iommu_paging_domain_alloc_flags() option too..
 
-WARNING: ENOTSUPP is not a SUSV4 error code, prefer EOPNOTSUPP
-#40: FILE: drivers/gpu/drm/mediatek/mtk_hdmi_common.c:256:
-+        return dev_err_probe(dev, -ENOTSUPP, "Failed to find CEC node\n");
-
-I find many driver use ENOTSUPP, so I'm not sure which one is better.
-I really don't understand the description about these two error code [1].
-If you choose ENOTSUPP, please give me some explain.
-
-[1] https://man7.org/linux/man-pages/man3/errno.3.html
-
-Regards,
-Chun-Kuang.
-
->
->         cec_pdev =3D of_find_device_by_node(cec_np);
->         if (!cec_pdev) {
-> -               dev_err(hdmi->dev, "Waiting for CEC device %pOF\n",
-> -                       cec_np);
-> +               dev_err(hdmi->dev, "Waiting for CEC device %pOF\n", cec_n=
-p);
->                 of_node_put(cec_np);
->                 return -EPROBE_DEFER;
->         }
-> @@ -319,7 +318,9 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *h=
-dmi, struct platform_device
->                 return dev_err_probe(dev, -EINVAL, "Failed to get ddc i2c=
- adapter by node\n");
->
->         ret =3D mtk_hdmi_get_cec_dev(hdmi, dev, np);
-> -       if (ret)
-> +       if (ret =3D=3D -ENOTSUPP)
-> +               dev_info(dev, "CEC support unavailable: node not found\n"=
-);
-> +       else if (ret)
->                 return ret;
->
->         return 0;
->
-> --
-> 2.51.0
->
+Jason
 
