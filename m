@@ -4,63 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2ABECCCD1BE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Oct 2025 15:11:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEE98CCD1BE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Oct 2025 15:59:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4RqcITz/A0Wb+zQCM0axz78STZMKxI0+DTWDBH2AeM0=; b=qHMWBqe8esLcpgTbuhAPtxrORS
-	hHs5FZ662ks+xDwHEK48NIHU3v1MsoC6r5kiEOe4TCFBM5PD3XXE78gB3aQs2uKqQ3KHQD5FF6qmj
-	8ZmPUZHdUxTFvs3We5L9y6YhhSZGrRqcuqGSXkro3qGI3aBTX3XDBdI0OKrN0N/18SFnJGuzFrsZR
-	TJmwptdefbsI7xhMgZXkIPPtfSeoytwvxblalnKMeRmDCq+IfSbVi2bf4Qn2pcTJmTFgdwzHpHmGL
-	3LWwcSYdDWwSLBRD/rRzDRHo+3pR7kM4DOxf8+ip2qfPeBs8IeKLWoiN7S1ha/rC1DzkIrzozlPYc
-	+PVbvbjw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TGXEqrpxuGhtSiEzqEbGWZIE6q4kkUxKyl23ZhAYOrg=; b=kZCrcxiaiI0HTA/KsSZDffPrJz
+	rR+7VLXOzMWHorFj9k3WOohW25LuKu1aHZvdR/TFBaGgjFqMCjVqMf33XaF7V2lTGy72RtVZUHkJj
+	qTrKbsfv3Kg165JLc1DqYA3tauF/wAi9omqHPShwNMy3crS+77hZajzQkjIlXMFIgwTUnjGOPsz26
+	g2g2RQ8zx2U3SZ7bOyfwaOgIrzRBjQVugIw/xOXx6MfxhSPg0clsQKBNw2qsxo7zW96/ZRCZDG12H
+	KciD2AopP533HnGVofJ366oY6W0LOIAa8VY/oZsBHOiMl57R71wjNR9qBzIO2f+08GZk/GuVDz7IT
+	aU2xkPEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBwyB-00000006i5E-3Izf;
-	Thu, 23 Oct 2025 15:11:15 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vBxiv-00000006pTa-2Zdp;
+	Thu, 23 Oct 2025 15:59:33 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBwy9-00000006i4i-346f;
-	Thu, 23 Oct 2025 15:11:13 +0000
+	id 1vBxit-00000006pSS-0eds
+	for linux-mediatek@lists.infradead.org;
+	Thu, 23 Oct 2025 15:59:32 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 26FF4640C2;
-	Thu, 23 Oct 2025 15:11:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 74EE1C4CEE7;
-	Thu, 23 Oct 2025 15:11:12 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 47CCC4AF62
+	for <linux-mediatek@lists.infradead.org>; Thu, 23 Oct 2025 15:59:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 29424C19422
+	for <linux-mediatek@lists.infradead.org>; Thu, 23 Oct 2025 15:59:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761232272;
-	bh=FqogIAnnyd1/hXRU6ygWHWPx68vkuiHwgBhzvU/xZ+s=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=s9dJRR4JBy4HMSnIgMV5KSXc84e82BWN3nrDVgb/ojTjVX6Oxy4BepWx11uvAtddF
-	 QdMFqODu0O6qaf9VgGxdvKMklmaQACUwbinfIwpqA76etpGXuT/9tD610jpd2G5kqC
-	 LMQFciKnOX2TmI8V1rOC0iCT8El9aBOL93xl5n9LatYIgE37Mia8dGfZLZrikr6+4l
-	 imF5XyUXPHxJvTSbRxfeG6rgbzbf9bZnOLrxSmEzRAkhQBWRbvgj+2bSJgdTUPmG+1
-	 sRH+u8OVFdC2Myr8aBrLJVPSil00KyAAqI4JdAm4+ZBjk9/wQ5DCrHGY5rganKBqNt
-	 IQfoxANng/GvQ==
-Date: Thu, 23 Oct 2025 17:11:10 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Russell King <linux@armlinux.org.uk>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [net-next PATCH v2 2/2] net: airoha: add phylink support for GDM1
-Message-ID: <aPpFjvJTv1_CEMy6@lore-desk>
-References: <20251023145850.28459-1-ansuelsmth@gmail.com>
- <20251023145850.28459-3-ansuelsmth@gmail.com>
+	s=k20201202; t=1761235170;
+	bh=HNETIspV1pbV0Y7043vMBsmXaAMmB/3oT01AgEruh5o=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=Iqm9YOj1nwjHauObiKeCKcztOyM7IDzlzvu7DqnfXoWrCbXW8LFQnOaNQwQXRS/vD
+	 G93NwnP0QcDAlRnItO34nCtCUky9f5sS8uIW06ELuZh/XCOzOm/HDb1MBsqjFSD1aj
+	 tUZsK+U0FhYJA2963vqqMBLycJQx6Y+A1Y7m8Cofj4McSrdU2ytBtGI7MC1J4jK3Hd
+	 mzx3D0bfz4oapjweIXnuUQKhb+BuvvR15B9uAYCoh6UoLCFVSpT8LzYnGRU9LK32iA
+	 J29QaMXqAP0qOIIA3RnPHS0tkvekxr7aTAvoWDw3Tmz2gp6M+QxSYKuCqRcd71pATw
+	 TSezQ+JvIMjNw==
+Received: by mail-pl1-f180.google.com with SMTP id d9443c01a7336-2907948c1d2so10321205ad.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 23 Oct 2025 08:59:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCUQ0kSAIRzbmzD1qr1rQAM1n83gImKh+dUBylT7E81GLzmBczT9LauO7YjCU0C2OkkA6HrdblH4OkhhZKcGNA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxUm9l1oYq0zvDCpv5eKvmsJreBk5XFbec6U0tuZlxJvBo6gQrM
+	wz/pS5BfNUORRS/D8wrLqkSNAFFCO8POO6r6JxkUpN/zePLdZ61sj4vcAaiTbBDHFEmbiqokDiK
+	dTwLWgEMoJStNxIlPbJezQ/0/e69OSg==
+X-Google-Smtp-Source: AGHT+IECkDSLnMI58q2z6cfhGJynJyGmcN+cdUTnJb3cy4ZottyIHIlB5uHCXuVcpJ10ENJOaHc75BD0rCg14pUbOyU=
+X-Received: by 2002:a17:902:d48b:b0:269:a2bc:799f with SMTP id
+ d9443c01a7336-2946e0ebfe2mr35532765ad.29.1761235169689; Thu, 23 Oct 2025
+ 08:59:29 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="R0NsogCUtGj5e3sD"
-Content-Disposition: inline
-In-Reply-To: <20251023145850.28459-3-ansuelsmth@gmail.com>
+References: <20251023-mediatek-drm-hdmi-v2-v11-0-7873ec4a1edf@collabora.com> <20251023-mediatek-drm-hdmi-v2-v11-5-7873ec4a1edf@collabora.com>
+In-Reply-To: <20251023-mediatek-drm-hdmi-v2-v11-5-7873ec4a1edf@collabora.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Thu, 23 Oct 2025 15:59:17 +0000
+X-Gmail-Original-Message-ID: <CAAOTY_8y6C5=jSjzBVVJ2vJq1L+Nf9U0tZvxzVX-e-3g91xEeQ@mail.gmail.com>
+X-Gm-Features: AS18NWBPNnpQTLl2v2M-LiIiRpHYJ2lBBGYEU56O8zLVvGRR7Usps46KfOInouI
+Message-ID: <CAAOTY_8y6C5=jSjzBVVJ2vJq1L+Nf9U0tZvxzVX-e-3g91xEeQ@mail.gmail.com>
+Subject: Re: [PATCH v11 05/11] drm/mediatek: mtk_hdmi_common: Make CEC support optional
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, CK Hu <ck.hu@mediatek.com>, 
+	kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251023_085931_227218_20746D86 
+X-CRM114-Status: GOOD (  24.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,196 +88,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi, Louis:
 
---R0NsogCUtGj5e3sD
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-> In preparation for support of GDM2+ port, fill in phylink OPs for GDM1
-> that is an INTERNAL port for the Embedded Switch.
-
-Hi Christian,
-
-just few nitpicks inline. Fixing them:
-
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
-
->=20
-> Add all the phylink start/stop and fill in the MAC capabilities and the
-> internal interface as the supported interface.
->=20
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com> =E6=96=BC 2025=E5=B9=
+=B410=E6=9C=8823=E6=97=A5
+=E9=80=B1=E5=9B=9B =E4=B8=8A=E5=8D=8810:32=E5=AF=AB=E9=81=93=EF=BC=9A
+>
+> From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com=
+>
+>
+> In preparation for adding a new driver for HDMIv2, for which CEC
+> is not strictly required, change the of_get_compatible_child()
+> failure error to -ENOTSUPP to be able to differentiate between
+> error conditions in mtk_hdmi_dt_parse_pdata().
+>
+> In that case, if -ENOTSUPP is returned, this driver will print
+> an informative message saying that CEC support is unavailable,
+> as the devicetree node for that was not found, but after that,
+> function mtk_hdmi_dt_parse_pdata() will not return error to
+> the caller.
+>
+> This will not change functionality of the mtk_hdmi (v1) driver
+> as that is still checking whether CEC is present and, if not,
+> will fail probing with an error saying that CEC is required
+> by HDMIv1.
+>
+> Reviewed-by: CK Hu <ck.hu@mediatek.com>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 > ---
->  drivers/net/ethernet/airoha/Kconfig      |  1 +
->  drivers/net/ethernet/airoha/airoha_eth.c | 77 +++++++++++++++++++++++-
->  drivers/net/ethernet/airoha/airoha_eth.h |  3 +
->  3 files changed, 80 insertions(+), 1 deletion(-)
->=20
+>  drivers/gpu/drm/mediatek/mtk_hdmi_common.c | 9 +++++----
+>  1 file changed, 5 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_common.c b/drivers/gpu/drm=
+/mediatek/mtk_hdmi_common.c
+> index f28e63716d7c2e2c6bdf5b28d24789bc926d2beb..989479fdfe40952762a1b6379=
+7bf602b520dcac5 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
+> @@ -253,12 +253,11 @@ static int mtk_hdmi_get_cec_dev(struct mtk_hdmi *hd=
+mi, struct device *dev, struc
+>         /* The CEC module handles HDMI hotplug detection */
+>         cec_np =3D of_get_compatible_child(np->parent, "mediatek,mt8173-c=
+ec");
+>         if (!cec_np)
+> -               return dev_err_probe(dev, -EINVAL, "Failed to find CEC no=
+de\n");
+> +               return dev_err_probe(dev, -ENOTSUPP, "Failed to find CEC =
+node\n");
 
-[...]
+The checkpatch show the warning:
 
-> @@ -2813,6 +2817,18 @@ static const struct ethtool_ops airoha_ethtool_ops=
- =3D {
->  	.get_link		=3D ethtool_op_get_link,
->  };
-> =20
-> +static struct phylink_pcs *airoha_phylink_mac_select_pcs(struct phylink_=
-config *config,
-> +							 phy_interface_t interface)
+WARNING: ENOTSUPP is not a SUSV4 error code, prefer EOPNOTSUPP
+#40: FILE: drivers/gpu/drm/mediatek/mtk_hdmi_common.c:256:
++        return dev_err_probe(dev, -ENOTSUPP, "Failed to find CEC node\n");
 
-can you please do not go over 79 columns? (I still like it :))
+I find many driver use ENOTSUPP, so I'm not sure which one is better.
+I really don't understand the description about these two error code [1].
+If you choose ENOTSUPP, please give me some explain.
 
-static struct phylink_pcs *
-airoha_phylink_mac_select_pcs(struct phylink_config *config,
-			      phy_interface_t interface)
-{
-	return NULL;
-}
+[1] https://man7.org/linux/man-pages/man3/errno.3.html
 
-> +{
-> +	return NULL;
-> +}
-> +
-> +static void airoha_mac_config(struct phylink_config *config,
-> +			      unsigned int mode,
-> +			      const struct phylink_link_state *state)
-> +{
-> +}
-> +
->  static int airoha_metadata_dst_alloc(struct airoha_gdm_port *port)
->  {
->  	int i;
-> @@ -2857,6 +2873,57 @@ bool airoha_is_valid_gdm_port(struct airoha_eth *e=
-th,
->  	return false;
->  }
-> =20
-> +static void airoha_mac_link_up(struct phylink_config *config,
-> +			       struct phy_device *phy, unsigned int mode,
-> +			       phy_interface_t interface, int speed,
-> +			       int duplex, bool tx_pause, bool rx_pause)
-> +{
-> +}
-> +
-> +static void airoha_mac_link_down(struct phylink_config *config,
-> +				 unsigned int mode, phy_interface_t interface)
-> +{
-> +}
-> +
-> +static const struct phylink_mac_ops airoha_phylink_ops =3D {
-> +	.mac_select_pcs =3D airoha_phylink_mac_select_pcs,
-> +	.mac_config =3D airoha_mac_config,
-> +	.mac_link_up =3D airoha_mac_link_up,
-> +	.mac_link_down =3D airoha_mac_link_down,
-> +};
+Regards,
+Chun-Kuang.
 
-can you please align it like airoha_ethtool_ops or airoha_netdev_ops?
-
-> +
-> +static int airoha_setup_phylink(struct net_device *netdev)
-> +{
-> +	struct airoha_gdm_port *port =3D netdev_priv(netdev);
-> +	struct device *dev =3D &netdev->dev;
-> +	struct phylink *phylink;
-> +	int phy_mode;
-> +
-> +	phy_mode =3D device_get_phy_mode(dev);
-> +	if (phy_mode < 0) {
-> +		dev_err(dev, "incorrect phy-mode\n");
-> +		return phy_mode;
-> +	}
-> +
-> +	port->phylink_config.dev =3D dev;
-> +	port->phylink_config.type =3D PHYLINK_NETDEV;
-> +	port->phylink_config.mac_capabilities =3D MAC_ASYM_PAUSE |
-> +						MAC_SYM_PAUSE |
-> +						MAC_10000FD;
-> +
-> +	__set_bit(PHY_INTERFACE_MODE_INTERNAL,
-> +		  port->phylink_config.supported_interfaces);
-> +
-> +	phylink =3D phylink_create(&port->phylink_config, dev_fwnode(dev),
-> +				 phy_mode, &airoha_phylink_ops);
-> +	if (IS_ERR(phylink))
-> +		return PTR_ERR(phylink);
-> +
-> +	port->phylink =3D phylink;
-> +
-> +	return 0;
-> +}
-> +
->  static int airoha_alloc_gdm_port(struct airoha_eth *eth,
->  				 struct device_node *np, int index)
->  {
-> @@ -2935,12 +3002,18 @@ static int airoha_alloc_gdm_port(struct airoha_et=
-h *eth,
->  	if (err)
->  		return err;
-> =20
-> -	err =3D register_netdev(dev);
-> +	err =3D airoha_setup_phylink(port->dev);
->  	if (err)
->  		goto free_metadata_dst;
-> =20
-> +	err =3D register_netdev(dev);
-> +	if (err)
-> +		goto free_phylink;
-> +
->  	return 0;
-> =20
-> +free_phylink:
-> +	phylink_destroy(port->phylink);
->  free_metadata_dst:
->  	airoha_metadata_dst_free(port);
->  	return err;
-> @@ -3049,6 +3122,7 @@ static int airoha_probe(struct platform_device *pde=
-v)
-> =20
->  		if (port && port->dev->reg_state =3D=3D NETREG_REGISTERED) {
->  			unregister_netdev(port->dev);
-> +			phylink_destroy(port->phylink);
->  			airoha_metadata_dst_free(port);
->  		}
->  	}
-> @@ -3076,6 +3150,7 @@ static void airoha_remove(struct platform_device *p=
-dev)
-> =20
->  		airoha_dev_stop(port->dev);
->  		unregister_netdev(port->dev);
-> +		phylink_destroy(port->phylink);
->  		airoha_metadata_dst_free(port);
->  	}
->  	free_netdev(eth->napi_dev);
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ether=
-net/airoha/airoha_eth.h
-> index eb27a4ff5198..c144c1ece23b 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.h
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.h
-> @@ -531,6 +531,9 @@ struct airoha_gdm_port {
->  	struct net_device *dev;
->  	int id;
-> =20
-> +	struct phylink *phylink;
-> +	struct phylink_config phylink_config;
-> +
->  	struct airoha_hw_stats stats;
-> =20
->  	DECLARE_BITMAP(qos_sq_bmap, AIROHA_NUM_QOS_CHANNELS);
-> --=20
+>
+>         cec_pdev =3D of_find_device_by_node(cec_np);
+>         if (!cec_pdev) {
+> -               dev_err(hdmi->dev, "Waiting for CEC device %pOF\n",
+> -                       cec_np);
+> +               dev_err(hdmi->dev, "Waiting for CEC device %pOF\n", cec_n=
+p);
+>                 of_node_put(cec_np);
+>                 return -EPROBE_DEFER;
+>         }
+> @@ -319,7 +318,9 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *h=
+dmi, struct platform_device
+>                 return dev_err_probe(dev, -EINVAL, "Failed to get ddc i2c=
+ adapter by node\n");
+>
+>         ret =3D mtk_hdmi_get_cec_dev(hdmi, dev, np);
+> -       if (ret)
+> +       if (ret =3D=3D -ENOTSUPP)
+> +               dev_info(dev, "CEC support unavailable: node not found\n"=
+);
+> +       else if (ret)
+>                 return ret;
+>
+>         return 0;
+>
+> --
 > 2.51.0
->=20
-
---R0NsogCUtGj5e3sD
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaPpFjgAKCRA6cBh0uS2t
-rL2yAPwJ+sKCvxS7WnskEFkXW0ArW6kWm9QdRR7nw7/AaF0oswEAicDLHyIRsu6Z
-cd6vajttTttrfzyKaU85HnHQ3XtOcQU=
-=fV9Y
------END PGP SIGNATURE-----
-
---R0NsogCUtGj5e3sD--
+>
 
