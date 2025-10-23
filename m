@@ -4,53 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7F7CCCF9E3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Oct 2025 10:33:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C07F1CCD1BF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Oct 2025 10:33:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pREIdwueva8p5IEZP/Uv7Y/EwB32i8sMr7jZSfnH9es=; b=IthqXTS9GrW9/lWEHE8ulw42yf
-	7Vf814QqCfzIEGSONJPf2v1mqQ7KsPUyCAXn2+NUQ/weLe0N3ZZrOo/HbL1sDeFxcxONRU3088hFb
-	SWCiGkYNJq0NZESSj/qEyobgmtYmlnJ27Sjja3YBeYugFiTtS3+0QhOumn1L6GY1dldFABW1BPAOL
-	pezoRcXHFBNt5TTyjUF/CCRfwTw9hXZCy1dLaLf4nAeeKiBU2GNWNjM8AYHRpSmmKI+KJuCbCpt2q
-	i8wvocnamUA91R3/O6cRjumhiPyVqmTdMFxlcpUzdxfC5JbAzwYGmtSrg0y4pPlBrrXxEJJSkDsjq
-	AeV9GdmA==;
+	bh=ViiYTadCC5HwWfo1viya9cr0SKdI+RgvnHat1NQKGIA=; b=YPVoNG7vfHB1iWwTdB/1cFJyi1
+	XV3gPSZt2mReZ3yv5lEgNisLta4exUZEvBWzBsOk60a7QLEi0xiQLkDFyT3PAZYOtlC2LD0wneDhL
+	NFx78G9r65dQrGkP7N9EV5paxVX17NBdNtEJOTdVU+Pv7I9O3FCjICim++e8JSSPmzVSL83sagKux
+	1n7R3hMNLjtSkLdiF8SZzFpp0SgLgsQ7TEDVM3F4SLO5gQh1lnjmYZcvVFBju4MDvecuGs1QrB8pz
+	uywYg0zp7xso1JFB1gigTka3BiuM8PbktiGmdCAVj9dlb12U1hjIhRoXql4WO/Rv2dcMtX/r8EMvI
+	JYMUj6jg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBsd0-00000005uBl-2BK7;
-	Thu, 23 Oct 2025 10:33:06 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vBsd2-00000005uEC-0uxl;
+	Thu, 23 Oct 2025 10:33:08 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBscj-00000005tlU-0rZy;
-	Thu, 23 Oct 2025 10:32:50 +0000
+	id 1vBscp-00000005ttk-2hS9;
+	Thu, 23 Oct 2025 10:32:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=ViiYTadCC5HwWfo1viya9cr0SKdI+RgvnHat1NQKGIA=; b=jKrkbbMQtI72mLRfVqWjuBLGhD
+	5gdDnrtC7CH0TsH9ze0mZQk0F7/l2rdDpMoYOuseiSDsol31+Tq7m+5M1kGbfXb7YcpNsjKhXoN/n
+	/naIyhyNKPW7XdeKJIe8aPSWhY39UpwgBskkc4M9VG0yYzZy2xsNx3tT8xv7pDCP3fhHPPOagYDQ2
+	Zph/t2pwlFRR/2W9AnZaWldp7e54Od5IeNsoIeUqgfEEs62gbNdNyhVl+8LEMJSEpGQ+zP9CH9Ry1
+	B7Xlr5sYZSpVesMAY7fhJB1Hnv4ZMvBJd4jzG45tHBKDbyQE4Fp1pTuIFuqqkzkUROl16fHJsEvme
+	OGQJyT8w==;
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vBrl3-00000001FVV-20BC;
+	Thu, 23 Oct 2025 09:37:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1761215566;
-	bh=pshY6UD8UkjtnkzdR6DQu8EZEgj8tUqCQiyiG5CEPC0=;
+	s=mail; t=1761215564;
+	bh=MQSK8eGfZb88NZ3j7UoADOEH321wqDKatMU6JULsmYg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=e+UDP96wsXrRefn9+r4v66E5EEWev8+78TXxxGBkWC91zFwEwMXoO46du0PRXrCtT
-	 Z1KpnNE2SuzchyAmauc0wkW72SQIlDJGnYjBByOtfYZpIne+qjyqc/Hoy2ordEkX1m
-	 DuEXoHBZcnd53nkNYB5+atAIccUZTFagsh8VGqkaMS0VxX873HgUiZPmi7lWwLXwg/
-	 UQayhlv75ZQOQxsmCTsJZB5BHfhwdIgdDPBq80HrqMqnPDOlm4wGYHQQBBK9SS+4bG
-	 ffm36TLa9J8BZu0LLyT6zgUU22y+gBO+Suqk1cqxOg+LReL0FYZQlGvXrRq8e0HkSu
-	 OKMd61yuB5QSA==
+	b=n44EJIIXeMlyRQO6GFwEtVAy8Yqx1E20uEFWIFb0rzsgl5roh3hbVOAH9ELifEV6c
+	 ufEoQxe41PfutgWhOjKD4Q4SSFVvhiJn9ff6SiruK3S2jlg081k1UZnzdk0gVPED9M
+	 KzYfw5bRFrAflxpPWTJ5hFpvE6zdeIu6+xP6WGjZJ6V6b46+NOpLsWbXk8FNOM6h23
+	 6JY5DC/8UExUyoUQv6tFwMm5z57xt9y86TFgIyqG1TdqiZAWrpjSM3uf9iapVnWRDB
+	 0m9rJXx0BWw8kxqtb/nnutlB3XYI8GBtoHeVdtOX36LWy66GyAJKf/L3AtC1KV82nD
+	 pyHu3DemrpGcA==
 Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 06BD517E130E;
-	Thu, 23 Oct 2025 12:32:45 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E3BDC17E0CF8;
+	Thu, 23 Oct 2025 12:32:43 +0200 (CEST)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Thu, 23 Oct 2025 12:32:37 +0200
-Subject: [PATCH v11 11/11] drm/mediatek: mtk_hdmi_common: Defer probe when
- ddc i2c bus isn't available yet
+Date: Thu, 23 Oct 2025 12:32:34 +0200
+Subject: [PATCH v11 08/11] drm/mediatek: mtk_hdmi_common: Add var to enable
+ interlaced modes
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251023-mediatek-drm-hdmi-v2-v11-11-7873ec4a1edf@collabora.com>
+Message-Id: <20251023-mediatek-drm-hdmi-v2-v11-8-7873ec4a1edf@collabora.com>
 References: <20251023-mediatek-drm-hdmi-v2-v11-0-7873ec4a1edf@collabora.com>
 In-Reply-To: <20251023-mediatek-drm-hdmi-v2-v11-0-7873ec4a1edf@collabora.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
@@ -60,19 +74,20 @@ To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
  CK Hu <ck.hu@mediatek.com>
 Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, Sjoerd Simons <sjoerd@collabora.com>, 
+ linux-arm-kernel@lists.infradead.org, 
  Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1761215558; l=1178;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1761215558; l=1712;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=XsbE4tQJMGMBoAPaEfkaTGz6CyRspYxpULZRAhEc9HA=;
- b=jHM0DXftZ9YMARvOzCYpGBWDuH2Gl+WcZOe8zgOOBXZj0LbZwiNoPP8jG7o0e7V6ye5TA6qQj
- Wu0IGEORKtODCLQe9XLRzDcChlVB5986WcjTgjzDojSzICaeSxWYlmv
+ bh=ooyxyCrBJchtLibasSNhjEb1Q7PQIVAYDmD7Jp6t8XU=;
+ b=KzQIqWedLyDZ6Bpa5QjWOcBPAqPgH0S4OcFpdkTeChXSy7obIj2+73rcLMaUNKtfechrnP/6c
+ nmsyG145JWSB/WLcAVhELKoxnAjG2WeuiDd7kBvpdDiP58ZgyuAlUba
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251023_033249_419307_980AA89C 
-X-CRM114-Status: GOOD (  11.65  )
+X-CRM114-CacheID: sfid-20251023_103722_548069_708281B3 
+X-CRM114-Status: UNSURE (   9.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,31 +102,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sjoerd Simons <sjoerd@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-The i2c adapter for ddc might not be available yet due to e.g. its
-module not yet being loaded. To handle that defer probing rather then
-returning a fatal error when probing.
+Add an interlace_allowed bool member to struct mtk_hdmi_ver_conf
+which will be used to signal whether interlaced modes are supported
+by the bridge (in our case, the HDMI IP), and enable it for HDMIv2.
 
-Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- drivers/gpu/drm/mediatek/mtk_hdmi_common.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/gpu/drm/mediatek/mtk_hdmi_common.c | 1 +
+ drivers/gpu/drm/mediatek/mtk_hdmi_common.h | 1 +
+ 2 files changed, 2 insertions(+)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_common.c b/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
-index 9cd7add3dd949e2920c876f7bcf990350c42d215..73b1c012aaa8a27168867c515e1d006c88dfff54 100644
+index be63f33d39bfd4625a5f1edd83c873cc20ac0018..38986ab61795c22b5b0659ad2ca258b923034a34 100644
 --- a/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
 +++ b/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
-@@ -319,7 +319,7 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi, struct platform_device
- 	hdmi->ddc_adpt = of_find_i2c_adapter_by_node(i2c_np);
- 	of_node_put(i2c_np);
- 	if (!hdmi->ddc_adpt)
--		return dev_err_probe(dev, -EINVAL, "Failed to get ddc i2c adapter by node\n");
-+		return dev_err_probe(dev, -EPROBE_DEFER, "Failed to get ddc i2c adapter by node\n");
+@@ -421,6 +421,7 @@ struct mtk_hdmi *mtk_hdmi_common_probe(struct platform_device *pdev)
+ 	hdmi->bridge.ddc = hdmi->ddc_adpt;
+ 	hdmi->bridge.vendor = "MediaTek";
+ 	hdmi->bridge.product = "On-Chip HDMI";
++	hdmi->bridge.interlace_allowed = ver_conf->interlace_allowed;
  
- 	ret = mtk_hdmi_get_cec_dev(hdmi, dev, np);
- 	if (ret == -ENOTSUPP)
+ 	ret = devm_drm_bridge_add(dev, &hdmi->bridge);
+ 	if (ret)
+diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_common.h b/drivers/gpu/drm/mediatek/mtk_hdmi_common.h
+index d3de8afff40f2b1a16e87b157859c04109b6da9f..38d1bdf4c77e4f6684473abec0e8c1e6ddc7db0f 100644
+--- a/drivers/gpu/drm/mediatek/mtk_hdmi_common.h
++++ b/drivers/gpu/drm/mediatek/mtk_hdmi_common.h
+@@ -131,6 +131,7 @@ struct mtk_hdmi_ver_conf {
+ 	const struct hdmi_codec_ops *codec_ops;
+ 	const char * const *mtk_hdmi_clock_names;
+ 	int num_clocks;
++	bool interlace_allowed;
+ };
+ 
+ struct mtk_hdmi_conf {
 
 -- 
 2.51.0
