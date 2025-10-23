@@ -4,83 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A0CDCCD193
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Oct 2025 06:39:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27178CCD1BC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Oct 2025 09:59:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yn/i3Rs0xkI8Xb79tZJqUhTZtrKG9UQVJnW4wyHYOys=; b=IfRSThB89hDKbsd2z6f00xioDc
-	Xqi45M7lVO5QC4FeHtXY1hgvpb5WhQpat6xFAIKQAjDlbyaNz63we1+QtkIPZitCoNiCt8IeLw43Y
-	FMAH9SKPRfANcwrVdl1rn8yLrp9AVIKK36qCv3aBU/HyU+iTZXiWbqbvwhcNPJXMS+jAOOsWJy2XU
-	tz877uQlrB6199WV4wK2Y/MUMIUdaDyaA49GvyqDiaDFVSfQzLBbCF9evlDA0BVj5ypVM5Qw5DAnI
-	IPAHyXxWDl/AkonLLGdIe+snjTZ6SZIAtayOp7EVmKjwcFHg1k+WmQrYN1m7Xb4howmrEPFMiwdtg
-	zSyg5Y+g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XcwbHYiAIGZIzvSTp0iJ89Hg66PnZT/SibdHL8lPVQ0=; b=ktStDUOjQ7Jd4R85dY9cLq0rxs
+	dFYtFQEz9xSLq3oVYet6lMDix1dMbWozPctHJmS6kJfNEvB4C2R6VCpEHPvfYHQ6KYPYl5wZ0QdCq
+	fyOk/qHziM/SNWdBwFVFjuQurWsc8+fI5PDoGIMJqMegNDUpFJUIOGQgAcIsbQRS58pxiRgWXasX3
+	CUngOkIq8CHlEvNxQvYJ1VRs7vrx+wKLVywJDW5/SQWhVqyceyOjWf9hBQ7XxZUNDsGy7BOtLBvT4
+	NmE4zukCXUJvgyi98DjK1Yfaz7lCtWpNqWoA0aa/pQLt9HtWdMgNA2ahSiGyDZZ/HrFMMdSW8DDe7
+	RHDeYtMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBoyx-00000005EVV-13n2;
-	Thu, 23 Oct 2025 06:39:31 +0000
-Received: from mgamail.intel.com ([198.175.65.9])
+	id 1vBs69-00000005oEg-3TK8;
+	Thu, 23 Oct 2025 09:59:09 +0000
+Received: from mgamail.intel.com ([192.198.163.13])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBoyt-00000005EV6-309N
-	for linux-mediatek@lists.infradead.org;
-	Thu, 23 Oct 2025 06:39:30 +0000
+	id 1vBs66-00000005oDz-1GqE;
+	Thu, 23 Oct 2025 09:59:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1761201568; x=1792737568;
-  h=message-id:date:mime-version:subject:to:cc:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=IjoIJ46m5G2Srg/5nswfnJndfZbxt7ecWzpQzMbgZhE=;
-  b=FN+QP+0PB9yxc6qReh4G8jLyAu3AIuyT3duDNKckPs2TLdTE/LxRDDmr
-   JggDsAPjlulO1ACNiUaP9viRxZa0JTj5wlvrsME1HjGo37FyII2X1ZT02
-   Ko4+pfSpRd48P369gv4kVpawnmTj+ISEdRGAPtIZglsFBLE3I4XrBOrKG
-   kefahukNqqqgKmK1SPmS76sC7dDpcu5y5FZ9q99kIedu7p5iLuizWgwGd
-   F45ZgfmKmdz49S5fNEnHbX1uGlAJ54uhRURsxNNO0c4wwWoD0HToAeMIY
-   lNTFuyZrUGAbSBTjskuFZDlKEoPO4IijrmP1XS4q+tqLegTP1a/+4lEoa
-   Q==;
-X-CSE-ConnectionGUID: MJZAEj0WQJqRWNrWgQBoKg==
-X-CSE-MsgGUID: L+QG1cN9RAaSTFOex+4blg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11586"; a="85985737"
+  t=1761213546; x=1792749546;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=/1vXsibgr0QCdKMz0q52WspRgykJNsKRvxsy7+LuE3Q=;
+  b=YHSiU6tS+Ik7KjEsX1hOy9GluHe7lhCe3vW50CSvY3IPGg8jPfuiBl62
+   S7ZnTV1wBnqbZHRZtI6joU6j1q7CvTdbmOg9OmoefKw8aqGrjXY4V9qty
+   5t2zhcM5txUvJ7n3gYmQQvDkCuxxxNdiT9fODFnaeL+7Nql4MaltF2Fre
+   stsMbUwK92Yyx28yFlaX/nCNZwVjCBUZvrrwBwa+u9pRPUpEiaIK5yVpa
+   5mwwf0cISu+tYWgK4pLj6vDqFRLh/C1oWU+k6OhcWqURh9Jbe+ktCfKIK
+   faDtOUl3yMZxw3AWTceN3gdGXtTU5Nc83VR5Hm6LbpMpZjWUQzbP1Ap3f
+   g==;
+X-CSE-ConnectionGUID: UdOrSeDdSW6cU7v4ymwXlg==
+X-CSE-MsgGUID: U65TqGeNTEaE+Zo/pjVXmA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11586"; a="65994421"
 X-IronPort-AV: E=Sophos;i="6.19,249,1754982000"; 
-   d="scan'208";a="85985737"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Oct 2025 23:39:26 -0700
-X-CSE-ConnectionGUID: eWAiBujDR8uX1nRj9EuO5A==
-X-CSE-MsgGUID: Y3Ll4AUfSEu+xoBLv0ZhRQ==
+   d="scan'208";a="65994421"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+  by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Oct 2025 02:59:05 -0700
+X-CSE-ConnectionGUID: pe5qV8bDShWuRejZV4mvYw==
+X-CSE-MsgGUID: 9f8M9NSnQFetHxslRmvHIA==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.19,249,1754982000"; 
-   d="scan'208";a="184849576"
-Received: from carterle-desk.ger.corp.intel.com (HELO [10.245.246.145]) ([10.245.246.145])
-  by fmviesa010-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Oct 2025 23:39:22 -0700
-Message-ID: <a464eb64-4c07-41d0-989a-bdc9eaae9acf@linux.intel.com>
-Date: Thu, 23 Oct 2025 09:39:28 +0300
+   d="scan'208";a="221308724"
+Received: from lkp-server02.sh.intel.com (HELO 66d7546c76b2) ([10.239.97.151])
+  by orviesa001.jf.intel.com with ESMTP; 23 Oct 2025 02:59:02 -0700
+Received: from kbuild by 66d7546c76b2 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1vBs5s-000DKh-1R;
+	Thu, 23 Oct 2025 09:58:55 +0000
+Date: Thu, 23 Oct 2025 17:58:39 +0800
+From: kernel test robot <lkp@intel.com>
+To: Dan Carpenter <error27@gmail.com>,
+	Bjorn Andersson <andersson@kernel.org>
+Cc: oe-kbuild-all@lists.linux.dev,
+	Mathieu Poirier <mathieu.poirier@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-remoteproc@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
+Subject: Re: [PATCH] remoteproc: mtk_scp:  remove unnecessary checking
+Message-ID: <202510231714.dlrsh9El-lkp@intel.com>
+References: <aPi6eBlFLH43A4C0@stanley.mountain>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] ASoC: SOF: Fix function topology name check in profile
- info output
-To: Chen-Yu Tsai <wenst@chromium.org>, Liam Girdwood <lgirdwood@gmail.com>,
- Bard Liao <yung-chuan.liao@linux.intel.com>,
- Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
- Daniel Baluta <daniel.baluta@nxp.com>,
- Kai Vehmanen <kai.vehmanen@linux.intel.com>,
- Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
- Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>
-Cc: sound-open-firmware@alsa-project.org, linux-sound@vger.kernel.org,
- linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-mediatek@lists.infradead.org
-References: <20251023061226.1127345-1-wenst@chromium.org>
-From: =?UTF-8?Q?P=C3=A9ter_Ujfalusi?= <peter.ujfalusi@linux.intel.com>
-Content-Language: en-US
-In-Reply-To: <20251023061226.1127345-1-wenst@chromium.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <aPi6eBlFLH43A4C0@stanley.mountain>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251022_233927_965331_82D48AE2 
-X-CRM114-Status: GOOD (  16.94  )
+X-CRM114-CacheID: sfid-20251023_025906_353653_317B9F73 
+X-CRM114-Status: GOOD (  12.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,58 +92,93 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Dan,
+
+kernel test robot noticed the following build warnings:
+
+[auto build test WARNING on remoteproc/rproc-next]
+[also build test WARNING on next-20251023]
+[cannot apply to linus/master v6.18-rc2]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Dan-Carpenter/remoteproc-mtk_scp-remove-unnecessary-checking/20251022-200619
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/remoteproc/linux.git rproc-next
+patch link:    https://lore.kernel.org/r/aPi6eBlFLH43A4C0%40stanley.mountain
+patch subject: [PATCH] remoteproc: mtk_scp:  remove unnecessary checking
+config: arm-randconfig-003-20251023 (https://download.01.org/0day-ci/archive/20251023/202510231714.dlrsh9El-lkp@intel.com/config)
+compiler: arm-linux-gnueabi-gcc (GCC) 8.5.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20251023/202510231714.dlrsh9El-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202510231714.dlrsh9El-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+   drivers/remoteproc/mtk_scp.c: In function 'scp_rproc_init':
+>> drivers/remoteproc/mtk_scp.c:1130:56: warning: '%1d' directive output may be truncated writing between 1 and 10 bytes into a region of size 2 [-Wformat-truncation=]
+      snprintf(scp_fw_file, ARRAY_SIZE(scp_fw_file), "scp_c%1d", core_id);
+                                                           ^~~
+   drivers/remoteproc/mtk_scp.c:1130:50: note: directive argument in the range [0, 1073741824]
+      snprintf(scp_fw_file, ARRAY_SIZE(scp_fw_file), "scp_c%1d", core_id);
+                                                     ^~~~~~~~~~
+   drivers/remoteproc/mtk_scp.c:1130:3: note: 'snprintf' output between 7 and 16 bytes into a destination of size 7
+      snprintf(scp_fw_file, ARRAY_SIZE(scp_fw_file), "scp_c%1d", core_id);
+      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-On 23/10/2025 09:12, Chen-Yu Tsai wrote:
-> The function topology feature, and the plat_data->machine field that
-> specifies this feature, is ACPI specific. The check didn't take this
-> into consideration, which causes a NULL pointer dereference splat on
-> OF platforms:
-> 
->     BUG: KASAN: null-ptr-deref in sof_create_ipc_file_profile (sound/soc/sof/fw-file-profile.c:291 sound/soc/sof/fw-file-profile.c:340) snd_sof
->     Read of size 8 at addr 00000000000000c8 by task (udev-worker)/247
-> 
->     CPU: 7 UID: 0 PID: 247 Comm: (udev-worker) Not tainted 6.18.0-rc2-next-20251023-03804-g93b191bc0c26-dirty #747 PREEMPT  ba3c303a11d89508de4087cb5b4f8985b6d87b6f
->     Hardware name: Google Ciri sku2 board (DT)
->     Call trace:
->     [KASAN stuff]
->     sof_create_ipc_file_profile (sound/soc/sof/fw-file-profile.c:291 sound/soc/sof/fw-file-profile.c:340) snd_sof
->     snd_sof_device_probe (sound/soc/sof/core.c:304 sound/soc/sof/core.c:388 sound/soc/sof/core.c:460 sound/soc/sof/core.c:719) snd_sof
->     sof_of_probe (sound/soc/sof/sof-of-dev.c:84) snd_sof_of
->      platform_probe (drivers/base/platform.c:1405)
->     [...]
-> 
-> Check that the ACPI specific field is actually valid before accessing
-> it.
-> 
-> This was seen on a MediaTek based Chromebook.
+vim +1130 drivers/remoteproc/mtk_scp.c
 
-Acked-by: Peter Ujfalusi <peter.ujfalusi@linux.intel.com>
-
-> 
-> Fixes: 2b92b98cc476 ("ASoC: SOF: Don't print the monolithic topology name if function topology may be used")
-> Cc: Bard Liao <yung-chuan.liao@linux.intel.com>
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> ---
->  sound/soc/sof/fw-file-profile.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/sound/soc/sof/fw-file-profile.c b/sound/soc/sof/fw-file-profile.c
-> index 4a2afc04f338..76bde2e0be1d 100644
-> --- a/sound/soc/sof/fw-file-profile.c
-> +++ b/sound/soc/sof/fw-file-profile.c
-> @@ -288,7 +288,8 @@ static void sof_print_profile_info(struct snd_sof_dev *sdev,
->  	if (profile->fw_lib_path)
->  		dev_info(dev, " Firmware lib path: %s\n", profile->fw_lib_path);
->  
-> -	if (plat_data->machine->get_function_tplg_files && !plat_data->disable_function_topology)
-> +	if (plat_data->machine && plat_data->machine->get_function_tplg_files &&
-> +	    !plat_data->disable_function_topology)
->  		dev_info(dev, " Topology file:     function topologies\n");
->  	else
->  		dev_info(dev, " Topology file:     %s/%s\n",
+  1096	
+  1097	/**
+  1098	 * scp_get_default_fw_path() - Get default SCP firmware path
+  1099	 * @dev:     SCP Device
+  1100	 * @core_id: SCP Core number
+  1101	 *
+  1102	 * This function generates a path based on the following format:
+  1103	 *     mediatek/(soc_model)/scp(_cX).img; for multi-core or
+  1104	 *     mediatek/(soc_model)/scp.img for single core SCP HW
+  1105	 *
+  1106	 * Return: A devm allocated string containing the full path to
+  1107	 *         a SCP firmware or an error pointer
+  1108	 */
+  1109	static const char *scp_get_default_fw_path(struct device *dev, int core_id)
+  1110	{
+  1111		struct device_node *np = core_id < 0 ? dev->of_node : dev->parent->of_node;
+  1112		const char *compatible, *soc;
+  1113		char scp_fw_file[7];
+  1114		int ret;
+  1115	
+  1116		/* Use only the first compatible string */
+  1117		ret = of_property_read_string_index(np, "compatible", 0, &compatible);
+  1118		if (ret)
+  1119			return ERR_PTR(ret);
+  1120	
+  1121		/* If the compatible string's length is implausible bail out early */
+  1122		if (strlen(compatible) < strlen("mediatek,mtXXXX-scp"))
+  1123			return ERR_PTR(-EINVAL);
+  1124	
+  1125		/* If the compatible string starts with "mediatek,mt" assume that it's ok */
+  1126		if (!str_has_prefix(compatible, "mediatek,mt"))
+  1127			return ERR_PTR(-EINVAL);
+  1128	
+  1129		if (core_id >= 0)
+> 1130			snprintf(scp_fw_file, ARRAY_SIZE(scp_fw_file), "scp_c%1d", core_id);
+  1131		else
+  1132			snprintf(scp_fw_file, ARRAY_SIZE(scp_fw_file), "scp");
+  1133	
+  1134		/* Not using strchr here, as strlen of a const gets optimized by compiler */
+  1135		soc = &compatible[strlen("mediatek,")];
+  1136	
+  1137		return devm_kasprintf(dev, GFP_KERNEL, "mediatek/%.*s/%s.img",
+  1138				      (int)strlen("mtXXXX"), soc, scp_fw_file);
+  1139	}
+  1140	
 
 -- 
-Péter
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
