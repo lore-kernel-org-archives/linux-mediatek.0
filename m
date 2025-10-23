@@ -4,79 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FEC4CCD1BC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Oct 2025 11:09:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21A3ECCD1BE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Oct 2025 11:24:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=svHe049nif8miK4UiQLof62m/NP+mspBHCm2T/LeDdY=; b=dxxeh9JHNp52nL2qGNzN2ktLBE
-	GcKHjWLYcB4gUSdFNSPoI5UhCVTwH1Lk/6eSKGiqtzI6IUfJHwf4OJH/WdaLa5fVHflJ0EeLGkNYv
-	WRZm++Vi4BzP2meuQ437+7++n51BvoxoGk3ELvQOrVDk/gLCOMvwMbgxXl8fE6cR0VnJC/CsKGiSo
-	AMf4dECgi/TbuaTEWViqmv7Y4Sw1xHEVSF6j5Ivm6rhnS/WzVXtK7Z+zy7zPNhKlETXju22LFbkcZ
-	QwsTtXw2vn7OztpJ732t16pn3gVxv9gNh0j2PhAEWLLVzdGTBXveqAPrj/vCXr7BAJ7P4VdfWm9i4
-	EzIMzWzA==;
+	bh=W5YmQwWJk3Qgo+/GyIGBufgNDE7itOMKNlYxi+cxfTA=; b=smTT5jzUKflAhJ03huyFAWpRua
+	7YhvsgZLIQ1DjwFoCQdVNQhttYgG6pjTgmmWii5Ux5jgiLBuG3LzvcikJugPe4sPa4VNIa8419UjX
+	PZE9e2NER4aUWmvrAoTEARUQ7M2IaCko3HhNKr3GlSQqKEbwYwkhlt/9O8yagXnwpE8OOdwU45d6P
+	4MFBkxg+V82kfZIypFKhPAuQxOdY31dKTRKwJe9b6YV746YErgMVV06vSxKGlUYMNV+SG3Exq7iEb
+	8DGE09ZsVxOwN5sd/kcxz4VqTttwtTTDS09qhDP7njQAO12kzhphCZVXKP8IX8UGjjxkWXKh5zIKj
+	+vsAzAag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBtCP-000000061Hf-3vt6;
-	Thu, 23 Oct 2025 11:09:41 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBtCM-000000061GO-1uMc;
-	Thu, 23 Oct 2025 11:09:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1761217775;
-	bh=whx3qauetCaL8L4L/j6vIJhu8Al6aBGqgPVGr7Y+0y4=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=DYxOP7Y98ENygjBbGy1cxfywA2ToT7ntiDye2btmfJLFQ9t4f0bh3I+180vRpleYa
-	 mBzJRPPPkvd2nnt4SUBL9NSGmlE6hFBiXCEiz1AhStX9y0HFYIiI1YVYoZlu7zxnlR
-	 mCXHkxr6maqOiBMlzVGCtQuL18faF0Jd5RSfUdngZTzoBgpc4ghtu7QUhz3xTwtj7j
-	 /EEMaHYVzs4gyMvly/5/ae+Y/I08BVIPvtLaZo+xvCnkfqVhWdiGzDcDu67wWIAIXL
-	 UXRW4Nyt8UdJFTX2KXOeF5ljn/DHtt1AU+n/EPNMiDMofwzYmnzrbLGpl7VbPZDsVs
-	 mrRwaQ4PyG5Sw==
-Received: from laura.lan (unknown [IPv6:2001:b07:646b:e2:6ab:9c26:3ff9:9bf9])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: laura.nao)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7498817E00B0;
-	Thu, 23 Oct 2025 13:09:34 +0200 (CEST)
-From: Laura Nao <laura.nao@collabora.com>
-To: frank-w@public-files.de
-Cc: angelogioacchino.delregno@collabora.com,
-	conor+dt@kernel.org,
-	daniel@makrotopia.org,
-	devicetree@vger.kernel.org,
-	guangjie.song@mediatek.com,
-	kernel@collabora.com,
-	krzk+dt@kernel.org,
-	laura.nao@collabora.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-clk@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	matthias.bgg@gmail.com,
-	mturquette@baylibre.com,
-	netdev@vger.kernel.org,
-	p.zabel@pengutronix.de,
-	richardcochran@gmail.com,
-	robh@kernel.org,
-	sboyd@kernel.org,
-	wenst@chromium.org
-Subject: Re: issue with [PATCH v6 06/27] clk: mediatek: clk-gate: Refactor mtk_clk_register_gate to use mtk_gate struct
-Date: Thu, 23 Oct 2025 13:09:22 +0200
-Message-Id: <20251023110922.186619-1-laura.nao@collabora.com>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <trinity-00d61a0e-40f3-449d-814a-eccd621b4665-1760291406778@trinity-msg-rest-gmx-gmx-live-ddd79cd8f-fsr29>
-References: <trinity-00d61a0e-40f3-449d-814a-eccd621b4665-1760291406778@trinity-msg-rest-gmx-gmx-live-ddd79cd8f-fsr29>
+	id 1vBtQT-000000064bI-0t8o;
+	Thu, 23 Oct 2025 11:24:13 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vBtQQ-000000064ak-1wXf;
+	Thu, 23 Oct 2025 11:24:12 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id BDFE31516;
+	Thu, 23 Oct 2025 04:23:59 -0700 (PDT)
+Received: from [10.57.36.157] (unknown [10.57.36.157])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 30F673F63F;
+	Thu, 23 Oct 2025 04:24:04 -0700 (PDT)
+Message-ID: <d594cdf2-5aab-4539-8d44-f7e57770df72@arm.com>
+Date: Thu, 23 Oct 2025 12:24:01 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/3] iommu: Allow drivers to say if they use
+ report_iommu_fault()
+To: Jason Gunthorpe <jgg@nvidia.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Christian Benvenuti <benve@cisco.com>, Heiko Stuebner <heiko@sntech.de>,
+ iommu@lists.linux.dev, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Joerg Roedel <joro@8bytes.org>, Leon Romanovsky <leon@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-rdma@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Nelson Escobar <neescoba@cisco.com>, Rob Clark
+ <robin.clark@oss.qualcomm.com>, Samuel Holland <samuel@sholland.org>,
+ Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+ Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>,
+ Yong Wu <yong.wu@mediatek.com>
+Cc: patches@lists.linux.dev
+References: <3-v1-391058a85f30+14b-iommu_set_fault_jgg@nvidia.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Content-Language: en-GB
+In-Reply-To: <3-v1-391058a85f30+14b-iommu_set_fault_jgg@nvidia.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251023_040938_828127_420F54B2 
-X-CRM114-Status: GOOD (  25.11  )
+X-CRM114-CacheID: sfid-20251023_042410_601983_5B4081C2 
+X-CRM114-Status: GOOD (  25.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,120 +76,183 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Frank,
+On 2025-10-22 6:12 pm, Jason Gunthorpe wrote:
+> report_iommu_fault() is an older API that has been superseded by
+> iommu_report_device_fault() which is capable to support PRI.
+> 
+> Only two external drivers consume this, drivers/remoteproc and
+> drivers/gpu/drm/msm. Ideally they would move over to the new APIs, but for
+> now protect against accidentally mix and matching the wrong components.
+> 
+> The iommu drivers support either the old iommu_set_fault_handler() via the
+> driver calling report_iommu_fault(), or they are newer server focused
+> drivers that call iommu_report_device_fault().
+> 
+> Include a flag in the domain_ops if it calls report_iommu_fault() and
+> block iommu_set_fault_handler() on iommu's that can't support it.
 
-On 10/12/25 19:50, Frank Wunderlich wrote:
-> Hi,
->
-> this patch seems to break at least the mt7987 device i'm currently working on with torvalds/master + a bunch of some patches for mt7987 support.
->
-> if i revert these 2 commits my board works again:
->
-> Revert "clk: mediatek: clk-gate: Refactor mtk_clk_register_gate to use mtk_gate struct" => 8ceff24a754a
-> Revert "clk: mediatek: clk-gate: Add ops for gates with HW voter"
->
-> if i reapply the first one (i had to revert the second before), it is broken again.
->
-> I have seen no changes to other clock drivers in mtk-folder. Mt7987 clk driver is not upstream yet, maybe you can help us changing this driver to work again.
->
-> this is "my" commit adding the mt7987 clock driver...
->
-> https://github.com/frank-w/BPI-Router-Linux/commit/7480615e752dee7ea9e60dfaf31f39580b4bf191
->
-> start of trace (had it sometimes with mmc or spi and a bit different with 2p5g phy, but this is maybe different issue):
->
-> [    5.593308] Unable to handle kernel paging request at virtual address ffffffc081371f88
-> [    5.593322] Mem abort info:
-> [    5.593324]   ESR = 0x0000000096000007
-> [    5.593326]   EC = 0x25: DABT (current EL), IL = 32 bits
-> [    5.593329]   SET = 0, FnV = 0
-> [    5.593331]   EA = 0, S1PTW = 0
-> [    5.593333]   FSC = 0x07: level 3 translation fault
-> [    5.593336] Data abort info:
-> [    5.593337]   ISV = 0, ISS = 0x00000007, ISS2 = 0x00000000
-> [    5.593340]   CM = 0, WnR = 0, TnD = 0, TagAccess = 0
-> [    5.593343]   GCS = 0, Overlay = 0, DirtyBit = 0, Xs = 0
-> [    5.593345] swapper pgtable: 4k pages, 39-bit VAs, pgdp=0000000045294000
-> [    5.593349] [ffffffc081371f88] pgd=1000000045a7f003, p4d=1000000045a7f003, pud=1000000045a7f003, pmd=1000000045a82003, pte=0000000000000000
-> [    5.593364] Internal error: Oops: 0000000096000007 [#1]  SMP
-> [    5.593369] Modules linked in:
-> [    5.593375] CPU: 0 UID: 0 PID: 1570 Comm: udevd Not tainted 6.17.0-bpi-r4 #7 NONE 
-> [    5.593381] Hardware name: Bananapi BPI-R4-LITE (DT)
-> [    5.593385] pstate: 204000c5 (nzCv daIF +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-> [    5.593390] pc : mtk_cg_enable+0x14/0x38
-> [    5.593404] lr : clk_core_enable+0x70/0x16c
-> [    5.593411] sp : ffffffc085853090
-> [    5.593413] x29: ffffffc085853090 x28: 0000000000000000 x27: ffffffc0800b82c4
-> [    5.593420] x26: ffffffc085853754 x25: 0000000000000004 x24: ffffff80001828f4
-> [    5.593426] x23: 0000000000000000 x22: ffffff80030620c0 x21: ffffff8007819580
-> [    5.593432] x20: 0000000000000000 x19: ffffff8000feee00 x18: 0000003e39f23000
-> [    5.593438] x17: ffffffffffffffff x16: 0000000000020000 x15: ffffff8002f590a0
-> [    5.593444] x14: ffffff800346e000 x13: 0000000000000000 x12: 0000000000000000
-> [    5.593450] x11: 0000000000000001 x10: 0000000000000000 x9 : 0000000000000000
-> [    5.593455] x8 : ffffffc085853528 x7 : 0000000000000000 x6 : 0000000000002c01
-> [    5.593461] x5 : ffffffc080858794 x4 : 0000000000000014 x3 : 0000000000000001
-> [    5.593467] x2 : 0000000000000000 x1 : ffffffc081371f70 x0 : ffffff8001028c00
-> [    5.593473] Call trace:
-> [    5.593476]  mtk_cg_enable+0x14/0x38 (P)
-> [    5.593484]  clk_core_enable+0x70/0x16c
-> [    5.593490]  clk_enable+0x28/0x54
-> [    5.593496]  mtk_spi_runtime_resume+0x84/0x174
-> [    5.593506]  pm_generic_runtime_resume+0x2c/0x44
-> [    5.593513]  __rpm_callback+0x40/0x228
-> [    5.593521]  rpm_callback+0x38/0x80
-> [    5.593527]  rpm_resume+0x590/0x774
-> [    5.593533]  __pm_runtime_resume+0x5c/0xcc
-> [    5.593539]  spi_mem_access_start.isra.0+0x38/0xdc
-> [    5.593545]  spi_mem_exec_op+0x40c/0x4e0
->
-> it is not clear for me, how to debug further as i have different clock drivers (but i guess either the infracfg is the right).
-> maybe the critical-flag is not passed?
->
-> regards Frank
->
+This isn't a domain operation though; depending on how you look at it, 
+supporting a legacy fault_handler is either a capability of the IOMMU 
+driver (that would be reachable via domain->owner->capable) or a 
+property of the iommu_domain itself that the drivers can set at 
+allocation time (basically this same patch just with the lines in 
+slightly different places).
 
-Could you try adding some debug prints to help identify the specific 
-gate/gates causing the issue? It would be very helpful in narrowing 
-down the problem.
-
-A couple notes - I noticed that some mux-gate clocks have -1 assigned to 
-the _gate, _upd_ofs, and _upd unsigned int fields. Not sure this is 
-directly related to the crash above, but it’s something that should 
-be addressed regardless:
-
-MUX_GATE_CLR_SET_UPD(CLK_INFRA_MUX_UART0_SEL, "infra_mux_uart0_sel",
-		     infra_mux_uart0_parents, 0x0018, 0x0010, 0x0014,
-		     0, 1, -1, -1, -1),
-
-I think __initconst should also be removed from clocks that are used at 
-runtime. I’m not certain this is directly related to the issue, but I
-wanted to mention it in case it’s helpful.
-
-Best,
-
-Laura
-
->
->> Gesendet: Sonntag, 21. September 2025 um 18:53
->> Von: "Stephen Boyd" <sboyd@kernel.org>
->> An: "Laura Nao" <laura.nao@collabora.com>, angelogioacchino.delregno@collabora.com, conor+dt@kernel.org, krzk+dt@kernel.org, matthias.bgg@gmail.com, mturquette@baylibre.com, p.zabel@pengutronix.de, richardcochran@gmail.com, robh@kernel.org
->> CC: guangjie.song@mediatek.com, wenst@chromium.org, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, kernel@collabora.com, "Laura Nao" <laura.nao@collabora.com>
->> Betreff: Re: [PATCH v6 06/27] clk: mediatek: clk-gate: Refactor mtk_clk_register_gate to use mtk_gate struct
->>
->> Quoting Laura Nao (2025-09-15 08:19:26)
->>> MT8196 uses a HW voter for gate enable/disable control, with
->>> set/clr/sta registers located in a separate regmap. Refactor
->>> mtk_clk_register_gate() to take a struct mtk_gate, and add a pointer to
->>> it in struct mtk_clk_gate. This allows reuse of the static gate data
->>> (including HW voter register offsets) without adding extra function
->>> arguments, and removes redundant duplication in the runtime data struct.
->>>
->>> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
->>> Signed-off-by: Laura Nao <laura.nao@collabora.com>
->>> ---
->>
->> Applied to clk-next
->
-
+Thanks,
+Robin.
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> ---
+>   drivers/iommu/arm/arm-smmu/arm-smmu.c   | 1 +
+>   drivers/iommu/arm/arm-smmu/qcom_iommu.c | 1 +
+>   drivers/iommu/iommu.c                   | 6 +++++-
+>   drivers/iommu/ipmmu-vmsa.c              | 1 +
+>   drivers/iommu/mtk_iommu.c               | 1 +
+>   drivers/iommu/mtk_iommu_v1.c            | 1 +
+>   drivers/iommu/omap-iommu.c              | 1 +
+>   drivers/iommu/rockchip-iommu.c          | 1 +
+>   drivers/iommu/sun50i-iommu.c            | 1 +
+>   include/linux/iommu.h                   | 3 +++
+>   10 files changed, 16 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/iommu/arm/arm-smmu/arm-smmu.c b/drivers/iommu/arm/arm-smmu/arm-smmu.c
+> index 4ced4b5bee4df3..5ce8f82ddb534b 100644
+> --- a/drivers/iommu/arm/arm-smmu/arm-smmu.c
+> +++ b/drivers/iommu/arm/arm-smmu/arm-smmu.c
+> @@ -1644,6 +1644,7 @@ static const struct iommu_ops arm_smmu_ops = {
+>   	.def_domain_type	= arm_smmu_def_domain_type,
+>   	.owner			= THIS_MODULE,
+>   	.default_domain_ops = &(const struct iommu_domain_ops) {
+> +		.report_iommu_fault_supported = true,
+>   		.attach_dev		= arm_smmu_attach_dev,
+>   		.map_pages		= arm_smmu_map_pages,
+>   		.unmap_pages		= arm_smmu_unmap_pages,
+> diff --git a/drivers/iommu/arm/arm-smmu/qcom_iommu.c b/drivers/iommu/arm/arm-smmu/qcom_iommu.c
+> index c5be95e560317e..3163a23fcbaa4f 100644
+> --- a/drivers/iommu/arm/arm-smmu/qcom_iommu.c
+> +++ b/drivers/iommu/arm/arm-smmu/qcom_iommu.c
+> @@ -598,6 +598,7 @@ static const struct iommu_ops qcom_iommu_ops = {
+>   	.device_group	= generic_device_group,
+>   	.of_xlate	= qcom_iommu_of_xlate,
+>   	.default_domain_ops = &(const struct iommu_domain_ops) {
+> +		.report_iommu_fault_supported = true,
+>   		.attach_dev	= qcom_iommu_attach_dev,
+>   		.map_pages	= qcom_iommu_map,
+>   		.unmap_pages	= qcom_iommu_unmap,
+> diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
+> index 59244c744eabd2..34546a70fb5279 100644
+> --- a/drivers/iommu/iommu.c
+> +++ b/drivers/iommu/iommu.c
+> @@ -2005,6 +2005,9 @@ EXPORT_SYMBOL_GPL(iommu_group_has_isolated_msi);
+>    * This function should be used by IOMMU users which want to be notified
+>    * whenever an IOMMU fault happens.
+>    *
+> + * This is a legacy API not supported by all drivers. New users should look
+> + * to using domain->iopf_handler for the modern API.
+> + *
+>    * The fault handler itself should return 0 on success, and an appropriate
+>    * error code otherwise.
+>    */
+> @@ -2012,7 +2015,8 @@ void iommu_set_fault_handler(struct iommu_domain *domain,
+>   					iommu_fault_handler_t handler,
+>   					void *token)
+>   {
+> -	if (WARN_ON(!domain || domain->cookie_type != IOMMU_COOKIE_NONE))
+> +	if (WARN_ON(!domain || domain->cookie_type != IOMMU_COOKIE_NONE ||
+> +		    !domain->ops->report_iommu_fault_supported))
+>   		return;
+>   
+>   	domain->cookie_type = IOMMU_COOKIE_FAULT_HANDLER;
+> diff --git a/drivers/iommu/ipmmu-vmsa.c b/drivers/iommu/ipmmu-vmsa.c
+> index ffa892f6571406..770fa248e30477 100644
+> --- a/drivers/iommu/ipmmu-vmsa.c
+> +++ b/drivers/iommu/ipmmu-vmsa.c
+> @@ -885,6 +885,7 @@ static const struct iommu_ops ipmmu_ops = {
+>   			? generic_device_group : generic_single_device_group,
+>   	.of_xlate = ipmmu_of_xlate,
+>   	.default_domain_ops = &(const struct iommu_domain_ops) {
+> +		.report_iommu_fault_supported = true,
+>   		.attach_dev	= ipmmu_attach_device,
+>   		.map_pages	= ipmmu_map,
+>   		.unmap_pages	= ipmmu_unmap,
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index 0e0285348d2b8e..0f44993eaadce3 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -1019,6 +1019,7 @@ static const struct iommu_ops mtk_iommu_ops = {
+>   	.get_resv_regions = mtk_iommu_get_resv_regions,
+>   	.owner		= THIS_MODULE,
+>   	.default_domain_ops = &(const struct iommu_domain_ops) {
+> +		.report_iommu_fault_supported = true,
+>   		.attach_dev	= mtk_iommu_attach_device,
+>   		.map_pages	= mtk_iommu_map,
+>   		.unmap_pages	= mtk_iommu_unmap,
+> diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
+> index 10cc0b1197e801..279e7acfd5c6d3 100644
+> --- a/drivers/iommu/mtk_iommu_v1.c
+> +++ b/drivers/iommu/mtk_iommu_v1.c
+> @@ -582,6 +582,7 @@ static const struct iommu_ops mtk_iommu_v1_ops = {
+>   	.device_group	= generic_device_group,
+>   	.owner          = THIS_MODULE,
+>   	.default_domain_ops = &(const struct iommu_domain_ops) {
+> +		.report_iommu_fault_supported = true,
+>   		.attach_dev	= mtk_iommu_v1_attach_device,
+>   		.map_pages	= mtk_iommu_v1_map,
+>   		.unmap_pages	= mtk_iommu_v1_unmap,
+> diff --git a/drivers/iommu/omap-iommu.c b/drivers/iommu/omap-iommu.c
+> index 5c6f5943f44b1f..3f3193de3ecd86 100644
+> --- a/drivers/iommu/omap-iommu.c
+> +++ b/drivers/iommu/omap-iommu.c
+> @@ -1724,6 +1724,7 @@ static const struct iommu_ops omap_iommu_ops = {
+>   	.device_group	= generic_single_device_group,
+>   	.of_xlate	= omap_iommu_of_xlate,
+>   	.default_domain_ops = &(const struct iommu_domain_ops) {
+> +		.report_iommu_fault_supported = true,
+>   		.attach_dev	= omap_iommu_attach_dev,
+>   		.map_pages	= omap_iommu_map,
+>   		.unmap_pages	= omap_iommu_unmap,
+> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+> index 0861dd469bd866..0053f5aa2cb781 100644
+> --- a/drivers/iommu/rockchip-iommu.c
+> +++ b/drivers/iommu/rockchip-iommu.c
+> @@ -1174,6 +1174,7 @@ static const struct iommu_ops rk_iommu_ops = {
+>   	.device_group = generic_single_device_group,
+>   	.of_xlate = rk_iommu_of_xlate,
+>   	.default_domain_ops = &(const struct iommu_domain_ops) {
+> +		.report_iommu_fault_supported = true,
+>   		.attach_dev	= rk_iommu_attach_device,
+>   		.map_pages	= rk_iommu_map,
+>   		.unmap_pages	= rk_iommu_unmap,
+> diff --git a/drivers/iommu/sun50i-iommu.c b/drivers/iommu/sun50i-iommu.c
+> index de10b569d9a940..29b230050906a2 100644
+> --- a/drivers/iommu/sun50i-iommu.c
+> +++ b/drivers/iommu/sun50i-iommu.c
+> @@ -849,6 +849,7 @@ static const struct iommu_ops sun50i_iommu_ops = {
+>   	.of_xlate	= sun50i_iommu_of_xlate,
+>   	.probe_device	= sun50i_iommu_probe_device,
+>   	.default_domain_ops = &(const struct iommu_domain_ops) {
+> +		.report_iommu_fault_supported = true,
+>   		.attach_dev	= sun50i_iommu_attach_device,
+>   		.flush_iotlb_all = sun50i_iommu_flush_iotlb_all,
+>   		.iotlb_sync_map = sun50i_iommu_iotlb_sync_map,
+> diff --git a/include/linux/iommu.h b/include/linux/iommu.h
+> index c30d12e16473df..e2bf7885287fac 100644
+> --- a/include/linux/iommu.h
+> +++ b/include/linux/iommu.h
+> @@ -714,6 +714,8 @@ struct iommu_ops {
+>   
+>   /**
+>    * struct iommu_domain_ops - domain specific operations
+> + * @report_iommu_fault_supported: True if the domain supports
+> + *                                iommu_set_fault_handler()
+>    * @attach_dev: attach an iommu domain to a device
+>    *  Return:
+>    * * 0		- success
+> @@ -751,6 +753,7 @@ struct iommu_ops {
+>    * @free: Release the domain after use.
+>    */
+>   struct iommu_domain_ops {
+> +	bool report_iommu_fault_supported : 1;
+>   	int (*attach_dev)(struct iommu_domain *domain, struct device *dev);
+>   	int (*set_dev_pasid)(struct iommu_domain *domain, struct device *dev,
+>   			     ioasid_t pasid, struct iommu_domain *old);
 
