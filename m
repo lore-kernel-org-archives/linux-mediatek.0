@@ -4,69 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 569EFCCD1A5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Oct 2025 07:38:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33742CCD1AB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Oct 2025 08:32:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qMmgOl8ui4kNlXoOKvjsz68XoceROSQ0xrPWCtX2xuo=; b=aXBfzrusuuXfNFq0hmMk0sZKEO
-	aqyGOJd9R/55bMvaX7MspohliLXae8G5nhA7RK2mhg+jq6E5O12WcfVqN9PMT2A36vB9sB/mwMkYy
-	Kb6g7Kic+bs22AG13mBLx137BF384yOSm06m7de3bEFdWKFK+qdl3JN6xqvSuCY76DteMuVmhiH4k
-	mg1TDwMzfNHXgRAHuLhwWdGyZRoYewwuUVYqy1txpBvaNmKMvbMZ8RK8euDOsTsp1XUlkbmZvG7se
-	T9dNL+/9CMJ30va59TxUzV4ooutIM5PNK6JaJ00cJLlAlaTZL3bC5c8XlwGg48o77ZaGyrknHqTUp
-	qaWwGoNA==;
+	bh=ACyxMecizYW12J23tXuRIyhftReZ8PH9vxzdX/cHOv4=; b=U4Y932zEwxHOHWusxrOshrw7Fj
+	LfN7ZV2sgGbyE6JqB5Y0owUAPmCMyqbnAsQ7LIrL3qKbEJc+TM4WgRrva4frrwX6PGrR6eKipwBoI
+	TpLsS62hYyZ8m/A1mpvFyoLsF6tx0UJPkJvp2ZVRTMF72vV6J5VYBg+QOKDQyqfwd0R612F51weJg
+	6sy7h+n2JkxchOTY6lkRT2tI/tAevJ5GvWnuIzj+me+vVdTRqvftiglG9kTaoc2XNIgKbbF/BhHf4
+	5DiEb8b+QL56U6S3Jcb4NW29G+JiBacNtHWjWhscWshLY+ySmQuJM2zKB3y0Z6fmC+mIVE/TJ8XjB
+	fEXFU0qw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCCNM-00000008WyR-3aWJ;
-	Fri, 24 Oct 2025 07:38:16 +0000
+	id 1vCDE5-00000008gNy-3UxS;
+	Fri, 24 Oct 2025 08:32:45 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCCNK-00000008Wx8-2til;
-	Fri, 24 Oct 2025 07:38:15 +0000
+	id 1vCDE2-00000008gLg-1gpv;
+	Fri, 24 Oct 2025 08:32:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1761291492;
-	bh=4Q/i2AfvzaHtxQMuaNR55KE24+V/RETj+PZmgX0d3dE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=YWKvLEZT6CiFPTHQkO1X2YLgdN/fTq1eAbHAhmwIb+c/iRejgob+HFVQx1mRW4AN8
-	 cDUVqfiIK/RdX/Qe81kVBwFlouVoTFHcoT95e3tilRkG6wytUFhNDo6FoIShQQKKtQ
-	 +p1K/ibluWb5qz4pysDWtJ5HLrP04pbO+UGN7nRPBLpP6yFayf9PRmTVg7vEPXCZUz
-	 Y5CfZGQltutBrf5MhmDnoZ5PeMMkTqncscpUNGj0emKHgwOeEg1ltu4lC6IRf3dhDt
-	 3VWEg0BRp+oUhMwRaj5hTfrqU1hpvrWG+N3HIkkLLWlSjL9oDIc4FcF5sJuU9pvTB1
-	 rDu3zssv/uLWw==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	s=mail; t=1761294759;
+	bh=Xbh+qFQgQocth6/B470ZtHunlKrpzoudANOpCUxtQM8=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=mj3y1br7Pnos3rilPQ+XNWxD2cis82VD+DLhpSD841g2EcOVJxfzx1spFuPCfQEP+
+	 JYG8hdsPY7BnkE0s4HbPBTL16ouWZ+1NUUgYYpPIWnEYOQPzqdsEvcOSRDNZ3Yjel3
+	 l4hSsq4OHAtgJdqs8NyYZltb2BBvfx5BteJhAlhfsIcwL5LCnygsbByeki0dmC4LiB
+	 vgN+YK1cbOmv1Knvqh0FJP1GarY6WeWDSnepKazqd7ksxkJzTDXIaiVcHQLBqDnKxx
+	 0NQD38sSNeYukZcT0jIple+5mxUUiFLP3lyneHTFAdCw8LFM32vZ5NC9aPyr1/RCT+
+	 L3bEXUzEe/Wbw==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9B6A017E00AC;
-	Fri, 24 Oct 2025 09:38:11 +0200 (CEST)
-Message-ID: <8dbe85de-fc03-4b17-90ac-7b939a701a53@collabora.com>
-Date: Fri, 24 Oct 2025 09:38:11 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v11 09/11] drm/mediatek: Introduce HDMI/DDC v2 for
- MT8195/MT8188
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- CK Hu <ck.hu@mediatek.com>, kernel@collabora.com,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-References: <20251023-mediatek-drm-hdmi-v2-v11-0-7873ec4a1edf@collabora.com>
- <20251023-mediatek-drm-hdmi-v2-v11-9-7873ec4a1edf@collabora.com>
- <CAAOTY_9o-hHv5Lrd+EKX_mN2PXDC+ifoxSsR6bf6oJdD=N=46A@mail.gmail.com>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A731517E1310;
+	Fri, 24 Oct 2025 10:32:38 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <CAAOTY_9o-hHv5Lrd+EKX_mN2PXDC+ifoxSsR6bf6oJdD=N=46A@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: linux-mediatek@lists.infradead.org
+Cc: lee@kernel.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	lgirdwood@gmail.com,
+	broonie@kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com,
+	wenst@chromium.org,
+	igor.belwon@mentallysanemainliners.org
+Subject: [PATCH v10 1/9] dt-bindings: regulator: Document MediaTek MT6316 PMIC Regulators
+Date: Fri, 24 Oct 2025 10:32:13 +0200
+Message-ID: <20251024083221.25758-2-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.51.1
+In-Reply-To: <20251024083221.25758-1-angelogioacchino.delregno@collabora.com>
+References: <20251024083221.25758-1-angelogioacchino.delregno@collabora.com>
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251024_003814_880521_F1CF8A05 
-X-CRM114-Status: GOOD (  22.25  )
+X-CRM114-CacheID: sfid-20251024_013242_595819_1E68EE95 
+X-CRM114-Status: GOOD (  13.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,91 +84,276 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 24/10/25 03:05, Chun-Kuang Hu ha scritto:
-> Hi, Louis:
-> 
-> Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com> 於 2025年10月23日
-> 週四 上午10:32寫道：
->>
->> From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>
->> Add support for the newer HDMI-TX (Encoder) v2 and DDC v2 IPs
->> found in MediaTek's MT8195, MT8188 SoC and their variants, and
->> including support for display modes up to 4k60 and for HDMI
->> Audio, as per the HDMI 2.0 spec.
->>
->> HDCP and CEC functionalities are also supported by this hardware,
->> but are not included in this commit and that also poses a slight
->> difference between the V2 and V1 controllers in how they handle
->> Hotplug Detection (HPD).
->>
->> While the v1 controller was using the CEC controller to check
->> HDMI cable connection and disconnection, in this driver the v2
->> one does not.
->>
->> This is due to the fact that on parts with v2 designs, like the
->> MT8195 SoC, there is one CEC controller shared between the HDMI
->> Transmitter (HDMI-TX) and Receiver (HDMI-RX): before eventually
->> adding support to use the CEC HW to wake up the HDMI controllers
->> it is necessary to have support for one TX, one RX *and* for both
->> at the same time.
->>
->> Reviewed-by: CK Hu <ck.hu@mediatek.com>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
->> ---
->>   drivers/gpu/drm/mediatek/Kconfig            |    7 +
->>   drivers/gpu/drm/mediatek/Makefile           |    2 +
->>   drivers/gpu/drm/mediatek/mtk_hdmi_common.c  |    4 +
->>   drivers/gpu/drm/mediatek/mtk_hdmi_common.h  |    9 +
->>   drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c  |  395 ++++++++
->>   drivers/gpu/drm/mediatek/mtk_hdmi_regs_v2.h |  263 +++++
->>   drivers/gpu/drm/mediatek/mtk_hdmi_v2.c      | 1398 +++++++++++++++++++++++++++
->>   7 files changed, 2078 insertions(+)
->>
->> diff --git a/drivers/gpu/drm/mediatek/Kconfig b/drivers/gpu/drm/mediatek/Kconfig
->> index 994b48b82d447c47391122e6ff2d139edb223536..c89ae4ed2c96123684ecd357314fa2d2ba5a4433 100644
->> --- a/drivers/gpu/drm/mediatek/Kconfig
->> +++ b/drivers/gpu/drm/mediatek/Kconfig
->> @@ -45,3 +45,10 @@ config DRM_MEDIATEK_HDMI
->>          select DRM_MEDIATEK_HDMI_COMMON
->>          help
->>            DRM/KMS HDMI driver for Mediatek SoCs
->> +
->> +config DRM_MEDIATEK_HDMI_V2
->> +       tristate "DRM HDMI v2 IP support for MediaTek SoCs"
->> +       depends on DRM_MEDIATEK
->> +       select DRM_MEDIATEK_HDMI_COMMON
->> +       help
->> +         DRM/KMS HDMI driver for MediaTek SoCs with HDMIv2 IP
->>
-> 
-> The checkpatch show this warning. Maybe other old description just has
-> one line, I think it's better to have more information.
-> Please provide more information and I would modify this patch when I apply it.
-> 
-> WARNING: please write a help paragraph that fully describes the config
-> symbol with at least 4 lines
-> #54: FILE: drivers/gpu/drm/mediatek/Kconfig:49:
-> +config DRM_MEDIATEK_HDMI_V2
-> +    tristate "DRM HDMI v2 IP support for MediaTek SoCs"
-> +    depends on DRM_MEDIATEK
-> +    select DRM_MEDIATEK_HDMI_COMMON
-> +    help
-> +      DRM/KMS HDMI driver for MediaTek SoCs with HDMIv2 IP
-> 
-> Regards,
-> Chun-Kuang.
+Add bindings for the regulators found in the MediaTek MT6316 PMIC,
+usually found in board designs using the MT6991 Dimensity 9400 and
+on MT8196 Kompanio SoC for Chromebooks.
 
-	help
-	  Say yes here to enable support for the HDMIv2 IP and related
-	  DDCv2 as found in the MediaTek MT8195, MT8188 SoCs and other
-	  variants.
+This chip is fully controlled by SPMI and has multiple variants
+providing different phase configurations.
 
-	  This driver can also be built as a module. If so, the HDMIv2
-	  module will be called "mtk_hdmi_v2", and the DDCv2 module
-	  will be called "mtk_hdmi_ddc_v2".
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../regulator/mediatek,mt6316b-regulator.yaml | 78 +++++++++++++++++++
+ .../regulator/mediatek,mt6316c-regulator.yaml | 78 +++++++++++++++++++
+ .../regulator/mediatek,mt6316d-regulator.yaml | 77 ++++++++++++++++++
+ 3 files changed, 233 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml
+ create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6316c-regulator.yaml
+ create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6316d-regulator.yaml
 
-Cheers,
-Angelo
+diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml
+new file mode 100644
+index 000000000000..65b70dd90728
+--- /dev/null
++++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml
+@@ -0,0 +1,78 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/regulator/mediatek,mt6316b-regulator.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek MT6316 BP/VP SPMI PMIC Regulators
++
++maintainers:
++  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
++
++description:
++  The MediaTek MT6316BP/VP PMICs are fully controlled by SPMI interface, both
++  feature four step-down DC/DC (buck) converters, and provides 2+2 Phases,
++  joining Buck 1+2 for the first phase, and Buck 3+4 for the second phase.
++
++properties:
++  compatible:
++    const: mediatek,mt6316b-regulator
++
++  reg:
++    maxItems: 1
++
++patternProperties:
++  "^vbuck(12|34)$":
++    type: object
++    $ref: regulator.yaml#
++    unevaluatedProperties: false
++    properties:
++      regulator-allowed-modes:
++        description: |
++          Allowed Buck regulator operating modes allowed. Valid values below.
++            0 - Normal mode with automatic power saving, reducing the switching
++                frequency when light load conditions are detected
++            1 - Forced Continuous Conduction mode (FCCM) for improved voltage
++                regulation accuracy with constant switching frequency but lower
++                regulator efficiency
++            2 - Forced Low Power mode for improved regulator efficiency, used
++                when no heavy load is expected, will shut down unnecessary IP
++                blocks and secondary phases to reduce quiescent current.
++                This mode does not limit the maximum output current but unless
++                only a light load is applied, there will be regulation accuracy
++                and efficiency losses.
++        minItems: 1
++        maxItems: 3
++        items:
++          enum: [ 0, 1, 2 ]
++
++required:
++  - compatible
++  - reg
++  - '#address-cells'
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/spmi/spmi.h>
++
++    spmi {
++      #address-cells = <2>;
++      #size-cells = <0>;
++
++      pmic@8 {
++        compatible = "mediatek,mt6316b-regulator";
++        reg = <0x8 SPMI_USID>;
++        #address-cells = <0>;
++
++        vbuck12 {
++          regulator-name = "dvdd_core";
++          regulator-min-microvolt = <450000>;
++          regulator-max-microvolt = <965000>;
++          regulator-allowed-modes = <0 1 2>;
++          regulator-enable-ramp-delay = <256>;
++        };
++      };
++    };
++...
+diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6316c-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6316c-regulator.yaml
+new file mode 100644
+index 000000000000..1565aee43f1c
+--- /dev/null
++++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6316c-regulator.yaml
+@@ -0,0 +1,78 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/regulator/mediatek,mt6316c-regulator.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek MT6316 CP/HP/KP SPMI PMIC Regulators
++
++maintainers:
++  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
++
++description:
++  The MediaTek MT6316CP/HP/KP PMICs are fully controlled by SPMI interface,
++  features four step-down DC/DC (buck) converters, and provides 3+1 Phases,
++  joining Buck 1+2+4 for the first phase, and uses Buck 3 for the second.
++
++properties:
++  compatible:
++    const: mediatek,mt6316c-regulator
++
++  reg:
++    maxItems: 1
++
++patternProperties:
++  "^vbuck(124|3)$":
++    type: object
++    $ref: regulator.yaml#
++    unevaluatedProperties: false
++    properties:
++      regulator-allowed-modes:
++        description: |
++          Allowed Buck regulator operating modes allowed. Valid values below.
++            0 - Normal mode with automatic power saving, reducing the switching
++                frequency when light load conditions are detected
++            1 - Forced Continuous Conduction mode (FCCM) for improved voltage
++                regulation accuracy with constant switching frequency but lower
++                regulator efficiency
++            2 - Forced Low Power mode for improved regulator efficiency, used
++                when no heavy load is expected, will shut down unnecessary IP
++                blocks and secondary phases to reduce quiescent current.
++                This mode does not limit the maximum output current but unless
++                only a light load is applied, there will be regulation accuracy
++                and efficiency losses.
++        minItems: 1
++        maxItems: 3
++        items:
++          enum: [ 0, 1, 2 ]
++
++required:
++  - compatible
++  - reg
++  - '#address-cells'
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/spmi/spmi.h>
++
++    spmi {
++      #address-cells = <2>;
++      #size-cells = <0>;
++
++      pmic@6 {
++        compatible = "mediatek,mt6316c-regulator";
++        reg = <0x6 SPMI_USID>;
++        #address-cells = <0>;
++
++        vbuck124 {
++          regulator-name = "dvdd_proc_m";
++          regulator-min-microvolt = <450000>;
++          regulator-max-microvolt = <1277500>;
++          regulator-allowed-modes = <0 1 2>;
++          regulator-enable-ramp-delay = <256>;
++        };
++      };
++    };
++...
+diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6316d-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6316d-regulator.yaml
+new file mode 100644
+index 000000000000..b53c5a4a6f96
+--- /dev/null
++++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6316d-regulator.yaml
+@@ -0,0 +1,77 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/regulator/mediatek,mt6316d-regulator.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek MT6316 DP/TP SPMI PMIC Regulators
++
++maintainers:
++  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
++
++description:
++  The MediaTek MT6316DP/TP PMICs are fully controlled by SPMI interface, both
++  feature four step-down DC/DC (buck) converters, and provides a single Phase,
++  joining Buck 1+2+3+4.
++
++properties:
++  compatible:
++    const: mediatek,mt6316d-regulator
++
++  reg:
++    maxItems: 1
++
++  vbuck1234:
++    type: object
++    $ref: regulator.yaml#
++    unevaluatedProperties: false
++    properties:
++      regulator-allowed-modes:
++        description: |
++          Allowed Buck regulator operating modes allowed. Valid values below.
++            0 - Normal mode with automatic power saving, reducing the switching
++                frequency when light load conditions are detected
++            1 - Forced Continuous Conduction mode (FCCM) for improved voltage
++                regulation accuracy with constant switching frequency but lower
++                regulator efficiency
++            2 - Forced Low Power mode for improved regulator efficiency, used
++                when no heavy load is expected, will shut down unnecessary IP
++                blocks and secondary phases to reduce quiescent current.
++                This mode does not limit the maximum output current but unless
++                only a light load is applied, there will be regulation accuracy
++                and efficiency losses.
++        minItems: 1
++        maxItems: 3
++        items:
++          enum: [ 0, 1, 2 ]
++
++required:
++  - compatible
++  - reg
++  - '#address-cells'
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/spmi/spmi.h>
++
++    spmi {
++      #address-cells = <2>;
++      #size-cells = <0>;
++
++      pmic@7 {
++        compatible = "mediatek,mt6316d-regulator";
++        reg = <0x7 SPMI_USID>;
++        #address-cells = <0>;
++
++        vbuck1234 {
++          regulator-name = "dvdd_gpustack";
++          regulator-min-microvolt = <400000>;
++          regulator-max-microvolt = <1277500>;
++          regulator-allowed-modes = <0 1 2>;
++          regulator-enable-ramp-delay = <256>;
++        };
++      };
++    };
++...
+-- 
+2.51.1
+
 
