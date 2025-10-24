@@ -4,79 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8F14CCF9E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Oct 2025 17:51:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDB62CCF9E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Oct 2025 18:24:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sCRi+ao+Y0H2VTsuR8VLPC8s6tkLiQZtynG9CySW2MU=; b=F/WgVh/3nuRO1kaD2dQX2bkhAN
-	wEQJzGKJq/F9TgmnCMaqXNyNBoK9HTRVKgR4TRPesHNVjwki+9oWtnTZvROaVOEDQAoNiqk5mfOJq
-	3OFsbVGynwbCWZWUcJsUUoK2BIGh5C6EK4kOXhsQ7EhB7ak7HlYhKBNefzxyver0W5P5xMSWjTAym
-	r7bqS2UecH7k9zrHTK0G9TfAFLLxbpwlgrSaAbXXuPtFg1Cd4AWX3sG4/d0/JzfrwQbFhgdtZGTIc
-	dIkT3PnwWOtJmPhZOIo+o/APermj9aKn9tjictBobOIuPUUl/0GclnaBNEM5k8l2zkAPRDFNXhzWB
-	fPZJXTrw==;
+	bh=VPEfK2HV00u+RBsQ4iqA3+lJzL6g2LPeHpWVJp41g/Q=; b=ox9ySWhxn4UxxoVmdG+pNvVK9B
+	0GQ8mIIU8C1vOUz9Sj6zEOCwffxW3ZudEsh71DLmflXeZKwALzHqDtvfFlUZjvLavpvcgOpmrvi7r
+	qkQbcv8b7nzIo26p480rHKzymNf2kDgmVj07no3YMKLz1va0DOOk6S0aEJ6kGAwPhvlzil3p7hOAf
+	Mas7is3DG5wqtGgacxZtCmhG3i/79TV9NySVgwhmG924k/8N5JoxqMStTv1QD4nkZO3eXxkYIYYZ3
+	25FikPEljeBR3Dd/0He8+WfQEvPs5wJ8OsJVuGvN3QhQTIS9JIP2YKu8Yd6Vsu7tNu0ibLkbytaQQ
+	GTLu33XA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCLx1-0000000A9d0-0xO1;
-	Fri, 24 Oct 2025 17:51:43 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1vCMSY-0000000AG2f-12yN;
+	Fri, 24 Oct 2025 18:24:18 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCLwy-0000000A9bt-3Sao;
-	Fri, 24 Oct 2025 17:51:41 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1761328287; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=DiUyK8tdAupooswC4Sh2gsaGJwEarJ2aZRUjtIhDMxmxjnPCwSJRknW6FK7e104M3g/ENmJma3JrEma6BSWM8iTXHD3hRonO4QsrI45TwsKHlCiM2j5zsjTAMxTG2UycJQA8ITep5QRzANzyo1CGE3vSPesoum/GwvGkgdodCVw=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1761328287; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=sCRi+ao+Y0H2VTsuR8VLPC8s6tkLiQZtynG9CySW2MU=; 
-	b=RThPz6TkUJ2jhE7s8OufEirmiTtnvWIxDI0UBi+jed1zfOjgC7eRCNTISyyxzyX62b8PwegmUaIsDgWYJT725GLk4M5aLHylcuWtS7dXik1RTvVlYTWOBI6CqtxT3bz9VYRimiKSd2TbHgmqc4Q6v+RECoH2PcPIlsnlozP48qY=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1761328287;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=sCRi+ao+Y0H2VTsuR8VLPC8s6tkLiQZtynG9CySW2MU=;
-	b=ZKb2rdBffh4am/tRZLfrrSU3VWPizGpeEqiF3S7so4peQ3+FCRThFZJdvv8pSRFn
-	F0ikOoMjV24bWKPNFk4CoB5X+7yzxzwNZRWepd08Gj1lW5Su8OBONpJbXcc0s8JHWrY
-	yAaoi+kd4UPzNeYm8j+C5+cIzhfvtYqsBkAwnI2Y=
-Received: by mx.zohomail.com with SMTPS id 1761328284052701.9623815285279;
-	Fri, 24 Oct 2025 10:51:24 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+	id 1vCMSW-0000000AG1r-1ZUn;
+	Fri, 24 Oct 2025 18:24:16 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id C41FB60409;
+	Fri, 24 Oct 2025 18:24:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D359EC4CEF1;
+	Fri, 24 Oct 2025 18:24:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1761330255;
+	bh=LLx1LVGvdg/wvApXo8RtVwU0hoW7NYqi+oZmkFIZ39k=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=RR4orNYW7AprZEQyowFwqSLx1h0W6e1b7RiGBXsQQ9v/H7tVIS30aIBWb3m3zdJaE
+	 aoYkPIjApdAfTe7+hUhTXABVdSUNzlJs965OvqMcXaF9lobYnmQfTpFc2fEQT9vsf/
+	 +1/vr5/rT90UjC2/65DoRc4WNVje4+hfys20G3o/X8FH1dYHcBU6l0VH3/SeQ7tFkt
+	 TJRlL/JkX3sMVvHK3NriiCGqb12PcY7ooP4wh//9ukX6u6yFTbowh3Dkgnde1S2oQB
+	 kzW456X/g2/If31EsjjE25Ex3zR+DSkYh4xf/v98Phlpyc2GfdvLx/OZZaRjmkTPd4
+	 NZXK60Fsg2HEQ==
+Date: Fri, 24 Oct 2025 19:24:12 +0100
+From: Mark Brown <broonie@kernel.org>
 To: Conor Dooley <conor@kernel.org>
-Cc: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
- Bart Van Assche <bvanassche@acm.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
- Kishon Vijay Abraham I <kishon@kernel.org>,
- Peter Wang <peter.wang@mediatek.com>, Stanley Jhu <chu.stanley@gmail.com>,
- "James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Liam Girdwood <lgirdwood@gmail.com>,
- Mark Brown <broonie@kernel.org>,
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, kernel@collabora.com,
- linux-scsi@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org
-Subject: Re: [PATCH v3 03/24] dt-bindings: ufs: mediatek,ufs: Add mt8196 variant
-Date: Fri, 24 Oct 2025 19:51:11 +0200
-Message-ID: <5617400.31r3eYUQgx@workhorse>
-In-Reply-To: <20251024-thrash-amid-d5af186c4319@spud>
-References: <20251023-mt8196-ufs-v3-0-0f04b4a795ff@collabora.com>
- <20251023-mt8196-ufs-v3-3-0f04b4a795ff@collabora.com>
- <20251024-thrash-amid-d5af186c4319@spud>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-mediatek@lists.infradead.org, lee@kernel.org, robh@kernel.org,
+	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
+	lgirdwood@gmail.com, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com, wenst@chromium.org,
+	igor.belwon@mentallysanemainliners.org
+Subject: Re: [PATCH v10 1/9] dt-bindings: regulator: Document MediaTek MT6316
+ PMIC Regulators
+Message-ID: <aPvETBr5aebElQUS@finisterre.sirena.org.uk>
+References: <20251024083221.25758-1-angelogioacchino.delregno@collabora.com>
+ <20251024083221.25758-2-angelogioacchino.delregno@collabora.com>
+ <20251024-think-handwoven-504634ca620d@spud>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="utf-8"
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251024_105140_926252_C86B7C77 
-X-CRM114-Status: GOOD (  15.99  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="JmMTACgssj5QFShR"
+Content-Disposition: inline
+In-Reply-To: <20251024-think-handwoven-504634ca620d@spud>
+X-Cookie: If in doubt, mumble.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,103 +77,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Friday, 24 October 2025 19:13:36 Central European Summer Time Conor Dooley wrote:
-> On Thu, Oct 23, 2025 at 09:49:21PM +0200, Nicolas Frattaroli wrote:
-> 
-> >      };
-> > +  - |
-> > +    #include <dt-bindings/reset/mediatek,mt8196-resets.h>
-> > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> > +
-> > +    ufshci@16810000 {
-> > +        compatible = "mediatek,mt8196-ufshci";
-> > +        reg = <0x16810000 0x2a00>;
-> > +        interrupts = <GIC_SPI 320 IRQ_TYPE_LEVEL_HIGH>;
-> > +
-> > +        clocks = <&ufs_ao_clk 6>,
-> > +                 <&ufs_ao_clk 7>,
-> > +                 <&clk26m>,
-> > +                 <&ufs_ao_clk 3>,
-> > +                 <&clk26m>,
-> > +                 <&ufs_ao_clk 4>,
-> > +                 <&ufs_ao_clk 0>,
-> > +                 <&topckgen 7>,
-> > +                 <&topckgen 41>,
-> > +                 <&topckgen 105>,
-> > +                 <&topckgen 83>,
-> > +                 <&ufs_ao_clk 1>,
-> > +                 <&ufs_ao_clk 2>,
-> > +                 <&topckgen 42>,
-> > +                 <&topckgen 84>,
-> > +                 <&topckgen 102>;
-> 
-> This is absolutely a nitpick thing, but if you end up resubmitting, can
-> you pick a consistent format between the two examples your series adds
-> for the clocks/clock names?
 
-No problem, will do. IIRC I kept them as a list like this so I could
-easily reorder things, but now that I'm fairly sure this order is the
-correct one, it's probably best to make this more compact.
+--JmMTACgssj5QFShR
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Also sorry for the numbers as clock IDs, but MediaTek clock headers
-have conflicting symbols and the dt schema example extractor dumps
-all examples into one dts file. :(
+On Fri, Oct 24, 2025 at 05:29:31PM +0100, Conor Dooley wrote:
+> On Fri, Oct 24, 2025 at 10:32:13AM +0200, AngeloGioacchino Del Regno wrote:
 
-Since this has bugged me in the past, and many schemas may rely on
-the concat behaviour now: would a patch in the distant future that
-prefixes all MediaTek clock binding headers with the SoC name be
-acceptable if it keeps the old names intact as aliases to them with
-a #ifndef guard?
+> > +      regulator-allowed-modes:
+> > +        description: |
+> > +          Allowed Buck regulator operating modes allowed. Valid values below.
 
-I should also think about some way we can avoid similar bindings
-symbol naming mishaps in the future.
+> > +        minItems: 1
+> > +        maxItems: 3
+> > +        items:
+> > +          enum: [ 0, 1, 2 ]
 
-Thank you for pointing me in the right direction with regards to
-the binding!
+> This property has no default, and the property is not required. Is one
+> of these modes the default, or is there another mode beyond what's here
+> that is used if the property is absent? Or are all modes allowed with no
+> property?
 
-Kind regards,
-Nicolas Frattaroli
+The general approach the regulator API takes with everything is that if
+there is no explict configuration then it will simply not touch the
+hardware.  If nothing is configured then the hardware will be left in
+whatever state we found it in which could be anything as far as we know,
+it might vary depending on what was running before and what it was doing.
 
-> Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
-> pw-bot: not-applicable
-> 
-> > +        clock-names = "ufs",
-> > +                      "ufs_aes",
-> > +                      "ufs_tick",
-> > +                      "unipro_sysclk",
-> > +                      "unipro_tick",
-> > +                      "unipro_mp_bclk",
-> > +                      "ufs_tx_symbol",
-> > +                      "ufs_mem_sub",
-> > +                      "crypt_mux",
-> > +                      "crypt_lp",
-> > +                      "crypt_perf",
-> > +                      "ufs_rx_symbol0",
-> > +                      "ufs_rx_symbol1",
-> > +                      "ufs_sel",
-> > +                      "ufs_sel_min_src",
-> > +                      "ufs_sel_max_src";
-> > +
-> > +        operating-points-v2 = <&ufs_opp_table>;
-> > +
-> > +        phys = <&ufsphy>;
-> > +
-> > +        avdd09-supply = <&mt6363_vsram_modem>;
-> > +        vcc-supply = <&mt6363_vemc>;
-> > +        vcc-supply-1p8;
-> > +        vccq-supply = <&mt6363_va12_2>;
-> > +        vccq2-supply = <&mt6363_vufs12>;
-> > +
-> > +        resets = <&ufs_ao_clk MT8196_UFSAO_RST1_UFS_UNIPRO>,
-> > +                 <&ufs_ao_clk MT8196_UFSAO_RST1_UFS_CRYPTO>,
-> > +                 <&ufs_ao_clk MT8196_UFSAO_RST1_UFSHCI>;
-> > +        reset-names = "unipro", "crypto", "hci";
-> > +        mediatek,ufs-disable-mcq;
-> > +    };
-> > 
-> 
+--JmMTACgssj5QFShR
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
 
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmj7xEYACgkQJNaLcl1U
+h9C1HAf+KdL5D9OqnVx5rWOG0pLbQ5ra9sSXVXvx8aWFAW6Ba+V62qfedjY3AHnH
+O++SR1ZapWXCWQDrH+bjeld94sYUImJ326N3uPtVvatNAYYbJPHU8s3kMuF9A+sf
+y02rLo1vq+geNnKKwK5lyCGYskIT1rFlyXCn5ePGVtfH0zu87HGs8az0UGmdbhOA
+en8RJs0eFPgqgXM7MYIvObJeoPcy7HypsI3oJXB7jdnpBzj3iLPDZOiCbFHvqd3m
+GlZJzucyyKNGBWcgvrwb4afHilnDj+xEiCi77r4J5nEGHoAt4tgwdF4eGwnRlueE
+8aAINtB/zLdXFGft3PIUrRVkH9kkmA==
+=OCOj
+-----END PGP SIGNATURE-----
 
-
+--JmMTACgssj5QFShR--
 
