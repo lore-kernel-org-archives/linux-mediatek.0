@@ -4,118 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08340CCD1AB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Oct 2025 08:45:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF6CCCCD1AB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Oct 2025 09:00:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HY6r5N8YoWCkHpw2Wc0aFxBDh4JjQPNsQE4RnDRZ2D4=; b=0x2C6L47AGgPTUlARYmxxq+qmr
-	sS5Ylp96H8qtx4LGCjxmoU1pMTu9JxbkuOrWow3tn9PbPnmbTFNCWJyCPTXPr67Z4yHb2M7hjZlmO
-	kkVTo5AW23KaBq944yy71nVDxGe3Q79oSBFZUvVGdqHK8GoYtD3QCCZv0ixkxgE5ewrEJEPBv9ARD
-	7dgARuBOHem4sb/BwMPyb5UTaf9p8u3BfMwFrjSZKH8Z7I3o0cwUwlqF1ZtULeQlMqEe0pMB5V3HF
-	eae+5UxW022dvFbVhAZQl5C2AYD7n/ZUnpd1tVAI74i/7oI9SvuonQUvYqkOcZIn6LpZvoDID5BYs
-	pEqrxOFw==;
+	bh=S3KucEpEWr4MToMSs6CzUKDTe9X2PHQh1yKd6odfsIE=; b=hdU3UAu/epiiHuCUCW4r014F6B
+	SQv37YKSGqWzGRbZw9gYFlIC5viK+lrPDrRNUT+b/DEtxqPBf3raOx6e15RKGuOYOpImfcetF2Qr2
+	yoKaUAuNrqgwkNSEAxRyCCW4CzFtFEkv3kNOaW3BWPDJ6zGA6oxo26DFUbimeIWw3TQDVhIzc9HeH
+	YmArdn1tPnzOgutOWh/pNB4H32u4Zhz1vqNFotK8C9Lo6qSV/GCdPUECyChDdY8SQjIh2LvWlMVNq
+	1wPH4kNag4lJdeF4ZqR2FFuV/J/+PhMjPpV0pgrCZuILU5cXYrmA6Xd5PKRo9CYi8uBtPkFJ98DLX
+	9sBiPxKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCDQV-00000008lax-3Hhn;
-	Fri, 24 Oct 2025 08:45:35 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vCDeg-00000008nfG-1y2C;
+	Fri, 24 Oct 2025 09:00:14 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCDQS-00000008lZz-1GoV;
-	Fri, 24 Oct 2025 08:45:33 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id CA7734B432;
-	Fri, 24 Oct 2025 08:45:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 27362C4CEF7;
-	Fri, 24 Oct 2025 08:45:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761295531;
-	bh=HY6r5N8YoWCkHpw2Wc0aFxBDh4JjQPNsQE4RnDRZ2D4=;
+	id 1vCDee-00000008neT-0L3t;
+	Fri, 24 Oct 2025 09:00:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1761296409;
+	bh=2pMVFWg8Y6Z3M92SWEe9ppFW6tJnoGWLUlAABysjQQk=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=p+9tG5/CHE1OGgKq1mxKoyh7hXPPw4VqAUhpfPLvYDuD0A41xkwTzRixEHbztI3b7
-	 mWhcqbEb7TnkxWq55xTEjitRe12l8xHrCh8NgTy+nPgHBWBIQGJQwoMPzXpKriaKn+
-	 DrJCJ+NCryax5dZQWjmj2cIpnWlpGh2CXmbQPyQah7b1//1oQ6nG+TXc9Zvclx1TsH
-	 VAgAjjGIXm1RE/EqKTHKeNZRV5fuhsbtZvG2q5rUFwRRSO6ZYMk71WYaotAfhV2b9I
-	 aZbaMBFsJ64WVbjq1AwZJy1RSlcuN6THC+aQTitduG27XtidmhwXGyekWE57ILTK8v
-	 8DtBMImPQZksQ==
-Message-ID: <1c6bb4cd-447e-4606-8982-8268463bef14@kernel.org>
-Date: Fri, 24 Oct 2025 10:45:27 +0200
+	b=Z+Ih01GlT6BodeX3GlGgwYg6VLTjgEpcqYwyjvEiVWQizs287I2ZJqyz+QgwB+qz1
+	 kVQYm/rtyMAiU3u8+oMr+VOzWiTw/qIagpFzrY1gluVx9lgoFZyiJYtF2MPlmdL7tP
+	 +72OtL2qF5CloRaxNlJ0+djuz/A6GbuApoSS0E6a/Bg9IZSDFuHz4nRdawkouzpEZs
+	 v//qEcehVBI0ku9LgqzuJOK1QmVsO7RWgNFOrkHzoCYBSxIholKwQy+9oVRzPFlu6a
+	 Ip0tcmR9mk4D//bKKN68q8BN4tRRwCpkXxFU2dS8TafQ38dC1QiC6yaVc310c0cEMD
+	 ICif9p0Al3FRA==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 856A917E00AC;
+	Fri, 24 Oct 2025 11:00:08 +0200 (CEST)
+Message-ID: <66066ad6-0501-4f56-833b-16f63d06c9dc@collabora.com>
+Date: Fri, 24 Oct 2025 11:00:07 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] dt-bindings: memory-controllers: mtk-smi: Add support
- for mt8189
-To: =?UTF-8?B?WmhlbmduYW4gQ2hlbiAo6ZmI5b6B5Y2XKQ==?=
- <Zhengnan.Chen@mediatek.com>, "robh@kernel.org" <robh@kernel.org>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-References: <20250919081014.14100-1-zhengnan.chen@mediatek.com>
- <20250919081014.14100-2-zhengnan.chen@mediatek.com>
- <20251002000657.GA2511095-robh@kernel.org>
- <ab52d3c9eb3f0cdf238d82afd289ca1d282f0f53.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [PATCH v3 00/24] MediaTek UFS Cleanup and MT8196 Enablement
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
+ Bart Van Assche <bvanassche@acm.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>,
+ Peter Wang <peter.wang@mediatek.com>, Stanley Jhu <chu.stanley@gmail.com>,
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Liam Girdwood <lgirdwood@gmail.com>,
+ Mark Brown <broonie@kernel.org>
+Cc: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+ kernel@collabora.com, linux-scsi@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-phy@lists.infradead.org
+References: <20251023-mt8196-ufs-v3-0-0f04b4a795ff@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <ab52d3c9eb3f0cdf238d82afd289ca1d282f0f53.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <20251023-mt8196-ufs-v3-0-0f04b4a795ff@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251024_014532_375673_D1041909 
-X-CRM114-Status: UNSURE (   8.58  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251024_020012_329945_141DBEA1 
+X-CRM114-Status: GOOD (  29.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,24 +88,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 24/10/2025 10:41, Zhengnan Chen (陈征南) wrote:
-> On Wed, 2025-10-01 at 19:06 -0500, Rob Herring wrote:
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
->>
->>
->> On Fri, Sep 19, 2025 at 04:09:55PM +0800, Zhengnan Chen wrote:
->>> From: "zhengnan.chen" <zhengnan.chen@mediatek.com>
->>
->> Please fix your name here so the S-o-b matches.
->> ok, will fix it in the next version.
+Il 23/10/25 21:49, Nicolas Frattaroli ha scritto:
+> In this series, the existing MediaTek UFS binding is expanded and
+> completed to correctly describe not just the existing compatibles, but
+> also to introduce a new compatible in the from of the MT8196 SoC.
+> 
+> The resets, which until now were completely absent from both the UFS
+> host controller binding and the UFS PHY binding, are introduced to both.
+> This also means the driver's undocumented and, in mainline, unused reset
+> logic is reworked. In particular, the PHY reset is no longer a reset of
+> the host controller node, but of the PHY node.
+> 
+> This means the host controller can reset the PHY through the common PHY
+> framework.
+> 
+> The resets remain optional.
+> 
+> Additionally, a massive number of driver cleanups are introduced. These
+> were prompted by me inspecting the driver more closely as I was
+> adjusting it to correspond to the binding.
+> 
+> The driver still implements vendor properties that are undocumented in
+> the binding. I did not touch most of those, as I neither want to
+> convince the bindings maintainers that they are needed without knowing
+> precisely what they're for, nor do I want to argue with the driver
+> authors when removing them.
+> 
+> Due to the "Marie Kondo with a chainsaw" nature of the driver cleanup
+> patches, I humbly request that reviewers do not comment on displeasing
+> code they see in the context portion of a patch before they've read the
+> whole patch series, as that displeasing code may in fact be reworked in
+> a subsequent patch of this series. Please keep comments focused on the
+> changed lines of the diff; I know there's more that can be done, but it
+> doesn't necessarily need to be part of this series.
+> 
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
+On all of the new commits that don't have the tag:
 
-You responded after three weeks with broken email answer. This adds to
-long list of complains I had against Mediatek upstreaming process.
-Please improve the process, as I asked so many many times, or do not be
-surprised if your patches end up on the bottom of the queue. :(
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Best regards,
-Krzysztof
+Thanks for finally doing a partial refactor of this driver - this finally brings
+it to entirely different quality standards.
+
+For all that you've done, MT8196 enablement is "just a plus". The very important
+and fun part here is the whole refactoring.
+
+Well done!
+
+Cheers,
+Angelo
+
+> ---
+> Changes in v3:
+> - Split mediatek,ufs bindings change into two patches, one for
+>    completing the existing binding, one for the MT8196
+> - Add over a dozen driver cleanup patches
+> - Add explicit support for the MT8196 compatible to the driver
+> - Note: next-20251023, on which I based this, currently has a broken
+>    build due to an unrelated OPP core change that was merged with no
+>    build testing. I can't use next-20251022 either, as that lacks the
+>    recent mediatek UFS changes. It is what it is.
+> - Link to v2: https://lore.kernel.org/r/20251016-mt8196-ufs-v2-0-c373834c4e7a@collabora.com
+> 
+> Changes in v2:
+> - Reorder define in mtk_sip_svc.h
+> - Use bulk reset APIs in UFS host driver
+> - Link to v1: https://lore.kernel.org/r/20251014-mt8196-ufs-v1-0-195dceb83bc8@collabora.com
+> 
+> ---
+> Nicolas Frattaroli (24):
+>        dt-bindings: phy: Add mediatek,mt8196-ufsphy variant
+>        dt-bindings: ufs: mediatek,ufs: Complete the binding
+>        dt-bindings: ufs: mediatek,ufs: Add mt8196 variant
+>        scsi: ufs: mediatek: Move MTK_SIP_UFS_CONTROL to mtk_sip_svc.h
+>        phy: mediatek: ufs: Add support for resets
+>        scsi: ufs: mediatek: Rework resets
+>        scsi: ufs: mediatek: Rework 0.9V regulator
+>        scsi: ufs: mediatek: Rework init function
+>        scsi: ufs: mediatek: Rework the crypt-boost stuff
+>        scsi: ufs: mediatek: Rework probe function
+>        scsi: ufs: mediatek: Remove vendor kernel quirks cruft
+>        scsi: ufs: mediatek: Use the common PHY framework
+>        scsi: ufs: mediatek: Switch to newer PM ops helpers
+>        scsi: ufs: mediatek: Remove mediatek,ufs-broken-rtc property
+>        scsi: ufs: mediatek: Rework _ufs_mtk_clk_scale error paths
+>        scsi: ufs: mediatek: Add vendor prefix to clk-scale-up-vcore-min
+>        scsi: ufs: mediatek: Clean up logging prints
+>        scsi: ufs: mediatek: Rework ufs_mtk_wait_idle_state
+>        scsi: ufs: mediatek: Don't acquire dvfsrc-vcore twice
+>        scsi: ufs: mediatek: Rework hardware version reading
+>        scsi: ufs: mediatek: Back up idle timer in per-instance struct
+>        scsi: ufs: mediatek: Make scale_us in setup_clk_gating const
+>        scsi: ufs: mediatek: Remove ret local from link_startup_notify
+>        scsi: ufs: mediatek: Add MT8196 compatible, update copyright
+> 
+>   .../devicetree/bindings/phy/mediatek,ufs-phy.yaml  |  16 +
+>   .../devicetree/bindings/ufs/mediatek,ufs.yaml      | 196 ++++-
+>   drivers/phy/mediatek/phy-mtk-ufs.c                 |  71 ++
+>   drivers/ufs/host/ufs-mediatek-sip.h                |   9 -
+>   drivers/ufs/host/ufs-mediatek.c                    | 935 +++++++++------------
+>   drivers/ufs/host/ufs-mediatek.h                    |  17 +-
+>   include/linux/soc/mediatek/mtk_sip_svc.h           |   3 +
+>   7 files changed, 650 insertions(+), 597 deletions(-)
+> ---
+> base-commit: a92c761bcac3d5042559107fa7679470727a4bcb
+> change-id: 20251014-mt8196-ufs-cec4b9a97e53
+> 
+> Best regards,
+
 
