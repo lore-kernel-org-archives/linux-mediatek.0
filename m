@@ -4,74 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 933ADCCD1AB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Oct 2025 08:34:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 012ACCCD1AB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Oct 2025 08:34:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Nh1iL0EeRIF65lXCcGeqpLV4pUAkb7IeOzlao///Y/Y=; b=hoS56GykeITC+Kji1yX65fTJDN
-	b+9uSIGaTNojTZazceABNc+W1TIij2cim7B9fsfOCecmORFuiSowmcp0i4TD9jo/qIC2UZMD2aQnd
-	Yx2bq/lLYB9watPVqqDzd1YewU0IUS/gYRuQGKqj+dLh/+iK8hW5hbnc3+dU1buBzWGjiCDLf1AiH
-	QApj9nlf+K4e5uCnyeTSxtB2nJXwOq9sREr6D7XduVGGVsXz+qgqqeDno++wMfaYCgvkncu/37Zfq
-	tRUMbanSyddsZrfJk/4urzIxzQY4mG+Omfd90fcv9UN3EkXqk3OW+VuCdKHEIAh/udomyCyichvTY
-	+7tCVUVA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=kWtKpBCYAqGMS5ZQa0R806MQk3j7SytAZetnZ5Qp1TY=; b=Qi5j3yw2AqaTGF1AFNKD52+9NZ
+	ijXP154CJ4F1fUvsOSz0Hcc/SyDtMKm8qLwADGRYyviJuSuBvf+PV+jYllW6t7pIhRftUJucb7Tqc
+	KUbg57cWt25YmKLFr2s78zVPG00felsGIQvM5pjSV/Q0Vf7+JNo2cuq8u0uU1gUUi34BzV8wXprHG
+	/mn7uA0MBnmLyZUn5DC7jHhsopBIPfK4e2dYnT1oNnggJPai/WXL1QatvoQCUV2SSjPfBk28qyv+h
+	TrZuNyA/mSZE/2y29hdpeKwGPlJFQJ7YL7+Rgtoyu3+YoimTnW6PZzkW+KZvjh5mQc6a6RxxmOc8g
+	y0BLAIBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCDFX-00000008iCd-27KQ;
-	Fri, 24 Oct 2025 08:34:15 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vCDFe-00000008iKd-0kMm;
+	Fri, 24 Oct 2025 08:34:22 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCDEb-00000008gxI-4A3g;
-	Fri, 24 Oct 2025 08:33:19 +0000
+	id 1vCDEo-00000008hGb-2Xyh;
+	Fri, 24 Oct 2025 08:33:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1761294795;
-	bh=EvJjtJYPMkY+wg28Z8s4t5T9jEANTPME3U612w+D8i8=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=pICVBLD7r6cRxXEkGY321+hLIeTUWHf3suAoMLlwKdsaqwOwDoAvWhHGBjG6QZySA
-	 ysxtNqO5uTzzAVWs1GGCVzmZsZGyuWxvjMp6prSBUM3OuwkRPrYqdjnd76f6Ap6krJ
-	 zRmJsvFiCVLJdnAOlgUq4Z0GZc9B/zrBqbuzKGKVZ5A5mxZjyY8v6JbrAm+boOKoyn
-	 85+cw4XUP53Ia0pDR74PsrOdyPCJwzi6qsOoQca/00FqNmiUoBaPH62VA5BzTOyqRh
-	 QavABbfqiM82F2790/30REFuemcVR+Y2WNinaFcpeM1KEd5YPLvi1By+veJsrOArEy
-	 FyvhGslzptwyA==
+	s=mail; t=1761294808;
+	bh=nsRGIDtKYjLrHN9FUa+g9NCVrzhagqwv5Q1qaeBlALI=;
+	h=From:To:Cc:Subject:Date:From;
+	b=Nn4OSvKDiMa+9ew5TM2/Yk9hc6DQDOujDWW1jt/vYQk5/D3a2DrdtCm3q6NjObBEa
+	 uCc1Uul1rX5mIfaUvERjMx4m4EiylvDrfNMcBXM7TZJxNAcaalwSQNXlcdKpqGW+In
+	 7VynKZA1+ClH2DsvkWoJgl23ZA1Le3ShEw1US1sy8PBGDP4zcX5x1bb4V26Gk2/vU4
+	 3thF7bMHpSai/MRWF2lGi1vWL90we2LHdrKfD0Q0vhN0vjIXg7ZkYELHpSjzZ+nfCa
+	 QYueOTgLJTVpswRo0GY3G/IABr46eLw/rI8Ues9lkGBPlC6CQVYxlC0q0gp7RazNyr
+	 nw5sghyPXyQBA==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id CAFB317E141F;
-	Fri, 24 Oct 2025 10:33:14 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A202D17E1249;
+	Fri, 24 Oct 2025 10:33:27 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: sboyd@kernel.org
-Cc: mturquette@baylibre.com,
-	robh@kernel.org,
+To: alexandre.belloni@bootlin.com
+Cc: robh@kernel.org,
 	krzk+dt@kernel.org,
 	conor+dt@kernel.org,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	laura.nao@collabora.com,
-	nfraprado@collabora.com,
-	wenst@chromium.org,
-	y.oudjana@protonmail.com,
-	linux-clk@vger.kernel.org,
+	linux-rtc@vger.kernel.org,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH v1 7/7] clk: mediatek: Add support for MT6685 PM/Clock IC Clock Controller
-Date: Fri, 24 Oct 2025 10:33:01 +0200
-Message-ID: <20251024083301.25845-8-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v1 0/2] rtc: Add support for MT6685 RTC
+Date: Fri, 24 Oct 2025 10:33:16 +0200
+Message-ID: <20251024083318.25890-1-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.51.1
-In-Reply-To: <20251024083301.25845-1-angelogioacchino.delregno@collabora.com>
-References: <20251024083301.25845-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251024_013318_325266_DD0DC9CB 
-X-CRM114-Status: GOOD (  15.23  )
+X-CRM114-CacheID: sfid-20251024_013330_948692_6CE1D190 
+X-CRM114-Status: GOOD (  12.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,124 +79,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for the SCK_TOP Clock Controller IP found in the
-MediaTek MT6685 PM/Clock IC as a SPMI Sub-Device.
+This series adds a driver for the Real Time Clock found in the MT6685
+Clock/PM IC.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/clk/mediatek/Kconfig      |  7 ++++
- drivers/clk/mediatek/Makefile     |  2 +
- drivers/clk/mediatek/clk-mt6685.c | 70 +++++++++++++++++++++++++++++++
- 3 files changed, 79 insertions(+)
- create mode 100644 drivers/clk/mediatek/clk-mt6685.c
+This chip has been used on a number of different MediaTek platforms
+from around 2023 to the latest ones released in 2025 - and on both
+Smartphones (Helio and Dimensity), Chromebooks (Kompanio Ultra) and
+Genio boards.
 
-diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-index 3452dcbc9e45..eb1764418b1e 100644
---- a/drivers/clk/mediatek/Kconfig
-+++ b/drivers/clk/mediatek/Kconfig
-@@ -132,6 +132,13 @@ config COMMON_CLK_MT2712_VENCSYS
- 	help
- 	  This driver supports MediaTek MT2712 vencsys clocks.
- 
-+config COMMON_CLK_MT6685
-+	tristate "Clock driver for MediaTek MT6685 Clock IC"
-+	depends on ARCH_MEDIATEK
-+	select COMMON_CLK_MEDIATEK_SPMI
-+	help
-+	  This driver supports clocks provided by the MT6685 Clock IC.
-+
- config COMMON_CLK_MT6735
- 	tristate "Main clock drivers for MediaTek MT6735"
- 	depends on ARCH_MEDIATEK || COMPILE_TEST
-diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index 1471d8affa44..d68837f1aa06 100644
---- a/drivers/clk/mediatek/Makefile
-+++ b/drivers/clk/mediatek/Makefile
-@@ -5,6 +5,8 @@ obj-$(CONFIG_COMMON_CLK_MEDIATEK) += clk-mediatek.o
- 
- obj-$(CONFIG_COMMON_CLK_MEDIATEK_FHCTL) += clk-fhctl.o clk-pllfh.o
- 
-+obj-$(CONFIG_COMMON_CLK_MT6685) += clk-mt6685.o
-+
- obj-$(CONFIG_COMMON_CLK_MT6735) += clk-mt6735-apmixedsys.o clk-mt6735-infracfg.o clk-mt6735-pericfg.o clk-mt6735-topckgen.o
- obj-$(CONFIG_COMMON_CLK_MT6735_IMGSYS) += clk-mt6735-imgsys.o
- obj-$(CONFIG_COMMON_CLK_MT6735_MFGCFG) += clk-mt6735-mfgcfg.o
-diff --git a/drivers/clk/mediatek/clk-mt6685.c b/drivers/clk/mediatek/clk-mt6685.c
-new file mode 100644
-index 000000000000..1d524aef61a5
---- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt6685.c
-@@ -0,0 +1,70 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Copyright (c) 2025 Collabora Ltd.
-+ *                    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+ */
-+#include <dt-bindings/clock/mediatek,mt6685-clock.h>
-+#include <linux/clk-provider.h>
-+#include <linux/module.h>
-+#include <linux/of_device.h>
-+#include <linux/platform_device.h>
-+
-+#include "clk-gate.h"
-+#include "clk-mtk.h"
-+#include "clk-mtk-spmi.h"
-+#include "reset.h"
-+
-+static const struct mtk_gate_regs spmi_mt6685_sck_top_cg_regs = {
-+	.set_ofs = 0x1,
-+	.clr_ofs = 0x2,
-+	.sta_ofs = 0x0
-+};
-+
-+#define GATE_SCKTOP(_id, _name, _parent, _shift)	\
-+{							\
-+	.id = _id,					\
-+	.name = _name,					\
-+	.parent_name = _parent,				\
-+	.regs = &spmi_mt6685_sck_top_cg_regs,		\
-+	.shift = _shift,				\
-+	.flags = CLK_IGNORE_UNUSED,			\
-+	.ops = &mtk_clk_gate_ops_setclr,		\
-+}
-+
-+static const struct mtk_gate sck_top_clks[] = {
-+	GATE_SCKTOP(CLK_RTC_SEC_MCLK, "rtc_sec_mclk", "rtc_sec_32k", 0),
-+	GATE_SCKTOP(CLK_RTC_EOSC32, "rtc_eosc32", "clk26m", 2),
-+	GATE_SCKTOP(CLK_RTC_SEC_32K, "rtc_sec_32k", "clk26m", 3),
-+	GATE_SCKTOP(CLK_RTC_MCLK, "rtc_mclk", "rtc_32k", 4),
-+	GATE_SCKTOP(CLK_RTC_32K, "rtc_32k", "clk26m", 5),
-+};
-+
-+static const struct mtk_clk_desc mt6685_sck_top_mcd = {
-+	.clks = sck_top_clks,
-+	.num_clks = ARRAY_SIZE(sck_top_clks),
-+};
-+
-+static const struct mtk_spmi_clk_desc mt6685_sck_top_mscd = {
-+	.desc = &mt6685_sck_top_mcd,
-+	.max_register = 0x10,
-+};
-+
-+static const struct of_device_id of_match_clk_mt6685[] = {
-+	{ .compatible = "mediatek,mt6685-sck-top", .data = &mt6685_sck_top_mscd },
-+	{ /* sentinel */ }
-+};
-+MODULE_DEVICE_TABLE(of, of_match_clk_mt6685);
-+
-+static struct platform_driver clk_mt6685_spmi_drv = {
-+	.probe = mtk_spmi_clk_simple_probe,
-+	.remove = mtk_clk_simple_remove,
-+	.driver = {
-+		.name = "clk-spmi-mt6685",
-+		.of_match_table = of_match_clk_mt6685,
-+	},
-+};
-+module_platform_driver(clk_mt6685_spmi_drv);
-+
-+MODULE_AUTHOR("AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>");
-+MODULE_DESCRIPTION("MediaTek MT6685 SPMI Clock IC clocks driver");
-+MODULE_LICENSE("GPL");
+This was tested on a MT8196 (Kompanio Ultra) Chromebook.
+
+NOTE: This series depends on series [1] "SPMI: Implement sub-devices
+and migrate drivers"
+
+[1]: https://lore.kernel.org/all/20251021083219.17382-1-angelogioacchino.delregno@collabora.com
+
+AngeloGioacchino Del Regno (2):
+  dt-bindings: rtc: Add MediaTek MT6685 PM/Clock IC Real Time Clock
+  rtc: Add support for MT6685 Clock IC's RTC over SPMI
+
+ .../bindings/rtc/mediatek,mt6685-rtc.yaml     |  33 ++
+ drivers/rtc/Kconfig                           |  12 +
+ drivers/rtc/Makefile                          |   1 +
+ drivers/rtc/rtc-mt6685.c                      | 472 ++++++++++++++++++
+ 4 files changed, 518 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/rtc/mediatek,mt6685-rtc.yaml
+ create mode 100644 drivers/rtc/rtc-mt6685.c
+
 -- 
 2.51.1
 
