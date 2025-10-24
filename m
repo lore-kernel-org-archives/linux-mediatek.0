@@ -4,80 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C469CCD193
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Oct 2025 21:40:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07848CCD1BF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Oct 2025 00:30:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
 	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QWX3j8lpcW8XdONVbs8aknv+64UUzejtVFjmBch7rMc=; b=hN5RUDtERka+DLMAuiOXRdnZae
-	vyRhyzmHktubgMTJlk3H2Al5IpFZOYj6uSlUv4FHTfnYEIHttiuwRPHUCCNt3p4mzFWb/ogN72JEx
-	jVVqvZmiUXZ/LvlRA+kxz9eF5kL3HHZhBHz4VAXm+q5kd0cSU1U+qOMzAvezAN/UuJR+xnjjbZwwK
-	mq4EvXG6tsKSO48++scwFQEFyAXizC7ygRzhwSMCk3VfH145v8PSCKxcIV/yAdRDoj5tv2ztD247q
-	teZMOF4uxD91bIGE60wsxWyxIdV15Ahsqj4ApJgRGtjUWxT1u3Geri9sWiYF8cKW0496Ifz1DHYR5
-	AH/SLDug==;
+	bh=2mywD2eokzS9C8bEdrUWL/AblRnTX0WcPpyKJwms7CE=; b=uCA+R7FlLZs1/hwg8nSKhg3fXI
+	bLFrknOQ9P/ZELRVQrnuUa3rViP8ykiARJl+FE9d+nCfQ1/fsQwpdTvZwpJFOxy2tCEw8WPdLhcui
+	dy9loMMoHTIfvAFwTgndW+/7F9JcsRtpjHe+HET4uKKw1mwz0ge6u7PVcSy8YTdqDMxKlYck5Zgll
+	XRSJJX+oLtCW5+ZRy19T4H71ldFXhHOIEkHqhU2tCxvC0/My0RRQsJ7S6+Bog8M5u/VgzskW6Drc1
+	dRzYFJAxFaVhl//aOG5V4W6Ki7paVhVVkMWMhISY8LQvfRRCtAtTGH3lQxxeNI4C6wQNV1gzPLs4n
+	HKf3sCeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vC32x-00000007emm-3nof;
-	Thu, 23 Oct 2025 21:40:35 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vC5hP-00000007uGU-2o6z;
+	Fri, 24 Oct 2025 00:30:31 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vC32v-00000007emW-2S6E;
-	Thu, 23 Oct 2025 21:40:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:Date:
-	Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:Content-Type:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=QWX3j8lpcW8XdONVbs8aknv+64UUzejtVFjmBch7rMc=; b=fMylW+jju5Xzwm4uIAB6haro8B
-	Z9kvpDRGYcwcdapjvhhr6zFqTfk+45Hbp8uUX6h7PM+1SG7ZvuH8luElEWpL92iyxohQqymzE2VVd
-	jI6rLbKqXZwRnkNRaESj77nX4vXJVUtMG+qz5Ynw8jMFamljgkbogt0XXT8wmrSV8QiV75cx28u+I
-	dAzd5N3FJFOF3YNzspTBAeyQiGzdIsYP8CoX9S38d5srxFaEmP2OBF++pV1WlLbMj7YWdU3R+Vy5H
-	ijxTdL5itF4YzBSvdpRuH0tW8n/AOrJpeXznj9qr+R1vkQCjOlQQ5mG1JBh9hXiVaf5H3zWDyaO0x
-	9dPy1e7g==;
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vC2BD-00000001mlU-3MG7;
-	Thu, 23 Oct 2025 20:45:05 +0000
+	id 1vC5hN-00000007uGG-3Ak4;
+	Fri, 24 Oct 2025 00:30:29 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id CCA554434A;
-	Thu, 23 Oct 2025 21:40:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AB27AC4CEE7;
-	Thu, 23 Oct 2025 21:40:26 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id D2878641B1;
+	Fri, 24 Oct 2025 00:30:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7C8CEC113D0;
+	Fri, 24 Oct 2025 00:30:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761255626;
-	bh=5qCzJg0hCt3HBb3QIW58eH+hgYTu6FwAxvg34Yv5VZo=;
+	s=k20201202; t=1761265828;
+	bh=IL31NnCzzZqbqIiX9Q/5Q5IvEscFeF0zSTzAPWrAkA4=;
 	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=hBJKwggNlS5Z/APUyqIyD/y3+ODXl8giHzG1gqnyTHY6Kx57RGM/6Bv+Q+hNMOJsx
-	 zDGzvBYt9sYkNhQoz9P7Mq5aoI1w5n+wbOLQhWlYJHlROaaHm0GwS2ZB1p9r46g6TF
-	 fVkqgs1y2mkXPHJWVeypsX5K8S5DlGCGpkBd2eFNn3JsD1f9CbVE4dKINgGj22vkWC
-	 4hQLBnrCMLX7UFvzJ4Y3cIr2y7g8XIuKEev3HUd2iDuK4QpaBqtNRagn/WuAlzeyqZ
-	 XlU+BzVIciG55ec82SLKs7S+ObDRCYdigBA275Spv2uU5gLCLWCEbZcPtNde9jMKCq
-	 55dNZJhb5ITzA==
+	b=p4OmMeXe56DC/0+vH2lbnoyXGuDofoHurZZoIgf0s/Jsu3W4uETm2rJrKloVn4Pxd
+	 PSjC65v7FTVV4Mw0/quY2zU1pHtMHFR8vOu7arygz9NxZnheKHGAkXiVRkBYW2NHKm
+	 HAYxrvi98fw9R8jDaXVepCUjbz78uNKcDXn6MhHSdQRvrPN5bxpE+oF4tMz5jlFPaE
+	 wJCnt+2v7h90/AyDIKke4D8wH+NboQrnQ/h1zc+TUAmgQBHiNFyRIZTrRwEDIePuVg
+	 xeDJWQGW0rf+kwWzeWinEcVaOvdyVrtkNzRK9Yb1jOtR8yNohEXHUtsXhzHXLpvg4Q
+	 gzQm6HHU2nyFA==
 Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 33B33380A960;
-	Thu, 23 Oct 2025 21:40:08 +0000 (UTC)
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id EAF843809A38;
+	Fri, 24 Oct 2025 00:30:09 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH] Bluetooth: fix corruption in h4_recv_buf() after cleanup
-From: patchwork-bot+bluetooth@kernel.org
-Message-Id: <176125560702.3260295.10385824633115850837.git-patchwork-notify@kernel.org>
-Date: Thu, 23 Oct 2025 21:40:07 +0000
-References: <ab6fa50055fa0c39e5501c123c36e662eb48ae61.1761245114.git.calvin@wbinvd.org>
-In-Reply-To: <ab6fa50055fa0c39e5501c123c36e662eb48ae61.1761245114.git.calvin@wbinvd.org>
-To: Calvin Owens <calvin@wbinvd.org>
-Cc: linux-kernel@vger.kernel.org, marcel@holtmann.org, luiz.dentz@gmail.com,
- sean.wang@mediatek.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, amitkumar.karwar@nxp.com,
- neeraj.sanjaykale@nxp.com, yang.li@amlogic.com, pmenzel@molgen.mpg.de,
- linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- francesco@valla.it
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251023_214504_040216_A3176C78 
-X-CRM114-Status: GOOD (  10.28  )
+Subject: Re: [PATCH net-next v2] net: airoha: Remove code duplication in
+ airoha_regs.h
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <176126580849.3301171.1340317563476712267.git-patchwork-notify@kernel.org>
+Date: Fri, 24 Oct 2025 00:30:08 +0000
+References: <20251022-airoha-regs-cosmetics-v2-1-e0425b3f2c2c@kernel.org>
+In-Reply-To: <20251022-airoha-regs-cosmetics-v2-1-e0425b3f2c2c@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, horms@kernel.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,24 +74,22 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hello:
 
-This patch was applied to bluetooth/bluetooth-next.git (master)
-by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
+This patch was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-On Thu, 23 Oct 2025 11:47:19 -0700 you wrote:
-> Thanks to Francesco Valla's investigation, the reason for the duplicate
-> code I recently cleaned up is finally clear: a different structure is
-> stored in drvdata for the drivers which used that duplicate function,
-> but h4_recv_buf() assumes drvdata is always an hci_uart structure.
+On Wed, 22 Oct 2025 09:11:12 +0200 you wrote:
+> This patch does not introduce any logical change, it just removes
+> duplicated code in airoha_regs.h.
+> Fix naming conventions in airoha_regs.h.
 > 
-> Consequently, alignment and padding are now randomly corrupted for
-> btmtkuart, btnxpuart, and bpa10x in h4_recv_buf(), causing erratic
-> breakage.
+> Reviewed-by: Simon Horman <horms@kernel.org>
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 > 
 > [...]
 
 Here is the summary with links:
-  - Bluetooth: fix corruption in h4_recv_buf() after cleanup
-    https://git.kernel.org/bluetooth/bluetooth-next/c/1aaa18cc80c5
+  - [net-next,v2] net: airoha: Remove code duplication in airoha_regs.h
+    https://git.kernel.org/netdev/net-next/c/99ad2b6815f4
 
 You are awesome, thank you!
 -- 
