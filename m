@@ -4,63 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F727CCF9E3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Oct 2025 16:25:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C3CDCCF9E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Oct 2025 16:29:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LHvvp3fHJN7ig/nSsWFRTtMS9x+cWR9vOpGpMQGC7vs=; b=0oUD/0doBEalkpoYrVdzcvyokJ
-	x4dqYZbYPB8U8CTQSqtfW1OIRPYhIhk3WOiX+ZwYya2AHyPFoPmLnNaHq+gt6lD4KxhWoIZ1fEVgh
-	2ZC1UCsoqpVr/aLOaHIA+tV+tetrJEXj9RbFx0DblRjQyH7E3NkhN0oQCQtK718H7hAUDBs9dUooG
-	k0OHLEBN7n1nx5JSvktTS1use+I4klvrRbQtUSSX9XcfV+4roQK04q0R5OI6zyv9pPf6PJkuqFixM
-	x944yh7QTVpuwPe88ganpKWQNEH/Z97tBNjWc3SXdC/9TYrbM0T8O5xn6WecYGZjjkg8R0Usv+RNs
-	1RpY6/lA==;
+	bh=FaIJQ+1THBMFGo5pDH4KXJgFvv8P1MnGNFwzP1hAer8=; b=HOGY5+UvWUHLe89GH0obxPHzBL
+	uPGS4+eAyH7o1pIfiInzI72oIkvehaEc6XrO2KN5i/9a+qigpNagh85GTK6+PceE4g2JJg3xpVOfL
+	E0Zy6HSndzY7mlL+HBjfQEInIs3ThCfRfDy7JvnsEFBrVEz2g7W9m9vWd+BcUPSMXmLjJhWSWEWKY
+	e+8oSoEnTaVTkizCLsfoQT4zdgLe0P0urLg3czMRy5ORkOn2ty24CKUMPHA8gOII8Y9C28QA7uxJz
+	hhV+hQNYsFxu/jKSbbVL6ZW0zrrKqIM3kYwYQyZyruhsekbwCWoHoAAMc0D3yiqxbRA4sT51KM8tC
+	6HF+FAsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCKbR-00000009xvc-1NTp;
-	Fri, 24 Oct 2025 16:25:21 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vCKfc-00000009yYf-2X7g;
+	Fri, 24 Oct 2025 16:29:40 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCKbP-00000009xv3-03fT;
-	Fri, 24 Oct 2025 16:25:19 +0000
+	id 1vCKfZ-00000009yXg-0TYQ;
+	Fri, 24 Oct 2025 16:29:38 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6FCDF6026D;
-	Fri, 24 Oct 2025 16:25:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E8554C4CEF1;
-	Fri, 24 Oct 2025 16:25:14 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 785A8488C2;
+	Fri, 24 Oct 2025 16:29:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 84656C4CEF1;
+	Fri, 24 Oct 2025 16:29:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761323118;
-	bh=zIhatHOop5VHM1hZdEuI5gEL89I036E+FwCPc6EAmEY=;
+	s=k20201202; t=1761323376;
+	bh=J7OMjg4+GfzNY1ARYj6hyRpVfLZJNzOfQdY9BTlvpsU=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=bTy1hkKYjvbOgv2kLRk2TvNW80C9TCuxq2mtd0FmSy/AorkHB5ZQ8pOdw3yU1mQDf
-	 6bw2EDpQy4QZtUYEvQww1yExApzVIyfq3Q4+W5hSYmqd6SZhIiTE2ZJ0dDHac4iR+B
-	 fKHt5wIrBIuUEOxm3bojACr42eIVtpARcCcrqsO7B3z3skSfK4uTJ8hmdCE0RNkx0+
-	 LqVszcL9x/W9POT7XnyRf2LeM1Tu4wDEuAe3LfPDN4vQ71D926C6r46/D5CWPraz9l
-	 5PKBbbZNaK5xOmeDKQ5IR5y+rnprD1vVS7Fjfo3IrHPK0PlPJFEsDR01rCrE8PnCj3
-	 99jTCVFVepF8Q==
-Date: Fri, 24 Oct 2025 17:25:12 +0100
+	b=N1jDcVgDap9U54WInJ8YbqD6QpOMUXvRpL4//FMU+fvnu5dZvjaDevwUNEHbvkrkC
+	 kVoCzRaL9Xz1c1Sxams385EMs/ud14kQNl51l7j8A8ok6KQpmeZv4l48SlhIwSvtdu
+	 rqHMATQeut3nWjloZC82kayoS/DPzX8GWHKSLkN2KYK3ZCA38UD1IoAkdzxEFra/nk
+	 0mIyFuPFHly+dcbqHMYhYXDBUqBYZubxKyEyeHIcBkY0N63Fngt9vDZ3LmMOMXeq06
+	 T5eWeG4s0jtN27Kuegh89IyiwUio38ugIt100xXao4R/Ed/BqgV6ATZTaE/u7Br06V
+	 2kRBbsnsKr22g==
+Date: Fri, 24 Oct 2025 17:29:31 +0100
 From: Conor Dooley <conor@kernel.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: sboyd@kernel.org, mturquette@baylibre.com, robh@kernel.org,
+Cc: linux-mediatek@lists.infradead.org, lee@kernel.org, robh@kernel.org,
 	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
-	laura.nao@collabora.com, nfraprado@collabora.com,
-	wenst@chromium.org, y.oudjana@protonmail.com,
-	linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+	lgirdwood@gmail.com, broonie@kernel.org, devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v1 6/7] dt-bindings: clock: Describe MT6685 PM/Clock IC
- Clock Controller
-Message-ID: <20251024-trophy-clause-7db540d073fa@spud>
-References: <20251024083301.25845-1-angelogioacchino.delregno@collabora.com>
- <20251024083301.25845-7-angelogioacchino.delregno@collabora.com>
+	kernel@collabora.com, wenst@chromium.org,
+	igor.belwon@mentallysanemainliners.org
+Subject: Re: [PATCH v10 1/9] dt-bindings: regulator: Document MediaTek MT6316
+ PMIC Regulators
+Message-ID: <20251024-think-handwoven-504634ca620d@spud>
+References: <20251024083221.25758-1-angelogioacchino.delregno@collabora.com>
+ <20251024083221.25758-2-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="hwCfY64Se0JycgpW"
+	protocol="application/pgp-signature"; boundary="adpN37SuSkUm8sD7"
 Content-Disposition: inline
-In-Reply-To: <20251024083301.25845-7-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20251024083221.25758-2-angelogioacchino.delregno@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251024_092937_193044_A14ED2F1 
+X-CRM114-Status: GOOD (  23.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,156 +78,157 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---hwCfY64Se0JycgpW
+--adpN37SuSkUm8sD7
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, Oct 24, 2025 at 10:33:00AM +0200, AngeloGioacchino Del Regno wrote:
-> Add bindings to describe the SCK_TOP clock controller embedded
-> in the MT6685 IC, reachable over the SPMI bus.
+On Fri, Oct 24, 2025 at 10:32:13AM +0200, AngeloGioacchino Del Regno wrote:
+> Add bindings for the regulators found in the MediaTek MT6316 PMIC,
+> usually found in board designs using the MT6991 Dimensity 9400 and
+> on MT8196 Kompanio SoC for Chromebooks.
 >=20
+> This chip is fully controlled by SPMI and has multiple variants
+> providing different phase configurations.
+>=20
+> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
 abora.com>
 > ---
+>  .../regulator/mediatek,mt6316b-regulator.yaml | 78 +++++++++++++++++++
+>  .../regulator/mediatek,mt6316c-regulator.yaml | 78 +++++++++++++++++++
+>  .../regulator/mediatek,mt6316d-regulator.yaml | 77 ++++++++++++++++++
+>  3 files changed, 233 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,=
+mt6316b-regulator.yaml
+>  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,=
+mt6316c-regulator.yaml
+>  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,=
+mt6316d-regulator.yaml
 >=20
-> NOTE: This does not contain any example because the MT6685 RTC
->       will be added to the mfd binding for MediaTek SPMI PMICs
->       and examples will be there.
->=20
-> ** For reviewing purposes, this is how the example will look like: **
->=20
->   - |
->     #include <dt-bindings/interrupt-controller/irq.h>
->     #include <dt-bindings/spmi/spmi.h>
->=20
->     spmi {
->       #address-cells =3D <2>;
->       #size-cells =3D <0>;
->=20
->       pmic@9 {
->         compatible =3D "mediatek,mt6363";
->         reg =3D <0x9 SPMI_USID>;
->         interrupts =3D <9 1 IRQ_TYPE_LEVEL_HIGH>;
->         interrupt-controller;
->         #address-cells =3D <1>;
->         #interrupt-cells =3D <3>;
->         #size-cells =3D <0>;
->=20
->         clock-controller@514 {
->           compatible =3D "mediatek,mt6685-sck-top";
->           reg =3D <0x514>;
->           #clock-cells =3D <1>;
->         };
->=20
->         rtc@580 {
->           compatible =3D "mediatek,mt6685-rtc";
->           reg =3D <0x580>;
->           interrupts =3D <9 0 IRQ_TYPE_LEVEL_HIGH>;
->         };
->       };
->     };
->=20
->  .../bindings/clock/mediatek,mt6685-clock.yaml | 37 +++++++++++++++++++
->  .../dt-bindings/clock/mediatek,mt6685-clock.h | 17 +++++++++
->  2 files changed, 54 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt66=
-85-clock.yaml
->  create mode 100644 include/dt-bindings/clock/mediatek,mt6685-clock.h
->=20
-> diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt6685-cloc=
-k.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt6685-clock.yaml
+> diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6316b=
+-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt63=
+16b-regulator.yaml
 > new file mode 100644
-> index 000000000000..5407ebf2f3b5
+> index 000000000000..65b70dd90728
 > --- /dev/null
-> +++ b/Documentation/devicetree/bindings/clock/mediatek,mt6685-clock.yaml
-> @@ -0,0 +1,37 @@
+> +++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regula=
+tor.yaml
+> @@ -0,0 +1,78 @@
 > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
 > +%YAML 1.2
 > +---
-> +$id: http://devicetree.org/schemas/clock/mediatek,mt6685-clock.yaml#
+> +$id: http://devicetree.org/schemas/regulator/mediatek,mt6316b-regulator.=
+yaml#
 > +$schema: http://devicetree.org/meta-schemas/core.yaml#
 > +
-> +title: MediaTek Clock Controller for MT6685 SPMI PM/Clock IC
+> +title: MediaTek MT6316 BP/VP SPMI PMIC Regulators
 > +
 > +maintainers:
 > +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > +
-> +description: |
-> +  The clock architecture in MediaTek PMICs+Clock ICs is structured like =
-below:
-> +  Crystal(XO) or Internal ClockGen -->
-> +          dividers -->
-> +                      muxes
-> +                           -->
-> +                              clock gate
-
-Is this the intended formatting? Looks weird with "dividers" being
-unaligned with the --> above it, but maybe you were just going for x
-number of spaces?
-
+> +description:
+> +  The MediaTek MT6316BP/VP PMICs are fully controlled by SPMI interface,=
+ both
+> +  feature four step-down DC/DC (buck) converters, and provides 2+2 Phase=
+s,
+> +  joining Buck 1+2 for the first phase, and Buck 3+4 for the second phas=
+e.
 > +
-> +  The device nodes provide clock gate control in different IP blocks.
-
-I think this is more understandable as "This device provides clock gate
-control", if this sck-top is only doing gating. Otherwise, not clear if
-the dividers and muxes are here or elsewhere.
-
 > +properties:
 > +  compatible:
-> +    const: mediatek,mt6685-sck-top
+> +    const: mediatek,mt6316b-regulator
 > +
 > +  reg:
 > +    maxItems: 1
 > +
-> +  '#clock-cells':
-> +    const: 1
+> +patternProperties:
+> +  "^vbuck(12|34)$":
+> +    type: object
+> +    $ref: regulator.yaml#
+> +    unevaluatedProperties: false
+> +    properties:
+> +      regulator-allowed-modes:
+> +        description: |
+> +          Allowed Buck regulator operating modes allowed. Valid values b=
+elow.
+> +            0 - Normal mode with automatic power saving, reducing the sw=
+itching
+> +                frequency when light load conditions are detected
+> +            1 - Forced Continuous Conduction mode (FCCM) for improved vo=
+ltage
+> +                regulation accuracy with constant switching frequency bu=
+t lower
+> +                regulator efficiency
+> +            2 - Forced Low Power mode for improved regulator efficiency,=
+ used
+> +                when no heavy load is expected, will shut down unnecessa=
+ry IP
+> +                blocks and secondary phases to reduce quiescent current.
+> +                This mode does not limit the maximum output current but =
+unless
+> +                only a light load is applied, there will be regulation a=
+ccuracy
+> +                and efficiency losses.
+> +        minItems: 1
+> +        maxItems: 3
+> +        items:
+> +          enum: [ 0, 1, 2 ]
+
+This property has no default, and the property is not required. Is one
+of these modes the default, or is there another mode beyond what's here
+that is used if the property is absent? Or are all modes allowed with no
+property?
+
 > +
 > +required:
 > +  - compatible
 > +  - reg
-> +  - '#clock-cells'
+> +  - '#address-cells'
+
+Why is address-cells required here? Your bucks don't have addresses.
+If it is actually required, Rob's bot has pointed out that the property
+isn't defined for the device anyway.
+
+pw-bot: changes-requested
+
 > +
 > +additionalProperties: false
-> diff --git a/include/dt-bindings/clock/mediatek,mt6685-clock.h b/include/=
-dt-bindings/clock/mediatek,mt6685-clock.h
-> new file mode 100644
-> index 000000000000..acc5e2e15ce1
-> --- /dev/null
-> +++ b/include/dt-bindings/clock/mediatek,mt6685-clock.h
-> @@ -0,0 +1,17 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause */
-> +/*
-> + * Copyright (c) 2025 Collabora Ltd.
-> + *                    AngeloGioacchino Del Regno <angelogioacchino.delre=
-gno@collabora.com>
-> + */
 > +
-> +#ifndef _DT_BINDINGS_CLK_MT6685_H
-> +#define _DT_BINDINGS_CLK_MT6685_H
+> +examples:
+> +  - |
+> +    #include <dt-bindings/spmi/spmi.h>
 > +
-> +/* SCK_TOP_CKPDN */
-> +#define CLK_RTC_SEC_MCLK		0
-> +#define CLK_RTC_EOSC32			1
-> +#define CLK_RTC_SEC_32K			2
-> +#define CLK_RTC_MCLK			3
-> +#define CLK_RTC_32K			4
+> +    spmi {
+> +      #address-cells =3D <2>;
+> +      #size-cells =3D <0>;
 > +
-> +#endif /* _DT_BINDINGS_CLK_MT6685_H */
-> --=20
-> 2.51.1
->=20
+> +      pmic@8 {
+> +        compatible =3D "mediatek,mt6316b-regulator";
+> +        reg =3D <0x8 SPMI_USID>;
+> +        #address-cells =3D <0>;
+> +
+> +        vbuck12 {
+> +          regulator-name =3D "dvdd_core";
+> +          regulator-min-microvolt =3D <450000>;
+> +          regulator-max-microvolt =3D <965000>;
+> +          regulator-allowed-modes =3D <0 1 2>;
+> +          regulator-enable-ramp-delay =3D <256>;
+> +        };
+> +      };
+> +    };
+> +...
 
---hwCfY64Se0JycgpW
+--adpN37SuSkUm8sD7
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaPuoaAAKCRB4tDGHoIJi
-0ly3AP4pc/Q42FkFxA6oNLhl+wg3/cb/OYk9KtGv66YEAQp1IQEA9ffWiNgLR8Zb
-ZwOZZtAY+ZI7j3t7lTe+lRh7yR13Eww=
-=8AKD
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaPupawAKCRB4tDGHoIJi
+0tP5AQDTEDGCok9YeXiwjucuPp5QDUW1WDyirZEYNOB8nLm3NQD/XZWXvV8E/94V
+LqudmxMVSSFy3pt6GNMlPr0im8tgWgU=
+=xSW1
 -----END PGP SIGNATURE-----
 
---hwCfY64Se0JycgpW--
+--adpN37SuSkUm8sD7--
 
