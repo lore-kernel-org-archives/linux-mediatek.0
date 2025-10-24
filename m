@@ -4,79 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 094E4CCD1A5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Oct 2025 09:07:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07117CCD1A5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Oct 2025 10:10:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ytPbw8HG61h/4DFqHZ/NLAyfZrCPaaPQmHK4j2DI+tA=; b=VG/GWwOr9FFyQ+0HhMyH5jTLpJ
-	mVsj63pFUAElSg3jUY3ML2M4MHVjcMxXQalnwml8mvnm6mGMhwCUHhpoy1UfY5UYDXg3WdSyMtEfZ
-	RW4RWNuzlkD8Ou8J2EDIwSVeXvy+RjGexPyh5LpaRylDuN3fU4cg/PR0aD2sA3EH6f4FDMM7iNUUB
-	6ULC7qz8NXBp7D3PIQNpUqQjzw58WJXZ4GxiW4Yyx+X8bodTIQPxXkDFL/D9mbmLVV/9GUvOq6+pT
-	3vxAwHUZqFvh9r7h7ZpCRb2MFxv887FnyLfzWfyTs48dDjwhSVtKAmgh++BZKqNh0CVfqz3+2NRWb
-	+uCyUwAQ==;
+	bh=PXSPsL3y5mQE8DWh3Ua7AeS6eeo762IGO2BXqlpQ4Og=; b=SQkMO4PBrHyYC7mlC1VFRCJ9X7
+	NeTfQyQaGNGN/AFWKKdyQP5iJ9c/uSRrbTInfj2unbm88WK5g9ucxUldiGjDTyTGRXM0GhMxn9vVm
+	GY8ck3Rvg6RCE0r1qX2GVDn0t7HgbRiOzYPlC4Cts4IjxgeYXnAcDwSvNnR12Bu43KLdbbtxpinEW
+	u58v7OOtISKqvg9A65fkxawJmRjz/xuotUr/wL9JlNZU/vVn0mvzT7CMKZs05JsnzD2dLofvSedca
+	NWWx6DaHstJifuEIhUcL49OMe23z2SgaWRZncW56kijlBkT+h6oM7joGg61rrCX4A8YbRcdA27Iuq
+	mFJM069A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCDm8-00000008oh8-0o3x;
-	Fri, 24 Oct 2025 09:07:56 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1vCEkI-00000008zCt-2Yi3;
+	Fri, 24 Oct 2025 10:10:06 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCDm3-00000008oeS-3RjS
-	for linux-mediatek@lists.infradead.org;
-	Fri, 24 Oct 2025 09:07:54 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1vCDl3-0007sx-6E; Fri, 24 Oct 2025 11:06:49 +0200
-Received: from lupine.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::4e] helo=lupine)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1vCDl0-005CLv-1Y;
-	Fri, 24 Oct 2025 11:06:46 +0200
-Received: from pza by lupine with local (Exim 4.98.2)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1vCDl0-000000004N3-1aFM;
-	Fri, 24 Oct 2025 11:06:46 +0200
-Message-ID: <6915fde3171d0e063b931abbe04e3216375af8fd.camel@pengutronix.de>
-Subject: Re: [PATCH v3 05/24] phy: mediatek: ufs: Add support for resets
-From: Philipp Zabel <p.zabel@pengutronix.de>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, Alim Akhtar	
- <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>, Bart Van
- Assche	 <bvanassche@acm.org>, Rob Herring <robh@kernel.org>, Krzysztof
- Kozlowski	 <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Matthias Brugger	 <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
- <angelogioacchino.delregno@collabora.com>, Chunfeng Yun	
- <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, Kishon Vijay
- Abraham I <kishon@kernel.org>, Peter Wang <peter.wang@mediatek.com>,
- Stanley Jhu <chu.stanley@gmail.com>,  "James E.J. Bottomley"
- <James.Bottomley@HansenPartnership.com>, "Martin K. Petersen"
- <martin.petersen@oracle.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark
- Brown <broonie@kernel.org>
-Cc: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, 
-	kernel@collabora.com, linux-scsi@vger.kernel.org,
- devicetree@vger.kernel.org, 	linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, 	linux-mediatek@lists.infradead.org,
- linux-phy@lists.infradead.org
-Date: Fri, 24 Oct 2025 11:06:46 +0200
-In-Reply-To: <20251023-mt8196-ufs-v3-5-0f04b4a795ff@collabora.com>
-References: <20251023-mt8196-ufs-v3-0-0f04b4a795ff@collabora.com>
-	 <20251023-mt8196-ufs-v3-5-0f04b4a795ff@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.1-1 
+	id 1vCEkG-00000008zBG-25Ux;
+	Fri, 24 Oct 2025 10:10:04 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id DC36A60051;
+	Fri, 24 Oct 2025 10:10:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 52798C4CEF1;
+	Fri, 24 Oct 2025 10:10:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1761300603;
+	bh=h8OjTFqpeqF+Jo/iQAP6DDq4pBZz0197mn1PnYimu44=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=vC52BhPZm7KGfPtJnth+IMAIqNx18X//zP6XDw3jR+vj8StfXD51PtSRO9Ag2oto3
+	 3DjaM01UZxrN5JTMumBsqRayoHYaA9+bDLMuXS6gKc/WEiZka+ClgMOXl6E51F8Ajo
+	 xWOQPvexiX+4CnmycAYxO1EyrhWd/i9+saW6OfkBzF8JVkqNVxq3HmIUeZztT46LvR
+	 lDvEhEGaxz1Gy0bFgiTq/FORHhbSQDAHVCYIBvzIzR63ePHxNBTnKd9paanSajUzdv
+	 RhKuhmr2DF4fL9ZgzUIwNgYX/wn1BeAsxeVAec64KGvsP20agdpLF7eIvketO8UtZ1
+	 hyRprz8hW+Qnw==
+Date: Fri, 24 Oct 2025 05:10:01 -0500
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: p.zabel@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251024_020752_732713_4610E447 
-X-CRM114-Status: GOOD (  18.13  )
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: lgirdwood@gmail.com, conor+dt@kernel.org, matthias.bgg@gmail.com, 
+ kernel@collabora.com, krzk+dt@kernel.org, devicetree@vger.kernel.org, 
+ igor.belwon@mentallysanemainliners.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ broonie@kernel.org, linux-mediatek@lists.infradead.org, wenst@chromium.org, 
+ lee@kernel.org
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20251024083221.25758-2-angelogioacchino.delregno@collabora.com>
+References: <20251024083221.25758-1-angelogioacchino.delregno@collabora.com>
+ <20251024083221.25758-2-angelogioacchino.delregno@collabora.com>
+Message-Id: <176130060160.1071538.6669975917646919183.robh@kernel.org>
+Subject: Re: [PATCH v10 1/9] dt-bindings: regulator: Document MediaTek
+ MT6316 PMIC Regulators
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,48 +73,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Nicolas,
 
-On Do, 2025-10-23 at 21:49 +0200, Nicolas Frattaroli wrote:
-> The MediaTek UFS PHY supports PHY resets. Until now, they've been
-> implemented in the UFS host driver. Since they were never documented in
-> the UFS HCI node's DT bindings, and no mainline DT uses it, it's fine if
-> it's moved to the correct location, which is the PHY driver.
->=20
-> Implement the MPHY reset logic in this driver and expose it through the
-> phy subsystem's reset op. The reset itself is optional, as judging by
-> other mainline devices that use this hardware, it's not required for the
-> device to function.
->=20
-> If no reset is present, the reset op returns -EOPNOTSUPP, which means
-> that the ufshci driver can detect it's present and not double sleep in
-> its own reset function, where it will call the phy reset.
->=20
-> Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
-> Reviewed-by: Peter Wang <peter.wang@mediatek.com>
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+On Fri, 24 Oct 2025 10:32:13 +0200, AngeloGioacchino Del Regno wrote:
+> Add bindings for the regulators found in the MediaTek MT6316 PMIC,
+> usually found in board designs using the MT6991 Dimensity 9400 and
+> on MT8196 Kompanio SoC for Chromebooks.
+> 
+> This chip is fully controlled by SPMI and has multiple variants
+> providing different phase configurations.
+> 
+> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  drivers/phy/mediatek/phy-mtk-ufs.c | 71 ++++++++++++++++++++++++++++++++=
-++++++
->  1 file changed, 71 insertions(+)
->=20
-> diff --git a/drivers/phy/mediatek/phy-mtk-ufs.c b/drivers/phy/mediatek/ph=
-y-mtk-ufs.c
-> index 0cb5a25b1b7a..d77ba689ebc8 100644
-> --- a/drivers/phy/mediatek/phy-mtk-ufs.c
-> +++ b/drivers/phy/mediatek/phy-mtk-ufs.c
-[...]
-> @@ -163,8 +224,18 @@ static int ufs_mtk_phy_probe(struct platform_device =
-*pdev)
->  	if (IS_ERR(phy->mmio))
->  		return PTR_ERR(phy->mmio);
-> =20
-> +	phy->reset =3D devm_reset_control_get_optional(dev, NULL);
+>  .../regulator/mediatek,mt6316b-regulator.yaml | 78 +++++++++++++++++++
+>  .../regulator/mediatek,mt6316c-regulator.yaml | 78 +++++++++++++++++++
+>  .../regulator/mediatek,mt6316d-regulator.yaml | 77 ++++++++++++++++++
+>  3 files changed, 233 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml
+>  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6316c-regulator.yaml
+>  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6316d-regulator.yaml
+> 
 
-Please use devm_reset_control_get_optional_exclusive() directly.
+My bot found errors running 'make dt_binding_check' on your patch:
 
-regards
-Philipp
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/regulator/mediatek,mt6316c-regulator.example.dtb: pmic@6 (mediatek,mt6316c-regulator): '#address-cells' does not match any of the regexes: '^pinctrl-[0-9]+$', '^vbuck(124|3)$'
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt6316c-regulator.yaml
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.example.dtb: pmic@8 (mediatek,mt6316b-regulator): '#address-cells' does not match any of the regexes: '^pinctrl-[0-9]+$', '^vbuck(12|34)$'
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt6316b-regulator.yaml
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/regulator/mediatek,mt6316d-regulator.example.dtb: pmic@7 (mediatek,mt6316d-regulator): '#address-cells' does not match any of the regexes: '^pinctrl-[0-9]+$'
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt6316d-regulator.yaml
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20251024083221.25758-2-angelogioacchino.delregno@collabora.com
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
+
 
