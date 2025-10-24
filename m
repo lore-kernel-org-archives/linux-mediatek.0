@@ -4,76 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A57E6CCD1A5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Oct 2025 12:39:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B978DCCF9E3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Oct 2025 13:09:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=z3bwLi6r+RJysZCfVDM7FZL6kr/SQQ0mtAPTRyMN5GA=; b=JbX1x9nH65+JQv5ctbFrWqT+B4
-	i5nDUGTUDK9m5fsrWA/9XhAmgm3A7QkQPtV1RVeU+qDvRKR/HylTBqUmLdF+6iyiLlSnU87N0HOkS
-	1vTE1ok/E2XukF8fhTJqJKVcADfqOipGh+55g6AvJv5b4hU9i+1+aGQMtyYpeyxAsr9o2InbFuAem
-	ROBZSIOz/E4Mp9f8y4n3G+fEj/NhGG32F6t6w9NfqwM0GFvrY53Rb5czqSbCqYnP8lux7afCaK8Po
-	kgK2M4pFEg6wGBDcxBnELS13wjdOlQl0xnVmP58ab5pIsn2wFHXn+kbZ8vjKzbFj8KNv+4rw8mbne
-	FiRu4HHw==;
+	bh=DtP9jXfURx0nL3j9ROiot35sOFYbUh870uoH89SaSnU=; b=hXcLgEpZAGNUD3+t4k5hRvjMwD
+	b0NgX6o+XGKcxKe9ABqpy759upQDsaWO/DjFXE/LWdNY+/jVokYVEyVIBOIWgqQcVmQSwzpxVGgFs
+	oDgVpp7P0r7O+xrCH2sQsK6gJUbE8plRgLVQIJ1q7qmyU0nPfq1Tkt9ltBtJQdh8Qom4/ivIyC2Np
+	YvM2Bf3yTi4QVXl5pKK6mZHwfWqnnIEF8q7yf5bUb013odQxZyGLJXC6wRmoAsMujK8WbrR/zbOnF
+	vxhFl0VMFQq/soEny+BCv95FpXdkDxzT1OebpoP+EjHaPk2fyvkSejo93qwRkXCgFN49Ba5MYX31z
+	FlaBs/Gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCH4v-00000009O5l-1JbU;
-	Fri, 24 Oct 2025 12:39:33 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCH4s-00000009O3v-0UPF
-	for linux-mediatek@lists.infradead.org;
-	Fri, 24 Oct 2025 12:39:31 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id C411C4535F
-	for <linux-mediatek@lists.infradead.org>; Fri, 24 Oct 2025 12:39:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9F127C116B1
-	for <linux-mediatek@lists.infradead.org>; Fri, 24 Oct 2025 12:39:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761309569;
-	bh=aK66e1HazOzWMzd8lgqFFjotERBnHjJTC97qMkubdQc=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=oe2YO0L0hFECA716hJuMAMCXTbtb9S3MNFEDGT//JvrOLGbJpaw4rvTaXTnRPJPNy
-	 rDW6mYIAa3zqmK+AY+ZkbRDWV3ACYh0evQbuyTHlEYh4B9gs5UsFVAurUfQX1rCSn5
-	 B57l9yoYhlJRW/fF4PzgfSyq9r4+YJhB9GdN1uV7agwLArxR3NqIP+LmIVe8ZcKVLf
-	 WtwrdOVnO/ctCGV1E5nXm7RekLqAi4IScWkUUWNHFuMleM4KBF9i9adIsxEilGFHMh
-	 hTd+Ich/6l6F9yvdSsvNuertCdYqavx2AKUabJUqyid+nQ8c+xA/h6rUQ7NR1vLWSJ
-	 yA67BI1w0TiwQ==
-Received: by mail-pf1-f174.google.com with SMTP id d2e1a72fcca58-7a27c67cdc4so1397612b3a.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 24 Oct 2025 05:39:29 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCVmSeZMDne6flUlVucupBbEDFwtj76wpt3QzLdT9+DiYLuym34L90lomMaQ+Sj1ZwNAd9xCeVLk4RDRhIOFbA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwYdc2rK8dEqAazwoeZNwQ8BSho91F5t8y0k95KdbQx9j1M8T69
-	yb2WZwxPp37YAycPJgaToAmc+jnbkDsEzvY+Kcw6zf7MM2rb+FOwPYXeclvBb5JY1C8izhH6nWF
-	9A6gmEKoMkgjULbWqLs+/7DTIa7CtOg==
-X-Google-Smtp-Source: AGHT+IEEZDTHYjPPrWU7mEBc+Dc3dKtlrXyd2PgGiTk+MM3/AaJL+7FaNl7MZbg+WzwPdyRBhQ49pl+COQN1GQ0+IoU=
-X-Received: by 2002:a17:903:b90:b0:276:d3e:6844 with SMTP id
- d9443c01a7336-290ca1218cbmr307603995ad.33.1761309569048; Fri, 24 Oct 2025
- 05:39:29 -0700 (PDT)
+	id 1vCHXX-00000009UaQ-10YU;
+	Fri, 24 Oct 2025 13:09:07 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vCHXU-00000009UZS-21Og;
+	Fri, 24 Oct 2025 13:09:05 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id D5ABB1515;
+	Fri, 24 Oct 2025 06:08:53 -0700 (PDT)
+Received: from [10.1.37.17] (e122027.cambridge.arm.com [10.1.37.17])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 2D3203F63F;
+	Fri, 24 Oct 2025 06:08:55 -0700 (PDT)
+Message-ID: <76b35848-8f5e-49a2-ac4a-318945448b9a@arm.com>
+Date: Fri, 24 Oct 2025 14:08:54 +0100
 MIME-Version: 1.0
-References: <20251023-mediatek-drm-hdmi-v2-v11-0-7873ec4a1edf@collabora.com>
-In-Reply-To: <20251023-mediatek-drm-hdmi-v2-v11-0-7873ec4a1edf@collabora.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Fri, 24 Oct 2025 12:39:16 +0000
-X-Gmail-Original-Message-ID: <CAAOTY_9f4bgy2z-PJL8kjKt5Es2NAsy8QvA36Rd6SC3x8W6b5g@mail.gmail.com>
-X-Gm-Features: AS18NWDks8wZh1-s9gE8rEBkHwxlTBkTzcn0tpVgOhEA_cFmNTtHC15b7iSv-yY
-Message-ID: <CAAOTY_9f4bgy2z-PJL8kjKt5Es2NAsy8QvA36Rd6SC3x8W6b5g@mail.gmail.com>
-Subject: Re: [PATCH v11 00/11] Add support for MT8195/88 HDMIv2 and DDCv2
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, CK Hu <ck.hu@mediatek.com>, 
-	kernel@collabora.com, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, Sjoerd Simons <sjoerd@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 0/5] MT8196 GPU Frequency/Power Control Support
+To: Ulf Hansson <ulf.hansson@linaro.org>,
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ Jassi Brar <jassisinghbrar@gmail.com>, Chia-I Wu <olvaffe@gmail.com>,
+ Chen-Yu Tsai <wenst@chromium.org>, Liviu Dudau <liviu.dudau@arm.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Kees Cook <kees@kernel.org>,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>, kernel@collabora.com,
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-hardening@vger.kernel.org,
+ linux-pm@vger.kernel.org
+References: <20251017-mt8196-gpufreq-v8-0-98fc1cc566a1@collabora.com>
+ <CAPDyKFodsAR5bOAST3mPLvSVbe653QS6SdSwHr6kyraQ1cwbhQ@mail.gmail.com>
+From: Steven Price <steven.price@arm.com>
+Content-Language: en-GB
+In-Reply-To: <CAPDyKFodsAR5bOAST3mPLvSVbe653QS6SdSwHr6kyraQ1cwbhQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251024_053930_220073_23B8C5A0 
-X-CRM114-Status: GOOD (  52.43  )
+X-CRM114-CacheID: sfid-20251024_060904_609090_A080F840 
+X-CRM114-Status: GOOD (  43.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,245 +78,272 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Louis:
+On 22/10/2025 14:52, Ulf Hansson wrote:
+> On Fri, 17 Oct 2025 at 17:32, Nicolas Frattaroli
+> <nicolas.frattaroli@collabora.com> wrote:
+>>
+>> This series introduces two new drivers to accomplish controlling the
+>> frequency and power of the Mali GPU on MediaTek MT8196 SoCs.
+>>
+>> The reason why it's not as straightforward as with other SoCs is that
+>> the MT8196 has quite complex glue logic in order to squeeze the maximum
+>> amount of performance possible out of the silicon. There's an additional
+>> MCU running a specialised firmware, which communicates with the
+>> application processor through a mailbox and some reserved memory, and is
+>> in charge of controlling the regulators, the PLL clocks, and the power
+>> gating of the GPU, all while also being in charge of any DVFS control.
+>>
+>> This set of drivers is enough to communicate desired OPP index limits to
+>> the aforementioned MCU, referred to as "GPUEB" from here on out. The
+>> GPUEB is still free to lower the effective frequency if the GPU has no
+>> jobs going on at all, even when a higher OPP is set.
+>>
+>> The power- and frequency control driver, mtk-mfg-pmdomain, is now
+>> implemented as a power domain driver, with a set_performance_state
+>> operation. It also exposes itself as a clock provider, so that panthor
+>> can read the actual achieved DVFS clock rate as per the GPUEB firmware.
+>>
+>> This power domain approach means that panthor does not need to know
+>> about how the frequency control works on this SoC, as the OPP core
+>> framework already takes care of it. The only exception is that panthor
+>> needs to not register OPPs from DT itself if there already is an OPP
+>> table present.
+>>
+>> The mailbox driver is a fairly bog-standard common mailbox framework
+>> driver, just specific to the firmware that runs on the GPUEB. It was
+>> merged in v6.18 already.
+>>
+>> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> 
+> This looks good to me!
+> 
+> I can certainly pick up patch2 and patch5, but before I go ahead I
+> just wanted to check what is the preferred merging strategy?
+> 
+> The drm/gpu patches can go independently from the pmdomain patches
+> others, right? In either case, I can pick this complete series too via
+> my pmdomain tree, if that makes sense for everyone. Please let me
+> know.
 
-Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com> =E6=96=BC 2025=E5=B9=
-=B410=E6=9C=8823=E6=97=A5
-=E9=80=B1=E5=9B=9B =E4=B8=8A=E5=8D=8810:32=E5=AF=AB=E9=81=93=EF=BC=9A
->
-> This is a respin of AngeloGioacchino Del Regno's patch series, that adds
-> the support of HDMIv2 and DDCv2 for MT8188 and MT8195 in mediatek-drm.
+I'm about to go on holiday, so I'm not about to merge and run ;)
+But I'm happy if you want to take the complete series through your tree.
 
-Apply the whole series to mediatek-drm-next [1], thanks.
+Thanks,
+Steve
 
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
-log/?h=3Dmediatek-drm-next
+> Kind regards
+> Uffe
+> 
+>> ---
+>> Changes in v8:
+>> - mtk-mfg-pmdomain: remove unused shmem variable that caused a warning
+>>   on GCC, but not clang
+>> - Link to v7: https://lore.kernel.org/r/20251015-mt8196-gpufreq-v7-0-0a6435da2080@collabora.com
+>>
+>> Changes in v7:
+>> - panthor: rename "t" to "table"
+>> - panthor: add code comment explaining why an existing OPP table is
+>>   being checked for
+>> - mtk-mfg-pmdomain: use GF_REG_MAGIC offset for sake of consistency
+>> - mtk-mfg-pmdomain: remove redundant semicolon after mtk_mfg_mt8196_init
+>> - mtk-mfg-pmdomain: fix resource leaks on probe failure
+>> - mtk-mfg-pmdomain: enable/disable EB clock during MT8196 init, which is
+>>   needed for the register read
+>> - Rebase onto next-20251014, which drops already merged patches, namely
+>>   mailbox driver+bindings, and drops the ASN_HASH patch series
+>>   dependency, which was also merged
+>> - Link to v6: https://lore.kernel.org/r/20251003-mt8196-gpufreq-v6-0-76498ad61d9e@collabora.com
+>>
+>> Changes in v6:
+>> - mailbox: move buf definition into if condition, as per Chia-I Wu
+>> - panthor: remove the redundant NULL checks in panthor_devfreq_get_freq
+>> - mtk-mfg-pmdomain: adjust return style consistency
+>> - mtk-mfg-pmdomain: add docstring for mtk_mfg_send_ipi to explain it's
+>>   blocking
+>> - mtk-mfg-pmdomain: use CMD_FIX_DUAL_TARGET_OPPIDX instead of
+>>   CMD_FIX_TARGET_OPPIDX.
+>> - mtk-mfg-pmdomain: reword code comments to not be in the "we" style
+>> - mtk-mfg-pmdomain: shuffle around mbox allocations as per Angelo
+>> - mtk-mfg-pmdomain: don't pointlessly turn on EB clock in probe,
+>>   reducing the need for a comment explaining the bookkeeping
+>> - mtk-mfg-pmdomain: consistently use dev_err_probe and Capitalise first
+>>   letter of error string
+>> - mtk-mfg-pmdomain: get rid of redundant ret = dev_err_probe assignment
+>> - mtk-mfg-pmdomain: reintroduce stack OPP table, choose min(gpu, stack)
+>>   when adding frequencies. Fixes gaps in OPP levels where only stack
+>>   changed, but gpu had duplicates, which resulted in choosing a too slow
+>>   OPP
+>> - mtk-mfg-pmdomain: stub round_rate clk op to opt out of CCF always
+>>   "rounding" a devfreq rate request to the current rate
+>> - Link to v5: https://lore.kernel.org/r/20250929-mt8196-gpufreq-v5-0-3056e5ecf765@collabora.com
+>>
+>> Changes in v5:
+>> - mtk-mfg-pmdomain binding: add memory-regions property, remove shmem
+>>   property, as we now correctly describe the shared memory as a regular
+>>   memory region
+>> - mtk-mfg-pmdomain binding: get rid of redundant |
+>> - drop "dt-bindings: sram: Add compatible for
+>>   mediatek,mt8196-gpufreq-sram" as part of the move to reserved memory
+>> - mtk-mfg-pmdomain: move to using reserved-memory for GPUEB shared
+>>   memory
+>> - mtk-mfg-pmdomain: demote some types to smaller sizes in struct
+>>   mtk_mfg, as per Angelo's suggestions
+>> - mtk-mfg-pmdomain: use units.h for Hz-to-KHz
+>> - mtk-mfg-pmdomain: change for loop in attach_dev to reduce indentation
+>> - mtk-mfg-pmdomain: simplify return in mtk_mfg_power_off
+>> - mtk-mfg-pmdomain: move of_device_id after probe
+>> - mtk_mfg_pmdomain: map mmio by index
+>> - mtk_mfg_pmdomain: add error checking to pm_genpd_init()
+>> - mtk_mfg_pmdomain: add remove function
+>> - mtk_mfg_pmdomain: remove last_opp member and logic, since OPP core
+>>   already does that for us
+>> - mtk_mfg_pmdomain: adjust comment in mtk_mfg_set_performance to explain
+>>   why we're doing what we're doing
+>> - mtk_mfg_pmdomain: call mtk_mfg_set_oppidx in mtk_mfg_power_on with
+>>   the performance_state we deferred setting while it was powered off
+>> - mtk_mfg_pmdomain: add inline function for PWR_ACK checking, as it's
+>>   now used twice with the added remove function
+>> - mtk-mfg-pmdomain: add suppress_bind_attrs so people don't play with
+>>   that
+>> - mtk-mfg-pmdomain: change KConfig from tristate to bool, as module
+>>   unloading results in strange likely firmware-induced hardware state
+>>   woes in the mali GPU
+>> - mtk-mfg-pmdomain: read IPI magic in power_on, don't zero it after
+>>   confirming that seemingly had no purpose
+>> - mtk-mfg-pmdomain: misc style changes
+>> - Link to v4: https://lore.kernel.org/r/20250923-mt8196-gpufreq-v4-0-6cd63ade73d6@collabora.com
+>>
+>> Changes in v4:
+>> - rebase onto next-20250922, which includes Laura Nao's clock patches
+>> - refactor mediatek_mfg into a pmdomain driver called "mtk-mfg-pmdomain"
+>> - move mt8196-gpufreq binding to the power subdirectory
+>> - mali-valhall-csf binding: adjust for power-domains usage
+>> - mali-valhall-csf binding: use clocks on mt8196
+>> - mailbox: prefix defines with "GPUEB_"
+>> - mailbox: get rid of custom of_xlate
+>> - mailbox: rename "CLOGGED" to "BLOCKED"
+>> - mailbox: adjust send_data comment to include more technical info
+>> - mailbox: misc style improvements
+>> - panthor: drop "drm/panthor: devfreq: make get_dev_status use
+>>   get_cur_freq", as it is now not necessary and makes the code worse
+>> - panthor: drop "drm/panthor: devfreq: add pluggable devfreq providers"
+>> - panthor: drop "drm/panthor: add no_clocks soc_data member for MT8196",
+>>   as we now have clocks courtesy of gpufreq
+>> - panthor: check for existing opp table before registering a new one
+>> - mtk-mfg-pmdomain: add turbo_below variant data, which marks OPPs below
+>>   a certain index as turbo for the OPP subsystem
+>> - mtk-mfg-pmdomain: no longer read stack OPPs, as they weren't used
+>> - mtk-mfg-pmdomain: get rid of num gpu opp != num stack opp check.
+>>   That's the firmware's problem should it ever happen, not ours
+>> - mtk-mfg-pmdomain: some small name and whitespace changes on the defines
+>> - Link to v3: https://lore.kernel.org/r/20250917-mt8196-gpufreq-v3-0-c4ede4b4399e@collabora.com
+>>
+>> Changes in v3:
+>> - mali-valhall-csf binding: get rid of clocks for MT8196, rebase onto
+>>   Chia-I Wu's patch
+>> - mt8196-gpufreq binding: rename hw_revision to hw-revision
+>> - mt8196-gpufreq binding: rename clocks
+>> - mt8196-gpufreq binding: drop pointless label in example
+>> - mailbox binding: drop pointless label in example
+>> - mailbox: whitespace changes on defines
+>> - mailbox: remove rx_buf member from channel struct, use stack buffer
+>> - mailbox: check in probe that no rx_len exceeds MBOX_MAX_RX_SIZE
+>> - panthor: add no_clocks SoC data patch, also rebase onto Chia-I Wu's
+>>   series
+>> - panthor: refactor devfreq provider functionality to do allocation and
+>>   initialisation of panthor_devfreq struct in panthor in all cases
+>> - panthor: drop the patch that moves struct panthor_devfreq to a header
+>>   file, as it no longer needs to be exposed to devfreq providers
+>> - mediatek_mfg: refactor devfreq provider functionality to decouple it
+>>   more from panthor itself
+>> - mediatek_mfg: move SRAM magic to a #define
+>> - mediatek_mfg: begrudgingly rename member "padding_lol" to "reserved"
+>> - mediatek_mfg: use local struct device pointer var in more places
+>> - mediatek_mfg: change wording of sleep command failure error message,
+>>   but keep the format specifier because I don't want to throw bare
+>>   errnos at users
+>> - mediatek_mfg: remove unnecessary braces around dev_err EB power off
+>>   timeout message
+>> - mediatek_mfg: allocate rx_data for channels that expect a response
+>> - mediatek_mfg: memcpy the rx buffer from the common mailbox framework
+>>   in the rx callback to rx_data, as mssg now points to stack memory
+>> - mediatek_mfg: make SRAM clearing message dev_dbg
+>> - mediatek_mfg: no longer print physical address of SRAM
+>> - mediatek_mfg: expand on the GF_REG_OPP_TABLE_STK comment, toning down
+>>   its defeatist attitude in the process
+>> - mediatek_mfg: style fixes in mtk_mfg_get_closest_opp_idx
+>> - mediatek_mfg: rename clocks and hw-revision reg as per binding
+>> - Link to v2: https://lore.kernel.org/r/20250912-mt8196-gpufreq-v2-0-779a8a3729d9@collabora.com
+>>
+>> Changes in v2:
+>> - mali-valhall-csf binding: move from performance-controller to
+>>   performance-domains property
+>> - mali-valhall-csf binding: fix vendor name oopsie in compatible of if
+>>   condition
+>> - mt8196-gpufreq binding: move from performance-controller to
+>>   performance-domains by adding the cells property
+>> - mt8196-gpufreq binding: rename e2_id to hw_revision
+>> - mt8196-gpufreq binding: add description that mentions "MediaTek
+>>   Flexible Graphics"
+>> - mt8196-gpufreq binding: get rid of mailbox channels we're unlikely to
+>>   use any time soon, if ever
+>> - mt8196-gpufreq binding: change name of mailbox channels to use -
+>>   instead of _
+>> - mailbox binding: change reg-names to "data" and "ctl"
+>> - drm/panthor: mediatek_mfg: rename e2_id to hw_revision
+>> - drm/panthor: devfreq: switch from performance-controller to
+>>   performance-domains
+>> - drm/panthor: devfreq: get rid of the accidental get_cur_freq function
+>>   move
+>> - mailbox: rename mtk_gpueb_mbox_ch to mtk_gpueb_mbox_chan_desc
+>> - mailbox: use smaller types in mtk_gpueb_mbox_chan_desc where possible
+>> - mailbox: add per-channel runtime data struct
+>> - mailbox: request one threaded IRQ per channel, pass channel struct as
+>>   data
+>> - mailbox: make num_channels in variant struct u8
+>> - mailbox: get rid of no_response, as it was redundant
+>> - mailbox: enable and disable clock in mailbox startup/shutdown
+>> - mailbox: point con_priv of mailbox framework channel struct to this
+>>   driver's channel struct
+>> - mailbox: request and free the threaded IRQ in startup/shutdown
+>> - mailbox: only clear IRQ bit flag once RX data has been read from MMIO
+>> - mailbox: reduce needlessly large receive buffer size
+>> - mailbox: handle allocation errors wherever they could pop up
+>> - mailbox: style cleanups in mtk_gpueb_mbox_read_rx
+>> - mailbox: call platform_get_irq earlier on in probe
+>> - mailbox: set drvdata later on in probe
+>> - mailbox: ioremap resources by index, not name
+>> - mailbox: handle devm_mbox_controller_register errors
+>> - mailbox: rename channels to correspond to bindings
+>> - mailbox: document a few of the private driver structs to be kind to
+>>   the next person who will look at this code
+>> - Link to v1: https://lore.kernel.org/r/20250905-mt8196-gpufreq-v1-0-7b6c2d6be221@collabora.com
+>>
+>> ---
+>> Nicolas Frattaroli (5):
+>>       dt-bindings: gpu: mali-valhall-csf: add mediatek,mt8196-mali variant
+>>       dt-bindings: power: Add MT8196 GPU frequency control binding
+>>       drm/panthor: call into devfreq for current frequency
+>>       drm/panthor: Use existing OPP table if present
+>>       pmdomain: mediatek: Add support for MFlexGraphics
+>>
+>>  .../bindings/gpu/arm,mali-valhall-csf.yaml         |   37 +-
+>>  .../bindings/power/mediatek,mt8196-gpufreq.yaml    |  117 +++
+>>  drivers/gpu/drm/panthor/panthor_devfreq.c          |   62 +-
+>>  drivers/gpu/drm/panthor/panthor_devfreq.h          |    2 +
+>>  drivers/gpu/drm/panthor/panthor_device.h           |    3 -
+>>  drivers/gpu/drm/panthor/panthor_drv.c              |    4 +-
+>>  drivers/pmdomain/mediatek/Kconfig                  |   16 +
+>>  drivers/pmdomain/mediatek/Makefile                 |    1 +
+>>  drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c       | 1044 ++++++++++++++++++++
+>>  9 files changed, 1268 insertions(+), 18 deletions(-)
+>> ---
+>> base-commit: 3477f49ff0433a241da12ec9cecf6c9b2bd1c6f8
+>> change-id: 20250829-mt8196-gpufreq-a7645670d182
+>>
+>> Best regards,
+>> --
+>> Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+>>
 
-Regards,
-Chun-Kuang.
-
->
-> Changes in v11:
->  - Rebased over next-20251023
->  - Resolved merge issues with next-20251023 for patch 4
->  - Added new "drm/mediatek: mtk_hdmi_common: Defer probe when ddc i2c bus
->    isn't available yet" to fix a probe issue when mtk_hdmi_v2 driver is
->    is enabled and built as module.
->  - Added new reviewed-by trailers
->  - Link to v10: https://lore.kernel.org/r/20250808-mediatek-drm-hdmi-v2-v=
-10-0-21ea82eec1f6@collabora.com
->
-> Changes in v10:
->  - Rebased over next-20250807
->  - Dropped patches from v9 that have been already merged in a previous
->    merge window (1 to 14)
->  - Resolved merge issues with next-20250807 for patches 3, 4 and 9
->  - Added new "drm/mediatek: mtk_hdmi: Drop redundant clock retrieval in
->    mtk_hdmi_get_cec_dev" patch to fix an issue introduced by a previously
->    merged patch from this series
->  - Deleted mtk_hdmi.c.orig file added by "drm/mediatek: mtk_hdmi: Split d=
-river
->    and add common probe function" patch
->  - Fixed in "drm/mediatek: Introduce HDMI/DDC v2 for MT8195/MT8188" patch
->    a bug about EDID reading not properly working in mtk_hdmi_ddc_v2 drive=
-r,
->    due to extra byte sent on i2c bus by mtk_ddc_wr_one function when the
->    payload length is equal to 0
->  - Fixed format issues detected by checkpatch in "drm/mediatek: Introduce
->    HDMI/DDC v2 for MT8195/MT8188" patch
->  - Tested on Mediatek Genio 350, 510 and 1200-EVK boards
->  - Link to v9: https://lore.kernel.org/dri-devel/20250415104321.51149-1-a=
-ngelogioacchino.delregno@collabora.com/
->
-> Changes in v9:
->  - Reordered patch from krzk as first as requested by CK
->
-> Changes in v8:
->  - Dropped DPI patches as those have been applied in the previous merge w=
-indow
->  - Changed description in mediatek,mt8195-hdmi.yaml as requested by CK
->  - Refactored function mtk_hdmi_v2_hw_gcp_avmute() to include contents
->    of, and delete, mtk_hdmi_v2_hw_reset_av_mute_regs() as requested by CK
->  - Expanded comment before enablement of HDCP reauthentication interrupt
->    to explain that the HW uses this internally as requested by CK
->  - Added comment in mtk_hdmi_v2_hpd_pord_status() explaining why there
->    are three states for cable detection as requested by CK
->  - Moved extra interrupts clearing from ISR to probe function and added
->    comments explaining the reason why those are being cleaned at probe
->    time, as requested by CK.
->  - Added support (and tested on MT8395/8195 and MT8390/8188) for output
->    in both YUV422 and YUV444 colorspaces other than RGB; please note that
->    RGB is still the default, and that the request for using any of the
->    YUV output formats depends on previous component(s) of the display
->    pipeline declaring support for those; should none of them declare any
->    support for YUV formats, only RGB will be available (no errors, the
->    additional ones will be simply ignored).
->
-> Changes in v7:
->  - Split more patches as requested by CK
->  - Changed the order of the interlaced variable addition as requested
->  - Cleanups in DDCv2 as requested by CK
->  - Removed comment from
->    drm/mediatek: mtk_hdmi: Move output init to mtk_hdmi_register_audio_dr=
-iver()
->    as that was forgotten from reintroduction of print in v5
->  - Some more small nitpicks as pointed out by CK here and there
->
-> Changes in v6:
->  - Split the TVD clock enable/disable calls in a different commit
->  - Changed `is_internal_hdmi` to two different variables, one for
->    DPI input clock from HDMI, and one for AFIFO 1T1P output and
->    conversion (mtk_dpi)
->    - Clarified why MT8195/88 HDMI-reserved DPI1 is different
->  - Moved `input_2p_en` bit to platform data to cleanup DPI vs DPINTF
->    - 1T2P enable bit is different between DPI and DPINTF, but usage
->      is actually the same
->  - Cleaned up headers inclusion in mtk_hdmi_v2.c, mtk_hdmi_ddc_v2.c
->    - Removed some unused headers, added missing bitfield.h header
->  - Split some prints cleanup commits as requested by CK
->  - Split the introduction of mtk_hdmi_conf as requested by CK
->  - Split commit to make CEC optional as requested by CK
->  - Reintroduced forgotten no_capture_mute in codec_pdata (mtk_hdmi_common=
-)
->  - Reintroduced error print for audio clocks enablement failure (mtk_hdmi=
-)
->  - Added cleanup syscon_regmap_lookup_by_phandle commit from Krzysztof K
->
-> Changes in v5:
->  - Rebased over next-20250113
->  - Resolved merge issues with next-20250113
->  - Added bitfield.h inclusion in mtk_dpi in commit [02/33] to resolve
->    build issue from 0day CI
->  - Removed .atomic_check callback from mtk_hdmi_v2 as it is now part
->    of drm_bridge_connector as pointed out by Dmitry B
->  - Removed call to pm_runtime_disable() as the driver uses devm
->  - Tested again :-)
->
-> Changes in v4:
->  - DDCv2 binding erroneously dropped in v3 is included again (oops!)
->  - Added reference to dai-common.yaml in HDMIv2 binding
->  - Dropped pinctrl entries from HDMIv2 binding
->  - Fixed required list in HDMIv2 binding and changed node name to
->    'hdmi' instead of 'hdmi-tx'
->  - Fixed issue in mtk_hdmi derived from wrong commit splitting action
->    from version 3
->  - Exported necessary symbols and added namespaces for those
->  - Fixed module build for both HDMIv1 and HDMIv2
->  - Other cleanups
->
-> Changes in v3:
->  - Added hpd_enable() and hpd_disable() callbacks as suggested by Dmitry =
-B
->  - Removed audio mute call in bridge_enable() as suggested by CK
->  - Reworked commonization commits for mtk_hdmi/mtk_hdmi_common and split
->    out debugfs/abist implementation as suggested by CK
->  - Removed .mode_valid() callback as it is now provided by the bridge
->    API in drm_bridge_connector_helper_funcs
->  - A bit of cleanups here and there
->  - Tested again on HW especially for new hpd_enable/disable callbacks.
->
-> Changes in v2:
->  - Merged series "Add support for MT8195/8188 and Pattern Generator"
->    and "drm/mediatek: Add support for HDMIv2 and DDCv2 IPs" in one
->    as they are directly related, as requested by CK Hu
->  - More commonization: moved some audio functions to mtk_hdmi_common
->  - Fixed a bug in DDCv2 driver to allow sending a message with len=3D1
->  - Renamed some functions in HDMIv2 to consistently use the prefix
->    mtk_hdmi_v2_ across the driver
->  - Added .mode_valid() callback to HDMIv2
->  - Added .atomic_check() callback to HDMIv2
->  - Reordered drm_bridge_funcs in HDMIv2 driver
->  - Rewritten .edid_read() callback in HDMIv2 to move checking audio
->    availability to bridge_pre_enable() stage, and to stop using the
->    drm_edid_read_ddc() in favor of drm_edid_read()
->  - Added support for API provided HDMI Helpers
->  - Added .tmds_char_rate_valid() callback to HDMIv2 for HDMI helpers
->  - Added .hdmi_{read,write}_infoframe() callback to HDMIv2 for helpers
->  - Added support for Vendor infoframes in HDMIv2
->  - Added missing audio-dai-cells to HDMIv2 binding to fix check error
->  - Added more information to the HDMIv2 binding for clocks and PHY
->  - Added some comments to the HDMIv2 code to clarify why the controller
->    is preconfigured in bridge_pre_enable() instead of bridge_enable()
->  - Added a mention of the differences in HPD between v1 and v2 to the
->    commit introducing the v2 driver (v2 is not using CEC for HPD)
->  - ...and tested again on HW! :-)
->
-> This series adds support for the HDMI-TX v2 Encoder and DDCv2, and for
-> the direct connection DPI as found in MT8195, MT8188 and their variants.
->
-> Tested on Genio 700 EVK:
->  - ABIST ON: ok, pattern generated internally from HDMI is shown on
->    HDMI screen at the correct resolution;
->  - ABIST OFF + DPI Pattern Generator ON: ok, pattern coming from DPI is
->    shown on HDMI screen at the correct resolution;
->  - Can negotiate up to 4k60
->
-> and on MT8395 Radxa NIO 12L:
->  - ABIST ON: ok, pattern generated internally from HDMI is shown on
->    HDMI screen at the correct resolution;
->  - ABIST OFF + DPI Pattern Generator ON: ok, pattern coming from DPI is
->    shown on HDMI screen at the correct resolution;
->  - Dual screen usecase validated (DSI + HDMI 3840x2160p 60Hz)
->  - Can negotiate up to 4k60
->
-> Please note that this submission does *not* include support for HDCP
-> nor for CECv2, as I want this to be upstream before implementing
-> additional features which are not strictly required for simple
-> HDMI output.
->
-> Bonus in this series is the addition of support for the Pattern Generator
-> found in the DPI HW: since I needed this for debugging during development=
-,
-> I had to code in the actual support bits and it looked like a waste of
-> time to just remove it.
-> I instead decided to clean it up and upstream it, as this will anyway com=
-e
-> handy for multiple things, of which the most important (imo) are:
->  - Adding support for new SoCs in the future will be less time consuming
->    as this driver already has the pattern generator in;
->  - CI Testing might be able to make use of this to validate that the
->    data that comes out is not garbled (so, to help testing display
->    support in an automated manner).
->
-> --
-> 2.49.0
->
-> ---
-> AngeloGioacchino Del Regno (9):
->       drm/mediatek: mtk_hdmi: Improve mtk_hdmi_get_all_clk() flexibility
->       drm/mediatek: mtk_hdmi: Add HDMI IP version configuration to pdata
->       drm/mediatek: mtk_hdmi: Split driver and add common probe function
->       drm/mediatek: mtk_hdmi_common: Make CEC support optional
->       drm/mediatek: mtk_hdmi_common: Assign DDC adapter pointer to bridge
->       drm/mediatek: mtk_hdmi_common: Add OP_HDMI if helper funcs assigned
->       drm/mediatek: mtk_hdmi_common: Add var to enable interlaced modes
->       drm/mediatek: Introduce HDMI/DDC v2 for MT8195/MT8188
->       drm/mediatek: mtk_hdmi_v2: Add debugfs ops and implement ABIST
->
-> Louis-Alexis Eyraud (1):
->       drm/mediatek: mtk_hdmi: Drop redundant clock retrieval in mtk_hdmi_=
-get_cec_dev
->
-> Sjoerd Simons (1):
->       drm/mediatek: mtk_hdmi_common: Defer probe when ddc i2c bus isn't a=
-vailable yet
->
->  drivers/gpu/drm/mediatek/Kconfig            |   18 +-
->  drivers/gpu/drm/mediatek/Makefile           |    3 +
->  drivers/gpu/drm/mediatek/mtk_hdmi.c         |  539 +---------
->  drivers/gpu/drm/mediatek/mtk_hdmi_common.c  |  440 ++++++++
->  drivers/gpu/drm/mediatek/mtk_hdmi_common.h  |  198 ++++
->  drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c  |  395 +++++++
->  drivers/gpu/drm/mediatek/mtk_hdmi_regs_v2.h |  263 +++++
->  drivers/gpu/drm/mediatek/mtk_hdmi_v2.c      | 1521 +++++++++++++++++++++=
-++++++
->  8 files changed, 2858 insertions(+), 519 deletions(-)
-> ---
-> base-commit: a92c761bcac3d5042559107fa7679470727a4bcb
-> change-id: 20250806-mediatek-drm-hdmi-v2-cf88f51b8458
->
-> Best regards,
-> --
-> Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
->
 
