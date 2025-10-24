@@ -4,65 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C3CDCCF9E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Oct 2025 16:29:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 900FECCF9E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Oct 2025 17:09:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FaIJQ+1THBMFGo5pDH4KXJgFvv8P1MnGNFwzP1hAer8=; b=HOGY5+UvWUHLe89GH0obxPHzBL
-	uPGS4+eAyH7o1pIfiInzI72oIkvehaEc6XrO2KN5i/9a+qigpNagh85GTK6+PceE4g2JJg3xpVOfL
-	E0Zy6HSndzY7mlL+HBjfQEInIs3ThCfRfDy7JvnsEFBrVEz2g7W9m9vWd+BcUPSMXmLjJhWSWEWKY
-	e+8oSoEnTaVTkizCLsfoQT4zdgLe0P0urLg3czMRy5ORkOn2ty24CKUMPHA8gOII8Y9C28QA7uxJz
-	hhV+hQNYsFxu/jKSbbVL6ZW0zrrKqIM3kYwYQyZyruhsekbwCWoHoAAMc0D3yiqxbRA4sT51KM8tC
-	6HF+FAsg==;
+	bh=HY2q1+xJKg4azQuMAYEYuLlJhhn5b+ALxExQmfB3kYg=; b=nqLQr2ohtLcunZlhO+Sp5W4BVY
+	Q67BXz0sJeECdRlSAU0lPPtH/23t7CIIrMvzFpclzWnLaPj8tL1TNEeNNd/MfK0ByhwVFPPlwOsQU
+	SVRsXkhc4eEEB/lDYGlm/S3FvXeV4ZBxPwLrEE/3VxsMb59WIGLCPc7ugtyqrhJsmSTGDZIwSqO3g
+	s+hf2Ez+FUA9i25LMgE5E9XWtZEQWEsmMqpm2D00LTfJN9l8vJgoM54QK37txjzuEto076DORhLEJ
+	pJS91mOAX029pw28Nbffb6J8NX2A8v+d0IfTATGPSZKmFmWMPMMkrdA6vmtKNbyY4N/kWaKKSfjgw
+	/szBhKlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCKfc-00000009yYf-2X7g;
-	Fri, 24 Oct 2025 16:29:40 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vCLHq-0000000A4tv-03V4;
+	Fri, 24 Oct 2025 17:09:10 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCKfZ-00000009yXg-0TYQ;
-	Fri, 24 Oct 2025 16:29:38 +0000
+	id 1vCLHo-0000000A4sZ-2pOT;
+	Fri, 24 Oct 2025 17:09:08 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 785A8488C2;
-	Fri, 24 Oct 2025 16:29:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 84656C4CEF1;
-	Fri, 24 Oct 2025 16:29:33 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id D768B6023A;
+	Fri, 24 Oct 2025 17:09:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B69DAC4CEF1;
+	Fri, 24 Oct 2025 17:09:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761323376;
-	bh=J7OMjg4+GfzNY1ARYj6hyRpVfLZJNzOfQdY9BTlvpsU=;
+	s=k20201202; t=1761325747;
+	bh=nEsdPzi/tI01PeUgGVuo2zqDEcBVeBbnMqQ68PWLzVQ=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=N1jDcVgDap9U54WInJ8YbqD6QpOMUXvRpL4//FMU+fvnu5dZvjaDevwUNEHbvkrkC
-	 kVoCzRaL9Xz1c1Sxams385EMs/ud14kQNl51l7j8A8ok6KQpmeZv4l48SlhIwSvtdu
-	 rqHMATQeut3nWjloZC82kayoS/DPzX8GWHKSLkN2KYK3ZCA38UD1IoAkdzxEFra/nk
-	 0mIyFuPFHly+dcbqHMYhYXDBUqBYZubxKyEyeHIcBkY0N63Fngt9vDZ3LmMOMXeq06
-	 T5eWeG4s0jtN27Kuegh89IyiwUio38ugIt100xXao4R/Ed/BqgV6ATZTaE/u7Br06V
-	 2kRBbsnsKr22g==
-Date: Fri, 24 Oct 2025 17:29:31 +0100
+	b=QamugzSLBu5WaDeDpKXu4OBuo2iT0CBGV4gsQNQieHyIBXMKIEoRrJoeARLexzznd
+	 s0Jv5aVIYnZUz+9cX6dEIlPuyltqWfS85b0qGIAMbS/29Jvpd3zhro6HTjRyjC0ALl
+	 /FEhzqwZ9g/P4xNmU0baHCs8viygjcFDwnYx81rEinu0bfEs3ZeXJq5gi6dTGRv8js
+	 xHWAS8qqJwYsxi6B3Pv8dRR4bAyW6UGBIPAHA8AQgwnwIma+suj9Upc9ZTrXkI/Wlx
+	 nfx9mW+0t5M+h/NdkjyPFxEoodFuQABjnPlbXrRXO+gt86g63Pr2r/QIFib8KfWOGw
+	 vWzsgrucEU6HA==
+Date: Fri, 24 Oct 2025 18:09:00 +0100
 From: Conor Dooley <conor@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-mediatek@lists.infradead.org, lee@kernel.org, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
-	lgirdwood@gmail.com, broonie@kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	kernel@collabora.com, wenst@chromium.org,
-	igor.belwon@mentallysanemainliners.org
-Subject: Re: [PATCH v10 1/9] dt-bindings: regulator: Document MediaTek MT6316
- PMIC Regulators
-Message-ID: <20251024-think-handwoven-504634ca620d@spud>
-References: <20251024083221.25758-1-angelogioacchino.delregno@collabora.com>
- <20251024083221.25758-2-angelogioacchino.delregno@collabora.com>
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Alim Akhtar <alim.akhtar@samsung.com>,
+	Avri Altman <avri.altman@wdc.com>,
+	Bart Van Assche <bvanassche@acm.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Peter Wang <peter.wang@mediatek.com>,
+	Stanley Jhu <chu.stanley@gmail.com>,
+	"James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
+	"Martin K. Petersen" <martin.petersen@oracle.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+	kernel@collabora.com, linux-scsi@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org
+Subject: Re: [PATCH v3 01/24] dt-bindings: phy: Add mediatek,mt8196-ufsphy
+ variant
+Message-ID: <20251024-spilt-deviate-e3f6bfd3642c@spud>
+References: <20251023-mt8196-ufs-v3-0-0f04b4a795ff@collabora.com>
+ <20251023-mt8196-ufs-v3-1-0f04b4a795ff@collabora.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="adpN37SuSkUm8sD7"
+	protocol="application/pgp-signature"; boundary="w3wlVB5ViarihM4q"
 Content-Disposition: inline
-In-Reply-To: <20251024083221.25758-2-angelogioacchino.delregno@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251024_092937_193044_A14ED2F1 
-X-CRM114-Status: GOOD (  23.57  )
+In-Reply-To: <20251023-mt8196-ufs-v3-1-0f04b4a795ff@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,157 +91,90 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---adpN37SuSkUm8sD7
+--w3wlVB5ViarihM4q
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, Oct 24, 2025 at 10:32:13AM +0200, AngeloGioacchino Del Regno wrote:
-> Add bindings for the regulators found in the MediaTek MT6316 PMIC,
-> usually found in board designs using the MT6991 Dimensity 9400 and
-> on MT8196 Kompanio SoC for Chromebooks.
+On Thu, Oct 23, 2025 at 09:49:19PM +0200, Nicolas Frattaroli wrote:
+> The MediaTek MT8196 SoC includes an M-PHY compatible with the already
+> existing mt8183 binding.
 >=20
-> This chip is fully controlled by SPMI and has multiple variants
-> providing different phase configurations.
+> However, one omission from the original binding was that all of these
+> variants may have an optional reset.
 >=20
-> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
+> Add the new compatible, and also the resets property, with an example.
+>=20
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+> Reviewed-by: Peter Wang <peter.wang@mediatek.com>
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+pw-bot: not-applicable
+
 > ---
->  .../regulator/mediatek,mt6316b-regulator.yaml | 78 +++++++++++++++++++
->  .../regulator/mediatek,mt6316c-regulator.yaml | 78 +++++++++++++++++++
->  .../regulator/mediatek,mt6316d-regulator.yaml | 77 ++++++++++++++++++
->  3 files changed, 233 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,=
-mt6316b-regulator.yaml
->  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,=
-mt6316c-regulator.yaml
->  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,=
-mt6316d-regulator.yaml
+>  .../devicetree/bindings/phy/mediatek,ufs-phy.yaml        | 16 ++++++++++=
+++++++
+>  1 file changed, 16 insertions(+)
 >=20
-> diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6316b=
--regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt63=
-16b-regulator.yaml
-> new file mode 100644
-> index 000000000000..65b70dd90728
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regula=
-tor.yaml
-> @@ -0,0 +1,78 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/regulator/mediatek,mt6316b-regulator.=
-yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> diff --git a/Documentation/devicetree/bindings/phy/mediatek,ufs-phy.yaml =
+b/Documentation/devicetree/bindings/phy/mediatek,ufs-phy.yaml
+> index 3e62b5d4da61..f414aaa18997 100644
+> --- a/Documentation/devicetree/bindings/phy/mediatek,ufs-phy.yaml
+> +++ b/Documentation/devicetree/bindings/phy/mediatek,ufs-phy.yaml
+> @@ -26,6 +26,7 @@ properties:
+>        - items:
+>            - enum:
+>                - mediatek,mt8195-ufsphy
+> +              - mediatek,mt8196-ufsphy
+>            - const: mediatek,mt8183-ufsphy
+>        - const: mediatek,mt8183-ufsphy
+> =20
+> @@ -42,6 +43,10 @@ properties:
+>        - const: unipro
+>        - const: mp
+> =20
+> +  resets:
+> +    items:
+> +      - description: Optional UFS M-PHY reset.
 > +
-> +title: MediaTek MT6316 BP/VP SPMI PMIC Regulators
-> +
-> +maintainers:
-> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> +
-> +description:
-> +  The MediaTek MT6316BP/VP PMICs are fully controlled by SPMI interface,=
- both
-> +  feature four step-down DC/DC (buck) converters, and provides 2+2 Phase=
-s,
-> +  joining Buck 1+2 for the first phase, and Buck 3+4 for the second phas=
-e.
-> +
-> +properties:
-> +  compatible:
-> +    const: mediatek,mt6316b-regulator
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +patternProperties:
-> +  "^vbuck(12|34)$":
-> +    type: object
-> +    $ref: regulator.yaml#
-> +    unevaluatedProperties: false
-> +    properties:
-> +      regulator-allowed-modes:
-> +        description: |
-> +          Allowed Buck regulator operating modes allowed. Valid values b=
-elow.
-> +            0 - Normal mode with automatic power saving, reducing the sw=
-itching
-> +                frequency when light load conditions are detected
-> +            1 - Forced Continuous Conduction mode (FCCM) for improved vo=
-ltage
-> +                regulation accuracy with constant switching frequency bu=
-t lower
-> +                regulator efficiency
-> +            2 - Forced Low Power mode for improved regulator efficiency,=
- used
-> +                when no heavy load is expected, will shut down unnecessa=
-ry IP
-> +                blocks and secondary phases to reduce quiescent current.
-> +                This mode does not limit the maximum output current but =
-unless
-> +                only a light load is applied, there will be regulation a=
-ccuracy
-> +                and efficiency losses.
-> +        minItems: 1
-> +        maxItems: 3
-> +        items:
-> +          enum: [ 0, 1, 2 ]
-
-This property has no default, and the property is not required. Is one
-of these modes the default, or is there another mode beyond what's here
-that is used if the property is absent? Or are all modes allowed with no
-property?
-
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - '#address-cells'
-
-Why is address-cells required here? Your bucks don't have addresses.
-If it is actually required, Rob's bot has pointed out that the property
-isn't defined for the device anyway.
-
-pw-bot: changes-requested
-
-> +
-> +additionalProperties: false
-> +
-> +examples:
+>    "#phy-cells":
+>      const: 0
+> =20
+> @@ -65,5 +70,16 @@ examples:
+>          clock-names =3D "unipro", "mp";
+>          #phy-cells =3D <0>;
+>      };
 > +  - |
-> +    #include <dt-bindings/spmi/spmi.h>
-> +
-> +    spmi {
-> +      #address-cells =3D <2>;
-> +      #size-cells =3D <0>;
-> +
-> +      pmic@8 {
-> +        compatible =3D "mediatek,mt6316b-regulator";
-> +        reg =3D <0x8 SPMI_USID>;
-> +        #address-cells =3D <0>;
-> +
-> +        vbuck12 {
-> +          regulator-name =3D "dvdd_core";
-> +          regulator-min-microvolt =3D <450000>;
-> +          regulator-max-microvolt =3D <965000>;
-> +          regulator-allowed-modes =3D <0 1 2>;
-> +          regulator-enable-ramp-delay =3D <256>;
-> +        };
-> +      };
+> +    #include <dt-bindings/reset/mediatek,mt8196-resets.h>
+> +    ufs-phy@16800000 {
+> +        compatible =3D "mediatek,mt8196-ufsphy", "mediatek,mt8183-ufsphy=
+";
+> +        reg =3D <0x16800000 0x10000>;
+> +        clocks =3D <&ufs_ao_clk 3>,
+> +                 <&ufs_ao_clk 5>;
+> +        clock-names =3D "unipro", "mp";
+> +        resets =3D <&ufs_ao_clk MT8196_UFSAO_RST0_UFS_MPHY>;
+> +        #phy-cells =3D <0>;
 > +    };
-> +...
+> =20
+>  ...
+>=20
+> --=20
+> 2.51.1.dirty
+>=20
 
---adpN37SuSkUm8sD7
+--w3wlVB5ViarihM4q
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaPupawAKCRB4tDGHoIJi
-0tP5AQDTEDGCok9YeXiwjucuPp5QDUW1WDyirZEYNOB8nLm3NQD/XZWXvV8E/94V
-LqudmxMVSSFy3pt6GNMlPr0im8tgWgU=
-=xSW1
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaPuyrAAKCRB4tDGHoIJi
+0n3qAQDuISPZivWMxQqyWT7hptpBU8VJakYcV1f/3Uook67DEgD9Fuw/t0xI+buQ
+vy1+kgKQvO/lTUze9oKFvo5TZQgdYAI=
+=ts27
 -----END PGP SIGNATURE-----
 
---adpN37SuSkUm8sD7--
+--w3wlVB5ViarihM4q--
 
