@@ -4,69 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBC50CCD1BF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Oct 2025 16:29:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2013CCF9E9
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Oct 2025 19:17:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CfYru359989qybb+HRJKrSMrtzS58v51ok2h/fUvsOk=; b=hRN1cEo/gFHeC1X2WTvPHHk4j4
-	Z6QP43O9R1F5mjfMyhEL3F1PyZG2Ny/ukMKeBDFKqd8Ftc8j3tzRPuIxJf4mM0LtPe770u+6rOkYZ
-	3Lt3yWlGkhBoD0W3mHlP2RkRbzEjowKv3AfcJnyvxC8G3s95Dqu2PdQMtINLRyzpvB8zFq9v257uM
-	xz3oR1F1FwcFLmRPFRxyMGX9tTkZjwSWQ/UGHF3ekCGfJVhqR0P8wC7rOKlaEABEWNOyzww3t5fFj
-	5d4l1LGdpjeaV9S2OTk4ZYBWJe2968QVGMsgOpWsq84zBS81Ohqj+vTWZX1fBhDgiG7FFkHy0cJ2S
-	1+RSSbxA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:
+	To:From:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=iSFUovbeuQGiM6doGtKGXr6HCdfnO0zr5ojzTwhnxHI=; b=PdC8n2rutSgN54
+	KmUecULllhskwfEYcMqSBoItB8UUKBCwmcxWjLaqFFv+15I8kKdrHJ/WtOTbKRSnc+sCcaWb0uHQn
+	cQ1SRL+lfZNT+gM5HbP43U8o3padXWp8tH0RUvB3gLkEam1c92tWBfhmM+um23ySrVimaT7i5gzhy
+	XF5ystUP+nuvGSAo5dg+POnW9XYT1TP2diTnJUL/Qj2aWOkfm42u0+xrrknWLYLPx6mmpLyBpJak1
+	BMNo9OpayZ5lr+n6Z8zapPXVAGNkJvhKhk76vyfQ2GLzHBMsBYxxvqHqbxSOkHDFC28P6jN4zsmtB
+	9xU/wVhYwvOfOgXLUUNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCh92-0000000BWI7-3wtl;
-	Sat, 25 Oct 2025 16:29:32 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vCjlv-0000000BfQs-254c;
+	Sat, 25 Oct 2025 19:17:51 +0000
+Received: from 60-249-7-157.hinet-ip.hinet.net ([60.249.7.157] helo=msrv.mec.com.tw)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCh91-0000000BWHJ-2iNr;
-	Sat, 25 Oct 2025 16:29:31 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 184DB60618;
-	Sat, 25 Oct 2025 16:29:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5EEB8C4CEFB;
-	Sat, 25 Oct 2025 16:29:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761409770;
-	bh=vokghphZFN7cPlJYGHUkiv2cttRvCZNnrb6NHwYUJ1I=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=eAotVmFVX3zIEdvLhVQcYGs4HTZaSQD/73eLPX5z3+wnypPAZu/Y5u2RNkYAKyP3N
-	 mEoZMk5U04Re2ezGSm6b5ljxhrLtP/3RhUFhnqkj+ptiaOGIiBFK+tBe0Kb3F7i+rs
-	 cfCovJBZjwwEa5pkZDr3k09sCdxFYsAfdImxoTj1g/9VaX8fLEC/1w5HZnNDtL84Xl
-	 rE36pm1aaNJrULBo/ZBYTHgvgm+ATfuDfpugM9pIvf60TA4l5mXfxTGJapjiN8e0w6
-	 OLuaAWhaU//XCEcC3q1uAlqPgOVcU0qk0KaVZHkl4UGIIocMoIaz52oaLVO8b/Tsw/
-	 g8jCkiqmEvqPg==
-From: Sasha Levin <sashal@kernel.org>
-To: patches@lists.linux.dev,
-	stable@vger.kernel.org
-Cc: Jakub Kicinski <kuba@kernel.org>,
-	Mina Almasry <almasrymina@google.com>,
-	Sasha Levin <sashal@kernel.org>,
-	hawk@kernel.org,
-	ilias.apalodimas@linaro.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.17-5.15] page_pool: always add GFP_NOWARN for ATOMIC allocations
-Date: Sat, 25 Oct 2025 12:01:29 -0400
-Message-ID: <20251025160905.3857885-458-sashal@kernel.org>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20251025160905.3857885-1-sashal@kernel.org>
-References: <20251025160905.3857885-1-sashal@kernel.org>
+	id 1vCjls-0000000BfQ0-3ppy
+	for linux-mediatek@lists.infradead.org;
+	Sat, 25 Oct 2025 19:17:50 +0000
+Received: from msrv.mec.com.tw (msrv.mec.com.tw [127.0.0.1])
+	by msrv.mec.com.tw (Postfix) with ESMTP id 4cv8Lw2YTnz2McZR
+	for <linux-mediatek@lists.infradead.org>; Sun, 26 Oct 2025 03:03:52 +0800 (CST)
+X-Virus-Scanned: Debian amavisd-new at mailserver.cncteam.tw
+Received: from msrv.mec.com.tw ([127.0.0.1])
+	by msrv.mec.com.tw (msrv.mec.com.tw [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id EgLg8aVGv-X9 for <linux-mediatek@lists.infradead.org>;
+	Sun, 26 Oct 2025 03:03:52 +0800 (CST)
+Received: from 60-249-7-157.hinet-ip.hinet.net (unknown [156.0.212.49])
+	by msrv.mec.com.tw (Postfix) with ESMTPS id 4cv8Lt13BHz2McXw
+	for <linux-mediatek@lists.infradead.org>; Sun, 26 Oct 2025 03:03:49 +0800 (CST)
+From: Marie PRESLES <test@60-249-7-157.hinet-ip.hinet.net>
+To: linux-mediatek@lists.infradead.org
+Subject: [SPAM] MES SALUTATIONS    
+Date: 25 Oct 2025 20:03:13 +0100
+Message-ID: <20251025200313.C2689F32FECEDA42@60-249-7-157.hinet-ip.hinet.net>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.17.5
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-Antivirus: avast! (VPS 100214-0, 14/02/2010), Outbound message
+X-Antivirus-Status: Clean
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251025_121749_103130_4D5081FC 
+X-CRM114-Status: UNSURE (  -4.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,222 +64,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: preslesmarie@yahoo.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jakub Kicinski <kuba@kernel.org>
+Bonjour
 
-[ Upstream commit f3b52167a0cb23b27414452fbc1278da2ee884fc ]
+Excusez moi de cette mani=C3=A8re de vous contacter, je viens=20
+d'apercevoir votre profil et je me suis dis que vous =C3=AAtes la=20
+personne qu'il me faut. Je vous demande de porter une attention=20
+particuli=C3=A8re =C3=A0 mon message afin que vous puissiez prendre la=20
+bonne d=C3=A9cision. En effet, je m'appelle Marie PRESLES , un=20
+boursier slovaque =C3=A0 la retraite o=C3=B9 j'ai fait fortune dans des=20
+entreprises en plein essor telles que les bourses et bien plus=20
+encore. Mais =C3=A0 un moment hors du temps de nos parcours, la=20
+r=C3=A9alit=C3=A9 nous montre que rien n=E2=80=99est =C3=A9ternel. C'est ai=
+nsi que j'ai=20
+r=C3=A9alis=C3=A9 que le d=C3=A9but de chaque vie a toujours une fin et que=
+ je=20
+ne peux pas rester longtemps. En effet, je souffre=20
+malheureusement d'un cancer en phase terminale, le m=C3=A9decin=20
+traitant m'a dit que mes jours =C3=A9taient compt=C3=A9s en raison de ma=20=
 
-Driver authors often forget to add GFP_NOWARN for page allocation
-from the datapath. This is annoying to users as OOMs are a fact
-of life, and we pretty much expect network Rx to hit page allocation
-failures during OOM. Make page pool add GFP_NOWARN for ATOMIC allocations
-by default.
+sant=C3=A9 d=C3=A9grad=C3=A9e et de mon =C3=A2ge avanc=C3=A9. =C3=89tant un=
+e grandeur d'=C3=A2me qui=20
+fait de moi un philanthrope, j'ai toujours un c=C5=93ur pour mes=20
+semblables, surtout ceux qui souffrent, ceux qui luttent, tous=20
+ces gens qui ne sont pas entendus et cela lors de mes voyages.=20
+Sachez que cela ne me sert =C3=A0 rien d'avoir des biens et de ne pas=20
+partager sachant que la mort est =C3=A0 mes trousses. C'est pourquoi=20
+je souhaite bien vouloir vous offrir ma propri=C3=A9t=C3=A9 d'une somme de=
+=20
+17.500.000 =E2=82=AC, afin que vous puissiez r=C3=A9aliser les projets qui=
+=20
+vous tiennent =C3=A0 c=C5=93ur. Je r=C3=A9clame juste des pri=C3=A8res afin=
+ que mon=20
+op=C3=A9ration se passe tr=C3=A8s bien. Veuillez donc =C3=A9crire =C3=A0 mo=
+n mail=20
+personnel preslesmarie@yahoo.com pour rentrer en possession de=20
+votre donation car il vous appartient d=C3=A9j=C3=A0 d=C3=A8s =C3=A0 pr=C3=
+=A9sent.
+QUE LES B=C3=89N=C3=89DICTION SOIENT AVEC VOUS
 
-Reviewed-by: Mina Almasry <almasrymina@google.com>
-Link: https://patch.msgid.link/20250912161703.361272-1-kuba@kernel.org
-Signed-off-by: Jakub Kicinski <kuba@kernel.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
-
-LLM Generated explanations, may be completely bogus:
-
-Based on my extensive research and analysis of this commit, here is my
-determination:
-
-## **BACKPORT RECOMMENDATION: YES**
-
-## Detailed Analysis
-
-### What This Commit Does
-
-This commit adds the `__GFP_NOWARN` flag to GFP_ATOMIC allocations in
-the page_pool subsystem by modifying the
-`__page_pool_alloc_netmems_slow()` function in `net/core/page_pool.c`.
-The change is minimal (6 lines) and specifically targets atomic
-allocations that occur during network packet reception in NAPI context.
-
-**Code change at net/core/page_pool.c:554-558:**
-```c
-+   /* Unconditionally set NOWARN if allocating from NAPI.
-+    * Drivers forget to set it, and OOM reports on packet Rx are
-useless.
-+    */
-+   if ((gfp & GFP_ATOMIC) == GFP_ATOMIC)
-+       gfp |= __GFP_NOWARN;
-```
-
-This modification affects both bulk page allocations (via
-`alloc_pages_bulk_node`) and high-order page allocations (via
-`__page_pool_alloc_page_order`).
-
-### Historical Context and Broader Pattern
-
-Through extensive git history analysis, I discovered this is part of a
-**systematic effort by Jakub Kicinski** to address OOM warnings in the
-network stack:
-
-1. **March 2024** (commit 6e9b01909a811): Modified `napi_alloc_skb()` to
-   hardcode `GFP_ATOMIC | __GFP_NOWARN`
-   - Commit message stated: *"the resulting OOM warning is the top
-     networking warning in our fleet"* (Meta's production environment)
-   - Rationale: *"allocation failures in atomic context will happen, and
-     printing warnings in logs, effectively for a packet drop, is both
-     too much and very likely non-actionable"*
-
-2. **August 2024** (commit c89cca307b209): Added `__GFP_NOWARN` to
-   skbuff ingress allocations
-   - Similar rationale: *"build_skb() and frag allocations done with
-     GFP_ATOMIC will fail in real life, when system is under memory
-     pressure, and there's nothing we can do about that. So no point
-     printing warnings."*
-
-3. **September 2025** (this commit): Extends the same principle to
-   page_pool allocations
-
-### Existing Precedent Validates This Approach
-
-My code research revealed:
-
-**Helper function already uses this pattern**
-(include/net/page_pool/helpers.h:92-96):
-```c
-static inline struct page *page_pool_dev_alloc_pages(struct page_pool
-*pool)
-{
-    gfp_t gfp = (GFP_ATOMIC | __GFP_NOWARN);
-    return page_pool_alloc_pages(pool, gfp);
-}
-```
-
-**Drivers manually adding NOWARN since 2022**:
-- `drivers/net/ethernet/mediatek/mtk_eth_soc.c:1916` - Added in July
-  2022 (commit 23233e577ef973)
-- `drivers/net/vmxnet3/vmxnet3_drv.c:1425` - Also includes manual NOWARN
-
-This demonstrates driver authors were already aware of the need for
-`__GFP_NOWARN` with page_pool allocations, validating the approach.
-
-### Why This Should Be Backported
-
-**1. Fixes Real User-Visible Issue**
-- OOM warnings during network Rx are non-actionable and create log spam
-- Confirmed as "top networking warning" at large-scale deployments
-  (Meta)
-- OOM during memory pressure is expected behavior, not an error
-  condition
-- Warnings provide no value but clutter logs and may trigger false
-  alarms
-
-**2. Minimal Risk**
-- Only 6 lines of code added to a single function
-- Only suppresses warning messages, doesn't change allocation behavior
-- Allocation failures are still detected and properly handled by drivers
-- Network stack provides proper statistics via qstats (rx-alloc-fail
-  counter)
-- No change to actual page allocation logic or error handling paths
-
-**3. No Regressions Found**
-- No subsequent commits fixing or reverting this change
-- No Fixes: tags referencing this commit
-- Commit has been in mainline since September 2025 with no reported
-  issues
-- Subsequent commit (a1b501a8c6a87) is unrelated (pool size clamping)
-
-**4. Makes Behavior Consistent**
-- Aligns with existing helper function behavior
-- Removes burden from driver authors who often forget this flag
-- Prevents inconsistency where some drivers add NOWARN and others don't
-- Follows established pattern from napi_alloc_skb() and skbuff
-  allocations
-
-**5. Meets Stable Kernel Criteria**
-- ✅ Fixes a real bug that bothers people (log spam annoys users and
-  operators)
-- ✅ Obviously correct (trivial change, well-understood semantics)
-- ✅ Small and self-contained (6 lines, single file)
-- ✅ No regression risk (only suppresses warnings)
-- ✅ No API changes (internal implementation detail)
-
-### Technical Correctness
-
-**GFP_ATOMIC context** (from include/linux/gfp_types.h:316-318):
-> "GFP_ATOMIC users can not sleep and need the allocation to succeed. A
-lower watermark is applied to allow access to 'atomic reserves'."
-
-**__GFP_NOWARN semantics** (from include/linux/gfp_types.h:274):
-> "__GFP_NOWARN suppresses allocation failure reports."
-
-The change is semantically correct: When page_pool allocates pages in
-atomic context (NAPI), allocation failures are expected during OOM and
-warnings serve no purpose. The allocation failure is still detected and
-handled - only the noisy warning is suppressed.
-
-### Why Not Explicitly Tagged for Stable
-
-While the commit lacks a `Cc: stable` tag, this doesn't necessarily mean
-it shouldn't be backported. Examining similar commits:
-- Neither the napi_alloc_skb nor skbuff NOWARN commits had explicit
-  stable tags
-- Quality-of-life improvements often aren't tagged by authors but are
-  valuable for stable trees
-- Stable backport decisions should be based on technical merit and user
-  benefit
-
-### Potential Concerns Addressed
-
-**"Does this hide real bugs?"**
-No - drivers still detect and handle allocation failures. The difference
-is only in logging.
-
-**"Could this affect debugging?"**
-Minimal impact - allocation failures are tracked via qstats. OOM
-warnings during memory pressure are expected, not diagnostic.
-
-**"Is this actually a bug fix?"**
-Yes - it fixes the "bug" of annoying, non-actionable log spam that
-affects production deployments at scale.
-
-### Conclusion
-
-This commit should be backported because it:
-1. Solves a real, annoying user-visible problem (confirmed at production
-   scale)
-2. Has essentially zero risk (only suppresses warnings)
-3. Is part of a well-vetted, systematic improvement
-4. Makes the page_pool behavior consistent with established patterns
-5. Reduces operational burden and log noise
-
-While this is more of a quality-of-life improvement than a critical
-functional fix, the combination of high user benefit, zero risk, and
-strong technical justification makes it a good candidate for stable
-backporting.
-
-**Final Answer: YES** - This commit should be backported to stable
-kernel trees.
-
- net/core/page_pool.c | 6 ++++++
- 1 file changed, 6 insertions(+)
-
-diff --git a/net/core/page_pool.c b/net/core/page_pool.c
-index 19c92aa04e549..e224d2145eed9 100644
---- a/net/core/page_pool.c
-+++ b/net/core/page_pool.c
-@@ -596,6 +596,12 @@ static noinline netmem_ref __page_pool_alloc_netmems_slow(struct page_pool *pool
- 	netmem_ref netmem;
- 	int i, nr_pages;
- 
-+	/* Unconditionally set NOWARN if allocating from NAPI.
-+	 * Drivers forget to set it, and OOM reports on packet Rx are useless.
-+	 */
-+	if ((gfp & GFP_ATOMIC) == GFP_ATOMIC)
-+		gfp |= __GFP_NOWARN;
-+
- 	/* Don't support bulk alloc for high-order pages */
- 	if (unlikely(pp_order))
- 		return page_to_netmem(__page_pool_alloc_page_order(pool, gfp));
--- 
-2.51.0
-
+Bien =C3=A0 vous
 
