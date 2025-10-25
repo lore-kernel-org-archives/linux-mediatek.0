@@ -4,67 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C17ECCD1BF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Oct 2025 16:25:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F85CCCD1BF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Oct 2025 16:26:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JQQeXmLPl5tAwQ514l8K0IlQyUIgpNYHhKanhgqcSsg=; b=Imdo0hk3o7czBnHbaDAM2FjIRU
-	a0ofMbH8XhSbCHV6W8+bVoeXFcEYQJp4+Dk5J+E9eKFK29ocKZdE5cAVOPnVx8WdrUTBuPXJDUkNq
-	bI2BejLPRIxZ1kUXi/LIb1HeD28GHhITsLtcra6MsVYKvwwskL1m0uO8+IH5xowLZ1LB5uW9d2ivb
-	GklcCYFZCfkODL2ZAl5ggBPD71eqZUT6Jiw2ctvrFK7r3uDmKrx6LlpVCxT05uJ+2zsacHgqOvdWC
-	tKwFi/IE99Iw3ZKcvleiI2X5ZmPXO/hd6Pv74Mmaao1rjqgQglO0fJ2wQWrQo5ZnkfsRJUA7SdqVr
-	cZqYbq/w==;
+	bh=nZY3DbZHVIw0INsWL2v5k8E9alR+E5YxtH/AfD11KmQ=; b=EvAQrwLu3v1Wa25BG4Nb4VFMhS
+	rsS0u/sPsstRRxCZEleWH+oBw1pTGetYqJVwNIZ9ihL3T2M2IiFqaSz9oxDEt2Wlxs+Ge+sB/Dp7K
+	SM6jtQfuetG6/9v5P3retGlNepG+cydS8CPKgulkRPDFWcmO1c3MeSclYY5xjZNrlVIhXGWegzP2N
+	wg2VO/c8KvYxXbUrsQf0E4M/63TQrr9MUHgYaTavKHY21kFSDiJ3eiNXtjYEpI+i+ec7bcU3fdhw/
+	tZdmrEoJrWwfRDpEocKddHJMj9zStRPzgRpSc2CMnoWRnfhdmxpO5dGKNbNN9Rj9WjJSGwNEh47Jy
+	Zm8tKx+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCh5N-0000000BUns-2bEl;
-	Sat, 25 Oct 2025 16:25:45 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vCh6P-0000000BV3M-1e5s;
+	Sat, 25 Oct 2025 16:26:49 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCh5L-0000000BUnY-4BmA;
-	Sat, 25 Oct 2025 16:25:44 +0000
+	id 1vCh6N-0000000BV2u-3Brj;
+	Sat, 25 Oct 2025 16:26:47 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 42C0D602AD;
-	Sat, 25 Oct 2025 16:25:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DE201C4CEF5;
-	Sat, 25 Oct 2025 16:25:40 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 670EA611EC;
+	Sat, 25 Oct 2025 16:26:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D7427C4CEFB;
+	Sat, 25 Oct 2025 16:26:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761409542;
-	bh=jn8S+TLUJ2Blyw5RWdYEpUGHNFelZphJL49uY9lXq7g=;
+	s=k20201202; t=1761409605;
+	bh=toGPQ+wiGt2AhGw6TSwK9UndEc09/HsXQqY6zUqc3Zo=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=mxq/WdpVD6vkwRipj6k3FZaqQfUA9tJ0wDtiIaIW8yF/czTm8HSjzUdDknHeSVW3O
-	 dmhhT6UvbMbP+Fcgkf6X1MW/72R4XezIpdkvfOlNSFSjVCYLnKGkd27HjZQIrY1IVX
-	 33S0XT28GUTnyWV76YqcJxCeBOb019rv9KiWUANovDDsVCNME36eLvO/bR/V5u1SgG
-	 OHfl5Er1CwIg95nuCKdjVxiGoSs5Kw6X0D+0zKefkx2KzItXSrdrcMp+u+oKirWD8L
-	 9LGdpmjR2vS2OPdSSKQn3qPK6NuRUit6hFBd2pvSGxT8Z1/EcOpk2cCdGGrbQDL29i
-	 F+6XxMIjsfQvA==
+	b=GWxaHVJDqws1fKcNHFQIh+XfxAzPws22I8ziZAeW1N3XSMxO8U3/qIxrTi88A0d+S
+	 oLJaPhYt9PByd5L8KrKp536yfcY9wk/Fej9WGRAlJvxubs/PK1nfl7xaZGYw6TnSHN
+	 K67EOZfbQk9/x36m4Wx5QHp/GfGb0BuGtjsE6ntL300ebtDpoUL2WEXzVjFOrOK+tF
+	 +vnP1yYsUu6VwHmLKQ9A268IHiiG+/a/UPUettjcETcuXQ4KNT3jK6j31tyHV6td/P
+	 wE0QaZAZYaziMCLdeF6oMTyZiiCsSC9ZEMREFhuxvsGM41pUL0v9Bht9kmNR9o/qkM
+	 JO9RkjDzw+z8w==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
-Cc: Howard Hsu <howard-yh.hsu@mediatek.com>,
-	Felix Fietkau <nbd@nbd.name>,
+Cc: Peter Wang <peter.wang@mediatek.com>,
+	"Martin K. Petersen" <martin.petersen@oracle.com>,
 	Sasha Levin <sashal@kernel.org>,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	shayne.chen@mediatek.com,
-	chui-hao.chiu@mediatek.com,
-	Bo.Jiao@mediatek.com,
-	rex.lu@mediatek.com,
-	benjamin-jw.lin@mediatek.com,
-	alexandre.f.demers@gmail.com,
-	StanleyYP.Wang@mediatek.com,
-	linux-wireless@vger.kernel.org,
+	linux-scsi@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.17] wifi: mt76: mt7996: support writing MAC TXD for AddBA Request
-Date: Sat, 25 Oct 2025 11:59:47 -0400
-Message-ID: <20251025160905.3857885-356-sashal@kernel.org>
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.17-6.6] scsi: ufs: host: mediatek: Fix auto-hibern8 timer configuration
+Date: Sat, 25 Oct 2025 12:00:19 -0400
+Message-ID: <20251025160905.3857885-388-sashal@kernel.org>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20251025160905.3857885-1-sashal@kernel.org>
 References: <20251025160905.3857885-1-sashal@kernel.org>
@@ -88,458 +79,231 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Howard Hsu <howard-yh.hsu@mediatek.com>
+From: Peter Wang <peter.wang@mediatek.com>
 
-[ Upstream commit cb6ebbdffef2a888b95f121637cd1fad473919c6 ]
+[ Upstream commit aa86602a483ba48f51044fbaefa1ebbf6da194a4 ]
 
-Support writing MAC TXD for the AddBA Req. Without this commit, the
-start sequence number in AddBA Req will be unexpected value for MT7996
-and MT7992. This can result in certain stations (e.g., AX200) dropping
-packets, leading to ping failures and degraded connectivity. Ensuring
-the correct MAC TXD and TXP helps maintain reliable packet transmission
-and prevents interoperability issues with affected stations.
+Move the configuration of the Auto-Hibern8 (AHIT) timer from the
+post-link stage to the 'fixup_dev_quirks' function. This change allows
+setting the AHIT based on the vendor requirements:
 
-Signed-off-by: Howard Hsu <howard-yh.hsu@mediatek.com>
-Link: https://patch.msgid.link/20250909-mt7996-addba-txd-fix-v1-1-feec16f0c6f0@kernel.org
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
+   (a) Samsung: 3.5 ms
+   (b) Micron: 2 ms
+   (c) Others: 1 ms
+
+Additionally, the clock gating timer is adjusted based on the AHIT
+scale, with a maximum setting of 10 ms. This ensures that the clock
+gating delay is appropriately configured to match the AHIT settings.
+
+Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+Link: https://lore.kernel.org/r/20250811131423.3444014-3-peter.wang@mediatek.com
+Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
 
 LLM Generated explanations, may be completely bogus:
 
-## Final Backport Recommendation
+YES
 
-**YES**
+- Fixes a real bug affecting users. Today the driver unconditionally
+  programs AH8 to 10 ms during link bring-up and derives the clock-
+  gating delay from only the AHIT timer field, ignoring the scale. That
+  yields incorrect behavior when a device needs a vendor-specific AH8
+  value or when the AHIT scale is not 1 ms. The patch:
+  - Removes the hardcoded AH8 value from `ufs_mtk_post_link()` in
+    `drivers/ufs/host/ufs-mediatek.c` and defers programming until
+    device info is known.
+  - Adds `ufs_mtk_fix_ahit()` to set `hba->ahit` based on the UFS
+    vendor: Samsung 3.5 ms, Micron 2 ms, others 1 ms.
+  - Introduces `ufs_mtk_us_to_ahit()` so the AHIT encoding matches the
+    HCI (same logic as the core sysfs helper).
+  - Reworks `ufs_mtk_setup_clk_gating()` to derive the delay from the
+    full AHIT value (timer + scale), avoiding the previous scale bug.
 
-This commit should be backported to stable kernel trees.
+- Correct stage for AHIT programming. Moving the AHIT setup from link
+  POST_CHANGE to the device-quirk fixup stage is correct because the
+  vendor ID isn’t known at `POST_CHANGE`. The fix happens in
+  `ufs_mtk_fixup_dev_quirks()` which runs after reading device
+  descriptors (see core flow in `drivers/ufs/core/ufshcd.c:8380` calling
+  `ufs_fixup_device_setup(hba)`), and before the core writes AHIT to
+  hardware (`ufshcd_configure_auto_hibern8()` at
+  `drivers/ufs/core/ufshcd.c:8967`). Hence the right AHIT gets
+  programmed without extra transitions.
 
----
+- Fixes a concrete correctness issue in clock-gating. Previously
+  `ufs_mtk_setup_clk_gating()` computed the delay as `ah_ms =
+  FIELD_GET(UFSHCI_AHIBERN8_TIMER_MASK, hba->ahit)` and then
+  `ufshcd_clkgate_delay_set(..., ah_ms + 5)`. That ignores the AHIT
+  scale and is only correct if the scale is 1 ms (which the driver
+  forcibly set earlier). The patch:
+  - Parses both AHIT scale and timer and converts to milliseconds via a
+    `scale_us[]` table before setting the gating delay. This fixes
+    gating delay when vendors require non-ms scales.
+  - Sets a minimum gating delay of 10 ms (`delay_ms = max(ah_ms, 10U)`)
+    to avoid overly aggressive gating when AHIT is small (1–3.5 ms).
+    This is a conservative, low-risk change that reduces churn.
 
-## Executive Summary
+- Small, contained change with minimal regression risk.
+  - Scope: one driver file (`drivers/ufs/host/ufs-mediatek.c`), no API
+    or architectural changes.
+  - Behavior: only affects Mediatek UFS host behavior and only when AH8
+    is supported and enabled.
+  - The vendor-based AHIT values are bounded and modest (1–3.5 ms), and
+    the gating floor of 10 ms is conservative.
+  - The patch respects `ufshcd_is_auto_hibern8_supported()` and won’t
+    alter systems where AH8 is disabled (driver already handles
+    disabling AH8; see `drivers/ufs/host/ufs-mediatek.c:258`).
 
-This commit fixes a significant interoperability bug in the MT76
-MT7996/MT7992 wireless drivers that causes connectivity failures with
-common wireless stations like the Intel AX200. Without this fix, these
-chipsets send malformed AddBA (Add Block Acknowledgment) Request frames
-with incorrect start sequence numbers, leading to packet drops, ping
-failures, and degraded network connectivity.
+- Alignment with core defaults and flow. The core sets a default AHIT
+  (150 ms) only if none is set earlier
+  (`drivers/ufs/core/ufshcd.c:10679`). The mediatek driver previously
+  overwrote this to 10 ms unconditionally at `POST_CHANGE`. The new
+  approach correctly overrides the default with vendor-specific AHIT at
+  quirk-fixup time and before the core writes the register, making the
+  effective setting both correct and deterministic.
 
----
+- Backport notes and considerations.
+  - The quirk-fixup hook must be present in the target stable branch
+    (`ufshcd_vops_fixup_dev_quirks()` and call site exist in current
+    stable series; see `drivers/ufs/core/ufshcd-priv.h:195` and
+    `drivers/ufs/core/ufshcd.c:8380`).
+  - The helper macros and fields used (e.g., `UFSHCI_AHIBERN8_*`,
+    `UFS_VENDOR_*`, `hba->clk_gating.delay_ms`) are present in
+    maintained stable branches.
+  - Minor nits: the patch updates `hba->clk_gating.delay_ms` under
+    `host->host_lock` instead of using `ufshcd_clkgate_delay_set()`,
+    which in core protects the assignment with `clk_gating.lock`.
+    Functionally it’s fine for a single-word store, but for consistency
+    you may prefer `ufshcd_clkgate_delay_set(hba->dev, max(ah_ms, 10U))`
+    when backporting to preserve locking semantics.
+  - The commit message says “maximum setting of 10 ms,” but the code
+    enforces a minimum of 10 ms via `max(ah_ms, 10U)`. The
+    implementation is the safer choice and aligns with the intent to
+    avoid too-aggressive gating.
 
-## Detailed Analysis
+Conclusion: This is a targeted bug fix that corrects AHIT configuration
+timing, applies vendor requirements, and fixes the gating-delay
+calculation to account for AHIT scale. It’s small, self-contained, and
+low risk. It is suitable for backporting to stable kernel trees.
 
-### 1. **Bug Description and Impact**
+ drivers/ufs/host/ufs-mediatek.c | 86 ++++++++++++++++++++++++---------
+ 1 file changed, 64 insertions(+), 22 deletions(-)
 
-**The Problem:**
-- MT7996 and MT7992 chipsets were sending AddBA Request frames with
-  unexpected/invalid start sequence numbers
-- This violates 802.11 Block Acknowledgment protocol requirements
-- Strict 802.11-compliant stations (e.g., Intel AX200) reject these
-  malformed frames
-- Results in failed Block ACK session establishment, packet drops, and
-  connectivity loss
-
-**User-Visible Impact:**
-- Ping failures between MT7996/MT7992 access points and certain client
-  devices
-- Degraded network performance
-- Complete connectivity loss with affected stations
-- Real-world interoperability problems affecting users
-
-**Affected Hardware:**
-- MediaTek MT7996 (in kernel since v6.2-rc1, widely available since
-  v6.10)
-- MediaTek MT7992 (in kernel since v6.10)
-- Bug affects all kernel versions from v6.2 through v6.17
-
-### 2. **Technical Root Cause**
-
-The MT7996 and MT7992 hardware architectures differ from the newer
-MT7990 chipset:
-
-- **MT7990** (added in v6.16 via commit b7ddeb9cc4394): Firmware can
-  automatically construct AddBA frames with correct sequence numbers
-  using the `MT_TXD6_TID_ADDBA` field
-
-- **MT7996/MT7992**: Hardware/firmware cannot generate proper sequence
-  numbers automatically; requires driver to manually construct the
-  complete MAC TXP (TX Parameters) structure with:
-  - Token ID (`MT_TXP0_TOKEN_ID0`)
-  - TID for AddBA (`MT_TXP1_TID_ADDBA`)
-  - DMA buffer address and length
-  - ML0 mask and other flags
-
-Without this driver intervention, the hardware sends malformed AddBA
-Request frames.
-
-### 3. **Code Changes Analysis**
-
-**File: drivers/net/wireless/mediatek/mt76/mt76_connac3_mac.h**
-- Adds 7 new #define macros for TXP structure fields (lines 297-302)
-- These define the bit fields needed to construct MAC TXP for AddBA
-  frames
-- Pure header additions, no functional code
-
-**File: drivers/net/wireless/mediatek/mt76/mt7996/mac.c**
-- **mt7996_mac_write_txwi_80211()** (lines 800-808):
-  - Adds `MT_TXD7_MAC_TXD` flag for MT7996/MT7992 when processing AddBA
-    Request
-  - MT7990 still uses the existing `MT_TXD6_TID_ADDBA` path
-  - 3 lines added (else clause)
-
-- **mt7996_tx_prepare_skb()** (lines 1023-1127):
-  - Adds new conditional block (lines 1105-1127) that triggers when
-    `MT_TXD7_MAC_TXD` is set
-  - Constructs MAC TXP structure with:
-    ```c
-    ptr[0] = Token ID with valid mask
-    ptr[1] = TID from skb->priority
-    ptr[2] = DMA buffer address (lower 32 bits)
-    ptr[3] = Buffer length + ML0 mask + DMA address high bits (64-bit)
-    ```
-  - Properly handles 32-bit vs 64-bit architectures with `#ifdef
-    CONFIG_ARCH_DMA_ADDR_T_64BIT`
-  - Moves existing TXP construction into else block (lines 1128-1171)
-  - Variable declaration added at line 1044: `__le32 *ptr`
-
-**Statistics:**
-- 69 insertions, 29 deletions
-- Well under the 100-line stable tree guideline
-- Changes are contained to AddBA Request handling path only
-
-### 4. **Risk Assessment**
-
-**Code Isolation:** ✅ LOW RISK
-- New code only executes when `MT_TXD7_MAC_TXD` flag is set
-- This flag is ONLY set for AddBA Request frames on MT7996/MT7992 (line
-  806)
-- Normal data packets and MT7990 chipsets use different code paths
-- No impact on other frame types or chipsets
-
-**Architectural Changes:** ✅ NONE
-- No changes to driver architecture or data structures
-- No changes to locking, memory allocation, or core TX path
-- Simply adds proper descriptor construction for one specific frame type
-
-**Security Considerations:** ⚠️ MEDIUM
-Independent security audit identified potential issues:
-- Missing validation of `tx_info->nbuf >= 2` before accessing `buf[1]`
-  (MEDIUM risk)
-- Missing validation of token ID range (MEDIUM risk)
-- Missing validation of buffer length vs field size (MEDIUM risk)
-- However, auditor noted these are "unlikely to be exploitable in normal
-  operation due to calling context constraints"
-
-**Regression Potential:** ✅ LOW
-- Code has been in mainline since v6.18-rc1 (September 15, 2025)
-- No follow-up fixes or reverts have been needed
-- No reported regressions in subsequent commits
-- Chipset-specific code paths reduce blast radius
-
-**Testing:** ✅ WELL-TESTED
-- Commit explicitly mentions Intel AX200 testing
-- Authored by MediaTek engineer Howard Hsu with access to hardware
-- Merged by Felix Fietkau (mt76 maintainer)
-- Has been in linux-next and mainline without issues
-
-### 5. **Stable Tree Backporting Criteria Evaluation**
-
-Checking against standard stable tree rules:
-
-1. ✅ **Obviously correct and tested**: Yes, fix is straightforward and
-   tested with affected hardware
-2. ✅ **Under 100 lines**: Yes (69 insertions, 29 deletions = 98 lines
-   total)
-3. ✅ **Fixes only one thing**: Yes, only fixes AddBA Request handling
-   for MT7996/MT7992
-4. ✅ **Fixes real bug that bothers people**: Yes, causes connectivity
-   failures with common hardware
-5. ✅ **Serious issue**: Yes, causes packet drops and ping failures (not
-   theoretical)
-6. ✅ **Not a theoretical race condition**: No, it's a concrete bug with
-   clear symptoms
-7. ⚠️ **No trivial fixes mixed in**: Correct, but no Fixes: tag present
-   (see below)
-8. ❌ **Should have Fixes: tag**: MISSING - commit lacks proper Fixes:
-   tag
-
-**Missing Fixes Tag:**
-While the commit lacks an explicit `Fixes:` tag, the bug is clearly
-identifiable:
-- Bug introduced when MT7996 driver was added (commit 98686cd21624c in
-  v6.2-rc1)
-- Bug also affects MT7992 since its introduction (commit 3d3f117a259a6
-  in v6.10)
-- Proper Fixes tags would be:
-  ```
-  Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-
-  Fi 7 (802.11be) devices")
-  Fixes: 3d3f117a259a ("wifi: mt76: mt7996: add PCI IDs for mt7992")
-  ```
-
-### 6. **Backport Scope Recommendation**
-
-**Recommended for backport to:**
-- **v6.10.x and later**: MT7992 support exists (primary target)
-- **v6.6.x through v6.9.x**: MT7996 exists but impact lower (MT7996
-  alone affected)
-- **Earlier than v6.6**: NOT RECOMMENDED (driver doesn't exist)
-
-**Priority:** HIGH for v6.10+, MEDIUM for v6.6-v6.9
-
-### 7. **Dependencies and Context Requirements**
-
-**Prerequisites:**
-- MT7996/MT7992 driver infrastructure (present since v6.2/v6.10)
-- `mt76_connac3_mac.h` header file structure (present)
-- `mt7996_tx_prepare_skb()` function (present)
-
-**No backport dependencies:** This commit is self-contained and doesn't
-require any other commits to function correctly.
-
-### 8. **Comparison to Similar Backported Commits**
-
-This commit has characteristics similar to other commits that ARE
-typically backported:
-- Fixes driver bug causing connectivity issues
-- Contained to specific subsystem (wireless driver)
-- Under 100 lines
-- Addresses hardware interoperability
-- Real user impact
-
-### 9. **Code Quality Assessment**
-
-**Positive aspects:**
-- Clear commit message explaining the problem and solution
-- Proper endianness handling (cpu_to_le32)
-- Architecture-aware DMA handling (32-bit vs 64-bit)
-- Uses proper bit field macros (FIELD_PREP)
-- Maintains existing code structure
-
-**Areas for improvement:**
-- Missing input validation (identified by security audit)
-- Missing Fixes: tag
-- Could benefit from additional defensive checks
-
-**Overall quality:** GOOD - code follows kernel coding standards and
-driver patterns
-
----
-
-## Final Recommendation: **YES - BACKPORT TO STABLE**
-
-### Justification
-
-1. **Real User Impact**: This fixes actual connectivity failures
-   affecting users with MT7996/MT7992 hardware and common client devices
-   like Intel AX200
-
-2. **Long-Standing Bug**: The bug has existed since MT7996 was added in
-   v6.2 (over 2 years) and MT7992 since v6.10
-
-3. **Stable Tree Compliance**: Meets most stable tree criteria (under
-   100 lines, fixes real bug, contained change, no architectural
-   modifications)
-
-4. **Low Regression Risk**: Code is isolated to AddBA Request frames
-   only, other frame types and chipsets unaffected
-
-5. **Well-Tested**: Has been in mainline since v6.18-rc1 with no
-   reported regressions or follow-up fixes
-
-6. **Industry Standard**: Wireless interoperability fixes are routinely
-   backported to stable trees
-
-### Caveats and Recommendations
-
-1. **Add Fixes: tags** during backport:
-  ```
-  Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-
-  Fi 7 (802.11be) devices")
-  Fixes: 3d3f117a259a ("wifi: mt76: mt7996: add PCI IDs for mt7992")
-  ```
-
-2. **Target kernel versions**: Prioritize v6.10+ where MT7992 exists,
-   consider v6.6-v6.9 for MT7996
-
-3. **Testing recommended**: While regression risk is low, testing with
-   affected hardware (MT7996/MT7992 with Intel AX200 clients) would
-   provide additional confidence
-
-4. **Consider validation improvements**: The security audit identified
-   missing input validation. While not critical, adding defensive checks
-   could improve robustness:
-   - Validate `tx_info->nbuf >= 2` before accessing `buf[1]`
-   - Validate token ID is within valid range
-   - Validate buffer length fits in field size
-
-However, these validation improvements should be separate patches and
-are not blockers for backporting this fix.
-
----
-
-## Technical References
-
-- **Commit**: cb6ebbdffef2a888b95f121637cd1fad473919c6
-- **Author**: Howard Hsu <howard-yh.hsu@mediatek.com>
-- **Merge date**: September 15, 2025
-- **First appeared in**: v6.18-rc1
-- **Affects hardware introduced in**: v6.2 (MT7996), v6.10 (MT7992)
-- **Related commit**: b7ddeb9cc4394 (MT7990 AddBA handling, v6.16)
-
- .../wireless/mediatek/mt76/mt76_connac3_mac.h |  7 ++
- .../net/wireless/mediatek/mt76/mt7996/mac.c   | 91 +++++++++++++------
- 2 files changed, 69 insertions(+), 29 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac3_mac.h b/drivers/net/wireless/mediatek/mt76/mt76_connac3_mac.h
-index 1013cad57a7ff..c5eaedca11e09 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac3_mac.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac3_mac.h
-@@ -294,6 +294,13 @@ enum tx_frag_idx {
- #define MT_TXP_BUF_LEN			GENMASK(11, 0)
- #define MT_TXP_DMA_ADDR_H		GENMASK(15, 12)
+diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
+index f902ce08c95a6..8dd124835151a 100644
+--- a/drivers/ufs/host/ufs-mediatek.c
++++ b/drivers/ufs/host/ufs-mediatek.c
+@@ -1075,6 +1075,69 @@ static void ufs_mtk_vreg_fix_vccqx(struct ufs_hba *hba)
+ 	}
+ }
  
-+#define MT_TXP0_TOKEN_ID0		GENMASK(14, 0)
-+#define MT_TXP0_TOKEN_ID0_VALID_MASK	BIT(15)
++static void ufs_mtk_setup_clk_gating(struct ufs_hba *hba)
++{
++	unsigned long flags;
++	u32 ah_ms = 10;
++	u32 ah_scale, ah_timer;
++	u32 scale_us[] = {1, 10, 100, 1000, 10000, 100000};
 +
-+#define MT_TXP1_TID_ADDBA		GENMASK(14, 12)
-+#define MT_TXP3_ML0_MASK		BIT(15)
-+#define MT_TXP3_DMA_ADDR_H		GENMASK(13, 12)
-+
- #define MT_TX_RATE_STBC			BIT(14)
- #define MT_TX_RATE_NSS			GENMASK(13, 10)
- #define MT_TX_RATE_MODE			GENMASK(9, 6)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-index 222e720a56cf5..30e2ef1404b90 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-@@ -802,6 +802,9 @@ mt7996_mac_write_txwi_80211(struct mt7996_dev *dev, __le32 *txwi,
- 	    mgmt->u.action.u.addba_req.action_code == WLAN_ACTION_ADDBA_REQ) {
- 		if (is_mt7990(&dev->mt76))
- 			txwi[6] |= cpu_to_le32(FIELD_PREP(MT_TXD6_TID_ADDBA, tid));
-+		else
-+			txwi[7] |= cpu_to_le32(MT_TXD7_MAC_TXD);
-+
- 		tid = MT_TX_ADDBA;
- 	} else if (ieee80211_is_mgmt(hdr->frame_control)) {
- 		tid = MT_TX_NORMAL;
-@@ -1034,10 +1037,10 @@ int mt7996_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
- 	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(tx_info->skb);
- 	struct ieee80211_key_conf *key = info->control.hw_key;
- 	struct ieee80211_vif *vif = info->control.vif;
--	struct mt76_connac_txp_common *txp;
- 	struct mt76_txwi_cache *t;
- 	int id, i, pid, nbuf = tx_info->nbuf - 1;
- 	bool is_8023 = info->flags & IEEE80211_TX_CTL_HW_80211_ENCAP;
-+	__le32 *ptr = (__le32 *)txwi_ptr;
- 	u8 *txwi = (u8 *)txwi_ptr;
- 
- 	if (unlikely(tx_info->skb->len <= ETH_HLEN))
-@@ -1060,46 +1063,76 @@ int mt7996_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
- 		mt7996_mac_write_txwi(dev, txwi_ptr, tx_info->skb, wcid, key,
- 				      pid, qid, 0);
- 
--	txp = (struct mt76_connac_txp_common *)(txwi + MT_TXD_SIZE);
--	for (i = 0; i < nbuf; i++) {
--		u16 len;
-+	/* MT7996 and MT7992 require driver to provide the MAC TXP for AddBA
-+	 * req
-+	 */
-+	if (le32_to_cpu(ptr[7]) & MT_TXD7_MAC_TXD) {
-+		u32 val;
-+
-+		ptr = (__le32 *)(txwi + MT_TXD_SIZE);
-+		memset((void *)ptr, 0, sizeof(struct mt76_connac_fw_txp));
-+
-+		val = FIELD_PREP(MT_TXP0_TOKEN_ID0, id) |
-+		      MT_TXP0_TOKEN_ID0_VALID_MASK;
-+		ptr[0] = cpu_to_le32(val);
- 
--		len = FIELD_PREP(MT_TXP_BUF_LEN, tx_info->buf[i + 1].len);
-+		val = FIELD_PREP(MT_TXP1_TID_ADDBA,
-+				 tx_info->skb->priority &
-+				 IEEE80211_QOS_CTL_TID_MASK);
-+		ptr[1] = cpu_to_le32(val);
-+		ptr[2] = cpu_to_le32(tx_info->buf[1].addr & 0xFFFFFFFF);
-+
-+		val = FIELD_PREP(MT_TXP_BUF_LEN, tx_info->buf[1].len) |
-+		      MT_TXP3_ML0_MASK;
- #ifdef CONFIG_ARCH_DMA_ADDR_T_64BIT
--		len |= FIELD_PREP(MT_TXP_DMA_ADDR_H,
--				  tx_info->buf[i + 1].addr >> 32);
-+		val |= FIELD_PREP(MT_TXP3_DMA_ADDR_H,
-+				  tx_info->buf[1].addr >> 32);
- #endif
-+		ptr[3] = cpu_to_le32(val);
-+	} else {
-+		struct mt76_connac_txp_common *txp;
- 
--		txp->fw.buf[i] = cpu_to_le32(tx_info->buf[i + 1].addr);
--		txp->fw.len[i] = cpu_to_le16(len);
--	}
--	txp->fw.nbuf = nbuf;
-+		txp = (struct mt76_connac_txp_common *)(txwi + MT_TXD_SIZE);
-+		for (i = 0; i < nbuf; i++) {
-+			u16 len;
-+
-+			len = FIELD_PREP(MT_TXP_BUF_LEN, tx_info->buf[i + 1].len);
-+#ifdef CONFIG_ARCH_DMA_ADDR_T_64BIT
-+			len |= FIELD_PREP(MT_TXP_DMA_ADDR_H,
-+					  tx_info->buf[i + 1].addr >> 32);
-+#endif
- 
--	txp->fw.flags = cpu_to_le16(MT_CT_INFO_FROM_HOST);
-+			txp->fw.buf[i] = cpu_to_le32(tx_info->buf[i + 1].addr);
-+			txp->fw.len[i] = cpu_to_le16(len);
-+		}
-+		txp->fw.nbuf = nbuf;
- 
--	if (!is_8023 || pid >= MT_PACKET_ID_FIRST)
--		txp->fw.flags |= cpu_to_le16(MT_CT_INFO_APPLY_TXD);
-+		txp->fw.flags = cpu_to_le16(MT_CT_INFO_FROM_HOST);
- 
--	if (!key)
--		txp->fw.flags |= cpu_to_le16(MT_CT_INFO_NONE_CIPHER_FRAME);
-+		if (!is_8023 || pid >= MT_PACKET_ID_FIRST)
-+			txp->fw.flags |= cpu_to_le16(MT_CT_INFO_APPLY_TXD);
- 
--	if (!is_8023 && mt7996_tx_use_mgmt(dev, tx_info->skb))
--		txp->fw.flags |= cpu_to_le16(MT_CT_INFO_MGMT_FRAME);
-+		if (!key)
-+			txp->fw.flags |= cpu_to_le16(MT_CT_INFO_NONE_CIPHER_FRAME);
- 
--	if (vif) {
--		struct mt7996_vif *mvif = (struct mt7996_vif *)vif->drv_priv;
--		struct mt76_vif_link *mlink = NULL;
-+		if (!is_8023 && mt7996_tx_use_mgmt(dev, tx_info->skb))
-+			txp->fw.flags |= cpu_to_le16(MT_CT_INFO_MGMT_FRAME);
- 
--		if (wcid->offchannel)
--			mlink = rcu_dereference(mvif->mt76.offchannel_link);
--		if (!mlink)
--			mlink = rcu_dereference(mvif->mt76.link[wcid->link_id]);
-+		if (vif) {
-+			struct mt7996_vif *mvif = (struct mt7996_vif *)vif->drv_priv;
-+			struct mt76_vif_link *mlink = NULL;
- 
--		txp->fw.bss_idx = mlink ? mlink->idx : mvif->deflink.mt76.idx;
--	}
-+			if (wcid->offchannel)
-+				mlink = rcu_dereference(mvif->mt76.offchannel_link);
-+			if (!mlink)
-+				mlink = rcu_dereference(mvif->mt76.link[wcid->link_id]);
- 
--	txp->fw.token = cpu_to_le16(id);
--	txp->fw.rept_wds_wcid = cpu_to_le16(sta ? wcid->idx : 0xfff);
-+			txp->fw.bss_idx = mlink ? mlink->idx : mvif->deflink.mt76.idx;
++	if (ufshcd_is_clkgating_allowed(hba)) {
++		if (ufshcd_is_auto_hibern8_supported(hba) && hba->ahit) {
++			ah_scale = FIELD_GET(UFSHCI_AHIBERN8_SCALE_MASK,
++					  hba->ahit);
++			ah_timer = FIELD_GET(UFSHCI_AHIBERN8_TIMER_MASK,
++					  hba->ahit);
++			if (ah_scale <= 5)
++				ah_ms = ah_timer * scale_us[ah_scale] / 1000;
 +		}
 +
-+		txp->fw.token = cpu_to_le16(id);
-+		txp->fw.rept_wds_wcid = cpu_to_le16(sta ? wcid->idx : 0xfff);
++		spin_lock_irqsave(hba->host->host_lock, flags);
++		hba->clk_gating.delay_ms = max(ah_ms, 10U);
++		spin_unlock_irqrestore(hba->host->host_lock, flags);
 +	}
++}
++
++/* Convert microseconds to Auto-Hibernate Idle Timer register value */
++static u32 ufs_mtk_us_to_ahit(unsigned int timer)
++{
++	unsigned int scale;
++
++	for (scale = 0; timer > UFSHCI_AHIBERN8_TIMER_MASK; ++scale)
++		timer /= UFSHCI_AHIBERN8_SCALE_FACTOR;
++
++	return FIELD_PREP(UFSHCI_AHIBERN8_TIMER_MASK, timer) |
++	       FIELD_PREP(UFSHCI_AHIBERN8_SCALE_MASK, scale);
++}
++
++static void ufs_mtk_fix_ahit(struct ufs_hba *hba)
++{
++	unsigned int us;
++
++	if (ufshcd_is_auto_hibern8_supported(hba)) {
++		switch (hba->dev_info.wmanufacturerid) {
++		case UFS_VENDOR_SAMSUNG:
++			/* configure auto-hibern8 timer to 3.5 ms */
++			us = 3500;
++			break;
++
++		case UFS_VENDOR_MICRON:
++			/* configure auto-hibern8 timer to 2 ms */
++			us = 2000;
++			break;
++
++		default:
++			/* configure auto-hibern8 timer to 1 ms */
++			us = 1000;
++			break;
++		}
++
++		hba->ahit = ufs_mtk_us_to_ahit(us);
++	}
++
++	ufs_mtk_setup_clk_gating(hba);
++}
++
+ static void ufs_mtk_init_mcq_irq(struct ufs_hba *hba)
+ {
+ 	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
+@@ -1369,32 +1432,10 @@ static int ufs_mtk_pre_link(struct ufs_hba *hba)
  
- 	tx_info->skb = NULL;
+ 	return ret;
+ }
+-
+-static void ufs_mtk_setup_clk_gating(struct ufs_hba *hba)
+-{
+-	u32 ah_ms;
+-
+-	if (ufshcd_is_clkgating_allowed(hba)) {
+-		if (ufshcd_is_auto_hibern8_supported(hba) && hba->ahit)
+-			ah_ms = FIELD_GET(UFSHCI_AHIBERN8_TIMER_MASK,
+-					  hba->ahit);
+-		else
+-			ah_ms = 10;
+-		ufshcd_clkgate_delay_set(hba->dev, ah_ms + 5);
+-	}
+-}
+-
+ static void ufs_mtk_post_link(struct ufs_hba *hba)
+ {
+ 	/* enable unipro clock gating feature */
+ 	ufs_mtk_cfg_unipro_cg(hba, true);
+-
+-	/* will be configured during probe hba */
+-	if (ufshcd_is_auto_hibern8_supported(hba))
+-		hba->ahit = FIELD_PREP(UFSHCI_AHIBERN8_TIMER_MASK, 10) |
+-			FIELD_PREP(UFSHCI_AHIBERN8_SCALE_MASK, 3);
+-
+-	ufs_mtk_setup_clk_gating(hba);
+ }
  
+ static int ufs_mtk_link_startup_notify(struct ufs_hba *hba,
+@@ -1726,6 +1767,7 @@ static void ufs_mtk_fixup_dev_quirks(struct ufs_hba *hba)
+ 
+ 	ufs_mtk_vreg_fix_vcc(hba);
+ 	ufs_mtk_vreg_fix_vccqx(hba);
++	ufs_mtk_fix_ahit(hba);
+ }
+ 
+ static void ufs_mtk_event_notify(struct ufs_hba *hba,
 -- 
 2.51.0
 
