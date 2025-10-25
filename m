@@ -4,63 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61C85CCD1BF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Oct 2025 16:13:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0190FCCF9E9
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Oct 2025 16:14:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NijTHjnr8Vsnh+eakzw6IgE3M7T1pPFKw1ug/62Tk4M=; b=2PrT+2CV9lcZbTxhPtRmB3o1gg
-	OgMwb3ksYxaxfw6swihaCJ53H4CDWewMtIpEQuVYk7G6uPTpCobQE33TrfDtsLxAzyYQRhkiZoELp
-	AV9Qcl93HDIZ1JLyCeF8p3YnURQ9p1RSpnRaZRAIbnSCtnwdoVmgnmViOj7Cyx8eQdgVIdwe7jAD1
-	ya/nwBy0x96XEr8dYsW2fxsxhq0g63V80u0AP6Ug6OASbk030SY3b9Um6djVHytsjLSGc8J0TRO5X
-	jvi3AU6ycPe9fYWsKaGpLUg/xbRXeq54XmQFF/9zFgrrSce/X5axpwb1t94Rt/QdivKJEsT9Z/1ux
-	JUfrSv7w==;
+	bh=l6/hWM7e3ZihNUyBxJ9L7BLEEJEsm1W2K7LaqizS0qA=; b=d0GvW9Xq7YRzgPXbZ+VK0qLGBd
+	rDccHYGKDbcTZcPNdHv88yqBbLWxixrT0XOAcm3/Trww/2fdw5+/h95XLLWYEgHfFRZjBk0nNElmR
+	+RUL6KO9dHk7CJVWuagMiUFrAmfcIz+Es28MGCY7+VhPBA5qKRPhQLQr0tcs7h7DD+WtVL0LmSqPm
+	2Q/wiU4Fi4ZUZTd+9FzxFx+ipVqcnQ32R9WPuGsbngSbxuu2TPncLAaWJ709IzGm1e7aT5DnPeYJb
+	xHBKmjezrpvwmtV4O4o84MaoeRdTXwLJhGI4Qz+6kdD9Rvqh/kM0n6ZTAI0v2pWPj8g7KlMszTzoN
+	FcDX3YYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCgte-0000000BR8r-24b9;
-	Sat, 25 Oct 2025 16:13:38 +0000
+	id 1vCgtz-0000000BRMA-3yi9;
+	Sat, 25 Oct 2025 16:13:59 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCgtc-0000000BR7V-4APC;
-	Sat, 25 Oct 2025 16:13:37 +0000
+	id 1vCgtx-0000000BRKS-2XzM;
+	Sat, 25 Oct 2025 16:13:57 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 503A96053F;
-	Sat, 25 Oct 2025 16:13:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5176CC4CEF5;
-	Sat, 25 Oct 2025 16:13:34 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 0A65C60514;
+	Sat, 25 Oct 2025 16:13:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3A725C4CEFB;
+	Sat, 25 Oct 2025 16:13:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761408816;
-	bh=U74QStwuzw9HOceeq2rfHXTHQ1ZQu49WLwXbaUOaCrU=;
+	s=k20201202; t=1761408836;
+	bh=zVtHnfPXG4ioxX+DlgXGFZiXd2qgpVY5VuTt9jhmCqU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=KdfrHnx3w5f5I99J358RH1akapK9vD8OOBlzjWxcPUBM/ZBl/BzF4SLzb9RcwFveH
-	 RCa6PKpknn5aoenaNhsLl67fly5ELq4frQMYT1P/ooqQY8BQJdhGE6lgAAzB6QORul
-	 VJl0nlxdkPfSZUQ+LIcmDfw2GDoiICuKxclUNBhThD4KE3Q9jEoGz6w81E7rDonpyU
-	 KPuSiA2sXWJMXnlJZSWS4MJSN6i7C95YY2etlAfyfYH5IH5chTtFQTfSPGarolS3e6
-	 EgHcnoWfjWm+8KXTAc+f4bXDpqnC7ezswFrbOoMXvwBTy8wh443vvvTOMnU2vQAni3
-	 H1Wf3+pJl6vYQ==
+	b=YbOwP7QwePA8fGDUTJWGSWAG7qbQ1Iym1GQkBEuSZcjDOtyFwXLLTprPB2z13gMJM
+	 nBnlmHniVN1aJvGMFeRh3UT8qbkgKCxsx8ada608Nz+5iLP7wSWFCBAssFvR5TljkR
+	 YYvyVCNrGcYYRXe+rT0a/9DjZfyTzKXpZ1iPYDPviIDbnHBboyH4eSAHWKLBWoLHs8
+	 AbnFTd6zcAq0ZacrZ1Zx8nfxPdF9tPVIh55xCyWResVNxGyTdPIRz4gaa5+iBQ1CWz
+	 bLnvj2TjO8emxcKsclWYcJAyZl59wZ2qCb+Ib5qEFPt7nxe8eXz3UJ0E7/IF4OdWqb
+	 y0nmfRe2pT/Cg==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
-Cc: Benjamin Lin <benjamin-jw.lin@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Felix Fietkau <nbd@nbd.name>,
+Cc: Peter Wang <peter.wang@mediatek.com>,
+	Bart Van Assche <bvanassche@acm.org>,
+	"Martin K. Petersen" <martin.petersen@oracle.com>,
 	Sasha Levin <sashal@kernel.org>,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	shayne.chen@mediatek.com,
-	rex.lu@mediatek.com,
-	howard-yh.hsu@mediatek.com,
-	chui-hao.chiu@mediatek.com,
+	mani@kernel.org,
+	alim.akhtar@samsung.com,
+	chenyuan0y@gmail.com,
+	ping.gao@samsung.com,
+	alok.a.tiwari@oracle.com,
 	alexandre.f.demers@gmail.com,
+	avri.altman@sandisk.com,
+	beanhuo@micron.com,
+	adrian.hunter@intel.com,
+	quic_cang@quicinc.com,
+	quic_nitirawa@quicinc.com,
+	neil.armstrong@linaro.org,
+	linux-scsi@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.17-6.6] wifi: mt76: mt7996: Temporarily disable EPCS
-Date: Sat, 25 Oct 2025 11:55:12 -0400
-Message-ID: <20251025160905.3857885-81-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.17] scsi: ufs: core: Change MCQ interrupt enable flow
+Date: Sat, 25 Oct 2025 11:55:23 -0400
+Message-ID: <20251025160905.3857885-92-sashal@kernel.org>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20251025160905.3857885-1-sashal@kernel.org>
 References: <20251025160905.3857885-1-sashal@kernel.org>
@@ -84,236 +92,141 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Benjamin Lin <benjamin-jw.lin@mediatek.com>
+From: Peter Wang <peter.wang@mediatek.com>
 
-[ Upstream commit e6291bb7a5935b2f1d337fd7a58eab7ada6678ad ]
+[ Upstream commit 253757797973c54ea967f8fd8f40d16e4a78e6d4 ]
 
-EPCS is not yet ready, so do not claim to support it.
+Move the MCQ interrupt enable process to
+ufshcd_mcq_make_queues_operational() to ensure that interrupts are set
+correctly when making queues operational, similar to
+ufshcd_make_hba_operational(). This change addresses the issue where
+ufshcd_mcq_make_queues_operational() was not fully operational due to
+missing interrupt enablement.
 
-Signed-off-by: Benjamin Lin <benjamin-jw.lin@mediatek.com>
-Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Link: https://patch.msgid.link/20250904-mt7996-mlo-more-fixes-v1-4-89d8fed67f20@kernel.org
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
+This change only affects host drivers that call
+ufshcd_mcq_make_queues_operational(), i.e. ufs-mediatek.
+
+Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
 
 LLM Generated explanations, may be completely bogus:
 
-## BACKPORT RECOMMENDATION: **YES**
+YES
+- `ufs-mediatek` is the only host driver that calls
+  `ufshcd_mcq_make_queues_operational()` directly
+  (`drivers/ufs/host/ufs-mediatek.c:1654`). Without this patch, that
+  path never enables the MCQ-specific interrupt bits, so after MCQ
+  reconfiguration the controller cannot receive queue completion
+  interrupts and I/O stalls.
+- The fix moves the interrupt enable step into
+  `ufshcd_mcq_make_queues_operational()` itself (`drivers/ufs/core/ufs-
+  mcq.c:355`), so every caller—both the core flow and the MediaTek
+  vops—now enables `UFSHCD_ENABLE_MCQ_INTRS`, while still honoring
+  `UFSHCD_QUIRK_MCQ_BROKEN_INTR`.
+- To make that call possible from `ufs-mcq.c`, the patch simply exports
+  `ufshcd_enable_intr()` and its prototype
+  (`drivers/ufs/core/ufshcd.c:336`, `include/ufs/ufshcd.h:1310`). This
+  does not alter behavior for existing callers; it just exposes the
+  already-used helper.
+- The change is small, self-contained, and limited to MCQ bring-up. It
+  fixes a real functional regression introduced when MCQ support landed
+  for MediaTek platforms, with no architectural churn and minimal
+  regression risk.
 
-## COMPREHENSIVE ANALYSIS
+ drivers/ufs/core/ufs-mcq.c | 11 +++++++++++
+ drivers/ufs/core/ufshcd.c  | 12 +-----------
+ include/ufs/ufshcd.h       |  1 +
+ 3 files changed, 13 insertions(+), 11 deletions(-)
 
-### Executive Summary
-
-This commit **MUST be backported** to stable kernel trees v6.15.x,
-v6.16.x, and v6.17.x. It fixes a critical bug where the mt7996 WiFi
-driver advertises support for EPCS (Enhanced Protected Coordination
-Service), a WiFi 7 feature, but doesn't actually implement it. This
-mismatch between advertised capabilities and actual functionality can
-cause connection failures, MLO operational issues, and incorrect QoS
-parameter handling.
-
-### What is EPCS?
-
-EPCS (Enhanced Protected Coordination Service) is a WiFi 7 (IEEE
-802.11be / EHT) feature defined in the standard that provides:
-- Priority channel access for critical communications (emergency
-  services)
-- QoS parameter negotiation through protected action frames
-- Multi-Link Operation (MLO) coordination across multiple links
-- Requires AAA server integration for authorization
-
-### Historical Context and Timeline
-
-**Critical Discovery:** Through extensive git history analysis, I found:
-
-1. **January 31, 2023** (commit `348533eb968dcc`): mt7996 driver first
-   added EHT capability initialization, including
-   `IEEE80211_EHT_MAC_CAP0_EPCS_PRIO_ACCESS` flag in
-   `drivers/net/wireless/mediatek/mt76/mt7996/init.c:1304`
-
-2. **February 5, 2025** (commit `de86c5f60839d`): mac80211 subsystem
-   added full EPCS configuration support, including:
-   - EPCS enable/disable state machine
-   - Action frame exchange (enable request/response, teardown)
-   - QoS parameter application across all MLD links
-   - Check at `net/mac80211/mlme.c:5484-5486` that sets
-     `bss_conf->epcs_support` based on capability flag
-
-3. **September 4, 2025** (commit `e6291bb7a5935` - **the commit under
-   review**): mt7996 driver removes EPCS capability advertisement
-
-**Impact Timeline:**
-- **Kernels v6.14 and earlier**: mt7996 advertised EPCS but mac80211 had
-  no EPCS support → **No impact** (harmless)
-- **Kernels v6.15 through v6.17**: mt7996 advertises EPCS AND mac80211
-  tries to use it → **BUG EXISTS**
-- **Kernel v6.18-rc1 and later**: mt7996 doesn't advertise EPCS → **Bug
-  fixed**
-
-### Code Analysis
-
-The fix is a simple one-line removal from
-`drivers/net/wireless/mediatek/mt76/mt7996/init.c:1321`:
-
-```c
-eht_cap_elem->mac_cap_info[0] =
-- IEEE80211_EHT_MAC_CAP0_EPCS_PRIO_ACCESS |
-  IEEE80211_EHT_MAC_CAP0_OM_CONTROL |
-  u8_encode_bits(IEEE80211_EHT_MAC_CAP0_MAX_MPDU_LEN_11454,
-  IEEE80211_EHT_MAC_CAP0_MAX_MPDU_LEN_MASK);
-```
-
-**Function context**: This change is in `mt7996_init_eht_caps()` which
-initializes EHT (WiFi 7) capabilities for the mt7996 chipset. The
-function is called at driver initialization for all supported interface
-types (AP, MESH_POINT) on all bands (2.4GHz, 5GHz, 6GHz).
-
-**Impact**: When the driver advertises EPCS support via this capability
-flag, mac80211 will:
-1. Enable `bss_conf->epcs_support` for the link
-2. Potentially send EPCS enable request action frames to the AP
-3. Expect to receive EPCS enable response frames
-4. Apply special QoS parameters across all MLD links when EPCS is active
-5. Disable normal WMM parameter tracking from beacons when EPCS is
-   enabled
-
-Since the mt7996 driver/firmware doesn't actually support these
-operations, this creates a capability mismatch that can cause
-operational failures.
-
-### Evidence from Other Drivers
-
-**ath12k driver** (Qualcomm): Also explicitly removes EPCS support in
-`drivers/net/wireless/ath/ath12k/mac.c:8057` for mesh interfaces with
-the comment: "Capabilities which requires infrastructure setup with a
-main STA(AP) controlling operations are not needed for mesh."
-
-**mt7925 driver** (MediaTek): Still advertises EPCS support, suggesting
-newer MediaTek hardware may support it, but mt7996 does not.
-
-**mac80211_hwsim**: The simulation driver advertises EPCS for testing
-purposes.
-
-### Risks of NOT Backporting
-
-**High severity issues that could occur:**
-
-1. **Connection Failures**: When a mt7996 device connects to an AP that
-   wants to use EPCS, the negotiation may fail
-
-2. **MLO Operational Issues**: EPCS is tightly integrated with Multi-
-   Link Operation. The code at `net/mac80211/mlme.c:5488-5494` shows
-   EPCS teardown logic when links don't support it, suggesting
-   operational conflicts
-
-3. **Incorrect QoS Handling**: When EPCS is enabled, mac80211 disables
-   normal WMM tracking (`net/mac80211/mlme.c:7254`), potentially causing
-   QoS parameter mismatches
-
-4. **Emergency Services Impact**: EPCS is designed for priority access
-   for emergency services. Incorrect implementation could impact E911
-   and similar critical services
-
-5. **Standards Compliance**: WiFi Alliance certification could fail due
-   to advertising unsupported capabilities
-
-### Benefits of Backporting
-
-**Strong reasons to backport:**
-
-1. **Fixes Real Bug**: Corrects false capability advertisement that
-   causes actual operational issues
-
-2. **Small, Contained Change**: One-line removal with no side effects
-
-3. **No Regressions Possible**: Removing an unsupported feature cannot
-   break existing functionality
-
-4. **Targets Specific Kernels**: Only affects v6.15+ where mac80211 EPCS
-   support exists
-
-5. **Clear Intent**: Commit message explicitly states "EPCS is not yet
-   ready, so do not claim to support it"
-
-6. **Part of MLO Fix Series**: Patch series titled "mt7996-mlo-more-
-   fixes" includes other critical MLO stability fixes
-
-### Backporting Risk Assessment
-
-**Risk Level: VERY LOW**
-
-- **Change size**: Single line removal
-- **Change type**: Removing unsupported capability (conservative fix)
-- **Test coverage**: Feature is tested in mac80211 test suite
-- **Dependencies**: None - standalone fix
-- **Regression potential**: Near zero - can't break what wasn't working
-- **Conflicts**: No conflicts expected - capability initialization code
-  is stable
-
-### Stable Tree Criteria Analysis
-
-✅ **Important bugfix**: Fixes false capability advertisement
-✅ **Minimal risk**: One-line removal, no side effects
-✅ **Small and contained**: Limited to single driver
-✅ **Fixes user-affecting issue**: Connection and MLO operation problems
-✅ **No architectural changes**: Simple capability flag removal
-❌ **Cc: stable tag**: Not present in commit message (but should be
-backported anyway)
-✅ **Obvious correctness**: Clearly correct - don't advertise unsupported
-features
-
-### Recommended Target Kernels
-
-**MUST backport to:**
-- v6.15.x (first kernel with mac80211 EPCS support)
-- v6.16.x
-- v6.17.x
-
-**DO NOT backport to:**
-- v6.14.x and earlier (mac80211 doesn't have EPCS support yet, so
-  harmless)
-
-### Related Commits to Consider
-
-From the same patch series ("mt7996-mlo-more-fixes-v1"):
-- `7ef0c7ad735b0`: "wifi: mt76: mt7996: Implement MLD address
-  translation for EAPOL"
-- `9aa03d182343e`: "wifi: mt76: mt7996: Add all active links to poll
-  list in mt7996_mac_tx_free()"
-- `a3ea1c309bf32`: "wifi: mt76: mt7996: Fix
-  mt7996_reverse_frag0_hdr_trans for MLO"
-
-These related commits should also be evaluated for backporting as they
-address other MLO stability issues.
-
-### Conclusion
-
-This is a textbook example of a commit that should be backported to
-stable kernels. It fixes a real bug (false capability advertisement)
-with a minimal, safe change (one-line removal) that has zero regression
-risk and addresses user-affecting issues. The bug only exists in kernels
-v6.15-v6.17, making the backport target clear and well-defined.
-
-**Final Recommendation: YES - Backport to v6.15.x, v6.16.x, and v6.17.x
-stable trees immediately.**
-
- drivers/net/wireless/mediatek/mt76/mt7996/init.c | 1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-index 84015ab24af62..5a77771e3e6d6 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-@@ -1330,7 +1330,6 @@ mt7996_init_eht_caps(struct mt7996_phy *phy, enum nl80211_band band,
- 	eht_cap->has_eht = true;
+diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
+index cc88aaa106da3..c9bdd4140fd04 100644
+--- a/drivers/ufs/core/ufs-mcq.c
++++ b/drivers/ufs/core/ufs-mcq.c
+@@ -29,6 +29,10 @@
+ #define MCQ_ENTRY_SIZE_IN_DWORD	8
+ #define CQE_UCD_BA GENMASK_ULL(63, 7)
  
- 	eht_cap_elem->mac_cap_info[0] =
--		IEEE80211_EHT_MAC_CAP0_EPCS_PRIO_ACCESS |
- 		IEEE80211_EHT_MAC_CAP0_OM_CONTROL |
- 		u8_encode_bits(IEEE80211_EHT_MAC_CAP0_MAX_MPDU_LEN_11454,
- 			       IEEE80211_EHT_MAC_CAP0_MAX_MPDU_LEN_MASK);
++#define UFSHCD_ENABLE_MCQ_INTRS	(UTP_TASK_REQ_COMPL |\
++				 UFSHCD_ERROR_MASK |\
++				 MCQ_CQ_EVENT_STATUS)
++
+ /* Max mcq register polling time in microseconds */
+ #define MCQ_POLL_US 500000
+ 
+@@ -355,9 +359,16 @@ EXPORT_SYMBOL_GPL(ufshcd_mcq_poll_cqe_lock);
+ void ufshcd_mcq_make_queues_operational(struct ufs_hba *hba)
+ {
+ 	struct ufs_hw_queue *hwq;
++	u32 intrs;
+ 	u16 qsize;
+ 	int i;
+ 
++	/* Enable required interrupts */
++	intrs = UFSHCD_ENABLE_MCQ_INTRS;
++	if (hba->quirks & UFSHCD_QUIRK_MCQ_BROKEN_INTR)
++		intrs &= ~MCQ_CQ_EVENT_STATUS;
++	ufshcd_enable_intr(hba, intrs);
++
+ 	for (i = 0; i < hba->nr_hw_queues; i++) {
+ 		hwq = &hba->uhq[i];
+ 		hwq->id = i;
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index 1907c0f6eda0e..85d5e3938891a 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -45,11 +45,6 @@
+ 				 UTP_TASK_REQ_COMPL |\
+ 				 UFSHCD_ERROR_MASK)
+ 
+-#define UFSHCD_ENABLE_MCQ_INTRS	(UTP_TASK_REQ_COMPL |\
+-				 UFSHCD_ERROR_MASK |\
+-				 MCQ_CQ_EVENT_STATUS)
+-
+-
+ /* UIC command timeout, unit: ms */
+ enum {
+ 	UIC_CMD_TIMEOUT_DEFAULT	= 500,
+@@ -372,7 +367,7 @@ EXPORT_SYMBOL_GPL(ufshcd_disable_irq);
+  * @hba: per adapter instance
+  * @intrs: interrupt bits
+  */
+-static void ufshcd_enable_intr(struct ufs_hba *hba, u32 intrs)
++void ufshcd_enable_intr(struct ufs_hba *hba, u32 intrs)
+ {
+ 	u32 old_val = ufshcd_readl(hba, REG_INTERRUPT_ENABLE);
+ 	u32 new_val = old_val | intrs;
+@@ -8925,16 +8920,11 @@ static int ufshcd_alloc_mcq(struct ufs_hba *hba)
+ static void ufshcd_config_mcq(struct ufs_hba *hba)
+ {
+ 	int ret;
+-	u32 intrs;
+ 
+ 	ret = ufshcd_mcq_vops_config_esi(hba);
+ 	hba->mcq_esi_enabled = !ret;
+ 	dev_info(hba->dev, "ESI %sconfigured\n", ret ? "is not " : "");
+ 
+-	intrs = UFSHCD_ENABLE_MCQ_INTRS;
+-	if (hba->quirks & UFSHCD_QUIRK_MCQ_BROKEN_INTR)
+-		intrs &= ~MCQ_CQ_EVENT_STATUS;
+-	ufshcd_enable_intr(hba, intrs);
+ 	ufshcd_mcq_make_queues_operational(hba);
+ 	ufshcd_mcq_config_mac(hba, hba->nutrs);
+ 
+diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
+index a4eb5bde46e88..a060fa71b2b1b 100644
+--- a/include/ufs/ufshcd.h
++++ b/include/ufs/ufshcd.h
+@@ -1321,6 +1321,7 @@ static inline void ufshcd_rmwl(struct ufs_hba *hba, u32 mask, u32 val, u32 reg)
+ 
+ void ufshcd_enable_irq(struct ufs_hba *hba);
+ void ufshcd_disable_irq(struct ufs_hba *hba);
++void ufshcd_enable_intr(struct ufs_hba *hba, u32 intrs);
+ int ufshcd_alloc_host(struct device *, struct ufs_hba **);
+ int ufshcd_hba_enable(struct ufs_hba *hba);
+ int ufshcd_init(struct ufs_hba *, void __iomem *, unsigned int);
 -- 
 2.51.0
 
