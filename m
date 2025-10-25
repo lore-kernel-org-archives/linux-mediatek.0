@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FC92CCD1BF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Oct 2025 16:15:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF0B9CCF9E3
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Oct 2025 16:16:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2SUQTTw8m+uHcfX3iFJhtkxzp1GZEeTCuCI8zWEntyY=; b=IqzyqjgIbXyz69B/kXhmd+emay
-	K/lXJfzMjPYDDCbjGe+BbK977aHjFVlgEQQill/BYjBNRhprJIrwLNkRfqJ+y/4UBicRcHqixyncr
-	rnLjEH09nDPB6z3R9vtYw0E2R+qZ6X+G4NjYn6gIOB0NpE3lX8lCvRMtvscySd6NCQnILV4j5gmBS
-	nRV5a7dqGWh1dfTOdUGDYK5ZtdS5Bm9m3essAi9sgYlSUX/K9Jf1bQVej91X0RTROi+QKbbbRlTBv
-	ndYZhSKzx34R1HvQYHEyKIzD4cYFh2mt+Tud8QSefRJzevy/VIw0S5t1B793dAFVMU4DcrFqR9mAq
-	r4L8P6Nw==;
+	bh=MI/jvL4mE24s2oM9lD/LxL6n9HS97AVriA79ZjMQerU=; b=Uj20Vp63fnvjWas0paPn+w9DPo
+	SydrCqgzc/5jhUMuQ16UbAwmIA1Z3LestxWwpFQh4hm4/3alyvtYcGONA/3Zgwcw7nsFuDp5NtjOR
+	R6up/agM5hHfhGjdNjlpTv/e+ECUxIG0y/82UlHwiAXNcMWNfQDiv4DM8O9CREAukTKsQ/FAOXFYZ
+	TXaiueBBzKEtJGXk+0Lgkj1ZNoO2YmbQqpclAwXT6wrTevFekysH8oh27wjpGbFxRb3IaDqr8Au9L
+	qC3QdOw9C2EvxOOeWeczr+RtqqSdofHz9OzF8lDAzxG4SZYgblvDiRy3dnfhVtMhLBAnwUyfEsDF+
+	mDTtRGUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCgvT-0000000BRu1-2a4N;
-	Sat, 25 Oct 2025 16:15:31 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vCgvw-0000000BS3X-0p6K;
+	Sat, 25 Oct 2025 16:16:00 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCgvR-0000000BRtZ-2PrZ;
-	Sat, 25 Oct 2025 16:15:29 +0000
+	id 1vCgvt-0000000BS2H-09ys;
+	Sat, 25 Oct 2025 16:15:58 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 030A56059C;
-	Sat, 25 Oct 2025 16:15:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 72B15C113D0;
-	Sat, 25 Oct 2025 16:15:27 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id A1B8544FE1;
+	Sat, 25 Oct 2025 16:15:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 51377C4CEFB;
+	Sat, 25 Oct 2025 16:15:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761408928;
-	bh=mYtsRBf8jVQvcN8NSOYsYIIBlBDdPZN43e/VwT+I5Js=;
+	s=k20201202; t=1761408956;
+	bh=sDveZVjGmF+hFWzrw2cClUD8xKZBCyZ7F/vmzkMigQg=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=j6f1nCRT0LYJDyGAYXtKIcR0KVCB28hUGNS6IKVfLskViuX1qiOnWf4XKdp29dEnX
-	 G8sh3BAGhIHy5U4ptLRi6W5dCL/u3G/w/ks/lKQePDMWUuEYVW/r1HIaVNHrVejcYE
-	 kL6h94hNCaBoUAM578VCP+t8wB7HlEkOLCSP/gEWErObFD/x8OgnusTftbhbebyFvQ
-	 NvssuZX7rJO9OklfXqT4ok3fUfRYVSsBdUx5RXA4sTezrdAHBLOgNcFrAaWVfTCkH6
-	 VtlslLqlMNMPx7Qplc1GLQReQco/Ty90VRqhEWx0MpgM3WLwh9GvFxXLxFAW+3ltDf
-	 VDzdn/KORmSmQ==
+	b=MWAvGlPwzPUXPm/DUT91D3C+te0LDlemo88W+BdX4pw6WHNnT9RL9/M++sDVzbHAX
+	 U163x5pBH2GWKkpChGx9dhHc5/HsiPQnJcFihaQWiqgjiujRiWGGnX6IQqKxUdORhx
+	 0tgOs+pGV/HMW4QrmDZ9RVIUO9PNhf4R8TPVK7iQWfryaD4qEzccle38oHYnlX9IiB
+	 03CX2ZEgCveAmsQi2Hu34BN0UouRqALztBQiLcdl3vmHA0wRM56rOhdzXjv2m+D+rv
+	 vQtsGg3Vhwrcw4OqUKIdlrRdcopFXOmW4LO6YuZzHGqEBbYyYhIPQw6fpf/j/3cmQC
+	 9MRQ4HSeuGpCg==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
@@ -53,9 +53,9 @@ Cc: Peter Wang <peter.wang@mediatek.com>,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.17-6.1] scsi: ufs: host: mediatek: Change reset sequence for improved stability
-Date: Sat, 25 Oct 2025 11:56:07 -0400
-Message-ID: <20251025160905.3857885-136-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.17-6.6] scsi: ufs: host: mediatek: Disable auto-hibern8 during power mode changes
+Date: Sat, 25 Oct 2025 11:56:21 -0400
+Message-ID: <20251025160905.3857885-150-sashal@kernel.org>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20251025160905.3857885-1-sashal@kernel.org>
 References: <20251025160905.3857885-1-sashal@kernel.org>
@@ -65,6 +65,9 @@ X-Patchwork-Hint: Ignore
 X-stable-base: Linux 6.17.5
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251025_091557_118914_4788AC86 
+X-CRM114-Status: GOOD (  21.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,14 +84,14 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Peter Wang <peter.wang@mediatek.com>
 
-[ Upstream commit 878ed88c50bfb14d972dd3b86a1c8188c58de4e5 ]
+[ Upstream commit f5ca8d0c7a6388abd5d8023cc682e1543728cc73 ]
 
-Modify the reset sequence to ensure that the device reset pin is set low
-before the host is disabled. This change enhances the stability of the
-reset process by ensuring the correct order of operations.
+Disable auto-hibern8 during power mode transitions to prevent unintended
+entry into auto-hibern8. Restore the original auto-hibern8 timer value
+after completing the power mode change to maintain system stability and
+prevent potential issues during power state transitions.
 
 Signed-off-by: Peter Wang <peter.wang@mediatek.com>
-Link: https://lore.kernel.org/r/20250811131423.3444014-10-peter.wang@mediatek.com
 Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
@@ -97,88 +100,174 @@ LLM Generated explanations, may be completely bogus:
 
 YES
 
-- What changed: In `drivers/ufs/host/ufs-mediatek.c:1257`, the reset
-  sequence in `ufs_mtk_device_reset()` currently disables the HBA before
-  asserting the device reset pin low:
-  - Calls `ufshcd_hba_stop(hba)` first (drivers/ufs/host/ufs-
-    mediatek.c:1261–1262).
-  - Then asserts reset low via `ufs_mtk_device_reset_ctrl(0, res)`
-    (drivers/ufs/host/ufs-mediatek.c:1264).
-  - Holds low for ≥10µs (drivers/ufs/host/ufs-mediatek.c:1273).
-  - Deasserts reset high (drivers/ufs/host/ufs-mediatek.c:1275) and
-    waits 10–15ms for device settle (drivers/ufs/host/ufs-
-    mediatek.c:1277–1278).
-  The new commit swaps the first two steps (assert reset low first, then
-`ufshcd_hba_stop(hba)`), explicitly noting “disable hba in middle of
-device reset”.
+Summary
+- The change disables Auto-Hibern8 (AH8) around UFS power mode
+  transitions and restores the prior timer afterward. This prevents
+  unintended AH8 entry while the link is being reconfigured, which can
+  cause timeouts or recovery events during transitions. The fix is
+  small, self-contained, and limited to the Mediatek UFS host driver.
 
-- Why it matters: This is a precise order-of-operations fix to a
-  hardware reset sequence. Asserting the device’s reset (RST_n active
-  low) before disabling the host controller avoids a race/ordering
-  hazard during reset, which can manifest as sporadic reset instability.
-  The risk window between asserting low and disabling the HBA is tiny
-  (immediately followed by `ufshcd_hba_stop()` and a 10–15µs hold), and
-  the device is already in reset during that window.
+What the patch does
+- Saves current AH8 timer and disables AH8 in PRE_CHANGE:
+  - drivers/ufs/host/ufs-mediatek.c:1472–1476
+    - Reads `REG_AUTO_HIBERNATE_IDLE_TIMER` into a static `reg` and
+      calls `ufs_mtk_auto_hibern8_disable(hba)`.
+- Disables AH8 in a helper and ensures the link is up before proceeding:
+  - drivers/ufs/host/ufs-mediatek.c:1436–1461
+    - Writes 0 to `REG_AUTO_HIBERNATE_IDLE_TIMER` (disables AH8), waits
+      for the host idle state, then waits for `VS_LINK_UP`. On failure,
+      warns and triggers `ufshcd_force_error_recovery(hba)` and returns
+      `-EBUSY`.
+- Restores the previous AH8 timer in POST_CHANGE:
+  - drivers/ufs/host/ufs-mediatek.c:1480–1483
 
-- Consistency within the driver: The driver already asserts reset
-  independently of HBA disable in other flows, e.g., on suspend when the
-  link is off it calls `ufs_mtk_device_reset_ctrl(0, res)` without a
-  preceding `ufshcd_hba_stop()` (drivers/ufs/host/ufs-
-  mediatek.c:1445–1449). The new ordering in `ufs_mtk_device_reset()`
-  makes the device-reset behavior consistent within the driver.
+Why this fixes a bug
+- Power mode transitions involve DME configuration and link parameter
+  changes (see setup/adaptation in `ufs_mtk_pre_pwr_change()`:
+  drivers/ufs/host/ufs-mediatek.c:1405–1434). If the link enters AH8
+  mid-transition, the controller and device can deadlock or time out,
+  requiring error recovery. Temporarily disabling AH8 ensures the link
+  stays in the expected state while power mode changes occur and
+  restores normal power-saving afterwards.
+- The helper already used in suspend PRE_CHANGE (drivers/ufs/host/ufs-
+  mediatek.c:1748–1751) shows the driver’s established pattern to
+  disable AH8 before low-power transitions; extending this to power mode
+  changes closes a similar race.
 
-- Scope and risk:
-  - Change is small and contained to a single function
-    (`ufs_mtk_device_reset()`), no API or structural changes.
-  - No new features; it purely reorders two existing calls and updates a
-    comment.
-  - The function is invoked through the variant op hook
-    `vops->device_reset` (drivers/ufs/host/ufs-mediatek.c:1792–1803), so
-    the behavior change is localized to Mediatek platforms only.
-  - `ufshcd_hba_stop()` (drivers/ufs/core/ufshcd.c:4842–4854) simply
-    disables the controller and waits for it to quiesce; performing it
-    after the device is already in reset is benign and avoids mid-reset
-    interactions.
+Scope and risk
+- Scope: One driver file; no UFS core changes; no architectural shifts.
+  Uses existing helpers (`ufshcd_is_auto_hibern8_supported`,
+  `ufshcd_readl/writel`, `ufs_mtk_wait_*`,
+  `ufshcd_force_error_recovery`).
+- Regression risk: Low. Behavior change is to temporarily disable AH8
+  only during power mode changes and then restore the previous timer.
+  - Note: `ufs_mtk_pwr_change_notify()` stores the old AH8 timer in a
+    function-scope static (`reg`) (drivers/ufs/host/ufs-
+    mediatek.c:1469). While typical Mediatek systems have a single UFS
+    host and power mode changes are serialized, a static variable is
+    theoretically shared if multiple controllers triggered this
+    concurrently. In practice, impact is negligible on common
+    configurations.
+  - Note: The PRE_CHANGE path does not propagate the return of
+    `ufs_mtk_auto_hibern8_disable()` (drivers/ufs/host/ufs-
+    mediatek.c:1473–1478). The helper triggers error recovery internally
+    and returns `-EBUSY`, so recovery still occurs, but the immediate
+    PRE_CHANGE return value won’t reflect the failure. A tiny follow-up
+    improvement would propagate this error directly (as done later in-
+    tree).
 
-- User impact: Improves reset stability on Mediatek UFS hosts, which
-  affects error recovery and some power management transitions (device
-  reset is used by `ufshcd_device_reset()` in error handling;
-  drivers/ufs/core/ufshcd.c:726–742). This is a real-world reliability
-  fix rather than a feature.
+Evidence of established pattern
+- Other vendor drivers also manage AH8 around sensitive transitions,
+  supporting this approach:
+  - Hisilicon disables/adjusts AH8 during link setup:
+    drivers/ufs/host/ufs-hisi.c:234–237
+  - Spreadtrum disables AH8 during suspend PRE_CHANGE:
+    drivers/ufs/host/ufs-sprd.c:185–190
 
-- Stable criteria:
-  - Fixes a practical bug (unstable/fragile reset behavior) that can
-    affect users.
-  - Minimal, self-contained change with low regression risk.
-  - No architectural churn; confined to UFS Mediatek host driver.
-  - Although the commit message lacks “Fixes:”/“Cc: stable”, the change
-    meets stable rules as a targeted reliability fix in a vendor driver.
+Stable backport criteria
+- Fixes a real operational bug (unintended AH8 mid-transition),
+  observable as timeouts or recovery during power mode changes.
+- Small, targeted change in a single vendor driver; minimal risk to
+  other subsystems.
+- No new features or architectural changes; follows established patterns
+  in UFS vendor drivers.
+- While the commit message lacks an explicit Fixes/Stable tag, the
+  change aligns well with stable policy as a platform-specific
+  reliability fix.
 
-Given the above, this is a good candidate for backporting to stable
-trees that ship the Mediatek UFS host driver.
+Recommendation
+- Backport to stable: YES.
+- Optional but advisable: include the small follow-up that returns an
+  error immediately on idle wait timeout (to propagate the PRE_CHANGE
+  failure) to match the improved error handling now seen in-tree.
 
- drivers/ufs/host/ufs-mediatek.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/ufs/host/ufs-mediatek.c | 53 +++++++++++++++++++--------------
+ 1 file changed, 30 insertions(+), 23 deletions(-)
 
 diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index ada21360aa270..82160da8ec71b 100644
+index 91081d2aabe44..3defb5f135e33 100644
 --- a/drivers/ufs/host/ufs-mediatek.c
 +++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -1503,11 +1503,11 @@ static int ufs_mtk_device_reset(struct ufs_hba *hba)
- {
- 	struct arm_smccc_res res;
+@@ -1400,19 +1400,49 @@ static int ufs_mtk_pre_pwr_change(struct ufs_hba *hba,
+ 	return ret;
+ }
  
--	/* disable hba before device reset */
--	ufshcd_hba_stop(hba);
--
- 	ufs_mtk_device_reset_ctrl(0, res);
- 
-+	/* disable hba in middle of device reset */
-+	ufshcd_hba_stop(hba);
++static int ufs_mtk_auto_hibern8_disable(struct ufs_hba *hba)
++{
++	int ret;
 +
- 	/*
- 	 * The reset signal is active low. UFS devices shall detect
- 	 * more than or equal to 1us of positive or negative RST_n
++	/* disable auto-hibern8 */
++	ufshcd_writel(hba, 0, REG_AUTO_HIBERNATE_IDLE_TIMER);
++
++	/* wait host return to idle state when auto-hibern8 off */
++	ufs_mtk_wait_idle_state(hba, 5);
++
++	ret = ufs_mtk_wait_link_state(hba, VS_LINK_UP, 100);
++	if (ret) {
++		dev_warn(hba->dev, "exit h8 state fail, ret=%d\n", ret);
++
++		ufshcd_force_error_recovery(hba);
++
++		/* trigger error handler and break suspend */
++		ret = -EBUSY;
++	}
++
++	return ret;
++}
++
+ static int ufs_mtk_pwr_change_notify(struct ufs_hba *hba,
+ 				enum ufs_notify_change_status stage,
+ 				const struct ufs_pa_layer_attr *dev_max_params,
+ 				struct ufs_pa_layer_attr *dev_req_params)
+ {
+ 	int ret = 0;
++	static u32 reg;
+ 
+ 	switch (stage) {
+ 	case PRE_CHANGE:
++		if (ufshcd_is_auto_hibern8_supported(hba)) {
++			reg = ufshcd_readl(hba, REG_AUTO_HIBERNATE_IDLE_TIMER);
++			ufs_mtk_auto_hibern8_disable(hba);
++		}
+ 		ret = ufs_mtk_pre_pwr_change(hba, dev_max_params,
+ 					     dev_req_params);
+ 		break;
+ 	case POST_CHANGE:
++		if (ufshcd_is_auto_hibern8_supported(hba))
++			ufshcd_writel(hba, reg, REG_AUTO_HIBERNATE_IDLE_TIMER);
+ 		break;
+ 	default:
+ 		ret = -EINVAL;
+@@ -1646,29 +1676,6 @@ static void ufs_mtk_dev_vreg_set_lpm(struct ufs_hba *hba, bool lpm)
+ 	}
+ }
+ 
+-static int ufs_mtk_auto_hibern8_disable(struct ufs_hba *hba)
+-{
+-	int ret;
+-
+-	/* disable auto-hibern8 */
+-	ufshcd_writel(hba, 0, REG_AUTO_HIBERNATE_IDLE_TIMER);
+-
+-	/* wait host return to idle state when auto-hibern8 off */
+-	ufs_mtk_wait_idle_state(hba, 5);
+-
+-	ret = ufs_mtk_wait_link_state(hba, VS_LINK_UP, 100);
+-	if (ret) {
+-		dev_warn(hba->dev, "exit h8 state fail, ret=%d\n", ret);
+-
+-		ufshcd_force_error_recovery(hba);
+-
+-		/* trigger error handler and break suspend */
+-		ret = -EBUSY;
+-	}
+-
+-	return ret;
+-}
+-
+ static int ufs_mtk_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op,
+ 	enum ufs_notify_change_status status)
+ {
 -- 
 2.51.0
 
