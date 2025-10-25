@@ -4,55 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2013CCF9E9
-	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Oct 2025 19:17:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43694CCD1BF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Oct 2025 20:36:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:
-	To:From:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=iSFUovbeuQGiM6doGtKGXr6HCdfnO0zr5ojzTwhnxHI=; b=PdC8n2rutSgN54
-	KmUecULllhskwfEYcMqSBoItB8UUKBCwmcxWjLaqFFv+15I8kKdrHJ/WtOTbKRSnc+sCcaWb0uHQn
-	cQ1SRL+lfZNT+gM5HbP43U8o3padXWp8tH0RUvB3gLkEam1c92tWBfhmM+um23ySrVimaT7i5gzhy
-	XF5ystUP+nuvGSAo5dg+POnW9XYT1TP2diTnJUL/Qj2aWOkfm42u0+xrrknWLYLPx6mmpLyBpJak1
-	BMNo9OpayZ5lr+n6Z8zapPXVAGNkJvhKhk76vyfQ2GLzHBMsBYxxvqHqbxSOkHDFC28P6jN4zsmtB
-	9xU/wVhYwvOfOgXLUUNA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fFb8a4MiQzJjJNDBUT9PdXXwC4utxv2vDZJA5zBqRTg=; b=Sweukk/I8GP0x4HWC7lSWMo25q
+	KHlqNGBjFXPcnY7dCz890MCw0z+hVnJXoo5hsoxYCl8MV+vN+0hfvq2J5+qiMXDaG9/eeuaw3GTiP
+	4Na7DhyprhCAGRMkPYteWtnd48yG8Qsgz1M0dxDkwke5XdysL6F2aCNb8T9Y27RJDPEdVSyMeYDSW
+	8U2DHipSxDmXCNixnIlHZnbrdc/C9eXooGSehGxWdmf4nSq95y2QOOfd27a9n+pQ/nyafT+y6xcHU
+	tE5S2VZIeJdJx9Ub50Rxn76jAEymyX1sSt8okR9EQOdIBViq+CixmyMABrukZlTR01TbKqrHenfPI
+	kRxfMlHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCjlv-0000000BfQs-254c;
-	Sat, 25 Oct 2025 19:17:51 +0000
-Received: from 60-249-7-157.hinet-ip.hinet.net ([60.249.7.157] helo=msrv.mec.com.tw)
+	id 1vCl02-0000000Bj8J-0jHY;
+	Sat, 25 Oct 2025 20:36:30 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCjls-0000000BfQ0-3ppy
-	for linux-mediatek@lists.infradead.org;
-	Sat, 25 Oct 2025 19:17:50 +0000
-Received: from msrv.mec.com.tw (msrv.mec.com.tw [127.0.0.1])
-	by msrv.mec.com.tw (Postfix) with ESMTP id 4cv8Lw2YTnz2McZR
-	for <linux-mediatek@lists.infradead.org>; Sun, 26 Oct 2025 03:03:52 +0800 (CST)
-X-Virus-Scanned: Debian amavisd-new at mailserver.cncteam.tw
-Received: from msrv.mec.com.tw ([127.0.0.1])
-	by msrv.mec.com.tw (msrv.mec.com.tw [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EgLg8aVGv-X9 for <linux-mediatek@lists.infradead.org>;
-	Sun, 26 Oct 2025 03:03:52 +0800 (CST)
-Received: from 60-249-7-157.hinet-ip.hinet.net (unknown [156.0.212.49])
-	by msrv.mec.com.tw (Postfix) with ESMTPS id 4cv8Lt13BHz2McXw
-	for <linux-mediatek@lists.infradead.org>; Sun, 26 Oct 2025 03:03:49 +0800 (CST)
-From: Marie PRESLES <test@60-249-7-157.hinet-ip.hinet.net>
-To: linux-mediatek@lists.infradead.org
-Subject: [SPAM] MES SALUTATIONS    
-Date: 25 Oct 2025 20:03:13 +0100
-Message-ID: <20251025200313.C2689F32FECEDA42@60-249-7-157.hinet-ip.hinet.net>
+	id 1vCkzz-0000000Bj7E-0ont;
+	Sat, 25 Oct 2025 20:36:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=fFb8a4MiQzJjJNDBUT9PdXXwC4utxv2vDZJA5zBqRTg=; b=fTxVjdRABNw94iQ5qsgAUSOe0Z
+	lggkW4Q1HlDvl+ZCNtZDZmxmJ+/3tTd2rzw/xUEn3N+JdQp6UYuj9hm4StBZmzw9TndQbJ/BfgrBe
+	pq1R5qOSaOq566qLKoY2LEEe0zytQmx38TbAmhhjHeZYbeFBgK8/hpjCSMGzoFIB/94sf8PBZou9a
+	Noi49bH2TVsBceWtsssjU5Wv8CNTjji2Iyu8nnZWvety2VIFVGpWzI5ZotjLIFRxX4OByl6NlXihY
+	LT9ZgGqHFYdfls4sgDl32n2comvEL2wgWBCIhO7xpBeJqlwltytD/MMGhHGr++302FztABLBhln8r
+	CMmlP9NA==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:44906)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.98.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1vCkzs-000000000Ns-3tE4;
+	Sat, 25 Oct 2025 21:36:21 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1vCkzr-000000003zc-1IOQ;
+	Sat, 25 Oct 2025 21:36:19 +0100
+Date: Sat, 25 Oct 2025 21:36:19 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [net-next PATCH v2 2/2] net: airoha: add phylink support for GDM1
+Message-ID: <aP00w4CQdeX9GIJA@shell.armlinux.org.uk>
+References: <20251023145850.28459-1-ansuelsmth@gmail.com>
+ <20251023145850.28459-3-ansuelsmth@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain;
-	charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-Antivirus: avast! (VPS 100214-0, 14/02/2010), Outbound message
-X-Antivirus-Status: Clean
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20251023145850.28459-3-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251025_121749_103130_4D5081FC 
-X-CRM114-Status: UNSURE (  -4.82  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251025_133627_257718_518096F4 
+X-CRM114-Status: GOOD (  28.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,47 +81,127 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: preslesmarie@yahoo.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Bonjour
+On Thu, Oct 23, 2025 at 04:58:49PM +0200, Christian Marangi wrote:
+> In preparation for support of GDM2+ port, fill in phylink OPs for GDM1
+> that is an INTERNAL port for the Embedded Switch.
+> 
+> Add all the phylink start/stop and fill in the MAC capabilities and the
+> internal interface as the supported interface.
+> 
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> ---
+>  drivers/net/ethernet/airoha/Kconfig      |  1 +
+>  drivers/net/ethernet/airoha/airoha_eth.c | 77 +++++++++++++++++++++++-
+>  drivers/net/ethernet/airoha/airoha_eth.h |  3 +
+>  3 files changed, 80 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/net/ethernet/airoha/Kconfig b/drivers/net/ethernet/airoha/Kconfig
+> index ad3ce501e7a5..3c74438bc8a0 100644
+> --- a/drivers/net/ethernet/airoha/Kconfig
+> +++ b/drivers/net/ethernet/airoha/Kconfig
+> @@ -2,6 +2,7 @@
+>  config NET_VENDOR_AIROHA
+>  	bool "Airoha devices"
+>  	depends on ARCH_AIROHA || COMPILE_TEST
+> +	select PHYLIB
 
-Excusez moi de cette mani=C3=A8re de vous contacter, je viens=20
-d'apercevoir votre profil et je me suis dis que vous =C3=AAtes la=20
-personne qu'il me faut. Je vous demande de porter une attention=20
-particuli=C3=A8re =C3=A0 mon message afin que vous puissiez prendre la=20
-bonne d=C3=A9cision. En effet, je m'appelle Marie PRESLES , un=20
-boursier slovaque =C3=A0 la retraite o=C3=B9 j'ai fait fortune dans des=20
-entreprises en plein essor telles que les bourses et bien plus=20
-encore. Mais =C3=A0 un moment hors du temps de nos parcours, la=20
-r=C3=A9alit=C3=A9 nous montre que rien n=E2=80=99est =C3=A9ternel. C'est ai=
-nsi que j'ai=20
-r=C3=A9alis=C3=A9 que le d=C3=A9but de chaque vie a toujours une fin et que=
- je=20
-ne peux pas rester longtemps. En effet, je souffre=20
-malheureusement d'un cancer en phase terminale, le m=C3=A9decin=20
-traitant m'a dit que mes jours =C3=A9taient compt=C3=A9s en raison de ma=20=
+This looks wrong if you're using phylink.
 
-sant=C3=A9 d=C3=A9grad=C3=A9e et de mon =C3=A2ge avanc=C3=A9. =C3=89tant un=
-e grandeur d'=C3=A2me qui=20
-fait de moi un philanthrope, j'ai toujours un c=C5=93ur pour mes=20
-semblables, surtout ceux qui souffrent, ceux qui luttent, tous=20
-ces gens qui ne sont pas entendus et cela lors de mes voyages.=20
-Sachez que cela ne me sert =C3=A0 rien d'avoir des biens et de ne pas=20
-partager sachant que la mort est =C3=A0 mes trousses. C'est pourquoi=20
-je souhaite bien vouloir vous offrir ma propri=C3=A9t=C3=A9 d'une somme de=
-=20
-17.500.000 =E2=82=AC, afin que vous puissiez r=C3=A9aliser les projets qui=
-=20
-vous tiennent =C3=A0 c=C5=93ur. Je r=C3=A9clame juste des pri=C3=A8res afin=
- que mon=20
-op=C3=A9ration se passe tr=C3=A8s bien. Veuillez donc =C3=A9crire =C3=A0 mo=
-n mail=20
-personnel preslesmarie@yahoo.com pour rentrer en possession de=20
-votre donation car il vous appartient d=C3=A9j=C3=A0 d=C3=A8s =C3=A0 pr=C3=
-=A9sent.
-QUE LES B=C3=89N=C3=89DICTION SOIENT AVEC VOUS
+>  	help
+>  	  If you have a Airoha SoC with ethernet, say Y.
+>  
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+> index ce6d13b10e27..deba909104bb 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.c
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+> @@ -1613,6 +1613,8 @@ static int airoha_dev_open(struct net_device *dev)
+>  	struct airoha_gdm_port *port = netdev_priv(dev);
+>  	struct airoha_qdma *qdma = port->qdma;
+>  
+> +	phylink_start(port->phylink);
+> +
+>  	netif_tx_start_all_queues(dev);
+>  	err = airoha_set_vip_for_gdm_port(port, true);
+>  	if (err)
 
-Bien =C3=A0 vous
+phylink_start() _can_ bring the carrier up immediately. Is the netdev
+ready to start operating at the point phylink_start() has been called?
+This error handling suggests the answer is "no", and the lack of
+phylink_stop() in the error path is also a red flag.
+
+> @@ -1665,6 +1667,8 @@ static int airoha_dev_stop(struct net_device *dev)
+>  		}
+>  	}
+>  
+> +	phylink_stop(port->phylink);
+> +
+>  	return 0;
+>  }
+>  
+> @@ -2813,6 +2817,18 @@ static const struct ethtool_ops airoha_ethtool_ops = {
+>  	.get_link		= ethtool_op_get_link,
+>  };
+>  
+> +static struct phylink_pcs *airoha_phylink_mac_select_pcs(struct phylink_config *config,
+> +			phy_interface_t interface)
+
+I'd write this as:
+
+static struct phylink_pcs *
+airoha_phylink_mac_select_pcs(struct phylink_config *config,
+			      phy_interface_t interface)
+
+but:
+
+> +{
+> +	return NULL;
+> +}
+
+Not sure what the point of this is, as this will be the effect if
+this function is not provided.
+
+> +
+> +static void airoha_mac_config(struct phylink_config *config,
+> +			      unsigned int mode,
+> +			      const struct phylink_link_state *state)
+> +{
+> +}
+> +
+>  static int airoha_metadata_dst_alloc(struct airoha_gdm_port *port)
+>  {
+>  	int i;
+> @@ -2857,6 +2873,57 @@ bool airoha_is_valid_gdm_port(struct airoha_eth *eth,
+>  	return false;
+>  }
+>  
+> +static void airoha_mac_link_up(struct phylink_config *config,
+> +			       struct phy_device *phy, unsigned int mode,
+> +			       phy_interface_t interface, int speed,
+> +			       int duplex, bool tx_pause, bool rx_pause)
+> +{
+> +}
+> +
+> +static void airoha_mac_link_down(struct phylink_config *config,
+> +				 unsigned int mode, phy_interface_t interface)
+> +{
+> +}
+> +
+> +static const struct phylink_mac_ops airoha_phylink_ops = {
+> +	.mac_select_pcs = airoha_phylink_mac_select_pcs,
+> +	.mac_config = airoha_mac_config,
+> +	.mac_link_up = airoha_mac_link_up,
+> +	.mac_link_down = airoha_mac_link_down,
+> +};
+
+All the called methods are entirely empty, meaning that anything that
+phylink reports may not reflect what is going on with the device.
+
+Is there a plan to implement these methods?
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
