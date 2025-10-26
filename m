@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 596B1CCD1BF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Oct 2025 01:38:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FBA3CCD193
+	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Oct 2025 05:14:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U4Ci6gZ7t/Gg1iVOZCypmkq0TTAW8B/gpa9UY++OVmY=; b=W4Oc7ecW3ZnPIgLsFzhPfmpIC7
-	pvgg/wVzJjyBmq/280Nq4mcXYEp2JHDG4puUNJvq1ofrJtD8c5hRIoNN9Qz3moC3LSstEwUga9BPG
-	cBgujKULTkjVxvMSO1ZHP3220VE7afwgvHMITfIbMqIDrkM/CvxH5fkKL61u5Tq0B1BVRa/ZdF78Z
-	cNZBYte520KkRUEduxC17JMAE72GzjkxZSF+yPRBu3YTnDUp3omEKTNoFoupwC0UIrXmmXwZmYbA9
-	BGqWpeMP1cCU6Zi+EuJD5lTiVky8nkcyFZj9XoxBAVTHn85qn1thg5ZsvTWsIbOWkx+uTpOxAo4zn
-	Ax+hv6Rw==;
+	bh=TVGPySEnxjFy2QOQpcAfInwnpkDXb9sJXNYBkhDhx/c=; b=35Ra1g5EFVFwRzFOycxJzDQyHm
+	9COmdRTULNWzzPcl465qdeM/k3puPF05wtBvLZBVwHfIkSBkEF6u2GPTVwKZVlmn0gTVRh8L2Yice
+	2aBs5sNEQNvk0Xi4F/iqgKqLJvlHr6o2VBLJOM8UflqzDWKhpWbzK0fMuzT7AZ8cgqaxF82h0TiOz
+	XMOI1XMRj5FIi8J7RbcvuOJHxedRmVhGpdK0CgQygka2fr+STgmp3A65BJrxnABRWfHoJceWRtWgL
+	sX+7kskG6bLuxDkML8jL4uGQU33EQUr3JlWQQ84dFQmmVe5qt0oQ/xPsPDCSq0lt7YW9hgvHVNAVl
+	uXNFgSjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCphu-0000000BuvU-39O5;
-	Sun, 26 Oct 2025 01:38:06 +0000
-Received: from mgamail.intel.com ([192.198.163.12])
+	id 1vCt5h-0000000C1TZ-3YxU;
+	Sun, 26 Oct 2025 05:14:53 +0000
+Received: from mgamail.intel.com ([192.198.163.10])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCphr-0000000Buv0-3bOQ;
-	Sun, 26 Oct 2025 01:38:05 +0000
+	id 1vCt5e-0000000C1T6-3HXW;
+	Sun, 26 Oct 2025 05:14:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1761442684; x=1792978684;
+  t=1761455690; x=1792991690;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=Ez41wax9HYmCuWnUibnabZZuxt0TJYpcUgaTyfvwj8k=;
-  b=jtQ+Qy6MVuGWRKUwh3Hql0fri8Uik698fe+4vD2ZnXw6pKsrK4fj35nZ
-   gWxX6XwQYijpDaMbDZhTm1Jz5gOsnecetl0pKB1bfAijpYM1jC8VjkfdR
-   G0d9OzBvXikOHJV3LtvVb9Bjcg7qpaXbG0xwB4o8fAnQpSYWZnJmUHVbn
-   LR1DjttmrRY7Hkag/Gx1Ocl6BEkOBLncSEgtYablG/larL5OgMxUSQd5X
-   0aiFEqXEVWgMzfnSa7/Vnb1+5ZlR1KGMXIvJX/bfs+x9pTj0eDoQTkTgT
-   DAr+DYwranPYneL39vD0bL7LQxwQWuQlHzyn3qqjz0gZNzroIVrBD0YAB
-   w==;
-X-CSE-ConnectionGUID: xlrv3xLAT2yC3xJAYhzhoQ==
-X-CSE-MsgGUID: FPm7rfacQwmz/Tmk6LwVug==
-X-IronPort-AV: E=McAfee;i="6800,10657,11586"; a="67434123"
-X-IronPort-AV: E=Sophos;i="6.19,255,1754982000"; 
-   d="scan'208";a="67434123"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
-  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Oct 2025 18:38:00 -0700
-X-CSE-ConnectionGUID: L5rahDNoSTCQ4TUtOmP3sg==
-X-CSE-MsgGUID: /ppvIZG/SfysX3rtKCTe+g==
+  bh=gKJE14w1KDbJqmE7/dHsKdynDf2xulvE3IRzaIW6bj4=;
+  b=dkjTTV+T/qLsrQrcuRto5ZwAnVm3UAIIB/JPhFgLXrPdo+idq981jKW7
+   a4S4C4Fln2L0dJQi3NltYqKBHBSffYS7jkankFxG4vr93XGdOZvEcGPwA
+   DkY2umU7iDf6tHJqzE2HJJfDlEol97keT3AMLFhgpSlW69TJuifckRXub
+   5AI7kVbm0Qztd/9FAHGhE/cXI3Md6FeOpjEJyqTYtgmqgWPtSXjjaVwLV
+   UBIyVao61BjArkdKMDyG/5Cv7E4r5alZVDvFGBb2hceGU5jcxr9u2eAlf
+   Vg+dsVVj8FN84vvYUjhdaxzYtZTkLRVDhwQuI9o5OmR0/a9b3pQBypo7c
+   Q==;
+X-CSE-ConnectionGUID: o1uogyzHS+K/ZDtPJtfqcg==
+X-CSE-MsgGUID: /HVxjU/2S0yx6wENsrxCWw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11586"; a="74919508"
+X-IronPort-AV: E=Sophos;i="6.19,256,1754982000"; 
+   d="scan'208";a="74919508"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Oct 2025 22:14:45 -0700
+X-CSE-ConnectionGUID: 3IfibMsMR/SdoNhlTH/RrA==
+X-CSE-MsgGUID: x7CYNeabSyG2So3RbmdNKA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.19,255,1754982000"; 
-   d="scan'208";a="189858445"
+X-IronPort-AV: E=Sophos;i="6.19,256,1754982000"; 
+   d="scan'208";a="184839789"
 Received: from lkp-server02.sh.intel.com (HELO 66d7546c76b2) ([10.239.97.151])
-  by orviesa005.jf.intel.com with ESMTP; 25 Oct 2025 18:37:57 -0700
+  by orviesa008.jf.intel.com with ESMTP; 25 Oct 2025 22:14:42 -0700
 Received: from kbuild by 66d7546c76b2 with local (Exim 4.96)
 	(envelope-from <lkp@intel.com>)
-	id 1vCphi-000Fmj-2m;
-	Sun, 26 Oct 2025 01:37:54 +0000
-Date: Sun, 26 Oct 2025 09:37:53 +0800
+	id 1vCt5F-000Fty-0a;
+	Sun, 26 Oct 2025 05:14:34 +0000
+Date: Sun, 26 Oct 2025 13:13:51 +0800
 From: kernel test robot <lkp@intel.com>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	alexandre.belloni@bootlin.com
@@ -69,15 +69,15 @@ Cc: oe-kbuild-all@lists.linux.dev, robh@kernel.org, krzk+dt@kernel.org,
 	linux-mediatek@lists.infradead.org, kernel@collabora.com
 Subject: Re: [PATCH v1 2/2] rtc: Add support for MT6685 Clock IC's RTC over
  SPMI
-Message-ID: <202510260921.IcI6vsTN-lkp@intel.com>
+Message-ID: <202510261223.NRLximA4-lkp@intel.com>
 References: <20251024083318.25890-3-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <20251024083318.25890-3-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251025_183803_944832_FDF15D8C 
-X-CRM114-Status: GOOD (  13.98  )
+X-CRM114-CacheID: sfid-20251025_221450_888020_5221C04E 
+X-CRM114-Status: GOOD (  16.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,37 +106,38 @@ url:    https://github.com/intel-lab-lkp/linux/commits/AngeloGioacchino-Del-Regn
 base:   https://git.kernel.org/pub/scm/linux/kernel/git/abelloni/linux.git rtc-next
 patch link:    https://lore.kernel.org/r/20251024083318.25890-3-angelogioacchino.delregno%40collabora.com
 patch subject: [PATCH v1 2/2] rtc: Add support for MT6685 Clock IC's RTC over SPMI
-config: m68k-allmodconfig (https://download.01.org/0day-ci/archive/20251026/202510260921.IcI6vsTN-lkp@intel.com/config)
-compiler: m68k-linux-gcc (GCC) 15.1.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20251026/202510260921.IcI6vsTN-lkp@intel.com/reproduce)
+config: sparc64-randconfig-r062-20251026 (https://download.01.org/0day-ci/archive/20251026/202510261223.NRLximA4-lkp@intel.com/config)
+compiler: sparc64-linux-gcc (GCC) 9.5.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20251026/202510261223.NRLximA4-lkp@intel.com/reproduce)
 
 If you fix the issue in a separate patch/commit (i.e. not just a new version of
 the same patch/commit), kindly add following tags
 | Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202510260921.IcI6vsTN-lkp@intel.com/
+| Closes: https://lore.kernel.org/oe-kbuild-all/202510261223.NRLximA4-lkp@intel.com/
 
-All errors (new ones prefixed by >>):
+All error/warnings (new ones prefixed by >>):
 
    drivers/rtc/rtc-mt6685.c: In function 'rtc_mt6685_probe':
->> drivers/rtc/rtc-mt6685.c:380:20: error: implicit declaration of function 'devm_spmi_subdevice_alloc_and_add' [-Wimplicit-function-declaration]
-     380 |         sub_sdev = devm_spmi_subdevice_alloc_and_add(dev, sparent);
-         |                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->> drivers/rtc/rtc-mt6685.c:380:18: error: assignment to 'struct spmi_subdevice *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
-     380 |         sub_sdev = devm_spmi_subdevice_alloc_and_add(dev, sparent);
-         |                  ^
+   drivers/rtc/rtc-mt6685.c:380:13: error: implicit declaration of function 'devm_spmi_subdevice_alloc_and_add' [-Werror=implicit-function-declaration]
+     380 |  sub_sdev = devm_spmi_subdevice_alloc_and_add(dev, sparent);
+         |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>> drivers/rtc/rtc-mt6685.c:380:11: warning: assignment to 'struct spmi_subdevice *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+     380 |  sub_sdev = devm_spmi_subdevice_alloc_and_add(dev, sparent);
+         |           ^
    In file included from drivers/rtc/rtc-mt6685.c:20:
->> drivers/rtc/rtc-mt6685.c:397:58: error: invalid use of undefined type 'struct spmi_subdevice'
-     397 |         rtc->regmap = devm_regmap_init_spmi_ext(&sub_sdev->sdev, &mt6685_rtc_regmap_config);
-         |                                                          ^~
-   include/linux/regmap.h:782:52: note: in definition of macro '__regmap_lockdep_wrapper'
-     782 | #define __regmap_lockdep_wrapper(fn, name, ...) fn(__VA_ARGS__, NULL, NULL)
-         |                                                    ^~~~~~~~~~~
-   drivers/rtc/rtc-mt6685.c:397:23: note: in expansion of macro 'devm_regmap_init_spmi_ext'
-     397 |         rtc->regmap = devm_regmap_init_spmi_ext(&sub_sdev->sdev, &mt6685_rtc_regmap_config);
-         |                       ^~~~~~~~~~~~~~~~~~~~~~~~~
+>> drivers/rtc/rtc-mt6685.c:397:51: error: dereferencing pointer to incomplete type 'struct spmi_subdevice'
+     397 |  rtc->regmap = devm_regmap_init_spmi_ext(&sub_sdev->sdev, &mt6685_rtc_regmap_config);
+         |                                                   ^~
+   include/linux/regmap.h:775:6: note: in definition of macro '__regmap_lockdep_wrapper'
+     775 |   fn(__VA_ARGS__, &_key,     \
+         |      ^~~~~~~~~~~
+   drivers/rtc/rtc-mt6685.c:397:16: note: in expansion of macro 'devm_regmap_init_spmi_ext'
+     397 |  rtc->regmap = devm_regmap_init_spmi_ext(&sub_sdev->sdev, &mt6685_rtc_regmap_config);
+         |                ^~~~~~~~~~~~~~~~~~~~~~~~~
+   cc1: some warnings being treated as errors
 
 
-vim +/devm_spmi_subdevice_alloc_and_add +380 drivers/rtc/rtc-mt6685.c
+vim +397 drivers/rtc/rtc-mt6685.c
 
    358	
    359	static int rtc_mt6685_probe(struct platform_device *pdev)
