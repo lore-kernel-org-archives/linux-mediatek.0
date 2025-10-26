@@ -4,80 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03018CCF9E9
-	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Oct 2025 22:25:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47CB6CCF9E9
+	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Oct 2025 22:46:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E9/i6w6SqygSYRvRt9N5PMQr6o7gtXkDUXRt4kUGZ1M=; b=0mX1jZSaIa5K1uStNu7LLjHHEd
-	DYZY2NYjy3r0kYv21GG5zO51OhvVjMD2bMyAs+waPKGxRMoIgYWXNy64hVFOL4amcKeJ1RnwzG7D/
-	AR8Vcv9FHNehlxj03pfi14PUDjssM/jWl2LapCvJu3xnd/xy7VUjpESV00UW/FiywVopD5OrOztvb
-	Z1+UIcnoVwm8I5PdOEjNJ6zt+2V2vZjv7X7ZcqKZVZjC8a6nbiNpKoYA20Vy6ukZibvwsqtOo/KGq
-	WAXt1BtHqNLxcVZpa4p0XccXbi0iPm4ewHH4HEUWk/jci77i7qqWxnXyaI9TwO+8qKZxtdzm0hycB
-	yPxn08Tg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rCRAutHedepxoaqlhY+trKzO9H8TOhlVc7iMT1F8fAg=; b=g5Vo1ml+G422vQF74vmP7a1ADv
+	oxZ1zE/JAjYNbUv2Lvhuc1K15NsOcQX9POme/Gu4+qfrk9vq50uFo9PycS7AS29H7dfl3rU5QKEhu
+	uxxQOy0RwLsushei9wi3sqB+llU4088KcPvVTZ/gInBRrFXyrGuRw8AmJx5EvRJRMK6DsqtAbTO5f
+	YGCBtK15QgFByYn//ALIumTtFuG06DFMX3rZx743mUgPXfqlFWy8Bl8NPUza+hrmZKJabNiGvg6kL
+	aJ/qw+S6b+SAR02BVo5TGTfnWiG55Gt49DA5+NvBGdu0s0MYDKS3h42nK36flApeqffhU3+Dv5jJd
+	ees2I3yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vD9BS-0000000CoUR-0zWJ;
-	Sun, 26 Oct 2025 22:25:54 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vD9BR-0000000CoTx-1LyE;
-	Sun, 26 Oct 2025 22:25:53 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6B0DA60330;
-	Sun, 26 Oct 2025 22:25:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 49624C4CEE7;
-	Sun, 26 Oct 2025 22:25:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761517552;
-	bh=YcfVCtLK/W1LvoMvGvygXNzNh0vRWUm1hNpESZXkvZk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=X55sznBAWggJ/HDGIZ6dcBSXLmlm8wZtp4v11We2/RanthjNuuSqrLXxB3D6+dJjG
-	 KWLdA/u217zShuCi99Na37WPbV+mGEk3vLOm7l2lwkobjD01Ue0VTeVaSkehFWCkFY
-	 VIsVUB+J5nn8qynVBOGW4T94+24+ocYVV67OfpVpp8MZvBE9yBuq90LCEBwr8dCLPS
-	 54mHUndnVBWYO4DsnbhAUNwGBuMydDoQLLoD/wxo//W+p4+51f+YoNswBdb0VumVAz
-	 faYPxFUmixtcIAAjpcJMrs7xJr5oYeDft/J4naku8wTQTYHiSwYYy3gBXnRTXFElR6
-	 3f/UL93sKp2tQ==
-Date: Sun, 26 Oct 2025 22:25:44 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Alim Akhtar <alim.akhtar@samsung.com>,
-	Avri Altman <avri.altman@wdc.com>,
-	Bart Van Assche <bvanassche@acm.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+	id 1vD9Ux-0000000CpPQ-1ONq;
+	Sun, 26 Oct 2025 22:46:03 +0000
+Received: from [50.53.43.113] (helo=bombadil.infradead.org)
+	by bombadil.infradead.org with esmtpsa (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vD9Uu-0000000CpNa-25U1;
+	Sun, 26 Oct 2025 22:46:00 +0000
+From: Randy Dunlap <rdunlap@infradead.org>
+To: linux-kernel@vger.kernel.org
+Cc: Randy Dunlap <rdunlap@infradead.org>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Peter Wang <peter.wang@mediatek.com>,
-	Stanley Jhu <chu.stanley@gmail.com>,
-	"James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
-	"Martin K. Petersen" <martin.petersen@oracle.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
-	kernel@collabora.com, linux-scsi@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org
-Subject: Re: [PATCH v3 03/24] dt-bindings: ufs: mediatek,ufs: Add mt8196
- variant
-Message-ID: <20251026-these-wise-9b5e63c78907@spud>
-References: <20251023-mt8196-ufs-v3-0-0f04b4a795ff@collabora.com>
- <20251023-mt8196-ufs-v3-3-0f04b4a795ff@collabora.com>
- <20251024-thrash-amid-d5af186c4319@spud>
- <5617400.31r3eYUQgx@workhorse>
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	linux-usb@vger.kernel.org,
+	linux-doc@vger.kernel.org
+Subject: [PATCH 2/2] usb: mtu3: fix invalid kernel-doc in mtu3.h
+Date: Sun, 26 Oct 2025 15:45:58 -0700
+Message-ID: <20251026224558.826143-2-rdunlap@infradead.org>
+X-Mailer: git-send-email 2.51.1
+In-Reply-To: <20251026224558.826143-1-rdunlap@infradead.org>
+References: <20251026224558.826143-1-rdunlap@infradead.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="LhPY1uIXOXYzwQC0"
-Content-Disposition: inline
-In-Reply-To: <5617400.31r3eYUQgx@workhorse>
+Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,93 +60,210 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Fix unconventional kernel-doc lines to avoid warnings.
+Summary of changes:
 
---LhPY1uIXOXYzwQC0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+- change non-kernel-doc comments from "/**" to "/*"
+- add "enum <enum-name> - short description" for undescribed enums
+- use leading '@' for describing enum members and struct members
+- add "struct <struct-name> - short description" for undescribed structs
 
-On Fri, Oct 24, 2025 at 07:51:11PM +0200, Nicolas Frattaroli wrote:
-> On Friday, 24 October 2025 19:13:36 Central European Summer Time Conor Do=
-oley wrote:
-> > On Thu, Oct 23, 2025 at 09:49:21PM +0200, Nicolas Frattaroli wrote:
-> >=20
-> > >      };
-> > > +  - |
-> > > +    #include <dt-bindings/reset/mediatek,mt8196-resets.h>
-> > > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> > > +
-> > > +    ufshci@16810000 {
-> > > +        compatible =3D "mediatek,mt8196-ufshci";
-> > > +        reg =3D <0x16810000 0x2a00>;
-> > > +        interrupts =3D <GIC_SPI 320 IRQ_TYPE_LEVEL_HIGH>;
-> > > +
-> > > +        clocks =3D <&ufs_ao_clk 6>,
-> > > +                 <&ufs_ao_clk 7>,
-> > > +                 <&clk26m>,
-> > > +                 <&ufs_ao_clk 3>,
-> > > +                 <&clk26m>,
-> > > +                 <&ufs_ao_clk 4>,
-> > > +                 <&ufs_ao_clk 0>,
-> > > +                 <&topckgen 7>,
-> > > +                 <&topckgen 41>,
-> > > +                 <&topckgen 105>,
-> > > +                 <&topckgen 83>,
-> > > +                 <&ufs_ao_clk 1>,
-> > > +                 <&ufs_ao_clk 2>,
-> > > +                 <&topckgen 42>,
-> > > +                 <&topckgen 84>,
-> > > +                 <&topckgen 102>;
-> >=20
-> > This is absolutely a nitpick thing, but if you end up resubmitting, can
-> > you pick a consistent format between the two examples your series adds
-> > for the clocks/clock names?
->=20
-> No problem, will do. IIRC I kept them as a list like this so I could
-> easily reorder things, but now that I'm fairly sure this order is the
-> correct one, it's probably best to make this more compact.
->=20
-> Also sorry for the numbers as clock IDs, but MediaTek clock headers
-> have conflicting symbols and the dt schema example extractor dumps
-> all examples into one dts file. :(
 
-Numbers is fine, dw about that.
+Repair and remove invalid or unconventional lines in mtu3.h:
 
-> Since this has bugged me in the past, and many schemas may rely on
-> the concat behaviour now: would a patch in the distant future that
-> prefixes all MediaTek clock binding headers with the SoC name be
-> acceptable if it keeps the old names intact as aliases to them with
-> a #ifndef guard?
+(This list is a combination of warnings from the old kernel-doc.pl and
+the new kernel-doc.py scripts. This combo provides better coverage
+of all problems.)
 
-Honestly, I don't think it's that big of a deal to use the numbers,
-they're only examples after all (even if for soc-peripherals they're
-almost always exactly what is used in reality).
+mtu3.h:69: warning: This comment starts with '/**', but isn't a
+ kernel-doc comment.
+ * IP TRUNK version
+mtu3.h:69: warning: missing initial short description on line:
+ * IP TRUNK version
+mtu3.h:78: warning: This comment starts with '/**', but isn't a
+ kernel-doc comment.
+ * Normally the device works on HS or SS, to simplify fifo management,
+mtu3.h:78: warning: missing initial short description on line:
+ * Normally the device works on HS or SS, to simplify fifo management,
+mtu3.h:89: warning: This comment starts with '/**', but isn't
+ a kernel-doc comment.
+ * Maximum size of ep0 response buffer for ch9 requests,
+mtu3.h:89: warning: missing initial short description on line:
+ * Maximum size of ep0 response buffer for ch9 requests,
+mtu3.h:106: warning: Cannot understand  * @MU3D_EP0_STATE_SETUP: waits for
+ SETUP or received a SETUP
+ on line 106 - I thought it was a doc line
+mtu3.h:130: warning: cannot understand function prototype:
+ 'enum mtu3_dr_force_mode'
+mtu3.h:137: warning: Cannot understand  * @base: the base address of fifo
+ on line 137 - I thought it was a doc line
+mtu3.h:148: warning: missing initial short description on line:
+ * General Purpose Descriptor (GPD):
+mtu3.h:174: warning: cannot understand function prototype:
+ 'struct qmu_gpd'
+mtu3.h:189: warning: cannot understand function prototype:
+ 'struct mtu3_gpd_ring'
+mtu3.h:198: warning: Cannot understand * @vbus: vbus 5V used by host mode
+ on line 198 - I thought it was a doc line
+mtu3.h:225: warning: Cannot understand  * @mac_base: register base address
+ of device MAC, exclude xHCI's
+ on line 225 - I thought it was a doc line
+mtu3.h:275: warning: cannot understand function prototype: 'struct mtu3_ep'
 
-What you do with aliases is really up to the mediatek platform
-maintainers, but I think if it were my platform I would just not bother.
+Warning: drivers/usb/mtu3/mtu3.h:135 Enum value 'MTU3_DR_FORCE_NONE'
+ not described in enum 'mtu3_dr_force_mode'
+Warning: drivers/usb/mtu3/mtu3.h:135 Enum value 'MTU3_DR_FORCE_HOST'
+ not described in enum 'mtu3_dr_force_mode'
+Warning: drivers/usb/mtu3/mtu3.h:135 Enum value 'MTU3_DR_FORCE_DEVICE'
+ not described in enum 'mtu3_dr_force_mode'
+Warning: drivers/usb/mtu3/mtu3.h:270 Cannot find identifier on line:
+ * @fifo_size: it is (@slot + 1) * @fifo_seg_size
+Warning: drivers/usb/mtu3/mtu3.h:271 Cannot find identifier on line:
+ * @fifo_seg_size: it is roundup_pow_of_two(@maxp)
+Warning: drivers/usb/mtu3/mtu3.h:272 Cannot find identifier on line:
+ */
+Warning: drivers/usb/mtu3/mtu3.h:273 Cannot find identifier on line:
+struct mtu3_ep {
+Warning: drivers/usb/mtu3/mtu3.h:274 Cannot find identifier on line:
+        struct usb_ep ep;
+Warning: drivers/usb/mtu3/mtu3.h:275 Cannot find identifier on line:
+        char name[12];
+Warning: drivers/usb/mtu3/mtu3.h:276 missing initial short description
+ on line:
+        struct mtu3 *mtu;
 
-> I should also think about some way we can avoid similar bindings
-> symbol naming mishaps in the future.
->=20
-> Thank you for pointing me in the right direction with regards to
-> the binding!
->=20
-> Kind regards,
-> Nicolas Frattaroli
->=20
-> > Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
-> > pw-bot: not-applicable
 
---LhPY1uIXOXYzwQC0
-Content-Type: application/pgp-signature; name="signature.asc"
+This removes all of the invalid/unconventional kernel-doc attempts but
+still leaves quite a few struct members in structs ssusb_mtk, mtu3_ep,
+and mtu3 without kernel-doc descriptions.
 
------BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaP6f6AAKCRB4tDGHoIJi
-0lVoAQDVEcmFlZDGe0sLSSI/vhJc1fCDdip8vWj9q3rZ4BUI+gEAyI4wOcjukunf
-BlHSEe6kYAuozj/qCFBWrR+C47CjOwk=
-=xrOe
------END PGP SIGNATURE-----
+Signed-off-by: Randy Dunlap <rdunlap@infradead.org>
+---
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: linux-usb@vger.kernel.org
+Cc: linux-doc@vger.kernel.org
+---
+ drivers/usb/mtu3/mtu3.h |   32 ++++++++++++++++++++------------
+ 1 file changed, 20 insertions(+), 12 deletions(-)
 
---LhPY1uIXOXYzwQC0--
+--- linux-next.orig/drivers/usb/mtu3/mtu3.h
++++ linux-next/drivers/usb/mtu3/mtu3.h
+@@ -65,7 +65,7 @@ struct mtu3_request;
+ #define MTU3_U3_IP_SLOT_DEFAULT 2
+ #define MTU3_U2_IP_SLOT_DEFAULT 1
+ 
+-/**
++/*
+  * IP TRUNK version
+  * from 0x1003 version, USB3 Gen2 is supported, two changes affect driver:
+  * 1. MAXPKT and MULTI bits layout of TXCSR1 and RXCSR1 are adjusted,
+@@ -74,7 +74,7 @@ struct mtu3_request;
+  */
+ #define MTU3_TRUNK_VERS_1003	0x1003
+ 
+-/**
++/*
+  * Normally the device works on HS or SS, to simplify fifo management,
+  * divide fifo into some 512B parts, use bitmap to manage it; And
+  * 128 bits size of bitmap is large enough, that means it can manage
+@@ -85,7 +85,7 @@ struct mtu3_request;
+ #define MTU3_FIFO_BIT_SIZE		128
+ #define MTU3_U2_IP_EP0_FIFO_SIZE	64
+ 
+-/**
++/*
+  * Maximum size of ep0 response buffer for ch9 requests,
+  * the SET_SEL request uses 6 so far, and GET_STATUS is 2
+  */
+@@ -103,6 +103,7 @@ enum mtu3_speed {
+ };
+ 
+ /**
++ * enum mtu3_g_ep0_state - endpoint 0 states
+  * @MU3D_EP0_STATE_SETUP: waits for SETUP or received a SETUP
+  *		without data stage.
+  * @MU3D_EP0_STATE_TX: IN data stage
+@@ -121,11 +122,12 @@ enum mtu3_g_ep0_state {
+ };
+ 
+ /**
+- * MTU3_DR_FORCE_NONE: automatically switch host and peripheral mode
++ * enum mtu3_dr_force_mode - indicates host/OTG operating mode
++ * @MTU3_DR_FORCE_NONE: automatically switch host and peripheral mode
+  *		by IDPIN signal.
+- * MTU3_DR_FORCE_HOST: force to enter host mode and override OTG
++ * @MTU3_DR_FORCE_HOST: force to enter host mode and override OTG
+  *		IDPIN signal.
+- * MTU3_DR_FORCE_DEVICE: force to enter peripheral mode.
++ * @MTU3_DR_FORCE_DEVICE: force to enter peripheral mode.
+  */
+ enum mtu3_dr_force_mode {
+ 	MTU3_DR_FORCE_NONE = 0,
+@@ -134,6 +136,7 @@ enum mtu3_dr_force_mode {
+ };
+ 
+ /**
++ * struct mtu3_fifo_info - HW FIFO description and management data
+  * @base: the base address of fifo
+  * @limit: the bitmap size in bits
+  * @bitmap: fifo bitmap in unit of @MTU3_EP_FIFO_UNIT
+@@ -145,7 +148,7 @@ struct mtu3_fifo_info {
+ };
+ 
+ /**
+- * General Purpose Descriptor (GPD):
++ * struct qmu_gpd - General Purpose Descriptor (GPD):
+  *	The format of TX GPD is a little different from RX one.
+  *	And the size of GPD is 16 bytes.
+  *
+@@ -179,11 +182,13 @@ struct qmu_gpd {
+ } __packed;
+ 
+ /**
+-* dma: physical base address of GPD segment
+-* start: virtual base address of GPD segment
+-* end: the last GPD element
+-* enqueue: the first empty GPD to use
+-* dequeue: the first completed GPD serviced by ISR
++* struct mtu3_gpd_ring - GPD ring descriptor
++* @dma: physical base address of GPD segment
++* @start: virtual base address of GPD segment
++* @end: the last GPD element
++* @enqueue: the first empty GPD to use
++* @dequeue: the first completed GPD serviced by ISR
++*
+ * NOTE: the size of GPD ring should be >= 2
+ */
+ struct mtu3_gpd_ring {
+@@ -195,6 +200,7 @@ struct mtu3_gpd_ring {
+ };
+ 
+ /**
++* struct otg_switch_mtk - OTG/dual-role switch management
+ * @vbus: vbus 5V used by host mode
+ * @edev: external connector used to detect vbus and iddig changes
+ * @id_nb : notifier for iddig(idpin) detection
+@@ -222,6 +228,7 @@ struct otg_switch_mtk {
+ };
+ 
+ /**
++ * struct ssusb_mtk - SuperSpeed USB descriptor (MTK)
+  * @mac_base: register base address of device MAC, exclude xHCI's
+  * @ippc_base: register base address of IP Power and Clock interface (IPPC)
+  * @vusb33: usb3.3V shared by device/host IP
+@@ -268,6 +275,7 @@ struct ssusb_mtk {
+ };
+ 
+ /**
++ * struct mtu3_ep - common mtu3 endpoint description
+  * @fifo_size: it is (@slot + 1) * @fifo_seg_size
+  * @fifo_seg_size: it is roundup_pow_of_two(@maxp)
+  */
 
