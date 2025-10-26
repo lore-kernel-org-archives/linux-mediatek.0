@@ -4,43 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01A43CCF9E5
-	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Oct 2025 12:22:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A119CCD1A5
+	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Oct 2025 12:22:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=J+oIT4ZSlvcfRBxWrhMbinuOO7yYO/gbdfjRoPL1coY=; b=OkD7mOltou2LVZ
-	XYYVlWSg81k2NPdY8uMRA5J1TJd3ujZl+QiS0gNiQr6o8QQgWuwwTStm/5go2+NQvxym3qNYgp3CG
-	aYc/oNBMcjiiuhRvQZIv9EmtHtcKnoagCkr6RVU+LQmanpOktAuIAU91+I2RDqeYRzq8Re+U2g8v2
-	3xjptLvbfGvyq9MjJwDkKH/TEtdJCaFD/Y4+aXYW0OH5DZBUYt8d81+D4ulKO2VrSRjyL/UxOhdoC
-	UZIc1TqhYN9lNhuRUcNJeZT7Fs/ywWA1doD876RQSm8BCOinshPoBT2++fg4zhNCKFY+wTjCnW6ao
-	gRpBeGPP+so+lJrB8hfw==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=0dY9esegxlxvfveosoEyFChzlWucqwdO0YH5Tj3yiok=; b=MwSS+27n7EczO2
+	gwuH0eh/KU+rwitYRVtW1tZo5C96YZ8X8Wjh7rmtDpeY8aNo2Yegn3KOvNh+F5sAqXN7tEjUaI1oa
+	5w0y+ouZimIFxsVobi2Wwc7O3S86Ef3xFkN4q6I0FSAU2gn7NC1A8JUjFKqd6p5TmJWqKQs/cFVw8
+	C8w76c0q8rb/nJJS2eawvgh3vi/NaM1XftT5aHxK9wGbZLXcLFyejpGeTOuLIbWdPnmEHxMUVVfOS
+	/pm0WldlACFeBip8NX9h/fXvep6ZeWugLGHs7Ij6H0qq5kvQTPaVAVyAJJQj0hx8QfE+/cGs8tWYo
+	Hpp8NCziCsYGbuUOZkZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCzlW-0000000CJMs-0ild;
-	Sun, 26 Oct 2025 12:22:30 +0000
-Received: from mxout4.routing.net ([2a03:2900:1:a::9])
+	id 1vCzlZ-0000000CJQN-36QN;
+	Sun, 26 Oct 2025 12:22:33 +0000
+Received: from mxout2.routing.net ([2a03:2900:1:a::b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCzlC-0000000CJ8J-0x9J;
-	Sun, 26 Oct 2025 12:22:13 +0000
+	id 1vCzlF-0000000CJAQ-37Ds;
+	Sun, 26 Oct 2025 12:22:14 +0000
 Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
-	by mxout4.routing.net (Postfix) with ESMTP id AF8551009AF;
-	Sun, 26 Oct 2025 12:22:04 +0000 (UTC)
+	by mxout2.routing.net (Postfix) with ESMTP id EB48A5FF3F;
+	Sun, 26 Oct 2025 12:22:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=routing; t=1761481324;
+	s=routing; t=1761481326;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=J+oIT4ZSlvcfRBxWrhMbinuOO7yYO/gbdfjRoPL1coY=;
-	b=Id9AfSYAhE7BUezRgygKn+cTdeMOS9iccD0ng4R2WApmSTYJzCCbI8sBEueLCgAiyhfc/u
-	dYrXxb+B+75Ubd5pw4LPbgDBLXKAasM6sWSf8sJ48OLHS1xU5gBUxbuuhuY+S8rOE3To8t
-	GqlEZnhmeVB57YcfTr0Vj+DtPs1pZOA=
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=0dY9esegxlxvfveosoEyFChzlWucqwdO0YH5Tj3yiok=;
+	b=S9ZPujlBTnCdbMJvrxVvkukT6o+Scd2mNqnGuwjJLvLfi9wnHM9rp6GrqgsyjCpPJh45Nc
+	p+OPvrCITAZjf0eqLrD2wAfH2ivXL0E/gBXRRJN1W1lLQ+/csTp3TsaSg9DHF67cLTQCSq
+	fjNADBDeAX6F7RcwObO6DONXNNKTmWU=
 Received: from frank-u24.. (fttx-pool-217.61.154.70.bambit.de [217.61.154.70])
-	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 60B4D1226BC;
-	Sun, 26 Oct 2025 12:22:04 +0000 (UTC)
+	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id AFA1A1226BC;
+	Sun, 26 Oct 2025 12:22:05 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: "Rafael J. Wysocki" <rafael@kernel.org>,
 	Daniel Lezcano <daniel.lezcano@linaro.org>,
@@ -51,16 +52,17 @@ To: "Rafael J. Wysocki" <rafael@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v1 0/5] Add MT7987 Thermal support
-Date: Sun, 26 Oct 2025 13:21:29 +0100
-Message-ID: <20251026122143.71100-1-linux@fw-web.de>
+Subject: [PATCH v1 5/5] thermal/drivers/mediatek/lvts_thermal: Add mt7987 support
+Date: Sun, 26 Oct 2025 13:21:34 +0100
+Message-ID: <20251026122143.71100-6-linux@fw-web.de>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20251026122143.71100-1-linux@fw-web.de>
+References: <20251026122143.71100-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251026_052210_511046_6F09C900 
-X-CRM114-Status: UNSURE (   6.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251026_052213_926764_295213F7 
+X-CRM114-Status: GOOD (  11.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,22 +80,90 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-This series adds Thermal support for MT7987.
+Add support for MT7987.
 
-Frank Wunderlich (5):
-  dt-bindings: thermal: mediatek: make interrupt only required for
-    current SoCs
-  dt-bindings: thermal: mediatek: Add LVTS thermal controller definition
-    for MT7987
-  thermal/drivers/mediatek/lvts_thermal: Add no-irq-mode for mt7987
-  thermal/drivers/mediatek/lvts_thermal: Add SoC based golden Temp
-  thermal/drivers/mediatek/lvts_thermal: Add mt7987 support
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+---
+ drivers/thermal/mediatek/lvts_thermal.c | 38 +++++++++++++++++++++++++
+ 1 file changed, 38 insertions(+)
 
- .../thermal/mediatek,lvts-thermal.yaml        |  18 +++-
- drivers/thermal/mediatek/lvts_thermal.c       | 102 ++++++++++++++++--
- .../thermal/mediatek,lvts-thermal.h           |   3 +
- 3 files changed, 111 insertions(+), 12 deletions(-)
-
+diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+index 544941e8219a..1d800bdf4a24 100644
+--- a/drivers/thermal/mediatek/lvts_thermal.c
++++ b/drivers/thermal/mediatek/lvts_thermal.c
+@@ -87,6 +87,8 @@
+ #define LVTS_COEFF_B_MT8195			250460
+ #define LVTS_COEFF_A_MT7988			-204650
+ #define LVTS_COEFF_B_MT7988			204650
++#define LVTS_COEFF_A_MT7987			-204650
++#define LVTS_COEFF_B_MT7987			204650
+ 
+ #define LVTS_MSR_IMMEDIATE_MODE		0
+ #define LVTS_MSR_FILTERED_MODE		1
+@@ -1400,6 +1402,20 @@ static void lvts_remove(struct platform_device *pdev)
+ 		lvts_ctrl_set_enable(&lvts_td->lvts_ctrl[i], false);
+ }
+ 
++static const struct lvts_ctrl_data mt7987_lvts_ap_data_ctrl[] = {
++	{
++		.lvts_sensor = {
++			{ .dt_id = MT7987_CPU,
++			  .cal_offsets = { 0x04, 0x05, 0x06 } },
++			{ .dt_id = MT7987_ETH2P5G,
++			  .cal_offsets = { 0x08, 0x09, 0x0a } },
++		},
++		VALID_SENSOR_MAP(1, 1, 0, 0),
++		.offset = 0x0,
++		.mode = LVTS_MSR_FILTERED_MODE,
++	},
++};
++
+ static const struct lvts_ctrl_data mt7988_lvts_ap_data_ctrl[] = {
+ 	{
+ 		.lvts_sensor = {
+@@ -1482,6 +1498,12 @@ static const u32 default_init_cmds[] = {
+ 	0xC10300FC, 0xC103009D, 0xC10300F1, 0xC10300E1
+ };
+ 
++static const u32 mt7987_init_cmds[] = {
++	0xC1030300, 0xC1030420, 0xC1030500, 0xC10307A6, 0xC10308C7,
++	0xC103098D, 0xC1030C7C, 0xC1030AA8, 0xC10308CE, 0xC10308C7,
++	0xC1030B04, 0xC1030E01, 0xC10306B8
++};
++
+ static const u32 mt7988_init_cmds[] = {
+ 	0xC1030300, 0xC1030420, 0xC1030500, 0xC10307A6, 0xC1030CFC,
+ 	0xC1030A8C, 0xC103098D, 0xC10308F1, 0xC1030B04, 0xC1030E01,
+@@ -1780,6 +1802,21 @@ static const struct lvts_ctrl_data mt8195_lvts_ap_data_ctrl[] = {
+ 	}
+ };
+ 
++static const struct lvts_data mt7987_lvts_ap_data = {
++	.lvts_ctrl	= mt7987_lvts_ap_data_ctrl,
++	.num_lvts_ctrl	= ARRAY_SIZE(mt7987_lvts_ap_data_ctrl),
++	.conn_cmd	= mt7988_conn_cmds,
++	.init_cmd	= mt7987_init_cmds,
++	.num_conn_cmd	= ARRAY_SIZE(mt7988_conn_cmds),
++	.num_init_cmd	= ARRAY_SIZE(mt7987_init_cmds),
++	.temp_factor	= LVTS_COEFF_A_MT7987,
++	.temp_offset	= LVTS_COEFF_B_MT7987,
++	.golden_temp	= 60,
++	.gt_calib_bit_offset = 32,
++	.def_calibration = 19380,
++	.irq_enable	= false,
++};
++
+ static const struct lvts_data mt7988_lvts_ap_data = {
+ 	.lvts_ctrl	= mt7988_lvts_ap_data_ctrl,
+ 	.conn_cmd	= mt7988_conn_cmds,
+@@ -1899,6 +1936,7 @@ static const struct lvts_data mt8195_lvts_ap_data = {
+ };
+ 
+ static const struct of_device_id lvts_of_match[] = {
++	{ .compatible = "mediatek,mt7987-lvts-ap", .data = &mt7987_lvts_ap_data },
+ 	{ .compatible = "mediatek,mt7988-lvts-ap", .data = &mt7988_lvts_ap_data },
+ 	{ .compatible = "mediatek,mt8186-lvts", .data = &mt8186_lvts_data },
+ 	{ .compatible = "mediatek,mt8188-lvts-mcu", .data = &mt8188_lvts_mcu_data },
 -- 
 2.43.0
 
